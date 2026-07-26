@@ -276,7 +276,7 @@ function resolvePresentationKind(item: PrescriptionItem, convertedUnit: string):
   if (getPresentationNumber({ metadata: item.presentationMetadata || null }, 'dose_per_actuation') || form.includes('spray') || form.includes('inal') || unit === 'puff' || unit === 'jato' || unit === 'ato' || unit === 'spray') {
     return 'actuation'
   }
-  if (form.includes('solucao oral') || form.includes('suspens') || form.includes('xarope') || form.includes('elixir') || unit === 'ml') return 'oral-liquid'
+  if (form.includes('solução oral') || form.includes('suspens') || form.includes('xarope') || form.includes('elixir') || unit === 'ml') return 'oral-liquid'
   if (form.includes('pomada') || form.includes('creme') || form.includes('gel') || form.includes('shampoo')) return 'topical'
   if (unit === 'sache' || unit === 'flaconete' || unit === 'pipeta' || unit === 'supositorio' || unit === 'ampola' || unit === 'unidade') return 'unitary'
   return 'generic'
@@ -940,7 +940,7 @@ export function renderRxToPrintDoc(
     documentKind,
     documentId: state.prescriber.adminId || 'ADMIN',
     dateLabel: new Date().toLocaleDateString('pt-BR'),
-    clinicName: state.prescriber.clinicName || 'CLÍNICA VETERINÁRIA VETIUS',
+    clinicName: state.prescriber.clinicName || 'CLÍNICA VETERINÁRIA',
     prescriberName: state.prescriber.name || 'Dr. Silva',
     prescriberCrmv: state.prescriber.crmv || 'CRMV-SP 00000',
     patientLine: patientParts.length ? `${state.patient.name || '-'} (${patientParts.join(', ')})` : (state.patient.name || '-'),

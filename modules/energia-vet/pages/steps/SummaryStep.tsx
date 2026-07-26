@@ -200,9 +200,8 @@ export default function SummaryStep() {
     try {
       await saveNutritionReportToSupabase(reportToSave)
       await migrateLocalReportsToSupabase(getSavedReports())
-      toast.success('Resumo salvo e sincronizado no Supabase.')
-    } catch (error) {
-      console.warn('[NutriçãoVET] Supabase sync skipped or failed:', error)
+      toast.success('Resumo salvo e sincronizado.')
+    } catch {
       toast.success('Resumo salvo localmente no navegador.')
     }
     
@@ -258,7 +257,7 @@ export default function SummaryStep() {
                   <CardTitle className="text-lg">Paciente e energia</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.name || 'Nao informado'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.name || 'Não informado'}</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.ownerName || '--'}</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Espécie</p><p className="mt-1 font-semibold text-foreground dark:text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Peso atual</p><p className="mt-1 font-semibold text-foreground dark:text-white">{currentWeight.toFixed(2)} kg</p></div>
@@ -501,7 +500,7 @@ export default function SummaryStep() {
               <ChevronLeft className="h-4 w-4" /> Voltar para formulação
             </Button>
             <Button size="lg" className="gap-2" onClick={handleSave} id="btn-save-plan">
-              <Save className="h-5 w-5" /> Salvar no módulo
+              <Save className="h-5 w-5" /> Salvar resumo
             </Button>
           </div>
         </Card>

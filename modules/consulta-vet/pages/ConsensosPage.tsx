@@ -56,7 +56,7 @@ export function ConsensosPage() {
         setConsensos(data);
       } catch (err) {
         if (!isMounted) return;
-        setError(err instanceof Error ? err.message : 'Falha ao carregar consensos.');
+        setError('Não foi possível carregar os consensos.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

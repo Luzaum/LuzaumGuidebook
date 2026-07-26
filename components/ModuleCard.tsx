@@ -46,10 +46,10 @@ export function ModuleCard({ module }: ModuleCardProps) {
               }`}
           >
             {module.status === 'internal'
-              ? 'INTERNO'
+              ? 'DISPONÍVEL'
               : module.status === 'iframe'
-                ? 'EXTERNO'
-                : 'EM BREVE'}
+                ? 'DISPONÍVEL'
+                : 'INDISPONÍVEL'}
           </span>
         </div>
 
@@ -70,7 +70,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
             <div className="flex flex-col items-center justify-center w-full h-full bg-slate-100 dark:bg-white/5 rounded-lg border border-dashed border-slate-300 dark:border-white/20">
               <Icon className="h-10 w-10 text-slate-400 dark:text-white/40 mb-1" />
               <span className="text-xs text-slate-500 dark:text-white/50 text-center px-2">
-                Sem logo ainda
+                Identidade visual indisponível
               </span>
             </div>
           )}
@@ -97,7 +97,7 @@ export function ModuleCard({ module }: ModuleCardProps) {
             </button>
           ) : (
             <div className="h-10 w-full rounded-full bg-slate-100 dark:bg-white/5 flex items-center justify-center">
-              <span className="text-xs text-slate-500 dark:text-white/60">Em breve</span>
+              <span className="text-xs text-slate-500 dark:text-white/60">Indisponível</span>
             </div>
           )}
         </div>

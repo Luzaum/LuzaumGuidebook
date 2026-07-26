@@ -70,7 +70,7 @@ export const Configuration: React.FC<ConfigurationProps> = ({ onNavigate }) => {
                     <div className="flex flex-col gap-2 max-w-2xl">
                         <h1 className="text-white text-3xl md:text-4xl font-bold leading-tight">Configuração de Reposição</h1>
                         <p className="text-white/60 text-base leading-relaxed">
-                            Defina o íon alvo, método de administração e fluido base. O sistema validará a compatibilidade e a taxa máxima de infusão automaticamente.
+                            Defina o íon alvo, o método de administração e o fluido base. A compatibilidade e a taxa máxima de infusão serão validadas automaticamente.
                         </p>
                     </div>
                     <div className="flex items-center gap-2 bg-vet-surface-dark px-3 py-1.5 rounded-lg border border-vet-border-brown">

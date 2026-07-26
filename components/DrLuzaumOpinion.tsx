@@ -48,7 +48,7 @@ const DrLuzaumOpinion: React.FC<Props> = ({ buildCaseSummary }) => {
           </div>
         )}
         <div className="text-xs text-muted-foreground">
-          Aviso: esta explicação não substitui o julgamento do médico-veterinário. O aplicativo é apenas um guia e não se responsabiliza por decisões clínicas.
+          Esta análise é complementar e não substitui o julgamento do médico-veterinário responsável.
         </div>
       </CardContent>
     </Card>

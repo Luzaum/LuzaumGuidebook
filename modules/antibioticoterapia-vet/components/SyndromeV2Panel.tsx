@@ -1,4 +1,4 @@
-import type { AntibioticIndication, RecommendationResult } from '../model/types'
+import type { AntibioticIndication, RecommendationResult, ScenarioKey } from '../model/types'
 import type { ClassStyle } from '../types'
 import { ANTIBIOTIC_MOLECULES } from '../data-v2/molecules'
 import { getSyndromeInstitutionalMapping } from '../data-v2/institutionalMappings'
@@ -15,7 +15,7 @@ const INDICATION_EXPLAIN: Record<AntibioticIndication, { title: string; detail: 
   yes_empiric: {
     title: 'Antimicrobiano empírico',
     detail:
-      'No modelo v2, há esquema empírico sugerido; reavaliar com cultura, desfecho clínico e stewardship local.',
+      'Há esquema empírico sugerido; reavaliar com cultura, evolução clínica e protocolo local.',
   },
   yes_after_sampling: {
     title: 'Priorizar amostras',
@@ -30,8 +30,15 @@ const INDICATION_EXPLAIN: Record<AntibioticIndication, { title: string; detail: 
   conditional: {
     title: 'Indicação condicional',
     detail:
-      'Depende do subcenário (ex.: cirurgia limpa vs contaminada). Leia os regimes e stewardship abaixo.',
+      'Depende do contexto clínico, como cirurgia limpa ou contaminada. Consulte os regimes e as orientações abaixo.',
   },
+}
+
+const SCENARIO_LABELS: Record<ScenarioKey, string> = {
+  ambulatory_stable: 'Paciente estável em acompanhamento ambulatorial',
+  hospitalized: 'Paciente hospitalizado',
+  severe: 'Quadro grave',
+  septic_unstable: 'Sepse ou instabilidade',
 }
 
 interface SyndromeV2PanelProps {
@@ -60,7 +67,7 @@ function MoleculeLinksRow({
   return (
     <div className="mt-2 border-t pt-2" style={{ borderColor: 'hsl(var(--border))' }}>
       <span className="text-xs font-medium" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        Antimicrobianos (catálogo legado):
+        Antimicrobianos relacionados:
       </span>
       <div className="mt-1 flex flex-wrap gap-2">
         {moleculeIds.map((mid) => {
@@ -113,8 +120,7 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
           {result.syndromeLabel}
         </h2>
         <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Motor v2 · cenário: <strong>{result.scenarioResolved}</strong>
-          {result.scenarioFallbackFrom ? ` (ajuste a partir de ${result.scenarioFallbackFrom})` : ''}
+          Contexto considerado: <strong>{SCENARIO_LABELS[result.scenarioResolved]}</strong>
         </p>
         {syndromeConcordance && (
           <div className="mt-2 flex flex-wrap items-center gap-2">
@@ -326,7 +332,7 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
 
       {result.stewardshipAlerts.length > 0 && (
         <section>
-          <h3 className="font-semibold">Observações de stewardship</h3>
+          <h3 className="font-semibold">Uso racional de antimicrobianos</h3>
           <ul className="mt-2 space-y-2">
             {result.stewardshipAlerts.map((a) => (
               <li
@@ -350,15 +356,10 @@ export function SyndromeV2Panel({ result, onOpenAntibioticInCatalog }: SyndromeV
 
       {result.referenceKeys.length > 0 && (
         <section className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <h3 className="mb-1 font-semibold text-[hsl(var(--foreground))]">Registro de fontes (chaves)</h3>
+          <h3 className="mb-1 font-semibold text-[hsl(var(--foreground))]">Referências</h3>
           <ul className="list-inside list-disc space-y-0.5">
             {result.referenceKeys.map((key) => (
-              <li key={key}>
-                <span className="font-mono text-[10px]">{key}</span>
-                {getSourceEntry(key) && (
-                  <span className="ml-1 text-[10px]">— {referenceKeyDisplayLabel(key)}</span>
-                )}
-              </li>
+              <li key={key}>{referenceKeyDisplayLabel(key)}</li>
             ))}
           </ul>
         </section>

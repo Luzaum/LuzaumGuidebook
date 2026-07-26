@@ -229,7 +229,7 @@ export default function TargetStep() {
                   ? `Precisa perder ${diffPct.toFixed(1)}% do peso corporal.`
                   : goal === 'weight_gain'
                   ? `Precisa ganhar ${diffPct.toFixed(1)}% do peso corporal.`
-                  : 'Paciente em meta de manutencao no peso atual.'}
+                  : 'Paciente em meta de manutenção no peso atual.'}
               </p>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function TargetStep() {
           <section className="space-y-4 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
             <div>
               <p className="text-lg font-semibold text-foreground">Origem da meta ponderal</p>
-              <p className="text-sm text-muted-foreground">O app agora separa claramente regra oficial de referencia e regra percentual customizada da clinica.</p>
+              <p className="text-sm text-muted-foreground">Escolha entre a regra de referência e uma regra percentual personalizada para a clínica.</p>
             </div>
 
             <div className="grid gap-3 md:grid-cols-2">
@@ -286,8 +286,8 @@ export default function TargetStep() {
                 },
                 {
                   value: 'clinical' as const,
-                  title: 'Modo clinica customizada',
-                  description: 'Usa a regra percentual operacional por ECC configurada no modulo.',
+                  title: 'Modo clínica customizada',
+                  description: 'Utiliza a regra percentual por escore de condição corporal.',
                 },
               ].map((option) => (
                 <button
@@ -329,14 +329,14 @@ export default function TargetStep() {
 
                 <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
                   <p className="font-semibold text-foreground">
-                    {ruleMode === 'fediaf' ? 'Referencia oficial' : 'Regra percentual da clinica'}
+                    {ruleMode === 'fediaf' ? 'Referencia oficial' : 'Regra percentual da clínica'}
                   </p>
                   <p className="mt-2 text-sm text-muted-foreground">
                     {ruleMode === 'fediaf'
                       ? 'A referência oficial usa peso corporal ótimo. O percentual automático por ECC não é apresentado como regra oficial.'
                       : customRulePercent != null
-                      ? `ECC ${bcs}/9 aplica ${goal === 'weight_loss' ? `-${customRulePercent}%` : `+${customRulePercent}%`} no modulo da clinica.`
-                      : 'O paciente esta em manutencao.'}
+                      ? `ECC ${bcs}/9 aplica ${goal === 'weight_loss' ? `-${customRulePercent}%` : `+${customRulePercent}%`} na meta da clínica.`
+                      : 'O paciente esta em manutenção.'}
                   </p>
                 </div>
               </div>
@@ -376,7 +376,7 @@ export default function TargetStep() {
             <div className="grid gap-4 xl:grid-cols-[1fr_1fr_1fr]">
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Estado fisiológico</p>
-                <p className="mt-1 font-semibold text-foreground">{state?.label ?? 'Nao informado'}</p>
+                <p className="mt-1 font-semibold text-foreground">{state?.label ?? 'Não informado'}</p>
               </div>
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Energia do perfil (FEDIAF)</p>
@@ -451,7 +451,7 @@ export default function TargetStep() {
             <div className="space-y-5 p-6">
               <div>
                 <p className="text-lg font-semibold text-foreground">Selecione o escore corporal</p>
-                <p className="text-sm text-muted-foreground">Ao importar, o ECC entra na engine e o peso-alvo passa a ser usado no modulo de meta.</p>
+                <p className="text-sm text-muted-foreground">Ao importar, o escore de condição corporal e o peso-alvo passam a orientar a meta.</p>
               </div>
 
               <div className="grid grid-cols-3 gap-3 md:grid-cols-5">
@@ -507,7 +507,7 @@ export default function TargetStep() {
                   ? `Este paciente precisa perder ${modalWeightPreview.diffPct.toFixed(1)}% do peso corporal.`
                   : modalWeightPreview.goal === 'weight_gain'
                   ? `Este paciente precisa ganhar ${modalWeightPreview.diffPct.toFixed(1)}% do peso corporal.`
-                  : 'Este paciente esta proximo do escore ideal para manutencao.'}
+                  : 'Este paciente esta proximo do escore ideal para manutenção.'}
               </div>
 
               <div className="flex justify-end">

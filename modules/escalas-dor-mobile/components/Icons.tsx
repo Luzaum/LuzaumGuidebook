@@ -4,7 +4,7 @@ import React from 'react';
 export const AppLogo = ({ className }: { className?: string }) => (
   <img
     src="https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto,e_background_removal/logo-analgesia/app"
-    alt="Logo do aplicativo Analgesia e controle de dor veterinária, mostrando o perfil de um cão e um gato dentro de um círculo verde e azul com um coração"
+    alt="Logo de Analgesia e controle de dor veterinária"
     className={className}
     width="200"
     height="200"

@@ -135,7 +135,7 @@ export default function PerioperativePage({ setPage, abDict, dzDict, onDeepLinkD
           Profilaxia e terapia perioperatória
         </h1>
         <p className="mb-6 max-w-4xl text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Motor v2 alinhado ao perfil institucional <strong className="text-[hsl(var(--foreground))]">perioperatorio</strong> com
+          Orientação alinhada ao perfil institucional perioperatório, com
           regimes e concordância terapêutica. Abaixo, a ficha narrativa legada resume linhas de tratamento e liga aos
           fármacos com doses. Para classes e calculadora, use o{' '}
           <button
@@ -151,7 +151,7 @@ export default function PerioperativePage({ setPage, abDict, dzDict, onDeepLinkD
 
         {pageAudit ? (
           <p className="mb-4 rounded-lg border px-3 py-2 text-xs leading-relaxed" style={{ borderColor: 'hsl(var(--border))' }}>
-            <strong className="text-[hsl(var(--foreground))]">Guia CCIH 2024 (referência interna):</strong> págs. {pageAudit.pageStart}
+            <strong className="text-[hsl(var(--foreground))]">Guia CCIH 2024:</strong> págs. {pageAudit.pageStart}
             {pageAudit.pageEnd !== pageAudit.pageStart ? `–${pageAudit.pageEnd}` : ''}. {pageAudit.auditNote}
           </p>
         ) : null}
@@ -167,7 +167,7 @@ export default function PerioperativePage({ setPage, abDict, dzDict, onDeepLinkD
           style={{ borderColor: 'hsl(var(--border))', background: 'color-mix(in srgb, hsl(var(--accent)) 10%, hsl(var(--card)))' }}
         >
           <h2 className="text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-            Contexto do paciente (declarativo)
+            Contexto do paciente
           </h2>
           <p className="mt-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
             {syndromeProfile.summary}
@@ -232,10 +232,10 @@ export default function PerioperativePage({ setPage, abDict, dzDict, onDeepLinkD
         {legacyDisease ? (
           <section>
             <h2 className="mb-2 text-lg font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              Ficha clínica (texto legado)
+              Ficha clínica complementar
             </h2>
             <p className="mb-4 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              {legacyDisease.name} — complementa o motor v2 com notas de linha e justificativas por fármaco.
+              {legacyDisease.name} — orientações complementares e justificativas por fármaco.
             </p>
             <p className="mb-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
               <span className="font-medium text-[hsl(var(--foreground))]">Patógenos / contexto:</span>{' '}

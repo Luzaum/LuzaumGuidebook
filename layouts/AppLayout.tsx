@@ -8,6 +8,7 @@ import { useAuthSession } from '@/src/components/AuthSessionProvider'
 import { useClinic } from '@/src/components/ClinicProvider'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 import { useIsMobile } from '../hooks/useIsMobile'
+import { ClinicalAcronymGlossaryV2 } from '../components/ClinicalAcronymGlossaryV2'
 
 const APP_FORM_DRAFT_PREFIX = 'vetius:app-form-draft:v1:'
 const NON_DRAFT_FIELD_TYPES = new Set(['button', 'submit', 'reset', 'file', 'image', 'password'])
@@ -147,9 +148,7 @@ export function AppLayout() {
     if (!root || !key) return
     try {
       localStorage.setItem(key, JSON.stringify(collectFormDraft(root)))
-    } catch (error) {
-      if (import.meta.env?.DEV) console.warn('[AppLayout] Failed to persist app form draft', error)
-    }
+    } catch {}
   }, [location.pathname])
 
   const scheduleFormDraftSave = useCallback(() => {
@@ -178,9 +177,7 @@ export function AppLayout() {
         if (parsed && typeof parsed === 'object' && !Array.isArray(parsed)) {
           restoreFormDraft(root, parsed as Record<string, unknown>)
         }
-      } catch (error) {
-        if (import.meta.env?.DEV) console.warn('[AppLayout] Failed to restore app form draft', error)
-      }
+      } catch {}
     }
 
     const frame = window.requestAnimationFrame(() => {
@@ -196,14 +193,17 @@ export function AppLayout() {
 
   if (isImmersiveModuleRoute) {
     return (
-      <div
-        ref={appContentRef}
-        onInputCapture={scheduleFormDraftSave}
-        onChangeCapture={scheduleFormDraftSave}
-        className="h-dvh min-h-0 w-full overflow-hidden bg-background"
-      >
-        <Outlet />
-      </div>
+      <>
+        <div
+          ref={appContentRef}
+          onInputCapture={scheduleFormDraftSave}
+          onChangeCapture={scheduleFormDraftSave}
+          className="h-dvh min-h-0 w-full overflow-hidden bg-background"
+        >
+          <Outlet />
+        </div>
+        <ClinicalAcronymGlossaryV2 contentRoot={appContentRef} />
+      </>
     )
   }
 
@@ -307,7 +307,7 @@ export function AppLayout() {
           {iframeModules.length > 0 && (
             <div>
               <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3.5 px-3">
-                Módulos Integrados
+                Outras Ferramentas
               </h3>
               <ul className="space-y-1.5">
                 {iframeModules.map((module) => {
@@ -349,7 +349,7 @@ export function AppLayout() {
           {plannedModules.length > 0 && (
             <div>
               <h3 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-3.5 px-3">
-                Em Desenvolvimento
+                Indisponíveis
               </h3>
               <ul className="space-y-1.5">
                 {plannedModules.map((module) => {
@@ -549,6 +549,7 @@ export function AppLayout() {
         )}
 
       </div>
+      <ClinicalAcronymGlossaryV2 contentRoot={appContentRef} />
     </div>
   )
 }

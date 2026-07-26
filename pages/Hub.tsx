@@ -39,7 +39,7 @@ export function Hub() {
                     <div className="text-center mb-10 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
                         <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-semibold mb-4 sm:mb-6">
                             <Layers className="w-4 h-4" />
-                            Todos os Módulos
+                            Todas as Ferramentas
                         </div>
                         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
                             Ecossistema Clínico Completo
@@ -66,17 +66,17 @@ export function Hub() {
                         </div>
                     </div>
 
-                    {/* DESENVOLVIMENTO — no final da página */}
+                    {/* Ferramentas indisponíveis — no final da página */}
                     {developmentModules.length > 0 ? (
                         <div className="border-t border-border/80 pt-14 sm:pt-16">
                             <div className="flex justify-center mb-8">
                                 <span className="inline-flex items-center gap-1.5 rounded-md border border-slate-500/35 bg-slate-500/10 px-3 py-1 text-sm font-semibold uppercase tracking-widest text-slate-600 dark:text-slate-400">
                                     <span className="h-2 w-2 rounded-full bg-slate-500" />
-                                    Desenvolvimento
+                                    Indisponíveis
                                 </span>
                             </div>
                             <p className="text-center text-sm text-muted-foreground max-w-2xl mx-auto mb-8">
-                                Módulos em evolução ou integração; acesso mantido para testes e feedback.
+                                Estas ferramentas ainda não estão disponíveis para uso.
                             </p>
                             <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 opacity-95">
                                 {developmentModules.map((module) => (

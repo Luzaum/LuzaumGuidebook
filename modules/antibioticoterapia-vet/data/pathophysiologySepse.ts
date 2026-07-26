@@ -39,7 +39,7 @@ A **hemocultura** positiva confirma bacteremia, mas resultado **negativo** não 
 4. **Empirismo IV** de espectro alargado conforme **protocolo institucional** e **resistência local**.
 5. **Identificar e tratar o foco**: drenagem, **OHE**, desobstrução ureteral, laparotomia, remoção de cateter infectado — **sem controlo de foco**, a mortalidade permanece elevada.
 6. **Monitorização**: balanço hídrico, função renal, perfil de coagulação se indicado, lactato seriado em casos seleccionados.
-7. **Reavaliação em 48–72 h** (ou antes se deterioração): cultura, desescalonamento, duração — alinhado a stewardship e **Guia CCIH**.
+7. **Reavaliação em 48–72 h** (ou antes se deterioração): cultura, desescalonamento e duração — alinhados ao uso racional e ao **Guia CCIH**.
 
 ## Armadilhas e erros de raciocínio
 
@@ -163,10 +163,10 @@ export const SEPSE_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
     },
     {
       id: 'rx',
-      title: 'Antimicrobiano, suporte e stewardship',
+      title: 'Antimicrobiano, suporte e uso racional',
       paragraphs: [
         'O empirismo **parenteral** cobre Gram-negativos e, conforme foco, **anaeróbios** e Gram-positivos relevantes. A **associação** de fármacos deve obedecer a **critério de gravidade** e a **função orgânica**, não a rotina indefinida.',
-        'Após **controlo do foco** e **estabilização**, o desescalonamento para **VO** e a **redução de espectro** com base em cultura alinham-se ao **Guia CCIH** e ao stewardship institucional.',
+        'Após **controlo do foco** e **estabilização**, o desescalonamento para **VO** e a **redução de espectro** com base em cultura alinham-se ao **Guia CCIH** e ao uso racional de antimicrobianos.',
       ],
       callout: {
         kind: 'clinical',
@@ -184,8 +184,8 @@ export const SEPSE_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
       ],
       callout: {
         kind: 'info',
-        title: 'Fichas de tratamento no aplicativo',
-        text: 'As **1ª e 2ª linhas** da condição **Sepse** listam esquemas IV típicos e opções orais — são modelos; confirmar **bula**, **função renal** e **protocolo local**.',
+        title: 'Escolha do esquema',
+        text: 'As **1ª e 2ª linhas** para **sepse** incluem esquemas intravenosos típicos e opções orais após estabilização; confirmar **bula**, **função renal** e **protocolo local**.',
       },
     },
     {

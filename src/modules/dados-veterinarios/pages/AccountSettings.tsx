@@ -80,7 +80,7 @@ export const AccountSettings = () => {
       setCurrentPassword('');
       setNewPassword('');
       setConfirmNewPassword('');
-      setMessage('Senha alterada com sucesso. Integração por e-mail será adicionada depois.');
+      setMessage('Senha alterada com sucesso.');
     } catch {
       setError('Falha ao atualizar senha.');
     }
@@ -95,7 +95,7 @@ export const AccountSettings = () => {
       <div>
         <h1 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white tracking-tight">Conta</h1>
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">
-          Gerencie login e senha da conta dentro do app.
+          Gerencie o login e a senha da conta.
         </p>
       </div>
 
@@ -141,13 +141,6 @@ export const AccountSettings = () => {
           >
             <Save size={16} />
             Salvar dados
-          </button>
-          <button
-            type="button"
-            disabled
-            className="rounded-xl border border-gray-300 dark:border-neutral-700 px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 cursor-not-allowed"
-          >
-            Enviar e-mail de recuperacao (em breve)
           </button>
         </div>
       </section>

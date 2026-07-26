@@ -133,7 +133,7 @@ export const ANALYSIS_DISEASE_CATALOG: AnalysisDiseaseCatalogEntry[] = ANALYSIS_
     evidenceLevel: entry.evidenceLevel,
     broadSyndrome:
       entry.id.startsWith('ddx_syn_') ||
-      normalizedName.includes('suspeita clinica') ||
+      normalizedName.includes('suspeita clínica') ||
       normalizedName.includes('sindrome ') ||
       normalizedName.includes('provavel'),
   }

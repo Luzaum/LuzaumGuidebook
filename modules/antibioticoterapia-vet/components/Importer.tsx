@@ -21,7 +21,7 @@ const Importer: React.FC<ImporterProps> = ({ onMergeAB, onMergeDZ }) => {
 
       const nameI = idx(['antibiotico', 'antibiótico', 'nome', 'drug']);
       const classI = idx(['classe', 'class']);
-      const doseDogI = idx(['dose_caes', 'dose_cães', 'dose_dog', 'dose cães', 'dose (caes)']);
+      const doseDogI = idx(['dose_caes', 'dose_cães', 'dose_dog', 'dose cães', 'dose (cães)']);
       const doseCatI = idx(['dose_gatos', 'dose_cat', 'dose gatos', 'dose (gatos)']);
       const specI = idx(['espectro', 'spectrum']);
       const indI = idx(['indicacoes', 'indicações', 'indication']);
@@ -81,7 +81,7 @@ const Importer: React.FC<ImporterProps> = ({ onMergeAB, onMergeDZ }) => {
           firstLine: {
             title: '1ª linha de tratamento',
             presentation:
-              'Dados importados de planilha: revise se os fármacos são opções excludentes ou associação; ajuste o texto e as justificativas no cadastro.',
+              'Revise se os fármacos são opções excludentes ou uma associação; ajuste o texto e as justificativas antes de salvar.',
             regimes: [
               {
                 mode: 'opcoes_exclusivas',
@@ -93,7 +93,7 @@ const Importer: React.FC<ImporterProps> = ({ onMergeAB, onMergeDZ }) => {
             alt.length > 0
               ? {
                   title: '2ª linha de tratamento',
-                  presentation: 'Importado de planilha (coluna de alternativas).',
+                  presentation: 'Alternativas importadas para revisão.',
                   regimes: [{ mode: 'opcoes_exclusivas', drugs: alt.map((nm) => ({ name: nm, rationale: '' })) }],
                 }
               : undefined,

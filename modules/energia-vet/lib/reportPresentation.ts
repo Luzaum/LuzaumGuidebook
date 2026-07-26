@@ -49,7 +49,7 @@ const OPTIONAL_NUTRIENT_KEYS = [
 ]
 
 function safeText(value?: string | null) {
-  return value && value.trim() ? value.trim() : 'Nao informado'
+  return value && value.trim() ? value.trim() : 'Não informado'
 }
 
 function toDateLabel(value: string) {
@@ -71,7 +71,7 @@ function toPtDate(value: string) {
 }
 
 function getSpeciesLabel(species?: string) {
-  if (species === 'dog') return 'Cao'
+  if (species === 'dog') return 'Cão'
   if (species === 'cat') return 'Gato'
   return 'Não informado'
 }
@@ -92,7 +92,7 @@ function getDietTypeLabel(dietType?: string) {
 function getGoalLabel(goal?: string) {
   if (goal === 'weight_loss') return 'Perda de peso'
   if (goal === 'weight_gain') return 'Ganho de peso'
-  return 'Manutencao'
+  return 'Manutenção'
 }
 
 function formatDailyGrams(value: number | null | undefined, decimals = 1) {
@@ -120,10 +120,10 @@ export function buildSharedFeedingSheetMetaFields(
     { label: 'Animal', value: safeText(report.patient.name) },
     {
       label: 'Peso',
-      value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado',
+      value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Não informado',
     },
     { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
-    { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
+    { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Não informado' },
   ]
 }
 
@@ -142,11 +142,11 @@ function buildNutritionRows(report: StoredCalculationReport): TableRow[] {
     rows.push({ label, value: formatDailyGrams(raw, decimals) })
   }
 
-  pushIf('Proteina', delivered.crudeProteinPct)
+  pushIf('Proteína', delivered.crudeProteinPct)
   pushIf('Gordura', delivered.etherExtractPct)
   pushIf('Carboidrato', delivered.nitrogenFreeExtractPct)
   pushIf('Fibra', delivered.crudeFiberPct)
-  pushIf('Calcio', delivered.calciumPct, 2)
+  pushIf('Cálcio', delivered.calciumPct, 2)
   pushIf('Fosforo', delivered.phosphorusPct, 2)
 
   for (const key of OPTIONAL_NUTRIENT_KEYS) {
@@ -172,7 +172,7 @@ function buildNutritionRows(report: StoredCalculationReport): TableRow[] {
 
 export function buildPrintableReportViewModel(report: StoredCalculationReport): PrintableReportViewModel {
   const requirement = getRequirementById(report.diet.requirementProfileId)
-  const physiologicState = report.energy.resolvedProfileLabel ?? getPhysiologicStateById(report.energy.stateId ?? '')?.label ?? 'Nao informado'
+  const physiologicState = report.energy.resolvedProfileLabel ?? getPhysiologicStateById(report.energy.stateId ?? '')?.label ?? 'Não informado'
   const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
   const feedingMealsPerDay = programmed?.mealsPerDay ?? report.diet.mealsPerDay ?? 2
   const startDateIso = programmed?.startDate || toIsoDate(new Date(report.createdAt))
@@ -201,17 +201,17 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     { label: 'Tutor', value: safeText(report.patient.ownerName) },
     { label: 'Espécie', value: getSpeciesLabel(report.patient.species) },
     { label: 'Sexo', value: getSexLabel(report.patient.sex) },
-    { label: 'Peso atual', value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado' },
-    { label: 'Idade', value: report.patient.ageMonths != null ? `${(report.patient.ageMonths / 12).toFixed(1)} anos` : 'Nao informado' },
-    { label: 'ECC', value: report.patient.bcs != null ? `${report.patient.bcs}/9` : 'Nao informado' },
-    { label: 'Castrado', value: report.patient.isNeutered ? 'Sim' : 'Nao' },
+    { label: 'Peso atual', value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Não informado' },
+    { label: 'Idade', value: report.patient.ageMonths != null ? `${(report.patient.ageMonths / 12).toFixed(1)} anos` : 'Não informado' },
+    { label: 'ECC', value: report.patient.bcs != null ? `${report.patient.bcs}/9` : 'Não informado' },
+    { label: 'Castrado', value: report.patient.isNeutered ? 'Sim' : 'Não' },
   ]
 
   const clinicalFields: ReportField[] = [
     { label: 'Perfil clínico final', value: physiologicState },
     { label: 'Perfil de exigencia', value: getHumanRequirementLabel(requirement) },
-    { label: 'Indoor', value: report.patient.isIndoor ? 'Sim' : 'Nao' },
-    { label: 'Hospitalizado', value: report.patient.isHospitalized ? 'Sim' : 'Nao' },
+    { label: 'Indoor', value: report.patient.isIndoor ? 'Sim' : 'Não' },
+    { label: 'Hospitalizado', value: report.patient.isHospitalized ? 'Sim' : 'Não' },
   ]
 
   const profileMer = report.energy.merFromProfile ?? report.energy.mer
@@ -226,32 +226,32 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
           { label: 'MER após ajuste clínico', value: formatKcal(report.energy.mer) },
         ]
       : [{ label: 'MER (perfil FEDIAF)', value: formatKcal(report.energy.mer) }]),
-    { label: 'Energia-alvo na formulação', value: formatKcal(report.target.targetEnergy) },
-    { label: 'Peso usado', value: report.energy.weightUsed != null ? `${report.energy.weightUsed.toFixed(2)} kg` : 'Nao informado' },
+    { label: 'Energia-alvo na fórmulação', value: formatKcal(report.target.targetEnergy) },
+    { label: 'Peso usado', value: report.energy.weightUsed != null ? `${report.energy.weightUsed.toFixed(2)} kg` : 'Não informado' },
   ]
 
   if (report.patient.isNeutered) energyFields.push({ label: 'Castracao considerada', value: 'Sim' })
-  if (report.patient.species === 'cat') energyFields.push({ label: 'Indoor considerado', value: report.patient.isIndoor ? 'Sim' : 'Nao' })
+  if (report.patient.species === 'cat') energyFields.push({ label: 'Indoor considerado', value: report.patient.isIndoor ? 'Sim' : 'Não' })
 
   const targetFields: ReportField[] = [
     { label: 'Objetivo', value: getGoalLabel(report.target.goal) },
-    { label: 'Peso-alvo', value: report.target.targetWeight != null ? `${report.target.targetWeight.toFixed(2)} kg` : 'Nao informado' },
+    { label: 'Peso-alvo', value: report.target.targetWeight != null ? `${report.target.targetWeight.toFixed(2)} kg` : 'Não informado' },
     {
       label: 'Diferenca ponderal',
       value:
         report.target.targetWeight != null && report.patient.currentWeight != null
           ? `${(report.target.targetWeight - report.patient.currentWeight).toFixed(2)} kg`
-          : 'Nao informado',
+          : 'Não informado',
     },
   ]
 
   const formulaMetaFields: ReportField[] = [
     { label: 'Tipo de dieta', value: getDietTypeLabel(report.diet.dietType) },
-    { label: 'Modo de formulação', value: report.diet.formulationMode === 'complement' ? 'Complementar outras %' : 'Manual' },
+    { label: 'Modo de fórmulação', value: report.diet.formulationMode === 'complement' ? 'Complementar outras %' : 'Manual' },
     { label: 'Refeicoes por dia', value: String(report.diet.mealsPerDay) },
-    { label: 'Quantidade por refeicao', value: report.diet.gramsPerMeal != null ? `${report.diet.gramsPerMeal.toFixed(1)} g` : 'Nao informado' },
-    { label: 'Total diario (MN)', value: report.diet.totalAsFedGrams != null ? `${report.diet.totalAsFedGrams.toFixed(1)} g` : 'Nao informado' },
-    { label: 'Total diario (MS)', value: report.diet.totalDryMatterGrams != null ? `${report.diet.totalDryMatterGrams.toFixed(1)} g` : 'Nao informado' },
+    { label: 'Quantidade por refeicao', value: report.diet.gramsPerMeal != null ? `${report.diet.gramsPerMeal.toFixed(1)} g` : 'Não informado' },
+    { label: 'Total diario (MN)', value: report.diet.totalAsFedGrams != null ? `${report.diet.totalAsFedGrams.toFixed(1)} g` : 'Não informado' },
+    { label: 'Total diario (MS)', value: report.diet.totalDryMatterGrams != null ? `${report.diet.totalDryMatterGrams.toFixed(1)} g` : 'Não informado' },
   ]
 
   const formulaRows = report.formula.contributions.map((item) => {
@@ -278,7 +278,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
       food?.categoryNormalized ?? 'Sem categoria',
       `${item.gramsAsFed.toFixed(1)} g/dia`,
       `${item.deliveredKcal.toFixed(1)} kcal/dia`,
-      report.diet.mealsPerDay > 0 ? `${(item.gramsAsFed / report.diet.mealsPerDay).toFixed(1)} g/refeicao` : 'Nao informado',
+      report.diet.mealsPerDay > 0 ? `${(item.gramsAsFed / report.diet.mealsPerDay).toFixed(1)} g/refeicao` : 'Não informado',
     ]
   })
 
@@ -290,7 +290,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
   const feedingSheetFoodRows = report.formula.contributions.map((item) => [
     item.foodName,
     `${item.gramsAsFed.toFixed(1)} g`,
-    report.diet.mealsPerDay > 0 ? `${(item.gramsAsFed / report.diet.mealsPerDay).toFixed(1)} g` : 'Nao informado',
+    report.diet.mealsPerDay > 0 ? `${(item.gramsAsFed / report.diet.mealsPerDay).toFixed(1)} g` : 'Não informado',
   ])
 
   const feedingRowsByMeal = (programmed?.meals ?? report.formula.feedingPlan.meals.map((meal, index) => ({
@@ -307,7 +307,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     meal.time,
     `${meal.totalGrams} g`,
     meal.items.map((item) => `${item.foodName}: ${item.gramsAsFed} g`).join(' | '),
-    'Sim / Nao (pesar sobra)',
+    'Sim / Não (pesar sobra)',
     '',
   ])
 
@@ -319,10 +319,10 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
       { label: 'Animal', value: safeText(report.patient.name) },
       {
         label: 'Peso',
-        value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Nao informado',
+        value: report.patient.currentWeight != null ? `${report.patient.currentWeight.toFixed(2)} kg` : 'Não informado',
       },
       { label: 'Alimentacoes por dia', value: String(feedingMealsPerDay) },
-      { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Nao informado' },
+      { label: 'Alimentos utilizados', value: report.formula.contributions.map((item) => item.foodName).join(', ') || 'Não informado' },
     ],
     foodRows: feedingSheetFoodRows,
     rows: feedingRowsByMeal,

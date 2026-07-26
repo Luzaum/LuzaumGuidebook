@@ -148,7 +148,7 @@ const AntibioticsGuide: React.FC<AntibioticsGuideProps> = ({
               Resultados (fármacos)
             </h2>
             <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              Correspondências no catálogo legado de antimicrobianos.
+              Outras correspondências no catálogo de antimicrobianos.
             </p>
             <ul className="max-h-56 space-y-2 overflow-y-auto pr-1 text-sm">
               {drugHits.map((h, i) => (

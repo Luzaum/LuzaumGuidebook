@@ -103,7 +103,9 @@ function recommendations(stage: number, species: Species) {
     'Subestadiar e tratar proteinúria persistente e hipertensão conforme risco.',
     'Monitorar peso, escore muscular, apetite, vômitos, creatinina/SDMA, ureia, fósforo, potássio, cálcio, UPC, urinálise e PA.',
   ];
+  if (species === 'dog' && stage === 2) base.push('Cão IRIS 2: concluir estadiamento/subestadiamento e considerar antiácido, antiemético/antináusea e quelante de fósforo quando houver sinal gastrointestinal ou fósforo acima do alvo.');
   if (species === 'cat') base.push('Em gatos, valorize hipocalemia, sarcopenia, aceitação da dieta e hidratação domiciliar quando indicada.');
+  if (species === 'cat' && stage >= 3) base.push('Gato IRIS 3/4: considerar antiácido quando indicado, mirtazapina para hiporexia/inapetência e maropitant/Cerenia para vômito ou náusea.');
   if (stage >= 3) base.push('Pesquisar e tratar náuseas, acidose, anemia, hipocalemia e desidratação recorrente.');
   if (stage === 4) base.push('Priorizar conforto, calorias, hidratação segura, controle de náusea e metas realistas com o tutor.');
   return base;

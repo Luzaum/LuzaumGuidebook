@@ -1,5 +1,7 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
 import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommercialProducts.seed';
+import { insulinCommercialProductsSeed } from './insulinCommercialProducts.seed';
+import { selectedCommercialProductsSeed } from './selectedCommercialProducts.seed';
 import { simethiconeCommercialProductsSeed } from './simethiconeCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
@@ -35,6 +37,8 @@ const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
 export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
+  ...selectedCommercialProductsSeed,
+  ...insulinCommercialProductsSeed,
   ...simethiconeCommercialProductsSeed,
   ...hepatoprotectiveCommercialProductsSeed,
   {
@@ -294,7 +298,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
       averageLabel: 'R$ 55,00 a R$ 60,00',
       rangeLabel: 'R$ 50,99 a R$ 59,99',
       sourceDate: PRICE_SOURCE_DATE,
-      notes: 'Link oficial: https://softcare.com.br/linha-dermato-veterinaria/oto-clean-up',
+      notes: 'Link oficial: https://softcare.com.br/linha-dermato-veterinária/oto-clean-up',
     },
   },
   {
@@ -438,7 +442,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
       averageLabel: 'R$ 38,00 a R$ 42,00',
       rangeLabel: 'R$ 34,50 a R$ 48,99; loja oficial Ibasa em torno de R$ 42,90 e R$ 41,61 no Pix',
       sourceDate: PRICE_SOURCE_DATE,
-      notes: 'Link oficial: https://www.ibasa.com.br/ouvipet-dermocalmante-caes-gatos-ibasa-30ml',
+      notes: 'Link oficial: https://www.ibasa.com.br/ouvipet-dermocalmante-cães-gatos-ibasa-30ml',
     },
     evidenceLevel: 'baixo',
   },
@@ -475,7 +479,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
       averageLabel: 'R$ 27,00 a R$ 33,99',
       rangeLabel: 'Agrofarmed em torno de R$ 27,00; Agrotela em torno de R$ 27,99, com disponibilidade variável',
       sourceDate: PRICE_SOURCE_DATE,
-      notes: 'Link oficial: https://chemitec.com.br/produtos-por-animal/solucao-otologica-oto-top-clean/. Bula: https://www.chemitec.com.br/bulas/solucao-otologica-oto-top-clean.pdf',
+      notes: 'Link oficial: https://chemitec.com.br/produtos-por-animal/solução-otologica-oto-top-clean/. Bula: https://www.chemitec.com.br/bulas/solução-otologica-oto-top-clean.pdf',
     },
   },
   {
@@ -500,7 +504,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     plumbsContext:
       'Produto com perfil clássico de ceruminólise, com propilenoglicol e ácidos orgânicos.',
     clinicalUse:
-      'Ceruminolítico real, com boa formulação para cerúmen, oleosidade e pré-limpeza. Útil antes de Otosyn ou outros medicamentos otológicos.',
+      'Ceruminolítico real, com boa fórmulação para cerúmen, oleosidade e pré-limpeza. Útil antes de Otosyn ou outros medicamentos otológicos.',
     reassessment:
       'Em recorrência, investigar dermatopatia/alergia, conformação, otite média e microrganismos por citologia.',
     prescriptionExample:
@@ -1235,7 +1239,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     presentations: ['Solução oral 3 mg/mL', 'Solução oral 1 mg/mL', 'Comprimidos conforme fabricante'],
     activeComponents: ['prednisolona'],
     labelCompositionSummary:
-      'Produto humano usado extra bula em cães e gatos. Formulações variam por concentração e excipientes.',
+      'Produto humano usado extra bula em cães e gatos. Fórmulações variam por concentração e excipientes.',
     labelDirections:
       'Cães: 0,5 a 1 mg/kg VO SID, podendo dividir BID em crise por poucos dias. Gatos: 0,55 a 2,2 mg/kg VO a cada 24 horas, em uma ou duas administrações, conforme gravidade.',
     plumbsContext:
@@ -1347,7 +1351,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     clinicalUse:
       'Urticária, picada de inseto, prurido leve e alergias leves.',
     reassessment:
-      'Checar formulação humana e concentração, especialmente xarope.',
+      'Checar fórmulação humana e concentração, especialmente xarope.',
     prescriptionExample:
       'Cães: 0,2-0,4 mg/kg VO a cada 8-12 h. Gatos: 1-2 mg/gato VO BID.',
     safetyAlert:
@@ -2241,7 +2245,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://meupet.elanco.com/br/nossos-produtos/credeli',
     labelUrl: 'https://meupet.elanco.com/br/nossos-produtos/credeli',
     imageUrl:
-      'https://cobasi.vtexassets.com/arquivos/ids/1082144/Antipulgas Credeli 225mg Caes 5,5 a 11kg 3 comprimidos.webp?v=638899140307630000',
+      'https://cobasi.vtexassets.com/arquivos/ids/1082144/Antipulgas Credeli 225mg Cães 5,5 a 11kg 3 comprimidos.webp?v=638899140307630000',
     species: ['dog'],
     presentations: ['Comprimidos mastigáveis por faixa de peso'],
     activeComponents: ['lotilaner'],
@@ -3333,7 +3337,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelDirections: 'Dose de rótulo: 1 cápsula para cada 15 kg, por via oral, a cada 24 horas.',
     plumbsContext: OMEGA3_PLUMBS_CONTEXT,
     clinicalUse: 'Suplementação de ômega 3 para cães e gatos; usar como dose de rótulo até confirmar EPA/DHA por cápsula.',
-    reassessment: 'Antes de usar para meta terapêutica de EPA + DHA, preencher concentração confirmada no app.',
+    reassessment: 'Antes de definir a meta terapêutica de EPA + DHA, confirme a concentração no rótulo.',
     prescriptionExample:
       'Ograx Plus 15, administrar 1 cápsula para cada 15 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
@@ -4647,7 +4651,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['pancreatina', 'pancrelipase'],
     labelCompositionSummary: 'Enzimas pancreáticas de origem suína: lipase, protease e amilase.',
     labelDirections: 'Produto humano; dose veterinária deve ser individualizada e administrada junto a todas as refeições.',
-    dosageGuidance: { labelDose: 'Cães e gatos: individualizar; administrar junto a todas as refeições.', plumbs: { dog: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; preferir pó não entérico em muitos cães', note: 'Ajustar por fezes, peso e resposta.' }], cat: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; individualizar formulação', note: 'Atenção a aceitação e risco esofágico.' }] } },
+    dosageGuidance: { labelDose: 'Cães e gatos: individualizar; administrar junto a todas as refeições.', plumbs: { dog: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; preferir pó não entérico em muitos cães', note: 'Ajustar por fezes, peso e resposta.' }], cat: [{ title: 'Insuficiência pancreática exócrina', dose: 'Junto a todas as refeições; individualizar fórmulação', note: 'Atenção a aceitação e risco esofágico.' }] } },
     plumbsContext: 'Produtos humanos entéricos não são diretamente intercambiáveis com pó pancreático veterinário; enzimas podem irritar boca/esôfago e vias respiratórias.',
     clinicalUse: 'Insuficiência pancreática exócrina com emagrecimento, polifagia e fezes volumosas/esteatorreicas.',
     reassessment: 'Monitorar ganho de peso, fezes, apetite e irritação oral/esofágica.',
@@ -5259,7 +5263,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     clinicalUse: 'Auxiliar no tratamento da osteoartrite canina, com alívio da dor e inflamação. Também indicado em cirurgias ortopédicas e tecidos moles.',
     reassessment: 'Avaliar a eficácia na locomoção e dor. Suspender se inapetência, diarreia ou vômito ativos.',
     prescriptionExample: 'Previcox [57 mg ou 227 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, pelo período determinado.',
-    safetyAlert: 'Não usar em gatos no app como prescrição domiciliar. Evitar em doentes renais, hepáticos ou com desidratação.',
+    safetyAlert: 'Não prescrever para uso domiciliar em gatos. Evitar em doentes renais, hepáticos ou com desidratação.',
     price: { averageLabel: 'R$ 174,60 a R$ 284,00', rangeLabel: 'Previcox 57 mg 10 comp: R$ 174,60-194,00; Previcox 227 mg 10 comp: R$ 255,60-284,00', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1068010/previcox-57mg-10-comprimidos.png.png?v=638751300200100000'
   },
@@ -6560,7 +6564,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Probiótico + prebiótico + zinco + vitamina E em pasta/seringa graduada.',
     labelDirections: 'Bula/rótulo Avert: administrar por via oral usando a seringa graduada; cães e gatos recebem dose por graduação conforme peso e condição, seguindo o rótulo.',
     dosageGuidance: { labelDose: 'Cães/gatos: administrar VO pela seringa graduada, na graduação correspondente ao peso no rótulo.', plumbs: { dog: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Não há dose Plumb’s universal para probiótico; seguir rótulo do produto.' }], cat: [{ title: 'Disbiose/diarreia leve', dose: 'Usar a graduação da seringa correspondente ao peso', note: 'Produto adjuvante; reavaliar diarreia persistente.' }] } },
-    plumbsContext: 'Probióticos dependem de cepa, UFC e formulação; seguir rótulo do produto.',
+    plumbsContext: 'Probióticos dependem de cepa, UFC e fórmulação; seguir rótulo do produto.',
     clinicalUse: 'Disbiose, diarreia leve, pós-antibiótico, transição alimentar e suporte de microbiota.',
     reassessment: 'Reavaliar se diarreia persiste, há sangue, vômitos, desidratação, febre ou apatia.',
     prescriptionExample: 'Beneflora Vet, administrar por via oral conforme graduação da seringa e orientação veterinária.',
@@ -6956,7 +6960,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento articular com condroitina, glicosamina, Yucca e minerais.',
     labelDirections: 'Pro Cart: 1 comp/10 kg VO q24h. Pro Cart 25: 1 comp/25 kg VO q24h; Pro Cart 25 indicado para cães.',
     dosageGuidance: { labelDose: 'Pro Cart: 1 comp/10 kg SID. Pro Cart 25: 1 comp/25 kg SID para cães.', plumbs: { dog: [{ title: 'Suporte articular', dose: 'Pro Cart 1 comp/10 kg SID ou Pro Cart 25 1 comp/25 kg SID', note: 'Adjuvante; efeito lento.' }], cat: [{ title: 'Suporte articular', dose: 'Pro Cart 1 comp/10 kg SID', note: 'Não usar Pro Cart 25 em gatos sem indicação.' }] } },
-    plumbsContext: 'Glucosamina/condroitina são suplementos adjuvantes; qualidade e formulação variam entre produtos.',
+    plumbsContext: 'Glucosamina/condroitina são suplementos adjuvantes; qualidade e fórmulação variam entre produtos.',
     clinicalUse: 'Suporte articular em osteoartrite, displasia, geriatria e alta demanda articular.',
     reassessment: 'Reavaliar mobilidade, dor, peso e tolerância gastrointestinal em 4 a 8 semanas.',
     prescriptionExample: 'Pro Cart, administrar por via oral conforme peso, a cada 24 horas, como suporte articular.',

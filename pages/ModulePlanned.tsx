@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom'
 import { getModuleByRoute } from '../modules/registry'
 import { Button } from '../components/ui/button'
 import { Card } from '../components/ui/card'
-import { ArrowLeft, CheckCircle2, Circle } from 'lucide-react'
+import { ArrowLeft, Clock3 } from 'lucide-react'
 
 export function ModulePlanned() {
   const navigate = useNavigate()
@@ -14,24 +14,14 @@ export function ModulePlanned() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-2xl font-bold mb-4">Módulo não encontrado</h2>
-          <Button onClick={() => navigate('/')}>Voltar ao Hub</Button>
+          <h2 className="text-2xl font-bold mb-4">Conteúdo não encontrado</h2>
+          <Button onClick={() => navigate('/')}>Voltar ao início</Button>
         </div>
       </div>
     )
   }
 
   const Icon = module.icon
-
-  // Checklist genérico para módulos planejados
-  const checklist = [
-    'Definir requisitos funcionais',
-    'Criar protótipos de interface',
-    'Implementar cálculos e lógica',
-    'Adicionar validações',
-    'Testes de usabilidade',
-    'Documentação',
-  ]
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -59,27 +49,17 @@ export function ModulePlanned() {
             <p className="text-muted-foreground text-lg">{module.description}</p>
           </div>
 
-          <div className="mb-8">
-            <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-6">
-              <p className="text-yellow-800 dark:text-yellow-200 font-medium">
-                ⚠️ Este módulo está em desenvolvimento
-              </p>
-            </div>
-
-            <h3 className="text-xl font-semibold mb-4">Checklist de Desenvolvimento</h3>
-            <ul className="space-y-3">
-              {checklist.map((item, index) => (
-                <li key={index} className="flex items-center gap-3">
-                  <Circle className="h-5 w-5 text-muted-foreground flex-shrink-0" />
-                  <span className="text-foreground">{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="mb-8 border border-border bg-muted/30 p-5 text-center">
+            <Clock3 className="mx-auto mb-3 h-7 w-7 text-muted-foreground" />
+            <h3 className="text-lg font-semibold">Indisponível no momento</h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Esta ferramenta ainda não está disponível para uso.
+            </p>
           </div>
 
           <div className="flex justify-center">
             <Button onClick={() => navigate('/')} variant="primary">
-              Voltar ao Hub
+              Voltar ao início
             </Button>
           </div>
         </Card>

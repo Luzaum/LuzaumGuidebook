@@ -32,7 +32,7 @@ export default function Reports() {
         const msg = e instanceof Error ? e.message : String(e)
         if (/nutrition_reports|PGRST205|schema cache|Could not find the table/i.test(msg)) {
           toast.warning(
-            'Tabela nutrition_reports indisponível no Supabase. A lista mostra só relatórios deste dispositivo até aplicar a migration no projeto.',
+            'A sincronização do histórico está indisponível. A lista mostra os relatórios salvos neste dispositivo.',
             { duration: 9000 },
           )
         } else if (/Cl[ií]nica ativa|Clinica ativa/i.test(msg)) {
@@ -67,7 +67,7 @@ export default function Reports() {
           Relatórios e histórico
         </h1>
         <p className="text-muted-foreground mt-2 max-w-3xl">
-          Com sessão iniciada e clínica selecionada, o histórico sincroniza com o Supabase. O PDF não é guardado na nuvem: gera-se na hora a partir dos dados do relatório — pode exportar quantas vezes quiser a partir desta lista ou do detalhe.
+          Com sessão iniciada e clínica selecionada, o histórico é sincronizado. O PDF é gerado a partir dos dados do relatório e pode ser exportado novamente a qualquer momento.
         </p>
       </div>
 
@@ -104,7 +104,7 @@ export default function Reports() {
                           <p className="text-lg font-semibold text-foreground dark:text-white">
                             {report.patient.name ?? 'Paciente sem nome'}
                           </p>
-                          <p className="text-sm text-muted-foreground">{report.patient.ownerName ?? 'Tutor nao informado'}</p>
+                          <p className="text-sm text-muted-foreground">{report.patient.ownerName ?? 'Tutor não informado'}</p>
                         </div>
                         <Badge variant="outline">{new Date(report.createdAt).toLocaleDateString('pt-BR')}</Badge>
                       </div>
@@ -113,7 +113,7 @@ export default function Reports() {
                         <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
                           <p className="text-[11px] text-muted-foreground">Espécie</p>
                           <p className="mt-1 font-semibold text-foreground dark:text-white">
-                            {report.patient.species === 'dog' ? 'Cao' : report.patient.species === 'cat' ? 'Gato' : 'Nao informado'}
+                            {report.patient.species === 'dog' ? 'Cao' : report.patient.species === 'cat' ? 'Gato' : 'Não informado'}
                           </p>
                         </div>
                         <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">

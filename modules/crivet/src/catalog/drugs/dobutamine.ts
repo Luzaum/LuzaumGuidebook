@@ -47,7 +47,7 @@ export const dobutamine: Drug = {
     'Fibrilação atrial sem controle adequado de condução atrioventricular',
     'Estados em que o problema dominante seja vasoplegia — dobutamina pode melhorar CO mas não corrigir adequadamente a MAP',
     'Uso "cego" sem ECG e pressão arterial disponíveis',
-    'Hipersensibilidade conhecida aos sulfitos (presentes em algumas formulações)',
+    'Hipersensibilidade conhecida aos sulfitos (presentes em algumas fórmulações)',
     'Cautela especial em gatos, principalmente em doses mais altas, pelo maior risco de sinais de SNC e meia-vida mais longa nesta espécie',
   ],
 
@@ -99,7 +99,7 @@ export const dobutamine: Drug = {
       max: 20,
       unit: 'mcg/kg/min',
       observations:
-        'Iniciar em 1–2 mcg/kg/min e titular a cada 15–30 min avaliando PA, perfusão, ECG e lactato. Faixa clínica comum: 3–7 mcg/kg/min (menos efeito sobre FC e PA). Faixa alta: 8–15 mcg/kg/min. ALERTA ≥10 mcg/kg/min: risco significativamente maior de taquicardia e arritmias. Doses >15 mcg/kg/min devem ser consideradas zona avançada, somente em UTI com monitorização intensiva. Excepcionalmente até 20 mcg/kg/min em alguns protocolos, mas não é padrão elegante do app.',
+        'Iniciar em 1–2 mcg/kg/min e titular a cada 15–30 min avaliando PA, perfusão, ECG e lactato. Faixa clínica comum: 3–7 mcg/kg/min (menos efeito sobre FC e PA). Faixa alta: 8–15 mcg/kg/min. ALERTA ≥10 mcg/kg/min: risco significativamente maior de taquicardia e arritmias. Doses >15 mcg/kg/min devem ser consideradas zona avançada, somente em UTI com monitorização intensiva. Excepcionalmente até 20 mcg/kg/min em alguns protocolos, mas não constitui rotina clínica.',
     },
     cat: {
       min: 0.5,

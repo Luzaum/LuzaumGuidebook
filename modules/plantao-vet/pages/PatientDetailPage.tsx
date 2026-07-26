@@ -80,7 +80,7 @@ function getBulletinTypeLabel(type: Bulletin['type']) {
 
 function formatDateTime(dateTime: string | null) {
   if (!dateTime) {
-    return 'Nao informado';
+    return 'Não informado';
   }
 
   return new Date(dateTime).toLocaleString('pt-BR', {
@@ -716,7 +716,7 @@ export function PatientDetailPage() {
   }
 
   if (!snapshot.isHydrated) {
-    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando modulo...</div>;
+    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   }
 
   if (!patient || !activeShift || patient.shiftId !== activeShift.id) {
@@ -724,8 +724,8 @@ export function PatientDetailPage() {
       <EmptyState
         icon={FileText}
         eyebrow="Paciente"
-        title="Paciente nao encontrado neste plantao"
-        description="A ficha detalhada sempre respeita o plantao ativo. Se o caso nao estiver vinculado ao turno atual, ele nao aparece aqui."
+        title="Paciente não encontrado neste plantao"
+        description="A ficha detalhada sempre respeita o plantao ativo. Se o caso não estiver vinculado ao turno atual, ele não aparece aqui."
         primaryAction={{ label: 'Voltar aos pacientes', href: '/plantao-vet/pacientes' }}
       />
     );
@@ -745,7 +745,7 @@ export function PatientDetailPage() {
               {patient.importedFromShiftId ? <Badge variant="secondary">Importado do plantao anterior</Badge> : null}
             </div>
             <p className="mt-1 text-[var(--pv-text-muted)]">
-              {getSpeciesLabel(patient.species)} - {patient.breed || 'Raca nao informada'} - {patient.ageLabel || 'Idade nao informada'} - {getLatestWeightLabel(patient) || 'Peso nao informado'} - Tutor: {patient.tutorName || 'Nao informado'}
+              {getSpeciesLabel(patient.species)} - {patient.breed || 'Raca não informada'} - {patient.ageLabel || 'Idade não informada'} - {getLatestWeightLabel(patient) || 'Peso não informado'} - Tutor: {patient.tutorName || 'Não informado'}
             </p>
           </div>
         </div>
@@ -849,16 +849,16 @@ export function PatientDetailPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2 text-lg">
                     <FileText className="h-5 w-5 text-[var(--pv-primary)]" />
-                    Resumo clinico
+                    Resumo clínico
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-5">
                   <div>
-                    <p className="mb-2 text-sm font-medium text-[var(--pv-text-muted)]">Diagnostico / suspeita</p>
-                    <p className="text-[var(--pv-text-main)]">{patient.mainDiagnosis || 'Nao informado'}</p>
+                    <p className="mb-2 text-sm font-medium text-[var(--pv-text-muted)]">Diagnóstico ou suspeita</p>
+                    <p className="text-[var(--pv-text-main)]">{patient.mainDiagnosis || 'Não informado'}</p>
                   </div>
                   <p className="whitespace-pre-wrap leading-7 text-[var(--pv-text-main)]">
-                    {patient.summary || 'Sem resumo clinico registrado.'}
+                    {patient.summary || 'Sem resumo clínico registrado.'}
                   </p>
 
                   <div className="grid gap-4 md:grid-cols-2">
@@ -1393,7 +1393,7 @@ export function PatientDetailPage() {
                     </Card>
                   ))
                 ) : (
-                  <EmptyState icon={Pill} eyebrow="Medicacoes" title="Nenhuma medicacao estruturada neste plantao" description="Registre medicações ativas ou suspensas com dose, frequencia, via e observacoes para enriquecer o acompanhamento clinico." primaryAction={{ label: 'Adicionar medicacao', onClick: () => { setEditingMedication(null); setMedicationDialogOpen(true); } }} />
+                  <EmptyState icon={Pill} eyebrow="Medicacoes" title="Nenhuma medicacao estruturada neste plantao" description="Registre medicações ativas ou suspensas com dose, frequencia, via e observacoes para enriquecer o acompanhamento clínico." primaryAction={{ label: 'Adicionar medicacao', onClick: () => { setEditingMedication(null); setMedicationDialogOpen(true); } }} />
                 )}
               </div>
             </TabsContent>
@@ -1499,7 +1499,7 @@ export function PatientDetailPage() {
                     <CardHeader className="flex flex-row items-center justify-between gap-3 pb-2">
                       <CardTitle className="flex items-center gap-2 text-lg">
                         <FileText className="h-5 w-5 text-[var(--pv-primary)]" />
-                        Preview e edicao
+                        Visualização e edição
                       </CardTitle>
                       <Badge variant="outline">{bulletinType === 'clinical' ? 'Veterinario' : 'Tutor'}</Badge>
                     </CardHeader>

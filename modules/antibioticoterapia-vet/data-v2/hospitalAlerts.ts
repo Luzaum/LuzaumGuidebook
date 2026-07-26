@@ -15,7 +15,7 @@ export const HOSPITAL_STEWARDSHIP_CARDS_V2: Record<string, HospitalStewardshipCa
     lead:
       'Critérios clínicos de instabilidade, hipoperfusão, hipóxia refratária, dor abdominal aguda com peritonite suspeita ou incapacidade de via oral definem prioridade de ambiente hospitalar — independentemente do antibiótico escolhido.',
     bullets: [
-      'O módulo v2 usa “gravidade assistencial” declarada pelo usuário; a equipe valida na beira-leito.',
+      'A gravidade assistencial informada deve ser confirmada pela equipe na avaliação do paciente.',
       'Internação habilita via parenteral, monitorização e coleta sistemática de culturas.',
     ],
     whenToThink: [
@@ -112,7 +112,7 @@ export const HOSPITAL_STEWARDSHIP_CARDS_V2: Record<string, HospitalStewardshipCa
     title: 'Uso de cateter urinário: cautelas e leitura clínica',
     category: 'catheter_uti',
     lead:
-      'O cateter altera flora urinária, favorece bacteriúria de colonização e infecção associada ao cuidado; tratar “cultura positiva” sem síndrome compatível costuma ser má stewardship.',
+      'O cateter altera a flora urinária, favorece bacteriúria de colonização e infecção associada ao cuidado; tratar cultura positiva sem síndrome compatível costuma representar uso inadequado de antimicrobianos.',
     bullets: [
       'Reavaliar necessidade do dispositivo com frequência; menor tempo de sonda, menor risco acumulado.',
       'Correlacionar urocultura com sintomas, sedimento e outros focos antes de iniciar ou prolongar ATB.',

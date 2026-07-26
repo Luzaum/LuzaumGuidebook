@@ -175,7 +175,7 @@ export default function ControleEspecialPage() {
       setControlledCatalog(merged)
     } catch (err) {
       console.error('[ControleEspecial] Erro ao carregar catálogo controlado', err)
-      setError(err instanceof Error ? err.message : String(err))
+      setError('Não foi possível carregar os registros. Tente novamente.')
       setControlledCatalog([])
     } finally {
       setIsLoading(false)

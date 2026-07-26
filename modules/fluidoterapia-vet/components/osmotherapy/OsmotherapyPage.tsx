@@ -151,7 +151,7 @@ export function OsmotherapyPage({ onNavigate }: Props) {
                 <Droplet className="h-5 w-5 text-teal-500" />
                 Precisa montar concentrações específicas?
               </h3>
-              <p className="text-sm text-slate-500">Para preparar soluções hipertônicas personalizadas (ex: NaCl 3% ou 7,5% a partir de estoque), use o módulo de diluições.</p>
+              <p className="text-sm text-slate-500">Para preparar soluções hipertônicas personalizadas, como NaCl 3% ou 7,5% a partir de estoque, utilize o cálculo de diluições.</p>
             </div>
             <button
               onClick={() => onNavigate('dilutions')}
@@ -166,7 +166,7 @@ export function OsmotherapyPage({ onNavigate }: Props) {
         {/* Glasgow Coma Scale Section */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Modified Glasgow Coma Scale (MGCS)</h3>
+            <h3 className="text-xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Escala de Coma de Glasgow Modificada (MGCS)</h3>
             <p className="text-sm text-slate-500">Soma de 3 a 18. Tendência seriada importa mais do que medida isolada. Escore 8 se associa a cerca de 50% de sobrevida nas primeiras 48 h em cães.</p>
           </div>
           
@@ -242,7 +242,7 @@ export function OsmotherapyPage({ onNavigate }: Props) {
             </div>
             
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-500 dark:border-slate-800 dark:bg-slate-900/50">
-              <p>Hipertônica e mannitol podem ser ferramentas válidas conforme o contexto. O módulo mostra faixas práticas para ajudar o raciocínio clínico.</p>
+              <p>Solução hipertônica e manitol podem ser opções válidas conforme o contexto. As faixas apresentadas apoiam o raciocínio clínico individualizado.</p>
             </div>
           </div>
         </section>

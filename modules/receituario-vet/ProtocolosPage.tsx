@@ -425,7 +425,7 @@ export default function ProtocolosPage() {
     })()
       .catch((err) => {
         if (cancelled) return
-        const message = err instanceof Error ? err.message : 'Falha ao carregar protocolos do Supabase.'
+        const message = err instanceof Error ? err.message : 'Falha ao carregar protocolos.'
         alert(message)
       })
       .finally(() => {
@@ -509,7 +509,7 @@ export default function ProtocolosPage() {
     const targetClinicId = String(clinicId || '').trim()
     const userId = String(sbUserId || '').trim()
     if (!targetClinicId || !userId) {
-      alert('Clínica ativa ou usuário não encontrado para salvar protocolo no Supabase.')
+      alert('Selecione uma clínica e entre na sua conta para salvar o protocolo.')
       return
     }
 
@@ -569,7 +569,7 @@ export default function ProtocolosPage() {
         setDraft((prev) => ({ ...prev, id: savedProtocol.id, folderId: normalizedFolderId }))
       }
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Falha ao salvar protocolo no Supabase.'
+      const message = err instanceof Error ? err.message : 'Falha ao salvar protocolo.'
       alert(message)
     } finally {
       setSbLoading(false)
@@ -744,7 +744,7 @@ export default function ProtocolosPage() {
 
   const dropFolder = (folderId: string) => {
     if (supabaseMode) {
-      alert('Exclusão de pasta ainda não está habilitada no modo Supabase.')
+      alert('A exclusão desta pasta não está disponível.')
       return
     }
     const nextDb = removeProtocolFolder(loadRxDb(), folderId)
@@ -880,7 +880,7 @@ export default function ProtocolosPage() {
               </label>
               <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Espécie
                 <select className="mt-1 w-full px-3 py-2" value={draft.species} onChange={(e) => setDraft((prev) => ({ ...prev, species: e.target.value as RxProtocol['species'] }))}>
-                  <option value="Caes">Cães</option><option value="Gatos">Gatos</option><option value="Geral">Geral</option>
+                  <option value="Cães">Cães</option><option value="Gatos">Gatos</option><option value="Geral">Geral</option>
                 </select>
               </label>
               <label className="rxv-protocol-field text-xs text-[color:var(--rxv-muted)]">Duração resumida
@@ -1459,7 +1459,7 @@ export default function ProtocolosPage() {
                     className={`rounded border px-2 py-1 text-xs transition-colors ${isDark ? 'border-red-800/70 text-red-300 hover:bg-red-950/40' : 'border-red-200 text-red-600 hover:bg-red-50'}`}
                     onClick={() => dropFolder(folder.id)}
                     disabled={supabaseMode || folders.length <= 1}
-                    title={supabaseMode ? 'Exclusão de pasta indisponível no modo Supabase.' : ''}
+                    title={supabaseMode ? 'Exclusão de pasta indisponível.' : ''}
                   >
                     Excluir
                   </button>

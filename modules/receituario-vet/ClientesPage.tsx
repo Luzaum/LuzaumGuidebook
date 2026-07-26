@@ -227,8 +227,7 @@ export default function ClientesPage() {
         setSupabaseTutors(mapped)
       }
     } catch (err) {
-      console.error('[ClientesPage] Failed to load Supabase tutors', err)
-      syncToast(`Falha ao carregar lista: ${err instanceof Error ? err.message : String(err)}`)
+      syncToast('Não foi possível carregar tutores e pacientes.')
     } finally {
       setSupabaseLoading(false)
     }
@@ -309,8 +308,7 @@ export default function ClientesPage() {
         return mapped
       }
       return []
-    } catch (err) {
-      if (import.meta.env.DEV) console.error('[ClientesPage] Failed to load patients for tutor', tutorId, err)
+    } catch {
       return []
     }
   }, [rxAdapter, rxDataSource, clinicId])
@@ -691,7 +689,7 @@ export default function ClientesPage() {
 
           if (error) {
             console.error('[TutorDelete] ERROR', error)
-            syncToast(`Erro ao apagar: ${error.message}`)
+            syncToast('Não foi possível excluir o tutor.')
             return
           }
 
@@ -737,7 +735,7 @@ export default function ClientesPage() {
 
           if (error) {
             console.error('[PatientDelete] ERROR', error)
-            syncToast(`Erro ao apagar paciente: ${error.message}`)
+            syncToast('Não foi possível excluir o paciente.')
             return
           }
 
@@ -793,7 +791,7 @@ export default function ClientesPage() {
 
           if (error) {
             console.error('[BulkDelete] ERROR', error)
-            syncToast(`Erro ao apagar vários: ${error.message}`)
+            syncToast('Não foi possível concluir as exclusões.')
             return
           }
 
@@ -863,14 +861,8 @@ export default function ClientesPage() {
           // For existing tutors we skip re-inserting (Supabase upsert not implemented yet)
           // Just use existing ID and proceed to save new animals
           tutorId = selectedId
-          if (import.meta.env.DEV) {
-            console.log('[ClientesPage] Updating existing Supabase tutor (animals only):', tutorId)
-          }
         } else {
           // Insert new tutor
-          if (import.meta.env.DEV) {
-            console.log('[ClientesPage] Inserting new Supabase tutor:', fullName)
-          }
           const payloadTutor = {
             clinic_id: clinicId,
             full_name: fullName,
@@ -888,16 +880,12 @@ export default function ClientesPage() {
             address_complement: draft.complement ?? null,
             notes: draft.notes ?? null,
           }
-          console.log('[DEBUG] tutor payload', payloadTutor)
           try {
             const result = await insertTutor(payloadTutor, clinicId)
-            console.log('[DEBUG] tutor result', { data: result, error: null })
             const inserted = Array.isArray(result) ? result[0] : result
             tutorId = (inserted as { id: string }).id
-            if (!tutorId) throw new Error('ID do tutor não retornado pelo Supabase.')
-            if (import.meta.env.DEV) console.log('[ClientesPage] New tutor ID:', tutorId)
+            if (!tutorId) throw new Error('Não foi possível identificar o tutor salvo.')
           } catch (tutorErr) {
-            console.log('[DEBUG] tutor result', { data: null, error: tutorErr })
             throw tutorErr
           }
         }
@@ -913,9 +901,6 @@ export default function ClientesPage() {
           }
           try {
             const isNeutered = normalizeNeutered(animal.reproductiveStatus)
-            if (import.meta.env.DEV) {
-              console.log('[Patients] saving patient:', animal.name, 'neutered=', isNeutered, typeof isNeutered)
-            }
             const payloadPatient = {
               clinic_id: clinicId,
               tutor_id: tutorId,
@@ -931,9 +916,7 @@ export default function ClientesPage() {
               notes: animal.notes || null,
               anamnesis: (animal as any).anamnesis || null,
             }
-            console.log('[DEBUG] patient payload', payloadPatient)
             const patientResult = await insertPatient(payloadPatient, clinicId)
-            console.log('[DEBUG] patient result', { data: patientResult, error: null })
             const insertedPatient = Array.isArray(patientResult) ? patientResult[0] : patientResult
             if (insertedPatient) {
               newPatients.push({
@@ -955,9 +938,7 @@ export default function ClientesPage() {
               })
             }
           } catch (patientErr) {
-            const msg = patientErr instanceof Error ? patientErr.message : 'Erro'
-            syncToast(`Erro ao salvar paciente "${animal.name}": ${msg}`)
-            if (import.meta.env.DEV) console.error('[ClientesPage] Patient save error:', patientErr)
+            syncToast(`Não foi possível salvar o paciente "${animal.name}".`)
           }
         }
 
@@ -983,13 +964,11 @@ export default function ClientesPage() {
         if (savedCount < animalsToSave.length && animalsToSave.some(a => !isUuid(a.id) && !newPatients.some(p => p.name === a.name))) {
           syncToast(`Tutor salvo ✅, mas alguns pacientes falharam.`)
         } else {
-          syncToast(`Tutor e ${savedCount} paciente(s) salvos no Supabase com sucesso.`)
+          syncToast(`Tutor e ${savedCount} paciente(s) salvos com sucesso.`)
         }
       } catch (error: any) {
         console.error('[ClientesPage] SAVE error', error)
-        const detailedMsg = error?.message || error?.details || String(error)
-        const code = error?.code ? ` [Code: ${error.code}]` : ''
-        syncToast(`Falha ao salvar tutor: ${detailedMsg}${code}`)
+        syncToast('Não foi possível salvar o tutor. Revise os dados e tente novamente.')
       } finally {
         setSupabaseSaving(false)
       }

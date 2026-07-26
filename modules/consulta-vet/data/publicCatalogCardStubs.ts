@@ -84,7 +84,7 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
       'Atovaquona',
     ],
     quickSummary:
-      'A babesiose canina e uma hemoparasitose por protozoarios intraeritrocitarios do genero Babesia, transmitida principalmente por carrapatos, mas tambem poss?vel por transfusao, mordeduras com sangue e via transplacentaria. O quadro combina febre, apatia, anemia hemolitica, ictericia/pigmenturia e trombocitopenia; casos complicados podem evoluir com SIRS, CIVD, les?o renal aguda, pancreatite e sinais neurologicos. O diagn?stico integra hemograma, esfregaco sanguineo de sangue periferico ou ponta de orelha e PCR para confirmar e diferenciar especies. Babesias grandes como B. canis/B. vogeli direcionam para imidocarb; babesias pequenas como B. gibsoni exigem atovaquona + azitromicina e monitoramento de persistencia.',
+      'A babesiose canina e uma hemoparasitose por protozoarios intraeritrocitarios do genero Babesia, transmitida principalmente por carrapatos, mas tambem possível por transfusao, mordeduras com sangue e via transplacentaria. O quadro combina febre, apatia, anemia hemolitica, ictericia/pigmenturia e trombocitopenia; casos complicados podem evoluir com SIRS, CIVD, lesão renal aguda, pancreatite e sinais neurologicos. O diagnóstico integra hemograma, esfregaco sanguineo de sangue periferico ou ponta de orelha e PCR para confirmar e diferenciar especies. Babesias grandes como B. canis/B. vogeli direcionam para imidocarb; babesias pequenas como B. gibsoni exigem atovaquona + azitromicina e monitoramento de persistencia.',
   }),
   diseaseListCard({
     id: 'disease-dtuif-felina',
@@ -372,7 +372,7 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
   diseaseListCard({
     id: 'disease-hipotireoidismo-canino',
     slug: 'hipotireoidismo-canino',
-    title: 'Hipotireoidismo Canino',
+    title: 'Hipotireoidismo canino',
     synonyms: [
       'Hipotireoidismo',
       'Canine hypothyroidism',
@@ -382,17 +382,73 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     species: ['dog'],
     category: 'endocrinologia',
     tags: [
-      'Tireóide',
+      'Tireoide',
       'Levotiroxina',
-      'T4 Livre',
+      'T4 livre',
       'cTSH',
       'Letargia',
       'Ganho de peso',
       'Alopecia simétrica',
-      'Fáceis trágica',
+      'NTIS',
+      'Eutireoideo doente',
     ],
     quickSummary:
-      'O hipotireoidismo canino é uma das endocrinopatias mais comuns em cães, caracterizada pelo decréscimo da produção e secreção dos hormônios tireoidianos (T4 e T3). Na quase totalidade dos casos, é uma afecção primária decorrente de tireoidite linfocítica imunomediada (destruição ativa com presença de autoanticorpos antitiroglobulina) ou atrofia tireóidea idiopática (substituição por tecido adiposo). O hipotireoidismo secundário (pituitário) é muito raro (<5%). A deficiência hormonal diminui a atividade metabólica celular de quase todos os sistemas corporais, manifestando-se clinicamente por letargia profunda, ganho de peso sem aumento de ingestão calórica, intolerância ao exercício, busca por fontes de calor, e graves distúrbios dermatológicos (alopecia simétrica bilateral não pruriginosa, cauda de rato, hiperpigmentação e fácies trágica por mixedema facial). O diagnóstico é desafiador devido à inespecificidade dos sinais e à supressão do T4 sérico por doenças não tireoidianas (Euthyroid Sick Syndrome). A confirmação exige a combinação de T4 Livre por diálise baixo e cTSH elevado. O tratamento consiste na reposição vitalícia com Levotiroxina sódica oral.',
+      'Hipotireoidismo é deficiência de hormônios tireoidianos com sinais compatíveis, quase sempre por tireoidite linfocítica ou atrofia idiopática. O maior desafio é o sobrediagnóstico: doença sistêmica e vários fármacos reduzem T4 em cães eutireoideos, quadro chamado síndrome da doença não tireoidiana (NTIS). T4 total baixo sozinho não confirma a doença; clínica, fT4 por diálise e cTSH devem ser integrados. Levotiroxina é eficaz, com dose e monitoramento individualizados.',
+  }),
+  diseaseListCard({
+    id: 'disease-cardiomiopatia-hipertrofica',
+    slug: 'cardiomiopatia-hipertrofica-caes-gatos',
+    title: 'Cardiomiopatia hipertrófica (CMH)',
+    synonyms: ['CMH', 'HCM', 'Cardiomiopatia hipertrófica felina', 'Hypertrophic cardiomyopathy', 'HOCM'],
+    species: ['cat', 'dog'],
+    category: 'cardiologia',
+    tags: ['CMH', 'Ecocardiografia', 'Gato', 'Átrio esquerdo', 'Tromboembolismo', 'Sirolimo'],
+    quickSummary:
+      'A CMH é definida por espessamento ventricular esquerdo não explicado por hipertensão, hipertireoidismo, acromegalia ou outra sobrecarga. É o fenótipo miocárdico mais comum em gatos: o ventrículo rígido relaxa mal, eleva a pressão atrial e pode causar edema, efusão pleural, tromboembolismo e morte súbita. Ecocardiografia confirma e estratifica risco; tratamento depende do estágio.',
+  }),
+  diseaseListCard({
+    id: 'disease-cardiomiopatia-dilatada',
+    slug: 'cardiomiopatia-dilatada-caes-gatos',
+    title: 'Cardiomiopatia dilatada (CMD)',
+    synonyms: ['CMD', 'DCM', 'Dilated cardiomyopathy', 'CMD oculta'],
+    species: ['dog', 'cat'],
+    category: 'cardiologia',
+    tags: ['CMD', 'Dobermann', 'Pimobendan', 'Holter', 'ICC', 'Arritmia ventricular', 'Taurina'],
+    quickSummary:
+      'A CMD combina baixa contratilidade, dilatação ventricular e arritmias. Em cães, raças grandes como Dobermann podem ter longa fase oculta detectada por eco e Holter; em gatos é hoje rara, mas deficiência de taurina e outras causas secundárias permanecem relevantes. Ecocardiografia confirma o fenótipo; pimobendan, controle de congestão, modulação do RAAS e tratamento de arritmias são guiados pelo estágio.',
+  }),
+  diseaseListCard({
+    id: 'disease-cardiomiopatia-restritiva',
+    slug: 'cardiomiopatia-restritiva-felina',
+    title: 'Cardiomiopatia restritiva felina (CMR)',
+    synonyms: ['CMR', 'RCM', 'Restrictive cardiomyopathy', 'Fibrose endomiocárdica felina'],
+    species: ['cat'],
+    category: 'cardiologia',
+    tags: ['CMR', 'Fibrose', 'Átrio esquerdo', 'Disfunção diastólica', 'ICC', 'Tromboembolismo'],
+    quickSummary:
+      'Na CMR, fibrose endocárdica ou miocárdica deixa o ventrículo rígido e eleva a pressão de enchimento, apesar de função sistólica aparentemente preservada. Átrios muito dilatados, ICC, tromboembolismo e arritmias são comuns. Ecocardiografia é o exame de referência; não existe terapia antifibrótica comprovada, e o tratamento controla congestão, trombose e ritmo.',
+  }),
+  diseaseListCard({
+    id: 'disease-tumores-mamarios',
+    slug: 'tumores-mamarios-caes-gatos',
+    title: 'Tumores mamários em cães e gatos',
+    synonyms: ['Neoplasia mamária', 'Tumor de mama', 'Carcinoma mamário', 'Canine mammary tumor', 'Feline mammary carcinoma'],
+    species: ['dog', 'cat'],
+    category: 'oncologia',
+    tags: ['Mama', 'Carcinoma', 'Mastectomia', 'TNM', 'Linfonodo sentinela', 'Histopatologia'],
+    quickSummary:
+      'Tumores mamários incluem lesões benignas e malignas de comportamentos muito diferentes; em gatas, a maioria é carcinoma agressivo. Toda massa deve ser mapeada, medida e estadiada. Citologia ajuda na triagem, mas histopatologia de cada nódulo é o padrão ouro. Cirurgia é a principal terapia localizada; margens, linfonodo, espécie, grau e estágio definem prognóstico e necessidade de oncologia adjuvante.',
+  }),
+  diseaseListCard({
+    id: 'disease-mastite-caes-gatos',
+    slug: 'mastite-caes-gatos',
+    title: 'Mastite em cadelas e gatas',
+    synonyms: ['Mastite puerperal', 'Mastite séptica', 'Mastitis', 'Infecção mamária', 'Abscesso mamário'],
+    species: ['dog', 'cat'],
+    category: 'reproducao-neonatologia',
+    tags: ['Puerpério', 'Lactação', 'Cultura do leite', 'Sepse', 'Abscesso', 'Neonatos'],
+    quickSummary:
+      'Mastite é inflamação geralmente séptica da glândula mamária no pós-parto. Calor, dor e leite alterado podem evoluir para abscesso, necrose e choque. O diagnóstico é clínico, apoiado por citologia e cultura assepticamente coletada; cultura positiva isolada não prova doença. Tratamento precoce combina antimicrobiano bactericida, analgesia, drenagem e cuidado da ninhada.',
   }),
 ];
 

@@ -115,7 +115,7 @@ export function ToxSidebar({ activeKey, onNavigate, onAjuda, onBackToHub }: ToxS
         'flex h-full min-h-0 shrink-0 flex-col border-r border-border bg-card/95 text-card-foreground backdrop-blur-sm transition-[width] duration-200',
         collapsed ? 'w-[4.25rem]' : 'w-64',
       )}
-      aria-label="Navegação do módulo"
+      aria-label="Navegação principal"
     >
       <div className="flex items-center gap-2 border-b border-border p-2">
         <button

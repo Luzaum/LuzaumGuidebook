@@ -165,7 +165,7 @@ function isBroadSyndromeName(name: string): boolean {
     normalized.includes('provavel') ||
     normalized.includes('fenotipo') ||
     normalized.includes('diferencial amplo') ||
-    normalized.startsWith('encefalopatia metabolica sistemica')
+    normalized.startsWith('encefalopatia metabólica sistêmica')
   )
 }
 
@@ -214,8 +214,8 @@ function diagnosisFamilyKey(dx: Differential): string {
     return 'infecciosa-snc'
   }
   if (
-    name.includes('encefalopatia hepatica') ||
-    name.includes('encefalopatia metabolica') ||
+    name.includes('encefalopatia hepática') ||
+    name.includes('encefalopatia metabólica') ||
     name.includes('hipoglic') ||
     name.includes('eletrol') ||
     name.includes('hipox') ||
@@ -250,7 +250,7 @@ function headlinePriority(dx: Differential, caseState: CaseStateInput, report: C
 
   if (isBroadSyndromeName(dx.name)) score -= 10
 
-  if (name.includes('encefalopatia hepatica') && hasHepatic) score += 10
+  if (name.includes('encefalopatia hepática') && hasHepatic) score += 10
   if (name.includes('eletrol') && !hasWeaknessComplaint && !hasTremorComplaint) score -= 10
   if (name.includes('hipoglic') && !normalizeText(caseState.complaint?.temporalPattern).includes('episod')) score -= 4
   if ((name.includes('muo') || name.includes('meningoencefalite')) && hasCervicalPain) score += 6
@@ -260,7 +260,7 @@ function headlinePriority(dx: Differential, caseState: CaseStateInput, report: C
   if ((name.includes('vascular') || name.includes('avc')) && normalizeText(caseState.complaint?.temporalPattern) === 'episodico') {
     score -= 6
   }
-  if (name.includes('encefalopatia metabolica') && (hasRenal || hasHepatic || hasPulmonary)) score += 4
+  if (name.includes('encefalopatia metabólica') && (hasRenal || hasHepatic || hasPulmonary)) score += 4
   if (report.neuroLocalization.primary === 'MULTIFOCAL_OU_DIFUSA' && dx.category === 'INFECCIOSA' && !caseState.complaint?.fever) {
     score -= 3
   }
@@ -521,7 +521,7 @@ function buildPatientAssessment(dx: Differential, caseState: CaseStateInput, rep
   if (String(exam.ambulation || '').includes('Não')) {
     items.push('Checar necessidade de mudança de decúbito, suporte para micção e proteção de proeminências ósseas.')
   }
-  if (name.includes('encefalopatia hepatica') || name.includes('encefalopatia metabolica')) {
+  if (name.includes('encefalopatia hepática') || name.includes('encefalopatia metabólica')) {
     items.push('Correlacionar o exame neurológico com glicemia, eletrólitos, pressão arterial, SpO2 e perfil hepatorrenal antes de assumir lesão estrutural primária.')
   }
   if (name.includes('muo') || name.includes('meningoencefalite')) {
@@ -560,7 +560,7 @@ function buildMonitoringPlan(dx: Differential, caseState: CaseStateInput, report
   if (comorbidities.some((item) => /pneumo|respirat/i.test(item))) {
     items.push('Acompanhar frequência respiratória, esforço ventilatório, SpO2 e risco de aspiração após sedação ou crises.')
   }
-  if (name.includes('encefalopatia hepatica') || name.includes('encefalopatia metabolica')) {
+  if (name.includes('encefalopatia hepática') || name.includes('encefalopatia metabólica')) {
     items.push('Repetir glicemia, eletrólitos, acidobase, amônia e diurese conforme instabilidade clínica nas primeiras horas.')
   }
   if (name.includes('muo') || name.includes('meningoencefalite')) {
@@ -602,7 +602,7 @@ function buildTreatmentPlan(dx: Differential, caseState: CaseStateInput, report:
   ) {
     items.push('Se houver piora intracraniana aguda, priorizar oxigenação, cabeça elevada e controle rigoroso de crises e perfusão.')
   }
-  if (name.includes('encefalopatia hepatica')) {
+  if (name.includes('encefalopatia hepática')) {
     items.push('Detalhar metas nas primeiras horas: corrigir precipitantes, titular lactulose conforme resposta clínica e rever se há hipocalemia, sangramento gastrointestinal ou infecção agravando o quadro.')
   }
   if (name.includes('eletrol')) {
@@ -642,7 +642,7 @@ function buildAllowedDrugs(dx: Differential, caseState: CaseStateInput, report: 
   if (comorbidities.some((item) => /hep|f[ií]gad/i.test(item))) {
     items.push('Levetiracetam tende a ser uma opção mais confortável do que anticonvulsivantes mais hepatometabolizados.')
   }
-  if (name.includes('encefalopatia hepatica')) {
+  if (name.includes('encefalopatia hepática')) {
     items.push('Lactulose, controle de precipitantes e antibiótico intestinal quando indicado costumam entrar cedo no plano, desde que a volemia e a via aérea estejam protegidas.')
   }
   if (name.includes('neoplasia intracraniana') || name.includes('meningioma') || name.includes('glioma')) {
@@ -676,7 +676,7 @@ function buildAvoidDrugs(dx: Differential, caseState: CaseStateInput): string[] 
   if (dx.category === 'COMPRESSIVA') {
     items.push('Evitar manipulações intensas de coluna antes de estabilizar dor, transporte e planejamento de imagem.')
   }
-  if (name.includes('encefalopatia hepatica')) {
+  if (name.includes('encefalopatia hepática')) {
     items.push('Evitar benzodiazepínicos repetidos, fenobarbital e sedação excessiva sem monitorização quando a depuração hepática está comprometida.')
   }
   if (name.includes('eletrol')) {
@@ -882,16 +882,16 @@ function renderClinicalCompanion(report: ParsedAiClinicalReport): string {
     item.prioritizedDiagnostics.forEach((entry) => lines.push(`- ${entry}`))
     lines.push('Como avaliar este paciente no plantao:')
     item.patientAssessment.forEach((entry) => lines.push(`- ${entry}`))
-    lines.push('Monitorizacao e reavaliacao:')
+    lines.push('Monitorização e reavaliação:')
     item.monitoringPlan.forEach((entry) => lines.push(`- ${entry}`))
     lines.push('Tratamento e conduta:')
     item.treatmentPlan.forEach((entry) => lines.push(`- ${entry}`))
     if (item.allowedDrugs.length > 0) {
-      lines.push('Farmacos que posso considerar:')
+      lines.push('Fármacos que posso considerar:')
       item.allowedDrugs.forEach((entry) => lines.push(`- ${entry}`))
     }
     if (item.avoidDrugs.length > 0) {
-      lines.push('Farmacos a evitar ou ajustar:')
+      lines.push('Fármacos a evitar ou ajustar:')
       item.avoidDrugs.forEach((entry) => lines.push(`- ${entry}`))
     }
     if (item.comorbidityIntegration.length > 0) {

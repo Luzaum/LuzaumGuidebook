@@ -370,7 +370,7 @@ const QUICK_DOSE_UNIT_OPTIONS = [
 ]
 
 const QUICK_CONCENTRATION_UNIT_OPTIONS = ['mg/mL', 'mcg/mL', 'g/mL', 'mg', 'mcg', 'g', 'UI/mL', 'UI', '%']
-const QUICK_PHARMACEUTICAL_FORM_OPTIONS = ['Comprimido', 'Capsula', 'Solucao oral', 'Suspensao oral', 'Injetavel', 'Pomada', 'Creme', 'Gel', 'Colirio', 'Otologico', 'Spray', 'Shampoo', 'Transdermico', 'Inalatorio']
+const QUICK_PHARMACEUTICAL_FORM_OPTIONS = ['Comprimido', 'Capsula', 'Solução oral', 'Suspensao oral', 'Injetavel', 'Pomada', 'Creme', 'Gel', 'Colirio', 'Otologico', 'Spray', 'Shampoo', 'Transdermico', 'Inalatorio']
 const QUICK_ROUTE_OPTIONS = [
     { value: 'VO', label: 'Oral (VO)' },
     { value: 'SC', label: 'Subcutaneo (SC)' },
@@ -644,7 +644,7 @@ function normalizePrescriptionItem(item: PrescriptionItem, defaultStartDate: str
         resolvedFrequencyMode = normalizedTimesPerDay ? 'times_per_day' : itemFreq
     } else if (!itemFreq) {
         const freqLower = String(item.frequency || '').toLowerCase()
-        if (freqLower.includes('dose única') || freqLower.includes('dose unica')) {
+        if (freqLower.includes('dose única') || freqLower.includes('dose única')) {
             if (freqLower.includes('repetir') || repeatFromText.value) resolvedFrequencyMode = 'repeat_interval'
             else resolvedFrequencyMode = 'single_dose'
         } else if (repeatFromText.value && repeatFromText.unit) {
@@ -1144,7 +1144,7 @@ export default function NovaReceita2Page() {
             setPresentationPickerOptions(rows)
         } catch (error) {
             console.error('[NovaReceita2] Failed to load presentation options', error)
-            alert(`Não foi possível carregar as apresentações do catálogo.\n\n${error instanceof Error ? error.message : String(error)}`)
+            alert('Não foi possível carregar as apresentações do catálogo.')
             closePresentationPicker()
         } finally {
             setIsLoadingPresentationPicker(false)
@@ -1755,7 +1755,7 @@ export default function NovaReceita2Page() {
     const handleSave = useCallback(async () => {
         if (!state.patient || !state.tutor) {
             if (state.quickMode) {
-                alert('Receita rapida: para salvar no historico, preencha tutor e paciente completos.')
+                alert('Receita rapida: para salvar no histórico, preencha tutor e paciente completos.')
                 return
             }
             alert('Selecione tutor e paciente antes de salvar.')
@@ -1792,7 +1792,7 @@ export default function NovaReceita2Page() {
             alert('Receita salva com sucesso!')
         } catch (err: any) {
             console.error('[Prescriptions] Save failed', err)
-            alert(`Erro ao salvar: ${err.message || 'Erro desconhecido'}`)
+            alert('Não foi possível salvar a receita. Revise os dados e tente novamente.')
         } finally {
             setIsSaving(false)
         }
@@ -1841,7 +1841,7 @@ export default function NovaReceita2Page() {
                                 className="lg:hidden rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)]/70 px-3 py-2 text-xs font-bold text-[color:var(--rxv-text)] hover:bg-[color:var(--rxv-surface-2)]"
                                 onClick={() => setShowPreview((v) => !v)}
                             >
-                                {showPreview ? 'Ocultar preview' : 'Ver preview'}
+                                {showPreview ? 'Ocultar visualização' : 'Visualizar receita'}
                             </button>
 
                             <RxvButton
@@ -2809,7 +2809,7 @@ export default function NovaReceita2Page() {
                                                                             compounded_internal_note: e.target.value,
                                                                         }))}
                                                                         rows={4}
-                                                                        placeholder="Racional clínico, referência técnica ou alerta interno. Não imprime."
+                                                                        placeholder="Racional clínico, referência técnica ou alerta para conferência. Não será impresso."
                                                                     />
                                                                 </div>
                                                             </details>
@@ -2832,7 +2832,7 @@ export default function NovaReceita2Page() {
                                                                     <div className="flex flex-wrap items-center justify-between gap-3">
                                                                         <div>
                                                                             <p className="text-sm font-semibold text-white">Linha profissional da receita</p>
-                                                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">Configure a linha principal e a apresentação/dispensação mostradas no preview e no PDF.</p>
+                                                                            <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">Configure a linha principal e a apresentação ou dispensação mostradas na receita e no PDF.</p>
                                                                         </div>
                                                                         <RxvToggle
                                                                             checked={!printLineManual}
@@ -3028,8 +3028,8 @@ export default function NovaReceita2Page() {
                             <RxvCard>
                                 <RxvSectionHeader
                                     icon="visibility"
-                                    title={canFinalizeCompoundedDocs ? 'Visualização Prévia Final' : 'Preview Interno'}
-                                    subtitle={canFinalizeCompoundedDocs ? 'Preview em tempo real pronto para emissão' : 'Rascunho interno enquanto faltam parâmetros farmacotécnicos'}
+                                    title={canFinalizeCompoundedDocs ? 'Visualização final' : 'Prévia da receita'}
+                                    subtitle={canFinalizeCompoundedDocs ? 'Visualização em tempo real pronta para emissão' : 'Rascunho até completar os parâmetros farmacotécnicos'}
                                 />
                                 {!canFinalizeCompoundedDocs ? (
                                     <div className="mb-3 rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">

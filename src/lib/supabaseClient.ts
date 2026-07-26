@@ -24,14 +24,3 @@ export const isSupabaseConfigured = config.isConfigured
 
 export const supabase = createClient(config.url, config.anonKey)
 
-// DEV only: expose the client in the console for quick manual checks.
-if (import.meta.env.DEV) {
-  ;(window as any).supabase = supabase
-  if (!config.isConfigured) {
-    console.warn(
-      '[DEV] Supabase não configurado. Defina VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY em .env.local.',
-    )
-  } else {
-    console.log('[DEV] window.supabase exposed')
-  }
-}

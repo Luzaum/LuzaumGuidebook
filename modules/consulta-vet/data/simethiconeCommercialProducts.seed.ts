@@ -3,17 +3,17 @@ import { CommercialMedicationProduct } from '../types/commercialMedication';
 const SOURCE_DATE = '2026-07-08';
 
 const SIMETHICONE_CLINICAL_CONTEXT =
-  'Simeticona/dimeticona e antiflatulento oral de acao local. Reduz a tensao superficial das bolhas de gas no lumen gastrointestinal, favorecendo coalescencia e eliminacao. Nao e procinetico, nao reduz producao de gas e nao trata a causa primaria.';
+  'Simeticona/dimeticona e antiflatulento oral de ação local. Reduz a tensão superficial das bolhas de gás no lúmen gastrointestinal, favorecendo coalescência e eliminação. Não e procinetico, não reduz produção de gás e não trata a causa primária.';
 
 const SIMETHICONE_SAFETY_ALERT =
-  'Nao mascarar abdome agudo. Investigar antes de usar quando houver distensao abdominal grave ou progressiva, dor intensa/persistente, vomitos persistentes, choque, massa abdominal palpavel, suspeita de obstrucao, corpo estranho, perfuracao, peritonite ou GDV.';
+  'Não mascarar abdome agudo. Investigar antes de usar quando houver distensão abdominal grave ou progressiva, dor intensa/persistente, vômitos persistentes, choque, massa abdominal palpavel, suspeita de obstrução, corpo estranho, perfuração, peritonite ou GDV.';
 
 const SIMETHICONE_RX =
   'Simeticona/dimeticona: administrar dose equivalente a ___ mg por animal, por via oral, a cada 8 horas, por ___ dias. Converter gotas/mL conforme a bula da apresentacao em maos.';
 
 const SIMETHICONE_DOSAGE = {
   labelDose:
-    'Caes e gatos: 40-125 mg/animal VO q8h. Em 75 mg/mL: 40 mg = 0,53 mL; 75 mg = 1 mL; 125 mg = 1,66 mL. Ajustar gotas conforme bula.',
+    'Cães e gatos: 40-125 mg/animal VO q8h. Em 75 mg/mL: 40 mg = 0,53 mL; 75 mg = 1 mL; 125 mg = 1,66 mL. Ajustar gotas conforme bula.',
   plumbs: {
     dog: [
       {
@@ -52,19 +52,19 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     labelCompositionSummary:
       'Luftal Gotas: simeticona 75 mg/mL; bula informa 25 gotas = 1 mL. Luftal Max: simeticona 150 mg/mL, 2 vezes mais concentrado que Luftal Gotas.',
     labelDirections:
-      'Uso humano oral para gases, flatulencia, dor/estufamento por gases e preparo de exames digestivos. Em veterinaria, uso extra-label/cascata com dose por animal.',
+      'Uso humano oral para gases, flatulencia, dor/estufamento por gases e preparo de exames digestivos. Em veterinária, uso extra-label/cascata com dose por animal.',
     dosageGuidance: SIMETHICONE_DOSAGE,
     plumbsContext:
-      'Nao foi localizada monografia propria de simeticona/dimeticona no Plumb\'s 10a ed. informado pelo briefing; usar dose pratica veterinaria 40-125 mg/animal q8h VO.',
+      'Não foi localizada monografia propria de simeticona/dimeticona no Plumb\'s 10a ed. informado pelo briefing; usar dose pratica veterinária 40-125 mg/animal q8h VO.',
     clinicalUse:
-      'Opcao de referencia para meteorismo, flatulencia, borborigmos, aerofagia, distensao gasosa leve e preparo ultrassonografico. Luftal Max exige cuidado por ser 150 mg/mL.',
+      'Opção de referencia para meteorismo, flatulencia, borborigmos, aerofagia, distensão gasosa leve e preparo ultrassonografico. Luftal Max exige cuidado por ser 150 mg/mL.',
     reassessment:
-      'Reavaliar se nao houver melhora rapida, se houver dor, vomitos, distensao progressiva ou sinais sistemicos.',
+      'Reavaliar se não houver melhora rapida, se houver dor, vômitos, distensão progressiva ou sinais sistemicos.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: {
       averageLabel: 'Gotas 75 mg/mL: R$ 25,73-30,39; Max: R$ 49,63-56,72',
-      rangeLabel: 'Pesquisa comercial em redes de farmacia; precos variam por estoque e regiao',
+      rangeLabel: 'Pesquisa comercial em redes de farmacia; precos variam por estoque e região',
       sourceDate: SOURCE_DATE,
     },
     productPageUrl: 'https://www.luftal.com.br/produtos/luftal-gotas-15ml/',
@@ -80,23 +80,23 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     commercialClass: 'gastrointestinal',
     commercialSubclass: 'gi_antiflatulent',
     species: ['dog', 'cat'],
-    presentations: ['Emulsao oral 75 mg/mL - frasco 15 mL', 'Capsulas moles 125 mg - quando disponivel'],
+    presentations: ['Emulsao oral 75 mg/mL - frasco 15 mL', 'Capsulas moles 125 mg - quando disponível'],
     activeComponents: ['simeticona 75 mg/mL', 'simeticona 125 mg/capsula'],
     labelCompositionSummary:
       'Pagina oficial Cimed lista simeticona em emulsao oral 75 mg/mL, frasco 15 mL, sabor cereja, e tambem capsulas moles 125 mg.',
     labelDirections:
-      'Uso humano oral para alivio de gases e preparo de endoscopia/colonoscopia. Em caes e gatos, usar dose veterinaria pratica por animal.',
+      'Uso humano oral para alivio de gases e preparo de endoscopia/colonoscopia. Em cães e gatos, usar dose veterinária pratica por animal.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao generica de baixo custo para dose ajustavel em gotas; capsula 125 mg apenas para animais em que 125 mg/animal seja aceitavel.',
-    reassessment: 'Reavaliar sinais gastrointestinais e descartar obstrucao/GDV se houver dor ou distensao importante.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção generica de baixo custo para dose ajustavel em gotas; capsula 125 mg apenas para animais em que 125 mg/animal seja aceitavel.',
+    reassessment: 'Reavaliar sinais gastrointestinais e descartar obstrução/GDV se houver dor ou distensão importante.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 2,14-5,93', rangeLabel: 'Pesquisa comercial; baixo custo', sourceDate: SOURCE_DATE },
     productPageUrl: 'https://cimedremedios.com.br/remedio/simeticona/',
     labelUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/SimeticonaCimed.pdf',
     imageUrl: 'https://cimedremedios.com.br/wp-content/uploads/2020/03/SIMETICONA-GOTAS-15ml-esquerda-1000x1000-1.jpg',
-    evidenceLevel: 'Produto humano OTC; confirmar gotas/mL no rotulo em maos.',
+    evidenceLevel: 'Produto humano OTC; confirmar gotas/mL no rótulo em maos.',
   },
   {
     id: 'simeticona-ems',
@@ -109,11 +109,11 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     presentations: ['Gotas 75 mg/mL - frasco 15 mL', 'Comprimidos 40 mg', 'Capsulas 125 mg'],
     activeComponents: ['simeticona 75 mg/mL', 'simeticona 40 mg/comprimido', 'simeticona 125 mg/capsula'],
     labelCompositionSummary: 'Pagina oficial EMS lista simeticona 40 mg, 75 mg/mL 15 mL e 125 mg.',
-    labelDirections: 'Uso humano para gases/flatulencia. Para caes e gatos, converter pela concentracao e usar dose por animal.',
+    labelDirections: 'Uso humano para gases/flatulencia. Para cães e gatos, converter pela concentração e usar dose por animal.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Boa opcao generica quando se quer gotas 75 mg/mL; comprimido/capsula fixa exige cautela em pequenos pacientes.',
-    reassessment: 'Reavaliar se a distensao ou dor persistirem; nao substituir diagnostico.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Boa opção generica quando se quer gotas 75 mg/mL; comprimido/capsula fixa exige cautela em pequenos pacientes.',
+    reassessment: 'Reavaliar se a distensão ou dor persistirem; não substituir diagnóstico.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 4,13-16,96', rangeLabel: 'Pesquisa comercial em redes de farmacia', sourceDate: SOURCE_DATE },
@@ -133,17 +133,17 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     presentations: ['Gotas 75 mg/mL - frasco 15 mL'],
     activeComponents: ['simeticona 75 mg/mL'],
     labelCompositionSummary: 'Simeticona gotas 75 mg/mL em frasco 15 mL, sabor cereja, uso adulto e pediatrico.',
-    labelDirections: 'Uso humano para gases, flatulencia e preparo de exames. Em veterinaria, ajustar por dose total por animal.',
+    labelDirections: 'Uso humano para gases, flatulencia e preparo de exames. Em veterinária, ajustar por dose total por animal.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao generica comum de gotas 75 mg/mL para caes e gatos quando houver indicacao sintomatica.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção generica comum de gotas 75 mg/mL para cães e gatos quando houver indicação sintomatica.',
     reassessment: 'Reavaliar resposta e sinais de alerta abdominal.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 5,93-11,99', rangeLabel: 'Pesquisa comercial', sourceDate: SOURCE_DATE },
     productPageUrl: 'https://www.drogasil.com.br/simeticona-medley-generico-solucao-15-ml.html',
     imageUrl: 'https://product-data.raiadrogasil.io/images/3541506.webp',
-    evidenceLevel: 'Produto humano OTC; conferir rotulo vigente.',
+    evidenceLevel: 'Produto humano OTC; conferir rótulo vigente.',
   },
   {
     id: 'simeticona-prati-donaduzzi',
@@ -160,9 +160,9 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     labelDirections:
       'Uso humano para excesso de gases e preparo de endoscopia/colonoscopia. Conversao pratica: 75 mg/mL = 2,5 mg/gota.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao generica com bula clara para conversao por gotas: 16 gotas = 40 mg; 30 gotas = 75 mg; 50 gotas = 125 mg.',
-    reassessment: 'Reavaliar se houver dor, vomitos, distensao progressiva ou ausencia de resposta.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção generica com bula clara para conversao por gotas: 16 gotas = 40 mg; 30 gotas = 75 mg; 50 gotas = 125 mg.',
+    reassessment: 'Reavaliar se houver dor, vômitos, distensão progressiva ou ausencia de resposta.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 8,19 aprox.', rangeLabel: 'Pesquisa comercial; variavel por farmacia', sourceDate: SOURCE_DATE },
@@ -184,15 +184,15 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     labelCompositionSummary: 'Pagina oficial MedQuimica informa gotas 75 mg/mL em frasco 15 mL.',
     labelDirections: 'Uso humano para alivio de gases e preparo de endoscopia/colonoscopia; uso veterinario sintomatico extra-label.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao generica de baixo custo para dose em gotas, quando o rotulo estiver disponivel para confirmar gotas/mL.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção generica de baixo custo para dose em gotas, quando o rótulo estiver disponível para confirmar gotas/mL.',
     reassessment: 'Reavaliar se sinais persistirem ou se houver sinais sistemicos.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 3,89-5,99', rangeLabel: 'Pesquisa comercial', sourceDate: SOURCE_DATE },
     productPageUrl: 'https://medquimica.ind.br/produto/simeticona-75mg-ml-gotas/',
     imageUrl: 'https://medquimica.ind.br/wp-content/uploads/Simeticona-15ml-gts.jpg',
-    evidenceLevel: 'Produto humano OTC; pagina oficial do fabricante identifica produto e concentracao.',
+    evidenceLevel: 'Produto humano OTC; pagina oficial do fabricante identifica produto e concentração.',
   },
   {
     id: 'simeticona-airela',
@@ -209,8 +209,8 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     labelDirections:
       'Uso humano oral para gases; por ter 15 gotas/mL, cada gota contem cerca de 5 mg de simeticona.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao de baixo custo, mas com gota mais concentrada por volume; bom cadastrar alerta de conversao diferente.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção de baixo custo, mas com gota mais concentrada por volume; bom cadastrar alerta de conversao diferente.',
     reassessment: 'Reavaliar sinais e confirmar ausencia de abdome agudo.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
@@ -233,9 +233,9 @@ export const simethiconeCommercialProductsSeed: CommercialMedicationProduct[] = 
     labelCompositionSummary: 'Bula Ache informa Flagass emulsao oral 75 mg/mL, frasco conta-gotas com 10 mL; 30 gotas = 1 mL.',
     labelDirections: 'Uso humano para flatulencia, meteorismo, eructacao, borborigmos, aerofagia e preparo de exames.',
     dosageGuidance: SIMETHICONE_DOSAGE,
-    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinaria 40-125 mg/animal q8h VO.',
-    clinicalUse: 'Opcao similar com simeticona 75 mg/mL; conversao pratica igual a 2,5 mg/gota quando 30 gotas/mL.',
-    reassessment: 'Reavaliar se sinais persistirem ou houver distensao/dor importante.',
+    plumbsContext: 'Sem monografia propria localizada no Plumb\'s 10a ed.; dose pratica veterinária 40-125 mg/animal q8h VO.',
+    clinicalUse: 'Opção similar com simeticona 75 mg/mL; conversao pratica igual a 2,5 mg/gota quando 30 gotas/mL.',
+    reassessment: 'Reavaliar se sinais persistirem ou houver distensão/dor importante.',
     prescriptionExample: SIMETHICONE_RX,
     safetyAlert: SIMETHICONE_SAFETY_ALERT,
     price: { averageLabel: 'R$ 24,74-25,73', rangeLabel: 'Pesquisa comercial; 10 mL', sourceDate: SOURCE_DATE },

@@ -72,7 +72,7 @@ export const EncyclopediaDetail: React.FC<EncyclopediaDetailProps> = ({ animal }
     const openGlossary = (term: string, fallbackText: string) => {
         setGlossaryModal({
             title: term,
-            content: COMPLEX_TERM_GLOSSARY[term] ?? `Explicacao pendente para "${term}". ${fallbackText}`,
+            content: COMPLEX_TERM_GLOSSARY[term] ?? `Definição não disponível para "${term}". ${fallbackText}`,
         });
     };
 

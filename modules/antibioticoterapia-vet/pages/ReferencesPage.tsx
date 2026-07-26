@@ -1,232 +1,147 @@
 import { useEffect, useRef } from 'react'
-import Icon from '../components/Icon'
-import RichTextViewer from '../components/RichTextViewer'
-import {
-  CCIH_PRIORITY_PAGE_AUDIT_KEYS,
-  countValidPriorityPageAuditEntries,
-} from '../data-v2/ccih2024PageAudit'
-import {
-  RESISTANCE_INSTITUTIONAL_MAPPINGS,
-  SYNDROME_INSTITUTIONAL_MAPPINGS,
-  countLinkedVerifiedMetadataMappings,
-  countLinkedVerifiedPageLocatorMappings,
-  listThematicCcInstitutionalMappings,
-} from '../data-v2/institutionalMappings'
-import { REGIMEN_CONCORDANCE_EXPLANATION, summarizeV2MoleculeConcordance } from '../data-v2/institutionalConcordance'
-import {
-  THERAPEUTIC_AUDIT_LABEL,
-  summarizeMoleculeAuditStatesV2,
-  summarizeRegimenAuditStatesInV2Syndromes,
-  type TherapeuticInstitutionalAuditState,
-} from '../data-v2/therapeuticInstitutionalAudit'
-import { REFERENCE_GROUPS, SOURCE_REGISTRY, getSourceEntry } from '../data-v2/references'
-import { getVersionedSource, listVersionedSources } from '../data-v2/sourceRegistry'
-import type { ReferenceDomain, SourceEntryStatus, SourceEntryV2 } from '../model/institutional'
+import { ArrowLeft, BookOpen, ShieldCheck } from 'lucide-react'
+import { REFERENCE_GROUPS, getSourceEntry } from '../data-v2/references'
+import { listVersionedSources } from '../data-v2/sourceRegistry'
+import type { ReferenceDomain, SourceEntryV2 } from '../model/institutional'
 import type { VersionedInstitutionalSource } from '../model/versionedSource'
 import type { AbvInstitutionalFocus, AbvTab } from '../types'
 
-const DOMAIN_LABEL: Record<ReferenceDomain, string> = {
-  clinical_v2: 'Domínio: clínico v2',
-  molecules_v2: 'Domínio: biblioteca de moléculas v2',
-  microbiology_v2: 'Domínio: microbiologia / resistência v2',
-  hospital_institutional_pending: 'Domínio: hospital / institucional (mapeamentos v2)',
-  institutional_versioned: 'Domínio: documento institucional versionado',
+interface ReferencesPageProps {
+  setPage: (tab: AbvTab) => void
+  institutionalFocus: AbvInstitutionalFocus | null
+  onConsumedInstitutionalFocus: () => void
 }
 
-function sourceAnchorId(key: string): string {
-  return `abv-src-${key.replace(/[^a-zA-Z0-9]+/g, '-')}`
+const DOMAIN_LABELS: Record<ReferenceDomain, string> = {
+  clinical_v2: 'Literatura clínica',
+  molecules_v2: 'Farmacologia dos antimicrobianos',
+  microbiology_v2: 'Microbiologia clínica',
+  hospital_institutional_pending: 'Controle de infecção hospitalar',
+  institutional_versioned: 'Diretriz institucional',
 }
 
-function statusBadge(status: SourceEntryStatus): { label: string; tone: 'neutral' | 'warn' | 'ok' } {
-  switch (status) {
-    case 'placeholder':
-      return { label: 'Placeholder interno', tone: 'neutral' }
-    case 'external_pending':
-      return { label: 'Externo pendente', tone: 'warn' }
-    case 'versioned_pending_import':
-      return { label: 'Versionada — importação PDF pendente', tone: 'warn' }
-    case 'versioned_active':
-      return { label: 'Versionada — ativa no repo', tone: 'ok' }
-    case 'versioned_restricted_metadata':
-      return { label: 'Restrita — metadados no app (sem PDF ao cliente)', tone: 'neutral' }
-    default:
-      return { label: status, tone: 'neutral' }
+const SOURCE_COPY: Record<string, { title: string; description: string }> = {
+  'ref_registry.institutional_ccih_2024': {
+    title: 'Guia de controle de infecção hospitalar — 2024',
+    description:
+      'Diretriz institucional para prevenção de infecções e uso racional de antimicrobianos.',
+  },
+  'ref_registry.clinical_syndromes_v2': {
+    title: 'Síndromes infecciosas e terapia antimicrobiana',
+    description:
+      'Raciocínio por foco infeccioso, gravidade, coleta de cultura e desescalonamento.',
+  },
+  'ref_registry.molecules_v2_sheets': {
+    title: 'Monografias de antimicrobianos',
+    description:
+      'Espectro, farmacocinética, farmacodinâmica, doses, cautelas e monitorização.',
+  },
+  'ref_registry.microbiology_v2_general': {
+    title: 'Microbiologia clínica e resistência',
+    description:
+      'Princípios para interpretar agentes prováveis, resistência e resposta ao tratamento.',
+  },
+  'ref_registry.microbiology_v2_resistance': {
+    title: 'Mecanismos de resistência bacteriana',
+    description:
+      'Bases microbiológicas para reconhecer resistência e orientar a escolha do antimicrobiano.',
+  },
+  'ref_registry.microbiology_v2_sampling': {
+    title: 'Coleta e interpretação de culturas',
+    description:
+      'Boas práticas de amostragem, transporte, cultura, antibiograma e interpretação clínica.',
+  },
+  'ref_registry.hospital_culture_timing': {
+    title: 'Momento da cultura e início do antimicrobiano',
+    description:
+      'Como conciliar coleta adequada, gravidade clínica e início oportuno da terapia.',
+  },
+  'ref_registry.hospital_stewardship_core': {
+    title: 'Uso racional de antimicrobianos',
+    description:
+      'Seleção, reavaliação, desescalonamento e duração do tratamento com foco em segurança.',
+  },
+  'ref_registry.hospital_institutional_pending': {
+    title: 'Prevenção e controle de infecção hospitalar',
+    description:
+      'Medidas institucionais de vigilância, isolamento, higiene e prevenção de transmissão.',
+  },
+  'ref_registry.textbook_nelson_couto_siim_6': {
+    title: 'Nelson & Couto — Medicina Interna de Pequenos Animais, 6ª edição',
+    description:
+      'Referência de medicina interna para raciocínio clínico, diagnóstico e tratamento.',
+  },
+  'ref_registry.textbook_cunningham_physiology_6': {
+    title: 'Cunningham — Tratado de Fisiologia Veterinária, 6ª edição',
+    description:
+      'Referência para fundamentos fisiológicos e mecanismos relacionados às doenças.',
+  },
+  'ref_registry.textbook_neuro_practical_3': {
+    title: 'Neurologia de Cães e Gatos — Abordagem Prática, 3ª edição',
+    description:
+      'Referência de neurologia clínica para localização, investigação e conduta.',
+  },
+}
+
+function sourceAnchorId(sourceKey: string): string {
+  return `source-${sourceKey.replace(/[^a-zA-Z0-9_-]/g, '-')}`
+}
+
+function SourceCard({ entry }: { entry: SourceEntryV2 }) {
+  const copy = SOURCE_COPY[entry.key] ?? {
+    title: entry.title,
+    description: 'Referência utilizada para fundamentação clínica.',
   }
-}
-
-function VersionedDocCard({ doc }: { doc: VersionedInstitutionalSource }) {
-  return (
-    <article
-      className="abv-panel p-4 text-sm"
-      style={{ color: 'hsl(var(--foreground))' }}
-      id={`abv-versioned-${doc.sourceId.replace(/[^a-zA-Z0-9]+/g, '-')}`}
-    >
-      <div className="flex flex-wrap items-center gap-2">
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
-          style={{ background: 'color-mix(in srgb, hsl(var(--primary)) 16%, hsl(var(--card)))', color: 'hsl(var(--primary))' }}
-        >
-          Documento versionado
-        </span>
-        <span className="text-[10px] opacity-80">Tier {doc.reliabilityTier}</span>
-        <span className="text-[10px] opacity-80">Versão {doc.versionLabel}</span>
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-          style={{ background: 'color-mix(in srgb, hsl(var(--muted)) 35%, hsl(var(--card)))' }}
-        >
-          {doc.lifecycleStatus}
-        </span>
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-          style={{ background: 'color-mix(in srgb, hsl(var(--secondary)) 14%, hsl(var(--card)))', color: 'hsl(var(--secondary))' }}
-        >
-          {doc.accessPolicy}
-        </span>
-        <span className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase opacity-90">
-          {doc.distributionMode}
-        </span>
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase"
-          style={{
-            background:
-              doc.verificationMode === 'pending_import'
-                ? 'color-mix(in srgb, var(--chart-5) 22%, hsl(var(--card)))'
-                : 'color-mix(in srgb, var(--chart-2) 22%, hsl(var(--card)))',
-          }}
-        >
-          {doc.verificationMode}
-        </span>
-      </div>
-      <h3 className="mt-2 text-lg font-bold tracking-tight">{doc.title}</h3>
-      <p className="mt-1 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        {doc.provenance}
-      </p>
-      <p className="mt-2 font-mono text-[10px] opacity-85">{doc.sourceId}</p>
-      <ul className="mt-2 space-y-1 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        <li>
-          <span className="font-semibold text-[hsl(var(--foreground))]">Política:</span> {doc.accessPolicy} ·{' '}
-          <span className="font-semibold text-[hsl(var(--foreground))]">Distribuição:</span> {doc.distributionMode}
-        </li>
-        <li>
-          <span className="font-semibold text-[hsl(var(--foreground))]">Exposto ao cliente:</span>{' '}
-          {doc.fileExposedToClient ? 'sim (documento normativo restrito)' : 'não'}
-        </li>
-        <li>
-          <span className="font-semibold text-[hsl(var(--foreground))]">Binário no repo de build:</span>{' '}
-          {doc.filePresentInRepo ? 'declarado' : 'não declarado'} (não implica download no app)
-        </li>
-        <li>
-          <span className="font-semibold text-[hsl(var(--foreground))]">Auditoria humana:</span>{' '}
-          {doc.auditedByHuman ? 'sim' : 'não registrada'}
-        </li>
-      </ul>
-      {doc.internalStorageDesignation && (
-        <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <span className="font-semibold text-[hsl(var(--foreground))]">Designação interna (sem URL):</span>{' '}
-          {doc.internalStorageDesignation}
-        </p>
-      )}
-      <p className="mt-2 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        Tipo: {doc.sourceType} · Mapeamentos: <span className="font-mono">{doc.mappingsModulePath}</span>
-      </p>
-      {doc.notes ? (
-        <div className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <RichTextViewer text={doc.notes} />
-        </div>
-      ) : null}
-      {doc.lastAuditNote && (
-        <p
-          className="mt-2 rounded border border-dashed p-2 text-xs"
-          style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}
-        >
-          <span className="font-semibold text-[hsl(var(--foreground))]">Última nota de auditoria:</span> {doc.lastAuditNote}
-        </p>
-      )}
-      {doc.publicationDate && (
-        <p className="mt-2 text-xs">Publicação (metadado): {doc.publicationDate}</p>
-      )}
-      <p className="mt-3 text-[10px] opacity-80">Não há link de download público para este documento a partir do aplicativo.</p>
-    </article>
-  )
-}
-
-function SourceEntryArticle({ entry }: { entry: SourceEntryV2 }) {
-  const vs = entry.versionedSourceId ? getVersionedSource(entry.versionedSourceId) : undefined
-  const st = statusBadge(entry.status)
 
   return (
     <article
       id={sourceAnchorId(entry.key)}
-      className="abv-panel scroll-mt-24 p-4 text-sm"
-      style={{ color: 'hsl(var(--foreground))' }}
+      className="scroll-mt-24 border border-slate-200 bg-white p-5 shadow-sm"
     >
-      <div className="flex flex-wrap items-center gap-2">
-        <span
-          className="rounded-full px-2 py-0.5 text-[10px] font-bold uppercase"
-          style={{
-            background:
-              st.tone === 'ok'
-                ? 'color-mix(in srgb, var(--chart-2) 22%, hsl(var(--card)))'
-                : st.tone === 'warn'
-                  ? 'color-mix(in srgb, var(--chart-5) 22%, hsl(var(--card)))'
-                  : 'color-mix(in srgb, hsl(var(--muted)) 40%, hsl(var(--card)))',
-            color: 'hsl(var(--foreground))',
-          }}
-        >
-          {st.label}
+      <div className="mb-3 flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 text-[11px] font-black uppercase tracking-wide text-emerald-800">
+          <BookOpen className="h-3.5 w-3.5" />
+          Fonte clínica
         </span>
-        {vs && (
-          <span className="text-[10px] font-medium opacity-90">
-            ↔ {vs.versionLabel} · {vs.verificationMode} · {vs.accessPolicy}
-          </span>
-        )}
+        <span className="bg-slate-100 px-2.5 py-1 text-[11px] font-bold text-slate-600">
+          {DOMAIN_LABELS[entry.domain]}
+        </span>
       </div>
-      <div className="mt-1 font-mono text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        {entry.key}
-      </div>
-      <h3 className="mt-1 font-semibold text-base">{entry.title}</h3>
-      <p className="mt-2" style={{ color: 'hsl(var(--muted-foreground))' }}>
-        {entry.description}
-      </p>
-      {entry.versionedSourceId && (
-        <p className="mt-2 text-xs">
-          <span className="font-semibold">Vínculo versionado:</span>{' '}
-          <span className="font-mono">{entry.versionedSourceId}</span>
-        </p>
-      )}
-      {vs && (
-        <ul className="mt-2 space-y-0.5 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          <li>
-            <span className="font-semibold text-[hsl(var(--foreground))]">Distribuição:</span> {vs.distributionMode}
-          </li>
-          <li>
-            <span className="font-semibold text-[hsl(var(--foreground))]">Cliente recebe PDF:</span>{' '}
-            {vs.fileExposedToClient ? 'sim' : 'não'}
-          </li>
-          {vs.internalStorageDesignation && (
-            <li>
-              <span className="font-semibold text-[hsl(var(--foreground))]">Arquivo (referência interna):</span>{' '}
-              {vs.internalStorageDesignation}
-            </li>
-          )}
-        </ul>
-      )}
-      {entry.note && (
-        <p
-          className="mt-2 rounded border border-dashed p-2 text-xs"
-          style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}
-        >
-          {entry.note}
-        </p>
-      )}
+
+      <h3 className="text-lg font-black text-slate-900">{copy.title}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-slate-600">{copy.description}</p>
     </article>
   )
 }
 
-interface ReferencesPageProps {
-  setPage: (t: AbvTab) => void
-  institutionalFocus: AbvInstitutionalFocus | null
-  onConsumedInstitutionalFocus: () => void
+function VersionedSourceCard({ source }: { source: VersionedInstitutionalSource }) {
+  return (
+    <article
+      id={sourceAnchorId(source.sourceId)}
+      className="scroll-mt-24 border border-emerald-200 bg-emerald-50/50 p-5"
+    >
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="inline-flex items-center gap-1.5 bg-emerald-700 px-2.5 py-1 text-[11px] font-black uppercase tracking-wide text-white">
+          <ShieldCheck className="h-3.5 w-3.5" />
+          Diretriz institucional
+        </span>
+        <span className="bg-white px-2.5 py-1 text-[11px] font-bold text-emerald-900">
+          {source.versionLabel}
+        </span>
+      </div>
+
+      <h2 className="mt-4 text-xl font-black text-slate-950">{source.title}</h2>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-700">
+        Referência para prevenção e controle de infecções, vigilância epidemiológica e uso
+        responsável de antimicrobianos.
+      </p>
+      {source.publicationDate ? (
+        <p className="mt-3 text-xs font-bold text-slate-500">
+          Publicação: {source.publicationDate}
+        </p>
+      ) : null}
+    </article>
+  )
 }
 
 export function ReferencesPage({
@@ -234,234 +149,83 @@ export function ReferencesPage({
   institutionalFocus,
   onConsumedInstitutionalFocus,
 }: ReferencesPageProps) {
-  const didScroll = useRef(false)
-  const versionedDocs = listVersionedSources()
+  const versionedSources = listVersionedSources()
+  const consumedFocusRef = useRef<string | null>(null)
 
   useEffect(() => {
-    if (!institutionalFocus || institutionalFocus.kind !== 'reference' || didScroll.current) return
-    const t = setTimeout(() => {
-      const el = document.getElementById(sourceAnchorId(institutionalFocus.key))
-      el?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-      didScroll.current = true
+    if (!institutionalFocus || consumedFocusRef.current === institutionalFocus.sourceKey) return
+
+    consumedFocusRef.current = institutionalFocus.sourceKey
+    const timer = window.setTimeout(() => {
+      document
+        .getElementById(sourceAnchorId(institutionalFocus.sourceKey))
+        ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       onConsumedInstitutionalFocus()
-    }, 150)
-    return () => clearTimeout(t)
+    }, 120)
+
+    return () => window.clearTimeout(timer)
   }, [institutionalFocus, onConsumedInstitutionalFocus])
 
-  useEffect(() => {
-    didScroll.current = false
-  }, [institutionalFocus])
-
   return (
-    <div className="min-h-full w-full bg-[hsl(var(--background))] p-4 md:p-8">
-      <div className="mx-auto w-full max-w-none">
-        <button
-          type="button"
-          onClick={() => setPage('home')}
-          className="mb-6 flex items-center text-lg font-semibold transition hover:opacity-90"
-          style={{ color: 'hsl(var(--primary))' }}
-        >
-          <Icon name="back" className="mr-2 h-6 w-6" />
-          Voltar ao início
-        </button>
+    <main className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+      <button
+        type="button"
+        onClick={() => setPage('home')}
+        className="mb-6 inline-flex items-center gap-2 text-sm font-bold text-slate-600 transition-colors hover:text-emerald-700"
+      >
+        <ArrowLeft className="h-4 w-4" />
+        Voltar
+      </button>
 
-        <header className="mb-8">
-          <p
-            className="mb-2 text-xs font-semibold uppercase tracking-wide"
-            style={{ color: 'hsl(var(--primary))' }}
-          >
-            Registro de fontes
-          </p>
-          <h1 className="text-3xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
-            Referências, tiers e documentos versionados
-          </h1>
-          <p className="mt-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            O módulo separa <strong>chaves de registro</strong> (<span className="font-mono">referenceKey</span>),{' '}
-            <strong>documentos institucionais</strong> (<span className="font-mono">sourceRegistry</span>) e{' '}
-            <strong>mapeamentos</strong> (<span className="font-mono">institutionalMappings.ts</span>). Documentos restritos
-            permanecem fora do bundle; o app exibe política de acesso, modos de distribuição e locators simbólicos (
-            <span className="font-mono">sectionRef</span>) — sem link público de download.
-          </p>
-        </header>
+      <header className="border-b border-slate-200 pb-6">
+        <p className="text-xs font-black uppercase tracking-wide text-emerald-700">
+          Referências clínicas
+        </p>
+        <h1 className="mt-2 text-3xl font-black text-slate-950 sm:text-4xl">
+          Fontes e diretrizes
+        </h1>
+        <p className="mt-3 max-w-3xl text-base leading-relaxed text-slate-600">
+          Literatura utilizada para fundamentar a escolha do antimicrobiano, a coleta de
+          culturas, a interpretação microbiológica e as medidas de controle de infecção.
+        </p>
+      </header>
 
-        <section className="mb-10 space-y-4">
-          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
-            Documentos versionados (camada central)
-          </h2>
-          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            <span className="font-mono">fileExposedToClient === false</span> garante que o binário não é entregue pelo
-            frontend. <span className="font-mono">filePresentInRepo</span> refere-se a cópia eventual em arquivo interno —
-            não implica publicação.
-          </p>
-          {versionedDocs.map((doc) => (
-            <VersionedDocCard key={doc.sourceId} doc={doc} />
-          ))}
-        </section>
-
-        <section className="mb-10 space-y-4">
-          <h2 className="border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
-            Maturidade da auditoria institucional (metadados vs páginas)
-          </h2>
-          <p className="text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            <span className="font-mono">linked_verified_metadata</span>: sectionRef estável, sem páginas no código.{' '}
-            <span className="font-mono">linked_verified_page_locator</span>: páginas registadas em{' '}
-            <span className="font-mono">ccih2024PageAudit.ts</span> após leitura do exemplar restrito. O PDF não é
-            distribuído ao cliente.
-          </p>
-          {(() => {
-            const meta = countLinkedVerifiedMetadataMappings()
-            const page = countLinkedVerifiedPageLocatorMappings()
-            const filledPriority = countValidPriorityPageAuditEntries()
-            const molConc = summarizeV2MoleculeConcordance()
-            return (
-              <>
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="abv-panel p-3 text-sm" style={{ color: 'hsl(var(--foreground))' }}>
-                    <p className="font-semibold">Metadados apenas (metadata)</p>
-                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                      <li>Síndromes v2: {meta.syndromes}</li>
-                      <li>Cartões hospitalares: {meta.hospitalCards}</li>
-                      <li>Resistência / laboratório: {meta.resistance}</li>
-                      <li>Fichas de moléculas: {meta.molecules}</li>
-                      <li>Temas transversais: {meta.thematic}</li>
-                    </ul>
-                  </div>
-                  <div className="abv-panel p-3 text-sm" style={{ color: 'hsl(var(--foreground))' }}>
-                    <p className="font-semibold">Locator com páginas (page_locator)</p>
-                    <ul className="mt-2 list-inside list-disc text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                      <li>Síndromes v2: {page.syndromes}</li>
-                      <li>Cartões hospitalares: {page.hospitalCards}</li>
-                      <li>Resistência / laboratório: {page.resistance}</li>
-                      <li>Fichas de moléculas: {page.molecules}</li>
-                      <li>Temas transversais: {page.thematic}</li>
-                    </ul>
-                    <p className="mt-2 text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                      Prioridade de auditoria: {filledPriority}/{CCIH_PRIORITY_PAGE_AUDIT_KEYS.length} chaves com página válida em{' '}
-                      <span className="font-mono">ccih2024PageAudit.ts</span> (demais permanecem só metadados até auditoria).
-                    </p>
-                  </div>
-                </div>
-                <p className="text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                  <span className="font-semibold text-[hsl(var(--foreground))]">Núcleo v2 — moléculas (camada explícita):</span>{' '}
-                  {molConc.metadataOnly} fichas em <span className="font-mono">linked_verified_metadata</span>;{' '}
-                  {molConc.pageLocator} em <span className="font-mono">linked_verified_page_locator</span> (total{' '}
-                  {molConc.total}). Nada é marcado como auditado sem entrada correspondente em{' '}
-                  <span className="font-mono">ccih2024PageAudit.ts</span>.{' '}
-                  <span className="font-semibold text-[hsl(var(--foreground))]">Regimes:</span> {REGIMEN_CONCORDANCE_EXPLANATION}
-                </p>
-                {(() => {
-                  const molA = summarizeMoleculeAuditStatesV2()
-                  const regA = summarizeRegimenAuditStatesInV2Syndromes()
-                  const lines = (c: Record<TherapeuticInstitutionalAuditState, number>) =>
-                    (Object.entries(c) as [TherapeuticInstitutionalAuditState, number][])
-                      .filter(([, n]) => n > 0)
-                      .map(([k, n]) => (
-                        <li key={k}>
-                          {THERAPEUTIC_AUDIT_LABEL[k]}: {n}
-                        </li>
-                      ))
-                  return (
-                    <div
-                      className="abv-panel mt-4 p-3 text-sm"
-                      style={{ color: 'hsl(var(--foreground))' }}
-                    >
-                      <p className="font-semibold">Trilha terapêutica institucional (matriz v2)</p>
-                      <p className="mt-1 text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                        Derivado de <span className="font-mono">therapeuticInstitutionalAudit.ts</span>: separa concordância da
-                        ficha de molécula da auditoria do regime sob perfil de síndrome (sem locator CCIH por regime no código).
-                      </p>
-                      <div className="mt-3 grid gap-3 sm:grid-cols-2">
-                        <div>
-                          <p className="text-xs font-medium">Domínio: moléculas (biblioteca v2)</p>
-                          <ul className="mt-1 list-inside list-disc text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                            {lines(molA)}
-                          </ul>
-                        </div>
-                        <div>
-                          <p className="text-xs font-medium">Domínio: regimes (pares síndrome×regime)</p>
-                          <ul className="mt-1 list-inside list-disc text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                            {lines(regA)}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })()}
-              </>
-            )
-          })()}
-          <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              Temas transversais — sectionRef e páginas (se auditadas)
-            </p>
-            <ul className="space-y-1 font-mono text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              {listThematicCcInstitutionalMappings().map((m) => (
-                <li key={m.locator.sectionRef ?? m.topicHint}>
-                  {m.locator.sectionRef} — {m.topicHint}
-                  {m.linkStatus === 'linked_verified_page_locator' &&
-                    m.locator.pageStart != null &&
-                    m.locator.pageEnd != null &&
-                    ` · p.${m.locator.pageStart}–${m.locator.pageEnd}`}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              Síndromes prioritárias — estado por id
-            </p>
-            <ul className="max-h-48 overflow-y-auto font-mono text-[10px] leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              {Object.entries(SYNDROME_INSTITUTIONAL_MAPPINGS).map(([id, m]) => (
-                <li key={id}>
-                  {id}: {m.linkStatus}
-                  {m.locator.pageStart != null && m.locator.pageEnd != null
-                    ? ` · p.${m.locator.pageStart}–${m.locator.pageEnd}`
-                    : ''}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="space-y-2">
-            <p className="text-xs font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
-              Resistência (prioritário MRSP/MRSA/ESBL/intrínseca)
-            </p>
-            <ul className="font-mono text-[10px]" style={{ color: 'hsl(var(--muted-foreground))' }}>
-              {(['mrsp', 'mrsa', 'esbl', 'intrinsic_resistance'] as const).map((id) => {
-                const m = RESISTANCE_INSTITUTIONAL_MAPPINGS[id]
-                if (!m) return null
-                return (
-                  <li key={id}>
-                    {id}: {m.linkStatus}
-                    {m.locator.pageStart != null && m.locator.pageEnd != null
-                      ? ` · p.${m.locator.pageStart}–${m.locator.pageEnd}`
-                      : ''}
-                  </li>
-                )
-              })}
-            </ul>
+      {versionedSources.length > 0 ? (
+        <section className="mt-8">
+          <h2 className="mb-4 text-xl font-black text-slate-900">Diretriz institucional</h2>
+          <div className="grid gap-4">
+            {versionedSources.map((source) => (
+              <VersionedSourceCard key={source.sourceId} source={source} />
+            ))}
           </div>
         </section>
+      ) : null}
 
-        <section className="mb-10 space-y-8">
-          {REFERENCE_GROUPS.map((g) => (
-            <div key={g.domain}>
-              <h2 className="mb-3 border-b pb-2 text-lg font-semibold" style={{ borderColor: 'hsl(var(--border))' }}>
-                {g.label}
+      {REFERENCE_GROUPS.filter((group) => group.domain !== 'institutional_versioned').map(
+        (group) => {
+          const entries = group.sourceKeys
+            .map((sourceKey) => getSourceEntry(sourceKey))
+            .filter((entry): entry is SourceEntryV2 => Boolean(entry))
+            .filter((entry) => entry.key !== 'ref_registry.pathophysiology_excluded_pathologic_basis')
+
+          if (entries.length === 0) return null
+
+          return (
+            <section key={group.domain} className="mt-10">
+              <h2 className="mb-4 text-xl font-black text-slate-900">
+                {DOMAIN_LABELS[group.domain]}
               </h2>
-              <p className="mb-3 text-xs" style={{ color: 'hsl(var(--muted-foreground))' }}>
-                {DOMAIN_LABEL[g.domain]}
-              </p>
-              <div className="space-y-3">
-                {g.sourceKeys.map((key) => {
-                  const entry = getSourceEntry(key) ?? SOURCE_REGISTRY[key]
-                  if (!entry) return null
-                  return <SourceEntryArticle key={key} entry={entry} />
-                })}
+              <div className="grid gap-4 md:grid-cols-2">
+                {entries.map((entry) => (
+                  <SourceCard key={entry.key} entry={entry} />
+                ))}
               </div>
-            </div>
-          ))}
-        </section>
-      </div>
-    </div>
+            </section>
+          )
+        },
+      )}
+    </main>
   )
 }
+
+export default ReferencesPage

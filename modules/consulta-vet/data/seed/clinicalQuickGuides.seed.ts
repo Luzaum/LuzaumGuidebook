@@ -409,7 +409,7 @@ const guiaRupturaLcc: ClinicalQuickGuide = {
     {
       type: 'paragraph',
       text:
-        'Dois vídeos de referência: gaveta cranial e compressão tibial. Reproduzem no próprio app (iframe responsivo).',
+        'Dois vídeos de referência: gaveta cranial e compressão tibial. Podem ser reproduzidos diretamente nesta página.',
     },
     {
       type: 'youtubeEmbed',

@@ -95,7 +95,7 @@ export function AddCompoundedMedicationModal({
         <div className="flex items-center justify-between border-b border-slate-800 bg-black/60 px-6 py-4">
           <div>
             <h2 className="text-lg font-black uppercase italic tracking-tight text-white">Adicionar manipulado</h2>
-            <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Catálogo V1 da clínica</p>
+            <p className="mt-1 text-[11px] font-semibold uppercase tracking-widest text-slate-500">Fórmulas da clínica</p>
           </div>
           <button type="button" onClick={onClose} className="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-400 hover:bg-slate-800 hover:text-white">
             <span className="material-symbols-outlined text-[20px]">close</span>
@@ -109,7 +109,7 @@ export function AddCompoundedMedicationModal({
             </RxvField>
             <div className="mt-4 space-y-2 overflow-y-auto pr-1 lg:max-h-[62vh]">
               {filteredRows.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-slate-700 px-4 py-6 text-sm text-slate-500">Nenhuma fórmula V1 encontrada.</div>
+                <div className="rounded-2xl border border-dashed border-slate-700 px-4 py-6 text-sm text-slate-500">Nenhuma fórmula encontrada.</div>
               ) : (
                 filteredRows.map((row) => (
                   <ManipuladosV1CatalogCard key={row.id} item={rowToFormula(row)} active={selectedId === row.id} onClick={() => setSelectedId(row.id)} />
@@ -119,13 +119,13 @@ export function AddCompoundedMedicationModal({
           </div>
           <div className="min-h-0 overflow-y-auto p-6 xl:p-7">
             {!selectedFormula || !previewItem ? (
-              <div className="rounded-2xl border border-dashed border-slate-800 px-6 py-10 text-sm text-slate-500">Selecione uma fórmula V1.</div>
+              <div className="rounded-2xl border border-dashed border-slate-800 px-6 py-10 text-sm text-slate-500">Selecione uma fórmula.</div>
             ) : (
               <div className="space-y-5">
                 <div>
                   <div className="flex flex-wrap items-center gap-2">
                     <h3 className="text-xl font-black text-white">{selectedFormula.identity.name}</h3>
-                    <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">Manipulado V1</span>
+                    <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">Manipulado</span>
                     {selectedFormula.identity.sale_classification === 'controlled' ? <span className="rounded border border-red-500/30 bg-red-500/10 px-2 py-0.5 text-[10px] font-black uppercase tracking-widest text-red-300">Controlado</span> : null}
                   </div>
                   <p className="mt-2 text-sm text-slate-400">{getManipuladoV1CatalogSubtitle(selectedFormula)}</p>

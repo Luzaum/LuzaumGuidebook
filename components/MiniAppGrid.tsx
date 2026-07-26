@@ -27,7 +27,7 @@ const miniApps: Array<{
   {
     id: 'fluidoterapia-vet',
     title: 'Fluidoterapia Vet',
-    description: 'Modulo clinico integrado para calculos e protocolos de fluidoterapia',
+    description: 'Cálculos e protocolos clínicos de fluidoterapia veterinária',
     icon: <img src="/apps/fluidoterapia.png" alt="Fluidoterapia Vet" className="h-12 w-12 rounded-lg object-cover" />,
     implemented: true,
   },
@@ -89,7 +89,7 @@ interface MiniAppGridProps {
 export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
   const handleAppClick = (appId: string, implemented: boolean) => {
     if (!implemented) {
-      alert('Este aplicativo ainda não foi implementado.')
+      alert('Esta ferramenta está indisponível no momento.')
       return
     }
 
@@ -106,15 +106,15 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
       <div className="container relative z-10 mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Aplicativos Veterinários
+            Ferramentas Veterinárias
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Acesse mini-aplicativos especializados para auxiliar na sua
+            Acesse recursos especializados para auxiliar na sua
             prática clínica diária
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {miniApps.map((app) => (
+          {miniApps.filter((app) => app.implemented).map((app) => (
             <div key={app.id}>
               <Card
                 className="relative overflow-hidden p-6 cursor-pointer group hover:border-primary/50 transition-all duration-300"
@@ -129,10 +129,10 @@ export function MiniAppGrid({ onAppClick }: MiniAppGridProps) {
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-primary text-sm font-medium">
-                    {app.implemented ? 'Abrir' : 'Em breve'}
+                    Abrir
                   </span>
                   <span className="text-muted-foreground text-xs">
-                    {app.implemented ? 'Ver guia' : 'Em desenvolvimento'}
+                    Ver guia
                   </span>
                 </div>
               </Card>

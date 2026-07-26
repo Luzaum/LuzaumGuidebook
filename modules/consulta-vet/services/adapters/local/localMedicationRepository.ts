@@ -44,7 +44,7 @@ export class LocalMedicationRepository implements MedicationRepository {
   }
 
   async upsert(_input: MedicationUpsertInput): Promise<MedicationRecord> {
-    throw new Error('Edicao editorial dispon?vel apenas com Supabase configurado.');
+    throw new Error('A edição de medicamentos está indisponível no momento.');
   }
 }
 

@@ -273,7 +273,7 @@ export const Result: React.FC<ResultProps> = ({ onNavigate }) => {
             {/* Simple Footer */}
             <footer className="border-t border-slate-200 dark:border-vet-surface-hover mt-12 py-8 bg-white dark:bg-[#1a120b]">
                 <div className="max-w-[1200px] mx-auto px-6 text-center">
-                    <p className="text-slate-400 dark:text-[#674d32] text-sm mb-2">VetCalc Pro v2.4.0 • Desenvolvido para auxílio veterinário profissional.</p>
+                    <p className="text-slate-400 dark:text-[#674d32] text-sm mb-2">Reposição eletrolítica veterinária</p>
                     <p className="text-slate-300 dark:text-vet-surface-hover text-xs">Os cálculos devem ser sempre verificados por um médico veterinário responsável.</p>
                 </div>
             </footer>

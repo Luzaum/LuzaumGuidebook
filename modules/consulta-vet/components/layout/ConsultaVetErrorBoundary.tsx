@@ -17,8 +17,6 @@ export class ConsultaVetErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: unknown) {
-    console.error('ConsultaVET crashed', error);
-
     const isDynamicImportError =
       error instanceof Error &&
       (error.message.includes('Failed to fetch dynamically imported module') ||
@@ -47,7 +45,7 @@ export class ConsultaVetErrorBoundary extends React.Component<Props, State> {
           <AlertTriangle className="mx-auto mb-3 h-8 w-8 text-amber-600 dark:text-amber-400" />
           <h2 className="mb-2 text-xl font-semibold text-foreground">Não foi possível abrir esta tela</h2>
           <p className="mx-auto mb-6 max-w-[600px] text-sm text-muted-foreground">
-            O módulo foi protegido para evitar travar o app inteiro. Tente recarregar esta seção.
+            O conteúdo não pôde ser carregado. Tente novamente.
           </p>
           <button
             type="button"

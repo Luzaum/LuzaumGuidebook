@@ -22,21 +22,21 @@
         "limitations": "Pode sobrepor neoplasia ou vascular."
       },
       {
-        "test": "Liquor apos imagem segura",
+        "test": "Liquor após imagem segura",
         "priority": "ALTA",
         "whatItAssesses": "Confirma inflamacao e ajuda a separar infecciosa de imunomediada.",
-        "expectedFindings": "Pleocitose e aumento de proteina.",
+        "expectedFindings": "Pleocitose e aumento de proteína.",
         "limitations": "Contraindicado se houver risco elevado de herniacao."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Controle de convulsoes se presentes", "Protecao de via aerea e avaliacao de degluticao"],
-        "cautions": ["Nao iniciar imunossupressao cega se infecciosa ainda e plausivel"]
+        "plan": ["Suporte intensivo", "Controle de convulsoes se presentes", "Protecao de via aérea e avaliação de degluticao"],
+        "cautions": ["Não iniciar imunossupressao cega se infecciosa ainda e plausivel"]
       },
       "DEFINITIVO": {
-        "plan": ["Terapia dirigida conforme etiologia", "Monitorizacao neurologica seriada"],
-        "cautions": ["Alto risco de deterioracao respiratoria ou deglutitoria"]
+        "plan": ["Terapia dirigida conforme etiologia", "Monitorização neurologica seriada"],
+        "cautions": ["Alto risco de deterioracao respiratória ou deglutitoria"]
       }
     }
   },
@@ -60,7 +60,7 @@
         "priority": "ALTA",
         "whatItAssesses": "Localiza massa, edema e efeito de massa em tronco ou fossa caudal.",
         "expectedFindings": "Lesao expansiva, infiltrativa ou obstrutiva.",
-        "limitations": "Histologia nem sempre e possivel."
+        "limitations": "Histologia nem sempre e possível."
       }
     ],
     "treatment": {
@@ -86,20 +86,20 @@
     },
     "whyTemplates": [
       "Inicio abrupto, deficits assimetricos de pares cranianos e propriocepcao sugerem fortemente evento vascular de tronco.",
-      "Doenca renal, hipertensao, hiperadrenocorticismo e cardiopatias aumentam a plausibilidade."
+      "Doença renal, hipertensao, hiperadrenocorticismo e cardiopatias aumentam a plausibilidade."
     ],
     "diagnostics": [
       {
-        "test": "RM de encefalo, pressao arterial e coagulograma",
+        "test": "RM de encefalo, pressão arterial e coagulograma",
         "priority": "ALTA",
         "whatItAssesses": "Confirma lesao vascular e pesquisa predisponentes trataveis.",
-        "expectedFindings": "Lesao isquemica/hemorragica focal e possivel hipertensao ou coagulopatia.",
-        "limitations": "Sem RM, o diagnostico permanece presuntivo."
+        "expectedFindings": "Lesao isquemica/hemorragica focal e possível hipertensao ou coagulopatia.",
+        "limitations": "Sem RM, o diagnóstico permanece presuntivo."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Perfusao e oxigenacao adequadas", "Controle de PA quando indicado"],
+        "plan": ["Suporte intensivo", "Perfusão e oxigenação adequadas", "Controle de PA quando indicado"],
         "cautions": ["Evitar hipotensao iatrogenica e hipoxemia"]
       },
       "DEFINITIVO": {
@@ -126,12 +126,12 @@
       {
         "test": "TC/RM de bula timpanica e encefalo",
         "priority": "ALTA",
-        "whatItAssesses": "Define doenca otologica e extensao para tronco/fossa caudal.",
+        "whatItAssesses": "Define doença otologica e extensao para tronco/fossa caudal.",
         "expectedFindings": "Opacificacao de bula, osteite, realce meningeo ou lesao central adjacente.",
         "limitations": "Muitas vezes requer anestesia."
       },
       {
-        "test": "Citologia/cultura otologica quando possivel",
+        "test": "Citologia/cultura otologica quando possível",
         "priority": "MEDIA",
         "whatItAssesses": "Ajuda a direcionar o antimicrobiano.",
         "expectedFindings": "Agente bacteriano ou otite inflamatoria.",
@@ -150,7 +150,7 @@
     }
   },
   {
-    "name": "Encefalopatia metabolica ou carencial com envolvimento de tronco",
+    "name": "Encefalopatia metabólica ou carencial com envolvimento de tronco",
     "category": "TOXICO_METABOLICA",
     "rules": {
       "course": ["AGUDO", "SUBAGUDO", "EPISODICO"],
@@ -167,19 +167,19 @@
       {
         "test": "Bioquimica, eletrolitos, gasometria, oximetria e historia nutricional",
         "priority": "ALTA",
-        "whatItAssesses": "Procura causa sistemica tratavel para um fenotipo de tronco.",
+        "whatItAssesses": "Procura causa sistêmica tratavel para um fenotipo de tronco.",
         "expectedFindings": "Alteracoes metabolicas, acidobasicas, respiratorias ou carenciais.",
-        "limitations": "Nao exclui lesao estrutural coexistente."
+        "limitations": "Não exclui lesao estrutural coexistente."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Correcao metabolica e respiratoria", "Protecao de via aerea"],
-        "cautions": ["Ajustar sedacao e farmacos a funcao respiratoria, renal e hepatica"]
+        "plan": ["Suporte intensivo", "Correção metabólica e respiratória", "Protecao de via aérea"],
+        "cautions": ["Ajustar sedação e fármacos a função respiratória, renal e hepática"]
       },
       "DEFINITIVO": {
-        "plan": ["Tratar doenca de base e reavaliar neuro apos estabilizacao"],
-        "cautions": ["Persistencia do deficit exige imagem de SNC"]
+        "plan": ["Tratar doença de base e reavaliar neuro após estabilizacao"],
+        "cautions": ["Persistencia do déficit exige imagem de SNC"]
       }
     }
   },
@@ -195,15 +195,15 @@
     },
     "whyTemplates": [
       "Dor cervical, pares cranianos discretos e tetraparesia podem representar lesao na juncao bulbo-cervical ou malformacao occipito-cervical.",
-      "Pequenos caes e braquicefalicos podem expressar esse eixo sindromico de forma progressiva."
+      "Pequenos cães e braquicefalicos podem expressar esse eixo sindromico de forma progressiva."
     ],
     "diagnostics": [
       {
         "test": "RM de juncao craniocervical e medula cervical cranial",
         "priority": "ALTA",
         "whatItAssesses": "Procura compressao, malformacao, syrinx ou lesao estrutural adjacente ao tronco.",
-        "expectedFindings": "Compressao, herniacao cerebelar ou alteracao de fluxo em juncao craniocervical.",
-        "limitations": "Interpretacao depende de tecnica e experiencia."
+        "expectedFindings": "Compressao, herniacao cerebelar ou alteração de fluxo em juncao craniocervical.",
+        "limitations": "Interpretação depende de tecnica e experiência."
       }
     ],
     "treatment": {

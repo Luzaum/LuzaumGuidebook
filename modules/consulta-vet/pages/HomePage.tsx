@@ -151,7 +151,7 @@ export function HomePage() {
         setConsensos(loadedConsensos.slice(0, 3));
       } catch (loadError) {
         if (!isMounted) return;
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar o módulo.');
+        setError('Não foi possível carregar o conteúdo clínico.');
         listsCacheRef.current = null;
       } finally {
         if (isMounted) setIsLoading(false);
@@ -320,7 +320,7 @@ export function HomePage() {
             ))}
           </div>
           <p className="mt-6 text-center text-xs font-medium uppercase tracking-wider text-muted-foreground">
-            Carregando conteúdo do módulo…
+            Carregando conteúdo…
           </p>
         </section>
       )}

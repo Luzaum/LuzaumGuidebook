@@ -158,7 +158,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       src: '/assets/consulta-vet/drc/jvim-ckd-medulla-curve.jpg',
       alt: 'Curvas de intensidade-tempo da medula renal em gatos saudaveis e gatos com DRC',
       caption:
-        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo da medula renal durante 90 segundos apos contraste, comparando gatos saudaveis e gatos com DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo da medula renal durante 90 segundos após contraste, comparando gatos saudaveis e gatos com DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
     },
     perdaNefronsHiperfiltracao:
@@ -213,11 +213,11 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     },
     drcTabelaAchadosImagem: {
       kind: 'clinicalTable',
-      headers: ['Achado de imagem', 'Como interpretar na DRC', 'Observacao cl?nica'],
+      headers: ['Achado de imagem', 'Como interpretar na DRC', 'Observacao clínica'],
       rows: [
-        ['Rins pequenos ou irregulares', 'Sugere cronicidade e fibrose/atrofia', 'N?o exclui agudizacao sobre DRC'],
-        ['Perda de distincao corticomedular', 'Compat?vel com alteracao arquitetural cr?nica', 'Integrar com urinalise, creatinina/SDMA e historia'],
-        ['Hiperecogenicidade/mineralizacao', 'Pode acompanhar nefropatia cr?nica', 'N?o e especifico isoladamente'],
+        ['Rins pequenos ou irregulares', 'Sugere cronicidade e fibrose/atrofia', 'Não exclui agudizacao sobre DRC'],
+        ['Perda de distincao corticomedular', 'Compatível com alteração arquitetural crônica', 'Integrar com urinálise, creatinina/SDMA e historia'],
+        ['Hiperecogenicidade/mineralizacao', 'Pode acompanhar nefropatia crônica', 'Não e especifico isoladamente'],
         ['Pieliectasia, ureterolitos ou nefrolitase', 'Pode indicar componente obstrutivo ou causa tratavel', 'Evitar estadiar antes de corrigir pos-renal quando relevante'],
       ],
     },
@@ -225,9 +225,9 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       kind: 'clinicalTable',
       headers: ['Condicao', 'Relevancia para DRC', 'Quando procurar'],
       rows: [
-        ['Doenca renal policistica', 'Causa hereditaria/predisponente, especialmente em Persas e racas relacionadas', 'Rins aumentados/irregulares, cistos em ultrassom, historico familiar'],
-        ['Ureterolitos', 'Causa potencialmente tratavel de obstrucao parcial ou intermitente', 'Pieliectasia, dor, piora abrupta de azotemia'],
-        ['Pielonefrite cr?nica', 'Pode manter inflamacao e progressao renal', 'Sedimento ativo, cultura positiva, febre/dor renal ou piora sem explicacao'],
+        ['Doença renal policistica', 'Causa hereditaria/predisponente, especialmente em Persas e racas relacionadas', 'Rins aumentados/irregulares, cistos em ultrassom, histórico familiar'],
+        ['Ureterolitos', 'Causa potencialmente tratavel de obstrução parcial ou intermitente', 'Pieliectasia, dor, piora abrupta de azotemia'],
+        ['Pielonefrite crônica', 'Pode manter inflamacao e progressao renal', 'Sedimento ativo, cultura positiva, febre/dor renal ou piora sem explicacao'],
       ],
     },
     drcCronicoVersusAgudo: {
@@ -323,19 +323,19 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
   treatment: {
     drcTabelaSubestadiamentoPressaoInicial: {
       kind: 'clinicalTable',
-      headers: ['Medi??o de PA', 'Por que importa na DRC', 'Conduta pratica'],
+      headers: ['Medição de PA', 'Por que importa na DRC', 'Conduta pratica'],
       rows: [
-        ['T?cnica padronizada e repetida', 'Evita tratar estresse como hipertens?o verdadeira', 'Ambiente calmo, manguito adequado, varias leituras'],
-        ['PAS >=160 mmHg persistente', 'Risco moderado/alto de les?o em ?rg?o-alvo', 'Tratar e reavaliar PA em 7-14 dias'],
-        ['Lesao em ?rg?o-alvo', 'Retina, c?rebro, cora??o e rins podem ser afetados', 'Tratar sem aguardar nova persistencia'],
+        ['Técnica padronizada e repetida', 'Evita tratar estresse como hipertensão verdadeira', 'Ambiente calmo, manguito adequado, varias leituras'],
+        ['PAS >=160 mmHg persistente', 'Risco moderado/alto de lesão em órgão-alvo', 'Tratar e reavaliar PA em 7-14 dias'],
+        ['Lesao em órgão-alvo', 'Retina, cérebro, coração e rins podem ser afetados', 'Tratar sem aguardar nova persistencia'],
       ],
     },
     drcTabelaPriorizacaoTutor: {
       kind: 'clinicalTable',
       headers: ['Prioridade', 'Maior beneficio esperado', 'Como preservar adesao'],
       rows: [
-        ['Alimentacao e calorias', 'Melhora qualidade de vida e reduz crise por inapetencia', 'Dieta renal se aceita; se n?o aceita, priorizar comer'],
-        ['Hidratacao', 'Reduz descompensacoes pre-renais', 'Plano simples e reavaliavel'],
+        ['Alimentacao e calorias', 'Melhora qualidade de vida e reduz crise por inapetencia', 'Dieta renal se aceita; se não aceita, priorizar comer'],
+        ['Hidratação', 'Reduz descompensacoes pre-renais', 'Plano simples e reavaliavel'],
         ['PA, UPC e fosforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
       ],
     },
@@ -366,6 +366,22 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     },
     drcMetasFosforoIRIS:
       'Metas práticas frequentemente citadas: estádio 2 manter fósforo abaixo de cerca de 4,6 mg/dL; estádio 3 idealmente abaixo de 5,0 mg/dL; estádio 4 meta mais realista abaixo de 6,0 mg/dL — sempre integrando apetite e tolerância.',
+    drcCondutaPraticaPorEstagioEspecie: {
+      kind: 'clinicalTable',
+      headers: ['Cenário', 'Entrar / considerar', 'Observações'],
+      rows: [
+        [
+          'Cão com DRC IRIS estágio 2',
+          'Antiácido quando indicado + antiemético/antináusea + quelante de fósforo se fósforo acima do alvo + estadiamento completo.',
+          'Confirmar estabilidade/euvolemia; subestadiar UPC e pressão arterial; dieta renal e alvo de fósforo <4,5-4,6 mg/dL.',
+        ],
+        [
+          'Gato com DRC IRIS estágio 3/4',
+          'Antiácido quando indicado + mirtazapina para hiporexia/inapetência + maropitant/Cerenia para vômito ou náusea.',
+          'Priorizar apetite, hidratação, fósforo, potássio, acidose, anemia e qualidade de vida.',
+        ],
+      ],
+    },
     drcProteinuriaRaas: [
       {
         drug: 'Benazepril',
@@ -390,18 +406,18 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     drcGraficoParametrosPerfusao: {
       kind: 'clinicalFigure',
       src: '/assets/consulta-vet/drc/jvim-perfusion-parameters.jpg',
-      alt: 'Curva intensidade-tempo de ultrassom contrastado renal com parametros de perfus?o',
+      alt: 'Curva intensidade-tempo de ultrassom contrastado renal com parametros de perfusão',
       caption:
-        'Grafico de artigo JVIM/PMC: curva intensidade-tempo apos bolus de contraste ultrassonografico, com parametros de perfus?o renal. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+        'Grafico de artigo JVIM/PMC: curva intensidade-tempo após bolus de contraste ultrassonografico, com parametros de perfusão renal. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
     },
     drcTabelaAlvosFosforo: {
       kind: 'clinicalTable',
-      headers: ['Estagio IRIS', 'Alvo pr?tico de fosforo', 'Conduta se acima do alvo'],
+      headers: ['Estagio IRIS', 'Alvo prático de fosforo', 'Conduta se acima do alvo'],
       rows: [
-        ['1', 'Avaliar tendencia, causa e sinais de DRC-MBD', 'Corrigir dieta e investigar progressao quando indicado'],
-        ['2', '<4,5-4,6 mg/dL', 'Dieta renal; quelante se persistir elevado apos transicao alimentar'],
-        ['3', '<5,0 mg/dL', 'Dieta renal + quelante com refeicoes se necessario; monitorar calcio'],
+        ['1', 'Avaliar tendência, causa e sinais de DRC-MBD', 'Corrigir dieta e investigar progressao quando indicado'],
+        ['2', '<4,5-4,6 mg/dL', 'Dieta renal; quelante se persistir elevado após transicao alimentar'],
+        ['3', '<5,0 mg/dL', 'Dieta renal + quelante com refeicoes se necessario; monitorar cálcio'],
         ['4', '<6,0 mg/dL', 'Meta realista, priorizando apetite, calorias e bem-estar'],
       ],
     },
@@ -410,15 +426,25 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       headers: ['PAS', 'Subestagio/risco', 'Conduta'],
       rows: [
         ['<140 mmHg', 'Normotenso / risco minimo', 'Monitorar em reavaliacoes'],
-        ['140-159 mmHg', 'Pre-hipertenso / baixo risco', 'Repetir t?cnica padronizada e procurar tendencia'],
-        ['160-179 mmHg', 'Hipertenso / risco moderado', 'Tratar se persistente ou se houver les?o em ?rg?o-alvo'],
-        ['>=180 mmHg', 'Hipertens?o grave / alto risco', 'Intervir com prioridade apos confirmar t?cnica; avaliar retina, c?rebro, cora??o e rins'],
+        ['140-159 mmHg', 'Pre-hipertenso / baixo risco', 'Repetir técnica padronizada e procurar tendência'],
+        ['160-179 mmHg', 'Hipertenso / risco moderado', 'Tratar se persistente ou se houver lesão em órgão-alvo'],
+        ['>=180 mmHg', 'Hipertensão grave / alto risco', 'Intervir com prioridade após confirmar técnica; avaliar retina, cérebro, coração e rins'],
       ],
     },
     drcSintomasUremicos: [
       {
+        drug: 'Omeprazol ou famotidina',
+        indication:
+          'Antiácido/gastroproteção quando há suspeita de hiperacidez, refluxo, esofagite, gastrite, melena ou desconforto compatível; não substitui antiemético/antináusea.',
+        dose: 'Definir conforme paciente, espécie, apresentação e protocolo local.',
+        frequency: 'individualizar',
+        route: 'VO',
+        notes:
+          'Na DRC, náusea/hiporexia frequentemente exige maropitant/ondansetrona/mirtazapina além de correção de hidratação e fósforo.',
+      },
+      {
         drug: 'Maropitant',
-        indication: 'Náuseas e vómito.',
+        indication: 'Náuseas e vômito (Cerenia/maropitant).',
         dose: '1 mg/kg SC q24h ou 2 mg/kg VO q24h em cães e gatos.',
         frequency: 'q24h',
         route: 'SC ou VO',

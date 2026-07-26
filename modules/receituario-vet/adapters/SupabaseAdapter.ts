@@ -322,20 +322,10 @@ export class SupabaseAdapter implements DataAdapter {
     }
     if (createdBy) payload.created_by = createdBy
 
-    if (import.meta.env.DEV) {
-      console.log('[DEBUG] [SupabaseAdapter] createTutor payload', payload)
-    }
-
     try {
       const row = await this.insertClinicScopedRow('tutors', payload, clinicId)
-      if (import.meta.env.DEV) {
-        console.log('[DEBUG] [SupabaseAdapter] createTutor result', { data: row, error: null })
-      }
       return mapTutorRow(row as SupabaseTutorRow)
     } catch (err) {
-      if (import.meta.env.DEV) {
-        console.log('[DEBUG] [SupabaseAdapter] createTutor result', { data: null, error: err })
-      }
       throw err
     }
   }
@@ -366,20 +356,10 @@ export class SupabaseAdapter implements DataAdapter {
     }
     if (createdBy) payload.created_by = createdBy
 
-    if (import.meta.env.DEV) {
-      console.log('[DEBUG] [SupabaseAdapter] createPatient payload', payload)
-    }
-
     try {
       const row = await this.insertClinicScopedRow('patients', payload, clinicId)
-      if (import.meta.env.DEV) {
-        console.log('[DEBUG] [SupabaseAdapter] createPatient result', { data: row, error: null })
-      }
       return mapPatientRow(row as SupabasePatientRow)
     } catch (err) {
-      if (import.meta.env.DEV) {
-        console.log('[DEBUG] [SupabaseAdapter] createPatient result', { data: null, error: err })
-      }
       throw err
     }
   }

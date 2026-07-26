@@ -67,7 +67,7 @@ export function EditorialCategoriesPage() {
       setSelectedSlug(selected?.slug || null);
       setForm(selected ? mapCategoryToForm(selected) : createEmptyCategory());
     } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar categorias.');
+      setError('Não foi possível carregar as categorias.');
     } finally {
       setIsLoadingData(false);
     }
@@ -124,7 +124,7 @@ export function EditorialCategoriesPage() {
       await load(saved.slug);
       setSuccess(form.isPublished ? 'Categoria publicada e salva com sucesso.' : 'Categoria salva como rascunho.');
     } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : 'Falha ao salvar categoria.');
+      setError('Não foi possível salvar a categoria. Revise os dados e tente novamente.');
     } finally {
       setIsSaving(false);
     }
@@ -135,7 +135,7 @@ export function EditorialCategoriesPage() {
       <ConsultaVetPageHero
         eyebrow="Editorial"
         title="Categorias"
-        description="Taxonomia do módulo com status claro, fallback híbrido preservado e edição segura apenas para owner."
+        description="Organize a taxonomia, a ordem e o estado de publicação das categorias."
         icon={FolderTree}
         accent="amber"
       />
@@ -202,14 +202,11 @@ export function EditorialCategoriesPage() {
                       <div className="min-w-0">
                         <p className="font-medium text-foreground">{item.title}</p>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          {item.slug} • ordem {item.sortOrder}
+                          Ordem de exibição: {item.sortOrder}
                         </p>
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
                         <StatusBadge isPublished={item.isPublished} />
-                        <span className="rounded-full border border-border px-2 py-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
-                          {item.source || 'seed'}
-                        </span>
                       </div>
                     </div>
                   </button>
@@ -225,7 +222,7 @@ export function EditorialCategoriesPage() {
                   {form.id ? 'Editar categoria' : 'Nova categoria'}
                 </h2>
                 <p className="mt-1 text-sm text-muted-foreground">
-                  Conteúdo publicado aparece no módulo público. Rascunhos ficam apenas no editorial.
+                  Conteúdo publicado fica disponível para consulta. Rascunhos permanecem nesta área editorial.
                 </p>
               </div>
               <div className="flex items-center gap-3">
@@ -250,13 +247,6 @@ export function EditorialCategoriesPage() {
                 />
               </EditorialField>
 
-              <EditorialField label="Slug" hint="Se vazio, o repository gera a partir do título.">
-                <input
-                  value={form.slug}
-                  onChange={(event) => setForm((current) => ({ ...current, slug: event.target.value }))}
-                  className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                />
-              </EditorialField>
             </div>
 
             <div className="grid gap-4 md:grid-cols-[200px_1fr]">

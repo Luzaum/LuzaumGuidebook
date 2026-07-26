@@ -30,7 +30,7 @@ const HEMO_MOBILE_ANCHORS_INPUT_TEXT = [
 const HEMO_MOBILE_ANCHORS_RESULT = [
   { id: 'hemo-result-qualidade', label: 'Qualidade' },
   { id: 'hemo-result-resumo', label: 'Resumo' },
-  { id: 'hemo-result-sintese', label: 'Sintese' },
+  { id: 'hemo-result-sintese', label: 'Síntese' },
   { id: 'hemo-result-acidobase', label: 'Ácido-base' },
   { id: 'hemo-result-oxigenacao', label: 'O₂' },
   { id: 'hemo-result-eletrolitos', label: 'Eletrólitos' },
@@ -346,7 +346,7 @@ export default function InterpreterPage() {
                     : "border-transparent text-slate-500 hover:text-slate-700 dark:hover:text-slate-300"
                 )}
               >
-                Colar Texto (OCR)
+                Colar texto reconhecido
               </button>
             </div>
 
@@ -358,10 +358,10 @@ export default function InterpreterPage() {
                   <InputField label="pCO2" unit="mmHg" value={formData.pCO2} onChange={(v) => handleInputChange('pCO2', v)} tooltip={TOOLTIPS.pCO2} parsedField={parsedFieldMap.get('pCO2')} />
                   <InputField label="pO2" unit="mmHg" value={formData.pO2} onChange={(v) => handleInputChange('pO2', v)} tooltip={TOOLTIPS.pO2} parsedField={parsedFieldMap.get('pO2')} />
                   <InputField label="HCO3-" unit="mEq/L" value={formData.HCO3} onChange={(v) => handleInputChange('HCO3', v)} tooltip={TOOLTIPS.HCO3} parsedField={parsedFieldMap.get('HCO3')} />
-                  <InputField label="Base Excess" unit="mEq/L" value={formData.BE} onChange={(v) => handleInputChange('BE', v)} tooltip={TOOLTIPS.BE} parsedField={parsedFieldMap.get('BE')} />
+                  <InputField label="Excesso de bases" unit="mEq/L" value={formData.BE} onChange={(v) => handleInputChange('BE', v)} tooltip={TOOLTIPS.BE} parsedField={parsedFieldMap.get('BE')} />
                   <InputField label="Lactato" unit="mmol/L" value={formData.lactate} onChange={(v) => handleInputChange('lactate', v)} tooltip={TOOLTIPS.lactate} parsedField={parsedFieldMap.get('lactate')} />
-                  <InputField label="FiO2" unit="%" value={formData.fio2 === undefined ? '' : Number((formData.fio2 * 100).toFixed(1))} onChange={(v) => handleInputChange('fio2', v === undefined ? undefined : (Number(v) <= 1 ? Number(v) : Number(v) / 100))} tooltip={TOOLTIPS.fio2} parsedField={parsedFieldMap.get('fio2')} hint={formData.fio2 !== undefined ? `Interpretada internamente como fracao (${formatFiO2Percent(formData.fio2)}). Aceita 21 ou 0.21.` : 'Aceita 21 ou 0.21; o motor converte para fracao internamente.'} />
-                  <InputField label="Temp." unit="°C" value={formData.temperature} onChange={(v) => handleInputChange('temperature', v)} parsedField={parsedFieldMap.get('temperature')} hint="A temperatura entra como fator de contexto da interpretacao." />
+                  <InputField label="FiO2" unit="%" value={formData.fio2 === undefined ? '' : Number((formData.fio2 * 100).toFixed(1))} onChange={(v) => handleInputChange('fio2', v === undefined ? undefined : (Number(v) <= 1 ? Number(v) : Number(v) / 100))} tooltip={TOOLTIPS.fio2} parsedField={parsedFieldMap.get('fio2')} hint={formData.fio2 !== undefined ? `Fração inspirada equivalente: ${formatFiO2Percent(formData.fio2)}. Aceita 21 ou 0,21.` : 'Aceita 21 ou 0,21 como formas equivalentes.'} />
+                  <InputField label="Temperatura" unit="°C" value={formData.temperature} onChange={(v) => handleInputChange('temperature', v)} parsedField={parsedFieldMap.get('temperature')} hint="A temperatura entra como fator de contexto da interpretação." />
                 </div>
 
                 <div id="hemo-input-eletrolitos" className="scroll-mt-28 space-y-2 lg:scroll-mt-8">
@@ -382,7 +382,7 @@ export default function InterpreterPage() {
                       <InputField label="Glicose" unit="mg/dL" value={formData.glucose} onChange={(v) => handleInputChange('glucose', v)} parsedField={parsedFieldMap.get('glucose')} />
                       <InputField label="Albumina" unit="g/dL" value={formData.albumin} onChange={(v) => handleInputChange('albumin', v)} parsedField={parsedFieldMap.get('albumin')} />
                       <InputField label="SatO2" unit="%" value={formData.sO2} onChange={(v) => handleInputChange('sO2', v)} parsedField={parsedFieldMap.get('sO2')} />
-                      <InputField label="Anion Gap" unit="mEq/L" value={formData.AG} onChange={(v) => handleInputChange('AG', v)} parsedField={parsedFieldMap.get('AG')} />
+                      <InputField label="Hiato aniônico (AG)" unit="mEq/L" value={formData.AG} onChange={(v) => handleInputChange('AG', v)} parsedField={parsedFieldMap.get('AG')} />
                     </div>
                   )}
                 </div>
@@ -411,7 +411,7 @@ export default function InterpreterPage() {
             ) : (
               <div className="space-y-4">
                 <p className="text-xs text-slate-500 dark:text-slate-400">
-                  Cole o texto do laudo. O sistema extrairá os valores automaticamente.
+                  Cole o texto do laudo para extrair os valores automaticamente.
                 </p>
                 <textarea
                   value={rawText}
@@ -490,7 +490,7 @@ export default function InterpreterPage() {
 
             {ocrPending && (
               <div className="mt-4 rounded-md border border-amber-200 bg-amber-50 px-3 py-2 text-xs text-amber-800 dark:border-amber-800/50 dark:bg-amber-900/20 dark:text-amber-300">
-                OCR pendente: confirme ou descarte os campos reconhecidos antes de gerar a interpretacao.
+                Reconhecimento de texto pendente: confirme ou descarte os campos identificados antes de gerar a interpretação.
               </div>
             )}
 
@@ -616,27 +616,27 @@ export default function InterpreterPage() {
 
               {result.clinicalSynthesis && (
                 <div id="hemo-result-sintese" className="scroll-mt-28 lg:scroll-mt-8">
-                  <ResultCard title="Sintese Clinico-Fisiologica" icon={<Stethoscope className="w-4 h-4 text-purple-600 dark:text-purple-400" />}>
+                  <ResultCard title="Síntese clínico-fisiológica" icon={<Stethoscope className="w-4 h-4 text-purple-600 dark:text-purple-400" />}>
                     <div className="grid gap-4 text-sm lg:grid-cols-2">
                       <SynthesisBlock
-                        title="Fisiologia do disturbio"
+                        title="Fisiologia do distúrbio"
                         tone="purple"
                         items={result.clinicalSynthesis.physiology}
                       />
                       <SynthesisBlock
-                        title="Correlacao clinica"
+                        title="Correlação clínica"
                         tone="blue"
-                        items={result.clinicalSynthesis.clinicalCorrelation.length ? result.clinicalSynthesis.clinicalCorrelation : ['Nenhum contexto clinico especifico foi marcado; correlacione com exame fisico, perfusao, ventilacao, historico e tendencia seriada.']}
+                        items={result.clinicalSynthesis.clinicalCorrelation.length ? result.clinicalSynthesis.clinicalCorrelation : ['Nenhum contexto clínico específico foi marcado; correlacione com exame físico, perfusão, ventilação, histórico e tendência seriada.']}
                       />
                       <SynthesisBlock
-                        title="Correlacao com exames"
+                        title="Correlação com exames"
                         tone="emerald"
                         items={result.clinicalSynthesis.examCorrelation}
                       />
                       <SynthesisBlock
-                        title="Armadilhas de interpretacao"
+                        title="Armadilhas de interpretação"
                         tone="amber"
-                        items={result.clinicalSynthesis.pitfalls.length ? result.clinicalSynthesis.pitfalls : ['Sem armadilha dominante detectada; ainda assim, interpretar sempre junto do tipo de amostra, FiO2, temperatura e estado hemodinamico.']}
+                        items={result.clinicalSynthesis.pitfalls.length ? result.clinicalSynthesis.pitfalls : ['Sem armadilha dominante detectada; ainda assim, interpretar sempre junto do tipo de amostra, da fração inspirada de oxigênio (FiO2), da temperatura e do estado hemodinâmico.']}
                       />
                     </div>
                   </ResultCard>
@@ -743,7 +743,7 @@ export default function InterpreterPage() {
                     )}
                     {result.deepAcidBase.mixedDisorderClues && result.deepAcidBase.mixedDisorderClues.length > 0 && (
                       <div className="rounded-lg border border-amber-200 bg-amber-50 p-3.5 dark:border-amber-800/50 dark:bg-amber-950/20">
-                        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">Pistas de disturbio misto</p>
+                        <p className="mb-2 text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">Pistas de distúrbio misto</p>
                         <ul className="list-disc space-y-1 pl-4 text-xs leading-relaxed text-amber-900 dark:text-amber-200">
                           {result.deepAcidBase.mixedDisorderClues.map((item, idx) => <li key={idx}>{item}</li>)}
                         </ul>
@@ -768,11 +768,11 @@ export default function InterpreterPage() {
                     )}
                     {result.input.sampleType === 'arterial' && (
                       <div className="grid grid-cols-2 gap-2">
-                        <OxygenMetric label="PaO2 medida" value={result.input.pO2 !== undefined ? `${result.input.pO2} mmHg` : 'Nao informada'} />
+                        <OxygenMetric label="Pressão arterial de oxigênio (PaO2) medida" value={result.input.pO2 !== undefined ? `${result.input.pO2} mmHg` : 'Não informada'} />
                         <OxygenMetric label="FiO2" value={result.dataQuality.fio2Normalization ? `${result.dataQuality.fio2Normalization.displayPercent}%` : '21% estimada'} />
                         <OxygenMetric label="PAO2 calculada" value={result.deepOxygenation.pao2 !== undefined ? `${result.deepOxygenation.pao2} mmHg` : 'Precisa de PaCO2'} />
                         <OxygenMetric label="Gradiente A-a" value={result.deepOxygenation.aaGradient !== undefined ? `${result.deepOxygenation.aaGradient} mmHg` : 'Precisa de PaO2/PaCO2'} />
-                        <OxygenMetric label="Relacao P/F" value={result.deepOxygenation.pfRatio !== undefined ? String(result.deepOxygenation.pfRatio) : 'Nao calculada'} />
+                        <OxygenMetric label="Relação PaO2/FiO2 (P/F)" value={result.deepOxygenation.pfRatio !== undefined ? String(result.deepOxygenation.pfRatio) : 'Não calculada'} />
                         <OxygenMetric label="Mecanismo" value={result.deepOxygenation.suspectedMechanism || 'Sem mecanismo dominante'} />
                       </div>
                     )}
@@ -938,7 +938,7 @@ function InputField({ label, unit, value, onChange, tooltip, parsedField, hint }
       </div>
       {(parsedField || hint) && (
         <p className="mt-1 text-[10px] leading-relaxed text-slate-500 dark:text-slate-400">
-          {parsedField ? `OCR/parser: ${parsedField.confidence === 'high' ? 'alta confianca' : parsedField.confidence === 'medium' ? 'confianca intermediaria' : 'baixa confianca'}${parsedField.normalizedDisplay ? `, ${parsedField.normalizedDisplay}` : ''}. ` : ''}{hint || ''}
+          {parsedField ? `Reconhecimento de texto: ${parsedField.confidence === 'high' ? 'alta confiança' : parsedField.confidence === 'medium' ? 'confiança intermediária' : 'baixa confiança'}${parsedField.normalizedDisplay ? `, ${parsedField.normalizedDisplay}` : ''}. ` : ''}{hint || ''}
         </p>
       )}
     </div>

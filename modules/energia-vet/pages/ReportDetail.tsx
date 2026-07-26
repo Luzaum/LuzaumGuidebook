@@ -36,7 +36,7 @@ export default function ReportDetail() {
           <ArrowLeft className="h-4 w-4" /> Voltar
         </Button>
         <Card className="border-white/10 bg-[#141010]">
-          <CardContent className="p-6 text-sm text-muted-foreground">Relatorio nao encontrado.</CardContent>
+          <CardContent className="p-6 text-sm text-muted-foreground">Relatório não encontrado.</CardContent>
         </Card>
       </div>
     )

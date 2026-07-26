@@ -24,7 +24,7 @@ const EXAM_VALUE_LABELS: Record<string, string> = {
   Lento: 'Lento',
   Ambulatorio: 'Ambulatorio',
   'Com Apoio': 'Com apoio',
-  'Nao Ambulatorio': 'Nao ambulatorio',
+  'Nao Ambulatorio': 'Não ambulatório',
   Plegia: 'Plegia',
   Ataxia: 'Ataxia',
   Proprioceptiva: 'Proprioceptiva',
@@ -46,7 +46,7 @@ function humanizeRedFlag(id: string): string {
 
 function humanizeExamValue(value: unknown): string {
   const text = String(value || '').trim()
-  if (!text) return 'Nao informado'
+  if (!text) return 'Não informado'
   return EXAM_VALUE_LABELS[text] || text
 }
 
@@ -81,7 +81,7 @@ export function buildCaseReport(caseState: any): CaseReport {
         confidence: 0,
         supportiveFindings: [],
         contradictoryFindings: [],
-        narrative: 'Dados insuficientes para neurolocalizacao com seguranca clinica.',
+        narrative: 'Dados insuficientes para neurolocalizacao com segurança clínica.',
         missing: v.missing,
       },
       differentials: [],
@@ -142,7 +142,7 @@ export function buildCaseReport(caseState: any): CaseReport {
   if (typeof import.meta !== 'undefined' && import.meta.env?.DEV) {
     const audit = auditCaseReport(report)
     if (audit.length > 0) {
-      console.warn('[NeuroVet] Termos em ingles detectados apos sanitizacao:', audit)
+      console.warn('[NeuroVet] Termos em ingles detectados após sanitizacao:', audit)
     }
   }
 
@@ -150,33 +150,33 @@ export function buildCaseReport(caseState: any): CaseReport {
 }
 
 function buildPatientSummary(s: any): string {
-  const species = s?.patient?.species === 'dog' ? 'Cao' : s?.patient?.species === 'cat' ? 'Gato' : 'Nao informado'
+  const species = s?.patient?.species === 'dog' ? 'Cão' : s?.patient?.species === 'cat' ? 'Gato' : 'Não informado'
   const age =
     s?.patient?.ageYears !== null && s?.patient?.ageYears !== undefined
       ? `${s.patient.ageYears} anos`
       : s?.patient?.ageMonths !== null && s?.patient?.ageMonths !== undefined
         ? `${s.patient.ageMonths} meses`
-        : 'Nao informado'
-  const sex = s?.patient?.sex === 'male' ? 'Macho' : s?.patient?.sex === 'female' ? 'Femea' : 'Nao informado'
+        : 'Não informado'
+  const sex = s?.patient?.sex === 'male' ? 'Macho' : s?.patient?.sex === 'female' ? 'Fêmea' : 'Não informado'
   const reproStatus =
     s?.patient?.reproStatus === 'intact'
       ? 'Inteiro'
       : s?.patient?.reproStatus === 'neutered'
         ? 'Castrado'
-        : 'Nao informado'
+        : 'Não informado'
   const lifeStageLabels: Record<string, string> = {
     neonate: 'Neonato',
     pediatric: 'Pediatrico',
     adult: 'Adulto',
     geriatric: 'Geriatrico',
   }
-  const lifeStage = s?.patient?.lifeStage ? lifeStageLabels[s.patient.lifeStage] || 'Nao informado' : 'Nao informado'
-  const weight = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : 'Nao informado'
+  const lifeStage = s?.patient?.lifeStage ? lifeStageLabels[s.patient.lifeStage] || 'Não informado' : 'Não informado'
+  const weight = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : 'Não informado'
   const comorbidities =
     Array.isArray(s?.patient?.comorbidities) && s.patient.comorbidities.length
       ? s.patient.comorbidities
           .map((item: any) => {
-            const label = typeof item === 'string' ? item : item?.label || item?.key || 'Comorbidade nao informada'
+            const label = typeof item === 'string' ? item : item?.label || item?.key || 'Comorbidade não informada'
             const severity = typeof item === 'object' && item?.severity ? ` (${item.severity})` : ''
             return `${label}${severity}`
           })
@@ -205,18 +205,18 @@ function buildHistorySummary(s: any): string {
       ? s.complaint.chiefComplaintIds.map(humanizeComplaint)
       : []
   const temporalPattern = s?.complaint?.temporalPattern
-    ? TEMPORAL_LABELS[s.complaint.temporalPattern as keyof typeof TEMPORAL_LABELS] || 'Nao informado'
-    : 'Nao informado'
+    ? TEMPORAL_LABELS[s.complaint.temporalPattern as keyof typeof TEMPORAL_LABELS] || 'Não informado'
+    : 'Não informado'
   const evolutionPattern = s?.complaint?.evolutionPattern
-    ? EVOLUTION_LABELS[s.complaint.evolutionPattern as keyof typeof EVOLUTION_LABELS] || 'Nao informado'
-    : 'Nao informado'
+    ? EVOLUTION_LABELS[s.complaint.evolutionPattern as keyof typeof EVOLUTION_LABELS] || 'Não informado'
+    : 'Não informado'
 
   const contextFlags: string[] = []
   if (s?.complaint?.trauma) contextFlags.push('Trauma')
   if (s?.complaint?.toxin) contextFlags.push('Toxina')
   if (s?.complaint?.fever) contextFlags.push('Febre')
   if (s?.complaint?.ectoparasiticideExposure) contextFlags.push('Exposicao a ectoparasiticidas')
-  if (s?.complaint?.systemicDisease) contextFlags.push('Doenca sistemica')
+  if (s?.complaint?.systemicDisease) contextFlags.push('Doença sistêmica')
   if (s?.complaint?.recentSurgeryAnesthesia) contextFlags.push('Cirurgia/anestesia recente')
   if (s?.complaint?.vaccinationOrTravel) contextFlags.push('Vacinacao/viagem/endemico')
   if (s?.complaint?.videoOfEpisode) contextFlags.push('Video do episodio')
@@ -231,7 +231,7 @@ function buildHistorySummary(s: any): string {
     `Sinais principais: ${chiefComplaints.length > 0 ? chiefComplaints.join(', ') : 'Nenhum informado'}`,
     `Padrao temporal: ${temporalPattern}`,
     `Evolucao: ${evolutionPattern}`,
-    `Contexto clinico: ${contextFlags.length > 0 ? contextFlags.join(', ') : 'Sem contexto adicional marcado'}`,
+    `Contexto clínico: ${contextFlags.length > 0 ? contextFlags.join(', ') : 'Sem contexto adicional marcado'}`,
     `Red flags: ${redFlags.length > 0 ? redFlags.join(', ') : 'Nenhuma red flag marcada'}`,
     `Observacoes adicionais: ${s?.complaint?.contextNotes?.trim() || 'Nenhuma observacao livre informada'}`,
   ].join('\n')
@@ -304,5 +304,5 @@ function buildExamSummary(s: any): string {
     .filter((section) => section.items.length > 0)
     .map((section) => `${section.title}: ${section.items.join('; ')}`)
 
-  return lines.length > 0 ? lines.join('\n') : 'Exame neurologico nao preenchido.'
+  return lines.length > 0 ? lines.join('\n') : 'Exame neurologico não preenchido.'
 }

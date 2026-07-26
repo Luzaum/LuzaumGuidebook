@@ -21,7 +21,7 @@ const ROUTE_OPTIONS: RouteGroup[] = [
 ]
 
 const SPECIES_TARGET_OPTIONS: Array<{ value: string; label: string }> = [
-  { value: 'Caes', label: 'Cão' },
+  { value: 'Cães', label: 'Cão' },
   { value: 'Gatos', label: 'Gato' },
 ]
 
@@ -340,8 +340,7 @@ export default function CatalogoPage() {
       }
 
       if (!verifyMed) {
-        console.error('[Catalog] POST-SAVE VERIFY FAILED: medication not found in database!');
-        alert('AVISO: Medicamento não foi encontrado no banco após save. Verifique RLS policies.');
+        alert('Não foi possível confirmar o medicamento salvo. Tente novamente.');
       }
 
       // Recarregar lista do Supabase
@@ -393,10 +392,9 @@ export default function CatalogoPage() {
         error?.hint?.toLowerCase().includes('policy');
 
       if (isRLSError) {
-        console.error('[Catalog] ⚠️ DETECTED: RLS/Permission Error');
-        alert('❌ ERRO DE PERMISSÃO (RLS)\n\nO medicamento não pode ser salvo porque as políticas de segurança do banco bloquearam a operação.\n\nVerifique:\n1. Você está logado?\n2. Você é membro da clínica ativa?\n3. As RLS policies da tabela medications permitem INSERT?');
+        alert('Você não tem permissão para salvar medicamentos nesta clínica. Confirme sua conta e a clínica selecionada.');
       } else {
-        alert(`Erro ao salvar: ${error instanceof Error ? error.message : String(error)}`);
+        alert('Não foi possível salvar o medicamento. Revise os dados e tente novamente.');
       }
     }
   }

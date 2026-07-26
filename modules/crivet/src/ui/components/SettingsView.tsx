@@ -16,7 +16,7 @@ export const SettingsView: React.FC = () => {
         </div>
         <div>
           <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Configurações</h2>
-          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Ajuste suas preferências do aplicativo</p>
+          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Ajuste suas preferências de uso</p>
         </div>
       </div>
 
@@ -29,7 +29,7 @@ export const SettingsView: React.FC = () => {
           <h3 className="font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2">
             <Sun className="w-5 h-5 text-slate-500 dark:text-slate-400" /> Aparência
           </h3>
-          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Escolha o tema visual do aplicativo.</p>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Escolha o tema visual.</p>
         </div>
         <div className="p-6">
           <div className="flex flex-col sm:flex-row gap-4">

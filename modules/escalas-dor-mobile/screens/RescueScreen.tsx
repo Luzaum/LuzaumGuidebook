@@ -36,7 +36,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
         <div className="grid grid-cols-1 gap-4">
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Glasgow CMPS-SF</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala Composta de Dor de Glasgow, versão curta (CMPS-SF)</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐕 Cão
               </span>
@@ -49,7 +49,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
 
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">UMPS Melbourne</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala de Dor da Universidade de Melbourne (UMPS)</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐕 Cão
               </span>
@@ -62,7 +62,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
 
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">4A-VET</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala Multidimensional 4A-VET de Dor Aguda</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐕 Cão
               </span>
@@ -88,7 +88,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
 
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">UNESP-Botucatu Simplificada (UFEPS-SF)</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala Multidimensional de Dor Felina UNESP-Botucatu, versão curta (UFEPS-SF)</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐱 Gato
               </span>
@@ -101,7 +101,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
 
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Grimace Scale (FGS)</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala de Careta Felina (FGS)</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐱 Gato
               </span>
@@ -114,7 +114,7 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
 
           <div className="flex flex-col p-4 bg-white/70 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm space-y-3 backdrop-blur-md hover:border-teal-500/20 transition-colors">
             <div className="flex items-center justify-between">
-              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Glasgow CMPS-Feline</span>
+              <span className="font-bold text-slate-850 dark:text-teal-50 text-sm">Escala Composta de Dor de Glasgow para Gatos (CMPS-Feline)</span>
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-650 dark:text-slate-300">
                 🐱 Gato
               </span>

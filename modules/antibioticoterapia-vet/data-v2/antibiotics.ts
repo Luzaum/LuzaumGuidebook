@@ -47,8 +47,8 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     spectrumSummary:
       'Boa atividade contra vários Gram-positivos e Gram-negativos não produtores de beta-lactamases de amplo espectro; cobertura ampliada versus amoxicilina isolada.',
     usesInApp: [
-      'ITU inferior não complicada e transições em quadros uterinos (regimes v2).',
-      'Pneumonia ambulatorial (alternativa) em esquemas v2.',
+      'ITU inferior não complicada e transições em quadros uterinos.',
+      'Alternativa em pneumonia ambulatorial.',
     ],
     patientCautions: [
       'Gestação: histórico de uso com critério; avaliar risco-benefício localmente.',
@@ -78,7 +78,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     spectrumSummary:
       'Cobre diversos Gram-positivos e Gram-negativos, incluindo alguns produtores de beta-lactamase; não cobre MRSP/MRSA por si só.',
     usesInApp: [
-      'Esquemas IV hospitalares em piometra/metrite, ITU complicada, pneumonia internada, sepse e piotórax (v2).',
+      'Esquemas intravenosos hospitalares em piometra, metrite, ITU complicada, pneumonia, sepse e piotórax.',
       'Base empírica em muitos regimes de ampliação até cultura.',
     ],
     patientCautions: [
@@ -103,7 +103,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Ligação a PBPs e bloqueio da parede celular; instável a muitas beta-lactamases.',
     pkpdSummary: 'T>MIC; uso típico em dose única ou curta para profilaxia perioperatória em protocolos.',
     spectrumSummary: 'Boa atividade contra muitos cocos Gram-positivos e alguns Gram-negativos; não cobre anaeróbios.',
-    usesInApp: ['Profilaxia cirúrgica típica no perfil perioperatório v2.'],
+    usesInApp: ['Profilaxia cirúrgica no contexto perioperatório.'],
     patientCautions: ['Alergia a beta-lactâmicos (cautela cruzada)', 'Ajuste renal em doses repetidas'],
     adverseEffects: ['Reações de hipersensibilidade', 'Flebite em IV'],
     stewardshipNotes: [
@@ -123,7 +123,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Ligação à subunidade 50S do ribossomo; efeito bacteriostático ou bactericida conforme concentração e patógeno.',
     pkpdSummary: 'Penetração tecidual relevante; atenção à cobertura de aeróbios Gram-negativos (geralmente pobre).',
     spectrumSummary: 'Anaeróbios e muitos Gram-positivos; não é monoterapia empírica de Gram-negativos.',
-    usesInApp: ['Alternativa em esquemas uterinos e piotórax (v2) em combinação conforme regime.'],
+    usesInApp: ['Alternativa em quadros uterinos e piotórax, em combinação conforme o regime.'],
     patientCautions: [
       'Risco de colite associada a antibiótico (C. difficile / similares).',
       'Cautela hepática e interações.',
@@ -141,9 +141,9 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     classLabel: 'Tetraciclinas',
     subclassLabel: 'Inibição da síntese proteica (30S)',
     mechanismSummary: 'Ligação ribossomal 30S; bacteriostática na maioria dos cenários.',
-    pkpdSummary: 'Meia-vida longa permite intervalos maiores; atenção a formulação e esofagite em felinos.',
+    pkpdSummary: 'Meia-vida longa permite intervalos maiores; atenção a fórmulação e esofagite em felinos.',
     spectrumSummary: 'Amplo espectro incluindo alguns intracelulares e patógenos respiratórios em contexto ambulatorial.',
-    usesInApp: ['Pneumonia ambulatorial estável (regime v2).'],
+    usesInApp: ['Pneumonia ambulatorial em paciente estável.'],
     patientCautions: [
       'Gestação e lactação: classicamente desaconselhada.',
       'Filhotes: dentição/esmalte.',
@@ -164,7 +164,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Interfere na replicação bacteriana; concentração-dependente para muitos patógenos.',
     pkpdSummary: 'Cmax/MIC relevante; cautela de dose em felinos (retinopatia) conforme bula/protocolo.',
     spectrumSummary: 'Amplo espectro Gram-negativo e alguns Gram-positivos; resistência crescente por uso excessivo.',
-    usesInApp: ['Ampliação empírica em pneumonia séptica, sepse, alternativas uterinas e piotórax (v2).'],
+    usesInApp: ['Ampliação empírica em pneumonia séptica, sepse, infecções uterinas e piotórax.'],
     patientCautions: [
       'Gatos: dose e formulário conforme segurança.',
       'Crescimento/cartilagem em animais jovens (critério local).',
@@ -188,10 +188,10 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Similar a outras quinolonas; perfil concentration-dependent.',
     pkpdSummary: 'Meia-vida prolongada em cães; ajustar por espécie e função renal.',
     spectrumSummary: 'Gram-negativos e parte dos Gram-positivos; resistência dependente de pressão de uso.',
-    usesInApp: ['Alternativa oral em ITU (regime v2) quando indicada — não como padrão universal.'],
-    patientCautions: ['Renal', 'Neurológica', 'Desenvolvimento (critério local)'],
+    usesInApp: ['Alternativa oral em ITU quando indicada — não como padrão universal.'],
+    patientCautions: ['Renal', 'Neurológica', 'Animais em crescimento'],
     adverseEffects: ['GI', 'Alterações articulares em animais jovens (debate/literatura)'],
-    stewardshipNotes: ['Stewardship: reservar; combinar cultura em recidivas'],
+    stewardshipNotes: ['Reservar para indicações claras e realizar cultura nas recidivas'],
     synonyms: ['marbo', 'marbofloxacin', 'zeniquin'],
     referenceKeys: ['ref_registry.institutional_ccih_2024', 'ref_placeholders.v2_sheet_marbo'],
   },
@@ -205,7 +205,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Redução intracelular em anaeróbios gera metabolitos que lesam o DNA.',
     pkpdSummary: 'Boa penetração em tecidos e fluidos; atenção a interações (ex.: varfarina) e neurotoxicidade em overdose.',
     spectrumSummary: 'Anaeróbios e alguns protozoários; sem cobertura relevante de aeróbios Gram-negativos.',
-    usesInApp: ['Componente anaeróbio em piometra, piotórax, sepse e perioperatório contaminado (v2).'],
+    usesInApp: ['Componente anaeróbio em piometra, piotórax, sepse e perioperatório contaminado.'],
     patientCautions: ['Hepatopatia', 'Neurológico em altas doses/duração prolongada'],
     adverseEffects: ['Náusea, saliva metálica', 'Neurotoxicidade dose/tempo-dependentes'],
     stewardshipNotes: ['Não substituir cobertura GN quando necessária', 'Associar a beta-lactâmico ou outro agente conforme foco'],
@@ -222,7 +222,7 @@ export const ANTIBIOTIC_SHEETS_V2: Record<string, AntibioticSheetV2> = {
     mechanismSummary: 'Ligação ao ribossomo 30S; uptake dependente de energia em aeróbios.',
     pkpdSummary: 'Cmax/MIC; necessidade de monitorização e ajuste renal; intervalo estendido em alguns protocolos.',
     spectrumSummary: 'Aeróbios Gram-negativos; sinergia com beta-lactâmicos em alguns cenários; sem anaeróbios.',
-    usesInApp: ['Componente GN em piometra séptica e sepse instável (v2).'],
+    usesInApp: ['Componente para Gram-negativos em piometra séptica e sepse instável.'],
     patientCautions: [
       'Nefrotoxicidade e ototoxicidade.',
       'Gestação: risco placentário/fetal — critério estrito.',

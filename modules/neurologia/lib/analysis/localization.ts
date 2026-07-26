@@ -62,12 +62,12 @@ function buildNarrative(
   }
 
   const motorLabels: Record<MotorPattern, string> = {
-    UMN: 'padrao de neuronio motor superior',
-    LMN: 'padrao de neuronio motor inferior',
-    VESTIBULAR: 'padrao vestibular',
-    CEREBELAR: 'padrao cerebelar',
-    NEUROMUSCULAR: 'padrao neuromuscular',
-    INDEFINIDO: 'padrao motor indefinido',
+    UMN: 'padrão de neuronio motor superior',
+    LMN: 'padrão de neuronio motor inferior',
+    VESTIBULAR: 'padrão vestibular',
+    CEREBELAR: 'padrão cerebelar',
+    NEUROMUSCULAR: 'padrão neuromuscular',
+    INDEFINIDO: 'padrão motor indefinido',
   }
 
   const distributionLabels: Record<NeuroLocalizationResult['distribution'], string> = {
@@ -87,7 +87,7 @@ function buildNarrative(
 
   return (
     `A leitura integrada do caso favorece ${axisLabels[primary]} com distribuicao ${distributionLabels[distribution]} ` +
-    `e ${motorLabels[motorPattern]}. Os achados que mais sustentam essa interpretacao sao ${anchors || 'os deficits neurologicos registrados'}.` +
+    `e ${motorLabels[motorPattern]}. Os achados que mais sustentam essa interpretação são ${anchors || 'os déficits neurológicos registrados'}.` +
     secondaryText +
     ` A confianca estimada e ${confidence}%, devendo ser reinterpretada junto da evolucao clinica, dos pares cranianos, das reacoes posturais e da resposta aos exames prioritarios.` +
     contradictionText
@@ -160,7 +160,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
   const withdrawalReduced =
     equalsOneOf(exam.reflex_withdrawal_left_thoracic, 'Diminuido', 'Ausente') ||
     equalsOneOf(exam.reflex_withdrawal_right_thoracic, 'Diminuido', 'Ausente')
-  const nonAmbulatory = equalsOneOf(exam.ambulation, 'Nao Ambulatorio', 'Plegia')
+  const nonAmbulatory = equalsOneOf(exam.ambulation, 'Não Ambulatorio', 'Plegia')
   const cerebellarAtaxia = equalsOneOf(exam.ataxia_type, 'Cerebelar') || hasComplaint(complaintIds, 'Hipermetria')
   const vestibularAtaxia = equalsOneOf(exam.ataxia_type, 'Vestibular')
   const proprioceptiveAtaxia = equalsOneOf(exam.ataxia_type, 'Proprioceptiva')
@@ -193,21 +193,21 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
     equalsOneOf(exam.proprioception_thoracic_left, 'Diminuido', 'Ausente')
   if (menaceLeftAbsentOnly && propThoracicRightBad) {
     prosencephalonScore += 14
-    prosencephalonEvidence.push('ameaca olho esquerdo ausente com propriocepcao toracica direita alterada')
+    prosencephalonEvidence.push('ameaca olho esquerdo ausente com propriocepcao torácica direita alterada')
     supportiveFindings.push(
-      'Padrao cruzado (ameaca a esquerda ausente com propriocepcao toracica direita alterada) pode indicar prosencefalo',
+      'Padrão cruzado (ameaca a esquerda ausente com propriocepcao torácica direita alterada) pode indicar prosencefalo',
     )
   }
   if (menaceRightAbsentOnly && propThoracicLeftBad) {
     prosencephalonScore += 14
-    prosencephalonEvidence.push('ameaca olho direito ausente com propriocepcao toracica esquerda alterada')
+    prosencephalonEvidence.push('ameaca olho direito ausente com propriocepcao torácica esquerda alterada')
     supportiveFindings.push(
-      'Padrao cruzado (ameaca a direita ausente com propriocepcao toracica esquerda alterada) pode indicar prosencefalo',
+      'Padrão cruzado (ameaca a direita ausente com propriocepcao torácica esquerda alterada) pode indicar prosencefalo',
     )
   }
   if (alteredMentation || alteredBehavior) {
     prosencephalonScore += 15
-    prosencephalonEvidence.push('alteracao de mentacao/comportamento')
+    prosencephalonEvidence.push('alteração de mentacao/comportamento')
   }
   if (posturalDeficitCount >= 2 && !vestibularSigns) {
     prosencephalonScore += 10
@@ -230,7 +230,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
   }
   if (alteredMentation) {
     brainstemScore += 16
-    brainstemEvidence.push('alteracao de mentacao')
+    brainstemEvidence.push('alteração de mentacao')
   }
   if (vestibularSigns && (posturalDeficitCount > 0 || cranialDeficitCount >= 2)) {
     brainstemScore += 12
@@ -251,7 +251,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
     scores.push({
       axis: 'VESTIBULAR_PERIFERICO',
       score: vestibularPeripheralScore,
-      evidence: ['head tilt/nistagmo sem deficits posturais ou alteracao de mentacao'],
+      evidence: ['head tilt/nistagmo sem deficits posturais ou alteração de mentacao'],
     })
   }
 
@@ -283,12 +283,12 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
     scores.push({
       axis: 'MEDULA_C1_C5',
       score: 50,
-      evidence: ['quatro membros afetados com dor cervical e padrao medular cranial'],
+      evidence: ['quatro membros afetados com dor cervical e padrão medular cranial'],
     })
   }
 
   if (thoracicLmn && pelvicUmn) {
-    supportiveFindings.push('Toracicos com padrao LMN e pelvicos com padrao UMN sugerem C6-T2')
+    supportiveFindings.push('Toracicos com padrão LMN e pelvicos com padrão UMN sugerem C6-T2')
     scores.push({
       axis: 'MEDULA_C6_T2',
       score: 64,
@@ -306,7 +306,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
   }
 
   if (panniculusCutoff && !thoracicAffected && pelvicAffected && !patellarReduced) {
-    supportiveFindings.push('Cutoff do panniculus com deficit pelvico e padrao UMN reforca segmento T3-L3')
+    supportiveFindings.push('Cutoff do panniculus com déficit pelvico e padrão UMN reforca segmento T3-L3')
     scores.push({
       axis: 'MEDULA_T3_L3',
       score: 58,
@@ -351,7 +351,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
 
   if (explicitMultifocalPattern) {
     supportiveFindings.push('Sindrome prosencefalica associada a deficits de pares cranianos e propriocepcao em quatro membros sugere processo multifocal')
-    contradictoryFindings.push('Mentacao alerta nao impede processo multifocal quando ha sinais focais combinados')
+    contradictoryFindings.push('Mentacao alerta não impede processo multifocal quando ha sinais focais combinados')
     const confidence = Math.min(94, Math.max(68, Math.round(prosencephalonScore * 0.55 + brainstemScore * 0.45)))
     const motorPattern: MotorPattern = nonAmbulatory && allFourLimbsAffected ? 'UMN' : 'INDEFINIDO'
     return {
@@ -390,10 +390,10 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
     const multifocalScore = Math.max(...highCentralAxes.map((item) => item.score)) + 8
     supportiveFindings.push('Combinacao de sinais de prosencefalo, tronco encefalico ou medula cervical sugere multifocal/difusa')
     if (!alteredMentation && highCentralAxes.some((item) => item.axis === 'PROSENCEFALO')) {
-      contradictoryFindings.push('Mentacao alerta nao exclui encefalopatia multifocal, mas reduz a forca de doenca difusa grave')
+      contradictoryFindings.push('Mentacao alerta não exclui encefalopatia multifocal, mas reduz a forca de doença difusa grave')
     }
     if (!vestibularSigns && highCentralAxes.some((item) => item.axis === 'TRONCO_ENCEFALICO')) {
-      contradictoryFindings.push('Ausencia de nistagmo/estrabismo nao afasta lesao de tronco encefalico rostral')
+      contradictoryFindings.push('Ausencia de nistagmo/estrabismo não afasta lesao de tronco encefalico rostral')
     }
     scores.push({
       axis: 'MULTIFOCAL_OU_DIFUSA',
@@ -403,7 +403,7 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
   }
 
   if (collapse && !seizures && !cranialDeficitCount && !posturalDeficitCount) {
-    contradictoryFindings.push('Colapso sem deficits neurologicos sustentados pode representar causa nao neurologica primaria')
+    contradictoryFindings.push('Colapso sem deficits neurologicos sustentados pode representar causa não neurologica primária')
   }
   if (thoracolumbarPain && (prosencephalonScore > 0 || brainstemScore > 0)) {
     contradictoryFindings.push('Dor toracolombar relevante sugere procurar componente espinhal associado')
@@ -420,10 +420,10 @@ export function determineNeuroLocalization(caseState: any): NeuroLocalizationRes
       distribution: 'INDETERMINADA',
       motorPattern: 'INDEFINIDO',
       confidence: 0,
-      supportiveFindings: ['Dados insuficientes para localizacao confiavel'],
+      supportiveFindings: ['Dados insuficientes para localizacao confiável'],
       contradictoryFindings: [],
       narrative:
-        'Nao foi possivel determinar a neurolocalizacao com confianca com base nos dados registrados. Recomenda-se completar exame neurologico, historia e contexto clinico.',
+        'Não foi possível determinar a neurolocalizacao com confiança com base nos dados registrados. Recomenda-se completar exame neurologico, historia e contexto clínico.',
     }
   }
 

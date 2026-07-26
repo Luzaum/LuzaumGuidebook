@@ -13,7 +13,7 @@ export class LocalCategoryRepository implements CategoryRepository {
   }
 
   async upsert(_input: CategoryUpsertInput): Promise<Category> {
-    throw new Error('Edicao editorial dispon?vel apenas com Supabase configurado.');
+    throw new Error('A edição de categorias está indisponível no momento.');
   }
 }
 

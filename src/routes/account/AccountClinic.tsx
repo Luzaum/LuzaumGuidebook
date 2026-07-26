@@ -56,19 +56,19 @@ export default function AccountClinic() {
           <article className="rounded-2xl border border-slate-800 bg-slate-950/40 p-6 shadow-inner backdrop-blur-md">
             <div className="flex items-center gap-2.5 text-slate-300 mb-5">
               <ShieldCheck className="h-5 w-5 text-emerald-400" />
-              <h2 className="text-sm font-bold uppercase tracking-wider">Status do Ambiente</h2>
+              <h2 className="text-sm font-bold uppercase tracking-wider">Status da clínica</h2>
             </div>
             <div className="space-y-4 text-sm text-slate-300">
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Conexão na Nuvem</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Sincronização</span>
                 <div className="flex items-center gap-2 mt-1.5">
                   <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="text-slate-200 font-bold">Ativo & Sincronizado</span>
+                  <span className="text-slate-200 font-bold">Ativa</span>
                 </div>
               </div>
 
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Configurado em</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-slate-500 block">Conta criada em</span>
                 <span className="text-slate-200 font-semibold mt-1 block">
                   {formatDateTime(membership?.membershipId ? user?.created_at : '')}
                 </span>

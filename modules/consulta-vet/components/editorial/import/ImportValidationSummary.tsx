@@ -23,7 +23,7 @@ export function ImportValidationSummary({ validCount, invalidCount, errors }: Im
                         {hasErrors ? 'Atenção: Há registros inválidos' : 'Validação concluída com sucesso!'}
                     </h4>
                     <p className="text-sm text-muted-foreground">
-                        {total} itens encontrados no JSON. {validCount} válidos e {invalidCount} com erros.
+                        {total} itens encontrados no arquivo. {validCount} válidos e {invalidCount} com erros.
                     </p>
 
                     {errors.length > 0 && (
@@ -34,7 +34,6 @@ export function ImportValidationSummary({ validCount, invalidCount, errors }: Im
                                         <span className="font-mono text-[10px] text-destructive/70">
                                             [Item {err.index}]
                                         </span>
-                                        <span className="font-semibold">{err.field ? `${err.field}:` : ''}</span>
                                         <span>{err.message}</span>
                                     </li>
                                 ))}

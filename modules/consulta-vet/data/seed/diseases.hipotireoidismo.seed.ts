@@ -1,299 +1,307 @@
-import { DiseaseRecord } from '../../types/disease';
+import type { DiseaseRecord } from '../../types/disease';
 
-/** Hipotireoidismo Canino; texto editorial integrando ACVIM, MSD e Nelson & Couto. */
 export const hipotireoidismoCaninoRecord: DiseaseRecord = {
   id: 'disease-hipotireoidismo-canino',
   slug: 'hipotireoidismo-canino',
-  title: 'Hipotireoidismo Canino',
+  title: 'Hipotireoidismo canino',
   synonyms: [
     'Hipotireoidismo',
-    'Canine hypothyroidism',
     'Tireoidite linfocítica',
-    'Atrofia tireóidea idiopática',
+    'Atrofia tireoidiana idiopática',
+    'Síndrome do eutireoideo doente',
+    'Doença não tireoidiana',
   ],
   species: ['dog'],
   category: 'endocrinologia',
-  tags: [
-    'Tireóide',
-    'Levotiroxina',
-    'T4 Livre',
-    'cTSH',
-    'Letargia',
-    'Ganho de peso',
-    'Alopecia simétrica',
-    'Fáceis trágica',
-  ],
+  tags: ['Tireoide', 'Levotiroxina', 'T4 livre', 'cTSH', 'NTIS', 'Eutireoideo doente', 'Alopecia'],
   quickSummary:
-    'O hipotireoidismo canino é uma das endocrinopatias mais comuns em cães, caracterizada pelo decréscimo da produção e secreção dos hormônios tireoidianos (T4 e T3). Na quase totalidade dos casos, é uma afecção primária decorrente de tireoidite linfocítica imunomediada (destruição ativa com presença de autoanticorpos antitiroglobulina) ou atrofia tireóidea idiopática (substituição por tecido adiposo). O hipotireoidismo secundário (pituitário) é muito raro (<5%). A deficiência hormonal diminui a atividade metabólica celular de quase todos os sistemas corporais, manifestando-se clinicamente por letargia profunda, ganho de peso sem aumento de ingestão calórica, intolerância ao exercício, busca por fontes de calor, e graves distúrbios dermatológicos (alopecia simétrica bilateral não pruriginosa, cauda de rato, hiperpigmentação e fácies trágica por mixedema facial). O diagnóstico é desafiador devido à inespecificidade dos sinais e à supressão do T4 sérico por doenças não tireoidianas (Euthyroid Sick Syndrome). A confirmação exige a combinação de T4 Livre por diálise baixo e cTSH elevado. O tratamento consiste na reposição vitalícia com Levotiroxina sódica oral.',
+    'Hipotireoidismo é deficiência de hormônios tireoidianos com sinais clínicos compatíveis, quase sempre por destruição primária da tireoide por tireoidite linfocítica ou atrofia idiopática. O metabolismo desacelera e surgem letargia, ganho de peso sem polifagia, intolerância ao frio, alopecia não pruriginosa, seborreia, piodermite e, menos frequentemente, neuropatia ou mixedema. O maior desafio é diagnóstico: doença sistêmica e vários fármacos reduzem T4 em cães eutireoideos, quadro chamado síndrome da doença não tireoidiana (NTIS, antigo “eutireoideo doente”). T4 total baixo sozinho não confirma hipotireoidismo. A decisão integra clínica, hemograma/bioquímica, T4 total, T4 livre por diálise e cTSH; resultados discordantes pedem revisão de doença, medicamentos e raça ou repetição posterior. Levotiroxina é eficaz e geralmente vitalícia, mas a dose atual deve ser ajustada ao produto, alimento, resposta e monitoramento.',
   quickDecisionStrip: [
-    'Cão com letargia, ganho de peso injustificado, alopecia simétrica bilateral não pruriginosa ("cauda de rato") e hipercolesterolose marcante: suspeite forte de hipotireoidismo.',
-    'Nunca firme o diagnóstico de hipotireoidismo baseando-se apenas em um T4 Total baixo; "Euthyroid Sick Syndrome" (supressão por outras doenças) é extremamente comum.',
-    'A combinação laboratorial ideal para o diagnóstico definitivo é: T4 Livre por diálise baixo + TSH canino (cTSH) elevado.',
-    'Até 15–20% dos cães hipotireóideos confirmados podem apresentar cTSH normal; nestes casos, a interpretação isolada do cTSH pode gerar falsos-negativos.',
-    'O tratamento de escolha é a reposição oral vitalícia com Levotiroxina sódica sintética (T4), com monitorização de T4 Total 4–6 horas pós-dose.',
+    'T4 total baixo sozinho não diagnostica hipotireoidismo.',
+    'Paciente sistêmico doente: adie painel tireoidiano se possível e trate a causa da NTIS.',
+    'fT4 por diálise baixo + cTSH alto fortalece muito o diagnóstico, mas nenhum teste isolado é perfeito.',
+    'cTSH normal ocorre em 20–40% dos cães hipotireóideos em algumas séries.',
+    'TgAA indica tireoidite, não função; cão eutireoideo TgAA positivo não deve receber levotiroxina automaticamente.',
+    'Levotiroxina: administrar sempre do mesmo modo em relação à comida e monitorar por clínica + T4.',
   ],
   quickSummaryRich: {
     lead:
-      'O hipotireoidismo canino "desacelera" o metabolismo do cão. O principal desafio clínico não é a complexidade do tratamento — que é simples e altamente eficaz com levotiroxina —, mas sim evitar o sobrediagnóstico. Inúmeros cães com dermatopatias alérgicas ou obesidade simples são rotulados e tratados de forma errônea devido à interpretação incorreta de dosagens isoladas de T4 Total suprimidas por estresse, AINEs ou corticoides.',
-    leadHighlights: ['desacelera', 'sobrediagnóstico', 'T4 Total suprimido', 'Euthyroid Sick', 'levotiroxina'],
+      'O hipotireoidismo verdadeiro é tratável; o problema é o rótulo errado. T4 cai em quase toda doença importante, com glicocorticoide, fenobarbital e sulfonamida, e naturalmente é mais baixo em algumas raças. Quando um valor baixo vira diagnóstico sem contexto, o cão recebe terapia vitalícia para uma tireoide normal e a doença real fica para trás.',
+    leadHighlights: ['rótulo errado', 'T4 cai', 'sem contexto', 'doença real'],
     pillars: [
       {
-        title: 'Origem primária',
+        title: 'Deficiência hormonal verdadeira',
         body:
-          'Mais de 95% decorrem de tireoidite linfocítica imunomediada (com anticorpos antitiroglobulina ativos) ou de atrofia idiopática bilateral. Raras vezes é congênito ou secundário a tumores pituitários.',
+          'A maior parte é primária: tireoidite linfocítica destrói folículos ou atrofia idiopática substitui parênquima por gordura.',
         highlights: ['tireoidite linfocítica', 'atrofia idiopática'],
       },
       {
-        title: 'Euthyroid Sick Syndrome',
-        body: 'Praticamente qualquer doença sistêmica moderada a grave, além de fármacos (como corticoides, fenobarbital e sulfas), pode suprimir o T4 sérico em cães com tireoide perfeitamente normal. Primeiro cure a doença de base antes de testar.',
-        highlights: ['doença sistêmica', 'fármacos', 'suprimir o T4'],
+        title: 'NTIS não é hipotireoidismo',
+        body:
+          'Doença sistêmica reduz TSH, síntese, ligação, conversão e depuração de hormônios como adaptação. Tratar a causa de base é prioritário; levotiroxina não é indicada automaticamente.',
+        highlights: ['NTIS não é hipotireoidismo', 'não é recomendado'],
       },
       {
-        title: 'Fáceis trágica',
-        body: 'O acúmulo cutâneo de mucopolissacarídeos (mixedema) retém água na derme facial, provocando o espessamento da pele da testa e pálpebras, gerando o clássico olhar triste/trágico.',
-        highlights: ['mixedema', 'olhar triste'],
+        title: 'Painel é uma probabilidade',
+        body:
+          'T4 total normal costuma excluir; T4 baixo abre investigação. T4 livre por diálise e TSH canino mudam a probabilidade, mas a clínica continua obrigatória.',
+        highlights: ['probabilidade', 'clínica continua obrigatória'],
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (triagem → confirmação dinâmica)',
+      title: 'Fluxo diagnóstico sem atalhos',
       steps: [
         {
-          label: '1. Reconhecimento do perfil clínico',
+          label: '1. Confirme que há síndrome compatível',
           detail:
-            'Identificar letargia marcante, inatividade, ganho de peso sem polifagia, alopecia endócrina bilateral e intolerância ao frio em cães adultos.',
+            'Letargia, ganho de peso sem polifagia, intolerância ao frio, dermatopatia endócrina, neuropatia e hipercolesterolemia coerentes.',
         },
         {
-          label: '2. Banco de dados inicial (Bioquímica)',
+          label: '2. Procure interferentes',
           detail:
-            'Achar hipercolesterolemia pronunciada (> 75% dos casos, decorrente de metabolismo de lipídios deprimido) e anemia normocítica normocrômica não regenerativa.',
+            'Doença sistêmica, glicocorticoide, fenobarbital, sulfonamida, clomipramina, AINE e raça com T4 fisiologicamente baixo.',
         },
         {
-          label: '3. Triagem com T4 Total sérico',
+          label: '3. Triagem com T4 total',
           detail:
-            'Dosar T4 Total. Se estiver bem dentro do intervalo de referência normal, o hipotireoidismo está virtualmente descartado. Se estiver baixo, avançar para confirmação.',
+            'Normal torna hipotireoidismo improvável; baixo não confirma e deve ser interpretado com fT4ED e cTSH.',
         },
         {
-          label: '4. T4 Livre por Diálise (fT4ED) + cTSH',
+          label: '4. Confirmação probabilística',
           detail:
-            'Padrão ouro laboratorial conjunto. Achar T4 Livre (por diálise em equilíbrio, que isola autoanticorpos) baixo + TSH canino elevado. Este par fecha o diagnóstico com >95% de especificidade.',
+            'fT4 por diálise baixo + cTSH alto + clínica forte = alta probabilidade. Discordância pede repetir após recuperação ou aprofundar.',
         },
         {
-          label: '5. Pesquisa de Autoanticorpos (TgAA)',
+          label: '5. Teste terapêutico somente selecionado',
           detail:
-            'Dosar anticorpos antitiroglobulina (TgAA) se suspeita de tireoidite linfocítica ativa em cães jovens ou de linhagens predispostas para planejamento futuro.',
+            'Se testes permanecem inconclusivos e suspeita é alta, documentar sinais/metas, tratar por tempo suficiente e interromper se resposta objetiva não ocorrer.',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico (reposição hormonal e monitoramento)',
+      title: 'Reposição e acompanhamento',
       steps: [
         {
-          label: 'Passo 1: Confirmação e início de Levotiroxina',
+          label: 'Início',
           detail:
-            'Iniciar Levotiroxina sódica sintética (T4). Dose clássica inicial: 0,02 mg/kg via oral a cada 12 horas (BID) ou 0,1–0,2 mg/10 kg BID. Administrar preferencialmente em jejum.',
+            'Levotiroxina veterinária com dose baseada no produto; reduzir em cardiopata, idoso frágil ou doença grave.',
         },
         {
-          label: 'Passo 2: Resposta clínica esperada',
+          label: '4–8 semanas',
           detail:
-            'Observar aumento de energia e atividade em 1-2 semanas. A perda de peso ocorre em 4-8 semanas. A melhora dermatológica e repilação pode levar de 3 a 4 meses.',
+            'Avaliar energia, peso, pele e T4 de 4–6 horas após a dose; colher uma amostra imediatamente antes da dose quando a administração for uma vez ao dia ou a resposta for duvidosa.',
         },
         {
-          label: 'Passo 3: Monitoramento Pós-pílula (4-8 Semanas)',
+          label: 'Ajuste',
           detail:
-            'Dosar T4 Total 4 a 6 horas após a administração da dose da manhã (pico sérico). Meta: T4 Total deve estar no terço superior do intervalo de referência ou ligeiramente acima (ex: 3,5 a 5,0 µg/dL).',
+            'Checar adesão, relação com alimento e produto antes de aumentar dose. Ajustar por clínica e laboratório, não por um número isolado.',
         },
         {
-          label: 'Passo 4: Ajuste posológico por espécie/resposta',
+          label: 'Manutenção',
           detail:
-            'Se T4 pós-pílula estiver baixo: checar adesão ao tratamento, absorção gastrointestinal ou considerar conversão para dose SID (uma vez ao dia) se clinicamente estável e em dose maior.',
-        },
-        {
-          label: 'Passo 5: Controle crônico a longo prazo',
-          detail:
-            'Uma vez estável, dosar T4 Total e avaliar clinicamente o cão a cada 6 meses. Monitorar sinais de tireotoxicose/hipertireoidismo iatrogênico (polidipsia, polifagia, perda de peso, taquicardia).',
+            'Após estabilização, reavaliar a cada 6–12 meses e sempre que produto, dieta, dose ou doença concomitante mudar.',
         },
       ],
     },
   },
   etiology: {
-    visaoGeral:
-      'Mais de 95% dos casos de hipotireoidismo canino clínico são primários, decorrentes de duas etiologias principais: a tireoidite linfocítica imunomediada e a atrofia tireóidea idiopática. Ambas provocam a perda irreversível do parênquima glandular ativo.',
-    fatores: [
-      'Tireoidite linfocítica crônica autoimune: infiltração difusa de linfócitos, plasmócitos e macrófagos que destrói folículos. Caracterizada pela presença de anticorpos antitiroglobulina (TgAA) em ~50% dos casos precoces.',
-      'Atrofia tireóidea idiopática bilateral: degeneração não inflamatória do tecido glandular com substituição por gordura (tecido adiposo) e tecido conjuntivo fibroso.',
-      'Causas secundárias (hipofisárias): hipoplasia ou neoplasia pituitária diminuindo a secreção de TSH (rara, <5%).',
-      'Hipotireoidismo congênito (nanismo desproporcional): disgenesia tireóidea ou defeitos na síntese hormonal em filhotes (raro).',
+    primaria:
+      'Tireoidite linfocítica autoimune e atrofia tireoidiana idiopática respondem pela grande maioria dos casos adquiridos. Na tireoidite, linfócitos e plasmócitos destroem folículos; na atrofia, o parênquima é substituído por tecido adiposo e conjuntivo.',
+    rara: [
+      'Hipotireoidismo secundário por doença hipofisária/deficiência de TSH é raro e pode cursar com cTSH não elevado.',
+      'Hipotireoidismo congênito por disgenesia ou disormonogênese causa atraso mental, nanismo desproporcional, retenção de dentes e atraso de ossificação.',
+      'Iatrogênico após tireoidectomia, radioiodo, radiação cervical ou fármacos antitireoidianos.',
+      'Sulfonamidas potencializadas podem inibir a peroxidase tireoidiana e produzir alterações reversíveis após a suspensão.',
     ],
+    tgAA:
+      'O anticorpo antitireoglobulina (TgAA) marca tireoidite autoimune em parte dos cães, mas pode ser positivo antes da perda funcional e negativo na doença terminal. Ele indica agressão imunológica contra a tireoide; não mede a capacidade atual de produzir hormônios.',
   },
   epidemiology: {
-    especiePrincipal:
-      'Cão — afeta tipicamente cães de meia-idade a idosos (4 a 10 anos de idade). Animais castrados (machos e fêmeas) parecem apresentar risco aumentado em comparação a inteiros.',
-    breedPredisposition:
-      'Predisposição racial estabelecida em Golden Retriever, Doberman Pinscher, Irish Setter, Great Dane, Boxer, Cocker Spaniel, e Dachshund. O rastreio precoce em linhagens familiares afetadas é útil.',
-    notaFelinos:
-      'Em gatos, o hipotireoidismo espontâneo é considerado extremamente raro na clínica veterinária. Quase a totalidade dos casos felinos com tireoide deprimida é iatrogênico, decorrente de tratamento prévio com iodo radioativo (I-131) ou tireoidectomia cirúrgica bilateral para correção de hipertireoidismo.',
+    perfil:
+      'Afeta principalmente cães adultos de meia-idade; os sinais aparecem depois que grande parte da reserva glandular foi perdida. A frequência varia conforme população e critérios diagnósticos, e o sobrediagnóstico é comum.',
+    racas:
+      'Beagle, Golden Retriever, Dobermann e Dogue Alemão aparecem entre os predispostos na diretriz de Bugbee et al. (2023). Lebréis e algumas raças nórdicas podem ter T4 fisiologicamente baixo e exigem intervalo específico, não presunção de doença.',
+    felinos:
+      'Hipotireoidismo espontâneo felino é raro; a maioria dos casos é iatrogênica após tratamento de hipertireoidismo. Esta ficha concentra-se no cão.',
   },
   pathogenesisTransmission: {
-    patogenese: [
-      'A destruição crônica progressiva do córtex tireoidiano reduz a síntese e a liberação de tiroxina (T4) e triiodotironina (T3) na circulação sistêmica.',
-      'O T4 livre diminui, reduzindo a retroalimentação negativa sobre a hipófise. A hipófise responde aumentando a síntese e a secreção de TSH (hormônio estimulador da tireoide), na tentativa inútil de estimular a glândula atrofiada.',
-      'A falta de hormônios tireoidianos intracelulares diminui o número e a atividade de enzimas metabólicas mitocondriais, reduzindo o consumo de oxigênio de todas as células corporais.',
-      'Ocorre lentidão no turnover celular epidérmico: folículos capilares entram em fase telógena (repouso) contínua, levando à alopecia. Há acúmulo de glicosaminoglicanos (mixedema) na derme pela incapacidade de degradação.',
-      'O metabolismo lipídico é deprimido: ocorre redução da eliminação biliar de colesterol e da atividade da lipase lipoproteica, promovendo hipercolesterolemia grave.',
+    eixo: [
+      'Perda de tecido tireoidiano reduz T4 e T3 circulantes.',
+      'Menor retroalimentação deveria elevar TSH, mas pulsatividade, cronicidade, doença e ensaio fazem cTSH permanecer normal em parte dos casos.',
+      'Menor sinal tireoidiano reduz consumo de oxigênio, termogênese, renovação cutânea, lipólise e atividade cardiovascular.',
+      'Glicosaminoglicanos acumulam na derme e retêm água, formando mixedema.',
     ],
+    ntis:
+      'Na síndrome da doença não tireoidiana (NTIS), a tireoide é estruturalmente funcional. Citocinas e alterações do eixo hipotálamo–hipófise, proteínas carreadoras, deiodinação e depuração reduzem T4 e T3 proporcionalmente à gravidade. É um marcador de doença sistêmica, não indicação automática de reposição.',
     transmissao:
-      'Doença metabólica endócrina autoimune ou degenerativa primária; sem transmissão horizontal ou caráter contagioso.',
+      'Não é contagioso. Formas autoimunes e congênitas podem ter predisposição familiar.',
   },
   pathophysiology:
-    'O hipotireoidismo diminui a taxa metabólica basal celular. Ocorre redução na termogênese (intolerância ao frio, letargia profunda, busca por calor), diminuição do estímulo cardíaco simpático (bradicardia sinusal leve, pulso normal a fraco), redução do estímulo de medula óssea (anemia não regenerativa leve), e lentidão no catabolismo lipídico (hipercolesterolemia com risco de aterosclerose em cães, embora infrequente na espécie).',
+    'Hormônios tireoidianos regulam expressão enzimática, mitocôndrias, receptores adrenérgicos e renovação dos tecidos. Sua falta reduz a taxa metabólica basal e a termogênese, explicando letargia, intolerância ao frio e ganho de peso. Folículos pilosos permanecem em telógeno e a epiderme se renova lentamente, causando alopecia e seborreia. A menor depuração de LDL e a menor atividade lipolítica elevam colesterol e triglicerídeos. O menor estímulo cardíaco reduz frequência e contratilidade; nervos periféricos podem sofrer desmielinização ou alteração axonal. O mixedema resulta do acúmulo de glicosaminoglicanos hidrofílicos na derme.',
   clinicalSignsPathophysiology: [
     {
       system: 'general',
       findings: [
-        'Letargia pronunciada, inatividade física, sonolência contínua e desinteresse por brincadeiras/passeios.',
-        'Ganho de peso substancial e obesidade progressiva sem que tenha havido aumento na ingestão diária de alimentos.',
-        'Intolerância severa ao frio: o cão busca deitar-se ao sol, sob cobertas ou próximo a aquecedores.',
+        'Letargia, sonolência e intolerância ao exercício: menor metabolismo e débito cardiovascular.',
+        'Ganho de peso sem polifagia: gasto energético cai mais que ingestão.',
+        'Busca por calor/intolerância ao frio: menor termogênese.',
       ],
     },
     {
       system: 'dermatologic',
       findings: [
-        'Alopecia bilateral simétrica não pruriginosa e não inflamatória do tronco e flancos, poupando a cabeça e extremidades dos membros.',
-        'Queda completa de pelos na cauda, gerando o aspecto clássico de "cauda de rato".',
-        'Fáceis trágica: espessamento da pele da testa e face decorrente de mixedema, gerando pregas cutâneas faciais e um olhar triste característico.',
-        'Hiperpigmentação difusa da pele alopécica, comedões e seborreia seca ou oleosa com odor forte.',
-        'Predisposição a infecções bacterianas oportunistas secundárias de pele (piodermite recorrente) e otite externa.',
-      ],
-    },
-    {
-      system: 'cardiovascular',
-      findings: [
-        'Bradicardia sinusal leve a moderada persistente.',
-        'Arritmias cardíacas (bloqueios atrioventriculares de primeiro grau ou complexos prematuros) menos comuns.',
-        'Disfunção sistólica miocárdica subclínica moderada em ecocardiografia.',
+        'Alopecia bilateral não pruriginosa, cauda de rato e falha de repilação: folículo fica em telógeno.',
+        'Seborreia, comedões e hiperpigmentação: renovação epidérmica lenta e inflamação crônica.',
+        'Piodermite e otite recorrentes: barreira cutânea e imunidade local prejudicadas; prurido costuma vir da infecção/alergia associada, não do hormônio baixo em si.',
+        'Fácies trágica/mixedema: glicosaminoglicanos retêm água na derme facial.',
       ],
     },
     {
       system: 'neuromuscular',
       findings: [
-        'Neuropatias periféricas: fraqueza muscular, ataxia de membros, paresia, paralisia de nervo facial ou laringeo (menos comuns).',
-        'Miopatia hipotireóidea: rigidez ao caminhar e atrofia muscular generalizada discreta.',
+        'Fraqueza, ataxia, paresia, paralisia facial ou vestibular periférica: neuropatia/miopatia; relação causal deve ser confirmada por resposta e exclusão de diferenciais.',
+      ],
+    },
+    {
+      system: 'cardiovascular',
+      findings: [
+        'Bradicardia e pulso fraco: menor cronotropismo/inotropismo.',
+        'Disfunção sistólica leve pode ocorrer; cardiomiopatia grave isolada exige buscar outra causa.',
+      ],
+    },
+    {
+      system: 'hematologic',
+      findings: [
+        'Anemia normocítica normocrômica não regenerativa leve: menor demanda de oxigênio e estímulo eritropoiético.',
+        'Hipercolesterolemia/hipertrigliceridemia: depuração lipídica reduzida.',
+      ],
+    },
+    {
+      system: 'critical',
+      findings: [
+        'Coma mixedematoso: hipotermia, bradicardia, hipoventilação, hiponatremia e alteração do estado mental; é raro e constitui emergência.',
       ],
     },
   ],
   diagnosis: {
-    cmeSuspeitaClinica:
-      'Cão obeso, letárgico, com alopecia simétrica bilateral e mixedema facial é o addisoniano metabólico clássico. Os achados laboratoriais de hipercolesterolemia em exames de triagem bioquímica rotineiros reforçam maciçamente a suspeita clínica.',
-    cmeTabelaFasesSinaisLab: {
-      kind: 'clinicalTable' as const,
-      headers: ['Exame Diagnóstico', 'Resultado no Hipotireoidismo', 'Significado Clínico / Interpretação'],
+    principio:
+      'Não existe um padrão ouro simples disponível na rotina. O diagnóstico é clínico-laboratorial integrado. Histopatologia da tireoide não é indicada rotineiramente e a resposta à levotiroxina pode ser inespecífica.',
+    testes: {
+      kind: 'clinicalTable',
+      headers: ['Teste', 'Força', 'Limitação prática'],
       rows: [
         [
-          'Total T4 sérico',
-          'Diminuído (frequentemente < 1.0 µg/dL)',
-          'Excelente triagem. Se normal, descarta a doença. Se baixo, pode ser euthyroid sick ou fármacos; exige confirmação.',
+          'T4 total (TT4)',
+          'Boa triagem para excluir: valor normal geralmente torna hipotireoidismo improvável.',
+          'Baixa especificidade quando baixo; cai com NTIS, fármacos e raça. Autoanticorpo anti-T4 pode falsamente elevar.',
         ],
         [
-          'Free T4 por Diálise (fT4ED)',
-          'Diminuído (Baixo)',
-          'Mais sensível e específico. A diálise em equilíbrio separa autoanticorpos (T4AA) e proteínas de ligação. Menos influenciado por doenças não tireoidianas.',
+          'T4 livre por diálise (fT4ED)',
+          'Menos influenciado por proteínas e autoanticorpos; melhor teste hormonal isolado em estudos.',
+          'Doença grave também pode reduzir; método analógico não equivale à diálise.',
         ],
         [
-          'TSH canino (cTSH)',
-          'Elevado (Alto; tipicamente > 0.6 ng/mL)',
-          'A falta de retroalimentação de T4 estimula a secreção hipofisária. cTSH alto + fT4 baixo confirma o diagnóstico. cTSH normal ocorre em 15–20% dos doentes.',
+          'cTSH',
+          'Alto junto com TT4/fT4 baixos aumenta muito a especificidade (>90% em séries).',
+          'Sensibilidade limitada: cerca de 20–40% dos cães hipotireóideos podem apresentar TSH canino dentro do intervalo de referência.',
         ],
         [
-          'Colesterol sérico',
-          'Elevado (Hipercolesterolemia > 300–400 mg/dL)',
-          'Decorrente da queda na eliminação biliar e de receptores de LDL. Presente em > 75% dos cães hipotireóideos.',
+          'TgAA',
+          'Apoia tireoidite linfocítica.',
+          'Não mede função; positivo em eutireoideo e negativo em doença terminal.',
         ],
         [
-          'Hemograma',
-          'Anemia normocítica normocrômica não regenerativa leve',
-          'Ocorre em ~30% dos casos, causada pela redução na taxa metabólica da medula óssea e menor demanda periférica por oxigênio.',
+          'TSH stimulation',
+          'Avalia reserva funcional e pode resolver casos difíceis.',
+          'Caro, pouco disponível e depende de rhTSH; não é rotina.',
         ],
       ],
     },
-    cmeEsfregacoSangue:
-      'Euthyroid Sick Syndrome (Doença Não Tireoidiana): a supressão fisiológica da tireoide por outras doenças ou uso de fármacos (glicocorticoides, fenobarbital, sulfas) reduz o T4 Total sem que haja hipotireoidismo real. Sempre estabilize outras afecções ou descontinue esses medicamentos por pelo menos 4 a 6 semanas antes de testar a tireoide.',
-    cmeSorologiaInterpretacao:
-      'Anticorpos Antitiroglobulina (TgAA): marcador imunológico de tireoidite ativa. Presente em ~50% dos cães com hipotireoidismo espontâneo primário. Sua presença confirma tireoidite linfocítica ativa mesmo antes do T4 cair, sendo útil para triar cães jovens de raças predispostas.',
+    desempenho:
+      'Panciera (1997) avaliou 54 cães hipotireóideos e encontrou sensibilidade de 98% e especificidade de 93% para o T4 livre; para o T4 total, os valores foram 89% e 82%. Dixon e Mooney (1999) observaram que combinar T4 livre e TSH canino aumenta a especificidade, mas reduz a sensibilidade. Esses números dependem da população, do método laboratorial e do padrão de referência.',
+    aaHaCategorias: [
+      'Bugbee et al. (2023), na diretriz da AAHA, propuseram integrar a probabilidade clínica ao painel hormonal: sinais clássicos com T4 total baixo justificam medir T4 livre e TSH canino antes de confirmar e tratar.',
+      'Sem sinais clínicos e com T4 total baixo: revisar doença sistêmica, medicamentos e raça; repetir depois, em vez de suplementar por um resultado isolado.',
+      'Com sinais possíveis e T4 total normal: procurar outros diagnósticos; se a suspeita continuar forte, T4 livre por diálise, TSH canino e anticorpos anti-T4 podem esclarecer a discordância.',
+    ],
+    ntis:
+      'A síndrome da doença não tireoidiana deve ser considerada quando T4 baixo ocorre durante doença moderada ou grave sem fenótipo clássico. Quanto mais grave a doença, maior a chance de T4 total e até T4 livre baixos. Trate a doença de base e repita o painel após a recuperação; não use levotiroxina apenas para corrigir os números.',
+    interferentes:
+      'Glicocorticoides, fenobarbital e sulfonamidas são interferentes principais; outros fármacos também podem alterar resultados. O intervalo necessário após a suspensão depende do fármaco, da dose e da duração, podendo chegar a 8–12 semanas para sulfonamidas. Não interrompa anticonvulsivante ou corticoide essencial apenas para testar sem um plano seguro.',
+    imagem:
+      'Ultrassom tireoidiano pode apoiar atrofia/tireoidite em mãos experientes, mas há sobreposição e não substitui painel. Cintilografia e biópsia ficam para casos raros.',
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Confirmar o diagnóstico definitivo com fT4 por diálise e cTSH (e afastar Euthyroid Sick) antes de iniciar terapia vitalícia.',
-      '2) Iniciar reposição com Levotiroxina sódica sintética por via oral.',
-      '3) Orientar o tutor sobre o cronograma de melhora clínica (energia em 1-2 semanas; dermatológico em 3-4 meses).',
-      '4) Dosar T4 Total pós-pílula após 4 a 8 semanas para monitoramento de pico e ajuste de dose.',
-      '5) Ajustar posologia conforme resultados laboratoriais e resposta clínica observada no cão.',
-      '6) Manter reavaliações clínicas e laboratoriais semestrais periódicas vitais.',
+    levotiroxina: [
+      'Budde e McCluskey (2023), na monografia da levotiroxina do Plumb’s, apresentam dose inicial rotulada total de 0,022 mg/kg/dia por via oral, em uma ou duas tomadas, com ajuste individual. Também descrevem uso extra-bula de 0,01–0,02 mg/kg a cada 12–24 horas e máximo inicial frequente de 0,8 mg por cão a cada 12 horas.',
+      'Administre sempre da mesma forma em relação ao alimento. O jejum aumenta e estabiliza a absorção em muitos produtos, mas uma rotina consistente com alimento é melhor do que alternar; qualquer mudança exige novo controle.',
+      'Em cardiopata, paciente muito idoso, frágil ou gravemente doente, considere iniciar cerca de 25% abaixo e titular, porque o aumento abrupto da demanda metabólica pode descompensar o paciente.',
+      'Não associar liotironina rotineiramente. Falha de conversão T4→T3 é rara; primeiro revisar diagnóstico, produto, adesão, alimento, má absorção e doença concomitante.',
+    ],
+    resposta: [
+      'Energia e alerta costumam melhorar em 1–2 semanas; lipídios e peso, ao longo de semanas; pele e pelagem podem levar 2–4 meses e inicialmente parecer piores pela troca de pelos.',
+      'Ausência de resposta objetiva com T4 terapêutico exige reabrir diagnóstico. Dermatite alérgica, demodicose e piodermite podem coexistir.',
     ],
     monitoramento: [
-      'T4 Total pós-pílula 4 a 6 horas pós-dose (após 4–8 semanas de tratamento): meta de pico terapêutico deve situar-se no terço superior do intervalo de referência ou ligeiramente acima (ex: 3,5 a 5,0 µg/dL).',
-      'cTSH sérico pós-pílula: deve retornar à faixa de referência normal como sinal de supressão adequada do eixo hipofisário.',
-      'Sinais de superdosagem (Tireotoxicose): polidipsia, poliúria, polifagia, hiperatividade extrema, taquicardia sinusal e perda de peso rápida. Exige redução imediata da dose de levotiroxina.',
-      'Repilação e Peso: acompanhar a perda de peso gradual e o crescimento de novos pelos. O cão deve retornar ao peso e atividade normais.',
+      'Reavaliar 4–8 semanas após início ou ajuste. Colher T4 total 4–6 horas após a dose; em administração uma vez ao dia, considerar também amostra imediatamente antes da dose quando a resposta for duvidosa.',
+      'Interpretar alvo pelo método/laboratório e sinais. Não elevar dose apenas para “normalizar” cTSH se o cão está clinicamente bem e TT4 adequado.',
+      'Após estabilização: clínica, peso, TT4 e, quando útil, cTSH a cada 6–12 meses.',
+      'Tireotoxicose iatrogênica: polifagia com perda de peso, hiperatividade, panting, PU/PD, taquicardia e hipertensão; reduzir/interromper conforme gravidade e medir hormônios.',
     ],
-    cmeDoxiciclinaPrimeiraLinha:
-      'Terapia de Reposição Hormonal: Levotiroxina sódica (sintética de T4) é o fármaco de eleição vitalício. Dose inicial recomendada: 0,02 mg/kg via oral a cada 12 horas (BID) ou 0,1 mg a 0,2 mg por 10 kg de peso vivo BID. Administrar preferencialmente 1 hora antes da alimentação para garantir estabilidade e pico de absorção gastrointestinal. Em cães estáveis a longo prazo, alguns clínicos convertem com sucesso para administração SID (uma vez ao dia) com doses equivalentes totais maiores, monitorando rigorosamente pós-pílula.',
-    cmeTabelaAntimicrobianos: {
-      kind: 'clinicalTable' as const,
-      headers: ['Fármaco / Medida', 'Dose / Posologia de manutenção', 'Papel e notas clínicas essenciais'],
-      rows: [
-        [
-          'Levotiroxina sódica (T4 sintético)',
-          '0,02 mg/kg VO q12h (BID) inicialmente.',
-          'Primeira linha vitalícia. Pico de absorção ocorre em ~4-6 horas. Checar T4 pós-pílula após 4-8 semanas.',
-        ],
-        [
-          'Desmame de Levotiroxina prévia',
-          'Descontinuar terapia prévia por pelo menos 4 a 6 semanas antes de novos testes diagnósticos.',
-          'Obrigatório para reavaliar cães falsamente rotulados. Permite que o eixo tireoidiano próprio retorne ao baseline real.',
-        ],
-        [
-          'Tratamento de Piodermites',
-          'Uso racional de xampus antissépticos (clorexidina) e antimicrobianos sob cultura.',
-          'Adjuvante comum. As piodermites recorrentes secundárias ao hipotireoidismo só curam definitivamente quando a tireoide for estabilizada.',
-        ],
-      ],
-    },
-    cmeSuporteTransfusaoFluidos:
-      'Aderência e erro terapêutico: a causa mais comum de "falha terapêutica" no hipotireoidismo é a administração irregular do medicamento, doses dadas junto com refeições gordurosas (que reduzem drasticamente a biodisponibilidade da levotiroxina) ou diagnóstico inicial incorreto de Euthyroid Sick.',
-    cmeMedulaDeprimida:
-      'Conversão hormonal deficitária: se o cão não responder adequadamente à levotiroxina e os níveis de T4 pós-pílula estiverem na faixa ideal, avaliar a rara falha de conversão periférica de T4 em T3 ativo, considerando o uso temporário de Liotironina (T3 sintético) sob extrema cautela especializada.',
+    comaMixedematoso:
+      'Emergência com aquecimento passivo cuidadoso, ventilação, correção de glicose e sódio e tratamento do gatilho. Budde e McCluskey (2023) reúnem relatos com levotiroxina intravenosa de 1–9 µg/kg, mediana de 5 µg/kg a cada 12 horas, usando dose menor no cardiopata. Exige internação intensiva e transição oral após estabilização.',
   },
-  prevention:
-    'Por se tratar de um distúrbio crônico primário de caráter autoimune imunomediado ou atrófico idiopático espontâneo, não existem métodos preventivos eficazes ou vacinas contra o hipotireoidismo canino. O diagnóstico e manejo precoces evitam complicações metabólicas e melhoram imensamente a qualidade de vida do cão.',
+  prevention: {
+    primaria:
+      'Não há vacina nem prevenção comprovada para tireoidite/atrofia. Evitar reprodução de animais com hipotireoidismo primário familiar e usar programas raciais de TgAA/função com interpretação especializada.',
+    iatrogenica:
+      'Usar sulfonamidas potencializadas pelo menor tempo eficaz e reconhecer interferência; monitorar pacientes após terapia tireoidiana destrutiva.',
+    sobrediagnostico:
+      'A prevenção mais importante é evitar diagnóstico em paciente doente ou por TT4 isolado. Documentar sinais e metas antes de qualquer teste terapêutico.',
+  },
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['prednisolona'],
+  relatedDiseaseSlugs: ['cardiomiopatia-dilatada-caes-gatos'],
+  relatedMedicationSlugs: [],
   references: [
     {
-      id: 'ref-acvim-thyroid-2002',
+      id: 'ref-nelson-couto-hypothyroidism',
       citationText:
-        'Ferguson DC et al. Consensus Statement on Canine Hypothyroidism (ACVIM). Journal of Veterinary Internal Medicine, 2002.',
-      sourceType: 'Consenso ACVIM',
-      url: null,
-      notes: 'Diretriz central sobre testes hormonais, euthyroid sick e reposição terapêutica.',
-      evidenceLevel: 'A',
-    },
-    {
-      id: 'ref-nelson-couto-hypo-2020',
-      citationText:
-        'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020. Cap. 48 — Disorders of the Thyroid Gland.',
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. 2020. Cap. 48, Disorders of the Thyroid Gland; PDF anexado, pp. 797–815.',
       sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Fisiopatologia do mixedema, alopecia endócrina, TgAA, fT4 por diálise e monitoramento pós-pílula.',
-      evidenceLevel: 'Consenso clínico',
+      notes: 'Inclui seção detalhada de Nonthyroidal Illness Syndrome.',
+      evidenceLevel: 'Referência clínica',
     },
     {
-      id: 'ref-plumb-levothyroxine-2023',
+      id: 'ref-plumbs-levothyroxine',
       citationText:
-        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — Levothyroxine Sodium.',
-      sourceType: 'Formulário',
-      url: null,
-      notes: 'Posologia de reposição, interações e monitoração do pico pós-pílula.',
-      evidenceLevel: 'A — referência prática',
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. 2023. Levothyroxine, pp. 749–752.',
+      sourceType: 'Formulário veterinário',
+      evidenceLevel: 'Referência farmacológica',
+    },
+    {
+      id: 'ref-aaha-endocrine-2023',
+      citationText:
+        'Bugbee A, Rucinsky R, et al. 2023 AAHA Selected Endocrinopathies of Dogs and Cats Guidelines. JAAHA. 2023;59.',
+      sourceType: 'Diretriz clínica',
+      url: 'https://www.aaha.org/resources/2023-aaha-selected-endocrinopathies-of-dogs-and-cats-guidelines/',
+      evidenceLevel: 'Consenso baseado em evidência',
+    },
+    {
+      id: 'ref-panciera-thyroid-tests',
+      citationText:
+        'Panciera DL. Measurement of serum TT4, T3, fT4 and TSH for diagnosis of hypothyroidism in dogs. JAVMA. 1997.',
+      sourceType: 'Estudo diagnóstico',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/9394888/',
+      notes: 'Desempenho diagnóstico depende do ensaio e população.',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-dixon-mooney',
+      citationText:
+        'Dixon RM, Mooney CT. Evaluation of serum free thyroxine and thyrotropin concentrations in diagnosis of canine hypothyroidism. J Small Anim Pract. 1999.',
+      sourceType: 'Estudo diagnóstico',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/10088086/',
+      evidenceLevel: 'B',
     },
   ],
   isPublished: true,

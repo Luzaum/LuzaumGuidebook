@@ -268,16 +268,101 @@ export const medicationsSeed: MedicationRecord[] = [
           ],
         ],
       },
+      {
+        kind: 'clinicalCallout',
+        variant: 'caution',
+        title: 'Resumo prático — quando precisa desmamar?',
+        body:
+          'Regra clínica segura: só comece o desmame quando a doença de base estiver controlada ou em remissão. Não existe protocolo universal superior; ajuste pela doença, dose, duração, fórmulação, fragilidade do paciente e efeitos adversos.',
+      },
+      {
+        kind: 'clinicalTable',
+        headers: ['Situação', 'Precisa desmame?', 'Conduta'],
+        rows: [
+          ['Dose anti-inflamatória por <5–7 dias', 'Geralmente não', 'Pode suspender se a doença estiver controlada.'],
+          ['Dose anti-inflamatória por 7–14 dias', 'Depende', 'Fazer desmame curto se dose alta, sinais adversos importantes ou paciente frágil.'],
+          ['Uso por ≥2 semanas', 'Sim', 'Desmamar progressivamente; eixo HHA pode estar suprimido.'],
+          ['Dose alta, ex.: >1 mg/kg/dia de prednisolona ou equivalente', 'Sim', 'Mesmo se o tempo foi curto, reduzir por alguns dias quando clinicamente possível.'],
+          ['Dose imunossupressora por semanas/meses', 'Sim, sempre', 'Desmame lento por semanas a meses, guiado por remissão documentada.'],
+          ['Corticoide depot: metilprednisolona acetato, triancinolona acetonida', 'Não dá para “desmamar” direito', 'Evitar em doença crônica; monitorar supressão prolongada e efeitos adversos.'],
+        ],
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'info',
+        title: 'Por que o desmame existe?',
+        body:
+          'Prednisolona, prednisona, dexametasona e outros glicocorticoides reduzem CRH/ACTH por feedback negativo. Com menos ACTH, a adrenal reduz a produção endógena de cortisol e pode ficar funcionalmente atrófica. Suspender abruptamente após exposição relevante pode deixar o paciente sem resposta adequada ao estresse, cirurgia, internação, inflamação ativa ou doença intercorrente.',
+      },
+      {
+        kind: 'clinicalTable',
+        headers: ['Risco ao suspender rápido', 'Como aparece', 'Resposta prática'],
+        rows: [
+          ['Recidiva da doença primária', 'Volta de hemólise, plaquetopenia, prurido, diarreia, lesões cutâneas, sinais neurológicos ou inflamação conforme a doença.', 'Voltar para a última dose efetiva; em imunomediadas pode exigir dose igual ou maior que a inicial.'],
+          ['Síndrome de retirada de glicocorticoide', 'Letargia, anorexia, vômito, fraqueza, prostração, dor muscular inespecífica ou piora clínica sem causa evidente.', 'Diferenciar de recidiva e de hipoadrenocorticismo; considerar teste de estimulação com ACTH em casos duvidosos.'],
+          ['Hipoadrenocorticismo secundário iatrogênico', 'Insuficiência de cortisol por supressão de ACTH; geralmente sem padrão clássico de hiponatremia/hipercalemia do Addison primário.', 'Suporte clínico, avaliação endócrina e retorno temporário a dose fisiológica/anti-inflamatória conforme gravidade.'],
+        ],
+      },
+      {
+        kind: 'clinicalTable',
+        headers: ['Cenário', 'Exemplo de desmame', 'Observações'],
+        rows: [
+          ['Inflamatório leve/moderado por 10–21 dias', 'Dose cheia até controle → reduzir 25–50% por 5–7 dias → mesma dose a cada 48h por 5–7 dias → suspender.', 'Ex.: cão 1 mg/kg SID por 10 dias → 0,5 mg/kg SID por 5–7 dias → 0,5 mg/kg q48h por 5–7 dias → suspender.'],
+          ['Uso crônico anti-inflamatório', 'Reduzir cerca de 25% da dose a cada 1–2 semanas; ao chegar em ~0,5 mg/kg/dia, tentar q48h por 2–4 semanas.', 'Objetivo é menor dose efetiva ou terapia poupadora; se recidivar, voltar à última dose efetiva.'],
+          ['Doença imunomediada', 'Após remissão documentada, reduzir 20–25% a cada 2–4 semanas; migrar para dias alternados ao atingir faixa anti-inflamatória.', 'Reavaliar antes de cada redução: hemograma, plaquetas, proteína/albumina, UPC, pele, sinais neurológicos ou marcador da doença.'],
+        ],
+      },
+      {
+        kind: 'clinicalTable',
+        headers: ['Fase imunossupressora em cão — exemplo Plumb’s', 'Dose'],
+        rows: [
+          ['Indução', 'Prednisona/prednisolona 2,2 mg/kg/dia por 3 semanas.'],
+          ['Redução 1', '1 mg/kg/dia por 3 semanas.'],
+          ['Redução 2', '0,5 mg/kg/dia por 3 semanas.'],
+          ['Manutenção', '0,5 mg/kg em dias alternados, se remissão mantida.'],
+        ],
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'caution',
+        title: 'Gatos: prednisolona, não prednisona',
+        body:
+          'Em gatos, prefira prednisolona porque a absorção/conversão da prednisona é menos previsível. Doseie com cautela pela massa magra quando possível. Gatos podem parecer tolerar melhor, mas não são imunes: diabetes induzido/descompensado, pele fina/frágil, má cicatrização, hepatopatia esteroidal, insuficiência cardíaca associada em relatos e supressão HHA continuam sendo riscos reais.',
+      },
     ],
     clinicalNotesRichText:
       '<p><strong>Felinos:</strong> usar <strong>prednisolona</strong> (não prednisona) por melhor biodisponibilidade oral. Ajustar cautela em obesidade (massa magra).</p>' +
       '<p><strong>Hepatopatia:</strong> prednisolona evita dependência de ativação hepática da prednisona.</p>' +
       '<p><strong>PK felina (literatura):</strong> exposição oral à prednisolona muito superior à da prednisona — reforça escolha clínica.</p>' +
-      '<p><strong>Calculadora:</strong> selecione regime clínico + apresentação; o motor cruza mg/kg com concentração para volume/comprimidos quando aplicável.</p>',
+      '<p><strong>Calculadora:</strong> selecione regime clínico + apresentação; o motor cruza mg/kg com concentração para volume/comprimidos quando aplicável.</p>' +
+      '<p><strong>Desmame:</strong> planejar quando uso ≥2 semanas, dose alta (&gt;1 mg/kg/dia de prednisolona ou equivalente), uso imunossupressor ou paciente frágil. Reduzir apenas se a doença de base estiver controlada; em recrudescência, voltar à última dose efetiva.</p>' +
+      '<p><strong>Depot e tópicos:</strong> fórmulações injetáveis de depósito não permitem ajuste fino; glicocorticoides orais, injetáveis, otológicos, oftálmicos e dermatológicos podem contribuir para supressão HHA conforme potência, dose, duração e absorção.</p>',
     adminNotesText:
       'Apresentações comerciais BR descritas conforme bulas/páginas citadas pelo usuário; validar rótulo vigente antes de prescrever. Uso veterinário extra-bula quando humano — responsabilidade do prescritor conforme legislação local.',
     relatedDiseaseSlugs: ['fistula-perianal-furunculose-anal'],
     references: [
+      {
+        id: 'ref-clinicians-brief-taper-2024',
+        citationText: 'Clinician’s Brief. Top 7 Drug Classes to Be Tapered Before Discontinuation — general tapering strategies in dogs and cats.',
+        sourceType: 'Revisão prática',
+        url: 'https://www.cliniciansbrief.com/article/drug-withdrawal-syndrome-opioids-veterinary',
+        evidenceLevel: 'Prática clínica',
+      },
+      {
+        id: 'ref-lowe-glucocorticoids-cat-2008',
+        citationText: 'Lowe AD, Campbell KL, Graves T. Glucocorticoids in the cat. Veterinary Dermatology, 2008.',
+        sourceType: 'Revisão felina',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/',
+        evidenceLevel: 'Moderada',
+      },
+      {
+        id: 'ref-acvim-imha-2019',
+        citationText:
+          'Swann JW et al. ACVIM consensus statement on the treatment of immune-mediated hemolytic anemia in dogs. J Vet Intern Med, 2019.',
+        sourceType: 'Consenso ACVIM',
+        url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC6524099/',
+        evidenceLevel: 'Alta para AHIM canina',
+      },
       {
         id: 'ref-plumbs-pred',
         citationText: 'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — monografia prednisolona/prednisona.',
@@ -371,7 +456,7 @@ export const medicationsSeed: MedicationRecord[] = [
     cautions: [
       'Raças com maior suscetibilidade a IMHA/reações a sulfa: Doberman, Samoieda, Schnauzer miniatura (literatura citada no acervo).',
       'Urolitíase, urina concentrada, desidratação, urina ácida, doença hepática/renal prévia, deficiência de folato.',
-      'Literatura veterinária frequentemente agrupa TMP-SMX com TMP + sulfadiazina — doses são orientação de classe; validar formulação e rótulo.',
+      'Literatura veterinária frequentemente agrupa TMP-SMX com TMP + sulfadiazina — doses são orientação de classe; validar fórmulação e rótulo.',
       'Brasil: confirmar disponibilidade local; apresentação veterinária Diaziprim citada como removida em canal comercial — checar estoque/registro antes de prescrever.',
     ],
     adverseEffects: [
@@ -528,7 +613,7 @@ export const medicationsSeed: MedicationRecord[] = [
         route: 'VO',
         frequency: 'q12h',
         duration: '4 semanas (Plumb’s); integrar ao protocolo clínico.',
-        notes: 'Nelson: sulfa potencializada como alternativa; clindamicina cont?nua referência em muitos contextos.',
+        notes: 'Nelson: sulfa potencializada como alternativa; clindamicina contínua como referência em muitos contextos.',
         calculatorEnabled: true,
         presentationId: 'pres-tmp-smx-susp-br',
       },
@@ -602,7 +687,7 @@ export const medicationsSeed: MedicationRecord[] = [
       },
     ],
     clinicalNotesRichText:
-      '<p><strong>Nuance de classe:</strong> grande parte da literatura agrupa <strong>TMP + sulfametoxazol</strong> com <strong>TMP + sulfadiazina</strong> na mesma monografia — doses são orientação de classe; confirme a formulação no rótulo.</p>' +
+      '<p><strong>Nuance de classe:</strong> grande parte da literatura agrupa <strong>TMP + sulfametoxazol</strong> com <strong>TMP + sulfadiazina</strong> na mesma monografia — doses são orientação de classe; confirme a fórmulação no rótulo.</p>' +
       '<p><strong>Calculadora:</strong> concentrações estão expressas em <strong>mg do produto combinado total</strong> por mL ou por comprimido, alinhado ao texto do Plumb’s para mg/kg do combinado.</p>' +
       '<p><strong>Monitoramento &gt;7 dias (Plumb’s):</strong> clínica, ureia/creatinina/K+, hemograma e perfil hepático seriados, Schirmer em cães, considerar tireoide em uso prolongado; manter hidratação para reduzir cristalúria.</p>',
     adminNotesText:
@@ -991,7 +1076,7 @@ export const medicationsSeed: MedicationRecord[] = [
         concentrationUnit: 'mg/mL',
         channel: 'human_pharmacy',
         packInfo:
-          'Concentração usual no Brasil (Dorene®). Estudos de transporte em felinos usaram solução oral — conferir formulação no rótulo.',
+          'Concentração usual no Brasil (Dorene®). Estudos de transporte em felinos usaram solução oral — conferir fórmulação no rótulo.',
       },
     ],
     doses: [
@@ -1117,7 +1202,7 @@ export const medicationsSeed: MedicationRecord[] = [
         variant: 'brazil',
         title: 'Solução oral no Brasil',
         body:
-          'A formulação líquida usual no mercado brasileiro é 25 mg/mL (nome comercial Dorene®). Conferir sempre o rótulo ao calcular volume (mL) a partir da dose em mg.',
+          'A fórmulação líquida usual no mercado brasileiro é 25 mg/mL (nome comercial Dorene®). Conferir sempre o rótulo ao calcular volume (mL) a partir da dose em mg.',
       },
       {
         kind: 'clinicalTable',
@@ -1223,7 +1308,7 @@ export const medicationsSeed: MedicationRecord[] = [
       },
       {
         id: 'pres-maro-cp',
-        label: 'Cerenia - comprimido (cao)',
+        label: 'Cerenia - comprimido (cão)',
         form: 'Comprimido',
         concentrationValue: 16,
         concentrationUnit: 'mg/comprimido',

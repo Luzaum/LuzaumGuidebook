@@ -163,17 +163,17 @@ export default function HistoryPage() {
                   </h4>
                   <div className="text-sm text-slate-700 dark:text-slate-300 space-y-2">
                     <p><strong>Qualidade:</strong> {formatQualityStatus(selectedRecord.result.dataQuality.status)}</p>
-                    <p><strong>Dist?rbio Prim?rio:</strong> {formatPrimaryDisorder(selectedRecord.result.deepAcidBase.primaryDisorder)}</p>
-                    <p><strong>Compensa??o:</strong> {formatCompensationStatus(selectedRecord.result.deepAcidBase.compensationStatus)}</p>
-                    {selectedRecord.result.anionGap && <p><strong>Anion Gap:</strong> {selectedRecord.result.anionGap.explanation}</p>}
-                    <p><strong>Oxigena??o:</strong> {formatOxygenationStatus(selectedRecord.result.deepOxygenation)}</p>
+                    <p><strong>Distúrbio primário:</strong> {formatPrimaryDisorder(selectedRecord.result.deepAcidBase.primaryDisorder)}</p>
+                    <p><strong>Compensação:</strong> {formatCompensationStatus(selectedRecord.result.deepAcidBase.compensationStatus)}</p>
+                    {selectedRecord.result.anionGap && <p><strong>Hiato aniônico (AG):</strong> {selectedRecord.result.anionGap.explanation}</p>}
+                    <p><strong>Oxigenação:</strong> {formatOxygenationStatus(selectedRecord.result.deepOxygenation)}</p>
                     <p><strong>Temperatura:</strong> {selectedRecord.result.temperatureContext.summary}</p>
                   </div>
                 </div>
 
                 {selectedRecord.result.dataQuality.consistencyChecks.length > 0 && (
                   <div className="space-y-2">
-                    <h4 className="font-bold text-slate-900 dark:text-white">Checagens de Consist?ncia</h4>
+                    <h4 className="font-bold text-slate-900 dark:text-white">Checagens de Consistência</h4>
                     <div className="space-y-2">
                       {selectedRecord.result.dataQuality.consistencyChecks.map((check, idx) => (
                         <div key={idx} className="rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/40 p-3 text-sm text-slate-700 dark:text-slate-300">

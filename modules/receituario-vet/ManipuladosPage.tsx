@@ -261,9 +261,9 @@ export default function ManipuladosPage() {
       setSelectedId(saved.identity.id)
       setEditorValue(saved)
       setDirty(false)
-      setMessage('Manipulado V1 salvo no catálogo.')
+      setMessage('Fórmula manipulada salva no catálogo.')
     } catch (error) {
-      setMessage(error instanceof Error ? error.message : 'Falha ao salvar o manipulado V1.')
+      setMessage(error instanceof Error ? error.message : 'Falha ao salvar a fórmula manipulada.')
     } finally {
       setSaving(false)
     }
@@ -271,7 +271,7 @@ export default function ManipuladosPage() {
 
   const handleDelete = async () => {
     if (!clinicId || !selectedId) return
-    if (!window.confirm('Deseja excluir este manipulado V1 do catálogo?')) return
+    if (!window.confirm('Deseja excluir este manipulado do catálogo?')) return
     await deleteManipuladoV1(clinicId, selectedId)
     clearManipuladoDraft(getManipuladoDraftKey(clinicId, selectedId))
     setSelectedId('')
@@ -283,8 +283,8 @@ export default function ManipuladosPage() {
   return (
     <ReceituarioChrome
       section="manipulados"
-      title="Manipulados V1.0"
-      subtitle="Catálogo clínico simplificado com entrada por texto, cadastro mínimo e preview único."
+      title="Manipulados"
+      subtitle="Catálogo clínico de fórmulas manipuladas."
       actions={
         <>
           <RxvButton variant="secondary" onClick={() => void loadList()}>Atualizar</RxvButton>
@@ -297,7 +297,7 @@ export default function ManipuladosPage() {
       <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-[300px_minmax(0,1fr)]">
         <div className="space-y-4 xl:sticky xl:top-6 xl:max-h-[calc(100vh-120px)] xl:overflow-y-auto">
           <RxvCard className="p-5">
-            <RxvSectionHeader icon="science" title="Catálogo V1" subtitle="O runtime principal não depende mais do legado." />
+            <RxvSectionHeader icon="science" title="Fórmulas manipuladas" subtitle="Cadastre e revise as fórmulas disponíveis para prescrição." />
             <RxvField label="Buscar">
               <RxvInput value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Nome, forma, indicação..." />
             </RxvField>
@@ -313,7 +313,7 @@ export default function ManipuladosPage() {
             ))}
             {!filteredRows.length ? (
               <div className="rounded-2xl border border-dashed border-slate-700 px-4 py-8 text-sm text-slate-500">
-                Nenhum manipulado V1 encontrado para os filtros atuais.
+                Nenhum manipulado encontrado para os filtros atuais.
               </div>
             ) : null}
           </div>
@@ -327,7 +327,7 @@ export default function ManipuladosPage() {
             </div>
           ) : null}
           {loading ? (
-            <RxvCard className="p-6 text-sm text-slate-400">Carregando fórmula V1...</RxvCard>
+            <RxvCard className="p-6 text-sm text-slate-400">Carregando fórmula...</RxvCard>
           ) : editorValue ? (
             <ManipuladosV1Editor value={editorValue} onChange={handleEditorChange} onSave={handleSave} onDelete={selectedId ? handleDelete : undefined} saving={saving} />
           ) : (

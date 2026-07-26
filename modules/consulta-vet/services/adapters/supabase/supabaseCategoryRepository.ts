@@ -35,14 +35,12 @@ export class SupabaseCategoryRepository implements CategoryRepository {
       const { data, error } = await withTimeout(query, 'carregar categorias editoriais');
 
       if (error) {
-        console.warn('[ConsultaVet] category fallback', error);
         return localCategoryRepository.list();
       }
 
       const supabaseItems = ((data || []) as CategoryRow[]).map(mapCategoryRow);
       return mergeBySlug(categoriesSeed, supabaseItems).sort((a, b) => a.sortOrder - b.sortOrder);
-    } catch (error) {
-      console.warn('[ConsultaVet] category fallback', error);
+    } catch {
       return localCategoryRepository.list();
     }
   }
@@ -54,7 +52,7 @@ export class SupabaseCategoryRepository implements CategoryRepository {
 
   async upsert(input: CategoryUpsertInput): Promise<Category> {
     if (!hasSupabaseEnv()) {
-      throw new Error('Supabase n?o configurado para edicao editorial.');
+      throw new Error('A edição de categorias está indisponível no momento.');
     }
 
     const userId = await ensureOwnerUserId();

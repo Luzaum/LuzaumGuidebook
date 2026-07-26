@@ -22,8 +22,8 @@ export default function DevelopmentPage() {
   return (
     <ReceituarioChrome
       section="home"
-      title="Desenvolvimento"
-      subtitle="Preview e seleção do icone de receita usado no card principal da Home."
+      title="Aparência"
+      subtitle="Seleção do ícone exibido na página inicial."
       actions={
         <button
           type="button"
@@ -69,7 +69,7 @@ export default function DevelopmentPage() {
                     }`}
                     onClick={() => applyIcon(item.id)}
                   >
-                    {active ? 'Selecionado' : 'Selecionar esta versao'}
+                    {active ? 'Selecionado' : 'Selecionar esta opção'}
                   </button>
                 </article>
               )
@@ -78,7 +78,7 @@ export default function DevelopmentPage() {
         </section>
 
         <aside className="rxv-card p-4 xl:col-span-4">
-          <h2 className="mb-3 text-base font-bold">Preview no card principal</h2>
+          <h2 className="mb-3 text-base font-bold">Visualização</h2>
           <div className="rounded-xl border border-[color:var(--rxv-border)] bg-[linear-gradient(100deg,var(--rxv-primary-soft,#15351b)_0%,var(--rxv-primary-soft-2,#0f2416)_55%,var(--rxv-primary-soft-3,#0d1d13)_100%)] p-4">
             <span className="inline-flex items-center gap-2 rounded-full border border-[color:var(--rxv-primary)]/45 bg-[color:var(--rxv-primary)]/14 px-3 py-1 text-[11px] font-extrabold uppercase tracking-wide text-[color:var(--rxv-primary)]">
               <span className="h-2 w-2 rounded-full bg-[color:var(--rxv-primary)]" />
@@ -86,7 +86,7 @@ export default function DevelopmentPage() {
             </span>
             <h3 className="mt-3 text-xl font-black tracking-tight">CRIAR NOVA RECEITA</h3>
             <p className="mt-1 text-xs text-[color:var(--rxv-muted)]">
-              Esta area mostra como o icone escolhido aparece no card da Home.
+              Ícone selecionado para a ação de criar nova receita.
             </p>
             <div className="mt-3 rounded-lg border border-[color:var(--rxv-border)] bg-black/70 p-3">
               <img src={selected.src} alt={selected.name} className="mx-auto h-[180px] w-[180px] object-contain" />
@@ -94,7 +94,7 @@ export default function DevelopmentPage() {
           </div>
           <div className="mt-3 rounded-lg border border-[color:var(--rxv-border)] bg-[color:var(--rxv-surface-2)] px-3 py-2 text-xs text-[color:var(--rxv-muted)]">
             <p className="font-semibold text-[color:var(--rxv-text)]">Ativo: {selected.name}</p>
-            <p>{savedAt ? `Atualizado as ${savedAt}` : 'Selecione uma versao para aplicar.'}</p>
+            <p>{savedAt ? `Atualizado às ${savedAt}` : 'Selecione uma opção para aplicar.'}</p>
           </div>
         </aside>
       </div>

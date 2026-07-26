@@ -25,7 +25,7 @@ function MetricCard({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-cyan-500/20 bg-black/20 p-4">
       <p className="text-xs uppercase tracking-[0.18em] text-cyan-200/60">{label}</p>
-      <p className="mt-2 text-base font-semibold text-cyan-50">{value || 'Nao informado'}</p>
+      <p className="mt-2 text-base font-semibold text-cyan-50">{value || 'Não informado'}</p>
     </div>
   )
 }
@@ -98,7 +98,7 @@ function SummaryGrid({ items }: { items: Array<{ label: string; value: string }>
           {item.label ? (
             <>
               <p className="text-xs uppercase tracking-[0.14em] text-slate-400">{item.label}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-100/90">{item.value || 'Nao informado'}</p>
+              <p className="mt-2 text-sm leading-relaxed text-slate-100/90">{item.value || 'Não informado'}</p>
             </>
           ) : (
             <p className="text-sm leading-relaxed text-slate-100/90">{item.value}</p>
@@ -257,7 +257,7 @@ export function Step5Analysis() {
       await updateRunningState(
         8,
         'Organizando caso',
-        'Consolidando identificacao, historico e exame neurologico em uma unica leitura clinica.',
+        'Consolidando identificacao, histórico e exame neurologico em uma única leitura clínica.',
       )
 
       const nextReport = buildCaseReport(caseState)
@@ -287,7 +287,7 @@ export function Step5Analysis() {
       await updateRunningState(
         52,
         'Hierarquizando diagnosticos',
-        'Ordenando os diferenciais mais provaveis e cruzando exames, monitorizacao e cautelas terapeuticas.',
+        'Ordenando os diferenciais mais provaveis e cruzando exames, monitorização e cautelas terapeuticas.',
         nextReport,
       )
 
@@ -295,7 +295,7 @@ export function Step5Analysis() {
 
       await updateRunningState(
         78,
-        'Montando relatorio clinico',
+        'Montando relatorio clínico',
         'Transformando o caso em um relatorio estruturado para plantao e exportacao em PDF.',
         nextReport,
       )
@@ -317,11 +317,11 @@ export function Step5Analysis() {
         aiUsedFallback: false,
         aiCoverage: null,
         aiProgress: null,
-        aiError: parsed ? null : 'Nao foi possivel estruturar o relatorio clinico final. Gere novamente o caso.',
+        aiError: parsed ? null : 'Não foi possível estruturar o relatorio clínico final. Gere novamente o caso.',
       })
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (error) {
-      console.error('Erro ao montar relatorio clinico local:', error)
+      console.error('Erro ao montar relatorio clínico local:', error)
       setAnalysis({
         status: 'done',
         report,
@@ -330,10 +330,7 @@ export function Step5Analysis() {
         aiUsedFallback: false,
         aiCoverage: null,
         aiProgress: null,
-        aiError:
-          error instanceof Error
-            ? `Falha ao montar o relatorio clinico local: ${error.message}`
-            : 'Falha ao montar o relatorio clinico local.',
+        aiError: 'Não foi possível montar o relatório clínico.',
       })
       window.scrollTo({ top: 0, behavior: 'smooth' })
     }
@@ -347,7 +344,7 @@ export function Step5Analysis() {
       exportToPDF(report, caseState, clinicalReportText)
     } catch (error) {
       console.error('Erro ao gerar PDF:', error)
-      alert('Erro ao gerar PDF. Verifique o console para mais detalhes.')
+      alert('Não foi possível gerar o PDF. Tente novamente.')
     }
   }
 
@@ -362,7 +359,7 @@ export function Step5Analysis() {
           <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg shadow-yellow-500/50">
             <Brain className="h-10 w-10 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">Analise do Caso</h2>
+          <h2 className="text-2xl font-bold text-foreground">Análise do caso</h2>
           <p className="mx-auto max-w-md text-muted-foreground">
             Clique abaixo para gerar uma leitura clinica estruturada do caso com neurolocalizacao,
             prioridades do plantao e diagnosticos diferenciais organizados por probabilidade.
@@ -406,7 +403,7 @@ export function Step5Analysis() {
         <Card className="w-full max-w-2xl border-yellow-500/20 bg-slate-950/60 p-6">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h3 className="text-xl font-semibold text-foreground">Montando relatorio clinico</h3>
+              <h3 className="text-xl font-semibold text-foreground">Preparando relatório clínico</h3>
               <p className="mt-2 text-sm text-muted-foreground">
                 {progress?.stage || 'Processando os achados do caso.'}
               </p>
@@ -466,7 +463,7 @@ export function Step5Analysis() {
           variant="error"
           title="Dados insuficientes"
           message={[
-            'Nao foi possivel firmar uma neurolocalizacao segura com os dados registrados.',
+            'Não foi possível firmar uma neurolocalizacao segura com os dados registrados.',
             ...(report.neuroLocalization.missing || []).map((item) => `- ${item}`),
           ]}
         />
@@ -603,18 +600,18 @@ export function Step5Analysis() {
         </Card>
 
         {reportError && (
-          <InlineBanner variant="warning" title="Relatorio clinico indisponivel" message={reportError} />
+          <InlineBanner variant="warning" title="Relatorio clínico indisponivel" message={reportError} />
         )}
 
         {parsedClinicalReport ? (
           <div className="space-y-5">
             <Card className="border-cyan-500/30 bg-[linear-gradient(135deg,rgba(8,47,73,0.42),rgba(17,24,39,0.9))] p-6 shadow-[0_24px_60px_rgba(6,182,212,0.12)]">
               <div>
-                <h3 className="text-xl font-bold text-cyan-100">Relatorio Clinico</h3>
+                <h3 className="text-xl font-bold text-cyan-100">Relatório clínico</h3>
                 <p className="mt-2 max-w-4xl text-sm leading-relaxed text-cyan-50/80">
                   {compactAi
                     ? 'Síntese: localização provável, DDx priorizados e conduta — expanda para listas completas de achados e exames.'
-                    : 'Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e diferenciais do mais provavel ao menos provavel, sempre cruzando exame, comorbidades, exames prioritarios e conduta inicial.'}
+                    : 'Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e diferenciais do mais provável ao menos provável, sempre cruzando exame, comorbidades, exames prioritarios e conduta inicial.'}
                 </p>
               </div>
             </Card>
@@ -627,12 +624,12 @@ export function Step5Analysis() {
 
               <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                 <MetricCard
-                  label="Localizacao provavel"
+                  label="Localizacao provável"
                   value={parsedClinicalReport.neurolocalization.probableLocation}
                 />
                 <MetricCard label="Distribuicao" value={parsedClinicalReport.neurolocalization.distribution} />
-                <MetricCard label="Padrao motor" value={parsedClinicalReport.neurolocalization.motorPattern} />
-                <MetricCard label="Confianca" value={parsedClinicalReport.neurolocalization.confidence} />
+                <MetricCard label="Padrão motor" value={parsedClinicalReport.neurolocalization.motorPattern} />
+                <MetricCard label="Confiança" value={parsedClinicalReport.neurolocalization.confidence} />
               </div>
 
               {compactAi ? (
@@ -641,7 +638,7 @@ export function Step5Analysis() {
                     Raciocínio e achados (expandir)
                   </summary>
                   <p className="mt-3 text-sm leading-relaxed text-cyan-50/90">
-                    {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
+                    {parsedClinicalReport.neurolocalization.reasoning || 'Não informado'}
                   </p>
                   <div className="mt-4 grid gap-4 lg:grid-cols-2">
                     <DifferentialSection
@@ -663,7 +660,7 @@ export function Step5Analysis() {
                   <div className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-5">
                     <p className="mb-2 text-sm font-semibold text-cyan-200">Raciocinio de neurolocalizacao</p>
                     <p className="text-sm leading-relaxed text-cyan-50/90">
-                      {parsedClinicalReport.neurolocalization.reasoning || 'Nao informado'}
+                      {parsedClinicalReport.neurolocalization.reasoning || 'Não informado'}
                     </p>
                   </div>
 
@@ -720,7 +717,7 @@ export function Step5Analysis() {
                         <h4 className="text-lg font-semibold text-foreground">
                           {index + 1}. {dx.title}
                         </h4>
-                        <p className="mt-1 text-sm text-muted-foreground">Categoria: {dx.category || 'Nao informada'}</p>
+                        <p className="mt-1 text-sm text-muted-foreground">Categoria: {dx.category || 'Não informada'}</p>
                       </div>
                       <div className="rounded-2xl border border-gold/20 bg-gold/5 px-4 py-3 text-right">
                         <p className="text-xs uppercase tracking-[0.18em] text-gold/60">Probabilidade</p>
@@ -733,7 +730,7 @@ export function Step5Analysis() {
                       <p
                         className={`text-sm leading-relaxed text-slate-100/90 ${compactAi ? 'line-clamp-4' : ''}`}
                       >
-                        {dx.clinicalFit || 'Nao informado'}
+                        {dx.clinicalFit || 'Não informado'}
                       </p>
                     </div>
 
@@ -762,7 +759,7 @@ export function Step5Analysis() {
                         dotClassName="bg-sky-400"
                       />
                       <DifferentialSection
-                        title="Monitorizacao e reavaliacao"
+                        title="Monitorização e reavaliação"
                         items={dx.monitoringPlan}
                         dotClassName="bg-violet-400"
                       />
@@ -772,12 +769,12 @@ export function Step5Analysis() {
                         dotClassName="bg-green-400"
                       />
                       <DifferentialSection
-                        title="Farmacos que posso considerar"
+                        title="Fármacos que posso considerar"
                         items={dx.allowedDrugs}
                         dotClassName="bg-emerald-300"
                       />
                       <DifferentialSection
-                        title="Farmacos a evitar ou ajustar"
+                        title="Fármacos a evitar ou ajustar"
                         items={dx.avoidDrugs}
                         dotClassName="bg-rose-400"
                       />
@@ -910,7 +907,7 @@ export function Step5Analysis() {
           <Card className="border-amber-500/20 bg-amber-950/10 p-6">
             <h3 className="mb-3 text-lg font-semibold text-amber-200">Relatorio bruto</h3>
             <p className="whitespace-pre-line text-sm leading-relaxed text-amber-50/90">
-              {clinicalReportText || 'Nao foi possivel gerar o relatorio clinico.'}
+              {clinicalReportText || 'Não foi possível gerar o relatorio clínico.'}
             </p>
           </Card>
         )}

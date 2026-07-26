@@ -16,7 +16,6 @@ const AntibioticoterapiaVetPage = lazy(() => import('./modules/antibioticoterapi
 const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPage').then((m) => ({ default: m.TransfusaoSanguineaPage })))
 const HemogasoVetPage = lazy(() => import('./modules/hemogasovet'))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
-const SupabaseTestPage = lazy(() => import('./pages/SupabaseTestPage'))
 const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
 const EscalasDorMobilePage = lazy(() => import('./modules/escalas-dor-mobile/App'))
 const NeurologiaMobilePage = lazy(() => import('./pages/NeurologiaMobilePage').then((m) => ({ default: m.NeurologiaMobilePage })))
@@ -168,7 +167,6 @@ const appRoutes = (
       <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
     </Route>
     <Route path="/rifa" element={<ModuleIframe />} />
-    <Route path="/supabase-test" element={<SupabaseTestPage />} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Route>
 )

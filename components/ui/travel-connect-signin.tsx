@@ -443,7 +443,7 @@ export default function TravelConnectSignIn({
                   <Input
                     id={`${mode}-email`}
                     type="text"
-                    placeholder="ex.: rani ou seuemail@clinica.com"
+                    placeholder="ex.: rani ou seuemail@clínica.com"
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     autoComplete="username"

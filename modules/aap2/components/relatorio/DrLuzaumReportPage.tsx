@@ -212,7 +212,7 @@ export const DrLuzaumReportPage: React.FC<DrLuzaumReportPageProps> = ({
                                 DL
                             </div>
                             <div>
-                                <h1 className="text-white text-base font-bold tracking-tight leading-none">Dr. Luzaum AI</h1>
+                                <h1 className="text-white text-base font-bold tracking-tight leading-none">Dr. Luzaum IA</h1>
                                 <span className="text-xs text-slate-400 font-medium tracking-wide">Toxicologia Veterinária</span>
                             </div>
                         </div>
@@ -431,7 +431,7 @@ export const DrLuzaumReportPage: React.FC<DrLuzaumReportPageProps> = ({
             <footer className="mt-auto border-t border-white/10 py-5 px-4">
                 <div className="max-w-[1400px] mx-auto text-center">
                     <p className="text-slate-500 text-xs">
-                        © {now.getFullYear()} Dr. Luzaum AI — Ferramenta auxiliar de diagnóstico. A decisão clínica final é responsabilidade exclusiva do médico-veterinário.
+                        © {now.getFullYear()} Dr. Luzaum IA — Ferramenta auxiliar de diagnóstico. A decisão clínica final é responsabilidade exclusiva do médico-veterinário.
                     </p>
                 </div>
             </footer>

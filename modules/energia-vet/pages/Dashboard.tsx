@@ -20,10 +20,10 @@ export default function Dashboard() {
   const defaultCatRequirement = useMemo(() => getDefaultRequirement('cat'), [])
 
   const quickActions = [
-    { name: 'Novo cálculo', description: 'Formulação e avaliação dietética', icon: Calculator, path: `${BASE_ROUTE}/new`, color: 'bg-orange-100 text-orange-600' },
-    { name: 'Catálogo de alimentos', description: '129 itens importados do GENUTRI', icon: Utensils, path: `${BASE_ROUTE}/foods`, color: 'bg-blue-100 text-blue-600' },
+    { name: 'Novo cálculo', description: 'Fórmulação e avaliação dietética', icon: Calculator, path: `${BASE_ROUTE}/new`, color: 'bg-orange-100 text-orange-600' },
+    { name: 'Catálogo de alimentos', description: '129 alimentos para consulta', icon: Utensils, path: `${BASE_ROUTE}/foods`, color: 'bg-blue-100 text-blue-600' },
     { name: 'Pacientes', description: 'Histórico persistido dos cálculos', icon: Users, path: `${BASE_ROUTE}/patients`, color: 'bg-emerald-100 text-emerald-600' },
-    { name: 'Relatórios', description: 'Resumos clínicos salvos no módulo', icon: FileText, path: `${BASE_ROUTE}/reports`, color: 'bg-slate-100 text-slate-700' },
+    { name: 'Relatórios', description: 'Resumos clínicos salvos', icon: FileText, path: `${BASE_ROUTE}/reports`, color: 'bg-slate-100 text-slate-700' },
     { name: 'Manejo hospitalar', description: 'Risco e progressão alimentar', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized`, color: 'bg-red-100 text-red-600' },
     { name: 'Base natural / híbrida', description: 'Ingredientes e suplementos', icon: Leaf, path: `${BASE_ROUTE}/foods/natural`, color: 'bg-lime-100 text-lime-700' },
   ]
@@ -36,13 +36,13 @@ export default function Dashboard() {
           <div className="pt-2">
             <h1 className="text-3xl font-bold tracking-tight text-foreground">{MODULE_NAME}</h1>
             <p className="mt-2 max-w-3xl text-base text-muted-foreground">
-              Motor de formulação e avaliação reconstruído sobre a planilha GENUTRI, com energia por espécie, comparação contra exigências e plano alimentar fracionado.
+              Formulação e avaliação nutricional com energia por espécie, comparação de exigências e plano alimentar fracionado.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
               <Badge variant="outline">129 alimentos</Badge>
               <Badge variant="outline">43 perfis de exigência</Badge>
               <Badge variant="outline">2 regras energéticas</Badge>
-              <Badge variant="outline">{datasetStats.auditWarnings} avisos auditados</Badge>
+              <Badge variant="outline">{datasetStats.auditWarnings} observações nos dados</Badge>
             </div>
           </div>
         </div>
@@ -56,10 +56,10 @@ export default function Dashboard() {
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[
-          { label: 'Alimentos importados', value: datasetStats.foods, detail: `${datasetStats.categories} categorias normalizadas` },
+          { label: 'Alimentos disponíveis', value: datasetStats.foods, detail: `${datasetStats.categories} categorias` },
           { label: 'Perfis de exigência', value: datasetStats.requirements, detail: 'FEDIAF, SACN, Brunetto e Purina' },
-          { label: 'Cálculos salvos', value: savedReports.length, detail: 'Persistidos no módulo localmente' },
-          { label: 'Pacientes recentes', value: savedPatients.length, detail: 'Consolidados pelo histórico do app' },
+          { label: 'Cálculos salvos', value: savedReports.length, detail: 'Disponíveis no histórico' },
+          { label: 'Pacientes recentes', value: savedPatients.length, detail: 'Organizados pelos cálculos anteriores' },
         ].map((item) => (
           <Card key={item.label}>
             <CardContent className="p-5">
@@ -101,7 +101,7 @@ export default function Dashboard() {
                   <Users className="h-5 w-5 text-muted-foreground" />
                   Pacientes Recentes
                 </CardTitle>
-                <CardDescription>Extraídos do histórico salvo do módulo</CardDescription>
+                <CardDescription>Pacientes dos cálculos anteriores</CardDescription>
               </div>
               <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/patients`} />}>
                 Ver todos <ArrowRight className="h-4 w-4" />
@@ -137,7 +137,7 @@ export default function Dashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2">
               <Scale className="h-5 w-5 text-muted-foreground" />
-              Perfis Padrão do Motor
+              Perfis energéticos padrão
             </CardTitle>
             <CardDescription>Perfis padrão usados ao abrir a formulação</CardDescription>
           </CardHeader>
@@ -163,7 +163,7 @@ export default function Dashboard() {
                   <FileText className="h-5 w-5 text-muted-foreground" />
                   Relatórios Recentes
                 </CardTitle>
-                <CardDescription>Últimos planos salvos no módulo</CardDescription>
+                <CardDescription>Últimos planos salvos</CardDescription>
               </div>
               <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/reports`} />}>
                 Abrir histórico <ArrowRight className="h-4 w-4" />
@@ -173,7 +173,7 @@ export default function Dashboard() {
           <CardContent className="space-y-3">
             {savedReports.length === 0 ? (
               <div className="rounded-2xl border border-dashed border-border/70 p-4 text-sm text-muted-foreground">
-                Nenhum relatório salvo. O resumo final do cálculo grava um snapshot utilizável pelo módulo.
+                Nenhum relatório salvo. Conclua um cálculo e salve o resumo para consultá-lo aqui.
               </div>
             ) : (
               savedReports.map((report) => (
@@ -197,18 +197,14 @@ export default function Dashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2">
               <AlertTriangle className="h-5 w-5 text-muted-foreground" />
-              Auditoria da Planilha
+              Verificação dos dados nutricionais
             </CardTitle>
-            <CardDescription>Principais inconsistências neutralizadas no app</CardDescription>
+            <CardDescription>Observações importantes para interpretar os valores apresentados</CardDescription>
           </CardHeader>
           <CardContent className="space-y-3 text-sm">
             {auditIssues.map((issue, index) => (
               <div key={`${issue.sheet}-${issue.cell ?? index}`} className="rounded-xl border border-amber-200 bg-amber-50/70 p-4">
-                <p className="font-semibold text-amber-900">
-                  {issue.sheet}
-                  {issue.cell ? ` · ${issue.cell}` : ''}
-                </p>
-                <p className="mt-1 text-amber-800/80">{issue.message}</p>
+                <p className="font-semibold text-amber-900">{issue.message}</p>
               </div>
             ))}
           </CardContent>

@@ -59,7 +59,7 @@ export default function SettingsPage() {
     <ReceituarioChrome
       section="settings"
       title="Configurações Gerais"
-      subtitle="Personalize a interface do aplicativo, os padrões de visualização dos documentos e regras de automação clínica."
+      subtitle="Personalize a aparência, a visualização dos documentos e as regras de automação clínica."
       forcedTheme={theme}
       onThemeChange={(newTheme) => {
         setTheme(newTheme)
@@ -91,7 +91,7 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
               <div>
-                <label className="block text-sm font-bold text-[color:var(--rxv-text)] mb-2">Tema do Aplicativo</label>
+                <label className="block text-sm font-bold text-[color:var(--rxv-text)] mb-2">Tema visual</label>
                 <div className="grid grid-cols-2 gap-3">
                   <button
                     type="button"
@@ -228,7 +228,7 @@ export default function SettingsPage() {
               <span className="material-symbols-outlined text-2xl text-[color:var(--rxv-primary)]">calculate</span>
               <div>
                 <h3 className="text-base font-extrabold text-[color:var(--rxv-text)]">Regras e Automações Clínicas</h3>
-                <p className="text-xs text-[color:var(--rxv-muted)]">Configure a inteligência operacional do sistema de prescrição.</p>
+                <p className="text-xs text-[color:var(--rxv-muted)]">Configure as regras operacionais da prescrição.</p>
               </div>
             </div>
 

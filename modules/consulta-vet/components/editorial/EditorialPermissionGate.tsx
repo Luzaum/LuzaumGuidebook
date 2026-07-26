@@ -28,7 +28,7 @@ export function EditorialPermissionGate({
         </div>
         <h2 className="text-xl font-semibold text-foreground">Acesso restrito</h2>
         <p className="mt-2 text-sm text-muted-foreground">
-          Apenas perfis owner podem gerenciar o conteúdo editorial do ConsultaVET.
+          Sua conta não possui permissão para gerenciar este conteúdo.
         </p>
       </div>
     );

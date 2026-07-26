@@ -20,14 +20,14 @@ interface FluidSidebarProps {
 
 const tabs: { id: Tab; label: string; icon: ReactNode }[] = [
   { id: 'calculator', label: 'Calculadora', icon: <Activity className="w-5 h-5" /> },
-  { id: 'resuscitation', label: 'Ressuscitacao Volemica', icon: <Zap className="w-5 h-5" /> },
+  { id: 'resuscitation', label: 'Ressuscitação volêmica', icon: <Zap className="w-5 h-5" /> },
   { id: 'osmotherapy', label: 'TCE / Osmoterapia', icon: <Brain className="w-5 h-5" /> },
-  { id: 'guide', label: 'Guia Clinico', icon: <BookOpen className="w-5 h-5" /> },
-  { id: 'protocols', label: 'Doencas e Protocolos', icon: <Stethoscope className="w-5 h-5" /> },
-  { id: 'dilutions', label: 'Diluicoes e Solucoes', icon: <Syringe className="w-5 h-5" /> },
+  { id: 'guide', label: 'Guia clínico', icon: <BookOpen className="w-5 h-5" /> },
+  { id: 'protocols', label: 'Doenças e protocolos', icon: <Stethoscope className="w-5 h-5" /> },
+  { id: 'dilutions', label: 'Diluições e soluções', icon: <Syringe className="w-5 h-5" /> },
   { id: 'glucoseSolutions', label: 'Solução glicosada', icon: <Beaker className="w-5 h-5" /> },
-  { id: 'monitoring', label: 'Monitorizacao e Alertas', icon: <Droplet className="w-5 h-5" /> },
-  { id: 'settings', label: 'Configuracoes', icon: <Settings className="w-5 h-5" /> },
+  { id: 'monitoring', label: 'Monitorização e alertas', icon: <Droplet className="w-5 h-5" /> },
+  { id: 'settings', label: 'Configurações', icon: <Settings className="w-5 h-5" /> },
 ];
 
 export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
@@ -42,7 +42,7 @@ export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
           />
         </div>
         <p className="mt-3 text-center text-sm font-bold uppercase tracking-[0.18em] text-teal-400">Fluidoterapia Vet</p>
-        <p className="mt-1 text-center text-xs text-slate-500">Modulo Clinico VETIUS</p>
+        <p className="mt-1 text-center text-xs text-slate-500">Cálculos e protocolos clínicos</p>
       </div>
 
       <nav className="flex-1 space-y-2 px-4">
@@ -63,8 +63,8 @@ export function FluidSidebar({ activeTab, setActiveTab }: FluidSidebarProps) {
 
       <div className="border-t border-slate-800 p-4">
         <div className="rounded-lg bg-slate-800/50 p-3 text-xs text-slate-400">
-          <p className="mb-1 font-medium text-slate-300">Baseado em evidencias</p>
-          <p>AAHA 2024 Fluid Therapy Guidelines</p>
+          <p className="mb-1 font-medium text-slate-300">Baseado em evidências</p>
+          <p>Diretrizes de fluidoterapia da AAHA, 2024</p>
         </div>
       </div>
     </div>

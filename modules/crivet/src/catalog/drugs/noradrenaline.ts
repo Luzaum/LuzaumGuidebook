@@ -32,23 +32,23 @@ export const noradrenaline: Drug = {
   category: 'vasopressores_inotropicos',
   pharmacologicalClass: 'Vasopressor catecolaminico adrenergico',
   clinicalSummary:
-    'Vasopressor de escolha para hipotensao vasodilatadora importante, especialmente choque septico/distributivo apos reposicao volêmica adequada, e muito util na hipotensao induzida por isoflurano.',
+    'Vasopressor de escolha para hipotensao vasodilatadora importante, especialmente choque septico/distributivo após reposicao volêmica adequada, e muito util na hipotensao induzida por isoflurano.',
   physiology:
-    'Agonista adrenérgico predominantemente alfa-1/alfa-2, com efeito beta-1 moderado. Em doses usuais predomina o efeito alfa, com vasoconstricao periferica, aumento de resistencia vascular e elevacao da pressao arterial. O objetivo clinico e restaurar pressao de perfusao, nao apenas elevar a pressao.',
+    'Agonista adrenérgico predominantemente alfa-1/alfa-2, com efeito beta-1 moderado. Em doses usuais predomina o efeito alfa, com vasoconstricao periferica, aumento de resistencia vascular e elevacao da pressão arterial. O objetivo clínico e restaurar pressão de perfusão, não apenas elevar a pressão.',
   indications: [
-    'Hipotensao profunda persistente apos correcao adequada de hipovolemia',
+    'Hipotensao profunda persistente após correção adequada de hipovolemia',
     'Choque septico, distributivo ou vasodilatador',
     'Hipotensao associada a anestesia inalatória, especialmente isoflurano',
-    'Vasoplegia refrataria quando e preciso restaurar a perfusao rapidamente',
-    'Associacao com dobutamina quando ha componente misto: vasodilatacao + baixo debito',
+    'Vasoplegia refrataria quando e preciso restaurar a perfusão rapidamente',
+    'Associação com dobutamina quando ha componente misto: vasodilatacao + baixo debito',
   ],
   contraindications: [
-    'Nao usar como substituto de volume',
-    'Hipovolemia nao corrigida',
+    'Não usar como substituto de volume',
+    'Hipovolemia não corrigida',
     'Trombose vascular periferica ou mesenterica / isquemia periferica grave',
     'Arritmias clinicamente relevantes',
-    'IAM recente, doenca coronariana importante ou consumo miocardico de O2 criticamente alto',
-    'Nao e a escolha de resgate para efeitos cardiovasculares de agonistas alfa-2',
+    'IAM recente, doença coronariana importante ou consumo miocardico de O2 criticamente alto',
+    'Não e a escolha de resgate para efeitos cardiovasculares de agonistas alfa-2',
     'Cautela em gestantes e em gatos',
   ],
   supportedSpecies: ['dog', 'cat'],
@@ -56,9 +56,9 @@ export const noradrenaline: Drug = {
   highAlert: true,
   advantages: [
     'Vasopressor de primeira linha mais limpo para vasoplegia',
-    'Inicio de acao muito rapido',
-    'Titulacao fina e resposta previsivel',
-    'Menor tendencia a taquicardia quando comparada a adrenalina',
+    'Inicio de ação muito rapido',
+    'Titulacao fina e resposta previsível',
+    'Menor tendência a taquicardia quando comparada a adrenalina',
     'Muito util em anestesia com isoflurano',
     'Combina bem com dobutamina quando ha componente de baixo debito',
   ],
@@ -66,19 +66,19 @@ export const noradrenaline: Drug = {
     'Exige bomba de infusao e vigilancia continua',
     'Alto risco de extravasamento e necrose tecidual',
     'Idealmente via central; periferica exige muito cuidado',
-    'Nao deve ser usada para mascarar hipovolemia',
-    'Pode piorar perfusao esplancnica ou renal se o paciente estiver mal ressuscitado ou se a vasoconstricao for excessiva',
-    'Meia-vida curta: qualquer interrupcao derruba a pressao rapidamente',
-    'Nao e farmaco para bolus rotineiro; o uso pratico e em CRI titulavel',
+    'Não deve ser usada para mascarar hipovolemia',
+    'Pode piorar perfusão esplancnica ou renal se o paciente estiver mal ressuscitado ou se a vasoconstricao for excessiva',
+    'Meia-vida curta: qualquer interrupcao derruba a pressão rapidamente',
+    'Não e fármaco para bolus rotineiro; o uso pratico e em CRI titulavel',
   ],
   commonProblems: [
     'Extravasamento com lesao isquemica',
     'Arritmias',
-    'Perfusao periferica excessivamente reduzida',
-    'Queda brusca de pressao quando a infusao interrompe',
+    'Perfusão periferica excessivamente reduzida',
+    'Queda brusca de pressão quando a infusao interrompe',
   ],
   usageErrors: [
-    'Usar o sal como se fosse concentracao de base',
+    'Usar o sal como se fosse concentração de base',
     'Iniciar antes de corrigir volume',
     'Diluir em NaCl 0.9% isolado sem considerar oxidacao',
     'Suspender abruptamente',
@@ -91,7 +91,7 @@ export const noradrenaline: Drug = {
       max: 2,
       unit: 'mcg/kg/min',
       observations:
-        'Iniciar apos correcao adequada de volume. Em choque septico ou vasoplegia importante, comecar em 0.05-0.1 mcg/kg/min e titular. Em hipotensao por isoflurano, muita gente permanece entre 0.1-0.5 mcg/kg/min.',
+        'Iniciar após correção adequada de volume. Em choque septico ou vasoplegia importante, comecar em 0.05-0.1 mcg/kg/min e titular. Em hipotensao por isoflurano, muita gente permanece entre 0.1-0.5 mcg/kg/min.',
     },
     cat: {
       min: 0.05,
@@ -133,9 +133,9 @@ export const noradrenaline: Drug = {
     dedicatedLineRequired: true,
     photosensitive: true,
     stabilityAfterDilution:
-      'Proteger da luz. Estabilidade fisico-quimica por ate 24 horas apos diluicao a 25 C quando preparada conforme orientacao oficial.',
+      'Proteger da luz. Estabilidade fisico-quimica por ate 24 horas após diluicao a 25 C quando preparada conforme orientação oficial.',
     incompatibilities: [
-      'Nao misturar com bicarbonato',
+      'Não misturar com bicarbonato',
       'Evitar mesma linha com aminofilina',
       'Incompatibilidades relatadas com ranitidina e pantoprazol',
       'Sangue e plasma devem correr separadamente',
@@ -143,9 +143,9 @@ export const noradrenaline: Drug = {
     recommendedMonitoring: [
       'MAP com meta inicial geralmente >= 65 mmHg',
       'ECG continuo',
-      'Perfusao periferica e temperatura',
+      'Perfusão periferica e temperatura',
       'Debito urinario',
-      'Lactato e tendencia de perfusao',
+      'Lactato e tendência de perfusão',
       'Inspecao frequente do sitio de infusao',
     ],
   },
@@ -154,13 +154,13 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-high-alert',
       condition: () => true,
-      message: 'Medicamento de alto risco. Realizar dupla checagem de concentracao, volume aspirado, diluente e taxa da bomba.',
+      message: 'Medicamento de alto risco. Realizar dupla checagem de concentração, volume aspirado, diluente e taxa da bomba.',
       level: 'danger',
     },
     {
       id: 'noradrenaline-hypovolemia',
       condition: (patient) => patient.comorbidities.includes('hypovolemia'),
-      message: 'Nao usar como substituto de volume. Se a hipotensao for predominantemente hipovolemica, a noradrenalina pode piorar perfusao periferica, renal e esplancnica.',
+      message: 'Não usar como substituto de volume. Se a hipotensao for predominantemente hipovolemica, a noradrenalina pode piorar perfusão periferica, renal e esplancnica.',
       level: 'danger',
     },
     {
@@ -178,7 +178,7 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-wrong-diluent',
       condition: (_patient, _dose, _unit, diluent) => diluent === 'NaCl 0.9%',
-      message: 'Diluir preferencialmente em solucao com glicose. NaCl 0.9% isolado pode favorecer perda de potencia por oxidacao.',
+      message: 'Diluir preferencialmente em solução com glicose. NaCl 0.9% isolado pode favorecer perda de potência por oxidacao.',
       level: 'warning',
     },
     {
@@ -190,13 +190,13 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-arrhythmia-ischemia',
       condition: (patient) => patient.comorbidities.includes('cardiopath') || patient.comorbidities.includes('hypertension'),
-      message: 'Cautela em arritmias e isquemia: a noradrenalina pode aumentar demanda miocardica de O2 e piorar arritmias se o contexto clinico nao for adequado.',
+      message: 'Cautela em arritmias e isquemia: a noradrenalina pode aumentar demanda miocardica de O2 e piorar arritmias se o contexto clínico não for adequado.',
       level: 'warning',
     },
     {
       id: 'noradrenaline-pregnancy',
       condition: (patient) => patient.comorbidities.includes('pregnancy_lactation'),
-      message: 'Cautela em gestacao. Vasoconstricao pode comprometer perfusao uteroplacentaria.',
+      message: 'Cautela em gestacao. Vasoconstricao pode comprometer perfusão uteroplacentaria.',
       level: 'warning',
     },
     {
@@ -214,7 +214,7 @@ export const noradrenaline: Drug = {
         const normalized = toMcgKgMin(dose, unit);
         return normalized > 1 && normalized <= 2;
       },
-      message: 'Dose alta (>1 mcg/kg/min). Escalonamento cego pode mascarar problema hemodinamico nao resolvido.',
+      message: 'Dose alta (>1 mcg/kg/min). Escalonamento cego pode mascarar problema hemodinamico não resolvido.',
       level: 'danger',
     },
     {
@@ -226,7 +226,7 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-light-protection',
       condition: () => true,
-      message: 'Proteger da luz e descartar se a solucao ficar rosada, mais escura que amarelo discreto ou com precipitado.',
+      message: 'Proteger da luz e descartar se a solução ficar rosada, mais escura que amarelo discreto ou com precipitado.',
       level: 'info',
     },
   ],
@@ -245,7 +245,7 @@ export const noradrenaline: Drug = {
     metabolism: 'Rapidamente metabolizada por MAO e COMT em tecidos e terminacoes nervosas.',
     excretion: 'Metabolitos inativos excretados pela urina.',
     onsetOfAction: 'Muito rapido, em geral em 1-2 minutos.',
-    durationOfAction: 'Curtissima; a pressao pode cair rapidamente se a infusao for interrompida.',
+    durationOfAction: 'Curtissima; a pressão pode cair rapidamente se a infusao for interrompida.',
     speciesDifferences:
       'Gatos merecem cautela adicional por maior susceptibilidade a eventos cardiovasculares e isquemicos em referencias classicas.',
     clinicalObservations:
@@ -257,18 +257,18 @@ export const noradrenaline: Drug = {
       id: 'noradrenaline-cri-main',
       regimen: 'CRI',
       title: 'Faixa principal de dose',
-      doseText: 'Caes: 0.05-2 mcg/kg/min | Gatos: 0.05-2 mcg/kg/min',
+      doseText: 'Cães: 0.05-2 mcg/kg/min | Gatos: 0.05-2 mcg/kg/min',
       rationale:
-        'Iniciar apenas apos correcao adequada de volume. O uso mais comum fica entre 0.05-0.5 mcg/kg/min; acima disso, reavaliar causa da hipotensao.',
+        'Iniciar apenas após correção adequada de volume. O uso mais comum fica entre 0.05-0.5 mcg/kg/min; acima disso, reavaliar causa da hipotensao.',
     },
     {
       id: 'noradrenaline-septic-shock',
       regimen: 'CRI',
       title: 'Choque septico / distributivo',
-      indication: 'Hipotensao apos reposicao volêmica adequada',
-      doseText: '0.05-0.1 mcg/kg/min para inicio, titulando ao MAP e perfusao',
+      indication: 'Hipotensao após reposicao volêmica adequada',
+      doseText: '0.05-0.1 mcg/kg/min para inicio, titulando ao MAP e perfusão',
       rationale:
-        'Primeira escolha operacional para vasoplegia importante. Corrija volume primeiro e associe metas clinicas de perfusao.',
+        'Primeira escolha operacional para vasoplegia importante. Corrija volume primeiro e associe metas clinicas de perfusão.',
     },
     {
       id: 'noradrenaline-isoflurane',
@@ -277,16 +277,16 @@ export const noradrenaline: Drug = {
       indication: 'Hipotensao sob inalatorio',
       doseText: '0.05 mcg/kg/min para inicio; muitos pacientes ficam entre 0.1-0.5 mcg/kg/min',
       rationale:
-        'Estudos experimentais em caes mostraram aumento dose-dependente de MAP e debito cardiaco entre 0.05 e 2 mcg/kg/min.',
+        'Estudos experimentais em cães mostraram aumento dose-dependente de MAP e debito cardíaco entre 0.05 e 2 mcg/kg/min.',
     },
     {
       id: 'noradrenaline-refractory-vasoplegia',
       regimen: 'titratable',
       title: 'Vasoplegia grave ou refrataria',
-      indication: 'Quando e preciso restaurar perfusao rapidamente',
+      indication: 'Quando e preciso restaurar perfusão rapidamente',
       doseText: 'Considerar inicio perto de 0.1 mcg/kg/min com titulacao frequente',
       rationale:
-        'Se a dose seguir subindo, nao escale indefinidamente: reavalie volume, foco, POCUS/ecocardiografia e a necessidade de segundo agente.',
+        'Se a dose seguir subindo, não escale indefinidamente: reavalie volume, foco, POCUS/ecocardiografia e a necessidade de segundo agente.',
     },
   ],
 
@@ -294,23 +294,23 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-diluent-choice',
       title: 'Diluente preferencial',
-      recommendation: 'Use Glicose 5% como padrao. Glicose 5% + NaCl 0.9% tambem e aceitavel.',
-      rationale: 'A dextrose ajuda a reduzir perda de potencia por oxidacao.',
+      recommendation: 'Use Glicose 5% como padrão. Glicose 5% + NaCl 0.9% tambem e aceitavel.',
+      rationale: 'A dextrose ajuda a reduzir perda de potência por oxidacao.',
       tone: 'success',
     },
     {
       id: 'noradrenaline-diluent-avoid',
       title: 'O que evitar',
-      recommendation: 'Evite NaCl 0.9% isolado como diluente padrao e nunca misture com bicarbonato.',
+      recommendation: 'Evite NaCl 0.9% isolado como diluente padrão e nunca misture com bicarbonato.',
       rationale:
         'Tambem evite coadministracao na mesma linha com aminofilina; incompatibilidades tambem sao relatadas com ranitidina e pantoprazol.',
       tone: 'warning',
     },
     {
       id: 'noradrenaline-diluent-examples',
-      title: 'Exemplos classicos de concentracao',
+      title: 'Exemplos classicos de concentração',
       recommendation: '4 mg em 250 mL = 16 mcg/mL; 4 mg em 500 mL = 8 mcg/mL; 4 mg em 1000 mL = 4 mcg/mL.',
-      rationale: 'Inspecione a solucao antes do uso e descarte se houver alteracao de cor ou precipitado.',
+      rationale: 'Inspecione a solução antes do uso e descarte se houver alteração de cor ou precipitado.',
       tone: 'info',
     },
   ],
@@ -319,7 +319,7 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-access-central',
       title: 'Via central preferivel',
-      recommendation: 'Prefira acesso central e linha dedicada sempre que possivel.',
+      recommendation: 'Prefira acesso central e linha dedicada sempre que possível.',
       rationale: 'O risco de extravasamento e lesao isquemica existe; uma linha exclusiva tambem reduz incompatibilidades.',
       tone: 'warning',
     },
@@ -333,8 +333,8 @@ export const noradrenaline: Drug = {
     {
       id: 'noradrenaline-access-clinical-logic',
       title: 'Por que a via importa',
-      recommendation: 'O objetivo e manter o efeito vasopressor sem pagar o preco de lesao local.',
-      rationale: 'Extravasamento grave em caes e gatos foi documentado recentemente, reforcando a necessidade de alerta forte no app.',
+      recommendation: 'O objetivo e manter o efeito vasopressor sem pagar o preço de lesao local.',
+      rationale: 'Extravasamento grave em cães e gatos foi documentado recentemente, reforcando a necessidade de vigilancia rigorosa.',
       tone: 'info',
     },
   ],
@@ -344,28 +344,28 @@ export const noradrenaline: Drug = {
       id: 'noradrenaline-infusion-pump',
       title: 'Bomba obrigatoria',
       recommendation: 'Use sempre bomba de infusao; bomba de seringa e especialmente util em pacientes pequenos e para ajustes finos.',
-      rationale: 'Nao existe taxa fixa universal. A dose e titulada ao efeito hemodinamico.',
+      rationale: 'Não existe taxa fixa universal. A dose e titulada ao efeito hemodinamico.',
       tone: 'warning',
     },
     {
       id: 'noradrenaline-infusion-targets',
       title: 'Metas clinicas',
-      recommendation: 'Trabalhe com meta inicial de MAP >= 65 mmHg e associe a perfusao clinica, lactato e debito urinario.',
-      rationale: 'Pressao bonita com perfusao ruim e uma armadilha classica.',
+      recommendation: 'Trabalhe com meta inicial de MAP >= 65 mmHg e associe a perfusão clínica, lactato e debito urinario.',
+      rationale: 'Pressão bonita com perfusão ruim e uma armadilha classica.',
       tone: 'success',
     },
     {
       id: 'noradrenaline-infusion-weaning',
       title: 'Desmame gradual',
-      recommendation: 'Nao retire abruptamente. Reduza gradualmente quando a causa da hipotensao estiver controlada.',
+      recommendation: 'Não retire abruptamente. Reduza gradualmente quando a causa da hipotensao estiver controlada.',
       rationale: 'A BSAVA descreve desmame gradual em aproximadamente 6-18 horas em pacientes em melhora.',
       tone: 'info',
     },
     {
       id: 'noradrenaline-infusion-bolus',
-      title: 'Bolus nao suportado',
-      recommendation: 'Nao use noradrenalina como bolus rotineiro neste app.',
-      rationale: 'O uso pratico seguro e em CRI titulavel com monitorizacao continua.',
+      title: 'Bolus não suportado',
+      recommendation: 'Não use noradrenalina como bolus rotineiro.',
+      rationale: 'O uso pratico seguro e em CRI titulavel com monitorização continua.',
       tone: 'danger',
     },
   ],

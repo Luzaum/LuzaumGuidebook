@@ -10,31 +10,31 @@ export interface HomeIconOption {
 export const HOME_ICON_OPTIONS: HomeIconOption[] = [
   {
     id: 'v1',
-    name: 'V1 - Receita + cruz',
+    name: 'Receita com cruz',
     description: 'Documento com canto dobrado e selo de adição.',
     src: '/apps/receita-neon-v1.png',
   },
   {
     id: 'v2',
-    name: 'V2 - Duas vias + selo',
+    name: 'Duas vias com selo',
     description: 'Duas folhas com selo de ação no canto.',
     src: '/apps/receita-neon-v2.png',
   },
   {
     id: 'v3',
-    name: 'V3 - Prancheta + check',
+    name: 'Prancheta com confirmação',
     description: 'Visual clínico com check de validação.',
     src: '/apps/receita-neon-v3.png',
   },
   {
     id: 'v4',
-    name: 'V4 - Receita + escudo',
+    name: 'Receita com escudo',
     description: 'Documento com selo de segurança especial.',
     src: '/apps/receita-neon-v4.png',
   },
   {
     id: 'v5',
-    name: 'V5 - Receita minimal Rx',
+    name: 'Receita minimalista',
     description: 'Forma simples com foco no simbolo Rx.',
     src: '/apps/receita-neon-v5.png',
   },

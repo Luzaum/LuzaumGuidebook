@@ -17,7 +17,7 @@ export function AapMobileTopBar({ onOpenMenu, currentPage }: AapMobileTopBarProp
         type="button"
         onClick={onOpenMenu}
         className="rounded-lg p-2 text-foreground transition hover:bg-muted"
-        aria-label="Abrir menu do módulo"
+        aria-label="Abrir menu"
       >
         <Menu className="h-5 w-5" />
       </button>
@@ -77,7 +77,7 @@ export function AapMobileDrawer({
               onNavigate('home')
               onClose()
             }}
-            aria-label="Ir para início do módulo"
+            aria-label="Ir para o início"
           >
             <img src="/apps/aap.png" alt="" className="h-10 w-10 shrink-0 rounded-lg object-contain" />
             <span className="truncate text-xs font-bold uppercase tracking-wide text-primary">

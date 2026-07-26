@@ -158,7 +158,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ onNavigate, onOpenEncyclop
                 role="note"
                 className="mb-8 rounded-2xl border border-primary/20 bg-primary/5 px-4 py-3 text-sm leading-relaxed text-foreground md:px-5"
             >
-                <strong className="text-primary">Como usar:</strong> escolha uma categoria abaixo para abrir a enciclopédia filtrada, ou use as ações rápidas para triagem, protocolos e Dr. Luzaum. O módulo é educativo e não substitui o protocolo da sua instituição.
+                <strong className="text-primary">Como usar:</strong> escolha uma categoria abaixo para abrir a enciclopédia filtrada, ou use as ações rápidas para triagem, protocolos e Dr. Luzaum. O conteúdo é educativo e não substitui o protocolo da sua instituição.
             </div>
             <section className="mb-10">
                 <h3 className={`mb-5 flex items-center gap-2 text-lg font-bold ${isDarkMode ? 'text-white' : 'text-slate-800'}`}>

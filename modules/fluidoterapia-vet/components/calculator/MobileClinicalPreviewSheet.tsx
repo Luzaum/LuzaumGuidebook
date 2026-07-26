@@ -14,7 +14,7 @@ interface MobileClinicalPreviewSheetProps {
 export function MobileClinicalPreviewSheet({
   open,
   onOpenChange,
-  title = 'Preview clínico',
+  title = 'Visualização clínica',
   children,
 }: MobileClinicalPreviewSheetProps) {
   useEffect(() => {
@@ -33,7 +33,7 @@ export function MobileClinicalPreviewSheet({
       <button
         type="button"
         className="absolute inset-0 bg-black/50"
-        aria-label="Fechar preview"
+        aria-label="Fechar visualização"
         onClick={() => onOpenChange(false)}
       />
       <div className="absolute bottom-0 left-0 right-0 flex max-h-[min(88dvh,900px)] flex-col overflow-hidden rounded-t-2xl border border-slate-200 bg-white shadow-2xl dark:border-slate-700 dark:bg-slate-900">

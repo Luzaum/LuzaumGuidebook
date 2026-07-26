@@ -405,8 +405,8 @@ export async function saveMedication(params: {
 }): Promise<{ medication: MedicationRecord; presentations: MedicationPresentationRecord[] }> {
   const clinicId = String(params.clinicId || '').trim()
   const userId = String(params.userId || '').trim()
-  if (!clinicId) throw new Error('clinic_id ausente. RLS bloqueia insert sem clinic_id.')
-  if (!userId) throw new Error('user_id ausente ao salvar medicamento.')
+  if (!clinicId) throw new Error('Selecione uma clínica antes de salvar o medicamento.')
+  if (!userId) throw new Error('Entre na sua conta antes de salvar o medicamento.')
 
   const name = String(params.medication.name || '').trim()
   if (!name) throw new Error('Nome do medicamento é obrigatório.')

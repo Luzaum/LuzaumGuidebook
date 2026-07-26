@@ -43,9 +43,9 @@ export const ANTIBIOTIC_REGIMENS: Record<string, AntibioticRegimen> = {
   reg_cistite_fq_alt: {
     id: 'reg_cistite_fq_alt',
     moleculeIds: ['mol_marbo'],
-    label: 'Alternativa (fluoroquinolona) — stewardship: reservar quando indicado',
+    label: 'Alternativa com fluoroquinolona — reservar quando indicada',
     route: 'oral',
-    settingNote: 'Não primeira escolha de stewardship para ITU simples sem indicação específica.',
+    settingNote: 'Não é a primeira escolha para ITU simples sem indicação específica.',
     referenceKey: 'ref_placeholders.v2_uti_fq',
   },
   reg_cistite_complicated_iv: {
@@ -168,7 +168,7 @@ export const ANTIBIOTIC_REGIMENS: Record<string, AntibioticRegimen> = {
       'FCGS: eixo multifatorial (avaliação odontológica, analgesia, controle inflamatório). Antimicrobiano reservado para sobreinfeção com critério ou conduta de especialista.',
     route: 'mixed',
     settingNote:
-      'Ciclos antibióticos repetidos sem controle de foco pioram stewardship; considerar doxiciclina como opção contextual, não como “padrão único”.',
+      'Ciclos antibióticos repetidos sem controle do foco favorecem resistência; considerar doxiciclina como opção contextual, não como padrão único.',
     referenceKey: 'ref_placeholders.v2_fcgs',
   },
 

@@ -11,7 +11,7 @@ const COPY: Record<CultureRecommendationLevel, { summary: string; because: strin
   recommended: {
     summary: 'Cultura recomendada; priorizar antes do ATB quando o caso permitir.',
     because: [
-      'Stewardship: espectro mais estreito após identificação.',
+      'Preferir o espectro mais estreito após a identificação do agente.',
       'Útil para recidiva, falha terapêutica ou complicações.',
     ],
   },

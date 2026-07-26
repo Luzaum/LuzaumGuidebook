@@ -36,8 +36,6 @@ export async function previewMedicationsImport(
         }
 
         const warnings: string[] = [];
-        if (!data.slug) warnings.push('Slug ausente. Gerado a partir do título.');
-
         const mapped: MedicationUpsertInput = {
             id: entityId,
             slug,

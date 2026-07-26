@@ -109,7 +109,7 @@ export function buildInterpretationPayload(args: {
   if (ocrPending) {
     issues.push({
       level: 'critical',
-      message: 'Ha dados de OCR nao aplicados. Confirme ou descarte antes de interpretar.',
+      message: 'Há dados do reconhecimento de texto ainda não aplicados. Confirme ou descarte antes de interpretar.',
     });
   }
 
@@ -136,13 +136,13 @@ export function buildInterpretationPayload(args: {
   if (payload.HCO3 === undefined && payload.BE === undefined) {
     issues.push({
       level: 'warning',
-      message: 'HCO3 e BE ausentes. A analise acido-base ficara limitada.',
+      message: 'Bicarbonato (HCO3) e excesso de bases (BE) ausentes. A análise ácido-base ficará limitada.',
     });
   }
   if (payload.sampleType === 'arterial' && payload.pO2 === undefined) {
     issues.push({
       level: 'warning',
-      message: 'Amostra arterial sem pO2. A avaliacao de oxigenacao ficara limitada.',
+      message: 'Amostra arterial sem pressão parcial de oxigênio (pO2). A avaliação da oxigenação ficará limitada.',
       field: 'pO2',
     });
   }

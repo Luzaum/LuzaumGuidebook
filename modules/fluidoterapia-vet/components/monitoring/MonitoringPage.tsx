@@ -13,7 +13,7 @@ export function MonitoringPage() {
             <Activity className="h-8 w-8 text-teal-500" />
             Monitorização e alertas
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Checklist operacional para manter reavaliação contínua como eixo do módulo.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Checklist operacional para manter a reavaliação contínua durante a fluidoterapia.</p>
         </header>
 
         <Card className="border-teal-200 shadow-sm dark:border-teal-900/50">

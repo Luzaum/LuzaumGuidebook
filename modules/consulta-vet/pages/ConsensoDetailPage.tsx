@@ -28,7 +28,7 @@ const UI_TEXT = {
   summary: 'Resumo do consenso',
   keyPoints: 'Pontos-chave',
   practicalApplication: 'Aplicação prática',
-  appNotes: 'Alertas e observações do app',
+  appNotes: 'Alertas e observações clínicas',
   references: 'Referências',
   summaryPlaceholder: 'Descreva de forma objetiva o escopo e as conclusões principais.',
   keyPointsPlaceholder: 'Liste os pontos mais importantes para consulta rápida.',
@@ -190,7 +190,7 @@ export function ConsensoDetailPage() {
         }
       } catch (loadError) {
         if (!isMounted) return;
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar consenso.');
+        setError('Não foi possível carregar este consenso.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

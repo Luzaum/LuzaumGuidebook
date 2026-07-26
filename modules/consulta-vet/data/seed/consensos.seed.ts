@@ -15,7 +15,7 @@ export const consensosSeed: Array<Record<string, any>> = [
     summary:
       'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
     articleSummaryRichText:
-      '<p>O consenso iCatCare 2025 recomenda tratar sinais urinários baixos como ponto de partida, não como diagnóstico final. A abordagem central é separar rapidamente obstrução uretral de apresentações não obstrutivas e, em seguida, investigar FIC, urolitíase, ITU e causas menos comuns.</p><p>A ficha de DTUIF no app usa este documento como base editorial e identifica as figuras incorporadas como material do consenso.</p>',
+      '<p>O consenso iCatCare 2025 recomenda tratar sinais urinários baixos como ponto de partida, não como diagnóstico final. A abordagem central é separar rapidamente obstrução uretral de apresentações não obstrutivas e, em seguida, investigar FIC, urolitíase, ITU e causas menos comuns.</p>',
     adminNotesRichText:
       '<p><strong>Alerta editorial:</strong> DTUIF/FLUTD não deve ser usado como diagnóstico definitivo. Macho com bexiga distendida e tentativas improdutivas de urinar deve ser conduzido como emergência por suspeita de obstrução uretral.</p>',
     relatedDiseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],

@@ -44,7 +44,7 @@ export function getMoleculeTherapeuticAudit(moleculeSheetId: string): {
   if (!V2_LIBRARY_MOLECULE_IDS.includes(moleculeSheetId)) {
     return {
       state: 'outside_current_scope',
-      clinicianNote: 'Molécula fora do núcleo v2 auditado nesta matriz.',
+      clinicianNote: 'Não foi identificada recomendação institucional específica para esta molécula.',
     }
   }
 
@@ -52,7 +52,7 @@ export function getMoleculeTherapeuticAudit(moleculeSheetId: string): {
   if (!m) {
     return {
       state: 'pending_audit',
-      clinicianNote: 'Sem mapeamento institucional no código para esta ficha — auditoria terapêutica pendente.',
+      clinicianNote: 'Não foi identificada recomendação institucional específica para esta ficha.',
     }
   }
 
@@ -60,20 +60,18 @@ export function getMoleculeTherapeuticAudit(moleculeSheetId: string): {
   if (state === 'explicitly_supported_by_institutional_table') {
     return {
       state,
-      clinicianNote:
-        'Locator de página registrado após auditoria humana do exemplar restrito; o PDF não é distribuído pelo app.',
+      clinicianNote: 'A recomendação foi conferida na diretriz institucional, com páginas identificadas.',
     }
   }
   if (state === 'metadata_only') {
     return {
       state,
-      clinicianNote:
-        'Presença institucional via metadados (sectionRef); sem página CCIH fechada no código para esta ficha.',
+      clinicianNote: 'Há referência institucional geral, sem página específica para esta ficha.',
     }
   }
   return {
     state: 'pending_audit',
-    clinicianNote: 'Estado de vínculo institucional não classificado como metadados ou página auditada.',
+    clinicianNote: 'A relação com a diretriz institucional ainda não está definida para esta ficha.',
   }
 }
 
@@ -113,7 +111,7 @@ export function getRegimenTherapeuticAuditInSyndrome(
   if (!regimen) {
     return {
       state: 'outside_current_scope',
-      clinicianNote: 'Regime não encontrado no núcleo v2 de regimes.',
+      clinicianNote: 'Não foi identificada uma orientação específica para este regime.',
     }
   }
 
@@ -121,7 +119,7 @@ export function getRegimenTherapeuticAuditInSyndrome(
   if (!syndromeMap) {
     return {
       state: 'pending_audit',
-      clinicianNote: 'Perfil de síndrome sem mapeamento institucional no código — auditoria terapêutica pendente.',
+      clinicianNote: 'Não foi identificada recomendação institucional específica para este perfil.',
     }
   }
 
@@ -133,13 +131,13 @@ export function getRegimenTherapeuticAuditInSyndrome(
       return {
         state: 'contextually_supported_by_syndrome',
         clinicianNote:
-          'Conteúdo procedimental ligado ao perfil clínico com página auditada; não há linha de regime nem formulário de molécula isolado neste esquema.',
+          'A orientação procedimental está vinculada ao perfil clínico e foi conferida na diretriz institucional.',
       }
     }
     return {
       state: 'institutionally_present_but_not_fully_closed',
       clinicianNote:
-        'Conteúdo procedimental institucionalmente referenciado pelo perfil, sem fechamento completo (metadados ou perfil sem página auditada).',
+        'Há orientação institucional para o perfil clínico, sem recomendação específica para este regime.',
     }
   }
 
@@ -151,7 +149,7 @@ export function getRegimenTherapeuticAuditInSyndrome(
     return {
       state: 'institutionally_present_but_not_fully_closed',
       clinicianNote:
-        'Regime combina fármacos com cobertura institucional heterogénea; não existe linha terapêutica dedicada ao esquema no código — apenas fichas de molécula e perfil de síndrome.',
+        'O esquema combina fármacos com níveis distintos de suporte institucional; interpretar conforme foco, cultura e protocolo local.',
     }
   }
 
@@ -159,7 +157,7 @@ export function getRegimenTherapeuticAuditInSyndrome(
     return {
       state: 'institutionally_present_but_not_fully_closed',
       clinicianNote:
-        'Apoio contextual pelo perfil de síndrome (metadados CCIH); o regime não dispõe de locator próprio — fechamento parcial em relação ao documento versionado.',
+        'Há apoio institucional pelo perfil da síndrome, sem recomendação específica para este regime.',
     }
   }
 
@@ -172,12 +170,12 @@ export function getRegimenTherapeuticAuditInSyndrome(
 
 /** Rótulos discretos para UI (tom clínico, sem semáforo). */
 export const THERAPEUTIC_AUDIT_LABEL: Record<TherapeuticInstitutionalAuditState, string> = {
-  explicitly_supported_by_institutional_table: 'Vínculo explícito (página auditada)',
+  explicitly_supported_by_institutional_table: 'Recomendação conferida',
   contextually_supported_by_syndrome: 'Apoio pelo perfil clínico',
-  institutionally_present_but_not_fully_closed: 'Presença institucional sem fechamento completo',
-  metadata_only: 'Metadados institucionais (sem página auditada)',
-  pending_audit: 'Auditoria terapêutica pendente',
-  outside_current_scope: 'Fora do escopo auditado nesta versão',
+  institutionally_present_but_not_fully_closed: 'Orientação institucional parcial',
+  metadata_only: 'Referência institucional geral',
+  pending_audit: 'Sem recomendação institucional específica',
+  outside_current_scope: 'Sem recomendação institucional específica',
 }
 
 export function summarizeMoleculeAuditStatesV2(): Record<TherapeuticInstitutionalAuditState, number> {

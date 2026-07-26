@@ -107,7 +107,7 @@ export function PatientsPage() {
   }, [alertFilter, patients, searchTerm, sortMode, statusFilter, tasksByPatientId]);
 
   if (!snapshot.isHydrated) {
-    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando modulo...</div>;
+    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   }
 
   return (
@@ -212,7 +212,7 @@ export function PatientsPage() {
           <EmptyState
             icon={Search}
             eyebrow="Plantao vazio"
-            title="Este plantao ainda nao possui pacientes"
+            title="Este plantao ainda não possui pacientes"
             description="Importe um prontuario, traga pacientes de outro plantao ou crie um caso manualmente. O fluxo operacional do turno comeca por aqui."
             primaryAction={{ label: 'Importar prontuario', href: '/plantao-vet/importar' }}
             secondaryAction={{ label: 'Importar de outro plantao', onClick: () => setImportDialogOpen(true) }}
@@ -257,8 +257,8 @@ export function PatientsPage() {
                           ) : null}
                         </div>
                         <p className="text-sm text-[var(--pv-text-muted)]">
-                          {getSpeciesLabel(patient.species)} - {patient.weightLabel || 'Peso nao informado'} - Tutor:{' '}
-                          {patient.tutorName || 'Nao informado'}
+                          {getSpeciesLabel(patient.species)} - {patient.weightLabel || 'Peso não informado'} - Tutor:{' '}
+                          {patient.tutorName || 'Não informado'}
                         </p>
                       </div>
                       <ChevronRight className="mt-1 h-5 w-5 text-[var(--pv-text-muted)] group-hover:text-[var(--pv-primary)]" />
@@ -268,7 +268,7 @@ export function PatientsPage() {
                   <CardContent className="flex flex-1 flex-col">
                     <div className="space-y-4">
                       <p className="text-sm text-[var(--pv-text-muted)]">
-                        {patient.mainDiagnosis || 'Sem diagnostico principal registrado.'}
+                        {patient.mainDiagnosis || 'Sem diagnóstico principal registrado.'}
                       </p>
 
                       <div className="flex flex-wrap gap-2">

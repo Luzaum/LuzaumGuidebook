@@ -159,7 +159,7 @@ async function buildUniqueSlug(baseSlug: string, excludeId?: string): Promise<st
     counter += 1;
   }
 
-  throw new Error('Não foi possível gerar slug único para este consenso.');
+            throw new Error('Não foi possível salvar este consenso com o título informado.');
 }
 
 export class SupabaseConsensoRepository implements ConsensoRepository {
@@ -206,8 +206,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
       localItems.forEach((item) => mergedBySlug.set(item.slug, item));
       remoteItems.forEach((item) => mergedBySlug.set(item.slug, item));
       return [...mergedBySlug.values()];
-    } catch (error) {
-      console.warn('[ConsultaVet] consensus fallback', error);
+    } catch {
       return localConsensoRepository.list(filters);
     }
   }
@@ -232,8 +231,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
 
       if (!data) return localConsensoRepository.getBySlug(slug, options);
       return mapRow(data as ConsensusRow);
-    } catch (error) {
-      console.warn('[ConsultaVet] consensus fallback', error);
+    } catch {
       return localConsensoRepository.getBySlug(slug);
     }
   }
@@ -559,8 +557,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
 
       if (!data) return null;
       return mapDetailsRow(data as ConsensusDetailsRow);
-    } catch (error) {
-      console.warn('[ConsultaVet] consensus details fallback', error);
+    } catch {
       return localConsensoRepository.getSharedDetailsByConsensusId(consensusDocumentId);
     }
   }

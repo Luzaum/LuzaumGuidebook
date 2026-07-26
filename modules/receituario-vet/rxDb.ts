@@ -143,7 +143,7 @@ export interface HistoryRecord {
   tutorId?: string
 }
 
-export type ProtocolSpecies = 'Caes' | 'Gatos' | 'Geral'
+export type ProtocolSpecies = 'Cães' | 'Gatos' | 'Geral'
 
 export interface RxProtocolFolder {
   id: string
@@ -335,7 +335,7 @@ const defaultProfile: ProfileSettings = {
   crmv: '12345',
   uf: 'SP',
   specialty: 'Clínica Médica de Pequenos Animais',
-  clinicName: 'CLÍNICA VETERINÁRIA VETIUS',
+  clinicName: 'CLÍNICA VETERINÁRIA',
   clinicCnpj: '',
   clinicAddress: 'Rua das Flores, 123 - Jardins, São Paulo - SP',
   clinicPhone: '(11) 99999-8888',
@@ -350,7 +350,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Apoquel',
-      speciesTargets: ['Caes'],
+      speciesTargets: ['Cães'],
       controlled: false,
       pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
@@ -365,7 +365,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Dipirona Sódica',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: false,
       pharmacyType: 'humana',
       routeGroup: 'ORAL',
@@ -377,7 +377,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Amoxicilina + Clavulanato',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: false,
       pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
@@ -389,7 +389,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Meloxicam',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: false,
       pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
@@ -401,7 +401,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Tramadol',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: true,
       pharmacyType: 'humana',
       routeGroup: 'ORAL',
@@ -413,7 +413,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Cefalexina',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: false,
       pharmacyType: 'veterinária',
       routeGroup: 'ORAL',
@@ -425,7 +425,7 @@ function seedCatalog(): CatalogDrug[] {
     {
       id: uid('drug'),
       name: 'Omeprazol',
-      speciesTargets: ['Caes', 'Gatos'],
+      speciesTargets: ['Cães', 'Gatos'],
       controlled: false,
       pharmacyType: 'humana',
       routeGroup: 'ORAL',
@@ -528,7 +528,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
       summary: 'Controle de dor, anti-inflamatório e antimicrobiano para pós-operatório de tecidos moles.',
       folderId: 'folder-pos-operatorio',
       requiresSpecialControl: false,
-      species: 'Caes',
+      species: 'Cães',
       active: true,
       tags: ['Cirurgia', 'Dor', 'Antimicrobiano'],
       durationLabel: '5-7 dias',
@@ -571,7 +571,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
       summary: 'Tratamento padrão para otite externa aguda com anti-inflamatório e analgesia.',
       folderId: 'folder-dermatologia',
       requiresSpecialControl: false,
-      species: 'Caes',
+      species: 'Cães',
       active: true,
       tags: ['Otológico', 'Dermatologia'],
       durationLabel: '10-14 dias',
@@ -606,7 +606,7 @@ function seedProtocols(catalog: CatalogDrug[]): RxProtocol[] {
       summary: 'Controle de prurido e inflamação com monitoramento de resposta clínica.',
       folderId: 'folder-dermatologia',
       requiresSpecialControl: false,
-      species: 'Caes',
+      species: 'Cães',
       active: true,
       tags: ['Prurido', 'Dermatologia'],
       durationLabel: '14 dias',

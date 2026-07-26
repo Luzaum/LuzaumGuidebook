@@ -1,7 +1,7 @@
 {
   "meta": {
     "generatedAt": "2026-03-29T01:12:25",
-    "sourceWorkbook": "C:\\Users\\Resgate\\Downloads\\Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+    "sourceWorkbook": "C:\\Users\\Resgate\\Downloads\\Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
     "nutrientCatalog": [
       {
         "key": "moisturePct",
@@ -359,7 +359,7 @@
       "categoryNormalized": "Água",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 2,
         "msRow": 2
       },
@@ -492,7 +492,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 3,
         "msRow": 49
       },
@@ -619,7 +619,7 @@
       "categoryNormalized": "Critical",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 4,
         "msRow": 79
       },
@@ -746,7 +746,7 @@
       "categoryNormalized": "Critical",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 5,
         "msRow": 97
       },
@@ -869,7 +869,7 @@
       "categoryNormalized": "Nutra pet",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 6,
         "msRow": 76
       },
@@ -996,7 +996,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 7,
         "msRow": 114
       },
@@ -1113,7 +1113,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 8,
         "msRow": 115
       },
@@ -1239,7 +1239,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 9,
         "msRow": 100
       },
@@ -1362,7 +1362,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 10,
         "msRow": 80
       },
@@ -1476,7 +1476,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 11,
         "msRow": 39
       },
@@ -1589,7 +1589,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 12,
         "msRow": 81
       },
@@ -1702,7 +1702,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 13,
         "msRow": 50
       },
@@ -1829,7 +1829,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 14,
         "msRow": 88
       },
@@ -1955,7 +1955,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 15,
         "msRow": 20
       },
@@ -2082,7 +2082,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 16,
         "msRow": 66
       },
@@ -2211,7 +2211,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 17,
         "msRow": 15
       },
@@ -2338,7 +2338,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 18,
         "msRow": 37
       },
@@ -2464,7 +2464,7 @@
       "categoryNormalized": "AIG",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 19,
         "msRow": 112
       },
@@ -2579,7 +2579,7 @@
       "categoryNormalized": "AIG",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 20,
         "msRow": 116
       },
@@ -2694,7 +2694,7 @@
       "categoryNormalized": "Renafil",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 21,
         "msRow": 54
       },
@@ -2821,7 +2821,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 22,
         "msRow": 87
       },
@@ -2948,7 +2948,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 23,
         "msRow": 93
       },
@@ -3073,7 +3073,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 24,
         "msRow": 85
       },
@@ -3197,7 +3197,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 25,
         "msRow": 82
       },
@@ -3324,7 +3324,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 26,
         "msRow": 83
       },
@@ -3450,7 +3450,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 27,
         "msRow": 36
       },
@@ -3575,7 +3575,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 28,
         "msRow": 91
       },
@@ -3698,7 +3698,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 29,
         "msRow": 27
       },
@@ -3820,7 +3820,7 @@
       "categoryNormalized": "Maizena",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 30,
         "msRow": 11
       },
@@ -3946,7 +3946,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 31,
         "msRow": 19
       },
@@ -4068,12 +4068,12 @@
     {
       "id": "sache-premier-formula-gatos-atum-brocolis-e-cenoura",
       "slug": "sache-premier-formula-gatos-atum-brocolis-e-cenoura",
-      "name": "Sachê Premier Formula Gatos ATUM, BROCOLIS E CENOURA",
+      "name": "Sachê Premier Fórmula Gatos ATUM, BROCOLIS E CENOURA",
       "category": "Sachê",
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 32,
         "msRow": 84
       },
@@ -4197,7 +4197,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 33,
         "msRow": 40
       },
@@ -4320,7 +4320,7 @@
       "categoryNormalized": "Glutamina",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 34,
         "msRow": 3
       },
@@ -4431,7 +4431,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 35,
         "msRow": 94
       },
@@ -4556,7 +4556,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 36,
         "msRow": 75
       },
@@ -4683,7 +4683,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 37,
         "msRow": 92
       },
@@ -4801,7 +4801,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 38,
         "msRow": 69
       },
@@ -4927,7 +4927,7 @@
       "categoryNormalized": "Creme",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 39,
         "msRow": 121
       },
@@ -5054,7 +5054,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 40,
         "msRow": 30
       },
@@ -5178,7 +5178,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 41,
         "msRow": 68
       },
@@ -5292,12 +5292,12 @@
     {
       "id": "racao-formula-natural-gastrointestinal-baixa-gordura",
       "slug": "racao-formula-natural-gastrointestinal-baixa-gordura",
-      "name": "Ração Formula Natural Gastrointestinal Baixa Gordura",
+      "name": "Ração Fórmula Natural Gastrointestinal Baixa Gordura",
       "category": "Ração",
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 42,
         "msRow": 22
       },
@@ -5423,7 +5423,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 43,
         "msRow": 95
       },
@@ -5550,7 +5550,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 44,
         "msRow": 59
       },
@@ -5670,12 +5670,12 @@
     {
       "id": "racao-formula-natural-hipoalergenica-mini",
       "slug": "racao-formula-natural-hipoalergenica-mini",
-      "name": "Ração Formula Natural Hipoalergenica Mini",
+      "name": "Ração Fórmula Natural Hipoalergenica Mini",
       "category": "Ração",
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 45,
         "msRow": 47
       },
@@ -5801,7 +5801,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 46,
         "msRow": 53
       },
@@ -5925,7 +5925,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 47,
         "msRow": 28
       },
@@ -6039,7 +6039,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 48,
         "msRow": 24
       },
@@ -6154,12 +6154,12 @@
     {
       "id": "pate-renal-formula-natural-gatos",
       "slug": "pate-renal-formula-natural-gatos",
-      "name": "Patê Renal Formula Natural Gatos",
+      "name": "Patê Renal Fórmula Natural Gatos",
       "category": "Patê",
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 49,
         "msRow": 110
       },
@@ -6282,7 +6282,7 @@
       "categoryNormalized": "AN",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 50,
         "msRow": 21
       },
@@ -6409,7 +6409,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 51,
         "msRow": 31
       },
@@ -6536,7 +6536,7 @@
       "categoryNormalized": "AN",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 52,
         "msRow": 44
       },
@@ -6663,7 +6663,7 @@
       "categoryNormalized": "Calcário",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 53,
         "msRow": 4
       },
@@ -6795,7 +6795,7 @@
       "categoryNormalized": "Gordura",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 54,
         "msRow": 122
       },
@@ -6926,7 +6926,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 55,
         "msRow": 107
       },
@@ -7048,7 +7048,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 56,
         "msRow": 65
       },
@@ -7171,7 +7171,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 57,
         "msRow": 48
       },
@@ -7291,7 +7291,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 58,
         "msRow": 86
       },
@@ -7413,7 +7413,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 59,
         "msRow": 98
       },
@@ -7535,7 +7535,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 60,
         "msRow": 51
       },
@@ -7655,7 +7655,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 61,
         "msRow": 104
       },
@@ -7777,7 +7777,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 62,
         "msRow": 99
       },
@@ -7904,7 +7904,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 63,
         "msRow": 60
       },
@@ -8031,7 +8031,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 64,
         "msRow": 113
       },
@@ -8154,7 +8154,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 65,
         "msRow": 74
       },
@@ -8276,7 +8276,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 66,
         "msRow": 117
       },
@@ -8531,7 +8531,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 68,
         "msRow": 55
       },
@@ -8653,7 +8653,7 @@
       "categoryNormalized": "Creme",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 69,
         "msRow": 121
       },
@@ -8783,7 +8783,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 70,
         "msRow": 101
       },
@@ -8909,7 +8909,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 71,
         "msRow": 25
       },
@@ -9036,7 +9036,7 @@
       "categoryNormalized": "Soja",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 72,
         "msRow": 13
       },
@@ -9163,7 +9163,7 @@
       "categoryNormalized": "BSF",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 73,
         "msRow": 18
       },
@@ -9290,7 +9290,7 @@
       "categoryNormalized": "Complet",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 74,
         "msRow": 5
       },
@@ -9399,7 +9399,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 75,
         "msRow": 33
       },
@@ -9525,7 +9525,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 76,
         "msRow": 90
       },
@@ -9647,7 +9647,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 77,
         "msRow": 70
       },
@@ -9774,7 +9774,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 78,
         "msRow": 71
       },
@@ -9901,7 +9901,7 @@
       "categoryNormalized": "Enteral",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 79,
         "msRow": 106
       },
@@ -10028,7 +10028,7 @@
       "categoryNormalized": "Enteral",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 80,
         "msRow": 58
       },
@@ -10155,7 +10155,7 @@
       "categoryNormalized": "Mucilon",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 81,
         "msRow": 12
       },
@@ -10282,7 +10282,7 @@
       "categoryNormalized": "Extrato",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 82,
         "msRow": 109
       },
@@ -10408,7 +10408,7 @@
       "categoryNormalized": "Dextrose",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 83,
         "msRow": 6
       },
@@ -10541,7 +10541,7 @@
       "categoryNormalized": "Dieta",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 84,
         "msRow": 102
       },
@@ -10668,7 +10668,7 @@
       "categoryNormalized": "Critical",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 85,
         "msRow": 108
       },
@@ -10795,7 +10795,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 86,
         "msRow": 105
       },
@@ -10920,7 +10920,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 87,
         "msRow": 72
       },
@@ -11042,7 +11042,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 88,
         "msRow": 14
       },
@@ -11169,7 +11169,7 @@
       "categoryNormalized": "Farinha",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 89,
         "msRow": 35
       },
@@ -11298,7 +11298,7 @@
       "categoryNormalized": "Coco",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 90,
         "msRow": 123
       },
@@ -11430,7 +11430,7 @@
       "categoryNormalized": "Psyllium",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 91,
         "msRow": 7
       },
@@ -11563,7 +11563,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 92,
         "msRow": 61
       },
@@ -11687,7 +11687,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 93,
         "msRow": 41
       },
@@ -11812,7 +11812,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 94,
         "msRow": 17
       },
@@ -11937,7 +11937,7 @@
       "categoryNormalized": "Sucedâneo",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 95,
         "msRow": 118
       },
@@ -12064,7 +12064,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 96,
         "msRow": 103
       },
@@ -12186,7 +12186,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 97,
         "msRow": 29
       },
@@ -12309,7 +12309,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 98,
         "msRow": 96
       },
@@ -12433,7 +12433,7 @@
       "categoryNormalized": ":p",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 99,
         "msRow": 124
       },
@@ -12556,7 +12556,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 100,
         "msRow": 23
       },
@@ -12685,7 +12685,7 @@
       "categoryNormalized": "Patê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 101,
         "msRow": 67
       },
@@ -12812,7 +12812,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 102,
         "msRow": 57
       },
@@ -12937,7 +12937,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 103,
         "msRow": 26
       },
@@ -13064,7 +13064,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 104,
         "msRow": 111
       },
@@ -13190,7 +13190,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 106,
         "msRow": 78
       },
@@ -13314,7 +13314,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 107,
         "msRow": 73
       },
@@ -13439,7 +13439,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 108,
         "msRow": 62
       },
@@ -13564,7 +13564,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 109,
         "msRow": 52
       },
@@ -13816,7 +13816,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 111,
         "msRow": 34
       },
@@ -13939,7 +13939,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 112,
         "msRow": 32
       },
@@ -14066,7 +14066,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 113,
         "msRow": 45
       },
@@ -14193,7 +14193,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 114,
         "msRow": 63
       },
@@ -14318,7 +14318,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 115,
         "msRow": 64
       },
@@ -14443,7 +14443,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 116,
         "msRow": 16
       },
@@ -14570,7 +14570,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 117,
         "msRow": 38
       },
@@ -14697,7 +14697,7 @@
       "categoryNormalized": "Critical",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 118,
         "msRow": 119
       },
@@ -14825,7 +14825,7 @@
       "categoryNormalized": "Sucedâneo",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 119,
         "msRow": 89
       },
@@ -14950,7 +14950,7 @@
       "categoryNormalized": null,
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 120,
         "msRow": 125
       },
@@ -15080,7 +15080,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 121,
         "msRow": 46
       },
@@ -15204,7 +15204,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 122,
         "msRow": 43
       },
@@ -15327,12 +15327,12 @@
     {
       "id": "premier-formula-caes-filhotes-porte-pequeno-frango",
       "slug": "premier-formula-caes-filhotes-porte-pequeno-frango",
-      "name": "Premier Formula Cães filhotes porte pequeno frango",
+      "name": "Premier Fórmula Cães filhotes porte pequeno frango",
       "category": "Ração",
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 123,
         "msRow": 8
       },
@@ -15460,12 +15460,12 @@
     {
       "id": "premier-formula-caes-filhotes-porte-pequeno-frango-salmao",
       "slug": "premier-formula-caes-filhotes-porte-pequeno-frango-salmao",
-      "name": "Premier Formula Cães filhotes porte pequeno frango salmao",
+      "name": "Premier Fórmula Cães filhotes porte pequeno frango salmao",
       "category": "Ração",
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 124,
         "msRow": 9
       },
@@ -15593,12 +15593,12 @@
     {
       "id": "premier-feline-formula-adultos",
       "slug": "premier-feline-formula-adultos",
-      "name": "Premier Feline formula adultos",
+      "name": "Premier Feline fórmula adultos",
       "category": "Ração",
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 125,
         "msRow": 10
       },
@@ -15731,7 +15731,7 @@
       "categoryNormalized": "Farinha",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 126,
         "msRow": 126
       },
@@ -15858,7 +15858,7 @@
       "categoryNormalized": "Sachê",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 127,
         "msRow": 127
       },
@@ -15991,7 +15991,7 @@
       "categoryNormalized": "Farinha",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 128,
         "msRow": 128
       },
@@ -16118,7 +16118,7 @@
       "categoryNormalized": "Farinha",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 129,
         "msRow": 129
       },
@@ -16246,7 +16246,7 @@
       "categoryNormalized": "Ração",
       "sourceSheet": "Alimentos MN",
       "sourceReference": {
-        "workbook": "Planilha de Formulação e Avaliação de Dietas - GENUTRI.xlsx",
+        "workbook": "Planilha de Fórmulação e Avaliação de Dietas - GENUTRI.xlsx",
         "mnRow": 130,
         "msRow": 130
       },
@@ -22094,7 +22094,7 @@
       ],
       "notes": [
         "Royal Canin Satiety — análise garantida (rótulo Brasil). Cão.",
-        "Umidade máx. 11,5%; fibra bruta entre 13,4–17,4% MN — usada média 15,4% para formulação.",
+        "Umidade máx. 11,5%; fibra bruta entre 13,4–17,4% MN — usada média 15,4% para fórmulação.",
         "Ca entre 0,54–1,26% MN — usado valor médio 0,90% (as fed).",
         "EM 2670 kcal/kg alimento (= 267 kcal/100 g); copo 240 ml 72 g ≈ 192 kcal — conferido.",
         "Aditivos/kg: vitaminas e minerais conforme rótulo; Vit. C 192 mg/kg e L-carnitina 226 mg/kg documentadas no rótulo (não mapeadas em campos separados deste dataset).",
@@ -22213,7 +22213,7 @@
       ],
       "notes": [
         "Royal Canin Maxi Joint Care — análise garantida (rótulo EN). Cão porte maxi.",
-        "Ca 0,60–1,40% e P 0,36–0,84% MN — usados valores médios 1,0% e 0,6% (as fed) para formulação.",
+        "Ca 0,60–1,40% e P 0,36–0,84% MN — usados valores médios 1,0% e 0,6% (as fed) para fórmulação.",
         "Fibra e cinzas nos máximos declarados (8,4% e 8,3% MN). ENN por diferença na MS.",
         "EM 3511 kcal/kg (= 351,1 kcal/100 g); copo 240 ml declarado 312 kcal (calculado pelo fabricante).",
         "Colágeno hidrolisado 0,84%, condroitina e outros ingredientes do rótulo sem quantificação numérica na análise garantida.",
@@ -25253,7 +25253,7 @@
         "tryptophanPct"
       ],
       "notes": [
-        "Formulação para teor calórico “sob medida” para interior; EM não numérica na página (estimativa por macronutrientes).",
+        "Fórmulação para teor calórico “sob medida” para interior; EM não numérica na página (estimativa por macronutrientes).",
         "Energia metabolizável estimada por macronutrientes (Atwater aprox.); fabricante não informou EM na fonte."
       ]
     },
@@ -40287,7 +40287,7 @@
         "errorValues": 6
       },
       {
-        "title": "Contas Formulação",
+        "title": "Contas Fórmulação",
         "dimension": "A1:AQ1000",
         "formulaCells": 1044,
         "mergedRanges": 0,

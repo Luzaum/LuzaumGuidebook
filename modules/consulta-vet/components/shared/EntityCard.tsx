@@ -90,6 +90,13 @@ const SPECIALTY_THEMES: Record<string, {
     line: 'border-yellow-500/20 dark:border-yellow-400/15',
     glowBg: 'rgba(234,179,8,0.015)',
   },
+  'reproducao-neonatologia': {
+    borderHover: 'hover:border-fuchsia-500/50 dark:hover:border-fuchsia-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(217,70,239,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(217,70,239,0.25)]',
+    badge: 'bg-fuchsia-100/80 text-fuchsia-700 dark:bg-fuchsia-950/45 dark:text-fuchsia-300 border-fuchsia-200/50 dark:border-fuchsia-800/40',
+    line: 'border-fuchsia-500/20 dark:border-fuchsia-400/15',
+    glowBg: 'rgba(217,70,239,0.015)',
+  },
   ortopedia: {
     borderHover: 'hover:border-teal-500/50 dark:hover:border-teal-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(20,184,166,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(20,184,166,0.25)]',

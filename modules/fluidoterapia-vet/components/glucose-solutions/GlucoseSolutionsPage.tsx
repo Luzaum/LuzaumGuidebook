@@ -27,7 +27,7 @@ const PRESETS = [
 ];
 
 const INDICATIONS = [
-  'Hipoglicemia persistente ou recorrente apos bolus de dextrose, com bomba e rechecagem seriada.',
+  'Hipoglicemia persistente ou recorrente após bolus de dextrose, com bomba e rechecagem seriada.',
   'Neonatos, filhotes, pacientes toy, septicemicos, anoreticos ou hepatopatas com pouca reserva de glicogenio.',
   'Suspeita de insulinoma, sobredose de insulina ou intoxicacoes que cursam com hipoglicemia.',
   'Suporte calorico parcial quando o paciente precisa de fluido isotonicamente guiado e glicose continua.',
@@ -35,23 +35,23 @@ const INDICATIONS = [
 
 const CONTRAINDICATIONS = [
   'Hiperglicemia relevante, diabetes descompensado, cetoacidose diabetica ou estado hiperosmolar.',
-  'Uso como fluido de ressuscitacao primaria em choque: primeiro corrija perfusao com cristaloide/coloide apropriado.',
+  'Uso como fluido de ressuscitação primária em choque: primeiro corrija perfusão com cristaloide/coloide apropriado.',
   'TCE, convulsao, sepse grave ou isquemia: usar somente se houver hipoglicemia documentada ou risco muito alto.',
-  'Risco de sobrecarga, oliguria/anuria ou cardiopatia: ajustar taxa, volume e monitorizacao antes de glicolisar a bolsa.',
+  'Risco de sobrecarga, oliguria/anuria ou cardiopatia: ajustar taxa, volume e monitorização antes de glicolisar a bolsa.',
 ];
 
 const MACETES = [
   'D50% tem 0,5 g/mL. Para D2,5% em bolsa, adicione 5% do volume final como D50%. Para D5%, adicione 10%.',
-  'Melhor pratica: retire da bolsa exatamente o mesmo volume que vai adicionar de D50%, mantendo o volume final igual ao rotulo.',
+  'Melhor pratica: retire da bolsa exatamente o mesmo volume que vai adicionar de D50%, mantendo o volume final igual ao rótulo.',
   'Homogeneize de verdade: inverta a bolsa 10 a 15 vezes antes de conectar ao equipo. Bolsa mal misturada entrega glicose irregular.',
-  'Rotule grande: concentracao final, diluente base, mL de D50 adicionados, horario, responsavel e meta glicemica.',
+  'Rotule grande: concentração final, diluente base, mL de D50 adicionados, horario, responsavel e meta glicemica.',
   'Se o paciente tambem precisa de KCl, calcule KCl separadamente e nunca ultrapasse 0,5 mEq/kg/h.',
 ];
 
 const MONITORING = [
-  'Glicemia: a cada 15 a 30 min no inicio se instavel; depois a cada 1 a 4 h conforme tendencia.',
-  'Eletrólitos e gasometria quando disponivel: glicose pode puxar potassio para dentro da celula e mascarar piora clinica.',
-  'Estado de perfusao e hidratacao: mucosas, pulso, TRC, peso, diurese, ausculta pulmonar e esforco respiratorio.',
+  'Glicemia: a cada 15 a 30 min no inicio se instavel; depois a cada 1 a 4 h conforme tendência.',
+  'Eletrólitos e gasometria quando disponível: glicose pode puxar potássio para dentro da célula e mascarar piora clínica.',
+  'Estado de perfusão e hidratação: mucosas, pulso, TRC, peso, diurese, ausculta pulmonar e esforco respiratório.',
   'Bomba de infusao: evite gotejamento manual, principalmente em pacientes pequenos.',
 ];
 
@@ -160,7 +160,7 @@ export function GlucoseSolutionsPage() {
                   onClick={() => setMaintainFinalVolume((current) => !current)}
                   className="rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-semibold text-slate-700 hover:border-emerald-300 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
                 >
-                  {maintainFinalVolume ? 'Mantem volume final' : 'Nao retira da bolsa'}
+                  {maintainFinalVolume ? 'Mantem volume final' : 'Não retira da bolsa'}
                 </button>
               </div>
 
@@ -181,7 +181,7 @@ export function GlucoseSolutionsPage() {
 
               {maintainFinalVolume ? (
                 <div className="rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-900/50 dark:bg-amber-950/30 dark:text-amber-200">
-                  Se voce nao retirar volume antes de adicionar a dextrose, esta mesma preparacao subiria para {formatMl(noRemovalVolumeMl)}.
+                  Se você não retirar volume antes de adicionar a dextrose, essa mesma preparação aumentará para {formatMl(noRemovalVolumeMl)}.
                   Isso altera taxa, concentracao final e volume entregue, principalmente em pacientes pequenos.
                 </div>
               ) : (
@@ -203,7 +203,7 @@ export function GlucoseSolutionsPage() {
             <CardContent className="space-y-5 p-6">
               <div className="grid gap-3">
                 {[
-                  ['1', 'Escolha a bolsa', 'NaCl 0,9% ou Ringer lactato conforme o caso clinico.'],
+                  ['1', 'Escolha a bolsa', 'NaCl 0,9% ou Ringer lactato conforme o caso clínico.'],
                   ['2', 'Retire volume igual', `Retire ${formatMl(result.removeMl)} para manter o volume final correto.`],
                   ['3', 'Adicione dextrose', `Adicione ${formatMl(result.addMl)} de D${stockPercent}% com tecnica asseptica.`],
                   ['4', 'Homogeneize e rotule', 'Inverta 10 a 15 vezes, rotule e conecte em bomba.'],
@@ -219,7 +219,7 @@ export function GlucoseSolutionsPage() {
                 ))}
               </div>
               <div className="rounded-xl border border-rose-200 bg-rose-50 p-4 text-sm text-rose-800 dark:border-rose-900/50 dark:bg-rose-950/30 dark:text-rose-200">
-                <strong>Alerta:</strong> nao usar solucao glicosada como atalho para choque. Hipoperfusao precisa de ressuscitacao e reavaliacao; glicose entra quando a glicemia pede.
+                <strong>Alerta:</strong> não use solução glicosada como substituto da ressuscitação no choque. A hipoperfusão exige ressuscitação e reavaliação; a glicose é acrescentada quando a glicemia indicar.
               </div>
             </CardContent>
           </Card>
@@ -332,7 +332,7 @@ export function GlucoseSolutionsPage() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2 text-lg">
               <Info className="h-5 w-5 text-slate-500" />
-              Referencias e criterio clinico
+              Referências e critério clínico
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-2 p-6 text-sm text-slate-600 dark:text-slate-300">
@@ -340,7 +340,7 @@ export function GlucoseSolutionsPage() {
               Conteudo organizado para consulta rapida com base em principios de fluidoterapia, hipoglicemia e suporte intensivo descritos em textos de medicina interna e emergencia veterinaria, incluindo Ettinger's Textbook of Veterinary Internal Medicine, 9a ed. (2024).
             </p>
             <p>
-              A solucao glicosada nao substitui diagnostico, reavaliacao clinica nem ajuste individual de taxa. Use sempre glicemia seriada e metas do paciente.
+              A solução glicosada não substitui diagnóstico, reavaliação clínica nem ajuste individual de taxa. Use sempre glicemia seriada e metas do paciente.
             </p>
           </CardContent>
         </Card>

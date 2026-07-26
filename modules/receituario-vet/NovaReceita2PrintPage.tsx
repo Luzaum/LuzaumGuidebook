@@ -876,7 +876,7 @@ export default function NovaReceita2PrintPage() {
     }, [activeZone, selectedItemId])
 
     const editorTitle = useMemo(() => {
-        if (!editorFocus) return 'Clique no preview para editar'
+        if (!editorFocus) return 'Clique na receita para editar'
         if (editorFocus.type === 'item') {
             const item = state?.items.find((i) => i.id === editorFocus.itemId)
             return `Editando: ${item?.name || 'Item'}`
@@ -905,7 +905,7 @@ export default function NovaReceita2PrintPage() {
     const handleDownloadPdf = useCallback(async () => {
         const container = previewRef.current
         if (!container) {
-            pushToast('Preview não disponível para exportação.')
+            pushToast('Visualização não disponível para exportação.')
             return
         }
         const hasControlledDoc = !!printDocs?.some((doc) => doc.documentKind === 'special-control')
@@ -1080,7 +1080,7 @@ export default function NovaReceita2PrintPage() {
                     </h1>
                     <p className="text-xs text-slate-400">
                         {isReviewMode
-                            ? 'Clique nas seções do preview para editar'
+                            ? 'Clique nas seções da receita para editar'
                             : `Template: ${selectedTemplate.name}`}
                     </p>
                 </div>
@@ -1201,7 +1201,7 @@ export default function NovaReceita2PrintPage() {
                                 )}
                                 {!editorFocus && (
                                     <p className="py-4 text-center text-xs text-slate-600">
-                                        Selecione uma seção ou item no preview →
+                                        Selecione uma seção ou item na receita →
                                     </p>
                                 )}
                             </div>
@@ -1212,7 +1212,7 @@ export default function NovaReceita2PrintPage() {
                             <div className="rxv-review-preview-inner rounded-xl border border-slate-700 bg-slate-900/50 overflow-hidden">
                                 <div className="flex items-center justify-between border-b border-slate-800 px-4 py-2 bg-black/40">
                                     <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
-                                        Preview clicável — {selectedTemplate.name}
+                                        Receita interativa — {selectedTemplate.name}
                                     </span>
                                     <span className="text-[10px] text-slate-600">
                                         {activeZone ? `Zona ativa: ${ZONE_LABEL[activeZone] || activeZone}` : selectedItemId ? 'Item selecionado' : 'Nenhuma seleção'}

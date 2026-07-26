@@ -62,7 +62,7 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
     >
       <header className="rounded-[var(--radius)] border p-4" style={{ borderColor: 'hsl(var(--border))', background: 'hsl(var(--card))' }}>
         <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: 'hsl(var(--primary))' }}>
-          Ficha clínica v2
+          Ficha clínica
         </p>
         <h2 className="mt-1 text-2xl font-bold tracking-tight md:text-3xl">{sheet.displayName}</h2>
         <p className="mt-2 text-xs leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
@@ -103,7 +103,7 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
         </p>
       </SectionCard>
 
-      <SectionCard title="Uso neste módulo (v2)" accent="foreground">
+      <SectionCard title="Indicações clínicas" accent="foreground">
         <ul className="ml-4 list-disc space-y-2 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {sheet.usesInApp.map((u, i) => (
             <li key={i} className="pl-1 marker:text-[hsl(var(--primary))]">
@@ -142,7 +142,7 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
         }}
       >
         <h3 className="border-b pb-2 text-base font-bold" style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--foreground))' }}>
-          Stewardship
+          Uso racional de antimicrobianos
         </h3>
         <ul className="ml-4 mt-3 list-disc space-y-2 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
           {sheet.stewardshipNotes.map((c, i) => (
@@ -158,7 +158,7 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
           className="rounded-[var(--radius)] border px-3 py-2 text-xs"
           style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}
         >
-          <span className="font-semibold text-[hsl(var(--foreground))]">Sinônimos controlados: </span>
+          <span className="font-semibold text-[hsl(var(--foreground))]">Sinônimos: </span>
           {sheet.synonyms.join(' · ')}
         </div>
       )}
@@ -169,14 +169,11 @@ export function AntibioticV2Panel({ sheet }: AntibioticV2PanelProps) {
 
       <details className="rounded-[var(--radius)] border text-xs" style={{ borderColor: 'hsl(var(--border))' }}>
         <summary className="cursor-pointer px-3 py-2 font-semibold" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Referências técnicas (equipe)
+          Referências
         </summary>
         <ul className="space-y-1 border-t px-3 py-2 leading-relaxed" style={{ borderColor: 'hsl(var(--border))', color: 'hsl(var(--muted-foreground))' }}>
           {sheet.referenceKeys.map((k) => (
-            <li key={k} className="font-mono text-[10px]">
-              {k}
-              {getSourceEntry(k) && <span className="ml-1 font-sans text-[11px]">— {refLabel(k)}</span>}
-            </li>
+            <li key={k}>{refLabel(k)}</li>
           ))}
         </ul>
       </details>

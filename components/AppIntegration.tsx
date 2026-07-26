@@ -24,6 +24,8 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
   category,
   features = []
 }) => {
+  if (status === 'coming-soon') return null;
+
   const getStatusColor = () => {
     switch (status) {
       case 'available':
@@ -41,10 +43,8 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
     switch (status) {
       case 'available':
         return 'Disponível';
-      case 'coming-soon':
-        return 'Em breve';
       case 'beta':
-        return 'Beta';
+        return 'Disponível';
       default:
         return 'Indisponível';
     }
@@ -101,14 +101,14 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
             size="sm"
             className="w-full border-primary/30 text-primary hover:bg-primary/10 hover:border-primary/40 group"
           >
-            <span>Abrir Aplicativo</span>
+            <span>Abrir ferramenta</span>
             <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
         )}
         
         {status === 'coming-soon' && (
           <div className="text-center py-2 text-sm text-muted-foreground">
-            Em desenvolvimento
+            Indisponível no momento
           </div>
         )}
       </CardContent>

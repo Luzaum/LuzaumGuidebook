@@ -331,7 +331,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         [
           'Bloqueador canal de cálcio (p.ex. anlodipino)',
           'Eixo central em muitos gatos; reduz resistência vascular periférica',
-          'Hipotensão postural, bradicardia relativa; titular; ver monografia no app',
+          'Hipotensão postural e bradicardia relativa; titular e consultar a monografia do fármaco',
         ],
         [
           'IECA (p.ex. benazepril)',
@@ -351,7 +351,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
     urgenciaOftalmologica:
       'Hemorragia retiniana extensa ou descolamento com visão ameaçada: estabilizar PA rapidamente (protocolo hospitalar), envolver oftalmologia veterinária, informar tutor sobre prognóstico visual mesmo com terapia correta.',
     abordagem:
-      'Tratar sempre a causa de base em paralelo (tireoidectomia / metimazol, controle de diabetes, suspensão de fármaco precipitante). Integrar doses com as monografias do aplicativo (anlodipino, benazepril, etc.). HAS + DRC: o tratamento é longitudinal — ajustar metas quando a função renal oscila.',
+      'Tratar sempre a causa de base em paralelo (tireoidectomia / metimazol, controle de diabetes, suspensão de fármaco precipitante). Conferir as doses nas monografias de anlodipino, benazepril e demais fármacos utilizados. HAS + DRC: o tratamento é longitudinal — ajustar metas quando a função renal oscila.',
   },
   prevention:
     'Rastreio pressórico em gatos geriátricos com DRC ou em risco tireoidiano; controle de peso; evitar nefrotóxicos desnecessários; em animais em IECA/BRA, tutores devem reconhecer sinais de desidratação (vómito, diarreia) e procurar assistência precoce. Não há “profilaxia farmacológica” universal sem indicação.',

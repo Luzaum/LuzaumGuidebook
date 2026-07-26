@@ -105,7 +105,7 @@ export function HelpModal({ isOpen, onClose, topic }: HelpModalProps) {
           <div className="bg-white/5 border border-white/10 rounded-lg p-4">
             <p className="text-xs text-white/60 italic">{topic.imageSlot.caption}</p>
             <div className="mt-2 h-32 bg-white/5 rounded flex items-center justify-center">
-              <span className="text-xs text-white/40">Imagem do teste (em desenvolvimento)</span>
+              <span className="text-xs text-white/40">Imagem não disponível</span>
             </div>
           </div>
         )}

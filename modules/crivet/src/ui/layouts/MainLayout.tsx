@@ -70,7 +70,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
         </nav>
 
         <div className="border-t border-slate-800 p-4">
-          <div className="text-center text-xs text-slate-500">v2.0.0 &copy; {new Date().getFullYear()}</div>
+          <div className="text-center text-xs text-slate-500">Uso veterinário &copy; {new Date().getFullYear()}</div>
         </div>
       </aside>
 

@@ -105,7 +105,7 @@ export function MedicationsPage() {
       } catch (loadError) {
         if (!isMounted) return;
         setMedications([]);
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar catálogo.');
+        setError('Não foi possível carregar o catálogo de princípios ativos.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

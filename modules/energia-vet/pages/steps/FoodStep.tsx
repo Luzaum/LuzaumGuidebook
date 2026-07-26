@@ -381,7 +381,7 @@ export default function FoodStep() {
                   <p className="text-[10px] text-muted-foreground/70 mb-3 leading-relaxed">
                     {formulationMode === 'complement'
                       ? <>Modo <span className="text-orange-300/80">complementar</span>: a redistribuição automática só acontece quando este modo está ativo.</>
-                      : <>Modo <span className="text-sky-300/80">manual</span>: o app não altera automaticamente as outras porcentagens. Você controla toda a fórmula.</>
+                      : <>Modo <span className="text-sky-300/80">manual</span>: as outras porcentagens não são alteradas automaticamente. Você controla toda a fórmula.</>
                     }
                   </p>
                 )}

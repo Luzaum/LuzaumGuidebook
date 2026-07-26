@@ -61,7 +61,7 @@ export const REFERENCES: Reference[] = [
     year: 2019,
     title: 'Feline Grimace Scale: development and validation of an objective tool for pain assessment in cats.',
     journal: 'Scientific Reports, 9, 13028.',
-    topic: 'Feline Grimace Scale (FGS) - Caretas Faciais Felinas',
+    topic: 'Escala de Careta Felina (FGS)',
     category: 'cat'
   },
   {
@@ -79,7 +79,7 @@ export const REFERENCES: Reference[] = [
     year: 2007,
     title: 'Initial evaluation of a feline musculoskeletal pain index (FMPI) for assessment of chronic pain.',
     journal: 'New Zealand Veterinary Journal, 55(6), 321-330.',
-    topic: 'Feline Musculoskeletal Pain Index (FMPI) para Dor Crônica',
+    topic: 'Índice de Dor Musculoesquelética Felina (FMPI) para dor crônica',
     category: 'cat'
   },
   {

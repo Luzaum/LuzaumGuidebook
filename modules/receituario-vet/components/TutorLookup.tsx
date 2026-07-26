@@ -41,12 +41,6 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
   const [isSearching, setIsSearching] = useState(false)
   const [isOpen, setIsOpen] = useState(false)
 
-  // B1: DEV log para diagnóstico mobile
-  useEffect(() => {
-    if (!import.meta.env.DEV) return
-    console.log('[TutorLookup] clinicId', clinicId, 'clinicLoading', clinicLoading)
-  }, [clinicId, clinicLoading])
-
   const inputRef = useRef<HTMLInputElement>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -73,10 +67,6 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
       try {
         let data: TutorSearchResult[] = []
 
-        if (import.meta.env.DEV) {
-          console.log('[TutorLookup] querying tutors', { clinicId, query: query.trim() || '(recentes)' })
-        }
-
         if (query.trim().length === 0) {
           // B3: Filtrar sempre por clinic_id (garante isolamento entre clínicas)
           const { data: recentData, error: recentError } = await supabase
@@ -91,9 +81,6 @@ export function TutorLookup({ value, onChange, placeholder = 'Buscar tutor...', 
             console.error('[TutorLookup] Load recent failed', recentError.message, { clinicId })
           } else {
             data = recentData || []
-            if (import.meta.env.DEV) {
-              console.log('[TutorLookup] recentes', data.length, 'tutor(s) para clinic', clinicId)
-            }
           }
         } else {
           // B3: Prefix search (ilike 'query%') com clinic_id correto

@@ -44,7 +44,7 @@ const FEATURE_CARDS: FeatureCardDef[] = [
   {
     tab: 'perioperative',
     title: 'Perioperatório',
-    description: 'Profilaxia e cenários cirúrgicos (motor v2 e referência CCIH).',
+    description: 'Profilaxia, cenários cirúrgicos e referência CCIH.',
     Icon: Scissors,
     iconWrapStyle: {
       background: 'color-mix(in srgb, hsl(var(--secondary)) 22%, hsl(var(--card)))',
@@ -95,7 +95,7 @@ export function HomePage({ onNavigate, onSearch }: HomePageProps) {
 
           <form onSubmit={submit}>
             <label htmlFor="abv-global-search" className="sr-only">
-              Busca global no módulo
+              Busca clínica global
             </label>
             <div className="abv-home-search-shell mx-auto max-w-2xl p-1.5 sm:p-2">
               <div className="flex flex-col gap-2 sm:flex-row sm:items-stretch sm:gap-2">
@@ -124,7 +124,7 @@ export function HomePage({ onNavigate, onSearch }: HomePageProps) {
             </div>
             <p className="mt-3 text-center text-xs leading-relaxed sm:text-[0.8125rem]" style={{ color: 'hsl(var(--muted-foreground))' }}>
               Busca: fármacos, patógenos, resistência e fontes; condições clínicas do catálogo incluem, entre outras,
-              piometra, sepse, pneumonia, pielonefrite, cistite, piotórax e perioperatório — em expansão contínua.
+              piometra, sepse, pneumonia, pielonefrite, cistite, piotórax e perioperatório.
             </p>
           </form>
         </div>
@@ -178,7 +178,7 @@ export function HomePage({ onNavigate, onSearch }: HomePageProps) {
               style={{ color: 'hsl(var(--muted-foreground))' }}
             >
               Ferramenta educacional. Decisões clínicas devem considerar cultura, antibiograma, protocolos institucionais e
-              estado do paciente. O conteúdo clínico está em reestruturação contínua.
+              estado do paciente.
             </p>
           </footer>
         </div>

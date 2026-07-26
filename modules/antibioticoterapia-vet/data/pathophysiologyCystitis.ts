@@ -16,7 +16,7 @@ A infecção inicia-se por **ascensão uretral** a partir da flora **perineal**;
 
 ## Apresentação e diagnóstico
 
-Sinais: **polaciúria**, **disúria**, **hematúria** (macro ou microscópica), odor alterado. **Urinálise** pode mostrar hematúria, leucocitúria e bacteriúria; **urocultura** com método de colheita adequado (**citocentese** preferível no gato quando se busca correlato bacteriológico) permanece o padrão para **agente** e **antibiograma** — pilar do **stewardship**.
+Sinais: **polaciúria**, **disúria**, **hematúria** (macro ou microscópica), odor alterado. **Urinálise** pode mostrar hematúria, leucocitúria e bacteriúria; **urocultura** com método de colheita adequado (**citocentese** preferível no gato quando se busca correlato bacteriológico) permanece o padrão para **agente** e **antibiograma** — pilar do **uso racional de antimicrobianos**.
 
 ## Tratamento e duração
 
@@ -53,7 +53,7 @@ export const CYSTITIS_RECURRENT_PATHOPHYSIOLOGY_FULL = `
 
 A terapia deve seguir **antibiograma** quando disponível. A **duração** pode exceder o primeiro episódio simples; em alguns protocolos discute-se supressão de curto prazo ou outras estratégias — sempre com **cultura de controlo** quando indicado e critérios institucionais.
 
-**Stewardship**: evitar **quinolonas** como primeira linha empírica **contínua** sem microbiologia; alinhar ao **Guia CCIH** e à resistência local.
+**Uso racional de antimicrobianos**: evitar **quinolonas** como primeira linha empírica **contínua** sem microbiologia; alinhar ao **Guia CCIH** e à resistência local.
 
 ${PATHOPHYSIOLOGY_LITERATURE_NOTE_MARKDOWN}
 `.trim()
@@ -104,7 +104,7 @@ export const CYSTITIS_SPORADIC_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
     },
     {
       id: 'rx',
-      title: 'Stewardship',
+      title: 'Uso racional de antimicrobianos',
       bullets: [
         'Beta-lactâmico + inibidor ou alternativas orais conforme cultura e serviço.',
         'Quinolonas: **reservar** para critérios — não rotina universal do primeiro episódio.',

@@ -1,4 +1,4 @@
-import { Construction } from 'lucide-react'
+import { CircleAlert } from 'lucide-react'
 import type { AbvTab } from '../types'
 
 const COPY: Partial<
@@ -9,15 +9,11 @@ const COPY: Partial<
 > = {
   perioperative: {
     title: 'Perioperatório',
-    body:
-      'Profilaxia antimicrobiana, classificação de contaminação cirúrgica e cruzamento com contexto do paciente (ASA, comorbidades) virão na engine determinística.',
-    foot: 'Em construção — modelo de dados e regras na ETAPA 3.',
+    body: 'Este conteúdo ainda não está disponível para consulta.',
   },
   'patient-context': {
     title: 'Alertas por paciente',
-    body:
-      'Motor de contexto (espécie, idade, comorbidades, gravidade) com badges, restrições e explicação do porquê de cada alerta — sem prescrição automática oculta.',
-    foot: 'Engine de regras explícitas na ETAPA 3.',
+    body: 'Este conteúdo ainda não está disponível para consulta.',
   },
 }
 
@@ -41,7 +37,7 @@ export default function PlaceholderSection({ tab }: PlaceholderSectionProps) {
               color: 'var(--chart-5)',
             }}
           >
-            <Construction className="h-6 w-6" />
+            <CircleAlert className="h-6 w-6" />
           </span>
           <div>
             <h1 className="text-2xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>

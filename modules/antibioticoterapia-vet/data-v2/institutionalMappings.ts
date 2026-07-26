@@ -3,7 +3,7 @@ import { mergeCciPageAudit, type CciPriorityPageAuditKey } from './ccih2024PageA
 import { INSTITUTIONAL_SOURCE_CCIH_2024 } from './sourceRegistry'
 
 const LOCATOR_AUDIT_NOTE_METADATA_ONLY =
-  'Metadados auditáveis (sectionRef). Páginas: preencher em data-v2/ccih2024PageAudit.ts após auditoria humana com exemplar restrito Guia_CCIH_2024 — não inventar números.'
+  'Referência institucional geral, sem indicação de páginas específicas.'
 
 function linkedMetadata(sectionRef: string, topicHint: string): InstitutionalContentMapping {
   return {
@@ -180,7 +180,7 @@ export const THEMATIC_CC_INSTITUTIONAL_MAPPINGS: Record<string, InstitutionalCon
   stewardship_general: withPriorityPageAudit(
     'stewardship_general',
     'CCIH-2024/STEW/GENERAL',
-    'Stewardship antimicrobiano geral',
+    'Uso racional de antimicrobianos',
   ),
   culture_antibiogram: withPriorityPageAudit(
     'culture_antibiogram',

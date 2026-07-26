@@ -91,7 +91,7 @@ export function parseImportPayload(rawSource: string | object) {
         try {
             parsed = JSON.parse(rawSource);
         } catch {
-            throw new Error('Falha no parse do JSON. Verifique a sintaxe.');
+        throw new Error('Não foi possível ler o arquivo selecionado.');
         }
     } else {
         parsed = rawSource;
@@ -106,7 +106,7 @@ export function parseImportPayload(rawSource: string | object) {
         return [parsed];
     }
 
-    throw new Error('Formato JSON não reconhecido. Forneça um array ou objeto válido.');
+    throw new Error('O formato do arquivo não foi reconhecido.');
 }
 
 const CATEGORY_ALIASES: Record<string, string> = {

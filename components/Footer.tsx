@@ -8,7 +8,7 @@ export function Footer() {
       element.scrollIntoView({ behavior: 'smooth' })
     } else {
       // Para links que não têm seção específica, mostrar alerta
-      alert(`${section} - Funcionalidade em desenvolvimento`)
+      alert(`${section} - Conteúdo indisponível no momento`)
     }
   }
 
@@ -31,7 +31,7 @@ export function Footer() {
             </p>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Aplicativos</h4>
+            <h4 className="font-semibold mb-4">Ferramentas</h4>
             <ul className="space-y-2 text-sm">
               <li>
                 <button

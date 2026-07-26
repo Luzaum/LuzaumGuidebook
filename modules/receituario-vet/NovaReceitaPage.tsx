@@ -1,5 +1,3 @@
-// ✅ OBJ 4: Debug log removido (DEV only)
-if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation started")
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
@@ -58,7 +56,7 @@ import { PatientQuickSelect } from './components/PatientQuickSelect'
 import { PatientCreateModal } from './components/PatientCreateModal'
 import { TutorQuickSelect } from './components/TutorQuickSelect'
 import { MedicationModalV3 } from './components/MedicationModalV3'
-import { savePrescription, listPrescriptionsByPatient, getPrescriptionById } from '@/src/lib/prescriptionsRecords'
+import { getPrescriptionById } from '@/src/lib/prescriptionsRecords'
 import { isUuid } from '@/src/lib/isUuid'
 import { SupabaseImportBlock } from './components/SupabaseImportBlock'
 import type { PatientInfo, TutorInfo } from './rxTypes'
@@ -291,7 +289,7 @@ function toPrescriber(profile: ProfileSettings, profileId = 'default') {
     adminId: 'ADMIN',
     name: profile.fullName || 'Dr. Silva',
     crmv: `CRMV-${profile.uf || 'SP'} ${profile.crmv || ''}`.trim(),
-    clinicName: profile.clinicName || 'CLÍNICA VETERINÁRIA VETIUS',
+    clinicName: profile.clinicName || 'CLÍNICA VETERINÁRIA',
   }
 }
 
@@ -436,8 +434,6 @@ export default function NovaReceitaPage() {
   const [cepLookupLoading, setCepLookupLoading] = useState(false)
   const [cepLookupMessage, setCepLookupMessage] = useState<string | null>(null)
   const [modalState, setModalState] = useState<ModalState>(EMPTY_MODAL_STATE)
-  const [supabaseLoading, setSupabaseLoading] = useState(false)
-  const [supabasePrescriptionId, setSupabasePrescriptionId] = useState<string | null>(null)
   // Supabase tutor+patient import state
   const [selectedSupabaseTutor, setSelectedSupabaseTutor] = useState<TutorInfo | null>(null)
   const [supabasePatientsForTutor, setSupabasePatientsForTutor] = useState<PatientInfo[]>([])
@@ -811,82 +807,6 @@ export default function NovaReceitaPage() {
     } catch {
       setSaveStatus('error')
       pushToast('error', 'Falha ao salvar o rascunho.')
-    }
-  }
-
-  // DEV: Save prescription to Supabase (draft mode)
-  const saveToSupabase = async () => {
-    if (rxDataSource !== 'supabase') {
-      pushToast('error', 'Modo Supabase não ativado. Configure via VITE_RX_DATA_SOURCE.')
-      return
-    }
-
-    const patientId = prescription.patient?.patientRecordId
-    const tutorId = prescription.tutor?.tutorRecordId
-
-    if (!isUuid(patientId) || !isUuid(tutorId)) {
-      pushToast('error', 'Para salvar no Supabase, selecione um paciente/tutor do Supabase (não do legado/local).')
-      console.warn('[saveToSupabase] IDs inválidos para Supabase', { patientId, tutorId })
-      return
-    }
-
-    setSupabaseLoading(true)
-    try {
-      if (supabasePrescriptionId) {
-        // Update existing (savePrescription faz upsert quando id é fornecido)
-        const result = await savePrescription({
-          id: supabasePrescriptionId,
-          patient_id: patientId!,
-          tutor_id: tutorId!,
-          content: prescription as any,
-          clinic_id: clinicId || undefined,
-        })
-        pushToast('success', `Receita atualizada no Supabase (ID: ${result.id})`)
-      } else {
-        // Create new
-        const result = await savePrescription({
-          patient_id: prescription.patient.patientRecordId,
-          tutor_id: prescription.tutor.tutorRecordId,
-          content: prescription as any,
-          clinic_id: clinicId || undefined,
-        })
-        setSupabasePrescriptionId(result.id)
-        pushToast('success', `Receita criada no Supabase (ID: ${result.id})`)
-      }
-    } catch (error) {
-      const msg = error instanceof Error ? error.message : 'Erro ao salvar'
-      pushToast('error', `Falha: ${msg}`)
-      if (import.meta.env.DEV) console.error(error)
-    } finally {
-      setSupabaseLoading(false)
-    }
-  }
-
-  // DEV: List prescriptions from Supabase
-  const listSupabasePrescriptions = async () => {
-    if (rxDataSource !== 'supabase') {
-      pushToast('error', 'Modo Supabase não ativado.')
-      return
-    }
-
-    if (!prescription.patient.patientRecordId) {
-      pushToast('error', 'Paciente obrigatório para listar receitas.')
-      return
-    }
-
-    setSupabaseLoading(true)
-    try {
-      const results = await listPrescriptionsByPatient(prescription.patient.patientRecordId, clinicId || undefined)
-      pushToast('info', `${results.length} receita(s) encontrada(s) no Supabase`)
-      if (import.meta.env.DEV) {
-        console.log('[Supabase Prescriptions]', results)
-      }
-    } catch (error) {
-      const msg = error instanceof Error ? error.message : 'Erro ao listar'
-      pushToast('error', `Falha: ${msg}`)
-      if (import.meta.env.DEV) console.error(error)
-    } finally {
-      setSupabaseLoading(false)
     }
   }
 
@@ -1363,23 +1283,6 @@ export default function NovaReceitaPage() {
                   </Link>
                 </DropdownMenu.Item>
 
-                {import.meta.env.DEV && rxDataSource === 'supabase' && (
-                  <>
-                    <DropdownMenu.Separator className="my-1 h-px bg-slate-800" />
-                    <DropdownMenu.Item asChild>
-                      <button onClick={saveToSupabase} disabled={supabaseLoading} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-amber-400 outline-none transition-colors hover:bg-amber-900/20 cursor-pointer disabled:opacity-50">
-                        <span className="material-symbols-outlined text-[20px]">{supabasePrescriptionId ? 'sync' : 'cloud_upload'}</span>
-                        {supabasePrescriptionId ? 'Atualizar' : 'Salvar'} Supabase
-                      </button>
-                    </DropdownMenu.Item>
-                    <DropdownMenu.Item asChild>
-                      <button onClick={listSupabasePrescriptions} disabled={supabaseLoading} className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-cyan-400 outline-none transition-colors hover:bg-cyan-900/20 cursor-pointer disabled:opacity-50">
-                        <span className="material-symbols-outlined text-[20px]">list_alt</span>
-                        Listar Supabase
-                      </button>
-                    </DropdownMenu.Item>
-                  </>
-                )}
               </DropdownMenu.Content>
             </DropdownMenu.Portal>
           </DropdownMenu.Root>
@@ -2496,8 +2399,6 @@ export default function NovaReceitaPage() {
     </ReceituarioChrome>
   )
 }
-// ✅ OBJ 4: Debug log removido (DEV only)
-if (import.meta.env.DEV) console.log("[DEBUG] NovaReceitaPage.tsx evaluation finished")
 
 
 

@@ -67,7 +67,7 @@ const AAP2Module: React.FC = () => {
 
     const showModuleHelp = useCallback(() => {
         const content = EXPLANATIONS['Sobre o AAP2'];
-        if (content) setHelpModal({ title: 'Sobre este módulo', content });
+        if (content) setHelpModal({ title: 'Sobre o AAP2', content });
     }, []);
 
     const closeHelp = useCallback(() => setHelpModal(null), []);

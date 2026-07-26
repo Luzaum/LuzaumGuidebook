@@ -121,14 +121,14 @@ function readSidebarUserIdentity(): SidebarUserIdentity {
       const nameSource = String(parsed?.name || parsed?.fullName || parsed?.email || '').trim()
       const idSource = String(parsed?.id || '').trim()
       return {
-        name: nameSource || 'Usuário VETIUS',
+        name: nameSource || 'Médico-veterinário',
         id: idSource || 'local',
       }
     }
   } catch {
     // noop
   }
-  return { name: 'Usuário VETIUS', id: 'local' }
+  return { name: 'Médico-veterinário', id: 'local' }
 }
 
 interface ReceituarioChromeProps {
@@ -176,7 +176,7 @@ function SidebarContent({
 
       <Link to="/receituario-vet" className="rxv-sidebar-app-logo" title="Voltar para página inicial do Receituário">
         <div className="rxv-sidebar-app-logo-icon-wrapper">
-          <img src="/apps/REECEITA.png" alt="Logo do app Receituário Vet" className="rxv-sidebar-app-logo-image" />
+          <img src="/apps/REECEITA.png" alt="Logo do Receituário Vet" className="rxv-sidebar-app-logo-image" />
         </div>
         <span className="rxv-sidebar-app-logo-title">ReceituarioVET</span>
       </Link>

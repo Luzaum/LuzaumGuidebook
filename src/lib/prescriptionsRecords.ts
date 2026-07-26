@@ -65,7 +65,7 @@ export interface SavePrescriptionInput {
 function resolveClinicId(clinicId?: string) {
   const target = (clinicId || getStoredClinicId() || '').trim()
   if (!target) {
-    throw new Error('clinic_id ausente. Garanta clinic setup antes de gravar dados.')
+    throw new Error('Selecione uma clínica antes de salvar a receita.')
   }
   return target
 }

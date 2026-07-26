@@ -140,7 +140,7 @@ export function EditorialConsensosPage() {
                 setForm(createEmpty());
             }
         } catch (loadError) {
-            setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar consensos.');
+            setError('Não foi possível carregar os consensos.');
         } finally {
             setIsLoadingData(false);
         }
@@ -259,7 +259,7 @@ export function EditorialConsensosPage() {
             await load(saved.slug);
             setSuccess(form.isPublished ? 'Consenso publicado e salvo com sucesso.' : 'Consenso salvo como rascunho.');
         } catch (saveError) {
-            setError(saveError instanceof Error ? saveError.message : 'Falha ao salvar consenso.');
+            setError('Não foi possível salvar o consenso. Revise os dados e tente novamente.');
         } finally {
             setIsSaving(false);
         }
@@ -282,7 +282,7 @@ export function EditorialConsensosPage() {
             <ConsultaVetPageHero
                 eyebrow="Editorial"
                 title="Consensos"
-                description="CRUD editorial completo para consensos: metadados, detalhes, PDF, referências e relacionamentos. Preserva fallback local para consensos seed."
+                description="Gerencie metadados, detalhes, documentos, referências e relacionamentos dos consensos."
                 icon={FileText}
                 accent="violet"
             />
@@ -351,14 +351,11 @@ export function EditorialConsensosPage() {
                                             <div className="min-w-0">
                                                 <p className="font-medium text-foreground">{item.title}</p>
                                                 <p className="mt-1 text-xs text-muted-foreground">
-                                                    {item.organization || '—'} • {item.year || '—'} • {item.slug}
+                                                    {item.organization || '—'} • {item.year || '—'}
                                                 </p>
                                             </div>
                                             <div className="flex shrink-0 flex-col items-end gap-1">
                                                 <StatusBadge isPublished={item.isPublished} />
-                                                <span className="rounded-full border border-border px-2 py-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
-                                                    {item.source || 'seed'}
-                                                </span>
                                             </div>
                                         </div>
                                     </button>
@@ -379,7 +376,7 @@ export function EditorialConsensosPage() {
                                     Edite metadados, detalhes editoriais, PDF, referências e relacionamentos.
                                     {isSeedRecord && (
                                         <span className="ml-2 inline-block rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-700 dark:text-amber-400">
-                                            Registro seed — salve para migrar para o banco
+                                            Conteúdo de referência — salve uma cópia para editar
                                         </span>
                                     )}
                                 </p>
@@ -406,15 +403,6 @@ export function EditorialConsensosPage() {
                                         onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))}
                                         className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                                         required
-                                    />
-                                </EditorialField>
-
-                                <EditorialField label="Slug" hint="Deixe vazio para gerar do título.">
-                                    <input
-                                        value={form.slug}
-                                        onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
-                                        className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                        placeholder="ex.: iris-drc-2023"
                                     />
                                 </EditorialField>
 
@@ -491,7 +479,7 @@ export function EditorialConsensosPage() {
                                 )}
                             </div>
 
-                            <EditorialField label="Resumo no aplicativo" hint="Exibido na aba Resumo do consenso.">
+                            <EditorialField label="Resumo clínico" hint="Síntese apresentada no início do consenso.">
                                 <textarea
                                     value={form.summaryText}
                                     onChange={(e) => setForm((prev) => ({ ...prev, summaryText: e.target.value }))}
@@ -519,7 +507,7 @@ export function EditorialConsensosPage() {
                                 />
                             </EditorialField>
 
-                            <EditorialField label="Alertas / Notas do app" hint="Avisos importantes exibidos em destaque no detalhe.">
+                            <EditorialField label="Alertas / notas clínicas" hint="Avisos importantes exibidos em destaque no detalhe.">
                                 <textarea
                                     value={form.appNotesText}
                                     onChange={(e) => setForm((prev) => ({ ...prev, appNotesText: e.target.value }))}
@@ -583,7 +571,7 @@ export function EditorialConsensosPage() {
 
                             {isNew && !form.newPdfFile && (
                                 <p className="text-xs text-muted-foreground">
-                                    Para criar um consenso sem PDF por enquanto, o campo é opcional. O PDF pode ser adicionado depois.
+                                    O documento em PDF é opcional e pode ser adicionado depois.
                                 </p>
                             )}
                         </section>

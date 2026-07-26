@@ -115,9 +115,9 @@ export const RESISTANCE_CONCEPTS_V2: Record<string, ResistanceConceptV2> = {
     id: 'adequate_sample_preatb',
     slug: 'amostra-antes-antibiotico',
     label: 'Amostra adequada antes do antimicrobiano',
-    synonyms: ['cultura antes', 'hemocultura pré-atb', 'amostragem stewardship'],
+    synonyms: ['cultura antes', 'hemocultura pré-atb', 'amostragem adequada'],
     definitionShort:
-      'Priorizar coleta representativa antes da primeira dose quando o atraso for clinicamente aceitável — pilar de stewardship.',
+      'Priorizar coleta representativa antes da primeira dose quando o atraso for clinicamente aceitável — princípio do uso racional de antimicrobianos.',
     clinicalImplication: [
       'Após antibiótico de amplo espectro, sensibilidade pode ficar falseada ou cultura negativizada.',
       'Sepse: não atrasar dose após estabilização mínima, mas planejar hemocultura e material de foco em paralelo quando possível.',

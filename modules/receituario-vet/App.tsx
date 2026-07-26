@@ -94,7 +94,7 @@ export default function ReceituarioVetPage() {
       to: '/receituario-vet/manipulados',
       icon: Syringe,
       color: 'amber',
-      label: 'Manipulados V1',
+      label: 'Manipulados',
       summary: 'Fórmulas magistrais estruturadas com cálculo por peso ou m² corporal.',
       premium: true,
     },
@@ -126,7 +126,7 @@ export default function ReceituarioVetPage() {
       to: '/receituario-vet/templates',
       icon: Palette,
       color: 'pink',
-      label: 'Templates',
+      label: 'Modelos',
       summary: 'Modelos visuais e estilos A4/A5.',
     },
     {
@@ -134,7 +134,7 @@ export default function ReceituarioVetPage() {
       icon: HardDriveUpload,
       color: 'teal',
       label: 'Dados e Backup',
-      summary: 'Exportação e migração local em JSON.',
+      summary: 'Exportação e restauração dos seus dados.',
     },
     {
       to: '/receituario-vet/rascunhos',
@@ -228,7 +228,7 @@ export default function ReceituarioVetPage() {
                   className="h-28 w-28 object-contain transition-transform duration-300 hover:scale-[1.04]"
                 />
                 <div className="absolute -bottom-2 px-3 py-1 rounded-lg border border-primary/25 bg-[color:var(--rxv-surface)] text-[10px] font-bold text-primary tracking-wide shadow-sm">
-                  VETIUS ECOSYSTEM
+                  VETIUS
                 </div>
               </div>
             </div>

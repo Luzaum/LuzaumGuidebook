@@ -63,7 +63,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
             onClick={() => handleNavLinkClick('aplicativos')}
             className="text-foreground hover:text-primary transition-colors"
           >
-            Aplicativos
+            Ferramentas
           </button>
           <button
             onClick={() => handleNavLinkClick('guias')}
@@ -128,7 +128,7 @@ export function Navbar({ onAppClick }: NavbarProps) {
               onClick={() => handleNavLinkClick('aplicativos')}
               className="text-foreground hover:text-primary p-2 transition-colors text-left"
             >
-              Aplicativos
+              Ferramentas
             </button>
             <button
               onClick={() => handleNavLinkClick('guias')}

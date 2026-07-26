@@ -414,31 +414,31 @@ function collectDiagnosisContext(
   ) {
     if (hasComorbidity(patient, 'reno', 'renal', 'hep', 'figad', 'pneumo', 'respirat', 'endocr')) {
       scoreDelta += 24
-      reasons.push('Comorbidades sistemicas importantes aumentam a chance de encefalopatia metabolica.')
+      reasons.push('Comorbidades sistemicas importantes aumentam a chance de encefalopatia metabólica.')
     }
     if (history.temporalPattern === 'episodico' || history.evolutionPattern === 'flutuante') {
       scoreDelta += 10
-      reasons.push('Padrao episodico/flutuante conversa com descompensacao metabolica.')
+      reasons.push('Padrão episodico/flutuante conversa com descompensacao metabólica.')
     }
     if (seizures || blindness) {
       scoreDelta += 6
-      reasons.push('Convulsoes e sinais encefalicos podem ocorrer em encefalopatias hepatica, uremica ou hipoxica.')
+      reasons.push('Convulsoes e sinais encefalicos podem ocorrer em encefalopatias hepática, uremica ou hipoxica.')
     }
     if (primaryAxis === 'MULTIFOCAL_OU_DIFUSA' && (cranialDeficit || allFourPosturals)) {
       scoreDelta += 6
-      reasons.push('Processos metabolicos graves podem simular doenca multifocal quando combinam sinais prosencefalicos e deficits difusos.')
+      reasons.push('Processos metabolicos graves podem simular doença multifocal quando combinam sinais prosencefalicos e deficits difusos.')
     }
     if (name.includes('encefalopatia hepat') && hasComorbidity(patient, 'hep', 'figad')) {
       scoreDelta += 12
-      reasons.push('A hepatopatia registrada aumenta bastante a coerencia com encefalopatia hepatica.')
+      reasons.push('A hepatopatia registrada aumenta bastante a coerencia com encefalopatia hepática.')
     }
     if (name.includes('eletrol')) {
       if (tremors || weaknessComplaint) {
         scoreDelta += 8
-        reasons.push('Fraqueza, tremores ou componente neuromuscular tornam disturbio eletrolitico mais convincente.')
+        reasons.push('Fraqueza, tremores ou componente neuromuscular tornam distúrbio eletrolitico mais convincente.')
       } else {
         scoreDelta -= 12
-        reasons.push('Sem tremores, fraqueza flacida ou contexto eletrolitico classico, disturbio eletrolitico perde prioridade relativa.')
+        reasons.push('Sem tremores, fraqueza flacida ou contexto eletrolitico classico, distúrbio eletrolitico perde prioridade relativa.')
       }
     }
     if (name.includes('hipoglic')) {
@@ -454,11 +454,11 @@ function collectDiagnosisContext(
   if (name.includes('muo') || name.includes('meningoencefal')) {
     if (primaryAxis === 'MULTIFOCAL_OU_DIFUSA' || cranialDeficit || allFourPosturals) {
       scoreDelta += 18
-      reasons.push('A combinacao de prosencefalo, pares cranianos e deficits posturais sustenta doenca inflamatoria multifocal.')
+      reasons.push('A combinacao de prosencefalo, pares cranianos e deficits posturais sustenta doença inflamatoria multifocal.')
     }
     if (history.evolutionPattern === 'progressivo' || cervicalPain) {
       scoreDelta += 10
-      reasons.push('Progressao clinica e dor cervical aumentam suspeita de meningoencefalite.')
+      reasons.push('Progressao clínica e dor cervical aumentam suspeita de meningoencefalite.')
     }
   }
 
@@ -480,11 +480,11 @@ function collectDiagnosisContext(
     }
     if (seizures || circling || blindness) {
       scoreDelta += 12
-      reasons.push('Convulsoes, andar em circulos e alteracao visual central sao classicos de massa prosencefalica.')
+      reasons.push('Convulsoes, andar em circulos e alteração visual central sao classicos de massa prosencefalica.')
     }
     if (history.evolutionPattern === 'progressivo') {
       scoreDelta += 8
-      reasons.push('Curso progressivo e compativel com lesao expansiva.')
+      reasons.push('Curso progressivo e compatível com lesao expansiva.')
     }
     if (history.temporalPattern === 'episodico') {
       scoreDelta -= 6
@@ -492,7 +492,7 @@ function collectDiagnosisContext(
     }
     if (primaryAxis === 'MULTIFOCAL_OU_DIFUSA' && hasComorbidity(patient, 'reno', 'renal', 'hep', 'figad', 'pneumo', 'respirat')) {
       scoreDelta -= 6
-      reasons.push('Comorbidades sistemicas fortes pedem excluir encefalopatia metabolica antes de consolidar neoplasia como primeira opcao.')
+      reasons.push('Comorbidades sistemicas fortes pedem excluir encefalopatia metabólica antes de consolidar neoplasia como primeira opção.')
     }
   }
 
@@ -502,7 +502,7 @@ function collectDiagnosisContext(
       reasons.push('Inicio agudo/peragudo favorece etiologia vascular.')
     } else if (history.temporalPattern) {
       scoreDelta -= 16
-      reasons.push('Curso nao peragudo reduz a prioridade relativa de AVC.')
+      reasons.push('Curso não peragudo reduz a prioridade relativa de AVC.')
     }
     if (hasComorbidity(patient, 'renal', 'hipert', 'card', 'coagul', 'endocr')) {
       scoreDelta += 10
@@ -517,7 +517,7 @@ function collectDiagnosisContext(
   if (name.includes('intoxic')) {
     if (toxinExposure) {
       scoreDelta += 18
-      reasons.push('Historico de exposicao toxica aumenta muito a plausibilidade.')
+      reasons.push('Histórico de exposicao toxica aumenta muito a plausibilidade.')
     } else if (history.temporalPattern && !['agudo', 'peragudo'].includes(history.temporalPattern)) {
       scoreDelta -= 10
       reasons.push('Sem exposicao clara e sem inicio agudo, intoxicacao perde prioridade.')
@@ -530,7 +530,7 @@ function collectDiagnosisContext(
       reasons.push('Paciente jovem aumenta a chance de malformacao/hidrocefalia.')
     } else {
       scoreDelta -= 12
-      reasons.push('Faixa etaria atual torna malformacao menos provavel como principal hipotese.')
+      reasons.push('Faixa etaria atual torna malformacao menos provável como principal hipotese.')
     }
   }
 
@@ -556,8 +556,8 @@ function canonicalDiagnosisName(name: string): string {
   if (/\bmuo\b/.test(rawName) || rawName.includes('meningoencefalite de origem desconhecida')) {
     return 'muo'
   }
-  if (rawName.includes('encefalopatia metabolica')) {
-    return 'encefalopatia metabolica'
+  if (rawName.includes('encefalopatia metabólica')) {
+    return 'encefalopatia metabólica'
   }
 
   let normalized = normalizeText(name)
@@ -579,11 +579,11 @@ function canonicalDiagnosisName(name: string): string {
   if (normalized.includes('glioma')) {
     return 'glioma'
   }
-  if (normalized.includes('encefalopatia hepatica')) {
-    return 'encefalopatia hepatica'
+  if (normalized.includes('encefalopatia hepática')) {
+    return 'encefalopatia hepática'
   }
-  if (normalized.startsWith('encefalopatia metabolica')) {
-    return 'encefalopatia metabolica'
+  if (normalized.startsWith('encefalopatia metabólica')) {
+    return 'encefalopatia metabólica'
   }
   if (normalized.includes('hipertensao intracraniana') || normalized.includes('herniacao')) {
     return 'hipertensao intracraniana'
@@ -662,24 +662,24 @@ function scoreKeyFeatureMatch(entry: AnalysisDiseaseCatalogEntry, caseState: any
   const facial = hasComplaint(caseState, 'DisfuncaoFacial')
   const cervicalPain = normalizeText(caseState?.neuroExam?.pain_cervical)
   const thoracolumbarPain = normalizeText(caseState?.neuroExam?.pain_thoracolumbar)
-  const notAmbulatory = normalizeText(caseState?.neuroExam?.ambulation).includes('nao ambulatorio')
+  const notAmbulatory = normalizeText(caseState?.neuroExam?.ambulation).includes('não ambulatorio')
   const featureBlob = normalizeText(entry.keyFeatures.join(' '))
 
   if (seizures && /convuls|crises/.test(featureBlob)) {
     scoreDelta += 10
-    reasons.push('O padrao de crises do caso coincide com os achados classicos descritos para essa doenca.')
+    reasons.push('O padrão de crises do caso coincide com os achados classicos descritos para essa doença.')
   }
   if (circling && /circul|head pressing|comportament/.test(featureBlob)) {
     scoreDelta += 8
-    reasons.push('Andar em circulos ou alteracao comportamental reforca o encaixe sindromico.')
+    reasons.push('Andar em circulos ou alteração comportamental reforca o encaixe sindromico.')
   }
   if (blindness && /cegueira|ameaca|visual/.test(featureBlob)) {
     scoreDelta += 8
-    reasons.push('Sinal visual central compativel com a apresentacao descrita para essa hipotese.')
+    reasons.push('Sinal visual central compatível com a apresentacao descrita para essa hipotese.')
   }
   if (alteredMentation && /menta|conscien|depress/.test(featureBlob)) {
     scoreDelta += 7
-    reasons.push('A alteracao de mentacao/comportamento conversa com o fenotipo esperado.')
+    reasons.push('A alteração de mentacao/comportamento conversa com o fenotipo esperado.')
   }
   if (vestibular && /vestib|nistagm|head tilt|vertigem/.test(featureBlob)) {
     scoreDelta += 7
@@ -691,7 +691,7 @@ function scoreKeyFeatureMatch(entry: AnalysisDiseaseCatalogEntry, caseState: any
   }
   if ((dysphagia || facial) && /disfagia|regurg|facial|mandibula|megaesof|bulbar/.test(featureBlob)) {
     scoreDelta += 7
-    reasons.push('Disfuncao bulbar ou de nervos cranianos aumenta a compatibilidade clinica.')
+    reasons.push('Disfuncao bulbar ou de nervos cranianos aumenta a compatibilidade clínica.')
   }
   if (cervicalPain && /dor cervical|cervical/.test(featureBlob)) {
     scoreDelta += 7
@@ -711,7 +711,7 @@ function scoreKeyFeatureMatch(entry: AnalysisDiseaseCatalogEntry, caseState: any
   }
   if (patient.lifeStage === 'pediatric' && /jovem|filhote|congen|young/.test(featureBlob)) {
     scoreDelta += 5
-    reasons.push('A idade jovem favorece essa doenca dentre os diferenciais cadastrados.')
+    reasons.push('A idade jovem favorece essa doença dentre os diferenciais cadastrados.')
   }
 
   return { scoreDelta, reasons: unique(reasons) }
@@ -729,20 +729,20 @@ function mapPriorityTestToDiagnostic(
   const defaults = {
     test: testCode.replace(/_/g, ' '),
     whatItAdds: `Ajuda a confirmar ou refutar ${diagnosisName}`,
-    expectedFindings: 'Achados dependem do estagio clinico e do eixo neurologico envolvido',
-    limitations: 'Interpretacao depende do contexto clinico e pode exigir correlacao com imagem ou reavaliacao seriada',
+    expectedFindings: 'Achados dependem do estagio clínico e do eixo neurologico envolvido',
+    limitations: 'Interpretação depende do contexto clínico e pode exigir correlacao com imagem ou reavaliação seriada',
   }
 
   const mapped: Record<string, Omit<Differential['diagnostics'][number], 'priority'>> = {
     bloodwork: {
       test: 'Hemograma e bioquimica serica completa',
-      whatItAdds: 'Pesquisa inflamacoes sistemicas, funcao renal/hepatica e pistas metabolicas que mudam conduta no plantao',
-      expectedFindings: 'Pode revelar azotemia, hepatopatia, inflamacoes, proteinas alteradas ou marcadores de doenca sistemica',
+      whatItAdds: 'Pesquisa inflamacoes sistemicas, função renal/hepática e pistas metabolicas que mudam conduta no plantao',
+      expectedFindings: 'Pode revelar azotemia, hepatopatia, inflamacoes, proteinas alteradas ou marcadores de doença sistêmica',
       limitations: 'Pode ser pouco especifico para definir a etiologia neurologica isoladamente',
     },
     electrolytes: {
-      test: 'Painel de eletrolitos e calcio ionizado',
-      whatItAdds: 'Identifica disturbios de sodio, potassio ou calcio que explicam crises, fraqueza ou alteracao de mentacao',
+      test: 'Painel de eletrolitos e cálcio ionizado',
+      whatItAdds: 'Identifica disturbios de sódio, potássio ou cálcio que explicam crises, fraqueza ou alteração de mentacao',
       expectedFindings: 'Hipo ou hipernatremia, hipocalcemia ou hipocalemia em graus compatveis com o quadro',
       limitations: 'Alteracoes discretas nem sempre justificam todos os deficits neurologicos',
     },
@@ -750,18 +750,18 @@ function mapPriorityTestToDiagnostic(
       test: 'Glicemia imediata e seriada',
       whatItAdds: 'Confirma ou afasta hipoglicemia como causa de crise, colapso ou rebaixamento',
       expectedFindings: 'Hipoglicemia ou flutuacao glicemica relevante',
-      limitations: 'Normalizacao apos suporte pode mascarar o disturbiometabolico inicial',
+      limitations: 'Normalizacao após suporte pode mascarar o disturbiometabolico inicial',
     },
     MRI: {
       test: axis.startsWith('MEDULA_') || axis === 'CAUDA_EQUINA' ? 'Ressonancia magnetica da coluna' : 'Ressonancia magnetica do encefalo',
-      whatItAdds: 'Melhor exame para definir topografia, extensao e padrao de lesao neurologica',
+      whatItAdds: 'Melhor exame para definir topografia, extensao e padrão de lesao neurologica',
       expectedFindings: 'Lesao expansiva, inflamatoria, vascular, compressiva ou infiltrativa conforme a hipotese',
-      limitations: 'Requer anestesia, disponibilidade e estabilidade clinica para transporte',
+      limitations: 'Requer anestesia, disponibilidade e estabilidade clínica para transporte',
     },
     MRI_if_atypical: {
       test: 'Ressonancia magnetica se apresentacao atipica',
-      whatItAdds: 'Busca lesoes estruturais quando a evolucao nao segue o padrao classico',
-      expectedFindings: 'Imagem normal ou achados estruturais que redirecionam o diagnostico',
+      whatItAdds: 'Busca lesoes estruturais quando a evolucao não segue o padrão classico',
+      expectedFindings: 'Imagem normal ou achados estruturais que redirecionam o diagnóstico',
       limitations: 'Nem sempre e o primeiro exame a mudar conduta no plantao',
     },
     CT: {
@@ -771,25 +771,25 @@ function mapPriorityTestToDiagnostic(
       limitations: 'Inferior a RM para parenquima e medula espinhal',
     },
     CSF: {
-      test: 'Analise do liquido cefalorraquidiano',
+      test: 'Análise do liquido cefalorraquidiano',
       whatItAdds: 'Pesquisa inflamacao, infeccao, aumento proteico e ajuda a diferenciar encefalites ou meningites',
       expectedFindings: 'Pleocitose, hiperproteinorraquia ou achados compativeis com processo inflamatorio/infeccioso',
       limitations: 'Exige cautela se houver risco de hipertensao intracraniana ou herniacao',
     },
     bile_acids: {
-      test: 'Acidos biliares e perfil hepatico',
-      whatItAdds: 'Fortalece suspeita de encefalopatia hepatica ou shunt portossistemico',
-      expectedFindings: 'Acidos biliares elevados e alteracoes bioquimicas hepato-biliares',
-      limitations: 'Pode sofrer influencia de dieta, amostragem e estabilidade clinica',
+      test: 'Ácidos biliares e perfil hepatico',
+      whatItAdds: 'Fortalece suspeita de encefalopatia hepática ou shunt portossistemico',
+      expectedFindings: 'Ácidos biliares elevados e alteracoes bioquimicas hepato-biliares',
+      limitations: 'Pode sofrer influencia de dieta, amostragem e estabilidade clínica',
     },
     history_exposure: {
       test: 'Investigacao de exposicao toxica e medicamentosa',
       whatItAdds: 'Muitas intoxicacoes sao presumidas por historia e evolucao temporal',
-      expectedFindings: 'Contato com ectoparasiticidas, moluscicidas, alimentos ou farmacos neurotoxicos',
+      expectedFindings: 'Contato com ectoparasiticidas, moluscicidas, alimentos ou fármacos neurotoxicos',
       limitations: 'Depende da qualidade da anamnese e da percepcao do tutor',
     },
     blood_pressure: {
-      test: 'Pressao arterial sistemica seriada',
+      test: 'Pressão arterial sistêmica seriada',
       whatItAdds: 'Esclarece risco vascular e encefalopatia hipertensiva, alem de guiar tratamento seguro',
       expectedFindings: 'Hipertensao sustentada ou labilidade relevante',
       limitations: 'Dor, estresse e tecnica podem interferir no resultado',
@@ -798,12 +798,12 @@ function mapPriorityTestToDiagnostic(
       test: 'Coagulograma',
       whatItAdds: 'Avalia risco de hemorragia, trombose e coagulopatias associadas a mielo ou encefalopatia vascular',
       expectedFindings: 'Alteracoes de TP, TTPA, fibrinogenio ou plaquetas compativeis com coagulopatia',
-      limitations: 'Nao localiza a lesao neurologica por si so',
+      limitations: 'Não localiza a lesao neurologica por si so',
     },
     radiography: {
       test: 'Radiografias direcionadas',
       whatItAdds: 'Triagem de fratura, disco mineralizado, discospondilite, massas ou alteracoes toracicas associadas',
-      expectedFindings: 'Alteracoes osseas, espacos discais anormais ou sinais de doenca sistemica associada',
+      expectedFindings: 'Alteracoes osseas, espacos discais anormais ou sinais de doença sistêmica associada',
       limitations: 'Baixa sensibilidade para tecido neural e lesoes parenquimatosas',
     },
     imaging: {
@@ -813,16 +813,16 @@ function mapPriorityTestToDiagnostic(
       limitations: 'Escolha do metodo depende de disponibilidade e da principal suspeita',
     },
     imaging_if_needed: {
-      test: 'Imagem se a evolucao nao for tipica ou houver deficit assimetrico importante',
-      whatItAdds: 'Ajuda a separar lesao estrutural de doenca periferica presumida',
+      test: 'Imagem se a evolucao não for tipica ou houver déficit assimetrico importante',
+      whatItAdds: 'Ajuda a separar lesao estrutural de doença periferica presumida',
       expectedFindings: 'Pode confirmar massa, compressao ou lesao plexual/radicular',
       limitations: 'Nem sempre muda a primeira conduta do plantao',
     },
     otoscopy: {
-      test: 'Otoscopia detalhada e avaliacao otologica',
+      test: 'Otoscopia detalhada e avaliação otologica',
       whatItAdds: 'Pesquisa otite media/interna, polipo ou causa otogenica do vestibular/facial',
       expectedFindings: 'Alteracoes de canal, membrana timpanica, secrecao ou dor otica',
-      limitations: 'Pode exigir sedacao e nao avalia toda a bula timpanica',
+      limitations: 'Pode exigir sedação e não avalia toda a bula timpanica',
     },
     rule_out_otitis: {
       test: 'Triagem para excluir otite media/interna',
@@ -831,40 +831,40 @@ function mapPriorityTestToDiagnostic(
       limitations: 'Exclusao incompleta sem imagem quando a suspeita persiste',
     },
     chest_xray: {
-      test: 'Radiografia toracica',
+      test: 'Radiografia torácica',
       whatItAdds: 'Pesquisa aspiracao, megaesofago, timoma ou metastases que mudam anestesia e tratamento',
-      expectedFindings: 'Megaesofago, padrao aspirativo, massa mediastinal ou metastase',
-      limitations: 'Nao explica sozinho a topografia neurologica',
+      expectedFindings: 'Megaesofago, padrão aspirativo, massa mediastinal ou metastase',
+      limitations: 'Não explica sozinho a topografia neurologica',
     },
     thoracic_radiograph: {
-      test: 'Radiografia toracica',
-      whatItAdds: 'Importante em doencas neuromusculares para megaesofago, aspiracao e timoma',
+      test: 'Radiografia torácica',
+      whatItAdds: 'Importante em doenças neuromusculares para megaesofago, aspiracao e timoma',
       expectedFindings: 'Megaesofago, pneumonia aspirativa ou massa mediastinal',
       limitations: 'Pode ser normal em fases iniciais',
     },
     thoracic_radiograph_if_needed: {
-      test: 'Radiografia toracica se houver fraqueza respiratoria ou suspeita de aspiracao',
+      test: 'Radiografia torácica se houver fraqueza respiratória ou suspeita de aspiracao',
       whatItAdds: 'Documenta complicacoes toracicas e ajuda a estratificar risco anestesico',
       expectedFindings: 'Pneumonia aspirativa ou alteracoes ventilatorias',
-      limitations: 'Baixo rendimento se o exame respiratorio for completamente normal',
+      limitations: 'Baixo rendimento se o exame respiratório for completamente normal',
     },
     AChR_Ab: {
       test: 'Anticorpo anti-receptor de acetilcolina',
       whatItAdds: 'Exame de maior especificidade para miastenia gravis adquirida',
-      expectedFindings: 'Titulo elevado compativel com miastenia',
-      limitations: 'Pode haver falso-negativo precoce e o resultado nao e imediato',
+      expectedFindings: 'Titulo elevado compatível com miastenia',
+      limitations: 'Pode haver falso-negativo precoce e o resultado não e imediato',
     },
     EMG: {
       test: 'Eletromiografia',
       whatItAdds: 'Diferencia neuropatia, miopatia e disturbo de juncao neuromuscular',
-      expectedFindings: 'Atividade espontanea anormal ou padrao compativel com doenca periferica',
+      expectedFindings: 'Atividade espontanea anormal ou padrão compatível com doença periferica',
       limitations: 'Requer anestesia e especialista',
     },
     nerve_conduction: {
       test: 'Estudo de conducao nervosa',
       whatItAdds: 'Quantifica comprometimento de nervo periferico e polirradiculoneuropatias',
       expectedFindings: 'Reducao de velocidade, amplitude ou bloqueio de conducao',
-      limitations: 'Disponibilidade limitada e interpretacao especializada',
+      limitations: 'Disponibilidade limitada e interpretação especializada',
     },
     CK: {
       test: 'Creatina quinase (CK)',
@@ -876,132 +876,132 @@ function mapPriorityTestToDiagnostic(
       test: 'Biopsia muscular',
       whatItAdds: 'Define miopatia inflamatoria, distrofica ou necrotizante',
       expectedFindings: 'Inflamacao, necrose, fibrose ou alteracoes estruturais especificas',
-      limitations: 'Invasiva, exige local adequado e interpretacao histopatologica',
+      limitations: 'Invasiva, exige local adequado e interpretação histopatologica',
     },
     biopsy_if_needed: {
       test: 'Biopsia direcionada se os exames iniciais mantiverem alta suspeita',
-      whatItAdds: 'Confirma processos musculares ou infiltrativos quando exames menos invasivos nao fecham o caso',
-      expectedFindings: 'Achados histopatologicos compativeis com a doenca suspeita',
-      limitations: 'Nao costuma ser o primeiro passo no plantao',
+      whatItAdds: 'Confirma processos musculares ou infiltrativos quando exames menos invasivos não fecham o caso',
+      expectedFindings: 'Achados histopatologicos compativeis com a doença suspeita',
+      limitations: 'Não costuma ser o primeiro passo no plantao',
     },
     neurologic_exam: {
       test: 'Exame neurologico seriado e lateralizacao detalhada',
-      whatItAdds: 'Muitos quadros perifericos/radiculares sao firmados pela distribuicao do deficit',
-      expectedFindings: 'Assimetria, dor radicular, padrao LMN ou piora localizada',
-      limitations: 'Depende da experiencia do examinador e da colaboracao do paciente',
+      whatItAdds: 'Muitos quadros perifericos/radiculares sao firmados pela distribuicao do déficit',
+      expectedFindings: 'Assimetria, dor radicular, padrão LMN ou piora localizada',
+      limitations: 'Depende da experiência do examinador e da colaboracao do paciente',
     },
     infectious_panel: {
       test: 'Painel infeccioso dirigido',
       whatItAdds: 'Ajuda a separar etiologias inflamatórias estereis de agentes infecciosos trataveis',
       expectedFindings: 'Sorologia, PCR ou antigenemia compativeis com infeccao ativa',
-      limitations: 'Nem sempre diferencia exposicao previa de doenca ativa',
+      limitations: 'Nem sempre diferencia exposicao previa de doença ativa',
     },
     serology_pcr: {
       test: 'Sorologia e/ou PCR para agentes neuroinfecciosos',
-      whatItAdds: 'Pesquisa Toxoplasma, Neospora, Ehrlichia e outros agentes conforme regiao e especie',
-      expectedFindings: 'Titulos altos, PCR positivo ou perfil compativel com infeccao ativa',
-      limitations: 'Resultados podem exigir correlacao com LCR, imagem e quadro clinico',
+      whatItAdds: 'Pesquisa Toxoplasma, Neospora, Ehrlichia e outros agentes conforme região e especie',
+      expectedFindings: 'Titulos altos, PCR positivo ou perfil compatível com infeccao ativa',
+      limitations: 'Resultados podem exigir correlacao com LCR, imagem e quadro clínico',
     },
     antigen_test: {
       test: 'Teste antigenico especifico',
       whatItAdds: 'Pode oferecer forte evidencia etiologica em micoses ou infeccoes selecionadas',
-      expectedFindings: 'Antigenemia positiva compativel com o agente suspeito',
-      limitations: 'A sensibilidade varia com carga fúngica, local da amostra e doenca em questao',
+      expectedFindings: 'Antigenemia positiva compatível com o agente suspeito',
+      limitations: 'A sensibilidade varia com carga fúngica, local da amostra e doença em questao',
     },
     culture: {
       test: 'Cultura e amostras microbiologicas',
       whatItAdds: 'Direciona antibiótico e confirma discospondilite ou meningomielite infecciosa',
       expectedFindings: 'Isolamento bacteriano/fungico ou inflamação supurativa compatível',
-      limitations: 'Tempo de resultado maior e baixa sensibilidade apos antibiótico previo',
+      limitations: 'Tempo de resultado maior e baixa sensibilidade após antibiótico previo',
     },
     fundoscopy: {
       test: 'Fundoscopia',
       whatItAdds: 'Pesquisa retinopatia hipertensiva e dano de orgao alvo em suspeita vascular',
       expectedFindings: 'Hemorragias, descolamento de retina ou tortuosidade vascular',
-      limitations: 'Exame normal nao exclui encefalopatia hipertensiva',
+      limitations: 'Exame normal não exclui encefalopatia hipertensiva',
     },
     tick_search: {
       test: 'Busca sistematica por carrapatos e ectoparasitas',
-      whatItAdds: 'Pode praticamente resolver o diagnostico em paralisia por carrapato',
+      whatItAdds: 'Pode praticamente resolver o diagnóstico em paralisia por carrapato',
       expectedFindings: 'Carrapato aderido em regioes pouco examinadas',
-      limitations: 'Resultado negativo nao exclui se houve remocao recente',
+      limitations: 'Resultado negativo não exclui se houve remocao recente',
     },
     T4: {
       test: 'T4 total ou livre',
-      whatItAdds: 'Ajuda a avaliar hipotireoidismo em neuropatias periféricas de caes',
-      expectedFindings: 'T4 reduzido em contexto compativel',
-      limitations: 'Doenca nao tireoidiana e medicamentos interferem no resultado',
+      whatItAdds: 'Ajuda a avaliar hipotireoidismo em neuropatias periféricas de cães',
+      expectedFindings: 'T4 reduzido em contexto compatível',
+      limitations: 'Doença não tireoidiana e medicamentos interferem no resultado',
     },
     TSH: {
       test: 'TSH canino',
       whatItAdds: 'Complementa investigacao de hipotireoidismo quando associado ao T4',
       expectedFindings: 'TSH elevado em parte dos pacientes hipotireoideos',
-      limitations: 'Sensibilidade moderada; pode ser normal mesmo na doenca',
+      limitations: 'Sensibilidade moderada; pode ser normal mesmo na doença',
     },
     fructosamine: {
       test: 'Frutosamina',
       whatItAdds: 'Ajuda a documentar controle glicemico cronico em suspeita de neuropatia diabetica',
       expectedFindings: 'Valor elevado em hiperglicemia sustentada',
-      limitations: 'Nao substitui correlacao com clinica e glicemias seriadas',
+      limitations: 'Não substitui correlacao com clínica e glicemias seriadas',
     },
     genetic_test_if_needed: {
       test: 'Teste genetico se o contexto epidemiologico justificar',
-      whatItAdds: 'Pode apoiar mielopatia degenerativa em racas predispostas apos excluir compressao',
+      whatItAdds: 'Pode apoiar mielopatia degenerativa em racas predispostas após excluir compressao',
       expectedFindings: 'Genotipo de risco ou predisposicao',
-      limitations: 'Nao confirma sozinho a causa dos deficits neurologicos',
+      limitations: 'Não confirma sozinho a causa dos deficits neurologicos',
     },
     special_testing: {
       test: 'Teste especializado',
-      whatItAdds: 'Necessario para doencas congenitas ou raras quando o padrao clinico for muito sugestivo',
+      whatItAdds: 'Necessario para doenças congenitas ou raras quando o padrão clínico for muito sugestivo',
       expectedFindings: 'Achado confirmatorio especifico da sindrome',
       limitations: 'Baixa disponibilidade e pouco impacto na conduta inicial do plantao',
     },
     specialist_testing: {
       test: 'Teste especializado',
-      whatItAdds: 'Necessario para doencas congenitas ou raras quando o padrao clinico for muito sugestivo',
+      whatItAdds: 'Necessario para doenças congenitas ou raras quando o padrão clínico for muito sugestivo',
       expectedFindings: 'Achado confirmatorio especifico da sindrome',
       limitations: 'Baixa disponibilidade e pouco impacto na conduta inicial do plantao',
     },
     clinical_monitoring: {
-      test: 'Monitorizacao neurologica e respiratoria seriada',
+      test: 'Monitorização neurologica e respiratória seriada',
       whatItAdds: 'Fundamental em sindromes que pioram rapidamente e podem subir no neuroeixo',
-      expectedFindings: 'Progressao cranial de reflexos, dor, sensibilidade ou ventilacao',
-      limitations: 'Nao substitui imagem quando a decisao cirurgica esta em jogo',
+      expectedFindings: 'Progressao cranial de reflexos, dor, sensibilidade ou ventilação',
+      limitations: 'Não substitui imagem quando a decisão cirurgica esta em jogo',
     },
     stabilize_first: {
       test: 'Estabilizar antes de aprofundar a investigacao',
-      whatItAdds: 'Algumas emergencias exigem controle de perfusao, ventilacao e PIC antes da etiologia definitiva',
-      expectedFindings: 'Melhora ou estabilizacao clinica suficiente para seguir com imagem',
-      limitations: 'Nao fornece etiologia final; e uma etapa de seguranca',
+      whatItAdds: 'Algumas emergencias exigem controle de perfusão, ventilação e PIC antes da etiologia definitiva',
+      expectedFindings: 'Melhora ou estabilizacao clínica suficiente para seguir com imagem',
+      limitations: 'Não fornece etiologia final; e uma etapa de segurança',
     },
     public_health_protocol: {
       test: 'Acionar protocolo de saude publica e biosseguranca',
       whatItAdds: 'Essencial quando ha risco zoonotico e necessidade de fluxo institucional especifico',
       expectedFindings: 'Encaminhamento e medidas legais/sanitarias adequadas',
-      limitations: 'Nao substitui confirmacao laboratorial oficial',
+      limitations: 'Não substitui confirmacao laboratorial oficial',
     },
     rule_out_other: {
       test: 'Exclusao sistematica de causas estruturais e metabolicas',
-      whatItAdds: 'Necessaria quando o diagnostico e de exclusao ou sindromico',
+      whatItAdds: 'Necessaria quando o diagnóstico e de exclusao ou sindromico',
       expectedFindings: 'Ausencia de achados que expliquem melhor o quadro',
-      limitations: 'Exige sequencia logica de exames e reavaliacao',
+      limitations: 'Exige sequencia logica de exames e reavaliação',
     },
     rule_out_toxins: {
-      test: 'Triagem para toxicos e iatrogenias',
-      whatItAdds: 'Diferencia polineuropatias inflamatórias de toxicos ou exposicoes reversiveis',
+      test: 'Triagem para tóxicos e iatrogenias',
+      whatItAdds: 'Diferencia polineuropatias inflamatórias de tóxicos ou exposicoes reversiveis',
       expectedFindings: 'Historia negativa ou positiva que reposiciona o ranking',
       limitations: 'Depende de anamnese detalhada e do ambiente do paciente',
     },
     basic_workup: {
-      test: 'Triagem clinico-laboratorial basica',
-      whatItAdds: 'Ajuda a descartar doenca sistemica antes de assumir quadro idiopatico',
-      expectedFindings: 'Exames basicos sem alteracao clinicamente relevante',
-      limitations: 'Nao substitui imagem quando ha sinais centrais associados',
+      test: 'Triagem clínico-laboratorial basica',
+      whatItAdds: 'Ajuda a descartar doença sistêmica antes de assumir quadro idiopatico',
+      expectedFindings: 'Exames basicos sem alteração clinicamente relevante',
+      limitations: 'Não substitui imagem quando ha sinais centrais associados',
     },
     '2M_antibody': {
       test: 'Anticorpo anti-fibras 2M',
       whatItAdds: 'Exame de maior apoio para miosite dos musculos mastigatorios',
-      expectedFindings: 'Titulo positivo compativel com MMM',
+      expectedFindings: 'Titulo positivo compatível com MMM',
       limitations: 'Pode ser negativo em fases muito iniciais ou cronicas',
     },
     history_medications: {
@@ -1047,7 +1047,7 @@ function buildCatalogDifferential(
     `Topografia compativel com ${getAxisLabel(localization.primary)}`,
     entry.evidenceLevel === 'ADVANCED_REQUIRED'
       ? 'Costuma exigir confirmacao por imagem, LCR ou teste especifico.'
-      : 'Pode ser fortemente sustentada por exame clinico e exames basicos bem hierarquizados.',
+      : 'Pode ser fortemente sustentada por exame clínico e exames basicos bem hierarquizados.',
   ]).slice(0, 6)
 
   return {
@@ -1566,27 +1566,27 @@ function getTreatmentForCategory(
     comorbKeys.includes('hepatica') ||
     comorbKeys.includes('hepatopata')
   ) {
-    cautions.push('Ajustar doses conforme funcao renal e hepatica antes de escalar sedativos, anticonvulsivantes ou contraste.')
+    cautions.push('Ajustar doses conforme função renal e hepática antes de escalar sedativos, anticonvulsivantes ou contraste.')
   }
   if (comorbKeys.includes('hepatic') || comorbKeys.includes('hepatica')) {
-    cautions.push('Rever metabolizacao hepatica dos farmacos e evitar sobrecarga de sedacao em hepatopatas.')
+    cautions.push('Rever metabolizacao hepática dos fármacos e evitar sobrecarga de sedação em hepatopatas.')
   }
   if (comorbKeys.includes('cardiac') || comorbKeys.includes('hipertensao')) {
-    cautions.push('Monitorar perfusao, pressao arterial e funcao cardiovascular durante estabilizacao e anestesia.')
+    cautions.push('Monitorar perfusão, pressão arterial e função cardiovascular durante estabilizacao e anestesia.')
   }
   if (comorbKeys.includes('pneumopata') || comorbKeys.includes('respiratoria')) {
-    cautions.push('Reduzir risco de aspiracao e depressao respiratoria ao planejar analgesia, anticonvulsivantes e exames sob sedacao.')
+    cautions.push('Reduzir risco de aspiracao e depressao respiratória ao planejar analgesia, anticonvulsivantes e exames sob sedação.')
   }
 
   const baseTreatment: Differential['treatment'] = [
     {
       phase: '0-6H',
-      plan: ['Estabilizacao ABC e suporte clinico', 'Monitorizacao neurologica seriada', 'Analgesia multimodal se indicada'],
+      plan: ['Estabilizacao ABC e suporte clínico', 'Monitorização neurologica seriada', 'Analgesia multimodal se indicada'],
       cautions,
     },
     {
       phase: 'DEFINITIVO',
-      plan: ['Tratar conforme diagnostico especifico', 'Reabilitacao neurologica e enfermagem direcionada', 'Monitorizacao continua e reavaliacao do prognostico'],
+      plan: ['Tratar conforme diagnóstico especifico', 'Reabilitacao neurologica e enfermagem direcionada', 'Monitorização continua e reavaliação do prognostico'],
       cautions: [],
     },
   ]
@@ -1602,29 +1602,29 @@ function getTreatmentForCategory(
   }
 
   if (category === 'TOXICO_METABOLICA') {
-    baseTreatment[0].plan.unshift('Corrigir glicose, eletrolitos, perfusao, oxigenacao e exposicoes toxicas nas primeiras horas.')
-    baseTreatment[1].plan.unshift('Controlar a doenca sistemica primaria e prevenir novas descompensacoes metabolicas.')
+    baseTreatment[0].plan.unshift('Corrigir glicose, eletrolitos, perfusão, oxigenação e exposicoes toxicas nas primeiras horas.')
+    baseTreatment[1].plan.unshift('Controlar a doença sistêmica primária e prevenir novas descompensacoes metabolicas.')
   }
 
   if (category === 'VASCULAR') {
-    baseTreatment[0].plan.unshift('Controlar pressao arterial, perfusao, oxigenacao e complicacoes secundarias enquanto define se ha evento vascular ou hemorragico.')
+    baseTreatment[0].plan.unshift('Controlar pressão arterial, perfusão, oxigenação e complicacoes secundarias enquanto define se ha evento vascular ou hemorragico.')
   }
 
   if (normalizedDiagnosis.includes('encefalopatia hepat')) {
-    baseTreatment[0].plan.unshift('Priorizar correcao de precipitantes, lactulose quando indicada e escolha de anticonvulsivante com perfil mais seguro para hepatopatia.')
+    baseTreatment[0].plan.unshift('Priorizar correção de precipitantes, lactulose quando indicada e escolha de anticonvulsivante com perfil mais seguro para hepatopatia.')
   }
   if (normalizedDiagnosis.includes('hipoglic')) {
-    baseTreatment[0].plan.unshift('Tratar hipoglicemia imediatamente e instituir monitorizacao glicemica seriada.')
+    baseTreatment[0].plan.unshift('Tratar hipoglicemia imediatamente e instituir monitorização glicemica seriada.')
   }
   if (normalizedDiagnosis.includes('muo') || normalizedDiagnosis.includes('meningoencefalite')) {
-    baseTreatment[1].plan.unshift('Se a infeccao estiver razoavelmente excluida, considerar imunossupressao protocolada e reavaliacao precoce da resposta clinica.')
+    baseTreatment[1].plan.unshift('Se a infeccao estiver razoavelmente excluida, considerar imunossupressao protocolada e reavaliação precoce da resposta clínica.')
   }
   if (
     normalizedDiagnosis.includes('neoplasia intracraniana') ||
     normalizedDiagnosis.includes('glioma') ||
     normalizedDiagnosis.includes('meningioma')
   ) {
-    baseTreatment[0].plan.unshift('Se houver suspeita de hipertensao intracraniana, priorizar cabeceira elevada, oxigenacao e controle de crises enquanto organiza imagem.')
+    baseTreatment[0].plan.unshift('Se houver suspeita de hipertensao intracraniana, priorizar cabeceira elevada, oxigenação e controle de crises enquanto organiza imagem.')
     baseTreatment[1].plan.unshift('Definir se o caso se beneficia de cirurgia, radioterapia, corticoterapia ou manejo paliativo estruturado.')
   }
 

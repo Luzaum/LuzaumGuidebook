@@ -71,7 +71,7 @@ export function FavoritesPage() {
         setDiseases([]);
         setMedications([]);
         setConsensos([]);
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar favoritos.');
+        setError('Não foi possível carregar os favoritos.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

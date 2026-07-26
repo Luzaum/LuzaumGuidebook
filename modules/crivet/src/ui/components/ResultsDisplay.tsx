@@ -38,15 +38,14 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
 
   const handleCopySummary = () => {
     const text = [
-      '🐾 CRIVET — PRESCRIÇÃO PRÁTICA',
+      'PRESCRIÇÃO PRÁTICA',
       '--------------------------------',
       ...(result.practicalSummary || [result.instructions]),
       '--------------------------------',
       `• Paciente: ${input.patient.species === 'dog' ? 'Cão' : 'Gato'} (${input.patient.weight} kg)`,
       `• Droga: ${input.drug.namePt}`,
       `• Apresentação: ${input.presentation.description}`,
-      '',
-      'Calculado via CRIVET - Calculadora Veterinária Didática'
+      ''
     ].join('\n');
 
     navigator.clipboard.writeText(text);
@@ -55,7 +54,7 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
 
   const handleCopyCalculations = () => {
     const text = [
-      '📐 CRIVET — MEMÓRIA DE CÁLCULO (Auditável)',
+      'MEMÓRIA DE CÁLCULO',
       '--------------------------------',
       ...result.steps.map(s => `[PASSO ${s.step}] ${s.title}\n   ${s.explanation}\n   Cálculo: ${s.formula}\n   Resultado: ${s.result} ${s.unit}\n`),
       '🔹 CHECAGEM REVERSA:',

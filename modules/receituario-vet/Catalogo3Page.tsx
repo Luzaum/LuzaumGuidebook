@@ -535,25 +535,25 @@ function mapImportedMedicationToDraft(medication: CanonicalMedication): Medicati
 
 function extractImportableMedications(raw: unknown): CanonicalMedication[] {
     if (!isRecord(raw)) {
-        throw new Error('JSON inválido: o conteúdo precisa ser um objeto.')
+        throw new Error('O arquivo precisa conter os dados de um medicamento.')
     }
 
     if (Object.prototype.hasOwnProperty.call(raw, 'medications')) {
         if (!Array.isArray(raw.medications)) {
-            throw new Error('JSON inválido: "medications" precisa ser um array.')
+            throw new Error('A lista de medicamentos está em um formato inválido.')
         }
         raw.medications.forEach((entry, index) => {
             if (!isRecord(entry)) {
-                throw new Error(`JSON inválido: medications[${index}] precisa ser um objeto.`)
+                throw new Error(`O medicamento ${index + 1} está em um formato inválido.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'presentations') && !Array.isArray(entry.presentations)) {
-                throw new Error(`JSON inválido: medications[${index}].presentations precisa ser um array.`)
+                throw new Error(`As apresentações comerciais do medicamento ${index + 1} estão em um formato inválido.`)
             }
             if (Object.prototype.hasOwnProperty.call(entry, 'recommended_doses') && !Array.isArray(entry.recommended_doses)) {
-                throw new Error(`JSON inválido: medications[${index}].recommended_doses precisa ser um array.`)
+                throw new Error(`As doses recomendadas do medicamento ${index + 1} estão em um formato inválido.`)
             }
             if (typeof entry.name !== 'string' || !entry.name.trim()) {
-                throw new Error(`JSON inválido: medications[${index}].name é obrigatório.`)
+                throw new Error(`Informe o nome do medicamento ${index + 1}.`)
             }
         })
         const bundle = assertValidMedicationCatalogBundle(raw)
@@ -561,13 +561,13 @@ function extractImportableMedications(raw: unknown): CanonicalMedication[] {
     }
 
     if (Object.prototype.hasOwnProperty.call(raw, 'presentations') && !Array.isArray(raw.presentations)) {
-        throw new Error('JSON inválido: "presentations" precisa ser um array.')
+        throw new Error('As apresentações comerciais estão em um formato inválido.')
     }
     if (Object.prototype.hasOwnProperty.call(raw, 'recommended_doses') && !Array.isArray(raw.recommended_doses)) {
-        throw new Error('JSON inválido: "recommended_doses" precisa ser um array.')
+        throw new Error('As doses recomendadas estão em um formato inválido.')
     }
     if (typeof raw.name !== 'string' || !raw.name.trim()) {
-        throw new Error('JSON inválido: o campo "name" é obrigatório.')
+        throw new Error('O nome do medicamento é obrigatório.')
     }
 
     return [raw as unknown as CanonicalMedication]
@@ -937,7 +937,7 @@ export default function Catalogo3Page() {
 
     const handleImportJsonClick = () => {
         if (isSaving) return
-        if (isDirty && !window.confirm('Importar JSON vai substituir o rascunho atual não salvo. Deseja continuar?')) {
+        if (isDirty && !window.confirm('Importar um arquivo vai substituir o rascunho atual não salvo. Deseja continuar?')) {
             return
         }
         importFileInputRef.current?.click()
@@ -954,12 +954,12 @@ export default function Catalogo3Page() {
             try {
                 parsed = JSON.parse(rawText)
             } catch {
-                throw new Error('JSON inválido: não foi possível interpretar o arquivo selecionado.')
+                throw new Error('O arquivo selecionado é inválido ou não pôde ser lido.')
             }
 
             const medicationsToImport = extractImportableMedications(parsed)
             if (!medicationsToImport.length) {
-                throw new Error('Nenhum medicamento encontrado no JSON informado.')
+                throw new Error('Nenhum medicamento foi encontrado no arquivo selecionado.')
             }
 
             if (medicationsToImport.length === 1) {
@@ -968,7 +968,7 @@ export default function Catalogo3Page() {
                 setImportCandidates(medicationsToImport)
             }
         } catch (error: any) {
-            showValidationWarning('Erro ao importar JSON', error?.message || 'Não foi possível importar o arquivo JSON.')
+            showValidationWarning('Erro ao importar', error?.message || 'Não foi possível importar o arquivo.')
         } finally {
             if (importFileInputRef.current) {
                 importFileInputRef.current.value = ''
@@ -1075,10 +1075,6 @@ export default function Catalogo3Page() {
             const cleanMedicationPayload = pickMedicationFields(medicationPayload)
             const cleanPresentationsPayload = presentationsPayload.map(p => pickPresentationFields(p))
 
-            console.log('[Catalogo3] ========== SAVING PAYLOAD ==========')
-            console.log('[Catalogo3] Med:', cleanMedicationPayload)
-            console.log('[Catalogo3] Pres:', cleanPresentationsPayload)
-
             const medicationIdForSave =
                 (selectedId && String(selectedId).trim()) || (draft.id && String(draft.id).trim()) || undefined
             const result = await saveMedication({
@@ -1089,7 +1085,6 @@ export default function Catalogo3Page() {
                 presentations: cleanPresentationsPayload as any
             })
 
-            console.log('[Catalogo3] Saved med id:', result.medication.id)
 
             // Salvar doses recomendadas
             if (draft.recommended_doses && draft.recommended_doses.length > 0) {
@@ -1236,7 +1231,7 @@ export default function Catalogo3Page() {
                             className="rxv-btn-secondary flex items-center gap-2 px-4 py-2 text-sm font-bold disabled:pointer-events-none disabled:opacity-40"
                         >
                             <span className="material-symbols-outlined text-[20px]">upload_file</span>
-                            Importar JSON
+                            Importar arquivo
                         </button>
                         <button
                             onClick={handleCreateNew}
@@ -2082,7 +2077,7 @@ export default function Catalogo3Page() {
                         >
                             <div className="mb-6 flex items-start justify-between gap-4">
                                 <div>
-                                    <h3 className="text-2xl font-black text-white italic tracking-tight">Selecionar medicamento do JSON</h3>
+                                    <h3 className="text-2xl font-black text-white italic tracking-tight">Selecionar medicamento</h3>
                                     <p className="mt-2 text-sm text-slate-400">
                                         O arquivo contém {importCandidates.length} medicamentos. Escolha 1 para preencher o editor atual.
                                     </p>

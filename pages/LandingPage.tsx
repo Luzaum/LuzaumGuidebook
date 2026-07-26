@@ -35,7 +35,7 @@ const footerContent: Record<string, { title: string; content: string }> = {
     },
     'Reportar Problema': {
         title: 'Reportar Problema',
-        content: 'Encontrou algum erro clínico, bug no sistema ou dificuldade técnica? Por favor, relate aqui! Nossa equipe de suporte técnico e conteudistas trabalharão rapidamente para investigar e corrigir qualquer inconsistência.',
+        content: 'Encontrou algum erro clínico ou dificuldade de uso? Relate aqui para que a situação seja analisada e corrigida.',
     },
     'Contato': {
         title: 'Contato',
@@ -59,7 +59,7 @@ const testimonials = [
         specialty: 'Emergenciologia',
         initials: 'FA',
         color: 'from-violet-500 to-purple-400',
-        text: 'Trabalho em UPA veterinária e o módulo de protocolos de emergência já salvou pacientes. A base literária sólida passa confiança real nas decisões críticas.',
+        text: 'Trabalho em UPA veterinária e os protocolos de emergência já salvaram pacientes. A base literária sólida passa confiança real nas decisões críticas.',
     },
     {
         name: 'Dra. Larissa Mendes',
@@ -67,7 +67,7 @@ const testimonials = [
         specialty: 'Neurologia',
         initials: 'LM',
         color: 'from-emerald-500 to-teal-400',
-        text: 'O módulo de neurologia é impressionante. A lógica de diagnóstico diferencial me ajuda a estruturar o raciocínio clínico de forma muito mais eficiente.',
+        text: 'A área de neurologia é impressionante. A lógica de diagnóstico diferencial me ajuda a estruturar o raciocínio clínico de forma muito mais eficiente.',
     },
     {
         name: 'Dr. Rafael Costa',
@@ -91,7 +91,7 @@ const testimonials = [
         specialty: 'Medicina Interna',
         initials: 'TO',
         color: 'from-sky-500 to-blue-400',
-        text: 'Recomendo para todos os colegas. O app realmente integra as diferentes áreas e facilita o raciocínio clínico desde o diagnóstico até o tratamento.',
+        text: 'Recomendo para todos os colegas. A integração entre as diferentes áreas facilita o raciocínio clínico desde o diagnóstico até o tratamento.',
     },
 ]
 
@@ -548,4 +548,4 @@ export function LandingPage() {
             )}
         </div>
     )
-}
+}

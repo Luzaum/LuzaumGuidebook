@@ -103,7 +103,7 @@ export function exportToPDF(record: SavedBloodGasRecord) {
   if (y > 265) y = 265;
   doc.setFontSize(9);
   doc.setTextColor(130, 130, 130);
-  doc.text('Gerado por VETIUS - HemoGasoVet', 105, 285, { align: 'center' });
+  doc.text('Interpretação hemogasométrica veterinária', 105, 285, { align: 'center' });
 
   doc.save(`HemoGasoVet_${record.patientName}_${new Date(record.date).getTime()}.pdf`);
 }

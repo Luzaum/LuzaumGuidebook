@@ -37,7 +37,7 @@ export const diazepam: Drug = {
     'Ataxia e incoordenação'
   ],
   usageErrors: [
-    'Administração IM (absorção dolorosa e imprevisível, exceto em formulações específicas)',
+    'Administração IM (absorção dolorosa e imprevisível, exceto em fórmulações específicas)',
     'Uso como sedativo único em animais saudáveis',
     'Mistura na mesma seringa com outras drogas (precipita com a maioria, exceto cetamina)',
     'Uso oral em gatos (risco de falência hepática fatal)'

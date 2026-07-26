@@ -74,13 +74,13 @@ export function PathogenLibraryPage({
             className="mb-2 text-xs font-semibold uppercase tracking-wide"
             style={{ color: 'hsl(var(--primary))' }}
           >
-            Núcleo v2 · microbiologia
+            Microbiologia clínica
           </p>
           <h1 className="text-3xl font-bold tracking-tight" style={{ color: 'hsl(var(--foreground))' }}>
             Microrganismos e resistência
           </h1>
           <p className="mt-3 text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
-            Perfis estruturados para apoio ao raciocínio clínico e stewardship — não substituem antibiograma, protocolo
+            Perfis estruturados para apoio ao raciocínio clínico e ao uso racional de antimicrobianos — não substituem antibiograma, protocolo
             laboratorial nem diretriz institucional.
           </p>
         </header>
@@ -169,7 +169,7 @@ export function PathogenLibraryPage({
                   >
                     <h4 className="flex items-center gap-2 text-sm font-semibold" style={{ color: 'hsl(var(--chart-5))' }}>
                       <ClipboardList className="h-4 w-4 shrink-0" aria-hidden />
-                      Uso racional (stewardship)
+                      Uso racional de antimicrobianos
                     </h4>
                     <ul className="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
                       {p.stewardshipBullets.map((x, i) => (
@@ -234,7 +234,7 @@ export function PathogenLibraryPage({
                 </div>
                 <div className="mt-3">
                   <h4 className="text-xs font-semibold uppercase" style={{ color: 'hsl(var(--accent))' }}>
-                    Stewardship
+                    Uso racional de antimicrobianos
                   </h4>
                   <ul className="mt-1 list-inside list-disc text-sm" style={{ color: 'hsl(var(--muted-foreground))' }}>
                     {c.stewardshipBullets.map((x, i) => (

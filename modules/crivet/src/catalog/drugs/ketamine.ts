@@ -131,7 +131,7 @@ export const ketamine: Drug = {
     {
       id: 'v-ket-unit',
       condition: (_p, _d, unit) => unit === 'mg/kg/h' || unit === 'mcg/kg/min',
-      message: 'Atenção: 0.6 mg/kg/h equivale a 10 mcg/kg/min. Garanta que a unidade selecionada no app corresponde à sua prescrição.',
+      message: 'Atenção: 0.6 mg/kg/h equivale a 10 mcg/kg/min. Confirme se a unidade selecionada corresponde à prescrição.',
       level: 'info',
     },
     {

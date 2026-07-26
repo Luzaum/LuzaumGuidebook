@@ -958,7 +958,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             title: 'Doses rápidas',
             columns: ['Fármaco', 'Cão', 'Gato', 'Observação'],
             rows: [
-              ['Amlodipina', '0,1-0,3 mg/kg VO SID; até 0,5 mg/kg/dia', '0,625 mg/gato SID ou 0,1-0,2 mg/kg SID; casos graves podem precisar 1,25 mg/gato SID/BID', 'Base em gato; em cao renal/proteinúrico, considerar associar bloqueio RAAS'],
+              ['Amlodipina', '0,1-0,3 mg/kg VO SID; até 0,5 mg/kg/dia', '0,625 mg/gato SID ou 0,1-0,2 mg/kg SID; casos graves podem precisar 1,25 mg/gato SID/BID', 'Base em gato; em cão renal/proteinúrico, considerar associar bloqueio RAAS'],
               ['Amlodipina ataque felino', '-', '0,1-0,2 mg/kg VO q2h até PAS <170 ou máximo cumulativo 1 mg/kg', 'Apenas com monitorização próxima; risco de hipotensão tardia'],
               ['Nitroprussiato', 'Iniciar 0,5-1 mcg/kg/min IV CRI; titular; algumas fontes até 5-10/15', 'Iniciar 0,5-1 mcg/kg/min; geralmente até 2-5', 'UTI, bomba, proteger da luz, D5W, nunca bolus'],
               ['Hidralazina bolus', '0,1-0,2 mg/kg IV/IM q2h se necessário', '1-2,5 mg/gato SC; pode repetir em 15-30 min', 'Resposta menos previsível que nitroprussiato'],

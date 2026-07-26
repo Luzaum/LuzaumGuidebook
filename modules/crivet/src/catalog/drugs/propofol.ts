@@ -86,7 +86,7 @@ export const propofol: Drug = {
     syringePumpRequired: true, // Essencial para TIVA
     dedicatedLineRequired: false,
     photosensitive: false,
-    stabilityAfterDilution: 'Uso imediato após abertura do frasco. Descartar sobras em 6h (formulações sem conservantes) ou 24h (com conservantes, ex: Propofol 28).',
+    stabilityAfterDilution: 'Uso imediato após abertura do frasco. Descartar sobras em 6h (fórmulações sem conservantes) ou 24h (com conservantes, ex: Propofol 28).',
     incompatibilities: ['Ringer Lactato', 'Maioria das outras drogas (risco de quebra da emulsão ou precipitação) - não misturar na mesma seringa.'],
     recommendedMonitoring: ['Pressão arterial (esperada hipotensão)', 'Frequência e ritmo cardíaco', 'Oximetria de pulso', 'Capnografia (risco de apneia/hipoventilação)', 'Temperatura (hipotermia)']
   },

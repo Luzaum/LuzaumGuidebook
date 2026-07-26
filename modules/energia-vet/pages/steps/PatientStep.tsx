@@ -421,7 +421,7 @@ export default function PatientStep() {
               <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
                 <p className="text-xs text-muted-foreground">Peso atual</p>
                 <p className="mt-1 text-lg font-semibold text-foreground">
-                  {patient.currentWeight ? `${patient.currentWeight.toFixed(1)} kg` : 'Nao informado'}
+                  {patient.currentWeight ? `${patient.currentWeight.toFixed(1)} kg` : 'Não informado'}
                 </p>
               </div>
             </div>
@@ -674,7 +674,7 @@ export default function PatientStep() {
                   </Badge>
                 </div>
                 <p className="mt-3 text-sm text-muted-foreground">
-                  O modulo hospitalar entra no resumo final para orientar oferta progressiva e vigilancia clinica.
+                  A condição hospitalar será considerada no resumo final para orientar oferta progressiva e vigilância clínica.
                 </p>
               </div>
             </div>
@@ -685,7 +685,7 @@ export default function PatientStep() {
           <div className="flex items-start justify-between gap-3">
             <div>
               <p className="text-lg font-semibold text-foreground">Comorbidades</p>
-              <p className="text-sm text-muted-foreground">Selecione multiplas condicoes. Os perfis terapeuticos da planilha entram na avaliacao final.</p>
+              <p className="text-sm text-muted-foreground">Selecione múltiplas condições. Os perfis terapêuticos serão considerados na avaliação final.</p>
             </div>
             <TooltipProvider>
               <Tooltip>

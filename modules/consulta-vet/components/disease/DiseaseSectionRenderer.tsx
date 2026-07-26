@@ -4,14 +4,17 @@ import {
   Activity,
   AlertTriangle,
   Apple,
+  ArrowRight,
   BookOpen,
   Brain,
   Cat,
+  CircleAlert,
   Dog,
   Dumbbell,
   Droplets,
   Eye,
   Flame,
+  FlaskConical,
   HeartPulse,
   LayoutGrid,
   Shield,
@@ -31,7 +34,12 @@ import {
   EditorialSystemGroup,
 } from '../../types/common';
 import { getEditorialSubsectionIcon } from '../../utils/editorialSubsectionIcons';
-import { translateEditorialSubsectionKey, translateSystemGroupTitle } from '../../utils/editorialSubsectionLabels';
+import {
+  getEditorialSubsectionDescription,
+  getSystemGroupDescription,
+  translateEditorialSubsectionKey,
+  translateSystemGroupTitle,
+} from '../../utils/editorialSubsectionLabels';
 import { sortDiagnosticSubsectionEntries } from '../../utils/editorialSubsectionOrder';
 import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
 import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
@@ -166,6 +174,7 @@ function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTa
 
 function systemTopicIcon(system: string): LucideIcon {
   const s = system.toLowerCase();
+  if (s.includes('critical') || s.includes('crític') || s.includes('emerg')) return ShieldAlert;
   if (s.includes('cardio')) return HeartPulse;
   if (s.includes('respir') || s.includes('pulmon') || s.includes('thorac')) return Wind;
   if (s.includes('renal') || s.includes('urinar')) return Droplets;
@@ -173,6 +182,7 @@ function systemTopicIcon(system: string): LucideIcon {
   if (s.includes('ocular') || s.includes('ophthalm')) return Eye;
   if (s.includes('hepat')) return Activity;
   if (s.includes('hemat') || s.includes('lymph')) return Droplets;
+  if (s.includes('mamm') || s.includes('mam') || s.includes('reproduct') || s.includes('neonat')) return Activity;
   if (s.includes('dermat')) return Sparkles;
   if (s.includes('immun') || s.includes('imune')) return Shield;
   if (s.includes('gastro') || s.includes('oral')) return Apple;
@@ -185,6 +195,141 @@ function systemTopicIcon(system: string): LucideIcon {
 
 const BULLET_LINE_RE = /^\s*[-•*]\s+/;
 const NUMBERED_LINE_RE = /^\s*\d+[\).]\s+/;
+const STUDY_CITATION_RE =
+  /\b(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+){0,2})\s+et al\.\s*\(\d{4}\)/;
+const CLINICAL_METRIC_RE =
+  /(\b\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:%|mg\/kg|mg\/gato|mg\/m²|µg\/kg|μg\/kg|mEq\/kg|UI\/kg|dias?|semanas?|meses?|horas?|minutos?|mm|cm|gatos?|cães?|cadelas?)\b)/gi;
+const CLINICAL_METRIC_EXACT_RE =
+  /^\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:%|mg\/kg|mg\/gato|mg\/m²|µg\/kg|μg\/kg|mEq\/kg|UI\/kg|dias?|semanas?|meses?|horas?|minutos?|mm|cm|gatos?|cães?|cadelas?)$/i;
+const CLINICAL_ALERT_RE =
+  /^(atenção|alerta|não\b|nunca\b|evite\b|emergência\b|choque\b|sepse\b|contraindicad|carcinoma mamário inflamatório)/i;
+
+function isReferenceVisual(visual: DiseaseSectionVisual): boolean {
+  return visual === getDiseaseSectionVisual('references');
+}
+
+function getStudyCitation(value: string, visual: DiseaseSectionVisual): string | null {
+  if (isReferenceVisual(visual)) return null;
+  return value.match(STUDY_CITATION_RE)?.[0] ?? null;
+}
+
+function getClinicalLead(value: string): string | null {
+  const colonIndex = value.indexOf(':');
+  if (colonIndex < 2 || colonIndex > 78) return null;
+  const lead = value.slice(0, colonIndex).trim();
+  if (lead.includes('.') || lead.includes('://')) return null;
+  return lead;
+}
+
+function getClinicalMetrics(value: string): string[] {
+  return Array.from(new Set(value.match(CLINICAL_METRIC_RE) ?? [])).slice(0, 4);
+}
+
+function MetricText({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  return (
+    <>
+      {value.split(CLINICAL_METRIC_RE).map((part, index) =>
+        CLINICAL_METRIC_EXACT_RE.test(part) ? (
+          <mark
+            key={`${part}-${index}`}
+            className={cn(
+              'rounded-sm px-1.5 py-0.5 font-bold text-inherit [box-decoration-break:clone]',
+              visual.headerTintClass,
+              visual.titleClass
+            )}
+          >
+            {part}
+          </mark>
+        ) : (
+          <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>
+        )
+      )}
+    </>
+  );
+}
+
+function ClinicalInlineText({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  const lead = getClinicalLead(value);
+  if (!lead) return <MetricText value={value} visual={visual} />;
+
+  const body = value.slice(value.indexOf(':') + 1).trim();
+  return (
+    <>
+      <strong className={cn('font-bold', visual.titleClass)}>
+        <MetricText value={lead} visual={visual} />
+      </strong>
+      <span className={cn('mx-1.5 font-bold', visual.titleClass)} aria-hidden>
+        →
+      </span>
+      <MetricText value={body} visual={visual} />
+    </>
+  );
+}
+
+function EvidenceFinding({
+  value,
+  citation,
+  visual,
+}: {
+  value: string;
+  citation: string;
+  visual: DiseaseSectionVisual;
+}) {
+  const metrics = getClinicalMetrics(value);
+
+  return (
+    <div
+      data-clinical-visual="evidence"
+      className="border-y border-cyan-600/20 border-l-4 border-l-cyan-600 bg-cyan-500/[0.06] px-4 py-3.5 dark:border-cyan-400/20 dark:border-l-cyan-400 dark:bg-cyan-400/[0.08] md:px-5"
+    >
+      <div className="flex items-center gap-3">
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/15 text-cyan-800 dark:bg-cyan-400/15 dark:text-cyan-200">
+          <FlaskConical className="h-4 w-4" strokeWidth={2.2} aria-hidden />
+        </span>
+        <div className="min-w-0">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-cyan-800/70 dark:text-cyan-200/70">
+            Evidência publicada
+          </p>
+          <p className="text-[13px] font-bold leading-5 text-cyan-950 dark:text-cyan-100">{citation}</p>
+        </div>
+      </div>
+      <p className="mt-2.5 text-[14px] leading-7 text-foreground/90 [text-wrap:pretty] md:text-[15px]">
+        <ClinicalInlineText value={value} visual={visual} />
+      </p>
+      {metrics.length > 0 ? (
+        <div className="mt-3 flex flex-wrap gap-1.5" aria-label="Números principais do estudo">
+          {metrics.map((metric) => (
+            <span
+              key={metric}
+              className="inline-flex min-h-6 items-center border border-cyan-600/25 bg-background/70 px-2 py-0.5 text-[11px] font-bold text-cyan-900 dark:border-cyan-300/25 dark:bg-background/30 dark:text-cyan-100"
+            >
+              {metric}
+            </span>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function ClinicalAlert({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  return (
+    <div
+      data-clinical-visual="alert"
+      className="flex items-start gap-3 border-l-4 border-l-rose-600 bg-rose-500/[0.07] px-4 py-3 dark:border-l-rose-400 dark:bg-rose-400/[0.09]"
+    >
+      <CircleAlert className="mt-1 h-4 w-4 shrink-0 text-rose-700 dark:text-rose-300" strokeWidth={2.3} aria-hidden />
+      <div className="min-w-0">
+        <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rose-800/70 dark:text-rose-200/70">
+          Atenção clínica
+        </p>
+        <p className="mt-0.5 text-[14px] leading-7 text-foreground/90 md:text-[15px]">
+          <ClinicalInlineText value={value} visual={visual} />
+        </p>
+      </div>
+    </div>
+  );
+}
 
 /**
  * Quebra narrativas longas em blocos visuais: paragrafos e listas automaticas.
@@ -198,7 +343,6 @@ function StructuredNarrative({ value, visual }: { value: string; visual: Disease
   return (
     <div className="max-w-[106ch] space-y-4">
       {blocks.map((block, i) => {
-
         const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
         if (lines.length >= 2 && lines.every((l) => BULLET_LINE_RE.test(l))) {
           const items = lines.map((l) => l.replace(BULLET_LINE_RE, ''));
@@ -219,16 +363,27 @@ function StructuredNarrative({ value, visual }: { value: string; visual: Disease
                   >
                     {j + 1}
                   </span>
-                  <span className="min-w-0 pt-0.5">{item}</span>
+                  <span className="min-w-0 pt-0.5">
+                    <ClinicalInlineText value={item} visual={visual} />
+                  </span>
                 </li>
               ))}
             </ol>
           );
         }
 
+        const citation = getStudyCitation(block, visual);
+        if (citation) {
+          return <EvidenceFinding key={i} value={block} citation={citation} visual={visual} />;
+        }
+
+        if (CLINICAL_ALERT_RE.test(block)) {
+          return <ClinicalAlert key={i} value={block} visual={visual} />;
+        }
+
         return (
-          <p key={i} className="text-[15px] leading-8 text-foreground/88 [text-wrap:pretty]">
-            {block}
+          <p key={i} className="text-[14px] leading-7 text-foreground/88 [text-wrap:pretty] md:text-[15px]">
+            <ClinicalInlineText value={block} visual={visual} />
           </p>
         );
       })}
@@ -239,42 +394,89 @@ function StructuredNarrative({ value, visual }: { value: string; visual: Disease
 function BulletList({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
   return (
     <ul className="space-y-2.5">
-      {items.map((item) => (
-        <li key={item} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
-          <span className={cn('mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full', visual.bulletDotClass)} />
-          <span>{item}</span>
-        </li>
-      ))}
+      {items.map((item, index) => {
+        const citation = getStudyCitation(item, visual);
+        if (citation) {
+          return (
+            <li key={`${item}-${index}`}>
+              <EvidenceFinding value={item} citation={citation} visual={visual} />
+            </li>
+          );
+        }
+
+        if (CLINICAL_ALERT_RE.test(item)) {
+          return (
+            <li key={`${item}-${index}`}>
+              <ClinicalAlert value={item} visual={visual} />
+            </li>
+          );
+        }
+
+        const hasLead = Boolean(getClinicalLead(item));
+        return (
+          <li
+            key={`${item}-${index}`}
+            data-clinical-visual={hasLead ? 'action' : 'finding'}
+            className={cn(
+              'flex items-start gap-3 text-[14px] leading-7 text-foreground/88 md:text-[15px]',
+              hasLead && 'border-l-2 bg-muted/[0.12] px-3 py-2 dark:bg-muted/[0.07]',
+              hasLead && visual.leftBarClass
+            )}
+          >
+            {hasLead ? (
+              <span
+                className={cn(
+                  'mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md',
+                  visual.iconWrapClass
+                )}
+                aria-hidden
+              >
+                <ArrowRight className={cn('h-3 w-3', visual.iconClass)} strokeWidth={2.5} />
+              </span>
+            ) : (
+              <span className={cn('mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full', visual.bulletDotClass)} />
+            )}
+            <span className="min-w-0">
+              <ClinicalInlineText value={item} visual={visual} />
+            </span>
+          </li>
+        );
+      })}
     </ul>
   );
 }
 
 function SystemGroupList({ groups, visual }: { groups: EditorialSystemGroup[]; visual: DiseaseSectionVisual }) {
   return (
-    <div className="grid gap-4 sm:grid-cols-2">
+    <div className="grid gap-3 sm:grid-cols-2">
       {groups.map((item) => {
         const SysIcon = systemTopicIcon(item.system);
         return (
           <div
             key={item.system}
-            className="rounded-2xl border border-border/55 bg-card/45 p-4 shadow-sm ring-1 ring-black/[0.04] dark:bg-card/35 dark:ring-white/[0.06] md:p-5"
+            className={cn(
+              'border-l-4 bg-muted/[0.16] px-4 py-3.5 ring-1 ring-border/45 dark:bg-muted/[0.09] md:px-5',
+              visual.leftBarClass
+            )}
           >
-            <div className="flex items-start gap-3 border-b border-border/45 pb-3">
+            <div className="flex items-start gap-3">
               <span
                 className={cn(
-                  'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                  'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
                   visual.iconWrapClass
                 )}
                 aria-hidden
               >
-                <SysIcon className={cn('h-5 w-5', visual.iconClass)} strokeWidth={2} />
+                <SysIcon className={cn('h-4 w-4', visual.iconClass)} strokeWidth={2.2} />
               </span>
-              <div className="min-w-0 pt-0.5">
-                <h4 className="text-base font-semibold tracking-tight text-foreground">{translateSystemGroupTitle(item.system)}</h4>
-                <p className="mt-0.5 text-[11px] font-medium uppercase tracking-wider text-muted-foreground">Sinais correlacionados</p>
+              <div className="min-w-0">
+                <h4 className={cn('text-[15px] font-bold leading-5', visual.titleClass)}>
+                  {translateSystemGroupTitle(item.system)}
+                </h4>
+                <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{getSystemGroupDescription(item.system)}</p>
               </div>
             </div>
-            <div className="mt-3">
+            <div className="mt-3 border-t border-border/45 pt-3">
               <BulletList items={item.findings} visual={visual} />
             </div>
           </div>
@@ -339,7 +541,9 @@ function DiagnosticStepList({ steps, visual }: { steps: EditorialDiagnosticStep[
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-3 max-w-[98ch] text-[15px] leading-relaxed text-foreground/88 md:leading-8">{step.description}</p>
+                <p className="mt-3 max-w-[98ch] text-[15px] leading-relaxed text-foreground/88 md:leading-8">
+                  <ClinicalInlineText value={step.description} visual={visual} />
+                </p>
               </div>
             </div>
           </li>
@@ -421,6 +625,7 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'drcAlertaEstadiamentoInstavel',
   'drcDietaRenal',
   'drcMetasFosforoIRIS',
+  'drcCondutaPraticaPorEstagioEspecie',
   'drcFosforoQuelantes',
   'drcProteinuriaRaas',
   'drcHipertensao',
@@ -475,6 +680,7 @@ function FlowSubsection({
   visual?: DiseaseSectionVisual;
   className?: string;
 }) {
+  const description = subsectionKey ? getEditorialSubsectionDescription(subsectionKey) : undefined;
   const TopicGlyph =
     subsectionKey && tone !== 'species' && tone !== 'speciesDog'
       ? getEditorialSubsectionIcon(subsectionKey)
@@ -482,52 +688,67 @@ function FlowSubsection({
 
   if (tone === 'default') {
     return (
-      <div className={cn('rounded-2xl border border-border/55 bg-background/70 p-4 shadow-md ring-1 ring-black/[0.04] dark:bg-background/45 dark:ring-white/[0.07] md:p-5', className)}>
-        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
+      <div
+        className={cn(
+          'border-l-4 bg-muted/[0.12] px-4 py-3.5 ring-1 ring-border/40 dark:bg-muted/[0.07] md:px-5',
+          visual?.leftBarClass,
+          className
+        )}
+      >
+        <div className="flex items-start gap-3">
           {TopicGlyph && visual ? (
             <span
               className={cn(
-                'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
                 visual.iconWrapClass
               )}
               aria-hidden
             >
-              <TopicGlyph className={cn('h-5 w-5', visual.iconClass)} strokeWidth={2} />
+              <TopicGlyph className={cn('h-4 w-4', visual.iconClass)} strokeWidth={2.2} />
             </span>
           ) : TopicGlyph ? (
-            <TopicGlyph className="h-5 w-5 shrink-0 text-muted-foreground opacity-90" strokeWidth={2} aria-hidden />
+            <TopicGlyph className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground opacity-90" strokeWidth={2} aria-hidden />
           ) : null}
-          <span className="min-w-0 leading-snug">{title}</span>
-        </h4>
-        <div className="mt-4 border-t border-border/50 pt-4">{children}</div>
+          <div className="min-w-0">
+            <h4 className={cn('text-[15px] font-bold leading-5', visual?.titleClass ?? 'text-foreground')}>{title}</h4>
+            {description ? <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{description}</p> : null}
+          </div>
+        </div>
+        <div className="mt-3 border-t border-border/45 pt-3">{children}</div>
       </div>
     );
   }
 
   if (tone === 'species') {
     return (
-      <div className={cn('rounded-2xl border border-violet-500/25 border-l-4 border-l-violet-500 bg-violet-500/[0.06] p-4 shadow-sm dark:border-l-violet-400 dark:bg-violet-400/[0.09] md:p-5', className)}>
-        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-violet-950 dark:text-violet-100">
+      <div className={cn('border border-violet-500/20 border-l-4 border-l-violet-500 bg-violet-500/[0.06] p-4 dark:border-l-violet-400 dark:bg-violet-400/[0.09] md:px-5', className)}>
+        <div className="flex items-start gap-3">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-violet-500/20 dark:bg-violet-400/25" aria-hidden>
             <Cat className="h-5 w-5 text-violet-600 dark:text-violet-300" />
           </span>
-          {title}
-        </h4>
-        <div className="mt-4 border-t border-violet-500/20 pt-4 text-foreground/90 dark:border-violet-400/20">{children}</div>
+          <div className="min-w-0">
+            <h4 className="text-[15px] font-bold leading-5 text-violet-950 dark:text-violet-100">{title}</h4>
+            {description ? <p className="mt-0.5 text-xs leading-5 text-violet-900/65 dark:text-violet-100/65">{description}</p> : null}
+          </div>
+        </div>
+        <div className="mt-3 border-t border-violet-500/20 pt-3 text-foreground/90 dark:border-violet-400/20">{children}</div>
       </div>
     );
   }
 
   if (tone === 'speciesDog') {
     return (
-      <div className={cn('rounded-2xl border border-sky-500/25 border-l-4 border-l-sky-600 bg-sky-500/[0.06] p-4 shadow-sm dark:border-l-sky-400 dark:bg-sky-400/[0.09] md:p-5', className)}>
-        <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-sky-950 dark:text-sky-100">
+      <div className={cn('border border-sky-500/20 border-l-4 border-l-sky-600 bg-sky-500/[0.06] p-4 dark:border-l-sky-400 dark:bg-sky-400/[0.09] md:px-5', className)}>
+        <div className="flex items-start gap-3">
           <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-500/20 dark:bg-sky-400/25" aria-hidden>
             <Dog className="h-5 w-5 text-sky-700 dark:text-sky-300" />
           </span>
-          {title}
-        </h4>
-        <div className="mt-4 border-t border-sky-500/20 pt-4 text-foreground/90 dark:border-sky-400/20">{children}</div>
+          <div className="min-w-0">
+            <h4 className="text-[15px] font-bold leading-5 text-sky-950 dark:text-sky-100">{title}</h4>
+            {description ? <p className="mt-0.5 text-xs leading-5 text-sky-900/65 dark:text-sky-100/65">{description}</p> : null}
+          </div>
+        </div>
+        <div className="mt-3 border-t border-sky-500/20 pt-3 text-foreground/90 dark:border-sky-400/20">{children}</div>
       </div>
     );
   }
@@ -554,8 +775,8 @@ function FlowSubsection({
             : 'h-5 w-5 shrink-0 text-primary';
 
   return (
-    <div className={cn('rounded-2xl border border-l-4 p-4 shadow-md ring-1 ring-black/[0.03] dark:ring-white/[0.06] md:p-5', shell, className)}>
-      <h4 className="flex items-center gap-3 text-base font-semibold tracking-tight text-foreground">
+    <div className={cn('border border-l-4 p-4 ring-1 ring-black/[0.03] dark:ring-white/[0.06] md:px-5', shell, className)}>
+      <div className="flex items-start gap-3">
         {TopicGlyph && visual ? (
           <span
             className={cn(
@@ -571,9 +792,12 @@ function FlowSubsection({
             <LeadIcon className={leadIconClass} strokeWidth={2} />
           </span>
         )}
-        <span className="min-w-0 leading-snug">{title}</span>
-      </h4>
-      <div className="mt-4 border-t border-border/40 pt-4">{children}</div>
+        <div className="min-w-0">
+          <h4 className="text-[15px] font-bold leading-5 text-foreground">{title}</h4>
+          {description ? <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{description}</p> : null}
+        </div>
+      </div>
+      <div className="mt-3 border-t border-border/40 pt-3">{children}</div>
     </div>
   );
 }
@@ -659,7 +883,7 @@ function tryRenderTreatmentRichObject(
 
   if (obj.prognosticoResumo) pushNarrative('prognosticoResumo', blocks);
 
-  return <div className="space-y-8 md:space-y-10">{blocks}</div>;
+  return <div className="space-y-4 md:space-y-5">{blocks}</div>;
 }
 
 export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }: DiseaseSectionRendererProps) {
@@ -728,7 +952,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       }
 
       return (
-        <div className="space-y-8 md:space-y-10">
+        <div className="space-y-4 md:space-y-5">
           {groupedEntries.map((group, idx) => {
             if (group.type === 'single') {
               const [key, value] = group.entry;

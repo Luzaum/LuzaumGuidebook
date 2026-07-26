@@ -59,7 +59,7 @@ export default function Patients() {
         const msg = e instanceof Error ? e.message : String(e)
         if (/nutrition_reports|PGRST205|schema cache|Could not find the table/i.test(msg)) {
           toast.warning(
-            'Tabela nutrition_reports indisponível no Supabase. A lista mostra só dados deste dispositivo até aplicar a migration no projeto.',
+            'A sincronização do histórico está indisponível. A lista mostra os dados salvos neste dispositivo.',
             { duration: 9000 },
           )
         } else if (/Cl[ií]nica ativa|Clinica ativa/i.test(msg)) {
@@ -95,7 +95,7 @@ export default function Patients() {
             Histórico de pacientes
           </h1>
           <p className="mt-2 text-muted-foreground max-w-3xl">
-            Cada paciente pode ter vários relatórios em ordem cronológica. Abra o histórico para rever prescrições e exportar PDF quando precisar — o ficheiro gera-se na hora (não fica armazenado no Supabase).
+            Cada paciente pode ter vários relatórios em ordem cronológica. Abra o histórico para rever prescrições e exportar o PDF quando precisar.
           </p>
         </div>
         <Button className="gap-2" onClick={() => navigate(NEW_ROUTE)}>
@@ -126,9 +126,9 @@ export default function Patients() {
                     <div className="flex items-start justify-between gap-3">
                       <div>
                         <p className="text-lg font-semibold text-white">{patient.name ?? 'Paciente sem nome'}</p>
-                        <p className="text-sm text-muted-foreground">{patient.ownerName ?? 'Tutor nao informado'}</p>
+                        <p className="text-sm text-muted-foreground">{patient.ownerName ?? 'Tutor não informado'}</p>
                       </div>
-                      <Badge variant="outline">{patient.species === 'dog' ? 'Cao' : patient.species === 'cat' ? 'Gato' : 'Nao informado'}</Badge>
+                      <Badge variant="outline">{patient.species === 'dog' ? 'Cao' : patient.species === 'cat' ? 'Gato' : 'Não informado'}</Badge>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">

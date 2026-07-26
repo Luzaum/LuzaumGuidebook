@@ -356,7 +356,7 @@ export function normalizeManipuladoV1(raw?: Partial<ManipuladoV1Formula> | null)
 
 export function formatDurationPhrase(text: string): string {
   const t = text.trim().toLowerCase()
-  if (t === 'dose única' || t === 'dose unica') return 'em dose única'
+  if (t === 'dose única' || t === 'dose única') return 'em dose única'
   if (t === 'uso contínuo' || t === 'uso continuo') return 'em uso contínuo'
   if (t.startsWith('até ') || t.startsWith('ate ')) return t.replace(/^ate\s/, 'até ')
   return `por ${text.trim()}`

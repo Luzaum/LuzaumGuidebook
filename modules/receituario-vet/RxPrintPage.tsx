@@ -362,7 +362,7 @@ export default function RxPrintPage() {
     whatsappPhone: prescription.tutor.phone || '',
     whatsappMessage: `Olá ${prescription.tutor.name || ''}, aqui está a receita do paciente ${prescription.patient.name || ''}.`,
     email: '',
-    emailSubject: `Receita Veterinária - ${selectedPrescriberProfile.clinicName || 'VETIUS'}`,
+    emailSubject: `Receita Veterinária - ${selectedPrescriberProfile.clinicName || 'Clínica veterinária'}`,
     includeBcc: false,
   })
   const previewSheetRefs = useRef<Array<HTMLDivElement | null>>([])
@@ -554,7 +554,7 @@ export default function RxPrintPage() {
         return (container.querySelector('[data-rx-print-canvas="sheet"]') as HTMLElement | null) || container
       })
       .filter((entry): entry is HTMLElement => !!entry)
-    if (!elements.length) throw new Error('Preview não disponível para exportação.')
+    if (!elements.length) throw new Error('Visualização não disponível para exportação.')
 
     const standard = templateDraft.documentKindTarget === 'special-control' ? activeTemplate : templateDraft
     return buildPdfFileFromPreview({
@@ -1019,7 +1019,7 @@ export default function RxPrintPage() {
                       </div>
                     </div>
 
-                    {selection.zone === 'body' ? <p className="text-xs text-slate-400">Clique em um medicamento no preview para editar seus campos.</p> : null}
+                    {selection.zone === 'body' ? <p className="text-xs text-slate-400">Clique em um medicamento na receita para editar seus campos.</p> : null}
                   </div>
                 ) : <p className="text-sm text-slate-400">Selecione uma área da receita para começar.</p>}
               </section>

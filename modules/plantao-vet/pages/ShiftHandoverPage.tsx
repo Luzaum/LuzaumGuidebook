@@ -72,7 +72,7 @@ export function ShiftHandoverPage() {
   }
 
   if (!snapshot.isHydrated) {
-    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando modulo...</div>;
+    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   }
 
   return (
@@ -116,19 +116,19 @@ export function ShiftHandoverPage() {
         <EmptyState
           icon={Activity}
           eyebrow="Sem casos ativos"
-          title="Nao existem pacientes para consolidar neste plantao"
-          description="Assim que o plantao tiver pacientes vinculados, esta tela monta cards por caso e um preview editavel da passagem para o proximo turno."
+          title="Não existem pacientes para consolidar neste plantao"
+          description="Assim que o plantão tiver pacientes vinculados, cada caso será organizado para a passagem ao próximo turno."
           primaryAction={{ label: 'Abrir pacientes', href: '/plantao-vet/pacientes' }}
           secondaryAction={{ label: 'Importar prontuario', href: '/plantao-vet/importar' }}
         >
           <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-bg)] p-4">
-            A tela ja esta ligada aos dados reais do plantao ativo.
+            Os dados do plantão ativo serão organizados por paciente.
           </div>
           <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-bg)] p-4">
-            O preview considera resumo, frase definidora, alertas, problemas, tarefas e plano do proximo turno.
+            A revisão reúne resumo, alertas, problemas, tarefas e plano do próximo turno.
           </div>
           <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-bg)] p-4">
-            O layout segue a estrutura de cards e preview do prototipo original.
+            A passagem completa pode ser revisada e copiada antes da entrega do turno.
           </div>
         </EmptyState>
       ) : (
@@ -163,7 +163,7 @@ export function ShiftHandoverPage() {
                           ) : null}
                         </CardTitle>
                         <p className="mt-1 text-sm text-[var(--pv-text-muted)]">
-                          {patient.mainDiagnosis || 'Sem diagnostico principal registrado.'}
+                          {patient.mainDiagnosis || 'Sem diagnóstico principal registrado.'}
                         </p>
                       </div>
 
@@ -288,7 +288,7 @@ export function ShiftHandoverPage() {
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm font-medium text-[var(--pv-text-main)]">
                         <MessageSquare className="h-4 w-4 text-[var(--pv-primary)]" />
-                        Preview editavel
+                        Revisão editável
                       </div>
                       <Textarea
                         value={currentDraft}
@@ -310,7 +310,7 @@ export function ShiftHandoverPage() {
           <div className="space-y-6">
             <h2 className="flex items-center gap-2 text-xl font-semibold text-[var(--pv-text-muted)]">
               <FileText className="h-5 w-5" />
-              Preview geral do plantao
+              Revisão geral do plantão
             </h2>
 
             <Card className="sticky top-24">

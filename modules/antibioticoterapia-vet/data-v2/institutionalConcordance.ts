@@ -16,13 +16,13 @@ export function concordanceStateFromMapping(
 export function concordanceChipCopy(state: InstitutionalConcordanceState): { label: string; hint: string } {
   if (state === 'page_locator') {
     return {
-      label: 'CCIH · página auditada',
-      hint: 'Locator com páginas conferidas no exemplar restrito; o PDF não é distribuído pelo app.',
+      label: 'CCIH · páginas conferidas',
+      hint: 'As páginas indicadas foram conferidas na edição institucional.',
     }
   }
   return {
-    label: 'CCIH · só metadados',
-    hint: 'SectionRef e política registrados; páginas entram no código apenas após auditoria humana explícita.',
+    label: 'CCIH · referência geral',
+    hint: 'Referência institucional sem indicação de páginas específicas.',
   }
 }
 
@@ -40,4 +40,4 @@ export function summarizeV2MoleculeConcordance(): { pageLocator: number; metadat
 
 /** Regimes não têm locator próprio no código: herdam o vínculo do perfil da síndrome. */
 export const REGIMEN_CONCORDANCE_EXPLANATION =
-  'Os regimes listados seguem a concordância institucional do perfil desta síndrome (sem página CCIH separada por regime no código).'
+  'Os regimes listados seguem a orientação institucional aplicável ao perfil desta síndrome.'

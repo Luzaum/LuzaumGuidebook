@@ -37,7 +37,7 @@ const UI_TEXT = {
   quickSummary: 'Resumo rápido',
   clinicalDeepDive: 'Conteúdo clínico',
   clinicalDeepDiveLead:
-    'Estrutura fixa em nove blocos: da etiologia às referências, com diagnóstico ordenado por importância e marcação de padrão ouro quando aplicável.',
+    'Revisão clínica da etiologia à prevenção, com diagnóstico ordenado por importância e identificação do padrão ouro quando aplicável.',
   etiology: '1. Etiologia',
   epidemiology: '2. Epidemiologia',
   pathogenesisTransmission: '3. Patogênese e transmissão',
@@ -141,7 +141,7 @@ export function DiseaseDetailPage() {
         );
       } catch (loadError) {
         if (!isMounted) return;
-        setError(loadError instanceof Error ? loadError.message : UI_TEXT.loadErrorFallback);
+        setError(UI_TEXT.loadErrorFallback);
       } finally {
         if (isMounted) setIsLoading(false);
       }
@@ -353,6 +353,11 @@ export function DiseaseDetailPage() {
                   border: 'border-yellow-500/30 dark:border-yellow-400/20',
                   glow: 'bg-yellow-500/12',
                 },
+                'reproducao-neonatologia': {
+                  gradient: 'bg-gradient-to-br from-fuchsia-900/95 via-slate-900/98 to-slate-950/98',
+                  border: 'border-fuchsia-500/30 dark:border-fuchsia-400/20',
+                  glow: 'bg-fuchsia-500/12',
+                },
                 ortopedia: {
                   gradient: 'bg-gradient-to-br from-teal-900/95 via-slate-900/98 to-slate-950/98',
                   border: 'border-teal-500/30 dark:border-teal-400/20',
@@ -462,7 +467,7 @@ export function DiseaseDetailPage() {
             <EditorialPanel
               id="related"
               title={UI_TEXT.relatedContent}
-              lead="Materiais associados aparecem como apoio à consulta, sem competir com o raciocínio diagnóstico e terapêutico principal."
+              lead="Consensos e medicamentos úteis para aprofundar o raciocínio diagnóstico e terapêutico."
             >
               <div className="grid gap-8 xl:grid-cols-2">
                 {relatedConsensos.length > 0 ? (

@@ -81,9 +81,7 @@ export default function TemplatesPage() {
   const templates = useMemo(() => buildTemplatesSource(db.templates), [db.templates])
   const [selectedId, setSelectedId] = useState(initialSelectedId)
   const [draft, setDraft] = useState<RxTemplateStyle>(() => cloneWithDefaults(initialTemplates.find((entry) => entry.id === initialSelectedId) || BUILTIN_TEMPLATES.find((entry) => entry.id === DEFAULT_NOVA_RECEITA_TEMPLATE_ID) || createDefaultTemplateStyle()))
-  const [jsonDraft, setJsonDraft] = useState(JSON.stringify(draft, null, 2))
   const [activeZone, setActiveZone] = useState<TemplateZoneKey>('body')
-  const [error, setError] = useState('')
   const [toast, setToast] = useState<string | null>(null)
   const [previewProfile] = useState(() => {
     const pool = initialDb.prescriberProfiles.length > 0 ? initialDb.prescriberProfiles : [initialDb.profile]
@@ -148,8 +146,6 @@ export default function TemplatesPage() {
     setSelectedId(templateId)
     const cloned = cloneWithDefaults(next)
     setDraft(cloned)
-    setJsonDraft(JSON.stringify(cloned, null, 2))
-    setError('')
   }, [templates])
 
   useEffect(() => {
@@ -186,38 +182,18 @@ export default function TemplatesPage() {
     saveRxDb(nextDb)
     setDb(nextDb)
     setSelectedId(payload.id)
-    setJsonDraft(JSON.stringify(payload, null, 2))
-    pushToast('Template salvo com sucesso.')
-  }
-
-  const applyJson = () => {
-    try {
-      const parsed = JSON.parse(jsonDraft) as Partial<RxTemplateStyle>
-      const next: RxTemplateStyle = {
-        ...createDefaultTemplateStyle(parsed.id || `template-${Date.now().toString(36)}`, parsed.name || 'Template customizado'),
-        ...parsed,
-        zoneStyles: parsed.zoneStyles || {},
-        updatedAt: new Date().toISOString(),
-      }
-      setDraft(next)
-      setError('')
-      pushToast('JSON aplicado no editor.')
-    } catch {
-      setError('JSON inválido. Verifique a estrutura e tente novamente.')
-    }
+    pushToast('Modelo salvo com sucesso.')
   }
 
   const createTemplate = () => {
-    const next = createDefaultTemplateStyle(`template-${Date.now().toString(36)}`, 'Novo template')
+    const next = createDefaultTemplateStyle(`template-${Date.now().toString(36)}`, 'Novo modelo')
     setSelectedId(next.id)
     setDraft(next)
-    setJsonDraft(JSON.stringify(next, null, 2))
-    setError('')
   }
 
   const deleteTemplate = () => {
     if (draftIsBuiltin) {
-      pushToast('Templates nativos do app não podem ser removidos.')
+      pushToast('Os modelos padrão não podem ser removidos.')
       return
     }
     const nextDb = removeTemplate(loadRxDb(), draft.id)
@@ -228,18 +204,8 @@ export default function TemplatesPage() {
       setSelectedId(fallback.id)
       const cloned = cloneWithDefaults(fallback)
       setDraft(cloned)
-      setJsonDraft(JSON.stringify(cloned, null, 2))
     }
-    pushToast('Template removido.')
-  }
-
-  const copyJson = async () => {
-    try {
-      await navigator.clipboard.writeText(JSON.stringify(draft, null, 2))
-      pushToast('JSON copiado para a área de transferência.')
-    } catch {
-      pushToast('Não foi possível copiar o JSON.')
-    }
+    pushToast('Modelo removido.')
   }
 
   const updateZoneStyle = (patch: Partial<RxTemplateStyle['zoneStyles'][TemplateZoneKey]>) => {
@@ -258,8 +224,8 @@ export default function TemplatesPage() {
   return (
     <ReceituarioChrome
       section="templates"
-      title="Editor de Templates"
-      subtitle="Altere fontes, cores e formatação por JSON ou clicando diretamente nas áreas da receita." 
+      title="Editor de modelos"
+      subtitle="Personalize fontes, cores e áreas da receita."
       actions={
         <>
           <button
@@ -282,18 +248,18 @@ export default function TemplatesPage() {
           </Link>
           <button type="button" className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={createTemplate}>
             <span className="material-symbols-outlined text-[18px]">add</span>
-            Novo template
+            Novo modelo
           </button>
           <button type="button" className="rxv-btn-primary inline-flex items-center gap-2 px-3 py-2 text-sm" onClick={saveTemplate}>
             <span className="material-symbols-outlined text-[18px]">save</span>
-            Salvar template
+            Salvar modelo
           </button>
         </>
       }
     >
       <div className="grid grid-cols-1 gap-6 xl:grid-cols-12">
         <aside className="rxv-card p-4 xl:col-span-3">
-          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Templates</h3>
+          <h3 className="mb-3 text-sm font-bold uppercase tracking-wide text-[color:var(--rxv-muted)]">Modelos</h3>
           <div className="space-y-2">
             {templates.map((template) => (
               <button
@@ -303,12 +269,11 @@ export default function TemplatesPage() {
                 onClick={() => selectTemplate(template.id)}
               >
                 <p className="max-w-[25ch] break-words text-sm font-semibold leading-tight">{formatTemplateName(template.name)}</p>
-                <p className="text-xs text-[color:var(--rxv-muted)]">{template.id}</p>
               </button>
             ))}
           </div>
           <button type="button" className="mt-4 w-full rounded-lg border border-red-700/60 px-3 py-2 text-sm text-red-300 hover:bg-red-900/20 disabled:cursor-not-allowed disabled:opacity-50" onClick={deleteTemplate} disabled={draftIsBuiltin}>
-            {draftIsBuiltin ? 'Template nativo do app' : 'Remover template atual'}
+            {draftIsBuiltin ? 'Modelo padrão' : 'Remover modelo atual'}
           </button>
         </aside>
 
@@ -317,27 +282,23 @@ export default function TemplatesPage() {
             <h2 className="mb-4 text-lg font-bold">Configuração visual global</h2>
             <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
               <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">
-                Nome do template
+                Nome do modelo
                 <input className="mt-1 w-full px-3 py-2" value={draft.name} onChange={(e) => setDraft((prev) => ({ ...prev, name: e.target.value }))} />
-              </label>
-              <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">
-                ID do template
-                <input className="mt-1 w-full px-3 py-2" value={draft.id} onChange={(e) => setDraft((prev) => ({ ...prev, id: e.target.value }))} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)] md:col-span-2">
                 Fonte padrão
                 <input className="mt-1 w-full px-3 py-2" value={draft.fontFamily} onChange={(e) => setDraft((prev) => ({ ...prev, fontFamily: e.target.value }))} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
-                Fonte base (pt)
+                Fonte base, em pontos
                 <input type="number" min={9} max={20} className="mt-1 w-full px-3 py-2" value={draft.fontSizePt} onChange={(e) => setDraft((prev) => ({ ...prev, fontSizePt: Number(e.target.value || 12) }))} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
-                Título (pt)
+                Título, em pontos
                 <input type="number" min={12} max={32} className="mt-1 w-full px-3 py-2" value={draft.headingSizePt} onChange={(e) => setDraft((prev) => ({ ...prev, headingSizePt: Number(e.target.value || 18) }))} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
-                Line-height
+                Espaçamento entre linhas
                 <input type="number" step="0.05" min={1} max={2} className="mt-1 w-full px-3 py-2" value={draft.lineHeight} onChange={(e) => setDraft((prev) => ({ ...prev, lineHeight: Number(e.target.value || 1.45) }))} />
               </label>
               <label className="text-xs text-[color:var(--rxv-muted)]">
@@ -365,7 +326,7 @@ export default function TemplatesPage() {
           <section className="rxv-card p-5">
             <h2 className="mb-4 text-lg font-bold">Edição interativa por área</h2>
             <p className="mb-3 text-xs text-[color:var(--rxv-muted)]">
-              Passe o mouse e clique no preview para selecionar uma área da receita e ajustar fonte/cor localmente.
+              Passe o mouse e clique na visualização para selecionar uma área da receita e ajustar fonte e cor.
             </p>
             <div className="mb-3 flex flex-wrap gap-2">
               {ZONE_LABELS.map((zone) => (
@@ -490,18 +451,6 @@ export default function TemplatesPage() {
             </div>
           </section>
 
-          <section className="rxv-card p-5">
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-bold">Template JSON</h2>
-              <div className="flex gap-2">
-                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-xs" onClick={() => setJsonDraft(JSON.stringify(draft, null, 2))}>Atualizar JSON</button>
-                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-xs" onClick={copyJson}>Copiar JSON</button>
-                <button type="button" className="rxv-btn-secondary px-3 py-1.5 text-xs" onClick={applyJson}>Aplicar JSON</button>
-              </div>
-            </div>
-            <textarea className="w-full px-3 py-2 font-mono text-xs" rows={16} value={jsonDraft} onChange={(e) => setJsonDraft(e.target.value)} />
-            {error ? <p className="mt-2 text-xs text-red-300">{error}</p> : null}
-          </section>
         </main>
 
         <aside className="xl:col-span-4">

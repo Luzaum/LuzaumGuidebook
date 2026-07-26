@@ -205,7 +205,7 @@ function getIngredientHint(mode: CompoundedV2IngredientMode): string {
   if (mode === 'derived_from_regimen') return 'O valor será resolvido automaticamente a partir da dose clínica do paciente.'
   if (mode === 'concentration_based') return 'Use quando a farmácia define o ingrediente por mg/mL, mg/click, mg/gota ou %.'
   if (mode === 'vehicle_or_base') return 'Base, veículo ou q.s.p.; não entra como ativo calculado.'
-  return 'Use para componentes tecnológicos opcionais da formulação.'
+  return 'Use para componentes tecnológicos opcionais da fórmulação.'
 }
 
 function buildIngredientTargetOptions(administrationUnit: string) {
@@ -264,7 +264,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
       <RxvCard className="p-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="min-w-0 flex-1">
-            <RxvSectionHeader icon="science" title={value.formula.name || 'Manipulado V2'} subtitle={previewSummary.subtitle || `${getArchetypeLabel(value.formula.archetype)} • editor clínico do catálogo magistral`} />
+            <RxvSectionHeader icon="science" title={value.formula.name || 'Manipulado'} subtitle={previewSummary.subtitle || `${getArchetypeLabel(value.formula.archetype)} • editor clínico do catálogo magistral`} />
             <div className="mt-3 flex flex-wrap gap-1.5">
               {badges.map((badge) => (
                 <span key={badge.label} className={`rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-widest ${toneClass(badge.tone)}`}>{badge.label}</span>
@@ -385,7 +385,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
                   </div>
                   {needsConcentration ? (
                     <div className="mt-4 grid grid-cols-1 gap-x-6 gap-y-5 xl:grid-cols-12">
-                      <RxvField label="Concentração da formulação" className="xl:col-span-5">
+                      <RxvField label="Concentração da fórmulação" className="xl:col-span-5">
                         <RxvInput value={activeRegimen.concentration_value ?? ''} onChange={(event) => onChange(patchRegimen(value, activeRegimen.id, { concentration_value: event.target.value === '' ? null : Number(String(event.target.value).replace(',', '.')) }))} placeholder="Ex.: 100" />
                       </RxvField>
                       <RxvField label="Unidade da concentração" className="xl:col-span-7">
@@ -436,7 +436,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
                 </RxvField>
                 <RxvField label="Cuidados e recomendações ao tutor" className="xl:col-span-5">
                   <div className="space-y-3">
-                    <RxvTextarea value={activeRegimen.tutor_observation} onChange={(event) => onChange(patchRegimen(value, activeRegimen.id, { tutor_observation: event.target.value }))} placeholder="Cada linha vira uma recomendação separada no preview e no PDF." />
+                    <RxvTextarea value={activeRegimen.tutor_observation} onChange={(event) => onChange(patchRegimen(value, activeRegimen.id, { tutor_observation: event.target.value }))} placeholder="Cada linha vira uma recomendação separada na visualização e no PDF." />
                     <div className="flex flex-wrap gap-2">
                       {recommendationChips.map((entry) => {
                         const isActive = normalizeTutorRecommendations(activeRegimen.tutor_observation).includes(entry)
@@ -463,7 +463,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
               </div>
 
               <div className="rounded-2xl border border-slate-800 bg-[linear-gradient(180deg,rgba(59, 130, 246,0.08),rgba(0,0,0,0.12))] p-6 xl:col-span-12">
-                <p className="text-xs font-black uppercase tracking-widest text-slate-500">Preview imediato</p>
+                <p className="text-xs font-black uppercase tracking-widest text-slate-500">Visualização imediata</p>
                 <div className="mt-4 space-y-4 text-sm text-slate-300">
                   <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] bg-black/30 px-4 py-4">
                     <div className="flex items-end gap-3">
@@ -676,7 +676,7 @@ export function ManipuladosV2Editor(props: ManipuladosV2EditorProps) {
           <div className="mt-5 rounded-2xl border border-slate-800 bg-black/20 p-5 2xl:p-6">
             <p className="text-xs font-black uppercase tracking-widest text-slate-500">Detalhes farmacotécnicos do regime</p>
             <div className="mt-4 grid grid-cols-1 gap-4 xl:grid-cols-2">
-              <RxvField label="Como a farmácia ajusta a formulação">
+              <RxvField label="Como a farmácia ajusta a fórmulação">
                 <RxvSelect value={activeRegimen.pharmacy_strategy} onChange={(event) => onChange(patchRegimen(value, activeRegimen.id, { pharmacy_strategy: event.target.value as CompoundedV2Regimen['pharmacy_strategy'] }))} options={PHARMACY_STRATEGY_OPTIONS} />
               </RxvField>
               <RxvField label="Instrução para a farmácia">

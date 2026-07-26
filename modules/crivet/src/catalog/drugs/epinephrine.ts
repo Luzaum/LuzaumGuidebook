@@ -25,7 +25,7 @@ export const epinephrine: Drug = {
   pharmacologicalClass: 'Catecolamina Endógena — Agonista Alfa e Beta Adrenérgico (CRI)',
 
   clinicalSummary:
-    'Catecolamina alfa e beta agonista muito potente, com perfil dose-dependente: em doses baixas predominam efeitos beta-1/beta-2 (inotrópico/cronotrópico + vasodilatação periférica); em doses maiores cresce o componente alfa-1 (vasoconstricção e aumento de RVS). Para o CRIVET é tratada como droga de UTI/centro cirúrgico, útil em: hipotensão anestésica refratária, choque anafilático com choque instalado necessitando titulação contínua, e hipotensão/prevenção de re-arresto no pós-ROSC. Tem custo fisiológico alto: pode aumentar consumo miocárdico de O₂, lactato, arritmias e comprometer perfusão esplâncnica. NÃO é substituta de reposição volêmica. APENAS CRI nesta ficha.',
+    'Catecolamina alfa e beta agonista muito potente, com perfil dose-dependente: em doses baixas predominam efeitos beta-1/beta-2 (inotrópico/cronotrópico + vasodilatação periférica); em doses maiores cresce o componente alfa-1 (vasoconstricção e aumento de RVS). É um fármaco de UTI/centro cirúrgico, útil em hipotensão anestésica refratária, choque anafilático instalado e suporte hemodinâmico após retorno da circulação espontânea. Tem custo fisiológico alto: pode aumentar consumo miocárdico de O₂, lactato, arritmias e comprometer perfusão esplâncnica. NÃO é substituta de reposição volêmica. APENAS CRI nesta ficha.',
 
   physiology:
     'Agonista α1, α2, β1 e β2. Em infusões baixas tende a predominar a resposta beta, com aumento de contratilidade, frequência cardíaca, débito cardíaco e certa vasodilatação periférica. Conforme a dose sobe, cresce o peso alfa-1, com aumento de RVS e da pressão arterial. Em gatos anestesiados com isoflurano, infusões de 0,125–2 μg/kg/min aumentaram FC, índice cardíaco e SVI; MAP subiu a partir de 0,5 μg/kg/min, mas esse ganho veio junto com aumento de lactato e acidose metabólica progressiva, além do efeito proarrítmico. Meia-vida plasmática curtíssima (1–2 min), tornando a CRI ideal para titulação fina.',
@@ -334,7 +334,7 @@ export const epinephrine: Drug = {
       species: ['dog', 'cat'],
       doseText: 'Anafilaxia/choque: 0,05 mcg/kg/min | Anestesia refratária: 0,1–0,5 (até 2) | Pós-ROSC: 0,1–0,5 (tabela até 1)',
       rationale:
-        'Faixa comum de trabalho no CRIVET: 0,05–0,5 mcg/kg/min. Alerta forte acima de 0,5. Zona avançada: 0,5–1 mcg/kg/min. Acima de 1: apenas excepcional com monitorização intensiva. Titular a cada 10–15 minutos.',
+        'Faixa comum de trabalho: 0,05–0,5 mcg/kg/min. Alerta forte acima de 0,5. Zona avançada: 0,5–1 mcg/kg/min. Acima de 1: apenas excepcional com monitorização intensiva. Titular a cada 10–15 minutos.',
     },
   ],
 

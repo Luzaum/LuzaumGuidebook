@@ -43,7 +43,7 @@ export const modules: Module[] = [
   {
     id: 'fluidoterapia-vet',
     title: 'Fluidoterapia Vet',
-    description: 'Modulo clinico de fluidoterapia veterinaria integrado ao Vetius.',
+    description: 'Cálculos e protocolos clínicos de fluidoterapia veterinária.',
     route: '/fluidoterapia-vet',
     status: 'internal',
     icon: Activity,
@@ -61,7 +61,7 @@ export const modules: Module[] = [
   {
     id: 'hemogasovet',
     title: 'HemoGasoVet',
-    description: 'Interpretacao de hemogasometria arterial e venosa',
+    description: 'Interpretação de hemogasometria arterial e venosa',
     route: '/hemogasovet',
     status: 'internal',
     icon: TestTube,
@@ -79,7 +79,7 @@ export const modules: Module[] = [
   {
     id: 'escalas-dor-mobile',
     title: 'Escalas de Dor MOBILE',
-    description: 'Interface App Native (clone focado em dispositivos móveis)',
+    description: 'Escalas de dor adaptadas para dispositivos móveis.',
     route: '/dor-mobile',
     status: 'internal',
     icon: Cat,
@@ -152,7 +152,7 @@ export const modules: Module[] = [
   {
     id: 'neuro-mobile',
     title: 'Neuro Mobile',
-    description: 'Interface focado em dispositivos móveis da Neurologia Veterinária',
+    description: 'Exame neurológico adaptado para dispositivos móveis.',
     route: '/neuro-mobile',
     status: 'internal',
     icon: Brain,

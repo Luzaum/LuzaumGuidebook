@@ -88,8 +88,8 @@ export default function AccountSettings() {
 
           <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-slate-200">Atualizações de produto</p>
-              <p className="text-xs text-slate-500 mt-0.5">Ser notificado sobre o lançamento de novos módulos e melhorias gerais.</p>
+              <p className="text-sm font-semibold text-slate-200">Novidades</p>
+              <p className="text-xs text-slate-500 mt-0.5">Receber avisos sobre novas ferramentas e melhorias gerais.</p>
             </div>
             <input
               type="checkbox"
@@ -101,8 +101,8 @@ export default function AccountSettings() {
 
           <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-slate-200">Reabrir último módulo</p>
-              <p className="text-xs text-slate-500 mt-0.5">Ir direto para o último módulo utilizado ao acessar a plataforma.</p>
+              <p className="text-sm font-semibold text-slate-200">Reabrir última ferramenta</p>
+              <p className="text-xs text-slate-500 mt-0.5">Retomar diretamente a última ferramenta utilizada.</p>
             </div>
             <input
               type="checkbox"
@@ -115,7 +115,7 @@ export default function AccountSettings() {
           <label className="flex items-center justify-between gap-4 rounded-xl border border-slate-800 bg-slate-900/30 p-4 transition-all hover:bg-slate-900/60 select-none cursor-pointer">
             <div className="min-w-0">
               <p className="text-sm font-semibold text-slate-200">Cabeçalho compacto</p>
-              <p className="text-xs text-slate-500 mt-0.5">Reduzir o tamanho do cabeçalho global do app para obter mais área útil na tela.</p>
+              <p className="text-xs text-slate-500 mt-0.5">Reduzir o cabeçalho para ampliar a área útil de trabalho.</p>
             </div>
             <input
               type="checkbox"

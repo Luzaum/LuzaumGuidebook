@@ -575,7 +575,7 @@ export function normalizeMedicationCatalogBundle(raw: unknown): MedicationCatalo
   return {
     schema_version: toNumberOrNull(input.schema_version) || 1,
     catalog_scope: (safeString(input.catalog_scope) as CatalogScope) || 'global',
-    source: safeString(input.source) || 'Vetius Global Catalog',
+    source: safeString(input.source) || 'Catálogo clínico',
     generated_at: safeString(input.generated_at) || null,
     medications,
   }

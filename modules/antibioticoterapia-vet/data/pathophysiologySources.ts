@@ -8,7 +8,7 @@ export const PATHOPHYSIOLOGY_LITERATURE_NOTE_MARKDOWN = `
 
 ### Base documental (síntese educacional)
 
-Os textos deste módulo integram **síntese clínica** a partir de: *Small Animal Internal Medicine* (Nelson & Couto, 6.ª ed.), *Cunningham's Textbook of Veterinary Physiology* (6.ª ed.), *Pathologic Basis of Veterinary Disease* (7.ª ed.) para **mecanismos de lesão tecidual e patologia** quando aplicável, e princípios de **profilaxia, uso racional de antimicrobianos e prevenção de infecção** alinhados ao **Guia CCIH** (institucional). **Não** substituem manuais completos nem decisão individualizada. A decisão terapêutica permanece dependente de **bula**, **protocolo local** e julgamento clínico.
+Esta **síntese clínica** utiliza *Small Animal Internal Medicine* (Nelson & Couto, 6.ª ed.), *Cunningham's Textbook of Veterinary Physiology* (6.ª ed.), *Pathologic Basis of Veterinary Disease* (7.ª ed.) para **mecanismos de lesão tecidual e patologia** quando aplicável, além de princípios de **profilaxia, uso racional de antimicrobianos e prevenção de infecção** alinhados ao **Guia CCIH** institucional. **Não** substitui os manuais completos nem a decisão individualizada. A conduta permanece dependente de **bula**, **protocolo local** e julgamento clínico.
 `.trim()
 
 /** Mesmo conteúdo, sem cabeçalhos markdown — para parágrafos em `PathophysiologyVisual`. */

@@ -254,7 +254,7 @@ export function PendingTasksPage() {
   }
 
   if (!snapshot.isHydrated) {
-    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando módulo...</div>;
+    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   }
 
   return (

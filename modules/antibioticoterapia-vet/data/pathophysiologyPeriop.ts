@@ -20,7 +20,7 @@ Em muitas cirurgias de tecidos moles e ortopedia eletiva, **cefalosporina 1.ª g
 
 ## Terapêutica perioperatória vs sepse
 
-Se o animal está **séptico** ou em **choque**, o esquema deixa de ser “só profilaxe”: trata-se de **tratamento empírico** de **infecção sistémica** ou foco com **hemocultura**, **fluidos**, **analgesia** e **controlo de causa** — ver ficha **Sepse** do módulo.
+Se o animal está **séptico** ou em **choque**, o esquema deixa de ser “só profilaxia”: trata-se de **tratamento empírico** de **infecção sistémica** ou foco com **hemocultura**, **fluidos**, **analgesia** e **controlo de causa** — consultar também a ficha de **Sepse**.
 
 ## Monitorização e auditoria
 

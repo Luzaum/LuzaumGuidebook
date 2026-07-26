@@ -865,12 +865,12 @@ export default function Protocolos3Page() {
 
       const converted = protocolMedicationToManipuladoV1Draft(item, clinicId)
       setProtocolCompoundedEditorValue(converted)
-      setProtocolCompoundedEditorLegacyNotice('Item legado do protocolo convertido para edição em Manipulados V1.0. Ao salvar, payload_v1 será persistido.')
+      setProtocolCompoundedEditorLegacyNotice('O item foi convertido para edição no formulário completo de manipulados. Revise os campos antes de salvar.')
       setProtocolCompoundedEditorIndex(index)
       setProtocolCompoundedEditorOpen(true)
     } catch (err) {
-      console.error('[Protocolos3] Erro ao abrir editor V1 do manipulado', err)
-      alert(err instanceof Error ? err.message : 'Falha ao abrir o editor V1 do manipulado.')
+      console.error('[Protocolos3] Erro ao abrir o manipulado', err)
+      alert(err instanceof Error ? err.message : 'Falha ao abrir o manipulado.')
     } finally {
       setIsLoadingProtocolCompoundedEditor(false)
     }
@@ -1080,7 +1080,7 @@ export default function Protocolos3Page() {
       console.error('[Protocolos3] Erro ao salvar protocolo', err)
       const errorDetails = safeStringify(err)
       console.error('[Protocolos3] Detalhes do erro:', errorDetails)
-      alert(`Falha ao salvar protocolo\n\nDetalhes:\n${errorDetails}`)
+      alert('Não foi possível salvar o protocolo. Revise os dados e tente novamente.')
     } finally {
       setIsSavingProtocol(false)
     }
@@ -1113,7 +1113,7 @@ export default function Protocolos3Page() {
       setPublishGlobalOpen(true)
     } catch (err) {
       console.error('[Protocolos3] Erro ao abrir publicação global', err)
-      alert(`Falha ao preparar publicação global\n\n${safeStringify(err)}`)
+      alert('Não foi possível preparar o compartilhamento do protocolo. Tente novamente.')
     } finally {
       setIsLoadingGlobalProtocols(false)
     }
@@ -1128,22 +1128,22 @@ export default function Protocolos3Page() {
   const handlePublishGlobalProtocol = useCallback(async () => {
     if (!clinicId || !editingProtocol?.protocol.id || !publishGlobalDraft) return
     if (editingProtocol.medications.some((item) => isCompoundedProtocolMedication(item))) {
-      alert('Este protocolo contém item manipulado clinic-only. A publicação global está bloqueada nesta versão.')
+      alert('Este protocolo contém medicamento manipulado e não pode ser compartilhado.')
       return
     }
 
     const name = publishGlobalDraft.name.trim()
     const slug = slugifyProtocolName(publishGlobalDraft.slug || publishGlobalDraft.name)
     if (!name) {
-      alert('Informe um nome global para publicar o protocolo.')
+      alert('Informe um nome para compartilhar o protocolo.')
       return
     }
     if (!slug) {
-      alert('Slug global inválido.')
+      alert('Não foi possível identificar o protocolo. Revise o nome informado.')
       return
     }
     if (publishGlobalDraft.mode === 'update' && !publishGlobalDraft.globalProtocolId) {
-      alert('Selecione qual protocolo global vinculado deve ser atualizado.')
+      alert('Selecione qual protocolo compartilhado deve ser atualizado.')
       return
     }
 
@@ -1164,13 +1164,13 @@ export default function Protocolos3Page() {
       setLinkedGlobalProtocols(refreshedLinked)
       alert(
         result.mode === 'update'
-        ? `Protocolo global atualizado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
-        : `Protocolo global publicado com sucesso.\n\nSlug: ${result.slug}\nVersão: ${result.version}`
+        ? 'Protocolo compartilhado atualizado com sucesso.'
+        : 'Protocolo compartilhado com sucesso.'
       )
       handleClosePublishGlobalModal()
     } catch (err) {
       console.error('[Protocolos3] Erro ao publicar protocolo global', err)
-      alert(`Falha ao publicar protocolo global\n\n${safeStringify(err)}`)
+      alert('Não foi possível compartilhar o protocolo. Tente novamente.')
     } finally {
       setIsPublishingGlobal(false)
     }
@@ -1189,7 +1189,7 @@ export default function Protocolos3Page() {
         console.error('[Protocolos3] Erro ao excluir protocolo', err)
         const errorDetails = safeStringify(err)
         console.error('[Protocolos3] Detalhes do erro de exclusão:', errorDetails)
-        alert(`Falha ao excluir protocolo\n\nDetalhes:\n${errorDetails}`)
+        alert('Não foi possível excluir o protocolo. Tente novamente.')
       }
     },
     [clinicId, userId, reloadProtocols]
@@ -1210,7 +1210,7 @@ export default function Protocolos3Page() {
         if (selectedFolderId === folderId) setSelectedFolderId(null)
       } catch (err) {
         console.error('[Protocolos3] Erro ao excluir pasta', err)
-        alert(`Falha ao excluir pasta\n\n${safeStringify(err)}`)
+        alert('Não foi possível excluir a pasta. Tente novamente.')
       }
     },
     [clinicId, userId, selectedFolderId]
@@ -1254,14 +1254,12 @@ export default function Protocolos3Page() {
           },
         }
 
-        console.log('[Protocolos3] Payload para Nova Receita 2.0:', payload)
-
         // Navegar para Nova Receita 2.0 com o payload
         navigate('/receituario-vet/nova-receita-2', { state: payload })
 
       } catch (err) {
         console.error('[Protocolos3] Erro ao aplicar protocolo em Nova Receita', err)
-        alert(`Erro ao aplicar protocolo: ${err instanceof Error ? err.message : String(err)}`)
+        alert('Não foi possível aplicar o protocolo à receita.')
       }
     },
     [clinicId, userId, navigate]
@@ -1287,7 +1285,7 @@ export default function Protocolos3Page() {
       } catch (err) {
         console.error('[Protocolos3] Erro ao carregar detalhes do protocolo', err)
         const errorDetails = safeStringify(err)
-        alert(`Falha ao carregar protocolo\n\nDetalhes:\n${errorDetails}`)
+        alert('Não foi possível carregar o protocolo.')
         setSelectedProtocolKey(null)
       }
     },
@@ -1306,7 +1304,7 @@ export default function Protocolos3Page() {
       setGlobalProtocolViewer(bundle)
     } catch (err) {
       console.error('[Protocolos3] Erro ao abrir protocolo global', err)
-      alert(`Falha ao carregar protocolo global\n\n${safeStringify(err)}`)
+      alert('Não foi possível carregar o protocolo compartilhado.')
     } finally {
       setIsLoadingGlobalViewer(false)
     }
@@ -1335,7 +1333,7 @@ export default function Protocolos3Page() {
     } catch (err) {
       console.error('[Protocolos3] Erro ao duplicar protocolo global', err)
       const message = err instanceof Error ? err.message : safeStringify(err)
-      alert(`Falha ao duplicar protocolo global\n\n${message}`)
+      alert('Não foi possível adicionar o protocolo à sua clínica.')
     } finally {
       setIsDuplicatingGlobal(false)
     }
@@ -1360,7 +1358,7 @@ export default function Protocolos3Page() {
     } catch (err) {
       console.error('[Protocolos3] Erro ao excluir protocolo global', err)
       const message = err instanceof Error ? err.message : safeStringify(err)
-      alert(`Falha ao excluir protocolo global\n\n${message}`)
+      alert('Não foi possível excluir o protocolo compartilhado.')
     }
   }, [clinicId, globalProtocolViewer, reloadProtocols])
 
@@ -1413,7 +1411,7 @@ export default function Protocolos3Page() {
         setMedicationSearchQuery('')
       } catch (err) {
         console.error('[Protocolos3] Erro ao adicionar medicamento', err)
-        alert(`Erro ao adicionar medicamento: ${err instanceof Error ? err.message : String(err)}`)
+        alert('Não foi possível adicionar o medicamento.')
       }
     },
     [clinicId, editingProtocol]
@@ -1459,7 +1457,7 @@ export default function Protocolos3Page() {
       setPresentationOptions(presentations)
     } catch (err) {
       console.error('[Protocolos3] Erro ao adicionar medicamento', err)
-      alert(`Erro ao adicionar medicamento: ${err instanceof Error ? err.message : String(err)}`)
+      alert('Não foi possível adicionar o medicamento.')
     } finally {
       setIsLoadingPresentationOptions(false)
     }
@@ -1956,11 +1954,11 @@ export default function Protocolos3Page() {
                           <div className="grid grid-cols-1 gap-3 xl:grid-cols-[minmax(0,1fr)_auto]">
                             <div className="rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_15%,transparent)] bg-[#112114] px-4 py-4 text-sm text-slate-200">
                               <p className="text-[10px] font-black uppercase tracking-[0.18em] text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
-                                Fluxo V1.0 do manipulado no protocolo
+                                Edição completa do manipulado
                               </p>
                               <div className="mt-2 flex flex-wrap gap-2 text-[10px] font-black uppercase tracking-widest">
                                 <span className="rounded-full border border-slate-700 px-2 py-1 text-slate-300">
-                                  {getProtocolCompoundedPayloadV1(med) ? 'Payload V1 ativo' : 'Legado a converter ao editar'}
+                                  {getProtocolCompoundedPayloadV1(med) ? 'Fórmula pronta para uso' : 'Revisar fórmula ao editar'}
                                 </span>
                                 {med.is_controlled ? (
                                   <span className="rounded-full border border-red-500/35 bg-red-500/10 px-2 py-1 text-red-300">Controlado</span>
@@ -1986,7 +1984,7 @@ export default function Protocolos3Page() {
                                 onClick={() => void handleOpenProtocolCompoundedEditor(idx)}
                                 loading={isLoadingProtocolCompoundedEditor && protocolCompoundedEditorIndex === idx}
                               >
-                                Editar no V1.0
+                                Editar fórmula
                               </RxvButton>
                             </div>
                           </div>
@@ -2975,7 +2973,7 @@ export default function Protocolos3Page() {
                     Editar manipulado no protocolo
                   </h2>
                   <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
-                    Fluxo V1.0 rico, sem cair no editor limitado do protocolo.
+                    Edite todos os componentes da fórmula manipulada.
                   </p>
                 </div>
                 <RxvButton variant="secondary" onClick={closeProtocolCompoundedEditor}>
@@ -2994,7 +2992,7 @@ export default function Protocolos3Page() {
                 />
               ) : (
                 <RxvCard className="p-6 text-sm text-slate-400">
-                  Carregando manipulado no fluxo V1.0...
+                  Carregando fórmula manipulada...
                 </RxvCard>
               )}
             </div>
@@ -3602,7 +3600,7 @@ export default function Protocolos3Page() {
                   Salvar como global
                 </h2>
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">
-                  Publica este protocolo para todos os usuários via fluxo server-side
+                  Disponibiliza este protocolo para os demais usuários
                 </p>
               </div>
               <button
@@ -3616,7 +3614,7 @@ export default function Protocolos3Page() {
 
             <div className="space-y-6 px-8 py-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <RxvField label="Nome global do protocolo">
+                <RxvField label="Nome do protocolo compartilhado">
                   <RxvInput
                     value={publishGlobalDraft.name}
                     onChange={(e) =>
@@ -3632,18 +3630,6 @@ export default function Protocolos3Page() {
                   />
                 </RxvField>
 
-                <RxvField label="Slug sugerido">
-                  <RxvInput
-                    value={publishGlobalDraft.slug}
-                    onChange={(e) =>
-                      setPublishGlobalDraft({
-                        ...publishGlobalDraft,
-                        slug: slugifyProtocolName(e.target.value),
-                      })
-                    }
-                    placeholder="gastroenterite-aguda-base"
-                  />
-                </RxvField>
               </div>
 
               <RxvField label="Descrição">
@@ -3656,7 +3642,7 @@ export default function Protocolos3Page() {
                       description: e.target.value,
                     })
                   }
-                  placeholder="Resumo curto do protocolo global"
+                  placeholder="Resumo curto do protocolo"
                 />
               </RxvField>
 
@@ -3678,7 +3664,7 @@ export default function Protocolos3Page() {
                   />
                 </RxvField>
 
-                <RxvField label="Modo de publicação">
+                <RxvField label="Forma de compartilhamento">
                   <RxvSelect
                     value={publishGlobalDraft.mode}
                     onChange={(e) =>
@@ -3693,16 +3679,16 @@ export default function Protocolos3Page() {
                     }
                     options={[
                       ...(linkedGlobalProtocols.length
-                        ? [{ value: 'update', label: 'Atualizar global existente' }]
+                        ? [{ value: 'update', label: 'Atualizar protocolo existente' }]
                         : []),
-                      { value: 'new', label: 'Salvar como novo global' },
+                      { value: 'new', label: 'Salvar como novo protocolo' },
                     ]}
                   />
                 </RxvField>
               </div>
 
               {linkedGlobalProtocols.length > 0 && publishGlobalDraft.mode === 'update' && (
-                <RxvField label="Global vinculado">
+                <RxvField label="Protocolo vinculado">
                   <RxvSelect
                     value={publishGlobalDraft.globalProtocolId}
                     onChange={(e) =>
@@ -3713,13 +3699,13 @@ export default function Protocolos3Page() {
                     }
                     options={linkedGlobalProtocols.map((protocol) => ({
                       value: protocol.id,
-                      label: `${protocol.name} → slug ${protocol.slug} → v${protocol.version}`,
+                      label: protocol.name,
                     }))}
                   />
                 </RxvField>
               )}
 
-              <RxvField label="Tags">
+              <RxvField label="Marcadores">
                 <RxvInput
                   value={publishGlobalDraft.tagsText}
                   onChange={(e) =>
@@ -3728,7 +3714,7 @@ export default function Protocolos3Page() {
                       tagsText: e.target.value,
                     })
                   }
-                  placeholder="Ex: gastro, base, editable"
+                  placeholder="Ex.: gastroenterologia, tratamento inicial"
                 />
               </RxvField>
 
@@ -3816,7 +3802,7 @@ export default function Protocolos3Page() {
                   />
                 </div>
                 <p className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-slate-500">
-                  Resultado unificado: catálogo padrão e catálogo de manipulados V1.0 da clínica
+                  Medicamentos padronizados e fórmulas manipuladas da clínica
                 </p>
               </div>
             )}
@@ -3884,7 +3870,7 @@ export default function Protocolos3Page() {
                   <div className="flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-900/40 px-4 py-3">
                     <div>
                       <p className="text-xs font-semibold text-slate-300">
-                        Revise a fórmula V1.0 que deve entrar no protocolo.
+                        Revise a fórmula manipulada que deve entrar no protocolo.
                       </p>
                     </div>
                     <RxvButton variant="secondary" onClick={() => setCompoundedPickerFormula(null)}>
@@ -3970,7 +3956,7 @@ export default function Protocolos3Page() {
                       <span className="rounded border border-[color:color-mix(in_srgb,var(--rxv-primary)_30%,transparent)] bg-[color:color-mix(in_srgb,var(--rxv-primary)_10%,transparent)] px-2 py-0.5 text-[9px] font-black uppercase tracking-widest text-[color:color-mix(in_srgb,var(--rxv-primary)_72%,#e2e8f0)]">
                         Manipulado
                       </span>
-                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Catálogo V1.0</p>
+                      <p className="text-[10px] font-black uppercase tracking-widest text-slate-500">Fórmulas manipuladas</p>
                     </div>
                     {compoundedMedications.length === 0 ? (
                       <div className="rounded-2xl border border-dashed border-slate-800 bg-slate-900/30 px-4 py-6 text-sm text-slate-500">

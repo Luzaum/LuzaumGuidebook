@@ -81,7 +81,7 @@ export function ConsensoCreatePage() {
 
       navigate(`/consulta-vet/consensos/${created.slug}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Falha ao cadastrar consenso.');
+      setError('Não foi possível cadastrar o consenso.');
     } finally {
       setIsSubmitting(false);
     }
@@ -92,7 +92,7 @@ export function ConsensoCreatePage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-foreground">Adicionar consenso</h1>
-          <p className="mt-1 text-muted-foreground">Cadastro de consenso real com upload de PDF para Supabase Storage.</p>
+          <p className="mt-1 text-muted-foreground">Cadastre o consenso e anexe o documento em PDF.</p>
         </div>
 
         <Link

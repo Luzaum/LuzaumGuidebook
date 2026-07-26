@@ -232,7 +232,7 @@ export const section6DorNocicepcao: HelpTopic[] = [
       'Raízes nervosas da cauda equina e articulação lombossacra. Compressão radicular → dor, paresia, possível disfunção autonômica.',
     howToPerform: 'Evitar repetição; documentar resposta e correlacionar com déficits LMN e urinários.',
     interpretation: 'Com patelar diminuído e alterações urinárias, reforça localização L4–S3.',
-    pitfalls: 'Não correlacionar com exame de cauda e perineal (se existir no app).',
+    pitfalls: 'Não correlacionar com o exame de cauda e períneo quando esses dados estiverem disponíveis.',
   },
   {
     id: 's6-dor-coluna-lombossacra-severa',

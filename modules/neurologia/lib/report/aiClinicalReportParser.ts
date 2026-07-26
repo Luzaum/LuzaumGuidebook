@@ -431,20 +431,20 @@ export function parseAiClinicalReport(content: string): ParsedAiClinicalReport |
     }
 
     if (section === 'neuro') {
-      if (line.startsWith('Localizacao provavel:')) {
-        parsed.neurolocalization.probableLocation = line.replace('Localizacao provavel:', '').trim()
+      if (line.startsWith('Localizacao provável:')) {
+        parsed.neurolocalization.probableLocation = line.replace('Localizacao provável:', '').trim()
         continue
       }
       if (line.startsWith('Distribuicao:')) {
         parsed.neurolocalization.distribution = line.replace('Distribuicao:', '').trim()
         continue
       }
-      if (line.startsWith('Padrao motor:')) {
-        parsed.neurolocalization.motorPattern = line.replace('Padrao motor:', '').trim()
+      if (line.startsWith('Padrão motor:')) {
+        parsed.neurolocalization.motorPattern = line.replace('Padrão motor:', '').trim()
         continue
       }
-      if (line.startsWith('Confianca estimada:')) {
-        parsed.neurolocalization.confidence = line.replace('Confianca estimada:', '').trim()
+      if (line.startsWith('Confiança estimada:')) {
+        parsed.neurolocalization.confidence = line.replace('Confiança estimada:', '').trim()
         continue
       }
       if (line.startsWith('Raciocinio:')) {
@@ -483,8 +483,8 @@ export function parseAiClinicalReport(content: string): ParsedAiClinicalReport |
         currentDifferential.category = line.replace('Categoria:', '').trim()
         continue
       }
-      if (line.startsWith('Sintese clinica:')) {
-        currentDifferential.clinicalFit = line.replace('Sintese clinica:', '').trim()
+      if (line.startsWith('Sintese clínica:')) {
+        currentDifferential.clinicalFit = line.replace('Sintese clínica:', '').trim()
         differentialListTarget = null
         continue
       }
@@ -504,7 +504,7 @@ export function parseAiClinicalReport(content: string): ParsedAiClinicalReport |
         differentialListTarget = 'patientAssessment'
         continue
       }
-      if (line === 'Monitorizacao e reavaliacao:') {
+      if (line === 'Monitorização e reavaliação:') {
         differentialListTarget = 'monitoringPlan'
         continue
       }
@@ -512,11 +512,11 @@ export function parseAiClinicalReport(content: string): ParsedAiClinicalReport |
         differentialListTarget = 'treatmentPlan'
         continue
       }
-      if (line === 'Farmacos que posso considerar:') {
+      if (line === 'Fármacos que posso considerar:') {
         differentialListTarget = 'allowedDrugs'
         continue
       }
-      if (line === 'Farmacos a evitar ou ajustar:' || line === 'Armadilhas clinicas:') {
+      if (line === 'Fármacos a evitar ou ajustar:' || line === 'Armadilhas clinicas:') {
         differentialListTarget = 'avoidDrugs'
         continue
       }

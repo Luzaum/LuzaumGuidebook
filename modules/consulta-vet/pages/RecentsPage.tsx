@@ -99,7 +99,7 @@ export function RecentsPage() {
       } catch (loadError) {
         if (!isMounted) return;
         setItems([]);
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar recentes.');
+        setError('Não foi possível carregar os itens recentes.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

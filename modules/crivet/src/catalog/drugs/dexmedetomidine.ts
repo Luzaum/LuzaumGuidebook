@@ -168,7 +168,7 @@ export const dexmedetomidine: Drug = {
     {
       id: 'v-dex-bsa',
       condition: (_p, _d, unit) => unit.includes('m2'),
-      message: 'Dose em BSA (m2): O app calcula automaticamente com base no peso. Verifique se a dose em mcg/m2 condiz com o rótulo.',
+      message: 'Dose por superfície corporal (m²): o cálculo utiliza o peso informado. Verifique se a dose em mcg/m² corresponde ao rótulo.',
       level: 'info',
     },
     {

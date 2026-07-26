@@ -1,6 +1,6 @@
 [
   {
-    "name": "Encefalopatia metabolica sistemica (hepatica, uremica, hipoxica ou hipoglicemica)",
+    "name": "Encefalopatia metabólica sistêmica (hepática, uremica, hipoxica ou hipoglicemica)",
     "category": "TOXICO_METABOLICA",
     "rules": {
       "course": ["AGUDO", "SUBAGUDO", "EPISODICO"],
@@ -10,33 +10,33 @@
       "comorbidityCautions": ["RENOPATA", "HEPATOPATA", "PNEUMOPATA", "ENDOCRINOPATA"]
     },
     "whyTemplates": [
-      "Comorbidades sistemicas e sinais encefalicos flutuantes tornam encefalopatia metabolica uma das primeiras hipoteses em padrao multifocal ou difuso.",
+      "Comorbidades sistemicas e sinais encefalicos flutuantes tornam encefalopatia metabólica uma das primeiras hipoteses em padrão multifocal ou difuso.",
       "Convulsoes, cegueira cortical aparente, colapso e variacao de mentacao podem ocorrer em descompensacoes metabolicas."
     ],
     "diagnostics": [
       {
         "test": "Bioquimica completa, glicemia, eletrolitos, gasometria e amonia quando indicado",
         "priority": "ALTA",
-        "whatItAssesses": "Procura encefalopatia hepatica, uremia, hipoglicemia, disturbios eletroliticos e hipercapnia/hipoxemia.",
-        "expectedFindings": "Alteracoes renais, hepaticas, glicemicas, eletroliticas ou acidobasicas compativeis com descompensacao sistemica.",
+        "whatItAssesses": "Procura encefalopatia hepática, uremia, hipoglicemia, disturbios eletroliticos e hipercapnia/hipoxemia.",
+        "expectedFindings": "Alteracoes renais, hepaticas, glicemicas, eletroliticas ou acidobasicas compativeis com descompensacao sistêmica.",
         "limitations": "Pode coexistir com lesao estrutural intracraniana."
       },
       {
-        "test": "Pressao arterial, oximetria e avaliacao respiratoria",
+        "test": "Pressão arterial, oximetria e avaliação respiratória",
         "priority": "ALTA",
         "whatItAssesses": "Detecta fatores agravantes como hipertensao, hipoxemia e hipoventilacao.",
-        "expectedFindings": "Hipertensao, dessaturacao ou padrao respiratorio anormal.",
-        "limitations": "Nao define sozinho se o foco primario e metabolico ou estrutural."
+        "expectedFindings": "Hipertensao, dessaturacao ou padrão respiratório anormal.",
+        "limitations": "Não define sozinho se o foco primário e metabólico ou estrutural."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Correcao de glicose, eletrolitos e acidobase", "Controle de convulsoes e protecao de via aerea"],
-        "cautions": ["Ajustar fluidos e farmacos para rim, figado e funcao respiratoria"]
+        "plan": ["Suporte intensivo", "Correção de glicose, eletrolitos e acidobase", "Controle de convulsoes e protecao de via aérea"],
+        "cautions": ["Ajustar fluidos e fármacos para rim, figado e função respiratória"]
       },
       "DEFINITIVO": {
-        "plan": ["Tratar a doenca de base", "Reavaliar neurologicamente apos correcao metabolica"],
-        "cautions": ["Persistencia do deficit apos estabilizacao exige imagem de SNC"]
+        "plan": ["Tratar a doença de base", "Reavaliar neurologicamente após correção metabólica"],
+        "cautions": ["Persistencia do déficit após estabilizacao exige imagem de SNC"]
       }
     }
   },
@@ -58,25 +58,25 @@
       {
         "test": "RM de encefalo e juncao craniocervical",
         "priority": "ALTA",
-        "whatItAssesses": "Mapeia lesoes multifocais, edema, realce meningeo e padrao inflamatorio.",
+        "whatItAssesses": "Mapeia lesoes multifocais, edema, realce meningeo e padrão inflamatorio.",
         "expectedFindings": "Lesoes multifocais ou multifocais-assimetricas em prosencefalo, tronco ou meninges.",
-        "limitations": "Padrao pode sobrepor neoplasia ou infecciosa."
+        "limitations": "Padrão pode sobrepor neoplasia ou infecciosa."
       },
       {
-        "test": "Liquor apos imagem segura",
+        "test": "Liquor após imagem segura",
         "priority": "ALTA",
         "whatItAssesses": "Confirma inflamacao e ajuda a excluir infecciosa.",
-        "expectedFindings": "Pleocitose e proteina elevada com predominio mononuclear ou misto.",
+        "expectedFindings": "Pleocitose e proteína elevada com predominio mononuclear ou misto.",
         "limitations": "Contraindicado se houver hipertensao intracraniana significativa."
       }
     ],
     "treatment": {
       "0-6H": {
         "plan": ["Suporte intensivo", "Controle de convulsoes", "Analgesia e planejamento de RM/liquor"],
-        "cautions": ["Evitar imunossupressao cega sem excluir infecciosa quando clinicamente possivel"]
+        "cautions": ["Evitar imunossupressao cega sem excluir infecciosa quando clinicamente possível"]
       },
       "DEFINITIVO": {
-        "plan": ["Imunossupressao direcionada", "Reavaliacao seriada e ajuste por resposta"],
+        "plan": ["Imunossupressao direcionada", "Reavaliação seriada e ajuste por resposta"],
         "cautions": ["Monitorar infeccao secundária e efeitos adversos da terapia"]
       }
     }
@@ -92,33 +92,33 @@
       "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
     },
     "whyTemplates": [
-      "Padrao multifocal com convulsoes, deficits de pares cranianos e progressao mantem infecciosa na lista principal.",
-      "Historia sistemica, febre, exposicao e imunossupressao aumentam ainda mais a prioridade."
+      "Padrão multifocal com convulsoes, deficits de pares cranianos e progressao mantem infecciosa na lista principal.",
+      "Historia sistêmica, febre, exposicao e imunossupressao aumentam ainda mais a prioridade."
     ],
     "diagnostics": [
       {
         "test": "Hemograma, bioquimica, sorologias/PCR direcionados e liquor",
         "priority": "ALTA",
-        "whatItAssesses": "Procura inflamacao sistemica e agentes infecciosos neurotroficos relevantes para a regiao e especie.",
-        "expectedFindings": "Inflamacao sistemica, liquor inflamatorio e testes direcionados positivos conforme etiologia.",
+        "whatItAssesses": "Procura inflamacao sistêmica e agentes infecciosos neurotroficos relevantes para a região e especie.",
+        "expectedFindings": "Inflamacao sistêmica, liquor inflamatorio e testes direcionados positivos conforme etiologia.",
         "limitations": "Painel depende de epidemiologia e disponibilidade local."
       },
       {
         "test": "RM de encefalo e coluna cervical",
         "priority": "ALTA",
         "whatItAssesses": "Procura distribuicao e gravidade das lesoes infecciosas do SNC.",
-        "expectedFindings": "Lesoes multifocais, meningeas, necroticas ou padrao encefalitico.",
-        "limitations": "Nao substitui teste etiologico."
+        "expectedFindings": "Lesoes multifocais, meningeas, necroticas ou padrão encefalitico.",
+        "limitations": "Não substitui teste etiologico."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte", "Controle de convulsoes", "Antimicrobiano empirico apenas se a suspeita clinica justificar"],
+        "plan": ["Suporte", "Controle de convulsoes", "Antimicrobiano empirico apenas se a suspeita clínica justificar"],
         "cautions": ["Ajustar antimicrobianos em renopatas e hepatopatas"]
       },
       "DEFINITIVO": {
-        "plan": ["Terapia especifica conforme agente e especie", "Monitorizacao neurologica e sistemica seriada"],
-        "cautions": ["Rever necessidade de imunossupressao se infecciosa nao foi totalmente excluida"]
+        "plan": ["Terapia especifica conforme agente e especie", "Monitorização neurologica e sistêmica seriada"],
+        "cautions": ["Rever necessidade de imunossupressao se infecciosa não foi totalmente excluida"]
       }
     }
   },
@@ -140,9 +140,9 @@
       {
         "test": "RM de encefalo com contraste e estadiamento toracico/abdominal",
         "priority": "ALTA",
-        "whatItAssesses": "Define numero, localizacao, edema e possibilidade de doenca sistemica associada.",
+        "whatItAssesses": "Define numero, localizacao, edema e possibilidade de doença sistêmica associada.",
         "expectedFindings": "Lesoes expansivas, infiltrativas, multifocais ou efeito de massa.",
-        "limitations": "Diagnostico definitivo pode depender de citologia, biopsia ou resposta terapeutica."
+        "limitations": "Diagnóstico definitivo pode depender de citologia, biopsia ou resposta terapeutica."
       }
     ],
     "treatment": {
@@ -151,7 +151,7 @@
         "cautions": ["Cautela com manitol, contraste e anestesia em renopatas e pneumopatas"]
       },
       "DEFINITIVO": {
-        "plan": ["Radioterapia, cirurgia, quimioterapia ou paliacao conforme topografia e objetivo clinico"],
+        "plan": ["Radioterapia, cirurgia, quimioterapia ou paliacao conforme topografia e objetivo clínico"],
         "cautions": ["Prognostico depende da histologia e do efeito de massa"]
       }
     }
@@ -172,21 +172,21 @@
     ],
     "diagnostics": [
       {
-        "test": "Pressao arterial, hemograma/coagulograma e RM de encefalo",
+        "test": "Pressão arterial, hemograma/coagulograma e RM de encefalo",
         "priority": "ALTA",
         "whatItAssesses": "Documenta hipertensao e procura infartos, hemorragia ou edema vasogenico.",
-        "expectedFindings": "Hipertensao sistemica, lesoes vasculares focais ou multiplas.",
+        "expectedFindings": "Hipertensao sistêmica, lesoes vasculares focais ou multiplas.",
         "limitations": "RM e o melhor exame para confirmar evento vascular."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Oxigenacao, perfusao adequada e controle de hipertensao quando presente"],
+        "plan": ["Suporte intensivo", "Oxigenação, perfusão adequada e controle de hipertensao quando presente"],
         "cautions": ["Evitar hipotensao iatrogenica e avaliar risco de contraste/anestesia"]
       },
       "DEFINITIVO": {
         "plan": ["Tratar fator predisponente e reabilitacao neurologica"],
-        "cautions": ["Reavaliar proteina urinaria, endocrinopatias e coagulopatias"]
+        "cautions": ["Reavaliar proteína urinária, endocrinopatias e coagulopatias"]
       }
     }
   },
@@ -201,14 +201,14 @@
       "comorbidityCautions": ["HEPATOPATA"]
     },
     "whyTemplates": [
-      "Toxinas e farmacos podem combinar convulsoes, ataxia, cegueira, deficits de pares cranianos e alteracoes difusas.",
-      "Historico de exposicao ambiental, ectoparasiticidas, ivermectina, metaldeido ou medicacoes deve ser ativamente buscado."
+      "Toxinas e fármacos podem combinar convulsoes, ataxia, cegueira, deficits de pares cranianos e alteracoes difusas.",
+      "Histórico de exposicao ambiental, ectoparasiticidas, ivermectina, metaldeido ou medicacoes deve ser ativamente buscado."
     ],
     "diagnostics": [
       {
         "test": "Anamnese toxicológica dirigida e exames laboratoriais basicos",
         "priority": "ALTA",
-        "whatItAssesses": "Procura exposicoes, hipoperfusao, hipertermia, acidose e danos secundarios.",
+        "whatItAssesses": "Procura exposicoes, hipoperfusão, hipertermia, acidose e danos secundarios.",
         "expectedFindings": "Achados variaveis e, muitas vezes, inespecificos.",
         "limitations": "Confirmatorios laboratoriais sao raros na pratica."
       }
@@ -216,11 +216,11 @@
     "treatment": {
       "0-6H": {
         "plan": ["Descontaminacao quando indicada", "Suporte intensivo", "Controle de convulsoes e tremores"],
-        "cautions": ["Evitar farmacos hepatotoxicos e sedacao excessiva em pneumopatas"]
+        "cautions": ["Evitar fármacos hepatotoxicos e sedação excessiva em pneumopatas"]
       },
       "DEFINITIVO": {
-        "plan": ["Terapia especifica quando o agente for conhecido", "Monitorizacao ate resolucao neurologica"],
-        "cautions": ["Reavaliar funcao hepatica e renal durante a recuperacao"]
+        "plan": ["Terapia especifica quando o agente for conhecido", "Monitorização ate resolucao neurologica"],
+        "cautions": ["Reavaliar função hepática e renal durante a recuperacao"]
       }
     }
   },
@@ -235,31 +235,31 @@
       "comorbidityCautions": ["HEPATOPATA"]
     },
     "whyTemplates": [
-      "Deficiencias nutricionais podem gerar combinacao de prosencefalo, vestibular central e alteracao de consciencia.",
-      "Pacientes inapetentes, com dieta inadequada, vomito crônico ou doenca sistemica devem manter essa hipotese viva."
+      "Deficiencias nutricionais podem gerar combinacao de prosencefalo, vestibular central e alteração de consciencia.",
+      "Pacientes inapetentes, com dieta inadequada, vômito crônico ou doença sistêmica devem manter essa hipotese viva."
     ],
     "diagnostics": [
       {
         "test": "Historia nutricional, RM de encefalo e perfil laboratorial",
         "priority": "MEDIA",
-        "whatItAssesses": "Procura causa carencial e padrao de lesao encefalica compativel.",
+        "whatItAssesses": "Procura causa carencial e padrão de lesao encefalica compatível.",
         "expectedFindings": "Historia sugestiva e, em alguns casos, lesoes bilaterais centrais em imagem.",
-        "limitations": "Diagnostico muitas vezes e presuntivo e baseado em resposta terapeutica."
+        "limitations": "Diagnóstico muitas vezes e presuntivo e baseado em resposta terapeutica."
       }
     ],
     "treatment": {
       "0-6H": {
         "plan": ["Suporte intensivo", "Reposicao de tiamina quando houver suspeita razoavel"],
-        "cautions": ["Nao atrasar suporte basico aguardando confirmacao definitiva"]
+        "cautions": ["Não atrasar suporte basico aguardando confirmacao definitiva"]
       },
       "DEFINITIVO": {
-        "plan": ["Correcao nutricional e manejo da causa primaria"],
+        "plan": ["Correção nutricional e manejo da causa primária"],
         "cautions": ["Reavaliar resposta neurologica em 24 a 72 horas"]
       }
     }
   },
   {
-    "name": "Doenca infecciosa sistemica com envolvimento neurologico multifocal",
+    "name": "Doença infecciosa sistêmica com envolvimento neurologico multifocal",
     "category": "INFECCIOSA",
     "rules": {
       "course": ["AGUDO", "SUBAGUDO", "CRONICO"],
@@ -269,26 +269,26 @@
       "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
     },
     "whyTemplates": [
-      "Doenca infecciosa sistemica pode explicar sinais neurologicos multifocais sem uma unica lesao anatomica dominante.",
-      "Contexto de febre, perda de peso, immunossupressao ou alteracao organica reforca essa linha."
+      "Doença infecciosa sistêmica pode explicar sinais neurologicos multifocais sem uma única lesao anatomica dominante.",
+      "Contexto de febre, perda de peso, immunossupressao ou alteração organica reforca essa linha."
     ],
     "diagnostics": [
       {
         "test": "Hemograma, bioquimica, imagem de triagem e painel infeccioso direcionado",
         "priority": "ALTA",
         "whatItAssesses": "Procura foco sistemico e agentes provaveis para o perfil do paciente.",
-        "expectedFindings": "Inflamacao sistemica, alteracoes organicas e testes compatíveis com a etiologia.",
-        "limitations": "Necessita selecao racional conforme regiao, especie e exposicao."
+        "expectedFindings": "Inflamacao sistêmica, alteracoes organicas e testes compatíveis com a etiologia.",
+        "limitations": "Necessita selecao racional conforme região, especie e exposicao."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte", "Estabilizacao clinica e coleta de exames antes de terapia dirigida quando possivel"],
-        "cautions": ["Nao atrasar antimicrobiano se houver sepse, mas evitar terapia cega ampla sem plano diagnostico"]
+        "plan": ["Suporte", "Estabilizacao clínica e coleta de exames antes de terapia dirigida quando possível"],
+        "cautions": ["Não atrasar antimicrobiano se houver sepse, mas evitar terapia cega ampla sem plano diagnóstico"]
       },
       "DEFINITIVO": {
-        "plan": ["Tratamento especifico conforme agente e monitorizacao de resposta"],
-        "cautions": ["Reavaliar SNC se persistir deficit apos estabilizacao sistemica"]
+        "plan": ["Tratamento especifico conforme agente e monitorização de resposta"],
+        "cautions": ["Reavaliar SNC se persistir déficit após estabilizacao sistêmica"]
       }
     }
   },
@@ -303,8 +303,8 @@
       "comorbidityCautions": []
     },
     "whyTemplates": [
-      "Malformacoes e hidrocefalia podem combinar sinais de prosencefalo, alteracao visual central e ataxia difusa.",
-      "Essa hipotese sobe em jovens, microcaes, braquicefalicos e casos com historico cronicamente progressivo."
+      "Malformacoes e hidrocefalia podem combinar sinais de prosencefalo, alteração visual central e ataxia difusa.",
+      "Essa hipotese sobe em jovens, microcaes, braquicefalicos e casos com histórico cronicamente progressivo."
     ],
     "diagnostics": [
       {
@@ -312,13 +312,13 @@
         "priority": "ALTA",
         "whatItAssesses": "Avalia ventriculos, malformacoes e anomalias estruturais associadas.",
         "expectedFindings": "Ventriculomegalia, disgenesias ou outras alteracoes estruturais centrais.",
-        "limitations": "Menos provavel em geriatricos sem historia antiga."
+        "limitations": "Menos provável em geriatricos sem historia antiga."
       }
     ],
     "treatment": {
       "0-6H": {
         "plan": ["Suporte e controle de convulsoes quando presentes"],
-        "cautions": ["Individualizar manejo conforme pressao intracraniana e causa estrutural"]
+        "cautions": ["Individualizar manejo conforme pressão intracraniana e causa estrutural"]
       },
       "DEFINITIVO": {
         "plan": ["Tratamento medico ou cirurgico conforme a anomalia identificada"],

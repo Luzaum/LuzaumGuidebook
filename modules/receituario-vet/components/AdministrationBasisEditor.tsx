@@ -58,7 +58,7 @@ export function AdministrationBasisEditor({
         <RxvToggle
           checked={isCustomBasis}
           onChange={(checked) => onBasisChange(checked ? 'per_animal' : 'weight_based')}
-          label="Administracao por unidade / sitio"
+          label="Administração por unidade / sitio"
         />
         {isCustomBasis && previewText ? (
           <span className="rounded-full border border-[color:var(--rxv-primary)]/30 bg-[color:var(--rxv-primary)]/8 px-3 py-0.5 text-[11px] font-semibold text-[color:var(--rxv-primary)]">
@@ -69,7 +69,7 @@ export function AdministrationBasisEditor({
 
       {isCustomBasis ? (
         <div className="mt-2 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-          <RxvField label="Modo de administracao">
+          <RxvField label="Modo de administração">
             <RxvSelect
               value={normalizedBasis || 'per_animal'}
               onChange={(e) => onBasisChange(normalizeAdministrationBasis(e.target.value))}
@@ -88,7 +88,7 @@ export function AdministrationBasisEditor({
             />
           </RxvField>
 
-          <RxvField label="Unidade de administracao">
+          <RxvField label="Unidade de administração">
             <RxvSelect
               value={administrationUnit || ''}
               onChange={(e) => onUnitChange(e.target.value)}

@@ -35,8 +35,8 @@ export const AAP_NAV_GROUPS: { title: string; items: AapNavEntry[] }[] = [
   {
     title: 'Ferramentas',
     items: [
-      { kind: 'page', page: 'histórico', label: 'Dr. Luzaum AI', icon: Sparkles, badge: 'IA' },
-      { kind: 'action', id: 'ajuda', label: 'Ajuda do módulo', icon: HelpCircle },
+      { kind: 'page', page: 'histórico', label: 'Dr. Luzaum IA', icon: Sparkles, badge: 'IA' },
+      { kind: 'action', id: 'ajuda', label: 'Ajuda', icon: HelpCircle },
     ],
   },
 ]

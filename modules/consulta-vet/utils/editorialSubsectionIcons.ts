@@ -70,6 +70,7 @@ const TOPIC_ICONS: Record<string, LucideIcon> = {
   decisaoInicial: Lightbulb,
   drcDietaRenal: Package,
   drcMetasFosforoIRIS: Target,
+  drcCondutaPraticaPorEstagioEspecie: Table2,
   drcFosforoQuelantes: FlaskConical,
   drcProteinuriaRaas: Activity,
   drcHipertensao: HeartPulse,

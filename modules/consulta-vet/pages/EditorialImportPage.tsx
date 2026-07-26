@@ -72,7 +72,7 @@ export function EditorialImportPage() {
             setValidationResult({
                 validCount: 0,
                 invalidCount: 1,
-                errors: [{ index: 0, message: error instanceof Error ? error.message : 'Erro genérico ao processar JSON.' }],
+                errors: [{ index: 0, message: error instanceof Error ? error.message : 'Não foi possível processar o arquivo.' }],
             });
             setStep('input');
         }
@@ -114,8 +114,8 @@ export function EditorialImportPage() {
         <div className="mx-auto w-full max-w-5xl space-y-8 p-4 md:p-8">
             <ConsultaVetPageHero
                 eyebrow="Editorial"
-                title="Importar via JSON"
-                description="Ferramenta administrativa para upload massivo e atualização por batch gerados por IAs (NeuroVet, GenAI)."
+                title="Importar conteúdo"
+                description="Importação em lote para revisar e atualizar conteúdo clínico."
                 icon={Database}
                 accent="cyan"
             />
@@ -173,7 +173,7 @@ export function EditorialImportPage() {
                     {step === 'validating' && (
                         <div className="flex h-48 flex-col items-center justify-center gap-4 rounded-[28px] border border-border bg-card">
                             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                            <p className="text-sm font-medium text-foreground">Validando schema do JSON...</p>
+                            <p className="text-sm font-medium text-foreground">Validando dados...</p>
                         </div>
                     )}
 
@@ -204,7 +204,7 @@ export function EditorialImportPage() {
                     {step === 'importing' && (
                         <div className="flex h-48 flex-col items-center justify-center gap-4 rounded-[28px] border border-border bg-card">
                             <Loader2 className="h-8 w-8 animate-spin text-primary" />
-                            <p className="text-sm font-medium text-foreground">Efetivando alterações no Supabase...</p>
+                            <p className="text-sm font-medium text-foreground">Salvando alterações...</p>
                         </div>
                     )}
 

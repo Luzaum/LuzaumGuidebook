@@ -666,9 +666,6 @@ export async function saveCompoundedMedicationBundle(params: {
       params.clinicId
     )
     upsertLocalBundle(params.clinicId, bundle)
-    if (import.meta.env.DEV) {
-      console.warn('[CompoundedRecords] save fallback to local storage', error)
-    }
     return bundle
   }
 }

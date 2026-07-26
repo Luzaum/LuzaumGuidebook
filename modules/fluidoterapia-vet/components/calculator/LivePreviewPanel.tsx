@@ -47,7 +47,7 @@ export function LivePreviewPanel({
         <div className="sticky top-0 z-20 border-b border-slate-200/60 bg-white/80 p-6 backdrop-blur dark:border-slate-800/60 dark:bg-slate-900/80">
           <h3 className="flex items-center gap-2 text-xl font-bold text-slate-900 dark:text-slate-100">
             <Activity className="h-5 w-5 text-teal-500" />
-            Preview clínico
+            Visualização clínica
           </h3>
           <p className="mt-1 text-sm text-slate-500">Calcula, justifica e lembra o que precisa ser monitorado.</p>
         </div>

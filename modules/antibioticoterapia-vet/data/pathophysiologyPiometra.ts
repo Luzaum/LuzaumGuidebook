@@ -130,12 +130,12 @@ export const PIOMETRA_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
           { title: 'Estabilizar', subtitle: 'Fluidos, analgesia, oxigénio; identificar sepse e coagulopatia.' },
           { title: 'OHE quando possível', subtitle: 'Remove progesterona e foco infeccioso — standard na maioria dos serviços.' },
           { title: 'ATB sistémico', subtitle: 'Adjuvante: cobrir Gram-negativos e anaeróbios conforme protocolo; IV se instável.' },
-          { title: 'Pós-operatório', subtitle: 'Duração por cultura, resolução clínica e stewardship — não número mágico isolado.' },
+          { title: 'Pós-operatório', subtitle: 'Definir a duração pela cultura e resolução clínica, não por um número isolado.' },
         ],
       },
       paragraphs: [
         '**Terapia exclusivamente médica** (prostaglandinas, antiprogestágenos conforme protocolo e jurisdição) é **reservada** a casos seleccionados, equipa experiente e **monitorização** estreita — risco de **ruptura uterina**, **recidiva** e **infertilidade**.',
-        'Neste módulo, as **linhas antimicrobianas** cadastradas para piometra são **modelos** de monoterapia ou alternativas — devem ser integradas com **bula**, **estabilidade** do doente e **protocolo local**.',
+        'As **linhas antimicrobianas** descritas para piometra representam opções de monoterapia ou alternativas — devem ser integradas com **bula**, **estabilidade** do doente e **protocolo local**.',
       ],
       callout: {
         kind: 'clinical',

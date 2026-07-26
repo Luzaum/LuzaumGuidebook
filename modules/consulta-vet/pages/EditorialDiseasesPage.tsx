@@ -49,24 +49,23 @@ const SECTION_FIELDS: Array<{ key: keyof DiseaseFormState; label: string; hint?:
   { key: 'etiology', label: '1. Etiologia', rows: 8 },
   { key: 'epidemiology', label: '2. Epidemiologia', rows: 7 },
   { key: 'pathogenesisTransmission', label: '3. Patogênese / transmissão', rows: 8 },
-  { key: 'pathophysiology', label: '4. Fisiopatologia', hint: 'Aceita texto, lista por linha ou JSON.', rows: 10 },
+  { key: 'pathophysiology', label: '4. Fisiopatologia', hint: 'Use texto corrido ou um item por linha.', rows: 10 },
   {
     key: 'clinicalSignsPathophysiology',
     label: '5. Sinais clínicos (correlacionar com fisiopatologia)',
-    hint: 'Aceita texto, lista por linha ou JSON.',
+    hint: 'Use texto corrido ou um item por linha.',
     rows: 12,
   },
   {
     key: 'diagnosis',
     label: '6. Como diagnosticar',
-    hint:
-      'Ordem dos exames por importância. Para passos em JSON, use array com title, description, stepNumber e isGoldStandard: true no padrão ouro.',
+    hint: 'Liste os exames por ordem de importância e identifique claramente o padrão-ouro.',
     rows: 12,
   },
   {
     key: 'treatment',
     label: '7. Como tratar',
-    hint: 'Prioridade do tratamento e terapias adjuvantes. Aceita texto ou JSON.',
+    hint: 'Organize o tratamento por prioridade e inclua as terapias adjuvantes.',
     rows: 12,
   },
   { key: 'prevention', label: '8. Prevenção', rows: 7 },
@@ -163,7 +162,7 @@ export function EditorialDiseasesPage() {
       setSelectedSlug(selected?.slug || null);
       setForm(selected ? mapDiseaseToForm(selected) : createEmptyDisease());
     } catch (loadError) {
-      setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar doenças.');
+      setError('Não foi possível carregar as doenças.');
     } finally {
       setIsLoadingData(false);
     }
@@ -259,7 +258,7 @@ export function EditorialDiseasesPage() {
       await load(saved.slug);
       setSuccess(form.isPublished ? 'Doença publicada e salva com sucesso.' : 'Doença salva como rascunho.');
     } catch (saveError) {
-      setError(saveError instanceof Error ? saveError.message : 'Falha ao salvar doença.');
+      setError('Não foi possível salvar a doença. Revise os dados e tente novamente.');
     } finally {
       setIsSaving(false);
     }
@@ -270,7 +269,7 @@ export function EditorialDiseasesPage() {
       <ConsultaVetPageHero
         eyebrow="Editorial"
         title="Doenças"
-        description="Edição estruturada dos blocos rápidos, seções clínicas, referências e relacionamentos, preservando a UI pública e o fallback híbrido do módulo."
+        description="Edite blocos rápidos, seções clínicas, referências e relacionamentos."
         icon={Stethoscope}
         accent="primary"
       />
@@ -337,14 +336,11 @@ export function EditorialDiseasesPage() {
                       <div className="min-w-0">
                         <p className="font-medium text-foreground">{item.title}</p>
                         <p className="mt-1 text-xs text-muted-foreground">
-                          {item.category} • {item.species.join('/')} • {item.slug}
+                          {item.category} • {item.species.map((species) => species === 'dog' ? 'Cães' : 'Gatos').join(' e ')}
                         </p>
                       </div>
                       <div className="flex shrink-0 items-center gap-2">
                         <StatusBadge isPublished={item.isPublished} />
-                        <span className="rounded-full border border-border px-2 py-0.5 text-[11px] uppercase tracking-wider text-muted-foreground">
-                          {item.source || 'seed'}
-                        </span>
                       </div>
                     </div>
                   </button>
@@ -360,8 +356,7 @@ export function EditorialDiseasesPage() {
                   {form.id ? 'Editar doença' : 'Nova doença'}
                 </h2>
             <p className="mt-1 text-sm text-muted-foreground">
-              Modelo em 9 blocos clínicos + faixa de decisão rápida (até 5 frases). Diagnóstico: ordene exames por importância; marque padrão ouro com JSON{' '}
-              <code className="rounded bg-muted px-1">isGoldStandard: true</code> nos passos.
+              Organize o conteúdo em nove blocos clínicos e uma faixa de decisão rápida com até cinco frases. No diagnóstico, ordene os exames por importância e identifique o padrão-ouro.
             </p>
               </div>
               <div className="flex items-center gap-3">
@@ -385,14 +380,6 @@ export function EditorialDiseasesPage() {
                     onChange={(event) => setForm((current) => ({ ...current, title: event.target.value }))}
                     className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                     required
-                  />
-                </EditorialField>
-
-                <EditorialField label="Slug" hint="Se vazio, será gerado do título.">
-                  <input
-                    value={form.slug}
-                    onChange={(event) => setForm((current) => ({ ...current, slug: event.target.value }))}
-                    className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
                   />
                 </EditorialField>
 
@@ -460,7 +447,7 @@ export function EditorialDiseasesPage() {
             </section>
 
             <section className="space-y-4">
-              <h3 className="text-base font-semibold text-foreground">Decisão rápida (horizontal no app)</h3>
+              <h3 className="text-base font-semibold text-foreground">Decisão rápida</h3>
               <EditorialField
                 label="Até 5 frases curtas"
                 hint="Uma frase por linha. Apenas o essencial para triagem — aparecem como cartões horizontais na ficha."

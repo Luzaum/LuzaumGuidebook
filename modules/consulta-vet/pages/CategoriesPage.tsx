@@ -25,7 +25,7 @@ export function CategoriesPage() {
       } catch (loadError) {
         if (!isMounted) return;
         setCategories([]);
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar categorias.');
+        setError('Não foi possível carregar as categorias.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

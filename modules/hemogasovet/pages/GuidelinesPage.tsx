@@ -82,7 +82,7 @@ export default function GuidelinesPage() {
                 </li>
                 <li className="flex gap-3 text-sm text-amber-800 dark:text-amber-400/80">
                   <ArrowRight className="w-4 h-4 shrink-0 mt-0.5" />
-                  <span>Se o Anion Gap está alto, HÁ um ácido orgânico oculto matando o paciente, mesmo se o pH estiver normal.</span>
+                  <span>Hiato aniônico (AG) elevado indica acúmulo de ânions não mensurados e exige investigação, mesmo quando o pH está no intervalo de referência.</span>
                 </li>
                 <li className="flex gap-3 text-sm text-amber-800 dark:text-amber-400/80">
                   <ArrowRight className="w-4 h-4 shrink-0 mt-0.5" />
@@ -103,7 +103,7 @@ export default function GuidelinesPage() {
                 pCO2 = (1.5 × HCO3) + 8 ± 2
               </div>
               <p className="text-xs text-blue-700 dark:text-blue-400 mt-3">
-                O Vetius faz todo o cálculo de compensação esperado automaticamente no interpretador!
+                Compare o valor medido com a compensação esperada para identificar distúrbios mistos.
               </p>
             </div>
           </div>

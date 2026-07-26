@@ -123,7 +123,7 @@ export const TOOLTIPS = {
   pCO2: 'Componente respiratório. O aumento causa acidose respiratória (hipoventilação). A queda causa alcalose respiratória.',
   pO2: 'Pressão parcial de oxigênio. Para avaliar oxigenação, precisa ser amostra arterial.',
   HCO3: 'Componente metabólico primário. Calculado a partir de pCO2 e pH. Queda indica acidose metabólica.',
-  BE: 'Base Excess. Indica quantos mEq/L de base forte seriam necessários para normalizar o pH.',
+  BE: 'Excesso de bases. Indica quantos mEq/L de base forte seriam necessários para normalizar o pH.',
   fio2: 'Fração inspirada de oxigênio. Em ar ambiente é 21% (0.21). Vital para calcular a relação P/F e o Gradiente A-a.',
   lactate: 'Produto do metabolismo anaeróbico. Níveis > 2.5 alertam para baixo débito/hipoperfusão.',
 };

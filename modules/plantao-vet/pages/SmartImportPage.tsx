@@ -336,7 +336,7 @@ export function SmartImportPage() {
     navigate(`/plantao-vet/paciente/${existing.id}`);
   }
 
-  if (!snapshot.isHydrated) return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando módulo...</div>;
+  if (!snapshot.isHydrated) return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   if (!activeShift) {
     return (
       <div className="space-y-8 pb-12">
@@ -359,7 +359,7 @@ export function SmartImportPage() {
           <Sparkles className="h-8 w-8 text-[var(--pv-primary)]" />
           Prontuário inteligente
         </h1>
-        <p className="mt-2 text-lg text-[var(--pv-text-muted)]">Cole o texto bruto da ficha do paciente. O sistema extrai um preview estruturado, permite corrigir tudo antes de salvar e sugere vínculo quando houver caso semelhante no plantão ativo.</p>
+        <p className="mt-2 text-lg text-[var(--pv-text-muted)]">Cole o texto bruto da ficha do paciente, revise as informações organizadas e escolha entre criar um caso ou vinculá-lo a um paciente do plantão ativo.</p>
       </div>
 
       <div className="grid min-w-0 gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
@@ -388,7 +388,7 @@ export function SmartImportPage() {
 
         <Card className="h-fit min-w-0 border-[var(--pv-border)]">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg"><Link2 className="h-5 w-5 text-[var(--pv-primary)]" />Preview editável</CardTitle>
+            <CardTitle className="flex items-center gap-2 text-lg"><Link2 className="h-5 w-5 text-[var(--pv-primary)]" />Revisão editável</CardTitle>
             <CardDescription>Revise e corrija o que for necessário antes de criar um novo paciente ou mesclar com um caso já aberto.</CardDescription>
           </CardHeader>
           <CardContent className="min-w-0 space-y-5">
@@ -490,7 +490,7 @@ export function SmartImportPage() {
                     </div>
                   ) : <p className="text-sm text-[var(--pv-text-muted)]">Nenhuma medicação estruturada foi identificada.</p>}
                 </PreviewBlock>
-                <PreviewBlock title="Timeline / resumo diário">
+                <PreviewBlock title="Linha do tempo / resumo diário">
                   {draft.dailySummaryEntries.length > 0 ? (
                     <div className="space-y-2">
                       {draft.dailySummaryEntries.map((entry) => (
@@ -511,7 +511,7 @@ export function SmartImportPage() {
                   ) : <p className="text-sm text-[var(--pv-text-muted)]">Nenhum evento estruturado foi gerado ainda.</p>}
                 </PreviewBlock>
                 {draft.importWarnings.length > 0 ? (
-                  <PreviewBlock title="Warnings da importação">
+                  <PreviewBlock title="Alertas da importação">
                     {draft.importWarnings.map((warning) => (
                       <div key={warning} className="flex items-start justify-between gap-3 rounded-lg border border-[var(--pv-border)] bg-[var(--pv-surface)] p-3 text-sm">
                         <div className="flex items-start gap-2"><AlertTriangle className="mt-0.5 h-4 w-4 text-[var(--pv-accent-yellow-strong)]" /><p className={preview?.ignoredWarnings.includes(warning) ? 'text-[var(--pv-text-muted)] line-through' : 'text-[var(--pv-text-main)]'}>{warning}</p></div>
@@ -537,8 +537,8 @@ export function SmartImportPage() {
             ) : (
               <div className="rounded-xl border border-dashed border-[var(--pv-border)] bg-[var(--pv-surface)] p-6 text-center">
                 <Wand2 className="mx-auto mb-3 h-8 w-8 text-[var(--pv-text-muted)]/50" />
-                <p className="font-medium text-[var(--pv-text-main)]">Nenhum preview gerado ainda</p>
-                <p className="mt-1 text-sm text-[var(--pv-text-muted)]">Use “Organizar prontuário” para extrair identificação, problemas, tarefas, parâmetros, exames, medicações e timeline antes de confirmar.</p>
+                <p className="font-medium text-[var(--pv-text-main)]">Nenhuma revisão gerada ainda</p>
+                <p className="mt-1 text-sm text-[var(--pv-text-muted)]">Use “Organizar prontuário” para extrair identificação, problemas, tarefas, parâmetros, exames, medicações e linha do tempo antes de confirmar.</p>
               </div>
             )}
           </CardContent>

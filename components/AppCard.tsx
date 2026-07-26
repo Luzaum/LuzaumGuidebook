@@ -27,6 +27,8 @@ const AppCard: React.FC<AppCardProps> = ({
   image,
   imageClassName
 }) => {
+  if (!implemented) return null;
+
   return (
     <Card 
       className={cn(
@@ -79,7 +81,7 @@ const AppCard: React.FC<AppCardProps> = ({
               implemented ? "bg-primary/10 text-primary" : "bg-muted text-muted-foreground"
             )}
           >
-            {implemented ? "Disponível" : "Em breve"}
+            Disponível
           </Badge>
         </div>
       </CardHeader>

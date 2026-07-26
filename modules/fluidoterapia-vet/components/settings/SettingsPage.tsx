@@ -14,7 +14,7 @@ export function SettingsPage() {
             Configurações
           </h2>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
-            Ajustes do módulo Fluidoterapia Vet.
+            Ajustes de aparência e referências clínicas.
           </p>
         </header>
 
@@ -27,7 +27,7 @@ export function SettingsPage() {
                 <Monitor className="w-5 h-5 text-indigo-500" />
                 Aparência
               </CardTitle>
-              <CardDescription>Ajustes visuais do aplicativo</CardDescription>
+              <CardDescription>Ajustes visuais</CardDescription>
             </CardHeader>
             <CardContent className="p-6 space-y-6">
               
@@ -61,7 +61,7 @@ export function SettingsPage() {
             <CardHeader className="bg-slate-50/50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800 pb-4">
               <CardTitle className="text-lg flex items-center gap-2">
                 <Info className="w-5 h-5 text-teal-500" />
-                Sobre o Módulo
+                Referências clínicas
               </CardTitle>
               <CardDescription>Informações e referências</CardDescription>
             </CardHeader>
@@ -81,7 +81,7 @@ export function SettingsPage() {
                 <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800/50">
                   <h4 className="text-sm font-bold text-amber-900 dark:text-amber-100 uppercase tracking-wider mb-2">Aviso Legal</h4>
                   <p className="text-sm text-amber-800 dark:text-amber-300">
-                    Este aplicativo é uma ferramenta de suporte à decisão clínica. O julgamento do médico veterinário responsável pelo caso é soberano. As doses devem ser ajustadas individualmente.
+                    Os cálculos apoiam a decisão clínica, mas não substituem o julgamento do médico-veterinário responsável. As doses devem ser ajustadas individualmente.
                   </p>
                 </div>
               </div>

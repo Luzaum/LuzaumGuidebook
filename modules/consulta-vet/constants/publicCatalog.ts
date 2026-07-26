@@ -15,11 +15,16 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'doenca-renal-cronica-caes-gatos',
   'hipertensao-arterial-sistemica-caes-gatos',
   'doenca-valvar-mitral-degenerativa-caes',
+  'cardiomiopatia-hipertrofica-caes-gatos',
+  'cardiomiopatia-dilatada-caes-gatos',
+  'cardiomiopatia-restritiva-felina',
   'hipoadrenocorticismo-addison',
   'diabetes-mellitus-canina',
   'diabetes-mellitus-felina',
   'hipertireoidismo-felino',
   'hipotireoidismo-canino',
+  'tumores-mamarios-caes-gatos',
+  'mastite-caes-gatos',
 ] as const;
 
 

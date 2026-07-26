@@ -633,7 +633,7 @@ export function MedicationModalV3({
 
           {/* ==================== COLUNA DIREITA: PREVIEW ==================== */}
           <div className="space-y-4 bg-[#0f1c0d] p-5">
-            <h3 className="text-sm font-bold text-[color:var(--rxv-primary)] text-left">Preview do Item</h3>
+            <h3 className="text-sm font-bold text-[color:var(--rxv-primary)] text-left">Visualização do item</h3>
 
             <div className="rounded-xl border border-[#2e5525] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] p-4 space-y-2 text-left">
               <p className="text-xs font-bold text-white uppercase">{draft.name || '(Sem nome)'}</p>

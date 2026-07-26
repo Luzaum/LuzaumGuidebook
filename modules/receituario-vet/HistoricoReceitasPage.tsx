@@ -20,10 +20,6 @@ export default function HistoricoReceitasPage() {
     const [previewDoc, setPreviewDoc] = useState<PrescriptionRecord | null>(null)
 
     const loadHistory = useCallback(async () => {
-        if (import.meta.env.DEV) {
-            console.log('[Historico] DEV log:', { clinicId, clinicLoading, patientId })
-        }
-
         if (clinicLoading) return
 
         if (!patientId || !clinicId) {
@@ -36,9 +32,9 @@ export default function HistoricoReceitasPage() {
             const data = await listPrescriptionsByPatient(patientId, clinicId)
             setPrescriptions(data)
         } catch (err: any) {
-            console.error('[Historico] Error loading', err)
+            console.error('[Histórico] Error loading', err)
             // toast error? using alert as fallback for now
-            alert(`Erro ao tentar buscar receitas: ${err.message || 'Desconhecido'}`)
+            alert('Não foi possível buscar as receitas.')
         } finally {
             setIsLoading(false)
         }
@@ -69,7 +65,7 @@ export default function HistoricoReceitasPage() {
             const url = await getPdfSignedUrl(record.pdf_path, 60)
             window.open(url, '_blank', 'noopener,noreferrer')
         } catch (err) {
-            console.error('[Historico] signed url error', err)
+            console.error('[Histórico] signed url error', err)
             alert('Erro ao obter link do PDF.')
         }
     }
@@ -85,7 +81,7 @@ export default function HistoricoReceitasPage() {
             })
             await loadHistory()
         } catch (err) {
-            console.error('[Historico] delete error', err)
+            console.error('[Histórico] delete error', err)
             alert('Erro ao excluir receita.')
         }
     }
@@ -117,7 +113,7 @@ export default function HistoricoReceitasPage() {
                     <RxvSectionHeader
                         icon="history"
                         title={`Histórico - ${patientName}`}
-                        subtitle="Prescrições salvas no Supabase"
+                        subtitle="Prescrições salvas para este paciente"
                     >
                         <RxvButton variant="secondary" onClick={() => navigate(-1)}>
                             Voltar

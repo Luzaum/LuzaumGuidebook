@@ -103,7 +103,7 @@ export function CalculatorPage() {
           <header className="space-y-4">
             <div>
               <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Calculadora clínica</h2>
-              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">O módulo calcula, explica, justifica e alerta. Fluido é tratado como prescrição individualizada.</p>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">O fluido deve ser tratado como prescrição individualizada, com indicação, meta e reavaliação.</p>
             </div>
 
           </header>
@@ -131,7 +131,7 @@ export function CalculatorPage() {
         onClick={() => setMobilePreviewOpen(true)}
       >
         <Activity className="h-4 w-4" />
-        Preview
+        Visualizar
       </button>
 
       <MobileClinicalPreviewSheet open={mobilePreviewOpen} onOpenChange={setMobilePreviewOpen}>

@@ -8,8 +8,8 @@ export default function ReferencesPage() {
       author: "DiBartola, S. P.",
       year: "2011",
       species: "Cães e Gatos",
-      theme: "Distúrbios Ácido-Base, Anion Gap, Eletrólitos",
-      description: "Referência padrão-ouro mundial para distúrbios ácido-base, cálculo de Anion Gap, Base Excess e eletrólitos.",
+      theme: "Distúrbios ácido-base, hiato aniônico e eletrólitos",
+      description: "Referência internacional para distúrbios ácido-base, cálculo do intervalo aniônico, excesso de bases e eletrólitos.",
       type: "Livro Texto"
     },
     {
@@ -36,7 +36,7 @@ export default function ReferencesPage() {
       year: "2019",
       species: "Geral",
       theme: "Fisiologia Respiratória e Renal",
-      description: "Base fisiológica para o entendimento dos mecanismos de hipoxemia (V/Q mismatch, shunt, difusão) e controle ventilatório.",
+      description: "Base fisiológica para compreender os mecanismos de hipoxemia, como desequilíbrio entre ventilação e perfusão (V/Q), desvio sanguíneo, alteração da difusão e controle ventilatório.",
       type: "Livro Texto"
     },
     {
@@ -58,7 +58,7 @@ export default function ReferencesPage() {
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">Referências Científicas</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-1 text-lg">
-            A base de conhecimento que alimenta o motor de interpretação do HemoGasoVet.
+            Fontes utilizadas na interpretação clínica e na fundamentação dos cálculos.
           </p>
         </div>
       </div>
@@ -114,8 +114,7 @@ export default function ReferencesPage() {
 
       <div className="mt-12 bg-slate-50 dark:bg-slate-800/50 rounded-xl p-6 border border-slate-200 dark:border-slate-800 text-center">
         <p className="text-sm text-slate-500 dark:text-slate-400">
-          O HemoGasoVet é uma ferramenta de apoio à decisão clínica. 
-          Os resultados gerados não substituem o julgamento clínico do médico veterinário responsável pelo caso.
+          Os resultados auxiliam a decisão clínica e não substituem o julgamento do médico-veterinário responsável pelo caso.
         </p>
       </div>
     </div>

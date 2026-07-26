@@ -31,9 +31,6 @@ export async function previewDiseasesImport(
 
         const warnings: string[] = [];
 
-        // Validar se precisa avisar algo normalizado
-        if (!data.slug) warnings.push('Slug ausente. Gerado a partir do título.');
-
         const quickDecisionStripRaw = normalizeArray<string>(data.quickDecisionStrip, (item) => normalizeString(item));
         const quickDecisionStrip = quickDecisionStripRaw.length
                 ? quickDecisionStripRaw.slice(0, 5)

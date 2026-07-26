@@ -59,7 +59,7 @@ export function Hero({ onExploreApps }: HeroProps) {
               iconPosition="right"
               onClick={handleExploreApps}
             >
-              Explorar aplicativos
+              Explorar ferramentas
             </Button>
             <Button
               variant="secondary"

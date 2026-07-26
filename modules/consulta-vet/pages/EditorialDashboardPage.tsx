@@ -9,7 +9,7 @@ const cards = [
   {
     to: '/consulta-vet/editorial/categorias',
     title: 'Categorias',
-    body: 'Gerencie taxonomia, ordem e descrições curtas do módulo.',
+    body: 'Gerencie taxonomia, ordem e descrições curtas.',
     icon: FolderTree,
   },
   {
@@ -27,13 +27,13 @@ const cards = [
   {
     to: '/consulta-vet/editorial/consensos',
     title: 'Consensos',
-    body: 'CRUD editorial completo: metadados, detalhes, PDF, referências e relacionamentos.',
+    body: 'Gerencie metadados, detalhes, documentos, referências e relacionamentos.',
     icon: ScrollText,
   },
   {
     to: '/consulta-vet/editorial/importacao',
-    title: 'Importar JSON',
-    body: 'Importação em massa estruturada via AI ou Lotes de doenças e medicamentos.',
+    title: 'Importar conteúdo',
+    body: 'Importe lotes de doenças e medicamentos a partir de um arquivo estruturado.',
     icon: DatabaseZap,
   },
 ];
@@ -46,7 +46,7 @@ export function EditorialDashboardPage() {
       <ConsultaVetPageHero
         eyebrow="Editorial"
         title="Painel editorial"
-        description="ConsultaVET — CRUD mínimo para conteúdo administrável via Supabase, mantendo fallback local por slug."
+        description="Gerencie o conteúdo clínico publicado e os rascunhos."
         icon={BookOpenCheck}
         accent="primary"
       />

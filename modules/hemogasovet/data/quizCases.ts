@@ -24,7 +24,7 @@ export const quizCases: QuizCase[] = [
       {
         id: 'q3',
         text: 'Este quadro é conhecido como?',
-        options: ['Alcalose metabólica hiperclorêmica', 'Acidose Láctica', 'Alcalose metabólica hipoclorêmica e hipocalêmica', 'Acidose de Anion Gap Alto'],
+        options: ['Alcalose metabólica hiperclorêmica', 'Acidose láctica', 'Alcalose metabólica hipoclorêmica e hipocalêmica', 'Acidose com hiato aniônico alto'],
         correctAnswerIndex: 2,
         explanation: 'A perda de suco gástrico arrasta Ácido Clorídrico (H+ e Cl-), levando a hipocloremia severa (Cl = 85). A hipovolemia ativa a aldosterona, que retém Na e excreta K+, gerando a hipocalemia agressiva.'
       },
@@ -60,7 +60,7 @@ export const quizCases: QuizCase[] = [
       {
         id: 'q3',
         text: 'As origens da Acidose neste paciente englobam mecanismos mistos? Se sim calcule o tipo.',
-        options: ['É apenas acidose hiperclorêmica pura (diarreia).', 'É apenas acidose lática de Anion Gap Elevado (choque).', 'Há um componente misto! Ele perdeu bases pelas fezes (Cl está alto = 121, hipercloremia) MAS também formou novo ácido orgânico com lactato alto (4.5) pelo choque.', 'Esse padrão chama-se acidose paradoxal.'],
+        options: ['É apenas acidose hiperclorêmica por diarreia.', 'É apenas acidose láctica com hiato aniônico elevado por choque.', 'Há componente misto: perda fecal de bicarbonato com hipercloremia e produção de lactato por hipoperfusão.', 'Esse padrão é uma acidose paradoxal.'],
         correctAnswerIndex: 2,
         explanation: 'Exatamente. Esse paciente vomita (alcalose hipocloremica sutil) e defeca sangue (perda rica de HCO3 -> acidose hiperclorêmica do Cl 121). Mas ele também está hipotenso e chocando com lactato alto (acidose lática = aumento gap).'
       }
@@ -106,7 +106,7 @@ export const quizCases: QuizCase[] = [
         text: 'Qual distúrbio impera nesta gasometria?',
         options: ['Acidose Respiratória Crônica', 'Acidose Metabólica Fulminante', 'Alcalose Respiratória por ofegância', 'Misto de compensações normais'],
         correctAnswerIndex: 1,
-        explanation: 'Acidemia tremenda (pH 7.08) amarrada à depressão cataclísmica de HCO3 (7 mEq/L). Acidose metabólica gravíssima gerada por consumo intenso dos tampões pelos cetoácidos não mensurados (Acido beta-hidroxibutírico e ácido acetoacético).'
+        explanation: 'Acidemia tremenda (pH 7.08) amarrada à depressão cataclísmica de HCO3 (7 mEq/L). Acidose metabólica gravíssima gerada por consumo intenso dos tampões pelos cetoácidos não mensurados (Ácido beta-hidroxibutírico e ácido acetoacético).'
       },
       {
         id: 'q2',
@@ -127,7 +127,7 @@ export const quizCases: QuizCase[] = [
   {
     id: 'case_5',
     title: 'A "Ofegante Falsa" na Sedação',
-    scenario: 'Cão geriátrico sedado para RX espinhal com metadona alta dose + dexmedetomidina de gatinho. Animal roncando profundo na mesa, peito move muito mal (bradypneic) e FR é de 4/min com volume corrente raso. Gengiva discretamente cianótica (Amostra Arterial solicitada p/ conferir ventilação primária).\n\nGasometria Arterial:\npH: 7.21\npCO2: 65 mmHg\npO2: 60 mmHg (Ar ambiente)\nHCO3: 25 mEq/L',
+    scenario: 'Cão geriátrico sedado para radiografia espinhal com metadona em dose alta e dexmedetomidina. Animal roncando profundamente na mesa, tórax com pouca expansão, bradipneia e frequência respiratória de 4 movimentos por minuto, com volume corrente raso. Gengiva discretamente cianótica; foi solicitada amostra arterial para avaliar a ventilação.\n\nGasometria arterial:\npH: 7,21\npCO2: 65 mmHg\npO2: 60 mmHg (ar ambiente)\nHCO3: 25 mEq/L',
     data: { pH: 7.21, pCO2: 65, pO2: 60, HCO3: 25, sampleType: 'arterial', species: 'canine' },
     questions: [
       {
@@ -155,30 +155,30 @@ export const quizCases: QuizCase[] = [
   },
   {
     id: 'case_6',
-    title: 'Edema Pulmonar Fulminante (ICC)',
-    scenario: 'Cão Chihuahua de 11 anos, tosse cardíaca com grave sopro holosistólico, em franca angústia respiratória (Taquipneia a 80 irpm) batendo boca atrás de oxigênio com líquido espumoso tingido de sangue pela narina. Ficado em box de O2 a 40% (FiO2 0.40).\n\nGasometria Arterial colhida no susto:\npH: 7.47\npCO2: 25 mmHg\npO2: 52 mmHg (na câmara a 40% FiO2!)\nHCO3: 18 mEq/L',
+    title: 'Edema pulmonar cardiogênico e insuficiência cardíaca congestiva (ICC)',
+    scenario: 'Cão Chihuahua de 11 anos, com tosse, sopro holossistólico intenso, taquipneia de 80 movimentos por minuto e secreção nasal espumosa e rosada. Foi colocado em câmara de oxigênio com fração inspirada de oxigênio (FiO2) estimada em 0,40.\n\nGasometria arterial:\npH: 7,47\npCO2: 25 mmHg\npO2: 52 mmHg\nHCO3: 18 mEq/L',
     data: { pH: 7.47, pCO2: 25, pO2: 52, HCO3: 18, fio2: 0.40, sampleType: 'arterial', species: 'canine' },
     questions: [
       {
         id: 'q1',
-        text: 'Avalie primeiro a oxigenação pO2 de 52 mmHg com atenção extrema ao FiO2. É preocupante?',
-        options: ['Tranquilo, um P/F ratio disso seria bom.', 'Isso é uma falha catastrófica de trocas casuais pulmonares. A FiO2 a 40% deveria empurrar uma pO2 de quase 200 mmHg no vaso saudável. Obter meros 52 de pO2 atesta shunt massivo pelo alvéolo cheio de edema d´água maciça.', 'Simples de resolver com apenas lasix VO.' , 'Padrão basal em chihuahua.'],
+        text: 'Como interpretar uma pressão arterial de oxigênio (PaO2) de 52 mmHg com FiO2 de 0,40?',
+        options: ['A relação PaO2/FiO2 é adequada.', 'Há hipoxemia grave apesar do oxigênio suplementar, compatível com comprometimento importante da troca gasosa por edema pulmonar.', 'Apenas furosemida por via oral é suficiente, sem suporte adicional.', 'É um padrão fisiológico da raça.'],
         correctAnswerIndex: 1,
-        explanation: 'Um PaO2 de 52 já é uma baita hipoxemia e é hipóxia tissular pura no limite do cianótico (SatO2 <85% nesta pO2). Ao amarrar isso a quem TÁ INSPIRANDO 40% de poço fechado? Estupidez total de falência - P/F (52/0.4) = 130! SDRA severa, no caso do cardiogênico, inundação de afogamento pulmonar.'
+        explanation: 'A relação PaO2/FiO2 é de aproximadamente 130, indicando comprometimento grave da oxigenação. No contexto apresentado, o edema alveolar aumenta o desequilíbrio entre ventilação e perfusão e pode produzir desvio sanguíneo intrapulmonar.'
       },
       {
         id: 'q2',
-        text: 'Se o paciente não consegue trocar O2 porque o pulmão está úmido com água pura nos sacos alveolares, como explicar o CO2 super BAIXO (25 mmHg)? Ele não deveria estar falhando de trocar os O2 e o CO2 juntos?!',
-        options: ['A máquina lê o CO2 errado quando a glicose tá baixa.', 'A amostra não é arterial verdadeira.', 'O CO2 difunde cerca de 20 VEZES MAIS RÁPIDO através do líquido do edema que o O2 pesado. O esforço gigantesco da FR de 80 mpm expele todo CO2 da área salva, lavando o gás e gerando alcalose.', 'A insuficiência cardíaca atua no ducto de troca.'],
+        text: 'Como explicar a pressão arterial de dióxido de carbono (PaCO2) baixa apesar da troca de oxigênio comprometida?',
+        options: ['A glicose baixa causa erro sistemático na leitura do CO2.', 'A amostra necessariamente não é arterial.', 'A hipoxemia estimula hiperventilação; o CO2 difunde-se com maior facilidade que o oxigênio e pode ser eliminado pelas unidades pulmonares ainda ventiladas.', 'A insuficiência cardíaca reduz diretamente a leitura de CO2 do aparelho.'],
         correctAnswerIndex: 2,
-        explanation: 'Fisiopatologia de livro: Hipoxemia gera forte esforço e resposta bulbar compensatória. O afogado se debate, a respiração explode, a área de troca "sã" limpa muito CO2 solúvel porque é mega rápido no líquido do edema, MAS o O2 travado empírico bate contra a "lagoa" pesada do alvéolo cheio e recua.'
+        explanation: 'A hipoxemia aumenta o estímulo ventilatório. Como o dióxido de carbono é mais difusível, as unidades pulmonares preservadas conseguem eliminá-lo, produzindo hipocapnia e alcalose respiratória mesmo quando a oxigenação permanece gravemente comprometida.'
       },
       {
         id: 'q3',
-        text: 'Qual o diagnóstico Ácido Base puro?',
+        text: 'Qual é o distúrbio ácido-base predominante?',
         options: ['Alcalose respiratória primária (pCO2 25 -> pH 7.47) pela hiperventilação de angústia respiratória da hipoxemia.', 'Acidose da insuficiência orgânica e falência reno-pulmonar.', 'Razoável compensação mista da sedação contínua.', 'Acidose láctica pura.'],
         correctAnswerIndex: 0,
-        explanation: 'O pH em 7.47 e pCO2 afogada revelam: ele ventila demais lavando o pCO2 tentando desesperadamente captar um O2 que não cruza a barreira. HCO3 já está caindo de leve (18) iniciando minúscula compensação renal de excreção bases ao urinar no estresse (Levarah dias pra curar se ficar assim).'
+        explanation: 'O pH de 7,47 e a PaCO2 de 25 mmHg indicam alcalose respiratória por hiperventilação. O bicarbonato reduzido deve ser comparado com a compensação esperada e com o tempo de evolução para excluir componente metabólico associado.'
       }
     ]
   },
@@ -212,7 +212,7 @@ export const quizCases: QuizCase[] = [
     questions: [
       {
         id: 'q1',
-        text: 'Analise e escolha a pérola ensinamento sobre um monstro como esse "Triplo Disastre" com um aparente e falso pH em 7.42!',
+        text: 'Análise e escolha a pérola ensinamento sobre um monstro como esse "Triplo Disastre" com um aparente e falso pH em 7.42!',
         options: ['Não dá para resolver a matemática aqui na fase aguda das coisas.', 'Temos um lactato maciço que sugere acidose. O HCO3 em 9 diz existir acidose pura esmagadora. Se o pCO2 caiu brutalmente ao fundo a ponto de superar em velocidade o equilíbrio e "lavar" até empatar no 7.4? Não o pCO2 caiu além do Winters. Ele é misto grave disfarçado de equilibrado orgânico pelo cérebro do animal chocado que despirocou hiperventilando pelo trauma cefalo além das vias metabólicas falhas simultâneas!', 'A resposta à medicação foi completa antes da coleta e por isso ele está em 7.42 e curado do susto com lactato não interpretável.', 'O pH comanda absoluto, a máquina esta desregulada.'],
         correctAnswerIndex: 1,
         explanation: 'Esta pérola intensiva rara ensina uma arte negra gasométrica. Se pH está NORMAL, MAS seu pCO2 sumiu abaixo das placas e seu HCO3 foi comido vivo até abaixo de 12 e LACTATO explode no Teto? Você tem DOIS DISTÚRBIOS MATORES empurrando com tamanha força desproporcional - uma gigantesca Alcalose e uma Maciça Acidose, guerreando num choque frontal mascarado, com mortalidade > 95%. Responda rápido, ventile as áreas se o lactato se fixar na causa raiz!'

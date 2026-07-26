@@ -222,7 +222,7 @@ export const DiseaseDetailView: React.FC<DiseaseDetailViewProps> = ({
         >
           <h3 className="mb-2 flex items-center gap-2 text-sm font-semibold" style={{ color: 'hsl(var(--foreground))' }}>
             <Icon name="help" className="h-4 w-4 shrink-0" />
-            Notas clínicas e stewardship
+            Notas clínicas e uso racional de antimicrobianos
           </h3>
           <div className="text-sm leading-relaxed" style={{ color: 'hsl(var(--foreground))' }}>
             <RichTextViewer text={disease.notes} />

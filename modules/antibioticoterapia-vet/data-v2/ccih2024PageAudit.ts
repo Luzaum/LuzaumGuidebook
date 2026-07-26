@@ -65,8 +65,7 @@ export interface CciHumanPageAuditEntry {
 }
 
 /** Texto padrão da sessão de auditoria humana (exemplar restrito; sem PDF no app). */
-const HUMAN_PAGE_AUDIT_NOTE =
-  'Página validada manualmente a partir do Guia CCIH 2024 restrito; locator persistido no código sem distribuição do PDF.'
+const HUMAN_PAGE_AUDIT_NOTE = 'Página conferida na edição institucional de 2024.'
 
 /**
  * Mapa preenchido pela equipa CCIH/clínica após leitura do PDF restrito.

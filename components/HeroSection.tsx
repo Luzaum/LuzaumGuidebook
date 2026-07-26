@@ -51,7 +51,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onGetStarted }) => {
                 className="relative overflow-hidden rounded-2xl px-14 py-7 text-2xl font-semibold text-primary-foreground shadow-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
                 bg-gradient-to-b from-[oklch(0.78_0.2_150)] to-[oklch(0.68_0.18_150)] hover:shadow-[0_20px_50px_-10px_rgba(34,197,94,0.35)] hover:translate-y-[-1px]"
               >
-                <span className="relative z-10">Explorar aplicativos</span>
+                <span className="relative z-10">Explorar ferramentas</span>
                 <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,white/15_0%,transparent_60%)]" />
                 <span className="pointer-events-none absolute inset-x-0 -bottom-1 h-1 bg-gradient-to-r from-transparent via-white/70 to-transparent opacity-70" />
               </Button>

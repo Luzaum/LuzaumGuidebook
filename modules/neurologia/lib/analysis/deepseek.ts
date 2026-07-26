@@ -83,13 +83,13 @@ const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
   ConvulsaoGeneralizada: 'Convulsao generalizada',
   ClusterConvulsoes: 'Cluster de convulsoes',
   Sincope: 'Sincope / colapso',
-  AlteracaoConsciencia: 'Alteracao do nivel de consciencia',
-  Comportamento: 'Alteracao comportamental',
+  AlteracaoConsciencia: 'Alteração do nivel de consciencia',
+  Comportamento: 'Alteração comportamental',
   AndarCirculos: 'Andar em circulos / head pressing',
   Cegueira: 'Cegueira aguda',
-  Anisocoria: 'Anisocoria / alteracao pupilar',
+  Anisocoria: 'Anisocoria / alteração pupilar',
   HeadTilt: 'Head tilt',
-  Vertigem: 'Vertigem / vomito vestibular',
+  Vertigem: 'Vertigem / vômito vestibular',
   Nistagmo: 'Nistagmo',
   Ataxia: 'Ataxia / descoordenacao',
   Paresia: 'Paresia / paralisia',
@@ -101,10 +101,10 @@ const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
   DorLombossacra: 'Dor espinhal lombossacra',
   DisfuncaoFacial: 'Disfuncao de nervo facial',
   Disfagia: 'Disfagia / regurgitacao',
-  Disfonia: 'Disfonia / alteracao de voz',
-  DisfuncaoUrinaria: 'Disfuncao urinaria / fecal',
-  IncontinenciaUrinaria: 'Incontinencia urinaria',
-  RetencaoUrinaria: 'Retencao urinaria',
+  Disfonia: 'Disfonia / alteração de voz',
+  DisfuncaoUrinaria: 'Disfuncao urinária / fecal',
+  IncontinenciaUrinaria: 'Incontinencia urinária',
+  RetencaoUrinaria: 'Retenção urinária',
   Tremores: 'Tremores / mioclonias',
   FraquezaFlacida: 'Fraqueza flacida / intolerancia ao exercicio',
   Colapso: 'Colapso recorrente',
@@ -115,7 +115,7 @@ const RED_FLAG_LABELS: Record<string, string> = {
   coma_estupor: 'Coma / estupor',
   status_epilepticus: 'Status epilepticus / cluster grave',
   severe_progression_24h: 'Piora neurologica rapida (<24h)',
-  acute_nonambulatory: 'Nao ambulatorio agudo',
+  acute_nonambulatory: 'Não ambulatorio agudo',
   respiratory_compromise: 'Sinais respiratorios / aspiracao',
   deep_pain_loss: 'Dor profunda ausente',
   severe_cervical_pain: 'Cervicalgia intensa',
@@ -397,14 +397,14 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
         diagnosis:
           extractTextFromUnknown(
             pickFirstDefined(item, ['diagnosis', 'diagnostic', 'title', 'name', 'differential']),
-          ) || 'Diagnostico nao especificado',
+          ) || 'Diagnóstico não especificado',
         probability: clampNumber(
           pickFirstDefined(item, ['probability', 'likelihood', 'chance', 'confidence']),
           0,
           100,
           0,
         ),
-        category: extractTextFromUnknown(pickFirstDefined(item, ['category', 'etiology', 'group'])) || 'Nao informado',
+        category: extractTextFromUnknown(pickFirstDefined(item, ['category', 'etiology', 'group'])) || 'Não informado',
         clinicalFit:
           extractTextFromUnknown(
             pickFirstDefined(item, [
@@ -414,7 +414,7 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
               'rationaleSummary',
               'fitSummary',
             ]),
-          ) || 'Sintese clinica nao informada.',
+          ) || 'Síntese clínica não informada.',
         supportingFindings: toStringList(
           pickFirstDefined(item, [
             'supportingFindings',
@@ -422,7 +422,7 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
             'findingsFor',
             'supportingEvidence',
           ]),
-          ['Achados a favor nao informados'],
+          ['Achados a favor não informados'],
         ),
         opposingFindings: toStringList(
           pickFirstDefined(item, [
@@ -431,7 +431,7 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
             'contradictoryFindings',
             'conflictingFindings',
           ]),
-          ['Achados contra nao informados'],
+          ['Achados contra não informados'],
         ),
         prioritizedDiagnostics: toStringList(
           pickFirstDefined(item, [
@@ -441,31 +441,31 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
             'howToDiagnose',
             'workup',
           ]),
-          ['Exames priorizados nao informados'],
+          ['Exames priorizados não informados'],
         ),
         patientAssessment: toStringList(
           pickFirstDefined(item, ['patientAssessment', 'assessment', 'howToAssess', 'bedsideEvaluation']),
-          ['Avaliacao do paciente nao informada'],
+          ['Avaliação do paciente não informada'],
         ),
         monitoringPlan: toStringList(
           pickFirstDefined(item, ['monitoringPlan', 'monitoring', 'reassessment', 'followUp']),
-          ['Monitorizacao nao informada'],
+          ['Monitorização não informada'],
         ),
         treatmentPlan: toStringList(
           pickFirstDefined(item, ['treatmentPlan', 'treatment', 'management', 'howToTreat']),
-          ['Plano terapeutico nao informado'],
+          ['Plano terapêutico não informado'],
         ),
         allowedDrugs: toStringList(
           pickFirstDefined(item, ['allowedDrugs', 'consideredDrugs', 'medicationsToConsider']),
-          ['Farmacos a considerar nao informados'],
+          ['Fármacos a considerar não informados'],
         ),
         avoidDrugs: toStringList(
           pickFirstDefined(item, ['avoidDrugs', 'avoidOrAdjustDrugs', 'contraindicatedDrugs']),
-          ['Farmacos a evitar ou ajustar nao informados'],
+          ['Fármacos a evitar ou ajustar não informados'],
         ),
         comorbidityIntegration: toStringList(
           pickFirstDefined(item, ['comorbidityIntegration', 'comorbidityNotes', 'caseModifiers']),
-          ['Impacto das comorbidades nao informado'],
+          ['Impacto das comorbidades não informado'],
         ),
       })),
     )
@@ -475,13 +475,13 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
         probableLocation:
           extractTextFromUnknown(
             pickFirstDefined(neurolocalization, ['probableLocation', 'location', 'primaryLocation']),
-          ) || 'Nao informado',
+          ) || 'Não informado',
         distribution:
           extractTextFromUnknown(pickFirstDefined(neurolocalization, ['distribution', 'patternDistribution'])) ||
-          'Nao informado',
+          'Não informado',
         motorPattern:
           extractTextFromUnknown(pickFirstDefined(neurolocalization, ['motorPattern', 'gaitPattern'])) ||
-          'Nao informado',
+          'Não informado',
         confidence: clampNumber(
           pickFirstDefined(neurolocalization, ['confidence', 'confidencePercent', 'estimatedConfidence']),
           0,
@@ -490,7 +490,7 @@ function parseStructuredClinicalReport(rawContent: string): DeepSeekStructuredCl
         ),
         reasoning:
           extractTextFromUnknown(pickFirstDefined(neurolocalization, ['reasoning', 'summary', 'analysis'])) ||
-          'Raciocinio nao informado.',
+          'Raciocínio não informado.',
         supportiveFindings: toStringList(
           pickFirstDefined(neurolocalization, ['supportiveFindings', 'supportingFindings', 'supportive']),
         ),
@@ -561,7 +561,7 @@ function renderStructuredClinicalReport(report: DeepSeekStructuredClinicalReport
     item.prioritizedDiagnostics.forEach((entry) => lines.push(`- ${entry}`))
     lines.push('Como avaliar este paciente no plantao:')
     item.patientAssessment.forEach((entry) => lines.push(`- ${entry}`))
-    lines.push('Monitorizacao e reavaliacao:')
+    lines.push('Monitorização e reavaliação:')
     item.monitoringPlan.forEach((entry) => lines.push(`- ${entry}`))
     lines.push('Tratamento e conduta:')
     item.treatmentPlan.forEach((entry) => lines.push(`- ${entry}`))
@@ -1033,7 +1033,7 @@ export async function generateDeepSeekClinicalOpinion(
 
   pushProgress({
     progress: 8,
-    stage: 'Preparando contexto clinico',
+    stage: 'Preparando contexto clínico',
     detail: 'Consolidando identificacao, historico, exame neurologico e sintese local.',
   })
 
@@ -1048,9 +1048,7 @@ export async function generateDeepSeekClinicalOpinion(
     processEnv?.DEEPSEEK_API_KEY
   const normalizedApiKey = apiKey?.trim()
   if (!normalizedApiKey) {
-    throw new Error(
-      'VITE_DEEPSEEK_API_KEY não encontrada no frontend. Defina a variável com prefixo VITE_ e reinicie o servidor Vite.',
-    )
+    throw new Error('O serviço de análise neurológica está indisponível no momento.')
   }
   if ((import.meta as any).env?.DEV) {
     console.debug('[NeuroVet][DeepSeek] API key detectada no frontend.')
@@ -1069,16 +1067,16 @@ export async function generateDeepSeekClinicalOpinion(
     'Voce e um neurologista veterinario senior.',
     'Use TODOS os dados de identificacao, historico/contexto e exame neurologico para construir a resposta.',
     'Baseie o raciocinio em neurologia veterinaria de pequenos animais, priorizando consensos clinicos e textos-classicos como BSAVA Manual of Canine and Feline Neurology, Dewey & da Costa, Platt & Olby, Lorenz, Merck Veterinary Manual e consensos ACVIM quando aplicaveis.',
-    'Nao invente achados, exames ou comorbidades. Quando um dado estiver ausente, escreva explicitamente "nao informado".',
-    'Nao use placeholders como "diferencial amplo", "indeterminado", "diagnostico 1" ou listas genericas sem vinculo ao caso.',
+    'Não invente achados, exames ou comorbidades. Quando um dado estiver ausente, escreva explicitamente "não informado".',
+    'Não use marcadores genéricos como "diferencial amplo", "indeterminado", "diagnóstico 1" ou listas sem vínculo com o caso.',
     'Retorne APENAS um objeto JSON valido, sem markdown, sem cercas de codigo e sem texto antes ou depois.',
     'Todos os valores textuais do JSON devem estar em portugues do Brasil.',
     'A resposta deve servir como companheiro de plantao: organizada, priorizada e clinicamente acionavel.',
     'Seja economico no texto para conseguir fechar o JSON completamente: prefira frases curtas e objetivas.',
-    'Integre as comorbidades e outros problemas relevantes dentro da explicacao de cada diferencial, e nao apenas em uma secao separada.',
-    'Quando citar sensibilidade/especificidade de exames, use numero apenas se houver base veterinaria robusta; caso contrario, escreva explicitamente "estimativa qualitativa" e classifique o rendimento diagnostico como alto, moderado ou baixo.',
+    'Integre as comorbidades e outros problemas relevantes à explicação de cada diagnóstico diferencial, e não apenas em uma seção separada.',
+    'Ao citar sensibilidade ou especificidade de exames, use números apenas quando houver base veterinária robusta; caso contrário, escreva "estimativa qualitativa" e classifique o rendimento diagnóstico como alto, moderado ou baixo.',
     'Em exames de imagem e LCR, priorize linguagem prudente: explique o que o exame agrega, quais achados seriam esperados e como ele muda a conduta.',
-    'Em tratamento, detalhe estabilizacao inicial, terapia-alvo, suporte, monitorizacao e restricoes farmacologicas ligadas a rim, figado, hipertensao, risco de aspiracao ou outras comorbidades presentes.',
+    'No tratamento, detalhe estabilização inicial, terapia-alvo, suporte, monitorização e restrições farmacológicas relacionadas aos rins, fígado, hipertensão, risco de aspiração ou outras comorbidades presentes.',
     'O JSON deve obedecer exatamente este schema:',
     '{',
     '  "neurolocalization": {',
@@ -1098,7 +1096,7 @@ export async function generateDeepSeekClinicalOpinion(
     '      "clinicalFit": "paragrafo curto integrando sinais, exame e comorbidades",',
     '      "supportingFindings": ["string"],',
     '      "opposingFindings": ["string"],',
-    '      "prioritizedDiagnostics": ["Prioridade | exame | rendimento diagnostico | sensibilidade/especificidade ou estimativa qualitativa | o que muda"],',
+    '      "prioritizedDiagnostics": ["Prioridade | exame | rendimento diagnóstico | sensibilidade, especificidade ou estimativa qualitativa | o que muda"],',
     '      "patientAssessment": ["string"],',
     '      "monitoringPlan": ["string"],',
     '      "treatmentPlan": ["string"],',
@@ -1127,9 +1125,9 @@ export async function generateDeepSeekClinicalOpinion(
     '- Cada "clinicalFit" deve ter no maximo 3 frases curtas ou 80 palavras.',
     '- Em "prioritizedDiagnostics", comece pelo exame mais util e urgente para aquele diferencial.',
     '- Em "patientAssessment", descreva como reavaliar esse paciente no plantao de forma objetiva.',
-    '- Em "monitoringPlan", explique o que monitorar, com que foco clinico e o que sugeriria piora.',
-    '- Em "treatmentPlan", detalhe estabilizacao, tratamento especifico e suporte clinico de forma pratica e alinhada com literatura veterinaria.',
-    '- Em "allowedDrugs" e "avoidDrugs", cite classes ou farmacos plausiveis e diga o motivo clinico da escolha/evitacao quando relevante.',
+    '- Em "monitoringPlan", explique o que monitorar, com qual foco clínico e o que sugeriria piora.',
+    '- Em "treatmentPlan", detalhe estabilização, tratamento específico e suporte clínico de forma prática e alinhada à literatura veterinária.',
+    '- Em "allowedDrugs" e "avoidDrugs", cite classes ou fármacos plausíveis e explique o motivo clínico da escolha ou da contraindicação quando relevante.',
     '- Seja conciso: supportiveFindings e contradictoryFindings da neurolocalizacao com no maximo 4 itens curtos.',
     '- Em cada diferencial, use no maximo 4 itens curtos em supportingFindings, opposingFindings, prioritizedDiagnostics, patientAssessment, monitoringPlan, treatmentPlan, allowedDrugs, avoidDrugs e comorbidityIntegration.',
     '- Cada item de lista deve ter no maximo 18 palavras e apenas uma ideia principal.',
@@ -1138,7 +1136,7 @@ export async function generateDeepSeekClinicalOpinion(
     '- limitations com no maximo 4 itens curtos.',
     '- references com no maximo 5 itens curtos.',
     '- Em "references", cite obras/consensos curtos usados como base do raciocinio.',
-    '- Se nao existir numero confiavel de sensibilidade/especificidade para um exame naquele diferencial, nao invente percentual.',
+    '- Se não houver estimativa confiável de sensibilidade ou especificidade para um exame naquele diagnóstico diferencial, não invente percentuais.',
     '',
     readableCaseContext,
     '',
@@ -1181,7 +1179,7 @@ export async function generateDeepSeekClinicalOpinion(
         progress: attempt.fallbackUsed ? 72 : 34,
         stage: attempt.fallbackUsed ? 'Acionando segunda tentativa' : 'Consultando IA principal',
         detail: attempt.fallbackUsed
-          ? `A primeira resposta nao ficou boa o suficiente; tentando ${attempt.model}.`
+          ? `A primeira resposta não ficou adequada; tentando ${attempt.model}.`
           : `Gerando relatorio com ${attempt.model}.`,
         model: attempt.model,
         fallback: attempt.fallbackUsed,
@@ -1222,7 +1220,7 @@ export async function generateDeepSeekClinicalOpinion(
         pushProgress({
           progress: 100,
           stage: 'Relatorio finalizado',
-          detail: 'A analise estruturada da IA foi aceita e esta pronta para leitura.',
+          detail: 'A análise estruturada por inteligência artificial (IA) está pronta para leitura.',
           model: attempt.model,
           fallback: attempt.fallbackUsed,
         })
@@ -1252,7 +1250,7 @@ export async function generateDeepSeekClinicalOpinion(
         progress: attempt.fallbackUsed ? 92 : 66,
         stage: attempt.fallbackUsed ? 'Ajustando melhor versao disponivel' : 'Ajustando para nova tentativa',
         detail: attempt.fallbackUsed
-          ? 'A segunda resposta nao ficou perfeita; verificando se a melhor versao disponivel ainda e aproveitavel.'
+          ? 'A segunda resposta ainda precisa de conferência; verificando a melhor versão disponível.'
           : 'A primeira resposta ficou incompleta ou pouco consistente; vou tentar uma segunda passagem.',
         model: attempt.model,
         fallback: attempt.fallbackUsed,
@@ -1275,7 +1273,7 @@ export async function generateDeepSeekClinicalOpinion(
         progress: attempt.fallbackUsed ? 88 : 62,
         stage: attempt.fallbackUsed ? 'Falha na segunda tentativa' : 'Falha na primeira tentativa',
         detail: attempt.fallbackUsed
-          ? 'Nao foi possivel obter uma resposta melhor na segunda passagem.'
+          ? 'Não foi possível obter uma resposta melhor na segunda tentativa.'
           : 'A primeira consulta falhou; vou tentar o modelo alternativo.',
         model: attempt.model,
         fallback: attempt.fallbackUsed,
@@ -1298,7 +1296,7 @@ export async function generateDeepSeekClinicalOpinion(
     pushProgress({
       progress: 100,
       stage: 'Relatorio finalizado com melhor versao disponivel',
-      detail: 'A resposta nao passou em todos os criterios internos, mas havia conteudo clinico suficiente para exibir.',
+      detail: 'A resposta exige conferência clínica adicional antes de orientar a conduta.',
       model: modelUsed,
       fallback: fallbackUsed,
     })

@@ -17,10 +17,7 @@ export const favoritesService = {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) {
-        console.error('Failed to load favorites from Supabase', error);
-        return [];
-      }
+      if (error) return [];
 
       return data.map((row) => ({
         id: row.id,
@@ -54,10 +51,7 @@ export const favoritesService = {
         .select()
         .single();
 
-      if (error) {
-        console.error('Failed to save to Supabase:', error);
-        return null;
-      }
+      if (error) return null;
 
       return {
         id: data.id,

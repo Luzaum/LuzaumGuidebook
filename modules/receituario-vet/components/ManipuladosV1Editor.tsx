@@ -170,9 +170,9 @@ const INGREDIENT_UNIT_SUGGESTIONS = [
 
 function resolvePeriodMode(formula: ManipuladoV1Formula): string {
   const label = formula.prescribing.duration_label?.trim().toLowerCase()
-  if (label === 'dose única' || label === 'dose unica') return '__single'
+  if (label === 'dose única' || label === 'dose única') return '__single'
   if (label === 'uso contínuo' || label === 'uso continuo') return '__continuous'
-  if (label === 'até reavaliação' || label === 'ate reavaliacao') return '__recheck'
+  if (label === 'até reavaliação' || label === 'ate reavaliação') return '__recheck'
   if (label === 'até terminar o medicamento' || label === 'ate terminar o medicamento') return '__finished'
   const unit = formula.prescribing.duration_unit
   if (unit === 'custom') return 'custom'
@@ -710,7 +710,7 @@ export function ManipuladosV1Editor({
 
       {/* ── Bloco 4 — Preview ── */}
       <RxvCard className="p-6">
-        <RxvSectionHeader icon="preview" title="Bloco 4 • Preview final" subtitle="Exatamente o que vai para a receita impressa." />
+        <RxvSectionHeader icon="preview" title="Bloco 4 • Visualização final" subtitle="Exatamente o que vai para a receita impressa." />
         <div className="space-y-4 rounded-2xl border border-[color:color-mix(in_srgb,var(--rxv-primary)_18%,transparent)] bg-black/20 p-5 text-sm text-slate-200">
           <p className="font-semibold text-white">
             <span>{getManipuladoV1PrintLineLeft(previewFormula)}</span>

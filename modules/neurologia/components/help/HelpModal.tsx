@@ -84,17 +84,6 @@ export function HelpModal({ open, onClose, topic, theme }: Props) {
           <Section title="Interpretação clínica" content={topic.interpretation} isDark={isDark} />
           <Section title="Armadilhas comuns" content={topic.pitfalls} isDark={isDark} />
 
-          {topic.imageSlot?.enabled && (
-            <div
-              className={[
-                'rounded-xl border p-3',
-                isDark ? 'border-neutral-700 bg-neutral-800/40' : 'border-neutral-200 bg-neutral-50',
-              ].join(' ')}
-            >
-              <div className="text-sm font-semibold">Imagem do teste (em breve)</div>
-              <div className={`text-sm ${isDark ? 'opacity-80' : 'text-neutral-600'}`}>{topic.imageSlot.caption}</div>
-            </div>
-          )}
         </div>
 
         {/* Footer - Sticky bottom */}

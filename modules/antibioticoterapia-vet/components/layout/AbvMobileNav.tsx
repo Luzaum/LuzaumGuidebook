@@ -34,7 +34,7 @@ export function AbvMobileTopBar({ onOpenMenu, activeTab }: AbvMobileTopBarProps)
         onClick={onOpenMenu}
         className="rounded-lg p-2 transition hover:opacity-90"
         style={{ color: 'hsl(var(--foreground))' }}
-        aria-label="Abrir menu do módulo"
+        aria-label="Abrir menu"
       >
         <Menu className="h-5 w-5" />
       </button>

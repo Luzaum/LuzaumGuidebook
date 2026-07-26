@@ -14,6 +14,11 @@ import { dtuifFelinaRecord } from './diseases.dtuif-felina.seed';
 import { diabetesMellitusCaninaRecord } from './diseases.diabetes-mellitus-canina.seed';
 import { diabetesMellitusFelinaRecord } from './diseases.diabetes-mellitus-felina.seed';
 import { babesioseCaninaRecord } from './diseases.babesiose.seed';
+import { cardiomiopatiaHipertroficaRecord } from './diseases.cardiomiopatia-hipertrofica.seed';
+import { cardiomiopatiaDilatadaRecord } from './diseases.cardiomiopatia-dilatada.seed';
+import { cardiomiopatiaRestritivaRecord } from './diseases.cardiomiopatia-restritiva.seed';
+import { tumoresMamariosRecord } from './diseases.tumores-mamarios.seed';
+import { mastiteRecord } from './diseases.mastite.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
   babesioseCaninaRecord,
@@ -225,13 +230,13 @@ export const diseasesSeed: DiseaseRecord[] = [
         '2) Controle local — higiene perianal diária ou frequente (Nelson & Couto); antissépticos tópicos (por exemplo clorexidina) quando houver infecção secundária relevante.',
         '3) Analgesia e conforto evacuatório — a dor é determinante de sofrimento; amolecedores fecais (por exemplo lactulose) podem reduzir trauma à evacuação.',
         '4) Tacrolimo tópico — adjuvante ou em crises leves; existem protocolos combinados na literatura (cuidado com ingestão pelo animal).',
-        '5) Prednisolona ou prednisona — frequentemente como ponte ou adjuvante: efeito mais rápido, porém com perfil importante de efeitos adversos em uso prolongado; doses anti-inflamatórias ou imunossupressoras conforme o caso (consulte a monografia de prednisolona no aplicativo).',
+        '5) Prednisolona ou prednisona — frequentemente como ponte ou adjuvante: efeito mais rápido, porém com perfil importante de efeitos adversos em uso prolongado; doses anti-inflamatórias ou imunossupressoras conforme o caso (consulte a monografia da prednisolona).',
         '6) Dieta com proteína nova ou hidrolisada — quando houver suspeita de componente alimentar ou sinais gastrointestinais associados; não é obrigatório em todos.',
         '7) Infecção secundária — tratar quando estiver documentada ou clinicamente evidente; não substitui a imunomodulação de base.',
         '8) Cirurgia — reservada a casos residuais ou refratários após terapia médica adequada, envolvimento importante de sacos anais, fibrose ou estenose, ou anatomia que impeça boa resposta clínica.',
       ],
       monitoramento: [
-        'Dor à evacuação — observar se o animal cont?nua tenso, resistente ou vocaliza ao defecar.',
+        'Dor à evacuação — observar se o animal continua tenso, resistente ou vocaliza ao defecar.',
         'Lesões locais — número e profundidade dos tratos, secreção e odor; fotos seriadas ajudam a acompanhar evolução.',
         'Toque retal — reavaliar periodicamente quando indicado e seguro (sedar se necessário).',
         'Função digestiva e estado geral — consistência fecal, peso, apetite e hidratação.',
@@ -307,9 +312,14 @@ export const diseasesSeed: DiseaseRecord[] = [
   doencaRenalCronicaCaesGatosRecord,
   hipertensaoArterialSistemicaRecord,
   doencaValvarMitralDegenerativaRecord,
+  cardiomiopatiaHipertroficaRecord,
+  cardiomiopatiaDilatadaRecord,
+  cardiomiopatiaRestritivaRecord,
   hipoadrenocorticismoAddisonRecord,
   diabetesMellitusCaninaRecord,
   diabetesMellitusFelinaRecord,
   hipertireoidismoFelinoRecord,
   hipotireoidismoCaninoRecord,
+  tumoresMamariosRecord,
+  mastiteRecord,
 ];

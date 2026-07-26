@@ -23,7 +23,7 @@ type NutritionReportRow = {
 function getClinicIdOrThrow() {
   const clinicId = String(getStoredClinicId() || '').trim()
   if (!clinicId) {
-    throw new Error('Clinica ativa nao encontrada. Abra o app com uma clinica selecionada.')
+    throw new Error('Clínica ativa não encontrada. Selecione uma clínica para continuar.')
   }
   return clinicId
 }
@@ -33,7 +33,7 @@ async function getCurrentUserIdOrThrow() {
   if (error) throw error
   const userId = String(data.user?.id || '').trim()
   if (!userId) {
-    throw new Error('Usuario autenticado nao encontrado.')
+    throw new Error('Usuario autenticado não encontrado.')
   }
   return userId
 }

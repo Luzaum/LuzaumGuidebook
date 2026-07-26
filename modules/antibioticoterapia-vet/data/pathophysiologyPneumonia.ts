@@ -54,7 +54,7 @@ A apresentação é frequentemente **discreta** em termos de tosse; **taquipneia
 - **Internado**: **IV** até ingestão fiável e estabilidade respiratória; fluidoterapia se desidratado; **oxigénio** se SpO₂ baixa.
 - **Grave / choque / suspeita de sépse**: suporte completo, empirismo **parenteral ampliado** conforme protocolo, **hemocultura**, monitorização.
 
-## Stewardship e reavaliação
+## Uso racional e reavaliação
 
 Fluoroquinolonas e associações **largas** não devem ser “padrão” em tosse leve estável. **Reavaliar** precocemente: falha terapêutica exige reconsiderar **aspiração**, **corpo estranho**, **neoplasia**, **edema cardiogénico** ou **doença não infecciosa**. Descalonar com **cultura** ou evidência clínica de resolução.
 
@@ -68,7 +68,7 @@ A entrada de material **orofaríngeo** ou **gástrico** nas vias aéreas inferio
 
 ## Complicações: derrame parapneumónico e extensão sistémica
 
-A inflamação alveolar extensa pode acompanhar-se de **derrame parapneumónico**; líquidos purulentos ou com pH/lactato alterados (quando analisados) orientam **drenagem** em articulação com especialidade. A **bacteremia** a partir do foco pulmonar ou a **sobreposição séptica** impõe **hemocultura** quando o doente é instável, oxigenoterapia e suporte como na lógica de sepse — o módulo trata **pneumonia** e **sepse** como condições relacionadas mas com fichas distintas.
+A inflamação alveolar extensa pode acompanhar-se de **derrame parapneumónico**; líquidos purulentos ou com pH/lactato alterados (quando analisados) orientam **drenagem** em articulação com especialidade. A **bacteremia** a partir do foco pulmonar ou a **sobreposição séptica** impõe **hemocultura** quando o doente é instável, oxigenoterapia e suporte como na lógica de sepse. **Pneumonia** e **sepse** são condições relacionadas, mas exigem avaliações próprias.
 
 ## Cão vs gato — resumo prático
 
@@ -175,7 +175,7 @@ export const PNEUMONIA_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
       title: 'Derrame parapneumónico e complicações',
       lead: 'Quando há líquido pleural significativo ou suspeita de empiema, o plano integra **especialidade** e frequentemente **drenagem** — antibiótico isolado é insuficiente.',
       paragraphs: [
-        'O **piotórax** aparece como ficha própria neste módulo; em pneumonia com derrame parapneumónico, o raciocínio mistura critérios de **drenagem** e prolongamento de antimicrobiano conforme cultura do líquido.',
+        'O **piotórax** exige avaliação própria; em pneumonia com derrame parapneumónico, o raciocínio combina critérios de **drenagem** e prolongamento de antimicrobiano conforme cultura do líquido.',
       ],
     },
     {
@@ -194,7 +194,7 @@ export const PNEUMONIA_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
     },
     {
       id: 'rx',
-      title: 'Antimicrobianos e stewardship',
+      title: 'Antimicrobianos e uso racional',
       bullets: [
         'Ambulatorial: **doxiciclina** ou **amoxicilina + clavulanato** são frequentes — idade, espécie e interações importam.',
         'Internado: **beta-lactâmico IV** (ex.: ampicilina + sulbactam) até melhora estável.',
@@ -202,8 +202,8 @@ export const PNEUMONIA_PATHOPHYSIOLOGY_VISUAL: PathophysiologyVisual = {
       ],
       callout: {
         kind: 'info',
-        title: 'Fichas no aplicativo',
-        text: 'As **linhas 1ª–3ª** em pneumonia (oral estável, IV internado, associação em cenário séptico) alinham-se aos regimes do catálogo — ajustar a **estabilidade**, **hemocultura** quando indicado e **bula**.',
+        title: 'Escolha do esquema',
+        text: 'As **linhas 1ª–3ª** em pneumonia incluem terapia oral no paciente estável, via intravenosa no internado e associação em cenário séptico — ajustar à **estabilidade**, **hemocultura** quando indicada e **bula**.',
       },
     },
     {

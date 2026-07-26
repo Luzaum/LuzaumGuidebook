@@ -11,7 +11,7 @@ export interface ClinicalProfileOption {
 }
 
 function sanitizeClinicalLabel(label: string | null | undefined): string {
-  if (!label) return 'Perfil clinico'
+  if (!label) return 'Perfil clínico'
   const sanitized = label
     .replace(/_/g, ' ')
     .replace(/\s*-\s*%MS/gi, '')
@@ -20,7 +20,7 @@ function sanitizeClinicalLabel(label: string | null | undefined): string {
     .replace(/\s*-\s*%Contribuicao Energetica/gi, '')
     .replace(/\s*-\s*100 kcal/gi, '')
     .replace(/\s*%MS/gi, '')
-    .replace(/\badult maintenance\b/gi, 'adulto em manutencao')
+    .replace(/\badult maintenance\b/gi, 'adulto em manutenção')
     .replace(/\bnormal activity\b/gi, 'atividade moderada')
     .replace(/\blow activity\b/gi, 'baixa atividade')
     .replace(/\bweight loss\b/gi, 'perda de peso')
@@ -63,7 +63,7 @@ function clinicalWorkbookMatchesSelectedSpecies(profile: RequirementProfile, spe
 function describeProfile(profile: RequirementProfile): string {
   if (profile.condition) return sanitizeClinicalLabel(profile.condition)
   if (profile.lifeStage) return sanitizeClinicalLabel(profile.lifeStage)
-  return 'Ajusta a avaliacao nutricional com metas especificas da planilha clinica.'
+  return 'Ajusta a avaliação nutricional com metas clínicas específicas.'
 }
 
 export function getClinicalRequirementProfiles(species: Species): RequirementProfile[] {
@@ -119,11 +119,11 @@ export function getClinicalProfileBadges(species: Species, selections: string[])
 }
 
 export function getHumanRequirementLabel(profile?: RequirementProfile): string {
-  if (!profile) return 'Perfil nutricional nao selecionado'
+  if (!profile) return 'Perfil nutricional não selecionado'
 
   if (profile.source === 'FEDIAF 2025') {
     if (profile.label.includes('adulto 110') || profile.label.includes('adulto 100')) {
-      return 'Adulto Padrao'
+      return 'Adulto Padrão'
     }
     if (profile.label.includes('adulto 95') || profile.label.includes('adulto 75')) {
       return 'Adulto Castrado / Baixa Ativ.'
@@ -135,7 +135,7 @@ export function getHumanRequirementLabel(profile?: RequirementProfile): string {
       return 'Crescimento Tardio'
     }
     if (profile.condition === 'metabolic_reference') {
-      return 'Metabolico Base'
+      return 'Metabólico Base'
     }
     if (profile.lifeStage && profile.condition) {
       return `${sanitizeClinicalLabel(profile.lifeStage)} ${sanitizeClinicalLabel(profile.condition)}`.trim()

@@ -16,7 +16,7 @@ export function normalizeFiO2Input(raw?: number): NormalizedFiO2 {
       fraction: raw,
       displayPercent: Number((raw * 100).toFixed(1)),
       source: 'fraction',
-      note: `FiO2 interpretada como fracao (${raw.toFixed(2)}), equivalente a ${Number((raw * 100).toFixed(1))}%.`,
+      note: `FiO2 interpretada como fração (${raw.toFixed(2)}), equivalente a ${Number((raw * 100).toFixed(1))}%.`,
     };
   }
 
@@ -41,7 +41,7 @@ export function normalizeFiO2Input(raw?: number): NormalizedFiO2 {
   }
 
   return {
-    warning: `FiO2 ${raw} esta fora da faixa esperada para fracao (0.21-1.00) ou porcentagem (21-100).`,
+    warning: `FiO2 ${raw} está fora da faixa esperada para fração (0,21-1,00) ou porcentagem (21-100).`,
   };
 }
 

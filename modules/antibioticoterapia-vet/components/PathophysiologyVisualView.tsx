@@ -66,8 +66,7 @@ function TreatmentLinesAppendix({
           Antimicrobianos: linhas de tratamento e justificativas
         </h4>
         <p className="mt-2 text-sm leading-relaxed" style={{ color: 'hsl(var(--muted-foreground))' }}>
-          Opções cadastradas para esta condição no aplicativo. A decisão final deve considerar estabilidade do paciente,
-          cultura, função orgânica e protocolos locais.
+          A decisão final deve considerar estabilidade do paciente, cultura, função orgânica, bula e protocolos locais.
         </p>
       </div>
       {blocks.map((block, bi) => (

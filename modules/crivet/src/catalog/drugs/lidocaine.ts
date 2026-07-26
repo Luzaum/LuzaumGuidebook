@@ -39,7 +39,7 @@ export const lidocaine: Drug = {
     'Hipotensão e bradicardia (em altas doses ou injeção rápida)'
   ],
   usageErrors: [
-    'Uso de formulações contendo epinefrina (vasoconstritor) por via intravenosa',
+    'Uso de fórmulações contendo epinefrina (vasoconstritor) por via intravenosa',
     'Administração de bolus rápido (aumenta o risco de convulsões e hipotensão)',
     'Uso sistêmico em gatos sem monitoramento intensivo e doses drasticamente reduzidas'
   ],

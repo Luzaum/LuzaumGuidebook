@@ -130,7 +130,7 @@ export function HemoSidebar({ onLinkClick, className, variant = 'default', omitH
                 <Activity className="w-4 h-4 text-slate-400 absolute" />
              </div>
              <div className="text-xs text-slate-500 dark:text-slate-400">
-               Versão 2.0 (Enriquecida)
+               Interpretação hemogasométrica
              </div>
            </div>
         </div>

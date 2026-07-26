@@ -37,7 +37,7 @@ Além do padrão descrito (letargia, anorexia, vómito, POLP, dor, distensão), 
 
 ## Tratamento: ovariohisterectomia, estabilização e opções médicas
 
-A **OHE** após **estabilização** (fluidoterapia, analgesia, oxigénio, correção de alterações de base) é o tratamento **definitivo** na maioria dos serviços: elimina a fonte de **progesterona** e o foco séptico. O **antimicrobiano sistémico** é **adjuvante** e deve cobrir **Gram-negativos** e, conforme protocolo, **anaeróbios**; via **IV** quando há instabilidade. A **duração** pós-operatória depende da **resolução clínica**, **culturas** (sangue, conteúdo uterino quando seguro) e critérios de stewardship — não um número fixo isolado.
+A **OHE** após **estabilização** (fluidoterapia, analgesia, oxigénio, correção de alterações de base) é o tratamento **definitivo** na maioria dos serviços: elimina a fonte de **progesterona** e o foco séptico. O **antimicrobiano sistémico** é **adjuvante** e deve cobrir **Gram-negativos** e, conforme protocolo, **anaeróbios**; via **IV** quando há instabilidade. A **duração** pós-operatória depende da **resolução clínica**, **culturas** (sangue, conteúdo uterino quando seguro) e critérios de uso racional — não um número fixo isolado.
 
 A **terapia exclusivamente médica** (p.ex. **prostaglandinas**, **antagonistas/antiprogestágenos** conforme jurisdição e protocolo) reserva-se a **casos seleccionados**, equipa experiente e **monitorização** estreita; há risco de **ruptura uterina**, **recidiva** e **infertilidade** — **consentimento informado** e plano de seguimento imagiológico e laboratorial.
 
@@ -192,7 +192,7 @@ export const DZ_SEED: DiseaseSystem = {
       duration:
         'Duração variável: empirismo amplo nas primeiras **48–72 h** com reavaliação obrigatória; após desescalonamento, dias a semanas conforme resolução clínica, cultura e foco — não prolongar espectro amplo sem critério.',
       notes:
-        'Marcar **sepse** no perfil do paciente no motor v2 alinha cenários hospitalares. **Hemocultura** e amostras de foco **antes** da próxima dose de ATB quando **seguro** — em choque, minutos de estabilização vêm primeiro. Priorizar **fluidoterapia**, **oxigénio** e **controlo de foco** (drenagem, cirurgia, desobstrução) em paralelo ao empirismo IV; em **gatos**, hipotermia/bradicardia podem mascarar gravidade. Stewardship: página **Referências** (Guia CCIH).',
+        'A suspeita de **sepse** exige conduta hospitalar. **Hemocultura** e amostras do foco devem ser obtidas **antes** da próxima dose de antimicrobiano quando **seguro** — no choque, a estabilização vem primeiro. Priorizar **fluidoterapia**, **oxigénio** e **controlo do foco** (drenagem, cirurgia, desobstrução) em paralelo ao tratamento empírico intravenoso; em **gatos**, hipotermia e bradicardia podem mascarar a gravidade. Consulte o **Guia CCIH** nas referências.',
     },
   ],
 
@@ -332,7 +332,7 @@ export const DZ_SEED: DiseaseSystem = {
               {
                 name: 'Enrofloxacina',
                 rationale:
-                  'Reforço de Gram-negativos em instabilidade séptica com critério de ampliação; cautela em filhotes/gatos e função renal; seguir stewardship e bula.',
+                  'Reforço de cobertura para Gram-negativos em instabilidade séptica; cautela em filhotes, gatos e pacientes com disfunção renal; seguir princípios de uso racional e a bula.',
               },
             ],
           },
@@ -368,7 +368,7 @@ export const DZ_SEED: DiseaseSystem = {
               {
                 name: 'Marbofloxacina',
                 rationale:
-                  'Fluoroquinolona oral como alternativa quando indicada; reservar para critério clínico/stewardship — não padrão universal para primeiro episódio simples.',
+                  'Fluoroquinolona oral como alternativa quando indicada; reservar conforme critério clínico e microbiológico — não é padrão universal para o primeiro episódio simples.',
               },
             ],
           },
@@ -439,7 +439,7 @@ export const DZ_SEED: DiseaseSystem = {
               {
                 name: 'Marbofloxacina',
                 rationale:
-                  'Alternativa quando sensibilidade/indicação e stewardship concordam; evitar “rodízio” de quinolonas sem microbiologia.',
+                  'Alternativa quando a sensibilidade e a indicação clínica concordam; evitar rodízio de quinolonas sem microbiologia.',
               },
             ],
           },

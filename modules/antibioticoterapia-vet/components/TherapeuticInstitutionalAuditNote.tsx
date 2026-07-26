@@ -10,7 +10,7 @@ export function TherapeuticInstitutionalAuditNote({
   clinicianNote: string
   variant: 'molecule' | 'regimen'
 }) {
-  const scope = variant === 'molecule' ? 'Molécula (núcleo v2)' : 'Regime (sob perfil clínico)'
+  const scope = variant === 'molecule' ? 'Fármaco' : 'Regime terapêutico'
   return (
     <div
       className="mt-2 rounded-md border-l-2 py-2 pl-3 pr-2 text-[11px] leading-snug"
@@ -22,7 +22,7 @@ export function TherapeuticInstitutionalAuditNote({
     >
       <div className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
         <span className="text-[10px] font-semibold uppercase tracking-wide text-[hsl(var(--foreground))]">
-          Auditoria terapêutica · {scope}
+          Apoio institucional · {scope}
         </span>
         <span className="font-medium text-[hsl(var(--foreground))]">{THERAPEUTIC_AUDIT_LABEL[state]}</span>
       </div>

@@ -10,8 +10,8 @@
       "comorbidityCautions": []
     },
     "whyTemplates": [
-      "Em pacientes idosos com convulsoes de inicio tardio, alteracao visual central, andar em circulos ou mudanca comportamental, neoplasia prosencefalica e uma das hipoteses mais fortes.",
-      "Meningioma e glioma sao causas classicas de sindrome prosencefalica progressiva em caes e gatos."
+      "Em pacientes idosos com convulsoes de inicio tardio, alteração visual central, andar em circulos ou mudanca comportamental, neoplasia prosencefalica e uma das hipoteses mais fortes.",
+      "Meningioma e glioma sao causas classicas de sindrome prosencefalica progressiva em cães e gatos."
     ],
     "diagnostics": [
       {
@@ -24,18 +24,18 @@
       {
         "test": "Estadiamento toracico e abdominal",
         "priority": "MEDIA",
-        "whatItAssesses": "Procura neoplasia sistemica, metastase ou doenca concomitante que mude a conduta.",
+        "whatItAssesses": "Procura neoplasia sistêmica, metastase ou doença concomitante que mude a conduta.",
         "expectedFindings": "Pode ser normal em tumores primarios ou alterado em metastases/linfoma.",
-        "limitations": "Nao substitui a imagem do SNC."
+        "limitations": "Não substitui a imagem do SNC."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Controle de convulsoes", "Oxigenacao e suporte", "Manejo de edema/hipertensao intracraniana se necessario"],
+        "plan": ["Controle de convulsoes", "Oxigenação e suporte", "Manejo de edema/hipertensao intracraniana se necessario"],
         "cautions": ["Cautela com contraste, manitol e anestesia em renopatas e pneumopatas"]
       },
       "DEFINITIVO": {
-        "plan": ["Cirurgia, radioterapia, oncologia ou paliacao conforme localizacao e objetivo terapeutico"],
+        "plan": ["Cirurgia, radioterapia, oncologia ou paliacao conforme localizacao e objetivo terapêutico"],
         "cautions": ["Prognostico depende da histologia, ressecabilidade e efeito de massa"]
       }
     }
@@ -59,15 +59,15 @@
         "test": "RM de encefalo",
         "priority": "ALTA",
         "whatItAssesses": "Procura lesoes prosencefalicas assimetricas, edema e realce meningeo ou parenquimatoso.",
-        "expectedFindings": "Lesoes multifocais ou focais com padrao inflamatorio.",
+        "expectedFindings": "Lesoes multifocais ou focais com padrão inflamatorio.",
         "limitations": "Pode se confundir com neoplasia ou AVC."
       },
       {
-        "test": "Liquor apos imagem segura",
+        "test": "Liquor após imagem segura",
         "priority": "ALTA",
         "whatItAssesses": "Confirma inflamacao e ajuda a excluir infecciosa.",
-        "expectedFindings": "Pleocitose mononuclear ou mista e proteina aumentada.",
-        "limitations": "Contraindicado em hipertensao intracraniana nao controlada."
+        "expectedFindings": "Pleocitose mononuclear ou mista e proteína aumentada.",
+        "limitations": "Contraindicado em hipertensao intracraniana não controlada."
       }
     ],
     "treatment": {
@@ -76,7 +76,7 @@
         "cautions": ["Evitar iniciar imunossupressao cega se infecciosa ainda e uma possibilidade forte"]
       },
       "DEFINITIVO": {
-        "plan": ["Imunossupressao direcionada e monitorizacao por resposta clinica e imagem"],
+        "plan": ["Imunossupressao direcionada e monitorização por resposta clínica e imagem"],
         "cautions": ["Monitorar infeccao secundaria, glicemia e efeitos adversos"]
       }
     }
@@ -92,8 +92,8 @@
       "comorbidityCautions": ["IMUNOSSUPRIMIDO"]
     },
     "whyTemplates": [
-      "Convulsoes e deficits corticais podem ser a face clinica de encefalites infecciosas por protozoarios, bacterias, fungos ou virus.",
-      "Historia sistemica, febre e imunossupressao tornam essa hipotese ainda mais relevante."
+      "Convulsoes e deficits corticais podem ser a face clínica de encefalites infecciosas por protozoarios, bacterias, fungos ou virus.",
+      "Historia sistêmica, febre e imunossupressao tornam essa hipotese ainda mais relevante."
     ],
     "diagnostics": [
       {
@@ -101,16 +101,16 @@
         "priority": "ALTA",
         "whatItAssesses": "Pesquisa agente e distribuicao de lesoes infecciosas.",
         "expectedFindings": "Liquor inflamatorio e imagem com lesoes focais ou multifocais de encefalite.",
-        "limitations": "Necessita direcionamento por regiao, especie e historia."
+        "limitations": "Necessita direcionamento por região, especie e historia."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Controle de convulsoes", "Coleta de exames antes de terapia dirigida quando possivel"],
+        "plan": ["Suporte intensivo", "Controle de convulsoes", "Coleta de exames antes de terapia dirigida quando possível"],
         "cautions": ["Ajustar antimicrobianos em renopatas/hepatopatas e evitar imunossupressao precipitada"]
       },
       "DEFINITIVO": {
-        "plan": ["Terapia especifica conforme agente", "Monitorizacao neurologica e sistemica"],
+        "plan": ["Terapia especifica conforme agente", "Monitorização neurologica e sistêmica"],
         "cautions": ["Reavaliar resposta em 24 a 72 horas"]
       }
     }
@@ -127,30 +127,30 @@
     },
     "whyTemplates": [
       "Deficits focais assimetricos e inicio abrupto ou em surtos podem representar isquemia ou hemorragia prosencefalica.",
-      "Doenca renal, hipertensao e endocrinopatias aumentam a plausibilidade vascular."
+      "Doença renal, hipertensao e endocrinopatias aumentam a plausibilidade vascular."
     ],
     "diagnostics": [
       {
-        "test": "RM de encefalo, pressao arterial e investigacao de comorbidades",
+        "test": "RM de encefalo, pressão arterial e investigacao de comorbidades",
         "priority": "ALTA",
         "whatItAssesses": "Confirma lesao vascular e pesquisa fator predisponente tratavel.",
-        "expectedFindings": "Lesao vascular focal e/ou hipertensao sistemica.",
-        "limitations": "Sem RM, o diagnostico fica apenas presuntivo."
+        "expectedFindings": "Lesao vascular focal e/ou hipertensao sistêmica.",
+        "limitations": "Sem RM, o diagnóstico fica apenas presuntivo."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Oxigenacao e perfusao adequadas", "Controle de hipertensao se presente"],
-        "cautions": ["Evitar hipotensao e sedacao excessiva"]
+        "plan": ["Suporte intensivo", "Oxigenação e perfusão adequadas", "Controle de hipertensao se presente"],
+        "cautions": ["Evitar hipotensao e sedação excessiva"]
       },
       "DEFINITIVO": {
         "plan": ["Tratar fator predisponente e reabilitacao"],
-        "cautions": ["Reavaliar risco de recorrencia e proteinuria/pressao arterial"]
+        "cautions": ["Reavaliar risco de recorrencia e proteinuria/pressão arterial"]
       }
     }
   },
   {
-    "name": "Encefalopatia metabolica com sindrome prosencefalica",
+    "name": "Encefalopatia metabólica com sindrome prosencefalica",
     "category": "TOXICO_METABOLICA",
     "rules": {
       "course": ["AGUDO", "SUBAGUDO", "EPISODICO"],
@@ -160,25 +160,25 @@
       "comorbidityCautions": ["RENOPATA", "HEPATOPATA", "ENDOCRINOPATA", "PNEUMOPATA"]
     },
     "whyTemplates": [
-      "Crises, colapso, cegueira aparente e sinais prosencefalicos podem ser estruturais, mas em pacientes com comorbidades metabolicas e obrigatorio excluir encefalopatia sistemica primeiro.",
-      "Hepatica, uremica, hipoglicemica e hipoxica sao causas classicas de disfuncao encefalica difusa com fenotipo prosencefalico."
+      "Crises, colapso, cegueira aparente e sinais prosencefalicos podem ser estruturais, mas em pacientes com comorbidades metabolicas e obrigatorio excluir encefalopatia sistêmica primeiro.",
+      "Hepática, uremica, hipoglicemica e hipoxica sao causas classicas de disfuncao encefalica difusa com fenotipo prosencefalico."
     ],
     "diagnostics": [
       {
         "test": "Bioquimica, glicemia, eletrolitos, gasometria e amonia quando indicado",
         "priority": "ALTA",
-        "whatItAssesses": "Procura causa metabolica tratavel que explique o fenotipo neurologico.",
-        "expectedFindings": "Alteracoes sistemicas compativeis com encefalopatia metabolica.",
-        "limitations": "Resultado alterado nao exclui lesao estrutural coexistente."
+        "whatItAssesses": "Procura causa metabólica tratavel que explique o fenotipo neurologico.",
+        "expectedFindings": "Alteracoes sistemicas compativeis com encefalopatia metabólica.",
+        "limitations": "Resultado alterado não exclui lesao estrutural coexistente."
       }
     ],
     "treatment": {
       "0-6H": {
-        "plan": ["Suporte intensivo", "Correcao metabolica e controle de convulsoes"],
-        "cautions": ["Ajustar fluidos e farmacos conforme rim, figado e ventilacao"]
+        "plan": ["Suporte intensivo", "Correção metabólica e controle de convulsoes"],
+        "cautions": ["Ajustar fluidos e fármacos conforme rim, figado e ventilação"]
       },
       "DEFINITIVO": {
-        "plan": ["Tratar doenca de base e reavaliar SNC apos estabilizacao"],
+        "plan": ["Tratar doença de base e reavaliar SNC após estabilizacao"],
         "cautions": ["Persistencia de deficits mantem imagem intracraniana como prioridade"]
       }
     }
@@ -194,31 +194,31 @@
       "comorbidityCautions": ["HEPATOPATA"]
     },
     "whyTemplates": [
-      "Agentes toxicos podem produzir convulsoes, cegueira, andar em circulos, tremores e rebaixamento agudo.",
+      "Agentes tóxicos podem produzir convulsoes, cegueira, andar em circulos, tremores e rebaixamento agudo.",
       "Sem historia de exposicao clara, essa hipotese nunca deve ser descartada cedo demais em quadros agudos."
     ],
     "diagnostics": [
       {
-        "test": "Anamnese de exposicao, exames basicos e monitorizacao intensiva",
+        "test": "Anamnese de exposicao, exames basicos e monitorização intensiva",
         "priority": "ALTA",
         "whatItAssesses": "Procura exposicao plausivel e repercussoes metabolicas da intoxicacao.",
         "expectedFindings": "Achados inespecificos, por vezes associados a hipertermia, acidose ou alteracoes pupilares.",
-        "limitations": "Confirmacao laboratorial raramente e disponivel."
+        "limitations": "Confirmacao laboratorial raramente e disponível."
       }
     ],
     "treatment": {
       "0-6H": {
         "plan": ["Descontaminacao quando apropriada", "Suporte intensivo", "Controle de convulsoes e temperatura"],
-        "cautions": ["Evitar farmacos hepatotoxicos e depressao respiratoria desnecessaria"]
+        "cautions": ["Evitar fármacos hepatotoxicos e depressao respiratória desnecessaria"]
       },
       "DEFINITIVO": {
-        "plan": ["Tratamento especifico quando o agente for conhecido", "Monitorizacao ate remissao neurologica"],
-        "cautions": ["Reavaliar funcao hepatica e renal"]
+        "plan": ["Tratamento especifico quando o agente for conhecido", "Monitorização ate remissao neurologica"],
+        "cautions": ["Reavaliar função hepática e renal"]
       }
     }
   },
   {
-    "name": "Hidrocefalia, malformacao prosencefalica ou distensao ventricular",
+    "name": "Hidrocefalia, malformacao prosencefalica ou distensão ventricular",
     "category": "DEGENERATIVA",
     "rules": {
       "course": ["CRONICO", "SUBAGUDO"],
@@ -237,7 +237,7 @@
         "priority": "ALTA",
         "whatItAssesses": "Avalia ventriculos, malformacoes e efeitos estruturais sobre o prosencefalo.",
         "expectedFindings": "Ventriculomegalia, disgenesias ou anomalias congenitas.",
-        "limitations": "Menos provavel em geriatrico sem historia antiga."
+        "limitations": "Menos provável em geriatrico sem historia antiga."
       }
     ],
     "treatment": {
@@ -247,7 +247,7 @@
       },
       "DEFINITIVO": {
         "plan": ["Tratamento medico ou neurocirurgico conforme anomalia"],
-        "cautions": ["Prognostico depende da causa e da duracao do quadro"]
+        "cautions": ["Prognostico depende da causa e da duração do quadro"]
       }
     }
   }

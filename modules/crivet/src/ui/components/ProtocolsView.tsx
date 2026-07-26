@@ -22,7 +22,7 @@ import { TipButton } from './TipButton';
 import { convertConcentrationToMcgPerMl, convertDoseToMcgPerHour } from '../../calculation-engine/unitConversions';
 import { buildCustomPresentation, CUSTOM_PRESENTATION_ID, getPresentationOptions, parseDoseRange } from '../lib/drugContent';
 
-type ProtocolCategory = 'CRI' | 'Bolus' | 'Sedacao/Pre-medicacao' | 'Emergencia';
+type ProtocolCategory = 'CRI' | 'Bolus' | 'Sedacao/Pre-medicacao' | 'Emergência';
 
 interface ProtocolDrugLine {
   name: string;
@@ -61,7 +61,7 @@ interface ProtocolsViewProps {
   onLoadDrug?: (drugId: string) => void;
 }
 
-const categories: (ProtocolCategory | 'All')[] = ['All', 'CRI', 'Bolus', 'Sedacao/Pre-medicacao', 'Emergencia'];
+const categories: (ProtocolCategory | 'All')[] = ['All', 'CRI', 'Bolus', 'Sedacao/Pre-medicacao', 'Emergência'];
 
 const getCategoryLabel = (cat: ProtocolCategory | 'All'): string => {
   switch (cat) {
@@ -158,7 +158,7 @@ const predefinedProtocols: Protocol[] = [
     id: 'cpr-epinephrine',
     name: 'RCP: Epinefrina (Adrenalina)',
     description: 'Vasopressor de primeira linha na reanimação cardiopulmonar.',
-    category: 'Emergencia',
+    category: 'Emergência',
     drugs: [{ name: 'Epinefrina', drugId: 'epinephrine', dose: '0.01 mg/kg a 0.1 mg/kg', notes: 'Titular conforme o momento da RCP.' }],
     species: ['dog', 'cat'],
     indications: ['Parada cardiorrespiratória'],
@@ -169,7 +169,7 @@ const predefinedProtocols: Protocol[] = [
     id: 'status-epilepticus',
     name: 'Status Epilepticus (Controle de Crise)',
     description: 'Interrupção de convulsões ativas e refratárias.',
-    category: 'Emergencia',
+    category: 'Emergência',
     drugs: [
       { name: 'Diazepam', drugId: 'diazepam', dose: '0.5-1.0 mg/kg', notes: 'Primeira escolha IV ou retal.' },
       { name: 'Midazolam', drugId: 'midazolam', dose: '0.2-0.5 mg/kg', notes: 'Boa opção IM ou intranasal sem acesso IV.' },

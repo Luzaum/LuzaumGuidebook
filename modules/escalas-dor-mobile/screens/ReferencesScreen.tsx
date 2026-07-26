@@ -33,7 +33,7 @@ const ReferencesScreen: React.FC<ReferencesScreenProps> = ({ onBack }) => {
           Projeto Dor e Qualidade de Vida em Animais — animalpain.org
         </h4>
         <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-          Esta ferramenta foi construída e estruturada sob as diretrizes científicas do portal <strong>animalpain.org</strong>, coordenado e mantido pelo Prof. Dr. Stelio Pacca Loureiro Luna e equipe da Faculdade de Medicina Veterinária e Zootecnia (FMVZ) da UNESP, campus Botucatu/SP, referência mundial no estudo e validação de escalas de dor em animais.
+          As escalas e orientações seguem as diretrizes científicas do portal <strong>animalpain.org</strong>, coordenado pelo Prof. Dr. Stelio Pacca Loureiro Luna e pela equipe da Faculdade de Medicina Veterinária e Zootecnia (FMVZ) da UNESP, campus Botucatu/SP.
         </p>
         <div className="pt-2">
           <a

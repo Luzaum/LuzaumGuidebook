@@ -118,6 +118,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   nutra_general_support: 'Suporte nutricional geral',
   nutra_mineral_vitamin: 'Vitaminas / minerais',
   endocrine_adrenal: 'Adrenais',
+  endocrine_insulin: 'Insulinas',
   endocrine_thyroid: 'Tireoide',
   endocrine_erythropoiesis: 'Eritropoiese / DRC',
   endocrine_diagnostic: 'Diagnóstico endócrino',
@@ -178,7 +179,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   urologic: ['uro_urinary_support'],
   renal: ['renal_ckd_support', 'endocrine_erythropoiesis'],
   orthopedic: ['ortho_joint_support', 'ortho_antiinflammatory'],
-  endocrine: ['endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
+  endocrine: ['endocrine_insulin', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
   ophthalmologic: [
     'ophthalmic_lubricant',
     'ophthalmic_immunomodulator',

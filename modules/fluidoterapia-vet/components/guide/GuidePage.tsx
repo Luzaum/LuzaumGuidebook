@@ -12,7 +12,7 @@ export function GuidePage() {
             <BookOpen className="h-8 w-8 text-teal-500" />
             Guia clínico
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Base conceitual do módulo: fisiologia, diferenças entre compartimentos, manutenção, tipos de fluido, monitorização e honestidade clínica.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Fisiologia, compartimentos, manutenção, tipos de fluido e monitorização clínica.</p>
         </header>
 
         <section className="grid gap-6 lg:grid-cols-3">
@@ -171,7 +171,7 @@ export function GuidePage() {
               <CardTitle className="flex items-center gap-2 text-lg"><Info className="h-5 w-5 text-indigo-500" /> Sódio, cloro e honestidade</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Em adultos e idosos, o módulo não inventa tabela geriátrica fechada sem fonte robusta.</p>
+              <p>Em adultos e idosos, não há uma tabela geriátrica única sustentada por evidência robusta; individualize conforme perfusão, comorbidades e resposta.</p>
               <p>Como referência de raciocínio: sódio médio canino gira em torno de 145 mEq/L e felino em torno de 155 mEq/L.</p>
               <p>Cloro corrigido aproximado: cão 107 a 113 mEq/L e gato 117 a 123 mEq/L, sempre lembrando a variação entre laboratórios.</p>
               <p>Em adultos e idosos, preferir faixa do laboratório, tendência seriada e contexto clínico.</p>

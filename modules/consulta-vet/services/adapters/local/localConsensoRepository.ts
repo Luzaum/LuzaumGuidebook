@@ -126,15 +126,15 @@ export class LocalConsensoRepository implements ConsensoRepository {
   }
 
   async create(_input: CreateConsensusInput): Promise<ConsensusRecord> {
-    throw new Error('Cadastro de consenso requer fonte Supabase ativa.');
+    throw new Error('O cadastro de consensos está indisponível no momento.');
   }
 
   async upsert(_input: ConsensusUpsertInput): Promise<ConsensusRecord> {
-    throw new Error('Edição editorial de consenso requer fonte Supabase ativa.');
+    throw new Error('A edição de consensos está indisponível no momento.');
   }
 
   async replacePdf(_consensusId: string, _file: File): Promise<ConsensusRecord> {
-    throw new Error('Upload de PDF requer fonte Supabase ativa.');
+    throw new Error('O envio de PDF está indisponível no momento.');
   }
 
   async getSharedDetailsByConsensusId(consensusDocumentId: string): Promise<ConsensusDocumentDetails | null> {
@@ -146,7 +146,7 @@ export class LocalConsensoRepository implements ConsensoRepository {
     _consensusDocumentId: string,
     _input: UpsertConsensusDocumentDetailsInput
   ): Promise<ConsensusDocumentDetails> {
-    throw new Error('Edi\u00e7\u00e3o de detalhes compartilhados requer fonte Supabase ativa.');
+    throw new Error('A edição dos detalhes está indisponível no momento.');
   }
 }
 

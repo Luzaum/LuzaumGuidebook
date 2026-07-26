@@ -177,7 +177,7 @@ export function PatientQuickSelect({ adapter, onPick, disabled = false, onError 
         value={query}
         disabled={disabled}
         className="w-full rounded-lg border border-[#335d2a] bg-[color:color-mix(in_srgb,var(--rxv-primary)_6%,var(--rxv-surface))] px-3 py-2 text-sm text-white outline-none ring-[#3cff1a] placeholder:text-slate-500 focus:ring-1 disabled:cursor-not-allowed disabled:opacity-60"
-        placeholder={disabled ? 'Clínica ativa obrigatória para modo supabase' : 'Digite ao menos 2 letras'}
+        placeholder={disabled ? 'Selecione uma clínica para buscar pacientes' : 'Digite ao menos 2 letras'}
         onFocus={() => {
           if (results.length > 0 && canSearch) setOpen(true)
         }}

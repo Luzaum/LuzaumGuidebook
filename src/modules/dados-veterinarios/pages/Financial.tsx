@@ -163,7 +163,7 @@ export const Financial = () => {
         },
       ],
       footerNote:
-        'Relatório gerado automaticamente pelo módulo Dados Veterinários UPA PET. Valores em BRL.',
+        'Relatório financeiro da clínica. Valores em BRL.',
     });
   };
 

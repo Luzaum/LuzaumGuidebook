@@ -21,7 +21,7 @@ export function DilutionsPage() {
   const [diluent, setDiluent] = useState(0);
 
   const result = useMemo(() => calculateDilution(c1, c2, v2, diluent), [c1, c2, diluent, v2]);
-  const explanation = diluent === 0 ? 'Como o diluente nao tem NaCl, a conta pratica se comporta como C1V1 = C2V2.' : 'Como o diluente ja contem NaCl, a conta precisa usar balanco de massa e concentracao.';
+  const explanation = diluent === 0 ? 'Como o diluente não contém cloreto de sódio (NaCl), o cálculo prático segue C1V1 = C2V2.' : 'Como o diluente já contém cloreto de sódio (NaCl), o cálculo precisa considerar o balanço de massa.';
 
   return (
     <ScrollArea className="h-full w-full bg-slate-50 p-6 dark:bg-slate-950 lg:p-10">
@@ -106,7 +106,7 @@ export function DilutionsPage() {
                 </div>
                 <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950">
                   <p className="font-semibold text-slate-900 dark:text-slate-100">Bolsa</p>
-                  <p className="mt-2">Melhor quando voce precisa volume final maior e concentracao homogênea. Remover volume equivalente antes de adicionar o concentrado quando necessario.</p>
+                  <p className="mt-2">Melhor quando você precisa de volume final maior e concentração homogênea. Remova o volume equivalente antes de adicionar o concentrado, quando necessário.</p>
                 </div>
               </CardContent>
             </Card>

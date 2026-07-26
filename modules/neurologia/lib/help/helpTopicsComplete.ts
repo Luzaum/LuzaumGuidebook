@@ -18,7 +18,7 @@ const fallbackTopic = (id: string): HelpTopic => ({
   title: 'Ajuda',
   section: 'mentation_behavior',
   content:
-    'Conteúdo de ajuda em desenvolvimento. Use os achados clínicos e o contexto do paciente para interpretar o teste.',
+    'Interprete o teste em conjunto com os achados clínicos e o contexto do paciente.',
   clinicalTip:
     'Em caso de dúvida, repita o teste e compare lateralidade.',
 })

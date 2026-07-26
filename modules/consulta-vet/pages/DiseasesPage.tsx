@@ -31,6 +31,7 @@ const SPECIALTY_VISUALS: Record<string, { label: string; icon: string; borderAct
   dermatologia: { label: 'Dermatologia', icon: '🐾', borderActive: 'border-pink-500', textActive: 'text-pink-600 dark:text-pink-400', bgActive: 'bg-pink-500/[0.06]' },
   neurologia: { label: 'Neurologia', icon: '🧠', borderActive: 'border-indigo-500', textActive: 'text-indigo-600 dark:text-indigo-400', bgActive: 'bg-indigo-500/[0.06]' },
   oncologia: { label: 'Oncologia', icon: '🎗️', borderActive: 'border-yellow-500', textActive: 'text-yellow-600 dark:text-yellow-400', bgActive: 'bg-yellow-500/[0.06]' },
+  'reproducao-neonatologia': { label: 'Reprodução & Neonatologia', icon: '🍼', borderActive: 'border-fuchsia-500', textActive: 'text-fuchsia-600 dark:text-fuchsia-400', bgActive: 'bg-fuchsia-500/[0.06]' },
   ortopedia: { label: 'Ortopedia', icon: '🦴', borderActive: 'border-teal-500', textActive: 'text-teal-600 dark:text-teal-400', bgActive: 'bg-teal-500/[0.06]' },
   imunologia: { label: 'Imunologia', icon: '🛡️', borderActive: 'border-violet-500', textActive: 'text-violet-600 dark:text-violet-400', bgActive: 'bg-violet-500/[0.06]' },
   odontologia: { label: 'Odontologia', icon: '🦷', borderActive: 'border-cyan-500', textActive: 'text-cyan-600 dark:text-cyan-400', bgActive: 'bg-cyan-500/[0.06]' },
@@ -69,7 +70,7 @@ export function DiseasesPage() {
       } catch (loadError) {
         if (!isMounted) return;
         setDiseases([]);
-        setError(loadError instanceof Error ? loadError.message : 'Falha ao carregar catálogo.');
+        setError('Não foi possível carregar o catálogo de doenças.');
       } finally {
         if (isMounted) setIsLoading(false);
       }

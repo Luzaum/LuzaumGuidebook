@@ -327,7 +327,7 @@ export const NovaConsultaPage: React.FC<NovaConsultaPageProps> = ({ onNavigateTo
                                 }`}
                         >
                             <span className="text-xl">🩺</span>
-                            {canSubmit ? 'Consultar Dr. Luzaum AI' : 'Selecione espécie e sinais clínicos'}
+                            {canSubmit ? 'Consultar Dr. Luzaum IA' : 'Selecione espécie e sinais clínicos'}
                         </button>
                     </div>
                 </section>

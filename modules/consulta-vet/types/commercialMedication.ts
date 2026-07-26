@@ -95,6 +95,7 @@ export type CommercialMedicationSubclass =
   | 'nutra_general_support'
   | 'nutra_mineral_vitamin'
   | 'endocrine_adrenal'
+  | 'endocrine_insulin'
   | 'endocrine_thyroid'
   | 'endocrine_erythropoiesis'
   | 'endocrine_diagnostic'

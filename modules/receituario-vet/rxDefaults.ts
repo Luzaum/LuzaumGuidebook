@@ -75,7 +75,7 @@ export function createDefaultPrescriptionState(): PrescriptionState {
       adminId: 'ADMIN',
       name: 'Dr. Silva',
       crmv: 'CRMV-SP 12345',
-      clinicName: 'CLÍNICA VETERINÁRIA VETIUS',
+      clinicName: 'CLÍNICA VETERINÁRIA',
     },
     patient: {
       patientRecordId: '',

@@ -412,7 +412,7 @@ const DiseasesBySystemPage: React.FC<DiseasesBySystemPageProps> = ({
                           opacity: faded ? 0.55 : 1,
                         }
                   }
-                  title={n === 0 ? 'Nenhuma ficha neste sistema (ainda)' : `${n} ficha(s)`}
+                  title={n === 0 ? 'Nenhuma ficha disponível' : `${n} ficha(s)`}
                 >
                   <Icon className="h-4 w-4 shrink-0" style={{ color: chipTheme.accent }} aria-hidden />
                   <span className="whitespace-nowrap">{label}</span>

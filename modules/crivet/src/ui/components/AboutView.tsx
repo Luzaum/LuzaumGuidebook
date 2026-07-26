@@ -1,5 +1,5 @@
 import React from 'react';
-import { Info, BookOpen, ShieldAlert, HeartPulse, ActivitySquare, ExternalLink, Mail } from 'lucide-react';
+import { Info, BookOpen, ShieldAlert, ActivitySquare } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const AboutView: React.FC = () => {
@@ -10,8 +10,8 @@ export const AboutView: React.FC = () => {
           <Info className="w-6 h-6" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Sobre o CRI VET</h2>
-          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Informações, referências e termos de uso</p>
+          <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Referências e segurança</h2>
+          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Escopo clínico, fontes e limites de uso</p>
         </div>
       </div>
 
@@ -27,17 +27,17 @@ export const AboutView: React.FC = () => {
                 <ActivitySquare className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight transition-colors duration-200">CRI VET</h1>
-                <p className="text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase text-sm mt-1 transition-colors duration-200">Clinical Tool v2.0.0</p>
+                <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight transition-colors duration-200">Escopo clínico</h1>
+                <p className="text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase text-sm mt-1 transition-colors duration-200">Infusões contínuas</p>
               </div>
             </div>
             
             <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 transition-colors duration-200">
               <p className="text-lg leading-relaxed mb-4">
-                O CRI VET é uma ferramenta de suporte à decisão clínica desenvolvida especificamente para médicos veterinários. Seu objetivo é facilitar e aumentar a segurança no cálculo de infusões contínuas (CRI) e preparo de fármacos em ambiente hospitalar.
+                Cálculos de infusão contínua (CRI), diluições e preparo de fármacos para uso hospitalar veterinário.
               </p>
               <p className="leading-relaxed">
-                Nossa arquitetura é baseada em um banco de dados farmacológico rigoroso, que cruza informações do paciente com as propriedades físico-químicas e farmacocinéticas dos medicamentos para gerar alertas de segurança em tempo real.
+                Os cálculos consideram os dados do paciente e as propriedades físico-químicas e farmacocinéticas dos medicamentos para sinalizar riscos relevantes.
               </p>
             </div>
           </div>
@@ -47,7 +47,7 @@ export const AboutView: React.FC = () => {
               <ShieldAlert className="w-5 h-5" /> Aviso Legal Importante
             </h3>
             <p className="text-red-700 dark:text-red-300 text-sm leading-relaxed font-medium transition-colors duration-200">
-              Este aplicativo é uma ferramenta auxiliar e <strong>NÃO SUBSTITUI</strong> o julgamento clínico do médico veterinário. Todos os cálculos, doses e diluições devem ser conferidos pelo profissional responsável antes da administração em qualquer paciente. Os desenvolvedores não se responsabilizam por erros de prescrição, reações adversas ou desfechos clínicos decorrentes do uso desta ferramenta.
+              Os cálculos são auxiliares e <strong>NÃO SUBSTITUEM</strong> o julgamento clínico do médico-veterinário. Doses e diluições devem ser conferidas pelo profissional responsável antes da administração.
             </p>
           </div>
         </motion.div>
@@ -78,22 +78,6 @@ export const AboutView: React.FC = () => {
             </ul>
           </div>
 
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 transition-colors duration-200">
-            <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-4 transition-colors duration-200">
-              <HeartPulse className="w-5 h-5 text-rose-500 dark:text-rose-400" /> Equipe & Contato
-            </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mb-4 transition-colors duration-200">
-              Desenvolvido com foco em segurança do paciente e usabilidade clínica.
-            </p>
-            <div className="space-y-3">
-              <a href="#" className="flex items-center gap-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                <ExternalLink className="w-4 h-4" /> Site Oficial
-              </a>
-              <a href="mailto:suporte@crivet.app" className="flex items-center gap-2 text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 transition-colors">
-                <Mail className="w-4 h-4" /> suporte@crivet.app
-              </a>
-            </div>
-          </div>
         </motion.div>
       </div>
     </div>

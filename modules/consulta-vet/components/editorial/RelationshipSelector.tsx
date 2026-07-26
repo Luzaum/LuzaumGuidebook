@@ -91,10 +91,7 @@ export function RelationshipSelector({
               />
               <div className="min-w-0">
                 <p className="text-sm font-medium text-foreground">{option.label}</p>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {option.slug}
-                  {option.meta ? ` • ${option.meta}` : ''}
-                </p>
+                {option.meta ? <p className="mt-1 text-xs text-muted-foreground">{option.meta}</p> : null}
               </div>
             </label>
           );

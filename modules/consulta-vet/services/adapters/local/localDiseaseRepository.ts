@@ -40,7 +40,7 @@ export class LocalDiseaseRepository implements DiseaseRepository {
   }
 
   async upsert(_input: DiseaseUpsertInput): Promise<DiseaseRecord> {
-    throw new Error('Edicao editorial dispon?vel apenas com Supabase configurado.');
+    throw new Error('A edição de doenças está indisponível no momento.');
   }
 }
 

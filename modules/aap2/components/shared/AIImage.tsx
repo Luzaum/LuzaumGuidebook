@@ -55,7 +55,7 @@ export const AIImage: React.FC<AIImageProps> = ({
                 setImage(animalName, fullPrompt, dataUrl);
             })
             .catch(e => {
-                setError(e.message || 'Falha ao gerar imagem.');
+                setError('Não foi possível gerar a imagem agora.');
             })
             .finally(() => setIsLoading(false));
     }, [animalName, fullPrompt, getImage, setImage, resolvedStaticUrl, staticFailed]);

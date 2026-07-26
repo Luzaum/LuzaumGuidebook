@@ -53,7 +53,7 @@ function SpeciesPanel({
 
         <div className="space-y-4">
           <div className="rounded-2xl border border-white/10 bg-[#1b1514] p-4">
-            <p className="text-sm font-semibold text-white">Como o app usa o ECC</p>
+            <p className="text-sm font-semibold text-white">Como o ECC orienta o cálculo</p>
             <p className="mt-2 text-sm text-muted-foreground">
               O ECC define o peso-alvo e a meta nutricional. O mesmo critério é usado no novo cálculo e no modal clínico da etapa de meta.
             </p>

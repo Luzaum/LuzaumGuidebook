@@ -132,7 +132,7 @@ export const RelatorioDetalhadoPage: React.FC<RelatorioDetalhadoPageProps> = ({
                             <span className="text-xl">🔬</span>
                         </div>
                         <div>
-                            <h1 className="text-white text-lg font-bold leading-tight tracking-tight">Dr. Luzaum AI</h1>
+                            <h1 className="text-white text-lg font-bold leading-tight tracking-tight">Dr. Luzaum IA</h1>
                             <div className="flex items-center gap-2">
                                 <span className="text-xs font-medium text-[#8b5cf6] uppercase tracking-wider">Relatório de Análise Crítica</span>
                                 <span className="w-1 h-1 rounded-full bg-white/20" />

@@ -44,7 +44,7 @@ function validateSupabaseEnv() {
   const url = String(import.meta.env.VITE_SUPABASE_URL || '').trim()
   const key = String(import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim()
   if (!url || !key || key.includes('...')) {
-    throw new Error('Supabase não configurado para upload. Ajuste VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY.')
+    throw new Error('O envio de arquivos está indisponível no momento.')
   }
 }
 
@@ -82,18 +82,18 @@ function normalizeUploadError(error: unknown, bucket: string): Error {
   const lower = message.toLowerCase()
 
   if (lower.includes('bucket') && (lower.includes('not found') || lower.includes('does not exist'))) {
-    return new Error(`Bucket "${bucket}" não encontrado no Supabase Storage.`)
+    return new Error('O armazenamento de imagens não está disponível.')
   }
 
   if (lower.includes('row-level security') || lower.includes('not authorized') || lower.includes('jwt')) {
-    return new Error('Sem permissão para upload no Supabase Storage. Verifique login/policies do bucket.')
+    return new Error('Sem permissão para enviar a imagem. Entre novamente e tente outra vez.')
   }
 
   if (!message) {
-    return new Error('Falha desconhecida no upload para Supabase Storage.')
+    return new Error('Não foi possível enviar a imagem.')
   }
 
-  return new Error(`Falha no upload para Supabase Storage: ${message}`)
+  return new Error('Não foi possível enviar a imagem.')
 }
 
 function readLocalOwnerKey(): string {
@@ -200,9 +200,9 @@ export async function removeProfileImageByUrl(fileUrl: string) {
     const { error } = await supabase.storage.from(ref.bucket).remove([ref.path])
     if (error) {
       // Não bloqueia fluxo de salvar perfil por erro de limpeza.
-      console.warn('Falha ao remover imagem antiga do Supabase Storage:', error.message)
+      console.warn('Falha ao remover imagem anterior:', error.message)
     }
   } catch (error) {
-    console.warn('Falha ao remover imagem antiga do Supabase Storage:', parseErrorMessage(error))
+    console.warn('Falha ao remover imagem anterior:', parseErrorMessage(error))
   }
 }

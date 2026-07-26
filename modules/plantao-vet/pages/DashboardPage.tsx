@@ -88,7 +88,7 @@ export function DashboardPage() {
   }, [bulletins]);
 
   if (!snapshot.isHydrated) {
-    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando módulo...</div>;
+    return <div className="px-2 py-6 text-sm text-[var(--pv-text-muted)]">Carregando dados...</div>;
   }
 
   return (
@@ -198,7 +198,7 @@ export function DashboardPage() {
             secondaryAction={{ label: 'Abrir pacientes', href: '/plantao-vet/pacientes' }}
           >
             <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-bg)] p-4">
-              O módulo continua integrado ao VETIUS com persistência isolada por clínica.
+              Os registros são organizados separadamente para cada clínica.
             </div>
             <div className="rounded-xl border border-[var(--pv-border)] bg-[var(--pv-bg)] p-4">
               <Button variant="outline" className="w-full" onClick={openShiftSelector}>

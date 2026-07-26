@@ -138,7 +138,7 @@ export default function AccountProfile() {
           <div className="flex flex-col items-center justify-center p-4 border border-slate-800/60 bg-slate-950/30 rounded-2xl md:col-span-1">
             <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-1.5">
               <UserRound className="h-4 w-4 text-emerald-400" />
-              Preview do Avatar
+              Prévia do avatar
             </h3>
             <div className="relative group">
               {avatarUrl ? (

@@ -75,14 +75,21 @@ export function buildRecommendation(syndromeId: string, ctx: PatientContextV2): 
     avoid.push({
       moleculeId: mid,
       molecule: ANTIBIOTIC_MOLECULES[mid],
-      reason: 'Marcado como evitar nesta síndrome (perfil v2).',
+      reason: 'Evitar neste contexto clínico.',
     })
   }
 
+  const scenarioLabels = {
+    ambulatory_stable: 'acompanhamento ambulatorial estável',
+    hospitalized: 'hospitalização',
+    severe: 'quadro grave',
+    septic_unstable: 'sepse ou instabilidade',
+  } as const
+
   const rationale = [
     ...block.rationaleBullets,
-    `Cenário resolvido: ${scenarioKey}${fallbackFrom ? ` (fallback assistencial a partir de ${fallbackFrom})` : ''}.`,
-    `Espécie: ${ctx.species === 'dog' ? 'cão' : 'gato'}; gravidade declarada: ${ctx.severity}.`,
+    `Contexto considerado: ${scenarioLabels[scenarioKey]}.`,
+    `Espécie: ${ctx.species === 'dog' ? 'cão' : 'gato'}; condição clínica: ${scenarioLabels[ctx.severity]}.`,
   ]
 
   return {

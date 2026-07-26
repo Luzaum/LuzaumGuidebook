@@ -59,17 +59,17 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
             </thead>
             <tbody>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Glasgow CMPS-SF</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala Composta de Dor de Glasgow, versão curta (CMPS-SF)</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 6/24 (ou ≥ 5/20 se sem mobilidade)</td>
               </tr>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">UMPS Melbourne</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala de Dor da Universidade de Melbourne (UMPS)</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/27 (ou ≥ 10/27)</td>
               </tr>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">4A-VET</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala Multidimensional 4A-VET de Dor Aguda</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐕 Cão</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/18</td>
               </tr>
@@ -79,17 +79,17 @@ const RescueScreen: React.FC<RescueScreenProps> = ({ onBack }) => {
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 8/30</td>
               </tr>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">UNESP-Botucatu Simplificada (UFEPS-SF)</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala Multidimensional de Dor Felina UNESP-Botucatu, versão curta (UFEPS-SF)</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 4/12</td>
               </tr>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Grimace Scale (FGS)</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala de Careta Felina (FGS)</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 4/10 (ou média ≥ 0.8)</td>
               </tr>
               <tr className="border-b border-slate-150 dark:border-slate-800/60 hover:bg-slate-50/50 dark:hover:bg-slate-950/20">
-                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Glasgow CMPS-Feline</td>
+                <td className="px-5 py-3.5 font-bold text-slate-850 dark:text-teal-50">Escala Composta de Dor de Glasgow para Gatos (CMPS-Feline)</td>
                 <td className="px-5 py-3.5 font-semibold text-slate-500">🐱 Gato</td>
                 <td className="px-5 py-3.5 font-black text-rose-600 dark:text-rose-455 text-xs">≥ 5/20</td>
               </tr>

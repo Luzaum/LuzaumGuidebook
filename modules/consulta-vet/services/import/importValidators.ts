@@ -16,28 +16,27 @@ export function validateDisease(
     const title = normalizeString(item.title);
 
     if (!slug && !title) {
-        errors.push({ index, field: 'slug/title', message: 'Falta slug ou title para identificar a doença.' });
+        errors.push({ index, field: 'title', message: 'Informe o título da doença.' });
     }
 
     if (!item.species || (Array.isArray(item.species) && item.species.length === 0) || (typeof item.species === 'string' && !item.species)) {
-        errors.push({ index, slug, field: 'species', message: 'Especifique ao menos uma species (dog, cat, both).' });
+        errors.push({ index, slug, field: 'species', message: 'Informe ao menos uma espécie: cão, gato ou ambas.' });
     }
 
     const category = normalizeString(item.category);
     if (!category) {
-        errors.push({ index, slug, field: 'category', message: 'A categoria (category) é obrigatória.' });
+        errors.push({ index, slug, field: 'category', message: 'A categoria é obrigatória.' });
     } else if (validCategorySlugs) {
         const catSlug = normalizeCategoryName(category);
         if (!validCategorySlugs.has(catSlug)) {
-            const suggestions = Array.from(validCategorySlugs).slice(0, 5).join(', ') + '...';
-            errors.push({ index, slug, field: 'category', message: `Categoria inválida: '${category}'. Categorias válidas disponíveis: ${suggestions}` });
+            errors.push({ index, slug, field: 'category', message: `A categoria “${category}” não foi encontrada. Escolha uma categoria já cadastrada.` });
         } else {
             item.category = catSlug;
         }
     }
 
     if (!normalizeString(item.quickSummary)) {
-        errors.push({ index, slug, field: 'quickSummary', message: 'O resumo curto (quickSummary) é obrigatório.' });
+        errors.push({ index, slug, field: 'quickSummary', message: 'O resumo curto é obrigatório.' });
     }
 
     return {
@@ -56,33 +55,32 @@ export function validateMedication(
     const title = normalizeString(item.title);
 
     if (!slug && !title) {
-        errors.push({ index, field: 'slug/title', message: 'Falta slug ou title para identificar o medicamento.' });
+        errors.push({ index, field: 'title', message: 'Informe o título do medicamento.' });
     }
 
     const medicationSpecies = normalizeSpeciesList(item.species);
     if (!medicationSpecies.length) {
-        errors.push({ index, slug, field: 'species', message: 'Especifique ao menos uma species válida (dog, cat ou both).' });
+        errors.push({ index, slug, field: 'species', message: 'Informe ao menos uma espécie: cão, gato ou ambas.' });
     }
 
     const category = normalizeString(item.category);
     if (!category) {
-        errors.push({ index, slug, field: 'category', message: 'A categoria (category) é obrigatória.' });
+        errors.push({ index, slug, field: 'category', message: 'A categoria é obrigatória.' });
     } else if (validCategorySlugs) {
         const catSlug = normalizeCategoryName(category);
         if (!validCategorySlugs.has(catSlug)) {
-            const suggestions = Array.from(validCategorySlugs).slice(0, 5).join(', ') + '...';
-            errors.push({ index, slug, field: 'category', message: `Categoria inválida: '${category}'. Categorias válidas disponíveis: ${suggestions}` });
+            errors.push({ index, slug, field: 'category', message: `A categoria “${category}” não foi encontrada. Escolha uma categoria já cadastrada.` });
         } else {
             item.category = catSlug;
         }
     }
 
     if (!normalizeString(item.activeIngredient)) {
-        errors.push({ index, slug, field: 'activeIngredient', message: 'Princípio ativo (activeIngredient) é obrigatório.' });
+        errors.push({ index, slug, field: 'activeIngredient', message: 'O princípio ativo é obrigatório.' });
     }
 
     if (!normalizeString(item.pharmacologicClass)) {
-        errors.push({ index, slug, field: 'pharmacologicClass', message: 'Classe farmacológica (pharmacologicClass) é obrigatória.' });
+        errors.push({ index, slug, field: 'pharmacologicClass', message: 'A classe farmacológica é obrigatória.' });
     }
 
     if (!Array.isArray(item.doses) || item.doses.length === 0) {

@@ -322,8 +322,8 @@ export function NeuroGlasgowPage() {
           </li>
         </ul>
         <p className="mt-6 text-xs leading-relaxed text-muted-foreground">
-          Esta ferramenta não substitui exame físico completo, diagnóstico por imagem ou julgamento clínico. A
-          MGCS é um apoio à serialização e comunicação da gravidade neurológica.
+          A Escala de Coma de Glasgow Modificada (MGCS) complementa o exame físico e o diagnóstico por imagem,
+          permitindo acompanhar e comunicar a gravidade neurológica de forma seriada.
         </p>
       </Card>
     </div>

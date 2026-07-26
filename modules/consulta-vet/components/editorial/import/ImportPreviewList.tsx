@@ -19,7 +19,7 @@ export function ImportPreviewList({ items }: ImportPreviewListProps) {
     return (
         <div className="space-y-4">
             <div className="flex items-center justify-between">
-                <h3 className="text-sm font-semibold text-foreground">Preview da Importação ({items.length} itens)</h3>
+                <h3 className="text-sm font-semibold text-foreground">Revisão da importação ({items.length} itens)</h3>
 
                 {totalPages > 1 && (
                     <div className="flex items-center gap-2">
@@ -64,11 +64,9 @@ export function ImportPreviewList({ items }: ImportPreviewListProps) {
                                     </span>
                                     <p className="truncate text-sm font-medium text-foreground">{item.title}</p>
                                 </div>
-                                <div className="mx-2 mt-1 flex items-center gap-2 text-xs text-muted-foreground">
-                                    <span className="font-mono">{item.slug}</span>
-                                    <span className="h-1 w-1 rounded-full bg-border" />
-                                    <span className="capitalize">{item.entityType === 'diseases' ? 'Doença' : 'Medicamento'}</span>
-                                </div>
+                                <p className="mx-2 mt-1 text-xs text-muted-foreground">
+                                    {item.entityType === 'diseases' ? 'Doença' : 'Medicamento'}
+                                </p>
 
                                 {item.warnings.length > 0 && (
                                     <div className="mt-2 flex items-start gap-1.5 rounded-lg border border-amber-500/20 bg-amber-500/5 px-2.5 py-1.5">

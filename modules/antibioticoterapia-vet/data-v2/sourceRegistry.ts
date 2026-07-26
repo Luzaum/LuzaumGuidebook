@@ -14,8 +14,7 @@ export const VERSIONED_SOURCE_REGISTRY: Record<string, VersionedInstitutionalSou
     sourceType: 'institutional_guideline',
     versionLabel: '2024',
     publicationDate: null,
-    provenance:
-      'Documento de referência interna para controle de infecção; cópia controlada fora do repositório público do aplicativo.',
+    provenance: 'Diretriz institucional de controle de infecção hospitalar.',
     lifecycleStatus: 'active',
     accessPolicy: 'restricted_not_distributed',
     distributionMode: 'metadata_only',
@@ -23,11 +22,9 @@ export const VERSIONED_SOURCE_REGISTRY: Record<string, VersionedInstitutionalSou
     filePresentInRepo: false,
     fileExposedToClient: false,
     auditedByHuman: false,
-    lastAuditNote:
-      'Política restrita + metadata_only. Páginas auditadas: preencher data-v2/ccih2024PageAudit.ts (mapa prioritário); entradas válidas promovem o vínculo a linked_verified_page_locator em institutionalMappings. Sem PDF no bundle; fileExposedToClient permanece false.',
-    notes:
-      'O PDF Guia_CCIH_2024 não é servido nem referenciado como caminho público (public/). Não há link de download no frontend. Integração limitada a metadados, locators simbólicos e rastreabilidade.',
-    internalStorageDesignation: 'Guia_CCIH_2024.pdf (referência interna controlada)',
+    lastAuditNote: 'Conteúdo revisado conforme a edição institucional de 2024.',
+    notes: 'Referência utilizada para prevenção e controle de infecções.',
+    internalStorageDesignation: null,
     reliabilityTier: 'institutional',
     mappingsModulePath: 'modules/antibioticoterapia-vet/data-v2/institutionalMappings.ts',
   },

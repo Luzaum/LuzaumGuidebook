@@ -10,7 +10,7 @@ const GEMINI_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemi
 export async function generateDrLuzaumOpinion({ caseSummary, extraNotes }: DrLuzaumParams): Promise<string> {
   const apiKey = getEnv('VITE_GEMINI_API_KEY') || getEnv('GEMINI_API_KEY') || (import.meta as any).env?.GEMINI_API_KEY || (import.meta as any).env?.VITE_GEMINI_API_KEY;
   if (!apiKey) {
-    throw new Error('Chave da IA não configurada. Defina VITE_GEMINI_API_KEY nas metas do index.html ou no ambiente.');
+    throw new Error('O serviço de análise clínica está indisponível no momento.');
   }
 
   const system = [
@@ -20,7 +20,7 @@ export async function generateDrLuzaumOpinion({ caseSummary, extraNotes }: DrLuz
   ].join(' ');
 
   const user = [
-    'Caso clínico resumido (dados do app):',
+    'Caso clínico resumido:',
     caseSummary,
     extraNotes ? `\nNotas adicionais do usuário: ${extraNotes}` : '',
     '\nGere a opinião com esta estrutura, em tópicos curtos e objetivos:',
@@ -32,7 +32,7 @@ export async function generateDrLuzaumOpinion({ caseSummary, extraNotes }: DrLuz
     '6) Protocolo terapêutico de emergência (passo a passo): estabilização, monitorização (quais sinais vitais e frequência), fluidoterapia (detalhada, com ajustes por comorbidades), analgesia, antivenenos e medicações (doses calculáveis, mg/kg ou mL/kg, via, intervalos), e suporte',
     '7) Integração final dos dados (inclua quaisquer dados extras fornecidos) e plano',
     '8) Referências bibliográficas (formato curto: Obra/Autor, edição/ano, capítulo ou página quando pertinente).',
-    '\nObservação legal: deixe claro ao final que isto não substitui o julgamento do veterinário e que o aplicativo é apenas um guia sem responsabilidade sobre decisões clínicas.',
+    '\nObservação: deixe claro ao final que a análise é complementar e não substitui o julgamento do médico-veterinário responsável.',
   ].join('\n');
 
   const body = {

@@ -413,7 +413,7 @@ function evaluateDiet(
           deliveredValue: null,
           target,
           status: 'manual',
-          reason: 'Nutriente opcional sem dado cadastrado; nao gera alerta de ausencia.',
+          reason: 'Nutriente opcional sem dado cadastrado; não gera alerta de ausencia.',
           missingData: false,
         }
       }

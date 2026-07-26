@@ -71,7 +71,7 @@ const UI_TEXT = {
   relatedConsensos: 'Consensos relacionados',
   organizationFallback: 'Organização não informada',
   noTradeName: 'Sem nome comercial de referência',
-  presentationInfo: 'Cada apresentação cont?nua disponível para cálculo e comparação, mas em um layout mais limpo.',
+  presentationInfo: 'Cada apresentação continua disponível para cálculo e comparação, mas em um layout mais limpo.',
 } as const;
 
 function formatSupplyChannel(channel?: MedicationSupplyChannel): string {
@@ -516,7 +516,7 @@ export function MedicationDetailPage() {
         setRelatedConsensos(loadedConsensos.filter((item) => consensusSlugSet.has(item.slug)));
       } catch (loadError) {
         if (!isMounted) return;
-        setError(loadError instanceof Error ? loadError.message : UI_TEXT.loadErrorFallback);
+        setError(UI_TEXT.loadErrorFallback);
       } finally {
         if (isMounted) setIsLoading(false);
       }

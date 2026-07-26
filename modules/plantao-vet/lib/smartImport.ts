@@ -514,11 +514,11 @@ function inferTubeType(text: string): TubeType {
 function inferAppetiteLevel(text: string): NutritionSupport['appetiteSpontaneous'] {
   const normalized = normalizeText(text);
   if (
-    normalized.includes('nao quer comer') ||
+    normalized.includes('não quer comer') ||
     normalized.includes('sem apetite') ||
     normalized.includes('inapet') ||
-    normalized.includes('nao apresentou interesse espontaneo') ||
-    normalized.includes('nao se alimentou espontaneamente')
+    normalized.includes('não apresentou interesse espontaneo') ||
+    normalized.includes('não se alimentou espontaneamente')
   ) return 'none';
   if (normalized.includes('comeu com muito apetite') || normalized.includes('bom apetite')) return 'good';
   if (
@@ -558,8 +558,8 @@ function parseVitalsLine(line: string, dateISO: string | null, authorLabel: stri
     vomitingDescription: line.match(/vomit[^|.]*/i)?.[0] || '',
     diarrhea: /diarre|fezes pastosas|fezes moles/.test(normalized),
     diarrheaDescription: line.match(/diarre[^|.]*/i)?.[0] || '',
-    urinated: normalized.includes('urinou') ? !normalized.includes('nao urinou') : null,
-    defecated: normalized.includes('defecou') ? !normalized.includes('nao defecou') : null,
+    urinated: normalized.includes('urinou') ? !normalized.includes('não urinou') : null,
+    defecated: normalized.includes('defecou') ? !normalized.includes('não defecou') : null,
     fed: /alimenta/.test(normalized) ? !/sem ingestao espontanea/.test(normalized) : null,
     feedingDetails: line.match(/(alimenta[^|.]+|sonda[^|.]+)/i)?.[0] || '',
     appetite: /apetite|interesse espontaneo/.test(normalized) ? !/sem apetite|nao apresentou interesse espontaneo/.test(normalized) : null,
@@ -595,9 +595,9 @@ function hasStrongExamEvidence(line: string, sectionKind: ParsedSection['kind'])
   if (
     normalized.includes('soroterapia') ||
     normalized.includes('fluidoterapia') ||
-    normalized.includes('suplementacao de potassio') ||
+    normalized.includes('suplementacao de potássio') ||
     normalized.includes('recebendo suplementacao') ||
-    normalized.includes('recebendo potassio') ||
+    normalized.includes('recebendo potássio') ||
     normalized.includes('alimentacao') ||
     normalized.includes('comportamento') ||
     normalized.includes('permaneceu estavel')
@@ -651,7 +651,7 @@ function parseExamRecords(sections: ParsedSection[]) {
         normalized.includes('aguardando laudo') ||
         normalized.includes('agendado') ||
         normalized.includes('coleta de') ||
-        normalized.includes('nao urinou') ||
+        normalized.includes('não urinou') ||
         normalized.includes('urinou') ||
         normalized.includes('defecou') ||
         normalized.includes('fezes')
@@ -844,18 +844,18 @@ function parseNutritionSupport(currentEpisodeLines: string[], weightLabel: strin
 
 function parseProblemDrafts(rawText: string, currentEpisodeText: string, summary: string) {
   const candidates: Array<{ title: string; priority: Problem['priority']; matcher: RegExp; notes: string }> = [
-    { title: 'DRC', priority: 'high', matcher: /\bdrc\b|doenca renal cronica/i, notes: 'Doenca renal cronica mencionada no historico.' },
-    { title: 'Cardiopatia / sopro cardiaco', priority: 'medium', matcher: /cardiopat|sopro/i, notes: 'Cardiopatia ou sopro cardiaco descritos nas evolucoes.' },
+    { title: 'DRC', priority: 'high', matcher: /\bdrc\b|doenca renal cronica/i, notes: 'Doença renal crônica mencionada no histórico.' },
+    { title: 'Cardiopatia / sopro cardíaco', priority: 'medium', matcher: /cardiopat|sopro/i, notes: 'Cardiopatia ou sopro cardíaco descritos nas evolucoes.' },
     { title: 'Síndrome vestibular', priority: 'high', matcher: /sindrome vestibular|head tilt|nistagm|ataxia/i, notes: 'Sinais vestibulares descritos no prontuário atual.' },
     { title: 'Suspeita central / neurológica', priority: 'high', matcher: /suspeita central|avc|neuropat|neurolog/i, notes: 'Comprometimento neurológico ou suspeita central em investigação.' },
     { title: 'Massa em nasofaringe', priority: 'high', matcher: /massa em nasofaringe|formacao em nasofaringe|nasofaring/i, notes: 'Massa ou formação em nasofaringe descrita em exame de imagem ou laudo.' },
-    { title: 'Azotemia', priority: 'high', matcher: /azotemi|ureia|creatinin/i, notes: 'Alteracao renal com azotemia citada nas evolucoes.' },
+    { title: 'Azotemia', priority: 'high', matcher: /azotemi|ureia|creatinin/i, notes: 'Alteração renal com azotemia citada nas evolucoes.' },
     { title: 'Desidratacao', priority: 'high', matcher: /desidrat|turgor cutaneo reduzido|mucosas secas|enoftalmia|exoftalmia/i, notes: 'Sinais de desidratacao referidos no plantao.' },
     { title: 'Inapetencia', priority: 'high', matcher: /inapet|sem apetite|nao quer comer|nao se alimentou/i, notes: 'Baixa ou ausencia de ingestao espontanea.' },
-    { title: 'Vomitos / nausea', priority: 'medium', matcher: /vomit|nausea|salivando|sialorre/i, notes: 'Intercorrencias gastrointestinais descritas no prontuario.' },
+    { title: 'Vômitos / nausea', priority: 'medium', matcher: /vomit|nausea|salivando|sialorre/i, notes: 'Intercorrencias gastrointestinais descritas no prontuario.' },
     { title: 'Sarcopenia / caquexia', priority: 'medium', matcher: /sarcopen|caquex|massa muscular/i, notes: 'Perda de condicao corporal relatada.' },
-    { title: 'Diarreia / alteracao gastrointestinal', priority: 'medium', matcher: /diarre|fezes amolecidas|fezes pastosas|tgi/i, notes: 'Alteracoes gastrointestinais recentes registradas.' },
-    { title: 'Hipertensao', priority: 'medium', matcher: /hipertens|pas\s*1[56]\d/i, notes: 'Pressao arterial elevada ou hipertensao descritas.' },
+    { title: 'Diarreia / alteração gastrointestinal', priority: 'medium', matcher: /diarre|fezes amolecidas|fezes pastosas|tgi/i, notes: 'Alteracoes gastrointestinais recentes registradas.' },
+    { title: 'Hipertensao', priority: 'medium', matcher: /hipertens|pas\s*1[56]\d/i, notes: 'Pressão arterial elevada ou hipertensao descritas.' },
     { title: 'Retenção urinária / monitorar micção', priority: 'medium', matcher: /reten[cç][aã]o urin|bexiga moderadamente repleta|nao urinou|não urinou/i, notes: 'Monitoramento urinário relevante no plantão.' },
     { title: 'Massa / processo oncológico', priority: 'high', matcher: /massa|neoformacao|neoforma[cç][aã]o|oncolog/i, notes: 'Achado compatível com processo expansivo ou oncológico.' },
   ];
@@ -868,11 +868,11 @@ function parseProblemDrafts(rawText: string, currentEpisodeText: string, summary
         id: createEntityId('problem'),
         title: candidate.title,
         status:
-          candidate.title === 'Vomitos / nausea' && /nao apresentou episodios de vomitos|nao vomitou mais/.test(normalizeText(currentEpisodeText))
+          candidate.title === 'Vômitos / nausea' && /nao apresentou episodios de vomitos|nao vomitou mais/.test(normalizeText(currentEpisodeText))
             ? 'resolved'
             : candidate.title === 'Desidratacao' && /melhora clinica deste quadro|normohidrat/.test(normalizeText(currentEpisodeText))
               ? 'resolved'
-              : candidate.title === 'DRC' || candidate.title === 'Cardiopatia / sopro cardiaco'
+              : candidate.title === 'DRC' || candidate.title === 'Cardiopatia / sopro cardíaco'
                 ? 'active'
                 : 'active',
         priority: candidate.priority,

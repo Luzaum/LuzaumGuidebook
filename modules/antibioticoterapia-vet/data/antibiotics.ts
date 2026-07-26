@@ -21,7 +21,7 @@ export const AB_SEED: AntibioticClass = {
       dose_dog: "12.5–25 mg/kg VO q12h (alguns regimes: 25 mg/kg q24h)",
       dose_cat: "12.5–25 mg/kg VO q12h",
       indications: "Primeira linha ambulatorial para infecções de pele/tecidos moles, feridas de mordedura (cães e gatos), otites bacterianas (Staph/Pasteurella), infecções dentárias, cistites (falha de amoxi simples), piodermites e pneumonia comunitária leve/moderada.",
-      cautions: "Uso empírico excessivo contribui para resistência. Preferir cultura em casos recorrentes. Considerado fármaco de segunda linha em stewardship.",
+      cautions: "Uso empírico excessivo contribui para resistência. Preferir cultura em casos recorrentes. Considerado fármaco de segunda linha nos princípios de uso racional.",
       mechanism: "Amoxi: inibe parede celular (PBPs). Clavulanato: inibidor suicida de β‑lactamases. Bactericida tempo‑dependente.",
       prep_admin: "Comprimidos ou suspensão oral. Administrar com alimento para reduzir náusea. Suspensão reconstituída: refrigerar e usar em ~10 dias.",
       duration: "7–14 dias tipicamente; piodermite profunda 3–6 sem; ITU simples 7–14 d (3–5 d em protocolos específicos); osteomielite até 6 sem.",
@@ -234,7 +234,7 @@ export const AB_SEED: AntibioticClass = {
       indications: "Principalmente uso oftálmico (0,3%) em conjuntivite/ceratite bacteriana. Uso sistêmico para ITU e outras infecções por Gram− quando indicado.",
       cautions: "Mesmas das fluoroquinolonas: evitar em juvenis (artropatia), gestantes; em gatos, cautela com doses altas.",
       mechanism: "Bactericida concentração‑dependente: inibe DNA girase e topoisomerase IV.",
-      prep_admin: "Colírio 0,3% (uso tópico). Comprimidos humanos 250/500 mg (biodisponibilidade oral variável em cães). Formulação IV 2 mg/mL disponível para infusão.",
+      prep_admin: "Colírio 0,3% (uso tópico). Comprimidos humanos 250/500 mg (biodisponibilidade oral variável em cães). Fórmulação IV 2 mg/mL disponível para infusão.",
       infusion: "Tópico: 1 gota/olho; não misturar com outros colírios (pode precipitar). Sistêmico IV: infundir lentamente diluído em SF 0,9%.",
       duration: "Colírio: até resolução clínica. Sistêmico: 7–14 dias (ex.: ITU).",
       contraindications: "Filhotes em crescimento; gestação/lactação. Cautela em gatos e pacientes com distúrbios neurológicos.",
@@ -433,12 +433,12 @@ export const AB_SEED: AntibioticClass = {
       spectrum: "Amplo espectro, semelhante ao cloranfenicol (Gram+, Gram-, anaeróbios). Ativo contra estirpes resistentes ao cloranfenicol.",
       dose_dog: "Uso sistémico 'extra-label': 30 mg/kg IM q12h.",
       dose_cat: "Uso sistémico de alto risco e deve ser evitado.",
-      indications: "Uso licenciado limitado a formulações óticas. Uso sistémico 'extra-label' para infeções suscetíveis quando outras opções não são adequadas.",
+      indications: "Uso licenciado limitado a fórmulações óticas. Uso sistémico 'extra-label' para infeções suscetíveis quando outras opções não são adequadas.",
       cautions: "Segurança e eficácia sistémica em pequenos animais é muito limitada. Gatos são particularmente sensíveis à toxicidade dos anfenicóis. Monitorar hemograma em uso prolongado.",
       mechanism: "Inibe a síntese de proteínas ligando-se à subunidade 50S do ribossoma (peptidil transferase). Bacteriostático.",
       prep_admin: "Solução injetável para uso em animais de produção.",
       duration: "Depende da infeção.",
-      contraindications: "Hipersensibilidade. Formulações óticas: não usar com tímpano perfurado, em reprodutores ou gestantes. Sistémico: cautela em animais jovens, com doença hepática/renal.",
+      contraindications: "Hipersensibilidade. Fórmulações óticas: não usar com tímpano perfurado, em reprodutores ou gestantes. Sistémico: cautela em animais jovens, com doença hepática/renal.",
       adverse_effects: "Risco potencial de supressão reversível da medula óssea, distúrbios GI. Gatos são mais suscetíveis."
     }
   ],
@@ -454,7 +454,7 @@ export const AB_SEED: AntibioticClass = {
       prep_admin: "Pó para injeção. Reconstituir e diluir em D5W ou SF 0.9%.",
       infusion: "Administração IV deve ser uma INFUSÃO LENTA (30-60 minutos). Bolus rápido causa a 'síndrome do homem vermelho' (libertação de histamina, hipotensão).",
       duration: "Sistémico: semanas, dependendo da resposta. Oral: 7 dias.",
-      contraindications: "Hipersensibilidade. O uso empírico é contraindicado pelos princípios de stewardship.",
+      contraindications: "Hipersensibilidade. O uso empírico é contraindicado pelos princípios de uso racional de antimicrobianos.",
       adverse_effects: "Nefrotoxicidade (principal risco), reações relacionadas à infusão ('síndrome do homem vermelho'), flebite, vómitos."
     }
   ],

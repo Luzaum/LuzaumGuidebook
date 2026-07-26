@@ -9,38 +9,37 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
   'ref_registry.institutional_ccih_2024': {
     key: 'ref_registry.institutional_ccih_2024',
     domain: 'institutional_versioned',
-    title: 'Guia CCIH 2024 (circulação restrita)',
+    title: 'Guia de controle de infecção hospitalar — 2024',
     description:
-      'Documento interno de referência; não é distribuído no aplicativo nem servido em URL pública. O módulo mantém apenas metadados, política de acesso e locators simbólicos (sectionRef) para rastreabilidade.',
+      'Diretriz institucional para prevenção de infecções e uso racional de antimicrobianos.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note:
-      'Sem link de download no frontend. Números de página opcionais no código apenas após conferência humana com o PDF restrito.',
+    note: 'As páginas indicadas foram conferidas na edição institucional.',
   },
   'ref_registry.clinical_syndromes_v2': {
     key: 'ref_registry.clinical_syndromes_v2',
     domain: 'clinical_v2',
-    title: 'Bloco clínico v2 (síndromes e engine)',
+    title: 'Síndromes infecciosas e terapia antimicrobiana',
     description:
-      'Textos educacionais e estruturas de cenário gerados para o módulo; revisão clínica periódica recomendada. Síndromes listadas para integração CCIH possuem mapeamento de auditoria em institutionalMappings.ts.',
+      'Raciocínio por foco infeccioso, gravidade, coleta de cultura e desescalonamento.',
     status: 'placeholder',
-    note: 'Base interna do produto; vínculo ao guia institucional é rastreável por síndrome quando aplicável.',
+    note: 'A conduta deve ser individualizada conforme o paciente e o protocolo local.',
   },
   'ref_registry.molecules_v2_sheets': {
     key: 'ref_registry.molecules_v2_sheets',
     domain: 'molecules_v2',
-    title: 'Biblioteca de moléculas v2',
+    title: 'Monografias de antimicrobianos',
     description:
-      'Fichas estruturadas alinhadas aos moleculeIds da engine; doses e indicações finais conforme bula e protocolo local. Moléculas do núcleo v2 têm slot de mapeamento institucional genérico até capítulos específicos serem auditados.',
+      'Espectro, farmacocinética, farmacodinâmica, doses, cautelas e monitorização; confirmar bula e protocolo local.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Mapeamento em MOLECULE_SHEET_INSTITUTIONAL_MAPPINGS (metadata; páginas opcionais só via ccih2024PageAudit se no futuro incluir moléculas).',
+    note: 'As recomendações institucionais são indicadas quando disponíveis.',
   },
   'ref_registry.microbiology_v2_general': {
     key: 'ref_registry.microbiology_v2_general',
     domain: 'microbiology_v2',
-    title: 'Microbiologia e resistência (núcleo v2)',
-    description: 'Perfis de patógenos e conceitos de resistência para apoio ao raciocínio clínico e stewardship.',
+    title: 'Microbiologia clínica e resistência',
+    description: 'Perfis de patógenos e conceitos de resistência para apoio ao raciocínio clínico e ao uso racional de antimicrobianos.',
     status: 'placeholder',
   },
   'ref_registry.microbiology_v2_resistance': {
@@ -48,49 +47,49 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
     domain: 'microbiology_v2',
     title: 'Conceitos de resistência (MRSP, ESBL, etc.)',
     description:
-      'Definições operacionais para uso no app; conceitos com interface hospitalar referenciam o guia CCIH via locators simbólicos (metadados).',
+      'Definições clínicas de resistência e sua relação com a escolha e o uso racional de antimicrobianos.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Subconjunto mapeado em RESISTANCE_INSTITUTIONAL_MAPPINGS.',
+    note: 'Interpretar em conjunto com cultura, antibiograma e contexto clínico.',
   },
   'ref_registry.microbiology_v2_sampling': {
     key: 'ref_registry.microbiology_v2_sampling',
     domain: 'microbiology_v2',
     title: 'Amostragem e interpretação',
-    description: 'Boas práticas de coleta e valor interpretativo; alinhar a manuais laboratoriais locais e ao guia CCIH (metadados / exemplar restrito).',
+    description: 'Boas práticas de coleta, transporte, cultura, antibiograma e interpretação clínica.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Conceitos stewardship/amostra vinculados em RESISTANCE_INSTITUTIONAL_MAPPINGS.',
+    note: 'Alinhar a coleta aos manuais laboratoriais e ao protocolo institucional.',
   },
   'ref_registry.hospital_culture_timing': {
     key: 'ref_registry.hospital_culture_timing',
     domain: 'hospital_institutional_pending',
-    title: 'Timing de cultura e início de antimicrobiano',
+    title: 'Momento da cultura e início do antimicrobiano',
     description:
-      'Princípios gerais de stewardship alinhados ao cartão v2; detalhes normativos no exemplar restrito Guia CCIH 2024.',
+      'Como conciliar coleta adequada, gravidade clínica e início oportuno da terapia.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Cartão mapeado com linked_verified_metadata em HOSPITAL_CARD_INSTITUTIONAL_MAPPINGS.',
+    note: 'Em pacientes instáveis, a estabilização e a terapia não devem ser atrasadas indevidamente.',
   },
   'ref_registry.hospital_stewardship_core': {
     key: 'ref_registry.hospital_stewardship_core',
     domain: 'hospital_institutional_pending',
-    title: 'Stewardship hospitalar (núcleo)',
+    title: 'Uso racional de antimicrobianos',
     description:
-      'Reavaliação, descalonamento e indicação de antimicrobiano — cartões v2 com sectionRef simbólico; PDF não exposto ao cliente.',
+      'Seleção, reavaliação, descalonamento e duração do tratamento com foco em segurança.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Sem transcrição literal de trechos; conteúdo do app permanece educacional.',
+    note: 'A decisão final depende do foco, da cultura, da resposta e do protocolo local.',
   },
   'ref_registry.hospital_institutional_pending': {
     key: 'ref_registry.hospital_institutional_pending',
     domain: 'hospital_institutional_pending',
-    title: 'Hospital / controle de infecção — núcleo v2',
+    title: 'Prevenção e controle de infecção hospitalar',
     description:
-      'Agregador para cartões de precaução, MDR e nosocomial; vínculo ao Guia CCIH 2024 via sourceRegistry (restrito / metadata_only).',
+      'Medidas de vigilância, isolamento, higiene e prevenção da transmissão hospitalar.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Ligação explícita ao documento central; sem publicação do binário no bundle.',
+    note: 'Referência institucional para medidas de prevenção e controle.',
   },
   /** Síntese educacional das fichas de fisiopatologia — metadado; PDFs dos manuais não são distribuídos no app. */
   'ref_registry.textbook_nelson_couto_siim_6': {
@@ -98,9 +97,9 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
     domain: 'clinical_v2',
     title: 'Nelson & Couto — Small Animal Internal Medicine (6.ª ed.)',
     description:
-      'Base conceitual para condições sistémicas, reprodutivas e infecciosas descritas nas fichas; conteúdo do app é paráfrase clínica, não transcrição.',
+      'Base conceitual para condições sistêmicas, reprodutivas e infecciosas descritas nas fichas.',
     status: 'placeholder',
-    note: 'Obra em suporte físico/digital da equipa; sem link no frontend.',
+    note: 'Referência de medicina interna para raciocínio clínico, diagnóstico e tratamento.',
   },
   'ref_registry.textbook_cunningham_physiology_6': {
     key: 'ref_registry.textbook_cunningham_physiology_6',
@@ -118,14 +117,14 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
     description:
       'Referência para localização neurológica e abordagem de processos neurológicos infecciosos/inflamatórios quando relevantes ao raciocínio clínico global do doente séptico ou com complicações neurológicas.',
     status: 'placeholder',
-    note: 'O módulo antibiótico foca infecção e antimicrobianos; neuro é apoio conceitual transversal.',
+    note: 'A neurologia contribui para a avaliação de complicações infecciosas e inflamatórias.',
   },
   'ref_registry.pathophysiology_excluded_pathologic_basis': {
     key: 'ref_registry.pathophysiology_excluded_pathologic_basis',
     domain: 'clinical_v2',
-    title: 'Exclusão editorial — Pathologic Basis of Veterinary Disease',
+    title: 'Pathologic Basis of Veterinary Disease',
     description:
-      'As fichas de fisiopatologia deste módulo não utilizam esta obra como fonte de síntese; evita-se dependência de texto unicamente anátomo-patológico para decisões terapêuticas no app.',
+      'Referência para mecanismos de lesão tecidual e fundamentos anatomopatológicos.',
     status: 'placeholder',
   },
 }
@@ -138,7 +137,7 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'clinical_v2',
-    label: 'Bloco clínico v2',
+    label: 'Literatura clínica',
     sourceKeys: ['ref_registry.clinical_syndromes_v2'],
   },
   {
@@ -153,7 +152,7 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'molecules_v2',
-    label: 'Antimicrobianos v2',
+    label: 'Antimicrobianos',
     sourceKeys: ['ref_registry.molecules_v2_sheets'],
   },
   {
@@ -167,7 +166,7 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'hospital_institutional_pending',
-    label: 'Hospital / controle de infecção (mapeamentos v2 → Guia CCIH)',
+    label: 'Hospital e controle de infecção',
     sourceKeys: [
       'ref_registry.hospital_culture_timing',
       'ref_registry.hospital_stewardship_core',

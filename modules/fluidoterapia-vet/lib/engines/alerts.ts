@@ -14,9 +14,9 @@ export function generateAlerts(
       level: 'HIGH_RISK',
       title: 'Paciente pequeno ou pediatrico',
       explanation: 'Volumes pequenos mudam muito a fisiologia. Erros discretos aumentam risco de sobrecarga, hipoglicemia e hipotermia.',
-      whyItMatters: 'Em pacientes menores, uma margem pequena de volume ja pode alterar o compartimento intravascular de forma importante.',
+      whyItMatters: 'Em pacientes menores, uma pequena margem de volume já pode alterar de forma importante o compartimento intravascular.',
       whatToMonitor: 'Peso, FR, ausculta, temperatura, glicemia e diurese.',
-      recommendation: 'Preferir bomba ou microgotas e reavaliacao mais curta.',
+      recommendation: 'Preferir bomba ou microgotas e reavaliação mais curta.',
       source: 'AAHA 2024',
     });
   }
@@ -25,8 +25,8 @@ export function generateAlerts(
     alerts.push({
       level: 'WARNING',
       title: 'Paciente idoso',
-      explanation: 'Idosos podem ter reserva cardiaca e renal menor mesmo sem diagnostico formal.',
-      whyItMatters: 'Excesso de volume, sodio ou anestesia podem descompensar mais cedo.',
+      explanation: 'Idosos podem ter reserva cardiaca e renal menor mesmo sem diagnóstico formal.',
+      whyItMatters: 'Excesso de volume, sódio ou anestesia podem descompensar mais cedo.',
       whatToMonitor: 'FR, ausculta, peso, diurese, PA e creatinina.',
       recommendation: 'Comecar de forma conservadora e revisar a prescricao cedo.',
       source: 'AAHA 2024',
@@ -38,9 +38,9 @@ export function generateAlerts(
       level: 'CRITICAL',
       title: 'Desidratacao severa',
       explanation: 'Desidratacao acima de 10% sugere chance real de hipovolemia associada e risco de choque.',
-      whyItMatters: 'O paciente pode precisar restaurar perfusao intravascular antes de completar a reposicao lenta do intersticio.',
+      whyItMatters: 'O paciente pode precisar restaurar perfusão intravascular antes de completar a reposicao lenta do intersticio.',
       whatToMonitor: 'PA, TPC, lactato, pulso, mentacao, FR e ausculta.',
-      recommendation: 'Avaliar ressuscitacao separadamente. Nao misturar bolus de perfusao com a conta de reidratacao.',
+      recommendation: 'Avaliar ressuscitação separadamente. Não misturar bolus de perfusão com a conta de reidratacao.',
       source: 'AAHA 2024',
     });
   }
@@ -49,10 +49,10 @@ export function generateAlerts(
     alerts.push({
       level: 'WARNING',
       title: 'Perdas continuas ativas',
-      explanation: 'Vomitos, diarreia, poliuria, drenos e terceiro espaco exigem revisao frequente da taxa.',
-      whyItMatters: 'Perdas podem mudar cloro, sodio, potassio e acidobase rapidamente.',
+      explanation: 'Vômitos, diarreia, poliuria, drenos e terceiro espaco exigem revisao frequente da taxa.',
+      whyItMatters: 'Perdas podem mudar cloro, sódio, potássio e acidobase rapidamente.',
       whatToMonitor: 'Balanco hidrico, eletrólitos, acidobase, peso e diurese.',
-      recommendation: 'Mensurar mL sempre que possivel e atualizar a conta em tempo real.',
+      recommendation: 'Mensurar mL sempre que possível e atualizar a conta em tempo real.',
       source: 'AAHA 2024',
     });
   }
@@ -61,10 +61,10 @@ export function generateAlerts(
     alerts.push({
       level: 'CRITICAL',
       title: 'Risco de congestao cardiaca',
-      explanation: 'Cardiopatia e ICC exigem estrategia conservadora e reavaliacao respiratoria estreita.',
+      explanation: 'Cardiopatia e ICC exigem estrategia conservadora e reavaliação respiratória estreita.',
       whyItMatters: 'Hipotensao em cardiopata nem sempre e hipovolemia. Mais soro pode precipitar edema pulmonar.',
-      whatToMonitor: 'FR, esforco, ausculta, peso, PA e perfusao.',
-      recommendation: 'Reduzir agressividade do plano e considerar vias nao IV ou vasoativo quando apropriado.',
+      whatToMonitor: 'FR, esforco, ausculta, peso, PA e perfusão.',
+      recommendation: 'Reduzir agressividade do plano e considerar vias não IV ou vasoativo quando apropriado.',
       source: 'AAHA 2024',
       action: {
         label: 'Aplicar taxa conservadora',
@@ -79,11 +79,11 @@ export function generateAlerts(
   if (patient.comorbidities.includes('doenca_renal')) {
     alerts.push({
       level: 'HIGH_RISK',
-      title: 'Doenca renal importante',
-      explanation: 'Fluidoterapia apoia o rim, mas nao corrige azotemia sozinha.',
-      whyItMatters: 'Oliguria ou anuria mudam completamente a margem de seguranca para excesso de volume.',
+      title: 'Doença renal importante',
+      explanation: 'Fluidoterapia apoia o rim, mas não corrige azotemia sozinha.',
+      whyItMatters: 'Oliguria ou anuria mudam completamente a margem de segurança para excesso de volume.',
       whatToMonitor: 'Diurese, peso, FR, ausculta, PA e azotemia.',
-      recommendation: 'Se o paciente nao estiver hipotenso, corrigir desidratacao gradualmente e pesar o risco de sobrecarga.',
+      recommendation: 'Se o paciente não estiver hipotenso, corrigir desidratacao gradualmente e pesar o risco de sobrecarga.',
       source: 'AAHA 2024',
     });
   }
@@ -92,10 +92,10 @@ export function generateAlerts(
     alerts.push({
       level: 'HIGH_RISK',
       title: 'Paciente com TCE',
-      explanation: 'TCE pede euvolemia com perfusao adequada, sem hipotonicidade e sem hiperhidratacao.',
+      explanation: 'TCE pede euvolemia com perfusão adequada, sem hipotonicidade e sem hiperhidratacao.',
       whyItMatters: 'Hipotensao e queda de osmolaridade podem agravar lesao cerebral secundaria.',
       whatToMonitor: 'Neurologico seriado, pupilas, PA, glicemia, eletrólitos e FR.',
-      recommendation: 'Use o modulo TCE / Osmoterapia para mannitol e hipertônica com cautelas completas.',
+      recommendation: 'Consulte TCE / Osmoterapia para manitol e solução hipertônica, com todas as cautelas clínicas.',
       source: 'AAHA 2024',
     });
   }
@@ -104,10 +104,10 @@ export function generateAlerts(
     alerts.push({
       level: 'WARNING',
       title: 'Hipoalbuminemia',
-      explanation: 'Edema nao exclui hipovolemia e plasma nao corrige albumina de forma simples.',
-      whyItMatters: 'A baixa pressao oncotica aumenta risco de edema intersticial com volume excessivo.',
-      whatToMonitor: 'Perfusao, peso, FR, ausculta e perdas em terceiro espaco.',
-      recommendation: 'Nao prometa correcao da albumina apenas com plasma; foque no objetivo hemodinamico real.',
+      explanation: 'Edema não exclui hipovolemia e plasma não corrige albumina de forma simples.',
+      whyItMatters: 'A baixa pressão oncotica aumenta risco de edema intersticial com volume excessivo.',
+      whatToMonitor: 'Perfusão, peso, FR, ausculta e perdas em terceiro espaco.',
+      recommendation: 'Não prometa correção da albumina apenas com plasma; foque no objetivo hemodinamico real.',
       source: 'AAHA 2024',
     });
   }
@@ -116,9 +116,9 @@ export function generateAlerts(
     alerts.push({
       level: 'WARNING',
       title: 'Anemia ou hemorragia',
-      explanation: 'Cristaloide nao trata anemia significativa e pode hemodiluir ainda mais.',
-      whyItMatters: 'A oferta de O2 pode piorar apesar de uma pressao melhor.',
-      whatToMonitor: 'PCV/TP, lactato, perfusao, sangramento e PA.',
+      explanation: 'Cristaloide não trata anemia significativa e pode hemodiluir ainda mais.',
+      whyItMatters: 'A oferta de O2 pode piorar apesar de uma pressão melhor.',
+      whatToMonitor: 'PCV/TP, lactato, perfusão, sangramento e PA.',
       recommendation: 'Se houver hipovolemia, ressuscitar. Se a limitacao for hemocomponente, pensar em transfusao.',
       source: 'AAHA 2024',
     });
@@ -128,10 +128,10 @@ export function generateAlerts(
     alerts.push({
       level: 'HIGH_RISK',
       title: 'Choque distributivo ou vasodilatacao',
-      explanation: 'Manutencao nao resolve sepse nem vasodilatacao importante.',
+      explanation: 'Manutenção não resolve sepse nem vasodilatacao importante.',
       whyItMatters: 'Esses pacientes podem precisar bolus fracionados e vasoativo cedo.',
       whatToMonitor: 'PA, lactato, mentacao, diurese, temperatura e peso.',
-      recommendation: 'Separar fase de ressuscitacao da taxa continua e evitar excesso de volume apos recuperar volemia.',
+      recommendation: 'Separar fase de ressuscitação da taxa continua e evitar excesso de volume após recuperar volemia.',
       source: 'AAHA 2024',
     });
   }
@@ -142,7 +142,7 @@ export function generateAlerts(
       title: 'Anestesia com estrategia conservadora',
       explanation: 'A hipotensao anestesica nem sempre e por falta de volume.',
       whyItMatters: 'Escalar soro automaticamente pode gerar sobrecarga perioperatoria sem corrigir a causa hemodinamica.',
-      whatToMonitor: 'PA, profundidade anestesica, FC, temperatura, perdas e perfusao.',
+      whatToMonitor: 'PA, profundidade anestesica, FC, temperatura, perdas e perfusão.',
       recommendation: 'Avaliar plano anestesico, vasodilatacao, analgesia, hemorragia e necessidade de vasoativo antes de subir taxa.',
       source: 'AAHA 2024 / Lumb & Jones',
       action: {

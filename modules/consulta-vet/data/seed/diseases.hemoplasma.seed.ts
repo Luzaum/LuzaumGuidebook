@@ -46,7 +46,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
       {
         title: 'Segurança medicamentosa',
         body:
-          'Doxiciclina em felino: água ou slurry após comprimido, ou formulação líquida; esofagite por pílula seca é complicação evitável e documentada (August’s; Plumb’s).',
+          'Doxiciclina em felino: água ou slurry após comprimido, ou fórmulação líquida; esofagite por pílula seca é complicação evitável e documentada (August’s; Plumb’s).',
         highlights: ['esofagite', 'slurry'],
       },
       {

@@ -331,7 +331,7 @@ export default function EnergyStep() {
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="text-lg font-semibold text-foreground">Perfis energéticos disponíveis</p>
-              <p className="text-sm text-muted-foreground">Selecione um perfil em português. Nenhum slug técnico aparece na interface.</p>
+              <p className="text-sm text-muted-foreground">Selecione o perfil que melhor representa a fase de vida e a condição clínica.</p>
             </div>
             <TooltipProvider>
               <Tooltip>
@@ -612,9 +612,9 @@ export default function EnergyStep() {
                 />
               </div>
               <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
-                <p className="font-semibold text-foreground">Idade derivada internamente</p>
+                <p className="font-semibold text-foreground">Idade estimada para a curva</p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Idade em anos da secao 1 foi convertida para {ageWeeks} semanas para a curva de crescimento.
+                  A idade informada corresponde a {ageWeeks} semanas na curva de crescimento.
                 </p>
               </div>
             </div>

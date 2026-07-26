@@ -226,7 +226,7 @@ export function ImportFromShiftDialog({ open, onClose }: ImportFromShiftDialogPr
                                   ) : null}
                                 </div>
                                 <p className="text-sm text-[var(--pv-text-muted)]">
-                                  {patient.mainDiagnosis || 'Sem diagnostico principal registrado.'}
+                                  {patient.mainDiagnosis || 'Sem diagnóstico principal registrado.'}
                                 </p>
                                 <div className="mt-3 flex flex-wrap gap-2">
                                   {patient.alertBadges.slice(0, 3).map((badge) => (
@@ -245,7 +245,7 @@ export function ImportFromShiftDialog({ open, onClose }: ImportFromShiftDialogPr
                           })
                         ) : (
                           <div className="rounded-2xl border border-dashed border-[var(--pv-border)] bg-[var(--pv-surface)] p-8 text-center text-[var(--pv-text-muted)]">
-                            Este plantao nao possui pacientes para importar.
+                            Este plantão não possui pacientes para importar.
                           </div>
                         )}
                       </div>
@@ -257,12 +257,12 @@ export function ImportFromShiftDialog({ open, onClose }: ImportFromShiftDialogPr
                         <div className="space-y-3 text-sm text-[var(--pv-text-main)]">
                           {[
                             ['copyIdentification', 'Identificacao do paciente'],
-                            ['copySummary', 'Resumo clinico e diagnostico'],
+                            ['copySummary', 'Resumo clínico e diagnóstico'],
                             ['copyDefiningPhrase', 'Frase definidora'],
                             ['copyProblems', 'Problemas ativos'],
                             ['copyMedications', 'Medicacoes em uso'],
                             ['copyAlerts', 'Alertas'],
-                            ['copyOpenTasks', 'Pendencias nao concluidas'],
+                            ['copyOpenTasks', 'Pendencias não concluidas'],
                           ].map(([key, label]) => (
                             <label key={key} className="flex items-start gap-3">
                               <input
@@ -277,7 +277,7 @@ export function ImportFromShiftDialog({ open, onClose }: ImportFromShiftDialogPr
                         </div>
 
                         <div className="mt-5 rounded-xl border border-[var(--pv-border)] bg-[var(--pv-surface)] p-4 text-sm text-[var(--pv-text-muted)]">
-                          Tarefas concluidas e boletins antigos nao sao copiados. O paciente importado recebe metadados de origem do plantao anterior.
+                          Tarefas concluídas e boletins antigos não são copiados. O paciente importado mantém a identificação do plantão anterior.
                         </div>
 
                         <div className="mt-5 space-y-3">

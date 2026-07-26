@@ -129,7 +129,7 @@ export const SYNDROME_PROFILES_V2: Record<string, SyndromeProfileV2> = {
         firstLineRegimenIds: ['reg_cistite_simples_amox_clav'],
         alternativeRegimenIds: ['reg_cistite_fq_alt'],
         rationaleBullets: [
-          'Ambulatorial estável: beta-lactâmico com inibidor costuma alinhar a stewardship.',
+          'Em paciente ambulatorial estável, beta-lactâmico com inibidor costuma ser uma escolha adequada.',
           'Fluoroquinolona como alternativa, não como padrão universal.',
         ],
       },
@@ -667,7 +667,7 @@ export const SYNDROME_PROFILES_V2: Record<string, SyndromeProfileV2> = {
       'Clindamicina: considerar perfil de resistência local (ex.: MRSP) em cães.',
     ],
     interpretiveNotes: [
-      'Gengivite leve sem sistêmica pode não precisar ATB; o módulo modela cenários com indicação farmacológica.',
+      'Gengivite leve sem repercussão sistêmica pode não precisar de antimicrobiano; reservar a terapia para cenários com indicação farmacológica.',
     ],
     scenarios: {
       ambulatory_stable: {

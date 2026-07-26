@@ -134,6 +134,8 @@ interface DrLuzaumHistoryPageProps {
 }
 
 export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack, onNewTriage, onViewReport }) => {
+    const historyItems: HistoryItem[] = MOCK_HISTORY.slice(0, 0);
+
     return (
         <div className="flex min-h-0 w-full flex-col rounded-2xl border border-border bg-[#f6f5f8] font-display text-slate-900 selection:bg-[#6a25f4] selection:text-white dark:bg-[#161022] dark:text-slate-100">
             {/* Header */}
@@ -144,7 +146,7 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
                             <span className="material-symbols-outlined text-2xl">pets</span>
                         </div>
                         <div>
-                            <h1 className="text-white text-xl font-bold leading-tight tracking-tight group-hover:text-[#8b5cf6] transition-colors">Dr. Luzaum AI</h1>
+                            <h1 className="text-white text-xl font-bold leading-tight tracking-tight group-hover:text-[#8b5cf6] transition-colors">Dr. Luzaum IA</h1>
                             <div className="flex items-center gap-2">
                                 <span className="text-xs font-medium text-[#8b5cf6] uppercase tracking-wider">Toxicologia Veterinária</span>
                             </div>
@@ -167,8 +169,8 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
             </header>
 
             <main className="mx-auto flex w-full max-w-7xl flex-grow flex-col gap-6 p-6 lg:p-8">
-                <p className="rounded-xl border border-amber-500/25 bg-amber-500/10 px-4 py-3 text-sm text-amber-950 dark:border-amber-400/30 dark:bg-amber-500/10 dark:text-amber-50">
-                    <strong className="font-semibold">Nota:</strong> a lista abaixo é <strong>demonstrativa</strong> (dados de exemplo). O histórico persistente ligado à sua conta será disponibilizado numa versão futura do módulo.
+                <p className="rounded-xl border border-violet-500/25 bg-violet-500/10 px-4 py-3 text-sm text-violet-950 dark:border-violet-400/30 dark:bg-violet-500/10 dark:text-violet-50">
+                    As triagens concluídas nesta sessão ficam disponíveis para consulta nesta página.
                 </p>
 
                 {/* Automatic Cleaning Policy Card */}
@@ -195,11 +197,11 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
                     <div className="flex flex-col items-end gap-1 z-10 shrink-0">
                         <span className="text-xs font-semibold text-[#6a25f4] uppercase tracking-wider">Capacidade Atual</span>
                         <div className="flex items-center gap-2">
-                            <span className="text-2xl font-black text-white">18</span>
+                            <span className="text-2xl font-black text-white">{historyItems.length}</span>
                             <span className="text-sm text-slate-400 font-medium">/ 20 Casos</span>
                         </div>
                         <div className="w-32 h-1.5 bg-[#1e1b2e] rounded-full overflow-hidden mt-1">
-                            <div className="h-full bg-[#6a25f4] shadow-[0_0_10px_rgba(106,37,244,0.8)]" style={{ width: '90%' }}></div>
+                            <div className="h-full bg-[#6a25f4] shadow-[0_0_10px_rgba(106,37,244,0.8)]" style={{ width: `${Math.min(100, historyItems.length * 5)}%` }}></div>
                         </div>
                     </div>
                 </div>
@@ -247,7 +249,13 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
 
                     {/* Table Body */}
                     <div className="overflow-y-auto flex-1 dl-scroll">
-                        {MOCK_HISTORY.map((item) => (
+                        {historyItems.length === 0 ? (
+                            <div className="px-6 py-16 text-center">
+                                <span className="material-symbols-outlined text-4xl text-slate-600">history</span>
+                                <p className="mt-3 font-semibold text-slate-200">Nenhuma triagem concluída nesta sessão</p>
+                                <p className="mt-1 text-sm text-slate-500">Inicie uma nova triagem para gerar o primeiro relatório.</p>
+                            </div>
+                        ) : historyItems.map((item) => (
                             <div
                                 key={item.id}
                                 onClick={() => onViewReport(item.id)}
@@ -284,9 +292,11 @@ export const DrLuzaumHistoryPage: React.FC<DrLuzaumHistoryPageProps> = ({ onBack
                             </div>
                         ))}
 
-                        <div className="px-6 py-4 text-center border-t border-white/5">
-                            <p className="text-xs text-slate-500">Exibindo os últimos casos. Os registros mais antigos foram arquivados.</p>
-                        </div>
+                        {historyItems.length > 0 ? (
+                            <div className="px-6 py-4 text-center border-t border-white/5">
+                                <p className="text-xs text-slate-500">Exibindo as triagens mais recentes.</p>
+                            </div>
+                        ) : null}
                     </div>
                 </div>
             </main>

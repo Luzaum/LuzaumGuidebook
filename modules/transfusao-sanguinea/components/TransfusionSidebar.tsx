@@ -100,7 +100,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
         <div className="space-y-1.5">
           {(!collapsed || isMobile) ? (
             <p className="px-3.5 pb-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground/80 select-none">
-              Navegação Interna
+              Navegação
             </p>
           ) : (
             <div className="mx-auto h-px w-6 bg-border" aria-hidden />

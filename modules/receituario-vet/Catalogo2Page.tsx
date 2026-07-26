@@ -195,7 +195,7 @@ export default function Catalogo2Page() {
       setLoading(false)
     } catch (error) {
       console.error('[Catalogo2] Load error:', error)
-      setErrors({ load: `Erro ao carregar: ${error instanceof Error ? error.message : String(error)}` })
+      setErrors({ load: 'Não foi possível carregar os medicamentos. Tente novamente.' })
       setLoading(false)
     }
   }
@@ -376,7 +376,7 @@ export default function Catalogo2Page() {
 
       if (!verifyMed) {
         console.error('[Catalogo2] ⚠️ POST-SAVE VERIFY FAILED: medication NOT FOUND!')
-        throw new Error('Medicamento não foi encontrado no banco após salvar. Verifique RLS policies.')
+        throw new Error('Não foi possível confirmar o medicamento salvo. Tente novamente.')
       } else {
         console.log('[Catalogo2] ✅ POST-SAVE VERIFY SUCCESS')
       }
@@ -435,11 +435,11 @@ export default function Catalogo2Page() {
 
       if (isRLS) {
         setErrors({
-          save: 'ERRO DE PERMISSÃO (RLS): Verifique se você está logado e se é membro da clínica ativa.'
+          save: 'Você não tem permissão para salvar medicamentos nesta clínica. Confirme sua conta e a clínica selecionada.'
         })
       } else {
         setErrors({
-          save: `Erro ao salvar: ${error instanceof Error ? error.message : String(error)}`
+          save: 'Não foi possível salvar o medicamento. Revise os dados e tente novamente.'
         })
       }
 
@@ -550,8 +550,8 @@ export default function Catalogo2Page() {
 
       <ReceituarioChrome
         section="catalogo2"
-        title="🔥 Catálogo 2.0"
-        subtitle={clinicName ? `Clínica: ${clinicName}` : 'Supabase-only'}
+        title="Catálogo"
+        subtitle={clinicName ? `Clínica: ${clinicName}` : 'Selecione uma clínica'}
         actions={
           <>
             <Link
@@ -559,7 +559,7 @@ export default function Catalogo2Page() {
               className="rxv-btn-secondary inline-flex items-center gap-2 px-3 py-2 text-sm"
             >
               <span className="material-symbols-outlined text-[18px]">arrow_back</span>
-              Catálogo v1
+              Catálogo
             </Link>
             <button
               type="button"

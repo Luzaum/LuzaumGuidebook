@@ -134,9 +134,9 @@ export function stewardshipAlertsFromProfile(notes: string[]): ClinicalAlert[] {
   return notes.map((detail, i) => ({
     id: `stew_${i}`,
     severity: 'info' as const,
-    title: 'Stewardship',
+    title: 'Uso racional de antimicrobianos',
     detail,
-    because: 'Nota do perfil clínico v2 (educacional).',
+    because: 'Orientação do perfil clínico.',
   }))
 }
 

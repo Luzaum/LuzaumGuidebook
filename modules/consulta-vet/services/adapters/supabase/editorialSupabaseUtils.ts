@@ -130,7 +130,7 @@ export async function ensureOwnerUserId(): Promise<string> {
     throw new Error(`Falha ao validar autenticacao: ${parseError(error)}`);
   }
   if (!data.user) {
-    throw new Error('Faca login para editar o conteudo editorial.');
+    throw new Error('Faca login para editar o conteúdo editorial.');
   }
 
   return data.user.id;

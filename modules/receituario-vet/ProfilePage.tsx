@@ -304,7 +304,7 @@ export default function ProfilePage() {
         </label>
         <div className="rxv-card flex items-center justify-between px-4 py-3">
           <p className="text-sm">
-            ID do sistema: <span className="font-bold text-[color:var(--rxv-primary)]">ADMIN</span>
+            Perfil: <span className="font-bold text-[color:var(--rxv-primary)]">Administrador</span>
           </p>
         </div>
       </div>
