@@ -1,14 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+﻿import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Outlet, useNavigate, useLocation, Link } from 'react-router-dom'
 import { ThemeToggle } from '../components/ThemeToggle'
 import { modules } from '../modules/registry'
-import { Menu, X, Home, Stethoscope, FileText } from 'lucide-react'
+import { Menu, X, Home, Stethoscope } from 'lucide-react'
 import Logo from '../components/Logo'
 import { useAuthSession } from '@/src/components/AuthSessionProvider'
 import { useClinic } from '@/src/components/ClinicProvider'
 import { TopRightAuthMenu } from '@/src/components/TopRightAuthMenu'
 import { useIsMobile } from '../hooks/useIsMobile'
-import { ClinicalAcronymGlossaryV2 } from '../components/ClinicalAcronymGlossaryV2'
 
 const APP_FORM_DRAFT_PREFIX = 'vetius:app-form-draft:v1:'
 const NON_DRAFT_FIELD_TYPES = new Set(['button', 'submit', 'reset', 'file', 'image', 'password'])
@@ -17,11 +16,7 @@ type DraftableField = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
 
 function isDraftableAppRoute(pathname: string): boolean {
   if (!pathname || pathname === '/' || pathname === '/hub') return false
-  const routeAliases = ['/transfusao-sanguinea', '/emergencias']
-  return (
-    modules.some((module) => pathname === module.route || pathname.startsWith(`${module.route}/`)) ||
-    routeAliases.some((route) => pathname === route || pathname.startsWith(`${route}/`))
-  )
+  return modules.some((module) => pathname === module.route || pathname.startsWith(`${module.route}/`))
 }
 
 function getAppFormDraftKey(pathname: string): string | null {
@@ -121,24 +116,20 @@ export function AppLayout() {
   const decodedPathname = decodeURIComponent(location.pathname)
   const isActive = (route: string) => decodedPathname === route
   const isImmersiveModuleRoute =
-    decodedPathname.startsWith('/receituario-vet') ||
     decodedPathname.startsWith('/dados-veterinarios') ||
     decodedPathname.startsWith('/dor-mobile')
   const isFullBleedRoute =
     isActive('/') ||
     isActive('/hub') ||
     isImmersiveModuleRoute ||
-    decodedPathname.startsWith('/peconhentos') ||
     decodedPathname.startsWith('/fluidoterapia') ||
     decodedPathname.startsWith('/antibioticoterapia') ||
     decodedPathname.startsWith('/hemogasovet') ||
-    decodedPathname.startsWith('/plantao-vet') ||
     decodedPathname.startsWith('/calculadora-energetica') ||
     decodedPathname.startsWith('/crivet') ||
     decodedPathname.startsWith('/consulta-vet') ||
     decodedPathname.startsWith('/dor') ||
     decodedPathname.startsWith('/neurologia') ||
-    decodedPathname.startsWith('/veteletrolitico') ||
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
 
@@ -202,7 +193,6 @@ export function AppLayout() {
         >
           <Outlet />
         </div>
-        <ClinicalAcronymGlossaryV2 contentRoot={appContentRef} />
       </>
     )
   }
@@ -286,9 +276,7 @@ export function AppLayout() {
                           <img
                             src={module.iconImage}
                             alt={`${module.title} logo`}
-                            className={`object-contain flex-shrink-0 ${
-                              module.id === 'receituario-vet' ? '' : 'dark:invert'
-                            }`}
+                            className="object-contain flex-shrink-0 dark:invert"
                             style={{ width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' }}
                           />
                         ) : (
@@ -523,19 +511,7 @@ export function AppLayout() {
               <Stethoscope className="h-5 w-5" />
               <span className="text-[10px] mt-1">Consulta</span>
             </button>
-
-            {/* Receituário VET */}
-            <button
-              onClick={() => navigate('/receituario-vet')}
-              className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
-                decodedPathname.startsWith('/receituario-vet') ? 'text-emerald-400 font-bold' : 'text-slate-400 hover:text-slate-200'
-              }`}
-            >
-              <FileText className="h-5 w-5" />
-              <span className="text-[10px] mt-1">Receituário</span>
-            </button>
-
-            {/* Menu Drawer */}
+{/* Menu Drawer */}
             <button
               onClick={() => setSidebarOpen(true)}
               className={`flex flex-col items-center justify-center w-16 h-12 rounded-xl transition-all ${
@@ -549,7 +525,7 @@ export function AppLayout() {
         )}
 
       </div>
-      <ClinicalAcronymGlossaryV2 contentRoot={appContentRef} />
     </div>
   )
 }
+

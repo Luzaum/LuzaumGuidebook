@@ -1,20 +1,13 @@
-import {
+﻿import {
   Heart,
-  Zap,
   Cat,
   TestTube,
   Syringe,
-  Scissors,
   Pill,
-  FileText,
   Brain,
-  AlertTriangle,
-  Worm,
   LucideIcon,
   Activity,
-  Ticket,
   Stethoscope,
-  Clock3,
 } from 'lucide-react'
 
 export type ModuleStatus = 'internal' | 'iframe' | 'planned'
@@ -86,25 +79,6 @@ export const modules: Module[] = [
     iconImage: '/apps/dor.png',
   },
   {
-    id: 'emergências-veterinarias',
-    title: 'Emergências Veterinárias',
-    description: 'Protocolos de emergência e primeiros socorros',
-    route: '/emergências',
-    status: 'iframe',
-    icon: Zap,
-    iframeUrl: 'https://emergências-vet.netlify.app',
-    iconImage: '/apps/emergencia.png',
-  },
-  {
-    id: 'peconhentos',
-    title: 'Animais Peçonhentos',
-    description: 'Condutas em acidentes por serpentes, aranhas, escorpiões e outros animais peçonhentos',
-    route: '/peconhentos',
-    status: 'planned',
-    icon: Worm,
-    iconImage: '/apps/aap.png',
-  },
-  {
     id: 'antibioticoterapia',
     title: 'Antibioticoterapia Vet',
     description: 'Escolha guiada e racional de antimicrobianos (protocolos, doses e condutas)',
@@ -112,24 +86,6 @@ export const modules: Module[] = [
     status: 'internal',
     icon: Pill,
     iconImage: '/apps/ATB.png',
-  },
-  {
-    id: 'receituario-vet',
-    title: 'Receituário Vet',
-    description: 'Painel inicial do receituário veterinário com fluxo clínico e prescrições',
-    route: '/receituario-vet',
-    status: 'internal',
-    icon: FileText,
-    iconImage: '/images/receituario-vet/reeceita.png',
-  },
-  {
-    id: 'plantao-vet',
-    title: 'PlantaoVET',
-    description: 'Internacao por plantao, pacientes, pendencias e passagem do turno.',
-    route: '/plantao-vet',
-    status: 'internal',
-    icon: Clock3,
-    iconImage: '/apps/plantao-vet.png',
   },
   {
     id: 'crivet',
@@ -157,15 +113,6 @@ export const modules: Module[] = [
     status: 'internal',
     icon: Brain,
     iconImage: '/apps/NEURO.png',
-  },
-  {
-    id: 'veteletrolitico',
-    title: 'Hidroeletrovet',
-    description: 'Cálculo e reposição de eletrólitos (K+, Na+, Mg2+, etc.)',
-    route: '/veteletrolitico',
-    status: 'internal',
-    icon: Activity,
-    iconImage: '/apps/hidroeletro.png',
   },
   {
     id: 'consulta-vet',

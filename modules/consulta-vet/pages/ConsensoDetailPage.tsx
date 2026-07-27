@@ -6,6 +6,7 @@ import { PdfViewerShell } from '../components/consensus/PdfViewerShell';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
+import { getEntityCategoryTheme } from '../components/shared/EntityCard';
 import { canManageConsensusSharedDetails } from '../services/consensusSharedDetailsPermissions';
 import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
@@ -16,6 +17,9 @@ import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { formatConsensusSpecies } from '../utils/navigation';
+import { getConsensusAccent, getConsensusSymbol } from '../utils/consensusVisuals';
+import { sanitizeHTML } from '../../../utils/sanitize';
+import { cn } from '../../../lib/utils';
 
 const UI_TEXT = {
   notFoundTitle: 'Consenso não encontrado',
@@ -70,6 +74,26 @@ function toSharedForm(details: ConsensusDocumentDetails | null): SharedDetailsFo
 
 function hasText(value: string | null | undefined): boolean {
   return Boolean(String(value || '').trim());
+}
+
+function hasHtmlTags(value: string): boolean {
+  return /<\/?[a-z][\s\S]*>/i.test(value);
+}
+
+function SharedBlockText({ text }: { text: string | null | undefined }) {
+  const parsed = String(text || '').trim();
+  if (!parsed) return null;
+
+  if (hasHtmlTags(parsed)) {
+    return (
+      <div
+        className="prose prose-slate max-w-none text-sm leading-relaxed text-foreground/90 dark:prose-invert prose-p:my-0 prose-p:leading-relaxed prose-strong:text-foreground"
+        dangerouslySetInnerHTML={{ __html: sanitizeHTML(parsed) }}
+      />
+    );
+  }
+
+  return <p className="whitespace-pre-line text-sm leading-relaxed text-foreground/90">{parsed}</p>;
 }
 
 export function ConsensoDetailPage() {
@@ -317,6 +341,9 @@ export function ConsensoDetailPage() {
     );
   }
 
+  const categoryTheme = getEntityCategoryTheme(consenso.category);
+  const consensusSymbol = getConsensusSymbol(consenso.slug);
+
   return (
     <>
       <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">
@@ -328,23 +355,36 @@ export function ConsensoDetailPage() {
           <span className="truncate text-foreground">{consenso.title}</span>
         </nav>
 
-        <ConsultaVetSurface accent="violet" className="p-6 md:p-8">
+        <ConsultaVetSurface
+          accent={getConsensusAccent(consenso.category)}
+          className={cn('overflow-hidden p-6 md:p-8', categoryTheme.line)}
+        >
           <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
-                {consenso.title}
-              </h1>
-              <p className="text-base text-muted-foreground md:text-lg">
-                {consenso.organization || UI_TEXT.organizationFallback}
-                {consenso.year ? ` • ${consenso.year}` : ''}
-              </p>
-              <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-                <span className="rounded-md border border-border bg-muted px-2 py-1">
-                  {consenso.category || 'Sem categoria'}
-                </span>
-                <span className="rounded-md border border-border bg-muted px-2 py-1">
-                  {formatConsensusSpecies(consenso.species)}
-                </span>
+            <div className="flex min-w-0 items-start gap-4 md:gap-5">
+              <div className={cn('hidden h-20 w-20 shrink-0 overflow-hidden rounded-2xl border sm:block', categoryTheme.badge)}>
+                {consensusSymbol ? (
+                  <img src={consensusSymbol} alt="" className="h-full w-full object-cover" />
+                ) : (
+                  <Stethoscope className="m-5 h-10 w-10" aria-hidden="true" />
+                )}
+              </div>
+
+              <div className="min-w-0">
+                <h1 className="mb-2 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-4xl">
+                  {consenso.title}
+                </h1>
+                <p className="text-base text-muted-foreground md:text-lg">
+                  {consenso.organization || UI_TEXT.organizationFallback}
+                  {consenso.year ? ` • ${consenso.year}` : ''}
+                </p>
+                <div className="mt-3 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+                  <span className={cn('rounded-md border px-2 py-1 font-medium', categoryTheme.badge)}>
+                    {consenso.category || 'Sem categoria'}
+                  </span>
+                  <span className="rounded-md border border-border bg-muted px-2 py-1">
+                    {formatConsensusSpecies(consenso.species)}
+                  </span>
+                </div>
               </div>
             </div>
 
@@ -376,7 +416,7 @@ export function ConsensoDetailPage() {
 
         <PdfViewerShell
           url={consenso.fileUrl}
-          title={consenso.filePath.split('/').pop() || consenso.title}
+          title={consenso.title}
           initialPage={resumeState?.pageNumber || 1}
           onPageChange={handlePdfPageChange}
         />
@@ -400,7 +440,7 @@ export function ConsensoDetailPage() {
               {sharedBlocks.map((block) => (
                 <article key={block.key} className="space-y-2 border-b border-border/70 pb-5 last:border-b-0 last:pb-0">
                   <h3 className="text-base font-semibold text-foreground">{block.title}</h3>
-                  <p className="whitespace-pre-line text-sm leading-relaxed text-muted-foreground">{block.text}</p>
+                  <SharedBlockText text={block.text} />
                 </article>
               ))}
             </div>

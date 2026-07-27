@@ -20,13 +20,15 @@ interface EntityCardProps {
   key?: React.Key;
 }
 
-const SPECIALTY_THEMES: Record<string, {
+export interface EntityCategoryTheme {
   borderHover: string;
   glow: string;
   badge: string;
   line: string;
   glowBg: string;
-}> = {
+}
+
+export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
   endocrinologia: {
     borderHover: 'hover:border-purple-500/50 dark:hover:border-purple-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(168,85,247,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(168,85,247,0.25)]',
@@ -141,13 +143,31 @@ const SPECIALTY_THEMES: Record<string, {
   },
 };
 
-const DEFAULT_THEME = {
+export const DEFAULT_THEME: EntityCategoryTheme = {
   borderHover: 'hover:border-primary/40',
   glow: 'hover:shadow-sm',
   badge: 'bg-muted text-muted-foreground border-border',
   line: 'border-border/60',
   glowBg: 'transparent',
 };
+
+export function getEntityCategoryTheme(category?: string | null): EntityCategoryTheme {
+  if (!category) return DEFAULT_THEME;
+
+  const normalized = category
+    .trim()
+    .toLowerCase()
+    .replace(/[_\s]+/g, '-');
+  const aliases: Record<string, string> = {
+    infecciosa: 'infectologia',
+    infecciosas: 'infectologia',
+    nefrologia: 'nefrologia-urologia',
+    urologia: 'nefrologia-urologia',
+    gastrointestinal: 'gastroenterologia',
+  };
+
+  return SPECIALTY_THEMES[aliases[normalized] || normalized] || DEFAULT_THEME;
+}
 
 export const EntityCard = React.memo(function EntityCard({
   to,
@@ -161,7 +181,7 @@ export const EntityCard = React.memo(function EntityCard({
   className,
   category,
 }: EntityCardProps) {
-  const theme = category ? (SPECIALTY_THEMES[category] || DEFAULT_THEME) : DEFAULT_THEME;
+  const theme = getEntityCategoryTheme(category);
 
   // Split subtitles using bullet delimiter to show separate clean tags
   const subtitleParts = subtitle ? subtitle.split(/\s*[\u2022•]\s*/) : [];

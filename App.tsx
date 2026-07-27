@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect } from 'react'
+﻿import React, { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
 import { AppLayout } from './layouts/AppLayout'
@@ -21,9 +21,6 @@ const EscalasDorMobilePage = lazy(() => import('./modules/escalas-dor-mobile/App
 const NeurologiaMobilePage = lazy(() => import('./pages/NeurologiaMobilePage').then((m) => ({ default: m.NeurologiaMobilePage })))
 
 const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
-const VeteletroliticoPage = lazy(() => import('./modules/veteletrolitico/App'))
-const ReceituarioVetPage = lazy(() => import('./modules/receituario-vet/App'))
-const PlantaoVetApp = lazy(() => import('./modules/plantao-vet/App'))
 const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
 const ConsultaVetHomePage = lazy(() => import('./modules/consulta-vet/pages/HomePage').then((m) => ({ default: m.HomePage })))
 const ConsultaVetDiseasesPage = lazy(() => import('./modules/consulta-vet/pages/DiseasesPage').then((m) => ({ default: m.DiseasesPage })))
@@ -56,22 +53,6 @@ const ConsultaVetClinicalQuickGuidesPage = lazy(() =>
 const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
   import('./modules/consulta-vet/pages/ClinicalQuickGuideDetailPage').then((m) => ({ default: m.ClinicalQuickGuideDetailPage }))
 )
-const NovaReceitaPage = lazy(() => import('./modules/receituario-vet/NovaReceitaPage'))
-const NovaReceita2Page = lazy(() => import('./modules/receituario-vet/NovaReceita2Page'))
-const NovaReceita2PrintPage = lazy(() => import('./modules/receituario-vet/NovaReceita2PrintPage'))
-const DraftsPage = lazy(() => import('./modules/receituario-vet/DraftsPage'))
-const RxPrintPage = lazy(() => import('./modules/receituario-vet/RxPrintPage'))
-const HistoricoReceitasPage = lazy(() => import('./modules/receituario-vet/HistoricoReceitasPage'))
-const ProfilePage = lazy(() => import('./modules/receituario-vet/ProfilePage'))
-const ClientesPage = lazy(() => import('./modules/receituario-vet/ClientesPage'))
-const Catalogo3Page = lazy(() => import('./modules/receituario-vet/Catalogo3Page'))
-const ManipuladosPage = lazy(() => import('./modules/receituario-vet/ManipuladosPage'))
-const ProtocolosPage = lazy(() => import('./modules/receituario-vet/ProtocolosPage'))
-const Protocolos3Page = lazy(() => import('./modules/receituario-vet/Protocolos3Page'))
-const TemplatesPage = lazy(() => import('./modules/receituario-vet/TemplatesPage'))
-const SettingsPage = lazy(() => import('./modules/receituario-vet/SettingsPage'))
-const ControleEspecialPage = lazy(() => import('./modules/receituario-vet/ControleEspecialPage'))
-const AAP2Module = lazy(() => import('./modules/aap2/index'))
 
 const Login = lazy(() => import('./src/routes/Login'))
 const Signup = lazy(() => import('./src/routes/Signup'))
@@ -115,32 +96,9 @@ const appRoutes = (
     <Route path="/dor" element={<EscalasDorPage />} />
     <Route path="/dor-mobile" element={<EscalasDorMobilePage />} />
     <Route path="/neuro-mobile/*" element={<NeurologiaMobilePage />} />
-    <Route path="/emergencias" element={<ModuleIframe />} />
-    <Route path="/emergências" element={<ModuleIframe />} />
-    <Route path="/peconhentos" element={<AAP2Module />} />
     <Route path="/antibioticoterapia" element={<AntibioticoterapiaVetPage />} />
-    <Route path="/receituario-vet" element={<ProtectedClinicRoute><ReceituarioVetPage /></ProtectedClinicRoute>} />
-    <Route path="/plantao-vet/*" element={<ProtectedClinicRoute><PlantaoVetApp /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/nova-receita" element={<ProtectedClinicRoute><NovaReceitaPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/nova-receita-2" element={<ProtectedClinicRoute><NovaReceita2Page /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/nova-receita-2-print" element={<ProtectedClinicRoute><NovaReceita2PrintPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/rascunhos" element={<ProtectedClinicRoute><DraftsPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/historico" element={<ProtectedClinicRoute><HistoricoReceitasPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/configuracao" element={<ProtectedClinicRoute><ProfilePage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/configuração" element={<ProtectedClinicRoute><ProfilePage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/clientes" element={<ProtectedClinicRoute><ClientesPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/catalogo3" element={<ProtectedClinicRoute><Catalogo3Page /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/manipulados" element={<ProtectedClinicRoute><ManipuladosPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/protocolos" element={<ProtectedClinicRoute><ProtocolosPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/protocolos-3" element={<ProtectedClinicRoute><Protocolos3Page /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/controle-especial" element={<ProtectedClinicRoute><ControleEspecialPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/templates" element={<ProtectedClinicRoute><TemplatesPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/configuracoes" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/configurações" element={<ProtectedClinicRoute><SettingsPage /></ProtectedClinicRoute>} />
-    <Route path="/receituario-vet/rx/:id/print" element={<ProtectedClinicRoute><RxPrintPage /></ProtectedClinicRoute>} />
     <Route path="/crivet" element={<CrivetPage />} />
     <Route path="/neurologia/*" element={<NeurologiaPage />} />
-    <Route path="/veteletrolitico" element={<VeteletroliticoPage />} />
     <Route path="/consulta-vet" element={<ConsultaVetShell />}>
       <Route index element={<ConsultaVetHomePage />} />
       <Route path="doencas" element={<ConsultaVetDiseasesPage />} />

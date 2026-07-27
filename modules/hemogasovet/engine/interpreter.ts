@@ -683,7 +683,7 @@ function interpretOxygenation(input: BloodGasInput, quality: DataQualityAssessme
   result.domainStatus = 'ok';
   const fio2Source = fio2Info.source === 'fraction'
     ? 'informada como fração'
-    : fio2Info.source === 'percent'
+    : fio2Info.source === 'percentage'
       ? 'informada como porcentagem'
       : 'valor presumido';
   result.fio2Context = `FiO2 usada: ${(fio2Info.displayPercent ?? 21).toFixed(1)}% (${fio2Source}).`;

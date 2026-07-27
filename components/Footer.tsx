@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 
 export function Footer() {
   const handleLinkClick = (section: string) => {
@@ -39,14 +39,6 @@ export function Footer() {
                   className="text-muted-foreground hover:text-primary cursor-pointer"
                 >
                   Calculadoras
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleLinkClick('emergências')}
-                  className="text-muted-foreground hover:text-primary cursor-pointer"
-                >
-                  Emergências
                 </button>
               </li>
               <li>

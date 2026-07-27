@@ -118,7 +118,7 @@ export default function NeuralBackground({
 
         // --- ANIMATION LOOP ---
         const animate = () => {
-            ctx.fillStyle = `rgba(18, 32, 20, ${trailOpacity})`; // Matches dark theme rxv-surface
+            ctx.fillStyle = `rgba(18, 32, 20, ${trailOpacity})`;
             ctx.fillRect(0, 0, width, height);
 
             particles.forEach((p) => {

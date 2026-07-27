@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -30,8 +30,6 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
     switch (status) {
       case 'available':
         return 'bg-primary/10 text-primary';
-      case 'coming-soon':
-        return 'bg-accent text-foreground';
       case 'beta':
         return 'bg-secondary text-secondary-foreground';
       default:
@@ -104,12 +102,6 @@ const AppIntegration: React.FC<AppIntegrationProps> = ({
             <span>Abrir ferramenta</span>
             <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-        )}
-        
-        {status === 'coming-soon' && (
-          <div className="text-center py-2 text-sm text-muted-foreground">
-            Indisponível no momento
-          </div>
         )}
       </CardContent>
     </Card>

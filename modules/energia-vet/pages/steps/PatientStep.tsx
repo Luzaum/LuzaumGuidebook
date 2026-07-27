@@ -24,7 +24,7 @@ import { getClinicalProfileBadges, getClinicalProfileIdsFromSelections, getClini
 import { getDefaultRequirement } from '../../lib/genutriData'
 import { Species } from '../../types'
 import { SPECIES_PHOTO } from '../../lib/speciesAssets'
-import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../../receituario-vet/rxReferenceData'
+import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../lib/breedOptions'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 

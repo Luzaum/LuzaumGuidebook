@@ -1,10 +1,45 @@
+const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
+  'icatcare-dtuif-felina-2025': {
+    summary:
+      'O consenso iCatCare 2025 organiza a investigação dos sinais do trato urinário inferior em gatos por causa, e não pelo rótulo genérico DTUIF/FLUTD. Primeiro deve-se separar obstrução uretral, uma emergência dolorosa e potencialmente fatal, das apresentações não obstrutivas. Depois, a investigação diferencia cistite idiopática felina (FIC), urolitíase, infecção urinária, alterações anatômicas e causas menos comuns.\n\nA FIC permanece diagnóstico de exclusão: não existe teste único confirmatório. História, ambiente, episódios anteriores, urinálise, cultura quando indicada e imagem orientam a decisão. O manejo é multimodal e inclui analgesia, aumento de ingestão hídrica, dieta coerente com o diagnóstico, redução de estressores e modificação ambiental multimodal (MEMO). Bacteriúria subclínica não deve ser tratada automaticamente e antibiótico não é rotina em gatos jovens com sinais urinários sem cultura compatível.\n\nNa obstrução uretral, o consenso detalha estabilização, correção de hipercalemia, analgesia, sedação, cateterização, fluidoterapia, cuidados pós-desobstrução e prevenção de recorrência. Uretróstomia perineal reduz novas obstruções mecânicas em casos selecionados, mas não trata a doença vesical de base.',
+    keyPointsText:
+      'DIAGNÓSTICO E CLASSIFICAÇÃO\n- Confirmar produção de urina, tamanho/dor da bexiga e estabilidade cardiovascular logo na triagem.\n- FIC: diagnóstico de exclusão; recorrência em 2-7 dias é comum e tratamento isolado raramente resolve o componente ambiental.\n- Urolitíase: estruvita e oxalato de cálcio são os cálculos mais comuns; composição do cristal não confirma a composição do urólito.\n- ITU é menos frequente em adultos jovens saudáveis. Indicar cultura em gatos idosos, com DRC, diabetes, instrumentação prévia ou urinálise sugestiva.\n- Obstrução uretral: avaliar potássio, ECG, azotemia, hidratação, temperatura e pressão antes/durante a desobstrução.\n\nDOSES CITADAS NO CONSENSO\n- Analgesia/sedação: metadona 0,2 mg/kg IV ou IM; midazolam 0,25 mg/kg IV ou IM em protocolos selecionados.\n- Epidural/lombossacra: bupivacaína 0,22 mg/kg, com ou sem morfina 0,1 mg/kg, conforme experiência e monitorização.\n- Hipercalemia: terbutalina 0,01 mg/kg IV lenta ou IM é uma das medidas temporizadoras citadas; cálcio IV é reservado à estabilização de membrana quando há alteração eletrocardiográfica.\n- Dor neuropática/pós-obstrução: gabapentina 5-10 mg/kg q8-12h ou pregabalina 1-3 mg/kg q8-12h são opções descritas; ajustar ao paciente e à sedação.\n- Atonia vesical com uretra patente: betanecol 1,25-5 mg/gato VO q12h pode ser considerado, nunca diante de obstrução persistente.',
+    practicalApplicationText:
+      'FLUXO DE ATENDIMENTO\n1. Macho com tentativas improdutivas, bexiga grande/dolorosa ou deterioração sistêmica: tratar como obstrução até prova em contrário.\n2. Estabilizar primeiro quando houver hipercalemia, choque, hipotermia ou arritmia; analgesia deve começar cedo.\n3. Desobstruir com técnica atraumática, sistema fechado quando possível e plano de fluidoterapia guiado por hidratação, eletrólitos e diurese pós-obstrutiva.\n4. Após retirar o cateter, confirmar micção espontânea e orientar retorno imediato se houver esforço sem urina.\n5. Nos não obstruídos, usar urinálise, cultura e imagem de forma direcionada; evitar antibiótico empírico sem evidência de ITU.\n6. Para FIC, documentar recursos por gato, caixas sanitárias, conflitos, previsibilidade da rotina, água, dieta e dor/comorbidades.\n\nAs doses são referências do consenso e exigem avaliação de perfusão, rim, eletrólitos, comorbidades, interações e monitorização.',
+  },
+  'leishmaniose-brasileiro-2020': {
+    summary:
+      'As diretrizes Brasileish estruturam diagnóstico, estadiamento, tratamento e acompanhamento da leishmaniose visceral canina no contexto brasileiro. A doença pode variar de infecção subclínica a comprometimento sistêmico grave, com dermatopatia, linfadenomegalia, alterações oculares, anemia, hiperglobulinemia, proteinúria e doença renal. O diagnóstico combina epidemiologia, sinais, sorologia e demonstração do parasito ou material genético quando indicada.\n\nO rim é determinante para prognóstico e escolha terapêutica. Creatinina/SDMA, urinálise, UPC e pressão arterial devem ser avaliadas antes do protocolo e durante o seguimento. O tratamento reduz sinais e carga parasitária, mas não garante eliminação definitiva; controle vetorial e monitorização longitudinal continuam obrigatórios.',
+    keyPointsText:
+      '- Classificar gravidade clínica e renal antes de tratar.\n- Miltefosina: 2 mg/kg VO q24h por 28 dias, preferencialmente com alimento.\n- Alopurinol: 10 mg/kg VO q12h por 6-12 meses; monitorar cristalúria e urolitíase por xantina.\n- Proteinúria, hipertensão e DRC exigem tratamento paralelo e podem modificar o protocolo.\n- Resposta clínica não equivale a cura parasitológica; recidiva é possível.',
+    practicalApplicationText:
+      'Solicitar hemograma, bioquímica, proteínas/albumina, creatinina/SDMA, urinálise, UPC e pressão; confirmar infecção por método apropriado; estadiar; tratar o parasito e as lesões orgânicas; manter repelente/coleira e controle ambiental. Reavaliar clínica, rim, fígado, proteínas, UPC e urina nas primeiras semanas e depois periodicamente.',
+  },
+  'iris-drc-2023': {
+    summary:
+      'O IRIS 2023 classifica a doença renal crônica somente depois de confirmar alteração renal persistente em paciente estável e adequadamente hidratado. O estágio usa creatinina e SDMA; depois o paciente é subestadiado por proteinúria e pressão arterial, porque ambos alteram prognóstico e conduta independentemente da creatinina.\n\nA classificação deve ser revista após estabilização, tratamento antiproteinúrico ou anti-hipertensivo e mudanças clínicas. Sarcopenia pode mascarar gravidade pela creatinina, enquanto SDMA discordante pode levar ao manejo pelo estágio mais alto.',
+    keyPointsText:
+      '- Creatinina (mg/dL), cão: estágio 1 <1,4; 2 = 1,4-2,8; 3 = 2,9-5,0; 4 >5,0. Gato: estágio 1 <1,6; 2 = 1,6-2,8; 3 = 2,9-5,0; 4 >5,0.\n- UPC: cães <0,2 não proteinúrico; 0,2-0,5 limítrofe; >0,5 proteinúrico. Gatos <0,2; 0,2-0,4; >0,4, respectivamente.\n- Pressão sistólica: <140 risco mínimo; 140-159 baixo; 160-179 moderado; >=180 alto risco.\n- Não estadiar definitivamente durante desidratação, obstrução, AKI ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão e complicações ao longo do tempo.',
+    practicalApplicationText:
+      'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por UPC e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo.',
+  },
+  'acvim-cie-caes-2026': {
+    summary:
+      'A diretriz ACVIM 2026 propõe uma sequência para enteropatia inflamatória crônica canina: confirmar sinais gastrointestinais persistentes, excluir doença extraintestinal e parasitária, avaliar gravidade e perda proteica, realizar teste dietético adequado e reservar antibióticos, endoscopia/biópsia e imunomodulação para indicações específicas.\n\nA classificação deve refletir fenótipo e resposta: enteropatia responsiva à dieta, responsiva a antimicrobiano, responsiva a imunossupressor e não responsiva. Enteropatia com perda proteica (PLE) é um fenótipo de maior risco, com hipoalbuminemia, perda de peso, efusões e risco tromboembólico. Histologia isolada não mede toda a atividade clínica; resposta, albumina, escore corporal/muscular e biomarcadores devem ser acompanhados.\n\nDietoterapia é a primeira intervenção terapêutica em cães estáveis. Imunossupressores só entram após exclusões e teste dietético adequados, salvo gravidade que exija ação mais rápida. Antibióticos não são terapia empírica de rotina, pois evidência e impacto sobre microbiota/resistência devem ser considerados.',
+    keyPointsText:
+      'CLASSIFICAÇÃO E INDICAÇÕES\n- CIE responsiva à dieta: melhora/remissão com dieta de eliminação, hidrolisada, proteína nova ou formulação altamente digestível.\n- CIE responsiva a antimicrobiano: categoria de exceção, após avaliação crítica; recidiva e resistência limitam uso.\n- CIE responsiva a imunossupressor: falha de dieta/exclusões e melhora com glicocorticoide ou outro imunomodulador.\n- CIE não responsiva: persistência apesar de abordagem adequada; revisar diagnóstico, adesão, dieta, histologia e comorbidades.\n- PLE: priorizar albumina, eletrólitos, estado nutricional, efusões e risco trombótico.\n\nDOSES CITADAS\n- Prednisona/prednisolona: indução 1-2 mg/kg VO q24h; reduzir progressivamente após resposta.\n- Budesonida: 1-5 mg/cão VO q24h conforme porte, em casos selecionados; ainda pode causar supressão adrenal.\n- Ciclosporina: 3-5 mg/kg VO q12-24h por pelo menos 6 semanas; alternativa ou associação em refratários.\n- Tilosina: 25 mg/kg q24h por 7 dias nos estudos citados; cães responsivos podem manter resposta com 5-16 mg/kg q24h.\n- Metronidazol: 10-15 mg/kg q12h por 21 dias nos estudos; não usar empiricamente sem indicação.\n- Rifaximina: 25 mg/kg q12h por 21 dias; evidência e disponibilidade devem ser consideradas.\n- Oxitetraciclina: 10 mg/kg q8h por 4 semanas em estudos antigos/específicos.',
+    practicalApplicationText:
+      'ALGORITMO\n1. História alimentar/medicamentosa, escore clínico, peso, condição muscular, hemograma, bioquímica, urinálise, coproparasitológico e avaliação pancreática/hepática/endócrina conforme o caso.\n2. Dosar albumina, cobalamina e folato; ultrassom quando houver perda de peso, dor, massa, PLE ou suspeita de doença estrutural.\n3. Cão estável: teste dietético exclusivo e bem controlado antes de imunossupressão.\n4. Biópsia quando o resultado puder mudar conduta, houver PLE, sinais de alarme, suspeita de neoplasia ou falha terapêutica.\n5. Imunomodular apenas após revisar adesão e exclusões; monitorar resposta clínica, albumina, peso/músculo e efeitos adversos.\n6. Em PLE, individualizar tromboprofilaxia, suporte nutricional, cobalamina e manejo de efusões.\n\nAs doses refletem regimes estudados no consenso e não substituem ajuste por gravidade, formulação, interações, função hepática/renal e monitorização.',
+  },
+}
+
 export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-icatcare-dtuif-felina-2025',
     slug: 'icatcare-dtuif-felina-2025',
-    title: '2025 iCatCare consensus guidelines on the diagnosis and management of lower urinary tract diseases in cats',
-    shortTitle: 'DTUIF felina (iCatCare 2025)',
-    sourceOrganization: 'International Cat Care / iCatCare Veterinary Society',
+    title: 'Doenças do trato urinário inferior em gatos',
+    shortTitle: 'DTUIF felina',
+    sourceOrganization: 'iCatCare',
     year: 2025,
     species: 'cat',
     category: 'nefrologia-urologia',
@@ -16,6 +51,10 @@ export const consensosSeed: Array<Record<string, any>> = [
       'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
     articleSummaryRichText:
       '<p>O consenso iCatCare 2025 recomenda tratar sinais urinários baixos como ponto de partida, não como diagnóstico final. A abordagem central é separar rapidamente obstrução uretral de apresentações não obstrutivas e, em seguida, investigar FIC, urolitíase, ITU e causas menos comuns.</p>',
+    keyPointsText:
+      '• Obstrução uretral é emergência e deve ser diferenciada logo na triagem.\n• FIC é diagnóstico de exclusão; não há teste único confirmatório.\n• Urolitíase, ITU e neoplasia exigem investigação direcionada.\n• Hidratação, analgesia e manejo ambiental multimodal reduzem recorrência.',
+    practicalApplicationText:
+      'Confirmar se o gato elimina urina e palpar a bexiga antes de qualquer conduta. Nos não obstruídos, estruturar investigação por causa e plano de prevenção com água, recursos ambientais, dieta conforme diagnóstico e retorno programado.',
     adminNotesRichText:
       '<p><strong>Alerta editorial:</strong> DTUIF/FLUTD não deve ser usado como diagnóstico definitivo. Macho com bexiga distendida e tentativas improdutivas de urinar deve ser conduzido como emergência por suspeita de obstrução uretral.</p>',
     relatedDiseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],
@@ -25,20 +64,25 @@ export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-1',
     slug: 'leishmaniose-brasileiro-2020',
-    title: 'Diretrizes Brasileiras para o Manejo da Leishmaniose Visceral Canina',
-    shortTitle: 'Leishmaniose (Brasileish)',
+    title: 'Leishmaniose visceral canina',
+    shortTitle: 'Leishmaniose visceral canina',
     sourceOrganization: 'Brasileish',
-    year: 2020,
+    year: 2025,
     species: 'dog',
     category: 'infecciosas',
     tags: ['LVC', 'Zoonose', 'Estadiamento'],
-    pdfUrl: 'https://www.brasileish.com.br/wp-content/uploads/2020/12/Diretrizes-Brasileish-2020.pdf',
-    pdfFileName: 'Diretrizes-Brasileish-2020.pdf',
-    summary: 'Atualização das diretrizes para diagnóstico, estadiamento e tratamento da LVC no Brasil.',
+    pdfUrl: '/documents/consulta-vet/consensos/brasileish-leishmaniose-canina-2025.pdf',
+    pdfFileName: 'brasileish-leishmaniose-canina-2025.pdf',
+    storagePath: 'documents/consulta-vet/consensos/brasileish-leishmaniose-canina-2025.pdf',
+    summary: 'Diretrizes Brasileish 2025 para diagnóstico, tratamento e prevenção da leishmaniose canina na América Latina, com foco em diagnóstico integrado, avaliação clínica e renal, tratamento, monitorização e controle vetorial.',
     articleSummaryRichText:
-      '<p>O consenso da Brasileish (2020) atualiza o estadiamento clínico da Leishmaniose Visceral Canina (LVC), dividindo a doença em 4 estágios baseados em sinais clínicos, achados laboratoriais e carga parasitária.</p>',
+      '<p>As diretrizes Brasileish 2025 atualizam a abordagem da leishmaniose canina na América Latina, integrando diagnóstico, avaliação clínica e renal, tratamento, monitorização longitudinal e prevenção vetorial.</p>',
+    keyPointsText:
+      '• Integrar clínica, testes específicos e avaliação renal.\n• Estadiar por achados clínicos e laboratoriais antes do tratamento.\n• Monitorar proteinúria e pressão arterial.\n• Combinar tratamento, seguimento e controle vetorial.',
+    practicalApplicationText:
+      'Usar o estágio para organizar exames iniciais, terapia individualizada, monitorização renal e comunicação com o tutor sobre controle do vetor e necessidade de seguimento.',
     adminNotesRichText:
-      '<p><strong>Atenção:</strong> A Miltefosina é o único fármaco leishmanicida aprovado para uso veterinário no Brasil.</p>',
+      '<p><strong>Alerta editorial:</strong> Não inicie protocolo sem avaliar rim, proteinúria e pressão arterial. O manejo deve combinar tratamento, acompanhamento longitudinal e controle de vetor; controle clínico não equivale a cura parasitológica definitiva.</p>',
     relatedDiseaseSlugs: ['leishmaniose-visceral-canina'],
     isDemonstrative: true,
     warningLabel: 'Demonstração',
@@ -46,20 +90,24 @@ export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-2',
     slug: 'iris-drc-2023',
-    title: 'IRIS Staging of CKD',
-    shortTitle: 'Estadiamento DRC (IRIS)',
-    sourceOrganization: 'International Renal Interest Society',
+    title: 'Estadiamento da doença renal crônica',
+    shortTitle: 'Estadiamento da DRC',
+    sourceOrganization: 'IRIS',
     year: 2023,
     species: 'both',
-    category: 'nefrologia',
+    category: 'nefrologia-urologia',
     tags: ['DRC', 'Renal', 'Estadiamento'],
     pdfUrl: 'http://www.iris-kidney.com/pdf/IRIS_Staging_of_CKD_modified_2023.pdf',
     pdfFileName: 'IRIS_Staging_of_CKD_modified_2023.pdf',
-    summary: 'Diretrizes internacionais para estadiamento e tratamento da Doença Renal Crônica em cães e gatos.',
+    summary: 'Guia IRIS 2023 para estadiamento da doença renal crônica em cães e gatos, com foco em creatinina/SDMA, subestadiamento por proteinúria e pressão arterial, e monitorização clínica.',
     articleSummaryRichText:
       '<p>As diretrizes da IRIS para Doença Renal Crônica (DRC) baseiam-se na avaliação de creatinina sérica ou SDMA.</p>',
+    keyPointsText:
+      '• Estadiar somente DRC estável.\n• Usar creatinina e/ou SDMA persistentes.\n• Subestadiar por UPC e pressão arterial.\n• Revisar a classificação após mudanças clínicas ou tratamento.',
+    practicalApplicationText:
+      'Confirmar hidratação e estabilidade antes de estadiar; registrar creatinina, SDMA, urinálise, UPC e pressão arterial para definir acompanhamento e prioridades terapêuticas.',
     adminNotesRichText:
-      '<p>Sempre avaliar o paciente hidratado antes de classificar o estágio da DRC.</p>',
+      '<p><strong>Alerta editorial:</strong> Não classifique DRC de forma definitiva em paciente desidratado, instável ou com injúria renal aguda sem reavaliação. Proteinúria e hipertensão mudam conduta mesmo dentro do mesmo estágio.</p>',
     relatedDiseaseSlugs: ['doenca-renal-cronica'],
     isDemonstrative: true,
     warningLabel: 'Demonstração',
@@ -67,8 +115,8 @@ export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-acvim-cie-caes-2026',
     slug: 'acvim-cie-caes-2026',
-    title: 'ACVIM–endorsed statement: consensus statement and systematic review on guidelines for the diagnosis and treatment of chronic inflammatory enteropathy in dogs',
-    shortTitle: 'Enteropatia Inflamatória Crônica (ACVIM 2026)',
+    title: 'Enteropatia inflamatória crônica em cães',
+    shortTitle: 'Enteropatia inflamatória crônica',
     sourceOrganization: 'ACVIM',
     year: 2026,
     species: 'dog',
@@ -77,23 +125,14 @@ export const consensosSeed: Array<Record<string, any>> = [
     pdfUrl: '/documents/consulta-vet/consensos/acvim-cie-caes-2026.pdf',
     pdfFileName: 'acvim-cie-caes-2026.pdf',
     storagePath: 'consulta-vet/consensos/acvim-cie-caes-2026.pdf',
-    summary: 'Consenso ACVIM 2026 sobre diagnóstico e tratamento de enteropatia inflamatória crônica (CIE) em cães, incluindo fenótipos clínicos (responsivo a alimento, responsivo a imunossupressor, não responsivo), papel da PLE e diretrizes de manejo e dietoterapia.',
+    summary: 'Consenso ACVIM 2026 para diagnóstico e tratamento de enteropatia inflamatória crônica em cães, com foco em exclusão de causas extra-GI, dietoterapia, PLE, biópsia e imunomodulação.',
+    articleSummaryRichText:
+      '<p>A diretriz propõe uma sequência diagnóstica: confirmar enteropatia crônica, excluir causas extraintestinais e parasitárias, conduzir teste dietético adequado e reservar biópsia e imunomodulação para os casos indicados. Em enteropatia com perda proteica, o risco tromboembólico e o suporte nutricional ganham prioridade.</p>',
     adminNotesRichText:
-      '<p><strong>Importante:</strong> Glicocorticoides e outros imunossupressores só devem ser iniciados após exclusão de outras patologias extra-GI (como hipoadrenocorticismo atípico ou insuficiência pancreática) e após testes terapêuticos dietéticos adequados em cães estáveis.</p>',
-    keyPointsText:
-      '• Terminologia: O termo Enteropatia Inflamatória Crônica (CIE) deve ser preferido em relação a IBD para evitar confusão com a patologia humana.\n' +
-      '• Abordagem em 2 Níveis (CIE-I vs. CIE-II): Permite classificar a gravidade clínica com base no escore CCECAI (CIE-I: ≤ 5, CIE-II: ≥ 6 e/ou perda de peso importante/apetite ruim/alteração de PE).\n' +
-      '• Dietoterapia como Primeira Escolha: Testes dietéticos exclusivos com dietas terapêuticas (hidrolisada ou novel protein) devem ser tentados primeiro em cães clinicamente estáveis. Recomenda-se realizar até 3 tentativas dietéticas de no mínimo 2 semanas cada antes de declarar falha.\n' +
-      '• Rejeição ao Uso Empírico de Antibióticos: O uso empírico de metronidazol ou tilosina é fortemente desencorajado por induzir disbiose duradoura e apresentar altas taxas de recidiva. Reservado apenas para colites granulomatosas associadas a Escherichia coli invasiva (AIEC) com base em cultura e antibiograma de biópsia.\n' +
-      '• Biópsia e Endoscopia: Indicadas na falha dos testes dietéticos ou em cães graves e hipoalbuminêmicos (suspeita de PLE ou linfoma). A colheita deve incluir estômago (n=6), duodeno (n=10-15), íleo (n=3-5) e cólon (n=9-12).',
-    practicalApplicationText:
-      '• Manejo Inicial: Desparasitação completa e avaliação inicial. Em cães estáveis, conduzir teste com dieta terapêutica de eliminação (hidrolisada ou proteína nova) por no mínimo 2 semanas. Se responsivo, manter por pelo menos 12 semanas antes de transição.\n' +
-      '• Manejo de PLE: Dietas com gordura ultra-baixa (< 2 g/100 kcal) e alta digestibilidade são cruciais, principalmente em casos associados a linfangiectasia intestinal.\n' +
-      '• Imunomodulação: Indicada em cães com CIE-IR (responsiva a imunossupressor) ou PLE grave. A prednisolona (1-2 mg/kg q24h) é a primeira linha de indução. Casos refratários ou PLE graves podem exigir ciclosporina (3-5 mg/kg q12-24h) ou clorambucil.\n' +
-      '• Suporte de Cobalamina (B12): A suplementação oral ou parenteral deve ser instituída sempre que os níveis séricos estiverem baixos.',
-    appNotesText:
-      '• Alerta de Coagulopatia: Cães com enteropatia perdedora de proteína (PLE) têm alto risco de eventos tromboembólicos. Considerar terapia com anticoagulantes (ex: rivaroxabana).\n' +
-      '• Addison Atípico: Sempre realizar cortisol basal ou estimulação por ACTH em cães com sintomas GI crônicos e flutuantes antes de iniciar doses imunossupressoras de corticoides.',
+      '<p><strong>Alerta editorial:</strong> Glicocorticoides e outros imunossupressores só devem ser iniciados após exclusão de patologias extra-GI relevantes e após testes dietéticos adequados em cães estáveis. Em PLE, avalie risco tromboembólico e necessidade de suporte intensivo.</p>',
+    keyPointsText: '• Excluir doenças extra-GI, parasitas e outras causas antes de imunossuprimir.\n• Dietoterapia é etapa central em cães estáveis.\n• Biópsia é indicada quando o resultado mudar conduta ou houver sinais de alarme.\n• PLE requer avaliação de gravidade, trombose e suporte intensivo.',
+    practicalApplicationText: 'Organizar o atendimento por etapas: perfil clínico-laboratorial, exclusões direcionadas, teste dietético, reavaliação e, quando indicado, endoscopia/biopsia e terapia imunomoduladora. Em PLE, priorizar albumina, eletrólitos, estado nutricional e risco trombótico.',
+    appNotesText: '',
     references: [
       {
         id: 'ref-acvim-cie-2026',
@@ -108,4 +147,7 @@ export const consensosSeed: Array<Record<string, any>> = [
     relatedDiseaseSlugs: [],
     isDemonstrative: false
   }
-];
+].map((item) => ({
+  ...item,
+  ...(localClinicalDetailsBySlug[item.slug] || {}),
+}));

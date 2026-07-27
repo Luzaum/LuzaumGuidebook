@@ -96,11 +96,6 @@ const TABLE_WHITELISTS: Record<string, string[]> = {
         'id', 'clinic_id', 'owner_user_id', 'name', 'icon_key', 'color', 'sort_order',
         'created_at', 'updated_at'
     ],
-    'prescriptions': [
-        'id', 'clinic_id', 'patient_id', 'tutor_id', 'content', 'status', 'version', 'created_by',
-        'pdf_path', 'storage_bucket', 'document_kind', 'pdf_url',
-        'created_at', 'updated_at'
-    ],
 };
 
 interface ValidationError {

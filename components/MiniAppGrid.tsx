@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { Card } from './ui/card'
 import {
   Heart,
@@ -6,7 +6,6 @@ import {
   Scissors,
   Pill,
   Brain,
-  Zap,
   Cat,
 } from 'lucide-react'
 
@@ -36,13 +35,6 @@ const miniApps: Array<{
     title: 'Transfusão Sanguínea',
     description: 'Cálculo de transfusão sanguínea e compatibilidade',
     icon: <Heart className="h-6 w-6" />,
-    implemented: true,
-  },
-  {
-    id: 'emergências-veterinarias',
-    title: 'Emergências Veterinárias',
-    description: 'Protocolos de emergência e primeiros socorros',
-    icon: <Zap className="h-6 w-6" />,
     implemented: true,
   },
   {

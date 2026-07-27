@@ -103,17 +103,11 @@ export default defineConfig(({ mode }) => {
               }
               return undefined
             }
-            if (id.includes('modules/receituario-vet')) {
-              // Let Rollup handle receituario chunk splitting automatically.
-              // Manual splitting previously caused circular chunk TDZ crashes because
-              // NovaReceita2Page ↔ novaReceita2Adapter ↔ compoundedUi formed cycles
-              // that manifested differently across environments (local vs Netlify).
-              return 'feature-receituario'
-            }
-            return undefined
+return undefined
           }
         }
       }
     }
   };
 });
+

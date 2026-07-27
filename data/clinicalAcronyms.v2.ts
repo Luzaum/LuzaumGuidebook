@@ -1,4 +1,4 @@
-// Glossário contextual compartilhado por todos os módulos clínicos.
+﻿// Glossário contextual compartilhado por todos os módulos clínicos.
 export type ClinicalAcronym = {
   acronym: string
   meaning: string
@@ -341,7 +341,7 @@ export const clinicalAcronyms: ClinicalAcronym[] = [
   { acronym: 'IA', meaning: 'inteligência artificial', aliases: ['AI'] },
   { acronym: 'LV', meaning: 'leishmaniose visceral; em cardiologia escrita em inglês, também pode indicar ventrículo esquerdo' },
   { acronym: 'QT', meaning: 'intervalo QT do eletrocardiograma, que representa a despolarização e a repolarização ventriculares' },
-  { acronym: 'RX', meaning: 'radiografia; em receituário, também pode indicar prescrição' },
+  { acronym: 'RX', meaning: 'radiografia' },
   { acronym: 'TR', meaning: 'temperatura retal' },
   { acronym: 'U-100', meaning: 'insulina com 100 unidades por mililitro' },
   { acronym: 'UC-II', meaning: 'colágeno tipo II não desnaturado' },

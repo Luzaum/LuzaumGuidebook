@@ -7,6 +7,8 @@ export type ConsultaVetHeroAccent =
   | 'emerald'
   | 'amber'
   | 'violet'
+  | 'indigo'
+  | 'pink'
   | 'orange'
   | 'cyan'
   | 'rose';
@@ -49,6 +51,18 @@ const ACCENT: Record<ConsultaVetHeroAccent, AccentDef> = {
     orb: 'bg-violet-500/[0.12]',
     gradient: 'bg-gradient-to-br from-card via-card to-violet-500/[0.05]',
   },
+  indigo: {
+    border: 'border-indigo-500/20',
+    ring: 'ring-indigo-500/10',
+    orb: 'bg-indigo-500/[0.12]',
+    gradient: 'bg-gradient-to-br from-card via-card to-indigo-500/[0.05]',
+  },
+  pink: {
+    border: 'border-pink-500/20',
+    ring: 'ring-pink-500/10',
+    orb: 'bg-pink-500/[0.12]',
+    gradient: 'bg-gradient-to-br from-card via-card to-pink-500/[0.05]',
+  },
   orange: {
     border: 'border-orange-500/22',
     ring: 'ring-orange-500/10',
@@ -75,6 +89,8 @@ const EYEBROW: Record<ConsultaVetHeroAccent, string> = {
   emerald: 'border-emerald-500/25 bg-emerald-500/10 text-emerald-700 dark:text-emerald-400',
   amber: 'border-amber-500/30 bg-amber-500/10 text-amber-800 dark:text-amber-300',
   violet: 'border-violet-500/25 bg-violet-500/10 text-violet-800 dark:text-violet-300',
+  indigo: 'border-indigo-500/25 bg-indigo-500/10 text-indigo-800 dark:text-indigo-300',
+  pink: 'border-pink-500/25 bg-pink-500/10 text-pink-800 dark:text-pink-300',
   orange: 'border-orange-500/30 bg-orange-500/10 text-orange-800 dark:text-orange-300',
   cyan: 'border-cyan-500/25 bg-cyan-500/10 text-cyan-800 dark:text-cyan-300',
   rose: 'border-rose-500/25 bg-rose-500/10 text-rose-800 dark:text-rose-300',

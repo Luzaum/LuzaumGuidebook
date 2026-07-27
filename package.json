@@ -15,6 +15,7 @@
     "validate:energia-vet-ui": "tsx scripts/validate-energia-vet-ui.ts",
     "lint:sql-comments": "node scripts/check-sql-comments.mjs",
     "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
+    "sync:consulta-consensos": "tsx scripts/sync-consulta-vet-consensos.ts",
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "seed:admin-users": "tsx scripts/seed-admin-users.ts",
     "import:energia-vet-data": "python scripts/import_genutri_dataset.py",

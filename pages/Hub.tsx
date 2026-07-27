@@ -1,4 +1,4 @@
-import React from 'react'
+﻿import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { modules, type Module } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
@@ -8,9 +8,9 @@ import { AuroraBackground } from '../components/ui/aurora-background'
 export function Hub() {
     const navigate = useNavigate()
 
-    const premiumIds = ['neurologia', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet', 'receituario-vet']
+    const premiumIds = ['neurologia', 'antibioticoterapia', 'transfusão-sanguinea', 'crivet']
     /** Módulos em construção / experimentais — fora das grelhas principal e premium. */
-    const developmentIds = ['peconhentos', 'plantao-vet', 'veteletrolitico', 'emergências-veterinarias']
+    const developmentIds: string[] = []
 
     const activeModules = modules
         .filter((m) => !developmentIds.includes(m.id))

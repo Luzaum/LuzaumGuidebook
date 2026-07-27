@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+﻿import React, { useMemo, useState } from 'react';
 import {
   ArrowRight,
   AlertTriangle,
@@ -69,7 +69,7 @@ const getCategoryLabel = (cat: ProtocolCategory | 'All'): string => {
     case 'CRI': return 'CRI (Infusões)';
     case 'Bolus': return 'Bolus / Dose Única';
     case 'Sedacao/Pre-medicacao': return 'Sedação / Pré-Anestesia';
-    case 'Emergencia': return 'Emergência';
+    case 'Emergência': return 'Emergência';
     default: return cat;
   }
 };

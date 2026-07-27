@@ -1,7 +1,7 @@
 import { MedicationDose, MedicationPresentation, MedicationSupplyChannel } from '../types/medication';
 
 const SUPPLY_CHANNELS: MedicationSupplyChannel[] = ['human_pharmacy', 'veterinary', 'compounded'];
-import { calculatePracticalEquivalent } from '../../receituario-vet/rxUiHelpers';
+import { calculatePracticalEquivalent, toPracticalPresentation } from './practicalEquivalent';
 
 const DOSE_SPECIES_LABELS = {
   dog: 'Cão',
@@ -194,15 +194,7 @@ export function resolvePresentationConversion(
 ): DoseConversionResult | null {
   if (!presentation) return null;
 
-  // Map to the internal helper format
-  const mappedPresentation = {
-    pharmaceutical_form: presentation.form,
-    value: presentation.concentrationValue,
-    value_unit: presentation.concentrationUnit,
-    // Note: older presentations might not have per_value, use 1 as default
-    per_value: 1, 
-    per_unit: presentation.form.toLowerCase().includes('comp') ? 'comprimido' : presentation.form.toLowerCase().includes('caps') ? 'cápsula' : 'mL'
-  };
+  const mappedPresentation = toPracticalPresentation(presentation);
 
   // If we have concentration like "20 mg / 5 mL", the old schema might have concentrationValue=20.
   // But actually the helper handles this if we provide the right mappings.
@@ -253,3 +245,4 @@ export function resolvePresentationConversion(
     note: mainRes.label
   };
 }
+

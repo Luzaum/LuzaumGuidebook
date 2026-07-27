@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+﻿import React, { useEffect, useState } from 'react'
 import { ThemeToggle } from './ThemeToggle'
 import { Menu, Search, X } from 'lucide-react'
 import { Button } from './ui/button'
@@ -72,12 +72,6 @@ export function Navbar({ onAppClick }: NavbarProps) {
             Guias
           </button>
           <button
-            onClick={() => handleNavLinkClick('emergências')}
-            className="text-foreground hover:text-primary transition-colors"
-          >
-            Emergências
-          </button>
-          <button
             onClick={() => handleNavLinkClick('calculadoras')}
             className="text-foreground hover:text-primary transition-colors"
           >
@@ -135,12 +129,6 @@ export function Navbar({ onAppClick }: NavbarProps) {
               className="text-foreground hover:text-primary p-2 transition-colors text-left"
             >
               Guias
-            </button>
-            <button
-              onClick={() => handleNavLinkClick('emergências')}
-              className="text-foreground hover:text-primary p-2 transition-colors text-left"
-            >
-              Emergências
             </button>
             <button
               onClick={() => handleNavLinkClick('calculadoras')}

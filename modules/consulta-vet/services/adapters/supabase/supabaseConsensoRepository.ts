@@ -13,6 +13,7 @@ import { canManageConsensusSharedDetails } from '../../consensusSharedDetailsPer
 import { localConsensoRepository } from '../local/localConsensoRepository';
 import { normalizeReferences, withTimeout } from './editorialSupabaseUtils';
 import { ensureOwnerUserId, parseError } from './editorialSupabaseUtils';
+import { getConsensusDocumentOverride } from '../../../utils/consensusDocumentOverrides';
 
 const TABLE = 'consensus_documents';
 const DETAILS_TABLE = 'consensus_document_details';
@@ -92,19 +93,34 @@ function normalizeStringArray(value: unknown): string[] {
   return value.map((item) => String(item || '').trim()).filter(Boolean);
 }
 
+function isLuishvet25User(user: unknown): boolean {
+  if (!user || typeof user !== 'object') return false;
+  const row = user as {
+    email?: string | null;
+    user_metadata?: Record<string, unknown> | null;
+  };
+  const email = String(row.email || '').trim().toLowerCase();
+  const metadata = row.user_metadata || {};
+  const login = String(metadata.login || metadata.username || '').trim().toLowerCase();
+
+  return email === 'luishvet25@gmail.com' || email === 'luishvet25@vetius.link' || login === 'luishvet25';
+}
+
 function mapRow(row: ConsensusRow): ConsensusRecord {
-  const fileUrl = String(row.file_url || '').trim();
+  const documentOverride = getConsensusDocumentOverride(row.slug);
+  const fileUrl = documentOverride?.fileUrl || String(row.file_url || '').trim();
+  const filePath = documentOverride?.filePath || row.file_path;
 
   return {
     id: row.id,
     slug: row.slug,
     title: row.title,
-    description: row.description,
+    description: documentOverride?.description || row.description,
     organization: row.organization,
-    year: row.year,
+    year: documentOverride?.year ?? row.year,
     category: row.category,
     species: row.species || 'both',
-    filePath: row.file_path,
+    filePath,
     fileUrl,
     isPublished: row.is_published,
     createdAt: row.created_at,
@@ -113,12 +129,12 @@ function mapRow(row: ConsensusRow): ConsensusRecord {
     sourceOrganization: row.organization || '',
     summary: row.description || '',
     pdfUrl: fileUrl,
-    pdfFileName: row.file_path.split('/').pop() || row.slug,
+    pdfFileName: documentOverride?.fileName || filePath.split('/').pop() || row.slug,
     relatedDiseaseSlugs: normalizeStringArray(row.related_disease_slugs),
     relatedMedicationSlugs: normalizeStringArray(row.related_medication_slugs),
     tags: [],
     source: 'supabase',
-    storagePath: row.file_path,
+    storagePath: filePath,
   };
 }
 
@@ -287,7 +303,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
       species: input.species,
       file_path: filePath,
       file_url: publicUrl || null,
-      is_published: input.isPublished ?? true,
+      is_published: isLuishvet25User(authData.user) ? true : input.isPublished ?? true,
     };
 
     const { data, error } = await supabase
@@ -306,6 +322,8 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
 
   async upsert(input: ConsensusUpsertInput): Promise<ConsensusRecord> {
     const userId = await ensureOwnerUserId();
+    const { data: authData } = await supabase.auth.getUser();
+    const forcePublished = isLuishvet25User(authData.user);
     const isNew = !input.id;
     const normalizedSlug = slugify(input.slug || input.title);
 
@@ -384,7 +402,7 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
       year: input.year ?? null,
       category: cleanNullableText(input.category),
       species: input.species,
-      is_published: input.isPublished ?? true,
+      is_published: forcePublished ? true : input.isPublished ?? true,
       related_disease_slugs: input.relatedDiseaseSlugs || [],
       related_medication_slugs: input.relatedMedicationSlugs || [],
       created_by: existingCreatedBy || userId,

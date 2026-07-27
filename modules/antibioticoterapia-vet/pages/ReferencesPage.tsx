@@ -153,12 +153,13 @@ export function ReferencesPage({
   const consumedFocusRef = useRef<string | null>(null)
 
   useEffect(() => {
-    if (!institutionalFocus || consumedFocusRef.current === institutionalFocus.sourceKey) return
+    if (!institutionalFocus || institutionalFocus.kind !== 'reference') return
+    if (consumedFocusRef.current === institutionalFocus.key) return
 
-    consumedFocusRef.current = institutionalFocus.sourceKey
+    consumedFocusRef.current = institutionalFocus.key
     const timer = window.setTimeout(() => {
       document
-        .getElementById(sourceAnchorId(institutionalFocus.sourceKey))
+        .getElementById(sourceAnchorId(institutionalFocus.key))
         ?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       onConsumedInstitutionalFocus()
     }, 120)
