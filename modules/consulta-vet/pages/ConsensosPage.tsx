@@ -5,7 +5,10 @@ import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { getEntityCategoryTheme } from '../components/shared/EntityCard';
 import { ConsensusRecord, ConsensusSpecies } from '../types/consenso';
 import { getConsensoRepository } from '../services/consensoRepository';
-import { getConsensusSymbol } from '../utils/consensusVisuals';
+import {
+  getConsensusEditorialStatus,
+  getConsensusSymbol,
+} from '../utils/consensusVisuals';
 import { cn } from '../../../lib/utils';
 
 type SpeciesFilter = ConsensusSpecies | '';
@@ -162,6 +165,7 @@ export function ConsensosPage() {
           {consensos.map((consenso) => {
             const theme = getEntityCategoryTheme(consenso.category);
             const symbol = getConsensusSymbol(consenso.slug);
+            const editorialStatus = getConsensusEditorialStatus(consenso.slug);
 
             return (
               <article
@@ -207,6 +211,16 @@ export function ConsensosPage() {
                   <span className="rounded-md border border-border bg-muted px-2 py-1 text-muted-foreground">
                     {formatSpecies(consenso.species)}
                   </span>
+                  {editorialStatus && (
+                    <span
+                      className={cn(
+                        'rounded-md border px-2 py-1 font-semibold',
+                        editorialStatus.className
+                      )}
+                    >
+                      {editorialStatus.label}
+                    </span>
+                  )}
                 </div>
 
                 <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground">

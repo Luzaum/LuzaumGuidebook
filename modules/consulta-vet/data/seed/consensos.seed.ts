@@ -1,3 +1,7 @@
+import { endocrinologiaConsensosSeed } from './consensos.endocrinologia.seed';
+import { cardiologiaConsensosSeed } from './consensos.cardiologia.seed';
+import { nefrologiaUrologiaConsensosSeed } from './consensos.nefrologia-urologia.seed';
+
 const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
   'icatcare-dtuif-felina-2025': {
     summary:
@@ -17,11 +21,11 @@ const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
   },
   'iris-drc-2023': {
     summary:
-      'O IRIS 2023 classifica a doença renal crônica somente depois de confirmar alteração renal persistente em paciente estável e adequadamente hidratado. O estágio usa creatinina e SDMA; depois o paciente é subestadiado por proteinúria e pressão arterial, porque ambos alteram prognóstico e conduta independentemente da creatinina.\n\nA classificação deve ser revista após estabilização, tratamento antiproteinúrico ou anti-hipertensivo e mudanças clínicas. Sarcopenia pode mascarar gravidade pela creatinina, enquanto SDMA discordante pode levar ao manejo pelo estágio mais alto.',
+      'O IRIS 2026 classifica a doença renal crônica somente depois de confirmar alteração renal persistente em paciente estável e adequadamente hidratado. O estágio usa creatinina e SDMA; depois o paciente é subestadiado por proteinúria e pressão arterial, porque ambos alteram prognóstico e conduta independentemente da creatinina.\n\nA revisão de 2026 preserva o raciocínio por estágios e atualiza recomendações terapêuticas, incluindo abordagem da anemia. A classificação deve ser revista após estabilização, tratamento antiproteinúrico ou anti-hipertensivo e mudanças clínicas. Sarcopenia pode mascarar gravidade pela creatinina, enquanto SDMA persistentemente discordante pode justificar manejo pelo estágio mais alto.',
     keyPointsText:
-      '- Creatinina (mg/dL), cão: estágio 1 <1,4; 2 = 1,4-2,8; 3 = 2,9-5,0; 4 >5,0. Gato: estágio 1 <1,6; 2 = 1,6-2,8; 3 = 2,9-5,0; 4 >5,0.\n- UPC: cães <0,2 não proteinúrico; 0,2-0,5 limítrofe; >0,5 proteinúrico. Gatos <0,2; 0,2-0,4; >0,4, respectivamente.\n- Pressão sistólica: <140 risco mínimo; 140-159 baixo; 160-179 moderado; >=180 alto risco.\n- Não estadiar definitivamente durante desidratação, obstrução, AKI ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão e complicações ao longo do tempo.',
+      '- Creatinina (mg/dL), cão: estágio 1 <1,4; 2 = 1,4-2,8; 3 = 2,9-5,0; 4 >5,0. Gato: estágio 1 <1,6; 2 = 1,6-2,8; 3 = 2,9-5,0; 4 >5,0.\n- SDMA (µg/dL), cão: <18; 18-35; 36-54; >54. Gato: <18; 18-25; 26-38; >38, para os estágios 1-4.\n- UPC: cães <0,2 não proteinúrico; 0,2-0,5 limítrofe; >0,5 proteinúrico. Gatos <0,2; 0,2-0,4; >0,4, respectivamente.\n- Pressão sistólica: <140 risco mínimo; 140-159 baixo; 160-179 moderado; >=180 alto risco.\n- Não estadiar definitivamente durante desidratação, obstrução, LRA ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão, fósforo, potássio, bicarbonato, hematócrito, peso e massa muscular.',
     practicalApplicationText:
-      'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por UPC e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo.',
+      'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por UPC e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo. A revisão de 2026 propõe considerar tratamento da anemia em cães com hematócrito <30% ou persistentemente entre 30-35%, e em gatos <25% ou persistentemente entre 25-28%, sempre após procurar causas corrigíveis e ponderar sinais clínicos.',
   },
   'acvim-cie-caes-2026': {
     summary:
@@ -34,6 +38,9 @@ const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
 }
 
 export const consensosSeed: Array<Record<string, any>> = [
+  ...cardiologiaConsensosSeed,
+  ...endocrinologiaConsensosSeed,
+  ...nefrologiaUrologiaConsensosSeed,
   {
     id: 'con-icatcare-dtuif-felina-2025',
     slug: 'icatcare-dtuif-felina-2025',
@@ -44,9 +51,9 @@ export const consensosSeed: Array<Record<string, any>> = [
     species: 'cat',
     category: 'nefrologia-urologia',
     tags: ['DTUIF', 'FIC', 'Obstrução uretral', 'Urolitíase', 'ITU', 'Manejo ambiental'],
-    pdfUrl: '/documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
-    pdfFileName: 'icatcare-dtuif-felina-2025.pdf',
-    storagePath: 'consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    pdfUrl: 'https://journals.sagepub.com/doi/10.1177/1098612X241309176',
+    pdfFileName: 'icatcare-dtuif-felina-2025',
+    storagePath: 'external/icatcare-dtuif-felina-2025',
     summary:
       'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
     articleSummaryRichText:
@@ -55,11 +62,25 @@ export const consensosSeed: Array<Record<string, any>> = [
       '• Obstrução uretral é emergência e deve ser diferenciada logo na triagem.\n• FIC é diagnóstico de exclusão; não há teste único confirmatório.\n• Urolitíase, ITU e neoplasia exigem investigação direcionada.\n• Hidratação, analgesia e manejo ambiental multimodal reduzem recorrência.',
     practicalApplicationText:
       'Confirmar se o gato elimina urina e palpar a bexiga antes de qualquer conduta. Nos não obstruídos, estruturar investigação por causa e plano de prevenção com água, recursos ambientais, dieta conforme diagnóstico e retorno programado.',
+    appNotesText:
+      'STATUS: VIGENTE — referência principal para sinais do trato urinário inferior felino.\n\nObstrução uretral é emergência. Antimicrobiano não é rotina em gatos jovens com sinais urinários sem cultura compatível; FIC exige analgesia e manejo ambiental multimodal.',
+    references: [
+      {
+        id: 'ref-icatcare-dtuif-2025',
+        citationText:
+          'iCatCare consensus guidelines on the diagnosis and management of lower urinary tract diseases in cats. J Feline Med Surg. 2025.',
+        sourceType: 'Guideline iCatCare',
+        url: 'https://doi.org/10.1177/1098612X241309176',
+        notes: 'Abordagem por causa, FIC, urolitíase, ITU e obstrução uretral.',
+        evidenceLevel: 'Consenso de especialistas',
+      },
+    ],
     adminNotesRichText:
       '<p><strong>Alerta editorial:</strong> DTUIF/FLUTD não deve ser usado como diagnóstico definitivo. Macho com bexiga distendida e tentativas improdutivas de urinar deve ser conduzido como emergência por suspeita de obstrução uretral.</p>',
     relatedDiseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],
     relatedMedicationSlugs: ['amoxicilina-clavulanato', 'sulfametoxazol-trimetoprima', 'pregabalina', 'maropitant'],
     isDemonstrative: false,
+    warningLabel: 'Vigente',
   },
   {
     id: 'con-1',
@@ -90,27 +111,41 @@ export const consensosSeed: Array<Record<string, any>> = [
   {
     id: 'con-2',
     slug: 'iris-drc-2023',
-    title: 'Estadiamento da doença renal crônica',
-    shortTitle: 'Estadiamento da DRC',
+    title: 'Doença renal crônica em cães e gatos',
+    shortTitle: 'DRC — IRIS 2026',
     sourceOrganization: 'IRIS',
-    year: 2023,
+    year: 2026,
     species: 'both',
     category: 'nefrologia-urologia',
-    tags: ['DRC', 'Renal', 'Estadiamento'],
-    pdfUrl: 'http://www.iris-kidney.com/pdf/IRIS_Staging_of_CKD_modified_2023.pdf',
-    pdfFileName: 'IRIS_Staging_of_CKD_modified_2023.pdf',
-    summary: 'Guia IRIS 2023 para estadiamento da doença renal crônica em cães e gatos, com foco em creatinina/SDMA, subestadiamento por proteinúria e pressão arterial, e monitorização clínica.',
+    tags: ['DRC', 'Estadiamento', 'SDMA', 'UPC', 'Pressão arterial', 'Anemia'],
+    pdfUrl: 'https://www.iris-kidney.com/iris-guidelines-1',
+    pdfFileName: 'iris-drc-2026',
+    storagePath: 'external/iris-drc-2026',
+    summary: 'Guideline IRIS 2026 para estadiamento e tratamento da doença renal crônica em cães e gatos, com creatinina/SDMA, UPC, pressão arterial e manejo por estágio.',
     articleSummaryRichText:
-      '<p>As diretrizes da IRIS para Doença Renal Crônica (DRC) baseiam-se na avaliação de creatinina sérica ou SDMA.</p>',
+      '<p>As diretrizes IRIS 2026 organizam a DRC por creatinina e SDMA, subestadiamento por UPC e pressão arterial e tratamento progressivo conforme estágio, complicações e qualidade de vida.</p>',
     keyPointsText:
       '• Estadiar somente DRC estável.\n• Usar creatinina e/ou SDMA persistentes.\n• Subestadiar por UPC e pressão arterial.\n• Revisar a classificação após mudanças clínicas ou tratamento.',
     practicalApplicationText:
       'Confirmar hidratação e estabilidade antes de estadiar; registrar creatinina, SDMA, urinálise, UPC e pressão arterial para definir acompanhamento e prioridades terapêuticas.',
+    appNotesText:
+      'STATUS: VIGENTE — referência principal para DRC em cães e gatos.\n\nNão estadiar definitivamente um paciente desidratado, obstruído ou com lesão renal aguda. A terapia deve ser guiada pelo estágio, subestágios e complicações, não apenas pela creatinina.',
+    references: [
+      {
+        id: 'ref-iris-drc-2026',
+        citationText:
+          'International Renal Interest Society. IRIS Staging of CKD and Treatment Recommendations for CKD in Dogs and Cats. 2026.',
+        sourceType: 'Guideline',
+        url: 'https://www.iris-kidney.com/iris-guidelines-1',
+        notes: 'Estadiamento, subestadiamento e recomendações terapêuticas atualizadas.',
+        evidenceLevel: 'Consenso de especialistas',
+      },
+    ],
     adminNotesRichText:
       '<p><strong>Alerta editorial:</strong> Não classifique DRC de forma definitiva em paciente desidratado, instável ou com injúria renal aguda sem reavaliação. Proteinúria e hipertensão mudam conduta mesmo dentro do mesmo estágio.</p>',
-    relatedDiseaseSlugs: ['doenca-renal-cronica'],
-    isDemonstrative: true,
-    warningLabel: 'Demonstração',
+    relatedDiseaseSlugs: ['doenca-renal-cronica-caes-gatos'],
+    isDemonstrative: false,
+    warningLabel: 'Vigente',
   },
   {
     id: 'con-acvim-cie-caes-2026',

@@ -1,8 +1,20 @@
 ﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { ChevronRight, LoaderCircle, Pill, Save, Share2, SquarePen, Stethoscope, X } from 'lucide-react';
+import {
+  ChevronRight,
+  ExternalLink,
+  FileText,
+  LoaderCircle,
+  Pill,
+  Save,
+  Share2,
+  SquarePen,
+  Stethoscope,
+  X,
+} from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { PdfViewerShell } from '../components/consensus/PdfViewerShell';
+import { ConsensusStructuredText } from '../components/consensus/ConsensusStructuredText';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
@@ -17,8 +29,11 @@ import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { formatConsensusSpecies } from '../utils/navigation';
-import { getConsensusAccent, getConsensusSymbol } from '../utils/consensusVisuals';
-import { sanitizeHTML } from '../../../utils/sanitize';
+import {
+  getConsensusAccent,
+  getConsensusEditorialStatus,
+  getConsensusSymbol,
+} from '../utils/consensusVisuals';
 import { cn } from '../../../lib/utils';
 
 const UI_TEXT = {
@@ -72,28 +87,12 @@ function toSharedForm(details: ConsensusDocumentDetails | null): SharedDetailsFo
   };
 }
 
+function isPdfDocumentUrl(url: string): boolean {
+  return /\.pdf(?:$|[?#])/i.test(String(url || '').trim());
+}
+
 function hasText(value: string | null | undefined): boolean {
   return Boolean(String(value || '').trim());
-}
-
-function hasHtmlTags(value: string): boolean {
-  return /<\/?[a-z][\s\S]*>/i.test(value);
-}
-
-function SharedBlockText({ text }: { text: string | null | undefined }) {
-  const parsed = String(text || '').trim();
-  if (!parsed) return null;
-
-  if (hasHtmlTags(parsed)) {
-    return (
-      <div
-        className="prose prose-slate max-w-none text-sm leading-relaxed text-foreground/90 dark:prose-invert prose-p:my-0 prose-p:leading-relaxed prose-strong:text-foreground"
-        dangerouslySetInnerHTML={{ __html: sanitizeHTML(parsed) }}
-      />
-    );
-  }
-
-  return <p className="whitespace-pre-line text-sm leading-relaxed text-foreground/90">{parsed}</p>;
 }
 
 export function ConsensoDetailPage() {
@@ -343,6 +342,8 @@ export function ConsensoDetailPage() {
 
   const categoryTheme = getEntityCategoryTheme(consenso.category);
   const consensusSymbol = getConsensusSymbol(consenso.slug);
+  const editorialStatus = getConsensusEditorialStatus(consenso.slug);
+  const hasPdfDocument = isPdfDocumentUrl(consenso.fileUrl);
 
   return (
     <>
@@ -384,6 +385,16 @@ export function ConsensoDetailPage() {
                   <span className="rounded-md border border-border bg-muted px-2 py-1">
                     {formatConsensusSpecies(consenso.species)}
                   </span>
+                  {editorialStatus && (
+                    <span
+                      className={cn(
+                        'rounded-md border px-2 py-1 font-semibold',
+                        editorialStatus.className
+                      )}
+                    >
+                      {editorialStatus.label}
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -414,12 +425,14 @@ export function ConsensoDetailPage() {
           </div>
         </ConsultaVetSurface>
 
-        <PdfViewerShell
-          url={consenso.fileUrl}
-          title={consenso.title}
-          initialPage={resumeState?.pageNumber || 1}
-          onPageChange={handlePdfPageChange}
-        />
+        {hasPdfDocument && (
+          <PdfViewerShell
+            url={consenso.fileUrl}
+            title={consenso.title}
+            initialPage={resumeState?.pageNumber || 1}
+            onPageChange={handlePdfPageChange}
+          />
+        )}
 
         {isDetailsLoading && (
           <section className="rounded-2xl border border-border bg-card p-5 md:p-6">
@@ -435,12 +448,22 @@ export function ConsensoDetailPage() {
 
         {!isDetailsLoading && !detailsError && sharedBlocks.length > 0 && (
           <section className="rounded-2xl border border-border bg-card p-5 md:p-6">
-            <h2 className="mb-5 text-xl font-semibold tracking-tight text-foreground">{UI_TEXT.sharedContentTitle}</h2>
+            <div className="mb-5">
+              <h2 className="text-xl font-semibold tracking-tight text-foreground">
+                {hasPdfDocument ? UI_TEXT.sharedContentTitle : 'Visualização clínica no ConsultaVet'}
+              </h2>
+              {!hasPdfDocument && (
+                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                  Conteúdo estruturado para leitura direta no app, com classificações e faixas
+                  apresentadas em tabelas quando esse formato facilita a consulta.
+                </p>
+              )}
+            </div>
             <div className="space-y-6">
               {sharedBlocks.map((block) => (
                 <article key={block.key} className="space-y-2 border-b border-border/70 pb-5 last:border-b-0 last:pb-0">
                   <h3 className="text-base font-semibold text-foreground">{block.title}</h3>
-                  <SharedBlockText text={block.text} />
+                  <ConsensusStructuredText text={block.text} />
                 </article>
               ))}
             </div>
@@ -452,6 +475,32 @@ export function ConsensoDetailPage() {
             references={sharedDetails.references}
             title={UI_TEXT.sharedReferencesTitle}
           />
+        )}
+
+        {!hasPdfDocument && (
+          <section className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 md:flex-row md:items-center md:justify-between md:p-6">
+            <div className="flex items-start gap-3">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-700 dark:text-violet-300">
+                <FileText className="h-5 w-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 className="font-semibold text-foreground">Publicação original e DOI</h2>
+                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  A visualização clínica completa está disponível acima. Use a fonte oficial para
+                  consultar o documento original, anexos e atualizações do editor.
+                </p>
+              </div>
+            </div>
+            <a
+              href={consenso.fileUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              Abrir fonte oficial
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
+          </section>
         )}
 
         {(relatedDiseases.length > 0 || relatedMedications.length > 0) && (

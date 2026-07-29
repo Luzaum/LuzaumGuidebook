@@ -573,7 +573,19 @@ export class SupabaseConsensoRepository implements ConsensoRepository {
         throw new Error(`Falha ao carregar detalhes do consenso: ${parseError(error)}`);
       }
 
-      if (!data) return null;
+      if (!data) {
+        const { data: consensusRow } = await supabase
+          .from(TABLE)
+          .select('slug')
+          .eq('id', consensusDocumentId)
+          .maybeSingle();
+        const slug = String((consensusRow as { slug?: string } | null)?.slug || '').trim();
+        if (!slug) return null;
+
+        const localConsensus = await localConsensoRepository.getBySlug(slug);
+        if (!localConsensus) return null;
+        return localConsensoRepository.getSharedDetailsByConsensusId(localConsensus.id);
+      }
       return mapDetailsRow(data as ConsensusDetailsRow);
     } catch {
       return localConsensoRepository.getSharedDetailsByConsensusId(consensusDocumentId);
