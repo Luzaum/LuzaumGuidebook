@@ -41,15 +41,15 @@ export function SectionAnchorNav({ sections, className, onActiveChange }: Sectio
     const element = document.getElementById(id);
     if (!element) return;
 
-    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    element.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
     setActiveId(id);
   };
 
   return (
-    <nav className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto xl:block', className)}>
-      <div className="rounded-[24px] border border-border/80 bg-card/90 px-4 py-4 shadow-sm">
-        <h4 className="mb-4 px-2 text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground">Índice</h4>
-        <ul className="space-y-1 border-l border-border/80">
+    <nav aria-label="Índice desta doença" className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto xl:block', className)}>
+      <div className="border-l border-border/80 px-3 py-2">
+        <h2 className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Índice desta doença</h2>
+        <ul className="space-y-0.5">
           {sections.map((section) => {
             const activeDefault = 'border-primary bg-primary/[0.06] font-semibold text-primary';
             const activeClasses = section.activeClassName || activeDefault;
@@ -59,8 +59,8 @@ export function SectionAnchorNav({ sections, className, onActiveChange }: Sectio
                   href={`#${section.id}`}
                   onClick={(event) => handleClick(event, section.id)}
                   className={cn(
-                    'block -ml-px border-l-2 px-4 py-2 text-sm leading-6 transition-all',
-                    activeId === section.id ? activeClasses : 'border-transparent text-muted-foreground hover:border-border/80 hover:text-foreground'
+                    'block min-h-10 rounded-sm border-l-2 px-3 py-2 text-sm leading-6 transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    activeId === section.id ? activeClasses : 'border-transparent text-muted-foreground hover:bg-muted/40 hover:text-foreground'
                   )}
                 >
                   {section.label}

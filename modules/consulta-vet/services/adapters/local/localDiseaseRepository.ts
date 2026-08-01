@@ -3,12 +3,13 @@ import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
 import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../../data/publicCatalogCardStubs';
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
+import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
 import { filterPublicDiseases, isPublicDiseaseSlug } from '../../../constants/publicCatalog';
 
 export class LocalDiseaseRepository implements DiseaseRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
     if (!options?.includeDrafts) {
-      return [...PUBLIC_CATALOG_DISEASE_CARD_STUBS];
+      return PUBLIC_CATALOG_DISEASE_CARD_STUBS.map(applyDiseaseOverviewOverride);
     }
     const diseasesSeed = await loadDiseasesEditorialSeed();
     return [...diseasesSeed];

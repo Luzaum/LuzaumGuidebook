@@ -23,7 +23,7 @@ const UI_TEXT = {
   subtitle: 'Peso, espécie, regime e apresentação em um cálculo só',
   species: 'Espécie',
   weight: 'Peso (kg)',
-  doseBase: 'Regime clínico',
+  doseBase: 'Doses pré-definidas',
   presentation: 'Apresentação',
   concentration: 'Concentração',
   mgOnly: 'Apenas em mg',
@@ -31,7 +31,7 @@ const UI_TEXT = {
   safeConversion: 'Conversão pela apresentação',
   results: 'Resultado do cálculo',
   totalDose: 'Dose total',
-  explicitSpecies: 'Cada dose precisa ter espécie explícita e representar um único regime clínico.',
+  explicitSpecies: 'Cada dose precisa ter espécie explícita e representar uma única dose pré-definida.',
   mgFallback: 'Dose calculada em mg',
 } as const;
 

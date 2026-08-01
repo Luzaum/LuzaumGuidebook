@@ -1,5 +1,6 @@
 import { supabase } from '@/src/lib/supabaseClient';
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
+import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
 import { DiseaseRecord } from '../../../types/disease';
 import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
@@ -155,7 +156,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
       const merged = mergeBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      const result = filterPublicDiseases(merged, includeDrafts);
+      const result = filterPublicDiseases(merged, includeDrafts).map(applyDiseaseOverviewOverride);
       
       this.listCache = {
         data: result,

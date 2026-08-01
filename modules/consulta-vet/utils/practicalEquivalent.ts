@@ -30,7 +30,9 @@ const UNIT_CONVERSION: Record<string, number> = {
 };
 
 function normalizeUnit(value: string): string {
-  return String(value || '').trim().toLowerCase().replace('µg', 'mcg');
+  const normalized = String(value || '').trim().toLowerCase().replace('µg', 'mcg');
+  const canonical = normalized.match(/^(mcg|mg|g|ui)\b/);
+  return canonical?.[1] || normalized;
 }
 
 function conversionFactor(fromUnit: string, toUnit: string): number | null {
@@ -98,15 +100,24 @@ export function calculatePracticalEquivalent(input: PracticalEquivalentInput): P
 }
 
 export function toPracticalPresentation(presentation: MedicationPresentation) {
+  const rawConcentrationUnit = String(presentation.concentrationUnit || '').trim();
+  const slashIndex = rawConcentrationUnit.indexOf('/');
+  const denominator = slashIndex >= 0 ? rawConcentrationUnit.slice(slashIndex + 1).trim() : '';
+  const denominatorMatch = denominator.match(/^(\d+(?:[.,]\d+)?)?\s*(.*)$/);
+  const parsedPerValue = Number(String(denominatorMatch?.[1] || '1').replace(',', '.'));
+  const parsedPerUnit = String(denominatorMatch?.[2] || denominator).trim();
+
   return {
     pharmaceutical_form: presentation.form,
     value: presentation.concentrationValue,
     value_unit: presentation.concentrationUnit,
-    per_value: 1,
-    per_unit: presentation.form.toLowerCase().includes('comp')
+    per_value: Number.isFinite(parsedPerValue) && parsedPerValue > 0 ? parsedPerValue : 1,
+    per_unit: parsedPerUnit || (presentation.form.toLowerCase().includes('comp')
       ? 'comprimido'
       : presentation.form.toLowerCase().includes('caps')
         ? 'cápsula'
-        : 'mL',
+        : presentation.form.toLowerCase().includes('gota')
+          ? 'gota'
+          : 'mL'),
   };
 }

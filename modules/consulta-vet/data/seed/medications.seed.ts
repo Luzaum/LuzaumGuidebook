@@ -334,7 +334,7 @@ export const medicationsSeed: MedicationRecord[] = [
       '<p><strong>Felinos:</strong> usar <strong>prednisolona</strong> (não prednisona) por melhor biodisponibilidade oral. Ajustar cautela em obesidade (massa magra).</p>' +
       '<p><strong>Hepatopatia:</strong> prednisolona evita dependência de ativação hepática da prednisona.</p>' +
       '<p><strong>PK felina (literatura):</strong> exposição oral à prednisolona muito superior à da prednisona — reforça escolha clínica.</p>' +
-      '<p><strong>Calculadora:</strong> selecione regime clínico + apresentação; o motor cruza mg/kg com concentração para volume/comprimidos quando aplicável.</p>' +
+      '<p><strong>Calculadora:</strong> selecione dose pré-definida + apresentação; o motor cruza a unidade da dose com a concentração quando aplicável.</p>' +
       '<p><strong>Desmame:</strong> planejar quando uso ≥2 semanas, dose alta (&gt;1 mg/kg/dia de prednisolona ou equivalente), uso imunossupressor ou paciente frágil. Reduzir apenas se a doença de base estiver controlada; em recrudescência, voltar à última dose efetiva.</p>' +
       '<p><strong>Depot e tópicos:</strong> fórmulações injetáveis de depósito não permitem ajuste fino; glicocorticoides orais, injetáveis, otológicos, oftálmicos e dermatológicos podem contribuir para supressão HHA conforme potência, dose, duração e absorção.</p>',
     adminNotesText:

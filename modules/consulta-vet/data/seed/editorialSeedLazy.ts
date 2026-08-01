@@ -1,5 +1,6 @@
 import type { DiseaseRecord } from '../../types/disease';
 import type { MedicationRecord } from '../../types/medication';
+import { applyDiseaseOverviewOverride } from './diseaseOverviewOverrides';
 
 let diseasesSeedPromise: Promise<DiseaseRecord[]> | null = null;
 let medicationsSeedPromise: Promise<MedicationRecord[]> | null = null;
@@ -9,7 +10,7 @@ let medicationsSeedPromise: Promise<MedicationRecord[]> | null = null;
  */
 export function loadDiseasesEditorialSeed(): Promise<DiseaseRecord[]> {
   if (!diseasesSeedPromise) {
-    diseasesSeedPromise = import('./diseases.seed').then((m) => m.diseasesSeed);
+    diseasesSeedPromise = import('./diseases.seed').then((m) => m.diseasesSeed.map(applyDiseaseOverviewOverride));
   }
   return diseasesSeedPromise;
 }

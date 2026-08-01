@@ -312,67 +312,67 @@ export function DiseaseDetailPage() {
             {(() => {
               const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
                 endocrinologia: {
-                  gradient: 'bg-gradient-to-br from-purple-900/95 via-indigo-950/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-purple-900 via-indigo-950 to-slate-950',
                   border: 'border-purple-500/30 dark:border-purple-400/20',
                   glow: 'bg-purple-500/12',
                 },
                 respiratorio: {
-                  gradient: 'bg-gradient-to-br from-sky-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-sky-900 via-slate-950 to-slate-950',
                   border: 'border-sky-500/30 dark:border-sky-400/20',
                   glow: 'bg-sky-500/12',
                 },
                 cardiologia: {
-                  gradient: 'bg-gradient-to-br from-rose-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-rose-900 via-rose-950 to-slate-950',
                   border: 'border-rose-500/30 dark:border-rose-400/20',
                   glow: 'bg-rose-500/12',
                 },
                 infecciosas: {
-                  gradient: 'bg-gradient-to-br from-emerald-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-emerald-900 via-slate-950 to-slate-950',
                   border: 'border-emerald-500/30 dark:border-emerald-400/20',
                   glow: 'bg-emerald-500/12',
                 },
                 infectologia: {
-                  gradient: 'bg-gradient-to-br from-emerald-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-emerald-900 via-slate-950 to-slate-950',
                   border: 'border-emerald-500/30 dark:border-emerald-400/20',
                   glow: 'bg-emerald-500/12',
                 },
                 'nefrologia-urologia': {
-                  gradient: 'bg-gradient-to-br from-amber-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-amber-900 via-slate-950 to-slate-950',
                   border: 'border-amber-500/30 dark:border-amber-400/20',
                   glow: 'bg-amber-500/12',
                 },
                 dermatologia: {
-                  gradient: 'bg-gradient-to-br from-pink-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-pink-900 via-slate-950 to-slate-950',
                   border: 'border-pink-500/30 dark:border-pink-400/20',
                   glow: 'bg-pink-500/12',
                 },
                 neurologia: {
-                  gradient: 'bg-gradient-to-br from-indigo-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-indigo-900 via-slate-950 to-slate-950',
                   border: 'border-indigo-500/30 dark:border-indigo-400/20',
                   glow: 'bg-indigo-500/12',
                 },
                 oncologia: {
-                  gradient: 'bg-gradient-to-br from-yellow-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-yellow-900 via-slate-950 to-slate-950',
                   border: 'border-yellow-500/30 dark:border-yellow-400/20',
                   glow: 'bg-yellow-500/12',
                 },
                 'reproducao-neonatologia': {
-                  gradient: 'bg-gradient-to-br from-fuchsia-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-fuchsia-900 via-slate-950 to-slate-950',
                   border: 'border-fuchsia-500/30 dark:border-fuchsia-400/20',
                   glow: 'bg-fuchsia-500/12',
                 },
                 ortopedia: {
-                  gradient: 'bg-gradient-to-br from-teal-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-teal-900 via-slate-950 to-slate-950',
                   border: 'border-teal-500/30 dark:border-teal-400/20',
                   glow: 'bg-teal-500/12',
                 },
                 imunologia: {
-                  gradient: 'bg-gradient-to-br from-violet-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-violet-900 via-slate-950 to-slate-950',
                   border: 'border-violet-500/30 dark:border-violet-400/20',
                   glow: 'bg-violet-500/12',
                 },
                 odontologia: {
-                  gradient: 'bg-gradient-to-br from-cyan-900/95 via-slate-900/98 to-slate-950/98',
+                  gradient: 'bg-gradient-to-br from-cyan-900 via-slate-950 to-slate-950',
                   border: 'border-cyan-500/30 dark:border-cyan-400/20',
                   glow: 'bg-cyan-500/12',
                 },

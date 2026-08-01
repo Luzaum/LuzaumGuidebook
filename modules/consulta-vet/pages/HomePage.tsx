@@ -208,12 +208,19 @@ export function HomePage() {
   }, [consensoRepository, diseaseRepository, medicationRepository, deferredQuery]);
 
   const shortcuts = [
-    { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Vis\u00e3o geral do m\u00f3dulo', accent: 'sky' as const },
+    { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Visão geral do módulo', accent: 'sky' as const },
+    {
+      to: '/consulta-vet/receituario',
+      label: 'Receituário',
+      icon: FileText,
+      body: 'Receitas prontas e termos editáveis em A4',
+      accent: 'emerald' as const,
+    },
     {
       to: '/consulta-vet/doencas',
       label: UI_TEXT.diseaseLabel,
       icon: Stethoscope,
-      body: 'Bases editoriais e navega\u00e7\u00e3o cl\u00ednica',
+      body: 'Bases editoriais e navegação clínica',
       accent: 'emerald' as const,
     },
     {

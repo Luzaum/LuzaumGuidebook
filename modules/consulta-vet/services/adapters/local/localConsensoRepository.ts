@@ -6,28 +6,33 @@ import {
   UpsertConsensusDocumentDetailsInput,
 } from '../../../types/consenso';
 import { ConsensusUpsertInput } from '../../../types/editorial';
+import { getConsensusDocumentOverride } from '../../../utils/consensusDocumentOverrides';
 import { ConsensoRepository } from '../../repositories/consenso.repository';
 
 function mapSeedRecord(record: any): ConsensusRecord {
+  const documentOverride = getConsensusDocumentOverride(String(record.slug));
+
   return {
     id: String(record.id),
     slug: String(record.slug),
     title: String(record.title),
-    description: record.summary ?? null,
+    description: documentOverride?.description ?? record.summary ?? null,
     organization: record.sourceOrganization ?? null,
-    year: typeof record.year === 'number' ? record.year : null,
+    year:
+      documentOverride?.year ?? (typeof record.year === 'number' ? record.year : null),
     category: record.category ?? null,
     species: record.species === 'cat' || record.species === 'both' ? record.species : 'dog',
-    filePath: record.storagePath ?? record.pdfFileName ?? record.slug,
-    fileUrl: String(record.pdfUrl ?? ''),
+    filePath:
+      documentOverride?.filePath ?? record.storagePath ?? record.pdfFileName ?? record.slug,
+    fileUrl: documentOverride?.fileUrl ?? String(record.pdfUrl ?? ''),
     isPublished: true,
     createdAt: record.updatedAt ?? new Date(0).toISOString(),
     updatedAt: record.updatedAt ?? new Date(0).toISOString(),
     shortTitle: record.shortTitle,
     sourceOrganization: record.sourceOrganization,
     tags: Array.isArray(record.tags) ? record.tags : [],
-    pdfUrl: record.pdfUrl,
-    pdfFileName: record.pdfFileName,
+    pdfUrl: documentOverride?.fileUrl ?? record.pdfUrl,
+    pdfFileName: documentOverride?.fileName ?? record.pdfFileName,
     summary: record.summary,
     articleSummaryRichText: record.articleSummaryRichText,
     adminNotesRichText: record.adminNotesRichText,
@@ -36,7 +41,7 @@ function mapSeedRecord(record: any): ConsensusRecord {
     isDemonstrative: record.isDemonstrative,
     warningLabel: record.warningLabel,
     source: 'seed',
-    storagePath: record.storagePath,
+    storagePath: documentOverride?.filePath ?? record.storagePath,
     keyPointsText: record.keyPointsText ?? null,
     practicalApplicationText: record.practicalApplicationText ?? null,
     appNotesText: record.appNotesText ?? null,

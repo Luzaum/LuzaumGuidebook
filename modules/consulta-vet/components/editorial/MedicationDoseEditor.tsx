@@ -73,7 +73,7 @@ export function MedicationDoseEditor({ value, onChange, presentationOptions }: M
             <input
               value={dose.indication}
               onChange={(e) => updateField(index, 'indication', e.target.value)}
-              placeholder="Indicação / regime clínico"
+              placeholder="Indicação / dose pré-definida"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 xl:col-span-2"
             />
             <select

@@ -2362,3 +2362,78 @@ input[type="range"]:focus::-moz-range-thumb {
     transform: none;
   }
 }
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  body.receituario-printing {
+    background: #ffffff !important;
+  }
+
+  body.receituario-printing * {
+    visibility: hidden !important;
+  }
+
+  body.receituario-printing .receituario-a4-wrapper,
+  body.receituario-printing .receituario-a4-wrapper * {
+    visibility: visible !important;
+  }
+
+  body.receituario-printing .receituario-a4-wrapper {
+    position: absolute !important;
+    inset: 0 auto auto 0 !important;
+    width: 210mm !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    background: #ffffff !important;
+  }
+
+  body.receituario-printing .receituario-a4-sheet {
+    width: 210mm !important;
+    height: 297mm !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  body.receituario-printing .receituario-a4-sheet:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}
+
+/* A folha mantém a geometria A4; o zoom serve apenas para caber no painel de prévia. */
+.receituario-a4-sheet {
+  zoom: 0.72;
+}
+
+body.receituario-editor-open .app-mobile-bottom-nav {
+  display: none !important;
+}
+
+body.receituario-editor-open .app-main-header {
+  visibility: hidden;
+}
+
+@media (min-width: 1400px) {
+  .receituario-a4-sheet {
+    zoom: 0.86;
+  }
+}
+
+@media (max-width: 767px) {
+  .receituario-a4-sheet {
+    zoom: 0.42;
+  }
+}
+
+@media print {
+  .receituario-a4-sheet {
+    zoom: 1;
+  }
+}

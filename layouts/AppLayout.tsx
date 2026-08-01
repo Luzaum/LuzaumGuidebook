@@ -440,7 +440,7 @@ export function AppLayout() {
         }`}
       >
         {/* Header */}
-        <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm shrink-0">
+          <header className="app-main-header sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm shrink-0">
           <div className="flex items-center justify-between px-4 py-2 h-14">
             
             {/* Left Side: Toggle and Branding */}
@@ -497,7 +497,7 @@ export function AppLayout() {
 
         {/* Mobile Bottom Navigation Bar */}
         {showGlobalMobileNav && (
-          <div className="fixed bottom-0 left-0 right-0 z-40 flex min-h-16 h-[calc(4rem+env(safe-area-inset-bottom,0px))] items-start justify-around border-t border-slate-850 bg-[#05060b] px-2 pb-[env(safe-area-inset-bottom,0px)] pt-2 shadow-lg">
+          <div className="app-mobile-bottom-nav fixed bottom-0 left-0 right-0 z-40 flex min-h-16 h-[calc(4rem+env(safe-area-inset-bottom,0px))] items-start justify-around border-t border-slate-850 bg-[#05060b] px-2 pb-[env(safe-area-inset-bottom,0px)] pt-2 shadow-lg">
             {/* Hub */}
             <button
               onClick={() => navigate('/hub')}

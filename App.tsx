@@ -1,4 +1,4 @@
-﻿import React, { Suspense, lazy, useEffect } from 'react'
+import React, { Suspense, lazy, useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
 import { AppLayout } from './layouts/AppLayout'
@@ -53,6 +53,9 @@ const ConsultaVetClinicalQuickGuidesPage = lazy(() =>
 const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
   import('./modules/consulta-vet/pages/ClinicalQuickGuideDetailPage').then((m) => ({ default: m.ClinicalQuickGuideDetailPage }))
 )
+const ConsultaVetReceituarioPage = lazy(() =>
+  import('./modules/consulta-vet/pages/ReceituarioPage').then((m) => ({ default: m.ReceituarioPage }))
+)
 
 const Login = lazy(() => import('./src/routes/Login'))
 const Signup = lazy(() => import('./src/routes/Signup'))
@@ -101,6 +104,7 @@ const appRoutes = (
     <Route path="/neurologia/*" element={<NeurologiaPage />} />
     <Route path="/consulta-vet" element={<ConsultaVetShell />}>
       <Route index element={<ConsultaVetHomePage />} />
+      <Route path="receituario" element={<ConsultaVetReceituarioPage />} />
       <Route path="doencas" element={<ConsultaVetDiseasesPage />} />
       <Route path="doencas/:slug" element={<ConsultaVetDiseaseDetailPage />} />
       <Route path="medicamentos" element={<ConsultaVetMedicationsPage />} />

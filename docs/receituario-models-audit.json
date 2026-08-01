@@ -1,0 +1,1038 @@
+{
+  "summary": {
+    "generatedAt": "2026-08-01T17:02:48.169Z",
+    "sources": [
+      "Código: modules/consulta-vet/data/receituarioSeed.ts",
+      "Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json"
+    ],
+    "supabaseReceituario": "A migration 20260801120000 ainda não está aplicada no projeto remoto; portanto não havia modelos remotos para somar à auditoria.",
+    "total": 19,
+    "bySpecies": {
+      "ambos": 15,
+      "cão": 3,
+      "gato": 1
+    },
+    "byCategory": {
+      "Cardiologia": 1,
+      "Cuidados gerais": 1,
+      "Dermatologia": 1,
+      "Dor e pós-operatório": 1,
+      "Emergência": 1,
+      "Endocrinologia": 2,
+      "Gastroenterologia": 2,
+      "Infectologia": 1,
+      "Nefrologia e urologia": 2,
+      "Neurologia": 1,
+      "Oftalmologia": 1,
+      "Respiratório": 1,
+      "Termos": 4
+    },
+    "byType": {
+      "recipe": 15,
+      "term": 4
+    },
+    "incomplete": 12,
+    "withoutSource": 15,
+    "withUnlinkedMedication": 15,
+    "withGenericRecommendations": 15
+  },
+  "models": [
+    {
+      "templateId": "seed-gastrite-aguda",
+      "title": "Gastrite Aguda / Gastroenterite",
+      "condition": "Gastrite Aguda / Gastroenterite",
+      "category": "Gastroenterologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "OMEPRAZOL 10mg / 20mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "ONDANSETRONA 4mg / 8mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SUCRALFATO 500mg / 1g",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SIMBIÓTICO / PROBIÓTICO VETERINÁRIO",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-diarreia-aguda",
+      "title": "Diarreia Aguda e Controle Digestivo",
+      "condition": "Diarreia Aguda e Controle Digestivo",
+      "category": "Gastroenterologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "METRONIDAZOL 250mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "PASTA ABSORVENTE (Zeolita / Caolim-Pectina)",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "PROBIÓTICO VETERINÁRIO",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-drc-suporte",
+      "title": "Doença Renal Crônica (Manejo de Suporte)",
+      "condition": "Doença Renal Crônica (Manejo de Suporte)",
+      "category": "Nefrologia e urologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "QUELANTE DE FÓSFORO (Hidróxido de Alumínio / Carbonato de Cálcio / Chitosan)",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "BENAZEPRIL 5mg / 20mg",
+          "medicationId": "med-benazepril",
+          "activeIngredient": "Cloridrato de benazepril"
+        },
+        {
+          "enteredName": "OMEPRAZOL 10mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SUPLEMENTO ÔMEGA 3 VETERINÁRIO",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-benza-cp",
+          "label": "Comprimido de benazepril (humano - exemplo)"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-benza-dog",
+          "value": 0.25,
+          "max": 0.5,
+          "unit": "mg/kg",
+          "indication": "Cardiologia / nefrologia — faixa usual (extra-label)"
+        },
+        {
+          "id": "dose-benza-cat",
+          "value": 0.5,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Cardiologia / nefrologia — faixa usual (extra-label)"
+        }
+      ],
+      "doseSources": [],
+      "precautions": [
+        "Creatinina e eletrólitos 5–7 dias após início ou mudança de dose; maior cautela com diuréticos, AINEs e baixo débito.",
+        "Gravidez/lactação: evitar salvo benefício claro.",
+        "Dupla bloqueio RAAS (IECA + BRA + espironolactona): só com critério especializado e monitorização."
+      ],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-cistite-infecciosa",
+      "title": "Cistite Bacteriana / Infecção Urinária",
+      "condition": "Cistite Bacteriana / Infecção Urinária",
+      "category": "Nefrologia e urologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "AMOXICILINA COM CLAVULANATO DE POTÁSSIO 50mg / 250mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "MELOXICAM 0,5mg / 1mg / 2mg",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-diabetes-mellitus",
+      "title": "Diabetes Mellitus - Protocolo de Suporte",
+      "condition": "Diabetes Mellitus - Protocolo de Suporte",
+      "category": "Endocrinologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "INSULINA (NPH / Glargina / Caninsulina)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Manter horários fixos de alimentação e aplicação de insulina.",
+        "* Em caso de tremores, fraqueza, prostração intensa ou sinais de hipoglicemia, oferecer imediatamente solução de glicose/mel na gengiva e contactar a equipe de emergência.",
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "needs-review"
+    },
+    {
+      "templateId": "seed-hipotireoidismo",
+      "title": "Hipotireoidismo Canino",
+      "condition": "Hipotireoidismo Canino",
+      "category": "Endocrinologia",
+      "species": [
+        "cão"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "LEVOTIROXINA SÓDICA (0,1mg / 0,2mg / 0,4mg / 0,7mg)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Agendar dosagem de T4 total após 4 a 8 semanas para ajuste de dose.",
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-icc-canina",
+      "title": "Insuficiência Cardíaca Congestiva (ICC)",
+      "condition": "Insuficiência Cardíaca Congestiva (ICC)",
+      "category": "Cardiologia",
+      "species": [
+        "cão"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "PIMOBENDAN 1,25mg / 2,5mg / 5mg",
+          "medicationId": "med-pimobendan",
+          "activeIngredient": "Pimobendan"
+        },
+        {
+          "enteredName": "FUROSEMIDA 40mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "BENAZEPRIL ou ENALAPRIL 5mg",
+          "medicationId": "med-benazepril",
+          "activeIngredient": "Cloridrato de benazepril"
+        },
+        {
+          "enteredName": "ESPIRONOLACTONA 25mg",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-pimo-cp",
+          "label": "Comprimido mastigavel de pimobendan (vet)"
+        },
+        {
+          "id": "pres-benza-cp",
+          "label": "Comprimido de benazepril (humano - exemplo)"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-pimo-dog-chf",
+          "value": 0.25,
+          "max": 0.3,
+          "unit": "mg/kg",
+          "indication": "Insuficiência cardíaca / DMVD — manutenção (referência Plumb’s)"
+        },
+        {
+          "id": "dose-pimo-cat",
+          "value": 0.3,
+          "max": 0.3,
+          "unit": "mg/kg",
+          "indication": "Cardiopatia — uso extra-label (literatura limitada)"
+        },
+        {
+          "id": "dose-benza-dog",
+          "value": 0.25,
+          "max": 0.5,
+          "unit": "mg/kg",
+          "indication": "Cardiologia / nefrologia — faixa usual (extra-label)"
+        },
+        {
+          "id": "dose-benza-cat",
+          "value": 0.5,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Cardiologia / nefrologia — faixa usual (extra-label)"
+        }
+      ],
+      "doseSources": [],
+      "precautions": [
+        "Monitorizar frequência cardíaca, apetite e função renal em politerapia.",
+        "Gatos: evidência menor — doses e segurança extrapoladas; usar com transparência ao tutor.",
+        "Creatinina e eletrólitos 5–7 dias após início ou mudança de dose; maior cautela com diuréticos, AINEs e baixo débito.",
+        "Gravidez/lactação: evitar salvo benefício claro.",
+        "Dupla bloqueio RAAS (IECA + BRA + espironolactona): só com critério especializado e monitorização."
+      ],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-asma-felina",
+      "title": "Bronquite Crônica / Asma Felina",
+      "condition": "Bronquite Crônica / Asma Felina",
+      "category": "Respiratório",
+      "species": [
+        "gato"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "FLUTICASONA 125mcg / 250mcg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SALBUTAMOL 100mcg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "PREDNISOLONA 5mg",
+          "medicationId": "med-prednisolona",
+          "activeIngredient": "Prednisolona"
+        }
+      ],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-preni-cp",
+          "label": "Preni - comprimido (Eurofarma, uso humano)"
+        },
+        {
+          "id": "pres-pred-sol-3mg-ml",
+          "label": "Solução oral 3 mg/mL (fosfato sódico Aché / Preni solução)"
+        },
+        {
+          "id": "pres-prelone-gotas-11",
+          "label": "Prelone gotas — 11 mg/mL (Aché, uso humano)"
+        },
+        {
+          "id": "pres-prediderm",
+          "label": "Prediderm - comprimido (Ourofino, vet)"
+        },
+        {
+          "id": "pres-predivet",
+          "label": "Predivet - comprimido (Mundo Animal, vet)"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-pred-dog-anti",
+          "value": 0.5,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Anti-inflamatório (cão)"
+        },
+        {
+          "id": "dose-pred-cat-anti",
+          "value": 1,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Anti-inflamatório (gato) — preferir prednisolona, não prednisona"
+        },
+        {
+          "id": "dose-pred-dog-imuno",
+          "value": 2,
+          "max": 4,
+          "unit": "mg/kg",
+          "indication": "Imunossupressor inicial (cão)"
+        },
+        {
+          "id": "dose-pred-cat-imuno",
+          "value": 2,
+          "max": 8,
+          "unit": "mg/kg",
+          "indication": "Imunossupressor inicial (gato)"
+        },
+        {
+          "id": "dose-pred-reposicao",
+          "value": 0.1,
+          "max": 0.25,
+          "unit": "mg/kg",
+          "indication": "Reposição fisiológica — hipoadrenocorticismo (cão e gato)"
+        },
+        {
+          "id": "dose-pred-dog-onc",
+          "value": 2,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Esquema antineoplásico isolado ou combinado (cão) — guia geral"
+        },
+        {
+          "id": "dose-pred-dog-paliativo",
+          "value": 0.25,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Paliativo / suporte oncológico (cão)"
+        },
+        {
+          "id": "dose-pred-cat-paliativo",
+          "value": 0.5,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Paliativo / suporte oncológico (gato)"
+        }
+      ],
+      "doseSources": [],
+      "precautions": [
+        "Gatos: maior risco diabetogênico com uso prolongado; obesidade e prednisolona — ajustar à massa magra quando possível.",
+        "Não associar AINEs (incl. aspirina) sem critério — risco de ulceração GI.",
+        "Desmame gradual após uso prolongado (eixo HPA).",
+        "Monitorar glicemia, peso, PU/PD, comportamento e enzimas hepáticas conforme duração/dose."
+      ],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-crise-convulsiva",
+      "title": "Epilepsia / Controle de Crises Convulsivas",
+      "condition": "Epilepsia / Controle de Crises Convulsivas",
+      "category": "Neurologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "FENOBARBITAL 10mg / 50mg / 100mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "LEVETIRACETAM 250mg / 500mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "DIAZEPAM INJETÁVEL 10mg/2mL",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-dermatite-atopica",
+      "title": "Dermatite Atópica / Alérgica e Otite Externa",
+      "condition": "Dermatite Atópica / Alérgica e Otite Externa",
+      "category": "Dermatologia",
+      "species": [
+        "cão"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "OCLACITINIB (APOQUEL) 3,6mg / 5,4mg / 16mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SHAMPOO COM CLOREXIDINE 2% A 4% E FITOSPHINGOSINE",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SOLUÇÃO OTOLÓGICA (Antibiótico + Antifúngico + Corticosteroide)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-conjuntivite-ulcera-cornea",
+      "title": "Conjuntivite / Afecções Oculares",
+      "condition": "Conjuntivite / Afecções Oculares",
+      "category": "Oftalmologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "COLÍRIO ANTIBIÓTICO (Tobramicina 0,3% / Ciprofloxacino 0,3%)",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "COLÍRIO LUBRIFICANTE / LÁGRIMA ARTIFICIAL (Hialuronato de Sódio / Carboximetilcelulose)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Manter colar elizabetano 24 horas por dia até reavaliação oftálmica.",
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Manter colar elizabetano 24 horas por dia até reavaliação oftálmica.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "needs-review"
+    },
+    {
+      "templateId": "seed-pif-felina",
+      "title": "Piodermite / Infecção Bacteriana de Pele",
+      "condition": "Piodermite / Infecção Bacteriana de Pele",
+      "category": "Infectologia",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "CEFALEXINA 300mg / 600mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SPRAY OU POMADA ANTISSÉPTICA (Clorexidine 2%)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-pos-operatorio-geral",
+      "title": "Analgesia Pós-Operatória / Manejo da Dor",
+      "condition": "Analgesia Pós-Operatória / Manejo da Dor",
+      "category": "Dor e pós-operatório",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "DIPIRONA SÓDICA 500mg/mL",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "MELOXICAM 0,5mg / 1mg / 2mg",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "TRAMADOL / PREGABALINA / GABAPENTINA",
+          "medicationId": "med-pregabalina",
+          "activeIngredient": "Pregabalina"
+        }
+      ],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-preg-caps",
+          "label": "Capsula de pregabalina (humano - uso extra-label)"
+        },
+        {
+          "id": "pres-preg-sol-25",
+          "label": "Solução oral 25 mg/mL — Dorene® (Brasil; uso humano extra-label em pequenos animais)"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-preg-dog-epilepsy",
+          "value": 3,
+          "max": 4,
+          "unit": "mg/kg",
+          "indication": "Epilepsia refratária (extra-label) — faixa principal"
+        },
+        {
+          "id": "dose-preg-dog-neuro",
+          "value": 2,
+          "max": 5,
+          "unit": "mg/kg",
+          "indication": "Dor neuropática"
+        },
+        {
+          "id": "dose-preg-dog-periop",
+          "value": 4,
+          "max": 4,
+          "unit": "mg/kg",
+          "indication": "Adjuvante perioperatório (esquema Plumb’s)"
+        },
+        {
+          "id": "dose-preg-dog-ortho",
+          "value": 3.5,
+          "max": 3.5,
+          "unit": "mg/kg",
+          "indication": "Tremor ortostático"
+        },
+        {
+          "id": "dose-preg-cat-epi",
+          "value": 1,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Epilepsia adjuvante (extra-label)"
+        },
+        {
+          "id": "dose-preg-cat-neuro",
+          "value": 1,
+          "max": 3,
+          "unit": "mg/kg",
+          "indication": "Dor neuropática (faixas Plumb’s)"
+        },
+        {
+          "id": "dose-preg-cat-transport",
+          "value": 5,
+          "max": 10,
+          "unit": "mg/kg",
+          "indication": "Ansiólise para transporte (estudo com solução oral)"
+        }
+      ],
+      "doseSources": [],
+      "precautions": [
+        "Insuficiência renal: acúmulo e sedação — reduzir dose ou espaçar conforme filtração; lógica semelhante ao ajuste humano por depuração.",
+        "Suspensão abrupta (sobretudo em epilepsia): em humanos, piora de crises, sintomas de abstinência — descontinuar gradualmente.",
+        "Associação com outros depressores do SNC (opioides, benzodiazepínicos, fenobarbital, acepromazina, dexmedetomidina): sedação aditiva e risco respiratório em debilitados.",
+        "Evidência veterinária ainda limitada; grande parte do uso é extrapolação e séries pequenas — informar tutores."
+      ],
+      "recommendations": [
+        "* Limpar a ferida com solução fisiológica 0,9% e antisséptico suave a cada 12 horas.",
+        "* Manter colar elizabetano / roupa protetora continuamente.",
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-manejo-intoxicacao",
+      "title": "Manejo Inicial de Intoxicação / Suporte Emergencial",
+      "condition": "Manejo Inicial de Intoxicação / Suporte Emergencial",
+      "category": "Emergência",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "CARBÃO ATIVADO VETERINÁRIO (Sachê / Pasta)",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "SILIMARINA / SAMe / ANTIOXIDANTE HEPÁTICO",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "OMEPRAZOL / PROTEÇÃO GÁSTRICA",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Possui concentração ou dose digitada no texto histórico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "incomplete"
+    },
+    {
+      "templateId": "seed-desverminacao-ectoparasitas",
+      "title": "Desverminação e Controle de Ectoparasitas",
+      "condition": "Desverminação e Controle de Ectoparasitas",
+      "category": "Cuidados gerais",
+      "species": [
+        "ambos"
+      ],
+      "type": "recipe",
+      "medications": [
+        {
+          "enteredName": "VERMÍFUGO DE AMPLO ESPECTRO (Praziquantel + Pyrantel + Febantel)",
+          "medicationId": null,
+          "activeIngredient": null
+        },
+        {
+          "enteredName": "ANTIPARASITÁRIO CONTRA PULGAS E CARRAPATOS (Isoxazolina / Spot-on)",
+          "medicationId": null,
+          "activeIngredient": null
+        }
+      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [
+        "* Oferecer as medicações conforme os horários prescritos.",
+        "* Não interromper o tratamento sem orientação médico-veterinária.",
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.",
+        "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário."
+      ],
+      "warningSigns": [
+        "* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral."
+      ],
+      "followUp": "* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.",
+      "placeholders": [],
+      "issues": [
+        "Possui medicamento sem vínculo canônico.",
+        "Não há fonte estruturada vinculada às doses do modelo."
+      ],
+      "status": "needs-review"
+    },
+    {
+      "templateId": "term-geral-recusa",
+      "title": "Termo Geral de Recusa de Procedimento, Exame ou Tratamento",
+      "condition": "Termo Geral de Recusa de Procedimento, Exame ou Tratamento",
+      "category": "Termos",
+      "species": [
+        "ambos"
+      ],
+      "type": "term",
+      "medications": [],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [],
+      "warningSigns": [],
+      "followUp": "",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
+    },
+    {
+      "templateId": "term-retirada-sem-alta",
+      "title": "Termo de Retirada do Paciente sem Alta Médica",
+      "condition": "Termo de Retirada do Paciente sem Alta Médica",
+      "category": "Termos",
+      "species": [
+        "ambos"
+      ],
+      "type": "term",
+      "medications": [],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [],
+      "warningSigns": [],
+      "followUp": "",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
+    },
+    {
+      "templateId": "term-geral-consentimento",
+      "title": "Termo Geral de Consentimento",
+      "condition": "Termo Geral de Consentimento",
+      "category": "Termos",
+      "species": [
+        "ambos"
+      ],
+      "type": "term",
+      "medications": [],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [],
+      "warningSigns": [],
+      "followUp": "",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
+    },
+    {
+      "templateId": "term-consentimento-eutanasia",
+      "title": "Termo de Consentimento para Eutanásia",
+      "condition": "Termo de Consentimento para Eutanásia",
+      "category": "Termos",
+      "species": [
+        "ambos"
+      ],
+      "type": "term",
+      "medications": [],
+      "linkedCommercialPresentations": [],
+      "doses": [],
+      "doseSources": [],
+      "precautions": [],
+      "recommendations": [],
+      "warningSigns": [],
+      "followUp": "",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
+    }
+  ]
+}

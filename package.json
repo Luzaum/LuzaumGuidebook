@@ -15,6 +15,8 @@
     "validate:energia-vet-ui": "tsx scripts/validate-energia-vet-ui.ts",
     "lint:sql-comments": "node scripts/check-sql-comments.mjs",
     "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
+    "audit:receituario": "tsx scripts/audit-receituario-models.ts",
+    "test:receituario": "tsx --test tests/receituario/*.test.ts",
     "sync:consulta-consensos": "tsx scripts/sync-consulta-vet-consensos.ts",
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "seed:admin-users": "tsx scripts/seed-admin-users.ts",

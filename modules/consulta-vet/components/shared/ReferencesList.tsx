@@ -23,7 +23,8 @@ export function ReferencesList({
         {references.map((reference, index) => (
           <article
             key={reference.id || `${reference.citationText}-${index}`}
-            className="py-5 first:pt-0 last:pb-0"
+            id={reference.id}
+            className="scroll-mt-24 py-5 first:pt-0 last:pb-0"
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0 flex-1">

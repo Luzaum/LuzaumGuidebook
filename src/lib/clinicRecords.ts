@@ -576,6 +576,7 @@ type GlobalMedicationPresentationRow = {
   metadata: Record<string, unknown> | null
   created_at: string
   updated_at: string
+  tablet_split_increment?: number | null
 }
 
 type GlobalMedicationRecommendedDoseRow = {
@@ -857,6 +858,7 @@ export type MedicationPresentationRecord = {
   created_at: string
   updated_at?: string
   source?: CatalogSource
+  tablet_split_increment?: number | null
 }
 
 export async function getMedicationPresentations(
@@ -897,6 +899,7 @@ export async function getMedicationPresentations(
         created_at: presentation.created_at,
         updated_at: presentation.updated_at,
         source: 'global',
+        tablet_split_increment: presentation.tablet_split_increment ?? null,
       }))
     }
 
@@ -926,6 +929,7 @@ export async function getMedicationPresentations(
       created_at: '',
       updated_at: '',
       source: 'global',
+      tablet_split_increment: Number((presentation as { tablet_split_increment?: number | null }).tablet_split_increment) || null,
     }))
   }
 
@@ -984,6 +988,11 @@ export interface RecommendedDose {
   created_at?: string
   updated_at?: string
   source?: CatalogSource
+  source_type?: string | null
+  source_label?: string | null
+  source_edition?: string | null
+  source_url?: string | null
+  source_locator?: string | null
 }
 
 function normalizeRecommendedDoseMetadata(input: any): Record<string, unknown> {
@@ -1121,6 +1130,11 @@ function mapDoseRowToRecommendedDose(row: any, source: CatalogSource = 'clinic')
     created_at: row?.created_at,
     updated_at: row?.updated_at,
     source,
+    source_type: pick('source_type', null) as string | null,
+    source_label: pick('source_label', null) as string | null,
+    source_edition: pick('source_edition', null) as string | null,
+    source_url: pick('source_url', null) as string | null,
+    source_locator: pick('source_locator', null) as string | null,
   }
 }
 
