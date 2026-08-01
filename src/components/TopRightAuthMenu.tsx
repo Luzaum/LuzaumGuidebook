@@ -40,7 +40,7 @@ export function TopRightAuthMenu() {
     return (
       <Link
         to={loginHref}
-        className="inline-flex h-10 items-center justify-center rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
+        className="inline-flex h-11 items-center justify-center rounded-full border border-slate-300 px-4 text-sm font-semibold text-slate-700 transition-colors hover:bg-slate-100 dark:border-slate-600 dark:text-slate-200 dark:hover:bg-slate-800"
       >
         Entrar
       </Link>
@@ -54,7 +54,7 @@ export function TopRightAuthMenu() {
       <DropdownMenuTrigger asChild>
         <button
           type="button"
-          className="inline-flex h-10 items-center gap-2 rounded-full border border-slate-300 bg-white px-2 pl-1.5 text-sm text-slate-800 shadow-sm transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
+          className="inline-flex h-11 items-center gap-2 rounded-full border border-slate-300 bg-white px-2 pl-1.5 text-sm text-slate-800 shadow-sm transition-colors hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:bg-slate-800"
           aria-label="Abrir menu do usuário"
         >
           {profile.avatarUrl ? (

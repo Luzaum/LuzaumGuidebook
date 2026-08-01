@@ -77,7 +77,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
           <button
             type="button"
             onClick={onCloseMobile}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background text-muted-foreground hover:text-foreground transition-colors"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background text-muted-foreground hover:text-foreground transition-colors"
             aria-label="Fechar menu"
           >
             <X className="h-4 w-4" />
@@ -86,7 +86,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
           <button
             type="button"
             onClick={toggleCollapsed}
-            className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border/60 bg-background text-muted-foreground transition hover:bg-muted hover:text-foreground"
             aria-label={collapsed ? 'Expandir menu lateral' : 'Recolher menu lateral'}
             title={collapsed ? 'Expandir' : 'Recolher'}
           >
@@ -119,7 +119,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
                   if (isMobile && onCloseMobile) onCloseMobile();
                 }}
                 className={cn(
-                  'group relative flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-red-500/20',
+                  'group relative flex min-h-11 w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all duration-200 focus:outline-none focus:ring-1 focus:ring-red-500/20',
                   collapsed && !isMobile ? 'justify-center px-0' : '',
                   isActive
                     ? 'bg-red-500/10 text-red-500 font-semibold ring-1 ring-red-500/20'
@@ -160,7 +160,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
           type="button"
           onClick={onBackToHub}
           className={cn(
-            'flex w-full items-center gap-2 rounded-xl border border-border bg-background/80 px-3 py-2.5 text-xs font-semibold text-foreground transition-all hover:bg-muted focus:outline-none focus:ring-1 focus:ring-red-500/20',
+            'flex min-h-11 w-full items-center gap-2 rounded-xl border border-border bg-background/80 px-3 py-2.5 text-xs font-semibold text-foreground transition-all hover:bg-muted focus:outline-none focus:ring-1 focus:ring-red-500/20',
             collapsed && !isMobile ? 'justify-center px-0' : ''
           )}
           title={(collapsed && !isMobile) ? 'Voltar ao Hub Principal' : undefined}

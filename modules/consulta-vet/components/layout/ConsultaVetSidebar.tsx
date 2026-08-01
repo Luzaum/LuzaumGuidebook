@@ -129,7 +129,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
         onMouseEnter={openHoverPreview}
         onMouseLeave={closeHoverPreview}
         className={cn(
-          'consulta-vet-sidebar-panel fixed inset-y-0 left-0 z-50 flex w-[min(100vw,18rem)] shrink-0 flex-col border-r transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:translate-x-0 md:overflow-visible',
+          'consulta-vet-sidebar-panel fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] left-0 top-14 z-50 flex w-[min(100vw,18rem)] shrink-0 flex-col border-r transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:inset-y-0 md:translate-x-0 md:overflow-visible',
           isCollapsed ? 'md:w-20' : 'md:w-72',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
@@ -140,7 +140,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
           aria-label={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
           title={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
           className={cn(
-            'consulta-vet-sidebar-toggle absolute right-0 top-1/2 z-[70] hidden h-12 w-7 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border/80 bg-background/95 text-muted-foreground shadow-lg backdrop-blur-md transition-all duration-300 ease-out hover:border-primary/35 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:flex',
+            'consulta-vet-sidebar-toggle absolute right-0 top-1/2 z-[70] hidden h-12 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border/80 bg-background/95 text-muted-foreground shadow-lg backdrop-blur-md transition-all duration-300 ease-out hover:border-primary/35 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:flex',
             isDesktopPreviewOpen && 'md:left-72 md:right-auto opacity-90'
           )}
         >
@@ -187,8 +187,10 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
             </div>
 
             <button
+              type="button"
               onClick={onClose}
-              className="flex h-11 w-11 items-center justify-center rounded-md p-2 text-muted-foreground hover:bg-muted md:hidden"
+              className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-foreground shadow-sm hover:bg-accent md:hidden"
+              aria-label="Fechar menu lateral"
             >
               <X className="h-5 w-5" />
             </button>
@@ -215,7 +217,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
                     }}
                     title={!isExpanded ? link.label : undefined}
                     className={cn(
-                      'consulta-vet-sidebar-nav-link group relative flex min-h-[2.5rem] items-center gap-2.5 overflow-hidden rounded-xl py-1.5 pr-1.5 text-[14px] font-semibold leading-snug tracking-tight outline-none ring-offset-background transition-[padding,gap,width] duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-primary md:min-h-[2.625rem] md:gap-2.5 md:pr-2 md:text-[14px]',
+                      'consulta-vet-sidebar-nav-link group relative flex min-h-11 items-center gap-2.5 overflow-hidden rounded-xl py-1.5 pr-1.5 text-[14px] font-semibold leading-snug tracking-tight outline-none ring-offset-background transition-[padding,gap,width] duration-300 ease-in-out focus-visible:ring-2 focus-visible:ring-primary md:min-h-[2.625rem] md:gap-2.5 md:pr-2 md:text-[14px]',
                       !isExpanded && 'md:h-12 md:w-12 md:justify-center md:gap-0 md:px-0',
                       navLinkClass(isActive, link.accent)
                     )}

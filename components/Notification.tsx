@@ -43,7 +43,7 @@ const Notification: React.FC<NotificationProps> = ({
   if (!isVisible) return null;
 
   return (
-    <div className={`fixed top-4 right-4 z-50 p-4 border rounded-lg shadow-lg max-w-sm ${getTypeStyles()}`}>
+    <div className={`fixed left-3 right-3 top-3 z-[100] max-w-sm rounded-lg border p-4 shadow-lg sm:left-auto sm:right-4 sm:top-4 ${getTypeStyles()}`}>
       <div className="flex items-center justify-between">
         <p className="text-sm font-medium">{message}</p>
         <button
@@ -51,7 +51,8 @@ const Notification: React.FC<NotificationProps> = ({
             setIsVisible(false);
             onClose?.();
           }}
-          className="ml-4 text-gray-500 hover:text-gray-700"
+          className="ml-3 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-gray-500 hover:bg-black/5 hover:text-gray-700"
+          aria-label="Fechar notificação"
         >
           ×
         </button>

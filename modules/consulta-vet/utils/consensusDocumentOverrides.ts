@@ -7,6 +7,13 @@ type ConsensusDocumentOverride = {
 };
 
 const BUNDLED_CONSENSUS_DOCUMENTS: Record<string, ConsensusDocumentOverride> = {
+  'icatcare-dtuif-felina-2025': {
+    description:
+      'Consenso iCatCare 2025 para diagnóstico e manejo das doenças do trato urinário inferior em gatos.',
+    filePath: 'documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    fileUrl: '/documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    fileName: 'icatcare-dtuif-felina-2025.pdf',
+  },
   'leishmaniose-brasileiro-2020': {
     year: 2025,
     description:

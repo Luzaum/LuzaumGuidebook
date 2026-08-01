@@ -15,6 +15,11 @@ import {
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { PdfViewerShell } from '../components/consensus/PdfViewerShell';
 import { ConsensusStructuredText } from '../components/consensus/ConsensusStructuredText';
+import { IrisCkdStagingTables } from '../components/consensus/IrisCkdStagingTables';
+import {
+  ConsensusOfficialTables,
+  hasConsensusOfficialTables,
+} from '../components/consensus/ConsensusOfficialTables';
 import { ReferencesEditor } from '../components/editorial/ReferencesEditor';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
@@ -47,12 +52,10 @@ const UI_TEXT = {
   summary: 'Resumo do consenso',
   keyPoints: 'Pontos-chave',
   practicalApplication: 'Aplicação prática',
-  appNotes: 'Alertas e observações clínicas',
   references: 'Referências',
   summaryPlaceholder: 'Descreva de forma objetiva o escopo e as conclusões principais.',
   keyPointsPlaceholder: 'Liste os pontos mais importantes para consulta rápida.',
   practicalApplicationPlaceholder: 'Explique como aplicar no atendimento de rotina.',
-  appNotesPlaceholder: 'Inclua alertas editoriais, limites e cuidados de interpretação.',
 } as const;
 
 type SharedDetailsFormState = {
@@ -230,10 +233,8 @@ export function ConsensoDetailPage() {
     if (!sharedDetails) return [];
 
     return [
-      { key: 'summary', title: UI_TEXT.summary, text: sharedDetails.summaryText },
       { key: 'keyPoints', title: UI_TEXT.keyPoints, text: sharedDetails.keyPointsText },
       { key: 'practicalApplication', title: UI_TEXT.practicalApplication, text: sharedDetails.practicalApplicationText },
-      { key: 'appNotes', title: UI_TEXT.appNotes, text: sharedDetails.appNotesText },
     ].filter((block) => hasText(block.text));
   }, [sharedDetails]);
 
@@ -348,7 +349,10 @@ export function ConsensoDetailPage() {
   return (
     <>
       <div className="mx-auto w-full max-w-[1500px] space-y-8 p-4 md:p-8">
-        <nav className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+        <nav
+          className="consulta-vet-breadcrumb flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground"
+          aria-label="Navegação estrutural"
+        >
           <Link to="/consulta-vet" className="transition-colors hover:text-primary">Início</Link>
           <ChevronRight className="h-3 w-3" />
           <Link to="/consulta-vet/consensos" className="transition-colors hover:text-primary">Consensos</Link>
@@ -358,9 +362,9 @@ export function ConsensoDetailPage() {
 
         <ConsultaVetSurface
           accent={getConsensusAccent(consenso.category)}
-          className={cn('overflow-hidden p-6 md:p-8', categoryTheme.line)}
+          className={cn('overflow-hidden p-5 sm:p-6 md:p-8', categoryTheme.line)}
         >
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex min-w-0 items-start gap-4 md:gap-5">
               <div className={cn('hidden h-20 w-20 shrink-0 overflow-hidden rounded-2xl border sm:block', categoryTheme.badge)}>
                 {consensusSymbol ? (
@@ -399,7 +403,7 @@ export function ConsensoDetailPage() {
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="flex w-full shrink-0 items-center justify-end gap-2 sm:w-auto">
               {canEditSharedDetails && (
                 <button
                   className="inline-flex h-12 items-center gap-2 rounded-full border border-border bg-muted px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted/80"
@@ -425,15 +429,6 @@ export function ConsensoDetailPage() {
           </div>
         </ConsultaVetSurface>
 
-        {hasPdfDocument && (
-          <PdfViewerShell
-            url={consenso.fileUrl}
-            title={consenso.title}
-            initialPage={resumeState?.pageNumber || 1}
-            onPageChange={handlePdfPageChange}
-          />
-        )}
-
         {isDetailsLoading && (
           <section className="rounded-2xl border border-border bg-card p-5 md:p-6">
             <p className="text-sm text-muted-foreground">Carregando detalhes compartilhados...</p>
@@ -446,24 +441,47 @@ export function ConsensoDetailPage() {
           </section>
         )}
 
+        {!isDetailsLoading && !detailsError && hasText(sharedDetails?.summaryText) && (
+          <section className="rounded-2xl border border-border bg-card p-5 md:p-6">
+            <h2 className="mb-3 text-xl font-semibold tracking-tight text-foreground">
+              Resumo do consenso
+            </h2>
+            <ConsensusStructuredText text={sharedDetails?.summaryText} />
+          </section>
+        )}
+
+        {hasPdfDocument && (
+          <PdfViewerShell
+            url={consenso.fileUrl}
+            title={consenso.title}
+            initialPage={resumeState?.pageNumber || 1}
+            onPageChange={handlePdfPageChange}
+          />
+        )}
+
         {!isDetailsLoading && !detailsError && sharedBlocks.length > 0 && (
           <section className="rounded-2xl border border-border bg-card p-5 md:p-6">
-            <div className="mb-5">
-              <h2 className="text-xl font-semibold tracking-tight text-foreground">
-                {hasPdfDocument ? UI_TEXT.sharedContentTitle : 'Visualização clínica no ConsultaVet'}
-              </h2>
-              {!hasPdfDocument && (
-                <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
-                  Conteúdo estruturado para leitura direta no app, com classificações e faixas
-                  apresentadas em tabelas quando esse formato facilita a consulta.
-                </p>
-              )}
-            </div>
             <div className="space-y-6">
               {sharedBlocks.map((block) => (
                 <article key={block.key} className="space-y-2 border-b border-border/70 pb-5 last:border-b-0 last:pb-0">
                   <h3 className="text-base font-semibold text-foreground">{block.title}</h3>
-                  <ConsensusStructuredText text={block.text} />
+                  {block.key === 'keyPoints' && consenso.slug === 'iris-drc-2023' ? (
+                    <div className="space-y-6">
+                      <IrisCkdStagingTables />
+                      <div className="border-t border-border/70 pt-5">
+                        <ConsensusStructuredText text={block.text} preferTables={false} />
+                      </div>
+                    </div>
+                  ) : block.key === 'keyPoints' && hasConsensusOfficialTables(consenso.slug) ? (
+                    <div className="space-y-6">
+                      <ConsensusOfficialTables slug={consenso.slug} />
+                      <div className="border-t border-border/70 pt-5">
+                        <ConsensusStructuredText text={block.text} preferTables={false} />
+                      </div>
+                    </div>
+                  ) : (
+                    <ConsensusStructuredText text={block.text} />
+                  )}
                 </article>
               ))}
             </div>
@@ -486,8 +504,8 @@ export function ConsensoDetailPage() {
               <div>
                 <h2 className="font-semibold text-foreground">Publicação original e DOI</h2>
                 <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  A visualização clínica completa está disponível acima. Use a fonte oficial para
-                  consultar o documento original, anexos e atualizações do editor.
+                  Abra a fonte oficial para ler o texto integral, os anexos e eventuais atualizações
+                  publicadas pela organização responsável.
                 </p>
               </div>
             </div>
@@ -558,8 +576,8 @@ export function ConsensoDetailPage() {
       </div>
 
       {isEditingSharedDetails && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-4">
-          <div className="max-h-[90vh] w-full max-w-[980px] overflow-y-auto rounded-2xl border border-border bg-card p-5 md:p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/45 p-3 sm:p-4">
+          <div className="max-h-[calc(100dvh-1.5rem)] w-full max-w-[980px] overflow-y-auto rounded-2xl border border-border bg-card p-4 sm:p-5 md:p-6">
             <div className="mb-4 flex items-center justify-between gap-3">
               <div>
                 <h2 className="text-xl font-semibold text-foreground">{UI_TEXT.editSharedDetails}</h2>
@@ -568,8 +586,9 @@ export function ConsensoDetailPage() {
               <button
                 type="button"
                 onClick={closeEditSharedDetails}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+                className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
                 title="Fechar"
+                aria-label="Fechar edição"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -609,17 +628,6 @@ export function ConsensoDetailPage() {
                 />
               </label>
 
-              <label className="block space-y-1.5">
-                <span className="text-sm font-medium text-foreground">{UI_TEXT.appNotes}</span>
-                <textarea
-                  rows={4}
-                  value={sharedDetailsForm.appNotesText}
-                  onChange={(event) => handleSharedFieldChange('appNotesText', event.target.value)}
-                  className="w-full resize-y rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
-                  placeholder={UI_TEXT.appNotesPlaceholder}
-                />
-              </label>
-
               <div className="space-y-3">
                 <div>
                   <h3 className="text-sm font-medium text-foreground">{UI_TEXT.references}</h3>
@@ -639,12 +647,12 @@ export function ConsensoDetailPage() {
                 </div>
               )}
 
-              <div className="flex items-center justify-end gap-2 border-t border-border pt-4">
+              <div className="flex flex-col-reverse items-stretch justify-end gap-2 border-t border-border pt-4 sm:flex-row sm:items-center">
                 <button
                   type="button"
                   onClick={closeEditSharedDetails}
                   disabled={isSavingSharedDetails}
-                  className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-border bg-background px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   <X className="h-4 w-4" />
                   Cancelar
@@ -652,7 +660,7 @@ export function ConsensoDetailPage() {
                 <button
                   type="submit"
                   disabled={isSavingSharedDetails}
-                  className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-70"
                 >
                   {isSavingSharedDetails ? (
                     <>

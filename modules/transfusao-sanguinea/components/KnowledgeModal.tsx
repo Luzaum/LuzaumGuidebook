@@ -48,7 +48,7 @@ export const KnowledgeModal: React.FC<KnowledgeModalProps> = React.memo(({ term,
           />
           <button 
             onClick={onClose}
-            className="p-1.5 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors focus:outline-none focus:ring-2 focus:ring-red-500/40"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-red-500/40"
             aria-label="Fechar modal"
           >
             <X className="h-5 w-5" />
@@ -72,7 +72,7 @@ export const KnowledgeModal: React.FC<KnowledgeModalProps> = React.memo(({ term,
         <div className="p-4 border-t border-border/50 bg-muted/30 text-right">
           <button
             onClick={onClose}
-            className="px-5 py-2 rounded-xl text-sm font-semibold bg-red-500 text-white hover:bg-red-600 active:scale-95 transition-all shadow-md shadow-red-500/10 focus:outline-none focus:ring-2 focus:ring-red-500/40"
+            className="min-h-11 rounded-xl bg-red-500 px-5 py-2 text-sm font-semibold text-white shadow-md shadow-red-500/10 transition-all hover:bg-red-600 active:scale-95 focus:outline-none focus:ring-2 focus:ring-red-500/40"
           >
             Entendido
           </button>

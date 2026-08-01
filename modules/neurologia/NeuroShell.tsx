@@ -65,7 +65,7 @@ export function NeuroShell() {
   return (
     <>
       <ThemeSync />
-      <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-transparent font-sans text-foreground selection:bg-gold/30">
+      <div className="relative min-h-full w-full overflow-x-hidden bg-transparent font-sans text-foreground selection:bg-gold/30">
         {/* Fundo shader em tela cheia (área do módulo) */}
         <div
           className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(245,197,66,0.16),transparent_34%),linear-gradient(180deg,hsl(var(--background))_0%,hsl(var(--background))_100%)]"
@@ -153,17 +153,17 @@ export function NeuroShell() {
         </aside>
 
         {/* Mobile header + main menu */}
-        <div className="sticky top-12 z-20 flex w-full items-center justify-between gap-2 border-b border-border/60 bg-card/50 px-4 py-2 backdrop-blur-md lg:hidden">
+        <div className="sticky top-0 z-20 flex w-full items-center justify-between gap-2 border-b border-border/60 bg-card/50 px-3 py-2 backdrop-blur-md sm:px-4 lg:hidden">
           <button
             type="button"
             onClick={() => setMainMenuOpen(true)}
-            className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-sm font-medium text-foreground"
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-border bg-card px-3 py-2 text-sm font-medium text-foreground"
             aria-expanded={mainMenuOpen}
           >
             <Menu className="h-4 w-4 text-gold" />
             Menu
           </button>
-          <Link to="/neurologia" className="text-sm font-semibold text-foreground">
+          <Link to="/neurologia" className="inline-flex min-h-11 items-center text-sm font-semibold text-foreground">
             NeuroVet
           </Link>
           <span className="w-14" aria-hidden />
@@ -183,7 +183,7 @@ export function NeuroShell() {
                 <button
                   type="button"
                   onClick={() => setMainMenuOpen(false)}
-                  className="rounded-lg p-2 text-muted-foreground hover:bg-muted"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground hover:bg-muted"
                   aria-label="Fechar"
                 >
                   <X className="h-5 w-5" />

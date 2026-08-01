@@ -54,6 +54,7 @@ export default function HemoGasoVetModule() {
                 size="icon"
                 onClick={() => setMobileOpen(false)}
                 aria-label="Fechar menu"
+                className="h-11 w-11"
               >
                 <X className="h-5 w-5" />
               </Button>

@@ -28,7 +28,11 @@ export function Dialog({ open, onOpenChange, children }: DialogProps) {
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4"
+      role="dialog"
+      aria-modal="true"
+    >
       <div
         className="fixed inset-0 bg-black/50 dark:bg-black/70 transition-opacity"
         onClick={() => onOpenChange(false)}
@@ -47,10 +51,10 @@ interface DialogContentProps {
 
 export function DialogContent({ children, onClose }: DialogContentProps) {
   return (
-    <div className="bg-card text-card-foreground rounded-lg shadow-xl border border-border max-h-[85vh] overflow-y-auto">
+    <div className="max-h-[calc(100dvh-1.5rem)] overflow-y-auto rounded-lg border border-border bg-card text-card-foreground shadow-xl sm:max-h-[85dvh]">
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 p-1 rounded-full hover:bg-surface-2 text-muted-foreground hover:text-foreground transition-colors"
+        className="absolute right-3 top-3 inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-surface-2 hover:text-foreground sm:right-4 sm:top-4"
         aria-label="Fechar"
       >
         <X className="w-5 h-5" />
@@ -66,7 +70,7 @@ interface DialogHeaderProps {
 
 export function DialogHeader({ children }: DialogHeaderProps) {
   return (
-    <div className="px-6 pt-6 pb-4 border-b border-border">
+    <div className="border-b border-border px-5 pb-4 pt-5 sm:px-6 sm:pt-6">
       {children}
     </div>
   )

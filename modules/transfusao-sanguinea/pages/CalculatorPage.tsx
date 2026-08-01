@@ -164,7 +164,7 @@ export const CalculatorPage: React.FC<CalculatorPageProps> = React.memo(({ onOpe
               </h3>
               <button 
                 onClick={resetCalculator}
-                className="text-xs flex items-center gap-1 text-muted-foreground hover:text-red-500 transition-colors p-1.5 rounded-lg hover:bg-muted/50"
+                className="flex min-h-11 items-center gap-1 rounded-lg px-2 text-xs text-muted-foreground transition-colors hover:bg-muted/50 hover:text-red-500"
                 title="Limpar calculadora"
               >
                 <RefreshCw className="h-3 w-3" /> Limpar

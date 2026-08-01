@@ -55,7 +55,7 @@ export function HemoSidebar({ onLinkClick, className, variant = 'default', omitH
           to={link.path}
           onClick={() => onLinkClick?.()}
           className={cn(
-            "flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors group",
+            "flex min-h-11 items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors group",
             isActive 
               ? "bg-purple-100 text-purple-900 dark:bg-purple-900/40 dark:text-purple-100" 
               : "text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-slate-100"
@@ -94,7 +94,7 @@ export function HemoSidebar({ onLinkClick, className, variant = 'default', omitH
             variant="ghost" 
             size="icon" 
             onClick={() => setCollapsed(!collapsed)}
-            className={cn("shrink-0", collapsed && !showLabels && "mx-auto")}
+            className={cn("h-11 w-11 shrink-0", collapsed && !showLabels && "mx-auto")}
             title={collapsed ? "Expandir menu" : "Recolher menu"}
           >
             {collapsed ? <Menu className="w-5 h-5" /> : <ChevronLeft className="w-5 h-5" />}

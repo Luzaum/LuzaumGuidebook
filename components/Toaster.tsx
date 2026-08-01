@@ -12,7 +12,7 @@ export const Toaster: React.FC = () => {
   const { toasts, dismiss } = useToast();
   if (!toasts.length) return null;
   return (
-    <div className="fixed bottom-4 right-4 z-[100] flex flex-col gap-2">
+    <div className="fixed bottom-20 left-3 right-3 z-[100] flex flex-col items-stretch gap-2 sm:left-auto sm:right-4 sm:max-w-sm md:bottom-4">
       {toasts.map(t => (
         <ToastItem key={t.id} id={t.id} message={t.message} type={t.type} onClose={dismiss} />
       ))}

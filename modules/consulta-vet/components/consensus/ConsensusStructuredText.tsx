@@ -194,7 +194,13 @@ function StructuredList({
   );
 }
 
-function PlainTextBlock({ value }: { value: string }) {
+function PlainTextBlock({
+  value,
+  preferTables,
+}: {
+  value: string;
+  preferTables: boolean;
+}) {
   const lines = value
     .split(/\r?\n/)
     .map((line) => line.trim())
@@ -213,7 +219,11 @@ function PlainTextBlock({ value }: { value: string }) {
         </h4>
       )}
       {isList ? (
-        <StructuredList items={items as ParsedItem[]} heading={heading} />
+        preferTables ? (
+          <StructuredList items={items as ParsedItem[]} heading={heading} />
+        ) : (
+          <PlainList items={items as ParsedItem[]} />
+        )
       ) : (
         <p className="whitespace-pre-line text-sm leading-relaxed text-foreground/90">
           {lines.join('\n')}
@@ -225,8 +235,10 @@ function PlainTextBlock({ value }: { value: string }) {
 
 export function ConsensusStructuredText({
   text,
+  preferTables = true,
 }: {
   text: string | null | undefined;
+  preferTables?: boolean;
 }) {
   const parsed = String(text || '').trim();
   if (!parsed) return null;
@@ -245,7 +257,11 @@ export function ConsensusStructuredText({
   return (
     <div className="space-y-4">
       {blocks.map((block, index) => (
-        <PlainTextBlock key={`${block.slice(0, 30)}-${index}`} value={block} />
+        <PlainTextBlock
+          key={`${block.slice(0, 30)}-${index}`}
+          value={block}
+          preferTables={preferTables}
+        />
       ))}
     </div>
   );

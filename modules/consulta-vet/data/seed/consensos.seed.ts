@@ -23,7 +23,7 @@ const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
     summary:
       'O IRIS 2026 classifica a doença renal crônica somente depois de confirmar alteração renal persistente em paciente estável e adequadamente hidratado. O estágio usa creatinina e SDMA; depois o paciente é subestadiado por proteinúria e pressão arterial, porque ambos alteram prognóstico e conduta independentemente da creatinina.\n\nA revisão de 2026 preserva o raciocínio por estágios e atualiza recomendações terapêuticas, incluindo abordagem da anemia. A classificação deve ser revista após estabilização, tratamento antiproteinúrico ou anti-hipertensivo e mudanças clínicas. Sarcopenia pode mascarar gravidade pela creatinina, enquanto SDMA persistentemente discordante pode justificar manejo pelo estágio mais alto.',
     keyPointsText:
-      '- Creatinina (mg/dL), cão: estágio 1 <1,4; 2 = 1,4-2,8; 3 = 2,9-5,0; 4 >5,0. Gato: estágio 1 <1,6; 2 = 1,6-2,8; 3 = 2,9-5,0; 4 >5,0.\n- SDMA (µg/dL), cão: <18; 18-35; 36-54; >54. Gato: <18; 18-25; 26-38; >38, para os estágios 1-4.\n- UPC: cães <0,2 não proteinúrico; 0,2-0,5 limítrofe; >0,5 proteinúrico. Gatos <0,2; 0,2-0,4; >0,4, respectivamente.\n- Pressão sistólica: <140 risco mínimo; 140-159 baixo; 160-179 moderado; >=180 alto risco.\n- Não estadiar definitivamente durante desidratação, obstrução, LRA ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão, fósforo, potássio, bicarbonato, hematócrito, peso e massa muscular.',
+      'ESTADIAMENTO IRIS 2026\n- O quadro clínico do app reproduz a matriz oficial com os estágios 1–4 em colunas, cães e gatos em subcolunas e creatinina/SDMA em linhas.\n- Proteinúria por UPC e pressão arterial são apresentadas separadamente porque constituem subestadiamentos independentes.\n- Não estadiar definitivamente durante desidratação, obstrução, LRA ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão, fósforo, potássio, bicarbonato, hematócrito, peso e massa muscular.',
     practicalApplicationText:
       'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por UPC e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo. A revisão de 2026 propõe considerar tratamento da anemia em cães com hematócrito <30% ou persistentemente entre 30-35%, e em gatos <25% ou persistentemente entre 25-28%, sempre após procurar causas corrigíveis e ponderar sinais clínicos.',
   },
@@ -51,9 +51,9 @@ export const consensosSeed: Array<Record<string, any>> = [
     species: 'cat',
     category: 'nefrologia-urologia',
     tags: ['DTUIF', 'FIC', 'Obstrução uretral', 'Urolitíase', 'ITU', 'Manejo ambiental'],
-    pdfUrl: 'https://journals.sagepub.com/doi/10.1177/1098612X241309176',
-    pdfFileName: 'icatcare-dtuif-felina-2025',
-    storagePath: 'external/icatcare-dtuif-felina-2025',
+    pdfUrl: '/documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    pdfFileName: 'icatcare-dtuif-felina-2025.pdf',
+    storagePath: 'documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
     summary:
       'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
     articleSummaryRichText:

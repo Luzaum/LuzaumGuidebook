@@ -16,11 +16,12 @@ export const HelpButton: React.FC<HelpButtonProps> = React.memo(({ term, onOpenM
         e.preventDefault();
         onOpenModal(term);
       }}
-      className={`inline-flex items-center justify-center ml-1.5 p-1 rounded-full 
+      className={`ml-1.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full
                  text-red-500 bg-red-500/10 hover:bg-red-500/20 active:scale-95
                  transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-red-500/50 
                  cursor-pointer ${className}`}
       title="Saiba mais"
+      aria-label={`Saiba mais sobre ${term}`}
     >
       <HelpCircle className="h-4 w-4 stroke-[2.5]" />
     </button>

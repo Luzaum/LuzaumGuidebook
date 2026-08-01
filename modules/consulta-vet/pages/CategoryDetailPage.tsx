@@ -117,7 +117,10 @@ export function CategoryDetailPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1500px] space-y-10 p-4 md:p-8">
-      <nav className="flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+      <nav
+        className="consulta-vet-breadcrumb flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-muted-foreground"
+        aria-label="Navegação estrutural"
+      >
         <Link to="/consulta-vet" className="transition-colors hover:text-amber-600 dark:hover:text-amber-400">
           {UI_TEXT.home}
         </Link>

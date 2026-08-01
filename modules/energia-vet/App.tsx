@@ -107,8 +107,8 @@ function MobileNav() {
   const location = useLocation();
 
   return (
-    <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-30 border-t border-border/70 bg-card/95 px-2 py-2 backdrop-blur lg:hidden">
-      <div className="mx-auto grid max-w-3xl grid-cols-5 gap-2">
+    <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-card/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
+      <div className="mx-auto grid max-w-3xl grid-cols-5 gap-1 sm:gap-2">
         {links.map((link) => {
           const Icon = link.icon;
           const href = modulePath(link.path);
@@ -119,12 +119,12 @@ function MobileNav() {
               key={link.path}
               to={href}
               className={cn(
-                'flex flex-col items-center gap-1 rounded-xl px-2 py-2 text-[11px] font-medium',
+                'flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] font-medium sm:px-2 sm:text-[11px]',
                 isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground',
               )}
             >
               <Icon className="h-4 w-4" />
-              {link.name}
+              <span className="w-full truncate text-center">{link.name}</span>
             </Link>
           );
         })}
@@ -135,10 +135,10 @@ function MobileNav() {
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="energia-vet-shell flex min-h-dvh bg-background">
+    <div className="energia-vet-shell flex h-full min-h-0 bg-background">
       <Sidebar />
-      <div className="flex min-h-dvh min-w-0 flex-1 flex-col">
-        <main className="flex-1 overflow-y-auto px-4 py-8 pb-24 lg:px-10 lg:py-10 lg:pb-10">
+      <div className="flex h-full min-h-0 min-w-0 flex-1 flex-col">
+        <main className="min-h-0 flex-1 overflow-y-auto px-4 py-6 pb-24 sm:py-8 lg:px-10 lg:py-10 lg:pb-10">
           <div className="w-full max-w-none">
             {children}
           </div>

@@ -29,12 +29,12 @@ export default function Dashboard() {
   ]
 
   return (
-    <div className="space-y-8 w-full pb-20">
-      <div className="flex flex-col gap-6 rounded-3xl border border-primary/10 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-8 xl:flex-row xl:items-start xl:justify-between">
-        <div className="flex items-start gap-4">
-          <img src={MODULE_LOGO} alt={MODULE_NAME} className="h-24 w-24 rounded-3xl bg-white/80 p-2 object-contain shadow-sm" />
-          <div className="pt-2">
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">{MODULE_NAME}</h1>
+    <div className="w-full space-y-8 pb-20">
+      <div className="flex flex-col gap-5 rounded-3xl border border-primary/10 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent p-4 sm:p-6 lg:p-8 xl:flex-row xl:items-start xl:justify-between">
+        <div className="flex min-w-0 flex-col items-start gap-4 sm:flex-row">
+          <img src={MODULE_LOGO} alt={MODULE_NAME} className="h-20 w-20 shrink-0 rounded-2xl bg-white/80 p-2 object-contain shadow-sm sm:h-24 sm:w-24 sm:rounded-3xl" />
+          <div className="min-w-0 pt-0 sm:pt-2">
+            <h1 className="break-words text-2xl font-bold tracking-tight text-foreground sm:text-3xl">{MODULE_NAME}</h1>
             <p className="mt-2 max-w-3xl text-base text-muted-foreground">
               Formulação e avaliação nutricional com energia por espécie, comparação de exigências e plano alimentar fracionado.
             </p>
@@ -46,8 +46,8 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="md:pt-4">
-          <Button size="lg" className="gap-2 shadow-lg" render={<Link to={`${BASE_ROUTE}/new`} />}>
+        <div className="w-full md:pt-4 xl:w-auto">
+          <Button size="lg" className="min-h-11 w-full gap-2 shadow-lg xl:w-auto" render={<Link to={`${BASE_ROUTE}/new`} />}>
             <Calculator className="h-5 w-5" />
             Iniciar formulação
           </Button>
@@ -75,13 +75,13 @@ export default function Dashboard() {
         {quickActions.map((action) => {
           const Icon = action.icon
           return (
-            <Link key={action.name} to={action.path} className="block group">
+            <Link key={action.name} to={action.path} className="group block min-w-0">
               <Card className="h-full border-muted transition-all duration-200 group-hover:-translate-y-1 group-hover:border-primary/30 group-hover:shadow-md">
                 <CardContent className="flex items-start gap-4 p-6">
                   <div className={`shrink-0 rounded-xl p-3 ${action.color}`}>
                     <Icon className="h-6 w-6" />
                   </div>
-                  <div className="space-y-1">
+                  <div className="min-w-0 space-y-1">
                     <h3 className="text-lg font-semibold leading-none transition-colors group-hover:text-primary">{action.name}</h3>
                     <p className="text-sm text-muted-foreground">{action.description}</p>
                   </div>
@@ -103,7 +103,7 @@ export default function Dashboard() {
                 </CardTitle>
                 <CardDescription>Pacientes dos cálculos anteriores</CardDescription>
               </div>
-              <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/patients`} />}>
+              <Button variant="ghost" size="sm" className="min-h-10 gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/patients`} />}>
                 Ver todos <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
@@ -165,7 +165,7 @@ export default function Dashboard() {
                 </CardTitle>
                 <CardDescription>Últimos planos salvos</CardDescription>
               </div>
-              <Button variant="ghost" size="sm" className="gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/reports`} />}>
+              <Button variant="ghost" size="sm" className="min-h-10 gap-1 text-muted-foreground" render={<Link to={`${BASE_ROUTE}/reports`} />}>
                 Abrir histórico <ArrowRight className="h-4 w-4" />
               </Button>
             </div>

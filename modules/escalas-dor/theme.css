@@ -12,9 +12,9 @@
   --dv-primary-2: #0d9488;
   --dv-shadow: 0 14px 40px rgba(13, 148, 136, 0.18);
   min-height: calc(100dvh - var(--dv-host-header-height));
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
   position: relative;
   color: var(--dv-text);
   background:

@@ -132,6 +132,10 @@ export function AppLayout() {
     decodedPathname.startsWith('/neurologia') ||
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
+  const usesOwnMobileBottomNav =
+    decodedPathname.startsWith('/fluidoterapia') ||
+    decodedPathname.startsWith('/calculadora-energetica')
+  const showGlobalMobileNav = isMobile && !usesOwnMobileBottomNav
 
   const saveCurrentFormDraft = useCallback(() => {
     const root = appContentRef.current
@@ -205,7 +209,7 @@ export function AppLayout() {
           {isMobile && (
             <button
               onClick={() => setSidebarOpen(false)}
-              className="absolute top-4 right-4 p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-lg transition-colors z-10"
+              className="absolute right-4 top-4 z-10 inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-400 transition-colors hover:bg-slate-900 hover:text-white"
               aria-label="Fechar menu"
             >
               <X className="h-5 w-5" />
@@ -238,7 +242,7 @@ export function AppLayout() {
                 navigate('/hub')
                 if (isMobile) setSidebarOpen(false)
               }}
-              className={`w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 border border-transparent ${
+              className={`flex min-h-11 w-full items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 ${
                 isActive('/hub')
                   ? 'bg-gradient-to-r from-emerald-600/20 to-teal-600/10 border-emerald-500/25 text-emerald-400'
                   : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 hover:border-slate-850/60'
@@ -266,7 +270,7 @@ export function AppLayout() {
                           navigate(module.route)
                           if (isMobile) setSidebarOpen(false)
                         }}
-                        className={`w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 border border-transparent ${
+                        className={`flex min-h-11 w-full items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 ${
                           active
                             ? 'bg-gradient-to-r from-emerald-600/20 to-teal-600/10 border-emerald-500/25 text-emerald-400'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 hover:border-slate-850/60'
@@ -308,7 +312,7 @@ export function AppLayout() {
                           navigate(module.route)
                           if (isMobile) setSidebarOpen(false)
                         }}
-                        className={`w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 border border-transparent ${
+                        className={`flex min-h-11 w-full items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 ${
                           active
                             ? 'bg-gradient-to-r from-emerald-600/20 to-teal-600/10 border-emerald-500/25 text-emerald-400'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/50 hover:border-slate-850/60'
@@ -350,7 +354,7 @@ export function AppLayout() {
                           navigate(module.route)
                           if (isMobile) setSidebarOpen(false)
                         }}
-                        className={`w-full flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-semibold transition-all duration-300 border border-transparent opacity-55 ${
+                        className={`flex min-h-11 w-full items-center gap-3 rounded-xl border border-transparent px-3.5 py-2.5 text-sm font-semibold opacity-55 transition-all duration-300 ${
                           active
                             ? 'bg-emerald-505/10 text-emerald-400'
                             : 'text-slate-400 hover:text-slate-200 hover:bg-slate-900/30'
@@ -430,7 +434,11 @@ export function AppLayout() {
       )}
 
       {/* Main Content Pane */}
-      <div className={`flex min-h-0 min-w-0 flex-1 flex-col ${isMobile ? 'pb-16' : ''}`}>
+      <div
+        className={`flex min-h-0 min-w-0 flex-1 flex-col ${
+          showGlobalMobileNav ? 'pb-[calc(4rem+env(safe-area-inset-bottom,0px))]' : ''
+        }`}
+      >
         {/* Header */}
         <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm shrink-0">
           <div className="flex items-center justify-between px-4 py-2 h-14">
@@ -440,7 +448,7 @@ export function AppLayout() {
               {!isMobile && (
                 <button
                   onClick={() => setSidebarOpen(true)}
-                  className="p-2 hover:bg-slate-900/50 rounded-lg text-slate-350 hover:text-white transition-colors"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-350 transition-colors hover:bg-slate-900/50 hover:text-white"
                   aria-label="Abrir menu"
                 >
                   <Menu className="h-5 w-5" />
@@ -449,7 +457,7 @@ export function AppLayout() {
               
               <Link
                 to="/"
-                className="flex items-center gap-2 cursor-pointer select-none"
+                className="flex min-h-11 min-w-11 items-center justify-center gap-2 cursor-pointer select-none sm:justify-start"
                 aria-label="Voltar para a Home"
               >
                 <div className="h-7 w-7">
@@ -474,7 +482,7 @@ export function AppLayout() {
           ref={appContentRef}
           onInputCapture={scheduleFormDraftSave}
           onChangeCapture={scheduleFormDraftSave}
-          className="relative flex w-full flex-1 flex-col min-h-0 overflow-auto bg-slate-50/50 dark:bg-slate-950/20"
+          className="app-scroll-viewport relative flex w-full flex-1 flex-col min-h-0 overflow-auto bg-slate-50/50 dark:bg-slate-950/20"
         >
           {isFullBleedRoute ? (
             <div className="flex min-h-0 flex-1 w-full">
@@ -488,8 +496,8 @@ export function AppLayout() {
         </main>
 
         {/* Mobile Bottom Navigation Bar */}
-        {isMobile && (
-          <div className="fixed bottom-0 left-0 right-0 z-40 bg-[#05060b] border-t border-slate-850 h-16 flex items-center justify-around px-2 pb-safe shadow-lg">
+        {showGlobalMobileNav && (
+          <div className="fixed bottom-0 left-0 right-0 z-40 flex min-h-16 h-[calc(4rem+env(safe-area-inset-bottom,0px))] items-start justify-around border-t border-slate-850 bg-[#05060b] px-2 pb-[env(safe-area-inset-bottom,0px)] pt-2 shadow-lg">
             {/* Hub */}
             <button
               onClick={() => navigate('/hub')}

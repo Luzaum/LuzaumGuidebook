@@ -32,7 +32,7 @@ export function AbvMobileTopBar({ onOpenMenu, activeTab }: AbvMobileTopBarProps)
       <button
         type="button"
         onClick={onOpenMenu}
-        className="rounded-lg p-2 transition hover:opacity-90"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-lg transition hover:opacity-90"
         style={{ color: 'hsl(var(--foreground))' }}
         aria-label="Abrir menu"
       >
@@ -86,7 +86,7 @@ export function AbvMobileDrawer({ open, onClose, activeTab, setActiveTab }: AbvM
           </button>
           <button
             type="button"
-            className="rounded-lg p-2 transition hover:opacity-80"
+            className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition hover:opacity-80"
             onClick={onClose}
             aria-label="Fechar"
           >

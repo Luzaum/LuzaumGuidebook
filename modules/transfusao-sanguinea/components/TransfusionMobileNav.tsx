@@ -17,12 +17,12 @@ export const TransfusionMobileNav: React.FC<TransfusionMobileNavProps> = ({
         <button
           type="button"
           onClick={onOpenMobileMenu}
-          className="p-2 rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted/80 focus:outline-none focus:ring-2 focus:ring-red-500/20 active:scale-95 transition-all"
+          className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-muted-foreground transition-all hover:bg-muted/80 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-red-500/20 active:scale-95"
           aria-label="Abrir menu de hemoterapia"
         >
           <Menu className="h-5 w-5" />
         </button>
-        <span className="text-sm font-bold tracking-tight text-foreground select-none">
+        <span className="min-w-0 truncate text-sm font-bold tracking-tight text-foreground select-none">
           {titleForTransfusionPage(activeKey)}
         </span>
       </div>

@@ -79,6 +79,27 @@
   }
 }
 
+.app-scroll-viewport {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.35) transparent;
+}
+
+.app-scroll-viewport::-webkit-scrollbar {
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+.app-scroll-viewport::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.app-scroll-viewport::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: hsl(var(--muted-foreground) / 0.35);
+  background-clip: padding-box;
+}
+
 /* ============================================================
    CRIVET DESIGN SYSTEM — UI UX Pro Max
    Healthcare Teal + Dark Mode Professional

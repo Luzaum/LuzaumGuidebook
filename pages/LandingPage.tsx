@@ -422,7 +422,13 @@ export function LandingPage() {
 
                             <p className="text-xs text-muted-foreground/60 mt-4 text-center">
                                 Ao se cadastrar, você concorda com nossa{' '}
-                                <a href="#" className="underline hover:text-primary transition-colors">Política de Privacidade</a>.
+                                <button
+                                    type="button"
+                                    onClick={() => setActiveModal('Política de Privacidade')}
+                                    className="inline-flex min-h-11 items-center underline transition-colors hover:text-primary"
+                                >
+                                    Política de Privacidade
+                                </button>.
                             </p>
                         </form>
                     ) : (
@@ -516,19 +522,27 @@ export function LandingPage() {
             </footer>
             {/* ── FOOTER MODAL ── */}
             {activeModal && footerContent[activeModal] && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/80 backdrop-blur-sm animate-in fade-in duration-200" onClick={() => setActiveModal(null)}>
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-3 backdrop-blur-sm animate-in fade-in duration-200 sm:p-4"
+                    onClick={() => setActiveModal(null)}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby="landing-footer-modal-title"
+                >
                     <div
-                        className="bg-background border border-border rounded-2xl shadow-2xl max-w-lg w-full p-6 sm:p-8 relative animate-in zoom-in-95 duration-200"
+                        className="relative max-h-[calc(100dvh-1.5rem)] w-full max-w-lg overflow-y-auto rounded-2xl border border-border bg-background p-5 shadow-2xl animate-in zoom-in-95 duration-200 sm:p-8"
                         onClick={(e) => e.stopPropagation()}
                     >
                         <button
+                            type="button"
                             onClick={() => setActiveModal(null)}
-                            className="absolute top-4 right-4 text-muted-foreground hover:text-foreground p-1 rounded-full hover:bg-surface/50 transition-colors"
+                            className="absolute right-3 top-3 inline-flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-surface/50 hover:text-foreground sm:right-4 sm:top-4"
+                            aria-label="Fechar janela"
                         >
                             <X className="w-5 h-5" />
                         </button>
 
-                        <h3 className="text-2xl font-bold text-foreground mb-4 pr-8">
+                        <h3 id="landing-footer-modal-title" className="mb-4 pr-10 text-2xl font-bold text-foreground">
                             {footerContent[activeModal].title}
                         </h3>
                         <div className="prose prose-sm dark:prose-invert text-muted-foreground leading-relaxed whitespace-pre-wrap">
@@ -537,8 +551,9 @@ export function LandingPage() {
 
                         <div className="mt-8 flex justify-end">
                             <button
+                                type="button"
                                 onClick={() => setActiveModal(null)}
-                                className="px-5 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary font-semibold rounded-lg transition-colors text-sm"
+                                className="min-h-11 rounded-lg bg-primary/10 px-5 py-2.5 text-sm font-semibold text-primary transition-colors hover:bg-primary/20"
                             >
                                 Fechar
                             </button>
@@ -548,4 +563,4 @@ export function LandingPage() {
             )}
         </div>
     )
-}
+}

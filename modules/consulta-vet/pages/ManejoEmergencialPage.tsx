@@ -60,7 +60,10 @@ export function ManejoEmergencialPage() {
 
   return (
     <div className="mx-auto w-full max-w-[1200px] space-y-8 p-4 md:p-8">
-      <nav className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground">
+      <nav
+        className="consulta-vet-breadcrumb flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
+        aria-label="Navegação estrutural"
+      >
         <Link to="/consulta-vet" className="transition-colors hover:text-primary">
           {UI_TEXT.home}
         </Link>

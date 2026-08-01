@@ -45,7 +45,7 @@ export const TransfusionLayout: React.FC = () => {
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background text-foreground animate-in fade-in duration-300">
+    <div className="flex h-full min-h-0 w-full overflow-hidden bg-background text-foreground animate-in fade-in duration-300">
       
       {/* Modal global de base de conhecimento (tooltips) */}
       <KnowledgeModal term={modalTerm} onClose={() => setModalTerm(null)} />
