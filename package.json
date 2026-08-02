@@ -6,6 +6,7 @@
   "scripts": {
     "prebuild": "npm run check:conflicts",
     "check:conflicts": "node scripts/check-merge-conflicts.mjs",
+    "lint": "npm run check:conflicts && npm run lint:sql-comments && npm run validate:dbpayloads",
     "dev": "node scripts/vite-dev-realpath.mjs",
     "build": "vite build",
     "preview": "vite preview",
@@ -17,6 +18,9 @@
     "validate:dbpayloads": "tsx scripts/validate-supabase-payloads.ts",
     "audit:receituario": "tsx scripts/audit-receituario-models.ts",
     "test:receituario": "tsx --test tests/receituario/*.test.ts",
+    "test:nutrition": "tsx --test tests/nutrition/*.test.ts",
+    "import:nutrition-usda": "tsx scripts/nutrition/import-usda-fooddata.ts",
+    "test:receituario:integration": "tsx scripts/test-receituario-supabase.ts",
     "sync:consulta-consensos": "tsx scripts/sync-consulta-vet-consensos.ts",
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "seed:admin-users": "tsx scripts/seed-admin-users.ts",

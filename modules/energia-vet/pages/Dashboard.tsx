@@ -4,7 +4,8 @@ import { AlertTriangle, ArrowRight, Calculator, FileText, Leaf, Scale, Stethosco
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 import { Badge } from '../components/ui/badge'
-import { getDatasetStats, getDefaultRequirement, getTopAuditIssues } from '../lib/genutriData'
+import { getDefaultRequirement, getTopAuditIssues } from '../lib/genutriData'
+import { getCatalogDatasetStats } from '../lib/catalog'
 import { getSavedPatients, getSavedReports } from '../lib/persistence'
 
 const BASE_ROUTE = '/calculadora-energetica'
@@ -12,7 +13,7 @@ const MODULE_NAME = 'NutriçãoVET'
 const MODULE_LOGO = '/apps/nutricaovet.png'
 
 export default function Dashboard() {
-  const datasetStats = useMemo(() => getDatasetStats(), [])
+  const datasetStats = useMemo(() => getCatalogDatasetStats(), [])
   const savedReports = useMemo(() => getSavedReports().slice(0, 4), [])
   const savedPatients = useMemo(() => getSavedPatients().slice(0, 4), [])
   const auditIssues = useMemo(() => getTopAuditIssues(4), [])
@@ -21,7 +22,7 @@ export default function Dashboard() {
 
   const quickActions = [
     { name: 'Novo cálculo', description: 'Fórmulação e avaliação dietética', icon: Calculator, path: `${BASE_ROUTE}/new`, color: 'bg-orange-100 text-orange-600' },
-    { name: 'Catálogo de alimentos', description: '129 alimentos para consulta', icon: Utensils, path: `${BASE_ROUTE}/foods`, color: 'bg-blue-100 text-blue-600' },
+    { name: 'Catálogo de alimentos', description: `${datasetStats.foods} alimentos para consulta`, icon: Utensils, path: `${BASE_ROUTE}/foods`, color: 'bg-blue-100 text-blue-600' },
     { name: 'Pacientes', description: 'Histórico persistido dos cálculos', icon: Users, path: `${BASE_ROUTE}/patients`, color: 'bg-emerald-100 text-emerald-600' },
     { name: 'Relatórios', description: 'Resumos clínicos salvos', icon: FileText, path: `${BASE_ROUTE}/reports`, color: 'bg-slate-100 text-slate-700' },
     { name: 'Manejo hospitalar', description: 'Risco e progressão alimentar', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized`, color: 'bg-red-100 text-red-600' },
@@ -39,8 +40,8 @@ export default function Dashboard() {
               Formulação e avaliação nutricional com energia por espécie, comparação de exigências e plano alimentar fracionado.
             </p>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Badge variant="outline">129 alimentos</Badge>
-              <Badge variant="outline">43 perfis de exigência</Badge>
+              <Badge variant="outline">{datasetStats.foods} alimentos</Badge>
+              <Badge variant="outline">{datasetStats.requirements} perfis de exigência</Badge>
               <Badge variant="outline">2 regras energéticas</Badge>
               <Badge variant="outline">{datasetStats.auditWarnings} observações nos dados</Badge>
             </div>
