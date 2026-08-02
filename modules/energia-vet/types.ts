@@ -337,6 +337,18 @@ export interface RefeedingPlan {
   kcalTarget: number
 }
 
+export interface ReportProvenance {
+  schemaVersion: 4 | 5
+  calculationEngineVersion: string
+  energyRuleSetVersion: string
+  clinicalRuleSetVersion: string
+  catalogReleaseId: string
+  pdfTemplateVersion: string
+  createdAt: string
+  sourceReportId?: string
+  migratedAt?: string
+}
+
 export interface StoredCalculationReport {
   id: string
   patientKey?: string
@@ -352,6 +364,8 @@ export interface StoredCalculationReport {
     feedingPlan: FeedingPlan
     programmedFeeding?: ProgrammedFeedingPlan
   }
+  /** Presente apenas em relatórios V5; relatórios V4 permanecem sem este campo. */
+  provenance?: ReportProvenance
 }
 
 export interface Report {
