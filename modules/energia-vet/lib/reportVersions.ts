@@ -7,7 +7,7 @@ export const NUTRITION_SCHEMA_VERSION_V4 = 4 as const
 
 export const CALCULATION_ENGINE_VERSION = 'vetius-energia-vet-calc-v1'
 export const ENERGY_RULE_SET_VERSION = 'fediaf-2025-v1'
-export const CLINICAL_RULE_SET_VERSION = 'legacy-genutri-v1'
+export const CLINICAL_RULE_SET_VERSION = 'nutrition-clinical-v2.0.0'
 export const CATALOG_RELEASE_ID_LEGACY = 'genutri-bundle-v1'
 export const PDF_TEMPLATE_VERSION_V4 = 'reportDocument-v4'
 export const PDF_TEMPLATE_VERSION_V5 = 'nutrition-pdf-v5-draft'

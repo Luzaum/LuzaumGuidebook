@@ -1,5 +1,7 @@
 import type { FoodItem } from '../../types'
 import { filterFoods, GENUTRI_FOODS, getFoodById, getDatasetStats } from '../genutriData'
+import { evaluateTherapeuticFoodAssessment } from '../clinical/clinicalRuleEngine'
+import { isNutritionFeatureEnabled } from '../featureFlags'
 import type {
   CatalogDatasetStats,
   CatalogFoodSummary,
@@ -116,8 +118,18 @@ export class LegacyGenutriCatalogAdapter implements FoodCatalogRepository {
     ]
   }
 
-  async getTherapeuticAssessment(_foodId: string, _ctx: ClinicalPatientContext): Promise<TherapeuticFoodAssessment> {
-    return insufficientDataAssessment()
+  async getTherapeuticAssessment(foodId: string, ctx: ClinicalPatientContext): Promise<TherapeuticFoodAssessment> {
+    if (!isNutritionFeatureEnabled('nutrition_clinical_rules_v2')) {
+      return insufficientDataAssessment()
+    }
+    const food = await this.getById(foodId)
+    if (!food) {
+      return {
+        ...insufficientDataAssessment(),
+        cautions: [{ code: 'food_not_found', messagePt: 'Alimento não encontrado.', severity: 'caution' }],
+      }
+    }
+    return evaluateTherapeuticFoodAssessment(food, ctx)
   }
 }
 
