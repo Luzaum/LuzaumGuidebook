@@ -45,16 +45,16 @@ test('ensureReportProvenance não altera relatório já v5', () => {
   assert.equal(again.provenance?.schemaVersion, 5)
 })
 
-test('catálogo legado retorna 223 alimentos na busca', async () => {
+test('catálogo legado retorna 292 alimentos na busca', async () => {
   const result = await legacyGenutriCatalogAdapter.search({})
-  assert.equal(result.total, 223)
+  assert.equal(result.total, 292)
   assert.equal(result.source, 'legacy_genutri')
 })
 
 test('getCatalogDatasetStats reflete dataset real', () => {
   const stats = getCatalogDatasetStats()
-  assert.equal(stats.foods, 223)
-  assert.equal(stats.bySource.legacy_genutri, 223)
+  assert.equal(stats.foods, 292)
+  assert.equal(stats.bySource.legacy_genutri, 292)
 })
 
 test('normalizer não converte ausente em zero', () => {

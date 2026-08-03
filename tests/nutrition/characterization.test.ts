@@ -12,9 +12,9 @@ import {
 import { buildVetiusNutritionPdfFilename } from '../../modules/energia-vet/lib/reportDocument'
 import { REPORT_V4_SAMPLE } from './fixtures/report-v4-sample'
 
-test('dataset GENUTRI mantém 223 alimentos e 55 perfis', () => {
+test('dataset GENUTRI mantém 292 alimentos e 55 perfis', () => {
   const stats = getDatasetStats()
-  assert.equal(stats.foods, 223)
+  assert.equal(stats.foods, 292)
   assert.equal(stats.requirements, 55)
   assert.equal(stats.energyRules, 2)
 })
