@@ -23,6 +23,34 @@ test('completeRemainingEqually reparte o restante em partes iguais', () => {
   assert.equal(next!.reduce((sum, entry) => sum + entry.inclusionPct, 0), 100)
 })
 
+test('completeRemainingEqually reduz nao travados quando total informado passa de 100%', () => {
+  const entries = [
+    { foodId: 'a', inclusionPct: 34 },
+    { foodId: 'b', inclusionPct: 50 },
+    { foodId: 'c', inclusionPct: 40 },
+  ]
+  const locked = new Set(['a'])
+  const next = completeRemainingEqually(entries, locked)
+  assert.ok(next)
+  assert.equal(next![0].inclusionPct, 34)
+  assert.equal(next![1].inclusionPct, 33)
+  assert.equal(next![2].inclusionPct, 33)
+})
+
+test('completeRemainingEqually zera nao travados se travados somarem 100% ou mais', () => {
+  const entries = [
+    { foodId: 'a', inclusionPct: 70 },
+    { foodId: 'b', inclusionPct: 40 },
+    { foodId: 'c', inclusionPct: 20 },
+  ]
+  const locked = new Set(['a', 'b'])
+  const next = completeRemainingEqually(entries, locked)
+  assert.ok(next)
+  assert.equal(next![0].inclusionPct, 70)
+  assert.equal(next![1].inclusionPct, 40)
+  assert.equal(next![2].inclusionPct, 0)
+})
+
 test('completeRemainingEqually sem travados equivale a dividir igualmente', () => {
   const entries = [
     { foodId: 'a', inclusionPct: 20 },

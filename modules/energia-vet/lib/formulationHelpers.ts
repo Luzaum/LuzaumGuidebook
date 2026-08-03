@@ -14,7 +14,8 @@ export function equalEntries(entries: DietFormulaEntry[]): DietFormulaEntry[] {
 
 /**
  * Mantém as % dos alimentos travados (editados manualmente) e reparte
- * o restante em partes iguais entre os demais.
+ * o restante em partes iguais entre os demais, reduzindo-os se necessário
+ * para fechar 100%. Se os travados já somarem ≥ 100%, os demais vão a 0%.
  */
 export function completeRemainingEqually(
   entries: DietFormulaEntry[],
@@ -29,9 +30,7 @@ export function completeRemainingEqually(
     .filter((entry) => lockedFoodIds.has(entry.foodId))
     .reduce((sum, entry) => sum + Math.max(0, entry.inclusionPct || 0), 0)
 
-  const remainder = 100 - lockedSum
-  if (remainder < 0) return null
-
+  const remainder = Math.max(0, 100 - lockedSum)
   const equalShare = remainder / unlocked.length
 
   return entries.map((entry) =>

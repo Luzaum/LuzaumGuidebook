@@ -97,7 +97,8 @@ export default function FormulationStep() {
   const lockedSum = entries
     .filter((entry) => lockedFoodIds.has(entry.foodId))
     .reduce((sum, entry) => sum + (entry.inclusionPct || 0), 0)
-  const canCompleteRemaining = entries.length > 1 && lockedSum <= 100
+  const unlockedCount = entries.filter((entry) => !lockedFoodIds.has(entry.foodId)).length
+  const canCompleteRemaining = entries.length > 1 && unlockedCount > 0
 
   return (
     <Card className="nutrition-step-card w-full">
@@ -133,7 +134,7 @@ export default function FormulationStep() {
             <div>
               <h2 className="font-semibold">Participação dos alimentos</h2>
               <p className="text-sm text-muted-foreground">
-                Edite as % manualmente; itens alterados ficam travados ao completar o restante.
+                Edite as % manualmente; ao completar o restante, os demais são reduzidos ou repartidos para fechar 100%.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -148,8 +149,8 @@ export default function FormulationStep() {
                 className="gap-2"
                 title={
                   lockedFoodIds.size
-                    ? 'Reparte o restante em partes iguais entre os alimentos não travados'
-                    : 'Travou nenhum alimento: reparte 100% igualmente entre todos'
+                    ? 'Mantém os travados e reparte ou reduz os demais para fechar 100%'
+                    : 'Reparte 100% igualmente entre todos os alimentos'
                 }
               >
                 <PieChart className="h-4 w-4" /> Completar o restante
