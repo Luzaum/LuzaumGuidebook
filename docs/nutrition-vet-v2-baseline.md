@@ -135,3 +135,16 @@ Modo V2: catálogo unificado + regras clínicas + PDF novo + storage v5 (`vetius
 4. `feat(nutrition): add non-destructive report v5 migration`
 5. `feat(nutrition): add catalog v2 additive schema`
 6. … (importadores, regras clínicas, hospital, UI, PDF, validação)
+
+## Atualização pós Fases 5–8 (2026-08-03)
+
+Commits: `b01ea02` (hospital), `09a7142` (PDF + UI catálogo), `8cd42d0` (testes + validação).
+
+| Check Playwright | Antes | Depois |
+|------------------|-------|--------|
+| `foodModalIsClean` | false | **true** |
+| `profileOptionsInPortuguese` | false | **true** |
+| `hasSlugVisible` | true (falso positivo por `FEDIAF`) | **false** |
+| `npm run test:nutrition` | 35 testes | **48 testes** |
+
+Feature flags permanecem desligadas por padrão; ative com `VITE_NUTRITION_*_V2=true` para homologação.
