@@ -4,6 +4,10 @@
 
 import { determineNeuroLocalization } from '../localization'
 
+const assert = (condition: unknown, message: string) => {
+  if (!condition) throw new Error(message)
+}
+
 // Mock de teste básico
 export const testDetermineNeuroLocalization = () => {
   console.log('[TEST] determineNeuroLocalization')
@@ -23,15 +27,15 @@ export const testDetermineNeuroLocalization = () => {
   }
 
   const result1 = determineNeuroLocalization(case1)
-  console.assert(result1.status === 'ok', 'Caso válido deve ter status ok')
-  console.assert(result1.primary === 'MEDULA_T3_L3', 'Deve localizar em T3-L3')
-  console.assert(result1.motorPattern === 'UMN', 'Deve identificar padrão UMN')
-  console.assert(result1.confidence > 0, 'Deve ter confiança > 0')
+  assert(result1.status === 'ok', 'Caso válido deve ter status ok')
+  assert(result1.primary === 'MEDULA_T3_L3', 'Deve localizar em T3-L3')
+  assert(result1.motorPattern === 'UMN', 'Deve identificar padrão UMN')
+  assert(result1.confidence > 0, 'Deve ter confiança > 0')
 
   // Cenário 2: Prosencéfalo (alteração de consciência)
   const case2 = {
     patient: { species: 'cat' },
-    complaint: { temporalPattern: 'agudo' },
+    complaint: { temporalPattern: 'agudo', chiefComplaintIds: ['ConvulsaoGeneralizada'] },
     neuroExam: {
       mentation: 'Deprimido',
       behavior: 'Desorientado',
@@ -40,8 +44,8 @@ export const testDetermineNeuroLocalization = () => {
   }
 
   const result2 = determineNeuroLocalization(case2)
-  console.assert(result2.status === 'ok', 'Caso válido deve ter status ok')
-  console.assert(result2.primary === 'PROSENCEFALO', 'Deve localizar em prosencéfalo')
+  assert(result2.status === 'ok', 'Caso válido deve ter status ok')
+  assert(result2.primary === 'PROSENCEFALO', 'Deve localizar em prosencéfalo')
 
   console.log('[TEST] determineNeuroLocalization - OK')
 }

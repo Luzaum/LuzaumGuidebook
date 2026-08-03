@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { toast } from 'sonner'
-import { Calculator, ChevronRight, Plus, Search, Users } from 'lucide-react'
+import { ArrowRight, CalendarDays, Plus, Search, Users } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
 import { Button } from '../components/ui/button'
@@ -86,77 +86,47 @@ export default function Patients() {
     )
   }, [patients, query])
 
+  const totalReports = useMemo(() => patients.reduce((sum, patient) => sum + patient.reportCount, 0), [patients])
+
   return (
-    <div className="space-y-8 w-full pb-20">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+    <div className="nutrition-page w-full space-y-6 pb-16">
+      <header className="nutrition-page-header">
         <div>
-          <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight text-white">
-            <Users className="h-8 w-8 text-orange-300" />
-            Histórico de pacientes
-          </h1>
-          <p className="mt-2 text-muted-foreground max-w-3xl">
-            Cada paciente pode ter vários relatórios em ordem cronológica. Abra o histórico para rever prescrições e exportar o PDF quando precisar.
-          </p>
+          <p className="nutrition-eyebrow">Acompanhamento</p>
+          <h1>Pacientes</h1>
+          <p>Históricos organizados por paciente para revisar evolução, prescrições e relatórios anteriores.</p>
         </div>
-        <Button className="gap-2" onClick={() => navigate(NEW_ROUTE)}>
-          <Plus className="h-4 w-4" /> Novo calculo
-        </Button>
+        <Button className="w-full gap-2 sm:w-auto" onClick={() => navigate(NEW_ROUTE)}><Plus className="h-4 w-4" /> Novo cálculo</Button>
+      </header>
+
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+        <div className="nutrition-header-stat"><span>Pacientes</span><strong>{patients.length}</strong></div>
+        <div className="nutrition-header-stat"><span>Relatórios</span><strong>{totalReports}</strong></div>
+        <div className="nutrition-header-stat col-span-2 lg:col-span-1"><span>Resultados atuais</span><strong>{filteredPatients.length}</strong></div>
       </div>
 
-      <Card className="border-white/10 bg-[#141010] shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-        <CardHeader>
-          <CardTitle className="text-white">Pacientes com relatórios</CardTitle>
-          <CardDescription>Busque por nome, tutor ou raça. Com sessão e clínica, a lista reflete relatórios sincronizados na nuvem quando disponível.</CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Buscar por paciente, tutor ou raca..." className="pl-9" value={query} onChange={(event) => setQuery(event.target.value)} />
+      <Card className="gap-0 py-0">
+        <CardHeader className="border-b border-border p-5 lg:p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div><CardTitle className="flex items-center gap-2"><Users className="h-5 w-5 text-primary" /> Histórico clínico</CardTitle><CardDescription className="mt-1">A lista combina registros sincronizados e dados disponíveis neste dispositivo.</CardDescription></div>
+            <div className="relative w-full lg:max-w-md"><Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" /><Input aria-label="Buscar pacientes" placeholder="Paciente, tutor ou raça" className="pl-10" value={query} onChange={(event) => setQuery(event.target.value)} /></div>
           </div>
-
+        </CardHeader>
+        <CardContent className="p-3 sm:p-4">
           {filteredPatients.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-white/10 p-5 text-sm text-muted-foreground">
-              Nenhum paciente encontrado. Salve um cálculo para popular o histórico.
-            </div>
+            <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-muted-foreground">Nenhum paciente encontrado. Salve um cálculo para iniciar o histórico.</div>
           ) : (
-            <div className="grid gap-4 md:grid-cols-2 2xl:grid-cols-3">
+            <div className="grid gap-3 xl:grid-cols-2">
               {filteredPatients.map((patient) => (
-                <Card key={patient.patientKey} className="border-white/10 bg-[#1a1413] transition-all duration-200 hover:-translate-y-1 hover:border-orange-500/30 hover:shadow-[0_16px_28px_rgba(249,115,22,0.08)]">
-                  <CardContent className="space-y-4 p-5">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <p className="text-lg font-semibold text-white">{patient.name ?? 'Paciente sem nome'}</p>
-                        <p className="text-sm text-muted-foreground">{patient.ownerName ?? 'Tutor não informado'}</p>
-                      </div>
-                      <Badge variant="outline">{patient.species === 'dog' ? 'Cao' : patient.species === 'cat' ? 'Gato' : 'Não informado'}</Badge>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
-                        <p className="text-[11px] text-muted-foreground">Peso atual</p>
-                        <p className="mt-1 font-semibold text-white">{patient.currentWeight != null ? `${patient.currentWeight} kg` : '—'}</p>
-                      </div>
-                      <div className="rounded-2xl border border-white/10 bg-black/10 p-3">
-                        <p className="text-[11px] text-muted-foreground">Histórico</p>
-                        <p className="mt-1 font-semibold text-white">{patient.reportCount} relatorio(s)</p>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="text-xs text-muted-foreground">
-                        Ultimo relatorio em {new Date(patient.lastReportAt).toLocaleDateString('pt-BR')}
-                      </div>
-                      <div className="flex gap-2">
-                        <Button variant="outline" size="sm" render={<Link to={`${BASE_ROUTE}/patients/${patient.patientKey}`} />} className="gap-2">
-                          Ver detalhes <ChevronRight className="h-4 w-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" title="Novo calculo" onClick={() => navigate(NEW_ROUTE)}>
-                          <Calculator className="h-4 w-4 text-orange-300" />
-                        </Button>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <Link key={patient.patientKey} to={`${BASE_ROUTE}/patients/${patient.patientKey}`} className="group flex cursor-pointer flex-col gap-4 rounded-2xl border border-border bg-card p-4 outline-none transition-colors duration-200 hover:border-primary/30 hover:bg-primary/[0.025] focus-visible:ring-3 focus-visible:ring-ring/25 sm:flex-row sm:items-center">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary/[0.09] text-base font-semibold text-primary">{(patient.name ?? 'P').slice(0, 1).toUpperCase()}</span>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex flex-wrap items-center gap-2"><p className="truncate text-base font-semibold text-foreground">{patient.name ?? 'Paciente sem nome'}</p><Badge variant="outline">{patient.species === 'dog' ? 'Cão' : patient.species === 'cat' ? 'Gato' : 'Não informado'}</Badge></div>
+                    <p className="mt-1 truncate text-sm text-muted-foreground">Tutor: {patient.ownerName ?? 'não informado'}{patient.breed ? ` · ${patient.breed}` : ''}</p>
+                    <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-muted-foreground"><span>{patient.currentWeight != null ? `${patient.currentWeight} kg` : 'Peso não informado'}</span><span>{patient.reportCount} relatório(s)</span><span className="flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" /> {new Date(patient.lastReportAt).toLocaleDateString('pt-BR')}</span></div>
+                  </div>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                </Link>
               ))}
             </div>
           )}

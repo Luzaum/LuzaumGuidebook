@@ -1,5 +1,7 @@
 import { DocumentTemplate } from '../types/receituario';
 import { normalizeLegacyDocumentBody } from '../utils/receituarioDocument';
+import { RECEITUARIO_INFECTOLOGIA_MODELS } from './receituarioInfectologiaModels';
+import { RECEITUARIO_PROTOCOL_MODELS } from './receituarioProtocolModels';
 
 export const RECEITUARIO_CATEGORIES = [
   'Gastroenterologia',
@@ -11,6 +13,7 @@ export const RECEITUARIO_CATEGORIES = [
   'Dermatologia',
   'Oftalmologia',
   'Infectologia',
+  'Infecciosos',
   'Dor e pós-operatório',
   'Emergência',
   'Cuidados gerais',
@@ -21,39 +24,15 @@ export const STANDARD_RECIPE_HEADER = '';
 export const STANDARD_RECIPE_FOOTER = `
 RECOMENDAÇÕES
 
-* Oferecer as medicações conforme os horários prescritos.
-* Não interromper o tratamento sem orientação médico-veterinária.
-* Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.
-* Retornar para reavaliação no período definido pelo médico-veterinário ou antes, caso necessário.`;
+• Oferecer as medicações conforme os horários prescritos.
+• Não interromper o tratamento sem orientação médico-veterinária.
+• Procurar atendimento caso ocorram vômitos persistentes, diarreia intensa, prostração, dificuldade respiratória, convulsões, sangramentos ou piora do estado geral.
+• Retornar para reavaliação em A PREENCHER ou antes, caso necessário.
+
+Em caso de piora clínica, retornar ao hospital ou buscar serviço veterinário externo.`;
 
 const RAW_SEEDED_TEMPLATES: DocumentTemplate[] = [
   // 1. Gastroenterologia
-  {
-    id: 'seed-gastrite-aguda',
-    title: 'Gastrite Aguda / Gastroenterite',
-    category: 'Gastroenterologia',
-    document_type: 'recipe',
-    species: 'ambos',
-    is_global: true,
-    is_active: true,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    body_plain_text: `${STANDARD_RECIPE_HEADER}
-USO ORAL
-
-1. OMEPRAZOL 10mg / 20mg — Cápsula
-Administrar 1 mg/kg por via oral, a cada 24 horas, em jejum, durante 7 a 10 dias.
-
-2. ONDANSETRONA 4mg / 8mg — Comprimido
-Administrar 0,5 mg/kg por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.
-
-3. SUCRALFATO 500mg / 1g — Suspensão
-Administrar 25 a 50 mg/kg por via oral, a cada 8 horas (1 hora antes ou 2 horas após alimentação e outros medicamentos), durante 7 dias.
-
-4. SIMBIÓTICO / PROBIÓTICO VETERINÁRIO — Pasta / Sachê
-Administrar conforme orientação do fabricante por via oral, a cada 24 horas, durante 10 dias.
-${STANDARD_RECIPE_FOOTER}`
-  },
   {
     id: 'seed-diarreia-aguda',
     title: 'Diarreia Aguda e Controle Digestivo',
@@ -302,7 +281,7 @@ ${STANDARD_RECIPE_FOOTER}`
   {
     id: 'seed-pif-felina',
     title: 'Piodermite / Infecção Bacteriana de Pele',
-    category: 'Infectologia',
+    category: 'Infecciosos',
     document_type: 'recipe',
     species: 'ambos',
     is_global: true,
@@ -425,17 +404,15 @@ RESPONSÁVEL: {{responsible_name}}
 
 Eu, responsável pelo animal acima identificado, declaro que fui informado(a), de maneira clara e compreensível, pelo médico-veterinário responsável, sobre o estado clínico atual do paciente.
 
-Foi recomendada a realização da seguinte conduta:
+CONDUTA RECOMENDADA E RECUSADA:
 
-[DESCREVER EXAME, PROCEDIMENTO, INTERNAÇÃO, TRATAMENTO, CIRURGIA, ENCAMINHAMENTO OU OUTRA CONDUTA RECOMENDADA]
+[DESCREVER EXAME, PROCEDIMENTO, INTERNAÇÃO, TRATAMENTO, CIRURGIA, MEDICAÇÃO, ENCAMINHAMENTO OU OUTRA CONDUTA]
 
-Declaro que recebi explicações sobre o motivo da recomendação, seus possíveis benefícios, alternativas disponíveis e os riscos relacionados à não realização ou interrupção da conduta proposta.
+Declaro que recebi explicações sobre o motivo da recomendação, seus possíveis benefícios, alternativas disponíveis e os riscos relacionados à não realização, adiamento ou interrupção da conduta proposta. Mesmo após os esclarecimentos fornecidos, decido recusar a conduta descrita acima neste momento.
 
-Mesmo após os esclarecimentos fornecidos, decido neste momento recusar:
+RISCOS GERAIS DA RECUSA:
 
-[DESCREVER A CONDUTA RECUSADA]
-
-Fui informado(a) de que essa decisão poderá ocasionar piora do quadro clínico, progressão da doença, aumento da dor ou desconforto, desenvolvimento de complicações, sequelas permanentes, necessidade de atendimento emergencial e, dependendo da condição do paciente, risco de óbito.
+Fui informado(a) de que a recusa poderá ocasionar piora ou progressão da doença; atraso no diagnóstico e no início do tratamento; dor, sofrimento e perda de qualidade de vida; desidratação, desequilíbrios metabólicos ou nutricionais; hemorragia; infecção, sepse ou choque; dificuldade ou insuficiência respiratória; alterações cardíacas, arritmias ou parada cardiorrespiratória; alterações neurológicas, convulsões ou perda de consciência; obstrução ou incapacidade de urinar; incapacidade de se alimentar; perda temporária ou permanente da função de órgãos ou membros; necessidade futura de internação, cirurgia, transfusão, cuidados intensivos ou atendimento emergencial; complicações irreversíveis; sequelas permanentes e risco de óbito. Compreendo que outros riscos imprevisíveis também podem ocorrer conforme a evolução do paciente.
 
 Declaro que tive oportunidade de fazer perguntas, que minhas dúvidas foram esclarecidas e que assumo a responsabilidade pela decisão de não autorizar a conduta recomendada neste momento.
 
@@ -668,8 +645,41 @@ ASSINATURA: ____________________________________________`
   }
 ];
 
-/** Modelos entregues à interface nunca contêm placeholders, colchetes ou cabeçalho duplicado. */
-export const SEEDED_TEMPLATES: DocumentTemplate[] = RAW_SEEDED_TEMPLATES.map((template) => ({
+/** A biblioteca global inclui somente os termos e as receitas clínicas solicitadas. */
+export const SEEDED_TEMPLATES: DocumentTemplate[] = [
+  ...RAW_SEEDED_TEMPLATES.filter((template) => template.document_type === 'term'),
+  ...RECEITUARIO_INFECTOLOGIA_MODELS,
+  ...RECEITUARIO_PROTOCOL_MODELS,
+].map((template) => ({
   ...template,
   body_plain_text: normalizeLegacyDocumentBody(template.body_plain_text),
 }));
+
+export const GLOBAL_RECIPE_TEMPLATE_IDS = new Set(
+  SEEDED_TEMPLATES.filter((template) => template.document_type === 'recipe').map((template) => template.id),
+);
+
+export const RETIRED_RECIPE_TEMPLATE_IDS = new Set([
+  'seed-gastrite-aguda',
+  'seed-cardio-b2',
+  'seed-cardiob2',
+  'seed-infectologia-parvovirose-hospitalar',
+  'seed-infectologia-parvovirose-ambulatorial',
+]);
+
+function normalizedTemplateTitle(value: string): string {
+  return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+/** Impede que modelos aposentados reapareçam por cache ou por registros antigos do banco. */
+export function isRetiredRecipeTemplate(template: Pick<DocumentTemplate, 'id' | 'title' | 'document_type'>): boolean {
+  if (template.document_type !== 'recipe') return false;
+  if (RETIRED_RECIPE_TEMPLATE_IDS.has(template.id)) return true;
+  const title = normalizedTemplateTitle(template.title);
+  return title === 'cardiob2'
+    || title === 'cardio b2'
+    || title === 'cardiologia b2'
+    || title === 'gastrite aguda gastroenterite'
+    || title.includes('parvovirose caes protocolo hospitalar')
+    || title.includes('parvovirose caes protocolo ambulatorial');
+}

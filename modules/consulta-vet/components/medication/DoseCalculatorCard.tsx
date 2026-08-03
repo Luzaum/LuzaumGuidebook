@@ -4,6 +4,7 @@ import { cn } from '../../../../lib/utils';
 import { useDoseCalculator } from '../../hooks/useDoseCalculator';
 import { MedicationDose, MedicationPresentation } from '../../types/medication';
 import {
+  buildClinicalDoseLabel,
   buildDoseSummaryLabel,
   formatDoseSpeciesLabel,
   getPresentationConcentrationOptions,
@@ -20,10 +21,10 @@ interface DoseCalculatorCardProps {
 
 const UI_TEXT = {
   title: 'Calculadora de dose',
-  subtitle: 'Peso, espécie, regime e apresentação em um cálculo só',
+  subtitle: 'Selecione a indicação, informe o peso e confira a dose por administração.',
   species: 'Espécie',
   weight: 'Peso (kg)',
-  doseBase: 'Doses pré-definidas',
+  doseBase: 'Quadro clínico e regime',
   presentation: 'Apresentação',
   concentration: 'Concentração',
   mgOnly: 'Apenas em mg',
@@ -31,7 +32,6 @@ const UI_TEXT = {
   safeConversion: 'Conversão pela apresentação',
   results: 'Resultado do cálculo',
   totalDose: 'Dose total',
-  explicitSpecies: 'Cada dose precisa ter espécie explícita e representar uma única dose pré-definida.',
   mgFallback: 'Dose calculada em mg',
 } as const;
 
@@ -70,9 +70,10 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
   className,
   variant = 'standalone',
 }: DoseCalculatorCardProps) {
+  const calculatorDoses = useMemo(() => doses.filter((dose) => dose.calculatorEnabled), [doses]);
   const availableSpecies = useMemo(() => {
     const set = new Set<MedicationDoseSpecies>();
-    doses.forEach((dose) => {
+    calculatorDoses.forEach((dose) => {
       if (dose.species === 'both') {
         set.add('dog');
         set.add('cat');
@@ -81,14 +82,14 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
       }
     });
     return Array.from(set);
-  }, [doses]);
+  }, [calculatorDoses]);
 
   const [selectedSpecies, setSelectedSpecies] = useState<MedicationDoseSpecies>(availableSpecies[0] || 'dog');
   const filteredDoses = useMemo(
-    () => doses.filter((dose) => dose.species === 'both' || dose.species === selectedSpecies),
-    [doses, selectedSpecies]
+    () => calculatorDoses.filter((dose) => dose.species === 'both' || dose.species === selectedSpecies),
+    [calculatorDoses, selectedSpecies]
   );
-  const [selectedDoseId, setSelectedDoseId] = useState<string>(filteredDoses[0]?.id || doses[0]?.id || '');
+  const [selectedDoseId, setSelectedDoseId] = useState<string>(filteredDoses[0]?.id || calculatorDoses[0]?.id || '');
   const [selectedPresentationId, setSelectedPresentationId] = useState<string>('');
   const [selectedConcentrationId, setSelectedConcentrationId] = useState<string>('');
 
@@ -146,7 +147,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     setSelectedConcentrationId(concentrationChoices[0].id);
   }, [concentrationChoices, selectedConcentrationId, selectedDose?.presentationConcentrationId, selectedPresentation?.id]);
 
-  if (!doses.length || !selectedDose) return null;
+  if (!calculatorDoses.length || !selectedDose) return null;
 
   const conversionLabel =
     result?.conversionSafeMin !== undefined || result?.conversionSafeSingle !== undefined
@@ -162,18 +163,14 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
         };
 
   const calculatorInner = (
-    <div className="space-y-8">
-        <div className="rounded-[24px] border border-primary/15 bg-primary/[0.05] px-5 py-4 text-sm leading-7 text-foreground/85">
-          {UI_TEXT.explicitSpecies}
-        </div>
-
-        <div className="grid gap-5 xl:grid-cols-12">
-          <div className="space-y-2 xl:col-span-2">
+    <div className="space-y-5">
+        <div className="grid gap-4 lg:grid-cols-12">
+          <div className="space-y-2 lg:col-span-2">
             <Label>{UI_TEXT.species}</Label>
             <select
               value={selectedSpecies}
               onChange={(event) => setSelectedSpecies(event.target.value as MedicationDoseSpecies)}
-              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               {availableSpecies.map((species) => (
                 <option key={species} value={species}>
@@ -183,7 +180,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
             </select>
           </div>
 
-          <div className="space-y-2 xl:col-span-2">
+          <div className="space-y-2 lg:col-span-2">
             <Label>{UI_TEXT.weight}</Label>
             <input
               type="number"
@@ -192,11 +189,11 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
               value={weight}
               onChange={(event) => setWeight(Number(event.target.value) || '')}
               placeholder="Ex.: 12,4"
-              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             />
           </div>
 
-          <div className="space-y-2 xl:col-span-4">
+          <div className="space-y-2 lg:col-span-8">
             <Label>{UI_TEXT.doseBase}</Label>
             <select
               value={selectedDoseId}
@@ -204,17 +201,17 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
                 setSelectedDoseId(event.target.value);
                 setSelectedConcentrationId('');
               }}
-              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               {filteredDoses.map((dose) => (
                 <option key={dose.id} value={dose.id}>
-                  {buildDoseSummaryLabel(dose)}
+                  {buildClinicalDoseLabel(dose)}
                 </option>
               ))}
             </select>
           </div>
 
-          <div className="space-y-2 xl:col-span-2">
+          <div className="space-y-2 lg:col-span-6">
             <Label>{UI_TEXT.presentation}</Label>
             <select
               value={selectedPresentationId}
@@ -222,7 +219,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
                 setSelectedPresentationId(event.target.value);
                 setSelectedConcentrationId('');
               }}
-              className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+              className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               <option value="">{UI_TEXT.mgOnly}</option>
               {presentationChoices.map((presentation) => (
@@ -234,12 +231,12 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           </div>
 
           {selectedPresentation?.concentrationOptions?.length ? (
-            <div className="space-y-2 xl:col-span-2">
+            <div className="space-y-2 lg:col-span-6">
               <Label>{UI_TEXT.concentration}</Label>
               <select
                 value={selectedConcentrationId}
                 onChange={(event) => setSelectedConcentrationId(event.target.value)}
-                className="w-full rounded-2xl border border-border bg-background px-4 py-3 text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
+                className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
               >
                 {concentrationChoices.map((presentation) => (
                   <option key={presentation.id} value={presentation.id}>
@@ -251,29 +248,29 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           ) : null}
         </div>
 
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)]">
-          <div className="rounded-[28px] border border-border/80 bg-muted/[0.12] p-6">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.15fr)_minmax(260px,0.85fr)]">
+          <div className="rounded-2xl border border-border/80 bg-muted/[0.12] p-4">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="mt-1 h-5 w-5 shrink-0 text-primary" />
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{UI_TEXT.referenceDose}</p>
-                <p className="mt-3 text-[15px] leading-7 text-foreground">{buildDoseSummaryLabel(selectedDose)}</p>
+                <p className="mt-2 text-sm leading-6 text-foreground">{buildClinicalDoseLabel(selectedDose)}</p>
                 {selectedDose.duration ? (
-                  <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  <p className="mt-2 text-sm leading-6 text-muted-foreground">
                     <span className="font-medium text-foreground">Duração:</span> {selectedDose.duration}
                   </p>
                 ) : null}
                 {selectedDose.notes ? (
-                  <p className="mt-4 border-t border-border/70 pt-4 text-sm leading-7 text-muted-foreground">{selectedDose.notes}</p>
+                  <p className="mt-3 border-t border-border/70 pt-3 text-sm leading-6 text-muted-foreground">{selectedDose.notes}</p>
                 ) : null}
               </div>
             </div>
           </div>
 
           {result ? (
-            <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1" aria-live="polite">
               {result.warning ? (
-                <div className="flex items-start gap-3 rounded-[24px] border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 text-sm leading-7 text-amber-700 dark:text-amber-300">
+                <div className="flex items-start gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/[0.06] px-4 py-3 text-sm leading-6 text-amber-700 dark:text-amber-300">
                   <AlertTriangle className="mt-1 h-4 w-4 shrink-0" />
                   <p>{result.warning}</p>
                 </div>
@@ -338,7 +335,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
         </div>
       </div>
 
-      <div className="space-y-8 px-6 py-6 md:px-8 md:py-8">{calculatorInner}</div>
+      <div className="space-y-5 px-5 py-5 md:px-6 md:py-6">{calculatorInner}</div>
     </section>
   );
 });

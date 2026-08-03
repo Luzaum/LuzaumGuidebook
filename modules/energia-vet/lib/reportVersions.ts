@@ -1,4 +1,5 @@
 import type { ReportProvenance } from '../types'
+import { BOOK_ENERGY_RULE_SET_VERSION } from './bookEnergy'
 
 /** Versões dos motores e datasets — registradas em relatórios V5. */
 
@@ -6,7 +7,8 @@ export const NUTRITION_SCHEMA_VERSION = 5 as const
 export const NUTRITION_SCHEMA_VERSION_V4 = 4 as const
 
 export const CALCULATION_ENGINE_VERSION = 'vetius-energia-vet-calc-v1'
-export const ENERGY_RULE_SET_VERSION = 'fediaf-2025-v1'
+export const ENERGY_RULE_SET_VERSION = BOOK_ENERGY_RULE_SET_VERSION
+export const LEGACY_ENERGY_RULE_SET_VERSION = 'fediaf-2025-v1'
 export const CLINICAL_RULE_SET_VERSION = 'nutrition-clinical-v2.0.0'
 export const CATALOG_RELEASE_ID_LEGACY = 'genutri-bundle-v1'
 export const PDF_TEMPLATE_VERSION_V4 = 'reportDocument-v4'
@@ -39,7 +41,7 @@ export function inferProvenanceFromReport(report: {
   return {
     schemaVersion: NUTRITION_SCHEMA_VERSION_V4,
     calculationEngineVersion: CALCULATION_ENGINE_VERSION,
-    energyRuleSetVersion: ENERGY_RULE_SET_VERSION,
+    energyRuleSetVersion: LEGACY_ENERGY_RULE_SET_VERSION,
     clinicalRuleSetVersion: CLINICAL_RULE_SET_VERSION,
     catalogReleaseId: CATALOG_RELEASE_ID_LEGACY,
     pdfTemplateVersion: PDF_TEMPLATE_VERSION_V4,

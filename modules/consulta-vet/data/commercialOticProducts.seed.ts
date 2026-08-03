@@ -3,6 +3,7 @@ import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommer
 import { insulinCommercialProductsSeed } from './insulinCommercialProducts.seed';
 import { selectedCommercialProductsSeed } from './selectedCommercialProducts.seed';
 import { simethiconeCommercialProductsSeed } from './simethiconeCommercialProducts.seed';
+import { itraconazolePrednisoloneCommercialProductsSeed } from './itraconazolePrednisoloneCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -41,6 +42,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
   ...insulinCommercialProductsSeed,
   ...simethiconeCommercialProductsSeed,
   ...hepatoprotectiveCommercialProductsSeed,
+  ...itraconazolePrednisoloneCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -1186,40 +1188,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     price: {
       averageLabel: 'Variável',
       rangeLabel: 'Confirmar varejo/estoque',
-      sourceDate: PRICE_SOURCE_DATE,
-    },
-  },
-  {
-    labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/prediderm-5-mg',
-    productPageUrl: 'https://www.ourofinopet.com/produtos/medicamentos/prediderm/',
-    id: 'prediderm-ourofino',
-    slug: 'prediderm-prednisolona',
-    name: 'Prediderm',
-    manufacturer: 'Ourofino',
-    commercialClass: 'dermatologic',
-    commercialSubclass: 'skin_pruritus',
-    commercialSubclasses: ['skin_pruritus'],
-    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1043759/Prediderm-20mg-para-caes.png?v=638146729978430000',
-    species: ['dog'],
-    presentations: ['Comprimidos 5 mg', 'Comprimidos 20 mg'],
-    activeComponents: ['prednisolona 5 mg', 'prednisolona 20 mg'],
-    labelCompositionSummary:
-      'Glicocorticoide sistêmico anti-inflamatório/antipruriginoso. Cada comprimido contém prednisolona 5 mg ou 20 mg conforme apresentação.',
-    labelDirections:
-      'Para prurido/alergia em cães: 0,5 a 1 mg/kg VO SID, podendo dividir BID por curto período em crise; depois reduzir gradualmente para menor dose efetiva.',
-    plumbsContext:
-      'Útil como ponte curta e barata em crise inflamatória, enquanto se investiga a causa do prurido.',
-    clinicalUse:
-      'Crise alérgica, DAPP, dermatite úmida aguda, hipersensibilidade e prurido intenso em curto prazo.',
-    reassessment:
-      'Reavaliar rapidamente se precisar manter ou repetir cursos; investigar causa primária e infecções secundárias.',
-    prescriptionExample:
-      'Administrar 0,5-1 mg/kg VO SID por poucos dias; reduzir gradualmente conforme resposta e plano clínico.',
-    safetyAlert:
-      'Não associar a AINE. Evitar/cautela em diabetes, DRC descompensada, infecção ativa, úlcera GI, pancreatite e hiperadrenocorticismo.',
-    price: {
-      averageLabel: 'R$ 20,00 a R$ 62,00',
-      rangeLabel: '5 mg cerca de R$ 20-25; 20 mg cerca de R$ 55-62',
       sourceDate: PRICE_SOURCE_DATE,
     },
   },

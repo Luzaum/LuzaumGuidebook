@@ -6,11 +6,18 @@ export type DocumentStatus = 'draft' | 'issued';
 export interface PrintIdentification {
   patientName: string;
   responsibleName: string;
+  responsibleCpf?: string;
   species: string;
   breed: string;
   sex: string;
   age: string;
   weightKg: string;
+  veterinarianName?: string;
+  crmv?: string;
+  witness1Name?: string;
+  witness1Cpf?: string;
+  witness2Name?: string;
+  witness2Cpf?: string;
 }
 
 export interface DocumentHeaderData {
@@ -30,6 +37,101 @@ export interface ReceituarioDocumentData {
   bodyPlainText: string;
 }
 
+export type ClinicalDoseBasis = 'weight' | 'weight_per_day' | 'per_animal' | 'manual';
+
+export interface ClinicalMedicationDose {
+  min: number;
+  max?: number;
+  unit: 'mg/kg' | 'mg/kg/dia' | 'UI/kg' | 'mcg/kg' | 'mg/animal' | 'mcg/animal';
+  basis: ClinicalDoseBasis;
+  route: string;
+  frequency: string;
+  duration: string;
+  maximumMgKg?: number;
+  repeatAfterDays?: number;
+}
+
+export interface ClinicalMedicationDefinition {
+  key: string;
+  name: string;
+  canonicalMedicationId?: string | null;
+  canonicalLookupName: string;
+  presentationIds?: string[];
+  linkedDoseIds?: string[];
+  presentationFilter?: 'immediate_release' | 'injectable' | 'oral' | 'none';
+  dose: ClinicalMedicationDose;
+  doseAlternatives?: Array<{
+    key: string;
+    label: string;
+    dose: ClinicalMedicationDose;
+    prescriptionText: string;
+  }>;
+  doseSourceLabel: 'Modelo clínico do ConsultaVet';
+  sourceReviewStatus: 'Revisão de fonte pendente';
+  prescriptionText: string;
+  internalAlert?: string;
+  linkedProtocolKey?: string;
+}
+
+/** Escolhas do veterinário para apresentação/dose ao usar um modelo clínico. */
+export interface ClinicalMedicationOverride {
+  editorialMedicationId?: string | null;
+  commercialProductId?: string | null;
+  presentationId?: string | null;
+  doseId?: string | null;
+  selectedDoseValue?: number | null;
+}
+
+export interface MagistralFormulaComponent {
+  key: string;
+  name: string;
+  amount: number;
+  maxAmount?: number;
+  unit: 'mg/kg' | 'UI/kg' | 'mcg/kg' | 'mg/animal' | 'mcg/animal' | 'mg/animal-small' | 'mg/animal-large';
+}
+
+export interface ClinicalRecipeOption {
+  key: string;
+  label: string;
+  description?: string;
+  optional?: boolean;
+  medications?: ClinicalMedicationDefinition[];
+  medicationPrecautions?: string[];
+  veterinarianNotes?: string[];
+  formula?: {
+    title: string;
+    components: MagistralFormulaComponent[];
+    route: string;
+    frequency: string;
+    durationDays: number;
+    referenceLabel?: string;
+    referenceUrl?: string;
+    requiresPatientSize?: boolean;
+  };
+}
+
+export interface ClinicalRecipeModel {
+  schemaVersion: 1;
+  careSetting: 'ambulatorial' | 'hospitalar' | 'aplicação veterinária';
+  categoryPath: string;
+  selectionMode: 'single' | 'multiple' | 'fixed';
+  selectorLabel?: string;
+  defaultOptionKey?: string;
+  documentHeading?: string;
+  hospitalWarning?: string;
+  incompleteProtocolWarning?: string;
+  options: ClinicalRecipeOption[];
+  recipeInformation?: string[];
+  veterinarianNotes?: string[];
+  diseaseRecommendations: string[];
+  medicationPrecautions: string[];
+  returnSigns: string[];
+}
+
+export interface ReceituarioTemplateStructuredDefaults extends Partial<ReceituarioDocumentData> {
+  clinical_model?: ClinicalRecipeModel;
+}
+
 export interface DocumentTemplate {
   id: string;
   clinic_id?: string | null;
@@ -39,7 +141,7 @@ export interface DocumentTemplate {
   document_type: DocumentType;
   species: ReceituarioSpecies;
   body_plain_text: string;
-  structured_defaults?: Partial<ReceituarioDocumentData> | null;
+  structured_defaults?: ReceituarioTemplateStructuredDefaults | null;
   medication_ids?: string[];
   is_global: boolean;
   is_active: boolean;
@@ -89,9 +191,7 @@ export interface Placeholders {
 }
 
 export interface QuickRefusalFields {
-  recommendedConduct: string;
-  refusedConduct: string;
-  explainedRisks: string;
+  conduct: string;
 }
 
 export interface ReceituarioFilter {

@@ -134,7 +134,9 @@ export function DiseaseDetailPage() {
         if (!isMounted) return;
 
         setRelatedMedications(
-          loadedMedications.filter((item) => found.relatedMedicationSlugs.includes(item.slug))
+          loadedMedications.filter(
+            (item) => found.relatedMedicationSlugs.includes(item.slug) || item.relatedDiseaseSlugs.includes(found.slug),
+          ),
         );
         setRelatedConsensos(
           loadedConsensos.filter((item) => found.relatedConsensusSlugs.includes(item.slug))

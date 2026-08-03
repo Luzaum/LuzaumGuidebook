@@ -1,0 +1,37 @@
+{
+  "generatedAt": "2026-08-02T23:39:03.085Z",
+  "screenshots": {
+    "patient": "C:\\Users\\Resgate\\VetiusLink\\tmp\\energia-vet-validation\\1785713907826-29336\\patient-step.png",
+    "energyDog": "C:\\Users\\Resgate\\VetiusLink\\tmp\\energia-vet-validation\\1785713907826-29336\\energy-step-dog.png",
+    "food": "C:\\Users\\Resgate\\VetiusLink\\tmp\\energia-vet-validation\\1785713907826-29336\\food-step.png",
+    "foodModal": "C:\\Users\\Resgate\\VetiusLink\\tmp\\energia-vet-validation\\1785713907826-29336\\food-modal.png",
+    "summary": "C:\\Users\\Resgate\\VetiusLink\\tmp\\energia-vet-validation\\1785713907826-29336\\summary-step.png"
+  },
+  "checks": {
+    "dogProfiles": {
+      "intact": 838,
+      "neuteredProfile": 724,
+      "obeseProne": 686,
+      "workLight": 838,
+      "workModerate": 953,
+      "workIntense": 1220,
+      "hasSlugVisible": true,
+      "hasPortugueseProfiles": false
+    },
+    "dogCastration": {
+      "intactUnneutered": 838,
+      "intactNeutered": 724
+    },
+    "catIndoor": {
+      "active": 274,
+      "indoor": 205
+    },
+    "profileOptionsInPortuguese": false,
+    "speciesChangesProfiles": true,
+    "castrationChangedCalculation": true,
+    "catIndoorChangedCalculation": true,
+    "foodHasNoEnergyProfileSelector": true,
+    "foodModalIsClean": false,
+    "summaryUsesResolvedProfile": true
+  }
+}

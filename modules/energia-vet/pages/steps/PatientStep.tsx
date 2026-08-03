@@ -1,94 +1,28 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  AlertCircle,
-  ChevronRight,
-  HeartPulse,
-  Home,
-  Mars,
-  Search,
-  Stethoscope,
-  Venus,
-} from 'lucide-react'
+import { Check, ChevronDown, ChevronRight, HeartPulse, Mars, Search, UserRoundPlus, Venus, X, Zap } from 'lucide-react'
 import { toast } from 'sonner'
 import { cn } from '../../lib/utils'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
+import { LocalizedNumberInput } from '../../components/ui/localized-number-input'
 import { Label } from '../../components/ui/label'
-import { Badge } from '../../components/ui/badge'
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../components/ui/tooltip'
 import { useCalculationStore } from '../../store/calculationStore'
-import { calculateRefeedingRisk, getDefaultStateId } from '../../lib/nutrition'
-import { getClinicalProfileBadges, getClinicalProfileIdsFromSelections, getClinicalProfileOptions } from '../../lib/clinicalProfiles'
+import { getDefaultStateId } from '../../lib/nutrition'
+import { getClinicalProfileIdsFromSelections, getClinicalProfileOptions, type ClinicalProfileOption } from '../../lib/clinicalProfiles'
 import { getDefaultRequirement } from '../../lib/genutriData'
+import { mapComorbiditySelectionsToTherapeuticProfiles } from '../../lib/clinical/comorbidityResolver'
+import { getTherapeuticProfileById } from '../../lib/clinical/therapeuticProfiles'
+import { getEvidenceSourceById } from '../../lib/clinical/evidenceResolver'
 import { Species } from '../../types'
-import { SPECIES_PHOTO } from '../../lib/speciesAssets'
 import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../lib/breedOptions'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 
-function SpeciesCardPhoto({
-  src,
-  alt,
-  fallbackGradient,
-  emoji,
-}: {
-  src: string
-  alt: string
-  fallbackGradient: string
-  emoji: string
-}) {
-  const [photoVisible, setPhotoVisible] = useState(false)
-  return (
-    <>
-      <div
-        className={cn(
-          'absolute inset-0 flex items-end justify-center bg-gradient-to-b pb-4 text-[72px] leading-none transition-opacity duration-500',
-          fallbackGradient,
-          photoVisible ? 'opacity-0' : 'opacity-100',
-        )}
-        aria-hidden
-      >
-        {emoji}
-      </div>
-      <img
-        src={src}
-        alt={alt}
-        decoding="async"
-        fetchPriority="high"
-        loading="eager"
-        draggable={false}
-        onLoad={() => setPhotoVisible(true)}
-        onError={(e) => {
-          ;(e.currentTarget as HTMLImageElement).style.display = 'none'
-        }}
-        className={cn(
-          'absolute inset-0 h-full w-full object-cover object-top transition-opacity duration-500',
-          photoVisible ? 'opacity-100' : 'opacity-0',
-        )}
-      />
-    </>
-  )
-}
-
 const SPECIES_OPTIONS = [
-  {
-    value: 'dog' as const,
-    title: 'CÃO',
-    subtitle: 'Perfis caninos, guia ECC do cão e alimentos compatíveis.',
-    photo: SPECIES_PHOTO.dog,
-    emoji: '🐕',
-    fallbackGradient: 'from-amber-900/80 via-orange-950/90 to-neutral-950',
-  },
-  {
-    value: 'cat' as const,
-    title: 'GATO',
-    subtitle: 'Perfis felinos, guia ECC do gato e catálogo filtrado.',
-    photo: SPECIES_PHOTO.cat,
-    emoji: '🐈',
-    fallbackGradient: 'from-slate-700/80 via-slate-900/90 to-neutral-950',
-  },
+  { value: 'dog' as const, title: 'Cão' },
+  { value: 'cat' as const, title: 'Gato' },
 ]
 
 const SEX_OPTIONS = [
@@ -96,47 +30,84 @@ const SEX_OPTIONS = [
   { value: 'female' as const, label: 'Fêmea', icon: Venus },
 ]
 
-const HOSPITAL_ROUTE_OPTIONS = [
-  { value: 'oral', label: 'Via oral' },
-  { value: 'tube', label: 'Sonda' },
-  { value: 'parenteral', label: 'Parenteral' },
-]
+const COMORBIDITY_CATEGORIES = [
+  { id: 'all', label: 'Todas' },
+  { id: 'renal', label: 'Renal e urinário' },
+  { id: 'digestive', label: 'Digestivo' },
+  { id: 'metabolic', label: 'Metabólico' },
+  { id: 'allergy', label: 'Alergias' },
+  { id: 'systemic', label: 'Sistêmico' },
+] as const
+
+type ComorbidityCategoryId = (typeof COMORBIDITY_CATEGORIES)[number]['id']
+
+function normalizeSearchText(value: string) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
+}
+
+function getComorbidityCategory(option: ClinicalProfileOption): Exclude<ComorbidityCategoryId, 'all'> {
+  const text = normalizeSearchText(`${option.label} ${option.description}`)
+  if (/renal|urolit|estruv|oxalato|urin/.test(text)) return 'renal'
+  if (/intestinal|pancre|ileo|linfang|hepat|digest/.test(text)) return 'digestive'
+  if (/diabet|hiperlipid|obes/.test(text)) return 'metabolic'
+  if (/alerg|reacao/.test(text)) return 'allergy'
+  return 'systemic'
+}
+
+function buildComorbidityGuidance(species: Species, option: ClinicalProfileOption) {
+  const mappedIds = mapComorbiditySelectionsToTherapeuticProfiles(species, [option.id])
+  const profiles = mappedIds
+    .map((profileId) => getTherapeuticProfileById(profileId))
+    .filter((profile): profile is NonNullable<typeof profile> => Boolean(profile))
+
+  if (!profiles.length) {
+    return {
+      summary: `Esta condição ativa as metas nutricionais cadastradas para ${option.label}. A composição será conferida na formulação final.`,
+      priorities: [] as string[],
+      sources: [] as string[],
+    }
+  }
+
+  const priorities = Array.from(new Set(profiles.flatMap((profile) => profile.desiredCharacteristics))).slice(0, 3)
+  const sources = Array.from(new Set(profiles.flatMap((profile) => profile.evidenceSourceIds).map((id) => getEvidenceSourceById(id)?.title).filter((title): title is string => Boolean(title))))
+  return {
+    summary: profiles.map((profile) => profile.clinicalContext).filter(Boolean).join(' '),
+    priorities,
+    sources,
+  }
+}
 
 export default function PatientStep() {
   const navigate = useNavigate()
-  const { patient, energy, diet, hospital, setPatient, setEnergy, setDiet, setHospital } = useCalculationStore()
+  const { patient, energy, diet, setPatient, setEnergy, setDiet } = useCalculationStore()
   const species = patient.species ?? 'dog'
+  const registrationMode = patient.registrationMode ?? 'registered'
   const [comorbidityQuery, setComorbidityQuery] = useState('')
+  const [comorbidityCategory, setComorbidityCategory] = useState<ComorbidityCategoryId>('all')
 
-  const breeds = species === 'cat' ? CAT_BREEDS_BR : DOG_BREEDS_BR
-  const availableComorbidities = useMemo(() => getClinicalProfileOptions(species), [species])
-  const filteredComorbidities = useMemo(() => {
-    const query = comorbidityQuery.trim().toLowerCase()
-    if (!query) return availableComorbidities
-    return availableComorbidities.filter((option) =>
-      [option.label, option.description, option.tags.join(' ')].join(' ').toLowerCase().includes(query),
-    )
-  }, [availableComorbidities, comorbidityQuery])
-  const selectedComorbidityIds = patient.comorbidityIds ?? []
-  const selectedComorbidityBadges = useMemo(
-    () => getClinicalProfileBadges(species, selectedComorbidityIds),
-    [selectedComorbidityIds, species],
+  const breeds = useMemo(
+    () => [...(species === 'cat' ? CAT_BREEDS_BR : DOG_BREEDS_BR)].sort((left, right) => left.localeCompare(right, 'pt-BR')),
+    [species],
   )
+  const availableComorbidities = useMemo(() => getClinicalProfileOptions(species), [species])
+  const selectedComorbidityIds = patient.comorbidityIds ?? []
+  const filteredComorbidities = useMemo(() => {
+    const query = normalizeSearchText(comorbidityQuery.trim())
+    return availableComorbidities.filter((option) => {
+      const matchesCategory = comorbidityCategory === 'all' || getComorbidityCategory(option) === comorbidityCategory
+      const matchesQuery = !query || normalizeSearchText([option.label, option.description, option.tags.join(' ')].join(' ')).includes(query)
+      return matchesCategory && matchesQuery
+    })
+  }, [availableComorbidities, comorbidityCategory, comorbidityQuery])
 
-  const electrolytesLow =
-    (hospital.electrolytes?.phosphorus ?? 1) < 1 ||
-    (hospital.electrolytes?.potassium ?? 1) < 1 ||
-    (hospital.electrolytes?.magnesium ?? 1) < 1
-
-  const refeedingRisk = patient.isHospitalized
-    ? calculateRefeedingRisk(
-        hospital.daysAnorexic ?? 0,
-        hospital.daysHyporexic ?? 0,
-        hospital.recentIntakePercent ?? 100,
-        patient.bcs ?? 5,
-        electrolytesLow,
-      )
-    : null
+  const categoryCounts = useMemo(() => {
+    const counts = new Map<ComorbidityCategoryId, number>([['all', availableComorbidities.length]])
+    for (const option of availableComorbidities) {
+      const category = getComorbidityCategory(option)
+      counts.set(category, (counts.get(category) ?? 0) + 1)
+    }
+    return counts
+  }, [availableComorbidities])
 
   useEffect(() => {
     const validSelections = selectedComorbidityIds.filter((selection) =>
@@ -155,40 +126,22 @@ export default function PatientStep() {
       currentAdditional.some((id, index) => id !== additionalRequirementProfileIds[index])
 
     if (!diet.requirementProfileId && fallbackRequirement?.id) {
-      setDiet({
-        requirementProfileId: fallbackRequirement.id,
-        additionalRequirementProfileIds,
-      })
+      setDiet({ requirementProfileId: fallbackRequirement.id, additionalRequirementProfileIds })
       return
     }
 
-    if (additionalChanged) {
-      setDiet({ additionalRequirementProfileIds })
-    }
+    if (additionalChanged) setDiet({ additionalRequirementProfileIds })
   }, [availableComorbidities, diet.additionalRequirementProfileIds, diet.requirementProfileId, energy.stateId, patient.isNeutered, selectedComorbidityIds, setDiet, setPatient, species])
 
   const handleSpeciesChange = (nextSpecies: Species) => {
     if (nextSpecies === species) return
     const nextStateId = getDefaultStateId(nextSpecies, !!patient.isNeutered)
     const nextRequirement = getDefaultRequirement(nextSpecies, nextStateId, !!patient.isNeutered)
-
-    setPatient({
-      species: nextSpecies,
-      breed: '',
-      isIndoor: nextSpecies === 'cat' ? false : false,
-      comorbidityIds: [],
-    })
-    setEnergy({
-      stateId: nextStateId,
-      expectedAdultWeightKg: undefined,
-      litterSize: undefined,
-      lactationWeek: undefined,
-    })
-    setDiet({
-      requirementProfileId: nextRequirement?.id,
-      additionalRequirementProfileIds: [],
-      entries: [],
-    })
+    setPatient({ species: nextSpecies, breed: '', isIndoor: false, comorbidityIds: [] })
+    setEnergy({ stateId: nextStateId, expectedAdultWeightKg: undefined, litterSize: undefined, lactationWeek: undefined })
+    setDiet({ requirementProfileId: nextRequirement?.id, additionalRequirementProfileIds: [], entries: [] })
+    setComorbidityCategory('all')
+    setComorbidityQuery('')
   }
 
   const handleNeuterChange = (checked: boolean) => {
@@ -197,22 +150,6 @@ export default function PatientStep() {
     setPatient({ isNeutered: checked })
     setEnergy({ stateId: nextStateId })
     setDiet({ requirementProfileId: nextRequirement?.id })
-  }
-
-  const handleHospitalizedChange = (checked: boolean) => {
-    setPatient({ isHospitalized: checked })
-    if (checked) {
-      setHospital({
-        isAnorexic: hospital.isAnorexic ?? false,
-        daysAnorexic: hospital.daysAnorexic ?? 0,
-        isHyporexic: hospital.isHyporexic ?? false,
-        daysHyporexic: hospital.daysHyporexic ?? 0,
-        recentIntakePercent: hospital.recentIntakePercent ?? 50,
-        feedingRoute: hospital.feedingRoute ?? 'oral',
-        progressionProtocol: hospital.progressionProtocol ?? '4_days',
-        electrolytes: hospital.electrolytes ?? { phosphorus: 1, potassium: 1, magnesium: 1 },
-      })
-    }
   }
 
   const toggleComorbidity = (optionId: string) => {
@@ -227,35 +164,46 @@ export default function PatientStep() {
       toast.error('Informe o peso atual do paciente para continuar.')
       return
     }
-
     const nextStateId = energy.stateId ?? getDefaultStateId(species, !!patient.isNeutered)
     const nextRequirement = getDefaultRequirement(species, nextStateId, !!patient.isNeutered)
-
     setEnergy({ stateId: nextStateId })
     setDiet({
       requirementProfileId: diet.requirementProfileId ?? nextRequirement?.id,
       additionalRequirementProfileIds: getClinicalProfileIdsFromSelections(species, selectedComorbidityIds),
     })
-
     navigate(`${NEW_ROUTE}/energy`)
   }
 
   return (
-    <Card className="w-full border-orange-500/10 bg-gradient-to-b from-card via-card to-card/95 shadow-[0_18px_50px_rgba(0,0,0,0.12)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-      <CardHeader className="border-b border-border/60 pb-6">
+    <Card className="nutrition-step-card w-full">
+      <CardHeader className="border-b border-border/70 pb-6">
         <CardTitle className="text-2xl">Identificação do paciente</CardTitle>
-        <CardDescription>
-          Defina o perfil clínico do paciente. Espécie, sexo, estado reprodutivo, internação e comorbidades entram no fluxo automaticamente.
-        </CardDescription>
+        <CardDescription>Registre os dados essenciais que serão usados no cálculo e na avaliação nutricional.</CardDescription>
       </CardHeader>
 
       <CardContent className="space-y-8 pt-6">
-        {/* ── Seleção de espécie ── */}
         <section>
-          <p className="mb-5 text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-muted-foreground">
-            ESPÉCIE
-          </p>
-          <div className="mx-auto grid max-w-2xl gap-4 sm:grid-cols-2">
+          <Label>Como deseja começar?</Label>
+          <div className="mt-3 grid gap-3 md:grid-cols-2" role="radiogroup" aria-label="Tipo de atendimento nutricional">
+            {[
+              { value: 'registered' as const, title: 'Cadastrar paciente', description: 'Identifica o paciente e permite salvar o plano no histórico.', icon: UserRoundPlus },
+              { value: 'quick' as const, title: 'Dieta rápida', description: 'Calcula a dieta sem criar cadastro ou histórico de paciente.', icon: Zap },
+            ].map((option) => {
+              const Icon = option.icon
+              const active = registrationMode === option.value
+              return (
+                <button key={option.value} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ registrationMode: option.value })} className={cn('flex min-h-20 cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.07]' : 'border-border bg-card hover:border-primary/25 hover:bg-muted/55')}>
+                  <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-xl', active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground')}><Icon className="h-5 w-5" /></span>
+                  <span className="min-w-0"><span className="block text-sm font-semibold text-foreground">{option.title}</span><span className="mt-1 block text-xs leading-5 text-muted-foreground">{option.description}</span></span>
+                </button>
+              )
+            })}
+          </div>
+        </section>
+
+        <section>
+          <Label>Espécie</Label>
+          <div className="mt-3 grid grid-cols-2 gap-3" role="radiogroup" aria-label="Espécie do paciente">
             {SPECIES_OPTIONS.map((option) => {
               const active = species === option.value
               return (
@@ -263,496 +211,184 @@ export default function PatientStep() {
                   key={option.value}
                   id={`species-card-${option.value}`}
                   type="button"
+                  role="radio"
+                  aria-checked={active}
                   onClick={() => handleSpeciesChange(option.value)}
                   className={cn(
-                    'group relative flex flex-col items-center overflow-hidden rounded-[28px] border pb-6 pt-7 text-center',
-                    'transition-all duration-300 hover:-translate-y-1 active:scale-[0.985]',
-                    active
-                      ? 'border-orange-400/60 bg-orange-50 shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.18)] dark:bg-[#1e1108] dark:shadow-[0_0_0_1px_rgba(251,146,60,0.35),0_24px_56px_rgba(249,115,22,0.22)]'
-                      : 'border-border bg-card hover:border-orange-500/35 hover:shadow-md dark:border-white/10 dark:bg-[#141010] dark:hover:shadow-[0_16px_40px_rgba(0,0,0,0.35)]',
+                    'relative flex min-h-16 cursor-pointer items-center justify-center rounded-2xl border px-4 text-center text-base font-semibold outline-none transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/25',
+                    active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-foreground hover:border-primary/25 hover:bg-muted/55',
                   )}
                 >
-                  {/* Foto / placeholder */}
-                  <div
-                    className={cn(
-                      'relative mx-auto overflow-hidden transition-all duration-300',
-                      'h-[180px] w-[160px] rounded-[24px]',
-                      active
-                        ? 'shadow-[0_0_0_3px_rgba(251,146,60,0.55),0_0_32px_10px_rgba(249,115,22,0.30)]'
-                        : 'shadow-[0_8px_28px_rgba(0,0,0,0.55)] group-hover:shadow-[0_8px_32px_rgba(249,115,22,0.15)]',
-                    )}
-                  >
-                    <SpeciesCardPhoto
-                      src={option.photo}
-                      alt={option.title}
-                      fallbackGradient={option.fallbackGradient}
-                      emoji={option.emoji}
-                    />
-                    {/* Gradiente de base para fundir foto com card */}
-                    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-black/60 to-transparent" />
-                  </div>
-
-                  {/* Nome */}
-                  <p
-                    className={cn(
-                      'mt-5 text-[26px] font-black tracking-[0.14em]',
-                      active ? 'text-foreground dark:text-white' : 'text-foreground/90 dark:text-white/80',
-                    )}
-                  >
-                    {option.title}
-                  </p>
-
-                  {/* Subtítulo */}
-                  <p className="mx-6 mt-1.5 text-[13px] leading-5 text-muted-foreground">
-                    {option.subtitle}
-                  </p>
-
-                  {/* Botão */}
-                  <div className="mt-5 px-8 w-full">
-                    <span
-                      className={cn(
-                        'block w-full rounded-full py-2 text-[11px] font-bold uppercase tracking-[0.20em] transition-colors duration-200',
-                        active
-                          ? 'bg-orange-400/25 text-orange-900 ring-1 ring-orange-400/40 dark:bg-orange-400/20 dark:text-orange-200'
-                          : 'bg-muted/60 text-muted-foreground dark:bg-white/[0.07]',
-                      )}
-                    >
-                      {active ? 'SELECIONADO' : 'TOQUE PARA ESCOLHER'}
-                    </span>
-                  </div>
+                  {option.title}
+                  {active && <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground"><Check className="h-3 w-3" /></span>}
                 </button>
               )
             })}
           </div>
         </section>
 
-        <section className="grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-5 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="space-y-2">
-                <Label htmlFor="pat-name">Nome do paciente</Label>
-                <Input id="pat-name" value={patient.name || ''} onChange={(event) => setPatient({ name: event.target.value })} placeholder="Ex: Rex ou Mia" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="pat-owner">Tutor</Label>
-                <Input id="pat-owner" value={patient.ownerName || ''} onChange={(event) => setPatient({ ownerName: event.target.value })} placeholder="Ex: João Silva" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="pat-weight">Peso atual (kg)</Label>
-                <Input id="pat-weight" type="number" step="0.1" min="0.1" value={patient.currentWeight || ''} onChange={(event) => setPatient({ currentWeight: Number(event.target.value) || 0 })} placeholder="Ex: 12.4" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="pat-age">Idade (anos)</Label>
-                <Input
-                  id="pat-age"
-                  type="number"
-                  step="0.5"
-                  min="0"
-                  value={patient.ageMonths != null ? Math.round((patient.ageMonths / 12) * 10) / 10 : ''}
-                  onChange={(event) => {
-                    const years = Number(event.target.value) || 0
-                    setPatient({ ageMonths: Math.round(years * 12), ageWeeks: Math.round(years * 52) })
-                  }}
-                  placeholder="Ex: 2"
-                />
-              </div>
-              <div className="space-y-2 md:col-span-2">
-                <Label htmlFor="pat-breed">Raça</Label>
-                <Input
+        <section className="rounded-2xl bg-muted/55 p-5">
+          <div className="grid gap-4 md:grid-cols-2">
+            {registrationMode === 'registered' && (
+              <>
+                <div className="space-y-2">
+                  <Label htmlFor="pat-name">Nome do paciente</Label>
+                  <Input id="pat-name" value={patient.name || ''} onChange={(event) => setPatient({ name: event.target.value })} placeholder="Ex.: Rex" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="pat-owner">Tutor</Label>
+                  <Input id="pat-owner" value={patient.ownerName || ''} onChange={(event) => setPatient({ ownerName: event.target.value })} placeholder="Nome do responsável" />
+                </div>
+              </>
+            )}
+            <div className="space-y-2">
+              <Label htmlFor="pat-weight">Peso atual (kg)</Label>
+              <LocalizedNumberInput id="pat-weight" min={0.1} value={patient.currentWeight || null} onValueChange={(value) => setPatient({ currentWeight: value ?? 0 })} placeholder="Ex.: 12,4" />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="pat-age">Idade (anos)</Label>
+              <LocalizedNumberInput
+                id="pat-age"
+                min="0"
+                value={patient.ageMonths != null ? Math.round((patient.ageMonths / 12) * 10) / 10 : null}
+                onValueChange={(value) => {
+                  const years = value ?? 0
+                  setPatient({ ageMonths: Math.round(years * 12), ageWeeks: Math.round(years * 52) })
+                }}
+                placeholder="Ex.: 2"
+              />
+            </div>
+            <div className="space-y-2 md:col-span-2">
+              <Label htmlFor="pat-breed">Raça</Label>
+              <div className="relative">
+                <select
                   id="pat-breed"
-                  list="breed-list"
                   value={patient.breed || ''}
                   onChange={(event) => setPatient({ breed: event.target.value })}
-                  placeholder={species === 'dog' ? 'Ex: Golden Retriever' : 'Ex: SRD'}
-                />
-                <datalist id="breed-list">
-                  {breeds.sort().map((breed) => (
-                    <option key={breed} value={breed} />
-                  ))}
-                </datalist>
+                  className="h-11 w-full appearance-none rounded-xl border border-input bg-card px-3 pr-10 text-sm text-foreground outline-none transition-colors focus:border-ring focus:ring-3 focus:ring-ring/20"
+                >
+                  <option value="">Selecione a raça</option>
+                  {patient.breed && !breeds.includes(patient.breed) && <option value={patient.breed}>{patient.breed}</option>}
+                  {breeds.map((breed) => <option key={breed} value={breed}>{breed}</option>)}
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-3 top-3.5 h-4 w-4 text-muted-foreground" />
               </div>
             </div>
+          </div>
 
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
             <div className="space-y-3">
               <Label>Sexo</Label>
-              <div className="grid gap-3 md:grid-cols-2">
+              <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Sexo do paciente">
                 {SEX_OPTIONS.map((option) => {
                   const Icon = option.icon
                   const active = patient.sex === option.value
                   return (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setPatient({ sex: option.value })}
-                      className={cn(
-                        'flex items-center gap-3 rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
-                        active
-                          ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_12px_28px_rgba(249,115,22,0.14)] dark:bg-orange-500/12 dark:text-white'
-                          : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/15 dark:hover:text-white',
-                      )}
-                    >
-                      <span className="rounded-xl border border-current/20 bg-muted/50 p-2 dark:bg-black/20">
-                        <Icon className="h-5 w-5" />
-                      </span>
-                      <span className="text-base font-semibold">{option.label}</span>
+                    <button key={option.value} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ sex: option.value })} className={cn('flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                      <Icon className="h-4 w-4" /> {option.label}
                     </button>
                   )
                 })}
               </div>
             </div>
-          </div>
 
-          <div className="space-y-4 rounded-3xl border border-orange-400/20 bg-gradient-to-b from-orange-500/10 via-muted/20 to-transparent p-5 dark:from-orange-500/[0.08] dark:via-white/[0.02]">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-orange-700 dark:text-orange-200">
-                Leitura rapida
-              </p>
-              <p className="mt-3 text-2xl font-black text-foreground">{patient.name || 'Paciente sem nome'}</p>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">
-                A espécie escolhida ajusta automaticamente o guia ECC, os perfis energéticos e o catálogo compatível da fórmula.
-              </p>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-2">
-              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
-                <p className="text-xs text-muted-foreground">Especie</p>
-                <p className="mt-1 text-lg font-semibold text-foreground">{species === 'dog' ? 'Cão' : 'Gato'}</p>
-              </div>
-              <div className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/15">
-                <p className="text-xs text-muted-foreground">Peso atual</p>
-                <p className="mt-1 text-lg font-semibold text-foreground">
-                  {patient.currentWeight ? `${patient.currentWeight.toFixed(1)} kg` : 'Não informado'}
-                </p>
+            <div className="space-y-3">
+              <Label>Estado reprodutivo</Label>
+              <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Estado reprodutivo">
+                {[
+                  { value: false, label: 'Não castrado' },
+                  { value: true, label: 'Castrado' },
+                ].map((option) => {
+                  const active = Boolean(patient.isNeutered) === option.value
+                  return (
+                    <button key={String(option.value)} type="button" role="radio" aria-checked={active} onClick={() => handleNeuterChange(option.value)} className={cn('flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                      {option.label}
+                    </button>
+                  )
+                })}
               </div>
             </div>
-
-            {!!selectedComorbidityBadges.length && (
-              <div>
-                <p className="mb-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">Comorbidades selecionadas</p>
-                <div className="flex flex-wrap gap-2">
-                  {selectedComorbidityBadges.map((label) => (
-                    <Badge
-                      key={label}
-                      className="rounded-full bg-orange-500/15 text-orange-900 dark:bg-orange-500/12 dark:text-orange-100"
-                    >
-                      {label}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div className={cn('grid gap-4 lg:col-span-2', species === 'cat' ? 'md:grid-cols-3' : 'md:grid-cols-2')}>
-            <button
-              type="button"
-              onClick={() => handleNeuterChange(!patient.isNeutered)}
-              className={cn(
-                'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
-                patient.isNeutered
-                  ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
-                  : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
-              )}
-            >
-              <div
-                className={cn(
-                  'rounded-2xl border p-3',
-                  patient.isNeutered
-                    ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
-                    : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
-                )}
-              >
-                <HeartPulse className="h-6 w-6" />
-              </div>
-              <div>
-                <p className={cn('font-bold', patient.isNeutered ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
-                  Paciente castrado
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">Ajusta energia base e o perfil comparativo.</p>
-              </div>
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleHospitalizedChange(!patient.isHospitalized)}
-              className={cn(
-                'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
-                patient.isHospitalized
-                  ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
-                  : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
-              )}
-            >
-              <div
-                className={cn(
-                  'rounded-2xl border p-3',
-                  patient.isHospitalized
-                    ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
-                    : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
-                )}
-              >
-                <Stethoscope className="h-6 w-6" />
-              </div>
-              <div>
-                <p className={cn('font-bold', patient.isHospitalized ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
-                  Paciente hospitalizado
-                </p>
-                <p className="mt-1 text-xs text-muted-foreground">Ativa risco de realimentacao e progressao clinica.</p>
-              </div>
-            </button>
 
             {species === 'cat' && (
-              <button
-                type="button"
-                onClick={() => setPatient({ isIndoor: !patient.isIndoor })}
-                className={cn(
-                  'flex items-start gap-4 rounded-3xl border px-5 py-5 text-left transition-all duration-200 hover:-translate-y-1 active:scale-[0.99]',
-                  patient.isIndoor
-                    ? 'border-orange-400/60 bg-orange-500/15 shadow-[0_12px_28px_rgba(249,115,22,0.12)] dark:bg-orange-500/12'
-                    : 'border-border bg-muted/25 hover:border-orange-500/35 hover:bg-orange-500/10 dark:border-white/10 dark:bg-white/[0.03] dark:hover:bg-orange-500/[0.05]',
-                )}
-              >
-                <div
-                  className={cn(
-                    'rounded-2xl border p-3',
-                    patient.isIndoor
-                      ? 'border-orange-400/40 bg-orange-500/20 text-orange-700 dark:text-orange-300'
-                      : 'border-border bg-muted/50 text-muted-foreground dark:border-white/10 dark:bg-black/20',
-                  )}
-                >
-                  <Home className="h-6 w-6" />
+              <div className="space-y-3 md:col-span-2">
+                <Label>Rotina do gato</Label>
+                <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Rotina do gato">
+                  {[
+                    { value: false, label: 'Ativo / acesso externo' },
+                    { value: true, label: 'Indoor' },
+                  ].map((option) => {
+                    const active = Boolean(patient.isIndoor) === option.value
+                    return (
+                      <button key={String(option.value)} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ isIndoor: option.value })} className={cn('flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                        {option.label}
+                      </button>
+                    )
+                  })}
                 </div>
-                <div>
-                  <p className={cn('font-bold', patient.isIndoor ? 'text-foreground dark:text-white' : 'text-muted-foreground')}>
-                    Gato indoor
-                  </p>
-                  <p className="mt-1 text-xs text-muted-foreground">Usado para sugerir o perfil energetico felino.</p>
-                </div>
-              </button>
+              </div>
             )}
           </div>
         </section>
 
-        {patient.isHospitalized && (
-          <section className="space-y-4 rounded-3xl border border-orange-400/25 bg-gradient-to-r from-orange-500/12 via-orange-500/10 to-transparent p-5 dark:via-orange-500/[0.08]">
-            <div className="flex items-start gap-3">
-              <AlertCircle className="mt-0.5 h-5 w-5 text-orange-600 dark:text-orange-300" />
+        <section className="overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="border-b border-border p-5">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
               <div>
-                <p className="font-semibold text-foreground">Plano hospitalar ativo</p>
-                <p className="text-sm text-muted-foreground">O resumo final vai incluir progressao alimentar e triagem de risco de realimentacao.</p>
+                <div className="flex items-center gap-2"><HeartPulse className="h-5 w-5 text-primary" /><h2 className="text-lg font-semibold text-foreground">Comorbidades</h2></div>
+                <p className="mt-1 text-sm text-muted-foreground">Escolha uma categoria, selecione a condição e veja imediatamente o impacto nutricional cadastrado.</p>
+              </div>
+              <div className="relative w-full lg:max-w-sm">
+                <Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
+                <Input value={comorbidityQuery} onChange={(event) => setComorbidityQuery(event.target.value)} placeholder="Buscar condição clínica" className="pl-10 pr-10" />
+                {comorbidityQuery && <button type="button" aria-label="Limpar busca" onClick={() => setComorbidityQuery('')} className="absolute right-2 top-1.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"><X className="h-4 w-4" /></button>}
               </div>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <div className="space-y-2">
-                <Label>Dias de anorexia</Label>
-                <Input type="number" min="0" value={hospital.daysAnorexic ?? 0} onChange={(event) => setHospital({ daysAnorexic: Number(event.target.value) || 0 })} />
-              </div>
-              <div className="space-y-2">
-                <Label>Dias de hiporexia</Label>
-                <Input type="number" min="0" value={hospital.daysHyporexic ?? 0} onChange={(event) => setHospital({ daysHyporexic: Number(event.target.value) || 0 })} />
-              </div>
-              <div className="space-y-2">
-                <Label>Ingestao recente (%)</Label>
-                <Input type="number" min="0" max="100" value={hospital.recentIntakePercent ?? 50} onChange={(event) => setHospital({ recentIntakePercent: Number(event.target.value) || 0 })} />
-              </div>
-              <div className="space-y-2">
-                <Label>Protocolo</Label>
-                <div className="grid grid-cols-2 gap-2">
-                  {[
-                    { value: '3_days', label: '3 dias' },
-                    { value: '4_days', label: '4 dias' },
-                  ].map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setHospital({ progressionProtocol: option.value as '3_days' | '4_days' })}
-                      className={cn(
-                        'rounded-xl border px-3 py-3 text-sm font-medium transition-all',
-                        hospital.progressionProtocol === option.value
-                          ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:text-white'
-                          : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
-                      )}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
-              <div className="space-y-3 rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
-                <div className="flex items-center gap-2">
-                  <p className="font-semibold text-foreground">Via de oferta e eletrólitos</p>
-                </div>
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label>Via de alimentacao</Label>
-                    <div className="grid gap-2 md:grid-cols-3">
-                      {HOSPITAL_ROUTE_OPTIONS.map((option) => (
-                        <button
-                          key={option.value}
-                          type="button"
-                          onClick={() => setHospital({ feedingRoute: option.value as 'oral' | 'tube' | 'parenteral' })}
-                          className={cn(
-                            'rounded-xl border px-3 py-3 text-sm transition-all',
-                            hospital.feedingRoute === option.value
-                              ? 'border-orange-400/60 bg-orange-500/15 text-foreground dark:text-white'
-                              : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
-                          )}
-                        >
-                          {option.label}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="grid gap-3 md:grid-cols-3">
-                    <div className="space-y-2">
-                      <Label>Fosforo</Label>
-                      <Input
-                        type="number"
-                        step="0.1"
-                        min="0"
-                        value={hospital.electrolytes?.phosphorus ?? 1}
-                        onChange={(event) =>
-                          setHospital({
-                            electrolytes: {
-                              phosphorus: Number(event.target.value) || 0,
-                              potassium: hospital.electrolytes?.potassium ?? 1,
-                              magnesium: hospital.electrolytes?.magnesium ?? 1,
-                            },
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Potassio</Label>
-                      <Input
-                        type="number"
-                        step="0.1"
-                        min="0"
-                        value={hospital.electrolytes?.potassium ?? 1}
-                        onChange={(event) =>
-                          setHospital({
-                            electrolytes: {
-                              phosphorus: hospital.electrolytes?.phosphorus ?? 1,
-                              potassium: Number(event.target.value) || 0,
-                              magnesium: hospital.electrolytes?.magnesium ?? 1,
-                            },
-                          })
-                        }
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label>Magnesio</Label>
-                      <Input
-                        type="number"
-                        step="0.1"
-                        min="0"
-                        value={hospital.electrolytes?.magnesium ?? 1}
-                        onChange={(event) =>
-                          setHospital({
-                            electrolytes: {
-                              phosphorus: hospital.electrolytes?.phosphorus ?? 1,
-                              potassium: hospital.electrolytes?.potassium ?? 1,
-                              magnesium: Number(event.target.value) || 0,
-                            },
-                          })
-                        }
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-orange-400/25 bg-orange-500/10 p-4 dark:bg-orange-500/[0.08]">
-                <div className="flex items-center justify-between gap-3">
-                  <p className="font-semibold text-foreground">Risco de realimentacao</p>
-                  <Badge variant="outline">
-                    {refeedingRisk === 'high' ? 'Alto risco' : refeedingRisk === 'moderate' ? 'Risco moderado' : 'Baixo risco'}
-                  </Badge>
-                </div>
-                <p className="mt-3 text-sm text-muted-foreground">
-                  A condição hospitalar será considerada no resumo final para orientar oferta progressiva e vigilância clínica.
-                </p>
-              </div>
-            </div>
-          </section>
-        )}
-
-        <section className="space-y-4 rounded-3xl border border-border bg-muted/25 p-5 dark:border-white/10 dark:bg-white/[0.03]">
-          <div className="flex items-start justify-between gap-3">
-            <div>
-              <p className="text-lg font-semibold text-foreground">Comorbidades</p>
-              <p className="text-sm text-muted-foreground">Selecione múltiplas condições. Os perfis terapêuticos serão considerados na avaliação final.</p>
-            </div>
-            <TooltipProvider>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <button type="button" className="rounded-full border border-border p-2 text-muted-foreground dark:border-white/10">
-                    <AlertCircle className="h-4 w-4" />
-                  </button>
-                </TooltipTrigger>
-                <TooltipContent className="max-w-xs">
-                  <p>Voce pode combinar mais de uma comorbidade. O plano final considera os perfis clinicos da base importada.</p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </div>
-
-          <div className="rounded-2xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-black/10">
-            <div className="flex items-center gap-3">
-              <Search className="h-4 w-4 text-muted-foreground" />
-              <Input
-                value={comorbidityQuery}
-                onChange={(event) => setComorbidityQuery(event.target.value)}
-                placeholder="Buscar comorbidades"
-                className="border-0 bg-transparent px-0 shadow-none focus-visible:ring-0"
-              />
-            </div>
-          </div>
-
-          {!!selectedComorbidityBadges.length && (
-            <div className="flex flex-wrap gap-2">
-              {selectedComorbidityBadges.map((label) => (
-                <Badge
-                  key={label}
-                  className="rounded-full bg-orange-500/15 text-orange-900 dark:bg-orange-500/12 dark:text-orange-100"
-                >
-                  {label}
-                </Badge>
+            <div className="mt-4 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Categorias de comorbidades">
+              {COMORBIDITY_CATEGORIES.map((category) => (
+                <button key={category.id} type="button" role="tab" aria-selected={comorbidityCategory === category.id} onClick={() => setComorbidityCategory(category.id)} className={cn('flex min-h-10 shrink-0 cursor-pointer items-center gap-2 rounded-xl border px-3 text-sm font-medium outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', comorbidityCategory === category.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground')}>
+                  {category.label}<span className={cn('text-xs', comorbidityCategory === category.id ? 'text-primary-foreground/70' : 'text-muted-foreground')}>{categoryCounts.get(category.id) ?? 0}</span>
+                </button>
               ))}
             </div>
-          )}
+          </div>
 
-          <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {filteredComorbidities.map((option) => {
-              const active = selectedComorbidityIds.includes(option.id)
-              return (
-                <button
-                  key={option.id}
-                  type="button"
-                  onClick={() => toggleComorbidity(option.id)}
-                  className={cn(
-                    'rounded-2xl border px-4 py-4 text-left transition-all duration-200 hover:-translate-y-0.5 active:scale-[0.99]',
-                    active
-                      ? 'border-orange-400/60 bg-orange-500/15 text-foreground shadow-[0_10px_24px_rgba(249,115,22,0.12)] dark:bg-orange-500/12 dark:text-white'
-                      : 'border-border bg-muted/40 text-muted-foreground hover:border-orange-500/40 hover:text-foreground dark:border-white/10 dark:bg-black/10 dark:hover:text-white',
-                  )}
-                >
-                  <p className="font-semibold text-foreground dark:text-inherit">{option.label}</p>
-                  <p className="mt-1 text-xs leading-5 text-muted-foreground">{option.description}</p>
-                </button>
-              )
-            })}
+          <div className="p-5">
+            {selectedComorbidityIds.length > 0 && (
+              <div className="mb-4 flex items-center justify-between gap-3 rounded-xl bg-primary/[0.06] px-4 py-3">
+                <p className="text-sm font-medium text-foreground">{selectedComorbidityIds.length} condição(ões) selecionada(s)</p>
+                <button type="button" onClick={() => setPatient({ comorbidityIds: [] })} className="min-h-9 cursor-pointer rounded-lg px-2 text-xs font-semibold text-primary hover:bg-primary/10">Limpar seleção</button>
+              </div>
+            )}
+
+            <div className="grid gap-3 lg:grid-cols-2">
+              {filteredComorbidities.map((option) => {
+                const active = selectedComorbidityIds.includes(option.id)
+                const guidance = active ? buildComorbidityGuidance(species, option) : null
+                return (
+                  <article key={option.id} className={cn('overflow-hidden rounded-2xl border transition-colors duration-200', active ? 'border-primary/45 bg-primary/[0.045]' : 'border-border bg-card')}>
+                    <button type="button" aria-pressed={active} onClick={() => toggleComorbidity(option.id)} className="flex min-h-16 w-full cursor-pointer items-center gap-3 px-4 py-3 text-left outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/25">
+                      <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border', active ? 'border-primary bg-primary text-primary-foreground' : 'border-border bg-muted text-transparent')}><Check className="h-3.5 w-3.5" /></span>
+                      <span className="min-w-0 flex-1 text-sm font-semibold text-foreground">{option.label.replace(/\s+(Cães|Gatos)\s*-?$/i, '')}</span>
+                    </button>
+                    {guidance && (
+                      <div className="border-t border-primary/15 px-4 py-4">
+                        <p className="text-sm leading-6 text-foreground/80">{guidance.summary}</p>
+                        {guidance.priorities.length > 0 && <p className="mt-2 text-xs leading-5 text-muted-foreground"><strong className="font-semibold text-foreground">Prioridades:</strong> {guidance.priorities.join(' · ')}</p>}
+                        {guidance.sources.length > 0 && <p className="mt-2 text-[11px] leading-5 text-muted-foreground"><strong className="font-semibold text-foreground">Referência:</strong> {guidance.sources.join(' · ')}</p>}
+                      </div>
+                    )}
+                  </article>
+                )
+              })}
+            </div>
+
+            {filteredComorbidities.length === 0 && <div className="rounded-2xl border border-dashed border-border px-5 py-10 text-center text-sm text-muted-foreground">Nenhuma condição encontrada nesta categoria.</div>}
           </div>
         </section>
 
         <div className="flex justify-end border-t border-border/60 pt-4">
-          <Button onClick={handleNext} className="gap-2" id="btn-next-energy">
-            Proximo: Energia <ChevronRight className="h-4 w-4" />
-          </Button>
+          <Button onClick={handleNext} className="gap-2" id="btn-next-energy">Próximo: Energia <ChevronRight className="h-4 w-4" /></Button>
         </div>
       </CardContent>
     </Card>

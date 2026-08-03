@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, Download, Printer, Save } from 'lucide-react'
+import { CheckCircle2, ChevronLeft, Download, Printer, Save } from 'lucide-react'
 import { toast } from 'sonner'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '../../components/ui/card'
@@ -33,14 +33,14 @@ function formatDailyAmount(key: string, value: number | null | undefined) {
 function StatusBadge({ status }: { status: 'adequate' | 'below' | 'above' | 'insufficient_data' | 'manual' }) {
   const classes =
     status === 'adequate'
-      ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200'
+      ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-400/30 dark:bg-emerald-500/10 dark:text-emerald-200'
       : status === 'below'
-      ? 'border-red-400/30 bg-red-500/10 text-red-200'
+      ? 'border-red-200 bg-red-50 text-red-700 dark:border-red-400/30 dark:bg-red-500/10 dark:text-red-200'
       : status === 'above'
-      ? 'border-amber-400/30 bg-amber-500/10 text-amber-200'
+      ? 'border-amber-200 bg-amber-50 text-amber-700 dark:border-amber-400/30 dark:bg-amber-500/10 dark:text-amber-200'
       : status === 'manual'
-      ? 'border-sky-400/30 bg-sky-500/10 text-sky-200'
-      : 'border-white/15 bg-white/5 text-muted-foreground'
+      ? 'border-sky-200 bg-sky-50 text-sky-700 dark:border-sky-400/30 dark:bg-sky-500/10 dark:text-sky-200'
+      : 'border-border bg-muted text-muted-foreground'
 
   const label =
     status === 'adequate'
@@ -59,6 +59,7 @@ function StatusBadge({ status }: { status: 'adequate' | 'below' | 'above' | 'ins
 export default function SummaryStep() {
   const navigate = useNavigate()
   const { patient, energy, target, diet, hospital } = useCalculationStore()
+  const isQuickDiet = patient.registrationMode === 'quick'
   const [programmedMealsPerDay, setProgrammedMealsPerDay] = useState(diet.programmedFeeding?.mealsPerDay ?? diet.mealsPerDay ?? 2)
   const [programmedTimes, setProgrammedTimes] = useState<string[]>(diet.programmedFeeding?.meals.map((meal) => meal.time) ?? [])
   const [programmedStartDate, setProgrammedStartDate] = useState(
@@ -83,11 +84,11 @@ export default function SummaryStep() {
       species,
       weightKg: currentWeight,
       mealsPerDay: diet.mealsPerDay ?? 2,
-      patientName: patient.name ?? 'Paciente',
+      patientName: isQuickDiet ? 'Dieta rápida' : patient.name ?? 'Paciente',
       requirementProfileId: diet.requirementProfileId,
       additionalRequirementProfileIds: diet.additionalRequirementProfileIds,
     })
-  }, [currentWeight, diet.additionalRequirementProfileIds, diet.entries, diet.mealsPerDay, diet.requirementProfileId, patient.name, species, target.targetEnergy])
+  }, [currentWeight, diet.additionalRequirementProfileIds, diet.entries, diet.mealsPerDay, diet.requirementProfileId, isQuickDiet, patient.name, species, target.targetEnergy])
 
   const generatedFeedingDates = useMemo(() => {
     const start = new Date(`${programmedStartDate}T00:00:00`)
@@ -124,7 +125,7 @@ export default function SummaryStep() {
     return {
       id: 'preview-report',
       createdAt: new Date().toISOString(),
-      patient,
+      patient: isQuickDiet ? { ...patient, name: 'Dieta rápida', ownerName: '' } : patient,
       energy,
       target,
       diet: {
@@ -147,7 +148,7 @@ export default function SummaryStep() {
         programmedFeeding: programmedFeeding ?? undefined,
       },
     }
-  }, [diet, energy, hospital, patient, programmedFeeding, result, target])
+  }, [diet, energy, hospital, isQuickDiet, patient, programmedFeeding, result, target])
 
   const summaryItems = useMemo(() => {
     if (!result) return [] as Array<{ label: string; value: string }>
@@ -192,6 +193,11 @@ export default function SummaryStep() {
 
   const handleSave = async () => {
     if (!printableReport) return
+    if (isQuickDiet) {
+      toast.success('Dieta concluída sem cadastrar o paciente.')
+      navigate(MODULE_ROUTE)
+      return
+    }
     const reportToSave = { ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() }
     
     // Always save locally first
@@ -221,11 +227,12 @@ export default function SummaryStep() {
       <style>{`@media print{body,html{background:white!important;color:black!important;padding:0!important;margin:0!important;}@page{size:A4;margin:12mm 14mm;}body *{visibility:hidden!important;}.no-print,.no-print *{display:none!important;}#print-report-root,#print-report-root *{visibility:visible!important;}#print-report-root{display:block!important;position:absolute;inset:0;width:100%;}.rx-page-break{break-before:page;}}`}</style>
 
       <div className="no-print print:hidden space-y-6">
-        <Card className="border-border bg-white shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:border-orange-400/15 dark:bg-gradient-to-b dark:from-card dark:via-card dark:to-card/95 dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-          <CardHeader className="border-b border-border bg-slate-50 dark:border-white/5 dark:bg-orange-500/[0.04]">
+        <Card className="nutrition-step-card border-border bg-card">
+          <CardHeader className="border-b border-border bg-card">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
-                <CardTitle className="text-2xl text-foreground dark:text-white">Resumo do plano nutricional</CardTitle>
+                <CardTitle className="text-2xl text-foreground">Plano nutricional</CardTitle>
+                <p className="mt-1 text-sm text-muted-foreground">Revise os dados clínicos, a fórmula e a rotina antes de salvar.</p>
                 <p className="mt-1 text-sm text-muted-foreground">Resumo clínico, formulação e alimentação programada.</p>
               </div>
               <div className="flex flex-wrap items-center justify-end gap-2 rounded-xl border border-border/70 bg-muted/35 p-1.5 shadow-sm dark:border-white/10 dark:bg-black/25">
@@ -240,7 +247,7 @@ export default function SummaryStep() {
                 </Button>
                 <Button
                   size="sm"
-                  className="gap-2 bg-orange-500 text-white shadow-sm hover:bg-orange-600 dark:bg-orange-600 dark:hover:bg-orange-500"
+                  className="gap-2"
                   onClick={() => printableReport && exportReportPdf(printableReport)}
                 >
                   <Download className="h-4 w-4 shrink-0" />
@@ -257,8 +264,8 @@ export default function SummaryStep() {
                   <CardTitle className="text-lg">Paciente e energia</CardTitle>
                 </CardHeader>
                 <CardContent className="grid gap-3 md:grid-cols-2">
-                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.name || 'Não informado'}</p></div>
-                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-foreground dark:text-white">{patient.ownerName || '--'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Paciente</p><p className="mt-1 font-semibold text-foreground dark:text-white">{isQuickDiet ? 'Dieta rápida' : patient.name || 'Não informado'}</p></div>
+                  <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Tutor</p><p className="mt-1 font-semibold text-foreground dark:text-white">{isQuickDiet ? 'Sem cadastro' : patient.ownerName || '--'}</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Espécie</p><p className="mt-1 font-semibold text-foreground dark:text-white">{species === 'dog' ? 'Cao' : 'Gato'}</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Peso atual</p><p className="mt-1 font-semibold text-foreground dark:text-white">{currentWeight.toFixed(2)} kg</p></div>
                   <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-black/10 p-4"><p className="text-xs text-muted-foreground">Perfil final</p><p className="mt-1 font-semibold text-foreground dark:text-white">{physiologicStateLabel}</p></div>
@@ -283,7 +290,7 @@ export default function SummaryStep() {
                     chartId="summary-macro-chart"
                     totalKcal={result.totalKcal}
                     macroSplit={result.evaluation.macroSplit}
-                    size="lg"
+                    size="md"
                     kcalSuffix="kcal/dia"
                     showTitle={false}
                     showMacroKcal
@@ -359,7 +366,7 @@ export default function SummaryStep() {
             {programmedFeeding && (
               <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-lg">6. Alimentação programada</CardTitle>
+                  <CardTitle className="text-lg">Alimentação programada</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="grid gap-4 xl:grid-cols-[0.75fr_1.25fr]">
@@ -500,7 +507,8 @@ export default function SummaryStep() {
               <ChevronLeft className="h-4 w-4" /> Voltar para formulação
             </Button>
             <Button size="lg" className="gap-2" onClick={handleSave} id="btn-save-plan">
-              <Save className="h-5 w-5" /> Salvar resumo
+              {isQuickDiet ? <CheckCircle2 className="h-5 w-5" /> : <Save className="h-5 w-5" />}
+              {isQuickDiet ? 'Concluir sem cadastrar' : 'Salvar resumo'}
             </Button>
           </div>
         </Card>

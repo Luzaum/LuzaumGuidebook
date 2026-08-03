@@ -35,6 +35,7 @@ const DEFAULT_STATE = {
     bcs: 5 as BCS,
     isHospitalized: false,
     comorbidityIds: [],
+    registrationMode: 'registered' as const,
   },
   energy: {},
   target: { goal: 'maintenance' as const, isCustomClinicalRule: false, weightToUseForEnergy: 'current' as const },

@@ -4,6 +4,10 @@
 
 import { generateDifferentials } from '../differentialsV2'
 
+const assert = (condition: unknown, message: string) => {
+  if (!condition) throw new Error(message)
+}
+
 // Mock de teste básico
 export const testGenerateDifferentials = () => {
   console.log('[TEST] generateDifferentials')
@@ -20,21 +24,21 @@ export const testGenerateDifferentials = () => {
 
   const result = generateDifferentials(caseState, neuroLocalization)
 
-  console.assert(Array.isArray(result), 'Resultado deve ser array')
-  console.assert(result.length === 5, 'SEMPRE deve retornar 5 diferenciais')
-  console.assert(
+  assert(Array.isArray(result), 'Resultado deve ser array')
+  assert(result.length > 0 && result.length <= 12, 'Deve retornar a lista priorizada de até 12 diferenciais')
+  assert(
     result.every((dx) => dx.name && dx.likelihood >= 0 && dx.likelihood <= 100),
     'Cada DDx deve ter nome e likelihood válido',
   )
-  console.assert(
+  assert(
     result.every((dx) => Array.isArray(dx.why) && dx.why.length > 0),
     'Cada DDx deve ter justificativas',
   )
-  console.assert(
+  assert(
     result.every((dx) => Array.isArray(dx.diagnostics) && dx.diagnostics.length > 0),
     'Cada DDx deve ter diagnóstico',
   )
-  console.assert(
+  assert(
     result.every((dx) => Array.isArray(dx.treatment) && dx.treatment.length > 0),
     'Cada DDx deve ter tratamento',
   )

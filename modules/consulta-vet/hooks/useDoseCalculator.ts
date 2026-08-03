@@ -20,7 +20,6 @@ interface DoseCalculatorResult {
 
 const UI_TEXT = {
   calculatorDisabled: 'Calculadora n\u00e3o habilitada para esta dose.',
-  missingScoreInfo: 'Aten\u00e7\u00e3o: apresenta\u00e7\u00e3o sem informa\u00e7\u00e3o de sulco. O arredondamento pode ser impreciso.',
 } as const;
 
 export function useDoseCalculator(dose: MedicationDose, presentation?: MedicationPresentation) {
@@ -59,14 +58,6 @@ export function useDoseCalculator(dose: MedicationDose, presentation?: Medicatio
       nextResult.conversionSafeSingle = conversion.safeSingle;
       nextResult.conversionNote = conversion.note;
       nextResult.warning = conversion.warning;
-    }
-
-    if (
-      presentation.form.toLowerCase().includes('comprimido') &&
-      !presentation.scoringInfo &&
-      !nextResult.warning
-    ) {
-      nextResult.warning = UI_TEXT.missingScoreInfo;
     }
 
     return nextResult;

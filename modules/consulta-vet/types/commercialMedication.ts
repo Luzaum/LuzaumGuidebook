@@ -99,6 +99,7 @@ export type CommercialMedicationSubclass =
   | 'endocrine_thyroid'
   | 'endocrine_erythropoiesis'
   | 'endocrine_diagnostic'
+  | 'infectious_antifungal'
   | 'infectious_antibiotic'
   | 'oncologic_tki'
   | 'repro_antigalactogenic'

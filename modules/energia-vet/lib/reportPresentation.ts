@@ -176,13 +176,13 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
   const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
   const feedingMealsPerDay = programmed?.mealsPerDay ?? report.diet.mealsPerDay ?? 2
   const startDateIso = programmed?.startDate || toIsoDate(new Date(report.createdAt))
-  const rawMode = programmed?.printRangeMode ?? 'next_9_days'
-  /** Relatórios antigos (3 ou 6 dias) passam a usar o bloco de 9 dias / 3 por folha. */
+  const rawMode = programmed?.printRangeMode ?? 'next_7_days'
+  /** Relatórios antigos migram para o acompanhamento semanal. */
   const printRangeMode =
-    rawMode === 'next_3_days' || rawMode === 'next_6_days' ? 'next_9_days' : rawMode
+    rawMode === 'next_3_days' || rawMode === 'next_6_days' || rawMode === 'next_9_days' ? 'next_7_days' : rawMode
   const feedingDates =
-    printRangeMode === 'next_9_days'
-      ? [0, 1, 2, 3, 4, 5, 6, 7, 8].map((offset) => {
+    printRangeMode === 'next_7_days'
+      ? [0, 1, 2, 3, 4, 5, 6].map((offset) => {
           const next = new Date(`${startDateIso}T00:00:00`)
           next.setDate(next.getDate() + offset)
           return toIsoDate(next)
@@ -192,8 +192,8 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
         : [startDateIso]
 
   const feedingSheetPrintBanner =
-    printRangeMode === 'next_9_days'
-      ? 'Próximos 9 dias — 3 dias por folha (3 folhas). Dados da ficha e alimentos uma vez por folha; controle diário por dia.'
+    printRangeMode === 'next_7_days'
+      ? 'Próximos 7 dias — ficha semanal com alimentos utilizados e controle diário.'
       : undefined
 
   const patientFields: ReportField[] = [
@@ -221,11 +221,11 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     { label: 'RER', value: formatKcal(report.energy.rer) },
     ...(hasClinicalFactor
       ? [
-          { label: 'MER pelo perfil FEDIAF', value: formatKcal(profileMer) },
+          { label: 'Energia pelo perfil', value: formatKcal(profileMer) },
           { label: 'Fator de ajuste clínico', value: `× ${report.energy.clinicalMerAdjustmentFactor!.toFixed(2)}` },
           { label: 'MER após ajuste clínico', value: formatKcal(report.energy.mer) },
         ]
-      : [{ label: 'MER (perfil FEDIAF)', value: formatKcal(report.energy.mer) }]),
+      : [{ label: 'Energia estimada pelo perfil', value: formatKcal(report.energy.mer) }]),
     { label: 'Energia-alvo na fórmulação', value: formatKcal(report.target.targetEnergy) },
     { label: 'Peso usado', value: report.energy.weightUsed != null ? `${report.energy.weightUsed.toFixed(2)} kg` : 'Não informado' },
   ]
@@ -332,7 +332,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
     generatedAt: toDateLabel(report.createdAt),
     patientTitle: safeText(report.patient.name),
     patientSubtitle: `${getSpeciesLabel(report.patient.species)} - ${safeText(report.patient.ownerName)}`,
-    feedingSheetTripleDayLayout: printRangeMode === 'next_9_days',
+    feedingSheetTripleDayLayout: false,
     patientFields,
     clinicalFields,
     energyFields,

@@ -5,14 +5,18 @@
 
 import { validateMinimumData } from '../validate'
 
+const assert = (condition: unknown, message: string) => {
+  if (!condition) throw new Error(message)
+}
+
 // Mock de teste básico (pode ser expandido quando Vitest estiver instalado)
 export const testValidateMinimumData = () => {
   console.log('[TEST] validateMinimumData')
 
   // Caso completo
   const completeCase = {
-    patient: { species: 'dog' },
-    complaint: { chiefComplaintIds: ['convulsao'] },
+    patient: { species: 'dog', lifeStage: 'adult' },
+    complaint: { chiefComplaintIds: ['convulsao'], temporalPattern: 'agudo', evolutionPattern: 'estático' },
     neuroExam: {
       mentation: 'Alerta',
       ambulation: 'Ambulatório',
@@ -23,8 +27,8 @@ export const testValidateMinimumData = () => {
   }
 
   const result1 = validateMinimumData(completeCase)
-  console.assert(result1.ok === true, 'Caso completo deve passar validação')
-  console.assert(result1.missing.length === 0, 'Caso completo não deve ter dados faltando')
+  assert(result1.ok === true, 'Caso completo deve passar validação')
+  assert(result1.missing.length === 0, 'Caso completo não deve ter dados faltando')
 
   // Caso incompleto (sem mentação)
   const incompleteCase = {
@@ -36,9 +40,9 @@ export const testValidateMinimumData = () => {
   }
 
   const result2 = validateMinimumData(incompleteCase)
-  console.assert(result2.ok === false, 'Caso incompleto deve falhar validação')
-  console.assert(result2.missing.length > 0, 'Caso incompleto deve ter dados faltando')
-  console.assert(
+  assert(result2.ok === false, 'Caso incompleto deve falhar validação')
+  assert(result2.missing.length > 0, 'Caso incompleto deve ter dados faltando')
+  assert(
     result2.missing.includes('Mentação/consciência'),
     'Deve detectar mentação faltando',
   )

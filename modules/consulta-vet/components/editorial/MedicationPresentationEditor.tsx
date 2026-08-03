@@ -24,6 +24,7 @@ function createEmptyPresentation(): MedicationPresentation {
     route: '',
     scoringInfo: '',
     channel: 'veterinary',
+    commercialProductSlug: '',
   };
 }
 
@@ -132,6 +133,12 @@ export function MedicationPresentationEditor({
               onChange={(e) => updateField(index, 'scoringInfo', e.target.value)}
               placeholder="Sulco / fracionamento"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={presentation.commercialProductSlug || ''}
+              onChange={(e) => updateField(index, 'commercialProductSlug', e.target.value)}
+              placeholder="Slug do produto na seção Comerciais"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 md:col-span-2"
             />
           </div>
         </div>

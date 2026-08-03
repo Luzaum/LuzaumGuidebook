@@ -7,9 +7,10 @@ interface SectionAnchorNavProps {
   sections: SectionAnchorEntry[];
   className?: string;
   onActiveChange?: (id: string) => void;
+  title?: string;
 }
 
-export function SectionAnchorNav({ sections, className, onActiveChange }: SectionAnchorNavProps) {
+export function SectionAnchorNav({ sections, className, onActiveChange, title = 'Índice desta doença' }: SectionAnchorNavProps) {
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {
@@ -46,9 +47,9 @@ export function SectionAnchorNav({ sections, className, onActiveChange }: Sectio
   };
 
   return (
-    <nav aria-label="Índice desta doença" className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto xl:block', className)}>
+    <nav aria-label={title} className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto xl:block', className)}>
       <div className="border-l border-border/80 px-3 py-2">
-        <h2 className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">Índice desta doença</h2>
+        <h2 className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{title}</h2>
         <ul className="space-y-0.5">
           {sections.map((section) => {
             const activeDefault = 'border-primary bg-primary/[0.06] font-semibold text-primary';

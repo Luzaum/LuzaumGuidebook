@@ -1,104 +1,250 @@
 .energia-vet-shell {
   width: 100%;
   min-height: 100dvh;
-  --background: 32 43% 98%;
-  --foreground: 24 22% 12%;
+  color-scheme: light;
+  --background: 216 35% 97%;
+  --foreground: 222 47% 11%;
   --card: 0 0% 100%;
-  --card-foreground: 24 22% 12%;
+  --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
-  --popover-foreground: 24 22% 12%;
-  --primary: 24 95% 54%;
-  --primary-foreground: 40 33% 98%;
-  --secondary: 36 45% 94%;
-  --secondary-foreground: 24 22% 12%;
-  --muted: 35 30% 94%;
-  --muted-foreground: 24 10% 42%;
-  --accent: 24 89% 92%;
-  --accent-foreground: 24 22% 12%;
-  --border: 30 24% 86%;
-  --input: 30 24% 86%;
-  --ring: 24 95% 54%;
+  --popover-foreground: 222 47% 11%;
+  --primary: 221 82% 47%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 39% 94%;
+  --secondary-foreground: 222 47% 15%;
+  --muted: 216 30% 95%;
+  --muted-foreground: 217 16% 40%;
+  --accent: 216 92% 95%;
+  --accent-foreground: 221 82% 36%;
+  --border: 216 25% 87%;
+  --input: 216 24% 82%;
+  --ring: 221 82% 50%;
   background:
-    radial-gradient(circle at top left, rgba(255, 186, 107, 0.18), transparent 32%),
-    linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(249, 243, 235, 0.98));
+    radial-gradient(circle at 78% -12%, hsl(216 100% 96%), transparent 32rem),
+    hsl(var(--background));
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
 .dark .energia-vet-shell {
-  --background: 24 18% 9%;
-  --foreground: 36 30% 96%;
-  --card: 24 18% 11%;
-  --card-foreground: 36 30% 96%;
-  --popover: 24 18% 11%;
-  --popover-foreground: 36 30% 96%;
-  --primary: 26 92% 58%;
-  --primary-foreground: 24 18% 9%;
-  --secondary: 24 10% 18%;
-  --secondary-foreground: 36 30% 96%;
-  --muted: 24 10% 16%;
-  --muted-foreground: 31 12% 69%;
-  --accent: 24 18% 18%;
-  --accent-foreground: 36 30% 96%;
-  --border: 24 12% 22%;
-  --input: 24 12% 22%;
-  --ring: 26 92% 58%;
-  background:
-    radial-gradient(circle at top left, rgba(249, 115, 22, 0.16), transparent 30%),
-    linear-gradient(180deg, rgba(24, 16, 12, 0.98), rgba(15, 11, 8, 0.98));
+  color-scheme: dark;
+  --background: 222 35% 8%;
+  --foreground: 214 32% 96%;
+  --card: 222 31% 11%;
+  --card-foreground: 214 32% 96%;
+  --popover: 222 31% 11%;
+  --popover-foreground: 214 32% 96%;
+  --primary: 216 92% 62%;
+  --primary-foreground: 222 47% 10%;
+  --secondary: 220 24% 17%;
+  --secondary-foreground: 214 32% 96%;
+  --muted: 220 22% 16%;
+  --muted-foreground: 217 15% 70%;
+  --accent: 219 34% 18%;
+  --accent-foreground: 214 100% 84%;
+  --border: 220 19% 23%;
+  --input: 220 19% 28%;
+  --ring: 216 92% 62%;
+  background: hsl(var(--background));
 }
 
 .energia-vet-sidebar {
-  box-shadow: inset -1px 0 0 rgba(15, 23, 42, 0.04);
+  box-shadow: 1px 0 0 rgba(15, 23, 42, 0.025);
 }
 
 .energia-vet-mobile-nav {
-  box-shadow: 0 -10px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.08);
 }
 
-/* Sidebar brand: halo laranja animado ao hover */
-.energia-vet-sidebar-logo-glow {
-  background: radial-gradient(
-    circle closest-side,
-    rgba(251, 146, 60, 0.65) 0%,
-    rgba(234, 88, 12, 0.35) 38%,
-    rgba(249, 115, 22, 0.08) 58%,
-    transparent 72%
-  );
+.energia-vet-shell [data-slot="button"] {
+  min-height: 44px;
 }
 
-@keyframes energia-vet-logo-orange-glow {
-  0%,
-  100% {
-    transform: translate(-50%, -50%) scale(0.88);
-    filter: blur(26px);
+.energia-vet-shell [data-slot="input"],
+.energia-vet-shell input:not([type="checkbox"]):not([type="radio"]),
+.energia-vet-shell textarea,
+.energia-vet-shell [data-slot="select-trigger"] {
+  min-height: 44px;
+  border-radius: 0.75rem;
+}
+
+.energia-vet-shell textarea {
+  border-color: hsl(var(--input));
+  background: hsl(var(--card));
+  padding: 0.75rem 0.875rem;
+}
+
+.energia-vet-shell h1 {
+  letter-spacing: -0.04em;
+}
+
+.nutrition-page-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.nutrition-page-header h1 {
+  margin: 0;
+  color: hsl(var(--foreground));
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 680;
+  line-height: 1.08;
+}
+
+.nutrition-page-header > div:first-child > p:last-child {
+  max-width: 48rem;
+  margin-top: 0.65rem;
+  color: hsl(var(--muted-foreground));
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.nutrition-eyebrow {
+  margin-bottom: 0.55rem !important;
+  color: hsl(var(--primary)) !important;
+  font-size: 0.7rem !important;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  line-height: 1 !important;
+  text-transform: uppercase;
+}
+
+.nutrition-header-stat {
+  display: flex;
+  min-width: 7.5rem;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid hsl(var(--border));
+  border-radius: 1rem;
+  background: hsl(var(--card) / 0.88);
+  padding: 0.75rem 0.9rem;
+}
+
+.nutrition-header-stat span,
+.nutrition-metric span {
+  color: hsl(var(--muted-foreground));
+  font-size: 0.7rem;
+}
+
+.nutrition-header-stat strong {
+  margin-top: 0.1rem;
+  color: hsl(var(--foreground));
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.nutrition-metric {
+  display: flex;
+  min-height: 4.5rem;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 0.9rem;
+  background: hsl(var(--muted) / 0.75);
+  padding: 0.75rem;
+}
+
+.nutrition-metric strong {
+  margin-top: 0.25rem;
+  color: hsl(var(--foreground));
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.nutrition-step-card {
+  border-color: hsl(var(--border));
+  border-radius: 1.5rem !important;
+  background: hsl(var(--card)) !important;
+  box-shadow: 0 18px 55px rgba(15, 23, 42, 0.055) !important;
+}
+
+.nutrition-step-card > [data-slot="card-header"] {
+  padding: 1.4rem 1.5rem;
+}
+
+.nutrition-step-card > [data-slot="card-content"] {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.nutrition-step-card > [data-slot="card-content"] > section,
+.nutrition-step-card > [data-slot="card-content"] > div > section {
+  border-radius: 1.15rem;
+}
+
+.nutrition-step-card [data-slot="card"] {
+  box-shadow: none !important;
+}
+
+/* Migra a antiga cor de destaque para o azul Vetius sem tocar nas regras clínicas. */
+.energia-vet-shell [class*="text-orange-"] { color: hsl(var(--primary)) !important; }
+.energia-vet-shell [class*="border-orange-"] { border-color: hsl(var(--primary) / 0.32) !important; }
+.energia-vet-shell [class*="ring-orange-"] { --tw-ring-color: hsl(var(--primary) / 0.28) !important; }
+.energia-vet-shell [class*="bg-orange-"] { background-color: hsl(var(--primary) / 0.09) !important; }
+.energia-vet-shell [class*="from-orange-"] { --tw-gradient-from: hsl(var(--primary) / 0.1) var(--tw-gradient-from-position) !important; }
+.energia-vet-shell [class*="via-orange-"] { --tw-gradient-via: hsl(var(--primary) / 0.05) var(--tw-gradient-via-position) !important; }
+
+/* O gráfico é o único componente que conserva sua paleta original. */
+.energia-vet-energy-partition [class*="text-orange-"] { color: rgb(249 115 22) !important; }
+.energia-vet-energy-partition [class*="border-orange-"] { border-color: rgb(251 146 60 / 0.4) !important; }
+.energia-vet-energy-partition [class*="bg-orange-"] { background-color: rgb(249 115 22 / 0.05) !important; }
+
+/* Superfícies legadas passam a seguir o tema sem fundos pretos isolados. */
+.energia-vet-shell [class*="bg-[#141010]"],
+.energia-vet-shell [class*="bg-[#1a1413]"],
+.energia-vet-shell [class*="bg-[#1b1514]"],
+.energia-vet-shell [class*="bg-[#181212]"],
+.energia-vet-shell [class*="bg-[#171212]"],
+.energia-vet-shell [class*="bg-[#221a19]"] {
+  background-color: hsl(var(--card)) !important;
+}
+
+.energia-vet-shell [class*="border-white/10"],
+.energia-vet-shell [class*="border-white/5"] {
+  border-color: hsl(var(--border)) !important;
+}
+
+.energia-vet-shell [class~="text-white"] {
+  color: hsl(var(--foreground)) !important;
+}
+
+.energia-vet-shell [class*="bg-black/10"],
+.energia-vet-shell [class*="bg-black/15"],
+.energia-vet-shell [class*="bg-black/20"],
+.energia-vet-shell [class*="bg-black/25"] {
+  background-color: hsl(var(--muted) / 0.65) !important;
+}
+
+@media (min-width: 768px) {
+  .nutrition-page-header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
   }
-  50% {
-    transform: translate(-50%, -50%) scale(1.14);
-    filter: blur(38px);
-  }
 }
 
-.energia-vet-sidebar-brand:hover .energia-vet-sidebar-logo-glow {
-  animation: energia-vet-logo-orange-glow 1.75s ease-in-out infinite;
+@media (max-width: 640px) {
+  .energia-vet-shell h1 {
+    font-size: 1.65rem !important;
+    line-height: 1.18 !important;
+  }
+
+  .nutrition-step-card > [data-slot="card-header"],
+  .nutrition-step-card > [data-slot="card-content"] {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .energia-vet-sidebar-brand:hover .energia-vet-sidebar-logo-glow {
-    animation: none;
-    transform: translate(-50%, -50%) scale(1);
-    filter: blur(24px);
+  .energia-vet-shell *,
+  .energia-vet-shell *::before,
+  .energia-vet-shell *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
-
-  .energia-vet-sidebar-brand:hover img {
-    transform: none;
-  }
-}
-
-.dark .energia-vet-sidebar-logo-glow {
-  background: radial-gradient(
-    circle closest-side,
-    rgba(253, 186, 116, 0.5) 0%,
-    rgba(234, 88, 12, 0.28) 40%,
-    rgba(249, 115, 22, 0.06) 60%,
-    transparent 74%
-  );
 }

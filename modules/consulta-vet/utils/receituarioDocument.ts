@@ -13,6 +13,12 @@ export interface DocumentPageModel {
   lines: PaginatedLine[];
 }
 
+export interface SignatureBoxModel {
+  title: string;
+  nameLabel: string;
+  registrationLabel?: string;
+}
+
 const LEGACY_FIELD_LINE = /^(PACIENTE|ESPÉCIE|RAÇA|SEXO|IDADE|PESO|RESPONSÁVEL)\s*:/i;
 const LEGACY_TOKEN = /\{\{[^{}]+\}\}|\[[^\[\]\n]+\]/g;
 
@@ -49,6 +55,23 @@ export function normalizeLegacyDocumentBody(value: string): string {
   return sanitizeIssuedText(filtered.join('\n'));
 }
 
+export function stripTextSignatureSection(value: string): string {
+  const text = String(value || '');
+  const marker = /(?:^|\n)RESPONSÁVEL PELO ANIMAL\s*(?:\n|$)/i.exec(text);
+  return sanitizeIssuedText(marker ? text.slice(0, marker.index) : text);
+}
+
+export function getDocumentSignatureBoxes(document: ReceituarioDocumentData): SignatureBoxModel[] {
+  if (document.documentType !== 'term') return [];
+  const identification = document.identification;
+  return [
+    { title: 'Responsável pelo animal', nameLabel: displayField(identification.responsibleName), registrationLabel: `CPF: ${displayField(identification.responsibleCpf)}` },
+    { title: 'Médico-veterinário', nameLabel: displayField(document.header.veterinarianName), registrationLabel: `CRMV: ${displayField(document.header.crmv)}` },
+    { title: 'Testemunha 1', nameLabel: displayField(identification.witness1Name), registrationLabel: `CPF: ${displayField(identification.witness1Cpf)}` },
+    { title: 'Testemunha 2', nameLabel: displayField(identification.witness2Name), registrationLabel: `CPF: ${displayField(identification.witness2Cpf)}` },
+  ];
+}
+
 export function buildDocumentPlainText(document: ReceituarioDocumentData): string {
   const { identification, header } = document;
   return sanitizeIssuedText([
@@ -67,6 +90,15 @@ export function buildDocumentPlainText(document: ReceituarioDocumentData): strin
     `LOCAL E DATA: ${displayField(header.location || header.documentDate)}`,
     `HORÁRIO: ${displayField(header.time)}`,
     '',
+    ...(document.documentType === 'term' ? [
+      `RESPONSÁVEL PELO ANIMAL: ${displayField(identification.responsibleName)}`,
+      `CPF DO RESPONSÁVEL: ${displayField(identification.responsibleCpf)}`,
+      `TESTEMUNHA 1: ${displayField(identification.witness1Name)}`,
+      `CPF DA TESTEMUNHA 1: ${displayField(identification.witness1Cpf)}`,
+      `TESTEMUNHA 2: ${displayField(identification.witness2Name)}`,
+      `CPF DA TESTEMUNHA 2: ${displayField(identification.witness2Cpf)}`,
+      '',
+    ] : []),
     displayField(header.veterinarianName),
     `CRMV: ${displayField(header.crmv)}`,
   ].join('\n'));
@@ -105,8 +137,11 @@ function blocksFromText(text: string, maxChars: number): PaginatedLine[][] {
 
 export function paginateDocument(document: ReceituarioDocumentData, options?: { maxChars?: number; bodyLinesPerPage?: number }): DocumentPageModel[] {
   const maxChars = options?.maxChars ?? 91;
-  const bodyLinesPerPage = options?.bodyLinesPerPage ?? 43;
-  const rawBlocks = blocksFromText(document.bodyPlainText, maxChars);
+  // A primeira página reserva espaço para identificação; sem essa margem o corpo invade o rodapé do A4.
+  const bodyLinesPerPage = options?.bodyLinesPerPage ?? (document.documentType === 'term' ? 28 : 41);
+  const firstPageLines = options?.bodyLinesPerPage ?? (document.documentType === 'term' ? 28 : 36);
+  const layoutBody = document.documentType === 'term' ? stripTextSignatureSection(document.bodyPlainText) : document.bodyPlainText;
+  const rawBlocks = blocksFromText(layoutBody, maxChars);
   const blocks: PaginatedLine[][] = [];
   for (let index = 0; index < rawBlocks.length; index += 1) {
     const block = rawBlocks[index];
@@ -129,15 +164,20 @@ export function paginateDocument(document: ReceituarioDocumentData, options?: { 
   const pages: PaginatedLine[][] = [[]];
   let used = 0;
 
-  for (const block of blocks) {
+  const pageCapacity = () => pages.length === 1 ? firstPageLines : bodyLinesPerPage;
+  for (let blockIndex = 0; blockIndex < blocks.length; blockIndex += 1) {
+    const block = blocks[blockIndex];
     const blockSize = block.length;
     const current = pages[pages.length - 1];
     const shouldKeepTogether = blockSize <= 8;
-    if (used > 0 && shouldKeepTogether && used + blockSize > bodyLinesPerPage) {
+    const nextBlockSize = blocks[blockIndex + 1]?.length || 0;
+    const isSectionHeading = block[0]?.kind === 'heading';
+    const shouldKeepHeadingWithNextBlock = isSectionHeading && nextBlockSize > 0 && blockSize + nextBlockSize <= 8;
+    if (used > 0 && (shouldKeepTogether || shouldKeepHeadingWithNextBlock) && used + blockSize + (shouldKeepHeadingWithNextBlock ? nextBlockSize : 0) > pageCapacity()) {
       pages.push([]); used = 0;
     }
     for (const line of block) {
-      if (used >= bodyLinesPerPage) { pages.push([]); used = 0; }
+      if (used >= pageCapacity()) { pages.push([]); used = 0; }
       pages[pages.length - 1].push(line); used += 1;
     }
   }

@@ -21,6 +21,12 @@ function createEmptyDose(): MedicationDose {
     route: '',
     frequency: '',
     duration: '',
+    clinicalContext: '',
+    monitoring: '',
+    maximumDose: '',
+    evidenceLevel: '',
+    diseaseSlugs: [],
+    referenceIds: [],
     notes: '',
     calculatorEnabled: true,
   };
@@ -164,6 +170,43 @@ export function MedicationDoseEditor({ value, onChange, presentationOptions }: M
               onChange={(e) => updateField(index, 'duration', e.target.value)}
               placeholder="Duração"
               className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={dose.clinicalContext || ''}
+              onChange={(e) => updateField(index, 'clinicalContext', e.target.value)}
+              placeholder="Quadro / estágio (agudo, manutenção, estágio B2...)"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={dose.maximumDose || ''}
+              onChange={(e) => updateField(index, 'maximumDose', e.target.value)}
+              placeholder="Dose máxima absoluta (opcional)"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={dose.evidenceLevel || ''}
+              onChange={(e) => updateField(index, 'evidenceLevel', e.target.value)}
+              placeholder="Nível/tipo de evidência"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={(dose.diseaseSlugs || []).join(', ')}
+              onChange={(e) => updateField(index, 'diseaseSlugs', e.target.value.split(',').map((item) => item.trim()).filter(Boolean))}
+              placeholder="Slugs de doenças, separados por vírgula"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <input
+              value={(dose.referenceIds || []).join(', ')}
+              onChange={(e) => updateField(index, 'referenceIds', e.target.value.split(',').map((item) => item.trim()).filter(Boolean))}
+              placeholder="IDs das referências, separados por vírgula"
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+            />
+            <textarea
+              value={dose.monitoring || ''}
+              onChange={(e) => updateField(index, 'monitoring', e.target.value)}
+              placeholder="Monitoramento recomendado durante o regime"
+              rows={2}
+              className="w-full rounded-xl border border-border bg-card px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 xl:col-span-2"
             />
             <textarea
               value={dose.notes || ''}

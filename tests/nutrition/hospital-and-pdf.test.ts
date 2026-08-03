@@ -8,6 +8,7 @@ import {
 } from '../../modules/energia-vet/lib/hospital'
 import { buildHospitalizedNutritionPdfDoc } from '../../modules/energia-vet/lib/pdf/hospitalizedNutritionPdf'
 import { buildOutpatientNutritionPdfDoc } from '../../modules/energia-vet/lib/pdf/outpatientNutritionPdf'
+import { buildFeedingSheetPdfDoc } from '../../modules/energia-vet/lib/pdf/feedingSheetPdf'
 import { REPORT_V4_SAMPLE } from './fixtures/report-v4-sample'
 
 test('protocolo legado preserva progressao 25-50-75-100', () => {
@@ -74,4 +75,35 @@ test('PDF hospitalar tipico tem 1 pagina', () => {
   })
   const doc = buildHospitalizedNutritionPdfDoc(order, REPORT_V4_SAMPLE.createdAt)
   assert.equal(doc.getNumberOfPages(), 1)
+})
+
+test('ficha alimentar semanal contém apenas a operação diária e pode incluir preparo', () => {
+  const report = {
+    ...REPORT_V4_SAMPLE,
+    diet: {
+      ...REPORT_V4_SAMPLE.diet,
+      programmedFeeding: {
+        enabled: true,
+        mealsPerDay: 2,
+        roundingRule: '1 g',
+        startDate: '2026-08-03',
+        printRangeMode: 'next_7_days' as const,
+        generatedFeedingDates: ['2026-08-03', '2026-08-04', '2026-08-05', '2026-08-06', '2026-08-07', '2026-08-08', '2026-08-09'],
+        includePreparationInstructions: true,
+        preparationInstructions: 'Misturar os ingredientes pesados e servir em temperatura ambiente.',
+        meals: [
+          { id: 'meal-1', label: '1ª refeição', time: '08:00', totalGrams: 50, items: [{ foodId: 'food-1', foodName: 'Alimento teste', gramsAsFed: 50 }] },
+          { id: 'meal-2', label: '2ª refeição', time: '18:00', totalGrams: 50, items: [{ foodId: 'food-1', foodName: 'Alimento teste', gramsAsFed: 50 }] },
+        ],
+      },
+    },
+    formula: {
+      ...REPORT_V4_SAMPLE.formula,
+      programmedFeeding: undefined,
+    },
+  }
+  const doc = buildFeedingSheetPdfDoc(report)
+  const text = doc.output('datauristring')
+  assert.ok(doc.getNumberOfPages() >= 1)
+  assert.ok(text.length > 1_000)
 })

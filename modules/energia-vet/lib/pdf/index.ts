@@ -1,5 +1,6 @@
 export { PDF_PAGE, PDF_COLORS, PDF_TEMPLATE_VERSION } from './pdfTheme'
 export * from './pdfLayout'
 export * from './outpatientNutritionPdf'
+export * from './feedingSheetPdf'
 export * from './hospitalizedNutritionPdf'
 export * from './technicalAppendixPdf'

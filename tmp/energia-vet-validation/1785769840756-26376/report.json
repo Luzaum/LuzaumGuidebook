@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-08-03T15:10:48.735Z",
+  "outputDir": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785769840756-26376",
+  "checks": {
+    "energyChecks": {
+      "hasBookSource": false,
+      "automaticNeuteredProfile": false,
+      "hasRer": false,
+      "noExpectedAdultWeight": true
+    },
+    "targetChecks": {
+      "imageVisible": true,
+      "automaticWeightLoss": true
+    },
+    "foodChecks": {
+      "taxonomyVisible": false,
+      "bookSourceVisible": false
+    },
+    "formulationChecks": {
+      "dryMatter": false,
+      "asFed": false,
+      "partition": false
+    },
+    "summaryChecks": {
+      "clinicalTable": false,
+      "contribution": false,
+      "partition": false
+    },
+    "feedingChecks": {
+      "quickModeDoesNotSave": false,
+      "finishLabel": false
+    },
+    "responsiveChecks": {
+      "energy": true,
+      "target": true,
+      "food": true,
+      "formulation": true,
+      "summary": true,
+      "feeding": true
+    }
+  }
+}

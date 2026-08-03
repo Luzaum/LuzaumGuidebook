@@ -106,6 +106,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
       { to: '/consulta-vet/doencas', label: 'Doenças', icon: Stethoscope, accent: 'emerald' },
       { to: '/consulta-vet/medicamentos', label: 'Medicamentos', icon: Pill, accent: 'amber' },
       { to: '/consulta-vet/apresentacoes-comerciais', label: 'Comerciais', icon: ShoppingBag, accent: 'cyan' },
+      { to: '/consulta-vet/receituario', label: 'Receituário', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap, accent: 'orange' },
       { to: '/consulta-vet/guias-rapidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText, accent: 'violet' },

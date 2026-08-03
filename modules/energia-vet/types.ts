@@ -20,6 +20,7 @@ export interface Patient {
   isHospitalized: boolean
   clinicalNotes?: string
   comorbidityIds?: string[]
+  registrationMode?: 'registered' | 'quick'
   createdAt: string
   updatedAt: string
 }
@@ -292,8 +293,10 @@ export interface ProgrammedFeedingPlan {
   roundingRule: string
   meals: ProgrammedFeedingMeal[]
   startDate?: string
-  printRangeMode?: 'single_day' | 'next_3_days' | 'next_6_days' | 'next_9_days'
+  printRangeMode?: 'single_day' | 'next_3_days' | 'next_6_days' | 'next_7_days' | 'next_9_days'
   generatedFeedingDates?: string[]
+  includePreparationInstructions?: boolean
+  preparationInstructions?: string
 }
 
 export interface FeedingPlan {

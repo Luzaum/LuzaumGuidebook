@@ -208,14 +208,15 @@ create policy global_medication_precautions_select on public.global_medication_p
 
 -- Privilégios explícitos: RLS decide as linhas; usuários anônimos não recebem acesso
 -- aos dados do Receituário. O log e o schema de backup permanecem administrativos.
-revoke all on table public.document_templates from anon;
-revoke all on table public.generated_documents from anon;
-revoke all on table public.generated_document_medications from anon;
-revoke all on table public.template_favorites from anon;
-revoke all on table public.receituario_drafts from anon;
+revoke all on table public.document_templates from anon, authenticated;
+revoke all on table public.generated_documents from anon, authenticated;
+revoke all on table public.generated_document_medications from anon, authenticated;
+revoke all on table public.template_favorites from anon, authenticated;
+revoke all on table public.receituario_drafts from anon, authenticated;
 revoke all on table public.receituario_migration_audit from anon, authenticated;
-revoke all on table public.medication_precautions from anon;
-revoke all on table public.global_medication_precautions from anon;
+revoke all on table public.medication_precautions from anon, authenticated;
+revoke all on table public.global_medication_precautions from anon, authenticated;
+revoke all on sequence public.receituario_migration_audit_id_seq from anon, authenticated;
 
 grant select, insert, update, delete on table public.document_templates to authenticated;
 grant select, insert, update, delete on table public.generated_documents to authenticated;

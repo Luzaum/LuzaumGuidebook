@@ -1,0 +1,55 @@
+{
+  "generated_at": "2026-08-02",
+  "scope": "Modelos globais clínicos ativos do Receituário",
+  "clinical_validation": false,
+  "totals": {
+    "active_models": 4,
+    "retired_models": 4,
+    "functional_with_pending_sources": 4
+  },
+  "active_models": [
+    {
+      "id": "seed-infectologia-esporotricose-gatos",
+      "title": "Esporotricose — Gatos",
+      "species": "gato",
+      "status": "funcional com fontes pendentes"
+    },
+    {
+      "id": "seed-infectologia-esporotricose-caes",
+      "title": "Esporotricose — Cães",
+      "species": "cão",
+      "status": "funcional com fontes pendentes"
+    },
+    {
+      "id": "seed-infectologia-cinomose-caes",
+      "title": "Cinomose — Cães",
+      "species": "cão",
+      "status": "funcional com fontes pendentes"
+    },
+    {
+      "id": "seed-infectologia-erliquiose-anaplasmose",
+      "title": "Erliquiose/Anaplasmose — Cães",
+      "species": "cão",
+      "status": "funcional com fontes pendentes"
+    }
+  ],
+  "retired_models": [
+    {
+      "id": "seed-infectologia-parvovirose-hospitalar",
+      "title": "Parvovirose — Cães — Protocolo hospitalar"
+    },
+    {
+      "id": "seed-infectologia-parvovirose-ambulatorial",
+      "title": "Parvovirose — Cães — Protocolo ambulatorial"
+    },
+    {
+      "id": "seed-gastrite-aguda",
+      "title": "Gastrite Aguda / Gastroenterite"
+    },
+    {
+      "id": "seed-cardio-b2",
+      "title": "CardioB2"
+    }
+  ],
+  "retirement_behavior": "Os modelos aposentados não são carregados dos seeds, do cache nem de registros remotos antigos."
+}

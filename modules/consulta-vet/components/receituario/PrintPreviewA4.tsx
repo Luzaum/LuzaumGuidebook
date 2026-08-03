@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ReceituarioDocumentData } from '../../types/receituario';
-import { displayField, paginateDocument } from '../../utils/receituarioDocument';
+import { displayField, getDocumentSignatureBoxes, paginateDocument } from '../../utils/receituarioDocument';
 
 interface Props { document: ReceituarioDocumentData }
 
@@ -20,6 +20,7 @@ function Identification({ document }: Props) {
 
 export function PrintPreviewA4({ document }: Props) {
   const pages = paginateDocument(document);
+  const signatureBoxes = getDocumentSignatureBoxes(document);
   return (
     <div className="receituario-a4-wrapper flex w-full flex-col items-center gap-5 overflow-y-auto bg-slate-200/65 p-3 sm:p-6" data-page-count={pages.length}>
       {pages.map((page) => (
@@ -34,6 +35,20 @@ export function PrintPreviewA4({ document }: Props) {
               ? <div key={index} className="h-[5.1mm]" />
               : <p key={index} className={line.kind === 'heading' ? 'font-bold uppercase tracking-[0.025em]' : line.kind === 'bullet' ? 'pl-2' : ''}>{line.text}</p>)}
           </main>
+          {page.number === page.totalPages && signatureBoxes.length ? (
+            <section className="mb-[4mm] grid grid-cols-2 gap-[3mm]" aria-label="Quadro de assinaturas">
+              {signatureBoxes.map((box) => (
+                <div key={box.title} className="flex h-[24mm] flex-col justify-between rounded-[2mm] border border-slate-400 p-[3mm] text-[7.5pt]">
+                  <p className="font-bold uppercase tracking-[0.04em]">{box.title}</p>
+                  <div className="space-y-[2mm] text-slate-600">
+                    <p>{box.nameLabel}</p>
+                    {box.registrationLabel ? <p>{box.registrationLabel}</p> : null}
+                    <div className="border-t border-slate-500 pt-[1mm] text-center">Assinatura</div>
+                  </div>
+                </div>
+              ))}
+            </section>
+          ) : null}
           <footer className="flex h-[8mm] items-end justify-between border-t border-slate-200 pt-2 text-[7.5pt] text-slate-400"><span>ConsultaVet • Documento emitido pelo profissional responsável</span><span>Página {page.number} de {page.totalPages}</span></footer>
         </article>
       ))}

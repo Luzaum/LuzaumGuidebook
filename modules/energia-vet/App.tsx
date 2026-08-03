@@ -1,7 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { Calculator, FileText, Home, Info, Settings, Stethoscope, Users, Utensils } from 'lucide-react';
+import {
+  Calculator,
+  ChevronRight,
+  FileText,
+  Home,
+  Info,
+  Stethoscope,
+  Users,
+  Utensils,
+} from 'lucide-react';
 
 import Dashboard from './pages/Dashboard';
 import NewCalculation from './pages/NewCalculation';
@@ -17,114 +26,122 @@ import { cn } from './lib/utils';
 import './index.css';
 
 const BASE_ROUTE = '/calculadora-energetica';
-const LEGACY_STORAGE_KEYS = ['vetius-nutricao-history-v1', 'vetius-nutricao-draft-v1'];
 const MODULE_NAME = 'NutriçãoVET';
 const MODULE_LOGO = '/apps/nutricaovet.png';
+
+const navigation = [
+  { name: 'Visão geral', shortName: 'Início', path: '/', icon: Home },
+  { name: 'Novo cálculo', shortName: 'Novo', path: '/new', icon: Calculator },
+  { name: 'Pacientes', shortName: 'Pacientes', path: '/patients', icon: Users },
+  { name: 'Alimentos', shortName: 'Alimentos', path: '/foods', icon: Utensils },
+  { name: 'Hospitalizado', shortName: 'Hospital', path: '/hospitalized', icon: Stethoscope },
+  { name: 'Relatórios', shortName: 'Relatórios', path: '/reports', icon: FileText },
+  { name: 'Guia de ECC', shortName: 'ECC', path: '/bcs', icon: Info },
+];
 
 function modulePath(path: string) {
   return path === '/' ? BASE_ROUTE : `${BASE_ROUTE}${path}`;
 }
 
+function isCurrentPath(pathname: string, path: string) {
+  const href = modulePath(path);
+  return pathname === href || (path !== '/' && pathname.startsWith(href));
+}
+
 function Sidebar() {
   const location = useLocation();
-  const links = [
-    { name: 'Dashboard', path: '/', icon: Home },
-    { name: 'Novo Cálculo', path: '/new', icon: Calculator },
-    { name: 'Pacientes', path: '/patients', icon: Users },
-    { name: 'Guia BCS', path: '/bcs', icon: Info },
-    { name: 'Alimentos', path: '/foods', icon: Utensils },
-    { name: 'Hospitalizado', path: '/hospitalized', icon: Stethoscope },
-    { name: 'Relatórios', path: '/reports', icon: FileText },
-  ];
 
   return (
-    <aside className="energia-vet-sidebar hidden w-72 shrink-0 border-r border-border/70 bg-card/95 lg:flex lg:flex-col">
-      <div className="border-b border-border/60 px-4 py-6">
+    <aside className="energia-vet-sidebar hidden w-[248px] shrink-0 border-r border-border bg-card lg:flex lg:flex-col">
+      <div className="px-5 pb-5 pt-6">
         <Link
           to={modulePath('/')}
-          className="energia-vet-sidebar-brand group flex flex-col items-center gap-0 rounded-xl py-0.5 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+          className="energia-vet-sidebar-brand flex items-center gap-3 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
           aria-label={`${MODULE_NAME} — ir para o início`}
         >
-          <div className="relative flex max-w-full items-center justify-center">
-            <span
-              className="energia-vet-sidebar-logo-glow pointer-events-none absolute left-1/2 top-1/2 z-0 h-[135%] w-[135%] max-w-[min(100%,18rem)] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 blur-2xl transition-opacity duration-300 group-hover:opacity-100"
-              aria-hidden
-            />
-            <img
-              src={MODULE_LOGO}
-              alt=""
-              className="relative z-[1] h-56 w-56 max-h-[min(14rem,calc(100vw-4rem))] max-w-full object-contain transition-transform duration-300 ease-out group-hover:scale-[1.1]"
-              width={224}
-              height={224}
-              decoding="async"
-            />
-          </div>
-          <span className="-mt-2.5 text-center text-lg font-semibold leading-none tracking-tight text-foreground">
-            {MODULE_NAME}
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-primary/10">
+            <img src={MODULE_LOGO} alt="" className="h-10 w-10 object-contain" width={40} height={40} decoding="async" />
+          </span>
+          <span className="min-w-0">
+            <span className="block truncate text-[15px] font-semibold tracking-tight text-foreground">{MODULE_NAME}</span>
+            <span className="mt-0.5 block text-xs text-muted-foreground">Nutrição clínica</span>
           </span>
         </Link>
-        <p className="mt-1 text-center text-sm leading-tight text-muted-foreground">Nutrição clínica veterinária</p>
       </div>
-      <nav className="flex-1 space-y-2 px-4 py-5">
-        {links.map((link) => {
-          const Icon = link.icon;
-          const href = modulePath(link.path);
-          const isActive = location.pathname === href || (link.path !== '/' && location.pathname.startsWith(`${href}`));
+
+      <nav className="flex-1 space-y-1 px-3" aria-label="Navegação do NutriçãoVET">
+        {navigation.map((item) => {
+          const Icon = item.icon;
+          const href = modulePath(item.path);
+          const isActive = isCurrentPath(location.pathname, item.path);
 
           return (
             <Link
-              key={link.path}
+              key={item.path}
               to={href}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors',
-                isActive ? 'bg-primary text-primary-foreground shadow-sm' : 'text-muted-foreground hover:bg-secondary hover:text-foreground',
+                'group flex min-h-11 items-center gap-3 rounded-xl px-3 text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring',
+                isActive
+                  ? 'bg-primary/10 text-primary'
+                  : 'text-muted-foreground hover:bg-muted hover:text-foreground',
               )}
             >
-              <Icon className="h-5 w-5" />
-              {link.name}
+              <Icon className="h-[18px] w-[18px] shrink-0" strokeWidth={1.9} />
+              <span className="flex-1">{item.name}</span>
+              {isActive && <ChevronRight className="h-4 w-4 opacity-70" />}
             </Link>
           );
         })}
       </nav>
-      <div className="border-t border-border/60 p-4">
-        <div className="flex items-center gap-3 rounded-xl px-4 py-3 text-sm text-muted-foreground">
-          <Settings className="h-5 w-5" />
-          Configurações
-        </div>
+
+      <div className="mx-5 mb-5 mt-4 border-t border-border pt-4">
+        <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">Vetius Clinical Suite</p>
       </div>
     </aside>
   );
 }
 
+function MobileHeader() {
+  return (
+    <header className="flex h-16 shrink-0 items-center border-b border-border bg-card/95 px-4 backdrop-blur lg:hidden">
+      <Link to={modulePath('/')} className="flex items-center gap-2.5 rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-ring">
+        <span className="flex h-9 w-9 items-center justify-center overflow-hidden rounded-lg bg-primary/10">
+          <img src={MODULE_LOGO} alt="" className="h-8 w-8 object-contain" />
+        </span>
+        <span>
+          <span className="block text-sm font-semibold leading-none text-foreground">{MODULE_NAME}</span>
+          <span className="mt-1 block text-[11px] leading-none text-muted-foreground">Nutrição clínica</span>
+        </span>
+      </Link>
+    </header>
+  );
+}
+
 function MobileNav() {
-  const links = [
-    { name: 'Início', path: '/', icon: Home },
-    { name: 'Novo', path: '/new', icon: Calculator },
-    { name: 'Pacientes', path: '/patients', icon: Users },
-    { name: 'Alimentos', path: '/foods', icon: Utensils },
-    { name: 'Relatórios', path: '/reports', icon: FileText },
-  ];
   const location = useLocation();
+  const mobileItems = navigation.slice(0, 6);
 
   return (
-    <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border/70 bg-card/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
-      <div className="mx-auto grid max-w-3xl grid-cols-5 gap-1 sm:gap-2">
-        {links.map((link) => {
-          const Icon = link.icon;
-          const href = modulePath(link.path);
-          const isActive = location.pathname === href || (link.path !== '/' && location.pathname.startsWith(`${href}`));
+    <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
+      <div className="mx-auto grid max-w-3xl grid-cols-6 gap-0.5">
+        {mobileItems.map((item) => {
+          const Icon = item.icon;
+          const href = modulePath(item.path);
+          const isActive = isCurrentPath(location.pathname, item.path);
 
           return (
             <Link
-              key={link.path}
+              key={item.path}
               to={href}
+              aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-xl px-1 py-2 text-[10px] font-medium sm:px-2 sm:text-[11px]',
-                isActive ? 'bg-primary text-primary-foreground' : 'text-muted-foreground',
+                'flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-0.5 py-1 text-[9px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring sm:text-[10px]',
+                isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground',
               )}
             >
-              <Icon className="h-4 w-4" />
-              <span className="w-full truncate text-center">{link.name}</span>
+              <Icon className="h-[18px] w-[18px]" strokeWidth={isActive ? 2.2 : 1.8} />
+              <span className="w-full truncate text-center">{item.shortName}</span>
             </Link>
           );
         })}
@@ -138,10 +155,9 @@ function Layout({ children }: { children: React.ReactNode }) {
     <div className="energia-vet-shell flex h-full min-h-0 bg-background">
       <Sidebar />
       <div className="flex h-full min-h-0 min-w-0 flex-1 flex-col">
-        <main className="min-h-0 flex-1 overflow-y-auto px-4 py-6 pb-24 sm:py-8 lg:px-10 lg:py-10 lg:pb-10">
-          <div className="w-full max-w-none">
-            {children}
-          </div>
+        <MobileHeader />
+        <main className="min-h-0 flex-1 overflow-y-auto px-4 py-6 pb-24 sm:px-6 sm:py-8 lg:px-8 lg:py-9 lg:pb-10 xl:px-10">
+          <div className="mx-auto w-full max-w-[1480px]">{children}</div>
         </main>
       </div>
       <MobileNav />
@@ -150,12 +166,6 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  useEffect(() => {
-    for (const key of LEGACY_STORAGE_KEYS) {
-      window.localStorage.removeItem(key);
-    }
-  }, []);
-
   return (
     <>
       <Layout>

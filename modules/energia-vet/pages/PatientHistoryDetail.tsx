@@ -41,7 +41,7 @@ export default function PatientHistoryDetail() {
         <Button variant="outline" render={<Link to={`${BASE_ROUTE}/patients`} />} className="gap-2">
           <ArrowLeft className="h-4 w-4" /> Voltar
         </Button>
-        <Card className="border-white/10 bg-[#141010]">
+        <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">Nenhum relatorio encontrado para este paciente.</CardContent>
         </Card>
       </div>
@@ -49,22 +49,22 @@ export default function PatientHistoryDetail() {
   }
 
   return (
-    <div className="space-y-6 pb-20">
-      <div className="flex items-center justify-between gap-4">
+    <div className="nutrition-page space-y-6 pb-16">
+      <header className="nutrition-page-header">
         <div>
-          <p className="text-sm uppercase tracking-[0.2em] text-muted-foreground">Histórico do paciente</p>
-          <h1 className="text-3xl font-bold text-white">{selectedReport.patient.name || 'Paciente sem nome'}</h1>
-          <p className="mt-1 text-sm text-muted-foreground">{reports.length} relatorio(s) salvos localmente para este paciente.</p>
+          <p className="nutrition-eyebrow">Histórico do paciente</p>
+          <h1>{selectedReport.patient.name || 'Paciente sem nome'}</h1>
+          <p>{reports.length} relatório(s) disponível(is) para consulta.</p>
         </div>
         <Button variant="outline" render={<Link to={`${BASE_ROUTE}/patients`} />} className="gap-2">
           <ArrowLeft className="h-4 w-4" /> Voltar
         </Button>
-      </div>
+      </header>
 
       <div className="grid gap-6 xl:grid-cols-[320px_1fr]">
-        <Card className="border-white/10 bg-[#141010] xl:sticky xl:top-6">
+        <Card className="xl:sticky xl:top-6">
           <CardHeader className="pb-3">
-            <CardTitle className="text-lg text-white">Relatorios salvos</CardTitle>
+            <CardTitle className="text-lg">Relatórios salvos</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
             {reports.map((report) => (
@@ -72,13 +72,13 @@ export default function PatientHistoryDetail() {
                 key={report.id}
                 type="button"
                 onClick={() => setSelectedReportId(report.id)}
-                className={`w-full rounded-2xl border px-4 py-4 text-left transition-all ${
+                className={`w-full cursor-pointer rounded-2xl border px-4 py-4 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25 ${
                   selectedReport.id === report.id
-                    ? 'border-orange-400/50 bg-orange-500/10'
-                    : 'border-white/10 bg-black/10 hover:border-orange-500/30'
+                    ? 'border-primary/45 bg-primary/[0.07]'
+                    : 'border-border bg-card hover:border-primary/25 hover:bg-muted/50'
                 }`}
               >
-                <p className="font-semibold text-white">{new Date(report.createdAt).toLocaleDateString('pt-BR')}</p>
+                <p className="font-semibold text-foreground">{new Date(report.createdAt).toLocaleDateString('pt-BR')}</p>
                 <p className="mt-1 text-xs text-muted-foreground">
                   {report.target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia · {report.diet.entries.length} alimento(s)
                 </p>

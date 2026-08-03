@@ -49,6 +49,7 @@ type MedicationFormState = {
   priceNotes: string;
   tags: string;
   mechanismOfAction: string;
+  plainLanguageSummary: string;
   indications: string;
   contraindications: string;
   cautions: string;
@@ -87,6 +88,7 @@ function createEmptyMedication(): MedicationFormState {
     priceNotes: '',
     tags: '',
     mechanismOfAction: '',
+    plainLanguageSummary: '',
     indications: '',
     contraindications: '',
     cautions: '',
@@ -126,6 +128,7 @@ function mapMedicationToForm(record: MedicationRecord): MedicationFormState {
     priceNotes: record.priceReference?.notes || '',
     tags: formatMultiline(record.tags),
     mechanismOfAction: record.mechanismOfAction,
+    plainLanguageSummary: record.plainLanguageSummary || '',
     indications: formatMultiline(record.indications),
     contraindications: formatMultiline(record.contraindications),
     cautions: formatMultiline(record.cautions),
@@ -302,6 +305,7 @@ export function EditorialMedicationsPage() {
         priceReference: buildPriceReference(),
         tags: splitMultiline(form.tags),
         mechanismOfAction: form.mechanismOfAction.trim(),
+        plainLanguageSummary: form.plainLanguageSummary.trim(),
         indications: splitMultiline(form.indications),
         contraindications: splitMultiline(form.contraindications),
         cautions: splitMultiline(form.cautions),
@@ -620,6 +624,14 @@ export function EditorialMedicationsPage() {
 
             <section className="space-y-4">
               <h3 className="text-base font-semibold text-foreground">Conteúdo farmacológico</h3>
+              <EditorialField label="Explicação em palavras simples" hint="Explique primeiro o efeito clínico sem depender de jargão técnico.">
+                <textarea
+                  value={form.plainLanguageSummary}
+                  onChange={(event) => setForm((current) => ({ ...current, plainLanguageSummary: event.target.value }))}
+                  rows={4}
+                  className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+                />
+              </EditorialField>
               <EditorialField label="Mecanismo de ação">
                 <textarea
                   value={form.mechanismOfAction}

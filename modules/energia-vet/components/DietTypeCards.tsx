@@ -1,95 +1,81 @@
-import { Check } from 'lucide-react'
+import { Check, Layers3, Leaf, PackageCheck } from 'lucide-react'
 import type { DietType } from '../types'
-import { publicImageUrl } from '../lib/speciesAssets'
 import { cn } from '../lib/utils'
 
 export const DIET_CATALOG_TITLE: Record<DietType, string> = {
   commercial: 'Catálogo comercial',
-  natural: 'Catálogo Natural',
-  hybrid: 'Catálogo Híbrido',
+  natural: 'Catálogo natural',
+  hybrid: 'Catálogo híbrido',
 }
 
-/** Ilustrações por tipo (mesma área e escala para as três) */
-const DIET_IMAGES: Record<DietType, string> = {
-  commercial: publicImageUrl('/diet-comercial-illustration.png'),
-  natural: publicImageUrl('/diet-natural-illustration.png'),
-  hybrid: publicImageUrl('/diet-hibrido-illustration.png'),
-}
-
-type Option = {
-  value: DietType
-  label: string
-  description: string
-}
-
-const OPTIONS: Option[] = [
-  { value: 'commercial', label: 'Comercial', description: 'Rações secas, úmidas e fórmulas prontas.' },
-  { value: 'natural', label: '100% Natural', description: 'Ingredientes naturais, suplementos e bases.' },
-  { value: 'hybrid', label: 'Híbrida', description: 'Combina comercial e natural no mesmo plano.' },
+const OPTIONS = [
+  {
+    value: 'commercial' as const,
+    label: 'Comercial',
+    description: 'Rações e fórmulas prontas',
+    icon: PackageCheck,
+  },
+  {
+    value: 'natural' as const,
+    label: 'Natural',
+    description: 'Ingredientes e suplementos',
+    icon: Leaf,
+  },
+  {
+    value: 'hybrid' as const,
+    label: 'Híbrida',
+    description: 'Combinação das duas bases',
+    icon: Layers3,
+  },
 ]
 
 export interface DietTypeCardsProps {
   value: DietType
-  onChange: (v: DietType) => void
+  onChange: (value: DietType) => void
 }
 
 export function DietTypeCards({ value, onChange }: DietTypeCardsProps) {
   return (
     <div className="w-full">
-      <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-muted-foreground">Tipo de dieta</p>
-      <div className="mx-auto w-full max-w-4xl" role="radiogroup" aria-label="Selecionar tipo de dieta">
-        <div className="grid grid-cols-3 gap-3 sm:gap-4 lg:gap-5">
-          {OPTIONS.map((option) => {
-            const active = value === option.value
-            return (
-              <button
-                key={option.value}
-                type="button"
-                role="radio"
-                aria-checked={active}
-                title={`${option.label} — ${option.description}`}
-                aria-label={`${option.label}. ${option.description}`}
-                onClick={() => onChange(option.value)}
-                className={cn(
-                  'relative flex min-h-[9.5rem] flex-col items-stretch justify-between gap-2 rounded-2xl border-2 px-2 py-3 text-center transition-colors sm:min-h-[11rem] sm:px-3 sm:py-4 lg:min-h-[12rem]',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background',
-                  active
-                    ? 'border-orange-500 bg-orange-500/15 text-foreground shadow-sm dark:bg-orange-500/10 dark:text-white'
-                    : 'border-border bg-muted/50 text-muted-foreground hover:border-orange-400/40 hover:bg-muted/80 dark:border-white/10 dark:bg-black/20 dark:hover:border-white/20',
-                )}
-              >
-                {active ? (
-                  <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-orange-500 text-white shadow-md sm:right-2.5 sm:top-2.5 sm:h-7 sm:w-7">
-                    <Check className="h-3.5 w-3.5 stroke-[3] sm:h-4 sm:w-4" aria-hidden />
-                  </span>
-                ) : null}
-
-                {/* Área fixa igual para as 3 imagens — padronizado visível */}
-                <span className="mx-auto flex h-28 w-full max-w-[10rem] shrink-0 items-center justify-center sm:h-32 sm:max-w-[11.5rem] lg:h-36 lg:max-w-[13rem]">
-                  <img
-                    src={DIET_IMAGES[option.value]}
-                    alt=""
-                    width={256}
-                    height={256}
-                    loading="lazy"
-                    decoding="async"
-                    draggable={false}
-                    className="max-h-full max-w-full object-contain object-center select-none"
-                  />
-                </span>
-
-                <span
-                  className={cn(
-                    'mt-1 text-[11px] font-semibold leading-tight sm:text-xs lg:text-[13px]',
-                    active ? 'text-foreground dark:text-white' : 'text-foreground/90 dark:text-white/90',
-                  )}
-                >
-                  {option.label}
-                </span>
-              </button>
-            )
-          })}
+      <div className="mb-3 flex items-end justify-between gap-3">
+        <div>
+          <p className="text-sm font-semibold text-foreground">Estratégia alimentar</p>
+          <p className="mt-0.5 text-xs text-muted-foreground">Escolha a origem dos alimentos da fórmula.</p>
         </div>
+      </div>
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3" role="radiogroup" aria-label="Selecionar estratégia alimentar">
+        {OPTIONS.map((option) => {
+          const Icon = option.icon
+          const active = value === option.value
+          return (
+            <button
+              key={option.value}
+              type="button"
+              role="radio"
+              aria-checked={active}
+              onClick={() => onChange(option.value)}
+              className={cn(
+                'group relative flex min-h-[92px] cursor-pointer items-center gap-3 rounded-2xl border p-3.5 text-left outline-none transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/25',
+                active
+                  ? 'border-primary/45 bg-primary/[0.07] text-foreground'
+                  : 'border-border bg-card text-foreground hover:border-primary/25 hover:bg-muted/55',
+              )}
+            >
+              <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-xl', active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground group-hover:text-primary')}>
+                <Icon className="h-5 w-5" strokeWidth={1.8} />
+              </span>
+              <span className="min-w-0">
+                <span className="block text-sm font-semibold">{option.label}</span>
+                <span className="mt-1 block text-xs leading-snug text-muted-foreground">{option.description}</span>
+              </span>
+              {active && (
+                <span className="absolute right-2.5 top-2.5 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                  <Check className="h-3 w-3" strokeWidth={3} />
+                </span>
+              )}
+            </button>
+          )
+        })}
       </div>
     </div>
   )

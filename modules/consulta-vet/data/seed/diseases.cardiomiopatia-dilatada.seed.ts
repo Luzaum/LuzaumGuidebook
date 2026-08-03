@@ -129,72 +129,163 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
     'A CMD combina falência sistólica e remodelamento excêntrico. Pela lei de Laplace, o aumento do raio ventricular eleva a tensão de parede e o custo energético; a contração enfraquece ainda mais. A taquicardia reduz enchimento e perfusão coronariana, enquanto a regurgitação funcional desperdiça parte do volume sistólico. Quando o débito renal cai, o sistema renina–angiotensina–aldosterona retém sódio e água, favorecendo congestão. Essa mesma compensação explica por que a diurese agressiva alivia o pulmão, mas pode precipitar azotemia se reduzir demais a pré-carga.',
   clinicalSignsPathophysiology: [
     {
+      system: 'general',
+      findings: [
+        {
+          finding: 'Intolerância ao exercício, fadiga e letargia',
+          mechanism:
+            'A menor contratilidade reduz o volume sistólico. Durante o esforço, o coração não consegue elevar o débito na mesma proporção da demanda metabólica dos músculos.',
+          clinicalMeaning: 'Pode ser a manifestação inicial, antes de congestão evidente.',
+          priority: 'common',
+        },
+      ],
+    },
+    {
       system: 'respiratory',
       findings: [
-        'Taquipneia, dispneia, ortopneia e crepitações: aumento de pressão atrial esquerda causa edema pulmonar.',
-        'Efusão pleural, mais frequente em gatos e falência biventricular, limita expansão pulmonar e abafa sons.',
+        {
+          finding: 'Taquipneia, dispneia, ortopneia e aumento do esforço respiratório',
+          mechanism:
+            'A falência do ventrículo esquerdo eleva as pressões de enchimento e a pressão venosa pulmonar. Quando o líquido extravasa para o interstício e os alvéolos, a complacência pulmonar e a troca gasosa pioram.',
+          clinicalMeaning: 'Sugere insuficiência cardíaca congestiva esquerda e exige avaliar estabilidade antes de exames demorados.',
+          priority: 'heart-failure',
+          context: ['Congestão esquerda'],
+        },
+        {
+          finding: 'Tosse e crepitações pulmonares',
+          mechanism:
+            'O edema pulmonar pode produzir ruídos adventícios e tosse. A ausência de crepitações não exclui congestão, e tosse isolada também pode ter causa respiratória.',
+          clinicalMeaning: 'Correlacionar com frequência respiratória, ultrassom e radiografia quando o paciente estiver estável.',
+          priority: 'heart-failure',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Pulso fraco e déficit de pulso: baixo volume sistólico e batimentos ectópicos sem ejeção eficaz.',
-        'Sopro apical: dilatação do anel produz regurgitação funcional, não doença valvar primária.',
-        'Ritmo irregular/taquicardia: fibrilação atrial em câmaras dilatadas ou ectopia ventricular por miocárdio doente.',
-        'Síncope ou morte súbita: taquiarritmia ventricular ou queda abrupta do débito cerebral.',
-      ],
-    },
-    {
-      system: 'general',
-      findings: [
-        'Intolerância ao exercício, fraqueza e perda muscular: baixo débito e ativação catabólica da insuficiência cardíaca.',
-        'Hiporexia e perda de peso: congestão visceral, náusea urêmica/medicamentosa e caquexia cardíaca.',
+        {
+          finding: 'Pulso femoral fraco, mucosas pálidas, extremidades frias e tempo de preenchimento capilar prolongado',
+          mechanism:
+            'O baixo volume sistólico reduz a pressão e a perfusão periférica. A ativação simpática provoca vasoconstrição para preservar o fluxo de órgãos vitais.',
+          clinicalMeaning: 'Indica baixo débito; hipotensão ou alteração de consciência aumentam a urgência.',
+          priority: 'low-output',
+        },
+        {
+          finding: 'Ritmo irregular, taquicardia e déficit de pulso',
+          mechanism:
+            'Fibrilação atrial ou ectopia ventricular tornam o enchimento e a ejeção irregulares. Alguns complexos elétricos geram contrações sem volume suficiente para formar pulso palpável.',
+          clinicalMeaning: 'Solicita ECG; Holter é necessário quando a arritmia é intermitente.',
+          priority: 'arrhythmia',
+        },
+        {
+          finding: 'Síncope, fraqueza episódica ou morte súbita',
+          mechanism:
+            'Taquiarritmias ventriculares ou queda abrupta do volume sistólico podem reduzir transitoriamente a perfusão cerebral. Arritmias graves também podem evoluir para parada cardíaca.',
+          clinicalMeaning: 'Tratar como marcador de alto risco e investigar o ritmo de forma prolongada.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'hepatic',
       findings: [
-        'Ascite, hepatomegalia e jugulares distendidas: elevação de pressão venosa direita.',
+        {
+          finding: 'Ascite, distensão ou pulsação jugular e hepatomegalia',
+          mechanism:
+            'A elevação persistente da pressão atrial direita é transmitida ao sistema venoso sistêmico, favorecendo congestão hepática e extravasamento de líquido para o abdome.',
+          clinicalMeaning: 'Sugere insuficiência cardíaca direita ou biventricular.',
+          priority: 'systemic',
+          context: ['Congestão direita'],
+        },
+      ],
+    },
+    {
+      system: 'general',
+      findings: [
+        {
+          finding: 'Hiporexia, perda de peso e perda de massa muscular',
+          mechanism:
+            'Congestão visceral, maior trabalho respiratório, menor ingestão e ativação neuro-hormonal e inflamatória sustentam um estado catabólico nos casos avançados.',
+          clinicalMeaning: 'Caquexia indica doença crônica avançada e pior reserva fisiológica.',
+          priority: 'systemic',
+        },
+      ],
+    },
+    {
+      system: 'cardiovascular',
+      findings: [
+        {
+          finding: 'Sopro apical suave, terceira bulha (galope) ou sons cardíacos abafados',
+          mechanism:
+            'A dilatação do anel atrioventricular pode causar regurgitação funcional; o enchimento rápido de um ventrículo dilatado pode gerar terceira bulha. Efusão pleural e contratilidade muito baixa podem reduzir a intensidade dos sons.',
+          clinicalMeaning: 'A ausculta pode ser pouco expressiva; exame normal não exclui fase oculta.',
+          priority: 'uncommon',
+        },
       ],
     },
   ],
   diagnosis: [
     {
       stepNumber: 1,
-      title: 'Ecocardiografia com Doppler',
+      title: 'Triagem clínica e estabilidade',
+      purpose: 'Distinguir congestão, baixo débito e arritmia antes de exames demorados.',
       description:
-        'Exame de referência: demonstra dilatação ventricular, aumento dos volumes sistólico e diastólico, baixa fração de encurtamento ou ejeção e regurgitação funcional. As medidas devem ser normalizadas ao tamanho corporal e interpretadas por raça.',
-      isGoldStandard: true,
+        'Avalie padrão respiratório, perfusão, pulso, frequência e ritmo cardíacos, pressão arterial e sinais de congestão direita. Em dispneia importante, priorize oxigênio, manipulação mínima e ultrassom torácico focal; complete a investigação após estabilização.',
+      interpretation:
+        'Taquipneia com congestão pulmonar aponta para insuficiência esquerda; pulso fraco, hipotensão ou alteração de consciência apontam para baixo débito.',
+      limitations: 'Ausculta normal ou sopro discreto não excluem CMD, especialmente na fase oculta.',
     },
     {
       stepNumber: 2,
-      title: 'ECG e Holter de 24 horas',
+      title: 'Ecocardiografia com Doppler',
+      purpose: 'Confirmar o fenótipo estrutural e quantificar a disfunção sistólica.',
       description:
-        'O eletrocardiograma diagnostica fibrilação atrial e arritmia presente durante o exame. Holter é essencial quando a ectopia é intermitente, em síncope e no rastreio de Dobermann; um eletrocardiograma curto normal não exclui a fase oculta.',
+        'Demonstra dilatação ventricular, aumento dos volumes sistólico e diastólico, menor fração de encurtamento ou ejeção e possível regurgitação funcional. As medidas devem ser normalizadas ao tamanho corporal e interpretadas por raça.',
+      interpretation: 'Dilatação acompanhada de disfunção sistólica sustenta o diagnóstico e permite acompanhar progressão e resposta.',
+      limitations: 'Um ecocardiograma normal hoje não exclui desenvolvimento futuro em raças predispostas.',
+      isGoldStandard: true,
     },
     {
       stepNumber: 3,
-      title: 'Radiografia torácica',
+      title: 'ECG e Holter de 24 horas',
+      purpose: 'Identificar fibrilação atrial e quantificar ectopia ventricular intermitente.',
       description:
-        'Usar para documentar cardiomegalia e, sobretudo, edema/efusão. Não diferencia CMD de outras causas de coração aumentado sem ecocardiografia.',
+        'O eletrocardiograma diagnostica fibrilação atrial e arritmia presente durante o exame. Holter é essencial quando a ectopia é intermitente, em síncope e no rastreio de Dobermann; um eletrocardiograma curto normal não exclui a fase oculta.',
+      interpretation: 'Complexidade, frequência e agrupamento da ectopia orientam risco e necessidade de acompanhamento ou terapia.',
+      limitations: 'O ECG de poucos minutos tem baixa capacidade de excluir arritmias episódicas.',
     },
     {
       stepNumber: 4,
-      title: 'Biomarcadores',
+      title: 'Radiografia torácica',
+      purpose: 'Confirmar congestão pulmonar ou efusão e avaliar o impacto respiratório.',
       description:
-        'NT-proBNP apoia triagem e prognóstico; troponina I sugere lesão miocárdica e pode ajudar em miocardite ou toxicidade. Sensibilidade e especificidade variam com raça e estágio, portanto não substituem ecocardiograma e Holter.',
+        'Usar para documentar cardiomegalia e, sobretudo, edema/efusão. Não diferencia CMD de outras causas de coração aumentado sem ecocardiografia.',
+      interpretation: 'Veias pulmonares distendidas e padrão intersticial ou alveolar compatível sustentam insuficiência cardíaca esquerda.',
+      limitations: 'Adiar projeções completas se o posicionamento aumentar o desconforto respiratório.',
     },
     {
       stepNumber: 5,
-      title: 'Causas reversíveis e comorbidades',
+      title: 'Biomarcadores',
+      purpose: 'Apoiar triagem, suspeita de lesão miocárdica e prognóstico.',
       description:
-        'Solicite hemograma, bioquímica, eletrólitos e urina; T4 total, T4 livre e TSH apenas quando houver suspeita endócrina real. Obtenha história dietética completa e meça taurina e, eventualmente, carnitina. Em uso de doxorrubicina, revise a dose cumulativa, a troponina e o ecocardiograma.',
+        'NT-proBNP apoia triagem e prognóstico; troponina I sugere lesão miocárdica e pode ajudar em miocardite ou toxicidade. Sensibilidade e especificidade variam com raça e estágio, portanto não substituem ecocardiograma e Holter.',
+      limitations: 'Doenças concomitantes e o ensaio utilizado alteram a interpretação; resultado isolado não define etiologia.',
     },
     {
       stepNumber: 6,
+      title: 'Causas reversíveis e comorbidades',
+      purpose: 'Procurar fatores nutricionais, metabólicos, inflamatórios ou iatrogênicos modificáveis.',
+      description:
+        'Solicite hemograma, bioquímica, eletrólitos e urina; T4 total, T4 livre e TSH apenas quando houver suspeita endócrina real. Obtenha história dietética completa e meça taurina e, eventualmente, carnitina. Em uso de doxorrubicina, revise a dose cumulativa, a troponina e o ecocardiograma.',
+      limitations: 'Deficiência ou associação dietética deve ser demonstrada; não atribuir causalidade a um ingrediente isolado.',
+    },
+    {
+      stepNumber: 7,
       title: 'Rastreio de raças de risco',
+      purpose: 'Detectar a fase oculta antes do aparecimento de insuficiência cardíaca.',
       description:
         'Dobermanns: ecocardiografia e Holter anuais a partir da idade recomendada pelo cardiologista/programa racial. Teste genético isolado não exclui doença.',
+      limitations: 'Penetrância incompleta e heterogeneidade genética limitam o valor de um teste molecular isolado.',
     },
   ],
   treatment: {
@@ -239,6 +330,20 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
         'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. 2020. Cap. 7–8, Myocardial Diseases of the Dog and Cat; PDF anexado, pp. 171–202.',
       sourceType: 'Livro-texto',
       evidenceLevel: 'Referência clínica',
+    },
+    {
+      id: 'ref-small-animal-emergency-dcm',
+      citationText:
+        'Cunningham SM, Pierce KV. Dilated Cardiomyopathy. In: Drobatz KJ, Hopper K, Rozanski EA, Silverstein DC, eds. Textbook of Small Animal Emergency Medicine. Wiley Blackwell; 2019. Cap. 55, pp. 341–347.',
+      sourceType: 'Livro-texto de emergência',
+      evidenceLevel: 'Referência clínica',
+    },
+    {
+      id: 'ref-cunningham-physiology-dcm',
+      citationText:
+        'Klein BG. Cunningham’s Textbook of Veterinary Physiology. 6th ed. Elsevier; 2020. Seção de fisiologia cardiovascular e correlações clínicas.',
+      sourceType: 'Livro-texto de fisiologia',
+      evidenceLevel: 'Base fisiológica',
     },
     {
       id: 'ref-plumbs-dcm',

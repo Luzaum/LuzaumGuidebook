@@ -204,6 +204,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       species: cleanTextArray(input.species),
       tags: cleanTextArray(input.tags),
       mechanism_of_action: input.mechanismOfAction,
+      plain_language_summary: String(input.plainLanguageSummary || '').trim() || null,
       indications: cleanTextArray(input.indications),
       contraindications: cleanTextArray(input.contraindications),
       cautions: cleanTextArray(input.cautions),

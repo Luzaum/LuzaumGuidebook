@@ -15,6 +15,7 @@ import {
 } from './editorialSupabaseUtils';
 import type { DiseaseRow } from './diseaseRow.types';
 import { mapLegacyDiseaseRowToRecord } from '../../../utils/diseaseSchemaMap';
+import { MEDICATION_EVIDENCE_ADDITIONS } from '../../../data/medicationEvidenceAdditions';
 
 export type { DiseaseRow } from './diseaseRow.types';
 
@@ -50,6 +51,7 @@ export type MedicationRow = {
   species: string[] | null;
   tags: string[] | null;
   mechanism_of_action: string;
+  plain_language_summary?: string | null;
   indications: string[] | null;
   contraindications: string[] | null;
   cautions: string[] | null;
@@ -121,6 +123,7 @@ export function mapMedicationRow(
     category: categorySlug,
     tags: normalizeStringArray(row.tags),
     mechanismOfAction: row.mechanism_of_action,
+    plainLanguageSummary: row.plain_language_summary || undefined,
     indications: normalizeStringArray(row.indications),
     contraindications: normalizeStringArray(row.contraindications),
     cautions: normalizeStringArray(row.cautions),
@@ -138,12 +141,18 @@ export function mapMedicationRow(
     clinicalStructuredBlocks: parseMedicationStructuredBlocks(row.clinical_structured_blocks),
     adminNotesText: row.admin_notes_text,
     relatedDiseaseSlugs,
-    references: normalizeReferences(row.references),
+    references: mergeMedicationEvidence(row.slug, normalizeReferences(row.references)),
     isPublished: row.is_published,
     source: 'supabase',
     createdAt: row.created_at,
     updatedAt: row.updated_at,
   };
+}
+
+function mergeMedicationEvidence(slug: string, references: MedicationRecord['references']): MedicationRecord['references'] {
+  const additions = MEDICATION_EVIDENCE_ADDITIONS[slug] || [];
+  const existingIds = new Set((references || []).map((reference) => reference.id).filter(Boolean));
+  return [...(references || []), ...additions.filter((reference) => !reference.id || !existingIds.has(reference.id))];
 }
 
 function mapMedicationPriceReference(row: MedicationRow): MedicationRecord['priceReference'] {

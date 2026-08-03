@@ -23,12 +23,15 @@ export function ReferencesList({
         {references.map((reference, index) => (
           <article
             key={reference.id || `${reference.citationText}-${index}`}
-            id={reference.id}
+            id={reference.id || `reference-${index + 1}`}
             className="scroll-mt-24 py-5 first:pt-0 last:pb-0"
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
+                  <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-border bg-muted/45 px-2 text-xs font-bold text-foreground">
+                    {index + 1}
+                  </span>
                   {reference.sourceType ? (
                     <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
                       {reference.sourceType}

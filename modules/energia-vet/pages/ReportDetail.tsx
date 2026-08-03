@@ -35,7 +35,7 @@ export default function ReportDetail() {
         <Button variant="outline" render={<Link to={`${BASE_ROUTE}/reports`} />} className="gap-2">
           <ArrowLeft className="h-4 w-4" /> Voltar
         </Button>
-        <Card className="border-white/10 bg-[#141010]">
+        <Card>
           <CardContent className="p-6 text-sm text-muted-foreground">Relatório não encontrado.</CardContent>
         </Card>
       </div>
@@ -43,7 +43,7 @@ export default function ReportDetail() {
   }
 
   return (
-    <div className="space-y-6 pb-20">
+    <div className="nutrition-page space-y-6 pb-16">
       <Button variant="outline" render={<Link to={`${BASE_ROUTE}/reports`} />} className="gap-2">
         <ArrowLeft className="h-4 w-4" /> Voltar
       </Button>

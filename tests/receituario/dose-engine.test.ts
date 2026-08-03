@@ -54,9 +54,23 @@ test('arredonda em quartos e oferece alternativas próximas', () => {
   assert.ok(result.alternatives.length >= 2);
 });
 
-test('bloqueia comprimido sem divisibilidade cadastrada', () => {
-  const result = calculateReceituarioDose({ species: 'dog', weightKg: 4, selectedDoseValue: 0.5, dose: dose(), presentation: presentation() });
-  assert.match(result.blockedReason || '', /Divisibilidade/);
+test('aceita três quartos de comprimido como quantidade prática', () => {
+  const result = calculateReceituarioDose({
+    species: 'dog',
+    weightKg: 5,
+    selectedDoseValue: 0.75,
+    dose: dose(),
+    presentation: presentation({ value: 5, tablet_split_increment: 0.5 }),
+  });
+  assert.equal(result.exactAmount, 0.75);
+  assert.equal(result.practicalAmount, 0.75);
+  assert.equal(result.requiresConfirmation, false);
+});
+
+test('usa quartos como padrão para comprimido sem divisibilidade cadastrada', () => {
+  const result = calculateReceituarioDose({ species: 'dog', weightKg: 7.5, selectedDoseValue: 0.5, dose: dose(), presentation: presentation({ value: 5, tablet_split_increment: null }) });
+  assert.equal(result.blockedReason, undefined);
+  assert.equal(result.practicalAmount, 0.75);
 });
 
 test('cápsula é inteira e exige alternativa quando a dose é fracionada', () => {

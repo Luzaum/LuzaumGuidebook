@@ -1,5 +1,6 @@
 import { MedicationRecord } from '../../types/medication';
 import { hepatoprotectorMedicationsSeed } from './medications.hepatoprotectors.seed';
+import { MEDICATION_EVIDENCE_ADDITIONS } from '../medicationEvidenceAdditions';
 
 export const medicationsSeed: MedicationRecord[] = [
   {
@@ -1535,15 +1536,20 @@ export const medicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-benza-dog',
         species: 'dog',
-        indication: 'Cardiologia / nefrologia — faixa usual (extra-label)',
+        indication: 'Proteinúria associada à doença renal crônica',
         doseMin: 0.25,
         doseMax: 0.5,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
         route: 'VO',
         frequency: 'q24h',
-        duration: 'Crônico com reavaliação laboratorial',
+        duration: 'Uso contínuo; reavaliar creatinina, potássio, pressão arterial e UPC após início e ajustes.',
         notes: 'Plumb’s: faixa habitual 0,25–0,5 mg/kg q24h VO; ajustar a creatinina e tolerância.',
+        clinicalContext: 'Cão com proteinúria persistente; integrar com a meta de UPC e o estado de hidratação.',
+        monitoring: 'Não iniciar em hipovolemia/hipoperfusão não corrigida. Reavaliar creatinina e potássio em 5–7 dias.',
+        diseaseSlugs: ['doenca-renal-cronica-caes-gatos'],
+        referenceIds: ['ref-plumb-benazepril', 'ref-nelson-raas'],
+        evidenceLevel: 'Formulário e livro-texto; individualizar conforme tolerância.',
         calculatorEnabled: true,
         presentationId: 'pres-benza-cp',
         presentationConcentrationId: '5',
@@ -1551,15 +1557,20 @@ export const medicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-benza-cat',
         species: 'cat',
-        indication: 'Cardiologia / nefrologia — faixa usual (extra-label)',
+        indication: 'Proteinúria associada à doença renal crônica',
         doseMin: 0.5,
         doseMax: 1,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
         route: 'VO',
         frequency: 'q24h',
-        duration: 'Crónico com reavaliação',
-        notes: 'Literatura cita frequentemente 0,5–1 mg/kg q24h em felinos — confirmar contexto clínico.',
+        duration: 'Uso contínuo; o estudo acompanhou pacientes por até 1.119 dias, com reavaliações clínicas e laboratoriais.',
+        notes: 'Plumb’s: faixa habitual 0,5–1 mg/kg q24h VO em felinos; ajustar à creatinina, potássio e tolerância.',
+        clinicalContext: 'Gato com DRC e proteinúria; não é substituto do controle de hipertensão quando ela estiver presente.',
+        monitoring: 'King et al. (2006) observou redução de proteinúria, sem benefício global de sobrevida renal na população completa; o objetivo é antiproteinúrico e a resposta deve ser medida.',
+        diseaseSlugs: ['doenca-renal-cronica-caes-gatos'],
+        referenceIds: ['ref-plumb-benazepril', 'ref-benazepril-ckd-cats-rct-2006'],
+        evidenceLevel: 'Ensaio multicêntrico randomizado para DRC felina proteinúrica.',
         calculatorEnabled: true,
         presentationId: 'pres-benza-cp',
         presentationConcentrationId: '5',
@@ -1854,3 +1865,12 @@ export const medicationsSeed: MedicationRecord[] = [
   },
   ...hepatoprotectorMedicationsSeed,
 ];
+
+for (const medication of medicationsSeed) {
+  const additions = MEDICATION_EVIDENCE_ADDITIONS[medication.slug] || [];
+  const existingIds = new Set((medication.references || []).map((reference) => reference.id).filter(Boolean));
+  medication.references = [
+    ...(medication.references || []),
+    ...additions.filter((reference) => !reference.id || !existingIds.has(reference.id)),
+  ];
+}

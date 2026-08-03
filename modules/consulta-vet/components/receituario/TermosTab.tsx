@@ -14,9 +14,7 @@ export function TermosTab({ templates, onSelectTerm }: TermosTabProps) {
   const [isRefusalModalOpen, setIsRefusalModalOpen] = useState(false);
   const [refusalTemplate, setRefusalTemplate] = useState<DocumentTemplate | null>(null);
   const [quickFields, setQuickFields] = useState<QuickRefusalFields>({
-    recommendedConduct: '',
-    refusedConduct: '',
-    explainedRisks: '',
+    conduct: '',
   });
 
   const handleOpenTerm = (template: DocumentTemplate) => {
@@ -24,9 +22,7 @@ export function TermosTab({ templates, onSelectTerm }: TermosTabProps) {
     if (template.id === 'term-geral-recusa' || template.title.toLowerCase().includes('recusa de procedimento')) {
       setRefusalTemplate(template);
       setQuickFields({
-        recommendedConduct: '',
-        refusedConduct: '',
-        explainedRisks: '',
+        conduct: '',
       });
       setIsRefusalModalOpen(true);
       return;
@@ -40,23 +36,11 @@ export function TermosTab({ templates, onSelectTerm }: TermosTabProps) {
 
     let updatedText = refusalTemplate.body_plain_text;
 
-    if (quickFields.recommendedConduct.trim()) {
+    if (quickFields.conduct.trim()) {
       updatedText = updatedText.replace(
-        /(Foi recomendada a realização da seguinte conduta:\s*\n+)A PREENCHER/i,
-        `$1${quickFields.recommendedConduct.trim()}`
+        /(CONDUTA RECOMENDADA E RECUSADA:\s*\n+)(?:A PREENCHER|\[[^\]]+\])/i,
+        `$1${quickFields.conduct.trim()}`
       );
-    }
-
-    if (quickFields.refusedConduct.trim()) {
-      updatedText = updatedText.replace(
-        /(decido neste momento recusar:\s*\n+)A PREENCHER/i,
-        `$1${quickFields.refusedConduct.trim()}`
-      );
-    }
-
-    if (quickFields.explainedRisks.trim()) {
-      const riskInsert = `RISCOS ESPECÍFICOS EXPLICADOS:\n${quickFields.explainedRisks.trim()}\n\nFui informado(a) de que essa decisão poderá ocasionar`;
-      updatedText = updatedText.replace('Fui informado(a) de que essa decisão poderá ocasionar', riskInsert);
     }
 
     setIsRefusalModalOpen(false);
@@ -131,54 +115,25 @@ export function TermosTab({ templates, onSelectTerm }: TermosTabProps) {
             </div>
 
             <p className="text-xs text-muted-foreground mb-4">
-              Preencha os campos abaixo para auto-inserir as condutas no termo (você ainda poderá editar qualquer palavra depois no editor).
+              Informe apenas a conduta que foi recomendada e recusada. Os riscos gerais já estão incluídos no termo e todo o texto poderá ser editado depois.
             </p>
 
             <div className="space-y-4">
               <div>
                 <label className="block text-xs font-medium text-foreground mb-1">
-                  1. Conduta Recomendada
+                  Conduta recomendada e recusada
                 </label>
                 <input
                   type="text"
-                  value={quickFields.recommendedConduct}
+                  value={quickFields.conduct}
                   onChange={(e) =>
-                    setQuickFields((prev) => ({ ...prev, recommendedConduct: e.target.value }))
+                    setQuickFields({ conduct: e.target.value })
                   }
-                  placeholder="Ex: Internação veterinária e fluidoterapia intensiva"
+                  placeholder="Ex.: internação veterinária com fluidoterapia e monitorização"
                   className="w-full rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none"
                 />
               </div>
 
-              <div>
-                <label className="block text-xs font-medium text-foreground mb-1">
-                  2. Conduta Recusada
-                </label>
-                <input
-                  type="text"
-                  value={quickFields.refusedConduct}
-                  onChange={(e) =>
-                    setQuickFields((prev) => ({ ...prev, refusedConduct: e.target.value }))
-                  }
-                  placeholder="Ex: A internação e o acompanhamento 24 horas"
-                  className="w-full rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-medium text-foreground mb-1">
-                  3. Riscos Específicos Explicados
-                </label>
-                <textarea
-                  value={quickFields.explainedRisks}
-                  onChange={(e) =>
-                    setQuickFields((prev) => ({ ...prev, explainedRisks: e.target.value }))
-                  }
-                  placeholder="Ex: Desidratação grave, choque hipovolêmico e parada cardiorrespiratória."
-                  rows={3}
-                  className="w-full rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground focus:border-primary focus:outline-none resize-none"
-                />
-              </div>
             </div>
 
             <div className="flex items-center justify-end gap-2 mt-6">

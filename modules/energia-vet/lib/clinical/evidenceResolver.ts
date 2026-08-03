@@ -13,56 +13,15 @@ export interface ClinicalEvidenceSource {
 }
 
 export const CLINICAL_EVIDENCE_SOURCES: ClinicalEvidenceSource[] = [
-  {
-    id: 'applied-clinical-nutrition',
-    title: 'Applied Veterinary Clinical Nutrition',
-    sourceType: 'textbook',
-    authors: 'Becvarova, Morgan, et al.',
-    year: 2024,
-    edition: '2ª ed.',
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'bsava-critical-care',
-    title: 'BSAVA Manual of Canine and Feline Emergency and Critical Care',
-    sourceType: 'textbook',
-    chapter: 'Suporte nutricional',
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'bsava-nephrology',
-    title: 'BSAVA Manual of Canine and Feline Nephrology and Urology',
-    sourceType: 'textbook',
-    chapter: 'Manejo nutricional da DRC',
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'bsava-urology',
-    title: 'BSAVA Manual of Canine and Feline Nephrology and Urology',
-    sourceType: 'textbook',
-    chapter: 'Urolitíase',
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'canine-hepatobiliary-2024',
-    title: 'Canine Hepatobiliary and Exocrine Pancreatic Diseases',
-    sourceType: 'textbook',
-    year: 2024,
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'wsava-nutrition',
-    title: 'WSAVA Global Nutrition Guidelines',
-    sourceType: 'guideline',
-    licenseStatus: 'reference_only',
-  },
-  {
-    id: 'fediaf-2025-ref',
-    title: 'FEDIAF Nutritional Guidelines 2025',
-    sourceType: 'guideline',
-    year: 2025,
-    licenseStatus: 'restricted',
-  },
+  { id: 'applied-clinical-nutrition', title: 'Applied Veterinary Clinical Nutrition, 2nd Edition', sourceType: 'textbook', edition: '2ª ed.', chapter: 'Energia e manejo nutricional por doença', pages: '57-83; 191-565', licenseStatus: 'reference_only' },
+  { id: 'bsava-critical-care', title: 'Nutritional Management of Hospitalized Small Animals', sourceType: 'textbook', chapter: 'Energia, vias de suporte, dietas enterais e síndrome de realimentação', pages: '15-33; 94-104; 131-140; 173-177', licenseStatus: 'reference_only' },
+  { id: 'bsava-nephrology', title: 'Applied Veterinary Clinical Nutrition, 2nd Edition', sourceType: 'textbook', chapter: 'Nutritional Management of Kidney Disease', pages: '412-430', licenseStatus: 'reference_only' },
+  { id: 'bsava-urology', title: 'Applied Veterinary Clinical Nutrition, 2nd Edition', sourceType: 'textbook', chapter: 'Nutritional Management of Lower Urinary Tract Disease', pages: '440-461', licenseStatus: 'reference_only' },
+  { id: 'canine-hepatobiliary-2024', title: 'Applied Veterinary Clinical Nutrition, 2nd Edition', sourceType: 'textbook', chapter: 'Exocrine Pancreatic and Hepatobiliary Diseases', pages: '327-365', licenseStatus: 'reference_only' },
+  { id: 'wsava-nutrition', title: 'WSAVA Global Nutrition Guidelines', sourceType: 'guideline', licenseStatus: 'reference_only' },
+  { id: 'fediaf-2025-ref', title: 'Nutrient Requirements of Dogs and Cats', sourceType: 'textbook', chapter: 'Nutrient requirements and dietary nutrient concentrations', pages: '701-719', licenseStatus: 'reference_only' },
+  { id: 'nrc-dogs-cats-2006', title: 'Nutrient Requirements of Dogs and Cats', sourceType: 'textbook', chapter: 'Energy, nutrients, formulation and ingredient composition', pages: '72-102; 113-535; 656-719', licenseStatus: 'reference_only' },
+  { id: 'small-animal-microbiomes', title: 'Small Animal Microbiomes and Nutrition', sourceType: 'textbook', chapter: 'Microbiome, dysbiosis, dietary treatment plans and nutrition consultation', pages: '95-147; 232-280; 333-372', licenseStatus: 'reference_only' },
 ]
 
 const sourceById = new Map(CLINICAL_EVIDENCE_SOURCES.map((source) => [source.id, source]))
@@ -71,11 +30,7 @@ export function resolveEvidenceReferences(sourceIds: string[]): EvidenceReferenc
   return sourceIds.flatMap((sourceId) => {
     const source = sourceById.get(sourceId)
     if (!source) return []
-    return [{
-      sourceId: source.id,
-      title: source.title,
-      sourceType: source.sourceType,
-    }]
+    return [{ sourceId: source.id, title: source.title, sourceType: source.sourceType }]
   })
 }
 

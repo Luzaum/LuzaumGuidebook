@@ -2,9 +2,17 @@ export type VetSpecies = 'dog' | 'cat';
 
 export type ConsultaVetSource = 'seed' | 'supabase';
 
+export interface EditorialClinicalFinding {
+  finding: string;
+  mechanism: string;
+  clinicalMeaning?: string;
+  context?: string[];
+  priority?: 'common' | 'heart-failure' | 'low-output' | 'arrhythmia' | 'systemic' | 'uncommon' | 'emergency';
+}
+
 export interface EditorialSystemGroup {
   system: string;
-  findings: string[];
+  findings: Array<string | EditorialClinicalFinding>;
 }
 
 export interface EditorialReference {
@@ -33,6 +41,10 @@ export interface EditorialDiagnosticStep {
   stepNumber?: number;
   title: string;
   description: string;
+  /** Campos opcionais para separar rapidamente finalidade, interpretação e limites do exame. */
+  purpose?: string;
+  interpretation?: string;
+  limitations?: string;
   /** Marca o exame / critério como padrão ouro (exibe troféu na UI). */
   isGoldStandard?: boolean;
 }

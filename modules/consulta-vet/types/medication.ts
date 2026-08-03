@@ -28,6 +28,18 @@ export interface MedicationDose {
   frequency: string;
   duration?: string;
   notes?: string;
+  /** Doenças às quais este regime se aplica. Mantém a dose ligada ao contexto clínico. */
+  diseaseSlugs?: string[];
+  /** Fase ou gravidade em que o regime se aplica (agudo, manutenção, estágio etc.). */
+  clinicalContext?: string;
+  /** O que deve ser acompanhado durante o uso deste regime. */
+  monitoring?: string;
+  /** Limite absoluto, quando a literatura definir um teto independente do peso. */
+  maximumDose?: string;
+  /** IDs das referências que sustentam especificamente este regime. */
+  referenceIds?: string[];
+  /** Classificação editorial livre: consenso, ensaio clínico, bula, extrapolação etc. */
+  evidenceLevel?: string;
   calculatorEnabled: boolean;
   /** Se definido, a calculadora sugere esta apresentação para esta indicação. */
   presentationId?: string;
@@ -51,6 +63,8 @@ export interface MedicationPresentation {
   route?: string;
   scoringInfo?: string;
   channel?: MedicationSupplyChannel;
+  /** Produto da seção Comerciais que representa esta apresentação. */
+  commercialProductSlug?: string;
 }
 
 export interface MedicationPriceReference {
@@ -78,6 +92,8 @@ export interface MedicationRecord extends ContentFlag {
   category: string;
   tags: string[];
   mechanismOfAction: string;
+  /** Explicação curta e acessível, mostrada antes do mecanismo técnico. */
+  plainLanguageSummary?: string;
   indications: string[];
   contraindications: string[];
   cautions: string[];

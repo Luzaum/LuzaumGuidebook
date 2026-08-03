@@ -156,9 +156,13 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
   const isCapsule = administrationUnit === 'cápsula';
   const isTablet = administrationUnit === 'comprimido';
   const configuredIncrement = Number(presentation.tablet_split_increment ?? metadata.split_increment);
-  const increment = Number.isFinite(configuredIncrement) && configuredIncrement > 0
-    ? configuredIncrement
-    : metadata.whole_unit_only || isCapsule ? 1 : isTablet && metadata.allow_split ? 0.5 : 0;
+  const increment = metadata.whole_unit_only || isCapsule
+    ? 1
+    : isTablet
+      ? Math.min(Number.isFinite(configuredIncrement) && configuredIncrement > 0 ? configuredIncrement : 0.25, 0.25)
+      : Number.isFinite(configuredIncrement) && configuredIncrement > 0
+        ? configuredIncrement
+        : 0;
 
   if ((isTablet || isCapsule) && !increment) {
     return {

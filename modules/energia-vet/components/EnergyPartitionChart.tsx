@@ -67,7 +67,7 @@ export function EnergyPartitionChart({
   const titleSize = size === 'lg' ? 'text-sm' : 'text-xs'
 
   return (
-    <div className={cn('relative', className)}>
+    <div className={cn('energia-vet-energy-partition relative', className)}>
       {showTitle ? (
         <p
           className={cn(

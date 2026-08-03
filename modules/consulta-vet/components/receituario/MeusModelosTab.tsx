@@ -51,7 +51,7 @@ export function MeusModelosTab({
           <UserCheck className="mx-auto h-8 w-8 text-muted-foreground/60 mb-2" />
           <p className="text-sm font-medium text-foreground">Nenhum modelo pessoal cadastrado.</p>
           <p className="text-xs text-muted-foreground mt-1 mb-4">
-            Você pode salvar qualquer receita ou termo modificado no editor clicando em &quot;Salvar como meu modelo&quot;.
+            Você pode salvar qualquer receita ou termo modificado no editor clicando em &quot;Salvar modelo próprio&quot;.
           </p>
           <button
             type="button"

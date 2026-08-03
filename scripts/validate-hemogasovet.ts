@@ -151,7 +151,7 @@ function run() {
     fieldSources: {},
   });
   assert.equal(preparedPendingOcr.blocked, true);
-  assert.ok(preparedPendingOcr.issues.some((i) => i.message.toLowerCase().includes('ocr')));
+  assert.ok(preparedPendingOcr.issues.some((i) => /ocr|reconhecimento de texto/i.test(i.message)));
 
   console.log('HemoGasoVet validation passed.');
 }

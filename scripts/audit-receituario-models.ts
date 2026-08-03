@@ -79,7 +79,7 @@ const countBy = (key: 'species' | 'category' | 'type') => Object.fromEntries(Arr
 const summary = {
   generatedAt: new Date().toISOString(),
   sources: ['Código: modules/consulta-vet/data/receituarioSeed.ts', 'Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json'],
-  supabaseReceituario: 'A migration 20260801120000 ainda não está aplicada no projeto remoto; portanto não havia modelos remotos para somar à auditoria.',
+  supabaseReceituario: 'A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.',
   total: audit.length,
   bySpecies: countBy('species'),
   byCategory: countBy('category'),

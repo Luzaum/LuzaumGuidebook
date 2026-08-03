@@ -1,0 +1,38 @@
+{
+  "generatedAt": "2026-08-03T00:09:41.498Z",
+  "screenshots": {
+    "patient": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785715760466-17372\\patient-step.png",
+    "energyDog": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785715760466-17372\\energy-step-dog.png",
+    "food": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785715760466-17372\\food-step.png",
+    "foodModal": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785715760466-17372\\food-modal.png",
+    "summary": "C:\\PROJETOS VET\\Vetius\\tmp\\energia-vet-validation\\1785715760466-17372\\summary-step.png"
+  },
+  "checks": {
+    "dogProfiles": {
+      "intact": 838,
+      "neuteredProfile": 724,
+      "obeseProne": 686,
+      "workLight": 838,
+      "workModerate": 953,
+      "workIntense": 1220,
+      "hasSlugVisible": true,
+      "hasPortugueseProfiles": false
+    },
+    "dogCastration": {
+      "intactUnneutered": 838,
+      "intactNeutered": 724
+    },
+    "catIndoor": {
+      "active": 274,
+      "indoor": 205
+    },
+    "profileOptionsInPortuguese": false,
+    "speciesChangesProfiles": true,
+    "castrationChangedCalculation": true,
+    "catIndoorChangedCalculation": true,
+    "foodHasNoEnergyProfileSelector": true,
+    "foodModalIsClean": false,
+    "pdfV2OutpatientPages": null,
+    "summaryUsesResolvedProfile": true
+  }
+}

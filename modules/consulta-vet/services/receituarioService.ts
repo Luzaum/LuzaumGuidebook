@@ -1,5 +1,5 @@
 import { supabase } from '../../../src/lib/supabaseClient';
-import { SEEDED_TEMPLATES as RECEITUARIO_SEED_TEMPLATES } from '../data/receituarioSeed';
+import { GLOBAL_RECIPE_TEMPLATE_IDS, isRetiredRecipeTemplate, SEEDED_TEMPLATES as RECEITUARIO_SEED_TEMPLATES } from '../data/receituarioSeed';
 import type { DocumentTemplate, GeneratedDocument, Placeholders, PrescriptionMedicationSnapshot, ReceituarioDocumentData } from '../types/receituario';
 import { sanitizeIssuedText } from '../utils/receituarioDocument';
 
@@ -25,13 +25,16 @@ export function getLocalRecents(): string[] { return readCache<string[]>(RECENTS
 export function trackRecentlyUsedTemplate(templateId: string): void { writeCache(RECENTS_KEY, [templateId, ...getLocalRecents().filter((id) => id !== templateId)].slice(0, 8)); }
 
 export async function fetchAllTemplates(clinicId?: string | null, userId?: string | null): Promise<DocumentTemplate[]> {
-  const cached = readCache<DocumentTemplate[]>(cacheKey('templates', userId), []);
-  if (!userId) return [...RECEITUARIO_SEED_TEMPLATES, ...cached];
+  const cached = readCache<DocumentTemplate[]>(cacheKey('templates', userId), []).filter((template) => !isRetiredRecipeTemplate(template));
+  if (!userId) return [...RECEITUARIO_SEED_TEMPLATES, ...cached].filter((template) => !isRetiredRecipeTemplate(template));
   let query = supabase.from('document_templates').select('*').eq('is_active', true).order('title');
   query = clinicId ? query.or(`is_global.eq.true,and(owner_user_id.eq.${userId},clinic_id.eq.${clinicId})`) : query.or(`is_global.eq.true,owner_user_id.eq.${userId}`);
   const { data, error } = await query;
   if (error) return [...RECEITUARIO_SEED_TEMPLATES, ...cached];
-  const remote = (data || []) as DocumentTemplate[];
+  const remote = ((data || []) as DocumentTemplate[]).filter((template) =>
+    !isRetiredRecipeTemplate(template)
+    && (!template.is_global || template.document_type !== 'recipe' || GLOBAL_RECIPE_TEMPLATE_IDS.has(template.id)),
+  );
   writeCache(cacheKey('templates', userId), remote.filter((item) => !item.is_global));
   const map = new Map<string, DocumentTemplate>();
   RECEITUARIO_SEED_TEMPLATES.forEach((item) => map.set(item.id, item));
@@ -62,22 +65,38 @@ export async function toggleFavorite(templateId: string, userId?: string | null)
 
 export async function saveCustomTemplate(input: {
   title: string; category: string; document_type: 'recipe' | 'term'; species: 'cão' | 'gato' | 'ambos'; body_plain_text: string;
-  structured_defaults?: Partial<ReceituarioDocumentData> | null; medication_ids?: string[]; clinicId?: string | null; userId?: string | null;
+  templateId?: string | null; structured_defaults?: Partial<ReceituarioDocumentData> | null; medication_ids?: string[]; clinicId?: string | null; userId?: string | null;
 }): Promise<DocumentTemplate> {
   const owner = requireUser(input.userId);
-  const { data, error } = await supabase.from('document_templates').insert({
+  const values = {
     clinic_id: input.clinicId || null, owner_user_id: owner, title: input.title, category: input.category,
     document_type: input.document_type, species: input.species, body_plain_text: sanitizeIssuedText(input.body_plain_text),
     structured_defaults: input.structured_defaults || {}, medication_ids: input.medication_ids || [], is_global: false, is_active: true,
-  }).select().single();
-  if (error || !data) throw new Error(`Não foi possível salvar o modelo: ${error?.message || 'resposta vazia'}`);
+  };
+  const response = input.templateId
+    ? await supabase.from('document_templates').update({ ...values, updated_at: new Date().toISOString() }).eq('id', input.templateId).eq('owner_user_id', owner).eq('is_global', false).select().single()
+    : await supabase.from('document_templates').insert(values).select().single();
+  const { data, error } = response;
+  if (error || !data) throw new Error(`Não foi possível ${input.templateId ? 'atualizar' : 'salvar'} o modelo: ${error?.message || 'resposta vazia'}`);
   return data as DocumentTemplate;
 }
 
 export async function deleteCustomTemplate(templateId: string, userId?: string | null): Promise<void> {
+  await deleteCustomTemplates([templateId], userId);
+}
+
+export async function deleteCustomTemplates(templateIds: string[], userId?: string | null): Promise<void> {
   const owner = requireUser(userId);
-  const { error } = await supabase.from('document_templates').delete().eq('id', templateId).eq('owner_user_id', owner).eq('is_global', false);
+  const ids = Array.from(new Set(templateIds.filter(Boolean)));
+  if (!ids.length) return;
+  const { error } = await supabase.from('document_templates').delete().in('id', ids).eq('owner_user_id', owner).eq('is_global', false);
   if (error) throw new Error(`Não foi possível excluir o modelo: ${error.message}`);
+  await Promise.all([
+    supabase.from('template_favorites').delete().eq('user_id', owner).in('template_id', ids),
+    supabase.from('receituario_drafts').delete().eq('user_id', owner).in('template_id', ids),
+  ]);
+  const cached = readCache<DocumentTemplate[]>(cacheKey('templates', owner), []).filter((template) => !ids.includes(template.id));
+  writeCache(cacheKey('templates', owner), cached);
 }
 
 export async function saveReceituarioDraft(input: { clinicId?: string | null; userId?: string | null; templateId?: string | null; document: ReceituarioDocumentData }): Promise<void> {

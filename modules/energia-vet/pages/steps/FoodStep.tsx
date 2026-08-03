@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ChevronLeft, ChevronRight, Info, Plus, Search, Trash2 } from 'lucide-react'
+import { AlertTriangle, CheckCircle2, ChevronLeft, ChevronRight, Dog, Cat, Info, Plus, RefreshCw, Search, Trash2, Utensils } from 'lucide-react'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
+import { parseLocalizedNumber } from '../../components/ui/localized-number-input'
 import { Label } from '../../components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select'
 import { Badge } from '../../components/ui/badge'
@@ -167,7 +168,7 @@ export default function FoodStep() {
   const commitPct = (foodId: string, rawPct: number) => {
     const raw = editingPct[foodId]
     if (raw !== undefined) {
-      const num = parseFloat(raw)
+      const num = parseLocalizedNumber(raw)
       if (Number.isFinite(num) && num >= 0 && num <= 100) {
         const wouldAllBeZero = entries.every((e) => e.foodId === foodId ? num === 0 : e.inclusionPct === 0)
         if (!wouldAllBeZero) {
@@ -189,7 +190,7 @@ export default function FoodStep() {
   const commitGrams = (foodId: string) => {
     const raw = editingGrams[foodId]
     if (raw !== undefined) {
-      const num = parseFloat(raw)
+      const num = parseLocalizedNumber(raw)
       if (Number.isFinite(num) && num > 0) {
         setLastEditedFoodId(foodId)
         const otherIds = formulationMode === 'complement' ? entries.filter((e) => e.foodId !== foodId).map((e) => e.foodId) : []
@@ -246,15 +247,15 @@ export default function FoodStep() {
 
   return (
     <>
-      <Card className="w-full border-border dark:border-orange-500/10 bg-white dark:bg-[#141010] shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:shadow-[0_18px_50px_rgba(0,0,0,0.28)]">
+      <Card className="nutrition-step-card w-full">
         <CardHeader className="border-b border-border dark:border-white/5 pb-5">
           <CardTitle className="text-2xl text-foreground dark:text-white">Alimentos e formulação</CardTitle>
-          <CardDescription>Monte a dieta e acompanhe a prévia nutricional ao vivo.</CardDescription>
+          <CardDescription>Selecione os alimentos, ajuste as proporções e revise a composição nutricional.</CardDescription>
         </CardHeader>
 
         <CardContent className="pt-0 px-0">
           {/* Layout 2 painéis com scroll independente */}
-          <div className="grid xl:grid-cols-2 divide-y xl:divide-y-0 xl:divide-x divide-border dark:divide-white/5">
+          <div className="grid divide-y divide-border xl:grid-cols-[minmax(0,1.08fr)_minmax(380px,0.92fr)] xl:divide-x xl:divide-y-0">
 
             {/* ─── COLUNA ESQUERDA ─── */}
             <div className="space-y-5 min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]">
@@ -275,7 +276,7 @@ export default function FoodStep() {
                 <div className="grid grid-cols-1 gap-3">
                   <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                     <SelectTrigger className="rounded-xl border-border bg-card text-sm dark:border-white/10 dark:bg-[#221a19]">
-                      <SelectValue placeholder="Categoria" />
+                      <SelectValue>{categoryFilter === 'all' ? 'Todas as categorias' : categoryFilter}</SelectValue>
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="all">Todas</SelectItem>
@@ -294,11 +295,11 @@ export default function FoodStep() {
                   <Badge variant="outline" className="text-xs">{species === 'dog' ? 'Cão' : 'Gato'}</Badge>
                 </div>
                 <div className="max-h-72 space-y-2 overflow-y-auto pr-1">
-                  {visibleFoods.map((food) => {
+                  {visibleFoods.map((food, foodIndex) => {
                     const alreadyAdded = entries.some((e) => e.foodId === food.id)
                     return (
                       <div
-                        key={food.id}
+                        key={`${food.id}-${foodIndex}`}
                         className="rounded-xl border border-border bg-card p-3 transition-colors hover:border-orange-400/30 dark:border-white/10 dark:bg-[#221a19]"
                       >
                         <div className="flex items-start justify-between gap-2">
@@ -395,7 +396,7 @@ export default function FoodStep() {
                       ? 'border-amber-400/30 bg-amber-500/10 text-amber-300'
                       : 'border-rose-400/30 bg-rose-500/10 text-rose-300',
                   )}>
-                    <span>{Math.abs(inclusionSum - 100) <= 0.5 ? '✓' : inclusionSum < 99 ? '⚠' : '↑'}</span>
+                    {Math.abs(inclusionSum - 100) <= 0.5 ? <CheckCircle2 className="h-4 w-4" /> : <AlertTriangle className="h-4 w-4" />}
                     <span>
                       {Math.abs(inclusionSum - 100) <= 0.5
                         ? 'Fórmula fechada corretamente (100%)'
@@ -417,7 +418,7 @@ export default function FoodStep() {
                       className="border-orange-400/30 bg-orange-500/[0.06] text-orange-200 text-[11px]"
                       onClick={complementOtherPercentages}
                     >
-                      ⟳ Completar % para 100
+                      <RefreshCw className="h-3.5 w-3.5" /> Completar para 100%
                     </Button>
                     {lastEditedFoodId && (
                       <p className="text-[10px] text-muted-foreground">
@@ -462,7 +463,7 @@ export default function FoodStep() {
                           className={cn(
                             'rounded-xl border p-3 space-y-3 transition-all duration-300',
                             isFlashedEdited
-                              ? 'border-orange-400/60 bg-orange-500/[0.10] shadow-[0_0_12px_rgba(249,115,22,0.15)]'
+                              ? 'border-orange-400/60 bg-orange-500/[0.10] shadow-[0_0_12px_rgba(37,99,235,0.15)]'
                               : isFlashedImpacted
                               ? 'border-sky-400/30 bg-sky-500/[0.06]'
                               : 'border-border bg-card dark:border-white/10 dark:bg-[#221a19]',
@@ -554,7 +555,7 @@ export default function FoodStep() {
                           {/* Normalização — aviso quando a soma não fecha 100% */}
                           {isFlashedImpacted && !isFlashedEdited && (
                             <p className="text-[10px] text-sky-400/80 animate-pulse">
-                              ↺ redistribuído pela edição de outro alimento
+                              Redistribuído automaticamente pela edição de outro alimento
                             </p>
                           )}
 
@@ -587,7 +588,7 @@ export default function FoodStep() {
                         type="button"
                         onClick={() => setMealsPerDay(n)}
                         className={cn(
-                          'rounded-xl border px-2 py-3 text-center transition-all hover:-translate-y-0.5 active:scale-[0.98]',
+                          'cursor-pointer rounded-xl border px-2 py-3 text-center outline-none transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/25',
                           mealsPerDay === n
                             ? 'border-orange-400/60 bg-orange-500/12 text-orange-900 dark:text-orange-200'
                             : 'border-border bg-card text-muted-foreground dark:border-white/10 dark:bg-[#221a19]',
@@ -612,7 +613,7 @@ export default function FoodStep() {
                   </div>
                   <div className="rounded-xl border border-border bg-muted/40 p-3 text-center dark:border-white/10 dark:bg-black/10">
                     <p className="text-[10px] text-muted-foreground">Espécie</p>
-                    <p className="mt-0.5 text-base font-black text-foreground dark:text-white">{species === 'dog' ? '🐕' : '🐈'}</p>
+                    <div className="mx-auto mt-1 flex h-6 w-6 items-center justify-center text-primary">{species === 'dog' ? <Dog className="h-5 w-5" /> : <Cat className="h-5 w-5" />}</div>
                     <p className="text-[10px] text-muted-foreground">{species === 'dog' ? 'Cão' : 'Gato'}</p>
                   </div>
                 </div>
@@ -639,20 +640,20 @@ export default function FoodStep() {
               </div>
             </div>
 
-            {/* ─── COLUNA DIREITA — Preview ao vivo ─── */}
+            {/* ─── COLUNA DIREITA — Resumo da formulação ─── */}
               <div className="min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]" id="food-preview-panel">
                 <div className="space-y-4">
                 {/* Header do painel */}
                 <div className="flex items-center justify-between">
-                  <p className="text-sm font-semibold uppercase tracking-widest text-muted-foreground">Prévia nutricional</p>
-                  {preview && (
-                    <Badge className="bg-orange-500/20 text-orange-200 border-orange-400/30 text-xs">Ao vivo</Badge>
-                  )}
+                  <div>
+                    <p className="text-sm font-semibold text-foreground">Resumo da formulação</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">Conferência nutricional antes de gerar o plano.</p>
+                  </div>
                 </div>
 
                 {!preview ? (
                   <div className="rounded-2xl border border-dashed border-border bg-muted/40 p-8 text-center dark:border-white/10 dark:bg-[#171212]">
-                    <p className="text-2xl mb-2">🍽️</p>
+                    <Utensils className="mx-auto mb-3 h-7 w-7 text-muted-foreground" />
                     <p className="text-sm text-muted-foreground">Adicione alimentos para ver a prévia nutricional em tempo real.</p>
                   </div>
                 ) : (

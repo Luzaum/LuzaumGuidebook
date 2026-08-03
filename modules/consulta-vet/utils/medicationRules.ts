@@ -31,6 +31,17 @@ export function buildDoseSummaryLabel(dose: MedicationDose): string {
   return segments.join(' • ');
 }
 
+/** Rótulo curto para seletores: indicação primeiro, sem categorias amplas da ficha. */
+export function buildClinicalDoseLabel(dose: MedicationDose): string {
+  const range = dose.doseMax && dose.doseMax !== dose.doseMin
+    ? `${dose.doseMin} a ${dose.doseMax}`
+    : `${dose.doseMin}`;
+  return [dose.indication, `${range} ${dose.doseUnit}/${dose.perWeightUnit}`, dose.route, dose.frequency]
+    .map((value) => String(value || '').trim())
+    .filter(Boolean)
+    .join(' • ');
+}
+
 export function isValidDoseSpecies(value: unknown): value is MedicationDoseSpecies {
   return value === 'dog' || value === 'cat' || value === 'both';
 }

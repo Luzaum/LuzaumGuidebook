@@ -1,9 +1,10 @@
 import { jsPDF } from 'jspdf';
 import type { ReceituarioDocumentData } from '../types/receituario';
-import { displayField, paginateDocument } from './receituarioDocument';
+import { displayField, getDocumentSignatureBoxes, paginateDocument } from './receituarioDocument';
 
 export function createReceituarioPdf(document: ReceituarioDocumentData): jsPDF {
   const pages = paginateDocument(document);
+  const signatureBoxes = getDocumentSignatureBoxes(document);
   const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4', compress: true });
   pages.forEach((page, pageIndex) => {
     if (pageIndex) pdf.addPage('a4', 'portrait');
@@ -39,6 +40,34 @@ export function createReceituarioPdf(document: ReceituarioDocumentData): jsPDF {
       if (line.kind === 'spacer') { y += 5.1; continue; }
       pdf.setFont('helvetica', line.kind === 'heading' ? 'bold' : 'normal');
       pdf.text(line.text, 16, y, { maxWidth: 178 }); y += 5.1;
+    }
+    if (page.number === page.totalPages && signatureBoxes.length) {
+      const startY = 225;
+      const boxWidth = 86;
+      const boxHeight = 23;
+      const gapX = 6;
+      const gapY = 4;
+      signatureBoxes.forEach((box, index) => {
+        const column = index % 2;
+        const row = Math.floor(index / 2);
+        const x = 16 + column * (boxWidth + gapX);
+        const boxY = startY + row * (boxHeight + gapY);
+        pdf.setDrawColor(100, 116, 139);
+        pdf.setLineWidth(0.25);
+        pdf.roundedRect(x, boxY, boxWidth, boxHeight, 1.5, 1.5);
+        pdf.setTextColor(15, 23, 42);
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(7.5);
+        pdf.text(box.title.toUpperCase(), x + 3, boxY + 4.5);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(71, 85, 105);
+        pdf.text(box.nameLabel, x + 3, boxY + 9, { maxWidth: boxWidth - 6 });
+        if (box.registrationLabel) pdf.text(box.registrationLabel, x + 3, boxY + 13, { maxWidth: boxWidth - 6 });
+        pdf.setDrawColor(100, 116, 139);
+        pdf.line(x + 8, boxY + 18, x + boxWidth - 8, boxY + 18);
+        pdf.setFontSize(6.5);
+        pdf.text('Assinatura', x + boxWidth / 2, boxY + 21, { align: 'center' });
+      });
     }
     pdf.setDrawColor(226, 232, 240); pdf.line(16, 283, 194, 283);
     pdf.setFont('helvetica', 'normal'); pdf.setFontSize(7.5); pdf.setTextColor(148, 163, 184);

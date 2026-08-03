@@ -1,28 +1,13 @@
 import React from 'react';
-import type { LucideIcon } from 'lucide-react';
 import {
-  Activity,
   AlertTriangle,
-  Apple,
   ArrowRight,
   BookOpen,
-  Brain,
   Cat,
   CircleAlert,
   Dog,
-  Dumbbell,
-  Droplets,
-  Eye,
-  Flame,
   FlaskConical,
-  HeartPulse,
-  LayoutGrid,
-  Shield,
   ShieldAlert,
-  Sparkles,
-  Stethoscope,
-  Trophy,
-  Wind,
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import {
@@ -36,13 +21,13 @@ import {
 import { getEditorialSubsectionIcon } from '../../utils/editorialSubsectionIcons';
 import {
   getEditorialSubsectionDescription,
-  getSystemGroupDescription,
   translateEditorialSubsectionKey,
-  translateSystemGroupTitle,
 } from '../../utils/editorialSubsectionLabels';
 import { sortDiagnosticSubsectionEntries } from '../../utils/editorialSubsectionOrder';
 import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
 import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
+import { ClinicalSignsTable } from './ClinicalSignsTable';
+import { DiagnosticPathway } from './DiagnosticPathway';
 import { TreatmentMonitoringPanel, TreatmentPriorityPanel } from './TreatmentSectionVisual';
 
 interface DiseaseSectionRendererProps {
@@ -55,7 +40,14 @@ interface DiseaseSectionRendererProps {
 }
 
 function isSystemGroupArray(value: unknown): value is EditorialSystemGroup[] {
-  return Array.isArray(value) && value.length > 0 && value.every((item) => item && typeof item === 'object' && 'system' in item && 'findings' in item);
+  return Array.isArray(value) && value.length > 0 && value.every((item) => {
+    if (!item || typeof item !== 'object' || !('system' in item) || !('findings' in item)) return false;
+    const findings = (item as EditorialSystemGroup).findings;
+    return Array.isArray(findings) && findings.every((finding) => {
+      if (typeof finding === 'string') return true;
+      return Boolean(finding && typeof finding === 'object' && 'finding' in finding && 'mechanism' in finding);
+    });
+  });
 }
 
 function isDrugProtocolArray(value: unknown): value is EditorialDrugProtocol[] {
@@ -170,27 +162,6 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
 
 function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTable; visual: DiseaseSectionVisual }) {
   return <EditorialClinicalTableBlock table={table} headerTintClass={visual.headerTintClass} />;
-}
-
-function systemTopicIcon(system: string): LucideIcon {
-  const s = system.toLowerCase();
-  if (s.includes('critical') || s.includes('crític') || s.includes('emerg')) return ShieldAlert;
-  if (s.includes('cardio')) return HeartPulse;
-  if (s.includes('respir') || s.includes('pulmon') || s.includes('thorac')) return Wind;
-  if (s.includes('renal') || s.includes('urinar')) return Droplets;
-  if (s.includes('neuro')) return Brain;
-  if (s.includes('ocular') || s.includes('ophthalm')) return Eye;
-  if (s.includes('hepat')) return Activity;
-  if (s.includes('hemat') || s.includes('lymph')) return Droplets;
-  if (s.includes('mamm') || s.includes('mam') || s.includes('reproduct') || s.includes('neonat')) return Activity;
-  if (s.includes('dermat')) return Sparkles;
-  if (s.includes('immun') || s.includes('imune')) return Shield;
-  if (s.includes('gastro') || s.includes('oral')) return Apple;
-  if (s.includes('metabol')) return Flame;
-  if (s.includes('musculo') || s.includes('orthop')) return Dumbbell;
-  if (s.includes('multi')) return LayoutGrid;
-  if (s.includes('behavior')) return Brain;
-  return Stethoscope;
 }
 
 const BULLET_LINE_RE = /^\s*[-•*]\s+/;
@@ -446,110 +417,31 @@ function BulletList({ items, visual }: { items: string[]; visual: DiseaseSection
   );
 }
 
-function SystemGroupList({ groups, visual }: { groups: EditorialSystemGroup[]; visual: DiseaseSectionVisual }) {
-  return (
-    <div className="grid gap-3 sm:grid-cols-2">
-      {groups.map((item) => {
-        const SysIcon = systemTopicIcon(item.system);
-        return (
-          <div
-            key={item.system}
-            className={cn(
-              'border-l-4 bg-muted/[0.16] px-4 py-3.5 ring-1 ring-border/45 dark:bg-muted/[0.09] md:px-5',
-              visual.leftBarClass
-            )}
-          >
-            <div className="flex items-start gap-3">
-              <span
-                className={cn(
-                  'flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
-                  visual.iconWrapClass
-                )}
-                aria-hidden
-              >
-                <SysIcon className={cn('h-4 w-4', visual.iconClass)} strokeWidth={2.2} />
-              </span>
-              <div className="min-w-0">
-                <h4 className={cn('text-[15px] font-bold leading-5', visual.titleClass)}>
-                  {translateSystemGroupTitle(item.system)}
-                </h4>
-                <p className="mt-0.5 text-xs leading-5 text-muted-foreground">{getSystemGroupDescription(item.system)}</p>
-              </div>
-            </div>
-            <div className="mt-3 border-t border-border/45 pt-3">
-              <BulletList items={item.findings} visual={visual} />
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
-}
-
-function isLimitedResourceStep(step: EditorialDiagnosticStep): boolean {
-  const t = `${step.title} ${step.description}`.toLowerCase();
-  return t.includes('recurso') && (t.includes('limitad') || t.includes('mínim') || t.includes('minim'));
-}
-
 function DiagnosticStepList({ steps, visual }: { steps: EditorialDiagnosticStep[]; visual: DiseaseSectionVisual }) {
+  return <DiagnosticPathway steps={steps} visual={visual} />;
+}
+
+function DiagnosticSubsection({
+  index,
+  title,
+  children,
+  visual,
+}: {
+  index: number;
+  title: string;
+  children: React.ReactNode;
+  visual: DiseaseSectionVisual;
+}) {
   return (
-    <ol className="space-y-0">
-      {steps.map((step, index) => {
-        const limited = isLimitedResourceStep(step);
-        const num = step.stepNumber || index + 1;
-        const isLast = index === steps.length - 1;
-        return (
-          <li key={`${step.title}-${index}`} className="flex items-stretch gap-4 md:gap-5">
-            <div className="flex w-11 shrink-0 flex-col items-center md:w-12">
-              <span
-                className={cn(
-                  'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] md:h-10 md:w-10 md:text-sm',
-                  visual.diagnosticNumBgClass,
-                  visual.diagnosticNumTextClass
-                )}
-              >
-                {num}
-              </span>
-              {!isLast ? (
-                <div
-                  className="mt-2 w-px flex-1 min-h-[1.5rem] bg-gradient-to-b from-border via-border/70 to-border/25"
-                  aria-hidden
-                />
-              ) : null}
-            </div>
-            <div className={cn('min-w-0 flex-1', !isLast && 'pb-8')}>
-              <div
-                className={cn(
-                  'rounded-xl border border-border/50 bg-card/50 p-4 shadow-sm md:p-5',
-                  limited ? 'border-amber-500/30 bg-amber-500/[0.06] dark:bg-amber-500/[0.08]' : ''
-                )}
-              >
-                <div className="flex flex-wrap items-start gap-x-2 gap-y-2">
-                  <h4 className="text-base font-semibold tracking-tight text-foreground">{step.title}</h4>
-                  {step.isGoldStandard ? (
-                    <span
-                      className="inline-flex shrink-0 items-center gap-1 rounded-full border border-amber-400/40 bg-gradient-to-r from-amber-400/20 to-amber-500/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 shadow-sm dark:from-amber-400/25 dark:to-amber-500/20 dark:text-amber-100"
-                      title="Padrão ouro"
-                    >
-                      <Trophy className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" aria-hidden />
-                      Padrão ouro
-                    </span>
-                  ) : null}
-                  {limited ? (
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-amber-600/30 bg-amber-600/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-100">
-                      Recursos limitados
-                    </span>
-                  ) : null}
-                </div>
-                <p className="mt-3 max-w-[98ch] text-[15px] leading-relaxed text-foreground/88 md:leading-8">
-                  <ClinicalInlineText value={step.description} visual={visual} />
-                </p>
-              </div>
-            </div>
-          </li>
-        );
-      })}
-    </ol>
+    <section className="grid gap-3 border-b border-border/55 pb-5 last:border-b-0 last:pb-0 md:grid-cols-[2.25rem_minmax(0,1fr)] md:gap-4">
+      <span className={cn('hidden h-8 w-8 items-center justify-center rounded-full text-xs font-bold md:inline-flex', visual.diagnosticNumBgClass, visual.diagnosticNumTextClass)} aria-hidden>
+        {index + 1}
+      </span>
+      <div className="min-w-0">
+        <h4 className="text-[15px] font-bold leading-6 text-foreground">{title}</h4>
+        <div className="mt-2.5">{children}</div>
+      </div>
+    </section>
   );
 }
 
@@ -903,7 +795,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       if (content.length === 0) return null;
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
-      if (isSystemGroupArray(content)) return <SystemGroupList groups={content} visual={visual} />;
+      if (isSystemGroupArray(content)) return <ClinicalSignsTable groups={content} visual={visual} />;
       return <BulletList items={content.filter((item): item is string => typeof item === 'string')} visual={visual} />;
     }
 
@@ -957,6 +849,13 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
             if (group.type === 'single') {
               const [key, value] = group.entry;
               const tone = subsectionToneForKey(key);
+              if (useDiagnosticOrder) {
+                return (
+                  <DiagnosticSubsection key={key} index={idx} title={translateEditorialSubsectionKey(key)} visual={visual}>
+                    {renderContent(value as EditorialSectionValue)}
+                  </DiagnosticSubsection>
+                );
+              }
               return (
                 <FlowSubsection
                   key={key}

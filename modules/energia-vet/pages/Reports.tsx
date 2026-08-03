@@ -1,9 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
-import { Download, FileText, Search } from 'lucide-react'
+import { ArrowRight, CalendarDays, Download, FileText, Search } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
-import { Badge } from '../components/ui/badge'
 import { Button } from '../components/ui/button'
 import { Input } from '../components/ui/input'
 import { exportReportPdf } from '../lib/reportDocument'
@@ -59,98 +58,39 @@ export default function Reports() {
     )
   }, [reports, query])
 
+  const uniquePatients = useMemo(() => new Set(reports.map((report) => report.patientKey ?? report.patient.name)).size, [reports])
+
   return (
-    <div className="space-y-8 w-full pb-20">
-      <div>
-        <h1 className="flex items-center gap-2 text-3xl font-bold tracking-tight text-foreground">
-          <FileText className="h-8 w-8 text-orange-600 dark:text-orange-300" />
-          Relatórios e histórico
-        </h1>
-        <p className="text-muted-foreground mt-2 max-w-3xl">
-          Com sessão iniciada e clínica selecionada, o histórico é sincronizado. O PDF é gerado a partir dos dados do relatório e pode ser exportado novamente a qualquer momento.
-        </p>
-      </div>
+    <div className="nutrition-page w-full space-y-6 pb-16">
+      <header className="nutrition-page-header">
+        <div><p className="nutrition-eyebrow">Documentação clínica</p><h1>Relatórios</h1><p>Consulte prescrições salvas, revise a composição do plano e gere novamente o documento em PDF.</p></div>
+        <div className="grid w-full grid-cols-2 gap-2 sm:w-auto"><div className="nutrition-header-stat"><span>Relatórios</span><strong>{reports.length}</strong></div><div className="nutrition-header-stat"><span>Pacientes</span><strong>{uniquePatients}</strong></div></div>
+      </header>
 
-      <Card className="border-border bg-card shadow-[0_18px_50px_rgba(0,0,0,0.08)] dark:border-white/10 dark:bg-[#141010] dark:shadow-[0_18px_50px_rgba(0,0,0,0.22)]">
-        <CardHeader>
-          <CardTitle className="text-foreground dark:text-white">Histórico do Energia Vet</CardTitle>
-          <CardDescription>
-            Busque por paciente ou tutor. O ficheiro PDF segue o padrão{' '}
-            <span className="font-mono text-[11px] text-foreground/80">VETIUS_NUTRICAO_PACIENTE_TUTOR_AAAA-MM-DD.pdf</span>.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="relative">
-            <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-            <Input placeholder="Buscar por paciente ou tutor..." className="pl-9" value={query} onChange={(event) => setQuery(event.target.value)} />
+      <Card className="gap-0 py-0">
+        <CardHeader className="border-b border-border p-5 lg:p-6">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div><CardTitle className="flex items-center gap-2"><FileText className="h-5 w-5 text-primary" /> Histórico de planos</CardTitle><CardDescription className="mt-1">Dados locais e sincronizados são exibidos em ordem cronológica.</CardDescription></div>
+            <div className="relative w-full lg:max-w-md"><Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" /><Input aria-label="Buscar relatórios" placeholder="Paciente ou tutor" className="pl-10" value={query} onChange={(event) => setQuery(event.target.value)} /></div>
           </div>
-
+        </CardHeader>
+        <CardContent className="p-3 sm:p-4">
           {filteredReports.length === 0 ? (
-            <div className="rounded-2xl border border-dashed border-border p-5 text-sm text-muted-foreground dark:border-white/10">
-              Nenhum relatorio salvo ainda.
-            </div>
+            <div className="rounded-2xl border border-dashed border-border p-8 text-center text-sm text-muted-foreground">Nenhum relatório salvo ainda.</div>
           ) : (
-            <div className="grid gap-4 xl:grid-cols-2">
+            <div className="space-y-3">
               {filteredReports.map((report) => {
                 const requirement = getRequirementById(report.diet.requirementProfileId)
+                const prescription = report.formula.contributions.map((item) => item.foodName).slice(0, 2).join(' + ') || 'Sem alimentos'
                 return (
-                  <Card
-                    key={report.id}
-                    className="border-border bg-muted/30 dark:border-white/10 dark:bg-[#1a1413]"
-                  >
-                    <CardContent className="space-y-4 p-5">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-lg font-semibold text-foreground dark:text-white">
-                            {report.patient.name ?? 'Paciente sem nome'}
-                          </p>
-                          <p className="text-sm text-muted-foreground">{report.patient.ownerName ?? 'Tutor não informado'}</p>
-                        </div>
-                        <Badge variant="outline">{new Date(report.createdAt).toLocaleDateString('pt-BR')}</Badge>
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-3">
-                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
-                          <p className="text-[11px] text-muted-foreground">Espécie</p>
-                          <p className="mt-1 font-semibold text-foreground dark:text-white">
-                            {report.patient.species === 'dog' ? 'Cao' : report.patient.species === 'cat' ? 'Gato' : 'Não informado'}
-                          </p>
-                        </div>
-                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
-                          <p className="text-[11px] text-muted-foreground">Energia-alvo</p>
-                          <p className="mt-1 font-semibold text-foreground dark:text-white">
-                            {report.target.targetEnergy?.toFixed(0) ?? '—'} kcal/dia
-                          </p>
-                        </div>
-                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
-                          <p className="text-[11px] text-muted-foreground">Plano</p>
-                          <p className="mt-1 font-semibold text-foreground dark:text-white">
-                            {report.diet.mealsPerDay} refeicoes · {report.diet.gramsPerMeal?.toFixed(1) ?? '—'} g
-                          </p>
-                        </div>
-                        <div className="rounded-2xl border border-border bg-muted/40 p-3 dark:border-white/10 dark:bg-black/10">
-                          <p className="text-[11px] text-muted-foreground">Perfil clínico</p>
-                          <p className="mt-1 font-semibold text-foreground dark:text-white">
-                            {getHumanRequirementLabel(requirement)}
-                          </p>
-                        </div>
-                      </div>
-
-                      <p className="text-sm text-muted-foreground">
-                        Prescricao curta: {report.formula.contributions.map((item) => item.foodName).slice(0, 2).join(' + ') || 'Sem alimentos'}
-                        {report.formula.contributions.length > 2 ? ` +${report.formula.contributions.length - 2}` : ''}
-                      </p>
-
-                      <div className="flex justify-between gap-2">
-                        <Button variant="outline" size="sm" render={<Link to={`${BASE_ROUTE}/reports/${report.id}`} />} className="gap-2">
-                          Ver detalhes
-                        </Button>
-                        <Button size="sm" className="gap-2" onClick={() => exportReportPdf(report)}>
-                          <Download className="h-4 w-4" /> Exportar PDF
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
+                  <article key={report.id} className="grid gap-4 rounded-2xl border border-border bg-card p-4 transition-colors duration-200 hover:border-primary/25 lg:grid-cols-[minmax(180px,0.7fr)_minmax(260px,1.2fr)_repeat(3,minmax(110px,0.45fr))_auto] lg:items-center">
+                    <div className="min-w-0"><p className="truncate text-base font-semibold text-foreground">{report.patient.name ?? 'Paciente sem nome'}</p><p className="mt-1 truncate text-sm text-muted-foreground">{report.patient.ownerName ?? 'Tutor não informado'}</p><p className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground"><CalendarDays className="h-3.5 w-3.5" /> {new Date(report.createdAt).toLocaleDateString('pt-BR')}</p></div>
+                    <div className="min-w-0"><p className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">Prescrição</p><p className="mt-1 truncate text-sm font-medium text-foreground">{prescription}{report.formula.contributions.length > 2 ? ` +${report.formula.contributions.length - 2}` : ''}</p><p className="mt-1 truncate text-xs text-muted-foreground">{getHumanRequirementLabel(requirement)}</p></div>
+                    <div><p className="text-[11px] text-muted-foreground">Espécie</p><p className="mt-1 text-sm font-semibold">{report.patient.species === 'dog' ? 'Cão' : report.patient.species === 'cat' ? 'Gato' : 'Não informado'}</p></div>
+                    <div><p className="text-[11px] text-muted-foreground">Energia-alvo</p><p className="mt-1 text-sm font-semibold tabular-nums">{report.target.targetEnergy?.toFixed(0) ?? '—'} kcal</p></div>
+                    <div><p className="text-[11px] text-muted-foreground">Rotina</p><p className="mt-1 text-sm font-semibold">{report.diet.mealsPerDay} refeições</p></div>
+                    <div className="flex items-center justify-end gap-2"><Button variant="outline" size="sm" onClick={() => exportReportPdf(report)} aria-label={`Exportar relatório de ${report.patient.name ?? 'paciente'}`}><Download className="h-4 w-4" /></Button><Button size="sm" render={<Link to={`${BASE_ROUTE}/reports/${report.id}`} />} className="gap-2">Abrir <ArrowRight className="h-4 w-4" /></Button></div>
+                  </article>
                 )
               })}
             </div>
