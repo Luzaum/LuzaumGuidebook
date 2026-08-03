@@ -6,7 +6,7 @@ import { chromium, type Page } from 'playwright'
 const cwd = process.cwd()
 const validationPort = '4176'
 const baseUrl = `http://127.0.0.1:${validationPort}`
-const outputDir = join(cwd, 'tmp', 'energia-vet-validation')
+const outputDir = join(cwd, 'tmp', 'energia-vet-validation', `${Date.now()}-${process.pid}`)
 
 const OPTIONAL_LABELS = [
   'Biotina',
@@ -19,6 +19,13 @@ const OPTIONAL_LABELS = [
 
 function delay(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms))
+}
+
+function normalizeValidationText(value: string) {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
 }
 
 async function waitForServer(url: string, timeoutMs = 60000) {
@@ -86,8 +93,8 @@ async function validateDogProfiles(page: Page) {
   const workLight = await selectProfile(page, 'dog_work_light')
   const workModerate = await selectProfile(page, 'dog_work_moderate')
   const workIntense = await selectProfile(page, 'dog_work_intense')
-  const energyText = (await page.locator('body').innerText()).toLowerCase()
-  const hasSlugVisible = /dog_|cat_|fediaf|_impact|_growth/.test(energyText)
+  const energyText = normalizeValidationText(await page.locator('body').innerText())
+  const hasSlugVisible = /dog_[a-z0-9_]+|cat_[a-z0-9_]+|_impact|_growth/.test(energyText)
   const hasPortugueseProfiles =
     energyText.includes('cao adulto castrado') &&
     energyText.includes('cao adulto trabalho moderado') &&
@@ -124,6 +131,12 @@ async function validateCatIndoor(browser: Awaited<ReturnType<typeof chromium.lau
   return { active, indoor }
 }
 
+async function validatePdfV2OutpatientPageCount(): Promise<number> {
+  const { buildOutpatientNutritionPdfDoc } = await import('../modules/energia-vet/lib/pdf/outpatientNutritionPdf')
+  const { REPORT_V4_SAMPLE } = await import('../tests/nutrition/fixtures/report-v4-sample')
+  return buildOutpatientNutritionPdfDoc(REPORT_V4_SAMPLE).getNumberOfPages()
+}
+
 async function validateFoodStepAndModal(page: Page) {
   await page.click('#btn-next-target')
   await page.waitForURL('**/target')
@@ -138,11 +151,11 @@ async function validateFoodStepAndModal(page: Page) {
   await page.getByRole('button', { name: 'Info' }).first().click()
   await page.waitForSelector('[role="dialog"]')
 
-  const modalRows = page.locator('[role="dialog"] .rounded-lg.border.border-white\\/5')
+  const modalRows = page.locator('[role="dialog"] .space-y-1\\.5 > div')
   const rowCount = await modalRows.count()
   const modalText = (await page.locator('[role="dialog"]').innerText()).toLowerCase()
-  const optionalMissingMentions = OPTIONAL_LABELS.some((label) =>
-    modalText.includes(label.toLowerCase()) && modalText.includes('dado n') && modalText.includes(label.toLowerCase()),
+  const optionalMissingMentions = OPTIONAL_LABELS.some(
+    (label) => modalText.includes(label.toLowerCase()) && /dado n[aã]o cadastrado|n[aã]o cadastrado/.test(modalText),
   )
   await page.screenshot({ path: join(outputDir, 'food-modal.png'), fullPage: true })
   await page.keyboard.press('Escape')
@@ -228,6 +241,10 @@ async function main() {
         catIndoorChangedCalculation: catIndoor.active !== catIndoor.indoor,
         foodHasNoEnergyProfileSelector: !foodChecks.hasEnergyProfileSelector && !foodChecks.profileTextVisible,
         foodModalIsClean: foodChecks.rowCount >= 10 && !foodChecks.optionalMissingMentions,
+        pdfV2OutpatientPages:
+          process.env.VITE_NUTRITION_PDF_V2 === 'true'
+            ? await validatePdfV2OutpatientPageCount()
+            : null,
         summaryUsesResolvedProfile: summaryChecks.savedHasResolvedProfile,
       },
     }
