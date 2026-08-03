@@ -1,12 +1,12 @@
 import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AlertTriangle, CheckCircle2, ChevronLeft, ChevronRight, MinusCircle } from 'lucide-react'
+import { NutrientGapSection } from '../../components/NutrientGapSection'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
 import { computeDietPlan } from '../../lib/dietEngine'
-import type { EvaluatedNutrient } from '../../types'
 import { useCalculationStore } from '../../store/calculationStore'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -17,28 +17,6 @@ function statusView(status: string) {
   if (status === 'below') return { label: 'Abaixo', className: 'text-amber-700 dark:text-amber-300', icon: AlertTriangle }
   if (status === 'above') return { label: 'Acima', className: 'text-red-700 dark:text-red-300', icon: AlertTriangle }
   return { label: 'Revisar', className: 'text-muted-foreground', icon: MinusCircle }
-}
-
-function belowImpact(row: EvaluatedNutrient) {
-  const impacts: Record<string, string> = {
-    crudeProteinPct: 'Pode reduzir a oferta de aminoácidos, favorecer perda de massa magra e limitar reparo tecidual. Revise a fonte proteica e a energia total.',
-    etherExtractPct: 'Pode reduzir a densidade energética e a oferta de ácidos graxos essenciais; o paciente pode precisar de maior volume para atingir a meta calórica.',
-    crudeFiberPct: 'Pode diminuir o suporte à motilidade intestinal, fermentação colônica e qualidade fecal quando a fibra é uma meta clínica.',
-    calciumPct: 'Pode comprometer a manutenção do equilíbrio mineral e ósseo. Avalie cálcio, fósforo e a relação entre ambos em conjunto.',
-    phosphorusPct: 'Pode comprometer a oferta mineral quando há exigência mínima. Interprete sempre junto ao cálcio e ao perfil renal.',
-    potassiumPct: 'Pode afetar equilíbrio eletrolítico, função neuromuscular e apetite; confirme o dado analítico e o contexto clínico.',
-    sodiumPct: 'Pode alterar o equilíbrio hidroeletrolítico; a relevância depende do diagnóstico e de medicamentos em uso.',
-    magnesiumPct: 'Pode afetar equilíbrio eletrolítico e função neuromuscular; confirme a composição e os exames quando indicados.',
-    taurinePct: 'Em gatos, baixa oferta pode comprometer retina e função cardíaca ao longo do tempo; confirme a adequação da fonte alimentar.',
-    ironMg: 'Pode limitar a disponibilidade para eritropoiese e transporte de oxigênio; avalie composição, histórico e exames.',
-    zincMg: 'Pode afetar pele, cicatrização e resposta imune; confirme o teor analítico antes de suplementar.',
-    copperMg: 'Pode afetar metabolismo do ferro e sistemas enzimáticos; interprete com cautela em pacientes hepatobiliares.',
-    seleniumMg: 'Pode reduzir suporte antioxidante; evite corrigir sem confirmar o dado, pois excesso também é relevante.',
-    vitaminAPerKg: 'Pode afetar integridade epitelial, visão e imunidade; confirme o teor e evite suplementação empírica.',
-    vitaminDPerKg: 'Pode afetar homeostase de cálcio e fósforo; correção exige cautela pelo risco de excesso.',
-    vitaminEPerKg: 'Pode reduzir suporte antioxidante, especialmente em dietas com maior teor de gordura.',
-  }
-  return impacts[row.key] ?? `A entrega está abaixo da referência aplicada e pode comprometer a adequação nutricional deste plano. Confirme o dado analítico e revise a formulação antes de suplementar.`
 }
 
 export default function ClinicalSummaryStep() {
@@ -61,7 +39,7 @@ export default function ClinicalSummaryStep() {
 
         <section className="overflow-hidden rounded-3xl border border-border"><div className="flex flex-col gap-2 border-b border-border bg-muted/40 p-5 sm:flex-row sm:items-end sm:justify-between"><div><h2 className="font-semibold">Adequação frente ao perfil</h2><p className="text-sm text-muted-foreground">Primeiro, apenas nutrientes com dado entregue e referência disponível.</p></div><p className="text-xs text-muted-foreground">Valores ausentes não são presumidos.</p></div><div className="overflow-x-auto"><table className="w-full min-w-[620px] text-sm"><thead><tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground"><th className="p-4">Nutriente</th><th className="p-4 text-right">Entregue</th><th className="p-4 text-right">Referência</th><th className="p-4">Situação</th></tr></thead><tbody>{comparableAdequacy.map((row, index) => { const view = statusView(row.status); const Icon = view.icon; return <tr key={`${row.key}-${index}`} className="border-b border-border last:border-0"><td className="p-4 font-medium">{row.label}</td><td className="p-4 text-right tabular-nums">{row.deliveredValue?.toFixed(2)} {row.unit ?? ''}</td><td className="p-4 text-right tabular-nums">{targetText(row.target!)}</td><td className={`p-4 ${view.className}`}><span className="inline-flex items-center gap-2 font-medium"><Icon className="h-4 w-4" />{view.label}</span></td></tr> })}{comparableAdequacy.length === 0 && <tr><td colSpan={4} className="p-8 text-center text-muted-foreground">Ainda não há nutrientes com dados suficientes para comparar.</td></tr>}</tbody></table></div>{unavailableAdequacy.length > 0 && <details className="border-t border-border"><summary className="flex min-h-14 cursor-pointer items-center justify-between gap-3 px-5 text-sm font-semibold"><span>Nutrientes sem informação suficiente</span><span className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">{unavailableAdequacy.length}</span></summary><div className="border-t border-border bg-muted/20 p-4"><div className="flex flex-wrap gap-2">{unavailableAdequacy.map((row, index) => <Badge key={`${row.key}-${index}`} variant="outline" className="rounded-full bg-card">{row.label}</Badge>)}</div><p className="mt-3 text-xs text-muted-foreground">Abra esta área para revisar o que ainda precisa de dado analítico do alimento ou de referência aplicável.</p></div></details>}</section>
 
-        {belowRows.length > 0 && <section className="rounded-2xl border border-amber-500/30 bg-amber-500/[0.07] p-5"><h2 className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-5 w-5 text-amber-600" /> Impactos de nutrientes abaixo da referência</h2><div className="mt-4 space-y-3">{belowRows.map((row, index) => <article key={`${row.key}-${index}`} className="rounded-xl border border-amber-500/20 bg-card/80 p-4"><p className="font-semibold text-foreground">{row.label}</p><p className="mt-1 text-sm leading-6 text-muted-foreground">{belowImpact(row)}</p></article>)}</div><p className="mt-4 text-xs leading-5 text-muted-foreground">Orientações clínicas resumidas a partir de Applied Veterinary Clinical Nutrition, 2nd Edition, e Nutrient Requirements of Dogs and Cats. Confirmar composição analítica e contexto do paciente antes de corrigir ou suplementar.</p></section>}
+        <NutrientGapSection belowRows={belowRows} contributions={result.contributions} />
         {result.evaluation.alerts.length > 0 && <section className="rounded-2xl border border-amber-500/30 bg-amber-500/[0.07] p-5"><h2 className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-5 w-5 text-amber-600" /> Pontos para revisão</h2><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{result.evaluation.alerts.map((alert) => <li key={alert}>• {alert}</li>)}</ul></section>}
         <div className="flex justify-between border-t border-border/60 pt-4"><Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/formulation`)} className="gap-2"><ChevronLeft className="h-4 w-4" /> Anterior</Button><Button onClick={() => navigate(`${NEW_ROUTE}/feeding`)} className="gap-2">Próximo: Alimentação <ChevronRight className="h-4 w-4" /></Button></div>
       </CardContent>
