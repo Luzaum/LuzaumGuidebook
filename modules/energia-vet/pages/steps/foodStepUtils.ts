@@ -26,7 +26,7 @@ export function resolveFoodTypeFilter(dietType: DietType): string[] | undefined 
 }
 
 export function formatNutrient(value: number | null | undefined, unit?: string | null, decimals = 2) {
-  if (value == null) return 'Dado não cadastrado'
+  if (value == null) return '—'
   return `${value.toFixed(decimals)} ${unit ?? ''}`.trim()
 }
 

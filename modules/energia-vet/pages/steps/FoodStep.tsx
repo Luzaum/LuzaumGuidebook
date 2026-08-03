@@ -775,7 +775,7 @@ export default function FoodStep() {
             <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-y-contain pr-1 [-webkit-overflow-scrolling:touch]">
               <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
                 <p className="text-xs text-muted-foreground">Categoria</p>
-                <p className="mt-1 font-semibold text-foreground dark:text-white">{detailsFood.categoryNormalized ?? 'Dado não cadastrado'}</p>
+                <p className="mt-1 font-semibold text-foreground dark:text-white">{detailsFood.categoryNormalized ?? '—'}</p>
               </div>
 
               <div className="grid gap-4 xl:grid-cols-2">

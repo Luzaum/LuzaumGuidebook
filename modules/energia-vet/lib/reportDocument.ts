@@ -6,6 +6,11 @@ import {
   buildSharedFeedingSheetMetaFields,
   type PrintableReportViewModel,
 } from './reportPresentation'
+import { isNutritionFeatureEnabled } from './featureFlags'
+import {
+  buildOutpatientNutritionPdfDoc,
+  buildOutpatientNutritionPdfFilename,
+} from './pdf/outpatientNutritionPdf'
 
 /** Segmento seguro para nome de ficheiro (ASCII, maiúsculas, underscores). */
 function slugifyFilenameSegment(value: string | null | undefined, fallback: string) {
@@ -35,6 +40,9 @@ function formatFilenameDate(iso: string) {
  * ("NUTRICAO" = forma ASCII de NUTRIÇÃO, compatível com mais sistemas e anexos.)
  */
 export function buildVetiusNutritionPdfFilename(report: StoredCalculationReport): string {
+  if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
+    return buildOutpatientNutritionPdfFilename(report)
+  }
   const patient = slugifyFilenameSegment(report.patient.name, 'PACIENTE')
   const tutor = slugifyFilenameSegment(report.patient.ownerName, 'TUTOR')
   const date = formatFilenameDate(report.createdAt)
@@ -282,6 +290,9 @@ function renderFeedingSheetBlock(
 }
 
 function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
+  if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
+    return buildOutpatientNutritionPdfDoc(report)
+  }
   const vm = buildPrintableReportViewModel(report)
   const doc = new jsPDF({ unit: 'mm', format: 'a4' })
 

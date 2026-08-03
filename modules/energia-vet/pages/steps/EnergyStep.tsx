@@ -393,7 +393,7 @@ export default function EnergyStep() {
             </p>
             {clinicalAdjustEnabled && Math.abs(effectiveClinicalFactor - 1) > 1e-6 ? (
               <p className="mt-3 text-xs text-muted-foreground">
-                Perfil puro (FEDIAF): <span className="font-medium text-foreground">{merFromProfile.toFixed(0)} kcal/dia</span>
+                Perfil puro (referência): <span className="font-medium text-foreground">{merFromProfile.toFixed(0)} kcal/dia</span>
                 {' · '}
                 Fator ×{effectiveClinicalFactor.toFixed(2)}
               </p>

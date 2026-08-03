@@ -1,12 +1,23 @@
 import { useMemo, useState } from 'react'
 import { AlertTriangle, Filter, Search, Utensils } from 'lucide-react'
 import { Badge } from './ui/badge'
+import { Button } from './ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { filterFoods, getFoodById, getFoodCategories, getFoodTypes, getNutrientDefinition } from '../lib/genutriData'
+import { getCatalogDatasetStats } from '../lib/catalog'
+import { isNutritionFeatureEnabled } from '../lib/featureFlags'
 import type { FoodItem, Species } from '../types'
+
+const CATALOG_SCOPE_FILTERS = [
+  { id: 'all', label: 'Todos' },
+  { id: 'commercial', label: 'Veterinários comerciais' },
+  { id: 'natural', label: 'Alimentos humanos / naturais' },
+  { id: 'suplemento', label: 'Suplementos' },
+  { id: 'enteral', label: 'Enterais' },
+] as const
 
 function getSpeciesLabel(food: FoodItem) {
   if (food.speciesScope === 'dog') return 'Cão'
@@ -71,21 +82,29 @@ export function FoodCatalogView({
   const [query, setQuery] = useState('')
   const [category, setCategory] = useState<string>('all')
   const [foodType, setFoodType] = useState<string>(initialFoodType ?? 'all')
+  const [scopeFilter, setScopeFilter] = useState<string>('all')
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null)
+
+  const datasetStats = useMemo(() => getCatalogDatasetStats(), [])
+  const catalogV2Ui = isNutritionFeatureEnabled('nutrition_catalog_v2')
 
   const categories = useMemo(() => getFoodCategories(), [])
   const foodTypes = useMemo(() => getFoodTypes(), [])
 
-  const foods = useMemo(
-    () =>
-      filterFoods({
-        species,
-        query,
-        category: category === 'all' ? undefined : category,
-        foodType: foodType === 'all' ? undefined : foodType,
-      }),
-    [category, foodType, query, species],
-  )
+  const foods = useMemo(() => {
+    const scopedType =
+      scopeFilter === 'all'
+        ? foodType === 'all'
+          ? undefined
+          : foodType
+        : scopeFilter
+    return filterFoods({
+      species,
+      query,
+      category: category === 'all' ? undefined : category,
+      foodType: scopedType === 'all' ? undefined : scopedType,
+    })
+  }, [category, foodType, query, scopeFilter, species])
 
   const selectedFood = useMemo(() => {
     return getFoodById(selectedFoodId ?? foods[0]?.id ?? '')
@@ -103,14 +122,34 @@ export function FoodCatalogView({
           {title}
         </h1>
         <p className="text-muted-foreground mt-2">{description}</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          <Badge variant="outline">{datasetStats.foods} alimentos ativos</Badge>
+          <Badge variant="outline">{datasetStats.requirements} perfis de exigência</Badge>
+          {catalogV2Ui && <Badge variant="outline">Catálogo V2</Badge>}
+        </div>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Base importada do GENUTRI</CardTitle>
-          <CardDescription>Busca instantânea com filtros por categoria, tipo e espécie.</CardDescription>
+          <CardTitle>Catálogo Nutricional</CardTitle>
+          <CardDescription>Busca com filtros por categoria, tipo e espécie. Contadores dinâmicos.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
+          {catalogV2Ui && (
+            <div className="flex flex-wrap gap-2">
+              {CATALOG_SCOPE_FILTERS.map((item) => (
+                <Button
+                  key={item.id}
+                  type="button"
+                  variant={scopeFilter === item.id ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setScopeFilter(item.id)}
+                >
+                  {item.label}
+                </Button>
+              ))}
+            </div>
+          )}
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
             <div className="relative lg:col-span-2">
               <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
@@ -227,8 +266,8 @@ export function FoodCatalogView({
                         <p className="font-bold">{selectedFood.nutrientsAsFed.dryMatterPct?.toFixed(2) ?? '—'}%</p>
                       </div>
                       <div className="rounded-xl border border-border/60 p-3">
-                        <p className="text-muted-foreground">Referência</p>
-                        <p className="font-bold">MN {selectedFood.sourceReference.mnRow} · MS {selectedFood.sourceReference.msRow ?? '—'}</p>
+                        <p className="text-muted-foreground">Fonte</p>
+                        <p className="font-bold">GENUTRI · catálogo clínico</p>
                       </div>
                     </div>
 
