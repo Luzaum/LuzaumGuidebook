@@ -12,6 +12,7 @@ import {
   renderTreatsSection,
   renderWarningsSection,
 } from './sections/tutorSections'
+import { renderTutorEnteralSection } from './sections/technicalSections'
 import type { NutritionPdfDocumentModel } from './types'
 import { formatDatePtBr } from './formatters'
 
@@ -41,6 +42,7 @@ export function buildTutorPlanPdf(doc: jsPDF, model: NutritionPdfDocumentModel):
   renderTreatsSection(doc, page, model)
   renderHydrationSection(doc, page, model)
   renderTransitionSection(doc, page, model)
+  renderTutorEnteralSection(doc, page, model)
   renderPreparationSection(doc, page, model)
   renderMonitoringSection(doc, page, model)
   renderWarningsSection(doc, page, model)

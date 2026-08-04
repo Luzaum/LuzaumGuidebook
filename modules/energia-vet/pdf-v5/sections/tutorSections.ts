@@ -24,6 +24,9 @@ export function renderTransitionSection(doc: jsPDF, page: PdfPageManager, model:
     fontSize: 9,
     columnStyles: { 0: { halign: 'right' }, 1: { halign: 'right' }, 2: { halign: 'right' } },
   })
+  if (model.transitionInstructions.length) {
+    renderBulletList(doc, page, 'Orientações', model.transitionInstructions)
+  }
 }
 
 export function renderPreparationSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {

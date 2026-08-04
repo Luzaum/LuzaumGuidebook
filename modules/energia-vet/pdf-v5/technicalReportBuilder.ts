@@ -7,9 +7,12 @@ import { renderEnergySection } from './sections/energySection'
 import { renderBodyCompositionSection, renderPatientIdentificationSection } from './sections/patientSection'
 import {
   renderDataQualitySection,
+  renderEnteralSection,
   renderHospitalSection,
+  renderHydrationSection,
   renderMacroSection,
   renderNutrientAdequacySection,
+  renderParenteralSection,
   renderReferencesSection,
   renderTherapeuticAssessmentSection,
 } from './sections/technicalSections'
@@ -40,7 +43,9 @@ export function buildTechnicalReportPdf(doc: jsPDF, model: NutritionPdfDocumentM
   renderMacroSection(doc, page, model)
   renderNutrientAdequacySection(doc, page, model)
   renderTherapeuticAssessmentSection(doc, page, model)
+  renderHydrationSection(doc, page, model)
+  renderEnteralSection(doc, page, model)
+  renderParenteralSection(doc, page, model)
   renderDataQualitySection(doc, page, model)
-  renderHospitalSection(doc, page, model)
   renderReferencesSection(doc, page, model)
 }

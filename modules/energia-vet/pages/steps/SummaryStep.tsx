@@ -20,7 +20,8 @@ import {
   printTechnicalReportPdf,
   printTutorPlanPdf,
 } from '../../lib/reportDocument'
-import { buildClinicalRecordFromSnapshot } from '../../pdf-v5/clinicalRecordBuilder'
+import { buildClinicalRecordForSave } from '../../pdf-v5/clinicalRecordBuilder'
+import { syncClinicalSnapshot } from '../../lib/sync/nutritionCalculationSyncService'
 import { isCalculationEngineV3Enabled } from '../../lib/nutritionCalculationBridge'
 import { evaluateDietAgainstTherapeuticProfiles } from '../../lib/nutritionTherapeuticBridge'
 import { calculateRefeedingRisk, getPhysiologicStateById, getProgressionPlan3Days, getProgressionPlan4Days } from '../../lib/nutrition'
@@ -222,7 +223,12 @@ export default function SummaryStep() {
       return
     }
     const reportId = crypto.randomUUID()
-    let clinicalRecord = printableReport.clinicalRecord
+    const reportToSave = {
+      ...printableReport,
+      id: reportId,
+      createdAt: new Date().toISOString(),
+      therapeuticReview: therapeuticReview ?? undefined,
+    }
 
     if (v3Enabled) {
       const snapshot = buildCalculationSnapshotV2({
@@ -234,26 +240,25 @@ export default function SummaryStep() {
       })
       if (snapshot) {
         saveCalculationSnapshotV2(snapshot)
-        clinicalRecord = buildClinicalRecordFromSnapshot(snapshot)
+        reportToSave.clinicalRecord = buildClinicalRecordForSave(reportToSave, snapshot)
       }
-    }
-
-    const reportToSave = {
-      ...printableReport,
-      id: reportId,
-      createdAt: new Date().toISOString(),
-      therapeuticReview: therapeuticReview ?? undefined,
-      clinicalRecord,
     }
 
     saveReport(reportToSave, { preferV5: true })
 
+    if (v3Enabled && reportToSave.clinicalRecord) {
+      await syncClinicalSnapshot({
+        report: reportToSave,
+        clinicalRecord: reportToSave.clinicalRecord,
+      })
+    }
+
     try {
       await saveNutritionReportToSupabase(reportToSave)
       await migrateLocalReportsToSupabase(getSavedReports())
-      toast.success('Resumo salvo e sincronizado.')
+      toast.success(v3Enabled ? 'Plano salvo com segurança.' : 'Resumo salvo e sincronizado.')
     } catch {
-      toast.success('Resumo salvo localmente no navegador.')
+      toast.success(v3Enabled ? 'Plano salvo neste dispositivo.' : 'Resumo salvo localmente no navegador.')
     }
     
     navigate(MODULE_ROUTE)

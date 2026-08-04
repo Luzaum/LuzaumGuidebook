@@ -78,6 +78,12 @@ export interface NutritionPdfDocumentModel {
   monitoringRecommendations: string[]
   dataQualityRows: PdfDataQualityRow[]
   hospitalRows: PdfKeyValueRow[]
+  hydrationRows: PdfKeyValueRow[]
+  enteralRows: PdfKeyValueRow[]
+  parenteralRows: PdfKeyValueRow[]
+  refeedingRows: PdfKeyValueRow[]
+  tutorEnteralBullets: string[]
+  transitionInstructions: string[]
   references: string[]
   comorbidityLabels: string[]
 }

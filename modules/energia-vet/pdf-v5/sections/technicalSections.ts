@@ -1,5 +1,5 @@
 import type { jsPDF } from 'jspdf'
-import { renderBulletList, renderFullWidthTable } from '../layoutPrimitives'
+import { renderBulletList, renderFullWidthTable, renderParagraph } from '../layoutPrimitives'
 import type { PdfPageManager } from '../pageManager'
 import type { NutritionPdfDocumentModel } from '../types'
 
@@ -86,4 +86,43 @@ export function renderHospitalSection(doc: jsPDF, page: PdfPageManager, model: N
 export function renderReferencesSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {
   if (!model.references.length) return
   renderBulletList(doc, page, 'Referências', model.references)
+}
+
+export function renderHydrationSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {
+  if (!model.hydrationRows.length) return
+  renderFullWidthTable(doc, page, {
+    title: 'Hidratação',
+    head: [['Item', 'Valor']],
+    body: model.hydrationRows.map((row) => [row.label, row.value]),
+    fontSize: 9,
+    columnStyles: { 0: { halign: 'left', cellWidth: 72 }, 1: { halign: 'left' } },
+  })
+}
+
+export function renderEnteralSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {
+  if (!model.enteralRows.length) return
+  renderFullWidthTable(doc, page, {
+    title: 'Nutrição enteral',
+    head: [['Campo', 'Valor']],
+    body: model.enteralRows.map((row) => [row.label, row.value]),
+    fontSize: 9,
+    columnStyles: { 0: { halign: 'left', cellWidth: 72 }, 1: { halign: 'left' } },
+  })
+}
+
+export function renderParenteralSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {
+  if (!model.parenteralRows.length) return
+  renderFullWidthTable(doc, page, {
+    title: 'Nutrição parenteral',
+    head: [['Campo', 'Valor']],
+    body: model.parenteralRows.map((row) => [row.label, row.value]),
+    fontSize: 9,
+    columnStyles: { 0: { halign: 'left', cellWidth: 72 }, 1: { halign: 'left' } },
+  })
+  renderParagraph(doc, page, 'A formulação deve ser revisada pela equipe responsável pelo preparo e pela administração.')
+}
+
+export function renderTutorEnteralSection(doc: jsPDF, page: PdfPageManager, model: NutritionPdfDocumentModel) {
+  if (!model.tutorEnteralBullets.length) return
+  renderBulletList(doc, page, 'Alimentação por sonda', model.tutorEnteralBullets)
 }

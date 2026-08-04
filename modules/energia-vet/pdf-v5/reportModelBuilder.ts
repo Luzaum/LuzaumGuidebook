@@ -1,5 +1,5 @@
 import { getClinicalProfileBadges } from '../lib/clinicalProfiles'
-import type { StoredCalculationReport } from '../types'
+import type { NutritionClinicalRecord, StoredCalculationReport } from '../types'
 import {
   adequacyStatusLabel,
   goalDetail,
@@ -20,6 +20,7 @@ import {
   formatKcal,
   formatKcalDay,
   formatMissing,
+  formatMlDay,
   formatPercent,
   formatRoundingNote,
   formatWeightKg,
@@ -39,7 +40,33 @@ function pushRow(rows: PdfKeyValueRow[], label: string, value: string | undefine
   rows.push({ label, value })
 }
 
-function buildMealSchedule(report: StoredCalculationReport): PdfMealScheduleRow[] {
+function energyFromClinical(clinical: NutritionClinicalRecord) {
+  if (clinical.energy) return clinical.energy
+  return {
+    rerKcalDay: clinical.rerKcalDay ?? 0,
+    prescribedKcalDay: clinical.prescribedKcalDay ?? 0,
+    maintenanceRangeMin: clinical.maintenanceRangeMin,
+    maintenanceRangeMax: clinical.maintenanceRangeMax,
+    weightBasisLabel: clinical.weightBasisLabel ?? 'Peso atual',
+    energyProfileLabel: clinical.energyProfileLabel ?? 'Perfil energético selecionado',
+    confidenceLabel: clinical.confidenceLabel ?? 'Moderada',
+    methodSummary: clinical.methodSummary ?? '',
+    observedIntakeKcalDay: clinical.observedIntakeKcal,
+    roundingErrorPercent: clinical.roundingErrorPercent,
+  }
+}
+
+function buildMealSchedule(report: StoredCalculationReport, clinical: NutritionClinicalRecord): PdfMealScheduleRow[] {
+  const enteral = clinical.enteralPlan
+  if (enteral?.schedule?.length) {
+    const perAdmin = enteral.mlPerAdministration ?? enteral.gramsPerAdministration
+    const unit = enteral.mlPerAdministration != null ? 'mL' : 'g'
+    return enteral.schedule.map((time, index) => ({
+      time,
+      detail: perAdmin != null ? `${formatGrams(perAdmin).replace(' g', ` ${unit}`)}` : `${index + 1}ª administração`,
+    }))
+  }
+
   const programmed = report.formula.programmedFeeding ?? report.diet.programmedFeeding
   if (programmed?.meals?.length) {
     return programmed.meals.map((meal) => ({
@@ -64,7 +91,24 @@ function buildMealSchedule(report: StoredCalculationReport): PdfMealScheduleRow[
   }))
 }
 
-function buildFoodRows(report: StoredCalculationReport, mode: NutritionPdfDocumentModel['mode']): PdfFoodPrescriptionRow[] {
+function buildFoodRows(report: StoredCalculationReport, mode: NutritionPdfDocumentModel['mode'], clinical: NutritionClinicalRecord): PdfFoodPrescriptionRow[] {
+  if (clinical.feeding?.foods.length) {
+    return clinical.feeding.foods.map((item) => {
+      const row: PdfFoodPrescriptionRow = {
+        name: item.name,
+        dailyAmount: formatGramsDay(item.dailyGramsPractical),
+        perMealAmount: formatGrams(item.perMealGramsPractical),
+        exactGrams: item.dailyGrams,
+        practicalGrams: item.dailyGramsPractical,
+      }
+      if (mode === 'technical_report') {
+        row.dailyKcal = formatKcal(item.dailyKcal)
+        row.energyPct = formatPercent(item.energyPercent)
+      }
+      return row
+    })
+  }
+
   const mealsPerDay = report.diet.mealsPerDay ?? report.formula.feedingPlan.mealsPerDay ?? 2
   return report.formula.contributions.map((item) => {
     const perMeal = item.gramsAsFed / mealsPerDay
@@ -83,56 +127,132 @@ function buildFoodRows(report: StoredCalculationReport, mode: NutritionPdfDocume
   })
 }
 
-function buildNutrientRows(report: StoredCalculationReport): PdfNutrientAdequacyRow[] {
-  return report.formula.evaluation.adequacy
-    .filter((row) => row.deliveredValue != null || row.status === 'insufficient_data')
-    .map((row) => ({
-      nutrient: row.label,
-      delivered: row.deliveredValue != null ? `${row.deliveredValue.toFixed(2)} ${row.unit ?? ''}`.trim() : 'Não informado',
-      target: row.target?.raw != null ? String(row.target.raw) : 'Não informado',
-      status: adequacyStatusLabel(row.status),
-      interpretation: row.reason ?? adequacyStatusLabel(row.status),
-      basis: row.basisLabel ?? 'por dia',
-    }))
+function buildTransitionRows(clinical: NutritionClinicalRecord): { rows: string[][]; instructions: string[] } {
+  const plan = clinical.transitionPlan
+  if (!plan?.enabled || !plan.rows.length) return { rows: [], instructions: [] }
+  return {
+    rows: plan.rows.map((row) => [
+      String(row.day),
+      `${plan.previousDiet.name}: ${formatGrams(row.previousDietGramsPractical)}`,
+      `${plan.newDiet.name}: ${formatGrams(row.newDietGramsPractical)}`,
+    ]),
+    instructions: plan.instructions,
+  }
 }
 
-function buildMacroRows(report: StoredCalculationReport): PdfKeyValueRow[] {
-  const macros = report.formula.evaluation.macroSplit
+function buildHydrationText(clinical: NutritionClinicalRecord): { text: string; rows: PdfKeyValueRow[] } {
+  const plan = clinical.hydrationPlan
   const rows: PdfKeyValueRow[] = []
-  for (const slice of macros) {
-    pushRow(rows, slice.label, `${slice.grams.toFixed(1)} g/dia (${slice.percent.toFixed(1)}% da energia)`)
+  if (!plan) {
+    return { text: 'Manter água limpa e fresca sempre disponível.', rows }
   }
-  pushRow(rows, 'Matéria seca total', formatGramsDay(report.formula.feedingPlan.totalDryMatterGrams))
+
+  pushRow(rows, 'Método selecionado', plan.methodLabel)
+  if (plan.estimates.selectedTargetMlDay != null) {
+    pushRow(rows, 'Meta estimada', formatMlDay(plan.estimates.selectedTargetMlDay))
+  }
+  if (plan.foodWaterMlDay != null) pushRow(rows, 'Água da dieta', formatMlDay(plan.foodWaterMlDay))
+  if (plan.metabolicWaterMlDay != null) pushRow(rows, 'Água metabólica', formatMlDay(plan.metabolicWaterMlDay))
+  if (plan.voluntarilyConsumedWaterMlDay != null) {
+    pushRow(rows, 'Água voluntária informada', formatMlDay(plan.voluntarilyConsumedWaterMlDay))
+  }
+  if (plan.enteralFlushWaterMlDay != null) {
+    pushRow(rows, 'Lavagem enteral', formatMlDay(plan.enteralFlushWaterMlDay))
+  }
+  if (plan.estimatedOralWaterGapMlDay != null) {
+    pushRow(rows, 'Lacuna oral estimada', formatMlDay(plan.estimatedOralWaterGapMlDay))
+  }
+
+  const target = plan.estimates.selectedTargetMlDay
+  const text =
+    target != null
+      ? `Meta nutricional estimada: aproximadamente ${Math.round(target)} mL por dia, considerando a água presente nos alimentos. ${plan.disclaimer}`
+      : `Manter água limpa e fresca sempre disponível. ${plan.disclaimer}`
+
+  return { text, rows }
+}
+
+function buildEnteralRows(clinical: NutritionClinicalRecord): PdfKeyValueRow[] {
+  const e = clinical.enteralPlan
+  if (!e) return []
+  const rows: PdfKeyValueRow[] = []
+  pushRow(rows, 'Via', routeLabel(e.route))
+  pushRow(rows, 'Dieta', e.dietName)
+  if (e.kcalPerMl != null) pushRow(rows, 'Densidade energética', `${e.kcalPerMl.toFixed(2)} kcal/mL`)
+  if (e.kcalPerGram != null) pushRow(rows, 'Densidade energética', `${e.kcalPerGram.toFixed(2)} kcal/g`)
+  pushRow(rows, 'Meta diária', formatKcalDay(e.prescribedKcalDay))
+  pushRow(rows, 'Percentual do RER', `${e.prescribedPercentRer.toFixed(1)}%`)
+  if (e.prescribedMlDay != null) pushRow(rows, 'Volume diário', formatMlDay(e.prescribedMlDay))
+  if (e.prescribedGramsDay != null) pushRow(rows, 'Quantidade diária', formatGramsDay(e.prescribedGramsDay))
+  pushRow(rows, 'Modo', adminModeLabel(e.administrationMode))
+  if (e.mlPerAdministration != null) pushRow(rows, 'Volume por administração', `${e.mlPerAdministration.toFixed(1)} mL`)
+  if (e.gramsPerAdministration != null) pushRow(rows, 'Quantidade por administração', formatGrams(e.gramsPerAdministration))
+  if (e.mlPerHour != null) pushRow(rows, 'Taxa horária', `${e.mlPerHour.toFixed(1)} mL/h`)
+  if (e.totalFlushMlDay != null) pushRow(rows, 'Lavagem total/dia', formatMlDay(e.totalFlushMlDay))
+  if (e.deliveredKcalDay != null) pushRow(rows, 'Calorias recebidas', formatKcalDay(e.deliveredKcalDay))
+  if (e.deliveredPercent != null) pushRow(rows, 'Percentual recebido', `${e.deliveredPercent.toFixed(1)}%`)
+  if (e.dailyDeficitKcal != null) pushRow(rows, 'Déficit diário', formatKcalDay(e.dailyDeficitKcal))
+  if (e.cumulativeDeficitKcal != null) pushRow(rows, 'Déficit acumulado', formatKcalDay(e.cumulativeDeficitKcal))
   return rows
 }
 
-function buildWarnings(report: StoredCalculationReport): string[] {
-  const warnings = [
-    'Não oferecer outros alimentos além dos prescritos sem orientação.',
-    'A quantidade prescrita poderá ser ajustada conforme a evolução do peso.',
-  ]
-  if (report.target.goal === 'weight_loss') {
-    warnings.push('Pesar o paciente regularmente e não reduzir a quantidade por conta própria.')
-  }
-  if (report.patient.isHospitalized) {
-    warnings.push('Não avançar a oferta alimentar sem avaliação da equipe veterinária.')
-  }
-  return warnings
+function buildParenteralRows(clinical: NutritionClinicalRecord): PdfKeyValueRow[] {
+  const p = clinical.parenteralPlan
+  if (!p) return []
+  const rows: PdfKeyValueRow[] = []
+  pushRow(rows, 'Meta energética', formatKcalDay(p.targetKcalDay))
+  pushRow(rows, 'Proteína', `${p.proteinGramsDay.toFixed(1)} g/dia`)
+  pushRow(rows, 'Aminoácidos', `${p.aminoAcidVolumeMlDay.toFixed(1)} mL/dia`)
+  pushRow(rows, 'Dextrose', `${p.dextroseVolumeMlDay.toFixed(1)} mL/dia (${p.dextroseGramsDay.toFixed(1)} g)`)
+  pushRow(rows, 'Lipídios', `${p.lipidVolumeMlDay.toFixed(1)} mL/dia (${p.lipidGramsKgDay.toFixed(2)} g/kg/dia)`)
+  pushRow(rows, 'GIR', `${p.glucoseInfusionRateMgKgMin.toFixed(2)} mg/kg/min`)
+  pushRow(rows, 'Volume total', formatMlDay(p.totalVolumeMlDay))
+  pushRow(rows, 'Taxa de infusão', `${p.infusionRateMlHour.toFixed(1)} mL/h`)
+  pushRow(rows, 'Via sugerida', vascularLabel(p.vascularAccess))
+  return rows
 }
 
-function buildMonitoring(report: StoredCalculationReport): string[] {
-  const items = [
-    'Monitorar apetite, vômito, diarreia e aceitação da dieta.',
-    'Avaliar mudanças nas fezes.',
-    'Reavaliar peso e condição corporal na consulta de retorno.',
-  ]
-  if (report.target.goal === 'weight_loss') {
-    items.unshift('Pesar o paciente regularmente durante o protocolo de emagrecimento.')
+function buildRefeedingRows(clinical: NutritionClinicalRecord): PdfKeyValueRow[] {
+  const r = clinical.refeedingPlan
+  if (!r) return []
+  const rows: PdfKeyValueRow[] = []
+  pushRow(rows, 'Risco', riskLabel(r.riskLevel))
+  pushRow(rows, 'RER', formatKcalDay(r.rerKcalDay))
+  if (r.riskFactors.length) pushRow(rows, 'Fatores', r.riskFactors.join('; '))
+  for (const day of r.days.slice(0, 7)) {
+    pushRow(rows, `Dia ${day.day}`, `${day.targetPercentRer}% RER · ${Math.round(day.targetKcalDay)} kcal`)
   }
-  if ((report.patient.ageMonths ?? 0) < 12) {
-    items.unshift('Reavaliar frequentemente peso, ECC e curva de crescimento.')
+  return rows
+}
+
+function routeLabel(route: string): string {
+  const map: Record<string, string> = {
+    oral: 'Via oral',
+    nasoesophageal: 'Sonda nasoesofágica',
+    nasogastric: 'Sonda nasogástrica',
+    esophagostomy: 'Esofagostomia',
+    gastrostomy: 'Gastrostomia',
+    jejunostomy: 'Jejunostomia',
   }
-  return items
+  return map[route] ?? route
+}
+
+function adminModeLabel(mode: string): string {
+  if (mode === 'continuous') return 'Infusão contínua'
+  if (mode === 'intermittent') return 'Intermitente'
+  return 'Bolus'
+}
+
+function vascularLabel(access: string): string {
+  if (access === 'central') return 'Via central'
+  if (access === 'peripheral') return 'Via periférica'
+  return 'Não definida'
+}
+
+function riskLabel(level: string): string {
+  if (level === 'high') return 'Alto'
+  if (level === 'moderate') return 'Moderado'
+  return 'Baixo'
 }
 
 export function buildNutritionPdfDocumentModel(
@@ -140,170 +260,150 @@ export function buildNutritionPdfDocumentModel(
   snapshot?: CalculationSnapshotV2 | null,
 ): NutritionPdfDocumentModel {
   const { report, mode } = input
-  const baseClinical = resolveClinicalRecord(report, snapshot)
-  const totalKcal = report.formula.contributions.reduce((sum, item) => sum + item.deliveredKcal, 0)
-  const roundingError =
-    baseClinical.prescribedKcalDay > 0
-      ? ((totalKcal - baseClinical.prescribedKcalDay) / baseClinical.prescribedKcalDay) * 100
-      : undefined
-  const clinical = {
-    ...baseClinical,
-    roundingErrorPercent: baseClinical.roundingErrorPercent ?? roundingError,
-  }
+  const clinical = resolveClinicalRecord(report, snapshot)
+  const energy = energyFromClinical(clinical)
   const species = report.patient.species ?? 'dog'
+  const { rows: transitionRows, instructions: transitionInstructions } = buildTransitionRows(clinical)
+  const hydration = buildHydrationText(clinical)
 
   const headerRows: PdfKeyValueRow[] = []
   pushRow(headerRows, 'Espécie', speciesLabel(species))
-  pushRow(headerRows, 'Raça', formatMissing(report.patient.breed))
-  pushRow(headerRows, 'Peso atual', formatWeightKg(report.patient.currentWeight))
+  pushRow(headerRows, 'Raça', formatMissing(report.patient.breed ?? clinical.patient.breed))
+  pushRow(headerRows, 'Peso atual', formatWeightKg(clinical.patient.currentWeightKg ?? report.patient.currentWeight))
   pushRow(headerRows, 'Data', formatDatePtBr(report.createdAt))
 
   const identificationRows: PdfKeyValueRow[] = []
-  pushRow(identificationRows, 'Paciente', formatMissing(report.patient.name))
+  pushRow(identificationRows, 'Paciente', clinical.patient.name)
   pushRow(identificationRows, 'Espécie', speciesLabel(species))
-  pushRow(identificationRows, 'Raça', formatMissing(report.patient.breed))
-  pushRow(identificationRows, 'Sexo', sexLabel(report.patient.sex))
-  pushRow(identificationRows, 'Castração', neuterLabel(report.patient.isNeutered))
-  pushRow(identificationRows, 'Idade', formatAgeYears(report.patient.ageMonths))
-  pushRow(identificationRows, 'Peso atual', formatWeightKg(report.patient.currentWeight))
-  pushRow(identificationRows, 'ECC', report.patient.bcs != null ? `${report.patient.bcs}/9` : undefined)
-  pushRow(identificationRows, 'EMC', clinical.muscleConditionLabel ?? muscleConditionLabel(report.patient.muscleCondition))
-  pushRow(identificationRows, 'Atividade', clinical.activitySummary)
+  pushRow(identificationRows, 'Raça', formatMissing(clinical.patient.breed))
+  pushRow(identificationRows, 'Sexo', clinical.patient.sex ?? sexLabel(report.patient.sex))
+  pushRow(identificationRows, 'Castração', clinical.patient.neuterLabel ?? neuterLabel(report.patient.isNeutered))
+  pushRow(identificationRows, 'Idade', clinical.patient.ageLabel ?? formatAgeYears(report.patient.ageMonths))
+  pushRow(identificationRows, 'Peso atual', formatWeightKg(clinical.patient.currentWeightKg))
+  pushRow(identificationRows, 'ECC', clinical.patient.bcs9 != null ? `${clinical.patient.bcs9}/9` : undefined)
+  pushRow(identificationRows, 'EMC', clinical.patient.muscleConditionLabel ?? muscleConditionLabel(report.patient.muscleCondition))
+  pushRow(identificationRows, 'Atividade', clinical.patient.activitySummary)
   pushRow(identificationRows, 'Objetivo', goalTitle(report.target.goal))
+  if (clinical.patient.comorbidityLabels?.length) {
+    pushRow(identificationRows, 'Doenças', clinical.patient.comorbidityLabels.join(', '))
+  }
 
   const bodyCompositionRows: PdfKeyValueRow[] = []
-  pushRow(bodyCompositionRows, 'Peso atual', formatWeightKg(report.patient.currentWeight))
-  pushRow(bodyCompositionRows, 'ECC atual', report.patient.bcs != null ? `${report.patient.bcs}/9` : undefined)
-  pushRow(bodyCompositionRows, 'EMC', clinical.muscleConditionLabel)
-  pushRow(bodyCompositionRows, 'Peso-alvo', formatWeightKg(report.target.targetWeight))
-  pushRow(bodyCompositionRows, 'Método de estimativa', clinical.targetWeightMethod ?? 'Peso-alvo estimado pela condição corporal')
-  if (report.patient.previousHealthyWeightKg) {
-    pushRow(bodyCompositionRows, 'Peso saudável anterior', formatWeightKg(report.patient.previousHealthyWeightKg))
-  }
+  pushRow(bodyCompositionRows, 'Peso atual', formatWeightKg(clinical.bodyComposition.currentWeightKg))
+  pushRow(bodyCompositionRows, 'ECC atual', clinical.bodyComposition.bcs9 != null ? `${clinical.bodyComposition.bcs9}/9` : undefined)
+  pushRow(bodyCompositionRows, 'EMC', clinical.bodyComposition.muscleConditionLabel)
+  pushRow(bodyCompositionRows, 'Peso-alvo', formatWeightKg(clinical.bodyComposition.targetWeightKg))
+  pushRow(bodyCompositionRows, 'Método de estimativa', clinical.bodyComposition.targetWeightMethodLabel)
 
   const energyRows: PdfKeyValueRow[] = []
-  pushRow(energyRows, 'Necessidade energética de repouso', formatKcalDay(clinical.rerKcalDay))
-  if (clinical.maintenanceRangeMin != null && clinical.maintenanceRangeMax != null) {
-    pushRow(
-      energyRows,
-      'Faixa estimada de manutenção',
-      `${Math.round(clinical.maintenanceRangeMin)}–${Math.round(clinical.maintenanceRangeMax)} kcal/dia`,
-    )
+  pushRow(energyRows, 'Necessidade energética de repouso', formatKcalDay(energy.rerKcalDay))
+  if (energy.maintenanceRangeMin != null && energy.maintenanceRangeMax != null) {
+    pushRow(energyRows, 'Faixa estimada de manutenção', `${Math.round(energy.maintenanceRangeMin)}–${Math.round(energy.maintenanceRangeMax)} kcal/dia`)
   }
-  pushRow(energyRows, 'Meta prescrita', formatKcalDay(clinical.prescribedKcalDay))
-  pushRow(energyRows, 'Base utilizada', clinical.weightBasisLabel)
-  pushRow(energyRows, 'Perfil', clinical.energyProfileLabel)
-  pushRow(energyRows, 'Grau de confiança', clinical.confidenceLabel)
-  if (clinical.observedIntakeKcal != null) {
-    pushRow(energyRows, 'Ingestão observada', formatKcalDay(clinical.observedIntakeKcal))
-  }
-  const roundingNote = formatRoundingNote(clinical.roundingErrorPercent)
+  pushRow(energyRows, 'Meta prescrita', formatKcalDay(energy.prescribedKcalDay))
+  pushRow(energyRows, 'Base utilizada', energy.weightBasisLabel)
+  pushRow(energyRows, 'Perfil', energy.energyProfileLabel)
+  pushRow(energyRows, 'Grau de confiança', energy.confidenceLabel)
+  if (energy.observedIntakeKcalDay != null) pushRow(energyRows, 'Ingestão observada', formatKcalDay(energy.observedIntakeKcalDay))
+  if (energy.treatReserveKcalDay != null) pushRow(energyRows, 'Reserva para petiscos', formatKcalDay(energy.treatReserveKcalDay))
+  const roundingNote = formatRoundingNote(energy.roundingErrorPercent)
   if (roundingNote) pushRow(energyRows, 'Arredondamento', roundingNote)
 
-  const therapeuticReview = report.therapeuticReview
+  const therapeuticReview = clinical.therapeuticReview ?? report.therapeuticReview
   const therapeuticProfiles =
     therapeuticReview?.profiles.map((profile) => ({
       profileName: profile.profileName,
-      statusLabel: therapeuticStatusLabel(profile.status),
-      goalLines: profile.goals.map((goal) => `${goal.label}: ${goal.messagePt}`),
+      statusLabel: profile.statusLabel ?? therapeuticStatusLabel((profile as { status?: string }).status ?? 'adequate'),
+      goalLines: profile.goalLines ?? (profile as { goals?: Array<{ messagePt: string }> }).goals?.map((g) => g.messagePt) ?? [],
+    })) ?? []
+
+  const nutrientRows: PdfNutrientAdequacyRow[] =
+    clinical.nutrientAssessment?.adequacyRows.map((row) => ({
+      nutrient: row.nutrient,
+      delivered: row.delivered,
+      target: row.target,
+      status: row.statusLabel,
+      interpretation: row.interpretation,
+      basis: row.basisLabel,
+    })) ??
+    report.formula.evaluation.adequacy
+      .filter((row) => row.deliveredValue != null || row.status === 'insufficient_data')
+      .map((row) => ({
+        nutrient: row.label,
+        delivered: row.deliveredValue != null ? `${row.deliveredValue.toFixed(2)} ${row.unit ?? ''}`.trim() : 'Não informado',
+        target: row.target?.raw != null ? String(row.target.raw) : 'Não informado',
+        status: adequacyStatusLabel(row.status),
+        interpretation: row.reason ?? adequacyStatusLabel(row.status),
+        basis: row.basisLabel ?? 'por dia',
+      }))
+
+  const macroRows: PdfKeyValueRow[] =
+    clinical.nutrientAssessment?.macroRows.map((m) => ({
+      label: m.label,
+      value: `${m.gramsDay.toFixed(1)} g/dia (${m.energyPercent.toFixed(1)}% da energia)`,
     })) ?? []
 
   const dataQualityRows =
-    report.formula.evaluation.missingDataFlags?.slice(0, 8).map((key) => ({
-      item: key,
-      quality: 'Não informado',
-    })) ?? []
+    clinical.nutrientAssessment?.dataQualityRows.map((row) => ({ item: row.item, quality: row.qualityLabel })) ??
+    report.formula.evaluation.missingDataFlags?.slice(0, 8).map((key) => ({ item: key, quality: 'Não informado' })) ??
+    []
 
-  const hospitalRows: PdfKeyValueRow[] = []
+  const enteralRows = buildEnteralRows(clinical)
+  const parenteralRows = mode === 'technical_report' ? buildParenteralRows(clinical) : []
+  const refeedingRows = buildRefeedingRows(clinical)
+  const hospitalRows = [...refeedingRows, ...enteralRows.filter((row) => !parenteralRows.length)]
 
-  if (report.patient.comorbidityIds?.length) {
-    const labels = getClinicalProfileBadges(species, report.patient.comorbidityIds)
-    pushRow(identificationRows, 'Doenças', labels.join(', '))
-  }
-
-  const treatsKcal = report.patient.dietHistory?.treatsKcalPerDay
+  const treatsKcal = energy.treatReserveKcalDay ?? report.patient.dietHistory?.treatsKcalPerDay
   const treatsText =
     treatsKcal != null && treatsKcal > 0
       ? `Limite de petiscos: até ${Math.round(treatsKcal)} kcal por dia.`
       : 'Não oferecer petiscos ou alimentos adicionais sem orientação.'
 
-  if (report.patient.isHospitalized && report.hospital) {
-    pushRow(hospitalRows, 'Risco de realimentação', formatRefeedingRisk(report.hospital.refeedingRiskLevel))
-    pushRow(hospitalRows, 'Via de alimentação', formatFeedingRoute(report.hospital.feedingRoute))
-    if (report.energy.rer) {
-      pushRow(hospitalRows, 'RER hospitalar', formatKcalDay(report.energy.rer))
-    }
-    const progression = report.hospital.progressionPlan?.[0]
-    if (progression) {
-      pushRow(hospitalRows, 'Meta do dia', formatKcalDay(progression.kcalTarget))
-      pushRow(hospitalRows, 'Percentual do RER', `${progression.percentRER}%`)
-    }
-    if (report.hospital.recentIntakePercent != null) {
-      pushRow(hospitalRows, 'Percentual recebido recente', `${report.hospital.recentIntakePercent}%`)
-    }
-    if (report.hospital.refeedingRiskLevel === 'high') {
-      pushRow(
-        hospitalRows,
-        'Progressão',
-        'A progressão deve ser autorizada após avaliação clínica e eletrolítica.',
-      )
-    }
-  }
+  const warningBullets = clinical.warnings.map((w) => w.message)
+  const monitoringBullets = clinical.monitoringPlan?.items ?? []
 
   return {
     mode,
     generatedAt: report.createdAt,
-    clinicName: input.clinicName ?? 'Clínica veterinária',
-    veterinarianName: input.veterinarianName ?? 'Médico-veterinário responsável',
-    patientName: formatMissing(report.patient.name),
+    clinicName: input.clinicName ?? clinical.clinic?.name ?? 'Clínica veterinária',
+    veterinarianName: input.veterinarianName ?? clinical.prescribedBy?.name ?? 'Médico-veterinário responsável',
+    patientName: clinical.patient.name,
     speciesLabel: speciesLabel(species),
-    breed: report.patient.breed,
-    currentWeight: formatWeightKg(report.patient.currentWeight),
+    breed: clinical.patient.breed,
+    currentWeight: formatWeightKg(clinical.patient.currentWeightKg),
     objectiveTitle: goalTitle(report.target.goal),
     objectiveDetail: goalDetail(report.target.goal, species),
     headerRows,
     identificationRows,
     bodyCompositionRows,
     energyRows,
-    foodRows: buildFoodRows(report, mode),
-    mealSchedule: buildMealSchedule(report),
+    foodRows: buildFoodRows(report, mode, clinical),
+    mealSchedule: buildMealSchedule(report, clinical),
     treatsText,
-    hydrationText: 'Manter água limpa e fresca sempre disponível.',
-    transitionRows: [],
+    hydrationText: hydration.text,
+    transitionRows,
+    transitionInstructions,
     preparationBullets:
       report.diet.dietType === 'natural'
-        ? [
-            'Pesar os alimentos em balança digital.',
-            'Não adicionar sal, alho, cebola, óleo ou temperos.',
-            'Não substituir ingredientes sem nova avaliação.',
-          ]
+        ? ['Pesar os alimentos em balança digital.', 'Não adicionar sal, alho, cebola, óleo ou temperos.', 'Não substituir ingredientes sem nova avaliação.']
         : [],
-    monitoringBullets: buildMonitoring(report),
-    warningBullets: buildWarnings(report),
-    macroRows: buildMacroRows(report),
-    nutrientRows: buildNutrientRows(report),
+    monitoringBullets,
+    warningBullets,
+    macroRows,
+    nutrientRows,
     therapeuticProfiles,
-    therapeuticConflicts: therapeuticReview?.conflicts.map((item) => item.messagePt) ?? [],
+    therapeuticConflicts: therapeuticReview?.conflicts ?? [],
     monitoringRecommendations: therapeuticReview?.monitoringRecommendations ?? [],
     dataQualityRows,
     hospitalRows,
+    hydrationRows: mode === 'technical_report' ? hydration.rows : [],
+    enteralRows: mode === 'technical_report' ? enteralRows : [],
+    parenteralRows,
+    refeedingRows: mode === 'technical_report' ? refeedingRows : [],
+    tutorEnteralBullets: mode === 'tutor_plan' ? (clinical.enteralPlan?.tutorInstructions ?? []) : [],
     references: mode === 'technical_report' ? CLINICAL_REFERENCES : [],
-    comorbidityLabels: getClinicalProfileBadges(species, report.patient.comorbidityIds ?? []),
+    comorbidityLabels: clinical.patient.comorbidityLabels ?? getClinicalProfileBadges(species, report.patient.comorbidityIds ?? []),
   }
-}
-
-function formatRefeedingRisk(level?: string): string {
-  if (level === 'high') return 'Alto'
-  if (level === 'moderate') return 'Moderado'
-  if (level === 'low') return 'Baixo'
-  return 'Não informado'
-}
-
-function formatFeedingRoute(route?: string): string {
-  if (route === 'tube') return 'Sonda enteral'
-  if (route === 'oral') return 'Via oral'
-  if (route === 'parenteral') return 'Parenteral'
-  return 'Não informado'
 }
 
 export function collectPdfModelStrings(model: NutritionPdfDocumentModel): string {
