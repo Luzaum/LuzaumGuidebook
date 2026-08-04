@@ -57,7 +57,7 @@ export function validateTransitionDayPercents(rows: TransitionDayInput[]): strin
   for (const row of rows) {
     const sum = row.previousDietPercent + row.newDietPercent
     if (Math.abs(sum - 100) > 0.01) {
-      return `Dia ${row.day}: a soma dos percentuais deve ser 100% (atual: ${sum.toFixed(1)}%).`
+      return 'A soma das dietas neste dia deve ser igual a 100%.'
     }
     if (row.previousDietPercent < 0 || row.newDietPercent < 0) {
       return `Dia ${row.day}: percentuais não podem ser negativos.`
