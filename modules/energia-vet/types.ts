@@ -4,6 +4,20 @@ export type Sex = 'male' | 'female'
 export type BCS = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 export type FeedingRoute = 'oral' | 'tube' | 'parenteral' | 'undefined'
 
+export type MuscleCondition = 'normal' | 'mild_loss' | 'moderate_loss' | 'severe_loss'
+
+export interface PatientDietHistory {
+  documented: boolean
+  reliable?: boolean
+  weightStable?: boolean
+  daysRecorded?: number
+  mainFoodKcalPerDay?: number
+  treatsKcalPerDay?: number
+  chewsKcalPerDay?: number
+  medicationVehicleKcalPerDay?: number
+  supplementsKcalPerDay?: number
+}
+
 export interface Patient {
   id: string
   name: string
@@ -21,6 +35,13 @@ export interface Patient {
   clinicalNotes?: string
   comorbidityIds?: string[]
   registrationMode?: 'registered' | 'quick'
+  muscleCondition?: MuscleCondition
+  activityHoursPerDay?: number
+  activityImpact?: 'low' | 'high'
+  highImpactHoursPerDay?: number
+  previousHealthyWeightKg?: number
+  expectedAdultWeightKg?: number
+  dietHistory?: PatientDietHistory
   createdAt: string
   updatedAt: string
 }
@@ -352,6 +373,40 @@ export interface ReportProvenance {
   migratedAt?: string
 }
 
+export interface TherapeuticProfileDietReview {
+  profileId: string
+  profileName: string
+  ruleSetVersion: string
+  goals: Array<{ label: string; status: string; messagePt: string }>
+  status: 'adequate' | 'caution' | 'insufficient_data'
+}
+
+export interface TherapeuticDietReview {
+  activeProfileIds: string[]
+  ruleSetVersion: string
+  profiles: TherapeuticProfileDietReview[]
+  conflicts: Array<{ profileA: string; profileB: string; messagePt: string }>
+  monitoringRecommendations: string[]
+  overallStatus: 'adequate' | 'caution' | 'insufficient_data' | 'none'
+}
+
+/** Registro clínico imutável para regeneração de PDF sem recálculo. */
+export interface NutritionClinicalRecord {
+  rerKcalDay: number
+  maintenanceRangeMin?: number
+  maintenanceRangeMax?: number
+  prescribedKcalDay: number
+  weightBasisLabel: string
+  energyProfileLabel: string
+  confidenceLabel: string
+  methodSummary: string
+  targetWeightMethod?: string
+  muscleConditionLabel?: string
+  activitySummary?: string
+  observedIntakeKcal?: number
+  roundingErrorPercent?: number
+}
+
 export interface StoredCalculationReport {
   id: string
   patientKey?: string
@@ -369,6 +424,8 @@ export interface StoredCalculationReport {
   }
   /** Presente apenas em relatórios V5; relatórios V4 permanecem sem este campo. */
   provenance?: ReportProvenance
+  therapeuticReview?: TherapeuticDietReview
+  clinicalRecord?: NutritionClinicalRecord
 }
 
 export interface Report {
