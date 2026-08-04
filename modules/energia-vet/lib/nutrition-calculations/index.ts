@@ -18,6 +18,7 @@ export * from './refeedingEngine'
 export * from './enteralEngine'
 export * from './parenteralEngine'
 export * from './waterEngine'
+export * from './transitionEngine'
 export * from './monitoringEngine'
 export { calculatePatientEnergy, validateMinimumAssessment } from './engine'
 

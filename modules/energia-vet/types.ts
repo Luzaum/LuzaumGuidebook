@@ -221,6 +221,8 @@ export interface DietPlan {
   gramsPerDay?: number
   formulationMode?: 'manual' | 'complement'
   programmedFeeding?: ProgrammedFeedingPlan
+  dietTransition?: import('./clinicalSnapshotTypes').DietTransitionConfig
+  hydrationPlan?: import('./clinicalSnapshotTypes').HydrationPlanConfig
 }
 
 export interface DietNutrientBreakdown {
@@ -258,6 +260,7 @@ export interface FoodContribution {
   gramsDryMatter: number
   gramsAsFed: number
   deliveredKcal: number
+  moisturePct?: number
 }
 
 export interface EvaluatedNutrient {
@@ -342,6 +345,21 @@ export interface HospitalNutritionPlan {
   hasVomiting?: boolean
   hasDiarrhea?: boolean
   feedingRoute?: FeedingRoute
+  energyDensityKcalPerMl?: number
+  administrationMode?: 'bolus' | 'intermittent' | 'continuous'
+  infusionHoursPerDay?: number
+  flushVolumeMl?: number
+  additionalFluidMlDay?: number
+  deliveredKcalDay?: number
+  cumulativeDeficitKcal?: number
+  vascularAccess?: 'peripheral' | 'central' | 'not_defined'
+  tolerance?: {
+    vomiting?: boolean
+    regurgitation?: boolean
+    diarrhea?: boolean
+    abdominalDistension?: boolean
+    tubeComplication?: boolean
+  }
   electrolytes?: {
     phosphorus?: number
     potassium?: number
@@ -390,22 +408,17 @@ export interface TherapeuticDietReview {
   overallStatus: 'adequate' | 'caution' | 'insufficient_data' | 'none'
 }
 
-/** Registro clínico imutável para regeneração de PDF sem recálculo. */
-export interface NutritionClinicalRecord {
-  rerKcalDay: number
-  maintenanceRangeMin?: number
-  maintenanceRangeMax?: number
-  prescribedKcalDay: number
-  weightBasisLabel: string
-  energyProfileLabel: string
-  confidenceLabel: string
-  methodSummary: string
-  targetWeightMethod?: string
-  muscleConditionLabel?: string
-  activitySummary?: string
-  observedIntakeKcal?: number
-  roundingErrorPercent?: number
-}
+/** @see clinicalSnapshotTypes.ts */
+export type {
+  NutritionClinicalRecord,
+  DietTransitionConfig,
+  HydrationPlanConfig,
+  NutritionTransitionSnapshot,
+  NutritionHydrationSnapshot,
+  NutritionEnteralSnapshot,
+  NutritionParenteralSnapshot,
+  NutritionRefeedingSnapshot,
+} from './clinicalSnapshotTypes'
 
 export interface StoredCalculationReport {
   id: string

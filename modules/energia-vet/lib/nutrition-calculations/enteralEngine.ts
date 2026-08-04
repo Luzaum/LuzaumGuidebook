@@ -28,7 +28,12 @@ export function calculateContinuousInfusion(
 
 export function calculateReceivedPercent(prescribedKcal: number, receivedKcal: number): number {
   if (prescribedKcal <= 0) return 0
-  return Math.min(100, (receivedKcal / prescribedKcal) * 100)
+  return (receivedKcal / prescribedKcal) * 100
+}
+
+/** Percentual real recebido — pode exceder 100% quando clinicamente relevante. */
+export function calculateDeliveredPercent(prescribedKcal: number, receivedKcal: number): number {
+  return calculateReceivedPercent(prescribedKcal, receivedKcal)
 }
 
 export function calculateCaloricDeficit(prescribedKcal: number, receivedKcal: number): number {
