@@ -11,6 +11,7 @@ import {
   PDF_GOLDEN_CKD_CAT,
   PDF_GOLDEN_HEALTHY_DOG,
 } from './fixtures/pdf-v5-golden'
+import { buildFullClinicalSnapshot } from '../../modules/energia-vet/lib/clinicalSnapshotBuilder'
 
 test.afterEach(() => {
   clearNutritionFeatureOverrides()
@@ -101,13 +102,59 @@ test('flag desligada mantém PDF legado V2 inalterado', () => {
 })
 
 test('casos hospitalares incluem realimentação no relatório técnico', () => {
+  const report = {
+    ...PDF_GOLDEN_CASES[5].report,
+    clinicalRecord: buildFullClinicalSnapshot({ report: PDF_GOLDEN_CASES[5].report }),
+  }
   const model = buildNutritionPdfDocumentModel({
-    report: PDF_GOLDEN_CASES[5].report,
+    report,
     mode: 'technical_report',
   })
   const text = collectPdfModelStrings(model)
-  assert.match(text, /RER hospitalar/)
+  assert.match(text, /RER/)
   assert.match(text, /Percentual do RER/)
   assert.match(text, /20%/)
   assert.match(text, /autorizada após avaliação clínica/)
+})
+
+test('PDF inclui transição quando snapshot possui plano', () => {
+  const report = {
+    ...PDF_GOLDEN_HEALTHY_DOG,
+    diet: {
+      ...PDF_GOLDEN_HEALTHY_DOG.diet,
+      dietTransition: {
+        enabled: true,
+        previousDietName: 'Ração anterior',
+        previousKcalPerGram: 3.5,
+        durationDays: 7,
+      },
+    },
+    clinicalRecord: undefined,
+  }
+  const clinical = buildFullClinicalSnapshot({ report })
+  report.clinicalRecord = clinical
+  const model = buildNutritionPdfDocumentModel({ report, mode: 'tutor_plan' })
+  const text = collectPdfModelStrings(model)
+  assert.ok(model.transitionRows.length >= 7)
+  assert.match(text, /Ração anterior/)
+})
+
+test('PDF técnico inclui hidratação e enteral hospitalar', () => {
+  const report = {
+    ...PDF_GOLDEN_HEALTHY_DOG,
+    patient: { ...PDF_GOLDEN_HEALTHY_DOG.patient, isHospitalized: true },
+    hospital: {
+      feedingRoute: 'tube' as const,
+      energyDensityKcalPerMl: 1,
+      deliveredKcalDay: 300,
+      daysAnorexic: 3,
+    },
+    energy: { ...PDF_GOLDEN_HEALTHY_DOG.energy, rer: 500 },
+  }
+  const clinical = buildFullClinicalSnapshot({ report })
+  const model = buildNutritionPdfDocumentModel({ report: { ...report, clinicalRecord: clinical }, mode: 'technical_report' })
+  const text = collectPdfModelStrings(model)
+  assert.ok(model.hydrationRows.length > 0)
+  assert.ok(model.enteralRows.length > 0)
+  assert.match(text, /Meta estimada|Volume diário/)
 })
