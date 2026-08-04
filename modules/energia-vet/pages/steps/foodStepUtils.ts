@@ -2,6 +2,7 @@ import {
   filterFoods,
   getFoodById,
   getFoodCategories,
+  getFoodDisplayName,
   GENUTRI_NUTRIENT_CATALOG,
 } from '../../lib/genutriData'
 import type { DietType, FoodItem } from '../../types'
@@ -43,4 +44,4 @@ export function getDetailNutrientsForBasis(basis: Record<string, number | null>)
   })
 }
 
-export { filterFoods, getFoodById, getFoodCategories }
+export { filterFoods, getFoodById, getFoodCategories, getFoodDisplayName }

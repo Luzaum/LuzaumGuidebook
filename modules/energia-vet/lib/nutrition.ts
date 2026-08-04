@@ -16,6 +16,9 @@ export function calculateRER(weightKg: number, species: Species): number {
   return rule.constant * Math.pow(weightKg, rule.exponent)
 }
 
+/** RER dos livros (70 × kg^0,75) — fluxo clínico NutriçãoVET e realimentação. */
+export { calculateBookRER } from './bookEnergy'
+
 export function getRERFormula(weightKg: number, species: Species): string {
   const rule = getEnergyRule(species)
   const pow = Math.pow(weightKg, rule.exponent).toFixed(2)

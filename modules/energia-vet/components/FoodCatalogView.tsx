@@ -1,24 +1,13 @@
 import { useMemo, useState } from 'react'
-import { AlertTriangle, ChevronRight, Database, Search, SlidersHorizontal, X } from 'lucide-react'
+import { AlertTriangle, ChevronRight, Database, Search } from 'lucide-react'
 import { Badge } from './ui/badge'
-import { Button } from './ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from './ui/select'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
-import { filterFoods, getFoodById, getFoodCategories, getFoodTypes, getNutrientDefinition } from '../lib/genutriData'
+import { filterFoods, getFoodById, getFoodDisplayName, getNutrientDefinition } from '../lib/genutriData'
 import { getCatalogDatasetStats } from '../lib/catalog'
-import { isNutritionFeatureEnabled } from '../lib/featureFlags'
 import { cn } from '../lib/utils'
-import type { FoodItem, Species } from '../types'
-
-const CATALOG_SCOPE_FILTERS = [
-  { id: 'all', label: 'Todos' },
-  { id: 'commercial', label: 'Comerciais' },
-  { id: 'natural', label: 'Naturais' },
-  { id: 'suplemento', label: 'Suplementos' },
-  { id: 'enteral', label: 'Enterais' },
-] as const
+import type { FoodItem } from '../types'
 
 function getSpeciesLabel(food: FoodItem) {
   if (food.speciesScope === 'dog') return 'Cão'
@@ -65,45 +54,19 @@ function NutrientPanel({ title, subtitle, values }: { title: string; subtitle: s
 export function FoodCatalogView({
   title,
   description,
-  initialFoodType,
-  species,
 }: {
   title: string
   description: string
-  initialFoodType?: string
-  species?: Species
 }) {
   const [query, setQuery] = useState('')
-  const [category, setCategory] = useState('all')
-  const [foodType, setFoodType] = useState(initialFoodType ?? 'all')
-  const [scopeFilter, setScopeFilter] = useState('all')
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null)
 
   const datasetStats = useMemo(() => getCatalogDatasetStats(), [])
-  const catalogV2Ui = isNutritionFeatureEnabled('nutrition_catalog_v2')
-  const categories = useMemo(() => getFoodCategories(), [])
-  const foodTypes = useMemo(() => getFoodTypes(), [])
-  const foods = useMemo(() => {
-    const scopedType = scopeFilter === 'all' ? (foodType === 'all' ? undefined : foodType) : scopeFilter
-    return filterFoods({
-      species,
-      query,
-      category: category === 'all' ? undefined : category,
-      foodType: scopedType === 'all' ? undefined : scopedType,
-    })
-  }, [category, foodType, query, scopeFilter, species])
+  const foods = useMemo(() => filterFoods({ query: query.trim() || undefined }), [query])
   const selectedFood = useMemo(() => getFoodById(selectedFoodId ?? foods[0]?.id ?? ''), [foods, selectedFoodId])
   const visibleMissingFields = selectedFood?.missingNutrients
     .map((key) => getNutrientDefinition(key)?.label ?? key)
     .sort((left, right) => left.localeCompare(right, 'pt-BR'))
-  const filtersActive = Boolean(query || category !== 'all' || foodType !== 'all' || scopeFilter !== 'all')
-
-  const clearFilters = () => {
-    setQuery('')
-    setCategory('all')
-    setFoodType(initialFoodType ?? 'all')
-    setScopeFilter('all')
-  }
 
   return (
     <div className="nutrition-page w-full space-y-6 pb-16">
@@ -131,42 +94,21 @@ export function FoodCatalogView({
         </CardHeader>
 
         <CardContent className="space-y-5 p-5 lg:p-6">
-          <div className="rounded-2xl bg-muted/55 p-3">
-            <div className="grid gap-3 lg:grid-cols-[minmax(260px,1fr)_220px_190px_auto]">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
-                <Input aria-label="Buscar alimentos" placeholder="Nome, apresentação ou categoria" className="pl-10" value={query} onChange={(event) => setQuery(event.target.value)} />
-              </div>
-              <Select value={category} onValueChange={setCategory}>
-                <SelectTrigger><SelectValue>{category === 'all' ? 'Todas as categorias' : category}</SelectValue></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todas as categorias</SelectItem>
-                  {categories.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}
-                </SelectContent>
-              </Select>
-              <Select value={foodType} onValueChange={setFoodType}>
-                <SelectTrigger><SelectValue>{foodType === 'all' ? 'Todos os tipos' : foodType}</SelectValue></SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">Todos os tipos</SelectItem>
-                  {foodTypes.map((item) => <SelectItem key={item} value={item}>{item}</SelectItem>)}
-                </SelectContent>
-              </Select>
-              <Button variant="ghost" onClick={clearFilters} disabled={!filtersActive} className="gap-2"><X className="h-4 w-4" /> Limpar</Button>
-            </div>
-
-            {catalogV2Ui && (
-              <div className="mt-3 flex flex-wrap gap-2" aria-label="Escopo do catálogo">
-                {CATALOG_SCOPE_FILTERS.map((item) => (
-                  <Button key={item.id} type="button" variant={scopeFilter === item.id ? 'default' : 'outline'} size="sm" onClick={() => setScopeFilter(item.id)}>{item.label}</Button>
-                ))}
-              </div>
-            )}
+          <div className="relative max-w-xl">
+            <Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
+            <Input
+              aria-label="Buscar alimentos"
+              placeholder="Buscar em português ou inglês (ex.: renal royal, frango farmina, recovery)"
+              className="pl-10"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
           </div>
 
-          <div className="flex items-center justify-between gap-3">
-            <p className="text-sm text-muted-foreground"><strong className="font-semibold text-foreground">{foods.length}</strong> resultados</p>
-            <span className="flex items-center gap-1.5 text-xs text-muted-foreground"><SlidersHorizontal className="h-3.5 w-3.5" /> Clique em uma linha para abrir a ficha</span>
-          </div>
+          <p className="text-sm text-muted-foreground">
+            <strong className="font-semibold text-foreground">{foods.length}</strong>
+            {query.trim() ? ' resultados' : ' alimentos cadastrados'} · clique em uma linha para abrir a ficha
+          </p>
 
           <div className="grid gap-5 2xl:grid-cols-[minmax(0,1.5fr)_minmax(360px,0.5fr)]">
             <div className="overflow-hidden rounded-2xl border border-border bg-card">
@@ -192,7 +134,7 @@ export function FoodCatalogView({
                         key={`${food.id}-${foodIndex}`}
                         role="button"
                         tabIndex={0}
-                        aria-label={`Abrir ficha de ${food.name}`}
+                        aria-label={`Abrir ficha de ${getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}`}
                         className={cn('cursor-pointer outline-none focus-visible:bg-primary/[0.06]', active && 'bg-primary/[0.06]')}
                         onClick={() => setSelectedFoodId(food.id)}
                         onKeyDown={(event) => {
@@ -203,7 +145,7 @@ export function FoodCatalogView({
                         }}
                       >
                         <TableCell className="px-4 py-3">
-                          <p className="max-w-[260px] truncate font-semibold text-foreground">{food.name}</p>
+                          <p className="max-w-[260px] truncate font-semibold text-foreground">{getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}</p>
                           <p className="mt-0.5 max-w-[260px] truncate text-xs text-muted-foreground">{food.presentation || food.foodType}</p>
                         </TableCell>
                         <TableCell className="max-w-[160px] truncate text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'}</TableCell>
@@ -226,7 +168,7 @@ export function FoodCatalogView({
                 <Card className="gap-0 py-0">
                   <CardHeader className="border-b border-border p-5">
                     <p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Ficha nutricional</p>
-                    <CardTitle className="mt-1 text-xl">{selectedFood.name}</CardTitle>
+                    <CardTitle className="mt-1 text-xl">{getFoodDisplayName(selectedFood.name, { id: selectedFood.id, foodType: selectedFood.foodType })}</CardTitle>
                     <CardDescription>{selectedFood.presentation || 'Apresentação não informada'}</CardDescription>
                     <div className="mt-3 flex flex-wrap gap-2">
                       <Badge variant="outline">{selectedFood.categoryNormalized ?? 'Sem categoria'}</Badge>

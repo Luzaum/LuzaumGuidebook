@@ -1,8 +1,19 @@
 import datasetJson from '../data/genutri-dataset.json'
 import {
+  buildFoodSearchHaystackForFood,
+  foodSearchTokensMatch,
+  getFoodDisplayName,
+} from './foodSearchLexicon'
+import { humanOmega3ProductsSeed } from '../data/humanOmega3/products.seed'
+import {
   FEDIAF_REQUIREMENT_PROFILES,
-  getDefaultRequirementProfileIdForState,
+  getDefaultRequirementProfileIdForState as getFediafDefaultRequirementProfileIdForState,
 } from './fediaf'
+import { resolveRequirementProfileIdForEnergyState } from './profileBridge'
+import { canCalculateDose } from './humanOmega3/regulatoryValidation'
+import { humanOmega3ToFoodItem } from './humanOmega3/foodBridge'
+import { isNutritionFeatureEnabled } from './featureFlags'
+import { isFoodCatalogVisible } from './catalogVisibility'
 import type {
   EnergyRule,
   FoodItem,
@@ -18,6 +29,19 @@ const dataset = datasetJson as GenutriDataset
 
 export const GENUTRI_DATASET = dataset
 export const GENUTRI_FOODS = dataset.foods
+
+function getHumanOmega3FoodsMerged(): FoodItem[] {
+  if (!isNutritionFeatureEnabled('nutrition_human_omega3')) return []
+  return humanOmega3ProductsSeed
+    .filter((product) => canCalculateDose(product))
+    .map(humanOmega3ToFoodItem)
+}
+
+/** Alimentos visíveis — GENUTRI legado + ômega-3 humanos (quando flag ativa). */
+export function getAllFoods(): FoodItem[] {
+  return [...GENUTRI_FOODS, ...getHumanOmega3FoodsMerged()]
+}
+
 const NON_DUPLICATE_REQUIREMENTS = dataset.requirements.filter((profile) => profile.source !== 'FEDIAF')
 export const GENUTRI_REQUIREMENTS = [...FEDIAF_REQUIREMENT_PROFILES, ...NON_DUPLICATE_REQUIREMENTS]
 export const GENUTRI_ENERGY_RULES = dataset.energyRules
@@ -33,7 +57,7 @@ export function getEnergyRule(species: Species): EnergyRule {
 }
 
 export function getFoodById(foodId: string): FoodItem | undefined {
-  return GENUTRI_FOODS.find((food) => food.id === foodId)
+  return getAllFoods().find((food) => food.id === foodId || food.slug === foodId)
 }
 
 export function getRequirementById(requirementId?: string): RequirementProfile | undefined {
@@ -42,7 +66,9 @@ export function getRequirementById(requirementId?: string): RequirementProfile |
 }
 
 export function getDefaultRequirement(species: Species, stateId?: string, isNeutered?: boolean): RequirementProfile | undefined {
-  const preferredId = getDefaultRequirementProfileIdForState(species, stateId, isNeutered)
+  const preferredId =
+    resolveRequirementProfileIdForEnergyState(species, stateId, isNeutered) ??
+    getFediafDefaultRequirementProfileIdForState(species, stateId, isNeutered)
   return (
     GENUTRI_REQUIREMENTS.find((profile) => profile.id === preferredId) ??
     GENUTRI_REQUIREMENTS.find((profile) => profile.source === 'FEDIAF 2025' && profile.species === species) ??
@@ -55,28 +81,30 @@ export function foodMatchesSpecies(scope: SpeciesScope, species: Species): boole
   return scope === 'both' || scope === 'unknown' || scope === species
 }
 
-// Normaliza string: minúsculas + remove acentos + colapsa espaços
-function normalizeSearch(text: string): string {
-  return text
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
+export { getFoodDisplayName }
 
 export function filterFoods(options: {
   species?: Species
   query?: string
   category?: string
   foodType?: string
+  /** Quando true (padrão), oculta itens marcados como catalog_hidden ou bloqueados. */
+  catalogOnly?: boolean
 }): FoodItem[] {
-  // Tokens: cada palavra da query deve aparecer em algum lugar no haystack
-  const tokens = options.query ? normalizeSearch(options.query).split(' ').filter(Boolean) : []
+  // Tokens: cada palavra da query deve aparecer em algum lugar no haystack (PT/EN)
+  const query = options.query?.trim()
+  const catalogOnly = options.catalogOnly !== false
 
-  return GENUTRI_FOODS.filter((food) => {
-    if (options.species && !foodMatchesSpecies(food.speciesScope, options.species)) {
+  return getAllFoods().filter((food) => {
+    if (catalogOnly && !isFoodCatalogVisible(food)) {
       return false
+    }
+    if (options.species) {
+      const scope = food.speciesScope
+      // Ingredientes naturais/suplementos servem ambas espécies; rações comerciais respeitam espécie.
+      if (food.foodType === 'commercial' && !foodMatchesSpecies(scope, options.species)) {
+        return false
+      }
     }
     if (options.category && food.categoryNormalized !== options.category) {
       return false
@@ -84,29 +112,26 @@ export function filterFoods(options: {
     if (options.foodType && food.foodType !== options.foodType) {
       return false
     }
-    if (!tokens.length) {
+    if (!query) {
       return true
     }
 
-    const haystack = normalizeSearch(
-      [food.name, food.category, food.categoryNormalized, food.presentation, food.foodType]
-        .filter(Boolean)
-        .join(' '),
-    )
+    const haystack = buildFoodSearchHaystackForFood(food)
 
-    // Todos os tokens devem estar presentes (AND) — mas cada um pode estar em qualquer posição
-    return tokens.every((token) => haystack.includes(token))
+    return foodSearchTokensMatch(query, haystack)
   })
 }
 
 export function getFoodCategories(): string[] {
+  const source = isNutritionFeatureEnabled('nutrition_human_omega3') ? getAllFoods() : GENUTRI_FOODS
   return Array.from(
-    new Set(GENUTRI_FOODS.map((food) => food.categoryNormalized).filter((value): value is string => Boolean(value))),
+    new Set(source.map((food) => food.categoryNormalized).filter((value): value is string => Boolean(value))),
   ).sort((left, right) => left.localeCompare(right, 'pt-BR'))
 }
 
 export function getFoodTypes(): string[] {
-  return Array.from(new Set(GENUTRI_FOODS.map((food) => food.foodType))).sort((left, right) =>
+  const source = isNutritionFeatureEnabled('nutrition_human_omega3') ? getAllFoods() : GENUTRI_FOODS
+  return Array.from(new Set(source.map((food) => food.foodType))).sort((left, right) =>
     left.localeCompare(right, 'pt-BR'),
   )
 }
@@ -120,7 +145,7 @@ export function getRequirementOptions(species?: Species): RequirementProfile[] {
 
 export function getDatasetStats() {
   return {
-    foods: GENUTRI_FOODS.length,
+    foods: getAllFoods().length,
     requirements: GENUTRI_REQUIREMENTS.length,
     energyRules: GENUTRI_ENERGY_RULES.length,
     categories: getFoodCategories().length,

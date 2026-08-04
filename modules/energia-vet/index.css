@@ -51,6 +51,11 @@
   box-shadow: 1px 0 0 rgba(15, 23, 42, 0.025);
 }
 
+.energia-vet-sidebar nav {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.25) transparent;
+}
+
 .energia-vet-mobile-nav {
   box-shadow: 0 -8px 30px rgba(15, 23, 42, 0.08);
 }

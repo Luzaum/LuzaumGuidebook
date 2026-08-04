@@ -1,7 +1,7 @@
 import type { Species } from '../../types'
 
 /** Versão do conjunto de regras clínicas V2. */
-export const CLINICAL_RULE_SET_V2 = 'nutrition-clinical-v2.0.0'
+export const CLINICAL_RULE_SET_V2 = 'nutrition-clinical-v2.1.0'
 
 export type TherapeuticProfileId =
   | 'renal_ckd_dog'
@@ -27,6 +27,7 @@ export type TherapeuticProfileId =
   | 'critical_care_recovery'
   | 'cardiac_sodium_modified'
   | 'pancreatitis_dog'
+  | 'pancreatitis_cat'
   | 'hyperlipidemia_dog'
   | 'growth_dog'
   | 'growth_cat'
@@ -71,10 +72,10 @@ export const THERAPEUTIC_PROFILES: TherapeuticProfile[] = [
     clinicalContext: 'DRC em cães — restrição de fósforo, ajuste proteico conforme estágio, sódio e densidade energética.',
     inclusionCriteria: 'DRC confirmada; considerar estágio IRIS, proteinúria, BCS e massa muscular.',
     nutritionalGoals: [
-      { nutrientKey: 'phosphorusPct', labelPt: 'Fósforo', operator: 'lte', max: 0.45, unit: '% MS', basis: 'dry_matter_pct', critical: true },
-      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína bruta', operator: 'between', min: 12, max: 18, unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'phosphorusPct', labelPt: 'Fósforo', operator: 'lte', max: 0.5, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína bruta', operator: 'between', min: 14, max: 20, unit: '% MS', basis: 'dry_matter_pct', critical: false },
       { nutrientKey: 'sodiumPct', labelPt: 'Sódio', operator: 'lte', max: 0.3, unit: '% MS', basis: 'dry_matter_pct', critical: false },
-      { nutrientKey: 'epaDhaPct', labelPt: 'EPA+DHA', operator: 'present', unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'omega3Pct', labelPt: 'Ômega-3', operator: 'between', min: 0.4, max: 2.5, unit: '% MS', basis: 'dry_matter_pct', critical: false },
     ],
     desiredCharacteristics: ['Densidade energética adequada', 'Palatabilidade', 'Ômega-3 quando disponível'],
     hardContraindications: ['Fósforo elevado sem controle em estágios avançados'],
@@ -92,9 +93,9 @@ export const THERAPEUTIC_PROFILES: TherapeuticProfile[] = [
     clinicalContext: 'DRC felina — fósforo, potássio, proteína ajustada ao estágio; evitar restricao proteica indiscriminada.',
     inclusionCriteria: 'DRC felina; avaliar hipocalemia, proteinúria e condição muscular.',
     nutritionalGoals: [
-      { nutrientKey: 'phosphorusPct', labelPt: 'Fósforo', operator: 'lte', max: 0.5, unit: '% MS', basis: 'dry_matter_pct', critical: true },
-      { nutrientKey: 'potassiumPct', labelPt: 'Potássio', operator: 'gte', min: 0.6, unit: '% MS', basis: 'dry_matter_pct', critical: false },
-      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína bruta', operator: 'gte', min: 28, unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'phosphorusPct', labelPt: 'Fósforo', operator: 'between', min: 0.3, max: 0.6, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'potassiumPct', labelPt: 'Potássio', operator: 'gte', min: 0.7, unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína bruta', operator: 'between', min: 28, max: 35, unit: '% MS', basis: 'dry_matter_pct', critical: false },
       { nutrientKey: 'taurinePct', labelPt: 'Taurina', operator: 'present', unit: '% MS', basis: 'dry_matter_pct', critical: true },
     ],
     desiredCharacteristics: ['Alta palatabilidade', 'Forma úmida quando possível', 'Suporte à massa muscular'],
@@ -466,7 +467,9 @@ export const THERAPEUTIC_PROFILES: TherapeuticProfile[] = [
     clinicalContext: 'Modificação de sódio em insuficiência cardíaca.',
     inclusionCriteria: 'Cardiopatia com indicação de restrição de sódio.',
     nutritionalGoals: [
-      { nutrientKey: 'sodiumPct', labelPt: 'Sódio', operator: 'lte', max: 0.3, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'sodiumPct', labelPt: 'Sódio', operator: 'between', min: 0.15, max: 0.25, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'phosphorusPct', labelPt: 'Fósforo', operator: 'between', min: 0.2, max: 0.7, unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'taurinePct', labelPt: 'Taurina', operator: 'gte', min: 0.1, unit: '% MS', basis: 'dry_matter_pct', critical: false },
     ],
     desiredCharacteristics: ['Palatabilidade', 'Densidade energética'],
     hardContraindications: ['Sódio elevado em restrição marcada'],
@@ -484,16 +487,37 @@ export const THERAPEUTIC_PROFILES: TherapeuticProfile[] = [
     clinicalContext: 'Baixo teor de gordura na pancreatite canina.',
     inclusionCriteria: 'Pancreatite aguda ou crônica.',
     nutritionalGoals: [
-      { nutrientKey: 'etherExtractPct', labelPt: 'Gordura', operator: 'lte', max: 10, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'etherExtractPct', labelPt: 'Gordura', operator: 'lte', max: 15, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína', operator: 'between', min: 15, max: 30, unit: '% MS', basis: 'dry_matter_pct', critical: false },
     ],
-    desiredCharacteristics: ['Gordura baixa', 'Digestibilidade alta'],
+    desiredCharacteristics: ['Gordura ≤15% MS (≤10% se obeso)', 'Digestibilidade alta'],
     hardContraindications: ['Gordura elevada na fase aguda'],
     relativeCautions: [],
     monitoring: 'Lipase, TG, vômito, apetite.',
     followUpInterval: '1–2 semanas',
     evidenceLevel: 'consensus',
     ruleSetVersion: CLINICAL_RULE_SET_V2,
-    evidenceSourceIds: ['canine-hepatobiliary-2024'],
+    evidenceSourceIds: ['applied-clinical-nutrition'],
+  },
+  {
+    id: 'pancreatitis_cat',
+    namePt: 'Pancreatite — gato',
+    species: 'cat',
+    clinicalContext: 'Gordura moderada a baixa na pancreatite felina; restrição menos agressiva que em cães (SACN / cap. 12).',
+    inclusionCriteria: 'Pancreatite aguda ou crônica felina.',
+    nutritionalGoals: [
+      { nutrientKey: 'etherExtractPct', labelPt: 'Gordura', operator: 'lte', max: 25, unit: '% MS', basis: 'dry_matter_pct', critical: true },
+      { nutrientKey: 'crudeProteinPct', labelPt: 'Proteína', operator: 'between', min: 30, max: 40, unit: '% MS', basis: 'dry_matter_pct', critical: false },
+      { nutrientKey: 'taurinePct', labelPt: 'Taurina', operator: 'present', unit: '% MS', basis: 'dry_matter_pct', critical: true },
+    ],
+    desiredCharacteristics: ['Gordura ≤25% MS (≤15% se obeso)', 'Alta digestibilidade', 'Forma úmida preferível'],
+    hardContraindications: ['Gordura elevada na fase aguda'],
+    relativeCautions: ['Monitorar apetite e vômito'],
+    monitoring: 'Lipase, TG, vômito, apetite.',
+    followUpInterval: '1–2 semanas',
+    evidenceLevel: 'consensus',
+    ruleSetVersion: CLINICAL_RULE_SET_V2,
+    evidenceSourceIds: ['applied-clinical-nutrition'],
   },
   {
     id: 'hyperlipidemia_dog',

@@ -21,7 +21,7 @@ import { getDefaultRequirement } from '../../lib/genutriData'
 import {
   computeEnergyWithEngineV3,
   isCalculationEngineV3Enabled,
-  mapStorePatientToAssessment,
+  mapPatientFromStore,
 } from '../../lib/nutritionCalculationBridge'
 import { cn } from '../../lib/utils'
 
@@ -51,18 +51,8 @@ export default function EnergyStep() {
 
   const v3Enabled = isCalculationEngineV3Enabled()
   const v3Assessment = useMemo(
-    () =>
-      mapStorePatientToAssessment({
-        species,
-        weightKg,
-        ageMonths: patient.ageMonths ?? 0,
-        sex: patient.sex ?? 'male',
-        isNeutered: !!patient.isNeutered,
-        bcs: (patient.bcs ?? 5) as import('../../types').BCS,
-        isIndoor: patient.isIndoor,
-        nutritionalGoal: 'maintenance',
-      }),
-    [patient.ageMonths, patient.bcs, patient.isIndoor, patient.isNeutered, patient.sex, species, weightKg],
+    () => mapPatientFromStore(patient, energy, 'maintenance'),
+    [energy, patient],
   )
   const v3Energy = useMemo(
     () => (v3Enabled && weightKg > 0 ? computeEnergyWithEngineV3(v3Assessment) : null),

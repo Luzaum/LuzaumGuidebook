@@ -4,6 +4,7 @@ export {
 } from './clinicalRuleEngine'
 export {
   assessFoodAgainstProfile,
+  evaluateDeliveredNutrientGoal,
   evaluateNutrientGoal,
   inferManufacturerClaims,
   snapshotCriticalNutrients,

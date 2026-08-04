@@ -142,6 +142,7 @@ export function resolveWeightManagementEnergy(
     bcs: assessment.bodyConditionScore9,
     goal: assessment.nutritionalGoal === 'weight_gain' ? 'weight_gain' : 'weight_loss',
     clinicianTargetWeightKg: assessment.clinicianTargetWeightKg,
+    previousHealthyWeightKg: assessment.previousWeights?.[0]?.weightKg,
   })
 
   if (assessment.nutritionalGoal === 'weight_gain') {

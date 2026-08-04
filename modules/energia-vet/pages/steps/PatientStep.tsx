@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Check, ChevronDown, ChevronRight, HeartPulse, Mars, Search, UserRoundPlus, Venus, X, Zap } from 'lucide-react'
+import { ChevronRight, Mars, UserRoundPlus, Venus, Zap } from 'lucide-react'
 import { toast } from 'sonner'
+import { ComorbidityPicker } from '../../components/ComorbidityPicker'
+import { SpeciesPickerCard } from '../../components/SpeciesSilhouette'
 import { cn } from '../../lib/utils'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
@@ -12,10 +14,14 @@ import { useCalculationStore } from '../../store/calculationStore'
 import { getDefaultStateId } from '../../lib/nutrition'
 import { getClinicalProfileIdsFromSelections, getClinicalProfileOptions, type ClinicalProfileOption } from '../../lib/clinicalProfiles'
 import { getDefaultRequirement } from '../../lib/genutriData'
+import {
+  isCalculationEngineV3Enabled,
+  validatePatientStepForV3,
+} from '../../lib/nutritionCalculationBridge'
 import { mapComorbiditySelectionsToTherapeuticProfiles } from '../../lib/clinical/comorbidityResolver'
 import { getTherapeuticProfileById } from '../../lib/clinical/therapeuticProfiles'
 import { getEvidenceSourceById } from '../../lib/clinical/evidenceResolver'
-import { Species } from '../../types'
+import { Species, MuscleCondition } from '../../types'
 import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../lib/breedOptions'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -30,22 +36,20 @@ const SEX_OPTIONS = [
   { value: 'female' as const, label: 'Fêmea', icon: Venus },
 ]
 
-const COMORBIDITY_CATEGORIES = [
-  { id: 'all', label: 'Todas' },
-  { id: 'renal', label: 'Renal e urinário' },
-  { id: 'digestive', label: 'Digestivo' },
-  { id: 'metabolic', label: 'Metabólico' },
-  { id: 'allergy', label: 'Alergias' },
-  { id: 'systemic', label: 'Sistêmico' },
-] as const
+const EMC_OPTIONS: Array<{ value: MuscleCondition; label: string; detail: string }> = [
+  { value: 'normal', label: 'Normal', detail: 'Massa muscular preservada.' },
+  { value: 'mild_loss', label: 'Perda leve', detail: 'Leve redução muscular.' },
+  { value: 'moderate_loss', label: 'Perda moderada', detail: 'Atrofia visível em grupos principais.' },
+  { value: 'severe_loss', label: 'Perda acentuada', detail: 'Atrofia marcada — priorizar suporte proteico.' },
+]
 
-type ComorbidityCategoryId = (typeof COMORBIDITY_CATEGORIES)[number]['id']
+type ComorbidityCategory = 'renal' | 'digestive' | 'metabolic' | 'allergy' | 'systemic'
 
 function normalizeSearchText(value: string) {
   return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
 }
 
-function getComorbidityCategory(option: ClinicalProfileOption): Exclude<ComorbidityCategoryId, 'all'> {
+function getComorbidityCategory(option: ClinicalProfileOption): ComorbidityCategory {
   const text = normalizeSearchText(`${option.label} ${option.description}`)
   if (/renal|urolit|estruv|oxalato|urin/.test(text)) return 'renal'
   if (/intestinal|pancre|ileo|linfang|hepat|digest/.test(text)) return 'digestive'
@@ -69,7 +73,14 @@ function buildComorbidityGuidance(species: Species, option: ClinicalProfileOptio
   }
 
   const priorities = Array.from(new Set(profiles.flatMap((profile) => profile.desiredCharacteristics))).slice(0, 3)
-  const sources = Array.from(new Set(profiles.flatMap((profile) => profile.evidenceSourceIds).map((id) => getEvidenceSourceById(id)?.title).filter((title): title is string => Boolean(title))))
+  const sources = Array.from(
+    new Set(
+      profiles
+        .flatMap((profile) => profile.evidenceSourceIds)
+        .map((id) => getEvidenceSourceById(id)?.title)
+        .filter((title): title is string => Boolean(title)),
+    ),
+  )
   return {
     summary: profiles.map((profile) => profile.clinicalContext).filter(Boolean).join(' '),
     priorities,
@@ -82,8 +93,25 @@ export default function PatientStep() {
   const { patient, energy, diet, setPatient, setEnergy, setDiet } = useCalculationStore()
   const species = patient.species ?? 'dog'
   const registrationMode = patient.registrationMode ?? 'registered'
-  const [comorbidityQuery, setComorbidityQuery] = useState('')
-  const [comorbidityCategory, setComorbidityCategory] = useState<ComorbidityCategoryId>('all')
+  const v3Enabled = isCalculationEngineV3Enabled()
+  const isPuppy = (patient.ageMonths ?? 0) < 12
+  const dietHistory = patient.dietHistory
+  const documentedIntakeKcal =
+    (dietHistory?.mainFoodKcalPerDay ?? 0) +
+    (dietHistory?.treatsKcalPerDay ?? 0) +
+    (dietHistory?.chewsKcalPerDay ?? 0) +
+    (dietHistory?.medicationVehicleKcalPerDay ?? 0) +
+    (dietHistory?.supplementsKcalPerDay ?? 0)
+
+  const updateDietHistory = (patch: Partial<NonNullable<typeof patient.dietHistory>>) => {
+    setPatient({
+      dietHistory: {
+        documented: dietHistory?.documented ?? false,
+        ...dietHistory,
+        ...patch,
+      },
+    })
+  }
 
   const breeds = useMemo(
     () => [...(species === 'cat' ? CAT_BREEDS_BR : DOG_BREEDS_BR)].sort((left, right) => left.localeCompare(right, 'pt-BR')),
@@ -91,23 +119,6 @@ export default function PatientStep() {
   )
   const availableComorbidities = useMemo(() => getClinicalProfileOptions(species), [species])
   const selectedComorbidityIds = patient.comorbidityIds ?? []
-  const filteredComorbidities = useMemo(() => {
-    const query = normalizeSearchText(comorbidityQuery.trim())
-    return availableComorbidities.filter((option) => {
-      const matchesCategory = comorbidityCategory === 'all' || getComorbidityCategory(option) === comorbidityCategory
-      const matchesQuery = !query || normalizeSearchText([option.label, option.description, option.tags.join(' ')].join(' ')).includes(query)
-      return matchesCategory && matchesQuery
-    })
-  }, [availableComorbidities, comorbidityCategory, comorbidityQuery])
-
-  const categoryCounts = useMemo(() => {
-    const counts = new Map<ComorbidityCategoryId, number>([['all', availableComorbidities.length]])
-    for (const option of availableComorbidities) {
-      const category = getComorbidityCategory(option)
-      counts.set(category, (counts.get(category) ?? 0) + 1)
-    }
-    return counts
-  }, [availableComorbidities])
 
   useEffect(() => {
     const validSelections = selectedComorbidityIds.filter((selection) =>
@@ -140,8 +151,6 @@ export default function PatientStep() {
     setPatient({ species: nextSpecies, breed: '', isIndoor: false, comorbidityIds: [] })
     setEnergy({ stateId: nextStateId, expectedAdultWeightKg: undefined, litterSize: undefined, lactationWeek: undefined })
     setDiet({ requirementProfileId: nextRequirement?.id, additionalRequirementProfileIds: [], entries: [] })
-    setComorbidityCategory('all')
-    setComorbidityQuery('')
   }
 
   const handleNeuterChange = (checked: boolean) => {
@@ -160,13 +169,25 @@ export default function PatientStep() {
   }
 
   const handleNext = () => {
-    if (!patient.currentWeight || patient.currentWeight <= 0) {
+    if (v3Enabled) {
+      const issues = validatePatientStepForV3(patient)
+      if (issues.length > 0) {
+        toast.error(issues[0].message)
+        return
+      }
+    } else if (!patient.currentWeight || patient.currentWeight <= 0) {
       toast.error('Informe o peso atual do paciente para continuar.')
       return
     }
+
     const nextStateId = energy.stateId ?? getDefaultStateId(species, !!patient.isNeutered)
     const nextRequirement = getDefaultRequirement(species, nextStateId, !!patient.isNeutered)
-    setEnergy({ stateId: nextStateId })
+    setEnergy({
+      stateId: nextStateId,
+      expectedAdultWeightKg: patient.expectedAdultWeightKg,
+      activityHoursPerDay: patient.activityHoursPerDay,
+      activityImpact: patient.activityImpact,
+    })
     setDiet({
       requirementProfileId: diet.requirementProfileId ?? nextRequirement?.id,
       additionalRequirementProfileIds: getClinicalProfileIdsFromSelections(species, selectedComorbidityIds),
@@ -177,8 +198,10 @@ export default function PatientStep() {
   return (
     <Card className="nutrition-step-card w-full">
       <CardHeader className="border-b border-border/70 pb-6">
-        <CardTitle className="text-2xl">Identificação do paciente</CardTitle>
-        <CardDescription>Registre os dados essenciais que serão usados no cálculo e na avaliação nutricional.</CardDescription>
+        <div>
+          <CardTitle className="text-2xl">Identificação do paciente</CardTitle>
+          <CardDescription>Registre os dados essenciais que serão usados no cálculo e na avaliação nutricional.</CardDescription>
+        </div>
       </CardHeader>
 
       <CardContent className="space-y-8 pt-6">
@@ -192,9 +215,24 @@ export default function PatientStep() {
               const Icon = option.icon
               const active = registrationMode === option.value
               return (
-                <button key={option.value} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ registrationMode: option.value })} className={cn('flex min-h-20 cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.07]' : 'border-border bg-card hover:border-primary/25 hover:bg-muted/55')}>
-                  <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-xl', active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground')}><Icon className="h-5 w-5" /></span>
-                  <span className="min-w-0"><span className="block text-sm font-semibold text-foreground">{option.title}</span><span className="mt-1 block text-xs leading-5 text-muted-foreground">{option.description}</span></span>
+                <button
+                  key={option.value}
+                  type="button"
+                  role="radio"
+                  aria-checked={active}
+                  onClick={() => setPatient({ registrationMode: option.value })}
+                  className={cn(
+                    'flex min-h-20 cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                    active ? 'border-primary/50 bg-primary/[0.07]' : 'border-border bg-card hover:border-primary/25 hover:bg-muted/55',
+                  )}
+                >
+                  <span className={cn('flex h-11 w-11 shrink-0 items-center justify-center rounded-xl', active ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground')}>
+                    <Icon className="h-5 w-5" />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="block text-sm font-semibold text-foreground">{option.title}</span>
+                    <span className="mt-1 block text-xs leading-5 text-muted-foreground">{option.description}</span>
+                  </span>
                 </button>
               )
             })}
@@ -204,30 +242,19 @@ export default function PatientStep() {
         <section>
           <Label>Espécie</Label>
           <div className="mt-3 grid grid-cols-2 gap-3" role="radiogroup" aria-label="Espécie do paciente">
-            {SPECIES_OPTIONS.map((option) => {
-              const active = species === option.value
-              return (
-                <button
-                  key={option.value}
-                  id={`species-card-${option.value}`}
-                  type="button"
-                  role="radio"
-                  aria-checked={active}
-                  onClick={() => handleSpeciesChange(option.value)}
-                  className={cn(
-                    'relative flex min-h-16 cursor-pointer items-center justify-center rounded-2xl border px-4 text-center text-base font-semibold outline-none transition-colors duration-200 focus-visible:ring-3 focus-visible:ring-ring/25',
-                    active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-foreground hover:border-primary/25 hover:bg-muted/55',
-                  )}
-                >
-                  {option.title}
-                  {active && <span className="absolute right-3 top-3 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-primary-foreground"><Check className="h-3 w-3" /></span>}
-                </button>
-              )
-            })}
+            {SPECIES_OPTIONS.map((option) => (
+              <SpeciesPickerCard
+                key={option.value}
+                species={option.value}
+                title={option.title}
+                active={species === option.value}
+                onSelect={() => handleSpeciesChange(option.value)}
+              />
+            ))}
           </div>
         </section>
 
-        <section className="rounded-2xl bg-muted/55 p-5">
+        <section className="rounded-2xl border border-border bg-muted/35 p-5">
           <div className="grid gap-4 md:grid-cols-2">
             {registrationMode === 'registered' && (
               <>
@@ -269,9 +296,11 @@ export default function PatientStep() {
                 >
                   <option value="">Selecione a raça</option>
                   {patient.breed && !breeds.includes(patient.breed) && <option value={patient.breed}>{patient.breed}</option>}
-                  {breeds.map((breed) => <option key={breed} value={breed}>{breed}</option>)}
+                  {breeds.map((breed) => (
+                    <option key={breed} value={breed}>{breed}</option>
+                  ))}
                 </select>
-                <ChevronDown className="pointer-events-none absolute right-3 top-3.5 h-4 w-4 text-muted-foreground" />
+                <ChevronRight className="pointer-events-none absolute right-3 top-3.5 h-4 w-4 rotate-90 text-muted-foreground" />
               </div>
             </div>
           </div>
@@ -284,7 +313,17 @@ export default function PatientStep() {
                   const Icon = option.icon
                   const active = patient.sex === option.value
                   return (
-                    <button key={option.value} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ sex: option.value })} className={cn('flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                    <button
+                      key={option.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setPatient({ sex: option.value })}
+                      className={cn(
+                        'flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                        active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted',
+                      )}
+                    >
                       <Icon className="h-4 w-4" /> {option.label}
                     </button>
                   )
@@ -301,7 +340,17 @@ export default function PatientStep() {
                 ].map((option) => {
                   const active = Boolean(patient.isNeutered) === option.value
                   return (
-                    <button key={String(option.value)} type="button" role="radio" aria-checked={active} onClick={() => handleNeuterChange(option.value)} className={cn('flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                    <button
+                      key={String(option.value)}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => handleNeuterChange(option.value)}
+                      className={cn(
+                        'flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                        active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted',
+                      )}
+                    >
                       {option.label}
                     </button>
                   )
@@ -319,7 +368,17 @@ export default function PatientStep() {
                   ].map((option) => {
                     const active = Boolean(patient.isIndoor) === option.value
                     return (
-                      <button key={String(option.value)} type="button" role="radio" aria-checked={active} onClick={() => setPatient({ isIndoor: option.value })} className={cn('flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}>
+                      <button
+                        key={String(option.value)}
+                        type="button"
+                        role="radio"
+                        aria-checked={active}
+                        onClick={() => setPatient({ isIndoor: option.value })}
+                        className={cn(
+                          'flex min-h-12 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                          active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted',
+                        )}
+                      >
                         {option.label}
                       </button>
                     )
@@ -330,65 +389,240 @@ export default function PatientStep() {
           </div>
         </section>
 
-        <section className="overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="border-b border-border p-5">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <div className="flex items-center gap-2"><HeartPulse className="h-5 w-5 text-primary" /><h2 className="text-lg font-semibold text-foreground">Comorbidades</h2></div>
-                <p className="mt-1 text-sm text-muted-foreground">Escolha uma categoria, selecione a condição e veja imediatamente o impacto nutricional cadastrado.</p>
-              </div>
-              <div className="relative w-full lg:max-w-sm">
-                <Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
-                <Input value={comorbidityQuery} onChange={(event) => setComorbidityQuery(event.target.value)} placeholder="Buscar condição clínica" className="pl-10 pr-10" />
-                {comorbidityQuery && <button type="button" aria-label="Limpar busca" onClick={() => setComorbidityQuery('')} className="absolute right-2 top-1.5 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-muted-foreground hover:bg-muted hover:text-foreground"><X className="h-4 w-4" /></button>}
+        {v3Enabled && (
+          <section className="space-y-5 rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
+            <div>
+              <h2 className="text-base font-semibold">Avaliação clínica (EMC e atividade)</h2>
+              <p className="mt-1 text-xs text-muted-foreground">
+                Dados usados pelo motor energético para calibrar manutenção, perda ou ganho de peso.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <Label>Escore de massa muscular (EMC)</Label>
+              <div className="grid gap-2 sm:grid-cols-2" role="radiogroup" aria-label="Condição de massa muscular">
+                {EMC_OPTIONS.map((option) => {
+                  const active = (patient.muscleCondition ?? 'normal') === option.value
+                  return (
+                    <button
+                      key={option.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => setPatient({ muscleCondition: option.value })}
+                      className={cn(
+                        'cursor-pointer rounded-xl border px-3 py-2 text-left outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                        active ? 'border-primary/50 bg-primary/[0.08]' : 'border-border bg-card hover:border-primary/25',
+                      )}
+                    >
+                      <span className="block text-sm font-semibold">{option.label}</span>
+                      <span className="mt-0.5 block text-xs text-muted-foreground">{option.detail}</span>
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
-            <div className="mt-4 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Categorias de comorbidades">
-              {COMORBIDITY_CATEGORIES.map((category) => (
-                <button key={category.id} type="button" role="tab" aria-selected={comorbidityCategory === category.id} onClick={() => setComorbidityCategory(category.id)} className={cn('flex min-h-10 shrink-0 cursor-pointer items-center gap-2 rounded-xl border px-3 text-sm font-medium outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', comorbidityCategory === category.id ? 'border-primary bg-primary text-primary-foreground' : 'border-border bg-card text-muted-foreground hover:bg-muted hover:text-foreground')}>
-                  {category.label}<span className={cn('text-xs', comorbidityCategory === category.id ? 'text-primary-foreground/70' : 'text-muted-foreground')}>{categoryCounts.get(category.id) ?? 0}</span>
-                </button>
-              ))}
+            <div className="grid gap-4 md:grid-cols-2">
+              <div className="space-y-2">
+                <Label htmlFor="pat-activity-hours">Horas de atividade por dia</Label>
+                <LocalizedNumberInput
+                  id="pat-activity-hours"
+                  min={0}
+                  max={24}
+                  value={patient.activityHoursPerDay ?? 1}
+                  onValueChange={(value) => setPatient({ activityHoursPerDay: value ?? 0 })}
+                  placeholder="Ex.: 1,5"
+                />
+              </div>
+              {species === 'dog' && (
+                <div className="space-y-3">
+                  <Label>Intensidade predominante</Label>
+                  <div className="grid grid-cols-2 gap-2" role="radiogroup" aria-label="Intensidade da atividade">
+                    {[
+                      { value: 'low' as const, label: 'Baixo impacto' },
+                      { value: 'high' as const, label: 'Alto impacto' },
+                    ].map((option) => {
+                      const active = (patient.activityImpact ?? 'low') === option.value
+                      return (
+                        <button
+                          key={option.value}
+                          type="button"
+                          role="radio"
+                          aria-checked={active}
+                          onClick={() => setPatient({ activityImpact: option.value })}
+                          className={cn(
+                            'flex min-h-11 cursor-pointer items-center justify-center rounded-xl border px-3 text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25',
+                            active ? 'border-primary/50 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted',
+                          )}
+                        >
+                          {option.label}
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
 
-          <div className="p-5">
-            {selectedComorbidityIds.length > 0 && (
-              <div className="mb-4 flex items-center justify-between gap-3 rounded-xl bg-primary/[0.06] px-4 py-3">
-                <p className="text-sm font-medium text-foreground">{selectedComorbidityIds.length} condição(ões) selecionada(s)</p>
-                <button type="button" onClick={() => setPatient({ comorbidityIds: [] })} className="min-h-9 cursor-pointer rounded-lg px-2 text-xs font-semibold text-primary hover:bg-primary/10">Limpar seleção</button>
+            {isPuppy && (
+              <div className="space-y-2">
+                <Label htmlFor="pat-adult-weight">Peso adulto esperado (kg)</Label>
+                <LocalizedNumberInput
+                  id="pat-adult-weight"
+                  min={0.1}
+                  value={patient.expectedAdultWeightKg ?? null}
+                  onValueChange={(value) => setPatient({ expectedAdultWeightKg: value ?? undefined })}
+                  placeholder="Ex.: 28"
+                />
+                <p className="text-xs text-muted-foreground">Obrigatório para filhotes — usado nas equações de crescimento.</p>
               </div>
             )}
 
-            <div className="grid gap-3 lg:grid-cols-2">
-              {filteredComorbidities.map((option) => {
-                const active = selectedComorbidityIds.includes(option.id)
-                const guidance = active ? buildComorbidityGuidance(species, option) : null
-                return (
-                  <article key={option.id} className={cn('overflow-hidden rounded-2xl border transition-colors duration-200', active ? 'border-primary/45 bg-primary/[0.045]' : 'border-border bg-card')}>
-                    <button type="button" aria-pressed={active} onClick={() => toggleComorbidity(option.id)} className="flex min-h-16 w-full cursor-pointer items-center gap-3 px-4 py-3 text-left outline-none focus-visible:ring-3 focus-visible:ring-inset focus-visible:ring-ring/25">
-                      <span className={cn('flex h-6 w-6 shrink-0 items-center justify-center rounded-lg border', active ? 'border-primary bg-primary text-primary-foreground' : 'border-border bg-muted text-transparent')}><Check className="h-3.5 w-3.5" /></span>
-                      <span className="min-w-0 flex-1 text-sm font-semibold text-foreground">{option.label.replace(/\s+(Cães|Gatos)\s*-?$/i, '')}</span>
-                    </button>
-                    {guidance && (
-                      <div className="border-t border-primary/15 px-4 py-4">
-                        <p className="text-sm leading-6 text-foreground/80">{guidance.summary}</p>
-                        {guidance.priorities.length > 0 && <p className="mt-2 text-xs leading-5 text-muted-foreground"><strong className="font-semibold text-foreground">Prioridades:</strong> {guidance.priorities.join(' · ')}</p>}
-                        {guidance.sources.length > 0 && <p className="mt-2 text-[11px] leading-5 text-muted-foreground"><strong className="font-semibold text-foreground">Referência:</strong> {guidance.sources.join(' · ')}</p>}
-                      </div>
-                    )}
-                  </article>
-                )
-              })}
+            <div className="space-y-2">
+              <Label htmlFor="pat-previous-weight">Peso saudável anterior (kg)</Label>
+              <LocalizedNumberInput
+                id="pat-previous-weight"
+                min={0.1}
+                value={patient.previousHealthyWeightKg ?? null}
+                onValueChange={(value) => setPatient({ previousHealthyWeightKg: value ?? undefined })}
+                placeholder="Opcional — útil em recuperação de peso"
+              />
+            </div>
+          </section>
+        )}
+
+        {v3Enabled && (
+          <section className="space-y-4 rounded-2xl border border-border bg-muted/25 p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h2 className="text-base font-semibold">Histórico alimentar atual</h2>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  Se a ingestão estiver estável e documentada, o motor pode calibrar a meta pela ingestão real (PNA).
+                </p>
+              </div>
+              <label className="flex cursor-pointer items-center gap-2 text-sm">
+                <input
+                  type="checkbox"
+                  checked={!!dietHistory?.documented}
+                  onChange={(event) =>
+                    updateDietHistory({
+                      documented: event.target.checked,
+                      reliable: event.target.checked ? dietHistory?.reliable : undefined,
+                      weightStable: event.target.checked ? dietHistory?.weightStable : undefined,
+                    })
+                  }
+                  className="h-4 w-4 accent-primary"
+                />
+                Documentar ingestão
+              </label>
             </div>
 
-            {filteredComorbidities.length === 0 && <div className="rounded-2xl border border-dashed border-border px-5 py-10 text-center text-sm text-muted-foreground">Nenhuma condição encontrada nesta categoria.</div>}
-          </div>
-        </section>
+            {dietHistory?.documented && (
+              <div className="grid gap-4 md:grid-cols-2">
+                <label className="flex items-start gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={!!dietHistory.reliable}
+                    onChange={(event) => updateDietHistory({ reliable: event.target.checked })}
+                    className="mt-0.5 h-4 w-4 accent-primary"
+                  />
+                  <span>
+                    <span className="font-semibold">Registro confiável</span>
+                    <span className="mt-0.5 block text-xs text-muted-foreground">Porções medidas ou pesadas pelo tutor/clínica.</span>
+                  </span>
+                </label>
+                <label className="flex items-start gap-2 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={!!dietHistory.weightStable}
+                    onChange={(event) => updateDietHistory({ weightStable: event.target.checked })}
+                    className="mt-0.5 h-4 w-4 accent-primary"
+                  />
+                  <span>
+                    <span className="font-semibold">Peso estável</span>
+                    <span className="mt-0.5 block text-xs text-muted-foreground">Sem perda ou ganho relevante no período registrado.</span>
+                  </span>
+                </label>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-days">Dias registrados</Label>
+                  <LocalizedNumberInput
+                    id="diet-days"
+                    min={1}
+                    value={dietHistory.daysRecorded ?? null}
+                    onValueChange={(value) => updateDietHistory({ daysRecorded: value ?? undefined })}
+                    placeholder="Ex.: 7"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-main-kcal">Dieta principal (kcal/dia)</Label>
+                  <LocalizedNumberInput
+                    id="diet-main-kcal"
+                    min={0}
+                    value={dietHistory.mainFoodKcalPerDay ?? null}
+                    onValueChange={(value) => updateDietHistory({ mainFoodKcalPerDay: value ?? undefined })}
+                    placeholder="Ex.: 420"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-treats">Petiscos (kcal/dia)</Label>
+                  <LocalizedNumberInput
+                    id="diet-treats"
+                    min={0}
+                    value={dietHistory.treatsKcalPerDay ?? null}
+                    onValueChange={(value) => updateDietHistory({ treatsKcalPerDay: value ?? undefined })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-chews">Ossos/mastigáveis (kcal/dia)</Label>
+                  <LocalizedNumberInput
+                    id="diet-chews"
+                    min={0}
+                    value={dietHistory.chewsKcalPerDay ?? null}
+                    onValueChange={(value) => updateDietHistory({ chewsKcalPerDay: value ?? undefined })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-med-kcal">Veículo medicamentoso (kcal/dia)</Label>
+                  <LocalizedNumberInput
+                    id="diet-med-kcal"
+                    min={0}
+                    value={dietHistory.medicationVehicleKcalPerDay ?? null}
+                    onValueChange={(value) => updateDietHistory({ medicationVehicleKcalPerDay: value ?? undefined })}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="diet-sup-kcal">Suplementos (kcal/dia)</Label>
+                  <LocalizedNumberInput
+                    id="diet-sup-kcal"
+                    min={0}
+                    value={dietHistory.supplementsKcalPerDay ?? null}
+                    onValueChange={(value) => updateDietHistory({ supplementsKcalPerDay: value ?? undefined })}
+                  />
+                </div>
+                {documentedIntakeKcal > 0 && (
+                  <p className="md:col-span-2 text-sm text-muted-foreground">
+                    Ingestão total documentada: <strong className="text-foreground">{documentedIntakeKcal.toFixed(0)} kcal/dia</strong>
+                  </p>
+                )}
+              </div>
+            )}
+          </section>
+        )}
+
+        <ComorbidityPicker
+          options={availableComorbidities}
+          selectedIds={selectedComorbidityIds}
+          onToggle={toggleComorbidity}
+          onClear={() => setPatient({ comorbidityIds: [] })}
+          getCategory={getComorbidityCategory}
+          buildGuidance={(option) => buildComorbidityGuidance(species, option)}
+        />
 
         <div className="flex justify-end border-t border-border/60 pt-4">
-          <Button onClick={handleNext} className="gap-2" id="btn-next-energy">Próximo: Energia <ChevronRight className="h-4 w-4" /></Button>
+          <Button onClick={handleNext} className="gap-2" id="btn-next-energy">
+            Próximo: Energia <ChevronRight className="h-4 w-4" />
+          </Button>
         </div>
       </CardContent>
     </Card>

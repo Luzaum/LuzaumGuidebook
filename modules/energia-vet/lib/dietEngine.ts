@@ -1,4 +1,5 @@
 import { getEnergyRule, getFoodById, getNutrientDefinition, getRequirementById } from './genutriData'
+import { formulateDiet } from './nutrition-calculations'
 import { isCalculationEngineV3Enabled } from './nutritionCalculationBridge'
 import type {
   DietEvaluation,
@@ -43,19 +44,74 @@ function round(value: number | null | undefined, decimals = 4): number | null {
   return Math.round(value * factor) / factor
 }
 
+const PROPORTION_TOLERANCE = 0.05
+
+function sumInclusionPct(entries: DietFormulaEntry[]): number {
+  return entries.reduce((sum, entry) => sum + (entry.inclusionPct || 0), 0)
+}
+
+function proportionsAreValid(entries: DietFormulaEntry[]): boolean {
+  if (!entries.length) return false
+  return Math.abs(sumInclusionPct(entries) - 100) <= PROPORTION_TOLERANCE
+}
+
 function normalizeEntries(entries: DietFormulaEntry[], allowSilentNormalization = true): DietFormulaEntry[] {
   const positiveEntries = entries.filter((entry) => entry.inclusionPct > 0)
   const total = positiveEntries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
   if (!total) {
     return []
   }
-  if (!allowSilentNormalization && Math.abs(total - 100) > 0.05) {
+  if (!allowSilentNormalization && Math.abs(total - 100) > PROPORTION_TOLERANCE) {
     return positiveEntries
   }
   return positiveEntries.map((entry) => ({
     ...entry,
     inclusionPct: (entry.inclusionPct / total) * 100,
   }))
+}
+
+function buildContributionsFromCaloricAllocation(options: {
+  entries: DietFormulaEntry[]
+  targetEnergy: number
+}): FoodContribution[] {
+  const positiveEntries = options.entries.filter((entry) => entry.inclusionPct > 0)
+  const foodKcalPerGram: Record<string, number> = {}
+
+  for (const entry of positiveEntries) {
+    const food = getFoodById(entry.foodId)
+    const kcalPer100g = food?.nutrientsAsFed.energyKcalPer100g
+    if (kcalPer100g != null && kcalPer100g > 0) {
+      foodKcalPerGram[entry.foodId] = kcalPer100g / 100
+    }
+  }
+
+  const formulation = formulateDiet({
+    targetKcalDay: options.targetEnergy,
+    entries: positiveEntries.map((entry) => ({
+      foodId: entry.foodId,
+      energyAllocationPct: entry.inclusionPct,
+    })),
+    foodKcalPerGram,
+    normalizeProportions: false,
+  })
+
+  if (!formulation.foods.length) return []
+
+  return formulation.foods.map((item) => {
+    const food = getFoodById(item.foodId)
+    const dryMatterPct = food?.nutrientsAsFed.dryMatterPct ?? 0
+    const gramsAsFed = item.exactGramsPerDay
+    const gramsDryMatter = dryMatterPct > 0 ? (gramsAsFed * dryMatterPct) / 100 : 0
+
+    return {
+      foodId: item.foodId,
+      foodName: food?.name ?? item.foodId,
+      inclusionPct: round(item.energyAllocationPct, 2) ?? 0,
+      gramsDryMatter: round(gramsDryMatter, 2) ?? 0,
+      gramsAsFed: round(gramsAsFed, 2) ?? 0,
+      deliveredKcal: round(item.exactKcalPerDay, 2) ?? 0,
+    }
+  })
 }
 
 function getPercentKeys() {
@@ -166,36 +222,53 @@ export function computeDietPlan(options: {
   requirementProfileId?: string
   additionalRequirementProfileIds?: string[]
 }): DietComputationResult {
-  const normalizedEntries = normalizeEntries(
-    options.entries,
-    !isCalculationEngineV3Enabled(),
-  )
+  const v3Enabled = isCalculationEngineV3Enabled()
+  const normalizedEntries = normalizeEntries(options.entries, !v3Enabled)
+  const v3ProportionsValid = proportionsAreValid(options.entries)
+
+  let contributions: FoodContribution[]
+  let totalDryMatterGrams: number
+
+  if (v3Enabled) {
+    contributions = v3ProportionsValid
+      ? buildContributionsFromCaloricAllocation({
+          entries: options.entries,
+          targetEnergy: options.targetEnergy,
+        })
+      : []
+    totalDryMatterGrams = contributions.reduce((sum, item) => sum + item.gramsDryMatter, 0)
+  } else {
+    const foods = normalizedEntries
+      .map((entry) => ({ entry, food: getFoodById(entry.foodId) }))
+      .filter((item): item is { entry: DietFormulaEntry; food: FoodItem } => Boolean(item.food))
+
+    const weightedEnergyDensity = foods.reduce((sum, item) => {
+      const energy = item.food.nutrientsDryMatter.energyKcalPer100g
+      if (energy == null) return sum
+      return sum + (energy * item.entry.inclusionPct) / 100
+    }, 0)
+
+    totalDryMatterGrams = weightedEnergyDensity > 0 ? (options.targetEnergy * 100) / weightedEnergyDensity : 0
+    contributions = foods.map(({ entry, food }) => {
+      const gramsDryMatter = (totalDryMatterGrams * entry.inclusionPct) / 100
+      const dryMatterPct = food.nutrientsAsFed.dryMatterPct ?? 0
+      const gramsAsFed = dryMatterPct > 0 ? (gramsDryMatter * 100) / dryMatterPct : 0
+      const energyAsFed = food.nutrientsAsFed.energyKcalPer100g ?? 0
+
+      return {
+        foodId: food.id,
+        foodName: food.name,
+        inclusionPct: round(entry.inclusionPct, 2) ?? 0,
+        gramsDryMatter: round(gramsDryMatter, 2) ?? 0,
+        gramsAsFed: round(gramsAsFed, 2) ?? 0,
+        deliveredKcal: round((gramsAsFed * energyAsFed) / 100, 2) ?? 0,
+      }
+    })
+  }
+
   const foods = normalizedEntries
     .map((entry) => ({ entry, food: getFoodById(entry.foodId) }))
     .filter((item): item is { entry: DietFormulaEntry; food: FoodItem } => Boolean(item.food))
-
-  const weightedEnergyDensity = foods.reduce((sum, item) => {
-    const energy = item.food.nutrientsDryMatter.energyKcalPer100g
-    if (energy == null) return sum
-    return sum + (energy * item.entry.inclusionPct) / 100
-  }, 0)
-
-  const totalDryMatterGrams = weightedEnergyDensity > 0 ? (options.targetEnergy * 100) / weightedEnergyDensity : 0
-  const contributions = foods.map(({ entry, food }) => {
-    const gramsDryMatter = (totalDryMatterGrams * entry.inclusionPct) / 100
-    const dryMatterPct = food.nutrientsAsFed.dryMatterPct ?? 0
-    const gramsAsFed = dryMatterPct > 0 ? (gramsDryMatter * 100) / dryMatterPct : 0
-    const energyAsFed = food.nutrientsAsFed.energyKcalPer100g ?? 0
-
-    return {
-      foodId: food.id,
-      foodName: food.name,
-      inclusionPct: round(entry.inclusionPct, 2) ?? 0,
-      gramsDryMatter: round(gramsDryMatter, 2) ?? 0,
-      gramsAsFed: round(gramsAsFed, 2) ?? 0,
-      deliveredKcal: round((gramsAsFed * energyAsFed) / 100, 2) ?? 0,
-    }
-  })
 
   const totalAsFedGrams = contributions.reduce((sum, item) => sum + item.gramsAsFed, 0)
   const totalKcal = contributions.reduce((sum, item) => sum + item.deliveredKcal, 0)
@@ -294,11 +367,11 @@ export function computeDietPlan(options: {
   )
 
   const alerts: string[] = []
-  if (isCalculationEngineV3Enabled()) {
-    const proportionTotal = options.entries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
-    if (options.entries.length > 0 && Math.abs(proportionTotal - 100) > 0.05) {
+  if (v3Enabled) {
+    const proportionTotal = sumInclusionPct(options.entries)
+    if (options.entries.length > 0 && !v3ProportionsValid) {
       alerts.push(
-        `Proporções somam ${proportionTotal.toFixed(1)}% — ajuste para 100% ou use "Distribuir igualmente" antes de concluir.`,
+        `Proporções calóricas somam ${proportionTotal.toFixed(1)}% — ajuste para 100% ou use "Dividir igualmente" antes de concluir.`,
       )
     }
   }

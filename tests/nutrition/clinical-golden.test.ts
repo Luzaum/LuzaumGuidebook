@@ -84,7 +84,7 @@ test('golden 17 — dieta renal comercial avaliável com perfil renal', () => {
 
 test('golden comorbidade renal legado mapeia perfil', () => {
   const mapped = mapComorbiditySelectionsToTherapeuticProfiles('dog', [
-    'dog:doenca-renal-cronica-caes---ms',
+    'dog:doen-a-renal-cr-nica-c-es',
   ])
   assert.ok(mapped.some((profile) => profile.includes('renal')))
 })

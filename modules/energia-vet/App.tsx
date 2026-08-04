@@ -52,8 +52,8 @@ function Sidebar() {
   const location = useLocation();
 
   return (
-    <aside className="energia-vet-sidebar hidden w-[248px] shrink-0 border-r border-border bg-card lg:flex lg:flex-col">
-      <div className="px-5 pb-5 pt-6">
+    <aside className="energia-vet-sidebar hidden h-full min-h-0 w-[248px] shrink-0 flex-col border-r border-border bg-card lg:flex">
+      <div className="shrink-0 px-5 pb-5 pt-6">
         <Link
           to={modulePath('/')}
           className="energia-vet-sidebar-brand flex items-center gap-3 rounded-xl outline-none focus-visible:ring-2 focus-visible:ring-ring"
@@ -69,7 +69,7 @@ function Sidebar() {
         </Link>
       </div>
 
-      <nav className="flex-1 space-y-1 px-3" aria-label="Navegação do NutriçãoVET">
+      <nav className="min-h-0 flex-1 space-y-1 overflow-y-auto px-3" aria-label="Navegação do NutriçãoVET">
         {navigation.map((item) => {
           const Icon = item.icon;
           const href = modulePath(item.path);
@@ -95,7 +95,7 @@ function Sidebar() {
         })}
       </nav>
 
-      <div className="mx-5 mb-5 mt-4 border-t border-border pt-4">
+      <div className="mx-5 mb-5 mt-4 shrink-0 border-t border-border pt-4">
         <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-muted-foreground">Vetius Clinical Suite</p>
       </div>
     </aside>
@@ -152,7 +152,7 @@ function MobileNav() {
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="energia-vet-shell flex h-full min-h-0 bg-background">
+    <div className={cn('energia-vet-shell flex h-full min-h-0 bg-background')}>
       <Sidebar />
       <div className="flex h-full min-h-0 min-w-0 flex-1 flex-col">
         <MobileHeader />

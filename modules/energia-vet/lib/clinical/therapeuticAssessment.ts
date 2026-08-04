@@ -107,6 +107,62 @@ export function evaluateNutrientGoal(food: FoodDetails, goal: NutrientGoal): Goa
   return { goal, value, status: 'missing', messagePt: `${goal.labelPt} — regra não avaliada.` }
 }
 
+export function evaluateDeliveredNutrientGoal(goal: NutrientGoal, value: number | null): GoalEvaluation {
+  if (goal.operator === 'present') {
+    if (value == null) {
+      return {
+        goal,
+        value: null,
+        status: 'missing',
+        messagePt: `${goal.labelPt} ausente — impossível avaliar adequação completa.`,
+      }
+    }
+    return {
+      goal,
+      value,
+      status: 'match',
+      messagePt: `${goal.labelPt} disponível na dieta formulada (${value.toFixed(2)} ${goal.unit}).`,
+    }
+  }
+
+  if (value == null) {
+    return {
+      goal,
+      value: null,
+      status: 'missing',
+      messagePt: goal.critical
+        ? `${goal.labelPt} ausente — dado crítico para este perfil.`
+        : `${goal.labelPt} ausente — comparação limitada.`,
+    }
+  }
+
+  if (goal.operator === 'lte' && goal.max != null) {
+    if (value <= goal.max) {
+      return { goal, value, status: 'match', messagePt: `${goal.labelPt} dentro do limite (${value.toFixed(2)} ≤ ${goal.max} ${goal.unit}).` }
+    }
+    return { goal, value, status: 'above', messagePt: `${goal.labelPt} acima do limite (${value.toFixed(2)} > ${goal.max} ${goal.unit}).` }
+  }
+
+  if (goal.operator === 'gte' && goal.min != null) {
+    if (value >= goal.min) {
+      return { goal, value, status: 'match', messagePt: `${goal.labelPt} atende mínimo (${value.toFixed(2)} ≥ ${goal.min} ${goal.unit}).` }
+    }
+    return { goal, value, status: 'below', messagePt: `${goal.labelPt} abaixo do mínimo (${value.toFixed(2)} < ${goal.min} ${goal.unit}).` }
+  }
+
+  if (goal.operator === 'between' && goal.min != null && goal.max != null) {
+    if (value >= goal.min && value <= goal.max) {
+      return { goal, value, status: 'match', messagePt: `${goal.labelPt} na faixa (${value.toFixed(2)} ${goal.unit}).` }
+    }
+    if (value < goal.min) {
+      return { goal, value, status: 'below', messagePt: `${goal.labelPt} abaixo da faixa (${value.toFixed(2)} < ${goal.min} ${goal.unit}).` }
+    }
+    return { goal, value, status: 'above', messagePt: `${goal.labelPt} acima da faixa (${value.toFixed(2)} > ${goal.max} ${goal.unit}).` }
+  }
+
+  return { goal, value, status: 'missing', messagePt: `${goal.labelPt} — regra não avaliada.` }
+}
+
 export function assessFoodAgainstProfile(
   food: FoodDetails,
   profile: TherapeuticProfile,

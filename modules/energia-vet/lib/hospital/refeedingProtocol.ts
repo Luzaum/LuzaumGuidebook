@@ -1,4 +1,5 @@
-import { calculateRER, calculateRefeedingRisk, getProgressionPlan3Days, getProgressionPlan4Days } from '../nutrition'
+import { calculateRefeedingRisk, getProgressionPlan3Days, getProgressionPlan4Days } from '../nutrition'
+import { calculateBookRER } from '../bookEnergy'
 import {
   HOSPITAL_PROTOCOL_V2,
   LEGACY_REFEEDING_PROTOCOL_V1,
@@ -93,7 +94,7 @@ export function assessRefeedingPlan(
   input: RefeedingScreeningInput,
   options?: { protocolId?: RefeedingProtocolId; useV2?: boolean },
 ): RefeedingAssessment {
-  const rer = calculateRER(input.weightKg, input.species)
+  const rer = calculateBookRER(input.weightKg)
   const protocolId = options?.protocolId ?? 'legacy_4_days'
   const useV2 = options?.useV2 ?? false
 
