@@ -371,6 +371,8 @@ export interface HospitalNutritionPlan {
   progressionProtocol?: '3_days' | '4_days'
   progressionPlan?: RefeedingPlan[]
   clinicalNotes?: string
+  peripheralOsmolarityLimitMosmL?: number
+  parenteralReviewConfirmed?: boolean
 }
 
 export interface RefeedingPlan {

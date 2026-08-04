@@ -1,3 +1,10 @@
+import {
+  calculateParenteralOsmolarity,
+  DEFAULT_PERIPHERAL_OSMOLARITY_LIMIT_MOSM_L,
+  TYPICAL_PN_COMPONENT_OSMOLARITY,
+  type ParenteralComponent,
+} from './parenteralOsmolarityEngine'
+
 export interface ParenteralNutritionInput {
   currentWeightKg: number
   targetKcalDay: number
@@ -6,6 +13,9 @@ export interface ParenteralNutritionInput {
   dextroseFraction?: number
   infusionHours: number
   additionalFluidMlDay?: number
+  vascularAccess?: 'peripheral' | 'central' | 'not_defined'
+  peripheralOsmolarityLimitMosmL?: number
+  customComponents?: ParenteralComponent[]
 }
 
 export interface ParenteralNutritionResult {
@@ -23,6 +33,8 @@ export interface ParenteralNutritionResult {
   glucoseInfusionRateMgKgMin: number
   totalPnVolumeMlDay: number
   pnRateMlHour: number
+  estimatedOsmolarityMosmL: number | null
+  osmolarityAlerts: string[]
   alerts: string[]
 }
 
@@ -57,6 +69,47 @@ export function calculateParenteralNutrition(input: ParenteralNutritionInput): P
     aminoAcidVolumeMlDay + lipidVolumeMlDay + dextroseVolumeMlDay + additionalFluidMlDay
   const pnRateMlHour = input.infusionHours > 0 ? totalPnVolumeMlDay / input.infusionHours : 0
 
+  const energyFractionSum = lipidFraction + dextroseFraction
+  if (Math.abs(energyFractionSum - 1) > 0.01) {
+    alerts.push('Frações energéticas de lipídios e dextrose não somam 100% — revisar.')
+  }
+  if (proteinKcalDay > input.targetKcalDay) {
+    alerts.push('Energia proteica maior que energia total prescrita.')
+  }
+  if (pnRateMlHour > 0 && totalPnVolumeMlDay > 0 && input.infusionHours <= 0) {
+    alerts.push('Taxa de infusão incompatível com volume e tempo de infusão.')
+  }
+
+  const defaultComponents: ParenteralComponent[] = [
+    {
+      name: 'Solução de aminoácidos 8,5%',
+      volumeMl: aminoAcidVolumeMlDay,
+      osmolarityMosmL: TYPICAL_PN_COMPONENT_OSMOLARITY['aminoacidos_8.5'],
+      source: 'manufacturer',
+    },
+    {
+      name: 'Dextrose 50%',
+      volumeMl: dextroseVolumeMlDay,
+      osmolarityMosmL: TYPICAL_PN_COMPONENT_OSMOLARITY.dextrose_50,
+      source: 'manufacturer',
+    },
+    {
+      name: 'Emulsão lipídica 20%',
+      volumeMl: lipidVolumeMlDay,
+      osmolarityMosmL: TYPICAL_PN_COMPONENT_OSMOLARITY.lipideos_20,
+      source: 'manufacturer',
+    },
+  ]
+
+  const osmResult = calculateParenteralOsmolarity({
+    components: input.customComponents ?? defaultComponents,
+    additionalDiluentMl: additionalFluidMlDay > 0 ? additionalFluidMlDay : undefined,
+    additionalDiluentOsmolarityMosmL: TYPICAL_PN_COMPONENT_OSMOLARITY.agua_destilada,
+    peripheralOsmolarityLimitMosmL:
+      input.peripheralOsmolarityLimitMosmL ?? DEFAULT_PERIPHERAL_OSMOLARITY_LIMIT_MOSM_L,
+    vascularAccess: input.vascularAccess ?? 'not_defined',
+  })
+
   return {
     proteinGramsDay,
     aminoAcidVolumeMlDay,
@@ -72,9 +125,13 @@ export function calculateParenteralNutrition(input: ParenteralNutritionInput): P
     glucoseInfusionRateMgKgMin,
     totalPnVolumeMlDay,
     pnRateMlHour,
-    alerts,
+    estimatedOsmolarityMosmL: osmResult.finalOsmolarityMosmL,
+    osmolarityAlerts: osmResult.alerts,
+    alerts: [...alerts, ...osmResult.alerts],
   }
 }
+
+export { DEFAULT_PERIPHERAL_OSMOLARITY_LIMIT_MOSM_L, type ParenteralComponent } from './parenteralOsmolarityEngine'
 
 export const PARENTERAL_PROTEIN_TARGETS = {
   dog: { standard: [4, 5], reduced: [2, 3], increased: [5, 6] },

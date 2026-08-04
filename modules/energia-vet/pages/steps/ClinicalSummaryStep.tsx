@@ -2,11 +2,13 @@ import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AlertTriangle, CheckCircle2, ChevronLeft, ChevronRight, MinusCircle } from 'lucide-react'
 import { NutrientGapSection } from '../../components/NutrientGapSection'
+import { ParenteralNutritionSection } from '../../components/ParenteralNutritionSection'
 import { Badge } from '../../components/ui/badge'
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
 import { computeDietPlan } from '../../lib/dietEngine'
+import { isCalculationEngineV3Enabled } from '../../lib/nutritionCalculationBridge'
 import { useCalculationStore } from '../../store/calculationStore'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -21,7 +23,8 @@ function statusView(status: string) {
 
 export default function ClinicalSummaryStep() {
   const navigate = useNavigate()
-  const { patient, energy, target, diet } = useCalculationStore()
+  const { patient, energy, target, diet, hospital, setHospital } = useCalculationStore()
+  const v3Enabled = isCalculationEngineV3Enabled()
   const result = useMemo(() => computeDietPlan({ entries: diet.entries ?? [], targetEnergy: target.targetEnergy ?? diet.targetEnergy ?? 0, species: patient.species ?? 'dog', weightKg: target.targetWeight ?? patient.currentWeight ?? 0, mealsPerDay: diet.mealsPerDay ?? 2, patientName: patient.name || 'Dieta rápida', requirementProfileId: diet.requirementProfileId, additionalRequirementProfileIds: diet.additionalRequirementProfileIds }), [diet.additionalRequirementProfileIds, diet.entries, diet.mealsPerDay, diet.requirementProfileId, diet.targetEnergy, patient.currentWeight, patient.name, patient.species, target.targetEnergy, target.targetWeight])
   const energyTotal = result.evaluation.macroSplit.reduce((sum, item) => sum + item.kcal, 0)
   const goalLabel = target.goal === 'weight_loss' ? 'Redução de peso' : target.goal === 'weight_gain' ? 'Recuperação de peso' : 'Manutenção'
@@ -40,6 +43,15 @@ export default function ClinicalSummaryStep() {
         <section className="overflow-hidden rounded-3xl border border-border"><div className="flex flex-col gap-2 border-b border-border bg-muted/40 p-5 sm:flex-row sm:items-end sm:justify-between"><div><h2 className="font-semibold">Adequação frente ao perfil</h2><p className="text-sm text-muted-foreground">Primeiro, apenas nutrientes com dado entregue e referência disponível.</p></div><p className="text-xs text-muted-foreground">Valores ausentes não são presumidos.</p></div><div className="overflow-x-auto"><table className="w-full min-w-[620px] text-sm"><thead><tr className="border-b border-border text-left text-xs uppercase tracking-wide text-muted-foreground"><th className="p-4">Nutriente</th><th className="p-4 text-right">Entregue</th><th className="p-4 text-right">Referência</th><th className="p-4">Situação</th></tr></thead><tbody>{comparableAdequacy.map((row, index) => { const view = statusView(row.status); const Icon = view.icon; return <tr key={`${row.key}-${index}`} className="border-b border-border last:border-0"><td className="p-4 font-medium">{row.label}</td><td className="p-4 text-right tabular-nums">{row.deliveredValue?.toFixed(2)} {row.unit ?? ''}</td><td className="p-4 text-right tabular-nums">{targetText(row.target!)}</td><td className={`p-4 ${view.className}`}><span className="inline-flex items-center gap-2 font-medium"><Icon className="h-4 w-4" />{view.label}</span></td></tr> })}{comparableAdequacy.length === 0 && <tr><td colSpan={4} className="p-8 text-center text-muted-foreground">Ainda não há nutrientes com dados suficientes para comparar.</td></tr>}</tbody></table></div>{unavailableAdequacy.length > 0 && <details className="border-t border-border"><summary className="flex min-h-14 cursor-pointer items-center justify-between gap-3 px-5 text-sm font-semibold"><span>Nutrientes sem informação suficiente</span><span className="rounded-full bg-muted px-2.5 py-1 text-xs text-muted-foreground">{unavailableAdequacy.length}</span></summary><div className="border-t border-border bg-muted/20 p-4"><div className="flex flex-wrap gap-2">{unavailableAdequacy.map((row, index) => <Badge key={`${row.key}-${index}`} variant="outline" className="rounded-full bg-card">{row.label}</Badge>)}</div><p className="mt-3 text-xs text-muted-foreground">Abra esta área para revisar o que ainda precisa de dado analítico do alimento ou de referência aplicável.</p></div></details>}</section>
 
         <NutrientGapSection belowRows={belowRows} contributions={result.contributions} />
+        {v3Enabled && patient.isHospitalized && hospital.feedingRoute === 'parenteral' && (
+          <ParenteralNutritionSection
+            species={patient.species ?? 'dog'}
+            currentWeightKg={patient.currentWeight ?? 0}
+            targetKcalDay={target.targetEnergy ?? 0}
+            hospital={hospital}
+            onChange={setHospital}
+          />
+        )}
         {result.evaluation.alerts.length > 0 && <section className="rounded-2xl border border-amber-500/30 bg-amber-500/[0.07] p-5"><h2 className="flex items-center gap-2 font-semibold"><AlertTriangle className="h-5 w-5 text-amber-600" /> Pontos para revisão</h2><ul className="mt-3 space-y-2 text-sm text-muted-foreground">{result.evaluation.alerts.map((alert) => <li key={alert}>• {alert}</li>)}</ul></section>}
         <div className="flex justify-between border-t border-border/60 pt-4"><Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/formulation`)} className="gap-2"><ChevronLeft className="h-4 w-4" /> Anterior</Button><Button onClick={() => navigate(`${NEW_ROUTE}/feeding`)} className="gap-2">Próximo: Alimentação <ChevronRight className="h-4 w-4" /></Button></div>
       </CardContent>
