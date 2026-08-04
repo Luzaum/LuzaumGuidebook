@@ -1,4 +1,5 @@
 import { getEnergyRule, getFoodById, getNutrientDefinition, getRequirementById } from './genutriData'
+import { isCalculationEngineV3Enabled } from './nutritionCalculationBridge'
 import type {
   DietEvaluation,
   DietFormulaEntry,
@@ -42,11 +43,14 @@ function round(value: number | null | undefined, decimals = 4): number | null {
   return Math.round(value * factor) / factor
 }
 
-function normalizeEntries(entries: DietFormulaEntry[]): DietFormulaEntry[] {
+function normalizeEntries(entries: DietFormulaEntry[], allowSilentNormalization = true): DietFormulaEntry[] {
   const positiveEntries = entries.filter((entry) => entry.inclusionPct > 0)
   const total = positiveEntries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
   if (!total) {
     return []
+  }
+  if (!allowSilentNormalization && Math.abs(total - 100) > 0.05) {
+    return positiveEntries
   }
   return positiveEntries.map((entry) => ({
     ...entry,
@@ -162,7 +166,10 @@ export function computeDietPlan(options: {
   requirementProfileId?: string
   additionalRequirementProfileIds?: string[]
 }): DietComputationResult {
-  const normalizedEntries = normalizeEntries(options.entries)
+  const normalizedEntries = normalizeEntries(
+    options.entries,
+    !isCalculationEngineV3Enabled(),
+  )
   const foods = normalizedEntries
     .map((entry) => ({ entry, food: getFoodById(entry.foodId) }))
     .filter((item): item is { entry: DietFormulaEntry; food: FoodItem } => Boolean(item.food))
@@ -287,6 +294,14 @@ export function computeDietPlan(options: {
   )
 
   const alerts: string[] = []
+  if (isCalculationEngineV3Enabled()) {
+    const proportionTotal = options.entries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
+    if (options.entries.length > 0 && Math.abs(proportionTotal - 100) > 0.05) {
+      alerts.push(
+        `Proporções somam ${proportionTotal.toFixed(1)}% — ajuste para 100% ou use "Distribuir igualmente" antes de concluir.`,
+      )
+    }
+  }
   if (!normalizedEntries.length) {
     alerts.push('Nenhum alimento foi selecionado.')
   }
