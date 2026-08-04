@@ -272,20 +272,33 @@ export interface NutritionClinicalRecord {
   targetWeightMethod?: string
 }
 
+export type DietTransitionSpecialSituation =
+  | 'none'
+  | 'immediate'
+  | 'prolonged'
+  | 'suspended_intolerance'
+
 export interface DietTransitionConfig {
   enabled: boolean
   previousDietName?: string
   previousKcalPerGram?: number
   previousGramsPerDay?: number
+  newDietName?: string
+  newKcalPerGram?: number
   durationDays?: number
+  planMode?: 'standard' | 'custom'
   customRows?: Array<{ day: number; previousDietPercent: number; newDietPercent: number }>
+  specialSituation?: DietTransitionSpecialSituation
+  immediateJustification?: string
 }
 
 export interface HydrationPlanConfig {
-  selectedMethod?: 'energy_based' | 'species_based' | 'manual'
+  selectedMethod?: 'energy_based' | 'species_based' | 'manual' | 'none'
   manualTargetMlDay?: number
   manualReason?: string
+  voluntarilyConsumedWaterKnown?: boolean
   voluntarilyConsumedWaterMlDay?: number
+  enteralFlushWaterMlDay?: number
 }
 
 export interface BuildClinicalSnapshotInput {

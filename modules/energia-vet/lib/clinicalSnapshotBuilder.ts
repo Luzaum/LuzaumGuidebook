@@ -98,6 +98,7 @@ function buildHydrationSnapshot(
   hydrationConfig?: BuildClinicalSnapshotInput['hydration'],
 ): NutritionHydrationSnapshot | undefined {
   if (prescribedKcal <= 0) return undefined
+  if (hydrationConfig?.selectedMethod === 'none') return undefined
 
   const species = report.patient.species ?? 'dog'
   const energyBased = estimateWaterFromEnergy(prescribedKcal)
@@ -127,8 +128,9 @@ function buildHydrationSnapshot(
   }
 
   const metabolicWater = calculateMetabolicWaterMl(fatG, carbG, proteinG)
-  const voluntary = hydrationConfig?.voluntarilyConsumedWaterMlDay
-  const flush = enteralFlushMl ?? 0
+  const voluntaryKnown = hydrationConfig?.voluntarilyConsumedWaterKnown === true
+  const voluntary = voluntaryKnown ? hydrationConfig?.voluntarilyConsumedWaterMlDay : undefined
+  const flush = enteralFlushMl ?? hydrationConfig?.enteralFlushWaterMlDay ?? 0
   const gap = calculateOralWaterGap({
     targetWaterMl: selectedTarget,
     foodWaterMl: foodWater,
@@ -264,6 +266,8 @@ function buildParenteralSnapshot(
     proteinGramsPer100Kcal: proteinTarget,
     infusionHours: report.hospital?.infusionHoursPerDay ?? 24,
     additionalFluidMlDay: report.hospital?.additionalFluidMlDay,
+    vascularAccess: report.hospital?.vascularAccess ?? 'not_defined',
+    peripheralOsmolarityLimitMosmL: report.hospital?.peripheralOsmolarityLimitMosmL,
   })
 
   return {
@@ -291,6 +295,7 @@ function buildParenteralSnapshot(
     infusionHours: report.hospital?.infusionHoursPerDay ?? 24,
     infusionRateMlHour: pn.pnRateMlHour,
     glucoseInfusionRateMgKgMin: pn.glucoseInfusionRateMgKgMin,
+    estimatedOsmolarityMosmL: pn.estimatedOsmolarityMosmL ?? undefined,
     vascularAccess: report.hospital?.vascularAccess ?? 'not_defined',
     warnings: [
       ...pn.alerts,
