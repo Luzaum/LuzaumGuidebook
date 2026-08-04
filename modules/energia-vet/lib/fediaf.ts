@@ -4,6 +4,7 @@ import type {
   RequirementProfile,
   Species,
 } from '../types'
+import { resolveRequirementProfileIdForEnergyState } from './profileBridge'
 
 function num(value: number, raw?: string | number): NutrientTargetValue {
   return { kind: 'number', raw: raw ?? value, value }
@@ -556,6 +557,9 @@ export function getDefaultFediafStateId(species: Species, isNeutered: boolean): 
 }
 
 export function getDefaultRequirementProfileIdForState(species: Species, stateId?: string, isNeutered?: boolean): string {
+  const bridged = resolveRequirementProfileIdForEnergyState(species, stateId, isNeutered)
+  if (bridged) return bridged
+
   const state = stateId ? getFediafPhysiologicStateById(stateId) : undefined
   if (state?.defaultRequirementProfileId) {
     return state.defaultRequirementProfileId

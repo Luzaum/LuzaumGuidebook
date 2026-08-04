@@ -2,7 +2,8 @@ import { Download, Printer } from 'lucide-react'
 import { Button } from './ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import type { StoredCalculationReport } from '../types'
-import { buildVetiusNutritionPdfFilename, exportReportPdf, printReportPdf } from '../lib/reportDocument'
+import { buildVetiusNutritionPdfFilename, exportReportPdf, exportTechnicalReportPdf, exportTutorPlanPdf, printReportPdf, printTechnicalReportPdf, printTutorPlanPdf } from '../lib/reportDocument'
+import { isCalculationEngineV3Enabled } from '../lib/nutritionCalculationBridge'
 import { buildPrintableReportViewModel } from '../lib/reportPresentation'
 import PrintableReportDocument from './PrintableReportDocument'
 
@@ -12,6 +13,7 @@ function FieldGrid({ fields }: { fields: Array<{ label: string; value: string }>
 
 export default function ReportDetailView({ report }: { report: StoredCalculationReport }) {
   const vm = buildPrintableReportViewModel(report)
+  const v3Enabled = isCalculationEngineV3Enabled()
 
   return (
     <div className="space-y-5">
@@ -22,7 +24,21 @@ export default function ReportDetailView({ report }: { report: StoredCalculation
           <CardHeader className="border-b border-border p-5 lg:p-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div className="min-w-0"><p className="text-xs font-semibold uppercase tracking-[0.14em] text-primary">Relatório nutricional</p><CardTitle className="mt-1 text-2xl">{report.patient.name || 'Paciente sem nome'}</CardTitle><p className="mt-1 text-sm text-muted-foreground">Salvo em {new Date(report.createdAt).toLocaleString('pt-BR')}</p><p className="mt-2 max-w-xl truncate text-[11px] text-muted-foreground">{buildVetiusNutritionPdfFilename(report)}</p></div>
-              <div className="flex flex-wrap gap-2"><Button variant="outline" className="gap-2" onClick={() => printReportPdf(report)}><Printer className="h-4 w-4" /> Imprimir</Button><Button className="gap-2" onClick={() => exportReportPdf(report)}><Download className="h-4 w-4" /> Exportar PDF</Button></div>
+              <div className="flex flex-wrap gap-2">
+                {v3Enabled ? (
+                  <>
+                    <Button variant="outline" className="gap-2" onClick={() => printTutorPlanPdf(report)}><Printer className="h-4 w-4" /> Imprimir plano para o tutor</Button>
+                    <Button className="gap-2" onClick={() => exportTutorPlanPdf(report)}><Download className="h-4 w-4" /> Baixar plano para o tutor</Button>
+                    <Button variant="outline" className="gap-2" onClick={() => printTechnicalReportPdf(report)}><Printer className="h-4 w-4" /> Imprimir relatório técnico</Button>
+                    <Button variant="outline" className="gap-2" onClick={() => exportTechnicalReportPdf(report)}><Download className="h-4 w-4" /> Baixar relatório técnico</Button>
+                  </>
+                ) : (
+                  <>
+                    <Button variant="outline" className="gap-2" onClick={() => printReportPdf(report)}><Printer className="h-4 w-4" /> Imprimir</Button>
+                    <Button className="gap-2" onClick={() => exportReportPdf(report)}><Download className="h-4 w-4" /> Exportar PDF</Button>
+                  </>
+                )}
+              </div>
             </div>
           </CardHeader>
           <CardContent className="space-y-5 p-5 lg:p-6">

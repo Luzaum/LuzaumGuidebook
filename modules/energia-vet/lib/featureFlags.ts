@@ -9,6 +9,9 @@ export type NutritionFeatureFlag =
   | 'nutrition_hospital_v2'
   | 'nutrition_pdf_v2'
   | 'nutrition_recipe_engine_v2'
+  | 'nutrition_supplement_catalog'
+  | 'nutrition_human_omega3'
+  | 'nutrition_calculation_engine_v3'
 
 const DEFAULT_FLAGS: Record<NutritionFeatureFlag, boolean> = {
   nutrition_catalog_v2: false,
@@ -16,6 +19,9 @@ const DEFAULT_FLAGS: Record<NutritionFeatureFlag, boolean> = {
   nutrition_hospital_v2: false,
   nutrition_pdf_v2: false,
   nutrition_recipe_engine_v2: false,
+  nutrition_supplement_catalog: false,
+  nutrition_human_omega3: false,
+  nutrition_calculation_engine_v3: false,
 }
 
 /** Overrides em runtime (ex.: painel admin, query param de dev). */
@@ -56,6 +62,9 @@ export function getNutritionFeatureFlags(): Record<NutritionFeatureFlag, boolean
     nutrition_hospital_v2: isNutritionFeatureEnabled('nutrition_hospital_v2'),
     nutrition_pdf_v2: isNutritionFeatureEnabled('nutrition_pdf_v2'),
     nutrition_recipe_engine_v2: isNutritionFeatureEnabled('nutrition_recipe_engine_v2'),
+    nutrition_supplement_catalog: isNutritionFeatureEnabled('nutrition_supplement_catalog'),
+    nutrition_human_omega3: isNutritionFeatureEnabled('nutrition_human_omega3'),
+    nutrition_calculation_engine_v3: isNutritionFeatureEnabled('nutrition_calculation_engine_v3'),
   }
 }
 

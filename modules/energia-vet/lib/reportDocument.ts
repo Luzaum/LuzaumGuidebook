@@ -11,6 +11,14 @@ import {
   buildOutpatientNutritionPdfDoc,
   buildOutpatientNutritionPdfFilename,
 } from './pdf/outpatientNutritionPdf'
+import {
+  buildNutritionPdfV5Doc,
+  buildNutritionPdfV5Filename,
+  exportNutritionPdfV5,
+  printNutritionPdfV5,
+} from '../pdf-v5/pdfV5Document'
+import type { NutritionPdfMode } from '../pdf-v5/types'
+import { getCalculationSnapshotByReportId } from './calculationPersistenceV2'
 
 /** Segmento seguro para nome de ficheiro (ASCII, maiúsculas, underscores). */
 function slugifyFilenameSegment(value: string | null | undefined, fallback: string) {
@@ -39,7 +47,10 @@ function formatFilenameDate(iso: string) {
  * Nome do ficheiro PDF: VETIUS_NUTRICAO_PACIENTE_TUTOR_YYYY-MM-DD.pdf
  * ("NUTRICAO" = forma ASCII de NUTRIÇÃO, compatível com mais sistemas e anexos.)
  */
-export function buildVetiusNutritionPdfFilename(report: StoredCalculationReport): string {
+export function buildVetiusNutritionPdfFilename(report: StoredCalculationReport, mode?: NutritionPdfMode): string {
+  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    return buildNutritionPdfV5Filename(report, mode ?? 'tutor_plan')
+  }
   if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
     return buildOutpatientNutritionPdfFilename(report)
   }
@@ -289,7 +300,15 @@ function renderFeedingSheetBlock(
   return getLastTableFinalY(doc)
 }
 
-function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
+function resolveV5Snapshot(report: StoredCalculationReport) {
+  if (typeof window === 'undefined') return undefined
+  return getCalculationSnapshotByReportId(report.id)
+}
+
+function buildNutritionReportPdfDoc(report: StoredCalculationReport, mode: NutritionPdfMode = 'tutor_plan'): jsPDF {
+  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    return buildNutritionPdfV5Doc(report, mode, { snapshot: resolveV5Snapshot(report) })
+  }
   if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
     return buildOutpatientNutritionPdfDoc(report)
   }
@@ -450,11 +469,35 @@ function buildNutritionReportPdfDoc(report: StoredCalculationReport): jsPDF {
 
 /** Gera o mesmo PDF que “Exportar PDF” e descarrega o ficheiro. */
 export function exportReportPdf(report: StoredCalculationReport) {
+  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    exportNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
+    return
+  }
   const doc = buildNutritionReportPdfDoc(report)
   doc.save(buildVetiusNutritionPdfFilename(report))
 }
 
+export function exportTutorPlanPdf(report: StoredCalculationReport) {
+  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    exportReportPdf(report)
+    return
+  }
+  exportNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
+}
+
+export function exportTechnicalReportPdf(report: StoredCalculationReport) {
+  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    exportReportPdf(report)
+    return
+  }
+  exportNutritionPdfV5(report, 'technical_report', { snapshot: resolveV5Snapshot(report) })
+}
+
 export function printReportPdf(report: StoredCalculationReport) {
+  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    printNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
+    return
+  }
   const doc = buildNutritionReportPdfDoc(report)
   const blob = doc.output('blob')
   const url = URL.createObjectURL(blob)
@@ -474,4 +517,20 @@ export function printReportPdf(report: StoredCalculationReport) {
   }
   win.addEventListener('load', () => window.setTimeout(tryPrint, 400))
   window.setTimeout(tryPrint, 1200)
+}
+
+export function printTutorPlanPdf(report: StoredCalculationReport) {
+  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    printReportPdf(report)
+    return
+  }
+  printNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
+}
+
+export function printTechnicalReportPdf(report: StoredCalculationReport) {
+  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
+    printReportPdf(report)
+    return
+  }
+  printNutritionPdfV5(report, 'technical_report', { snapshot: resolveV5Snapshot(report) })
 }

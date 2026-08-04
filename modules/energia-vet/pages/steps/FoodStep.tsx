@@ -9,25 +9,22 @@ import { Label } from '../../components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../../components/ui/select'
 import { Badge } from '../../components/ui/badge'
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../../components/ui/tooltip'
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from '../../components/ui/dialog'
+import { FoodDetailDialog, FoodInfoButton } from '../../components/FoodDetailDialog'
 import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getDefaultRequirement } from '../../lib/genutriData'
 import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
-import type { DietFormulaEntry, DietType } from '../../types'
+import type { DietFormulaEntry } from '../../types'
 import {
   filterFoods,
   formatKcal,
   formatNutrient,
-  getDetailNutrientsForBasis,
   getFoodById,
-  getFoodCategories,
-  resolveFoodTypeFilter,
+  getFoodDisplayName,
 } from './foodStepUtils'
 import { MEALS_OPTIONS } from '../../lib/nutrition'
 import { cn } from '../../lib/utils'
 import { EnergyPartitionChart } from '../../components/EnergyPartitionChart'
-import { DIET_CATALOG_TITLE, DietTypeCards } from '../../components/DietTypeCards'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
 
@@ -44,24 +41,20 @@ export default function FoodStep() {
   )
   const requirementProfileId = diet.requirementProfileId ?? defaultRequirement?.id ?? ''
 
-  const [dietType, setDietType] = useState<DietType>(diet.dietType ?? 'commercial')
-  const [mealsPerDay, setMealsPerDay] = useState<number>(diet.mealsPerDay ?? 2)
   const [searchQuery, setSearchQuery] = useState('')
-  const [categoryFilter, setCategoryFilter] = useState<string>('all')
+  const [mealsPerDay, setMealsPerDay] = useState<number>(diet.mealsPerDay ?? 2)
   const [entries, setEntries] = useState<DietFormulaEntry[]>(diet.entries ?? [])
   const [detailsFoodId, setDetailsFoodId] = useState<string | null>(null)
 
-  const categories = useMemo(() => getFoodCategories(), [])
   const additionalRequirementProfileIds = useMemo(
     () => getClinicalProfileIdsFromSelections(species, patient.comorbidityIds ?? []),
     [patient.comorbidityIds, species],
   )
 
-  const visibleFoods = useMemo(() => {
-    const typeFilter = resolveFoodTypeFilter(dietType)
-    const base = filterFoods({ species, query: searchQuery, category: categoryFilter === 'all' ? undefined : categoryFilter })
-    return typeFilter ? base.filter((food) => typeFilter.includes(food.foodType)) : base
-  }, [categoryFilter, dietType, searchQuery, species])
+  const visibleFoods = useMemo(
+    () => filterFoods({ species, query: searchQuery }),
+    [searchQuery, species],
+  )
 
   const selectedFoods = useMemo(
     () =>
@@ -232,8 +225,10 @@ export default function FoodStep() {
   const handleNext = () => {
     if (!preview) return
     setDiet({
-      dietType, mealsPerDay, targetEnergy,
-        entries,
+      dietType: 'hybrid',
+      mealsPerDay,
+      targetEnergy,
+      entries,
       totalDryMatterGrams: preview.totalDryMatterGrams,
       totalAsFedGrams: preview.totalAsFedGrams,
       gramsPerDay: preview.totalAsFedGrams,
@@ -260,8 +255,6 @@ export default function FoodStep() {
             {/* ─── COLUNA ESQUERDA ─── */}
             <div className="space-y-5 min-w-0 px-6 pt-6 pb-6 xl:overflow-y-auto xl:max-h-[calc(100svh-220px)]">
 
-              <DietTypeCards value={dietType} onChange={setDietType} />
-
               {/* Filtros de busca */}
               <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4 space-y-3">
                 <div className="relative">
@@ -273,24 +266,13 @@ export default function FoodStep() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                   />
                 </div>
-                <div className="grid grid-cols-1 gap-3">
-                  <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                    <SelectTrigger className="rounded-xl border-border bg-card text-sm dark:border-white/10 dark:bg-[#221a19]">
-                      <SelectValue>{categoryFilter === 'all' ? 'Todas as categorias' : categoryFilter}</SelectValue>
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">Todas</SelectItem>
-                      {categories.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
-                    </SelectContent>
-                  </Select>
-                </div>
               </div>
 
               {/* Catálogo de alimentos */}
               <div className="rounded-2xl border border-border bg-muted/40 dark:border-white/10 dark:bg-[#171212] p-4">
                 <div className="flex items-center justify-between mb-3">
                   <p className="text-sm font-semibold text-foreground dark:text-white">
-                    {DIET_CATALOG_TITLE[dietType]} — {visibleFoods.length} opções
+                    Catálogo — {visibleFoods.length} opções
                   </p>
                   <Badge variant="outline" className="text-xs">{species === 'dog' ? 'Cão' : 'Gato'}</Badge>
                 </div>
@@ -304,13 +286,11 @@ export default function FoodStep() {
                       >
                         <div className="flex items-start justify-between gap-2">
                           <div className="min-w-0 flex-1">
-                            <p className="text-sm font-medium text-foreground dark:text-white truncate">{food.name}</p>
+                            <p className="text-sm font-medium text-foreground dark:text-white truncate">{getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}</p>
                             <p className="text-xs text-muted-foreground mt-0.5">{food.categoryNormalized ?? 'Sem categoria'}</p>
                           </div>
                           <div className="flex items-center gap-1.5 shrink-0">
-                            <Button variant="ghost" size="sm" className="h-7 px-2 text-xs text-muted-foreground" onClick={() => setDetailsFoodId(food.id)}>
-                              Info
-                            </Button>
+                            <FoodInfoButton food={food} onOpen={() => setDetailsFoodId(food.id)} />
                             <Button size="sm" className="h-7 px-2 text-xs gap-1" onClick={() => addFood(food.id)} disabled={alreadyAdded}>
                               <Plus className="h-3 w-3" />{alreadyAdded ? 'Adicionado' : 'Add'}
                             </Button>
@@ -420,11 +400,14 @@ export default function FoodStep() {
                     >
                       <RefreshCw className="h-3.5 w-3.5" /> Completar para 100%
                     </Button>
-                    {lastEditedFoodId && (
+                    {lastEditedFoodId && (() => {
+                      const preserved = getFoodById(lastEditedFoodId)
+                      return (
                       <p className="text-[10px] text-muted-foreground">
-                        Preserva: <span className="text-orange-300/70">{getFoodById(lastEditedFoodId)?.name ?? lastEditedFoodId}</span>
+                        Preserva: <span className="text-orange-300/70">{getFoodDisplayName(preserved?.name ?? lastEditedFoodId, preserved ? { id: preserved.id, foodType: preserved.foodType } : { id: lastEditedFoodId })}</span>
                       </p>
-                    )}
+                      )
+                    })()}
                   </div>
                 )}
 
@@ -472,7 +455,7 @@ export default function FoodStep() {
                           {/* Cabeçalho do alimento */}
                           <div className="flex items-start justify-between gap-2">
                             <div className="min-w-0 flex-1">
-                              <p className="text-sm font-semibold text-foreground dark:text-white truncate">{food.name}</p>
+                              <p className="text-sm font-semibold text-foreground dark:text-white truncate">{getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}</p>
                               <p className="text-xs text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'} · MS: {formatNutrient(food.nutrientsAsFed.dryMatterPct, '%', 1)}</p>
                             </div>
                             <Button variant="ghost" size="icon" className="h-7 w-7 shrink-0" onClick={() => removeFood(food.id)}>
@@ -765,52 +748,7 @@ export default function FoodStep() {
         </CardContent>
       </Card>
 
-      {/* Modal informações nutricionais */}
-      <Dialog open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)}>
-        <DialogContent className="flex max-h-[90vh] min-h-0 w-[min(96vw,860px)] max-w-[860px] flex-col gap-4 overflow-hidden border border-orange-400/20 bg-card p-4 sm:max-w-[860px] dark:bg-[#141010]">
-          <DialogHeader className="shrink-0 pr-10 text-left">
-            <DialogTitle className="text-foreground dark:text-white">{detailsFood?.name ?? 'Informações nutricionais'}</DialogTitle>
-          </DialogHeader>
-
-          {detailsFood && (
-            <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-y-contain pr-1 [-webkit-overflow-scrolling:touch]">
-              <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
-                <p className="text-xs text-muted-foreground">Categoria</p>
-                <p className="mt-1 font-semibold text-foreground dark:text-white">{detailsFood.categoryNormalized ?? '—'}</p>
-              </div>
-
-              <div className="grid gap-4 xl:grid-cols-2">
-                {[
-                  { title: 'Matéria natural (como fornecido)', basis: detailsFood.nutrientsAsFed },
-                  { title: 'Matéria seca', basis: detailsFood.nutrientsDryMatter },
-                ].map(({ title, basis }) => (
-                  <div key={title} className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-[#1c1514]">
-                    <p className="text-sm font-semibold text-foreground dark:text-white mb-3">{title}</p>
-                    <div className="space-y-1.5">
-                      {getDetailNutrientsForBasis(basis).map((nutrient) => (
-                        <div
-                          key={nutrient.key}
-                          className="flex items-center justify-between rounded-lg border border-border/60 px-3 py-2 dark:border-white/5"
-                        >
-                          <p className="text-xs text-muted-foreground">{nutrient.label}</p>
-                          <p className="text-xs font-medium text-foreground dark:text-white">{formatNutrient(basis[nutrient.key], nutrient.unit)}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {detailsFood.notes.length > 0 && (
-                <div className="rounded-xl border border-border bg-muted/40 px-4 py-3 dark:border-white/10 dark:bg-[#1c1514]">
-                  <p className="text-xs text-muted-foreground">Observações</p>
-                  <p className="mt-1 text-sm text-foreground dark:text-white">{detailsFood.notes.join(' · ')}</p>
-                </div>
-              )}
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      <FoodDetailDialog food={detailsFood} open={!!detailsFood} onOpenChange={(open) => !open && setDetailsFoodId(null)} />
     </>
   )
 }

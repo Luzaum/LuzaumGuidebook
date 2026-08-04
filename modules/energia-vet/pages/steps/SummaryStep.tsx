@@ -11,7 +11,19 @@ import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getFoodById, getNutrientDefinition, getRequirementById } from '../../lib/genutriData'
 import { getSavedReports, saveReport } from '../../lib/persistence'
-import { exportReportPdf, printReportPdf } from '../../lib/reportDocument'
+import { buildCalculationSnapshotV2, saveCalculationSnapshotV2 } from '../../lib/calculationPersistenceV2'
+import {
+  exportReportPdf,
+  exportTechnicalReportPdf,
+  exportTutorPlanPdf,
+  printReportPdf,
+  printTechnicalReportPdf,
+  printTutorPlanPdf,
+} from '../../lib/reportDocument'
+import { buildClinicalRecordForSave } from '../../pdf-v5/clinicalRecordBuilder'
+import { syncClinicalSnapshot } from '../../lib/sync/nutritionCalculationSyncService'
+import { isCalculationEngineV3Enabled } from '../../lib/nutritionCalculationBridge'
+import { evaluateDietAgainstTherapeuticProfiles } from '../../lib/nutritionTherapeuticBridge'
 import { calculateRefeedingRisk, getPhysiologicStateById, getProgressionPlan3Days, getProgressionPlan4Days } from '../../lib/nutrition'
 import { getClinicalProfileBadges, getHumanRequirementLabel } from '../../lib/clinicalProfiles'
 import { buildProgrammedFeedingPlan } from '../../lib/programmedFeeding'
@@ -72,6 +84,7 @@ export default function SummaryStep() {
 
   const species = patient.species ?? 'dog'
   const currentWeight = patient.currentWeight ?? 0
+  const v3Enabled = isCalculationEngineV3Enabled()
   const physiologicStateLabel = energy.resolvedProfileLabel ?? getPhysiologicStateById(energy.stateId ?? '')?.label ?? 'Não informado'
   const requirementLabel = getHumanRequirementLabel(getRequirementById(diet.requirementProfileId))
   const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
@@ -89,6 +102,16 @@ export default function SummaryStep() {
       additionalRequirementProfileIds: diet.additionalRequirementProfileIds,
     })
   }, [currentWeight, diet.additionalRequirementProfileIds, diet.entries, diet.mealsPerDay, diet.requirementProfileId, isQuickDiet, patient.name, species, target.targetEnergy])
+
+  const therapeuticReview = useMemo(() => {
+    if (!v3Enabled || !result) return null
+    return evaluateDietAgainstTherapeuticProfiles({
+      species,
+      comorbidityIds: patient.comorbidityIds,
+      evaluation: result.evaluation,
+      totalDryMatterGrams: result.totalDryMatterGrams,
+    })
+  }, [patient.comorbidityIds, result, species, v3Enabled])
 
   const generatedFeedingDates = useMemo(() => {
     const start = new Date(`${programmedStartDate}T00:00:00`)
@@ -147,8 +170,9 @@ export default function SummaryStep() {
         feedingPlan: result.feedingPlan,
         programmedFeeding: programmedFeeding ?? undefined,
       },
+      therapeuticReview: therapeuticReview ?? undefined,
     }
-  }, [diet, energy, hospital, isQuickDiet, patient, programmedFeeding, result, target])
+  }, [diet, energy, hospital, isQuickDiet, patient, programmedFeeding, result, target, therapeuticReview])
 
   const summaryItems = useMemo(() => {
     if (!result) return [] as Array<{ label: string; value: string }>
@@ -198,17 +222,43 @@ export default function SummaryStep() {
       navigate(MODULE_ROUTE)
       return
     }
-    const reportToSave = { ...printableReport, id: crypto.randomUUID(), createdAt: new Date().toISOString() }
-    
-    // Always save locally first
-    saveReport(reportToSave)
-    
+    const reportId = crypto.randomUUID()
+    const reportToSave = {
+      ...printableReport,
+      id: reportId,
+      createdAt: new Date().toISOString(),
+      therapeuticReview: therapeuticReview ?? undefined,
+    }
+
+    if (v3Enabled) {
+      const snapshot = buildCalculationSnapshotV2({
+        patient,
+        energy,
+        target,
+        therapeuticReview: therapeuticReview ?? undefined,
+        reportId,
+      })
+      if (snapshot) {
+        saveCalculationSnapshotV2(snapshot)
+        reportToSave.clinicalRecord = buildClinicalRecordForSave(reportToSave, snapshot)
+      }
+    }
+
+    saveReport(reportToSave, { preferV5: true })
+
+    if (v3Enabled && reportToSave.clinicalRecord) {
+      await syncClinicalSnapshot({
+        report: reportToSave,
+        clinicalRecord: reportToSave.clinicalRecord,
+      })
+    }
+
     try {
       await saveNutritionReportToSupabase(reportToSave)
       await migrateLocalReportsToSupabase(getSavedReports())
-      toast.success('Resumo salvo e sincronizado.')
+      toast.success(v3Enabled ? 'Plano salvo com segurança.' : 'Resumo salvo e sincronizado.')
     } catch {
-      toast.success('Resumo salvo localmente no navegador.')
+      toast.success(v3Enabled ? 'Plano salvo neste dispositivo.' : 'Resumo salvo localmente no navegador.')
     }
     
     navigate(MODULE_ROUTE)
@@ -236,23 +286,65 @@ export default function SummaryStep() {
                 <p className="mt-1 text-sm text-muted-foreground">Resumo clínico, formulação e alimentação programada.</p>
               </div>
               <div className="flex flex-wrap items-center justify-end gap-2 rounded-xl border border-border/70 bg-muted/35 p-1.5 shadow-sm dark:border-white/10 dark:bg-black/25">
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="gap-2 text-foreground hover:bg-muted/80 dark:text-white dark:hover:bg-white/10"
-                  onClick={() => printableReport && printReportPdf(printableReport)}
-                >
-                  <Printer className="h-4 w-4 shrink-0" />
-                  Imprimir
-                </Button>
-                <Button
-                  size="sm"
-                  className="gap-2"
-                  onClick={() => printableReport && exportReportPdf(printableReport)}
-                >
-                  <Download className="h-4 w-4 shrink-0" />
-                  Exportar PDF
-                </Button>
+                {v3Enabled ? (
+                  <>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2 text-foreground hover:bg-muted/80 dark:text-white dark:hover:bg-white/10"
+                      onClick={() => printableReport && printTutorPlanPdf(printableReport)}
+                    >
+                      <Printer className="h-4 w-4 shrink-0" />
+                      Imprimir plano para o tutor
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="gap-2"
+                      onClick={() => printableReport && exportTutorPlanPdf(printableReport)}
+                    >
+                      <Download className="h-4 w-4 shrink-0" />
+                      Baixar plano para o tutor
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2 text-foreground hover:bg-muted/80 dark:text-white dark:hover:bg-white/10"
+                      onClick={() => printableReport && printTechnicalReportPdf(printableReport)}
+                    >
+                      <Printer className="h-4 w-4 shrink-0" />
+                      Imprimir relatório técnico
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      className="gap-2"
+                      onClick={() => printableReport && exportTechnicalReportPdf(printableReport)}
+                    >
+                      <Download className="h-4 w-4 shrink-0" />
+                      Baixar relatório técnico
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="gap-2 text-foreground hover:bg-muted/80 dark:text-white dark:hover:bg-white/10"
+                      onClick={() => printableReport && printReportPdf(printableReport)}
+                    >
+                      <Printer className="h-4 w-4 shrink-0" />
+                      Imprimir
+                    </Button>
+                    <Button
+                      size="sm"
+                      className="gap-2"
+                      onClick={() => printableReport && exportReportPdf(printableReport)}
+                    >
+                      <Download className="h-4 w-4 shrink-0" />
+                      Exportar PDF
+                    </Button>
+                  </>
+                )}
               </div>
             </div>
           </CardHeader>
@@ -331,6 +423,50 @@ export default function SummaryStep() {
                 })}
               </CardContent>
             </Card>
+
+            {v3Enabled && therapeuticReview && therapeuticReview.activeProfileIds.length > 0 && (
+              <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
+                <CardHeader className="pb-3">
+                  <CardTitle className="text-lg">Adequação terapêutica</CardTitle>
+                  <p className="text-sm text-muted-foreground">
+                    {therapeuticReview.activeProfileIds.length} perfil(is) ativo(s) · regras {therapeuticReview.ruleSetVersion}
+                  </p>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  {therapeuticReview.conflicts.map((conflict) => (
+                    <p key={`${conflict.profileA}-${conflict.profileB}`} className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs text-amber-900 dark:text-amber-200">
+                      {conflict.messagePt}
+                    </p>
+                  ))}
+                  {therapeuticReview.profiles.map((profile) => (
+                    <div key={profile.profileId} className="rounded-2xl border border-border bg-muted/40 p-4 dark:border-white/10 dark:bg-black/10">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <p className="font-semibold text-foreground dark:text-white">{profile.profileName}</p>
+                        <StatusBadge
+                          status={
+                            profile.status === 'adequate'
+                              ? 'adequate'
+                              : profile.status === 'caution'
+                                ? 'above'
+                                : 'insufficient_data'
+                          }
+                        />
+                      </div>
+                      <ul className="mt-3 space-y-1 text-xs text-muted-foreground">
+                        {profile.goals.map((goal) => (
+                          <li key={`${profile.profileId}-${goal.label}`}>{goal.messagePt}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                  {therapeuticReview.monitoringRecommendations.length > 0 && (
+                    <p className="text-xs text-muted-foreground">
+                      Monitoramento sugerido: {therapeuticReview.monitoringRecommendations.join(' · ')}
+                    </p>
+                  )}
+                </CardContent>
+              </Card>
+            )}
 
             <Card className="border-border bg-muted/25 dark:border-white/10 dark:bg-white/[0.03]">
               <CardHeader className="pb-3">
@@ -508,7 +644,7 @@ export default function SummaryStep() {
             </Button>
             <Button size="lg" className="gap-2" onClick={handleSave} id="btn-save-plan">
               {isQuickDiet ? <CheckCircle2 className="h-5 w-5" /> : <Save className="h-5 w-5" />}
-              {isQuickDiet ? 'Concluir sem cadastrar' : 'Salvar resumo'}
+              {isQuickDiet ? 'Concluir sem cadastrar' : v3Enabled ? 'Salvar plano' : 'Salvar resumo'}
             </Button>
           </div>
         </Card>

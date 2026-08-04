@@ -47,8 +47,8 @@ test.afterEach(() => {
   clearNutritionFeatureOverrides()
 })
 
-test('27 perfis terapeuticos V2 cadastrados', () => {
-  assert.equal(THERAPEUTIC_PROFILES.length, 27)
+test('28 perfis terapeuticos V2 cadastrados', () => {
+  assert.equal(THERAPEUTIC_PROFILES.length, 28)
   assert.ok(getTherapeuticProfileById('renal_ckd_dog'))
   assert.ok(getTherapeuticProfileById('urinary_calcium_oxalate_prevention'))
 })
@@ -144,11 +144,11 @@ test('catalogo legado delega avaliacao quando flag clinica ativa', async () => {
   )
 })
 
-test('mapeamento heurístico de comorbidade renal legado', () => {
+test('mapeamento SACN de comorbidade renal', () => {
   const options = resolveActiveTherapeuticProfiles('dog', {
-    comorbidityIds: ['dog:doenca-renal-cronica-caes---ms'],
+    comorbidityIds: ['dog:doen-a-renal-cr-nica-c-es'],
   })
-  assert.ok(options.length >= 0)
+  assert.ok(options.includes('renal_ckd_dog'))
 })
 
 test('motor desligado retorna insufficient_data via catalogo', async () => {

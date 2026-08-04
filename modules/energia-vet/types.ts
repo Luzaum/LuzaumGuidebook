@@ -4,6 +4,20 @@ export type Sex = 'male' | 'female'
 export type BCS = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 export type FeedingRoute = 'oral' | 'tube' | 'parenteral' | 'undefined'
 
+export type MuscleCondition = 'normal' | 'mild_loss' | 'moderate_loss' | 'severe_loss'
+
+export interface PatientDietHistory {
+  documented: boolean
+  reliable?: boolean
+  weightStable?: boolean
+  daysRecorded?: number
+  mainFoodKcalPerDay?: number
+  treatsKcalPerDay?: number
+  chewsKcalPerDay?: number
+  medicationVehicleKcalPerDay?: number
+  supplementsKcalPerDay?: number
+}
+
 export interface Patient {
   id: string
   name: string
@@ -21,6 +35,13 @@ export interface Patient {
   clinicalNotes?: string
   comorbidityIds?: string[]
   registrationMode?: 'registered' | 'quick'
+  muscleCondition?: MuscleCondition
+  activityHoursPerDay?: number
+  activityImpact?: 'low' | 'high'
+  highImpactHoursPerDay?: number
+  previousHealthyWeightKg?: number
+  expectedAdultWeightKg?: number
+  dietHistory?: PatientDietHistory
   createdAt: string
   updatedAt: string
 }
@@ -200,6 +221,8 @@ export interface DietPlan {
   gramsPerDay?: number
   formulationMode?: 'manual' | 'complement'
   programmedFeeding?: ProgrammedFeedingPlan
+  dietTransition?: import('./clinicalSnapshotTypes').DietTransitionConfig
+  hydrationPlan?: import('./clinicalSnapshotTypes').HydrationPlanConfig
 }
 
 export interface DietNutrientBreakdown {
@@ -237,6 +260,7 @@ export interface FoodContribution {
   gramsDryMatter: number
   gramsAsFed: number
   deliveredKcal: number
+  moisturePct?: number
 }
 
 export interface EvaluatedNutrient {
@@ -321,6 +345,21 @@ export interface HospitalNutritionPlan {
   hasVomiting?: boolean
   hasDiarrhea?: boolean
   feedingRoute?: FeedingRoute
+  energyDensityKcalPerMl?: number
+  administrationMode?: 'bolus' | 'intermittent' | 'continuous'
+  infusionHoursPerDay?: number
+  flushVolumeMl?: number
+  additionalFluidMlDay?: number
+  deliveredKcalDay?: number
+  cumulativeDeficitKcal?: number
+  vascularAccess?: 'peripheral' | 'central' | 'not_defined'
+  tolerance?: {
+    vomiting?: boolean
+    regurgitation?: boolean
+    diarrhea?: boolean
+    abdominalDistension?: boolean
+    tubeComplication?: boolean
+  }
   electrolytes?: {
     phosphorus?: number
     potassium?: number
@@ -332,6 +371,8 @@ export interface HospitalNutritionPlan {
   progressionProtocol?: '3_days' | '4_days'
   progressionPlan?: RefeedingPlan[]
   clinicalNotes?: string
+  peripheralOsmolarityLimitMosmL?: number
+  parenteralReviewConfirmed?: boolean
 }
 
 export interface RefeedingPlan {
@@ -352,6 +393,35 @@ export interface ReportProvenance {
   migratedAt?: string
 }
 
+export interface TherapeuticProfileDietReview {
+  profileId: string
+  profileName: string
+  ruleSetVersion: string
+  goals: Array<{ label: string; status: string; messagePt: string }>
+  status: 'adequate' | 'caution' | 'insufficient_data'
+}
+
+export interface TherapeuticDietReview {
+  activeProfileIds: string[]
+  ruleSetVersion: string
+  profiles: TherapeuticProfileDietReview[]
+  conflicts: Array<{ profileA: string; profileB: string; messagePt: string }>
+  monitoringRecommendations: string[]
+  overallStatus: 'adequate' | 'caution' | 'insufficient_data' | 'none'
+}
+
+/** @see clinicalSnapshotTypes.ts */
+export type {
+  NutritionClinicalRecord,
+  DietTransitionConfig,
+  HydrationPlanConfig,
+  NutritionTransitionSnapshot,
+  NutritionHydrationSnapshot,
+  NutritionEnteralSnapshot,
+  NutritionParenteralSnapshot,
+  NutritionRefeedingSnapshot,
+} from './clinicalSnapshotTypes'
+
 export interface StoredCalculationReport {
   id: string
   patientKey?: string
@@ -369,6 +439,8 @@ export interface StoredCalculationReport {
   }
   /** Presente apenas em relatórios V5; relatórios V4 permanecem sem este campo. */
   provenance?: ReportProvenance
+  therapeuticReview?: TherapeuticDietReview
+  clinicalRecord?: NutritionClinicalRecord
 }
 
 export interface Report {

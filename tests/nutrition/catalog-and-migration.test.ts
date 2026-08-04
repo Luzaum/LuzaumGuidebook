@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
 import { getCatalogDatasetStats, legacyGenutriCatalogAdapter } from '../../modules/energia-vet/lib/catalog'
+import { filterFoods } from '../../modules/energia-vet/lib/genutriData'
 import { convertPercentMnToMs, normalizeNutrientValue } from '../../modules/energia-vet/lib/catalog/nutrientNormalizer'
 import {
   clearNutritionFeatureOverrides,
@@ -45,16 +46,17 @@ test('ensureReportProvenance não altera relatório já v5', () => {
   assert.equal(again.provenance?.schemaVersion, 5)
 })
 
-test('catálogo legado retorna 292 alimentos na busca', async () => {
+test('catálogo legado retorna alimentos visíveis na busca', async () => {
+  const visibleCount = filterFoods({}).length
   const result = await legacyGenutriCatalogAdapter.search({})
-  assert.equal(result.total, 292)
+  assert.equal(result.total, visibleCount)
   assert.equal(result.source, 'legacy_genutri')
 })
 
 test('getCatalogDatasetStats reflete dataset real', () => {
   const stats = getCatalogDatasetStats()
-  assert.equal(stats.foods, 292)
-  assert.equal(stats.bySource.legacy_genutri, 292)
+  assert.equal(stats.foods, 580)
+  assert.equal(stats.bySource.legacy_genutri, 580)
 })
 
 test('normalizer não converte ausente em zero', () => {

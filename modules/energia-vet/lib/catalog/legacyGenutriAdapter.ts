@@ -1,5 +1,5 @@
 import type { FoodItem } from '../../types'
-import { filterFoods, GENUTRI_FOODS, getFoodById, getDatasetStats } from '../genutriData'
+import { filterFoods, GENUTRI_FOODS, getFoodById, getDatasetStats, getFoodDisplayName } from '../genutriData'
 import { evaluateTherapeuticFoodAssessment } from '../clinical/clinicalRuleEngine'
 import { isNutritionFeatureEnabled } from '../featureFlags'
 import type {
@@ -15,7 +15,15 @@ import type {
   TherapeuticFoodAssessment,
 } from './types'
 
+function parseNoteValue(notes: string[], key: string): string | undefined {
+  const prefix = `${key}=`
+  const hit = notes.find((note) => note.startsWith(prefix))
+  return hit ? hit.slice(prefix.length) : undefined
+}
+
 function inferQualityGrade(food: FoodItem): DataQualityGrade {
+  const explicit = parseNoteValue(food.notes, 'quality_grade') as DataQualityGrade | undefined
+  if (explicit && ['A', 'B', 'C', 'D', 'E'].includes(explicit)) return explicit
   const missingRequired = food.missingNutrients.length
   if (missingRequired === 0 && food.notes.length === 0) return 'B'
   if (missingRequired <= 3) return 'C'
@@ -23,20 +31,37 @@ function inferQualityGrade(food: FoodItem): DataQualityGrade {
   return 'E'
 }
 
+function inferFoodKind(food: FoodItem): CatalogFoodSummary['foodKind'] {
+  const explicit = parseNoteValue(food.notes, 'food_kind') as CatalogFoodSummary['foodKind'] | undefined
+  if (explicit) return explicit
+  if (food.notes.some((note) => note.includes('ingredient_only'))) return 'human_ingredient'
+  if (food.foodType === 'natural') return 'human_ingredient'
+  if (food.foodType === 'suplemento') return 'supplement'
+  if (food.foodType === 'commercial') return 'commercial_veterinary'
+  return 'legacy_genutri'
+}
+
+function inferCompletenessClass(food: FoodItem): CatalogFoodSummary['completenessClass'] {
+  const explicit = parseNoteValue(food.notes, 'completeness_class') as CatalogFoodSummary['completenessClass'] | undefined
+  if (explicit) return explicit
+  if (food.foodType === 'natural') return 'ingredient_only'
+  if (food.foodType === 'suplemento') return 'supplement_only'
+  return 'unknown'
+}
+
 function mapFoodToSummary(food: FoodItem): CatalogFoodSummary {
   return {
     id: food.id,
     legacyFoodId: food.id,
-    canonicalNamePt: food.name,
-    foodKind: 'legacy_genutri',
+    canonicalNamePt: getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType }),
+    foodKind: inferFoodKind(food),
     speciesScope: food.speciesScope,
     category: food.categoryNormalized,
     foodType: food.foodType,
-    completenessClass:
-      food.foodType === 'natural' ? 'ingredient_only' : food.foodType === 'suplemento' ? 'supplement_only' : 'unknown',
+    completenessClass: inferCompletenessClass(food),
     qualityGrade: inferQualityGrade(food),
-    sourceType: 'genutri_workbook',
-    isActive: true,
+    sourceType: parseNoteValue(food.notes, 'source_type') ?? 'genutri_workbook',
+    isActive: parseNoteValue(food.notes, 'clinical_use_status') !== 'blocked_pending_data',
   }
 }
 
