@@ -34,6 +34,10 @@ build/
 .env.production
 .env.*.local
 
+# Supabase CLI — artefatos locais com segredos
+supabase/.temp/
+supabase/.branches/
+
 # Windows: arquivo acidental com nome reservado (quebra git add/stash)
 /nul
 
