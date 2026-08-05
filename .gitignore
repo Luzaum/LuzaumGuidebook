@@ -39,3 +39,6 @@ build/
 
 # PDFs de referência clínica (grandes; manter local ou usar Git LFS)
 modules/antibioticoterapia-vet/docs/sources/*.pdf
+
+# Acervo veterinário local — PDFs/livros de referência; nunca versionar sem autorização
+modules/consulta-vet/docs/acervo-pdfs/
