@@ -283,6 +283,9 @@ export function renderClinicalRecipe(
     treatmentBlocks.length ? treatmentBlocks.join('\n\n') : 'TRATAMENTOS OPCIONAIS\n\nSelecione os blocos clínicos que deseja incluir nesta receita.',
     listSection('RECOMENDAÇÕES DA DOENÇA', model.diseaseRecommendations),
     inlineTextSection('SINAIS PARA RETORNO', model.returnSigns, 'Retornar diante de '),
+    ...(model.appendBodySectionsBuilder?.(weightKg, speciesValue)
+      ?? model.appendBodySections
+      ?? []),
   ].filter(Boolean);
   return sections.join('\n\n');
 }

@@ -42,7 +42,7 @@ export type ClinicalDoseBasis = 'weight' | 'weight_per_day' | 'per_animal' | 'ma
 export interface ClinicalMedicationDose {
   min: number;
   max?: number;
-  unit: 'mg/kg' | 'mg/kg/dia' | 'UI/kg' | 'mcg/kg' | 'mg/animal' | 'mcg/animal';
+  unit: 'mg/kg' | 'mg/kg/dia' | 'UI/kg' | 'mcg/kg' | 'mg/animal' | 'mcg/animal' | 'UI/animal';
   basis: ClinicalDoseBasis;
   route: string;
   frequency: string;
@@ -120,6 +120,8 @@ export interface ClinicalRecipeModel {
   documentHeading?: string;
   hospitalWarning?: string;
   incompleteProtocolWarning?: string;
+  appendBodySections?: string[];
+  appendBodySectionsBuilder?: (weightKg: number | null, species: string) => string[];
   options: ClinicalRecipeOption[];
   recipeInformation?: string[];
   veterinarianNotes?: string[];

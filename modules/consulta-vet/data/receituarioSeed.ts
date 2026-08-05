@@ -1,6 +1,7 @@
 import { DocumentTemplate } from '../types/receituario';
 import { normalizeLegacyDocumentBody } from '../utils/receituarioDocument';
 import { RECEITUARIO_INFECTOLOGIA_MODELS } from './receituarioInfectologiaModels';
+import { RECEITUARIO_DIABETES_MODELS } from './receituarioDiabetesModels';
 import { RECEITUARIO_PROTOCOL_MODELS } from './receituarioProtocolModels';
 
 export const RECEITUARIO_CATEGORIES = [
@@ -105,29 +106,7 @@ Administrar 0,1 mg/kg no 1º dia e 0,05 mg/kg nos dias seguintes por via oral, a
 ${STANDARD_RECIPE_FOOTER}`
   },
 
-  // 3. Endocrinologia
-  {
-    id: 'seed-diabetes-mellitus',
-    title: 'Diabetes Mellitus - Protocolo de Suporte',
-    category: 'Endocrinologia',
-    document_type: 'recipe',
-    species: 'ambos',
-    is_global: true,
-    is_active: true,
-    created_at: new Date().toISOString(),
-    updated_at: new Date().toISOString(),
-    body_plain_text: `${STANDARD_RECIPE_HEADER}
-USO INJETÁVEL / SUBCUTÂNEO
-
-1. INSULINA (NPH / Glargina / Caninsulina) — Frasco / Caneta
-Aplicar [quantidade UI] por via subcutânea, a cada 12 horas, rigorosamente após as refeições.
-
-RECOMENDAÇÕES E REGRAS DE SEGURANÇA
-
-* Manter horários fixos de alimentação e aplicação de insulina.
-* Em caso de tremores, fraqueza, prostração intensa ou sinais de hipoglicemia, oferecer imediatamente solução de glicose/mel na gengiva e contactar a equipe de emergência.
-${STANDARD_RECIPE_FOOTER}`
-  },
+  // 3. Endocrinologia — modelos clínicos de diabetes em receituarioDiabetesModels.ts
   {
     id: 'seed-hipotireoidismo',
     title: 'Hipotireoidismo Canino',
@@ -650,6 +629,7 @@ export const SEEDED_TEMPLATES: DocumentTemplate[] = [
   ...RAW_SEEDED_TEMPLATES.filter((template) => template.document_type === 'term'),
   ...RECEITUARIO_INFECTOLOGIA_MODELS,
   ...RECEITUARIO_PROTOCOL_MODELS,
+  ...RECEITUARIO_DIABETES_MODELS,
 ].map((template) => ({
   ...template,
   body_plain_text: normalizeLegacyDocumentBody(template.body_plain_text),
@@ -660,6 +640,7 @@ export const GLOBAL_RECIPE_TEMPLATE_IDS = new Set(
 );
 
 export const RETIRED_RECIPE_TEMPLATE_IDS = new Set([
+  'seed-diabetes-mellitus',
   'seed-gastrite-aguda',
   'seed-cardio-b2',
   'seed-cardiob2',

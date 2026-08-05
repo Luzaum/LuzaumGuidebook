@@ -90,8 +90,11 @@ function HighlightedPlainTextEditor({ value, onChange, weightKg, highlightClinic
       matches.push({ text: match[0], start: match.index ?? 0, kind: 'placeholder' });
     }
     if (highlightClinicalDoses) {
-      for (const match of value.matchAll(/^Dose clínica:[^\n]*/gim)) {
-        matches.push({ text: match[0], start: match.index ?? 0, kind: 'clinical-dose' });
+      for (const match of value.matchAll(/^Dose clínica:\s*([^\n]*)/gim)) {
+        const content = match[1]?.trim() || '';
+        if (!content) continue;
+        const start = (match.index ?? 0) + match[0].indexOf(content);
+        matches.push({ text: content, start, kind: 'clinical-dose' });
       }
       for (const match of value.matchAll(/^Administrar ERRO DE DOSE P\/ CONCENTRAÇÃO[^\n]*/gim)) {
         matches.push({ text: match[0], start: match.index ?? 0, kind: 'dose-error' });
@@ -135,12 +138,14 @@ function HighlightedPlainTextEditor({ value, onChange, weightKg, highlightClinic
     setActiveDose((current) => (current?.start === start ? null : current));
   };
 
-  const doseHelp = activeDose?.kind === 'clinical-dose' ? clinicalDoseHelp(activeDose.line, weightKg) : null;
+  const doseHelp = activeDose?.kind === 'clinical-dose'
+    ? clinicalDoseHelp(activeDose.line.startsWith('Dose clínica:') ? activeDose.line : `Dose clínica: ${activeDose.line}`, weightKg)
+    : null;
   const doseErrorReason = activeDose?.kind === 'dose-error' ? doseErrorHelp(value, activeDose.start) : null;
 
   return (
     <div className="relative min-h-[280px] flex-1 overflow-hidden rounded-xl border border-border bg-background">
-      <div ref={highlightRef} className="pointer-events-none absolute inset-0 z-[2] overflow-hidden whitespace-pre-wrap break-words border border-transparent p-4 font-mono text-sm leading-6 text-transparent">
+      <div ref={highlightRef} className="pointer-events-none absolute inset-0 z-[2] box-border overflow-hidden whitespace-pre-wrap break-words border border-transparent p-4 font-mono text-sm leading-6 text-transparent">
         {parts.map((part) => {
           const isActive = activeRange?.start === part.start;
           if (part.kind === 'placeholder') {
@@ -182,7 +187,6 @@ function HighlightedPlainTextEditor({ value, onChange, weightKg, highlightClinic
           }
           return <span aria-hidden="true" key={`${part.start}-${part.text.slice(0, 8)}`}>{part.text}</span>;
         })}
-        {'\n'}
       </div>
       <textarea
         ref={textareaRef}
@@ -197,7 +201,7 @@ function HighlightedPlainTextEditor({ value, onChange, weightKg, highlightClinic
           highlightRef.current.scrollTop = event.currentTarget.scrollTop;
           highlightRef.current.scrollLeft = event.currentTarget.scrollLeft;
         }}
-        className="absolute inset-0 z-[1] h-full w-full resize-none rounded-xl border border-border bg-transparent p-4 font-mono text-sm leading-6 outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
+        className="absolute inset-0 z-[1] box-border h-full w-full resize-none rounded-xl border border-border bg-transparent p-4 font-mono text-sm leading-6 outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
         aria-label="Corpo editável do documento"
         placeholder="Digite o conteúdo clínico do documento."
       />
