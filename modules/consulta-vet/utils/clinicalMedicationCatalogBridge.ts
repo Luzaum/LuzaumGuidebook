@@ -394,6 +394,7 @@ export function buildDefaultClinicalMedicationOverride(
   const resolved = resolveClinicalMedicationDefinition(medication, doseAlternativeKey);
   const species = normalizePrescriptionSpecies(speciesValue);
   const source = resolveClinicalMedicationSource(resolved);
+  const selectedDoseValue = resolved.dose.basis === 'manual' ? null : resolved.dose.min;
   if (source.kind === 'editorial' && source.editorialMedication) {
     const dose = pickDefaultEditorialDose(source.editorialMedication, resolved, species, resolved.dose);
     const presentation = pickDefaultEditorialPresentation(source.editorialMedication, resolved, dose);
@@ -401,16 +402,60 @@ export function buildDefaultClinicalMedicationOverride(
       editorialMedicationId: source.editorialMedication.id,
       presentationId: presentation?.id || null,
       doseId: dose?.id || null,
-      selectedDoseValue: resolved.dose.basis === 'manual' ? null : resolved.dose.min,
+      selectedDoseValue,
     };
   }
   if (source.kind === 'commercial' && source.commercialProducts?.length) {
     return {
       commercialProductId: source.commercialProducts[0].id,
-      selectedDoseValue: resolved.dose.basis === 'manual' ? null : resolved.dose.min,
+      selectedDoseValue,
     };
   }
-  return { selectedDoseValue: resolved.dose.basis === 'manual' ? null : resolved.dose.min };
+  return { selectedDoseValue };
+}
+
+export function buildClinicalMedicationOverridesMap(
+  medications: ClinicalMedicationDefinition[],
+  speciesValue?: string,
+  doseAlternativeKeys: Record<string, string> = {},
+  existing: Record<string, ClinicalMedicationOverride> = {},
+): Record<string, ClinicalMedicationOverride> {
+  const next = { ...existing };
+  for (const medication of medications) {
+    if (!next[medication.key]) {
+      next[medication.key] = buildDefaultClinicalMedicationOverride(
+        medication,
+        speciesValue,
+        doseAlternativeKeys[medication.key],
+      );
+    }
+  }
+  for (const key of Object.keys(next)) {
+    if (!medications.some((item) => item.key === key)) delete next[key];
+  }
+  return next;
+}
+
+function buildClinicalAdministrationAmount(
+  dose: ClinicalMedicationDose,
+  doseValue: number,
+  weightKg: number | null,
+  product?: CommercialMedicationProduct,
+): string {
+  if (dose.basis === 'manual') return 'conforme orientação do fabricante';
+  if (dose.basis === 'per_animal') {
+    const unit = dose.unit.replace('/animal', '') || 'UI';
+    if (dose.max != null && dose.max !== dose.min) {
+      return `${formatDecimalPtBr(dose.min)} a ${formatDecimalPtBr(dose.max)} ${unit}`;
+    }
+    return `${formatDecimalPtBr(doseValue)} ${unit}`;
+  }
+  if (!weightKg || weightKg <= 0) return 'A PREENCHER';
+  if (dose.unit === 'UI/kg' || dose.unit.startsWith('UI')) {
+    return `${formatDecimalPtBr(doseValue * weightKg)} UI`;
+  }
+  if (product) return buildCommercialAdministrationAmount(product, doseValue, weightKg);
+  return `${formatDecimalPtBr(doseValue * weightKg)} mg`;
 }
 
 function parseLiquidConcentrationMgPerMl(product: CommercialMedicationProduct): number | null {
@@ -572,6 +617,9 @@ export function resolveClinicalMedicationDoseAlert(
   }
 
   if (source.kind === 'commercial' && source.commercialProducts?.length && resolved.dose.basis !== 'manual') {
+    if (resolved.dose.unit === 'UI/kg' || resolved.dose.unit === 'UI/animal' || resolved.dose.basis === 'per_animal') {
+      return null;
+    }
     const product = source.commercialProducts.find((item) => item.id === override.commercialProductId)
       || source.commercialProducts[0];
     const doseMgKg = override.selectedDoseValue ?? resolved.dose.min;
@@ -669,14 +717,16 @@ export function buildClinicalMedicationPrescriptionBlock(
   if (source.kind === 'commercial' && source.commercialProducts?.length) {
     const product = source.commercialProducts.find((item) => item.id === override.commercialProductId)
       || source.commercialProducts[0];
-    const doseMgKg = override.selectedDoseValue ?? resolved.dose.min;
-    const amount = resolved.dose.basis === 'manual'
-      ? 'conforme orientação do fabricante'
-      : buildCommercialAdministrationAmount(product, doseMgKg, weightKg);
+    const doseValue = override.selectedDoseValue ?? resolved.dose.min;
+    const parsedWeight = parsePositiveDecimal(weightKg);
+    const amount = buildClinicalAdministrationAmount(resolved.dose, doseValue, parsedWeight, product);
     const frequency = resolved.dose.frequency;
     const duration = resolved.dose.duration;
     const route = formatPrescriptionRoute(resolved.dose.route);
     const alert = resolveClinicalMedicationDoseAlert(resolved, override, weightKg, speciesValue, doseAlternativeKey);
+    const doseUnit = resolved.dose.basis === 'per_animal'
+      ? resolved.dose.unit
+      : resolved.dose.unit;
 
     return [
       `${index}. ${resolved.name.toUpperCase()} — ${product.name.toUpperCase()}`,
@@ -684,8 +734,8 @@ export function buildClinicalMedicationPrescriptionBlock(
       ...buildAdministrationLine(amount, route, frequency, duration, alert),
       '',
       resolved.dose.basis === 'manual'
-        ? buildClinicalDoseSupportLine(null, 'mg/kg', null, 'conforme orientação do fabricante')
-        : buildClinicalDoseSupportLine(doseMgKg, 'mg/kg'),
+        ? buildClinicalDoseSupportLine(null, doseUnit, null, 'conforme orientação do fabricante')
+        : buildClinicalDoseSupportLine(doseValue, doseUnit),
     ].join('\n');
   }
 

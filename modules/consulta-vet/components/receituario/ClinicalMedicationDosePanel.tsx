@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import type { ClinicalMedicationDefinition, ClinicalMedicationOverride } from '../../types/receituario';
 import type { ClinicalDoseAlert, ClinicalMedicationCatalogStatus } from '../../utils/clinicalMedicationCatalogBridge';
 import {
+  buildClinicalMedicationOverridesMap,
   buildDefaultClinicalMedicationOverride,
   evaluateClinicalMedicationCatalogStatus,
   evaluateCommercialDoseAlert,
@@ -137,23 +138,8 @@ export function ClinicalMedicationDosePanel({
   ), [doseAlternativeKeys, medications, species]);
 
   useEffect(() => {
-    const nextOverrides = { ...overrides };
-    let changed = false;
-    for (const medication of medications) {
-      if (nextOverrides[medication.key]) continue;
-      nextOverrides[medication.key] = buildDefaultClinicalMedicationOverride(
-        medication,
-        species,
-        doseAlternativeKeys[medication.key],
-      );
-      changed = true;
-    }
-    for (const key of Object.keys(nextOverrides)) {
-      if (!medications.some((item) => item.key === key)) {
-        delete nextOverrides[key];
-        changed = true;
-      }
-    }
+    const nextOverrides = buildClinicalMedicationOverridesMap(medications, species, doseAlternativeKeys, overrides);
+    const changed = JSON.stringify(nextOverrides) !== JSON.stringify(overrides);
     if (changed) onOverridesChange(nextOverrides);
   }, [doseAlternativeKeys, medications, onOverridesChange, overrides, species]);
 

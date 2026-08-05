@@ -149,7 +149,7 @@ const GLARGINE_DOG: ClinicalRecipeModel = {
     key: 'glargine',
     label: 'Glargina U-100',
     medications: [medication('glargine-dog', 'Insulina glargina U-100', {
-      min: 0.3, max: 0.5, unit: 'UI/kg', basis: 'weight', route: 'subcutânea', frequency: 'a cada 12 horas', duration: 'uso contínuo',
+      min: 0.25, max: 0.5, unit: 'UI/kg', basis: 'weight', route: 'subcutânea', frequency: 'a cada 12 horas', duration: 'uso contínuo',
     }, `1. INSULINA GLARGINA U-100 — APRESENTAÇÃO A SELECIONAR
 
 Administrar A PREENCHER por via subcutânea, a cada 12 horas, de forma contínua.

@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Check, FlaskConical, Hospital, ShieldCheck } from 'lucide-react';
 import type { ClinicalMedicationOverride, ClinicalRecipeModel } from '../../types/receituario';
+import { buildClinicalMedicationOverridesMap } from '../../utils/clinicalMedicationCatalogBridge';
 import {
   getDefaultClinicalOptionKeys,
   renderClinicalRecipe,
@@ -17,6 +18,7 @@ interface Props {
   doseAlternativeKeys?: Record<string, string>;
   onDoseAlternativeKeysChange?: (keys: Record<string, string>) => void;
   medicationOverrides?: Record<string, ClinicalMedicationOverride>;
+  onMedicationOverridesChange?: (overrides: Record<string, ClinicalMedicationOverride>) => void;
 }
 
 function parseWeight(value?: string): number | null {
@@ -34,6 +36,7 @@ export function ClinicalTemplateConfigurator({
   doseAlternativeKeys: controlledDoseAlternativeKeys,
   onDoseAlternativeKeysChange,
   medicationOverrides = {},
+  onMedicationOverridesChange,
 }: Props) {
   const [internalSelectedKeys, setInternalSelectedKeys] = useState<string[]>(() => getDefaultClinicalOptionKeys(model));
   const [internalDoseAlternativeKeys, setInternalDoseAlternativeKeys] = useState<Record<string, string>>({});
@@ -65,6 +68,24 @@ export function ClinicalTemplateConfigurator({
     .flatMap((option) => option.medications || [])
     .filter((item) => item.doseAlternatives?.length), [model.options, selectedKeys]);
 
+  const selectedMedications = useMemo(() => model.options
+    .filter((option) => selectedKeys.includes(option.key))
+    .flatMap((option) => option.medications || []), [model.options, selectedKeys]);
+
+  const effectiveOverrides = useMemo(() => buildClinicalMedicationOverridesMap(
+    selectedMedications,
+    species,
+    doseAlternativeKeys,
+    medicationOverrides,
+  ), [doseAlternativeKeys, medicationOverrides, selectedMedications, species]);
+
+  useEffect(() => {
+    if (!onMedicationOverridesChange) return;
+    const hasMissing = selectedMedications.some((item) => !medicationOverrides[item.key]);
+    if (!hasMissing) return;
+    onMedicationOverridesChange(effectiveOverrides);
+  }, [effectiveOverrides, medicationOverrides, onMedicationOverridesChange, selectedMedications]);
+
   useEffect(() => {
     setSelectedKeys(getDefaultClinicalOptionKeys(model));
     setPatientSize(null);
@@ -81,10 +102,10 @@ export function ClinicalTemplateConfigurator({
       patientSize,
       selectedFormulaForm,
       doseAlternativeKeys,
-      medicationOverrides,
+      effectiveOverrides,
       species,
     ));
-  }, [doseAlternativeKeys, medicationOverrides, model, onBodyChange, parsedWeight, patientSize, selectedFormulaForm, selectedKeys, species]);
+  }, [doseAlternativeKeys, effectiveOverrides, model, onBodyChange, parsedWeight, patientSize, selectedFormulaForm, selectedKeys, species]);
 
   const toggleOption = (key: string) => {
     if (model.selectionMode === 'fixed') return;

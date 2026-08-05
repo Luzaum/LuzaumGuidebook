@@ -415,6 +415,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
                 doseAlternativeKeys={clinicalDoseAlternativeKeys}
                 onDoseAlternativeKeysChange={setClinicalDoseAlternativeKeys}
                 medicationOverrides={clinicalMedicationOverrides}
+                onMedicationOverridesChange={setClinicalMedicationOverrides}
                 onBodyChange={setBody}
               />
             ) : null}
