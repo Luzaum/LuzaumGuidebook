@@ -43,7 +43,7 @@ Dependências posteriores no mesmo arquivo:
 
 ## Estratégia escolhida: **B — migration de compatibilidade anterior**
 
-1. **`202602220000011_create_tutors_patients_base.sql`** (lexicographicamente entre `000001` e `000002`)
+1. **`202602220000015_create_tutors_patients_base.sql`** (lexicographicamente entre `000001` e `000002`)
    - Cria `tutors` e `patients` com colunas canônicas **exceto** `created_at` / `updated_at` (adicionadas por `000002`).
    - `CREATE TABLE IF NOT EXISTS` sem PK/FK duplicados — índices/constraints permanecem no `remote_schema`.
 

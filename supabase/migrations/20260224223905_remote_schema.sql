@@ -136,7 +136,7 @@ alter table "public"."medications" enable row level security;
 alter table "public"."patient_weights" enable row level security;
 
 
-  create table "public"."patients" (
+  create table if not exists "public"."patients" (
     "id" uuid not null default gen_random_uuid(),
     "clinic_id" uuid not null,
     "tutor_id" uuid not null,
@@ -274,7 +274,7 @@ alter table "public"."protocol_recommendations" enable row level security;
 alter table "public"."protocols" enable row level security;
 
 
-  create table "public"."tutors" (
+  create table if not exists "public"."tutors" (
     "id" uuid not null default gen_random_uuid(),
     "clinic_id" uuid not null,
     "full_name" text not null,
