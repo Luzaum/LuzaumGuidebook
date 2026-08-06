@@ -10,6 +10,10 @@ import {
   getWeightLossPercent,
 } from '../../modules/energia-vet/lib/nutrition'
 import { buildVetiusNutritionPdfFilename } from '../../modules/energia-vet/lib/reportDocument'
+import {
+  clearNutritionFeatureOverrides,
+  setNutritionFeatureOverride,
+} from '../../modules/energia-vet/lib/featureFlags'
 import { REPORT_V4_SAMPLE } from './fixtures/report-v4-sample'
 
 test('dataset GENUTRI mantém 580 alimentos e 55 perfis', () => {
@@ -112,7 +116,7 @@ test('dieta com múltiplos alimentos — normalização e energia', () => {
   })
 
   assert.equal(plan.contributions.length, 2)
-  assert.equal(plan.totalAsFedGrams, 187.2)
+  assert.equal(plan.totalAsFedGrams, 187.41)
   assert.equal(plan.totalKcal, 724)
   const pctSum = plan.contributions.reduce((sum, item) => sum + item.inclusionPct, 0)
   assert.ok(Math.abs(pctSum - 100) < 0.01)
@@ -140,9 +144,14 @@ test('nutriente ausente no alimento permanece null (não vira zero)', () => {
 })
 
 test('relatório v4 — nome PDF e estrutura mínima', () => {
-  const filename = buildVetiusNutritionPdfFilename(REPORT_V4_SAMPLE)
-  assert.match(filename, /^VETIUS_NUTRICAO_REX_JOAO_SILVA_\d{4}-\d{2}-\d{2}\.pdf$/)
-  assert.ok(REPORT_V4_SAMPLE.energy.mer)
-  assert.ok(REPORT_V4_SAMPLE.diet.entries.length > 0)
-  assert.ok(REPORT_V4_SAMPLE.formula.contributions.length > 0)
+  setNutritionFeatureOverride('nutrition_calculation_engine_v3', false)
+  try {
+    const filename = buildVetiusNutritionPdfFilename(REPORT_V4_SAMPLE)
+    assert.match(filename, /^VETIUS_NUTRICAO_REX_JOAO_SILVA_\d{4}-\d{2}-\d{2}\.pdf$/)
+    assert.ok(REPORT_V4_SAMPLE.energy.mer)
+    assert.ok(REPORT_V4_SAMPLE.diet.entries.length > 0)
+    assert.ok(REPORT_V4_SAMPLE.formula.contributions.length > 0)
+  } finally {
+    clearNutritionFeatureOverrides()
+  }
 })

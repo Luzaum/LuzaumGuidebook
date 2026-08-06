@@ -47,6 +47,7 @@ describe('FormulationStep — alocação calórica v3', () => {
   })
 
   it('legado — normaliza silenciosamente 70/20 para 100%', () => {
+    setNutritionFeatureOverride('nutrition_calculation_engine_v3', false)
     const plan = computeDietPlan({
       entries: [
         { foodId: 'racao-all-canis-adultos', inclusionPct: 70 },
