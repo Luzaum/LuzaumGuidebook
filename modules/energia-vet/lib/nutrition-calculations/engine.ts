@@ -179,7 +179,7 @@ export function calculatePatientEnergy(
   if (assessment.nutritionalGoal === 'hospital') {
     result = calculateHospitalEnergy(assessment.currentWeightKg)
   } else if (assessment.nutritionalGoal === 'weight_loss' || assessment.nutritionalGoal === 'weight_gain') {
-    result = resolveWeightManagementEnergy(assessment)
+    result = resolveWeightManagementEnergy(assessment, assessment.selectedWeightLossEnergyMethod)
   } else if (assessment.lifeStage === 'growth') {
     result = buildGrowthEnergy(assessment)
   } else if (assessment.lifeStage === 'gestation' || assessment.lifeStage === 'lactation') {

@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from 'react';
-import { ArrowRight, HelpCircle, Activity, Heart, ShieldAlert } from 'lucide-react';
+import { HelpCircle, Activity, Heart, ShieldAlert } from 'lucide-react';
 import { DiseaseQuickSummaryRich } from '../../types/disease';
 import { getSimplifiedDiseaseDefinition } from '../../utils/simplifiedDefinitions';
 import { cn } from '../../../../lib/utils';
-
+import { ClinicalFlowTimeline } from './ClinicalFlowTimeline';
 function sortHighlightsLongestFirst(terms: string[]): string[] {
   return [...new Set(terms.map((t) => t.trim()).filter(Boolean))].sort((a, b) => b.length - a.length);
 }
@@ -71,10 +71,9 @@ export function DiseaseQuickSummaryPanel({ data, slug }: { data: DiseaseQuickSum
 
   const tabs = [
     { id: 'overview', label: 'Visão Geral', icon: HelpCircle },
-    { id: 'diagnosis', label: 'Jornada Diagnóstica', icon: Activity },
-    { id: 'treatment', label: 'Plano Terapêutico', icon: Heart },
+    { id: 'diagnosis', label: 'Plano diagnóstico', icon: Activity },
+    { id: 'treatment', label: 'Plano de tratamento', icon: Heart },
   ] as const;
-
   return (
     <div className="relative z-10 space-y-6">
       {/* Sistema de Abas Clínicas premium com glassmorphism */}
@@ -155,31 +154,8 @@ export function DiseaseQuickSummaryPanel({ data, slug }: { data: DiseaseQuickSum
         {activeTab === 'diagnosis' && (
           <div className="rounded-2xl border border-white/10 bg-black/10 p-5 backdrop-blur-sm dark:bg-black/20">
             {data.diagnosticFlow ? (
-              <div className="space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/60">{data.diagnosticFlow.title}</p>
-                <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-                  {data.diagnosticFlow.steps.map((step, idx) => (
-                    <div key={idx} className="flex flex-col gap-3 rounded-xl bg-white/8 p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-xs font-extrabold text-white">
-                          {idx + 1}
-                        </span>
-                        {idx < data.diagnosticFlow!.steps.length - 1 && (
-                          <ArrowRight className="h-4 w-4 text-white/30 hidden sm:block" />
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-bold text-white">{step.label}</p>
-                        {step.detail && (
-                          <p className="mt-2 text-xs leading-relaxed text-white/80">{step.detail}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-white/60">Fluxo diagnóstico indisponível.</p>
+              <ClinicalFlowTimeline flow={data.diagnosticFlow} variant="dark" />
+            ) : (              <p className="text-sm text-white/60">Fluxo diagnóstico indisponível.</p>
             )}
           </div>
         )}
@@ -187,31 +163,8 @@ export function DiseaseQuickSummaryPanel({ data, slug }: { data: DiseaseQuickSum
         {activeTab === 'treatment' && (
           <div className="rounded-2xl border border-white/10 bg-black/10 p-5 backdrop-blur-sm dark:bg-black/20">
             {data.treatmentFlow ? (
-              <div className="space-y-4">
-                <p className="text-xs font-bold uppercase tracking-wider text-white/60">{data.treatmentFlow.title}</p>
-                <div className="grid gap-3.5 sm:grid-cols-2 lg:grid-cols-3">
-                  {data.treatmentFlow.steps.map((step, idx) => (
-                    <div key={idx} className="flex flex-col gap-3 rounded-xl bg-white/8 p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white/20 text-xs font-extrabold text-white">
-                          {idx + 1}
-                        </span>
-                        {idx < data.treatmentFlow!.steps.length - 1 && (
-                          <ArrowRight className="h-4 w-4 text-white/30 hidden sm:block" />
-                        )}
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-bold text-white">{step.label}</p>
-                        {step.detail && (
-                          <p className="mt-2 text-xs leading-relaxed text-white/80">{step.detail}</p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-white/60">Fluxo terapêutico indisponível.</p>
+              <ClinicalFlowTimeline flow={data.treatmentFlow} variant="dark" />
+            ) : (              <p className="text-sm text-white/60">Fluxo terapêutico indisponível.</p>
             )}
           </div>
         )}

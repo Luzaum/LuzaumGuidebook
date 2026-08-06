@@ -64,44 +64,58 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo prático de diagnóstico',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Suspeita',
+          label: 'Suspeita',
+          timing: 'Primeira consulta',
           detail:
-            'Histórico de carrapatos, area endemica, febre, letargia, anorexia, sangramento ou trombocitopenia.',
+            'Histórico de carrapatos, área endêmica, febre, letargia, anorexia, sangramento ou trombocitopenia (Rothrock, VIN 2025; Ferrolho et al., 2025).',
         },
         {
-          label: '2. Hemograma e bioquimica',
+          label: 'Hemograma e bioquímica',
+          timing: 'Na admissão',
           detail:
-            'Buscar trombocitopenia, anemia não regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepaticas aumentadas.',
+            'Trombocitopenia, anemia não regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepáticas aumentadas (Rothrock, VIN 2025).',
         },
         {
-          label: '3. Teste especifico',
+          label: 'Teste específico',
+          timing: 'Confirmar infecção ativa',
           detail:
-            'Combinar sorologia e/ou PCR. Repetir sorologia em 2-3 semanas se a suspeita for alta e o teste inicial vier negativo.',
+            'Combinar sorologia e/ou PCR; repetir sorologia em 2–3 semanas se suspeita alta e teste inicial negativo (Rothrock, VIN 2025).',
+          reassess: 'PCR antes de iniciar doxiciclina aumenta sensibilidade.',
         },
         {
-          label: '4. Estadiar gravidade',
+          label: 'Estadiar gravidade',
+          timing: 'Após confirmação',
           detail:
-            'Avaliar olhos, urina, rim, neurológico, sangramentos e medula quando houver pancitopenia.',
+            'Avaliar olhos, urina, rim, neurológico, sangramentos e medula quando houver pancitopenia (Rothrock, VIN 2025).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Base',
-          detail: 'Doxiciclina 10 mg/kg VO q24h por 28 dias ou 5 mg/kg VO q12h por 28 dias.',
+          label: 'Base — doxiciclina',
+          detail:
+            'Antibiótico de primeira linha para E. canis; tratar coinfecções se documentadas (Rothrock, VIN 2025; Plumb\'s, 10ª ed.).',
+          dose: 'Doxiciclina 10 mg/kg VO q24h × 28 dias ou 5 mg/kg VO q12h × 28 dias.',
+          duration: '28 dias completos.',
+          reassess: 'Plaquetas costumam subir em 24–48 h e normalizar em até 14 dias.',
         },
         {
           label: 'Suporte',
-          detail: 'Fluidoterapia, transfusao e tratamento de complicacoes conforme gravidade.',
+          detail:
+            'Fluidoterapia, transfusão e tratamento de complicações conforme gravidade (Rothrock, VIN 2025).',
+          duration: 'Até estabilização hemodinâmica.',
+          reassess: 'Monitorar pancitopenia, uveíte e função renal.',
         },
         {
-          label: 'Reavaliar',
-          detail: 'Plaquetas costumam subir em 24-48 h e normalizar em ate 14 dias. Falha de resposta exige revisar diagnóstico e coinfeccoes.',
+          label: 'Reavaliar resposta',
+          detail:
+            'Falha de resposta plaquetária exige revisar diagnóstico, adesão e coinfecções (babesiose, anaplasma) (Rothrock, VIN 2025).',
+          reassess: 'Repetir PCR/sorologia conforme protocolo de seguimento.',
         },
       ],
     },

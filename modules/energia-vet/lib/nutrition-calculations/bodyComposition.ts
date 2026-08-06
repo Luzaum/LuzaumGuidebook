@@ -1,4 +1,4 @@
-import type { IdealWeightEstimate, IdealWeightMethod, MuscleCondition, Species } from './types'
+import type { IdealWeightEstimate, IdealWeightMethod, LifeStage, MuscleCondition, Species } from './types'
 import { getSourceLabel } from './sourceRegistry'
 
 /** AAHA 2021 — percentual de excesso por ECC 6–9. */
@@ -25,10 +25,15 @@ function buildProvisionalFlags(options: {
   muscleCondition?: MuscleCondition
   previousHealthyWeightKg?: number
   estimatedTargetKg: number
+  lifeStage?: LifeStage
+  gestationOrLactation?: boolean
+  clinicalRiskFlags?: string[]
 }): Pick<IdealWeightEstimate, 'requiresClinicianReview' | 'isProvisionalEstimate' | 'confidence'> {
   const muscleReview = muscleLossRequiresReview(options.muscleCondition)
   const extremeBcs = options.bcs >= 8
-  const ecc6Review = options.bcs === 6 && muscleReview
+  const growthReview = options.lifeStage === 'growth'
+  const reproReview = options.gestationOrLactation === true
+  const riskReview = (options.clinicalRiskFlags?.length ?? 0) > 0
 
   let discrepancyReview = false
   if (options.previousHealthyWeightKg != null && options.previousHealthyWeightKg > 0) {
@@ -37,13 +42,13 @@ function buildProvisionalFlags(options: {
     discrepancyReview = diffPct > 15
   }
 
-  const requiresClinicianReview = extremeBcs || muscleReview || ecc6Review || discrepancyReview
-  const isProvisionalEstimate = extremeBcs || muscleReview || discrepancyReview
+  const requiresClinicianReview =
+    extremeBcs || muscleReview || growthReview || reproReview || riskReview || discrepancyReview
+  const isProvisionalEstimate = requiresClinicianReview
 
   let confidence: IdealWeightEstimate['confidence'] = 'moderate'
-  if (options.bcs === 6) confidence = 'moderate'
-  if (options.bcs === 7) confidence = 'moderate'
-  if (extremeBcs) confidence = 'low'
+  if (extremeBcs || riskReview) confidence = 'low'
+  if (options.bcs === 6 && !requiresClinicianReview) confidence = 'moderate'
 
   return { requiresClinicianReview, isProvisionalEstimate, confidence }
 }
@@ -51,7 +56,13 @@ function buildProvisionalFlags(options: {
 export function estimateIdealWeightFromOverweight(
   currentWeightKg: number,
   bcs: number,
-  muscleCondition?: MuscleCondition,
+  options: {
+    muscleCondition?: MuscleCondition
+    lifeStage?: LifeStage
+    gestationOrLactation?: boolean
+    clinicalRiskFlags?: string[]
+    previousHealthyWeightKg?: number
+  } = {},
 ): IdealWeightEstimate {
   const pct = PERCENT_OVERWEIGHT_BY_BCS[bcs]
   if (pct == null || currentWeightKg <= 0) {
@@ -67,8 +78,12 @@ export function estimateIdealWeightFromOverweight(
   const target = currentWeightKg / (1 + pct)
   const flags = buildProvisionalFlags({
     bcs,
-    muscleCondition,
+    muscleCondition: options.muscleCondition,
+    previousHealthyWeightKg: options.previousHealthyWeightKg,
     estimatedTargetKg: target,
+    lifeStage: options.lifeStage,
+    gestationOrLactation: options.gestationOrLactation,
+    clinicalRiskFlags: options.clinicalRiskFlags,
   })
 
   return {
@@ -76,7 +91,7 @@ export function estimateIdealWeightFromOverweight(
     percentOverweight: pct * 100,
     method: 'aaha_ecc_estimate',
     confidence: flags.confidence,
-    methodSummary: `Peso-alvo estimado pela relação AAHA (ECC ${bcs}/9 ≈ ${(pct * 100).toFixed(0)}% acima do ideal): ${currentWeightKg.toFixed(2)} ÷ ${(1 + pct).toFixed(2)} = ${target.toFixed(2)} kg.`,
+    methodSummary: `O ECC ${bcs}/9 corresponde a aproximadamente ${(pct * 100).toFixed(0)}% acima do peso ideal. Peso-alvo estimado: ${currentWeightKg.toFixed(2)} kg ÷ ${(1 + pct).toFixed(2)} = ${target.toFixed(2)} kg.`,
     requiresClinicianReview: flags.requiresClinicianReview,
     isProvisionalEstimate: flags.isProvisionalEstimate,
   }
@@ -88,21 +103,13 @@ export function estimateTargetWeight(options: {
   bcs: number
   goal: 'maintenance' | 'weight_loss' | 'weight_gain'
   muscleCondition?: MuscleCondition
+  lifeStage?: LifeStage
+  gestationOrLactation?: boolean
+  clinicalRiskFlags?: string[]
   clinicianTargetWeightKg?: number
   previousHealthyWeightKg?: number
   expectedAdultWeightKg?: number
 }): IdealWeightEstimate {
-  if (options.clinicianTargetWeightKg != null && options.clinicianTargetWeightKg > 0) {
-    return {
-      targetWeightKg: options.clinicianTargetWeightKg,
-      confidence: 'high',
-      method: 'clinician_defined',
-      methodSummary: 'Peso-alvo definido pelo médico-veterinário.',
-      requiresClinicianReview: false,
-      isProvisionalEstimate: false,
-    }
-  }
-
   if (options.goal === 'maintenance') {
     return {
       targetWeightKg: options.currentWeightKg,
@@ -114,29 +121,69 @@ export function estimateTargetWeight(options: {
     }
   }
 
+  const sharedFlags = {
+    bcs: options.bcs,
+    muscleCondition: options.muscleCondition,
+    lifeStage: options.lifeStage,
+    gestationOrLactation: options.gestationOrLactation,
+    clinicalRiskFlags: options.clinicalRiskFlags,
+    previousHealthyWeightKg: options.previousHealthyWeightKg,
+  }
+
   if (options.goal === 'weight_loss') {
     if (options.previousHealthyWeightKg != null && options.previousHealthyWeightKg > 0) {
       const flags = buildProvisionalFlags({
-        bcs: options.bcs,
-        muscleCondition: options.muscleCondition,
-        previousHealthyWeightKg: options.previousHealthyWeightKg,
+        ...sharedFlags,
         estimatedTargetKg: options.previousHealthyWeightKg,
       })
       return {
         targetWeightKg: options.previousHealthyWeightKg,
         confidence: 'high',
         method: 'previous_healthy_weight',
-        methodSummary: 'Peso saudável anterior documentado — prioridade sobre estimativa por ECC.',
+        methodSummary: 'Peso saudável anterior documentado.',
         requiresClinicianReview: flags.requiresClinicianReview,
         isProvisionalEstimate: flags.isProvisionalEstimate,
       }
     }
+
+    if (options.clinicianTargetWeightKg != null && options.clinicianTargetWeightKg > 0) {
+      return {
+        targetWeightKg: options.clinicianTargetWeightKg,
+        confidence: 'high',
+        method: 'clinician_defined',
+        methodSummary: 'Peso-alvo definido pelo médico-veterinário.',
+        requiresClinicianReview: false,
+        isProvisionalEstimate: false,
+      }
+    }
+
+    if (
+      options.lifeStage === 'growth' &&
+      options.expectedAdultWeightKg != null &&
+      options.expectedAdultWeightKg > 0
+    ) {
+      const flags = buildProvisionalFlags({
+        ...sharedFlags,
+        estimatedTargetKg: options.expectedAdultWeightKg,
+      })
+      return {
+        targetWeightKg: options.expectedAdultWeightKg,
+        confidence: 'moderate',
+        method: 'expected_adult_weight',
+        methodSummary: 'Peso adulto esperado documentado para paciente em crescimento.',
+        requiresClinicianReview: true,
+        isProvisionalEstimate: flags.isProvisionalEstimate,
+      }
+    }
+
     if (options.bcs >= 6) {
-      return estimateIdealWeightFromOverweight(
-        options.currentWeightKg,
-        options.bcs,
-        options.muscleCondition,
-      )
+      return estimateIdealWeightFromOverweight(options.currentWeightKg, options.bcs, {
+        muscleCondition: options.muscleCondition,
+        lifeStage: options.lifeStage,
+        gestationOrLactation: options.gestationOrLactation,
+        clinicalRiskFlags: options.clinicalRiskFlags,
+        previousHealthyWeightKg: options.previousHealthyWeightKg,
+      })
     }
   }
 
@@ -211,7 +258,21 @@ export function bodyCompositionSourceLabel(): string {
 export function idealWeightMethodLabel(method: IdealWeightMethod): string {
   if (method === 'clinician_defined') return 'Prescrição clínica'
   if (method === 'previous_healthy_weight') return 'Peso saudável anterior'
+  if (method === 'expected_adult_weight') return 'Peso adulto esperado'
   if (method === 'aaha_ecc_estimate') return 'Estimativa AAHA por ECC'
   if (method === 'maintenance') return 'Manutenção'
   return 'Dados insuficientes'
+}
+
+export function inferClinicalRiskFlags(comorbidityIds: string[] | undefined): string[] {
+  if (!comorbidityIds?.length) return []
+  const riskPatterns = [
+    /edema/i,
+    /ascite/i,
+    /tumor/i,
+    /neoplas/i,
+    /cancer|câncer/i,
+    /amput/i,
+  ]
+  return comorbidityIds.filter((id) => riskPatterns.some((p) => p.test(id)))
 }

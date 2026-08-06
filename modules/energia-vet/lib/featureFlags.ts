@@ -21,7 +21,7 @@ const DEFAULT_FLAGS: Record<NutritionFeatureFlag, boolean> = {
   nutrition_recipe_engine_v2: false,
   nutrition_supplement_catalog: false,
   nutrition_human_omega3: false,
-  nutrition_calculation_engine_v3: false,
+  nutrition_calculation_engine_v3: true,
 }
 
 /** Overrides em runtime (ex.: painel admin, query param de dev). */

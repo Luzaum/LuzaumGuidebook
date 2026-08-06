@@ -141,7 +141,7 @@ describe('Motor de cálculos v3 — goldens numéricos', () => {
   })
 
   it('EMC reduzida exige revisão clínica na estimativa por ECC', () => {
-    const est = estimateIdealWeightFromOverweight(15, 7, 'moderate_loss')
+    const est = estimateIdealWeightFromOverweight(15, 7, { muscleCondition: 'moderate_loss' })
     assert.equal(est.requiresClinicianReview, true)
     assert.equal(est.isProvisionalEstimate, true)
   })

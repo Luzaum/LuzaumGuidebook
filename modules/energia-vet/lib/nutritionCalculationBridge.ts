@@ -9,14 +9,18 @@ import {
   calculatePatientEnergy,
   estimateTargetWeight,
   idealWeightMethodLabel,
+  inferClinicalRiskFlags,
   validateMinimumAssessment,
   WEEKLY_WEIGHT_LOSS_TARGET,
+  buildWeightLossEnergyOptions,
+  selectWeightLossEnergy,
   type EnergyCalculationResult,
   type IdealWeightEstimate,
   type MuscleCondition,
   type NutritionPatientAssessment,
   type NutritionalGoal,
   type ValidationIssue,
+  type WeightLossEnergyMethod,
 } from './nutrition-calculations'
 
 export const CALC_STORAGE_KEY_V2 = 'vetius-energia-vet-calc-v2'
@@ -112,7 +116,7 @@ export function mapPatientFromStore(
   energy: Partial<EnergyCalculation> = {},
   nutritionalGoal: NutritionalGoal,
 ): NutritionPatientAssessment {
-  return mapStorePatientToAssessment({
+  const assessment = mapStorePatientToAssessment({
     species: patient.species ?? 'dog',
     weightKg: patient.currentWeight ?? 0,
     ageMonths: patient.ageMonths ?? 0,
@@ -131,6 +135,10 @@ export function mapPatientFromStore(
     dietHistory: patient.dietHistory,
     nutritionalGoal,
   })
+  if (patient.comorbidityIds?.length) {
+    assessment.diseases = patient.comorbidityIds
+  }
+  return assessment
 }
 
 export function validatePatientStepForV3(patient: Partial<Patient>): ValidationIssue[] {
@@ -260,15 +268,23 @@ export interface BodyTargetPlanV3 {
   maintenanceResult: EnergyCalculationResult
   targetResult: EnergyCalculationResult
   energyFormula: string
-  weeklyLossTargetPct?: { min: number; max: number }
+  weeklyLossTargetPct?: { min: number; max: number; preferredMax: number }
+  weightLossEnergyOptions?: {
+    aahaKcal: number
+    observedKcal: number | null
+    selectedMethod: WeightLossEnergyMethod
+  }
+  reassessmentHint: string
+  uncertaintyNotice: string
 }
 
-/** Plano corporal + energia meta — motor v3 (sem checagem de flag; UI decide). */
+/** Plano corporal + energia meta — motor v3 canônico. */
 export function computeBodyTargetPlan(options: {
   patient: Partial<Patient>
   energy?: Partial<EnergyCalculation>
   goal: TargetGoal
   energyStepMerKcal?: number
+  weightLossEnergyMethod?: WeightLossEnergyMethod
 }): BodyTargetPlanV3 | null {
   const weightKg = options.patient.currentWeight ?? 0
   if (weightKg <= 0) return null
@@ -283,6 +299,9 @@ export function computeBodyTargetPlan(options: {
   const maintenanceEnergyKcal = options.energyStepMerKcal ?? maintenanceResult.selectedTargetKcalDay
   const bcs = (options.patient.bcs ?? 5) as BCS
   const species = options.patient.species ?? 'dog'
+  const ageMonths = options.patient.ageMonths ?? 0
+  const lifeStage =
+    ageMonths < 12 ? 'growth' : ageMonths >= 96 ? 'senior' : ('adult' as const)
 
   const idealWeightEstimate = estimateTargetWeight({
     species,
@@ -290,8 +309,16 @@ export function computeBodyTargetPlan(options: {
     bcs,
     goal: options.goal,
     muscleCondition: options.patient.muscleCondition,
+    lifeStage,
+    gestationOrLactation: false,
+    clinicalRiskFlags: inferClinicalRiskFlags(options.patient.comorbidityIds),
     previousHealthyWeightKg: options.patient.previousHealthyWeightKg,
+    expectedAdultWeightKg: options.patient.expectedAdultWeightKg ?? options.energy?.expectedAdultWeightKg,
   })
+
+  const uncertaintyNotice =
+    'Esta é uma estimativa inicial. A necessidade energética individual deve ser calibrada pelo acompanhamento do paciente.'
+  const reassessmentHint = 'Reavaliar peso, ECC, EMC e adesão em 2–4 semanas.'
 
   if (options.goal === 'maintenance') {
     return {
@@ -302,27 +329,38 @@ export function computeBodyTargetPlan(options: {
       maintenanceResult,
       targetResult: maintenanceResult,
       energyFormula: `Manutenção no peso atual (${weightKg.toFixed(2)} kg). ${maintenanceResult.methodSummary}`,
+      reassessmentHint,
+      uncertaintyNotice,
     }
   }
 
   const targetAssessment = mapPatientFromStore(options.patient, options.energy, nutritionalGoal)
-  const targetResult = calculatePatientEnergy(targetAssessment).result
+  targetAssessment.selectedWeightLossEnergyMethod = options.weightLossEnergyMethod
+
+  let targetResult: EnergyCalculationResult | null = null
+  let weightLossEnergyOptions: BodyTargetPlanV3['weightLossEnergyOptions']
+
+  if (options.goal === 'weight_loss') {
+    const built = buildWeightLossEnergyOptions(targetAssessment, idealWeightEstimate.targetWeightKg)
+    targetResult = selectWeightLossEnergy(built, options.weightLossEnergyMethod)
+    weightLossEnergyOptions = {
+      aahaKcal: built.aaha.selectedTargetKcalDay,
+      observedKcal: built.observed?.selectedTargetKcalDay ?? null,
+      selectedMethod: options.weightLossEnergyMethod ?? 'aaha2021',
+    }
+  } else {
+    targetResult = calculatePatientEnergy(targetAssessment).result
+  }
+
   if (!targetResult) return null
 
   const targetWeightKg = idealWeightEstimate.targetWeightKg
   const weightMethod = idealWeightMethodLabel(idealWeightEstimate.method)
-  const energyMethod = targetResult.clinicalProfileLabel
-  const verification = targetResult.verificationReference
 
   const energyFormulaParts = [
-    `Peso-alvo ${targetWeightKg.toFixed(2)} kg (${weightMethod})`,
     idealWeightEstimate.methodSummary,
-    `${energyMethod}: ${targetResult.methodSummary}`,
-    `Meta prescrita: ${targetResult.selectedTargetKcalDay.toFixed(0)} kcal/dia (confiança ${targetResult.confidence}).`,
+    `${targetResult.clinicalProfileLabel}: ${targetResult.methodSummary}`,
   ]
-  if (verification) {
-    energyFormulaParts.push(verification.methodSummary)
-  }
 
   const weeklyLossTargetPct =
     options.goal === 'weight_loss' ? WEEKLY_WEIGHT_LOSS_TARGET[species] : undefined
@@ -336,5 +374,8 @@ export function computeBodyTargetPlan(options: {
     targetResult,
     energyFormula: energyFormulaParts.join(' '),
     weeklyLossTargetPct,
+    weightLossEnergyOptions,
+    reassessmentHint,
+    uncertaintyNotice,
   }
 }

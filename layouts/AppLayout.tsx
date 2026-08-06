@@ -118,10 +118,7 @@ export function AppLayout() {
   const isImmersiveModuleRoute =
     decodedPathname.startsWith('/dados-veterinarios') ||
     decodedPathname.startsWith('/dor-mobile')
-  const isFullBleedRoute =
-    isActive('/') ||
-    isActive('/hub') ||
-    isImmersiveModuleRoute ||
+  const isInternalScrollShellRoute =
     decodedPathname.startsWith('/fluidoterapia') ||
     decodedPathname.startsWith('/antibioticoterapia') ||
     decodedPathname.startsWith('/hemogasovet') ||
@@ -132,6 +129,11 @@ export function AppLayout() {
     decodedPathname.startsWith('/neurologia') ||
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
+  const isFullBleedRoute =
+    isActive('/') ||
+    isActive('/hub') ||
+    isImmersiveModuleRoute ||
+    isInternalScrollShellRoute
   const usesOwnMobileBottomNav =
     decodedPathname.startsWith('/fluidoterapia') ||
     decodedPathname.startsWith('/calculadora-energetica')
@@ -156,6 +158,11 @@ export function AppLayout() {
       if (saveDraftTimerRef.current !== null) window.clearTimeout(saveDraftTimerRef.current)
     }
   }, [])
+
+  useEffect(() => {
+    document.body.style.removeProperty('overflow')
+    document.documentElement.style.removeProperty('overflow')
+  }, [location.pathname])
 
   useEffect(() => {
     const root = appContentRef.current
@@ -482,10 +489,16 @@ export function AppLayout() {
           ref={appContentRef}
           onInputCapture={scheduleFormDraftSave}
           onChangeCapture={scheduleFormDraftSave}
-          className="app-scroll-viewport relative flex w-full flex-1 flex-col min-h-0 overflow-auto bg-slate-50/50 dark:bg-slate-950/20"
+          className={`app-scroll-viewport relative flex w-full flex-1 flex-col min-h-0 bg-slate-50/50 dark:bg-slate-950/20 ${
+            isInternalScrollShellRoute ? 'overflow-hidden' : 'overflow-y-auto overscroll-y-contain'
+          }`}
         >
           {isFullBleedRoute ? (
-            <div className="flex min-h-0 flex-1 w-full">
+            <div
+              className={`flex min-h-0 flex-1 w-full ${
+                isInternalScrollShellRoute ? 'h-full overflow-hidden' : ''
+              }`}
+            >
               <Outlet />
             </div>
           ) : (

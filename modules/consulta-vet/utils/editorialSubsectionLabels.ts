@@ -86,6 +86,8 @@ const FULL_KEY_LABELS: Record<string, string> = {
   infiltrado: 'Infiltrado inflamatório',
   transmissao: 'Transmissão',
   ordemDePrioridade: 'Ordem de prioridade',
+  ordemDePrioridadeEstruturada: 'Ordem de prioridade',
+  protocoloTerapeutico: 'Protocolo terapêutico — doses de referência',
   farmacos: 'Fármacos — tabela de referência (DMVD / ICC)',
   monitoramento: 'Monitoramento',
   conceitoEixoHPA: 'Conceito: eixo HPA',
@@ -138,7 +140,7 @@ const FULL_KEY_LABELS: Record<string, string> = {
   fosforoMineralBone: 'Fósforo e metabolismo mineral ósseo',
   acidoseAnemiaHipertensao: 'Acidose, anemia e hipertensão',
   drcAlertaEstadiamentoIRIS: 'Estadiamento IRIS — só com paciente estável',
-  drcFiguraIrisStaging: 'Imagem clínica - ultrassom contrastado em DRC felina',
+  drcFiguraIrisStaging: 'Imagem clínica — ultrassom contrastado em DRC felina',
   drcCronicoVersusAgudo: 'Crônico versus agudo — indícios rápidos',
   drcPacoteInvestigacao: 'Pacote inicial de investigação',
   drcTabelaComparativaEspecies: 'Comparação cão versus gato (destaques)',
@@ -271,6 +273,45 @@ const FULL_KEY_LABELS: Record<string, string> = {
   tcAnéisExtraluminais: 'Anéis extraluminais',
   tcStentIntraluminal: 'Stent intraluminal',
   tcPrevencaoDescompensacao: 'Prevenção de descompensação',
+  tcMecanismoImune: 'Mecanismo imune',
+  tcGatilhosComuns: 'Gatilhos comuns',
+  tcRemodelamento: 'Remodelamento brônquico',
+  tcPerfilPopulacional: 'Perfil populacional',
+  tcAmbiente: 'Ambiente e fatores de risco',
+  tcCascataInflamatoria: 'Cascata inflamatória',
+  tcConsequenciasFuncionais: 'Consequências funcionais',
+  tcTransmissao: 'Transmissão',
+  tcDiferenciaisObrigatorios: 'Diferenciais obrigatórios',
+  tcLavadoBroncoalveolar: 'Lavado broncoalveolar',
+  tcExamesComplementares: 'Exames complementares',
+  tcTabelaDiferenciais: 'Tabela de diferenciais',
+  tcDefinicaoOperacional: 'Definição operacional',
+  tcFatoresPredisponentes: 'Fatores predisponentes',
+  tcDiferencaAsma: 'Diferença em relação à asma felina',
+  tcPerfilCanino: 'Perfil no cão',
+  tcPerfilFelino: 'Perfil no gato',
+  tcCicloInflamatorio: 'Ciclo inflamatório',
+  tcBronquiectasia: 'Bronquiectasia',
+  tcBroncoscopiaLavado: 'Broncoscopia e lavado broncoalveolar',
+  tcAntitussigenos: 'Antitussígenos',
+  tcMedidasAmbientais: 'Medidas ambientais',
+  tcReducaoDeProgressao: 'Redução de progressão',
+  tcPadraoDeReacao: 'Padrão de reação',
+  tcCausasSubjacentes: 'Causas subjacentes',
+  tcApresentacaoOral: 'Apresentação oral',
+  tcAutotraumatismo: 'Autotraumatismo',
+  tcInspecaoMorfologica: 'Inspeção morfológica',
+  tcCitologia: 'Citologia da lesão',
+  tcBiopsia: 'Biópsia',
+  tcInvestigacaoCausaBase: 'Investigação da causa de base',
+  tcControleDePulgas: 'Controle de pulgas',
+  tcGlicocorticoides: 'Glicocorticoides',
+  tcCiclosporina: 'Ciclosporina',
+  tcDietaDeEliminacao: 'Dieta de eliminação',
+  tcCasosRefratarios: 'Casos refratários',
+  tcGranulomaOralExtenso: 'Granuloma oral extenso',
+  tcPrevencaoDeRecidiva: 'Prevenção de recidiva',
+  tcReducaoDeCrises: 'Redução de crises',
   hemoConceito: 'Conceito (hemoplasmas)',
   hemoEspeciesFelinas: 'Espécies em gatos',
   hemoEspeciesCaninas: 'Espécies em cães',
@@ -1138,20 +1179,123 @@ const CAMEL_PARTS_PT: Record<string, string> = {
   event: 'evento',
   reporting: 'notificação',
   pharmacovigilance: 'farmacovigilância',
+  mecanismo: 'mecanismo',
+  imune: 'imune',
+  gatilhos: 'gatilhos',
+  comuns: 'comuns',
+  remodelamento: 'remodelamento',
+  populacional: 'populacional',
+  ambiente: 'ambiente',
+  cascata: 'cascata',
+  inflamatoria: 'inflamatória',
+  inflamatorio: 'inflamatório',
+  consequencias: 'consequências',
+  funcionais: 'funcionais',
+  historia: 'história',
+  fisico: 'físico',
+  diferenciais: 'diferenciais',
+  obrigatorios: 'obrigatórios',
+  exames: 'exames',
+  complementares: 'complementares',
+  lavado: 'lavado',
+  broncoalveolar: 'broncoalveolar',
+  tabela: 'tabela',
+  definicao: 'definição',
+  operacional: 'operacional',
+  predisponentes: 'predisponentes',
+  diferenca: 'diferença',
+  asma: 'asma',
+  ciclo: 'ciclo',
+  bronquiectasia: 'bronquiectasia',
+  broncoscopia: 'broncoscopia',
+  canino: 'canino',
+  felino: 'felino',
+  padrao: 'padrão',
+  reacao: 'reação',
+  causas: 'causas',
+  subjacentes: 'subjacentes',
+  apresentacao: 'apresentação',
+  autotraumatismo: 'autotraumatismo',
+  inspecao: 'inspeção',
+  morfologica: 'morfológica',
+  investigacao: 'investigação',
+  biopsia: 'biópsia',
+  pulgas: 'pulgas',
+  glicocorticoides: 'glicocorticoides',
+  ciclosporina: 'ciclosporina',
+  eliminacao: 'eliminação',
+  refratarios: 'refratários',
+  granuloma: 'granuloma',
+  extenso: 'extenso',
+  prevencao: 'prevenção',
+  recidiva: 'recidiva',
+  reducao: 'redução',
+  crises: 'crises',
+  progressao: 'progressão',
+  medidas: 'medidas',
+  ambientais: 'ambientais',
+  antitussigenos: 'antitussígenos',
+  antibioticos: 'antibióticos',
+  broncodilatadores: 'broncodilatadores',
+  corticosteroides: 'corticosteroides',
+  crise: 'crise',
+  transmissao: 'transmissão',
+  anatomia: 'anatomia',
+  membrana: 'membrana',
+  dorsal: 'dorsal',
+  primaria: 'primária',
+  secundaria: 'secundária',
+  agravantes: 'agravantes',
+  racas: 'raças',
+  broncomalacia: 'broncomalácia',
+  fisiologia: 'fisiologia',
+  dinamica: 'dinâmica',
+  complicacoes: 'complicações',
+  graves: 'graves',
+  banco: 'banco',
+  minimo: 'mínimo',
+  traqueo: 'traqueo',
+  cultura: 'cultura',
+  grau: 'grau',
+  diagnosticos: 'diagnósticos',
+  principio: 'princípio',
+  conservador: 'conservador',
+  farmacologicas: 'farmacológicas',
+  nao: 'não',
+  aneis: 'anéis',
+  extraluminais: 'extraluminais',
+  stent: 'stent',
+  intraluminal: 'intraluminal',
+  descompensacao: 'descompensação',
+  tc: '',
 };
 
 function splitCamelCaseKey(key: string): string[] {
   return key
-    .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
-    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1 $2')
+    .replace(/([a-z0-9])([A-ZÀ-ÖØ-Ý])/g, '$1 $2')
+    .replace(/([A-ZÀ-ÖØ-Ý]+)([A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ])/g, '$1 $2')
     .split(/\s+/)
     .filter(Boolean);
+}
+
+/** Remove prefixos editoriais internos (tc, hemo, cme, drc…) antes de montar título legível. */
+export function stripEditorialSubsectionPrefix(key: string): string {
+  const prefixes = ['tc', 'hemo', 'cme', 'drc', 'cush', 'hiper'] as const;
+  for (const prefix of prefixes) {
+    if (!key.startsWith(prefix) || key.length <= prefix.length) continue;
+    const next = key.charAt(prefix.length);
+    if (!/[A-ZÀ-ÖØ-ÞÉ]/.test(next)) continue;
+    const rest = key.slice(prefix.length);
+    return rest.charAt(0).toLowerCase() + rest.slice(1);
+  }
+  return key;
 }
 
 function titleCasePhrase(lowerPhrase: string): string {
   const small = new Set(['e', 'ou', 'de', 'da', 'do', 'das', 'dos', 'em', 'na', 'no', 'a', 'o', 'com', 'por', 'para', 'versus']);
   return lowerPhrase
     .split(' ')
+    .filter(Boolean)
     .map((word, i) => {
       if (!word) return word;
       if (i > 0 && small.has(word)) return word;
@@ -1167,17 +1311,23 @@ export function translateEditorialSubsectionKey(key: string): string {
   const direct = FULL_KEY_LABELS[key];
   if (direct) return direct;
 
-  const parts = splitCamelCaseKey(key);
+  const normalizedKey = stripEditorialSubsectionPrefix(key);
+  const directNormalized = FULL_KEY_LABELS[normalizedKey];
+  if (directNormalized) return directNormalized;
+
+  const parts = splitCamelCaseKey(normalizedKey);
   if (parts.length === 0) return key;
 
-  const mapped = parts.map((part) => {
-    const low = part.toLowerCase();
-    return CAMEL_PARTS_PT[low] ?? part;
-  });
+  const mapped = parts
+    .map((part) => {
+      const low = part.toLowerCase();
+      return CAMEL_PARTS_PT[low] ?? part;
+    })
+    .filter(Boolean);
 
   const lowerPhrase = mapped.join(' ');
   const looksUntranslated = mapped.every((w, i) => w === parts[i] || w.toLowerCase() === parts[i].toLowerCase());
-  if (looksUntranslated && parts.join('') === key.replace(/\s/g, '')) {
+  if (looksUntranslated && parts.join('') === normalizedKey.replace(/\s/g, '')) {
     return titleCasePhrase(parts.join(' ').toLowerCase());
   }
 

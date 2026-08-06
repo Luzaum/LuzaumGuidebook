@@ -43,52 +43,68 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo clínico',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Defina se há emergência',
+          label: 'Definir se há emergência',
+          timing: 'Primeira avaliação',
           detail:
-            'Dispneia, edema, choque, síncope ou taquiarritmia sustentada: oxigênio, eletrocardiograma, ultrassonografia à beira do leito e estabilização antes do estadiamento completo.',
+            'Dispneia, edema, choque, síncope ou taquiarritmia sustentada: oxigênio, ECG, ultrassom à beira do leito e estabilização antes do estadiamento completo (Cunningham & Pierce, 2019; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Confirme disfunção sistólica',
+          label: 'Confirmar disfunção sistólica',
+          timing: 'Após estabilização',
           detail:
-            'Ecocardiografia com medidas normalizadas, volumes e função sistólica; avaliar regurgitação funcional, átrios e pressão pulmonar.',
+            'Ecocardiografia com medidas normalizadas, volumes e função sistólica; avaliar regurgitação funcional, átrios e pressão pulmonar — padrão ouro (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Quantifique arritmia',
+          label: 'Quantificar arritmia',
+          timing: 'Na investigação inicial ou rastreio',
           detail:
-            'ECG identifica ritmo atual; Holter de 24 h é mais sensível para ectopia intermitente e rastreio de Dobermann.',
+            'ECG identifica ritmo atual; Holter de 24 h é mais sensível para ectopia intermitente e rastreio de Dobermann (Nelson & Couto, 6ª ed.; Summerfield et al., 2012).',
+          reassess: 'ECG curto normal não exclui ectopia intermitente — considerar Holter em raças de risco.',
         },
         {
-          label: '4. Procure causa modificável',
+          label: 'Procurar causa modificável',
+          timing: 'Antes de rotular idiopática',
           detail:
-            'História dietética detalhada, taurina plasmática e sanguínea total quando pertinente, carnitina em raças selecionadas, T4, troponina e investigação de toxinas/miocardite.',
+            'História dietética detalhada, taurina plasmática quando pertinente, carnitina em raças selecionadas, T4, troponina e investigação de toxinas/miocardite (Freeman et al., 2020; Nelson & Couto, 6ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento por fase',
+      title: 'Plano de tratamento',
       steps: [
         {
           label: 'Pré-clínica com disfunção',
           detail:
-            'Pimobendan; plano de Holter/eco seriado. Arritmia ventricular relevante exige protocolo individual.',
+            'Pimobendan retarda descompensação em Dobermanns com CMD pré-clínica; plano de Holter/eco seriado. Arritmia ventricular relevante exige protocolo individual (Summerfield et al., 2012; PROTECT Study).',
+          dose: 'Pimobendan 0,25–0,3 mg/kg PO q12h.',
+          duration: 'Contínuo na fase pré-clínica; Holter/eco seriados conforme programa racial.',
+          reassess: 'Holter anual em Dobermann; ajustar antiarrítmico conforme carga de ectopia.',
         },
         {
           label: 'Insuficiência cardíaca aguda',
           detail:
-            'Oxigênio, furosemida IV titulada, pimobendan quando via oral for segura; dobutamina se choque por baixo débito.',
+            'Oxigênio, furosemida IV titulada, pimobendan quando via oral segura; dobutamina se choque por baixo débito (Cunningham & Pierce, 2019; Plumb\'s, 10ª ed.).',
+          dose: 'Furosemida 1–4 mg/kg IV titulada (2 mg/kg IV/IM repetível horária no edema grave). Pimobendan assim que VO seguro.',
+          duration: 'Até estabilização congestiva; transição para protocolo crônico.',
+          reassess: 'Monitorar perfusão, FR e função renal durante diurese agressiva.',
         },
         {
           label: 'Insuficiência cardíaca crônica',
           detail:
-            'Pimobendan + furosemida; IECA se perfusão e rim permitirem; considerar espironolactona e controle de frequência/ritmo.',
+            'Pimobendan + furosemida; IECA se perfusão e rim permitirem; considerar espironolactona e controle de frequência/ritmo (Luis Fuentes et al., 2002; Plumb\'s, 10ª ed.).',
+          dose: 'Pimobendan 0,5 mg/kg/dia PO dividido q12h. Furosemida 2 mg/kg PO q12h (cães) ou 1–2 mg/kg q8–12h (gatos), ajustar à congestão. Benazepril conforme perfusão renal.',
+          duration: 'Contínuo; ajustar diurético à menor dose que mantém conforto.',
+          reassess: 'Ureia, creatinina e eletrólitos 3–7 dias após intensificar diurético/RAAS.',
         },
         {
           label: 'Causa reversível',
           detail:
-            'Corrigir dieta e suplementar taurina/carnitina quando indicado; controlar taquiarritmia e retirar toxina. Reavaliar remodelamento.',
+            'Corrigir dieta e suplementar taurina/carnitina quando indicado; controlar taquiarritmia e retirar toxina; reavaliar remodelamento (Freeman et al., 2020; Nelson & Couto, 6ª ed.).',
+          duration: 'Suplementação mínima 2–3 meses antes de concluir irreversibilidade.',
+          reassess: 'Eco a cada 3–6 meses; repetir taurina se dieta corrigida.',
         },
       ],
     },

@@ -58,62 +58,80 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico (ordem prática)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. História e exame físico',
+          label: 'História e exame físico',
+          timing: 'Primeira consulta',
           detail:
-            'Tosse crônica quase diária, muitas vezes seca ou produtiva, com ou sem síncope pós-tosse em cães pequenos; ausculta pode revelar estertores/sibilos ou ser inespecífica.',
+            'Tosse crônica quase diária por ≥2 meses, seca ou produtiva, com ou sem síncope pós-tosse em cães pequenos; ausculta pode revelar estertores/sibilos ou ser inespecífica (Rozanski, 2014; Johnson, Respiratory Medicine 2ª ed.).',
         },
         {
-          label: '2. Excluir diferenciais graves',
+          label: 'Excluir diferenciais graves',
+          timing: 'Antes de rotular idiopática',
           detail:
-            'Ecocardiograma se sopro/galope/arritmia; radiografia para colapso traqueal, cardiomegalia, massa; teste para dirofilariose; Baermann fecal para parasitos pulmonares.',
+            'Ecocardiograma se sopro/galope/arritmia; radiografia para colapso traqueal, cardiomegalia, massa; teste para dirofilariose; Baermann fecal para parasitos pulmonares (Nelson & Couto, 6ª ed.; Rozanski, 2014).',
+          reassess: 'Repetir Baermann se história de acesso externo e primeira amostra negativa.',
         },
         {
-          label: '3. Radiografia torácica',
+          label: 'Radiografia torácica',
+          timing: 'Após triagem clínica',
           detail:
-            'Padrão brônquico difuso, possível broncograma; avaliar sinais de bronquiectasia em doença avançada (dilatação e perda de afilamento brônquico).',
+            'Padrão brônquico difuso ("donuts"/"trilhos de trem"), possível broncograma; avaliar bronquiectasia em doença avançada — sugestivo, não diagnóstico isolado (Johnson, Respiratory Medicine 2ª ed.).',
         },
         {
-          label: '4. Broncoscopia e lavado broncoalveolar',
+          label: 'Broncoscopia e lavado broncoalveolar',
+          timing: 'Paciente estável para anestesia',
           detail:
-            'Avalia mucosa (hiperemia, colapso dinâmico, secreção), coleta material para citologia (perfil neutrofílico) e cultura/antibiograma antes de qualquer antibiótico.',
+            'Avalia mucosa (hiperemia, colapso dinâmico, secreção), citologia com perfil neutrofílico não-degenerado predominante e cultura/antibiograma antes de qualquer antibiótico (McKiernan, 2000; Johnson, Respiratory Medicine 2ª ed.).',
         },
         {
-          label: '5. Reavaliação e diagnóstico de exclusão',
+          label: 'Diagnóstico de exclusão',
+          timing: 'Após investigação completa',
           detail:
-            'Sem causa infecciosa, parasitária, cardíaca, neoplásica ou estrutural primária identificada, assume-se bronquite crônica idiopática.',
+            'Sem causa infecciosa, parasitária, cardíaca, neoplásica ou estrutural primária identificada, assume-se bronquite crônica idiopática (Rozanski, 2014).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (prioridades)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 1 — Ambiente e peso',
+          label: 'Ambiente e peso',
           detail:
-            'Eliminar irritantes inalados (fumaça, aerossóis, poeira), controlar obesidade, evitar coleira em cães (preferir peitoral) para reduzir trauma traqueal por tosse.',
+            'Eliminar irritantes inalados (fumaça, aerossóis, poeira), controlar obesidade, trocar coleira por peitoral em cães — medidas de alto custo-benefício (Rozanski, 2014; Nelson & Couto, 6ª ed.).',
+          duration: 'Permanente enquanto houver tosse crônica.',
+          reassess: 'Peso e BCS a cada revisão; controle de peso é intervenção terapêutica, não estética.',
         },
         {
-          label: 'Camada 2 — Anti-inflamatório',
+          label: 'Anti-inflamatório de base',
           detail:
-            'Corticoide sistêmico para indução/controle de crise; transição para corticoide inalatório na manutenção crônica reduz efeitos adversos sistêmicos.',
+            'Corticoide sistêmico para indução/crise; transição planejada para corticoide inalatório (fluticasona/budesonida) na manutenção crônica, reduzindo efeitos sistêmicos (Galler et al., 2013; Johnson, Respiratory Medicine 2ª ed.).',
+          dose: 'Indução: prednisona/prednisolona dose anti-inflamatória VO com desmame gradual. Manutenção: fluticasona ou budesonida inalatória via câmara espaçadora q12h.',
+          duration: 'Indução 5–14 dias; inalatório contínuo na manutenção.',
+          reassess: 'Revisão em 2–4 semanas; tentar menor dose eficaz de sistêmico após controle inalatório.',
         },
         {
-          label: 'Camada 3 — Antitussígeno',
+          label: 'Antitussígeno',
           detail:
-            'Hidrocodona ou butorfanol quando a tosse é seca, não produtiva e sem retenção relevante de secreção — evitar se houver muco espesso retido.',
+            'Hidrocodona, codeína ou butorfanol quando tosse seca, improdutiva, sem retenção relevante de secreção — escolher apenas um; não associar codeína e hidrocodona. Evitar se muco espesso retido (Johnson, Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
+          dose: 'Hidrocodona 0,22–0,5 mg/kg PO q6–12h. Codeína 1–2 mg/kg PO q8–12h (alternativa). Butorfanol 0,5–1,0 mg/kg PO q6–12h.',
+          duration: 'Enquanto tosse seca perpetua ciclo inflamatório; desmame conforme controle (codeína: curso inicial típico 5–7 dias).',
+          reassess: 'Frequência e característica da tosse a cada revisão — objetivo é redução sustentada; revisar se sedação, constipação ou depressão respiratória.',
         },
         {
-          label: 'Camada 4 — Broncodilatador',
+          label: 'Broncodilatador',
           detail:
-            'Reservado a componente broncoespástico ou broncomalácico documentado; uso rotineiro sem essa evidência tem fundamentação mais fraca.',
+            'Teofilina ou terbutalina reservadas a componente broncoespástico ou broncomalácico documentado — não substituem anti-inflamatório de base (Johnson, Respiratory Medicine 2ª ed.).',
+          dose: 'Teofilina LP 5–10 mg/kg PO BID ou terbutalina conforme protocolo respiratório.',
+          duration: 'Adjuvante enquanto componente broncoespástico persistir.',
+          reassess: 'Monitorar taquicardia e agitação; uso rotineiro sem evidência tem fundamentação fraca.',
         },
         {
-          label: 'Camada 5 — Antimicrobiano',
+          label: 'Antimicrobiano',
           detail:
-            'Apenas com citologia/cultura compatíveis com infecção ativa (neutrófilos degenerados, bactérias intracelulares, cultura positiva relevante) — nunca empírico de rotina.',
+            'Apenas com citologia/cultura compatíveis com infecção ativa (neutrófilos degenerados, bactérias intracelulares, cultura clinicamente relevante) — nunca empírico de rotina (McKiernan, 2000).',
+          reassess: 'Cultura positiva isolada sem citologia compatível não justifica tratamento.',
         },
       ],
     },
@@ -185,7 +203,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       '1) Excluir e tratar diferenciais graves antes de rotular como bronquite crônica idiopática — cardiopatia, colapso traqueal, parasito e infecção mudam completamente a conduta (Rozanski, 2014).',
       '2) Controle ambiental e de peso: eliminar irritantes inalados, tratar obesidade, trocar coleira por peitoral em cães — medidas de alto custo-benefício e baixo risco.',
       '3) Anti-inflamatório de base: corticoide sistêmico para indução/crise, com transição planejada para corticoide inalatório (fluticasona/budesonida) na manutenção crônica, reduzindo efeitos sistêmicos (Galler et al., 2013).',
-      '4) Antitussígeno (hidrocodona ou butorfanol) quando a tosse é seca e não produtiva, sem retenção relevante de secreção — evitar se há muco espesso acumulado que precisa ser mobilizado.',
+      '4) Antitussígeno (hidrocodona, codeína ou butorfanol) quando a tosse é seca e não produtiva, sem retenção relevante de secreção — escolher apenas um opioide antitussígeno; evitar se há muco espesso acumulado que precisa ser mobilizado.',
       '5) Broncodilatador (teofilina, terbutalina) reservado a componente broncoespástico ou broncomalácico documentado por história/exame — não é primeira linha isolada.',
       '6) Antimicrobiano apenas com evidência citológica/cultural de infecção ativa — cultura positiva isolada sem citologia compatível não justifica tratamento (McKiernan, 2000).',
     ],
@@ -203,7 +221,28 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
     tcCorticosteroides:
       'Indução com prednisona/prednisolona oral em dose anti-inflamatória, com desmame gradual conforme resposta. Manutenção crônica preferencialmente com corticoide inalatório (fluticasona ou budesonida) via câmara espaçadora, reduzindo exposição sistêmica prolongada (Galler et al., 2013).',
     tcAntitussigenos:
-      'Hidrocodona 0,22-0,5 mg/kg PO q6-12h ou butorfanol 0,5-1,0 mg/kg PO q6-12h (faixas conforme formulários de referência) — indicados quando a tosse é seca, improdutiva e perpetua o ciclo inflamatório; contraindicados relativamente se há secreção retida significativa a ser mobilizada.',
+      'Hidrocodona 0,22–0,5 mg/kg PO q6–12h; codeína 1–2 mg/kg PO q8–12h (alternativa, curso inicial típico 5–7 dias); butorfanol 0,5–1,0 mg/kg PO q6–12h — indicados quando a tosse é seca, improdutiva e perpetua o ciclo inflamatório. Escolher apenas um antitussígeno; não associar codeína e hidrocodona. Contraindicados relativamente se há secreção retida significativa, pneumonia ou tosse produtiva (Johnson, Respiratory Medicine 2ª ed.; protocolo receituário Vetius).',
+    tcAntitussigenosTabela: {
+      kind: 'clinicalTable',
+      headers: ['Fármaco', 'Dose', 'Notas'],
+      rows: [
+        [
+          'Hidrocodona',
+          '0,22–0,5 mg/kg PO q6–12h',
+          'Antitussígeno de primeira escolha na maioria dos protocolos respiratórios caninos.',
+        ],
+        [
+          'Codeína',
+          '1–2 mg/kg PO q8–12h por 5–7 dias',
+          'Alternativa quando hidrocodona indisponível ou mal tolerada; não associar à hidrocodona.',
+        ],
+        [
+          'Butorfanol',
+          '0,5–1,0 mg/kg PO q6–12h',
+          'Opioide misto agonista-antagonista; reservar a casos selecionados.',
+        ],
+      ],
+    },
     tcBroncodilatadores:
       'Teofilina de liberação prolongada ou terbutalina reservadas a casos com componente broncoespástico ou broncomalácico documentado — não substituem o anti-inflamatório de base e exigem monitorização de efeitos adversos (taquicardia, agitação).',
     tcAntibioticos:

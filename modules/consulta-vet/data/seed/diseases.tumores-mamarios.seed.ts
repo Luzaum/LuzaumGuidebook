@@ -50,57 +50,67 @@ export const tumoresMamariosRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo de estadiamento',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Mapa mamário completo',
+          label: 'Mapa mamário completo',
+          timing: 'Primeira consulta',
           detail:
-            'Registrar glândula, diâmetro, mobilidade, consistência, ulceração, calor, dor e fixação de cada nódulo; fotografar com escala.',
+            'Registrar glândula, diâmetro, mobilidade, consistência, ulceração, calor, dor e fixação de cada nódulo; fotografar com escala (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Linfonodos regionais',
+          label: 'Linfonodos regionais',
+          timing: 'Antes da cirurgia',
           detail:
-            'Palpar axilares e inguinais; realizar punção aspirativa de linfonodo alterado e, se disponível, mapear o sentinela por contraste ou corante.',
+            'Palpar axilares e inguinais; PAAF de linfonodo alterado; mapear sentinela por contraste ou corante quando disponível (Plumb\'s, 10ª ed.).',
         },
         {
-          label: '3. Metástase distante',
+          label: 'Metástase distante',
+          timing: 'Antes de operar malignidade suspeita',
           detail:
-            'Três projeções torácicas ou tomografia computadorizada; imagem abdominal conforme espécie, estágio e sinais.',
+            'Três projeções torácicas ou TC; imagem abdominal conforme espécie, estágio e sinais (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '4. Diagnóstico tecidual',
+          label: 'Diagnóstico tecidual',
+          timing: 'Quando planejamento cirúrgico depende do tipo',
           detail:
-            'Excisão com margens ou biópsia incisional por agulha grossa quando houver carcinoma inflamatório, massa fixa ou possibilidade real de alterar o planejamento.',
+            'Excisão com margens ou biópsia por agulha grossa quando carcinoma inflamatório, massa fixa ou resultado pré-operatório mudará conduta — histopatologia é padrão ouro (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Laudo oncológico completo',
+          label: 'Laudo oncológico completo',
+          timing: 'Após ressecção',
           detail:
-            'Tipo, grau, margens, invasão linfovascular, necrose, índice mitótico e linfonodo; imuno-histoquímica em casos selecionados.',
+            'Tipo, grau, margens, invasão linfovascular, necrose, índice mitótico e linfonodo; imuno-histoquímica em casos selecionados (Plumb\'s, 10ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico',
+      title: 'Plano de tratamento',
       steps: [
         {
           label: 'Doença localizada',
           detail:
-            'Cirurgia com margens adequadas e remoção do linfonodo de drenagem quando indicado.',
+            'Cirurgia com margens adequadas e remoção do linfonodo de drenagem quando indicado (Nelson & Couto, 6ª ed.).',
+          reassess: 'Histopatologia de cada massa enviada separadamente se múltiplos nódulos.',
         },
         {
           label: 'Múltiplos tumores',
           detail:
-            'Planejar cirurgia regional, unilateral ou bilateral em etapas; enviar todos os nódulos separadamente.',
+            'Planejar cirurgia regional, unilateral ou bilateral em etapas; enviar todos os nódulos separadamente (Nelson & Couto, 6ª ed.).',
+          reassess: 'Cada glândula pode ter histologia diferente — não enviar apenas o maior nódulo.',
         },
         {
           label: 'Alto risco histológico',
           detail:
-            'Discutir oncologia, quimioterapia adjuvante e seguimento mais curto; benefício deve ser apresentado com incerteza.',
+            'Discutir oncologia, quimioterapia adjuvante (doxorrubicina, carboplatina conforme protocolo) e seguimento mais curto; benefício com incerteza (Plumb\'s, 10ª ed.).',
+          dose: 'Doxorrubicina e carboplatina conforme protocolo oncológico individualizado e função cardíaca/renal.',
+          reassess: 'Seguimento mais curto com imagem e linfonodos conforme grau e estágio.',
         },
         {
           label: 'Inflamatório/metastático',
           detail:
-            'Paliativo multimodal, analgesia, controle de inflamação e qualidade de vida; cirurgia raramente controla a doença.',
+            'Paliativo multimodal, analgesia, controle de inflamação e qualidade de vida; cirurgia raramente controla a doença (Nelson & Couto, 6ª ed.).',
+          reassess: 'Carcinoma inflamatório não é caso de mastectomia curativa — priorizar biópsia e paliativo.',
         },
       ],
     },

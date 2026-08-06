@@ -51,52 +51,68 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico felino',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Suspeitar pela síndrome',
-          detail: 'PU/PD, perda de peso, polifagia, letargia, pelagem ruim, postura plantígrada, obesidade prévia ou uso de glicocorticoide/progestágeno.',
+          label: 'Suspeitar pela síndrome',
+          timing: 'Primeira consulta',
+          detail:
+            'PU/PD, perda de peso, polifagia, letargia, pelagem ruim, postura plantígrada, obesidade prévia ou uso de glicocorticoide/progestágeno (iCatCare, 2025; AAHA, 2026).',
         },
         {
-          label: '2. Provar hiperglicemia sustentada',
-          detail: 'Usar sinais + glicosúria; se a consulta for estressante, confirmar com fructosamina, CGM, glicemia domiciliar ou urina coletada em casa.',
+          label: 'Provar hiperglicemia sustentada',
+          detail:
+            'Usar sinais + glicosúria; se a consulta for estressante, confirmar com fructosamina, CGM, glicemia domiciliar ou urina coletada em casa (iCatCare, 2025; AAHA, 2026).',
         },
         {
-          label: '3. Checar cetonas e gravidade',
-          detail: 'Beta-hidroxibutirato ou cetonúria, hidratação, apetite, vômito, acidose e eletrólitos definem se é ambulatorial ou emergência.',
+          label: 'Checar cetonas e gravidade',
+          timing: 'Antes de rotular ambulatorial',
+          detail:
+            'Beta-hidroxibutirato ou cetonúria, hidratação, apetite, vômito, acidose e eletrólitos definem se é ambulatorial ou emergência (iCatCare, 2025).',
         },
         {
-          label: '4. Mapear comorbidades',
-          detail: 'T4 total, rim/urina, pressão arterial, pancreatite, infecção, dor oral; se dose alta/controle ruim, pesquisar IGF-1 para hipersomatotropismo.',
+          label: 'Mapear comorbidades',
+          detail:
+            'T4 total, rim/urina, pressão arterial, pancreatite, infecção, dor oral; se dose alta/controle ruim, pesquisar IGF-1 para hipersomatotropismo (iCatCare, 2025; AAHA, 2026).',
         },
         {
-          label: '5. Escolher terapia',
-          detail: 'Insulina para a maioria; SGLT2i somente se recém-diagnosticado, não cetótico e com cuidador capaz de monitorar sinais e cetonas.',
+          label: 'Escolher terapia',
+          timing: 'Após estabilização',
+          detail:
+            'Insulina para a maioria; SGLT2i somente se recém-diagnosticado, não cetótico e com cuidador capaz de monitorar sinais e cetonas (iCatCare, 2025).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico felino',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Gato doente ou cetótico',
-          detail: 'Internar se houver anorexia, vômito, desidratação, depressão ou cetonas significativas; DKA exige insulina mesmo se a glicemia não estiver muito alta.',
+          label: 'Gato doente ou cetótico',
+          detail:
+            'Internar se houver anorexia, vômito, desidratação, depressão ou cetonas significativas; DKA exige insulina mesmo se a glicemia não estiver muito alta (iCatCare, 2025; AAHA, 2026).',
         },
         {
-          label: '2. Insulina',
-          detail: 'Glargina U-100 ou PZI são opções iniciais comuns; dose inicial típica 1 U/gato q12h, com reavaliação em 5–7 dias.',
+          label: 'Insulina',
+          dose: 'Glargina U-100 ou PZI: 1 U/gato SC q12h inicial (ajustar por peso ideal)',
+          duration: 'Reavaliar em 5–7 dias',
+          reassess: 'Sinais clínicos, peso, CGM/curva; reduzir se hipoglicemia',
+          detail:
+            'Primeira linha comum; evitar NPH como rotina felina (iCatCare, 2025; AAHA, 2026).',
         },
         {
-          label: '3. Dieta',
-          detail: 'Preferir dieta úmida, alta em proteína e baixa em carboidratos quando apropriada; transição exige monitoramento porque a necessidade de insulina pode cair.',
+          label: 'Dieta',
+          detail:
+            'Preferir dieta úmida, alta em proteína e baixa em carboidratos quando apropriada; transição exige monitoramento porque a necessidade de insulina pode cair (iCatCare, 2025).',
         },
         {
-          label: '4. SGLT2i',
-          detail: 'Bexagliflozina ou velagliflozina conforme disponibilidade/regulação local; usar apenas com triagem rigorosa e monitoramento de BHB.',
+          label: 'SGLT2i',
+          detail:
+            'Bexagliflozina ou velagliflozina conforme disponibilidade/regulação local; usar apenas com triagem rigorosa e monitoramento de BHB (iCatCare, 2025).',
         },
         {
-          label: '5. Remissão',
-          detail: 'Monitorar de perto nos primeiros 3–6 meses; reduzir insulina com segurança quando glicemias caem e sinais resolvem.',
+          label: 'Remissão',
+          detail:
+            'Monitorar de perto nos primeiros 3–6 meses; reduzir insulina com segurança quando glicemias caem e sinais resolvem — remissão não é cura (iCatCare, 2025; AAHA, 2026).',
         },
       ],
     },

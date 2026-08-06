@@ -89,11 +89,14 @@ export interface NutritionPatientAssessment {
   clinicianEnergyOverrideKcalDay?: number
   clinicianOverrideReason?: string
   nutritionalGoal: NutritionalGoal
+  /** Método energético selecionado pelo clínico para emagrecimento. */
+  selectedWeightLossEnergyMethod?: WeightLossEnergyMethod
 }
 
 export type IdealWeightMethod =
   | 'clinician_defined'
   | 'previous_healthy_weight'
+  | 'expected_adult_weight'
   | 'aaha_ecc_estimate'
   | 'maintenance'
   | 'insufficient_data'

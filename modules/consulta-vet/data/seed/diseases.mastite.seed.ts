@@ -49,57 +49,71 @@ export const mastiteRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Triagem de gravidade',
+          label: 'Triagem de gravidade',
+          timing: 'Primeira consulta',
           detail:
-            'Temperatura, perfusão, pressão, lactato, hidratação e estado mental; procurar necrose, bolhas, crepitação e choque.',
+            'Temperatura, perfusão, pressão, lactato, hidratação e estado mental; procurar necrose, bolhas, crepitação e choque (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Examine todas as glândulas',
+          label: 'Examinar todas as glândulas',
+          timing: 'Na admissão',
           detail:
-            'Comparar calor, dor, consistência, cor, fissura de teto e qualidade do leite; avaliar útero e corrimento por metrite concomitante.',
+            'Comparar calor, dor, consistência, cor, fissura de teto e qualidade do leite; avaliar útero e corrimento por metrite concomitante (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Colha antes do antibiótico',
+          label: 'Colher antes do antibiótico',
+          timing: 'Antes de iniciar antimicrobiano',
           detail:
-            'Higienizar o teto, descartar os primeiros jatos e colher leite para citologia, cultura e antibiograma; realizar hemocultura se houver sepse.',
+            'Higienizar teto, descartar primeiros jatos e colher leite para citologia, cultura e antibiograma; hemocultura se sepse — cultura positiva isolada não confirma mastite (Svensson et al., 2023; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '4. Imagem quando há massa',
+          label: 'Imagem quando há massa',
+          timing: 'Massa, flutuação ou resposta ruim',
           detail:
-            'A ultrassonografia diferencia edema ou celulite de abscesso, necrose e coleções que exigem drenagem.',
+            'Ultrassonografia diferencia edema/celulite de abscesso, necrose e coleções que exigem drenagem (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Avalie a ninhada',
+          label: 'Avaliar a ninhada',
+          timing: 'Paralelo ao exame materno',
           detail:
-            'Peso diário, sucção, hidratação, temperatura e sinais de sepse; instituir leite substituto e aquecimento quando necessário.',
+            'Peso diário, sucção, hidratação, temperatura e sinais de sepse; instituir leite substituto e aquecimento quando necessário (Nelson & Couto, 6ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico',
+      title: 'Plano de tratamento',
       steps: [
         {
           label: 'Leve e localizada',
           detail:
-            'Antimicrobiano oral após a coleta, analgesia, compressa morna e esvaziamento gentil; reavaliar em 24–48 horas.',
+            'Antimicrobiano oral após coleta, analgesia, compressa morna e esvaziamento gentil (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+          dose: 'Cefalexina 10–20 mg/kg PO q8–12h ou amoxicilina-clavulanato 13,75 mg/kg PO q12h (cães).',
+          duration: 'Guiada pela resposta clínica; reavaliar em 24–48 h.',
+          reassess: 'Dor, tamanho e cor da glândula; ajustar pelo antibiograma quando disponível.',
         },
         {
           label: 'Sistêmica ou séptica',
           detail:
-            'Internação, antimicrobiano intravenoso, fluidos titulados, analgesia, controle de glicose e eletrólitos e monitoramento de órgãos.',
+            'Internação, antimicrobiano IV bactericida, fluidos titulados, analgesia, controle de glicose e eletrólitos (Nelson & Couto, 6ª ed.).',
+          duration: 'Até estabilização hemodinâmica e resposta clínica.',
+          reassess: 'Perfusão, temperatura, lactato e diurese; hemocultura se falha.',
         },
         {
-          label: 'Abscesso/necrose',
+          label: 'Abscesso ou necrose',
           detail:
-            'Drenagem e lavagem, debridamento ou mastectomia após estabilização; cultura de tecido profundo.',
+            'Drenagem e lavagem, debridamento ou mastectomia após estabilização; cultura de tecido profundo (Nelson & Couto, 6ª ed.).',
+          reassess: 'Ultrassom seriado; necrose progressiva apesar de tratamento = intervenção cirúrgica.',
         },
         {
           label: 'Lactação inviável',
           detail:
-            'Separar/suplementar neonatos e considerar cabergolina para suprimir produção em caso grave.',
+            'Separar/suplementar neonatos e considerar cabergolina para suprimir produção em caso grave (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
+          dose: 'Cabergolina 1,5–5 µg/kg/dia dividida em 2 administrações.',
+          duration: 'Até supressão adequada da lactação; plano neonatal completo obrigatório.',
+          reassess: 'Peso de cada filhote diariamente; ganho inadequado exige suplementação.',
         },
       ],
     },

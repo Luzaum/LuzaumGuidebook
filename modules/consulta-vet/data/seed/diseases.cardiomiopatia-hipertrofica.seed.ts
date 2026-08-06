@@ -47,52 +47,65 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo de diagnóstico e estadiamento',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Estabilize se houver dispneia',
+          label: 'Estabilizar se houver dispneia',
+          timing: 'Primeira avaliação',
           detail:
-            'Pouco manuseio, oxigênio e ultrassom focado. Toracocentese se a efusão pleural comprometer ventilação; radiografia somente quando o paciente tolerar.',
+            'Pouco manuseio, oxigênio e ultrassom focado; toracocentese se efusão pleural comprometer ventilação; radiografia somente quando tolerado (Luis Fuentes et al., ACVIM 2020; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Confirme o fenótipo',
+          label: 'Confirmar o fenótipo',
+          timing: 'Após estabilização',
           detail:
-            'Ecocardiografia 2D, M-mode e Doppler: espessura regional, tamanho e função atrial, relaxamento, movimento anterior sistólico da mitral, gradiente de via de saída e trombo.',
+            'Ecocardiografia 2D, M-mode e Doppler: espessura regional, tamanho e função atrial, relaxamento, SAM, gradiente de VVE e trombo — padrão ouro (Luis Fuentes et al., ACVIM 2020).',
         },
         {
-          label: '3. Exclua causas secundárias',
+          label: 'Excluir causas secundárias',
+          timing: 'Antes de rotular primária',
           detail:
-            'Pressão arterial, T4 total e contexto clínico; IGF-1 se houver fenótipo de hipersomatotropismo. Reavalie após hidratação quando a pseudohipertrofia por desidratação for plausível.',
+            'Pressão arterial, T4 total e contexto clínico; IGF-1 se hipersomatotropismo; reavaliar após hidratação se pseudohipertrofia plausível (Nelson & Couto, 6ª ed.; Luis Fuentes et al., ACVIM 2020).',
         },
         {
-          label: '4. Estime risco',
+          label: 'Estimar risco',
+          timing: 'Na ecocardiografia inicial',
           detail:
-            'Integre átrio esquerdo, contraste espontâneo ou trombo, função sistólica, arritmias, NT-proBNP e histórico de insuficiência cardíaca ou tromboembolismo arterial.',
+            'Integrar átrio esquerdo, contraste espontâneo ou trombo, função sistólica, arritmias, NT-proBNP e histórico de ICC ou tromboembolismo (Luis Fuentes et al., ACVIM 2020).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Conduta por estágio',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'B1 - baixo risco',
+          label: 'B1 — baixo risco',
           detail:
-            'Sem sinais e sem dilatação atrial relevante: geralmente monitorar; não há benefício comprovado de atenolol, IECA ou clopidogrel universais.',
+            'Sem sinais e sem dilatação atrial relevante: monitorar; não há benefício comprovado de atenolol, IECA ou clopidogrel universais (Luis Fuentes et al., ACVIM 2020).',
+          duration: 'Eco a cada 6–12 meses no subclínico.',
+          reassess: 'Reavaliar mais cedo se átrio aumentar, arritmia ou nova sintomatologia.',
         },
         {
-          label: 'B2 - maior risco',
+          label: 'B2 — maior risco',
           detail:
-            'Considerar clopidogrel quando o risco trombótico é alto; tratar obstrução/taquiarritmia selecionada. Sirolimo de liberação retardada pode ser opção regulatória específica nos EUA.',
+            'Considerar clopidogrel quando risco trombótico alto; tratar obstrução/taquiarritmia selecionada; sirolimo de liberação retardada em CMH subclínica selecionada (Hogan et al., FAT CAT 2015; Kaplan et al., RAPACAT 2023; FDA Felycin 2025).',
+          dose: 'Clopidogrel 18,75 mg/gato VO q24h. Atenolol 6,25 mg/gato VO q12h titulado se obstrução/taquiarritmia. Sirolimo 0,3 mg/kg VO q7d (aprovação condicional EUA).',
+          duration: 'Clopidogrel contínuo se indicado; sirolimo conforme protocolo regulatório.',
+          reassess: 'Monitorar sangramento, função hepática e glicemia com sirolimo.',
         },
         {
-          label: 'C - insuficiência cardíaca ou tromboembolismo',
+          label: 'C — insuficiência cardíaca ou tromboembolismo',
           detail:
-            'Furosemida e suporte para congestão; toracocentese quando indicada; analgesia e antitrombóticos no tromboembolismo; plano domiciliar guiado pela frequência respiratória.',
+            'Furosemida e suporte para congestão; toracocentese quando indicada; analgesia opioide e antitrombóticos no TEA (Hogan et al., FAT CAT 2015; Plumb\'s, 10ª ed.).',
+          dose: 'Furosemida titulada à resposta. Clopidogrel 18,75 mg/gato q24h na prevenção secundária de TEA.',
+          duration: 'Diurético na menor dose eficaz; antitrombótico conforme risco.',
+          reassess: 'FR dormindo >30–35/min ou ganho de peso = reavaliar congestão.',
         },
         {
-          label: 'D - refratária',
+          label: 'D — refratária',
           detail:
-            'Ajustar diurético, considerar torsemida e combinações especializadas, revisar perfusão renal e qualidade de vida.',
+            'Ajustar diurético, considerar torsemida e combinações especializadas; revisar perfusão renal e qualidade de vida (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+          reassess: 'Creatinina e eletrólitos após intensificar diurético.',
         },
       ],
     },

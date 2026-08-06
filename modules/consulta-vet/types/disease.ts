@@ -1,8 +1,23 @@
 import { ContentFlag, EditorialReference, EditorialSectionValue, VetSpecies } from './common';
 
+export interface DiseaseQuickSummaryFlowStep {
+  label: string;
+  detail?: string;
+  /** Doses ou faixas práticas (ex.: terbutalina 0,01 mg/kg SC). */
+  dose?: string;
+  /** Tempo de uso ou janela de transição. */
+  duration?: string;
+  /** Quando reavaliar ou critério de ajuste. */
+  reassess?: string;
+  /** @deprecated Preferir citação inline no fim de `detail`. Mantido só para compatibilidade de renderização. */
+  evidence?: string;
+  /** Momento no fluxo (ex.: triagem, estabilização). */
+  timing?: string;
+}
+
 export interface DiseaseQuickSummaryFlow {
   title: string;
-  steps: { label: string; detail?: string }[];
+  steps: DiseaseQuickSummaryFlowStep[];
 }
 
 /** Conteúdo estruturado do “Resumo rápido” (fluxos, grifos, faixas). Opcional por doença. */

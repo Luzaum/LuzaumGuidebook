@@ -41,7 +41,7 @@ export function ConsultaVetShell() {
             </button>
             <span className="text-sm font-semibold text-foreground">Menu do ConsultaVet</span>
           </div>
-          <main className="consulta-vet-main-scroll relative flex min-h-0 flex-1 flex-col overflow-y-auto">
+          <main className="consulta-vet-main-scroll relative flex min-h-0 flex-1 flex-col overflow-y-auto overscroll-y-contain">
             <ConsultaVetErrorBoundary>
               <Outlet />
             </ConsultaVetErrorBoundary>
