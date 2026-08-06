@@ -4,18 +4,15 @@ import { ArrowDownRight, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Ta
 import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { useCalculationStore } from '../../store/calculationStore'
-import { calculateIdealWeightCustom, getBCSDescription } from '../../lib/nutrition'
-import {
-  calculateBookRER,
-  calculateEnergyGoalFromBcs,
-  calculateMaintenanceEnergyFromProfile,
-  getDefaultBookEnergyProfile,
-} from '../../lib/bookEnergy'
+import { getBCSDescription } from '../../lib/nutrition'
 import {
   computeBodyTargetPlan,
   isCalculationEngineV3Enabled,
 } from '../../lib/nutritionCalculationBridge'
-import type { BCS, TargetGoal } from '../../types'
+import { idealWeightMethodLabel } from '../../lib/nutrition-calculations/bodyComposition'
+import { estimateWeeksToTarget } from '../../lib/nutrition-calculations/bodyComposition'
+import { muscleConditionLabel } from '../../pdf-v5/clinicalLabels'
+import type { BCS, TargetGoal, WeightLossEnergyMethod } from '../../types'
 import { cn } from '../../lib/utils'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -33,6 +30,12 @@ const GOAL_COPY: Record<TargetGoal, { label: string; description: string; icon: 
   weight_gain: { label: 'Recuperação de peso', description: 'O escore indica condição corporal abaixo do ideal.', icon: ArrowUpRight },
 }
 
+function reassessmentDateIso(): string {
+  const d = new Date()
+  d.setDate(d.getDate() + 21)
+  return d.toLocaleDateString('pt-BR')
+}
+
 export default function TargetStep() {
   const navigate = useNavigate()
   const { patient, energy, target, setPatient, setTarget, setDiet } = useCalculationStore()
@@ -40,6 +43,9 @@ export default function TargetStep() {
   const currentWeight = patient.currentWeight ?? 0
   const [bcs, setBcs] = useState<BCS>((patient.bcs ?? 5) as BCS)
   const [keepCurrentWeight, setKeepCurrentWeight] = useState(target.goal === 'maintenance' && bcs !== 5)
+  const [weightLossMethod, setWeightLossMethod] = useState<WeightLossEnergyMethod>(
+    target.weightLossEnergyMethod ?? 'aaha2021',
+  )
   const automaticGoal = goalFromBcs(bcs)
   const goal: TargetGoal = keepCurrentWeight ? 'maintenance' : automaticGoal
   const goalCopy = GOAL_COPY[goal]
@@ -49,15 +55,6 @@ export default function TargetStep() {
 
   useEffect(() => setKeepCurrentWeight(false), [bcs])
 
-  const profileId =
-    energy.resolvedEnergyProfileId ??
-    getDefaultBookEnergyProfile({
-      species,
-      ageMonths: patient.ageMonths ?? 0,
-      isNeutered: !!patient.isNeutered,
-      isIndoor: patient.isIndoor,
-    })
-
   const v3Plan = useMemo(
     () =>
       v3Enabled && currentWeight > 0
@@ -66,69 +63,53 @@ export default function TargetStep() {
             energy,
             goal,
             energyStepMerKcal: energy.mer,
+            weightLossEnergyMethod: weightLossMethod,
           })
         : null,
-    [currentWeight, energy, goal, patient, v3Enabled],
+    [currentWeight, energy, goal, patient, v3Enabled, weightLossMethod],
   )
 
-  const legacyMaintenanceEnergy = useMemo(
-    () =>
-      calculateMaintenanceEnergyFromProfile({
-        weightKg: currentWeight,
-        profileId,
-        litterSize: energy.litterSize,
-        lactationWeek: energy.lactationWeek,
-      }),
-    [currentWeight, energy.lactationWeek, energy.litterSize, profileId],
-  )
+  if (!v3Enabled) {
+    return (
+      <Card className="nutrition-step-card w-full">
+        <CardHeader>
+          <CardTitle className="text-2xl">Meta corporal</CardTitle>
+          <CardDescription>
+            Novos planos nutricionais requerem o motor de cálculo clínico atualizado. Contacte o suporte técnico interno
+            para rollback temporário.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    )
+  }
 
-  const legacyTargetWeight = useMemo(() => {
-    if (goal === 'maintenance') return currentWeight
-    return calculateIdealWeightCustom(currentWeight, bcs, goal)
-  }, [bcs, currentWeight, goal])
+  if (!v3Plan) {
+    return (
+      <Card className="nutrition-step-card w-full">
+        <CardHeader>
+          <CardTitle className="text-2xl">Meta corporal</CardTitle>
+          <CardDescription>Informe o peso atual do paciente na etapa anterior.</CardDescription>
+        </CardHeader>
+      </Card>
+    )
+  }
 
-  const legacyTargetEnergy = useMemo(
-    () =>
-      calculateEnergyGoalFromBcs({
-        species,
-        currentWeightKg: currentWeight,
-        targetWeightKg: legacyTargetWeight,
-        goal,
-        maintenanceEnergyKcal: legacyMaintenanceEnergy,
-      }),
-    [currentWeight, goal, legacyMaintenanceEnergy, legacyTargetWeight, species],
-  )
-
-  const maintenanceEnergy = v3Plan?.maintenanceEnergyKcal ?? legacyMaintenanceEnergy
-  const targetWeight = v3Plan?.targetWeightKg ?? legacyTargetWeight
-  const targetEnergy = v3Plan?.targetEnergyKcal ?? legacyTargetEnergy
-
+  const targetWeight = v3Plan.targetWeightKg
+  const targetEnergy = v3Plan.targetEnergyKcal
+  const maintenanceEnergy = v3Plan.maintenanceEnergyKcal
   const weightDiffKg = targetWeight - currentWeight
   const weightDiffPct = currentWeight > 0 ? (weightDiffKg / currentWeight) * 100 : 0
   const energyDiffPct = maintenanceEnergy > 0 ? ((targetEnergy - maintenanceEnergy) / maintenanceEnergy) * 100 : 0
-
-  const energyFormula = useMemo(() => {
-    if (v3Plan) return v3Plan.energyFormula
-
-    if (goal === 'maintenance') {
-      return `Manutenção no peso atual (${currentWeight.toFixed(2)} kg), conforme perfil energético selecionado.`
-    }
-
-    const targetRer = calculateBookRER(Math.max(0.1, targetWeight))
-    if (goal === 'weight_loss') {
-      const factor = species === 'cat' ? 0.8 : 1
-      return `Peso-alvo ${targetWeight.toFixed(2)} kg (ECC ${bcs}) → RER ${targetRer.toFixed(0)} kcal × ${factor.toFixed(1)} = ${targetEnergy.toFixed(0)} kcal/dia`
-    }
-
-    return `Peso-alvo ${targetWeight.toFixed(2)} kg → RER ${targetRer.toFixed(0)} kcal × 1,2 = ${targetEnergy.toFixed(0)} kcal/dia`
-  }, [bcs, currentWeight, goal, species, targetEnergy, targetWeight, v3Plan])
-
-  const targetEnergyRange = v3Plan?.targetResult.estimatedRangeKcalDay
-  const weightMethodSummary = v3Plan?.idealWeightEstimate.methodSummary
-  const requiresClinicianReview = v3Plan?.idealWeightEstimate.requiresClinicianReview ?? false
-  const isProvisionalEstimate = v3Plan?.idealWeightEstimate.isProvisionalEstimate ?? false
-  const verificationReference = v3Plan?.targetResult.verificationReference
-  const weeklyLossTarget = v3Plan?.weeklyLossTargetPct
+  const ideal = v3Plan.idealWeightEstimate
+  const weeklyLoss = v3Plan.weeklyLossTargetPct
+  const weeksPreview =
+    goal === 'weight_loss' && weeklyLoss
+      ? estimateWeeksToTarget({
+          currentWeightKg: currentWeight,
+          targetWeightKg: targetWeight,
+          weeklyTargetLossPercent: weeklyLoss.preferredMax,
+        })
+      : null
 
   const handleNext = () => {
     setPatient({ bcs })
@@ -140,6 +121,9 @@ export default function TargetStep() {
       isManualTarget: false,
       weightToUseForEnergy: goal === 'maintenance' ? 'current' : 'target',
       targetEnergy,
+      weightLossEnergyMethod: goal === 'weight_loss' ? weightLossMethod : undefined,
+      targetWeightMethodLabel: idealWeightMethodLabel(ideal.method),
+      percentOverweightEstimate: ideal.percentOverweight,
     })
     setDiet({ targetEnergy })
     navigate(`${NEW_ROUTE}/food`)
@@ -149,7 +133,9 @@ export default function TargetStep() {
     <Card className="nutrition-step-card w-full">
       <CardHeader className="border-b border-border/60 pb-4">
         <CardTitle className="text-2xl">Meta corporal</CardTitle>
-        <CardDescription>Selecione o ECC. O objetivo e a energia-alvo são definidos automaticamente.</CardDescription>
+        <CardDescription>
+          Selecione o ECC. O objetivo e a energia-alvo seguem as diretrizes AAHA 2021 para emagrecimento ambulatorial.
+        </CardDescription>
       </CardHeader>
       <CardContent className="space-y-5 pt-4">
         <section className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
@@ -196,9 +182,10 @@ export default function TargetStep() {
                   className="mt-0.5 h-4 w-4 accent-primary"
                 />
                 <span>
-                  <span className="font-semibold">Manter o peso atual</span>
+                  <span className="font-semibold">Manutenção monitorada</span>
                   <span className="mt-0.5 block text-xs text-muted-foreground">
-                    Use quando a decisão clínica for manutenção apesar do ECC.
+                    Use quando a decisão clínica for manutenção apesar do ECC (prevenção de progressão, sem dieta
+                    restritiva automática).
                   </span>
                 </span>
               </label>
@@ -213,106 +200,116 @@ export default function TargetStep() {
                 <GoalIcon className="h-4 w-4" />
               </span>
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-wide text-primary">Objetivo automático</p>
+                <p className="text-[10px] font-semibold uppercase tracking-wide text-primary">Objetivo</p>
                 <p className="text-lg font-bold">{goalCopy.label}</p>
               </div>
             </div>
             <p className="max-w-md text-xs text-muted-foreground">{goalCopy.description}</p>
           </div>
-          <div className="grid gap-px bg-border sm:grid-cols-4">
+          <div className="grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
             <div className="bg-card p-3">
               <p className="text-[10px] text-muted-foreground">Peso atual</p>
               <p className="mt-0.5 text-lg font-bold">{currentWeight.toFixed(2)} kg</p>
             </div>
             <div className="bg-card p-3">
-              <p className="text-[10px] text-muted-foreground">Peso-alvo estimado</p>
+              <p className="text-[10px] text-muted-foreground">ECC / EMC</p>
+              <p className="mt-0.5 text-lg font-bold">
+                {bcs}/9 · {muscleConditionLabel(patient.muscleCondition ?? 'normal')}
+              </p>
+            </div>
+            <div className="bg-card p-3">
+              <p className="text-[10px] text-muted-foreground">Peso-alvo</p>
               <p className="mt-0.5 text-lg font-bold">{targetWeight.toFixed(2)} kg</p>
-              {weightMethodSummary && goal !== 'maintenance' && (
-                <p className="mt-1 text-[10px] leading-4 text-muted-foreground">{weightMethodSummary}</p>
+              <p className="mt-1 text-[10px] text-muted-foreground">
+                Método: {idealWeightMethodLabel(ideal.method)}
+              </p>
+              {ideal.percentOverweight != null && (
+                <p className="text-[10px] text-muted-foreground">Excesso estimado: {ideal.percentOverweight.toFixed(0)}%</p>
               )}
             </div>
             <div className="bg-card p-3">
-              <p className="text-[10px] text-muted-foreground">Variação ponderal</p>
-              <p className="mt-0.5 text-lg font-bold">
-                {weightDiffKg > 0 ? '+' : ''}
-                {weightDiffKg.toFixed(2)} kg
-              </p>
-              <p className="text-[10px] text-muted-foreground">
-                {weightDiffPct > 0 ? '+' : ''}
-                {weightDiffPct.toFixed(1)}%
-              </p>
-            </div>
-            <div className="bg-card p-3">
-              <p className="text-[10px] text-muted-foreground">Energia-alvo</p>
+              <p className="text-[10px] text-muted-foreground">Meta energética inicial</p>
               <p className="mt-0.5 text-lg font-bold text-primary">{targetEnergy.toFixed(0)} kcal/dia</p>
-              {targetEnergyRange && goal !== 'maintenance' && (
+              {v3Plan.targetResult.estimatedRangeKcalDay && goal === 'weight_loss' && (
                 <p className="mt-1 text-[10px] text-muted-foreground">
-                  Faixa: {targetEnergyRange.minimum.toFixed(0)}–{targetEnergyRange.maximum.toFixed(0)} kcal/dia
+                  Faixa: {v3Plan.targetResult.estimatedRangeKcalDay.minimum.toFixed(0)}–
+                  {v3Plan.targetResult.estimatedRangeKcalDay.maximum.toFixed(0)} kcal/dia
                 </p>
               )}
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col gap-3 rounded-xl border border-border p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="space-y-2">
-            <p className="text-sm font-semibold">Comparação energética</p>
+        {goal === 'weight_loss' && v3Plan.weightLossEnergyOptions?.observedKcal != null && (
+          <section className="rounded-xl border border-border p-4 space-y-3">
+            <p className="text-sm font-semibold">Seleção do método energético</p>
             <p className="text-xs text-muted-foreground">
-              Manutenção (peso atual): {maintenanceEnergy.toFixed(0)} kcal/dia · Meta: {targetEnergy.toFixed(0)} kcal/dia
+              Escolha um método — não são calculados em média. Fonte canônica: AAHA 2021.
             </p>
-            {v3Plan && goal === 'weight_loss' && weeklyLossTarget && (
-              <p className="text-xs text-muted-foreground">
-                Meta semanal de perda: {weeklyLossTarget.min}–{weeklyLossTarget.max}% do peso corporal (
-                {species === 'dog' ? 'cão' : 'gato'}).
-              </p>
-            )}
-            <p className="text-[11px] leading-5 text-muted-foreground">{energyFormula}</p>
-            {v3Plan && verificationReference && goal === 'weight_loss' && (
-              <p className="text-[11px] leading-5 text-muted-foreground/90 italic">
-                {verificationReference.methodSummary} (somente conferência — não altera a meta prescrita.)
-              </p>
-            )}
-            {v3Plan && (
-              <p className="text-[11px] leading-5 text-muted-foreground">
-                Reavaliar peso, ECC, EMC e adesão em 2–4 semanas; ajustar calorias ~10% se a perda estiver fora da meta
-                com adesão confirmada.
-              </p>
-            )}
-          </div>
-          <div
-            className={cn(
-              'flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-semibold',
-              Math.abs(energyDiffPct) < 0.1
-                ? 'bg-muted text-foreground'
-                : energyDiffPct < 0
-                  ? 'bg-blue-500/10 text-blue-700 dark:text-blue-300'
-                  : 'bg-amber-500/10 text-amber-700 dark:text-amber-300',
-            )}
-          >
-            <ArrowRight className="h-3.5 w-3.5" />
-            {energyDiffPct > 0 ? '+' : ''}
-            {energyDiffPct.toFixed(1)}%
-          </div>
+            <div className="grid gap-2 sm:grid-cols-2">
+              <label className="flex cursor-pointer gap-2 rounded-lg border p-3 text-sm">
+                <input
+                  type="radio"
+                  name="weight-loss-method"
+                  checked={weightLossMethod === 'aaha2021'}
+                  onChange={() => setWeightLossMethod('aaha2021')}
+                  className="mt-1 accent-primary"
+                />
+                <span>
+                  <span className="font-semibold">Método padrão AAHA</span>
+                  <span className="block text-xs text-muted-foreground">
+                    {v3Plan.weightLossEnergyOptions.aahaKcal.toFixed(0)} kcal/dia no peso-alvo
+                  </span>
+                </span>
+              </label>
+              <label className="flex cursor-pointer gap-2 rounded-lg border p-3 text-sm">
+                <input
+                  type="radio"
+                  name="weight-loss-method"
+                  checked={weightLossMethod === 'observed_history'}
+                  onChange={() => setWeightLossMethod('observed_history')}
+                  className="mt-1 accent-primary"
+                />
+                <span>
+                  <span className="font-semibold">Histórico alimentar (80% da ingestão)</span>
+                  <span className="block text-xs text-muted-foreground">
+                    {v3Plan.weightLossEnergyOptions.observedKcal?.toFixed(0)} kcal/dia
+                  </span>
+                </span>
+              </label>
+            </div>
+          </section>
+        )}
+
+        <section className="rounded-xl border border-border p-4 space-y-2">
+          <p className="text-sm font-semibold">Plano de acompanhamento</p>
+          {goal === 'weight_loss' && weeklyLoss && (
+            <p className="text-xs text-muted-foreground">
+              Meta semanal: {weeklyLoss.min}–{weeklyLoss.max}% do peso corporal (
+              {species === 'cat' ? 'gato — iniciar preferencialmente 0,5–1%' : 'cão'}).
+            </p>
+          )}
+          {weeksPreview != null && weeksPreview > 0 && (
+            <p className="text-xs text-muted-foreground">
+              Previsão inicial: ~{weeksPreview.toFixed(0)} semanas até o peso-alvo (estimativa, sujeita a reavaliação).
+            </p>
+          )}
+          <p className="text-xs text-muted-foreground">{v3Plan.reassessmentHint} Próxima reavaliação sugerida: {reassessmentDateIso()}.</p>
+          <p className="text-[11px] leading-5 text-muted-foreground">{v3Plan.energyFormula}</p>
+          {v3Plan.targetResult.verificationReference && goal === 'weight_loss' && (
+            <p className="text-[11px] italic text-muted-foreground">{v3Plan.targetResult.verificationReference.methodSummary}</p>
+          )}
         </section>
 
-        {requiresClinicianReview && (
+        {ideal.requiresClinicianReview && (
           <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-200">
-            {isProvisionalEstimate
-              ? 'Estimativa provisória — confirme pelo exame físico, EMC e histórico ponderal. Considere meta intermediária ou override clínico antes de prescrever.'
-              : 'A estimativa automática de peso-alvo tem baixa confiança neste ECC. Confirme manualmente pelo exame físico antes de prescrever.'}
+            {ideal.isProvisionalEstimate
+              ? 'Peso-alvo provisório — requer revisão clínica.'
+              : 'Confirme pelo exame físico antes de prescrever.'}
           </p>
         )}
 
-        {!v3Enabled && goal !== 'maintenance' && (
-          <p className="rounded-xl border border-blue-500/30 bg-blue-500/10 px-3 py-2 text-xs leading-5 text-blue-900 dark:text-blue-200">
-            Motor legado ativo. Para homologação do cálculo clínico versionado (hierarquia AAHA + histórico alimentar),
-            ative <code className="text-[10px]">VITE_NUTRITION_CALCULATION_ENGINE_V3=true</code> no ambiente local.
-          </p>
-        )}
-
-        <p className="text-xs leading-5 text-muted-foreground">
-          A estimativa ponderal por ECC é referência inicial. Confirme pelo exame físico, massa muscular e evolução do paciente.
-        </p>
+        <p className="text-xs leading-5 text-muted-foreground">{v3Plan.uncertaintyNotice}</p>
 
         <div className="flex justify-between border-t border-border/60 pt-4">
           <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/energy`)} className="gap-2">
