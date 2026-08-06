@@ -1,5 +1,6 @@
 import { GENUTRI_REQUIREMENTS } from './genutriData'
 import type { RequirementProfile, Species } from '../types'
+import { formatClinicalLabelPtBr } from './clinicalLabelUtils'
 
 export interface ClinicalProfileOption {
   id: string
@@ -11,44 +12,13 @@ export interface ClinicalProfileOption {
 }
 
 function sanitizeClinicalLabel(label: string | null | undefined): string {
-  if (!label) return 'Perfil clínico'
-  const sanitized = label
-    .replace(/_/g, ' ')
-    .replace(/\s*-\s*%MS/gi, '')
-    .replace(/\s*MS%/gi, '')
-    .replace(/\s*-\s*%Contribuição Energética/gi, '')
-    .replace(/\s*-\s*%Contribuicao Energetica/gi, '')
-    .replace(/\s*-\s*100 kcal/gi, '')
-    .replace(/\s*%MS/gi, '')
-    .replace(/\bCancer\b/g, 'Câncer')
-    .replace(/Inflamatoria/gi, 'Inflamatória')
-    .replace(/\bReproducao\b/gi, 'Reprodução')
-    .replace(/\bGestacao\b/g, 'Gestação')
-    .replace(/\bLactacao\b/g, 'Lactação')
-    .replace(/\bCondicao\b/gi, 'Condição')
-    .replace(/\benergetica\b/gi, 'energética')
-    .replace(/\benergetico\b/gi, 'energético')
-    .replace(/\badult maintenance\b/gi, 'adulto em manutenção')
-    .replace(/\bnormal activity\b/gi, 'atividade moderada')
-    .replace(/\blow activity\b/gi, 'baixa atividade')
-    .replace(/\bweight loss\b/gi, 'perda de peso')
-    .replace(/\bgrowth\b/gi, 'crescimento')
-    .replace(/\bgestation\b/gi, 'gestação')
-    .replace(/\blactation\b/gi, 'lactação')
-    .replace(/\s+/g, ' ')
-    .trim()
-
-  return sanitized.charAt(0).toUpperCase() + sanitized.slice(1)
+  return formatClinicalLabelPtBr(label)
 }
 
 function isClinicalWorkbookProfile(profile: RequirementProfile) {
   return profile.source !== 'FEDIAF 2025'
 }
 
-/**
- * Planilhas SACN usam "Cães" / "Gatos" no rótulo. Se `species` vier errado como `both`,
- * ainda filtramos pela espécie escolhida para não misturar listas.
- */
 function clinicalWorkbookMatchesSelectedSpecies(profile: RequirementProfile, species: Species): boolean {
   const matchesMeta =
     profile.species === species || profile.species === 'both' || profile.species === 'unknown'
@@ -62,7 +32,6 @@ function clinicalWorkbookMatchesSelectedSpecies(profile: RequirementProfile, spe
 
   if (hasGatos && !hasCaes) return species === 'cat'
   if (hasCaes && !hasGatos) return species === 'dog'
-  // Rótulos tipo "Gato - %MS" / "Cão - g/PV^0,75" (sem plural na planilha)
   if (hasGato && !hasCao && !hasCaes && !hasGatos) return species === 'cat'
   if (hasCao && !hasGato && !hasCaes && !hasGatos) return species === 'dog'
   return true
@@ -137,7 +106,7 @@ export function getHumanRequirementLabel(profile?: RequirementProfile): string {
       return 'Adulto Castrado / Baixa Ativ.'
     }
     if (profile.lifeStage === 'early_growth_reproduction' || profile.lifeStage === 'growth_reproduction') {
-      return 'Crescimento e Reproducao'
+      return 'Crescimento e Reprodução'
     }
     if (profile.lifeStage === 'late_growth') {
       return 'Crescimento Tardio'
@@ -153,3 +122,5 @@ export function getHumanRequirementLabel(profile?: RequirementProfile): string {
 
   return sanitizeClinicalLabel(profile.label)
 }
+
+export { formatClinicalLabelPtBr, normalizeClinicalKey } from './clinicalLabelUtils'

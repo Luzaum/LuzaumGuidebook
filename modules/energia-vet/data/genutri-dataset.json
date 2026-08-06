@@ -87966,10 +87966,10 @@
     {
       "id": "sacn-cancer-caes-ms",
       "source": "SACN",
-      "label": "Cancer Cães - %MS",
+      "label": "Câncer Cães - %MS",
       "species": "dog",
       "lifeStage": null,
-      "condition": "Cancer Cães",
+      "condition": "Câncer Cães",
       "basisType": "percent_dm",
       "nutrientTargets": {
         "moisturePct": {
@@ -88233,10 +88233,10 @@
     {
       "id": "sacn-cancer-caes-contribuicao-energetica",
       "source": "SACN",
-      "label": "Cancer Cães - %Contribuição Energética",
+      "label": "Câncer Cães - %Contribuição Energética",
       "species": "dog",
       "lifeStage": null,
-      "condition": "Cancer Cães",
+      "condition": "Câncer Cães",
       "basisType": "energy_percent",
       "nutrientTargets": {
         "moisturePct": {
@@ -88496,10 +88496,10 @@
     {
       "id": "sacn-cancer-gatos-ms",
       "source": "SACN",
-      "label": "Cancer Gatos - %MS",
+      "label": "Câncer Gatos - %MS",
       "species": "cat",
       "lifeStage": null,
-      "condition": "Cancer Gatos",
+      "condition": "Câncer Gatos",
       "basisType": "percent_dm",
       "nutrientTargets": {
         "moisturePct": {
@@ -88757,10 +88757,10 @@
     {
       "id": "sacn-cancer-gatos-contribuicao-energetica",
       "source": "SACN",
-      "label": "Cancer Gatos - %Contribuição Energética",
+      "label": "Câncer Gatos - %Contribuição Energética",
       "species": "cat",
       "lifeStage": null,
-      "condition": "Cancer Gatos",
+      "condition": "Câncer Gatos",
       "basisType": "energy_percent",
       "nutrientTargets": {
         "moisturePct": {
@@ -91385,10 +91385,10 @@
     {
       "id": "sacn-doenca-intestinal-inflamatoria-caes-ms",
       "source": "SACN",
-      "label": "Doença Intestinal Inflamatoria Cães - MS%",
+      "label": "Doença Intestinal Inflamatória Cães - MS%",
       "species": "dog",
       "lifeStage": null,
-      "condition": "Doença Intestinal Inflamatoria Cães",
+      "condition": "Doença Intestinal Inflamatória Cães",
       "basisType": "percent_dm",
       "nutrientTargets": {
         "moisturePct": {
@@ -91650,10 +91650,10 @@
     {
       "id": "sacn-doenca-intestinal-inflamatoria-gatos-ms",
       "source": "SACN",
-      "label": "Doença Intestinal Inflamatoria Gatos - MS%",
+      "label": "Doença Intestinal Inflamatória Gatos - MS%",
       "species": "cat",
       "lifeStage": null,
-      "condition": "Doença Intestinal Inflamatoria Gatos",
+      "condition": "Doença Intestinal Inflamatória Gatos",
       "basisType": "percent_dm",
       "nutrientTargets": {
         "moisturePct": {
