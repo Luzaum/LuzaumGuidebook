@@ -60,57 +60,65 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico e estadiamento (visão de fluxo)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Escuta e contexto',
+          label: 'Escuta e contexto',
+          timing: 'Primeira consulta',
           detail:
-            'Localizar foco mitral; palpar pulso e frequência; buscar dispneia, intolerância ao exercício, síncope, tosse (nem sempre cardíaca). Documentar raça, idade e histórico vacinal/medicamentos.',
+            'Localizar foco mitral; palpar pulso e frequência; buscar dispneia, intolerância ao exercício, síncope, tosse (nem sempre cardíaca). Documentar raça, idade e histórico vacinal/medicamentos (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Ecocardiografia completa',
+          label: 'Ecocardiografia completa',
           detail:
-            'Quantificar regurgitação, espessamento valvar, dimensões diastólicas do VE e do AE, função sistólica (fractional shortening ou Simpson conforme experiência), estimar pressão pulmonar se sinais sugerem hipertensão pulmonar.',
+            'Quantificar regurgitação, espessamento valvar, dimensões diastólicas do VE e do AE, função sistólica, estimar pressão pulmonar se sinais sugerem hipertensão pulmonar (ACVIM, 2019; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Classificar ACVIM',
+          label: 'Classificar ACVIM',
+          timing: 'Antes de prescrever',
           detail:
-            'Registrar estágio A–D; em pré-clínico, verificar se critérios de B2 são atingidos segundo consenso vigente — isso altera conversa sobre pimobendan e intervalo de seguimento.',
+            'Registrar estágio A–D; em pré-clínico, verificar se critérios de B2 são atingidos — isso altera conversa sobre pimobendan e intervalo de seguimento (ACVIM, 2019; EPIC, 2016).',
         },
         {
-          label: '4. Radiografia quando indicado',
+          label: 'Radiografia quando indicado',
           detail:
-            'Útil para congestão, VHS e padrão bronquial; não substitui medidas ao eco para “B2”.',
+            'Útil para congestão, VHS e padrão bronquial; não substitui medidas ao eco para B2 (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Laboratório estratégico',
+          label: 'Laboratório estratégico',
           detail:
-            'Hemograma e bioquímica antes de instituir IECA + diurético contínuo; NT-proBNP pode ajudar em casos limítrofes ou seguimento, conforme disponibilidade.',
+            'Hemograma e bioquímica antes de instituir IECA + diurético contínuo; NT-proBNP pode ajudar em casos limítrofes (ACVIM, 2019).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento por fase (síntese)',
+      title: 'Plano de tratamento',
       steps: [
         {
           label: 'Pré-clínico B1',
           detail:
-            'Observação periódica; controle de peso e exercício sensato; sem necessidade automática de “cóctel cardíaco”.',
+            'Observação periódica; controle de peso e exercício sensato; sem necessidade automática de cóctel cardíaco (ACVIM, 2019).',
         },
         {
           label: 'Pré-clínico B2',
+          dose: 'Pimobendan ~0,25–0,5 mg/kg BID ou TID se critérios ACVIM atendidos',
+          duration: 'Contínuo com seguimento eco seriado',
+          reassess: 'Eco e clínica a intervalos definidos pelo estádio',
           detail:
-            'Se critérios ACVIM atendidos: considerar pimobendan conforme diretriz e discussão com tutor; seguimento eco seriado.',
+            'Considerar pimobendan conforme EPIC/ACVIM quando há remodelação documentada (EPIC, 2016; ACVIM, 2019).',
         },
         {
           label: 'ICC estádio C',
+          dose: 'Furosemida titulada; pimobendan; IECA ~0,25–2 mg/kg BID se tolerado',
+          duration: 'Ajuste contínuo conforme congestão',
+          reassess: 'Creatinina e eletrólitos 5–10 dias após iniciar IECA + diurético',
           detail:
-            'Diurético para congestão; pimobendan; IECA se tolerado; tratar desencadeantes (infecção, arritmia); internar se dispneia em repouso ou hipóxia.',
+            'Diurético para congestão; tratar desencadeantes (infecção, arritmia); internar se dispneia em repouso ou hipóxia (ACVIM, 2019; Plumb\'s, 10ª ed.).',
         },
         {
           label: 'Refratário D',
           detail:
-            'Otimizar combinações com realismo; considerar espironolactona, hidralazina ou digoxina em protocolos selecionados; qualidade de vida e decisões éticas explícitas.',
+            'Otimizar combinações com realismo; considerar espironolactona ~2–4 mg/kg/d, hidralazina ou digoxina em protocolos selecionados; qualidade de vida e decisões éticas explícitas (ACVIM, 2019; Plumb\'s, 10ª ed.).',
         },
       ],
     },

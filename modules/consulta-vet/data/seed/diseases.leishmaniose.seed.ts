@@ -59,62 +59,73 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (resumo expandido)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Probabilidade pré-laboratorial',
+          label: 'Probabilidade pré-laboratorial',
+          timing: 'Primeira consulta em área endêmica',
           detail:
-            'Residir/viajar para área endêmica + perda de peso, dermatopatia sugestiva, linfonodos, uveíte ou proteinúria coloca LCan no topo do diferencial; coinfecção por Ehrlichia canis pode somar plaquetopenia e confundir gravidade.',
+            'Residir/viajar para área endêmica + perda de peso, dermatopatia, linfonodos, uveíte ou proteinúria coloca LCan no topo do diferencial (Brasileish 2025).',
         },
         {
-          label: '2. Confirmação parasitológica direta',
+          label: 'Confirmação parasitológica direta',
+          timing: 'Antes de rotular infecção ativa',
           detail:
-            'Citologia ou histopatologia com amastigotas em linfonodo, medula óssea, pele lesada ou outro tecido adequado — prova de infecção ativa quando a morfologia é típica e o contexto compatível.',
+            'Citologia ou histopatologia com amastigotas em linfonodo, medula óssea ou pele lesada — prova de infecção ativa quando morfologia típica (Brasileish 2025; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. PCR e quantificação',
+          label: 'PCR e quantificação',
           detail:
-            'Sangue, tecido ou fluidos conforme protocolo; útil para seguimento em serviços que padronizam ciclos de amplificação; interpretar carga junto à clínica (não é “jogo de números” isolado).',
+            'Sangue, tecido ou fluidos conforme protocolo; útil para seguimento e quantificação de carga parasitária; interpretar carga junto à clínica, não isoladamente (Brasileish 2025; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '4. Sorologia (IFAT, ELISA, testes rápidos)',
+          label: 'Sorologia (IFAT, ELISA, testes rápidos)',
           detail:
-            'Indica exposição/imunidade humoral; títulos altos apoiam mas não substituem confirmação direta em muitos protocolos oficiais; vacinas e tratamentos prévios alteram leitura.',
+            'Indica exposição/imunidade humoral; títulos altos apoiam mas não substituem confirmação direta; vacinas e tratamentos prévios alteram leitura (Brasileish 2025).',
         },
         {
-          label: '5. Estadiamento e dano orgânico',
+          label: 'Estadiamento e dano orgânico',
+          timing: 'Antes de prescrever',
           detail:
-            'Hemograma, creatinina, SDMA, urinálise, RPC, fundo de olho, peso e escore corporal; estádios IV–VI exigem lógica nefroproteção IRIS paralela.',
+            'Hemograma, creatinina, SDMA, urinálise, RPC, fundo de olho, peso e ECC; estádios IV–VI exigem lógica nefroproteção IRIS paralela (Brasileish 2025).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Lógica terapêutica (Brasil)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Estadiar antes de prescrever',
+          label: 'Estadiar antes de prescrever',
           detail:
-            'I–VI orientam intensidade: cão I assintomático soropositivo não se trata como estádio VI renal — evite politoxicidade desnecessária.',
+            'Estádios I–VI orientam intensidade — evitar politoxicidade desnecessária em assintomático estádio I (Brasileish 2025).',
+          reassess: 'Repetir painel clínico-laboratorial em intervalos definidos pelo estádio.',
         },
         {
-          label: '2. Leishmanicidas registrados',
+          label: 'Leishmanicidas registrados',
           detail:
-            'Miltefosina e esquemas com marbofloxacina conforme registro ANVISA e bula vigente; respeitar contraindicações reprodutivas e monitorização hepática/renal.',
+            'Miltefosina e esquemas com marbofloxacina conforme registro ANVISA e bula vigente; respeitar contraindicações reprodutivas (Brasileish 2025).',
+          dose: 'Conforme bula MAPA para miltefosina e associações registradas; monitorizar hepático/renal.',
+          duration: 'Conforme protocolo Brasileish e resposta clínica.',
+          reassess: 'Ajustar por resposta renal e clínica, não só por sorologia.',
         },
         {
-          label: '3. Alopurinol e eixo purinas',
+          label: 'Alopurinol e eixo purinas',
           detail:
-            'Papel consolidado como leishmaniostático; atenção a urolitíase por xantina — hidratação, urinálise e ultrassom quando indicado.',
+            'Papel consolidado como leishmaniostático; atenção a urolitíase por xantina — hidratação e urinálise (Brasileish 2025).',
+          dose: 'Alopurinol conforme bula e protocolo local (tipicamente 10 mg/kg VO q12h em muitos esquemas).',
+          duration: 'Manutenção prolongada em muitos casos estádios II–VI.',
+          reassess: 'Ultrassom e urinálise se sinais de litíase ou obstrução.',
         },
         {
-          label: '4. Imunomoduladores e adjuvantes',
+          label: 'Imunomoduladores e adjuvantes',
           detail:
-            'Domperidona e outras classes entram em protocolos específicos; integrar com estado imune e legislação local.',
+            'Domperidona e outras classes entram em protocolos específicos; integrar com estado imune e legislação local (Brasileish 2025).',
         },
         {
-          label: '5. Seguimento objetivo',
+          label: 'Seguimento objetivo',
           detail:
-            'Repetir painel clínico-laboratorial em intervalos definidos (vide tabelas Brasileish); ajustar terapia por resposta renal e não só por sorologia.',
+            'Repetir painel clínico-laboratorial em intervalos definidos; ajustar terapia por resposta renal e não só por sorologia (Brasileish 2025).',
+          reassess: 'RPC, creatinina, SDMA e fundo de olho nos estádios avançados.',
         },
       ],
     },

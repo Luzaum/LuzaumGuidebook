@@ -64,62 +64,80 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (visão geral)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Reconhecer padrão crônico',
+          label: 'Reconhecer padrão crônico',
+          timing: 'Primeira consulta',
           detail:
-            'PU/PD insidiosa, perda de peso/massa magra, USG persistentemente baixa no gato idoso, azotemia repetida em perfis de rotina — diferenciar de polidipsia psicogênica, diabetes e hipertireoidismo.',
+            'PU/PD insidiosa, perda de peso/massa magra, USG persistentemente baixa no gato idoso, azotemia repetida — diferenciar de polidipsia psicogênica, diabetes e hipertireoidismo (Nelson & Couto, 6ª ed.; IRIS 2023).',
         },
         {
-          label: '2. Excluir AKI e pré-renal',
+          label: 'Excluir AKI e pré-renal',
+          timing: 'Antes de estadiar IRIS',
           detail:
-            'Hidratação, ultrassom rápido se obstrução suspeita, revisão de AINE/corticoide/ACE-I em desidratação; só estadiar IRIS com paciente estável.',
+            'Hidratação, ultrassom rápido se obstrução suspeita, revisão de AINE/corticoide/ACE-I em desidratação; só estadiar IRIS com paciente estável e euvolêmico (IRIS 2023; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Pacote mínimo estruturado',
+          label: 'Pacote mínimo estruturado',
+          timing: 'Após estabilização',
           detail:
-            'Creatinina, SDMA (se disponível), ureia, fosfato, hemograma, urinálise + sedimento, UPC em urina de rotina, TA sistólica; cultura se piúria real ou recidivas.',
+            'Creatinina, SDMA, ureia, fosfato, hemograma, urinálise + sedimento, UPC, TA sistólica; cultura se piúria real ou recidivas (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
         },
         {
-          label: '4. Imagem quando muda conduta',
+          label: 'Imagem quando muda conduta',
+          timing: 'Proteinúria ou hipertensão documentada',
           detail:
-            'Ultrassom para tamanho renal, cistos, pielonefrite, litíase; considerar PA plasmática em hipertensão documentada com proteinúria.',
+            'Ultrassom para tamanho renal, cistos, pielonefrite, litíase; considerar PA plasmática em hipertensão com proteinúria (BSAVA Nephrology, 3ª ed.).',
         },
         {
-          label: '5. Estadiamento IRIS 2023',
+          label: 'Estadiamento IRIS 2023',
+          timing: 'Paciente euvolêmico estável',
           detail:
-            'Aplicar estádio por creatinina/SDMA; adicionar substadiamentos de pressão e proteinúria; registrar data e exames para comparar tendência, não snapshot único.',
+            'Aplicar estádio por creatinina/SDMA; adicionar substadiamentos de pressão e proteinúria; registrar data para comparar tendência, não snapshot único (IRIS 2023).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico (prioridades)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Educar e priorizar',
+          label: 'Educar e priorizar',
           detail:
-            'Metas realistas por estádio; reconhecer sinais de uremia que exigem ajuste imediato versus monitoramento trimestral.',
+            'Metas realistas por estádio; reconhecer sinais de uremia que exigem ajuste imediato versus monitoramento trimestral (IRIS 2023; Nelson & Couto, 6ª ed.).',
+          reassess: 'Revisão trimestral ou conforme estádio; registrar peso, apetite e FR dormindo.',
         },
         {
-          label: '2. Nutrição e fósforo',
+          label: 'Nutrição e fósforo',
           detail:
-            'Dieta renal quando aceita; transição gradual; quelantes se hiperfosfatemia persiste; cuidado com hipocalcemia iatrogênica ao forçar dieta + quelante sem monitorização.',
+            'Dieta renal quando aceita; transição gradual; quelantes se hiperfosfatemia persiste após dieta (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+          dose: 'Quelantes: hidróxido de alumínio ou carbonato de cálcio 30–90 mg/kg/dia VO com refeições; meta fósforo <4,6 mg/dL (estádio 2), <5,0 (3), <6,0 (4).',
+          duration: 'Contínuo; reavaliar fosfato a cada 2–4 semanas após iniciar quelante.',
+          reassess: 'Vigiar hipocalcemia iatrogênica ao combinar dieta + quelante sem monitorização.',
         },
         {
-          label: '3. Proteinúria e RAAS',
+          label: 'Proteinúria e RAAS',
           detail:
-            'IECA/ARB quando UPC acima do limiar de tratamento por guideline; verificar creatinina e K⁺ após início; não iniciar em desidratação.',
+            'IECA ou ARB quando UPC acima do limiar de tratamento; verificar creatinina e K⁺ após início; não iniciar em desidratação (IRIS 2023).',
+          dose: 'Benazepril 0,25–0,5 mg/kg VO q12–24h ou telmisartan 1 mg/kg VO q24h (cães/gatos); escalonar conforme UPC persistente.',
+          duration: 'Contínuo enquanto proteinúria clinicamente relevante.',
+          reassess: 'Creatinina e potássio 5–7 dias após início ou ajuste de RAAS.',
         },
         {
-          label: '4. Pressão arterial',
+          label: 'Pressão arterial',
           detail:
-            'Medição séria; em gatos amlodipino frequentemente necessário; integrar com HAS e lesão ocular se presente.',
+            'Medição séria; em gatos amlodipino frequentemente necessário; integrar com HAS e lesão ocular se presente (IRIS 2023).',
+          dose: 'Amlodipino 0,125–0,25 mg/kg VO q24h (gatos), titular até meta; telmisartan ~2 mg/kg q24h para HAS felina em protocolos IRIS.',
+          duration: 'Contínuo; meta individualizada por subestádio IRIS.',
+          reassess: 'Repetir TA com técnica padronizada a cada revisão.',
         },
         {
-          label: '5. Suporte avançado',
+          label: 'Suporte avançado',
           detail:
-            'Antieméticos (maropitant, ondansetron), apetite (capromorelina, mirtazapina), potássio oral felino, eritropoiese estimulante se anemia sintomática, fluidos SC — sempre alinhado à tolerância cardíaca.',
+            'Antieméticos, apetite, potássio oral felino, eritropoiese estimulante se anemia sintomática, fluidos SC — alinhado à tolerância cardíaca (IRIS 2023; August\'s Consultations in Feline Internal Medicine).',
+          dose: 'Maropitant 1 mg/kg SC q24h ou 2 mg/kg VO q24h. Mirtazapina 1,88 mg/gato q48–72h (gatos). Potássio oral conforme hipocalemia documentada.',
+          duration: 'Conforme sintomas urêmicos; fluidos SC domiciliares mais rotineiros em gatos estádios avançados.',
+          reassess: 'Ajustar antiemético/apetite à resposta clínica e função renal.',
         },
       ],
     },

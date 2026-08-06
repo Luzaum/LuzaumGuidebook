@@ -49,57 +49,71 @@ export const hipotireoidismoCaninoRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico sem atalhos',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Confirme que há síndrome compatível',
+          label: 'Confirmar síndrome compatível',
+          timing: 'Primeira consulta',
           detail:
-            'Letargia, ganho de peso sem polifagia, intolerância ao frio, dermatopatia endócrina, neuropatia e hipercolesterolemia coerentes.',
+            'Letargia, ganho de peso sem polifagia, intolerância ao frio, dermatopatia endócrina, neuropatia e hipercolesterolemia coerentes (Nelson & Couto, 6ª ed.; Bugbee et al., AAHA 2023).',
         },
         {
-          label: '2. Procure interferentes',
+          label: 'Procurar interferentes',
+          timing: 'Antes de confirmar hipotireoidismo',
           detail:
-            'Doença sistêmica, glicocorticoide, fenobarbital, sulfonamida, clomipramina, AINE e raça com T4 fisiologicamente baixo.',
+            'Doença sistêmica, glicocorticoide, fenobarbital, sulfonamida, clomipramina, AINE e raça com T4 fisiologicamente baixo — NTIS não é hipotireoidismo (Nelson & Couto, 6ª ed.; Bugbee et al., AAHA 2023).',
+          reassess: 'Adiar painel tireoidiano se possível em paciente sistêmico doente; tratar causa da NTIS primeiro.',
         },
         {
-          label: '3. Triagem com T4 total',
+          label: 'Triagem com T4 total',
+          timing: 'Após excluir interferentes agudos',
           detail:
-            'Normal torna hipotireoidismo improvável; baixo não confirma e deve ser interpretado com fT4ED e cTSH.',
+            'Normal torna hipotireoidismo improvável; baixo não confirma e deve ser interpretado com fT4ED e cTSH (Panciera, 1997; Dixon & Mooney, 1999).',
         },
         {
-          label: '4. Confirmação probabilística',
+          label: 'Confirmação probabilística',
+          timing: 'Quando T4 total baixo',
           detail:
-            'fT4 por diálise baixo + cTSH alto + clínica forte = alta probabilidade. Discordância pede repetir após recuperação ou aprofundar.',
+            'fT4 por diálise baixo + cTSH alto + clínica forte = alta probabilidade; discordância pede repetir após recuperação ou aprofundar (Bugbee et al., AAHA 2023; Dixon & Mooney, 1999).',
+          reassess: 'cTSH normal ocorre em 20–40% dos hipotireóideos — não excluir por TSH isolado.',
         },
         {
-          label: '5. Teste terapêutico somente selecionado',
+          label: 'Teste terapêutico (selecionado)',
+          timing: 'Painel inconclusivo com suspeita alta',
           detail:
-            'Se testes permanecem inconclusivos e suspeita é alta, documentar sinais/metas, tratar por tempo suficiente e interromper se resposta objetiva não ocorrer.',
+            'Documentar sinais/metas, tratar por tempo suficiente e interromper se resposta objetiva não ocorrer (Bugbee et al., AAHA 2023).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Reposição e acompanhamento',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Início',
+          label: 'Início de levotiroxina',
           detail:
-            'Levotiroxina veterinária com dose baseada no produto; reduzir em cardiopata, idoso frágil ou doença grave.',
+            'Levotiroxina veterinária com dose baseada no produto; reduzir em cardiopata, idoso frágil ou doença grave (Plumb\'s, 10ª ed.; Bugbee et al., AAHA 2023).',
+          dose: '0,022 mg/kg/dia PO total (rotulado) ou 0,01–0,02 mg/kg q12–24h; máximo inicial frequente 0,8 mg/cão q12h. Cardiopata: iniciar ~25% abaixo.',
+          duration: 'Vitalícia na maioria dos casos primários.',
+          reassess: 'Administrar sempre da mesma forma em relação ao alimento.',
         },
         {
-          label: '4–8 semanas',
+          label: 'Reavaliação 4–8 semanas',
           detail:
-            'Avaliar energia, peso, pele e T4 de 4–6 horas após a dose; colher uma amostra imediatamente antes da dose quando a administração for uma vez ao dia ou a resposta for duvidosa.',
+            'Avaliar energia, peso, pele e T4 de 4–6 horas após a dose; colher amostra imediatamente antes da dose quando administração q24h ou resposta duvidosa (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
+          duration: 'Primeira revisão 4–8 semanas após início ou ajuste.',
+          reassess: 'Energia costuma melhorar em 1–2 semanas; pele/pelagem podem levar 2–4 meses.',
         },
         {
-          label: 'Ajuste',
+          label: 'Ajuste de dose',
           detail:
-            'Checar adesão, relação com alimento e produto antes de aumentar dose. Ajustar por clínica e laboratório, não por um número isolado.',
+            'Checar adesão, relação com alimento e produto antes de aumentar dose; ajustar por clínica e laboratório, não por número isolado (Bugbee et al., AAHA 2023).',
+          reassess: 'Não elevar dose apenas para "normalizar" cTSH se cão clinicamente bem e TT4 adequado.',
         },
         {
           label: 'Manutenção',
           detail:
-            'Após estabilização, reavaliar a cada 6–12 meses e sempre que produto, dieta, dose ou doença concomitante mudar.',
+            'Após estabilização, reavaliar a cada 6–12 meses e sempre que produto, dieta, dose ou doença concomitante mudar (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+          reassess: 'Vigiar tireotoxicose iatrogênica: polifagia com perda de peso, panting, PU/PD, taquicardia.',
         },
       ],
     },

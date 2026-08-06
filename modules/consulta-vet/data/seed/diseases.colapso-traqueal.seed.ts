@@ -55,62 +55,76 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico (ordem prática)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. História e prova traqueal',
+          label: 'História e prova traqueal',
+          timing: 'Primeira consulta',
           detail:
-            'Toy com tosse seca episódica, pior com coleira e excitação; palpação traqueal sensível induz paroxismo — útil, não patognomônico.',
+            'Toy com tosse seca episódica "honking", pior com coleira e excitação; palpação traqueal sensível induz paroxismo — útil, não patognomônico (Johnson, Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Banco mínimo e cardiologia',
+          label: 'Banco mínimo e cardiologia',
+          timing: 'Antes de rotular colapso isolado',
           detail:
-            'Bioquímica para suporte medicamentoso; ausculta cardíaca — DMVD com AE grande pode comprimir brônquio esquerdo e somar ruído expiratório.',
+            'Bioquímica para suporte medicamentoso; ausculta cardíaca — DMVD com átrio esquerdo grande pode comprimir brônquio esquerdo e somar ruído expiratório (Johnson, Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Radiografia',
+          label: 'Radiografia torácica',
+          timing: 'Triagem inicial',
           detail:
-            'VHS, padrão bronquial, aspiração; inspiração para cervical, expiração para intratorácico — lembre que exame estático subestima doença dinâmica.',
+            'VHS, padrão bronquial, aspiração; inspiração para cervical, expiração para intratorácico — exame estático subestima doença dinâmica (Johnson, Respiratory Medicine 2ª ed.; Drobatz et al., 2019).',
         },
         {
-          label: '4. Fluoroscopia',
+          label: 'Fluoroscopia',
+          timing: 'Quando RX e clínica discordam',
           detail:
-            'Documenta colapso durante respiração natural e tosse induzida; comparar com RX quando há discrepância clínico-radiológica.',
+            'Documenta colapso durante respiração natural e tosse induzida; comparar com RX quando há discrepância clínico-radiológica (Johnson, Respiratory Medicine 2ª ed.; Kim et al., 2024).',
         },
         {
-          label: '5. Broncoscopia',
+          label: 'Broncoscopia',
+          timing: 'Antes de decidir stent ou cirurgia',
           detail:
-            'Padrão ouro para grau ACVS e decisão de stent; planejar anestesia com equipe experiente em vias aéreas dinâmicas.',
+            'Padrão ouro para grau ACVS I–IV e decisão terapêutica; planejar anestesia com equipe experiente em vias aéreas dinâmicas (ACVS; Johnson, Respiratory Medicine 2ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (prioridades)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 1 — Ambiente e mecânica',
+          label: 'Ambiente e medidas mecânicas',
           detail:
-            'Perda de peso agressiva se BCS elevado; peitoral; evitar calor úmido e fumaça; tratar rinite/bronquite concomitante.',
+            'Perda de peso agressiva se BCS elevado; peitoral em vez de coleira; evitar calor úmido e fumaça; tratar bronquite e comorbidades cardíacas concomitantes (Kim et al., 2024; Nelson & Couto, 6ª ed.).',
+          duration: 'Permanente — medida central, não opcional.',
+          reassess: 'Peso e BCS a cada revisão; FR em repouso e esforço abdominal.',
         },
         {
-          label: 'Camada 2 — Antitussígenos',
+          label: 'Antitussígenos',
           detail:
-            'Hidrocodona ou butorfanol conforme protocolo; objetivo é reduzir trauma mucoso, não sedar excessivamente.',
+            'Hidrocodona, codeína ou butorfanol — objetivo é reduzir trauma mucoso e quebrar ciclo tosse-inflamação-colapso; escolher apenas um opioide antitussígeno (Johnson, Respiratory Medicine 2ª ed.; Drobatz et al., 2019).',
+          dose: 'Hidrocodona 0,22–0,5 mg/kg PO q6–12h. Codeína 1–2 mg/kg PO q8–12h (alternativa). Butorfanol 0,5–1,0 mg/kg PO q6–12h.',
+          duration: 'Crônico conforme frequência de tosse; codeína: curso inicial típico 5–7 dias, depois ajustar intervalo.',
+          reassess: 'Melhor prevenir tosse do que abortar crise instalada; revisar dose se sedação, constipação ou depressão respiratória.',
         },
         {
-          label: 'Camada 3 — Anti-inflamatório',
+          label: 'Anti-inflamatório',
           detail:
-            'Corticoide sistêmico curto para crise; considerar budesonida inalado para manutenção com menos efeito sistêmico.',
+            'Corticoide sistêmico curto para crise; considerar budesonida inalada para manutenção com menos efeito sistêmico (Johnson, Respiratory Medicine 2ª ed.).',
+          dose: 'Crise: dexametasona 0,05–0,1 mg/kg IV/SQ/IM ou prednisona 0,25–0,5 mg/kg PO q12h com desmame. Manutenção: budesonida inalatória via câmara espaçadora.',
+          duration: 'Sistêmico: curso curto com desmame; inalatório contínuo se necessário prolongado.',
+          reassess: 'Reavaliar após 5–7 dias de corticoide sistêmico; transicionar para inalatório se uso crônico indicado.',
         },
         {
-          label: 'Camada 4 — Broncodilatadores',
+          label: 'Broncodilatadores',
           detail:
             'Reservados a componente broncoespástico/bronquite; uso rotineiro no colapso “puro” é menos fundamentado.',
         },
         {
-          label: 'Camada 5 — Cirurgia',
+          label: 'Cirurgia (anéis ou stent)',
           detail:
-            'Anéis extraluminais para segmento cervical; stent intratorácico após falha médica documentada — consentimento informado sobre tosse e complicações tardias.',
+            'Anéis extraluminais para segmento cervical; stent intratorácico após falha médica documentada — consentimento informado sobre tosse e complicações tardias frequentes (Nelson & Couto, 6ª ed.; Robin et al., JVIM 2024).',
+          reassess: 'Pós-stent: monitorar tosse, febre e padrão torácico novo (infecção, granuloma, fratura de stent).',
         },
       ],
     },
@@ -220,7 +234,7 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     ordemDePrioridade: [
       '1) Estabilizar crises com oxigênio, sedação leve e antitussígeno — minimizar estresse físico e térmico.',
       '2) Perda de peso e troca coleira → peitoral: medidas com maior relação custo/benefício na literatura recente.',
-      '3) Antitussígenos adequados como eixo crônico; corticoide curto para exacerbações ou inalado para manutenção.',
+      '3) Antitussígenos adequados (hidrocodona, codeína ou butorfanol — um por vez) como eixo crônico; corticoide curto para exacerbações ou inalado para manutenção.',
       '4) Broncoscopia/fluoroscopia para decidir grau real antes de prometer stent ao tutor.',
       '5) Encaminhar cirurgia de anéis ou stent apenas após falha documentada do máximo médico e consentimento sobre complicações.',
     ],
@@ -244,7 +258,12 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
         [
           'Hidrocodona',
           '0,22–0,5 mg/kg PO q6–12h (variação entre manuais); até 1 mg/kg q6h em casos selecionados (Plumb’s) com cautela sedativa',
-          'Mainstay antitussígeno; melhor prevenir tosse do que abortar crise instalada.',
+          'Antitussígeno de primeira escolha; melhor prevenir tosse do que abortar crise instalada.',
+        ],
+        [
+          'Codeína',
+          '1–2 mg/kg PO q8–12h por 5–7 dias',
+          'Alternativa à hidrocodona; não associar codeína e hidrocodona. Evitar se tosse produtiva ou pneumonia.',
         ],
         [
           'Butorfanol',

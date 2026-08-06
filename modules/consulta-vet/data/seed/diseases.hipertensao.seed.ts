@@ -60,54 +60,68 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (consultório)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Suspeita',
+          label: 'Suspeita',
+          timing: 'Primeira consulta',
           detail:
-            'Lesão-orgão-alvo (ocular, neurológico), azotemia com proteinúria, soplo + dispneia atípica, ou rastreio geriátrico de alto risco.',
+            'Lesão-orgão-alvo (ocular, neurológico), azotemia com proteinúria, soplo + dispneia atípica, ou rastreio geriátrico de alto risco (Nelson & Couto, 6ª ed.; IRIS 2023).',
         },
         {
-          label: '2. Medição séria',
+          label: 'Medição séria',
+          timing: 'Antes de rotular HAS',
           detail:
-            'Repouso ≥5–10 min; manguito = 40% da circunferência do membro; registo de posição e aparelho; idealmente ≥2 visitas ou série domiciliar.',
+            'Repouso ≥5–10 min; manguito = 40% da circunferência do membro; registro de posição e aparelho; idealmente ≥2 visitas ou série domiciliar (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
         },
         {
-          label: '3. Confirmar e quantificar',
+          label: 'Confirmar e quantificar',
+          timing: 'Após medições repetidas',
           detail:
-            'Classificar faixa IRIS se DRC; documentar tendência (subir/desceu com terapia).',
+            'Classificar faixa IRIS se DRC; documentar tendência (subir/desceu com terapia) (IRIS 2023).',
         },
         {
-          label: '4. Investigar causa',
+          label: 'Investigar causa',
+          timing: 'Antes de rotular idiopática',
           detail:
-            'Bioquímica completa, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos.',
+            'Bioquímica, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Tratar e reavaliar',
+          label: 'Tratar e reavaliar',
+          timing: 'Após confirmação',
           detail:
-            'Meta pressórica individualizada; creatinina e eletrólitos 5–7 dias após IECA/BRA; fundo de olho seriado se lesão.',
+            'Meta pressórica individualizada; creatinina e eletrólitos 5–7 dias após IECA/BRA; fundo de olho seriado se lesão (IRIS 2023; Plumb\'s, 10ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (lógica por camadas)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 0 — Causa reversível',
-          detail: 'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de RAAS.',
-        },
-        {
-          label: 'Camada 1 — Anti-hipertensivo de base',
+          label: 'Causa reversível',
           detail:
-            'Em muitos gatos: bloqueador do canal de cálcio (anlodipino é o mais citado) — titular até meta ou tolerância.',
+            'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de RAAS (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: 'Camada 2 — RAAS',
-          detail: 'IECA ou BRA quando proteinúria, ICC com contexto, ou combinação necessária — monitorizar função renal.',
+          label: 'Anti-hipertensivo de base',
+          detail:
+            'Em muitos gatos: anlodipino — titular até meta ou tolerância (IRIS 2023; Plumb\'s, 10ª ed.).',
+          dose: 'Amlodipino 0,125–0,25 mg/kg VO q24h (gatos), titular até ~0,25–0,5 mg/kg q24h conforme resposta.',
+          duration: 'Contínuo; reavaliar PA em 1–2 semanas após início ou ajuste.',
+          reassess: 'Hipotensão postural, bradicardia relativa — titular gradualmente.',
         },
         {
-          label: 'Camada 3 — Urgência',
-          detail: 'Crise neurológica ou olho com ameaça visual: abordagem hospitalar com fármacos de curta duração e vigilância intensiva.',
+          label: 'RAAS',
+          detail:
+            'IECA ou BRA quando proteinúria, ICC com contexto, ou combinação necessária — monitorizar função renal (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+          dose: 'Benazepril conforme perfusão renal e monografia Plumb\'s; associar amlodipino se monoterapia insuficiente.',
+          reassess: 'Creatinina e K⁺ 5–7 dias após início ou escalada de RAAS.',
+        },
+        {
+          label: 'Urgência',
+          detail:
+            'Crise neurológica ou olho com ameaça visual: abordagem hospitalar com fármacos de curta duração e vigilância intensiva (Nelson & Couto, 6ª ed.).',
+          reassess: 'Fundo de olho seriado mesmo com PA controlada — prognóstico visual pode permanecer reservado.',
         },
       ],
     },

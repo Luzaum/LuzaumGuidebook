@@ -152,9 +152,9 @@ function MobileNav() {
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={cn('energia-vet-shell flex h-full min-h-0 bg-background')}>
+    <div className={cn('energia-vet-shell flex h-full min-h-0 w-full flex-1 overflow-hidden bg-background')}>
       <Sidebar />
-      <div className="flex h-full min-h-0 min-w-0 flex-1 flex-col">
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
         <MobileHeader />
         <main className="min-h-0 flex-1 overflow-y-auto px-4 py-6 pb-24 sm:px-6 sm:py-8 lg:px-8 lg:py-9 lg:pb-10 xl:px-10">
           <div className="mx-auto w-full max-w-[1480px]">{children}</div>

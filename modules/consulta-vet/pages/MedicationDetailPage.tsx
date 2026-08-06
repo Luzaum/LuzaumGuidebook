@@ -683,8 +683,8 @@ export function MedicationDetailPage() {
   }
 
   return (
-    <div className="mx-auto flex h-full w-full max-w-[1840px] flex-col xl:flex-row">
-      <div className="w-full flex-1 overflow-y-auto px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
+    <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
+      <div className="w-full min-w-0 flex-1 px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
           className="consulta-vet-breadcrumb mb-7 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
           aria-label="Navegação estrutural"

@@ -56,62 +56,74 @@ export const hipoadrenocorticismoAddisonRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (consultório → laboratório)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Pistas clínicas e triagem de rotina',
+          label: 'Pistas clínicas e triagem de rotina',
+          timing: 'Primeira consulta',
           detail:
-            'Pacientes com fraqueza muscular, tremores, vômitos/diarreia crônicos e intermitentes, desidratação e bradicardia severa no exame físico.',
+            'Pacientes com fraqueza muscular, tremores, vômitos/diarreia crônicos e intermitentes, desidratação e bradicardia severa no exame físico (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Eletrólitos e Na:K',
+          label: 'Eletrólitos e Na:K',
           detail:
-            'Achar hipercalemia e hiponatremia marcantes. Calcular a relação Sódio/Potássio: valores < 27 acendem o alerta; < 24 são altamente sugestivos no cão azotêmico.',
+            'Achar hipercalemia e hiponatremia marcantes. Calcular a relação Sódio/Potássio: valores < 27 acendem o alerta; < 24 são altamente sugestivos no cão azotêmico (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Cortisol basal como triagem',
+          label: 'Cortisol basal como triagem',
           detail:
-            'Colher sangue para cortisol basal. Se > 2,0 µg/dL, o diagnóstico é descartado com >99% de confiança. Se < 2,0 µg/dL, o teste com ACTH torna-se obrigatório.',
+            'Colher sangue para cortisol basal. Se > 2,0 µg/dL, o diagnóstico é descartado com >99% de confiança. Se < 2,0 µg/dL, o teste com ACTH torna-se obrigatório (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '4. Teste de estimulação com ACTH',
+          label: 'Teste de estimulação com ACTH',
+          timing: 'Antes de rotular',
           detail:
-            'Padrão ouro: dosar cortisol pré e 1 hora pós-aplicação de ACTH sintético (Cosintropina 5 µg/kg IV/IM ou 250 µg/cão). Cortisol pós-ACTH < 2,0 µg/dL (normalmente < 1,0 µg/dL) é diagnóstico.',
+            'Padrão ouro: dosar cortisol pré e 1 hora pós-aplicação de ACTH sintético (Cosintropina 5 µg/kg IV/IM ou 250 µg/cão). Cortisol pós-ACTH < 2,0 µg/dL (normalmente < 1,0 µg/dL) é diagnóstico (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Diferenciação etiológica',
+          label: 'Diferenciação etiológica',
           detail:
-            'Ultrassonografia abdominal revelando adrenais bilaterais atróficas/minúsculas. Avaliar histórico de uso recente de glicocorticoides.',
+            'Ultrassonografia abdominal revelando adrenais bilaterais atróficas/minúsculas. Avaliar histórico de uso recente de glicocorticoides ou superdosagem de trilostano/mitotano (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico (emergência e manutenção)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Fase 1: Crise Addisoniana (Emergência)',
+          label: 'Crise Addisoniana (emergência)',
+          dose: 'NaCl 0,9% 20–40 mL/kg IV nas primeiras 1–2 h',
+          duration: 'Até estabilização hemodinâmica',
+          reassess: 'Eletrólitos, ECG e perfusão seriados',
           detail:
-            'Expansão rápida com NaCl 0.9% (ou Ringer Lactato com cautela) a 20–40 mL/kg nas primeiras 1–2h. Corrigir hipercalemia e fornecer suporte de glicocorticoide imediato.',
+            'Expansão rápida com fluidoterapia; corrigir hipercalemia e fornecer suporte de glicocorticoide imediato (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: 'Fase 2: Escolha do Glicocorticoide emergencial',
+          label: 'Glicocorticoide emergencial',
+          dose: 'Dexametasona 0,1–0,2 mg/kg IV',
           detail:
-            'Dexametasona (0.1–0.2 mg/kg IV) preferível por não cruzar com os ensaios analíticos de cortisol, permitindo realizar o teste de ACTH após estabilização.',
+            'Preferível por não cruzar com ensaios analíticos de cortisol, permitindo realizar teste de ACTH após estabilização (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
         },
         {
-          label: 'Fase 3: Manutenção Mineralocorticoide',
+          label: 'Manutenção mineralocorticoide',
+          dose: 'DOCP 1,1–2,2 mg/kg IM/SC a cada 25–30 dias',
+          duration: 'Ajustar intervalo conforme eletrólitos',
+          reassess: 'Na e K nos dias 14 e 25 após primeira dose',
           detail:
-            'DOCP (Pivalato de Desoxacorticosterona) 2,2 mg/kg IM/SC a cada 25–30 dias (clinicamente 1.1–1.5 mg/kg é muito comum e eficaz), ou Fludrocortisone oral diário.',
+            'Alternativa: fludrocortisona 0,01–0,02 mg/kg/dia VO (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
         },
         {
-          label: 'Fase 4: Manutenção Glicocorticoide',
+          label: 'Manutenção glicocorticoide',
+          dose: 'Prednisona/prednisolona 0,1–0,2 mg/kg/dia VO',
+          duration: 'Contínuo com DOCP',
+          reassess: 'Dobrar dose em situações de estresse',
           detail:
-            'Todos os animais tratados com DOCP exigem suplementação diária com Prednisona ou Prednisolona (0.1–0.2 mg/kg/dia VO). Ajustar a dose para o dobro em situações de estresse (viagens, banho, cirurgias).',
+            'Todos os animais em DOCP exigem suplementação glicocorticoide diária (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: 'Fase 5: Monitoramento contínuo',
+          label: 'Monitoramento contínuo',
           detail:
-            'Dosar eletrólitos (Na e K) no dia 14 (pico de ação do DOCP) e no dia 25 (duração de intervalo) após a primeira dose; ajustar posologia baseado nestes dados.',
+            'Dosar eletrólitos no dia 14 (pico) e dia 25 (intervalo) após a primeira dose de DOCP; ajustar posologia com base nesses dados (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
         },
       ],
     },

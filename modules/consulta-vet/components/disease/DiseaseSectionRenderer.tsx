@@ -17,6 +17,7 @@ import {
   EditorialDrugProtocol,
   EditorialSectionValue,
   EditorialSystemGroup,
+  EditorialTreatmentPriorityStep,
 } from '../../types/common';
 import { getEditorialSubsectionIcon } from '../../utils/editorialSubsectionIcons';
 import {
@@ -28,7 +29,7 @@ import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/
 import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
 import { ClinicalSignsTable } from './ClinicalSignsTable';
 import { DiagnosticPathway } from './DiagnosticPathway';
-import { TreatmentMonitoringPanel, TreatmentPriorityPanel } from './TreatmentSectionVisual';
+import { TreatmentMonitoringPanel, TreatmentPriorityPanel, TreatmentPriorityRichPanel } from './TreatmentSectionVisual';
 
 interface DiseaseSectionRendererProps {
   id: string;
@@ -52,6 +53,14 @@ function isSystemGroupArray(value: unknown): value is EditorialSystemGroup[] {
 
 function isDrugProtocolArray(value: unknown): value is EditorialDrugProtocol[] {
   return Array.isArray(value) && value.length > 0 && value.every((item) => item && typeof item === 'object' && 'drug' in item);
+}
+
+function isTreatmentPriorityStepArray(value: unknown): value is EditorialTreatmentPriorityStep[] {
+  return (
+    Array.isArray(value) &&
+    value.length > 0 &&
+    value.every((item) => item && typeof item === 'object' && 'title' in item && 'summary' in item)
+  );
 }
 
 function isDiagnosticStepArray(value: unknown): value is EditorialDiagnosticStep[] {
@@ -508,6 +517,7 @@ type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species' 
 
 /** Ordem editorial dos blocos longos do tratamento após a timeline de prioridade (Cushing, DRC, etc.). */
 const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
+  'protocoloTerapeutico',
   'trilostanoNoCao',
   'mitotanoNoCao',
   'cetoconazolNoCao',
@@ -698,13 +708,16 @@ function tryRenderTreatmentRichObject(
   obj: Record<string, unknown>,
   visual: DiseaseSectionVisual
 ): React.ReactNode | null {
+  const ordemEstruturada = isTreatmentPriorityStepArray(obj.ordemDePrioridadeEstruturada)
+    ? (obj.ordemDePrioridadeEstruturada as EditorialTreatmentPriorityStep[])
+    : [];
   const ordem = Array.isArray(obj.ordemDePrioridade)
     ? (obj.ordemDePrioridade as string[]).map((s) => String(s).trim()).filter(Boolean)
     : [];
   const monitor = Array.isArray(obj.monitoramento)
     ? (obj.monitoramento as string[]).map((s) => String(s).trim()).filter(Boolean)
     : [];
-  if (ordem.length === 0 && monitor.length === 0) return null;
+  if (ordemEstruturada.length === 0 && ordem.length === 0 && monitor.length === 0) return null;
 
   const renderLeaf = (value: unknown): React.ReactNode => {
     if (typeof value === 'string') return <StructuredNarrative value={value} visual={visual} />;
@@ -747,7 +760,9 @@ function tryRenderTreatmentRichObject(
 
   if (obj.decisaoInicial) pushNarrative('decisaoInicial', blocks);
 
-  if (ordem.length > 0) {
+  if (ordemEstruturada.length > 0) {
+    blocks.push(<TreatmentPriorityRichPanel key="ordem-rich" steps={ordemEstruturada} visual={visual} />);
+  } else if (ordem.length > 0) {
     blocks.push(<TreatmentPriorityPanel key="ordem" items={ordem} visual={visual} />);
   }
 
@@ -757,6 +772,7 @@ function tryRenderTreatmentRichObject(
 
   const handled = new Set<string>([
     'ordemDePrioridade',
+    'ordemDePrioridadeEstruturada',
     'monitoramento',
     'decisaoInicial',
     'prognosticoResumo',

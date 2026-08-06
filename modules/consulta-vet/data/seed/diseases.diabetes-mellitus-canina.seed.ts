@@ -51,52 +51,67 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Reconhecer síndrome diabética',
-          detail: 'PU/PD, polifagia, perda de peso, catarata, fraqueza, infecção urinária recorrente, histórico de glicocorticoide/progestágeno ou cadela em diestrus.',
+          label: 'Reconhecer síndrome diabética',
+          timing: 'Primeira consulta',
+          detail:
+            'PU/PD, polifagia, perda de peso, catarata, fraqueza, infecção urinária recorrente, histórico de glicocorticoide/progestágeno ou cadela em diestrus (AAHA, 2018; Merck, 2024).',
         },
         {
-          label: '2. Confirmar hiperglicemia persistente',
-          detail: 'Glicemia elevada em mais de uma ocasião ou claramente persistente no contexto clínico; associar urinálise com glicosúria. Fructosamina documenta média glicêmica recente.',
+          label: 'Confirmar hiperglicemia persistente',
+          detail:
+            'Glicemia elevada em mais de uma ocasião ou claramente persistente no contexto clínico; associar urinálise com glicosúria. Fructosamina documenta média glicêmica recente (AAHA, 2018).',
         },
         {
-          label: '3. Estadiar gravidade',
-          detail: 'Pesquisar cetonúria/cetonemia, desidratação, acidose, hipocalemia/hipofosfatemia, azotemia, pancreatite, infecção e capacidade de alimentação.',
+          label: 'Estadiar gravidade',
+          timing: 'Antes de rotular ambulatorial',
+          detail:
+            'Pesquisar cetonúria/cetonemia, desidratação, acidose, hipocalemia/hipofosfatemia, azotemia, pancreatite, infecção e capacidade de alimentação (AAHA, 2018; Merck, 2024).',
         },
         {
-          label: '4. Procurar causa de resistência',
-          detail: 'HAC, hipotireoidismo, diestrus, gestação, piometra, pancreatite, infecção urinária, doença dental, obesidade e fármacos diabetogênicos.',
+          label: 'Procurar causa de resistência',
+          detail:
+            'HAC, hipotireoidismo, diestrus, gestação, piometra, pancreatite, infecção urinária, doença dental, obesidade e fármacos diabetogênicos (AAHA, 2018; Merck, 2024).',
         },
         {
-          label: '5. Planejar monitoramento',
-          detail: 'Curva domiciliar, CGM ou curva hospitalar com cautela; correlacionar nadir, duração, sinais clínicos, peso, água ingerida e eventos de hipoglicemia.',
+          label: 'Planejar monitoramento',
+          detail:
+            'Curva domiciliar, CGM ou curva hospitalar com cautela; correlacionar nadir, duração, sinais clínicos, peso, água ingerida e eventos de hipoglicemia (AAHA, 2018).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Paciente estável',
-          detail: 'Iniciar insulina basal/intermediária, dieta consistente, exercício previsível e retorno em 7–14 dias para ajuste.',
+          label: 'Paciente estável',
+          dose: 'NPH ou lente porcina 0,25–0,5 U/kg SC q12h',
+          duration: 'Retorno em 7–14 dias para ajuste',
+          reassess: 'Curva/CGM, nadir, sinais clínicos e peso',
+          detail:
+            'Dieta consistente e exercício previsível; refeições antes ou junto da insulina (AAHA, 2018; Merck, 2024).',
         },
         {
-          label: '2. Paciente cetótico ou doente',
-          detail: 'Internar se houver anorexia, vômito, desidratação, depressão, acidose ou distúrbio eletrolítico; priorizar fluido, eletrólitos e insulina regular/lispro conforme protocolo.',
+          label: 'Paciente cetótico ou doente',
+          detail:
+            'Internar se houver anorexia, vômito, desidratação, depressão, acidose ou distúrbio eletrolítico; priorizar fluido, eletrólitos e insulina regular/lispro conforme protocolo (AAHA, 2018).',
         },
         {
-          label: '3. Ajuste de dose',
-          detail: 'Ajustar com base em sinais clínicos, peso, nadir e duração. Evitar aumentos por um valor isolado alto.',
+          label: 'Ajuste de dose',
+          detail:
+            'Ajustar com base em sinais clínicos, peso, nadir e duração. Evitar aumentos por um valor isolado alto — incrementos conservadores 10–25% (AAHA, 2018).',
         },
         {
-          label: '4. Caso não regulado',
-          detail: 'Auditar seringa, concentração, armazenamento, técnica, refeições, petiscos, exercício e comorbidades antes de trocar a insulina.',
+          label: 'Caso não regulado',
+          detail:
+            'Auditar seringa, concentração, armazenamento, técnica, refeições, petiscos, exercício e comorbidades antes de trocar a insulina (AAHA, 2018; Merck, 2024).',
         },
         {
-          label: '5. Seguimento crônico',
-          detail: 'Revisões periódicas com peso, exame físico, urinálise/cultura se indicado, fructosamina ou curva/CGM, pressão arterial e rastreio de complicações.',
+          label: 'Seguimento crônico',
+          detail:
+            'Revisões periódicas com peso, exame físico, urinálise/cultura se indicado, fructosamina ou curva/CGM, pressão arterial e rastreio de complicações (AAHA, 2018).',
         },
       ],
     },

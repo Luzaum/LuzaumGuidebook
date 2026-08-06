@@ -59,62 +59,78 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico (ordem prática)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Reconhecimento morfológico',
+          label: 'Reconhecimento morfológico',
+          timing: 'Primeira consulta',
           detail:
-            'Identificar qual(is) das três apresentações clássicas está presente — úlcera indolente labial, placa eosinofílica ventral/inguinal ou granuloma linear em coxa/coxim/cavidade oral.',
+            'Identificar qual(is) das três apresentações clássicas — úlcera indolente labial, placa eosinofílica ventral/inguinal ou granuloma linear em coxa/coxim/cavidade oral (Power & Ihrke, 1995; Buckley & Nuttall, 2012).',
         },
         {
-          label: '2. Citologia da lesão',
+          label: 'Citologia da lesão',
+          timing: 'Na primeira avaliação',
           detail:
-            'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos — sustenta o padrão de reação sem definir a causa.',
+            'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos — sustenta o padrão de reação sem definir a causa (Taglinger et al., 2007; BSAVA Manual of Dermatology, 4ª ed.).',
         },
         {
-          label: '3. Investigação da causa de base',
+          label: 'Investigação da causa de base',
+          timing: 'Antes de rotular idiopático',
           detail:
-            'Controle terapêutico de pulgas por 6-8 semanas em todos os animais do domicílio; se não resolver, dieta de eliminação de 8 semanas com proteína nova/hidrolisada para hipersensibilidade alimentar; considerar atopia se ambas forem negativas.',
+            'Controle terapêutico de pulgas por 6–8 semanas em todos os animais do domicílio; se não resolver, dieta de eliminação estrita por 8 semanas com proteína nova/hidrolisada; considerar atopia se ambas forem negativas (Buckley & Nuttall, 2012; Nelson & Couto, 6ª ed.).',
+          reassess: 'Não concluir componente alimentar antes de completar 8 semanas de dieta estrita.',
         },
         {
-          label: '4. Biópsia (casos atípicos)',
+          label: 'Biópsia (casos atípicos)',
+          timing: 'Lesão refratária ou atípica',
           detail:
-            'Reservada a lesões que não respondem ao tratamento esperado, apresentação atípica, idade incomum ou suspeita de diferencial neoplásico (carcinoma espinocelular em úlceras labiais crônicas, por exemplo).',
+            'Reservada a lesões que não respondem ao tratamento esperado, apresentação atípica, idade incomum ou suspeita neoplásica (carcinoma espinocelular em úlceras labiais crônicas) (Power & Ihrke, 1995; BSAVA Manual of Dermatology, 4ª ed.).',
         },
         {
-          label: '5. Diferenciais obrigatórios',
+          label: 'Diferenciais obrigatórios',
+          timing: 'Antes de fechar diagnóstico',
           detail:
-            'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo, outras dermatites eosinofílicas.',
+            'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo, outras dermatites eosinofílicas (Nelson & Couto, 6ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (prioridades)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 1 — Controle de pulgas',
+          label: 'Controle de pulgas',
           detail:
-            'Adulticida de ação rápida e residual em todos os animais do domicílio, independentemente de haver prova direta de infestação — base obrigatória de qualquer protocolo.',
+            'Adulticida de ação rápida e residual em todos os animais do domicílio, inclusive assintomáticos — base obrigatória de qualquer protocolo, mesmo sem prova direta de pulicose (Buckley & Nuttall, 2012).',
+          duration: 'Contínuo; manter 6–8 semanas mínimo antes de concluir falha.',
+          reassess: 'Adesão e eficácia do controle em todos os animais — falha aqui é causa comum de recidiva.',
         },
         {
-          label: 'Camada 2 — Controle agudo da lesão',
+          label: 'Controle agudo da lesão',
           detail:
-            'Glicocorticoide sistêmico (prednisolona) em dose anti-inflamatória a imunossupressora conforme extensão e gravidade, com desmame gradual.',
+            'Glicocorticoide sistêmico (prednisolona) em dose anti-inflamatória a imunossupressora conforme extensão e gravidade, enquanto investiga causa de base (BSAVA Manual of Dermatology, 4ª ed.; Nelson & Couto, 6ª ed.).',
+          dose: 'Prednisolona VO — preferir sobre prednisona em gatos; dose anti-inflamatória a imunossupressora conforme gravidade, com desmame gradual.',
+          duration: 'Semanas até controle clínico; desmame gradual após resposta.',
+          reassess: 'Extensão, aspecto e prurido a cada revisão; fotos seriadas quando possível.',
         },
         {
-          label: 'Camada 3 — Investigação alimentar/ambiental',
+          label: 'Investigação alimentar e ambiental',
           detail:
-            'Dieta de eliminação estrita por 8 semanas quando pulgas controladas não resolvem; considerar testes de atopia se ambas as investigações forem negativas.',
+            'Dieta de eliminação estrita por 8 semanas com proteína nova ou hidrolisada quando pulgas controladas não resolvem; testes de atopia se ambas investigações negativas (Buckley & Nuttall, 2012).',
+          duration: 'Mínimo 8 semanas de dieta estrita sem contaminação cruzada.',
+          reassess: 'Reavaliar lesão e prurido ao final do período antes de concluir ausência de componente alimentar.',
         },
         {
-          label: 'Camada 4 — Manutenção crônica ou refratariedade',
+          label: 'Manutenção crônica ou refratariedade',
           detail:
-            'Ciclosporina como alternativa eficaz para casos recorrentes, crônicos ou com intolerância/contraindicação a corticoide prolongado.',
+            'Ciclosporina como alternativa eficaz para casos recorrentes, crônicos ou intolerantes a corticoide prolongado; resposta pode levar semanas (BSAVA Manual of Dermatology, 4ª ed.).',
+          duration: 'Manutenção conforme resposta; monitorar função renal e hemograma.',
+          reassess: 'Hemograma e função renal periódicos sob ciclosporina.',
         },
         {
-          label: 'Camada 5 — Casos refratários graves',
+          label: 'Casos refratários graves',
           detail:
-            'Clorambucila ou outras opções imunomoduladoras em casos selecionados e refratários, sempre com monitorização hematológica próxima.',
+            'Clorambucila ou outros imunomoduladores em casos selecionados após falha das medidas anteriores; atenção especial a granuloma oral/faríngeo com estridor ou disfagia (BSAVA Manual of Dermatology, 4ª ed.).',
+          reassess: 'Monitorização hematológica próxima — risco de mielossupressão.',
         },
       ],
     },

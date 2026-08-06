@@ -5,6 +5,7 @@ import { DiseaseRecord } from '../../../types/disease';
 import { DiseaseUpsertInput } from '../../../types/editorial';
 import { DiseaseRepository } from '../../repositories/disease.repository';
 import { localDiseaseRepository } from '../local/localDiseaseRepository';
+import { mergeDiseaseRecordsBySlug } from '../../../utils/mergeDiseaseRecords';
 import {
   CONSULTA_VET_CATEGORY_TABLE,
   CONSULTA_VET_DISEASE_CONSENSO_TABLE,
@@ -13,7 +14,6 @@ import {
   CONSULTA_VET_MEDICATION_TABLE,
   ensureOwnerUserId,
   hasSupabaseEnv,
-  mergeBySlug,
   parseError,
   slugify,
   withTimeout,
@@ -153,7 +153,7 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
         'carregar doenças editoriais'
       );
       const diseasesSeed = await loadDiseasesEditorialSeed();
-      const merged = mergeBySlug(diseasesSeed, remote).sort((left, right) =>
+      const merged = mergeDiseaseRecordsBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
       const result = filterPublicDiseases(merged, includeDrafts).map(applyDiseaseOverviewOverride);

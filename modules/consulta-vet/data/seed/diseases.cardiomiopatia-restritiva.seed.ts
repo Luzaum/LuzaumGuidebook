@@ -48,52 +48,61 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Estabilize a respiração',
+          label: 'Estabilize a respiração',
+          timing: 'Primeira consulta instável',
           detail:
-            'Oxigênio, mínimo estresse e ultrassonografia à beira do leito; toracocentese se houver derrame pleural e furosemida quando a congestão cardiogênica for provável.',
+            'Oxigênio, mínimo estresse e ultrassonografia à beira do leito; toracocentese se houver derrame pleural e furosemida quando a congestão cardiogênica for provável (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Ecocardiografia completa',
+          label: 'Ecocardiografia completa',
           detail:
-            'Avaliar átrios, espessura e volumes ventriculares, Doppler transmitral/tissular, função sistólica, pontes ou placas fibróticas e trombo.',
+            'Avaliar átrios, espessura e volumes ventriculares, Doppler transmitral/tissular, função sistólica, pontes ou placas fibróticas e trombo (ACVIM, 2020; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Exclua mimetizadores',
+          label: 'Exclua mimetizadores',
+          timing: 'Antes de rotular',
           detail:
-            'CMH em estágio final, pericardiopatia constritiva, cardiopatia congênita, neoplasia infiltrativa e sobrecarga de volume.',
+            'CMH em estágio final, pericardiopatia constritiva, cardiopatia congênita, neoplasia infiltrativa e sobrecarga de volume (ACVIM, 2020; Fox, 2004).',
         },
         {
-          label: '4. Estágio e complicações',
+          label: 'Estágio e complicações',
           detail:
-            'Definir insuficiência cardíaca, tromboembolismo arterial, arritmia, função renal e risco trombótico; o estágio orienta mais a terapia que a nomenclatura.',
+            'Definir insuficiência cardíaca, tromboembolismo arterial, arritmia, função renal e risco trombótico; o estágio orienta mais a terapia que a nomenclatura (ACVIM, 2020).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico',
+      title: 'Plano de tratamento',
       steps: [
         {
           label: 'Congestão',
+          dose: 'Furosemida 1–2 mg/kg VO q8–12h titulada',
+          duration: 'Menor dose eficaz no domicílio',
+          reassess: 'Ureia, creatinina e eletrólitos após ajustes',
           detail:
-            'Furosemida titulada; drenar efusão quando necessário; monitorar rim e eletrólitos.',
+            'Toracocentese quando efusão compromete ventilação; diurético não substitui drenagem urgente (Plumb\'s, 10ª ed.; Budde & McCluskey, 2023).',
         },
         {
           label: 'Baixo débito',
+          dose: 'Pimobendan 0,25 mg/kg VO q12h pode ser considerado',
           detail:
-            'Pimobendan pode ser considerado porque obstrução dinâmica da via de saída não é típica; dobutamina pode ser utilizada no choque hospitalar.',
+            'Obstrução dinâmica da via de saída não é típica; dobutamina pode ser utilizada no choque hospitalar (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
         },
         {
           label: 'Trombose',
+          dose: 'Clopidogrel 18,75 mg/gato VO q24h',
+          duration: 'Contínuo em alto risco ou pós-tromboembolismo',
+          reassess: 'Sinais de sangramento e função renal/hepática',
           detail:
-            'Clopidogrel para alto risco ou tromboembolismo prévio; considerar rivaroxabana ou heparina em combinação conforme o risco.',
+            'Considerar rivaroxabana ou heparina em combinação conforme risco (Hogan et al., FAT CAT, 2015; Plumb\'s, 10ª ed.).',
         },
         {
           label: 'Arritmia',
           detail:
-            'Tratar taquiarritmia que compromete enchimento; evitar bradicardia excessiva.',
+            'Tratar taquiarritmia que compromete enchimento; evitar bradicardia excessiva — atenolol ou diltiazem selecionados (Plumb\'s, 10ª ed.; ACVIM, 2020).',
         },
       ],
     },

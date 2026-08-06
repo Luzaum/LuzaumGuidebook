@@ -37,6 +37,16 @@ export interface EditorialDrugProtocol {
   notes?: string;
 }
 
+/** Passo estruturado da ordem de prioridade terapêutica (doses, duração, evidência). */
+export interface EditorialTreatmentPriorityStep {
+  title: string;
+  summary: string;
+  dose?: string;
+  duration?: string;
+  reassess?: string;
+  evidence?: string;
+}
+
 export interface EditorialDiagnosticStep {
   stepNumber?: number;
   title: string;
