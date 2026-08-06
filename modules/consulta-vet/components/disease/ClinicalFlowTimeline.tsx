@@ -56,7 +56,7 @@ function StepMeta({ step, variant }: { step: DiseaseQuickSummaryFlowStep; varian
   return (
     <div
       className={cn(
-        'mt-3 grid gap-3 border-t pt-3 sm:grid-cols-2',
+        'mt-3 grid grid-cols-1 gap-3 border-t pt-3 sm:grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))]',
         variant === 'dark' ? 'border-white/10' : 'border-border/55'
       )}
     >

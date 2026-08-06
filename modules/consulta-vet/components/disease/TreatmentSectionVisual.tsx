@@ -196,7 +196,7 @@ export function TreatmentPriorityRichPanel({
                     {composeTreatmentPrioritySummary(step)}
                   </p>
                   {(step.dose || step.duration || step.reassess) && (
-                    <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))]">
                       {step.dose ? <PriorityMeta icon={Pill} label="Dose" value={step.dose} /> : null}
                       {step.duration ? <PriorityMeta icon={Clock} label="Duração" value={step.duration} /> : null}
                       {step.reassess ? <PriorityMeta icon={RefreshCw} label="Reavaliar" value={step.reassess} /> : null}
