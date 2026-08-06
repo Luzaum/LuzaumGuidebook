@@ -108,6 +108,8 @@ export interface EnergyCalculation {
 
 export type TargetGoal = 'maintenance' | 'weight_loss' | 'weight_gain'
 
+export type WeightLossEnergyMethod = 'aaha2021' | 'observed_history'
+
 export interface WeightTargetPlan {
   id?: string
   patientId?: string
@@ -119,6 +121,12 @@ export interface WeightTargetPlan {
   isManualTarget?: boolean
   weightToUseForEnergy?: 'current' | 'target'
   targetEnergy?: number
+  /** Método energético selecionado para emagrecimento (AAHA ou histórico alimentar). */
+  weightLossEnergyMethod?: WeightLossEnergyMethod
+  /** Rótulo clínico do método de peso-alvo (ex.: Estimativa AAHA por ECC). */
+  targetWeightMethodLabel?: string
+  /** Percentual de excesso estimado pelo ECC, quando aplicável. */
+  percentOverweightEstimate?: number
 }
 
 export interface NutrientDefinition {
