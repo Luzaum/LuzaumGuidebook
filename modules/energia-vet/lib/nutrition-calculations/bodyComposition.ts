@@ -1,4 +1,4 @@
-import type { IdealWeightEstimate, Species } from './types'
+import type { IdealWeightEstimate, IdealWeightMethod, MuscleCondition, Species } from './types'
 import { getSourceLabel } from './sourceRegistry'
 
 /** AAHA 2021 — percentual de excesso por ECC 6–9. */
@@ -16,26 +16,69 @@ export const PERCENT_UNDERWEIGHT_BY_BCS: Record<number, number> = {
   1: 0.4,
 }
 
+function muscleLossRequiresReview(muscleCondition?: MuscleCondition): boolean {
+  return muscleCondition != null && muscleCondition !== 'normal'
+}
+
+function buildProvisionalFlags(options: {
+  bcs: number
+  muscleCondition?: MuscleCondition
+  previousHealthyWeightKg?: number
+  estimatedTargetKg: number
+}): Pick<IdealWeightEstimate, 'requiresClinicianReview' | 'isProvisionalEstimate' | 'confidence'> {
+  const muscleReview = muscleLossRequiresReview(options.muscleCondition)
+  const extremeBcs = options.bcs >= 8
+  const ecc6Review = options.bcs === 6 && muscleReview
+
+  let discrepancyReview = false
+  if (options.previousHealthyWeightKg != null && options.previousHealthyWeightKg > 0) {
+    const diffPct =
+      (Math.abs(options.estimatedTargetKg - options.previousHealthyWeightKg) / options.previousHealthyWeightKg) * 100
+    discrepancyReview = diffPct > 15
+  }
+
+  const requiresClinicianReview = extremeBcs || muscleReview || ecc6Review || discrepancyReview
+  const isProvisionalEstimate = extremeBcs || muscleReview || discrepancyReview
+
+  let confidence: IdealWeightEstimate['confidence'] = 'moderate'
+  if (options.bcs === 6) confidence = 'moderate'
+  if (options.bcs === 7) confidence = 'moderate'
+  if (extremeBcs) confidence = 'low'
+
+  return { requiresClinicianReview, isProvisionalEstimate, confidence }
+}
+
 export function estimateIdealWeightFromOverweight(
   currentWeightKg: number,
   bcs: number,
+  muscleCondition?: MuscleCondition,
 ): IdealWeightEstimate {
   const pct = PERCENT_OVERWEIGHT_BY_BCS[bcs]
   if (pct == null || currentWeightKg <= 0) {
     return {
       targetWeightKg: currentWeightKg,
       confidence: 'low',
+      method: 'insufficient_data',
       methodSummary: 'ECC não indica excesso de peso estimável por AAHA.',
       requiresClinicianReview: true,
+      isProvisionalEstimate: true,
     }
   }
   const target = currentWeightKg / (1 + pct)
+  const flags = buildProvisionalFlags({
+    bcs,
+    muscleCondition,
+    estimatedTargetKg: target,
+  })
+
   return {
     targetWeightKg: target,
     percentOverweight: pct * 100,
-    confidence: bcs <= 7 ? 'moderate' : 'low',
-    methodSummary: `Peso-alvo estimado pela relação AAHA (ECC ${bcs}/9 ≈ ${(pct * 100).toFixed(0)}% acima do ideal).`,
-    requiresClinicianReview: bcs >= 8,
+    method: 'aaha_ecc_estimate',
+    confidence: flags.confidence,
+    methodSummary: `Peso-alvo estimado pela relação AAHA (ECC ${bcs}/9 ≈ ${(pct * 100).toFixed(0)}% acima do ideal): ${currentWeightKg.toFixed(2)} ÷ ${(1 + pct).toFixed(2)} = ${target.toFixed(2)} kg.`,
+    requiresClinicianReview: flags.requiresClinicianReview,
+    isProvisionalEstimate: flags.isProvisionalEstimate,
   }
 }
 
@@ -44,6 +87,7 @@ export function estimateTargetWeight(options: {
   currentWeightKg: number
   bcs: number
   goal: 'maintenance' | 'weight_loss' | 'weight_gain'
+  muscleCondition?: MuscleCondition
   clinicianTargetWeightKg?: number
   previousHealthyWeightKg?: number
   expectedAdultWeightKg?: number
@@ -52,8 +96,10 @@ export function estimateTargetWeight(options: {
     return {
       targetWeightKg: options.clinicianTargetWeightKg,
       confidence: 'high',
+      method: 'clinician_defined',
       methodSummary: 'Peso-alvo definido pelo médico-veterinário.',
       requiresClinicianReview: false,
+      isProvisionalEstimate: false,
     }
   }
 
@@ -61,13 +107,37 @@ export function estimateTargetWeight(options: {
     return {
       targetWeightKg: options.currentWeightKg,
       confidence: 'high',
+      method: 'maintenance',
       methodSummary: 'Manutenção no peso atual.',
       requiresClinicianReview: false,
+      isProvisionalEstimate: false,
     }
   }
 
-  if (options.goal === 'weight_loss' && options.bcs >= 6) {
-    return estimateIdealWeightFromOverweight(options.currentWeightKg, options.bcs)
+  if (options.goal === 'weight_loss') {
+    if (options.previousHealthyWeightKg != null && options.previousHealthyWeightKg > 0) {
+      const flags = buildProvisionalFlags({
+        bcs: options.bcs,
+        muscleCondition: options.muscleCondition,
+        previousHealthyWeightKg: options.previousHealthyWeightKg,
+        estimatedTargetKg: options.previousHealthyWeightKg,
+      })
+      return {
+        targetWeightKg: options.previousHealthyWeightKg,
+        confidence: 'high',
+        method: 'previous_healthy_weight',
+        methodSummary: 'Peso saudável anterior documentado — prioridade sobre estimativa por ECC.',
+        requiresClinicianReview: flags.requiresClinicianReview,
+        isProvisionalEstimate: flags.isProvisionalEstimate,
+      }
+    }
+    if (options.bcs >= 6) {
+      return estimateIdealWeightFromOverweight(
+        options.currentWeightKg,
+        options.bcs,
+        options.muscleCondition,
+      )
+    }
   }
 
   if (options.goal === 'weight_gain') {
@@ -75,16 +145,20 @@ export function estimateTargetWeight(options: {
       return {
         targetWeightKg: options.previousHealthyWeightKg,
         confidence: 'high',
+        method: 'previous_healthy_weight',
         methodSummary: 'Peso saudável anterior documentado.',
         requiresClinicianReview: false,
+        isProvisionalEstimate: false,
       }
     }
     if (options.bcs <= 4) {
       return {
         targetWeightKg: options.currentWeightKg,
         confidence: 'low',
+        method: 'insufficient_data',
         methodSummary: 'Defina manualmente o peso-alvo — estimativa automática de ganho não é confiável.',
         requiresClinicianReview: true,
+        isProvisionalEstimate: true,
       }
     }
   }
@@ -92,8 +166,10 @@ export function estimateTargetWeight(options: {
   return {
     targetWeightKg: options.currentWeightKg,
     confidence: 'moderate',
+    method: 'insufficient_data',
     methodSummary: 'Peso atual mantido por falta de dados para estimativa.',
     requiresClinicianReview: false,
+    isProvisionalEstimate: false,
   }
 }
 
@@ -130,4 +206,12 @@ export function estimateWeeksToTarget(options: {
 
 export function bodyCompositionSourceLabel(): string {
   return getSourceLabel('aaha2021')
+}
+
+export function idealWeightMethodLabel(method: IdealWeightMethod): string {
+  if (method === 'clinician_defined') return 'Prescrição clínica'
+  if (method === 'previous_healthy_weight') return 'Peso saudável anterior'
+  if (method === 'aaha_ecc_estimate') return 'Estimativa AAHA por ECC'
+  if (method === 'maintenance') return 'Manutenção'
+  return 'Dados insuficientes'
 }

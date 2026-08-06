@@ -126,6 +126,9 @@ export default function TargetStep() {
   const targetEnergyRange = v3Plan?.targetResult.estimatedRangeKcalDay
   const weightMethodSummary = v3Plan?.idealWeightEstimate.methodSummary
   const requiresClinicianReview = v3Plan?.idealWeightEstimate.requiresClinicianReview ?? false
+  const isProvisionalEstimate = v3Plan?.idealWeightEstimate.isProvisionalEstimate ?? false
+  const verificationReference = v3Plan?.targetResult.verificationReference
+  const weeklyLossTarget = v3Plan?.weeklyLossTargetPct
 
   const handleNext = () => {
     setPatient({ bcs })
@@ -252,12 +255,29 @@ export default function TargetStep() {
         </section>
 
         <section className="flex flex-col gap-3 rounded-xl border border-border p-4 sm:flex-row sm:items-center sm:justify-between">
-          <div>
+          <div className="space-y-2">
             <p className="text-sm font-semibold">Comparação energética</p>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="text-xs text-muted-foreground">
               Manutenção (peso atual): {maintenanceEnergy.toFixed(0)} kcal/dia · Meta: {targetEnergy.toFixed(0)} kcal/dia
             </p>
-            <p className="mt-1 text-[11px] text-muted-foreground">{energyFormula}</p>
+            {v3Plan && goal === 'weight_loss' && weeklyLossTarget && (
+              <p className="text-xs text-muted-foreground">
+                Meta semanal de perda: {weeklyLossTarget.min}–{weeklyLossTarget.max}% do peso corporal (
+                {species === 'dog' ? 'cão' : 'gato'}).
+              </p>
+            )}
+            <p className="text-[11px] leading-5 text-muted-foreground">{energyFormula}</p>
+            {v3Plan && verificationReference && goal === 'weight_loss' && (
+              <p className="text-[11px] leading-5 text-muted-foreground/90 italic">
+                {verificationReference.methodSummary} (somente conferência — não altera a meta prescrita.)
+              </p>
+            )}
+            {v3Plan && (
+              <p className="text-[11px] leading-5 text-muted-foreground">
+                Reavaliar peso, ECC, EMC e adesão em 2–4 semanas; ajustar calorias ~10% se a perda estiver fora da meta
+                com adesão confirmada.
+              </p>
+            )}
           </div>
           <div
             className={cn(
@@ -277,7 +297,16 @@ export default function TargetStep() {
 
         {requiresClinicianReview && (
           <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-200">
-            A estimativa automática de peso-alvo tem baixa confiança neste ECC. Confirme manualmente pelo exame físico antes de prescrever.
+            {isProvisionalEstimate
+              ? 'Estimativa provisória — confirme pelo exame físico, EMC e histórico ponderal. Considere meta intermediária ou override clínico antes de prescrever.'
+              : 'A estimativa automática de peso-alvo tem baixa confiança neste ECC. Confirme manualmente pelo exame físico antes de prescrever.'}
+          </p>
+        )}
+
+        {!v3Enabled && goal !== 'maintenance' && (
+          <p className="rounded-xl border border-blue-500/30 bg-blue-500/10 px-3 py-2 text-xs leading-5 text-blue-900 dark:text-blue-200">
+            Motor legado ativo. Para homologação do cálculo clínico versionado (hierarquia AAHA + histórico alimentar),
+            ative <code className="text-[10px]">VITE_NUTRITION_CALCULATION_ENGINE_V3=true</code> no ambiente local.
           </p>
         )}
 

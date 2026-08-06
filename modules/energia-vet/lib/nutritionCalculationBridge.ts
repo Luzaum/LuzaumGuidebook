@@ -8,7 +8,9 @@ import type { BCS, EnergyCalculation, Patient, PatientDietHistory, Species, Targ
 import {
   calculatePatientEnergy,
   estimateTargetWeight,
+  idealWeightMethodLabel,
   validateMinimumAssessment,
+  WEEKLY_WEIGHT_LOSS_TARGET,
   type EnergyCalculationResult,
   type IdealWeightEstimate,
   type MuscleCondition,
@@ -258,6 +260,7 @@ export interface BodyTargetPlanV3 {
   maintenanceResult: EnergyCalculationResult
   targetResult: EnergyCalculationResult
   energyFormula: string
+  weeklyLossTargetPct?: { min: number; max: number }
 }
 
 /** Plano corporal + energia meta — motor v3 (sem checagem de flag; UI decide). */
@@ -279,12 +282,14 @@ export function computeBodyTargetPlan(options: {
 
   const maintenanceEnergyKcal = options.energyStepMerKcal ?? maintenanceResult.selectedTargetKcalDay
   const bcs = (options.patient.bcs ?? 5) as BCS
+  const species = options.patient.species ?? 'dog'
 
   const idealWeightEstimate = estimateTargetWeight({
-    species: options.patient.species ?? 'dog',
+    species,
     currentWeightKg: weightKg,
     bcs,
     goal: options.goal,
+    muscleCondition: options.patient.muscleCondition,
     previousHealthyWeightKg: options.patient.previousHealthyWeightKg,
   })
 
@@ -305,10 +310,22 @@ export function computeBodyTargetPlan(options: {
   if (!targetResult) return null
 
   const targetWeightKg = idealWeightEstimate.targetWeightKg
-  const energyFormula =
-    options.goal === 'weight_loss'
-      ? `Peso-alvo ${targetWeightKg.toFixed(2)} kg (ECC ${bcs}) — ${targetResult.methodSummary} → ${targetResult.selectedTargetKcalDay.toFixed(0)} kcal/dia`
-      : `Peso-alvo ${targetWeightKg.toFixed(2)} kg — ${targetResult.methodSummary} → ${targetResult.selectedTargetKcalDay.toFixed(0)} kcal/dia`
+  const weightMethod = idealWeightMethodLabel(idealWeightEstimate.method)
+  const energyMethod = targetResult.clinicalProfileLabel
+  const verification = targetResult.verificationReference
+
+  const energyFormulaParts = [
+    `Peso-alvo ${targetWeightKg.toFixed(2)} kg (${weightMethod})`,
+    idealWeightEstimate.methodSummary,
+    `${energyMethod}: ${targetResult.methodSummary}`,
+    `Meta prescrita: ${targetResult.selectedTargetKcalDay.toFixed(0)} kcal/dia (confiança ${targetResult.confidence}).`,
+  ]
+  if (verification) {
+    energyFormulaParts.push(verification.methodSummary)
+  }
+
+  const weeklyLossTargetPct =
+    options.goal === 'weight_loss' ? WEEKLY_WEIGHT_LOSS_TARGET[species] : undefined
 
   return {
     targetWeightKg,
@@ -317,6 +334,7 @@ export function computeBodyTargetPlan(options: {
     targetEnergyKcal: targetResult.selectedTargetKcalDay,
     maintenanceResult,
     targetResult,
-    energyFormula,
+    energyFormula: energyFormulaParts.join(' '),
+    weeklyLossTargetPct,
   }
 }

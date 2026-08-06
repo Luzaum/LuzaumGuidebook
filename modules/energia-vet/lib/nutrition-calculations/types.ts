@@ -91,6 +91,21 @@ export interface NutritionPatientAssessment {
   nutritionalGoal: NutritionalGoal
 }
 
+export type IdealWeightMethod =
+  | 'clinician_defined'
+  | 'previous_healthy_weight'
+  | 'aaha_ecc_estimate'
+  | 'maintenance'
+  | 'insufficient_data'
+
+export type WeightLossEnergyMethod = 'observed_history' | 'aaha2021' | 'rer_ideal_fallback'
+
+export interface EnergyVerificationReference {
+  kcalDay: number
+  methodSummary: string
+  sourceLabel: string
+}
+
 export interface EnergyCalculationResult {
   rerKcalDay: number
   estimatedRangeKcalDay: { minimum: number; maximum: number }
@@ -102,14 +117,21 @@ export interface EnergyCalculationResult {
   requiresMonitoring: true
   methodSummary: string
   sourceLabel: string
+  /** Método energético aplicado (perda/ganho). */
+  energyMethod?: WeightLossEnergyMethod
+  /** Referência de conferência — não entra na média nem substitui a meta prescrita. */
+  verificationReference?: EnergyVerificationReference
 }
 
 export interface IdealWeightEstimate {
   targetWeightKg: number
   confidence: EnergyConfidence
   methodSummary: string
+  method: IdealWeightMethod
   percentOverweight?: number
   requiresClinicianReview: boolean
+  /** Estimativa provisória — ECC elevado, EMC reduzida ou discrepância clínica. */
+  isProvisionalEstimate?: boolean
 }
 
 export interface CalculationAudit {

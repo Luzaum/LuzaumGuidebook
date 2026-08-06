@@ -28,6 +28,9 @@ import {
   calculateMacroEnergySplit,
   nutrientPer1000KcalFromMnPercent,
   calciumPhosphorusRatio,
+  estimateTargetWeight,
+  buildWeightLossVerificationReference,
+  resolveWeightManagementEnergy,
 } from '../../modules/energia-vet/lib/nutrition-calculations'
 import type { NutritionPatientAssessment } from '../../modules/energia-vet/lib/nutrition-calculations'
 
@@ -116,6 +119,52 @@ describe('Motor de cálculos v3 — goldens numéricos', () => {
   it('peso ideal AAHA ECC 7 — 15 kg → 12,5 kg', () => {
     const est = estimateIdealWeightFromOverweight(15, 7)
     assert.ok(Math.abs(est.targetWeightKg - 12.5) < 0.01)
+    assert.equal(est.method, 'aaha_ecc_estimate')
+  })
+
+  it('peso ideal AAHA ECC 6 — 11 kg → 10 kg (10% acima do ideal)', () => {
+    const est = estimateIdealWeightFromOverweight(11, 6)
+    assert.ok(Math.abs(est.targetWeightKg - 10) < 0.01)
+    assert.equal(est.confidence, 'moderate')
+  })
+
+  it('peso saudável anterior tem prioridade sobre ECC na perda de peso', () => {
+    const est = estimateTargetWeight({
+      species: 'dog',
+      currentWeightKg: 15,
+      bcs: 7,
+      goal: 'weight_loss',
+      previousHealthyWeightKg: 13,
+    })
+    assert.equal(est.targetWeightKg, 13)
+    assert.equal(est.method, 'previous_healthy_weight')
+  })
+
+  it('EMC reduzida exige revisão clínica na estimativa por ECC', () => {
+    const est = estimateIdealWeightFromOverweight(15, 7, 'moderate_loss')
+    assert.equal(est.requiresClinicianReview, true)
+    assert.equal(est.isProvisionalEstimate, true)
+  })
+
+  it('referência de conferência RER no peso ideal não altera meta AAHA', () => {
+    const ref = buildWeightLossVerificationReference('dog', 12.5)
+    assert.ok(ref.kcalDay > 0)
+    const assessment: NutritionPatientAssessment = {
+      species: 'dog',
+      currentWeightKg: 15,
+      bodyConditionScore9: 7,
+      muscleCondition: 'normal',
+      ageMonths: 48,
+      sex: 'female',
+      neuterStatus: 'neutered',
+      lifeStage: 'adult',
+      activity: { environment: 'indoor', lowImpactHoursPerDay: 1 },
+      nutritionalGoal: 'weight_loss',
+    }
+    const energy = resolveWeightManagementEnergy(assessment)
+    assert.notEqual(energy.selectedTargetKcalDay, ref.kcalDay)
+    assert.ok(energy.verificationReference)
+    assert.equal(energy.verificationReference!.kcalDay, ref.kcalDay)
   })
 })
 
