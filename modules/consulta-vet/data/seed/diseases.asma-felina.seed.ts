@@ -58,62 +58,90 @@ export const asmaFelinaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico (ordem prática)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Triagem clínica',
+          label: 'Triagem clínica',
+          timing: 'Primeira consulta',
           detail:
-            'Tosse crônica intermitente, sibilos expiratórios, esforço respiratório com padrão expiratório ("abdominal press"); história de gatilhos ambientais reforça suspeita.',
+            'Tosse crônica intermitente, sibilos expiratórios, esforço respiratório com padrão expiratório ("abdominal press"); história de gatilhos ambientais reforça suspeita (Dye et al., 1996; Nelson & Couto, 6ª ed.).',
+          reassess: 'Se crise aguda, estabilizar antes de radiografia ou BAL — ver plano de tratamento.',
         },
         {
-          label: '2. Excluir diferenciais obrigatórios',
+          label: 'Excluir diferenciais obrigatórios',
+          timing: 'Antes de rotular "asma idiopática"',
           detail:
-            'Teste para dirofilariose (antígeno + anticorpo, considerando limitações em carga baixa/machos), exame fecal de Baermann para Aelurostrongylus, avaliação cardíaca se sopro/galope.',
+            'Teste combinado antígeno + anticorpo para dirofilariose (HARD); Baermann fecal seriado (3 amostras) para Aelurostrongylus; ecocardiograma se sopro, galope ou suspeita cardíaca (Trzil & Reinero, 2014; Johnson, Respiratory Medicine 2ª ed.).',
+          reassess: 'Repetir Baermann se história de caça/acesso externo e primeira amostra negativa.',
         },
         {
-          label: '3. Radiografia torácica',
+          label: 'Radiografia torácica',
+          timing: 'Após estabilização clínica',
           detail:
-            'Padrão broncointersticial ("donuts" em corte transversal, "trilhos de trem" em corte longitudinal), hiperinsuflação com achatamento diafragmático; áreas de atelectasia (lobo médio direito) podem ocorrer.',
+            'Padrão broncointersticial ("donuts" em corte transversal, "trilhos de trem" em longitudinal), hiperinsuflação com achatamento diafragmático; atelectasia do lobo médio direito pode ocorrer. Radiografia normal não exclui asma (Dye et al., 1996).',
         },
         {
-          label: '4. Lavado broncoalveolar (quando seguro)',
+          label: 'Lavado broncoalveolar (quando seguro)',
+          timing: 'Paciente estável, sem hipoxemia grave',
           detail:
-            'Eosinofilia >17-25% no diferencial sustenta fortemente asma; permite também citologia/cultura para excluir infecção concomitante — só realizar com paciente estabilizado.',
+            'Eosinofilia >17–25% no diferencial sustenta fortemente asma; citologia e cultura excluem infecção concomitante. Coleta adiada se FR elevada, ortopneia ou obnubilação (Johnson, Respiratory Medicine 2ª ed.; Reinero, 2019).',
+          reassess: 'Considerar BAL de controle em casos refratários após 8–12 semanas de terapia otimizada.',
         },
         {
-          label: '5. Resposta terapêutica',
+          label: 'Resposta terapêutica',
+          timing: 'Quando investigação completa não é viável',
           detail:
-            'Melhora clínica objetiva após corticoide sistêmico/inalatório reforça o diagnóstico retrospectivamente quando a investigação completa não é viável.',
+            'Melhora clínica objetiva após corticoide sistêmico ou inalatório reforça o diagnóstico retrospectivamente — não substitui exclusão de HARD/parasitas na primeira avaliação (Trzil & Reinero, 2014).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (prioridades)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 1 — Crise aguda',
+          label: 'Estabilizar crise aguda',
           detail:
-            'Oxigênio, mínimo manuseio, terbutalina SC/IM e corticoide injetável de ação rápida; considerar sedação leve se estresse piorar broncoespasmo.',
+            'Oxigênio suplementar, manuseio mínimo, sedação leve se estresse piorar broncoespasmo. Nenhum exame estressante antes da estabilização (Trzil & Reinero, 2014; Nelson & Couto, 6ª ed.).',
+          dose: 'Terbutalina 0,01 mg/kg SC/IM (repetir conforme resposta); dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM (dose única ou repetir em 24 h). Oxigênio por gaiola ou máscara conforme tolerância.',
+          duration: 'Até FR e esforço respiratório normalizarem — tipicamente horas, não dias.',
+          reassess: 'Reavaliar a cada 30–60 min na emergência; FR em repouso alvo <30–40 irpm quando estável.',
         },
         {
-          label: 'Camada 2 — Indução anti-inflamatória',
+          label: 'Indução anti-inflamatória sistêmica',
           detail:
-            'Prednisolona oral em dose anti-inflamatória a imunossupressora conforme gravidade, com desmame gradual após controle.',
+            'Prednisolona oral (preferir sobre prednisona em gatos). Dose anti-inflamatória para leve/moderado; imunossupressora (até 2–4 mg/kg/dia divididos) se crise grave ou refratária (Johnson, Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
+          dose: 'Leve/moderado: prednisolona 1 mg/kg VO q12h. Grave: 2 mg/kg VO q12h. Protocolo de transição típico: 1 mg/kg q12h × 5 dias → 1 mg/kg q24h × 5 dias → desmame gradual.',
+          duration: 'Indução 5–14 dias; desmame por semanas se uso prolongado ou dose imunossupressora.',
+          reassess: 'Revisão clínica em 7–14 dias; reduzir 25–50% a cada 5–7 dias somente se assintomático.',
         },
         {
-          label: 'Camada 3 — Manutenção inalatória',
+          label: 'Manutenção inalatória',
           detail:
-            'Fluticasona ou budesonida inalatória via câmara espaçadora felina (ex.: AeroKat) permite reduzir/parar corticoide sistêmico com menos efeito adverso — requer sobreposição durante a transição.',
+            'Fluticasona ou budesonida via câmara espaçadora felina (AeroKat ou equivalente). Manter prednisolona oral sobreposta na transição para evitar rebote clínico (Galler et al., 2013; Johnson, Respiratory Medicine 2ª ed.).',
+          dose: 'Fluticasona propionato: 125 mcg/gato inalatório q12h (leve/moderado) ou 250 mcg/gato q12h (moderado/grave). Budesonida: 400 mcg/gato inalatório q12h. 7–10 respirações completas por jato com máscara vedada.',
+          duration: 'Contínuo na manutenção; sobrepor VO por 1–2 semanas ao iniciar inalatório. Efeito pleno da fluticasona em 7–10 dias.',
+          reassess: 'Reavaliar em 2–4 semanas; tentar menor dose eficaz de corticoide sistêmico após controle inalatório.',
         },
         {
-          label: 'Camada 4 — Broncodilatador de resgate',
+          label: 'Broncodilatador de resgate',
           detail:
-            'Albuterol/salbutamol inalatório para crises leves a moderadas em casa; terbutalina oral como adjuvante em casos selecionados — nunca como monoterapia crônica.',
+            'Adjuvante para broncoespasmo agudo em casa — nunca monoterapia crônica. Sempre com anti-inflamatório de base ativo (Trzil & Reinero, 2014; Nelson & Couto, 6ª ed.).',
+          dose: 'Salbutamol/albuterol: 100 mcg/gato (1 jato) inalatório PRN; repetir 1× após 20–30 min se necessário. Terbutalina oral adjuvante: 0,01–0,02 mg/kg VO q12h em casos selecionados.',
+          duration: 'Salbutamol: uso pontual na crise. Terbutalina oral: curto prazo enquanto ajusta corticoide.',
+          reassess: 'Uso de salbutamol >2–3×/semana indica controle inadequado — intensificar anti-inflamatório.',
         },
         {
-          label: 'Camada 5 — Controle ambiental',
+          label: 'Controle ambiental',
           detail:
-            'Areia sanitária com baixa poeira, ausência de fumaça/aerossóis/velas perfumadas, purificador de ar; medida de custo-benefício alto e subutilizada.',
+            'Areia sanitária sem perfume e de baixa poeira; eliminar fumaça, incenso, aerossóis e perfumes; purificador HEPA quando aplicável; controle de peso (Reinero, 2019; Nelson & Couto, 6ª ed.).',
+          duration: 'Permanente — medida de custo-benefício alto e subutilizada.',
+          reassess: 'Registrar crises, tosse e uso de resgate no diário do tutor a cada revisão.',
+        },
+        {
+          label: 'Reavaliação e casos refratários',
+          detail:
+            'Buscar menor dose eficaz de corticoide; confirmar técnica inalatória com o tutor. Broncoscopia/BAL de controle se persistência de sinais apesar de adesão (Johnson, Respiratory Medicine 2ª ed.; Reinero, 2019).',
+          reassess: 'Consultas a cada 4–8 semanas na manutenção; FR noturna em repouso semanalmente em casa (alvo <30 irpm).',
         },
       ],
     },
@@ -197,33 +225,157 @@ export const asmaFelinaRecord: DiseaseRecord = {
     },
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Estabilizar crise aguda: oxigênio suplementar, manuseio mínimo, terbutalina SC/IM e corticoide injetável de ação rápida antes de qualquer exame estressante (Trzil & Reinero, 2014).',
-      '2) Indução anti-inflamatória sistêmica: prednisolona oral em dose anti-inflamatória a imunossupressora conforme gravidade, com desmame gradual conforme resposta clínica.',
-      '3) Transição para corticoide inalatório de manutenção (fluticasona ou budesonida via câmara espaçadora felina) para reduzir exposição sistêmica crônica — a sobreposição com corticoide oral durante a transição evita rebote (Galler et al., 2013).',
-      '4) Broncodilatador de resgate (albuterol/salbutamol inalatório, terbutalina oral) para crises leves a moderadas — sempre associado ao anti-inflamatório, nunca isolado como terapia crônica.',
-      '5) Controle ambiental permanente: areia sanitária de baixa poeira, eliminar fumaça/aerossóis/perfumes, purificador de ar — reduz frequência e gravidade das crises com risco mínimo.',
-      '6) Reavaliação periódica com tentativa de menor dose eficaz de corticoide; considerar broncoscopia/BAL de controle em casos refratários para reconfirmar diagnóstico e excluir infecção.',
+    ordemDePrioridadeEstruturada: [
+      {
+        title: 'Estabilizar crise aguda',
+        summary:
+          'Oxigênio suplementar, manuseio mínimo e sedação leve se o estresse piorar broncoespasmo. Nenhum exame estressante (radiografia, BAL) antes da estabilização (Trzil & Reinero, 2014).',
+        dose: 'Terbutalina 0,01 mg/kg SC/IM (repetir conforme resposta). Dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM. Oxigênio por gaiola ou máscara.',
+        duration: 'Horas até normalizar FR e esforço respiratório.',
+        reassess: 'Monitorar a cada 30–60 min na emergência; alvo FR <30–40 irpm em repouso quando estável.',
+      },
+      {
+        title: 'Indução anti-inflamatória sistêmica',
+        summary:
+          'Prednisolona oral (preferir sobre prednisona). Dose anti-inflamatória para leve/moderado; imunossupressora se crise grave ou refratária, com desmame gradual conforme resposta (Johnson, Canine and Feline Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
+        dose: 'Leve/moderado: 1 mg/kg VO q12h. Grave: 2 mg/kg VO q12h. Transição típica: 1 mg/kg q12h × 5 d → 1 mg/kg q24h × 5 d → desmame.',
+        duration: 'Indução 5–14 dias; desmame por semanas se dose imunossupressora ou uso >2 semanas.',
+        reassess: 'Revisão em 7–14 dias; reduzir 25–50% a cada 5–7 dias apenas se clinicamente controlado.',
+      },
+      {
+        title: 'Transição para corticoide inalatório de manutenção',
+        summary:
+          'Fluticasona ou budesonida via câmara espaçadora felina (AeroKat) reduz exposição sistêmica crônica. Sobrepor corticoide oral evita rebote durante a transição (Galler et al., 2013).',
+        dose: 'Fluticasona: 125 mcg/gato inalatório q12h (leve/moderado) ou 250 mcg/gato q12h (moderado/grave). Budesonida: 400 mcg/gato inalatório q12h. Manter prednisolona VO na transição.',
+        duration: 'Inalatório contínuo; sobrepor VO por 1–2 semanas. Efeito pleno da fluticasona em 7–10 dias.',
+        reassess: 'Reavaliar em 2–4 semanas; reduzir/suspender sistêmico quando controlado inalatoriamente.',
+      },
+      {
+        title: 'Broncodilatador de resgate',
+        summary:
+          'Salbutamol/albuterol inalatório para crises leves a moderadas; terbutalina oral como adjuvante selecionado. Sempre associado ao anti-inflamatório — nunca monoterapia crônica (Trzil & Reinero, 2014).',
+        dose: 'Salbutamol 100 mcg/gato (1 jato) inalatório PRN; repetir 1× após 20–30 min. Terbutalina oral 0,01–0,02 mg/kg VO q12h (adjuvante).',
+        duration: 'Salbutamol: uso pontual. Terbutalina oral: curto prazo enquanto ajusta corticoide.',
+        reassess: 'Salbutamol >2–3×/semana = controle inadequado; intensificar anti-inflamatório.',
+      },
+      {
+        title: 'Controle ambiental permanente',
+        summary:
+          'Areia sanitária de baixa poeira sem perfume, eliminar fumaça/aerossóis/perfumes, purificador HEPA quando aplicável, controle de peso (Reinero, 2019; Nelson & Couto, 6ª ed.).',
+        duration: 'Permanente.',
+        reassess: 'Diário de crises, tosse e uso de resgate a cada consulta.',
+      },
+      {
+        title: 'Reavaliação periódica e casos refratários',
+        summary:
+          'Tentativa de menor dose eficaz de corticoide; confirmar técnica inalatória. Broncoscopia/BAL de controle se refratário apesar de adesão (Johnson, Canine and Feline Respiratory Medicine 2ª ed.).',
+        reassess: 'Consultas a cada 4–8 semanas na manutenção; FR noturna semanal em casa (alvo <30 irpm).',
+      },
+    ],
+    protocoloTerapeutico: [
+      {
+        drug: 'Terbutalina',
+        indication: 'Crise aguda — broncodilatação imediata',
+        dose: '0,01 mg/kg',
+        frequency: 'SC/IM; repetir conforme resposta clínica',
+        route: 'SC/IM',
+        duration: 'Dose única ou repetida na crise',
+        notes: 'Associar oxigênio e corticoide injetável. Evitar contenção prolongada.',
+        cautions: 'Taquicardia, tremores, agitação em overdose.',
+      },
+      {
+        drug: 'Dexametasona sódica fosfato',
+        indication: 'Crise aguda — anti-inflamatório de ação rápida',
+        dose: '0,1–0,2 mg/kg ou 1–2 mg/gato',
+        frequency: 'IV/IM/SC; dose única ou repetir em 24 h',
+        route: 'IV/IM/SC',
+        duration: 'Crise aguda apenas — não substitui manutenção',
+        notes: 'Não confundir com protocolo de manutenção oral/inalatória.',
+        cautions: 'Hiperglicemia e poliúria se uso repetido; preferir transição para prednisolona/inalatório.',
+      },
+      {
+        drug: 'Prednisolona',
+        indication: 'Indução sistêmica e transição',
+        dose: '1 mg/kg (leve/moderado) ou 2 mg/kg (grave)',
+        frequency: 'VO q12h na indução; q24h na fase de transição',
+        route: 'VO',
+        duration: '5–14 dias indução + desmame gradual (semanas se imunossupressora)',
+        notes: 'Preferir prednisolona sobre prednisona (biodisponibilidade felina). Sobrepor 1–2 semanas ao iniciar inalatório.',
+        cautions: 'Diabetes, poliúria/polidipsia, infecção oportunista com uso prolongado.',
+      },
+      {
+        drug: 'Fluticasona propionato (Flixotide)',
+        indication: 'Manutenção crônica — controle anti-inflamatório local',
+        dose: '125 mcg/gato (leve/moderado) ou 250 mcg/gato (moderado/grave)',
+        frequency: 'Inalatório q12h via AeroKat',
+        route: 'Inalatória (câmara espaçadora)',
+        duration: 'Contínuo na manutenção',
+        notes: '7–10 respirações por jato; efeito pleno em 7–10 dias. Não é medicação de resgate.',
+        cautions: 'Falha aparente comum por técnica inadequada — treinar tutor.',
+      },
+      {
+        drug: 'Budesonida inalatória',
+        indication: 'Manutenção crônica — alternativa à fluticasona',
+        dose: '400 mcg/gato',
+        frequency: 'Inalatório q12h via AeroKat',
+        route: 'Inalatória (câmara espaçadora)',
+        duration: 'Contínuo na manutenção',
+        notes: 'Melhora clínica e funcional com baixo efeito adverso sistêmico (Galler et al., 2013).',
+        cautions: 'Escolher apenas um corticoide inalatório contínuo (não combinar com fluticasona).',
+      },
+      {
+        drug: 'Salbutamol (albuterol)',
+        indication: 'Resgate agudo domiciliar',
+        dose: '100 mcg/gato (1 jato)',
+        frequency: 'PRN no broncoespasmo; repetir 1× após 20–30 min',
+        route: 'Inalatória (câmara espaçadora)',
+        duration: 'Uso pontual',
+        notes: 'Não substitui corticoide de base. Uso frequente indica controle inadequado.',
+        cautions: 'Taquicardia se uso excessivo; não usar salmeterol (Seretide) como resgate.',
+      },
+      {
+        drug: 'Terbutalina oral',
+        indication: 'Adjuvante broncodilatador selecionado',
+        dose: '0,01–0,02 mg/kg',
+        frequency: 'VO q12h',
+        route: 'VO',
+        duration: 'Curto prazo enquanto ajusta anti-inflamatório',
+        notes: 'Reservada a broncoespasmo residual documentado.',
+        cautions: 'Nunca monoterapia crônica.',
+      },
     ],
     monitoramento: [
-      'Frequência e padrão respiratório em repouso a cada revisão — objetivo é normalizar entre crises.',
-      'Frequência de uso do broncodilatador de resgate: aumento sinaliza controle inadequado do anti-inflamatório de base.',
-      'Efeitos adversos do corticoide sistêmico prolongado (poliúria/polidipsia, ganho de peso, predisposição a infecção, diabetes secundária).',
-      'Técnica de aplicação inalatória com o tutor — falha de técnica é causa comum de "falha terapêutica" aparente.',
+      'Frequência respiratória em repouso a cada revisão — alvo <30 irpm durante o sono em gatos controlados.',
+      'Frequência de salbutamol de resgate: >2–3×/semana indica controle inadequado do anti-inflamatório de base.',
+      'Efeitos adversos do corticoide sistêmico prolongado (poliúria/polidipsia, ganho de peso, diabetes secundária, infecção).',
+      'Técnica inalatória com o tutor — falha de técnica é causa comum de "falha terapêutica" aparente (7–10 respirações/jato, vedação da máscara).',
+      'Diário domiciliar: crises, tosse, chiado e uso de broncodilatador entre consultas.',
     ],
     tcCriseAguda:
-      'Oxigênio (gaiola ou máscara conforme tolerância), mínimo estresse físico, terbutalina 0,01 mg/kg SC/IM (repetir se necessário conforme resposta) e corticoide injetável de ação rápida (ex.: dexametasona sódica fosfato). Evitar contenção prolongada e exames que aumentem estresse antes da estabilização.',
+      'Oxigênio (gaiola ou máscara conforme tolerância), mínimo estresse físico, terbutalina 0,01 mg/kg SC/IM (repetir se necessário conforme resposta) e dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM. Evitar contenção prolongada e exames que aumentem estresse antes da estabilização (Trzil & Reinero, 2014).',
     tcCorticosteroides: {
       kind: 'clinicalTable',
-      headers: ['Fase', 'Fármaco e via', 'Notas'],
+      headers: ['Fase', 'Fármaco, dose e via', 'Duração / reavaliação'],
       rows: [
-        ['Indução sistêmica', 'Prednisolona oral, dose anti-inflamatória a imunossupressora conforme gravidade, com desmame gradual', 'Prednisona tem biodisponibilidade inferior em gatos — preferir prednisolona.'],
-        ['Manutenção inalatória', 'Fluticasona ou budesonida via câmara espaçadora felina (ex.: AeroKat), 1-2x/dia', 'Sobrepor com corticoide oral por 1-2 semanas na transição; reduz efeitos sistêmicos a longo prazo (Galler et al., 2013).'],
-        ['Crise aguda', 'Corticoide injetável de ação rápida (ex.: dexametasona)', 'Associado a oxigênio e broncodilatador; não substitui manutenção crônica.'],
+        [
+          'Indução sistêmica',
+          'Prednisolona 1 mg/kg VO q12h (leve/moderado) ou 2 mg/kg VO q12h (grave)',
+          '5–14 dias → transição q24h × 5 d → desmame 25–50%/5–7 d. Revisão em 7–14 d.',
+        ],
+        [
+          'Manutenção inalatória',
+          'Fluticasona 125–250 mcg/gato inalatório q12h ou budesonida 400 mcg/gato q12h (AeroKat)',
+          'Contínuo; sobrepor VO 1–2 sem. Efeito pleno em 7–10 d. Reavaliar em 2–4 sem (Galler et al., 2013).',
+        ],
+        [
+          'Crise aguda',
+          'Dexametasona 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM + terbutalina 0,01 mg/kg SC/IM',
+          'Dose única ou repetir em 24 h; não substitui manutenção crônica.',
+        ],
       ],
     },
     tcBroncodilatadores:
-      'Albuterol/salbutamol inalatório para resgate agudo em casa (câmara espaçadora); terbutalina oral 0,01-0,02 mg/kg BID como adjuvante em casos selecionados com broncoespasmo residual. Uso isolado sem anti-inflamatório de base é insuficiente e mascara progressão da doença.',
+      'Salbutamol 100 mcg/gato (1 jato) inalatório PRN via câmara espaçadora; repetir 1× após 20–30 min se necessário. Terbutalina oral 0,01–0,02 mg/kg VO q12h como adjuvante em casos selecionados. Uso isolado sem anti-inflamatório mascara progressão da doença (Trzil & Reinero, 2014).',
     tcMedidasAmbientais: [
       'Trocar para areia sanitária de baixa poeira, sem perfume.',
       'Eliminar exposição a fumaça de cigarro, lareira, velas perfumadas e aerossóis domésticos.',

@@ -57,62 +57,68 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Diagnóstico (ordem racional)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Compatibilidade e risco',
+          label: 'Compatibilidade e risco',
+          timing: 'Primeira consulta',
           detail:
-            'Anemia regenerativa com icterícia ou esplenomegalia; história de doação, brigas, rua (gato) ou asplenia/coinfecção (cão). Não atribua regeneração apenas a “parasita intestinal” sem excluir hemólise.',
+            'Anemia regenerativa com icterícia ou esplenomegalia; história de doação, brigas, rua (gato) ou asplenia/coinfecção (cão). Não atribua regeneração apenas a parasita intestinal sem excluir hemólise (Nelson & Couto, 6ª ed.; ABCD/Merck).',
         },
         {
-          label: '2. Hemograma e morfologia',
+          label: 'Hemograma e morfologia',
           detail:
-            'Reticulócitos/regeneração; esfregaco: anéis, bastonetes ou “stippling” sugestivos — sensibilidade baixa; repetir se suspeita alta.',
+            'Reticulócitos/regeneração; esfregaço: anéis, bastonetes ou stippling sugestivos — sensibilidade baixa; repetir se suspeita alta (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. PCR (preferido)',
+          label: 'PCR (preferido)',
           detail:
-            'Sangue EDTA antes de antibiótico prolongado; painéis diferenciam M. haemofelis, haemominutum, turicensis, haemocanis. Quantitativo ajuda seguimento em pesquisa/protocolos.',
+            'Sangue EDTA antes de antibiótico prolongado; painéis diferenciam M. haemofelis, haemominutum, turicensis, haemocanis. Quantitativo ajuda seguimento (Nelson & Couto, 6ª ed.; ABCD/Merck).',
         },
         {
-          label: '4. FeLV/FIV no gato',
+          label: 'FeLV/FIV no gato',
           detail:
-            'Coinfecção altera prognóstico e intensidade de monitorização; não substitui PCR para hemoplasma.',
+            'Coinfecção altera prognóstico e intensidade de monitorização; não substitui PCR para hemoplasma (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Diferencial IMHA',
+          label: 'Diferencial IMHA',
+          timing: 'Antes de rotular',
           detail:
-            'Coombs, aglutinação, spherócitos — hemoplasma pode coexistir ou precipitar IMHA; corticoide não é primeira linha sem critério.',
+            'Coombs, aglutinação, esferócitos — hemoplasma pode coexistir ou precipitar IMHA; corticoide não é primeira linha sem critério (Nelson & Couto, 6ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Tratamento (camadas)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Camada 0 — Oxigenação e perfusão',
+          label: 'Oxigenação e perfusão',
+          timing: 'Após estabilização',
           detail:
-            'Oxigênio se dispneia; fluidoterapia criteriosa (hemólise + sobrecarga); transfusão se Ht muito baixo ou hipóxia — não “esperar só antibiótico”.',
+            'Oxigênio se dispneia; fluidoterapia criteriosa (hemólise + sobrecarga); transfusão se Ht muito baixo ou hipóxia — não esperar só antibiótico (Nelson & Couto, 6ª ed.; Merck).',
         },
         {
-          label: 'Camada 1 — Doxiciclina',
+          label: 'Doxiciclina',
+          dose: '10 mg/kg q24h ou 5 mg/kg q12h VO',
+          duration: '2–4 semanas (4 semanas se objetivo clearance)',
+          reassess: 'Hemograma e PCR conforme evolução',
           detail:
-            '10 mg/kg q24h ou 5 mg/kg q12h VO 2–4 semanas; 4 semanas se objetivo clearance; técnica felina obrigatória.',
+            'Primeira linha; técnica felina obrigatória — água/slurry após comprimido (Plumb\'s, 10ª ed.; ABCD/Merck).',
         },
         {
-          label: 'Camada 2 — Fluoroquinolonas',
+          label: 'Fluoroquinolonas',
           detail:
-            'Marbofloxacina ou sequências ABCD se falha/intolerância; pradofloxacina reservada a cenários específicos; enrofloxacina: risco retiniano felino.',
+            'Marbofloxacina 2,75 mg/kg q24h 14–28 d ou sequências ABCD se falha/intolerância; pradofloxacina reservada a refratários; enrofloxacina: risco retiniano felino (ABCD/Merck; Plumb\'s, 10ª ed.).',
         },
         {
-          label: 'Camada 3 — Corticoide',
+          label: 'Corticoide',
           detail:
-            'Só se componente imunomediado dominante após antibiótico adequado — não rotina “por anemia”.',
+            'Só se componente imunomediado dominante após antibiótico adequado — não rotina por anemia (Nelson & Couto, 6ª ed.; ABCD/Merck).',
         },
         {
-          label: 'Camada 4 — Portador assintomático',
+          label: 'Portador assintomático',
           detail:
-            'PCR+ sem clínica: não tratar de rotina (ABCD/Merck); exceções: doador, imunodeprimido, multicat com animais naïf.',
+            'PCR+ sem clínica: não tratar de rotina; exceções: doador, imunodeprimido, multicat com animais naïf (ABCD/Merck).',
         },
       ],
     },

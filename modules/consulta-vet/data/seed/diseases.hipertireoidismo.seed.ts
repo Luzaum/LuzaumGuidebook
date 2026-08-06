@@ -56,62 +56,67 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (pesquisa → categorização AAFP)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Reconhecimento clínico e palpação',
+          label: 'Reconhecimento clínico e palpação',
+          timing: 'Primeira consulta',
           detail:
-            'Identificar perda de peso, polifagia, bócio palpável na linha do pescoço (thyroid slip), sopro cardíaco, taquicardia e hiperatividade em felinos geriatras.',
+            'Identificar perda de peso, polifagia, bócio palpável na linha do pescoço (thyroid slip), sopro cardíaco, taquicardia e hiperatividade em felinos geriatras (AAFP, 2016).',
         },
         {
-          label: '2. Triagem com T4 Total sérico',
+          label: 'Triagem com T4 Total sérico',
           detail:
-            'Dosar T4 Total. Se significativamente elevado (> 4.5 µg/dL ou acima da referência local), em gato com sinais clínicos compatíveis, o diagnóstico é selado.',
+            'Dosar T4 Total. Se significativamente elevado (> 4,5 µg/dL ou acima da referência local), em gato com sinais clínicos compatíveis, o diagnóstico é selado (AAFP, 2016; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Abordagem em casos limítrofes / Euthyroid Sick',
+          label: 'Abordagem em casos limítrofes / Euthyroid Sick',
           detail:
-            'Se T4 Total vier normal-alto ou normal em gato muito suspeito: avaliar comorbidades não tireoidianas. Repetir dosagem em 2-4 semanas ou dosar T4 Livre por diálise + T4 Total juntos.',
+            'Se T4 Total vier normal-alto ou normal em gato muito suspeito: avaliar comorbidades não tireoidianas. Repetir dosagem em 2–4 semanas ou dosar T4 Livre por diálise + T4 Total juntos (AAFP, 2016).',
         },
         {
-          label: '4. Pacote renal e pressórico obrigatório',
+          label: 'Pacote renal e pressórico obrigatório',
+          timing: 'Antes de prescrever',
           detail:
-            'Dosar creatinina, ureia, urinálise (densidade) e aferir Pressão Arterial Sistólica. Identificar estádio renal inicial para servir de baseline pós-tratamento.',
+            'Dosar creatinina, ureia, urinálise (densidade) e aferir pressão arterial sistólica. Identificar estádio renal inicial para servir de baseline pós-tratamento (AAFP, 2016).',
         },
         {
-          label: '5. Diagnósticos diferenciais e imagem',
+          label: 'Diagnósticos diferenciais e imagem',
           detail:
-            'Excluir diabetes mellitus, linfoma gastrointestinal crônico, doença inflamatória intestinal e insuficiência pancreática exócrina (IPE). Ecocardiograma se cardiomiopatia suspeita.',
+            'Excluir diabetes mellitus, linfoma gastrointestinal crônico, doença inflamatória intestinal e insuficiência pancreática exócrina (IPE). Ecocardiograma se cardiomiopatia suspeita (AAFP, 2016).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo terapêutico (estabilização e escolha de conduta)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Passo 1: Decisão da abordagem e comorbidades',
+          label: 'Decisão da abordagem e comorbidades',
           detail:
-            'Avaliar se o paciente é elegível para terapia definitiva (I-131, cirurgia) ou se necessita de estabilização prévia/longo prazo com Metimazol.',
+            'Avaliar se o paciente é elegível para terapia definitiva (I-131, cirurgia) ou se necessita de estabilização prévia/longo prazo com metimazol (AAFP, 2016).',
         },
         {
-          label: 'Passo 2: Controle clínico com Metimazol',
+          label: 'Controle clínico com Metimazol',
+          dose: '1,25–2,5 mg/gato VO q12h ou gel transdérmico equivalente',
+          duration: 'Titular conforme T4 e tolerabilidade',
+          reassess: 'Hemograma, T4, bioquímica renal e PA a cada 2–3 semanas no início',
           detail:
-            'Iniciar Metimazol (1,25–2,5 mg por gato VO a cada 12 horas, ou em gel transdérmico na orelha). Avaliar tolerabilidade gastrointestinal e hematológica.',
+            'Avaliar tolerabilidade gastrointestinal e hematológica; suspender se discrasias graves (AAFP, 2016; Plumb\'s, 10ª ed.).',
         },
         {
-          label: 'Passo 3: Acompanhamento de transição e rim',
+          label: 'Acompanhamento de transição e rim',
           detail:
-            'Repetir hemograma, T4 Total, bioquímica renal e pressão arterial a cada 2–3 semanas no início da terapia. Monitorar a elevação da creatinina.',
+            'Repetir hemograma, T4 Total, bioquímica renal e pressão arterial a cada 2–3 semanas no início da terapia. Monitorar a elevação da creatinina — hipertireoidismo mascara DRC (AAFP, 2016).',
         },
         {
-          label: 'Passo 4: Terapia definitiva (I-131)',
+          label: 'Terapia definitiva (I-131)',
           detail:
-            'Se estável e sem DRC descompensada grave pós-metimazol: encaminhar para Iodo Radioativo (I-131). Paciente fica em isolamento por ~7-14 dias conforme normas de radioproteção.',
+            'Se estável e sem DRC descompensada grave pós-metimazol: encaminhar para Iodo Radioativo (I-131). Paciente fica em isolamento por ~7–14 dias conforme normas de radioproteção (AAFP, 2016).',
         },
         {
-          label: 'Passo 5: Manejo Dietético Alternativo',
+          label: 'Manejo Dietético Alternativo',
           detail:
-            'Se tratamento médico ou radioterapia forem inviáveis: uso exclusivo e estrito de ração restrita em iodo (Hill\'s y/d). O gato não pode comer absolutamente mais nada.',
+            'Se tratamento médico ou radioterapia forem inviáveis: uso exclusivo e estrito de ração restrita em iodo (Hill\'s y/d). O gato não pode comer absolutamente mais nada (AAFP, 2016).',
         },
       ],
     },

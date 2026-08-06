@@ -61,57 +61,59 @@ export const dtuifFelinaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico baseado no consenso iCatCare 2025',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Reconhecer LUTS',
+          label: 'Reconhecer LUTS',
+          timing: 'Primeira consulta',
           detail:
-            'Disúria, hematúria, periúria, polaciúria e estrangúria podem ocorrer em várias combinações e não diferenciam sozinhas FIC, urolitíase, ITU e obstrução.',
+            'Disúria, hematúria, periúria, polaciúria e estrangúria podem ocorrer em várias combinações e não diferenciam sozinhas FIC, urolitíase, ITU e obstrução (iCatCare, 2025).',
         },
         {
-          label: '2. Palpar bexiga e classificar risco',
+          label: 'Palpar bexiga e classificar risco',
+          timing: 'Antes de rotular',
           detail:
-            'Bexiga normal/pequena orienta investigação ambulatorial; bexiga dolorosa, firme e distendida em gato estrangúrico orienta emergência por suspeita de obstrução uretral.',
+            'Bexiga normal/pequena orienta investigação ambulatorial; bexiga dolorosa, firme e distendida em gato estrangúrico orienta emergência por suspeita de obstrução uretral (iCatCare, 2025).',
         },
         {
-          label: '3. Banco mínimo útil',
+          label: 'Banco mínimo útil',
           detail:
-            'História urinária e ambiental, exame físico, peso, condição corporal, palpação abdominal, exame perineal, urinálise quando possível e imagem conforme estabilidade e recurso.',
+            'História urinária e ambiental, exame físico, peso, condição corporal, palpação abdominal, exame perineal, urinálise quando possível e imagem conforme estabilidade e recurso (iCatCare, 2025).',
         },
         {
-          label: '4. Excluir causas tratáveis',
+          label: 'Excluir causas tratáveis',
           detail:
-            'Radiografia e ultrassom para urolitíase/anormalidades; cultura quando bacteriúria e sinais sustentam ITU; avaliar comorbidades em gatos maduros/idosos.',
+            'Radiografia e ultrassom para urolitíase/anormalidades; cultura quando bacteriúria e sinais sustentam ITU; avaliar comorbidades em gatos maduros/idosos (iCatCare, 2025).',
         },
         {
-          label: '5. FIC como exclusão',
+          label: 'FIC como exclusão',
           detail:
-            'FIC é presumida quando não há obstrução ativa, cálculo, ITU ou outra causa; exige plano ambiental, analgesia e seguimento, não só "anti-inflamatório".',
+            'FIC é presumida quando não há obstrução ativa, cálculo, ITU ou outra causa; exige plano ambiental, analgesia e seguimento, não só anti-inflamatório (iCatCare, 2025).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Prioridades de manejo',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Obstruído primeiro',
+          label: 'Obstruído primeiro',
           detail:
-            'Triagem, analgesia, estabilização, fluidoterapia, correção de hipercalemia quando indicada e desobstrução atraumática.',
+            'Triagem, analgesia, estabilização, fluidoterapia, correção de hipercalemia quando indicada e desobstrução atraumática — não atrasar fluidos esperando cateter (iCatCare, 2025).',
         },
         {
-          label: '2. Dor sempre',
+          label: 'Dor sempre',
           detail:
-            'FIC e obstrução são dolorosas. Priorizar analgesia e reduzir estresse de internação, manipulação e medicação.',
+            'FIC e obstrução são dolorosas. Priorizar analgesia e reduzir estresse de internação, manipulação e medicação (iCatCare, 2025).',
         },
         {
-          label: '3. Causa específica',
+          label: 'Causa específica',
           detail:
-            'Dissolução/remoção de estruvita quando cabível, remoção de oxalato, antibiótico guiado por cultura para ITU clínica, oncologia/intervenção quando neoplasia.',
+            'Dissolução/remoção de estruvita quando cabível, remoção de oxalato, antibiótico guiado por cultura para ITU clínica, oncologia/intervenção quando neoplasia (iCatCare, 2025).',
         },
         {
-          label: '4. MEMO',
+          label: 'MEMO',
           detail:
-            'Modificação ambiental multimodal, água, caixas sanitárias, brincadeira, locais elevados e redução de conflitos são parte do tratamento.',
+            'Modificação ambiental multimodal, água, caixas sanitárias, brincadeira, locais elevados e redução de conflitos são parte do tratamento (iCatCare, 2025).',
         },
       ],
     },

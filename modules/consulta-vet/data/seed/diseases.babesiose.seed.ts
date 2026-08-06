@@ -60,40 +60,59 @@ export const babesioseCaninaRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo Diagnóstico Recomendado',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Triagem e Suspeita',
-          detail: 'Buscar histórico de carrapatos, mucosas pálidas, febre, icterícia e urina escura (pigmentúria).',
+          label: 'Triagem e suspeita',
+          timing: 'Primeira consulta',
+          detail:
+            'Histórico de carrapatos, mucosas pálidas, febre, icterícia e urina escura (pigmentúria) — trombocitopenia + anemia hemolítica reforçam suspeita (Nelson & Couto, 6ª ed.; Dantas-Torres & Figueredo, 2006).',
         },
         {
-          label: '2. Esfregaço de Ponta de Orelha',
-          detail: 'Colher sangue capilar periférico da margem interna da orelha para visualização direta de morulas/merozoítos.',
+          label: 'Esfregaço de ponta de orelha',
+          timing: 'Na admissão',
+          detail:
+            'Sangue capilar periférico da margem interna da orelha para visualização de morulas/merozoítos — sensibilidade limitada se parasitemia baixa (Nelson & Couto, 6ª ed.; BSAVA Emergency and Critical Care).',
         },
         {
-          label: '3. Hemograma e Triagem Bioquímica',
-          detail: 'Procurar anemia regenerativa, trombocitopenia grave, hiperbilirrubinemia, azotemia renal e hipoalbuminemia.',
+          label: 'Hemograma e triagem bioquímica',
+          timing: 'Paralelo ao esfregaço',
+          detail:
+            'Anemia regenerativa, trombocitopenia grave, hiperbilirrubinemia, azotemia e hipoalbuminemia — azotemia e hipoalbuminemia são marcadores de gravidade (Weingart et al., 2023).',
         },
         {
-          label: '4. Confirmação por PCR',
-          detail: 'Enviar sangue total para PCR para diferenciar a espécie (grande vs pequena) e orientar a escolha do fármaco.',
+          label: 'Confirmação por PCR',
+          timing: 'Antes de escolher esquema terapêutico',
+          detail:
+            'Sangue total para PCR diferenciando espécie grande vs pequena — orienta imidocarb vs atovaquona + azitromicina (Nelson & Couto, 6ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Fluxo de Tratamento e Suporte',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: 'Passo 1: Definir Espécie',
-          detail: 'Se Babesia grande: Imidocarb dipropionato. Se Babesia pequena: Atovaquona + Azitromicina.',
+          label: 'Definir espécie e tratar parasita',
+          detail:
+            'Babesia grande: imidocarb dipropionato. Babesia pequena (B. gibsoni): atovaquona + azitromicina — nunca usar imidocarb isolado para pequenas (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+          dose: 'Imidocarb 6,6 mg/kg IM/SC, 2 doses com intervalo de 14 dias; atropina 0,02–0,04 mg/kg SC/IM 15–30 min antes. Atovaquona 13,3 mg/kg q8h + azitromicina 10 mg/kg q24h VO × 10 dias (atovaquona com alimento gorduroso).',
+          duration: 'Imidocarb: 2 aplicações. Atovaquona/azitromicina: 10 dias.',
+          reassess: 'Repetir PCR ou esfregaço conforme resposta clínica e laboratorial.',
         },
         {
-          label: 'Passo 2: Suporte Renal e Hidratação',
-          detail: 'Fluidoterapia criteriosa para manter perfusão renal sem hemodiluir excessivamente a anemia.',
+          label: 'Suporte renal e hidratação',
+          detail:
+            'Fluidoterapia criteriosa para perfusão renal sem hemodiluir excessivamente a anemia (BSAVA Emergency and Critical Care; Nelson & Couto, 6ª ed.).',
+          duration: 'Até estabilização hemodinâmica e função renal.',
+          reassess: 'Monitorar creatinina, fósforo e sinais de pancreatite em casos graves.',
         },
         {
-          label: 'Passo 3: Suporte de Oxigênio/Transfusão',
-          detail: 'Considerar transfusão de concentrado de hemácias ou sangue total se PCV < 15-18% com sinais de hipóxia tecidual.',
+          label: 'Suporte de oxigênio/transfusão',
+          detail:
+            'Transfusão de concentrado de hemácias ou sangue total se PCV <15–18% com hipóxia tecidual (BSAVA Emergency and Critical Care).',
+          dose: 'Concentrado de hemácias ou sangue total conforme protocolo transfusional local.',
+          duration: 'Dose(s) conforme resposta do hematócrito e clínica.',
+          reassess: 'PCV, lactato e sinais de hipóxia a cada revisão na fase aguda.',
         },
       ],
     },

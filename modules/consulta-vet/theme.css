@@ -152,6 +152,8 @@
 
 /* Textura leve no conteúdo — reduz sensação de área “vazia” sem pesar na GPU */
 .consulta-vet-theme .consulta-vet-main-scroll {
+  background-color: hsl(var(--background));
+  overscroll-behavior-y: contain;
   background-image: radial-gradient(hsl(var(--foreground) / 0.04) 1px, transparent 0);
   background-size: 22px 22px;
 }

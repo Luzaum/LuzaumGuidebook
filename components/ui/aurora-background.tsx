@@ -57,7 +57,10 @@ export const AuroraBackground = ({
         ) : (
           <div
             aria-hidden
-            className="pointer-events-none fixed inset-0 bg-gradient-to-br from-sky-100/40 via-transparent to-blue-100/30 dark:from-sky-950/40 dark:to-blue-950/25"
+            className={cn(
+              'pointer-events-none bg-gradient-to-br from-sky-100/40 via-transparent to-blue-100/30 dark:from-sky-950/40 dark:to-blue-950/25',
+              fullScreen ? 'fixed inset-0' : 'absolute inset-0',
+            )}
           />
         )}
         {children}

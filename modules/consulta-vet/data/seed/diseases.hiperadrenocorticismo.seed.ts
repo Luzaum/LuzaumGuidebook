@@ -41,62 +41,67 @@ export const hiperadrenocorticismoCushingRecord: DiseaseRecord = {
       },
     ],
     diagnosticFlow: {
-      title: 'Fluxo diagnóstico (simplificado)',
+      title: 'Plano diagnóstico',
       steps: [
         {
-          label: '1. Decidir se há indicação de testar',
+          label: 'Decidir se há indicação de testar',
+          timing: 'Primeira consulta',
           detail:
-            'PU/PD, polifagia, abdômen pendular, dermatopatia endócrina, fraqueza — ou gato diabético com pele de papel; não triar só por fosfatase alcalina isolada.',
+            'PU/PD, polifagia, abdômen pendular, dermatopatia endócrina, fraqueza — ou gato diabético com pele de papel; não triar só por fosfatase alcalina isolada (ACVIM, 2013; MSD, 2024).',
         },
         {
-          label: '2. Banco mínimo contextual',
+          label: 'Banco mínimo contextual',
           detail:
-            'Bioquímica, urinálise, pressão arterial se possível; identificar diabetes, hipertensão ou doença renal que modulam interpretação.',
+            'Bioquímica, urinálise, pressão arterial se possível; identificar diabetes, hipertensão ou doença renal que modulam interpretação (ACVIM, 2013).',
         },
         {
-          label: '3. Confirmar hipercortisolismo',
+          label: 'Confirmar hipercortisolismo',
           detail:
-            'Cão estável: LDDST frequentemente primeira escolha; ACTH stim se iatrogenia suspeita ou comorbidade que invalida supressão; UCCR para triagem/exclusão com colheita domiciliar.',
+            'Cão estável: LDDST frequentemente primeira escolha; ACTH stim se iatrogenia suspeita ou comorbidade que invalida supressão; UCCR para triagem/exclusão com colheita domiciliar (ACVIM, 2013; MSD, 2024).',
         },
         {
-          label: '4. Diferenciar PDH, ADH e iatrogenia',
+          label: 'Diferenciar PDH, ADH e iatrogenia',
+          timing: 'Antes de prescrever',
           detail:
-            'Ultrassom adrenal (assimetria), ACTH endógeno, história minuciosa de corticoide tópico/ótico/injetável; erro aqui leva a cirurgia errada ou trilostano desnecessário.',
+            'Ultrassom adrenal (assimetria), ACTH endógeno, história minuciosa de corticoide tópico/ótico/injetável; erro aqui leva a cirurgia errada ou trilostano desnecessário (ACVIM, 2013; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '5. Imagem hipofisária selecionada',
+          label: 'Imagem hipofisária selecionada',
           detail:
-            'Macrotumor neurológico ou candidato a radioterapia/hipofisectomia — planejar antes de prometer apenas trilostano vitalício.',
+            'Macrotumor neurológico ou candidato a radioterapia/hipofisectomia — planejar antes de prometer apenas trilostano vitalício (ACVIM, 2013; Plumb\'s, 10ª ed.).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Linhas de tratamento (visão geral)',
+      title: 'Plano de tratamento',
       steps: [
         {
-          label: '1. Terapia médica (maioria)',
+          label: 'Terapia médica (maioria)',
+          dose: 'Trilostano ~1 mg/kg q12h ou 2 mg/kg q24h (cão); ~30 mg/gato q24h inicial',
+          duration: 'Reavaliar em 10–14 dias com ACTH stim',
+          reassess: 'Eletrólitos, função renal/hepática e clínica após cada ajuste',
           detail:
-            'Trilostano: ajuste por teste de estimulação com ACTH e clínica; mitotano se intolerância ou segunda linha experiente.',
+            'Ajuste por teste de estimulação com ACTH e clínica; mitotano se intolerância ou segunda linha experiente (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '2. Cirurgia adrenal',
+          label: 'Cirurgia adrenal',
           detail:
-            'ADH unilateral operável com equipe preparada para manejo perioperatório de hipertensão e hipocalemia.',
+            'ADH unilateral operável com equipe preparada para manejo perioperatório de hipertensão e hipocalemia (ACVIM, 2013; Nelson & Couto, 6ª ed.).',
         },
         {
-          label: '3. Iatrogenia',
+          label: 'Iatrogenia',
           detail:
-            'Mapa de desmame do glicocorticoide exógeno; suporte se insuficiência adrenal relativa — não “somar trilostano” sem critério.',
+            'Mapa de desmame do glicocorticoide exógeno; suporte se insuficiência adrenal relativa — não somar trilostano sem critério (MSD, 2024; Plumb\'s, 10ª ed.).',
         },
         {
-          label: '4. Felino',
+          label: 'Felino',
           detail:
-            'Trilostano + controle agressivo de glicemia e fragilidade cutânea; discutir radioterapia/hipofisectomia em centros.',
+            'Trilostano + controle agressivo de glicemia e fragilidade cutânea; discutir radioterapia/hipofisectomia em centros (Nelson & Couto, 6ª ed.; Cook et al., 2021).',
         },
         {
-          label: '5. Segurança contínua',
+          label: 'Segurança contínua',
           detail:
-            'Sinais de hipocortisolismo medicamentoso (anorexia, vômito, colapso) são emergência — tutor deve reconhecer.',
+            'Sinais de hipocortisolismo medicamentoso (anorexia, vômito, colapso) são emergência — tutor deve reconhecer (Plumb\'s, 10ª ed.; ACVIM, 2013).',
         },
       ],
     },
