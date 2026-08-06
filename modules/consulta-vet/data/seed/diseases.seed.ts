@@ -19,6 +19,9 @@ import { cardiomiopatiaDilatadaRecord } from './diseases.cardiomiopatia-dilatada
 import { cardiomiopatiaRestritivaRecord } from './diseases.cardiomiopatia-restritiva.seed';
 import { tumoresMamariosRecord } from './diseases.tumores-mamarios.seed';
 import { mastiteRecord } from './diseases.mastite.seed';
+import { asmaFelinaRecord } from './diseases.asma-felina.seed';
+import { bronquiteCronicaRecord } from './diseases.bronquite-cronica.seed';
+import { granulomaEosinofilicoFelinoRecord } from './diseases.granuloma-eosinofilico-felino.seed';
 
 export const diseasesSeed: DiseaseRecord[] = [
   babesioseCaninaRecord,
@@ -308,6 +311,9 @@ export const diseasesSeed: DiseaseRecord[] = [
   leishmanioseVisceralCaninaRecord,
   erliquioseMonociticaCaninaRecord,
   colapsoTraquealCaninoRecord,
+  asmaFelinaRecord,
+  bronquiteCronicaRecord,
+  granulomaEosinofilicoFelinoRecord,
   micoplasmosesHemotropicasRecord,
   doencaRenalCronicaCaesGatosRecord,
   hipertensaoArterialSistemicaRecord,

@@ -185,6 +185,51 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
       'O colapso traqueal e a traqueobroncomalácia (TBM) são manifestações de perda de rigidez da parede traqueobrônquica: anéis cartilaginosos em C amolecidos e membrana dorsal redundante passam a invaginar com as variações de pressão transpulmonar — na inspiração predomina colapso cervical (pressão intratraqueal mais negativa que pleural), na expiração e na tosse predomina colapso intratorácico e brônquico (pressão pleural positiva). O resultado clínico é tosse seca em “honking”, piora com excitação, calor, umidade e tração de coleira, às vezes síncope por reflexo vagal ou hipóxia. Toy breeds e miniaturas são o epicentro epidemiológico; obesidade e comorbidades respiratórias (bronquite, BOAS, cardiomegalia comprimindo brônquio esquerdo) são agravantes massivos. A radiografia é triagem estática que frequentemente subestima o grau funcional; a fluoroscopia mostra o comportamento dinâmico; a broncoscopia gradua severidade (escalas ACVS) e permite BAL quando seguro. O manejo conservador (perda de peso, peitoral, antitussígenos, corticoide curto sistêmico ou inalado) deve esgotar-se antes de stent ou anéis — intervenções têm complicações frequentes (tosse pós-stent, granuloma, infecção, fratura de stent em proporções alarmantes nas revisões sistemáticas recentes).',
   }),
   diseaseListCard({
+    id: 'disease-asma-felina',
+    slug: 'asma-felina',
+    title: 'Asma felina',
+    synonyms: [
+      'Feline asthma',
+      'Bronquite alérgica felina',
+      'Doença de vias aéreas inferiores felina eosinofílica',
+      'Broncopneumopatia alérgica do gato',
+    ],
+    species: ['cat'],
+    category: 'respiratorio',
+    tags: ['Eosinófilos', 'Broncoespasmo', 'Corticoide inalatório', 'Siamês', 'Terbutalina', 'Padrão broncointersticial'],
+    quickSummary:
+      'Reação de hipersensibilidade eosinofílica das vias aéreas inferiores do gato, com broncoconstrição, tosse crônica e crises de dispneia expiratória; diagnóstico exige excluir dirofilariose e parasitos pulmonares, e tratamento tem base em corticoide (inalatório na manutenção) mais broncodilatador de resgate.',
+  }),
+  diseaseListCard({
+    id: 'disease-bronquite-cronica-caes-gatos',
+    slug: 'bronquite-cronica-caes-gatos',
+    title: 'Bronquite crônica (cão e gato)',
+    synonyms: ['Chronic bronchitis', 'Bronquite crônica canina', 'Doença inflamatória crônica de vias aéreas pequenas', 'CB'],
+    species: ['dog', 'cat'],
+    category: 'respiratorio',
+    tags: ['Tosse crônica', 'Neutrófilos', 'Broncomalácia', 'Diagnóstico de exclusão', 'Antitussígeno', 'Broncoscopia'],
+    quickSummary:
+      'Tosse quase diária por mais de dois meses sem causa identificável, com inflamação brônquica predominantemente neutrofílica; diagnóstico de exclusão que exige afastar cardiopatia, colapso traqueal, parasitos e infecção antes de tratar com anti-inflamatório e medidas ambientais.',
+  }),
+  diseaseListCard({
+    id: 'disease-granuloma-eosinofilico-felino',
+    slug: 'granuloma-eosinofilico-felino',
+    title: 'Complexo do granuloma eosinofílico felino',
+    synonyms: [
+      'Feline eosinophilic granuloma complex',
+      'EGC',
+      'Úlcera indolente',
+      'Placa eosinofílica',
+      'Granuloma linear felino',
+      'Granuloma eosinofílico oral/labial',
+    ],
+    species: ['cat'],
+    category: 'dermatologia',
+    tags: ['Eosinófilos', 'Alergia', 'Úlcera indolente', 'Placa eosinofílica', 'Granuloma linear', 'Ciclosporina'],
+    quickSummary:
+      'Padrão de reação cutaneomucosa eosinofílica com três morfologias (úlcera indolente, placa eosinofílica, granuloma linear), quase sempre secundário a pulicose, alergia alimentar ou atopia — tratar só a lesão sem controlar a causa de base leva a recidiva.',
+  }),
+  diseaseListCard({
     id: 'disease-micoplasmoses-hemotropicas',
     slug: 'micoplasmoses-hemotropicas',
     title: 'Micoplasmoses hemotrópicas (hemoplasmas) em pequenos animais',
