@@ -4,7 +4,7 @@ import type {
   RequirementProfile,
   Species,
 } from '../types'
-import { resolveRequirementProfileIdForEnergyState } from './profileBridge'
+import { resolveRequirementProfileIdForEnergyState } from './canonical/requirementBridge'
 
 function num(value: number, raw?: string | number): NutrientTargetValue {
   return { kind: 'number', raw: raw ?? value, value }

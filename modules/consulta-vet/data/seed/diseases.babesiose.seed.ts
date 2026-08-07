@@ -177,106 +177,128 @@ export const babesioseCaninaRecord: DiseaseRecord = {
     consequenciasSistemicas:
       'A destruição eritrocitária gera hemoglobinemia e hemoglobinúria. A sobrecarga de bilirrubina decorrente da hemólise extravascular resulta em icterícia acentuada. A hipóxia tecidual e a deposição de imunocomplexos no glomérulo renal causam proteinúria e propensão à lesão renal aguda (LRA).'
   },
-  clinicalSignsPathophysiology: {
-    classificacaoSinais: {
-      kind: 'clinicalTable',
-      headers: ['Apresentação', 'Sinais Clínicos Comuns', 'Alterações Fisiopatológicas'],
-      rows: [
-        [
-          'Forma aguda não complicada',
-          'Febre, letargia, mucosas pálidas, icterícia, anorexia, esplenomegalia e urina cor de chá/escura (pigmentúria).',
-          'Vasculite leve, hemólise extravascular ativa e liberação de citocinas pirogênicas.'
-        ],
-        [
-          'Forma grave complicada',
-          'Colapso circulatório, hipotensão, dispneia grave, oligúria/anúria, hemorragias (petéquias/epistaxe), convulsões e ataxia.',
-          'SIRS, coagulação intravascular disseminada (CIVD), lesão renal aguda grave, acidose metabólica e hipoglicemia.'
-        ]
-      ]
+  clinicalSignsPathophysiology: [
+    {
+      system: 'general',
+      findings: [
+        {
+          finding: 'Febre, letargia, anorexia e esplenomegalia',
+          mechanism:
+            'A parasitemia libera citocinas pirogênicas e ativa resposta imune no baço, que sequestra eritrócitos parasitados e não parasitados.',
+          clinicalMeaning: 'Forma aguda não complicada; esplenomegalia é achado frequente na palpação.',
+          priority: 'common',
+        },
+        {
+          finding: 'Mucosas pálidas, icterícia e urina escura (pigmentúria)',
+          mechanism:
+            'Hemólise intravascular e extravascular eleva bilirrubina e hemoglobina livre; a hemoglobinúria escurece a urina.',
+          clinicalMeaning: 'Indica anemia hemolítica ativa; correlacionar com PCV e esfregaço.',
+          priority: 'common',
+        },
+      ],
     },
-    dadosEstudos:
-      'Estudo de Weingart et al. (2023) avaliando 49 cães com B. canis na Alemanha encontrou: Letargia (100%), Anemia (85%), Plaquetopenia (100%), Pigmentúria (52%) e Febre (50%). Outro estudo com 60 cães infectados por B. gibsoni (Liu et al., 2022) demonstrou anemia em 81,7% dos cães, com 49% destes apresentando anemia severa (PCV < 20%).'
-  },
-  diagnosis: {
-    metodosDiagnostico:
-      'O diagnóstico requer a associação de sinais clínicos compatíveis, alterações laboratoriais (anemia hemolítica regenerativa e trombocitopenia) e confirmação do patógeno.',
-    passosDiagnosticos: [
-      {
-        stepNumber: 1,
-        title: 'Exame de Esfregaço Sanguíneo Periférico',
-        description:
-          'Utilizar sangue capilar obtido da ponta de orelha (ear stick) para aumentar a sensibilidade. Permite visualização direta de merozoítos em formato de pera (piriformes). Possui sensibilidade limitada em parasitemias baixas.',
-      },
-      {
-        stepNumber: 2,
-        title: 'PCR (Reação em Cadeia da Polimerase)',
-        description:
-          'Padrão ouro para diagnóstico de infecção ativa. Identifica e diferencia espécies grandes de pequenas (B. canis vs B. gibsoni), definindo o tratamento. Deve ser colhido antes da administração de antiparasitários.',
-        isGoldStandard: true,
-      },
-      {
-        stepNumber: 3,
-        title: 'Bioquímica e Urinálise de Suporte',
-        description:
-          'Avaliação de ureia, creatinina, bilirrubina total e frações, albumina, fósforo e urinálise com pesquisa de hemoglobinúria, proteinúria e cilindros urinários.'
-      },
-      {
-        stepNumber: 4,
-        title: 'Sorologia (RIFI / ELISA)',
-        description:
-          'Detecta anticorpos (IgG/IgM). Útil para triagem epidemiológica, mas pode apresentar resultados falso-negativos em fases agudas precoces ou falso-positivos por exposição prévia.'
-      }
-    ]
-  },
+    {
+      system: 'hematologic',
+      findings: [
+        {
+          finding: 'Anemia regenerativa com reticulocitose e esferócitos',
+          mechanism:
+            'Destruição eritrocitária direta pelo parasita e hemólise imunomediada secundária (IMHA) destruem hemácias no baço e fígado.',
+          clinicalMeaning: 'Trombocitopenia concomitante reforça suspeita de babesiose em área endêmica.',
+          priority: 'common',
+        },
+        {
+          finding: 'Trombocitopenia acentuada',
+          mechanism:
+            'Sequestro esplênico, consumo inflamatório e destruição imunomediada de plaquetas reduzem a contagem.',
+          clinicalMeaning: 'Weingart et al. (2023) encontraram plaquetopenia em 100% dos 49 cães com B. canis avaliados.',
+          priority: 'common',
+        },
+      ],
+    },
+    {
+      system: 'multisystemic',
+      findings: [
+        {
+          finding: 'Colapso, hipotensão, dispneia, oligúria e hemorragias',
+          mechanism:
+            'SIRS desencadeia vasodilatação, coagulopatia (CIVD), lesão renal aguda e acidose metabólica; hipoglicemia pode complicar.',
+          clinicalMeaning: 'Forma grave com prognóstico reservado; azotemia e hipoalbuminemia são marcadores de mortalidade.',
+          priority: 'emergency',
+        },
+        {
+          finding: 'Convulsões, ataxia ou alteração neurológica',
+          mechanism:
+            'Hipoxia cerebral, hipoglicemia ou lesão vascular cerebral secundária à coagulopatia e hipoperfusão.',
+          clinicalMeaning: 'Exige estabilização imediata e investigação de complicações metabólicas.',
+          priority: 'emergency',
+        },
+      ],
+    },
+  ],
+  diagnosis: [
+    {
+      stepNumber: 1,
+      title: 'Triagem clínica e suspeita epidemiológica',
+      purpose: 'Identificar combinação sugestiva de anemia hemolítica, trombocitopenia e exposição a carrapatos.',
+      description:
+        'Histórico de carrapatos, mucosas pálidas, febre, icterícia, pigmentúria e esplenomegalia. Associar hemograma com anemia regenerativa e plaquetopenia (Nelson & Couto, 6ª ed.; Dantas-Torres & Figueredo, 2006).',
+      interpretation: 'Trombocitopenia + anemia hemolítica + febre em cão exposto a carrapatos coloca babesiose no topo dos diferenciais.',
+      limitations: 'Ausência de relato de carrapatos não exclui doença; coinfecção com Ehrlichia ou Anaplasma é frequente.',
+    },
+    {
+      stepNumber: 2,
+      title: 'Esfregaço sanguíneo periférico (ponta de orelha)',
+      purpose: 'Detectar merozoítos piriformes quando a parasitemia é detectável.',
+      description:
+        'Sangue capilar da margem interna da orelha aumenta sensibilidade. Visualiza morulas/merozoítos em formato de pera (Nelson & Couto, 6ª ed.).',
+      interpretation: 'Parasita visível confirma infecção ativa, mas a espécie nem sempre é distinguível morfologicamente.',
+      limitations: 'Sensibilidade baixa em parasitemias baixas ou após tratamento parcial; esfregaço negativo não exclui.',
+    },
+    {
+      stepNumber: 3,
+      title: 'PCR em sangue total',
+      purpose: 'Confirmar infecção ativa e diferenciar espécies grandes de pequenas antes de escolher esquema terapêutico.',
+      description:
+        'Colher sangue total antes de antiparasitários. PCR diferencia B. canis/vogeli (grande) de B. gibsoni (pequena) (Nelson & Couto, 6ª ed.).',
+      interpretation: 'PCR positiva confirma infecção; espécie define imidocarb versus atovaquona + azitromicina.',
+      limitations: 'Resultado negativo em fase muito precoce ou após uma dose de tratamento; repetir se suspeita alta.',
+      isGoldStandard: true,
+    },
+    {
+      stepNumber: 4,
+      title: 'Bioquímica, urinálise e marcadores de gravidade',
+      purpose: 'Estadiar complicações renais, hepáticas e prognóstico.',
+      description:
+        'Ureia, creatinina, bilirrubina, albumina, fósforo e urinálise com pesquisa de hemoglobinúria e proteinúria.',
+      interpretation: 'Azotemia e hipoalbuminemia associam-se a maior mortalidade em casos graves (Weingart et al., 2023).',
+      limitations: 'Alterações inespecíficas; pancreatite e LRA podem ter outras causas concomitantes.',
+    },
+    {
+      stepNumber: 5,
+      title: 'Sorologia (RIFI/ELISA)',
+      purpose: 'Triagem epidemiológica e documentação de exposição prévia.',
+      description:
+        'Detecta anticorpos IgG/IgM; útil em vigilância e doadores de sangue.',
+      interpretation: 'Título elevado com clínica compatível sustenta exposição; isolado não prova doença ativa.',
+      limitations: 'Falso-negativo na fase aguda precoce; positivo pode persistir após cura clínica.',
+    },
+  ],
   treatment: {
-    protocolosFarmacos: [
-      {
-        drug: 'Imidocarb dipropionato',
-        indication: 'Babesias Grandes (B. vogeli / B. canis / B. rossi)',
-        dose: '6,6 mg/kg',
-        route: 'IM ou SC',
-        frequency: 'Intervalo de 14 dias',
-        duration: '2 aplicações',
-        cautions: 'NÃO administrar por via intravenosa (IV). Pode causar reações colinérgicas (salivação, vômito, diarreia).'
-      },
-      {
-        drug: 'Atropina (sulfato)',
-        indication: 'Prevenção de efeitos colinérgicos do Imidocarb',
-        dose: '0,02 - 0,04 mg/kg',
-        route: 'SC ou IM',
-        frequency: '15-30 minutos antes do Imidocarb',
-        duration: 'Dose única',
-        notes: 'Reduz significativamente salivação e desconforto.'
-      },
-      {
-        drug: 'Atovaquona + Azitromicina',
-        indication: 'Babesias Pequenas (B. gibsoni / B. conradae)',
-        dose: 'Atovaquona: 13,3 mg/kg q8h | Azitromicina: 10 mg/kg q24h',
-        route: 'VO (Via Oral)',
-        frequency: 'Conforme dose',
-        duration: '10 dias',
-        cautions: 'A atovaquona DEVE ser administrada junto com alimento gorduroso para garantir a absorção intestinal adequada.'
-      },
-      {
-        drug: 'Diminazeno aceturato',
-        indication: 'Babesia spp. (Tratamento alternativo)',
-        dose: '3,5 mg/kg',
-        route: 'IM',
-        frequency: 'Dose única',
-        contraindications: 'Toxicidade neurológica imprevisível em cães (ataxia, convulsões, óbito). Usar com extrema cautela.'
-      },
-      {
-        drug: 'Clindamicina + Diminazeno + Imidocarb',
-        indication: 'B. gibsoni resistente (Protocolo de Resgate)',
-        dose: 'Clindamicina 30 mg/kg VO BID (10d) + Diminazeno 3,5 mg/kg IM (D0) + Imidocarb 6 mg/kg SC (D1)',
-        route: 'Mistas',
-        frequency: 'Conforme protocolo',
-        duration: 'Variável',
-        notes: 'Protocolo de resgate para cepas mutantes com resistência à atovaquona.'
-      }
+    especifica: [
+      'Nelson & Couto (6ª ed.) diferenciam babesias grandes (B. canis, B. vogeli, B. rossi) de pequenas (B. gibsoni). Conclusão: babesias grandes respondem a dipropionato de imidocarb 6,6 mg/kg IM/SC em duas doses com intervalo de 14 dias; atropina 0,02–0,04 mg/kg SC/IM 15–30 min antes reduz efeitos colinérgicos. Babesias pequenas exigem atovaquona 13,3 mg/kg VO q8h + azitromicina 10 mg/kg VO q24h por 10 dias, com atovaquona administrada com alimento gorduroso — imidocarb isolado é inadequado.',
+      'Diminazeno aceturato (3,5 mg/kg IM dose única) permanece alternativa para babesias grandes, mas Budde e McCluskey (2023) alertam para toxicidade neurológica imprevisível (ataxia, convulsões). Conclusão: reservar para situações selecionadas com consentimento informado.',
     ],
-    terapiaSuporte:
-      'Transfusão: Indicada se anemia grave com sinais clínicos de hipóxia tecidual (fraqueza extrema, taquicardia, lactato aumentado, PCV < 15-18%). Usar concentrado de hemácias ou sangue total. Fluidoterapia: Criteriosa para manter perfusão renal e combater azotemia, evitando hemodiluição excessiva. Corticoterapia: O uso de imunossupressores (prednisolona) é controverso; indicado apenas em casos confirmados de hemólise imunomediada secundária (IMHA) grave ou trombocitopenia grave imune, evitando-se o uso indiscriminado pois pode agravar a parasitemia.'
+    suporte: [
+      'BSAVA Emergency and Critical Care recomenda transfusão de concentrado de hemácias ou sangue total quando PCV <15–18% com hipóxia tecidual. Conclusão: corrigir anemia antes de hemodiluição agressiva por fluidoterapia.',
+      'Fluidoterapia criteriosa mantém perfusão renal sem hemodiluir excessivamente; monitorar creatinina, fósforo e sinais de pancreatite em casos graves.',
+      'Corticoterapia (prednisolona) é controversa: indicar apenas em IMHA secundária grave confirmada, evitando uso indiscriminado que pode agravar parasitemia.',
+    ],
+    monitoramento: [
+      'PCV, lactato e sinais de hipóxia a cada revisão na fase aguda.',
+      'Creatinina, fósforo e função hepática em casos complicados.',
+      'Repetir PCR ou esfregaço conforme resposta clínica e laboratorial.',
+    ],
   },
   prevention: {
     controleVetores:

@@ -124,11 +124,11 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
   },
   epidemiology: {
     caes:
-      'Predomina em cães adultos de porte grande ou gigante. Dobermanns frequentemente desenvolvem doença na meia-idade; machos tendem a descompensar mais cedo em algumas coortes. Cocker Spaniels podem apresentar associação com deficiência de taurina.',
+      'Predomina em cães adultos de porte grande ou gigante. Dobermanns frequentemente desenvolvem doença na meia-idade; machos tendem a descompensar mais cedo em algumas coortes. Cocker Spaniels podem apresentar associação com deficiência de taurina (Nelson & Couto, 6ª ed.).',
     gatos:
-      'A CMD felina primária é hoje rara com dietas completas contendo taurina. Quando ocorrer, revise dieta caseira, alimentação formulada para outra espécie, má absorção, fórmulação inadequada, miocardite e taquicardia.',
+      'A CMD felina primária é hoje rara com dietas completas contendo taurina. Quando ocorrer, revise dieta caseira, alimentação formulada para outra espécie, má absorção, fórmulação inadequada, miocardite e taquicardia (Nelson & Couto, 6ª ed.).',
     prognostico:
-      'O prognóstico piora com insuficiência cardíaca congestiva, síncope, taquiarritmia ventricular, fibrilação atrial, dilatação intensa e disfunção renal. Morte súbita pode ser o primeiro desfecho em Dobermann.',
+      'O prognóstico piora com insuficiência cardíaca congestiva, síncope, taquiarritmia ventricular, fibrilação atrial, dilatação intensa e disfunção renal. Morte súbita pode ser o primeiro desfecho em Dobermann (Summerfield et al., PROTECT Study, 2012).',
   },
   pathogenesisTransmission: {
     cascata: [

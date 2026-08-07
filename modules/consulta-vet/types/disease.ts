@@ -31,6 +31,12 @@ export interface DiseaseQuickSummaryRich {
   treatmentFlow?: DiseaseQuickSummaryFlow;
 }
 
+/** Linguagem acessível — bloco “O que é em palavras simples?” no resumo rápido. */
+export interface DiseasePlainLanguage {
+  whatIsIt: string;
+  keyPoints: string[];
+}
+
 export interface DiseaseRecord extends ContentFlag {
   id: string;
   slug: string;
@@ -44,6 +50,8 @@ export interface DiseaseRecord extends ContentFlag {
   quickSummaryRich?: DiseaseQuickSummaryRich;
   /** Até 5 frases curtas — faixa horizontal de decisão rápida na ficha. */
   quickDecisionStrip: string[];
+  /** Resumo em linguagem simples para tutores e triagem rápida (callout no painel de resumo). */
+  plainLanguage?: DiseasePlainLanguage;
   etiology: EditorialSectionValue;
   epidemiology: EditorialSectionValue;
   pathogenesisTransmission: EditorialSectionValue;

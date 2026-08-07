@@ -122,14 +122,10 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
     },
   },
   etiology: {
-    visaoGeral:
-      'Mais de 98% dos gatos hipertireóideos sofrem de hiperplasia adenomatosa multinodular adenomatosa benigna de caráter bilateral (70% dos casos) ou unilateral (30%). Carcinoma de tireoide é raro (<2%). A causa exata do bócio adenomatoso benigno é multifatorial, associada a bociógenos na dieta/ambiente, excesso ou flutuações de iodo nas rações comerciais e mutações somáticas no receptor de TSH.',
-    fatores: [
-      'Hiperplasia adenomatosa benigna da tireoide: lesão central na grande maioria dos felinos idosos.',
-      'Dieta e bociógenos: associação hipotética com substâncias químicas em enlatados (como o bisfenol A nos revestimentos de latas) e retardadores de chama (PBDEs) em poeira doméstica.',
-      'Deficiência ou excesso crônico de iodo: variações nas rações secas ao longo dos anos predispõem à autonomia celular.',
-      'Carcinoma tireoidiano: malignidade invasiva caracterizada por nódulos tireoidianos fixos, volumosos e metástases locais.',
-    ],
+    primaria:
+      'Mais de 98% dos gatos hipertireóideos apresentam hiperplasia adenomatosa multinodular benigna bilateral (70%) ou unilateral (30%). Carcinoma tireoidiano é raro (<2%). A autonomia celular resulta de bociógenos dietéticos/ambientais, flutuações de iodo e mutações somáticas no receptor de TSH.',
+    fatoresAmbientais: 'Substâncias em enlatados e retardadores de chama em poeira doméstica são associados hipoteticamente.',
+    maligna: 'Carcinoma tireoidiano invasivo — nódulos fixos, volumosos e metástases locais.',
   },
   epidemiology: {
     especiePrincipal:
@@ -162,31 +158,51 @@ export const hipertireoidismoFelinoRecord: DiseaseRecord = {
     {
       system: 'general',
       findings: [
-        'Perda de peso progressiva e emagrecimento crônico, contrastando com polifagia severa (gato sempre faminto).',
-        'Pelagem opaca, sem brilho, emaranhada e descuidada (por falta de autolimpeza decorrente de hiperatividade ou fraqueza muscular tardia).',
-        'Intolerância ao calor, ofegação crônica leve (panting) e busca por pisos frios.',
+        {
+          finding: 'Perda de peso com polifagia voraz',
+          mechanism: 'Hipermetabolismo contínuo acelera catabolismo proteico e lipídico.',
+          clinicalMeaning: 'Tríade clássica em gato idoso.',
+          priority: 'common',
+        },
+        {
+          finding: 'Pelagem opaca e intolerância ao calor',
+          mechanism: 'Termogênese aumentada e autolimpeza reduzida.',
+          clinicalMeaning: 'Busca por pisos frios reforça suspeita.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Tachycardia persistente (> 220–240 bpm) em repouso na consulta.',
-        'Presença de sopros cardíacos sistólicos focais ou ritmo de galope decorrentes da circulação hiperdinâmica.',
-        'Hipertensão arterial sistólica decorrente do aumento do débito cardíaco e resistência periférica alterada.',
+        {
+          finding: 'Taquicardia persistente e sopro sist�lico',
+          mechanism: 'Circula��o hiperdin�mica e cardiomiopatia tireot�xica.',
+          clinicalMeaning: 'Hipertens�o sist�mica � frequente � medir PA.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'gastrointestinal',
       findings: [
-        'Vômitos e diarreias intermitentes (devido ao trânsito intestinal acelerado, hipermotilidade e má absorção).',
-        'Polidipsia e poliúria associadas ao aumento da perfusão renal e perda de capacidade de concentração por lavagem medular osmótica.',
+        {
+          finding: 'Vômitos, diarreia e poliúria/polidipsia',
+          mechanism: 'Hipermotilidade GI e aumento da perfusão renal.',
+          clinicalMeaning: 'Azotemia pode estar mascarada.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'behavioral',
       findings: [
-        'Hiperatividade, inquietação constante, nervosismo e agressividade atípica.',
-        'Miados noturnos persistentes e vocalização excessiva (associada a alterações neurológicas do hipertireoidismo).',
+        {
+          finding: 'Hiperatividade, agressividade e miados noturnos',
+          mechanism: 'Excitabilidade do SNC por excesso de T3/T4.',
+          clinicalMeaning: 'Alteração comportamental pode preceder laboratório.',
+          priority: 'common',
+        },
       ],
     },
   ],

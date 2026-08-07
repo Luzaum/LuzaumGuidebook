@@ -19,6 +19,7 @@ import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationPresentation, MedicationRecord, MedicationSupplyChannel } from '../types/medication';
 import type { EditorialReference } from '../types/common';
+import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
 import { buildDoseSummaryLabel, formatDoseSpeciesLabel } from '../utils/medicationRules';
@@ -638,6 +639,8 @@ export function MedicationDetailPage() {
     }
   };
 
+  const abbrevExpanded = useMemo(() => new Set<string>(), [medication?.slug]);
+
   if (isLoading) {
     return (
       <div className="flex h-full items-center justify-center">
@@ -683,6 +686,7 @@ export function MedicationDetailPage() {
   }
 
   return (
+    <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
       <div className="w-full min-w-0 flex-1 px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
@@ -712,7 +716,7 @@ export function MedicationDetailPage() {
                 </span>
               </div>
 
-              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl xl:max-w-[16ch]">
+              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl">
                 {medication.title}
               </h1>
 
@@ -933,6 +937,7 @@ export function MedicationDetailPage() {
         <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" title="Índice do medicamento" />
       </div>
     </div>
+    </AbbreviationExpandedContext.Provider>
   );
 }
 

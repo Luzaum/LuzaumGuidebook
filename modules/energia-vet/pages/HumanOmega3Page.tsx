@@ -41,8 +41,7 @@ function FeatureDisabledPanel() {
       <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
         Catálogo de suplementos humanos passíveis de uso extrarrótulo em cães e gatos, cadastrados como alimentos
         suplementares. Ative com{' '}
-        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">VITE_NUTRITION_HUMAN_OMEGA3=true</code>. O modo
-        legado permanece inalterado com a flag desligada.
+        <code className="rounded bg-muted px-1.5 py-0.5 text-xs">VITE_NUTRITION_HUMAN_OMEGA3=true</code>.
       </p>
     </div>
   )

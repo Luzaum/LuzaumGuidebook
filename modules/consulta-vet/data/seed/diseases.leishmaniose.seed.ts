@@ -162,54 +162,65 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
     {
       system: 'dermatologic',
       findings: [
-        'Dermatite descamativa seca (furfurácea) em face, dorso nasal, margens auriculares e saliências ósseas.',
-        'Dermatite ulcerativa em mucocutâneas, focinho, interdigital; papular, pustular, nodular; alopecia, vasculite de ponta de orelha, hiperqueratose nasal/digital, onicopatias.',
-      ],
-    },
-    {
-      system: 'ocular',
-      findings: [
-        'Conjuntivite folicular/membranosa; ceratites com neovascularização; uveítes; blefarites; em casos graves, glaucoma e perda ocular.',
+        {
+          finding: 'Dermatite descamativa (furfurácea) em face e orelhas',
+          mechanism: 'Deposição de imunocomplexos e inflamação cutânea crônica.',
+          clinicalMeaning: 'Forma dermatológica clássica; biópsia/citologia confirmam.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'renal',
       findings: [
-        'Proteinúria, azotemia, hematúria, IRA e evolução para DRC — importante causa de óbito.',
-      ],
-    },
-    {
-      system: 'musculoskeletal',
-      findings: [
-        'Poliartrite erosiva, polimiosite, osteomielite; caquexia e atrofia de mastigatórios.',
+        {
+          finding: 'Proteinúria, azotemia e progressão para DRC',
+          mechanism: 'Glomerulonefrite imunomediada por imunocomplexos.',
+          clinicalMeaning: 'Principal causa de óbito em LCan — monitorar UPC e creatinina.',
+          priority: 'systemic',
+        },
       ],
     },
     {
       system: 'hematologic',
       findings: [
-        'Anemia não regenerativa ou IMHA, trombocitopenia, hipergammaglobulinemia, sangramentos/epistaxe, síndrome de hiperviscosidade.',
-      ],
-    },
-    {
-      system: 'gastrointestinal',
-      findings: [
-        'Diarreia crônica; colite granulomatosa hemorrágica; parasitos documentados em mucosa cólica em alguns casos.',
-      ],
-    },
-    {
-      system: 'neurologic',
-      findings: [
-        'Raras: convulsões, ataxia, paresias por envolvimento do SNC/PNS.',
-      ],
-    },
-    {
-      system: 'cardiovascular',
-      findings: [
-        'Miocardite, vasculite — mecanismos diretos/indiretos descritos.',
+        {
+          finding: 'Anemia, trombocitopenia ou hipergammaglobulinemia',
+          mechanism: 'Discrasias por imunomediado e hiperviscosidade.',
+          clinicalMeaning: 'Epistaxe e sangramento podem ocorrer sem plaquetas muito baixas.',
+          priority: 'common',
+        },
       ],
     },
   ],
   diagnosis: {
+    passosDiagnosticos: [
+      {
+        stepNumber: 1,
+        title: 'Suspeita clínica e estadiamento',
+        purpose: 'Integrar sinais compatíveis com exposição em área endêmica.',
+        description: 'Classificação Brasileish I–VI conforme exposição, infecção e doença (Brasileish, 2025).',
+        interpretation: 'Sorologia positiva isolada indica exposição, não necessariamente doença ativa.',
+        limitations: 'Não existe sinal patognomônico.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Citologia de amastigotas',
+        purpose: 'Confirmação parasitológica quando carga detectável.',
+        description: 'Medula óssea, linfonodo ou pele lesionada — amostras preferenciais.',
+        interpretation: 'Amastigotas vistas confirmam infecção ativa no momento.',
+        limitations: 'Sensibilidade depende de carga parasitária e tipo de amostra.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 3,
+        title: 'PCR e sorologia',
+        purpose: 'Documentar infecção e quantificar exposição.',
+        description: 'PCR em medula/linfonodo/pele; sorologia quantitativa (RIFI) integrada ao exame físico.',
+        interpretation: 'Títulos altos em suspeito clínico sugerem doença ativa.',
+        limitations: 'Reações cruzadas com outras Leishmania; sangue tem baixa sensibilidade para citologia.',
+      },
+    ],
     tabelaClassificacaoExposicaoInfeccao: {
       kind: 'clinicalTable',
       headers: ['Classificação', 'Características (Tabela 1 — Brasileish 2025)'],

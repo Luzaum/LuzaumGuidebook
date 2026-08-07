@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ChevronLeft, ChevronRight, Equal, PieChart, RotateCcw } from 'lucide-react'
 import { NutrientGapSection } from '../../components/NutrientGapSection'
@@ -12,11 +12,9 @@ import { computeDietPlan } from '../../lib/dietEngine'
 import {
   completeRemainingEqually,
   equalEntries,
-  roundMealGrams,
 } from '../../lib/formulationHelpers'
 import { getFoodById, getFoodDisplayName } from '../../lib/genutriData'
-import { splitMealPortion } from '../../lib/nutrition-calculations'
-import { isCalculationEngineV3Enabled } from '../../lib/nutritionCalculationBridge'
+import { splitMealPortion } from '../../lib/diet-math'
 import { useCalculationStore } from '../../store/calculationStore'
 import type { DietFormulaEntry } from '../../types'
 import type { DietTransitionConfig, HydrationPlanConfig } from '../../lib/clinicalSnapshotTypes'
@@ -29,10 +27,18 @@ function hospitalHasFlag(ids: string[] | undefined, needles: string[]): boolean 
   return ids.some((id) => needles.some((needle) => id.toLowerCase().includes(needle)))
 }
 
+function normalizeFormulationEntries(entries: DietFormulaEntry[]): DietFormulaEntry[] {
+  if (!entries.length) return []
+  const total = entries.reduce((sum, entry) => sum + (entry.inclusionPct || 0), 0)
+  const hasZero = entries.some((entry) => !entry.inclusionPct)
+  if (Math.abs(total - 100) < 0.05 && !hasZero) return entries
+  return equalEntries(entries)
+}
+
 export default function FormulationStep() {
   const navigate = useNavigate()
   const { patient, energy, target, diet, setDiet } = useCalculationStore()
-  const [entries, setEntries] = useState<DietFormulaEntry[]>(diet.entries ?? [])
+  const [entries, setEntries] = useState<DietFormulaEntry[]>(() => normalizeFormulationEntries(diet.entries ?? []))
   const [lockedFoodIds, setLockedFoodIds] = useState<Set<string>>(() => new Set())
   const [dietTransition, setDietTransition] = useState<DietTransitionConfig>(
     diet.dietTransition ?? { enabled: false, durationDays: 7, planMode: 'standard' },
@@ -42,7 +48,14 @@ export default function FormulationStep() {
   )
   const targetEnergy = target.targetEnergy ?? diet.targetEnergy ?? 0
   const mealsPerDay = Math.max(1, diet.mealsPerDay ?? 2)
-  const v3Enabled = isCalculationEngineV3Enabled()
+
+  useEffect(() => {
+    const normalized = normalizeFormulationEntries(diet.entries ?? [])
+    if (normalized.length && JSON.stringify(normalized) !== JSON.stringify(entries)) {
+      setEntries(normalized)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- hidrata ao entrar pela navegação lateral
+  }, [diet.entries])
 
   const result = useMemo(
     () =>
@@ -72,9 +85,9 @@ export default function FormulationStep() {
 
   const totalPercent = entries.reduce((sum, entry) => sum + (entry.inclusionPct || 0), 0)
   const proportionsValid = entries.length === 0 || Math.abs(totalPercent - 100) < 0.05
-  const valid = entries.length > 0 && totalPercent > 0 && (!v3Enabled || proportionsValid)
-  const transitionValid = !v3Enabled || isDietTransitionValid(dietTransition, patient.isHospitalized)
-  const hydrationValid = !v3Enabled || isHydrationPlanValid(hydrationPlan)
+  const valid = entries.length > 0 && totalPercent > 0 && proportionsValid
+  const transitionValid = isDietTransitionValid(dietTransition, patient.isHospitalized)
+  const hydrationValid = isHydrationPlanValid(hydrationPlan)
   const canAdvance = valid && transitionValid && hydrationValid
 
   const primaryContribution = result.contributions[0]
@@ -98,9 +111,7 @@ export default function FormulationStep() {
     dryFoodOnly: diet.dietType === 'commercial',
     enteralTube: patient.isHospitalized && diet.entries?.length > 0,
   }
-  const gramsPerMealTotal = v3Enabled
-    ? splitMealPortion(result.totalAsFedGrams, mealsPerDay).practicalValue
-    : roundMealGrams(result.totalAsFedGrams / mealsPerDay)
+  const gramsPerMealTotal = splitMealPortion(result.totalAsFedGrams, mealsPerDay).practicalValue
   const belowRows = result.evaluation.adequacy.filter(
     (row) => row.deliveredValue != null && row.target != null && row.status === 'below',
   )
@@ -130,15 +141,15 @@ export default function FormulationStep() {
   }
 
   const handleNext = () => {
-    if (v3Enabled && !proportionsValid) return
+    if (!proportionsValid) return
     setDiet({
-      entries: v3Enabled ? entries.filter((entry) => entry.inclusionPct > 0) : result.normalizedEntries,
+      entries: entries.filter((entry) => entry.inclusionPct > 0),
       targetEnergy,
       totalDryMatterGrams: result.totalDryMatterGrams,
       totalAsFedGrams: result.totalAsFedGrams,
       gramsPerMeal: gramsPerMealTotal,
-      dietTransition: v3Enabled ? dietTransition : undefined,
-      hydrationPlan: v3Enabled ? hydrationPlan : undefined,
+      dietTransition,
+      hydrationPlan,
     })
     navigate(`${NEW_ROUTE}/summary`)
   }
@@ -150,18 +161,35 @@ export default function FormulationStep() {
   const canCompleteRemaining = entries.length > 1 && unlockedCount > 0
 
   const mealGramsForFood = (gramsAsFed: number) =>
-    v3Enabled
-      ? splitMealPortion(gramsAsFed, mealsPerDay).practicalValue
-      : roundMealGrams(gramsAsFed / mealsPerDay)
+    splitMealPortion(gramsAsFed, mealsPerDay).practicalValue
+
+  if (!entries.length) {
+    return (
+      <Card className="nutrition-step-card w-full">
+        <CardHeader className="border-b border-border/60 pb-6">
+          <CardTitle className="text-2xl">Formulação da dieta</CardTitle>
+          <CardDescription>Selecione pelo menos um alimento antes de definir as proporções.</CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-5 pt-6">
+          <p className="rounded-xl border border-dashed border-border px-4 py-6 text-sm text-muted-foreground">
+            Nenhum alimento foi incluído ainda. Volte à etapa Alimentos ou inclua itens pelo botão <strong>Incluir</strong>.
+          </p>
+          <div className="flex justify-between border-t border-border/60 pt-4">
+            <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/food`)} className="gap-2">
+              <ChevronLeft className="h-4 w-4" /> Ir para Alimentos
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    )
+  }
 
   return (
     <Card className="nutrition-step-card w-full">
       <CardHeader className="border-b border-border/60 pb-6">
         <CardTitle className="text-2xl">Formulação da dieta</CardTitle>
         <CardDescription>
-          {v3Enabled
-            ? 'Defina a participação calórica de cada alimento. A soma deve fechar 100% antes de avançar.'
-            : 'Defina a participação dos alimentos. Alimentos editados manualmente permanecem fixos ao usar "Completar o restante".'}
+          Defina a participação calórica de cada alimento. A soma deve fechar 100% antes de avançar.
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-7 pt-6">
@@ -195,7 +223,7 @@ export default function FormulationStep() {
             <p className="text-xs text-muted-foreground">Por refeição</p>
             <p className="mt-1 text-xl font-bold text-primary">{gramsPerMealTotal} g</p>
             <p className="mt-1 text-xs text-muted-foreground">
-              {mealsPerDay} refeições · {v3Enabled ? 'arredondamento prático' : 'arredondado'}
+              {mealsPerDay} refeições · arredondamento prático
             </p>
           </div>
         </section>
@@ -203,11 +231,9 @@ export default function FormulationStep() {
         <section className="overflow-hidden rounded-2xl border border-border">
           <div className="flex flex-col gap-3 border-b border-border bg-muted/40 p-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h2 className="font-semibold">{v3Enabled ? 'Alocação calórica' : 'Participação dos alimentos'}</h2>
+              <h2 className="font-semibold">Alocação calórica</h2>
               <p className="text-sm text-muted-foreground">
-                {v3Enabled
-                  ? 'Cada % representa a fração da meta calórica diária. Edite manualmente ou use os atalhos abaixo.'
-                  : 'Edite as % manualmente; ao completar o restante, os demais são reduzidos ou repartidos para fechar 100%.'}
+                Cada % representa a fração da meta calórica diária. Edite manualmente ou use os atalhos abaixo.
               </p>
             </div>
             <div className="flex flex-wrap gap-2">
@@ -269,14 +295,14 @@ export default function FormulationStep() {
             })}
           </div>
           <div className="flex flex-col gap-1 border-t border-border bg-muted/30 px-4 py-3 text-sm sm:flex-row sm:items-center sm:justify-between">
-            <span>{v3Enabled ? 'Total calórico informado' : 'Total informado'}</span>
+            <span>Total calórico informado</span>
             <div className="flex items-center gap-3">
               {lockedFoodIds.size > 0 && (
                 <span className="text-xs text-muted-foreground">Travados: {lockedSum.toFixed(1)}%</span>
               )}
               <strong
                 className={cn(
-                  Math.abs(totalPercent - 100) < 0.1 ? 'text-emerald-600' : v3Enabled ? 'text-destructive' : 'text-amber-600',
+                  Math.abs(totalPercent - 100) < 0.1 ? 'text-emerald-600' : 'text-destructive',
                 )}
               >
                 {totalPercent.toFixed(1)}%
@@ -296,7 +322,7 @@ export default function FormulationStep() {
             <div className="border-b border-border bg-muted/40 p-4">
               <h2 className="font-semibold">Formulação calculada</h2>
               <p className="text-sm text-muted-foreground">
-                Valores diários por alimento{v3Enabled ? ', com alocação calórica explícita' : ''} e gramas por refeição.
+                Valores diários por alimento, com alocação calórica explícita, e gramas por refeição.
               </p>
             </div>
             <div className="overflow-x-auto">
@@ -304,7 +330,7 @@ export default function FormulationStep() {
                 <thead>
                   <tr className="border-b border-border text-left text-xs text-muted-foreground">
                     <th className="p-4">Alimento</th>
-                    <th className="p-4 text-right">{v3Enabled ? '% energia' : '% fórmula'}</th>
+                    <th className="p-4 text-right">% energia</th>
                     <th className="p-4 text-right">MN/dia</th>
                     <th className="p-4 text-right">MN/refeição</th>
                     <th className="p-4 text-right">Energia</th>
@@ -328,7 +354,7 @@ export default function FormulationStep() {
 
         <NutrientGapSection belowRows={belowRows} contributions={result.contributions} />
 
-        {v3Enabled && primaryContribution && (
+        {primaryContribution && (
           <>
             <DietTransitionSection
               config={dietTransition}

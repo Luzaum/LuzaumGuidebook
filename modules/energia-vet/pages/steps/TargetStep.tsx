@@ -6,13 +6,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../..
 import { useCalculationStore } from '../../store/calculationStore'
 import { getBCSDescription } from '../../lib/nutrition'
 import {
+  buildEnergyCalculationExplanation,
+  calculateCanonicalNutrition,
   computeBodyTargetPlan,
-  isCalculationEngineV3Enabled,
-} from '../../lib/nutritionCalculationBridge'
-import { idealWeightMethodLabel } from '../../lib/nutrition-calculations/bodyComposition'
-import { estimateWeeksToTarget } from '../../lib/nutrition-calculations/bodyComposition'
+  estimateWeeksToTarget,
+  idealWeightMethodLabel,
+  mapStoreToCanonicalInput,
+  calculateMaintenanceEnergy,
+} from '../../lib/canonical'
+import { CalculationTransparencyPanel } from '../../components/CalculationTransparencyPanel'
 import { muscleConditionLabel } from '../../pdf-v5/clinicalLabels'
-import type { BCS, TargetGoal, WeightLossEnergyMethod } from '../../types'
+import type { BCS, TargetGoal } from '../../types'
 import { cn } from '../../lib/utils'
 
 const NEW_ROUTE = '/calculadora-energetica/new'
@@ -43,47 +47,51 @@ export default function TargetStep() {
   const currentWeight = patient.currentWeight ?? 0
   const [bcs, setBcs] = useState<BCS>((patient.bcs ?? 5) as BCS)
   const [keepCurrentWeight, setKeepCurrentWeight] = useState(target.goal === 'maintenance' && bcs !== 5)
-  const [weightLossMethod, setWeightLossMethod] = useState<WeightLossEnergyMethod>(
-    target.weightLossEnergyMethod ?? 'aaha2021',
-  )
   const automaticGoal = goalFromBcs(bcs)
   const goal: TargetGoal = keepCurrentWeight ? 'maintenance' : automaticGoal
   const goalCopy = GOAL_COPY[goal]
   const GoalIcon = goalCopy.icon
   const bcsInfo = getBCSDescription(bcs)
-  const v3Enabled = isCalculationEngineV3Enabled()
 
   useEffect(() => setKeepCurrentWeight(false), [bcs])
 
-  const v3Plan = useMemo(
-    () =>
-      v3Enabled && currentWeight > 0
-        ? computeBodyTargetPlan({
-            patient,
-            energy,
-            goal,
-            energyStepMerKcal: energy.mer,
-            weightLossEnergyMethod: weightLossMethod,
-          })
-        : null,
-    [currentWeight, energy, goal, patient, v3Enabled, weightLossMethod],
+  const patientWithBcs = useMemo(() => ({ ...patient, bcs }), [patient, bcs])
+
+  const canonicalInput = useMemo(() => {
+    const input = mapStoreToCanonicalInput({
+      patient: patientWithBcs,
+      energy,
+      target: { ...target, goal },
+    })
+    input.calculationPreferences.nutritionalGoal =
+      goal === 'weight_loss' ? 'weight_loss' : goal === 'weight_gain' ? 'weight_gain' : 'maintenance'
+    return input
+  }, [energy, goal, patientWithBcs, target])
+
+  const bodyTargetPlan = useMemo(
+    () => (currentWeight > 0 ? computeBodyTargetPlan(canonicalInput, energy.mer) : null),
+    [canonicalInput, currentWeight, energy.mer],
   )
 
-  if (!v3Enabled) {
-    return (
-      <Card className="nutrition-step-card w-full">
-        <CardHeader>
-          <CardTitle className="text-2xl">Meta corporal</CardTitle>
-          <CardDescription>
-            Novos planos nutricionais requerem o motor de cálculo clínico atualizado. Contacte o suporte técnico interno
-            para rollback temporário.
-          </CardDescription>
-        </CardHeader>
-      </Card>
-    )
-  }
+  const energyResult = useMemo(
+    () => (currentWeight > 0 ? calculateMaintenanceEnergy(canonicalInput) : null),
+    [canonicalInput, currentWeight],
+  )
 
-  if (!v3Plan) {
+  const energyExplanation = useMemo(
+    () =>
+      energyResult && bodyTargetPlan
+        ? buildEnergyCalculationExplanation(canonicalInput, energyResult, bodyTargetPlan)
+        : null,
+    [bodyTargetPlan, canonicalInput, energyResult],
+  )
+
+  const canonicalResult = useMemo(
+    () => (currentWeight > 0 ? calculateCanonicalNutrition(canonicalInput).result : null),
+    [canonicalInput, currentWeight],
+  )
+
+  if (!bodyTargetPlan) {
     return (
       <Card className="nutrition-step-card w-full">
         <CardHeader>
@@ -94,14 +102,12 @@ export default function TargetStep() {
     )
   }
 
-  const targetWeight = v3Plan.targetWeightKg
-  const targetEnergy = v3Plan.targetEnergyKcal
-  const maintenanceEnergy = v3Plan.maintenanceEnergyKcal
+  const targetWeight = bodyTargetPlan.targetWeightKg
+  const targetEnergy = bodyTargetPlan.targetEnergyKcal
+  const maintenanceEnergy = bodyTargetPlan.maintenanceEnergyKcal
   const weightDiffKg = targetWeight - currentWeight
-  const weightDiffPct = currentWeight > 0 ? (weightDiffKg / currentWeight) * 100 : 0
-  const energyDiffPct = maintenanceEnergy > 0 ? ((targetEnergy - maintenanceEnergy) / maintenanceEnergy) * 100 : 0
-  const ideal = v3Plan.idealWeightEstimate
-  const weeklyLoss = v3Plan.weeklyLossTargetPct
+  const ideal = bodyTargetPlan.idealWeightEstimate
+  const weeklyLoss = bodyTargetPlan.weeklyLossTargetPct
   const weeksPreview =
     goal === 'weight_loss' && weeklyLoss
       ? estimateWeeksToTarget({
@@ -121,7 +127,6 @@ export default function TargetStep() {
       isManualTarget: false,
       weightToUseForEnergy: goal === 'maintenance' ? 'current' : 'target',
       targetEnergy,
-      weightLossEnergyMethod: goal === 'weight_loss' ? weightLossMethod : undefined,
       targetWeightMethodLabel: idealWeightMethodLabel(ideal.method),
       percentOverweightEstimate: ideal.percentOverweight,
     })
@@ -158,7 +163,10 @@ export default function TargetStep() {
                   type="button"
                   role="radio"
                   aria-checked={bcs === score}
-                  onClick={() => setBcs(score)}
+                  onClick={() => {
+                    setBcs(score)
+                    setPatient({ bcs: score })
+                  }}
                   className={cn(
                     'flex min-h-14 cursor-pointer flex-col items-center justify-center rounded-xl border outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring',
                     bcs === score ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-card hover:border-primary/40',
@@ -230,56 +238,15 @@ export default function TargetStep() {
             <div className="bg-card p-3">
               <p className="text-[10px] text-muted-foreground">Meta energética inicial</p>
               <p className="mt-0.5 text-lg font-bold text-primary">{targetEnergy.toFixed(0)} kcal/dia</p>
-              {v3Plan.targetResult.estimatedRangeKcalDay && goal === 'weight_loss' && (
+              {bodyTargetPlan.targetResult.estimatedRangeKcalDay && goal === 'weight_loss' && (
                 <p className="mt-1 text-[10px] text-muted-foreground">
-                  Faixa: {v3Plan.targetResult.estimatedRangeKcalDay.minimum.toFixed(0)}–
-                  {v3Plan.targetResult.estimatedRangeKcalDay.maximum.toFixed(0)} kcal/dia
+                  Faixa: {bodyTargetPlan.targetResult.estimatedRangeKcalDay.minimum.toFixed(0)}–
+                  {bodyTargetPlan.targetResult.estimatedRangeKcalDay.maximum.toFixed(0)} kcal/dia
                 </p>
               )}
             </div>
           </div>
         </section>
-
-        {goal === 'weight_loss' && v3Plan.weightLossEnergyOptions?.observedKcal != null && (
-          <section className="rounded-xl border border-border p-4 space-y-3">
-            <p className="text-sm font-semibold">Seleção do método energético</p>
-            <p className="text-xs text-muted-foreground">
-              Escolha um método — não são calculados em média. Fonte canônica: AAHA 2021.
-            </p>
-            <div className="grid gap-2 sm:grid-cols-2">
-              <label className="flex cursor-pointer gap-2 rounded-lg border p-3 text-sm">
-                <input
-                  type="radio"
-                  name="weight-loss-method"
-                  checked={weightLossMethod === 'aaha2021'}
-                  onChange={() => setWeightLossMethod('aaha2021')}
-                  className="mt-1 accent-primary"
-                />
-                <span>
-                  <span className="font-semibold">Método padrão AAHA</span>
-                  <span className="block text-xs text-muted-foreground">
-                    {v3Plan.weightLossEnergyOptions.aahaKcal.toFixed(0)} kcal/dia no peso-alvo
-                  </span>
-                </span>
-              </label>
-              <label className="flex cursor-pointer gap-2 rounded-lg border p-3 text-sm">
-                <input
-                  type="radio"
-                  name="weight-loss-method"
-                  checked={weightLossMethod === 'observed_history'}
-                  onChange={() => setWeightLossMethod('observed_history')}
-                  className="mt-1 accent-primary"
-                />
-                <span>
-                  <span className="font-semibold">Histórico alimentar (80% da ingestão)</span>
-                  <span className="block text-xs text-muted-foreground">
-                    {v3Plan.weightLossEnergyOptions.observedKcal?.toFixed(0)} kcal/dia
-                  </span>
-                </span>
-              </label>
-            </div>
-          </section>
-        )}
 
         <section className="rounded-xl border border-border p-4 space-y-2">
           <p className="text-sm font-semibold">Plano de acompanhamento</p>
@@ -294,10 +261,10 @@ export default function TargetStep() {
               Previsão inicial: ~{weeksPreview.toFixed(0)} semanas até o peso-alvo (estimativa, sujeita a reavaliação).
             </p>
           )}
-          <p className="text-xs text-muted-foreground">{v3Plan.reassessmentHint} Próxima reavaliação sugerida: {reassessmentDateIso()}.</p>
-          <p className="text-[11px] leading-5 text-muted-foreground">{v3Plan.energyFormula}</p>
-          {v3Plan.targetResult.verificationReference && goal === 'weight_loss' && (
-            <p className="text-[11px] italic text-muted-foreground">{v3Plan.targetResult.verificationReference.methodSummary}</p>
+          <p className="text-xs text-muted-foreground">{bodyTargetPlan.reassessmentHint} Próxima reavaliação sugerida: {reassessmentDateIso()}.</p>
+          <p className="text-[11px] leading-5 text-muted-foreground">{bodyTargetPlan.energyFormula}</p>
+          {goal === 'weight_loss' && (
+            <p className="text-[11px] italic text-muted-foreground">{bodyTargetPlan.targetResult.methodSummary}</p>
           )}
         </section>
 
@@ -309,7 +276,20 @@ export default function TargetStep() {
           </p>
         )}
 
-        <p className="text-xs leading-5 text-muted-foreground">{v3Plan.uncertaintyNotice}</p>
+        {bodyTargetPlan.muscleLossEnergyDeferral && (
+          <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-3 py-2 text-xs leading-5 text-amber-900 dark:text-amber-200">
+            {bodyTargetPlan.muscleLossEnergyDeferral.message} Referência AAHA sobre o peso-alvo:{' '}
+            {bodyTargetPlan.muscleLossEnergyDeferral.aahaReferenceKcal.toFixed(0)} kcal/dia.
+          </p>
+        )}
+
+        <CalculationTransparencyPanel
+          result={canonicalResult}
+          energyExplanation={energyExplanation}
+          bodyTargetPlan={bodyTargetPlan}
+        />
+
+        <p className="text-xs leading-5 text-muted-foreground">{bodyTargetPlan.uncertaintyNotice}</p>
 
         <div className="flex justify-between border-t border-border/60 pt-4">
           <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/energy`)} className="gap-2">

@@ -194,27 +194,65 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     {
       system: 'renal',
       findings: [
-        'Poliúria e polidipsia quando a capacidade de concentração falha.',
-        'Proteinúria persistente quando há sobrecarga glomerular ou lesão.',
+        {
+          finding: 'Poliúria e polidipsia',
+          mechanism:
+            'Com perda progressiva de néfrons, a capacidade de concentrar urina cai; osmóisos acumulados e poliúria compensatória estimulam sede.',
+          clinicalMeaning: 'Sinais precoces em muitos pacientes; não esperar azotemia grave para suspeitar DRC.',
+          priority: 'common',
+        },
+        {
+          finding: 'Proteinúria persistente',
+          mechanism:
+            'Hiperfiltração glomerular e lesão estrutural aumentam perda de albumina na urina.',
+          clinicalMeaning: 'Fator de progressão — quantificar UP/C e tratar conforme IRIS.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'gastrointestinal',
       findings: [
-        'Inapetência, náuseas, vómito e halitose urémica em fases mais avançadas.',
+        {
+          finding: 'Inapetência, náuseas, vómito e halitose urêmica',
+          mechanism:
+            'Acúmulo de toxinas urêmicas irrita quimiorreceptores e mucosa GI; gastropatia urêmica reduz tolerância alimentar.',
+          clinicalMeaning: 'Indica estádio avançado ou agudização — priorizar controle de fósforo, antiemético e hidratação.',
+          priority: 'systemic',
+        },
       ],
     },
     {
       system: 'musculoskeletal',
       findings: [
-        'Perda de peso, fraqueza e atrofia muscular — mais evidente em gatos idosos magros.',
+        {
+          finding: 'Perda de peso, fraqueza e atrofia muscular',
+          mechanism:
+            'Catabolismo proteico, anorexia crônica e acidose contribuem para perda de massa magra.',
+          clinicalMeaning: 'Muito evidente em gatos idosos magros — não atribuir só a envelhecimento.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Em gatos: hipocalemia e desidratação crônica contribuem para fraqueza cervical e qualidade de vida reduzida.',
-        'Em cães com proteinúria importante: edema ou ascite são possíveis conforme síndrome nefrótica.',
+        {
+          finding: 'Fraqueza cervical em gatos (ventroflexão)',
+          mechanism:
+            'Hipocalemia e desidratação crônica reduzem excitabilidade muscular.',
+          clinicalMeaning: 'Emergência metabólica até prova em contrário — dosar K⁺ e corrigir.',
+          priority: 'emergency',
+          context: ['Gatos'],
+        },
+        {
+          finding: 'Edema ou ascite em cães proteinúricos',
+          mechanism:
+            'Hipoalbuminemia por perda glomerular reduz pressão oncótica plasmática.',
+          clinicalMeaning: 'Sugere síndrome nefrótica — estadiar e tratar proteinúria.',
+          priority: 'systemic',
+          context: ['Cães'],
+        },
       ],
     },
   ],
@@ -318,20 +356,29 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       {
         stepNumber: 1,
         title: 'Confirmar cronicidade e estabilidade',
+        purpose: 'Excluir azotemia pré/pós-renal aguda antes de estadiar.',
         description:
-          'Integrar história, exame, laboratório e imagem; excluir ou tratar componente agudo relevante e causas pré-renais/pós-renais antes de estagiar.',
+          'Integrar história, exame, laboratório e imagem; estabilizar volume e corrigir obstrução quando pertinente (IRIS, 2023).',
+        interpretation: 'Alterações persistentes ≥3 meses sustentam cronicidade.',
+        limitations: 'Não estadiar paciente desidratado ou em choque.',
       },
       {
         stepNumber: 2,
         title: 'Classificar por creatinina e SDMA',
+        purpose: 'Atribuir estádio IRIS 1–4.',
         description:
-          'Aplicar cortes de estádio e reclassificar quando houver discrepância persistente entre SDMA e creatinina conforme o quadro IRIS (pôster acima e iris-kidney.com).',
+          'Aplicar cortes de creatinina e SDMA; reclassificar se discrepância persistente.',
+        interpretation: 'SDMA elevado com creatinina normal pode antecipar estádio.',
+        limitations: 'Variação interlaboratorial nos cortes de SDMA.',
       },
       {
         stepNumber: 3,
         title: 'Subestadiar por proteinúria e pressão',
+        purpose: 'Completar substadiamento prognóstico.',
         description:
-          'Obter UPC em urina adequada; medir pressão arterial e documentar presença ou ausência de lesão de órgão alvo.',
+          'UPC em urina adequada; pressão arterial com técnica padronizada.',
+        interpretation: 'Proteinúria e hipertensão aceleram progressão.',
+        limitations: 'UPC requer amostra livre de contaminação.',
         isGoldStandard: true,
       },
     ],

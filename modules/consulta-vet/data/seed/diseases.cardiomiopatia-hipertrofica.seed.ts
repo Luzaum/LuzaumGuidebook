@@ -144,81 +144,163 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
     {
       system: 'cardiovascular',
       findings: [
-        'Sopro sistólico: geralmente vem da obstrução dinâmica e/ou regurgitação mitral; pode variar com o estresse e não mede sozinho a gravidade.',
-        'Som de galope: reflete enchimento rápido contra ventrículo pouco complacente e aumenta a suspeita de cardiomiopatia.',
-        'Arritmias ou síncope: isquemia, fibrose e instabilidade elétrica reduzem débito cerebral ou desencadeiam morte súbita.',
+        {
+          finding: 'Sopro sistólico em foco mitral ou paraesternal',
+          mechanism:
+            'O movimento anterior sistólico da valva mitral aproxima o folheto do septo interventricular, estreitando dinamicamente a via de saída do ventrículo esquerdo e gerando turbulência audível; regurgitação mitral funcional pode coexistir.',
+          clinicalMeaning: 'A intensidade varia com estresse e pré-carga; sopro isolado não mede gravidade nem substitui ecocardiografia.',
+          priority: 'common',
+        },
+        {
+          finding: 'Som de galope (terceira bulha)',
+          mechanism:
+            'O enchimento ventricular rápido contra parede pouco complacente produz vibração audível na fase diastólica precoce.',
+          clinicalMeaning: 'Aumenta a suspeita de cardiomiopatia com disfunção diastólica ou congestão incipiente.',
+          priority: 'common',
+        },
+        {
+          finding: 'Arritmias, síncope ou morte súbita',
+          mechanism:
+            'Fibrose, isquemia subendocárdica e distensão atrial criam substrato elétrico instável; taquiarritmias ou queda abrupta de débito reduzem perfusão cerebral.',
+          clinicalMeaning: 'Exige ECG prolongado ou Holter; tratar como marcador de alto risco.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'respiratory',
       findings: [
-        'Taquipneia, dispneia e ortopneia: aumento da pressão venosa pulmonar produz edema; efusão pleural restringe a expansão pulmonar.',
-        'Tosse é menos típica em gatos que em cães; dispneia felina deve ser tratada como emergência cardiopulmonar até estabilização.',
+        {
+          finding: 'Taquipneia, dispneia e ortopneia',
+          mechanism:
+            'A elevação da pressão de enchimento esquerda transmite-se às veias pulmonares; quando a pressão capilar supera a capacidade linfática, extravasa líquido para interstício e alvéolos. Efusão pleural restringe expansão pulmonar.',
+          clinicalMeaning: 'Emergência cardiopulmonar em gatos — estabilizar antes de exames estressantes.',
+          priority: 'heart-failure',
+        },
+        {
+          finding: 'Tosse (menos típica que em cães)',
+          mechanism:
+            'Bronquios principais comprimidos por átrio esquerdo muito dilatado ou edema peribrônquico podem provocar tosse; muitas vezes o gato apresenta apenas dispneia.',
+          clinicalMeaning: 'Não atribuir tosse isolada à CMH sem imagem; dispneia felina tem prioridade sobre tosse como sinal guia.',
+          priority: 'uncommon',
+        },
       ],
     },
     {
       system: 'neuromuscular',
       findings: [
-        'Dor aguda, paresia/paralisia de membros pélvicos, extremidades frias e pulsos femorais ausentes: tromboembolismo aórtico interrompe perfusão e causa isquemia muscular e nervosa.',
+        {
+          finding: 'Dor aguda, paresia ou paralisia de membros pélvicos, extremidades frias, pulsos femorais ausentes',
+          mechanism:
+            'Tromboembolismo aórtico interrompe fluxo arterial distal à trifurcação; isquemia muscular e nervosa produz dor intensa e déficit motor.',
+          clinicalMeaning: 'Emergência — analgesia imediata, antitrombóticos e avaliação de reperfusão; prognóstico reservado mesmo com tratamento.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Hipotermia, azotemia pré-renal e fraqueza na insuficiência cardíaca grave refletem baixo débito e vasoconstrição periférica.',
-        'Muitos gatos não apresentam sinal clínico antes de insuficiência cardíaca, tromboembolismo ou morte súbita; auscultação normal não exclui CMH.',
+        {
+          finding: 'Hipotermia, azotemia pré-renal e fraqueza',
+          mechanism:
+            'Baixo débito cardíaco ativa vasoconstrição periférica e reduz perfusão renal; hipotermia reflete baixo fluxo cutâneo em insuficiência cardíaca avançada.',
+          clinicalMeaning: 'Sugere descompensação grave ou choque cardiogênico — priorizar perfusão e diurese titulada.',
+          priority: 'low-output',
+        },
+        {
+          finding: 'Assintomático ou ausculta normal',
+          mechanism:
+            'Muitos gatos permanecem subclínicos por anos; obstrução dinâmica e dilatação atrial podem existir sem sopro audível em consultório calmo.',
+          clinicalMeaning: 'Ausculta normal não exclui CMH — ecocardiografia é necessária em raças de risco ou quando há dispneia/tromboembolismo.',
+          priority: 'common',
+        },
       ],
     },
   ],
   diagnosis: [
     {
       stepNumber: 1,
-      title: 'Ecocardiografia completa com Doppler',
+      title: 'Triagem clínica e estabilidade',
+      purpose: 'Distinguir congestão, tromboembolismo e baixo débito antes de exames demorados.',
       description:
-        'Exame de referência para confirmar o fenótipo, medir espessura em múltiplos segmentos, avaliar tamanho e função atrial, padrão de enchimento, obstrução da via de saída, movimento anterior sistólico da mitral, regurgitação e trombo. Luis Fuentes et al. (2020) consideram que espessura máxima ≥6 mm apoia hipertrofia no gato adulto, mas a zona cinzenta, o tamanho corporal e a hidratação exigem interpretação.',
-      isGoldStandard: true,
+        'Avalie padrão respiratório, temperatura, perfusão, pulso e ritmo. Em dispneia felina: mínimo manuseio, oxigênio e ultrassom focal à beira do leito; adie radiografia completa se o posicionamento aumentar estresse (Luis Fuentes et al., ACVIM 2020; Nelson & Couto, 6ª ed.).',
+      interpretation:
+        'Taquipneia com edema ou efusão aponta para insuficiência cardíaca; membros pélvicos frios e dolorosos sugerem tromboembolismo arterial.',
+      limitations: 'Exame físico normal não exclui CMH subclínica ou obstrução dinâmica intermitente.',
     },
     {
       stepNumber: 2,
-      title: 'Pressão arterial, T4 total e investigação de mimetizadores',
+      title: 'Ecocardiografia completa com Doppler',
+      purpose: 'Confirmar o fenótipo estrutural, quantificar hipertrofia e estratificar risco.',
       description:
-        'Obrigatórios em gato adulto ou idoso para distinguir CMH primária de hipertrofia secundária. Solicite IGF-1 quando houver diabetes resistente, crescimento de tecidos moles ou organomegalia. Repita o ecocardiograma após corrigir a desidratação quando necessário.',
+        'Medir espessura em múltiplos segmentos, tamanho e função atrial, padrão de enchimento, SAM, gradiente de VVE, regurgitação mitral e presença de trombo ou contraste espontâneo. Luis Fuentes et al. (2020) consideram espessura máxima ≥6 mm compatível com hipertrofia no gato adulto.',
+      interpretation: 'Hipertrofia com átrio esquerdo aumentado, obstrução dinâmica ou trombo eleva risco de insuficiência cardíaca e tromboembolismo.',
+      limitations: 'Zona cinzenta, tamanho corporal, desidratação e variabilidade interobservador exigem interpretação por cardiologista quando possível.',
+      isGoldStandard: true,
     },
     {
       stepNumber: 3,
-      title: 'Radiografia torácica ou ultrassonografia à beira do leito',
+      title: 'Pressão arterial, T4 total e mimetizadores',
+      purpose: 'Excluir hipertrofia secundária antes de rotular CMH primária.',
       description:
-        'Radiografia confirma edema, derrame e tamanho cardíaco, mas não classifica com segurança o fenótipo. Em dispneia instável, a ultrassonografia à beira do leito reduz manipulação e orienta diurese ou toracocentese.',
+        'Pressão arterial e T4 total são obrigatórios em gato adulto ou idoso. Solicite IGF-1 se houver diabetes resistente, crescimento de tecidos moles ou organomegalia. Repita ecocardiograma após corrigir desidratação se pseudohipertrofia for plausível.',
+      interpretation: 'Hipertensão ou hipertireoidismo explicam parte dos casos; tratar a causa pode reduzir espessura.',
+      limitations: 'Normalidade de T4 isolado não exclui hipertireoidismo limítrofe — repetir se suspeita clínica persistir.',
     },
     {
       stepNumber: 4,
-      title: 'NT-proBNP e troponina I',
+      title: 'Radiografia torácica ou ultrassonografia à beira do leito',
+      purpose: 'Documentar congestão pulmonar ou efusão pleural.',
       description:
-        'NT-proBNP é exame de triagem e ajuda a separar dispneia cardíaca de não cardíaca; resultado normal não exclui doença leve. Troponina I indica lesão miocárdica, não etiologia. Nenhum deles substitui a ecocardiografia.',
+        'Radiografia confirma edema, derrame e cardiomegalia, mas não classifica fenótipo com segurança. Ultrassom à beira do leito reduz manipulação em paciente instável.',
+      interpretation: 'Veias pulmonares distendidas e padrão intersticial/alveolar sustentam insuficiência cardíaca esquerda.',
+      limitations: 'Radiografia normal não exclui CMH; adiar se posicionamento piorar dispneia.',
     },
     {
       stepNumber: 5,
-      title: 'ECG e Holter',
+      title: 'NT-proBNP e troponina I',
+      purpose: 'Triagem e apoio prognóstico; separar dispneia cardíaca de não cardíaca.',
       description:
-        'Usar em síncope, pulso irregular, taquicardia persistente ou suspeita de arritmia. ECG normal não exclui CMH; Holter quantifica ectopia e relaciona eventos.',
+        'NT-proBNP auxilia triagem; troponina I indica lesão miocárdica. Nenhum substitui ecocardiografia.',
+      interpretation: 'BNP elevado aumenta suspeita cardíaca; troponina alta sugere lesão aguda ou isquemia.',
+      limitations: 'Resultado normal não exclui doença leve; comorbidades renais alteram BNP.',
     },
     {
       stepNumber: 6,
-      title: 'Genética',
+      title: 'ECG e Holter',
+      purpose: 'Identificar arritmias que precipitam congestão, síncope ou morte súbita.',
       description:
-        'O teste de MYBPC3 é útil em Maine Coon e Ragdoll para seleção reprodutiva e vigilância. Não é teste diagnóstico universal e não substitui o fenótipo ecocardiográfico.',
+        'Indicado em síncope, pulso irregular ou taquicardia persistente. Holter quantifica ectopia intermitente.',
+      interpretation: 'Taquiarritmia ou fibrilação atrial muda conduta de frequência e antitrombótico.',
+      limitations: 'ECG curto normal não exclui arritmia episódica.',
+    },
+    {
+      stepNumber: 7,
+      title: 'Genética (MYBPC3)',
+      purpose: 'Rastreio reprodutivo e vigilância em raças predispostas.',
+      description:
+        'Teste útil em Maine Coon e Ragdoll para seleção reprodutiva; penetrância incompleta.',
+      interpretation: 'Positivo indica risco, não gravidade; negativo não exclui CMH por outras variantes.',
+      limitations: 'Não substitui ecocardiografia seriada nem define tratamento isoladamente.',
     },
   ],
   treatment: {
-    prioridades: [
-      'Dispneia ou insuficiência cardíaca aguda: ambiente calmo, oxigênio, furosemida parenteral titulada à resposta e toracocentese se houver derrame relevante. Evite fluidoterapia empírica antes de avaliar congestão.',
-      'Insuficiência cardíaca crônica: use furosemida na menor dose eficaz e monitore frequência respiratória em repouso, peso, creatinina e eletrólitos. Schober et al. (2021) compararam pimobendan e placebo em gatos com CMH e insuficiência cardíaca recente; não encontraram benefício no desfecho de 180 dias. O uso deve ser individualizado para disfunção sistólica ou baixo débito, especialmente sem obstrução importante.',
-      'Hogan et al. (2015), no ensaio FAT CAT com 75 gatos sobreviventes de tromboembolismo, compararam clopidogrel 18,75 mg/gato ao dia com ácido acetilsalicílico. A mediana até recorrência foi 443 dias com clopidogrel e 192 dias com ácido acetilsalicílico, sustentando clopidogrel como base da prevenção secundária.',
-      'Rivaroxabana: Budde e McCluskey (2023) descrevem 0,5–1 mg/kg por via oral a cada 12–24 horas ou 2,5 mg/gato ao dia em associação com clopidogrel. É uso extra-bula, com evidência ainda limitada; avalie função renal, função hepática e sinais de sangramento.',
-      'Obstrução dinâmica ou taquiarritmia: atenolol inicialmente 6,25 mg/gato por via oral a cada 12 horas, titulado por frequência, pressão e ecocardiograma, pode reduzir a obstrução da via de saída. Evite em insuficiência cardíaca descompensada, choque, bradicardia ou bloqueio.',
-      'Diltiazem: opção para taquiarritmia supraventricular ou casos selecionados; Budde e McCluskey (2023) descrevem 7,5–15 mg/gato por via oral duas a três vezes ao dia na fórmulação imediata, ou 30–45 mg/gato uma vez ao dia na fórmulação prolongada. A evidência de modificação da CMH é fraca.',
-      'Kaplan et al. (2023), no ensaio RAPACAT, estudaram sirolimo de liberação retardada uma vez por semana durante 180 dias em gatos com CMH subclínica não obstrutiva e observaram interrupção da progressão da hipertrofia na dose baixa. O estudo não demonstrou prevenção de insuficiência cardíaca, tromboembolismo ou morte; houve um caso de cetoacidose diabética. A FDA concedeu aprovação condicional nos Estados Unidos em 2025 para 0,3 mg/kg uma vez por semana, com triagem de diabetes e hepatopatia.',
-      'Tromboembolismo arterial agudo: analgesia opioide imediata, suporte térmico prudente, avaliação de potássio e lesão de reperfusão, clopidogrel e anticoagulação individualizada. Trombolítico não é rotina por risco de reperfusão e benefício incerto.',
+    preclinica: [
+      'Luis Fuentes et al. (2020), no consenso ACVIM sobre cardiomiopatias felinas, não recomendam atenolol, IECA ou clopidogrel universais em estágio B1 (subclínico sem dilatação atrial relevante). Conclusão: monitorar com ecocardiografia a cada 6–12 meses.',
+      'Kaplan et al. (2023), no ensaio RAPACAT com gatos com CMH subclínica não obstrutiva, estudaram sirolimo de liberação retardada 0,3 mg/kg semanal por 180 dias e observaram interrupção da progressão da hipertrofia na dose baixa. Conclusão: não houve prevenção comprovada de insuficiência cardíaca, tromboembolismo ou morte; a FDA concedeu aprovação condicional nos EUA em 2025 apenas para subgrupo selecionado, com triagem de diabetes e hepatopatia.',
+      'Em estágio B2 com risco trombótico elevado (átrio esquerdo grande, contraste espontâneo ou trombo), considerar clopidogrel 18,75 mg/gato por via oral a cada 24 horas conforme estratificação individual (Luis Fuentes et al., ACVIM 2020).',
+    ],
+    aguda: [
+      'Insuficiência cardíaca congestiva aguda: ambiente calmo, oxigênio, furosemida parenteral titulada à resposta e toracocentese se efusão pleural comprometer ventilação. Evite fluidoterapia empírica antes de avaliar congestão (Nelson & Couto, 6ª ed.; Plumb\'s, 10ª ed.).',
+      'Tromboembolismo arterial agudo: analgesia opioide imediata, suporte térmico prudente, avaliação de potássio e lesão de reperfusão, clopidogrel e anticoagulação individualizada. Trombolítico não é rotina por risco de reperfusão e benefício incerto (Hogan et al., FAT CAT, 2015).',
+    ],
+    cronica: [
+      'Schober et al. (2021), em ensaio com gatos com CMH e insuficiência cardíaca recente, compararam pimobendan e placebo por 180 dias e não encontraram benefício no desfecho primário. Conclusão: uso individualizado apenas para disfunção sistólica ou baixo débito, especialmente sem obstrução dinâmica importante.',
+      'Hogan et al. (2015), no ensaio FAT CAT com 75 gatos sobreviventes de tromboembolismo, compararam clopidogrel 18,75 mg/gato ao dia com ácido acetilsalicílico. A mediana até recorrência foi 443 dias com clopidogrel e 192 dias com ácido acetilsalicílico. Conclusão: clopidogrel é base da prevenção secundária.',
+      'Obstrução dinâmica ou taquiarritmia selecionada: atenolol 6,25 mg/gato por via oral a cada 12 horas, titulado por frequência, pressão e ecocardiograma. Evitar em insuficiência cardíaca descompensada, choque ou bradicardia (Plumb\'s, 10ª ed.).',
+      'Diltiazem para taquiarritmia supraventricular em casos selecionados; Budde e McCluskey (2023) descrevem 7,5–15 mg/gato VO duas a três vezes ao dia (imediato) ou 30–45 mg/gato VO q24h (prolongado). Evidência de modificação estrutural da CMH é fraca.',
+      'Rivaroxabana 0,5–1 mg/kg VO q12–24 h ou 2,5 mg/gato ao dia em associação com clopidogrel: uso extra-bula com evidência limitada; monitorar função renal, hepática e sangramento (Plumb\'s, 10ª ed.; Jaturanratsamee et al., 2024).',
     ],
     monitoramento: [
       'Frequência respiratória dormindo: tendência sustentada acima do basal ou >30–35/min merece contato e reavaliação.',

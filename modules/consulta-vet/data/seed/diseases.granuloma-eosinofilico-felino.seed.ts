@@ -167,29 +167,102 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
     {
       system: 'dermatologic',
       findings: [
-        'Úlcera indolente: lesão ulcerada, bem demarcada, geralmente unilateral no lábio superior próximo ao filtro, tipicamente não dolorosa.',
-        'Placa eosinofílica: placa redonda a oval, elevada, exsudativa, eritematosa e intensamente pruriginosa, mais comum em abdome ventral e face medial de coxas.',
-        'Granuloma linear/eosinofílico: cordões ou placas lineares firmes, amarelo-rosados, na face caudal de coxas, coxins ou lábios; forma nodular no coxim plantar também descrita.',
+        {
+          finding: 'Úlcera indolente: lesão ulcerada no lábio superior, tipicamente não dolorosa',
+          mechanism:
+            'Degranulação de eosinófilos libera proteína básica principal e outros mediadores citotóxicos que causam necrose colagenolítica focal na mucosa labial.',
+          clinicalMeaning: 'Morfologia clássica — aparência alarmante, mas dor tipicamente ausente; diferenciar de neoplasia.',
+          priority: 'common',
+        },
+        {
+          finding: 'Placa eosinofílica: placa exsudativa pruriginosa em abdome ventral ou face medial de coxas',
+          mechanism:
+            'Infiltrado eosinofílico cutâneo com hiperemia e exsudação; prurido de base (pulga, alimento, atopia) leva a lambedura que perpetua lesão.',
+          clinicalMeaning: 'Intensamente pruriginosa — controle de pulgas é obrigatório mesmo sem prova direta.',
+          priority: 'common',
+        },
+        {
+          finding: 'Granuloma linear/eosinofílico: cordões firmes amarelo-rosados em coxa, coxim ou lábios',
+          mechanism:
+            'Reação granulomatosa organizada ao infiltrado eosinofílico crônico na derme/subcutâneo.',
+          clinicalMeaning: 'Pode coexistir com outras morfologias no mesmo paciente.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'oral',
       findings: [
-        'Granuloma eosinofílico oral pode acometer língua, palato mole e faringe, causando halitose, disfagia, sialorreia e, em casos extensos, estridor ou dificuldade respiratória por obstrução parcial de via aérea superior.',
+        {
+          finding: 'Granuloma oral/faríngeo com halitose, disfagia, sialorreia ou estridor',
+          mechanism:
+            'Infiltrado eosinofílico extenso em língua, palato ou faringe reduz lúmen de via aérea superior e dificulta deglutição.',
+          clinicalMeaning: 'Variante clinicamente relevante — risco de obstrução parcial; não retardar tratamento sistêmico.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'behavioral',
-      findings: ['Lambedura e automutilação associadas ao prurido de base, especialmente na placa eosinofílica.'],
+      findings: [
+        {
+          finding: 'Lambedura e automutilação',
+          mechanism:
+            'Prurido da hipersensibilidade de base leva a trauma mecânico repetido, especialmente em placa eosinofílica acessível.',
+          clinicalMeaning: 'Tratar causa alérgica de base; corticoide alivia lesão mas não substitui controle de pulgas/alimento.',
+          priority: 'common',
+        },
+      ],
     },
   ],
   diagnosis: {
-    tcInspecaoMorfologica:
-      'O reconhecimento da morfologia clássica (úlcera indolente, placa eosinofílica, granuloma linear) já direciona fortemente o diagnóstico presuntivo; a localização típica de cada apresentação reforça a suspeita.',
-    tcCitologia:
-      'Impressão ou aspirado por agulha fina da lesão tipicamente revela eosinófilos predominantes, por vezes com mastócitos associados — apoia o diagnóstico de padrão de reação sem, por si só, identificar a causa subjacente.',
-    tcBiopsia:
-      'Reservada a lesões atípicas, refratárias ao tratamento esperado, de aparência nodular/infiltrativa incomum, ou quando há suspeita de diferencial neoplásico (por exemplo, carcinoma espinocelular em úlcera labial crônica não responsiva). Histopatologia mostra infiltrado eosinofílico com áreas de necrose colagenolítica ("flame figures").',
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'Reconhecimento morfológico',
+        purpose: 'Identificar padrão de reação eosinofílica cutaneomucosa.',
+        description:
+          'Úlcera indolente labial, placa eosinofílica ventral/inguinal ou granuloma linear em coxa/coxim/cavidade oral (Power & Ihrke, 1995; Buckley & Nuttall, 2012).',
+        interpretation: 'Morfologia clássica direciona fortemente diagnóstico presuntivo.',
+        limitations: 'EGC é padrão de reação, não diagnóstico etiológico final.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Citologia da lesão',
+        purpose: 'Confirmar infiltrado eosinofílico.',
+        description:
+          'Impressão ou aspirado revela eosinófilos predominantes, por vezes com mastócitos (Taglinger et al., 2007; BSAVA Manual of Dermatology, 4ª ed.).',
+        interpretation: 'Eosinofilia sustenta padrão de reação sem definir causa subjacente.',
+        limitations: 'Citologia normal não exclui EGC em lesão superficialmente cicatrizada.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Investigação da causa de base',
+        purpose: 'Evitar recidiva tratando apenas a lesão.',
+        description:
+          'Controle terapêutico de pulgas 6–8 semanas em todos os animais do domicílio; se não resolver, dieta de eliminação 8 semanas; considerar atopia se ambas negativas (Buckley & Nuttall, 2012).',
+        interpretation: 'DAPP é gatilho mais comum; resposta a dieta confirma componente alimentar.',
+        limitations: 'Não concluir ausência de componente alimentar antes de 8 semanas de dieta estrita.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Biópsia (casos atípicos)',
+        purpose: 'Excluir neoplasia ou diferencial histológico.',
+        description:
+          'Reservada a lesões refratárias, atípicas ou com suspeita neoplásica (carcinoma espinocelular em úlcera labial crônica) (Power & Ihrke, 1995).',
+        interpretation: 'Histopatologia mostra infiltrado eosinofílico com "flame figures".',
+        limitations: 'Não necessária na maioria dos casos morfologicamente típicos.',
+      },
+      {
+        stepNumber: 5,
+        title: 'Diferenciais obrigatórios',
+        purpose: 'Excluir condições que mimetizam EGC.',
+        description:
+          'Neoplasia cutânea/oral, infecção fúngica profunda, herpesvirose felina com componente cutâneo (Nelson & Couto, 6ª ed.).',
+        interpretation: 'Lesão labial crônica refratária exige citologia/biópsia para excluir carcinoma.',
+        limitations: 'Aparência clássica reduz necessidade de biópsia, mas não elimina diferenciais neoplásicos.',
+      },
+    ],
     tcInvestigacaoCausaBase: {
       kind: 'clinicalTable',
       headers: ['Etapa', 'Objetivo'],
@@ -203,15 +276,14 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
       'Neoplasia cutânea ou oral (carcinoma espinocelular, especialmente em lesões labiais crônicas refratárias), infecção fúngica profunda, complexo de herpesvirose felina com manifestação cutânea, outras dermatites eosinofílicas menos comuns, mastocitoma cutâneo.',
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Controle de pulgas rigoroso e imediato em todos os animais do domicílio com adulticida de ação rápida e residual comprovada — base obrigatória de qualquer protocolo, mesmo sem prova direta de pulicose (Buckley & Nuttall, 2012).',
-      '2) Glicocorticoide sistêmico (prednisolona) em dose anti-inflamatória a imunossupressora conforme extensão e gravidade da lesão, para controle agudo enquanto a causa de base é investigada.',
-      '3) Dieta de eliminação estrita por 8 semanas com proteína nova ou hidrolisada quando o controle de pulgas isolado não resolve — evitar conclusões precipitadas antes de completar o período de teste.',
-      '4) Ciclosporina como alternativa eficaz para manutenção crônica, casos recorrentes ou pacientes com intolerância/contraindicação a corticoide prolongado; resposta pode levar semanas.',
-      '5) Investigação de atopia (testes intradérmicos ou sorológicos) quando pulgas e alimentação foram adequadamente excluídas como causa isolada.',
-      '6) Antimicrobiano tópico ou sistêmico apenas se houver infecção secundária documentada por citologia/cultura — não é tratamento primário do EGC.',
-      '7) Opções refratárias (clorambucila, outros imunomoduladores) reservadas a casos graves e persistentes após falha das medidas anteriores, com monitorização hematológica próxima.',
-      '8) Atenção especial e eventual encaminhamento especializado em granuloma oral/faríngeo extenso com sinais de comprometimento de via aérea (estridor, dispneia, disfagia importante).',
+    cronica: [
+      'Buckley & Nuttall (2012), em revisão sobre complexo do granuloma eosinofílico felino, concluem que controle rigoroso de pulgas em todos os animais do domicílio é obrigatório em todo caso, mesmo sem prova direta de pulicose — falha aqui é causa comum de recidiva aparente.',
+      'BSAVA Manual of Dermatology (4ª ed., 2021) descreve prednisolona oral em dose anti-inflamatória a imunossupressora conforme extensão da lesão, com desmame gradual — preferir prednisolona sobre prednisona em gatos.',
+      'Buckley & Nuttall (2012) recomendam dieta de eliminação estrita por mínimo 8 semanas com proteína nova ou hidrolisada quando pulgas controladas não resolvem — evitar contaminação cruzada que invalida o teste.',
+      'BSAVA Manual of Dermatology (4ª ed., 2021) cita ciclosporina como alternativa eficaz para manutenção crônica, casos recorrentes ou intolerância a corticoide prolongado; resposta pode levar semanas — monitorar função renal e hemograma.',
+    ],
+    aguda: [
+      'Granuloma oral/faríngeo extenso com estridor ou disfagia: iniciar glicocorticoide sistêmico sem retardar enquanto investiga causa de base; considerar encaminhamento especializado para suporte de via aérea (BSAVA Manual of Dermatology, 4ª ed.).',
     ],
     monitoramento: [
       'Extensão, aspecto e sinais de prurido/dor da lesão a cada revisão, com fotos seriadas quando possível.',

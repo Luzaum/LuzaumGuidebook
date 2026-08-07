@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Check, ChevronLeft, ChevronRight, Search, SlidersHorizontal } from 'lucide-react'
 import { Badge } from '../../components/ui/badge'
@@ -8,8 +8,7 @@ import { Input } from '../../components/ui/input'
 import { FoodDetailDialog, FoodInfoButton } from '../../components/FoodDetailDialog'
 import { filterFoods, getFoodById, getFoodDisplayName } from '../../lib/genutriData'
 import { classifyFoodByBook } from '../../lib/foodTaxonomy'
-import { distributeEqually } from '../../lib/nutrition-calculations'
-import { isCalculationEngineV3Enabled } from '../../lib/nutritionCalculationBridge'
+import { distributeEqually } from '../../lib/diet-math'
 import { useCalculationStore } from '../../store/calculationStore'
 import type { DietFormulaEntry, FoodItem } from '../../types'
 import { cn } from '../../lib/utils'
@@ -17,12 +16,14 @@ import { cn } from '../../lib/utils'
 const NEW_ROUTE = '/calculadora-energetica/new'
 
 function distributeInclusionEqually(entries: DietFormulaEntry[]): DietFormulaEntry[] {
+  if (!entries.length) return []
   const shares = distributeEqually(entries.length)
   return entries.map((entry, index) => ({ ...entry, inclusionPct: shares[index] ?? 0 }))
 }
 
-function inclusionSum(entries: DietFormulaEntry[]): number {
-  return entries.reduce((sum, entry) => sum + entry.inclusionPct, 0)
+function normalizeStoredEntries(entries: DietFormulaEntry[]): DietFormulaEntry[] {
+  if (!entries.length) return []
+  return distributeInclusionEqually(entries)
 }
 
 export default function FoodSelectionStep() {
@@ -30,7 +31,7 @@ export default function FoodSelectionStep() {
   const { patient, diet, setDiet } = useCalculationStore()
   const [query, setQuery] = useState('')
   const [showAll, setShowAll] = useState(false)
-  const [entries, setEntries] = useState<DietFormulaEntry[]>(diet.entries ?? [])
+  const [entries, setEntries] = useState<DietFormulaEntry[]>(() => normalizeStoredEntries(diet.entries ?? []))
   const [detailsFoodId, setDetailsFoodId] = useState<string | null>(null)
   const species = patient.species ?? 'dog'
   const selectedIds = useMemo(() => new Set(entries.map((entry) => entry.foodId)), [entries])
@@ -49,26 +50,54 @@ export default function FoodSelectionStep() {
     return [...selectedFoods, ...unselectedFilteredFoods.slice(0, Math.max(0, 36 - selectedFoods.length))]
   }, [selectedFoods, showAll, unselectedFilteredFoods])
 
+  const persistEntries = (next: DietFormulaEntry[]) => {
+    setDiet({ dietType: 'hybrid', entries: next })
+  }
+
+  useEffect(() => {
+    if (!entries.length) return
+    if (JSON.stringify(diet.entries ?? []) !== JSON.stringify(entries)) {
+      persistEntries(entries)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- persiste seleção inicial normalizada uma vez
+  }, [])
+
+  const applyEntries = (updater: (current: DietFormulaEntry[]) => DietFormulaEntry[]) => {
+    setEntries((current) => {
+      const raw = updater(current)
+      const next = raw.length ? distributeInclusionEqually(raw) : []
+      persistEntries(next)
+      return next
+    })
+  }
+
   const toggleFood = (foodId: string) => {
-    setEntries((current) =>
+    applyEntries((current) =>
       selectedIds.has(foodId)
         ? current.filter((entry) => entry.foodId !== foodId)
         : [...current, { foodId, inclusionPct: 0 }],
     )
   }
 
-  const handleDistributeEqually = () => {
-    setEntries((current) => distributeInclusionEqually(current))
-  }
-
-  const proportionSum = inclusionSum(entries)
-  const proportionsValid = entries.length === 0 || Math.abs(proportionSum - 100) < 0.05
+  const canAdvance = entries.length > 0
 
   const handleNext = () => {
-    if (isCalculationEngineV3Enabled() && entries.length > 0 && !proportionsValid) return
-    setDiet({ dietType: 'hybrid', entries })
+    if (!canAdvance) return
+    const next = distributeInclusionEqually(entries)
+    persistEntries(next)
     navigate(`${NEW_ROUTE}/formulation`)
   }
+
+  const stepNavigation = (className?: string) => (
+    <div className={cn('flex justify-between border-t border-border/60 pt-4', className)}>
+      <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/target`)} className="gap-2">
+        <ChevronLeft className="h-4 w-4" /> Anterior
+      </Button>
+      <Button onClick={handleNext} disabled={!canAdvance} className="gap-2">
+        Próximo: Formulação <ChevronRight className="h-4 w-4" />
+      </Button>
+    </div>
+  )
 
   return (
     <>
@@ -80,7 +109,7 @@ export default function FoodSelectionStep() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-5 pt-4">
-          <section className="rounded-2xl border border-border p-3">
+          <section className="rounded-2xl border border-border p-3 space-y-4">
             <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
               <div className="relative">
                 <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -99,19 +128,8 @@ export default function FoodSelectionStep() {
                 <SlidersHorizontal className="h-4 w-4" /> {filteredFoods.length} alimento(s)
               </div>
             </div>
+            {stepNavigation('border-t-0 pt-0')}
           </section>
-
-          {entries.length > 1 && (
-            <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-border bg-muted/30 p-3">
-              <p className="text-sm text-muted-foreground">
-                Proporção calórica total: <strong className="text-foreground">{proportionSum.toFixed(1)}%</strong>
-                {entries.some((e) => e.inclusionPct === 0) && ' — defina as proporções ou distribua igualmente.'}
-              </p>
-              <Button type="button" variant="outline" size="sm" onClick={handleDistributeEqually}>
-                Distribuir igualmente
-              </Button>
-            </div>
-          )}
 
           {entries.length > 0 && (
             <section className="flex flex-wrap items-center gap-2 rounded-2xl bg-primary/[0.06] p-3">
@@ -121,6 +139,11 @@ export default function FoodSelectionStep() {
                   {getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}
                 </Badge>
               ))}
+              {entries.length > 1 && (
+                <p className="w-full text-xs text-muted-foreground">
+                  Proporções iniciais divididas igualmente — ajuste na etapa Formulação.
+                </p>
+              )}
             </section>
           )}
 
@@ -187,18 +210,7 @@ export default function FoodSelectionStep() {
               </Button>
             </div>
           )}
-          <div className="flex justify-between border-t border-border/60 pt-4">
-            <Button variant="outline" onClick={() => navigate(`${NEW_ROUTE}/target`)} className="gap-2">
-              <ChevronLeft className="h-4 w-4" /> Anterior
-            </Button>
-            <Button
-              onClick={handleNext}
-              disabled={!entries.length || (isCalculationEngineV3Enabled() && !proportionsValid)}
-              className="gap-2"
-            >
-              Próximo: Formulação <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
+          {stepNavigation()}
         </CardContent>
       </Card>
 

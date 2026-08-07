@@ -90,6 +90,8 @@ export const clinicalAcronyms: ClinicalAcronym[] = [
   { acronym: 'FGS', meaning: 'Escala de Careta Felina' },
   { acronym: 'FMPI', meaning: 'Índice de Dor Musculoesquelética Felina' },
   { acronym: 'FIC', meaning: 'cistite idiopática felina' },
+  { acronym: 'FCoV', meaning: 'coronavírus felino — infecção entérica comum; mutação intrahospedeiro pode evoluir para PIF' },
+  { acronym: 'FIP', meaning: 'peritonite infecciosa felina (feline infectious peritonitis)', aliases: ['PIF'] },
   { acronym: 'FiO2', meaning: 'fração inspirada de oxigênio', aliases: ['FIO2'] },
   { acronym: 'FR', meaning: 'frequência respiratória' },
   { acronym: 'GI', meaning: 'gastrointestinal' },
@@ -114,6 +116,37 @@ export const clinicalAcronyms: ClinicalAcronym[] = [
   { acronym: 'IV', meaning: 'via intravenosa; em graus e classificações, também representa o numeral romano quatro' },
   { acronym: 'IVDD', meaning: 'doença do disco intervertebral' },
   { acronym: 'JNM', meaning: 'junção neuromuscular', aliases: ['NMJ'] },
+  { acronym: 'ACh', meaning: 'acetilcolina, neurotransmissor que leva o sinal do nervo ao músculo' },
+  {
+    acronym: 'AChR',
+    meaning: 'receptor nicotínico de acetilcolina na membrana muscular',
+    aliases: ['receptor de acetilcolina'],
+  },
+  {
+    acronym: 'AChR-Ab',
+    meaning: 'anticorpos séricos contra o receptor de acetilcolina — teste central na miastenia gravis adquirida',
+  },
+  {
+    acronym: 'AChR-Ab negativo',
+    meaning: 'teste de anticorpos anti-receptor de acetilcolina sem detecção — comum nas síndromes miastênicas congênitas',
+  },
+  {
+    acronym: 'CHAT',
+    meaning: 'colina acetiltransferase, enzima que fabrica acetilcolina no terminal nervoso',
+  },
+  {
+    acronym: 'COLQ',
+    meaning: 'colágeno Q, proteína da matriz extracelular que ancora a acetilcolinesterase na junção neuromuscular',
+  },
+  {
+    acronym: 'CHRNE',
+    meaning: 'subunidade épsilon do receptor nicotínico de acetilcolina',
+  },
+  {
+    acronym: 'CMS',
+    meaning: 'síndromes miastênicas congênitas, doenças genéticas da junção neuromuscular presentes desde filhote',
+  },
+  { acronym: 'MG', meaning: 'miastenia gravis' },
   { acronym: 'LCR', meaning: 'líquido cefalorraquidiano' },
   { acronym: 'LDDST', meaning: 'teste de supressão com dexametasona em baixa dose' },
   { acronym: 'LMN', meaning: 'neurônio motor inferior', aliases: ['NMI'] },
@@ -223,6 +256,15 @@ export const clinicalAcronyms: ClinicalAcronym[] = [
   { acronym: 'EMG', meaning: 'eletromiografia' },
   { acronym: 'FDA', meaning: 'Agência de Alimentos e Medicamentos dos Estados Unidos' },
   { acronym: 'FIV', meaning: 'vírus da imunodeficiência felina' },
+  {
+    acronym: 'FeLV',
+    meaning: 'vírus da leucemia felina (feline leukemia virus)',
+    aliases: ['Leucemia viral felina'],
+  },
+  {
+    acronym: 'p27',
+    meaning: 'antígeno viral p27 do FeLV — alvo dos testes rápidos de triagem',
+  },
   { acronym: 'FLK', meaning: 'infusão de fentanil, lidocaína e cetamina' },
   { acronym: 'FLUTD', meaning: 'doença do trato urinário inferior felino' },
   { acronym: 'GABA', meaning: 'ácido gama-aminobutírico' },

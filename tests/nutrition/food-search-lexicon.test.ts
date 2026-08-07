@@ -52,3 +52,12 @@ test('busca em inglês continua funcionando', () => {
   const results = filterFoods({ query: 'recovery mousse', foodType: 'commercial' })
   assert.ok(results.some((f) => f.id === 'pate-royal-canin-recovery'))
 })
+
+test('busca por marca não expande para termos genéricos', () => {
+  const guabi = filterFoods({ query: 'guabi' })
+  assert.ok(!guabi.some((f) => f.id === 'agua'), 'guabi não deve retornar Água')
+  assert.ok(!guabi.some((f) => f.name.toLowerCase().includes('maizena')))
+
+  const natural = filterFoods({ query: 'natural', foodType: 'commercial' })
+  assert.ok(natural.some((f) => f.name.toLowerCase().includes('natural')))
+})

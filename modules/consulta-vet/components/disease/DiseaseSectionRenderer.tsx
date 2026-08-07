@@ -27,6 +27,7 @@ import {
 import { sortDiagnosticSubsectionEntries } from '../../utils/editorialSubsectionOrder';
 import { type DiseaseSectionVisual, getDiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
 import { EditorialClinicalTableBlock } from '../editorial/EditorialClinicalTableBlock';
+import { EditorialRichText } from '../shared/EditorialRichText';
 import { ClinicalSignsTable } from './ClinicalSignsTable';
 import { DiagnosticPathway } from './DiagnosticPathway';
 import { TreatmentMonitoringPanel, TreatmentPriorityPanel, TreatmentPriorityRichPanel } from './TreatmentSectionVisual';
@@ -126,7 +127,9 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
           </div>
         </div>
         {figure.caption ? (
-          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">{figure.caption}</figcaption>
+          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">
+            <EditorialRichText value={figure.caption} />
+          </figcaption>
         ) : null}
       </figure>
 
@@ -160,7 +163,9 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
               />
             </div>
             {figure.caption ? (
-              <p className="mt-3 text-center text-sm text-neutral-300 leading-relaxed px-4 pb-1.5 max-w-3xl mx-auto">{figure.caption}</p>
+              <p className="mt-3 text-center text-sm text-neutral-300 leading-relaxed px-4 pb-1.5 max-w-3xl mx-auto">
+                <EditorialRichText value={figure.caption} />
+              </p>
             ) : null}
           </div>
         </div>
@@ -179,8 +184,6 @@ const STUDY_CITATION_RE =
   /\b(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+){0,2})\s+et al\.\s*\(\d{4}\)/;
 const CLINICAL_METRIC_RE =
   /(\b\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:%|mg\/kg|mg\/gato|mg\/m²|µg\/kg|μg\/kg|mEq\/kg|UI\/kg|dias?|semanas?|meses?|horas?|minutos?|mm|cm|gatos?|cães?|cadelas?)\b)/gi;
-const CLINICAL_METRIC_EXACT_RE =
-  /^\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:%|mg\/kg|mg\/gato|mg\/m²|µg\/kg|μg\/kg|mEq\/kg|UI\/kg|dias?|semanas?|meses?|horas?|minutos?|mm|cm|gatos?|cães?|cadelas?)$/i;
 const CLINICAL_ALERT_RE =
   /^(atenção|alerta|não\b|nunca\b|evite\b|emergência\b|choque\b|sepse\b|contraindicad|carcinoma mamário inflamatório)/i;
 
@@ -205,43 +208,20 @@ function getClinicalMetrics(value: string): string[] {
   return Array.from(new Set(value.match(CLINICAL_METRIC_RE) ?? [])).slice(0, 4);
 }
 
-function MetricText({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
-  return (
-    <>
-      {value.split(CLINICAL_METRIC_RE).map((part, index) =>
-        CLINICAL_METRIC_EXACT_RE.test(part) ? (
-          <mark
-            key={`${part}-${index}`}
-            className={cn(
-              'rounded-sm px-1.5 py-0.5 font-bold text-inherit [box-decoration-break:clone]',
-              visual.headerTintClass,
-              visual.titleClass
-            )}
-          >
-            {part}
-          </mark>
-        ) : (
-          <React.Fragment key={`${part}-${index}`}>{part}</React.Fragment>
-        )
-      )}
-    </>
-  );
-}
-
 function ClinicalInlineText({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
   const lead = getClinicalLead(value);
-  if (!lead) return <MetricText value={value} visual={visual} />;
+  if (!lead) return <EditorialRichText value={value} visual={visual} />;
 
   const body = value.slice(value.indexOf(':') + 1).trim();
   return (
     <>
       <strong className={cn('font-bold', visual.titleClass)}>
-        <MetricText value={lead} visual={visual} />
+        <EditorialRichText value={lead} visual={visual} />
       </strong>
       <span className={cn('mx-1.5 font-bold', visual.titleClass)} aria-hidden>
         →
       </span>
-      <MetricText value={body} visual={visual} />
+      <EditorialRichText value={body} visual={visual} />
     </>
   );
 }

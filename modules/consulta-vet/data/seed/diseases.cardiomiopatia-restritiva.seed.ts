@@ -138,76 +138,142 @@ export const cardiomiopatiaRestritivaRecord: DiseaseRecord = {
     {
       system: 'respiratory',
       findings: [
-        'Taquipneia, dispneia e ortopneia: pressão atrial esquerda elevada produz edema pulmonar.',
-        'Efusão pleural: congestão biventricular/venosa e alteração de drenagem linfática restringem ventilação.',
+        {
+          finding: 'Taquipneia, dispneia e ortopneia',
+          mechanism:
+            'A pressão atrial esquerda elevada transmite-se às veias pulmonares; quando a pressão capilar supera a capacidade linfática, extravasa líquido para interstício e alvéolos.',
+          clinicalMeaning: 'Sugere insuficiência cardíaca congestiva esquerda — estabilizar antes de exames demorados.',
+          priority: 'heart-failure',
+        },
+        {
+          finding: 'Efusão pleural',
+          mechanism:
+            'Congestão venosa sistêmica e alteração de drenagem linfática aumentam o líquido pleural, restringindo expansão pulmonar.',
+          clinicalMeaning: 'Toracocentese pode ser terapêutica urgente se comprometer ventilação.',
+          priority: 'heart-failure',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Som de galope: enchimento contra ventrículo rígido.',
-        'Arritmia, especialmente atrial: estiramento atrial e fibrose alteram condução.',
-        'Pulso fraco, hipotermia e síncope: baixo volume sistólico apesar de fração de ejeção aparentemente preservada.',
+        {
+          finding: 'Som de galope (terceira bulha)',
+          mechanism:
+            'O enchimento ventricular rápido contra parede rígida e pouco complacente produz vibração audível na diástole precoce.',
+          clinicalMeaning: 'Reforça suspeita de disfunção diastólica grave, típica da CMR.',
+          priority: 'common',
+        },
+        {
+          finding: 'Arritmia, especialmente atrial',
+          mechanism:
+            'Estiramento atrial crônico e fibrose alteram condução elétrica; fibrilação atrial encurta diástole e piora enchimento.',
+          clinicalMeaning: 'ECG ou Holter orientam controle de frequência e antitrombótico.',
+          priority: 'arrhythmia',
+        },
+        {
+          finding: 'Pulso fraco, hipotermia e síncope',
+          mechanism:
+            'Apesar de fração de ejeção aparentemente preservada, o volume sistólico efetivo pode ser baixo porque o ventrículo rígido recebe pouco sangue a cada ciclo.',
+          clinicalMeaning: 'Não confundir FE normal com bom débito — avaliar perfusão e pressão de enchimento.',
+          priority: 'low-output',
+        },
       ],
     },
     {
       system: 'neuromuscular',
       findings: [
-        'Paresia dolorosa aguda e membros frios: tromboembolismo arterial decorrente de estase no átrio esquerdo.',
+        {
+          finding: 'Paresia dolorosa aguda e membros frios',
+          mechanism:
+            'Estase no átrio esquerdo dilatado favorece formação de trombo que emboliza para a trifurcação aórtica, interrompendo perfusão distal.',
+          clinicalMeaning: 'Emergência — analgesia, antitrombóticos e suporte; prognóstico reservado.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Hiporexia, perda de peso e letargia: baixo débito, congestão e doença crônica.',
+        {
+          finding: 'Hiporexia, perda de peso e letargia',
+          mechanism:
+            'Baixo débito, congestão visceral e estado catabólico sustentado em doença cardíaca crônica avançada reduzem apetite e energia.',
+          clinicalMeaning: 'Indica doença avançada e pior reserva fisiológica para descompensação.',
+          priority: 'systemic',
+        },
       ],
     },
   ],
   diagnosis: [
     {
       stepNumber: 1,
-      title: 'Ecocardiografia 2D e Doppler',
+      title: 'Triagem clínica e estabilização',
+      purpose: 'Identificar congestão, tromboembolismo ou baixo débito antes de exames completos.',
       description:
-        'Exame de referência. Mostra dilatação atrial desproporcional, ventrículo sem hipertrofia marcante, padrão de enchimento restritivo, alterações regionais e, em alguns gatos, placas ou pontes fibróticas. Avalie trombo e contraste espontâneo.',
-      isGoldStandard: true,
+        'Avalie padrão respiratório, perfusão e ritmo. Em dispneia: oxigênio, mínimo estresse, ultrassom focal e toracocentese se efusão relevante (Nelson & Couto, 6ª ed.).',
+      interpretation:
+        'Taquipneia com edema ou efusão aponta insuficiência cardíaca; paresia pélvica aguda sugere tromboembolismo.',
+      limitations: 'Exame físico pode ser pouco expressivo antes da descompensação.',
     },
     {
       stepNumber: 2,
-      title: 'Radiografia torácica ou ultrassonografia à beira do leito',
+      title: 'Ecocardiografia 2D e Doppler',
+      purpose: 'Confirmar fenótipo restritivo e quantificar dilatação atrial desproporcional.',
       description:
-        'Determina edema e efusão e orienta estabilização. Cardiomegalia variável não exclui pressão de enchimento alta.',
+        'Avaliar átrios, espessura e volumes ventriculares, Doppler transmitral/tissular, função sistólica, pontes ou placas fibróticas, trombo e contraste espontâneo (ACVIM, 2020; Nelson & Couto, 6ª ed.).',
+      interpretation: 'Dilatação atrial marcada com ventrículo não hipertrofiado e padrão de enchimento restritivo sustenta CMR.',
+      limitations: 'CMH em estágio final pode imitar fisiologia restritiva — imagem seriada ajuda.',
+      isGoldStandard: true,
     },
     {
       stepNumber: 3,
-      title: 'ECG/Holter',
+      title: 'Radiografia torácica ou ultrassonografia à beira do leito',
+      purpose: 'Documentar edema pulmonar ou efusão pleural.',
       description:
-        'Indicado em pulso irregular, galope confundível, síncope ou taquicardia. Fibrilação atrial e ectopia mudam tratamento.',
+        'Determina impacto respiratório e orienta diurese ou drenagem. Cardiomegalia variável não exclui pressão de enchimento alta.',
+      interpretation: 'Edema intersticial/alveolar ou efusão pleural confirmam descompensação congestiva.',
+      limitations: 'Radiografia normal não exclui CMR subclínica com átrio dilatado.',
     },
     {
       stepNumber: 4,
-      title: 'Laboratório e biomarcadores',
+      title: 'ECG e Holter',
+      purpose: 'Detectar arritmias que alteram enchimento e risco trombótico.',
       description:
-        'Hemograma, rim, eletrólitos, T4 total e pressão arterial ajudam a excluir comorbidades; NT-proBNP apoia origem cardíaca da dispneia e troponina indica lesão, sem distinguir CMR de outros fenótipos.',
+        'Indicado em pulso irregular, galope, síncope ou taquicardia persistente.',
+      interpretation: 'Fibrilação atrial ou ectopia ventricular mudam conduta de frequência e antitrombótico.',
+      limitations: 'ECG curto normal não exclui arritmia intermitente.',
     },
     {
       stepNumber: 5,
-      title: 'Diferenciais avançados',
+      title: 'Laboratório e biomarcadores',
+      purpose: 'Excluir comorbidades e apoiar origem cardíaca da dispneia.',
       description:
-        'Pericardiopatia constritiva, CMH em estágio final, cardiomiopatia não classificada, cor triatriatum e linfoma infiltrativo. Ressonância e biópsia endomiocárdica ficam para centros especializados e casos em que o resultado mudará conduta.',
+        'Hemograma, rim, eletrólitos, T4 total e pressão arterial. NT-proBNP apoia suspeita cardíaca; troponina indica lesão miocárdica.',
+      interpretation: 'BNP elevado aumenta probabilidade cardíaca; troponina alta sugere lesão aguda.',
+      limitations: 'Biomarcadores não distinguem CMR de outros fenótipos miocárdicos.',
+    },
+    {
+      stepNumber: 6,
+      title: 'Diferenciais avançados',
+      purpose: 'Excluir mimetizadores estruturais e infiltrativos.',
+      description:
+        'Pericardiopatia constritiva, CMH remodelada, cardiomiopatia não classificada, cor triatriatum e linfoma infiltrativo. Ressonância e biópsia endomiocárdica reservadas a centros especializados (Fox, 2004; ACVIM, 2020).',
+      interpretation: 'Achado que muda conduta cirúrgica ou oncológica exige encaminhamento.',
+      limitations: 'Distinção histológica definitiva raramente é necessária na prática ambulatorial.',
     },
   ],
   treatment: {
-    congestao: [
-      'Use furosemida na descompensação e a menor dose eficaz no domicílio. Budde e McCluskey (2023) descrevem, para gatos, faixa prática de 1–2 mg/kg por via oral a cada 8–12 horas, sempre individualizada.',
-      'Toracocentese é terapêutica quando a efusão compromete ventilação; diurético não substitui drenagem urgente.',
-      'Pimobendan 0,25 mg/kg por via oral a cada 12 horas pode ser considerado, pois obstrução dinâmica importante não é típica da CMR. A evidência específica é observacional e deve ser apresentada ao tutor como tal.',
+    aguda: [
+      'Insuficiência cardíaca congestiva aguda: oxigênio, furosemida parenteral titulada e toracocentese quando efusão compromete ventilação. Diurético não substitui drenagem urgente (Plumb\'s, 10ª ed.; Nelson & Couto, 6ª ed.).',
+      'Tromboembolismo arterial: analgesia opioide imediata, clopidogrel 18,75 mg/gato por via oral q24h e anticoagulação individualizada conforme risco (Hogan et al., FAT CAT, 2015).',
     ],
-    trombose: [
-      'Clopidogrel 18,75 mg/gato por via oral uma vez ao dia é indicado após tromboembolismo ou em alto risco por átrio muito dilatado, contraste espontâneo ou trombo. Hogan et al. (2015) demonstraram, em 75 gatos sobreviventes de tromboembolismo, maior tempo até recorrência com clopidogrel do que com ácido acetilsalicílico.',
-      'Em risco extremo/recorrência, associação com rivaroxabana ou heparina pode ser discutida; monitorar sangramento, rim e fígado.',
+    cronica: [
+      'Budde e McCluskey (2023), no Plumb\'s Veterinary Drug Handbook (10ª ed.), descrevem furosemida 1–2 mg/kg por via oral a cada 8–12 horas em gatos, titulada à congestão. Conclusão: usar a menor dose eficaz no domicílio, com monitorização renal.',
+      'Pimobendan 0,25 mg/kg por via oral a cada 12 horas pode ser considerado na CMR porque obstrução dinâmica importante não é típica; a evidência específica é observacional e deve ser apresentada ao tutor como tal (Plumb\'s, 10ª ed.).',
+      'Hogan et al. (2015), no ensaio FAT CAT com 75 gatos sobreviventes de tromboembolismo, demonstraram maior tempo até recorrência com clopidogrel do que com ácido acetilsalicílico. Conclusão: clopidogrel 18,75 mg/gato q24h é indicado após tromboembolismo ou em alto risco por átrio muito dilatado.',
+      'Atenolol ou diltiazem somente para taquiarritmia/controle de frequência selecionado; bradicardia ou inotropia negativa podem piorar baixo débito (ACVIM, 2020; Plumb\'s, 10ª ed.).',
     ],
-    arritmia:
-      'Atenolol ou diltiazem somente para taquiarritmia/controle de frequência selecionado. A diástole melhora quando a frequência excessiva cai, mas bradicardia ou inotropia negativa podem piorar baixo débito.',
     monitoramento: [
       'Frequência respiratória em sono, peso e sinais de efusão.',
       'Ureia, creatinina e eletrólitos após ajustes de diurético.',

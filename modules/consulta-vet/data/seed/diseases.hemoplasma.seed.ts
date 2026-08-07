@@ -150,32 +150,93 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
   clinicalSignsPathophysiology: [
     {
       system: 'general',
-      findings: ['Letargia, anorexia, febre (felino agudo); perda de peso.'],
+      findings: [
+        {
+          finding: 'Letargia, anorexia, febre e perda de peso',
+          mechanism:
+            'Citocinas inflamatórias e anemia reduzem reserva energética; M. haemofelis em gatos pode causar quadro agudo fulminante.',
+          clinicalMeaning: 'Gato jovem ou adulto com anemia regenerativa + febre = suspeita alta.',
+          priority: 'common',
+        },
+      ],
     },
     {
       system: 'hematologic',
-      findings: ['Anemia regenerativa; em gatos M. haemofelis pode ser fulminante; em cães clínica quando quebra de imunidade.'],
+      findings: [
+        {
+          finding: 'Anemia regenerativa com palidez, taquicardia e taquipneia',
+          mechanism:
+            'Hemoplasmas aderem à membrana eritrocitária e desencadeiam destruição esplênica; ciclo parasitário cíclico pode causar picos de hemólise.',
+          clinicalMeaning: 'Em cães, clínica costuma aparecer com asplenia ou imunossupressão.',
+          priority: 'common',
+        },
+      ],
     },
     {
       system: 'hepatic',
-      findings: ['Icterícia possível com hemólise intensa.'],
+      findings: [
+        {
+          finding: 'Icterícia',
+          mechanism:
+            'Hemólise rápida eleva bilirrubina indirecta quando a destruição eritrocitária excede capacidade hepática de conjugação.',
+          clinicalMeaning: 'Indica hemólise intensa; correlacionar com PCV e esfregaço.',
+          priority: 'systemic',
+        },
+      ],
     },
     {
       system: 'lymphatic',
-      findings: ['Esplenomegalia (remoção aumentada de eritrócitos alterados).'],
+      findings: [
+        {
+          finding: 'Esplenomegalia',
+          mechanism:
+            'Baço aumenta clearance de eritrócitos parasitados e alterados pela imunidade.',
+          clinicalMeaning: 'Achado de suporte na palpação abdominal.',
+          priority: 'uncommon',
+        },
+      ],
     },
   ],
   diagnosis: {
-    hemoSuspeitaContexto:
-      'Gato: anemia regenerativa + letargia/febre. Cão: anemia regenerativa + asplenia ou imunossupressão ou coinfecção. Sempre considerar em candidatos a doação e receptores.',
-    hemoHemogramaEsfregaco:
-      'Anemia regenerativa comum. Esfregaco: cocci/bastonetes/anéis na superfície eritrocitária (Vaden). Sensibilidade baixa; artefatos (Howell-Jolly, pontilhado basofílico) confundem.',
-    hemoPcrPreferido:
-      'PCR em sangue: método preferido (ABCD; Merck; Vaden) — mais sensível e específico que esfregaco; ajuda a especiar.',
-    hemoCoinfeccoesBase:
-      'Gato: testar FeLV/FIV. Cão: investigar Ehrlichia, Babesia, sepse, outras coinfecções se não esplenectomizado.',
-    hemoPadraoOuroResumo:
-      'Padrão ouro prático atual: PCR específica/quantitativa em sangue; esfregaco complementar quando positivo.',
+    passosDiagnosticos: [
+      {
+        stepNumber: 1,
+        title: 'Suspeita no contexto clínico',
+        purpose: 'Identificar anemia regenerativa com sinais compatíveis e fatores de risco.',
+        description:
+          'Gato: anemia regenerativa + letargia/febre. Cão: anemia + asplenia, imunossupressão ou coinfecção. Considerar em doadores e receptores (Tasker et al., ABCD 2018).',
+        interpretation: 'Anemia regenerativa isolada em gato de risco elevado suspeita hemoplasma.',
+        limitations: 'Anemia tem múltiplas causas; não iniciar tratamento sem confirmação quando possível.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Hemograma e esfregaço sanguíneo',
+        purpose: 'Documentar anemia e buscar organismos na superfície eritrocitária.',
+        description:
+          'Anemia regenerativa comum. Esfregaço pode mostrar cocci/bastonetes/anéis (Vaden, 2013).',
+        interpretation: 'Organismo visível confirma, mas sensibilidade é baixa.',
+        limitations: 'Artefatos (Howell-Jolly, pontilhado basofílico) confundem; esfregaço negativo não exclui.',
+      },
+      {
+        stepNumber: 3,
+        title: 'PCR em sangue',
+        purpose: 'Confirmar infecção e identificar espécie.',
+        description:
+          'Método preferido (ABCD; Merck; Vaden) — mais sensível e específico que esfregaço; permite especiar.',
+        interpretation: 'PCR positiva confirma infecção ativa ou portador detectável.',
+        limitations: 'Carga parasitária cíclica pode gerar falso-negativo pontual.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 4,
+        title: 'Triagem de coinfecções',
+        purpose: 'Identificar comorbidades que alteram prognóstico e tratamento.',
+        description:
+          'Gato: FeLV/FIV. Cão: Ehrlichia, Babesia, sepse conforme epidemiologia.',
+        interpretation: 'Coinfecção explica resposta lenta ou quadro grave.',
+        limitations: 'Testes adicionais aumentam custo; priorizar conforme exposição.',
+      },
+    ],
     hemoTabelaDoxiciclinaGatoAlerta: {
       kind: 'clinicalTable',
       headers: ['Cuidado (felino)', 'Porquê', 'Como fazer'],
@@ -194,43 +255,21 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     },
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Avaliar necessidade de transfusão e oxigenoterapia antes de “só iniciar doxiciclina” — anemia aguda felina pode deteriorar em horas.',
-      '2) Iniciar doxiciclina com técnica segura (felino); definir duração (2–4 semanas) conforme espécie, gravidade e objetivo de clearance.',
-      '3) Repetir hemograma e, se disponível, PCR quantitativo em pontos acordados — interpretar queda de carga vs portador.',
-      '4) Se falha clínica ou intolerância: transicionar para marbofloxacina ou esquema combinado segundo ABCD/centro.',
-      '5) Triagem de doadores e educação do tutor sobre recidiva, brigas e novas transfusões.',
+    especifica: [
+      'Tasker et al. (2018), nas diretrizes ABCD, recomendam doxiciclina como tratamento de primeira linha: 10 mg/kg VO q24h ou 5 mg/kg VO q12h por 2–4 semanas em gatos com M. haemofelis. Conclusão: em felinos, administrar com ≥5 mL de água após comprimido ou usar suspensão para evitar esofagite (Plumb\'s, 10ª ed.).',
+      'Tasker et al. (2018) indicam marbofloxacina 2,75 mg/kg q24h por 14–28 dias como alternativa se falha ou intolerância à doxiciclina. Conclusão: reservar fluoroquinolona para casos selecionados.',
     ],
+    suporte: [
+      'Merck Veterinary Manual recomenda transfusão quando anemia grave com dispneia ou prostração — estabilizar antes de antibiótico isolado.',
+      'ABCD desaconselha corticoides de rotina; reservar para IMHA associada não responsiva ao antibiótico adequado.',
+    ],
+    portador:
+      'ABCD e Merck: não tratar rotineiramente PCR+ assintomático — esquemas não garantem eliminação e muitos permanecem portadores. Exceções: doadores, imunodeprimidos, casos graves/recorrentes.',
     monitoramento: [
       'Hematócrito 24–48 h após início se grave; depois semanal até estabilizar.',
-      'Apetite, icterícia, esplenomegalia ao toque (se cooperativo).',
-      'Sinais de esofagite se doxiciclina oral em felino (salivação, regurgitação, dor).',
-      'FeLV/FIV: reavaliar se novo declínio imunológico.',
+      'Apetite, icterícia e sinais de esofagite se doxiciclina oral em felino.',
+      'Repetir PCR quantitativo conforme objetivo de clearance versus manejo de portador.',
     ],
-    hemoEstabilizar:
-      'Anemia grave com dispneia, prostração ou choque: suporte primeiro — transfusão quando indicada (Merck; ABCD). Eritrócitos transfundidos podem estar infectados; monitorizar.',
-    hemoDoxiciclina: {
-      kind: 'clinicalTable',
-      headers: ['Espécie / situação', 'Dose', 'Duração'],
-      rows: [
-        [
-          'Gato — M. haemofelis (Plumb’s / ABCD)',
-          '10 mg/kg PO q24h ou 5 mg/kg PO q12h',
-          '2–4 semanas; 4 semanas se objetivo maximizar clearance; casos simples podem responder em 2 semanas',
-        ],
-        [
-          'Cão — hemoplasma',
-          '10 mg/kg PO q24h ou 5 mg/kg PO q12h (Nelson para micoplasmas)',
-          'Individualizar com PCR clínica; relatos com qPCR prolongando até negativação',
-        ],
-      ],
-    },
-    hemoAlternativasAbcd:
-      'Se falha/intolerância: marbofloxacina 2,75 mg/kg q24h 14–28 d (Plumb’s); esquemas com 28 d doxiciclina seguidos de marbofloxacina 2 mg/kg q24h × 14 d se PCR persistente (ABCD; Plumb’s). Pradofloxacina: único ATB com clearance experimental documentada de M. haemofelis em estudo experimental citado no Plumb’s — reserva para refratários, uso criterioso de fluoroquinolona. Enrofloxacina: cautela por toxicidade retiniana felina.',
-    hemoCorticoides:
-      'ABCD: não recomendar corticoides salvo IMHA associada não responsiva ao ATB adequado. Merck: glicocorticoides podem reduzir eritrofagocitose em hemólise extrema — exceção, não rotina.',
-    hemoPrevencaoPortador:
-      'ABCD e Merck: não tratar rotineiramente PCR+ assintomático — esquemas não garantem eliminação e muitos permanecem portadores. Exceções: doadores, multicat com naïves, imunodeprimidos, casos graves/recorrentes.',
   },
   prevention: {
     hemoDoadoresPcr:

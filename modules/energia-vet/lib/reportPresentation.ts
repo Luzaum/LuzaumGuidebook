@@ -1,6 +1,6 @@
 import type { StoredCalculationReport } from '../types'
 import { getFoodById, getRequirementById } from './genutriData'
-import { getHumanRequirementLabel } from './clinicalProfiles'
+import { getHumanRequirementLabel } from './clinicalProfileLabels'
 import { getPhysiologicStateById } from './nutrition'
 
 type ReportField = {

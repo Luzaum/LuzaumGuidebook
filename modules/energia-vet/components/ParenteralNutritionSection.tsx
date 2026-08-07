@@ -8,7 +8,7 @@ import {
   calculateParenteralNutrition,
   DEFAULT_PERIPHERAL_OSMOLARITY_LIMIT_MOSM_L,
   PARENTERAL_PROTEIN_TARGETS,
-} from '../lib/nutrition-calculations/parenteralEngine'
+} from '../lib/hospital-nutrition/parenteralEngine'
 import type { HospitalNutritionPlan } from '../types'
 
 interface ParenteralNutritionSectionProps {

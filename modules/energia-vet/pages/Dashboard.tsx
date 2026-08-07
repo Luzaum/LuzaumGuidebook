@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Leaf, Stethoscope, Users, Utensils } from 'lucide-react'
+import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Leaf, Users, Utensils } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
 import { getTopAuditIssues } from '../lib/genutriData'
@@ -15,7 +15,6 @@ export default function Dashboard() {
 
   const destinations = [
     { name: 'Catálogo completo', description: 'Consultar composição e micronutrientes', icon: Utensils, path: `${BASE_ROUTE}/foods` },
-    { name: 'Manejo hospitalar', description: 'Avaliar risco de realimentação', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized` },
     { name: 'Pacientes', description: 'Acessar histórico clínico', icon: Users, path: `${BASE_ROUTE}/patients` },
     { name: 'Base natural', description: 'Ingredientes e suplementos', icon: Leaf, path: `${BASE_ROUTE}/foods/natural` },
   ]

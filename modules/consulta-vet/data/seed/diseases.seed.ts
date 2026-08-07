@@ -22,6 +22,19 @@ import { mastiteRecord } from './diseases.mastite.seed';
 import { asmaFelinaRecord } from './diseases.asma-felina.seed';
 import { bronquiteCronicaRecord } from './diseases.bronquite-cronica.seed';
 import { granulomaEosinofilicoFelinoRecord } from './diseases.granuloma-eosinofilico-felino.seed';
+import { miasteniaGravisCaesGatosRecord } from './diseases.miastenia-gravis.seed';
+import { sindromesMiastenicasCongenitasRecord } from './diseases.sindromes-miastenicas-congenitas.seed';
+import { leucemiaViralFelinaRecord } from './diseases.leucemia-viral-felina.seed';
+import { peritoniteInfecciosaFelinaRecord } from './diseases.peritonite-infecciosa-felina.seed';
+import { imunodeficienciaFelinaFivRecord } from './diseases.imunodeficiencia-felina-fiv.seed';
+import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
+
+function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
+  return {
+    ...record,
+    plainLanguage: record.plainLanguage ?? DISEASE_PLAIN_LANGUAGE[record.slug],
+  };
+}
 
 export const diseasesSeed: DiseaseRecord[] = [
   babesioseCaninaRecord,
@@ -128,14 +141,14 @@ export const diseasesSeed: DiseaseRecord[] = [
       },
     },
     etiology: {
-      visaoGeral:
-        'A etiologia exata não está totalmente fechada; na prática trata-se de doença inflamatória imunomediada crônica da região perianal (Nelson & Couto: inflamação crônica com ulcerações ao redor do ânus; abordagem médica superou a cirúrgica ao reconhecer o mecanismo imune subjacente).',
-      fatores: [
-        'Predisposição genética e imunológica: a alta frequência em pastor alemão sugere suscetibilidade; nessa raça concentra-se grande parte dos casos descritos na literatura, com hipótese fortemente imunomediada.',
-        'Fatores locais perianais — cauda baixa, umidade, maceração fecal e anatomia sacular no passado eram valorizados; hoje são mais agravantes/perpetuadores do que causa primária (revisão clínica recente: hipótese conformacional isolada perdeu força).',
-        'Microbiota e infecção secundária — podem coexistir e piorar odor/exsudato/dor; estudos de microbiota reforçam pistas fisiopatológicas, não substituem o eixo imunomodulador.',
-        'Comorbidades intestinais e componente alimentar — colite/proctite ou sinais GI concomitantes; parte dos cães associa-se a reação adversa ao alimento; dietas de proteína nova ou hidrolisada podem ajudar alguns pacientes.',
-      ],
+      mecanismoImune:
+        'Inflamação crônica imunomediada na interface pele–mucosa–esfíncter perianal destrói arquitetura tecidual normal, gerando ulcerações e tratos fistulosos (Nelson & Couto, 6ª ed.).',
+      genetica:
+        'Predisposição marcante em Pastor Alemão; linhagens familiares sugerem suscetibilidade imunológica.',
+  fatoresAgravantes: [
+    'Umidade, maceração fecal e infecção secundária perpetuam dor e inflamação.',
+    'Comorbidades intestinais e componente alimentar podem coexistir em subset de pacientes.',
+  ],
     },
     epidemiology: {
       especiePrincipal:
@@ -169,82 +182,92 @@ export const diseasesSeed: DiseaseRecord[] = [
       {
         system: 'behavioral',
         findings: [
-          'Lambedura perianal, automutilação — lesões ulceradas e drenantes dolorosas e inflamadas continuamente.',
+          {
+            finding: 'Lambedura perianal persistente e automutilação',
+            mechanism:
+              'Ulcerações drenantes e inflamação local provocam dor e prurido inflamatório contínuos.',
+            clinicalMeaning: 'Sinal frequente e subestimado; exige inspeção minuciosa após tosa.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'gastrointestinal',
         findings: [
-          'Tenesmo e disquesia — dor ao evacuar, edema; nos crônicos, fibrose/estenose (BSAVA: pode coexistir componente obstrutivo).',
-          'Hematochezia — mucosa/pele ulcerada sangra com facilidade.',
-          'Secreção mucopurulenta e odor forte — exsudato + infecção secundária.',
-          'Incontinência fecal — dor intensa, destruição tecidual ou remodelamento fibrótico.',
+          {
+            finding: 'Tenesmo, disquesia e hematochezia',
+            mechanism:
+              'Dor ao evacuar e ulceração mucosa/cutânea sangram com facilidade; fibrose crônica estreita canal.',
+            clinicalMeaning: 'Diferenciar de obstipação primária e proctite isolada.',
+            priority: 'common',
+          },
+          {
+            finding: 'Secreção mucopurulenta e odor forte',
+            mechanism:
+              'Exsudato inflamatório e infecção secundária bacteriana no leito fistuloso.',
+            clinicalMeaning: 'Infecção secundária agrava mas não substitui imunomodulação de base.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'general',
         findings: [
-          'Letargia, hiporexia, perda de peso — efeitos sistêmicos de dor crônica e inflamação persistente.',
+          {
+            finding: 'Letargia, hiporexia e perda de peso',
+            mechanism:
+              'Dor crônica e inflamação sistêmica sustentam estado catabólico.',
+            clinicalMeaning: 'Caquexia indica doença avançada mal controlada.',
+            priority: 'systemic',
+          },
         ],
       },
     ],
     diagnosis: [
       {
         stepNumber: 1,
-        title: 'Inspeção perianal minuciosa e toque retal cuidadoso',
+        title: 'Inspeção perianal e toque retal',
+        purpose: 'Confirmar tratos fistulosos e avaliar extensão pararretal.',
         description:
-          'Passo mais importante. Nelson & Couto: exame retal é central, muitas vezes com sedação pela dor; tratos ulcerados/drenantes na região perianal. BSAVA: furunculose anal pode passar despercebida sem limpeza e inspeção cuidadosa. Avalia úlceras, seios, profundidade, dor, espessamento, estenose, envolvimento retal e sacos anais.',
+          'Tosa higiênica, inspeção de todos os quadrantes, digitalização de orifícios e toque retal — sedar se dor impede exame (Nelson & Couto, 6ª ed.; BSAVA Gastroenterology, 3ª ed.).',
+        interpretation: 'Tratos ulcerados/drenantes clássicos confirmam suspeita forte.',
+        limitations: 'Exame incompleto por dor é causa frequente de subestadiamento.',
         isGoldStandard: true,
       },
       {
         stepNumber: 2,
         title: 'Diferenciais locais',
+        purpose: 'Excluir condições que mudam prognóstico e cirurgia.',
         description:
-          'Excluir ou reconhecer saculite/abscesso de saco anal, neoplasias perianais/retais, hérnia perineal, estenose retal, corpo estranho, proctite/colite (BSAVA lista furunculose entre causas de disquesia/tenesmo junto a esses diferenciais).',
+          'Sacos anais obstruídos, neoplasia anal/retal, proctite, trauma e corpo estranho.',
+        interpretation: 'Abscesso de saco anal isolado não é furunculose clássica.',
+        limitations: 'Lesões podem coexistir — documentar cada achado.',
       },
       {
         stepNumber: 3,
-        title: 'Proctoscopia e/ou colonoscopia (sinais GI associados)',
+        title: 'Endoscopia e biópsia selecionadas',
+        purpose: 'Investigar componente gastrointestinal ou atipia.',
         description:
-          'Se diarreia, constipação importante, alteração fecal ou suspeita de colite/proctite — Nelson & Couto recomenda avaliação endoscópica.',
-      },
-      {
-        stepNumber: 4,
-        title: 'Citologia, cultura e exames de material (quando indicado)',
-        description:
-          'Não são o centro do diagnóstico da entidade em si; úteis para abscesso de saco, infecção secundária exuberante ou guiar antimicrobiano.',
-      },
-      {
-        stepNumber: 5,
-        title: 'Biópsia (casos atípicos)',
-        description:
-          'Não rotineira quando lesões são clássicas. Indicada se atípico, raça não típica, massa, suspeita de neoplasia ou falha de resposta ao tratamento esperado.',
-      },
-      {
-        stepNumber: 6,
-        title: 'Recursos limitados — mínimo útil',
-        description:
-          'Inspeção com tosa e limpeza local; toque retal sob sedação se necessário; palpação/expressão dos sacos anais; busca de sinais intestinais; reavaliação seriada (fotos, profundidade dos tratos).',
+          'Proctoscopia/colonoscopia se diarreia ou constipação importante; biópsia se massa, raça atípica ou falha terapêutica.',
+        interpretation: 'Colite associada pode exigir dieta de eliminação adjuvante.',
+        limitations: 'Biópsia não é rotina quando lesões são clássicas.',
       },
     ],
     treatment: {
-      ordemDePrioridade: [
-        '1) Imunomodulação de base — eixo principal. Consenso recente (2025): ciclosporina em primeira linha; dose inicial típica 5 mg/kg uma vez ao dia; a resposta pode levar até cerca de três meses — evite declarar falha precoce. Há relatos de esquema duas vezes ao dia e de associação com cetoconazol para reduzir a necessidade de ciclosporina (individualizar, monitorar e respeitar bula e legislação local).',
-        '2) Controle local — higiene perianal diária ou frequente (Nelson & Couto); antissépticos tópicos (por exemplo clorexidina) quando houver infecção secundária relevante.',
-        '3) Analgesia e conforto evacuatório — a dor é determinante de sofrimento; amolecedores fecais (por exemplo lactulose) podem reduzir trauma à evacuação.',
-        '4) Tacrolimo tópico — adjuvante ou em crises leves; existem protocolos combinados na literatura (cuidado com ingestão pelo animal).',
-        '5) Prednisolona ou prednisona — frequentemente como ponte ou adjuvante: efeito mais rápido, porém com perfil importante de efeitos adversos em uso prolongado; doses anti-inflamatórias ou imunossupressoras conforme o caso (consulte a monografia da prednisolona).',
-        '6) Dieta com proteína nova ou hidrolisada — quando houver suspeita de componente alimentar ou sinais gastrointestinais associados; não é obrigatório em todos.',
-        '7) Infecção secundária — tratar quando estiver documentada ou clinicamente evidente; não substitui a imunomodulação de base.',
-        '8) Cirurgia — reservada a casos residuais ou refratários após terapia médica adequada, envolvimento importante de sacos anais, fibrose ou estenose, ou anatomia que impeça boa resposta clínica.',
+      imunomodulacao: [
+        'Mathews et al. (1997), em ensaio randomizado com 16 cães, demonstraram resposta clínica superior da ciclosporina versus placebo na furunculose perianal. Conclusão: ciclosporina 5 mg/kg VO q24h como primeira linha; resposta pode levar até 3 meses (Bruet et al., 2025).',
+        'Bruet et al. (2025) reforçam consenso atual: imunomodulação médica substitui cirurgia de rotina; antibiótico isolado falha sem ciclosporina ou equivalente.',
       ],
+      suporteLocal: [
+        'Nelson & Couto (6ª ed.) recomendam higiene perianal diária e antissépticos tópicos quando infecção secundária relevante.',
+        'Analgesia multimodal e amolecedores fecais reduzem trauma à evacuação.',
+      ],
+      cirurgia:
+        'Reservada a fibrose, estenose ou falha após curso médico adequado de imunomodulação — nunca atalho antes de ciclosporina bem conduzida (Pieper, 2022).',
       monitoramento: [
-        'Dor à evacuação — observar se o animal continua tenso, resistente ou vocaliza ao defecar.',
-        'Lesões locais — número e profundidade dos tratos, secreção e odor; fotos seriadas ajudam a acompanhar evolução.',
-        'Toque retal — reavaliar periodicamente quando indicado e seguro (sedar se necessário).',
-        'Função digestiva e estado geral — consistência fecal, peso, apetite e hidratação.',
-        'Medicamentos — vigilância a efeitos adversos de ciclosporina, glicocorticoides e cetoconazol quando em uso.',
-        'Expectativa de resposta — com ciclosporina, melhora costuma levar semanas a meses; evite conclusões precipitadas (alinhado ao consenso de 2025).',
+        'Dor à evacuação, número/profundidade de tratos e fotos seriadas.',
+        'Função renal e pressão arterial com ciclosporina prolongada.',
+        'Expectativa de melhora em semanas a meses — evitar conclusão precoce de falha.',
       ],
     },
     prevention:
@@ -328,4 +351,9 @@ export const diseasesSeed: DiseaseRecord[] = [
   hipotireoidismoCaninoRecord,
   tumoresMamariosRecord,
   mastiteRecord,
-];
+  miasteniaGravisCaesGatosRecord,
+  sindromesMiastenicasCongenitasRecord,
+  leucemiaViralFelinaRecord,
+  peritoniteInfecciosaFelinaRecord,
+  imunodeficienciaFelinaFivRecord,
+].map(withPlainLanguage);

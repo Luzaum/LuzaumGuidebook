@@ -7,7 +7,6 @@ import {
   FileText,
   Home,
   Info,
-  Stethoscope,
   Users,
   Utensils,
 } from 'lucide-react';
@@ -16,7 +15,6 @@ import Dashboard from './pages/Dashboard';
 import NewCalculation from './pages/NewCalculation';
 import Patients from './pages/Patients';
 import Foods from './pages/Foods';
-import Hospitalized from './pages/Hospitalized';
 import Reports from './pages/Reports';
 import BcsGuide from './pages/BcsGuide';
 import NaturalFoods from './pages/NaturalFoods';
@@ -34,7 +32,6 @@ const navigation = [
   { name: 'Novo cálculo', shortName: 'Novo', path: '/new', icon: Calculator },
   { name: 'Pacientes', shortName: 'Pacientes', path: '/patients', icon: Users },
   { name: 'Alimentos', shortName: 'Alimentos', path: '/foods', icon: Utensils },
-  { name: 'Hospitalizado', shortName: 'Hospital', path: '/hospitalized', icon: Stethoscope },
   { name: 'Relatórios', shortName: 'Relatórios', path: '/reports', icon: FileText },
   { name: 'Guia de ECC', shortName: 'ECC', path: '/bcs', icon: Info },
 ];
@@ -177,7 +174,6 @@ export default function App() {
           <Route path="bcs" element={<BcsGuide />} />
           <Route path="foods" element={<Foods />} />
           <Route path="foods/natural" element={<NaturalFoods />} />
-          <Route path="hospitalized" element={<Hospitalized />} />
           <Route path="reports" element={<Reports />} />
           <Route path="reports/:reportId" element={<ReportDetail />} />
           <Route path="*" element={<Navigate to={BASE_ROUTE} replace />} />

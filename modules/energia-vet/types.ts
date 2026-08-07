@@ -121,7 +121,7 @@ export interface WeightTargetPlan {
   isManualTarget?: boolean
   weightToUseForEnergy?: 'current' | 'target'
   targetEnergy?: number
-  /** Método energético selecionado para emagrecimento (AAHA ou histórico alimentar). */
+  /** Método energético para emagrecimento (AAHA). Preservado em relatórios históricos. */
   weightLossEnergyMethod?: WeightLossEnergyMethod
   /** Rótulo clínico do método de peso-alvo (ex.: Estimativa AAHA por ECC). */
   targetWeightMethodLabel?: string

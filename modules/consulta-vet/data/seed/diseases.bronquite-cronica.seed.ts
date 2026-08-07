@@ -1,5 +1,9 @@
 import { DiseaseRecord } from '../../types/disease';
 
+const ASSET_BASE = '/assets/consulta-vet/diseases/bronquite-cronica';
+const BRUYETTE_SOURCE =
+  'Fonte: Bruyette D. Clinical Small Animal Internal Medicine. Wiley Blackwell.';
+
 /** Bronquite crônica em cães e gatos; síntese Rozanski 2014, McKiernan 2000, Galler et al. 2013, Johnson Canine and Feline Respiratory Medicine 2020, Nelson & Couto. */
 export const bronquiteCronicaRecord: DiseaseRecord = {
   id: 'disease-bronquite-cronica-caes-gatos',
@@ -168,22 +172,98 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
     {
       system: 'respiratory',
       findings: [
-        'Tosse crônica quase diária, seca ou produtiva, muitas vezes pior à noite, com exercício ou excitação.',
-        'Síncope pós-tosse em cães pequenos com componente cardiovascular ou traqueal associado.',
-        'Esforço expiratório progressivo; estertores ou sibilos à ausculta em casos avançados.',
-        'Intolerância ao exercício e cianose em casos graves ou com bronquiectasia estabelecida.',
+        {
+          finding: 'Tosse crônica quase diária, seca ou produtiva',
+          mechanism:
+            'Inflamação neutrofílica não-séptica da mucosa brônquica gera hiper-reatividade e estímulo de tosse; o ciclo tosse–trauma mucoso perpetua a inflamação.',
+          clinicalMeaning: 'Critério de entrada: tosse na maioria dos dias por ≥2 meses após excluir diferenciais.',
+          priority: 'common',
+        },
+        {
+          finding: 'Síncope pós-tosse em cães pequenos',
+          mechanism:
+            'A tosse paroxística eleva pressão intratorácica e pode reduzir retorno venoso; em animais com componente cardiovascular ou traqueal associado, isso pode causar hipoperfusão cerebral transitória.',
+          clinicalMeaning: 'Investigar colapso traqueal, cardiopatia e broncomalácia concomitantes.',
+          priority: 'uncommon',
+        },
+        {
+          finding: 'Esforço expiratório progressivo; estertores ou sibilos',
+          mechanism:
+            'Remodelamento brônquico (hipertrofia de músculo liso, hipersecreção) estreita lúmen e aumenta resistência ao fluxo expiratório.',
+          clinicalMeaning: 'Sugere doença avançada ou broncomalácia associada — pior prognóstico funcional.',
+          priority: 'common',
+        },
+        {
+          finding: 'Intolerância ao exercício e cianose',
+          mechanism:
+            'Obstrução expiratória e troca gasosa comprometida reduzem oxigenação durante esforço; bronquiectasia estabelecida agrava retenção de secreção.',
+          clinicalMeaning: 'Indica doença avançada — avaliar oxigenoterapia e comorbidades.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'general',
-      findings: ['Perda de peso e apatia em casos crônicos avançados com infecção secundária recorrente ou hipóxia persistente.'],
+      findings: [
+        {
+          finding: 'Perda de peso e apatia',
+          mechanism:
+            'Hipoxemia crônica, infecção secundária recorrente e maior gasto energético respiratório mantêm estado catabólico em casos avançados.',
+          clinicalMeaning: 'Sugere bronquiectasia, infecção sobreposta ou doença descompensada.',
+          priority: 'systemic',
+        },
+      ],
     },
   ],
   diagnosis: {
-    tcHistoriaEFisico:
-      'Tosse quase diária por pelo menos dois meses é o critério de entrada; história de gatilhos ambientais, progressão e resposta a tratamentos prévios orienta a investigação. Palpação traqueal e ausculta pulmonar completa são obrigatórias.',
-    tcDiferenciaisObrigatorios:
-      'Colapso traqueal/traqueobroncomalácia primária, cardiopatia com edema pulmonar ou compressão brônquica, dirofilariose/HARD, bronquite parasitária, neoplasia intratorácica, pneumonia bacteriana, corpo estranho, complexo respiratório infeccioso canino em fase residual.',
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'História e exame físico',
+        purpose: 'Confirmar critério operacional de bronquite crônica.',
+        description:
+          'Tosse quase diária por ≥2 meses, seca ou produtiva, com ou sem síncope pós-tosse. Palpação traqueal e ausculta pulmonar completas (Rozanski, 2014; Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Tosse crônica sem causa identificada após triagem inicial sustenta investigação de vias aéreas pequenas.',
+        limitations: 'Tosse isolada pode ter origem cardíaca, traqueal ou neoplásica — não rotular sem investigação.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Excluir diferenciais graves',
+        purpose: 'Evitar diagnóstico idiopático prematuro.',
+        description:
+          'Ecocardiograma se sopro/galope/arritmia; radiografia para colapso traqueal, cardiomegalia, massa; teste para dirofilariose; Baermann fecal para parasitos pulmonares (Nelson & Couto, 6ª ed.; Rozanski, 2014).',
+        interpretation: 'Cardiopatia, colapso traqueal ou parasito identificado muda completamente a conduta.',
+        limitations: 'Baermann negativo isolado não exclui parasito — repetir se história compatível.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Radiografia torácica',
+        purpose: 'Documentar padrão brônquico e complicações estruturais.',
+        description:
+          'Padrão brônquico difuso ("donuts"/"trilhos de trem"), possível broncograma ou dilatação brônquica em doença avançada (Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Padrão brônquico é sugestivo, não diagnóstico isolado.',
+        limitations: 'Radiografia normal não exclui bronquite — citologia confirma.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Broncoscopia e lavado broncoalveolar',
+        purpose: 'Definir citologia e excluir infecção oculta.',
+        description:
+          'Avalia mucosa (hiperemia, colapso dinâmico, secreção); citologia com perfil neutrofílico não-degenerado predominante; cultura/antibiograma antes de antibiótico (McKiernan, 2000; Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Neutrófilos não-degenerados predominantes sustentam bronquite crônica idiopática.',
+        limitations: 'Requer anestesia — timing individualizado em paciente muito comprometido.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 5,
+        title: 'Diagnóstico de exclusão',
+        purpose: 'Fechar diagnóstico após investigação completa.',
+        description:
+          'Sem causa infecciosa, parasitária, cardíaca, neoplásica ou estrutural primária identificada, assume-se bronquite crônica idiopática (Rozanski, 2014).',
+        interpretation: 'Rótulo válido apenas após exclusão sistemática de diferenciais.',
+        limitations: 'Broncomalácia concomitante pode ser subestimada sem broncoscopia.',
+      },
+    ],
     tcRadiografia: {
       kind: 'clinicalTable',
       headers: ['Achado', 'Interpretação'],
@@ -193,19 +273,45 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
         ['Ausência de cardiomegalia relevante', 'Ajuda a afastar componente cardíaco primário como causa da tosse.'],
       ],
     },
+    figuraRxPadraoBronquial: {
+      kind: 'clinicalFigure',
+      src: `${ASSET_BASE}/rx-padrao-bronquial-donuts-tramlines.png`,
+      alt: 'Radiografia torácica com padrão brônquico evidenciado por donuts e tramlines',
+      display: 'wide',
+      caption:
+        'Raio-X torácico com padrão bronquial evidenciado pelos "Donuts" e "Tramlines" (linhas de trem). ' +
+        BRUYETTE_SOURCE,
+    },
+    figuraTcBronquiteCronica: {
+      kind: 'clinicalFigure',
+      src: `${ASSET_BASE}/tc-torax-bronquite-cronica.png`,
+      alt: 'Tomografia computadorizada do tórax de paciente com bronquite crônica',
+      display: 'wide',
+      caption:
+        'Tomografia computadorizada do tórax de paciente com bronquite crônica. ' + BRUYETTE_SOURCE,
+    },
+    figuraCitologiaCurschmann: {
+      kind: 'clinicalFigure',
+      src: `${ASSET_BASE}/citologia-curschmann-spirals.png`,
+      alt: 'Fotomicrografia citológica de bronquite crônica com muco, neutrófilos e espirais de Curschmann',
+      display: 'wide',
+      caption:
+        'Fotomicrografia de um paciente diagnosticado com bronquite crônica mostrando representação citológica típica com muco abundante e neutrófilos, e espirais de Curschmann proeminentes. Fonte: imagem cortesia de Eric J. Fish, DVM, DiplACVP.',
+    },
     tcBroncoscopiaLavado:
-      'Broncoscopia avalia mucosa (hiperemia, secreção, colapso dinâmico associado) e permite lavado broncoalveolar para citologia — perfil neutrofílico não-degenerado predominante sustenta o diagnóstico — e cultura/antibiograma antes de qualquer decisão de antibiótico.',
+      'Perfil citológico neutrofílico não-degenerado predominante sustenta diagnóstico. Ver passo 4 do plano diagnóstico.',
     tcExamesComplementares:
-      'Teste para dirofilariose, Baermann fecal seriado, ecocardiograma quando há suspeita cardíaca, hemograma e bioquímica para triagem geral e suporte anestésico da broncoscopia.',
+      'Teste para dirofilariose, Baermann seriado, ecocardiograma se suspeita cardíaca, hemograma e bioquímica para suporte anestésico. Integrados aos passos 2–4.',
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Excluir e tratar diferenciais graves antes de rotular como bronquite crônica idiopática — cardiopatia, colapso traqueal, parasito e infecção mudam completamente a conduta (Rozanski, 2014).',
-      '2) Controle ambiental e de peso: eliminar irritantes inalados, tratar obesidade, trocar coleira por peitoral em cães — medidas de alto custo-benefício e baixo risco.',
-      '3) Anti-inflamatório de base: corticoide sistêmico para indução/crise, com transição planejada para corticoide inalatório (fluticasona/budesonida) na manutenção crônica, reduzindo efeitos sistêmicos (Galler et al., 2013).',
-      '4) Antitussígeno (hidrocodona, codeína ou butorfanol) quando a tosse é seca e não produtiva, sem retenção relevante de secreção — escolher apenas um opioide antitussígeno; evitar se há muco espesso acumulado que precisa ser mobilizado.',
-      '5) Broncodilatador (teofilina, terbutalina) reservado a componente broncoespástico ou broncomalácico documentado por história/exame — não é primeira linha isolada.',
-      '6) Antimicrobiano apenas com evidência citológica/cultural de infecção ativa — cultura positiva isolada sem citologia compatível não justifica tratamento (McKiernan, 2000).',
+    cronica: [
+      'Rozanski (2014), na revisão sobre bronquite crônica canina, enfatiza controle ambiental e de peso como medidas de alto custo-benefício: eliminar irritantes inalados, tratar obesidade e trocar coleira por peitoral em cães.',
+      'Galler et al. (2013), em estudo clínico com gatos com doença brônquica crônica natural, demonstraram eficácia e segurança do corticoide inalatório (budesonida) na manutenção. Conclusão: indução com prednisona/prednisolona oral seguida de transição para fluticasona ou budesonida inalatória via câmara espaçadora reduz efeitos sistêmicos.',
+      'Johnson (2020) descreve hidrocodona 0,22–0,5 mg/kg PO q6–12h, codeína 1–2 mg/kg PO q8–12h ou butorfanol 0,5–1,0 mg/kg PO q6–12h quando tosse seca perpetua ciclo inflamatório — escolher apenas um opioide; evitar se secreção retida significativa.',
+      'McKiernan (2000), em revisão com 20 anos de experiência, conclui que antibiótico empírico para tosse crônica perpetua resistência sem benefício — reservar a citologia/cultura compatíveis com infecção ativa.',
+    ],
+    aguda: [
+      'Johnson (2020) reserva teofilina ou terbutalina a componente broncoespástico ou broncomalácico documentado — não substituem anti-inflamatório de base e exigem monitorização de taquicardia e agitação.',
     ],
     monitoramento: [
       'Frequência e característica da tosse a cada revisão — objetivo é redução sustentada, não necessariamente abolição total.',

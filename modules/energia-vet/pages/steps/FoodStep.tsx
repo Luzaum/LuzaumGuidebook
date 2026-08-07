@@ -13,7 +13,6 @@ import { FoodDetailDialog, FoodInfoButton } from '../../components/FoodDetailDia
 import { useCalculationStore } from '../../store/calculationStore'
 import { computeDietPlan } from '../../lib/dietEngine'
 import { getDefaultRequirement } from '../../lib/genutriData'
-import { getClinicalProfileIdsFromSelections } from '../../lib/clinicalProfiles'
 import type { DietFormulaEntry } from '../../types'
 import {
   filterFoods,
@@ -47,7 +46,7 @@ export default function FoodStep() {
   const [detailsFoodId, setDetailsFoodId] = useState<string | null>(null)
 
   const additionalRequirementProfileIds = useMemo(
-    () => getClinicalProfileIdsFromSelections(species, patient.comorbidityIds ?? []),
+    () => [] as string[],
     [patient.comorbidityIds, species],
   )
 

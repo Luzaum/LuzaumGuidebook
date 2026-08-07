@@ -152,30 +152,49 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
     {
       system: 'metabolic',
       findings: [
-        'Poliúria e polidipsia por glicosúria e diurese osmótica.',
-        'Polifagia com perda de peso por perda calórica urinária e catabolismo.',
-        'Letargia e perda muscular por proteólise e desidratação.',
+        {
+          finding: 'Poliúria, polidipsia e polifagia com perda de peso',
+          mechanism:
+            'Glicosúria causa diurese osmótica; calorias urinárias e catabolismo superam ingestão aparente.',
+          clinicalMeaning: 'Tríade clássica da DM canina; catarata pode ser queixa inicial isolada.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'ocular',
       findings: [
-        'Catarata bilateral de instalação rápida; pode ser a queixa inicial.',
-        'Uveíte facolítica secundária exige avaliação oftalmológica e controle inflamatório.',
+        {
+          finding: 'Catarata bilateral de instalação rápida',
+          mechanism:
+            'Excesso de glicose no cristalino converte-se em sorbitol por aldose redutase, causando edema osmótico.',
+          clinicalMeaning: 'Pode preceder diagnóstico metabólico; avaliar uveíte facolítica secundária.',
+          priority: 'common',
+        },
       ],
     },
     {
-      system: 'urinary-infectious',
+      system: 'urinary',
       findings: [
-        'Glicosúria favorece infecção urinária; cultura é indicada em pacientes sintomáticos, difíceis de regular ou com sedimento sugestivo.',
-        'Infecções cutâneas, dentais ou urinárias aumentam resistência insulinica.',
+        {
+          finding: 'Infecção urinária recorrente ou controle glicêmico instável',
+          mechanism:
+            'Glicosúria favorece proliferação bacteriana; infecções aumentam resistência insulínica.',
+          clinicalMeaning: 'Cultura indicada em sintomáticos, controle ruim ou sedimento sugestivo.',
+          priority: 'systemic',
+        },
       ],
     },
     {
-      system: 'emergency',
+      system: 'critical',
       findings: [
-        'Cetoacidose: anorexia, vômitos, desidratação, dor abdominal, taquipneia, hálito cetônico, depressão e colapso.',
-        'Hipoglicemia: fome, inquietação, fraqueza, ataxia, tremores, convulsão ou coma.',
+        {
+          finding: 'Cetoacidose diabética ou hipoglicemia iatrogênica',
+          mechanism:
+            'Lipólise sem freio insulínico gera corpos cetônicos; excesso de insulina reduz glicemia cerebral.',
+          clinicalMeaning: 'Emergência — estabilizar antes de ajuste ambulatorial de dose.',
+          priority: 'emergency',
+        },
       ],
     },
   ],
@@ -300,12 +319,13 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       evidenceLevel: 'B - referência prática',
     },
     {
-      id: 'ref-vin-wsava-dog-dm-2018',
-      citationText: 'Fleeman L. Tips from the Experts for the Approach and Management of Diabetes Mellitus in Dogs. WSAVA Congress Proceedings via VIN, 2018.',
-      sourceType: 'VIN / congresso',
+      id: 'ref-fleeman-wsava-dog-dm-2018',
+      citationText:
+        'Fleeman LM. Tips from the Experts for the Approach and Management of Diabetes Mellitus in Dogs. WSAVA Congress Proceedings, 2018.',
+      sourceType: 'Proceedings WSAVA',
       url: 'https://veterinarypartner.vin.com/doc/?id=8896629&pid=22915',
-      notes: 'Conteúdo público do ecossistema VIN; páginas VIN de membros podem exigir autenticação.',
-      evidenceLevel: 'B/C - revisão especializada',
+      notes: 'Abordagem prática de insulina, dieta e monitoramento canino.',
+      evidenceLevel: 'B/C — revisão especializada',
     },
     {
       id: 'ref-monitoring-dm-pmc',

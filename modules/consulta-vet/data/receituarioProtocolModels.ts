@@ -16,6 +16,15 @@ const APOQUEL_ORAL_PRODUCTS = ['apoquel-zoetis'];
 const ZENRELIA_ORAL_PRODUCTS = ['zenrelia-elanco'];
 const CLORESTEN_TOPICAL_PRODUCTS = ['cloresten-shampoo-agener-uniao'];
 const HIDRAPET_TOPICAL_PRODUCTS = ['hydrapet-creme-agener'];
+const SILVER_SULFADIAZINE_TOPICAL_PRODUCTS = [
+  'dermazine-30g-silvestre',
+  'silglos-30g-silvestre',
+  'sulfadiazina-prata-generico-uniao-quimica',
+  'dermacerium-30g-silvestre',
+];
+const PHMB_SOAP_TOPICAL_PRODUCTS = ['pielsana-sabonete-phmb-dbs'];
+const PHMB_GEL_TOPICAL_PRODUCTS = ['curatec-gel-phmb-lm-farma', 'prontosan-gel-bbraun'];
+const PHMB_SOLUTION_TOPICAL_PRODUCTS = ['curatec-solucao-phmb-lm-farma', 'prontosan-solucao-bbraun'];
 
 type MedicationOptions = {
   canonicalId?: string | null;
@@ -698,7 +707,9 @@ Após limpeza, aplicar uma camada fina, com aproximadamente 1 a 2 mm, sobre a á
 
 Cobrir com curativo estéril não aderente quando indicado.
 
-Dose clínica: conforme orientação do fabricante e avaliação da ferida.`)],
+Dose clínica: conforme orientação do fabricante e avaliação da ferida.`, {
+        presentations: SILVER_SULFADIAZINE_TOPICAL_PRODUCTS,
+      })],
       medicationPrecautions: [
         'Lavar as mãos e utilizar luvas limpas',
         'Remover cuidadosamente o curativo anterior; umedecer curativos aderidos com solução fisiológica antes da retirada',
@@ -722,7 +733,9 @@ Dose clínica: conforme orientação do fabricante e avaliação da ferida.`)],
 
 Realizar a limpeza da ferida uma a duas vezes ao dia.
 
-Dose clínica: conforme orientação do fabricante e avaliação da ferida.`)],
+Dose clínica: conforme orientação do fabricante e avaliação da ferida.`, {
+        presentations: PHMB_SOAP_TOPICAL_PRODUCTS,
+      })],
       medicationPrecautions: [
         'Lavar as mãos e utilizar luvas',
         'Remover cuidadosamente o curativo anterior',
@@ -754,7 +767,9 @@ Realizar a limpeza uma a duas vezes ao dia:
 • Remover completamente o sabonete com solução fisiológica 0,9%
 • Secar delicadamente a pele ao redor
 
-Dose clínica: conforme orientação do fabricante e avaliação da ferida.`),
+Dose clínica: conforme orientação do fabricante e avaliação da ferida.`, {
+          presentations: PHMB_SOAP_TOPICAL_PRODUCTS,
+        }),
         medication('phmb-gel-wound', 'Gel com PHMB', {
           min: 0, unit: 'mg/kg', basis: 'manual', route: 'tópica', frequency: 'após a limpeza', duration: 'Conforme reavaliação.',
         }, `2. GEL COM PHMB — APRESENTAÇÃO A SELECIONAR
@@ -763,7 +778,9 @@ Após a limpeza, aplicar uma camada fina e uniforme do gel sobre o leito da feri
 
 Cobrir com gaze ou curativo estéril não aderente quando indicado.
 
-Dose clínica: conforme orientação do fabricante e avaliação da ferida.`),
+Dose clínica: conforme orientação do fabricante e avaliação da ferida.`, {
+          presentations: PHMB_GEL_TOPICAL_PRODUCTS,
+        }),
       ],
       medicationPrecautions: [
         'Manter o leito úmido, mas não encharcado',

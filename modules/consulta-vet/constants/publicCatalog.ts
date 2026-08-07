@@ -28,6 +28,11 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'hipotireoidismo-canino',
   'tumores-mamarios-caes-gatos',
   'mastite-caes-gatos',
+  'miastenia-gravis-caes-gatos',
+  'sindromes-miastenicas-congenitas-caes-gatos',
+  'leucemia-viral-felina',
+  'peritonite-infecciosa-felina',
+  'imunodeficiencia-felina-fiv',
 ] as const;
 
 

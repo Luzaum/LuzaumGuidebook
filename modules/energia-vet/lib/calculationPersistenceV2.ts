@@ -1,29 +1,42 @@
 /**
- * Persistência local v2 — snapshots separados do calc v1 legado.
- * MER, meta corporal e hospital permanecem em campos distintos.
+ * Persistência local v2 — snapshots com entrada canônica.
  */
 
 import type { EnergyCalculation, Patient, WeightTargetPlan } from '../types'
 import {
-  CALC_STORAGE_KEY_V2,
-  mapPatientFromStore,
-  toPrescribedEnergySnapshot,
-  type PrescribedEnergySnapshotV2,
-} from './nutritionCalculationBridge'
-import { calculatePatientEnergy, CALCULATION_ENGINE_VERSION } from './nutrition-calculations'
-import type { NutritionPatientAssessment, NutritionalGoal } from './nutrition-calculations'
-import type { TherapeuticDietReview } from './nutritionTherapeuticBridge'
+  calculateMaintenanceEnergy,
+  CANONICAL_ENGINE_VERSION,
+  mapLegacySnapshotToCanonical,
+  mapStoreToCanonicalInput,
+  type CanonicalNutritionInput,
+  CANONICAL_NUTRITION_SCHEMA_VERSION,
+  type NutritionalGoal,
+} from './canonical'
+
+export const CALC_STORAGE_KEY_V2 = 'vetius-energia-vet-calc-v2'
+
+export interface PrescribedEnergySnapshotV2 {
+  rerKcalDay: number
+  maintenanceEstimateKcalDay: number
+  maintenanceRangeKcalDay: { minimum: number; maximum: number }
+  finalPrescribedKcalDay: number
+  weightBasis: 'current_weight' | 'ideal_weight' | 'target_weight'
+  weightUsedKg: number
+  clinicalProfileLabel: string
+  confidence: string
+  methodSummary: string
+}
 
 export interface CalculationSnapshotV2 {
   id: string
   savedAt: string
   calculationEngineVersion: string
+  schemaVersion: string
   patient: Partial<Patient>
   energy: Partial<EnergyCalculation>
   target: Partial<WeightTargetPlan>
-  assessment: NutritionPatientAssessment
+  canonicalInput: CanonicalNutritionInput
   prescribedEnergy: PrescribedEnergySnapshotV2
-  therapeuticReview?: TherapeuticDietReview
   reportId?: string
 }
 
@@ -53,31 +66,41 @@ export function buildCalculationSnapshotV2(options: {
   energy: Partial<EnergyCalculation>
   target: Partial<WeightTargetPlan>
   nutritionalGoal?: NutritionalGoal
-  therapeuticReview?: TherapeuticDietReview
   reportId?: string
+  canonicalInput?: CanonicalNutritionInput
 }): CalculationSnapshotV2 | null {
-  const goal: NutritionalGoal =
-    options.nutritionalGoal ??
-    (options.target.goal === 'weight_loss'
-      ? 'weight_loss'
-      : options.target.goal === 'weight_gain'
-        ? 'weight_gain'
-        : 'maintenance')
+  const canonicalInput =
+    options.canonicalInput ??
+    mapStoreToCanonicalInput({
+      patient: options.patient,
+      energy: options.energy,
+      target: options.target,
+      nutritionalGoal: options.nutritionalGoal,
+    })
 
-  const assessment = mapPatientFromStore(options.patient, options.energy, goal)
-  const { result } = calculatePatientEnergy(assessment)
+  const result = calculateMaintenanceEnergy(canonicalInput)
   if (!result) return null
 
   return {
     id: crypto.randomUUID(),
     savedAt: new Date().toISOString(),
-    calculationEngineVersion: CALCULATION_ENGINE_VERSION,
+    calculationEngineVersion: CANONICAL_ENGINE_VERSION,
+    schemaVersion: CANONICAL_NUTRITION_SCHEMA_VERSION,
     patient: options.patient,
     energy: options.energy,
     target: options.target,
-    assessment,
-    prescribedEnergy: toPrescribedEnergySnapshot(result),
-    therapeuticReview: options.therapeuticReview,
+    canonicalInput,
+    prescribedEnergy: {
+      rerKcalDay: result.rerKcalDay,
+      maintenanceEstimateKcalDay: result.selectedTargetKcalDay,
+      maintenanceRangeKcalDay: result.estimatedRangeKcalDay,
+      finalPrescribedKcalDay: result.selectedTargetKcalDay,
+      weightBasis: result.weightBasis,
+      weightUsedKg: result.weightUsedKg,
+      clinicalProfileLabel: result.clinicalProfileLabel,
+      confidence: result.confidence,
+      methodSummary: result.methodSummary,
+    },
     reportId: options.reportId,
   }
 }
@@ -90,4 +113,18 @@ export function saveCalculationSnapshotV2(snapshot: CalculationSnapshotV2) {
 
 export function getCalculationSnapshotByReportId(reportId: string): CalculationSnapshotV2 | undefined {
   return readCalculationSnapshotsV2().find((item) => item.reportId === reportId)
+}
+
+export function migrateLegacySnapshotV2(raw: Record<string, unknown>): CalculationSnapshotV2 | null {
+  if (raw.canonicalInput) return raw as CalculationSnapshotV2
+  return buildCalculationSnapshotV2({
+    patient: (raw.patient as Partial<Patient>) ?? {},
+    energy: (raw.energy as Partial<EnergyCalculation>) ?? {},
+    target: (raw.target as Partial<WeightTargetPlan>) ?? {},
+    canonicalInput: mapLegacySnapshotToCanonical({
+      patient: (raw.patient as Partial<Patient>) ?? {},
+      energy: (raw.energy as Partial<EnergyCalculation>) ?? {},
+      target: (raw.target as Partial<WeightTargetPlan>) ?? {},
+    }),
+  })
 }

@@ -1,0 +1,1139 @@
+=== PAGE 5 ===
+Applied Veterinary Clinical Nutrition
+Second Edition
+Edited by
+Andrea J. Fascetti, VMD, PhD
+Diplomate ACVIM (Nutrition and Small Animal Internal Medicine)
+Board- Certified Veterinary Nutritionist®
+Professor of Nutrition, Department of Molecular Biosciences,
+School of Veterinary Medicine, UC Davis,
+Davis, CA, USA
+Sean J. Delaney, BS, DVM, MS
+Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist®
+Founder, Balance It®, A DBA of Davis Veterinary Medical Consulting, Inc.
+Davis, CA, USA
+Jennifer A. Larsen, DVM, MS, PhD
+Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist®
+Professor of Clinical Nutrition, Department of Molecular Biosciences,
+School of Veterinary Medicine, UC Davis,
+Davis, CA, USA
+Cecilia Villaverde, BVSc, PhD
+Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist®
+Diplomate ECVCN
+EBVS®, European Specialist in Veterinary and Comparative Nutrition
+Consultant, Expert Pet Nutrition, Fermoy, County Cork, Ireland
+
+=== PAGE 6 ===
+Copyright © 2024 by John Wiley & Sons, Inc. All rights reserved.
+Published by John Wiley & Sons, Inc., Hoboken, New Jersey.
+Published simultaneously in Canada.
+No part of this publication may be reproduced, stored in a retrieval system, or transmitted in any form or by any
+means, electronic, mechanical, photocopying, recording, scanning, or otherwise, except as permitted under Section
+107 or 108 of the 1976 United States Copyright Act, without either the prior written permission of the Publisher,
+or authorization through payment of the appropriate per-copy fee to the Copyright Clearance Center, Inc., 222
+Rosewood Drive, Danvers, MA 01923, (978) 750-8400, fax (978) 750-4470, or on the web at www.copyright.com.
+Requests to the Publisher for permission should be addressed to the Permissions Department, John Wiley & Sons,
+Inc., 111 River Street, Hoboken, NJ 07030, (201) 748-6011, fax (201) 748-6008, or online at http://www.wiley.com/
+go/permission.
+Trademarks: Wiley and the Wiley logo are trademarks or registered trademarks of John Wiley & Sons, Inc. and/
+or its affiliates in the United States and other countries and may not be used without written permission. All other
+trademarks are the property of their respective owners. John Wiley & Sons, Inc. is not associated with any product
+or vendor mentioned in this book.
+Limit of Liability/Disclaimer of Warranty: While the publisher and author have used their best efforts in preparing
+this book, they make no representations or warranties with respect to the accuracy or completeness of the contents
+of this book and specifically disclaim any implied warranties of merchantability or fitness for a particular purpose.
+No warranty may be created or extended by sales representatives or written sales materials. The advice and
+strategies contained herein may not be suitable for your situation. You should consult with a professional where
+appropriate. Further, readers should be aware that websites listed in this work may have changed or disappeared
+between when this work was written and when it is read. Neither the publisher nor authors shall be liable for any
+loss of profit or any other commercial damages, including but not limited to special, incidental, consequential, or
+other damages.
+For general information on our other products and services or for technical support, please contact our Customer
+Care Department within the United States at (800) 762-2974, outside the United States at (317) 572-3993 or fax
+(317) 572-4002.
+Wiley also publishes its books in a variety of electronic formats. Some content that appears in print may not be
+available in electronic formats. For more information about Wiley products, visit our web site at www.wiley.com.
+Library of Congress Cataloging-in-Publication Data applied for
+Hardback ISBN: 9781119375142
+Cover Design: Wiley
+Cover Images: Courtesy of Jennifer A. Larsen, Jonathan Stockman and Ady Gancz
+Set in 9.5/12.5pt STIXTwoText by Straive, Pondicherry, India
+
+=== PAGE 7 ===
+v
+Contents
+List of Contributors xx
+Preface xxiii
+Acknowledgments xxiv
+1 Integration of Nutrition into Clinical Practice 1
+Sean J. Delaney, Andrea J. Fascetti, Jennifer A. Larsen, and Paul Brentson
+Introduction 1
+Average Revenue from Food Sales and the Potential 1
+Strategies to Increase Product Sales 2
+Recommending an Effective Therapeutic Food 2
+Establishing Expectations 2
+Performing a Nutritional Assessment 3
+Monitoring Patient Response 3
+Providing a Variety of Options 3
+Recommending Therapeutic Treats 4
+Recommending Nutraceuticals and Dietary Supplements 4
+Creating or Increasing Revenue from Nutritional Advice 4
+Nutritional Advice for Healthy Patients 5
+Nutritional Advice for Unhealthy Patients 7
+References 7
+2 Basic Nutrition Overview 8
+Sean J. Delaney and Andrea J. Fascetti
+Energy 8
+Energy Requirements 9
+Essential Nutrients 9
+Protein and Amino Acids 10
+Fat 12
+Carbohydrates 13
+Minerals 13
+Macrominerals 13
+Trace Minerals (Microminerals) 14
+Vitamins 14
+Water Soluble 14
+
+=== PAGE 8 ===
+vi Contents
+Fat Soluble 14
+Storage Pools for Essential Nutrients 15
+Essential Nutrient Deficiency Signs and Clinically Available or Relevant Methods
+of Assessing Nutrient Status 15
+Protein 16
+Amino Acids 16
+Arginine 16
+Histidine 16
+Isoleucine 16
+Leucine 16
+Lysine 16
+Methionine (Spared by Cystine) 16
+Phenylalanine (Spared by Tyrosine) 17
+Threonine 17
+Tryptophan 17
+Valine 17
+Taurine 17
+Fat 17
+Linoleic Acid 17
+Arachidonic Acid (Cat, Not Dog) 18
+Minerals 18
+Macrominerals (Typically Required at ≥100 mg/Mcal) 18
+Calcium 18
+Phosphorus 18
+Magnesium 18
+Sodium 18
+Potassium 18
+Chloride 19
+Microminerals (Typically Required at <100 mg/Mcal) 19
+Iron 19
+Copper 19
+Zinc 19
+Manganese 19
+Selenium 19
+Iodine 19
+Vitamins 20
+Fat-Soluble Vitamins 20
+Vitamin A 20
+Vitamin D 20
+Vitamin E 20
+Vitamin K 20
+Water-Soluble Vitamins 20
+Thiamin, Vitamin B1 20
+Riboflavin, Vitamin B2 21
+Pyridoxine, Vitamin B6 21
+Niacin, Vitamin B3 21
+Pantothenic Acid, Vitamin B5 21
+Cobalamin, Vitamin B12 21
+
+=== PAGE 9 ===
+Contents vii
+Folic Acid, Vitamin B9 22
+Biotin, Vitamin H or B7 22
+Choline 22
+Diagnostic and Food Analysis Laboratories and Diet Computer Analysis 25
+Nutrient Requirements 25
+Key Clinical Nutritional Excesses and Signs 26
+Additional Education on Nutrition 27
+References 27
+3 Determining Energy Requirements 29
+Jon J. Ramsey
+Units 29
+Basic Concepts and Terminology 30
+Diet Records or History 32
+Calculating the Energy Content of a Diet 33
+Practical Equations for Predicting the Metabolizable Energy Content of Dog and Cat
+Foods 37
+Calculating Energy Requirement from Body Weight 39
+Methods of Determining Energy Expenditure and Energy Requirements 39
+Methods of Calculating Energy Expenditure and Energy Requirements 42
+Energy Requirements for Maintenance 42
+Example Calculation 47
+Example Calculation 48
+Example Calculation 48
+Energy Requirements for Growth 48
+Example Calculation 50
+Energy Requirements for Pregnancy and Lactation 51
+Example Calculation 52
+Calculating Energy Requirements in States of Disease 53
+Summary 55
+References 56
+4 Nutritional and Energy Requirements for Performance 58
+Richard C. Hill
+How Much Should Exercising Dogs Be Fed? 58
+Energy Requirements for Performance and Work 59
+Types of Exercise and Nutrient Requirements 62
+The Importance of Training 64
+Nutritional Recommendations for Dogs Undertaking Different Types of Exercise 64
+Long-Distance Submaximal Aerobic Exercise 65
+Short-Distance Supramaximal Anaerobic Exercise 66
+Fluid and Electrolyte Requirements, Hydration, and “Sports Drinks” 67
+Antioxidants 68
+Other Vitamins, Trace Minerals, and Other Essential Nutrients 68
+Other Nutritional Supplements 68
+Time of Feeding 69
+Summary 69
+References 69
+
+=== PAGE 10 ===
+viii Contents
+5 Pet Food and Supplement Regulations: Practical Implications 72
+David A. Dzanis and Isabel Marzo
+US Regulation 72
+US Regulation of Pet Foods and Supplements 72
+Definitions, Abbreviations, and Acronyms 72
+US Regulatory Oversight 73
+General Labeling Requirements 74
+Labeling Claims 77
+Descriptive Terms 77
+Supplements 78
+Therapeutic Pet Foods 79
+Dog Chews 83
+Summary 83
+European Union Regulation 83
+Definitions, Abbreviations, and Acronyms 84
+General Pet Food Regulations 85
+Complementary Pet Food: Composition, Uses, and Labeling 86
+Feed Additives 87
+Claims 87
+Labeling 87
+Dietetic Pet Food 90
+Practical Implications 95
+Summary 96
+References 96
+6 Using Pet Food Labels and Product Guides 98
+Sean J. Delaney and Andrea J. Fascetti
+“Reading” a Pet Food Label 98
+Overview of Regulatory Oversight 98
+Principal Display Panel or Front Display Panel 98
+Product Name 99
+Back Panel 99
+Nutritional Adequacy 100
+Ingredient Declaration 100
+Nutrient Concentrations or Guaranteed Analysis 101
+Company’s Contact Information 101
+Feeding Directions or Guidelines 101
+Calorie Content 101
+Caloric Distribution Calculation 102
+Using Product Brochures and Guides 103
+Converting Nutrient Concentrations to a Dry Matter Basis 103
+Converting Nutrient Concentrations to an Energy Basis 104
+Converting to Other Units 104
+Product Guide Recommendations for Conditions and Diseases 104
+Summary 105
+Recommended Resources 105
+
+=== PAGE 11 ===
+Contents ix
+7 Feeding the Healthy Dog and Cat 106
+Andrea J. Fascetti and Sean J. Delaney
+Feeding the Healthy Dog and Cat 108
+How Much to Feed 108
+When and How to Feed 112
+Free-Choice (Ad Libitum, Self-Feeding) 112
+Time-Restricted Meal Feeding 113
+Portion-Controlled Feeding 113
+Snacks and Treats 113
+Jerky Treats and Fanconi Syndrome in Dogs 115
+What to Feed 116
+Feeding Guidelines for Different Life Stages 117
+Gestation and Lactation 117
+Cats 117
+Dogs 118
+Supplementation during Gestation and Lactation 119
+Assessment 119
+Growth 119
+Orphan Kittens and Puppies 119
+Assessment 120
+Weaning to Adult 120
+Kittens 120
+Puppies 120
+Neutering and the Prevention of Weight Gain in Kittens and Puppies 121
+Assessment 122
+Adult Cats and Dogs 122
+Assessment 122
+Senior Dogs and Cats 122
+Physiological Changes Associated with Aging 123
+Nutrient Requirements of Older Pets 126
+Feeding Recommendations for Mature Dogs and Cats 128
+Summary 129
+References 129
+8 Commercial and Home-Prepared Diets 136
+Andrea J. Fascetti and Sean J. Delaney
+Introduction 136
+Commercial Diets 136
+Types of Pet Foods 136
+Dry Food 136
+Moist Foods 137
+Semi-Moist Foods 137
+Raw 138
+Terminology 138
+Market Segments 140
+Commercial Dog and Cat Diet Formulation and Considerations 140
+
+=== PAGE 12 ===
+x Contents
+Ingredient Database Population 140
+Ingredient Safety and Legality First 140
+Ingredient Regulatory Considerations 141
+Ingredient Availability and Cost 141
+Establishing Reliable Nutrient Profiles for Ingredients 142
+Ingredient Procurement 143
+Sustainability 143
+Consistency 143
+Ingredient Declaration 144
+Formulation Software 144
+Options 144
+Limitations 145
+Equipment 145
+Extruder 145
+Canning/Retorting Line 146
+Availability of Pilot Plant or Line 146
+Guaranteed Analysis Target 146
+Ingredient Declaration Order 147
+Functionality 147
+Shelf Life 147
+Palatability 148
+Least Cost 148
+Stool Quality and Digestibility 149
+Labeling 149
+Continuous Improvement 149
+Home-Prepared Diets 150
+Nutritional Adequacy 150
+Managing Patients Using Home-Prepared Diets 154
+Protein and Amino Acids 154
+Fatty Acids 155
+Carbohydrates 156
+Vitamin and Mineral Supplements 156
+General Considerations 156
+Assessment while on a Home-Prepared Diet 158
+Raw Food Feeding 158
+Summary 160
+References 160
+9 Nutritional Management of Body Weight 163
+Kathryn E. Michel and Robert C. Backus
+The Health Consequences of Overweightness and Obesity 164
+Obesity as a Risk Factor for Canine Orthopedic Disease 164
+Obesity as a Risk Factor for Feline Diabetes Mellitus 164
+Additional Health Risks of Obesity in Dogs and Cats 165
+Increasing Awareness of Overweightness and Obesity 165
+Targeting Optimal Weight 166
+Body Condition Scoring 166
+
+=== PAGE 13 ===
+Contents xi
+Understanding the Risk Factors for Weight Gain 170
+Accurate Accounting of Caloric Intake 171
+Formulation of the Weight-Loss Plan 172
+Dietary Considerations 173
+Exercise 176
+Tailoring the Program to the Patient 176
+Assessment of the Weight-Loss Plan 177
+Safety and Efficacy of Weight-Loss Programs for Companion Animals 177
+Adjustment of the Weight-Loss Plan 178
+Summary 180
+References 180
+10 Nutritional Management of Orthopedic Diseases 186
+Herman Hazewinkel
+Bone Composition and Calciotropic Hormones 186
+Chemical Composition of Bone 187
+Mineral Composition During Growth 188
+Hormonal Regulation of Calcium 189
+The Role of Nutrition During Skeletal Growth and Development 192
+Energy 192
+Calcium, Phosphorus, and Vitamin D 193
+Calcium Deficiency 193
+Phosphorus Deficiency 198
+Vitamin D Deficiency (Rickets or Hypovitaminosis D) 198
+Deficiency of Other Trace Minerals 201
+Calcium Excess (Alimentary Hypercalcitoninism) 201
+Vitamin D Excess 205
+Vitamin A Excess 206
+Nutrient Requirements for Skeletal Maintenance in Adult Animals 208
+Implementation of Nutrition in Clinical Orthopedics 210
+Influence of Nutrition in the Occurrence of Orthopedic Diseases 211
+Elbow Dysplasias 211
+Role of Nutrition in Elbow Dysplasias 212
+Hip Dysplasia 213
+Nutritional Influences Seen in Hip Dysplasia 214
+Hypertrophic Osteodystrophy (or Metaphyseal Osteopathy) in Dogs 216
+Prevention of Nutritionally Related Orthopedic Diseases 217
+Diets to Support Treatment of Patients with Osteoarthrosis 218
+Causative Role of Nutrition 219
+Therapeutic Role of Nutrition 220
+Osteoarthrosis in Cats 225
+Summary 226
+References 226
+11 Nutritional Management of Gastrointestinal Diseases 235
+Nick Cave, Sean J. Delaney, and Jennifer A. Larsen
+Key Dietary Variables 235
+
+=== PAGE 14 ===
+xii Contents
+Protein 235
+Glutamine 236
+Fat 236
+Fiber and Prebiosis 237
+Fiber Viscosity 239
+Fiber as a Luminal Adsorbent 239
+Fiber Fermentability 240
+Effects of Short-Chain Volatile Fatty Acids on the Colon 240
+Effects of Butyrate on Intestinal Immunity 241
+Effect of Fiber on Intestinal Flora: Prebiosis 241
+Choice of Fiber 242
+Immune Response to Dietary Antigens (Oral Tolerance) 243
+Immunologic Basis for Oral Tolerance 243
+Loss of Tolerance to Dietary Antigens 244
+Food Immunogenicity 245
+Acute Gastrointestinal Disease 246
+Withholding Food for Acute Non-specific Gastroenteritis 246
+Provides Bowel Rest 247
+Reduces the Risk of Vomiting 247
+Decreases Bacterial Proliferation 248
+Decreases Osmotic Diarrhea 248
+Decreases Presence of Food Antigens 248
+Benefits of Luminal Nutrition in Acute Gastroenteritis 248
+Intestinal Recovery and Adaptation 249
+Effect of Luminal Nutrients on Inflammation 249
+Veterinary Evidence 251
+Recommendations 252
+Chronic Gastrointestinal Disease 254
+Periodontal Disease 254
+Periodontitis in Feral and Wild Animals 255
+Evidence of the Protective Effect of Chewing Activities 255
+Dental Diets 256
+The Effect of Gingival Stimulation 257
+The Influence of Diet on Saliva and the Flora 258
+Recommendations 258
+Esophageal Disease 259
+Motility Disorders and Megaesophagus 259
+Esophagitis 259
+Small Intestinal Disease 261
+Chronic Intestinal Inflammation and Idiopathic Enteropathy 261
+Protein-Losing Enteropathies 270
+Adverse Food Reactions and Food-Responsive Enteropathy 270
+Short Bowel Syndrome 271
+Large Intestinal Disease 273
+Colitis 273
+Acute Colitis 273
+Chronic Colitis 274
+
+=== PAGE 15 ===
+Contents xiii
+Idiopathic Large-Bowel Diarrhea 275
+Constipation and Megacolon 276
+Intestinal Gas and Flatulence 277
+Intestinal Gas Transit and Borborygmus 277
+Flatulence 277
+Summary 279
+References 280
+12 Nutritional Management of Exocrine Pancreatic Diseases 299
+Cecilia Villaverde and Marta Hervera
+Pancreatitis 300
+Pathophysiology 301
+Nutritional Management 302
+Controversies Regarding Nutritional Management 302
+When to Start Feeding in Acute Pancreatitis? 302
+How Low Is a “Low-Fat” Diet? 303
+Does Fat Have to Be Restricted in Canine Acute Pancreatitis? 304
+How Important Is Fat Restriction in Feline Pancreatitis? 304
+Dietary Management 304
+When to Feed 305
+Route of Feeding 305
+Diet Selection 306
+Energy Requirements 307
+Long-Term Management 307
+Foods to Avoid in Chronic Pancreatitis 308
+Exocrine Pancreatic Insufficiency 309
+Pathophysiology 309
+Nutritional Management 310
+Controversies Regarding Nutritional Management 310
+Is a Low-Fat Diet Important for Management? 310
+Are Medium-Chain Triglycerides Preferred over Long-Chain Triglycerides? 311
+Dietary Management 311
+Summary 313
+References 313
+13 Nutritional Management of Hepatobiliary Diseases 319
+Stanley L. Marks and Aarti Kathrani
+Metabolic Alterations in Liver Failure 319
+Carbohydrate Metabolic Alterations 320
+Protein and Amino Acid Metabolic Alterations 321
+Lipid Metabolic Alterations 322
+Vitamin and Mineral Abnormalities 322
+Malnutrition in Liver Disease 324
+Nutritional Management of Common Hepatobiliary Disorders 324
+Feline Idiopathic Hepatic Lipidosis 325
+Energy 325
+Protein 326
+
+=== PAGE 16 ===
+xiv Contents
+Potassium 327
+l-Carnitine 327
+Cyanocobalamin/Vitamin B12 328
+Other Nutrient Considerations 328
+Copper-Associated Hepatotoxicity in Dogs 328
+Energy 329
+Dietary Copper Restriction 329
+Pharmacologic Reduction of Copper 330
+Antioxidants 331
+Portosystemic Shunts and Hepatic Encephalopathy 332
+Dietary Protein 334
+Nonabsorbable Disaccharides 335
+Antimicrobials 336
+Chronic Hepatitis 336
+Summary 337
+References 337
+14 Nutritional Management of Skin Diseases 345
+Catherine A. Outerbridge and Tammy J. Owens
+Evaluation of Diet in the Context of Dermatologic Disease 345
+Nutritional Deficiencies and Excesses 346
+Protein 346
+Essential Fatty Acids 348
+Zinc 350
+Zinc-Responsive Dermatoses 350
+Zinc-Unresponsive Lethal Acrodermatitis in White Bull Terriers 353
+Copper 354
+Vitamin A 354
+Vitamin E 355
+Vitamin B Complex 356
+Vitamin C 358
+Generic Dog Food Dermatosis 358
+Skin Diseases That Benefit from Nutritional or Dietary Management 359
+Cutaneous Adverse Food Reactions 359
+Clinical Signs 360
+Diagnosis and Treatment 362
+Cutaneous Xanthomatosis 366
+Superficial Necrolytic Dermatitis 366
+Clinical Presentation 369
+Diagnosis and Treatment 371
+Nutritional Supplementation for Management of Skin Disease 372
+Fatty Acid Supplementation 372
+Zinc Supplementation for Skin Disease 376
+B Vitamin Supplementation 376
+Vitamin A–Responsive Skin Diseases 376
+Vitamin E–Responsive Skin Diseases 377
+Therapeutic Diets for Skin Health 377
+
+=== PAGE 17 ===
+Contents xv
+Summary 378
+References 378
+15 Nutritional Management of Kidney Disease 384
+Yann Queau and Denise A. Elliott
+Chronic Kidney Disease 384
+Water 384
+Energy 385
+Protein 385
+Stage I/II: Progression 385
+Stage III/IV: Uremia 386
+Phosphate 387
+Electrolytes 389
+Sodium 389
+Potassium 390
+Acid–Base Balance 391
+Long-Chain Omega-3 Fatty Acids 392
+Fiber 393
+Antioxidants 393
+Nutrients That Target the Endothelium 394
+Clinical Efficacy 395
+Administration 396
+Concurrent Diseases 396
+Home-Prepared Diets 397
+Monitoring 397
+Acute Kidney Injury 398
+Glomerular Disease 400
+Fanconi Syndrome 401
+Conclusion 401
+Summary 402
+References 402
+16 Nutritional Management of Lower Urinary Tract Disease 412
+Joe Bartges and Ronald J. Corbee
+Crystal-Related Lower Urinary Tract Disease 412
+Urolithiasis 413
+Calcium Oxalate 413
+Struvite 420
+Purines 423
+Cystine 428
+Compound Uroliths 429
+Surgically and Minimally Invasive Management of Uroliths 430
+Matrix-Crystalline Urethral Plugs 430
+Idiopathic Cystitis 431
+Urinary Tract Infections 432
+Summary 433
+References 433
+
+=== PAGE 18 ===
+xvi Contents
+17 Nutritional Management of Endocrine Diseases 441
+Andrea J. Fascetti and Sean J. Delaney
+Diabetes Mellitus 441
+Nutritional Factors 441
+Water 441
+Energy 442
+Fiber 442
+Fat 444
+Protein 444
+Digestible Carbohydrates 444
+Minerals and Vitamins 446
+Food Type 447
+Feeding Recommendations and Assessment 447
+Hyperlipidemia 448
+Classification and Etiology 448
+Clinical Signs and Diagnosis 449
+Management and Assessment 449
+Hypothyroidism and Hyperadrenocorticism in Dogs 451
+Dietary Hyperthyroidism in Dogs 452
+Feline Hyperthyroidism and Idiopathic Hypercalcemia 453
+Hyperthyroidism 453
+Feline Idiopathic Hypercalcemia 454
+Summary 455
+References 455
+18 Nutritional Management of Cardiovascular Diseases 461
+Lisa M. Freeman and John E. Rush
+Feeding the Cat with Cardiac Disease 461
+Hypertrophic Cardiomyopathy 462
+Dilated Cardiomyopathy 465
+Hypertension 467
+Feeding the Dog with Cardiac Disease 467
+Asymptomatic Cardiac Disease (Myxomatous Mitral Valve Disease,
+Dilated Cardiomyopathy, or Other Cardiac Diseases; American College of Veterinary
+Internal Medicine [ACVIM] Stage B) 467
+Mild to Moderate Congestive Heart Failure (ACVIM Stage C) 468
+Cardiac Cachexia 468
+n-3 Fatty Acids 471
+Sodium 472
+Potassium and Magnesium 472
+Antioxidants 472
+Arginine 473
+Advanced Congestive Heart Failure (ACVIM Stage D) 473
+Additional Supplements for Dogs with Cardiac Disease 474
+Taurine 474
+l-Carnitine 475
+Coenzyme Q10 475
+Vitamin D 475
+
+=== PAGE 19 ===
+Contents xvii
+Hypertension 476
+General Nutritional Issues for Dogs and Cats with Cardiac Disease 476
+Summary 477
+References 478
+19 Nutritional Management of Oncologic Diseases 484
+Glenna E. Mauldin
+Cancer-Associated Malnutrition 484
+Weight Loss and Cachexia in Humans with Cancer 484
+Weight Loss and Cachexia in Cats and Dogs with Cancer 486
+Obesity in Humans with Cancer 487
+Obesity in Cats and Dogs with Cancer 489
+Canine Mammary Tumors and Obesity 489
+Nutritional Management of Cats and Dogs with Cancer 490
+Energy 490
+Calorie Sources 492
+Protein and Amino Acids 493
+Assisted Feeding 495
+Other Nutrients for Cats and Dogs with Cancer 497
+Omega-3 (n-3) Fatty Acids 497
+Vitamin D 498
+Antioxidants 500
+Nutritional Fads 502
+Supplements and Nutraceuticals 502
+Feeding Raw Foods to Cats and Dogs with Cancer 503
+Summary 503
+References 504
+20 Enteral Nutrition and Tube Feeding 515
+Jennifer A. Larsen
+The Case for Enteral Feeding 515
+Nutritional Support of Veterinary Patients 515
+When to Intervene 516
+General Contraindications 518
+Enteral Feeding Devices 519
+Nasoenteral Feeding Tubes 519
+Pharyngostomy Feeding Tubes 520
+Esophagostomy Feeding Tubes 520
+Gastrostomy Feeding Tubes 522
+Jejunal Feeding Tubes 523
+Beginning Enteral Feeding 525
+Diet Choices 526
+Immunomodulating Nutrients 527
+Glutamine 529
+Arginine 530
+Other Nutrients 530
+Calculation of Energy Requirements 531
+Complications 531
+
+=== PAGE 20 ===
+xviii Contents
+Mechanical Complications 532
+Metabolic Complications 534
+Gastrointestinal Complications 535
+Transitioning Patients to Voluntary Intake 537
+Summary 537
+References 537
+21 Parenteral Nutrition 546
+Sally C. Perea
+History 546
+Assessment of Nutritional Status and Patient Selection 547
+Nomenclature 551
+Determination of Administration Route 551
+Catheter Selection and Placement 552
+Parenteral Nutrition Components 553
+Protein 553
+Fat 555
+Carbohydrate 556
+Electrolytes and Trace Minerals 557
+Vitamins 558
+Energy Requirements 559
+Formulation Calculations 560
+Compounding 561
+Initiating Parenteral Nutrition 562
+Monitoring Guidelines 563
+Complications 563
+Metabolic Complications 563
+Mechanical Complications 566
+Septic Complications 567
+Discontinuing ParenteralNutrition 568
+Summary 568
+References 569
+22 Abridged Clinical Nutrition Topics for Companion Avian Species 574
+Elizabeth Koutsos and Brian Speer
+Water 574
+Clinical and Welfare Considerations Associated with Water 575
+Energy 575
+Sources of Energy 576
+Clinical Issues Associated with Energy Imbalance: Obesity 576
+Food-Based Enrichment 577
+Amino Acids and Protein 578
+Clinical Issues with Protein/Amino Acids 578
+Essential Fatty Acids and Lipids 579
+Clinical Issues Associated with Lipid Nutrition: Atherosclerosis 579
+Vitamins 581
+Clinical Issues Associated with Vitamin Nutrition 581
+Minerals 582
+
+=== PAGE 21 ===
+Contents xix
+Clinical Issues Associated with Mineral Nutrition 582
+Other Clinical Nutrition Issues 583
+Nutrition and Feather-Damaging Behaviors 583
+Appropriate Diets for Birds and Their Role in Animal Well-Being 584
+Conclusions 585
+References 585
+23 Nutrition for Small Mammalian Companion Herbivores and Carnivores 590
+Jonathan Stockman and Olivia A. Petritz
+General Nutrition for Small Mammalian Companion Herbivores 590
+Lagomorphs (Rabbits) and Caviomorphs (Chinchillas and Guinea Pigs) 590
+Gastrointestinal Physiology and Anatomic Features 591
+Rabbit, Chinchilla, and Guinea Pig Normal Diet 592
+Protein 592
+Carbohydrate and Fiber 593
+Hay and Other Plant Considerations 594
+Fat 595
+Vitamins and Minerals 595
+Water 596
+General Warning about Energy-Dense Foods and Treats 596
+Nutrition-Related Diseases of Small Mammalian Companion Herbivores 597
+Lagomorphs (Rabbits) and Caviomorphs (Chinchillas and Guinea Pigs) 597
+Dental Disease and Malocclusion 597
+Obesity 598
+Gastrointestinal Stasis or Ileus 599
+Urolithiasis 599
+Critical Care Nutrition for Small Mammalian Companion Herbivores 600
+Energy Calculations for Rabbits, Chinchillas, and Guinea Pigs 601
+General Nutrition for Small Mammalian Carnivores 602
+Ferrets 602
+Digestive Physiology 602
+Nutrition-Related Diseases of Small Mammalian Companion Carnivores 602
+Ferrets and Considerations for Mink 602
+Marine Food Sources: Hypovitaminosis E/Nutritional Steatitis, Thiamine Deficiency,
+and Salt Toxicity 602
+Considerations for Mink 602
+Nutrition-Related Diseases of Small Mammalian Carnivores 603
+Ferrets 603
+Obesity 603
+Urolithiasis 603
+Ferret Pancreatic Islet Beta-Cell Tumor (Insulinoma) 605
+Inflammatory Bowel Disease 605
+Critical Care Nutrition for Small Mammalian Companion Carnivores 606
+Ferrets 606
+References 606
+Index 610
+
+=== PAGE 22 ===
+xx
+List of Contributors
+Robert C. Backus, MS, DVM, PhD Nick Cave PhD, MVSc, BVSc
+Diplomate ACVIM (Nutrition) Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist® Board- Certified Veterinary Nutritionist®
+Associate Professor and Director of the Associate Professor
+Nestlé Purina Endowed Program in Small Group Leader – Academic
+Animal Nutrition School of Veterinary Science
+College of Veterinary Medicine Te Kunenga ki Pūrehuroa | Massey University
+University of Missouri Palmerston North, New Zealand
+Columbia, MO, USA
+Ronald J. Corbee, DVM, PhD
+Joe Bartges, DVM, PhD Diplomate ECVCN
+Diplomate ACVIM (Small Animal Internal EBVS®, European Specialist in Veterinary
+Medicine and Nutrition) and Comparative Nutrition
+Board- Certified Veterinary Nutritionist® Professor
+Professor Department of Clinical Sciences
+Department of Small Animal Medicine Universiteit Utrecht
+& Surgery Utrecht, Netherlands
+University of Georgia
+Athens, GA, USA Sean J. Delaney, BS, DVM, MS
+Diplomate ACVIM (Nutrition)
+Paul Brentson, BA, MBA Board- Certified Veterinary Nutritionist®
+PB Consulting Founder, Balance It®, A DBA of Davis
+Applegate, CA, USA Veterinary Medical Consulting, Inc.
+Davis, CA, USA
+C.A. Tony Buffington, DVM, PhD
+Diplomate ACVIM (Nutrition, retired) David A. Dzanis, DVM, PhD
+Board- Certified Veterinary Nutritionist® Diplomate ACVIM (Nutrition)
+Clinical Professor Board- Certified Veterinary Nutritionist®
+School of Veterinary Medicine CEO (retired), Regulatory Discretion, Inc.
+University of California–Davis Santa Clarita, CA, USA
+Davis, CA, USA
+Emeritus Professor of Veterinary Clinical Denise A. Elliott, BVSc (Hons), PhD
+Sciences Diplomate ACVIM (Nutrition and Small
+The Ohio State University Animal Internal Medicine)
+Columbus, OH, USA Board- Certified Veterinary Nutritionist®
+
+=== PAGE 23 ===
+List of Contributors xxi
+Global Vice President Board- Certified Veterinary Nutritionist®
+Research & Development Associate Professor
+Royal Canin Small Animal Clinical Sciences
+Aimargues, Occitanie, France University of Florida
+Gainesville, FL, USA
+Andrea J. Fascetti, VMD, PhD
+Diplomate ACVIM (Nutrition and Small Aarti Kathrani, BVetMed (Hons), PhD,
+Animal Internal Medicine) FHEA, MRCVS
+Board- Certified Veterinary Nutritionist® Diplomate ACVIM (Nutrition and Small
+Professor of Nutrition Animal Internal Medicine)
+Department of Molecular Biosciences Board- Certified Veterinary Nutritionist®
+School of Veterinary Medicine Senior Lecturer in Small Animal Internal
+University of California–Davis Medicine
+Davis, CA, USA Department of Clinical Science and Services
+Royal Veterinary College
+Lisa M. Freeman, DVM, PhD
+Hatfield, Herts, UK
+Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist®
+Elizabeth Koutsos, PhD
+Professor, Department of Clinical Sciences &
+President, EnviroFlight, LLC
+Agriculture, Food and Environment
+Apex, NC, USA
+Cummings School of Veterinary Medicine
+Tufts University
+Jennifer A. Larsen, DVM, MS, PhD
+North Grafton, MA, USA
+Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist®
+Herman Hazewinkel, DVM, PhD
+Professor of Clinical Nutrition
+Diplomate European College of Veterinary
+Department of Molecular Biosciences
+Surgeons
+School of Veterinary Medicine
+Diplomate ECVCN
+University of California–Davis
+EBVS®, European Specialist in Veterinary
+Davis, CA, USA
+and Comparative Nutrition
+Emeritus Professor Companion Animal
+Stanley L. Marks, BVSc, PhD
+Orthopaedics
+Diplomate ACVIM (Nutrition,
+Dept of Clinical Sciences and
+Small Animal Internal Medicine
+Companion Animals
+and Oncology)
+Utrecht University,
+Board- Certified Veterinary Nutritionist®
+Utrecht, Netherlands
+Board- Certified Veterinary Oncologist®
+Marta Hervera, BVSc, PhD Professor
+Diplomate ECVCN Department of Medicine & Epidemiology
+EBVS®, European Specialist in Veterinary University of California–Davis
+and Comparative Nutrition Davis, CA, USA
+Co- founder and Consultant
+Isabel Marzo
+Expert Pet Nutrition
+Zurich, Switzerland Agricultural Engineer
+Senior Consultant in animal feed and
+Richard C. Hill, VetMB, PhD veterinary medicines
+Diplomate ACVIM (Nutrition and Small Costa- Marzo Consulting, SLU
+Animal Internal Medicine) Barcelona, Spain
+
+=== PAGE 24 ===
+xxii List of Contributors
+Glenna E. Mauldin, DVM, MS Yann Queau, DVM
+Diplomate ACVIM (Oncology and Nutrition) Diplomate ACVIM (Nutrition)
+Board- Certified Veterinary Nutritionist® Board- Certified Veterinary Nutritionist®
+Director of Clinical Research Discover Vet Pillar Team Manager
+Thrive Pet Healthcare and PetCure Oncology Research & Development
+Austin, TX, USA Royal Canin
+Montpellier, Occitanie, France
+Kathryn E. Michel, BA, DVM, MS, MSED
+DACVIM (Nutrition) Jon J. Ramsey, PhD
+Board-Certified Veterinary Nutritionist® Professor
+Professor of Nutrition and Associate Department of Molecular Biosciences
+Dean of Education, School of Veterinary School of Veterinary Medicine
+Medicine, University of Pennsylvania, University of California–Davis
+Philadelphia, PA, USA Davis, CA, USA
+Catherine A. Outerbridge, DVM, MVSc John E. Rush, MS, DVM
+Diplomate, ACVD Diplomate ACVIM (Cardiology)
+Board- Certified Veterinary Nutritionist® Board- Certified Veterinary Cardiologist®
+Diplomate ACVIM (Small Animal Internal Diplomate ACVECC
+Medicine) Board- Certified Veterinary Specialist in
+Professor of Clinical Dermatology Veterinary Emergency and Critical Care®
+Department of Medicine and Epidemiology Professor, Department of Clinical Sciences
+School of Veterinary Medicine Cummings School of Veterinary Medicine
+University of California–Davis Tufts University
+Davis, CA, USA North Grafton, MA, USA
+Tammy J. Owens, DVM, MS Brian Speer, DVM
+Diplomate ACVIM (Nutrition) Diplomate ABVP (Avian Practice)
+Board- Certified Veterinary Nutritionist® Diplomate ECZM (Avian)
+Assistant Professor Director
+Small Animal Clinical Sciences Medical Center for Birds
+Western College of Veterinary Medicine – Oakley, CA, USA
+University of Saskatchewan
+Saskatoon, SK, Canada Jonathan Stockman, DVM
+Diplomate ACVIM (Nutrition)
+Sally C. Perea, DVM, MS Board- Certified Veterinary Nutritionist®
+Diplomate ACVIM (Nutrition) Assistant Professor
+Board- Certified Veterinary Nutritionist® Department of Clinical Veterinary Sciences
+Veterinary Nutritionist, Research & Long Island University
+Development Brookville, NY, USA
+Royal Canin, A division of Mars, Inc.
+Lewisburg, OH, USA Cecilia Villaverde, BVSc, PhD
+Diplomate ACVIM (Nutrition)
+Olivia A. Petritz, DVM Board- Certified Veterinary Nutritionist®
+Diplomate ACZM Diplomate ECVCN
+Assistant Professor EBVS®, European Specialist in Veterinary and
+Department of Clinical Sciences Comparative Nutrition
+North Carolina State University Consultant, Expert Pet Nutrition
+Raleigh, NC, USA Fermoy, County Cork, Ireland
+
+=== PAGE 25 ===
+xxiii
+Preface
+We envision this text to be a resource not We have kept the structure and approach
+only for the veterinary practitioner but similar in this new version. Notably, one will
+also for students and residents of multiple continue to find heavy use of citations wher-
+disciplines. Many veterinary schools and ever possible. These references provide addi-
+universities are now teaching a course in tional opportunities for further reading and
+small animal clinical nutrition, and this enrichment, especially in areas where contro-
+text will make a nice complement to such versy may exist or our understanding is not yet
+lecture material. (From the first edition) complete.
+With this edition, two new co- editors have
+We have been very fortunate to have the first been added from two previous contributors and
+edition fulfill its original vision. This is largely colleagues, Drs. Jennifer Larsen and Cecilia
+thanks to its widespread promotion and adop- Villaverde. Dr. Larsen brings an unrivaled
+tion by our colleagues in industry and degree of clinical experience teaching veteri-
+academia. nary students and residents. Dr. Villaverde, as a
+Like many sciences and specialties, nutrition board- certified veterinary nutritionist in both
+knowledge evolves, and it became clear that an North America and Europe with extensive
+update was needed. We also saw an opportu- teaching experience in South America, provides
+nity to enhance the text’s international appli- unparalleled international expertise. Their gen-
+cability to better support its use outside of erosity in the midst of many other commit-
+North America and translation into multiple ments made this second edition possible.
+languages. With so many necessary updates, additions,
+With this edition, we have astoundingly and contributors and a multiyear life-a ltering
+maintained all but one now retired contributor pandemic, our publisher Wiley has shown an
+and added many more contributors to give impressive and unwavering commitment to
+additional depth as well as to add international this text and by extension veterinary nutrition.
+perspective and species expertise outside of We are indebted to their team’s guidance and
+dogs and cats, including avian and small mam- patience, especially from Erica Judisch, Merryl
+malian species. To quote the first edition again, Le Roux, Susan Engelken, Sally Osborn, Simon
+“We consider our contributors to be the experts Yapp, ETC.
+in their fields, so we are extremely fortunate It is the four co- editors’ collective hope that
+that they have been willing to share their this second edition will further the practice of
+knowledge and experience through their veterinary nutrition in small animals globally
+respective chapters” and now sidebars. This and serve you, the reader, as a ready and acces-
+sentiment remains even more true with this sible resource to help your understanding, stu-
+second edition. dents, residents, clients, and/or patients.
+
+=== PAGE 26 ===
+xxiv
+Acknowledgments
+I would like to welcome and thank Dr. Jennifer specialists, clients, customers, and patients.
+Larsen and Dr. Cecilia Villaverde for agreeing I am forever better for having crossed paths
+to assist in completing the second edition of with these tens of thousands of beings over the
+the textbook with Dr. Sean Delaney and me. last three decades. These interactions have
+I am also appreciative of all of our collabora- given me the frequent and great privilege to see
+tors from around the world who worked so people at their most humane. I hope this text
+hard in bringing their expertise to this book. It helps to give a little back as a way to show my
+is only through their tireless efforts that we sincere appreciation for this gift.
+have a second edition.
+I remain truly grateful for the continuous Sean J. Delaney, BS, DVM, MS
+support from my immediate family, my hus- Diplomate ACVIM (Nutrition)
+band Greg, sons Noah and Ari, and our Board- Certified Veterinary Nutritionist®
+dog Holly. Founder, Balance It®, A DBA of Davis
+Veterinary Medical Consulting, Inc.
+Andrea J. Fascetti, VMD, PhD Davis, CA, USA
+Diplomate ACVIM (Nutrition and Small
+Animal Internal Medicine)
+Board- Certified Veterinary Nutritionist® I would like first to express my thanks and
+Professor of Nutrition appreciation to my co- editors. I am grateful to
+Department of Molecular Biosciences be a part of this project, which represents the
+School of Veterinary Medicine collective experience, knowledge, and wisdom
+University of California–Davis of each contributor. This text resource is a val-
+Davis, CA, USA uable contribution to our discipline, and I also
+thank each author for sharing their efforts
+with us.
+In the first edition, I acknowledged my
+teachers/mentors, veterinary nutrition col- Jennifer A. Larsen, DVM, MS, PhD
+leagues, co- editor, family, and personal animal Diplomate ACVIM (Nutrition)
+companions in detail. I remain very grateful to Board- Certified Veterinary Nutritionist®
+them all, especially my wife Siona, and daugh- Professor of Clinical Nutrition
+ters Maya and Ruby. For this second edition, Department of Molecular Biosciences
+I would like to concisely acknowledge my two School of Veterinary Medicine
+new co- editors, co- workers, past students, resi- University of California–Davis
+dents, referring veterinarians and veterinary Davis, CA, USA
+
+=== PAGE 27 ===
+Acknowledgments xxv
+I would like to thank my co- editors for inviting Board- Certified Veterinary Nutritionist®
+me to participate in this unique project in the Diplomate ECVCN
+area of companion animal nutrition, and all EBVS®, European Specialist in Veterinary and
+the authors for sharing their knowledge and Comparative Nutrition
+expertise so generously. Consultant, Expert Pet Nutrition
+Fermoy, County Cork, Ireland
+Cecilia Villaverde, BVSc, PhD
+Diplomate ACVIM (Nutrition)
+
+=== PAGE 28 ===
+
+
+=== PAGE 29 ===
+1
+1
+Integration­of Nutrition­into­Clinical­Practice
+Sean J. Delaney, Andrea J. Fascetti, Jennifer A. Larsen, and Paul Brentson
+Introduction practice types (with regard to number of
+full- time clinicians, revenue level, years at cur-
+While some veterinarians enjoy the various rent location, and American Animal Hospital
+complex aspects of owning and managing a Association [AAHA] member status). Practices
+clinical practice, many more take on these roles with higher ratios may be managing expenses
+out of necessity rather than preference. In more efficiently (including consideration of
+either case, this results in many clinical costs related to inventory control) or have
+approaches being at least partially viewed higher markups. Lower ratios may reflect
+through a “fiscal filter.” Although this filter undercharging relative to the cost of managing
+should not be fine enough to strain out appro- food inventory. Revenue from therapeutic diet
+priate medical decisions, it certainly requires sales, while relatively significant on average,
+that the economics associated with certain can be higher, as practices that focus more on
+medical practices be considered. Therefore, this the large compliance gap with therapeutic food
+introductory chapter will discuss the “b usiness” recommendations (this gap includes both vet-
+of nutrition in clinical practice, as an under- erinarians who do not actively recommend
+standing of these basics will enable the practi- medically needed foods and clients who do not
+tioner to afford to implement the knowledge choose to feed them) can easily double gross
+contained in the rest of this textbook. profits from food sales with minimal addi-
+tional effort or expenditures.
+Theoretically, there is much opportunity for
+­Average­Revenue­from Food­Sales­
+growth in revenues and profits if practices can
+and the­Potential
+successfully identify and correct barriers to
+care both for wellness and for chronic and
+In 2017, the average food revenue was static acute disease management (Volk et al. 2011).
+compared to 2015 at 3.5% of total veterinary In large part, the longevity and success of any
+practice revenue in the United States (range given practice model will depend on the ability
+2.8–4.3%; AAHA 2019). At the same time, aver- to remain flexible and responsive to changing
+age total revenue earned by practices in client demographics, the impacts of the eco-
+2017 was US$1 271 402. The therapeutic food nomic climate, and the continued growth in
+revenue- to- expense ratio has remained fairly internet resources for both information and
+static over time at 1.3, and is consistent across products. For some clients, the accessibility
+Applied Veterinary Clinical Nutrition, Second Edition. Edited by Andrea J. Fascetti,
+Sean J. Delaney, Jennifer A. Larsen, and Cecilia Villaverde.
+© 2024 John Wiley & Sons, Inc. Published 2024 by John Wiley & Sons, Inc.
+
+=== PAGE 30 ===
+2 Integration of Nutrition into Clinical Practice
+but can be quite challenging in practice. To
+Box­1.1­ Dietary­Recommendations­to­
+start, one must make the correct diagnosis
+Maximize­Patient­Outcome­and Ensure­
+and select a food that can produce measura-
+Practice­Sustainability
+ble improvement in the animal companion’s
+Few recommendations hold as much weight condition or disease management. For exam-
+with clients about what to feed their animal ple, clients feeding a “weight loss” food that
+companion as a veterinarian’s recommenda- does not result in weight loss are likely to
+tion. Many pet food companies are aware of stop feeding the ineffectual food. Similarly,
+this and invest heavily in the veterinary trying to sell food that an animal companion
+community, vying for the veterinarian’s will not eat is unlikely to be successful.
+awareness of their products and, ideally, for Therefore, establishing expectations, per-
+their recommendation. Unfortunately, the forming a nutritional assessment to guide
+resulting influx of generous support is more informed food recommendations,
+increasingly viewed by some as creating a monitoring the patient response, and provid-
+conflict of interest for veterinarians and ing a variety of options are vital for client
+resulting in a bias in dietary recommenda- compliance.
+tions. This perception is increased by veteri-
+narians who have limited recommendations Establishing­Expectations
+beyond the products, brands, and/or compa- Many clients choose not to start feeding a rec-
+nies they stock. Therefore, the goal of this ommended therapeutic food, or choose to stop
+chapter is to assist the veterinarian in meth- feeding one, because they do not clearly under-
+ods to ensure they can afford to provide the stand what is expected from the food.
+best medical care for their patients and cli- Expectations are built on the client’s under-
+ents by fully integrating nutrition into their standing of the purpose and mechanism of the
+clinical practice. food. For example, clients who understand
+that higher dietary phosphorus can cause pro-
+gression of chronic kidney disease, and that
+and cost of veterinary care and products are a
+most dietary phosphorus comes from protein-
+challenge, and the practitioner must effectively
+rich ingredients, are more likely to feed an
+communicate the value of services and facili-
+appropriately lower protein- or phosphorus-
+tate convenience in order not just to achieve
+containing food. Not surprisingly, human
+compliance, but also to maximize both medi-
+patients have better retention of medical infor-
+cal outcomes and revenue (Box 1.1). In fact,
+mation when verbal information is accompa-
+profits could be increased more than fivefold
+nied with written information (Langdon
+based on the low compliance found in a
+et al. 2002). Therefore, in the veterinary set-
+study by the AAHA, which includes sales of
+ting, client handouts can be a very useful
+therapeutic pet foods (AAHA 2003).
+adjunct to verbal client education. Equally
+helpful can be reinforcement of key points by
+­Strategies­to Increase­ veterinary staff at checkout or discharge.
+Product­Sales Veterinary staff can play an instrumental role
+in drafting these materials, as they are often
+aware of common questions and issues that
+Recommending­an Effective­
+should be addressed. Staff involvement is
+Therapeutic­Food
+expected to enhance their investment in effec-
+The surest way to increase compliance and tive transmission of this information to clients,
+therapeutic pet food sales is to recommend and helps maintain a unified approach to
+an effective one. This sounds simple enough, communication.
+

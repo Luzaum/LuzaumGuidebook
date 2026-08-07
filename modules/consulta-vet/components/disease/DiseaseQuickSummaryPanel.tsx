@@ -3,6 +3,7 @@ import { HelpCircle, Activity, Heart, ShieldAlert } from 'lucide-react';
 import { DiseaseQuickSummaryRich } from '../../types/disease';
 import { getSimplifiedDiseaseDefinition } from '../../utils/simplifiedDefinitions';
 import { cn } from '../../../../lib/utils';
+import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
 import { ClinicalFlowTimeline } from './ClinicalFlowTimeline';
 function sortHighlightsLongestFirst(terms: string[]): string[] {
   return [...new Set(terms.map((t) => t.trim()).filter(Boolean))].sort((a, b) => b.length - a.length);
@@ -58,16 +59,24 @@ export function HighlightedText({ text, highlights }: { text: string; highlights
             {n.value}
           </mark>
         ) : (
-          <span key={i}>{n.value}</span>
+          <ClinicalAbbreviationText key={i} text={n.value} />
         )
       )}
     </>
   );
 }
 
-export function DiseaseQuickSummaryPanel({ data, slug }: { data: DiseaseQuickSummaryRich; slug: string }) {
+export function DiseaseQuickSummaryPanel({
+  data,
+  slug,
+  plainLanguage,
+}: {
+  data: DiseaseQuickSummaryRich;
+  slug: string;
+  plainLanguage?: { whatIsIt: string; keyPoints: string[] } | null;
+}) {
   const [activeTab, setActiveTab] = useState<'overview' | 'diagnosis' | 'treatment'>('overview');
-  const simpleDef = getSimplifiedDiseaseDefinition(slug);
+  const simpleDef = plainLanguage ?? getSimplifiedDiseaseDefinition(slug);
 
   const tabs = [
     { id: 'overview', label: 'Visão Geral', icon: HelpCircle },

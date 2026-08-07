@@ -1,6 +1,6 @@
 import { getEnergyRule, getFoodById, getNutrientDefinition, getRequirementById } from './genutriData'
-import { formulateDiet } from './nutrition-calculations'
-import { isCalculationEngineV3Enabled } from './nutritionCalculationBridge'
+import { getNutrientDisplayLabel, getNutrientDisplayUnit } from './nutrientDisplayUtils'
+import { formulateDiet } from './diet-math'
 import type {
   DietEvaluation,
   DietFormulaEntry,
@@ -222,14 +222,13 @@ export function computeDietPlan(options: {
   requirementProfileId?: string
   additionalRequirementProfileIds?: string[]
 }): DietComputationResult {
-  const v3Enabled = isCalculationEngineV3Enabled()
-  const normalizedEntries = normalizeEntries(options.entries, !v3Enabled)
+  const normalizedEntries = normalizeEntries(options.entries, false)
   const v3ProportionsValid = proportionsAreValid(options.entries)
 
   let contributions: FoodContribution[]
   let totalDryMatterGrams: number
 
-  if (v3Enabled) {
+  {
     contributions = v3ProportionsValid
       ? buildContributionsFromCaloricAllocation({
           entries: options.entries,
@@ -237,7 +236,9 @@ export function computeDietPlan(options: {
         })
       : []
     totalDryMatterGrams = contributions.reduce((sum, item) => sum + item.gramsDryMatter, 0)
-  } else {
+  }
+
+  if (contributions.length === 0 && v3ProportionsValid) {
     const foods = normalizedEntries
       .map((entry) => ({ entry, food: getFoodById(entry.foodId) }))
       .filter((item): item is { entry: DietFormulaEntry; food: FoodItem } => Boolean(item.food))
@@ -367,13 +368,11 @@ export function computeDietPlan(options: {
   )
 
   const alerts: string[] = []
-  if (v3Enabled) {
-    const proportionTotal = sumInclusionPct(options.entries)
-    if (options.entries.length > 0 && !v3ProportionsValid) {
-      alerts.push(
-        `Proporções calóricas somam ${proportionTotal.toFixed(1)}% — ajuste para 100% ou use "Dividir igualmente" antes de concluir.`,
-      )
-    }
+  const proportionTotal = sumInclusionPct(options.entries)
+  if (options.entries.length > 0 && !v3ProportionsValid) {
+    alerts.push(
+      `Proporções calóricas somam ${proportionTotal.toFixed(1)}% — ajuste para 100% ou use "Dividir igualmente" antes de concluir.`,
+    )
   }
   if (!normalizedEntries.length) {
     alerts.push('Nenhum alimento foi selecionado.')
@@ -453,8 +452,9 @@ function evaluateDiet(
   return Object.entries(profile.nutrientTargets)
     .filter(([, target]) => target.kind !== 'empty')
     .map(([key, target]) => {
-      const label = getNutrientDefinition(key)?.label ?? key
-      const unit = getNutrientDefinition(key)?.unit
+      const definition = getNutrientDefinition(key)
+      const label = getNutrientDisplayLabel(definition?.label ?? key, profile.basisType)
+      const unit = getNutrientDisplayUnit(key, profile.basisType, definition?.unit)
 
       const deliveredValue =
         profile.basisType === 'percent_dm'

@@ -1,5 +1,9 @@
 import { DiseaseRecord } from '../../types/disease';
 
+const ASSET_BASE = '/assets/consulta-vet/diseases/asma-felina';
+const AUGUST_SOURCE =
+  "Fonte: August's Consultations in Feline Internal Medicine, Volume 7.";
+
 /** Asma felina; síntese Padrid, Reinero, Trzil & Reinero 2014, Galler et al. 2013, Dye et al. 1996, Nelson & Couto, Johnson Canine and Feline Respiratory Medicine 2020. */
 export const asmaFelinaRecord: DiseaseRecord = {
   id: 'disease-asma-felina',
@@ -178,27 +182,103 @@ export const asmaFelinaRecord: DiseaseRecord = {
     {
       system: 'respiratory',
       findings: [
-        'Tosse crônica intermitente, às vezes confundida pelo tutor com tentativa de vômito de bola de pelo.',
-        'Sibilos expiratórios audíveis, esforço respiratório com padrão expiratório prolongado ("abdominal press").',
-        'Crise aguda: taquipneia, ortopneia, respiração de boca aberta, cianose — sinais de emergência respiratória.',
+        {
+          finding: 'Tosse crônica intermitente (às vezes confundida com vômito de bola de pelo)',
+          mechanism:
+            'A inflamação eosinofílica e o broncoespasmo estreitam vias aéreas pequenas; a tosse reflexa tenta mobilizar muco espesso ou aliviar obstrução expiratória.',
+          clinicalMeaning: 'Pode ser manifestação inicial antes de dispneia evidente; história de gatilhos ambientais reforça suspeita.',
+          priority: 'common',
+        },
+        {
+          finding: 'Sibilos expiratórios e esforço respiratório com padrão expiratório prolongado',
+          mechanism:
+            'Obstrução das vias aéreas pequenas predomina na expiração; o colapso dinâmico de brônquios já estreitados aumenta resistência ao fluxo de ar.',
+          clinicalMeaning: 'Padrão clássico de asma felina; diferenciar de insuficiência cardíaca e parasitose pulmonar.',
+          priority: 'common',
+        },
+        {
+          finding: 'Crise aguda: taquipneia, ortopneia, respiração de boca aberta, cianose',
+          mechanism:
+            'Broncoconstrição generalizada e edema de mucosa reduzem drasticamente a troca gasosa; hipoxemia desencadeia resposta simpática e piora do broncoespasmo.',
+          clinicalMeaning: 'Emergência respiratória — oxigênio, broncodilatador e corticoide antes de qualquer exame estressante.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'general',
-      findings: ['Letargia e redução de atividade durante crises; entre crises muitos gatos parecem clinicamente normais.'],
+      findings: [
+        {
+          finding: 'Letargia e redução de atividade durante crises',
+          mechanism:
+            'Hipoxemia e trabalho respiratório aumentado desviam energia do comportamento normal; entre crises muitos gatos parecem clinicamente normais.',
+          clinicalMeaning: 'Assintomático entre crises não exclui doença ativa — investigar mesmo com exame físico calmo.',
+          priority: 'common',
+        },
+      ],
     },
     {
-      system: 'emergency',
+      system: 'critical',
       findings: [
-        'Colapso respiratório, cianose franca e obnubilação indicam obstrução funcional grave — manuseio mínimo e oxigênio imediatos.',
+        {
+          finding: 'Colapso respiratório, cianose franca e obnubilação',
+          mechanism:
+            'Obstrução funcional grave das vias aéreas pequenas impede ventilação alveolar adequada; hipoxemia cerebral reduz nível de consciência.',
+          clinicalMeaning: 'Manuseio mínimo, oxigênio imediato e estabilização farmacológica — adiar radiografia e BAL.',
+          priority: 'emergency',
+        },
       ],
     },
   ],
   diagnosis: {
-    tcHistoriaEFisico:
-      'Tosse crônica ou episódios de dispneia expiratória em gato jovem a meia-idade, muitas vezes com padrão sazonal ou ligado a gatilho ambiental identificável pelo tutor. Ausculta pode revelar sibilos ou estar normal entre crises.',
-    tcDiferenciaisObrigatorios:
-      'Doença respiratória associada à dirofilariose (HARD), bronquite parasitária (Aelurostrongylus abstrusus, menos comumente Capillaria/Eucoleus aerophilus), bronquite crônica neutrofílica, insuficiência cardíaca congestiva com edema pulmonar, pneumonia, neoplasia intratorácica, corpo estranho.',
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'Triagem clínica e história',
+        purpose: 'Identificar padrão respiratório compatível com doença de vias aéreas pequenas felina.',
+        description:
+          'Tosse crônica intermitente, sibilos expiratórios, esforço respiratório expiratório e gatilhos ambientais identificáveis. Ausculta pode revelar sibilos ou estar normal entre crises (Dye et al., 1996; Nelson & Couto, 6ª ed.).',
+        interpretation: 'Padrão expiratório em gato jovem a meia-idade, sobretudo Siamês/oriental, aumenta suspeita de asma.',
+        limitations: 'Exame normal entre crises não exclui doença; crise aguda exige estabilização antes de investigação completa.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Excluir diferenciais obrigatórios',
+        purpose: 'Evitar rotular "asma idiopática" sem excluir causas tratáveis.',
+        description:
+          'Teste combinado antígeno + anticorpo para dirofilariose (HARD); Baermann fecal seriado (3 amostras) para Aelurostrongylus; ecocardiograma se sopro, galope ou suspeita cardíaca (Trzil & Reinero, 2014; Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'HARD ou parasito pulmonar positivo muda completamente a conduta — não iniciar corticoide crônico isolado.',
+        limitations: 'Baermann negativo na primeira amostra não exclui parasito — repetir se história de caça/acesso externo.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Radiografia torácica',
+        purpose: 'Documentar padrão brônquico e hiperinsuflação após estabilização.',
+        description:
+          'Padrão broncointersticial ("donuts"/"trilhos de trem"), hiperinsuflação com diafragma achatado; atelectasia do lobo médio direito pode ocorrer (Dye et al., 1996).',
+        interpretation: 'Achados sugerem doença brônquica, mas não são exclusivos de asma.',
+        limitations: 'Radiografia normal não exclui asma — sensibilidade limitada entre crises.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Lavado broncoalveolar',
+        purpose: 'Obter achado citológico mais específico quando seguro.',
+        description:
+          'Eosinofilia >17–25% no diferencial sustenta fortemente asma; citologia e cultura excluem infecção concomitante. Coleta adiada se FR elevada, ortopneia ou obnubilação (Johnson, Respiratory Medicine 2ª ed.; Reinero, 2019).',
+        interpretation: 'Predomínio eosinofílico diferencia de bronquite crônica neutrofílica.',
+        limitations: 'Sedação/anestesia em hipoxemia grave aumenta risco de descompensação.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 5,
+        title: 'Resposta terapêutica',
+        purpose: 'Apoiar diagnóstico quando investigação completa não é viável.',
+        description:
+          'Melhora clínica objetiva após corticoide sistêmico ou inalatório reforça o diagnóstico retrospectivamente (Trzil & Reinero, 2014).',
+        interpretation: 'Resposta ao anti-inflamatório sustenta doença eosinofílica de via aérea.',
+        limitations: 'Não substitui exclusão de HARD/parasitas na primeira avaliação.',
+      },
+    ],
     tcRadiografia: {
       kind: 'clinicalTable',
       headers: ['Achado radiográfico', 'Interpretação'],
@@ -209,10 +289,28 @@ export const asmaFelinaRecord: DiseaseRecord = {
         ['Radiografia normal', 'Não exclui asma — sensibilidade limitada, sobretudo entre crises.'],
       ],
     },
+    figuraRxTcAsmaFelina: {
+      kind: 'clinicalFigure',
+      src: `${ASSET_BASE}/rx-tc-asma-felina-painel-abcd.png`,
+      alt: 'Radiografias e tomografia computadorizada de gato com asma mostrando colapso do lobo médio direito e brônquios espessados',
+      display: 'full',
+      caption:
+        'Radiografias (A e B) e imagens de tomografia computadorizada (TC) (C e D) de um gato com asma. Observe o colapso do lobo pulmonar médio direito (setas brancas) nas radiografias (A e B) e na renderização de volume interno tridimensional (seta preta) (D). Observe os brônquios espessados com lúmen obstruído (seta preta) na imagem de TC em plano transverso (C). ' +
+        AUGUST_SOURCE,
+    },
+    figuraRxPrePosToracocentese: {
+      kind: 'clinicalFigure',
+      src: `${ASSET_BASE}/rx-pre-pos-toracocentese-gato.png`,
+      alt: 'Comparativo radiográfico lateral de gato antes e depois de toracocentese',
+      display: 'wide',
+      caption:
+        'Diferença de radiografia torácica em gato pré-toracocentese (A) e pós-toracocentese (B). ' +
+        AUGUST_SOURCE,
+    },
     tcLavadoBroncoalveolar:
-      'Padrão citológico mais específico: eosinofilia elevada no diferencial (tipicamente acima de 17-25%, com variação entre laboratórios e protocolos). Também permite cultura para excluir infecção secundária. Coleta deve ser adiada até estabilização respiratória — risco de descompensação sob sedação/anestesia em paciente hipoxêmico.',
+      'Referência citológica: eosinofilia >17–25% no diferencial. Ver passo 4 do plano diagnóstico para indicações e limites.',
     tcExamesComplementares:
-      'Teste combinado antígeno/anticorpo para dirofilariose; Baermann fecal seriado (3 amostras) para Aelurostrongylus; ecocardiograma se sopro, galope ou suspeita de componente cardíaco; hemograma pode mostrar eosinofilia periférica, mas ausência não exclui doença.',
+      'Teste para dirofilariose, Baermann seriado, ecocardiograma se indicado, hemograma (eosinofilia periférica inespecífica). Integrados ao passo 2 do plano diagnóstico.',
     tcTabelaDiferenciais: {
       kind: 'clinicalTable',
       headers: ['Condição', 'Pista diferenciadora principal'],
@@ -225,52 +323,17 @@ export const asmaFelinaRecord: DiseaseRecord = {
     },
   },
   treatment: {
-    ordemDePrioridadeEstruturada: [
-      {
-        title: 'Estabilizar crise aguda',
-        summary:
-          'Oxigênio suplementar, manuseio mínimo e sedação leve se o estresse piorar broncoespasmo. Nenhum exame estressante (radiografia, BAL) antes da estabilização (Trzil & Reinero, 2014).',
-        dose: 'Terbutalina 0,01 mg/kg SC/IM (repetir conforme resposta). Dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM. Oxigênio por gaiola ou máscara.',
-        duration: 'Horas até normalizar FR e esforço respiratório.',
-        reassess: 'Monitorar a cada 30–60 min na emergência; alvo FR <30–40 irpm em repouso quando estável.',
-      },
-      {
-        title: 'Indução anti-inflamatória sistêmica',
-        summary:
-          'Prednisolona oral (preferir sobre prednisona). Dose anti-inflamatória para leve/moderado; imunossupressora se crise grave ou refratária, com desmame gradual conforme resposta (Johnson, Canine and Feline Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
-        dose: 'Leve/moderado: 1 mg/kg VO q12h. Grave: 2 mg/kg VO q12h. Transição típica: 1 mg/kg q12h × 5 d → 1 mg/kg q24h × 5 d → desmame.',
-        duration: 'Indução 5–14 dias; desmame por semanas se dose imunossupressora ou uso >2 semanas.',
-        reassess: 'Revisão em 7–14 dias; reduzir 25–50% a cada 5–7 dias apenas se clinicamente controlado.',
-      },
-      {
-        title: 'Transição para corticoide inalatório de manutenção',
-        summary:
-          'Fluticasona ou budesonida via câmara espaçadora felina (AeroKat) reduz exposição sistêmica crônica. Sobrepor corticoide oral evita rebote durante a transição (Galler et al., 2013).',
-        dose: 'Fluticasona: 125 mcg/gato inalatório q12h (leve/moderado) ou 250 mcg/gato q12h (moderado/grave). Budesonida: 400 mcg/gato inalatório q12h. Manter prednisolona VO na transição.',
-        duration: 'Inalatório contínuo; sobrepor VO por 1–2 semanas. Efeito pleno da fluticasona em 7–10 dias.',
-        reassess: 'Reavaliar em 2–4 semanas; reduzir/suspender sistêmico quando controlado inalatoriamente.',
-      },
-      {
-        title: 'Broncodilatador de resgate',
-        summary:
-          'Salbutamol/albuterol inalatório para crises leves a moderadas; terbutalina oral como adjuvante selecionado. Sempre associado ao anti-inflamatório — nunca monoterapia crônica (Trzil & Reinero, 2014).',
-        dose: 'Salbutamol 100 mcg/gato (1 jato) inalatório PRN; repetir 1× após 20–30 min. Terbutalina oral 0,01–0,02 mg/kg VO q12h (adjuvante).',
-        duration: 'Salbutamol: uso pontual. Terbutalina oral: curto prazo enquanto ajusta corticoide.',
-        reassess: 'Salbutamol >2–3×/semana = controle inadequado; intensificar anti-inflamatório.',
-      },
-      {
-        title: 'Controle ambiental permanente',
-        summary:
-          'Areia sanitária de baixa poeira sem perfume, eliminar fumaça/aerossóis/perfumes, purificador HEPA quando aplicável, controle de peso (Reinero, 2019; Nelson & Couto, 6ª ed.).',
-        duration: 'Permanente.',
-        reassess: 'Diário de crises, tosse e uso de resgate a cada consulta.',
-      },
-      {
-        title: 'Reavaliação periódica e casos refratários',
-        summary:
-          'Tentativa de menor dose eficaz de corticoide; confirmar técnica inalatória. Broncoscopia/BAL de controle se refratário apesar de adesão (Johnson, Canine and Feline Respiratory Medicine 2ª ed.).',
-        reassess: 'Consultas a cada 4–8 semanas na manutenção; FR noturna semanal em casa (alvo <30 irpm).',
-      },
+    aguda: [
+      'Trzil & Reinero (2014), na revisão sobre asma felina, recomendam estabilização de crise com oxigênio suplementar, manuseio mínimo e broncodilatador antes de qualquer exame estressante. Terbutalina 0,01 mg/kg SC/IM (repetir conforme resposta) e dexametasona sódica fosfato 0,1–0,2 mg/kg IV/IM/SC ou 1–2 mg/gato IM associados a oxigênio por gaiola ou máscara. Conclusão: nenhum exame (radiografia, BAL) antes da estabilização.',
+    ],
+    cronica: [
+      'Johnson (2020), em Canine and Feline Respiratory Medicine (2ª ed.), descreve indução com prednisolona oral 1 mg/kg q12h (leve/moderado) ou 2 mg/kg q12h (grave), preferindo prednisolona sobre prednisona pela biodisponibilidade felina. Conclusão: anti-inflamatório sistêmico é a base; desmame gradual após 5–14 dias de indução.',
+      'Galler et al. (2013), em estudo clínico com gatos com doença brônquica crônica natural, estudaram budesonida inalatória a longo prazo. Observaram melhora clínica e funcional com baixo efeito adverso sistêmico. Conclusão: fluticasona 125–250 mcg/gato q12h ou budesonida 400 mcg/gato q12h via AeroKat reduzem exposição sistêmica na manutenção; sobrepor VO por 1–2 semanas na transição.',
+      'Trzil & Reinero (2014) enfatizam que salbutamol 100 mcg/gato inalatório PRN é resgate, nunca monoterapia crônica — uso >2–3×/semana indica controle inadequado do anti-inflamatório de base.',
+    ],
+    manutencao: [
+      'Reinero (2019), na revisão sobre perspectivas terapêuticas da asma felina, destaca controle ambiental permanente: areia sanitária de baixa poeira sem perfume, eliminar fumaça/aerossóis/perfumes, purificador HEPA e controle de peso como medidas de alto custo-benefício subutilizadas.',
+      'Johnson (2020) recomenda reavaliação a cada 4–8 semanas na manutenção, FR noturna em repouso alvo <30 irpm, e broncoscopia/BAL de controle em casos refratários apesar de adesão.',
     ],
     protocoloTerapeutico: [
       {

@@ -8,7 +8,7 @@ import type { HydrationPlanConfig } from '../lib/clinicalSnapshotTypes'
 import {
   buildHydrationPlanPreview,
   validateManualHydrationTarget,
-} from '../lib/nutrition-calculations/hydrationPlanEngine'
+} from '../lib/hospital-nutrition/hydrationPlanEngine'
 import type { Species } from '../types'
 
 interface HydrationPlanSectionProps {

@@ -4,7 +4,6 @@ import { readFileSync } from 'node:fs'
 import path from 'node:path'
 import { getFoodById, filterFoods } from '../../modules/energia-vet/lib/genutriData'
 import { legacyGenutriCatalogAdapter } from '../../modules/energia-vet/lib/catalog/legacyGenutriAdapter'
-import { evaluateTherapeuticFoodAssessment } from '../../modules/energia-vet/lib/clinical/clinicalRuleEngine'
 import { setNutritionFeatureOverride, clearNutritionFeatureOverrides } from '../../modules/energia-vet/lib/featureFlags'
 
 const source = JSON.parse(
@@ -109,21 +108,18 @@ test('registros USDA exigem atualização FDC futura', () => {
   }
 })
 
-test('espécies com mapeamento pendente não são recomendadas automaticamente', async () => {
-  setNutritionFeatureOverride('nutrition_clinical_rules_v2', true)
-  const assessment = await evaluateTherapeuticFoodAssessment(
-    (await legacyGenutriCatalogAdapter.getById('usda-fndds-26157123'))!,
-    { species: 'dog', weightKg: 10 },
-  )
-  assert.notEqual(assessment.suitability, 'suitable')
+test('registros USDA com mapeamento pendente permanecem no catálogo', async () => {
+  setNutritionFeatureOverride('nutrition_catalog_v2', true)
+  const details = await legacyGenutriCatalogAdapter.getById('usda-fndds-26157123')
+  assert.ok(details)
+  assert.notEqual(details.completenessClass, 'complete')
 })
 
-test('dados provisórios não produzem status clínico suitable', async () => {
-  setNutritionFeatureOverride('nutrition_clinical_rules_v2', true)
+test('truta FNDDS permanece como ingrediente humano provisório', async () => {
+  setNutritionFeatureOverride('nutrition_catalog_v2', true)
   const trout = await legacyGenutriCatalogAdapter.getById('usda-fndds-26151123')
   assert.ok(trout)
-  const assessment = evaluateTherapeuticFoodAssessment(trout, { species: 'cat', weightKg: 4 })
-  assert.notEqual(assessment.suitability, 'suitable')
+  assert.equal(trout.foodKind, 'human_ingredient')
 })
 
 test('busca encontra novos peixes e vísceras em português (dataset completo)', () => {

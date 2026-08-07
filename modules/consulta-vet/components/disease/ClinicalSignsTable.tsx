@@ -4,6 +4,7 @@ import { cn } from '../../../../lib/utils';
 import type { EditorialClinicalFinding, EditorialSystemGroup } from '../../types/common';
 import { translateSystemGroupTitle } from '../../utils/editorialSubsectionLabels';
 import type { DiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
+import { EditorialRichText } from '../shared/EditorialRichText';
 
 type NormalizedFinding = EditorialClinicalFinding & { system: string };
 
@@ -114,10 +115,12 @@ export function ClinicalSignsTable({ groups, visual }: { groups: EditorialSystem
                     {item.finding}
                     <ContextBadges values={item.context} />
                   </td>
-                  <td className="px-4 py-3.5 align-top text-[14px] leading-6 text-foreground/80">{item.mechanism || '—'}</td>
+                  <td className="px-4 py-3.5 align-top text-[14px] leading-6 text-foreground/80">
+                    {item.mechanism ? <EditorialRichText value={item.mechanism} /> : '—'}
+                  </td>
                   {showClinicalMeaning ? (
                     <td className="px-4 py-3.5 align-top text-[13px] leading-6 text-foreground/80">
-                      {item.clinicalMeaning || '—'}
+                      {item.clinicalMeaning ? <EditorialRichText value={item.clinicalMeaning} /> : '—'}
                       {item.priority ? (
                         <span className="mt-2 block w-fit border border-border/65 bg-muted/35 px-2 py-0.5 text-[10px] font-semibold text-muted-foreground">
                           {PRIORITY_LABELS[item.priority]}
@@ -149,7 +152,9 @@ export function ClinicalSignsTable({ groups, visual }: { groups: EditorialSystem
               </summary>
               <div className="mt-3 border-t border-border/50 pt-3">
                 <p className="text-[11px] font-bold uppercase text-muted-foreground">Entender o mecanismo</p>
-                <p className="mt-1 text-[14px] leading-6 text-foreground/82">{item.mechanism}</p>
+                <p className="mt-1 text-[14px] leading-6 text-foreground/82">
+                  <EditorialRichText value={item.mechanism} />
+                </p>
                 <ContextBadges values={item.context} />
               </div>
             </details>

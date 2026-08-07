@@ -3,8 +3,8 @@ import test from 'node:test'
 import {
   calculateParenteralOsmolarity,
   DEFAULT_PERIPHERAL_OSMOLARITY_LIMIT_MOSM_L,
-} from '../../modules/energia-vet/lib/nutrition-calculations/parenteralOsmolarityEngine'
-import { calculateParenteralNutrition } from '../../modules/energia-vet/lib/nutrition-calculations/parenteralEngine'
+} from '../../modules/energia-vet/lib/hospital-nutrition/parenteralOsmolarityEngine'
+import { calculateParenteralNutrition } from '../../modules/energia-vet/lib/hospital-nutrition/parenteralEngine'
 
 test('osmolaridade completa com três componentes', () => {
   const result = calculateParenteralOsmolarity({

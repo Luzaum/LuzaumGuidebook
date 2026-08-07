@@ -10,6 +10,7 @@ import { CKDStagingCalculator } from '../components/disease/CKDStagingCalculator
 import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
+import { DiseaseReferenceProvider } from '../context/DiseaseReferenceContext';
 import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
 import { TagPills } from '../components/shared/TagPills';
 import { useRecents } from '../hooks/useRecents';
@@ -19,6 +20,7 @@ import { getMedicationRepository } from '../services/medicationRepository';
 import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
+import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
 
 type ResumeLocationState = {
@@ -188,6 +190,8 @@ export function DiseaseDetailPage() {
     ].filter(Boolean) as Array<{ id: string; label: string }>;
   }, [disease, relatedConsensos.length, relatedMedications.length]);
 
+  const abbrevExpanded = useMemo(() => new Set<string>(), [disease?.slug]);
+
   const handleActiveSectionChange = useCallback((sectionId: string) => {
     if (!disease || !sectionId || lastSavedSectionRef.current === sectionId) return;
     lastSavedSectionRef.current = sectionId;
@@ -245,6 +249,8 @@ export function DiseaseDetailPage() {
   }
 
   return (
+    <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
+    <DiseaseReferenceProvider references={disease.references}>
     <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
       <div className="w-full min-w-0 flex-1 px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
@@ -281,7 +287,7 @@ export function DiseaseDetailPage() {
                 </span>
               </div>
 
-              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl xl:max-w-[16ch]">
+              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl">
                 {disease.title}
               </h1>
 
@@ -404,7 +410,11 @@ export function DiseaseDetailPage() {
                       {UI_TEXT.quickSummary}
                     </p>
                     {disease.quickSummaryRich ? (
-                      <DiseaseQuickSummaryPanel data={disease.quickSummaryRich} slug={disease.slug} />
+                      <DiseaseQuickSummaryPanel
+                        data={disease.quickSummaryRich}
+                        slug={disease.slug}
+                        plainLanguage={disease.plainLanguage}
+                      />
                     ) : (
                       <div className="max-w-[108ch] text-white/95">
                         <p className="text-xl leading-9 drop-shadow-sm md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
@@ -530,6 +540,8 @@ export function DiseaseDetailPage() {
         <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
       </div>
     </div>
+    </DiseaseReferenceProvider>
+    </AbbreviationExpandedContext.Provider>
   );
 }
 

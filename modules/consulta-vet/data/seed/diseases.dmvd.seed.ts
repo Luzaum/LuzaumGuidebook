@@ -130,8 +130,8 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Predomínio em raças pequenas e miniaturas (poodle, yorkshire, Cavalier King Charles Spaniel, chihuahua, entre outras). Há componente hereditário reconhecido em linhagens estudadas; o risco relativo por raça modula a frequência em populações de consultório, mas qualquer cão idoso pode desenvolver alteração valvar degenerativa.',
     dmvdValvaTricuspideNota:
       'Regurgitação tricúspide degenerativa frequentemente coexiste em estádios avançados. Quando acentuada, aumenta o retorno venoso hepático e pode mascarar ou somar sinais de congestão sistêmica; ao eco, integra a avaliação de hipertensão pulmonar e direita.',
-    visaoGeral:
-      'Em suma: DMVD não é infecciosa nem “inflamatória” no sentido clássico — é uma doença estrutural valvar progressiva, modulada por genética, envelhecimento e possivelmente fatores hemodinâmicos locais (cisalhamento, tensão nas cordas tendíneas). O fenótipo final comum é insuficiência mitral com tempo de evolução variável.',
+    definicao:
+      'Em suma: DMVD não é infecciosa nem inflamatória no sentido clássico — é uma doença estrutural valvar progressiva, modulada por genética, envelhecimento e possivelmente fatores hemodinâmicos locais (cisalhamento, tensão nas cordas tendíneas). O fenótipo final comum é insuficiência mitral com tempo de evolução variável.',
   },
   epidemiology: {
     perfil:
@@ -161,38 +161,129 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
     {
       system: 'cardiovascular',
       findings: [
-        'Sopro sistólico com máximo em foco mitral esquerdo (com radiação variável); frequência cardíaca pode estar elevada em descompensação ou taquiarritmia.',
-        'Pulso pode ser fraco ou variável com arritmia; tempo de enchimento capilar prolongado sugere baixo débito.',
-        'Pulsos paradoxais ou enfraquecidos exigem pensar em tamponamento ou outras causas — não são típicos da DMVD isolada.',
+        {
+          finding: 'Sopro sistólico com máximo em foco mitral esquerdo',
+          mechanism:
+            'Regurgitação mitral durante a sístole gera fluxo turbulento do ventrículo esquerdo para o átrio esquerdo; intensidade reflete turbulência audível, não necessariamente volume regurgitante.',
+          clinicalMeaning: 'Porta de entrada para investigação eco; soprinho suave com átrio enorme pode ser mais grave que soprinho "forte".',
+          priority: 'common',
+        },
+        {
+          finding: 'Pulso fraco ou variável; tempo de enchimento capilar prolongado',
+          mechanism:
+            'Queda de volume sistólico efetivo e arritmias reduzem perfusão periférica; ectopia gera déficit de pulso.',
+          clinicalMeaning: 'Sugere baixo débito ou arritmia — solicitar ECG.',
+          priority: 'low-output',
+        },
+        {
+          finding: 'Frequência cardíaca elevada',
+          mechanism:
+            'Ativação simpática compensa queda de débito; taquiarritmia (especialmente fibrilação atrial) encurta diástole e piora enchimento.',
+          clinicalMeaning: 'Controle de frequência pode melhorar congestão mesmo sem mudar grau de regurgitação.',
+          priority: 'arrhythmia',
+        },
       ],
     },
     {
       system: 'respiratory',
       findings: [
-        'Dispneia de esforço evoluindo para ortopneia ou dispneia em repouso; aumento do esforço abdominal respiratório.',
-        'Tosse: pode existir em congestão, mas também em doença respiratória concomitante — não atribua tudo à DMVD sem critério.',
-        'Crackles à ausculta pulmonar em edema alveolar; esforço inspiratório aumentado.',
+        {
+          finding: 'Dispneia de esforço evoluindo para ortopneia ou dispneia em repouso',
+          mechanism:
+            'Elevação da pressão capilar pulmonar por regurgitação crônica extravasa líquido para interstício e alvéolos.',
+          clinicalMeaning: 'Sugere insuficiência cardíaca congestiva esquerda — estádio C ou descompensação aguda.',
+          priority: 'heart-failure',
+        },
+        {
+          finding: 'Tosse e crepitações pulmonares',
+          mechanism:
+            'Edema pulmonar ou compressão brônquica por átrio esquerdo muito dilatado podem provocar tosse; crepitações indicam edema alveolar.',
+          clinicalMeaning: 'Correlacionar com FR, radiografia e eco — tosse isolada não confirma origem cardíaca.',
+          priority: 'heart-failure',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Intolerância ao exercício, letargia, perda de massa muscular em ICC crônica.',
-        'Síncope ou pré-síncope: reflexo neuromediado, arritmia ou, menos comum, baixo débito — correlacionar com ECG Holter se recorrente.',
+        {
+          finding: 'Intolerância ao exercício, letargia, perda de massa muscular',
+          mechanism:
+            'Baixo débito crônico e estado catabólico neuro-hormonal reduzem capacidade funcional e apetite.',
+          clinicalMeaning: 'Indica ICC avançada ou descompensação — reavaliar estádio e função renal.',
+          priority: 'systemic',
+        },
+        {
+          finding: 'Síncope ou pré-síncope',
+          mechanism:
+            'Arritmia, reflexo neuromediado ou baixo débito reduzem perfusão cerebral transitória.',
+          clinicalMeaning: 'Holter ou ECG prolongado se recorrente.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'hepatic',
       findings: [
-        'Hepatomegalia com congestão direita ou ascite em insuficiência direita avançada / hipertensão pulmonar secundária.',
+        {
+          finding: 'Hepatomegalia ou ascite',
+          mechanism:
+            'Regurgitação tricúspide associada ou hipertensão pulmonar secundária elevam pressão venosa sistêmica e congestão hepática.',
+          clinicalMeaning: 'Sugere insuficiência cardíaca direita ou biventricular avançada.',
+          priority: 'heart-failure',
+        },
       ],
     },
   ],
   diagnosis: {
-    dmvdClinicaAusculta:
-      'A ausculta é porta de entrada: soprinho sistólico em região mitral, frequentemente com irradiação dorsal. Batimentos extras ou ritmo irregular sugerem arritmia. Insuficiência valvar aguda não degenerativa (ex.: ruptura de corda) pode produzir murmúrio novo e descompensação fulminante — história e eco diferenciam. Palpação de pulso, frequência e qualidade do padrão respiratório completam o triângulo inicial.',
-    dmvdEcocardiografiaPadraoOuro:
-      'Ecocardiografia bidimensional e Doppler colorido são padrão para quantificar espessamento e prolapsamento valvar, extensão da regurgitação, volume do AE, dimensões diastólicas e sistólicas do VE, espessura parietal e estimativa de pressão de enchimento indireta. O Doppler contínuo ajuda a estimar pressão pulmonar quando há tricúspide insuficiente ou shunt fisiológico mínimo avaliável. Modos M e medidas lineares devem seguir o protocolo interno ou o consenso citado para comparabilidade seriada.',
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'Ausculta e triagem clínica',
+        purpose: 'Identificar soprinho sistólico e sinais de descompensação.',
+        description:
+          'Localizar foco mitral; palpar pulso e frequência; buscar dispneia, intolerância ao exercício, síncope, tosse (Nelson & Couto, 6ª ed.).',
+        interpretation: 'Sopro sistólico esquerdo em cão pequeno idoso = DMVD provável até eco.',
+        limitations: 'Intensidade do soprinho não substitui medidas ecocardiográficas.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Ecocardiografia completa',
+        purpose: 'Quantificar regurgitação, remodelação e função sistólica.',
+        description:
+          'Espessamento valvar, extensão da regurgitação, dimensões de AE/VE, função sistólica, estimativa de pressão pulmonar (Keene et al., ACVIM 2019).',
+        interpretation: 'Critérios de B2 dependem de medidas normalizadas — comparar com consenso.',
+        limitations: 'Um eco normal hoje não exclui progressão futura.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 3,
+        title: 'Estadiamento ACVIM',
+        purpose: 'Orientar tratamento e intervalo de seguimento.',
+        description:
+          'Classificar A–D; em pré-clínico, verificar se critérios de B2 são atingidos (Keene et al., ACVIM 2019).',
+        interpretation: 'B2 altera conversa sobre pimobendan pré-clínico; C/D exigem terapia congestiva.',
+        limitations: 'Estadiamento clínico sem eco pode superestimar ou subestimar gravidade.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Radiografia torácica',
+        purpose: 'Documentar congestão pulmonar e VHS.',
+        description:
+          'Veias pulmonares distendidas, padrão intersticial/alveolar, derrame pleural selecionado (Nelson & Couto, 6ª ed.).',
+        interpretation: 'Edema pulmonar confirma descompensação congestiva.',
+        limitations: 'Não substitui eco para B2 ou quantificação de regurgitação.',
+      },
+      {
+        stepNumber: 5,
+        title: 'Laboratório estratégico',
+        purpose: 'Basal renal antes de RAAS + diurético; apoio prognóstico.',
+        description:
+          'Hemograma e bioquímica; NT-proBNP em casos limítrofes (Keene et al., ACVIM 2019).',
+        interpretation: 'Creatinina basal orienta introdução segura de IECA.',
+        limitations: 'BNP isolado não define estádio.',
+      },
+    ],
     dmvdEstadiamentoAcvimTabela: {
       kind: 'clinicalTable',
       headers: ['Estágio ACVIM', 'Definição operacional (síntese clínica)'],
@@ -258,13 +349,17 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Intervalos de eco e consulta dependem do estádio: B1 pode ser anual ou mais espaçado; B2 e C exigem frequência maior. Documente peso, frequência em repouso, tempo de exercício e episódios de dispneia ou síncope. Reajuste de diurético após melhora radiográfica para evitar hipoperfusão renal iatrogênica.',
   },
   treatment: {
-    ordemDePrioridade: [
-      'Pimobendan: usar fórmulação sólida de confiança (cápsulas/comprimidos de especialidade veterinária registrada); evitar “pimobendan líquido”, géis ou manipulados com histórico de resposta fraca — titular em jejum (~1 h antes de comer) quando o protocolo do serviço adota essa prática.',
-      'ICC congestiva com hipóxia ou dispneia em repouso: estabilizar primeiro (oxigenoterapia, posição confortável, diurético parenteral conforme protocolo hospitalar, consideração de sedação leve se indicado).',
-      'Estabelecer inodilatação com pimobendan quando indicado (estágios B2 com critérios, C e D em geral).',
-      'Introduzir ou otimizar IECA/BRA na ICC estável com monitorização de creatinina e potássio — evitar “pacote completo” no animal desidratado.',
-      'Tratar taquiarritmias que comprometam débito (frequência ventricular elevada na fibrilação atrial, por exemplo).',
-      'Reavaliar qualidade de vida e critérios de eutanásia com honestidade empática no estádio D.',
+    preclinica: [
+      'Keene et al. (2019), nas diretrizes ACVIM para DMVD, recomendam observação periódica em estádio B1 sem polifarmácia automática — controle de peso e exercício sensato.',
+      'Boswood et al. (2016), no ensaio EPIC randomizado com cães com DMVD pré-clínica e cardiomegalia (estádio B2), compararam pimobendan e placebo. Conclusão: pimobendan retardou descompensação para insuficiência cardíaca ou morte cardíaca em cães que atenderam critérios ecocardiográficos de B2 — dose prática ~0,25–0,5 mg/kg BID ou TID com formulação sólida veterinária de confiança.',
+    ],
+    aguda: [
+      'Keene et al. (2019) enfatizam que na ICC congestiva aguda com hipóxia ou dispneia em repouso, estabilização (oxigênio, diurético parenteral) prevalece sobre titulação fina de IECA. Furosemida EV frequentemente ~2 mg/kg IV com repetições conforme resposta; nitroprussiato de sódio reservado a hospital com monitorização invasiva de PA.',
+    ],
+    cronica: [
+      'Keene et al. (2019) recomendam pimobendan nos estádios B2 (com critérios), C e D; IECA/BRA quando perfusão renal e pressão permitem, com creatinina e potássio 5–10 dias após início.',
+      'Budde e McCluskey (2023), no Plumb\'s (10ª ed.), descrevem furosemida na menor dose eficaz após estabilização; torasemida com equivalência ~1:10 se refratariedade à furosemida.',
+      'Keene et al. (2019) citam espironolactona ~2–4 mg/kg/d como adjuvante em ICC avançada selecionada, com vigilância de hipercalemia e função renal.',
     ],
     monitoramento: [
       'Creatinina, ureia e eletrólitos 5–10 dias após iniciar ou aumentar IECA, espironolactona ou diurético de alça em esquemas combinados; depois conforme estabilidade.',

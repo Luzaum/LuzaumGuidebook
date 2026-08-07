@@ -8,7 +8,7 @@ import { Input } from '../components/ui/input'
 import { exportReportPdf } from '../lib/reportDocument'
 import { getSavedReports } from '../lib/persistence'
 import { listNutritionReportsFromSupabase, migrateLocalReportsToSupabase } from '../lib/supabaseReports'
-import { getHumanRequirementLabel } from '../lib/clinicalProfiles'
+import { getHumanRequirementLabel } from '../lib/clinicalProfileLabels'
 import { getRequirementById } from '../lib/genutriData'
 
 const BASE_ROUTE = '/calculadora-energetica'

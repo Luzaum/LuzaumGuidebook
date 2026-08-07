@@ -1,10 +1,23 @@
 import assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
-import { computeBodyTargetPlan } from '../../modules/energia-vet/lib/nutritionCalculationBridge'
+import { computeBodyTargetPlan, mapStoreToCanonicalInput } from '../../modules/energia-vet/lib/canonical'
 
-describe('TargetStep — ponte corporal v3', () => {
+function planFor(options: {
+  patient: Record<string, unknown>
+  goal: 'weight_loss' | 'weight_gain' | 'maintenance'
+  mer?: number
+}) {
+  const input = mapStoreToCanonicalInput({
+    patient: options.patient,
+    target: { goal: options.goal },
+  })
+  input.calculationPreferences.nutritionalGoal = options.goal
+  return computeBodyTargetPlan(input, options.mer)
+}
+
+describe('TargetStep — meta corporal canônica', () => {
   it('gato 5 kg ECC 6 — peso-alvo AAHA e energia de perda', () => {
-    const plan = computeBodyTargetPlan({
+    const plan = planFor({
       patient: {
         species: 'cat',
         currentWeight: 5,
@@ -17,7 +30,7 @@ describe('TargetStep — ponte corporal v3', () => {
         activityHoursPerDay: 0.5,
       },
       goal: 'weight_loss',
-      energyStepMerKcal: 260,
+      mer: 260,
     })
 
     assert.ok(plan)
@@ -27,8 +40,31 @@ describe('TargetStep — ponte corporal v3', () => {
     assert.ok(plan!.energyFormula.includes('Peso-alvo'))
   })
 
+  it('cão 5 kg ECC 6 — AAHA no peso-alvo (~196 kcal) vs manutenção atual', () => {
+    const plan = planFor({
+      patient: {
+        species: 'dog',
+        currentWeight: 5,
+        ageMonths: 36,
+        sex: 'male',
+        isNeutered: false,
+        bcs: 6,
+        muscleCondition: 'normal',
+        activityHoursPerDay: 1,
+      },
+      goal: 'weight_loss',
+      mer: 421,
+    })
+
+    assert.ok(plan)
+    assert.ok(Math.abs(plan!.targetWeightKg - 4.545) < 0.02)
+    assert.ok(Math.abs(plan!.targetEnergyKcal - 196) < 3)
+    assert.equal(plan!.maintenanceEnergyKcal, 421)
+    assert.ok(plan!.targetEnergyKcal < plan!.maintenanceEnergyKcal * 0.6)
+  })
+
   it('cão 15 kg ECC 7 — peso-alvo 12,5 kg', () => {
-    const plan = computeBodyTargetPlan({
+    const plan = planFor({
       patient: {
         species: 'dog',
         currentWeight: 15,
@@ -48,7 +84,7 @@ describe('TargetStep — ponte corporal v3', () => {
   })
 
   it('manutenção mantém peso e energia da etapa anterior', () => {
-    const plan = computeBodyTargetPlan({
+    const plan = planFor({
       patient: {
         species: 'dog',
         currentWeight: 12,
@@ -60,7 +96,7 @@ describe('TargetStep — ponte corporal v3', () => {
         activityHoursPerDay: 1,
       },
       goal: 'maintenance',
-      energyStepMerKcal: 680,
+      mer: 680,
     })
 
     assert.ok(plan)
@@ -69,7 +105,7 @@ describe('TargetStep — ponte corporal v3', () => {
   })
 
   it('ECC baixo — sinaliza revisão clínica', () => {
-    const plan = computeBodyTargetPlan({
+    const plan = planFor({
       patient: {
         species: 'cat',
         currentWeight: 4,

@@ -4,7 +4,7 @@ import { buildFullClinicalSnapshot } from '../../modules/energia-vet/lib/clinica
 import { isDietTransitionValid } from '../../modules/energia-vet/components/DietTransitionSection'
 import { isHydrationPlanValid } from '../../modules/energia-vet/components/HydrationPlanSection'
 import { isParenteralReviewConfirmed } from '../../modules/energia-vet/components/ParenteralNutritionSection'
-import { buildTransitionPlan, validateTransitionDayPercents } from '../../modules/energia-vet/lib/nutrition-calculations/transitionEngine'
+import { buildTransitionPlan, validateTransitionDayPercents } from '../../modules/energia-vet/lib/hospital-nutrition/transitionEngine'
 import { REPORT_V4_SAMPLE } from './fixtures/report-v4-sample'
 
 test('validação transição — plano padrão 7 dias', () => {

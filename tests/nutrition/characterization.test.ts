@@ -143,15 +143,10 @@ test('nutriente ausente no alimento permanece null (não vira zero)', () => {
   assert.equal(food.nutrientsDryMatter.crudeProteinPct, null)
 })
 
-test('relatório v4 — nome PDF e estrutura mínima', () => {
-  setNutritionFeatureOverride('nutrition_calculation_engine_v3', false)
-  try {
-    const filename = buildVetiusNutritionPdfFilename(REPORT_V4_SAMPLE)
-    assert.match(filename, /^VETIUS_NUTRICAO_REX_JOAO_SILVA_\d{4}-\d{2}-\d{2}\.pdf$/)
-    assert.ok(REPORT_V4_SAMPLE.energy.mer)
-    assert.ok(REPORT_V4_SAMPLE.diet.entries.length > 0)
-    assert.ok(REPORT_V4_SAMPLE.formula.contributions.length > 0)
-  } finally {
-    clearNutritionFeatureOverrides()
-  }
+test('relatório — nome PDF do plano para o tutor', () => {
+  const filename = buildVetiusNutritionPdfFilename(REPORT_V4_SAMPLE)
+  assert.match(filename, /^VETIUS_NUTRICAO_REX_PLANO_TUTOR_\d{4}-\d{2}-\d{2}\.pdf$/)
+  assert.ok(REPORT_V4_SAMPLE.energy.mer)
+  assert.ok(REPORT_V4_SAMPLE.diet.entries.length > 0)
+  assert.ok(REPORT_V4_SAMPLE.formula.contributions.length > 0)
 })

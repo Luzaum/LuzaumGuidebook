@@ -3,13 +3,14 @@ import {
   buildFoodSearchHaystackForFood,
   foodSearchTokensMatch,
   getFoodDisplayName,
+  scoreFoodSearchMatch,
 } from './foodSearchLexicon'
 import { humanOmega3ProductsSeed } from '../data/humanOmega3/products.seed'
 import {
   FEDIAF_REQUIREMENT_PROFILES,
   getDefaultRequirementProfileIdForState as getFediafDefaultRequirementProfileIdForState,
 } from './fediaf'
-import { resolveRequirementProfileIdForEnergyState } from './profileBridge'
+import { resolveRequirementProfileIdForEnergyState } from './canonical/requirementBridge'
 import { canCalculateDose } from './humanOmega3/regulatoryValidation'
 import { humanOmega3ToFoodItem } from './humanOmega3/foodBridge'
 import { isNutritionFeatureEnabled } from './featureFlags'
@@ -95,7 +96,8 @@ export function filterFoods(options: {
   const query = options.query?.trim()
   const catalogOnly = options.catalogOnly !== false
 
-  return getAllFoods().filter((food) => {
+  return getAllFoods()
+    .filter((food) => {
     if (catalogOnly && !isFoodCatalogVisible(food)) {
       return false
     }
@@ -120,6 +122,15 @@ export function filterFoods(options: {
 
     return foodSearchTokensMatch(query, haystack)
   })
+    .sort((left, right) => {
+      if (!query) {
+        return left.name.localeCompare(right.name, 'pt-BR')
+      }
+      const leftScore = scoreFoodSearchMatch(query, left)
+      const rightScore = scoreFoodSearchMatch(query, right)
+      if (rightScore !== leftScore) return rightScore - leftScore
+      return left.name.localeCompare(right.name, 'pt-BR')
+    })
 }
 
 export function getFoodCategories(): string[] {

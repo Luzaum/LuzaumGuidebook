@@ -157,30 +157,84 @@ export const mastiteRecord: DiseaseRecord = {
     {
       system: 'mammary',
       findings: [
-        'Glândula quente, aumentada, firme e dolorosa: hiperemia, edema e pressão intraglandular.',
-        'Leite aquoso, espesso, com grumos, sangue ou coloração marrom: exsudato, células e dano ductal.',
-        'Flutuação: coleção/abscesso; pele violácea, fria ou negra: isquemia e necrose.',
-        'Recusa em deitar ou amamentar: contato e sucção agravam dor.',
+        {
+          finding: 'Glândula quente, aumentada, firme e dolorosa',
+          mechanism:
+            'A infecção bacteriana desencadeia vasodilatação, edema intersticial e acúmulo de exsudato inflamatório, elevando a pressão intraglandular.',
+          clinicalMeaning: 'Confirma inflamação ativa; compare todas as glândulas para localizar foco e avaliar extensão.',
+          priority: 'common',
+        },
+        {
+          finding: 'Leite aquoso, espesso, com grumos, sangue ou coloração marrom',
+          mechanism:
+            'Neutrófilos, detritos celulares e hemácias extravasam para os ductos alveolares; a barreira epitelial fica comprometida.',
+          clinicalMeaning: 'Aspecto anormal do leite sustenta mastite; leite normal em uma glândula não exclui doença em outra.',
+          priority: 'common',
+        },
+        {
+          finding: 'Flutuação, pele violácea/fria ou necrose',
+          mechanism:
+            'Abscesso forma cavidade purulenta; trombose vascular e pressão local reduzem perfusão, evoluindo para gangrena.',
+          clinicalMeaning: 'Indica complicação grave que pode exigir drenagem cirúrgica ou debridamento.',
+          priority: 'emergency',
+        },
+        {
+          finding: 'Recusa em deitar ou amamentar',
+          mechanism:
+            'A dor à palpação e à sucção dos filhotes provoca aversão ao contato mamário e reduz amamentação.',
+          clinicalMeaning: 'Sinal precoce de desconforto materno; neonatos precisam de plano alternativo de alimentação.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Febre, anorexia e letargia: resposta inflamatória sistêmica; febre pode preceder alterações mamárias marcantes.',
-        'Hipotensão, taquicardia, mucosas alteradas e oligúria: sepse/choque com hipoperfusão.',
+        {
+          finding: 'Febre, anorexia e letargia',
+          mechanism:
+            'Citocinas inflamatórias sistêmicas (IL-1, TNF-α) alteram termorregulação e apetite; a febre pode preceder alterações mamárias evidentes.',
+          clinicalMeaning: 'Sugere resposta sistêmica; não trate como “febre sem foco” sem examinar as mamas.',
+          priority: 'common',
+        },
+        {
+          finding: 'Hipotensão, taquicardia, mucosas alteradas e oligúria',
+          mechanism:
+            'Endotoxemia e vasodilatação periférica reduzem débito cardíaco efetivo; a hipoperfusão renal causa oligúria.',
+          clinicalMeaning: 'Sepse ou choque — estabilização hemodinâmica antes de procedimentos prolongados.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'reproductive',
       findings: [
-        'Corrimento uterino fétido e involução inadequada: metrite concomitante pode ser a fonte de bacteremia.',
-        'Agalactia secundária: dor, estresse e inflamação reduzem ejeção e produção de leite.',
+        {
+          finding: 'Corrimento uterino fétido e involução inadequada',
+          mechanism:
+            'Metrite puerperal pode liberar bactérias para a corrente sanguínea, alcançando glândulas mamárias por via hematógena.',
+          clinicalMeaning: 'Investigue foco uterino concomitante; tratar apenas a mama pode falhar se a metrite persistir.',
+          priority: 'systemic',
+        },
+        {
+          finding: 'Agalactia ou redução da produção de leite',
+          mechanism:
+            'Dor, estresse e mediadores inflamatórios inibem a ejeção reflexa e reduzem síntese láctea.',
+          clinicalMeaning: 'Neonatos dependem de suplementação; monitorar peso diário de cada filhote.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'neonatal',
       findings: [
-        'Choro, perda de peso, fraqueza e hipotermia: ingestão insuficiente e possível doença neonatal.',
+        {
+          finding: 'Choro persistente, perda de peso, fraqueza e hipotermia nos filhotes',
+          mechanism:
+            'Ingestão calórica insuficiente reduz termogênese; hipoglicemia e desidratação agravam prostração.',
+          clinicalMeaning: 'Emergência neonatal paralela à mastite materna — não aguardar resolução da mãe para intervir.',
+          priority: 'emergency',
+        },
       ],
     },
   ],
@@ -188,33 +242,48 @@ export const mastiteRecord: DiseaseRecord = {
     {
       stepNumber: 1,
       title: 'Exame físico da mãe e das mamas',
+      purpose: 'Confirmar inflamação mamária e estadiar gravidade sistêmica antes de exames demorados.',
       description:
-        'Base diagnóstica: compare todas as glândulas, leite, tetos e perfusão sistêmica. Em apresentação típica, a clínica permite iniciar tratamento imediato.',
+        'Compare todas as glândulas, aspecto do leite, integridade dos tetos e perfusão sistêmica. Em apresentação típica, a clínica permite iniciar tratamento imediato (Nelson & Couto, 6ª ed.).',
+      interpretation: 'Assimetria glandular com calor, dor e leite alterado sustenta mastite; aparência normal isolada não exclui foco oculto.',
+      limitations: 'Palpação dolorosa pode limitar exame completo — analgesia ou sedação leve quando necessário.',
       isGoldStandard: true,
     },
     {
       stepNumber: 2,
       title: 'Citologia e cultura do leite',
+      purpose: 'Documentar infecção e orientar escolha e descalonamento de antimicrobiano.',
       description:
-        'Colete assepticamente antes do antimicrobiano. Neutrófilos degenerados e bactérias intracelulares apoiam infecção; cultura e antibiograma direcionam o descalonamento. Svensson et al. (2023) encontraram bactérias em 86% das amostras de leite de cadelas saudáveis, por isso crescimento isolado não confirma mastite.',
+        'Colete assepticamente antes do antibiótico. Neutrófilos degenerados e bactérias intracelulares apoiam infecção; cultura e antibiograma direcionam terapia.',
+      interpretation: 'Citologia inflamatória + crescimento significativo em contexto clínico confirma mastite bacteriana.',
+      limitations: 'Svensson et al. (2023) cultivaram bactérias em 86% das amostras de leite de cadelas saudáveis — crescimento isolado não confirma mastite.',
     },
     {
       stepNumber: 3,
       title: 'Hemograma, bioquímica, lactato e urina',
+      purpose: 'Estadiar sepse e disfunção orgânica em pacientes febris, anoréticos ou instáveis.',
       description:
-        'Indicar quando há febre, anorexia, necrose ou instabilidade. Leucograma, glicose, rim, fígado, eletrólitos e lactato estadiam sepse; hemocultura antes do antibiótico em caso grave.',
+        'Leucograma, glicose, função renal/hepática, eletrólitos e lactato; hemocultura antes do antibiótico em caso grave.',
+      interpretation: 'Leucocitose com desvio à esquerda, lactato elevado ou azotemia indicam resposta sistêmica importante.',
+      limitations: 'Laboratório normal não exclui mastite localizada sem complicação sistêmica.',
     },
     {
       stepNumber: 4,
       title: 'Ultrassonografia mamária',
+      purpose: 'Diferenciar celulite de abscesso e identificar tecido necrótico.',
       description:
-        'Use quando houver massa, flutuação, resposta ruim ou suspeita de necrose. Distingue celulite de cavidade, identifica tecido inviável e orienta drenagem.',
+        'Indicada quando houver massa, flutuação, resposta ruim ao tratamento inicial ou suspeita de necrose.',
+      interpretation: 'Cavidade hipoecoica com conteúdo heterogêneo sugere abscesso; áreas não perfundidas orientam debridamento.',
+      limitations: 'Celulite difusa sem coleção pode ter ultrassom pouco específico.',
     },
     {
       stepNumber: 5,
-      title: 'Diferenciais',
+      title: 'Diferenciais obrigatórios',
+      purpose: 'Evitar tratar tumor ou galactostase como infecção.',
       description:
-        'Galactostase sem infecção, hiperplasia fibroadenomatosa felina, tumor mamário, trauma e dermatite. Massa persistente após resolução inflamatória exige citologia/biópsia.',
+        'Galactostase sem infecção, hiperplasia fibroadenomatosa felina, tumor mamário, trauma e dermatite perimamária.',
+      interpretation: 'Massa persistente após resolução inflamatória exige citologia ou biópsia.',
+      limitations: 'Mastite e neoplasia mamária podem coexistir — não descartar tumor por inflamação aguda.',
     },
   ],
   treatment: {

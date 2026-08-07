@@ -4,6 +4,7 @@ import { cn } from '../../../../lib/utils';
 import type { EditorialTreatmentPriorityStep } from '../../types/common';
 import { composeTreatmentPrioritySummary } from '../../utils/clinicalFlowText';
 import type { DiseaseSectionVisual } from '../../utils/diseaseSectionVisual';
+import { EditorialRichText } from '../shared/EditorialRichText';
 
 function extractStepNumber(raw: string): number {
   const m = raw.match(/^\s*(\d+)\)\s*/);
@@ -86,7 +87,9 @@ export function TreatmentPriorityPanel({ items, visual }: { items: string[]; vis
                 >
                   <h5 className="text-[15px] font-semibold leading-snug tracking-tight text-foreground">{title}</h5>
                   {detail ? (
-                    <p className="mt-2 text-[15px] leading-relaxed text-foreground/88 md:leading-7">{detail}</p>
+                    <p className="mt-2 text-[15px] leading-relaxed text-foreground/88 md:leading-7">
+                      <EditorialRichText value={detail} />
+                    </p>
                   ) : null}
                 </div>
               </div>
@@ -117,7 +120,9 @@ export function TreatmentMonitoringPanel({ items, visual }: { items: string[]; v
             className="rounded-xl border border-border/55 bg-card/55 p-4 shadow-sm backdrop-blur-[1px] md:p-4"
           >
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">{row.left}</p>
-            <p className="mt-2 text-[15px] leading-relaxed text-foreground/90">{row.right}</p>
+            <p className="mt-2 text-[15px] leading-relaxed text-foreground/90">
+              <EditorialRichText value={row.right} />
+            </p>
           </div>
         ))}
       </div>
@@ -140,7 +145,9 @@ function PriorityMeta({
         <Icon className="h-3 w-3 shrink-0" aria-hidden />
         {label}
       </p>
-      <p className="mt-1 text-sm leading-relaxed text-foreground/90">{value}</p>
+      <p className="mt-1 text-sm leading-relaxed text-foreground/90">
+        <EditorialRichText value={value} />
+      </p>
     </div>
   );
 }
@@ -193,7 +200,7 @@ export function TreatmentPriorityRichPanel({
                 >
                   <h5 className="text-[15px] font-semibold leading-snug tracking-tight text-foreground">{step.title}</h5>
                   <p className="mt-2 text-[15px] leading-relaxed text-foreground/88 md:leading-7">
-                    {composeTreatmentPrioritySummary(step)}
+                    <EditorialRichText value={composeTreatmentPrioritySummary(step)} />
                   </p>
                   {(step.dose || step.duration || step.reassess) && (
                     <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))]">

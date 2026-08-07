@@ -1,13 +1,6 @@
 import type { StoredCalculationReport } from '../types'
-import {
-  ensureReportProvenance,
-  mergeReportsPreferV5,
-  migrateReportV4ToV5,
-} from './reportMigration'
-import {
-  REPORTS_STORAGE_KEY_V4,
-  REPORTS_STORAGE_KEY_V5,
-} from './reportVersions'
+import { ensureReportProvenance } from './reportMigration'
+import { REPORTS_STORAGE_KEY } from './reportVersions'
 
 function canUseStorage() {
   return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined'
@@ -37,10 +30,10 @@ function normalizeReport(report: StoredCalculationReport): StoredCalculationRepo
   }
 }
 
-function readReportsFromKey(key: string): StoredCalculationReport[] {
+function readReports(): StoredCalculationReport[] {
   if (!canUseStorage()) return []
   try {
-    const raw = window.localStorage.getItem(key)
+    const raw = window.localStorage.getItem(REPORTS_STORAGE_KEY)
     if (!raw) return []
     const parsed = JSON.parse(raw) as StoredCalculationReport[]
     return Array.isArray(parsed) ? parsed.map(normalizeReport) : []
@@ -49,58 +42,23 @@ function readReportsFromKey(key: string): StoredCalculationReport[] {
   }
 }
 
-function writeReportsToKey(key: string, reports: StoredCalculationReport[]) {
+function writeReports(reports: StoredCalculationReport[]) {
   if (!canUseStorage()) return
-  window.localStorage.setItem(key, JSON.stringify(reports.map(normalizeReport)))
+  window.localStorage.setItem(REPORTS_STORAGE_KEY, JSON.stringify(reports.map(normalizeReport)))
 }
 
-/** Relatórios V4 legados — nunca sobrescrever chave. */
-export function getSavedReportsV4(): StoredCalculationReport[] {
-  return readReportsFromKey(REPORTS_STORAGE_KEY_V4)
-}
-
-/** Relatórios V5 com proveniência versionada. */
-export function getSavedReportsV5(): StoredCalculationReport[] {
-  return readReportsFromKey(REPORTS_STORAGE_KEY_V5)
-}
-
-/** Leitura dupla: V5 tem precedência por id; V4 preenche lacunas. */
 export function getSavedReports(): StoredCalculationReport[] {
-  return mergeReportsPreferV5(getSavedReportsV4(), getSavedReportsV5())
+  return readReports()
 }
 
 export function saveReport(report: StoredCalculationReport, options?: { preferV5?: boolean }) {
   if (!canUseStorage()) return
+  void options
 
-  const normalized = normalizeReport(report)
-  const useV5 = options?.preferV5 ?? Boolean(normalized.provenance?.schemaVersion === 5)
-
-  if (useV5) {
-    const withProvenance = ensureReportProvenance(normalized)
-    const reports = getSavedReportsV5()
-    const next = [withProvenance, ...reports.filter((item) => item.id !== withProvenance.id)].slice(0, 300)
-    writeReportsToKey(REPORTS_STORAGE_KEY_V5, next)
-    return
-  }
-
-  const reports = getSavedReportsV4()
-  const next = [normalized, ...reports.filter((item) => item.id !== normalized.id)].slice(0, 300)
-  writeReportsToKey(REPORTS_STORAGE_KEY_V4, next)
-}
-
-/** Copia idempotente V4 → V5 sem remover o original. */
-export function migrateSavedReportToV5(reportId: string): StoredCalculationReport | null {
-  const v4 = getSavedReportsV4().find((report) => report.id === reportId)
-  if (!v4) return null
-
-  const migrated = migrateReportV4ToV5(v4)
-  const existing = getSavedReportsV5().find((report) => report.id === reportId)
-  if (existing?.provenance?.schemaVersion === 5) {
-    return existing
-  }
-
-  saveReport(migrated, { preferV5: true })
-  return migrated
+  const withProvenance = ensureReportProvenance(normalizeReport(report))
+  const reports = readReports()
+  const next = [withProvenance, ...reports.filter((item) => item.id !== withProvenance.id)].slice(0, 300)
+  writeReports(next)
 }
 
 export function getSavedReportById(reportId: string) {
@@ -160,6 +118,3 @@ export function getSavedPatients(): Array<
     (left, right) => new Date(right.lastReportAt).getTime() - new Date(left.lastReportAt).getTime(),
   )
 }
-
-/** Compatibilidade: exportar chave V4 para código legado. */
-export const REPORTS_STORAGE_KEY = REPORTS_STORAGE_KEY_V4

@@ -129,14 +129,16 @@ export const hipoadrenocorticismoAddisonRecord: DiseaseRecord = {
     },
   },
   etiology: {
-    visaoGeral:
-      'A doença de Addison primária resulta da destruição progressiva imunomediada (adrenalite linfocítica) de todas as três zonas do córtex adrenal. Cerca de 90% da massa cortical precisa ser perdida antes que os sinais clínicos de deficiência hormonal fiquem evidentes.',
-    fatores: [
-      'Destruição autoimune primária (adrenalite autoimune): causa de base na imensa maioria dos casos de aparecimento espontâneo.',
-      'Atrofia adrenal idiopática bilateral: perda generalizada de células corticais com substituição fibrosa.',
-      'Iatrogenia: superdosagem proposital ou acidental de fármacos adrenolíticos (mitotano) ou inibidores enzimáticos (trilostano).',
-      'Causas secundárias: tumores hipofisários ou hipotalâmicos bloqueando a secreção de ACTH (rara; afeta somente a secreção de cortisol, mantendo a aldosterona normal).',
-      'Desmame abrupto de terapia prolongada com corticoides exógenos: atrofia por desuso da adrenal cortical, provocando crise de insuficiência adrenal aguda.',
+    primaria:
+      'A doença de Addison primária resulta da destruição progressiva imunomediada (adrenalite linfocítica) das três zonas do córtex adrenal. Cerca de 90% da massa cortical precisa ser perdida antes que sinais clínicos de deficiência hormonal fiquem evidentes.',
+    secundaria:
+      'Tumores hipofisários ou hipotalâmicos bloqueiam ACTH (raro; afeta cortisol mas preserva aldosterona). Desmame abrupto de corticoide exógeno causa atrofia adrenal e crise aguda.',
+    iatrogenica: [
+      'Superdosagem de mitotano ou trilostano suprime função adrenal.',
+      'Uso prolongado de glicocorticoide exógeno atrofia o eixo hipófise–adrenal.',
+    ],
+    rara: [
+      'Atrofia adrenal idiopática bilateral com substituição fibrosa.',
     ],
   },
   epidemiology: {
@@ -163,30 +165,56 @@ export const hipoadrenocorticismoAddisonRecord: DiseaseRecord = {
     {
       system: 'renal',
       findings: [
-        'Poliúria e polidipsia iniciais compensatórias; anúria/oligúria na fase terminal de choque hipovolêmico profundo.',
-        'Azotemia pré-renal severa decorrente da hipoperfusão glomerular; densidade urinária frequentemente baixa/isostenúrica (1,008 a 1,020) que pode mimetizar nefropatia primária crônica.',
+        {
+          finding: 'Poliúria e polidipsia iniciais; anúria/oligúria na crise',
+          mechanism:
+            'Deficiência de aldosterona impede reabsorção de sódio e água; na crise hipovolêmica, perfusão renal cai.',
+          clinicalMeaning: 'USG baixa/isostenúrica (1,008–1,020) pode mimetizar DRC primária.',
+          priority: 'common',
+        },
+        {
+          finding: 'Azotemia pré-renal',
+          mechanism:
+            'Hipovolemia e hipoperfusão glomerular elevam ureia e creatinina.',
+          clinicalMeaning: 'Fluidoterapia agressiva costuma melhorar azotemia na crise addisoniana.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'gastrointestinal',
       findings: [
-        'Vômitos e diarreias aquosas ou hemorrágicas severas (por erosão da mucosa secundária à falta de cortisol).',
-        'Inapetência flutuante e dor abdominal inespecífica que costuma melhorar temporariamente com fluidoterapia inespecífica.',
+        {
+          finding: 'Vômitos, diarreia hemorrágica e anorexia flutuante',
+          mechanism:
+            'Deficiência de cortisol compromete integridade da mucosa gastrointestinal.',
+          clinicalMeaning: 'Melhora transitória com fluidos isolados pode atrasar diagnóstico.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Bradicardia marcada (frequência cardíaca de 50–70 bpm em cães em choque, onde se esperaria taquicardia compensatória).',
-        'Pulso femoral extremamente fraco ou filiforme, mucosas pálidas e tempo de preenchimento capilar prolongado.',
-        'Hipotensão arterial sistólica severa (< 90 mmHg) secundária à hipovolemia e perda do tônus induzido por cortisol.',
+        {
+          finding: 'Bradicardia marcada com pulso filiforme e hipotensão',
+          mechanism:
+            'Hipercalemia deprime condução miocárdica; hipovolemia reduz débito — bradicardia em choque é pista clássica.',
+          clinicalMeaning: 'Relação Na:K <27 com bradicardia = Addison até prova em contrário.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'neuromuscular',
       findings: [
-        'Letargia profunda, fraqueza muscular episódica crônica ou colapso repentino após excitação/estresse.',
-        'Tremores musculares generalizados intermitentes.',
+        {
+          finding: 'Letargia profunda, colapso pós-estresse ou tremores',
+          mechanism:
+            'Hipoglicemia e falta de cortisol impedem resposta ao estresse metabólico.',
+          clinicalMeaning: 'Crise addisoniana pode ser desencadeada por trauma, cirurgia ou infecção.',
+          priority: 'emergency',
+        },
       ],
     },
   ],

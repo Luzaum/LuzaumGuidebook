@@ -1,4 +1,6 @@
 import { getFoodById } from './genutriData'
+import { getBasisLabel } from './fediaf'
+import { getNutrientDisplayUnit } from './nutrientDisplayUtils'
 import type {
   EvaluatedNutrient,
   FoodContribution,
@@ -8,6 +10,8 @@ import type {
 } from '../types'
 
 export interface NutrientGapAdvice {
+  nutrientTitle: string
+  profileContext: string
   referenceLabel: string
   deliveredLabel: string
   gapLabel: string
@@ -111,10 +115,33 @@ function getFoodNutrientOnBasis(
   return null
 }
 
+function simulateBlendScore(
+  contributions: FoodContribution[],
+  row: EvaluatedNutrient,
+  inclusionByFoodId: Map<string, number>,
+): number {
+  let total = 0
+  for (const contribution of contributions) {
+    const food = getFoodById(contribution.foodId)
+    if (!food) continue
+    const score = getFoodNutrientOnBasis(food, row.key, row.basisType)
+    if (score == null) continue
+    total += score * (inclusionByFoodId.get(contribution.foodId) ?? contribution.inclusionPct) / 100
+  }
+  return total
+}
+
 function buildFormulationIdeas(
   row: EvaluatedNutrient,
   contributions: FoodContribution[],
 ): string[] {
+  const unit = getNutrientDisplayUnit(row.key, row.basisType, row.unit) ?? ''
+  const unitSuffix = unit ? ` ${unit}` : ''
+  const basisLabel = getBasisLabel(row.basisType)
+  const minimum = row.target ? getTargetMinimum(row.target) : null
+  const delivered = row.deliveredValue ?? 0
+  const gap = minimum != null ? minimum - delivered : null
+
   const ranked = contributions
     .map((contribution) => {
       const food = getFoodById(contribution.foodId)
@@ -132,25 +159,52 @@ function buildFormulationIdeas(
 
   const richest = ranked[0]
   const poorest = ranked[ranked.length - 1]
-  const ideas: string[] = []
 
-  if (ranked.length === 1 || richest.foodId === poorest.foodId) {
-    ideas.push(
-      `${richest.foodName} é a principal fonte de ${row.label} na fórmula. Considere aumentar sua participação em ~5–10 p.p. e reduzir proporcionalmente os demais alimentos para manter a energia-alvo.`,
-    )
-    return ideas
+  if (minimum != null && richest.score < minimum * 0.95) {
+    return [
+      `Nenhum alimento da fórmula atual aproxima a referência (${minimum.toFixed(2)}${unitSuffix} na base ${basisLabel}). ${richest.foodName} é o mais concentrado (${richest.score.toFixed(2)}${unitSuffix}), mas redistribuir proporções não fecha o déficit — inclua ou substitua por fonte mais adequada.`,
+      gap != null && gap > 0
+        ? `Déficit estimado: ${gap.toFixed(2)}${unitSuffix} abaixo do mínimo (${minimum.toFixed(2)}${unitSuffix}).`
+        : 'Recalcule a energia total após incluir novos ingredientes.',
+    ]
   }
 
-  const suggestedIncrease = Math.min(100, richest.inclusionPct + 8)
-  const suggestedDecrease = Math.max(0, poorest.inclusionPct - 8)
+  if (ranked.length === 1 || richest.foodId === poorest.foodId) {
+    return [
+      `${richest.foodName} é a principal fonte de ${row.label} na fórmula (${richest.score.toFixed(2)}${unitSuffix}). Considere aumentar sua participação em ~5–10 p.p. e reduzir proporcionalmente os demais alimentos para manter a energia-alvo.`,
+    ]
+  }
 
-  ideas.push(
-    `${richest.foodName} concentra mais ${row.label} (${richest.score.toFixed(2)} ${row.unit ?? ''} na base do perfil). Considere subir de ${richest.inclusionPct.toFixed(1)}% para cerca de ${suggestedIncrease.toFixed(0)}%.`,
+  const spread = richest.score - poorest.score
+  if (gap != null && gap > 0 && spread < gap * 0.2) {
+    return [
+      `A diferença entre ${richest.foodName} (${richest.score.toFixed(2)}${unitSuffix}) e ${poorest.foodName} (${poorest.score.toFixed(2)}${unitSuffix}) é pequena frente ao déficit (${gap.toFixed(2)}${unitSuffix}). Priorize trocar ou incluir alimento mais concentrado em ${row.label}.`,
+      'Se mantiver estes ingredientes, complemente com fonte específica (ver suplementação) em vez de microajuste de proporção.',
+    ]
+  }
+
+  const shiftPp = 8
+  const adjustedInclusion = new Map(
+    contributions.map((contribution) => [contribution.foodId, contribution.inclusionPct]),
   )
-  ideas.push(
-    `${poorest.foodName} contribui menos para ${row.label} (${poorest.score.toFixed(2)} ${row.unit ?? ''}). Pode ser reduzido de ${poorest.inclusionPct.toFixed(1)}% para cerca de ${suggestedDecrease.toFixed(0)}% para abrir espaço na fórmula sem abandonar diversidade alimentar.`,
-  )
-  ideas.push('Recalcule a energia total após o ajuste; se ultrapassar a meta calórica, reduza primeiro alimentos mais densos energeticamente.')
+  adjustedInclusion.set(richest.foodId, Math.min(100, richest.inclusionPct + shiftPp))
+  adjustedInclusion.set(poorest.foodId, Math.max(0, poorest.inclusionPct - shiftPp))
+  const projectedBlend = simulateBlendScore(contributions, row, adjustedInclusion)
+  const projectedGain = projectedBlend - delivered
+
+  if (gap != null && gap > 0 && projectedGain < gap * 0.05) {
+    return [
+      `Redistribuir ~${shiftPp} p.p. de ${poorest.foodName} para ${richest.foodName} altera pouco a entrega (${projectedGain.toFixed(2)}${unitSuffix} estimados). Inclua fonte mais concentrada ou suplemento antes de insistir no ajuste fino da fórmula.`,
+    ]
+  }
+
+  const suggestedIncrease = Math.min(100, richest.inclusionPct + shiftPp)
+  const suggestedDecrease = Math.max(0, poorest.inclusionPct - shiftPp)
+  const ideas: string[] = [
+    `${richest.foodName} concentra mais ${row.label} (${richest.score.toFixed(2)}${unitSuffix} na base ${basisLabel}). Considere subir de ${richest.inclusionPct.toFixed(1)}% para cerca de ${suggestedIncrease.toFixed(0)}%.`,
+    `${poorest.foodName} contribui menos (${poorest.score.toFixed(2)}${unitSuffix}). Pode ser reduzido de ${poorest.inclusionPct.toFixed(1)}% para cerca de ${suggestedDecrease.toFixed(0)}% para abrir espaço sem abandonar diversidade alimentar.`,
+    'Recalcule a energia total após o ajuste; se ultrapassar a meta calórica, reduza primeiro alimentos mais densos energeticamente.',
+  ]
 
   return ideas
 }
@@ -159,18 +213,20 @@ export function buildNutrientGapAdvice(
   row: EvaluatedNutrient,
   contributions: FoodContribution[],
 ): NutrientGapAdvice {
-  const unit = row.unit ? ` ${row.unit}` : ''
+  const unit = getNutrientDisplayUnit(row.key, row.basisType, row.unit) ?? ''
+  const unitSuffix = unit ? ` ${unit}` : ''
   const delivered = row.deliveredValue ?? 0
   const reference = row.target ? formatTarget(row.target) : '—'
   const minimum = row.target ? getTargetMinimum(row.target) : null
+  const basisLabel = getBasisLabel(row.basisType)
 
   let gapLabel = 'Déficit não quantificado para este tipo de referência.'
   if (minimum != null && row.deliveredValue != null) {
     const gap = minimum - delivered
     gapLabel =
       gap > 0
-        ? `${gap.toFixed(2)}${unit} abaixo do mínimo de referência (${minimum.toFixed(2)}${unit}).`
-        : `Entrega ${delivered.toFixed(2)}${unit}; referência mínima ${minimum.toFixed(2)}${unit}.`
+        ? `${gap.toFixed(2)}${unitSuffix} abaixo do mínimo (${minimum.toFixed(2)}${unitSuffix}, base ${basisLabel}).`
+        : `Entrega ${delivered.toFixed(2)}${unitSuffix}; referência mínima ${minimum.toFixed(2)}${unitSuffix} (base ${basisLabel}).`
   }
 
   const supplementIdeas =
@@ -180,8 +236,10 @@ export function buildNutrientGapAdvice(
     ]
 
   return {
-    referenceLabel: `${reference}${unit}`,
-    deliveredLabel: `${delivered.toFixed(2)}${unit}`,
+    nutrientTitle: row.label,
+    profileContext: row.profileLabel ? `${row.profileLabel} · ${basisLabel}` : basisLabel,
+    referenceLabel: `${reference}${unitSuffix}`,
+    deliveredLabel: `${delivered.toFixed(2)}${unitSuffix}`,
     gapLabel,
     clinicalImpact:
       CLINICAL_IMPACTS[row.key] ??

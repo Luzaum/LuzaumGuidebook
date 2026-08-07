@@ -1,6 +1,5 @@
 import type { FoodItem } from '../../types'
 import { filterFoods, GENUTRI_FOODS, getFoodById, getDatasetStats, getFoodDisplayName } from '../genutriData'
-import { evaluateTherapeuticFoodAssessment } from '../clinical/clinicalRuleEngine'
 import { isNutritionFeatureEnabled } from '../featureFlags'
 import type {
   CatalogDatasetStats,
@@ -154,7 +153,7 @@ export class LegacyGenutriCatalogAdapter implements FoodCatalogRepository {
         cautions: [{ code: 'food_not_found', messagePt: 'Alimento não encontrado.', severity: 'caution' }],
       }
     }
-    return evaluateTherapeuticFoodAssessment(food, ctx)
+    return insufficientDataAssessment()
   }
 }
 

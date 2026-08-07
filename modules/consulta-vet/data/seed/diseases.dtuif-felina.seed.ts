@@ -159,24 +159,73 @@ export const dtuifFelinaRecord: DiseaseRecord = {
     {
       system: 'urinary',
       findings: [
-        'Disúria, polaciúria e estrangúria: dor, irritação vesical, espasmo uretral ou obstrução parcial/completa.',
-        'Hematúria: inflamação urotelial, cálculo, trauma, tampão uretral ou neoplasia.',
-        'Periúria: dor ao usar a caixa, urgência urinária, recurso inadequado ou estresse ambiental.',
-        'Anúria/oligúria com bexiga distendida: obstrução uretral até exclusão.',
+        {
+          finding: 'Disúria, polaciúria e estrangúria',
+          mechanism:
+            'Inflamação urotelial, espasmo da musculatura lisa vesical/uretral ou obstrução parcial aumentam frequência e esforço miccional com dor.',
+          clinicalMeaning: 'Diferenciar obstrução (bexiga distendida) de FIC/cistite não obstrutiva — conduta oposta.',
+          priority: 'common',
+        },
+        {
+          finding: 'Hematúria',
+          mechanism:
+            'Lesão da mucosa vesical/uretral por inflamação, cálculo, trauma ou neoplasia permite extravasamento de sangue no urinário.',
+          clinicalMeaning: 'Isolada pode ser autolimitada; persistente exige exclusão de cálculo, infecção e neoplasia.',
+          priority: 'common',
+        },
+        {
+          finding: 'Periúria',
+          mechanism:
+            'Dor ou aversão associada à caixa leva o gato a miccionar fora do local; estresse ambiental reduz limiar de micção.',
+          clinicalMeaning: 'Não é “vingança” — sinal de dor, recurso inadequado ou conflito multicat (Buffington et al.; iCatCare 2025).',
+          priority: 'common',
+        },
+        {
+          finding: 'Anúria/oligúria com bexiga distendida',
+          mechanism:
+            'Obstrução uretral impede esvaziamento; pressão intravesical transmite-se aos ureteres e reduz filtração.',
+          clinicalMeaning: 'Emergência até prova em contrário — desobstruir e monitorar K⁺.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'general',
       findings: [
-        'Letargia, vômito, anorexia, fraqueza ou colapso em obstrução prolongada: azotemia, acidose, desidratação e hipercalemia.',
-        'Hipotermia e bradicardia em gato obstruído: alerta forte para hipercalemia grave.',
+        {
+          finding: 'Letargia, vômito, anorexia, colapso',
+          mechanism:
+            'Obstrução prolongada causa azotemia, acidose metabólica, desidratação e hipercalemia.',
+          clinicalMeaning: 'Transforma quadro urinário em emergência sistêmica.',
+          priority: 'emergency',
+          context: ['Obstrução'],
+        },
+        {
+          finding: 'Hipotermia e bradicardia',
+          mechanism:
+            'Hipercalemia grave reduz excitabilidade cardíaca e débito.',
+          clinicalMeaning: 'Red flag para parada cardíaca iminente — ECG e correção urgente de K⁺.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'behavioral',
       findings: [
-        'Esconder-se, agressividade defensiva, overgrooming abdominal/perineal e aversão à caixa podem refletir dor e resposta de ameaça.',
-        'Casas multicat, recursos concentrados e ausência de rotas de fuga podem perpetuar FIC e recidivas.',
+        {
+          finding: 'Esconder-se, agressividade defensiva, overgrooming perineal',
+          mechanism:
+            'Dor visceral e ameaça percebida ativam resposta de fuga/luta; lambedura local pode ser resposta à dor vesical.',
+          clinicalMeaning: 'Comportamento reflete sofrimento — analgesia e manejo ambiental fazem parte do tratamento.',
+          priority: 'common',
+        },
+        {
+          finding: 'Recidivas em ambiente estressante',
+          mechanism:
+            'Estresse crônico altera eixo HPA e sensibilidade vesical em gatos predispostos (FIC).',
+          clinicalMeaning: 'Modificar recursos, rotas de fuga e número de caixas reduz recorrência.',
+          priority: 'common',
+        },
       ],
     },
   ],
@@ -191,39 +240,57 @@ export const dtuifFelinaRecord: DiseaseRecord = {
       {
         stepNumber: 1,
         title: 'Triagem: obstruído ou não obstruído',
+        purpose: 'Diferenciar emergência uretral de FIC não obstrutiva.',
         description:
-          'Palpar bexiga com gentileza. Bexiga grande, firme, dolorida ou tentativas improdutivas em macho exigem abordagem de obstrução uretral. Avaliar mentação, mucosas, tempo de preenchimento capilar, frequência/ritmo cardíaco, pulso, pressão, respiração, temperatura e peso.',
+          'Palpar bexiga com gentileza. Bexiga grande, firme, dolorida ou tentativas improdutivas em macho exigem abordagem de obstrução uretral (iCatCare, 2025).',
+        interpretation: 'Obstrução confirmada tem prioridade sobre exames eletivos.',
+        limitations: 'Palpação inconclusiva em gato obeso — considerar ultrassom.',
         isGoldStandard: true,
       },
       {
         stepNumber: 2,
         title: 'História urinária e ambiental',
+        purpose: 'Identificar gatilhos de FIC e fatores de risco.',
         description:
-          'Registrar sinais, volume/cor da urina, número de episódios, mudança de ambiente, dieta, água, caixas, substrato, limpeza, acesso externo, outros animais, conflitos, dor crônica e comorbidades.',
+          'Registrar sinais, volume/cor da urina, mudança de ambiente, dieta, caixas, substrato, conflitos e comorbidades.',
+        interpretation: 'Periúria com recurso inadequado favorece FIC funcional.',
+        limitations: 'História incompleta é frequente — usar questionário estruturado.',
       },
       {
         stepNumber: 3,
         title: 'Urinálise e cultura quando possível',
+        purpose: 'Excluir ITU e documentar sedimento.',
         description:
-          'USG, fita e sedimento preferencialmente avaliados rapidamente. Cultura por cistocentese quando bacteriúria e sinais clínicos sustentam ITU, em recidivas, idosos/comórbidos ou antes de antibiótico quando possível.',
+          'USG, fita e sedimento; cultura por cistocentese quando bacteriúria clínica ou recidiva.',
+        interpretation: 'Bacteriúria subclínica isolada geralmente não requer tratamento.',
+        limitations: 'Amostra de bolsa pode contaminar.',
       },
       {
         stepNumber: 4,
         title: 'Imagem para cálculo e causas estruturais',
+        purpose: 'Detectar urolitíase e massas vesicais.',
         description:
-          'Radiografias abdominais lateral e ventrodorsal para urólitos radiodensos; ultrassom para urólitos, massas, anormalidades vesicais e comorbidades. Retrograde urethrography/cistouretrografia quando suspeita de lesão uretral, urolitíase uretral ou falha de cateterização.',
+          'Radiografias abdominais e ultrassom; uretrografia se falha de cateterização.',
+        interpretation: 'Estruvita pode dissolver; oxalato exige remoção quando sintomático.',
+        limitations: 'Nem todos os cálculos são radiopacos.',
       },
       {
         stepNumber: 5,
         title: 'FIC por exclusão clínica',
+        purpose: 'Rotular FIC após excluir causas tratáveis.',
         description:
-          'Não existe teste confirmatório sensível/específico para FIC. O diagnóstico integra sinalamento, história, fatores de risco, exclusão de causas e resposta ao manejo.',
+          'Integrar sinalamento, história, exclusão de obstrução, cálculo e ITU; resposta ao MEMO.',
+        interpretation: 'Melhora ambiental apoia diagnóstico funcional de FIC.',
+        limitations: 'Não existe teste confirmatório específico.',
       },
       {
         stepNumber: 6,
         title: 'Recursos limitados',
+        purpose: 'Conduta mínima segura quando exames completos não estão disponíveis.',
         description:
-          'Mínimo aceitável: diferenciar obstrução, analgesia, hidratação/estabilização, urina quando possível, radiografia se suspeita de cálculo e retorno curto. Evitar antibiótico como substituto de diagnóstico.',
+          'Diferenciar obstrução, analgesia, hidratação, urina quando possível e retorno curto.',
+        interpretation: 'Obstrução suspeita exige encaminhamento mesmo com recursos limitados.',
+        limitations: 'Antibiótico empírico não substitui diagnóstico.',
       },
     ],
     obstrucaoUretral: {

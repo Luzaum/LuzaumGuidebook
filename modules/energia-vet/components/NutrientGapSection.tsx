@@ -22,11 +22,15 @@ export function NutrientGapSection({
         {title}
       </h2>
       <div className="mt-4 space-y-4">
-        {belowRows.map((row, index) => {
+        {belowRows.map((row) => {
           const advice = buildNutrientGapAdvice(row, contributions)
           return (
-            <article key={`${row.key}-${index}`} className="rounded-xl border border-amber-500/20 bg-card/80 p-4">
-              <p className="font-semibold text-foreground">{row.label}</p>
+            <article
+              key={`${row.profileId ?? 'profile'}-${row.key}-${row.basisType}`}
+              className="rounded-xl border border-amber-500/20 bg-card/80 p-4"
+            >
+              <p className="font-semibold text-foreground">{advice.nutrientTitle}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{advice.profileContext}</p>
               <dl className="mt-3 grid gap-2 text-sm sm:grid-cols-3">
                 <div>
                   <dt className="text-xs uppercase tracking-wide text-muted-foreground">Referência</dt>

@@ -495,6 +495,74 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     quickSummary:
       'Mastite é inflamação geralmente séptica da glândula mamária no pós-parto. Calor, dor e leite alterado podem evoluir para abscesso, necrose e choque. O diagnóstico é clínico, apoiado por citologia e cultura assepticamente coletada; cultura positiva isolada não prova doença. Tratamento precoce combina antimicrobiano bactericida, analgesia, drenagem e cuidado da ninhada.',
   }),
+  diseaseListCard({
+    id: 'disease-miastenia-gravis-caes-gatos',
+    slug: 'miastenia-gravis-caes-gatos',
+    title: 'Miastenia gravis adquirida (cão e gato)',
+    synonyms: [
+      'Myasthenia gravis',
+      'AMG',
+      'MGA',
+      'Junctionopatia autoimune',
+      'Fraqueza fatigável',
+    ],
+    species: ['dog', 'cat'],
+    category: 'neurologia',
+    tags: [
+      'Junção neuromuscular',
+      'AChR-Ab',
+      'Piridostigmina',
+      'Megaesôfago',
+      'Timoma',
+      'Crise colinérgica',
+    ],
+    quickSummary:
+      'Miastenia gravis adquirida é junctionopatia autoimune com fraqueza fatigável, megaesôfago/disfagia e risco de pneumonia aspirativa. Distinta das síndromes miastênicas congênitas (genéticas). Confirme com AChR-Ab; radiografe tórax; piridostigmina é primeira linha sintomática; imunossupressão não é automática. Em gatos, investigar massa mediastinal cranial.',
+  }),
+  diseaseListCard({
+    id: 'disease-sindromes-miastenicas-congenitas',
+    slug: 'sindromes-miastenicas-congenitas-caes-gatos',
+    title: 'Síndromes miastênicas congênitas (cão e gato)',
+    synonyms: ['CMS', 'Congenital myasthenic syndromes', 'Junctionopatia genética'],
+    species: ['dog', 'cat'],
+    category: 'neurologia',
+    tags: ['Genética', 'Filhote', 'AChR-Ab negativo', 'Hereditário'],
+    quickSummary:
+      'CMS são doenças genéticas da junção neuromuscular, distintas da miastenia gravis adquirida. Surge em filhotes com fraqueza fatigável; AChR-Ab costuma ser negativo. Tratamento e prognóstico dependem do subtipo molecular — imunossupressão não é etiológica.',
+  }),
+  diseaseListCard({
+    id: 'disease-leucemia-viral-felina',
+    slug: 'leucemia-viral-felina',
+    title: 'Leucemia viral felina (FeLV)',
+    synonyms: ['FeLV', 'Feline leukemia virus', 'Retrovirose felina', 'Leucemia felina'],
+    species: ['cat'],
+    category: 'infecciosas',
+    tags: ['Retrovirose', 'p27', 'PCR proviral', 'Linfoma', 'Vacina FeLV', 'ABCD'],
+    quickSummary:
+      'FeLV é retrovirose felina com quatro desfechos possíveis (abortiva, regressiva, progressiva, focal). Teste p27 isolado não define infecção progressiva — confirmar com PCR e repetir ≥6 semanas. Tratar a doença associada; antiviral rotineiro não tem evidência (Westman et al., 2024).',
+  }),
+  diseaseListCard({
+    id: 'disease-peritonite-infecciosa-felina',
+    slug: 'peritonite-infecciosa-felina',
+    title: 'Peritonite infecciosa felina (PIF/FIP)',
+    synonyms: ['PIF', 'FIP', 'Feline infectious peritonitis', 'Coronavírus felino', 'FCoV'],
+    species: ['cat'],
+    category: 'infecciosas',
+    tags: ['FCoV', 'GS-441524', 'Efusão', 'Rivalta', 'A:G', 'RT-qPCR', 'ABCD'],
+    quickSummary:
+      'PIF é doença sistêmica por mutação intrahospedeiro do FCoV — coronavírus positivo ≠ PIF. Coletar efusão quando presente; GS-441524 VO 15 mg/kg q24h é primeira linha; 42 dias pode bastar com remissão (Tasker et al., ABCD 2026).',
+  }),
+  diseaseListCard({
+    id: 'disease-imunodeficiencia-felina-fiv',
+    slug: 'imunodeficiencia-felina-fiv',
+    title: 'Vírus da imunodeficiência felina (FIV)',
+    synonyms: ['FIV', 'Feline immunodeficiency virus', 'Imunodeficiência viral felina', 'AIDS felina'],
+    species: ['cat'],
+    category: 'infecciosas',
+    tags: ['Retrovirose', 'Lentivirus', 'Anticorpos', 'Gengivoestomatite', 'AZT', 'AAFP'],
+    quickSummary:
+      'FIV é lentivirus transmitido principalmente por mordida; teste POC detecta anticorpos — retestar ≥60 dias após exposição. FIV+ ≠ eutanásia; monitoramento semestral; AZT 5–10 mg/kg q12h em casos selecionados (Little et al., 2020; Westman et al., 2022).',
+  }),
 ];
 
 

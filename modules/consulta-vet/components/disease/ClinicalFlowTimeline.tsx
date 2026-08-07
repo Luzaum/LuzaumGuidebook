@@ -3,6 +3,7 @@ import { Clock, Pill, RefreshCw } from 'lucide-react';
 import type { DiseaseQuickSummaryFlow, DiseaseQuickSummaryFlowStep } from '../../types/disease';
 import { composeFlowStepDetail } from '../../utils/clinicalFlowText';
 import { cn } from '../../../../lib/utils';
+import { EditorialRichText } from '../shared/EditorialRichText';
 
 type ClinicalFlowTimelineProps = {
   flow: DiseaseQuickSummaryFlow;
@@ -38,7 +39,7 @@ function MetaRow({
           variant === 'dark' ? 'text-white/88' : 'text-foreground/90'
         )}
       >
-        {value}
+        <EditorialRichText value={value} variant={variant} />
       </p>
     </div>
   );
@@ -141,7 +142,7 @@ function FlowStepCard({
                 variant === 'dark' ? 'text-white/78' : 'text-foreground/85'
               )}
             >
-              {detail}
+              <EditorialRichText value={detail} variant={variant} />
             </p>
           ) : null}
           <StepMeta step={step} variant={variant} />

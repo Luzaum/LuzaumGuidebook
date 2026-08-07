@@ -1,4 +1,4 @@
-import { getClinicalProfileBadges } from '../lib/clinicalProfiles'
+import { getClinicalProfileBadges } from '../lib/clinicalProfileLabels'
 import type { NutritionClinicalRecord, StoredCalculationReport } from '../types'
 import {
   adequacyStatusLabel,
@@ -303,7 +303,6 @@ export function buildNutritionPdfDocumentModel(
   pushRow(energyRows, 'Meta prescrita', formatKcalDay(energy.prescribedKcalDay))
   pushRow(energyRows, 'Base utilizada', energy.weightBasisLabel)
   pushRow(energyRows, 'Perfil', energy.energyProfileLabel)
-  pushRow(energyRows, 'Grau de confiança', energy.confidenceLabel)
   if (energy.observedIntakeKcalDay != null) pushRow(energyRows, 'Ingestão observada', formatKcalDay(energy.observedIntakeKcalDay))
   if (energy.treatReserveKcalDay != null) pushRow(energyRows, 'Reserva para petiscos', formatKcalDay(energy.treatReserveKcalDay))
   const roundingNote = formatRoundingNote(energy.roundingErrorPercent)

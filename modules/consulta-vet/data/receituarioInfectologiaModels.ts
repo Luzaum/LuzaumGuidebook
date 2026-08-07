@@ -4,6 +4,7 @@ import type {
   ClinicalRecipeModel,
   DocumentTemplate,
 } from '../types/receituario';
+import { POTASSIUM_IODIDE_ORAL_PRODUCTS } from './potassiumIodideCommercialProducts.seed';
 import { getDefaultClinicalOptionKeys, renderClinicalRecipe } from '../utils/receituarioClinicalModels';
 
 const NOW = '2026-08-02T00:00:00.000Z';
@@ -130,7 +131,10 @@ Administrar inicialmente A PREENCHER por via oral, a cada 24 horas.
 
 A dose poderá ser aumentada gradualmente em incrementos de 2,5 mg/kg, conforme resposta e tolerância, sem ultrapassar 20 mg/kg a cada 24 horas.
 
-Manter a associação até a cura clínica e por mais 30 dias.`, { presentationFilter: 'oral' }),
+Manter a associação até a cura clínica e por mais 30 dias.`, {
+          presentationFilter: 'oral',
+          presentations: POTASSIUM_IODIDE_ORAL_PRODUCTS,
+        }),
       ],
       medicationPrecautions: [
         'Administrar as cápsulas de itraconazol junto com alimento',
@@ -206,7 +210,10 @@ Utilizar como alternativa ou em associação ao itraconazol, conforme avaliaçã
         min: 40, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 12 horas', duration: 'Até a cura clínica e por mais 30 dias.',
       }, `1. IODETO DE POTÁSSIO — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 12 horas, junto com alimento.`, { presentationFilter: 'oral' })],
+Administrar A PREENCHER por via oral, a cada 12 horas, junto com alimento.`, {
+        presentationFilter: 'oral',
+        presentations: POTASSIUM_IODIDE_ORAL_PRODUCTS,
+      })],
     },
   ],
   diseaseRecommendations: [

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { buildTransitionPlan, DEFAULT_SEVEN_DAY_TRANSITION, validateTransitionDayPercents } from '../../modules/energia-vet/lib/nutrition-calculations/transitionEngine'
+import { buildTransitionPlan, DEFAULT_SEVEN_DAY_TRANSITION, validateTransitionDayPercents } from '../../modules/energia-vet/lib/hospital-nutrition/transitionEngine'
 
 test('plano padrão de 7 dias soma 100% por dia', () => {
   assert.equal(validateTransitionDayPercents(DEFAULT_SEVEN_DAY_TRANSITION), null)

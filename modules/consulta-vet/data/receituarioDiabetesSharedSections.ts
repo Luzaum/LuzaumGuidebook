@@ -3,6 +3,8 @@
 export type DmInsulinKind = 'caninsulin-u40' | 'nph-u100' | 'glargina-u100' | 'toujeo-u300';
 export type DmSpeciesKind = 'dog' | 'cat';
 
+const EMERGENCY_24H_GUIDANCE = 'Levar imediatamente a um serviço veterinário de emergência 24 horas.';
+
 function formatMl(value: number): string {
   return new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 1, minimumFractionDigits: value < 1 ? 1 : 0 }).format(value);
 }
@@ -72,21 +74,21 @@ SE O ANIMAL ESTÁ CONSCIENTE E CONSEGUE COMER
 
 1. Oferecer imediatamente a refeição habitual.
 2. Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.
-3. Não aplicar nova insulina até falar com o médico-veterinário.
-4. Entrar em contato com a clínica.
+3. Não aplicar nova insulina até ser avaliado por um veterinário.
+4. ${EMERGENCY_24H_GUIDANCE}
 
 SE O ANIMAL ESTÁ FRACO, TREMENDO OU COM DIFICULDADE PARA RESPONDER
 
 1. Passar ${honeyDose} sobre a gengiva e a parte interna da bochecha.
 2. Não despejar líquido no fundo da boca e não forçar a engolir.
 3. Se melhorar em até cinco minutos, oferecer comida.
-4. Levar imediatamente ao veterinário.
+4. ${EMERGENCY_24H_GUIDANCE}
 
 SE HOUVER CONVULSÃO, DESMAIO OU PERDA DE CONSCIÊNCIA
 
 • Passar mel ou xarope sobre a gengiva, sem forçar engolir.
 • Não oferecer água ou comida pela boca.
-• Levar imediatamente à emergência veterinária.`;
+• ${EMERGENCY_24H_GUIDANCE}`;
 }
 
 function buildNotEatingSection(): string {
@@ -94,12 +96,12 @@ function buildNotEatingSection(): string {
 
 Comeu normalmente: aplicar a dose prescrita nesta receita.
 
-Comeu só uma parte: não aumentar a dose; avise o médico-veterinário e siga a orientação que ele passar.
+Comeu só uma parte: não aumentar a dose; se persistir ou piorar, levar imediatamente a um serviço veterinário de emergência 24 horas.
 
 Não comeu, vomitou ou parece doente:
 • Não aplique automaticamente a dose completa de insulina.
 • Meça a glicemia em casa, se souber fazer.
-• Ligue imediatamente para o médico-veterinário.
+• ${EMERGENCY_24H_GUIDANCE}
 • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.`;
 }
 

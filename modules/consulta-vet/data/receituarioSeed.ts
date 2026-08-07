@@ -2,6 +2,7 @@ import { DocumentTemplate } from '../types/receituario';
 import { normalizeLegacyDocumentBody } from '../utils/receituarioDocument';
 import { RECEITUARIO_INFECTOLOGIA_MODELS } from './receituarioInfectologiaModels';
 import { RECEITUARIO_DIABETES_MODELS } from './receituarioDiabetesModels';
+import { RECEITUARIO_NEUROLOGIA_MODELS } from './receituarioNeurologiaModels';
 import { RECEITUARIO_PROTOCOL_MODELS } from './receituarioProtocolModels';
 
 export const RECEITUARIO_CATEGORIES = [
@@ -630,6 +631,7 @@ export const SEEDED_TEMPLATES: DocumentTemplate[] = [
   ...RECEITUARIO_INFECTOLOGIA_MODELS,
   ...RECEITUARIO_PROTOCOL_MODELS,
   ...RECEITUARIO_DIABETES_MODELS,
+  ...RECEITUARIO_NEUROLOGIA_MODELS,
 ].map((template) => ({
   ...template,
   body_plain_text: normalizeLegacyDocumentBody(template.body_plain_text),

@@ -153,30 +153,34 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
     {
       system: 'metabolic',
       findings: [
-        'Poliúria/polidipsia por glicosúria e diurese osmótica.',
-        'Perda de peso, sarcopenia e pelagem opaca por catabolismo e perda calórica.',
-        'Polifagia pode ocorrer, mas gatos doentes, pancreáticos ou cetóticos podem estar hiporéticos/anoréticos.',
+        {
+          finding: 'Poliúria/polidipsia com perda de peso e sarcopenia',
+          mechanism: 'Glicosúria e diurese osmótica; catabolismo proteico por deficiência insulínica relativa ou absoluta.',
+          clinicalMeaning: 'Remissão é possível no gato — reavaliar necessidade de insulina periodicamente.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'neurologic',
       findings: [
-        'Neuropatia diabética: postura plantígrada, fraqueza de membros pélvicos e dificuldade de saltar.',
-        'Hipoglicemia por excesso de insulina ou remissão não reconhecida: fraqueza, ataxia, tremores, convulsão ou coma.',
+        {
+          finding: 'Postura plantígrada ou neuropatia diabética',
+          mechanism: 'Lesão axonal periférica por hiperglicemia crônica.',
+          clinicalMeaning: 'Melhora com controle glicêmico; não confundir com lesão medular.',
+          priority: 'uncommon',
+        },
       ],
     },
     {
-      system: 'emergency',
+      system: 'critical',
       findings: [
-        'DKA: anorexia, vômitos, desidratação, depressão, taquipneia, dor abdominal e cetonas.',
-        'DKA euglicêmica em SGLT2i: o gato pode estar cetótico/acidemico sem hiperglicemia proporcional.',
-      ],
-    },
-    {
-      system: 'comorbidities',
-      findings: [
-        'Hipersomatotropismo: dose alta de insulina, ganho de peso paradoxal, organomegalia/tecidos moles, estridor ou cardiomiopatia.',
-        'Hiperadrenocorticismo: pele frágil, equimoses, má cicatrização, fraqueza, diabetes difícil.',
+        {
+          finding: 'DKA ou DKA euglicêmica (SGLT2i)',
+          mechanism: 'Cetogênese descontrolada com ou sem hiperglicemia proporcional.',
+          clinicalMeaning: 'Emergência metabólica — internação e fluidoterapia.',
+          priority: 'emergency',
+        },
       ],
     },
   ],
@@ -351,12 +355,13 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       evidenceLevel: 'B - referência prática',
     },
     {
-      id: 'ref-vin-feline-dm',
-      citationText: 'VIN. Feline Diabetes Mellitus / Feline Diabetes, VIN clinical content and proceedings.',
-      sourceType: 'VIN / revisão clínica',
-      url: 'https://www.vin.com/apputil/content/defaultadv1.aspx?id=3847280',
-      notes: 'Conteúdo VIN pode exigir autenticação; usar como referência de apoio quando acessível.',
-      evidenceLevel: 'B/C - revisão especializada',
+      id: 'ref-rand-feline-dm-remission',
+      citationText:
+        'Rand JS, et al. Canine and Feline Endocrinology. In: Feldman EC, Nelson RW, Reusch CE, Scott-Moncrieff JCR, eds. 4th ed. Saunders; 2015. Diabetes mellitus in cats; remissão e resistência periférica.',
+      sourceType: 'Livro-texto',
+      url: null,
+      notes: 'Base endocrinológica felina; complementar às diretrizes AAHA 2026.',
+      evidenceLevel: 'Referência secundária',
     },
     {
       id: 'ref-monitoring-dm-pmc-feline',

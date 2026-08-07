@@ -170,46 +170,80 @@ export const hiperadrenocorticismoCushingRecord: DiseaseRecord = {
       {
         system: 'renal',
         findings: [
-          'Poliúria e polidipsia — perda de capacidade de concentrar urina; no cão USG <1,020 é frequente, mas nem todos ficam tão hipostenúricos.',
+          {
+            finding: 'Poliúria e polidipsia',
+            mechanism:
+              'Cortisol crônico reduz sensibilidade renal a ADH e diminui capacidade de concentrar urina.',
+            clinicalMeaning: 'USG <1,020 é frequente no cão; nem todo paciente fica hipostenúrico.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'metabolic',
         findings: [
-          'Polifagia — cortisol aumenta apetite.',
-          'Resistência insulínica/hiperglicemia — especialmente relevante no gato com DM associada.',
+          {
+            finding: 'Polifagia e resistência insulínica',
+            mechanism:
+              'Cortisol antagoniza insulina periférica e aumenta apetite via efeitos centrais e hepáticos.',
+            clinicalMeaning: 'No gato, diabetes mal controlada apesar de insulina elevada é pista forte.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'dermatologic',
         findings: [
-          'Cão: alopecia simétrica, pele fina, comedões, hiperpigmentação, calcinosis cutis, falha de crescimento pós-tosa.',
-          'Gato: pele extremamente fina/frágil, alopecia, má cicatrização, hematomas; coat ruim.',
+          {
+            finding: 'Alopecia simétrica, pele fina, comedões e calcinosis cutis (cão)',
+            mechanism:
+              'Catabolismo de colágeno e renovação cutânea lenta; mineralização cutânea por alteração do metabolismo do cálcio.',
+            clinicalMeaning: 'Falha de crescimento pós-tosa reforça dermatopatia endócrina.',
+            priority: 'common',
+          },
+          {
+            finding: 'Pele extremamente frágil, hematomas e má cicatrização (gato)',
+            mechanism:
+              'Redução acentuada de colágeno dérmico e capilares frágeis.',
+            clinicalMeaning: 'Tríade felina: DM difícil + caquexia + pele de papel.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'musculoskeletal',
         findings: [
-          'Panting, intolerância ao exercício, fraqueza e atrofia muscular — catabolismo e aumento abdominal.',
-          'Abdômen pendular — hepatomegalia + musculatura abdominal fina + redistribuição de gordura.',
+          {
+            finding: 'Panting, fraqueza, atrofia muscular e abdômen pendular',
+            mechanism:
+              'Catabolismo proteico muscular e hepático com redistribuição de gordura abdominal.',
+            clinicalMeaning: 'Abdômen pendular + alopecia simétrica = suspeita clínica forte.',
+            priority: 'common',
+          },
         ],
       },
       {
         system: 'immune',
         findings: [
-          'Infecção urinária, piodermite, demodicose secundária — imunomodulação pelo cortisol.',
+          {
+            finding: 'Infecção urinária, piodermite ou demodicose secundária',
+            mechanism:
+              'Imunossupressão relativa pelo cortisol crônico prejudica defesa cutânea e urinária.',
+            clinicalMeaning: 'Investigar ITU subclínica em pacientes com PU/PD.',
+            priority: 'systemic',
+          },
         ],
       },
       {
         system: 'neurologic',
         findings: [
-          'Sinais centrais possíveis com macrotumor hipofisário (ex.: círculos, ataxia, alteração comportamental, estupor).',
-        ],
-      },
-      {
-        system: 'multisystemic',
-        findings: [
-          'Gato: tríade marcante — diabetes de difícil controle, emagrecimento/caquexia e fraqueza, pele extremamente frágil; apresentação pode ser sutil até o DM permanecer mal controlado apesar de insulinoterapia agressiva.',
+          {
+            finding: 'Círculos, ataxia, alteração comportamental ou estupor',
+            mechanism:
+              'Macrotumor hipofisário comprime tecido nervoso central além do hipercortisolismo.',
+            clinicalMeaning: 'Indica PDH com componente neurológico — discutir imagem hipofisária.',
+            priority: 'emergency',
+          },
         ],
       },
     ],

@@ -48,16 +48,7 @@ function formatFilenameDate(iso: string) {
  * ("NUTRICAO" = forma ASCII de NUTRIÇÃO, compatível com mais sistemas e anexos.)
  */
 export function buildVetiusNutritionPdfFilename(report: StoredCalculationReport, mode?: NutritionPdfMode): string {
-  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    return buildNutritionPdfV5Filename(report, mode ?? 'tutor_plan')
-  }
-  if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
-    return buildOutpatientNutritionPdfFilename(report)
-  }
-  const patient = slugifyFilenameSegment(report.patient.name, 'PACIENTE')
-  const tutor = slugifyFilenameSegment(report.patient.ownerName, 'TUTOR')
-  const date = formatFilenameDate(report.createdAt)
-  return `VETIUS_NUTRICAO_${patient}_${tutor}_${date}.pdf`
+  return buildNutritionPdfV5Filename(report, mode ?? 'tutor_plan')
 }
 
 function truncateFooterText(value: string, max: number) {
@@ -306,231 +297,30 @@ function resolveV5Snapshot(report: StoredCalculationReport) {
 }
 
 function buildNutritionReportPdfDoc(report: StoredCalculationReport, mode: NutritionPdfMode = 'tutor_plan'): jsPDF {
-  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    return buildNutritionPdfV5Doc(report, mode, { snapshot: resolveV5Snapshot(report) })
-  }
-  if (isNutritionFeatureEnabled('nutrition_pdf_v2')) {
-    return buildOutpatientNutritionPdfDoc(report)
-  }
-  const vm = buildPrintableReportViewModel(report)
-  const doc = new jsPDF({ unit: 'mm', format: 'a4' })
-
-  const metaTitle = `Vetius NutriçãoVET — ${report.patient.name?.trim() || 'Paciente'}`
-  doc.setProperties({
-    title: metaTitle,
-    subject: 'Relatório nutricional veterinário',
-    author: 'Vetius',
-    keywords: 'nutrição veterinária, prescrição, energia, dieta',
-    creator: 'Vetius NutriçãoVET',
-  })
-
-  doc.setFont('helvetica', 'bold')
-  doc.setFontSize(18)
-  doc.setTextColor(229, 99, 10)
-  doc.text('NutriçãoVET — Relatório nutricional', 14, 18)
-
-  doc.setFont('helvetica', 'normal')
-  doc.setFontSize(10)
-  doc.setTextColor(98, 89, 79)
-  doc.text(`Emitido em ${vm.generatedAt}`, 14, 24)
-  doc.text(vm.patientTitle, 196, 18, { align: 'right' })
-  doc.text(vm.patientSubtitle, 196, 24, { align: 'right' })
-
-  let nextY = 32
-
-  renderKeyValueTable(doc, '1. Identificação do paciente', vm.patientFields.map((field) => [field.label, field.value]), nextY)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderKeyValueTable(doc, '2. Dados clínicos', vm.clinicalFields.map((field) => [field.label, field.value]), nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderKeyValueTable(doc, '3. Cálculo energético', vm.energyFields.map((field) => [field.label, field.value]), nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderKeyValueTable(doc, '4. Meta nutricional', vm.targetFields.map((field) => [field.label, field.value]), nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderKeyValueTable(doc, '5. Fórmula geral', vm.formulaMetaFields.map((field) => [field.label, field.value]), nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderDataTable(doc, '6. Fórmula alimentar', ['Alimento', 'Inclusão', 'Oferta diária', 'Energia'], vm.formulaRows, nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderDataTable(doc, '7. Resumo nutricional', ['Nutriente', 'Valor'], vm.nutrientRows, nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderDataTable(doc, '8. Partição energética', ['Macro', '%', 'Gramas', 'Kcal'], vm.macroRows, nextY + 8)
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  renderDataTable(
-    doc,
-    '9. Contribuição por alimento',
-    ['Alimento', 'Categoria', 'Oferta diária', 'Energia', 'Por refeição'],
-    vm.contributionRows,
-    nextY + 8,
-  )
-  nextY = (doc as jsPDF & { lastAutoTable?: { finalY: number } }).lastAutoTable?.finalY ?? nextY
-
-  if (vm.alertNotes.length > 0) {
-    renderDataTable(doc, '10. Observações finais', ['Observação'], vm.alertNotes.map((note) => [note]), nextY + 8)
-  }
-
-  if (vm.feedingSheetTripleDayLayout && vm.feedingSheets.length > 0) {
-    const sheets = vm.feedingSheets
-    const perPage = 3
-    const folhas = Math.ceil(sheets.length / perPage)
-    for (let f = 0; f < folhas; f++) {
-      doc.addPage()
-      let y = 12
-      doc.setFont('helvetica', 'bold')
-      doc.setFontSize(18)
-      doc.setTextColor(229, 99, 10)
-      doc.text(vm.feedingSheetTitle, 14, y)
-      y += 7
-      doc.setFont('helvetica', 'normal')
-      doc.setFontSize(9)
-      doc.setTextColor(98, 89, 79)
-      doc.text('Página operacional para rotina diária', 14, y)
-      y += 4.5
-      if (vm.feedingSheetPrintBanner) {
-        doc.setFontSize(8)
-        doc.setTextColor(120, 110, 100)
-        const lines = doc.splitTextToSize(vm.feedingSheetPrintBanner, 132)
-        doc.text(lines, 14, y)
-        y += lines.length * 3.6
-      }
-      doc.setFontSize(8.5)
-      doc.setTextColor(98, 89, 79)
-      doc.text(`Folha de ficha ${f + 1} de ${folhas} — 3 dias por folha`, 196, 17, { align: 'right' })
-      doc.text(vm.patientTitle, 196, 24, { align: 'right' })
-
-      const slice = sheets.slice(f * perPage, f * perPage + perPage)
-      y = Math.max(y + 3, 30)
-
-      const sharedRows = buildSharedFeedingSheetMetaFields(report, slice).map((field) => [field.label, field.value])
-      renderTripleSheetKeyValueTable(doc, 'Dados da ficha', sharedRows, y)
-      y = getLastTableFinalY(doc)
-      renderTripleSheetFoodTable(
-        doc,
-        'Alimentos utilizados',
-        ['Alimento', 'Oferta diária total', 'Por refeição'],
-        slice[0].foodRows,
-        y + 6,
-      )
-      y = getLastTableFinalY(doc)
-
-      /** Distribui altura das linhas de controle para preencher até ~8 mm acima do rodapé. */
-      const PAGE_MAX_CONTENT_Y = 278
-      const gapBetweenControlBlocks = 8
-      const yFirstControl = y + 5
-      const roughFixedOverheadMm = 46
-      const bodyRowsTotal = slice.length * 5
-      const budgetForBodyRows =
-        PAGE_MAX_CONTENT_Y - yFirstControl - gapBetweenControlBlocks * (slice.length - 1) - roughFixedOverheadMm
-      const controlMinRow = Math.max(9, Math.min(13.5, budgetForBodyRows / Math.max(bodyRowsTotal, 1)))
-
-      y = yFirstControl
-      for (let di = 0; di < slice.length; di++) {
-        const daySheet = slice[di]
-        if (di > 0) y += gapBetweenControlBlocks
-        renderTripleSheetControlTable(
-          doc,
-          `Controle diário — Dia ${daySheet.dateLabel}`,
-          ['Horário', 'Quantidade/refeição', 'Alimentos', 'Comeu? Sim/não (pesar sobra)', 'Assinatura'],
-          daySheet.rows,
-          y,
-          controlMinRow,
-        )
-        y = getLastTableFinalY(doc)
-      }
-    }
-  } else {
-    vm.feedingSheets.forEach((sheet) => {
-      doc.addPage()
-      doc.setFont('helvetica', 'bold')
-      doc.setFontSize(18)
-      doc.setTextColor(229, 99, 10)
-      doc.text(vm.feedingSheetTitle, 14, 18)
-
-      doc.setFont('helvetica', 'normal')
-      doc.setFontSize(10)
-      doc.setTextColor(98, 89, 79)
-      doc.text('Página operacional para rotina diária', 14, 24)
-      doc.text(vm.patientTitle, 196, 18, { align: 'right' })
-
-      renderFeedingSheetBlock(doc, sheet, 32, false)
-    })
-  }
-
-  addNutritionPdfPageFooters(doc, report)
-
-  return doc
+  return buildNutritionPdfV5Doc(report, mode, { snapshot: resolveV5Snapshot(report) })
 }
 
 /** Gera o mesmo PDF que “Exportar PDF” e descarrega o ficheiro. */
 export function exportReportPdf(report: StoredCalculationReport) {
-  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    exportNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
-    return
-  }
-  const doc = buildNutritionReportPdfDoc(report)
-  doc.save(buildVetiusNutritionPdfFilename(report))
+  exportNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
 }
 
 export function exportTutorPlanPdf(report: StoredCalculationReport) {
-  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    exportReportPdf(report)
-    return
-  }
   exportNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
 }
 
 export function exportTechnicalReportPdf(report: StoredCalculationReport) {
-  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    exportReportPdf(report)
-    return
-  }
   exportNutritionPdfV5(report, 'technical_report', { snapshot: resolveV5Snapshot(report) })
 }
 
 export function printReportPdf(report: StoredCalculationReport) {
-  if (isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    printNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
-    return
-  }
-  const doc = buildNutritionReportPdfDoc(report)
-  const blob = doc.output('blob')
-  const url = URL.createObjectURL(blob)
-  const win = window.open(url, '_blank')
-  if (!win) {
-    URL.revokeObjectURL(url)
-    exportReportPdf(report)
-    return
-  }
-  const tryPrint = () => {
-    try {
-      win.focus()
-      win.print()
-    } catch {
-      /* ignorar — utilizador pode imprimir manualmente no leitor PDF */
-    }
-  }
-  win.addEventListener('load', () => window.setTimeout(tryPrint, 400))
-  window.setTimeout(tryPrint, 1200)
+  printNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
 }
 
 export function printTutorPlanPdf(report: StoredCalculationReport) {
-  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    printReportPdf(report)
-    return
-  }
   printNutritionPdfV5(report, 'tutor_plan', { snapshot: resolveV5Snapshot(report) })
 }
 
 export function printTechnicalReportPdf(report: StoredCalculationReport) {
-  if (!isNutritionFeatureEnabled('nutrition_calculation_engine_v3')) {
-    printReportPdf(report)
-    return
-  }
   printNutritionPdfV5(report, 'technical_report', { snapshot: resolveV5Snapshot(report) })
 }

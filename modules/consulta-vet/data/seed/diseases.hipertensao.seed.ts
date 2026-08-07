@@ -127,7 +127,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
     },
   },
   etiology: {
-    visaoGeral:
+    definicao:
       'A pressão arterial sistêmica reflete o produto hemodinâmico (débito cardíaco × resistência vascular periférica) e modulações neuro-humorais (simpático, RAAS, ADH). HAS surge quando um ou mais destes eixos permanece desregulado: vasoconstrição excessiva, retenção volémica, ou ambos. A lesão endotelial crônica perpetua remodelação vascular e reduz compliance — o que torna o controle mais difícil se o tratamento for tardio.',
     causasRenais:
       'DRC por perda de néfrons, ativação do RAAS, disfunção endotelial e alteração do manejo de sódio/água. Hipertensão pode acelerar proteinúria e nefroesclerose — ciclo vicioso com a HAS. Em agudo renal, fluidos e toxinas podem alterar a PA; estadiar só com paciente estável.',
@@ -241,40 +241,126 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
     {
       system: 'ocular',
       findings: [
-        'Agudo: hemorragias retinianas em múltiplos quadrantes, descolamento de retina, hemorragia vítrea, edema papilar — amaurose se não tratado de imediato.',
-        'Subagudo/crônico: alterações hipertensivas de fundo de olho, perda visual progressiva; dor ocular variável.',
-        'Miopia secundária a alterações lenticulares foi descrita em humanos; em veterinária o foco é retina e papila.',
+        {
+          finding: 'Hemorragias retinianas, descolamento de retina, hemorragia vítrea, edema papilar, amaurose súbita',
+          mechanism:
+            'Quando a PAS ultrapassa limites de autorregulação da microvasculatura retiniana, ocorre extravasamento, edema e isquemia — amaurose se não tratado de imediato.',
+          clinicalMeaning: 'Emergência oftálmica — medir PA e iniciar anti-hipertensivo sem aguardar segunda consulta.',
+          priority: 'emergency',
+        },
+        {
+          finding: 'Perda visual progressiva ou alterações de fundo de olho',
+          mechanism:
+            'Exposição crônica à pressão elevada remodela vasos retinianos e pode causar atrofia óptica gradual.',
+          clinicalMeaning: 'Lesão-orgão-alvo documentada — tratar PA mesmo se valor limítrofe isolado.',
+          priority: 'systemic',
+        },
       ],
     },
     {
       system: 'renal',
       findings: [
-        'Proteinúria que pode agravar com HAS; piora da função renal se hipoperfusão ou nefrotoxicidade associada.',
-        'PU/PD podem refletir DRC de base mais do que a HAS isoladamente.',
+        {
+          finding: 'Proteinúria com possível piora de função renal',
+          mechanism:
+            'Elevação da pressão glomerular agrava filtração e lesão endotelial glomerular; ciclo vicioso com DRC.',
+          clinicalMeaning: 'Integrar UPC e subestadiamento IRIS por PA.',
+          priority: 'systemic',
+        },
+        {
+          finding: 'PU/PD',
+          mechanism:
+            'Geralmente reflete DRC de base mais do que HAS isolada.',
+          clinicalMeaning: 'Investigar função renal e tireoide em gato geriátrico hipertenso.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'neurologic',
       findings: [
-        'Crise hipertensiva: convulsões, ataxia, cegueira súbita, alteração comportamental, coma em casos extremos.',
-        'Diferencial obrigatório: hipoglicemia, toxinas, SHU felina, massa intracraniana — a PA ajuda mas não substitui neuroimagem quando indicada.',
+        {
+          finding: 'Convulsões, ataxia, cegueira súbita, alteração comportamental, coma',
+          mechanism:
+            'Crise hipertensiva causa edema vasogênico ou hemorragia encefálica por falha de autorregulação cerebral.',
+          clinicalMeaning: 'Emergência neurológica — estabilizar PA e excluir hipoglicemia/toxinas.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Sopro funcional ou taquicardia por hipertireoidismo ou dor; sobrecarga de VE em comorbidades cardíacas.',
-        'Hemorragia nasal epistaxe rara como único sinal — pensar coagulopatia ou trauma.',
+        {
+          finding: 'Sopro funcional ou taquicardia',
+          mechanism:
+            'Hipertireoidismo associado aumenta débito e contratilidade; hipertrofia ventricular secundária à HAS crônica altera ausculta.',
+          clinicalMeaning: 'Eco e T4 em gato idoso hipertenso.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'endocrine',
       findings: [
-        'Em hipertireoidismo: emagrecimento com apetite aumentado, hiperactividade, pelagem pobre; em Cushing canino: polifagia, alterações de pele, hepatomegalia.',
+        {
+          finding: 'Emagrecimento com apetite aumentado (tireoide) ou polifagia/alterações de pele (Cushing)',
+          mechanism:
+            'Endocrinopatias de base elevam PA por mecanismos distintos — volume, resistência vascular ou ambos.',
+          clinicalMeaning: 'Tratar causa de base em paralelo ao anti-hipertensivo.',
+          priority: 'common',
+        },
       ],
     },
   ],
   diagnosis: {
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'Suspeita clínica e lesão-orgão-alvo',
+        purpose: 'Identificar indicação para medição séria de PA.',
+        description:
+          'Lesão ocular/neurológica aguda, azotemia com proteinúria, ou rastreio geriátrico de alto risco (Nelson & Couto, 6ª ed.; IRIS 2023).',
+        interpretation: 'Amaurose súbita ou hemorragia retiniana = urgência pressórica até prova em contrário.',
+        limitations: 'Sinais inespecíficos isolados não confirmam HAS.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Medição padronizada repetida',
+        purpose: 'Confirmar elevação sustentada antes de rotular HAS.',
+        description:
+          'Repouso ≥5–10 min; manguito = 30–40% da circunferência do membro; ≥2 visitas ou monitor domiciliar (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+        interpretation: 'PAS persistentemente elevada em condições calmas confirma HAS.',
+        limitations: 'Efeito bata branca e dor superestimam PA — repetir em ambiente calmo.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Classificação IRIS (se DRC)',
+        purpose: 'Subestadiar pressão e orientar metas terapêuticas.',
+        description:
+          'PAS <140 normotenso; 140–159 borderline; 160–179 hipertenso; ≥180 gravemente hipertenso (IRIS 2023).',
+        interpretation: 'Subestádio pressórico integra manejo renal longitudinal.',
+        limitations: 'Confirmar edição vigente do guideline IRIS.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Investigação de causa',
+        purpose: 'Excluir secundárias antes de rotular idiopática felina.',
+        description:
+          'Bioquímica, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem abdominal, revisão de fármacos (Nelson & Couto, 6ª ed.).',
+        interpretation: 'DRC e hipertireoidismo explicam maioria dos casos felinos.',
+        limitations: 'Hipertensão idiopática é diagnóstico de exclusão.',
+      },
+      {
+        stepNumber: 5,
+        title: 'Fundo de olho e seguimento',
+        purpose: 'Documentar lesão-orgão-alvo e resposta terapêutica.',
+        description:
+          'Fundo de olho indireto após midriase quando seguro; repetir mesmo com PA controlada (IRIS 2023).',
+        interpretation: 'Lesão retiniana documentada reforça indicação terapêutica agressiva.',
+        limitations: 'Midriase contraindicada se glaucoma agudo ou suspeita de ruptura.',
+      },
+    ],
     criteriosMedicao:
       'Utilizar manguito com largura ≈ 30–40% da circunferência do membro no ponto de medição; posição consistente (lateral vs dorsal conforme protocolo do serviço). Doppler sobre artéria medialmente (ex.: radial, palmar) com sensor adequado ao tamanho. Oscilometria pode ser útil em cães de porte médio/grande com algoritmo validado — em gatos, conferir confiabilidade do aparelho. Repetir em ≥2 ocasiões antes de rotular hipertensão “estável”; documentar horário e medicações.',
     tabelaIrisFaixasPressao: {
@@ -338,34 +424,19 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
       'Mínimo: hemograma, bioquímica (ureia, creatinina, SDMA, eletrólitos), urinálise com sedimento, razão UPC se proteinúria dipstick. Gato idoso: T4 e, se indicado, TSH livre / painel tireoidiano conforme laboratório. Imagem: abdômen se massa ou azotemia desproporcional. Revisão de fármacos: corticoides, AINEs, descongestionantes, suplementos. Oftalmologia: fundo de olho indireto após midríase quando seguro; pressão intraocular se protocolo.',
   },
   treatment: {
-    farmacosResumo: {
-      kind: 'clinicalTable',
-      headers: ['Classe', 'Papel típico', 'Cautelas principais'],
-      rows: [
-        [
-          'Bloqueador canal de cálcio (p.ex. anlodipino)',
-          'Eixo central em muitos gatos; reduz resistência vascular periférica',
-          'Hipotensão postural e bradicardia relativa; titular e consultar a monografia do fármaco',
-        ],
-        [
-          'IECA (p.ex. benazepril)',
-          'RAAS; proteinúria; alguns protocolos cardiorrenais',
-          'Creatinina e K⁺ 5–7 d após início; evitar em desidratação aguda',
-        ],
-        ['BRA', 'Alternativa IECA ou combinação selecionada', 'Mesmas vigilâncias; gravidez'],
-        [
-          'Outros (prazosina, hidralazina, fenoldopam IV)',
-          'Crises, hospitalização, casos refratários',
-          'Monitorização contínua; seguir centro de referência',
-        ],
-      ],
-    },
-    estrategiaTitulacao:
-      'Começar com monoterapia de efeito comprovado no espécime (muitas vezes anlodipino no gato); reavaliar PA em 1–2 semanas. Se meta não atingida e função renal estável, associar IECA/BRA com plano laboratorial. Em nefropata azotêmico, introduzir RAAS com cautela e hidratação adequada. Documentar peso, apetite e creatinina a cada escalada.',
-    urgenciaOftalmologica:
-      'Hemorragia retiniana extensa ou descolamento com visão ameaçada: estabilizar PA rapidamente (protocolo hospitalar), envolver oftalmologia veterinária, informar tutor sobre prognóstico visual mesmo com terapia correta.',
-    abordagem:
-      'Tratar sempre a causa de base em paralelo (tireoidectomia / metimazol, controle de diabetes, suspensão de fármaco precipitante). Conferir as doses nas monografias de anlodipino, benazepril e demais fármacos utilizados. HAS + DRC: o tratamento é longitudinal — ajustar metas quando a função renal oscila.',
+    cronica: [
+      'IRIS (2023), nas diretrizes de DRC, recomendam amlodipino como espinha dorsal em muitos gatos hipertensos, iniciando ~0,125–0,25 mg/kg VO q24h e titulando até ~0,25–0,5 mg/kg conforme resposta, com reavaliação de PA em 1–2 semanas.',
+      'Elliott et al. (2017), no BSAVA Manual of Nephrology and Urology (3ª ed.), descrevem associação de IECA ou BRA quando proteinúria, ICC com contexto ou monoterapia insuficiente — creatinina e K⁺ 5–7 dias após início ou escalada de RAAS.',
+      'Nelson & Couto (6ª ed.) enfatizam tratar causa de base em paralelo: corrigir hipertireoidismo, suspender corticoide precipitante, otimizar hidratação do nefropata antes de intensificar RAAS.',
+    ],
+    aguda: [
+      'Nelson & Couto (6ª ed.) descrevem abordagem hospitalar para crise neurológica ou olho com ameaça visual: fármacos de curta duração, vigilância intensiva de PA e fundo de olho seriado — prognóstico visual pode permanecer reservado mesmo com PA controlada.',
+    ],
+    monitoramento: [
+      'Reavaliar PA em 1–2 semanas após início ou ajuste de anti-hipertensivo; creatinina e K⁺ 5–7 dias após IECA/BRA (IRIS 2023).',
+      'Fundo de olho seriado mesmo com PA controlada — lesão retiniana prévia pode não reverter.',
+      'Peso, apetite e sinais neurológicos a cada revisão; monitor domiciliar quando disponível.',
+    ],
   },
   prevention:
     'Rastreio pressórico em gatos geriátricos com DRC ou em risco tireoidiano; controle de peso; evitar nefrotóxicos desnecessários; em animais em IECA/BRA, tutores devem reconhecer sinais de desidratação (vómito, diarreia) e procurar assistência precoce. Não há “profilaxia farmacológica” universal sem indicação.',

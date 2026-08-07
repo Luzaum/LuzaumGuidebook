@@ -1,9 +1,14 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
+import { excludeSedativeAnestheticCommercialProducts } from '../utils/commercialProductPresentationFilters';
 import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommercialProducts.seed';
 import { insulinCommercialProductsSeed } from './insulinCommercialProducts.seed';
 import { selectedCommercialProductsSeed } from './selectedCommercialProducts.seed';
 import { simethiconeCommercialProductsSeed } from './simethiconeCommercialProducts.seed';
 import { itraconazolePrednisoloneCommercialProductsSeed } from './itraconazolePrednisoloneCommercialProducts.seed';
+import { woundTopicalCommercialProductsSeed } from './woundTopicalCommercialProducts.seed';
+import {
+  potassiumIodideCommercialProductsSeed,
+} from './potassiumIodideCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -37,12 +42,14 @@ const CARDIO_RENAL_MONITORING_ALERT =
 const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
-export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
+const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...selectedCommercialProductsSeed,
   ...insulinCommercialProductsSeed,
   ...simethiconeCommercialProductsSeed,
   ...hepatoprotectiveCommercialProductsSeed,
   ...itraconazolePrednisoloneCommercialProductsSeed,
+  ...woundTopicalCommercialProductsSeed,
+  ...potassiumIodideCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -1477,7 +1484,7 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'skin_chlorhexidine_shampoo',
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_antifungal_shampoo', 'skin_pyoderma'],
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/dermatologicos/cloresten/',
-    imageUrl: 'https://files.terrazoo.com.br/uploads/2017/08/65277.jpg',
+    imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/cloresten-1-1.jpg',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 200 mL', 'Shampoo 500 mL'],
     activeComponents: ['gluconato de clorexidina 2%', 'nitrato de miconazol aproximadamente 2,5%'],
@@ -1509,8 +1516,9 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'dermatologic',
     commercialSubclass: 'skin_chlorhexidine_shampoo',
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_antifungal_shampoo', 'skin_pyoderma'],
-    productPageUrl: 'https://cepav.com.br/produtos/cloreximicol/',
-    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/877481-194-194/cloreximicol-shampoo-cepav.jpg?v=638158016651830000',
+    productPageUrl: 'https://www.cobasi.com.br/cloreximicol-shampoo-cepav-3671428/p',
+    imageUrl:
+      'https://cobasi.vteximg.com.br/arquivos/ids/877481-1500-1500/cloreximicol-shampoo-cepav.webp?v=638158016651830000',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 230 mL'],
     activeComponents: ['clorexidina como gluconato 1,14 g/100 mL', 'miconazol como nitrato 2 g/100 mL'],
@@ -1543,7 +1551,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialSubclass: 'skin_chlorhexidine_shampoo',
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_pyoderma'],
     productPageUrl: 'https://www.cobasi.com.br/shampoo-clorexiderm-4--230-ml-cepav-3326178/p',
-    imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/178383-194-194/Shampoo-Clorexderme.jpg?v=638143031321200000',
+    imageUrl:
+      'https://cobasi.vteximg.com.br/arquivos/ids/178383-1500-1500/Shampoo-Clorexderme.webp?v=638143031321200000',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 230 mL'],
     activeComponents: ['gluconato de clorexidina 4%'],
@@ -1575,11 +1584,11 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'dermatologic',
     commercialSubclass: 'skin_chlorhexidine_shampoo',
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_pyoderma'],
-    productPageUrl: 'https://br.virbac.com/products/dermatologicos/hexadene-spherulites',
+    productPageUrl: 'https://www.cobasi.com.br/Hexadene-Spherulites-250-ml-Virbac-3281484/p',
     imageUrl:
-      'https://br.virbac.com/files/live/sites/virbac-br/files/predefined-files/products/News%20Packshoots/4408-R0+4995-R4_ROTULO%20HEXADENE%20250+500ml-packshot_WEB_600X600_left.png',
+      'https://cobasi.vteximg.com.br/arquivos/ids/1062552-1500-1500/Shampoo-Hexadene-Spherulites-250-ml.webp?v=638647064401400000',
     species: ['dog', 'cat'],
-    presentations: ['Shampoo 500 mL, conforme disponibilidade'],
+    presentations: ['Shampoo 250 mL', 'Shampoo 500 mL, conforme disponibilidade'],
     activeComponents: ['clorexidina como gluconato 3%', 'sistema Spherulites'],
     labelCompositionSummary:
       'Cada 100 mL contém clorexidina como gluconato 3 g e veículo q.s.p. 100 mL. A descrição comercial cita microcápsulas Spherulites com liberação gradual.',
@@ -1744,8 +1753,9 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'dermatologic',
     commercialSubclass: 'skin_chlorhexidine_shampoo',
     commercialSubclasses: ['skin_chlorhexidine_shampoo', 'skin_antifungal_shampoo', 'skin_pyoderma', 'skin_atopy'],
-    productPageUrl: 'https://www.douxo.com/pt/douxo-s3-solucoes/douxo-s3-pyo/pyo-champo',
-    imageUrl: 'https://us.douxo.com/cdn/shop/files/Douxo_S3_US_ATF_Shp-200_PYO_Tile_1.jpg?v=1770916975&width=1024',
+    productPageUrl:
+      'https://us.douxo.com/products/douxo-s3-pyo-shampoo?variant=46730730963164',
+    imageUrl: 'https://us.douxo.com/cdn/shop/files/Douxo_S3_US_ATF_Shp-200_PYO_Tile_1.jpg?v=1770916975',
     species: ['dog', 'cat'],
     presentations: ['Shampoo 200 mL, conforme disponibilidade'],
     activeComponents: ['digluconato de clorexidina 3%', 'Ophytrium 0,5%'],
@@ -6503,7 +6513,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'behavioral',
     commercialSubclass: 'neuro_pain',
     productPageUrl: 'https://avertsaudeanimal.com.br/linhas/medicamentos/decrise-50-mg',
-    imageUrl: 'https://avertsaudeanimal.com.br/images/uploads/posts/grupo-de-mascara-38.png',
+    imageUrl:
+      'https://acdn-us.mitiendanube.com/stores/007/304/631/products/20260425185411214001-c0175098050180345a17771433062328-1024-1024.webp',
     species: ['cat'],
     presentations: ['Decrise 50 mg', 'Decrise 100 mg', 'Decrise 200 mg'],
     activeComponents: ['gabapentina'],
@@ -6723,7 +6734,8 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     commercialClass: 'analgesic',
     commercialSubclass: 'analgesic_opioid_combo',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/linha-dor/cronidor/',
-    imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_linhador_cronidor.jpg',
+    imageUrl:
+      'https://70913.cdn.simplo7.net/static/70913/sku/farmacia-controle-de-dor-cronidor-comprimidos-tramadol--p-1631927766844.jpg',
     species: ['dog', 'cat'],
     presentations: ['Cronidor 12 mg', 'Cronidor 40 mg', 'Cronidor 80 mg', 'Cronidor 2% injetável'],
     activeComponents: ['cloridrato de tramadol'],
@@ -7591,3 +7603,6 @@ export const commercialOticProductsSeed: CommercialMedicationProduct[] = [
     price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Preço não localizado', sourceDate: '2026-06-17' }
   }
 ];
+
+export const commercialOticProductsSeed: CommercialMedicationProduct[] =
+  excludeSedativeAnestheticCommercialProducts(commercialProductsRaw);

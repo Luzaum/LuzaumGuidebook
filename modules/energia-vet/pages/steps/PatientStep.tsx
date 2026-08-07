@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ChevronRight, Mars, UserRoundPlus, Venus, Zap } from 'lucide-react'
 import { toast } from 'sonner'
@@ -12,15 +12,8 @@ import { LocalizedNumberInput } from '../../components/ui/localized-number-input
 import { Label } from '../../components/ui/label'
 import { useCalculationStore } from '../../store/calculationStore'
 import { getDefaultStateId } from '../../lib/nutrition'
-import { getClinicalProfileIdsFromSelections, getClinicalProfileOptions, type ClinicalProfileOption } from '../../lib/clinicalProfiles'
 import { getDefaultRequirement } from '../../lib/genutriData'
-import {
-  isCalculationEngineV3Enabled,
-  validatePatientStepForV3,
-} from '../../lib/nutritionCalculationBridge'
-import { mapComorbiditySelectionsToTherapeuticProfiles } from '../../lib/clinical/comorbidityResolver'
-import { getTherapeuticProfileById } from '../../lib/clinical/therapeuticProfiles'
-import { getEvidenceSourceById } from '../../lib/clinical/evidenceResolver'
+import { mapStoreToCanonicalInput, validatePatientInput } from '../../lib/canonical'
 import { Species, MuscleCondition } from '../../types'
 import { DOG_BREEDS_BR, CAT_BREEDS_BR } from '../../lib/breedOptions'
 
@@ -43,106 +36,17 @@ const EMC_OPTIONS: Array<{ value: MuscleCondition; label: string; detail: string
   { value: 'severe_loss', label: 'Perda acentuada', detail: 'Atrofia marcada — priorizar suporte proteico.' },
 ]
 
-type ComorbidityCategory = 'renal' | 'digestive' | 'metabolic' | 'allergy' | 'systemic'
-
-function normalizeSearchText(value: string) {
-  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase()
-}
-
-function getComorbidityCategory(option: ClinicalProfileOption): ComorbidityCategory {
-  const text = normalizeSearchText(`${option.label} ${option.description}`)
-  if (/renal|urolit|estruv|oxalato|urin/.test(text)) return 'renal'
-  if (/intestinal|pancre|ileo|linfang|hepat|digest/.test(text)) return 'digestive'
-  if (/diabet|hiperlipid|obes/.test(text)) return 'metabolic'
-  if (/alerg|reacao/.test(text)) return 'allergy'
-  return 'systemic'
-}
-
-function buildComorbidityGuidance(species: Species, option: ClinicalProfileOption) {
-  const mappedIds = mapComorbiditySelectionsToTherapeuticProfiles(species, [option.id])
-  const profiles = mappedIds
-    .map((profileId) => getTherapeuticProfileById(profileId))
-    .filter((profile): profile is NonNullable<typeof profile> => Boolean(profile))
-
-  if (!profiles.length) {
-    return {
-      summary: `Esta condição ativa as metas nutricionais cadastradas para ${option.label}. A composição será conferida na formulação final.`,
-      priorities: [] as string[],
-      sources: [] as string[],
-    }
-  }
-
-  const priorities = Array.from(new Set(profiles.flatMap((profile) => profile.desiredCharacteristics))).slice(0, 3)
-  const sources = Array.from(
-    new Set(
-      profiles
-        .flatMap((profile) => profile.evidenceSourceIds)
-        .map((id) => getEvidenceSourceById(id)?.title)
-        .filter((title): title is string => Boolean(title)),
-    ),
-  )
-  return {
-    summary: profiles.map((profile) => profile.clinicalContext).filter(Boolean).join(' '),
-    priorities,
-    sources,
-  }
-}
-
 export default function PatientStep() {
   const navigate = useNavigate()
   const { patient, energy, diet, setPatient, setEnergy, setDiet } = useCalculationStore()
   const species = patient.species ?? 'dog'
   const registrationMode = patient.registrationMode ?? 'registered'
-  const v3Enabled = isCalculationEngineV3Enabled()
   const isPuppy = (patient.ageMonths ?? 0) < 12
-  const dietHistory = patient.dietHistory
-  const documentedIntakeKcal =
-    (dietHistory?.mainFoodKcalPerDay ?? 0) +
-    (dietHistory?.treatsKcalPerDay ?? 0) +
-    (dietHistory?.chewsKcalPerDay ?? 0) +
-    (dietHistory?.medicationVehicleKcalPerDay ?? 0) +
-    (dietHistory?.supplementsKcalPerDay ?? 0)
-
-  const updateDietHistory = (patch: Partial<NonNullable<typeof patient.dietHistory>>) => {
-    setPatient({
-      dietHistory: {
-        documented: dietHistory?.documented ?? false,
-        ...dietHistory,
-        ...patch,
-      },
-    })
-  }
 
   const breeds = useMemo(
     () => [...(species === 'cat' ? CAT_BREEDS_BR : DOG_BREEDS_BR)].sort((left, right) => left.localeCompare(right, 'pt-BR')),
     [species],
   )
-  const availableComorbidities = useMemo(() => getClinicalProfileOptions(species), [species])
-  const selectedComorbidityIds = patient.comorbidityIds ?? []
-
-  useEffect(() => {
-    const validSelections = selectedComorbidityIds.filter((selection) =>
-      availableComorbidities.some((option) => option.id === selection),
-    )
-
-    if (validSelections.length !== selectedComorbidityIds.length) {
-      setPatient({ comorbidityIds: validSelections })
-    }
-
-    const additionalRequirementProfileIds = getClinicalProfileIdsFromSelections(species, validSelections)
-    const fallbackRequirement = getDefaultRequirement(species, energy.stateId, !!patient.isNeutered)
-    const currentAdditional = diet.additionalRequirementProfileIds ?? []
-    const additionalChanged =
-      currentAdditional.length !== additionalRequirementProfileIds.length ||
-      currentAdditional.some((id, index) => id !== additionalRequirementProfileIds[index])
-
-    if (!diet.requirementProfileId && fallbackRequirement?.id) {
-      setDiet({ requirementProfileId: fallbackRequirement.id, additionalRequirementProfileIds })
-      return
-    }
-
-    if (additionalChanged) setDiet({ additionalRequirementProfileIds })
-  }, [availableComorbidities, diet.additionalRequirementProfileIds, diet.requirementProfileId, energy.stateId, patient.isNeutered, selectedComorbidityIds, setDiet, setPatient, species])
 
   const handleSpeciesChange = (nextSpecies: Species) => {
     if (nextSpecies === species) return
@@ -161,22 +65,10 @@ export default function PatientStep() {
     setDiet({ requirementProfileId: nextRequirement?.id })
   }
 
-  const toggleComorbidity = (optionId: string) => {
-    const current = new Set(selectedComorbidityIds)
-    if (current.has(optionId)) current.delete(optionId)
-    else current.add(optionId)
-    setPatient({ comorbidityIds: Array.from(current) })
-  }
-
   const handleNext = () => {
-    if (v3Enabled) {
-      const issues = validatePatientStepForV3(patient)
-      if (issues.length > 0) {
-        toast.error(issues[0].message)
-        return
-      }
-    } else if (!patient.currentWeight || patient.currentWeight <= 0) {
-      toast.error('Informe o peso atual do paciente para continuar.')
+    const issues = validatePatientInput(mapStoreToCanonicalInput({ patient, energy, target: {} }))
+    if (issues.length > 0) {
+      toast.error(issues[0].message)
       return
     }
 
@@ -190,7 +82,7 @@ export default function PatientStep() {
     })
     setDiet({
       requirementProfileId: diet.requirementProfileId ?? nextRequirement?.id,
-      additionalRequirementProfileIds: getClinicalProfileIdsFromSelections(species, selectedComorbidityIds),
+      additionalRequirementProfileIds: [],
     })
     navigate(`${NEW_ROUTE}/energy`)
   }
@@ -389,12 +281,11 @@ export default function PatientStep() {
           </div>
         </section>
 
-        {v3Enabled && (
-          <section className="space-y-5 rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
+        <section className="space-y-5 rounded-2xl border border-primary/20 bg-primary/[0.04] p-5">
             <div>
               <h2 className="text-base font-semibold">Avaliação clínica (EMC e atividade)</h2>
               <p className="mt-1 text-xs text-muted-foreground">
-                Dados usados pelo motor energético para calibrar manutenção, perda ou ganho de peso.
+                Dados usados para estimar energia de manutenção e definir metas corporais.
               </p>
             </div>
 
@@ -490,134 +381,14 @@ export default function PatientStep() {
               />
             </div>
           </section>
-        )}
 
-        {v3Enabled && (
-          <section className="space-y-4 rounded-2xl border border-border bg-muted/25 p-5">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <h2 className="text-base font-semibold">Histórico alimentar atual</h2>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Se a ingestão estiver estável e documentada, o motor pode calibrar a meta pela ingestão real (PNA).
-                </p>
-              </div>
-              <label className="flex cursor-pointer items-center gap-2 text-sm">
-                <input
-                  type="checkbox"
-                  checked={!!dietHistory?.documented}
-                  onChange={(event) =>
-                    updateDietHistory({
-                      documented: event.target.checked,
-                      reliable: event.target.checked ? dietHistory?.reliable : undefined,
-                      weightStable: event.target.checked ? dietHistory?.weightStable : undefined,
-                    })
-                  }
-                  className="h-4 w-4 accent-primary"
-                />
-                Documentar ingestão
-              </label>
-            </div>
-
-            {dietHistory?.documented && (
-              <div className="grid gap-4 md:grid-cols-2">
-                <label className="flex items-start gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={!!dietHistory.reliable}
-                    onChange={(event) => updateDietHistory({ reliable: event.target.checked })}
-                    className="mt-0.5 h-4 w-4 accent-primary"
-                  />
-                  <span>
-                    <span className="font-semibold">Registro confiável</span>
-                    <span className="mt-0.5 block text-xs text-muted-foreground">Porções medidas ou pesadas pelo tutor/clínica.</span>
-                  </span>
-                </label>
-                <label className="flex items-start gap-2 text-sm">
-                  <input
-                    type="checkbox"
-                    checked={!!dietHistory.weightStable}
-                    onChange={(event) => updateDietHistory({ weightStable: event.target.checked })}
-                    className="mt-0.5 h-4 w-4 accent-primary"
-                  />
-                  <span>
-                    <span className="font-semibold">Peso estável</span>
-                    <span className="mt-0.5 block text-xs text-muted-foreground">Sem perda ou ganho relevante no período registrado.</span>
-                  </span>
-                </label>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-days">Dias registrados</Label>
-                  <LocalizedNumberInput
-                    id="diet-days"
-                    min={1}
-                    value={dietHistory.daysRecorded ?? null}
-                    onValueChange={(value) => updateDietHistory({ daysRecorded: value ?? undefined })}
-                    placeholder="Ex.: 7"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-main-kcal">Dieta principal (kcal/dia)</Label>
-                  <LocalizedNumberInput
-                    id="diet-main-kcal"
-                    min={0}
-                    value={dietHistory.mainFoodKcalPerDay ?? null}
-                    onValueChange={(value) => updateDietHistory({ mainFoodKcalPerDay: value ?? undefined })}
-                    placeholder="Ex.: 420"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-treats">Petiscos (kcal/dia)</Label>
-                  <LocalizedNumberInput
-                    id="diet-treats"
-                    min={0}
-                    value={dietHistory.treatsKcalPerDay ?? null}
-                    onValueChange={(value) => updateDietHistory({ treatsKcalPerDay: value ?? undefined })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-chews">Ossos/mastigáveis (kcal/dia)</Label>
-                  <LocalizedNumberInput
-                    id="diet-chews"
-                    min={0}
-                    value={dietHistory.chewsKcalPerDay ?? null}
-                    onValueChange={(value) => updateDietHistory({ chewsKcalPerDay: value ?? undefined })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-med-kcal">Veículo medicamentoso (kcal/dia)</Label>
-                  <LocalizedNumberInput
-                    id="diet-med-kcal"
-                    min={0}
-                    value={dietHistory.medicationVehicleKcalPerDay ?? null}
-                    onValueChange={(value) => updateDietHistory({ medicationVehicleKcalPerDay: value ?? undefined })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="diet-sup-kcal">Suplementos (kcal/dia)</Label>
-                  <LocalizedNumberInput
-                    id="diet-sup-kcal"
-                    min={0}
-                    value={dietHistory.supplementsKcalPerDay ?? null}
-                    onValueChange={(value) => updateDietHistory({ supplementsKcalPerDay: value ?? undefined })}
-                  />
-                </div>
-                {documentedIntakeKcal > 0 && (
-                  <p className="md:col-span-2 text-sm text-muted-foreground">
-                    Ingestão total documentada: <strong className="text-foreground">{documentedIntakeKcal.toFixed(0)} kcal/dia</strong>
-                  </p>
-                )}
-              </div>
-            )}
-          </section>
-        )}
-
-        <ComorbidityPicker
-          options={availableComorbidities}
-          selectedIds={selectedComorbidityIds}
-          onToggle={toggleComorbidity}
-          onClear={() => setPatient({ comorbidityIds: [] })}
-          getCategory={getComorbidityCategory}
-          buildGuidance={(option) => buildComorbidityGuidance(species, option)}
-        />
+        <section className="rounded-2xl border border-border p-5">
+          <ComorbidityPicker
+            species={species}
+            value={patient.comorbidityIds ?? []}
+            onChange={(ids) => setPatient({ comorbidityIds: ids })}
+          />
+        </section>
 
         <div className="flex justify-end border-t border-border/60 pt-4">
           <Button onClick={handleNext} className="gap-2" id="btn-next-energy">

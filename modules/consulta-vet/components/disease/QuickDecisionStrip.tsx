@@ -1,5 +1,6 @@
 import React from 'react';
 import { Zap } from 'lucide-react';
+import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
 
 interface QuickDecisionStripProps {
   items: string[];
@@ -33,7 +34,9 @@ export function QuickDecisionStrip({ items, className = '' }: QuickDecisionStrip
               <span className="mb-2 inline-flex h-6 min-w-[1.5rem] items-center justify-center rounded-lg bg-primary/15 px-2 text-[11px] font-bold text-primary">
                 {index + 1}
               </span>
-              <p className="mt-1">{text}</p>
+              <p className="mt-1">
+                <ClinicalAbbreviationText text={text} />
+              </p>
             </div>
           ))}
         </div>

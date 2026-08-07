@@ -16,12 +16,12 @@ import {
   therapeuticStatusLabel,
   adequacyStatusLabel,
 } from '../pdf-v5/clinicalLabels'
-import { getClinicalProfileBadges } from './clinicalProfiles'
+import { getClinicalProfileBadges } from './clinicalProfileLabels'
 import {
   buildRefeedingProgression,
   classifyRefeedingRisk,
   REFEEDING_CLINICIAN_ALERTS,
-} from './nutrition-calculations/refeedingEngine'
+} from './hospital-nutrition/refeedingEngine'
 import {
   calculateBolusMeal,
   calculateCaloricDeficit,
@@ -29,8 +29,8 @@ import {
   calculateDeliveredPercent,
   calculateEnteralDailyGrams,
   calculateEnteralDailyVolume,
-} from './nutrition-calculations/enteralEngine'
-import { calculateParenteralNutrition, PARENTERAL_PROTEIN_TARGETS } from './nutrition-calculations/parenteralEngine'
+} from './hospital-nutrition/enteralEngine'
+import { calculateParenteralNutrition, PARENTERAL_PROTEIN_TARGETS } from './hospital-nutrition/parenteralEngine'
 import {
   calculateFoodWaterMl,
   calculateMetabolicWaterMl,
@@ -38,8 +38,8 @@ import {
   estimateWaterFromEnergy,
   estimateWaterMicrobiomeMethod,
   WATER_DISCLAIMER,
-} from './nutrition-calculations/waterEngine'
-import { buildTransitionPlan } from './nutrition-calculations/transitionEngine'
+} from './hospital-nutrition/waterEngine'
+import { buildTransitionPlan } from './hospital-nutrition/transitionEngine'
 import { resolveClinicalRecordLegacyFields } from '../pdf-v5/clinicalRecordBuilder'
 
 function formatAgeYears(ageMonths: number | undefined): string {

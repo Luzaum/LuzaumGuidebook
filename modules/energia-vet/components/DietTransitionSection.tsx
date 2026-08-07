@@ -11,7 +11,7 @@ import {
   buildTransitionPlan,
   DEFAULT_SEVEN_DAY_TRANSITION,
   validateTransitionDayPercents,
-} from '../lib/nutrition-calculations/transitionEngine'
+} from '../lib/hospital-nutrition/transitionEngine'
 import { cn } from '../lib/utils'
 
 interface DietTransitionSectionProps {

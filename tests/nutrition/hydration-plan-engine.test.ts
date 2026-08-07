@@ -3,8 +3,8 @@ import test from 'node:test'
 import {
   buildHydrationPlanPreview,
   validateManualHydrationTarget,
-} from '../../modules/energia-vet/lib/nutrition-calculations/hydrationPlanEngine'
-import { WATER_DISCLAIMER } from '../../modules/energia-vet/lib/nutrition-calculations/waterEngine'
+} from '../../modules/energia-vet/lib/hospital-nutrition/hydrationPlanEngine'
+import { WATER_DISCLAIMER } from '../../modules/energia-vet/lib/hospital-nutrition/waterEngine'
 
 test('método energético calcula meta e água alimentar', () => {
   const preview = buildHydrationPlanPreview({

@@ -161,21 +161,91 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
     {
       system: 'respiratory',
       findings: [
-        'Tosse seca “honking”; piora com excitação, calor, umidade, comer/beber, tração de coleira.',
-        'Sibilos estridor na traqueia; esforço inspiratório (cervical); esforço expiratório / “abdominal press” (intratorácico/brônquico).',
-        'Cianose e síncope em casos graves.',
+        {
+          finding: 'Tosse seca "honking"; piora com excitação, calor, umidade, comer/beber, tração de coleira',
+          mechanism:
+            'Colapso dinâmico da parede traqueobrônquica estreita o lúmen durante variações de pressão transpulmonar; a tosse reflexa traumatiza mucosa e perpetua edema/inflamação.',
+          clinicalMeaning: 'História clássica em toy breed — palpação traqueal sensível pode induzir paroxismo.',
+          priority: 'common',
+        },
+        {
+          finding: 'Sibilos/estridor traqueal; esforço inspiratório (cervical) ou expiratório (intratorácico/brônquico)',
+          mechanism:
+            'Colapso cervical predomina na inspiração (pressão intratraqueal mais negativa); colapso intratorácico/brônquico predomina na expiração e tosse (pressão pleural positiva).',
+          clinicalMeaning: 'Fase respiratória do ruído ajuda a localizar segmento acometido.',
+          priority: 'common',
+        },
+        {
+          finding: 'Cianose e síncope em casos graves',
+          mechanism:
+            'Obstrução dinâmica severa reduz ventilação alveolar; reflexo vagal ou hipoxemia pode causar síncope.',
+          clinicalMeaning: 'Emergência — oxigênio, sedação leve e antitussígeno; investigar comorbidade cardíaca.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'gastrointestinal',
-      findings: ['Gagging / retching pós-tosse — mimetiza vômito.'],
+      findings: [
+        {
+          finding: 'Gagging / retching pós-tosse',
+          mechanism:
+            'Tosse paroxística estimula reflexo faríngeo e pode mimetizar vômito sem conteúdo gástrico.',
+          clinicalMeaning: 'Diferenciar de doença gastrointestinal primária pela temporalidade com tosse.',
+          priority: 'uncommon',
+        },
+      ],
     },
   ],
   diagnosis: {
-    tcHistoriaEFisico:
-      'História muitas vezes diagnóstica: toy, tosse honking, gatilhos ambientais, progressão. Palpação traqueal sensível induz tosse — útil mas não exclusivo.',
-    tcBancoMinimo:
-      'Hemograma/bioquímica: não fecham diagnóstico; avaliam comorbidades, hepatopatia subclínica, suporte para corticoide/anestesia. Ácidos biliares elevados relatados em parte dos casos (Johnson).',
+    diagnosticPlanStepByStep: [
+      {
+        stepNumber: 1,
+        title: 'História e prova traqueal',
+        purpose: 'Estabelecer suspeita clínica de colapso traqueobrônquico.',
+        description:
+          'Toy com tosse seca episódica "honking", pior com coleira e excitação; palpação traqueal sensível induz paroxismo (Johnson, Respiratory Medicine 2ª ed.; Nelson & Couto, 6ª ed.).',
+        interpretation: 'História muitas vezes diagnóstica; achado não é patognomônico isolado.',
+        limitations: 'Broncomalácia isolada pode mimetizar parcialmente o quadro.',
+      },
+      {
+        stepNumber: 2,
+        title: 'Banco mínimo e avaliação cardíaca',
+        purpose: 'Excluir comorbidades que somam ou mimetizam colapso.',
+        description:
+          'Bioquímica para suporte medicamentoso; ausculta cardíaca — DMVD com átrio esquerdo grande pode comprimir brônquio esquerdo (Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Cardiomegalia com ruído expiratório exige eco antes de rotular colapso isolado.',
+        limitations: 'Laboratório normal não confirma nem exclui TBM.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Radiografia torácica',
+        purpose: 'Triagem estática de calibre traqueal e comorbidades.',
+        description:
+          'VHS, padrão bronquial, aspiração; inspiração para cervical, expiração para intratorácico (Johnson, Respiratory Medicine 2ª ed.; Drobatz et al., 2019).',
+        interpretation: 'Achados sugerem colapso ou comorbidade, mas subestimam gravidade dinâmica.',
+        limitations: 'Exame estático para doença dinâmica — discordância clínico-radiológica é frequente.',
+      },
+      {
+        stepNumber: 4,
+        title: 'Fluoroscopia',
+        purpose: 'Documentar colapso funcional durante respiração e tosse.',
+        description:
+          'Comparar com RX quando há discrepância clínico-radiológica; avalia vias aéreas superiores (Kim et al., 2024; Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Colapso visível durante respiração natural confirma componente dinâmico.',
+        limitations: 'Disponibilidade limitada; requer interpretação experiente.',
+      },
+      {
+        stepNumber: 5,
+        title: 'Broncoscopia',
+        purpose: 'Graduar severidade e orientar decisão terapêutica.',
+        description:
+          'Padrão ouro para grau ACVS I–IV; permite BAL/citologia/cultura. Planejar anestesia com equipe experiente (ACVS; Johnson, Respiratory Medicine 2ª ed.).',
+        interpretation: 'Grau III–IV ou obstrução funcional grave orienta discussão de stent/cirurgia.',
+        limitations: 'Risco anestésico em paciente muito comprometido — timing individualizado.',
+        isGoldStandard: true,
+      },
+    ],
     tcRadiografia: {
       kind: 'clinicalTable',
       headers: ['Papel da radiografia', 'Detalhe clínico'],
@@ -231,12 +301,17 @@ export const colapsoTraquealCaninoRecord: DiseaseRecord = {
       'Bronquite crônica e broncomalácia isolada; paralisia/colapso laríngeo, palato alongado, BOAS, colapso nasofaríngeo; compressão de brônquio principal esquerdo por aumento de AE (DMVD); corpo estranho, neoplasia, estenose; parenquimatoso, pneumonia, edema.',
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Estabilizar crises com oxigênio, sedação leve e antitussígeno — minimizar estresse físico e térmico.',
-      '2) Perda de peso e troca coleira → peitoral: medidas com maior relação custo/benefício na literatura recente.',
-      '3) Antitussígenos adequados (hidrocodona, codeína ou butorfanol — um por vez) como eixo crônico; corticoide curto para exacerbações ou inalado para manutenção.',
-      '4) Broncoscopia/fluoroscopia para decidir grau real antes de prometer stent ao tutor.',
-      '5) Encaminhar cirurgia de anéis ou stent apenas após falha documentada do máximo médico e consentimento sobre complicações.',
+    cronica: [
+      'Kim et al. (2024), em estudo retrospectivo com cães toy com colapso traqueal, relataram que sobrepeso extremamente comum (>97% com BCS ≥4 em série recente) e que perda de peso agressiva associada a peitoral e controle ambiental melhorou descompensação na grande maioria dos casos. Conclusão: peso e coleira são medidas centrais, não opcionais.',
+      'Johnson (2020) descreve hidrocodona 0,22–0,5 mg/kg PO q6–12h, codeína 1–2 mg/kg PO q8–12h ou butorfanol 0,5–1,0 mg/kg PO q6–12h como eixo crônico antitussígeno — escolher apenas um opioide; objetivo é quebrar ciclo tosse-inflamação-colapso.',
+      'Johnson (2020) recomenda corticoide sistêmico curto para crise (dexametasona 0,05–0,1 mg/kg ou prednisona 0,25–0,5 mg/kg q12h com desmame) e budesonida inalatória para manutenção prolongada com menos efeito sistêmico.',
+    ],
+    aguda: [
+      'Drobatz et al. (2019), no textbook de emergência, descrevem estabilização de crise com oxigênio, mínimo estresse, sedação/antitussígenos e anti-inflamatório; excluir edema/pneumonia antes de atribuir tudo ao colapso.',
+    ],
+    preclinica: [
+      'Robin et al. (2024), em meta-análise sistemática sobre complicações após stent traqueal em cães, reportaram tosse precoce ~99%, tosse tardia clinicamente relevante ~52%, infecção ~24%, granuloma ~20% e fratura de stent ~12%. Conclusão: stent é segunda linha após falha documentada do manejo médico máximo, com consentimento informado sobre complicações frequentes.',
+      'Nelson & Couto (6ª ed.) citam sobrevida mediana ~502 dias em série com stent complicada por eventos adversos relevantes — alinhar expectativas com tutor.',
     ],
     monitoramento: [
       'Frequência respiratória em repouso e padrão de esforço abdominal a cada revisão.',

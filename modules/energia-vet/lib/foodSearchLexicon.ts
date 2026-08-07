@@ -6,12 +6,14 @@
 import { FOOD_DISPLAY_NAME_OVERRIDES } from './foodDisplayNameOverrides'
 import type { FoodItem } from '../types'
 
-/** Normaliza: minúsculas, sem acentos, espaços colapsados. */
+/** Normaliza: minúsculas, sem acentos, pontuação fraca removida, espaços colapsados. */
 export function normalizeFoodSearchText(text: string): string {
   return text
     .toLowerCase()
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[''`´]/g, '')
+    .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim()
 }
@@ -66,7 +68,7 @@ const SYNONYM_GROUPS: string[][] = [
   ['hills', 'hill'],
   ['royal', 'canin', 'royalcanin'],
   ['farmina', 'nd', 'vetlife', 'vet', 'life'],
-  ['guabi', 'natural'],
+  ['guabi', 'guabifit'],
   ['purina', 'proplan', 'chow'],
   ['organic', 'organico', 'organica'],
   ['quinoa', 'quinoa'],
@@ -248,6 +250,18 @@ export function buildFoodSearchHaystackForFood(
   ])
 }
 
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+}
+
+/** Casamento por token inteiro — evita "gua" dentro de "agua" ou "guabi" → "natural". */
+function haystackContainsToken(haystack: string, form: string): boolean {
+  const token = normalizeFoodSearchText(form)
+  if (!token) return false
+  const pattern = new RegExp(`(?:^|\\s)${escapeRegExp(token)}(?:\\s|$)`)
+  return pattern.test(` ${haystack} `)
+}
+
 /** Verifica se todos os tokens da query casam (com sinônimos PT/EN). */
 export function foodSearchTokensMatch(query: string, haystack: string): boolean {
   const tokens = normalizeFoodSearchText(query).split(' ').filter(Boolean)
@@ -255,6 +269,34 @@ export function foodSearchTokensMatch(query: string, haystack: string): boolean 
 
   return tokens.every((token) => {
     const forms = expandSearchToken(token)
-    return forms.some((form) => haystack.includes(form))
+    return forms.some((form) => haystackContainsToken(haystack, form))
   })
+}
+
+/** Pontua relevância da busca — maior = melhor posição na lista. */
+export function scoreFoodSearchMatch(
+  query: string,
+  food: Pick<FoodItem, 'name' | 'id' | 'category' | 'categoryNormalized' | 'presentation' | 'foodType' | 'notes'>,
+): number {
+  const haystack = buildFoodSearchHaystackForFood(food)
+  if (!foodSearchTokensMatch(query, haystack)) return -1
+
+  const normalizedQuery = normalizeFoodSearchText(query)
+  const displayName = normalizeFoodSearchText(
+    getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType }),
+  )
+  const queryTokens = normalizedQuery.split(' ').filter(Boolean)
+
+  let score = 0
+  if (displayName === normalizedQuery) score += 120
+  else if (displayName.startsWith(normalizedQuery)) score += 90
+  else if (displayName.includes(normalizedQuery)) score += 70
+
+  for (const token of queryTokens) {
+    if (displayName.includes(token)) score += 25
+    if (haystackContainsToken(displayName, token)) score += 15
+  }
+
+  if (food.foodType === 'commercial') score += 5
+  return score
 }

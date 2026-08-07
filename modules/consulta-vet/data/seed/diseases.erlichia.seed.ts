@@ -2,7 +2,7 @@ import { DiseaseRecord } from '../../types/disease';
 
 const ASSET_BASE = '/assets/consulta-vet';
 
-/** Erliquiose monocitica canina (CME) - atualizada a partir do material VIN 2025 + imagens fornecidas. */
+/** Erliquiose monocítica canina (CME) — síntese Ferrolho et al. 2025, Harrus & Waner, Neer et al. 2002, Sykes 2024. */
 export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   id: 'disease-erliquiose-monocitica-canina',
   slug: 'erliquiose-monocitica-canina',
@@ -70,26 +70,26 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
           label: 'Suspeita',
           timing: 'Primeira consulta',
           detail:
-            'Histórico de carrapatos, área endêmica, febre, letargia, anorexia, sangramento ou trombocitopenia (Rothrock, VIN 2025; Ferrolho et al., 2025).',
+            'Histórico de carrapatos, área endêmica, febre, letargia, anorexia, sangramento ou trombocitopenia (Neer et al., ACVIM 2002; Ferrolho et al., 2025).',
         },
         {
           label: 'Hemograma e bioquímica',
           timing: 'Na admissão',
           detail:
-            'Trombocitopenia, anemia não regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepáticas aumentadas (Rothrock, VIN 2025).',
+            'Trombocitopenia, anemia não regenerativa, leucopenia/pancitopenia, hiperglobulinemia, hipoalbuminemia e enzimas hepáticas aumentadas (Neer et al., ACVIM 2002).',
         },
         {
           label: 'Teste específico',
           timing: 'Confirmar infecção ativa',
           detail:
-            'Combinar sorologia e/ou PCR; repetir sorologia em 2–3 semanas se suspeita alta e teste inicial negativo (Rothrock, VIN 2025).',
+            'Combinar sorologia e/ou PCR; repetir sorologia em 2–3 semanas se suspeita alta e teste inicial negativo (Neer et al., ACVIM 2002).',
           reassess: 'PCR antes de iniciar doxiciclina aumenta sensibilidade.',
         },
         {
           label: 'Estadiar gravidade',
           timing: 'Após confirmação',
           detail:
-            'Avaliar olhos, urina, rim, neurológico, sangramentos e medula quando houver pancitopenia (Rothrock, VIN 2025).',
+            'Avaliar olhos, urina, rim, neurológico, sangramentos e medula quando houver pancitopenia (Neer et al., ACVIM 2002).',
         },
       ],
     },
@@ -99,7 +99,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: 'Base — doxiciclina',
           detail:
-            'Antibiótico de primeira linha para E. canis; tratar coinfecções se documentadas (Rothrock, VIN 2025; Plumb\'s, 10ª ed.).',
+            'Antibiótico de primeira linha para E. canis; tratar coinfecções se documentadas (Neer et al., ACVIM 2002; Plumb\'s, 10ª ed.).',
           dose: 'Doxiciclina 10 mg/kg VO q24h × 28 dias ou 5 mg/kg VO q12h × 28 dias.',
           duration: '28 dias completos.',
           reassess: 'Plaquetas costumam subir em 24–48 h e normalizar em até 14 dias.',
@@ -107,14 +107,14 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: 'Suporte',
           detail:
-            'Fluidoterapia, transfusão e tratamento de complicações conforme gravidade (Rothrock, VIN 2025).',
+            'Fluidoterapia, transfusão e tratamento de complicações conforme gravidade (Neer et al., ACVIM 2002).',
           duration: 'Até estabilização hemodinâmica.',
           reassess: 'Monitorar pancitopenia, uveíte e função renal.',
         },
         {
           label: 'Reavaliar resposta',
           detail:
-            'Falha de resposta plaquetária exige revisar diagnóstico, adesão e coinfecções (babesiose, anaplasma) (Rothrock, VIN 2025).',
+            'Falha de resposta plaquetária exige revisar diagnóstico, adesão e coinfecções (babesiose, anaplasma) (Neer et al., ACVIM 2002).',
           reassess: 'Repetir PCR/sorologia conforme protocolo de seguimento.',
         },
       ],
@@ -177,50 +177,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       'Na fase subclinica, o cão pode parecer saudavel. A bacteria pode permanecer sequestrada no baco e escapar da resposta imune por mecanismos como inibicao da fusao fagolisossomal, modulacao de MHC II e variacao antigenica.',
     faseCronica:
       'Na fase crônica, a marca de maior gravidade e a mielossupressao. Hipoplasia de medula ossea pode causar pancitopenia. Imunocomplexos contribuem para glomerulonefrite, poliartrite, meningite e alteracoes oculares.',
-  },
-  clinicalSignsPathophysiology: {
-    tabelaSinaisClinicos: {
-      kind: 'clinicalTable',
-      headers: ['Grupo', 'Sinais principais', 'Como interpretar'],
-      rows: [
-        [
-          'Gerais',
-          'Febre, letargia, depressao, anorexia, perda de peso, desidratacao, vômito, diarreia.',
-          'Inflamacao sistêmica, fase aguda ou crônica e possíveis coinfeccoes.',
-        ],
-        [
-          'Linfoide/abdominal',
-          'Linfadenomegalia, esplenomegalia, hepatomegalia.',
-          'Disseminacao no sistema mononuclear fagocitico e resposta imune.',
-        ],
-        [
-          'Hemorragicos',
-          'Mucosas palidas, petequias, equimoses, epistaxe, hematuria, sangramento em multiplos locais.',
-          'Trombocitopenia, disfuncao plaquetaria, vasculite e, na fase crônica, falencia medular.',
-        ],
-        [
-          'Oculares',
-          'Secrecao ocular, uveite, hifema, glaucoma secundario, hemorragia retiniana, descolamento de retina, KCS, ulcera de cornea, cegueira.',
-          'Uveite/vasculite, imunocomplexos, hipertensão/hiperviscosidade e sangramento ocular.',
-        ],
-        [
-          'Neurologicos',
-          'Convulsoes, ataxia, anisocoria, estupor, sinais vestibulares, tremores, hiperestesia.',
-          'Meningite, vasculite e hemorragia meningeal; menos comum, mas relevante em casos graves.',
-        ],
-        [
-          'Musculoesqueleticos',
-          'Rigidez, dor muscular, claudicacao, poliartrite.',
-          'Inflamacao/imunocomplexos; considerar coinfeccao quando predominante.',
-        ],
-        [
-          'Cardiorrespiratorios',
-          'Taquicardia, sopro, arritmias, dispneia, taquipneia, descarga nasal.',
-          'Febre, anemia, vasculite, possível lesão miocardica e complicacoes pulmonares.',
-        ],
-      ],
-    },
-    sinaisHemorragicosCutaneoMucosos: {
+    figurasHemorragicas: {
       petequiasAbdominais: {
         kind: 'clinicalFigure',
         src: `${ASSET_BASE}/fig-26-4-petequias-abdominais.jpg`,
@@ -235,17 +192,15 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         alt: 'Petequias na mucosa gengival de um cão',
         display: 'wide',
         caption:
-          'Presenca de multiplas petequias (pequenos pontos hemorragicos avermelhados) na mucosa gengival oral de um cão, reforcando a importancia da inspecao de mucosas.',
+          'Presenca de multiplas petequias na mucosa gengival oral de um cão, reforcando a importancia da inspecao de mucosas.',
       },
-    },
-    sinaisCavidadesEOculares: {
       epistaxe: {
         kind: 'clinicalFigure',
         src: `${ASSET_BASE}/fig-26-6-epistaxe.jpg`,
         alt: 'Sangramento nasal ativo (epistaxe) em cão',
         display: 'wide',
         caption:
-          'Fluxo ativo de sangue pelas narinas (epistaxe unilateral) em um cão acometido, decorrente de disfuncao plaquetaria, trombocitopenia acentuada e lesão endotelial.',
+          'Epistaxe unilateral decorrente de disfuncao plaquetaria, trombocitopenia acentuada e lesão endotelial.',
       },
       hifema: {
         kind: 'clinicalFigure',
@@ -253,58 +208,154 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         alt: 'Acumulo de sangue na camara anterior do olho (hifema)',
         display: 'wide',
         caption:
-          'Hifema unilateral caracterizado pelo acumulo de sangue livre na camara anterior do olho de um cão, resultante de uveite anterior grave e vasculite associadas a erliquiose.',
-      },
-      hemorragiaEscleral: {
-        kind: 'clinicalFigure',
-        src: `${ASSET_BASE}/fig-26-8-hemorragia-escleral.jpg`,
-        alt: 'Hemorragia escleral e conjuntival',
-        display: 'wide',
-        caption:
-          'Hemorragia subconjuntival e escleral evidente na esclera de um cão, representando outra manifestacao ocular comum das alteracoes vasculares e plaquetarias da doença.',
+          'Hifema unilateral resultante de uveite anterior grave e vasculite associadas a erliquiose.',
       },
     },
   },
+  clinicalSignsPathophysiology: [
+    {
+      system: 'general',
+      findings: [
+        {
+          finding: 'Febre, letargia, anorexia, perda de peso e desidratação',
+          mechanism:
+            'Citocinas inflamatórias sistêmicas e vasculite aumentam demanda metabólica e reduzem ingestão; coinfecções agravam o quadro.',
+          clinicalMeaning: 'Forma aguda clássica; vômito e diarreia podem coexistir.',
+          priority: 'common',
+        },
+      ],
+    },
+    {
+      system: 'lymphatic',
+      findings: [
+        {
+          finding: 'Linfadenomegalia, esplenomegalia e hepatomegalia',
+          mechanism:
+            'Disseminação no sistema mononuclear fagocítico recruta linfócitos e expande órgãos de filtração.',
+          clinicalMeaning: 'Achados frequentes na palpação; ultrassom confirma extensão.',
+          priority: 'common',
+        },
+      ],
+    },
+    {
+      system: 'hematologic',
+      findings: [
+        {
+          finding: 'Petéquias, equimoses, epistaxe, hematuria e sangramento mucocutâneo',
+          mechanism:
+            'Trombocitopenia, disfunção plaquetaria e vasculite reduzem hemostasia; na fase crônica, falência medular agrava.',
+          clinicalMeaning: 'Sinal mais consistente da doença; inspecionar mucosas e pele ventral.',
+          priority: 'common',
+        },
+      ],
+    },
+    {
+      system: 'ocular',
+      findings: [
+        {
+          finding: 'Uveíte, hifema, hemorragia retiniana, glaucoma secundário ou cegueira',
+          mechanism:
+            'Vasculite, imunocomplexos e sangramento ocular; hiperviscosidade pode comprometer perfusão retiniana.',
+          clinicalMeaning: 'Exame oftalmológico faz parte do estadiamento em casos suspeitos ou recorrentes.',
+          priority: 'systemic',
+        },
+      ],
+    },
+    {
+      system: 'neurologic',
+      findings: [
+        {
+          finding: 'Convulsões, ataxia, alteração de consciência ou sinais vestibulares',
+          mechanism:
+            'Meningite, vasculite meníngea e hemorragia intracraniana em casos graves.',
+          clinicalMeaning: 'Menos comum, mas indica forma complicada; considerar liquor.',
+          priority: 'emergency',
+        },
+      ],
+    },
+    {
+      system: 'musculoskeletal',
+      findings: [
+        {
+          finding: 'Rigidez, claudicação ou poliartrite',
+          mechanism:
+            'Deposição de imunocomplexos em articulações; coinfecção deve ser investigada quando predominante.',
+          clinicalMeaning: 'Diferenciar de doença articular primária e coinfecções por carrapato.',
+          priority: 'uncommon',
+        },
+      ],
+    },
+    {
+      system: 'cardiovascular',
+      findings: [
+        {
+          finding: 'Taquicardia, arritmias, dispneia ou sopro',
+          mechanism:
+            'Febre, anemia, vasculite e possível lesão miocárdica; complicações pulmonares podem coexistir.',
+          clinicalMeaning: 'ECG indicado quando arritmia ou instabilidade; não confundir só com cardiopatia primária.',
+          priority: 'systemic',
+        },
+      ],
+    },
+  ],
   diagnosis: {
     raciocinio:
-      'O diagnóstico e integrado. Nenhum teste isolado deve substituir a combinacao de epidemiologia, exame fisico, hemograma, bioquimica/urina e teste especifico. Histórico de carrapatos ajuda, mas a ausencia de relato não exclui.',
+      'O diagnóstico é integrado. Nenhum teste isolado substitui epidemiologia, exame físico, hemograma, bioquímica/urina e teste específico. Histórico de carrapatos ajuda, mas a ausência de relato não exclui.',
     planoDiagnostico: [
       {
         stepNumber: 1,
         title: 'Suspeita clínica e triagem',
+        purpose: 'Identificar combinação de carrapatos, trombocitopenia e sinais sistêmicos.',
         description:
-          'Procurar carrapatos, exposicao ambiental, febre, anorexia, perda de peso, linfadenomegalia, esplenomegalia, petequias, epistaxe, uveite ou sinais neurologicos.',
+          'Procurar carrapatos, exposição ambiental, febre, anorexia, linfadenomegalia, esplenomegalia, petequias, epistaxe, uveite ou sinais neurológicos (Neer et al., ACVIM 2002).',
+        interpretation: 'Trombocitopenia em cão de área endêmica eleva erliquiose no topo dos diferenciais.',
+        limitations: 'Coinfecções (Babesia, Anaplasma) podem mimetizar ou sobrepor o quadro.',
       },
       {
         stepNumber: 2,
-        title: 'Hemograma, bioquimica e urinálise',
+        title: 'Hemograma, bioquímica e urinálise',
+        purpose: 'Documentar trombocitopenia, anemia e alterações prognósticas.',
         description:
-          'CBC: trombocitopenia, anemia não regenerativa, leucopenia/leucocitose variavel e pancitopenia crônica. Bioquimica: hiperglobulinemia, hiperproteinemia, hipoalbuminemia, ALT/ALP aumentadas. Urina: proteinuria e hematuria.',
+          'CBC: trombocitopenia, anemia não regenerativa, leucopenia ou pancitopenia crônica. Bioquímica: hiperglobulinemia, hipoalbuminemia, ALT/ALP aumentadas. Urina: proteinúria e hematuria.',
+        interpretation: 'Pancitopenia e hipoplasia medular sugerem fase crônica grave.',
+        limitations: 'Alterações laboratoriais são inespecíficas; integrar sempre ao contexto clínico.',
       },
       {
         stepNumber: 3,
-        title: 'Citologia quando houver oportunidade',
+        title: 'Citologia de morulas (quando disponível)',
+        purpose: 'Confirmar visualmente quando parasitemia detectável.',
         description:
-          'Morulas em monocitos no sangue ou macrofagos de aspirados confirmam quando vistas, mas a sensibilidade e baixa. Buffy coat, aspirado de linfonodo/esplenico e esfregaco de margem de orelha podem aumentar rendimento.',
+          'Morulas em monocitos no sangue ou macrofagos de aspirados; buffy coat e aspirado de linfonodo aumentam rendimento.',
+        interpretation: 'Morula vista confirma infecção ativa no momento da coleta.',
+        limitations: 'Sensibilidade baixa; ausência de morulas não exclui doença.',
       },
       {
         stepNumber: 4,
-        title: 'Sorologia com interpretação temporal',
+        title: 'Sorologia (IFA/ELISA/SNAP)',
+        purpose: 'Detectar exposição e apoiar diagnóstico em contexto clínico.',
         description:
-          'IFA e ELISA/SNAP detectam anticorpos. Resultados podem ser negativos no início da fase aguda; repetir em 2-3 semanas quando a suspeita for alta. Positivo indica exposicao e pode persistir por meses.',
+          'Resultados podem ser negativos no início da fase aguda; repetir em 2–3 semanas se suspeita alta (Neer et al., ACVIM 2002).',
+        interpretation: 'Positivo indica exposição; titulo alto com clínica compatível sustenta doença.',
+        limitations: 'Positivo isolado em cão saudável não indica tratamento automático; pode persistir meses após cura.',
       },
       {
         stepNumber: 5,
-        title: 'PCR',
+        title: 'PCR em sangue',
+        purpose: 'Confirmar infecção ativa antes ou durante investigação.',
         description:
-          'PCR pode positivar cedo e confirma infeccao em animal não tratado. Colher preferencialmente antes da doxiciclina. Em fases subclinicas/cronicas, a sensibilidade pode cair.',
+          'PCR positiva cedo em animal não tratado; colher preferencialmente antes da doxiciclina.',
+        interpretation: 'PCR positiva com clínica/laboratório compatíveis confirma infecção ativa.',
+        limitations: 'Sensibilidade cai em fases subclínicas/crônicas; negativo não exclui.',
         isGoldStandard: true,
       },
       {
         stepNumber: 6,
         title: 'Aprofundar conforme órgão-alvo',
+        purpose: 'Estadiar complicações que mudam prognóstico e monitoramento.',
         description:
-          'Liquor se sinais neurologicos; ultrassonografia se organomegalia/abdome; ECG se arritmia; eletroforese de proteinas se hiperglobulinemia, principalmente monoclonal.',
+          'Liquor se sinais neurológicos; ultrassom se organomegalia; ECG se arritmia; eletroforese se hiperglobulinemia monoclonal.',
+        interpretation: 'Proteinúria sustentada indica glomerulonefrite imunomediada.',
+        limitations: 'Exames de órgão-alvo complementam, não substituem, confirmação do agente.',
       },
     ],
     fasesELaboratorio: {
@@ -363,60 +414,25 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     ],
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Decidir se ha doença ativa: sinais clinicos + alteracoes laboratoriais + exposicao/teste especifico. Não basear tratamento apenas em sorologia positiva de cão saudavel.',
-      '2) Iniciar doxiciclina quando a suspeita clínica for forte, principalmente em agudos febris com trombocitopenia.',
-      '3) Tratar suporte e complicacoes: hemorragia, anemia, desidratacao, uveite, proteinuria, sinais neurologicos e coinfeccoes.',
-      '4) Reavaliar resposta em 24-72 horas para febre/apetite e em 7-14 dias para plaquetas.',
-      '5) Manter prevencao de carrapatos durante todo o ano para evitar reinfeccao.',
+    especifica: [
+      'Neer et al. (2002), no consenso ACVIM sobre erliquioses, recomendam doxiciclina como antibiótico de primeira linha para E. canis: 10 mg/kg VO q24h ou 5 mg/kg VO q12h por 28 dias completos. Conclusão: não encurtar curso em fase aguda; plaquetas costumam subir em 24–48 h e normalizar em até 14 dias.',
+      'Neer et al. (2002) desaconselham imidocarb e enrofloxacina como eixo de primeira linha — imidocarb tem baixa eficácia documentada e enrofloxacina é geralmente ineficaz. Conclusão: reservar minociclina, tetraciclina ou cloranfenicol para intolerância à doxiciclina.',
     ],
-    antimicrobianos: {
-      kind: 'clinicalTable',
-      headers: ['Medicamento', 'Dose usual', 'Papel no protocolo'],
-      rows: [
-        [
-          'Doxiciclina',
-          '10 mg/kg VO q24h por 28 dias ou 5 mg/kg VO q12h por 28 dias.',
-          'Primeira escolha; melhor sustentacao para CME em cães.',
-        ],
-        [
-          'Tetraciclina',
-          '22 mg/kg VO q8h por 21-28 dias.',
-          'Alternativa historica; menos conveniente que doxiciclina.',
-        ],
-        [
-          'Minociclina',
-          '10 mg/kg VO q12h por 21-28 dias.',
-          'Alternativa quando doxiciclina não puder ser usada.',
-        ],
-        [
-          'Cloranfenicol',
-          '25-50 mg/kg VO q8h por 21-28 dias.',
-          'Alternativa, mas não primeira escolha; considerar segurança ocupacional e perfil do paciente.',
-        ],
-        [
-          'Imidocarb / enrofloxacina',
-          'Não usar como eixo de primeira linha para E. canis.',
-          'Imidocarb foi recomendado no passado, mas estudos recentes apontam baixa eficacia; enrofloxacina geralmente e ineficaz.',
-        ],
-      ],
-    },
-    suporte:
-      'Casos graves podem precisar de fluidoterapia intravenosa, transfusao, manejo de hemorragias, suporte nutricional e tratamento de complicacoes oculares, renais, cardiacas ou neurologicas.',
-    corticoide:
-      'Prednisona em dose imunossupressora curta pode ser considerada em trombocitopenia com risco de vida quando houver suspeita de componente imunomediado importante. Não deve ser automatica para todo paciente com erliquiose.',
+    suporte: [
+      'Casos graves podem precisar de fluidoterapia intravenosa, transfusão, manejo de hemorragias e tratamento de complicações oculares, renais, cardíacas ou neurológicas (Neer et al., ACVIM 2002).',
+      'Prednisona em dose imunossupressora curta pode ser considerada em trombocitopenia com risco de vida quando houver componente imunomediado importante — não é automática para todo paciente.',
+    ],
     mielossupressao:
-      'Na forma crônica com hipoplasia/aplasia medular, ferro, folato, analogos de eritropoietina ou estimuladores de granulocitos podem ser considerados em casos selecionados, mas o prognostico permanece reservado quando ha pancitopenia grave.',
+      'Na forma crônica com hipoplasia medular, ferro, folato ou estimuladores de granulócitos podem ser considerados em casos selecionados, mas o prognóstico permanece reservado com pancitopenia grave.',
     monitoramento: [
-      'Hemograma e bioquimica durante e após o tratamento.',
-      'Plaquetas costumam subir em 24-48 horas e normalizar em ate 14 dias.',
-      'Manter vigilância por 1-3 meses após o fim do tratamento quando havia trombocitopenia importante.',
-      'Hiperglobulinemia pode demorar 6-12 meses para resolver.',
-      'Titulos sorologicos podem persistir positivos; queda clínica/laboratorial e mais importante que negativacao imediata.',
-      'PCR pode ser repetida cerca de 2 semanas após o fim da terapia quando houver necessidade de documentar eliminação.',
+      'Hemograma e bioquímica durante e após o tratamento.',
+      'Plaquetas costumam subir em 24–48 horas e normalizar em até 14 dias.',
+      'Manter vigilância por 1–3 meses após o fim do tratamento quando havia trombocitopenia importante.',
+      'Hiperglobulinemia pode demorar 6–12 meses para resolver.',
+      'PCR pode ser repetida cerca de 2 semanas após o fim da terapia quando necessário documentar eliminação.',
     ],
     prognostico:
-      'Fase aguda tratada cedo costuma ter bom prognostico, com melhora em 24-48 horas. Fase crônica com pancitopenia tem prognostico reservado a ruim; anemia intensa, leucopenia grave, TTPA prolongado e hipocalemia foram associados a mortalidade elevada.',
+      'Fase aguda tratada cedo costuma ter bom prognóstico. Fase crônica com pancitopenia tem prognóstico reservado a ruim.',
   },
   prevention: {
     carrapatos:
@@ -432,13 +448,13 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   relatedMedicationSlugs: [],
   references: [
     {
-      id: 'ref-vin-cme-2025',
+      id: 'ref-neer-ehrlichia-2002',
       citationText:
-        'Rothrock K. Ehrlichiosis, Monocytic (Canine). VIN, revised April 21, 2025.',
-      sourceType: 'Revisao clínica',
+        'Neer TM, Breitschwerdt EB, Greene RT, Lappin MR. Consensus statement on ehrlichial disease of small animals. Journal of Veterinary Internal Medicine. 2002;16(3):309–315.',
+      sourceType: 'Consenso ACVIM',
       url: null,
-      notes: 'Base principal enviada pelo usuario: etiologia, diagnóstico, tratamento, monitoramento e prognostico.',
-      evidenceLevel: 'B',
+      notes: 'Diagnóstico, duração da terapia, monitoramento e interpretação sorológica.',
+      evidenceLevel: 'A — consenso',
     },
     {
       id: 'ref-mdpi-e-canis-vector-2025',

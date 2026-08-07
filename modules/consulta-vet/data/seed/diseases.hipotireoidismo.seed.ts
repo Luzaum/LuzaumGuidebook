@@ -156,44 +156,87 @@ export const hipotireoidismoCaninoRecord: DiseaseRecord = {
     {
       system: 'general',
       findings: [
-        'Letargia, sonolência e intolerância ao exercício: menor metabolismo e débito cardiovascular.',
-        'Ganho de peso sem polifagia: gasto energético cai mais que ingestão.',
-        'Busca por calor/intolerância ao frio: menor termogênese.',
+        {
+          finding: 'Letargia, sonolência e intolerância ao exercício',
+          mechanism:
+            'Menor metabolismo basal e débito cardiovascular reduzem reserva energética disponível para atividade.',
+          clinicalMeaning: 'Manifestação inicial frequente, antes de alterações cutâneas evidentes.',
+          priority: 'common',
+        },
+        {
+          finding: 'Ganho de peso sem polifagia e intolerância ao frio',
+          mechanism:
+            'Queda da termogênese e gasto energético supera ingestão calórica relativa.',
+          clinicalMeaning: 'Não confundir com obesidade primária ou HAC.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'dermatologic',
       findings: [
-        'Alopecia bilateral não pruriginosa, cauda de rato e falha de repilação: folículo fica em telógeno.',
-        'Seborreia, comedões e hiperpigmentação: renovação epidérmica lenta e inflamação crônica.',
-        'Piodermite e otite recorrentes: barreira cutânea e imunidade local prejudicadas; prurido costuma vir da infecção/alergia associada, não do hormônio baixo em si.',
-        'Fácies trágica/mixedema: glicosaminoglicanos retêm água na derme facial.',
+        {
+          finding: 'Alopecia bilateral não pruriginosa, cauda de rato e falha de repilação',
+          mechanism:
+            'Folículos permanecem em telógeno por redução do estímulo tireoidiano sobre queratinócitos.',
+          clinicalMeaning: 'Padrão simétrico sem prurido diferencia de alergia; piodermite secundária pode causar prurido.',
+          priority: 'common',
+        },
+        {
+          finding: 'Seborreia, comedões, hiperpigmentação e fácies mixedematosa',
+          mechanism:
+            'Renovação epidérmica lenta e acúmulo de glicosaminoglicanos hidrofílicos na derme.',
+          clinicalMeaning: 'Mixedema facial sugere hipotireoidismo de longa data.',
+          priority: 'systemic',
+        },
       ],
     },
     {
       system: 'neuromuscular',
       findings: [
-        'Fraqueza, ataxia, paresia, paralisia facial ou vestibular periférica: neuropatia/miopatia; relação causal deve ser confirmada por resposta e exclusão de diferenciais.',
+        {
+          finding: 'Fraqueza, ataxia, paresia ou paralisia facial/vestibular',
+          mechanism:
+            'Neuropatia periférica e miopatia por desmielinização ou alteração axonal.',
+          clinicalMeaning: 'Confirmar por resposta à levotiroxina e exclusão de diferenciais neurológicos.',
+          priority: 'uncommon',
+        },
       ],
     },
     {
       system: 'cardiovascular',
       findings: [
-        'Bradicardia e pulso fraco: menor cronotropismo/inotropismo.',
-        'Disfunção sistólica leve pode ocorrer; cardiomiopatia grave isolada exige buscar outra causa.',
+        {
+          finding: 'Bradicardia e pulso fraco',
+          mechanism:
+            'Redução de cronotropismo e inotropismo por menor sensibilidade adrenérgica.',
+          clinicalMeaning: 'Bradicardia em cão jovem/médio com pele seca reforça suspeita.',
+          priority: 'common',
+        },
       ],
     },
     {
       system: 'hematologic',
       findings: [
-        'Anemia normocítica normocrômica não regenerativa leve: menor demanda de oxigênio e estímulo eritropoiético.',
-        'Hipercolesterolemia/hipertrigliceridemia: depuração lipídica reduzida.',
+        {
+          finding: 'Anemia leve e hipercolesterolemia/hipertrigliceridemia',
+          mechanism:
+            'Menor demanda eritropoiética e depuração lipídica reduzida.',
+          clinicalMeaning: 'Dislipidemia isolada com sinais compatíveis apoia investigação tireoidiana.',
+          priority: 'uncommon',
+        },
       ],
     },
     {
       system: 'critical',
       findings: [
-        'Coma mixedematoso: hipotermia, bradicardia, hipoventilação, hiponatremia e alteração do estado mental; é raro e constitui emergência.',
+        {
+          finding: 'Coma mixedematoso: hipotermia, bradicardia, hipoventilação',
+          mechanism:
+            'Depressão central do drive respiratório, metabolismo muito baixo e distúrbios eletrolíticos (hiponatremia).',
+          clinicalMeaning: 'Emergência rara — estabilização intensiva antes de reposição hormonal plena.',
+          priority: 'emergency',
+        },
       ],
     },
   ],

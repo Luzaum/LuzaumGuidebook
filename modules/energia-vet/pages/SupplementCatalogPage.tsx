@@ -29,7 +29,7 @@ function FeatureDisabledPanel() {
       <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
         O catálogo nacional exclusivo de suplementos alimentares está implementado, mas permanece desligado por padrão.
         Ative com <code className="rounded bg-muted px-1.5 py-0.5 text-xs">VITE_NUTRITION_SUPPLEMENT_CATALOG=true</code> para
-        usar a interface. O modo legado de alimentos continua inalterado.
+        usar a interface.
       </p>
     </div>
   )

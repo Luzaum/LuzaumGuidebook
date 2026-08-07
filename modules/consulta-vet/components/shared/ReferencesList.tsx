@@ -24,7 +24,7 @@ export function ReferencesList({
           <article
             key={reference.id || `${reference.citationText}-${index}`}
             id={reference.id || `reference-${index + 1}`}
-            className="scroll-mt-24 py-5 first:pt-0 last:pb-0"
+            className="scroll-mt-24 py-5 transition-colors duration-500 first:pt-0 last:pb-0 target:rounded-2xl target:bg-primary/[0.05] target:ring-2 target:ring-primary/25 target:ring-offset-2 target:ring-offset-background"
           >
             <div className="flex flex-wrap items-start justify-between gap-3">
               <div className="min-w-0 flex-1">

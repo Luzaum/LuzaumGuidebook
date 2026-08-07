@@ -151,35 +151,88 @@ export const tumoresMamariosRecord: DiseaseRecord = {
     {
       system: 'mammary',
       findings: [
-        'Nódulo único ou múltiplos: proliferação focal de epitélio, mioepitélio ou estroma.',
-        'Fixação à pele/parede, irregularidade e crescimento rápido: sugerem invasão, mas não substituem histologia.',
-        'Ulceração, sangramento e necrose: crescimento excede suprimento vascular e rompe barreira cutânea.',
-        'Eritema difuso, calor, edema e dor sem massa delimitada: suspeitar carcinoma inflamatório e diferenciar mastite.',
+        {
+          finding: 'Nódulo único ou múltiplos na cadeia mamária',
+          mechanism:
+            'Proliferação focal de epitélio, mioepitélio ou estroma com compressão local.',
+          clinicalMeaning: 'Cada nódulo deve ser identificado separadamente para histopatologia.',
+          priority: 'common',
+        },
+        {
+          finding: 'Ulceração, sangramento ou eritema difuso sem massa delimitada',
+          mechanism:
+            'Crescimento excede vascularização (necrose) ou invasão linfática dérmica (carcinoma inflamatório).',
+          clinicalMeaning: 'Eritema difuso + calor exige diferenciar carcinoma inflamatório de mastite.',
+          priority: 'emergency',
+        },
       ],
     },
     {
       system: 'lymphatic',
       findings: [
-        'Linfonodo aumentado, firme ou irregular: hiperplasia reativa ou metástase; somente citologia/histologia diferencia.',
-        'Edema de membro ou parede abdominal: obstrução linfática por invasão tumoral.',
+        {
+          finding: 'Linfonodo regional aumentado ou edema de membro',
+          mechanism:
+            'Metástase nodal ou obstrução linfática por invasão tumoral.',
+          clinicalMeaning: 'Citologia/histologia diferencia reação de metástase.',
+          priority: 'systemic',
+        },
       ],
     },
     {
       system: 'respiratory',
       findings: [
-        'Tosse, taquipneia ou dispneia em doença avançada: metástases pulmonares, efusão ou carcinomatose.',
-      ],
-    },
-    {
-      system: 'general',
-      findings: [
-        'Perda de peso, hiporexia e dor: carga tumoral, inflamação e ulceração; muitos pacientes permanecem bem em estágio inicial.',
+        {
+          finding: 'Tosse ou dispneia em doença avançada',
+          mechanism:
+            'Metástases pulmonares ou derrame reduzem complacência respiratória.',
+          clinicalMeaning: 'Radiografia ou TC estadiam metástase pulmonar.',
+          priority: 'systemic',
+        },
       ],
     },
   ],
   diagnosis: {
-    exameClinico:
-      'Palpe todas as cadeias mamárias e linfonodos, meça cada massa em três dimensões e registre ulceração e fixação. Em múltiplas massas, cada nódulo é uma unidade diagnóstica e deve ser identificado separadamente no frasco.',
+    passosDiagnosticos: [
+      {
+        stepNumber: 1,
+        title: 'Exame clínico e mapeamento das massas',
+        purpose: 'Documentar número, tamanho, localização e fixação de cada lesão.',
+        description:
+          'Palpar todas as cadeias mamárias e linfonodos; medir em três dimensões; registrar ulceração e fixação.',
+        interpretation: 'Múltiplas massas exigem identificação separada no frasco de histopatologia.',
+        limitations: 'Palpação não distingue benigno de maligno.',
+        isGoldStandard: false,
+      },
+      {
+        stepNumber: 2,
+        title: 'Citologia por punção aspirativa',
+        purpose: 'Triagem celular e planejamento cirúrgico.',
+        description:
+          'Útil para confirmar origem epitelial e avaliar linfonodo; Pakdeesaneha et al. (2024) não demonstraram superioridade consistente da agulha grossa sobre PAAF.',
+        interpretation: 'Resultado compatível com tumor mamário não encerra estadiamento.',
+        limitations: 'Sobreposição citológica entre benigno e maligno limita grau histológico.',
+      },
+      {
+        stepNumber: 3,
+        title: 'Histopatologia excisional',
+        purpose: 'Confirmar tipo, grau, invasão e margens — padrão ouro.',
+        description:
+          'Todas as massas removidas devem ser enviadas com margens e linfonodos; imuno-histoquímica refina casos selecionados.',
+        interpretation: 'Laudo define prognóstico e necessidade de quimioterapia adjuvante.',
+        limitations: 'Biópsia incisional pré-operatória raramente necessária quando cirurgia está planejada.',
+        isGoldStandard: true,
+      },
+      {
+        stepNumber: 4,
+        title: 'Estadiamento por imagem',
+        purpose: 'Detectar metástase pulmonar e abdominal.',
+        description:
+          'Três projeções torácicas como mínimo; TC mais sensível; ultrassom abdominal para linfonodos e órgãos.',
+        interpretation: 'Imagem normal de linfonodo não exclui micrometástase.',
+        limitations: 'TC pode não estar disponível — radiografia ainda tem valor.',
+      },
+    ],
     citologia:
       'A punção aspirativa por agulha fina é útil para confirmar origem epitelial, excluir inflamação, mastocitoma ou lipoma e avaliar linfonodo. A sobreposição citológica entre benigno e maligno limita classificação e grau; o resultado “compatível com tumor mamário” não encerra o caso. Pakdeesaneha et al. (2024) compararam punção aspirativa e biópsia por agulha grossa em 83 cães e 64 gatos, usando a histopatologia excisional como referência, e não demonstraram superioridade consistente da agulha grossa. A escolha pré-operatória deve considerar segurança e impacto real na cirurgia.',
     histopatologia:
