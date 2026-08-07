@@ -40,7 +40,7 @@ test('gera bloco comercial com dose escolhida resumida', () => {
   const block = buildClinicalMedicationPrescriptionBlock(ondansetron, override, 5, 'Cão', 2);
   assert.match(block || '', /ONDANSETRONA — VONAU/i);
   assert.doesNotMatch(block || '', /Catálogo comercial/i);
-  assert.match(block || '', /Dose clínica: 0,5 mg\/kg/i);
+  assert.match(block || '', /Dose clínica: 0,5 mL \(0,5 mg\/kg\)/i);
 });
 
 test('renderiza receita clínica com overrides aplicados', () => {

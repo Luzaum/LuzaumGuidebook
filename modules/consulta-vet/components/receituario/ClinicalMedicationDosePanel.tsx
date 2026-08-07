@@ -17,6 +17,7 @@ import {
   listClinicalMedicationsNeedingRegistration,
   resolveClinicalMedicationSource,
 } from '../../utils/clinicalMedicationCatalogBridge';
+import { calculateCommercialPracticalDose, formatCommercialProductOptionLabel } from '../../utils/commercialPresentationDose';
 import {
   calculateReceituarioDose,
   formatDecimalPtBr,
@@ -301,6 +302,9 @@ export function ClinicalMedicationDosePanel({
     const alert = selectedProduct && resolvedMedication.dose.basis !== 'manual'
       ? evaluateCommercialDoseAlert(selectedProduct, doseMgKg, parsedWeight)
       : null;
+    const commercialPractical = selectedProduct && parsedWeight && resolvedMedication.dose.basis !== 'manual'
+      ? calculateCommercialPracticalDose(selectedProduct, doseMgKg * parsedWeight)
+      : null;
 
     return {
       key: medication.key,
@@ -325,7 +329,7 @@ export function ClinicalMedicationDosePanel({
               className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
             >
               {products.map((item) => (
-                <option key={item.id} value={item.id}>{item.name} — {item.presentations.join(' / ')}</option>
+                <option key={item.id} value={item.id}>{formatCommercialProductOptionLabel(item)}</option>
               ))}
             </select>
           </label>
@@ -357,6 +361,22 @@ export function ClinicalMedicationDosePanel({
           ) : null}
 
           {alert ? <DoseAlertBanner alert={alert} /> : null}
+
+          {commercialPractical ? (
+            <p className="rounded-lg border border-emerald-200/80 bg-emerald-50/70 px-3 py-2 text-xs leading-5 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
+              <CriticalDoseHighlight alert={alert || { severity: 'underdose', message: '' }}>
+                <span title={alert?.critical && alert.severity === 'overdose' ? alert.message : undefined}>
+                  Cálculo prático para {formatDecimalPtBr(parsedWeight!)} kg:
+                  {' '}
+                  {commercialPractical.displayAmount}
+                  {' '}
+                  ({formatDecimalPtBr(commercialPractical.totalMg)} mg calculados)
+                </span>
+              </CriticalDoseHighlight>
+            </p>
+          ) : parsedWeight ? null : (
+            <p className="text-xs text-amber-700 dark:text-amber-300">Informe o peso para ver o cálculo prático da apresentação.</p>
+          )}
 
           {selectedProduct?.productPageUrl ? (
             <a

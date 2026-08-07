@@ -454,20 +454,14 @@ function buildClinicalAdministrationAmount(
   if (dose.unit === 'UI/kg' || dose.unit.startsWith('UI')) {
     return `${formatDecimalPtBr(doseValue * weightKg)} UI`;
   }
-  if (product) return buildCommercialAdministrationAmount(product, doseValue, weightKg);
+  if (product) return formatCommercialAdministrationAmount(product, doseValue, weightKg);
   return `${formatDecimalPtBr(doseValue * weightKg)} mg`;
 }
 
-function parseLiquidConcentrationMgPerMl(product: CommercialMedicationProduct): number | null {
-  const text = [product.labelCompositionSummary, ...product.presentations].join(' ');
-  const match = text.match(/(\d+(?:[.,]\d+)?)\s*mg\s*\/\s*mL/i);
-  return match ? Number(match[1].replace(',', '.')) : null;
-}
-
-function parseTabletMg(text: string): number | null {
-  const match = text.match(/(\d+(?:[.,]\d+)?)\s*mg\b/i);
-  return match ? Number(match[1].replace(',', '.')) : null;
-}
+import {
+  calculateCommercialPracticalDose,
+  formatCommercialAdministrationAmount,
+} from './commercialPresentationDose';
 
 export const DOSE_ERROR_AMOUNT_LABEL = 'ERRO DE DOSE P/ CONCENTRAÇÃO';
 export const DOSE_ERROR_REASON_PREFIX = 'Erro de dose:';
@@ -547,8 +541,19 @@ export function evaluateEditorialDoseAlert(
   return null;
 }
 
-function roundTabletUnits(units: number): number {
-  return Math.round(units * 4) / 4;
+function buildCommercialDoseSupportLine(
+  selectedDoseValue: number,
+  doseUnit: string,
+  product: CommercialMedicationProduct,
+  weightKg: number | null,
+): string {
+  const parsedWeight = parsePositiveDecimal(weightKg);
+  if (!parsedWeight || parsedWeight <= 0) {
+    return buildClinicalDoseSupportLine(selectedDoseValue, doseUnit);
+  }
+  const practical = calculateCommercialPracticalDose(product, selectedDoseValue * parsedWeight);
+  if (!practical) return buildClinicalDoseSupportLine(selectedDoseValue, doseUnit);
+  return `${CLINICAL_DOSE_LABEL} ${practical.displayAmount} (${formatDecimalPtBr(selectedDoseValue)} ${doseUnit})`;
 }
 
 export function evaluateCommercialDoseAlert(
@@ -557,32 +562,25 @@ export function evaluateCommercialDoseAlert(
   weightKg: number | null,
 ): ClinicalDoseAlert | null {
   if (!weightKg || weightKg <= 0 || doseMgKg <= 0) return null;
-  const targetMg = doseMgKg * weightKg;
-  const liquid = parseLiquidConcentrationMgPerMl(product);
-  if (liquid) {
-    const exactMl = targetMg / liquid;
-    const practicalMl = Math.round(exactMl * 100) / 100;
-    const actualMg = practicalMl * liquid;
-    const percentDifference = ((actualMg - targetMg) / targetMg) * 100;
-    if (Math.abs(percentDifference) <= DOSE_ROUNDING_TOLERANCE_PERCENT) return null;
-    const diff = Math.abs(percentDifference).toFixed(1).replace('.', ',');
-    return percentDifference > 0
-      ? withCriticalFlag({ severity: 'overdose', message: `O volume prático (${formatDecimalPtBr(practicalMl)} mL) supera a dose calculada em ${diff}%.` }, percentDifference)
-      : { severity: 'underdose', message: `O volume prático (${formatDecimalPtBr(practicalMl)} mL) fica ${diff}% abaixo da dose calculada.` };
+  const totalMg = doseMgKg * weightKg;
+  const practical = calculateCommercialPracticalDose(product, totalMg);
+  if (!practical) return null;
+  if (Math.abs(practical.percentDifference) <= DOSE_ROUNDING_TOLERANCE_PERCENT) return null;
+  const diff = Math.abs(practical.percentDifference).toFixed(1).replace('.', ',');
+  if (practical.percentDifference > 0) {
+    return withCriticalFlag({
+      severity: 'overdose',
+      message: practical.isLiquid
+        ? `O volume prático (${formatDecimalPtBr(practical.practicalUnits)} mL) supera a dose calculada em ${diff}%.`
+        : `A fração/${practical.unitLabel} disponível (${formatDecimalPtBr(practical.practicalUnits)}) entrega ${diff}% a mais do que a dose calculada.`,
+    }, practical.percentDifference);
   }
-  const tabletMg = parseTabletMg(product.presentations.join(' '));
-  if (tabletMg) {
-    const exactUnits = targetMg / tabletMg;
-    const practicalUnits = roundTabletUnits(exactUnits);
-    const actualMg = practicalUnits * tabletMg;
-    const percentDifference = ((actualMg - targetMg) / targetMg) * 100;
-    if (Math.abs(percentDifference) <= DOSE_ROUNDING_TOLERANCE_PERCENT) return null;
-    const diff = Math.abs(percentDifference).toFixed(1).replace('.', ',');
-    return percentDifference > 0
-      ? withCriticalFlag({ severity: 'overdose', message: `A fração/comprimido disponível (${formatDecimalPtBr(practicalUnits)}) entrega ${diff}% a mais do que a dose calculada.` }, percentDifference)
-      : { severity: 'underdose', message: `A fração/comprimido disponível (${formatDecimalPtBr(practicalUnits)}) entrega ${diff}% a menos do que a dose calculada.` };
-  }
-  return null;
+  return {
+    severity: 'underdose',
+    message: practical.isLiquid
+      ? `O volume prático (${formatDecimalPtBr(practical.practicalUnits)} mL) fica ${diff}% abaixo da dose calculada.`
+      : `A fração/${practical.unitLabel} disponível (${formatDecimalPtBr(practical.practicalUnits)}) entrega ${diff}% a menos do que a dose calculada.`,
+  };
 }
 
 export function resolveClinicalMedicationDoseAlert(
@@ -646,25 +644,6 @@ function buildAdministrationLine(
   return lines;
 }
 
-function buildCommercialAdministrationAmount(
-  product: CommercialMedicationProduct,
-  doseMgKg: number,
-  weightKg: number | null,
-): string {
-  if (!weightKg || weightKg <= 0) return 'A PREENCHER';
-  const totalMg = doseMgKg * weightKg;
-  const liquid = parseLiquidConcentrationMgPerMl(product);
-  if (liquid) {
-    return `${formatDecimalPtBr(totalMg / liquid)} mL`;
-  }
-  const tabletMg = parseTabletMg(product.presentations.join(' '));
-  if (tabletMg) {
-    const units = roundTabletUnits(totalMg / tabletMg);
-    return `${formatDecimalPtBr(units)} comprimido${units === 1 ? '' : 's'}`;
-  }
-  return `${formatDecimalPtBr(totalMg)} mg`;
-}
-
 export function buildClinicalMedicationPrescriptionBlock(
   medication: ClinicalMedicationDefinition,
   override: ClinicalMedicationOverride | undefined,
@@ -723,7 +702,6 @@ export function buildClinicalMedicationPrescriptionBlock(
     const frequency = resolved.dose.frequency;
     const duration = resolved.dose.duration;
     const route = formatPrescriptionRoute(resolved.dose.route);
-    const alert = resolveClinicalMedicationDoseAlert(resolved, override, weightKg, speciesValue, doseAlternativeKey);
     const doseUnit = resolved.dose.basis === 'per_animal'
       ? resolved.dose.unit
       : resolved.dose.unit;
@@ -731,11 +709,11 @@ export function buildClinicalMedicationPrescriptionBlock(
     return [
       `${index}. ${resolved.name.toUpperCase()} — ${product.name.toUpperCase()}`,
       '',
-      ...buildAdministrationLine(amount, route, frequency, duration, alert),
+      ...buildAdministrationLine(amount, route, frequency, duration, null),
       '',
       resolved.dose.basis === 'manual'
         ? buildClinicalDoseSupportLine(null, doseUnit, null, 'conforme orientação do fabricante')
-        : buildClinicalDoseSupportLine(doseValue, doseUnit),
+        : buildCommercialDoseSupportLine(doseValue, doseUnit, product, weightKg),
     ].join('\n');
   }
 
