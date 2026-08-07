@@ -27,6 +27,7 @@ import { sindromesMiastenicasCongenitasRecord } from './diseases.sindromes-miast
 import { leucemiaViralFelinaRecord } from './diseases.leucemia-viral-felina.seed';
 import { peritoniteInfecciosaFelinaRecord } from './diseases.peritonite-infecciosa-felina.seed';
 import { imunodeficienciaFelinaFivRecord } from './diseases.imunodeficiencia-felina-fiv.seed';
+import { insuficienciaPancreaticaExocrinaCaesGatosRecord } from './diseases.insuficiencia-pancreatica-exocrina-caes-gatos.seed';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
@@ -356,4 +357,5 @@ export const diseasesSeed: DiseaseRecord[] = [
   leucemiaViralFelinaRecord,
   peritoniteInfecciosaFelinaRecord,
   imunodeficienciaFelinaFivRecord,
+  insuficienciaPancreaticaExocrinaCaesGatosRecord,
 ].map(withPlainLanguage);

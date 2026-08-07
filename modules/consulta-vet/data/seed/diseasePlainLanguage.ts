@@ -266,6 +266,15 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Prevenção: castrar, evitar brigas, testar gatos novos e repetir o teste ≥60 dias após exposição a mordida.',
     ],
   },
+  'insuficiencia-pancreatica-exocrina-caes-gatos': {
+    whatIsIt:
+      'A insuficiência pancreática exócrina (IPE) acontece quando o pâncreas deixa de produzir enzimas digestivas suficientes. Com isso, o animal não digere bem os alimentos — emagrece, tem fezes volumosas ou diarreia, e cães muitas vezes comem muito mais que o normal.',
+    keyPoints: [
+      'O diagnóstico é feito com exame de sangue (TLI) após jejum — corte atual em cães: ≤5,5 µg/L.',
+      'O tratamento é para a vida toda: enzimas pancreáticas em toda refeição + vitamina B12 quando necessário.',
+      'Com tratamento correto, a maioria dos cães e gatos responde bem e pode ter vida normal.',
+    ],
+  },
 };
 
 export function getPlainLanguageForSlug(slug: string): DiseasePlainLanguage | undefined {

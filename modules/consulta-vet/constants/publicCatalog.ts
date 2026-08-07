@@ -33,6 +33,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'leucemia-viral-felina',
   'peritonite-infecciosa-felina',
   'imunodeficiencia-felina-fiv',
+  'insuficiencia-pancreatica-exocrina-caes-gatos',
 ] as const;
 
 

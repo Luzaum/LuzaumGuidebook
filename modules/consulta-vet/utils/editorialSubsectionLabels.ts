@@ -15,6 +15,30 @@ const FULL_KEY_LABELS: Record<string, string> = {
   principio: 'Princípio diagnóstico',
   testes: 'Como interpretar os exames',
   desempenho: 'Desempenho diagnóstico publicado',
+  conceitosTestes: 'Sensibilidade, especificidade e valores preditivos',
+  tabelaDesempenho: 'Desempenho publicado dos testes na PIF',
+  aplicacaoPratica: 'Probabilidade pré-teste e pós-teste na prática',
+  valorPreditivoPositivo: 'Valor preditivo positivo (VPP)',
+  valorPreditivoNegativo: 'Valor preditivo negativo (VPN)',
+  probabilidadePreTeste: 'Probabilidade pré-teste',
+  tabelaTLICao: 'Interpretação do cTLI (cão)',
+  tabelaTLIGato: 'Interpretação do fTLI (gato)',
+  tabelaCaoVsGato: 'Comparativo cão × gato',
+  tabelaSinaisFelinos: 'Sinais clínicos felinos (150 casos)',
+  paa: 'Atrofia acinar pancreática (PAA)',
+  pancreatiteCronicaTerminal: 'Pancreatite crônica terminal',
+  reservaFuncional: 'Reserva funcional pancreática',
+  fatorIntrinseco: 'Fator intrínseco e cobalamina',
+  disbiose: 'Disbiose intestinal',
+  cobalamin: 'Cobalamina (vitamina B12)',
+  pert: 'Reposição enzimática (PERT)',
+  algoritmoFalha: 'Algoritmo de falha terapêutica',
+  antibioticoRefratario: 'Antibiótico em casos refratários',
+  omeprazolRefratario: 'Omeprazol em refratários',
+  ipeDiabetes: 'IPE + diabetes mellitus',
+  paaBreeding: 'Reprodução e raças predispostas',
+  subclinicoNoAutoPert: 'IPE subclínica — conduta',
+  errosComuns: 'Erros a evitar',
   aaHaCategorias: 'Decisão clínica por cenário',
   interferentes: 'Doenças e medicamentos interferentes',
   imagem: 'Quando utilizar exames de imagem',
@@ -1485,14 +1509,33 @@ const SYSTEM_TITLE_PT: Record<string, string> = {
   immune: 'Imune',
   multisystemic: 'Multissistêmico',
   multiSystemic: 'Multissistêmico',
+  effusion: 'Efusão',
+  biochemical: 'Bioquímico',
+  oncologic: 'Oncológico',
+  dog: 'Cão',
+  cat: 'Gato',
+  canine: 'Cão',
+  feline: 'Gato',
 };
+
+function translateSystemToken(token: string): string {
+  const t = token.trim();
+  if (!t) return '';
+  const key = t.toLowerCase().replace(/\s+/g, '');
+  return SYSTEM_TITLE_PT[t] ?? SYSTEM_TITLE_PT[key] ?? SYSTEM_TITLE_PT[t.toLowerCase()] ?? t;
+}
 
 export function translateSystemGroupTitle(title: string): string {
   const t = title.trim();
-  const key = t.toLowerCase().replace(/\s+/g, '');
-  const compact = SYSTEM_TITLE_PT[t] ?? SYSTEM_TITLE_PT[key] ?? SYSTEM_TITLE_PT[t.toLowerCase()];
-  if (compact) return compact;
-  return title;
+  if (!t) return '';
+  if (t.includes('/')) {
+    return t
+      .split('/')
+      .map((part) => translateSystemToken(part))
+      .filter(Boolean)
+      .join(' · ');
+  }
+  return translateSystemToken(t);
 }
 
 const SUBSECTION_DESCRIPTIONS_PT: Record<string, string> = {
@@ -1509,6 +1552,12 @@ const SUBSECTION_DESCRIPTIONS_PT: Record<string, string> = {
   principio: 'Regra central que organiza a escolha e a interpretação dos exames.',
   testes: 'O que cada exame responde, quando pedir e quais erros podem distorcer o resultado.',
   desempenho: 'Sensibilidade, especificidade e limitações observadas em estudos diagnósticos.',
+  conceitosTestes: 'Definições que permitem interpretar resultados laboratoriais no contexto clínico.',
+  tabelaDesempenho: 'Números publicados por teste e amostra — sempre integrar à suspeita clínica.',
+  aplicacaoPratica: 'Cenários típicos em que VPP e VPN mudam a conduta.',
+  valorPreditivoPositivo: 'Probabilidade de PIF quando o teste veio positivo.',
+  valorPreditivoNegativo: 'Probabilidade de não-PIF quando o teste veio negativo.',
+  probabilidadePreTeste: 'Quão provável é PIF antes de qualquer exame, com base em sinalmento e achados.',
   aaHaCategorias: 'Conduta prática conforme a combinação entre sinais clínicos e resultados hormonais.',
   interferentes: 'Situações que alteram os exames sem representar necessariamente a doença investigada.',
   imagem: 'Situações em que ultrassonografia, radiografia ou outro método realmente acrescenta informação.',

@@ -36,10 +36,11 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
   quickSummary:
     'A peritonite infecciosa felina (PIF/FIP) é doença sistêmica grave causada por mutações intrahospedeiro do coronavírus felino (FCoV) que permitem tropismo por macrófagos — a infecção entérica por FCoV é comum e não equivale a PIF (Tasker et al., ABCD 2023). Quando há efusão, a coleta de líquido é o passo diagnóstico de maior rendimento; RT-qPCR, citologia e imunoquímica em efusão superam PCR em fezes ou sangue para confirmar PIF (Thayer et al., 2022). GS-441524 VO é primeira linha: 15 mg/kg q24h na forma efusiva/não neurológica, com taxas de cura frequentemente >90% (Tasker et al., ABCD 2026). Estudo randomizado mostrou 42 dias equivalentes a 84 dias em PIF efusiva estável (Zuzzi-Krebitz et al., 2024); recalcular dose a cada ganho ponderal de 0,5–1 kg (Tasker et al., ABCD 2026).',
   quickDecisionStrip: [
-    'PCR de FCoV em fezes ou sangue detecta coronavírus, não confirma PIF — interpretar com cautela.',
+    'Reação em cadeia da polimerase (PCR) para coronavírus felino (FCoV) em fezes ou sangue detecta coronavírus, não confirma peritonite infecciosa felina (PIF) — interpretar com cautela.',
     'Se houver efusão: coletar líquido antes de exames de sangue isolados.',
-    'Teste de Rivalta e relação A:G modificam probabilidade; não confirmam nem excluem sozinhos (Fischer et al., 2012).',
-    'GS-441524 VO 15 mg/kg q24h é primeira linha na PIF efusiva/não neurológica (Tasker et al., ABCD 2026).',
+    'Teste de Rivalta negativo tem alto valor preditivo negativo (VPN), mas positivo tem valor preditivo positivo (VPP) moderado — integrar idade, relação albumina:globulina (A:G) e PCR na efusão (Fischer et al., 2012).',
+    'Sensibilidade ≠ valor preditivo positivo (VPP): teste muito específico ainda pode gerar falso positivo se a suspeita pré-teste for baixa (Thayer et al., 2022).',
+    'GS-441524 VO 15 mg/kg q24h é primeira linha na peritonite infecciosa felina (PIF) efusiva/não neurológica (Tasker et al., ABCD 2026).',
     'PIF ocular ou neurológica: 20 mg/kg q24h ou 10 mg/kg q12h — barreira hematoencefálica/ocular exige dose maior.',
     '42 dias pode bastar se resposta clínica e laboratorial excelente — não é stop automático em todo caso (Zuzzi-Krebitz et al., 2024).',
     'Prednisolona não é tratamento primário; corticoide adjuvante só em indicações selecionadas (Tasker et al., ABCD 2026).',
@@ -50,7 +51,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'PIF não é “gato positivo para coronavírus”. Pergunte: há efusão ou lesões amostráveis? O índice de suspeita sobe tijolo a tijolo — idade, febre, hipoalbuminemia, hiperglobulinemia, efusão viscosa — e o tratamento antiviral precoce muda o prognóstico de fatal para frequentemente curável (Tasker et al., ABCD 2026).',
+      'Peritonite infecciosa felina (PIF) não é “gato positivo para coronavírus”. Pergunte: há efusão ou lesões amostráveis? O índice de suspeita sobe tijolo a tijolo — idade, febre, hipoalbuminemia, hiperglobulinemia, efusão viscosa — e o tratamento antiviral precoce muda o prognóstico de fatal para frequentemente curável (Tasker et al., ABCD 2026).',
     leadHighlights: ['coronavírus', 'efusão', 'tijolo a tijolo', 'GS-441524', 'curável'],
     pillars: [
       {
@@ -62,13 +63,13 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       {
         title: 'Diagnóstico tijolo a tijolo',
         body:
-          'Integrar sinalmento (<2 anos, multicat), exame físico, bioquímica (A:G baixa, hiperbilirrubinemia), efusão (Rivalta, citologia, RT-qPCR) e imagem. Nenhum teste isolado é patognomônico (Thayer et al., 2022; Tasker et al., ABCD 2023).',
+          'Integrar sinalmento (<2 anos, multicat), exame físico, bioquímica (relação albumina:globulina baixa, hiperbilirrubinemia), efusão (teste de Rivalta, citologia, RT-qPCR) e imagem. Nenhum teste isolado é patognomônico (Thayer et al., 2022; Tasker et al., ABCD 2023).',
         highlights: ['A:G', 'Rivalta', 'RT-qPCR', 'ultrassom'],
       },
       {
         title: 'Tratamento GS',
         body:
-          'GS-441524 VO 15 mg/kg q24h ×42–84 dias conforme resposta; ocular/neuro 20 mg/kg q24h ou 10 mg/kg q12h. Pesar e recalcular; monitorar ALT, hematócrito e sinais neurológicos/oculares (Tasker et al., ABCD 2026; Zuzzi-Krebitz et al., 2024).',
+          'GS-441524 VO 15 mg/kg q24h ×42–84 dias conforme resposta; ocular/neuro 20 mg/kg q24h ou 10 mg/kg q12h. Pesar e recalcular; monitorar alanina aminotransferase (ALT), hematócrito e sinais neurológicos/oculares (Tasker et al., ABCD 2026; Zuzzi-Krebitz et al., 2024).',
         highlights: ['15 mg/kg', '42 dias', '20 mg/kg', 'recalcular dose'],
       },
     ],
@@ -85,19 +86,19 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
           label: 'Coletar efusão',
           timing: 'Se presente',
           detail:
-            'Efusão amarela, viscosa, de alto rendimento para Rivalta, citologia, A:G, proteína total, AGP/SAA e RT-qPCR FCoV (Tasker et al., ABCD 2023).',
+            'Efusão amarela, viscosa, de alto rendimento para teste de Rivalta, citologia, relação albumina:globulina (A:G), proteína total, α-1-glicoproteína ácida (AGP), amiloide A sérica (SAA) e RT-qPCR para coronavírus felino (FCoV) (Tasker et al., ABCD 2023).',
         },
         {
           label: 'Sangue + imagem',
           timing: 'Sempre',
           detail:
-            'Hemograma, bioquímica (A:G, bilirrubinas), FeLV/FIV; ultrassom abdominal e/ou torácico para localizar efusão e lesões amostráveis (Müller et al., 2023).',
+            'Hemograma, bioquímica (relação albumina:globulina, bilirrubinas), leucemia felina (FeLV) e imunodeficiência felina (FIV); ultrassom abdominal e/ou torácico para localizar efusão e lesões amostráveis (Müller et al., 2023).',
         },
         {
           label: 'Confirmar ou tratar empiricamente',
           timing: 'Alta suspeita',
           detail:
-            'ICC/IHC ou RT-qPCR positiva em efusão/tecido confirma; resposta rápida a GS-441524 reforça diagnóstico quando testes são inconclusivos (Thayer et al., 2022; Tasker et al., ABCD 2026).',
+            'Imunocitologia (ICC) ou imuno-histoquímica (IHC) positiva, ou RT-qPCR positiva em efusão/tecido confirma; resposta rápida a GS-441524 reforça diagnóstico quando testes são inconclusivos (Thayer et al., 2022; Tasker et al., ABCD 2026).',
         },
       ],
     },
@@ -129,11 +130,11 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'PIF é doença imunomediada desencadeada por variantes do coronavírus felino (FCoV) com tropismo por macrófagos/monócitos, após mutações intrahospedeiro — principalmente no gene S e em ORF3c/7b — que permitem replicação eficiente em células mieloides e disseminação sistêmica (Pedersen, 2014; Tasker et al., ABCD 2023).',
+      'Peritonite infecciosa felina (PIF) é doença imunomediada desencadeada por variantes do coronavírus felino (FCoV) com tropismo por macrófagos/monócitos, após mutações intrahospedeiro — principalmente no gene S e em ORF3c/7b — que permitem replicação eficiente em células mieloides e disseminação sistêmica (Pedersen, 2014; Tasker et al., ABCD 2023).',
     fcovEntéricoVsPIF: [
-      'FCoV entérico (FECV): infecção intestinal comum, geralmente benigna, eliminação fecal intermitente — não prediz PIF.',
-      'FCoV com tropismo sistêmico (FIPV): surge por mutação dentro do gato infectado; não é transmitido como “cepa PIF” entre felinos saudáveis (Addie et al., 2009; Tasker et al., ABCD 2023).',
-      'PCR positiva em fezes/sangue indica exposição ou viremia, não confirma PIF — diferenciar infecção entérica de doença (Thayer et al., 2022).',
+      'Coronavírus felino entérico (FECV): infecção intestinal comum, geralmente benigna, eliminação fecal intermitente — não prediz PIF.',
+      'Coronavírus com tropismo sistêmico (FIPV): surge por mutação dentro do gato infectado; não é transmitido como “cepa PIF” entre felinos saudáveis (Addie et al., 2009; Tasker et al., ABCD 2023).',
+      'Reação em cadeia da polimerase (PCR) positiva em fezes/sangue indica exposição ou viremia, não confirma PIF — diferenciar infecção entérica de doença (Thayer et al., 2022).',
     ],
     serotipos: [
       'FCoV tipo I: predominante em campo; difícil cultivo in vitro; reatividade cruzada em testes variável.',
@@ -157,7 +158,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       'Infecção entérica por FCoV (FECV) — replicação em enterócitos, eliminação fecal, infecção geralmente subclínica (Pedersen, 2014).',
       'Mutações intrahospedeiro no gene S e/ou ORF3c/7b — aquisição de tropismo por monócitos/macrófagos (Tasker et al., ABCD 2023).',
       'Replicação viral intracelular em macrófagos — viremia, disseminação hematogênica a órgãos ricos em tecido retículo-endotelial.',
-      'Resposta imune mal adaptada — complexos antígeno-anticorpo, complemento, citocinas pró-inflamatórias; teoria ADE (enhancement) é plausible mas não exclusiva (Pedersen, 2014; Dewerchin et al., 2005).',
+      'Resposta imune mal adaptada — complexos antígeno-anticorpo, complemento, citocinas pró-inflamatórias; teoria de enhancement dependente de anticorpos (ADE) é plausible mas não exclusiva (Pedersen, 2014; Dewerchin et al., 2005).',
       'Inflamação piogranulomatosa — serosite/efusão (forma efusiva) ou granulomas viscerais, ocular e/ou neurológica (forma não efusiva ou mista) (Kipar et al., 2005).',
     ],
     transmissaoFCoV:
@@ -187,21 +188,51 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
     },
     tabelaTesteAmostra: {
       kind: 'clinicalTable' as const,
-      title: 'Teste certo para amostra certa',
-      headers: ['Amostra', 'Teste', 'Utilidade', 'Limitação'],
+      title: 'Teste certo para amostra certa — nomenclatura para solicitação laboratorial',
+      headers: ['Amostra', 'Exame a solicitar (por extenso)', 'Utilidade', 'Limitação'],
       rows: [
-        ['Efusão', 'Rivalta + citologia + A:G', 'Alta probabilidade se positivos concordantes', 'Não específico — sepse/linfoma também positivos (Fischer et al., 2012)'],
-        ['Efusão', 'RT-qPCR FCoV RNA', 'Alta sensibilidade na efusão', 'Detecta RNA viral, não distingue biotipo sozinho'],
-        ['Efusão / tecido', 'ICC / IHC anti-FCoV', 'Padrão-ouro em tecido', 'Disponibilidade laboratorial limitada'],
-        ['Sangue', 'A:G, AGP, SAA', 'Suporte à suspeita sistêmica', 'Inespecífico — inflamação crônica diversa'],
-        ['Fezes', 'PCR FCoV', 'Controle ambiental / exposição', 'Não diagnostica PIF (Thayer et al., 2022)'],
-        ['SNC', 'MRI + LCR + RT-qPCR', 'Neurológica — combinar achados', 'Risco de herniação — cautela na punção (Crawford et al., 2017)'],
+        [
+          'Efusão (ascite ou derrame pleural/pericárdico)',
+          'Teste de Rivalta (point-of-care) + citologia do líquido de efusão + relação albumina:globulina (A:G) no líquido + proteína total',
+          'Alta probabilidade de PIF se Rivalta, citologia inflamatória não séptica e A:G baixa forem concordantes',
+          'Não específico — sepse, linfoma e outras exsudatos inflamatórios também podem ser positivos (Fischer et al., 2012)',
+        ],
+        [
+          'Efusão (ascite ou derrame pleural/pericárdico)',
+          'RT-qPCR (transcriptase reversa quantitativa) para RNA do coronavírus felino (FCoV) no líquido de efusão',
+          'Alta sensibilidade na efusão quando há replicação viral',
+          'Detecta RNA viral, mas não distingue sozinho biotipo entérico versus sistêmico (Thayer et al., 2022)',
+        ],
+        [
+          'Efusão ou tecido (biópsia/FNA de linfonodo, baço, fígado)',
+          'Imunocoloração (ICC) ou imuno-histoquímica (IHC) para antígeno do coronavírus felino (FCoV) em macrófagos',
+          'Padrão-ouro tecidual quando antígeno intracelular em macrófagos é demonstrado',
+          'Disponibilidade laboratorial limitada; amostra representativa necessária',
+        ],
+        [
+          'Sangue (soro/plasma)',
+          'Relação albumina:globulina (A:G) sérica + α-1-glicoproteína ácida (AGP) + amiloide A sérica (SAA) + bioquímica completa',
+          'Suporte à suspeita sistêmica e monitoramento de inflamação',
+          'Inespecífico — inflamação crônica de diversas causas altera A:G, AGP e SAA',
+        ],
+        [
+          'Fezes',
+          'PCR para coronavírus felino (FCoV) em fezes — detecção de RNA/DNA viral fecal',
+          'Triagem de exposição a FCoV entérico e controle ambiental em multicat',
+          'Não diagnostica PIF — positivo indica FCoV entérico/exposição, não doença sistêmica (Thayer et al., 2022)',
+        ],
+        [
+          'Sistema nervoso central (SNC)',
+          'Ressonância magnética (MRI) encefálica + punção de líquor (LCR) + RT-qPCR para FCoV no LCR',
+          'PIF neurológica — combinar achados de imagem, citologia do LCR e detecção viral',
+          'Risco de herniação — cautela na punção lombar; contraindicar se sinais de hipertensão intracraniana (Crawford et al., 2017)',
+        ],
       ],
     },
     efusao:
       'Efusão rica em proteína (>35 g/L), baixa celularidade (mononuclear), viscosidade elevada por mucina/hialuronato — derrame inflamatório não séptico. A:G no líquido frequentemente <0.4; citologia mostra macrófagos ativados e neutrófilos não degenerados (Hartmann et al., 2003; Fischer et al., 2012).',
     granulomas:
-      'Forma não efusiva: nódulos piogranulomatosos em fígado, baço, linfonodos, rins, olhos e SNC — podem mimetizar neoplasia; ultrassom revela espessamento intestinal assimétrico, linfonodomegalia e lesões focais (Müller et al., 2023).',
+      'Forma não efusiva: nódulos piogranulomatosos em fígado, baço, linfonodos, rins, olhos e sistema nervoso central (SNC) — podem mimetizar neoplasia; ultrassom revela espessamento intestinal assimétrico, linfonodomegalia e lesões focais (Müller et al., 2023).',
     imunidade:
       'Resposta humoral robusta sem clearance viral eficiente; hiperglobulinemia policlonal reflete estimulação imune persistente. Linfopenia com frequência — possível sequestro/depleção (Tasker et al., ABCD 2023).',
     caveatADE:
@@ -299,7 +330,100 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       ],
     },
   ],
-  diagnosis: [
+  diagnosis: {
+    diagnosticReasoning:
+      'Peritonite infecciosa felina (PIF) não possui um único teste perfeito. O raciocínio clínico combina três camadas: (1) probabilidade pré-teste — idade, ambiente multicat, efusão, relação albumina:globulina (A:G) baixa, uveíte ou neurológico; (2) desempenho analítico do exame — sensibilidade e especificidade; (3) valor preditivo do resultado naquele paciente — valor preditivo positivo (VPP) e valor preditivo negativo (VPN), que mudam conforme a suspeita inicial (Thayer et al., 2022; Tasker et al., ABCD 2023). Nenhum marcador isolado confirma ou exclui PIF; a diretriz AAFP/EveryCat recomenda construir o diagnóstico “tijolo a tijolo”.',
+    conceitosTestes: {
+      sensibilidade:
+        'Sensibilidade: probabilidade de o teste ser positivo quando o gato realmente tem PIF. Quanto maior a sensibilidade, menor o risco de falso-negativo — útil para triagem quando a suspeita já é alta. Exemplo: Rivalta na efusão apresentou sensibilidade de 91,3% na série de Fischer et al. (2012), ou seja, a maioria dos gatos com PIF terá teste positivo, mas alguns falsos negativos ainda ocorrem.',
+      especificidade:
+        'Especificidade: probabilidade de o teste ser negativo quando o gato não tem PIF. Quanto maior a especificidade, menor o risco de falso-positivo. Rivalta na mesma série teve especificidade de 65,5% — linfoma, sepse e outras exsudatos inflamatórios também podem ser positivos (Fischer et al., 2012).',
+      valorPreditivoPositivo:
+        'Valor preditivo positivo (VPP): probabilidade de o gato com resultado positivo realmente ter PIF. Depende fortemente da prevalência local e da suspeita clínica — não é propriedade fixa do kit. No estudo de Fischer et al. (2012), com prevalência de PIF de 34,6% entre gatos com efusão, o VPP do Rivalta foi 58,4%: menos de 6 em cada 10 positivos tinham PIF confirmada. Em gato jovem com efusão e A:G baixa, o VPP sobe; em gato idoso com suspeita baixa, positivos isolados exigem confirmação.',
+      valorPreditivoNegativo:
+        'Valor preditivo negativo (VPN): probabilidade de o gato com resultado negativo realmente não ter PIF. Rivalta negativo na efusão teve VPN de 93,4% na série de Fischer et al. (2012) — forte para excluir PIF quando a amostra é efusão e o teste foi bem executado, mas não equivale a 100%. Reação em cadeia da polimerase (PCR) negativa em sangue teve VPN de apenas ~47% em Hartmann et al. (2003): metade dos negativos ainda tinham PIF — nunca usar PCR sérica negativa para descartar.',
+      probabilidadePreTeste:
+        'Probabilidade pré-teste: estimativa clínica antes de qualquer exame — quanto mais “típico” o fenótipo (filhote/jovem, febre, ascite viscosa, hipoalbuminemia, hiperglobulinemia, linfopenia), maior a probabilidade pré-teste e maior o valor preditivo positivo (VPP) de qualquer teste positivo. Thayer et al. (2022) enfatizam que a mesma relação albumina:globulina (A:G) baixa tem valor preditivo distinto em gato de abrigo febril versus gato idoso com neoplasia abdominal — o exame modifica probabilidade, não substitui o contexto.',
+    },
+    tabelaDesempenho: {
+      kind: 'clinicalTable' as const,
+      title: 'Desempenho publicado dos principais testes na peritonite infecciosa felina (PIF)',
+      headers: ['Exame (por extenso)', 'Amostra', 'Sensibilidade', 'Especificidade', 'Valor preditivo ou interpretação'],
+      rows: [
+        [
+          'Teste de Rivalta (point-of-care)',
+          'Efusão',
+          '91,3%',
+          '65,5%',
+          'VPP 58,4% · VPN 93,4% — prevalência PIF 34,6% na população com efusão (Fischer et al., 2012)',
+        ],
+        [
+          'Teste de Rivalta (point-of-care)',
+          'Efusão',
+          '—',
+          '—',
+          'VPP 86% · VPN 97% em série com diagnóstico histopatológico (Hartmann et al., 2003)',
+        ],
+        [
+          'Relação albumina:globulina (A:G) baixa',
+          'Sangue',
+          '~80%',
+          '~82%',
+          'A:G <0,8 — útil integrado à clínica; isolado não confirma (Thayer et al., 2022)',
+        ],
+        [
+          'Relação albumina:globulina (A:G) baixa',
+          'Efusão',
+          '86%',
+          '74%',
+          'A:G <0,9 na efusão — rendimento superior ao sangue quando há líquido (Hartmann et al., 2003)',
+        ],
+        [
+          'Imunofluorescência / imunocitologia (ICC) anti-FCoV',
+          'Efusão / tecido',
+          'Alta',
+          'Alta',
+          'VPP até 100% para antígeno em macrófagos; VPN variável se amostra pobre (Hartmann et al., 2003)',
+        ],
+        [
+          'RT-qPCR para RNA do coronavírus felino (FCoV)',
+          'Efusão / tecido / líquido cefalorraquidiano (LCR)',
+          'Alta',
+          'Alta',
+          'RNA+ com clínica compatível confirma fortemente; sensibilidade depende de carga viral e primers (Thayer et al., 2022)',
+        ],
+        [
+          'RT-qPCR para RNA do coronavírus felino (FCoV)',
+          'Sangue',
+          'Baixa–moderada',
+          '~88–100%',
+          'VPP ~90% · VPN ~47% — negativo não exclui PIF (Hartmann et al., 2003)',
+        ],
+        [
+          'PCR para coronavírus felino (FCoV)',
+          'Fezes',
+          '—',
+          '—',
+          'Detecta coronavírus felino entérico/exposição — não diagnostica PIF (Thayer et al., 2022; Tasker et al., ABCD 2023)',
+        ],
+        [
+          'Sorologia — anticorpos anti-coronavírus felino (FCoV)',
+          'Sangue',
+          'Moderada',
+          'Baixa',
+          'VPP ~44% · VPN ~90% — anticorpos refletem exposição, não PIF ativa (Hartmann et al., 2003)',
+        ],
+      ],
+    },
+    aplicacaoPratica: [
+      'Gato <2 anos, febril, ascite viscosa, relação albumina:globulina (A:G) sérica <0,4, teste de Rivalta positivo: probabilidade pré-teste alta → valor preditivo positivo (VPP) do Rivalta sobe acima dos 58% populacionais; iniciar GS-441524 enquanto aguarda RT-qPCR/imunocitologia (ICC) na efusão (Thayer et al., 2022; Tasker et al., ABCD 2026).',
+      'Gato idoso com derrame pleural, teste de Rivalta positivo, suspeita de linfoma: especificidade do Rivalta cai — valor preditivo positivo (VPP) pode ser inferior a 50%; citologia, imunofenotipagem e biópsia antes de rotular PIF (Fischer et al., 2012).',
+      'Teste de Rivalta negativo em gato jovem ainda altamente suspeito: valor preditivo negativo (VPN) ~93% — PIF menos provável, mas não descartada; prosseguir com RT-qPCR em efusão e imagem se clínica persistir (Fischer et al., 2012).',
+      'PCR para coronavírus felino (FCoV) positiva em fezes de gato assintomático de multicat: apenas infecção entérica por FCoV — VPN/VPP para PIF não se aplicam; não iniciar antiviral (Tasker et al., ABCD 2023).',
+      'RT-qPCR negativa em sangue, gato com PIF seca/neurológica: valor preditivo negativo (VPN) muito baixo (~47% na série de Hartmann et al., 2003) — amostrar tecido, líquido cefalorraquidiano (LCR) ou efusão se presente; resposta terapêutica a GS reforça diagnóstico (Thayer et al., 2022).',
+      'Relação albumina:globulina (A:G) baixa isolada em gato estável sem efusão: sensibilidade ~80% mas valor preditivo positivo (VPP) limitado — aumentar investigação (ultrassom, α-1-glicoproteína ácida, leucemia felina e imunodeficiência felina) antes de conclusão (Thayer et al., 2022).',
+    ],
+    planoDiagnostico: [
     {
       stepNumber: 1,
       title: 'Construir probabilidade pré-teste',
@@ -325,7 +449,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       purpose: 'Triagem rápida de exsudato inflamatório proteico.',
       description:
         'Gota de efusão em solução ácida — retenção de forma indica positivo (Fischer et al., 2012).',
-      interpretation: 'Negativo tem alto VPN para excluir PIF; positivo aumenta probabilidade mas não confirma.',
+      interpretation: 'Negativo: VPN ~93% na efusão (Fischer et al., 2012) — PIF improvável, mas confirmar se clínica persistir. Positivo: VPP ~58% na população geral com efusão — aumenta probabilidade, não confirma.',
       limitations: 'Subjetivo; positivo em peritonite séptica e algumas neoplasias (Fischer et al., 2012).',
     },
     {
@@ -380,7 +504,8 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       interpretation: 'Resposta rápida apoia diagnóstico; ausência de resposta exige reavaliar diagnóstico, dose e qualidade do produto.',
       limitations: 'Não substitui diagnóstico definitivo quando eutanásia ou investigação legal exigem confirmação.',
     },
-  ],
+    ],
+  },
   treatment: {
     principios: [
       'PIF tratável e frequentemente curável com antiviral nucleosídeo — GS-441524 VO é primeira linha (Tasker et al., ABCD 2026).',

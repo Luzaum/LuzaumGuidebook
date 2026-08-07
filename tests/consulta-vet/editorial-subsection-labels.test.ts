@@ -3,6 +3,7 @@ import test from 'node:test';
 import {
   stripEditorialSubsectionPrefix,
   translateEditorialSubsectionKey,
+  translateSystemGroupTitle,
 } from '../../modules/consulta-vet/utils/editorialSubsectionLabels';
 
 test('remove prefixo tc dos títulos gerados', () => {
@@ -25,4 +26,13 @@ test('stripEditorialSubsectionPrefix remove tc e normaliza camelCase', () => {
 test('chaves com rótulo explícito mantêm acentuação editorial', () => {
   assert.equal(translateEditorialSubsectionKey('tcDefinicaoOperacional'), 'Definição operacional');
   assert.equal(translateEditorialSubsectionKey('tcPrevencaoDeRecidiva'), 'Prevenção de recidiva');
+});
+
+test('translateSystemGroupTitle traduz sistemas compostos e chaves em inglês', () => {
+  assert.equal(translateSystemGroupTitle('general/dog'), 'Geral · Cão');
+  assert.equal(translateSystemGroupTitle('general/cat'), 'Geral · Gato');
+  assert.equal(translateSystemGroupTitle('general'), 'Geral');
+  assert.equal(translateSystemGroupTitle('effusion'), 'Efusão');
+  assert.equal(translateSystemGroupTitle('biochemical'), 'Bioquímico');
+  assert.equal(translateSystemGroupTitle('oncologic'), 'Oncológico');
 });

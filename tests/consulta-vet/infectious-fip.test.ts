@@ -46,6 +46,10 @@ test('PIF inclui figuras e tabelas clínicas locais', () => {
   assert.ok(patho?.figuraUveite);
   assert.ok(patho?.tabelaDosesGS);
   assert.ok(patho?.tabelaTesteAmostra);
+  const tabela = patho?.tabelaTesteAmostra as { headers?: string[]; rows?: string[][] };
+  assert.match(tabela?.headers?.[1] ?? '', /extenso/i);
+  assert.match(tabela?.rows?.[0]?.[1] ?? '', /Teste de Rivalta/i);
+  assert.match(tabela?.rows?.[1]?.[1] ?? '', /RT-qPCR.*coronavírus felino/i);
   const fig = patho?.figuraUveite as { src?: string };
   assert.match(fig?.src ?? '', /peritonite-infecciosa-felina/);
 });
@@ -66,4 +70,18 @@ test('PIF documenta GS-441524 como primeira linha', () => {
   const strip = record?.quickDecisionStrip.join(' ') ?? '';
   assert.match(strip, /GS-441524/);
   assert.match(strip, /15 mg\/kg/);
+});
+
+test('PIF explica sensibilidade, especificidade e valores preditivos', () => {
+  const record = diseasesSeed.find((d) => d.slug === SLUG);
+  const diagnosis = record?.diagnosis as Record<string, unknown> | undefined;
+  assert.ok(diagnosis && !Array.isArray(diagnosis));
+  const conceitos = diagnosis.conceitosTestes as Record<string, string>;
+  assert.ok(conceitos?.sensibilidade?.includes('Sensibilidade'));
+  assert.ok(conceitos?.valorPreditivoPositivo?.includes('VPP'));
+  assert.ok(conceitos?.valorPreditivoNegativo?.includes('VPN'));
+  const tabela = diagnosis.tabelaDesempenho as { rows?: string[][] };
+  assert.ok(Array.isArray(tabela?.rows) && tabela.rows.length >= 5);
+  const plano = diagnosis.planoDiagnostico as unknown[];
+  assert.ok(Array.isArray(plano) && plano.length >= 8);
 });

@@ -563,6 +563,17 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     quickSummary:
       'FIV é lentivirus transmitido principalmente por mordida; teste POC detecta anticorpos — retestar ≥60 dias após exposição. FIV+ ≠ eutanásia; monitoramento semestral; AZT 5–10 mg/kg q12h em casos selecionados (Little et al., 2020; Westman et al., 2022).',
   }),
+  diseaseListCard({
+    id: 'disease-insuficiencia-pancreatica-exocrina-caes-gatos',
+    slug: 'insuficiencia-pancreatica-exocrina-caes-gatos',
+    title: 'Insuficiência pancreática exócrina (IPE/EPI)',
+    synonyms: ['IPE', 'EPI', 'Exocrine pancreatic insufficiency', 'Atrofia acinar pancreática', 'PAA'],
+    species: ['dog', 'cat'],
+    category: 'gastroenterologia',
+    tags: ['TLI', 'cTLI', 'fTLI', 'PERT', 'Cobalamina', 'PAA', 'Pancreatite crônica', 'Texas A&M'],
+    quickSummary:
+      'IPE é maldigestão por perda de massa acinar — TLI confirma (cTLI ≤5,5 µg/L; fTLI ≤8). PERT em toda refeição + cobalamina + dieta digestível; cutoff ≤2,5 µg/L está obsoleto (Texas A&M, 2024; Cridge et al., 2024).',
+  }),
 ];
 
 
