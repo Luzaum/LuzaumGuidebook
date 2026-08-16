@@ -2,6 +2,50 @@ import type { EditorialReference } from '../types/common';
 
 /** Artigos com link público adicionados ao acervo para sustentar uso, dose e duração. */
 export const MEDICATION_EVIDENCE_ADDITIONS: Record<string, EditorialReference[]> = {
+  ondansetron: [
+    {
+      id: 'ref-ondansetron-sotelo-2022',
+      citationText: 'Sotelo CS et al. Pharmacokinetics and anti-nausea effects of intravenous ondansetron in hospitalized dogs exhibiting clinical signs of nausea. J Vet Pharmacol Ther. 2022.',
+      sourceType: 'Ensaio clínico',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/35899472/',
+      notes: 'Regime de referência 0,5 mg/kg IV q8h em cães hospitalizados.',
+      evidenceLevel: 'Alta',
+    },
+  ],
+  dipirona: [
+    {
+      id: 'ref-dipirona-cats-pereira-2021',
+      citationText: 'Pereira MAA et al. Analgesic efficacy of dipyrone at different doses in cats after ovariohysterectomy. Vet Anaesth Analg. 2021;48:7–16.',
+      sourceType: 'Ensaio clínico felino',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/33257279/',
+      evidenceLevel: 'Moderada',
+    },
+  ],
+  'ampicilina-sulbactam': [
+    {
+      id: 'ref-amp-sulb-critical-dogs-2025',
+      citationText: 'Goggs R et al. Intravenous Ampicillin/Sulbactam in Critically Ill Dogs has Variable Pharmacokinetics. J Vet Pharmacol Ther. 2025.',
+      sourceType: 'Estudo PK',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/40511602/',
+      evidenceLevel: 'Alta',
+    },
+  ],
+  ampicilina: [
+    {
+      id: 'ref-ampicilina-azotemic-dogs-2021',
+      citationText: 'Monaghan KN et al. Ampicillin pharmacokinetics in azotemic and healthy dogs. JVIM. 2021.',
+      sourceType: 'Estudo PK',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/33474795/',
+      evidenceLevel: 'Alta',
+    },
+    {
+      id: 'ref-sykes-lepto-2023',
+      citationText: 'Sykes JE et al. Updated ACVIM consensus statement on leptospirosis in dogs. JVIM. 2023.',
+      sourceType: 'Consenso ACVIM',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/37861061/',
+      evidenceLevel: 'Alta',
+    },
+  ],
   'sulfametoxazol-trimetoprima': [
     {
       id: 'ref-tmp-smx-cystitis-rct-2014',
@@ -10,6 +54,34 @@ export const MEDICATION_EVIDENCE_ADDITIONS: Record<string, EditorialReference[]>
       url: 'https://pubmed.ncbi.nlm.nih.gov/24673608/',
       notes: 'Avaliou TMP-SMX 15 mg/kg VO q12h por 3 dias em cadelas com cistite bacteriana não complicada.',
       evidenceLevel: 'Alta para o cenário estudado',
+    },
+    {
+      id: 'ref-iscaid-uti-2019',
+      citationText: 'Weese JS et al. ISCAID guidelines for bacterial urinary tract infections in dogs and cats. Vet J. 2019;247:8–25.',
+      sourceType: 'Diretriz ISCAID',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/30971357/',
+      evidenceLevel: 'Alta',
+    },
+    {
+      id: 'ref-tmp-smx-thyroid-2005',
+      citationText: 'Frank LA et al. Effects of sulfamethoxazole-trimethoprim on thyroid function in dogs. AJVR. 2005;66:256–259.',
+      sourceType: 'Estudo experimental',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/15757124/',
+      evidenceLevel: 'Moderada',
+    },
+    {
+      id: 'ref-tmp-smx-kcs-vetcompass-2026',
+      citationText: 'Hardefeldt LY et al. Trimethoprim-sulfonamide-associated keratoconjunctivitis sicca: VetCompass Australia study. JVIM. 2026.',
+      sourceType: 'Estudo observacional',
+      url: 'https://academic.oup.com/jvim/article/40/1/aalaf013/8429714',
+      evidenceLevel: 'Moderada',
+    },
+    {
+      id: 'ref-tmp-smx-adverse-review-2026',
+      citationText: 'Ekstrand C et al. Adverse events of trimethoprim-sulphonamide treatment of cats and dogs: a systematic review. 2026.',
+      sourceType: 'Revisão sistemática',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/41880081',
+      evidenceLevel: 'Moderada',
     },
   ],
   'amoxicilina-clavulanato': [
@@ -20,6 +92,20 @@ export const MEDICATION_EVIDENCE_ADDITIONS: Record<string, EditorialReference[]>
       url: 'https://pubmed.ncbi.nlm.nih.gov/8558866/',
       notes: 'Amoxicilina-clavulanato 12,5 mg/kg VO BID por 10 ou 28 dias conforme o diagnóstico no protocolo estudado; durações atuais devem seguir o tipo de ITU e a diretriz vigente.',
       evidenceLevel: 'Moderada; estudo antigo e duração dependente do diagnóstico',
+    },
+    {
+      id: 'ref-iscaid-pyoderma-2025',
+      citationText: 'Loeffler A et al. Antimicrobial use guidelines for canine pyoderma by ISCAID. Veterinary Dermatology. 2025;36:234–282.',
+      sourceType: 'Diretriz ISCAID',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12058580/',
+      evidenceLevel: 'Alta',
+    },
+    {
+      id: 'ref-clavamox-fda',
+      citationText: 'FDA/CVM — CLAVAMOX prescribing information. 6,25 mg/lb BID cães; 62,5 mg/gato BID.',
+      sourceType: 'Bula FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=d342d015-0775-4f4a-98fe-e792b9895596',
+      evidenceLevel: 'Alta (rótulo)',
     },
   ],
   pregabalina: [
@@ -115,6 +201,13 @@ export const MEDICATION_EVIDENCE_ADDITIONS: Record<string, EditorialReference[]>
       notes: 'Avaliou silibina pura e hepatoprotetor comercial; documentou tolerabilidade e alterações de marcadores hepáticos, com limitações para extrapolar entre formulações.',
       evidenceLevel: 'Moderada; formulação e população específicas',
     },
+    {
+      id: 'ref-filburn-silybin-pk-2007',
+      citationText: 'Filburn CR et al. Silybin-phosphatidylcholine PK in dogs. J Vet Pharmacol Ther. 2007.',
+      sourceType: 'PK',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/17348898/',
+      evidenceLevel: 'Alta',
+    },
   ],
   'acido-ursodesoxicolico': [
     {
@@ -135,6 +228,90 @@ export const MEDICATION_EVIDENCE_ADDITIONS: Record<string, EditorialReference[]>
       notes: 'Avaliou 140 mg/kg VO seguido de repetições a cada 8 horas em gatos intoxicados; protocolos contemporâneos devem ser confirmados em toxicologia veterinária.',
       evidenceLevel: 'Baixa a moderada; estudo antigo e experimental',
     },
+  ],
+  budesonida: [
+    {
+      id: 'ref-dye-budesonide-2013',
+      citationText: 'Dye TL et al. Randomized, Controlled Trial of Budesonide and Prednisone for IBD in Dogs. JVIM. 2013;27:1385–1391.',
+      sourceType: 'RCT',
+      url: 'https://doi.org/10.1111/jvim.12195',
+      evidenceLevel: 'Moderada',
+    },
+    {
+      id: 'ref-coates-budesonide-2023',
+      citationText: 'Coates VA. Budesonide vs prednisolone for chronic enteropathy — evidence review. Veterinary Evidence. 2023;8(4).',
+      sourceType: 'Revisão PICO',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/42004557/',
+      evidenceLevel: 'Moderada',
+    },
+  ],
+  clorambucil: [
+    {
+      id: 'ref-pope-chlorambucil-2015',
+      citationText: 'Pope KV et al. Outcome and toxicity of feline small cell lymphoma: 56 cases. Vet Med Sci. 2015.',
+      sourceType: 'Estudo clínico',
+      url: 'https://doi.org/10.1002/vms3.9',
+      evidenceLevel: 'Moderada',
+    },
+  ],
+  'desoxicorticosterona-pivalato': [
+    {
+      id: 'ref-vincent-docp-2021',
+      citationText: 'Vincent AM et al. Low-dose DOCP treatment of hypoadrenocorticism in dogs: RCT. JVIM. 2021.',
+      sourceType: 'RCT',
+      url: 'https://doi.org/10.1111/jvim.16195',
+      evidenceLevel: 'Alta',
+    },
+    {
+      id: 'ref-langlois-docp-2026',
+      citationText: 'Langlois DK et al. PK/PD of DOCP in dogs with hypoadrenocorticism. JVIM. 2026.',
+      sourceType: 'Estudo PK/PD',
+      url: 'https://doi.org/10.1093/jvimsj/aalaf003',
+      evidenceLevel: 'Alta',
+    },
+  ],
+  metimazol: [
+    {
+      id: 'ref-fda-felanorm-2024',
+      citationText: 'FDA CVM. FDA Approves First Generic Methimazole for Cats — Felanorm® 5 mg/mL. 2024.',
+      sourceType: 'Regulatório FDA',
+      url: 'https://www.fda.gov/animal-veterinary/cvm-updates/fda-approves-first-generic-methimazole-treating-hyperthyroidism-cats',
+      evidenceLevel: 'Alta',
+    },
+  ],
+  'levotiroxina-sodica': [
+    {
+      id: 'ref-thyro-tabs-label',
+      citationText: 'FDA/DailyMed. Thyro-Tabs® Canine — levothyroxine sodium tablets, USP.',
+      sourceType: 'Bula FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=38005382-289a-4293-b58e-b1cda8bc2288',
+      evidenceLevel: 'Alta',
+    },
+  ],
+  diltiazem: [
+    { id: 'ref-gelzer-digoxin-diltiazem-2009', citationText: 'Gelzer ARM et al. Digoxin + diltiazem for FA in dogs. JVIM. 2009.', sourceType: 'RCT', url: 'https://doi.org/10.1111/j.1939-1676.2009.0301.x', evidenceLevel: 'Alta' },
+    { id: 'ref-orca-fa-2023', citationText: 'Pedro B et al. ORCA — optimized rate control in canine FA. JVIM. 2023.', sourceType: 'Estudo clínico', url: 'https://doi.org/10.1111/jvim.16666', evidenceLevel: 'Alta' },
+  ],
+  digoxina: [
+    { id: 'ref-gelzer-digoxin-diltiazem-2009', citationText: 'Gelzer ARM et al. Digoxin + diltiazem for FA in dogs. JVIM. 2009.', sourceType: 'RCT', url: 'https://doi.org/10.1111/j.1939-1676.2009.0301.x', evidenceLevel: 'Alta' },
+  ],
+  atenolol: [
+    { id: 'ref-schober-atenolol-hcm-2013', citationText: 'Schober KE et al. Atenolol in preclinical HCM cats. J Vet Cardiol. 2013.', sourceType: 'Estudo', url: 'https://doi.org/10.1016/j.jvc.2013.03.003', evidenceLevel: 'Moderada' },
+  ],
+  atropina: [
+    { id: 'ref-recover-cpr-2024', citationText: 'Burkitt-Creedon JM et al. 2024 RECOVER Guidelines — CPR. JVECC. 2024.', sourceType: 'Guideline', url: 'https://doi.org/10.1111/vec.13391', evidenceLevel: 'Alta' },
+  ],
+  selegilina: [
+    { id: 'ref-campbell-selegilina-2001', citationText: 'Campbell S et al. Open-label selegiline in CDS. Vet Ther. 2001.', sourceType: 'Estudo clínico', url: 'https://pubmed.ncbi.nlm.nih.gov/19753696/', evidenceLevel: 'Moderada' },
+  ],
+  fluoxetina: [
+    { id: 'ref-hart-fluoxetina-marking-2005', citationText: 'Hart BL et al. Long-term fluoxetine for urine marking in cats. JAVMA. 2005.', sourceType: 'Estudo clínico', url: 'https://pubmed.ncbi.nlm.nih.gov/15702686/', evidenceLevel: 'Moderada' },
+  ],
+  amitriptilina: [
+    { id: 'ref-kruger-amit-fic-2003', citationText: 'Kruger JM et al. Short-term amitriptyline in acute feline LUTD — negative RCT. JAVMA. 2003.', sourceType: 'RCT negativo', url: 'https://pubmed.ncbi.nlm.nih.gov/12675297/', evidenceLevel: 'Alta' },
+  ],
+  amantadina: [
+    { id: 'ref-caterino-amantadina-2025', citationText: 'Caterino C et al. Amantadine for lumbosacral stenosis. BMC Vet Res. 2025.', sourceType: 'Estudo clínico', url: 'https://pubmed.ncbi.nlm.nih.gov/40671053/', evidenceLevel: 'Moderada' },
   ],
 };
 

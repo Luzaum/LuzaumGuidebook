@@ -1,11 +1,16 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Pill, LayoutGrid, Brain, Heart, Dna, Shield, Sparkles, Activity } from 'lucide-react';
+import { Pill, LayoutGrid } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { MedicationRecord } from '../types/medication';
 import { cn } from '../../../lib/utils';
+import {
+  getMedicationTherapeuticClassIds,
+  getPrimaryMedicationTherapeuticClass,
+  MEDICATION_THERAPEUTIC_CLASSES,
+} from '../utils/medicationTherapeuticClasses';
 
 const UI_TEXT = {
   eyebrow: 'Farmacologia',
@@ -17,61 +22,10 @@ const UI_TEXT = {
   allClasses: 'Todas as Classes',
 } as const;
 
-// Mapeamento estático e preciso das classes de medicamentos
-export const MEDICATION_CLASSES = [
-  { 
-    slug: 'antibiotico', 
-    label: 'Antibióticos & Antimicrobianos', 
-    icon: Shield, 
-    theme: 'infectologia', 
-    matches: ['sulfametoxazol-trimetoprima', 'amoxicilina-clavulanato'] 
-  },
-  { 
-    slug: 'anti-inflamatorio', 
-    label: 'Anti-inflamatórios & Corticoides', 
-    icon: Pill, 
-    theme: 'endocrinologia', 
-    matches: ['prednisolona'] 
-  },
-  { 
-    slug: 'analgesico-anticonvulsivante', 
-    label: 'Analgésicos & Anticonvulsivantes', 
-    icon: Brain, 
-    theme: 'anestesia-dor', 
-    matches: ['pregabalina', 'gabapentina'] 
-  },
-  { 
-    slug: 'antiemetico', 
-    label: 'Antieméticos & Gastroprotetores', 
-    icon: Activity, 
-    theme: 'gastroenterologia', 
-    matches: ['maropitant'] 
-  },
-  {
-    slug: 'hepatobiliar',
-    label: 'Hepatobiliares & Nutracêuticos',
-    icon: Sparkles,
-    theme: 'gastroenterologia',
-    matches: ['same-sadenosilmetionina', 'acido-ursodesoxicolico', 'n-acetilcisteina'],
-  },
-  { 
-    slug: 'cardiovascular', 
-    label: 'Cardiovasculares & Inodilatadores', 
-    icon: Heart, 
-    theme: 'cardiologia', 
-    matches: ['benazepril', 'pimobendan'] 
-  },
-  { 
-    slug: 'endocrinologico', 
-    label: 'Endocrinológicos', 
-    icon: Dna, 
-    theme: 'endocrinologia', 
-    matches: ['benzafibrato', 'sinvastatina'] 
-  },
-] as const;
+export const MEDICATION_CLASSES = MEDICATION_THERAPEUTIC_CLASSES;
 
 export function getMedicationClassInfo(slug: string) {
-  const match = MEDICATION_CLASSES.find((c) => (c.matches as readonly string[]).includes(slug));
+  const match = MEDICATION_CLASSES.find((item) => item.medicationSlugs.includes(slug));
   if (match) {
     return { label: match.label, icon: match.icon, theme: match.theme };
   }
@@ -123,17 +77,16 @@ export function MedicationsPage() {
     if (selectedClass === 'all') return medications;
     const targetClass = MEDICATION_CLASSES.find((c) => c.slug === selectedClass);
     if (!targetClass) return medications;
-    return medications.filter((m) => (targetClass.matches as readonly string[]).includes(m.slug));
+    return medications.filter((medication) => getMedicationTherapeuticClassIds(medication).includes(targetClass.slug));
   }, [medications, selectedClass]);
 
   // Contagem dinâmica em tempo real de itens por classe
   const classCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     medications.forEach((m) => {
-      const match = MEDICATION_CLASSES.find((c) => (c.matches as readonly string[]).includes(m.slug));
-      if (match) {
-        counts[match.slug] = (counts[match.slug] || 0) + 1;
-      }
+      getMedicationTherapeuticClassIds(m).forEach((classId) => {
+        counts[classId] = (counts[classId] || 0) + 1;
+      });
     });
     return counts;
   }, [medications]);
@@ -173,9 +126,11 @@ export function MedicationsPage() {
 
           <nav className="flex flex-row flex-wrap gap-2 xl:flex-col xl:gap-1.5">
             <button
+              type="button"
+              aria-pressed={selectedClass === 'all'}
               onClick={() => setSelectedClass('all')}
               className={cn(
-                'flex items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 xl:w-full',
+                'group flex min-h-11 items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
                 selectedClass === 'all'
                   ? 'border-emerald-500 bg-emerald-500/[0.06] text-emerald-600 dark:text-emerald-400 shadow-[0_0_12px_-3px_rgba(16,185,129,0.12)]'
                   : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
@@ -196,33 +151,25 @@ export function MedicationsPage() {
             {activeClasses.map((cls) => {
               const isSelected = selectedClass === cls.slug;
               const IconComponent = cls.icon;
-              const accentColorActive = cls.theme === 'infectologia' ? 'border-emerald-500 text-emerald-600 dark:text-emerald-400 bg-emerald-500/[0.06]' :
-                                        cls.theme === 'endocrinologia' ? 'border-purple-500 text-purple-600 dark:text-purple-400 bg-purple-500/[0.06]' :
-                                        cls.theme === 'anestesia-dor' ? 'border-cyan-500 text-cyan-600 dark:text-cyan-400 bg-cyan-500/[0.06]' :
-                                        cls.theme === 'gastroenterologia' ? 'border-pink-500 text-pink-600 dark:text-pink-400 bg-pink-500/[0.06]' :
-                                        cls.theme === 'cardiologia' ? 'border-rose-500 text-rose-600 dark:text-rose-400 bg-rose-500/[0.06]' :
-                                        'border-yellow-500 text-yellow-600 dark:text-yellow-400 bg-yellow-500/[0.06]';
 
               return (
                 <button
                   key={cls.slug}
+                  type="button"
+                  aria-pressed={isSelected}
+                  title={cls.description}
                   onClick={() => setSelectedClass(cls.slug)}
                   className={cn(
-                    'flex items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-300 xl:w-full group',
+                    'group flex min-h-11 items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
                     isSelected
-                      ? cn('border-solid shadow-xs font-extrabold', accentColorActive)
+                      ? cn('border-solid font-extrabold shadow-xs', cls.selectedClassName)
                       : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
                   )}
                 >
                   <span className="flex h-5 w-5 shrink-0 items-center justify-center">
                     <IconComponent className={cn(
-                      'h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110',
-                      cls.theme === 'infectologia' ? 'text-emerald-500 dark:text-emerald-400' :
-                      cls.theme === 'endocrinologia' ? 'text-purple-500 dark:text-purple-400' :
-                      cls.theme === 'anestesia-dor' ? 'text-cyan-500 dark:text-cyan-400' :
-                      cls.theme === 'gastroenterologia' ? 'text-pink-500 dark:text-pink-400' :
-                      cls.theme === 'cardiologia' ? 'text-rose-500 dark:text-rose-400' :
-                      'text-muted-foreground'
+                      'h-4.5 w-4.5 transition-transform duration-200 group-hover:scale-110 motion-reduce:transition-none',
+                      cls.iconClassName,
                     )} />
                   </span>
                   <span className="flex-1 text-left text-xs sm:text-sm font-semibold leading-tight whitespace-normal break-words">{cls.label}</span>
@@ -262,7 +209,7 @@ export function MedicationsPage() {
             )}
 
             {!isLoading && !error && filteredMedications.map((medication) => {
-              const classInfo = getMedicationClassInfo(medication.slug);
+              const classInfo = getPrimaryMedicationTherapeuticClass(medication);
 
               return (
                 <div
@@ -272,11 +219,11 @@ export function MedicationsPage() {
                   <EntityCard
                     to={`/consulta-vet/medicamentos/${medication.slug}`}
                     title={medication.title}
-                    subtitle={`${classInfo.label} \u2022 ${medication.pharmacologicClass}`}
+                    subtitle={`${classInfo?.label || 'Classe farmacológica a revisar'} \u2022 ${medication.pharmacologicClass}`}
                     description={medication.indications.join(', ')}
                     entityType="medication"
                     entityId={medication.id}
-                    category={classInfo.theme}
+                    category={classInfo?.theme || 'default'}
                   />
                 </div>
               );

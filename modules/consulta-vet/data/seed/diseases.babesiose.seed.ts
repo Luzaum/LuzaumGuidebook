@@ -27,7 +27,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
     'Trombocitopenia'
   ],
   quickSummary:
-    'A babesiose é uma hemoparasitose causada por protozoários do gênero Babesia, caracterizada por anemia hemolítica (direta e imunomediada secundária), trombocitopenia acentuada e, em casos graves, síndrome de resposta inflamatória sistêmica (SIRS) e falência de múltiplos órgãos. O diagnóstico é baseado na detecção de merozoítos piriformes em esfregaços sanguíneos (especialmente de ponta de orelha) ou por testes moleculares (PCR). O tratamento varia conforme o tamanho do parasita: babesias grandes (B. vogeli/canis) respondem bem ao dipropionato de imidocarb, enquanto babesias pequenas (B. gibsoni) exigem a associação de atovaquona e azitromicina.',
+    'A babesiose é uma hemoparasitose causada por protozoários do gênero *Babesia*, caracterizada por anemia hemolítica (direta e imunomediada secundária), trombocitopenia acentuada e, em casos graves, síndrome de resposta inflamatória sistêmica (SRIS) e falência de múltiplos órgãos. O diagnóstico é baseado na detecção de merozoítos piriformes em esfregaços sanguíneos (especialmente de ponta de orelha) ou por testes moleculares (PCR). O tratamento varia conforme o tamanho do parasita: babesias grandes (*B. vogeli/canis*) respondem bem ao dipropionato de imidocarb, enquanto babesias pequenas (*B. gibsoni*) exigem a associação de atovaquona e azitromicina.',
   quickDecisionStrip: [
     'Trombocitopenia + anemia hemolítica + febre = suspeita forte de babesiose.',
     'Diferencie o tamanho da Babesia: grandes usam imidocarb; pequenas usam atovaquona + azitromicina.',
@@ -37,7 +37,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'A babesiose canina destrói hemácias de duas formas: por invasão direta do parasita e por induzir uma hemólise imunomediada secundária (IMHA). O segredo clínico está em reconhecer o tamanho da Babesia (grande vs pequena) para definir o protocolo terapêutico correto e monitorar lesões em órgãos-alvo como rins e pâncreas.',
+      'A babesiose canina destrói hemácias de duas formas: por invasão direta do parasita e por induzir uma hemólise imunomediada secundária (AHIM). O segredo clínico está em reconhecer o tamanho da Babesia (grande vs pequena) para definir o protocolo terapêutico correto e monitorar lesões em órgãos-alvo como rins e pâncreas.',
     leadHighlights: ['hemólise imunomediada secundária', 'grande vs pequena', 'rins e pâncreas'],
     pillars: [
       {
@@ -119,29 +119,29 @@ export const babesioseCaninaRecord: DiseaseRecord = {
   },
   etiology: {
     agente:
-      'Protozoário intracelular obrigatório pertencente à ordem Piroplasmida, família Babesiidae e gênero Babesia. Infectam e multiplicam-se no interior dos eritrócitos (hemácias).',
+      'Protozoário intracelular obrigatório pertencente à ordem Piroplasmida, família Babesiidae e gênero *Babesia*. Infectam e multiplicam-se no interior dos eritrócitos (hemácias).',
     classificacao: {
       kind: 'clinicalTable',
       headers: ['Grupo', 'Espécies importantes', 'Comentário clínico'],
       rows: [
         [
           'Babesias grandes',
-          'Babesia canis, Babesia vogeli, Babesia rossi',
+          '*Babesia canis*, *Babesia vogeli*, *Babesia rossi*',
           'Têm tamanho de 2,5-5,0 µm. São tratadas preferencialmente com dipropionato de imidocarb ou diminazeno.'
         ],
         [
           'Babesias pequenas',
-          'Babesia gibsoni, Babesia conradae, Babesia vulpes',
+          '*Babesia gibsoni*, *Babesia conradae*, *Babesia vulpes*',
           'Têm tamanho de 1,0-2,5 µm. São refratárias ao imidocarb isolado e exigem atovaquona + azitromicina.'
         ]
       ]
     },
     fontesLivro:
-      'Nelson & Couto (6ª ed., cap. 98) detalha as infecções por protozoários polissistêmicos, diferenciando a suscetibilidade e a apresentação clínica entre as espécies de Babesia.'
+      'Nelson & Couto (6ª ed., cap. 98) detalha as infecções por protozoários polissistêmicos, diferenciando a suscetibilidade e a apresentação clínica entre as espécies de *Babesia*.'
   },
   epidemiology: {
     vetor:
-      'O principal vetor no Brasil é o carrapato-marrom-do-cão (Rhipicephalus sanguineus). A transmissão ocorre pela picada do carrapato infectado (inoculação de esporozoítos durante o repasto sanguíneo, o que requer cerca de 24-36h de fixação, embora transmissões mais rápidas tenham sido descritas).',
+      'O principal vetor no Brasil é o carrapato-marrom-do-cão (*Rhipicephalus sanguineus*). A transmissão ocorre pela picada do carrapato infectado (inoculação de esporozoítos durante o repasto sanguíneo, o que requer cerca de 24-36h de fixação, embora transmissões mais rápidas tenham sido descritas).',
     figuraVetor: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/diseases/babesiose/rhipicephalus-sanguineus-female-male.jpg`,
@@ -159,11 +159,11 @@ export const babesioseCaninaRecord: DiseaseRecord = {
     mecanismoEntrada:
       'O parasita invade as hemácias ativamente por endocitose induzida, se multiplica por fissão binária e rompe a célula para infectar novos eritrócitos. Isso leva a uma anemia por hemólise intravascular direta.',
     hemoliseImunomediada:
-      'O hospedeiro desenvolve uma resposta imune humoral e celular contra os antígenos do protozoário que são expostos na membrana das hemácias. Isso faz com que eritrócitos não parasitados também sejam destruídos no baço e fígado (hemólise extravascular), simulando uma anemia hemolítica imunomediada (IMHA) secundária. Reticulocitose e esferócitos são frequentes.',
+      'O hospedeiro desenvolve uma resposta imune humoral e celular contra os antígenos do protozoário que são expostos na membrana das hemácias. Isso faz com que eritrócitos não parasitados também sejam destruídos no baço e fígado (hemólise extravascular), simulando uma anemia hemolítica imunomediada (AHIM) secundária. Reticulocitose e esferócitos são frequentes.',
     trombocitopenia:
       'A redução plaquetária é constante e ocorre por sequestro esplênico, consumo inflamatório e destruição imunomediada mediada por anticorpos antiplaquetários.',
     sirs:
-      'Em infecções agudas por B. rossi ou quadros graves de B. canis, a liberação massiva de mediadores inflamatórios desencadeia a Síndrome de Resposta Inflamatória Sistêmica (SIRS), culminando em choque, hipotensão, acidose láctica e disfunção renal/pancreática.'
+      'Em infecções agudas por B. rossi ou quadros graves de B. canis, a liberação massiva de mediadores inflamatórios desencadeia a Síndrome de Resposta Inflamatória Sistêmica (SRIS), culminando em choque, hipotensão, acidose láctica e disfunção renal/pancreática.',
   },
   pathophysiology: {
     microscopiaMerozoitos: {
@@ -203,7 +203,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
         {
           finding: 'Anemia regenerativa com reticulocitose e esferócitos',
           mechanism:
-            'Destruição eritrocitária direta pelo parasita e hemólise imunomediada secundária (IMHA) destruem hemácias no baço e fígado.',
+            'Destruição eritrocitária direta pelo parasita e hemólise imunomediada secundária (AHIM) destruem hemácias no baço e fígado.',
           clinicalMeaning: 'Trombocitopenia concomitante reforça suspeita de babesiose em área endêmica.',
           priority: 'common',
         },
@@ -222,7 +222,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
         {
           finding: 'Colapso, hipotensão, dispneia, oligúria e hemorragias',
           mechanism:
-            'SIRS desencadeia vasodilatação, coagulopatia (CIVD), lesão renal aguda e acidose metabólica; hipoglicemia pode complicar.',
+            'SRIS desencadeia vasodilatação, coagulopatia (CIVD), lesão renal aguda e acidose metabólica; hipoglicemia pode complicar.',
           clinicalMeaning: 'Forma grave com prognóstico reservado; azotemia e hipoalbuminemia são marcadores de mortalidade.',
           priority: 'emergency',
         },
@@ -292,7 +292,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
     suporte: [
       'BSAVA Emergency and Critical Care recomenda transfusão de concentrado de hemácias ou sangue total quando PCV <15–18% com hipóxia tecidual. Conclusão: corrigir anemia antes de hemodiluição agressiva por fluidoterapia.',
       'Fluidoterapia criteriosa mantém perfusão renal sem hemodiluir excessivamente; monitorar creatinina, fósforo e sinais de pancreatite em casos graves.',
-      'Corticoterapia (prednisolona) é controversa: indicar apenas em IMHA secundária grave confirmada, evitando uso indiscriminado que pode agravar parasitemia.',
+      'Corticoterapia (prednisolona) é controversa: indicar apenas em AHIM secundária grave confirmada, evitando uso indiscriminado que pode agravar parasitemia.',
     ],
     monitoramento: [
       'PCV, lactato e sinais de hipóxia a cada revisão na fase aguda.',

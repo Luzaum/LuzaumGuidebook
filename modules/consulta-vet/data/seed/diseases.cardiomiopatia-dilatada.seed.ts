@@ -20,8 +20,8 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'Na CMD, a bomba perde força. O volume residual aumenta, as câmaras dilatam, as valvas passam a regurgitar por estiramento do anel e a perfusão efetiva cai. O organismo tenta compensar com simpático e RAAS, mas a retenção de sódio e a vasoconstrição aumentam ainda mais a carga do coração. Tratar bem significa reconhecer a fase: rastrear a doença oculta, aliviar congestão quando aparece e controlar arritmias que podem matar antes mesmo do edema.',
-    leadHighlights: ['perde força', 'RAAS', 'doença oculta', 'arritmias'],
+      'Na CMD, a bomba perde força. O volume residual aumenta, as câmaras dilatam, as valvas passam a regurgitar por estiramento do anel e a perfusão efetiva cai. O organismo tenta compensar com simpático e SRAA, mas a retenção de sódio e a vasoconstrição aumentam ainda mais a carga do coração. Tratar bem significa reconhecer a fase: rastrear a doença oculta, aliviar congestão quando aparece e controlar arritmias que podem matar antes mesmo do edema.',
+    leadHighlights: ['perde força', 'SRAA', 'doença oculta', 'arritmias'],
     pillars: [
       {
         title: 'Fenótipo com várias causas',
@@ -97,7 +97,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
             'Pimobendan + furosemida; IECA se perfusão e rim permitirem; considerar espironolactona e controle de frequência/ritmo (Luis Fuentes et al., 2002; Plumb\'s, 10ª ed.).',
           dose: 'Pimobendan 0,5 mg/kg/dia PO dividido q12h. Furosemida 2 mg/kg PO q12h (cães) ou 1–2 mg/kg q8–12h (gatos), ajustar à congestão. Benazepril conforme perfusão renal.',
           duration: 'Contínuo; ajustar diurético à menor dose que mantém conforto.',
-          reassess: 'Ureia, creatinina e eletrólitos 3–7 dias após intensificar diurético/RAAS.',
+          reassess: 'Ureia, creatinina e eletrólitos 3–7 dias após intensificar diurético/SRAA.',
         },
         {
           label: 'Causa reversível',
@@ -134,7 +134,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
     cascata: [
       'Perda de contratilidade aumenta volume sistólico final e reduz volume ejetado.',
       'Sobrecarga de volume dilata ventrículos e anéis valvares, gerando regurgitação mitral/tricúspide funcional.',
-      'Baixo débito ativa simpático, RAAS e vasopressina; vasoconstrição e retenção hídrica sustentam pressão no curto prazo, mas elevam pré e pós-carga.',
+      'Baixo débito ativa simpático, SRAA e vasopressina; vasoconstrição e retenção hídrica sustentam pressão no curto prazo, mas elevam pré e pós-carga.',
       'Pressão de enchimento esquerda causa edema pulmonar; pressão direita causa ascite, efusão e congestão hepática.',
       'Estiramento e fibrose criam substrato para fibrilação atrial e arritmias ventriculares.',
     ],
@@ -323,7 +323,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
     ],
     monitoramento: [
       'Frequência respiratória dormindo, peso, apetite e tolerância ao exercício.',
-      'Ureia, creatinina e eletrólitos 3–7 dias após intensificação de diurético/RAAS e periodicamente.',
+      'Ureia, creatinina e eletrólitos 3–7 dias após intensificação de diurético/SRAA e periodicamente.',
       'Eco a cada 3–6 meses conforme estágio; Holter para resposta antiarrítmica e progressão.',
       'Pressão arterial e ECG durante terapia intensiva ou quando houver síncope/fraqueza.',
     ],
@@ -337,8 +337,8 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
       'Antes e durante o uso de doxorrubicina, registre dose cumulativa, fatores raciais e função cardíaca; realize ecocardiograma em cardiopatas e avaliação seriada a cada incremento cumulativo relevante.',
   },
   relatedConsensusSlugs: [],
-  relatedDiseaseSlugs: ['hipotireoidismo-canino'],
-  relatedMedicationSlugs: ['pimobendan', 'benazepril'],
+  relatedDiseaseSlugs: ['hipotireoidismo-adquirido-caes-gatos', 'arritmias-cardiacas-caes-gatos'],
+  relatedMedicationSlugs: ['pimobendan', 'benazepril', 'sotalol', 'atenolol', 'diltiazem', 'digoxina', 'lidocaina'],
   references: [
     {
       id: 'ref-nelson-couto-dcm',

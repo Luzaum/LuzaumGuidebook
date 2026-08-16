@@ -33,7 +33,15 @@ export function PrintPreviewA4({ document }: Props) {
           <main className="min-h-0 flex-1 pt-4 text-[9.5pt] leading-[5.1mm]">
             {page.lines.map((line, index) => line.kind === 'spacer'
               ? <div key={index} className="h-[5.1mm]" />
-              : <p key={index} className={line.kind === 'heading' ? 'font-bold uppercase tracking-[0.025em]' : line.kind === 'bullet' ? 'pl-2' : ''}>{line.text}</p>)}
+              : line.kind === 'medication'
+                ? (
+                  <p key={index} className="flex h-[5.1mm] min-w-0 items-baseline gap-1 font-bold" title={line.text}>
+                    <span className="min-w-0 truncate uppercase">{line.medicationLabel}</span>
+                    <span aria-hidden="true" className="min-w-4 flex-1 border-b border-dotted border-slate-500" />
+                    <span className="shrink-0 uppercase">{line.medicationForm}</span>
+                  </p>
+                )
+                : <p key={index} className={line.kind === 'heading' ? 'font-bold uppercase tracking-[0.025em]' : line.kind === 'bullet' ? 'pl-2' : ''}>{line.text}</p>)}
           </main>
           {page.number === page.totalPages && signatureBoxes.length ? (
             <section className="mb-[4mm] grid grid-cols-2 gap-[3mm]" aria-label="Quadro de assinaturas">

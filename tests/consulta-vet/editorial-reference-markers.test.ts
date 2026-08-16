@@ -1,54 +1,49 @@
+import test from 'node:test';
 import assert from 'node:assert/strict';
-import { describe, it } from 'node:test';
-import type { EditorialReference } from '../../modules/consulta-vet/types/common';
 import {
-  looksLikeBibliographicCitation,
-  resolveCitationTokenToReferenceIndex,
-  resolveReferenceIndex,
+  expandNumericCitationParts,
+  looksLikeNumericBibliography,
   splitEditorialRichText,
 } from '../../modules/consulta-vet/utils/editorialReferenceMarkers';
+import { diabetesMellitusCaninaRecord } from '../../modules/consulta-vet/data/seed/diseases.diabetes-mellitus-canina.seed';
 
-const references: EditorialReference[] = [
-  {
-    id: 'ref-nelson-couto-dcm',
-    citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. 2020.',
-    sourceType: 'Livro-texto',
-  },
-  {
-    id: 'ref-protect',
-    citationText: 'Summerfield NJ, et al. PROTECT Study. JVIM. 2012.',
-    sourceType: 'Ensaio randomizado',
-  },
-];
+test('looksLikeNumericBibliography reconhece listas e intervalos', () => {
+  assert.equal(looksLikeNumericBibliography('1,4'), true);
+  assert.equal(looksLikeNumericBibliography('1,4–9,15,16'), true);
+  assert.equal(looksLikeNumericBibliography('Behrend et al., 2018'), false);
+});
 
-describe('editorialReferenceMarkers', () => {
-  it('resolve referência explícita por número e id', () => {
-    assert.equal(resolveReferenceIndex(references, '1'), 0);
-    assert.equal(resolveReferenceIndex(references, 'ref-protect'), 1);
-  });
+test('expandNumericCitationParts expande intervalos', () => {
+  assert.deepEqual(expandNumericCitationParts('1,4'), [1, 4]);
+  assert.deepEqual(expandNumericCitationParts('4–6'), [4, 5, 6]);
+});
 
-  it('converte marcador {{ref:N}} em segmento de referência', () => {
-    const segments = splitEditorialRichText('Texto clínico. {{ref:2}}', references);
-    assert.deepEqual(segments, [
-      { type: 'text', value: 'Texto clínico. ' },
-      { type: 'reference', index: 1 },
-    ]);
-  });
+test('splitEditorialRichText liga citações numéricas às referências', () => {
+  const refs = diabetesMellitusCaninaRecord.references ?? [];
+  const segments = splitEditorialRichText('Triagem (1,4,5).', refs);
+  const refSegments = segments.filter((segment) => segment.type === 'reference');
+  assert.equal(refSegments.length, 3);
+  assert.deepEqual(
+    refSegments.map((segment) => segment.index),
+    [0, 3, 4]
+  );
+});
 
-  it('converte citação bibliográfica entre parênteses em botão numerado', () => {
-    const segments = splitEditorialRichText('Estabilizar antes do BAL (Nelson & Couto, 6ª ed.).', references);
-    const referenceSegment = segments.find((segment) => segment.type === 'reference');
-    assert.ok(referenceSegment);
-    assert.equal((referenceSegment as { index: number }).index, 0);
-  });
+test('splitEditorialRichText liga Behrend et al., 2018', () => {
+  const refs = diabetesMellitusCaninaRecord.references ?? [];
+  const segments = splitEditorialRichText('OVH indicada (Behrend et al., 2018).', refs);
+  const refSegments = segments.filter((segment) => segment.type === 'reference');
+  assert.equal(refSegments.length, 1);
+  assert.equal(refSegments[0]?.index, 3);
+});
 
-  it('não confunde parênteses clínicos com referência', () => {
-    assert.equal(looksLikeBibliographicCitation('BAL'), false);
-    const segments = splitEditorialRichText('Considerar BAL quando estável.', references);
-    assert.deepEqual(segments, [{ type: 'text', value: 'Considerar BAL quando estável.' }]);
-  });
-
-  it('resolve citações et al + ano', () => {
-    assert.equal(resolveCitationTokenToReferenceIndex('Summerfield et al., 2012', references), 1);
-  });
+test('splitEditorialRichText liga Milenkovic et al., 2026 no Cushing canino', async () => {
+  const { sindromeCushingCaesRecord } = await import(
+    '../../modules/consulta-vet/data/seed/diseases.sindrome-cushing-caes.seed'
+  );
+  const refs = sindromeCushingCaesRecord.references ?? [];
+  const segments = splitEditorialRichText('Proteinúria (Milenkovic et al., 2026).', refs);
+  const refSegments = segments.filter((segment) => segment.type === 'reference');
+  assert.equal(refSegments.length, 1);
+  assert.match(refs[refSegments[0]?.index ?? 0]?.citationText ?? '', /Milenkovic/i);
 });

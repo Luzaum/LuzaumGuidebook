@@ -4762,6 +4762,34 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     price: { averageLabel: 'R$ 185,00 a R$ 490,00', rangeLabel: '1,25 mg cerca de R$ 154-219; 5 mg cerca de R$ 431-567', sourceDate: CARDIO_PRICE_SOURCE_DATE },
   },
   {
+    id: 'cardisure-dechra',
+    slug: 'cardisure-pimobendan',
+    name: 'Cardisure',
+    manufacturer: 'Dechra',
+    commercialClass: 'cardiologic',
+    commercialSubclass: 'cardio_inotrope',
+    species: ['dog'],
+    presentations: ['1,25 mg, comprimidos', '5 mg, comprimidos', '10 mg, comprimidos'],
+    activeComponents: ['pimobendan 1,25 mg/comprimido', 'pimobendan 5 mg/comprimido', 'pimobendan 10 mg/comprimido'],
+    labelCompositionSummary: 'Comprimidos veterinários para cães contendo pimobendan nas apresentações de 1,25 mg, 5 mg ou 10 mg.',
+    labelDirections: 'Selecionar a apresentação conforme o peso e a dose de pimobendan definida pelo médico-veterinário. A dose diária costuma ser dividida em duas administrações por via oral.',
+    dosageGuidance: {
+      labelDose: 'Cães: calcular a dose de pimobendan pelo peso e dividir a dose diária em duas administrações por via oral.',
+      plumbs: {
+        dog: [
+          { title: 'ICC por DCM/DMVM', dose: '0,5 mg/kg/dia VO dividido a cada 12 h', note: 'Selecionar a potência que permita a quantidade prática mais próxima.' },
+          { title: 'DMVM estágio B2', dose: '0,4 a 0,6 mg/kg/dia VO dividido a cada 12 h', note: 'Faixa usada em estudos clínicos com pimobendan.' },
+        ],
+      },
+    },
+    plumbsContext: CARDIOLOGY_CONTEXT,
+    clinicalUse: 'Apresentação comercial de pimobendan para cães com indicação cardiológica estabelecida.',
+    reassessment: 'Monitorar frequência respiratória em repouso, tosse, disposição, apetite, pressão arterial, função renal, eletrólitos e evolução ecocardiográfica conforme cardiologia.',
+    prescriptionExample: 'Cardisure [1,25 mg, 5 mg ou 10 mg], administrar por via oral, na dose calculada pelo peso, a cada 12 horas, conforme acompanhamento cardiológico.',
+    safetyAlert: 'Evitar em cardiomiopatia hipertrófica obstrutiva, estenose aórtica importante, hipotensão grave ou ausência de diagnóstico cardíaco. Em gatos, o uso é extra-bula e exige seleção criteriosa.',
+    price: { averageLabel: 'Preço não consolidado', rangeLabel: 'Varia conforme a apresentação e o estabelecimento', sourceDate: CARDIO_PRICE_SOURCE_DATE, notes: 'Confirmar preço no momento da prescrição.' },
+  },
+  {
     id: 'cardalis-ceva',
     slug: 'cardalis',
     name: 'Cardalis',
@@ -4904,13 +4932,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     presentations: ['Cápsula/comprimido 5 mg', 'Cápsula/comprimido 10 mg', 'Suspensão manipulada com concentração variável'],
     activeComponents: ['cloridrato de benazepril'],
     labelCompositionSummary: 'IECA de uso humano ou manipulado veterinário; concentração varia conforme farmácia/prescrição.',
-    labelDirections: 'Plumb’s: cães, iniciar 0,25 a 0,5 mg/kg VO a cada 24 h; em ICC pode ser usado com furosemida, pimobendan e espironolactona, e alguns casos usam divisão a cada 12 h. Proteinúria em cães: 0,5 mg/kg VO SID, titulando conforme UPC até cerca de 2 mg/kg/dia. Gatos hipertensos/proteinúricos: pode ser adjuvante, incluindo 0,5 mg/kg VO a cada 12 h quando amlodipina isolada não controla ou há proteinúria.',
+    labelDirections: 'Plumb’s: cães, iniciar 0,25 a 0,5 mg/kg VO a cada 24 h; em ICC pode ser usado com furosemida, pimobendan e espironolactona, e alguns casos usam divisão a cada 12 h. Proteinúria em cães: 0,5 mg/kg VO SID, titulando conforme RPCU até cerca de 2 mg/kg/dia. Gatos hipertensos/proteinúricos: pode ser adjuvante, incluindo 0,5 mg/kg VO a cada 12 h quando amlodipina isolada não controla ou há proteinúria.',
     dosageGuidance: {
       labelDose: 'Sem bula veterinária brasileira única para manipulado/uso humano; prescrever como uso extra-bula, ajustado por indicação e monitoramento.',
       plumbs: {
         dog: [
           { title: 'Início / cardiologia', dose: '0,25 a 0,5 mg/kg VO SID', note: 'Em ICC pode compor terapia com furosemida, pimobendan e espironolactona.' },
-          { title: 'Proteinúria', dose: '0,5 mg/kg VO SID; titular até cerca de 2 mg/kg/dia', note: 'Titulando conforme UPC; dose diária pode ser dividida a cada 12 h.' },
+          { title: 'Proteinúria', dose: '0,5 mg/kg VO SID; titular até cerca de 2 mg/kg/dia', note: 'Titulando conforme RPCU; dose diária pode ser dividida a cada 12 h.' },
         ],
         cat: [
           { title: 'Hipertensão/proteinúria adjuvante', dose: '0,5 mg/kg VO a cada 12 h', note: 'Quando amlodipina isolada não controla ou há proteinúria concorrente.' },
@@ -6986,7 +7014,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse: 'Adjuvante em ceratoconjuntivite seca, irritação por ressecamento, exposição corneana e braquicefálicos.',
     reassessment: 'Reavaliar antes de prolongar e investigar causa quando houver dor, secreção, úlcera ou opacidade.',
     prescriptionExample: 'Lacri colírio, aplicar 1 gota no(s) olho(s) afetado(s) a cada 6 horas por 7 dias; reavaliar.',
-    safetyAlert: 'Lubrificante não trata infecção, úlcera, uveíte ou glaucoma. Evitar uso sem orientação em lesão corneana/infeção ativa.',
+    safetyAlert: 'Lubrificante não trata infecção, úlcera, uveíte ou glaucoma. Evitar uso sem orientação em lesão corneana/infecção ativa.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/especialidades-pt/lacri/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_especialidades_lacri.jpg',
     labelUrl: 'https://agener.com.br/wp-content/uploads/2020/03/4014830-Lacri.pdf',
@@ -7444,7 +7472,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     },
     plumbsContext: 'Plumb\'s traz posologia para combinação tobramicina + glicocorticoide; o componente corticoide torna obrigatório descartar úlcera corneana.',
     clinicalUse: 'Inflamação ocular não ulcerativa com necessidade de cobertura antibiótica tópica, quando indicado.',
-    reassessment: 'Reavaliar em curto prazo; monitorar PIO e sinais de úlcera/infeção.',
+    reassessment: 'Reavaliar em curto prazo; monitorar PIO e sinais de úlcera/infecção.',
     prescriptionExample: 'Tobradex: instilar 1 gota no olho afetado 3-4 vezes ao dia, reduzindo após controle, apenas com fluoresceína negativa.',
     safetyAlert: 'Corticoide tópico é contraindicado em úlcera de córnea ou suspeita. Produto humano extra-label.',
     productPageUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/Tobradex.pdf',

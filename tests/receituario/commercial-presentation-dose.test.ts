@@ -1,9 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { itraconazolePrednisoloneCommercialProductsSeed } from '../../modules/consulta-vet/data/itraconazolePrednisoloneCommercialProducts.seed';
+import { commercialOticProductsSeed } from '../../modules/consulta-vet/data/commercialOticProducts.seed';
 import { buildClinicalMedicationPrescriptionBlock, buildDefaultClinicalMedicationOverride } from '../../modules/consulta-vet/utils/clinicalMedicationCatalogBridge';
 import {
+  buildReceituarioCommercialSelectOptions,
   calculateCommercialPracticalDose,
+  evaluateCompoundingRecommendation,
   formatCommercialAdministrationAmount,
   formatCommercialProductOptionLabel,
   parseCommercialPotencies,
@@ -11,6 +14,8 @@ import {
 import { RECEITUARIO_INFECTOLOGIA_MODELS } from '../../modules/consulta-vet/data/receituarioInfectologiaModels';
 
 const eurofarma = itraconazolePrednisoloneCommercialProductsSeed.find((item) => item.id === 'itraconazol-eurofarma-100mg')!;
+const decrise = commercialOticProductsSeed.find((item) => item.id === 'decrise-avert')!;
+const gabapentina = commercialOticProductsSeed.find((item) => item.id === 'gabapentina-humana-manipulada')!;
 const maxicam = {
   id: 'maxicam-ourofino',
   name: 'Maxicam',
@@ -52,11 +57,26 @@ test('receita de esporotricose felina prescreve cápsulas com apresentação com
   const override = {
     ...buildDefaultClinicalMedicationOverride(itraconazole, 'Gato'),
     commercialProductId: 'itraconazol-eurofarma-100mg',
+    commercialPotencyMg: 100,
   };
-  const block = buildClinicalMedicationPrescriptionBlock(itraconazole, override, 6, 'Gato', 1);
+  const block = buildClinicalMedicationPrescriptionBlock(itraconazole, override, 10, 'Gato', 1);
   assert.match(block || '', /Administrar 1 cápsula/i);
-  assert.doesNotMatch(block || '', /Administrar 60 mg/i);
+  assert.doesNotMatch(block || '', /Administrar 100 mg/i);
   assert.match(block || '', /Dose clínica: 1 cápsula \(10 mg\/kg\)/i);
+});
+
+test('itraconazol informa concentração por cápsula e forma farmacêutica no cabeçalho', () => {
+  const model = RECEITUARIO_INFECTOLOGIA_MODELS.find((item) => item.id === 'seed-infectologia-esporotricose-gatos')!.structured_defaults!.clinical_model!;
+  const itraconazole = model.options.find((item) => item.key === 'initial')!.medications![0];
+  const override = {
+    ...buildDefaultClinicalMedicationOverride(itraconazole, 'Gato'),
+    commercialProductId: 'itl-cepav',
+    commercialPotencyMg: 25,
+    selectedDoseValue: 5,
+  };
+  const block = buildClinicalMedicationPrescriptionBlock(itraconazole, override, 5, 'Gato', 1);
+  assert.match(block || '', /^1\. ITRACONAZOL — ITL — 25 mg\/cápsula — Cápsulas/m);
+  assert.doesNotMatch(block || '', /durante Até|\.\./);
 });
 
 test('solução oral comercial é convertida para mL', () => {
@@ -76,4 +96,38 @@ test('ignora linhas de embalagem sem concentração ao interpretar apresentaçã
   const potencies = parseCommercialPotencies(eurofarma);
   assert.deepEqual(potencies.map((item) => item.mgPerUnit), [100]);
   assert.equal(formatCommercialProductOptionLabel(eurofarma), 'Itraconazol Eurofarma 100 mg — 100 mg/cápsula — Caixa com 4 cápsulas · Caixa com 15 cápsulas');
+});
+
+test('receituário separa apresentações com múltiplas concentrações', () => {
+  const options = buildReceituarioCommercialSelectOptions([decrise, gabapentina]);
+  assert.ok(options.some((item) => item.productId === 'decrise-avert' && item.potencyMg === 50));
+  assert.ok(options.some((item) => item.productId === 'decrise-avert' && item.potencyMg === 100));
+  assert.ok(options.some((item) => item.productId === 'decrise-avert' && item.potencyMg === 200));
+  assert.ok(options.some((item) => item.productId === 'gabapentina-humana-manipulada' && item.potencyMg === 300));
+  assert.ok(options.some((item) => item.productId === 'gabapentina-humana-manipulada' && item.potencyMg === 400));
+});
+
+test('gabapentina 6 kg a 10 mg/kg com potência 50 mg indica manipulação por fração impraticável', () => {
+  const practical50 = calculateCommercialPracticalDose(decrise, 60, 50);
+  assert.ok(practical50);
+  assert.equal(practical50!.mgPerUnit, 50);
+  assert.match(practical50!.displayAmount, /1,25/i);
+  const recommendation = evaluateCompoundingRecommendation(practical50, 60);
+  assert.ok(recommendation?.recommended);
+});
+
+test('receita com manipulação gera texto pronto baseado na dose', () => {
+  const model = RECEITUARIO_INFECTOLOGIA_MODELS.find((item) => item.id === 'seed-infectologia-esporotricose-gatos')!.structured_defaults!.clinical_model!;
+  const itraconazole = model.options.find((item) => item.key === 'initial')!.medications![0];
+  const override = {
+    ...buildDefaultClinicalMedicationOverride(itraconazole, 'Gato'),
+    commercialProductId: 'itraconazol-eurofarma-100mg',
+    commercialPotencyMg: 100,
+    selectedDoseValue: 10,
+    useCompounding: true,
+  };
+  const block = buildClinicalMedicationPrescriptionBlock(itraconazole, override, 6, 'Gato', 1);
+  assert.match(block || '', /MANIPULADO/i);
+  assert.match(block || '', /60 mg de itraconazol/i);
+  assert.match(block || '', /Administrar 1 cápsula/i);
 });

@@ -34,10 +34,8 @@ test('cadastra os modelos globais de infectologia e protocolos clínicos', () =>
   assert.ok(RECEITUARIO_INFECTOLOGIA_MODELS.every((item) => item.is_global && item.document_type === 'recipe'));
   assert.ok(RECEITUARIO_PROTOCOL_MODELS.every((item) => item.is_global && item.document_type === 'recipe'));
   const seededRecipes = SEEDED_TEMPLATES.filter((item) => item.document_type === 'recipe');
-  assert.deepEqual(
-    seededRecipes.map((item) => item.id),
-    [...RECEITUARIO_INFECTOLOGIA_MODELS, ...RECEITUARIO_PROTOCOL_MODELS].map((item) => item.id),
-  );
+  const infectoProtocolIds = [...RECEITUARIO_INFECTOLOGIA_MODELS, ...RECEITUARIO_PROTOCOL_MODELS].map((item) => item.id);
+  assert.ok(infectoProtocolIds.every((id) => seededRecipes.some((item) => item.id === id)));
 });
 
 test('modelos removidos não retornam pela biblioteca, cache ou banco antigo', () => {

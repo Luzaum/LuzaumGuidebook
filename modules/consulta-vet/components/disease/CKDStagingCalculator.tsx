@@ -67,11 +67,11 @@ function getIrisStage(species: Species, creatinineMgDl: number, sdma: number): S
 function getProteinuriaSubstage(species: Species, upc: number, activeSediment: boolean) {
   if (activeSediment) {
     return {
-      label: 'UPC não interpretável',
-      warning: 'UPC pode estar falsamente aumentada por inflamação/hematúria. Trate ou interprete o sedimento e repita UPC.',
+      label: 'RPCU não interpretável',
+      warning: 'RPCU pode estar falsamente aumentada por inflamação/hematúria. Trate ou interprete o sedimento e repita a RPCU.',
     };
   }
-  if (!Number.isFinite(upc) || upc < 0) return { label: 'UPC não informada' };
+  if (!Number.isFinite(upc) || upc < 0) return { label: 'RPCU não informada' };
   if (upc < 0.2) return { label: 'não proteinúrico' };
   if (species === 'cat') return { label: upc <= 0.4 ? 'borderline' : 'proteinúrico' };
   return { label: upc <= 0.5 ? 'borderline' : 'proteinúrico' };
@@ -101,7 +101,7 @@ function recommendations(stage: number, species: Species) {
     'Confirmar estabilidade, hidratação e ausência de causa pré ou pós-renal antes de concluir estadiamento definitivo.',
     `Alvo de fósforo: ${phosphorusTarget}; usar dieta renal e quelante se persistir acima do alvo.`,
     'Subestadiar e tratar proteinúria persistente e hipertensão conforme risco.',
-    'Monitorar peso, escore muscular, apetite, vômitos, creatinina/SDMA, ureia, fósforo, potássio, cálcio, UPC, urinálise e PA.',
+    'Monitorar peso, escore muscular, apetite, vômitos, creatinina/SDMA, ureia, fósforo, potássio, cálcio, RPCU, urinálise e PA.',
   ];
   if (species === 'dog' && stage === 2) base.push('Cão IRIS 2: concluir estadiamento/subestadiamento e considerar antiácido, antiemético/antináusea e quelante de fósforo quando houver sinal gastrointestinal ou fósforo acima do alvo.');
   if (species === 'cat') base.push('Em gatos, valorize hipocalemia, sarcopenia, aceitação da dieta e hidratação domiciliar quando indicada.');
@@ -154,10 +154,10 @@ export function CKDStagingCalculator() {
     uremic ? 'sinais urêmicos presentes' : null,
     proteinuria.label.includes('proteinúrico') ? 'proteinúria persistente a confirmar/tratar' : null,
     sbpValue >= 160 || tod ? 'hipertensão/risco de órgão-alvo' : null,
-    activeSediment ? 'sedimento ativo invalida UPC' : null,
+    activeSediment ? 'sedimento ativo invalida RPCU' : null,
   ].filter(Boolean) as string[];
 
-  const copyText = `DRC IRIS estágio ${canStage ? iris.stage : 'não definitivo'}, subestágio proteinúria: ${proteinuria.label}, subestágio PA: ${bp.label}. Recomenda-se avaliar dieta renal, fósforo, potássio, hidratação, pressão arterial, UPC, urocultura, sinais gastrointestinais, anemia e acidose conforme estágio. Reavaliar conforme gravidade e após introdução de terapias.`;
+  const copyText = `DRC IRIS estágio ${canStage ? iris.stage : 'não definitivo'}, subestágio proteinúria: ${proteinuria.label}, subestágio PA: ${bp.label}. Recomenda-se avaliar dieta renal, fósforo, potássio, hidratação, pressão arterial, RPCU, urocultura, sinais gastrointestinais, anemia e acidose conforme estágio. Reavaliar conforme gravidade e após introdução de terapias.`;
 
   async function copySummary() {
     try {
@@ -212,7 +212,7 @@ export function CKDStagingCalculator() {
           <Field label="SDMA (ug/dL)">
             <input className={inputClass()} value={sdma} onChange={(e) => setSdma(e.target.value)} inputMode="decimal" />
           </Field>
-          <Field label="UPC">
+          <Field label="RPCU">
             <input className={inputClass()} value={upc} onChange={(e) => setUpc(e.target.value)} inputMode="decimal" />
           </Field>
           <Field label="PAS (mmHg)">
@@ -263,7 +263,7 @@ export function CKDStagingCalculator() {
             <div className="mt-4 grid gap-2 text-sm leading-6 sm:grid-cols-2">
               <p>Creatinina: {creatinineMgDl.toFixed(2)} mg/dL (estágio {iris.byCreatinine})</p>
               <p>SDMA: {iris.bySdma ? `estágio ${iris.bySdma}` : 'não informado'}</p>
-              <p>UPC: {proteinuria.label}</p>
+              <p>RPCU: {proteinuria.label}</p>
               <p>PA: {bp.label}</p>
             </div>
           </div>

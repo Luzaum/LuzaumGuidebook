@@ -171,7 +171,7 @@ export function IrisCkdStagingTables() {
               2. Subestadiamento por proteinúria
             </h4>
             <p className="mt-1 text-sm text-muted-foreground">
-              Relação proteína/creatinina urinária (UPC).
+              Relação proteína/creatinina urinária (RPCU).
             </p>
           </div>
           <div className="overflow-hidden rounded-xl border border-border bg-background/70">

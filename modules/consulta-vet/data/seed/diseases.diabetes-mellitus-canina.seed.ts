@@ -1,363 +1,465 @@
-import { DiseaseRecord } from '../../types/disease';
+import type { DiseaseRecord } from '../../types/disease';
+import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
-/** Diabetes mellitus canina - ficha editorial para ConsultaVET. */
+/**
+ * Diabetes Mellitus Canino — Ficha clínica estruturada ConsultaVET.
+ * Fontes: Aula Magna 2026 > AAHA 2018/2022 > Tardo et al. 2024 (Toujeo U300) > Mott et al. 2025 (Degludeca) > Nelson & Couto 6ª ed. > Beam et al. 1999 (Catarata).
+ */
 export const diabetesMellitusCaninaRecord: DiseaseRecord = {
   id: 'disease-diabetes-mellitus-canina',
   slug: 'diabetes-mellitus-canina',
-  title: 'Diabetes Mellitus em Cães',
-  synonyms: ['Diabetes canina', 'DM canina', 'Diabetes mellitus canina', 'Canine diabetes mellitus'],
+  title: 'Diabetes Mellitus Canino',
+  synonyms: [
+    'Diabetes canino',
+    'DM canina',
+    'Diabetes mellitus em cães',
+    'Diabetes Mellitus Canino',
+    'Canine diabetes mellitus',
+  ],
   species: ['dog'],
   category: 'endocrinologia',
   tags: [
+    'Diabetes',
     'Insulina',
-    'PU/PD',
-    'Hiperglicemia',
-    'Glicosuria',
+    'Caninsulin',
+    'NPH',
+    'Toujeo',
+    'Degludeca',
     'Catarata',
-    'Cetoacidose',
-    'Pancreatite',
-    'HAC',
-    'Hipotireoidismo',
-    'Diestrus',
+    'Diestro',
+    'OVH',
+    'PU/PD',
+    'Glicosuria',
+    'AAHA',
   ],
+  plainLanguage: DISEASE_PLAIN_LANGUAGE['diabetes-mellitus-canina'],
   quickSummary:
-    'Diabetes mellitus canina é uma síndrome endócrino-metabólica causada por deficiência absoluta ou relativa de ação da insulina. A consequência é hiperglicemia persistente; quando a glicose ultrapassa o limiar renal, surge glicosúria com diurese osmótica, poliúria, polidipsia, desidratação e perda calórica urinária. O cão típico apresenta poliúria/polidipsia, polifagia, perda de peso, fraqueza e catarata bilateral de instalação rápida. Diferentemente do gato, a maioria dos cães apresenta perda funcional importante de células beta e precisa de insulinoterapia por toda a vida, exceto quando há diabetes secundária reversível reconhecida muito cedo. O manejo clínico combina confirmação diagnóstica, insulinoterapia segura, dieta e exercício consistentes, controle de comorbidades e monitoramento para evitar hipoglicemia, cetoacidose diabética e complicações infecciosas.',
+    'O diabetes mellitus canino é uma endocrinopatia predominantemente insulinodeficiente, caracterizada por hiperglicemia persistente, glicosúria e sinais clínicos como poliúria, polidipsia, polifagia e perda de peso. A deficiência de insulina impede utilização adequada da glicose e favorece gliconeogênese, proteólise e lipólise, produzindo simultaneamente hiperglicemia e estado catabólico. O diagnóstico é sustentado pela associação entre sinais clínicos, hiperglicemia persistente e glicosúria. Diferentemente do gato, o cão com diabetes clínica praticamente sempre necessita insulinoterapia permanente e a remissão espontânea é rara, com exceção de alguns casos relacionados ao diestro quando a ovariohisterectomia é realizada precocemente. A insulina lente suína permanece uma escolha inicial prática, geralmente iniciada de forma conservadora em 0,25 U/kg SC q12h. Monitoramento deve priorizar controle dos sinais, peso corporal e prevenção de hipoglicemia, utilizando curvas domiciliares ou monitor contínuo de glicose quando indicado. Catarata é uma complicação extremamente frequente e pode desenvolver-se rapidamente. Doses superiores a 1,5 U/kg por aplicação com controle inadequado caracterizam resistência insulínica operacional e exigem investigação de técnica, hiperadrenocorticismo, diestro, pancreatite, infecção, obesidade e outras causas (1,4–9,15,16).',
   quickDecisionStrip: [
-    'Diagnóstico: sinais compatíveis + hiperglicemia persistente + glicosúria; fructosamina ajuda quando há dúvida.',
-    'Meta clínica: resolver poliúria/polidipsia, estabilizar peso e energia, sem hipoglicemia.',
-    'Meta glicêmica prática: nadir geralmente em torno de 80–150 mg/dL e maior parte do dia abaixo do limiar renal, evitando quedas rápidas.',
-    'Primeira linha em cão estável: insulina lente porcina ou NPH, geralmente 0,25–0,5 U/kg SC a cada 12 h, com duas refeições iguais.',
-    'Cetonas, vômitos, anorexia, desidratação ou depressão = investigar cetoacidose diabética e considerar internação.',
+    'Tríade Diagnóstica: Sinais clínicos (PU/PD, perda de peso, polifagia) + Hiperglicemia persistente + Glicosúria (1,4,5).',
+    'Insulinoterapia Vitalícia: O cão com DM clínica apresenta perda β-celular e praticamente sempre requer insulina exógena contínua (1,4,5).',
+    'Insulina Inicial Preferida: Insulina lente suína 0,25 UI/kg SC q12h pelo PCI — ECC 5 = peso atual; ECC 6–9 = peso ÷ 1,10 a 1,40 (Behrend et al., 2018).',
+    'Cadelas Inteiras em Diestro: OVARIOHISTERECTOMIA imediata é parte do tratamento para interromper progesterona e GH mamário (1,4,5).',
+    'Monitorar Catarata: 50% dos cães desenvolvem catarata até 170 dias e 80% até 470 dias pós-diagnóstico; atenção a uveíte lente-induzida (15).',
+    'Toujeo U300 em Cães: Iniciar em 0,5 U/kg SC q24h; usar a caneta própria e NUNCA aspirar de caneta U300 com seringa U100 (8).',
+    'Degludeca U100 em Cães: Alternativa basal com mediana inicial de 0,6 U/kg q24h em estudo prospectivo (9).',
+    'Resistência Insulínica Definição AAHA: Resposta inadequada a doses >1,5 U/kg por aplicação (4).',
+    'Anorexia no Diabético: Emergência clínica! Investigar pancreatite, DKA, pielonefrite, piometra e uremia imediatamente (1,14,16).',
+    'Peso Ideal p/ Insulina: ECC 5 = peso atual; ECC 6–9 → PCI = peso ÷ 1,10 a 1,40; dose = PCI × UI/kg (Behrend et al., 2018).',
   ],
   quickSummaryRich: {
     lead:
-      'Diabetes mellitus canina é uma doença de deficiência de ação insulinica que leva a hiperglicemia persistente, glicosuria, perda de água e calorias pela urina e catabolismo. O fenótipo canino clássico é insulinodependente, crônico e com risco alto de catarata diabética; o sucesso do tratamento é medido por controle de sinais clínicos e segurança, não por “normalizar” todos os valores de glicose.',
-    leadHighlights: ['hiperglicemia persistente', 'glicosuria', 'insulinodependente', 'catarata diabética'],
+      'O diabetes mellitus canino é uma doença predominantemente insulinodeficiente caracterizada por hiperglicemia persistente, glicosúria, estado catabólico grave e alto risco de catarata precoce. A insulinoterapia exógena continuada e a consistência alimentar constituem os pilares da conduta, devendo cadelas inteiras ser submetidas à ovariohisterectomia precocemente.',
+    leadHighlights: ['insulinodeficiente', 'catabólico', 'catarata precoce', 'ovariohisterectomia'],
     pillars: [
       {
-        title: 'Definição clínica',
-        body: 'Hiperglicemia sustentada por deficiência de insulina, com glicosúria e sinais de diurese osmótica. A maioria dos cães exige insulina por toda a vida.',
-        highlights: ['Hiperglicemia', 'glicosúria', 'insulina'],
+        title: 'Fisiopatologia & Catabolismo',
+        body: 'A ausência de insulina impede a utilização tecidual de glicose e desinibe a gliconeogênese, lipólise e proteólise, gerando emagrecimento grave apesar da polifagia.',
+        highlights: ['desinibe gliconeogênese', 'emagrecimento', 'polifagia'],
       },
       {
-        title: 'Alvos úteis',
-        body: 'Melhora de PU/PD, ganho ou estabilização de peso, apetite controlado, ausência de cetonas e ausência de hipoglicemia. Em curvas, buscar nadir seguro e duração adequada da insulina.',
-        highlights: ['PU/PD', 'cetonas', 'hipoglicemia'],
+        title: 'Conduta Terapêutica Inicial',
+        body: 'Insulina lente suína (Caninsulin®) 0,25 UI/kg SC q12h pelo peso corporal ideal (PCI), não pelo peso atual se obeso. Duas refeições idênticas; titular a cada 7–14 dias.',
+        highlights: ['peso corporal ideal', '0,25 UI/kg q12h', 'duas refeições'],
       },
       {
-        title: 'Complicações principais',
-        body: 'Catarata, infecção urinária, pancreatite, cetoacidose diabética, hipoglicemia iatrogênica e resistência insulinica por HAC, hipotireoidismo, diestrus, obesidade ou infecção.',
-        highlights: ['Catarata', 'cetoacidose', 'resistência insulinica'],
+        title: 'Prevenção & Diestro',
+        body: 'Progesterona estimula GH mamário que induz intensa resistência insulínica. A OVH precoce interrompe o antagonismo hormonal e previne lesão β irreversível.',
+        highlights: ['Progesterona', 'GH mamário', 'OVH precoce'],
       },
     ],
     diagnosticFlow: {
-      title: 'Plano diagnóstico',
+      title: 'Fluxograma diagnóstico',
       steps: [
         {
-          label: 'Reconhecer síndrome diabética',
-          timing: 'Primeira consulta',
+          label: 'Suspeita clínica',
+          timing: 'Consulta inicial',
           detail:
-            'PU/PD, polifagia, perda de peso, catarata, fraqueza, infecção urinária recorrente, histórico de glicocorticoide/progestágeno ou cadela em diestrus (AAHA, 2018; Merck, 2024).',
+            'Poliúria, polidipsia, polifagia com perda de peso; hepatomegalia e hiperlipidemia frequentes. Anorexia/vômitos = complicação aguda (Behrend et al., 2018; Nelson & Couto, 2020).',
         },
         {
-          label: 'Confirmar hiperglicemia persistente',
+          label: 'Glicemia + urinálise',
+          timing: 'Primeiro exame',
           detail:
-            'Glicemia elevada em mais de uma ocasião ou claramente persistente no contexto clínico; associar urinálise com glicosúria. Fructosamina documenta média glicêmica recente (AAHA, 2018).',
+            'Hiperglicemia persistente + glicosúria sustentada formam a tríade. Glicemia isolada (estresse) ou glicosúria isolada não confirmam DM (Behrend et al., 2018).',
+          reassess: 'Frutosamina se dúvida sobre persistência da hiperglicemia.',
         },
         {
-          label: 'Estadiar gravidade',
-          timing: 'Antes de rotular ambulatorial',
+          label: 'Banco inicial',
+          timing: 'Confirmação',
           detail:
-            'Pesquisar cetonúria/cetonemia, desidratação, acidose, hipocalemia/hipofosfatemia, azotemia, pancreatite, infecção e capacidade de alimentação (AAHA, 2018; Merck, 2024).',
+            'Hemograma, bioquímica, eletrólitos, urinálise por cistocentese, ceto-fita; urocultura se sedimento alterado ou refratariedade (Behrend et al., 2018; Nelson & Couto, 2020).',
         },
         {
-          label: 'Procurar causa de resistência',
+          label: 'Classificar compensação',
+          timing: 'Antes de iniciar insulina',
           detail:
-            'HAC, hipotireoidismo, diestrus, gestação, piometra, pancreatite, infecção urinária, doença dental, obesidade e fármacos diabetogênicos (AAHA, 2018; Merck, 2024).',
+            'DM compensado vs DKA/HHS. DKA/HHS exigem estabilização hospitalar antes de esquema ambulatorial (Textbook of Small Animal Emergency Medicine, 2020).',
         },
         {
-          label: 'Planejar monitoramento',
+          label: 'Iniciar insulinoterapia + dieta',
+          timing: 'DM não complicado',
           detail:
-            'Curva domiciliar, CGM ou curva hospitalar com cautela; correlacionar nadir, duração, sinais clínicos, peso, água ingerida e eventos de hipoglicemia (AAHA, 2018).',
+            'Insulina lente suína 0,25 U/kg SC q12h (peso ideal) + duas refeições idênticas; OVH se cadela inteira (Behrend et al., 2018).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Plano de tratamento',
+      title: 'Fluxograma terapêutico',
       steps: [
         {
-          label: 'Paciente estável',
-          dose: 'NPH ou lente porcina 0,25–0,5 U/kg SC q12h',
-          duration: 'Retorno em 7–14 dias para ajuste',
-          reassess: 'Curva/CGM, nadir, sinais clínicos e peso',
-          detail:
-            'Dieta consistente e exercício previsível; refeições antes ou junto da insulina (AAHA, 2018; Merck, 2024).',
+          label: 'Insulina lente suína — início',
+          detail: 'Caninsulin®/Vetsulin® U40: 0,25 U/kg SC q12h pelo peso ideal; agitar vigorosamente; seringa U40 (Behrend et al., 2018; Plumb\'s, 10ª ed.).',
+          dose: '0,25 U/kg q12h SC (máx. inicial usual 0,25–0,5 U/kg).',
+          duration: 'Vitalícia na maioria dos casos.',
+          reassess: 'Titular a cada 7–14 dias conforme clínica e curva/monitor contínuo de glicose.',
         },
         {
-          label: 'Paciente cetótico ou doente',
-          detail:
-            'Internar se houver anorexia, vômito, desidratação, depressão, acidose ou distúrbio eletrolítico; priorizar fluido, eletrólitos e insulina regular/lispro conforme protocolo (AAHA, 2018).',
+          label: 'Alimentação consistente',
+          detail: 'Duas refeições iguais casadas com insulina q12h; fibra pode suavizar picos, mas horário e porção são prioritários (Behrend et al., 2018).',
         },
         {
-          label: 'Ajuste de dose',
-          detail:
-            'Ajustar com base em sinais clínicos, peso, nadir e duração. Evitar aumentos por um valor isolado alto — incrementos conservadores 10–25% (AAHA, 2018).',
+          label: 'OVH em cadela inteira',
+          detail: 'Após estabilização inicial; reduzir insulina no pós-operatório — risco de hipoglicemia rápida (Behrend et al., 2018).',
+          reassess: 'Monitorar glicemia domiciliar nas 48–72 h pós-OVH.',
         },
         {
-          label: 'Caso não regulado',
-          detail:
-            'Auditar seringa, concentração, armazenamento, técnica, refeições, petiscos, exercício e comorbidades antes de trocar a insulina (AAHA, 2018; Merck, 2024).',
+          label: 'Monitoramento clínico + glicêmico',
+          detail: 'Resolver PU/PD e perda de peso; curva domiciliar ou monitor contínuo de glicose; valor mínimo glicêmico alvo 80–150 mg/dL; frutosamina q1–3 meses (Behrend et al., 2018).',
+          reassess: 'Valor mínimo glicêmico OK + hiperglicemia pré-dose = duração curta → trocar insulina, NÃO aumentar dose.',
         },
         {
-          label: 'Seguimento crônico',
-          detail:
-            'Revisões periódicas com peso, exame físico, urinálise/cultura se indicado, fructosamina ou curva/CGM, pressão arterial e rastreio de complicações (AAHA, 2018).',
+          label: 'Resistência >1,5 U/kg/dose',
+          detail: 'Investigar técnica, efeito rebote de Somogyi, HAC, diestro, pancreatite, ITU, obesidade, esteroides (Behrend et al., 2018; Nelson & Couto, 2020).',
+          duration: 'Sequencial — ver fluxograma de resistência na seção Tratamento.',
         },
       ],
     },
   },
   etiology: {
-    mecanismos:
-      'A DM canina geralmente decorre de perda ou falência importante das células beta pancreáticas, levando a deficiência absoluta de insulina. Pancreatite crônica recidivante, destruição imunomediada suspeita, degeneração de ilhotas e fatores genéticos são mecanismos descritos. Diabetes secundária pode ocorrer quando resistência insulinica intensa supera a reserva beta.',
-    fatoresPredisponentes: [
-      'Pancreatite aguda ou crônica: pode destruir tecido endócrino e precipitar cetoacidose.',
-      'Hiperadrenocorticismo: cortisol antagoniza insulina e é causa clássica de diabetes difícil.',
-      'Diestrus, gestação e progestágenos: progesterona induz hormônio do crescimento mamário em cadelas, aumentando resistência insulinica.',
-      'Glicocorticoides sistêmicos, tópicos extensos ou de depósito podem precipitar diabetes em cães predispostos.',
-      'Hipotireoidismo, obesidade, infecção urinária, doença periodontal e inflamação crônica aumentam resistência insulinica.',
-      'Predisposição racial descrita em populações inclui Poodle, Schnauzer, Samoieda, Terrier, Beagle, Bichon Frise, Yorkshire Terrier e West Highland White Terrier, mas qualquer raça pode ser acometida.',
-    ],
+    definicao:
+      'Diabetes mellitus (DM) é uma síndrome metabólica decorrente de insuficiência absoluta ou relativa da ação da insulina. Essa insuficiência pode resultar de redução da secreção de insulina pelas células β pancreáticas, resistência dos tecidos-alvo à insulina ou combinação de ambos os mecanismos (1,4,5). O resultado é hiperglicemia e estado catabólico profundo (1,5).',
+    mecanismosDestruicaoBeta:
+      'A perda de células β no cão envolve destruição imunomediada, degeneração e vacuolização das células β, pancreatite crônica destrutiva, predisposição genética e insulatos desconhecidos (1,5). Nem todo cão apresenta autoimunidade comprovada (1,5).',
+    resistênciaInsulínicaAgregada:
+      'Principais fatores indutores de resistência insulínica em cães: hiperadrenocorticismo (HAC), obesidade, diestro, progesterona, hormônio do crescimento (GH), glicocorticoides, progestágenos, infecções bacterianas, doença periodontal, pancreatite e inflamação sistêmica (1,4,5).',
+    diestroMecanismo:
+      'Na cadela inteira: progesterona de origem luteal estimula a secreção mamária de GH → o GH antagoniza a ação da insulina no receptor → resistência insulínica intensa → hiperglicemia → glicotoxicidade sobre as células β → DM clínica (1,4,5).',
   },
   epidemiology: {
-    perfil:
-      'Afeta principalmente cães adultos a idosos. Fêmeas inteiras têm risco particular por diestrus/progesterona. A doença é frequentemente diagnosticada em consulta por PU/PD ou no atendimento de urgência por cetoacidose.',
-    comparacaoComGatos:
-      'No gato, a resistência insulinica e a toxicidade glicêmica podem ser revertidas com remissão. No cão, a recuperação beta sustentada é incomum; a expectativa clínica deve ser tratamento crônico com insulina.',
+    prevalencia:
+      'Endocrinopatia comum em cães de meia-idade a idosos (>7 anos). Algumas populações demonstram maior incidência em fêmeas, principalmente fêmeas inteiras em fase de diestro (5,16). Predisposições raciais variam geograficamente.',
   },
   pathogenesisTransmission: {
-    patogenese: [
-      'Insulina insuficiente reduz captação periférica de glicose e aumenta gliconeogênese/glicogenólise hepática.',
-      'Hiperglicemia sustentada ultrapassa o limiar renal e causa glicosúria.',
-      'Glicosúria gera diurese osmótica, perda de água e eletrólitos, poliúria e polidipsia.',
-      'Perda de glicose pela urina e catabolismo proteico/lipídico causam perda de peso e fraqueza.',
-      'Lipólise sem freio insulinico aumenta produção de corpos cetônicos; desidratação e doença intercurrente favorecem cetoacidose.',
-      'No cristalino, glicose em excesso vira sorbitol, provocando edema osmótico e catarata diabética.',
+    cascata: [
+      'Deficiência severa da secreção ou ação da insulina nas células-alvo (1,5).',
+      'Diminuição da captação e utilização periférica da glicose em músculo e tecido adiposo (1,5).',
+      'Desinibição da glicogenólise e gliconeogênese hepática a partir de aminoácidos, lactato e glicerol (1,5).',
+      'Instalação de hiperglicemia plasmática persistente (1,5).',
+      'Ultrapassagem do limiar renal de glicose no cão (~180–200 mg/dL) gerando glicosúria (1,6).',
+      'Diurese osmótica no túbulo renal → retenção de água no filtrado → poliúria descompensada (1,6).',
+      'Déficit hídrico e hiperosmolaridade plasmática → estímulo ao centro da sede → polidipsia compensatória (1,6).',
+      'Déficit energético celular + proteólise e lipólise desinibidas → polifagia com perda ponderal e sarcopenia (1,5).',
     ],
     transmissao:
-      'Não é doença contagiosa nem zoonose. O risco é metabólico, endócrino, inflamatório, medicamentoso e genético.',
+      'Doença endógena metabólica e endócrina. Não contagiosa.',
   },
   pathophysiology:
-    'A falta de insulina impede o uso adequado da glicose e favorece hiperglicemia persistente. Quando a glicose passa do limiar renal, o rim elimina glicose e água, levando a PU/PD, desidratação e perda de eletrólitos. Como o animal perde calorias na urina e não consegue usar glicose adequadamente, ocorre polifagia com emagrecimento. A lipólise aumenta ácidos graxos livres e cetogênese; se houver acidose, desidratação e distúrbios eletrolíticos, instala-se cetoacidose diabética. A catarata canina é particularmente importante e pode surgir rapidamente por acúmulo de sorbitol no cristalino.',
+    'A insulina é o principal hormônio anabólico. Sua escassez promove a tríade de hiperglicemia (menor utilização periférica + maior produção hepática de glicose), diurese osmótica renal quando o limiar de ~180–200 mg/dL é superado e catabolismo acentuado. A lipólise acelerada libera ácidos graxos livres que são oxidados no fígado a acetil-CoA, gerando corpos cetônicos (β-hidroxibutirato, acetoacetato e acetona) (Nelson & Couto, 2020; Textbook of Small Animal Emergency Medicine, 2020). Na cadela em diestro, o GH de origem mamário induzido pela progesterona promove bloqueio intenso do receptor de insulina. A cirurgia de OVARIOHISTERECTOMIA é tratamento indicado pela AAHA (Behrend et al., 2018); a remoção cirúrgica da fonte progestágena pode reduzir a necessidade de insulina bruscamente, exigindo monitoramento rigoroso pós-operatório para evitar hipoglicemia (Behrend et al., 2018). No olho do cão, a hiperglicemia constante satura a hexocinase lenticular; a aldose redutase converte glicose em sorbitol, que se acumula no cristalino, atrai água osmoticamente e degrada as fibras lentiulares, gerando catarata intumescente em 50% dos cães até 170 dias e em 80% até 470 dias (Beam et al., 1999).',
   clinicalSignsPathophysiology: [
     {
-      system: 'metabolic',
+      system: 'metabolico',
       findings: [
         {
-          finding: 'Poliúria, polidipsia e polifagia com perda de peso',
+          finding: 'Os 4 Ps: Poliúria, Polidipsia, Polifagia e Perda de Peso',
           mechanism:
-            'Glicosúria causa diurese osmótica; calorias urinárias e catabolismo superam ingestão aparente.',
-          clinicalMeaning: 'Tríade clássica da DM canina; catarata pode ser queixa inicial isolada.',
+            'Diurese osmótica por glicosúria (>180-200 mg/dL) gerando PU/PD; déficit energético celular com proteólise/lipólise gerando PP e emagrecimento (1,5,6).',
+          clinicalMeaning: 'Apresentação clássica do diabetes não complicado no cão (1,4,5).',
           priority: 'common',
         },
-      ],
-    },
-    {
-      system: 'ocular',
-      findings: [
         {
-          finding: 'Catarata bilateral de instalação rápida',
+          finding: 'Catarata diabética bilateral e Uveíte Lente-Induzida',
           mechanism:
-            'Excesso de glicose no cristalino converte-se em sorbitol por aldose redutase, causando edema osmótico.',
-          clinicalMeaning: 'Pode preceder diagnóstico metabólico; avaliar uveíte facolítica secundária.',
+            'Via do sorbitol estimulada pela aldose redutase no cristalino → edema hiperosmótico das fibras lenticulares (5,15).',
+          clinicalMeaning: 'Ocorre em 50% dos cães até 170 dias e 80% até 470 dias pós-diagnóstico (15). Encaminhar ao oftalmologista.',
           priority: 'common',
         },
-      ],
-    },
-    {
-      system: 'urinary',
-      findings: [
         {
-          finding: 'Infecção urinária recorrente ou controle glicêmico instável',
+          finding: 'Hepatomegalia e Hiperlipidemia',
           mechanism:
-            'Glicosúria favorece proliferação bacteriana; infecções aumentam resistência insulínica.',
-          clinicalMeaning: 'Cultura indicada em sintomáticos, controle ruim ou sedimento sugestivo.',
-          priority: 'systemic',
+            'Mobilização massiva de ácidos graxos periféricos com acúmulo de triglicerídeos no parênquima hepático (1,5).',
+          clinicalMeaning: 'Frequente ao exame físico e ultrassonográfico (1,5).',
+          priority: 'common',
         },
-      ],
-    },
-    {
-      system: 'critical',
-      findings: [
         {
-          finding: 'Cetoacidose diabética ou hipoglicemia iatrogênica',
+          finding: 'Anorexia, Vômitos e Prostração no Diabético',
           mechanism:
-            'Lipólise sem freio insulínico gera corpos cetônicos; excesso de insulina reduz glicemia cerebral.',
-          clinicalMeaning: 'Emergência — estabilizar antes de ajuste ambulatorial de dose.',
-          priority: 'emergency',
+            'Complicação por Cetoacidose Diabética (DKA), Pancreatite aguda, Pielonefrite ou Estado Hiperglicêmico Hiperosmolar (HHS) (1,14,16).',
+          clinicalMeaning: 'Sinal de alarme imediato. Exige hospitalização e investigação laboratorial (1,14).',
+          priority: 'critical',
         },
       ],
     },
   ],
   diagnosis: {
-    criterios:
-      'Confirmar com sinais clínicos compatíveis, hiperglicemia persistente e glicosúria. Em cães sintomáticos, glicemias repetidamente acima do intervalo de referência associadas a glicosúria sustentam o diagnóstico. Fructosamina elevada reforça hiperglicemia dos últimos dias/semanas e ajuda quando há dúvida.',
-    examesIniciais: [
-      'Glicemia, urinálise completa, cetonas urinárias ou beta-hidroxibutirato quando disponível.',
-      'Hemograma, bioquímica, eletrólitos, albumina/proteínas, colesterol/triglicerídeos.',
-      'Fructosamina como linha de base e suporte diagnóstico.',
-      'Cultura urinária quando há piúria/bacteriúria, sinais urinários, controle ruim ou recorrência.',
-      'cPLI/ultrassom se pancreatite for provável; pressão arterial e UPC se houver DRC/proteinúria/hipertensão.',
-      'Testes para HAC ou hipotireoidismo apenas quando há sinais e dados laboratoriais compatíveis.',
-    ],
-    metasTabela: {
-      kind: 'clinicalTable' as const,
-      headers: ['Parâmetro', 'Meta prática', 'Como usar'],
-      rows: [
-        ['Sinais clínicos', 'PU/PD controladas, apetite menos voraz, peso estável ou subindo se estava magro.', 'É o principal indicador de sucesso junto com segurança.'],
-        ['Glicemia pré-insulina', 'Frequentemente ainda elevada; interpretar com curva e sinais.', 'Não ajustar dose só pelo valor pré-aplicação.'],
-        ['Nadir da curva', 'Aproximadamente 80–150 mg/dL em muitos protocolos; evitar <80 mg/dL.', 'Define segurança e magnitude do ajuste.'],
-        ['Duração da insulina', 'Idealmente cobre a maior parte do intervalo de 12 h.', 'Se duração curta, considerar ajuste ou troca de tipo.'],
-        ['Fructosamina', 'Tendência compatível com melhora clínica, sem buscar normalidade absoluta.', 'Útil para média, mas não detecta hipoglicemia pontual.'],
-        ['Cetonas', 'Negativas em paciente ambulatorial estável.', 'Positivas com sinais sistêmicos indicam urgência.'],
-      ],
-    },
-    diagnosticosDiferenciaisEComorbidades: {
-      kind: 'clinicalTable' as const,
-      headers: ['Condição', 'Por que importa', 'Pista prática'],
-      rows: [
-        ['Hiperadrenocorticismo', 'Causa PU/PD, polifagia e resistência insulinica.', 'Abdômen pendular, FA alta, pele fina, alopecia, controle difícil.'],
-        ['Hipotireoidismo', 'Pode causar dislipidemia e resistência insulinica.', 'Ganho de peso, letargia, dermatopatia, T4L baixo + cTSH alto.'],
-        ['Pancreatite', 'Precipita diabetes e CAD.', 'Vômitos, dor abdominal, anorexia, cPLI/ultrassom compatíveis.'],
-        ['Diestrus/piometra', 'Progesterona e inflamação antagonizam insulina.', 'Fêmea inteira, histórico reprodutivo, secreção, útero alterado.'],
-        ['Infecção urinária', 'Comum por glicosúria e pode ser subclínica.', 'Sedimento, cultura, controle glicêmico instável.'],
-      ],
-    },
-    criteriosInternacao: [
-      'Anorexia, vômitos, desidratação, depressão, dor abdominal ou alteração respiratória.',
-      'Cetonemia/cetonúria moderada a intensa, acidose ou distúrbios de potássio/fósforo.',
-      'Hipoglicemia sintomática, convulsão ou incapacidade de manejo domiciliar seguro.',
-      'Suspeita de pancreatite grave, sepse, piometra, AKI ou HHS.',
-    ],
+    triadeDiagnostica:
+      'Sinais clínicos compatíveis (PU/PD, perda de peso, polifagia) + Hiperglicemia persistente + Glicosúria (1,4,5). Hiperglicemia isolada (estresse, drogas) ou glicosúria isolada (Fanconi, lesão tubular, SGLT2i) não confirmam diabetes isoladamente (5,6).',
+    examesIniciais:
+      'Hemograma completo, bioquímica sérica (glicose, ureia, creatinina, ALT, FA, proteína total, albumina, colesterol, triglicerídeos), eletrólitos, urinálise por cistocentese com ceto-fita/sedimento, cultura urinária quando indicada, pressão arterial e cPLA/ultrassom pancreático conforme o quadro (1,4,5).',
+    frutosamina:
+      'Mede a glicação das proteínas séricas (período prévio de 2 a 3 semanas) (1,4,5). Útil para confirmar hiperglicemia sustentada e monitorar tendências crônicas. NÃO demonstra o valor mínimo glicêmico, duração de ação da insulina nem hipoglicemias curtas (1,4,5). Cães recém-diabéticos podem apresentar frutosamina ainda no limite superior da normalidade (5).',
+    urocultura:
+      'Infecção do trato urinário (ITU) é complicação frequente devido à glicosúria e imunossupressão. Realizar urocultura sob cistocentese em caso de alteração no sedimento, refratariedade ou descompensação sem causa evidente (1,4,5).',
   },
   treatment: {
-    objetivo:
-      'O objetivo é controlar sinais clínicos e prevenir complicações, mantendo margem de segurança contra hipoglicemia. Em cães, o tratamento padrão é insulina + dieta/rotina + manejo de comorbidades.',
-    ambulatorialInicial: [
-      'Insulina: NPH ou lente porcina são escolhas iniciais comuns. Dose inicial usual: 0,25–0,5 U/kg SC a cada 12 h, individualizando risco de hipoglicemia, porte, alimentação e gravidade.',
-      'Alimentação: duas refeições de calorias semelhantes, dadas imediatamente antes ou junto da aplicação quando o cão está comendo bem.',
-      'Dieta: evitar açúcares simples e alimentos semiúmidos; usar dieta com fibra/complexos carboidratos conforme escore corporal, pancreatite, palatabilidade e condição nutricional.',
-      'Exercício: rotina diária previsível; exercício intenso inesperado pode precipitar hipoglicemia.',
-      'Primeiro retorno: geralmente em 7–14 dias, mais cedo se sinais de hipoglicemia, cetonas, vômito ou anorexia.',
-    ],
-    insulinoterapiaTabela: {
+    decisaoInicial:
+      'Todo cão com diabetes mellitus clínico necessita de insulinoterapia exógena por toda a vida (Behrend et al., 2018). O objetivo clínico é eliminar a PU/PD, parar a perda de peso, evitar cetoacidose e evitar hipoglicemia, mantendo uma rotina sustentável para a família — a normoglicemia humana estrita 24h não é a meta prática (Behrend et al., 2018; Nelson & Couto, 2020). Cadelas inteiras devem ser submetidas a OVARIOHISTERECTOMIA (Behrend et al., 2018).',
+    tabelaInsulinas: {
       kind: 'clinicalTable' as const,
-      headers: ['Insulina', 'Uso no cão', 'Pontos críticos'],
+      title: 'Insulinas e doses iniciais — cão',
+      headers: ['Produto', 'Concentração', 'Dose inicial', 'Frequência', 'Observações'],
       rows: [
-        ['Lente porcina', 'Opção veterinária comum de primeira linha; geralmente q12h.', 'Usar seringa correta para a concentração; agitar conforme bula; avaliar nadir/duração.'],
-        ['NPH', 'Alternativa amplamente usada; geralmente q12h.', 'Pode ter duração insuficiente em alguns cães; monitorar curva.'],
-        ['Detemir', 'Opção para controle ruim com NPH/lente.', 'Mais potente; iniciar baixo, por exemplo 0,1 U/kg q12h em muitas referências.'],
-        ['Glargina/PZI', 'Podem ser usadas em casos selecionados.', 'Menos padronizadas como primeira linha canina; usar com monitoramento próximo.'],
-        ['Regular/lispro', 'Hospitalar para CAD/HHS.', 'Não é manutenção domiciliar; exige glicemia e eletrólitos seriados.'],
+        [
+          'Insulina lente suína (Caninsulin® / Vetsulin®)',
+          'U40',
+          '0,25 U/kg (peso ideal)',
+          'SC q12h',
+          '1ª linha AAHA; agitar antes; seringa U40 (Behrend et al., 2018; Plumb\'s, 10ª ed.)',
+        ],
+        ['NPH', 'U100', '0,25–0,5 U/kg', 'SC q12h', 'Alternativa; seringa U100 (Behrend et al., 2018)'],
+        ['PZI', 'U40', '0,25–0,5 U/kg', 'SC q12h', 'Alternativa quando lente indisponível (Behrend et al., 2018)'],
+        [
+          'Glargina U300 (Toujeo®)',
+          'U300',
+          '0,5 U/kg',
+          'SC q24h',
+          'Tardo et al., 2024; NUNCA aspirar caneta U300 com seringa U100',
+        ],
+        [
+          'Degludeca (Tresiba®)',
+          'U100',
+          '~0,6 U/kg (mediana)',
+          'SC q24h',
+          'Mott et al., 2025; alternativa basal de longa duração',
+        ],
       ],
     },
-    ajusteDose: [
-      'Não aumentar dose por uma glicemia isolada alta.',
-      'Se nadir <80 mg/dL ou houver sinais de hipoglicemia: reduzir dose e revisar alimentação/exercício.',
-      'Se nadir adequado mas hiperglicemia retorna cedo: duração curta; considerar troca de insulina ou estratégia com especialista.',
-      'Se nadir alto e sinais persistem: aumentar em incrementos conservadores, geralmente 10–25%, reavaliando em 1–2 semanas.',
-      'Se dose ultrapassa cerca de 1,5 U/kg q12h sem controle: auditar técnica e pesquisar resistência insulinica antes de escalar.',
+    calculoPesoIdeal:
+      'A dose em UI/kg deve ser calculada pelo peso corporal ideal (PCI), não pelo peso atual, em cães com sobrepeso ou obesidade — superdosar insulina pelo peso real aumenta risco de hipoglicemia (Behrend et al., 2018; Nelson & Couto, 2020). Se o animal estiver no peso ideal (ECC 5/9), PCI = peso atual.',
+    tabelaPesoIdealEcc: {
+      kind: 'clinicalTable' as const,
+      title: 'Estimativa do peso ideal pelo ECC (9 pontos)',
+      headers: ['ECC', 'Relação com o ideal', 'Fórmula', 'Exemplo (peso atual 12 kg)'],
+      rows: [
+        ['5/9', 'Peso ideal', 'PCI = peso atual', '12,0 kg'],
+        ['6/9', '~10% acima do ideal', 'PCI = peso atual ÷ 1,10', '10,9 kg'],
+        ['7/9', '~20% acima do ideal', 'PCI = peso atual ÷ 1,20', '10,0 kg'],
+        ['8/9', '~30% acima do ideal', 'PCI = peso atual ÷ 1,30', '9,2 kg'],
+        ['9/9', '~40% acima do ideal', 'PCI = peso atual ÷ 1,40', '8,6 kg'],
+      ],
+    },
+    exemploCalculoInsulina: [
+      '1. Pesar o cão e atribuir ECC (escala de 9 pontos) por palpação — costelas palpáveis sem excesso de gordura e cintura abdominal visível em ECC 5 (Nelson & Couto, 2020; AAHA 2021).',
+      '2. Preferir peso saudável anterior documentado (quando ECC era 5) como PCI — método mais confiável.',
+      '3. Sem histórico: estimar PCI pela tabela ECC (ex.: 12 kg com ECC 8/9 → PCI = 12 ÷ 1,30 = 9,2 kg).',
+      '4. Calcular dose inicial: PCI × UI/kg (ex.: 9,2 kg × 0,25 UI/kg = 2,3 UI → arredondar conservadoramente para 2 UI SC q12h).',
+      '5. Reavaliar PCI a cada consulta conforme perda de peso — reduzir insulina se PCI cair >10% (Behrend et al., 2018).',
     ],
+    ordemDePrioridadeEstruturada: [
+      {
+        priority: 1,
+        title: 'Insulinoterapia de Primeira Escolha (Insulina Lente)',
+        summary:
+          'Insulina Lente suína (Caninsulin® / Vetsulin® U40). Iniciar com 0,25 U/kg SC q12h calculada com base no PESO IDEAL (4,7). Agitar vigorosamente a embalagem antes da aspiração conforme instruções do produto/guideline (3,4). Usar seringa de U40 correspondente!',
+      },
+      {
+        priority: 2,
+        title: 'Manejo Alimentar & Consistência',
+        summary:
+          'Duas refeições iguais diárias casadas com as aplicações de insulina a cada 12 horas (4). Dieta completa, equilibrada e palatável. Teores de fibra solúvel/insolúvel ajudam a suavizar picos pós-prandiais, mas a consistência de horários e porções é o pilar central (1,4).',
+      },
+      {
+        priority: 3,
+        title: 'Ovariohisterectomia (OVH) em Cadelas Inteiras',
+        summary:
+          'Realizar OVH assim que a paciente for estabilizada para cessar a produção de progesterona e GH mamário (1,4,5). Reduzir a dose de insulina no pós-operatório e monitorar glicemia de perto devido à rápida queda na resistência insulínica (1,4).',
+      },
+      {
+        priority: 4,
+        title: 'Insulinas Alternativas (NPH, PZI, Glargina, Toujeo, Degludeca)',
+        summary:
+          'NPH (U100) 0,25–0,5 U/kg q12h; PZI (U40) 0,25–0,5 U/kg q12h (4,7). Glargina U300 (Toujeo U300): estudo prospectivo Tardo 2024 (95 cães) recomenda dose inicial de 0,5 U/kg SC q24h; NUNCA aspirar caneta U300 com seringa U100 (8). Degludeca U100 (Tresiba): estudo Mott 2025 (33 cães) relata mediana inicial de 0,6 U/kg q24h com excelente resposta (9).',
+      },
+      {
+        priority: 5,
+        title: 'Investigação de Resistência Insulínica (>1,5 U/kg/dose)',
+        summary:
+          'Doses >1,5 U/kg por aplicação sem controle adequado caracterizam resistência clínica (Behrend et al., 2018). Etapa 1: Erros de técnica/seringa/armazenamento. Etapa 2: Duração curta ou efeito rebote de Somogyi. Etapa 3: HAC, diestro, pancreatite, infecção/doença periodontal, obesidade e esteroides (Behrend et al., 2018; Nelson & Couto, 2020).',
+      },
+    ],
+    protocoloTerapeutico:
+      'A dose inicial da insulina lente não deve ultrapassar 0,25–0,5 U/kg q12h. A maioria dos cães estabiliza com aproximadamente ~0,5 U/kg q12h através de titulação progressiva a cada 7 a 14 dias com base na resposta clínica e curvas glicêmicas (4,5).',
     monitoramento: [
-      'Casa: ingestão de água, volume urinário, apetite, peso semanal, energia, vômitos, sinais neurológicos e episódios de fraqueza.',
-      'Clínica: peso, exame físico, curva glicêmica ou CGM, fructosamina, urinálise/cultura se indicado, eletrólitos e avaliação de comorbidades.',
-      'Curva: medir antes da refeição/insulina e a cada 2 h por 10–12 h quando possível; identificar nadir, duração e hipoglicemia.',
-      'CGM: útil para padrões e hipoglicemia oculta; confirmar leituras baixas com glicosímetro quando houver discordância clínica.',
-      'Paciente estável: reavaliar periodicamente a cada 3–6 meses ou antes se sinais retornarem.',
+      'Avaliar resposta clínica primária: resolução da PU/PD, estabilização do peso corporal e apetite (Behrend et al., 2018; Nelson & Couto, 2020).',
+      'Curva glicêmica domiciliar ou monitor contínuo de glicose (FreeStyle Libre) a cada 2h durante o intervalo de dose (Behrend et al., 2018; Tardo et al., 2024). Valor mínimo glicêmico ideal entre 80–150 mg/dL (Behrend et al., 2018).',
+      'Se o valor mínimo glicêmico for satisfatório (ex: 100 mg/dL), mas a glicose subir rapidamente antes da próxima dose: trata-se de DURAÇÃO CURTA DA INSULINA. NÃO aumentar a dose (risco de hipoglicemia no valor mínimo glicêmico); trocar por formulação de maior duração (Behrend et al., 2018).',
+      'Frutosamina sérica a cada 1 a 3 meses para acompanhar tendência geral (Behrend et al., 2018).',
     ],
-    hipoglicemia: {
-      kind: 'clinicalTable' as const,
-      headers: ['Situação', 'Conduta'],
-      rows: [
-        ['Consciente e consegue engolir', 'Oferecer alimento; se sinais persistirem, mel/glicose na mucosa e atendimento.'],
-        ['Convulsão, coma ou não consegue engolir', 'Glicose/mel na mucosa sem forçar deglutição e emergência imediata.'],
-        ['Após episódio', 'Reduzir dose, revisar refeições, exercício, técnica, perda de peso recente e possibilidade de erro de seringa.'],
-      ],
+    fluxogramaResistencia: [
+      'Etapa 1 — Técnica e aderência: seringa correta (U40 vs U100), agitação, local de aplicação, rotação, armazenamento e horários de refeição/insulina (Behrend et al., 2018).',
+      'Etapa 2 — Efeito rebote de Somogyi vs duração curta: valor mínimo glicêmico <80 mg/dL com hiperglicemia de rebote sugere efeito de Somogyi; valor mínimo 80–150 mg/dL com hiperglicemia pré-dose sugere duração insuficiente — trocar insulina, não escalar dose (Behrend et al., 2018).',
+      'Etapa 3 — Diestro/OVH: cadela inteira em diestro → OVH e reduzir insulina pós-operatório (Behrend et al., 2018).',
+      'Etapa 4 — HAC: testes de triagem (LDDS/ACTHST) se sinais compatíveis ou resistência persistente (Nelson & Couto, 2020).',
+      'Etapa 5 — Pancreatite, ITU, obesidade, esteroides e doença periodontal: tratar comorbidades antes de escalar insulina além de >1,5 U/kg/dose (Behrend et al., 2018; Nelson & Couto, 2020).',
+    ],
+    complicacoes: {
+      catarata:
+        'Catarata diabética em 50% dos cães até 170 dias e 80% até 470 dias (Beam et al., 1999). Risco de uveíte lente-induzida. Avaliação oftalmológica periódica recomendada.',
+      dka:
+        'Cetoacidose diabética: acidose metabólica + cetonemia (BHB) + desidratação severa. Requer hospitalização, fluidoterapia, reposição de K+/fósforo e insulinização regular hospitalar (Textbook of Small Animal Emergency Medicine, 2020).',
+      hhs:
+        'Estado hiperglicêmico hiperosmolar: glicose >600 mg/dL, osmolalidade >350 mOsm/kg, sem cetose importante. Requer restauração volêmica lenta (queda glicêmica ≤50–75 mg/dL/h) para evitar edema cerebral (VINcyclopedia, 2022).',
     },
-    cetoacidose:
-      'CAD é emergência. Prioridades: restauração de perfusão com cristaloide, correção gradual de desidratação, potássio e fósforo, controle de vômito/dor, insulina regular em CRI ou protocolo intermitente, monitoramento de glicose a cada 1–2 h, cetonas, eletrólitos e acidose. Evitar queda glicêmica >50–100 mg/dL/h; adicionar dextrose quando glicose cai para faixas intermediárias para permitir continuidade da insulina até controlar cetose.',
-    altaPosCad: [
-      'Transicionar para insulina de manutenção quando hidratado, comendo e sem piora de cetose/acidemia.',
-      'Rever fator precipitante: pancreatite, infecção, piometra, omissão de insulina, erro de dose, HAC, doença renal.',
-      'Ensinar plano escrito de hipoglicemia, armazenamento e aplicação antes da alta.',
+    prognostico:
+      'Prognóstico funcional favorável com controle clínico estável e aderência familiar. Remissão espontânea é rara; exceção parcial após OVH em cadelas com DM induzida por diestro (Behrend et al., 2018). Catarata é complicação esperada na maioria — não indica mau controle isoladamente (Beam et al., 1999). DKA e HHS têm prognóstico reservado e exigem internação (Textbook of Small Animal Emergency Medicine, 2020).',
+  },
+  prevention: {
+    primaria:
+      'Ovariohisterectomia de cadelas não reprodutoras antes de ciclos repetidos de diestro; manutenção de peso ideal; evitar glicocorticoides e progestágenos desnecessários; controle de obesidade e doença periodontal como fatores de resistência insulínica (Behrend et al., 2018; Nelson & Couto, 2020).',
+    vigilanciaComplicacoes:
+      'Após diagnóstico: exame oftalmológico seriado para catarata/uveíte; urocultura quando indicado; reforçar consistência alimentar e técnica de insulina com tutores (Behrend et al., 2018; Beam et al., 1999).',
+    errosComuns: [
+      'Diagnosticar DM por glicemia isolada de estresse sem glicosúria/frutosamina.',
+      'Usar seringa U100 para insulina U40 (ou vice-versa).',
+      'Aumentar dose quando valor mínimo glicêmico já é adequado mas glicose sobe antes da próxima aplicação (duração curta).',
+      'Adiar OVH em cadela inteira com DM estabilizável.',
+      'Ignorar anorexia/vômitos no diabético (DKA, pancreatite, ITU).',
+      'Buscar normoglicemia humana estrita em detrimento de segurança e qualidade de vida.',
+      'Confundir efeito rebote de Somogyi com necessidade de mais insulina.',
+      'Não monitorar hipoglicemia pós-OVH.',
     ],
   },
-  prevention:
-    'Não há prevenção garantida para a forma primária. Reduzir risco modificável: manter escore corporal adequado, evitar glicocorticoides/progestágenos sem necessidade, tratar pancreatite e infecções, castrar cadelas diabéticas após estabilização quando apropriado, controlar HAC/hipotireoidismo e orientar busca precoce diante de PU/PD, emagrecimento ou catarata súbita.',
+  relatedConsensusSlugs: ['consensual-endocrinologia-aaha-diabetes-dogs-cats'],
   relatedDiseaseSlugs: [
-    'hiperadrenocorticismo-sindrome-cushing',
-    'hipotireoidismo-canino',
-    'doenca-renal-cronica-caes-gatos',
-    'hipertensao-arterial-sistemica-caes-gatos',
+    'sindrome-cushing-caes',
+    'hipertireoidismo',
+    'insuficiencia-pancreatica-exocrina-caes-gatos',
+    'drc',
   ],
   relatedMedicationSlugs: [],
-  relatedConsensusSlugs: [],
   references: [
     {
-      id: 'ref-aaha-diabetes-2018-2022',
-      citationText: 'Behrend E et al. 2018 AAHA Diabetes Management Guidelines for Dogs and Cats. JAAHA. 2018;54(1):1-21.',
-      sourceType: 'Diretriz AAHA',
-      url: 'https://www.aaha.org/resources/2018-aaha-diabetes-management-guideline-for-dogs-and-cats/',
-      notes: 'Diretriz central para cães e gatos; algoritmos de monitoramento, hipoglicemia e troubleshooting.',
-      evidenceLevel: 'A - diretriz',
-    },
-    {
-      id: 'ref-merck-dm-dogs-cats',
-      citationText: 'Merck Veterinary Manual. Diabetes Mellitus in Dogs and Cats. Reviewed/Revised May 2024; Modified May 2025.',
-      sourceType: 'Revisão clínica',
-      url: 'https://www.merckvetmanual.com/endocrine-system/the-pancreas/diabetes-mellitus-in-dogs-and-cats',
-      notes: 'Etiologia, insulinas, dieta, monitoramento, DKA e HHS.',
-      evidenceLevel: 'B - referência prática',
-    },
-    {
-      id: 'ref-fleeman-wsava-dog-dm-2018',
+      id: 'ref-aula-magna-2026',
       citationText:
-        'Fleeman LM. Tips from the Experts for the Approach and Management of Diabetes Mellitus in Dogs. WSAVA Congress Proceedings, 2018.',
-      sourceType: 'Proceedings WSAVA',
-      url: 'https://veterinarypartner.vin.com/doc/?id=8896629&pid=22915',
-      notes: 'Abordagem prática de insulina, dieta e monitoramento canino.',
-      evidenceLevel: 'B/C — revisão especializada',
+        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material fornecido ao projeto Vetius, 2026.',
+      sourceType: 'Aula Magna',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-monitoring-dm-pmc',
-      citationText: 'Cook AK. Monitoring methods for dogs and cats with diabetes mellitus. J Diabetes Sci Technol. 2012.',
-      sourceType: 'Artigo de revisão',
-      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3440050/',
-      notes: 'Curvas, fructosamina e monitoramento domiciliar.',
-      evidenceLevel: 'B/C',
+      id: 'ref-aaha-2026-cats',
+      citationText:
+        '2026 AAHA Diabetes Management Guidelines for Cats. American Animal Hospital Association. Published April 26, 2026.',
+      sourceType: 'Diretriz Consensual AAHA 2026',
+      url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-nelson-couto-dm',
-      citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020. Disorders of the Endocrine Pancreas.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Base clínica e fisiopatológica.',
-      evidenceLevel: 'Referência secundária',
+      id: 'ref-icatcare-2025',
+      citationText:
+        'Taylor S, Cannon M, Church D, Fleeman L, Fracassi F, Gilor C, Mott J, Niessen S. iCatCare 2025 consensus guidelines on the diagnosis and management of diabetes mellitus in cats. J Feline Med Surg. 2025;27(11):1098612X251399103.',
+      sourceType: 'Consenso iCatCare 2025',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/41224734/',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-feldman-endocrinology-dm',
-      citationText: 'Feldman EC, Nelson RW, Reusch CE, Scott-Moncrieff JCR. Canine and Feline Endocrinology, 4th ed., 2015.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Endocrinologia comparada, resistência insulinica e insulinoterapia.',
-      evidenceLevel: 'Referência secundária',
+      id: 'ref-aaha-2018-dogs',
+      citationText:
+        'Behrend E, Holford A, Lathan P, Rucinsky R, Schulman R. 2018 AAHA Diabetes Management Guidelines for Dogs and Cats. J Am Anim Hosp Assoc. 2018;54:1–21.',
+      sourceType: 'Diretriz Consensual AAHA 2018/2022',
+      url: 'https://www.aaha.org/resources/2018-aaha-diabetes-management-guideline-for-dogs-and-cats/dogs/',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-plumb-insulins',
-      citationText: "Budde JA, McCluskey DM. Plumb's Veterinary Drug Handbook, 10th ed., 2023. Insulin monographs.",
-      sourceType: 'Formulário',
-      url: null,
-      notes: 'Farmacologia, concentrações, seringas e segurança.',
-      evidenceLevel: 'Referência prática',
+      id: 'ref-nelson-couto-2020',
+      citationText:
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 49 — Disorders of the Endocrine Pancreas.',
+      sourceType: 'Tratado de Medicina Interna',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-bsava-nephrology',
+      citationText:
+        'BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. BSAVA.',
+      sourceType: 'Manual BSAVA',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-plumbs-2023',
+      citationText:
+        'Plumb\'s Veterinary Drug Handbook. 10th ed. Wiley; 2023. Insulin monographs.',
+      sourceType: 'Guia Farmacológico',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-tardo-toujeo-2024',
+      citationText:
+        'Tardo AM, et al. A dose titration protocol for once-daily insulin glargine 300 U/mL for the treatment of diabetes mellitus in dogs. J Vet Intern Med. 2024;38:2120–2133.',
+      sourceType: 'Estudo Clínico Prospectivo (95 cães)',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11256126/',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-mott-degludec-2025',
+      citationText:
+        'Mott J, Gal A, Tardo AM, et al. Insulin degludec 100 U/mL for treatment of spontaneous diabetes mellitus in dogs. J Vet Intern Med. 2025;39:e17303.',
+      sourceType: 'Estudo Clínico Prospectivo (33 cães)',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/39844001/',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-bexacat-fda-2026',
+      citationText:
+        'FDA/DailyMed. Bexacat — bexagliflozin tablets. Current label updated 2026.',
+      sourceType: 'Bula Oficial FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f918583d-0337-40da-8da1-1e1320b8d027',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-senvelgo-fda-2026',
+      citationText:
+        'FDA/DailyMed. Senvelgo — velagliflozin oral solution 15 mg/mL. Current label updated 2026.',
+      sourceType: 'Bula Oficial FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3ec5ca1f-bded-459e-a813-24d931d50b9a',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-vin-hhs-2022',
+      citationText:
+        'VINcyclopedia of Diseases. Diabetes Mellitus, Hyperglycemic Hyperosmolar Syndrome — Canine/Feline. Revised December 14, 2022.',
+      sourceType: 'Enciclopédia Clínica VIN',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-textbook-emergency-2020',
+      citationText:
+        'Textbook of Small Animal Emergency Medicine. Wiley-Blackwell. Chapters on diabetes mellitus, DKA and hyperosmolar hyperglycemic state.',
+      sourceType: 'Tratado de Emergência',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-beam-cataract-1999',
+      citationText:
+        'Beam S, Correa MT, Davidson MG. A retrospective-cohort study on the development of cataracts in dogs with diabetes mellitus: 200 cases. Vet Ophthalmol. 1999;2:169–172.',
+      sourceType: 'Estudo Retrospectivo de Coorte (200 cães)',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/11397260/',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-pancreatitis-dm-2024',
+      citationText:
+        'Canine Hepatobiliary and Exocrine Pancreatic Diseases. 2024. Sections on pancreatitis and endocrine disease.',
+      sourceType: 'Capítulo Especializado',
+      evidenceLevel: 'B',
     },
   ],
   isPublished: true,

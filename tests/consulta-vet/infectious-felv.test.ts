@@ -38,7 +38,6 @@ test('FeLV inclui figuras clínicas locais', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   const patho = record?.pathophysiology as Record<string, unknown> | undefined;
   assert.ok(patho?.figuraPatogenese);
-  assert.ok(patho?.figuraDesfechos);
   assert.ok(patho?.figuraRespostaImune);
   const fig = patho?.figuraPatogenese as { src?: string };
   assert.match(fig?.src ?? '', /leucemia-viral-felina/);

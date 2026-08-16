@@ -279,7 +279,10 @@ Administrar A PREENCHER a cada 24 horas, durante 21 dias, associado à ribavirin
       }, `1. ONDANSETRONA — APRESENTAÇÃO A SELECIONAR
 
 Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, {
-        presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'], presentationFilter: 'oral',
+        canonicalId: 'med-ondansetron',
+        presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'],
+        linkedDoseIds: ['dose-ondansetron-dog-po-caution'],
+        presentationFilter: 'oral',
       })],
     },
     {
@@ -353,16 +356,16 @@ const PARVO_HOSPITAL: ClinicalRecipeModel = {
 Administrar A PREENCHER por via intravenosa ou subcutânea, a cada 24 horas.`, { canonicalId: 'med-maropitant', presentations: ['pres-maro-inj-20'], linkedDoseIds: ['dose-maro-dog-sc'], presentationFilter: 'injectable' })] },
     { key: 'ondansetron', label: 'Antiemético adicional', optional: true, medications: [medication('ondansetron-hospital', 'Ondansetrona', { min: 0.3, max: 0.5, unit: 'mg/kg', basis: 'weight', route: 'intravenosa ou subcutânea', frequency: 'a cada 8 horas', duration: 'Conforme reavaliação hospitalar.' }, `1. ONDANSETRONA — APRESENTAÇÃO HOSPITALAR
 
-Administrar A PREENCHER por via intravenosa ou subcutânea, a cada 8 horas.`, { presentations: ['emedron-agener'], presentationFilter: 'injectable' })] },
+Administrar A PREENCHER por via intravenosa ou subcutânea, a cada 8 horas.`, { canonicalId: 'med-ondansetron', linkedDoseIds: ['dose-ondansetron-dog-iv-nausea'], presentations: ['emedron-agener'], presentationFilter: 'injectable' })] },
     { key: 'metoclopramide', label: 'Pró-cinético', optional: true, medications: [medication('metoclopramide-cri', 'Metoclopramida', { min: 1, max: 2, unit: 'mg/kg/dia', basis: 'weight_per_day', route: 'infusão intravenosa contínua', frequency: 'por dia', duration: 'Conforme reavaliação hospitalar.' }, `1. METOCLOPRAMIDA — APRESENTAÇÃO HOSPITALAR
 
 Administrar A PREENCHER por infusão intravenosa contínua. Não administrar automaticamente como bolus.`, { presentationFilter: 'injectable' })] },
     { key: 'ampicillin-sulbactam', label: 'Antimicrobiano principal', optional: true, medications: [medication('ampicillin-sulbactam', 'Ampicilina com sulbactam', { min: 30, unit: 'mg/kg', basis: 'weight', route: 'intravenosa', frequency: 'a cada 8 horas', duration: '5 a 7 dias' }, `1. AMPICILINA COM SULBACTAM — APRESENTAÇÃO HOSPITALAR
 
-Administrar A PREENCHER por via intravenosa, a cada 8 horas, durante 5 a 7 dias.`, { presentationFilter: 'injectable' })] },
+Administrar A PREENCHER por via intravenosa, a cada 8 horas, durante 5 a 7 dias.`, { canonicalId: 'med-ampicilina-sulbactam', linkedDoseIds: ['dose-amp-sulb-dog-iv-standard'], presentationFilter: 'injectable' })] },
     { key: 'ampicillin', label: 'Antimicrobiano alternativo', optional: true, medications: [medication('ampicillin', 'Ampicilina', { min: 22, unit: 'mg/kg', basis: 'weight', route: 'intravenosa', frequency: 'a cada 8 horas', duration: '5 a 7 dias' }, `1. AMPICILINA — APRESENTAÇÃO HOSPITALAR
 
-Administrar A PREENCHER por via intravenosa, a cada 8 horas, durante 5 a 7 dias.`, { presentationFilter: 'injectable' })] },
+Administrar A PREENCHER por via intravenosa, a cada 8 horas, durante 5 a 7 dias.`, { canonicalId: 'med-ampicilina', linkedDoseIds: ['dose-ampicilina-dog-iv-general'], presentationFilter: 'injectable' })] },
     { key: 'enrofloxacin', label: 'Cobertura adicional para sepse ou neutropenia grave', optional: true, medications: [medication('enrofloxacin-sepsis', 'Enrofloxacina', { min: 10, unit: 'mg/kg', basis: 'weight', route: 'intravenosa', frequency: 'a cada 24 horas', duration: '5 a 7 dias' }, `1. ENROFLOXACINA — APRESENTAÇÃO HOSPITALAR
 
 Administrar A PREENCHER por via intravenosa, a cada 24 horas, durante 5 a 7 dias.`, { presentations: ['enrofloxacino-dechra-injetavel'], presentationFilter: 'injectable', alert: 'Incluir somente após seleção clínica explícita para sepse ou neutropenia grave.' })] },
@@ -392,7 +395,7 @@ const PARVO_OUTPATIENT: ClinicalRecipeModel = {
 Administrar A PREENCHER por via subcutânea, a cada 24 horas, com reavaliação clínica diária.`, { canonicalId: 'med-maropitant', presentations: ['pres-maro-inj-20'], linkedDoseIds: ['dose-maro-dog-sc'], presentationFilter: 'injectable' })] },
     { key: 'ondansetron', label: 'Uso domiciliar após controle do vômito', medications: [medication('ondansetron-outpatient', 'Ondansetrona', { min: 0.5, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 a 12 horas', duration: '3 a 5 dias' }, `2. ONDANSETRONA — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, { presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'], presentationFilter: 'oral' })] },
+Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, { canonicalId: 'med-ondansetron', linkedDoseIds: ['dose-ondansetron-dog-po-caution'], presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'], presentationFilter: 'oral' })] },
   ],
   diseaseRecommendations: [
     'Realizar reavaliação veterinária diária até estabilização',

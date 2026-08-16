@@ -5,6 +5,7 @@ import type {
   MagistralFormulaComponent,
 } from '../types/receituario';
 import { buildClinicalMedicationPrescriptionBlock } from './clinicalMedicationCatalogBridge';
+import { formatGroupedPrescriptionBlocks, groupMedicationBlocksByRoute } from './receituarioMedication';
 import { CLINICAL_DOSE_LABEL } from './receituarioTemplateCalculator';
 
 export type PatientSize = 'small' | 'large' | null;
@@ -242,10 +243,10 @@ export function renderClinicalRecipe(
 ): string {
   const selected = model.options.filter((option) => selectedOptionKeys.includes(option.key));
   let medicationIndex = 1;
-  const treatmentBlocks = selected.flatMap((option) => {
-    const blocks: string[] = [];
+  const rawBlocks: string[] = [];
+  for (const option of selected) {
     for (const medication of option.medications || []) {
-      blocks.push(renderMedication(
+      rawBlocks.push(renderMedication(
         medication,
         weightKg,
         medicationIndex,
@@ -263,7 +264,7 @@ export function renderClinicalRecipe(
         option.formula.frequency,
         option.formula.durationDays,
       );
-      blocks.push(renderFormula(
+      rawBlocks.push(renderFormula(
         option.formula.title,
         calculated,
         option.formula.route,
@@ -274,13 +275,19 @@ export function renderClinicalRecipe(
       ));
       medicationIndex += 1;
     }
-    return blocks;
-  });
+  }
+
+  const grouped = groupMedicationBlocksByRoute(rawBlocks);
+  const formattedTreatments = grouped.length
+    ? formatGroupedPrescriptionBlocks(grouped)
+    : rawBlocks.length
+      ? rawBlocks.join('\n\n')
+      : 'TRATAMENTOS OPCIONAIS\n\nSelecione os blocos clínicos que deseja incluir nesta receita.';
 
   const sections = [
     model.documentHeading,
     model.hospitalWarning,
-    treatmentBlocks.length ? treatmentBlocks.join('\n\n') : 'TRATAMENTOS OPCIONAIS\n\nSelecione os blocos clínicos que deseja incluir nesta receita.',
+    formattedTreatments,
     listSection('RECOMENDAÇÕES DA DOENÇA', model.diseaseRecommendations),
     inlineTextSection('SINAIS PARA RETORNO', model.returnSigns, 'Retornar diante de '),
     ...(model.appendBodySectionsBuilder?.(weightKg, speciesValue)

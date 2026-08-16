@@ -43,7 +43,7 @@ export function buildTraumaVertUrineCare(): string {
 export function buildTraumaVertMedicationCare(): string {
   return `CUIDADOS COM AS MEDICAÇÕES
 
-• Gabapentina e metocarbamol podem causar sonolência, fraqueza e falta de coordenação.
+• Gabapentina pode causar sonolência, fraqueza e falta de coordenação.
 • Uma discreta sonolência pode ocorrer, mas o paciente não deve ficar incapaz de despertar ou sustentar a cabeça.
 • Não associar carprofeno, meloxicam ou robenacoxibe a outro anti-inflamatório.
 • Não associar anti-inflamatório não esteroidal a prednisolona, dexametasona ou outro corticosteroide.
@@ -132,7 +132,8 @@ export function buildIvddMedicationCareSection(): string {
 • Não associar qualquer anti-inflamatório a prednisolona, dexametasona ou outro corticosteroide.
 • Corticosteroides não são recomendados rotineiramente na fase aguda da hérnia de disco.
 • Suspender o anti-inflamatório diante de vômitos, diarreia, perda de apetite, fezes escuras ou sangue nas fezes.
-• Gabapentina, pregabalina e metocarbamol podem causar sonolência e falta de coordenação.
+• Gabapentina e pregabalina podem causar sonolência e falta de coordenação.
+• Tramadol e dipirona podem causar sedação, vômitos ou alterações gastrointestinais.
 • Não suspender pregabalina abruptamente após uso prolongado.
 • Dor que exige opioide ou que não permite repouso confortável deve ser tratada em ambiente hospitalar.`;
 }

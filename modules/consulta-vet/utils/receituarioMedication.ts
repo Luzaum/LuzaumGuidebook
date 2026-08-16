@@ -25,6 +25,77 @@ function normalize(value: string): string {
     .trim()
     .toLowerCase();
 }
+export interface PrescriptionMedicationHeaderInput {
+  medicationName: string;
+  commercialName?: string | null;
+  concentration?: string | null;
+  pharmaceuticalForm?: string | null;
+}
+
+export function prescriptionPharmaceuticalFormLabel(value: unknown): string {
+  const raw = String(value || '').trim();
+  const normalized = normalize(raw);
+  if (!normalized) return '';
+  if (/comprim.*mastig/.test(normalized)) return 'Comprimidos mastigáveis';
+  if (/comprim|tablet|dragea/.test(normalized)) return 'Comprimidos';
+  if (/capsul/.test(normalized)) return 'Cápsulas';
+  if (/solucao.*oftalm|colirio/.test(normalized)) return 'Solução oftálmica';
+  if (/pomada.*oftalm/.test(normalized)) return 'Pomada oftálmica';
+  if (/solucao.*otolog|solucao.*otic/.test(normalized)) return 'Solução otológica';
+  if (/suspensao.*oral/.test(normalized)) return 'Suspensão oral';
+  if (/solucao.*oral/.test(normalized)) return 'Solução oral';
+  if (/solucao.*injet|injetav/.test(normalized)) return 'Solução injetável';
+  if (/xarope/.test(normalized)) return 'Xarope';
+  if (/pomada/.test(normalized)) return 'Pomada';
+  if (/creme/.test(normalized)) return 'Creme';
+  if (/shampoo|xampu/.test(normalized)) return 'Xampu';
+  if (/spray/.test(normalized)) return 'Spray';
+  if (/sache/.test(normalized)) return 'Sachês';
+  if (/gota/.test(normalized)) return 'Gotas';
+  if (/gel/.test(normalized)) return 'Gel';
+  return '';
+}
+
+export function extractPrescriptionConcentration(value: unknown): string {
+  const text = String(value || '').trim();
+  const match = text.match(/\d+(?:[.,]\d+)?\s*(?:mcg|µg|ug|mg|g|mL|ml|UI|U)(?:\s*\/\s*(?:comprimido|cápsula|capsula|mL|ml|gota|dose|aplicação|aplicacao|animal))?/i);
+  return match?.[0]
+    ?.replace(/\bml\b/gi, 'mL')
+    .replace(/\bui\b/gi, 'UI')
+    .trim() || '';
+}
+
+function concentrationDenominator(form: string): string {
+  const normalized = normalize(form);
+  if (normalized.includes('comprim')) return 'comprimido';
+  if (normalized.includes('capsul')) return 'cápsula';
+  if (/solucao|suspensao|xarope/.test(normalized)) return 'mL';
+  if (normalized.includes('gota')) return 'gota';
+  if (normalized.includes('sache')) return 'sachê';
+  return '';
+}
+
+export function formatPrescriptionMedicationHeader({
+  medicationName,
+  commercialName,
+  concentration,
+  pharmaceuticalForm,
+}: PrescriptionMedicationHeaderInput): string {
+  const medicine = String(medicationName || '').trim().toUpperCase();
+  const brand = String(commercialName || '').trim();
+  const form = prescriptionPharmaceuticalFormLabel(pharmaceuticalForm);
+  let strength = extractPrescriptionConcentration(concentration);
+  if (strength && !strength.includes('/')) {
+    const denominator = concentrationDenominator(form);
+    if (denominator) strength = `${strength}/${denominator}`;
+  }
+
+  const leftParts = [medicine];
+  if (brand && normalize(brand) !== normalize(medicine)) leftParts.push(brand.toUpperCase());
+  if (strength) leftParts.push(strength);
+  if (form) leftParts.push(form);
+  return leftParts.filter(Boolean).join(' — ');
+}
 
 export function parsePositiveDecimal(value: string | number | undefined): number | null {
   if (typeof value === 'number') {
@@ -170,28 +241,215 @@ export function buildPrescriptionMedicationBlock({
   return lines.join('\n');
 }
 
+export const ROUTE_ORDER = [
+  'USO ORAL',
+  'USO TÓPICO',
+  'USO OTOLÓGICO',
+  'USO OFTÁLMICO',
+  'USO INJETÁVEL',
+  'USO INALATÓRIO',
+  'OUTRAS VIAS',
+] as const;
+
+export function getRouteCategory(routeOrText: string): string {
+  const normalized = normalize(routeOrText);
+  if (/oftalm|colirio|ocular|\bolho\b|\bolhos\b/.test(normalized)) return 'USO OFTÁLMICO';
+  if (/otolog|otico|auricular|\bouvido\b|\bouvidos\b|\borelha\b/.test(normalized)) return 'USO OTOLÓGICO';
+  if (/shampoo|xampu|pomada|creme|gel|spray|topico|topica|\bpele\b|banho/.test(normalized)) return 'USO TÓPICO';
+  if (/subcutan|intramuscul|intravenos|endovenos|\bsc\b|\bim\b|\biv\b|\bev\b|injetav/.test(normalized)) return 'USO INJETÁVEL';
+  if (/inalat|nebuliz|inalac/.test(normalized)) return 'USO INALATÓRIO';
+  if (/comprim|capsul|xarope|solucao oral|suspensao oral|oral|\bvo\b|\bpo\b|dragea|pasta/.test(normalized)) return 'USO ORAL';
+  if (normalized.includes('oral') || !normalized.trim()) return 'USO ORAL';
+  return 'OUTRAS VIAS';
+}
+
+function cleanMedicationItemBlock(blockText: string): string {
+  const cleaned = String(blockText || '')
+    .trim()
+    .replace(/^(\d+)\.\s*/, '')
+    .replace(/^USO\s+[A-ZÁÉÍÓÚÂÊÔÃÕÇ\s]+(?:\n+|$)/i, '')
+    .trim();
+
+  const normalized = normalize(cleaned);
+  if (!cleaned || /^uso\s+(oral|topico|topica|otologico|otologica|oftalmico|oftalmica|injetavel|inalatorio|outras\s+vias)$/.test(normalized)) {
+    return '';
+  }
+
+  return cleaned;
+}
+
+function isNonMedicationSectionHeading(line: string): boolean {
+  const normalized = normalize(line);
+  return /^(recomendacoes|sinais para retorno|orientacoes|alerta|aviso de piora|observacoes|nota)/.test(normalized);
+}
+
+export function groupMedicationBlocksByRoute(blocks: string[]): Array<{ route: string; items: string[] }> {
+  const groups: Record<string, string[]> = {};
+  for (const block of blocks) {
+    const cleaned = cleanMedicationItemBlock(block);
+    if (!cleaned || /NOME DO MEDICAMENTO|Administrar\s+\[quantidade\]/i.test(cleaned)) continue;
+    const category = getRouteCategory(cleaned);
+    if (!groups[category]) groups[category] = [];
+    // Avoid duplicate blocks
+    if (!groups[category].includes(cleaned)) {
+      groups[category].push(cleaned);
+    }
+  }
+
+  const result: Array<{ route: string; items: string[] }> = [];
+  for (const route of ROUTE_ORDER) {
+    if (groups[route] && groups[route].length) {
+      result.push({ route, items: groups[route] });
+    }
+  }
+  return result;
+}
+
+export function formatGroupedPrescriptionBlocks(grouped: Array<{ route: string; items: string[] }>): string {
+  let globalIndex = 1;
+  const sections: string[] = [];
+
+  for (const group of grouped) {
+    const itemLines = group.items.map((item) => {
+      const numbered = `${globalIndex}. ${item}`;
+      globalIndex += 1;
+      return numbered;
+    });
+    sections.push(`${group.route}\n\n${itemLines.join('\n\n')}`);
+  }
+
+  return sections.join('\n\n');
+}
+
 export function insertMedicationIntoPrescriptionText(bodyText: string, medicationBlock: string): string {
-  const normalizedBody = String(bodyText || '').replace(/\r\n/g, '\n');
-  const placeholderPattern = /^(\d+)\.\s+NOME DO MEDICAMENTO[^\n]*\n(?:\s*\n)?Administrar\s+\[quantidade\][^\n]*(?:\n)?/im;
-  const placeholderMatch = normalizedBody.match(placeholderPattern);
+  const normalizedBody = String(bodyText || '').replace(/\r\n/g, '\n').trim();
+  const cleanedNewBlock = cleanMedicationItemBlock(medicationBlock);
 
-  if (placeholderMatch) {
-    return normalizedBody.replace(placeholderPattern, `${placeholderMatch[1]}. ${medicationBlock}\n`);
+  if (!normalizedBody) {
+    const category = getRouteCategory(cleanedNewBlock);
+    return `${category}\n\n1. ${cleanedNewBlock}`;
   }
 
-  const recommendationsIndex = normalizedBody.search(/^RECOMENDAÇÕES\s*$/im);
-  const medicationSection = recommendationsIndex >= 0
-    ? normalizedBody.slice(0, recommendationsIndex)
-    : normalizedBody;
-  const existingNumbers = Array.from(medicationSection.matchAll(/^(\d+)\.\s+/gm)).map((match) => Number(match[1]));
-  const nextNumber = existingNumbers.length ? Math.max(...existingNumbers) + 1 : 1;
-  const numberedBlock = `${nextNumber}. ${medicationBlock}`;
-
-  if (recommendationsIndex >= 0) {
-    const before = normalizedBody.slice(0, recommendationsIndex).trimEnd();
-    const after = normalizedBody.slice(recommendationsIndex).trimStart();
-    return `${before}\n\n${numberedBlock}\n\n${after}`;
+  // Split body into medication area and tail (recommendations, return signs, etc.)
+  const lines = normalizedBody.split('\n');
+  let tailIndex = -1;
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i].trim();
+    if (isNonMedicationSectionHeading(line)) {
+      tailIndex = i;
+      break;
+    }
   }
 
-  return `${normalizedBody.trimEnd()}${normalizedBody.trim() ? '\n\n' : ''}${numberedBlock}\n`;
+  const medSectionText = tailIndex >= 0 ? lines.slice(0, tailIndex).join('\n') : normalizedBody;
+  const tailText = tailIndex >= 0 ? lines.slice(tailIndex).join('\n').trim() : '';
+
+  // Extract existing medication blocks
+  const rawBlocks = medSectionText
+    .split(/\n(?=(?:\d+\.\s+|USO\s+[A-ZÁÉÍÓÚ\s]+\n))/i)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const existingItems = rawBlocks
+    .map(cleanMedicationItemBlock)
+    .filter((b) => b && !/NOME DO MEDICAMENTO|Administrar\s+\[quantidade\]/i.test(b));
+
+  const allItems = [...existingItems, cleanedNewBlock];
+  const grouped = groupMedicationBlocksByRoute(allItems);
+  const formattedMeds = formatGroupedPrescriptionBlocks(grouped);
+
+  if (tailText) {
+    return `${formattedMeds}\n\n${tailText}`;
+  }
+
+  return formattedMeds;
+}
+
+export function removeMedicationFromPrescriptionText(bodyText: string, blockTextToRemove: string): string {
+  const normalizedBody = String(bodyText || '').replace(/\r\n/g, '\n').trim();
+  const targetClean = cleanMedicationItemBlock(blockTextToRemove);
+  const targetTitle = targetClean.split('\n')[0]?.trim() || '';
+
+  const lines = normalizedBody.split('\n');
+  let tailIndex = -1;
+  for (let i = 0; i < lines.length; i += 1) {
+    if (isNonMedicationSectionHeading(lines[i].trim())) {
+      tailIndex = i;
+      break;
+    }
+  }
+
+  const medSectionText = tailIndex >= 0 ? lines.slice(0, tailIndex).join('\n') : normalizedBody;
+  const tailText = tailIndex >= 0 ? lines.slice(tailIndex).join('\n').trim() : '';
+
+  const rawBlocks = medSectionText
+    .split(/\n(?=(?:\d+\.\s+|USO\s+[A-ZÁÉÍÓÚ\s]+\n))/i)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  const remainingItems = rawBlocks
+    .map(cleanMedicationItemBlock)
+    .filter((b) => {
+      if (!b || /NOME DO MEDICAMENTO|Administrar\s+\[quantidade\]/i.test(b)) return false;
+      if (targetClean && b === targetClean) return false;
+      if (targetTitle && normalize(b).includes(normalize(targetTitle))) return false;
+      return true;
+    });
+
+  if (!remainingItems.length) {
+    return tailText;
+  }
+
+  const grouped = groupMedicationBlocksByRoute(remainingItems);
+  const formattedMeds = formatGroupedPrescriptionBlocks(grouped);
+
+  return tailText ? `${formattedMeds}\n\n${tailText}` : formattedMeds;
+}
+export function updateMedicationInPrescriptionText(
+  bodyText: string,
+  oldBlockText: string,
+  newBlockText: string,
+): string {
+  const normalizedBody = String(bodyText || '').replace(/\r\n/g, '\n').trim();
+  const oldClean = cleanMedicationItemBlock(oldBlockText);
+  const oldTitle = oldClean.split('\n')[0]?.trim() || '';
+  const newClean = cleanMedicationItemBlock(newBlockText);
+
+  const lines = normalizedBody.split('\n');
+  let tailIndex = -1;
+  for (let i = 0; i < lines.length; i += 1) {
+    if (isNonMedicationSectionHeading(lines[i].trim())) {
+      tailIndex = i;
+      break;
+    }
+  }
+
+  const medSectionText = tailIndex >= 0 ? lines.slice(0, tailIndex).join('\n') : normalizedBody;
+  const tailText = tailIndex >= 0 ? lines.slice(tailIndex).join('\n').trim() : '';
+
+  const rawBlocks = medSectionText
+    .split(/\n(?=(?:\d+\.\s+|USO\s+[A-ZÁÉÍÓÚ\s]+\n))/i)
+    .map((b) => b.trim())
+    .filter(Boolean);
+
+  let replaced = false;
+  const updatedItems = rawBlocks
+    .map(cleanMedicationItemBlock)
+    .filter((b) => Boolean(b) && !/NOME DO MEDICAMENTO|Administrar\s+\[quantidade\]/i.test(b))
+    .map((b) => {
+      if (!replaced && ((oldClean && b === oldClean) || (oldTitle && normalize(b).includes(normalize(oldTitle))))) {
+        replaced = true;
+        return newClean;
+      }
+      return b;
+    });
+
+  if (!replaced) {
+    updatedItems.push(newClean);
+  }
+
+  const grouped = groupMedicationBlocksByRoute(updatedItems);
+  const formattedMeds = formatGroupedPrescriptionBlocks(grouped);
+
+  return tailText ? `${formattedMeds}\n\n${tailText}` : formattedMeds;
 }

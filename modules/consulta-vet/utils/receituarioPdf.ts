@@ -2,6 +2,13 @@ import { jsPDF } from 'jspdf';
 import type { ReceituarioDocumentData } from '../types/receituario';
 import { displayField, getDocumentSignatureBoxes, paginateDocument } from './receituarioDocument';
 
+function fitSinglePdfLine(pdf: jsPDF, value: string, maxWidth: number): string {
+  if (pdf.getTextWidth(value) <= maxWidth) return value;
+  let fitted = value;
+  while (fitted.length > 1 && pdf.getTextWidth(`${fitted}…`) > maxWidth) fitted = fitted.slice(0, -1);
+  return `${fitted.trimEnd()}…`;
+}
+
 export function createReceituarioPdf(document: ReceituarioDocumentData): jsPDF {
   const pages = paginateDocument(document);
   const signatureBoxes = getDocumentSignatureBoxes(document);
@@ -38,8 +45,21 @@ export function createReceituarioPdf(document: ReceituarioDocumentData): jsPDF {
     pdf.setFontSize(9.5);
     for (const line of page.lines) {
       if (line.kind === 'spacer') { y += 5.1; continue; }
-      pdf.setFont('helvetica', line.kind === 'heading' ? 'bold' : 'normal');
-      pdf.text(line.text, 16, y, { maxWidth: 178 }); y += 5.1;
+      if (line.kind === 'medication') {
+        pdf.setFont('helvetica', 'bold');
+        const form = String(line.medicationForm || 'Medicamento').toUpperCase();
+        const formWidth = pdf.getTextWidth(form);
+        const label = fitSinglePdfLine(pdf, String(line.medicationLabel || line.text).toUpperCase(), Math.max(35, 178 - formWidth - 10));
+        const availableDotsWidth = Math.max(3, 178 - pdf.getTextWidth(label) - formWidth - 3);
+        const dotWidth = Math.max(pdf.getTextWidth('.'), 0.5);
+        const dots = '.'.repeat(Math.max(3, Math.floor(availableDotsWidth / dotWidth)));
+        pdf.text(`${label} ${dots}`, 16, y);
+        pdf.text(form, 194, y, { align: 'right' });
+      } else {
+        pdf.setFont('helvetica', line.kind === 'heading' ? 'bold' : 'normal');
+        pdf.text(line.text, 16, y, { maxWidth: 178 });
+      }
+      y += 5.1;
     }
     if (page.number === page.totalPages && signatureBoxes.length) {
       const startY = 225;

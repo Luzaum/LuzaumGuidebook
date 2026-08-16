@@ -355,7 +355,7 @@ export const dtuifFelinaRecord: DiseaseRecord = {
   },
   relatedConsensusSlugs: ['icatcare-dtuif-felina-2025'],
   relatedDiseaseSlugs: ['doenca-renal-cronica-caes-gatos', 'hipertireoidismo-felino'],
-  relatedMedicationSlugs: ['amoxicilina-clavulanato', 'sulfametoxazol-trimetoprima', 'pregabalina', 'maropitant'],
+  relatedMedicationSlugs: ['amoxicilina-clavulanato', 'sulfametoxazol-trimetoprima', 'pregabalina', 'maropitant', 'fluoxetina', 'amitriptilina'],
   references: [
     {
       id: 'ref-taylor-icatcare-2025-lutd',

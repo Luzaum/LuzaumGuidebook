@@ -9,6 +9,8 @@ import { DiseaseRecord } from '../types/disease';
 import { Category } from '../types/category';
 import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
+import { diseaseMatchesCategoryFilter, getDiseaseCategorySlugs, normalizeCategorySlug } from '../utils/diseaseCategories';
+import { formatDiseaseCategoryLabels, getSpecialtyVisual } from '../utils/specialtyVisuals';
 
 const UI_TEXT = {
   eyebrow: 'Área clínica',
@@ -19,23 +21,6 @@ const UI_TEXT = {
   empty: 'Nenhuma doença encontrada com os filtros atuais.',
   allCategories: 'Todas as Especialidades',
 } as const;
-
-// Mapeamento de ícones/emojis ou cores para as especialidades
-const SPECIALTY_VISUALS: Record<string, { label: string; icon: string; borderActive: string; textActive: string; bgActive: string }> = {
-  endocrinologia: { label: 'Endocrinologia', icon: '🧬', borderActive: 'border-purple-500', textActive: 'text-purple-600 dark:text-purple-400', bgActive: 'bg-purple-500/[0.06]' },
-  respiratorio: { label: 'Pneumologia', icon: '🫁', borderActive: 'border-sky-500', textActive: 'text-sky-600 dark:text-sky-400', bgActive: 'bg-sky-500/[0.06]' },
-  cardiologia: { label: 'Cardiologia & Vascular', icon: '❤️', borderActive: 'border-rose-500', textActive: 'text-rose-600 dark:text-rose-400', bgActive: 'bg-rose-500/[0.06]' },
-  infecciosas: { label: 'Infectologia', icon: '🦠', borderActive: 'border-emerald-500', textActive: 'text-emerald-600 dark:text-emerald-400', bgActive: 'bg-emerald-500/[0.06]' },
-  infectologia: { label: 'Infectologia', icon: '🦠', borderActive: 'border-emerald-500', textActive: 'text-emerald-600 dark:text-emerald-400', bgActive: 'bg-emerald-500/[0.06]' },
-  'nefrologia-urologia': { label: 'Nefrologia & Urologia', icon: '🧪', borderActive: 'border-amber-500', textActive: 'text-amber-600 dark:text-amber-400', bgActive: 'bg-amber-500/[0.06]' },
-  dermatologia: { label: 'Dermatologia', icon: '🐾', borderActive: 'border-pink-500', textActive: 'text-pink-600 dark:text-pink-400', bgActive: 'bg-pink-500/[0.06]' },
-  neurologia: { label: 'Neurologia', icon: '🧠', borderActive: 'border-indigo-500', textActive: 'text-indigo-600 dark:text-indigo-400', bgActive: 'bg-indigo-500/[0.06]' },
-  oncologia: { label: 'Oncologia', icon: '🎗️', borderActive: 'border-yellow-500', textActive: 'text-yellow-600 dark:text-yellow-400', bgActive: 'bg-yellow-500/[0.06]' },
-  'reproducao-neonatologia': { label: 'Reprodução & Neonatologia', icon: '🍼', borderActive: 'border-fuchsia-500', textActive: 'text-fuchsia-600 dark:text-fuchsia-400', bgActive: 'bg-fuchsia-500/[0.06]' },
-  ortopedia: { label: 'Ortopedia', icon: '🦴', borderActive: 'border-teal-500', textActive: 'text-teal-600 dark:text-teal-400', bgActive: 'bg-teal-500/[0.06]' },
-  imunologia: { label: 'Imunologia', icon: '🛡️', borderActive: 'border-violet-500', textActive: 'text-violet-600 dark:text-violet-400', bgActive: 'bg-violet-500/[0.06]' },
-  odontologia: { label: 'Odontologia', icon: '🦷', borderActive: 'border-cyan-500', textActive: 'text-cyan-600 dark:text-cyan-400', bgActive: 'bg-cyan-500/[0.06]' },
-};
 
 export function DiseasesPage() {
   const diseaseRepository = useMemo(() => getDiseaseRepository(), []);
@@ -86,22 +71,15 @@ export function DiseasesPage() {
   // Filtra as doenças com base na especialidade selecionada
   const filteredDiseases = useMemo(() => {
     if (selectedCategory === 'all') return diseases;
-    
-    // Mapeamento extra de consistência (ex. infecciosas e infectologia)
-    return diseases.filter((d) => {
-      if (d.category === selectedCategory) return true;
-      if (selectedCategory === 'infectologia' && d.category === 'infecciosas') return true;
-      if (selectedCategory === 'infecciosas' && d.category === 'infectologia') return true;
-      return false;
-    });
+    return diseases.filter((d) => diseaseMatchesCategoryFilter(d, selectedCategory));
   }, [diseases, selectedCategory]);
 
-  // Agrupa e conta especialidades que possuem doenças ativas na busca
   const categoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
     diseases.forEach((d) => {
-      const cat = d.category === 'infecciosas' ? 'infectologia' : d.category;
-      counts[cat] = (counts[cat] || 0) + 1;
+      for (const slug of getDiseaseCategorySlugs(d)) {
+        counts[slug] = (counts[slug] || 0) + 1;
+      }
     });
     return counts;
   }, [diseases]);
@@ -166,10 +144,10 @@ export function DiseasesPage() {
             </button>
 
             {activeCategories.map((cat) => {
-              const visual = SPECIALTY_VISUALS[cat.slug] || { label: cat.title, icon: '📁', borderActive: 'border-primary', textActive: 'text-primary', bgActive: 'bg-primary/[0.06]' };
-              const isSelected = selectedCategory === cat.slug || 
-                (selectedCategory === 'infectologia' && cat.slug === 'infecciosas') ||
-                (selectedCategory === 'infecciosas' && cat.slug === 'infectologia');
+              const visual = getSpecialtyVisual(cat.slug);
+              const isSelected =
+                selectedCategory === cat.slug ||
+                normalizeCategorySlug(selectedCategory) === normalizeCategorySlug(cat.slug);
 
               return (
                 <button
@@ -222,9 +200,9 @@ export function DiseasesPage() {
             )}
 
             {!isLoading && !error && filteredDiseases.map((disease) => {
-              const displayCategory = disease.category === 'infecciosas' ? 'infectologia' : disease.category;
-              const visual = SPECIALTY_VISUALS[displayCategory];
-              const categoryLabel = visual ? `${visual.icon} ${visual.label}` : disease.category;
+              const primarySlug = normalizeCategorySlug(disease.category);
+              const visual = getSpecialtyVisual(primarySlug);
+              const categoryLabel = formatDiseaseCategoryLabels(disease);
 
               return (
                 <div

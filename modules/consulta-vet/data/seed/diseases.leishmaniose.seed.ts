@@ -320,7 +320,7 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
           'IV — Doença moderada',
           'Anticorpos em faixa variável; parasitológico e/ou molecular positivo.',
           'Sinais do III + lesões cutâneas difusas/simétricas, onicogrifose, úlceras, anorexia, emagrecimento.',
-          'Anemia leve não regenerativa ou IMHA discreta; elevação de gamaglobulina e PCR; hipalbuminemia. Subestádios renais: (a) perfil normal; (b) alterações leves (densidade urinária, SDMA, proteinúria discreta RPC 0,5–1).',
+          'Anemia leve não regenerativa ou AHIM discreta; elevação de gamaglobulina e PCR; hipalbuminemia. Subestádios renais: (a) perfil normal; (b) alterações leves (densidade urinária, SDMA, proteinúria discreta RPCU 0,5–1).',
           'Imunomodulação + leishmaniostático + leishmanicida; no subestádio renal (b), seguir IRIS.',
           'Bom a reservado.',
         ],

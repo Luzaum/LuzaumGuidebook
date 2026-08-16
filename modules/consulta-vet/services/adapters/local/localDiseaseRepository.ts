@@ -4,6 +4,7 @@ import { DiseaseRepository } from '../../repositories/disease.repository';
 import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../../data/publicCatalogCardStubs';
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
+import { diseaseMatchesCategoryFilter } from '../../../utils/diseaseCategories';
 import { filterPublicDiseases, isPublicDiseaseSlug } from '../../../constants/publicCatalog';
 
 export class LocalDiseaseRepository implements DiseaseRepository {
@@ -37,7 +38,7 @@ export class LocalDiseaseRepository implements DiseaseRepository {
 
   async listByCategory(categorySlug: string): Promise<DiseaseRecord[]> {
     const base = await this.list();
-    return base.filter((d) => d.category === categorySlug);
+    return base.filter((d) => diseaseMatchesCategoryFilter(d, categorySlug));
   }
 
   async upsert(_input: DiseaseUpsertInput): Promise<DiseaseRecord> {

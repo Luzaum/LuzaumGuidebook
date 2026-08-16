@@ -1,0 +1,3252 @@
+<timestamp>Friday, Aug 14, 2026, 12:25 PM (UTC-3)</timestamp>
+<user_query>
+adicione ao app essa doença agora # IMPLEMENTAR NO CONSULTAVET — HIPERPARATIREOIDISMO EM CÃES E GATOS
+
+Use como **referência de arquitetura, organização, profundidade e navegação** a página já existente de Cardiomiopatia Dilatada do ConsultaVet:
+
+**REFERÊNCIA:**
+https://vetiusluis.netlify.app/consulta-vet/doencas/cardiomiopatia-dilatada-caes-gatos
+
+Criar **UMA ÚNICA PÁGINA**:
+
+# Hiperparatireoidismo em cães e gatos
+
+**Subtítulo:**
+**Hiperparatireoidismo primário, secundário renal/CKD-MBD e secundário nutricional — fisiopatologia, diagnóstico diferencial e manejo**
+
+A página deve funcionar simultaneamente como:
+
+1. **consulta clínica rápida**, permitindo que o veterinário reconheça em segundos qual padrão de hiperparatireoidismo está enfrentando;
+2. **material aprofundado de estudo**, explicando fisiologia, fisiopatologia, interpretação de PTH/cálcio/fósforo, diagnóstico, exames de imagem, tratamento, monitorização e diferenças entre cães e gatos.
+
+---
+
+# REGRA CENTRAL DA PÁGINA
+
+**NÃO tratar “hiperparatireoidismo” como uma única síndrome bioquímica.**
+
+A primeira pergunta do raciocínio deve ser:
+
+> **O PTH está alto porque a paratireoide tornou-se autônoma ou porque está respondendo adequadamente a um estímulo crônico?**
+
+Dividir internamente a página em três grandes fenótipos:
+
+1. **Hiperparatireoidismo primário — PHPT**
+2. **Hiperparatireoidismo secundário renal / CKD-MBD**
+3. **Hiperparatireoidismo secundário nutricional — NSHP**
+
+O material do VIN fornecido pelo usuário deve ter **prioridade editorial**, mas **NÃO copiar texto ou imagens do VIN para o aplicativo**, porque seu conteúdo possui restrições de redistribuição. Parafrasear os conceitos e, sempre que possível, fazer a referência clicável direcionar ao **artigo/livro original que sustenta a informação**. O VIN deve ser tratado como fonte clínica de síntese e conferência.
+
+---
+
+# FONTES VIN FORNECIDAS E QUE DEVEM SER CONSIDERADAS PRIORITARIAMENTE
+
+### VIN — Primário canino
+
+Revisado em 17/03/2025
+https://www.vin.com/doc/?id=4953254&pid=607
+
+### VIN — Primário felino
+
+Revisado em 17/03/2025
+https://www.vin.com/doc/?id=4953489&pid=607
+
+### VIN — Secundário renal canino
+
+Revisado em 15/04/2025
+https://www.vin.com/doc/?id=4953256&pid=607
+
+### VIN — Secundário renal felino
+
+Revisado em 15/04/2025
+https://www.vin.com/doc/?id=7208189&pid=607
+
+### VIN — Secundário nutricional felino
+
+Revisado em 07/01/2026
+https://www.vin.com/doc/?id=7051797&pid=607
+
+**IMPORTANTE:** o material VIN fornecido não contém um capítulo específico de hiperparatireoidismo nutricional secundário canino. Portanto, **não atribuir ao VIN os dados específicos de NSHP em cães**. Essa seção deve ser baseada em Nelson & Couto, DiBartola e literatura nutricional/casos publicados.
+
+---
+
+# ESTRUTURA GERAL DA PÁGINA
+
+Usar:
+
+1. Resumo rápido
+2. Visão geral
+3. “Qual tipo de hiperparatireoidismo?”
+4. Comparação dos três mecanismos
+5. Fisiologia normal do eixo Ca–P–PTH–calcitriol–FGF23
+6. Hiperparatireoidismo primário
+7. Hiperparatireoidismo secundário renal / CKD-MBD
+8. Hiperparatireoidismo secundário nutricional
+9. Diferenças cães × gatos
+10. Jornada diagnóstica
+11. Diagnósticos diferenciais
+12. Interpretação dos exames laboratoriais
+13. Diagnóstico por imagem
+14. Tratamento
+15. Manejo da hipercalcemia
+16. Manejo da hipocalcemia
+17. Paratireoidectomia
+18. Monitorização pós-operatória
+19. Dieta e fósforo
+20. Prognóstico
+21. Decisão rápida/fluxogramas
+22. Erros clínicos a evitar
+23. Imagens recomendadas
+24. Referências numeradas
+
+---
+
+# 1. RESUMO RÁPIDO
+
+## Definição
+
+Hiperparatireoidismo é a **secreção persistentemente aumentada ou inadequadamente não suprimida de paratormônio (PTH)**. O significado dessa alteração depende do contexto fisiológico. (1–7)
+
+### Primário
+
+A paratireoide secreta PTH **autonomamente**, mesmo quando o cálcio ionizado já está elevado.
+
+**Padrão clássico:**
+
+**iCa ↑ + PTH inadequadamente normal ou ↑ + fósforo baixo/baixo-normal**
+
+Principal tratamento:
+
+**remoção/destruição do tecido paratireoidiano hiperfuncional.** (1,2,6)
+
+### Secundário renal
+
+O aumento de PTH é **compensatório à DRC/CKD** e faz parte da síndrome atualmente denominada **CKD-Mineral and Bone Disorder — CKD-MBD**.
+
+**Padrão comum:**
+
+**CKD + PTH ↑ + FGF23 ↑ + calcitriol ↓ + iCa normal/↓ + fósforo inicialmente normal, depois ↑.** (3,4,6,8–10)
+
+Principal tratamento:
+
+**controle de fósforo e da própria DRC**, especialmente dieta renal e, quando necessário, quelantes intestinais de fósforo. (9,10)
+
+### Secundário nutricional
+
+PTH sobe para defender o cálcio ionizado diante de:
+
+* ingestão inadequada de cálcio;
+* relação Ca:P desfavorável;
+* excesso de fósforo;
+* dietas caseiras ou exclusivamente cárneas mal formuladas;
+* eventualmente deficiência concomitante de vitamina D. (5–7)
+
+É especialmente importante em **animais jovens em crescimento**.
+
+**Padrão comum:**
+
+**histórico dietético compatível + PTH ↑ + iCa normal-baixo/↓ + osteopenia generalizada ± fraturas patológicas.**
+
+Principal tratamento:
+
+**corrigir a dieta.**
+
+---
+
+# CARD DE OURO — INTERPRETAÇÃO DO PTH
+
+> 🧠 **PTH não deve ser interpretado isoladamente. Sempre interpretar junto ao cálcio ionizado.**
+
+Em um animal **hipercalcêmico**, o PTH fisiologicamente deveria estar bastante suprimido.
+
+Portanto:
+
+### iCa alto + PTH alto
+
+Fortemente compatível com hiperparatireoidismo primário.
+
+### iCa alto + PTH “normal”
+
+**Ainda pode ser hiperparatireoidismo primário**, porque o valor é fisiologicamente inadequado para aquela hipercalcemia.
+
+### iCa alto + PTH baixo/suprimido
+
+Torna PHPT muito menos provável e direciona a investigação para:
+
+* hipercalcemia da malignidade;
+* intoxicação por vitamina D;
+* doença granulomatosa;
+* outras causas.
+
+No estudo clássico de 210 cães citado pelo VIN, grande proporção dos cães com PHPT tinha PTH dentro do intervalo laboratorial de referência; portanto, **“PTH normal” não exclui PHPT quando existe hipercalcemia verdadeira.** (1)
+
+---
+
+# 2. CARD — NÃO CONFUNDIR OS TRÊS PERFIS
+
+| Característica        | Primário                  | Secundário renal                      | Secundário nutricional                                   |
+| --------------------- | ------------------------- | ------------------------------------- | -------------------------------------------------------- |
+| Motivo do PTH ↑       | Autonomia paratireoidiana | Compensação à CKD                     | Compensação dietética                                    |
+| iCa                   | ↑                         | normal ou ↓                           | normal-baixo ou ↓                                        |
+| Fósforo               | baixo/baixo-normal        | normal inicialmente; ↑ com progressão | variável; pode estar ↑ precocemente e ↓ após compensação |
+| Calcitriol            | normal/↑ variável         | ↓                                     | frequentemente normal/↑ pela estimulação por PTH         |
+| FGF23                 | não é marcador principal  | ↑ precocemente                        | não é marcador principal                                 |
+| Glândulas             | 1 nódulo mais comum       | hiperplasia difusa                    | hiperplasia compensatória                                |
+| Paciente típico       | adulto/idoso              | paciente com DRC                      | jovem em crescimento                                     |
+| Lesão óssea dominante | menos comum               | crânio/mandíbula                      | esqueleto axial e apendicular                            |
+| Tratamento-chave      | paratireoidectomia        | controlar DRC/fósforo                 | corrigir dieta                                           |
+
+(1–10)
+
+---
+
+# 3. ANATOMIA
+
+Cães e gatos normalmente apresentam **quatro glândulas paratireoides** pequenas associadas à tireoide cervical.
+
+As **paratireoides externas** localizam-se extracapsularmente próximas ao polo cranial/craniolateral de cada lobo tireoidiano.
+
+As **paratireoides internas** ficam dentro da cápsula/parênquima tireoidiano, mais caudalmente. (1,2,6)
+
+Tecido paratireoidiano ectópico também existe e é particularmente importante quando:
+
+* há PHPT bioquimicamente comprovado;
+* ultrassonografia cervical não identifica uma massa;
+* exploração cirúrgica não encontra glândula anormal.
+
+O VIN informa tecido ectópico em aproximadamente **3–6% dos cães e 35–50% dos gatos**, embora nem todo tecido ectópico seja clinicamente hiperfuncional. (1,2)
+
+Possíveis localizações incluem:
+
+* cadeia cervical;
+* região próxima ao inlet torácico;
+* mediastino cranial.
+
+---
+
+# 4. FISIOLOGIA NORMAL — PTH
+
+O PTH é secretado pelas **células principais/chief cells** das paratireoides e representa um dos principais reguladores minuto a minuto do **cálcio ionizado extracelular**. (6)
+
+O cálcio ionizado é detectado pelo **calcium-sensing receptor — CaSR**.
+
+## Quando o iCa cai
+
+CaSR sinaliza maior produção/liberação de PTH.
+
+O PTH tenta aumentar rapidamente o cálcio circulante por três vias principais.
+
+---
+
+# 5. RIM
+
+O PTH:
+
+### aumenta a reabsorção renal de cálcio
+
+Menos Ca é eliminado na urina.
+
+### reduz a reabsorção tubular de fósforo
+
+Aumenta a fosfatúria.
+
+### estimula 1α-hidroxilase renal
+
+Aumenta a conversão de:
+
+**25-OH-vitamina D → 1,25-(OH)₂-vitamina D = calcitriol**
+
+O calcitriol aumenta a absorção gastrointestinal de cálcio e fósforo. (6–8)
+
+---
+
+# 6. OSSO
+
+PTH aumenta a disponibilização de cálcio do esqueleto.
+
+O efeito não deve ser simplificado como “PTH destrói osso diretamente”.
+
+PTH atua sobre células da linhagem osteoblástica, modificando sinais como RANKL/OPG e promovendo diferenciação/ativação osteoclástica.
+
+Quando a estimulação é **crônica**, predomina aumento da reabsorção óssea.
+
+Resultado possível:
+
+* osteopenia;
+* corticais delgadas;
+* perda trabecular;
+* osteodistrofia fibrosa;
+* fraturas patológicas.
+
+---
+
+# 7. INTESTINO
+
+O efeito intestinal é predominantemente **indireto**, mediado pelo calcitriol produzido no rim.
+
+Calcitriol aumenta absorção de:
+
+* cálcio;
+* fósforo.
+
+---
+
+# 8. RESULTADO LÍQUIDO DO PTH
+
+Em função renal normal:
+
+**PTH → iCa ↑**
+
+e, devido à intensa fosfatúria:
+
+**PTH → fósforo sérico ↓**
+
+Esse mecanismo explica por que:
+
+> **hipercalcemia + fósforo baixo/baixo-normal + PTH não suprimido** forma o padrão clássico de PHPT. (1,2,6)
+
+A fisiologia e classificação descritas em Nelson & Couto sustentam essa interpretação.
+
+---
+
+# 9. FGF23 — POR QUE É IMPORTANTE NA DOENÇA RENAL?
+
+FGF23 é produzido principalmente por células ósseas e aumenta precocemente na DRC quando a capacidade renal de eliminar fósforo começa a diminuir.
+
+Ele tenta preservar a normofosfatemia:
+
+**FGF23 ↑ → fosfatúria ↑**
+
+Mas existe um custo:
+
+**FGF23 ↑ → 1α-hidroxilase ↓ → calcitriol ↓**
+
+Com menos calcitriol:
+
+* diminui a absorção intestinal de Ca;
+* desaparece parte da retroalimentação inibitória do PTH;
+* PTH sobe.
+
+Esse processo pode começar **antes de existir hiperfosfatemia evidente**. (3,4,6,8)
+
+O BSAVA já utiliza o conceito mais amplo **mineral and bone disorder — MBD** em vez de enxergar a alteração exclusivamente como hiperparatireoidismo renal.
+
+---
+
+# 10. HIPERPARATIREOIDISMO PRIMÁRIO — PHPT
+
+## Definição
+
+Produção autônoma de PTH por tecido paratireoidiano anormal.
+
+O aumento do cálcio deixa de suprimir adequadamente a secreção hormonal. (1,2)
+
+Principais causas:
+
+1. **adenoma**
+2. carcinoma
+3. hiperplasia adenomatosa/multiglandular
+
+---
+
+# 11. HIPERPARATIREOIDISMO PRIMÁRIO — CÃO
+
+PHPT é **incomum em cães**, mas é muito mais frequente do que em gatos. (1)
+
+### Etiologia
+
+Adenoma é a causa mais comum.
+
+Carcinoma representa uma minoria dos casos; o VIN cita aproximadamente **3–10%** em algumas séries caninas. (1)
+
+Metástase de carcinoma paratireoidiano é incomum.
+
+Uma única glândula costuma estar envolvida, mas doença multiglandular ocorre.
+
+### Predisposição racial
+
+**Keeshond** é a raça clássica.
+
+Foi descrita uma inserção de 194 pares de bases no cromossomo 20 associada a PHPT hereditário com padrão autossômico dominante. (1)
+
+Outras raças descritas em excesso incluem:
+
+* Dachshund;
+* Golden Retriever;
+* Pastor Alemão;
+* Norwegian Elkhound.
+
+### Idade
+
+Predominantemente animais de meia-idade a idosos.
+
+Médias publicadas estão em aproximadamente **10–11 anos**, e a grande maioria dos cães é >7 anos. (1)
+
+---
+
+# 12. CURSO CLÍNICO NO CÃO
+
+Uma característica extremamente importante:
+
+> **muitos cães com PHPT parecem completamente normais.**
+
+No grande estudo de 210 cães citado pelo VIN:
+
+**71% tinham exame físico sem alterações relevantes atribuíveis ao PHPT.** (1)
+
+Portanto, a apresentação típica pode ser:
+
+**“hipercalcemia persistente descoberta incidentalmente no perfil bioquímico”.**
+
+Massa cervical palpável é incomum em cães.
+
+---
+
+# 13. SINAIS CLÍNICOS DO PHPT CANINO
+
+Os sinais derivam predominantemente da **hipercalcemia crônica**, não da massa cervical.
+
+### Renais/urinários
+
+* PU;
+* PD;
+* hipostenúria;
+* hipercalciúria;
+* urolitíase;
+* hematúria;
+* estrangúria;
+* polaciúria;
+* UTI.
+
+Na série de 210 cães, cultura urinária positiva ocorreu em aproximadamente **29%**. (1)
+
+### Neuromusculares
+
+* fraqueza;
+* redução de atividade;
+* tremores;
+* fasciculações;
+* atrofia muscular;
+* intolerância ao exercício.
+
+### Gastrointestinais
+
+* hiporexia/anorexia;
+* vômito;
+* constipação;
+* ocasionalmente diarreia;
+* perda de peso.
+
+### Neurológicos
+
+Em hipercalcemia mais importante:
+
+* depressão;
+* letargia;
+* alteração de consciência;
+* desorientação.
+
+### Cardíacos
+
+Pode ocorrer alteração de excitabilidade e ritmo, incluindo bradicardia/bradiarritmias em hipercalcemia importante.
+
+---
+
+# 14. POR QUE HIPERCALCEMIA CAUSA PU/PD?
+
+A hipercalcemia interfere na capacidade do túbulo/ducto coletor de responder adequadamente ao ADH.
+
+Resultado:
+
+**resistência renal funcional ao efeito antidiurético → menor concentração urinária → PU → PD compensatória.**
+
+Além disso:
+
+* hipercalciúria favorece urolitíase;
+* hipercalcemia persistente pode prejudicar perfusão/função renal;
+* mineralização renal pode ocorrer quando Ca e P encontram-se simultaneamente elevados.
+
+---
+
+# 15. HIPERPARATIREOIDISMO PRIMÁRIO — GATO
+
+PHPT é **raro em gatos**. (2)
+
+A apresentação difere do cão em pontos importantes.
+
+### Idade
+
+Principalmente gatos idosos.
+
+No material VIN, média próxima de **13 anos**. (2)
+
+### Raça
+
+Nenhuma predisposição definitivamente estabelecida.
+
+Siamês aparece em algumas séries, mas não tratar como predisposição comprovada.
+
+### Etiologia
+
+Em estudo de 32 gatos submetidos a tratamento cirúrgico:
+
+* adenoma: **20/32 = 62,5%**;
+* carcinoma: **7/32 = 21,9%**. (2,14)
+
+Portanto, carcinoma pode representar proporção maior entre os gatos operados do que tradicionalmente observado em cães, mas a amostra felina é pequena e possui viés de encaminhamento.
+
+---
+
+# 16. CURSO CLÍNICO NO GATO
+
+Diferentemente do cão, gatos frequentemente chegam **clinicamente doentes**.
+
+Na coorte de 32 gatos citada pelo VIN apenas aproximadamente **19% não tinham sinais clínicos**, ou seja, a maioria apresentava alguma manifestação. (2,14)
+
+### Sinais mais registrados na mesma coorte
+
+* letargia: ~56%;
+* hiporexia/anorexia: ~53%;
+* vômito: ~41%;
+* perda de peso: ~31%.
+
+PU/PD foi relatada em menos de 20%. (2)
+
+---
+
+# 17. MASSA CERVICAL — DIFERENÇA IMPORTANTE ENTRE ESPÉCIES
+
+### Cão
+
+Massa cervical palpável é rara.
+
+### Gato
+
+Massa cervical foi relatada em aproximadamente **38–57%** em algumas séries.
+
+Isso muda o exame físico:
+
+> **em gato idoso hipercalcêmico, palpação cervical cuidadosa é especialmente importante.**
+
+Também examinar tireoides porque doença tireoidiana concomitante é comum em gatos idosos e pode confundir localização/anatomia.
+
+---
+
+# 18. PERFIL LABORATORIAL — PHPT
+
+## Cálcio total
+
+Geralmente elevado.
+
+Porém não é a melhor representação do cálcio biologicamente ativo.
+
+## Cálcio ionizado
+
+É o teste mais importante para confirmar **hipercalcemia biologicamente relevante**.
+
+### NÃO utilizar “cálcio corrigido” como substituto
+
+Equações que tentam corrigir cálcio total por albumina apresentam desempenho insuficiente em cães e gatos.
+
+Criar card:
+
+> ⚠️ **Se a interpretação clínica depende de saber se o paciente está verdadeiramente hipercalcêmico, medir iCa. Não usar fórmula de cálcio corrigido para decidir PHPT.**
+
+O BSAVA reforça que o manuseio da amostra de iCa precisa ser cuidadoso porque exposição ao ar aumenta pH e pode reduzir artificialmente o iCa medido.
+
+---
+
+# 19. FÓSFORO NO PHPT
+
+Geralmente:
+
+**baixo a baixo-normal.**
+
+Mecanismo:
+
+**PTH → menor reabsorção tubular renal de fósforo → fosfatúria.**
+
+Fósforo alto em paciente hipercalcêmico deve aumentar suspeita de:
+
+* DRC;
+* intoxicação por vitamina D;
+* osteólise;
+* outras condições;
+
+e reduzir a simplicidade de um diagnóstico presumido de PHPT. (1,2,6)
+
+---
+
+# 20. PTH — COMO INTERPRETAR CORRETAMENTE
+
+Não criar um card dizendo apenas:
+
+**“PTH alto = PHPT”.**
+
+Isso é fisiologicamente errado.
+
+Criar matriz:
+
+| iCa    | PTH          | Interpretação principal                                |
+| ------ | ------------ | ------------------------------------------------------ |
+| ↑      | ↑            | PHPT altamente provável                                |
+| ↑      | normal-alto  | PTH inadequadamente não suprimido → PHPT provável      |
+| ↑      | normal-baixo | zona cinzenta; interpretar laboratório/contexto        |
+| ↑      | suprimido    | procurar causa PTH-independente                        |
+| ↓      | ↑            | resposta secundária apropriada: renal/nutricional etc. |
+| normal | ↑            | pode ocorrer em HPT secundário; interpretar DRC/dieta  |
+
+(1–8)
+
+---
+
+# 21. PTHrP
+
+PTH-related peptide é particularmente útil quando a investigação diferencia:
+
+**PHPT × hipercalcemia humoral da malignidade.**
+
+Em PHPT:
+
+**PTHrP tende a ser indetectável.**
+
+Porém PTHrP negativo não exclui toda neoplasia hipercalcemiante, porque nem todos os mecanismos de malignidade dependem de PTHrP.
+
+---
+
+# 22. HIPERCALCEMIA — DIAGNÓSTICOS DIFERENCIAIS NO CÃO
+
+Criar checklist:
+
+* hipercalcemia da malignidade, especialmente lymphoma;
+* adenocarcinoma de saco anal;
+* PHPT;
+* hipoadrenocorticismo;
+* DRC;
+* intoxicação por vitamina D/cholecalciferol;
+* calcipotrieno;
+* doenças granulomatosas;
+* osteólise;
+* erros pré-analíticos/desidratação.
+
+Nelson & Couto também ressalta malignidade, doença renal e PHPT como diferenciais importantes da hipercalcemia verdadeira.
+
+---
+
+# 23. HIPERCALCEMIA — DIAGNÓSTICOS DIFERENCIAIS NO GATO
+
+Priorizar:
+
+* hipercalcemia idiopática felina;
+* neoplasia, especialmente lymphoma e carcinoma de células escamosas;
+* DRC;
+* PHPT;
+* vitamina D;
+* doença granulomatosa;
+* osteólise.
+
+Não assumir PHPT simplesmente porque existe hipercalcemia no gato.
+
+---
+
+# 24. JORNADA DIAGNÓSTICA — PHPT
+
+## ETAPA 1 — confirmar
+
+Repetir:
+
+* cálcio total se necessário;
+* **cálcio ionizado**;
+* fósforo;
+* albumina;
+* creatinina/ureia/SDMA quando disponível.
+
+---
+
+# ETAPA 2 — história dirigida
+
+Perguntar:
+
+* suplementos;
+* vitamina D;
+* rodenticidas;
+* cremes humanos contendo calcipotrieno;
+* dieta;
+* medicamentos;
+* perda de peso;
+* linfonodomegalia;
+* sinais urinários;
+* PU/PD;
+* doença renal;
+* histórico oncológico.
+
+---
+
+# ETAPA 3 — exame físico dirigido
+
+### Cão
+
+* linfonodos;
+* cavidade oral;
+* palpação abdominal;
+* palpação de sacos anais/reto;
+* esqueleto;
+* região cervical.
+
+### Gato
+
+Além do acima:
+
+* palpação tireoidiana/paratireoidiana cervical especialmente cuidadosa.
+
+---
+
+# ETAPA 4 — banco mínimo
+
+* hemograma;
+* bioquímica;
+* iCa;
+* fósforo;
+* eletrólitos;
+* urinálise;
+* densidade urinária;
+* cultura urinária quando indicada.
+
+Em PHPT canino existe frequência relevante de bacteriúria/ITU e urolitíase; não ignorar urina mesmo se o paciente não apresenta disúria. (1)
+
+---
+
+# ETAPA 5 — PTH + iCa
+
+Diagnóstico hormonal deve ser relacional.
+
+**iCa alto + PTH não apropriadamente suprimido = padrão fundamental.**
+
+---
+
+# ETAPA 6 — PTHrP quando indicado
+
+Especialmente se houver:
+
+* doença sistêmica;
+* perda de peso importante;
+* massa;
+* linfonodos aumentados;
+* suspeita de malignidade.
+
+---
+
+# ETAPA 7 — ULTRASSOM CERVICAL
+
+Após evidência bioquímica compatível.
+
+---
+
+# ETAPA 8 — INVESTIGAR OUTRAS CAUSAS DE HIPERCALCEMIA
+
+Conforme apresentação:
+
+* US abdominal;
+* radiografia/CT torácica;
+* citologia de linfonodo/massa;
+* mielograma em circunstâncias específicas;
+* avaliação de saco anal em cão;
+* testes endócrinos;
+* 25-OH-vitamina D quando indicado.
+
+---
+
+# 25. ULTRASSONOGRAFIA DAS PARATIREOIDES
+
+Nódulos de PHPT frequentemente são:
+
+* arredondados/ovoides;
+* bem delimitados;
+* hipoecoicos;
+* às vezes quase anecoicos.
+
+O VIN cita capacidade de visualização de aproximadamente **90–95%** das massas por operadores experientes. (1,2)
+
+Porém:
+
+> **“detectar uma massa” não significa mapear perfeitamente todas as glândulas.**
+
+Em estudo cirúrgico/histológico de cães:
+
+* concordância de US para número de glândulas afetadas: ~66%;
+* concordância de lateralidade: ~72%.
+
+Portanto:
+
+### Sensibilidade clínica boa para localizar lesão dominante
+
+MAS
+
+### precisão imperfeita para doença multiglandular
+
+Não apresentar ultrassom como padrão histológico.
+
+---
+
+# 26. TAMANHO DA PARATIREOIDE CANINA
+
+Paratireoide canina normal costuma medir **<3 mm de largura máxima**.
+
+Massas anormais apresentam dimensões maiores.
+
+Lesões >8 mm foram mais associadas à malignidade em algumas séries, porém:
+
+> **tamanho não diferencia adenoma de carcinoma com segurança.**
+
+Histopatologia continua necessária. (1,15)
+
+---
+
+# 27. ULTRASSOM FELINO — LIMITAÇÃO PARTICULAR
+
+Em gatos:
+
+* paratireoides normais nem sempre são identificáveis;
+* nódulos tireoidianos hipoecoicos podem mimetizar tecido paratireoidiano;
+* interpretação depende bastante de experiência.
+
+Mesmo assim, uma série felina identificou pelo menos uma massa em **23/25 gatos (~92%)** avaliados. (2)
+
+---
+
+# 28. CT NO PHPT CANINO
+
+CT contrastada é especialmente interessante quando:
+
+* US é negativo/inconclusivo;
+* suspeita-se tecido ectópico;
+* anatomia cirúrgica é difícil;
+* existe suspeita de lesão invasiva;
+* planejamento pré-operatório necessita maior precisão.
+
+Estudo open access de 2022 avaliou 22 glândulas histologicamente confirmadas:
+
+* 12 adenomas;
+* 8 adenocarcinomas;
+* 2 hiperplasias.
+
+As lesões apresentaram sobreposição considerável entre diagnósticos histológicos, portanto:
+
+> **CT ajuda a localizar/caracterizar, mas não substitui histopatologia para adenoma versus carcinoma.** (15)
+
+---
+
+# 29. CINTILOGRAFIA
+
+O uso histórico de sestamibi apresentou sensibilidade/especificidade insatisfatórias em cães.
+
+O VIN atualizado não recomenda cintilografia como exame padrão para localizar PHPT canino. (1)
+
+Não colocar como exame “de escolha”.
+
+---
+
+# 30. CITOLOGIA
+
+Não recomendar FNA de toda massa paratireoidiana como rotina.
+
+Em lesões **císticas**, aspiração guiada por US e determinação de **PTH no fluido** podem ajudar a documentar origem funcional. (1,2)
+
+Histopatologia após excisão continua mais informativa para:
+
+* adenoma;
+* carcinoma;
+* hiperplasia.
+
+---
+
+# 31. TRATAMENTO DEFINITIVO DO PHPT — PARATIREOIDECTOMIA
+
+### Cão
+
+Tratamento de escolha em grande parte dos centros de referência.
+
+### Gato
+
+Tratamento de escolha e opção mais estabelecida.
+
+A hipercalcemia pode estar produzindo dano renal e urinário mesmo quando o animal parece assintomático.
+
+Portanto, **ausência de sinais clínicos não deve automaticamente significar ausência de indicação terapêutica.** (1,2)
+
+---
+
+# 32. CIRURGIA
+
+Quando uma única glândula está aumentada:
+
+**excisão completa da glândula acometida.**
+
+Quando 2–3 glândulas são evidentemente anormais:
+
+considerar remoção das glândulas afetadas.
+
+Quando todas as quatro parecem aumentadas:
+
+> **reavaliar o diagnóstico para excluir hiperparatireoidismo secundário.**
+
+Se hiperplasia primária multiglandular for comprovada, abordagem pode preservar ao menos uma porção funcional para reduzir risco de hipoparatireoidismo permanente. (1,2)
+
+Lesões de paratireoide interna ou invasivas podem exigir ressecção parcial/completa do lobo tireoidiano ipsilateral.
+
+---
+
+# 33. PARATIREOIDECTOMIA MINIMAMENTE INVASIVA
+
+Estudo de 50 cães publicado em 2023 descreveu abordagem ultrassonograficamente orientada minimamente invasiva.
+
+Entre os animais avaliáveis, resolução da hipercalcemia foi muito frequente, mostrando que técnicas focadas podem ser efetivas quando:
+
+* lesão foi precisamente localizada;
+* equipe possui experiência;
+* paciente é corretamente selecionado. (13)
+
+Não sugerir que qualquer nódulo possa receber essa técnica sem avaliação especializada.
+
+---
+
+# 34. ABLAÇÃO — CÃO
+
+Alternativas descritas:
+
+## etanol percutâneo guiado por ultrassom
+
+e
+
+## ablação térmica/radiofrequência guiada por ultrassom
+
+Podem eliminar função do tecido anormal sem cirurgia aberta. (1)
+
+### Requisitos
+
+* lesão claramente visível;
+* acesso seguro;
+* distância adequada de vasos/carótida;
+* operador experiente.
+
+### Limitações
+
+* não gera espécime histológico completo;
+* risco de lesão do nervo laríngeo recorrente;
+* alteração vocal;
+* Horner;
+* necrose local;
+* paralisia laríngea.
+
+O VIN assinala que alguns autores deixaram de recomendar ablação por etanol em função desses riscos. (1)
+
+---
+
+# 35. ABLAÇÃO — GATO
+
+Não apresentar como terapia rotineira.
+
+Existem relatos isolados de sucesso, mas a experiência felina é muito menor.
+
+**Paratireoidectomia permanece tratamento preferencial.** (2)
+
+---
+
+# 36. HIPERCALCEMIA GRAVE — ESTABILIZAÇÃO PRÉ-OPERATÓRIA
+
+O objetivo não é necessariamente normalizar todo Ca antes de operar.
+
+O objetivo é:
+
+* corrigir desidratação;
+* preservar perfusão renal;
+* reduzir hipercalcemia perigosa;
+* evitar mineralização/lesão renal;
+* estabilizar paciente para terapia definitiva.
+
+---
+
+# 37. FLUIDOTERAPIA
+
+## Primeiro passo
+
+**corrigir déficit volêmico/desidratação com cristaloide isotônico apropriado.**
+
+O VIN descreve tradicionalmente **NaCl 0,9%** para promover expansão de volume/natriurese em hipercalcemia. (1,2)
+
+Não inserir uma taxa fixa universal.
+
+Calcular conforme:
+
+* déficit;
+* manutenção;
+* perdas;
+* função renal;
+* diurese;
+* doença cardíaca.
+
+---
+
+# 38. FUROSEMIDA NA HIPERCALCEMIA
+
+### NÃO administrar antes de reidratar.
+
+Porque pode:
+
+* piorar hipovolemia;
+* reduzir GFR;
+* piorar azotemia;
+* causar hipocalemia;
+* causar hipomagnesemia.
+
+Após euvolemia, uma faixa descrita em formulários veterinários é:
+
+**Cães e gatos: 2–4 mg/kg IV/SC/VO, aproximadamente q8–24h, titulada conforme caso e monitorização. (11)**
+
+O BSAVA explicitamente orienta **hidratar antes** da terapia.
+
+No app colocar:
+
+> **Furosemida é adjuvante, não tratamento definitivo do PHPT.**
+
+---
+
+# 39. PAMIDRONATO
+
+Bisfosfonato que:
+
+* adere ao osso;
+* inibe atividade osteoclástica;
+* reduz reabsorção óssea.
+
+Pode ser considerado em **hipercalcemia grave/refratária**, especialmente quando tratamento definitivo não pode ocorrer imediatamente.
+
+### Cão
+
+**0,65–2 mg/kg IV**, tipicamente aproximadamente **1 mg/kg**, diluído em NaCl 0,9% e administrado lentamente em **2–4 horas. (11)**
+
+### Gato
+
+**1–2 mg/kg IV lentamente, geralmente em aproximadamente 4 horas. (11)**
+
+O BSAVA alerta para **toxicidade renal**, exigindo cautela especialmente em pacientes já azotêmicos.
+
+Não transformar pamidronato em tratamento de primeira escolha do PHPT operável.
+
+---
+
+# 40. CALCITONINA
+
+Pode reduzir temporariamente Ca por inibição da atividade osteoclástica.
+
+Faixa descrita:
+
+**calcitonina salmon: 4–6 UI/kg SC q8–12h. (7)**
+
+Problemas:
+
+* efeito frequentemente temporário;
+* taquifilaxia;
+* custo;
+* vômitos.
+
+Reservar para hipercalcemia severa selecionada/refratária.
+
+---
+
+# 41. GLICOCORTICOIDE — ALERTA
+
+Glicocorticoides podem diminuir hipercalcemia em determinadas doenças.
+
+Entretanto:
+
+> ⚠️ **não iniciar prednisona/dexametasona às cegas em paciente hipercalcêmico antes de investigar lymphoma quando essa neoplasia é diferencial real.**
+
+O tratamento pode:
+
+* reduzir linfonodos;
+* alterar citologia/histologia;
+* diminuir rendimento diagnóstico.
+
+---
+
+# 42. CINACALCETE NO PHPT
+
+Cinacalcete é calcimimético:
+
+**ativa CaSR → reduz secreção de PTH.**
+
+Existem dados preliminares em cães.
+
+O VIN cita um abstract de 2022 com redução de iCa em 14 cães, porém:
+
+* doses variaram;
+* duração variou;
+* efeitos adversos foram frequentes;
+* não existe evidência suficiente para terapia rotineira. (1)
+
+Portanto criar card:
+
+> 🟠 **Terapia emergente/off-label — não substituir paratireoidectomia como padrão atual.**
+
+Não criar protocolo de dose de rotina.
+
+---
+
+# 43. A PRINCIPAL COMPLICAÇÃO APÓS PARATIREOIDECTOMIA
+
+# HIPOCALEMIA
+
+Durante a hipercalcemia crônica:
+
+**glândula anormal → PTH alto → Ca alto**
+
+As demais paratireoides:
+
+**Ca alto → CaSR ativado → PTH endógeno suprimido → atrofia funcional**
+
+Após remover o tumor:
+
+**PTH cai abruptamente**
+
+mas as glândulas normais não recuperam imediatamente sua secreção.
+
+Resultado:
+
+**queda importante do Ca.**
+
+Esse é o motivo fisiológico da hipocalcemia pós-paratireoidectomia. (1,2,7)
+
+---
+
+# 44. QUANDO A HIPOCALEMIA APARECE?
+
+Pode começar nas primeiras 12–24 horas.
+
+Porém em cães é classicamente possível observar queda mais importante em **3–6 dias** após tratamento. (1)
+
+Portanto:
+
+> ⚠️ **uma concentração normal de Ca na manhã seguinte à cirurgia não elimina o risco.**
+
+Criar instruções claras de alta e retorno.
+
+---
+
+# 45. FREQUÊNCIA DE HIPOCALEMIA PÓS-OPERATÓRIA
+
+### Cão
+
+Estudos relatam aproximadamente **35–70%** de hipocalcemia bioquímica dependendo de definição, população e procedimento. (1)
+
+Nem todos desenvolvem sinais clínicos.
+
+### Gato
+
+Relatos em torno de **30–34%** de hipocalcemia bioquímica após tratamento. (2)
+
+Tetania clínica foi incomum nas séries felinas utilizadas pelo VIN.
+
+---
+
+# 46. NOVA EVIDÊNCIA — PTH PRÉ-OPERATÓRIO COMO PREDITOR EM CÃES
+
+Adicionar card:
+
+## Atualização científica 2025
+
+Estudo multicêntrico com **103 cães** avaliou preditores de hipocalcemia após paratireoidectomia.
+
+Cães que desenvolveram hipocalcemia apresentaram PTH pré-operatório mediano maior:
+
+* 232 pg/mL nos hipocalcêmicos;
+* 81,5 pg/mL nos não hipocalcêmicos.
+
+Para o ponto de corte:
+
+**PTH ≥75 pg/mL**
+
+a sensibilidade para prever hipocalcemia foi **96,6%**, mas a especificidade apenas **42,3%**. (12)
+
+Interpretação correta:
+
+> **PTH <75 pg/mL parece útil para identificar um grupo de menor risco, mas ≥75 pg/mL não significa que o cão obrigatoriamente desenvolverá hipocalcemia.**
+
+AUC = 0,78.
+
+Não transformar o cutoff em regra absoluta.
+
+---
+
+# 47. MONITORIZAÇÃO PÓS-PARATIREOIDECTOMIA
+
+### Durante internação
+
+Monitorar:
+
+* iCa preferencialmente;
+* Ca total;
+* fósforo;
+* Mg;
+* creatinina;
+* sinais neuromusculares;
+* ECG se Ca IV for necessário.
+
+### Frequência inicial
+
+**Ca aproximadamente q12–24h nos primeiros dias**, individualizando pelo risco. (1,2)
+
+### Após alta
+
+Planejar rechecagem considerando que hipocalcemia pode ser tardia.
+
+Orientar retorno imediato se:
+
+* inquietação;
+* hipersensibilidade;
+* tremores;
+* fasciculações;
+* marcha rígida;
+* fraqueza;
+* desorientação;
+* convulsão.
+
+---
+
+# 48. CALCITRIOL PROFILÁTICO — NÃO PROMETER BENEFÍCIO
+
+Estudo de 78 cães não demonstrou que calcitriol profilático eliminasse o risco de hipocalcemia pós-tratamento. (22)
+
+O estudo multicêntrico de 2025 também não oferece evidência suficiente para recomendar suplementação pré-operatória universal.
+
+Portanto:
+
+> **não criar regra “todo cão operado deve receber calcitriol preventivamente”.**
+
+Individualizar.
+
+---
+
+# 49. TRATAMENTO DE HIPOCALEMIA CLÍNICA AGUDA
+
+Quando há:
+
+* tetania;
+* tremores intensos;
+* fasciculações;
+* convulsões;
+* arritmia;
+* sinais neuromusculares importantes;
+
+utilizar cálcio IV.
+
+### Gluconato de cálcio 10%
+
+**0,5–1,5 mL/kg IV lentamente em aproximadamente 20–30 min. (11)**
+
+Equivale aproximadamente a **50–150 mg/kg de gluconato de cálcio** conforme formulação.
+
+Monitorar ECG.
+
+Se ocorrer:
+
+* bradicardia;
+* alteração do ritmo;
+* encurtamento excessivo do QT;
+
+reduzir/interromper temporariamente administração.
+
+A dose emergencial é confirmada no BSAVA Small Animal Formulary.
+
+---
+
+# 50. SUPLEMENTAÇÃO ORAL PÓS-OPERATÓRIA
+
+Pode ser necessária:
+
+* cálcio oral;
+* calcitriol;
+
+quando existe hipocalcemia persistente ou risco clinicamente relevante.
+
+O objetivo não é manter Ca na porção alta do intervalo.
+
+### Objetivo fisiológico
+
+Manter Ca aproximadamente:
+
+**na região baixa do normal ou ligeiramente abaixo**, desde que assintomático,
+
+para permitir que as paratireoides residuais voltem a ser estimuladas. (1,2)
+
+Suplementação pode necessitar desmame durante semanas a meses.
+
+O VIN descreve redução gradual podendo levar **3–6 meses** em alguns pacientes. (1,2)
+
+---
+
+# 51. PROGNÓSTICO DO PHPT CANINO
+
+Em geral:
+
+**bom após tratamento definitivo bem-sucedido.**
+
+Recorrência é possível.
+
+O VIN cita recorrência em até aproximadamente **8%**, dependendo da série.
+
+Keeshonds apresentam maior predisposição à recorrência e doença multiglandular hereditária. (1)
+
+---
+
+# 52. CARCINOMA PARATIREOIDIANO CANINO
+
+Não considerar “carcinoma = prognóstico imediatamente ruim”.
+
+Metástase é incomum.
+
+Em série de 100 cães com carcinoma paratireoidiano tratados cirurgicamente:
+
+**mediana de sobrevida aproximada de 2 anos.** (1)
+
+Metástases foram raras.
+
+---
+
+# 53. PROGNÓSTICO DO PHPT FELINO
+
+Geralmente bom após cirurgia.
+
+Na principal coorte de 32 gatos utilizada pelo VIN:
+
+**mediana de sobrevida = 1109 dias** após cirurgia. (2,14)
+
+Nesse estudo o diagnóstico histológico de carcinoma não mostrou associação estatística clara com menor sobrevida, mas:
+
+> **a amostra é pequena; não interpretar isso como prova de que adenoma e carcinoma sejam biologicamente equivalentes.**
+
+---
+
+# 54. ATUALIZAÇÃO FELINA — 2025
+
+Adicionar card “Literatura recente”.
+
+Um relato de 2025 descreveu PHPT em gato após tratamento prévio com I¹³¹ para hipertireoidismo. A massa foi removida cirurgicamente e a hipercalcemia resolveu. (19)
+
+**Não escrever que radioiodoterapia causa hiperparatireoidismo em gatos.**
+
+É um relato temporal e o próprio artigo discute a ausência de evidência veterinária suficiente para inferir causalidade.
+
+---
+
+# 55. HIPERPARATIREOIDISMO SECUNDÁRIO RENAL
+
+Utilizar o termo:
+
+# Hiperparatireoidismo secundário renal / CKD-MBD
+
+Explicar:
+
+**CKD-MBD é conceito mais amplo que apenas PTH aumentado.**
+
+Envolve alterações em:
+
+* fósforo;
+* Ca;
+* FGF23;
+* calcitriol;
+* PTH;
+* ossos;
+* mineralização de tecidos moles.
+
+O hiperparatireoidismo é um dos componentes endócrinos desse complexo. (3,4,8)
+
+---
+
+# 56. FISIOPATOLOGIA PASSO A PASSO — RENAL
+
+Criar fluxograma original:
+
+### ETAPA 1
+
+**perda de néfrons → GFR ↓**
+
+↓ capacidade de eliminar fósforo
+
+### ETAPA 2
+
+organismo aumenta:
+
+**FGF23 ↑**
+
+para aumentar excreção de P pelos néfrons remanescentes.
+
+### ETAPA 3
+
+FGF23 reduz:
+
+**1α-hidroxilase renal**
+
+logo:
+
+**calcitriol ↓**
+
+### ETAPA 4
+
+Menos calcitriol:
+
+* menor absorção intestinal de Ca;
+* menor retroalimentação negativa direta sobre a paratireoide.
+
+### ETAPA 5
+
+Retenção de fósforo:
+
+* estimula PTH;
+* complexa Ca;
+* contribui para redução de iCa.
+
+### ETAPA 6
+
+**PTH ↑**
+
+para:
+
+* mobilizar Ca do osso;
+* aumentar reabsorção renal de Ca;
+* elevar fosfatúria.
+
+### ETAPA 7
+
+Inicialmente:
+
+**fósforo pode continuar normal.**
+
+Mas às custas de:
+
+**FGF23 ↑ + PTH ↑**
+
+### ETAPA 8
+
+Com progressão da DRC:
+
+capacidade compensatória é vencida:
+
+**hiperfosfatemia + calcitriol baixo + PTH alto → CKD-MBD mais grave.**
+
+(3,4,6,8–10)
+
+Nelson & Couto descreve esse fenômeno como um “trade-off”: preserva temporariamente o balanço mineral ao custo da exposição crônica a PTH/FGF23 e lesões associadas.
+
+---
+
+# 57. O PTH PODE SUBIR ANTES DO FÓSFORO
+
+Criar card importante:
+
+> 🧠 **Fósforo sérico normal NÃO exclui CKD-MBD.**
+
+Em fases mais precoces:
+
+* FGF23 ↑;
+* PTH ↑;
+
+podem compensar a diminuição da capacidade excretora renal e manter P sérico aparentemente normal. (8–10)
+
+Isso é especialmente relevante em gatos.
+
+---
+
+# 58. CURSO EM CÃES COM CKD
+
+O VIN cita estudo com 89 cães no qual hiperparatireoidismo renal foi identificado aproximadamente em:
+
+* IRIS 1: **36%**
+* IRIS 2: **44,1%**
+* IRIS 3: **77,8%**
+* IRIS 4: **91,7%**
+
+Esses números mostram progressão biológica, mas:
+
+> **não devem ser interpretados como prevalência universal em toda população de cães com DRC.**
+
+(3)
+
+---
+
+# 59. CURSO EM GATOS COM CKD
+
+Alterações de PTH são extremamente comuns na DRC felina.
+
+O VIN cita hiperparatireoidismo renal em até aproximadamente **84% dos gatos com DRC azotêmica** em determinadas populações. (4)
+
+Em gatos:
+
+* FGF23 tornou-se biomarcador particularmente importante;
+* pode aumentar antes da hiperfosfatemia;
+* é incorporado explicitamente às recomendações IRIS 2026.
+
+---
+
+# 60. PERFIL LABORATORIAL — CKD-MBD
+
+Esperar combinação variável de:
+
+* creatinina ↑;
+* SDMA ↑;
+* fósforo normal → posteriormente ↑;
+* PTH ↑;
+* FGF23 ↑;
+* calcitriol ↓;
+* iCa normal ou ↓;
+* Ca total variável;
+* anemia de DRC;
+* USG inadequadamente baixa;
+* proteinúria variável.
+
+Não exigir hipocalcemia.
+
+Não exigir hiperfosfatemia para casos iniciais.
+
+---
+
+# 61. OSTEODISTROFIA RENAL
+
+Estimulação crônica intensa por PTH pode provocar:
+
+**reabsorção óssea + substituição por tecido fibroso → osteodistrofia fibrosa.**
+
+Locais particularmente afetados:
+
+* mandíbula;
+* maxila;
+* ossos do crânio.
+
+---
+
+# 62. “RUBBER JAW”
+
+Achado clássico de doença avançada.
+
+Pode ocorrer:
+
+* mandíbula flexível/deformável;
+* dentes frouxos;
+* dor;
+* dificuldade para mastigar;
+* hipersalivação;
+* fratura patológica;
+* aumento facial.
+
+Em radiografia:
+
+* osteopenia;
+* desaparecimento da lamina dura;
+* redução do padrão trabecular;
+* cortical fina;
+* aspecto de “floating teeth”.
+
+Em gatos é descrito, porém parece menos frequente que em cães com doença renal grave. (3,4)
+
+---
+
+# 63. OUTRAS CONSEQUÊNCIAS DO CKD-MBD
+
+* mineralização de tecidos moles;
+* nefrocalcinose;
+* mineralização vascular;
+* fragilidade óssea;
+* piora funcional da DRC.
+
+O PTH cronicamente elevado também é historicamente considerado uma **toxina urêmica**, associado a efeitos sistêmicos metabólicos/celulares. (3,4,8)
+
+---
+
+# 64. ESTADIAMENTO
+
+## NÃO criar “estágio do hiperparatireoidismo”
+
+Não existe um estadiamento universal de:
+
+* PHPT;
+* hiperparatireoidismo nutricional.
+
+### No secundário renal:
+
+usar:
+
+# ESTÁGIO IRIS DA DRC
+
+O próprio tratamento de fósforo deve ser organizado pelo **IRIS 2026**. A página oficial confirma que documentos de tratamento de cães e gatos foram atualizados em 2026.
+
+---
+
+# 65. ALVOS DE FÓSFORO — IRIS 2026 — CÃO
+
+Criar tabela clínica:
+
+| IRIS      | Alvo após tratamento                                           |
+| --------- | -------------------------------------------------------------- |
+| Estágio 2 | **<4,6 mg/dL (<1,5 mmol/L), mas não <2,7 mg/dL (<0,9 mmol/L)** |
+| Estágio 3 | **<5,0 mg/dL (<1,6 mmol/L)**                                   |
+| Estágio 4 | **<6,0 mg/dL (<1,9 mmol/L)**                                   |
+
+(9)
+
+IRIS 2026 orienta redução dietética de fósforo como primeira intervenção e adição de quelante se o alvo não for atingido.
+
+---
+
+# 66. ALVOS DE FÓSFORO — IRIS 2026 — GATO
+
+| IRIS      | Alvo após tratamento                                           |
+| --------- | -------------------------------------------------------------- |
+| Estágio 2 | **<4,5 mg/dL (<1,5 mmol/L), mas não <2,7 mg/dL (<0,9 mmol/L)** |
+| Estágio 3 | **<5,0 mg/dL (<1,6 mmol/L)**                                   |
+| Estágio 4 | **<6,0 mg/dL (<1,9 mmol/L)**                                   |
+
+(10)
+
+---
+
+# 67. TRATAMENTO DO SECUNDÁRIO RENAL — PASSO 1
+
+# DIETA RENAL
+
+Objetivos:
+
+* reduzir ingestão de fósforo;
+* diminuir necessidade de compensação por FGF23/PTH;
+* controlar CKD-MBD;
+* contribuir para desacelerar progressão renal.
+
+A literatura experimental e clínica mostra que restrição de fósforo pode reduzir PTH e FGF23.
+
+---
+
+# 68. PASSO 2 — QUELANTE INTESTINAL DE FÓSFORO
+
+Se fósforo permanece acima do alvo apesar de dieta renal:
+
+Adicionar quelante **junto às refeições**.
+
+IRIS 2026 lista opções como:
+
+### cães
+
+* hidróxido de alumínio;
+* carbonato de alumínio;
+* carbonato de cálcio;
+* acetato de cálcio;
+* carbonato de lantânio;
+* citrato férrico.
+
+### gatos
+
+* hidróxido de alumínio;
+* carbonato de alumínio;
+* carbonato de cálcio;
+* acetato de cálcio;
+* carbonato de lantânio.
+
+Dose inicial geral indicada pelo IRIS:
+
+**30–60 mg/kg/DIA**, divididos e misturados **em cada refeição**, titulados ao efeito. (9,10)
+
+⚠️ Não interpretar isso como dose universal de “elemental aluminum” ou princípio ativo puro de qualquer produto.
+
+A formulação específica importa.
+
+---
+
+# 69. MONITORIZAÇÃO DOS QUELANTES
+
+Após início/ajuste:
+
+**Ca + fósforo aproximadamente a cada 4–6 semanas até estabilidade.**
+
+Depois:
+
+**aproximadamente a cada 12 semanas**, adaptando ao estágio e paciente. (9,10)
+
+---
+
+# 70. TOXICIDADE DO ALUMÍNIO
+
+Em cães:
+
+suspeitar se houver:
+
+* microcitose;
+* fraqueza muscular generalizada;
+* encefalopatia/sinais neurológicos.
+
+IRIS relata toxicidade especialmente em alguns cães com CKD avançada.
+
+Em gatos:
+
+toxicidade clínica por alumínio é menos documentada, mas continua sendo uma consideração farmacológica.
+
+---
+
+# 71. QUELANTES COM CÁLCIO
+
+Podem causar ou piorar:
+
+**hipercalcemia.**
+
+Portanto:
+
+* monitorar Ca;
+* evitar especialmente se o paciente já estiver hipercalcêmico;
+* preferir opção não contendo Ca quando apropriado.
+
+---
+
+# 72. FGF23 NO GATO — IRIS 2026
+
+Esse bloco deve ser atualizado e destacado.
+
+Em gato **IRIS 2** com fósforo ainda dentro da meta:
+
+se:
+
+**FGF23 >400 pg/mL**
+
+e não houver:
+
+* hipercalcemia;
+* anemia marcada;
+* inflamação importante;
+
+IRIS 2026 considera isso indicação para iniciar restrição dietética de fósforo. (10)
+
+---
+
+# 73. APÓS O FÓSFORO ENTRAR NA META
+
+IRIS 2026 sugere que FGF23 pode ajudar a decidir se restrição adicional é necessária.
+
+### FGF23 >700 pg/mL
+
+considerar intensificar controle de fósforo, se não houver fatores confundidores.
+
+### FGF23 <500 pg/mL
+
+compatível com excelente controle de mineral-bone disturbance no contexto indicado pelo IRIS. (10)
+
+---
+
+# 74. HIPERCALCEMIA EM GATO RECEBENDO DIETA RENAL
+
+IRIS 2026 chama atenção:
+
+alguns gatos com fósforo inicialmente dentro da meta podem desenvolver hipercalcemia após dieta muito restrita em fósforo.
+
+Se:
+
+**Ca total >12 mg/dL (>3 mmol/L)**
+
+a recomendação IRIS é considerar dieta **menos restrita em fósforo**, individualizando o caso. (10)
+
+---
+
+# 75. CALCITRIOL NA DRC — NÃO COPIAR RECOMENDAÇÕES ANTIGAS COMO PADRÃO ATUAL
+
+A literatura histórica descreveu calcitriol para reduzir PTH.
+
+O BSAVA Formulary traz para cães com hiperparatireoidismo renal secundário aproximadamente:
+
+**1,5–3,5 ng/kg VO q24h**, com doses superiores descritas em doença refratária sob monitorização intensiva.
+
+Porém:
+
+### GATOS
+
+O VIN atualizado afirma que benefício clínico de calcitriol na DRC felina não foi demonstrado e **não o recomenda rotineiramente**. (4)
+
+### CÃES
+
+A evidência é mista e deriva principalmente de literatura mais antiga.
+
+### IRIS 2026
+
+Calcitriol **não faz parte do algoritmo principal atual de controle de fósforo/CKD-MBD**.
+
+Portanto no app:
+
+> 🟠 **Calcitriol não deve aparecer como tratamento rotineiro de primeira linha do CKD-MBD. Em cães, pode ser consideração especializada após adequado controle de fósforo; em gatos, não recomendar rotineiramente com base na evidência atual.**
+
+---
+
+# 76. CINACALCETE NA DRC
+
+Existem extrapolações humanas e experimentações pontuais.
+
+Não é terapia padrão IRIS.
+
+Não colocar dose no card de consulta rápida.
+
+Criar apenas:
+
+> 🔬 **Uso experimental/off-label; evidência veterinária insuficiente para recomendação rotineira.**
+
+---
+
+# 77. PROGNÓSTICO — SECUNDÁRIO RENAL
+
+O prognóstico é predominantemente determinado por:
+
+* estágio IRIS;
+* progressão da DRC;
+* proteinúria;
+* pressão;
+* fósforo;
+* anemia;
+* estado nutricional;
+* complicações urêmicas.
+
+PTH muito elevado está associado a doença mineral mais avançada e, em algumas populações caninas, menor sobrevida, mas:
+
+> **PTH não deve ser utilizado isoladamente para prognóstico.**
+
+---
+
+# 78. HIPERPARATIREOIDISMO SECUNDÁRIO NUTRICIONAL
+
+## Definição
+
+Resposta fisiológica compensatória das paratireoides a **balanço alimentar cronicamente inadequado de Ca/P**, principalmente:
+
+* cálcio insuficiente;
+* excesso relativo de fósforo;
+* relação Ca:P inadequada;
+* dieta de carne sem balanceamento mineral;
+* formulações caseiras incompletas.
+
+(5–7,17,18)
+
+---
+
+# 79. POR QUE DIETA DE CARNE PURA É PERIGOSA?
+
+Músculo e vísceras são relativamente:
+
+* ricos em fósforo;
+* muito pobres em cálcio.
+
+O VIN cita relações extremamente desfavoráveis em tecidos cárneos sem osso, podendo chegar aproximadamente a:
+
+* músculo: Ca:P em torno de 1:10;
+* fígado: ainda mais pobre em Ca.
+
+Não usar esses números como regra de formulação; servem apenas para demonstrar o mecanismo. (5)
+
+---
+
+# 80. FISIOPATOLOGIA NUTRICIONAL
+
+### dieta Ca baixa / P relativamente alto
+
+↓
+
+### tendência à queda de iCa
+
+↓
+
+### PTH ↑
+
+↓
+
+### rim retém Ca + excreta P
+
+↓
+
+### calcitriol ↑
+
+↓
+
+### aumenta absorção intestinal
+
+MAS:
+
+a dieta não fornece cálcio suficiente.
+
+Então o organismo usa seu maior reservatório:
+
+# OSSO
+
+↓
+
+### reabsorção óssea crônica
+
+↓
+
+### osteopenia
+
+↓
+
+### cortical fina
+
+↓
+
+### deformação/fraturas
+
+Essa é a ideia que o app precisa ensinar:
+
+> **o organismo mantém o cálcio do sangue às custas do esqueleto.**
+
+O cálcio sérico pode, portanto, estar próximo do normal mesmo quando o esqueleto está profundamente desmineralizado.
+
+---
+
+# 81. QUEM É MAIS SUSCETÍVEL?
+
+## Filhotes e gatinhos
+
+Porque apresentam:
+
+* crescimento rápido;
+* demanda alta de Ca;
+* remodelação óssea intensa;
+* menor reserva óssea absoluta.
+
+No VIN felino:
+
+**<6 meses** é faixa especialmente representada. (5)
+
+---
+
+# 82. NSHP EM CÃES
+
+O material VIN fornecido não inclui página canina específica; utilizar as fontes complementares.
+
+Foi demonstrado em:
+
+* filhotes recebendo dieta com Ca muito baixo;
+* filhotes de Pastor Alemão alimentados com combinação desbalanceada de arroz/carne;
+* filhotes grandes alimentados com dietas raw/BARF inadequadamente formuladas;
+* cães adultos mantidos por longo período em dietas caseiras deficientes.
+
+Portanto:
+
+> **é muito mais comum em crescimento, mas não é exclusividade de filhotes.**
+
+DiBartola descreve osteodistrofia fibrosa e osteopenia importante em cães alimentados com dietas desequilibradas.
+
+---
+
+# 83. NSHP EM GATOS
+
+É particularmente relevante porque dietas:
+
+* “só carne”;
+* “só atum”;
+* alimentos complementares vendidos como se fossem dieta completa;
+* receitas caseiras sem suplemento mineral;
+
+podem fornecer Ca:P inadequado.
+
+A popularização de dietas caseiras/raw contribuiu para reaparecimento de uma doença que havia se tornado pouco frequente após a expansão de alimentos comerciais completos. (5,17)
+
+---
+
+# 84. SINAIS — NSHP
+
+### Ortopédicos
+
+* relutância em andar;
+* dor óssea;
+* claudicação;
+* claudicação alternante;
+* deformidade dos membros;
+* arqueamento;
+* fraturas espontâneas;
+* dificuldade de ficar em estação.
+
+### Coluna
+
+* cifose;
+* dor cervical/toracolombar;
+* fratura vertebral;
+* compressão medular.
+
+### Neurológicos
+
+* déficit proprioceptivo;
+* paresia;
+* paralisia;
+* ataxia.
+
+### Hipocalcemia clínica
+
+* tremores;
+* fasciculações;
+* hiperexcitabilidade;
+* convulsões.
+
+### Outros
+
+* atraso de crescimento;
+* constipação;
+* dor ao mastigar;
+* dentes frouxos.
+
+(5,7,17,18)
+
+---
+
+# 85. EXAMES LABORATORIAIS — NSHP
+
+Possíveis achados:
+
+### PTH
+
+↑
+
+### iCa
+
+normal-baixo ou ↓
+
+### Ca total
+
+normal ou ↓
+
+### fósforo
+
+variável.
+
+Pode:
+
+* estar alto inicialmente pela dieta;
+* normalizar;
+* tornar-se baixo pela fosfatúria mediada por PTH.
+
+### ALP
+
+pode estar ↑, especialmente em animais jovens e com elevada remodelação óssea.
+
+Importante:
+
+> **bioquímica relativamente discreta não exclui doença óssea grave.**
+
+---
+
+# 86. RADIOGRAFIA — NSHP
+
+Principais achados:
+
+* osteopenia generalizada;
+* cortical fina;
+* canal medular relativamente ampliado;
+* menor definição trabecular;
+* fraturas patológicas;
+* fraturas em galho verde;
+* folding fractures;
+* compressão vertebral;
+* deformidade pélvica;
+* arqueamento de ossos longos.
+
+(5,7,17)
+
+---
+
+# 87. NSHP × RAQUITISMO
+
+Criar comparação didática.
+
+### NSHP
+
+problema predominante:
+
+**quantidade/proporção de Ca/P → reabsorção excessiva de osso previamente mineralizado.**
+
+### Raquitismo
+
+problema predominante:
+
+**mineralização inadequada do osteoide/cartilagem de crescimento**, frequentemente ligada à vitamina D/fósforo.
+
+Tradicionalmente:
+
+* fises tendem a permanecer com largura mais normal em NSHP puro;
+* fises alargadas/metafisárias são mais sugestivas de raquitismo.
+
+Porém:
+
+> **não tratar isso como regra absoluta**, porque deficiências nutricionais podem coexistir.
+
+---
+
+# 88. CASO FELINO 2023 — EXCELENTE PARA A PÁGINA
+
+Um gato de 6 meses recebeu praticamente apenas:
+
+* alimento complementar;
+* atum.
+
+Apresentava:
+
+* crescimento ruim;
+* relutância em se mover;
+* deformação nasal;
+* osteopenia;
+* hipocalcemia;
+* PTH muito elevado.
+
+Após transição para alimento **completo e balanceado para crescimento**, Ca e PTH normalizaram em aproximadamente 2 meses. (17)
+
+Criar box:
+
+> **“Alimento complementar não é alimento completo.”**
+
+---
+
+# 89. TRATAMENTO DO NSHP
+
+# PRIMEIRO E PRINCIPAL: CORRIGIR A DIETA
+
+Não tratar a doença apenas “adicionando cálcio”.
+
+O objetivo é fornecer:
+
+* Ca adequado;
+* P adequado;
+* relação Ca:P adequada;
+* vitamina D adequada;
+* todos os demais nutrientes necessários ao crescimento.
+
+Preferências:
+
+1. alimento comercial completo para espécie e estágio de vida;
+2. ou dieta caseira formulada por nutricionista veterinário.
+
+---
+
+# 90. SUPLEMENTAÇÃO ORAL DE CÁLCIO
+
+Pode ser considerada temporariamente enquanto dieta é corrigida, principalmente quando há hipocalcemia.
+
+No VIN felino há descrição de:
+
+**cálcio elementar 25–50 mg/kg/DIA VO**, dividido aproximadamente q8–12h. (5)
+
+Mas:
+
+> **se o paciente puder ser transferido para alimento completo e balanceado, simplesmente adicionar cálcio a uma receita caseira mal formulada NÃO corrige todas as deficiências.**
+
+Não extrapolar automaticamente essa dose felina para cães.
+
+---
+
+# 91. HIPOCALEMIA SINTOMÁTICA NO NSHP
+
+Se:
+
+* convulsão;
+* tetania;
+* tremores severos;
+* hiperexcitabilidade importante;
+
+utilizar:
+
+### gluconato de cálcio 10%
+
+**0,5–1,5 mL/kg IV lentamente em aproximadamente 20–30 min**, com monitorização ECG. (5,11)
+
+---
+
+# 92. FRATURAS EM OSSO OSTEOPÊNICO
+
+Não sair imediatamente implantando placas/parafusos em todo paciente.
+
+Em osteopenia grave:
+
+* implante pode não ter purchase adequado;
+* manipulação pode criar novas fraturas;
+* coaptação rígida pode também lesar osso frágil.
+
+Inicialmente:
+
+* restrição rigorosa;
+* mínimo manuseio;
+* analgesia;
+* correção nutricional.
+
+Depois da melhora da mineralização:
+
+avaliar necessidade de:
+
+* estabilização;
+* cirurgia corretiva;
+* osteotomia para deformidade residual.
+
+(5)
+
+---
+
+# 93. TEMPO DE RECUPERAÇÃO NUTRICIONAL
+
+Melhora metabólica pode ocorrer rapidamente.
+
+O VIN descreve:
+
+* melhora laboratorial frequentemente nas primeiras semanas;
+* mineralização radiográfica começando a melhorar aproximadamente em **3–4 semanas**;
+* mineralização mais adequada em aproximadamente **4–8 semanas**.
+
+Casos individuais podem levar mais tempo.
+
+Deformidades estruturais importantes podem permanecer mesmo depois da correção metabólica.
+
+---
+
+# 94. PROGNÓSTICO DO NSHP
+
+### Bom
+
+quando reconhecido precocemente antes de deformidade grave.
+
+### Reservado
+
+quando existem:
+
+* múltiplas fraturas;
+* deformidades permanentes;
+* fratura vertebral.
+
+### Ruim
+
+quando há:
+
+* compressão medular grave;
+* lesão neurológica irreversível;
+* complicações sistêmicas severas.
+
+---
+
+# 95. PREVENÇÃO DO NSHP
+
+Utilizar alimentos:
+
+**completos e balanceados para espécie e estágio de vida.**
+
+Receitas caseiras devem ser formuladas profissionalmente.
+
+A FEDIAF informa que sua versão **2025** é a versão atual das diretrizes nutricionais europeias para alimentos completos e complementares de cães e gatos.
+
+### IMPORTANTE SOBRE COPYRIGHT
+
+Não copiar as tabelas da FEDIAF para o Vetius.
+
+A própria entidade informa que **uso comercial do documento é proibido sem autorização escrita**.
+
+Parafrasear apenas os princípios nutricionais necessários e linkar a fonte.
+
+---
+
+# 96. OUTRAS ELEVAÇÕES SECUNDÁRIAS DE PTH
+
+Nelson & Couto descreve aumento compensatório de PTH também em cães com **hiperadrenocorticismo**, provavelmente relacionado a alterações no balanço do Ca.
+
+Não transformar isso em uma quarta doença principal da página.
+
+Criar nota:
+
+> **Outras doenças podem causar aumento secundário de PTH. A classificação principal utilizada aqui foca PHPT, CKD-MBD e NSHP.**
+
+---
+
+# 97. HIPERPARATIREOIDISMO TERCIÁRIO
+
+Criar somente uma nota avançada.
+
+Após estimulação paratireoidiana muito prolongada por DRC, pode teoricamente ocorrer secreção mais autônoma.
+
+Nelson & Couto menciona esse fenômeno como **incomum** em cães e gatos.
+
+Não criar um quarto grande módulo e não diagnosticar “terciário” apenas porque um paciente com CKD apresenta PTH muito elevado.
+
+---
+
+# 98. TABELA — CÃO × GATO
+
+| Aspecto              | Cão                                     | Gato                                                     |
+| -------------------- | --------------------------------------- | -------------------------------------------------------- |
+| PHPT                 | incomum                                 | raro                                                     |
+| PHPT incidental      | muito comum                             | menos comum                                              |
+| Exame normal no PHPT | ~71% na grande série canina             | apenas ~19% sem sinais na coorte felina                  |
+| Massa cervical       | rara                                    | relativamente comum                                      |
+| Carcinoma            | minoria, ~3–10% em séries               | ~22% na série cirúrgica de 32 gatos                      |
+| PU/PD no PHPT        | comum                                   | <20% em série felina                                     |
+| UTI/urolitíase PHPT  | relativamente frequente                 | menos marcante                                           |
+| RSHP/CKD-MBD         | aumenta com estágio IRIS                | extremamente comum em DRC azotêmica                      |
+| FGF23 clínico        | menos incorporado                       | incorporado ao IRIS 2026                                 |
+| Rubber jaw renal     | clássico                                | possível, aparentemente menos frequente                  |
+| NSHP                 | jovens, especialmente dieta caseira/raw | forte associação com “all-meat”/alimentos complementares |
+| Tratamento PHPT      | cirurgia ± ablação especializada        | cirurgia preferencial                                    |
+
+(1–5,9,10,14)
+
+---
+
+# 99. PADRÕES LABORATORIAIS PARA CARD VISUAL
+
+## PHPT
+
+**PTH:** ↑ / inadequadamente normal
+**iCa:** ↑
+**P:** ↓ / baixo-normal
+**Calcitriol:** variável
+**FGF23:** não é diagnóstico principal
+
+## CKD-MBD
+
+**PTH:** ↑
+**iCa:** normal / ↓
+**P:** normal inicialmente → ↑ tardiamente
+**Calcitriol:** ↓
+**FGF23:** ↑ precocemente
+
+## NSHP
+
+**PTH:** ↑
+**iCa:** normal-baixo / ↓
+**P:** variável
+**Calcitriol:** frequentemente ↑/normal
+**Imagem:** osteopenia generalizada
+
+---
+
+# 100. FLUXOGRAMA PRINCIPAL
+
+Criar visual original do ConsultaVet:
+
+## PTH ALTO / SUSPEITA DE HIPERPARATIREOIDISMO
+
+### 1. Medir iCa
+
+---
+
+### iCa ↑
+
+**PTH deveria estar suprimido.**
+
+Se PTH alto ou inadequadamente normal:
+
+→ **PHPT**
+
+Prosseguir:
+
+PTHrP
+↓
+US cervical
+↓
+avaliar malignidade/diferenciais
+↓
+paratireoidectomia
+
+---
+
+### iCa normal/↓
+
+Perguntar:
+
+**Existe DRC?**
+
+SIM →
+
+→ **CKD-MBD / secundário renal**
+
+avaliar:
+
+P + FGF23 quando aplicável + estágio IRIS
+↓
+dieta renal
+↓
+quelante se necessário
+
+NÃO →
+
+**Existe dieta Ca:P inadequada?**
+
+SIM →
+
+→ **NSHP**
+
+avaliar:
+
+radiografias + PTH + Ca/P
+↓
+corrigir dieta
+↓
+repouso/fraturas
+↓
+monitorizar mineralização
+
+---
+
+# 101. FLUXOGRAMA — HIPERCALCEMIA
+
+**Hipercalcemia total → confirmar iCa →**
+
+### iCa normal
+
+considerar alteração de Ca ligado/proteínas/artefatos.
+
+### iCa alto
+
+avaliar:
+
+**PTH**
+
+### PTH não suprimido
+
+→ PHPT
+
+### PTH suprimido
+
+→ malignidade / vitamina D / granulomatosa / osteólise / outras causas.
+
+---
+
+# 102. FLUXOGRAMA — PHPT PRÉ-OPERATÓRIO
+
+**PHPT confirmado →**
+
+Paciente estável e Ca moderado:
+
+→ imagem cervical → cirurgia planejada.
+
+Paciente desidratado/azotêmico/hipercalcemia grave:
+
+→ reidratar
+→ monitorar rim/eletrólitos
+→ furosemida somente após euvolemia se indicada
+→ considerar bisfosfonato em situação selecionada
+→ terapia definitiva.
+
+---
+
+# 103. FLUXOGRAMA — PÓS-PARATIREOIDECTOMIA
+
+**cirurgia → medir iCa seriado →**
+
+### Ca estável
+
+continuar monitorização devido risco tardio.
+
+### iCa ↓ sem sinais
+
+monitorar ± suplemento oral conforme evolução.
+
+### iCa ↓ + sinais neuromusculares
+
+→ gluconato Ca 10% IV lentamente + ECG
+→ estabilizar
+→ Ca oral ± calcitriol
+→ monitorização.
+
+---
+
+# 104. FLUXOGRAMA — CKD-MBD
+
+**CKD diagnosticada → IRIS → medir P →**
+
+### acima da meta
+
+dieta renal restrita em P
+
+↓ reavaliar
+
+ainda acima?
+
+SIM →
+
+**quelante 30–60 mg/kg/dia inicial**, dividido entre refeições e titulado.
+
+↓
+Ca/P q4–6 semanas
+
+---
+
+## GATO COM P DENTRO DA META
+
+considerar FGF23.
+
+**>400 pg/mL**, sem fatores confundidores:
+
+→ iniciar restrição dietética.
+
+Após controle:
+
+**>700 pg/mL** → considerar intensificar.
+
+**<500 pg/mL** → controle mineral excelente no contexto IRIS.
+
+(10)
+
+---
+
+# 105. FLUXOGRAMA — NSHP
+
+**jovem + dor/deformidade/fratura → história dietética detalhada →**
+
+Dieta caseira/raw/all-meat/complementar?
+
+SIM →
+
+iCa + P + ALP + PTH
+↓
+radiografias
+↓
+osteopenia generalizada?
+
+SIM →
+
+**NSHP muito provável**
+
+→ dieta completa balanceada
+→ restrição de exercício
+→ analgesia
+→ Ca IV somente se hipocalcemia sintomática
+→ reavaliar imagem 4–8 semanas.
+
+---
+
+# 106. ERROS CLÍNICOS A EVITAR
+
+Criar box grande:
+
+### ❌ “PTH está dentro da referência, então não é PHPT.”
+
+Errado.
+
+### ❌ “O cálcio total está alto, então existe hipercalcemia ionizada.”
+
+Nem sempre.
+
+### ❌ “Vou usar fórmula de cálcio corrigido.”
+
+Não substitui iCa.
+
+### ❌ “O paciente com DRC tem PTH alto, então tem tumor de paratireoide.”
+
+PTH alto é esperado no CKD-MBD.
+
+### ❌ “Fósforo normal exclui hiperparatireoidismo renal.”
+
+Não.
+
+### ❌ “Vou dar furosemida no paciente hipercalcêmico desidratado.”
+
+Reidratar primeiro.
+
+### ❌ “Vou iniciar prednisona antes de investigar o lymphoma.”
+
+Pode prejudicar diagnóstico.
+
+### ❌ “O ultrassom disse adenoma.”
+
+US localiza massa; histologia diferencia adenoma/carcinoma.
+
+### ❌ “Todo PHPT felino é adenoma.”
+
+Carcinoma representou proporção relevante em uma série felina.
+
+### ❌ “Vou suplementar cálcio numa dieta caseira e pronto.”
+
+NSHP é problema de formulação nutricional, não apenas um único mineral.
+
+### ❌ “O filhote está com Ca sérico normal, então o esqueleto está normal.”
+
+PTH pode preservar Ca sérico removendo Ca do osso.
+
+### ❌ “Calcitriol é tratamento padrão atual de todo gato com CKD.”
+
+Não.
+
+### ❌ “Vou copiar a imagem do VIN/FEDIAF para o site porque citei a fonte.”
+
+Não. Copyright continua aplicável.
+
+---
+
+# 107. TABELA DE MEDICAMENTOS/INTERVENÇÕES
+
+| Terapia             | Espécie  |                                                    Dose | Contexto                               | Observação                             |
+| ------------------- | -------- | ------------------------------------------------------: | -------------------------------------- | -------------------------------------- |
+| Gluconato Ca 10%    | cão/gato |                       **0,5–1,5 mL/kg IV em 20–30 min** | hipocalcemia sintomática               | ECG contínuo                           |
+| Furosemida          | cão/gato |                           **2–4 mg/kg IV/SC/VO q8–24h** | hipercalcemia selecionada              | SOMENTE após hidratação                |
+| Pamidronato         | cão      |                             **0,65–2 mg/kg IV em 2–4h** | hipercalcemia grave/refratária         | nefrotoxicidade                        |
+| Pamidronato         | gato     |                                 **1–2 mg/kg IV em ~4h** | hipercalcemia grave/refratária         | nefrotoxicidade                        |
+| Calcitonina salmon  | cão/gato |                                 **4–6 UI/kg SC q8–12h** | hipercalcemia grave selecionada        | efeito curto/taquifilaxia              |
+| Quelante de fósforo | cão/gato | **30–60 mg/kg/DIA inicial**, dividido com cada refeição | CKD com P acima da meta                | dose depende do agente/produto         |
+| Ca elementar oral   | gato     |                     **25–50 mg/kg/DIA dividido q8–12h** | NSHP quando suplementação é necessária | dieta continua sendo terapia principal |
+
+(5,7,9–11)
+
+---
+
+# 108. NÃO COLOCAR COMO DOSES DE ROTINA
+
+## Cinacalcete
+
+dados insuficientes.
+
+## Calcitriol no CKD-MBD
+
+não deve aparecer como primeira linha moderna.
+
+## Glicocorticoide para PHPT
+
+não é tratamento definitivo.
+
+---
+
+# 109. MONITORAMENTO RESUMIDO
+
+## PHPT pré-operatório
+
+* iCa;
+* P;
+* função renal;
+* urinálise;
+* cultura quando indicada;
+* imagem cervical.
+
+## pós-operatório
+
+* iCa q12–24h inicialmente;
+* Mg/P/renal;
+* planejar monitorização tardia;
+* retorno imediato por tremores/convulsões.
+
+## CKD-MBD
+
+Após dieta/quelante:
+
+**Ca + P q4–6 semanas até estável → depois ~q12 semanas.** (9,10)
+
+## NSHP
+
+* clínica em 1–2 semanas;
+* Ca/P;
+* PTH se útil/disponível;
+* radiografia aproximadamente 4–8 semanas nos casos com osteopenia/fraturas.
+
+---
+
+# 110. IMAGENS OPEN ACCESS / FIGURAS
+
+## REGRA DE LICENÇA
+
+O Codex deve salvar junto a cada imagem:
+
+* título;
+* legenda;
+* autores;
+* periódico;
+* ano;
+* DOI;
+* URL original;
+* tipo de licença;
+* necessidade de atribuição.
+
+### Permitido re-hospedar preferencialmente:
+
+**CC BY 4.0**
+
+### Não re-hospedar em aplicativo comercial sem autorização:
+
+**CC BY-NC**
+
+### Open/free access sem licença clara:
+
+**usar link externo até confirmar permissão.**
+
+### Nunca copiar diretamente:
+
+* VIN;
+* livros;
+* tabelas FEDIAF.
+
+---
+
+# IMAGEM 1 — OSTEODISTROFIA RENAL / “FLOATING TEETH” EM CÃO
+
+**Descrição para legenda:**
+Radiografia lateral de crânio demonstrando intensa desmineralização maxilomandibular, perda da lamina dura/alvéolos e aspecto de “dentes flutuantes” causado por osteodistrofia fibrosa secundária a hiperparatireoidismo renal. Excelente imagem para demonstrar o fenótipo esquelético avançado do CKD-MBD.
+
+**Fonte ABNT:**
+VAN BRUGGEN, L. W. L.; DENIZ MARRERO, J. P.; GRINWIS, G. C. M. et al. Renal secondary hyperparathyroidism should be considered a differential diagnosis in forensic cases where animal abuse is suspected. *Forensic Science, Medicine and Pathology*, v. 18, p. 491–496, 2022.
+
+**DOI:** 10.1007/s12024-022-00501-5
+
+**ARTIGO:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9636077/
+
+**IMAGEM DIRETA — FIGURA 2:**
+https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs12024-022-00501-5/MediaObjects/12024_2022_501_Fig2_HTML.jpg
+
+**LICENÇA:** CC BY 4.0 — pode ser reutilizada inclusive comercialmente com atribuição adequada e indicação de alterações. (16)
+
+---
+
+# IMAGEM 2 — CT 3D DE OSTEODISTROFIA RENAL CANINA
+
+**Descrição:**
+Reconstrução tridimensional por CT demonstrando perda generalizada de densidade óssea e múltiplas alterações/fraturas relacionadas à osteodistrofia renal grave. Útil para a seção “por que CKD-MBD afeta o esqueleto”.
+
+**Fonte ABNT:**
+VAN BRUGGEN, L. W. L.; DENIZ MARRERO, J. P.; GRINWIS, G. C. M. et al. *Renal secondary hyperparathyroidism should be considered a differential diagnosis in forensic cases where animal abuse is suspected*. Forensic Science, Medicine and Pathology, 2022.
+
+**IMAGEM DIRETA — FIGURA 3:**
+https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs12024-022-00501-5/MediaObjects/12024_2022_501_Fig3_HTML.jpg
+
+**LICENÇA:** CC BY 4.0.
+
+---
+
+# IMAGEM 3 — HIPERPLASIA PARATIREOIDIANA E LESÕES SISTÊMICAS NA DRC
+
+**Descrição:**
+Painel macroscópico/histopatológico do mesmo caso de hiperparatireoidismo renal, incluindo alterações ósseas/renais e aumento/hiperplasia paratireoidiana. Excelente para correlacionar “doença renal → estímulo hormonal → hiperplasia glandular → lesão óssea”.
+
+**Fonte ABNT:**
+VAN BRUGGEN, L. W. L.; DENIZ MARRERO, J. P.; GRINWIS, G. C. M. et al. *Renal secondary hyperparathyroidism should be considered a differential diagnosis in forensic cases where animal abuse is suspected*. Forensic Science, Medicine and Pathology, 2022.
+
+**IMAGEM DIRETA — FIGURA 4:**
+https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs12024-022-00501-5/MediaObjects/12024_2022_501_Fig4_HTML.jpg
+
+**LICENÇA:** CC BY 4.0.
+
+---
+
+# IMAGEM 4 — CT DE PARATIREOIDE NORMAL E DOENTE EM CÃO
+
+**Descrição:**
+CT contrastada com reconstruções multiplanares demonstrando localização das paratireoides e padrões encontrados em adenoma, adenocarcinoma e hiperplasia. Excelente para seção “diagnóstico por imagem / planejamento cirúrgico”.
+
+**Fonte ABNT:**
+CORDELLA, A.; BERTACCINI, J.; RONDENA, M.; ZOIA, A.; BERTOLINI, G. Multidetector-row CT findings in dogs with different primary parathyroid gland diseases. *Veterinary Sciences*, v. 9, n. 6, art. 273, 2022.
+
+**DOI:** 10.3390/vetsci9060273
+
+**ARTIGO/FIGURAS:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9228294/
+
+**SITE DO PERIÓDICO:**
+https://www.mdpi.com/2306-7381/9/6/273
+
+**LICENÇA:** CC BY 4.0.
+
+Escolher preferencialmente uma das figuras de paratireoide patológica, não apenas a glândula normal.
+
+---
+
+# IMAGEM 5 — NSHP EM GATINHO — RADIOGRAFIAS
+
+**Descrição:**
+Radiografias de gatinho jovem com osteopenia generalizada e alterações de crescimento/deformidade associadas a dieta semelhante a “all-meat”, permitindo demonstrar a relação entre dieta inadequada, aumento de PTH e doença óssea metabólica.
+
+**Fonte ABNT:**
+ZAMBARBIERI, J.; FUSI, E.; BASSI, J.; SCARPA, P. Nutritional secondary hyperparathyroidism in a kitten, supported by immunoenzymatic measurement of feline intact parathyroid hormone. *Journal of Veterinary Diagnostic Investigation*, v. 35, n. 2, p. 163–167, 2023.
+
+**DOI:** 10.1177/10406387221143463
+
+**ARTIGO:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9999400/
+
+**FIGURA DO ARTIGO:**
+https://journals.sagepub.com/cms/10.1177/10406387221143463/asset/684115fa-b269-4141-b6f9-45150d09b9a3/assets/images/large/10.1177_10406387221143463-fig1.jpg
+
+**LICENÇA:** confirmar direito de reutilização antes de re-hospedar; o artigo é publicamente acessível, porém “acesso aberto” isoladamente não garante uso comercial da figura.
+
+Se licença não for claramente compatível:
+**usar somente link externo e criar figura original do ConsultaVet baseada nos achados.**
+
+---
+
+# IMAGEM 6 — OSTEOPENIA FELINA EM RADIOGRAFIA + MRI — 2025
+
+**Descrição:**
+Painel radiográfico e de ressonância magnética mostrando osteopenia difusa em gato com provável hiperparatireoidismo nutricional secundário. A figura é especialmente útil para mostrar que a desmineralização pode modificar intensamente a aparência da coluna e coexistir com manifestações neurológicas.
+
+**Fonte ABNT:**
+SKARBEK, A.; DANCIU, C.-G.; FENN, J.; KLEVER, J. Magnetic resonance manifestation of diffuse osteopenia in a cat with presumed nutritional secondary hyperparathyroidism, hypocobalaminaemia and thiamine deficiency. *Journal of Small Animal Practice*, v. 66, n. 4, p. 296, 2025.
+
+**DOI:** 10.1111/jsap.13815
+
+**ARTIGO/FIGURA 1:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12000704/
+
+**LICENÇA:** CC BY 4.0 — reutilização permitida com atribuição.
+
+---
+
+# IMAGEM 7 — ADENOMA PARATIREOIDIANO CÍSTICO EM GATO
+
+**Descrição:**
+Histopatologia de adenoma paratireoidiano cístico felino. Útil para demonstrar a arquitetura do tecido paratireoidiano neoplásico e explicar por que histopatologia é necessária para classificação definitiva.
+
+**Fonte ABNT:**
+LAMOUREUX, A.; FOURNET, A.; HAHN, H. M. et al. Primary hyperparathyroidism due to a cystic parathyroid adenoma in a cat. *Open Veterinary Journal*, v. 9, n. 2, p. 109–113, 2019.
+
+**ARTIGO:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC6626155/
+
+**IMAGEM DIRETA:**
+https://cdn.ncbi.nlm.nih.gov/pmc/blobs/d2dd/6626155/0af9579c34c3/OpenVetJ-9-109-g005.jpg
+
+Antes de re-hospedar confirmar licença específica da publicação/figura.
+
+---
+
+# IMAGEM 8 — CARCINOMA PARATIREOIDIANO CÍSTICO BILATERAL EM GATO — ULTRASSOM
+
+**Descrição:**
+Ultrassonografia cervical demonstrando massa paratireoidiana cística em gato com PHPT por carcinoma bilateral. Útil para seção “ultrassonografia — gatos” e para demonstrar que lesões paratireoidianas podem ser císticas.
+
+**Fonte ABNT:**
+VIRTANEN, J. K.; MÖLSÄ, S. H.; HAGNER, K. A. et al. Primary hyperparathyroidism caused by bilateral parathyroid cystic carcinoma in a cat. *JFMS Open Reports*, v. 6, n. 2, 2020.
+
+**DOI:** 10.1177/2055116920976544
+
+**IMAGEM:**
+https://bioone.org/ContentImages/Journals/fmsr/6/2/2055116920976544/graphic/10.1177_2055116920976544-fig2.jpg
+
+Confirmar modalidade de licença antes de re-hospedar comercialmente.
+
+---
+
+# IMAGEM 9 — PHPT FELINO — MASSA CERVICAL / MRI — 2025
+
+**Descrição:**
+MRI cervical de gato com massa paratireoidiana funcional removida cirurgicamente. Excelente imagem atual para a seção de planejamento cirúrgico e diagnóstico de massa cervical felina.
+
+**Fonte ABNT:**
+RUANE, E.; ODATZOGLOU, P.; WONG, H.; HAYES, A. Primary hyperparathyroidism in a domestic shorthair cat following I131 radioiodine therapy. *Journal of Small Animal Practice*, v. 66, n. 8, p. 582–586, 2025.
+
+**DOI:** 10.1111/jsap.13854
+
+**ARTIGO / FIGURAS:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12331554/
+
+**LICENÇA:** CC BY 4.0. Pode ser reutilizada com atribuição.
+
+Legenda do ConsultaVet deve dizer:
+
+> “Massa paratireoidiana funcional em gato com PHPT. Este relato ocorreu após tratamento prévio com I¹³¹, mas não demonstra relação causal entre radioiodoterapia e PHPT.”
+
+---
+
+# IMAGEM 10 — CURVA ROC PARA RISCO DE HIPOCALEMIA PÓS-PARATIREOIDECTOMIA
+
+**Descrição:**
+Curva ROC do estudo multicêntrico de 2025 avaliando PTH pré-operatório como preditor de hipocalcemia após paratireoidectomia em cães. Excelente para “Atualizações científicas”.
+
+**Fonte ABNT:**
+TRAVAIL, V.; MOTTA, C.; LEA, C. et al. Plasma Parathyroid Hormone Concentration as a Predictor of Post-Operative Hypocalcemia in Dogs Diagnosed With Primary Hyperparathyroidism and Treated With Parathyroidectomy. *Journal of Veterinary Internal Medicine*, v. 39, n. 2, e70016, 2025.
+
+**DOI:** 10.1111/jvim.70016
+
+**ARTIGO / FIGURA 2:**
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11876990/
+
+Open access. Verificar licença indicada no próprio artigo antes de armazenar a figura.
+
+---
+
+# 111. ILUSTRAÇÕES ORIGINAIS QUE O CODEX DEVE CRIAR
+
+Não copiar figuras de livros.
+
+Criar imagens vetoriais minimalistas próprias do ConsultaVet:
+
+## A — Eixo PTH
+
+**iCa ↓ → CaSR → PTH ↑ → rim/osso/calcitriol → iCa ↑**
+
+## B — Três mecanismos
+
+Painel triplo:
+
+**primário**
+tumor → PTH autônomo → Ca ↑
+
+**renal**
+GFR ↓ → FGF23 ↑ → calcitriol ↓ → PTH ↑
+
+**nutricional**
+Ca dietético ↓ → PTH ↑ → osso ↓
+
+## C — “O mesmo PTH alto, três doenças diferentes”
+
+Mostrar os três perfis Ca/P.
+
+## D — PHPT
+
+nódulo único + três paratireoides suprimidas.
+
+## E — pós-cirurgia
+
+remoção da glândula hiperfuncional → PTH cai → hipocalcemia.
+
+## F — CKD-MBD
+
+néfron ↓ → retenção P → FGF23 → calcitriol ↓ → PTH.
+
+## G — NSHP
+
+dieta all-meat → Ca:P inadequado → sangue “rouba” Ca do osso.
+
+## H — radiografia conceitual
+
+osso normal × cortical osteopênica.
+
+## I — fluxo diagnóstico de hipercalcemia
+
+iCa → PTH → PTHrP → imagem.
+
+## J — alvos IRIS
+
+Estágio 2/3/4 com metas de P para cão e gato.
+
+---
+
+# 112. REFERÊNCIAS NUMERADAS — USAR ESTES NÚMEROS NAS CITAÇÕES DO APP
+
+## (1) VIN — Hiperparatireoidismo primário canino
+
+Veterinary Information Network. *Hyperparathyroidism, Primary (Canine)*. Revisado em 17 mar. 2025.
+
+https://www.vin.com/doc/?id=4953254&pid=607
+
+Material fornecido pelo usuário e utilizado como referência editorial prioritária.
+
+---
+
+## (2) VIN — Hiperparatireoidismo primário felino
+
+Veterinary Information Network. *Hyperparathyroidism, Primary (Feline)*. Revisado em 17 mar. 2025.
+
+https://www.vin.com/doc/?id=4953489&pid=607
+
+---
+
+## (3) VIN — Hiperparatireoidismo secundário renal canino
+
+Veterinary Information Network. *Hyperparathyroidism, Renal Secondary (Canine)*. Revisado em 15 abr. 2025.
+
+https://www.vin.com/doc/?id=4953256&pid=607
+
+---
+
+## (4) VIN — Hiperparatireoidismo secundário renal felino
+
+Veterinary Information Network. *Hyperparathyroidism, Renal Secondary (Feline)*. Revisado em 15 abr. 2025.
+
+https://www.vin.com/doc/?id=7208189&pid=607
+
+---
+
+## (5) VIN — Hiperparatireoidismo secundário nutricional felino
+
+Veterinary Information Network. *Hyperparathyroidism, Nutritional Secondary (Feline)*. Revisado em 7 jan. 2026.
+
+https://www.vin.com/doc/?id=7051797&pid=607
+
+---
+
+## (6) Nelson & Couto
+
+NELSON, R. W.; COUTO, C. G. *Small Animal Internal Medicine*. 6. ed. Elsevier, 2020.
+
+Capítulo 47 — **Disorders of the Parathyroid Gland**, p. 758–766.
+
+Capítulos de metabolismo de Ca/P e doença renal também utilizados.
+
+---
+
+## (7) DiBartola
+
+DIBARTOLA, S. P. *Fluid, Electrolyte, and Acid-Base Disorders in Small Animal Practice*. 4. ed. Elsevier.
+
+Capítulo **Disorders of Calcium: Hypercalcemia and Hypocalcemia**.
+
+Base complementar para:
+
+* hipercalcemia;
+* hipocalcemia;
+* NSHP;
+* bisfosfonatos;
+* fluidoterapia.
+
+---
+
+## (8) BSAVA — Nefrologia
+
+ELLIOTT, J.; GRAUER, G. F.; WESTROPP, J. L. (eds.). *BSAVA Manual of Canine and Feline Nephrology and Urology*. 3. ed. BSAVA, 2017.
+
+Cap. 11 — **Assessment of calcium and phosphate homeostasis in chronic kidney disease**, p. 143.
+
+Cap. 23 — **Management of chronic kidney disease**, p. 263.
+
+---
+
+## (9) IRIS — Cão 2026
+
+INTERNATIONAL RENAL INTEREST SOCIETY. *Treatment Recommendations for CKD in Dogs*. 2026.
+
+https://www.iris-kidney.com/s/IRIS-DOG-Treatment_Recommendations_may-2026.pdf
+
+Fonte prioritária para metas atuais de fósforo e quelantes.
+
+---
+
+## (10) IRIS — Gato 2026
+
+INTERNATIONAL RENAL INTEREST SOCIETY. *Treatment Recommendations for CKD in Cats*. 2026.
+
+https://www.iris-kidney.com/s/IRIS_CAT_Treatment_Recommendations_-2026.pdf
+
+Fonte prioritária para:
+
+* metas de fósforo;
+* FGF23;
+* dieta;
+* quelantes;
+* monitorização.
+
+---
+
+## (11) BSAVA Formulary
+
+ALLERTON, F. (ed.). *BSAVA Small Animal Formulary. Part A: Canine and Feline*. 10. ed. BSAVA, 2020.
+
+Utilizado para:
+
+* gluconato de cálcio;
+* furosemida;
+* pamidronato;
+* calcitriol.
+
+---
+
+## (12) PTH como preditor de hipocalcemia — 2025
+
+TRAVAIL, V.; MOTTA, C.; LEA, C. et al. Plasma Parathyroid Hormone Concentration as a Predictor of Post-Operative Hypocalcemia in Dogs Diagnosed With Primary Hyperparathyroidism and Treated With Parathyroidectomy. *Journal of Veterinary Internal Medicine*, 39:e70016, 2025.
+
+DOI: 10.1111/jvim.70016
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC11876990/
+
+---
+
+## (13) Paratireoidectomia minimamente invasiva — 2023
+
+YOUNG, K. M.; DEGNER, D. A. Surgical description and outcome of ultrasound-guided minimally invasive parathyroidectomy in 50 dogs with primary hyperparathyroidism. *Veterinary Surgery*, v. 52, n. 1, p. 18–25, 2023.
+
+---
+
+## (14) PHPT felino — cirurgia e prognóstico
+
+SINGH, A.; GIUFFRIDA, M. A.; THOMSON, B. et al. Perioperative characteristics, histological diagnosis, and outcome in cats undergoing surgical treatment of primary hyperparathyroidism. *Veterinary Surgery*, v. 48, n. 3, p. 367–374, 2019.
+
+---
+
+## (15) CT paratireoide canina
+
+CORDELLA, A.; BERTACCINI, J.; RONDENA, M.; ZOIA, A.; BERTOLINI, G. Multidetector-row CT findings in dogs with different primary parathyroid gland diseases. *Veterinary Sciences*, v. 9, art. 273, 2022.
+
+DOI: 10.3390/vetsci9060273
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9228294/
+
+---
+
+## (16) Osteodistrofia renal — open access
+
+VAN BRUGGEN, L. W. L. et al. Renal secondary hyperparathyroidism should be considered a differential diagnosis in forensic cases where animal abuse is suspected. *Forensic Science, Medicine and Pathology*, v. 18, p. 491–496, 2022.
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9636077/
+
+---
+
+## (17) NSHP felino — 2023
+
+ZAMBARBIERI, J.; FUSI, E.; BASSI, J.; SCARPA, P. Nutritional secondary hyperparathyroidism in a kitten, supported by immunoenzymatic measurement of feline intact parathyroid hormone. *Journal of Veterinary Diagnostic Investigation*, v. 35, p. 163–167, 2023.
+
+DOI: 10.1177/10406387221143463
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC9999400/
+
+---
+
+## (18) NSHP / osteopenia felina — 2025
+
+SKARBEK, A.; DANCIU, C.-G.; FENN, J.; KLEVER, J. Magnetic resonance manifestation of diffuse osteopenia in a cat with presumed nutritional secondary hyperparathyroidism, hypocobalaminaemia and thiamine deficiency. *Journal of Small Animal Practice*, v. 66, p. 296, 2025.
+
+DOI: 10.1111/jsap.13815
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12000704/
+
+---
+
+## (19) PHPT felino atual — 2025
+
+RUANE, E.; ODATZOGLOU, P.; WONG, H.; HAYES, A. Primary hyperparathyroidism in a domestic shorthair cat following I131 radioiodine therapy. *Journal of Small Animal Practice*, v. 66, p. 582–586, 2025.
+
+DOI: 10.1111/jsap.13854
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC12331554/
+
+---
+
+## (20) Revisão felina
+
+PARKER, V. J.; GILOR, C.; CHEW, D. J. Feline hyperparathyroidism: Pathophysiology, diagnosis and treatment of primary and secondary disease. *Journal of Feline Medicine and Surgery*, v. 17, p. 427–439, 2015.
+
+https://pmc.ncbi.nlm.nih.gov/articles/PMC10816244/
+
+---
+
+## (21) FEDIAF 2025
+
+FEDIAF. *Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs*. Version 2025.
+
+https://europeanpetfood.org/self-regulation/nutritional-guidelines/
+
+Não copiar tabelas para uso comercial sem autorização.
+
+---
+
+## (22) Calcitriol profilático pós-paratireoidectomia
+
+ARMSTRONG, A. J.; HAUPTMAN, J. G.; STANLEY, B. J. et al. Effect of prophylactic calcitriol administration on serum ionized calcium concentrations after parathyroidectomy: 78 cases (2005–2015). *Journal of Veterinary Internal Medicine*, v. 32, p. 99–106, 2018.
+
+---
+
+## (23) Plumb’s
+
+BUDDE, J. A.; McCLUSKEY, D. M. *Plumb’s Veterinary Drug Handbook*. 10. ed. Wiley/VetMedux, 2023.
+
+Utilizar para conferência farmacológica final de fármacos e interações.
+
+---
+
+# 113. RELACIONAR COM OUTRAS PÁGINAS DO CONSULTAVET
+
+Criar links internos para:
+
+### Endocrinologia
+
+* Hipoparatireoidismo
+* Hipoadrenocorticismo
+* Hiperadrenocorticismo
+* Hipertireoidismo felino
+
+### Nefrologia
+
+* DRC
+* Hipercalemia
+* Hiperfosfatemia
+* Urolitíase
+* Nefrolitíase
+
+### Metabólico
+
+* Hipercalcemia
+* Hipocalcemia
+* Intoxicação por vitamina D
+
+### Oncologia
+
+* Lymphoma
+* Adenocarcinoma de saco anal
+* Mieloma múltiplo
+
+### Nutrição
+
+* Dieta caseira
+* Dieta de crescimento
+* Ca:P
+* Vitamina D
+
+### Ortopedia/neurologia
+
+* Osteopenia
+* Fratura patológica
+* Compressão medular
+
+---
+
+# 114. TEXTO CURTO DO CARD PRINCIPAL
+
+**Hiperparatireoidismo corresponde ao aumento persistente ou inadequadamente não suprimido de PTH e deve ser classificado pelo mecanismo. No primário, tecido paratireoidiano autônomo produz PTH apesar da hipercalcemia, gerando tipicamente iCa elevado e fósforo baixo; a paratireoidectomia é o tratamento de escolha. No secundário renal, o aumento de PTH integra o CKD-MBD e resulta da retenção de fósforo, elevação de FGF23 e deficiência relativa de calcitriol; o tratamento moderno baseia-se principalmente no controle de fósforo conforme o estágio IRIS. No secundário nutricional, a baixa ingestão de Ca ou relação Ca:P inadequada causa hiperestimulação compensatória da paratireoide e reabsorção óssea, sendo especialmente grave em animais jovens alimentados com dietas caseiras ou exclusivamente cárneas mal formuladas. O PTH nunca deve ser interpretado isoladamente: em um paciente hipercalcêmico, um PTH dentro da faixa de referência pode ser fisiologicamente anormal por não estar suprimido. (1–10)**
+
+---
+
+# 115. CARD “O QUE EU PRECISO SABER EM 30 SEGUNDOS?”
+
+### Hipercalcemia + PTH não suprimido
+
+→ pense **PHPT**.
+
+### CKD + PTH elevado
+
+→ pense **CKD-MBD**, não tumor automaticamente.
+
+### jovem + dieta inadequada + osteopenia
+
+→ pense **NSHP**.
+
+### PHPT canino
+
+muitas vezes incidental.
+
+### PHPT felino
+
+frequentemente sintomático e massa cervical é mais palpável.
+
+### PHPT definitivo
+
+**paratireoidectomia.**
+
+### Principal risco depois da cirurgia
+
+**hipocalcemia.**
+
+### DRC
+
+tratar fósforo conforme **IRIS 2026**.
+
+### NSHP
+
+**corrigir dieta**, não apenas “dar cálcio”.
+
+---
+
+# 116. REGRA FINAL DE IMPLEMENTAÇÃO
+
+Para cada afirmação clínica no app, inserir número da fonte:
+
+> “Em cães com PHPT, 71% apresentavam exame físico sem alterações em uma série de 210 casos. (1)”
+
+> “Em gatos IRIS estágio 2, FGF23 >400 pg/mL pode indicar necessidade de restrição de fósforo mesmo quando o fósforo sérico ainda está dentro da meta, na ausência de fatores confundidores. (10)”
+
+> “Gluconato de cálcio 10% pode ser utilizado a 0,5–1,5 mL/kg IV lentamente em hipocalcemia sintomática. (11)”
+
+Ao clicar em **(1)**, **(10)**, **(11)** etc., abrir a referência correspondente.
+
+**Não inventar números, prevalências ou doses sem fonte.
+Não copiar parágrafos de VIN, livros ou consensos.
+Não copiar imagens protegidas.
+Não chamar associação de causalidade.
+Não apresentar estudos retrospectivos pequenos como regra universal.
+Não criar estadiamento próprio para PHPT ou NSHP.
+Utilizar IRIS exclusivamente para o componente renal.**
+
+O resultado final precisa permitir que o médico-veterinário **consulte rapidamente**, mas também consiga sair da página entendendo profundamente **por que PTH sobe, por que o cálcio muda, por que o fósforo muda, por que o osso é afetado e por que o tratamento é completamente diferente entre hiperparatireoidismo primário, renal e nutricional.**
+</user_query>

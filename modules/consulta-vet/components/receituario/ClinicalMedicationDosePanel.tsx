@@ -16,8 +16,14 @@ import {
   getEditorialRecommendedDoses,
   listClinicalMedicationsNeedingRegistration,
   resolveClinicalMedicationSource,
+  resolveCommercialCompoundingRecommendation,
 } from '../../utils/clinicalMedicationCatalogBridge';
-import { calculateCommercialPracticalDose, formatCommercialProductOptionLabel } from '../../utils/commercialPresentationDose';
+import {
+  buildReceituarioCommercialSelectOptions,
+  buildCompoundingDisplayAmount,
+  calculateCommercialPracticalDose,
+  encodeReceituarioCommercialOptionKey,
+} from '../../utils/commercialPresentationDose';
 import {
   calculateReceituarioDose,
   formatDecimalPtBr,
@@ -62,6 +68,121 @@ function DoseAlertBanner({ alert }: { alert: ClinicalDoseAlert }) {
         {isCritical ? ' A receita será gerada com ERRO DE DOSE P/ CONCENTRAÇÃO até corrigir apresentação ou dose.' : ''}
       </span>
     </p>
+  );
+}
+
+function CompoundingRecommendationBanner({
+  message,
+  severity,
+  useCompounding,
+  onToggle,
+}: {
+  message: string;
+  severity: 'overdose' | 'underdose';
+  useCompounding: boolean;
+  onToggle: (next: boolean) => void;
+}) {
+  const isOverdose = severity === 'overdose';
+  return (
+    <div className={`rounded-lg border px-3 py-3 text-xs leading-5 ${
+      isOverdose
+        ? 'border-violet-400 bg-violet-50 text-violet-950 dark:border-violet-800 dark:bg-violet-950/40 dark:text-violet-100'
+        : 'border-amber-400 bg-amber-50 text-amber-950 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-100'
+    }`}>
+      <p>
+        <strong>{isOverdose ? 'Dose alta para apresentação comercial:' : 'Dose baixa para apresentação comercial:'}</strong>{' '}
+        {message}
+      </p>
+      <button
+        type="button"
+        onClick={() => onToggle(!useCompounding)}
+        className="mt-2 rounded-md border border-current px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide hover:bg-background/40"
+      >
+        {useCompounding ? 'Voltar para apresentação comercial' : 'Prescrever manipulação com texto pronto'}
+      </button>
+    </div>
+  );
+}
+
+function ManualWeightMedicationPanel({
+  medicationKey,
+  modelRange,
+  dose,
+  doseMgKg,
+  override,
+  overrides,
+  onOverridesChange,
+  parsedWeight,
+  medicationName,
+}: {
+  medicationKey: string;
+  modelRange: string;
+  dose: ClinicalMedicationDefinition['dose'];
+  doseMgKg: number;
+  override: ClinicalMedicationOverride;
+  overrides: Record<string, ClinicalMedicationOverride>;
+  onOverridesChange: (overrides: Record<string, ClinicalMedicationOverride>) => void;
+  parsedWeight: number | null;
+  medicationName: string;
+}) {
+  const totalMg = parsedWeight && doseMgKg ? doseMgKg * parsedWeight : null;
+  const compoundingHint = totalMg && totalMg > 0 && !override.useCompounding
+    ? {
+      recommended: true,
+      reason: 'percent_mismatch' as const,
+      severity: 'underdose' as const,
+      message: `Sem produto comercial vinculado. Para ${formatDecimalPtBr(totalMg)} mg calculados, prefira manipulação na concentração exata.`,
+    }
+    : null;
+
+  return (
+    <div className="grid gap-3">
+      <div className="rounded-lg border border-sky-200/80 bg-sky-50/70 px-3 py-2 text-xs leading-5 text-sky-900 dark:border-sky-900 dark:bg-sky-950/30 dark:text-sky-100">
+        <p><strong className="font-semibold">Faixa do modelo clínico:</strong> {modelRange}</p>
+        <p className="mt-1 text-muted-foreground">Sem apresentação comercial vinculada — manipulação disponível.</p>
+      </div>
+
+      <label className="space-y-1.5">
+        <FieldLabel>Dose escolhida (mg/kg)</FieldLabel>
+        <input
+          type="text"
+          inputMode="decimal"
+          value={override.selectedDoseValue ?? dose.min}
+          onChange={(event) => {
+            const parsed = parsePositiveDecimal(event.target.value);
+            onOverridesChange({
+              ...overrides,
+              [medicationKey]: { ...override, selectedDoseValue: parsed },
+            });
+          }}
+          className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
+        />
+      </label>
+
+      {compoundingHint ? (
+        <CompoundingRecommendationBanner
+          message={compoundingHint.message}
+          severity={compoundingHint.severity}
+          useCompounding={Boolean(override.useCompounding)}
+          onToggle={(next) => onOverridesChange({
+            ...overrides,
+            [medicationKey]: { ...override, useCompounding: next },
+          })}
+        />
+      ) : null}
+
+      {override.useCompounding && totalMg ? (
+        <p className="rounded-lg border border-violet-200/80 bg-violet-50/70 px-3 py-2 text-xs leading-5 text-violet-900 dark:border-violet-900 dark:bg-violet-950/30 dark:text-violet-100">
+          Texto de manipulação: {medicationName} — {buildCompoundingDisplayAmount(totalMg)} por administração ({formatDecimalPtBr(totalMg)} mg calculados).
+        </p>
+      ) : totalMg ? (
+        <p className="rounded-lg border border-emerald-200/80 bg-emerald-50/70 px-3 py-2 text-xs leading-5 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
+          Cálculo para {formatDecimalPtBr(parsedWeight!)} kg: {formatDecimalPtBr(totalMg)} mg por administração.
+        </p>
+      ) : (
+        <p className="text-xs text-amber-700 dark:text-amber-300">Informe o peso para ver o cálculo prático.</p>
+      )}
+    </div>
   );
 }
 
@@ -293,18 +414,52 @@ export function ClinicalMedicationDosePanel({
       };
     }
 
+    if (source.kind === 'manual' && resolvedMedication.dose.basis === 'weight') {
+      const doseMgKg = override.selectedDoseValue ?? resolvedMedication.dose.min;
+      return {
+        key: medication.key,
+        orderLabel,
+        body: (
+          <ManualWeightMedicationPanel
+            medicationKey={medication.key}
+            modelRange={modelRange}
+            dose={resolvedMedication.dose}
+            doseMgKg={doseMgKg}
+            override={override}
+            overrides={overrides}
+            onOverridesChange={onOverridesChange}
+            parsedWeight={parsedWeight}
+            medicationName={resolvedMedication.name}
+          />
+        ),
+      };
+    }
+
     const products = source.commercialProducts || getCommercialProductsByIds(resolvedMedication.presentationIds || []);
-    const selectedProduct = products.find((item) => item.id === override.commercialProductId) || products[0];
+    const commercialOptions = buildReceituarioCommercialSelectOptions(products);
+    const selectedOptionKey = encodeReceituarioCommercialOptionKey(
+      override.commercialProductId || products[0]?.id || '',
+      override.commercialPotencyMg,
+    );
+    const selectedOption = commercialOptions.find((item) => item.optionKey === selectedOptionKey)
+      || commercialOptions[0];
+    const selectedProduct = products.find((item) => item.id === (selectedOption?.productId || override.commercialProductId))
+      || products[0];
+    const selectedPotencyMg = selectedOption?.potencyMg ?? override.commercialPotencyMg ?? null;
     const commercialRange = selectedProduct
       ? [selectedProduct.labelDirections, selectedProduct.dosageGuidance?.labelDose].filter(Boolean).join(' · ')
       : '';
     const doseMgKg = override.selectedDoseValue ?? resolvedMedication.dose.min;
-    const alert = selectedProduct && resolvedMedication.dose.basis !== 'manual'
-      ? evaluateCommercialDoseAlert(selectedProduct, doseMgKg, parsedWeight)
+    const alert = selectedProduct && resolvedMedication.dose.basis !== 'manual' && !override.useCompounding
+      ? evaluateCommercialDoseAlert(selectedProduct, doseMgKg, parsedWeight, selectedPotencyMg, override.useCompounding)
       : null;
-    const commercialPractical = selectedProduct && parsedWeight && resolvedMedication.dose.basis !== 'manual'
-      ? calculateCommercialPracticalDose(selectedProduct, doseMgKg * parsedWeight)
+    const commercialPractical = selectedProduct && parsedWeight && resolvedMedication.dose.basis !== 'manual' && !override.useCompounding
+      ? calculateCommercialPracticalDose(selectedProduct, doseMgKg * parsedWeight, selectedPotencyMg)
       : null;
+    const compoundingRecommendation = selectedProduct && parsedWeight && !override.useCompounding
+      ? resolveCommercialCompoundingRecommendation(selectedProduct, doseMgKg, parsedWeight, selectedPotencyMg)
+      : null;
+    const totalMg = parsedWeight && doseMgKg ? doseMgKg * parsedWeight : null;
 
     return {
       key: medication.key,
@@ -318,21 +473,32 @@ export function ClinicalMedicationDosePanel({
             ) : null}
           </div>
 
-          <label className="space-y-1.5">
-            <FieldLabel>Apresentação comercial</FieldLabel>
-            <select
-              value={override.commercialProductId || selectedProduct?.id || ''}
-              onChange={(event) => onOverridesChange({
-                ...overrides,
-                [medication.key]: { ...override, commercialProductId: event.target.value },
-              })}
-              className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
-            >
-              {products.map((item) => (
-                <option key={item.id} value={item.id}>{formatCommercialProductOptionLabel(item)}</option>
-              ))}
-            </select>
-          </label>
+          {!override.useCompounding ? (
+            <label className="space-y-1.5">
+              <FieldLabel>Apresentação comercial</FieldLabel>
+              <select
+                value={selectedOption?.optionKey || ''}
+                onChange={(event) => {
+                  const nextOption = commercialOptions.find((item) => item.optionKey === event.target.value);
+                  if (!nextOption) return;
+                  onOverridesChange({
+                    ...overrides,
+                    [medication.key]: {
+                      ...override,
+                      commercialProductId: nextOption.productId,
+                      commercialPotencyMg: nextOption.potencyMg,
+                      useCompounding: false,
+                    },
+                  });
+                }}
+                className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
+              >
+                {commercialOptions.map((item) => (
+                  <option key={item.optionKey} value={item.optionKey}>{item.label}</option>
+                ))}
+              </select>
+            </label>
+          ) : null}
 
           {resolvedMedication.dose.basis !== 'manual' ? (
             <label className="space-y-1.5">
@@ -346,7 +512,11 @@ export function ClinicalMedicationDosePanel({
                     const parsed = parsePositiveDecimal(event.target.value);
                     onOverridesChange({
                       ...overrides,
-                      [medication.key]: { ...override, selectedDoseValue: parsed },
+                      [medication.key]: {
+                        ...override,
+                        selectedDoseValue: parsed,
+                        useCompounding: false,
+                      },
                     });
                   }}
                   title={alert?.critical && alert.severity === 'overdose' ? alert.message : undefined}
@@ -360,9 +530,25 @@ export function ClinicalMedicationDosePanel({
             </label>
           ) : null}
 
+          {compoundingRecommendation ? (
+            <CompoundingRecommendationBanner
+              message={compoundingRecommendation.message}
+              severity={compoundingRecommendation.severity}
+              useCompounding={Boolean(override.useCompounding)}
+              onToggle={(next) => onOverridesChange({
+                ...overrides,
+                [medication.key]: { ...override, useCompounding: next },
+              })}
+            />
+          ) : null}
+
           {alert ? <DoseAlertBanner alert={alert} /> : null}
 
-          {commercialPractical ? (
+          {override.useCompounding && totalMg ? (
+            <p className="rounded-lg border border-violet-200/80 bg-violet-50/70 px-3 py-2 text-xs leading-5 text-violet-900 dark:border-violet-900 dark:bg-violet-950/30 dark:text-violet-100">
+              Texto de manipulação: {resolvedMedication.name} — {buildCompoundingDisplayAmount(totalMg)} por administração ({formatDecimalPtBr(totalMg)} mg calculados).
+            </p>
+          ) : commercialPractical ? (
             <p className="rounded-lg border border-emerald-200/80 bg-emerald-50/70 px-3 py-2 text-xs leading-5 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950/30 dark:text-emerald-100">
               <CriticalDoseHighlight alert={alert || { severity: 'underdose', message: '' }}>
                 <span title={alert?.critical && alert.severity === 'overdose' ? alert.message : undefined}>

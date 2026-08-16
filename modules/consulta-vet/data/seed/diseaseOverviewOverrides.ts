@@ -30,13 +30,22 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
       { title: 'Tratamento', body: 'A base é imunomodulação, controle de dor, higiene local e manejo de doença intestinal concomitante. Cirurgia é reservada a casos selecionados, pois recorrência e complicações são possíveis.', highlights: ['imunomodulação', 'controle de dor'] },
     ],
   },
-  'hiperadrenocorticismo-sindrome-cushing': {
-    lead: 'O hiperadrenocorticismo, conhecido como síndrome de Cushing, resulta da exposição crônica do organismo a concentrações excessivas de cortisol. Na maioria dos cães espontaneamente afetados, a origem é um tumor da hipófise que secreta hormônio adrenocorticotrófico e estimula as duas adrenais; outra parcela apresenta tumor funcional de uma adrenal. O quadro também pode ser causado pelo uso prolongado de glicocorticoides. O excesso de cortisol altera metabolismo, pele, músculos, fígado, pressão arterial, coagulação e defesa contra infecções, produzindo uma síndrome multissistêmica de evolução geralmente lenta.',
-    leadHighlights: ['exposição crônica', 'concentrações excessivas de cortisol', 'síndrome multissistêmica'],
+  'sindrome-cushing-caes': {
+    lead: 'A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), menos frequentemente hipercortisolismo adrenal-dependente (ADH, ~15–20%) ou glicocorticoide exógeno. O diagnóstico exige primeiro reconhecer um fenótipo compatível e depois demonstrar disfunção do eixo HPA com testes apropriados; LDDST é o screening preferencial na maioria dos casos.',
+    leadHighlights: ['atividade glicocorticoide excessiva', 'PDH', 'LDDST', 'trilostano'],
     pillars: [
-      { title: 'Manifestação típica', body: 'Aumento de sede, volume urinário e apetite, ofegação, fraqueza muscular, abdômen pendular, pele fina e perda simétrica de pelos formam o padrão clássico.', highlights: ['Aumento de sede, volume urinário e apetite'] },
-      { title: 'Confirmação', body: 'Nenhum teste isolado substitui a compatibilidade clínica. Exames hormonais demonstram produção ou regulação anormal do cortisol; imagem e testes complementares ajudam a determinar a origem.', highlights: ['Nenhum teste isolado'] },
-      { title: 'Objetivo terapêutico', body: 'Reduzir os efeitos do cortisol sem provocar deficiência hormonal. A escolha entre tratamento medicamentoso, cirurgia e acompanhamento depende da causa, das comorbidades e da possibilidade de monitorização.', highlights: ['sem provocar deficiência hormonal'] },
+      { title: 'Fenótipo antes do laboratório', body: 'Poliúria, polidipsia, polifagia, panting, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não diagnostica Cushing.', highlights: ['ALP isolada não diagnostica'] },
+      { title: 'Triagem e diferenciação', body: 'LDDST (0,01 mg/kg dexametasona IV) confirma hipercortisolismo; eACTH + ultrassom adrenal diferenciam PDH de ADH. Ausência de supressão no LDDST não significa automaticamente ADH.', highlights: ['eACTH', 'ultrassom adrenal'] },
+      { title: 'Tratamento guiado por clínica', body: 'Trilostano (1 mg/kg q12h ou 2 mg/kg q24h com alimento) é primeira linha médica. Ajuste pela clínica e Cushing Clinical Score ALIVE — não por cortisol isolado.', highlights: ['Cushing Clinical Score', 'não por cortisol isolado'] },
+    ],
+  },
+  'sindrome-cushing-gatos': {
+    lead: 'A síndrome de Cushing felina é endocrinopatia rara por excesso crônico de glicocorticoide, com forte associação a diabetes mellitus insulinorresistente (~80%) e pele que pode romper espontaneamente. PDH predomina (~80–85%); ADH ~15–20%. O LDDST exige dexametasona 0,1 mg/kg — dez vezes a dose canina.',
+    leadHighlights: ['diabetes mellitus', 'pele frágil', '0,1 mg/kg', 'rara'],
+    pillars: [
+      { title: 'Diferenças do cão', body: 'ALP frequentemente normal (sem isoenzima esteróide), USG pode permanecer >1,020 apesar de PU/PD, calcinosis cutis não é típica, e fragilidade cutânea extrema é achado marcante.', highlights: ['ALP normal', 'pele frágil'] },
+      { title: 'Diagnóstico', body: 'LDDST 0,1 mg/kg IV é screening preferencial; ACTHST tem sensibilidade baixa para triagem espontânea. Confirmar ensaio de eACTH validado para gato.', highlights: ['LDDST 0,1 mg/kg'] },
+      { title: 'Tratamento e diabetes', body: 'Trilostano extra-label (~1 mg/kg q12h) titulado individualmente. Ao controlar cortisol, a necessidade de insulina pode cair rapidamente — risco de hipoglicemia.', highlights: ['hipoglicemia', 'trilostano extra-label'] },
     ],
   },
   'leishmaniose-visceral-canina': {
@@ -58,12 +67,12 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     ],
   },
   'colapso-traqueal-canino': {
-    lead: 'O colapso traqueal e a traqueobroncomalácia são doenças dinâmicas das vias aéreas nas quais o enfraquecimento das cartilagens e a flacidez da membrana dorsal reduzem o calibre da traqueia, dos brônquios ou de ambos durante a respiração. Há predisposição importante em cães de pequeno porte, mas inflamação crônica, obesidade, irritantes, doença cardíaca e outras alterações respiratórias podem agravar o quadro. A tosse seca e sonora é característica, porém a gravidade varia desde episódios ocasionais até dificuldade respiratória, cianose e síncope.',
-    leadHighlights: ['doenças dinâmicas das vias aéreas', 'reduzem o calibre', 'dificuldade respiratória'],
+    lead: 'O colapso traqueal canino é doença obstrutiva e dinâmica das vias aéreas: cartilagem amolecida e membrana dorsal redundante reduzem o lúmen na inspiração (segmento cervical) ou na expiração e tosse (intratorácico/brônquico). Predomina em cães toy; obesidade, coleira e comorbidades respiratórias/cardíacas agravam. Radiografia triagem frequentemente subestima; fluoroscopia e broncoscopia caracterizam. Manejo médico (peso, peitoral, antitussígenos) precede stent, reservado a obstrução refratária — não a tosse isolada.',
+    leadHighlights: ['dinâmica', 'inspiração', 'expiração', 'peitoral', 'stent'],
     pillars: [
-      { title: 'Diagnóstico dinâmico', body: 'Radiografias podem falhar por registrar apenas um instante. Fluoroscopia e broncoscopia demonstram a variação do lúmen durante o ciclo respiratório e avaliam o envolvimento brônquico.', highlights: ['podem falhar', 'variação do lúmen'] },
-      { title: 'Manejo clínico', body: 'Controle de peso, peitoral em vez de coleira cervical, redução de calor e excitação e tratamento da tosse e da inflamação compõem a primeira linha.', highlights: ['Controle de peso', 'peitoral'] },
-      { title: 'Casos graves', body: 'Crise com esforço respiratório, coloração azulada de mucosas ou colapso requer estabilização. Próteses intraluminais são reservadas a pacientes refratários cuidadosamente selecionados.', highlights: ['requer estabilização'] },
+      { title: 'Cinco conceitos-chave', body: 'Cervical piora na inspiração; intratorácico na expiração; RX normal não exclui; grau anatômico ≠ gravidade clínica; stent alivia obstrução mais que tosse.', highlights: ['RX normal', 'grau anatômico', 'stent'] },
+      { title: 'Diagnóstico dinâmico', body: 'Fluoroscopia mostra colapso funcional; broncoscopia gradua ACVS I–IV e detecta broncomalácia — comum em ~68% dos casos.', highlights: ['fluoroscopia', 'broncomalácia'] },
+      { title: 'Manejo clínico', body: 'Perda de peso e peitoral são terapia respiratória central. Antitussígenos quebram o ciclo tosse–inflamação–colapso; broncodilatadores só se componente bronquial.', highlights: ['peso', 'peitoral', 'antitussígenos'] },
     ],
   },
   'micoplasmoses-hemotropicas': {
@@ -85,12 +94,12 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     ],
   },
   'doenca-valvar-mitral-degenerativa-caes': {
-    lead: 'A doença valvar mitral degenerativa é a cardiopatia adquirida mais comum em cães, sobretudo de pequeno porte e idosos. A degeneração espessa e deforma os folhetos da válvula mitral, impedindo seu fechamento completo e permitindo refluxo de sangue do ventrículo esquerdo para o átrio esquerdo. Esse refluxo geralmente produz sopro e, ao longo do tempo, sobrecarga de volume e aumento das câmaras cardíacas. Muitos cães permanecem assintomáticos por anos; em parte deles, o aumento das pressões no átrio e nos vasos pulmonares culmina em edema pulmonar e insuficiência cardíaca congestiva.',
-    leadHighlights: ['cardiopatia adquirida mais comum em cães', 'refluxo de sangue', 'edema pulmonar'],
+    lead: 'A doença valvar mitral degenerativa é a cardiopatia adquirida mais comum em cães, sobretudo de pequeno porte e idosos. A degeneração deforma os folhetos da mitral, o sangue reflui ao átrio esquerdo e, com o tempo, o coração remodela. Muitos cães ficam anos só com sopro; em parte deles a pressão pulmonar sobe e aparece edema. O estágio ACVIM — não o volume do sopro — define se o paciente observa, inicia pimobendan ou trata congestão.',
+    leadHighlights: ['cardiopatia adquirida mais comum', 'estágio ACVIM', 'edema'],
     pillars: [
-      { title: 'Estágio importa', body: 'A presença de sopro não significa insuficiência cardíaca. Exame clínico, radiografias e ecocardiografia distinguem doença sem aumento cardíaco, remodelamento pré-clínico e congestão.', highlights: ['sopro não significa insuficiência cardíaca'] },
-      { title: 'Sinal de descompensação', body: 'Aumento persistente da frequência respiratória durante o sono, esforço respiratório, tosse associada à congestão e intolerância ao exercício exigem reavaliação.', highlights: ['frequência respiratória durante o sono'] },
-      { title: 'Tratamento por fase', body: 'A conduta muda com o estágio: monitorização nos casos iniciais, terapia que retarda descompensação quando há remodelamento definido e diuréticos quando existe congestão.', highlights: ['muda com o estágio'] },
+      { title: 'Estádio antes de medicar', body: 'B1 observa. B2, com critérios de imagem reunidos, discute pimobendan. C e D tratam congestão. Um LA/Ao isolado não vira B2.', highlights: ['B1 observa', 'B2', 'congestão'] },
+      { title: 'Tosse não é sinônimo de ICC', body: 'Átrio dilatado pode comprimir o brônquio esquerdo sem haver líquido no pulmão. Frequência respiratória durante o sono e radiografia separam tosse de edema.', highlights: ['frequência respiratória durante o sono'] },
+      { title: 'Três eixos terapêuticos', body: 'Diurético para congestão, pimobendan para inodilatação quando indicado, e SRAA só com rim e hidratação permitirem.', highlights: ['Diurético', 'pimobendan', 'SRAA'] },
     ],
   },
   'hipertensao-arterial-sistemica-caes-gatos': {
@@ -109,6 +118,61 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
       { title: 'Doença silenciosa', body: 'A fase pré-clínica pode apresentar apenas dilatação, queda da função sistólica ou arritmias. Ecocardiografia e monitorização eletrocardiográfica prolongada são essenciais em animais predispostos.', highlights: ['fase pré-clínica'] },
       { title: 'Confirmar e buscar causa', body: 'O diagnóstico exige excluir sobrecarga de volume, cardiopatias congênitas e causas reversíveis ou tratáveis, além de considerar o padrão específico de cada raça.', highlights: ['causas reversíveis ou tratáveis'] },
       { title: 'Tratamento por fenótipo', body: 'A terapia é dirigida ao estágio, à congestão, à baixa contratilidade e às arritmias. Dieta e suplementação só devem ser corrigidas conforme história e avaliação nutricional.', highlights: ['dirigida ao estágio'] },
+    ],
+  },
+  'arritmias-cardiacas-caes-gatos': {
+    lead: 'Arritmias cardíacas são alterações na formação ou condução do impulso elétrico — de achados incidentais a emergências fatais. O ECG identifica o ritmo, mas não prova contração mecânica eficaz; integrar pulso, perfusão, ecocardiografia e Holter. Não existe estadiamento consensual de arritmia: o ConsultaVet usa estratificação de urgência clínica. FA canina: meta de Holter ≤125 bpm (ORCA). Bradiarritmias estruturais sintomáticas frequentemente necessitam marcapasso.',
+    leadHighlights: ['Holter', 'estratificação de urgência', '≤125 bpm', 'marcapasso'],
+    pillars: [
+      { title: 'Não trate só o ECG', body: 'Estabilidade hemodinâmica, substrato cardíaco e causas reversíveis (eletrólitos, hipóxia, dor) precedem antiarrítmico.', highlights: ['hemodinâmica', 'eletrólitos'] },
+      { title: 'ECG curto ≠ ausência de doença', body: 'Holter em síncope, ectopia intermitente e controle de FA. Em gatos saudáveis, ectopia ventricular pode ser frequente sem cardiomiopatia (2026).', highlights: ['Holter', 'gatos'] },
+      { title: 'Taqui × bradi × pulso', body: 'VT com pulso: lidocaína (dose felina reduzida). VF/VT sem pulso: RECOVER. SSS/BAV: pacing.', highlights: ['lidocaína', 'RECOVER', 'pacing'] },
+    ],
+  },
+  'giardiase-caes-gatos': {
+    lead: 'Giardíase é infecção intestinal por *Giardia duodenalis* — frequentemente assintomática ou associada a diarreia de intestino delgado. Positivo laboratorial não fecha etiologia: comorbidades são comuns. Diagnóstico: amostras seriadas + flutuação ZnSO₄ ± antígeno/PCR. Tratamento: fenbendazol 50 mg/kg × 5 dias + higiene ambiental rigorosa.',
+    leadHighlights: ['positivo ≠ causa', '3 amostras', 'fenbendazol 50 mg/kg', 'higiene ambiental'],
+    pillars: [
+      { title: 'Positivo ≠ culpado', body: 'eliminação subclínica assintomático é frequente; correlacionar clínica, ambiente e comorbidades antes de tratar.', highlights: ['eliminação subclínica', 'correlação clínica'] },
+      { title: 'Diagnóstico = amostragem', body: 'Três amostras em dias alternados; ZnSO₄ clássico; ELISA/PCR complementam — nenhum teste prova cura isoladamente.', highlights: ['ZnSO₄', 'intermitente'] },
+      { title: 'Animal + ambiente', body: 'Banho, fezes, desinfecção e contactantes — reinfecção mimetiza falha terapêutica.', highlights: ['higiene', 'reinfecção'] },
+    ],
+  },
+  'coccidiose-caes-gatos': {
+    lead: 'Cistoisosporose (*Cystoisospora*) é coccidiose intestinal comum em filhotes e abrigos — distinta de coccidioidomicose (fungo). Oocistos positivos confirmam infecção, não causalidade isolada. Flutuação fecal seriada; ponazuril 50 mg/kg × 3 dias ou toltrazuril; controle ambiental essencial.',
+    leadHighlights: ['≠ coccidioidomicose', 'ponazuril 50 mg/kg ×3 d', 'positivo ≠ culpado', 'ambiente'],
+    pillars: [
+      { title: 'Nome certo, doença certa', body: '*Cystoisospora* intestinal ≠ *Coccidioides* fúngico — confirmar contexto (diarreia + oocistos vs tosse/endemia fúngica).', highlights: ['Cystoisospora', '≠ Coccidioides'] },
+      { title: 'Positivo não fecha etiologia', body: 'Adultos eliminam oocistos sem sinais; filhotes diarréicos exigem coinfecções (parvovírus, Giardia, helmintos).', highlights: ['eliminação subclínica', 'comorbidades'] },
+      { title: 'Ponazuril — 3 dias', body: '50 mg/kg VO q24h × 3 dias supera doses únicas de 20–50 mg/kg — não intercambiar protocolos.', highlights: ['50 mg/kg', '3 dias'] },
+      { title: 'Ambiente esporula o problema', body: 'Remover fezes ≤24 h, desinfecção e secagem — reinfecção mimetiza falha terapêutica.', highlights: ['esporulação', 'reinfecção'] },
+    ],
+  },
+  'hiperparatireoidismo-caes-gatos': {
+    lead: 'Hiperparatireoidismo não é uma síndrome única: PTH autônomo (PHPT) versus compensatório (CKD-MBD, NSHP). A primeira pergunta é se a paratireoide tornou-se autônoma ou responde a estímulo crônico. iCa + PTH juntos definem conduta — paratireoidectomia, controle de fósforo IRIS 2026 ou correção dietética.',
+    leadHighlights: ['PTH autônomo vs compensatório', 'iCa', 'IRIS 2026', 'paratireoidectomia'],
+    pillars: [
+      { title: 'PHPT', body: 'iCa ↑ + PTH não suprimido — frequentemente incidental no cão; paratireoidectomia é tratamento definitivo.', highlights: ['iCa', 'cirurgia'] },
+      { title: 'CKD-MBD', body: 'FGF23 e PTH sobem antes do fósforo; metas IRIS 2026 guiam dieta e quelantes.', highlights: ['FGF23', 'fósforo'] },
+      { title: 'NSHP', body: 'Dieta Ca:P inadequada — filhotes em risco; corrigir alimentação completa, não só cálcio.', highlights: ['osteopenia', 'dieta'] },
+    ],
+  },
+  'insulinoma-caes-gatos': {
+    lead: 'Insulinoma é neoplasia funcional de células beta que secreta insulina apesar da hipoglicemia — a tríade clínica é hipoglicemia verdadeira + sinais compatíveis + insulina inadequadamente não suprimida. Crises neurológicas exigem conduta imediata; estadiamento por tomografia contrastada multifásica guia cirurgia, que permanece primeira escolha quando viável.',
+    leadHighlights: ['hipoglicemia', 'insulina não suprimida', 'TC multifásica', 'crise neurológica'],
+    pillars: [
+      { title: 'Diagnóstico relacional', body: 'Insulina “normal” durante hipoglicemia não exclui insulinoma; não usar razão insulina:glicose como teste principal.', highlights: ['insulina normal', 'amostra pareada'] },
+      { title: 'Emergência', body: 'Dextrose titulada, evitar bolus grandes; glucagon se refratário; estabilizar antes de estadiamento completo.', highlights: ['dextrose titulada', 'glucagon'] },
+      { title: 'Tratamento definitivo', body: 'Cirurgia quando operável; prednisona/prednisolona, diazóxido e dieta fracionada no manejo médico; toceranibe/estreptozotocina em doença avançada.', highlights: ['cirurgia', 'prednisolona', 'diazóxido'] },
+    ],
+  },
+  'cetoacidose-diabetica-caes-gatos': {
+    lead: 'CAD é diabetes complicado por cetose e acidose metabólica — emergência em que fluidoterapia, potássio e insulina gradual interrompem a cetogênese enquanto se trata a doença precipitante. BHB sanguíneo supera cetonúria; em gatos com SGLT2, eDKA pode existir sem hiperglicemia acentuada.',
+    leadHighlights: ['BHB', 'fluido primeiro', 'K⁺ paradoxal', 'eDKA', 'dextrose + insulina'],
+    pillars: [
+      { title: 'Definição', body: 'CAD = diabetes + cetose + acidose; DK = cetose sem acidose; eDKA = cetose + acidose com glicemia baixa/normal.', highlights: ['tríade', 'eDKA'] },
+      { title: 'Sequência terapêutica', body: 'Perfusão → fluidos → eletrólitos → insulina → dextrose quando necessário → nutrição → tratar gatilho.', highlights: ['perfusão', 'insulina anticetogênica'] },
+      { title: 'Armadilhas', body: 'Bicarbonato e antibióticos não são rotina; parar insulina só porque glicemia caiu pode manter cetogênese.', highlights: ['não parar insulina', 'não bicarbonato rotineiro'] },
     ],
   },
   'cardiomiopatia-hipertrofica-caes-gatos': {
@@ -165,13 +229,22 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
       { title: 'Opções terapêuticas', body: 'Iodo radioativo e cirurgia podem ser curativos em casos selecionados; medicamentos antitireoidianos e dieta restrita em iodo controlam a produção enquanto são mantidos.', highlights: ['podem ser curativos', 'controlam a produção'] },
     ],
   },
-  'hipotireoidismo-canino': {
-    lead: 'O hipotireoidismo canino é uma deficiência dos hormônios tireoidianos, quase sempre causada por destruição imunomediada ou atrofia da própria tireoide. Como esses hormônios regulam o metabolismo de muitos tecidos, a redução costuma produzir sinais graduais e inespecíficos: letargia, intolerância ao exercício e ao frio, ganho de peso sem aumento proporcional do apetite, alterações de pele e pelo, infecções recorrentes e frequência cardíaca reduzida. Doenças não tireoidianas e diversos medicamentos também diminuem os exames hormonais sem existir hipotireoidismo verdadeiro, o que torna essencial interpretar os testes no contexto clínico.',
-    leadHighlights: ['deficiência dos hormônios tireoidianos', 'sinais graduais e inespecíficos', 'sem existir hipotireoidismo verdadeiro'],
+  'hipotireoidismo-adquirido-caes-gatos': {
+    lead: 'O hipotireoidismo adquirido é deficiência de hormônios tireoidianos que surge ao longo da vida. Em cães, destruição primária da tireoide por tireoidite ou atrofia produz letargia, ganho de peso, alterações de pele e pelo, bradicardia e hipercolesterolemia. Em gatos, a forma espontânea é rara; a apresentação mais relevante é iatrogênica após tratamento de hipertireoidismo. T4 total baixo isolado não confirma a doença — doença sistêmica, medicamentos e raça alteram exames em eutireoideos (NTIS).',
+    leadHighlights: ['deficiência de hormônios tireoidianos', 'iatrogênica após hipertireoidismo', 'T4 total baixo isolado não confirma'],
     pillars: [
-      { title: 'Não diagnosticar por um valor', body: 'Tiroxina total baixa isoladamente não confirma a doença. Combinação de sinais, tiroxina livre, hormônio estimulante da tireoide e interferências clínicas aumenta a segurança diagnóstica.', highlights: ['não confirma a doença'] },
-      { title: 'Diferenciar outras causas', body: 'Obesidade, dermatopatias, doença sistêmica e uso de glicocorticoides, anticonvulsivantes ou outros fármacos podem imitar o quadro ou alterar resultados.', highlights: ['podem imitar o quadro'] },
-      { title: 'Reposição e controle', body: 'Levotiroxina substitui o hormônio ausente. A resposta clínica e a concentração hormonal em horário padronizado orientam o ajuste, evitando excesso de tratamento.', highlights: ['evitando excesso de tratamento'] },
+      { title: 'Não diagnosticar por um valor', body: 'Integrar clínica, fT4 por diálise, cTSH e interferências. Cerca de 20–40% dos hipotireóideos podem ter cTSH normal.', highlights: ['20–40%', 'cTSH normal'] },
+      { title: 'Cão × gato', body: 'Cão: 0,02 mg/kg q12h, peso magro se obeso, T4 pós-pílula 4–6 h. Gato: 0,05–0,10 mg/GATO q24h — nunca mg/kg.', highlights: ['mg/GATO', 'pós-pílula'] },
+      { title: 'Emergência', body: 'Coma mixedematoso é raro mas exige estabilização intensiva antes de reposição hormonal plena.', highlights: ['Coma mixedematoso'] },
+    ],
+  },
+  'hipotireoidismo-congenito-caes-gatos': {
+    lead: 'O hipotireoidismo congênito é deficiência hormonal presente desde o desenvolvimento fetal ou neonatal. Diferente do adulto que perde metabolismo, o filhote perde também crescimento, maturação neurológica e ossificação — sequela estrutural se o tratamento for tardio. Formas goitrosas (síntese bloqueada + TSH alto) contrastam com não goitrosas (disgenesia ou deficiência central).',
+    leadHighlights: ['desde o desenvolvimento fetal', 'sequela estrutural', 'goitroso vs não goitroso'],
+    pillars: [
+      { title: 'Suspeita precoce', body: 'Nanismo desproporcional, fontanela aberta, dentição retardada, bócio ou surdez em filhote — investigar TT4 imediatamente.', highlights: ['nanismo desproporcional', 'TT4 imediatamente'] },
+      { title: 'Genética', body: 'Mutações TPO em gatos (Van Poucke et al., 2022); variantes TG em Rottweilers (Abitbol et al., 2026).', highlights: ['TPO', 'TG'] },
+      { title: 'Tratar cedo', body: 'Golinelli et al. (2022): início precoce melhora prognóstico neurológico e ossificação.', highlights: ['início precoce'] },
     ],
   },
   'tumores-mamarios-caes-gatos': {

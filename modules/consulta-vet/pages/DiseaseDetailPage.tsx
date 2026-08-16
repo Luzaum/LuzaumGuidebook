@@ -22,6 +22,8 @@ import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
 import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
+import { getDiseaseCategorySlugs } from '../utils/diseaseCategories';
+import { getSpecialtyVisual } from '../utils/specialtyVisuals';
 
 type ResumeLocationState = {
   sectionId?: string;
@@ -282,14 +284,24 @@ export function DiseaseDetailPage() {
                 <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary">
                   {formatSpeciesList(disease.species)}
                 </span>
-                <span className="rounded-full border border-border bg-muted/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-                  {disease.category}
-                </span>
+                {getDiseaseCategorySlugs(disease).map((catSlug) => (
+                  <span
+                    key={catSlug}
+                    className="rounded-full border border-border bg-muted/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground"
+                  >
+                    {getSpecialtyVisual(catSlug).label}
+                  </span>
+                ))}
               </div>
 
               <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl">
                 {disease.title}
               </h1>
+              {disease.subtitle ? (
+                <p className="mt-3 max-w-[72ch] text-base leading-relaxed text-muted-foreground md:text-lg">
+                  {disease.subtitle}
+                </p>
+              ) : null}
 
               <div className="mt-5">
                 <TagPills tags={disease.tags} maxVisible="all" />
@@ -379,9 +391,21 @@ export function DiseaseDetailPage() {
                   border: 'border-cyan-500/30 dark:border-cyan-400/20',
                   glow: 'bg-cyan-500/12',
                 },
+                gastroenterologia: {
+                  gradient: 'bg-gradient-to-br from-orange-900 via-slate-950 to-slate-950',
+                  border: 'border-orange-500/30 dark:border-orange-400/20',
+                  glow: 'bg-orange-500/12',
+                },
+                parasitologia: {
+                  gradient: 'bg-gradient-to-br from-lime-900 via-slate-950 to-slate-950',
+                  border: 'border-lime-500/30 dark:border-lime-400/20',
+                  glow: 'bg-lime-500/12',
+                },
               };
 
-              const displayCategory = disease.category === 'infecciosas' ? 'infectologia' : disease.category;
+              const displayCategory =
+                getDiseaseCategorySlugs(disease).find((s) => SUMMARY_THEMES[s]) ??
+                (disease.category === 'infecciosas' ? 'infectologia' : disease.category);
               const theme = SUMMARY_THEMES[displayCategory] || {
                 gradient: 'bg-gradient-to-br from-primary via-primary to-sky-700/90 dark:from-primary dark:via-primary/95 dark:to-slate-900',
                 border: 'border-primary/20',

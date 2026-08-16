@@ -75,3 +75,12 @@ test('FIV documenta reteste 60 dias e AZT', () => {
   assert.match(strip, /60 dias/);
   assert.match(strip, /AZT|5–10 mg\/kg|5-10 mg\/kg/);
 });
+
+test('FIV separa tratamento em 7.1 suporte, 7.2 doenças associadas e 7.3 monitoramento', () => {
+  const record = diseasesSeed.find((d) => d.slug === SLUG);
+  const treatment = record?.treatment as Record<string, unknown> | undefined;
+  assert.ok(treatment?.tratamentoSuporte, 'tratamentoSuporte deve existir no registro da FIV');
+  assert.ok(treatment?.tratamentoDoencasAssociadas, 'tratamentoDoencasAssociadas deve existir no registro da FIV');
+  assert.ok(treatment?.tratamentoMonitoramento, 'tratamentoMonitoramento deve existir no registro da FIV');
+});
+

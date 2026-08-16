@@ -25,6 +25,9 @@ test('trauma vertebromedular canino orienta emergência 24h e não ligação tel
   assert.match(body, new RegExp(NEURO_EMERGENCY_INTRO.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
   assert.match(body, /serviço veterinário externo de emergência/i);
   assert.doesNotMatch(body, /Ligue imediatamente para o médico-veterinário/i);
+  assert.doesNotMatch(body, /METOCARBAMOL/i);
+  assert.ok(model.options.some((item) => item.key === 'tramadol' && item.optional));
+  assert.ok(model.options.some((item) => item.key === 'dipirona' && item.optional));
 });
 
 test('hérnia de disco canina inclui repouso de 4 semanas e opções de analgesia', () => {

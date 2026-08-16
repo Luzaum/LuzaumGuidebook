@@ -893,7 +893,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             rows: [
               ['Olho', 'Ameaça, PLR, fundoscopia, hifema, hemorragia, edema, tortuosidade, papiledema, descolamento de retina', 'Cegueira súbita + PAS alta = emergência; prognóstico visual depende da duração e severidade'],
               ['SNC', 'Mentação, convulsão, ataxia, head tilt, nistagmo central, anisocoria, paresia, cegueira central', 'Sugere encefalopatia hipertensiva; preferir controle titulável se grave'],
-              ['Rim', 'Ureia, creatinina, SDMA se disponível, eletrólitos, fósforo, urinálise, densidade, sedimento, UPC e débito urinário', 'DRC/AKI pode ser causa e consequência; UPC muda prognóstico e terapia'],
+              ['Rim', 'Ureia, creatinina, SDMA se disponível, eletrólitos, fósforo, urinálise, densidade, sedimento, RPCU e débito urinário', 'DRC/LRA pode ser causa e consequência; RPCU muda prognóstico e terapia'],
               ['Coração', 'Sopro, galope, arritmia, ECG, radiografia se dispneia, eco quando possível, sinais de edema pulmonar', 'Hipertensão aumenta pós-carga; dispneia muda prioridade para oxigênio e descongestão'],
             ],
           },
@@ -958,7 +958,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             title: 'Doses rápidas',
             columns: ['Fármaco', 'Cão', 'Gato', 'Observação'],
             rows: [
-              ['Amlodipina', '0,1-0,3 mg/kg VO SID; até 0,5 mg/kg/dia', '0,625 mg/gato SID ou 0,1-0,2 mg/kg SID; casos graves podem precisar 1,25 mg/gato SID/BID', 'Base em gato; em cão renal/proteinúrico, considerar associar bloqueio RAAS'],
+              ['Amlodipina', '0,1-0,3 mg/kg VO SID; até 0,5 mg/kg/dia', '0,625 mg/gato SID ou 0,1-0,2 mg/kg SID; casos graves podem precisar 1,25 mg/gato SID/BID', 'Base em gato; em cão renal/proteinúrico, considerar associar bloqueio do SRAA'],
               ['Amlodipina ataque felino', '-', '0,1-0,2 mg/kg VO q2h até PAS <170 ou máximo cumulativo 1 mg/kg', 'Apenas com monitorização próxima; risco de hipotensão tardia'],
               ['Nitroprussiato', 'Iniciar 0,5-1 mcg/kg/min IV CRI; titular; algumas fontes até 5-10/15', 'Iniciar 0,5-1 mcg/kg/min; geralmente até 2-5', 'UTI, bomba, proteger da luz, D5W, nunca bolus'],
               ['Hidralazina bolus', '0,1-0,2 mg/kg IV/IM q2h se necessário', '1-2,5 mg/gato SC; pode repetir em 15-30 min', 'Resposta menos previsível que nitroprussiato'],
@@ -1030,7 +1030,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
             columns: ['Cenário', 'Raciocínio', 'Conduta prática'],
             rows: [
               ['Gato PAS 220 + cegueira/descolamento de retina', 'Emergência hipertensiva ocular; DRC/hipertireoidismo comuns', 'Amlodipina 0,625-1,25 mg/gato VO se estável; reavaliar PAS em 2-4 h; se encefalopatia/convulsão, considerar nitroprussiato CRI'],
-              ['Cão DRC + proteinúria + PAS 200 sem TOD aguda', 'Urgência grave com componente renal/glomerular', 'Bloqueio RAAS conforme caso; adicionar amlodipina 0,1-0,2 mg/kg VO SID se PAS muito alta; recheck 3-7 dias se instável'],
+              ['Cão DRC + proteinúria + PAS 200 sem TOD aguda', 'Urgência grave com componente renal/glomerular', 'Bloqueio do SRAA conforme caso; adicionar amlodipina 0,1-0,2 mg/kg VO SID se PAS muito alta; recheck 3-7 dias se instável'],
               ['Cão massa adrenal + PAS 260 + taquicardia paroxística', 'Suspeita de feocromocitoma', 'ECG e PAS seriada; crise com nitroprussiato ou fentolamina se disponível; preparo com fenoxibenzamina; beta apenas após alfa'],
               ['Hipertensão + dispneia/edema pulmonar', 'Pós-carga alta e congestão podem piorar troca gasosa', 'Oxigênio, mínima contenção, furosemida se edema cardiogênico, considerar nitroprussiato se monitorável; evitar fluidos automáticos'],
             ],
@@ -1128,7 +1128,7 @@ export const emergencyGuidesSeed: EmergencyGuide[] = [
               'Olho, cérebro, rim e coração são os órgãos-alvo que mudam urgência e prognóstico.',
               'Meta inicial: reduzir 20-25% em 2-4 h ou para 160-170 mmHg; não normalizar de uma vez.',
               'Gato: amlodipina é base; crise neurológica pode exigir nitroprussiato.',
-              'Cão renal/proteinúrico: pensar em bloqueio RAAS +/- amlodipina; crise com TOD pede fármaco IV titulável.',
+              'Cão renal/proteinúrico: pensar em bloqueio do SRAA +/- amlodipina; crise com TOD pede fármaco IV titulável.',
               'Nitroprussiato: excelente, mas exige bomba, proteção da luz, D5W e monitorização intensa; nunca bolus ou flush.',
             ],
           },

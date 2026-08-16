@@ -21,7 +21,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
   tags: [
     'IRIS 2023',
     'SDMA',
-    'UPC',
+    'RPCU',
     'Proteinúria',
     'Hipertensão',
     'Dieta renal',
@@ -31,7 +31,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     'PU/PD',
   ],
   quickSummary:
-    'A doença renal crônica (DRC) é síndrome de perda irreversível e progressiva de massa nefronal funcional: com menos néfrons eficazes, o rim deixa de concentrar urina precocemente (poliúria/polidipsia), acumula solutos azotados quando a taxa de filtração cai, perturba equilíbrio ácido-base e mineral (hiperfosfatemia, desregulação do eixo PTH/FGF23), produz menos eritropoietina (anemia não regenerativa) e perde resiliência frente a insultos agudos (AKI sobreposta). Em pequenos animais, define-se clinicamente por alterações estruturais ou funcionais persistentes por pelo menos cerca de três meses — número operacional, não dogma absoluto. O estadiamento IRIS (creatinina e SDMA em sangue, proteinúria urinária e pressão arterial como substadiamentos) só deve aplicar-se com animal euvolêmico, estável e sem descompensação aguda mascarando números. O tratamento longitudinal combina nutrição renal, metas de fósforo, bloqueio do RAAS quando há proteinúria clinicamente relevante, controle pressórico (amlodipino muito utilizado em gatos), correção de hipocalemia felina, fluidoterapia subcutânea domiciliar quando indicada, antieméticos e mimetizantes de apetite, além de gestão honesta de qualidade de vida nos estádios avançados.',
+    'A doença renal crônica (DRC) é síndrome de perda irreversível e progressiva de massa nefronal funcional: com menos néfrons eficazes, o rim deixa de concentrar urina precocemente (poliúria/polidipsia), acumula solutos azotados quando a taxa de filtração cai, perturba equilíbrio ácido-base e mineral (hiperfosfatemia, desregulação do eixo PTH/FGF23), produz menos eritropoietina (anemia não regenerativa) e perde resiliência frente a insultos agudos (LRA sobreposta). Em pequenos animais, define-se clinicamente por alterações estruturais ou funcionais persistentes por pelo menos cerca de três meses — número operacional, não dogma absoluto. O estadiamento IRIS (creatinina e SDMA em sangue, proteinúria urinária e pressão arterial como substadiamentos) só deve aplicar-se com animal euvolêmico, estável e sem descompensação aguda mascarando números. O tratamento longitudinal combina nutrição renal, metas de fósforo, bloqueio do SRAA quando há proteinúria clinicamente relevante, controle pressórico (amlodipino muito utilizado em gatos), correção de hipocalemia felina, fluidoterapia subcutânea domiciliar quando indicada, antieméticos e mimetizantes de apetite, além de gestão honesta de qualidade de vida nos estádios avançados.',
   quickDecisionStrip: [
     'PU/PD crônica, perda de peso, azotemia persistente e incapacidade de concentrar urina: pense em DRC.',
     'Não estadiar pela IRIS um paciente desidratado, instável ou com suspeita forte de componente agudo.',
@@ -42,7 +42,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
   quickSummaryRich: {
     lead:
       'DRC exige pensar em duas linhas do tempo: a lenta da fibrose tubulointersticial e a rápida das descompensações (desidratação, sepse, AINE, obstrução). O mesmo creatinina “3 mg/dL” em animal hipovolêmico não é o mesmo estádio que após fluido — estadiar mal leva a polifarmácia injustificada ou, inversamente, a subtratar proteinúria e pressão. Gato e cão compartilham esqueleto terapêutico, mas não troque hipocalemia felina por lógica exclusivamente canina.',
-    leadHighlights: ['euvolêmico', 'IRIS', 'proteinúria', 'hipocalemia', 'AKI sobreposta'],
+    leadHighlights: ['euvolêmico', 'IRIS', 'proteinúria', 'hipocalemia', 'LRA sobreposta'],
     pillars: [
       {
         title: 'Definição prática',
@@ -73,7 +73,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
             'PU/PD insidiosa, perda de peso/massa magra, USG persistentemente baixa no gato idoso, azotemia repetida — diferenciar de polidipsia psicogênica, diabetes e hipertireoidismo (Nelson & Couto, 6ª ed.; IRIS 2023).',
         },
         {
-          label: 'Excluir AKI e pré-renal',
+          label: 'Excluir LRA e pré-renal',
           timing: 'Antes de estadiar IRIS',
           detail:
             'Hidratação, ultrassom rápido se obstrução suspeita, revisão de AINE/corticoide/ACE-I em desidratação; só estadiar IRIS com paciente estável e euvolêmico (IRIS 2023; Nelson & Couto, 6ª ed.).',
@@ -82,7 +82,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
           label: 'Pacote mínimo estruturado',
           timing: 'Após estabilização',
           detail:
-            'Creatinina, SDMA, ureia, fosfato, hemograma, urinálise + sedimento, UPC, TA sistólica; cultura se piúria real ou recidivas (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
+            'Creatinina, SDMA, ureia, fosfato, hemograma, urinálise + sedimento, RPCU, TA sistólica; cultura se piúria real ou recidivas (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
         },
         {
           label: 'Imagem quando muda conduta',
@@ -116,12 +116,12 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
           reassess: 'Vigiar hipocalcemia iatrogênica ao combinar dieta + quelante sem monitorização.',
         },
         {
-          label: 'Proteinúria e RAAS',
+          label: 'Proteinúria e SRAA',
           detail:
-            'IECA ou ARB quando UPC acima do limiar de tratamento; verificar creatinina e K⁺ após início; não iniciar em desidratação (IRIS 2023).',
-          dose: 'Benazepril 0,25–0,5 mg/kg VO q12–24h ou telmisartan 1 mg/kg VO q24h (cães/gatos); escalonar conforme UPC persistente.',
+            'IECA ou ARB quando RPCU acima do limiar de tratamento; verificar creatinina e K⁺ após início; não iniciar em desidratação (IRIS 2023).',
+          dose: 'Benazepril 0,25–0,5 mg/kg VO q12–24h ou telmisartan 1 mg/kg VO q24h (cães/gatos); escalonar conforme RPCU persistente.',
           duration: 'Contínuo enquanto proteinúria clinicamente relevante.',
-          reassess: 'Creatinina e potássio 5–7 dias após início ou ajuste de RAAS.',
+          reassess: 'Creatinina e potássio 5–7 dias após início ou ajuste de SRAA.',
         },
         {
           label: 'Pressão arterial',
@@ -146,7 +146,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     visaoGeralFenotipoFinal:
       'Na maioria dos casos de pequenos animais o exame histológico final converge para fibrose tubulointersticial com inflamação, independentemente do evento inicial — por isso o “fenótipo” costuma parecer semelhante mesmo quando a causa raiz foi glomerular, infeciosa ou tóxica. O gatilho original muitas vezes já não é identificável na biopsia tardia ou na necropsia.',
     causasEmCaes:
-      'Entre as causas mais citadas em cães: nefrite intersticial crônica de causa não determinada, pielonefrite crônica, glomerulonefrite crônica, amiloidose, nefropatias familiares ou hereditárias (por exemplo shunts portossistêmicos tratados tardiamente, displasias) e sequela de injúria renal aguda. Na prática, investigue sempre componente glomerular proteinúrico, histórico de infecção do trato urinário alto de repetição, linhagem e DRC pós-AKI em animais previamente estáveis.',
+      'Entre as causas mais citadas em cães: nefrite intersticial crônica de causa não determinada, pielonefrite crônica, glomerulonefrite crônica, amiloidose, nefropatias familiares ou hereditárias (por exemplo shunts portossistêmicos tratados tardiamente, displasias) e sequela de injúria renal aguda. Na prática, investigue sempre componente glomerular proteinúrico, histórico de infecção do trato urinário alto de repetição, linhagem e DRC pós-LRA em animais previamente estáveis.',
     causasEmGatos:
       'Em gatos destacam-se nefrite intersticial crônica idiopática, pielonefrite crônica, glomerulonefrite crônica, amiloidose, doença renal policística em Persas, neoplasia (por exemplo linfoma renal), piogranulomatose associada à infecção pelo vírus da imunodeficiência felina e sequela de injúria renal aguda.',
   },
@@ -180,7 +180,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       display: 'wide',
     },
     perdaNefronsHiperfiltracao:
-      'À medida que os néfrons são perdidos, os remanescentes hiperfiltram para preservar a taxa de filtração global aparente; a pressão intraglomerular aumenta e, com o tempo, isso favorece proteinúria e esclerose glomerular residual — um círculo vicioso que acelera o declínio. Daí a importância de bloqueio do RAAS quando há proteinúria clinicamente relevante.',
+      'À medida que os néfrons são perdidos, os remanescentes hiperfiltram para preservar a taxa de filtração global aparente; a pressão intraglomerular aumenta e, com o tempo, isso favorece proteinúria e esclerose glomerular residual — um círculo vicioso que acelera o declínio. Daí a importância de bloqueio do SRAA quando há proteinúria clinicamente relevante.',
     perdaConcentracaoUrina:
       'Entre as primeiras funções a deteriorar está a capacidade de concentrar a urina: poliúria com urina diluída e polidipsia compensatória frequentemente antecedem azotemia marcada. Em gatos, massa urinária aumentada com densidade urinária abaixo de 1,035 (em amostra adequada) pode ser pista precoce, embora não seja patognomônica (diabetes, iatrogenia com diuréticos, etc.).',
     retencaoUremica:
@@ -205,7 +205,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
           finding: 'Proteinúria persistente',
           mechanism:
             'Hiperfiltração glomerular e lesão estrutural aumentam perda de albumina na urina.',
-          clinicalMeaning: 'Fator de progressão — quantificar UP/C e tratar conforme IRIS.',
+          clinicalMeaning: 'Fator de progressão — quantificar RPCU e tratar conforme IRIS.',
           priority: 'common',
         },
       ],
@@ -334,7 +334,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
           'Amlodipina costuma responder bem; telmisartan é opção IRIS; combinar se monoterapia insuficiente.',
         ],
         [
-          'UPC — limiares proteinúria',
+          'RPCU — limiares proteinúria',
           'Não proteinúrico <0,2; borderline 0,2–0,5; proteinúrico >0,5.',
           'Não proteinúrico <0,2; borderline 0,2–0,4; proteinúrico >0,4.',
         ],
@@ -376,9 +376,9 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
         title: 'Subestadiar por proteinúria e pressão',
         purpose: 'Completar substadiamento prognóstico.',
         description:
-          'UPC em urina adequada; pressão arterial com técnica padronizada.',
+          'RPCU em urina adequada; pressão arterial com técnica padronizada.',
         interpretation: 'Proteinúria e hipertensão aceleram progressão.',
-        limitations: 'UPC requer amostra livre de contaminação.',
+        limitations: 'RPCU requer amostra livre de contaminação.',
         isGoldStandard: true,
       },
     ],
@@ -401,7 +401,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       rows: [
         ['Alimentacao e calorias', 'Melhora qualidade de vida e reduz crise por inapetencia', 'Dieta renal se aceita; se não aceita, priorizar comer'],
         ['Hidratação', 'Reduz descompensacoes pre-renais', 'Plano simples e reavaliavel'],
-        ['PA, UPC e fosforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
+        ['PA, RPCU e fosforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
       ],
     },
     decisaoInicial:
@@ -414,7 +414,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       '3) Tratar proteinúria clinicamente relevante e hipertensão conforme guidelines e tolerância.',
       '4) Manejar náuseas, inapetência, hipocalemia (especialmente gatos), acidose e anemia.',
       '5) Considerar fluidoterapia subcutânea domiciliar principalmente em gatos estádios avançados.',
-      '6) Rever peso, ECC, pressão, UPC, creatinina/SDMA e urinálise em intervalos definidos pelo estádio.',
+      '6) Rever peso, ECC, pressão, RPCU, creatinina/SDMA e urinálise em intervalos definidos pelo estádio.',
     ],
     drcDietaRenal:
       'Restrição de fósforo por dieta renal é um dos pilares mais bem apoiados para retardar progressão e controlar complicações mineral — especialmente a partir de azotemia estádio 2, com papel também selecionado antes disso em alguns pacientes.',
@@ -438,7 +438,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
         [
           'Cão com DRC IRIS estágio 2',
           'Antiácido quando indicado + antiemético/antináusea + quelante de fósforo se fósforo acima do alvo + estadiamento completo.',
-          'Confirmar estabilidade/euvolemia; subestadiar UPC e pressão arterial; dieta renal e alvo de fósforo <4,5-4,6 mg/dL.',
+          'Confirmar estabilidade/euvolemia; subestadiar RPCU e pressão arterial; dieta renal e alvo de fósforo <4,5-4,6 mg/dL.',
         ],
         [
           'Gato com DRC IRIS estágio 3/4',
@@ -447,7 +447,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
         ],
       ],
     },
-    drcProteinuriaRaas: [
+    drcProteinuriaSRAA: [
       {
         drug: 'Benazepril',
         indication: 'Proteinúria na DRC — inibidor da ECA.',
@@ -458,7 +458,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       },
       {
         drug: 'Telmisartan',
-        indication: 'Proteinúria / RAAS — antagonista do receptor de angiotensina.',
+        indication: 'Proteinúria / SRAA — antagonista do receptor de angiotensina.',
         dose: '1 mg/kg VO q24h em cães e gatos como ponto de partida; em cães alguns protocolos escalam até 3 mg/kg q24h em proteinúria persistente.',
         frequency: 'q24h',
         route: 'VO',
@@ -563,7 +563,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     monitoramento: [
       'Estádios 1–2 estáveis — muitas vezes revisão a cada quatro a seis meses.',
       'Estádios 3–4 — tipicamente a cada três a quatro meses ou mais cedo se instável.',
-      'Série: peso, ECC, creatinina, SDMA, fósforo, cálcio, potássio, bicarbonato, UPC, pressão arterial, urinálise e cultura.',
+      'Série: peso, ECC, creatinina, SDMA, fósforo, cálcio, potássio, bicarbonato, RPCU, pressão arterial, urinálise e cultura.',
     ],
     prognosticoResumo:
       'Gatos — dados August publicados citam medianas de sobrevida em torno de 1151 dias no estádio 2, 679 dias no estádio 3 e cerca de 35 dias no estádio 4; proteinúria persistente, hipertensão, hiperfosfatemia e anemia pioram prognóstico.\n\n' +
@@ -585,7 +585,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
   prevention:
     'Rastreio laboratorial e de pressão em animais idosos com fatores de risco; controle de comorbidades sistêmicas; evitar nefrotóxicos desnecessários; nutrição e hidratação adequadas; diálogo precoce quando surgem PU/PD ou perda de peso.',
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['pregabalina', 'maropitant', 'benazepril'],
+  relatedMedicationSlugs: ['pregabalina', 'maropitant', 'benazepril', 'ondansetron'],
   references: [
     {
       id: 'ref-iris-2023',

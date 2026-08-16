@@ -1,383 +1,488 @@
-import { DiseaseRecord } from '../../types/disease';
+import type { DiseaseRecord } from '../../types/disease';
+import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
-/** Diabetes mellitus felina - ficha editorial para ConsultaVET. */
+/**
+ * Diabetes Mellitus Felino — Ficha clínica estruturada ConsultaVET.
+ * Fontes: AAHA 2026 Guidelines for Cats > iCatCare 2025 Consensus > Aula Magna 2026 > FDA Bexacat/Senvelgo Labels (2026) > Nelson & Couto 6ª ed.
+ */
 export const diabetesMellitusFelinaRecord: DiseaseRecord = {
   id: 'disease-diabetes-mellitus-felina',
   slug: 'diabetes-mellitus-felina',
-  title: 'Diabetes Mellitus em Gatos',
-  synonyms: ['Diabetes felina', 'DM felina', 'Diabetes mellitus felina', 'Feline diabetes mellitus'],
+  title: 'Diabetes Mellitus Felino',
+  synonyms: [
+    'Diabetes felino',
+    'DM felina',
+    'Diabetes mellitus em gatos',
+    'Diabetes Mellitus Felino',
+    'Feline diabetes mellitus',
+  ],
   species: ['cat'],
   category: 'endocrinologia',
   tags: [
+    'Diabetes',
     'Insulina',
     'Glargina',
     'PZI',
-    'SGLT2i',
+    'ProZinc',
+    'SGLT2',
+    'Bexacat',
+    'Senvelgo',
+    'eDKA',
     'Remissão',
-    'CGM',
-    'Hiperglicemia',
-    'Cetoacidose',
-    'Hipersomatotropismo',
-    'Hiperglicemia de estresse',
+    'AAHA2026',
+    'iCatCare2025',
+    'Neuropatia',
+    'Plantigradia',
   ],
+  plainLanguage: DISEASE_PLAIN_LANGUAGE['diabetes-mellitus-felina'],
   quickSummary:
-    'Diabetes mellitus felina é uma síndrome endócrino-metabólica caracterizada por hiperglicemia sustentada causada por resistência à insulina, disfunção de células beta ou ambos. Em muitos gatos o fenótipo se aproxima do diabetes tipo 2 humano: obesidade, sedentarismo, inflamação, pancreatopatia, hipersomatotropismo, hiperadrenocorticismo, doença renal, hipertireoidismo, infecção, dor e glicocorticoides podem aumentar resistência insulinica. A hiperglicemia persistente causa glicosúria, diurese osmótica, poliúria/polidipsia, perda de peso e, quando a deficiência de ação insulinica é maior, cetose ou cetoacidose. Diferentemente do cão, remissão diabética é possível quando a toxicidade glicêmica e a resistência insulinica são revertidas cedo. O tratamento moderno integra insulina apropriada ou SGLT2i em gatos selecionados, dieta individualizada, controle de peso, monitoramento domiciliar/CGM, vigilância de cetonas e manejo ativo de comorbidades.',
+    'O diabetes mellitus felino resulta geralmente da interação entre resistência à insulina e deterioração progressiva da função das células β pancreáticas, com participação importante de obesidade, glicotoxicidade, lipotoxicidade e deposição de amiloide nas ilhotas. Os sinais clássicos são poliúria, polidipsia, polifagia e perda de peso, podendo ocorrer sarcopenia e neuropatia periférica com postura plantígrada. Como a hiperglicemia de estresse pode ser intensa em gatos, o diagnóstico deve comprovar hiperglicemia sustentada por sinais clínicos e evidências como glicosúria persistente, frutosamina elevada, glicemias domiciliares ou monitor contínuo de glicose. O manejo moderno pode utilizar insulinoterapia — principalmente glargina U100 ou PZI, frequentemente iniciadas em 1 UI/gato q12h — ou inibidores de SGLT2 em gatos recém-diagnosticados, metabolicamente estáveis e criteriosamente selecionados. SGLT2 exigem monitoramento de β-hidroxibutirato devido ao risco de cetoacidose euglicêmica. Dieta rica em proteína e restrita em carboidratos, controle da obesidade e tratamento precoce da hiperglicemia ajudam a preservar função β-celular e podem permitir remissão, definida atualmente como euglicemia por mais de quatro semanas sem tratamento antidiabético. Monitor contínuo de glicose e acompanhamento domiciliar são preferidos à curva glicêmica hospitalar de rotina (AAHA 2026; iCatCare 2025).',
   quickDecisionStrip: [
-    'Diagnóstico: sinais clínicos + evidência de hiperglicemia sustentada; confirmar com glicosúria/fructosamina/CGM ou dados domiciliares quando houver estresse.',
-    'Exames iniciais: CBC, bioquímica com colesterol/triglicerídeos/eletrólitos, urinálise com sedimento, cetonas e T4 total em gatos maduros/idosos.',
-    'Insulina inicial comum: glargina U-100 ou PZI, tipicamente 1 U/gato SC a cada 12 h; evitar NPH como escolha rotineira.',
-    'SGLT2i: apenas em gato recém-diagnosticado, não cetótico, comendo, hidratado e sem contraindicações; monitorar beta-hidroxibutirato.',
-    'Remissão: euglicemia por >4 semanas sem insulina ou hipoglicemiante; comum o suficiente para ser meta, mas recaída é possível.',
+    'Hiperglicemia de Estresse Alerta: Não diagnosticar DM felino por uma única glicemia isolada na clínica; exige comprovação sustentada (2,3,6).',
+    'Tríade Diagnóstica: Sinais clínicos (PU/PD, PP, sarcopenia) + Hiperglicemia sustentada + Glicosúria persistente (1–3).',
+    'Remissão Diabética AAHA 2026: Euglicemia mantida por >4 semanas sem insulina/SGLT2. ~25% em 2-3 meses, maioria nos primeiros 6 meses (2).',
+    'Insulinas Preferidas AAHA 2026: Glargina U100 ou PZI (ProZinc U40), ambas iniciadas com 1 U/GATO SC q12h (2). NPH não é recomendada (2).',
+    'Via SGLT2 (Bexacat / Senvelgo): APENAS em gato recém-diagnosticado, metabolicamente estável, comendo, hidratado e sem cetose (2,10,11).',
+    'Risco de eDKA (DKA Euglicêmica): SGLT2 induz glicosúria e normaliza glicemia mesmo com cetose/acidose grave (2,10,11).',
+    'Vigilância do BHB (AAHA 2026): BHB >2,4 mmol/L ou cetonúria → suspender SGLT2 e iniciar insulina + dextrose hospitalar (2).',
+    'Curvas Hospitalares Banidas: AAHA 2026 desaconselha curva glicêmica hospitalar de rotina em gatos devido ao estresse (2). Usar monitor contínuo de glicose ou ALIVE DCS (1,3).',
+    'Neuropatia Plantígrada: Polineuropatia distal por hiperglicemia crônica com apoio dos tarsos no solo; controle metabólico é a chave (3).',
+    'Alimentação Felina AAHA 2026: Dieta rica em proteínas (>40-45% EM) e pobre em carboidratos (<12-15% EM), preferencialmente úmida (2).',
   ],
   quickSummaryRich: {
     lead:
-      'Diabetes mellitus felina é uma doença de hiperglicemia sustentada por resistência insulinica e/ou falência beta. A fisiopatologia felina permite remissão em parte dos casos, mas também torna perigoso confundir hiperglicemia de estresse com diabetes real ou usar SGLT2i em gato cetótico. A abordagem clínica integra confirmação de hiperglicemia persistente, escolha entre insulina e SGLT2i, metas laboratoriais, controle de comorbidades e monitoramento de cetonas.',
-    leadHighlights: ['hiperglicemia sustentada', 'remissão', 'hiperglicemia de estresse', 'SGLT2i'],
+      'O diabetes mellitus felino é uma doença complexa de resistência à insulina e falência β reversível por glicotoxicidade, permitindo a remissão clínica em muitos pacientes. O manejo atual contempla insulinoterapia conservadora (1 UI/gato q12h) ou inibidores de SGLT2 em pacientes selecionados, exigindo vigilância de eDKA via β-hidroxibutirato.',
+    leadHighlights: ['falência β reversível', 'remissão clínica', '1 UI/gato q12h', 'SGLT2', 'eDKA'],
     pillars: [
       {
-        title: 'Definição clínica',
-        body: 'Sinais compatíveis com hiperglicemia persistente e glicosúria: PU/PD, perda de peso, polifagia, pelagem ruim, letargia ou neuropatia diabética.',
-        highlights: ['PU/PD', 'glicosúria', 'neuropatia diabética'],
+        title: 'Remissão & Glicotoxicidade',
+        body: 'A reversão precoce da hiperglicemia remove a glicotoxicidade e permite a recuperação da secreção endógena de insulina, podendo gerar remissão por mais de 4 semanas.',
+        highlights: ['Glicotoxicidade', 'recuperação endógena', 'remissão por >4 semanas'],
       },
       {
-        title: 'Alvos úteis',
-        body: 'Controle de sinais, ganho/estabilização de peso, ausência de cetonas, ausência de hipoglicemia e redução gradual de fructosamina/glicemia conforme monitoramento.',
-        highlights: ['ausência de cetonas', 'ausência de hipoglicemia', 'fructosamina'],
+        title: 'Insulinoterapia vs SGLT2',
+        body: 'Glargina U100 ou PZI 1 U/gato q12h para descompensados ou gerais. SGLT2 (Bexacat/Senvelgo) exclusivamente para gatos estáveis não cetóticos.',
+        highlights: ['Glargina U100', 'PZI 1 U/gato', 'Bexacat / Senvelgo'],
       },
       {
-        title: 'Particularidade felina',
-        body: 'Remissão depende de recuperar função beta e reverter resistência insulinica/toxicidade glicêmica; hipersomatotropismo, obesidade e glicocorticoides reduzem a chance.',
-        highlights: ['função beta', 'resistência insulinica', 'hipersomatotropismo'],
+        title: 'Monitoramento Sem Estresse',
+        body: 'Evitar curvas hospitalares. Utilizar sensor FreeStyle Libre (monitor contínuo de glicose), frutosamina seriada, glicemia domiciliar e escore ALIVE DCS (0–12) do iCatCare.',
+        highlights: ['Evitar curvas hospitalares', 'monitor contínuo de glicose', 'ALIVE DCS'],
       },
     ],
     diagnosticFlow: {
-      title: 'Plano diagnóstico',
+      title: 'Fluxograma diagnóstico',
       steps: [
         {
-          label: 'Suspeitar pela síndrome',
-          timing: 'Primeira consulta',
+          label: 'Suspeita clínica',
+          timing: 'Consulta inicial',
           detail:
-            'PU/PD, perda de peso, polifagia, letargia, pelagem ruim, postura plantígrada, obesidade prévia ou uso de glicocorticoide/progestágeno (iCatCare, 2025; AAHA, 2026).',
+            'PU/PD, polifagia, perda de peso/sarcopenia; neuropatia plantígrada; diferenciar hipertireoidismo e DRC (AAHA 2026; iCatCare 2025).',
         },
         {
-          label: 'Provar hiperglicemia sustentada',
+          label: 'Não confirmar por glicemia isolada',
+          timing: 'Na clínica',
           detail:
-            'Usar sinais + glicosúria; se a consulta for estressante, confirmar com fructosamina, CGM, glicemia domiciliar ou urina coletada em casa (iCatCare, 2025; AAHA, 2026).',
+            'Hiperglicemia de estresse felina pode ser >300–400 mg/dL. Exigir evidência sustentada: frutosamina, glicemia domiciliar ou monitor contínuo de glicose (AAHA 2026).',
+          reassess: 'Repetir exames fora do estresse hospitalar.',
         },
         {
-          label: 'Checar cetonas e gravidade',
-          timing: 'Antes de rotular ambulatorial',
+          label: 'Tríade + BHB se SGLT2',
+          timing: 'Confirmação',
           detail:
-            'Beta-hidroxibutirato ou cetonúria, hidratação, apetite, vômito, acidose e eletrólitos definem se é ambulatorial ou emergência (iCatCare, 2025).',
+            'Sinais clínicos + hiperglicemia sustentada + glicosúria persistente. Dosar BHB antes de iniciar SGLT2; cetose contraindica SGLT2 (AAHA 2026; FDA Bexacat/Senvelgo).',
         },
         {
-          label: 'Mapear comorbidades',
+          label: 'Banco inicial',
+          timing: 'Estadiamento',
           detail:
-            'T4 total, rim/urina, pressão arterial, pancreatite, infecção, dor oral; se dose alta/controle ruim, pesquisar IGF-1 para hipersomatotropismo (iCatCare, 2025; AAHA, 2026).',
+            'Hemograma, bioquímica, eletrólitos, urinálise, T4 total em idosos; ultrassom se pancreatite/HST suspeita (AAHA 2026; Nelson & Couto, 2020).',
         },
         {
-          label: 'Escolher terapia',
-          timing: 'Após estabilização',
+          label: 'Escolher via terapêutica',
+          timing: 'Pós-confirmação',
           detail:
-            'Insulina para a maioria; SGLT2i somente se recém-diagnosticado, não cetótico e com cuidador capaz de monitorar sinais e cetonas (iCatCare, 2025).',
+            'Insulina (descompensado/cetótico/anoréxico) vs SGLT2 (recém-diagnosticado, estável, comendo, hidratado, sem cetose) (AAHA 2026).',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Plano de tratamento',
+      title: 'Fluxograma terapêutico',
       steps: [
         {
-          label: 'Gato doente ou cetótico',
-          detail:
-            'Internar se houver anorexia, vômito, desidratação, depressão ou cetonas significativas; DKA exige insulina mesmo se a glicemia não estiver muito alta (iCatCare, 2025; AAHA, 2026).',
+          label: 'Insulina — 1ª linha',
+          detail: 'Glargina U100 ou PZI (ProZinc®): 1 U/gato SC q12h; evitar NPH de rotina (AAHA 2026; iCatCare 2025).',
+          dose: '1 U/gato q12h SC; titular ±0,5–1 U a cada 1–2 semanas.',
+          duration: 'Até remissão ou controle estável.',
+          reassess: 'Reduzir dose se pré-dose normoglicêmica ou queda da necessidade.',
         },
         {
-          label: 'Insulina',
-          dose: 'Glargina U-100 ou PZI: 1 U/gato SC q12h inicial (ajustar por peso ideal)',
-          duration: 'Reavaliar em 5–7 dias',
-          reassess: 'Sinais clínicos, peso, CGM/curva; reduzir se hipoglicemia',
-          detail:
-            'Primeira linha comum; evitar NPH como rotina felina (iCatCare, 2025; AAHA, 2026).',
+          label: 'SGLT2 — seleção estrita',
+          detail: 'Bexacat® 15 mg/gato q24h (≥3 kg) ou Senvelgo® 1 mg/kg q24h; apenas gato estável não cetótico (AAHA 2026; FDA labels).',
+          reassess: 'BHB >2,4 mmol/L → suspender SGLT2 e iniciar insulina + dextrose.',
         },
         {
-          label: 'Dieta',
-          detail:
-            'Preferir dieta úmida, alta em proteína e baixa em carboidratos quando apropriada; transição exige monitoramento porque a necessidade de insulina pode cair (iCatCare, 2025).',
+          label: 'Dieta rica em proteína e pobre em carboidrato',
+          detail: '>40–45% EM proteína, <12–15% EM carboidrato, preferencialmente úmida (AAHA 2026).',
         },
         {
-          label: 'SGLT2i',
-          detail:
-            'Bexagliflozina ou velagliflozina conforme disponibilidade/regulação local; usar apenas com triagem rigorosa e monitoramento de BHB (iCatCare, 2025).',
+          label: 'Monitorar o gato, não só números',
+          detail: 'Peso, ALIVE DCS (0–12), resolução PU/PD; monitor contínuo de glicose domiciliar; evitar curva hospitalar de rotina (AAHA 2026; iCatCare 2025).',
         },
         {
           label: 'Remissão',
-          detail:
-            'Monitorar de perto nos primeiros 3–6 meses; reduzir insulina com segurança quando glicemias caem e sinais resolvem — remissão não é cura (iCatCare, 2025; AAHA, 2026).',
+          detail: 'Euglicemia >4 semanas sem tratamento; ~25% em 2–3 meses, maioria nos primeiros 6 meses (AAHA 2026).',
+          reassess: 'Remissão não é cura — vigilância para recaída.',
         },
       ],
     },
   },
   etiology: {
-    mecanismos:
-      'A DM felina surge de resistência insulinica sustentada, falência beta variável e toxicidade glicêmica. Muitos gatos ainda têm reserva pancreática no diagnóstico; por isso, corrigir rapidamente hiperglicemia e fatores de resistência pode permitir remissão.',
-    fatoresPredisponentes: [
-      'Obesidade, baixa atividade física e dieta com excesso calórico aumentam resistência insulinica.',
-      'Pancreatite, doença pancreática crônica e inflamação sistêmica podem reduzir secreção de insulina.',
-      'Hipersomatotropismo é causa relevante de diabetes difícil e de altas doses de insulina.',
-      'Hiperadrenocorticismo felino é raro, mas importante em diabético mal controlado com pele frágil, fraqueza e caquexia.',
-      'Glicocorticoides, progestágenos, doença dental, infecção urinária, DRC, hipertireoidismo e dor podem perpetuar hiperglicemia.',
-      'Raças como Burmese, Tonkinese, Norwegian Forest Cat, Russian Blue e Abyssinian são citadas em algumas populações; gatos >4 kg têm maior risco em séries clínicas.',
-    ],
+    definicao:
+      'DM felina é uma síndrome metabólica caracterizada por resistência periférica à insulina associada à disfunção progressiva das células β, fortemente influenciada por obesidade, deposição de amiloide nas ilhotas, glicotoxicidade e lipotoxicidade (1–3,5). Compartilha semelhanças com o DM tipo 2 humano.',
+    glicotoxicidadeERemissao:
+      'Ciclo da glicotoxicidade: Obesidade/doença → Resistência insulínica → Hiperglicemia → Supressão tóxica da secreção de insulina pelas células β. A reversão rápida da hiperglicemia alivia a supressão tóxica e permite recuperar a função pancreática, levando à REMISSÃO DIABÉTICA (1–3). Remissão não é cura definitiva; exige vigilância para evitar recaídas (2).',
+    fatoresDeResistência:
+      'Fatores de resistência insulínica felina: Obesidade, sedentarismo, uso de glicocorticoides/progestágenos, Hipersomatotropismo (HST / acromegalia — associado a doses crescentes de insulina >5 U/dose), Hiperadrenocorticismo (HAC felino com fragilidade cutânea), pancreatite e doença periodontal (1–3).',
   },
   epidemiology: {
-    perfil:
-      'Afeta gatos adultos a idosos, frequentemente machos castrados, obesos ou previamente obesos. Pode aparecer como quadro ambulatorial de PU/PD e emagrecimento ou como emergência por DKA.',
-    remissao:
-      'Remissão é majoritariamente um fenômeno felino. Diretrizes AAHA 2026 citam média aproximada de 30% nos EUA, com parte das remissões ocorrendo nos primeiros 2–3 meses e a maioria dentro de 6 meses em gatos que entram em remissão.',
+    prevalencia:
+      'Endocrinopatia de alta prevalência em gatos maduros a idosos, com maior risco em machos castrados, obesos e sedentários (1–3).',
   },
   pathogenesisTransmission: {
-    patogenese: [
-      'Resistência insulinica aumenta demanda secretória das células beta.',
-      'Hiperglicemia crônica causa toxicidade glicêmica, reduzindo ainda mais secreção de insulina.',
-      'Glicosúria provoca diurese osmótica, PU/PD e desidratação.',
-      'Perda calórica urinária e catabolismo causam perda de peso e sarcopenia.',
-      'Deficiência insulinica relativa/absoluta permite lipólise e cetogênese; SGLT2i pode mascarar hiperglicemia e favorecer DKA euglicêmica se insulina endógena for insuficiente.',
-      'Neuropatia diabética causa fraqueza de membros pélvicos, dificuldade de salto e postura plantígrada.',
+    cascata: [
+      'Instalação de resistência periférica à insulina (obesidade, inatividade, corticoides, progestágenos) (AAHA 2026; iCatCare 2025).',
+      'Sobrecarga funcional compensatória sobre as células β pancreáticas (1–3).',
+      'Início de hiperglicemia plasmática e deposição de polipeptídeo amiloide de ilhota (IAPP) no pâncreas (1–3).',
+      'Efeito tóxico da hiperglicemia sustentada (glicotoxicidade) sobre o maquinário secretor das células β (1–3).',
+      'Passagem do limiar renal felino (~250–300 mg/dL) desencadeando glicosúria persistente (1,6).',
+      'Diurese osmótica tubular gerando poliúria e polidipsia compensatória (1,6).',
+      'Déficit energético celular + sarcopenia e catabolismo muscular gerando polifagia com perda de peso (1–3).',
+      'Desenvolvimento de polineuropatia diabética distal resultando em marcha plantígrada característica (3).',
     ],
     transmissao:
-      'Não é contagiosa nem zoonótica. É doença metabólica influenciada por adiposidade, hormônios, pâncreas, inflamação, medicamentos e comorbidades.',
+      'Doença endógena multifatorial. Não transmissível.',
   },
   pathophysiology:
-    'A resistência à insulina e a disfunção beta mantêm glicose elevada. A hiperglicemia sustentada gera toxicidade glicêmica, piorando a secreção pancreática e perpetuando o ciclo. Quando há glicosúria, a perda osmótica de água causa poliúria e polidipsia; a perda de glicose pela urina causa emagrecimento mesmo com apetite aumentado. Se a ação insulinica é insuficiente para bloquear lipólise e cetogênese, surgem cetonas, acidose, desidratação, distúrbios de potássio/fósforo e cetoacidose. Em gatos, a recuperação parcial da função beta é possível, mas a reserva pancreática permanece limitada e recaídas são comuns.',
+    'No gato, o diabetes resulta da interação entre resistência periférica à insulina e falência progressiva das células β, com glicotoxicidade e deposição de amiloide nas ilhotas (Nelson & Couto, 2020; iCatCare 2025). A reversão precoce da hiperglicemia remove a supressão tóxica sobre as células β e permite remissão clínica em parcela significativa dos pacientes (AAHA 2026). No hipersomatotropismo (HST), excesso de IGF-1 antagoniza insulina — investigar quando doses >5 U/gato/dose (AAHA 2026; Nelson & Couto, 2020). A hiperglicemia crônica lesa axônios periféricos distais, gerando neuropatia plantígrada reversível com controle metabólico (iCatCare 2025). Com inibidores de SGLT2 (Bexacat/Senvelgo), a glicosúria forçada pode manter glicemia aparentemente normal enquanto persiste deficiência insulínica e cetogênese — risco de cetoacidose euglicêmica (eDKA) se BHB não for monitorado (AAHA 2026; FDA Bexacat/Senvelgo).',
   clinicalSignsPathophysiology: [
     {
-      system: 'metabolic',
+      system: 'metabolico',
       findings: [
         {
-          finding: 'Poliúria/polidipsia com perda de peso e sarcopenia',
-          mechanism: 'Glicosúria e diurese osmótica; catabolismo proteico por deficiência insulínica relativa ou absoluta.',
-          clinicalMeaning: 'Remissão é possível no gato — reavaliar necessidade de insulina periodicamente.',
+          finding: 'Poliúria, Polidipsia, Polifagia e Perda de Peso (sarcopenia)',
+          mechanism:
+            'Diurese osmótica por glicosúria (>250-300 mg/dL) com inabilidade tecidual de utilizar glicose e proteólise grave (1,5,6).',
+          clinicalMeaning: 'Sinais clássicos felinos. Exige diferenciação com hipertireoidismo e DRC (1–3).',
           priority: 'common',
         },
-      ],
-    },
-    {
-      system: 'neurologic',
-      findings: [
         {
-          finding: 'Postura plantígrada ou neuropatia diabética',
-          mechanism: 'Lesão axonal periférica por hiperglicemia crônica.',
-          clinicalMeaning: 'Melhora com controle glicêmico; não confundir com lesão medular.',
-          priority: 'uncommon',
+          finding: 'Neuropatia Diabética / Postura Plantígrada',
+          mechanism:
+            'Polineuropatia periférica distal induzida por hiperglicemia prolongada com apoio dos tarsos no solo ao caminhar (3).',
+          clinicalMeaning: 'Achado neurológico clássico felino. Reversível com controle metabólico continuado (3).',
+          priority: 'common',
         },
-      ],
-    },
-    {
-      system: 'critical',
-      findings: [
         {
-          finding: 'DKA ou DKA euglicêmica (SGLT2i)',
-          mechanism: 'Cetogênese descontrolada com ou sem hiperglicemia proporcional.',
-          clinicalMeaning: 'Emergência metabólica — internação e fluidoterapia.',
-          priority: 'emergency',
+          finding: 'Resistência a Altas Doses de Insulina (>5 U/gato/dose)',
+          mechanism:
+            'Forte antagonismo ao receptor de insulina por excesso de IGF-1 no Hipersomatotropismo (acromegalia felina) ou hipercortisolismo (2,3,4).',
+          clinicalMeaning: 'Investigar dosagem de IGF-1 e fragilidade cutânea após afastar erros de técnica (2,3,4).',
+          priority: 'common',
+        },
+        {
+          finding: 'Anorexia, Vômitos e Prostração em uso de SGLT2',
+          mechanism:
+            'Cetoacidose Diabética Euglicêmica (eDKA): acidose e cetonemia com glicemia normal ou discretamente elevada (2,10,11).',
+          clinicalMeaning: 'Emergência médica vital! Suspender SGLT2, iniciar fluidoterapia, insulina regular e dextrose (2,10,11).',
+          priority: 'critical',
         },
       ],
     },
   ],
   diagnosis: {
-    criterios:
-      'A AAHA 2026 recomenda evidência de hiperglicemia sustentada para diagnosticar DM felina: fructosamina ou HbA1c aumentadas quando disponíveis/adequadas, hiperglicemia ou glicosúria documentadas em mais de uma ocasião em ambiente não estressante ou domiciliar. Em gatos, hiperglicemia de estresse pode ser intensa; por isso, integrar sinais clínicos, glicosúria, fructosamina, CGM e dados de casa.',
-    examesIniciais: [
-      'Hemograma completo.',
-      'Bioquímica com colesterol, triglicerídeos e eletrólitos.',
-      'Urinálise com sedimento, densidade, glicose e cetonas.',
-      'T4 total em gatos maduros/idosos.',
-      'Fructosamina como média dos últimos 7–10 dias, lembrando que hipertireoidismo e doenças perdedoras de proteína podem reduzi-la.',
-      'Beta-hidroxibutirato sanguíneo quando há anorexia, vômito, depressão, SGLT2i ou qualquer suspeita de DKA.',
-    ],
-    metasTabela: {
-      kind: 'clinicalTable' as const,
-      headers: ['Parâmetro', 'Meta prática', 'Uso clínico'],
-      rows: [
-        ['Sinais clínicos', 'PU/PD e polifagia melhoram, peso estabiliza/sobe se estava magro.', 'Meta principal junto com qualidade de vida.'],
-        ['Hipoglicemia', 'Ausente; qualquer sinal ou leitura baixa exige revisão.', 'Remissão não reconhecida pode causar hipoglicemia grave.'],
-        ['Cetonas/BHB', 'Negativas em paciente ambulatorial; BHB >1,0 mmol/L em gato diabético sugere estágio mais complicado.', 'Essencial antes e durante SGLT2i e em gato doente.'],
-        ['Insulina', 'Muitos gatos regulam com <4 U q12h.', 'Doses altas pedem auditoria e pesquisa de resistência.'],
-        ['Fructosamina', 'Redução progressiva compatível com melhora, sem substituir sinais/CGM.', 'Afetada por proteína, hipertireoidismo e doenças concomitantes.'],
-        ['Remissão', 'Euglicemia >4 semanas sem insulina ou hipoglicemiante.', 'Manter vigilância por risco de recaída.'],
-      ],
-    },
-    tabelaDecisao: {
-      kind: 'clinicalTable' as const,
-      headers: ['Cenário', 'Interpretação', 'Conduta'],
-      rows: [
-        ['Glicemia alta + PU/PD + glicosúria', 'DM provável.', 'Checar cetonas, exames iniciais e iniciar tratamento.'],
-        ['Glicemia alta sem glicosúria/sinais claros', 'Possível estresse.', 'Fructosamina, CGM, glicemia/urina domiciliar e reavaliação.'],
-        ['Cetonas + anorexia/vômitos/depressão', 'DKA até prova em contrário.', 'Internar, medir BHB/acidose/eletrólitos e iniciar protocolo.'],
-        ['Dose >4 U/gato q12h ou resposta pobre', 'Resistência, técnica ou comorbidade.', 'Auditar aplicação/dieta; pesquisar IGF-1, HAC, pancreatite, DRC, hipertireoidismo e infecção.'],
-        ['Glicemias caindo com sinais resolvidos', 'Possível aproximação de remissão.', 'Reduzir insulina com monitoramento; não suspender sem critério.'],
-      ],
-    },
+    triadeDiagnostica:
+      'Sinais clínicos + comprovação de hiperglicemia sustentada + glicosúria persistente (1–3). A hiperglicemia de estresse em gatos pode atingir níveis elevados (>300–400 mg/dL); portanto, a AAHA 2026 exige evidência sustentada via frutosamina, glicemia domiciliar ou monitor contínuo de glicose para confirmar a doença (2).',
+    examesIniciais:
+      'Hemograma, bioquímica (glicose, ureia, creatinina, ALT, FA, proteínas, colesterol, triglicerídeos), eletrólitos, T4 total em gatos idosos, urinálise com sedimento/cetonas, dosagem de β-hidroxibutirato (BHB) sanguíneo e ultrassom abdominal conforme a suspeita (2).',
+    frutosamina:
+      'Avalia o controle glicêmico das últimas 1 a 2 semanas (1–3). Essencial para diferenciar hiperglicemia de estresse transitória. Pode estar falsamente reduzida no hipertireoidismo, enteropatia perdedora de proteína ou hipoproteinemia (2,3).',
+    escoreAliveDcs:
+      'Escore clínico iCatCare (ALIVE DCS) pontuado de 0 a 12 (perda de peso, PU/PD, apetite e atitude). Permite monitorar o controle clínico sem depender exclusivamente de curvas de estresse (1,3).',
   },
   treatment: {
-    objetivo:
-      'Controlar sinais clínicos, evitar hipoglicemia e cetose, preservar massa magra, melhorar qualidade de vida e buscar remissão quando possível.',
-    insulinoterapia: [
-      'Glargina U-100 ou PZI são escolhas iniciais comuns; AAHA 2026 sugere dose inicial típica de 1 U/gato SC a cada 12 h para a maioria dos gatos.',
-      'Calcular doses ponderais pelo peso ideal quando houver obesidade; evitar iniciar acima de 2 U/gato sem justificativa forte.',
-      'Reavaliar em 5–7 dias após início com sinais clínicos, peso e glicemia/CGM; não aumentar se houver hipoglicemia.',
-      'NPH não é considerada escolha aceitável rotineira em gatos por duração muito curta; lente tem uso, mas não é primeira escolha preferida por muitos especialistas.',
-    ],
-    insulinasTabela: {
+    decisaoInicial:
+      'Definir a via terapêutica: 1) Insulinoterapia em gatos descompensados, cetóticos, anoréxicos ou graves; 2) Inibidores de SGLT2 (Bexacat/Senvelgo) exclusivamente para gatos recém-diagnosticados, metabolicamente estáveis, comendo e sem cetose (AAHA 2026; FDA Bexacat/Senvelgo). A curva glicêmica hospitalar de rotina é desaconelhada pela AAHA 2026 (AAHA 2026).',
+    tabelaInsulinas: {
       kind: 'clinicalTable' as const,
-      headers: ['Opção', 'Papel', 'Cuidados'],
+      title: 'Insulinas, SGLT2 e doses iniciais — gato',
+      headers: ['Produto / classe', 'Dose inicial', 'Frequência', 'Indicação', 'Observações'],
       rows: [
-        ['Glargina U-100', 'Primeira linha comum; associada a bom controle e remissão.', 'Usar seringa U-100; ajustar por sinais, CGM/curva e hipoglicemia.'],
-        ['PZI', 'Insulina veterinária aprovada para gatos; q12h.', 'Boa opção quando glargina não é viável; monitorar nadir/duração.'],
-        ['Glargina U-300', 'Basal possível em protocolos recentes.', 'Não é simplesmente “3x glargina U-100”; usar caneta e orientação específica.'],
-        ['Lente', 'Pode funcionar em alguns gatos.', 'Duração menor; não é primeira escolha preferida em muitos protocolos atuais.'],
-        ['NPH', 'Evitar como rotina.', 'Duração frequentemente <8 h em gatos.'],
+        [
+          'Glargina U100 (Lantus®)',
+          '1 U/gato',
+          'SC q12h',
+          '1ª linha',
+          'AAHA 2026; titular ±0,5–1 U a cada 1–2 semanas',
+        ],
+        [
+          'PZI (ProZinc®)',
+          '1 U/gato',
+          'SC q12h',
+          '1ª linha',
+          'AAHA 2026; agitar antes da aspiração',
+        ],
+        ['NPH', '—', '—', 'Não recomendada', 'Duração <8 h no gato (AAHA 2026)'],
+        [
+          'Glargina U300 (Toujeo®)',
+          '0,5 U/kg ou 2 U/gato',
+          'SC q24h',
+          'Alternativa basal',
+          'Perfil plano; sem valor mínimo glicêmico acentuado (AAHA 2026)',
+        ],
+        [
+          'Degludeca (Tresiba®)',
+          '1 U/gato',
+          'SC q12h',
+          'Alternativa basal',
+          'No gato duração ~10–12 h — NÃO usar q24h como em cães (AAHA 2026; iCatCare 2025)',
+        ],
+        [
+          'Bexagliflozina (Bexacat®)',
+          '15 mg/gato',
+          'PO q24h',
+          'SGLT2 — seleção',
+          '≥3 kg; metabolicamente estável, não cetótico; monitorar BHB (FDA Bexacat)',
+        ],
+        [
+          'Velagliflozina (Senvelgo®)',
+          '1 mg/kg',
+          'PO q24h',
+          'SGLT2 — seleção',
+          'Metabolicamente estável, não cetótico; monitorar BHB (FDA Senvelgo)',
+        ],
       ],
     },
-    dieta: [
-      'Preferir dieta úmida, rica em proteína e com baixo carboidrato quando não houver contraindicação individual.',
-      'A troca para dieta baixa em carboidrato pode reduzir rapidamente necessidade de insulina; monitorar de perto.',
-      'Obesos: perda de peso gradual, preservando proteína e massa magra.',
-      'Magros, sarcopênicos ou pós-DKA: primeiro estabilizar ingestão calórica e hidratação; não impor restrição agressiva.',
+    calculoPesoIdeal:
+      'Glargina U100 e PZI iniciam em 1 UI/gato (não mg/kg), mas o PCI orienta dieta, perda ponderal e insulinas doseadas por peso (Toujeo 0,5 UI/kg; velagliflozina 1 mg/kg). Em gatos obesos, não usar o peso atual para Toujeo/Senvelgo — estimar PCI pelo ECC (AAHA 2026; Nelson & Couto, 2020).',
+    tabelaPesoIdealEcc: {
+      kind: 'clinicalTable' as const,
+      title: 'Estimativa do peso ideal pelo ECC (9 pontos)',
+      headers: ['ECC', 'Relação com o ideal', 'Fórmula', 'Exemplo (peso atual 6 kg)'],
+      rows: [
+        ['5/9', 'Peso ideal', 'PCI = peso atual', '6,0 kg'],
+        ['6/9', '~10% acima do ideal', 'PCI = peso atual ÷ 1,10', '5,5 kg'],
+        ['7/9', '~20% acima do ideal', 'PCI = peso atual ÷ 1,20', '5,0 kg'],
+        ['8/9', '~30% acima do ideal', 'PCI = peso atual ÷ 1,30', '4,6 kg'],
+        ['9/9', '~40% acima do ideal', 'PCI = peso atual ÷ 1,40', '4,3 kg'],
+      ],
+    },
+    exemploCalculoInsulina: [
+      '1. Pesar o gato e atribuir ECC (9 pontos). Em obesidade, palpar costelas e cintura abdominal — ECC inflado superestima gordura (Nelson & Couto, 2020).',
+      '2. Insulina 1ª linha: iniciar 1 UI/gato SC q12h (Glargina ou PZI), independentemente do PCI — titular pela clínica e monitor contínuo de glicose (AAHA 2026).',
+      '3. Para Toujeo: PCI × 0,5 UI/kg (ex.: gato 6 kg, ECC 8 → PCI 4,6 kg → 4,6 × 0,5 = 2,3 UI → arredondar para 2 UI q24h).',
+      '4. Para Senvelgo: 1 mg/kg sobre PCI (ex.: PCI 4,6 kg → 4,6 mg/dia PO).',
+      '5. Conforme perda de peso, revisar PCI e reduzir insulina se pré-dose normoglicêmica ou remissão se aproximar (AAHA 2026).',
     ],
-    sglt2i: {
-      selecao:
-        'SGLT2i são opção para gatos recém-diagnosticados, caso estejam clinicamente bem, comendo, hidratados, sem cetose e sem comorbidade que contraindique. Agem aumentando glicosúria e melhorando sinais, mas dependem de insulina endógena suficiente para prevenir cetose.',
-      criteriosMinimos: [
-        'Recém-diagnosticado e não tratado previamente com insulina, conforme diretriz/bula local.',
-        'Apetite preservado, hidratação adequada e ausência de vômito/doença sistêmica relevante.',
-        'Sem cetonúria/cetonemia; idealmente BHB basal normal.',
-        'Cuidador capaz de observar hiporexia, vômito, letargia e testar cetonas quando orientado.',
-      ],
-      naoUsarOuSuspender: [
-        'Cetonas positivas, DKA atual/prévia recente, anorexia, vômitos, desidratação ou pancreatite ativa.',
-        'Doença renal/hepática ou sistêmica descompensada conforme avaliação clínica.',
-        'Qualquer piora sistêmica durante uso: suspender e checar BHB/acidose, mesmo se glicose não estiver muito alta.',
-      ],
-    },
+    ordemDePrioridadeEstruturada: [
+      {
+        priority: 1,
+        title: 'Insulinoterapia Inicial (Glargina U100 ou PZI)',
+        summary:
+          'AAHA 2026 recomenda Glargina U100 ou PZI (ProZinc® 40 U/mL) como primeiras escolhas. Iniciar com 1 U/GATO SC q12h (2). Evitar NPH como escolha de rotina devido à curta duração (<8h) (2).',
+      },
+      {
+        priority: 2,
+        title: 'Terapia Oral com SGLT2 (Bexacat / Senvelgo)',
+        summary:
+          'Apenas em gatos estáveis, não cetóticos. Bexagliflozina (Bexacat®): 15 mg/gato PO q24h em gatos ≥3 kg (10). Velagliflozina (Senvelgo®): 1 mg/kg PO q24h (11). EXIGE monitoramento rigoroso de BHB devido ao risco de eDKA (2).',
+      },
+      {
+        priority: 3,
+        title: 'Manejo Nutricional (Alta Proteína / Baixo Carboidrato)',
+        summary:
+          'Dieta rica em proteínas (>40–45% da energia metabolizável) e pobre em carboidratos (<12–15% da energia metabolizável), de preferência úmida (2). Manter a alimentação habitual nas primeiras 2 semanas de SGLT2 para evitar oscilações metabólicas precoces (2).',
+      },
+      {
+        priority: 4,
+        title: 'Vigilância de Remissão & Ajustes de Dose',
+        summary:
+          'Remissão = euglicemia por >4 semanas sem tratamento. Quando a necessidade de insulina cai ou ocorrem pré-doses normais, REDUZIR a dose imediatamente (2). Manter dose antiga por prudência causa hipoglicemia grave (2).',
+      },
+      {
+        priority: 5,
+        title: 'Insulinas Basais Avançadas (Toujeo U300 e Degludeca)',
+        summary:
+          'Glargina U300 (Toujeo®): 0,5 U/kg q12-24h ou 2 U/gato q24h; produz perfil plano sem valor mínimo glicêmico acentuado (2). Degludeca (Tresiba®): 1 U/gato q12h (no gato a duração é ~10-12h; NÃO usar q24h como em cães) (2,3).',
+      },
+    ],
+    protocoloTerapeutico:
+      'Para a maioria dos gatos, a dose inicial de 1 U/gato q12h de Glargina U100 ou PZI é suficiente para controlar a glicotoxicidade inicial sem induzir hipoglicemia. Reavaliações clínicas a cada 1 a 2 semanas orientam ajustes sutis de 0,5 a 1 U (2,3).',
     monitoramento: [
-      'Primeira checagem em 5–7 dias após iniciar glargina/PZI; avaliar sinais, peso e glicose/CGM.',
-      'Glucose monitoring em 5–14 dias após início ou qualquer ajuste, sempre que sinais retornarem e quando hipoglicemia for suspeita.',
-      'CGM é preferido quando disponível; identifica hipoglicemia silenciosa e padrões de duração/nadir. Confirmar leituras baixas com glicosímetro se houver discordância.',
-      'BGC: medir glicose antes da refeição/insulina e a cada 2 h por até 10–12 h quando CGM não estiver disponível.',
-      'Em SGLT2i: monitorar cetonas/BHB conforme protocolo, especialmente nas primeiras semanas e sempre que houver hiporexia, vômito ou letargia.',
+      'Monitorar o gato e seus sintomas — não apenas os números laboratoriais (AAHA 2026). Acompanhar peso, escore ALIVE DCS e resolução da PU/PD (iCatCare 2025).',
+      'Monitor contínuo de glicose com sensor FreeStyle Libre no ambiente domiciliar para visualizar tendências, valor mínimo glicêmico e hipoglicemias noturnas (AAHA 2026; iCatCare 2025).',
+      'Dosagem de β-hidroxibutirato (BHB) sanguíneo: em uso de SGLT2, BHB >2,4 mmol/L indica necessidade imediata de transição para insulina + dextrose (AAHA 2026).',
+      'Descontinuar curvas glicêmicas hospitalares de rotina (AAHA 2026).',
     ],
-    ajusteDose: [
-      'Aumentar dose apenas se sinais persistem e dados mostram hiperglicemia sustentada sem hipoglicemia.',
-      'Reduzir dose se houver hipoglicemia, queda acentuada no CGM/curva, melhora rápida após mudança de dieta ou sinais de remissão.',
-      'Se dose chega a 4 U/gato q12h sem controle, não apenas subir: investigar técnica, dieta, acromegalia/IGF-1, HAC, pancreatite, DRC, hipertireoidismo, infecção e dor.',
+    fluxogramaResistencia: [
+      'Etapa 1 — Técnica e aderência: seringa, agitação (PZI), horários, rotação de locais e consistência alimentar (AAHA 2026).',
+      'Etapa 2 — Hipoglicemia oculta: reduzir dose se pré-dose normoglicêmica ou queda abrupta da necessidade — não manter dose antiga por prudência (AAHA 2026).',
+      'Etapa 3 — Hipersomatotropismo: doses >5 U/gato/dose → dosar IGF-1; organomegalia e resistência extrema (AAHA 2026; Nelson & Couto, 2020).',
+      'Etapa 4 — HAC felino: fragilidade cutânea, hepatomegalia, proteinúria — testes endócrinos selecionados (Nelson & Couto, 2020).',
+      'Etapa 5 — Pancreatite, obesidade, esteroides/progestágenos e doença periodontal: tratar comorbidades antes de escalar insulina indefinidamente (AAHA 2026; iCatCare 2025).',
     ],
-    remissao:
-      'Remissão é euglicemia por mais de 4 semanas sem insulina ou hipoglicemiante. Ela exige recuperação de função beta e reversão de resistência insulinica/toxicidade glicêmica. O gato em remissão não está curado; manter peso, dieta e monitoramento periódico. Se remissão não for reconhecida, a manutenção da insulina pode causar hipoglicemia grave.',
-    hipoglicemia: {
-      kind: 'clinicalTable' as const,
-      headers: ['Situação', 'Conduta'],
-      rows: [
-        ['Consciente e comendo', 'Oferecer alimento; reavaliar glicose e contatar veterinário para ajuste.'],
-        ['Sintomático ou não consegue comer', 'Aplicar glicose/mel na mucosa oral e encaminhar como emergência.'],
-        ['Após episódio', 'Reduzir insulina, revisar dieta recente, perda de peso, técnica, CGM/curva e possibilidade de remissão.'],
-      ],
+    complicacoes: {
+      edka:
+        'Cetoacidose diabética euglicêmica em uso de SGLT2: cetonemia/acidose com glicemia normal ou discretamente elevada (<250 mg/dL). Suspender SGLT2, insulinizar e administrar dextrose IV (AAHA 2026; FDA Bexacat/Senvelgo).',
+      neuropatia:
+        'Polineuropatia diabética distal com marcha plantígrada. Reversível com euglicemia continuada (iCatCare 2025).',
+      acromegalia:
+        'Hipersomatotropismo por adenoma hipofisário: resistência massiva (>5 U/gato/dose) e organomegalia. Diagnóstico por IGF-1 sérico (AAHA 2026; Nelson & Couto, 2020).',
     },
-    dka:
-      'DKA felina é emergência. Diagnóstico: sinais sistêmicos em gato diabético + cetose e acidose; se acidose não puder ser medida, gato doente e cetótico deve ser tratado como DKA. Insulina é necessária mesmo na DKA euglicêmica por SGLT2i. Prioridades: fluidoterapia, eletrólitos, potássio/fósforo, antiemético/analgesia, insulina regular ou protocolo com glargina U-100 em casos selecionados, monitoramento de BHB/glicose/acidose e tratamento de precipitantes como pancreatite, infecção, hipercortisolismo e doença renal.',
+    prognostico:
+      'Prognóstico funcional favorável com controle precoce. Remissão (euglicemia >4 semanas sem tratamento) ocorre em ~25% em 2–3 meses e na maioria nos primeiros 6 meses — não é cura definitiva (AAHA 2026). Neuropatia plantígrada é reversível com controle. eDKA com SGLT2 é emergência potencialmente fatal se BHB não for monitorado (AAHA 2026).',
   },
-  prevention:
-    'Prevenção e redução de recorrência dependem de escore corporal adequado, atividade, dieta apropriada, evitar glicocorticoides/progestágenos desnecessários, tratar doença dental/infecção/dor, controlar DRC/hipertireoidismo/pancreatite e monitorar gatos em remissão. Em gatos obesos de risco, perda de peso gradual e acompanhamento de PU/PD e peso são as medidas mais úteis.',
+  prevention: {
+    primaria:
+      'Manter peso ideal e evitar obesidade; dieta rica em proteína e pobre em carboidratos antes do diagnóstico; evitar progestágenos e glicocorticoides desnecessários; estimular atividade física (AAHA 2026; Nelson & Couto, 2020).',
+    remissaoPreservacao:
+      'Diagnosticar e tratar cedo para reverter glicotoxicidade; insulinoterapia conservadora (1 U/gato q12h) ou SGLT2 selecionado em caso estável; monitorar remissão e reduzir dose prontamente — preservar função β residual aumenta chance de remissão (AAHA 2026; iCatCare 2025).',
+    errosComuns: [
+      'Confirmar DM por glicemia isolada de estresse hospitalar.',
+      'Usar curva glicêmica hospitalar de rotina.',
+      'Prescrever SGLT2 em gato cetótico, anoréxico ou descompensado.',
+      'Ignorar BHB em paciente com SGLT2.',
+      'Manter dose plena de insulina quando remissão se aproxima (hipoglicemia).',
+      'Usar NPH como 1ª linha.',
+      'Usar degludeca q24h no gato (duração ~10–12 h).',
+      'Confundir hipertireoidismo ou DRC com DM sem painel adequado.',
+    ],
+  },
+  relatedConsensusSlugs: [
+    'consensual-endocrinologia-aaha-diabetes-dogs-cats',
+    'consensual-endocrinologia-aaha-2026-cats',
+    'consensual-endocrinologia-icatcare-2025-cats',
+  ],
   relatedDiseaseSlugs: [
-    'hipertireoidismo-felino',
-    'hiperadrenocorticismo-sindrome-cushing',
-    'doenca-renal-cronica-caes-gatos',
-    'hipertensao-arterial-sistemica-caes-gatos',
+    'gengivoestomatite-cronica-felina',
+    'doenca-periodontal-gatos',
+    'hipertireoidismo',
+    'drc',
   ],
   relatedMedicationSlugs: [],
-  relatedConsensusSlugs: [],
   references: [
     {
-      id: 'ref-icatcare-feline-dm-2025',
+      id: 'ref-aula-magna-2026',
       citationText:
-        'Taylor S et al. 2025 iCatCare consensus guidelines on the diagnosis and management of diabetes mellitus in cats. Journal of Feline Medicine and Surgery, 2025.',
-      sourceType: 'Consenso iCatCare',
-      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC12612538/',
-      notes: 'Consenso felino atual: ALIVE, diagnóstico, insulina, SGLT2i, CGM, comorbidades, DKA e educação.',
-      evidenceLevel: 'A - consenso especializado',
+        'Aula Magna — Diabetes mellitus em cães e gatos: da fisiopatologia à escolha da insulina, nutrição, monitoramento, remissão e uso de inibidores de SGLT-2. Material fornecido ao projeto Vetius, 2026.',
+      sourceType: 'Aula Magna',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-aaha-cat-dm-2026',
-      citationText: 'Cook AK et al. 2026 AAHA Diabetes Management Guidelines for Cats. JAAHA, 2026.',
-      sourceType: 'Diretriz AAHA',
+      id: 'ref-aaha-2026-cats',
+      citationText:
+        '2026 AAHA Diabetes Management Guidelines for Cats. American Animal Hospital Association. Published April 26, 2026.',
+      sourceType: 'Diretriz Consensual AAHA 2026',
       url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/',
-      notes: 'Diretriz felina específica, incluindo SGLT2i, insulina, dieta, remissão, DKA e monitoramento.',
-      evidenceLevel: 'A - diretriz',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-aaha-cat-diagnosis-2026',
-      citationText: 'AAHA. 2026 Diabetes Management Guidelines for Cats, Section 3: Diagnosing DM in Cats.',
-      sourceType: 'Diretriz AAHA',
-      url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/section-3-diagnosing-dm-in-cats/',
-      notes: 'Critérios de hiperglicemia sustentada, fructosamina, CGM, glicosúria domiciliar e BHB.',
-      evidenceLevel: 'A - diretriz',
-    },
-    {
-      id: 'ref-aaha-cat-insulin-2026',
-      citationText: 'AAHA. 2026 Diabetes Management Guidelines for Cats, Section 7: Insulin Treatment and Monitoring.',
-      sourceType: 'Diretriz AAHA',
-      url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/section-7-insulin-treatment-and-monitoring/',
-      notes: 'Glargina, PZI, dose inicial, monitoramento e troubleshooting de doses altas.',
-      evidenceLevel: 'A - diretriz',
-    },
-    {
-      id: 'ref-aaha-cat-sglt2-2026',
-      citationText: 'AAHA. 2026 Diabetes Management Guidelines for Cats, Section 6: SGLT2 Inhibitor Treatment and Monitoring.',
-      sourceType: 'Diretriz AAHA',
-      url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/section-6-sglt2-inhibitor-treatment-and-monitoring/',
-      notes: 'Seleção de candidatos, contraindicações e monitoramento de cetose/BHB.',
-      evidenceLevel: 'A - diretriz',
-    },
-    {
-      id: 'ref-aaha-cat-remission-2026',
-      citationText: 'AAHA. 2026 Diabetes Management Guidelines for Cats, Section 9: Diabetic Remission.',
-      sourceType: 'Diretriz AAHA',
-      url: 'https://www.aaha.org/resources/2026-aaha-diabetes-management-guidelines-for-cats/section-9-diabetic-remission/',
-      notes: 'Definição, frequência e risco de hipoglicemia por remissão não reconhecida.',
-      evidenceLevel: 'A - diretriz',
-    },
-    {
-      id: 'ref-merck-dm-dogs-cats-feline',
-      citationText: 'Merck Veterinary Manual. Diabetes Mellitus in Dogs and Cats. Reviewed/Revised May 2024; Modified May 2025.',
-      sourceType: 'Revisão clínica',
-      url: 'https://www.merckvetmanual.com/endocrine-system/the-pancreas/diabetes-mellitus-in-dogs-and-cats',
-      notes: 'Insulinas, dieta, SGLT2i, DKA e monitoramento.',
-      evidenceLevel: 'B - referência prática',
-    },
-    {
-      id: 'ref-rand-feline-dm-remission',
+      id: 'ref-icatcare-2025',
       citationText:
-        'Rand JS, et al. Canine and Feline Endocrinology. In: Feldman EC, Nelson RW, Reusch CE, Scott-Moncrieff JCR, eds. 4th ed. Saunders; 2015. Diabetes mellitus in cats; remissão e resistência periférica.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Base endocrinológica felina; complementar às diretrizes AAHA 2026.',
-      evidenceLevel: 'Referência secundária',
+        'Taylor S, Cannon M, Church D, Fleeman L, Fracassi F, Gilor C, Mott J, Niessen S. iCatCare 2025 consensus guidelines on the diagnosis and management of diabetes mellitus in cats. J Feline Med Surg. 2025;27(11):1098612X251399103.',
+      sourceType: 'Consenso iCatCare 2025',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/41224734/',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-monitoring-dm-pmc-feline',
-      citationText: 'Cook AK. Monitoring methods for dogs and cats with diabetes mellitus. J Diabetes Sci Technol. 2012.',
-      sourceType: 'Artigo de revisão',
-      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC3440050/',
-      notes: 'Monitoramento glicêmico e interpretação de curvas/fructosamina.',
-      evidenceLevel: 'B/C',
+      id: 'ref-aaha-2018-dogs',
+      citationText:
+        'Behrend E, Holford A, Lathan P, Rucinsky R, Schulman R. 2018 AAHA Diabetes Management Guidelines for Dogs and Cats. J Am Anim Hosp Assoc. 2018;54:1–21.',
+      sourceType: 'Diretriz Consensual AAHA 2018/2022',
+      url: 'https://www.aaha.org/resources/2018-aaha-diabetes-management-guideline-for-dogs-and-cats/dogs/',
+      evidenceLevel: 'A',
     },
     {
-      id: 'ref-nelson-couto-feline-dm',
-      citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020. Disorders of the Endocrine Pancreas.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Base fisiopatológica e clínica para DM felina.',
-      evidenceLevel: 'Referência secundária',
+      id: 'ref-nelson-couto-2020',
+      citationText:
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 49 — Disorders of the Endocrine Pancreas.',
+      sourceType: 'Tratado de Medicina Interna',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-bsava-nephrology',
+      citationText:
+        'BSAVA Manual of Canine and Feline Nephrology and Urology. 3rd ed. BSAVA.',
+      sourceType: 'Manual BSAVA',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-plumbs-2023',
+      citationText:
+        'Plumb\'s Veterinary Drug Handbook. 10th ed. Wiley; 2023. Insulin monographs.',
+      sourceType: 'Guia Farmacológico',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-tardo-toujeo-2024',
+      citationText:
+        'Tardo AM, et al. A dose titration protocol for once-daily insulin glargine 300 U/mL for the treatment of diabetes mellitus in dogs. J Vet Intern Med. 2024;38:2120–2133.',
+      sourceType: 'Estudo Clínico Prospectivo (95 cães)',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11256126/',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-mott-degludec-2025',
+      citationText:
+        'Mott J, Gal A, Tardo AM, et al. Insulin degludec 100 U/mL for treatment of spontaneous diabetes mellitus in dogs. J Vet Intern Med. 2025;39:e17303.',
+      sourceType: 'Estudo Clínico Prospectivo (33 cães)',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/39844001/',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-bexacat-fda-2026',
+      citationText:
+        'FDA/DailyMed. Bexacat — bexagliflozin tablets. Current label updated 2026.',
+      sourceType: 'Bula Oficial FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f918583d-0337-40da-8da1-1e1320b8d027',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-senvelgo-fda-2026',
+      citationText:
+        'FDA/DailyMed. Senvelgo — velagliflozin oral solution 15 mg/mL. Current label updated 2026.',
+      sourceType: 'Bula Oficial FDA',
+      url: 'https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3ec5ca1f-bded-459e-a813-24d931d50b9a',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-vin-hhs-2022',
+      citationText:
+        'VINcyclopedia of Diseases. Diabetes Mellitus, Hyperglycemic Hyperosmolar Syndrome — Canine/Feline. Revised December 14, 2022.',
+      sourceType: 'Enciclopédia Clínica VIN',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-textbook-emergency-2020',
+      citationText:
+        'Textbook of Small Animal Emergency Medicine. Wiley-Blackwell. Chapters on diabetes mellitus, DKA and hyperosmolar hyperglycemic state.',
+      sourceType: 'Tratado de Emergência',
+      evidenceLevel: 'A',
+    },
+    {
+      id: 'ref-beam-cataract-1999',
+      citationText:
+        'Beam S, Correa MT, Davidson MG. A retrospective-cohort study on the development of cataracts in dogs with diabetes mellitus: 200 cases. Vet Ophthalmol. 1999;2:169–172.',
+      sourceType: 'Estudo Retrospectivo de Coorte (200 cães)',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/11397260/',
+      evidenceLevel: 'B',
+    },
+    {
+      id: 'ref-pancreatitis-dm-2024',
+      citationText:
+        'Canine Hepatobiliary and Exocrine Pancreatic Diseases. 2024. Sections on pancreatitis and endocrine disease.',
+      sourceType: 'Capítulo Especializado',
+      evidenceLevel: 'B',
     },
   ],
   isPublished: true,

@@ -338,8 +338,8 @@ ${STANDARD_RECIPE_FOOTER}`
 
   // 12. Cuidados gerais
   {
-    id: 'seed-desverminacao-ectoparasitas',
-    title: 'Desverminação e Controle de Ectoparasitas',
+    id: 'seed-vermifugacao-ectoparasitas',
+    title: 'Vermifugação e Controle de Ectoparasitas',
     category: 'Cuidados gerais',
     document_type: 'recipe',
     species: 'ambos',

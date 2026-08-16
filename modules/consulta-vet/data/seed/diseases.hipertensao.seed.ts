@@ -27,12 +27,12 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
     'IRIS',
   ],
   quickSummary:
-    'A HAS é definida clinicamente pela elevação sustentada da pressão arterial sistêmica (PAS) com capacidade de lesar órgãos-alvo — retina, encéfalo, rins e coração — ou pela coexistência de PAS elevada com doença renal crônica (DRC) estadiada pela IRIS, onde a pressão entra no subestadiamento. Não basta um número isolado: o diagnóstico exige repetição de medições em condições padronizadas (animal acalmado, manguito correto, técnica consistente) ou evidência de lesão atribuível à pressão. Em gatos, a hipertensão secundária à DRC e ao hipertireoidismo é frequente; existe ainda um grupo com hipertensão idiopática (diagnóstico de exclusão após investigação). Em cães, a HAS “essencial” idiopática é incomum — desconfie de causas secundárias (renal, endócrinas, iatrogenia, feocromocitoma). O tratamento combina reversão de fatores precipitantes, bloqueio do canal de cálcio (muito utilizado em felinos), modulação do RAAS (IECA/BRA) quando indicado, e metas pressóricas alinhadas às guidelines IRIS na DRC.',
+    'A HAS é definida clinicamente pela elevação sustentada da pressão arterial sistêmica (PAS) com capacidade de lesar órgãos-alvo — retina, encéfalo, rins e coração — ou pela coexistência de PAS elevada com doença renal crônica (DRC) estadiada pela IRIS, onde a pressão entra no subestadiamento. Não basta um número isolado: o diagnóstico exige repetição de medições em condições padronizadas (animal acalmado, manguito correto, técnica consistente) ou evidência de lesão atribuível à pressão. Em gatos, a hipertensão secundária à DRC e ao hipertireoidismo é frequente; existe ainda um grupo com hipertensão idiopática (diagnóstico de exclusão após investigação). Em cães, a HAS “essencial” idiopática é incomum — desconfie de causas secundárias (renal, endócrinas, iatrogenia, feocromocitoma). O tratamento combina reversão de fatores precipitantes, bloqueio do canal de cálcio (muito utilizado em felinos), modulação do SRAA (IECA/BRA) quando indicado, e metas pressóricas alinhadas às guidelines IRIS na DRC.',
   quickDecisionStrip: [
     'Cegueira súbita ou hemorragia intraocular em gato idoso: trate como urgência oftálmica e meça PA — horas contam.',
     'Nunca diagnostique HAS com uma única leitura em animal tenso, com dor ou sem manguito adequado.',
     'Em gato com DRC IRIS: a PA sistólica define subestádio (normo / borderline / hipertenso / grave) e muda metas terapêuticas.',
-    'Amlodipino é espinha dorsal em muitos gatos; IECA/BRA associam-se por lógica RAAS e proteinúria — vigiar creatinina e K⁺.',
+    'Amlodipino é espinha dorsal em muitos gatos; IECA/BRA associam-se por lógica SRAA e proteinúria — vigiar creatinina e K⁺.',
     'Antes de “idiopático felino”, exclua hipertireoidismo (T4/TSH), DRC e medicações (corticoides, mineralocorticoides).',
   ],
   quickSummaryRich: {
@@ -84,7 +84,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
           label: 'Investigar causa',
           timing: 'Antes de rotular idiopática',
           detail:
-            'Bioquímica, SDMA, urinálise, UPC, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos (Nelson & Couto, 6ª ed.).',
+            'Bioquímica, SDMA, urinálise, RPCU, T4/TSH (gato idoso), imagem se massa abdominal; rever fármacos (Nelson & Couto, 6ª ed.).',
         },
         {
           label: 'Tratar e reavaliar',
@@ -100,7 +100,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
         {
           label: 'Causa reversível',
           detail:
-            'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de RAAS (Nelson & Couto, 6ª ed.).',
+            'Corrigir hipertireoidismo, suspender/ajustar corticoide, otimizar hidratação do nefropata antes de SRAA (Nelson & Couto, 6ª ed.).',
         },
         {
           label: 'Anti-hipertensivo de base',
@@ -111,11 +111,11 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
           reassess: 'Hipotensão postural, bradicardia relativa — titular gradualmente.',
         },
         {
-          label: 'RAAS',
+          label: 'SRAA',
           detail:
             'IECA ou BRA quando proteinúria, ICC com contexto, ou combinação necessária — monitorizar função renal (IRIS 2023; BSAVA Nephrology, 3ª ed.).',
           dose: 'Benazepril conforme perfusão renal e monografia Plumb\'s; associar amlodipino se monoterapia insuficiente.',
-          reassess: 'Creatinina e K⁺ 5–7 dias após início ou escalada de RAAS.',
+          reassess: 'Creatinina e K⁺ 5–7 dias após início ou escalada de SRAA.',
         },
         {
           label: 'Urgência',
@@ -128,9 +128,9 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
   },
   etiology: {
     definicao:
-      'A pressão arterial sistêmica reflete o produto hemodinâmico (débito cardíaco × resistência vascular periférica) e modulações neuro-humorais (simpático, RAAS, ADH). HAS surge quando um ou mais destes eixos permanece desregulado: vasoconstrição excessiva, retenção volémica, ou ambos. A lesão endotelial crônica perpetua remodelação vascular e reduz compliance — o que torna o controle mais difícil se o tratamento for tardio.',
+      'A pressão arterial sistêmica reflete o produto hemodinâmico (débito cardíaco × resistência vascular periférica) e modulações neuro-humorais (simpático, SRAA, ADH). HAS surge quando um ou mais destes eixos permanece desregulado: vasoconstrição excessiva, retenção volémica, ou ambos. A lesão endotelial crônica perpetua remodelação vascular e reduz compliance — o que torna o controle mais difícil se o tratamento for tardio.',
     causasRenais:
-      'DRC por perda de néfrons, ativação do RAAS, disfunção endotelial e alteração do manejo de sódio/água. Hipertensão pode acelerar proteinúria e nefroesclerose — ciclo vicioso com a HAS. Em agudo renal, fluidos e toxinas podem alterar a PA; estadiar só com paciente estável.',
+      'DRC por perda de néfrons, ativação do SRAA, disfunção endotelial e alteração do manejo de sódio/água. Hipertensão pode acelerar proteinúria e nefroesclerose — ciclo vicioso com a HAS. Em agudo renal, fluidos e toxinas podem alterar a PA; estadiar só com paciente estável.',
     causasEndocrinas:
       'Hipertireoidismo felino (aumento do débito, sensibilidade adrenérgica); hiperadrenocorticismo canino (volume, resistência); feocromocitoma (crises de catecolaminas); diabetes mellitus (comorbidades vasculares e renal); hiperaldosteronismo primário ou secundário em cenários selecionados.',
     causasHematologicasVolume:
@@ -227,7 +227,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
   },
   pathogenesisTransmission: {
     neurohumoral:
-      'Ativação crônica do RAAS e do simpático eleva resistência vascular e retenção de sódio/água. Em nefropatas, a redução da perfusão renal percebida reforça angiotensina II e aldosterona — mesmo quando a creatinina ainda é limítrofe.',
+      'Ativação crônica do SRAA e do simpático eleva resistência vascular e retenção de sódio/água. Em nefropatas, a redução da perfusão renal percebida reforça angiotensina II e aldosterona — mesmo quando a creatinina ainda é limítrofe.',
     endotelio:
       'Disfunção endotelial reduz óxido nítrico, aumenta endotelina e favorece vasoconstrição e inflamação de parede — contribuindo para rigidez arterial.',
     orgaoAlvo:
@@ -426,8 +426,8 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
   treatment: {
     cronica: [
       'IRIS (2023), nas diretrizes de DRC, recomendam amlodipino como espinha dorsal em muitos gatos hipertensos, iniciando ~0,125–0,25 mg/kg VO q24h e titulando até ~0,25–0,5 mg/kg conforme resposta, com reavaliação de PA em 1–2 semanas.',
-      'Elliott et al. (2017), no BSAVA Manual of Nephrology and Urology (3ª ed.), descrevem associação de IECA ou BRA quando proteinúria, ICC com contexto ou monoterapia insuficiente — creatinina e K⁺ 5–7 dias após início ou escalada de RAAS.',
-      'Nelson & Couto (6ª ed.) enfatizam tratar causa de base em paralelo: corrigir hipertireoidismo, suspender corticoide precipitante, otimizar hidratação do nefropata antes de intensificar RAAS.',
+      'Elliott et al. (2017), no BSAVA Manual of Nephrology and Urology (3ª ed.), descrevem associação de IECA ou BRA quando proteinúria, ICC com contexto ou monoterapia insuficiente — creatinina e K⁺ 5–7 dias após início ou escalada de SRAA.',
+      'Nelson & Couto (6ª ed.) enfatizam tratar causa de base em paralelo: corrigir hipertireoidismo, suspender corticoide precipitante, otimizar hidratação do nefropata antes de intensificar SRAA.',
     ],
     aguda: [
       'Nelson & Couto (6ª ed.) descrevem abordagem hospitalar para crise neurológica ou olho com ameaça visual: fármacos de curta duração, vigilância intensiva de PA e fundo de olho seriado — prognóstico visual pode permanecer reservado mesmo com PA controlada.',
@@ -471,7 +471,7 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
     {
       id: 'ref-plumb-antihtn',
       citationText:
-        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — anlodipino, benazepril, bloqueadores do RAAS, anti-hipertensivos.',
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — anlodipino, benazepril, bloqueadores do SRAA, anti-hipertensivos.',
       sourceType: 'Formulário',
       url: null,
       evidenceLevel: 'Alta (doses)',

@@ -325,7 +325,7 @@ export const hipoadrenocorticismoAddisonRecord: DiseaseRecord = {
   prevention:
     'A doença primária espontânea é autoimune e não tem prevenção vacinal ou ambiental. Para evitar o Addison iatrogênico secundário, nunca suspenda de forma abrupta corticoides em cães sob terapia crônica prolongada — elabore sempre um desmame gradual monitorado. Em cães sob tratamento para Cushing (trilostano ou mitotano), realize monitoramento periódico com testes bioquímicos e clínicos para prevenir superdosagem.',
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['prednisolona'],
+  relatedMedicationSlugs: ['prednisolona', 'desoxicorticosterona-pivalato'],
   references: [
     {
       id: 'ref-nelson-couto-addison-2020',

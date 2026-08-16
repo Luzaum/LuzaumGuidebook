@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Calculator, ChevronDown, Copy, Download, FileCheck, FileText, PenLine, Pill, Printer, Save, Sparkles, X } from 'lucide-react';
 import { useAuthSession } from '../../../../src/components/AuthSessionProvider';
 import { useClinic } from '../../../../src/components/ClinicProvider';
 import { RECEITUARIO_CATEGORIES } from '../../data/receituarioSeed';
 import { issueGeneratedDocument, saveCustomTemplate, saveReceituarioDraft } from '../../services/receituarioService';
 import type { DocumentTemplate, PrescriptionMedicationSnapshot, PrintIdentification, ReceituarioDocumentData, ReceituarioSpecies, ClinicalMedicationOverride } from '../../types/receituario';
-import { insertMedicationIntoPrescriptionText, normalizePrescriptionSpecies } from '../../utils/receituarioMedication';
-import { buildDocumentPlainText, normalizeLegacyDocumentBody, sanitizeIssuedText, stripTextSignatureSection } from '../../utils/receituarioDocument';
+import { insertMedicationIntoPrescriptionText, normalizePrescriptionSpecies, removeMedicationFromPrescriptionText, updateMedicationInPrescriptionText } from '../../utils/receituarioMedication';
+import { buildDocumentBodyPlainText, buildDocumentPlainText, normalizeLegacyDocumentBody, sanitizeIssuedText, stripTextSignatureSection } from '../../utils/receituarioDocument';
 import { downloadReceituarioPdf } from '../../utils/receituarioPdf';
 import { ensureEditableRecipeReturn, ensureRecipeClinicalWorseningNotice, normalizeRecipeListMarkers, stripPrescriptionTechnicalDetails } from '../../utils/receituarioTemplateCalculator';
 import { resolveSelectedClinicalMedications, listClinicalMedicationsNeedingRegistration } from '../../utils/clinicalMedicationCatalogBridge';
@@ -28,8 +28,16 @@ interface Props {
 }
 
 const EMPTY_IDENTIFICATION: PrintIdentification = {
-  patientName: '', responsibleName: '', responsibleCpf: '', species: '', breed: '', sex: '', age: '', weightKg: '',
-  veterinarianName: '', crmv: '', witness1Name: '', witness1Cpf: '', witness2Name: '', witness2Cpf: '',
+  patientName: '',
+  responsibleName: '',
+  responsibleCpf: '',
+  species: 'cão',
+  breed: '',
+  sex: 'macho',
+  age: '',
+  weightKg: '',
+  veterinarianName: '',
+  crmv: '',
 };
 
 function Field({ label, value, onChange, type = 'text', placeholder }: { label: string; value: string; onChange: (value: string) => void; type?: string; placeholder?: string }) {
@@ -238,9 +246,12 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   const [modelSpecies, setModelSpecies] = useState<ReceituarioSpecies>('ambos');
   const [savedPersonalTemplateId, setSavedPersonalTemplateId] = useState<string | null>(null);
   const [prescriptionItems, setPrescriptionItems] = useState<PrescriptionMedicationSnapshot[]>([]);
+  const [editingSnapshot, setEditingSnapshot] = useState<PrescriptionMedicationSnapshot | null>(null);
   const [clinicalSelectedKeys, setClinicalSelectedKeys] = useState<string[]>([]);
   const [clinicalDoseAlternativeKeys, setClinicalDoseAlternativeKeys] = useState<Record<string, string>>({});
   const [clinicalMedicationOverrides, setClinicalMedicationOverrides] = useState<Record<string, ClinicalMedicationOverride>>({});
+  const editorInitializedRef = useRef(false);
+  const prescriptionItemsRef = useRef<PrescriptionMedicationSnapshot[]>([]);
   const clinicalModel = template?.structured_defaults?.clinical_model;
 
   const metadata = user?.user_metadata || {};
@@ -253,7 +264,12 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   }), [clinicName, metadata.crmv, metadata.professional_registry, metadata.veterinary_registry, profile?.name]);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      editorInitializedRef.current = false;
+      return;
+    }
+    if (editorInitializedRef.current) return;
+    editorInitializedRef.current = true;
     const nextTitle = initialTitle || template?.title || (documentType === 'recipe' ? 'Receita veterinária' : 'Documento veterinário');
     setTitle(nextTitle);
     setModelTitle(nextTitle);
@@ -274,10 +290,26 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     setActiveMobileTab('edit');
     setIdentificationOpen(false);
     setPrescriptionItems([]);
+    prescriptionItemsRef.current = [];
+    setEditingSnapshot(null);
     setClinicalSelectedKeys(clinicalModel ? getDefaultClinicalOptionKeys(clinicalModel) : []);
     setClinicalDoseAlternativeKeys({});
     setClinicalMedicationOverrides({});
   }, [clinicalModel, documentType, header.crmv, header.veterinarianName, initialBodyText, initialIdentification, initialTitle, isOpen, template]);
+
+  useEffect(() => {
+    prescriptionItemsRef.current = prescriptionItems;
+  }, [prescriptionItems]);
+
+  const handleClinicalBodyChange = useCallback((nextClinicalBody: string) => {
+    const bodyWithAddedMedications = prescriptionItemsRef.current.reduce(
+      (current, item) => item.rawBlockText
+        ? insertMedicationIntoPrescriptionText(current, item.rawBlockText)
+        : current,
+      nextClinicalBody,
+    );
+    setBody(bodyWithAddedMedications);
+  }, []);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -321,11 +353,45 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   const handleInsert = (block: string, snapshot: PrescriptionMedicationSnapshot) => {
     const editableBlock = sanitizeIssuedText(block);
     setBody((current) => insertMedicationIntoPrescriptionText(current, editableBlock));
-    setPrescriptionItems((current) => [...current, snapshot]);
+    const nextItems = [...prescriptionItemsRef.current, { ...snapshot, rawBlockText: snapshot.rawBlockText || editableBlock }];
+    prescriptionItemsRef.current = nextItems;
+    setPrescriptionItems(nextItems);
     setWorkspace('text');
     notify('Medicamento inserido. Revise o documento antes de emitir.');
   };
-  const handleCopy = async () => { await navigator.clipboard.writeText(buildDocumentPlainText(documentData)); notify('Texto sem formatação copiado.'); };
+  const handleEditMedication = (snapshot: PrescriptionMedicationSnapshot) => {
+    setEditingSnapshot(snapshot);
+    setWorkspace('medication');
+  };
+  const handleRemoveMedication = (snapshot: PrescriptionMedicationSnapshot) => {
+    setBody((current) => removeMedicationFromPrescriptionText(current, snapshot.rawBlockText || snapshot.medicationName));
+    const nextItems = prescriptionItemsRef.current.filter((item) => item !== snapshot);
+    prescriptionItemsRef.current = nextItems;
+    setPrescriptionItems(nextItems);
+    if (editingSnapshot === snapshot) setEditingSnapshot(null);
+    notify('Medicamento removido da receita.');
+  };
+  const handleUpdateMedication = (
+    oldBlockText: string,
+    newBlockText: string,
+    updatedSnapshot: PrescriptionMedicationSnapshot,
+  ) => {
+    setBody((current) => updateMedicationInPrescriptionText(current, oldBlockText, sanitizeIssuedText(newBlockText)));
+    const nextItems = prescriptionItemsRef.current.map((item) => (
+      item === editingSnapshot || item.rawBlockText === oldBlockText
+        ? { ...updatedSnapshot, rawBlockText: updatedSnapshot.rawBlockText || sanitizeIssuedText(newBlockText) }
+        : item
+    ));
+    prescriptionItemsRef.current = nextItems;
+    setPrescriptionItems(nextItems);
+    setEditingSnapshot(null);
+    setWorkspace('text');
+    notify('Medicamento atualizado. Revise o documento antes de emitir.');
+  };
+  const handleCopyContent = async () => {
+    await navigator.clipboard.writeText(buildDocumentBodyPlainText(documentData));
+    notify('Conteúdo da receita copiado sem identificação.');
+  };
   const handlePrint = () => { document.body.classList.add('receituario-printing'); window.addEventListener('afterprint', () => document.body.classList.remove('receituario-printing'), { once: true }); window.print(); };
 
   const handleDraft = async () => {
@@ -416,7 +482,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
                 onDoseAlternativeKeysChange={setClinicalDoseAlternativeKeys}
                 medicationOverrides={clinicalMedicationOverrides}
                 onMedicationOverridesChange={setClinicalMedicationOverrides}
-                onBodyChange={setBody}
+                onBodyChange={handleClinicalBodyChange}
               />
             ) : null}
             <div className="sticky top-0 z-10 flex shrink-0 flex-wrap items-center justify-between gap-3 border-b border-border bg-background/95 px-4 py-3 backdrop-blur supports-[backdrop-filter]:bg-background/80">
@@ -431,7 +497,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
                 ) : null}
                 {documentType === 'recipe' ? (
                   <button type="button" onClick={() => setWorkspace('medication')} className={`inline-flex min-h-9 items-center gap-1.5 rounded-lg px-3 text-xs font-semibold ${workspace === 'medication' ? 'bg-primary text-primary-foreground shadow-sm' : ''}`}>
-                    <Calculator className="h-3.5 w-3.5" />Adicionar medicamento
+                    <Calculator className="h-3.5 w-3.5" />{prescriptionItems.length ? 'Adicionar / editar medicamentos' : 'Adicionar medicamento'}
                   </button>
                 ) : null}
               </div>
@@ -458,10 +524,40 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
                 <ClinicalRecipeObservations notes={clinicalRecipeObservations} />
               </div>
             ) : workspace === 'medication' && documentType === 'recipe' ? (
-              <div className="min-h-[min(480px,52vh)] p-4 sm:p-5"><PrescriptionMedicationComposer clinicId={clinicId} species={identification.species} weightKg={identification.weightKg} onInsert={handleInsert} /></div>
+              <div className="min-h-[min(480px,52vh)] p-4 sm:p-5">
+                <PrescriptionMedicationComposer
+                  clinicId={clinicId}
+                  species={identification.species}
+                  weightKg={identification.weightKg}
+                  onInsert={handleInsert}
+                  editingSnapshot={editingSnapshot}
+                  onUpdate={handleUpdateMedication}
+                  onCancelEdit={() => { setEditingSnapshot(null); setWorkspace('text'); }}
+                  addedSnapshots={prescriptionItems}
+                  onEditSnapshot={handleEditMedication}
+                  onRemoveSnapshot={handleRemoveMedication}
+                />
+              </div>
             ) : (
               <div className="flex min-h-[min(480px,52vh)] flex-col gap-2 p-4 sm:p-5">
                 {documentType === 'term' ? <p className="shrink-0 rounded-lg border border-sky-500/20 bg-sky-500/10 px-3 py-2 text-xs text-sky-800">As assinaturas são organizadas automaticamente em quatro quadros no PDF e na impressão.</p> : null}
+                {documentType === 'recipe' && prescriptionItems.length > 0 ? (
+                  <div className="flex flex-wrap items-center justify-between gap-2 rounded-xl border border-border/80 bg-muted/40 p-3 text-xs">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-semibold text-muted-foreground uppercase tracking-wider text-[11px]">Medicamentos adicionados ({prescriptionItems.length}):</span>
+                      {prescriptionItems.map((item, index) => (
+                        <div key={`${item.medicationId}-${index}`} className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-background px-2.5 py-1 text-xs">
+                          <span className="font-semibold">{item.medicationName}</span>
+                          <button type="button" onClick={() => handleEditMedication(item)} className="font-medium text-sky-600 hover:underline dark:text-sky-400">Editar</button>
+                          <button type="button" onClick={() => handleRemoveMedication(item)} className="text-rose-600 hover:text-rose-800 dark:text-rose-400">×</button>
+                        </div>
+                      ))}
+                    </div>
+                    <button type="button" onClick={() => { setEditingSnapshot(null); setWorkspace('medication'); }} className="inline-flex items-center gap-1 font-semibold text-primary hover:underline">
+                      + Adicionar outro
+                    </button>
+                  </div>
+                ) : null}
                 {/A PREENCHER/i.test(body) ? <p className="shrink-0 text-xs text-amber-700 dark:text-amber-300">Os campos destacados precisam ser preenchidos. Clique sobre “A PREENCHER” para substituí-lo.</p> : null}
                 {documentType === 'recipe' && /^Dose clínica:/im.test(body) ? <p className="shrink-0 text-xs text-sky-700 dark:text-sky-300">As doses em azul são apoio clínico e não aparecem na receita final. Passe o mouse para ver o cálculo da dose escolhida.</p> : null}
                 {documentType === 'recipe' && /ERRO DE DOSE P\/ CONCENTRAÇÃO/i.test(body) ? <p className="shrink-0 text-xs text-red-700 dark:text-red-300">Trechos em vermelho indicam erro grave de dose/concentração. Passe o mouse para ver o motivo; corrija na aba Edição de medicamentos.</p> : null}
@@ -472,7 +568,18 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
           <section className={`${activeMobileTab === 'preview' ? 'flex' : 'hidden md:flex'} min-w-0 flex-1 overflow-y-auto bg-slate-200/70`}><PrintPreviewA4 document={documentData} /></section>
         </div>
 
-        <footer className="relative z-10 flex shrink-0 flex-col gap-2 border-t border-border bg-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6"><div className="flex gap-2"><button onClick={handleCopy} className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold sm:flex-none"><Copy className="h-4 w-4 text-sky-500" />Copiar</button><button onClick={() => void handleDraft()} disabled={saving} className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold sm:flex-none"><Save className="h-4 w-4 text-amber-500" />Rascunho</button><button onClick={() => setSaveModelOpen(true)} className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold sm:flex-none"><Sparkles className="h-4 w-4 text-violet-500" />{savedPersonalTemplateId ? 'Atualizar modelo' : 'Salvar modelo próprio'}</button></div><div className="flex gap-2"><button onClick={handlePrint} className="flex h-10 w-10 items-center justify-center rounded-lg border border-border sm:w-auto sm:px-3" aria-label="Imprimir"><Printer className="h-4 w-4" /><span className="ml-2 hidden text-xs sm:inline">Imprimir</span></button><button onClick={() => downloadReceituarioPdf(documentData)} className="flex h-10 w-10 items-center justify-center rounded-lg border border-border sm:w-auto sm:px-3" aria-label="Exportar PDF"><Download className="h-4 w-4 text-rose-500" /><span className="ml-2 hidden text-xs sm:inline">PDF</span></button><button onClick={() => void handleIssue()} disabled={saving} className="inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white disabled:opacity-50 sm:flex-none"><FileCheck className="h-4 w-4" />{saving ? 'Salvando…' : 'Emitir e salvar'}</button></div></footer>
+        <footer className="relative z-10 flex shrink-0 flex-col gap-2 border-t border-border bg-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <div className="flex gap-2">
+            <button onClick={() => void handleDraft()} disabled={saving} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none"><Save className="h-4 w-4 text-amber-500" />Rascunho</button>
+            <button onClick={() => setSaveModelOpen(true)} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none"><Sparkles className="h-4 w-4 text-violet-500" />{savedPersonalTemplateId ? 'Atualizar modelo' : 'Salvar modelo próprio'}</button>
+          </div>
+          <div className="flex gap-2">
+            <button onClick={() => void handleCopyContent()} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none" aria-label="Copiar somente o conteúdo da receita"><Copy className="h-4 w-4 text-sky-500" />Copiar conteúdo</button>
+            <button onClick={handlePrint} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted sm:w-auto sm:px-3" aria-label="Imprimir"><Printer className="h-4 w-4" /><span className="ml-2 hidden text-xs sm:inline">Imprimir</span></button>
+            <button onClick={() => downloadReceituarioPdf(documentData)} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted sm:w-auto sm:px-3" aria-label="Exportar PDF"><Download className="h-4 w-4 text-rose-500" /><span className="ml-2 hidden text-xs sm:inline">PDF</span></button>
+            <button onClick={() => void handleIssue()} disabled={saving} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"><FileCheck className="h-4 w-4" />{saving ? 'Salvando…' : 'Emitir e salvar'}</button>
+          </div>
+        </footer>
       </div>
 
       {saveModelOpen ? <div className="fixed inset-0 z-[80] flex items-center justify-center bg-black/70 p-4"><div className="w-full max-w-md space-y-4 rounded-2xl border border-border bg-background p-6 shadow-2xl"><h2 className="font-bold">{savedPersonalTemplateId ? 'Atualizar modelo pessoal' : 'Salvar modelo próprio'}</h2><Field label="Título" value={modelTitle} onChange={setModelTitle} /><label className="space-y-1.5"><span className="block text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Categoria</span><select value={modelCategory} onChange={(event) => setModelCategory(event.target.value)} className="h-10 w-full rounded-xl border border-border bg-background px-3 text-sm">{RECEITUARIO_CATEGORIES.map((item) => <option key={item}>{item}</option>)}</select></label><label className="space-y-1.5"><span className="block text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Espécie</span><select value={modelSpecies} onChange={(event) => setModelSpecies(event.target.value as ReceituarioSpecies)} className="h-10 w-full rounded-xl border border-border bg-background px-3 text-sm"><option value="ambos">Cão e gato</option><option value="cão">Cão</option><option value="gato">Gato</option></select></label><div className="flex justify-end gap-2 pt-2"><button onClick={() => setSaveModelOpen(false)} className="min-h-10 rounded-lg border border-border px-4 text-xs font-semibold">Cancelar</button><button onClick={() => void handleSaveModel()} disabled={saving} className="min-h-10 rounded-lg bg-primary px-4 text-xs font-semibold text-primary-foreground">{saving ? 'Salvando…' : savedPersonalTemplateId ? 'Atualizar modelo' : 'Salvar modelo próprio'}</button></div></div></div> : null}

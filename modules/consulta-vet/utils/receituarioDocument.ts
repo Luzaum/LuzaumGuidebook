@@ -1,10 +1,13 @@
 import type { ReceituarioDocumentData } from '../types/receituario';
+import { prescriptionPharmaceuticalFormLabel } from './receituarioMedication';
 
 export const EMPTY_FIELD_LABEL = 'A PREENCHER';
 
 export interface PaginatedLine {
   text: string;
-  kind: 'body' | 'heading' | 'bullet' | 'spacer';
+  kind: 'body' | 'heading' | 'bullet' | 'spacer' | 'medication';
+  medicationLabel?: string;
+  medicationForm?: string;
 }
 
 export interface DocumentPageModel {
@@ -104,6 +107,11 @@ export function buildDocumentPlainText(document: ReceituarioDocumentData): strin
   ].join('\n'));
 }
 
+/** Copia somente o conteúdo clínico, sem cabeçalho, paciente ou assinaturas. */
+export function buildDocumentBodyPlainText(document: ReceituarioDocumentData): string {
+  return sanitizeIssuedText(document.bodyPlainText);
+}
+
 function wrapText(text: string, maxChars: number): string[] {
   if (!text) return [''];
   const words = text.split(/\s+/);
@@ -125,8 +133,27 @@ function lineKind(text: string): PaginatedLine['kind'] {
   return 'body';
 }
 
+function medicationLineParts(raw: string, nearbyText: string): { label: string; form: string } | null {
+  const match = raw.trim().match(/^(\d+)\.\s+(.+)$/);
+  if (!match) return null;
+  let content = match[2].replace(/\s+—\s*$/, '').trim();
+  const segments = content.split(/\s+—\s+/).map((item) => item.trim()).filter(Boolean);
+  const explicitForm = prescriptionPharmaceuticalFormLabel(segments[segments.length - 1]);
+  const inferredForm = explicitForm || prescriptionPharmaceuticalFormLabel(`${content} ${nearbyText}`);
+  const looksLikeMedication = /^(administrar|aplicar|instilar|pingar|oferecer|dar|usar|manipular|forma farmacêutica)/i.test(nearbyText.trim())
+    || Boolean(explicitForm)
+    || /\d+(?:[.,]\d+)?\s*(?:mcg|µg|mg|g|mL|UI)\b/i.test(content);
+  if (!looksLikeMedication) return null;
+  if (explicitForm) content = segments.slice(0, -1).join(' — ');
+  return { label: `${match[1]}. ${content}`, form: inferredForm || 'Medicamento' };
+}
+
 function blocksFromText(text: string, maxChars: number): PaginatedLine[][] {
-  return sanitizeIssuedText(text).split('\n').map((raw) => {
+  const rawLines = sanitizeIssuedText(text).split('\n');
+  return rawLines.map((raw, rawIndex) => {
+    const nearbyText = rawLines.slice(rawIndex + 1, rawIndex + 4).map((item) => item.trim()).filter(Boolean).join(' ');
+    const medication = medicationLineParts(raw, nearbyText);
+    if (medication) return [{ text: raw, kind: 'medication', medicationLabel: medication.label, medicationForm: medication.form }];
     const kind = lineKind(raw);
     if (kind === 'spacer') return [{ text: '', kind }];
     const prefix = kind === 'bullet' ? raw.slice(0, 2) : '';

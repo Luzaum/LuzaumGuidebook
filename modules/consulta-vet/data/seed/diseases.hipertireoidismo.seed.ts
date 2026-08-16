@@ -1,367 +1,175 @@
-import { DiseaseRecord } from '../../types/disease';
+import type { DiseaseRecord } from '../../types/disease';
+import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
-/** Hipertireoidismo Felino; texto editorial integrando AAFP 2016, MSD e Nelson & Couto. */
+/** Hipertireoidismo felino - sintese editorial Vetius. AAHA 2023 > AAFP 2016 > Geddes 2022. */
 export const hipertireoidismoFelinoRecord: DiseaseRecord = {
   id: 'disease-hipertireoidismo-felino',
   slug: 'hipertireoidismo-felino',
-  title: 'Hipertireoidismo Felino',
-  synonyms: [
-    'Hipertireoidismo',
-    'Adenoma tireóideo felino',
-    'Feline hyperthyroidism',
-    'Bócio felino',
-    'Tireotoxicose',
-  ],
+  title: 'Hipertireoidismo felino',
+  synonyms: ['Hipertireoidismo', 'Feline hyperthyroidism', 'FHT', 'Tireotoxicose', 'B�cio felino'],
   species: ['cat'],
   category: 'endocrinologia',
-  tags: [
-    'Tireóide',
-    'T4 Total',
-    'Metimazol',
-    'Bócio',
-    'I-131',
-    'Perda de peso',
-    'Polifagia',
-    'Taquicardia',
-  ],
+  tags: ['Tire�ide', 'T4 total', 'T4 livre', 'TSH', 'Metimazol', 'I-131', 'Cintilografia', 'DRC mascarada', 'AAHA 2023'],
+  plainLanguage: DISEASE_PLAIN_LANGUAGE['hipertireoidismo-felino'],
   quickSummary:
-    'O hipertireoidismo felino é a endocrinopatia mais comum em gatos idosos, caracterizada pela produção excessiva e autônoma dos hormônios tireoidianos tiroxina (T4) e triiodotironina (T3). Em mais de 98% dos casos, decorre de hiperplasia adenomatosa multinodular benigna ou adenoma de um ou ambos os lobos tireoidianos; o carcinoma tireoidiano é raro (<2%). O quadro clássico inclui perda de peso progressiva apesar de apetite voraz (polifagia), hiperatividade, poliúria/polidipsia, distúrbios gastrointestinais (vômitos/diarreia por hipermotilidade), taquicardia severa e bócio palpável (thyroid slip). O diagnóstico baseia-se na dosagem de T4 Total elevado, utilizando T4 Livre por diálise em casos limítrofes. O tratamento pode ser controle clínico (metimazol oral/transdérmico), curativo definitivo (Iodo radioativo I-131 ou tireoidectomia bilateral) ou dietético (baixo iodo). Um pilar crítico é a monitorização renal pós-tratamento, pois o restabelecimento do eutireoidismo reduz o fluxo sanguíneo renal e pode desmascarar Doença Renal Crônica (DRC) preexistente.',
+    'Hipertireoidismo felino: endocrinopatia idosa por n�dulo tireoidiano funcional benigno (~1-3% carcinoma). TT4 elevada + cl�nica confirma maioria; TT4 normal n?o exclui (~5%). Mascara DRC - tratar para eutireoidismo, nunca manter T4 alta. I-131 curativo preferencial; metimazol/dieta controlam, n?o curam (Bugbee et al., 2023; Geddes & Aguiar, 2022).',
   quickDecisionStrip: [
-    'Gato com mais de 10 anos apresentando perda de peso marcada, polifagia (fome constante), taquicardia e pelagem opaca/emaranhada: suspeite forte de hipertireoidismo.',
-    'A palpação da região ventral do pescoço revelando bócio ("thyroid slip") é um achado clínico altamente sugestivo e rápido.',
-    'Total T4 bem elevado em laboratório de referência confirma o diagnóstico; em gatos doentes com T4 normal, dose T4 Livre por diálise para afastar "Euthyroid Sick Syndrome".',
-    'Metimazol oral ou transdérmico é excelente para controle clínico, mas o Iodo Radioativo (I-131) é a terapia definitiva de escolha por curar sem necessidade de cirurgia.',
-    'Sempre meça creatinina, ureia e pressão arterial antes e após estabilizar a tireoide; o tratamento reduz a TFG e pode expor uma doença renal oculta.',
+    'Gato idoso emagrecendo apesar de comer muito + taquicardia + thyroid slip palp�vel = suspeita m�xima (Carney et al., 2016).',
+    'TT4 elevada + sinais compat�veis geralmente confirma - usar intervalo de refer?ncia do laborat�rio (Bugbee et al., 2023).',
+    'TT4 normal N?O exclui - ~5% podem ter doen�a inicial, flutua�?o ou NTI concomitante (Bugbee et al., 2023).',
+    'fT4 elevada isolada N?O confirma - interpretar sempre com TT4 (Carney et al., 2016).',
+    'TSH mensur�vel n?o exclui universalmente - depende do ensaio (Brassard et al., 2026).',
+    'Hipertireoidismo mascara DRC - reavaliar rim ap�s eutireoidismo (Geddes & Aguiar, 2022).',
+    'N?O manter gato hipertireoideo para proteger creatinina - objetivo � eutireoidismo (Geddes & Aguiar, 2022).',
+    'Medir PAS no diagn�stico e ap�s tratamento - 27% PAS >=160 mmHg pr�-I-131 (Stammeleer et al., 2024).',
+    'Metimazol N?O cura - dose por gato, n?o mg/kg (Carney et al., 2016; Bugbee et al., 2023).',
+    'I-131 curativo preferencial - dose individualizada, n?o fixa (Peterson & Rishniw, 2021).',
+    'Dieta y/d exige exclusividade absoluta - n?o substitui dieta renal se DRC azot?mica (Geddes & Aguiar, 2022).',
+    'Doen�a progressiva - metimazol/dieta n?o interrompem crescimento nodular (Peterson et al., 2016).',
   ],
   quickSummaryRich: {
     lead:
-      'O hipertireoidismo felino acelera o gato: aumenta o metabolismo, a frequência cardíaca e a taxa de filtração glomerular. Esta última alteração é uma armadilha clássica: o rim parece "perfeito" nos exames iniciais porque a tireotoxicose força a filtração renal; ao tratar e normalizar o T4, a creatinina pode subir abruptamente, expondo uma DRC oculta. A chave é o tratamento escalonado e monitoramento constante.',
-    leadHighlights: ['acelera o gato', 'taxa de filtração glomerular', 'DRC oculta', 'metimazol', 'I-131'],
+      'Metabolismo acelerado permanente. Armadilha renal: creatinina baixa at� tratar. Forma ap�tica existe. Objetivo: eutireoidismo, n?o hipertireoidismo terap?utico.',
+    leadHighlights: ['TFG', 'DRC mascarada', 'ap�tico', 'eutireoidismo', 'I-131'],
     pillars: [
-      {
-        title: 'Origem benigna',
-        body:
-          'Mais de 98% refletem hiperplasia adenomatosa benigna bilateral ou unilateral. Carcinomas malignos são raros, mas devem ser considerados se a tireoide estiver muito grande, fixa ou refratária ao tratamento.',
-        highlights: ['hiperplasia adenomatosa', 'carcinoma'],
-      },
-      {
-        title: 'Efeito renal duplo',
-        body: 'O hipertireoidismo mascara a insuficiência renal. O controle hormonal reduz a perfusão renal. Se a DRC desmascarada for severa, pode ser necessário tolerar um leve estado hipertireóideo para preservar a função renal.',
-        highlights: ['mascara', 'função renal'],
-      },
-      {
-        title: 'Terapia de escolha',
-        body: 'O Iodo Radioativo (I-131) destrói seletivamente o tecido tireoidiano hiperativo, poupando a tireoide normal e as paratireoides. É curativo em ~95% dos casos.',
-        highlights: ['Iodo Radioativo', 'I-131', 'curativo'],
-      },
+      { title: 'Diagn�stico', body: 'TT4 primeira linha; lim�trofes: repetir TT4 + fT4; TSH conforme ensaio (Bugbee et al., 2023).', highlights: ['TT4', 'fT4'] },
+      { title: 'Rim', body: 'Tratar mesmo com DRC; SDMA normal n?o garante aus?ncia de azotemia p�s-tratamento (Geddes & Aguiar, 2022).', highlights: ['unmasking'] },
+      { title: 'Tratamento', body: 'I-131 curativo preferencial; metimazol/dieta = controle vital�cio (Peterson & Rishniw, 2021).', highlights: ['I-131'] },
     ],
-    diagnosticFlow: {
-      title: 'Plano diagnóstico',
-      steps: [
-        {
-          label: 'Reconhecimento clínico e palpação',
-          timing: 'Primeira consulta',
-          detail:
-            'Identificar perda de peso, polifagia, bócio palpável na linha do pescoço (thyroid slip), sopro cardíaco, taquicardia e hiperatividade em felinos geriatras (AAFP, 2016).',
-        },
-        {
-          label: 'Triagem com T4 Total sérico',
-          detail:
-            'Dosar T4 Total. Se significativamente elevado (> 4,5 µg/dL ou acima da referência local), em gato com sinais clínicos compatíveis, o diagnóstico é selado (AAFP, 2016; Nelson & Couto, 6ª ed.).',
-        },
-        {
-          label: 'Abordagem em casos limítrofes / Euthyroid Sick',
-          detail:
-            'Se T4 Total vier normal-alto ou normal em gato muito suspeito: avaliar comorbidades não tireoidianas. Repetir dosagem em 2–4 semanas ou dosar T4 Livre por diálise + T4 Total juntos (AAFP, 2016).',
-        },
-        {
-          label: 'Pacote renal e pressórico obrigatório',
-          timing: 'Antes de prescrever',
-          detail:
-            'Dosar creatinina, ureia, urinálise (densidade) e aferir pressão arterial sistólica. Identificar estádio renal inicial para servir de baseline pós-tratamento (AAFP, 2016).',
-        },
-        {
-          label: 'Diagnósticos diferenciais e imagem',
-          detail:
-            'Excluir diabetes mellitus, linfoma gastrointestinal crônico, doença inflamatória intestinal e insuficiência pancreática exócrina (IPE). Ecocardiograma se cardiomiopatia suspeita (AAFP, 2016).',
-        },
-      ],
-    },
-    treatmentFlow: {
-      title: 'Plano de tratamento',
-      steps: [
-        {
-          label: 'Decisão da abordagem e comorbidades',
-          detail:
-            'Avaliar se o paciente é elegível para terapia definitiva (I-131, cirurgia) ou se necessita de estabilização prévia/longo prazo com metimazol (AAFP, 2016).',
-        },
-        {
-          label: 'Controle clínico com Metimazol',
-          dose: '1,25–2,5 mg/gato VO q12h ou gel transdérmico equivalente',
-          duration: 'Titular conforme T4 e tolerabilidade',
-          reassess: 'Hemograma, T4, bioquímica renal e PA a cada 2–3 semanas no início',
-          detail:
-            'Avaliar tolerabilidade gastrointestinal e hematológica; suspender se discrasias graves (AAFP, 2016; Plumb\'s, 10ª ed.).',
-        },
-        {
-          label: 'Acompanhamento de transição e rim',
-          detail:
-            'Repetir hemograma, T4 Total, bioquímica renal e pressão arterial a cada 2–3 semanas no início da terapia. Monitorar a elevação da creatinina — hipertireoidismo mascara DRC (AAFP, 2016).',
-        },
-        {
-          label: 'Terapia definitiva (I-131)',
-          detail:
-            'Se estável e sem DRC descompensada grave pós-metimazol: encaminhar para Iodo Radioativo (I-131). Paciente fica em isolamento por ~7–14 dias conforme normas de radioproteção (AAFP, 2016).',
-        },
-        {
-          label: 'Manejo Dietético Alternativo',
-          detail:
-            'Se tratamento médico ou radioterapia forem inviáveis: uso exclusivo e estrito de ração restrita em iodo (Hill\'s y/d). O gato não pode comer absolutamente mais nada (AAFP, 2016).',
-        },
-      ],
-    },
+    diagnosticFlow: { title: 'Diagn�stico', steps: [{ label: 'TT4', detail: 'Elevada + cl�nica confirma maioria (Bugbee et al., 2023).' }] },
+    treatmentFlow: { title: 'Tratamento', steps: [{ label: 'I-131 ou controle', detail: 'Curativo vs metimazol/dieta (Bugbee et al., 2023).' }] },
   },
   etiology: {
-    primaria:
-      'Mais de 98% dos gatos hipertireóideos apresentam hiperplasia adenomatosa multinodular benigna bilateral (70%) ou unilateral (30%). Carcinoma tireoidiano é raro (<2%). A autonomia celular resulta de bociógenos dietéticos/ambientais, flutuações de iodo e mutações somáticas no receptor de TSH.',
-    fatoresAmbientais: 'Substâncias em enlatados e retardadores de chama em poeira doméstica são associados hipoteticamente.',
-    maligna: 'Carcinoma tireoidiano invasivo — nódulos fixos, volumosos e metástases locais.',
+    definicao: 'Secre�?o aut�noma excessiva de T4/T3 por tecido nodular hiperfuncional (Carney et al., 2016).',
+    lesaoPredominante: 'Hiperplasia adenomatosa ou adenoma benigno; carcinoma ~1-3% (Bugbee et al., 2023).',
+    naoGraves: 'N?o � doen�a de Graves felina (Peterson et al., 2016).',
+    distribuicaoAnatomica: '62,9% bilateral, 31,7% unilateral, 3,8% ect�pico em s�rie de 2.096 gatos (Peterson et al., 2016).',
+    progressao: 'Antitireoidiano/dieta controlam horm�nio, n?o removem n�dulo (Peterson et al., 2016).',
   },
   epidemiology: {
-    especiePrincipal:
-      'Gato — afeta predominantemente felinos idosos (mediana de 13 anos; menos de 5% ocorrem em gatos com menos de 10 anos). Nenhuma predileção por sexo é descrita.',
-    notaFelinos:
-      'Gatos de raça pura como Siamês, Himalaio e Persa parecem apresentar uma menor incidência relativa da doença em comparação com gatos domésticos comuns sem raça definida (mestiços).',
-    contextoGeografico:
-      'Descrita globalmente como a endocrinopatia mais frequente na geriatria de felinos em áreas urbanas, correlacionada ao aumento da sobrevida dos gatos de companhia e ao uso de dietas comerciais formuladas.',
+    idade: 'Mediana ~12-14 anos (Carney et al., 2016).',
+    prevalencia: '~2-4% popula�?o geral; ~6-10% gatos >9 anos (Carney et al., 2016).',
+    caoNota: 'C?o: raro espont�neo; presumir carcinoma ou tireotoxicose ex�gena (Broome et al., 2015).',
   },
   pathogenesisTransmission: {
-    patogenese: [
-      'As células tireoidianas hiperplásicas produzem e secretam T3 e T4 de forma autônoma, sem responder à regulação por feedback negativo do eixo HPT (hipotálamo–hipófise–tireoide). O TSH endógeno permanece suprimido.',
-      'O excesso de hormônios tireoidianos circulantes aumenta a taxa metabólica basal de todos os tecidos corporais, levando ao catabolismo acelerado de proteínas e lipídios (perda de peso acentuada e perda de massa muscular, apesar de ingestão calórica exuberante).',
-      'Efeito cardiovascular: estimulação direta dos receptores adrenérgicos beta no miocárdio e aumento da sensibilidade a catecolaminas. Provoca taquicardia sinusal crônica severa, aumento do débito cardíaco, hipertrofia miocárdica concêntrica (cardiomiopatia tireotóxica) e hipertensão arterial sistêmica.',
-      'Efeito renal: aumento importante do fluxo sanguíneo renal e da taxa de filtração glomerular, reduzindo artificialmente os níveis plasmáticos de ureia e creatinina (mascarando a nefropatia em curso).',
-    ],
-    hiperFiguraFollicularCell: {
-      kind: 'clinicalFigure' as const,
-      src: '/consulta-vet/clinical-guides/hyperthyroidism-follicular-cell.png',
-      alt: 'Síntese e liberação de T3 e T4 na célula folicular',
-      caption:
-        'Fisiologia da célula folicular ilustrando as principais etapas de síntese e liberação de T3 e T4: (1) captura do iodeto; (2) oxidação do iodeto; (3) exocitose da tireoglobulina; (4) iodação da tireoglobulina; (5) junção das iodotirosinas; (6) endocitose da tireoglobulina; (7) hidrólise da tireoglobulina; (8) liberação de T3 e T4; (9) desiodação de MIT e DIT; (10) reciclagem do iodeto (Melchioretto, 2022).',
-    },
-    transmissao:
-      'Doença não infecciosa e não contagiosa; reflete puramente hiperplasia celular benigna autônoma de caráter multifatorial epigenético.',
+    eixoHPT: ['N�dulo aut�nomo -> T4/T3 elevados -> TSH suprimido (Carney et al., 2016).'],
+    mascaramentoDRC: 'TFG elevada + menor produ�?o de creatinina muscular -> DRC mascarada; unmasking ap�s tratamento (Geddes & Aguiar, 2022).',
   },
-  pathophysiology:
-    'Os hormônios tireoidianos (T3/T4) regulam a atividade metabólica celular. O excesso de hormônios provoca um estado hipermetabólico contínuo: aumento da produção de calor (intolerância ao calor, busca por locais frios), hipermotilidade gastrointestinal (má absorção, diarreia, vômito), excitabilidade do sistema nervoso central (hiperatividade, miados noturnos) e aumento do tônus simpático cardíaco (taquicardia, sopro, risco de insuficiência cardíaca de alto débito).',
+  pathophysiology: {
+    tabelaFrequenciaSinais: {
+      kind: 'clinicalTable' as const,
+      title: 'Sinais cl�nicos - frequ?ncia aproximada',
+      headers: ['Achado', 'Frequ?ncia'],
+      rows: [
+        ['Perda de peso', '~88-92%'],
+        ['Tireoide palp�vel', '~80%'],
+        ['Polifagia', '~49%'],
+        ['Forma ap�tica', '<20%'],
+      ],
+    },
+    hipertireoidismoApatico: 'Minor�a com hiporexia/letargia - n?o exclui diagn�stico (Carney et al., 2016).',
+    tabelaComparacaoTratamentos: {
+      kind: 'clinicalTable' as const,
+      title: 'Modalidades terap?uticas',
+      headers: ['Tratamento', 'Curativo?', 'Limita�?o'],
+      rows: [
+        ['I-131', 'Sim', 'Centro especializado'],
+        ['Metimazol', 'N?o', 'Vital�cio; efeitos adversos'],
+        ['Dieta y/d', 'N?o', 'Exclusividade absoluta'],
+        ['Tireoidectomia', 'Potencial', 'Paratireoides; ect�pico'],
+      ],
+    },
+  },
   clinicalSignsPathophysiology: [
     {
       system: 'general',
-      findings: [
-        {
-          finding: 'Perda de peso com polifagia voraz',
-          mechanism: 'Hipermetabolismo contínuo acelera catabolismo proteico e lipídico.',
-          clinicalMeaning: 'Tríade clássica em gato idoso.',
-          priority: 'common',
-        },
-        {
-          finding: 'Pelagem opaca e intolerância ao calor',
-          mechanism: 'Termogênese aumentada e autolimpeza reduzida.',
-          clinicalMeaning: 'Busca por pisos frios reforça suspeita.',
-          priority: 'common',
-        },
-      ],
+      findings: [{
+        finding: 'Perda de peso com polifagia ou forma ap�tica',
+        mechanism: 'Hipermetabolismo + catabolismo proteico.',
+        clinicalMeaning: 'Tr�ade cl�ssica; ap�tico n?o exclui.',
+        priority: 'common',
+      }],
     },
     {
-      system: 'cardiovascular',
-      findings: [
-        {
-          finding: 'Taquicardia persistente e sopro sist�lico',
-          mechanism: 'Circula��o hiperdin�mica e cardiomiopatia tireot�xica.',
-          clinicalMeaning: 'Hipertens�o sist�mica � frequente � medir PA.',
-          priority: 'common',
-        },
-      ],
-    },
-    {
-      system: 'gastrointestinal',
-      findings: [
-        {
-          finding: 'Vômitos, diarreia e poliúria/polidipsia',
-          mechanism: 'Hipermotilidade GI e aumento da perfusão renal.',
-          clinicalMeaning: 'Azotemia pode estar mascarada.',
-          priority: 'common',
-        },
-      ],
-    },
-    {
-      system: 'behavioral',
-      findings: [
-        {
-          finding: 'Hiperatividade, agressividade e miados noturnos',
-          mechanism: 'Excitabilidade do SNC por excesso de T3/T4.',
-          clinicalMeaning: 'Alteração comportamental pode preceder laboratório.',
-          priority: 'common',
-        },
-      ],
+      system: 'renal',
+      findings: [{
+        finding: 'Creatinina normal com DRC oculta',
+        mechanism: 'TFG elevada + sarcopenia.',
+        clinicalMeaning: 'Reavaliar ap�s eutireoidismo (Geddes & Aguiar, 2022).',
+        priority: 'common',
+      }],
     },
   ],
   diagnosis: {
-    cmeSuspeitaClinica:
-      'Gato idoso com emagrecimento rápido + apetite voraz + taquicardia = hipertireoidismo clássico. A palpação cuidadosa da tireoide (técnica de thyroid slip deslizando o polegar e indicador ao longo da traqueia cervical lateral) revela um ou dois lobos aumentados móveis (bócio) em ~85-90% dos gatos acometidos.',
-    hiperFiguraPalpacaoTireoide: {
-      kind: 'clinicalFigure' as const,
-      src: '/consulta-vet/clinical-guides/hyperthyroidism-palpation.png',
-      alt: 'Palpação da tireoide em felino',
-      caption:
-        'Tireoide palpável no exame físico de um felino: técnica de palpação cervical revelando bócio felino (Santos, 2021).',
-    },
-    cmeTecnicaNorsworthy:
-      'Técnica Norsworthy onde o examinador se locomove para atrás do paciente, posicionando a cabeça do gato para cima e girando-a 45º para a direita ou esquerda, afastando-se do lado a ser testado (para palpar o lobo direito da tireoide, vire a cabeça do gato para a esquerda). A ponta do dedo indicador ou médio do examinador deve ser posicionada no sulco formado entre a traqueia e o músculo esternotireóideo, logo abaixo da laringe, e então deve-se descer pelo sulco até a entrada torácica. Se o lobo da tireoide estiver aumentado, é possível sentir um "piscar" (thyroid slip) característico quando é passado o dedo sobre o pescoço (Miller; Randolph; Peterson, 2019).',
-    hiperFiguraNorsworthy: {
-      kind: 'clinicalFigure' as const,
-      src: '/consulta-vet/clinical-guides/hyperthyroidism-norsworthy.png',
-      alt: 'Demonstração da técnica de Norsworthy',
-      caption:
-        'Demonstração prática da técnica de Norsworthy para palpação da tireoide felina, mostrando o posicionamento das mãos e da cabeça do felino (Miller; Randolph; Peterson, 2019).',
-    },
-    aafpCategoriasTabela: {
+    diagnosticReasoning: 'TT4 + cl�nica na maioria; palpa�?o aumenta suspeita mas n?o confirma (Carney et al., 2016).',
+    tt4: 'Primeira linha; ~5% normais; usar RI do laborat�rio (Bugbee et al., 2023).',
+    ft4: 'Sens�vel, menos espec�fica - sempre com TT4 (Carney et al., 2016).',
+    tsh: 'Interpreta�?o depende do ensaio - Brassard et al., 2026 atualiza TSH mensur�vel.',
+    tabelaGruposAAHA: {
       kind: 'clinicalTable' as const,
-      headers: ['Categoria AAFP', 'Definição clínica e laboratorial', 'Conduta recomendada'],
+      title: 'Grupos AAHA 2023',
+      headers: ['Grupo', 'Conduta'],
       rows: [
-        [
-          '1. Hipertireoidismo Clássico',
-          'Sinais clínicos típicos + bócio palpável + T4 Total claramente elevado sérico.',
-          'Confirmado. Iniciar tratamento de escolha (médico, I-131, cirúrgico ou dietético).',
-        ],
-        [
-          '2. Hipertireoidismo Mascarado',
-          'Sinais clínicos + bócio palpável, mas T4 Total normal por "Euthyroid Sick Syndrome" (doença não tireoidiana concomitante).',
-          'Dosar T4 Livre por diálise. Se T4 Livre estiver elevado e comorbidade identificada, tratar a comorbidade e reavaliar T4.',
-        ],
-        [
-          '3. Subclínico / Precoce',
-          'Sinais clínicos sutis ou ausentes + bócio palpável + T4 Total normal-alto ou flutuante.',
-          'Não tratar imediatamente. Repetir exames em 1 a 3 meses para acompanhar a curva hormonal.',
-        ],
-        [
-          '4. Tumor / Bócio não funcional',
-          'Nódulo tireoidiano palpável (bócio), mas sem qualquer sinal clínico ou laboratorial de excesso hormonal (T4 normal).',
-          'Acompanhar clinicamente. Risco baixo de malignidade se estável; monitorar tamanho do nódulo.',
-        ],
+        ['1 Cl�ssico', 'TT4 elevada + sinais -> tratar'],
+        ['2 TT4 normal', 'Repetir TT4 + fT4 em 2-4 semanas'],
+        ['5 Comorbidades', 'Tratar hipertireoidismo E comorbidade'],
+        ['6 Triagem', 'TT4 repetidamente elevada -> tratar'],
       ],
     },
-    cmeEsfregacoSangue:
-      'Urinálise e Hemograma: o hemograma pode mostrar eritrocitose leve ou policitemia (estímulo hormonal direto da eritropoiese) e leucograma de estresse. Urinálise com densidade flutuante e proteinúria discreta.',
-    cmeSorologiaInterpretacao:
-      'Dosagem de T4 Total (IFA ou Quimioluminescência): teste de triagem inicial preferencial. Altamente sensível. Se elevado no gato sintomático, fecha o diagnóstico. Lembrar que doenças não tireoidianas severas (DRC, EII, linfoma) podem suprimir o T4 Total de um gato hipertireóideo de volta à faixa de referência normal-alta.',
-    cmePcrSangueMedula:
-      'Dosagem de T4 Livre por Diálise (fT4ED): alta sensibilidade. Indicado apenas quando o T4 Total estiver normal-alto, mas o quadro clínico for extremamente suspeito. Nunca usar fT4ED como triagem isolada, pois gatos velhos saudáveis podem apresentar falsos-positivos na diálise.',
-    hiperFiguraScintigraphy: {
-      kind: 'clinicalFigure' as const,
-      src: '/consulta-vet/clinical-guides/hyperthyroidism-scintigraphy.png',
-      alt: 'Padrões de cintilografia tireoidiana no hipertireoidismo felino',
-      caption:
-        'Cintilografia tireoidiana ilustrando os padrões do hipertireoidismo em felinos: (A) Hipertireoidismo unilateral; (B) Hipertireoidismo bilateral assimétrico; (C) Três nódulos (doença bilateral com terceiro nódulo ectópico da linha média no tórax); (D-E-F) Doença multifocal (Peterson; Broome, 2015).',
-    },
-    hiperFiguraScintigraphyEctopic: {
-      kind: 'clinicalFigure' as const,
-      src: '/consulta-vet/clinical-guides/hyperthyroidism-ectopic.png',
-      alt: 'Cintilografia de hiperplasia tireoidiana vs tecido ectópico',
-      caption:
-        'Imagens de exame cintilográfico dos lobos tireoidianos em felinos, consistentes com hiperplasia tireoidiana bilateral simétrica (A) e tecido tireoidiano ectópico (B) (Abend, 2023).',
-    },
+    planoDiagnostico: [
+      { stepNumber: 1, title: 'TT4 total', purpose: 'Triagem', description: 'Exame inicial (Bugbee et al., 2023).', interpretation: 'Alta + cl�nica confirma.', limitations: 'Normal n?o exclui.' },
+      { stepNumber: 2, title: 'Baseline renal/PA', purpose: 'Progn�stico', description: 'Creatinina, urin�lise, PAS (Geddes & Aguiar, 2022).', interpretation: 'DRC pode estar mascarada.', limitations: 'SDMA limitado.' },
+    ],
   },
   treatment: {
-    ordemDePrioridade: [
-      '1) Confirmar a estabilidade renal e cardíaca inicial do gato.',
-      '2) Iniciar tratamento médico reversível com Metimazol para avaliar o comportamento da função renal sob estado eutireóideo.',
-      '3) Tratar taquicardia severa e arritmias concomitantes com betabloqueadores (atenolol) quando indicado clinicamente.',
-      '4) Monitorar bioquímicos (creatinina, ureia, K⁺) e hemograma a cada 2–3 semanas no início da administração de metimazol.',
-      '5) Se o rim tolerar a normalização do T4 (creatinina estável ou levemente azotêmica controlável), planejar terapia definitiva com I-131 ou cirurgia.',
-      '6) Se houver DRC grave descompensada (creatinina disparando > 3.0–3.5 mg/dL), reduzir a dose de metimazol para permitir um leve hipertiroidismo subclínico em favor da perfusão renal.',
-    ],
-    monitoramento: [
-      'T4 Total aos 14, 30 e 90 dias: verificar a adequação da dose de metimazol. Meta: manter T4 no terço inferior do intervalo de referência (ex: 1,0 a 2,5 µg/dL).',
-      'Bioquímica Renal (Creatinina e Ureia): monitorar rigorosamente o desmascaramento da DRC. A azotemia pós-eutireoidismo afeta ~20-30% dos gatos.',
-      'Hemograma Completo: metimazol pode induzir discrasias sanguíneas (neutropenia grave, trombocitopenia, anemia hemolítica). Suspender se houver citopenias sérias.',
-      'Enzimas Hepáticas (ALT/ALP): monitorar hepatotoxicidade medicamentosa induzida por metimazol.',
-    ],
-    cmeDoxiciclinaPrimeiraLinha:
-      'Terapia Clínica com Metimazol (Tapazole): dose inicial recomendada de 1,25 mg a 2,5 mg por gato via oral a cada 12 horas (BID), ou 2,5 mg uma vez ao dia (SID). A administração BID é mais eficaz em reduzir o T4 rapidamente e apresenta menor incidência de reações adversas sistêmicas. Em gatos difíceis de medicar, usar gel transdérmico de Metimazol na face interna da orelha (mesmas doses; absorção ligeiramente mais lenta, exige tosa local suave).',
-    cmeTabelaAntimicrobianos: {
+    objetivos: ['Eutireoidismo sem hipotireoidismo iatrog?nico; manejar DRC revelada (Geddes & Aguiar, 2022).'],
+    iodoRadioativo:
+      'I-131 curativo preferencial >95%. Dose individualizada - mediana 1,90 mCi (0,95-10,6); N?O dose fixa universal (Peterson & Rishniw, 2021).',
+    metimazol:
+      'Inibe TPO; n?o destr�i n�dulo. Convencional: 1,25-2,5 mg/gato q12h. AAHA 2023: 1,25-2,5 mg q24h 1? semana -> 2,5-5 mg q12-24h; meta TT4 ~1,0-2,5 ?g/dL. Por gato, n?o mg/kg (Bugbee et al., 2023; Plumb\'s, 2023).',
+    tabelaMetimazol: {
       kind: 'clinicalTable' as const,
-      headers: ['Abordagem Terapêutica', 'Protocolo / Posologia comum', 'Vantagens, Limitações e Alertas'],
+      title: 'Metimazol',
+      headers: ['Aspecto', 'Recomenda�?o'],
       rows: [
-        [
-          'Metimazol (Oral)',
-          '1,25–2,5 mg/gato VO q12h (BID). Iniciar com dose baixa e titular.',
-          'Barato, reversível, fácil ajuste. Efeitos adversos: vômitos, prurido facial intenso, hepatotoxicidade, neutropenia.',
-        ],
-        [
-          'Metimazol (Transdérmico Pluronic Lecithin Organogel)',
-          '2,5 mg/gato transdérmico na pinna interna da orelha q12h.',
-          'Excelente para gatos ariscos; menor incidência de vômitos. Pode demorar mais semanas para atingir euthyroid.',
-        ],
-        [
-          'Iodo Radioativo (I-131)',
-          'Dose calculada de iodo ativo injetável SC em ambiente especializado autorizado.',
-          'Definitivo, padrão ouro. Sem anestesia. Destrói metástases ectópicas. Exige isolamento hospitalar e custo inicial alto.',
-        ],
-        [
-          'Tireoidectomia Cirúrgica',
-          'Remoção cirúrgica bilateral ou unilateral sob anestesia.',
-          'Definitiva. Risco de lesão das paratireoides (hipocalemia / hipocalcemia severa tetânica pós-operatória).',
-        ],
-        [
-          'Atenolol (Betabloqueador)',
-          '6,25–12,5 mg por gato VO a cada 12 ou 24 horas.',
-          'Terapia de suporte para cardiopatia tireotóxica, hipertensão e taquicardia extrema (>240 bpm) até estabilização com metimazol.',
-        ],
-        [
-          'Dieta de Restrição de Iodo (Hill\'s y/d)',
-          'Uso exclusivo e contínuo de alimento seco/úmido com <0.2 ppm de iodo.',
-          'Eficaz se estrita. Inviável se o gato tiver acesso à rua ou comer petiscos. Não impede a progressão física do bócio.',
-        ],
+        ['Dose convencional', '1,25-2,5 mg/gato q12h'],
+        ['AAHA conservador', '1,25-2,5 mg q24h semana 1 -> titular'],
+        ['Monitoramento', 'TT4 + CBC + bioqu�mica 2-4 semanas'],
       ],
     },
-    cmeSuporteTransfusaoFluidos:
-      'Prevenção de Hipocalcemia Pós-Cirúrgica: após tireoidectomia bilateral, monitorar o cálcio ionizado sérico diariamente por ~7 dias. Se houver tetania, tremores ou hipocalcemia acentuada, iniciar Gluconato de Cálcio IV seguido de Carbonato de Cálcio oral e Vitamina D (Calcitriol) de manutenção.',
-    cmeMedulaDeprimida:
-      'Efeitos Colaterais Graves do Metimazol: prurido facial com escoriações por automutilação e necrose cutânea exigem suspensão permanente do fármaco. Hepatotoxicidade severa (icterícia, ALT elevada) e discrasias sanguíneas graves também inviabilizam o uso continuado.',
+    carbimazol: 'Pr�-f�rmaco do metimazol - n?o usar ap�s rea�?o grave ao metimazol (Plumb\'s, 2023).',
+    dietaIodo: 'y/d exclusiva; falha poss�vel; n?o substitui dieta renal em DRC azot?mica (Geddes & Aguiar, 2022).',
+    tireoidectomia: 'Potencialmente curativa; cintilografia pr�via ideal; monitorar c�lcio p�s-bilateral (Carney et al., 2016).',
+    betabloqueadores: 'Sintom�tico apenas - n?o reduz T4 (Merck Veterinary Manual, 2024).',
+    drcConcomitante: 'Nunca manter hipertireoidismo para proteger creatinina - tratar e individualizar (Geddes & Aguiar, 2022).',
+    monitoramento: ['Reavaliar creatinina e PAS ap�s eutireoidismo (Stammeleer et al., 2024).'],
   },
-  prevention:
-    'Não há vacina ou prevenção específica para a hiperplasia adenomatosa espontânea. Recomenda-se realizar palpação cervical minuciosa da tireoide em todos os gatos com mais de 8 anos em consultas de rotina. Evitar a exposição crônica a bociogênicos domésticos conhecidos e manter dietas de alta qualidade nutricional balanceada.',
+  prevention: {
+    errosComuns: [
+      'TT4 normal exclui hipertireoidismo',
+      'fT4 alta confirma sozinha',
+      'Manter T4 alta para proteger o rim',
+      'Metimazol cura a doen�a',
+      'I-131 dose fixa para todos',
+    ],
+    redFlags: ['Cegueira aguda - medir PAS', 'Dispneia/ICC', 'Tempestade tireot�xica'],
+  },
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['benazepril'],
+  relatedDiseaseSlugs: ['doenca-renal-cronica-caes-gatos', 'hipertensao-arterial-sistemica', 'diabetes-mellitus-felina', 'cardiomiopatia-hipertrofica', 'hipotireoidismo-adquirido-caes-gatos'],
+  relatedMedicationSlugs: ['benazepril', 'metimazol', 'atenolol', 'propranolol'],
   references: [
-    {
-      id: 'ref-aafp-hyperthyroidism-2016',
-      citationText:
-        'Carney HC et al. 2016 AAFP Guidelines for the Management of Feline Hyperthyroidism. Journal of Feline Medicine and Surgery, 2016.',
-      sourceType: 'Diretriz AAFP',
-      url: 'https://doi.org/10.1177/1098612X15627226',
-      notes: 'Diretriz central sobre as 6 categorias de pacientes, tratamentos e manejo renal.',
-      evidenceLevel: 'A',
-    },
-    {
-      id: 'ref-nelson-couto-thyroid-2020',
-      citationText:
-        'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020. Cap. 48 — Disorders of the Thyroid Gland.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'Fisiopatologia, bócio, bociogênicos, metimazol transdérmico, cardiomiopatia tireotóxica.',
-      evidenceLevel: 'Consenso clínico',
-    },
-    {
-      id: 'ref-plumb-methimazole-2023',
-      citationText:
-        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook, 10th ed., 2023 — Methimazole.',
-      sourceType: 'Formulário',
-      url: null,
-      notes: 'Posologia oral/transdérmica e monitoração hepática/hematológica.',
-      evidenceLevel: 'A — referência prática',
-    },
+    { id: 'ref-ht-aaha-2023', citationText: 'Bugbee A, et al. 2023 AAHA Selected Endocrinopathies Guidelines. JAAHA. 2023;59:113-135.', sourceType: 'Diretriz AAHA', url: 'https://doi.org/10.5326/JAAHA-MS-7297', evidenceLevel: 'A' },
+    { id: 'ref-ht-aafp-2016', citationText: 'Carney HC, et al. 2016 AAFP Guidelines for Feline Hyperthyroidism. J Feline Med Surg. 2016;18:400-416.', sourceType: 'Diretriz AAFP', url: 'https://doi.org/10.1177/1098612X15627226', evidenceLevel: 'A' },
+    { id: 'ref-ht-geddes-2022', citationText: 'Geddes R, Aguiar J. Hyperthyroidism and CKD. J Feline Med Surg. 2022;24:641-650.', sourceType: 'Revis?o', url: 'https://doi.org/10.1177/1098612X221090390', evidenceLevel: 'A' },
+    { id: 'ref-ht-stammeleer-2024', citationText: 'Stammeleer L, et al. Blood pressure in hyperthyroid cats. J Vet Intern Med. 2024;38:1359-1369.', sourceType: 'Estudo', url: 'https://doi.org/10.1111/jvim.17032', evidenceLevel: 'B' },
+    { id: 'ref-ht-brassard-2026', citationText: 'Brassard C, et al. TSH in hyperthyroid cats. J Feline Med Surg. 2026;28(1).', sourceType: 'Estudo', url: 'https://doi.org/10.1177/1098612X251398915', evidenceLevel: 'B' },
+    { id: 'ref-ht-peterson-2016', citationText: 'Peterson ME, et al. Thyroid pathology vs duration. J Feline Med Surg. 2016;18:92-103.', sourceType: 'Estudo', evidenceLevel: 'B' },
+    { id: 'ref-ht-peterson-i131-2021', citationText: 'Peterson ME, Rishniw M. Individualized I-131 dosing. J Vet Intern Med. 2021;35:2140-2151.', sourceType: 'Estudo', url: 'https://doi.org/10.1111/jvim.16228', evidenceLevel: 'B' },
+    { id: 'ref-ht-stammeleer-scint-2025', citationText: 'Stammeleer L, et al. Thyroid scintigraphy in 234 cats. Animals. 2025;15:1495.', sourceType: 'Estudo', url: 'https://doi.org/10.3390/ani15101495', evidenceLevel: 'B' },
+    { id: 'ref-ht-peterson-tsh-2015', citationText: 'Peterson ME, et al. TSH as diagnostic test. J Vet Intern Med. 2015;29:1327-1334.', sourceType: 'Estudo', evidenceLevel: 'B' },
+    { id: 'ref-ht-nelson-2020', citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. 2020.', sourceType: 'Livro-texto', evidenceLevel: 'Consenso' },
+    { id: 'ref-ht-plumb-2023', citationText: 'Plumb\'s Veterinary Drug Handbook. 10th ed. 2023.', sourceType: 'Formul�rio', evidenceLevel: 'A' },
+    { id: 'ref-ht-broome-2015', citationText: 'Broome MR, et al. Exogenous thyrotoxicosis in dogs. JAVMA. 2015;246:105-111.', sourceType: 'S�rie', evidenceLevel: 'C' },
   ],
   isPublished: true,
   source: 'seed',

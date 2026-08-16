@@ -456,12 +456,12 @@ const TABLES_BY_SLUG: Record<string, ConsensusTableSet> = {
         title: 'Estratificação da proteinúria glomerular',
         columns: ['Etapa', 'Avaliação', 'Decisão'],
         rows: [
-          ['Confirmar', 'UPC persistente em amostra adequada', 'Não classificar por medição isolada'],
+          ['Confirmar', 'RPCU persistente em amostra adequada', 'Não classificar por medição isolada'],
           ['Localizar', 'Sedimento e exclusão pré/pós-renal', 'Atribuir origem renal somente após exclusões'],
           ['Buscar causa', 'Infecção, inflamação, neoplasia e imunocomplexos', 'Tratar doença de base'],
           ['Graduar risco', 'Albumina, PA, azotemia, edema e trombose', 'Define urgência e suporte'],
           ['Biopsiar', 'Quando histologia mudar terapia/prognóstico', 'Avaliar sangramento e processamento especializado'],
-          ['Monitorar', 'UPC, albumina, função renal e PA', 'Medir resposta e progressão'],
+          ['Monitorar', 'RPCU, albumina, função renal e PA', 'Medir resposta e progressão'],
         ],
       },
     ],
@@ -472,7 +472,7 @@ const TABLES_BY_SLUG: Record<string, ConsensusTableSet> = {
         title: 'Plano de acompanhamento da DRC felina',
         columns: ['Domínio', 'O que acompanhar', 'Aplicação'],
         rows: [
-          ['Estágio', 'Creatinina/SDMA, UPC e PA', 'Usar versão IRIS vigente'],
+          ['Estágio', 'Creatinina/SDMA, RPCU e PA', 'Usar versão IRIS vigente'],
           ['Nutrição', 'Ingestão, peso e massa muscular', 'Transição renal sem provocar anorexia'],
           ['Hidratação', 'Água, alimento úmido e estado volêmico', 'Fluido SC não é automático'],
           ['Mineral/eletrólitos', 'Fósforo, potássio e bicarbonato', 'Tratar conforme estágio e exame'],
@@ -505,9 +505,9 @@ const TABLES_BY_SLUG: Record<string, ConsensusTableSet> = {
         columns: ['Origem', 'Pistas', 'Próximo passo'],
         rows: [
           ['Pré-renal', 'Proteínas circulantes anormais/excesso filtrado', 'Investigar doença sistêmica'],
-          ['Renal glomerular', 'UPC persistente, sedimento inativo; magnitude variável', 'Quantificar, graduar risco e investigar causa'],
+          ['Renal glomerular', 'RPCU persistente, sedimento inativo; magnitude variável', 'Quantificar, graduar risco e investigar causa'],
           ['Renal tubular', 'Perda de reabsorção tubular, geralmente menor magnitude', 'Avaliar tubulopatia e função renal'],
-          ['Pós-renal', 'Inflamação, hemorragia ou contaminação urinária', 'Resolver/identificar trato urinário antes de interpretar UPC'],
+          ['Pós-renal', 'Inflamação, hemorragia ou contaminação urinária', 'Resolver/identificar trato urinário antes de interpretar RPCU'],
           ['Transitória/funcional', 'Febre, exercício ou evento agudo', 'Confirmar persistência'],
         ],
       },
@@ -549,10 +549,10 @@ const TABLES_BY_SLUG: Record<string, ConsensusTableSet> = {
         rows: [
           ['Confirmação', 'Clínica, epidemiologia e teste específico', 'Evita tratar exposição isolada como doença'],
           ['Gravidade sistêmica', 'Hemograma, albumina/proteínas, fígado e olhos', 'Define suporte e prognóstico'],
-          ['Rim', 'Creatinina/SDMA, urinálise, UPC e PA', 'Modifica estágio, protocolo e prognóstico'],
+          ['Rim', 'Creatinina/SDMA, urinálise, RPCU e PA', 'Modifica estágio, protocolo e prognóstico'],
           ['Controle parasitário', 'Leishmanicida + leishmaniostático conforme caso', 'Reduz sinais/carga; não garante cura'],
           ['Prevenção', 'Repelente/coleira e ambiente', 'Reduz exposição vetorial'],
-          ['Seguimento', 'Clínica, rim, fígado, proteínas, UPC e urina', 'Detecta resposta, toxicidade e recidiva'],
+          ['Seguimento', 'Clínica, rim, fígado, proteínas, RPCU e urina', 'Detecta resposta, toxicidade e recidiva'],
         ],
       },
       {

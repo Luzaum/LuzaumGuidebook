@@ -24,6 +24,11 @@ export function EditorialClinicalTableBlock({
         className
       )}
     >
+      {table.caption ? (
+        <p className="border-b border-border/55 bg-muted/[0.12] px-4 py-2.5 text-sm font-semibold text-foreground">
+          {table.caption}
+        </p>
+      ) : null}
       <table className="w-full min-w-[min(100%,48rem)] border-collapse text-left text-[13px] leading-snug md:text-[14px] md:leading-relaxed">
         <thead>
           <tr className={cn('border-b border-border/80', headerTintClass)}>

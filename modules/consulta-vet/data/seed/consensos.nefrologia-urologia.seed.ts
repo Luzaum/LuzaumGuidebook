@@ -13,7 +13,7 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     year: 2026,
     species: 'both',
     category: 'nefrologia-urologia',
-    tags: ['LRA', 'AKI', 'Graduação', 'Creatinina', 'Diurese', 'Terapia renal substitutiva'],
+    tags: ['LRA', 'Lesão Renal Aguda', 'Graduação', 'Creatinina', 'Diurese', 'Terapia renal substitutiva'],
     pdfUrl: 'https://www.iris-kidney.com/iris-guidelines-1',
     pdfFileName: 'iris-lra-2026',
     storagePath: 'external/iris-lra-2026',
@@ -168,7 +168,7 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     year: 2013,
     species: 'dog',
     category: 'nefrologia-urologia',
-    tags: ['Glomerulopatia', 'Proteinúria', 'UPC', 'Biópsia renal', 'Trombose'],
+    tags: ['Glomerulopatia', 'Proteinúria', 'RPCU', 'Biópsia renal', 'Trombose'],
     pdfUrl: 'https://academic.oup.com/jvim/issue/27/Supplement_S1',
     pdfFileName: 'iris-doenca-glomerular-canina-2013',
     storagePath: 'external/iris-doenca-glomerular-canina-2013',
@@ -177,9 +177,9 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     articleSummaryRichText:
       '<p>A série estrutura a investigação da proteinúria persistente, a exclusão de causas pré e pós-renais, a busca de doenças sistêmicas, a indicação de biópsia e o tratamento padrão. Embora complementar, permanece uma referência organizada para glomerulopatias caninas e deve ser integrada às diretrizes IRIS atuais.</p>',
     keyPointsText:
-      'DIAGNÓSTICO\n- Confirmar proteinúria persistente em amostras adequadas e interpretar UPC junto ao sedimento urinário.\n- Excluir hemorragia/inflamação do trato urinário e causas funcionais antes de atribuir origem glomerular.\n- Investigar infecção, inflamação, neoplasia e outras doenças capazes de formar imunocomplexos.\n- Biópsia renal pode definir padrão e prognóstico quando o resultado mudar tratamento; exige avaliação de sangramento e processamento especializado.\n- Hipoalbuminemia, hipertensão, azotemia, edema/efusão e risco trombótico aumentam gravidade.',
+      'DIAGNÓSTICO\n- Confirmar proteinúria persistente em amostras adequadas e interpretar RPCU junto ao sedimento urinário.\n- Excluir hemorragia/inflamação do trato urinário e causas funcionais antes de atribuir origem glomerular.\n- Investigar infecção, inflamação, neoplasia e outras doenças capazes de formar imunocomplexos.\n- Biópsia renal pode definir padrão e prognóstico quando o resultado mudar tratamento; exige avaliação de sangramento e processamento especializado.\n- Hipoalbuminemia, hipertensão, azotemia, edema/efusão e risco trombótico aumentam gravidade.',
     practicalApplicationText:
-      'FLUXO DE ATENDIMENTO\n1. Repetir urinálise e UPC e obter cultura quando indicada.\n2. Medir pressão arterial, creatinina/SDMA, albumina, colesterol e procurar doença sistêmica.\n3. Instituir bloqueio do sistema renina-angiotensina conforme diretrizes atuais, dieta/controle de sódio e manejo da hipertensão.\n4. Considerar tromboprofilaxia em síndrome nefrótica ou risco alto, ponderando sangramento.\n5. Reservar imunossupressão para contextos sustentados por diagnóstico, padrão histológico ou forte evidência; monitorar UPC, albumina, função renal e pressão.',
+      'FLUXO DE ATENDIMENTO\n1. Repetir urinálise e RPCU e obter cultura quando indicada.\n2. Medir pressão arterial, creatinina/SDMA, albumina, colesterol e procurar doença sistêmica.\n3. Instituir bloqueio do sistema renina-angiotensina conforme diretrizes atuais, dieta/controle de sódio e manejo da hipertensão.\n4. Considerar tromboprofilaxia em síndrome nefrótica ou risco alto, ponderando sangramento.\n5. Reservar imunossupressão para contextos sustentados por diagnóstico, padrão histológico ou forte evidência; monitorar RPCU, albumina, função renal e pressão.',
     appNotesText:
       `STATUS: COMPLEMENTAR — série fundadora; integrar às recomendações IRIS 2026 e à evidência terapêutica mais recente.\n\nProteinúria não equivale automaticamente a glomerulonefrite imunomediada. Imunossupressão sem investigação etiológica e avaliação de risco pode causar dano.\n\n${CONSENSUS_DISCLAIMER}`,
     references: [
@@ -225,9 +225,9 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     articleSummaryRichText:
       '<p>A diretriz traduz o estadiamento renal em cuidados centrados no gato, com confirmação da cronicidade, dieta renal, hidratação, controle de fósforo, pressão e proteinúria, além de manejo de náusea, inapetência, hipocalemia, anemia e qualidade de vida. Hoje deve ser usada em complemento ao IRIS 2026.</p>',
     keyPointsText:
-      'PONTOS PRÁTICOS\n- Confirmar cronicidade e estabilidade antes de estadiar; ultrassom, densidade urinária e exames anteriores ajudam.\n- Dieta renal é uma das intervenções com melhor suporte para gatos com DRC azotêmica, mas a transição deve preservar ingestão calórica.\n- Aumentar acesso à água e alimento úmido; fluidos subcutâneos não são automáticos para todo paciente.\n- Monitorar fósforo, potássio, bicarbonato, pressão, UPC, hematócrito, peso e massa muscular.\n- Náusea, constipação, dor, doença dentária e comorbidades devem ser tratadas para manter ingestão e bem-estar.',
+      'PONTOS PRÁTICOS\n- Confirmar cronicidade e estabilidade antes de estadiar; ultrassom, densidade urinária e exames anteriores ajudam.\n- Dieta renal é uma das intervenções com melhor suporte para gatos com DRC azotêmica, mas a transição deve preservar ingestão calórica.\n- Aumentar acesso à água e alimento úmido; fluidos subcutâneos não são automáticos para todo paciente.\n- Monitorar fósforo, potássio, bicarbonato, pressão, RPCU, hematócrito, peso e massa muscular.\n- Náusea, constipação, dor, doença dentária e comorbidades devem ser tratadas para manter ingestão e bem-estar.',
     practicalApplicationText:
-      'FLUXO DE ACOMPANHAMENTO\n1. Estadiar pela versão IRIS vigente e registrar UPC e pressão.\n2. Definir metas de fósforo e plano dietético sem transição abrupta em gato inapetente.\n3. Avaliar hidratação e ambiente doméstico; distribuir água, fontes e alimento úmido conforme preferência.\n4. Tratar complicações individualmente e acompanhar peso, escore muscular, apetite, vômito, fezes e atividade.\n5. Ajustar frequência de retorno à estabilidade e ao estágio; discutir antecipadamente qualidade de vida e sinais de descompensação.',
+      'FLUXO DE ACOMPANHAMENTO\n1. Estadiar pela versão IRIS vigente e registrar RPCU e pressão.\n2. Definir metas de fósforo e plano dietético sem transição abrupta em gato inapetente.\n3. Avaliar hidratação e ambiente doméstico; distribuir água, fontes e alimento úmido conforme preferência.\n4. Tratar complicações individualmente e acompanhar peso, escore muscular, apetite, vômito, fezes e atividade.\n5. Ajustar frequência de retorno à estabilidade e ao estágio; discutir antecipadamente qualidade de vida e sinais de descompensação.',
     appNotesText:
       `STATUS: COMPLEMENTAR — excelente orientação felina prática; usar o estadiamento e as metas IRIS 2026 como referência atual.\n\nEvitar restrição alimentar que leve à anorexia. Em gatos frágeis, ingestão calórica e transição tolerável têm prioridade sobre adesão imediata perfeita.\n\n${CONSENSUS_DISCLAIMER}`,
     references: [
@@ -294,16 +294,15 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     year: 2005,
     species: 'both',
     category: 'nefrologia-urologia',
-    tags: ['Proteinúria', 'UPC', 'Glomerular', 'Histórico', 'Monitorização'],
+    tags: ['Proteinúria', 'RPCU', 'Glomerular', 'Histórico', 'Monitorização'],
     pdfUrl: 'https://pubmed.ncbi.nlm.nih.gov/15954557/',
     pdfFileName: 'acvim-proteinuria-caes-gatos-2005',
     storagePath: 'external/acvim-proteinuria-caes-gatos-2005',
-    summary:
-      'Consenso histórico ACVIM sobre detecção, confirmação, localização e monitorização da proteinúria em cães e gatos.',
+    summary: 'Consenso ACVIM 2005 sobre abordagem, localização e estadiamento da proteinúria em cães e gatos.',
     articleSummaryRichText:
       '<p>Documento fundador que consolidou o uso da relação proteína:creatinina urinária e a distinção entre proteinúria pré-renal, renal e pós-renal. Mantém valor histórico e conceitual, mas limiares e tratamento devem seguir IRIS e consensos mais recentes.</p>',
     keyPointsText:
-      'CONCEITOS FUNDADORES\n- Confirmar persistência antes de rotular proteinúria renal crônica.\n- Interpretar UPC somente com sedimento, método de coleta e contexto clínico.\n- Excluir causas pré-renais e pós-renais; sedimento ativo pode invalidar a atribuição renal.\n- Magnitude e tendência da UPC ajudam no prognóstico e na avaliação de resposta.\n- Proteinúria persistente pode causar progressão renal e merece investigação mesmo sem azotemia.',
+      'CONCEITOS FUNDADORES\n- Confirmar persistência antes de rotular proteinúria renal crônica.\n- Interpretar RPCU somente com sedimento, método de coleta e contexto clínico.\n- Excluir causas pré-renais e pós-renais; sedimento ativo pode invalidar a atribuição renal.\n- Magnitude e tendência da RPCU ajudam no prognóstico e na avaliação de resposta.\n- Proteinúria persistente pode causar progressão renal e merece investigação mesmo sem azotemia.',
     practicalApplicationText:
       'Usar o documento para compreender o raciocínio diagnóstico e a evolução da nefrologia veterinária. Na prática atual, confirmar a proteinúria, classificar o paciente pela versão IRIS vigente, investigar causas sistêmicas e seguir recomendações contemporâneas para bloqueio do sistema renina-angiotensina, pressão, dieta e monitorização.',
     appNotesText:

@@ -321,7 +321,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
   },
   relatedConsensusSlugs: [],
   relatedDiseaseSlugs: ['hipertensao-arterial-sistemica-caes-gatos', 'hipertireoidismo-felino'],
-  relatedMedicationSlugs: ['pimobendan', 'benazepril'],
+  relatedMedicationSlugs: ['pimobendan', 'benazepril', 'atenolol'],
   references: [
     {
       id: 'ref-nelson-couto-hcm',

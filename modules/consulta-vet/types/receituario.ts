@@ -77,9 +77,13 @@ export interface ClinicalMedicationDefinition {
 export interface ClinicalMedicationOverride {
   editorialMedicationId?: string | null;
   commercialProductId?: string | null;
+  /** Concentração escolhida no receituário quando o produto tem múltiplas potências. */
+  commercialPotencyMg?: number | null;
   presentationId?: string | null;
   doseId?: string | null;
   selectedDoseValue?: number | null;
+  /** Quando true, a receita usa texto de manipulação baseado na dose calculada. */
+  useCompounding?: boolean;
 }
 
 export interface MagistralFormulaComponent {
@@ -226,4 +230,11 @@ export interface PrescriptionMedicationSnapshot {
   doseUnit: string;
   selectedDose: number;
   precautions: PrescriptionPrecaution[];
+  rawBlockText?: string;
+  frequency?: string;
+  duration?: string;
+  route?: string;
+  manualInstruction?: string;
+  manualPresentation?: string;
+  manualAdditionalInstructions?: string;
 }

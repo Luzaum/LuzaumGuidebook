@@ -41,9 +41,14 @@ export interface DiseaseRecord extends ContentFlag {
   id: string;
   slug: string;
   title: string;
+  /** Subtítulo editorial exibido abaixo do título na ficha. */
+  subtitle?: string;
   synonyms: string[];
   species: VetSpecies[];
+  /** Especialidade principal (filtro legado e ordenação). */
   category: string;
+  /** Especialidades adicionais — ex.: giardíase em gastroenterologia + infectologia. */
+  categories?: string[];
   tags: string[];
   quickSummary: string;
   /** Versão rica do resumo (fluxogramas, grifos, faixas de dose). Se ausente, usa só `quickSummary`. */

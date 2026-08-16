@@ -120,7 +120,7 @@ export const mastiteRecord: DiseaseRecord = {
   },
   etiology: {
     agentes:
-      'Coliformes, Staphylococcus spp. e Streptococcus spp. são os grupos mais associados à mastite em cadelas e gatas. Escherichia coli pode produzir quadro endotoxêmico fulminante; Staphylococcus e Streptococcus frequentemente entram pela pele ou por tetos lesionados.',
+      'Coliformes, *Staphylococcus* spp. e *Streptococcus* spp. são os grupos mais associados à mastite em cadelas e gatas. *Escherichia coli* pode produzir quadro endotoxêmico fulminante; *Staphylococcus* e *Streptococcus* frequentemente entram pela pele ou por tetos lesionados.',
     vias: [
       'Ascendente: migração pelo canal do teto a partir da pele e caixa de parto.',
       'Traumática: unhas/dentes de neonatos e fissuras rompem a barreira cutânea.',
@@ -128,7 +128,7 @@ export const mastiteRecord: DiseaseRecord = {
       'Estase: teto invertido/imperfurado, ninhada pequena, perda de filhotes ou mamada ineficaz retêm leite e favorecem inflamação.',
     ],
     culturaNormal:
-      'Svensson et al. (2023) cultivaram 210 amostras de leite de 11 cadelas clinicamente saudáveis e encontraram crescimento bacteriano em 86%, incluindo Staphylococcus pseudintermedius e Streptococcus. Portanto, isolamento sem inflamação, citologia compatível ou crescimento significativo não autoriza diagnóstico nem antimicrobiano.',
+      'Svensson et al. (2023) cultivaram 210 amostras de leite de 11 cadelas clinicamente saudáveis e encontraram crescimento bacteriano em 86%, incluindo *Staphylococcus pseudintermedius* e *Streptococcus*. Portanto, isolamento sem inflamação, citologia compatível ou crescimento significativo não autoriza diagnóstico nem antimicrobiano.',
   },
   epidemiology: {
     periodo:

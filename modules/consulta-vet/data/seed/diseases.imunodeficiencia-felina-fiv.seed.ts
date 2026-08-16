@@ -65,7 +65,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       {
         title: 'Tratamento e manejo',
         body:
-          'Assintomático: indoor, controle de brigas, dieta completa, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro. Sintomático: tratar infecções, gengivoestomatite (extracção dentária extensa), neoplasias. AZT 5–10 mg/kg q12h em casos selecionados com monitoramento hematológico (Westman et al., 2022).',
+          'Assintomático: indoor, controle de brigas, dieta completa, consulta e hemograma ≥6/6 meses — sem antiviral rotineiro. Sintomático: tratar infecções, gengivoestomatite (extração dentária extensa), neoplasias. AZT 5–10 mg/kg q12h em casos selecionados com monitoramento hematológico (Westman et al., 2022).',
         highlights: ['monitoramento', 'gengivoestomatite', 'AZT'],
       },
     ],
@@ -102,24 +102,24 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       title: 'Plano terapêutico',
       steps: [
         {
-          label: 'Assintomático confirmado',
+          label: '7.1 Tratamento de suporte',
           detail:
-            'Indoor ou acesso controlado; evitar brigas; castração; dieta completa; controle parasitário; consulta + hemograma ≥6/6 meses — sem antiviral rotineiro (Little et al., 2020; Westman et al., 2022).',
+            'Alojamento indoor ou recinto seguro; castração; dieta de alta digestibilidade (evitar crus); controle parasitário; vacinas inativadas; consulta + hemograma ≥6/6 meses — sem antiviral rotineiro (Little et al., 2020; Westman et al., 2022).',
         },
         {
-          label: 'Doença associada',
+          label: '7.2 Tratamento de doenças associadas ao vírus da FIV',
           detail:
-            'Tratar infecções bacterianas, anemia, neoplasia e gengivoestomatite individualmente — não atribuir automaticamente todo sinal ao FIV (Hosie et al., ABCD 2009).',
+            'Tratar infecções bacterianas, anemia, neoplasia e gengivoestomatite (extrações + analgesia) individualmente — não atribuir todo sinal ao FIV (Hosie et al., ABCD 2009).',
         },
         {
-          label: 'AZT selecionado',
+          label: 'AZT em indicações selecionadas',
           detail:
-            'Zidovudina 5–10 mg/kg VO q12h em gengivoestomatite grave refratária ou doença neurológica após excluir outras causas — hemograma semanal no 1º mês; evidência limitada (Westman et al., 2022).',
+            'Zidovudina 5–10 mg/kg VO q12h em gengivoestomatite grave refratária pós-extração ou sinais neurológicos após excluir outras causas — hemograma semanal no 1º mês; evidência limitada (Westman et al., 2022).',
         },
         {
-          label: 'Monitoramento longitudinal',
+          label: '7.3 Monitoramento (como fazer)',
           detail:
-            'Consulta ≥6/6 meses; hemograma ≥6/6 meses; bioquímica e urinálise ≥anual; reavaliar qualidade de vida — não indicar eutanásia só pelo status FIV+ (Little et al., 2020).',
+            'Consulta ≥6/6 meses; hemograma ≥6/6 meses; bioquímica e urinálise com UPC anuais; balança digital e pesagem contínua; não repetir teste sorológico em gatos já confirmados (Little et al., 2020).',
         },
       ],
     },
@@ -263,7 +263,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
         {
           finding: 'Gengivoestomatite crônica proliferativa (FCGS)',
           mechanism: 'Disregulação imune local + infecção por calicivírus/herpes associados — inflamação oral severa.',
-          clinicalMeaning: 'Extracção dentária extensa/total com radiografia; AZT adjuvante em casos selecionados (Westman et al., 2022).',
+          clinicalMeaning: 'Extração dentária extensa/total com radiografia; AZT adjuvante em casos selecionados (Westman et al., 2022).',
           priority: 'common',
         },
         {
@@ -341,7 +341,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       findings: [
         {
           finding: 'Uveíte anterior crônica, conjuntivite recorrente',
-          mechanism: 'Infecção oportunista (Toxoplasma, criptococose) ou inflamação imunomediada.',
+          mechanism: 'Infecção oportunista (*Toxoplasma*, *Cryptococcus*) ou inflamação imunomediada.',
           clinicalMeaning: 'Exame oftalmológico; investigar toxoplasmose e criptococose em uveíte recorrente.',
           priority: 'uncommon',
         },
@@ -352,7 +352,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       findings: [
         {
           finding: 'Alteração comportamental, convulsões, ataxia',
-          mechanism: 'Encefalite por Toxoplasma, criptococose, linfoma SNC ou neuropatia associada ao FIV.',
+          mechanism: 'Encefalite por *Toxoplasma*, *Cryptococcus*, linfoma SNC ou neuropatia associada ao FIV.',
           clinicalMeaning: 'MRI, LCR, sorologia/PCR para toxo e cripto; AZT adjuvante em casos selecionados (Westman et al., 2022).',
           priority: 'uncommon',
         },
@@ -452,40 +452,42 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
       'Assintomático confirmado: monitoramento + prevenção de brigas + qualidade de vida; sintomático: tratar doença associada agressivamente.',
       'FIV+ não contraindica quimioterapia, cirurgia ou corticoide quando indicado clinicamente — avaliar risco-benefício individual (Hosie et al., ABCD 2009).',
     ],
+    tratamentoSuporte: [
+      'Alojamento estritamente indoor ou recinto seguro: previne estresse de território, brigas com outros gatos, reinfecções e transmissão a felinos suscetíveis (Little et al., 2020).',
+      'Castração de machos e fêmeas: reduz comportamentos sexuais e de agressividade territorial, eliminando uma das maiores fontes de estresse imunológico.',
+      'Nutrição completa de alta digestibilidade: evitar carne crua, ovos crus e leite não pasteurizado pelo risco elevado de *Salmonella*, *Listeria*, *Campylobacter* e *Toxoplasma gondii* em imunocomprometidos.',
+      'Controle parasitário contínuo: profilaxia sistemática contra endoparasitas e ectoparasitas (pulgas/carrapatos) para prevenir debilitação e anemia secundária a hemoplasmas.',
+      'Vacinação criteriosa: manter vacinas inativadas (VRF/VCF/VPF) conforme avaliação de risco individual; evitar vacinas atenuadas vivas em pacientes imunocomprometidos. A vacina FeLV não protege contra FIV.',
+      'Enriquecimento ambiental e redução de estresse: garantir recursos duplicados (comedouros, bebedouros, caixas de areia, arranhadores) em domicílios multicat (convivência pacífica tem risco de transmissão quase nulo).',
+    ],
+    tratamentoDoencasAssociadas: [
+      'Abordagem precoce e agressiva: tratar infecções secundárias, gengivoestomatite, anemias e neoplasias individualmente — não atribuir todo sinal clínico isoladamente ao FIV (Hosie et al., ABCD 2009; Westman et al., 2022).',
+      'Gengivoestomatite crônica felina (FCGS) e periodontite: extração dentária subtotal ou total pós-radiografia intraoral como tratamento principal (resposta em 60–80% dos casos refratários; Westman et al., 2022). Analgesia multimodal (buprenorfina, meloxicam com cautela renal), nutrição pastosa e controle de calicivírus associado. Evitar corticoide crônico como estratégia principal de FCGS — preferir odontologia e AZT selecionado.',
+      'Uso de Corticosteroides (Indicações adjuvantes): corticoides não são contraindicação absoluta em FIV+ — usar quando houver indicação clara (AHIM [anemia hemolítica imunomediada], linfoma, componente inflamatório oral) sob monitoramento rigoroso de infecções secundárias (Westman et al., 2022).',
+      'Zidovudina (AZT) — Indicações e Esqueiro: considerar Zidovudina 5–10 mg/kg VO q12h quando a gengivoestomatite grave não responder à extração dentária extensa, ou em doença neurológica primária por FIV após excluir *Toxoplasma*, *Cryptococcus* e linfoma (Westman et al., 2022; Kim et al., 2023). Mielossupressão (neutropenia, anemia) é efeito adverso dose-dependente — realizar hemograma semanal no 1º mês e suspender se neutrófilos <2.500/µL ou queda abrupta de hematócrito. Não iniciar AZT de rotina em gato assintomático.',
+      'Interferon felino / recombinante humano (Evidência limitada): adjuvante em casos selecionados — evidência insuficiente para uso rotineiro; não substitui o tratamento da doença associada (Hosie et al., ABCD 2009).',
+      'Lamivudina (3TC) (Evidência limitada): 10–15 mg/kg VO q12h possui evidência experimental limitada (estudada em combinação cART; Kim et al., 2023). Não é recomendada como monoterapia de rotina fora de protocolos de pesquisa.',
+      'Hemoparasitoses associadas (*Mycoplasma haemofelis*): Doxiciclina 10 mg/kg VO q24h por 14–28 dias (administrar com água ou alimento para prevenir esofagite).',
+      'Toxoplasmose ocular ou neurológica (*Toxoplasma gondii*): Clindamicina 10–12,5 mg/kg VO q12h por 4 semanas.',
+      'Desordens hematológicas e anemias graves: suporte transfusional de sangue total ou papas de hemácias (doadores comprovadamente FIV negativos); investigar causas concomitantes (FeLV, hemoplasmas, aplasia medular).',
+    ],
     zidovudina: {
       kind: 'clinicalTable' as const,
       title: 'Zidovudina (AZT) — esquema e monitoramento',
       headers: ['Indicação', 'Dose VO', 'Frequência', 'Monitoramento'],
       rows: [
-        ['Gengivoestomatite grave refratária', '5–10 mg/kg', 'q12h', 'Hemograma semanal ×4 semanas, depois q2–4 semanas'],
-        ['Doença neurológica (após excluir toxo/cripto)', '5–10 mg/kg', 'q12h', 'Hemograma semanal; avaliar resposta clínica em 4–8 semanas'],
-        ['Adjuvante experimental', '5 mg/kg', 'q12h', 'Evidência limitada — não rotina em assintomático (Kim et al., 2023)'],
+        ['Gengivoestomatite grave refratária pós-extração', '5–10 mg/kg', 'q12h', 'Hemograma semanal ×4 semanas, depois q2–4 semanas'],
+        ['Doença neurológica (após excluir toxo/cripto/linfoma)', '5–10 mg/kg', 'q12h', 'Hemograma semanal; avaliar resposta clínica em 4–8 semanas'],
+        ['Adjuvante experimental', '5 mg/kg', 'q12h', 'Evidência limitada — não usar de rotina em assintomático (Kim et al., 2023)'],
       ],
     },
-    zidovudinaIndicacoes: [
-      'Considerar AZT quando gengivoestomatite grave não responde a extracção dentária extensa ou doença neurológica após excluir toxoplasmose, criptococose e linfoma (Westman et al., 2022).',
-      'Mielossupressão (neutropenia, anemia) é efeito adverso dose-dependente — suspender se neutrófilos <2.500/µL ou queda abrupta de hematócrito.',
-      'Não iniciar AZT de rotina em gato assintomático — benefício não comprovado e toxicidade hematológica documentada.',
-    ],
-    lamivudina: [
-      'Lamivudina (3TC) 10–15 mg/kg q12h: evidência experimental limitada; usada em combinação (cART) em estudos — badge evidência limitada (Kim et al., 2023).',
-      'Não recomendada como monoterapia de rotina fora de protocolos de pesquisa.',
-    ],
-    interferon: [
-      'Interferon humano recombinante (IFN-α) ou interferon felino: adjuvante em casos selecionados — evidência insuficiente para uso rotineiro; não substitui tratamento de doença associada (Hosie et al., ABCD 2009).',
-    ],
-    corticoide: [
-      'Corticoides não são contraindicação absoluta em FIV+ — usar quando indicação clara (IMHA, linfoma, componente inflamatório oral) com monitoramento de infecções secundárias (Westman et al., 2022).',
-      'Evitar corticoide crônico como estratégia principal de FCGS — preferir odontologia e AZT selecionado.',
-    ],
-    gengivoestomatite: [
-      'FCGS: radiografia dentária completa + extracção de dentes com doença periodontal ou resorção — resposta em 60–80% dos casos refratários (Westman et al., 2022).',
-      'Analgesia (buprenorfina, meloxicam com cautela renal), nutrição molhada/pastosa, controle de calicivírus associado.',
-    ],
-    monitoramento: [
-      'Consulta clínica ≥6/6 meses; hemograma ≥6/6 meses; bioquímica e urinálise ≥anual.',
-      'Pesar e avaliar condição corporal — perda de peso progressiva indica doença associada ou progressão.',
-      'Repetir teste FIV não é necessário em gato confirmado positivo — anticorpos persistem vitaliciamente.',
+    tratamentoMonitoramento: [
+      'Frequência das avaliações clínicas: gato assintomático/estável → consulta de acompanhamento e exame físico completo ≥ a cada 6 meses. Gato sintomático ou instável → retornos mais frequentes (mensais ou quinzenais conforme a complicação).',
+      'Hemograma completo de rotina: a cada 6 meses em assintomáticos. Investigar precocemente neutropenia, linfopenia e anemias. Pacientes em uso de Zidovudina (AZT) devem fazer hemograma semanal no 1º mês e quinzenal/mensal subsequentemente.',
+      'Perfil bioquímico e renal: perfil sérico (creatinina, ureia, SDMA, proteínas totais, albumina, globulinas, ALT, FA) e urinálise com Relação Proteína/Creatinina Urinária (RPCU) anualmente para detectar glomerulopatia imunocomplexa e insuficiência renal.',
+      'Pesagem e condição corporal seriadas: pesagem rigorosa em balança digital em todas as consultas. Perda involuntária de peso >5% em 6 meses exige investigação imediata para doença secundária (neoplasia, hemoplasma, gengivoestomatite ou DRC).',
+      'Exame físico direcionado: palpação cuidadosa de linfonodos superficiais (investigar linfoma por citologia se houver assimetria ou crescimento rápido), ausculta cardiopulmonar, oftalmoscopia (uveíte) e exame da cavidade oral (GECF/periodontite).',
+      'Não retestar sorologia FIV em confirmados: felinos soropositivos confirmados permanecem soropositivos de forma vitalícia — repetir testes de triagem rápida é desnecessário e não traz benefício ao manejo.',
     ],
   },
   prevention: {

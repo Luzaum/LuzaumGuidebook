@@ -30,8 +30,53 @@ export function resolveReferenceIndex(
   return byId >= 0 ? byId : null;
 }
 
+export function looksLikeNumericBibliography(token: string): boolean {
+  const value = String(token || '').trim();
+  if (!value) return false;
+  return /^\d+(?:\s*[,\u2013\u2014-]\s*\d+)*$/.test(value);
+}
+
+export function expandNumericCitationParts(token: string): number[] {
+  const numbers: number[] = [];
+  for (const chunk of String(token || '').split(',')) {
+    const part = chunk.trim();
+    const range = part.match(/^(\d+)\s*[\u2013\u2014-]\s*(\d+)$/);
+    if (range) {
+      const start = Number(range[1]);
+      const end = Number(range[2]);
+      for (let n = start; n <= end; n += 1) numbers.push(n);
+    } else if (/^\d+$/.test(part)) {
+      numbers.push(Number(part));
+    }
+  }
+  return numbers;
+}
+
+function pushLinkedNumericCitationSegments(
+  segments: EditorialRichTextSegment[],
+  token: string,
+  references: EditorialReference[]
+): boolean {
+  const numbers = expandNumericCitationParts(token);
+  const indices = numbers
+    .map((number) => resolveReferenceIndex(references, String(number)))
+    .filter((index): index is number => index !== null);
+  const unique = [...new Set(indices)];
+
+  if (unique.length === 0) return false;
+
+  segments.push({ type: 'text', value: '(' });
+  unique.forEach((index, position) => {
+    if (position > 0) segments.push({ type: 'text', value: ', ' });
+    segments.push({ type: 'reference', index });
+  });
+  segments.push({ type: 'text', value: ')' });
+  return true;
+}
+
 export function looksLikeBibliographicCitation(token: string): boolean {
   const value = String(token || '').trim();
+  if (looksLikeNumericBibliography(value)) return false;
   if (value.length < 8) return false;
   if (/\b(19|20)\d{2}\b/.test(value)) return true;
   if (/et al/i.test(value)) return true;
@@ -89,6 +134,58 @@ export function resolveCitationTokenToReferenceIndex(
       return index;
     }
 
+    if (normalized.includes('bugbee') && haystack.includes('bugbee')) {
+      return index;
+    }
+
+    if (normalized.includes('niessen') && haystack.includes('niessen')) {
+      return index;
+    }
+
+    if (normalized.includes('milenkovic') && haystack.includes('milenkovic')) {
+      return index;
+    }
+
+    if (normalized.includes('behrend') && haystack.includes('behrend')) {
+      return index;
+    }
+
+    if (normalized.includes('beam') && haystack.includes('beam')) {
+      return index;
+    }
+
+    if (normalized.includes('tardo') && haystack.includes('tardo')) {
+      return index;
+    }
+
+    if (normalized.includes('mott') && haystack.includes('mott')) {
+      return index;
+    }
+
+    if (normalized.includes('kelly') && haystack.includes('kelly')) {
+      return index;
+    }
+
+    if (normalized.includes('tanaka') && haystack.includes('tanaka')) {
+      return index;
+    }
+
+    if (normalized.includes('macfarlane') && haystack.includes('macfarlane')) {
+      return index;
+    }
+
+    if (normalized.includes('aula magna') && haystack.includes('aula magna')) {
+      return index;
+    }
+
+    if (normalized.includes('emergency medicine') && haystack.includes('emergency medicine')) {
+      return index;
+    }
+
+    if (normalized.includes('hardy') && haystack.includes('hardy')) {
+      return index;
+    }
+
     if (year && haystack.includes(year)) {
       if (leadAuthor && haystack.includes(leadAuthor)) {
         return index;
@@ -135,15 +232,21 @@ export function splitEditorialRichText(value: string, references?: EditorialRefe
         segments.push({ type: 'text', value: match[0] });
       }
     } else if (parentheticalToken !== undefined) {
-      const resolved =
-        references && looksLikeBibliographicCitation(parentheticalToken)
-          ? resolveCitationTokenToReferenceIndex(parentheticalToken, references)
-          : null;
-
-      if (resolved !== null) {
-        segments.push({ type: 'reference', index: resolved });
+      if (references?.length && looksLikeNumericBibliography(parentheticalToken)) {
+        if (!pushLinkedNumericCitationSegments(segments, parentheticalToken, references)) {
+          segments.push({ type: 'text', value: match[0] });
+        }
       } else {
-        segments.push({ type: 'text', value: match[0] });
+        const resolved =
+          references && looksLikeBibliographicCitation(parentheticalToken)
+            ? resolveCitationTokenToReferenceIndex(parentheticalToken, references)
+            : null;
+
+        if (resolved !== null) {
+          segments.push({ type: 'reference', index: resolved });
+        } else {
+          segments.push({ type: 'text', value: match[0] });
+        }
       }
     }
 

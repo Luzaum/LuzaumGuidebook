@@ -62,10 +62,6 @@ const UI_TEXT = {
   presentations: 'Apresentações',
   officialSite: 'Site oficial',
   leaflet: 'Bula',
-  productImageAlt: 'Imagem comercial do medicamento',
-  priceReference: 'Preço online de referência',
-  priceCheckedAt: 'Checado em',
-  priceSource: 'Ver fonte',
   mechanismOfAction: 'Como esse fármaco funciona',
   indications: 'Quando usar',
   contraindications: 'Quando evitar',
@@ -122,51 +118,6 @@ function ProductResourceLink({ href, label }: { href?: string | null; label: str
       <ExternalLink className="h-4 w-4" />
       {label}
     </a>
-  );
-}
-
-function formatCheckedAt(date: string): string {
-  const parsed = new Date(`${date}T00:00:00`);
-  if (Number.isNaN(parsed.getTime())) return date;
-  return new Intl.DateTimeFormat('pt-BR', { dateStyle: 'short' }).format(parsed);
-}
-
-function PriceReferenceCard({ medication }: { medication: MedicationRecord }) {
-  const price = medication.priceReference;
-  if (!price) return null;
-
-  return (
-    <div className="rounded-[24px] border border-emerald-500/20 bg-emerald-500/[0.06] p-4">
-      <div className="flex items-start gap-3">
-        <span className="mt-0.5 rounded-2xl bg-emerald-500/12 p-2 text-emerald-700 dark:text-emerald-300">
-          <ShoppingBag className="h-4 w-4" />
-        </span>
-        <div className="min-w-0 flex-1">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-emerald-700/80 dark:text-emerald-300/80">
-            {UI_TEXT.priceReference}
-          </p>
-          <p className="mt-2 text-2xl font-bold tracking-tight text-foreground">{price.label}</p>
-          <p className="mt-1 text-sm leading-6 text-muted-foreground">{price.presentation}</p>
-          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-            <span>{price.sourceName}</span>
-            <span aria-hidden>•</span>
-            <span>
-              {UI_TEXT.priceCheckedAt} {formatCheckedAt(price.checkedAt)}
-            </span>
-          </div>
-          {price.notes ? <p className="mt-3 text-xs leading-5 text-muted-foreground">{price.notes}</p> : null}
-          <a
-            href={price.sourceUrl}
-            target="_blank"
-            rel="noreferrer"
-            className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-emerald-700 transition-colors hover:text-emerald-600 dark:text-emerald-300"
-          >
-            <ExternalLink className="h-4 w-4" />
-            {UI_TEXT.priceSource}
-          </a>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -442,7 +393,13 @@ function getCommercialProductImage(product: CommercialMedicationProduct): string
   return commercialProductImageAssets[product.id] || product.imageUrl;
 }
 
-function CommercialProductsSection({ products }: { products: CommercialMedicationProduct[] }) {
+function CommercialProductsSection({
+  products,
+  showProductImages = true,
+}: {
+  products: CommercialMedicationProduct[];
+  showProductImages?: boolean;
+}) {
   if (!products.length) return null;
   return (
     <div>
@@ -461,7 +418,7 @@ function CommercialProductsSection({ products }: { products: CommercialMedicatio
             {products.map((product) => {
               const imageUrl = getCommercialProductImage(product);
               return <tr key={product.id} className="align-top hover:bg-muted/[0.06]">
-                <td className="px-4 py-4"><div className="flex gap-3"><div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-border bg-white p-1.5">{imageUrl ? <img src={imageUrl} alt={`Embalagem de ${product.name}`} className="h-full w-full object-contain" loading="lazy" /> : <ShoppingBag className="h-5 w-5 text-muted-foreground" />}</div><div><p className="font-bold leading-5 text-foreground">{product.name}</p><p className="mt-1 text-xs leading-5 text-muted-foreground">{product.manufacturer}</p></div></div></td>
+                <td className="px-4 py-4"><div className="flex gap-3">{showProductImages ? <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-xl border border-border bg-white p-1.5">{imageUrl ? <img src={imageUrl} alt={`Embalagem de ${product.name}`} className="h-full w-full object-contain" loading="lazy" /> : <ShoppingBag className="h-5 w-5 text-muted-foreground" />}</div> : null}<div><p className="font-bold leading-5 text-foreground">{product.name}</p><p className="mt-1 text-xs leading-5 text-muted-foreground">{product.manufacturer}</p></div></div></td>
                 <td className="px-4 py-4 text-sm leading-6"><p className="font-medium text-foreground">{product.activeComponents.join(' + ')}</p><p className="mt-1 text-muted-foreground">{product.presentations.join('; ')}</p><p className="mt-2 text-xs leading-5 text-muted-foreground">{product.labelCompositionSummary}</p></td>
                 <td className="px-4 py-4 text-sm leading-6"><p className="font-medium text-foreground">{formatSpeciesList(product.species)}</p><p className="mt-2 text-muted-foreground">{product.clinicalUse}</p></td>
                 <td className="px-4 py-4 text-sm leading-6"><p className="font-medium text-foreground">{product.dosageGuidance?.labelDose || product.labelDirections}</p><p className="mt-2 text-muted-foreground"><span className="font-semibold text-foreground">Reavaliar:</span> {product.reassessment}</p></td>
@@ -477,9 +434,11 @@ function CommercialProductsSection({ products }: { products: CommercialMedicatio
           return (
             <article key={product.id} className="rounded-[20px] border border-border/80 bg-background/75 p-4">
               <div className="flex min-w-0 gap-4">
+              {showProductImages ? (
               <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-xl border border-border bg-white p-2">
                 {imageUrl ? <img src={imageUrl} alt={`Embalagem de ${product.name}`} className="h-full w-full object-contain" loading="lazy" /> : <ShoppingBag className="h-6 w-6 text-muted-foreground" />}
               </div>
+              ) : null}
               <div className="min-w-0 flex-1">
                 <h3 className="font-bold leading-6 text-foreground">{product.name}</h3>
                 <p className="mt-1 text-sm text-muted-foreground">{product.manufacturer}</p>
@@ -513,7 +472,6 @@ export function MedicationDetailPage() {
     () => (medication ? getCommercialProductsForMedication(medication, commercialOticProductsSeed) : []),
     [medication],
   );
-  const featuredCommercialImage = commercialProducts.map(getCommercialProductImage).find(Boolean);
 
   const resumeState = (location.state as ResumeLocationState | null) || null;
 
@@ -729,18 +687,7 @@ export function MedicationDetailPage() {
               </div>
             </div>
 
-            <div className="flex w-full shrink-0 flex-col gap-4 xl:w-[300px]">
-              {medication.imageUrl || featuredCommercialImage ? (
-                <div className="flex min-h-[190px] items-center justify-center rounded-[28px] border border-border/80 bg-background/70 p-5">
-                  <img
-                    src={medication.imageUrl || featuredCommercialImage}
-                    alt={`${UI_TEXT.productImageAlt}: ${medication.title}`}
-                    className="max-h-44 w-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-              ) : null}
-
+            <div className="flex w-full shrink-0 flex-col gap-4 xl:w-auto">
               <div className="flex flex-wrap items-center justify-start gap-2 xl:justify-end">
                 <ProductResourceLink href={medication.officialSiteUrl} label={UI_TEXT.officialSite} />
                 <ProductResourceLink href={medication.leafletUrl} label={UI_TEXT.leaflet} />
@@ -754,8 +701,6 @@ export function MedicationDetailPage() {
                 </button>
                 <FavoriteButton entityType="medication" entityId={medication.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
               </div>
-
-              <PriceReferenceCard medication={medication} />
             </div>
           </div>
 
@@ -789,7 +734,7 @@ export function MedicationDetailPage() {
             <MedicationSectionFrame sectionId="presentations" title={UI_TEXT.presentations}>
               <div className="space-y-9">
                 <PresentationsSection medication={medication} />
-                <CommercialProductsSection products={commercialProducts} />
+                <CommercialProductsSection products={commercialProducts} showProductImages={false} />
               </div>
             </MedicationSectionFrame>
           ) : null}

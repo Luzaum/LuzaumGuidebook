@@ -56,7 +56,7 @@ values
     'external/aaha-selected-endocrinopathies-2023.pdf',
     'https://www.aaha.org/wp-content/uploads/globalassets/02-guidelines/2023-aaha-selected-endocrinopathies-of-dogs-and-cats-guidelines/resources/aaha-selected-endocrinopathies-of-dogs-and-cats-guidelines.pdf',
     true,
-    '["hipotireoidismo-canino","hiperadrenocorticismo-sindrome-cushing","hipoadrenocorticismo-addison","hipertireoidismo-felino"]'::jsonb,
+    '["hipotireoidismo-adquirido-caes-gatos","hipotireoidismo-congenito-caes-gatos","sindrome-cushing-caes","sindrome-cushing-gatos","hipoadrenocorticismo-addison","hipertireoidismo-felino"]'::jsonb,
     '[]'::jsonb
   ),
   (
@@ -98,7 +98,7 @@ values
     'external/acvim-hipercortisolismo-canino-2012',
     'https://doi.org/10.1111/jvim.12192',
     true,
-    '["hiperadrenocorticismo-sindrome-cushing"]'::jsonb,
+    '["sindrome-cushing-caes","sindrome-cushing-gatos"]'::jsonb,
     '[]'::jsonb
   ),
   (
@@ -126,7 +126,7 @@ values
     'external/alive-adrenais-cycle-2-2025',
     'https://doi.org/10.3390/vetsci12080761',
     true,
-    '["hiperadrenocorticismo-sindrome-cushing","hipoadrenocorticismo-addison"]'::jsonb,
+    '["sindrome-cushing-caes","sindrome-cushing-gatos","hipoadrenocorticismo-addison"]'::jsonb,
     '[]'::jsonb
   ),
   (
@@ -140,7 +140,7 @@ values
     'external/alive-tireoide-cycle-3-2026',
     'https://doi.org/10.3390/vetsci13010035',
     true,
-    '["hipotireoidismo-canino","hipertireoidismo-felino","diabetes-mellitus-canina","diabetes-mellitus-felina"]'::jsonb,
+    '["hipotireoidismo-adquirido-caes-gatos","hipotireoidismo-congenito-caes-gatos","hipertireoidismo-felino","diabetes-mellitus-canina","diabetes-mellitus-felina"]'::jsonb,
     '[]'::jsonb
   ),
   (
@@ -154,7 +154,7 @@ values
     'external/acvim-hipertensao-sistemica-2018',
     'https://doi.org/10.1111/jvim.15331',
     true,
-    '["hipertensao-arterial-sistemica-caes-gatos","hipertireoidismo-felino","hiperadrenocorticismo-sindrome-cushing"]'::jsonb,
+    '["hipertensao-arterial-sistemica-caes-gatos","hipertireoidismo-felino","sindrome-cushing-caes","sindrome-cushing-gatos"]'::jsonb,
     '[]'::jsonb
   ),
   (

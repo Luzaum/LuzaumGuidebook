@@ -40,12 +40,14 @@ const CARPROFEN_ORAL_PRODUCTS = ['carproflan-agener-uniao', 'rimadyl-comprimidos
 const ROBENACOXIB_ORAL_PRODUCTS = ['onsior-elanco'];
 const GABAPENTIN_PRODUCTS = ['gabapentina-humana-manipulada', 'decrise-avert'];
 const PREGABALIN_PRODUCTS = ['pregabalina-humana-manipulada'];
+const TRAMADOL_PRODUCTS = ['cronidor-agener'];
 const ONDANSETRON_ORAL_PRODUCTS = ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'];
 const MAROPITANT_ORAL_PRODUCTS = ['cerenia-zoetis'];
 
 type MedicationOptions = {
   canonicalId?: string | null;
   presentations?: string[];
+  linkedDoseIds?: string[];
   doseAlternatives?: ClinicalMedicationDefinition['doseAlternatives'];
   presentationFilter?: ClinicalMedicationDefinition['presentationFilter'];
   alert?: string;
@@ -64,6 +66,7 @@ function medication(
     canonicalMedicationId: options.canonicalId ?? null,
     canonicalLookupName: name,
     presentationIds: options.presentations || [],
+    linkedDoseIds: options.linkedDoseIds || [],
     doseAlternatives: options.doseAlternatives,
     presentationFilter: options.presentationFilter || 'none',
     dose,
@@ -124,17 +127,35 @@ Após esse período, reavaliar. Se o medicamento tiver sido utilizado por tempo 
       })],
     },
     {
-      key: 'metocarbamol',
-      label: 'Metocarbamol — contratura ou espasmo muscular',
+      key: 'tramadol',
+      label: 'Tramadol — analgesia adjuvante',
       optional: true,
-      medications: [medication('metocarbamol-trauma-dog', 'Metocarbamol', {
-        min: 20, max: 30, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: '5 a 7 dias',
-      }, `2. METOCARBAMOL — APRESENTAÇÃO A SELECIONAR
+      medications: [medication('tramadol-trauma-dog', 'Tramadol', {
+        min: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: 'até 7 dias',
+      }, `2. TRAMADOL — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 horas, durante 5 a 7 dias.
+Administrar A PREENCHER por via oral, a cada 8 horas, durante até 7 dias.
 
-Utilizar somente quando houver rigidez ou espasmos musculares associados à lesão.`, {
+Utilizar como adjuvante analgésico quando a dor persistir apesar de gabapentina e anti-inflamatório.`, {
+        presentations: TRAMADOL_PRODUCTS,
         presentationFilter: 'oral',
+      })],
+    },
+    {
+      key: 'dipirona',
+      label: 'Dipirona — analgesia adjuvante',
+      optional: true,
+      medications: [medication('dipirona-trauma-dog', 'Dipirona', {
+        min: 25, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: 'até 7 dias',
+      }, `2. DIPIRONA — MANIPULADO
+
+Administrar A PREENCHER por via oral, a cada 8 horas, durante até 7 dias.
+
+Preferir manipulação na concentração exata quando não houver apresentação comercial prática.`, {
+        canonicalId: 'med-dipirona',
+        linkedDoseIds: ['dose-dipirona-dog-po-adjunct'],
+        presentationFilter: 'oral',
+        alert: 'Monitorar apetite, vômitos, diarreia e tolerância. Cautela em hepatopatia, nefropatia e distúrbios hematológicos.',
       })],
     },
     {
@@ -175,7 +196,7 @@ O anti-inflamatório somente deve ser administrado após confirmação de que o 
   diseaseRecommendations: [],
   medicationPrecautions: [
     'Escolher apenas uma opção de anti-inflamatório (carprofeno ou meloxicam)',
-    'Utilizar metocarbamol somente quando houver rigidez ou espasmo muscular',
+    'Tramadol e dipirona são opcionais e indicados quando a dor exige analgesia adicional',
   ],
   returnSigns: [],
   veterinarianNotes: [
@@ -208,15 +229,33 @@ Reduzir a dose em pacientes com doença renal.`, {
       })],
     },
     {
-      key: 'metocarbamol',
-      label: 'Metocarbamol — espasmo muscular',
+      key: 'tramadol',
+      label: 'Tramadol — analgesia adjuvante',
       optional: true,
-      medications: [medication('metocarbamol-trauma-cat', 'Metocarbamol', {
-        min: 20, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: '3 a 5 dias',
-      }, `2. METOCARBAMOL — APRESENTAÇÃO A SELECIONAR
+      medications: [medication('tramadol-trauma-cat', 'Tramadol', {
+        min: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: 'até 7 dias',
+      }, `2. TRAMADOL — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 horas, durante 3 a 5 dias.`, {
+Administrar A PREENCHER por via oral, a cada 8 horas, durante até 7 dias.`, {
+        presentations: TRAMADOL_PRODUCTS,
         presentationFilter: 'oral',
+      })],
+    },
+    {
+      key: 'dipirona',
+      label: 'Dipirona — analgesia adjuvante',
+      optional: true,
+      medications: [medication('dipirona-trauma-cat', 'Dipirona', {
+        min: 12.5, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 12 horas', duration: 'até 7 dias',
+      }, `2. DIPIRONA — MANIPULADO
+
+Administrar A PREENCHER por via oral, a cada 12 horas, durante até 7 dias.
+
+Preferir manipulação na concentração exata quando não houver apresentação comercial prática.`, {
+        canonicalId: 'med-dipirona',
+        linkedDoseIds: ['dose-dipirona-cat-po-q12'],
+        presentationFilter: 'oral',
+        alert: 'Monitorar salivação, vômitos, apetite e tolerância. Cautela em hepatopatia, nefropatia e distúrbios hematológicos.',
       })],
     },
     {
@@ -242,7 +281,7 @@ Não prolongar o tratamento sem reavaliação veterinária.`, {
   ],
   diseaseRecommendations: [],
   medicationPrecautions: [
-    'Utilizar metocarbamol somente quando houver espasmo muscular',
+    'Tramadol e dipirona são opcionais e indicados quando a dor exige analgesia adicional',
     'Administrar robenacoxibe somente quando não houver contraindicação',
   ],
   returnSigns: [],
@@ -315,17 +354,33 @@ Não utilizar gabapentina e pregabalina simultaneamente como protocolo rotineiro
       })],
     },
     {
-      key: 'metocarbamol',
-      label: 'Metocarbamol — espasmo ou contratura muscular',
+      key: 'tramadol',
+      label: 'Tramadol — analgesia adjuvante',
       optional: true,
-      medications: [medication('metocarbamol-ivdd-dog', 'Metocarbamol', {
-        min: 20, max: 30, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: '5 a 7 dias',
-      }, `3. METOCARBAMOL — APRESENTAÇÃO A SELECIONAR
+      medications: [medication('tramadol-ivdd-dog', 'Tramadol', {
+        min: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: 'até 7 dias',
+      }, `3. TRAMADOL — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 horas, durante 5 a 7 dias.
-
-Não incluir automaticamente quando não houver rigidez ou espasmo muscular.`, {
+Administrar A PREENCHER por via oral, a cada 8 horas, durante até 7 dias.`, {
+        presentations: TRAMADOL_PRODUCTS,
         presentationFilter: 'oral',
+      })],
+    },
+    {
+      key: 'dipirona',
+      label: 'Dipirona — analgesia adjuvante',
+      optional: true,
+      medications: [medication('dipirona-ivdd-dog', 'Dipirona', {
+        min: 25, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 horas', duration: 'até 7 dias',
+      }, `3. DIPIRONA — MANIPULADO
+
+Administrar A PREENCHER por via oral, a cada 8 horas, durante até 7 dias.
+
+Preferir manipulação na concentração exata quando não houver apresentação comercial prática.`, {
+        canonicalId: 'med-dipirona',
+        linkedDoseIds: ['dose-dipirona-dog-po-adjunct'],
+        presentationFilter: 'oral',
+        alert: 'Monitorar apetite, vômitos, diarreia e tolerância. Cautela em hepatopatia, nefropatia e distúrbios hematológicos.',
       })],
     },
   ],
@@ -343,7 +398,7 @@ Não incluir automaticamente quando não houver rigidez ou espasmo muscular.`, {
   medicationPrecautions: [
     'Escolher apenas uma opção de anti-inflamatório (carprofeno ou meloxicam)',
     'Escolher gabapentina ou pregabalina; não utilizar ambas simultaneamente como protocolo rotineiro',
-    'Incluir metocarbamol somente quando houver rigidez ou espasmo muscular',
+    'Tramadol e dipirona são opcionais e indicados quando a dor exige analgesia adicional',
   ],
   returnSigns: [],
   recipeInformation: [
@@ -387,7 +442,9 @@ Administrar A PREENCHER por via oral, a cada 24 horas, durante 3 a 5 dias.`, {
       }, `1. ONDANSETRONA — APRESENTAÇÃO A SELECIONAR
 
 Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, {
+        canonicalId: 'med-ondansetron',
         presentations: ONDANSETRON_ORAL_PRODUCTS,
+        linkedDoseIds: ['dose-ondansetron-dog-po-caution'],
         presentationFilter: 'oral',
       })],
     },
@@ -456,7 +513,9 @@ Administrar A PREENCHER por via oral, a cada 24 horas, durante 3 a 5 dias.`, {
       }, `1. ONDANSETRONA — APRESENTAÇÃO A SELECIONAR
 
 Administrar A PREENCHER por via oral, a cada 12 horas, durante 3 a 5 dias.`, {
+        canonicalId: 'med-ondansetron',
         presentations: ONDANSETRON_ORAL_PRODUCTS,
+        linkedDoseIds: ['dose-ondansetron-cat-po'],
         presentationFilter: 'oral',
       })],
     },

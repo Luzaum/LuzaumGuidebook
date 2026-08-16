@@ -25,7 +25,6 @@ import {
   mapMedicationRow,
 } from './editorialRecordMappers';
 import { filterPublicMedications } from '../../../constants/publicCatalog';
-import { withMedicationPriceReferences } from '../../../data/medicationPriceReferences';
 
 function matchesMedicationQuery(record: MedicationRecord, query: string): boolean {
   const normalized = query.toLowerCase();
@@ -124,7 +123,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
       const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      const result = withMedicationPriceReferences(filterPublicMedications(merged, includeDrafts));
+      const result = filterPublicMedications(merged, includeDrafts);
       
       this.listCache = {
         data: result,

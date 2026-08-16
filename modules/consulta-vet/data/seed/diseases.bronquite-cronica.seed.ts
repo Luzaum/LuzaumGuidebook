@@ -359,7 +359,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
       'Não há prevenção primária estabelecida, mas controle ambiental precoce, manejo de peso e tratamento anti-inflamatório adequado desde os primeiros sinais reduzem a progressão para remodelamento estrutural irreversível e bronquiectasia.',
   },
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['prednisolona'],
+  relatedMedicationSlugs: ['prednisolona', 'budesonida'],
   references: [
     {
       id: 'ref-rozanski-2014',

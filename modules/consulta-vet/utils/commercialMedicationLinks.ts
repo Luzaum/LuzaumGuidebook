@@ -13,29 +13,47 @@ export function normalizeMedicationLinkText(value: string): string {
 }
 
 function isMeaningfulAlias(value: string): boolean {
-  return value.length >= 5 && !['acido', 'sodio', 'vitamina'].includes(value);
+  const blocked = new Set([
+    'acido',
+    'sodio',
+    'potassio',
+    'calcio',
+    'magnesio',
+    'cloreto',
+    'sulfato',
+    'vitamina',
+  ]);
+  return value.length >= 5 && !blocked.has(value);
 }
 
-function medicationAliases(medication: Pick<MedicationRecord, 'activeIngredient' | 'title'>): string[] {
-  return Array.from(
-    new Set([medication.activeIngredient, medication.title].map(normalizeMedicationLinkText).filter(isMeaningfulAlias)),
-  );
+function medicationActiveParts(medication: Pick<MedicationRecord, 'activeIngredient' | 'title'>): string[] {
+  const splitParts = medication.activeIngredient
+    .split(/\s*(?:\+|,|;|\be\b)\s*/i)
+    .map(normalizeMedicationLinkText)
+    .filter(isMeaningfulAlias);
+  const title = normalizeMedicationLinkText(medication.title);
+  const parts = [...splitParts];
+  if (isMeaningfulAlias(title)) parts.push(title);
+  return Array.from(new Set(parts));
+}
+
+function activeComponentsMatch(medicationPart: string, productComponent: string): boolean {
+  if (medicationPart === productComponent) return true;
+  const shorter = medicationPart.length <= productComponent.length ? medicationPart : productComponent;
+  const longer = medicationPart.length > productComponent.length ? medicationPart : productComponent;
+  if (shorter.length < 10) return false;
+  return longer.includes(shorter);
 }
 
 export function commercialProductMatchesMedication(
   product: CommercialMedicationProduct,
   medication: Pick<MedicationRecord, 'activeIngredient' | 'title'>,
 ): boolean {
-  const aliases = medicationAliases(medication);
+  const aliases = medicationActiveParts(medication);
   return product.activeComponents.some((component) => {
     const normalizedComponent = normalizeMedicationLinkText(component);
     if (!isMeaningfulAlias(normalizedComponent)) return false;
-    return aliases.some(
-      (alias) =>
-        normalizedComponent === alias ||
-        normalizedComponent.includes(alias) ||
-        alias.includes(normalizedComponent),
-    );
+    return aliases.some((alias) => activeComponentsMatch(alias, normalizedComponent));
   });
 }
 

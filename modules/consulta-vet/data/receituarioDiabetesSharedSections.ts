@@ -240,11 +240,11 @@ export const DM_STORAGE_SECTION = `CONSERVAÇÃO DA INSULINA
 
 /** Orientações clínicas — visíveis ao veterinário na aba de medicamentos, não entram na receita. */
 export const DM_DOSE_ADJUSTMENT_VET_NOTES = [
-  'Ajuste de dose: nunca aumentar no 1º dia por hiperglicemia isolada. Avaliar sinais, peso, técnica, conservação, dieta e curva/CGM antes de subir dose. Nadir <80 mg/dL sem sinais: cães −10–25%; gatos −0,5–1 UI/aplicação. Hipoglicemia com sinais: suspender e reiniciar com redução (cães 25–50%; gatos −0,5–1 UI). Nadir 80–150 com controle clínico: manter. Nadir >150 com sinais persistentes: cães +10–25%; gatos +0,5 UI conservador.',
+  'Ajuste de dose: nunca aumentar no 1º dia por hiperglicemia isolada. Avaliar sinais, peso, técnica, conservação, dieta e curva/monitor contínuo de glicose antes de subir dose. Valor mínimo glicêmico <80 mg/dL sem sinais: cães −10–25%; gatos −0,5–1 UI/aplicação. Hipoglicemia com sinais: suspender e reiniciar com redução (cães 25–50%; gatos −0,5–1 UI). Valor mínimo 80–150 com controle clínico: manter. Valor mínimo >150 com sinais persistentes: cães +10–25%; gatos +0,5 UI conservador.',
 ];
 
 export const DM_TOUJEO_ADJUSTMENT_VET_NOTES = [
-  'Toujeo U-300: ajustar por tendências do monitor e nadir, não por hiperglicemia precoce isolada. Cães: se duração insuficiente com nadir OK, considerar q12h; ao converter q24h→q12h, reduzir ~30% por aplicação. Gatos: ajuste a cada 1–3 dias com CGM; nadir alvo 80–120 mg/dL; tutor não altera frequência sem orientação.',
+  'Toujeo U-300: ajustar por tendências do monitor e valor mínimo glicêmico, não por hiperglicemia precoce isolada. Cães: se duração insuficiente com valor mínimo adequado, considerar q12h; ao converter q24h→q12h, reduzir ~30% por aplicação. Gatos: ajuste a cada 1–3 dias com monitor contínuo de glicose; valor mínimo alvo 80–120 mg/dL; tutor não altera frequência sem orientação.',
 ];
 
 export const DM_GLARGINE_DOG_VET_NOTES = [

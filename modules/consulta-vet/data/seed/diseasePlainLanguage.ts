@@ -56,7 +56,7 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
     keyPoints: [
       'Afeta sobretudo cães pequenos e miniaturas (Yorkshire, Poodle, Chihuahua).',
       'Tosse piora com excitação, calor, exercício ou tração na coleira.',
-      'Controle de peso, peitoral (nunca coleira no pescoço) e medicamentos broncodilatadores ajudam no dia a dia.',
+      'Controle de peso, peitoral (nunca coleira no pescoço) e antitussígenos prescritos pelo veterinário ajudam no dia a dia.',
     ],
   },
   'fistula-perianal-furunculose-anal': {
@@ -106,11 +106,11 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'doenca-valvar-mitral-degenerativa-caes': {
     whatIsIt:
-      'A doença valvar mitral degenerativa (DMVD) é o desgaste da válvula mitral do coração. O sangue reflui para o átrio (sopro cardíaco) e o coração precisa trabalhar mais — podendo evoluir para acúmulo de líquido nos pulmões.',
+      'A doença valvar mitral degenerativa é o desgaste da válvula que separa o átrio do ventrículo esquerdo. O sangue volta para trás (sopro) e o coração trabalha extra. Muitos cães convivem anos só com o sopro; o sinal de alerta em casa é a respiração acelerada durante o sono, que pode indicar líquido no pulmão.',
     keyPoints: [
-      'Doença cardíaca mais comum em cães pequenos e idosos.',
-      'Tosse, cansaço e dificuldade respiratória indicam insuficiência cardíaca.',
-      'Ecocardiograma e medicamentos cardioprotetores orientam o tratamento.',
+      'Mais comum em cães pequenos e idosos — sopro não significa insuficiência cardíaca.',
+      'O ecocardiograma define o estágio e se já é hora de pimobendan.',
+      'Tosse isolada nem sempre é “água no pulmão”; diurético só com congestão.',
     ],
   },
   'cardiomiopatia-dilatada-caes-gatos': {
@@ -120,6 +120,60 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Comum em cães grandes (Dobermann, Dogue Alemão); rara em gatos com dieta adequada.',
       'Pode existir fase “silenciosa” detectável só com ecocardiograma ou Holter.',
       'Medicamentos como pimobendan e diuréticos melhoram qualidade de vida e sobrevida.',
+    ],
+  },
+  'arritmias-cardiacas-caes-gatos': {
+    whatIsIt:
+      'Arritmias são alterações no ritmo ou na velocidade dos batimentos cardíacos. Podem ser inofensivas ou causar fraqueza, desmaio, falta de ar e, nos casos graves, parada cardíaca.',
+    keyPoints: [
+      'Um ECG curto normal não garante que não exista arritmia intermitente — o Holter pode ser necessário.',
+      'Nem todo “batimento extra” precisa de remédio; o veterinário avalia se o animal está estável.',
+      'Em emergência, VF e taquicardia ventricular sem pulso exigem reanimação — não apenas medicamento oral.',
+    ],
+  },
+  'giardiase-caes-gatos': {
+    whatIsIt:
+      'Giardíase é uma infecção intestinal por um protozoário (*Giardia*) que pode causar diarreia, fezes moles ou pastosas e perda de peso — mas muitos cães e gatos ficam assintomáticos.',
+    keyPoints: [
+      'Teste positivo para Giardia não prova sozinho que ela seja a causa da diarreia.',
+      'O veterinário costuma pedir várias amostras de fezes em dias diferentes, porque o parasita nem sempre aparece em um único exame.',
+      'O tratamento inclui remédio (geralmente fenbendazol) e limpeza rigorosa do ambiente, pelagem e fezes para evitar reinfecção.',
+    ],
+  },
+  'coccidiose-caes-gatos': {
+    whatIsIt:
+      'Cistoisosporose (coccidiose intestinal) é infecção por protozoários *Cystoisospora* em cães e gatos, muito comum em filhotes. Não tem relação com coccidioidomicose, que é uma doença fúngica sistêmica diferente.',
+    keyPoints: [
+      'Oocistos positivos nas fezes confirmam infecção, mas nem sempre explicam sozinhos a diarreia — coinfecções são frequentes.',
+      'Filhotes de abrigos, canis e gatil são os mais afetados; adultos saudáveis podem eliminar o parasita sem sinais.',
+      'O tratamento combina medicamento (geralmente ponazuril ou toltrazuril) com limpeza rigorosa do ambiente para evitar reinfecção.',
+    ],
+  },
+  'hiperparatireoidismo-caes-gatos': {
+    whatIsIt:
+      'Hiperparatireoidismo é o aumento persistente do hormônio paratireoidiano (PTH), que regula o cálcio no sangue. O significado depende da causa: tumor da paratireoide, doença renal crônica ou dieta desequilibrada em filhotes.',
+    keyPoints: [
+      'O PTH deve ser interpretado junto com o cálcio ionizado — um valor “normal” pode ainda indicar doença em animal hipercalcêmico.',
+      'Hipercalcemia com PTH não suprimido sugere hiperparatireoidismo primário, que em geral exige cirurgia.',
+      'Em doença renal, o PTH alto faz parte do distúrbio mineral-ósseo da DRC; o tratamento foca fósforo e dieta renal, não cirurgia de paratireoide.',
+    ],
+  },
+  'insulinoma-caes-gatos': {
+    whatIsIt:
+      'Insulinoma é um tumor do pâncreas que produz insulina em excesso, fazendo a glicose no sangue cair de forma perigosa. O animal pode tremer, ficar fraco, desorientado, convulsionar ou desmaiar — muitas vezes de forma intermitente, como se tivesse “epilepsia” ou “problema cardíaco”.',
+    keyPoints: [
+      'Hipoglicemia com insulina que não deveria estar alta durante a queda de glicose é o padrão clássico — insulina “normal” no exame ainda pode ser anormal nesse contexto.',
+      'Crise com convulsão ou desmaio exige correção imediata da glicose; depois investigar com exames e, quando possível, cirurgia.',
+      'Em gatos a doença é rara — muitas recomendações vêm de experiência canina e devem ser interpretadas com cautela.',
+    ],
+  },
+  'cetoacidose-diabetica-caes-gatos': {
+    whatIsIt:
+      'A cetoacidose diabética (CAD) é uma emergência do diabetes em que o corpo produz excesso de cetonas e fica com acidose no sangue, além de desidratação e alterações de potássio e outros eletrólitos. O animal costuma vomitar, ficar muito fraco, respirar fundo e pode desmaiar.',
+    keyPoints: [
+      'Não basta baixar a glicose: primeiro restaurar perfusão e corrigir potássio; a insulina serve principalmente para parar a produção de cetonas.',
+      'Em gatos usando remédios SGLT2, a CAD pode ocorrer mesmo com glicemia aparentemente normal — isso se chama CAD euglicêmica (eDKA).',
+      'Quando a glicemia cai para cerca de 200–250 mg/dL, muitas vezes é preciso adicionar glicose ao soro para continuar a insulina até a cetose resolver.',
     ],
   },
   'cardiomiopatia-hipertrofica-caes-gatos': {
@@ -140,13 +194,22 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Tratamento foca em aliviar congestão e melhorar conforto — não há cura estrutural.',
     ],
   },
-  'hiperadrenocorticismo-sindrome-cushing': {
+  'sindrome-cushing-caes': {
     whatIsIt:
-      'O Cushing (hiperadrenocorticismo) é o excesso crônico de cortisol no sangue, geralmente por tumor benigno na hipófise ou nas adrenais. O metabolismo fica acelerado de forma desregulada.',
+      'A síndrome de Cushing no cão é o excesso crônico de cortisol — hormônio do estresse — no sangue. Na maioria dos casos, um tumor benigno na hipófise estimula demais as glândulas adrenais; em outros, a própria adrenal produz cortisol em excesso.',
     keyPoints: [
-      'Beber e urinar muito, fome excessiva e barriga pendente são sinais clássicos.',
-      'Queda de pelo simétrica e pele fina também são frequentes.',
-      'Tratamento medicamentoso controla a produção de cortisol a longo prazo.',
+      'Beber e urinar muito, fome aumentada, barriga pendente e queda de pelo simétrica são sinais clássicos.',
+      'O diagnóstico exige sinais clínicos compatíveis e exames específicos — enzima hepática alta sozinha não confirma.',
+      'Trilostano é o tratamento medicamentoso mais usado; o veterinário ajusta a dose conforme a melhora dos sintomas.',
+    ],
+  },
+  'sindrome-cushing-gatos': {
+    whatIsIt:
+      'A síndrome de Cushing no gato é rara: o organismo produz cortisol em excesso, quase sempre por tumor na hipófise. Muitos gatos afetados também têm diabetes difícil de controlar e pele extremamente frágil — que se rasga com facilidade.',
+    keyPoints: [
+      'Doença incomum no gato — suspeitar quando o diabético não responde bem à insulina e a pele fica fina como papel.',
+      'Diferente do cão, calcificação da pele é rara e o exame de enzima hepática pode ser normal.',
+      'Trilostano pode ajudar, mas exige monitoramento rigoroso da glicemia para evitar hipoglicemia.',
     ],
   },
   'hipoadrenocorticismo-addison': {
@@ -160,20 +223,29 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'hipertireoidismo-felino': {
     whatIsIt:
-      'O hipertireoidismo felino é a produção excessiva de hormônios tireoidianos, deixando o metabolismo do gato em “alta rotação” constante.',
+      'O hipertireoidismo felino acontece quando a tireoide produz hormônios em excesso, deixando o metabolismo do gato acelerado o tempo todo. Na maioria dos casos é causado por um crescimento benigno da tireoide, não por infecção. É muito comum em gatos idosos.',
     keyPoints: [
-      'Perde peso mesmo comendo muito; fica agitado e pode miar à noite.',
-      'Pelagem opaca e vômitos são comuns.',
-      'Tratamento (medicamento, dieta yodo-restrita, radioiodo ou cirurgia) exige acompanhamento renal.',
+      'Perde peso mesmo comendo muito, fica agitado e taquicárdico — mas alguns gatos ficam apáticos e com pouco apetite.',
+      'O exame de sangue T4 (tiroxina total) é o primeiro passo; resultado normal não descarta a doença em todos os casos.',
+      'Tratar é importante mesmo se o rim parecer “bom” nos exames — a doença pode estar mascarando problemas renais. Radioiodo (^131I) costuma curar; remédio ou dieta y/d controlam, mas não eliminam o nódulo.',
     ],
   },
-  'hipotireoidismo-canino': {
+  'hipotireoidismo-adquirido-caes-gatos': {
     whatIsIt:
-      'O hipotireoidismo canino é a produção insuficiente de hormônios pela tireoide. O metabolismo desacelera, deixando o cão lento, ganhando peso e com alterações de pele e pelo.',
+      'O hipotireoidismo adquirido é quando a tireoide deixa de produzir hormônios suficientes ao longo da vida. Em cães, isso costuma ser destruição gradual da glândula; em gatos, frequentemente ocorre após tratamento de hipertireoidismo.',
     keyPoints: [
-      'Desânimo, ganho de peso sem comer mais e intolerância ao frio.',
-      'Pele seca, infecções recorrentes e “expressão facial triste”.',
-      'Reposição oral diária de hormônio tireoidiano costuma resolver completamente os sinais.',
+      'Exame T4 baixo sozinho não confirma — doenças sistêmicas também reduzem o T4.',
+      'Cão: remédio diário (levotiroxina) ajustado por peso e exames de controle.',
+      'Gato: dose por gato (não por kg); monitorar rim após radioiodo se aplicável.',
+    ],
+  },
+  'hipotireoidismo-congenito-caes-gatos': {
+    whatIsIt:
+      'O hipotireoidismo congênito é a falta de hormônios tireoidianos desde o nascimento, por glândula ausente, malformada ou incapaz de produzir hormônio. O filhote não cresce e amadurece normalmente.',
+    keyPoints: [
+      'Filhote pequeno, ossos atrasados, cabeça grande, orelhas caídas ou surdez — investigar cedo.',
+      'Tratamento precoce (idealmente antes de 12 semanas) protege o desenvolvimento neurológico.',
+      'Reposição hormonal é geralmente vitalícia; exames acompanham crescimento e hormônios.',
     ],
   },
   'diabetes-mellitus-canina': {
@@ -273,6 +345,96 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'O diagnóstico é feito com exame de sangue (TLI) após jejum — corte atual em cães: ≤5,5 µg/L.',
       'O tratamento é para a vida toda: enzimas pancreáticas em toda refeição + vitamina B12 quando necessário.',
       'Com tratamento correto, a maioria dos cães e gatos responde bem e pode ter vida normal.',
+    ],
+  },
+  'prostatite-caes-gatos': {
+    whatIsIt:
+      'A prostatite é a inflamação da próstata, quase sempre por infecção bacteriana. É comum em cães machos não castrados e muito rara em gatos. Pode causar febre e dor intensa (forma aguda) ou passar despercebida e aparecer só como infecção urinária que sempre volta (forma crônica).',
+    keyPoints: [
+      'Cão macho inteiro com infecção urinária merece avaliação da próstata — especialmente se a infecção recorre.',
+      'O tratamento exige antibiótico adequado por várias semanas e, na maioria dos casos, controle da próstata aumentada (castração ou medicamento hormonal).',
+      'Em gatos, doença da próstata é incomum — próstata aumentada exige investigação cuidadosa, incluindo possibilidade de tumor.',
+    ],
+  },
+  'gengivoestomatite-cronica-felina': {
+    whatIsIt:
+      'A gengivoestomatite crônica felina (FCGS) é uma doença inflamatória grave da boca do gato, muito dolorosa, em que a inflamação vai além da gengiva e atinge a mucosa oral. Não é “gengivite forte” nem infecção bacteriana simples — envolve resposta imune desregulada contra estímulos na boca (dentes, biofilme, vírus).',
+    keyPoints: [
+      'Sinais comuns: dor ao comer, salivação, mau hálito, perda de peso e recusa alimentar mesmo com interesse pela comida.',
+      'O tratamento de primeira linha é odontológico: exame completo sob anestesia, radiografias de todos os dentes e extrações dentárias (parciais ou totais) com analgesia adequada.',
+      'Antibióticos e corticoides sozinhos não curam — podem dar melhora temporária. Cerca de dois terços dos gatos melhoram muito após extrações; os refratários precisam de terapias especializadas.',
+    ],
+  },
+  'doenca-periodontal-caes': {
+    whatIsIt:
+      'A doença periodontal em cães é uma inflamação crônica provocada pelo acúmulo de biofilme (placa bacteriana) e pela resposta de defesa do próprio cão. Começa com gengivite (gengiva vermelha e inflamada, que pode voltar ao normal) e, se não tratada, vira periodontite, destruindo o osso e os tecidos que seguram os dentes.',
+    keyPoints: [
+      'Tártaro visível não mede a gravidade: dentes limpos por fora podem ter perda óssea escondida por dentro.',
+      'O diagnóstico completo exige anestesia geral com tubo de respiração, radiografias de toda a boca e sondagem milimétrica de cada dente.',
+      'Antibióticos não tratam nem curam a doença periodontal sozinhos; o tratamento principal é a limpeza profissional, raspagem subgengival, extração dos dentes condenados e escovação diária em casa.',
+    ],
+  },
+  'doenca-periodontal-gatos': {
+    whatIsIt:
+      'A doença periodontal em gatos é uma inflamação dos tecidos de sustentação dos dentes causada pela placa bacteriana. Os gatos costumam esconder a dor e continuar comendo normalmente mesmo com infecção ou dentes abalados.',
+    keyPoints: [
+      'No gato, o sulco normal ao redor do dente é muito raso (até 1 mm). Qualquer profundidade maior aponta doença.',
+      'Não confundir periodontite com reabsorção dentária (Tooth Resorption) nem com estomatite (FCGS) — cada uma exige cirurgia ou tratamento específico.',
+      'Radiografias de boca inteira sob anestesia são indispensáveis para identificar raízes escondidas, dentes quebrados e reabsorções internas.',
+    ],
+  },
+  'diabetes-mellitus-canina': {
+    whatIsIt:
+      'O diabetes mellitus em cães é uma doença hormonal metabólica causada pela perda de produção de insulina pelo pâncreas. Sem insulina, a glicose (açúcar) se acumula no sangue e o cão perde a capacidade de usar a energia dos alimentos, perdendo peso rapidamente apesar de comer mais.',
+    keyPoints: [
+      'Sinais clássicos: o cão bebe muita água (polidipsia), faz muita urina (poliúria), sente muita fome (polifagia) e emagrece.',
+      'O cão diabético necessita de aplicações diárias de insulina exógena por toda a vida e horários fixos de alimentação.',
+      'Catarata nos dois olhos é uma complicação muito comum e rápida; a castração de cadelas fêmeas é fundamental para controlar os hormônios.',
+    ],
+  },
+  'diabetes-mellitus-felina': {
+    whatIsIt:
+      'O diabetes mellitus em gatos ocorre quando o corpo do gato desenvolve resistência à insulina e o pâncreas perde a capacidade de liberar o hormônio adequadamente, frequentemente associado ao excesso de peso e sedentarismo.',
+    keyPoints: [
+      'Sinais clássicos: urina em excesso, sede aumentada, perda de peso com perda de músculos e fraqueza nas patas traseiras (postura plantígrada).',
+      'Gatos possuem chance de remissão diabética quando diagnosticados e tratados precocemente com dieta low-carb e controle de peso.',
+      'Além das insulinas (Glargina/ProZinc), alguns gatos selecionados e estáveis podem usar comprimidos modernos (SGLT2), que exigem acompanhamento atento.',
+    ],
+  },
+  'dermatite-atopica-canina': {
+    whatIsIt:
+      'A dermatite atópica canina é uma alergia de pele crônica e hereditária em cães. Uma falha na proteção natural da pele permite que poeira, ácaros e pólen penetrem e causem coceira intenda e vermelhidão.',
+    keyPoints: [
+      'Locais afetados: patinhas (lamber os pés), redor dos olhos, focinho, orelhas (otite que vai e volta), axilas e virilhas.',
+      'Não existe exame de sangue para "dar o diagnóstico de atopia" — os exames alérgicos servem apenas para criar a vacina de alergia (imunoterapia).',
+      'Pioras repentinas acontecem principalmente por infecções por bactérias ou fungos da própria pele, exigindo banhos medicinais e acompanhamento constante.',
+    ],
+  },
+  'sindrome-cutanea-atopica-felina': {
+    whatIsIt:
+      'A síndrome cutânea atópica felina (FASS) é uma reação alérgica da pele do gato a alérgenos do ambiente. No gato, a alergia se manifesta por coceira e feridas típicas, frequentemente causadas pelo hábito de se lamber em excesso.',
+    keyPoints: [
+      'Padrões comuns: perda de pelos nas coxas e barriga, carocinhos com casquinha no pescoço (dermatite miliar) ou feridas de coceira no pescoço e rosto.',
+      'O gato costuma se lamber escondido ou à noite. A ausência de coceira vista pelo tutor não significa que o gato não tenha dor alérgica.',
+      'Exige descartar pulgas, ácaros de pele e alergia alimentar antes do diagnóstico definitivo. A ciclosporina e os corticoides são o tratamento principal.',
+    ],
+  },
+  'doenca-do-disco-intervertebral-caes': {
+    whatIsIt:
+      'A doença do disco intervertebral (popularmente chamada de hérnia de disco) em cães acontece quando os discos amortecedores da coluna se desgastam e se deslocam para dentro do canal por onde passa a medula espinhal, causando dor ou paralisia nas patas.',
+    keyPoints: [
+      'Raças de pernas curtas (como Dachshund, Bulldog Francês e Beagle) têm predisposição genética forte para apresentar hérnia grave em idade jovem.',
+      'Sinais de alerta: dor intensa nas costas ou pescoço, andar cambaleante, perda de movimento nas patas traseiras e perda do controle da urina.',
+      'A avaliação médica imediata e exames como a Ressonância Magnética determinam se o cão precisa de cirurgia de descompressão urgente ou de repouso absoluto em gaiola.',
+    ],
+  },
+  'doenca-do-disco-intervertebral-gatos': {
+    whatIsIt:
+      'A doença do disco intervertebral em gatos é uma condição menos frequente do que em cães, que ocorre principalmente em gatos mais velhos devido ao desgaste natural da coluna ou esforço ao saltar.',
+    keyPoints: [
+      'Sinais no gato: relutância em saltar em locais altos, dor nas costas ou na cauda, andar fraco nas patas traseiras ou dificuldade para urinar.',
+      'Outras doenças graves felinas (como tumores ou a PIF neurológica) causam sintomas parecidos, exigindo Ressonância Magnética para confirmação.',
+      'O tratamento inclui remédios específicos para dor neuropática e repouso, ou cirurgia de descompressão em casos de paralisia grave.',
     ],
   },
 };

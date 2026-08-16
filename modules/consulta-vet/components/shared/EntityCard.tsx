@@ -43,6 +43,20 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-sky-500/20 dark:border-sky-400/15',
     glowBg: 'rgba(14,165,233,0.015)',
   },
+  'bombas-asma-terapia-inalatoria': {
+    borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(6,182,212,0.25)]',
+    badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
+    line: 'border-cyan-500/20 dark:border-cyan-400/15',
+    glowBg: 'rgba(6,182,212,0.015)',
+  },
+  'terapia-inalatoria': {
+    borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(6,182,212,0.25)]',
+    badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
+    line: 'border-cyan-500/20 dark:border-cyan-400/15',
+    glowBg: 'rgba(6,182,212,0.015)',
+  },
   cardiologia: {
     borderHover: 'hover:border-rose-500/50 dark:hover:border-rose-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(244,63,94,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(244,63,94,0.25)]',
@@ -126,6 +140,13 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
     line: 'border-cyan-500/20 dark:border-cyan-400/15',
     glowBg: 'rgba(6,182,212,0.015)',
+  },
+  parasitologia: {
+    borderHover: 'hover:border-lime-600/50 dark:hover:border-lime-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(101,163,13,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(101,163,13,0.25)]',
+    badge: 'bg-lime-100/80 text-lime-800 dark:bg-lime-950/45 dark:text-lime-300 border-lime-200/50 dark:border-lime-800/40',
+    line: 'border-lime-500/20 dark:border-lime-400/15',
+    glowBg: 'rgba(101,163,13,0.015)',
   },
   gastroenterologia: {
     borderHover: 'hover:border-pink-500/50 dark:hover:border-pink-400/50',

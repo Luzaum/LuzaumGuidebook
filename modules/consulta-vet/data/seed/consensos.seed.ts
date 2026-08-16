@@ -13,19 +13,19 @@ const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
   },
   'leishmaniose-brasileiro-2020': {
     summary:
-      'As diretrizes Brasileish estruturam diagnóstico, estadiamento, tratamento e acompanhamento da leishmaniose visceral canina no contexto brasileiro. A doença pode variar de infecção subclínica a comprometimento sistêmico grave, com dermatopatia, linfadenomegalia, alterações oculares, anemia, hiperglobulinemia, proteinúria e doença renal. O diagnóstico combina epidemiologia, sinais, sorologia e demonstração do parasito ou material genético quando indicada.\n\nO rim é determinante para prognóstico e escolha terapêutica. Creatinina/SDMA, urinálise, UPC e pressão arterial devem ser avaliadas antes do protocolo e durante o seguimento. O tratamento reduz sinais e carga parasitária, mas não garante eliminação definitiva; controle vetorial e monitorização longitudinal continuam obrigatórios.',
+      'As diretrizes Brasileish estruturam diagnóstico, estadiamento, tratamento e acompanhamento da leishmaniose visceral canina no contexto brasileiro. A doença pode variar de infecção subclínica a comprometimento sistêmico grave, com dermatopatia, linfadenomegalia, alterações oculares, anemia, hiperglobulinemia, proteinúria e doença renal. O diagnóstico combina epidemiologia, sinais, sorologia e demonstração do parasito ou material genético quando indicada.\n\nO rim é determinante para prognóstico e escolha terapêutica. Creatinina/SDMA, urinálise, RPCU e pressão arterial devem ser avaliadas antes do protocolo e durante o seguimento. O tratamento reduz sinais e carga parasitária, mas não garante eliminação definitiva; controle vetorial e monitorização longitudinal continuam obrigatórios.',
     keyPointsText:
       '- Classificar gravidade clínica e renal antes de tratar.\n- Miltefosina: 2 mg/kg VO q24h por 28 dias, preferencialmente com alimento.\n- Alopurinol: 10 mg/kg VO q12h por 6-12 meses; monitorar cristalúria e urolitíase por xantina.\n- Proteinúria, hipertensão e DRC exigem tratamento paralelo e podem modificar o protocolo.\n- Resposta clínica não equivale a cura parasitológica; recidiva é possível.',
     practicalApplicationText:
-      'Solicitar hemograma, bioquímica, proteínas/albumina, creatinina/SDMA, urinálise, UPC e pressão; confirmar infecção por método apropriado; estadiar; tratar o parasito e as lesões orgânicas; manter repelente/coleira e controle ambiental. Reavaliar clínica, rim, fígado, proteínas, UPC e urina nas primeiras semanas e depois periodicamente.',
+      'Solicitar hemograma, bioquímica, proteínas/albumina, creatinina/SDMA, urinálise, RPCU e pressão; confirmar infecção por método apropriado; estadiar; tratar o parasito e as lesões orgânicas; manter repelente/coleira e controle ambiental. Reavaliar clínica, rim, fígado, proteínas, RPCU e urina nas primeiras semanas e depois periodicamente.',
   },
   'iris-drc-2023': {
     summary:
       'O IRIS 2026 classifica a doença renal crônica somente depois de confirmar alteração renal persistente em paciente estável e adequadamente hidratado. O estágio usa creatinina e SDMA; depois o paciente é subestadiado por proteinúria e pressão arterial, porque ambos alteram prognóstico e conduta independentemente da creatinina.\n\nA revisão de 2026 preserva o raciocínio por estágios e atualiza recomendações terapêuticas, incluindo abordagem da anemia. A classificação deve ser revista após estabilização, tratamento antiproteinúrico ou anti-hipertensivo e mudanças clínicas. Sarcopenia pode mascarar gravidade pela creatinina, enquanto SDMA persistentemente discordante pode justificar manejo pelo estágio mais alto.',
     keyPointsText:
-      'ESTADIAMENTO IRIS 2026\n- O quadro clínico do app reproduz a matriz oficial com os estágios 1–4 em colunas, cães e gatos em subcolunas e creatinina/SDMA em linhas.\n- Proteinúria por UPC e pressão arterial são apresentadas separadamente porque constituem subestadiamentos independentes.\n- Não estadiar definitivamente durante desidratação, obstrução, LRA ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, UPC, pressão, fósforo, potássio, bicarbonato, hematócrito, peso e massa muscular.',
+      'ESTADIAMENTO IRIS 2026\n- O quadro clínico do app reproduz a matriz oficial com os estágios 1–4 em colunas, cães e gatos em subcolunas e creatinina/SDMA em linhas.\n- Proteinúria por RPCU e pressão arterial são apresentadas separadamente porque constituem subestadiamentos independentes.\n- Não estadiar definitivamente durante desidratação, obstrução, LRA ou alteração rápida da função renal.\n- Reavaliar creatinina, SDMA, RPCU, pressão, fósforo, potássio, bicarbonato, hematócrito, peso e massa muscular.',
     practicalApplicationText:
-      'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por UPC e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo. A revisão de 2026 propõe considerar tratamento da anemia em cães com hematócrito <30% ou persistentemente entre 30-35%, e em gatos <25% ou persistentemente entre 25-28%, sempre após procurar causas corrigíveis e ponderar sinais clínicos.',
+      'Confirmar DRC e estabilidade; estadiar por creatinina/SDMA; subestadiar por RPCU e pressão; procurar causa tratável e complicações. Nos estágios 2-4, organizar dieta renal, controle de fósforo, hidratação, náusea/apetite, potássio, acidose e massa muscular conforme exames. Nos estágios 3-4, avaliar anemia, uremia, desnutrição e necessidade de suporte intensivo. A revisão de 2026 propõe considerar tratamento da anemia em cães com hematócrito <30% ou persistentemente entre 30-35%, e em gatos <25% ou persistentemente entre 25-28%, sempre após procurar causas corrigíveis e ponderar sinais clínicos.',
   },
   'acvim-cie-caes-2026': {
     summary:
@@ -117,17 +117,17 @@ export const consensosSeed: Array<Record<string, any>> = [
     year: 2026,
     species: 'both',
     category: 'nefrologia-urologia',
-    tags: ['DRC', 'Estadiamento', 'SDMA', 'UPC', 'Pressão arterial', 'Anemia'],
+    tags: ['DRC', 'Estadiamento', 'SDMA', 'RPCU', 'Pressão arterial', 'Anemia'],
     pdfUrl: 'https://www.iris-kidney.com/iris-guidelines-1',
     pdfFileName: 'iris-drc-2026',
     storagePath: 'external/iris-drc-2026',
-    summary: 'Guideline IRIS 2026 para estadiamento e tratamento da doença renal crônica em cães e gatos, com creatinina/SDMA, UPC, pressão arterial e manejo por estágio.',
+    summary: 'Guideline IRIS 2026 para estadiamento e tratamento da doença renal crônica em cães e gatos, com creatinina/SDMA, RPCU, pressão arterial e manejo por estágio.',
     articleSummaryRichText:
-      '<p>As diretrizes IRIS 2026 organizam a DRC por creatinina e SDMA, subestadiamento por UPC e pressão arterial e tratamento progressivo conforme estágio, complicações e qualidade de vida.</p>',
+      '<p>As diretrizes IRIS 2026 organizam a DRC por creatinina e SDMA, subestadiamento por RPCU e pressão arterial e tratamento progressivo conforme estágio, complicações e qualidade de vida.</p>',
     keyPointsText:
-      '• Estadiar somente DRC estável.\n• Usar creatinina e/ou SDMA persistentes.\n• Subestadiar por UPC e pressão arterial.\n• Revisar a classificação após mudanças clínicas ou tratamento.',
+      '• Estadiar somente DRC estável.\n• Usar creatinina e/ou SDMA persistentes.\n• Subestadiar por RPCU e pressão arterial.\n• Revisar a classificação após mudanças clínicas ou tratamento.',
     practicalApplicationText:
-      'Confirmar hidratação e estabilidade antes de estadiar; registrar creatinina, SDMA, urinálise, UPC e pressão arterial para definir acompanhamento e prioridades terapêuticas.',
+      'Confirmar hidratação e estabilidade antes de estadiar; registrar creatinina, SDMA, urinálise, RPCU e pressão arterial para definir acompanhamento e prioridades terapêuticas.',
     appNotesText:
       'STATUS: VIGENTE — referência principal para DRC em cães e gatos.\n\nNão estadiar definitivamente um paciente desidratado, obstruído ou com lesão renal aguda. A terapia deve ser guiada pelo estágio, subestágios e complicações, não apenas pela creatinina.',
     references: [

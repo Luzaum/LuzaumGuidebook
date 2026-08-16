@@ -310,7 +310,7 @@ export const granulomaEosinofilicoFelinoRecord: DiseaseRecord = {
       'Manutenção contínua e rigorosa do controle de pulgas em todos os animais do domicílio é a medida preventiva mais eficaz. Quando há componente alimentar identificado, manter a dieta de eliminação a longo prazo evita recidivas; em casos atópicos, o manejo é individualizado e frequentemente contínuo.',
   },
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['prednisolona'],
+  relatedMedicationSlugs: ['prednisolona', 'clorambucil'],
   references: [
     {
       id: 'ref-buckley-nuttall-2012-i',

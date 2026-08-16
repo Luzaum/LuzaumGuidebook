@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { AlertTriangle, CheckCircle2, ExternalLink, FileInput, Loader2, Pill, Search, X } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, ExternalLink, FileInput, Loader2, Pill, Plus, Search, X } from 'lucide-react';
 import {
   getMedicationPresentations,
   getMedicationRecommendedDoses,
@@ -15,22 +15,35 @@ import {
   normalizeDoseUnit,
   resolveAdministrationBasis,
 } from '../../utils/receituarioDoseEngine';
-import { normalizePrescriptionSpecies, parsePositiveDecimal } from '../../utils/receituarioMedication';
+import {
+  extractPrescriptionConcentration,
+  formatPrescriptionMedicationHeader,
+  normalizePrescriptionSpecies,
+  parsePositiveDecimal,
+  prescriptionPharmaceuticalFormLabel,
+} from '../../utils/receituarioMedication';
 import { CLINICAL_DOSE_LABEL } from '../../utils/receituarioTemplateCalculator';
 import { searchPrescriptionMedicationCatalog } from '../../services/receituarioCatalogService';
-import { searchPrescriptionCommercialProducts } from '../../services/receituarioCommercialCatalogService';
+import { buildCatalogPresentationCommercialResults, searchPrescriptionCommercialProducts } from '../../services/receituarioCommercialCatalogService';
 import {
   RECEITUARIO_COMMERCIAL_CLASS_OPTIONS,
   RECEITUARIO_COMMERCIAL_SUBCLASS_LABELS,
   RECEITUARIO_SUBCLASSES_BY_CLASS,
 } from '../../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationSubclass } from '../../types/commercialMedication';
+import { medicationMatchesCommercialProducts, medicationSearchScore } from '../../utils/medicationSearch';
 
 interface Props {
   clinicId?: string | null;
   species?: string;
   weightKg?: string;
   onInsert: (medicationBlock: string, snapshot: PrescriptionMedicationSnapshot) => void;
+  editingSnapshot?: PrescriptionMedicationSnapshot | null;
+  onUpdate?: (oldBlockText: string, newBlockText: string, updatedSnapshot: PrescriptionMedicationSnapshot) => void;
+  onCancelEdit?: () => void;
+  addedSnapshots?: PrescriptionMedicationSnapshot[];
+  onRemoveSnapshot?: (snapshot: PrescriptionMedicationSnapshot) => void;
+  onEditSnapshot?: (snapshot: PrescriptionMedicationSnapshot) => void;
 }
 
 type Laterality = '' | 'direito' | 'esquerdo' | 'ambos' | 'afetado';
@@ -81,12 +94,14 @@ function inferDurationPreset(value: string): DurationPreset {
 }
 
 function durationClause(value: string): string {
-  const normalized = normalize(value);
-  if (!value.trim()) return '';
+  const cleaned = value.trim().replace(/[.\s]+$/, '');
+  const normalized = normalize(cleaned);
+  if (!cleaned) return '';
   if (normalized.includes('uso continuo')) return ', em uso contínuo';
   if (normalized.includes('reavaliacao')) return ', até reavaliação clínica';
-  if (/administrac/.test(normalized)) return `, por ${value.trim()}`;
-  return `, durante ${value.trim()}`;
+  if (/^(ate|durante|por)\b/.test(normalized)) return `, ${cleaned.charAt(0).toLowerCase()}${cleaned.slice(1)}`;
+  if (/administrac/.test(normalized)) return `, por ${cleaned}`;
+  return `, durante ${cleaned}`;
 }
 
 function normalize(value: unknown): string {
@@ -109,22 +124,85 @@ function metadataArray(entry: MedicationSearchResult, ...keys: string[]): string
   return [];
 }
 
-function commercialPresentationHeading(productName: string, presentations: string[]): string {
-  const escapedName = productName.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const withoutRepeatedName = presentations.map((presentation) => presentation.replace(new RegExp(`^${escapedName}\\s*[-—:]?\\s*`, 'i'), '').trim());
-  return [productName.toUpperCase(), withoutRepeatedName.filter(Boolean).join(' / ')].filter(Boolean).join(' — ');
-}
-
 function searchableActiveIngredient(entry: MedicationSearchResult): string {
   const activeIngredient = metadataText(entry, 'active_ingredient', 'activeIngredient');
   return normalize([
     activeIngredient || entry.name,
     ...metadataArray(entry, 'synonyms', 'active_ingredient_synonyms'),
+    ...metadataArray(entry, 'trade_names'),
+    ...metadataArray(entry, 'tags'),
+    metadataText(entry, 'pharmacologic_class', 'category'),
   ].join(' '));
+}
+
+function commercialActiveIngredientNames(entry: MedicationSearchResult): string[] {
+  const components = metadataArray(entry, 'active_components');
+  const fallback = metadataText(entry, 'active_ingredient', 'activeIngredient');
+  return (components.length ? components : [fallback])
+    .map((component) => normalize(component.split(/\d/)[0] || component))
+    .map((component) => component.replace(/\b(mg|mcg|g|ml|ui)\b.*$/i, '').trim())
+    .filter((component) => component.length >= 3);
+}
+
+function prescriptionActiveIngredientLabel(entry: MedicationSearchResult): string {
+  const components = metadataArray(entry, 'active_components');
+  const fallback = metadataText(entry, 'active_ingredient', 'activeIngredient') || entry.name;
+  const cleaned = (components.length ? components : fallback.split(/\s*\+\s*/))
+    .flatMap((component) => component.split(/\s*\+\s*/))
+    .map((component) => component.replace(/\s+\d+(?:[.,]\d+)?\s*(?:mcg|µg|ug|mg|g|mL|ml|UI|U|%).*$/i, '').trim())
+    .filter(Boolean);
+  const unique = Array.from(new Map(cleaned.map((item) => [normalize(item), item])).values());
+  return unique.join(' + ') || fallback;
+}
+
+function medicationPrescriptionHeader(
+  entry: MedicationSearchResult,
+  presentation?: MedicationPresentationRecord | null,
+  fallbackPresentation = '',
+): string {
+  const isCommercial = isCommercialSearchResult(entry);
+  const presentationText = [
+    fallbackPresentation,
+    presentation?.commercial_name,
+    presentation?.pharmaceutical_form,
+    presentation?.concentration_text,
+  ].filter(Boolean).join(' — ');
+  return formatPrescriptionMedicationHeader({
+    medicationName: isCommercial
+      ? prescriptionActiveIngredientLabel(entry)
+      : metadataText(entry, 'active_ingredient', 'activeIngredient') || entry.name,
+    commercialName: isCommercial ? entry.name : presentation?.commercial_name,
+    concentration: presentation?.concentration_text || extractPrescriptionConcentration(presentationText),
+    pharmaceuticalForm: presentation?.pharmaceutical_form || prescriptionPharmaceuticalFormLabel(presentationText),
+  });
 }
 
 function isCommercialSearchResult(entry: MedicationSearchResult): boolean {
   return entry.metadata?.search_result_type === 'commercial' || entry.id.startsWith('commercial:');
+}
+
+function commercialSpeciesDescription(entry: MedicationSearchResult): string {
+  const species = metadataArray(entry, 'species');
+  if (species.includes('dog') && species.includes('cat')) return 'cães e gatos';
+  if (species.includes('dog')) return 'cães';
+  if (species.includes('cat')) return 'gatos';
+  return 'espécie não informada';
+}
+
+function isCommercialSpeciesMismatch(entry: MedicationSearchResult, species: 'dog' | 'cat' | null): boolean {
+  if (!species) return false;
+  const supportedSpecies = metadataArray(entry, 'species');
+  return supportedSpecies.length > 0 && !supportedSpecies.includes(species);
+}
+
+function manualInstructionSentence(instructionValue: string, route: string): string {
+  const instruction = instructionValue.trim().replace(/[.\s]+$/, '');
+  if (!instruction) return '';
+  if (/^(administrar|aplicar|instilar|pingar|lavar|banhar|oferecer|dar|usar)\b/i.test(instruction)) {
+    return instruction.charAt(0).toUpperCase() + instruction.slice(1);
+  }
+  const action = /oftalm|otolog|nasal/.test(normalize(route)) ? 'Instilar' : /topic|pele/.test(normalize(route)) ? 'Aplicar' : 'Administrar';
+  return `${action} ${instruction}`;
 }
 
 function inferCommercialRoute(entry: MedicationSearchResult): string {
@@ -186,12 +264,24 @@ function routeNeedsLaterality(route: string): 'olho' | 'ouvido' | 'narina' | nul
   return null;
 }
 
-export function PrescriptionMedicationComposer({ clinicId, species, weightKg, onInsert }: Props) {
+export function PrescriptionMedicationComposer({
+  clinicId,
+  species,
+  weightKg,
+  onInsert,
+  editingSnapshot,
+  onUpdate,
+  onCancelEdit,
+  addedSnapshots,
+  onRemoveSnapshot,
+  onEditSnapshot,
+}: Props) {
   const catalogClinicId = clinicId || '00000000-0000-0000-0000-000000000000';
   const normalizedSpecies = normalizePrescriptionSpecies(species);
   const parsedWeight = parsePositiveDecimal(weightKg);
   const [catalog, setCatalog] = useState<MedicationSearchResult[]>([]);
   const [commercialResults, setCommercialResults] = useState<MedicationSearchResult[]>([]);
+  const [catalogCommercialResults, setCatalogCommercialResults] = useState<MedicationSearchResult[]>([]);
   const [commercialLoading, setCommercialLoading] = useState(false);
   const [commercialClass, setCommercialClass] = useState<CommercialMedicationClass | ''>('');
   const [commercialSubclass, setCommercialSubclass] = useState<CommercialMedicationSubclass | ''>('');
@@ -212,10 +302,13 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
   const [laterality, setLaterality] = useState<Laterality>('');
   const [applicationSite, setApplicationSite] = useState('');
   const [manualInstruction, setManualInstruction] = useState('');
-  const [manualRoute, setManualRoute] = useState('tópica');
+  const [manualPresentation, setManualPresentation] = useState('');
+  const [manualAdditionalInstructions, setManualAdditionalInstructions] = useState('');
+  const [manualRoute, setManualRoute] = useState('');
   const [manualRouteCustom, setManualRouteCustom] = useState('');
   const [manualTarget, setManualTarget] = useState('');
   const [roundingConfirmed, setRoundingConfirmed] = useState(false);
+  const [rawBlockEdit, setRawBlockEdit] = useState('');
 
   useEffect(() => {
     let active = true;
@@ -228,8 +321,14 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
 
   const activeIngredientResults = useMemo(() => {
     const needle = normalize(query.trim());
-    if (needle.length < 2) return [];
-    return catalog.filter((item) => searchableActiveIngredient(item).includes(needle)).slice(0, 12);
+    const ranked = catalog
+      .map((item) => ({ item, score: medicationSearchScore(needle, searchableActiveIngredient(item)) }))
+      .filter((entry): entry is { item: MedicationSearchResult; score: number } => entry.score !== null)
+      .sort((left, right) => left.score - right.score || left.item.name.localeCompare(right.item.name, 'pt-BR'));
+    if (needle.length < 2) return catalog;
+    return ranked
+      .slice(0, 24)
+      .map(({ item }) => item);
   }, [catalog, query]);
 
   const availableCommercialSubclasses = useMemo(
@@ -240,7 +339,7 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
   useEffect(() => {
     const needle = query.trim();
     const browsingByClass = Boolean(commercialClass);
-    if (!browsingByClass && (needle.length < 2 || activeIngredientResults.length)) {
+    if (!browsingByClass && needle.length < 2) {
       setCommercialResults([]);
       setCommercialLoading(false);
       return;
@@ -260,9 +359,52 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
         .finally(() => { if (active) setCommercialLoading(false); });
     }, 180);
     return () => { active = false; window.clearTimeout(timer); };
-  }, [activeIngredientResults.length, commercialClass, commercialSubclass, normalizedSpecies, query]);
+  }, [commercialClass, commercialSubclass, normalizedSpecies, query]);
 
-  const results = commercialClass ? commercialResults : activeIngredientResults.length ? activeIngredientResults : commercialResults;
+  useEffect(() => {
+    const needle = query.trim();
+    if (needle.length < 2 || commercialClass) {
+      setCatalogCommercialResults([]);
+      return;
+    }
+
+    const candidates = activeIngredientResults
+      .filter((item) => !item.id.startsWith('editorial:') && !item.id.startsWith('manual:'))
+      .slice(0, 8);
+    if (!candidates.length) {
+      setCatalogCommercialResults([]);
+      return;
+    }
+
+    let active = true;
+    void Promise.all(candidates.map(async (medication) => {
+      try {
+        const nextPresentations = await getMedicationPresentations(catalogClinicId, medication.id);
+        return buildCatalogPresentationCommercialResults(medication, nextPresentations);
+      } catch {
+        return [];
+      }
+    })).then((groups) => {
+      if (active) setCatalogCommercialResults(groups.flat());
+    });
+    return () => { active = false; };
+  }, [activeIngredientResults, catalogClinicId, commercialClass, query]);
+
+  const activeResults = useMemo(() => {
+    const filtered = commercialClass
+      ? activeIngredientResults.filter((item) => medicationMatchesCommercialProducts(item, commercialResults))
+      : activeIngredientResults;
+    return filtered.slice(0, query.trim().length >= 2 ? 12 : 40);
+  }, [activeIngredientResults, commercialClass, commercialResults, query]);
+  const productResults = useMemo(() => {
+    const byName = new Map<string, MedicationSearchResult>();
+    [...commercialResults, ...catalogCommercialResults].forEach((item) => {
+      const key = normalize(item.name);
+      if (!byName.has(key)) byName.set(key, item);
+    });
+    return Array.from(byName.values());
+  }, [catalogCommercialResults, commercialResults]);
+  const results = [...activeResults, ...productResults];
   const searchIsOpen = query.trim().length >= 2 || Boolean(commercialClass);
 
   useEffect(() => {
@@ -270,18 +412,76 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
     let active = true;
     setLoading(true);
     setManualDoseChosen(false);
-    if (isCommercialSearchResult(selected)) setManualRoute(inferCommercialRoute(selected));
-    Promise.all(isCommercialSearchResult(selected)
+    const isCommercial = isCommercialSearchResult(selected);
+    const catalogRoutes = metadataArray(selected, 'routes');
+    const route = isCommercial ? inferCommercialRoute(selected) : catalogRoutes.length === 1 ? catalogRoutes[0] : '';
+    setManualRoute(route);
+    setManualPresentation(isCommercial ? metadataArray(selected, 'presentation_labels')[0] || '' : '');
+    setManualAdditionalInstructions('');
+    setManualInstruction('');
+    setFrequency('');
+    setFrequencyPreset('');
+    setDuration('');
+    setDurationPreset('');
+    setDurationQuantity('');
+
+    // Try finding catalog entry for active ingredient if commercial product
+    const activeName = isCommercial
+      ? metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name
+      : selected.name;
+    const commercialActiveNames = isCommercial ? commercialActiveIngredientNames(selected) : [];
+    const linkedCatalogMedicationId = isCommercial ? metadataText(selected, 'catalog_medication_id') : '';
+    const catalogMatch = isCommercial
+      ? catalog.find((item) => item.id === linkedCatalogMedicationId)
+        || catalog.find((item) => commercialActiveNames.some((ingredient) => searchableActiveIngredient(item).includes(ingredient)))
+        || catalog.find((item) => searchableActiveIngredient(item).includes(normalize(activeName)))
+      : selected;
+    const targetId = catalogMatch?.id || selected.id;
+
+    Promise.all(selected.id.startsWith('manual:')
       ? [Promise.resolve([] as MedicationPresentationRecord[]), Promise.resolve([] as RecommendedDose[])]
-      : [getMedicationPresentations(catalogClinicId, selected.id), getMedicationRecommendedDoses(catalogClinicId, selected.id)])
+      : [getMedicationPresentations(catalogClinicId, targetId), getMedicationRecommendedDoses(catalogClinicId, targetId)])
       .then(([nextPresentations, nextDoses]) => {
-      if (!active) return;
-      setPresentations(nextPresentations);
-      setDoses(nextDoses);
-      setPresentationId(nextPresentations[0]?.id || '');
-    }).finally(() => active && setLoading(false));
+        if (!active) return;
+        const matchingCommercialPresentations = isCommercial
+          ? nextPresentations.filter((item) => normalize(item.commercial_name || '') === normalize(selected.name))
+          : [];
+        const visiblePresentations = isCommercial && matchingCommercialPresentations.length
+          ? matchingCommercialPresentations
+          : nextPresentations;
+        setPresentations(visiblePresentations);
+        setDoses(nextDoses);
+        const editingThisMedication = editingSnapshot && (
+          editingSnapshot.medicationId === selected.id
+          || normalize(editingSnapshot.activeIngredient) === normalize(activeName)
+          || commercialActiveNames.some((ingredient) => normalize(editingSnapshot.activeIngredient).includes(ingredient))
+        ) ? editingSnapshot : null;
+
+        if (editingThisMedication) {
+          const restoredPresentationId = visiblePresentations.some((item) => item.id === editingThisMedication.presentationId)
+            ? editingThisMedication.presentationId || ''
+            : visiblePresentations[0]?.id || '';
+          setPresentationId(restoredPresentationId);
+          setDoseId(editingThisMedication.doseId || 'manual');
+          setManualDoseChosen(!editingThisMedication.doseId);
+          setDoseValue(editingThisMedication.selectedDose > 0 ? String(editingThisMedication.selectedDose) : '');
+          setFrequency(editingThisMedication.frequency || '');
+          setFrequencyPreset(inferFrequencyPreset(editingThisMedication.frequency || ''));
+          setDuration(editingThisMedication.duration || '');
+          setDurationPreset(inferDurationPreset(editingThisMedication.duration || ''));
+          setDurationQuantity(editingThisMedication.duration?.match(/[\d.,]+/)?.[0] || '');
+          setManualInstruction(editingThisMedication.manualInstruction || '');
+          setManualPresentation(editingThisMedication.manualPresentation || '');
+          setManualAdditionalInstructions(editingThisMedication.manualAdditionalInstructions || '');
+          if (editingThisMedication.route) setManualRoute(editingThisMedication.route);
+        } else {
+          setPresentationId(visiblePresentations[0]?.id || '');
+        }
+
+      })
+      .finally(() => active && setLoading(false));
     return () => { active = false; };
-  }, [catalogClinicId, selected]);
+  }, [catalog, catalogClinicId, editingSnapshot, selected]);
 
   const compatibleDoses = useMemo(
     () => normalizedSpecies ? doses.filter((dose) => isSpeciesCompatible(dose.species, normalizedSpecies)) : [],
@@ -290,6 +490,9 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
   const selectedDose = compatibleDoses.find((dose) => dose.id === doseId);
   const selectedPresentation = presentations.find((item) => item.id === presentationId);
   const commercialSelection = selected ? isCommercialSearchResult(selected) : false;
+  const commercialSpeciesMismatch = selected && commercialSelection
+    ? isCommercialSpeciesMismatch(selected, normalizedSpecies)
+    : false;
   const commercialPresentations = selected ? metadataArray(selected, 'presentation_labels') : [];
   const bulaGuidance = selected && commercialSelection ? commercialBulaGuidance(selected) : '';
   const plumbsGuidance = selected && commercialSelection ? commercialPlumbsGuidance(selected, normalizedSpecies) : '';
@@ -310,14 +513,14 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
   useEffect(() => {
     if (!selectedDose) return;
     const initial = selectedDose.calculator_default_dose ?? (selectedDose.dose_max == null ? selectedDose.dose_value : null);
-    const nextFrequency = selectedDose.frequency_text || selectedDose.frequency || '';
-    const nextDuration = selectedDose.duration || '';
+    const nextFrequency = selectedDose.frequency_text || selectedDose.frequency || 'a cada 12 horas';
+    const nextDuration = selectedDose.duration || 'durante 7 dias';
     setDoseValue(initial == null ? '' : String(initial));
     setFrequency(nextFrequency);
     setFrequencyPreset(inferFrequencyPreset(nextFrequency));
     setDuration(nextDuration);
     setDurationPreset(inferDurationPreset(nextDuration));
-    setDurationQuantity(nextDuration.match(/[\d.,]+/)?.[0] || '');
+    setDurationQuantity(nextDuration.match(/[\d.,]+/)?.[0] || '7');
     setRoundingConfirmed(false);
     setLaterality('');
   }, [selectedDose?.id]);
@@ -338,19 +541,33 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
   const weightMissing = basis === 'weight_based' && !parsedWeight;
   const lateralityMissing = Boolean(lateralityTarget && !laterality);
   const manualMode = Boolean(selected && !selectedDose && doseId === 'manual');
-  const manualReady = manualMode && manualInstruction.trim() && frequency.trim() && duration.trim() && (manualRoute !== 'outra' || manualRouteCustom.trim());
+  const resolvedManualRoute = manualRoute === 'outra' ? manualRouteCustom.trim() : manualRoute;
+  const manualSentence = manualInstructionSentence(manualInstruction, resolvedManualRoute);
+  const manualProductPresentation = manualPresentation.trim()
+    || (commercialSelection ? commercialPresentations[0] || '' : selectedPresentation ? presentationLabel(selectedPresentation) : '');
+  const manualHeading = selected ? medicationPrescriptionHeader(selected, selectedPresentation, manualProductPresentation) : '';
+  const manualTargetText = manualTarget.trim() ? ` em ${manualTarget.trim()}` : '';
+  const manualAdministrationLine = manualSentence
+    ? `${manualSentence}${resolvedManualRoute ? `, por via ${resolvedManualRoute}` : ''}${manualTargetText}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`
+    : '';
+  const manualPreviewLines = [
+    manualHeading,
+    manualAdministrationLine,
+    manualAdditionalInstructions.trim() ? `Orientações: ${manualAdditionalInstructions.trim().replace(/[.\s]+$/, '')}.` : '',
+  ].filter(Boolean);
+  const manualReady = manualMode && manualInstruction.trim() && resolvedManualRoute && frequency.trim() && duration.trim();
   const calculatedReady = selectedDose && parsedDoseValue && frequency.trim() && duration.trim() && calculation && !calculation.blockedReason && !weightMissing && !lateralityMissing && (!calculation.requiresConfirmation || roundingConfirmed);
   const canInsert = Boolean(selected && (manualReady || calculatedReady));
 
   const reset = () => {
     setSelected(null); setQuery(''); setPresentations([]); setDoses([]); setDoseId(''); setManualDoseChosen(false); setPresentationId('');
     setDoseValue(''); setFrequency(''); setFrequencyPreset(''); setDuration(''); setDurationPreset(''); setDurationQuantity('');
-    setLaterality(''); setApplicationSite(''); setManualInstruction(''); setManualRoute('tópica'); setManualRouteCustom(''); setManualTarget('');
+    setLaterality(''); setApplicationSite(''); setManualInstruction(''); setManualPresentation(''); setManualAdditionalInstructions(''); setManualRoute(''); setManualRouteCustom(''); setManualTarget('');
   };
 
   const importCommercialPrescription = () => {
     if (!selected || !commercialSelection || !commercialPrescriptionExample) return;
-    const productHeading = commercialPresentationHeading(selected.name, commercialPresentations);
+    const productHeading = medicationPrescriptionHeader(selected, null, commercialPresentations[0] || '');
     onInsert(`${productHeading}\n${commercialPrescriptionExample.trim()}`, {
       medicationId: selected.id,
       medicationName: selected.name,
@@ -366,23 +583,32 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
     });
   };
 
+  useEffect(() => {
+    if (!editingSnapshot) return;
+    setRawBlockEdit(editingSnapshot.rawBlockText || '');
+    if (!catalog.length && !editingSnapshot.medicationId.startsWith('manual:')) return;
+    const match = catalog.find((item) => item.id === editingSnapshot.medicationId)
+      || catalog.find((item) => searchableActiveIngredient(item).includes(normalize(editingSnapshot.activeIngredient)));
+    if (match) {
+      setSelected(match);
+    } else {
+      setSelected({
+        id: editingSnapshot.medicationId,
+        name: editingSnapshot.medicationName,
+        is_controlled: false,
+        is_private: false,
+        metadata: { active_ingredient: editingSnapshot.activeIngredient },
+      });
+    }
+  }, [catalog, editingSnapshot]);
+
   const insert = () => {
     if (!selected || !canInsert) return;
 
     if (manualMode) {
-      const route = manualRoute === 'outra' ? manualRouteCustom.trim() : manualRoute;
-      const rawInstruction = manualInstruction.trim().replace(/[.\s]+$/, '');
-      const instruction = rawInstruction.charAt(0).toUpperCase() + rawInstruction.slice(1);
-      const productPresentation = commercialSelection
-        ? commercialPresentations[0] || ''
-        : selectedPresentation ? presentationLabel(selectedPresentation) : '';
-      const heading = [selected.name.toUpperCase(), productPresentation].filter(Boolean).join(' — ');
-      const target = manualTarget.trim() ? ` em ${manualTarget.trim()}` : '';
-      const lines = [
-        heading,
-        `${instruction}${route ? `, por via ${route}` : ''}${target}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`,
-      ];
-      onInsert(lines.join('\n'), {
+      const route = resolvedManualRoute;
+      const lines = manualPreviewLines;
+      const snapshot: PrescriptionMedicationSnapshot = {
         medicationId: selected.id,
         medicationName: selected.name,
         activeIngredient: metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name,
@@ -394,7 +620,20 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
         doseUnit: 'modo de uso',
         selectedDose: 0,
         precautions: [],
-      });
+        rawBlockText: lines.join('\n'),
+        frequency,
+        duration,
+        route,
+        manualInstruction,
+        manualPresentation,
+        manualAdditionalInstructions,
+      };
+
+      if (editingSnapshot && onUpdate) {
+        onUpdate(editingSnapshot.rawBlockText || '', lines.join('\n'), snapshot);
+      } else {
+        onInsert(lines.join('\n'), snapshot);
+      }
       return;
     }
 
@@ -410,11 +649,11 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
     const clinicalDose = `${CLINICAL_DOSE_LABEL} ${formatDecimalPtBr(parsedDoseValue)} ${unit} • Faixa indicada: ${indicatedRange}`;
     const target = lateralityTarget && laterality ? ` no ${lateralityTarget} ${laterality}` : applicationSite ? ` em ${applicationSite}` : '';
     const lines = [
-      `${metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name.toUpperCase()} — ${presentation}`,
+      medicationPrescriptionHeader(selected, selectedPresentation, presentation),
       `Administrar ${amount}${target}, por via ${selectedDose.route || 'indicada'}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`,
       clinicalDose,
     ];
-    onInsert(lines.join('\n'), {
+    const snapshot: PrescriptionMedicationSnapshot = {
       medicationId: selected.id,
       medicationName: selected.name,
       activeIngredient: metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name,
@@ -426,16 +665,98 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
       doseUnit: unit,
       selectedDose: parsedDoseValue || 0,
       precautions: [],
-    });
+      rawBlockText: lines.join('\n'),
+      frequency,
+      duration,
+      route: selectedDose.route,
+    };
+
+    if (editingSnapshot && onUpdate) {
+      onUpdate(editingSnapshot.rawBlockText || '', lines.join('\n'), snapshot);
+    } else {
+      onInsert(lines.join('\n'), snapshot);
+    }
   };
 
   return (
     <div className="space-y-5" data-testid="prescription-medication-composer">
-      {!normalizedSpecies ? <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm">Selecione cão ou gato antes de escolher o princípio ativo.</p> : null}
+      {!normalizedSpecies ? <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-sm">Selecione cão ou gato antes de escolher o medicamento.</p> : null}
+
+      {editingSnapshot ? (
+        <div className="space-y-3 rounded-xl border border-sky-500/30 bg-sky-500/10 p-3 text-sm text-sky-900 dark:text-sky-100">
+          <div className="flex items-center justify-between gap-3">
+            <div>
+              <strong className="block text-xs uppercase tracking-wider text-sky-700 dark:text-sky-300">Modo de edição de medicamento</strong>
+              <span>Alterando: <strong>{editingSnapshot.medicationName}</strong></span>
+            </div>
+            {onCancelEdit ? (
+              <button type="button" onClick={onCancelEdit} className="min-h-10 rounded-lg border border-sky-500/30 bg-background px-3 text-xs font-semibold text-foreground hover:bg-muted">
+                Cancelar edição
+              </button>
+            ) : null}
+          </div>
+          <label className="block space-y-1.5">
+            <span className="block text-[11px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">Texto deste medicamento na receita</span>
+            <textarea
+              value={rawBlockEdit}
+              onChange={(event) => setRawBlockEdit(event.target.value)}
+              rows={4}
+              className="w-full resize-y rounded-xl border border-sky-500/30 bg-background p-3 text-sm leading-5 text-foreground outline-none focus:border-primary focus:ring-2 focus:ring-primary/20"
+              aria-label="Texto deste medicamento na receita"
+            />
+          </label>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              disabled={!rawBlockEdit.trim() || !onUpdate}
+              onClick={() => onUpdate?.(
+                editingSnapshot.rawBlockText || '',
+                rawBlockEdit.trim(),
+                { ...editingSnapshot, rawBlockText: rawBlockEdit.trim() },
+              )}
+              className="min-h-10 rounded-lg bg-sky-700 px-4 text-xs font-bold text-white hover:bg-sky-800 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              Salvar alteração no medicamento
+            </button>
+          </div>
+        </div>
+      ) : null}
+
+      {addedSnapshots && addedSnapshots.length > 0 && !selected ? (
+        <div className="rounded-xl border border-border bg-card p-4 space-y-3">
+          <div className="flex items-center justify-between">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
+              Medicamentos adicionados nesta receita ({addedSnapshots.length})
+            </h4>
+          </div>
+          <div className="grid gap-2">
+            {addedSnapshots.map((item, index) => (
+              <div key={`${item.medicationId}-${index}`} className="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-border/70 bg-muted/30 p-3 text-xs">
+                <div>
+                  <strong className="block text-sm">{item.medicationName}</strong>
+                  <span className="text-muted-foreground">{item.activeIngredient} • {item.doseUnit} {item.selectedDose ? `(${item.selectedDose})` : ''}</span>
+                </div>
+                <div className="flex gap-2">
+                  {onEditSnapshot ? (
+                    <button type="button" onClick={() => onEditSnapshot(item)} className="inline-flex h-8 items-center gap-1 rounded-md border border-border bg-background px-2.5 text-xs font-semibold text-sky-700 hover:bg-sky-50 dark:text-sky-300 dark:hover:bg-sky-950/40">
+                      Editar
+                    </button>
+                  ) : null}
+                  {onRemoveSnapshot ? (
+                    <button type="button" onClick={() => onRemoveSnapshot(item)} className="inline-flex h-8 items-center gap-1 rounded-md border border-border bg-background px-2.5 text-xs font-semibold text-rose-700 hover:bg-rose-50 dark:text-rose-300 dark:hover:bg-rose-950/40">
+                      Remover
+                    </button>
+                  ) : null}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
 
       {!selected ? (
         <div className="relative">
-          <FieldLabel>1. Princípio ativo</FieldLabel>
+          <FieldLabel>1. Medicamento</FieldLabel>
           <div className="relative mt-2">
             <Search className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
             <input value={query} onChange={(event) => setQuery(event.target.value)} type="search" autoFocus
@@ -443,6 +764,9 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
               className="h-11 w-full rounded-xl border border-border bg-background pl-10 pr-10 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" />
             {loading || commercialLoading ? <Loader2 className="absolute right-3 top-3.5 h-4 w-4 animate-spin text-primary" /> : null}
           </div>
+          <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            Digite o <strong className="font-semibold text-foreground">princípio ativo</strong> (ex.: pimobendan) ou o <strong className="font-semibold text-foreground">nome comercial</strong> (ex.: Vetmedin). A busca aceita pequenos erros de digitação.
+          </p>
           <div className="mt-3 grid gap-3 rounded-xl border border-border/75 bg-muted/25 p-3 sm:grid-cols-2">
             <label className="space-y-1.5">
               <FieldLabel>Categoria / classe</FieldLabel>
@@ -476,22 +800,66 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
           </div>
           {searchIsOpen ? (
             <div className="mt-2 max-h-72 overflow-y-auto rounded-xl border border-border bg-card p-1.5 shadow-xl">
-              {results.map((item) => (
+              {activeResults.length ? (
+                <div className="flex items-center justify-between px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
+                  <span>Medicamentos do catálogo</span><span>{activeResults.length}</span>
+                </div>
+              ) : null}
+              {activeResults.map((item) => (
                 <button key={item.id} type="button" onClick={() => { setSelected(item); setQuery(''); }}
                   className="flex min-h-14 w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
                   <Pill className="h-4 w-4 shrink-0 text-primary" />
                   <span className="min-w-0 flex-1">
-                    <strong className="block truncate text-sm">{isCommercialSearchResult(item) ? item.name : metadataText(item, 'active_ingredient', 'activeIngredient') || item.name}</strong>
+                    <strong className="block truncate text-sm">{metadataText(item, 'active_ingredient', 'activeIngredient') || item.name}</strong>
                     <span className="block truncate text-xs text-muted-foreground">
-                      {isCommercialSearchResult(item)
-                        ? [metadataText(item, 'active_ingredient', 'activeIngredient'), metadataText(item, 'manufacturer')].filter(Boolean).join(' • ')
-                        : `${item.name}${metadataText(item, 'pharmacologic_class') ? ` • ${metadataText(item, 'pharmacologic_class')}` : ''}`}
+                      {`${item.name}${metadataText(item, 'pharmacologic_class') ? ` • ${metadataText(item, 'pharmacologic_class')}` : ''}`}
                     </span>
                   </span>
-                  {isCommercialSearchResult(item) ? <span className="shrink-0 rounded-full bg-sky-500/10 px-2 py-1 text-[10px] font-bold text-sky-700">Nome comercial</span> : null}
+                  <span className="shrink-0 rounded-full border border-primary/20 bg-primary/10 px-2 py-1 text-[10px] font-bold text-primary">Princípio ativo</span>
                 </button>
               ))}
-              {!loading && !commercialLoading && !results.length ? <p className="p-4 text-center text-xs text-muted-foreground">Nenhum princípio ativo ou nome comercial encontrado.</p> : null}
+              {productResults.length ? (
+                <div className={`${activeResults.length ? 'mt-1 border-t border-border/70' : ''} flex items-center justify-between px-3 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground`}>
+                  <span>Opções comerciais</span><span>{productResults.length}</span>
+                </div>
+              ) : null}
+              {productResults.map((item) => (
+                <button key={item.id} type="button" onClick={() => { setSelected(item); setQuery(''); }}
+                  className="flex min-h-14 w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                  <Pill className="h-4 w-4 shrink-0 text-sky-600 dark:text-sky-400" />
+                  <span className="min-w-0 flex-1">
+                    <strong className="block truncate text-sm">{item.name}</strong>
+                    <span className="block truncate text-xs text-muted-foreground">
+                      {[metadataText(item, 'active_ingredient', 'activeIngredient'), metadataText(item, 'manufacturer')].filter(Boolean).join(' • ')}
+                    </span>
+                    {isCommercialSpeciesMismatch(item, normalizedSpecies) ? (
+                      <span className="mt-0.5 block text-[11px] font-semibold text-amber-700 dark:text-amber-300">Cadastrado para {commercialSpeciesDescription(item)} • confirme o uso na espécie selecionada</span>
+                    ) : null}
+                  </span>
+                  <span className="shrink-0 rounded-full border border-sky-500/20 bg-sky-500/10 px-2 py-1 text-[10px] font-bold text-sky-700 dark:text-sky-300">Nome comercial</span>
+                </button>
+              ))}
+              {!loading && !commercialLoading && !results.length ? (
+                <div className="p-4 text-center">
+                  <p className="text-sm font-semibold text-foreground">Nenhum medicamento encontrado</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">Confira a escrita ou crie uma prescrição manual com o nome informado.</p>
+                  {query.trim().length >= 2 ? (
+                    <button
+                      type="button"
+                      onClick={() => setSelected({
+                        id: `manual:${normalize(query.trim()).replace(/[^a-z0-9]+/g, '-')}`,
+                        name: query.trim(),
+                        is_controlled: false,
+                        is_private: true,
+                        metadata: { active_ingredient: query.trim(), search_result_type: 'manual' },
+                      })}
+                      className="mt-3 inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 rounded-lg border border-primary/25 bg-primary/10 px-4 text-xs font-semibold text-primary transition-colors duration-200 hover:bg-primary/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Plus className="h-4 w-4" /> Usar &ldquo;{query.trim()}&rdquo; manualmente
+                    </button>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           ) : null}
         </div>
@@ -499,8 +867,15 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
         <>
           <div className="flex items-start justify-between rounded-xl border border-primary/20 bg-primary/[0.05] p-4">
             <div><p className="text-xs font-bold uppercase tracking-wider text-primary">{isCommercialSearchResult(selected) ? 'Produto comercial selecionado' : 'Princípio ativo selecionado'}</p><p className="mt-1 font-semibold">{isCommercialSearchResult(selected) ? selected.name : metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name}</p><p className="text-xs text-muted-foreground">{isCommercialSearchResult(selected) ? [metadataText(selected, 'active_ingredient', 'activeIngredient'), metadataText(selected, 'manufacturer')].filter(Boolean).join(' • ') : selected.name}</p></div>
-            <button type="button" onClick={reset} className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-muted" aria-label="Trocar princípio ativo"><X className="h-4 w-4" /></button>
+            <button type="button" onClick={reset} className="flex h-10 w-10 items-center justify-center rounded-lg hover:bg-muted" aria-label="Trocar medicamento"><X className="h-4 w-4" /></button>
           </div>
+
+          {commercialSpeciesMismatch ? (
+            <div className="flex gap-2 rounded-xl border border-amber-500/30 bg-amber-500/10 p-3 text-xs leading-5 text-amber-900 dark:text-amber-100" role="status">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+              <span>Este produto está cadastrado para <strong>{commercialSpeciesDescription(selected)}</strong>, mas continua visível por conter o fármaco pesquisado. Confirme a indicação antes de prescrever.</span>
+            </div>
+          ) : null}
 
           {commercialSelection ? (
             <div className="space-y-2 rounded-xl border border-sky-500/20 bg-sky-500/[0.06] p-4">
@@ -509,7 +884,7 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
               {commercialPresentations.length ? <p className="text-xs text-muted-foreground">{commercialPresentations.join(' • ')}</p> : null}
               <p className="text-xs text-muted-foreground">Não é necessário escolher outra apresentação.</p>
             </div>
-          ) : (
+          ) : presentations.length ? (
             <div className="space-y-2">
               <FieldLabel>2. Apresentação comercial</FieldLabel>
               <select value={presentationId} onChange={(event) => { setPresentationId(event.target.value); setRoundingConfirmed(false); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
@@ -518,7 +893,7 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
               </select>
               {selectedPresentation ? <div className="grid gap-1 rounded-lg bg-muted/40 p-3 text-xs text-muted-foreground sm:grid-cols-2"><span>Concentração: {selectedPresentation.concentration_text || 'não cadastrada'}</span><span>Forma: {selectedPresentation.pharmaceutical_form || 'não cadastrada'}</span><span>Fabricante: {String(selectedPresentation.metadata?.manufacturer || 'não cadastrado')}</span><span>Origem: {selectedPresentation.source === 'global' ? 'Catálogo global' : 'Clínica'}</span></div> : null}
             </div>
-          )}
+          ) : null}
 
           {commercialSelection && (bulaGuidance || plumbsGuidance) ? (
             <section className="grid gap-3 sm:grid-cols-2" aria-label="Referências de uso do produto comercial">
@@ -556,15 +931,21 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
             </section>
           ) : null}
 
-          <div className="space-y-2">
-            <FieldLabel>{commercialSelection ? 'Modo de prescrição' : '3. Dose ou modo de uso'}</FieldLabel>
-            <select value={doseId} onChange={(event) => { setDoseId(event.target.value); setManualDoseChosen(event.target.value === 'manual'); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
-              {compatibleDoses.map((dose) => <option key={dose.id} value={dose.id}>{dose.indication || 'Indicação não informada'} • {dose.dose_value}{dose.dose_max != null ? `–${dose.dose_max}` : ''} {normalizeDoseUnit(dose.dose_unit).canonical}</option>)}
-              <option value="manual">Definir dose ou modo de uso manualmente</option>
-            </select>
-            {!compatibleDoses.length ? <p className="rounded-lg bg-muted/45 p-3 text-xs text-muted-foreground">Este produto não possui dose estruturada. Informe abaixo como ele deverá ser utilizado.</p> : null}
-            {selectedDose ? <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{selectedDose.route} • {selectedDose.frequency_text || selectedDose.frequency || 'frequência não cadastrada'}</span>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary">Abrir fonte <ExternalLink className="h-3 w-3" /></a> : null}</div> : null}
-          </div>
+          {compatibleDoses.length ? (
+            <div className="space-y-2">
+              <FieldLabel>{commercialSelection ? 'Modo de prescrição' : '3. Dose ou modo de uso'}</FieldLabel>
+              <select value={doseId} onChange={(event) => { setDoseId(event.target.value); setManualDoseChosen(event.target.value === 'manual'); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
+                {compatibleDoses.map((dose) => <option key={dose.id} value={dose.id}>{dose.indication || 'Indicação não informada'} • {dose.dose_value}{dose.dose_max != null ? `–${dose.dose_max}` : ''} {normalizeDoseUnit(dose.dose_unit).canonical}</option>)}
+                <option value="manual">Definir dose ou modo de uso manualmente</option>
+              </select>
+              {selectedDose ? <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{selectedDose.route} • {selectedDose.frequency_text || selectedDose.frequency || 'frequência não cadastrada'}</span>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary">Abrir fonte <ExternalLink className="h-3 w-3" /></a> : null}</div> : null}
+            </div>
+          ) : (
+            <div className="flex items-start gap-2 rounded-xl border border-border bg-muted/35 p-3 text-xs leading-5 text-muted-foreground">
+              <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600" />
+              <span><strong className="text-foreground">Sem dose estruturada no ConsultaVet.</strong> Preencha a prescrição manual assistida abaixo; nenhum valor será presumido pelo sistema.</span>
+            </div>
+          )}
 
           {selectedDose ? (
             <div className="grid gap-4 sm:grid-cols-2">
@@ -575,19 +956,28 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
           ) : null}
 
           {manualMode ? (
-            <section className="space-y-4 rounded-xl border border-primary/20 bg-primary/[0.04] p-4">
-              <div>
-                <p className="text-sm font-semibold">Preencha o modo de uso</p>
-                <p className="mt-1 text-xs text-muted-foreground">Funciona para comprimidos, pomadas, shampoos, frascos, colírios, produtos otológicos e outros.</p>
+            <section className="space-y-5 rounded-xl border border-primary/25 bg-primary/[0.04] p-4">
+              <div className="flex items-start gap-3">
+                <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary"><FileInput className="h-4 w-4" /></span>
+                <div>
+                  <p className="text-sm font-semibold">Prescrição manual assistida</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">Use quando não houver apresentação ou dose cadastrada. O sistema organiza os campos e monta o texto, sem sugerir doses automaticamente.</p>
+                </div>
               </div>
               <label className="block space-y-2">
-                <FieldLabel>Quantidade ou instrução de uso</FieldLabel>
-                <input value={manualInstruction} onChange={(event) => setManualInstruction(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" placeholder="Ex.: aplicar uma camada fina ou instilar 2 gotas" />
+                <FieldLabel>Apresentação ou concentração (opcional)</FieldLabel>
+                <input value={manualPresentation} onChange={(event) => setManualPresentation(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="Ex.: comprimido 5 mg, solução 10 mg/mL ou produto manipulado" />
+              </label>
+              <label className="block space-y-2">
+                <FieldLabel>Quantidade por administração ou modo de usar</FieldLabel>
+                <input value={manualInstruction} onChange={(event) => setManualInstruction(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="Ex.: 1 comprimido, 0,5 mL, 2 gotas ou uma camada fina" />
+                <span className="block text-[11px] text-muted-foreground">Não informe a frequência aqui; ela será escolhida separadamente abaixo.</span>
               </label>
               <div className="grid gap-4 sm:grid-cols-2">
                 <label className="space-y-2">
                   <FieldLabel>Via de administração</FieldLabel>
                   <select value={manualRoute} onChange={(event) => setManualRoute(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm">
+                    <option value="">Selecionar via</option>
                     <option value="oral">Oral</option>
                     <option value="tópica">Tópica / pele</option>
                     <option value="otológica">Otológica</option>
@@ -605,6 +995,10 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
                 </label>
                 {manualRoute === 'outra' ? <label className="space-y-2 sm:col-span-2"><FieldLabel>Descreva a via</FieldLabel><input value={manualRouteCustom} onChange={(event) => setManualRouteCustom(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" placeholder="Ex.: inalatória" /></label> : null}
               </div>
+              <label className="block space-y-2">
+                <FieldLabel>Orientação adicional (opcional)</FieldLabel>
+                <textarea value={manualAdditionalInstructions} onChange={(event) => setManualAdditionalInstructions(event.target.value)} rows={2} className="min-h-20 w-full resize-y rounded-xl border border-border bg-background px-3 py-2 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20" placeholder="Ex.: oferecer cerca de 1 hora antes do alimento; agitar antes de usar" />
+              </label>
             </section>
           ) : null}
 
@@ -634,6 +1028,19 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
             </label>
           </section>
 
+          {manualMode ? (
+            <section className="rounded-xl border border-border bg-muted/30 p-4" aria-live="polite">
+              <FieldLabel>Prévia na receita</FieldLabel>
+              {manualAdministrationLine ? (
+                <div className="mt-2 whitespace-pre-line rounded-lg border border-border/80 bg-background p-3 text-sm leading-6">
+                  {manualPreviewLines.join('\n')}
+                </div>
+              ) : (
+                <p className="mt-2 text-xs leading-5 text-muted-foreground">Preencha quantidade, via, frequência e duração para visualizar o texto final.</p>
+              )}
+            </section>
+          ) : null}
+
           {calculation ? (
             <section className="rounded-xl border border-border bg-muted/30 p-4">
               <div className="grid gap-3 sm:grid-cols-3"><div><FieldLabel>Dose total calculada</FieldLabel><p className="mt-1 text-lg font-bold">{formatDecimalPtBr(calculation.totalDose)} {calculation.totalDoseUnit}</p></div>{calculation.exactAmount != null ? <div><FieldLabel>Quantidade exata</FieldLabel><p className="mt-1 text-lg font-bold">{formatDecimalPtBr(calculation.exactAmount)} {calculation.administrationUnit}</p></div> : null}{calculation.practicalAmount != null ? <div><FieldLabel>Quantidade prática sugerida</FieldLabel><p className="mt-1 text-lg font-bold text-primary">{formatDecimalPtBr(calculation.practicalAmount)} {calculation.administrationUnit}</p></div> : null}</div>
@@ -644,7 +1051,7 @@ export function PrescriptionMedicationComposer({ clinicId, species, weightKg, on
             </section>
           ) : null}
 
-          <button type="button" disabled={!canInsert} onClick={insert} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-45"><CheckCircle2 className="h-4 w-4" />Inserir medicamento na receita</button>
+          <button type="button" disabled={!canInsert} onClick={insert} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-45"><CheckCircle2 className="h-4 w-4" />{editingSnapshot ? 'Salvar alterações no medicamento' : 'Inserir medicamento na receita'}</button>
         </>
       )}
     </div>

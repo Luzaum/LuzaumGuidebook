@@ -168,14 +168,6 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
         'ABCD. Fig. 7 — Patogenese da infecção por FeLV (via oral-nasal, viremia primária e secundária, eliminação viral). European Advisory Board on Cat Diseases, 2021. Adaptado de Hartmann K. Viruses. 2012;4(11):2684–2710.',
       display: 'wide',
     },
-    figuraDesfechos: {
-      kind: 'clinicalFigure' as const,
-      src: '/assets/consulta-vet/diseases/leucemia-viral-felina/felv-infection-outcomes.jpg',
-      alt: 'Quatro desfechos possíveis da infecção por FeLV',
-      caption:
-        'Hofmann-Lehmann R, Hartmann K. Fig. 1 — Curso temporal após exposição e quatro desfechos possíveis (abortiva, regressiva, progressiva, focal). J Feline Med Surg. 2020;22(9):831–846. Reproduzido sob licença CC BY-NC 4.0 (PMC).',
-      display: 'wide',
-    },
     figuraRespostaImune: {
       kind: 'clinicalFigure' as const,
       src: '/assets/consulta-vet/diseases/leucemia-viral-felina/felv-immune-response-outcomes.jpg',
@@ -209,7 +201,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
           mechanism:
             'Infecção ou supressão de precursores eritroides na medula; aplasia, mielodisplasia ou FeLV-C.',
           clinicalMeaning:
-            'Investigar reticulócitos e medula; anemia regenerativa exige hemoplasma, IMHA ou hemorragia.',
+            'Investigar reticulócitos e medula; anemia regenerativa exige hemoplasma, AHIM ou hemorragia.',
           priority: 'common',
         },
         {
@@ -269,38 +261,49 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
   diagnosis: [
     {
       stepNumber: 1,
-      title: 'Teste de antígeno p27 (triagem)',
+      title: 'Fluxograma Inicial: Triagem PoC p27 e Confirmação por PCR (Westman et al., 2019 adaptado)',
+      purpose: 'Orientar a conduta diagnóstica sequencial em gatos expostos ou suspeitos.',
+      description:
+        'Iniciar com teste rápido PoC antígeno p27 em sangue total ou plasma. Um resultado positivo NUNCA deve levar à eutanásia isolada; obrigatoriamente realizar confirmação com PCR proviral para DNA integrado. Em caso de discordância (p27+/PCR- ou p27-/PCR+), reavaliar clinicamente e retestar em 6–12 semanas (Westman et al., 2019 adaptado; Hofmann-Lehmann & Hartmann, 2020).',
+      interpretation:
+        'p27+/PCR+ = Infecção Progressiva confirmada (viremia ativa, contagioso). p27-/PCR+ = Infecção Regressiva (provírus integrado, sem viremia ativa). p27+/PCR- = Discordante (falso-positivo p27 ou viremia transitória).',
+      limitations: 'Valores preditivos positivos dependem da prevalência populacional.',
+      isGoldStandard: false,
+    },
+    {
+      stepNumber: 2,
+      title: 'Teste de antígeno p27 (triagem PoC)',
       purpose: 'Detectar antigenemia — primeira linha rotineira.',
       description:
         'ELISA ou teste rápido em sangue; detecta antígeno livre p27, não anticorpos. Vacina FeLV não gera positividade.',
       interpretation:
-        'Positivo indica antigenemia, mas um único teste não confirma infecção progressiva persistente (Hofmann-Lehmann & Hartmann, 2020).',
+        'Positivo indica antigenemia, mas um único teste não confirma infecção progressiva persistente (Westman et al., 2019; Hofmann-Lehmann & Hartmann, 2020).',
       limitations:
         'Falso-positivo em baixa prevalência; negativo em infecção precoce, regressiva ou abortiva.',
     },
     {
-      stepNumber: 2,
-      title: 'PCR proviral',
+      stepNumber: 3,
+      title: 'PCR proviral (confirmação)',
       purpose: 'Detectar DNA proviral integrado; esclarecer discordâncias.',
       description:
-        'Sangue ou tecido em laboratório validado para FeLV exógeno; útil em doadores e p27 duvidoso.',
+        'Sangue ou tecido em laboratório validado para FeLV exógeno; essencial em doadores e resultados PoC positivos (Westman et al., 2019).',
       interpretation:
-        'Positivo = infecção progressiva, regressiva ou fase precoce; negativo com p27+ exige confirmação (Kornya et al., 2023).',
-      limitations: 'Não distingui sozinho progressiva de regressiva — integrar p27 e evolução.',
-    },
-    {
-      stepNumber: 3,
-      title: 'Reavaliação ≥6 semanas',
-      purpose: 'Diferenciar antigenemia transitória de infecção progressiva.',
-      description:
-        'Repetir p27 após ≥6 semanas; ABCD e AAFP recomendam reteste após exposição recente (ABCD 2025; Little et al., 2020).',
-      interpretation:
-        'p27 persistentemente positivo → progressiva provável; p27 negativiza com PCR+ → regressiva.',
-      limitations: 'Exposição muito recente pode adiar positividade — considerar PCR precoce.',
-      isGoldStandard: true,
+        'Positivo = infecção progressiva ou regressiva; negativo com p27+ exige retestagem longitudinal.',
+      limitations: 'Não distingue sozinho infecção progressiva de regressiva sem integrar p27 e clínica.',
     },
     {
       stepNumber: 4,
+      title: 'Reavaliação longitudinal ≥6 semanas',
+      purpose: 'Diferenciar antigenemia transitória de infecção progressiva persistente.',
+      description:
+        'Repetir p27 e PCR proviral após 6–12 semanas em pacientes discordantes ou com exposição recente (Westman et al., 2019; ABCD 2025).',
+      interpretation:
+        'p27 persistentemente positivo em 6–12 semanas → infecção progressiva confirmada; p27 negativiza com PCR+ → infecção regressiva.',
+      limitations: 'Exposição recente (<30 dias) pode exigir reteste em janela mais ampla.',
+      isGoldStandard: true,
+    },
+    {
+      stepNumber: 5,
       title: 'RT-PCR para RNA viral',
       purpose: 'Documentar replicação ativa quando disponível.',
       description: 'Plasma, sangue ou saliva conforme laboratório; RNA positivo precoce na infecção experimental.',
@@ -308,7 +311,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       limitations: 'Disponibilidade limitada; não substitui p27 + PCR proviral na rotina.',
     },
     {
-      stepNumber: 5,
+      stepNumber: 6,
       title: 'Investigação de doença associada',
       purpose: 'FeLV positivo inicia investigação, não a encerra.',
       description:
@@ -316,23 +319,20 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       interpretation: 'Achados guiam tratamento específico — anemia, linfoma, infecção bacteriana.',
       limitations: 'Hemograma normal não exclui infecção progressiva.',
     },
-    {
-      stepNumber: 6,
-      title: 'Interpretação p27 × PCR (referência rápida)',
-      purpose: 'Evitar erros clássicos de classificação.',
-      description:
-        'p27−/PCR−: provavelmente não infectado (ou muito precoce). p27−/PCR+: regressiva. p27+/PCR+: progressiva ou fase inicial. p27+/PCR−: discordante — repetir ambos.',
-      interpretation: 'PCR positivo isolado não implica contagiosidade — regressivos são p27−/PCR+ (ABCD 2025).',
-      limitations: 'Infecção focal rara pode confundir.',
-    },
   ],
   treatment: {
     principios: [
       'Não tratar o teste — tratar o paciente. Assintomático progressivo: monitoramento + prevenção, sem antiviral rotineiro (ABCD 2025; Westman et al., 2024).',
       'Identificar precocemente complicações; tratar agressivamente doenças tratáveis; preservar qualidade de vida.',
     ],
+    estadiamentoERotinaWestman: [
+      'Fluxograma de rotina e estadiamento do gato FeLV+ (Westman et al., 2019 adaptado):',
+      '1. Estadiamento Inicial Obrigatório: Hemograma completo com contagem de reticulócitos e esfregaço sanguíneo; perfil bioquímico (função renal, hepática, relação Albumina:Globulina); urinálise completa; triagem de coinfecções (FIV, Mycoplasma hemofelis); exames de imagem (ultrassonografia abdominal e radiografia torácica para rastreamento de linfoma mediastinal/abdominal ou linfoadenopatia).',
+      '2. Medidas Preventivas e de Bem-Estar: Manutenção estritamente indoor, isolamento de gatos suscetíveis (p27-), vacinação de contactantes, castração de rotina, dieta cozida/balanceada (evitar carnes cruas) e controle ecto/endoparasitário rigoroso.',
+      '3. Protocolo de Monitoramento Periódico: Consulta clínica + hemograma completo a cada 6 meses. Perfil bioquímico, urinálise e ultrassonografia de rastreio anualmente (ou imediatamente se houver febre, prostração, linfoadenopatia, citopenia ou perda de peso).',
+    ],
     assintomatico: [
-      'Indoor; evitar contato com suscetíveis; castração; dieta completa balanceada; evitar alimentos crus; controle ectop/endoparasitário; consulta e hemograma ≥6/6 meses; bioquímica e urinálise ≥anual (Little et al., 2020).',
+      'Indoor; evitar contato com suscetíveis; castração; dieta completa balanceada; evitar alimentos crus; controle ectop/endoparasitário; consulta e hemograma ≥6/6 meses; bioquímica e urinálise ≥anual (Westman et al., 2019; Little et al., 2020).',
     ],
     infeccoesSecundarias: [
       'Investigar etiologia; cultura e antibiograma quando aplicável; não usar antibiótico profilático crônico só por FeLV+ (ABCD 2025).',
@@ -353,10 +353,10 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       'Raltegravir, RetroMAD1, ribavirina (contraindicada em gatos), imunoestimulantes inespecíficos: não rotina.',
     ],
     glicocorticoides: [
-      'Evitar uso indiscriminado — imunossupressão adicional e risco de reativação de infecção regressiva. Usar quando indicação clara (IMHA comprovada, componente oncológico) (ABCD 2025).',
+      'Evitar uso indiscriminado — imunossupressão adicional e risco de reativação de infecção regressiva. Usar quando indicação clara (AHIM comprovada, componente oncológico) (ABCD 2025).',
     ],
     monitoramento: [
-      'Consulta ≥6/6 meses; hemograma ≥6/6 meses; bioquímica e urinálise ≥anual; p27 anual em regressivos para detectar reativação (ABCD 2025).',
+      'Estadiamento inicial completo no diagnóstico (hemograma, reticulócitos, esfregaço, bioquímica, urinálise e imagem torácica/abdominal). Consulta e hemograma a cada 6 meses; bioquímica, urinálise e ultrassonografia anuais (Westman et al., 2019 adaptado; ABCD 2025).',
     ],
   },
   prevention: {
@@ -376,13 +376,21 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       'Não exige ala de isolamento tipo panleucopenia — separar de outros gatos, higiene de gaiola, evitar colocar junto a pacientes altamente contagiosos porque o FeLV+ pode ser imunocomprometido (ABCD 2025).',
     ],
     eutanasia: [
-      'Nunca indicar eutanásia somente pelo teste positivo — considerar qualidade de vida como em qualquer paciente (Little et al., 2020; Westman et al., 2024).',
+      'Nunca indicar eutanásia somente pelo teste positivo — considerar qualidade de vida como em qualquer paciente (Westman et al., 2019; Little et al., 2020; Westman et al., 2024).',
     ],
   },
   relatedConsensusSlugs: [],
   relatedDiseaseSlugs: ['micoplasmoses-hemotropicas', 'granuloma-eosinofilico-felino', 'peritonite-infecciosa-felina', 'imunodeficiencia-felina-fiv'],
   relatedMedicationSlugs: [],
   references: [
+    {
+      id: 'ref-felv-westman-2019',
+      citationText:
+        'Westman ME, Malik R, Norris JM. Diagnosing feline immunodeficiency virus (FIV) and feline leukaemia virus (FeLV) infection: An update for clinicians. Aust Vet J. 2019;97(5):134–142.',
+      sourceType: 'Guideline / Revisão prática',
+      url: 'https://doi.org/10.1111/avj.12803',
+      evidenceLevel: 'A',
+    },
     {
       id: 'ref-felv-abcd-2025',
       citationText:
@@ -422,29 +430,6 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
       sourceType: 'Série clínica',
       url: 'https://doi.org/10.1111/avj.13363',
       evidenceLevel: 'B',
-    },
-    {
-      id: 'ref-felv-levy-poc-2017',
-      citationText:
-        'Levy JK, Crawford PC, Tucker SJ. Performance of 4 point-of-care screening tests for feline leukemia virus and feline immunodeficiency virus. J Vet Intern Med. 2017;31:521–526.',
-      sourceType: 'Estudo diagnóstico',
-      url: 'https://doi.org/10.1111/jvim.14648',
-      evidenceLevel: 'B',
-    },
-    {
-      id: 'ref-felv-carmichael-2002',
-      citationText:
-        'Carmichael KP, Bienzle D, McDonnell JJ. Feline leukemia virus-associated myelopathy in cats. Vet Pathol. 2002;39(5):536–545.',
-      sourceType: 'Série patológica',
-      evidenceLevel: 'C',
-    },
-    {
-      id: 'ref-felv-hartmann-2012',
-      citationText:
-        'Hartmann K. Clinical aspects of feline retroviruses: a review. Viruses. 2012;4(11):2684–2710.',
-      sourceType: 'Revisão',
-      url: 'https://doi.org/10.3390/v4112684',
-      evidenceLevel: 'A',
     },
     {
       id: 'ref-felv-nelson-couto',

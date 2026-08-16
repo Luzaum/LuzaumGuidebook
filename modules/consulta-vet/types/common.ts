@@ -62,6 +62,8 @@ export interface EditorialDiagnosticStep {
 /** Tabela comparativa clínica (ex.: tipos de HAC) — renderizada com `<table>` acessível. */
 export interface EditorialClinicalTable {
   kind: 'clinicalTable';
+  /** Título opcional acima da tabela (ex.: "Mapa do acervo"). */
+  caption?: string;
   headers: string[];
   /** Uma linha por tipo; número de células = número de colunas. */
   rows: string[][];
@@ -98,4 +100,6 @@ export type ContentFlag = {
   isDemonstrative?: boolean;
   warningLabel?: string;
   source?: ConsultaVetSource;
+  /** Conteúdo VIN ainda não reconciliado — não citar VIN na UI. */
+  vinReferencePending?: boolean;
 };

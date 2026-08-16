@@ -1,14 +1,11 @@
-import type { MedicationSearchResult } from '../../../src/lib/clinicRecords';
+import type { MedicationPresentationRecord, MedicationSearchResult } from '../../../src/lib/clinicRecords';
 import { RECEITUARIO_SUBCLASSES_BY_CLASS } from '../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationProduct, CommercialMedicationSubclass } from '../types/commercialMedication';
 import type { VetSpecies } from '../types/common';
+import { medicationSearchScore, normalizeMedicationSearch } from '../utils/medicationSearch';
 
 function normalizeSearchTerm(value: unknown): string {
-  return String(value || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .trim();
+  return normalizeMedicationSearch(value);
 }
 
 function mapCommercialProduct(product: CommercialMedicationProduct): MedicationSearchResult {
@@ -39,6 +36,77 @@ function mapCommercialProduct(product: CommercialMedicationProduct): MedicationS
   };
 }
 
+function catalogPresentationLabel(presentation: MedicationPresentationRecord): string {
+  return [presentation.commercial_name, presentation.pharmaceutical_form, presentation.concentration_text]
+    .filter(Boolean)
+    .join(' — ');
+}
+
+/**
+ * Algumas bases antigas salvaram a concentração junto do nome comercial
+ * (ex.: "Cardisure 1,25 mg"). Para a busca, todas essas apresentações devem
+ * continuar pertencendo a uma única marca: "Cardisure".
+ */
+export function commercialBrandName(value: unknown): string {
+  const name = String(value || '').trim();
+  if (!name) return '';
+
+  return name
+    .replace(
+      /\s+(?:[-–—]\s*)?\d+(?:[.,]\d+)?\s*(?:mcg|µg|ug|mg|g|ml|l|ui|u|%)\b(?:\s*\/\s*[a-zà-ÿ]+)?(?:\s+.*)?$/iu,
+      '',
+    )
+    .trim() || name;
+}
+
+/**
+ * Transforma as marcas que já existem nas apresentações do catálogo clínico em
+ * resultados comerciais. Assim, uma marca não fica escondida na etapa seguinte.
+ */
+export function buildCatalogPresentationCommercialResults(
+  medication: MedicationSearchResult,
+  presentations: MedicationPresentationRecord[],
+): MedicationSearchResult[] {
+  const grouped = new Map<string, MedicationPresentationRecord[]>();
+  presentations.forEach((presentation) => {
+    const name = commercialBrandName(presentation.commercial_name);
+    if (!name) return;
+    const key = normalizeSearchTerm(name);
+    if (!key) return;
+    grouped.set(key, [...(grouped.get(key) || []), presentation]);
+  });
+
+  const activeIngredient = String(medication.metadata?.active_ingredient || medication.name).trim();
+  const species = Array.isArray(medication.metadata?.species) ? medication.metadata.species : [];
+  const routes = Array.isArray(medication.metadata?.routes) ? medication.metadata.routes : [];
+
+  return Array.from(grouped.entries())
+    .map(([key, items]): MedicationSearchResult => {
+      const name = commercialBrandName(items[0]?.commercial_name);
+      const presentationLabels = Array.from(new Set(items.map(catalogPresentationLabel).filter(Boolean)));
+      return {
+        id: `commercial-presentation:${medication.id}:${key.replace(/\s+/g, '-')}`,
+        name,
+        is_controlled: medication.is_controlled,
+        is_private: medication.is_private,
+        source: medication.source,
+        scope: medication.scope,
+        metadata: {
+          search_result_type: 'commercial',
+          search_origin: 'catalog_presentation',
+          catalog_medication_id: medication.id,
+          catalog_presentation_ids: items.map((item) => item.id),
+          active_ingredient: activeIngredient,
+          active_components: [activeIngredient],
+          species,
+          routes,
+          presentation_labels: presentationLabels,
+        },
+      };
+    })
+    .sort((left, right) => left.name.localeCompare(right.name, 'pt-BR'));
+}
+
 export interface PrescriptionCommercialSearchOptions {
   query?: string;
   commercialClass?: CommercialMedicationClass | '';
@@ -49,7 +117,7 @@ export interface PrescriptionCommercialSearchOptions {
 
 /** Catálogo comercial consultado exclusivamente pelo compositor do Receituário. */
 export async function searchPrescriptionCommercialProducts({
-  query = '', commercialClass = '', commercialSubclass = '', species = null, limit = 80,
+  query = '', commercialClass = '', commercialSubclass = '', limit = 80,
 }: PrescriptionCommercialSearchOptions): Promise<MedicationSearchResult[]> {
   const needle = normalizeSearchTerm(query);
   if (needle.length < 2 && !commercialClass) return [];
@@ -61,16 +129,19 @@ export async function searchPrescriptionCommercialProducts({
       const classSubclasses = commercialClass ? RECEITUARIO_SUBCLASSES_BY_CLASS[commercialClass] : [];
       const matchesClass = !commercialClass || product.commercialClass === commercialClass || subclasses.some((item) => classSubclasses.includes(item));
       const matchesSubclass = !commercialSubclass || subclasses.includes(commercialSubclass);
-      const matchesSpecies = !species || product.species.includes(species);
       const searchText = normalizeSearchTerm([
-        product.name, product.manufacturer, ...product.activeComponents, product.clinicalUse,
-        product.labelDirections, ...subclasses,
+        product.name, product.manufacturer, ...product.activeComponents,
       ].join(' '));
-      return matchesClass && matchesSubclass && matchesSpecies && (!needle || searchText.includes(needle));
+      return matchesClass && matchesSubclass && (!needle || medicationSearchScore(needle, searchText) !== null);
     })
     .sort((left, right) => {
       const leftName = normalizeSearchTerm(left.name);
       const rightName = normalizeSearchTerm(right.name);
+      const leftSearchText = [left.name, left.manufacturer, ...left.activeComponents].join(' ');
+      const rightSearchText = [right.name, right.manufacturer, ...right.activeComponents].join(' ');
+      const leftScore = needle ? medicationSearchScore(needle, leftSearchText) ?? Number.POSITIVE_INFINITY : 0;
+      const rightScore = needle ? medicationSearchScore(needle, rightSearchText) ?? Number.POSITIVE_INFINITY : 0;
+      if (leftScore !== rightScore) return leftScore - rightScore;
       if (needle && leftName.startsWith(needle) !== rightName.startsWith(needle)) return leftName.startsWith(needle) ? -1 : 1;
       return left.name.localeCompare(right.name, 'pt-BR');
     })

@@ -34,7 +34,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
   ],
   quickSummaryRich: {
     lead:
-      'Hemoplasma não é “só anemia regenerativa”: é infecção eritrocitária com ciclo parasitário que pode oscilar no sangue periférico, imitando IMHA primária ou piorando coinfecções vetoriais. O PCR fecha o diagnóstico etiológico quando o esfregaco falha; a doxiciclina funciona, mas no gato a rota de administração importa tanto quanto a dose. O tutor precisa entender que PCR positivo persistente pode significar portador — nem todo animal exige antibiótico eterno.',
+      'Hemoplasma não é “só anemia regenerativa”: é infecção eritrocitária com ciclo parasitário que pode oscilar no sangue periférico, imitando AHIM primária ou piorando coinfecções vetoriais. O PCR fecha o diagnóstico etiológico quando o esfregaco falha; a doxiciclina funciona, mas no gato a rota de administração importa tanto quanto a dose. O tutor precisa entender que PCR positivo persistente pode significar portador — nem todo animal exige antibiótico eterno.',
     leadHighlights: ['PCR', 'hemólise', 'doxiciclina', 'ciclo', 'portador'],
     pillars: [
       {
@@ -81,10 +81,10 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
             'Coinfecção altera prognóstico e intensidade de monitorização; não substitui PCR para hemoplasma (Nelson & Couto, 6ª ed.).',
         },
         {
-          label: 'Diferencial IMHA',
-          timing: 'Antes de rotular',
+          label: 'Diferencial AHIM',
+          timing: 'Anemia hemolítica com esferócitos/Coombs',
           detail:
-            'Coombs, aglutinação, esferócitos — hemoplasma pode coexistir ou precipitar IMHA; corticoide não é primeira linha sem critério (Nelson & Couto, 6ª ed.).',
+            'Coombs, aglutinação, esferócitos — hemoplasma pode coexistir ou precipitar AHIM; corticoide não é primeira linha sem critério (Nelson & Couto, 6ª ed.).',
         },
       ],
     },
@@ -139,7 +139,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
   },
   pathogenesisTransmission: {
     hemoImunohemolise:
-      'Hemólise imunomediada extravascular predominante; possível Coombs+, aglutinação — pode confundir com IMHA primária (hemoplasma como gatilho).',
+      'Hemólise imunomediada extravascular predominante; possível Coombs+, aglutinação — pode confundir com AHIM primária (hemoplasma como gatilho).',
     hemoCiclico:
       'Parasitemia cíclica: hematócrito pode colapsar quando há muitos organismos no sangue periférico e subir quando desaparecem — esfregaco “oscilante”.',
     hemoTransmissao:
@@ -261,7 +261,7 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     ],
     suporte: [
       'Merck Veterinary Manual recomenda transfusão quando anemia grave com dispneia ou prostração — estabilizar antes de antibiótico isolado.',
-      'ABCD desaconselha corticoides de rotina; reservar para IMHA associada não responsiva ao antibiótico adequado.',
+      'ABCD desaconselha corticoides de rotina; reservar para AHIM associada não responsiva ao antibiótico adequado.',
     ],
     portador:
       'ABCD e Merck: não tratar rotineiramente PCR+ assintomático — esquemas não garantem eliminação e muitos permanecem portadores. Exceções: doadores, imunodeprimidos, casos graves/recorrentes.',

@@ -451,7 +451,7 @@ export const asmaFelinaRecord: DiseaseRecord = {
       'Não há prevenção primária da sensibilização alérgica, mas controle ambiental consistente (areia de baixa poeira, ausência de irritantes inalados) e adesão à manutenção anti-inflamatória inalatória reduzem substancialmente frequência e gravidade das crises, evitando remodelamento progressivo da via aérea.',
   },
   relatedConsensusSlugs: [],
-  relatedMedicationSlugs: ['prednisolona'],
+  relatedMedicationSlugs: ['prednisolona', 'budesonida'],
   references: [
     {
       id: 'ref-galler-budesonide-2013',

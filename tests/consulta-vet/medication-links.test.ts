@@ -13,7 +13,7 @@ test('o vínculo automático cobre o catálogo atual sem inventar equivalência 
   );
   assert.deepEqual(
     withoutCommercialProducts.map((medication) => medication.slug).sort(),
-    ['benzafibrato', 'sulfametoxazol-trimetoprima'],
+    ['amitriptilina', 'ampicilina', 'ampicilina-sulbactam', 'atropina', 'benzafibrato', 'brometo-de-ipratropio', 'budesonida', 'buprenorfina', 'butorfanol', 'clorambucil', 'desoxicorticosterona-pivalato', 'dexmedetomidina', 'digoxina', 'diltiazem', 'dipirona', 'esmolol', 'fenbendazol', 'fluoxetina', 'fluticasona-salmeterol', 'levotiroxina-sodica', 'marbofloxacina', 'propionato-de-fluticasona', 'propofol', 'propranolol', 'salbutamol', 'selegilina', 'sotalol', 'sulfametoxazol-trimetoprima', 'tiopental'],
   );
 });
 

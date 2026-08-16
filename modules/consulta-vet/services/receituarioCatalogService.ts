@@ -2,6 +2,7 @@ import { supabase } from '../../../src/lib/supabaseClient';
 import { getGlobalCatalogMedications, isGlobalMedicationId, makeGlobalMedicationId, parseGlobalMedicationId } from '../../../src/lib/medicationCatalog';
 import { searchMedications, type MedicationSearchResult } from '../../../src/lib/clinicRecords';
 import type { PrescriptionPrecaution } from '../types/receituario';
+import { PUBLIC_CATALOG_MEDICATION_CARD_STUBS } from '../data/publicCatalogCardStubs';
 
 type PrecautionRow = {
   id: string;
@@ -35,20 +36,45 @@ export async function fetchPrescriptionPrecautions(clinicId: string, medicationI
 }
 
 export async function searchPrescriptionMedicationCatalog(clinicId: string, query = '', limit = 4000): Promise<MedicationSearchResult[]> {
+  let remote: MedicationSearchResult[] = [];
   try {
-    const remote = await searchMedications(clinicId, query, limit);
-    if (remote.length) return remote;
+    remote = await searchMedications(clinicId, query, limit);
   } catch {
     // O catálogo empacotado mantém a consulta disponível em modo offline.
   }
   const needle = String(query || '').trim().toLowerCase();
-  return getGlobalCatalogMedications().filter((item) => !needle || [item.name, item.active_ingredient, ...(item.tags || [])].join(' ').toLowerCase().includes(needle)).slice(0, limit).map((item) => ({
+  const bundled = getGlobalCatalogMedications().filter((item) => !needle || [item.name, item.active_ingredient, ...(item.tags || [])].join(' ').toLowerCase().includes(needle)).map((item): MedicationSearchResult => ({
       id: makeGlobalMedicationId(item.slug),
       name: item.name,
       is_controlled: !!item.is_controlled,
       is_private: false,
-      source: 'global',
-      scope: 'global',
+      source: 'global' as const,
+      scope: 'global' as const,
       metadata: { ...(item.metadata || {}), active_ingredient: item.active_ingredient || item.name, species: item.species || [], routes: item.routes || [] },
   }));
+  const editorial = PUBLIC_CATALOG_MEDICATION_CARD_STUBS
+    .filter((item) => !needle || [item.title, item.activeIngredient, ...(item.tradeNames || []), ...(item.tags || [])].join(' ').toLowerCase().includes(needle))
+    .map((item): MedicationSearchResult => ({
+      id: `editorial:${item.slug}`,
+      name: item.title,
+      is_controlled: false,
+      is_private: false,
+      source: 'global',
+      scope: 'global',
+      metadata: {
+        active_ingredient: item.activeIngredient || item.title,
+        trade_names: item.tradeNames || [],
+        pharmacologic_class: item.pharmacologicClass || '',
+        species: item.species || [],
+        editorial_slug: item.slug,
+      },
+    }));
+
+  const seen = new Set<string>();
+  return [...remote, ...bundled, ...editorial].filter((item) => {
+    const key = String(item.metadata?.active_ingredient || item.name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+    if (!key || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, limit);
 }

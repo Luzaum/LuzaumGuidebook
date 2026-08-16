@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   AlertTriangle,
+  ArrowDown,
   ArrowRight,
   BookOpen,
   Cat,
@@ -292,7 +293,7 @@ function ClinicalAlert({ value, visual }: { value: string; visual: DiseaseSectio
 }
 
 /**
- * Quebra narrativas longas em blocos visuais: paragrafos e listas automaticas.
+ * Quebra narrativas longas em blocos visuais: parágrafos e listas automáticas.
  */
 function StructuredNarrative({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
   const blocks = value
@@ -301,7 +302,7 @@ function StructuredNarrative({ value, visual }: { value: string; visual: Disease
     .filter(Boolean);
 
   return (
-    <div className="max-w-[106ch] space-y-4">
+    <div className="w-full space-y-4">
       {blocks.map((block, i) => {
         const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
         if (lines.length >= 2 && lines.every((l) => BULLET_LINE_RE.test(l))) {
@@ -406,6 +407,44 @@ function BulletList({ items, visual }: { items: string[]; visual: DiseaseSection
   );
 }
 
+function CascataFlowTimeline({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
+  return (
+    <div className="w-full space-y-2.5 py-1" aria-label="Fluxograma da patogênese">
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
+        return (
+          <React.Fragment key={index}>
+            <div className="group relative flex flex-col sm:flex-row items-center justify-center gap-3.5 rounded-2xl border border-border/70 bg-card p-4 text-center shadow-sm transition-all duration-200 hover:border-primary/40 hover:bg-card md:gap-4 md:p-4.5">
+              <span
+                className={cn(
+                  'flex h-8 w-8 shrink-0 items-center justify-center rounded-xl text-xs font-extrabold shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                  visual.diagnosticNumBgClass,
+                  visual.diagnosticNumTextClass
+                )}
+              >
+                {index + 1}
+              </span>
+              <div className="min-w-0 flex-1 text-center">
+                <p className="text-[14px] leading-relaxed text-foreground/90 md:text-[15px] text-center">
+                  <ClinicalInlineText value={item} visual={visual} />
+                </p>
+              </div>
+            </div>
+
+            {!isLast && (
+              <div className="flex items-center justify-center py-0.5">
+                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary ring-1 ring-primary/20 shadow-xs dark:bg-primary/20 dark:text-primary-foreground">
+                  <ArrowDown className="h-4 w-4 stroke-[2.5]" aria-hidden />
+                </div>
+              </div>
+            )}
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+}
+
 function DiagnosticStepList({ steps, visual }: { steps: EditorialDiagnosticStep[]; visual: DiseaseSectionVisual }) {
   return <DiagnosticPathway steps={steps} visual={visual} />;
 }
@@ -497,6 +536,12 @@ type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species' 
 
 /** Ordem editorial dos blocos longos do tratamento após a timeline de prioridade (Cushing, DRC, etc.). */
 const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
+  'principios',
+  'tratamentoSuporte',
+  'tratamentoDeSuporte',
+  'tratamentoDoencasAssociadas',
+  'tratamentoDeDoencasAssociadas',
+  'tratamentoMonitoramento',
   'protocoloTerapeutico',
   'trilostanoNoCao',
   'mitotanoNoCao',
@@ -522,15 +567,113 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'drcTabelaPrognosticoFelino',
   'notaFelinos',
   'notaCaninos',
-  /* DMVD — ordem editorial do detalhamento terapêutico (só rende se a chave existir no registo) */
+  /* DMVD — mapa por estágio → evidência → hospital → tabela → detalhes → erros */
+  'dmvdEstrategiaPorEstagioAcvim',
+  'preclinica',
+  'aguda',
+  'cronica',
+  'dmvdIccAgudaHospitalar',
   'farmacos',
   'dmvdPimobendanFormaJeJumMarcas',
   'dmvdFurosemidaAgudaCronicaTorasemida',
-  'dmvdUrgenciaHospitalarVasodilatadoresInotropicos',
-  'dmvdIsosorbidaVasodilatadorOral',
   'dmvdEspironolactonaBloqueioNefron',
   'dmvdIecaBenazeprilEnalapril',
+  'dmvdIsosorbidaVasodilatadorOral',
   'dmvdAnlodipinoHipertensao',
+  'dmvdUrgenciaHospitalarVasodilatadoresInotropicos',
+  'dmvdArrhythmiasFrequenciaCardiaca',
+  'errosComuns',
+  'dmvdNotaCirurgicaValvar',
+  'dmvdPrognosticoLongitudinal',
+  /* Arritmias — urgência → fluxos → FA/VT → fármacos → erros */
+  'figuraEstratificacaoUrgencia',
+  'arrNotaEstratificacao',
+  'figuraFluxogramaArritmiasPrincipal',
+  'figuraFluxogramaFAOrca',
+  'figuraVtComSemPulso',
+  'arrFaCaninaOrca',
+  'arrAdenosinaAlerta',
+  'arrVtAgudaCao',
+  'arrVtAgudaGato',
+  'arrAivr',
+  'arrBradiarritmias',
+  'arrSss',
+  'arrBloqueiosAv',
+  'arrAvrtPreexcitacao',
+  'arrAblationAvrt',
+  'arrTorsades',
+  'arrVfVtSemPulso',
+  'farmacos',
+  'tabelaClassesAntiarritmicos',
+  'arrInteracoesAltoRisco',
+  'alertasSeguranca',
+  'arrParticularidadesCaes',
+  'arrParticularidadesGatos',
+  /* Giardíase — higiene → fármacos → falha → pérolas */
+  'figuraHigieneAmbiental',
+  'fenbendazolCaesGatos',
+  'metronidazolAlerta',
+  'naoRecomendar',
+  'tratarAssintomatico',
+  'monitoramentoPosTratamento',
+  'falhaReinfecaoAlgoritmo',
+  'farmacos',
+  'figuraCiuca2021',
+  'perolasClinicas',
+  'zoonoseCard',
+  'vacinaNota',
+  /* Cistoisosporose — ponazuril → alertas → suporte → ambiente → fármacos → falha */
+  'ponazurilEsquemaTresDias',
+  'ponazurilDoseUnicaAlerta',
+  'toltrazurilPorFonte',
+  'diclazurilDivergenciaAlerta',
+  'sulfadimetoxina',
+  'terapiaSuporte',
+  'controleAmbiental',
+  'figuraFluxogramaTerapeutico',
+  'falhaTratamento',
+  /* Hiperparatireoidismo — PHPT → hipercalcemia → CKD-MBD → NSHP */
+  'figuraTresMecanismos',
+  'figuraEixoPth',
+  'alertaNaoUsarCalcioCorrigido',
+  'phptParatireoidectomia',
+  'hipercalcemiaGrave',
+  'figuraFluxogramaPosCirurgia',
+  'hipocalcemiaPosOp',
+  'atualizacaoPth2025',
+  'ckdMbdDietaQuelante',
+  'figuraFluxogramaCkdMbd',
+  'fgf23IrisGato',
+  'calcitriolNota',
+  'cinacalceteNota',
+  'nshpTratamento',
+  'figuraFluxogramaNshp',
+  'tabelaCaoVsGato',
+  'errosComuns',
+  /* CAD — emergência → alertas → fluido → protocolos → erros */
+  'condutaImediata',
+  'alertaEdkaSglT2_2026',
+  'potassioFundamental',
+  'bicarbonatoNaoRotina',
+  'antibioticosNaoAutomaticos',
+  'nutricaoPrecoceFelino',
+  'protocoloEdkaSglT2Aaha2026',
+  'fluidoterapia',
+  'protocoloFelinoRegularIM',
+  'protocoloFelinoGlargina',
+  'protocoloCaninoRegularIM',
+  'protocoloCaninoCRI',
+  'protocoloCaninoLisproAlternativa',
+  'monitorizacao',
+  'errosQueMatam',
+  /* Insulinoma — crise → cirurgia → médico → oncologia → tutor */
+  'condutaImediataCrise',
+  'estreptozotocinaOncologia',
+  'toceranibTerapiaAlvo',
+  'orientacaoTutor',
+  'orientacaoTutorCrise',
+  'evidenciaPublicada',
+  'tabelaFarmacos',
 ] as const;
 
 function subsectionToneForKey(key: string): SubsectionTone {
@@ -539,9 +682,46 @@ function subsectionToneForKey(key: string): SubsectionTone {
   if (key === 'drcAlertaEstadiamentoInstavel' || key === 'drcAlertaEstadiamentoIRIS') return 'warning';
   if (key === 'hemoTabelaDoxiciclinaGatoAlerta') return 'warning';
   if (key === 'diagnosticPlanIfLimitedResources') return 'warning';
-  if (key === 'commonClinicalMistakesExpanded' || key === 'falsePositiveConsiderations' || key === 'falseNegativeConsiderations') {
+  if (key === 'commonClinicalMistakesExpanded' || key === 'falsePositiveConsiderations' || key === 'falseNegativeConsiderations' || key === 'errosComuns' || key === 'errosQueMatam') {
     return 'danger';
   }
+  if (key === 'arrVfVtSemPulso' || key === 'arrVtAgudaGato' || key === 'arrAdenosinaAlerta') return 'danger';
+  if (key === 'arrNotaEstratificacao' || key === 'arrAtualizacao2026Gatos') return 'teaching';
+  if (
+    key === 'alertaPositivoNaoCausa' ||
+    key === 'figuraAlertaPositivoNaoCausa' ||
+    key === 'metronidazolAlerta' ||
+    key === 'alertaCoccidioidomicose' ||
+    key === 'ponazurilDoseUnicaAlerta' ||
+    key === 'diclazurilDivergenciaAlerta'
+  ) {
+    return 'warning';
+  }
+  if (key === 'alertaNaoUsarCalcioCorrigido' || key === 'figuraCardInterpretacaoPth' || key === 'calcitriolNota' || key === 'cinacalceteNota') return 'warning';
+  if (
+    key === 'alertaRelacaoInsulinaGlicose' ||
+    key === 'alertaInsulinaNormalHipoglicemia' ||
+    key === 'limitacaoTomografia' ||
+    key === 'seloEvidenciaFelinaLimitada' ||
+    key === 'alertaBhbPreferencial' ||
+    key === 'alertaCetonuriaArmadilha'
+  ) {
+    return 'warning';
+  }
+  if (
+    key === 'alertaEdkaSglT2_2026' ||
+    key === 'condutaImediata' ||
+    key === 'potassioFundamental' ||
+    key === 'bicarbonatoNaoRotina' ||
+    key === 'antibioticosNaoAutomaticos' ||
+    key === 'nutricaoPrecoceFelino'
+  ) {
+    return key === 'alertaEdkaSglT2_2026' || key === 'condutaImediata' ? 'danger' : 'warning';
+  }
+  if (key === 'alertaInsulinaAbsolutaEstadiamento' || key === 'toceranibTerapiaAlvo' || key === 'evidenciaPublicada') return 'teaching';
+  if (key === 'condutaImediataCrise' || key === 'estreptozotocinaOncologia' || key === 'errosQueMatam') return 'danger';
+  if (key === 'hipocalcemiaPosOp' || key === 'hipercalcemiaGrave') return 'danger';
+  if (key === 'naoRecomendar') return 'danger';
   if (key === 'teachingOverview' || key === 'diagnosticReasoning' || key === 'treatmentReasoning') return 'teaching';
   if (key === 'dmvdPimobendanFormaJeJumMarcas' || key === 'dmvdUrgenciaHospitalarVasodilatadoresInotropicos') return 'warning';
   return 'default';
@@ -699,7 +879,7 @@ function tryRenderTreatmentRichObject(
     : [];
   if (ordemEstruturada.length === 0 && ordem.length === 0 && monitor.length === 0) return null;
 
-  const renderLeaf = (value: unknown): React.ReactNode => {
+  const renderLeaf = (value: unknown, key?: string): React.ReactNode => {
     if (typeof value === 'string') return <StructuredNarrative value={value} visual={visual} />;
     if (isClinicalFigure(value)) {
       return <ClinicalFigureBlock figure={value as EditorialClinicalFigure} />;
@@ -709,6 +889,9 @@ function tryRenderTreatmentRichObject(
     }
     if (Array.isArray(value) && value.length > 0) {
       if (value.every((x) => typeof x === 'string')) {
+        if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogenese'))) {
+          return <CascataFlowTimeline items={value as string[]} visual={visual} />;
+        }
         return <BulletList items={value as string[]} visual={visual} />;
       }
       if (isDrugProtocolArray(value)) {
@@ -731,7 +914,7 @@ function tryRenderTreatmentRichObject(
         subsectionKey={key}
         visual={visual}
       >
-        {renderLeaf(value)}
+        {renderLeaf(value, key)}
       </FlowSubsection>
     );
   };
@@ -782,7 +965,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
   const useDiagnosticOrder = id === 'diagnostics-unified' || id === 'diagnosis';
 
-  const renderContent = (content: EditorialSectionValue | string | string[] | unknown): React.ReactNode => {
+  const renderContent = (content: EditorialSectionValue | string | string[] | unknown, key?: string): React.ReactNode => {
     if (typeof content === 'string') {
       return <StructuredNarrative value={content} visual={visual} />;
     }
@@ -792,6 +975,9 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
       if (isSystemGroupArray(content)) return <ClinicalSignsTable groups={content} visual={visual} />;
+      if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogenese'))) {
+        return <CascataFlowTimeline items={content as string[]} visual={visual} />;
+      }
       return <BulletList items={content.filter((item): item is string => typeof item === 'string')} visual={visual} />;
     }
 
@@ -843,38 +1029,38 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
         <div className="space-y-4 md:space-y-5">
           {groupedEntries.map((group, idx) => {
             if (group.type === 'single') {
-              const [key, value] = group.entry;
-              const tone = subsectionToneForKey(key);
+              const [k, value] = group.entry;
+              const tone = subsectionToneForKey(k);
               if (useDiagnosticOrder) {
                 return (
-                  <DiagnosticSubsection key={key} index={idx} title={translateEditorialSubsectionKey(key)} visual={visual}>
-                    {renderContent(value as EditorialSectionValue)}
+                  <DiagnosticSubsection key={k} index={idx} title={translateEditorialSubsectionKey(k)} visual={visual}>
+                    {renderContent(value as EditorialSectionValue, k)}
                   </DiagnosticSubsection>
                 );
               }
               return (
                 <FlowSubsection
-                  key={key}
-                  title={translateEditorialSubsectionKey(key)}
+                  key={k}
+                  title={translateEditorialSubsectionKey(k)}
                   tone={tone}
-                  subsectionKey={key}
+                  subsectionKey={k}
                   visual={visual}
                 >
-                  {renderContent(value as EditorialSectionValue)}
+                  {renderContent(value as EditorialSectionValue, k)}
                 </FlowSubsection>
               );
             } else {
               return (
                 <div key={`figures-grid-${idx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
-                  {group.entries.map(([key, value]) => {
+                  {group.entries.map(([k, value]) => {
                     const figure = value as EditorialClinicalFigure;
-                    const tone = subsectionToneForKey(key);
+                    const tone = subsectionToneForKey(k);
                     return (
                       <FlowSubsection
-                        key={key}
-                        title={translateEditorialSubsectionKey(key)}
+                        key={k}
+                        title={translateEditorialSubsectionKey(k)}
                         tone={tone}
-                        subsectionKey={key}
+                        subsectionKey={k}
                         visual={visual}
                         className={figureGridSpanClass(figure)}
                       >

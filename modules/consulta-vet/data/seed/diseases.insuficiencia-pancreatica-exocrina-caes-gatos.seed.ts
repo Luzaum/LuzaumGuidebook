@@ -549,7 +549,8 @@ export const insuficienciaPancreaticaExocrinaCaesGatosRecord: DiseaseRecord = {
   relatedDiseaseSlugs: [
     'diabetes-mellitus-canina',
     'diabetes-mellitus-felina',
-    'hiperadrenocorticismo-sindrome-cushing',
+    'sindrome-cushing-caes',
+    'sindrome-cushing-gatos',
     'hipertireoidismo-felino',
   ],
   relatedMedicationSlugs: [],

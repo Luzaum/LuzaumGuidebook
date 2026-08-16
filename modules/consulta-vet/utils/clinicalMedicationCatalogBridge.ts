@@ -17,11 +17,22 @@ import {
   type DoseCalculationResult,
 } from './receituarioDoseEngine';
 import {
+  formatPrescriptionMedicationHeader,
   formatPrescriptionFrequency,
   formatPrescriptionRoute,
   normalizePrescriptionSpecies,
   parsePositiveDecimal,
 } from './receituarioMedication';
+import {
+  calculateCommercialPracticalDose,
+  formatCommercialAdministrationAmount,
+  buildCompoundingDisplayAmount,
+  evaluateCompoundingRecommendation,
+  pickDefaultCommercialPotencyMg,
+  parseCommercialPotencies,
+  resolveCommercialPotencyMg,
+  type CompoundingRecommendation,
+} from './commercialPresentationDose';
 import { CLINICAL_DOSE_LABEL } from './receituarioTemplateCalculator';
 
 export type ClinicalMedicationSourceKind = 'editorial' | 'commercial' | 'manual';
@@ -41,18 +52,14 @@ function normalizeText(value: unknown): string {
 }
 
 function durationClause(value: string): string {
-  const normalized = normalizeText(value);
-  if (!value.trim()) return '';
+  const cleaned = value.trim().replace(/[.\s]+$/, '');
+  const normalized = normalizeText(cleaned);
+  if (!cleaned) return '';
   if (normalized.includes('uso continuo')) return ', em uso contínuo';
   if (normalized.includes('reavaliacao')) return ', até reavaliação clínica';
-  if (/administrac/.test(normalized)) return `, por ${value.trim()}`;
-  return `, durante ${value.trim()}`;
-}
-
-function presentationLabel(item: MedicationPresentationRecord): string {
-  return [item.commercial_name, item.pharmaceutical_form, item.concentration_text, item.package_quantity && item.package_unit ? `${item.package_quantity} ${item.package_unit}` : '']
-    .filter(Boolean)
-    .join(' — ');
+  if (/^(ate|durante|por)\b/.test(normalized)) return `, ${cleaned.charAt(0).toLowerCase()}${cleaned.slice(1)}`;
+  if (/administrac/.test(normalized)) return `, por ${cleaned}`;
+  return `, durante ${cleaned}`;
 }
 
 export function resolveEditorialMedication(canonicalMedicationId?: string | null): MedicationRecord | null {
@@ -187,6 +194,16 @@ export function evaluateClinicalMedicationCatalogStatus(
       editable: false,
       needsRegistration: true,
       reason: 'Sem monografia ou produto comercial vinculado. Cadastre no ConsultaVet para habilitar apresentações e doses, ou edite o texto manualmente na receita.',
+      registrationTargets: ['medicamentos', 'comerciais'],
+    };
+  }
+
+  if (source.kind === 'manual' && resolved.dose.basis === 'weight') {
+    return {
+      ...base,
+      editable: true,
+      needsRegistration: false,
+      reason: 'Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado.',
       registrationTargets: ['medicamentos', 'comerciais'],
     };
   }
@@ -406,8 +423,10 @@ export function buildDefaultClinicalMedicationOverride(
     };
   }
   if (source.kind === 'commercial' && source.commercialProducts?.length) {
+    const product = source.commercialProducts[0];
     return {
-      commercialProductId: source.commercialProducts[0].id,
+      commercialProductId: product.id,
+      commercialPotencyMg: pickDefaultCommercialPotencyMg(product),
       selectedDoseValue,
     };
   }
@@ -441,6 +460,8 @@ function buildClinicalAdministrationAmount(
   doseValue: number,
   weightKg: number | null,
   product?: CommercialMedicationProduct,
+  selectedPotencyMg?: number | null,
+  useCompounding?: boolean,
 ): string {
   if (dose.basis === 'manual') return 'conforme orientação do fabricante';
   if (dose.basis === 'per_animal') {
@@ -454,14 +475,62 @@ function buildClinicalAdministrationAmount(
   if (dose.unit === 'UI/kg' || dose.unit.startsWith('UI')) {
     return `${formatDecimalPtBr(doseValue * weightKg)} UI`;
   }
-  if (product) return formatCommercialAdministrationAmount(product, doseValue, weightKg);
-  return `${formatDecimalPtBr(doseValue * weightKg)} mg`;
+  const totalMg = doseValue * weightKg;
+  if (useCompounding) {
+    return buildCompoundingDisplayAmount(totalMg);
+  }
+  if (product) {
+    return formatCommercialAdministrationAmount(
+      product,
+      doseValue,
+      weightKg,
+      selectedPotencyMg,
+    );
+  }
+  return `${formatDecimalPtBr(totalMg)} mg`;
 }
 
-import {
-  calculateCommercialPracticalDose,
-  formatCommercialAdministrationAmount,
-} from './commercialPresentationDose';
+function buildCompoundingPrescriptionBlock(
+  medicationName: string,
+  totalMg: number,
+  route: string,
+  frequency: string,
+  duration: string,
+  index: number,
+  doseValue: number,
+  doseUnit: string,
+  pharmaceuticalForm = 'cápsula',
+): string {
+  const roundedMg = Math.round(totalMg * 100) / 100;
+  return [
+    `${index}. ${formatPrescriptionMedicationHeader({
+      medicationName,
+      commercialName: 'Manipulado',
+      concentration: `${formatDecimalPtBr(roundedMg)} mg/${pharmaceuticalForm}`,
+      pharmaceuticalForm,
+    })}`,
+    '',
+    `Forma farmacêutica: ${pharmaceuticalForm}.`,
+    '',
+    `Manipular ${pharmaceuticalForm}s contendo ${formatDecimalPtBr(roundedMg)} mg de ${medicationName.toLowerCase()} por ${pharmaceuticalForm}.`,
+    '',
+    `Administrar 1 ${pharmaceuticalForm} por via ${route}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`,
+    '',
+    `${CLINICAL_DOSE_LABEL} ${formatDecimalPtBr(roundedMg)} mg por ${pharmaceuticalForm} (${formatDecimalPtBr(doseValue)} ${doseUnit}).`,
+  ].join('\n');
+}
+
+export function resolveCommercialCompoundingRecommendation(
+  product: CommercialMedicationProduct,
+  doseMgKg: number,
+  weightKg: number | null,
+  selectedPotencyMg?: number | null,
+): CompoundingRecommendation | null {
+  if (!weightKg || weightKg <= 0 || doseMgKg <= 0) return null;
+  const totalMg = doseMgKg * weightKg;
+  const practical = calculateCommercialPracticalDose(product, totalMg, selectedPotencyMg);
+  return evaluateCompoundingRecommendation(practical, totalMg);
+}
 
 export const DOSE_ERROR_AMOUNT_LABEL = 'ERRO DE DOSE P/ CONCENTRAÇÃO';
 export const DOSE_ERROR_REASON_PREFIX = 'Erro de dose:';
@@ -546,12 +615,18 @@ function buildCommercialDoseSupportLine(
   doseUnit: string,
   product: CommercialMedicationProduct,
   weightKg: number | null,
+  selectedPotencyMg?: number | null,
+  useCompounding?: boolean,
 ): string {
   const parsedWeight = parsePositiveDecimal(weightKg);
   if (!parsedWeight || parsedWeight <= 0) {
     return buildClinicalDoseSupportLine(selectedDoseValue, doseUnit);
   }
-  const practical = calculateCommercialPracticalDose(product, selectedDoseValue * parsedWeight);
+  const totalMg = selectedDoseValue * parsedWeight;
+  if (useCompounding) {
+    return `${CLINICAL_DOSE_LABEL} ${buildCompoundingDisplayAmount(totalMg)} (${formatDecimalPtBr(selectedDoseValue)} ${doseUnit})`;
+  }
+  const practical = calculateCommercialPracticalDose(product, totalMg, selectedPotencyMg);
   if (!practical) return buildClinicalDoseSupportLine(selectedDoseValue, doseUnit);
   return `${CLINICAL_DOSE_LABEL} ${practical.displayAmount} (${formatDecimalPtBr(selectedDoseValue)} ${doseUnit})`;
 }
@@ -560,10 +635,13 @@ export function evaluateCommercialDoseAlert(
   product: CommercialMedicationProduct,
   doseMgKg: number,
   weightKg: number | null,
+  selectedPotencyMg?: number | null,
+  useCompounding?: boolean,
 ): ClinicalDoseAlert | null {
+  if (useCompounding) return null;
   if (!weightKg || weightKg <= 0 || doseMgKg <= 0) return null;
   const totalMg = doseMgKg * weightKg;
-  const practical = calculateCommercialPracticalDose(product, totalMg);
+  const practical = calculateCommercialPracticalDose(product, totalMg, selectedPotencyMg);
   if (!practical) return null;
   if (Math.abs(practical.percentDifference) <= DOSE_ROUNDING_TOLERANCE_PERCENT) return null;
   const diff = Math.abs(practical.percentDifference).toFixed(1).replace('.', ',');
@@ -621,7 +699,17 @@ export function resolveClinicalMedicationDoseAlert(
     const product = source.commercialProducts.find((item) => item.id === override.commercialProductId)
       || source.commercialProducts[0];
     const doseMgKg = override.selectedDoseValue ?? resolved.dose.min;
-    return evaluateCommercialDoseAlert(product, doseMgKg, parsedWeight);
+    return evaluateCommercialDoseAlert(
+      product,
+      doseMgKg,
+      parsedWeight,
+      override.commercialPotencyMg,
+      override.useCompounding,
+    );
+  }
+
+  if (source.kind === 'manual' && resolved.dose.basis === 'weight' && override.useCompounding) {
+    return null;
   }
 
   return null;
@@ -685,7 +773,12 @@ export function buildClinicalMedicationPrescriptionBlock(
     const alert = resolveClinicalMedicationDoseAlert(resolved, override, weightKg, speciesValue, doseAlternativeKey);
 
     return [
-      `${index}. ${resolved.name.toUpperCase()} — ${presentationLabel(presentation)}`,
+      `${index}. ${formatPrescriptionMedicationHeader({
+        medicationName: resolved.name,
+        commercialName: presentation.commercial_name,
+        concentration: presentation.concentration_text,
+        pharmaceuticalForm: presentation.pharmaceutical_form,
+      })}`,
       '',
       ...buildAdministrationLine(amount, route, frequency, duration, alert),
       '',
@@ -698,22 +791,94 @@ export function buildClinicalMedicationPrescriptionBlock(
       || source.commercialProducts[0];
     const doseValue = override.selectedDoseValue ?? resolved.dose.min;
     const parsedWeight = parsePositiveDecimal(weightKg);
-    const amount = buildClinicalAdministrationAmount(resolved.dose, doseValue, parsedWeight, product);
-    const frequency = resolved.dose.frequency;
-    const duration = resolved.dose.duration;
-    const route = formatPrescriptionRoute(resolved.dose.route);
     const doseUnit = resolved.dose.basis === 'per_animal'
       ? resolved.dose.unit
       : resolved.dose.unit;
+    const frequency = resolved.dose.frequency;
+    const duration = resolved.dose.duration;
+    const route = formatPrescriptionRoute(resolved.dose.route);
+    const totalMg = parsedWeight && doseValue ? doseValue * parsedWeight : null;
+
+    if (override.useCompounding && totalMg) {
+      return buildCompoundingPrescriptionBlock(
+        resolved.name,
+        totalMg,
+        route,
+        frequency,
+        duration,
+        index,
+        doseValue,
+        doseUnit,
+      );
+    }
+
+    const selectedPotency = resolveCommercialPotencyMg(product, override.commercialPotencyMg);
+    const potency = parseCommercialPotencies(product)
+      .find((item) => selectedPotency != null && item.mgPerUnit === selectedPotency);
+    const potencyConcentration = potency
+      ? `${formatDecimalPtBr(potency.mgPerUnit)} mg/${potency.unitLabel}`
+      : selectedPotency ? `${formatDecimalPtBr(selectedPotency)} mg` : '';
+    const amount = buildClinicalAdministrationAmount(
+      resolved.dose,
+      doseValue,
+      parsedWeight,
+      product,
+      selectedPotency,
+      override.useCompounding,
+    );
+    const alert = evaluateCommercialDoseAlert(
+      product,
+      doseValue,
+      parsedWeight,
+      selectedPotency,
+      override.useCompounding,
+    );
 
     return [
-      `${index}. ${resolved.name.toUpperCase()} — ${product.name.toUpperCase()}`,
+      `${index}. ${formatPrescriptionMedicationHeader({
+        medicationName: resolved.name,
+        commercialName: product.name,
+        concentration: potencyConcentration,
+        pharmaceuticalForm: potency?.unitLabel || product.presentations.join(' '),
+      })}`,
       '',
-      ...buildAdministrationLine(amount, route, frequency, duration, null),
+      ...buildAdministrationLine(amount, route, frequency, duration, alert),
       '',
       resolved.dose.basis === 'manual'
         ? buildClinicalDoseSupportLine(null, doseUnit, null, 'conforme orientação do fabricante')
-        : buildCommercialDoseSupportLine(doseValue, doseUnit, product, weightKg),
+        : buildCommercialDoseSupportLine(doseValue, doseUnit, product, weightKg, selectedPotency, override.useCompounding),
+    ].join('\n');
+  }
+
+  if (source.kind === 'manual' && resolved.dose.basis === 'weight') {
+    const doseValue = override.selectedDoseValue ?? resolved.dose.min;
+    const parsedWeight = parsePositiveDecimal(weightKg);
+    const totalMg = parsedWeight && doseValue ? doseValue * parsedWeight : null;
+    const frequency = resolved.dose.frequency;
+    const duration = resolved.dose.duration;
+    const route = formatPrescriptionRoute(resolved.dose.route);
+    const doseUnit = resolved.dose.unit;
+
+    if (override.useCompounding && totalMg) {
+      return buildCompoundingPrescriptionBlock(
+        resolved.name,
+        totalMg,
+        route,
+        frequency,
+        duration,
+        index,
+        doseValue,
+        doseUnit,
+      );
+    }
+
+    const amount = buildClinicalAdministrationAmount(resolved.dose, doseValue, parsedWeight);
+    return [
+      `${index}. ${resolved.name.toUpperCase()}`,
+      '',
+      ...buildAdministrationLine(amount, route, frequency, duration, null),
+      '',
+      buildClinicalDoseSupportLine(doseValue, doseUnit),
     ].join('\n');
   }
 

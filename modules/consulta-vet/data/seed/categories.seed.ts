@@ -13,6 +13,7 @@ export const categoriesSeed: Category[] = [
   { id: 'cat-cx-neuro', slug: 'cirurgia-neurologica', title: 'Cirurgia neurológica', description: 'Procedimentos neurocirúrgicos e de coluna', sortOrder: 100 },
   { id: 'cat-cardiologia', slug: 'cardiologia', title: 'Cardiologia', description: 'Doenças cardiovasculares e hemodinâmica', sortOrder: 110 },
   { id: 'cat-respiratorio', slug: 'respiratorio', title: 'Respiratório', description: 'Doenças de vias aéreas e pulmões', sortOrder: 120 },
+  { id: 'cat-terapia-inalatoria', slug: 'bombas-asma-terapia-inalatoria', title: 'Bombas para asma / Terapia inalatória', description: 'Corticosteroides inalatórios, broncodilatadores de resgate/manutenção e terapia inalatória veterinária', sortOrder: 125 },
   { id: 'cat-gastroenterologia', slug: 'gastroenterologia', title: 'Gastroenterologia', description: 'Trato digestivo e motilidade gastrointestinal', sortOrder: 130 },
   { id: 'cat-hepatologia', slug: 'hepatologia-pancreas', title: 'Hepatologia / Pâncreas', description: 'Fígado, vias biliares e pâncreas', sortOrder: 140 },
   { id: 'cat-nefrologia', slug: 'nefrologia-urologia', title: 'Nefrologia / Urologia', description: 'Rins, trato urinário e distúrbios renais', sortOrder: 150 },

@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { ReceituarioDocumentData } from '../../modules/consulta-vet/types/receituario';
-import { buildDocumentPlainText, getDocumentSignatureBoxes, hasLegacyPlaceholders, paginateDocument, sanitizeIssuedText, stripTextSignatureSection } from '../../modules/consulta-vet/utils/receituarioDocument';
+import { buildDocumentBodyPlainText, buildDocumentPlainText, getDocumentSignatureBoxes, hasLegacyPlaceholders, paginateDocument, sanitizeIssuedText, stripTextSignatureSection } from '../../modules/consulta-vet/utils/receituarioDocument';
 import { createReceituarioPdf } from '../../modules/consulta-vet/utils/receituarioPdf';
 
 const document = (bodyPlainText: string): ReceituarioDocumentData => ({
@@ -79,4 +79,25 @@ test('quadros de assinatura usam identificação editável do termo', () => {
 
 test('sanitização preserva quebras e remove marcadores legados', () => {
   assert.equal(sanitizeIssuedText('A\n\n{{x}}\n[PERÍODO]'), 'A\n\nA PREENCHER\nA PREENCHER');
+});
+
+test('cabeçalho do medicamento vira uma linha pontilhada estruturada e em negrito', () => {
+  const value = {
+    ...document('USO ORAL\n\n1. ITRACONAZOL — ITL — 25 mg/cápsula — Cápsulas\n\nAdministrar 2 cápsulas, por via oral, a cada 24 horas.'),
+    documentType: 'recipe' as const,
+  };
+  const medicationLine = paginateDocument(value)[0].lines.find((line) => line.kind === 'medication');
+  assert.equal(medicationLine?.medicationLabel, '1. ITRACONAZOL — ITL — 25 mg/cápsula');
+  assert.equal(medicationLine?.medicationForm, 'Cápsulas');
+});
+
+test('copiar conteúdo exclui identificação, título e assinatura', () => {
+  const value = {
+    ...document('USO ORAL\n\n1. ITRACONAZOL — ITL — 25 mg/cápsula — Cápsulas\n\nAdministrar 2 cápsulas.'),
+    documentType: 'recipe' as const,
+  };
+  const copied = buildDocumentBodyPlainText(value);
+  assert.match(copied, /^USO ORAL/);
+  assert.match(copied, /Administrar 2 cápsulas/);
+  assert.doesNotMatch(copied, /PACIENTE|RESPONSÁVEL|CRMV|TERMO CLÍNICO/i);
 });

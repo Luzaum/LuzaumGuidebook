@@ -1,6 +1,13 @@
 import { MedicationRecord } from '../../types/medication';
 import { hepatoprotectorMedicationsSeed } from './medications.hepatoprotectors.seed';
+import { hospitalCoreMedicationsSeed } from './medications.hospital-core.seed';
+import { endocrinologyOncologyMedicationsSeed } from './medications.endocrinology-oncology.seed';
+import { cardiovascularAntiarrhythmicsMedicationsSeed } from './medications.cardiovascular-antiarrhythmics.seed';
+import { infectiousAntiparasiticMedicationsSeed } from './medications.infectious-antiparasitic.seed';
+import { respiratoryAnesthesiaMedicationsSeed } from './medications.respiratory-anesthesia.seed';
+import { neurologyBehaviorMedicationsSeed } from './medications.neurology-behavior.seed';
 import { MEDICATION_EVIDENCE_ADDITIONS } from '../medicationEvidenceAdditions';
+import { applyPlumbs10MedicationAudit } from '../plumbs10MedicationAudit';
 
 export const medicationsSeed: MedicationRecord[] = [
   {
@@ -432,7 +439,7 @@ export const medicationsSeed: MedicationRecord[] = [
     species: ['dog', 'cat'],
     category: 'infectologia',
     tags: [
-      'UTI',
+      'ITU',
       'Sulfa',
       'Trimetoprima',
       'Coccidiose',
@@ -512,7 +519,7 @@ export const medicationsSeed: MedicationRecord[] = [
         frequency: 'q12h (grave) ou q24h',
         duration: 'Conforme foco infeccioso e cultura; cistite não complicada pode ser curta (ex.: 3 d em cenários selecionados).',
         notes:
-          'Plumb’s: 30 mg/kg/d VO total combinado OU 15 mg/kg q12h. Inclui UTI aguda, complicações de cinomose, respiratório, GI, feridas/abscessos.',
+          'Plumb’s: 30 mg/kg/d VO total combinado OU 15 mg/kg q12h. Inclui ITU aguda, complicações de cinomose, respiratório, GI, feridas/abscessos.',
         calculatorEnabled: true,
         presentationId: 'pres-tmp-smx-susp-br',
       },
@@ -533,15 +540,17 @@ export const medicationsSeed: MedicationRecord[] = [
       {
         id: 'dose-tmp-smx-dog-cistite-nc',
         species: 'dog',
-        indication: 'Cistite bacteriana não complicada',
+        indication: 'Cistite bacteriana esporádica não complicada',
         doseMin: 15,
         doseMax: 15,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
         route: 'VO',
         frequency: 'q12h',
-        duration: 'Pode ser curto (ex.: 3 dias) em cenários selecionados.',
-        notes: 'Nelson/BSAVA: TMP-sulfa entre opções empíricas de UTI; ajustar por cultura.',
+        duration: '3–5 dias (ISCAID 2019); curso curto respaldado por RCT (Clare 2014).',
+        notes: 'Dose da associação total. ISCAID 2019: preferir cursos curtos vs 10–14 dias tradicionais.',
+        diseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif', 'prostatite-caes-gatos'],
+        referenceIds: ['ref-tmp-smx-cystitis-rct-2014', 'ref-iscaid-uti-2019'],
         calculatorEnabled: true,
         presentationId: 'pres-tmp-smx-susp-br',
       },
@@ -663,6 +672,27 @@ export const medicationsSeed: MedicationRecord[] = [
           'Além de 7 dias (Plumb’s): clínica, ureia/creatinina/potássio, hemograma e perfil hepático seriados; em cães, Schirmer; considerar função tireoidiana em tratamentos longos. Manter hidratação para reduzir risco de cristalúria.',
       },
       {
+        kind: 'clinicalCallout',
+        variant: 'caution',
+        title: '🚨 TMP-SMX e perfil tireoidiano',
+        body:
+          'Trimetoprima/sulfonamidas podem reduzir T4 total e livre e elevar TSH em cães, criando perfil que imita hipotireoidismo verdadeiro (Frank 2005; VIN). Evitar interpretar perfil tireoidiano durante tratamento prolongado sem considerar efeito farmacológico.',
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'info',
+        title: 'KCS — evidência atualizada (2026)',
+        body:
+          'Eventos graves podem ocorrer, mas são incomuns. VetCompass 2026: prevalência ~1,8% (possíveis + definitivos) em 2243 cães expostos. Revisão sistemática 2026 (>4200 animais): muitos graves após >7 dias. Não banalizar risco, mas incidência absoluta provavelmente menor que estimativas antigas (~15%).',
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'info',
+        title: 'Prostatite — penetração prostática',
+        body:
+          'TMP-sulfa (lipossolúvel, fracamente básica) atinge concentrações prostáticas melhores que ampicilina (VIN). Prostatite aguda: frequentemente ≥4 semanas; crônica: >6 semanas, algumas vezes 8–12 semanas. Cultura e tratamento da doença prostática subjacente continuam fundamentais.',
+      },
+      {
         kind: 'clinicalTable',
         headers: ['Síndrome / contexto', 'Dose (produto combinado total)', 'Notas'],
         rows: [
@@ -697,6 +727,9 @@ export const medicationsSeed: MedicationRecord[] = [
       'micoplasmoses-hemotropicas',
       'erliquiose-monocitica-canina',
       'doenca-renal-cronica-caes-gatos',
+      'prostatite-caes-gatos',
+      'hipotireoidismo-adquirido-caes-gatos',
+      'doencas-trato-urinario-inferior-felino-dtuif',
     ],
     references: [
       {
@@ -754,7 +787,7 @@ export const medicationsSeed: MedicationRecord[] = [
     tags: [
       'Beta-lactâmico',
       'Pele',
-      'UTI',
+      'ITU',
       'Odontologia',
       'Stewardship',
       'Synulox',
@@ -767,7 +800,7 @@ export const medicationsSeed: MedicationRecord[] = [
       'Colangite / colangiohepatite bacteriana felina (August’s: 4–8 sem com resposta; combinações em casos graves).',
       'Hepatobiliar canino empírico enquanto aguarda cultura (Watson 2024).',
       'Otite média/interna; osteomielite / discospondilite como opção empírica com cultura.',
-      'UTI complicada ou perfil de resistência — não como reflexo automático para cistite esporádica simples (August’s; BSAVA).',
+      'ITU complicada ou perfil de resistência — não como reflexo automático para cistite esporádica simples (August’s; BSAVA).',
     ],
     contraindications: [
       'Hipersensibilidade a penicilinas.',
@@ -933,7 +966,21 @@ export const medicationsSeed: MedicationRecord[] = [
         variant: 'caution',
         title: 'Stewardship em ITU',
         body:
-          'Em cistite esporádica simples, amoxicilina simples costuma ser preferível quando a sensibilidade local permitir. Reserve amoxicilina + clavulanato para casos complicados, resistência documentada ou foco em anaeróbios/mistos que justifiquem o espectro alargado (August’s; BSAVA).',
+          'Em cistite esporádica simples, amoxicilina simples costuma ser preferível quando a sensibilidade local permitir. Reserve amoxicilina + clavulanato para casos complicados, resistência documentada ou foco em anaeróbios/mistos que justifiquem o espectro alargado (August’s; BSAVA). Cursos curtos (3–5 dias) para cistite esporádica quando indicado (ISCAID 2019).',
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'caution',
+        title: 'Piodermite superficial — ISCAID 2025',
+        body:
+          'Terapia antimicrobiana tópica é escolha preferida para piodermite superficial. Antibiótico sistêmico reservado a infecção profunda, falha/incapacidade de terapia tópica ou situações selecionadas. Dose 12,5 mg/kg da associação total PO q12h — doses maiores sem evidência convincente de benefício (Loeffler 2025).',
+      },
+      {
+        kind: 'clinicalCallout',
+        variant: 'info',
+        title: 'Gengivoestomatite felina (VIN)',
+        body:
+          'Pode ser utilizada temporariamente quando há indicação antimicrobiana secundária, mas resposta tende a ser temporária/limitada. Extrações dentárias apresentam resultados superiores no controle da gengivoestomatite crônica felina — não constitui tratamento definitivo.',
       },
       {
         kind: 'clinicalTable',
@@ -958,12 +1005,19 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     clinicalNotesRichText:
       '<p><strong>Crítico:</strong> produto <strong>veterinário 4:1</strong> vs <strong>humano</strong> (proporções 2:1 a 7:1) — o “875 mg” na caixa humana não equivale ao “375 mg” total vet sem converter componentes.</p>' +
-      '<p><strong>UTI simples:</strong> amoxicilina <em>sem</em> clavulanato costuma ser melhor 1ª escolha (August’s; BSAVA).</p>' +
+      '<p><strong>ITU simples:</strong> amoxicilina <em>sem</em> clavulanato costuma ser melhor 1ª escolha (August’s; BSAVA).</p>' +
       '<p><strong>Respiratório:</strong> não cobre <em>Mycoplasma</em>; resistência de <em>Bordetella</em> pode variar por região.</p>' +
       '<p><strong>Calculadora:</strong> concentrações de comprimidos estão em <strong>mg de amoxicilina</strong> por unidade, coerente com doses em mg/kg de amoxicilina.</p>',
     adminNotesText:
       'Synulox: informações de indicação e dose conforme página Zoetis Brasil citada pelo utilizador; conferir bula vigente. Gotas humanas: listadas no Plumb’s com várias concentrações — não misturar sem checar rótulo.',
-    relatedDiseaseSlugs: ['micoplasmoses-hemotropicas', 'colapso-traqueal-canino'],
+    relatedDiseaseSlugs: [
+      'micoplasmoses-hemotropicas',
+      'colapso-traqueal-canino',
+      'gengivoestomatite-cronica-felina',
+      'doenca-periodontal-caes',
+      'doenca-periodontal-gatos',
+      'doencas-trato-urinario-inferior-felino-dtuif',
+    ],
     references: [
       {
         id: 'ref-plumbs-amox-clav',
@@ -1276,7 +1330,7 @@ export const medicationsSeed: MedicationRecord[] = [
       'Náusea/vómito associados à doença renal crónica no gato (dose fixa extra-label em referências).',
     ],
     contraindications: [
-      'Não usar como substituto de investigação quando há suspeita de corpo estranho obstrutivo ou condição cirúrgica — o controle do vômito pode mascarar o quadro e atrasar diagnóstico.',
+      'Não usar como substituto de investigação quando há suspeita de corpo estranho obstrutivo ou condição cirúrgica — o controle do vómito pode mascarar o quadro e atrasar diagnóstico.',
       'Cautela/evitar conforme rótulo: obstrução GI, intoxicação não esclarecida, hepatopatia grave, associação com fármacos que prolongam QT, certas situações cardíacas com antiarrítmicos.',
     ],
     cautions: [
@@ -1612,7 +1666,7 @@ export const medicationsSeed: MedicationRecord[] = [
       },
       {
         id: 'ref-nelson-raas',
-        citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020 — bloqueio do RAAS em cardiopatias e nefropatias.',
+        citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine, 6th ed., 2020 — bloqueio do SRAA em cardiopatias e nefropatias.',
         sourceType: 'Livro-texto',
         url: null,
         evidenceLevel: 'Alta',
@@ -1626,7 +1680,7 @@ export const medicationsSeed: MedicationRecord[] = [
     slug: 'pimobendan',
     title: 'Pimobendan',
     activeIngredient: 'Pimobendan',
-    tradeNames: ['Vetmedin® (Boehringer Ingelheim — comprimidos mastigáveis)', 'Genéricos veterinários regionais'],
+    tradeNames: ['Vetmedin® (Boehringer Ingelheim — comprimidos mastigáveis)', 'Cardisure®', 'Genéricos veterinários regionais'],
     pharmacologicClass: 'Inodilatador (inotrópico positivo + vasodilatador)',
     species: ['dog', 'cat'],
     category: 'cardiologia',
@@ -1864,9 +1918,20 @@ export const medicationsSeed: MedicationRecord[] = [
     source: 'seed',
   },
   ...hepatoprotectorMedicationsSeed,
+  ...hospitalCoreMedicationsSeed,
+  ...endocrinologyOncologyMedicationsSeed,
+  ...cardiovascularAntiarrhythmicsMedicationsSeed,
+  ...infectiousAntiparasiticMedicationsSeed,
+  ...neurologyBehaviorMedicationsSeed,
+  ...respiratoryAnesthesiaMedicationsSeed,
 ];
 
+const betaBlockerClassIndex = medicationsSeed.findIndex((medication) => medication.slug === 'betabloqueadores');
+if (betaBlockerClassIndex >= 0) medicationsSeed.splice(betaBlockerClassIndex, 1);
+
 for (const medication of medicationsSeed) {
+  const audited = applyPlumbs10MedicationAudit(medication);
+  Object.assign(medication, audited);
   const additions = MEDICATION_EVIDENCE_ADDITIONS[medication.slug] || [];
   const existingIds = new Set((medication.references || []).map((reference) => reference.id).filter(Boolean));
   medication.references = [

@@ -114,7 +114,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         {
           label: 'Reavaliar resposta',
           detail:
-            'Falha de resposta plaquetária exige revisar diagnóstico, adesão e coinfecções (babesiose, anaplasma) (Neer et al., ACVIM 2002).',
+            'Falha de resposta plaquetária exige revisar diagnóstico, adesão e coinfecções (*babesiose*, *anaplasma*) (Neer et al., ACVIM 2002).',
           reassess: 'Repetir PCR/sorologia conforme protocolo de seguimento.',
         },
       ],
@@ -122,7 +122,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   etiology: {
     agente:
-      'Ehrlichia canis e uma bacteria pequena, gram-negativa, intracelular obrigatoria, da ordem Rickettsiales. No cão, infecta principalmente monocitos e macrofagos, onde forma morulas e se multiplica.',
+      '*Ehrlichia canis* e uma bacteria pequena, gram-negativa, intracelular obrigatoria, da ordem Rickettsiales. No cão, infecta principalmente monocitos e macrofagos, onde forma morulas e se multiplica.',
     alvoCelular:
       'A afinidade por celulas do sistema mononuclear fagocitico explica a disseminacao sistêmica, a relação com baco, figado, linfonodos, medula ossea e a dificuldade de interpretar testes isolados em fases diferentes.',
     sinonimiaClinica:
@@ -130,13 +130,13 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   epidemiology: {
     distribuicao:
-      'E. canis ocorre mundialmente, incluindo Asia, Africa, Europa, America do Norte e America do Sul. A prevalencia aumenta em areas com infestacao por carrapatos e controle ectoparasitario irregular.',
+      '*E. canis* ocorre mundialmente, incluindo Asia, Africa, Europa, America do Norte e America do Sul. A prevalencia aumenta em areas com infestacao por carrapatos e controle ectoparasitario irregular.',
     vetores:
-      'O principal vetor e Rhipicephalus sanguineus, o carrapato-marrom-do-cão. Em partes do leste asiatico, Haemaphysalis longicornis tambem e descrito como vetor relevante.',
+      'O principal vetor e *Rhipicephalus sanguineus*, o carrapato-marrom-do-cão. Em partes do leste asiatico, *Haemaphysalis longicornis* tambem e descrito como vetor relevante.',
     predisposicao:
       'Qualquer cão pode adoecer. Pastor Alemao e Husky Siberiano sao mais associados a formas graves; em Pastor Alemao, resposta imune celular menos eficiente pode contribuir para maior gravidade e mortalidade.',
     coinfeccoes:
-      'O mesmo ecossistema de carrapatos pode envolver Babesia canis vogeli, Hepatozoon canis, Anaplasma spp. e outros agentes. Coinfeccao deve ser investigada quando o quadro e grave, atipico ou responde mal a doxiciclina.',
+      'O mesmo ecossistema de carrapatos pode envolver *Babesia canis vogeli*, *Hepatozoon canis*, *Anaplasma* spp. e outros agentes. Coinfeccao deve ser investigada quando o quadro e grave, atipico ou responde mal a doxiciclina.',
   },
   pathogenesisTransmission: {
     transmissao:
