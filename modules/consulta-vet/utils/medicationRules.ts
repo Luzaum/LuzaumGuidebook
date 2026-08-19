@@ -201,7 +201,8 @@ export function resolvePresentationConversion(
   presentation: MedicationPresentation | undefined,
   doseMinMg: number | undefined,
   doseMaxMg: number | undefined,
-  doseSingleMg: number | undefined
+  doseSingleMg: number | undefined,
+  doseUnit = 'mg',
 ): DoseConversionResult | null {
   if (!presentation) return null;
 
@@ -216,7 +217,7 @@ export function resolvePresentationConversion(
     return calculatePracticalEquivalent({
       presentation: mappedPresentation as any,
       totalDosePerAdmin: val,
-      doseUnit: 'mg'
+      doseUnit,
     });
   };
 

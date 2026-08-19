@@ -18,6 +18,8 @@ type PracticalEquivalentInput = {
     value_unit?: string | null;
     per_value?: number | null;
     per_unit?: string | null;
+    split_increment?: number | null;
+    whole_unit_only?: boolean | null;
   };
 };
 
@@ -30,7 +32,7 @@ const UNIT_CONVERSION: Record<string, number> = {
 };
 
 function normalizeUnit(value: string): string {
-  const normalized = String(value || '').trim().toLowerCase().replace('µg', 'mcg');
+  const normalized = String(value || '').trim().toLowerCase().replace(/\u00b5g|\u03bcg/g, 'mcg');
   const canonical = normalized.match(/^(mcg|mg|g|ui)\b/);
   return canonical?.[1] || normalized;
 }
@@ -72,9 +74,15 @@ export function calculatePracticalEquivalent(input: PracticalEquivalentInput): P
   const rawUnit = String(presentation.value_unit || '').trim();
   const slashIndex = rawUnit.indexOf('/');
   const valueUnit = slashIndex > 0 ? rawUnit.slice(0, slashIndex).trim() : rawUnit;
-  const inferredPerUnit = slashIndex > 0 ? rawUnit.slice(slashIndex + 1).trim() : '';
+  const rawDenominator = slashIndex > 0 ? rawUnit.slice(slashIndex + 1).trim() : '';
+  const denominatorMatch = rawDenominator.match(/^(\d+(?:[.,]\d+)?)?\s*(.*)$/);
+  const denominatorValue = Number(String(denominatorMatch?.[1] || '').replace(',', '.'));
+  const inferredPerUnit = String(denominatorMatch?.[2] || rawDenominator).trim();
   const value = Number(presentation.value);
-  const perValue = Number(presentation.per_value);
+  const explicitPerValue = Number(presentation.per_value);
+  const perValue = Number.isFinite(denominatorValue) && denominatorValue > 0
+    ? denominatorValue
+    : explicitPerValue;
   const perUnit = String(presentation.per_unit || inferredPerUnit || '').trim();
 
   if (!Number.isFinite(value) || value <= 0 || !valueUnit) {
@@ -91,12 +99,42 @@ export function calculatePracticalEquivalent(input: PracticalEquivalentInput): P
 
   const equivalentValue = (totalDosePerAdmin * factor) / (value / perValue);
   const equivalentUnit = classifyUnit(String(presentation.pharmaceutical_form || ''), perUnit);
-  const label = formatLabel(equivalentValue, equivalentUnit);
-  const alert = equivalentUnit === 'cápsula' && Math.abs(equivalentValue - Math.round(equivalentValue)) >= 0.01
-    ? 'Cápsulas não devem ser fracionadas. Considere manipulação ou outra apresentação.'
-    : undefined;
+  if (equivalentUnit === 'cápsula' && Math.abs(equivalentValue - Math.round(equivalentValue)) >= 0.01) {
+    return {
+      success: false,
+      equivalentValue,
+      equivalentUnit,
+      label: formatLabel(equivalentValue, equivalentUnit),
+      failReason: 'Cápsulas não devem ser fracionadas. Considere manipulação ou outra apresentação.',
+    };
+  }
 
-  return { success: true, equivalentValue, equivalentUnit, label, alert };
+  let practicalValue = equivalentValue;
+  let alert: string | undefined;
+  if (equivalentUnit === 'comprimido') {
+    const configuredIncrement = Number(presentation.split_increment);
+    const increment = presentation.whole_unit_only
+      ? 1
+      : Number.isFinite(configuredIncrement) && configuredIncrement > 0
+        ? configuredIncrement
+        : null;
+    if (!increment) {
+      return {
+        success: false,
+        equivalentValue,
+        equivalentUnit,
+        label: formatLabel(equivalentValue, equivalentUnit),
+        failReason: 'Divisibilidade do comprimido não cadastrada. Confirme o sulco ou escolha outra apresentação.',
+      };
+    }
+    practicalValue = Math.max(increment, Math.round(equivalentValue / increment) * increment);
+    if (Math.abs(practicalValue - equivalentValue) >= 0.001) {
+      const difference = Math.abs(((practicalValue - equivalentValue) / equivalentValue) * 100);
+      alert = `Quantidade ajustada para ${formatLabel(practicalValue, equivalentUnit)} conforme a divisibilidade cadastrada (diferença de ${decimalPtBr(difference, 1)}%).`;
+    }
+  }
+
+  return { success: true, equivalentValue: practicalValue, equivalentUnit, label: formatLabel(practicalValue, equivalentUnit), alert };
 }
 
 export function toPracticalPresentation(presentation: MedicationPresentation) {
@@ -106,6 +144,16 @@ export function toPracticalPresentation(presentation: MedicationPresentation) {
   const denominatorMatch = denominator.match(/^(\d+(?:[.,]\d+)?)?\s*(.*)$/);
   const parsedPerValue = Number(String(denominatorMatch?.[1] || '1').replace(',', '.'));
   const parsedPerUnit = String(denominatorMatch?.[2] || denominator).trim();
+  const scoring = String(presentation.scoringInfo || '').toLowerCase();
+  const splitIncrement = /1\/8|oitav/.test(scoring)
+    ? 0.125
+    : /1\/4|quart/.test(scoring)
+      ? 0.25
+      : /1\/2|meio|bissul|sulcad/.test(scoring)
+        ? 0.5
+        : /sem sulco|inteir/.test(scoring)
+          ? 1
+          : null;
 
   return {
     pharmaceutical_form: presentation.form,
@@ -119,5 +167,7 @@ export function toPracticalPresentation(presentation: MedicationPresentation) {
         : presentation.form.toLowerCase().includes('gota')
           ? 'gota'
           : 'mL'),
+    split_increment: splitIncrement,
+    whole_unit_only: splitIncrement === 1,
   };
 }

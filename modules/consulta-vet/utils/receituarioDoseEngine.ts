@@ -43,6 +43,10 @@ const UNIT_ALIASES: Record<string, string> = {
 };
 
 const MASS_TO_MG: Record<string, number> = { mcg: 0.001, mg: 1, g: 1000 };
+const PLAUSIBLE_WEIGHT_KG: Record<PrescriptionSpecies, { min: number; max: number }> = {
+  dog: { min: 0.05, max: 150 },
+  cat: { min: 0.05, max: 30 },
+};
 
 function normalizeText(value: unknown): string {
   return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
@@ -91,6 +95,40 @@ function presentationAdministrationUnit(presentation: MedicationPresentationReco
   return String(presentation.per_unit || presentation.presentation_unit || 'unidade');
 }
 
+function isDirectAdministrationUnit(sourceUnit: string, administrationUnit: string): boolean {
+  const source = normalizeText(sourceUnit);
+  const administration = normalizeText(administrationUnit);
+  if (source === 'ml' && administration === 'ml') return true;
+  if (/^gotas?$/.test(source) && /^gotas?$/.test(administration)) return true;
+  if (/^(jato|spray|borrifada)s?$/.test(source) && /^(jato|spray|borrifada)s?$/.test(administration)) return true;
+  if (/^(aplicacao|dose)s?$/.test(source) && /^(aplicacao|dose)s?$/.test(administration)) return true;
+  return false;
+}
+
+function parsePresentationConcentration(presentation: MedicationPresentationRecord): {
+  value: number;
+  valueUnit: string;
+  perValue: number;
+} | null {
+  const concentrationValue = Number(presentation.value);
+  const rawValueUnit = String(presentation.value_unit || '').trim();
+  if (!Number.isFinite(concentrationValue) || concentrationValue <= 0 || !rawValueUnit) return null;
+
+  const [rawNumerator, rawDenominator = ''] = rawValueUnit.split('/').map((item) => item.trim());
+  const numeratorMatch = rawNumerator.match(/(?:^|\s)(mcg|ug|\u00b5g|\u03bcg|mg|g|ui|u|meq|ml|l|%)(?:\s|$)/i);
+  const valueUnit = numeratorMatch?.[1] || rawNumerator;
+  const denominatorMatch = rawDenominator.match(/^(\d+(?:[.,]\d+)?)\s*(.*)$/);
+  const denominatorFromUnit = denominatorMatch ? Number(denominatorMatch[1].replace(',', '.')) : null;
+  const explicitPerValue = Number(presentation.per_value);
+  const perValue = Number.isFinite(denominatorFromUnit) && Number(denominatorFromUnit) > 0
+    ? Number(denominatorFromUnit)
+    : Number.isFinite(explicitPerValue) && explicitPerValue > 0
+      ? explicitPerValue
+      : 1;
+
+  return { value: concentrationValue, valueUnit, perValue };
+}
+
 function roundToIncrement(value: number, increment: number): number {
   return Math.round(value / increment) * increment;
 }
@@ -132,35 +170,55 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
   if (requiresWeight && !weight) {
     return { ...base, blockedReason: 'Informe o peso para esta dose.' };
   }
+  if (requiresWeight && weight) {
+    const plausible = PLAUSIBLE_WEIGHT_KG[input.species];
+    if (weight < plausible.min || weight > plausible.max) {
+      return {
+        ...base,
+        blockedReason: `O peso de ${weight.toLocaleString('pt-BR')} kg está fora da faixa plausível para ${input.species === 'dog' ? 'cães' : 'gatos'} (${plausible.min.toLocaleString('pt-BR')} a ${plausible.max.toLocaleString('pt-BR')} kg). Confirme o cadastro do paciente.`,
+      };
+    }
+  }
 
   const totalDose = basis === 'weight_based' ? input.selectedDoseValue * (weight || 0) : input.selectedDoseValue;
   base.totalDose = totalDose;
   if (!input.presentation) return base;
 
   const presentation = input.presentation;
-  const concentrationValue = Number(presentation.value);
-  const perValue = Number(presentation.per_value || 1);
-  const presentationUnit = String(presentation.value_unit || '').split('/')[0].trim();
-  if (!Number.isFinite(concentrationValue) || concentrationValue <= 0 || !presentationUnit) {
-    return { ...base, blockedReason: 'A apresentação não possui concentração estruturada para cálculo.' };
-  }
-  const convertedTotal = convertDose(totalDose, sourceUnit.numerator, presentationUnit);
-  if (convertedTotal == null) {
-    return { ...base, blockedReason: `A unidade ${sourceUnit.numerator} não é compatível com ${presentationUnit}.` };
+  const administrationUnit = presentationAdministrationUnit(presentation);
+  if (isDirectAdministrationUnit(sourceUnit.numerator, administrationUnit)) {
+    return {
+      ...base,
+      exactAmount: totalDose,
+      practicalAmount: totalDose,
+      administrationUnit,
+      actualTotalDose: totalDose,
+      actualDosePerBasis: weight ? totalDose / weight : totalDose,
+      percentDifference: 0,
+    };
   }
 
-  const concentrationPerUnit = concentrationValue / (Number.isFinite(perValue) && perValue > 0 ? perValue : 1);
+  const concentration = parsePresentationConcentration(presentation);
+  if (!concentration) {
+    return { ...base, blockedReason: 'A apresentação não possui concentração estruturada para cálculo.' };
+  }
+  const convertedTotal = convertDose(totalDose, sourceUnit.numerator, concentration.valueUnit);
+  if (convertedTotal == null) {
+    return { ...base, blockedReason: `A unidade ${sourceUnit.numerator} não é compatível com ${concentration.valueUnit}.` };
+  }
+
+  const concentrationPerUnit = concentration.value / concentration.perValue;
   const exactAmount = convertedTotal / concentrationPerUnit;
-  const administrationUnit = presentationAdministrationUnit(presentation);
   const metadata = getDoseEngineMetadata(presentation);
   const isCapsule = administrationUnit === 'cápsula';
   const isTablet = administrationUnit === 'comprimido';
   const configuredIncrement = Number(presentation.tablet_split_increment ?? metadata.split_increment);
+  const hasConfiguredIncrement = Number.isFinite(configuredIncrement) && configuredIncrement > 0;
   const increment = metadata.whole_unit_only || isCapsule
     ? 1
     : isTablet
-      ? Math.min(Number.isFinite(configuredIncrement) && configuredIncrement > 0 ? configuredIncrement : 0.25, 0.25)
-      : Number.isFinite(configuredIncrement) && configuredIncrement > 0
+      ? hasConfiguredIncrement ? configuredIncrement : 1
+      : hasConfiguredIncrement
         ? configuredIncrement
         : 0;
 
@@ -178,6 +236,7 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
     const selected = alternatives[0];
     const tolerance = input.roundingTolerancePercent ?? 10;
     const rounded = Math.abs(selected.amount - exactAmount) > 1e-9;
+    const missingTabletDivisibility = isTablet && !hasConfiguredIncrement && !metadata.whole_unit_only;
     return {
       ...base,
       totalDose: convertedTotal,
@@ -189,7 +248,9 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
       percentDifference: selected.percentDifference,
       alternatives,
       requiresConfirmation: rounded,
-      warning: Math.abs(selected.percentDifference) > tolerance
+      warning: missingTabletDivisibility
+        ? 'Divisibilidade não cadastrada; por segurança, a quantidade foi limitada a comprimidos inteiros.'
+        : Math.abs(selected.percentDifference) > tolerance
         ? `A diferença de ${Math.abs(selected.percentDifference).toFixed(1).replace('.', ',')}% excede a tolerância de ${tolerance}%.`
         : rounded ? 'A quantidade prática foi arredondada conforme a divisibilidade cadastrada.' : undefined,
     };

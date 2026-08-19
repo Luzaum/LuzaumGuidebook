@@ -63,14 +63,15 @@ test('aceita três quartos de comprimido como quantidade prática', () => {
     presentation: presentation({ value: 5, tablet_split_increment: 0.5 }),
   });
   assert.equal(result.exactAmount, 0.75);
-  assert.equal(result.practicalAmount, 0.75);
-  assert.equal(result.requiresConfirmation, false);
+  assert.equal(result.practicalAmount, 0.5);
+  assert.equal(result.requiresConfirmation, true);
 });
 
 test('usa quartos como padrão para comprimido sem divisibilidade cadastrada', () => {
   const result = calculateReceituarioDose({ species: 'dog', weightKg: 7.5, selectedDoseValue: 0.5, dose: dose(), presentation: presentation({ value: 5, tablet_split_increment: null }) });
   assert.equal(result.blockedReason, undefined);
-  assert.equal(result.practicalAmount, 0.75);
+  assert.equal(result.practicalAmount, 1);
+  assert.match(String(result.warning), /Divisibilidade não cadastrada/);
 });
 
 test('cápsula é inteira e exige alternativa quando a dose é fracionada', () => {
@@ -83,4 +84,33 @@ test('converte mcg para mg sem interpretar como mg/kg', () => {
   const result = calculateReceituarioDose({ species: 'dog', weightKg: 10, selectedDoseValue: 100, dose: dose({ dose_value: 100, dose_unit: 'mcg/kg' }), presentation: presentation({ value: 1, value_unit: 'mg', tablet_split_increment: 1 }) });
   assert.equal(result.totalDose, 1);
   assert.equal(result.exactAmount, 1);
+});
+
+test('interpreta corretamente concentração legada em mg/5 mL', () => {
+  const result = calculateReceituarioDose({
+    species: 'dog',
+    selectedDoseValue: 20,
+    dose: dose({ dose_value: 20, dose_unit: 'mg', per_weight_unit: null, administration_basis: 'per_animal' }),
+    presentation: presentation({ pharmaceutical_form: 'Suspensão', presentation_unit: 'mL', value: 20, value_unit: 'mg/5 mL', per_value: null, per_unit: 'mL' }),
+  });
+  assert.equal(result.exactAmount, 5);
+  assert.equal(result.practicalAmount, 5);
+});
+
+test('calcula mL/kg diretamente sem exigir concentração em massa', () => {
+  const result = calculateReceituarioDose({
+    species: 'cat',
+    weightKg: 4,
+    selectedDoseValue: 0.5,
+    dose: dose({ species: 'gato', dose_value: 0.5, dose_unit: 'mL/kg' }),
+    presentation: presentation({ pharmaceutical_form: 'Solução', presentation_unit: 'mL', value: null, value_unit: null, per_value: null, per_unit: 'mL' }),
+  });
+  assert.equal(result.totalDose, 2);
+  assert.equal(result.practicalAmount, 2);
+  assert.equal(result.blockedReason, undefined);
+});
+
+test('bloqueia peso fora da faixa plausível da espécie', () => {
+  const result = calculateReceituarioDose({ species: 'cat', weightKg: 31, selectedDoseValue: 0.5, dose: dose({ species: 'gato' }) });
+  assert.match(String(result.blockedReason), /fora da faixa plausível/);
 });

@@ -578,19 +578,6 @@ export function evaluateEditorialDoseAlert(
   selectedDoseValue: number | null | undefined,
   dose?: RecommendedDose | null,
 ): ClinicalDoseAlert | null {
-  if (calculation?.percentDifference != null && Math.abs(calculation.percentDifference) > DOSE_ROUNDING_TOLERANCE_PERCENT) {
-    const diff = Math.abs(calculation.percentDifference).toFixed(1).replace('.', ',');
-    if (calculation.percentDifference > 0) {
-      return withCriticalFlag({
-        severity: 'overdose',
-        message: `A apresentação escolhida exige ${diff}% a mais de princípio ativo do que a dose calculada — risco de sobredose.`,
-      }, calculation.percentDifference);
-    }
-    return {
-      severity: 'underdose',
-      message: `A apresentação escolhida entrega ${diff}% a menos de princípio ativo do que a dose calculada — risco de subdose.`,
-    };
-  }
   if (selectedDoseValue != null && dose) {
     const maximum = dose.dose_max ?? dose.dose_value;
     if (selectedDoseValue > maximum) {
@@ -606,6 +593,19 @@ export function evaluateEditorialDoseAlert(
         message: `Dose escolhida abaixo da faixa ConsultaVet (${formatCatalogDoseRange(dose)}).`,
       };
     }
+  }
+  if (calculation?.percentDifference != null && Math.abs(calculation.percentDifference) > DOSE_ROUNDING_TOLERANCE_PERCENT) {
+    const diff = Math.abs(calculation.percentDifference).toFixed(1).replace('.', ',');
+    if (calculation.percentDifference > 0) {
+      return withCriticalFlag({
+        severity: 'overdose',
+        message: `A apresentação escolhida exige ${diff}% a mais de princípio ativo do que a dose calculada — risco de sobredose.`,
+      }, calculation.percentDifference);
+    }
+    return {
+      severity: 'underdose',
+      message: `A apresentação escolhida entrega ${diff}% a menos de princípio ativo do que a dose calculada — risco de subdose.`,
+    };
   }
   return null;
 }

@@ -108,7 +108,7 @@ export function parsePositiveDecimal(value: string | number | undefined): number
 
 export function normalizePrescriptionSpecies(value: string | undefined): PrescriptionSpecies | null {
   const normalized = normalize(value || '');
-  if (/^(cao|canino|canina|dog)$/.test(normalized) || normalized.includes('canin')) return 'dog';
+  if (/^(cao|canino|canina|dog)$/.test(normalized) || /^c.{1,3}o$/.test(normalized) || normalized.includes('canin')) return 'dog';
   if (/^(gato|gata|felino|felina|cat)$/.test(normalized) || normalized.includes('felin')) return 'cat';
   return null;
 }

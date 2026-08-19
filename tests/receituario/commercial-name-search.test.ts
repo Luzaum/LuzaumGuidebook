@@ -153,3 +153,20 @@ test('permite descobrir produtos comerciais por categoria e subcategoria', async
   assert.ok(results.every((item) => (item.metadata?.commercial_subclasses as string[]).includes('gi_antiemetic')));
   assert.ok(results.every((item) => (item.metadata?.species as string[]).includes('dog')));
 });
+
+test('não corta silenciosamente o catálogo comercial em 80 resultados', async () => {
+  const results = await searchPrescriptionCommercialProducts({ commercialClass: 'dermatologic' });
+
+  assert.ok(results.length > 80, `esperava mais de 80 produtos, recebeu ${results.length}`);
+  assert.equal(new Set(results.map((item) => item.id)).size, results.length);
+});
+
+test('mantém limite explícito quando o chamador solicita paginação', async () => {
+  const results = await searchPrescriptionCommercialProducts({ commercialClass: 'dermatologic', limit: 10 });
+  assert.equal(results.length, 10);
+});
+
+test('pesquisa também o texto de apresentações e orientações comerciais', async () => {
+  const results = await searchPrescriptionCommercialProducts({ query: 'agitar antes de usar' });
+  assert.ok(results.length > 0);
+});

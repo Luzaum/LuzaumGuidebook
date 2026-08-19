@@ -8,6 +8,29 @@ function normalizeSearchTerm(value: unknown): string {
   return normalizeMedicationSearch(value);
 }
 
+export function commercialProductSearchText(product: CommercialMedicationProduct): string {
+  const plumbsEntries = [
+    ...(product.dosageGuidance?.plumbs?.dog || []),
+    ...(product.dosageGuidance?.plumbs?.cat || []),
+  ];
+  return [
+    product.name,
+    product.manufacturer,
+    ...product.activeComponents,
+    ...product.presentations,
+    product.labelCompositionSummary,
+    product.clinicalUse,
+    product.labelDirections,
+    product.dosageGuidance?.labelDose,
+    ...plumbsEntries.flatMap((entry) => [entry.title, entry.dose, entry.note]),
+    product.plumbsContext,
+    product.prescriptionExample,
+    product.commercialClass,
+    product.commercialSubclass,
+    ...(product.commercialSubclasses || []),
+  ].filter(Boolean).join(' ');
+}
+
 function mapCommercialProduct(product: CommercialMedicationProduct): MedicationSearchResult {
   const subclasses = Array.from(new Set([product.commercialSubclass, ...(product.commercialSubclasses || [])]));
   return {
@@ -117,39 +140,46 @@ export interface PrescriptionCommercialSearchOptions {
 
 /** Catálogo comercial consultado exclusivamente pelo compositor do Receituário. */
 export async function searchPrescriptionCommercialProducts({
-  query = '', commercialClass = '', commercialSubclass = '', limit = 80,
+  query = '', commercialClass = '', commercialSubclass = '', limit = Number.POSITIVE_INFINITY,
 }: PrescriptionCommercialSearchOptions): Promise<MedicationSearchResult[]> {
   const needle = normalizeSearchTerm(query);
   if (needle.length < 2 && !commercialClass) return [];
 
   const { commercialOticProductsSeed } = await import('../data/commercialOticProducts.seed');
-  return commercialOticProductsSeed
+  const eligibleProducts = commercialOticProductsSeed
     .filter((product) => {
       const subclasses = Array.from(new Set([product.commercialSubclass, ...(product.commercialSubclasses || [])]));
       const classSubclasses = commercialClass ? RECEITUARIO_SUBCLASSES_BY_CLASS[commercialClass] : [];
       const matchesClass = !commercialClass || product.commercialClass === commercialClass || subclasses.some((item) => classSubclasses.includes(item));
       const matchesSubclass = !commercialSubclass || subclasses.includes(commercialSubclass);
-      const searchText = normalizeSearchTerm([
-        product.name, product.manufacturer, ...product.activeComponents,
-      ].join(' '));
-      return matchesClass && matchesSubclass && (!needle || medicationSearchScore(needle, searchText) !== null);
-    })
+      return matchesClass && matchesSubclass;
+    });
+  const exactNameMatches = needle
+    ? eligibleProducts.filter((product) => normalizeSearchTerm(product.name).includes(needle))
+    : [];
+  const searchPool = exactNameMatches.length ? exactNameMatches : eligibleProducts;
+
+  return searchPool
+    .filter((product) => !needle || medicationSearchScore(needle, normalizeSearchTerm(commercialProductSearchText(product))) !== null)
     .sort((left, right) => {
       const leftName = normalizeSearchTerm(left.name);
       const rightName = normalizeSearchTerm(right.name);
-      const leftSearchText = [left.name, left.manufacturer, ...left.activeComponents].join(' ');
-      const rightSearchText = [right.name, right.manufacturer, ...right.activeComponents].join(' ');
+      const leftSearchText = commercialProductSearchText(left);
+      const rightSearchText = commercialProductSearchText(right);
       const leftScore = needle ? medicationSearchScore(needle, leftSearchText) ?? Number.POSITIVE_INFINITY : 0;
       const rightScore = needle ? medicationSearchScore(needle, rightSearchText) ?? Number.POSITIVE_INFINITY : 0;
       if (leftScore !== rightScore) return leftScore - rightScore;
       if (needle && leftName.startsWith(needle) !== rightName.startsWith(needle)) return leftName.startsWith(needle) ? -1 : 1;
       return left.name.localeCompare(right.name, 'pt-BR');
     })
-    .slice(0, limit)
+    .slice(0, Number.isFinite(limit) && limit > 0 ? limit : commercialOticProductsSeed.length)
     .map(mapCommercialProduct);
 }
 
 /** Mantém o fallback de busca por nome usado no fluxo já existente. */
 export async function searchPrescriptionCommercialProductsByName(query: string): Promise<MedicationSearchResult[]> {
-  return searchPrescriptionCommercialProducts({ query });
+  const results = await searchPrescriptionCommercialProducts({ query });
+  const needle = normalizeSearchTerm(query);
+  const nameMatches = results.filter((item) => medicationSearchScore(needle, normalizeSearchTerm(item.name)) !== null);
+  return nameMatches.length ? nameMatches : results;
 }

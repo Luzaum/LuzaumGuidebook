@@ -25,6 +25,7 @@ import {
 import { VetSpecies } from '../types/common';
 import { medicationsSeed } from '../data/seed/medications.seed';
 import { getMedicationsForCommercialProduct } from '../utils/commercialMedicationLinks';
+import { commercialProductSearchText } from '../services/receituarioCommercialCatalogService';
 
 const UI_TEXT = {
   eyebrow: 'ConsultaVET',
@@ -731,14 +732,8 @@ export function CommercialPresentationsPage() {
         productSubclasses.includes(commercialSubclass);
       const matchesSpecies = species === 'all' || product.species.includes(species);
       const searchHaystack = [
-        product.name,
-        product.manufacturer,
+        commercialProductSearchText(product),
         CLASS_LABELS[product.commercialClass],
-        product.commercialClass,
-        product.labelCompositionSummary,
-        product.clinicalUse,
-        product.activeComponents.join(' '),
-        productSubclasses.join(' '),
         productSubclasses.map((subclass) => SUBCLASS_LABELS[subclass]).join(' '),
       ]
         .join(' ')

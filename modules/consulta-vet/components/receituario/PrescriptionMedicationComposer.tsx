@@ -327,7 +327,6 @@ export function PrescriptionMedicationComposer({
       .sort((left, right) => left.score - right.score || left.item.name.localeCompare(right.item.name, 'pt-BR'));
     if (needle.length < 2) return catalog;
     return ranked
-      .slice(0, 24)
       .map(({ item }) => item);
   }, [catalog, query]);
 
@@ -369,22 +368,30 @@ export function PrescriptionMedicationComposer({
     }
 
     const candidates = activeIngredientResults
-      .filter((item) => !item.id.startsWith('editorial:') && !item.id.startsWith('manual:'))
-      .slice(0, 8);
+      .filter((item) => !item.id.startsWith('editorial:') && !item.id.startsWith('manual:'));
     if (!candidates.length) {
       setCatalogCommercialResults([]);
       return;
     }
 
     let active = true;
-    void Promise.all(candidates.map(async (medication) => {
-      try {
-        const nextPresentations = await getMedicationPresentations(catalogClinicId, medication.id);
-        return buildCatalogPresentationCommercialResults(medication, nextPresentations);
-      } catch {
-        return [];
+    const groups: MedicationSearchResult[][] = Array.from({ length: candidates.length }, () => []);
+    let nextCandidate = 0;
+    const worker = async () => {
+      while (active) {
+        const candidateIndex = nextCandidate;
+        nextCandidate += 1;
+        if (candidateIndex >= candidates.length) return;
+        const medication = candidates[candidateIndex];
+        try {
+          const nextPresentations = await getMedicationPresentations(catalogClinicId, medication.id);
+          groups[candidateIndex] = buildCatalogPresentationCommercialResults(medication, nextPresentations);
+        } catch {
+          groups[candidateIndex] = [];
+        }
       }
-    })).then((groups) => {
+    };
+    void Promise.all(Array.from({ length: Math.min(8, candidates.length) }, () => worker())).then(() => {
       if (active) setCatalogCommercialResults(groups.flat());
     });
     return () => { active = false; };
@@ -394,7 +401,7 @@ export function PrescriptionMedicationComposer({
     const filtered = commercialClass
       ? activeIngredientResults.filter((item) => medicationMatchesCommercialProducts(item, commercialResults))
       : activeIngredientResults;
-    return filtered.slice(0, query.trim().length >= 2 ? 12 : 40);
+    return filtered;
   }, [activeIngredientResults, commercialClass, commercialResults, query]);
   const productResults = useMemo(() => {
     const byName = new Map<string, MedicationSearchResult>();

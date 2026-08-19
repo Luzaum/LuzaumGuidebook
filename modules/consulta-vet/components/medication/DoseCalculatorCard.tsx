@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useId, useMemo, useState } from 'react';
 import { AlertTriangle, Calculator, CheckCircle2 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { useDoseCalculator } from '../../hooks/useDoseCalculator';
@@ -35,8 +35,8 @@ const UI_TEXT = {
   mgFallback: 'Dose calculada em mg',
 } as const;
 
-function Label({ children }: { children: React.ReactNode }) {
-  return <label className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{children}</label>;
+function Label({ children, htmlFor }: { children: React.ReactNode; htmlFor: string }) {
+  return <label htmlFor={htmlFor} className="text-[11px] font-semibold uppercase tracking-[0.22em] text-muted-foreground">{children}</label>;
 }
 
 function ResultMetric({
@@ -70,9 +70,10 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
   className,
   variant = 'standalone',
 }: DoseCalculatorCardProps) {
+  const fieldId = useId();
   const calculatorDoses = useMemo(() => doses.filter((dose) => dose.calculatorEnabled), [doses]);
   const availableSpecies = useMemo(() => {
-    const set = new Set<MedicationDoseSpecies>();
+    const set = new Set<Exclude<MedicationDoseSpecies, 'both'>>();
     calculatorDoses.forEach((dose) => {
       if (dose.species === 'both') {
         set.add('dog');
@@ -84,7 +85,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     return Array.from(set);
   }, [calculatorDoses]);
 
-  const [selectedSpecies, setSelectedSpecies] = useState<MedicationDoseSpecies>(availableSpecies[0] || 'dog');
+  const [selectedSpecies, setSelectedSpecies] = useState<Exclude<MedicationDoseSpecies, 'both'>>(availableSpecies[0] || 'dog');
   const filteredDoses = useMemo(
     () => calculatorDoses.filter((dose) => dose.species === 'both' || dose.species === selectedSpecies),
     [calculatorDoses, selectedSpecies]
@@ -117,7 +118,12 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     return concentrationChoices.find((item) => item.id === selectedConcentrationId) || concentrationChoices[0];
   }, [concentrationChoices, selectedConcentrationId, selectedPresentation]);
 
-  const { weight, setWeight, result } = useDoseCalculator(selectedDose, effectivePresentation);
+  const { weight, setWeight, result, validationError, disabledReason, maximumWeight } = useDoseCalculator(
+    selectedDose,
+    effectivePresentation,
+    selectedSpecies,
+  );
+  const calculationMessage = validationError || disabledReason;
 
   useEffect(() => {
     if (!filteredDoses.length) return;
@@ -166,10 +172,11 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
     <div className="space-y-5">
         <div className="grid gap-4 lg:grid-cols-12">
           <div className="space-y-2 lg:col-span-2">
-            <Label>{UI_TEXT.species}</Label>
+            <Label htmlFor={`${fieldId}-species`}>{UI_TEXT.species}</Label>
             <select
+              id={`${fieldId}-species`}
               value={selectedSpecies}
-              onChange={(event) => setSelectedSpecies(event.target.value as MedicationDoseSpecies)}
+              onChange={(event) => setSelectedSpecies(event.target.value as Exclude<MedicationDoseSpecies, 'both'>)}
               className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
               {availableSpecies.map((species) => (
@@ -181,10 +188,12 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           </div>
 
           <div className="space-y-2 lg:col-span-2">
-            <Label>{UI_TEXT.weight}</Label>
+            <Label htmlFor={`${fieldId}-weight`}>{UI_TEXT.weight}</Label>
             <input
+              id={`${fieldId}-weight`}
               type="number"
-              min="0"
+              min="0.05"
+              max={maximumWeight}
               step="0.1"
               value={weight}
               onChange={(event) => setWeight(Number(event.target.value) || '')}
@@ -194,8 +203,9 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           </div>
 
           <div className="space-y-2 lg:col-span-8">
-            <Label>{UI_TEXT.doseBase}</Label>
+            <Label htmlFor={`${fieldId}-regime`}>{UI_TEXT.doseBase}</Label>
             <select
+              id={`${fieldId}-regime`}
               value={selectedDoseId}
               onChange={(event) => {
                 setSelectedDoseId(event.target.value);
@@ -212,8 +222,9 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
           </div>
 
           <div className="space-y-2 lg:col-span-6">
-            <Label>{UI_TEXT.presentation}</Label>
+            <Label htmlFor={`${fieldId}-presentation`}>{UI_TEXT.presentation}</Label>
             <select
+              id={`${fieldId}-presentation`}
               value={selectedPresentationId}
               onChange={(event) => {
                 setSelectedPresentationId(event.target.value);
@@ -221,7 +232,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
               }}
               className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
             >
-              <option value="">{UI_TEXT.mgOnly}</option>
+              <option value="">Apenas em {selectedDose.doseUnit}</option>
               {presentationChoices.map((presentation) => (
                 <option key={presentation.id} value={presentation.id}>
                   {presentation.label}
@@ -232,8 +243,9 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
 
           {selectedPresentation?.concentrationOptions?.length ? (
             <div className="space-y-2 lg:col-span-6">
-              <Label>{UI_TEXT.concentration}</Label>
+              <Label htmlFor={`${fieldId}-concentration`}>{UI_TEXT.concentration}</Label>
               <select
+                id={`${fieldId}-concentration`}
                 value={selectedConcentrationId}
                 onChange={(event) => setSelectedConcentrationId(event.target.value)}
                 className="w-full rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-foreground outline-none transition-all focus:border-primary focus:ring-2 focus:ring-primary/20"
@@ -267,7 +279,12 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
             </div>
           </div>
 
-          {result ? (
+          {calculationMessage ? (
+            <div className="flex items-start gap-3 rounded-[24px] border border-amber-500/20 bg-amber-500/[0.06] px-5 py-4 text-sm leading-7 text-amber-700 dark:text-amber-300" role="alert">
+              <AlertTriangle className="mt-1 h-4 w-4 shrink-0" />
+              <p>{calculationMessage}</p>
+            </div>
+          ) : result ? (
             <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-1" aria-live="polite">
               {result.warning ? (
                 <div className="flex items-start gap-3 rounded-2xl border border-amber-500/20 bg-amber-500/[0.06] px-4 py-3 text-sm leading-6 text-amber-700 dark:text-amber-300">
@@ -283,7 +300,7 @@ export const DoseCalculatorCard = React.memo(function DoseCalculatorCard({
                     {result.doseMinMg && result.doseMaxMg && result.doseMaxMg !== result.doseMinMg
                       ? `${result.doseMinMg.toFixed(1)} - ${result.doseMaxMg.toFixed(1)}`
                       : result.doseCalculatedMg?.toFixed(1) || result.doseMinMg?.toFixed(1) || '-'}
-                    <span className="ml-1 text-base font-medium text-muted-foreground">mg</span>
+                    <span className="ml-1 text-base font-medium text-muted-foreground">{result.doseUnit}</span>
                   </>
                 }
               />
