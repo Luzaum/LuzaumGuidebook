@@ -35,6 +35,7 @@ function medicationListCard(
     | 'slug'
     | 'title'
     | 'activeIngredient'
+    | 'isControlled'
     | 'tradeNames'
     | 'pharmacologicClass'
     | 'species'
@@ -1371,6 +1372,37 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
     indications: [
       'Analgesia multimodal adjuvante — não substituir opioide em dor intensa.',
       'Dor perioperatória leve/moderada; componente visceral/espasmo.',
+    ],
+  }),
+  medicationListCard({
+    id: 'med-fenobarbital',
+    slug: 'fenobarbital',
+    title: 'Fenobarbital',
+    activeIngredient: 'Fenobarbital',
+    isControlled: true,
+    tradeNames: ['Convless® — Agener União', 'Gardenal® e genéricos humanos'],
+    pharmacologicClass: 'Anticonvulsivante barbitúrico; indutor enzimático hepático',
+    species: ['dog', 'cat'],
+    category: 'neurologia',
+    tags: ['Epilepsia', 'Anticonvulsivante', 'Monitorização sérica', 'Controle especial'],
+    indications: [
+      'Controle crônico de epilepsia e crises recorrentes em cães e gatos.',
+      'Manutenção anticonvulsivante com ajuste por resposta, efeitos adversos e concentração sérica.',
+    ],
+  }),
+  medicationListCard({
+    id: 'med-manitol',
+    slug: 'manitol',
+    title: 'Manitol',
+    activeIngredient: 'Manitol',
+    tradeNames: ['Manitol 20% e 25% — soluções intravenosas hospitalares'],
+    pharmacologicClass: 'Diurético osmótico; agente hiperosmolar',
+    species: ['dog', 'cat'],
+    category: 'emergencia-intensivismo',
+    tags: ['Hipertensão intracraniana', 'Edema cerebral', 'Glaucoma', 'LRA', 'Hospitalar'],
+    indications: [
+      'Hipertensão intracraniana e edema cerebral.',
+      'Glaucoma agudo refratário e desafio osmótico criteriosamente selecionado na LRA oligúrica.',
     ],
   }),
   medicationListCard({

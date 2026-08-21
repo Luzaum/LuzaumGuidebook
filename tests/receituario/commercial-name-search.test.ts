@@ -32,6 +32,22 @@ test('busca tolera um pequeno erro no princípio ativo e encontra a marca relaci
   assert.ok(results.some((item) => String(item.metadata?.active_ingredient || '').includes('pimobendan')));
 });
 
+test('ondansetrona retorna somente produtos do princípio ativo e nunca Vetmedin', async () => {
+  const results = await searchPrescriptionCommercialProducts({ query: 'ondansetrona' });
+
+  assert.deepEqual(results.map((item) => item.name), ['Vonau Flash', 'Emedron', 'Vonau Vet']);
+  assert.ok(results.every((item) => /ondansetrona/i.test(String(item.metadata?.active_ingredient || ''))));
+  assert.equal(results.some((item) => /vetmedin/i.test(item.name)), false);
+});
+
+test('erro de digitação em ondansetrona não vaza produto cardiológico', async () => {
+  const results = await searchPrescriptionCommercialProducts({ query: 'ondasetrona' });
+
+  assert.ok(results.length >= 3);
+  assert.ok(results.every((item) => /ondansetrona/i.test(String(item.metadata?.active_ingredient || ''))));
+  assert.equal(results.some((item) => /vetmedin/i.test(item.name)), false);
+});
+
 test('mantém produto relacionado visível mesmo quando a bula não inclui a espécie selecionada', async () => {
   const results = await searchPrescriptionCommercialProducts({ query: 'pimobendan', species: 'cat' });
 
@@ -123,6 +139,55 @@ test('agrupa concentrações gravadas junto do nome em uma única marca comercia
   assert.equal(commercialBrandName('Cardisure 1,25 mg'), 'Cardisure');
   assert.deepEqual(results.map((item) => item.name), ['Cardisure']);
   assert.equal((results[0]?.metadata?.presentation_labels as string[]).length, 3);
+});
+
+test('Convless permanece ligado ao fenobarbital e separa bula de literatura', async () => {
+  const [convless] = await searchPrescriptionCommercialProductsByName('convless');
+
+  assert.equal(convless?.name, 'Convless®');
+  assert.equal(convless?.is_controlled, true);
+  assert.deepEqual(convless?.metadata?.species, ['dog']);
+  assert.equal(convless?.metadata?.catalog_medication_id, 'editorial:fenobarbital');
+  assert.match(String(convless?.metadata?.dosage_guidance?.labelDose), /1,3 a 6 mg\/kg/i);
+  assert.match(String(convless?.metadata?.dosage_guidance?.plumbs?.dog?.[0]?.dose), /2,5 a 3 mg\/kg/i);
+  assert.match(String((convless?.metadata?.presentation_labels as string[])?.[0]), /20 mg\/mL/i);
+});
+
+test('preserva forma e concentração das apresentações editoriais na busca', () => {
+  const medication: MedicationSearchResult = {
+    id: 'editorial:dipirona',
+    name: 'Dipirona (metamizol)',
+    is_controlled: false,
+    is_private: false,
+    source: 'global',
+    scope: 'global',
+    metadata: { active_ingredient: 'Dipirona (metamizol)' },
+  };
+  const presentation: MedicationPresentationRecord = {
+    id: 'editorial-presentation:dipirona:pres-dipirona-gotas',
+    clinic_id: '',
+    medication_id: medication.id,
+    pharmaceutical_form: 'Solução oral (gotas)',
+    concentration_text: '500 mg/mL',
+    additional_component: null,
+    presentation_unit: null,
+    commercial_name: 'Gotas 500 mg/mL (humano — ~25 mg/gota)',
+    value: 500,
+    value_unit: 'mg/mL',
+    per_value: null,
+    per_unit: null,
+    avg_price_brl: null,
+    pharmacy_veterinary: false,
+    pharmacy_human: true,
+    pharmacy_compounding: false,
+    metadata: { source: 'editorial_catalog' },
+    created_at: '',
+  };
+
+  const results = buildCatalogPresentationCommercialResults(medication, [presentation]);
+
+  assert.equal(results[0]?.name, 'Gotas 500 mg/mL (humano — ~25 mg/gota)');
+  assert.equal(results[0]?.metadata?.catalog_medication_id, medication.id);
 });
 
 test('produto comercial preserva instrução de bula e contexto do Plumb’s', async () => {

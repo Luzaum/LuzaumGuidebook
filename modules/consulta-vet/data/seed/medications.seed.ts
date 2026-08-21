@@ -6,6 +6,8 @@ import { cardiovascularAntiarrhythmicsMedicationsSeed } from './medications.card
 import { infectiousAntiparasiticMedicationsSeed } from './medications.infectious-antiparasitic.seed';
 import { respiratoryAnesthesiaMedicationsSeed } from './medications.respiratory-anesthesia.seed';
 import { neurologyBehaviorMedicationsSeed } from './medications.neurology-behavior.seed';
+import { phenobarbitalMedicationsSeed } from './medications.phenobarbital.seed';
+import { mannitolMedicationsSeed } from './medications.mannitol.seed';
 import { MEDICATION_EVIDENCE_ADDITIONS } from '../medicationEvidenceAdditions';
 import { applyPlumbs10MedicationAudit } from '../plumbs10MedicationAudit';
 
@@ -1919,6 +1921,8 @@ export const medicationsSeed: MedicationRecord[] = [
   },
   ...hepatoprotectorMedicationsSeed,
   ...hospitalCoreMedicationsSeed,
+  ...phenobarbitalMedicationsSeed,
+  ...mannitolMedicationsSeed,
   ...endocrinologyOncologyMedicationsSeed,
   ...cardiovascularAntiarrhythmicsMedicationsSeed,
   ...infectiousAntiparasiticMedicationsSeed,

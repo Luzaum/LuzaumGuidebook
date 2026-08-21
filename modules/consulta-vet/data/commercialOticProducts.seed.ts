@@ -9,6 +9,7 @@ import { woundTopicalCommercialProductsSeed } from './woundTopicalCommercialProd
 import {
   potassiumIodideCommercialProductsSeed,
 } from './potassiumIodideCommercialProducts.seed';
+import { convlessCommercialProductSeed } from './convlessCommercialProduct.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -43,6 +44,7 @@ const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
 const commercialProductsRaw: CommercialMedicationProduct[] = [
+  ...convlessCommercialProductSeed,
   ...selectedCommercialProductsSeed,
   ...insulinCommercialProductsSeed,
   ...simethiconeCommercialProductsSeed,

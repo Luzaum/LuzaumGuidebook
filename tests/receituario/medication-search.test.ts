@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { matchesMedicationSearch, medicationMatchesCommercialProducts, medicationSearchScore } from '../../modules/consulta-vet/utils/medicationSearch';
+import { matchesExactMedicationSearch, matchesMedicationSearch, medicationMatchesCommercialProducts, medicationSearchScore } from '../../modules/consulta-vet/utils/medicationSearch';
 import type { MedicationSearchResult } from '../../src/lib/clinicRecords';
 
 test('reconhece correspondência exata sem diferenciar acentos ou maiúsculas', () => {
@@ -9,7 +9,14 @@ test('reconhece correspondência exata sem diferenciar acentos ou maiúsculas', 
 
 test('tolera pequeno erro de digitação em princípio ativo', () => {
   assert.equal(matchesMedicationSearch('pimobendam', 'pimobendan cardiologia'), true);
+  assert.equal(matchesExactMedicationSearch('pimobendam', 'pimobendan cardiologia'), false);
   assert.ok((medicationSearchScore('pimobendan', 'pimobendan') || 0) < (medicationSearchScore('pimobendam', 'pimobendan') || 0));
+});
+
+test('distingue correspondência direta da aproximação por erro de digitação', () => {
+  assert.equal(matchesExactMedicationSearch('ondansetrona', 'Vonau Vet — cloridrato de ondansetrona'), true);
+  assert.equal(matchesExactMedicationSearch('vonauvet', 'Vonau Vet — cloridrato de ondansetrona'), true);
+  assert.equal(matchesExactMedicationSearch('ondansetrona', 'Vetmedin — pimobendan'), false);
 });
 
 test('não aplica aproximação imprecisa em termos curtos', () => {

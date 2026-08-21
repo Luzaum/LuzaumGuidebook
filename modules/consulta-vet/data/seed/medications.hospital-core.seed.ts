@@ -351,6 +351,23 @@ export const hospitalCoreMedicationsSeed: MedicationRecord[] = [
         scoringInfo: 'Partível',
       },
       {
+        id: 'pres-dipirona-cp-1000',
+        label: 'Comprimido 1.000 mg / 1 g (humano — Novalgina e genéricos)',
+        form: 'Comprimido',
+        concentrationValue: 1000,
+        concentrationUnit: 'mg/comprimido',
+        channel: 'human_pharmacy',
+        packInfo: 'Novalgina: embalagens com 10, 20 ou 100 comprimidos',
+      },
+      {
+        id: 'pres-dipirona-efervescente-1000',
+        label: 'Comprimido efervescente 1.000 mg / 1 g (humano — Novalgina)',
+        form: 'Comprimido efervescente',
+        concentrationValue: 1000,
+        concentrationUnit: 'mg/comprimido',
+        channel: 'human_pharmacy',
+      },
+      {
         id: 'pres-dipirona-gotas',
         label: 'Gotas 500 mg/mL (humano — ~25 mg/gota)',
         form: 'Solução oral (gotas)',

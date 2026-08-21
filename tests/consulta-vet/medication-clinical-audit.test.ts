@@ -56,6 +56,33 @@ test('todas as moléculas presentes no Plumb’s 10 têm referência de monograf
 });
 
 test('correções clínicas críticas permanecem protegidas contra regressão', () => {
+  const phenobarbital = bySlug.get('fenobarbital')!;
+  assert.equal(phenobarbital.isControlled, true);
+  assert.deepEqual(phenobarbital.species, ['dog', 'cat']);
+  assert.deepEqual(
+    phenobarbital.doses
+      .filter((dose) => dose.id === 'dose-fenobarbital-dog-initial' || dose.id === 'dose-fenobarbital-convless-label')
+      .map((dose) => [dose.doseMin, dose.doseMax]),
+    [[2.5, 3], [1.3, 6]],
+  );
+  assert.equal(phenobarbital.presentations.find((item) => item.commercialProductSlug === 'convless-agener')?.concentrationValue, 20);
+
+  const mannitol = bySlug.get('manitol')!;
+  assert.deepEqual(mannitol.species, ['dog', 'cat']);
+  assert.equal(mannitol.category, 'emergencia-intensivismo');
+  assert.equal(mannitol.doses.length, 4);
+  assert.ok(mannitol.doses.every((dose) => dose.doseUnit === 'g'), 'manitol deve permanecer em g/kg');
+  assert.deepEqual(
+    mannitol.presentations.map((presentation) => [presentation.concentrationValue, presentation.concentrationUnit]),
+    [[200, 'mg/mL'], [250, 'mg/mL']],
+  );
+  assert.deepEqual(
+    [mannitol.doses.find((dose) => dose.id === 'dose-manitol-both-aki-challenge')?.doseMin,
+      mannitol.doses.find((dose) => dose.id === 'dose-manitol-both-aki-challenge')?.doseMax],
+    [0.25, 0.5],
+  );
+  assert.match(mannitol.clinicalNotesRichText, /não demonstra melhora da TFG/i);
+
   const nac = bySlug.get('n-acetilcisteina')!;
   assert.equal(nac.doses.find((dose) => dose.id === 'dose-nac-oxidative-iv-loading')?.doseMin, 140);
   assert.equal(nac.doses.find((dose) => dose.id === 'dose-nac-oxidative-po-loading')?.doseMin, 280);

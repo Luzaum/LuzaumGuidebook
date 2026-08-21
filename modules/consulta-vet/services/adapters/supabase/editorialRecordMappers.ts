@@ -36,6 +36,7 @@ export type MedicationRow = {
   slug: string;
   title: string;
   active_ingredient: string;
+  is_controlled?: boolean | null;
   trade_names: string[] | null;
   official_site_url?: string | null;
   leaflet_url?: string | null;
@@ -113,6 +114,7 @@ export function mapMedicationRow(
     slug: row.slug,
     title: row.title,
     activeIngredient: row.active_ingredient,
+    isControlled: !!row.is_controlled,
     tradeNames: normalizeStringArray(row.trade_names),
     officialSiteUrl: row.official_site_url || null,
     leafletUrl: row.leaflet_url || null,

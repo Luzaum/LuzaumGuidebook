@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, CheckCircle2, ExternalLink, FileInput, Loader2, Pill, Plus, Search, X } from 'lucide-react';
 import {
-  getMedicationPresentations,
-  getMedicationRecommendedDoses,
   type MedicationPresentationRecord,
   type MedicationSearchResult,
   type RecommendedDose,
@@ -23,7 +21,11 @@ import {
   prescriptionPharmaceuticalFormLabel,
 } from '../../utils/receituarioMedication';
 import { CLINICAL_DOSE_LABEL } from '../../utils/receituarioTemplateCalculator';
-import { searchPrescriptionMedicationCatalog } from '../../services/receituarioCatalogService';
+import {
+  getPrescriptionMedicationPresentations,
+  getPrescriptionMedicationRecommendedDoses,
+  searchPrescriptionMedicationCatalog,
+} from '../../services/receituarioCatalogService';
 import { buildCatalogPresentationCommercialResults, searchPrescriptionCommercialProducts } from '../../services/receituarioCommercialCatalogService';
 import {
   RECEITUARIO_COMMERCIAL_CLASS_OPTIONS,
@@ -31,7 +33,7 @@ import {
   RECEITUARIO_SUBCLASSES_BY_CLASS,
 } from '../../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationSubclass } from '../../types/commercialMedication';
-import { medicationMatchesCommercialProducts, medicationSearchScore } from '../../utils/medicationSearch';
+import { matchesExactMedicationSearch, medicationMatchesCommercialProducts, medicationSearchScore } from '../../utils/medicationSearch';
 
 interface Props {
   clinicId?: string | null;
@@ -326,7 +328,8 @@ export function PrescriptionMedicationComposer({
       .filter((entry): entry is { item: MedicationSearchResult; score: number } => entry.score !== null)
       .sort((left, right) => left.score - right.score || left.item.name.localeCompare(right.item.name, 'pt-BR'));
     if (needle.length < 2) return catalog;
-    return ranked
+    const exactMatches = ranked.filter(({ item }) => matchesExactMedicationSearch(needle, searchableActiveIngredient(item)));
+    return (exactMatches.length ? exactMatches : ranked)
       .map(({ item }) => item);
   }, [catalog, query]);
 
@@ -367,8 +370,11 @@ export function PrescriptionMedicationComposer({
       return;
     }
 
+    // Não mantém apresentações da consulta anterior enquanto a nova é resolvida.
+    setCatalogCommercialResults([]);
+
     const candidates = activeIngredientResults
-      .filter((item) => !item.id.startsWith('editorial:') && !item.id.startsWith('manual:'));
+      .filter((item) => !item.id.startsWith('manual:'));
     if (!candidates.length) {
       setCatalogCommercialResults([]);
       return;
@@ -384,7 +390,7 @@ export function PrescriptionMedicationComposer({
         if (candidateIndex >= candidates.length) return;
         const medication = candidates[candidateIndex];
         try {
-          const nextPresentations = await getMedicationPresentations(catalogClinicId, medication.id);
+          const nextPresentations = await getPrescriptionMedicationPresentations(catalogClinicId, medication.id);
           groups[candidateIndex] = buildCatalogPresentationCommercialResults(medication, nextPresentations);
         } catch {
           groups[candidateIndex] = [];
@@ -407,6 +413,10 @@ export function PrescriptionMedicationComposer({
     const byName = new Map<string, MedicationSearchResult>();
     [...commercialResults, ...catalogCommercialResults].forEach((item) => {
       const key = normalize(item.name);
+      const isCatalogPresentation = item.metadata?.search_origin === 'catalog_presentation';
+      const alreadyRepresentedByProduct = isCatalogPresentation && Array.from(byName.keys())
+        .some((productName) => key === productName || key.startsWith(`${productName} `));
+      if (alreadyRepresentedByProduct) return;
       if (!byName.has(key)) byName.set(key, item);
     });
     return Array.from(byName.values());
@@ -443,15 +453,19 @@ export function PrescriptionMedicationComposer({
         || catalog.find((item) => commercialActiveNames.some((ingredient) => searchableActiveIngredient(item).includes(ingredient)))
         || catalog.find((item) => searchableActiveIngredient(item).includes(normalize(activeName)))
       : selected;
-    const targetId = catalogMatch?.id || selected.id;
+    const targetId = linkedCatalogMedicationId || catalogMatch?.id || selected.id;
 
     Promise.all(selected.id.startsWith('manual:')
       ? [Promise.resolve([] as MedicationPresentationRecord[]), Promise.resolve([] as RecommendedDose[])]
-      : [getMedicationPresentations(catalogClinicId, targetId), getMedicationRecommendedDoses(catalogClinicId, targetId)])
+      : [getPrescriptionMedicationPresentations(catalogClinicId, targetId), getPrescriptionMedicationRecommendedDoses(catalogClinicId, targetId)])
       .then(([nextPresentations, nextDoses]) => {
         if (!active) return;
         const matchingCommercialPresentations = isCommercial
-          ? nextPresentations.filter((item) => normalize(item.commercial_name || '') === normalize(selected.name))
+          ? nextPresentations.filter((item) => {
+            const presentationName = normalize(item.commercial_name || '');
+            const selectedName = normalize(selected.name);
+            return presentationName === selectedName || presentationName.startsWith(`${selectedName} `);
+          })
           : [];
         const visiblePresentations = isCommercial && matchingCommercialPresentations.length
           ? matchingCommercialPresentations
@@ -491,7 +505,10 @@ export function PrescriptionMedicationComposer({
   }, [catalog, catalogClinicId, editingSnapshot, selected]);
 
   const compatibleDoses = useMemo(
-    () => normalizedSpecies ? doses.filter((dose) => isSpeciesCompatible(dose.species, normalizedSpecies)) : [],
+    () => normalizedSpecies ? doses.filter((dose) => (
+      isSpeciesCompatible(dose.species, normalizedSpecies)
+      && dose.metadata?.calculator_enabled !== false
+    )) : [],
     [doses, normalizedSpecies],
   );
   const selectedDose = compatibleDoses.find((dose) => dose.id === doseId);
@@ -762,7 +779,7 @@ export function PrescriptionMedicationComposer({
       ) : null}
 
       {!selected ? (
-        <div className="relative">
+        <div className="relative flex flex-col">
           <FieldLabel>1. Medicamento</FieldLabel>
           <div className="relative mt-2">
             <Search className="absolute left-3 top-3.5 h-4 w-4 text-muted-foreground" />
@@ -774,7 +791,7 @@ export function PrescriptionMedicationComposer({
           <p className="mt-2 text-xs leading-5 text-muted-foreground">
             Digite o <strong className="font-semibold text-foreground">princípio ativo</strong> (ex.: pimobendan) ou o <strong className="font-semibold text-foreground">nome comercial</strong> (ex.: Vetmedin). A busca aceita pequenos erros de digitação.
           </p>
-          <div className="mt-3 grid gap-3 rounded-xl border border-border/75 bg-muted/25 p-3 sm:grid-cols-2">
+          <div className="order-2 mt-3 grid gap-3 rounded-xl border border-border/75 bg-muted/25 p-3 sm:grid-cols-2">
             <label className="space-y-1.5">
               <FieldLabel>Categoria / classe</FieldLabel>
               <select
@@ -806,7 +823,7 @@ export function PrescriptionMedicationComposer({
             <p className="text-xs text-muted-foreground sm:col-span-2">Se não souber o nome, escolha uma categoria e refine pela subcategoria.</p>
           </div>
           {searchIsOpen ? (
-            <div className="mt-2 max-h-72 overflow-y-auto rounded-xl border border-border bg-card p-1.5 shadow-xl">
+            <div className="order-1 mt-2 max-h-80 overflow-y-auto rounded-xl border border-border bg-card p-1.5 shadow-xl">
               {activeResults.length ? (
                 <div className="flex items-center justify-between px-3 pb-1 pt-2 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
                   <span>Medicamentos do catálogo</span><span>{activeResults.length}</span>
@@ -827,7 +844,7 @@ export function PrescriptionMedicationComposer({
               ))}
               {productResults.length ? (
                 <div className={`${activeResults.length ? 'mt-1 border-t border-border/70' : ''} flex items-center justify-between px-3 pb-1 pt-3 text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground`}>
-                  <span>Opções comerciais</span><span>{productResults.length}</span>
+                  <span>Apresentações e opções comerciais</span><span>{productResults.length}</span>
                 </div>
               ) : null}
               {productResults.map((item) => (

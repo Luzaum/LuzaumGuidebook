@@ -5,23 +5,14 @@ import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../../data/publicCatalogCa
 import { loadDiseasesEditorialSeed } from '../../../data/seed/editorialSeedLazy';
 import { applyDiseaseOverviewOverride } from '../../../data/seed/diseaseOverviewOverrides';
 import { diseaseMatchesCategoryFilter } from '../../../utils/diseaseCategories';
-import { filterPublicDiseases, isPublicDiseaseSlug } from '../../../constants/publicCatalog';
 
 export class LocalDiseaseRepository implements DiseaseRepository {
   async list(options?: { includeDrafts?: boolean }): Promise<DiseaseRecord[]> {
-    if (!options?.includeDrafts) {
-      return PUBLIC_CATALOG_DISEASE_CARD_STUBS.map(applyDiseaseOverviewOverride);
-    }
-    const diseasesSeed = await loadDiseasesEditorialSeed();
-    return [...diseasesSeed];
+    return PUBLIC_CATALOG_DISEASE_CARD_STUBS.map(applyDiseaseOverviewOverride);
   }
 
   async getBySlug(slug: string, options?: { includeDrafts?: boolean }): Promise<DiseaseRecord | null> {
     const diseasesSeed = await loadDiseasesEditorialSeed();
-    if (!options?.includeDrafts) {
-      if (!isPublicDiseaseSlug(slug)) return null;
-      return filterPublicDiseases(diseasesSeed, false).find((d) => d.slug === slug) || null;
-    }
     return diseasesSeed.find((d) => d.slug === slug) || null;
   }
 
@@ -30,9 +21,9 @@ export class LocalDiseaseRepository implements DiseaseRepository {
     const base = await this.list();
     return base.filter(
       (d) =>
-        d.title.toLowerCase().includes(q) ||
-        d.synonyms.some((s) => s.toLowerCase().includes(q)) ||
-        d.tags.some((t) => t.toLowerCase().includes(q))
+        String(d.title || '').toLowerCase().includes(q) ||
+        (Array.isArray(d.synonyms) ? d.synonyms : []).some((s) => String(s).toLowerCase().includes(q)) ||
+        (Array.isArray(d.tags) ? d.tags : []).some((t) => String(t).toLowerCase().includes(q))
     );
   }
 

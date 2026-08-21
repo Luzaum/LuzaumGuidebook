@@ -60,6 +60,8 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'amoxicilina-clavulanato',
   'ondansetron',
   'dipirona',
+  'fenobarbital',
+  'manitol',
   'ampicilina-sulbactam',
   'ampicilina',
   'pregabalina',

@@ -28,7 +28,6 @@ import {
   mapDiseaseRow,
 } from './editorialRecordMappers';
 import { buildSupabaseDiseasePayload, cleanTextArrayForDb } from '../../../utils/diseaseSchemaMap';
-import { filterPublicDiseases } from '../../../constants/publicCatalog';
 
 type ConsensusSlugRow = {
   id: string;
@@ -38,19 +37,19 @@ type ConsensusSlugRow = {
 function matchesDiseaseQuery(record: DiseaseRecord, query: string): boolean {
   const normalized = query.toLowerCase();
   return (
-    record.title.toLowerCase().includes(normalized) ||
-    record.synonyms.some((item) => item.toLowerCase().includes(normalized)) ||
-    record.tags.some((item) => item.toLowerCase().includes(normalized))
+    String(record.title || '').toLowerCase().includes(normalized) ||
+    (Array.isArray(record.synonyms) ? record.synonyms : []).some((item) => String(item).toLowerCase().includes(normalized)) ||
+    (Array.isArray(record.tags) ? record.tags : []).some((item) => String(item).toLowerCase().includes(normalized))
   );
 }
 
-async function fetchSupabaseDiseases(includeDrafts = false): Promise<DiseaseRecord[]> {
+async function fetchSupabaseDiseases(): Promise<DiseaseRecord[]> {
   const categoryQuery = supabase.from(CONSULTA_VET_CATEGORY_TABLE).select('*');
   const diseaseQuery = supabase.from(CONSULTA_VET_DISEASE_TABLE).select('*').order('title');
 
   const [{ data: categoryData, error: categoryError }, { data: diseaseData, error: diseaseError }] = await Promise.all([
-    includeDrafts ? categoryQuery : categoryQuery.eq('is_published', true),
-    includeDrafts ? diseaseQuery : diseaseQuery.eq('is_published', true),
+    categoryQuery,
+    diseaseQuery,
   ]);
 
   if (categoryError) {
@@ -72,14 +71,10 @@ async function fetchSupabaseDiseases(includeDrafts = false): Promise<DiseaseReco
     { data: diseaseConsensoData, error: diseaseConsensoError },
     { data: consensoData, error: consensoError },
   ] = await Promise.all([
-    includeDrafts
-      ? supabase.from(CONSULTA_VET_MEDICATION_TABLE).select('id, slug')
-      : supabase.from(CONSULTA_VET_MEDICATION_TABLE).select('id, slug').eq('is_published', true),
+    supabase.from(CONSULTA_VET_MEDICATION_TABLE).select('id, slug'),
     supabase.from(CONSULTA_VET_DISEASE_MEDICATION_TABLE).select('disease_id, medication_id').in('disease_id', diseaseIds),
     supabase.from(CONSULTA_VET_DISEASE_CONSENSO_TABLE).select('disease_id, consensus_document_id').in('disease_id', diseaseIds),
-    includeDrafts
-      ? supabase.from('consensus_documents').select('id, slug')
-      : supabase.from('consensus_documents').select('id, slug').eq('is_published', true),
+    supabase.from('consensus_documents').select('id, slug'),
   ]);
 
   if (medicationError) {
@@ -149,14 +144,16 @@ export class SupabaseDiseaseRepository implements DiseaseRepository {
 
     try {
       const remote = await withTimeout(
-        fetchSupabaseDiseases(includeDrafts),
+        fetchSupabaseDiseases(),
         'carregar doenças editoriais'
       );
       const diseasesSeed = await loadDiseasesEditorialSeed();
       const merged = mergeDiseaseRecordsBySlug(diseasesSeed, remote).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
-      const result = filterPublicDiseases(merged, includeDrafts).map(applyDiseaseOverviewOverride);
+      // O ConsultaVet exibe todo o acervo de doenças existente no banco.
+      // Não aplique allowlist nem o antigo status editorial `is_published` aqui.
+      const result = merged.map(applyDiseaseOverviewOverride);
       
       this.listCache = {
         data: result,

@@ -5,6 +5,7 @@ import {
   translateEditorialSubsectionKey,
   translateSystemGroupTitle,
 } from '../../modules/consulta-vet/utils/editorialSubsectionLabels';
+import { diseasesSeed } from '../../modules/consulta-vet/data/seed/diseases.seed';
 
 test('remove prefixo tc dos títulos gerados', () => {
   assert.equal(translateEditorialSubsectionKey('tcMecanismoImune'), 'Mecanismo imune');
@@ -35,4 +36,35 @@ test('translateSystemGroupTitle traduz sistemas compostos e chaves em inglês', 
   assert.equal(translateSystemGroupTitle('effusion'), 'Efusão');
   assert.equal(translateSystemGroupTitle('biochemical'), 'Bioquímico');
   assert.equal(translateSystemGroupTitle('oncologic'), 'Oncológico');
+});
+
+test('títulos das subseções de doenças preservam a acentuação em português', () => {
+  const sectionFields = [
+    'etiology',
+    'epidemiology',
+    'pathogenesisTransmission',
+    'pathophysiology',
+    'clinicalSignsPathophysiology',
+    'diagnosis',
+    'treatment',
+    'prevention',
+  ] as const;
+  const forbiddenUnaccentedWords = /\b(?:Biologico|Diagnostico|Cronica|Fisiologico|Imunopatogenese|Orgao|Patogenese|Prognostico|Sinonimia|Clinica|Padroes|Cao)\b/i;
+  const failures: string[] = [];
+
+  for (const disease of diseasesSeed) {
+    for (const field of sectionFields) {
+      const section = disease[field];
+      if (!section || typeof section !== 'object' || Array.isArray(section)) continue;
+      for (const key of Object.keys(section)) {
+        const label = translateEditorialSubsectionKey(key);
+        if (forbiddenUnaccentedWords.test(label)) failures.push(`${disease.slug}: ${key} -> ${label}`);
+      }
+    }
+  }
+
+  assert.deepEqual(failures, []);
+  assert.equal(translateEditorialSubsectionKey('cicloBiologico'), 'Ciclo Biológico');
+  assert.equal(translateEditorialSubsectionKey('orgaoAlvo'), 'Órgão Alvo');
+  assert.equal(translateEditorialSubsectionKey('prognosticoPhptCao'), 'Prognóstico PHPT Cão');
 });

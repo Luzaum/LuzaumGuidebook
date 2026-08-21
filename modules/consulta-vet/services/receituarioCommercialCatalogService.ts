@@ -2,7 +2,7 @@ import type { MedicationPresentationRecord, MedicationSearchResult } from '../..
 import { RECEITUARIO_SUBCLASSES_BY_CLASS } from '../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationProduct, CommercialMedicationSubclass } from '../types/commercialMedication';
 import type { VetSpecies } from '../types/common';
-import { medicationSearchScore, normalizeMedicationSearch } from '../utils/medicationSearch';
+import { matchesExactMedicationSearch, medicationSearchScore, normalizeMedicationSearch } from '../utils/medicationSearch';
 
 function normalizeSearchTerm(value: unknown): string {
   return normalizeMedicationSearch(value);
@@ -31,12 +31,22 @@ export function commercialProductSearchText(product: CommercialMedicationProduct
   ].filter(Boolean).join(' ');
 }
 
+/** Campos que identificam o produto, sem misturar indicações e orientações clínicas. */
+export function commercialProductIdentitySearchText(product: CommercialMedicationProduct): string {
+  return [
+    product.name,
+    product.manufacturer,
+    ...product.activeComponents,
+    ...product.presentations,
+  ].filter(Boolean).join(' ');
+}
+
 function mapCommercialProduct(product: CommercialMedicationProduct): MedicationSearchResult {
   const subclasses = Array.from(new Set([product.commercialSubclass, ...(product.commercialSubclasses || [])]));
   return {
     id: `commercial:${product.slug}`,
     name: product.name,
-    is_controlled: false,
+    is_controlled: !!product.isControlled,
     is_private: false,
     source: 'global' as const,
     scope: 'global' as const,
@@ -55,6 +65,7 @@ function mapCommercialProduct(product: CommercialMedicationProduct): MedicationS
       prescription_example: product.prescriptionExample || null,
       product_page_url: product.productPageUrl || null,
       label_url: product.labelUrl || null,
+      catalog_medication_id: product.catalogMedicationId || null,
     },
   };
 }
@@ -92,7 +103,9 @@ export function buildCatalogPresentationCommercialResults(
 ): MedicationSearchResult[] {
   const grouped = new Map<string, MedicationPresentationRecord[]>();
   presentations.forEach((presentation) => {
-    const name = commercialBrandName(presentation.commercial_name);
+    const name = presentation.metadata?.source === 'editorial_catalog'
+      ? String(presentation.commercial_name || '').trim()
+      : commercialBrandName(presentation.commercial_name);
     if (!name) return;
     const key = normalizeSearchTerm(name);
     if (!key) return;
@@ -105,7 +118,9 @@ export function buildCatalogPresentationCommercialResults(
 
   return Array.from(grouped.entries())
     .map(([key, items]): MedicationSearchResult => {
-      const name = commercialBrandName(items[0]?.commercial_name);
+      const name = items[0]?.metadata?.source === 'editorial_catalog'
+        ? String(items[0]?.commercial_name || '').trim()
+        : commercialBrandName(items[0]?.commercial_name);
       const presentationLabels = Array.from(new Set(items.map(catalogPresentationLabel).filter(Boolean)));
       return {
         id: `commercial-presentation:${medication.id}:${key.replace(/\s+/g, '-')}`,
@@ -154,10 +169,17 @@ export async function searchPrescriptionCommercialProducts({
       const matchesSubclass = !commercialSubclass || subclasses.includes(commercialSubclass);
       return matchesClass && matchesSubclass;
     });
-  const exactNameMatches = needle
-    ? eligibleProducts.filter((product) => normalizeSearchTerm(product.name).includes(needle))
+  const exactIdentityMatches = needle
+    ? eligibleProducts.filter((product) => matchesExactMedicationSearch(needle, commercialProductIdentitySearchText(product)))
     : [];
-  const searchPool = exactNameMatches.length ? exactNameMatches : eligibleProducts;
+  const fuzzyIdentityMatches = needle && !exactIdentityMatches.length
+    ? eligibleProducts.filter((product) => medicationSearchScore(needle, commercialProductIdentitySearchText(product)) !== null)
+    : [];
+  const searchPool = exactIdentityMatches.length
+    ? exactIdentityMatches
+    : fuzzyIdentityMatches.length
+      ? fuzzyIdentityMatches
+      : eligibleProducts;
 
   return searchPool
     .filter((product) => !needle || medicationSearchScore(needle, normalizeSearchTerm(commercialProductSearchText(product))) !== null)

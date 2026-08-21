@@ -66,6 +66,22 @@ export function medicationSearchScore(query: unknown, searchableText: unknown): 
   return totalScore;
 }
 
+/**
+ * Identifica uma correspondência direta (inclusive sem acentos ou separadores).
+ * Serve para impedir que a tolerância a erros misture outros medicamentos quando
+ * já existe um princípio ativo, sinônimo ou nome comercial inequivocamente igual.
+ */
+export function matchesExactMedicationSearch(query: unknown, searchableText: unknown): boolean {
+  const needle = normalizeMedicationSearch(query);
+  const haystack = normalizeMedicationSearch(searchableText);
+  if (!needle || !haystack) return false;
+  if (haystack.includes(needle)) return true;
+
+  const compactNeedle = needle.replace(/[^a-z0-9]+/g, '');
+  const compactHaystack = haystack.replace(/[^a-z0-9]+/g, '');
+  return compactNeedle.length >= 3 && compactHaystack.includes(compactNeedle);
+}
+
 export function matchesMedicationSearch(query: unknown, searchableText: unknown): boolean {
   return medicationSearchScore(query, searchableText) !== null;
 }

@@ -158,4 +158,8 @@ export interface CommercialMedicationProduct {
   imageUrl?: string;
   productPageUrl?: string;
   labelUrl?: string;
+  /** Produto sujeito a controle especial no receituário. */
+  isControlled?: boolean;
+  /** ID do princípio ativo usado para carregar doses e apresentações estruturadas. */
+  catalogMedicationId?: string;
 }

@@ -50,8 +50,8 @@ export function DiseasesPage() {
         ]);
 
         if (!isMounted) return;
-        setDiseases(nextDiseases);
-        setCategories(nextCategories);
+        setDiseases(nextDiseases.filter((item) => item && item.id && item.slug && item.title));
+        setCategories(nextCategories.filter((item) => item && item.id && item.slug && item.title));
       } catch (loadError) {
         if (!isMounted) return;
         setDiseases([]);
@@ -86,7 +86,7 @@ export function DiseasesPage() {
 
   // Lista de especialidades filtradas apenas pelas que possuem contagem ativa
   const activeCategories = useMemo(() => {
-    return categories.filter((cat) => categoryCounts[cat.slug] > 0);
+    return categories.filter((cat) => cat?.slug && categoryCounts[cat.slug] > 0);
   }, [categories, categoryCounts]);
 
   const handleCategorySelect = (slug: string) => {
@@ -201,7 +201,6 @@ export function DiseasesPage() {
 
             {!isLoading && !error && filteredDiseases.map((disease) => {
               const primarySlug = normalizeCategorySlug(disease.category);
-              const visual = getSpecialtyVisual(primarySlug);
               const categoryLabel = formatDiseaseCategoryLabels(disease);
 
               return (
@@ -216,7 +215,7 @@ export function DiseasesPage() {
                     description={disease.quickSummary}
                     entityType="disease"
                     entityId={disease.id}
-                    category={displayCategory}
+                    category={primarySlug}
                   />
                 </div>
               );

@@ -7,31 +7,36 @@ type Props = {
 
 type State = {
   hasError: boolean;
+  isDynamicImportError: boolean;
 };
 
 export class ConsultaVetErrorBoundary extends React.Component<Props, State> {
-  state: State = { hasError: false };
+  state: State = { hasError: false, isDynamicImportError: false };
 
   static getDerivedStateFromError(): State {
-    return { hasError: true };
+    return { hasError: true, isDynamicImportError: false };
   }
 
   componentDidCatch(error: unknown) {
-    const isDynamicImportError =
-      error instanceof Error &&
-      (error.message.includes('Failed to fetch dynamically imported module') ||
-        error.message.includes('dynamically imported module'));
+    const message = error instanceof Error ? error.message : String(error || '');
+    const isDynamicImportError = /dynamically imported module|loading chunk|chunkloaderror|importing a module script failed/i.test(message);
 
     if (isDynamicImportError) {
-      if (!sessionStorage.getItem('dynamicImportReloader_ConsultaVet')) {
-        sessionStorage.setItem('dynamicImportReloader_ConsultaVet', 'true');
+      this.setState({ isDynamicImportError: true });
+      const lastReload = Number(sessionStorage.getItem('dynamicImportReloader_ConsultaVet') || 0);
+      if (!Number.isFinite(lastReload) || Date.now() - lastReload > 30_000) {
+        sessionStorage.setItem('dynamicImportReloader_ConsultaVet', String(Date.now()));
         window.location.reload();
       }
     }
   }
 
   private handleReset = () => {
-    this.setState({ hasError: false });
+    if (this.state.isDynamicImportError) {
+      window.location.reload();
+      return;
+    }
+    this.setState({ hasError: false, isDynamicImportError: false });
   };
 
   render() {

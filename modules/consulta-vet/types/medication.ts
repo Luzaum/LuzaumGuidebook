@@ -82,6 +82,8 @@ export interface MedicationRecord extends ContentFlag {
   slug: string;
   title: string;
   activeIngredient: string;
+  /** Medicamento sujeito a controle especial no fluxo de prescrição. */
+  isControlled?: boolean;
   tradeNames: string[];
   officialSiteUrl?: string | null;
   leafletUrl?: string | null;

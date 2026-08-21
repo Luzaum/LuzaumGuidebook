@@ -1,17 +1,17 @@
 # Auditoria dos modelos do Receituário
 
-Gerado em 2026-08-02T22:04:47.623Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
+Gerado em 2026-08-17T18:23:56.417Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
 
 ## Resumo geral
 
-- Total de modelos: 8
-- Por espécie: {"ambos":4,"cão":3,"gato":1}
-- Por categoria: {"Infectologia":4,"Termos":4}
-- Por tipo: {"recipe":4,"term":4}
-- Incompletos: 1
-- Sem fonte estruturada: 1
-- Com medicamento não vinculado: 1
-- Com recomendações genéricas: 0
+- Total de modelos: 29
+- Por espécie: {"ambos":5,"cão":15,"gato":9}
+- Por categoria: {"Cuidados gerais":1,"Dermatologia":1,"Dor e pós-operatório":4,"Endocrinologia":7,"Gastroenterologia":1,"Infectologia":4,"Neurologia":5,"Respiratório":2,"Termos":4}
+- Por tipo: {"recipe":25,"term":4}
+- Incompletos: 20
+- Sem fonte estruturada: 24
+- Com medicamento não vinculado: 20
+- Com recomendações genéricas: 4
 
 ## Modelos
 
@@ -108,17 +108,17 @@ Gerado em 2026-08-02T22:04:47.623Z. O relatório reflete os modelos carregados p
 | Categoria | Infectologia |
 | Espécie | gato |
 | Tipo | recipe |
-| Medicamentos | Nenhum |
+| Medicamentos | ITRACONAZOL → não vinculado |
 | Apresentações vinculadas | Nenhuma |
 | Doses cadastradas | Nenhuma |
 | Fontes | Nenhuma fonte estruturada |
 | Precauções | Nenhuma |
-| Recomendações | • Administrar as medicações diariamente e sem interrupções. / • Não suspender o tratamento quando as lesões começarem a melhorar. / • Manter o gato exclusivamente dentro de casa. / • Utilizar luvas para manipular o animal, limpar lesões ou administrar medicamentos. / • Evitar contato com secreções, exsudatos e crostas. / • Evitar arranhaduras e mordeduras. / • Não espremer nem manipular agressivamente as lesões. / • Administrar as cápsulas de itraconazol junto com alimento. / • Evitar omeprazol, antiácidos e antagonistas H2 durante o uso de cápsulas de itraconazol. / • Realizar avaliação das enzimas hepáticas antes e durante o tratamento. / • Anorexia persistente. / • Vômitos. / • Prostração. / • Icterícia. / • Piora respiratória. / • Aumento das lesões. |
-| Sinais de alerta | • Piora respiratória. |
+| Recomendações | • Administrar as medicações diariamente e sem interrupções. / • Não suspender o tratamento quando as lesões começarem a melhorar. / • Manter o gato exclusivamente dentro de casa. / • Utilizar luvas para manipular o animal, limpar lesões ou administrar medicamentos. / • Evitar contato com secreções, exsudatos (secreções ou líquidos) e crostas. / • Evitar arranhaduras e mordeduras. / • Não espremer nem manipular agressivamente as lesões. |
+| Sinais de alerta | Nenhum |
 | Retorno | Não informado |
 | Placeholders | Nenhum |
-| Problemas | Possui concentração ou dose digitada no texto histórico. |
-| Status | needs-review |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
 
 ### Esporotricose — Cães
 
@@ -129,17 +129,17 @@ Gerado em 2026-08-02T22:04:47.623Z. O relatório reflete os modelos carregados p
 | Categoria | Infectologia |
 | Espécie | cão |
 | Tipo | recipe |
-| Medicamentos | Nenhum |
+| Medicamentos | ITRACONAZOL → não vinculado |
 | Apresentações vinculadas | Nenhuma |
 | Doses cadastradas | Nenhuma |
 | Fontes | Nenhuma fonte estruturada |
 | Precauções | Nenhuma |
-| Recomendações | • Não interromper o tratamento após melhora parcial. / • Utilizar luvas ao manipular lesões e secreções. / • Evitar contato das secreções com pele lesionada ou mucosas. / • Investigar comprometimento osteoarticular, pulmonar ou disseminado quando houver sinais compatíveis. / • Não utilizar tratamento tópico isoladamente como terapia principal. / • Administrar as cápsulas de itraconazol junto com alimento. / • Evitar omeprazol, antiácidos e antagonistas H2 durante o uso de cápsulas de itraconazol. / • Realizar avaliação hepática antes e periodicamente durante o tratamento. / • Anorexia. / • Vômitos. / • Diarreia. / • Prostração. / • Icterícia. / • Piora respiratória. / • Progressão das lesões. |
-| Sinais de alerta | • Piora respiratória. |
+| Recomendações | • Não interromper o tratamento após melhora parcial. / • Utilizar luvas ao manipular lesões e secreções. / • Evitar contato das secreções com pele lesionada ou mucosas. / • Investigar comprometimento osteoarticular, pulmonar ou disseminado quando houver sinais compatíveis. / • Não utilizar tratamento tópico isoladamente como terapia principal. |
+| Sinais de alerta | Nenhum |
 | Retorno | Não informado |
 | Placeholders | Nenhum |
-| Problemas | Possui concentração ou dose digitada no texto histórico. |
-| Status | needs-review |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
 
 ### Cinomose — Cães
 
@@ -150,16 +150,16 @@ Gerado em 2026-08-02T22:04:47.623Z. O relatório reflete os modelos carregados p
 | Categoria | Infectologia |
 | Espécie | cão |
 | Tipo | recipe |
-| Medicamentos | DIMETILSULFÓXIDO → não vinculado; FÓRMULA VITAMÍNICA E ANTIOXIDANTE → não vinculado |
+| Medicamentos | RIBAVIRINA → não vinculado; FÓRMULA VITAMÍNICA E ANTIOXIDANTE → não vinculado; DIMETILSULFÓXIDO → não vinculado |
 | Apresentações vinculadas | Nenhuma |
 | Doses cadastradas | Nenhuma |
 | Fontes | Nenhuma fonte estruturada |
 | Precauções | Nenhuma |
-| Recomendações | • Protocolo de caráter experimental e adjuvante. A eficácia clínica da associação completa ainda não está definitivamente comprovada. / • O protocolo não substitui fluidoterapia, suporte nutricional, controle gastrointestinal, suporte respiratório, anticonvulsivantes, antimicrobianos quando indicados e demais tratamentos de suporte. / • Recomenda-se realizar hemograma completo, contagem de reticulócitos, avaliação renal, avaliação hepática e urinálise antes do início do tratamento. / • Durante o uso da ribavirina, repetir o hemograma após aproximadamente 5 a 7 dias, entre 10 e 14 dias e ao término do protocolo. / • Reavaliar ou suspender a ribavirina diante de icterícia, urina escura, vômitos persistentes, anorexia, perda de peso ou piora clínica. / • Utilizar luvas ao manipular a ribavirina. Pessoas gestantes ou tentando engravidar não devem manipular cápsulas abertas, pós, urina ou vômito do paciente. |
-| Sinais de alerta | • Reavaliar ou suspender a ribavirina diante de icterícia, urina escura, vômitos persistentes, anorexia, perda de peso ou piora clínica. |
-| Retorno | • Reavaliar ou suspender a ribavirina diante de icterícia, urina escura, vômitos persistentes, anorexia, perda de peso ou piora clínica. |
+| Recomendações | Nenhuma |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
 | Placeholders | Nenhum |
-| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. / Não possui recomendações em lista. |
 | Status | incomplete |
 
 ### Erliquiose/Anaplasmose — Cães
@@ -171,15 +171,456 @@ Gerado em 2026-08-02T22:04:47.623Z. O relatório reflete os modelos carregados p
 | Categoria | Infectologia |
 | Espécie | cão |
 | Tipo | recipe |
+| Medicamentos | DOXICICLINA → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter controle rigoroso e contínuo de carrapatos. / • Repetir hemograma e contagem de plaquetas em 7 a 14 dias. / • Reavaliar o hemograma ao final dos 28 dias. / • Se não houver melhora clínica e hematológica durante a primeira semana, reconsiderar o diagnóstico e investigar coinfecções. / • Não utilizar imidocarb rotineiramente para erliquiose isolada. / • Não administrar corticosteroides automaticamente; reservar para complicações imunomediadas documentadas. |
+| Sinais de alerta | Nenhum |
+| Retorno | • Reavaliar o hemograma ao final dos 28 dias. |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Pós-operatório de castração — Cadela
+
+| Campo | Valor |
+|---|---|
+| ID | seed-pos-operatorio-castracao-cadela |
+| Condição | Pós-operatório de castração — Cadela |
+| Categoria | Dor e pós-operatório |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | MELOXICAM → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Utilizar roupa cirúrgica ou colar elizabetano durante todo o período de cicatrização. / • Impedir que a paciente lamba, morda ou coce a incisão. / • Manter a ferida cirúrgica limpa e seca. / • Não aplicar pomadas, sprays, álcool, água oxigenada, iodo ou antissépticos na incisão fechada, salvo orientação veterinária. / • Restringir corridas, saltos, brincadeiras intensas e acesso a escadas durante 10 a 14 dias. / • Realizar passeios curtos, somente com guia, para urinar e defecar. / • Não dar banho até a retirada dos pontos ou liberação pelo médico-veterinário. / • Examinar a incisão duas vezes ao dia. / • Pequena quantidade de edema (inchaço) e equimose (manchas roxas na pele) pode ocorrer inicialmente, mas não deve aumentar progressivamente. / • Antibióticos não devem ser prescritos rotineiramente após uma cirurgia eletiva limpa e sem intercorrências. / • Caso a paciente apresente dor moderada ou intensa apesar do tratamento, realizar reavaliação para analgesia de resgate. |
+| Sinais de alerta | Nenhum |
+| Retorno | • Caso a paciente apresente dor moderada ou intensa apesar do tratamento, realizar reavaliação para analgesia de resgate. |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Pós-operatório de castração — Gata
+
+| Campo | Valor |
+|---|---|
+| ID | seed-pos-operatorio-castracao-gata |
+| Condição | Pós-operatório de castração — Gata |
+| Categoria | Dor e pós-operatório |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | ROBENACOXIBE → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter a gata em ambiente calmo, aquecido e separado de outros animais durante a recuperação inicial. / • Utilizar roupa cirúrgica ou colar elizabetano continuamente. / • Impedir lambedura ou mordedura da incisão. / • Manter a ferida limpa e seca. / • Não aplicar pomadas ou antissépticos em uma incisão fechada e íntegra. / • Restringir saltos, corridas e brincadeiras durante 10 a 14 dias. / • Não permitir acesso à rua. / • Não dar banho até liberação veterinária. / • Verificar a incisão duas vezes ao dia. / • Antibióticos não são indicados rotineiramente em castração eletiva limpa e sem complicações. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Pós-operatório de castração — Cão macho
+
+| Campo | Valor |
+|---|---|
+| ID | seed-pos-operatorio-castracao-cao-macho |
+| Condição | Pós-operatório de castração — Cão macho |
+| Categoria | Dor e pós-operatório |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | MELOXICAM → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Utilizar colar elizabetano continuamente durante 7 a 10 dias. / • Não permitir lambedura ou mordedura da região escrotal. / • Manter a incisão limpa e seca. / • Não aplicar pomadas, sprays ou antissépticos sem orientação. / • Restringir corridas, saltos, brincadeiras e escadas durante 7 a 10 dias. / • Realizar apenas passeios curtos com guia. / • Não dar banho durante o período de cicatrização. / • Verificar a região operada duas vezes ao dia. / • Pequeno edema (inchaço) escrotal pode ocorrer, mas deve permanecer discreto e diminuir progressivamente. / • Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Pós-operatório de castração — Gato macho
+
+| Campo | Valor |
+|---|---|
+| ID | seed-pos-operatorio-castracao-gato-macho |
+| Condição | Pós-operatório de castração — Gato macho |
+| Categoria | Dor e pós-operatório |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | ROBENACOXIBE → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter o gato dentro de casa, em ambiente calmo e limpo. / • Utilizar colar elizabetano se houver lambedura excessiva. / • Restringir corridas, saltos e brincadeiras durante pelo menos 7 dias. / • Não aplicar pomadas ou antissépticos na região escrotal sem orientação. / • Pequena quantidade de sangue nas primeiras horas pode ocorrer, mas sangramento contínuo não é esperado. / • A incisão escrotal pode permanecer aberta e cicatrizar por segunda intenção, conforme a técnica utilizada. / • Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Gastroenterite aguda não complicada — Cão
+
+| Campo | Valor |
+|---|---|
+| ID | seed-gastroenterite-aguda-nao-complicada-cao |
+| Condição | Gastroenterite aguda não complicada — Cão |
+| Categoria | Gastroenterologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | MAROPITANT → med-maropitant |
+| Apresentações vinculadas | Solução injetável 10 mg/mL (citrato) — frasco 20 mL; Cerenia - comprimido (cão) |
+| Doses cadastradas | 1–1 mg/kg; 2–2 mg/kg; 8–8 mg/kg; 1–1 mg/kg; 4–4 mg/por gato; 1–1 mg/kg |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).; Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.; Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).; BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local. |
+| Recomendações | • Oferecer dieta veterinária altamente digestível em pequenas porções, divididas em 4 a 6 refeições ao dia. / • Reiniciar a alimentação precocemente assim que o vômito estiver controlado. / • Não realizar jejum prolongado. / • Manter água fresca disponível. / • Em pacientes que ingerem água muito rapidamente e vomitam, oferecer pequenas quantidades várias vezes ao dia. / • Não forçar grandes volumes de água ou alimento com seringa. / • Após a resolução clínica, realizar transição gradual para a alimentação habitual durante 3 a 5 dias. / • Suspender petiscos, alimentos gordurosos, restos de comida, ossos e mudanças alimentares durante a recuperação. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
+
+### Colapso de traqueia — Cão
+
+| Campo | Valor |
+|---|---|
+| ID | seed-colapso-traqueia-cao |
+| Condição | Colapso de traqueia — Cão |
+| Categoria | Respiratório |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | HIDROCODONA → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Substituir imediatamente a coleira cervical por peitoral. / • Evitar qualquer pressão sobre o pescoço. / • Promover perda de peso gradual nos pacientes com sobrepeso ou obesidade. / • Evitar calor, umidade intensa, fumaça de cigarro, perfumes, aerossóis, poeira e produtos de limpeza voláteis. / • Reduzir situações de excitação, latidos intensos e exercícios extenuantes. / • Manter adequada higiene oral e tratar doença periodontal. / • Investigar cardiopatia, hipertensão pulmonar (pressão elevada na circulação dos pulmões), paralisia laríngea (alteração da laringe que dificulta respirar), broncomalácia (enfraquecimento das vias aéreas), pneumonia e doença brônquica concomitante. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Asma felina
+
+| Campo | Valor |
+|---|---|
+| ID | seed-asma-felina-protocolo |
+| Condição | Asma felina |
+| Categoria | Respiratório |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | PREDNISOLONA → med-prednisolona |
+| Apresentações vinculadas | Preni - comprimido (Eurofarma, uso humano); Solução oral 3 mg/mL (fosfato sódico Aché / Preni solução); Prelone gotas — 11 mg/mL (Aché, uso humano); Prediderm - comprimido (Ourofino, vet); Predivet - comprimido (Mundo Animal, vet) |
+| Doses cadastradas | 0.5–1 mg/kg; 1–2 mg/kg; 2–4 mg/kg; 2–8 mg/kg; 0.1–0.22 mg/kg; 2–2 mg/kg; 0.2–0.2 mg/kg |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Gatos: maior risco diabetogênico com uso prolongado; obesidade e prednisolona — ajustar à massa magra quando possível.; Não associar AINEs (incl. aspirina) sem critério — risco de ulceração GI.; Desmame gradual após uso prolongado (eixo HPA).; Monitorar glicemia, peso, PU/PD, comportamento e enzimas hepáticas conforme duração/dose. |
+| Recomendações | • Eliminar exposição a fumaça de cigarro, incenso, perfumes, sprays, aromatizadores e produtos de limpeza voláteis. / • Preferir areia sanitária sem perfume e com baixa produção de poeira. / • Evitar varrer ou usar aerossóis no mesmo ambiente do gato. / • Controlar o peso corporal. / • Registrar a frequência das crises, tosse, chiado e uso do salbutamol. / • Contar periodicamente a frequência respiratória durante o sono. / • Uso de salbutamol mais de duas ou três vezes por semana indica controle inadequado e necessidade de reavaliação. |
+| Sinais de alerta | Nenhum |
+| Retorno | • Uso de salbutamol mais de duas ou três vezes por semana indica controle inadequado e necessidade de reavaliação. |
+| Placeholders | Nenhum |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
+
+### Manejo de ferida pós-operatória
+
+| Campo | Valor |
+|---|---|
+| ID | seed-manejo-ferida-pos-operatoria |
+| Condição | Manejo de ferida pós-operatória |
+| Categoria | Cuidados gerais |
+| Espécie | ambos |
+| Tipo | recipe |
 | Medicamentos | Nenhum |
 | Apresentações vinculadas | Nenhuma |
 | Doses cadastradas | Nenhuma |
 | Fontes | Nenhuma fonte estruturada |
 | Precauções | Nenhuma |
-| Recomendações | • Manter controle rigoroso e contínuo de carrapatos. / • Repetir hemograma e contagem de plaquetas em 7 a 14 dias. / • Reavaliar o hemograma ao final dos 28 dias. / • Se não houver melhora clínica e hematológica durante a primeira semana, reconsiderar o diagnóstico e investigar coinfecções. / • Não utilizar imidocarb rotineiramente para erliquiose isolada. / • Não administrar corticosteroides automaticamente; reservar para complicações imunomediadas documentadas. / • Administrar a doxiciclina junto com pequena quantidade de alimento. / • Oferecer água ou alimento após a administração. / • Não administrar simultaneamente com ferro, cálcio, magnésio, antiácidos ou sucralfato. / • Sangramento. / • Palidez. / • Fraqueza. / • Dificuldade respiratória. / • Febre persistente. / • Piora clínica. |
-| Sinais de alerta | • Piora clínica. |
-| Retorno | • Reavaliar o hemograma ao final dos 28 dias. |
+| Recomendações | Nenhuma |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
 | Placeholders | Nenhum |
-| Problemas | Possui concentração ou dose digitada no texto histórico. |
+| Problemas | Não possui recomendações em lista. |
+| Status | needs-review |
+
+### Dermatite atópica — Cão
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dermatite-atopica-cao |
+| Condição | Dermatite atópica — Cão |
+| Categoria | Dermatologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | OCLACITINIBE → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter controle rigoroso de pulgas e outros ectoparasitas durante todo o ano. / • Investigar piodermite (infecção bacteriana da pele), malasseziose (infecção por fungo na pele ou ouvido) e otite por citologia. / • Não prescrever antibiótico ou antifúngico sistêmico automaticamente; utilizar conforme citologia, cultura e extensão da infecção. / • Considerar dieta de eliminação adequada quando reação cutânea adversa ao alimento ainda não tiver sido excluída. / • Informar que a dermatite atópica é crônica e exige manejo contínuo. / • Identificar e reduzir exposições ambientais associadas às crises. / • Tratar alterações da barreira cutânea com banhos e hidratação regular. / • Avaliar imunoterapia alérgeno-específica nos pacientes com doença recorrente ou necessidade contínua de medicamentos. / • Utilizar sempre a menor dose eficaz de corticosteroide. |
+| Sinais de alerta | Nenhum |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Cão — Caninsulin
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-cao-caninsulin |
+| Condição | Diabetes mellitus — Cão — Caninsulin |
+| Categoria | Endocrinologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | INSULINA LENTE SUÍNA → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Caninsulin possui 40 unidades/mL; utilizar exclusivamente seringa U-40 ou caneta veterinária compatível. / • Antes de cada aplicação, agitar o frasco até a suspensão ficar branca e leitosa; aguardar a espuma desaparecer. / • Não utilizar se houver grumos persistentes, cristais ou alteração de cor. / • Oferecer duas refeições equivalentes separadas por cerca de 12 horas. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é U-40: use apenas seringa U-40 ou caneta veterinária compatível com Caninsulin. Nunca use seringa U-100 para medir esta insulina. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo. / • Confirmar que o cão comeu a refeição antes de aplicar a insulina. / • Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível. / • Evitar petiscos extras, restos de comida e doces. / • Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Canine / • PremieR Nutrição Clínica Cães Diabetes — porte pequeno / • PremieR Nutrição Clínica Cães Diabetes — portes médio e grande / • Farmina Vet Life Obesity & Diabetic Canine / • Farmina Vet Life Obesity & Diabetic Fish Canine / • Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g / • PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g / • Farmina Vet Life Diabetic Wet Food Canine — 300 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Cão — Insulina NPH
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-cao-nph |
+| Condição | Diabetes mellitus — Cão — Insulina NPH |
+| Categoria | Endocrinologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | INSULINA NPH U-100 → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • NPH possui 100 unidades/mL; utilizar exclusivamente seringa U-100. / • Preferir seringa de 0,3 mL para doses pequenas, com marcação de meia unidade quando possível. / • Suspensão turva: rolar delicadamente entre as mãos e inverter lentamente até ficar uniformemente turvo; não agitar vigorosamente. / • Não utilizar se permanecerem aglomerados, cristais ou alterações importantes de aparência. / • Duas refeições semelhantes com cerca de 12 horas de intervalo; aplicar após confirmar que o cão comeu. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo. / • Confirmar que o cão comeu a refeição antes de aplicar a insulina. / • Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível. / • Evitar petiscos extras, restos de comida e doces. / • Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Canine / • PremieR Nutrição Clínica Cães Diabetes — porte pequeno / • PremieR Nutrição Clínica Cães Diabetes — portes médio e grande / • Farmina Vet Life Obesity & Diabetic Canine / • Farmina Vet Life Obesity & Diabetic Fish Canine / • Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g / • PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g / • Farmina Vet Life Diabetic Wet Food Canine — 300 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Cão — Glargina U-100
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-cao-glargina-u100 |
+| Condição | Diabetes mellitus — Cão — Glargina U-100 |
+| Categoria | Endocrinologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | INSULINA GLARGINA U-100 → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Glargina U-100 possui 100 unidades/mL; utilizar seringa U-100 ou caneta compatível. / • Para doses pequenas, preferir seringa U-100 de 0,3 mL com meia unidade. / • Solução límpida e incolor: não agitar, não rolar, não diluir e não misturar na mesma seringa. / • Descartar se turva, com partículas ou alteração de cor. / • Duas refeições semelhantes em horários regulares; aplicar após confirmar que o cão comeu. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo. / • Confirmar que o cão comeu a refeição antes de aplicar a insulina. / • Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível. / • Evitar petiscos extras, restos de comida e doces. / • Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Canine / • PremieR Nutrição Clínica Cães Diabetes — porte pequeno / • PremieR Nutrição Clínica Cães Diabetes — portes médio e grande / • Farmina Vet Life Obesity & Diabetic Canine / • Farmina Vet Life Obesity & Diabetic Fish Canine / • Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g / • PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g / • Farmina Vet Life Diabetic Wet Food Canine — 300 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Cão — Toujeo U-300
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-cao-toujeo-u300 |
+| Condição | Diabetes mellitus — Cão — Toujeo U-300 |
+| Categoria | Endocrinologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | INSULINA GLARGINA U-300 → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Toujeo possui 300 unidades/mL; utilizar exclusivamente a caneta original do fabricante. / • O número no visor corresponde às unidades reais administradas. / • Agulha nova a cada aplicação; teste de fluxo antes de cada dose; manter agulha cerca de 10 segundos após o visor retornar a zero. / • Não agitar, diluir ou misturar; solução límpida e incolor. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é Toujeo U-300: use apenas a caneta original do fabricante. Nunca tire o medicamento da caneta com seringa. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo. / • Manter horários de alimentação previsíveis todos os dias e registrar se o cão comeu bem. / • Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível. / • Evitar petiscos extras, restos de comida e doces. / • Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Canine / • PremieR Nutrição Clínica Cães Diabetes — porte pequeno / • PremieR Nutrição Clínica Cães Diabetes — portes médio e grande / • Farmina Vet Life Obesity & Diabetic Canine / • Farmina Vet Life Obesity & Diabetic Fish Canine / • Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g / • PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g / • Farmina Vet Life Diabetic Wet Food Canine — 300 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | • Agulha nova a cada aplicação; teste de fluxo antes de cada dose; manter agulha cerca de 10 segundos após o visor retornar a zero. |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Gato — Glargina U-100
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-gato-glargina-u100 |
+| Condição | Diabetes mellitus — Gato — Glargina U-100 |
+| Categoria | Endocrinologia |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | INSULINA GLARGINA U-100 → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Utilizar seringa U-100 ou dispositivo compatível; preferir seringa 0,3 mL com meia unidade para doses pequenas. / • Solução límpida e incolor: não agitar, rolar, diluir ou misturar. / • Aplicar a cada 12 horas em horários consistentes; preferível confirmar alimentação antes da aplicação. / • Observar apetite e comportamento nos primeiros meses, pois a necessidade de insulina pode diminuir. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Preferir aplicar depois de confirmar que o gato está se alimentando. / • Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia. / • Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada. / • Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Feline / • PremieR Nutrição Clínica Gatos Diabetes / • Farmina Vet Life Diabetic Feline / • Farmina Vet Life Diabetic Wet Food Feline — 85 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Gato — Toujeo U-300
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-gato-toujeo-u300 |
+| Condição | Diabetes mellitus — Gato — Toujeo U-300 |
+| Categoria | Endocrinologia |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | INSULINA GLARGINA U-300 → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Administrar exclusivamente com a caneta original; nunca aspirar com seringa. / • A caneta administra apenas unidades inteiras; fazer teste de fluxo antes de cada aplicação. / • Manter a agulha inserida por aproximadamente 10 segundos após pressionar o botão. / • Não agitar, diluir ou misturar; a solução deve permanecer límpida e incolor. / • O apetite deve ser observado todos os dias, mesmo que a aplicação não coincida exatamente com a refeição. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é Toujeo U-300: use apenas a caneta original do fabricante. Nunca tire o medicamento da caneta com seringa. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Não é obrigatório aplicar exatamente na hora da refeição, mas o apetite deve ser observado todos os dias. / • Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia. / • Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada. / • Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Feline / • PremieR Nutrição Clínica Gatos Diabetes / • Farmina Vet Life Diabetic Feline / • Farmina Vet Life Diabetic Wet Food Feline — 85 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Diabetes mellitus — Gato — Caninsulin
+
+| Campo | Valor |
+|---|---|
+| ID | seed-dm-gato-caninsulin |
+| Condição | Diabetes mellitus — Gato — Caninsulin |
+| Categoria | Endocrinologia |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | INSULINA LENTE SUÍNA → não vinculado; Oferecer imediatamente a refeição habitual. → não vinculado; Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento. → não vinculado; Não aplicar nova insulina até ser avaliado por um veterinário. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha. → não vinculado; Não despejar líquido no fundo da boca e não forçar a engolir. → não vinculado; Se melhorar em até cinco minutos, oferecer comida. → não vinculado; Levar imediatamente a um serviço veterinário de emergência 24 horas. → não vinculado; Separar glicosímetro, tira, lanceta, gaze e petisco. → não vinculado; Lavar e secar as mãos. → não vinculado; Colocar a tira no aparelho. → não vinculado; Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue. → não vinculado; Encostar a ponta da tira na gota, sem esfregar. → não vinculado; Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada. → não vinculado; Comprimir levemente com gaze e recompensar o animal. → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Utilizar apenas seringa U-40 ou caneta veterinária compatível. / • Agitar até suspensão uniforme branca e leitosa; não utilizar se houver aglomerados persistentes. / • Aplicar após confirmar que o gato está se alimentando; manter quantidade diária de alimento controlada. / • Acompanhar glicemia em casa ou com sensor, conforme orientação da clínica. / • Lavar e secar as mãos. / • Conferir o nome da insulina, a dose e o horário antes de cada aplicação. / • Esta insulina é U-40: use apenas seringa U-40 ou caneta veterinária compatível com Caninsulin. Nunca use seringa U-100 para medir esta insulina. / • Preparar a insulina conforme as instruções desta receita. / • Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação. / • Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose. / • Retirar a agulha e verificar se a pelagem não ficou molhada. / • Usar seringa ou agulha nova em cada aplicação. / • Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada. / • Nunca aplicar dose dobrada para compensar uma dose perdida. / • Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula. / • Não guardar na porta da geladeira nem encostar no congelador. / • Não congelar; descartar se congelar. / • Proteger do calor e do sol; não deixar dentro do carro. / • Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco. / • Anotar a data de abertura no frasco ou na caneta. / • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. / • Não reutilizar agulha de caneta. / • Preferir aplicar depois de confirmar que o gato está se alimentando. / • Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia. / • Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada. / • Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco. / • Não aplique automaticamente a dose completa de insulina. / • Meça a glicemia em casa, se souber fazer. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante. / • Muita fome de repente, inquietação ou sonolência. / • Fraqueza, tremores, “bamboleio” ao caminhar ou confusão. / • Convulsão, desmaio ou animal que não responde direito. / • Passar mel ou xarope sobre a gengiva, sem forçar engolir. / • Não oferecer água ou comida pela boca. / • Levar imediatamente a um serviço veterinário de emergência 24 horas. / • Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando. / • Recusa total de comida, vômitos repetidos ou diarreia intensa. / • Muito abatido, cada vez mais fraco ou aparentando desidratação. / • Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal. / • Muita sede e muito xixi voltando depois de um período de melhora. / • Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo. / • O sensor deve ser colocado e protegido pela equipe veterinária. / • Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados. / • Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada. / • Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica. / • Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos. / • Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais. / • Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local. / • Horário e dose de cada aplicação de insulina. / • Quanto de comida foi oferecido e quanto foi comido. / • Quanto de água o animal bebeu. / • Se urinou mais ou menos que o normal. / • Apetite, atividade, vômitos ou fezes moles. / • Episódios de fraqueza, tremores ou comportamento estranho. / • Glicemias medidas em casa ou leituras do sensor, se houver. / • Royal Canin Veterinary Diabetic Feline / • PremieR Nutrição Clínica Gatos Diabetes / • Farmina Vet Life Diabetic Feline / • Farmina Vet Life Diabetic Wet Food Feline — 85 g |
+| Sinais de alerta | • Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Trauma vertebromedular — Cão
+
+| Campo | Valor |
+|---|---|
+| ID | seed-trauma-vertebromedular-cao |
+| Condição | Trauma vertebromedular — Cão |
+| Categoria | Neurologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | GABAPENTINA → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter repouso absoluto até nova avaliação. / • Utilizar caixa de transporte, cercado pequeno ou ambiente restrito, sem móveis sobre os quais o animal possa subir. / • Não permitir corridas, brincadeiras, saltos, sofás, camas ou escadas. / • Retirar o paciente do local de repouso somente para higiene e necessidades fisiológicas. / • Durante o transporte, manter a coluna alinhada e movimentar o paciente sobre superfície firme. / • Não levantar o animal apenas pelas patas dianteiras ou pela região abdominal. / • Em pacientes pequenos, transportar dentro de caixa rígida acolchoada. / • Em pacientes grandes, utilizar uma tábua, maca ou superfície firme para deslocamento. / • Não massagear, puxar, alongar ou manipular a coluna. / • Não realizar fisioterapia, acupuntura, exercícios ou movimentos passivos antes de o veterinário confirmar que não há instabilidade vertebral. / • Manter o paciente sobre cama espessa, seca e macia. / • Pacientes que não conseguem mudar de posição devem ser virados delicadamente a cada 4–6 horas, mantendo a coluna alinhada. / • Verificar diariamente vermelhidão, feridas, inchaço ou perda de pelos nas regiões em contato com o chão. / • Manter pele, pelos e cama sempre secos, especialmente após urina ou fezes. / • Utilizar peitoral ou faixa de sustentação para ajudar o paciente a urinar e defecar, conforme orientação veterinária. / • Não permitir que as patas sejam arrastadas diretamente no chão. / • Utilizar proteção acolchoada nas patas quando houver arraste. / • Observar se o paciente urina voluntariamente e produz jato urinário adequado. / • Gotejamento de urina ou cama molhada não significa que a bexiga está sendo esvaziada corretamente. / • A expressão manual da bexiga somente deve ser realizada após demonstração prática pela equipe veterinária. / • Não apertar o abdômen com força. / • Procurar serviço veterinário de emergência 24 horas se o paciente não urinar, apresentar bexiga endurecida, desconforto abdominal, sangue na urina, urina com odor forte ou esforço sem eliminação. / • Gabapentina pode causar sonolência, fraqueza e falta de coordenação. / • Uma discreta sonolência pode ocorrer, mas o paciente não deve ficar incapaz de despertar ou sustentar a cabeça. / • Não associar carprofeno, meloxicam ou robenacoxibe a outro anti-inflamatório. / • Não associar anti-inflamatório não esteroidal a prednisolona, dexametasona ou outro corticosteroide. / • Suspender o anti-inflamatório e procurar atendimento diante de vômitos, diarreia, fezes escuras, sangue nas fezes, perda de apetite ou dor abdominal. / • Corticosteroides em altas doses não são recomendados rotineiramente para tratar trauma medular e podem aumentar o risco de complicações gastrointestinais e infecciosas. / • Perda ou piora da movimentação das patas. / • Incapacidade de permanecer em pé. / • Paralisia. / • Dor intensa, gritos ou incapacidade de encontrar posição confortável. / • Respiração rápida, difícil ou com esforço abdominal. / • Fraqueza progredindo das patas traseiras para as dianteiras. / • Incapacidade de sustentar a cabeça. / • Perda do controle da urina ou das fezes. / • Incapacidade de urinar. / • Abdômen muito distendido ou dolorido. / • Patas frias, arroxeadas ou muito inchadas. / • Redução importante da consciência. / • Convulsões. / • Vômitos persistentes. / • Qualquer piora clínica. |
+| Sinais de alerta | • Procurar serviço veterinário de emergência 24 horas se o paciente não urinar, apresentar bexiga endurecida, desconforto abdominal, sangue na urina, urina com odor forte ou esforço sem eliminação. / • Suspender o anti-inflamatório e procurar atendimento diante de vômitos, diarreia, fezes escuras, sangue nas fezes, perda de apetite ou dor abdominal. / • Perda ou piora da movimentação das patas. / • Qualquer piora clínica. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Trauma vertebromedular — Gato
+
+| Campo | Valor |
+|---|---|
+| ID | seed-trauma-vertebromedular-gato |
+| Condição | Trauma vertebromedular — Gato |
+| Categoria | Neurologia |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | GABAPENTINA → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter repouso absoluto até nova avaliação. / • Utilizar caixa de transporte, cercado pequeno ou ambiente restrito, sem móveis sobre os quais o animal possa subir. / • Não permitir corridas, brincadeiras, saltos, sofás, camas ou escadas. / • Retirar o paciente do local de repouso somente para higiene e necessidades fisiológicas. / • Durante o transporte, manter a coluna alinhada e movimentar o paciente sobre superfície firme. / • Não levantar o animal apenas pelas patas dianteiras ou pela região abdominal. / • Em pacientes pequenos, transportar dentro de caixa rígida acolchoada. / • Em pacientes grandes, utilizar uma tábua, maca ou superfície firme para deslocamento. / • Não massagear, puxar, alongar ou manipular a coluna. / • Não realizar fisioterapia, acupuntura, exercícios ou movimentos passivos antes de o veterinário confirmar que não há instabilidade vertebral. / • Manter o paciente sobre cama espessa, seca e macia. / • Pacientes que não conseguem mudar de posição devem ser virados delicadamente a cada 4–6 horas, mantendo a coluna alinhada. / • Verificar diariamente vermelhidão, feridas, inchaço ou perda de pelos nas regiões em contato com o chão. / • Manter pele, pelos e cama sempre secos, especialmente após urina ou fezes. / • Utilizar peitoral ou faixa de sustentação para ajudar o paciente a urinar e defecar, conforme orientação veterinária. / • Não permitir que as patas sejam arrastadas diretamente no chão. / • Utilizar proteção acolchoada nas patas quando houver arraste. / • Observar se o paciente urina voluntariamente e produz jato urinário adequado. / • Gotejamento de urina ou cama molhada não significa que a bexiga está sendo esvaziada corretamente. / • A expressão manual da bexiga somente deve ser realizada após demonstração prática pela equipe veterinária. / • Não apertar o abdômen com força. / • Procurar serviço veterinário de emergência 24 horas se o paciente não urinar, apresentar bexiga endurecida, desconforto abdominal, sangue na urina, urina com odor forte ou esforço sem eliminação. / • Gabapentina pode causar sonolência, fraqueza e falta de coordenação. / • Uma discreta sonolência pode ocorrer, mas o paciente não deve ficar incapaz de despertar ou sustentar a cabeça. / • Não associar carprofeno, meloxicam ou robenacoxibe a outro anti-inflamatório. / • Não associar anti-inflamatório não esteroidal a prednisolona, dexametasona ou outro corticosteroide. / • Suspender o anti-inflamatório e procurar atendimento diante de vômitos, diarreia, fezes escuras, sangue nas fezes, perda de apetite ou dor abdominal. / • Corticosteroides em altas doses não são recomendados rotineiramente para tratar trauma medular e podem aumentar o risco de complicações gastrointestinais e infecciosas. / • Perda ou piora da movimentação das patas. / • Incapacidade de permanecer em pé. / • Paralisia. / • Dor intensa, gritos ou incapacidade de encontrar posição confortável. / • Respiração rápida, difícil ou com esforço abdominal. / • Fraqueza progredindo das patas traseiras para as dianteiras. / • Incapacidade de sustentar a cabeça. / • Perda do controle da urina ou das fezes. / • Incapacidade de urinar. / • Abdômen muito distendido ou dolorido. / • Patas frias, arroxeadas ou muito inchadas. / • Redução importante da consciência. / • Convulsões. / • Vômitos persistentes. / • Qualquer piora clínica. |
+| Sinais de alerta | • Procurar serviço veterinário de emergência 24 horas se o paciente não urinar, apresentar bexiga endurecida, desconforto abdominal, sangue na urina, urina com odor forte ou esforço sem eliminação. / • Suspender o anti-inflamatório e procurar atendimento diante de vômitos, diarreia, fezes escuras, sangue nas fezes, perda de apetite ou dor abdominal. / • Perda ou piora da movimentação das patas. / • Qualquer piora clínica. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Hérnia de disco — Cão (manejo conservador)
+
+| Campo | Valor |
+|---|---|
+| ID | seed-hernia-disco-cao |
+| Condição | Hérnia de disco — Cão (manejo conservador) |
+| Categoria | Neurologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | GABAPENTINA → não vinculado |
+| Apresentações vinculadas | Nenhuma |
+| Doses cadastradas | Nenhuma |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Nenhuma |
+| Recomendações | • Manter o cão em repouso estrito durante pelo menos 4 semanas. / • Utilizar caixa de transporte grande, cercado pequeno ou cômodo sem móveis. / • O espaço deve permitir apenas que o cão fique em pé, deite e mude de posição. / • Não permitir acesso livre à casa. / • Não permitir corridas, brincadeiras, pulos, sofás, camas ou escadas. / • Não permitir passeio solto. / • Para urinar e defecar, realizar saída curta, com guia curta e peitoral. / • Cães com fraqueza devem utilizar faixa ou toalha sob o abdômen para sustentação. / • Retornar imediatamente ao local de repouso após urinar ou defecar. / • Não interromper o repouso porque a dor melhorou. / • A melhora provocada pelos medicamentos não significa que o disco já cicatrizou. / • Após as quatro semanas, aumentar a atividade apenas após reavaliação veterinária. / • Ambulatório: consegue permanecer em pé e caminhar sem ajuda, mesmo que cambaleando. / • Não ambulatório: movimenta as patas, mas não consegue ficar em pé ou caminhar sem sustentação. / • Paraplegia: ausência de movimento voluntário nas patas traseiras. / • Dor profunda: capacidade consciente de perceber um estímulo doloroso intenso nos dedos. Deve ser avaliada pelo veterinário e não é igual ao simples reflexo de puxar a pata. / • Compressão medular: pressão do material do disco sobre a medula espinhal. / • Mielomalácia: destruição progressiva da medula espinhal que pode avançar para regiões responsáveis pela respiração e pode ser fatal. / • Utilizar peitoral, nunca coleira cervical. / • Colocar tapetes antiderrapantes nas áreas de passagem obrigatória. / • Não massagear ou manipular a coluna. / • Não realizar quiropraxia ou manobras de mobilização. / • Não iniciar hidroterapia, esteira ou exercícios sem liberação veterinária. / • Manter cama macia, limpa e seca. / • Em pacientes incapazes de mudar de posição, alternar o lado do corpo a cada 4–6 horas. / • Inspecionar patas, quadris, joelhos e região pélvica diariamente. / • Evitar ganho de peso durante o repouso. / • Reduzir a quantidade de alimento se houver diminuição importante da atividade, conforme orientação veterinária. / • Confirmar que o cão urina voluntariamente e produz fluxo adequado. / • Gotejamento ou perda de urina na cama pode representar retenção com transbordamento. / • A expressão da bexiga somente deve ser feita após treinamento presencial. / • Procurar serviço veterinário de emergência 24 horas em caso de ausência de urina, esforço sem eliminação, bexiga endurecida, desconforto abdominal, sangue ou odor forte. / • Não associar carprofeno e meloxicam. / • Não associar qualquer anti-inflamatório a prednisolona, dexametasona ou outro corticosteroide. / • Corticosteroides não são recomendados rotineiramente na fase aguda da hérnia de disco. / • Suspender o anti-inflamatório diante de vômitos, diarreia, perda de apetite, fezes escuras ou sangue nas fezes. / • Gabapentina e pregabalina podem causar sonolência e falta de coordenação. / • Tramadol e dipirona podem causar sedação, vômitos ou alterações gastrointestinais. / • Não suspender pregabalina abruptamente após uso prolongado. / • Dor que exige opioide ou que não permite repouso confortável deve ser tratada em ambiente hospitalar. / • Incapacidade de caminhar. / • Paralisia. / • Perda da dor profunda. / • Piora neurológica durante o tratamento. / • Episódios recorrentes. / • Dor intensa ou persistente apesar do repouso e das medicações. / • Compressão importante identificada em tomografia ou ressonância. / • Incapacidade de urinar voluntariamente. / • Piora da fraqueza. / • Incapacidade de caminhar. / • Arraste das patas. / • Cruzamento frequente dos membros. / • Paralisia. / • Perda da capacidade de urinar. / • Dor intensa ou vocalização. / • Respiração rápida ou difícil. / • Fraqueza avançando para as patas dianteiras. / • Abdômen flácido ou perda progressiva dos reflexos. / • Incapacidade de sustentar a cabeça. / • Febre, prostração intensa ou perda da consciência. / • Vômitos persistentes. / • Qualquer piora clínica. |
+| Sinais de alerta | • Procurar serviço veterinário de emergência 24 horas em caso de ausência de urina, esforço sem eliminação, bexiga endurecida, desconforto abdominal, sangue ou odor forte. / • Piora neurológica durante o tratamento. / • Piora da fraqueza. / • Qualquer piora clínica. |
+| Retorno | • Retornar imediatamente ao local de repouso após urinar ou defecar. |
+| Placeholders | Nenhum |
+| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | incomplete |
+
+### Síndrome vestibular — Cão
+
+| Campo | Valor |
+|---|---|
+| ID | seed-sindrome-vestibular-cao |
+| Condição | Síndrome vestibular — Cão |
+| Categoria | Neurologia |
+| Espécie | cão |
+| Tipo | recipe |
+| Medicamentos | MAROPITANT → med-maropitant |
+| Apresentações vinculadas | Solução injetável 10 mg/mL (citrato) — frasco 20 mL; Cerenia - comprimido (cão) |
+| Doses cadastradas | 1–1 mg/kg; 2–2 mg/kg; 8–8 mg/kg; 1–1 mg/kg; 4–4 mg/por gato; 1–1 mg/kg |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).; Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.; Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).; BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local. |
+| Recomendações | • Manter o cão em ambiente pequeno, silencioso, acolchoado e com iluminação suave. / • Bloquear completamente o acesso a escadas, piscinas, varandas, sofás e camas. / • Utilizar tapetes antiderrapantes. / • Auxiliar o cão com peitoral ou faixa de sustentação. / • Não puxar pela coleira. / • Não deixar o paciente caminhar sozinho enquanto estiver caindo. / • Proteger cantos de móveis com almofadas ou cobertores. / • Colocar água e alimento em recipientes largos e rasos. / • Aproximar os recipientes do paciente, evitando que ele precise caminhar. / • Oferecer pequenas porções de alimento palatável. / • Não forçar alimento ou água com seringa se houver dificuldade para engolir, tosse, engasgo ou alteração de consciência. / • Manter o paciente limpo e seco. / • Mudar delicadamente sua posição quando permanecer deitado por várias horas. / • Não realizar exercícios vestibulares intensos durante a fase de náusea e quedas. / • A reabilitação pode ser iniciada após controle do vômito e após orientação veterinária. / • Não aplicar gotas, produtos de limpeza ou medicamentos nos ouvidos sem avaliação do tímpano. / • Algumas substâncias podem causar ou agravar lesões vestibulares quando o tímpano está rompido. / • Se houver dor, secreção, odor forte, coceira, paralisia facial ou queda da pálpebra, investigar otite média ou interna. / • Antibióticos não devem ser prescritos automaticamente. / • Quando houver suspeita de infecção do ouvido médio ou interno, o tratamento deve ser baseado em exame otoscópico, imagem, citologia e cultura sempre que possível. / • Não utilizar prednisolona ou dexametasona rotineiramente sem diagnóstico. / • Não prescrever antibióticos apenas porque o animal está com a cabeça inclinada. / • Não utilizar sedativos intensos em paciente desidratado, hipotenso ou com alteração da consciência. / • Os antieméticos reduzem náusea e vômito, mas não tratam a causa da síndrome vestibular. / • Sonolência intensa ou redução da consciência. / • Convulsões. / • Fraqueza verdadeira nas patas. / • Incapacidade de posicionar corretamente os membros. / • Arraste ou dobramento das patas. / • Alterações em vários nervos da face. / • Movimento vertical dos olhos. / • Movimento dos olhos que muda de direção conforme a posição da cabeça. / • Tremores de cabeça. / • Movimentos exagerados das patas. / • Dor cervical intensa. / • Piora progressiva do equilíbrio. / • Incapacidade de permanecer em pé. / • Quedas contínuas ou rolamentos. / • Vômitos persistentes. / • Incapacidade de beber ou comer. / • Tosse ou engasgos ao tentar engolir. / • Desidratação. / • Sonolência intensa ou redução da consciência. / • Convulsões. / • Fraqueza ou paralisia. / • Nistagmo vertical ou que muda de direção. / • Dor intensa. / • Respiração anormal. / • Paralisia facial associada à incapacidade de fechar o olho. / • Ausência de melhora nas primeiras 48–72 horas. / • Qualquer piora clínica. |
+| Sinais de alerta | • Piora progressiva do equilíbrio. / • Qualquer piora clínica. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
+
+### Síndrome vestibular — Gato
+
+| Campo | Valor |
+|---|---|
+| ID | seed-sindrome-vestibular-gato |
+| Condição | Síndrome vestibular — Gato |
+| Categoria | Neurologia |
+| Espécie | gato |
+| Tipo | recipe |
+| Medicamentos | MAROPITANT → med-maropitant |
+| Apresentações vinculadas | Solução injetável 10 mg/mL (citrato) — frasco 20 mL; Cerenia - comprimido (cão) |
+| Doses cadastradas | 1–1 mg/kg; 2–2 mg/kg; 8–8 mg/kg; 1–1 mg/kg; 4–4 mg/por gato; 1–1 mg/kg |
+| Fontes | Nenhuma fonte estruturada |
+| Precauções | Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).; Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.; Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).; BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local. |
+| Recomendações | • Manter o gato exclusivamente dentro de casa. / • Colocar em ambiente pequeno, silencioso, acolchoado e sem locais altos. / • Retirar acesso a janelas, escadas, móveis, camas e prateleiras. / • Utilizar caixa de areia com bordas baixas. / • Colocar água e alimento próximos ao local de repouso. / • Preferir alimento úmido completo e palatável. / • Oferecer pequenas porções várias vezes ao dia. / • Não forçar alimentação se houver dificuldade para engolir ou alteração de consciência. / • Manter o gato limpo e seco após urinar ou defecar. / • Utilizar toalhas enroladas para formar barreiras acolchoadas ao redor do paciente. / • Evitar contenção excessiva, pois o movimento da cabeça pode piorar a náusea. / • Não aplicar produtos nos ouvidos sem avaliação veterinária. / • Não utilizar corticosteroides ou antibióticos automaticamente. / • Investigar pólipo nasofaríngeo, otite média ou interna, trauma, intoxicação e doença cerebral quando indicado. / • Piora progressiva. / • Rolamentos contínuos. / • Incapacidade de permanecer em posição esternal. / • Recusa completa de água e alimento. / • Vômitos persistentes. / • Dificuldade para engolir. / • Convulsões. / • Sonolência intensa. / • Fraqueza ou paralisia. / • Movimentos verticais dos olhos. / • Nistagmo que muda de direção. / • Dor intensa. / • Dificuldade respiratória. / • Incapacidade de fechar um dos olhos. / • Ausência de melhora clínica. / • Qualquer piora clínica. |
+| Sinais de alerta | • Evitar contenção excessiva, pois o movimento da cabeça pode piorar a náusea. / • Piora progressiva. / • Qualquer piora clínica. |
+| Retorno | Não informado |
+| Placeholders | Nenhum |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
 | Status | needs-review |
 
