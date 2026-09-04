@@ -1,4 +1,5 @@
 import { DoseUnit, Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 const toMcgKgMin = (dose: number, unit: DoseUnit) => {
   switch (unit) {
@@ -371,11 +372,8 @@ export const noradrenaline: Drug = {
   ],
 
   references: [
-    "Plumb's Veterinary Drug Handbook, 10th ed. - Norepinephrine, pp. 943-945",
-    "Lumb and Jones - Veterinary Anesthesia and Analgesia, 6th ed. - Norepinephrine, pp. 321-322",
-    'Textbook of Small Animal Emergency Medicine - Table 38.1, p. 244',
-    'BSAVA Manual of Canine and Feline Emergency and Critical Care, 3rd ed. - choque / vasopressores, p. 25',
-    'BSAVA Manual of Canine and Feline Emergency and Critical Care, 3rd ed. - simpatomimeticos, p. 343',
-    'Documento oficial brasileiro/ANVISA-Ministerio da Saude sobre norepinefrina 2 mg/mL',
+    cite.lumbJones(),
+    cite.plumbs(943),
+    cite.ettinger(),
   ],
 };

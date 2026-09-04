@@ -130,14 +130,137 @@ export function TreatmentMonitoringPanel({ items, visual }: { items: string[]; v
   );
 }
 
+function PriorityMetaContent({
+  value,
+  visual,
+}: {
+  value: string;
+  visual?: DiseaseSectionVisual;
+}) {
+  const rawLines = value.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+
+  if (rawLines.length > 1) {
+    return (
+      <div className="space-y-1.5">
+        {rawLines.map((line, idx) => {
+          const isBullet = line.startsWith('•') || line.startsWith('-') || line.startsWith('*');
+          const isHeader =
+            line.endsWith(':') ||
+            (!isBullet &&
+              rawLines[idx + 1] &&
+              (rawLines[idx + 1].startsWith('•') || rawLines[idx + 1].startsWith('-') || rawLines[idx + 1].startsWith('*')));
+
+          if (isHeader) {
+            return (
+              <p key={idx} className="pt-1.5 text-[11px] font-bold uppercase tracking-wider text-foreground/90 first:pt-0">
+                <EditorialRichText value={line} visual={visual} />
+              </p>
+            );
+          }
+
+          if (isBullet) {
+            const cleanText = line.replace(/^[•\-*]\s*/, '');
+            return (
+              <div key={idx} className="flex items-start gap-2 pl-0.5 text-xs sm:text-[13px] leading-relaxed text-foreground/88">
+                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/75" aria-hidden />
+                <span className="min-w-0 flex-1">
+                  <EditorialRichText value={cleanText} visual={visual} />
+                </span>
+              </div>
+            );
+          }
+
+          return (
+            <p key={idx} className="text-xs sm:text-[13px] leading-relaxed text-foreground/88">
+              <EditorialRichText value={line} visual={visual} />
+            </p>
+          );
+        })}
+      </div>
+    );
+  }
+
+  // Automatic smart split if text has semicolons separating medication options
+  if (value.includes(';') && (value.includes('mg/kg') || value.includes('mg/') || value.includes(' — ') || value.includes(':'))) {
+    const colonIdx = value.indexOf(':');
+    if (colonIdx > 0 && colonIdx < 60) {
+      const header = value.slice(0, colonIdx + 1).trim();
+      const rest = value.slice(colonIdx + 1).trim();
+
+      const subHeaderMatch = rest.match(/^(.*?)\.\s+([A-ZÀ-Ú][^:]{3,40}:)\s*(.*)$/s);
+      if (subHeaderMatch) {
+        const [, part1, subHeader, part2] = subHeaderMatch;
+        const items1 = part1.split(';').map((s) => s.replace(/^\s*(?:ou|e)\s+/i, '').trim()).filter(Boolean);
+        const items2 = part2.split(/(?:;|\s+ou\s+)/i).map((s) => s.trim()).filter(Boolean);
+
+        return (
+          <div className="space-y-2">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-foreground/90">
+              <EditorialRichText value={header} visual={visual} />
+            </p>
+            <div className="space-y-1">
+              {items1.map((item, i) => (
+                <div key={i} className="flex items-start gap-2 pl-0.5 text-xs sm:text-[13px] leading-relaxed text-foreground/88">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/75" aria-hidden />
+                  <span className="min-w-0 flex-1">
+                    <EditorialRichText value={item} visual={visual} />
+                  </span>
+                </div>
+              ))}
+            </div>
+            <p className="pt-1 text-[11px] font-bold uppercase tracking-wider text-foreground/90">
+              <EditorialRichText value={subHeader} visual={visual} />
+            </p>
+            <div className="space-y-1">
+              {items2.map((item, i) => (
+                <div key={i} className="flex items-start gap-2 pl-0.5 text-xs sm:text-[13px] leading-relaxed text-foreground/88">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/75" aria-hidden />
+                  <span className="min-w-0 flex-1">
+                    <EditorialRichText value={item} visual={visual} />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      const items = rest.split(';').map((s) => s.replace(/^\s*(?:ou|e)\s+/i, '').trim()).filter(Boolean);
+      if (items.length > 1) {
+        return (
+          <div className="space-y-1.5">
+            <p className="text-[11px] font-bold uppercase tracking-wider text-foreground/90">
+              <EditorialRichText value={header} visual={visual} />
+            </p>
+            <div className="space-y-1">
+              {items.map((item, i) => (
+                <div key={i} className="flex items-start gap-2 pl-0.5 text-xs sm:text-[13px] leading-relaxed text-foreground/88">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary/75" aria-hidden />
+                  <span className="min-w-0 flex-1">
+                    <EditorialRichText value={item} visual={visual} />
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        );
+      }
+    }
+  }
+
+  return <EditorialRichText value={value} visual={visual} />;
+}
+
 function PriorityMeta({
   icon: Icon,
   label,
   value,
+  visual,
 }: {
   icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: string;
+  visual?: DiseaseSectionVisual;
 }) {
   return (
     <div className="min-w-0 rounded-lg border border-border/45 bg-muted/[0.08] px-3 py-2.5">
@@ -145,9 +268,9 @@ function PriorityMeta({
         <Icon className="h-3 w-3 shrink-0" aria-hidden />
         {label}
       </p>
-      <p className="mt-1 text-sm leading-relaxed text-foreground/90">
-        <EditorialRichText value={value} />
-      </p>
+      <div className="mt-1.5">
+        <PriorityMetaContent value={value} visual={visual} />
+      </div>
     </div>
   );
 }
@@ -202,11 +325,12 @@ export function TreatmentPriorityRichPanel({
                   <p className="mt-2 text-[15px] leading-relaxed text-foreground/88 md:leading-7">
                     <EditorialRichText value={composeTreatmentPrioritySummary(step)} />
                   </p>
-                  {(step.dose || step.duration || step.reassess) && (
+                  {(step.options || step.dose || step.duration || step.reassess) && (
                     <div className="mt-4 grid grid-cols-1 gap-2 sm:grid-cols-[repeat(auto-fit,minmax(min(100%,14rem),1fr))]">
-                      {step.dose ? <PriorityMeta icon={Pill} label="Dose" value={step.dose} /> : null}
-                      {step.duration ? <PriorityMeta icon={Clock} label="Duração" value={step.duration} /> : null}
-                      {step.reassess ? <PriorityMeta icon={RefreshCw} label="Reavaliar" value={step.reassess} /> : null}
+                      {step.options ? <PriorityMeta icon={Pill} label="Opções e doses" value={step.options} visual={visual} /> : null}
+                      {step.dose ? <PriorityMeta icon={Pill} label="Dose" value={step.dose} visual={visual} /> : null}
+                      {step.duration ? <PriorityMeta icon={Clock} label="Duração" value={step.duration} visual={visual} /> : null}
+                      {step.reassess ? <PriorityMeta icon={RefreshCw} label="Reavaliar" value={step.reassess} visual={visual} /> : null}
                     </div>
                   )}
                 </div>

@@ -1,7 +1,26 @@
 /// <reference types="vite/client" />
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || '';
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+const PLACEHOLDER_SUPABASE_URL = 'https://placeholder.local.supabase.co';
+const PLACEHOLDER_SUPABASE_ANON_KEY = 'public-anon-key';
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+function readSupabaseConfig() {
+  const url = String(import.meta.env.VITE_SUPABASE_URL || '').trim();
+  const anonKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY || '').trim();
+  const looksConfigured =
+    Boolean(url && anonKey) &&
+    !url.includes('your-project-id') &&
+    anonKey !== 'sb_publishable_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+
+  return {
+    url: looksConfigured ? url : PLACEHOLDER_SUPABASE_URL,
+    anonKey: looksConfigured ? anonKey : PLACEHOLDER_SUPABASE_ANON_KEY,
+    isConfigured: looksConfigured,
+  };
+}
+
+const config = readSupabaseConfig();
+
+export const isSupabaseConfigured = config.isConfigured;
+
+export const supabase: SupabaseClient = createClient(config.url, config.anonKey);

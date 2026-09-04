@@ -25,6 +25,7 @@ function humanItraconazole(
         dog: [{ title: 'Referência veterinária', dose: '5 mg/kg VO a cada 24 horas' }],
         cat: [{ title: 'Referência veterinária', dose: '5 mg/kg VO a cada 24 horas' }],
       },
+      labelDose: 'Extra-bula — Cães e gatos: 5 mg/kg VO a cada 24 horas.',
       notes: ['Não assumir bioequivalência com formulações manipuladas.', 'Cápsulas devem ser administradas com alimento.'],
     },
     plumbsContext: ITRACONAZOLE_CONTEXT,

@@ -187,7 +187,7 @@ export const hipotireoidismoCongenitoRecord: DiseaseRecord = {
       title: 'Achados radiográficos clássicos',
       headers: ['Achado', 'Significado'],
       rows: [
-        ['Epífises abertas persistentes', 'Atraso de ossificação endocrina'],
+        ['Epífises abertas persistentes', 'Atraso de ossificação endócrina'],
         ['Vértebras hemiplágicas', 'Sinal clássico de hipotireoidismo congênito canino'],
         ['Fontanela aberta prolongada', 'Atraso de fechamento craniano'],
         ['Membros curtos desproporcionais', 'Nanismo esquelético tireoidiano'],
@@ -202,7 +202,7 @@ export const hipotireoidismoCongenitoRecord: DiseaseRecord = {
       findings: [
         {
           finding: 'Nanismo desproporcional, tronco curto, membros curtos',
-          mechanism: 'T4/T3 baixos desde o nascimento retardam ossificação endocrina e crescimento linear.',
+          mechanism: 'T4/T3 baixos desde o nascimento retardam ossificação endócrina e crescimento linear.',
           clinicalMeaning: 'Diferenciar de nanismo hipofisário e osteocondrodisplasia (Nelson & Couto, 6ª ed.).',
           priority: 'common',
         },

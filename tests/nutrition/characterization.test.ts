@@ -16,9 +16,9 @@ import {
 } from '../../modules/energia-vet/lib/featureFlags'
 import { REPORT_V4_SAMPLE } from './fixtures/report-v4-sample'
 
-test('dataset GENUTRI mantém 580 alimentos e 55 perfis', () => {
+test('dataset GENUTRI mantém catálogo expandido e 55 perfis', () => {
   const stats = getDatasetStats()
-  assert.equal(stats.foods, 580)
+  assert.ok(stats.foods >= 618, `Esperado ≥618 alimentos, obtido ${stats.foods}`)
   assert.equal(stats.requirements, 55)
   assert.equal(stats.energyRules, 2)
 })

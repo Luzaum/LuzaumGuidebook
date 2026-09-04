@@ -30,6 +30,7 @@ interface ResultsProps {
 
 export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }) => {
   const [isSaved, setIsSaved] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
   const [showSaveForm, setShowSaveForm] = useState(false);
   const [favoriteName, setFavoriteName] = useState('');
   const [showMath, setShowMath] = useState(false);
@@ -73,7 +74,16 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
 
   const confirmSave = async () => {
     if (!favoriteName.trim()) return;
-    await favoritesService.saveFavorite(favoriteName.trim(), input, result);
+    setSaveError(null);
+    const outcome = await favoritesService.saveFavorite(favoriteName.trim(), input, result);
+    if (outcome.ok === false) {
+      setSaveError(
+        outcome.reason === 'auth'
+          ? 'Entre na sua conta Vetius para salvar favoritos na nuvem.'
+          : 'Não foi possível salvar. Tente novamente.',
+      );
+      return;
+    }
     historyService.addHistory(input, result);
     setShowSaveForm(false);
     setIsSaved(true);
@@ -158,7 +168,10 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                     </div>
                     <div className="flex gap-2">
                       <button
-                        onClick={() => setShowSaveForm(false)}
+                        onClick={() => {
+                          setShowSaveForm(false);
+                          setSaveError(null);
+                        }}
                         className="min-h-10 rounded-xl bg-slate-700 px-5 py-2 text-sm font-bold transition-colors hover:bg-slate-600"
                       >
                         Cancelar
@@ -170,6 +183,9 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
                         Confirmar
                       </button>
                     </div>
+                    {saveError && (
+                      <p className="text-sm font-medium text-rose-300">{saveError}</p>
+                    )}
                   </div>
                 </motion.div>
               )}

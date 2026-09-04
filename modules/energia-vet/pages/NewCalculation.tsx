@@ -1,4 +1,5 @@
 import { useLocation, Routes, Route, Link } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import PatientStep from './steps/PatientStep';
 import EnergyStep from './steps/EnergyStep';
 import TargetStep from './steps/TargetStep';
@@ -20,7 +21,7 @@ const STEPS = [
 
 function StepIndicator({ currentStep }: { currentStep: number }) {
   return (
-    <div className="mb-8 rounded-xl border border-border bg-card p-1.5">
+    <div className="mb-8 rounded-xl border border-border bg-card p-1.5 shadow-sm">
       <div className="grid grid-cols-7 gap-1">
       {STEPS.map((step, i) => {
         const stepNumber = i + 1;
@@ -32,8 +33,8 @@ function StepIndicator({ currentStep }: { currentStep: number }) {
             <Link 
               to={stepNumber === 1 ? '/calculadora-energetica/new' : `/calculadora-energetica/new/${step.path}`}
               className={cn(
-                'flex min-h-11 items-center justify-center gap-2 rounded-lg px-1.5 text-sm font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring sm:justify-start sm:px-3',
-                isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:bg-muted hover:text-foreground',
+                'flex min-h-11 items-center justify-center gap-2 rounded-lg px-1.5 text-sm font-medium outline-none transition-all duration-200 focus-visible:ring-2 focus-visible:ring-ring sm:justify-start sm:px-3',
+                isActive ? 'bg-primary/10 text-primary font-semibold' : 'text-muted-foreground hover:bg-muted hover:text-foreground',
               )}
             >
               <div
@@ -42,7 +43,7 @@ function StepIndicator({ currentStep }: { currentStep: number }) {
                   isCompleted
                     ? 'bg-primary text-primary-foreground'
                     : isActive
-                    ? 'bg-primary text-primary-foreground'
+                    ? 'bg-primary text-primary-foreground shadow-sm'
                     : 'bg-muted text-muted-foreground',
                 )}
               >
@@ -50,7 +51,7 @@ function StepIndicator({ currentStep }: { currentStep: number }) {
               </div>
               <span
                 className={cn(
-                  'hidden truncate sm:inline',
+                  'hidden truncate sm:inline text-xs lg:text-sm',
                   isActive ? 'text-primary' : '',
                 )}
               >
@@ -69,12 +70,13 @@ export default function NewCalculation() {
   const location = useLocation();
 
   let currentStep = 1;
-  if (location.pathname.includes('/energy')) currentStep = 2;
-  if (location.pathname.includes('/target')) currentStep = 3;
-  if (location.pathname.includes('/food')) currentStep = 4;
-  if (location.pathname.includes('/formulation')) currentStep = 5;
-  if (location.pathname.includes('/summary')) currentStep = 6;
-  if (location.pathname.includes('/feeding')) currentStep = 7;
+  let stepKey = 'patient';
+  if (location.pathname.includes('/energy')) { currentStep = 2; stepKey = 'energy'; }
+  else if (location.pathname.includes('/target')) { currentStep = 3; stepKey = 'target'; }
+  else if (location.pathname.includes('/food')) { currentStep = 4; stepKey = 'food'; }
+  else if (location.pathname.includes('/formulation')) { currentStep = 5; stepKey = 'formulation'; }
+  else if (location.pathname.includes('/summary')) { currentStep = 6; stepKey = 'summary'; }
+  else if (location.pathname.includes('/feeding')) { currentStep = 7; stepKey = 'feeding'; }
 
   return (
     <div className="nutrition-page w-full pb-16">
@@ -88,16 +90,27 @@ export default function NewCalculation() {
 
       <StepIndicator currentStep={currentStep} />
 
-      <Routes>
-        <Route index element={<PatientStep />} />
-        <Route path="patient" element={<PatientStep />} />
-        <Route path="energy" element={<EnergyStep />} />
-        <Route path="target" element={<TargetStep />} />
-        <Route path="food" element={<FoodSelectionStep />} />
-        <Route path="formulation" element={<FormulationStep />} />
-        <Route path="summary" element={<ClinicalSummaryStep />} />
-        <Route path="feeding" element={<FeedingStep />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={stepKey}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.2, ease: [0.2, 0.9, 0.3, 1] }}
+          className="w-full"
+        >
+          <Routes>
+            <Route index element={<PatientStep />} />
+            <Route path="patient" element={<PatientStep />} />
+            <Route path="energy" element={<EnergyStep />} />
+            <Route path="target" element={<TargetStep />} />
+            <Route path="food" element={<FoodSelectionStep />} />
+            <Route path="formulation" element={<FormulationStep />} />
+            <Route path="summary" element={<ClinicalSummaryStep />} />
+            <Route path="feeding" element={<FeedingStep />} />
+          </Routes>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

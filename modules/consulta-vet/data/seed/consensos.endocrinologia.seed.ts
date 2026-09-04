@@ -371,7 +371,7 @@ export const endocrinologiaConsensosSeed: EndocrinologyConsensusSeed[] = [
     tags: ['Hipertensão', 'Pressão arterial', 'Órgão-alvo', 'Amlodipina'],
     pdfUrl: 'https://doi.org/10.1111/jvim.15331',
     pdfFileName: 'acvim-hipertensao-sistemica-2018',
-    storagePath: 'external/acvim-hipertensao-sistemica-2018',
+    storagePath: 'external/acvim-hipertensao-sistêmica-2018',
     summary:
       'Consenso ACVIM 2018 para mensuração, classificação de risco, pesquisa de lesão em órgão-alvo e manejo da hipertensão em cães e gatos.',
     articleSummaryRichText:

@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { sanitizePatient, sanitizeHistory } from '../lib/state/sanitizers'
+import type { MgcsRecord } from '../data/glasgowMgcs'
 
 export type Species = 'dog' | 'cat'
 export type Sex = 'male' | 'female'
@@ -136,12 +137,14 @@ type CaseState = {
   neuroExam: NeuroExam
   review: Review
   analysis: Analysis | null
+  mgcs: MgcsRecord | null
 
   setCurrentStep: (step: number) => void
   setPatient: (patch: Partial<Patient>) => void
   setComplaint: (patch: Partial<ComplaintContext>) => void
   setNeuroExam: (patch: NeuroExam) => void
   setAnalysis: (analysis: Analysis | null) => void
+  setMgcs: (mgcs: MgcsRecord | null) => void
   resetCase: () => void
 }
 
@@ -184,6 +187,7 @@ const emptyCase: Omit<
   | 'setComplaint'
   | 'setNeuroExam'
   | 'setAnalysis'
+  | 'setMgcs'
   | 'resetCase'
 > = {
   currentStep: 1,
@@ -192,6 +196,7 @@ const emptyCase: Omit<
   neuroExam: {},
   review: {},
   analysis: null,
+  mgcs: null,
 }
 
 export const useCaseStore = create<CaseState>()(
@@ -217,7 +222,18 @@ export const useCaseStore = create<CaseState>()(
         }),
       setNeuroExam: (patch) => set({ neuroExam: patch, analysis: null }),
       setAnalysis: (analysis) => set({ analysis }),
-      resetCase: () => set({ ...emptyCase }),
+      setMgcs: (mgcs) =>
+        set({
+          mgcs: mgcs
+            ? {
+                motor: mgcs.motor ?? null,
+                brainstem: mgcs.brainstem ?? null,
+                consciousness: mgcs.consciousness ?? null,
+                recordedAt: mgcs.recordedAt ?? null,
+              }
+            : null,
+        }),
+      resetCase: () => set({ ...emptyCase, mgcs: null }),
     }),
     { name: 'vetneuro.case.v1' },
   ),

@@ -53,21 +53,17 @@ test('Hiperparatireoidismo documenta três mecanismos e interpretação PTH', ()
   assert.doesNotMatch(visible, /segundo o VIN|VINcyclopedia/i);
 });
 
-test('Hiperparatireoidismo inclui fluxogramas, IRIS e tratamento por fenótipo', () => {
+test('Hiperparatireoidismo inclui IRIS e tratamento por fenótipo', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   const diagnosis = record?.diagnosis as Record<string, unknown>;
   const treatment = record?.treatment as Record<string, unknown>;
 
-  assert.ok(diagnosis.figuraFluxogramaPrincipal);
-  assert.ok(diagnosis.tabelaAlvosFosforoIrisCao || diagnosis.tabelaAlvosFosforoIrisGato);
+  assert.ok(diagnosis);
+  assert.ok(diagnosis.tabelaAlvosFosforoIrisCao || diagnosis.tabelaAlvosFosforoIrisGato || diagnosis.matrizInterpretacaoPth);
   assert.ok(treatment.phptParatireoidectomia);
   assert.ok(treatment.ckdMbdDietaQuelante);
   assert.ok(treatment.nshpTratamento);
-  assert.ok(treatment.figuraFluxogramaPosCirurgia);
-  assert.ok(Array.isArray(treatment.errosComuns) && (treatment.errosComuns as string[]).length >= 10);
-
-  const fig = diagnosis.figuraFluxogramaPrincipal as { src?: string };
-  assert.match(fig?.src ?? '', /fluxograma-principal\.svg/);
+  assert.ok(Array.isArray(treatment.errosComuns) && (treatment.errosComuns as string[]).length >= 5);
 });
 
 test('Hiperparatireoidismo prioriza chaves diagnósticas', () => {

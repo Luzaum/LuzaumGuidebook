@@ -1,6 +1,7 @@
-import { Cat, Dog, Scale, ZoomIn } from 'lucide-react'
+import { Scale, ZoomIn } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger } from '../components/ui/dialog'
 import { Button } from '../components/ui/button'
+import { SpeciesPortrait } from '@/components/SpeciesPortraitCards'
 
 const DOG_IMAGE = '/ecc-cao-2025.jpg'
 const CAT_IMAGE = '/ecc-gato-2025.jpg'
@@ -18,12 +19,12 @@ const WEIGHT_RULES = [
 ] as const
 
 function SpeciesPanel({ species, imgSrc, imgAlt }: { species: 'Cão' | 'Gato'; imgSrc: string; imgAlt: string }) {
-  const Icon = species === 'Cão' ? Dog : Cat
+  const speciesId = species === 'Cão' ? 'dog' : 'cat'
   return (
     <section className="overflow-hidden rounded-[1.5rem] border border-border bg-card">
       <div className="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
         <div className="flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/[0.09] text-primary"><Icon className="h-5 w-5" strokeWidth={1.8} /></span>
+          <span className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-xl bg-white shadow-sm"><SpeciesPortrait species={speciesId} decorative className="h-full w-full" /></span>
           <div><h2 className="text-base font-semibold text-foreground">Escore corporal — {species}</h2><p className="mt-0.5 text-xs text-muted-foreground">Escala visual de 1 a 9</p></div>
         </div>
         <span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200">Ideal: 4–5</span>

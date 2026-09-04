@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const ketamine: Drug = {
   id: 'ketamine',
@@ -194,10 +195,9 @@ export const ketamine: Drug = {
     ],
   },
   references: [
-    "Plumb's Veterinary Drug Handbook, 10th ed. pp. 717-721",
-    'BSAVA Small Animal Formulary, 10th ed. pp. 217-219',
-    'Lumb and Jones Veterinary Anesthesia, 6th ed. p. 1014',
-    'Textbook of Small Animal Emergency Medicine, p. 1247',
+    cite.plumbs(717),
+    cite.lumbJones(),
+    cite.ettinger(),
   ],
   doseGuides: [
     {
@@ -225,12 +225,28 @@ export const ketamine: Drug = {
       rationale: 'Útil como adjuvante para preservar motilidade GI e poupar opioide.',
     },
     {
-      id: 'ket-rescue-high',
+      id: 'ket-flk',
+      regimen: 'CRI',
+      title: 'FLK — componente cetamina',
+      indication: 'Dor severa (cães)',
+      doseText: '0,6 mg/kg/h IV',
+      rationale: 'Plumb\'s 10ª ed., p. 721.',
+    },
+    {
+      id: 'ket-dmlk',
+      regimen: 'CRI',
+      title: 'DMLK — componente cetamina',
+      indication: 'Analgesia hospitalar',
+      doseText: '0,6 mg/kg/h IV',
+      rationale: 'Plumb\'s 10ª ed., p. 721.',
+    },
+    {
+      id: 'ket-status',
       regimen: 'bolus',
-      title: 'Resgate de Alta Intensidade',
-      indication: 'Dor emergencial severa (ex: trauma grave)',
-      doseText: '4 mg/kg IV bolus (associado a fentanil)',
-      rationale: 'Dose agressiva para cenários críticos. Risco de disforia elevado.',
+      title: 'Status epilepticus refratário',
+      indication: 'Extra-label',
+      doseText: '5 mg/kg IV bolus',
+      rationale: 'Plumb\'s 10ª ed., p. 721.',
     },
   ],
   diluentGuidance: [

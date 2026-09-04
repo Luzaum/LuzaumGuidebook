@@ -14,7 +14,8 @@ export const leishmanioseVisceralCaninaRecord: DiseaseRecord = {
     'Leishmania infantum (cão)',
   ],
   species: ['dog'],
-  category: 'infecciosas',
+  category: 'infectologia',
+  categories: ['parasitologia'],
   tags: [
     'Leishmania infantum',
     'Flebotomíneo',

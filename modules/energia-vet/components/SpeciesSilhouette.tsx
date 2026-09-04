@@ -1,7 +1,7 @@
 import { cn } from '../lib/utils'
 import type { Species } from '../types'
-import catPlayful from '../assets/species/cat-playful.png'
-import dogPlayful from '../assets/species/dog-playful.png'
+import catPlayful from '@/components/assets/species/cat-playful.webp'
+import dogPlayful from '@/components/assets/species/dog-playful.webp'
 
 interface SpeciesSilhouetteProps {
   species: Species

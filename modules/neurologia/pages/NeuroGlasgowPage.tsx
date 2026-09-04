@@ -1,16 +1,10 @@
 import React, { useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { MGCS_DOMAINS, MGCS_TOTAL_BANDS, interpretMgcsTotal, type MgcsDomainId } from '../data/glasgowMgcs'
+import { MGCS_DOMAINS, MGCS_TOTAL_BANDS, applyMgcsDomainScore, interpretMgcsTotal, isMgcsComplete, mgcsPreviewTotal, mgcsToSelection, type MgcsDomainId } from '../data/glasgowMgcs'
 import { Card } from '../components/UI/Card'
+import { Button } from '../components/UI/Button'
+import { useCaseStore } from '../stores/caseStore'
 import { cn } from '../../../lib/utils'
-
-type Selection = Record<MgcsDomainId, number | null>
-
-const INITIAL: Selection = {
-  motor: null,
-  brainstem: null,
-  consciousness: null,
-}
 
 /** Ordem visual: consciência | tronco | motor */
 const DOMAIN_COLUMN_ORDER: MgcsDomainId[] = ['consciousness', 'brainstem', 'motor']
@@ -84,12 +78,13 @@ function MgcsReferenceVerticalTables() {
 }
 
 export function NeuroGlasgowPage() {
-  const [sel, setSel] = useState<Selection>(() => ({ ...INITIAL }))
+  const mgcs = useCaseStore((s) => s.mgcs)
+  const setMgcs = useCaseStore((s) => s.setMgcs)
+  const sel = mgcsToSelection(mgcs)
   const [expanded, setExpanded] = useState<{ domain: MgcsDomainId; score: number } | null>(null)
 
-  const previewTotal = (sel.motor ?? 0) + (sel.brainstem ?? 0) + (sel.consciousness ?? 0)
-  const complete =
-    sel.motor != null && sel.brainstem != null && sel.consciousness != null
+  const previewTotal = mgcsPreviewTotal(mgcs)
+  const complete = isMgcsComplete(mgcs)
 
   const band = useMemo(() => {
     if (!complete || previewTotal < 3 || previewTotal > 18) return null
@@ -97,8 +92,13 @@ export function NeuroGlasgowPage() {
   }, [complete, previewTotal])
 
   const setLevel = (domain: MgcsDomainId, score: number) => {
-    setSel((prev) => ({ ...prev, [domain]: score }))
+    setMgcs(applyMgcsDomainScore(mgcs, domain, score))
     setExpanded({ domain, score })
+  }
+
+  const clearSelection = () => {
+    setMgcs(null)
+    setExpanded(null)
   }
 
   return (
@@ -108,8 +108,16 @@ export function NeuroGlasgowPage() {
         <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
           Escala veterinária em <strong>três domínios</strong>, cada um de <strong>1 (pior) a 6
           (melhor)</strong>. Pontuação total <strong>3–18</strong>. Valores não selecionados contam como{' '}
-          <strong>0</strong> apenas na pré-visualização da soma.
+          <strong>0</strong> apenas na pré-visualização da soma. A pontuação fica vinculada ao caso atual e
+          pode ser salva no histórico local.
         </p>
+        {(mgcs?.motor != null || mgcs?.brainstem != null || mgcs?.consciousness != null) && (
+          <div className="mt-3">
+            <Button type="button" variant="secondary" className="text-xs" onClick={clearSelection}>
+              Limpar seleção MGCS
+            </Button>
+          </div>
+        )}
       </div>
 
       <section className="space-y-4">

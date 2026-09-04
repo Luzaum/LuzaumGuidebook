@@ -214,10 +214,10 @@ function inferCommercialRoute(entry: MedicationSearchResult): string {
     metadataText(entry, 'label_directions'),
   ].join(' '));
   if (/oftalm|colirio|ocular|olho/.test(text)) return 'oftálmica';
-  if (/otolog|otico|auricular|ouvido/.test(text)) return 'otológica';
+  if (/otolog|ótico|auricular|ouvido/.test(text)) return 'otológica';
   if (/shampoo|xampu|pomada|creme|gel|spray|topico|pele/.test(text)) return 'tópica';
   if (/nasal|narina/.test(text)) return 'nasal';
-  if (/comprim|capsul|solucao oral|suspensao oral|via oral/.test(text)) return 'oral';
+  if (/comprim|capsul|solucao oral|suspensão oral|via oral/.test(text)) return 'oral';
   return 'tópica';
 }
 
@@ -925,7 +925,7 @@ export function PrescriptionMedicationComposer({
                 <article className="rounded-xl border border-emerald-500/25 bg-emerald-500/[0.07] p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div><p className="text-xs font-bold uppercase tracking-[0.12em] text-emerald-700">Uso indicado em bula</p><p className="mt-1 text-[11px] text-muted-foreground">Confirme a espécie e a apresentação antes de prescrever.</p></div>
-                    {commercialSourceUrl ? <a href={commercialSourceUrl} target="_blank" rel="noreferrer" className="inline-flex min-h-9 shrink-0 items-center gap-1 rounded-lg border border-emerald-500/25 px-2 text-[11px] font-semibold text-emerald-700">{commercialLabelUrl ? 'Abrir bula' : 'Abrir fonte'} <ExternalLink className="h-3 w-3" /></a> : null}
+                    {commercialSourceUrl ? <a href={commercialSourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-9 shrink-0 items-center gap-1 rounded-lg border border-emerald-500/25 px-2 text-[11px] font-semibold text-emerald-700">{commercialLabelUrl ? 'Abrir bula' : 'Abrir fonte'} <ExternalLink className="h-3 w-3" /></a> : null}
                   </div>
                   <p className="mt-3 whitespace-pre-line text-sm leading-5">{bulaGuidance}</p>
                 </article>
@@ -962,7 +962,7 @@ export function PrescriptionMedicationComposer({
                 {compatibleDoses.map((dose) => <option key={dose.id} value={dose.id}>{dose.indication || 'Indicação não informada'} • {dose.dose_value}{dose.dose_max != null ? `–${dose.dose_max}` : ''} {normalizeDoseUnit(dose.dose_unit).canonical}</option>)}
                 <option value="manual">Definir dose ou modo de uso manualmente</option>
               </select>
-              {selectedDose ? <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{selectedDose.route} • {selectedDose.frequency_text || selectedDose.frequency || 'frequência não cadastrada'}</span>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-primary">Abrir fonte <ExternalLink className="h-3 w-3" /></a> : null}</div> : null}
+              {selectedDose ? <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{selectedDose.route} • {selectedDose.frequency_text || selectedDose.frequency || 'frequência não cadastrada'}</span>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary">Abrir fonte <ExternalLink className="h-3 w-3" /></a> : null}</div> : null}
             </div>
           ) : (
             <div className="flex items-start gap-2 rounded-xl border border-border bg-muted/35 p-3 text-xs leading-5 text-muted-foreground">

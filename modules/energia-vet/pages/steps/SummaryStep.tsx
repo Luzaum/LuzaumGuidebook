@@ -86,7 +86,7 @@ export default function SummaryStep() {
   const currentWeight = patient.currentWeight ?? 0
   const physiologicStateLabel =
     energy.resolvedProfileLabel ?? getBookEnergyProfileById(energy.stateId ?? '')?.label ?? 'Não informado'
-  const requirementLabel = getHumanRequirementLabel(getRequirementById(diet.requirementProfileId))
+  const requirementLabel = getHumanRequirementLabel(getRequirementById(diet.requirementProfileId)?.id ?? diet.requirementProfileId)
   const comorbidityLabels = useMemo(() => getClinicalProfileBadges(species, patient.comorbidityIds ?? []), [patient.comorbidityIds, species])
 
   const result = useMemo(() => {
@@ -109,7 +109,6 @@ export default function SummaryStep() {
       species,
       comorbidityIds: patient.comorbidityIds,
       evaluation: result.evaluation,
-      totalDryMatterGrams: result.totalDryMatterGrams,
     })
   }, [patient.comorbidityIds, result, species])
 
@@ -234,7 +233,6 @@ export default function SummaryStep() {
       patient,
       energy,
       target,
-      therapeuticReview: therapeuticReview ?? undefined,
       reportId,
     })
     if (snapshot) {

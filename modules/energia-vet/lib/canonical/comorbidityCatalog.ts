@@ -302,58 +302,58 @@ export const COMORBIDITY_OPTIONS: ComorbidityOption[] = [
     evidenceIds: ['applied-clinical-nutrition'],
   },
 
-  // —— Cardiovascular (AVCN cap. 18) ——
+  // —— Cardiovascular (AVCN cap. 18; Ettinger cap. 11; Nelson & Couto cap. 5) ——
   {
     id: 'cardiopatia_assintomatica',
     label: 'Cardiopatia — assintomática (estágio B)',
-    description: 'Manutenção de peso; moderação de sódio conforme espécie.',
-    bookChapter: 'AVCN 2ª ed., cap. 18 — ACVIM estágio B',
+    description: 'Manutenção de peso e EMC; moderação de sódio (<100 mg/100 kcal); evitar petiscos salgados.',
+    bookChapter: 'Ettinger 9ª ed., cap. 11; AVCN 2ª ed., cap. 18 — ACVIM estágio B',
     species: ['dog', 'cat'],
     group: 'Cardiovascular',
     therapeuticProfileIds: ['cardiac_dog_stage_b', 'cardiac_cat_hcm'],
-    evidenceIds: ['applied-clinical-nutrition'],
+    evidenceIds: ['applied-clinical-nutrition', 'ettinger-internal-medicine-2024'],
   },
   {
     id: 'insuficiencia_cardiaca',
-    label: 'Insuficiência cardíaca congestiva',
-    description: 'Densidade energética; ômega-3; sódio/potássio conforme medicação.',
-    bookChapter: 'AVCN 2ª ed., cap. 18 — ACVIM estágio C/D',
+    label: 'Insuficiência cardíaca congestiva / DCM',
+    description: 'Densidade calórica para prevenir caquexia cardíaca; restrição de sódio (estágio C/D); ômega-3 EPA/DHA e taurina.',
+    bookChapter: 'Nelson & Couto 6ª ed., cap. 5; Ettinger 9ª ed., cap. 11; AVCN 2ª ed., cap. 18',
     species: ['dog', 'cat'],
     group: 'Cardiovascular',
     therapeuticProfileIds: ['cardiac_dog_stage_c', 'cardiac_cat_hcm'],
-    evidenceIds: ['applied-clinical-nutrition'],
+    evidenceIds: ['applied-clinical-nutrition', 'nelson-couto-internal-medicine-2020', 'ettinger-internal-medicine-2024'],
   },
 
-  // —— Oncologia (AVCN cap. 19) ——
+  // —— Oncologia (AVCN cap. 19; Ettinger cap. 19) ——
   {
     id: 'neoplasia',
     label: 'Neoplasia / caquexia oncológica',
-    description: 'Priorizar ingestão e densidade energética; proteína e n-3 quando tolerados.',
-    bookChapter: 'AVCN 2ª ed., cap. 19',
+    description: 'Priorizar ingestão e densidade energética; proteína de alto valor biológico e n-3 quando tolerados.',
+    bookChapter: 'AVCN 2ª ed., cap. 19; Ettinger 9ª ed., cap. 19',
     species: ['dog', 'cat'],
     group: 'Oncologia',
     therapeuticProfileIds: ['oncology_support'],
-    evidenceIds: ['applied-clinical-nutrition'],
+    evidenceIds: ['applied-clinical-nutrition', 'ettinger-internal-medicine-2024'],
   },
 
-  // —— Dermatologia (AVCN cap. 14) ——
+  // —— Dermatologia (AVCN cap. 14; Nelson & Couto cap. 29) ——
   {
     id: 'dermatite_alergia_alimentar',
     label: 'Dermatite — alergia alimentar',
-    description: 'Eliminação dietética rigorosa; reintrodução controlada para diagnóstico.',
-    bookChapter: 'AVCN 2ª ed., cap. 14',
+    description: 'Eliminação dietética rigorosa (proteína hidrolisada ou novel); reintrodução controlada para diagnóstico.',
+    bookChapter: 'AVCN 2ª ed., cap. 14; Nelson & Couto 6ª ed., cap. 29',
     species: ['dog', 'cat'],
     group: 'Dermatologia',
     therapeuticProfileIds: ['gi_adverse_food_reaction'],
-    evidenceIds: ['applied-clinical-nutrition'],
+    evidenceIds: ['applied-clinical-nutrition', 'nelson-couto-internal-medicine-2020'],
   },
 
   // —— Ortopedia (AVCN cap. 10) ——
   {
     id: 'osteoartrite',
-    label: 'Osteoartrite',
-    description: 'Controle de peso; ácidos graxos n-3 e palatabilidade.',
-    bookChapter: 'AVCN 2ª ed., cap. 10',
+    label: 'Osteoartrite / Doença articular degenerativa',
+    description: 'Controle rigoroso de peso (meta ECC 4-5/9); ácidos graxos n-3 anti-inflamatórios (EPA/DHA) e condroproteção.',
+    bookChapter: 'AVCN 2ª ed., cap. 10 — Osteoartrite',
     species: ['dog', 'cat'],
     group: 'Ortopedia',
     therapeuticProfileIds: ['orthopedic_osteoarthritis'],

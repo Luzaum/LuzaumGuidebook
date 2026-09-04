@@ -1,4 +1,7 @@
-/** Species portraits now render emoji in the shared component, so no image asset is loaded. */
-export const SPECIES_IMAGE_CANINE = '';
-export const SPECIES_IMAGE_FELINE = '';
+import caninePortrait from '@/components/assets/species/dog-playful.webp';
+import felinePortrait from '@/components/assets/species/cat-playful.webp';
+
+/** Ilustrações canônicas de espécie compartilhadas pelos módulos Vetius. */
+export const SPECIES_IMAGE_CANINE = caninePortrait;
+export const SPECIES_IMAGE_FELINE = felinePortrait;
 

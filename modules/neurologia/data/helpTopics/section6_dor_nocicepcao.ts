@@ -13,7 +13,7 @@ export const section6DorNocicepcao: HelpTopic[] = [
     interpretation:
       'Dor espinhal focal + déficits neurológicos = priorizar lesão compressiva local (ex.: IVDD, fratura/luxação, neoplasia). Dor profunda ausente em paciente paraplégico sugere comprometimento medular grave e pior prognóstico, elevando urgência diagnóstica/terapêutica.',
     pitfalls:
-      'Confundir vocalização por medo com dor verdadeira; confundir retirada reflexa com dor profunda; estimular demais e causar lesão; avaliar sob sedação intensa sem considerar efeito.',
+      'Confundir vocalização por medo com dor verdadeira; confundir retirada reflexa com dor profunda; estimular demais e causar lesão; avaliar sob sedação intensa sem considerar efeito; em trauma cervical instável, evitar manipulação vigorosa antes de imagem/estabilização.',
   },
   {
     id: 's6-dor-profunda-oquee',

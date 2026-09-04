@@ -1,4 +1,5 @@
 import { Scale, InterpretationResult } from '../types';
+import { PAIN_SCALE_IMAGES } from './pain-scale-images';
 
 export const CAT_SCALES: Scale[] = [
   {
@@ -13,6 +14,7 @@ export const CAT_SCALES: Scale[] = [
     maxScore: 30,
     rescueThreshold: 8,
     rescueLabel: '≥ 8/30',
+    compositeImageUrl: PAIN_SCALE_IMAGES.unesp.cats,
     references: [
       'Brondani JT, Luna SPL, Padovani CR. Refinement and initial validation of a multidimensional composite scale for assessing acute postoperative pain in cats. American Journal of Veterinary Research 2011;72(2):174-183.',
       'Luna SPL et al. Multidimensional composite scale for assessing postoperative pain in cats. Veterinary Anaesthesia and Analgesia 2013;40(6):e37-e48.'
@@ -335,7 +337,8 @@ export const CAT_SCALES: Scale[] = [
             id: 'fgs_ears',
             text: '1. Posição das Orelhas:',
             type: 'grimace',
-            imageDescription: 'Foto da orelha: Orelhas voltadas para frente (0) vs. Levemente afastadas (1) vs. Rotacionadas para fora / achatadas (2)',
+            compositeImageUrl: PAIN_SCALE_IMAGES.grimace.ears,
+            imageDescription: 'Referência visual: orelhas voltadas para frente (0) vs. levemente afastadas (1) vs. rotacionadas para fora (2)',
             options: [
               { score: 0, text: 'Ausente (0): Orelhas eretas e voltadas para frente' },
               { score: 1, text: 'Moderada (1): Orelhas levemente afastadas ou inclinadas lateralmente' },
@@ -346,7 +349,8 @@ export const CAT_SCALES: Scale[] = [
             id: 'fgs_eyes',
             text: '2. Tensão Orbital (Olhos):',
             type: 'grimace',
-            imageDescription: 'Foto dos olhos: Olhos bem abertos e redondos (0) vs. Parcialmente semicerrados (1) vs. Totalmente fechados / semicerrados marcantes (2)',
+            compositeImageUrl: PAIN_SCALE_IMAGES.grimace.eyes,
+            imageDescription: 'Referência visual: olhos abertos (0) vs. parcialmente semicerrados (1) vs. muito semicerrados (2)',
             options: [
               { score: 0, text: 'Ausente (0): Olhos abertos, redondos e alerta' },
               { score: 1, text: 'Moderada (1): Olhos parcialmente semicerrados (fenda palpebral evidente)' },
@@ -357,7 +361,8 @@ export const CAT_SCALES: Scale[] = [
             id: 'fgs_muzzle',
             text: '3. Tensão do Focinho:',
             type: 'grimace',
-            imageDescription: 'Foto do focinho: Focinho relaxado e redondo (0) vs. Levemente tenso/oval (1) vs. Muito tenso, pontudo ou esticado lateralmente (2)',
+            compositeImageUrl: PAIN_SCALE_IMAGES.grimace.muzzle,
+            imageDescription: 'Referência visual: focinho relaxado (0) vs. levemente tenso (1) vs. muito tenso (2)',
             options: [
               { score: 0, text: 'Ausente (0): Focinho relaxado, macio e arredondado' },
               { score: 1, text: 'Moderada (1): Tensão sutil, focinho parece ligeiramente ovalado' },
@@ -368,7 +373,8 @@ export const CAT_SCALES: Scale[] = [
             id: 'fgs_whiskers',
             text: '4. Posição dos Bigodes (Vibrissas):',
             type: 'grimace',
-            imageDescription: 'Foto dos bigodes: Bigodes relaxados e curvados (0) vs. Levemente retos ou agrupados (1) vs. Bigodes retos, apontados para frente ou abertos (2)',
+            compositeImageUrl: PAIN_SCALE_IMAGES.grimace.whiskers,
+            imageDescription: 'Referência visual: bigodes relaxados (0) vs. levemente retos (1) vs. retos/apontados para frente (2)',
             options: [
               { score: 0, text: 'Ausente (0): Bigodes soltos, relaxados e curvados para baixo' },
               { score: 1, text: 'Moderada (1): Bigodes ligeiramente esticados ou apontados para frente' },
@@ -379,7 +385,8 @@ export const CAT_SCALES: Scale[] = [
             id: 'fgs_head',
             text: '5. Posição da Cabeça:',
             type: 'grimace',
-            imageDescription: 'Foto da cabeça: Cabeça erguida (0) vs. Alinhada ao ombro (1) vs. Cabeça muito baixa, queixo próximo ao peito ou inclinada (2)',
+            compositeImageUrl: PAIN_SCALE_IMAGES.grimace.head,
+            imageDescription: 'Referência visual: cabeça erguida (0) vs. alinhada ao ombro (1) vs. muito baixa (2)',
             options: [
               { score: 0, text: 'Ausente (0): Cabeça erguida com pescoço relaxado, acima da linha do dorso' },
               { score: 1, text: 'Moderada (1): Cabeça alinhada ou ligeiramente abaixo da linha do ombro' },

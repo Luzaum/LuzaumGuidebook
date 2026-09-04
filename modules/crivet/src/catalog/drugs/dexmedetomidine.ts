@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const dexmedetomidine: Drug = {
   id: 'dexmedetomidine',
@@ -195,10 +196,9 @@ export const dexmedetomidine: Drug = {
     ],
   },
   references: [
-    "Plumb's Veterinary Drug Handbook, 10th ed. monografia Dexmedetomidine",
-    'BSAVA Small Animal Formulary, 10th ed.',
-    'Textbook of Small Animal Emergency Medicine, pp. 240, 1245',
-    'BSAVA Manual of ECC, capítulos de sedação e analgesia.',
+    cite.plumbs(367),
+    cite.lumbJones(),
+    cite.ettinger(),
   ],
   doseGuides: [
     {

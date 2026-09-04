@@ -27,6 +27,7 @@ export const doencaDoDiscoIntervertebralCaesRecord: DiseaseRecord = {
   ],
   species: ['dog'],
   category: 'neurologia',
+  categories: ['cirurgia-neurologica'],
   tags: [
     'DDIV',
     'IVDD',
@@ -52,7 +53,7 @@ export const doencaDoDiscoIntervertebralCaesRecord: DiseaseRecord = {
     'REGRA DOS 24/48 HORAS É MITO: O Consenso ACVIM 2022 reafirma que a ausência de dor profunda por mais de 48h não elimina a indicação nem a chance de recuperação cirúrgica (2,3).',
     'GENÉTICA 12-FGF4RG (CDDY): A degeneração precoce discal é fortemente ligada ao retrogene FGF4 no cromossomo 12 (CDDY); a mutação no cromossomo 18 isolada não causa a doença discal (1,7,8).',
     'ACVIM 2022 — CORTICOIDES NÃO SÃO NEUROPROETORES: Uso rotineiro de corticoides como neuroprotetor não é recomendado e eleva o risco de complicações gastrointestinais (2,3,16).',
-    'PROIBIDO COMBINAR AINE + CORTICOIDE: A associação aumenta severamente o risco de ulceração e perfuração gastrointestinal (2,14,15).',
+    'PROIBIDO COMBINAR AINE + CORTICOIDE: A associação aumenta severamente o risco de úlceração e perfuração gastrointestinal (2,14,15).',
     'RADIOGRAFIA SIMPLES NÃO BASTA: O RX simples não avalia a medula nem mede a compressão medular (acurácia 51–61%); não serve para planejar cirurgia isoladamente (2,5).',
     'RESSONÂNCIA MAGNÉTICA É O PADRÃO OURO: Sensibilidade >98,5% para extrusão discal toracolombar (TL-IVDE) e superior na diferenciação de ANNPE, HNPE, tumores e mielite (2,3).',
     'ALERTA DE MIELOMALÁCIA PROGRESSIVA: Ocorre em 11–17,5% dos cães paraplégicos graves sem dor profunda. Sinalizada por subida do reflexo cutâneo do tronco, flacidez e perda anal (1,2,4,6).',
@@ -79,6 +80,70 @@ export const doencaDoDiscoIntervertebralCaesRecord: DiseaseRecord = {
         highlights: ['ACVIM 2022', 'restrição estrita', 'hemilaminectomia', 'ventral slot'],
       },
     ],
+    diagnosticFlow: {
+      title: 'Fluxo diagnóstico',
+      steps: [
+        {
+          label: '1. Exame neurológico seriado',
+          detail:
+            'Neurolocalização (C1–C5, C6–T2, T3–L3, L4–S3), graduação ACVIM (Graus 1–5) e diferenciar nocicepção profunda consciente de reflexo de retirada (Olby et al., ACVIM 2022).',
+          timing: 'Triagem e reavaliação a cada 4–8 h se déficit agudo.',
+        },
+        {
+          label: '2. Radiografia simples',
+          detail:
+            'Apoio à localização e descarte de fratura/luxação; NÃO substitui RM/TC para planejar cirurgia (acurácia 51–61% para compressão medular).',
+          limitations: 'Não mede compressão medular nem avalia parênquima.',
+        },
+        {
+          label: '3. RM ou TC',
+          detail:
+            'RM padrão-ouro (sensibilidade >98,5% para TL-IVDE). Diferencia ANNPE, HNPE, mielite, neoplasia e FCE (Olby et al., 2022).',
+        },
+        {
+          label: '4. Classificar forma',
+          detail:
+            'Hansen I (extrusão aguda), Hansen II (protrusão crônica), ANNPE (contusão sem compressão residual), HNPE cervical. Genética 12-FGF4RG/CDDY em condrodistróficos.',
+        },
+        {
+          label: '5. Avaliar mielomalácia',
+          detail:
+            'Suspeitar se reflexo cutâneo do tronco ascendente, flacidez progressiva, perda anal — contraindica prognóstico favorável (11–17,5% em paraplegia sem dor profunda).',
+        },
+      ],
+    },
+    treatmentFlow: {
+      title: 'Fluxo terapêutico',
+      steps: [
+        {
+          label: '1. Grau 1 (dor isolada)',
+          detail:
+            'Restrição rigorosa de atividade 4–6 semanas (gaiola/coleira curta), analgesia multimodal (gabapentina, opioides, AINE se seguro). Evitar combinar AINE + corticoide (Olby et al., 2022).',
+          duration: '4–6 semanas de repouso estrito.',
+        },
+        {
+          label: '2. Graus 2–3 (ataxia/ambulatório)',
+          detail:
+            'Conservador vs cirúrgico conforme gravidade, duração, recidiva e acesso. Cirurgia descompressiva (hemilaminectomia TL; ventral slot cervical) se piora ou falha conservadora.',
+        },
+        {
+          label: '3. Graus 4–5 (não ambulatório)',
+          detail:
+            'Descompressão cirúrgica de urgência se compressiva na RM/TC. Perda de dor profunda >24–48 h NÃO contraindica cirurgia isoladamente (Olby et al., 2022).',
+          reassess: 'Exame neurológico seriado pós-op.',
+        },
+        {
+          label: '4. ANNPE / HNPE',
+          detail:
+            'Suporte conservador, fisioterapia e analgesia; sem descompressão se ausência de compressão residual na RM.',
+        },
+        {
+          label: '5. Pós-tratamento',
+          detail:
+            'Fisioterapia, controle de peso, evitar saltos/escadas. Fenestração associada reduz recidiva em casos selecionados. Corticoides rotineiros como neuroprotetores NÃO recomendados.',
+        },
+      ],
+    },
   },
   etiology: {
     definicao:

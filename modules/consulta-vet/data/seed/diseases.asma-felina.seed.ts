@@ -17,6 +17,7 @@ export const asmaFelinaRecord: DiseaseRecord = {
   ],
   species: ['cat'],
   category: 'respiratorio',
+  categories: ['bombas-asma-terapia-inalatoria'],
   tags: [
     'Eosinófilos',
     'Broncoespasmo',

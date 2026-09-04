@@ -61,3 +61,15 @@ test('busca por marca não expande para termos genéricos', () => {
   const natural = filterFoods({ query: 'natural', foodType: 'commercial' })
   assert.ok(natural.some((f) => f.name.toLowerCase().includes('natural')))
 })
+
+test('busca inteligente com tolerância a erros de digitação (typo tolerance)', () => {
+  // Erros comuns de digitação em português e inglês
+  const hipo = filterFoods({ query: 'hipoalergnico', foodType: 'commercial' })
+  assert.ok(hipo.length > 0, 'Deveria encontrar rações hipoalergênicas mesmo com digitação rápida')
+
+  const frango = filterFoods({ query: 'framgo', foodType: 'commercial' })
+  assert.ok(frango.length > 0, 'Deveria encontrar rações de frango com erro framgo')
+
+  const recovery = filterFoods({ query: 'recovry royal', foodType: 'commercial' })
+  assert.ok(recovery.some((f) => f.id === 'pate-royal-canin-recovery'))
+})

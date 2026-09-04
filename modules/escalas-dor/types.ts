@@ -6,7 +6,8 @@ export type Severity = 'none' | 'mild' | 'moderate' | 'severe' | 'extreme';
 export interface Option {
   score: number;
   text: string;
-  imageDescription?: string; // For placeholder images
+  imageUrl?: string;
+  imageDescription?: string;
 }
 
 export interface Question {
@@ -20,6 +21,8 @@ export interface Question {
   labelMin?: string;
   labelMax?: string;
   category?: string;
+  imageUrl?: string;
+  compositeImageUrl?: string;
   imageDescription?: string;
 }
 
@@ -29,6 +32,7 @@ export interface Category {
   description?: string;
   questions: Question[];
   hasImage?: boolean;
+  imageUrl?: string;
   imageDescription?: string;
 }
 
@@ -62,6 +66,7 @@ export interface Scale {
   maxScore: number;
   rescueThreshold: number;
   rescueLabel: string;
+  compositeImageUrl?: string;
   categories: Category[];
   interpretation: (answers: Record<string, number | string>) => InterpretationResult;
   assessmentProtocol: string[];

@@ -68,6 +68,68 @@ export const sindromeCutaneaAtopicaFelinaRecord: DiseaseRecord = {
         highlights: ['Toxoplasma gondii', 'FeLV/FIV', 'carne crua'],
       },
     ],
+    diagnosticFlow: {
+      title: 'Fluxo diagnóstico (exclusão)',
+      steps: [
+        {
+          label: '1. Reconhecer padrão reacional',
+          detail:
+            'Quatro padrões: alopecia autoinduzida, dermatite miliar, complexo granuloma eosinofílico, prurido de cabeça/pescoço. Nenhum confirma FASS isoladamente (Halliwell et al., ICADA 2021).',
+        },
+        {
+          label: '2. Excluir DAPP e ectoparasitas',
+          detail:
+            'Controle rigoroso de pulgas + investigar Demodex gatoi, Notoedres, Otodectes e dermatofitose. Lesões mimetizam FASS (Mueller et al., 2021).',
+        },
+        {
+          label: '3. Excluir alergia alimentar',
+          detail:
+            'Dieta de eliminação exclusiva por 8–12 semanas. Resposta parcial não exclui sensibilização ambiental concomitante.',
+        },
+        {
+          label: '4. Tricograma e citologia',
+          detail:
+            'Tricograma confirma pelo quebrado por auto-lambeção. Citologia descarta infecção bacteriana/Malassezia secundária.',
+        },
+        {
+          label: '5. Confirmar FASS clinicamente',
+          detail:
+            'Após exclusões, diagnóstico é clínico. TID/IgE sérica têm correlação fraca no gato — não usar para diagnóstico primário (Halliwell et al., 2021).',
+        },
+      ],
+    },
+    treatmentFlow: {
+      title: 'Fluxo terapêutico',
+      steps: [
+        {
+          label: '1. Crise aguda',
+          detail:
+            'Prednisolona 1 mg/kg PO q12–24h (preferir prednisolona, não prednisona, pela conversão hepática felina reduzida). Taper após controle em 2–4 semanas.',
+          reassess: 'Reavaliar prurido, efeitos adversos e peso.',
+        },
+        {
+          label: '2. Manutenção preferencial',
+          detail:
+            'Ciclosporina modificada (Atopica® Gatos) 7 mg/kg PO q24h por ≥4–6 semanas → desmame para q48h ou 2×/semana em ~75% dos casos (Santoro et al., 2021).',
+          duration: 'Manutenção mínima eficaz após indução.',
+        },
+        {
+          label: '3. Alternativas refratárias',
+          detail:
+            'Oclacitinib ~1 mg/kg q12–24h — fora da bula, evidência limitada; cautela com toxoplasmose. Lokivetmab (Cytopoint®) é CONTRAINDICADO em gatos.',
+        },
+        {
+          label: '4. Vigilância pré-imunossupressor',
+          detail:
+            'FeLV/FIV, Toxoplasma; evitar carne crua/caça durante ciclosporina crônica. Monitorar função renal e PA.',
+        },
+        {
+          label: '5. Controle ambiental',
+          detail:
+            'Redução de alérgenos (ácaros, pólen), enriquecimento ambiental e manejo de estresse — especialmente se asma felina concomitante.',
+        },
+      ],
+    },
   },
   etiology: {
     definicao:
@@ -118,7 +180,7 @@ export const sindromeCutaneaAtopicaFelinaRecord: DiseaseRecord = {
         {
           finding: 'Placa Eosinofílica e Úlcera Indolente Labial',
           mechanism:
-            'Infiltração eosinofílica massiva da derme e epiderme com ulceração tecidual imuno-mediada (1,17).',
+            'Infiltração eosinofílica massiva da derme e epiderme com úlceração tecidual imuno-mediada (1,17).',
           clinicalMeaning: 'Manifestações do Complexo Granuloma Eosinofílico. Exigem exclusão alérgica ampla (1,17).',
           priority: 'common',
         },

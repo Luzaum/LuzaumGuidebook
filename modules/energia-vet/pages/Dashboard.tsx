@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Leaf, Users, Utensils } from 'lucide-react'
+import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Fish, Leaf, Stethoscope, Users, Utensils } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
-import { getTopAuditIssues } from '../lib/genutriData'
+import { getDatasetStats, getTopAuditIssues } from '../lib/genutriData'
 import { getSavedPatients, getSavedReports } from '../lib/persistence'
 
 const BASE_ROUTE = '/calculadora-energetica'
@@ -12,11 +12,14 @@ export default function Dashboard() {
   const savedReports = useMemo(() => getSavedReports().slice(0, 5), [])
   const savedPatients = useMemo(() => getSavedPatients().slice(0, 5), [])
   const auditIssues = useMemo(() => getTopAuditIssues(4), [])
+  const stats = useMemo(() => getDatasetStats(), [])
 
   const destinations = [
-    { name: 'Catálogo completo', description: 'Consultar composição e micronutrientes', icon: Utensils, path: `${BASE_ROUTE}/foods` },
-    { name: 'Pacientes', description: 'Acessar histórico clínico', icon: Users, path: `${BASE_ROUTE}/patients` },
-    { name: 'Base natural', description: 'Ingredientes e suplementos', icon: Leaf, path: `${BASE_ROUTE}/foods/natural` },
+    { name: 'Rações comerciais', description: '349 rações saudáveis e terapêuticas', icon: Utensils, path: `${BASE_ROUTE}/commercial` },
+    { name: 'Hospitalizados & Sondas', description: 'RER, transição e osmolaridade', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized` },
+    { name: 'Base natural TACO/USDA', description: 'Ingredientes para dieta caseira', icon: Leaf, path: `${BASE_ROUTE}/foods/natural` },
+    { name: 'Pacientes', description: 'Histórico clínico e evolução', icon: Users, path: `${BASE_ROUTE}/patients` },
+    { name: 'Catálogo completo', description: `${stats.foods} alimentos e micronutrientes`, icon: FileText, path: `${BASE_ROUTE}/foods` },
   ]
 
   return (
@@ -27,10 +30,16 @@ export default function Dashboard() {
           <div className="max-w-3xl">
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-foreground/70">Nutrição clínica veterinária</p>
             <h1 className="mt-3 text-3xl font-semibold tracking-[-0.04em] text-primary-foreground sm:text-4xl lg:text-[2.8rem]">Acompanhamento nutricional baseado em evidências</h1>
-            <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/80">Um fluxo de cálculos para decidir o melhor plano nutricional para cada paciente.</p>
-            <Button size="lg" variant="secondary" className="mt-7 h-14 w-full gap-2 bg-white px-7 text-base text-primary hover:bg-white/90 sm:w-auto" render={<Link to={`${BASE_ROUTE}/new`} />}>
-              <Calculator className="h-5 w-5" /> Iniciar novo plano
-            </Button>
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-primary-foreground/80">Um fluxo de cálculos completo para formular, avaliar e prescrever o plano nutricional ideal para cada paciente.</p>
+            
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              <Button size="lg" variant="secondary" className="h-13 gap-2 bg-white px-6 text-base font-medium text-primary hover:bg-white/90" render={<Link to={`${BASE_ROUTE}/new`} />}>
+                <Calculator className="h-5 w-5" /> Iniciar novo plano
+              </Button>
+              <Button size="lg" variant="outline" className="h-13 gap-2 border-white/25 bg-white/10 px-5 text-base font-medium text-white hover:bg-white/20" render={<Link to={`${BASE_ROUTE}/hospitalized`} />}>
+                <Stethoscope className="h-5 w-5" /> Internados
+              </Button>
+            </div>
           </div>
           <div className="relative mx-auto flex h-56 w-56 items-center justify-center sm:h-64 sm:w-64 lg:h-72 lg:w-72">
             <div className="absolute inset-5 rounded-full bg-white/10 blur-2xl" aria-hidden />
@@ -43,14 +52,14 @@ export default function Dashboard() {
         <Card className="gap-0 py-0">
           <CardHeader className="border-b border-border p-5">
             <CardTitle className="text-base">Área de trabalho</CardTitle>
-            <CardDescription>Atalhos para as rotinas mais usadas.</CardDescription>
+            <CardDescription>Atalhos rápidos para rotinas clínicas.</CardDescription>
           </CardHeader>
           <CardContent className="p-2">
             {destinations.map((item) => {
               const Icon = item.icon
               return (
-                <Link key={item.name} to={item.path} className="group flex min-h-[72px] cursor-pointer items-center gap-3 rounded-2xl p-3 outline-none transition-colors duration-200 hover:bg-muted/70 focus-visible:ring-3 focus-visible:ring-ring/25">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08] text-primary"><Icon className="h-5 w-5" strokeWidth={1.8} /></span>
+                <Link key={item.name} to={item.path} className="group flex min-h-[64px] cursor-pointer items-center gap-3 rounded-2xl p-3 outline-none transition-colors duration-200 hover:bg-muted/70 focus-visible:ring-3 focus-visible:ring-ring/25">
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/[0.08] text-primary"><Icon className="h-5 w-5" strokeWidth={1.8} /></span>
                   <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-foreground">{item.name}</span><span className="mt-0.5 block truncate text-xs text-muted-foreground">{item.description}</span></span>
                   <ArrowRight className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
                 </Link>

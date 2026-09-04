@@ -6,10 +6,10 @@ import {
   BookOpen,
   CheckCircle2,
   FileText,
-  Info,
   ShieldCheck,
   Weight,
   Activity,
+  Info,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '../lib/utils';
@@ -19,30 +19,10 @@ import { getDrugById } from '../../catalog/drugs';
 import { DrugReferenceCard } from './DrugReferenceCard';
 import { InfoModal } from './InfoModal';
 import { TipButton } from './TipButton';
+import { PageHeader } from './PageHeader';
 import { convertConcentrationToMcgPerMl, convertDoseToMcgPerHour } from '../../calculation-engine/unitConversions';
 import { buildCustomPresentation, CUSTOM_PRESENTATION_ID, getPresentationOptions, parseDoseRange } from '../lib/drugContent';
-
-type ProtocolCategory = 'CRI' | 'Bolus' | 'Sedacao/Pre-medicacao' | 'Emergência';
-
-interface ProtocolDrugLine {
-  name: string;
-  dose: string;
-  previewDose?: string;
-  notes?: string;
-  drugId?: string;
-}
-
-interface Protocol {
-  id: string;
-  name: string;
-  description: string;
-  category: ProtocolCategory;
-  drugs: ProtocolDrugLine[];
-  species: ('dog' | 'cat')[];
-  indications: string[];
-  warnings?: string[];
-  clinicalNotes?: string;
-}
+import { CLINICAL_PROTOCOLS, type ProtocolCategory, type ClinicalProtocol } from '../../data/clinicalProtocols';
 
 interface ProtocolRowState {
   presentationId: string;
@@ -65,10 +45,10 @@ const categories: (ProtocolCategory | 'All')[] = ['All', 'CRI', 'Bolus', 'Sedaca
 
 const getCategoryLabel = (cat: ProtocolCategory | 'All'): string => {
   switch (cat) {
-    case 'All': return 'Todos os Protocolos';
-    case 'CRI': return 'CRI (Infusões)';
-    case 'Bolus': return 'Bolus / Dose Única';
-    case 'Sedacao/Pre-medicacao': return 'Sedação / Pré-Anestesia';
+    case 'All': return 'Todos';
+    case 'CRI': return 'CRI';
+    case 'Bolus': return 'Bolus';
+    case 'Sedacao/Pre-medicacao': return 'Sedação';
     case 'Emergência': return 'Emergência';
     default: return cat;
   }
@@ -87,101 +67,6 @@ const drugCategories = [
   { id: 'outros', label: 'Outros' },
 ] as const;
 
-const predefinedProtocols: Protocol[] = [
-  {
-    id: 'flk',
-    name: 'FLK (Fentanil, Lidocaína, Cetamina)',
-    description: 'Analgesia multimodal por infusão contínua para dor severa.',
-    category: 'CRI',
-    drugs: [
-      { name: 'Fentanil', drugId: 'fentanyl', dose: '2-5 mcg/kg/h', notes: 'Base opioide da analgesia.' },
-      { name: 'Lidocaína', drugId: 'lidocaine', dose: '1-2 mg/kg/h', notes: 'Reduz CAM e contribui para analgesia sistêmica.' },
-      { name: 'Cetamina', drugId: 'ketamine', dose: '0.1-0.6 mg/kg/h', notes: 'Modula hiperalgesia e sensibilização central.' },
-    ],
-    species: ['dog'],
-    indications: ['Dor severa', 'Ortopedia complexa', 'Laparotomias', 'Amputações'],
-    warnings: ['Evitar lidocaína em gatos.', 'Monitorar depressão respiratória devido ao fentanil.'],
-    clinicalNotes: 'A combinação reduz a necessidade de altas doses isoladas de cada fármaco.',
-  },
-  {
-    id: 'mlk',
-    name: 'MLK (Morfina, Lidocaína, Cetamina)',
-    description: 'Protocolo clássico de analgesia multimodal por infusão contínua.',
-    category: 'CRI',
-    drugs: [
-      { name: 'Morfina', drugId: 'morphine', dose: '0.1-0.2 mg/kg/h', notes: 'Opioide mu-agonista de longa duração.' },
-      { name: 'Lidocaína', drugId: 'lidocaine', dose: '1-2 mg/kg/h', notes: 'Poupador de inalatório e analgésico sistêmico.' },
-      { name: 'Cetamina', drugId: 'ketamine', dose: '0.1-0.6 mg/kg/h', notes: 'Boa opção para dor neuropática.' },
-    ],
-    species: ['dog'],
-    indications: ['Dor trans e pós-operatória', 'Trauma extenso', 'Pancreatite severa'],
-    warnings: ['Morfina pode causar liberação de histamina em bolus rápido.', 'Pode haver êmese na pré-anestesia.'],
-    clinicalNotes: 'Excelente custo-benefício quando se tem bomba de infusão disponível.',
-  },
-  {
-    id: 'dex-ket-sedation',
-    name: 'Dexmedetomidina + Cetamina (IM)',
-    description: 'Sedação profunda e analgesia para procedimentos curtos.',
-    category: 'Sedacao/Pre-medicacao',
-    drugs: [
-      { name: 'Dexmedetomidina', drugId: 'dexmedetomidine', dose: '5-10 mcg/kg', notes: 'Sedação, analgesia e relaxamento muscular.' },
-      { name: 'Cetamina', drugId: 'ketamine', dose: '3-5 mg/kg', notes: 'Dissociativo com suporte cardiovascular relativo.' },
-    ],
-    species: ['dog', 'cat'],
-    indications: ['Contenção para exames', 'Radiografias', 'Pequenos procedimentos'],
-    warnings: ['Bradicardia e hipertensão iniciais são esperadas.', 'Evitar em pacientes instáveis.'],
-    clinicalNotes: 'A combinação fornece sedação robusta em pacientes bem selecionados.',
-  },
-  {
-    id: 'propofol-induction',
-    name: 'Indução com Propofol',
-    description: 'Indução anestésica rápida, suave e curta.',
-    category: 'Bolus',
-    drugs: [{ name: 'Propofol', drugId: 'propofol', dose: '2-6 mg/kg', notes: 'Titular lentamente ao efeito.' }],
-    species: ['dog', 'cat'],
-    indications: ['Indução para intubação', 'TIVA em cenários selecionados'],
-    warnings: ['Pode causar apneia e hipotensão dose-dependentes.'],
-    clinicalNotes: 'Pré-oxigenação e titulação fracionada melhoram a segurança.',
-  },
-  {
-    id: 'fentanyl-bolus',
-    name: 'Resgate Analgésico (Fentanil)',
-    description: 'Bolus intravenoso para resgate analgésico intraoperatório.',
-    category: 'Bolus',
-    drugs: [{ name: 'Fentanil', drugId: 'fentanyl', dose: '2-5 mcg/kg', notes: 'Início em 1-2 minutos e duração curta.' }],
-    species: ['dog', 'cat'],
-    indications: ['Picos de dor transoperatória', 'Taquicardia e hipertensão responsivas à dor'],
-    warnings: ['Monitorar bradicardia e depressão respiratória.'],
-    clinicalNotes: 'Bolus útil para controle rápido de dor aguda durante cirurgias.',
-  },
-  {
-    id: 'cpr-epinephrine',
-    name: 'RCP: Epinefrina (Adrenalina)',
-    description: 'Vasopressor de primeira linha na reanimação cardiopulmonar.',
-    category: 'Emergência',
-    drugs: [{ name: 'Epinefrina', drugId: 'epinephrine', dose: '0.01 mg/kg a 0.1 mg/kg', notes: 'Titular conforme o momento da RCP.' }],
-    species: ['dog', 'cat'],
-    indications: ['Parada cardiorrespiratória'],
-    warnings: ['Doses altas podem piorar a perfusão pós-ressuscitação.', 'Arritmogênico.'],
-    clinicalNotes: 'O foco é restaurar perfusão central durante as compressões.',
-  },
-  {
-    id: 'status-epilepticus',
-    name: 'Status Epilepticus (Controle de Crise)',
-    description: 'Interrupção de convulsões ativas e refratárias.',
-    category: 'Emergência',
-    drugs: [
-      { name: 'Diazepam', drugId: 'diazepam', dose: '0.5-1.0 mg/kg', notes: 'Primeira escolha IV ou retal.' },
-      { name: 'Midazolam', drugId: 'midazolam', dose: '0.2-0.5 mg/kg', notes: 'Boa opção IM ou intranasal sem acesso IV.' },
-      { name: 'Propofol', drugId: 'propofol', dose: '2-6 mg/kg (bolus) ou 0.1-0.6 mg/kg/min (CRI)', previewDose: '2-6 mg/kg', notes: 'Se refratário, considerar indução anestésica e suporte ventilatório.' },
-    ],
-    species: ['dog', 'cat'],
-    indications: ['Status epilepticus', 'Convulsões em cluster'],
-    warnings: ['Monitorar depressão respiratória.', 'Diazepam oral é contraindicado em gatos.'],
-    clinicalNotes: 'Parar a crise primeiro; depois estabilizar e instituir manutenção.',
-  },
-];
-
 export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatientChange, onLoadDrug }) => {
   const [activeCategory, setActiveCategory] = useState<ProtocolCategory | 'All'>('All');
   const [searchQuery, setSearchQuery] = useState('');
@@ -190,7 +75,7 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
   const [referenceDrug, setReferenceDrug] = useState<Drug | null>(null);
 
   const filteredProtocols = useMemo(
-    () => predefinedProtocols.filter((protocol) => {
+    () => CLINICAL_PROTOCOLS.filter((protocol) => {
       const matchesCategory = activeCategory === 'All' || protocol.category === activeCategory;
       const matchesSearch = protocol.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                            protocol.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -229,7 +114,7 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
     }));
   };
 
-  const buildPreview = (protocol: Protocol, line: ProtocolDrugLine) => {
+  const buildPreview = (protocol: ClinicalProtocol, line: ClinicalProtocol['drugs'][number]) => {
     const catalogDrug = line.drugId ? getDrugById(line.drugId) : undefined;
     if (!catalogDrug || patient.weight <= 0) {
       return null;
@@ -266,93 +151,63 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
 
   return (
     <>
-      <div className="space-y-6">
-        {/* Main Header */}
-        <div className="flex items-center gap-4">
-          <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-indigo-100 bg-indigo-50 text-indigo-600 shadow-sm dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
-            <FileText className="h-7 w-7" />
-          </div>
-          <div>
-            <h2 className="text-3xl font-bold tracking-tight text-slate-800 dark:text-white">Protocolos Clínicos</h2>
-            <p className="mt-1 font-medium text-slate-500 dark:text-slate-400">
-              Receitas de misturas e protocolos consolidados com cálculo automático por peso.
-            </p>
-          </div>
-        </div>
+      <div className="mx-auto w-full max-w-5xl space-y-5">
+        <PageHeader
+          icon={FileText}
+          title="Protocolos clínicos"
+          description="Misturas e esquemas baseados no acervo (Plumb's 10ª ed., Lumb & Jones 6ª ed.)"
+        />
 
-        {/* Top Controls Grid */}
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.9fr)]">
-          {/* Search Box */}
-          <div className="rounded-3xl border border-blue-200/50 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 shadow-sm dark:border-blue-500/20 dark:from-blue-900/20 dark:to-indigo-900/20">
-            <div className="flex flex-col gap-4">
-              <div className="flex items-center gap-3">
-                <div className="rounded-xl bg-blue-100 p-2 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400">
-                  <BookOpen className="h-5 w-5" />
-                </div>
-                <h4 className="text-sm font-bold uppercase tracking-[0.2em] text-blue-900 dark:text-blue-300">Pesquisar Protocolos</h4>
-              </div>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Ex: FLK, MLK, Sedação, Fentanil..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full rounded-2xl border-2 border-blue-100 bg-white/80 py-3 pl-11 pr-4 text-sm font-medium text-slate-800 transition-all focus:border-blue-500 focus:outline-none focus:ring-4 focus:ring-blue-500/10 dark:border-blue-900/30 dark:bg-slate-900/40 dark:text-white dark:focus:border-blue-500"
-                />
-                <FileText className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-blue-400" />
-              </div>
+        {/* Paciente + busca */}
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            <label className="mb-2 block text-xs font-medium text-slate-500">Buscar protocolo</label>
+            <input
+              type="text"
+              placeholder="MLK, FLK, DMLK..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 dark:border-slate-700 dark:bg-slate-800"
+            />
+          </div>
+
+          <div className="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+            <div className="mb-3 flex items-center gap-2">
+              <Weight className="h-4 w-4 text-emerald-600" />
+              <h3 className="text-sm font-semibold text-slate-900 dark:text-white">Paciente de referência</h3>
             </div>
-          </div>
-
-          {/* Reference Patient Card */}
-          <div className="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <div className="mb-4 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-emerald-100 bg-emerald-50 text-emerald-600 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400">
-                <Weight className="h-5 w-5" />
+            <div className="grid gap-3 sm:grid-cols-[1fr_100px]">
+              <div className="flex gap-2">
+                {(['dog', 'cat'] as const).map((species) => (
+                  <button
+                    key={species}
+                    type="button"
+                    onClick={() => onPatientChange({ ...patient, species })}
+                    className={cn(
+                      'flex-1 rounded-lg border px-2 py-2 text-xs font-medium',
+                      patient.species === species
+                        ? 'border-emerald-500 bg-emerald-50 text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300'
+                        : 'border-slate-200 text-slate-600 dark:border-slate-700 dark:text-slate-400',
+                    )}
+                  >
+                    {species === 'dog' ? 'Cão' : 'Gato'}
+                  </button>
+                ))}
               </div>
-              <div>
-                <h3 className="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Paciente de Referência</h3>
-                <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Peso compartilhado com a calculadora</p>
-              </div>
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Espécie</label>
-                <div className="flex gap-2">
-                  {(['dog', 'cat'] as const).map((species) => (
-                    <button
-                      key={species}
-                      type="button"
-                      onClick={() => onPatientChange({ ...patient, species })}
-                      className={cn(
-                        'flex-1 rounded-xl border px-3 py-2 text-xs font-bold transition-all cursor-pointer',
-                        patient.species === species
-                          ? 'border-emerald-500 bg-emerald-50 text-emerald-700 dark:border-emerald-500/50 dark:bg-emerald-500/20 dark:text-emerald-300'
-                          : 'border-slate-200 bg-slate-50 text-slate-600 hover:border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400',
-                      )}
-                    >
-                      {species === 'dog' ? 'Cão' : 'Gato'}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Peso</label>
-                <div className="relative">
-                  <input
-                    type="number"
-                    min="0.1"
-                    step="0.1"
-                    value={patient.weight === 0 ? '' : patient.weight}
-                    onChange={(event) => onPatientChange({ ...patient, weight: event.target.value === '' ? 0 : parseFloat(event.target.value) })}
-                    className="w-full rounded-xl border border-slate-200 bg-slate-50 py-2 pl-3 pr-8 text-base font-bold text-slate-800 transition-all focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-550/15 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-emerald-500"
-                    placeholder="10"
-                  />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 dark:text-slate-500">kg</span>
-                </div>
-              </div>
+              <input
+                type="number"
+                min="0.1"
+                step="0.1"
+                value={patient.weight === 0 ? '' : patient.weight}
+                onChange={(event) =>
+                  onPatientChange({
+                    ...patient,
+                    weight: event.target.value === '' ? 0 : parseFloat(event.target.value),
+                  })
+                }
+                className="rounded-lg border border-slate-200 bg-slate-50 px-2 py-2 text-sm font-semibold dark:border-slate-700 dark:bg-slate-800"
+                placeholder="kg"
+              />
             </div>
           </div>
         </div>
@@ -751,6 +606,21 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
                           <p className="text-xs font-semibold leading-relaxed text-slate-600 dark:text-slate-400">
                             {protocol.clinicalNotes}
                           </p>
+                        </div>
+                      )}
+
+                      {protocol.sources.length > 0 && (
+                        <div className="rounded-2xl border border-emerald-100 bg-emerald-50/40 p-4 dark:border-emerald-500/20 dark:bg-emerald-500/5">
+                          <h4 className="mb-2 flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300">
+                            <BookOpen className="h-3.5 w-3.5" /> Fontes (acervo)
+                          </h4>
+                          <ul className="space-y-1">
+                            {protocol.sources.map((source) => (
+                              <li key={source} className="text-xs text-emerald-900/80 dark:text-emerald-100/80">
+                                {source}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       )}
                     </aside>

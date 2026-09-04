@@ -236,7 +236,72 @@ export const NEURO_FINDING_ENTRIES: NeuroFindingEntry[] = [
     epidemiologia: 'Muito descrita em cães com extrusão toracolombar aguda.',
   },
   {
-    id: '13',
+    id: '14',
+    slug: 'rigidez-descerebelar',
+    title: 'Rigidez descerebelar (postura descerebelar)',
+    synonyms: ['decerebellate rigidity', 'opistótono com flexão pélvica'],
+    category: 'Marcha e postura',
+    summary:
+      'Opistótono com extensão dos membros torácicos e flexão dos pélvicos; frequentemente com consciência preservada no início, diferenciando de rigidez descerebrada.',
+    neuroanatomia:
+      'Lesão cerebelar ou pedúnculos cerebelares que altera modulação de tônus extensor nos torácicos com relativa preservação de vias bulbares de consciência.',
+    neurofisiologia:
+      'Desequilíbrio entre facilitação extensora e circuitos cerebelares de ajuste postural.',
+    localizacao: 'Cerebelo ou pedúnculos cerebelares; excluir toxicose/metabólico se contexto compatível.',
+    diferenciais: ['Trauma cerebelar', 'Hemorragia/infarto cerebelar', 'Herniação com componente cerebelar'],
+    populacoes: 'Trauma craniano; neoplasia cerebelar em idosos.',
+  },
+  {
+    id: '15',
+    slug: 'ataxia-proprioceptiva',
+    title: 'Ataxia proprioceptiva (sensorial)',
+    synonyms: ['ataxia espinhal', 'ataxia de vias longas', 'wide-based stance'],
+    category: 'Marcha e postura',
+    summary:
+      'Incoordenação por perda de feedback de posição; base alargada, passos longos, arrasto de unhas — frequentemente com paresia associada.',
+    neuroanatomia:
+      'Interrupção de vias ascendentes inconscientes (funiculus dorsalis e tratos adjacentes) na medula ou tronco.',
+    neurofisiologia:
+      'O animal não integra posição do membro no espaço, compensando com passos amplos e instabilidade.',
+    localizacao: 'Medula espinhal conforme distribuição do déficit; pode ser cervical, toracolombar ou multifocal.',
+    diferenciais: ['IVDD', 'FCE', 'Neoplasia medular', 'Mielite'],
+    populacoes: 'Cães condrodistróficos; qualquer idade com compressão medular.',
+  },
+  {
+    id: '16',
+    slug: 'ataxia-vestibular',
+    title: 'Ataxia vestibular',
+    synonyms: ['queda lateral', 'leaning', 'instabilidade vestibular'],
+    category: 'Marcha e postura',
+    summary:
+      'Inclinação, queda ou rolamento para um lado; pode coexistir com head tilt e nistagmo. Bilateral: cabeça baixa, relutância a mover-se.',
+    neuroanatomia:
+      'Labirinto, VIII par, núcleos vestibulares ou vias centrais do tronco/cerebelo.',
+    neurofisiologia:
+      'Assimetria de entrada vestibular gera correções posturais inadequadas e desequilíbrio.',
+    localizacao:
+      'Periférico se mentação e posturais preservadas; central se há déficits adicionais de NC ou mentação.',
+    diferenciais: ['Síndrome vestibular idiopática', 'Otite média/interna', 'Neoplasia tronco', 'Encefalite'],
+    populacoes: 'Cães adultos idiopático; gatos — otite e neoplasia na lista.',
+  },
+  {
+    id: '17',
+    slug: 'postura-plantigrada',
+    title: 'Postura plantigrada / palmigrada',
+    synonyms: ['plantigrade', 'palmigrade', 'pata chata'],
+    category: 'Marcha e postura',
+    summary:
+      'Apoio anormal com metatarso ou carpo tocando o solo; sugere fraqueza neuromuscular ou, menos frequentemente, dor ortopédica.',
+    neuroanatomia:
+      'Neuropatia periférica, junção neuromuscular ou miopatia que reduz suporte antigravitacional distal.',
+    neurofisiologia:
+      'Falha de sustentação distal por fraqueira LMN ou doença muscular; o animal “afunda” a pata.',
+    localizacao: 'Periférico, neuromuscular ou raiz nervosa — raramente explica sozinho lesão medular UMN.',
+    diferenciais: ['Polineuropatia', 'Miastenia gravis', 'Miopatia', 'Radiculopatia'],
+    populacoes: 'Grandes raças com polineuropatia; gatos com miopatia hipocalêmica (contexto).',
+  },
+  {
+    id: '18',
     slug: 'knuckling-proprioceptivo',
     title: 'Knuckling / posicionamento em flexão dorsal',
     synonyms: ['knuckling', 'pata virada', 'propriocepção dorsal'],

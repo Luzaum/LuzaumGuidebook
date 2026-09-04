@@ -6,10 +6,8 @@ import {
   ChevronRight,
   Clock,
   FileText,
-  Grid,
   Pill,
   Search,
-  Sparkles,
   Stethoscope,
   Zap,
 } from 'lucide-react';
@@ -44,7 +42,6 @@ const UI_TEXT = {
   consensoLabel: 'Consensos',
   favoritesLabel: 'Favoritos',
   recentsLabel: 'Recentes',
-  homeLabel: 'In\u00edcio',
   noOrganization: 'Sem organiza\u00e7\u00e3o',
   searchResults: 'Resultados da busca',
   searchEmptyDisease: 'Nenhuma doen\u00e7a encontrada.',
@@ -208,14 +205,6 @@ export function HomePage() {
   }, [consensoRepository, diseaseRepository, medicationRepository, deferredQuery]);
 
   const shortcuts = [
-    { to: '/consulta-vet', label: UI_TEXT.homeLabel, icon: Grid, body: 'Visão geral do módulo', accent: 'sky' as const },
-    {
-      to: '/consulta-vet/receituario',
-      label: 'Receituário',
-      icon: FileText,
-      body: 'Receitas prontas e termos editáveis em A4',
-      accent: 'emerald' as const,
-    },
     {
       to: '/consulta-vet/doencas',
       label: UI_TEXT.diseaseLabel,
@@ -231,7 +220,14 @@ export function HomePage() {
       accent: 'amber' as const,
     },
     {
-      to: '/consulta-vet/guias-rapidos',
+      to: '/consulta-vet/receituario',
+      label: 'Receituário',
+      icon: FileText,
+      body: 'Receitas prontas e termos editáveis em A4',
+      accent: 'sky' as const,
+    },
+    {
+      to: '/consulta-vet/guias-rápidos',
       label: 'Guia r\u00e1pido cl\u00ednico',
       icon: BookOpen,
       body: 'Conceitos por sistema, figuras e v\u00eddeos',
@@ -268,31 +264,27 @@ export function HomePage() {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-[1560px] space-y-12 p-4 md:p-8">
-      <section className="relative overflow-hidden rounded-3xl border border-primary/15 bg-gradient-to-br from-card via-card to-primary/[0.04] shadow-lg shadow-primary/[0.07] ring-1 ring-primary/10">
+    <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
+      <section className="relative overflow-hidden rounded-[28px] border border-primary/15 bg-gradient-to-br from-card via-card to-primary/[0.045] shadow-[0_18px_55px_-34px_hsl(var(--primary)/0.45)] ring-1 ring-primary/[0.07]">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_90%_60%_at_0%_-30%,hsl(var(--primary)/0.14),transparent_55%),radial-gradient(ellipse_70%_50%_at_100%_100%,hsl(199_89%_48%/0.09),transparent_50%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_65%_95%_at_0%_0%,hsl(var(--primary)/0.11),transparent_58%),radial-gradient(ellipse_55%_100%_at_100%_100%,hsl(190_90%_50%/0.08),transparent_60%)]"
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -right-16 top-1/2 h-72 w-72 -translate-y-1/2 rounded-full bg-primary/[0.09] blur-3xl"
+          className="consultavet-hero-orb pointer-events-none absolute -right-16 top-1/2 h-44 w-44 -translate-y-1/2 rounded-full bg-primary/[0.08] blur-3xl"
         />
-        <div className="relative max-w-4xl mx-auto p-6 md:p-8 flex flex-col items-center text-center space-y-4">
-          <div className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/25 bg-primary/10 px-2.5 py-1.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary shadow-sm shadow-primary/10">
-            <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden />
-            Base clínica integrada
-          </div>
-          <h1 className="m-0 text-3xl font-extrabold tracking-tight text-foreground md:text-4xl">
+        <div className="relative mx-auto flex max-w-5xl flex-col items-center gap-3 px-5 py-6 text-center md:px-8 md:py-7">
+          <h1 className="m-0 text-3xl font-extrabold tracking-[-0.035em] text-foreground md:text-[2.5rem] md:leading-none">
             <span className="text-foreground">Consulta</span>
             <span className="bg-gradient-to-r from-primary via-sky-500 to-cyan-500 bg-clip-text text-transparent">
               VET
             </span>
           </h1>
-          <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">{UI_TEXT.heroBody}</p>
-          <div className="relative w-full max-w-xl pt-1">
+          <p className="max-w-3xl text-xs leading-relaxed text-muted-foreground sm:text-sm">{UI_TEXT.heroBody}</p>
+          <div className="relative mt-1 w-full max-w-2xl">
             <Search
-              className="pointer-events-none absolute left-4 top-1/2 h-[1.125rem] w-[1.125rem] -translate-y-1/2 text-primary/70"
+              className="pointer-events-none absolute left-4 top-1/2 h-[1.125rem] w-[1.125rem] -translate-y-1/2 text-primary/75 transition-colors"
               aria-hidden
             />
             <input
@@ -300,7 +292,8 @@ export function HomePage() {
               value={query}
               onChange={(event) => setQuery(event.target.value)}
               placeholder={UI_TEXT.searchPlaceholder}
-              className="w-full rounded-2xl border border-border/90 bg-background/95 py-3 pl-11 pr-4 text-sm text-foreground shadow-inner shadow-black/[0.03] outline-none ring-0 transition-all placeholder:text-muted-foreground hover:border-primary/35 focus:border-primary focus:shadow-md focus:shadow-primary/10 md:text-[15px]"
+              aria-label={UI_TEXT.searchPlaceholder}
+              className="h-12 w-full rounded-2xl border border-border/90 bg-background/90 pl-11 pr-4 text-sm text-foreground shadow-[0_10px_30px_-22px_hsl(var(--foreground)/0.4)] outline-none ring-0 backdrop-blur-sm transition-[border-color,box-shadow,background-color] duration-300 placeholder:text-muted-foreground/80 hover:border-primary/35 hover:bg-background focus:border-primary/70 focus:bg-background focus:shadow-[0_12px_35px_-20px_hsl(var(--primary)/0.55)] md:text-[15px]"
             />
           </div>
         </div>

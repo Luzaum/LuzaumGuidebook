@@ -10,12 +10,14 @@
     "fat": 7.79,
     "carb": 0.1,
     "fiber": 0,
-    "kcal": 171.0,
+    "kcal": 171,
     "caMg": 32,
     "pMg": 285,
     "naMg": 387,
     "kMg": 476,
-    "flags": ["fish_cooked_plain"],
+    "flags": [
+      "fish_cooked_plain"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -38,7 +40,9 @@
     "pMg": 235,
     "naMg": 434,
     "kMg": 436,
-    "flags": ["fish_high_fat"],
+    "flags": [
+      "fish_high_fat"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -61,7 +65,9 @@
     "pMg": 297,
     "naMg": 436,
     "kMg": 413,
-    "flags": ["fish_high_fat"],
+    "flags": [
+      "fish_high_fat"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -84,7 +90,9 @@
     "pMg": 280,
     "naMg": 413,
     "kMg": 315,
-    "flags": ["species_mapping_review"],
+    "flags": [
+      "species_mapping_review"
+    ],
     "cooked": true,
     "metadata": {
       "speciesMappingStatus": "unconfirmed",
@@ -100,15 +108,17 @@
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Assado ou grelhado, sem gordura adicionada",
     "protein": 22.4,
-    "fat": 4.0,
+    "fat": 4,
     "carb": 0.1,
     "fiber": 0,
-    "kcal": 126.0,
+    "kcal": 126,
     "caMg": 19,
     "pMg": 265,
     "naMg": 393,
     "kMg": 436,
-    "flags": ["species_mapping_review"],
+    "flags": [
+      "species_mapping_review"
+    ],
     "cooked": true,
     "metadata": {
       "speciesMappingStatus": "unconfirmed",
@@ -127,12 +137,14 @@
     "fat": 2.52,
     "carb": 0.1,
     "fiber": 0,
-    "kcal": 116.0,
+    "kcal": 116,
     "caMg": 13,
     "pMg": 244,
     "naMg": 408,
     "kMg": 324,
-    "flags": ["species_mapping_review"],
+    "flags": [
+      "species_mapping_review"
+    ],
     "cooked": true,
     "metadata": {
       "speciesMappingStatus": "unconfirmed",
@@ -156,7 +168,9 @@
     "pMg": 317,
     "naMg": 424,
     "kMg": 203,
-    "flags": ["species_mapping_review"],
+    "flags": [
+      "species_mapping_review"
+    ],
     "cooked": true,
     "metadata": {
       "speciesMappingStatus": "unconfirmed",
@@ -180,7 +194,9 @@
     "pMg": 257,
     "naMg": 446,
     "kMg": 382,
-    "flags": ["species_mapping_review"],
+    "flags": [
+      "species_mapping_review"
+    ],
     "cooked": true,
     "metadata": {
       "speciesMappingStatus": "unconfirmed",
@@ -195,7 +211,7 @@
     "nameEn": "Tuna, canned, water pack",
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Enlatado, conservado em água",
-    "protein": 19.0,
+    "protein": 19,
     "fat": 0.94,
     "carb": 0.08,
     "fiber": 0,
@@ -204,7 +220,9 @@
     "pMg": 137,
     "naMg": 219,
     "kMg": 176,
-    "flags": ["canned_check_sodium"],
+    "flags": [
+      "canned_check_sodium"
+    ],
     "cooked": true,
     "metadata": {
       "requiresDrainedWeight": true,
@@ -230,7 +248,9 @@
     "pMg": 311,
     "naMg": 416,
     "kMg": 207,
-    "flags": ["canned_high_energy_check_sodium"],
+    "flags": [
+      "canned_high_energy_check_sodium"
+    ],
     "cooked": true,
     "metadata": {
       "requiresDrainedWeight": true,
@@ -256,7 +276,9 @@
     "pMg": 490,
     "naMg": 307,
     "kMg": 397,
-    "flags": ["canned_bones_possible_high_phosphorus"],
+    "flags": [
+      "canned_bones_possible_high_phosphorus"
+    ],
     "cooked": true,
     "metadata": {
       "requiresDrainedWeight": true,
@@ -277,16 +299,20 @@
     "fat": 9.71,
     "carb": 0,
     "fiber": 0,
-    "kcal": 203.0,
+    "kcal": 203,
     "caMg": 232,
     "pMg": 252,
     "naMg": 3668,
     "kMg": 544,
-    "flags": ["blocked_auto_prescription_high_sodium"],
+    "flags": [
+      "blocked_auto_prescription_high_sodium"
+    ],
     "cooked": true,
     "metadata": {
       "clinicalUseStatus": "blocked",
-      "hardFlags": ["extreme_sodium"],
+      "hardFlags": [
+        "extreme_sodium"
+      ],
       "requiresDrainedWeight": true,
       "requiresLabelVerification": true,
       "preservationMediumRequired": true,
@@ -310,7 +336,9 @@
     "pMg": 294,
     "naMg": 909,
     "kMg": 573,
-    "flags": ["shellfish_high_sodium_mineral_review"],
+    "flags": [
+      "shellfish_high_sodium_mineral_review"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -334,7 +362,9 @@
     "pMg": 232,
     "naMg": 647,
     "kMg": 257,
-    "flags": ["optional_shellfish"],
+    "flags": [
+      "optional_shellfish"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -358,7 +388,9 @@
     "pMg": 330,
     "naMg": 427,
     "kMg": 441,
-    "flags": ["optional_shellfish_high_cholesterol"],
+    "flags": [
+      "optional_shellfish_high_cholesterol"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -382,7 +414,9 @@
     "pMg": 277,
     "naMg": 711,
     "kMg": 626,
-    "flags": ["optional_shellfish_high_sodium"],
+    "flags": [
+      "optional_shellfish_high_sodium"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -406,7 +440,9 @@
     "pMg": 296,
     "naMg": 451,
     "kMg": 82,
-    "flags": ["optional_shellfish"],
+    "flags": [
+      "optional_shellfish"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -430,7 +466,9 @@
     "pMg": 145,
     "naMg": 509,
     "kMg": 280,
-    "flags": ["optional_shellfish_high_zinc_copper"],
+    "flags": [
+      "optional_shellfish_high_zinc_copper"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -454,7 +492,9 @@
     "pMg": 499,
     "naMg": 660,
     "kMg": 367,
-    "flags": ["optional_shellfish_high_phosphorus"],
+    "flags": [
+      "optional_shellfish_high_phosphorus"
+    ],
     "cooked": true,
     "metadata": {
       "allergenFlag": "shellfish",
@@ -478,11 +518,17 @@
     "pMg": 402,
     "naMg": 398,
     "kMg": 261,
-    "flags": ["organ_restricted_inclusion"],
+    "flags": [
+      "organ_restricted_inclusion"
+    ],
     "cooked": true,
     "metadata": {
       "ingredientClass": "organ_meat",
-      "clinicalFlags": ["high_vitamin_a_expected", "high_copper_possible", "high_phosphorus"],
+      "clinicalFlags": [
+        "high_vitamin_a_expected",
+        "high_copper_possible",
+        "high_phosphorus"
+      ],
       "sodiumInterpretation": "provisional",
       "requiresUnsaltedVersionReview": true
     }
@@ -503,7 +549,9 @@
     "pMg": 252,
     "naMg": 381,
     "kMg": 217,
-    "flags": ["species_unknown_review"],
+    "flags": [
+      "species_unknown_review"
+    ],
     "cooked": true,
     "metadata": {
       "ingredientClass": "organ_meat",
@@ -527,11 +575,17 @@
     "pMg": 301,
     "naMg": 416,
     "kMg": 134,
-    "flags": ["organ_restricted_inclusion_species_unknown"],
+    "flags": [
+      "organ_restricted_inclusion_species_unknown"
+    ],
     "cooked": true,
     "metadata": {
       "ingredientClass": "organ_meat",
-      "clinicalFlags": ["high_phosphorus", "high_cholesterol", "high_selenium"],
+      "clinicalFlags": [
+        "high_phosphorus",
+        "high_cholesterol",
+        "high_selenium"
+      ],
       "sodiumInterpretation": "provisional",
       "requiresUnsaltedVersionReview": true
     }
@@ -552,7 +606,9 @@
     "pMg": 187,
     "naMg": 378,
     "kMg": 178,
-    "flags": ["species_unknown_review"],
+    "flags": [
+      "species_unknown_review"
+    ],
     "cooked": true,
     "metadata": {
       "ingredientClass": "organ_meat",
@@ -576,7 +632,9 @@
     "pMg": 15,
     "naMg": 281,
     "kMg": 163,
-    "flags": ["cooked_only_low_phosphorus"],
+    "flags": [
+      "cooked_only_low_phosphorus"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -599,7 +657,9 @@
     "pMg": 389,
     "naMg": 164,
     "kMg": 109,
-    "flags": ["high_energy_high_phosphorus"],
+    "flags": [
+      "high_energy_high_phosphorus"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -622,7 +682,9 @@
     "pMg": 201,
     "naMg": 390,
     "kMg": 299,
-    "flags": ["novel_protein"],
+    "flags": [
+      "novel_protein"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -645,7 +707,9 @@
     "pMg": 202,
     "naMg": 227,
     "kMg": 251,
-    "flags": ["novel_protein"],
+    "flags": [
+      "novel_protein"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -668,7 +732,9 @@
     "pMg": 225,
     "naMg": 199,
     "kMg": 299,
-    "flags": ["novel_protein"],
+    "flags": [
+      "novel_protein"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -691,7 +757,9 @@
     "pMg": 252,
     "naMg": 400,
     "kMg": 292,
-    "flags": ["protein_source"],
+    "flags": [
+      "protein_source"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -714,7 +782,9 @@
     "pMg": 323,
     "naMg": 593,
     "kMg": 536,
-    "flags": ["protein_source"],
+    "flags": [
+      "protein_source"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -729,7 +799,7 @@
     "category": "Leite e derivados",
     "presentation": "Com pouca gordura e baixo sódio",
     "protein": 12.4,
-    "fat": 1.0,
+    "fat": 1,
     "carb": 2.7,
     "fiber": 0,
     "kcal": 69.4,
@@ -737,7 +807,9 @@
     "pMg": 134,
     "naMg": 13,
     "kMg": 86,
-    "flags": ["dairy_lactose_caution"],
+    "flags": [
+      "dairy_lactose_caution"
+    ],
     "cooked": false,
     "metadata": {
       "requiresCommercialLabelCheck": true
@@ -759,7 +831,9 @@
     "pMg": 95,
     "naMg": 46,
     "kMg": 155,
-    "flags": ["dairy_lactose_caution"],
+    "flags": [
+      "dairy_lactose_caution"
+    ],
     "cooked": false,
     "metadata": {
       "requiresCommercialLabelCheck": true
@@ -781,7 +855,9 @@
     "pMg": 151,
     "naMg": 163,
     "kMg": 171,
-    "flags": ["pseudocereal"],
+    "flags": [
+      "pseudocereal"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -799,12 +875,14 @@
     "fat": 0.16,
     "carb": 23.11,
     "fiber": 1.4,
-    "kcal": 109.0,
+    "kcal": 109,
     "caMg": 8,
     "pMg": 22,
     "naMg": 189,
     "kMg": 58,
-    "flags": ["contains_wheat_gluten"],
+    "flags": [
+      "contains_wheat_gluten"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -819,7 +897,7 @@
     "category": "Cereais, tubérculos e fontes de amido",
     "presentation": "Cozido, sem gordura adicionada",
     "protein": 3.5,
-    "fat": 1.0,
+    "fat": 1,
     "carb": 23.57,
     "fiber": 1.3,
     "kcal": 117.3,
@@ -827,7 +905,9 @@
     "pMg": 100,
     "naMg": 168,
     "kMg": 62,
-    "flags": ["grain"],
+    "flags": [
+      "grain"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -850,7 +930,9 @@
     "pMg": 70,
     "naMg": 150,
     "kMg": 88,
-    "flags": ["pseudocereal"],
+    "flags": [
+      "pseudocereal"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -873,7 +955,9 @@
     "pMg": 734,
     "naMg": 4,
     "kMg": 566,
-    "flags": ["fiber_high_phosphorus"],
+    "flags": [
+      "fiber_high_phosphorus"
+    ],
     "cooked": false,
     "metadata": {
       "ingredientClass": "fiber_source",
@@ -896,7 +980,9 @@
     "pMg": 1013,
     "naMg": 2,
     "kMg": 1182,
-    "flags": ["very_high_fiber_high_phosphorus"],
+    "flags": [
+      "very_high_fiber_high_phosphorus"
+    ],
     "cooked": false,
     "metadata": {
       "ingredientClass": "fiber_source",
@@ -919,7 +1005,9 @@
     "pMg": 228,
     "naMg": 217,
     "kMg": 479,
-    "flags": ["legume"],
+    "flags": [
+      "legume"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -936,13 +1024,15 @@
     "protein": 11.54,
     "fat": 7.57,
     "carb": 8.63,
-    "fiber": 5.0,
+    "fiber": 5,
     "kcal": 148.8,
     "caMg": 61,
     "pMg": 164,
     "naMg": 128,
     "kMg": 422,
-    "flags": ["legume"],
+    "flags": [
+      "legume"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -965,7 +1055,9 @@
     "pMg": 49,
     "naMg": 124,
     "kMg": 668,
-    "flags": ["regional_variety_review"],
+    "flags": [
+      "regional_variety_review"
+    ],
     "cooked": true,
     "metadata": {
       "regionalVarietyStatus": "unconfirmed",
@@ -989,7 +1081,9 @@
     "pMg": 88,
     "naMg": 143,
     "kMg": 616,
-    "flags": ["root_species_review"],
+    "flags": [
+      "root_species_review"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -1007,12 +1101,14 @@
     "fat": 0.2,
     "carb": 7.99,
     "fiber": 3.4,
-    "kcal": 42.0,
+    "kcal": 42,
     "caMg": 88,
     "pMg": 65,
     "naMg": 132,
     "kMg": 321,
-    "flags": ["vegetable"],
+    "flags": [
+      "vegetable"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -1035,7 +1131,9 @@
     "pMg": 26,
     "naMg": 127,
     "kMg": 246,
-    "flags": ["vegetable"],
+    "flags": [
+      "vegetable"
+    ],
     "cooked": true,
     "metadata": {
       "sodiumInterpretation": "provisional",
@@ -1058,7 +1156,9 @@
     "pMg": 34,
     "naMg": 15,
     "kMg": 200,
-    "flags": ["requires_no_salt_no_sugar_confirmation"],
+    "flags": [
+      "requires_no_salt_no_sugar_confirmation"
+    ],
     "cooked": true,
     "metadata": {
       "requiresCommercialLabelCheck": true
@@ -1080,7 +1180,9 @@
     "pMg": 12,
     "naMg": 1,
     "kMg": 77,
-    "flags": ["fruit_treat_only"],
+    "flags": [
+      "fruit_treat_only"
+    ],
     "cooked": false,
     "metadata": {
       "ingredientClass": "fruit",
@@ -1103,7 +1205,9 @@
     "pMg": 22,
     "naMg": 1,
     "kMg": 162,
-    "flags": ["fruit_treat_only"],
+    "flags": [
+      "fruit_treat_only"
+    ],
     "cooked": false,
     "metadata": {
       "ingredientClass": "fruit",
@@ -1126,7 +1230,9 @@
     "pMg": 29,
     "naMg": 1,
     "kMg": 151,
-    "flags": ["fruit_treat_only"],
+    "flags": [
+      "fruit_treat_only"
+    ],
     "cooked": false,
     "metadata": {
       "ingredientClass": "fruit",
@@ -1140,7 +1246,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1154,7 +1262,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1168,7 +1278,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1182,7 +1294,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1196,7 +1310,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1210,7 +1326,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1224,7 +1342,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1233,17 +1353,21 @@
   },
   {
     "id": "br-pending-traira",
-    "pending": true,
+    "pending": false,
     "name": "Traíra",
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
       "sourceType": "BRAZILIAN_COMPOSITION_REQUIRED"
-    }
+    },
+    "integratedSource": "TACO",
+    "qualityGrade": "B"
   },
   {
     "id": "br-pending-pescada-amarela",
@@ -1252,7 +1376,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1266,7 +1392,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1280,7 +1408,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1294,7 +1424,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1308,7 +1440,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1322,7 +1456,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1336,7 +1472,9 @@
     "nameEn": null,
     "category": "Carnes, vísceras, ovos e pescados",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1350,7 +1488,9 @@
     "nameEn": null,
     "category": "Cereais, tubérculos e fontes de amido",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1359,31 +1499,39 @@
   },
   {
     "id": "br-pending-chuchu",
-    "pending": true,
+    "pending": false,
     "name": "Chuchu",
     "nameEn": null,
     "category": "Hortaliças e fontes de fibra",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
       "sourceType": "BRAZILIAN_COMPOSITION_REQUIRED"
-    }
+    },
+    "integratedSource": "TACO",
+    "qualityGrade": "B"
   },
   {
     "id": "br-pending-jilo",
-    "pending": true,
+    "pending": false,
     "name": "Jiló",
     "nameEn": null,
     "category": "Hortaliças e fontes de fibra",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
       "sourceType": "BRAZILIAN_COMPOSITION_REQUIRED"
-    }
+    },
+    "integratedSource": "TACO",
+    "qualityGrade": "B"
   },
   {
     "id": "br-pending-ora-pro-nobis",
@@ -1392,7 +1540,9 @@
     "nameEn": null,
     "category": "Hortaliças e fontes de fibra",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1406,7 +1556,9 @@
     "nameEn": null,
     "category": "Cereais, tubérculos e fontes de amido",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
@@ -1415,16 +1567,20 @@
   },
   {
     "id": "br-pending-tapioca-goma-mandioca",
-    "pending": true,
+    "pending": false,
     "name": "Tapioca / goma de mandioca",
     "nameEn": null,
     "category": "Cereais, tubérculos e fontes de amido",
     "presentation": "Composição pendente — TBCA ou análise local",
-    "flags": ["brazilian_composition_required"],
+    "flags": [
+      "brazilian_composition_required"
+    ],
     "metadata": {
       "clinicalUseStatus": "blocked_pending_data",
       "qualityGrade": "E",
       "sourceType": "BRAZILIAN_COMPOSITION_REQUIRED"
-    }
+    },
+    "integratedSource": "TACO",
+    "qualityGrade": "B"
   }
 ]

@@ -17,7 +17,7 @@ test('PIF existe em diseasesSeed', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   assert.ok(record);
   assert.deepEqual(record?.species, ['cat']);
-  assert.equal(record?.category, 'infecciosas');
+  assert.ok(record?.category === 'infecciosas' || record?.category === 'infectologia');
 });
 
 test('PIF está no catálogo público', () => {

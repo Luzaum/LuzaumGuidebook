@@ -39,7 +39,7 @@ function MetaRow({
           variant === 'dark' ? 'text-white/88' : 'text-foreground/90'
         )}
       >
-        <EditorialRichText value={value} variant={variant} />
+        <EditorialRichText value={value} variant={variant === 'dark' ? 'dark' : 'default'} />
       </p>
     </div>
   );
@@ -142,7 +142,7 @@ function FlowStepCard({
                 variant === 'dark' ? 'text-white/78' : 'text-foreground/85'
               )}
             >
-              <EditorialRichText value={detail} variant={variant} />
+              <EditorialRichText value={detail} variant={variant === 'dark' ? 'dark' : 'default'} />
             </p>
           ) : null}
           <StepMeta step={step} variant={variant} />

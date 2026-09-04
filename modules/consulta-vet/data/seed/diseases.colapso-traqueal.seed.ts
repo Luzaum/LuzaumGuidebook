@@ -2,673 +2,695 @@ import type { DiseaseRecord } from '../../types/disease';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 /**
- * Colapso traqueal canino — síntese editorial ConsultaVET.
- * Prioridade: Wolfe et al. VINcyclopedia 06/08/2026 > Johnson 2020 > Drobatz et al. 2019 >
- * Lumb & Jones 6ª ed. > BSAVA Emergency > Nelson & Couto 2020 > Kim 2024 > Robin 2024.
+ * Registro canônico de colapso traqueal canino.
+ *
+ * Organização editorial:
+ * - uma decisão clínica por bloco;
+ * - livros-texto para fundamentos e artigos recentes para pontos que mudaram a prática;
+ * - doses, duração, mecanismo e reavaliação aparecem no ponto de decisão clínica;
+ * - ACVS é identificado como revisão especializada, não como consenso.
  */
 export const colapsoTraquealCaninoRecord: DiseaseRecord = {
   id: 'disease-colapso-traqueal-canino',
   slug: 'colapso-traqueal-canino',
   title: 'Colapso Traqueal — Cães',
+  subtitle: 'Doença dinâmica das vias aéreas centrais: reconhecimento, diagnóstico e tratamento',
   synonyms: [
     'Colapso traqueal canino',
+    'Traqueomalácia',
     'Traqueobroncomalácia',
     'Tracheal collapse',
-    'TBM',
-    'Traqueomalácia',
+    'Collapsing trachea',
+    'Canine tracheal collapse syndrome',
     'Tosse em grasnado de ganso',
     'Goose honk',
   ],
   species: ['dog'],
   category: 'respiratorio',
   tags: [
-    'Toy',
-    'Yorkshire',
-    'Tosse',
-    'Honking',
+    'Tosse crônica',
+    'Via aérea central',
+    'Cães de pequeno porte',
     'Fluoroscopia',
-    'Broncoscopia',
-    'Stent',
-    'Hidrocodona',
-    'Peitoral',
+    'Traqueobroncoscopia',
     'Broncomalácia',
-    'ACVS',
+    'Stent traqueal',
   ],
   plainLanguage: DISEASE_PLAIN_LANGUAGE['colapso-traqueal-canino'],
   quickSummary:
-    'O colapso traqueal é doença obstrutiva, progressiva e estrutural das vias aéreas: perda de rigidez cartilaginosa, redundância da membrana dorsal e/ou malformação dos anéis reduzem o lúmen de forma dinâmica ou estática, evoluindo de tosse paroxística crônica (“goose honk”) a obstrução grave com hipoxemia, cianose e síncope. Colapso cervical/extratorácico predomina na inspiração; colapso intratorácico e bronquial na expiração forçada e na tosse. Radiografia é triagem que frequentemente subestima a doença; fluoroscopia documenta o comportamento dinâmico; broncoscopia gradua severidade (ACVS I–IV). Manejo conservador — peso, peitoral, antitussígenos, controle de inflamação e comorbidades — deve ser esgotado antes de stent ou anéis; stent trata melhor obstrução do que tosse isolada (Wolfe et al., VIN 2026; Johnson, 2020; Kim et al., 2024; Robin et al., 2024).',
+    'Doença crônica em que a traqueia perde rigidez e estreita de forma dinâmica ou fixa. A manifestação mais comum é tosse seca paroxística, mas dispneia, cianose e síncope indicam obstrução grave. O diagnóstico combina fenótipo clínico, radiografias e avaliação dinâmica; o tratamento começa por controle de peso, peitoral, redução de gatilhos e terapia médica individualizada. Intervenção é reservada principalmente a obstrução respiratória refratária.',
   quickDecisionStrip: [
-    'Colapso cervical/extratorácico piora principalmente na inspiração; intratorácico/brônquico na expiração e na tosse (Wolfe et al., VIN 2026; Johnson, 2020).',
-    'Radiografia normal não exclui colapso traqueal — exame estático subestima doença dinâmica (Wolfe et al., VIN 2026; Suematsu et al., 2025).',
-    'Grau anatômico (ACVS I–IV) não é sinônimo de gravidade clínica — fenótipo clínico guia conduta (Kim et al., 2024).',
-    'Stent é muito mais previsível para aliviar obstrução respiratória do que para “curar tosse” — tosse tardia clinicamente relevante ~46–52% pós-stent (Robin et al., 2024).',
-    'Perda de peso e peitoral (nunca coleira cervical) são terapia respiratória central, não recomendação opcional (Kim et al., 2024; Wolfe et al., VIN 2026).',
-    'Toy breed + tosse seca “honking” + piora com excitação/coleira: alta suspeita — palpação traqueal sensível pode induzir paroxismo, mas não confirma isoladamente (Johnson, 2020).',
-    'Broncomalácia coexiste em ~68% dos casos fluoroscópicos — stent traqueal isolado não corrige componente distal dominante (Kim et al., 2024).',
-    'Dexametasona na crise: faixas divergem entre VIN (até 0,2 mg/kg q12h) e textbook de emergência (0,05–0,1 mg/kg) — usar menor dose anti-inflamatória efetiva (Wolfe et al., VIN 2026; Drobatz et al., 2019).',
-    'Broncodilatador não endurece cartilagem traqueal — reservar a broncomalácia/bronquite, não ao colapso “puro” (Wolfe et al., VIN 2026).',
-    'Antibiótico não é rotina; cultura positiva isolada não prova pneumonia — interpretar com citologia e clínica (Wolfe et al., VIN 2026; Drobatz et al., 2019).',
-    'Síncope na tosse é multifatorial (hipoxemia, pressão intratorácica, reflexo vagal) — não rotular automaticamente como vagal (Johnson, 2020).',
-    'MMVD com átrio esquerdo grande pode comprimir brônquio esquerdo — não atribuir toda tosse ao coração nem rotular colapso isolado sem avaliar cardiopatia (Nelson & Couto, 2020; BSAVA Emergency).',
+    'Dispneia, cianose, exaustão ou síncope: oxigênio, ambiente calmo e mínima manipulação antes de exames.',
+    'Radiografia sem colapso não exclui doença dinâmica; fluoroscopia e broncoscopia esclarecem casos discordantes.',
+    'Tratar o fenótipo e as comorbidades — não o percentual de colapso isoladamente.',
+    'Peso adequado, peitoral e afastamento de fumaça, calor e excitação são parte central do tratamento.',
+    'Stent ou prótese extraluminal: considerar em centro experiente quando a obstrução permanece grave apesar do manejo médico.',
   ],
   quickSummaryRich: {
     lead:
-      'Colapso traqueal é física aplicada à clínica: o mesmo cão pode ter componente cervical inspiratório e intratorácico expiratório — o ruído muda conforme a fase respiratória. “RX normal” não tranquiliza se a história é clássica; stent não “cura” broncomalácia distal dominante. O núcleo do manejo é quebrar o ciclo tosse–inflamação–colapso, retirar cargas mecânicas (peso, coleira, irritantes) e fenotipar antes de intervir: tosse-dominante versus obstrução-dominante (Wolfe et al., VIN 2026; Kim et al., 2024).',
-    leadHighlights: ['inspiração', 'expiração', 'RX normal', 'stent', 'peso', 'fenótipo'],
+      'A pergunta que organiza o caso é: predomina tosse crônica ou obstrução respiratória? Tosse sem instabilidade costuma permitir investigação e manejo médico graduais. Dispneia, cianose, exaustão ou síncope mudam a prioridade para estabilização. A localização também importa: o segmento cervical tende a estreitar na inspiração; a traqueia intratorácica e os brônquios, na expiração e na tosse.',
+    leadHighlights: ['tosse crônica', 'obstrução respiratória', 'estabilização', 'inspiração', 'expiração'],
     pillars: [
       {
-        title: 'Dinâmica inspiratória/expiratória',
+        title: 'Defina o fenótipo',
         body:
-          'Cervical colapsa na inspiração (pressão intraluminal ↓); intratorácico/brônquico na expiração forçada e tosse (pressão pleural ↑). A fase do ruído ajuda a localizar o segmento (Johnson, 2020; Wolfe et al., VIN 2026).',
-        highlights: ['inspiração', 'expiração', 'tosse'],
+          'Tosse-dominante, obstrução-dominante ou misto. Intensidade da tosse e grau anatômico podem divergir; a decisão deve integrar qualidade de vida, ventilação, anatomia e doenças concomitantes.',
+        highlights: ['Tosse-dominante', 'obstrução-dominante', 'podem divergir'],
       },
       {
-        title: 'Peso, peitoral e ciclo da tosse',
+        title: 'Use imagem dinâmica',
         body:
-          'Obesidade agrava trabalho respiratório e panting. Peitoral reduz estímulo por tração cervical. Antitussígenos interrompem cough → trauma → inflamação → cough quando tosse seca e improdutiva (Kim et al., 2024; Wolfe et al., VIN 2026).',
-        highlights: ['peso', 'peitoral', 'antitussígeno'],
+          'Radiografias são úteis para triagem e diferenciais, mas registram um instante. Fluoroscopia mostra a variação durante o ciclo respiratório e a tosse; broncoscopia detalha traqueia, brônquios e mucosa.',
+        highlights: ['Radiografias', 'Fluoroscopia', 'broncoscopia'],
       },
       {
-        title: 'Imagem e fenótipo clínico',
+        title: 'Comece pelo que modifica carga',
         body:
-          'Radiografia triagem; fluoroscopia mostra colapso funcional; broncoscopia gradua ACVS I–IV. Grau anatômico ≠ intensidade da tosse — tratar fenótipo clínico, não apenas percentual de colapso (Kim et al., 2024; Suematsu et al., 2025).',
-        highlights: ['fluoroscopia', 'ACVS', 'fenótipo'],
+          'Perda de peso quando necessária, peitoral, redução de irritantes e controle das comorbidades diminuem o trabalho respiratório e os gatilhos da tosse. Fármacos são escolhidos conforme o componente dominante.',
+        highlights: ['Perda de peso', 'peitoral', 'comorbidades'],
       },
     ],
     diagnosticFlow: {
-      title: 'Plano diagnóstico',
+      title: 'Rota diagnóstica',
       steps: [
         {
-          label: 'História e exame físico',
-          timing: 'Primeira consulta',
+          label: '1. Estabilidade primeiro',
+          timing: 'Imediato',
           detail:
-            'Toy com tosse seca “honking”, gagging, piora com coleira, excitação, calor e alimentação; palpação traqueal sensível pode induzir paroxismo — útil, não patognomônico; evitar provocar tosse em dispneico (Johnson, 2020; Wolfe et al., VIN 2026).',
+            'Se houver cianose, exaustão ou esforço respiratório intenso, fornecer oxigênio, reduzir estímulos e adiar contenção, radiografias ou indução de tosse até estabilizar.',
         },
         {
-          label: 'Triagem cardíaca e laboratorial',
-          timing: 'Antes de rotular colapso isolado',
+          label: '2. Fenótipo e localização provável',
+          timing: 'Consulta inicial',
           detail:
-            'Ausculta cardíaca, FR repouso, bioquímica para suporte medicamentoso; DMVD com átrio esquerdo grande pode comprimir brônquio esquerdo (Nelson & Couto, 2020; BSAVA Emergency).',
+            'Caracterizar tosse, ruído, gatilhos, síncope e fase respiratória predominante. Auscultar vias aéreas e coração e pesquisar obesidade, doença laríngea, bronquite e cardiopatia.',
         },
         {
-          label: 'Radiografia cervical + torácica',
-          timing: 'Triagem inicial',
+          label: '3. Radiografias direcionadas',
+          timing: 'Triagem',
           detail:
-            'Inspiração favorece visualização cervical; expiração favorece intratorácico — exame estático subestima gravidade; RX normal não exclui (Johnson, 2020; Suematsu et al., 2025).',
-          reassess: 'Discordância clínico-radiológica → fluoroscopia.',
+            'Obter pescoço e tórax, idealmente com fases inspiratória e expiratória úteis. Avaliar também parênquima, coração e diagnósticos diferenciais.',
+          limitations: 'Exame estático: pode subestimar ou não registrar o ponto de maior colapso.',
         },
         {
-          label: 'Fluoroscopia dinâmica',
-          timing: 'Quando RX e clínica discordam ou antes de stent',
+          label: '4. Avaliação dinâmica',
+          timing: 'Discordância ou planejamento',
           detail:
-            'Documenta colapso durante respiração natural e tosse; avalia carina, brônquios, colapso faríngeo; pode ser feita acordado em centros experientes (Kim et al., 2024; Johnson, 2020).',
+            'Fluoroscopia durante respiração espontânea e, quando seguro, tosse provocada, para mapear traqueia e brônquios. Radiografia negativa não encerra a investigação se a suspeita permanece alta.',
         },
         {
-          label: 'Laringoscopia + traqueobroncoscopia',
-          timing: 'Padrão ouro anatômico / planejamento invasivo',
+          label: '5. Endoscopia selecionada',
+          timing: 'Estadiamento e comorbidades',
           detail:
-            'Gradua ACVS I–IV, identifica malformação em W, bronchomalacia, permite BAL/citologia/cultura; avaliar função laríngea antes de anestesia profunda (ACVS; Wolfe et al., VIN 2026).',
-          reassess: 'Grau III–IV + obstrução funcional → discutir stent/anéis após falha médica.',
-        },
-        {
-          label: 'Fenotipar e tratar',
-          timing: 'Após caracterização',
-          detail:
-            'Tosse-dominante: médico multimodal. Obstrução-dominante (dispneia, cianose, síncope): estabilizar e considerar intervenção. Misto: tratar inflamação/comorbidades e reavaliar (Wolfe et al., VIN 2026; Congiusta et al., 2021).',
+            'Laringoscopia e traqueobroncoscopia permitem inspeção direta, graduação, avaliação de broncomalácia e coleta de amostras quando inflamação ou infecção são suspeitas.',
+          limitations: 'Exige anestesia e planejamento cuidadoso, especialmente em obstrução grave.',
         },
       ],
     },
     treatmentFlow: {
-      title: 'Plano de tratamento',
+      title: 'Rota terapêutica',
       steps: [
         {
-          label: 'Medidas mecânicas e ambientais',
+          label: '1. Reduzir carga e gatilhos',
           detail:
-            'Perda de peso agressiva se BCS elevado; peitoral em vez de coleira; evitar calor, umidade, fumaça, excitação; tratar bronquite, BOAS e cardiopatia concomitantes (Kim et al., 2024; Wolfe et al., VIN 2026).',
-          duration: 'Permanente — medida central.',
-          reassess: 'Peso/BCS e FR repouso a cada revisão.',
+            'Peso saudável, peitoral, ambiente fresco, afastamento de fumaça/aerossóis e redução de excitação. Tratar doença laríngea, bronquite, infecção documentada e cardiopatia quando presentes.',
+          duration: 'Permanente.',
         },
         {
-          label: 'Antitussígenos',
+          label: '2. Interromper o ciclo da tosse',
           detail:
-            'Hidrocodona, butorfanol ou diphenoxylate quando tosse seca autoperpetuante — escolher apenas um opioide; não suprimir agressivamente se pneumonia/secreção retida (Johnson, 2020; Drobatz et al., 2019).',
-          dose: 'Hidrocodona ~0,2–0,5 mg/kg VO q8–12h (Wolfe et al., VIN 2026) ou 0,25–0,5 mg/kg q6–8h (Drobatz et al., 2019). Butorfanol 0,5–1 mg/kg VO q6–12h.',
-          duration: 'Crônico conforme frequência; titular à menor dose eficaz.',
-          reassess: 'Sedação, constipação ou depressão respiratória → reduzir dose.',
+            'Em tosse seca e improdutiva, escolher um único antitussígeno opioide: butorfanol VO (0,55 mg/kg q6–12h), hidrocodona VO (0,2–0,5 mg/kg q6–12h) ou codeína VO (1–2 mg/kg q6–12h). A codeína é alternativa de menor evidência e resposta menos previsível. Evitar supressão quando há secreção abundante, pneumonia ou depuração mucociliar comprometida.',
+          reassess: 'Contato em 48–72 horas; consulta em até 7–14 dias. Verificar paroxismos, sono, exercício, sedação e constipação.',
         },
         {
-          label: 'Anti-inflamatório',
+          label: '3. Tratar o componente coexistente',
           detail:
-            'Crise: dexametasona 0,05–0,1 mg/kg IV/IM/SC (Drobatz et al., 2019) — VIN cita até 0,2 mg/kg; prednisona curta 0,25–0,5 mg/kg q12h ou 0,5–1 mg/kg q24h com desmame. Manutenção: fluticasona inalatória 110 µg/puff, 1 puff q12h via espaçador (Talavera-López et al., 2023; Wolfe et al., VIN 2026).',
-          duration: 'Sistêmico: curso curto (5–7 dias típico); evitar cronicidade.',
-          reassess: 'Ganho ponderal/panting → transicionar para inalatório ou desmame.',
+            'Corticosteroide curto é reservado a inflamação de mucosa. Broncodilatador não corrige a cartilagem: usar apenas em doença de vias aéreas inferiores/broncoespasmo. Antimicrobiano somente quando citologia, cultura e quadro sustentarem infecção.',
+          reassess: 'Corticosteroide: 7–14 dias. Broncodilatador: teste de 1–2 semanas e manter apenas se houver benefício objetivo.',
         },
         {
-          label: 'Broncodilatadores (selecionados)',
+          label: '4. Reavaliar resposta',
           detail:
-            'Reservados a bronchomalacia/bronquite/broncoespasmo — teofilina 10–20 mg/kg VO q12h, terbutalina 0,625–5 mg/cão VO q12h; não tratam cartilagem traqueal (Wolfe et al., VIN 2026; Drobatz et al., 2019).',
+            'Usar diário de tosse, tolerância ao exercício, eventos de cianose/síncope, peso e efeitos adversos. Exacerbação persistente exige revisar diagnóstico e comorbidades antes de apenas escalar fármacos.',
         },
         {
-          label: 'Crise aguda',
+          label: '5. Encaminhar se obstrução refratária',
           detail:
-            'O₂ + mínima manipulação + sedação titulada (butorfanol 0,05–0,2 mg/kg SC q4–6h; acepromazina 0,01–0,1 mg/kg SC) + antitussígeno ± corticoide curto; intubar se hipoxemia refratária (Wolfe et al., VIN 2026; Drobatz et al., 2019).',
-          reassess: 'Estabilização antes de exames demorados.',
-        },
-        {
-          label: 'Intervenção (anéis ou stent)',
-          detail:
-            'Anéis extraluminais: colapso cervical/inlet. Stent intraluminal: obstrução severa/refratária após manejo médico máximo — consentimento sobre tosse e complicações frequentes (Robin et al., 2024; Nelson & Couto, 2020).',
-          reassess: 'Pós-stent: tosse, febre, padrão torácico novo, migração/fratura.',
+            'Discutir prótese extraluminal ou stent conforme localização, extensão, anatomia e experiência do centro. Tosse isolada é indicação menos previsível do que falha ventilatória.',
+          reassess: 'Consentimento deve incluir tosse persistente e complicações do implante.',
         },
       ],
     },
   },
   etiology: {
-    pontosChave: [
-      'Colapso cervical/extratorácico piora principalmente durante a inspiração (Wolfe et al., VIN 2026; Johnson, 2020).',
-      'Colapso intratorácico e bronquial pioram principalmente durante a expiração/expiração forçada e na tosse (Wolfe et al., VIN 2026; Johnson, 2020).',
-      'Radiografia normal não exclui colapso traqueal — processo dinâmico subestimado em exame estático (Suematsu et al., 2025; Wolfe et al., VIN 2026).',
-      'Grau anatômico ACVS I–IV não é sinônimo de gravidade clínica — fenótipo clínico guia tratamento (Kim et al., 2024).',
-      'Stent trata melhor obstrução respiratória do que tosse isolada — tosse tardia clinicamente relevante é frequente (Robin et al., 2024).',
-    ],
-    consultaRapidaTable: {
+    definicao:
+      'Colapso traqueal é redução excessiva do lúmen por perda de sustentação da parede: condromalácia e achatamento dos anéis, redundância/prolapso da membrana dorsal ou, em alguns cães, malformação mais fixa dos anéis com configuração em W. “Traqueobroncomalácia” é o termo mais amplo quando os brônquios também participam.',
+    classificacaoAnatomica: {
       kind: 'clinicalTable' as const,
-      title: 'Consulta rápida — colapso traqueal canino',
-      headers: ['Item', 'Informação'],
+      caption: 'Localização e comportamento esperado',
+      headers: ['Componente', 'Fase em que tende a piorar', 'Implicação clínica'],
       rows: [
-        ['Espécie', 'Principalmente cães; gatos: extremamente raro (relatos de caso)'],
-        ['Raças clássicas', 'Yorkshire, Pomeranian, Chihuahua, Maltês, Toy/Mini Poodle, Shih-tzu, Pug, Pekingese'],
-        ['Idade', 'Meia-idade/idosos frequentes; início pode ser precoce'],
-        ['Sinal clássico', 'Tosse seca/paroxística tipo “goose honk”'],
-        ['Outros sinais', 'Gagging, retching, stertor, stridor, wheezing, dispneia, cianose, síncope'],
-        ['Exacerbadores', 'Excitação, exercício, calor, umidade, obesidade, coleira, irritantes'],
-        ['RX', 'Triagem; pode subestimar ou perder a doença'],
-        ['Fluoroscopia', 'Melhor exame fisiológico/dinâmico'],
-        ['Broncoscopia', 'Padrão de referência para visualização e graduação anatômica'],
-        ['Tratamento inicial', 'Peso + peitoral + gatilhos + antitussígeno/inflamação/comorbidades'],
-        ['Stent', 'Obstrução severa/refratária — não primeira linha para tosse isolada'],
-        ['Cura estrutural', 'Não — manejo paliativo da expressão clínica'],
-        ['Prognóstico', 'Frequentemente controlável; variável nas formas graves (Wolfe et al., VIN 2026)'],
+        ['Cervical / extratorácico', 'Inspiração', 'Esforço inspiratório e ruído de via aérea superior podem predominar.'],
+        ['Intratorácico', 'Expiração e tosse', 'Esforço expiratório, tosse e fechamento dinâmico ganham importância.'],
+        ['Bronquial', 'Expiração e tosse', 'Pode manter sinais mesmo após tratamento apenas da traqueia.'],
+        ['Malformação estática', 'Menos dependente da fase', 'Estreitamento pode persistir ao longo do ciclo respiratório.'],
       ],
     },
-    definicao:
-      'Colapso traqueal é doença obstrutiva, progressiva e estrutural das vias aéreas, caracterizada por perda de rigidez da cartilagem traqueal, redundância da membrana dorsal e/ou malformação dos anéis, resultando em redução dinâmica ou estática do lúmen — de tosse paroxística crônica a obstrução grave com hipoxemia, cianose e síncope. O processo estrutural subjacente é geralmente irreversível, mas os sinais podem ser controlados por longos períodos (Wolfe et al., VIN 2026; ACVS).',
-    fenotiposAnatomicos: [
-      'Traqueomalácia / colapso dinâmico: fraqueza dos anéis com achatamento dorsoventral e protrusão da membrana dorsal (Wolfe et al., VIN 2026).',
-      'Redundância da membrana dorsal: membrana alargada e pendular invadindo o lúmen em momentos respiratórios específicos.',
-      'Malformação traqueal (configuração em “W”): anéis invaginados produzindo obstrução mais estática — fenótipo distinto, não sinônimo de grau IV simples (Suematsu et al., 2026).',
-      'Forma mista: malformação + componente dinâmico no mesmo paciente.',
-      'Traqueobroncomalácia: comprometimento traqueal + brônquico; bronchomalacia: colapso predominantemente bronquial (Johnson, 2020).',
+    fatoresAgravantes: [
+      'Obesidade, calor, excitação e esforço aumentam demanda ventilatória e podem precipitar sinais.',
+      'Tração cervical, fumaça, aerossóis e outros irritantes favorecem tosse e inflamação.',
+      'Infecção respiratória, intubação recente, doença periodontal, bronquite e obstrução de via aérea superior podem desencadear exacerbações.',
+      'Cardiopatia pode coexistir na mesma população; tosse não deve ser atribuída automaticamente ao coração nem à traqueia.',
     ],
-    colapsoWShaped:
-      'Malformação em W: cartilagem invaginada em direção ao lúmen, obstrução mais estática, frequentemente na entrada torácica — particularmente em Yorkshire Terriers. Pode coexistir com colapso dinâmico. Suematsu et al. (2026): cães W-shaped apresentaram maior estridor/esforço respiratório pré-operatório, mas bons resultados pós-prótese extraluminal em centro experiente — não é automaticamente “sem tratamento” (Wolfe et al., VIN 2026).',
-    etiologiaMultifatorial:
-      'Predisposição estrutural/genética em raças toy + progressão degenerativa + modificadores ambientais/inflamatórios (obesidade, bronquite, irritantes, BOAS, cardiopatia). Não reduzir a “doença genética” — etiologia multifatorial ainda incompletamente definida (Wolfe et al., VIN 2026; Johnson, 2020).',
-    geneticaZfyve16:
-      'Evidência genética emergente: variante do gene ZFYVE16 (endofina) associada a colapso traqueal em Yorkshire Terriers em estudo ACVIM — presente em 7/8 afetados inicialmente, com associação estatística ampliada na raça. Classificar como associação/emergente — não mutação causal estabelecida, não teste diagnóstico de rotina (Wolfe et al., VIN 2026).',
-    anatomiaNormal:
-      'Traqueia normal: ~35–45 anéis cartilaginosos em C unidos por ligamentos anulares fibroelásticos; abertura dorsal fechada por tecido conjuntivo, mucosa, músculo traqueal e membrana dorsal. Cartilagem saudável mantém calibre relativamente estável na respiração tranquila (Johnson, 2020; Wolfe et al., VIN 2026).',
-    alteracoesCartilagem:
-      'Histologia: redução de GAG, sulfato de condroitina, glicoproteínas, celularidade; perda de cartilagem hialina com substituição por fibrocartilagem/colágeno → cartilagem mole → achatamento → membrana dorsal prolapsa → estreitamento do lúmen (Johnson, 2020; Nelson & Couto, 2020).',
-    gatoRaro:
-      'Colapso traqueal primário degenerativo típico do toy é raro em gatos. Quando ocorre, costuma ser secundário a tumor, corpo estranho ou trauma — raciocínio de causa estrutural/obstrutiva. Evidência: relatos Viñeta et al. (2023) manejo médico; Tanaka & Uemura (2022) stent felino — não extrapolar doses/protocolos caninos (Wolfe et al., VIN 2026).',
+    limitesDoConceito:
+      'Colapso traqueal, broncomalácia, hipoplasia traqueal, compressão extrínseca e estenose fixa não são sinônimos. A conduta e o prognóstico dependem do mecanismo e do segmento realmente demonstrados.',
   },
   epidemiology: {
-    tcPerfilRacas:
-      'Predominância em cães pequenos/toy: Yorkshire, Pomeranian, Chihuahua, Maltês, Poodle miniatura, Shih-tzu, Pug, Pekingese; meia-idade a idosos, mas componente estrutural pode preceder sinais por anos (Johnson, 2020; Wolfe et al., VIN 2026).',
-    tcBroncomalacia:
-      'Broncomalácia/tracheobroncomalácia frequentes — Kim et al. (2024): colapso de brônquios principais em 68,1% de 110 cães; impacta prognóstico e resposta a stent traqueal isolado.',
-    tcObesidade:
-      'Sobrepeso extremamente comum em casuísticas recentes; perda ponderal é terapia respiratória central (Kim et al., 2024; Wolfe et al., VIN 2026).',
-    tcWeisse2026:
-      'Weisse et al. (2026): em 11.061 Yorkshire Terriers de um hospital, colapso traqueal severo (≥50%) em 6,7% (739 cães); mediana idade diagnóstico 10 anos (IQR 8–13) — viés de referência institucional.',
+    perfilClassico:
+      'O fenótipo clássico ocorre em cães toy e miniatura, frequentemente de meia-idade a idosos. Yorkshire Terrier, Pomeranian, Poodle, Maltês, Chihuahua e Pug aparecem repetidamente nos livros-texto e séries clínicas, mas qualquer raça pode ser afetada.',
+    evidenciaRecente: [
+      'Kim et al. (2024): entre 110 cães de pequeno porte avaliados por fluoroscopia, 68,1% tinham colapso de brônquio principal; menor porte, idade maior e obesidade associaram-se a maior risco, e o grau fluoroscópico correlacionou-se mal com a intensidade da tosse.',
+      'Weisse et al. (2026): em uma única instituição, 739 de 11.061 Yorkshire Terriers (6,7%) tinham síndrome grave documentada, com mediana de 10 anos ao diagnóstico. O desenho de centro único impede extrapolar esse número para toda a raça.',
+    ],
+    notaSobreGatos:
+      'Colapso traqueal primário é raro em gatos. Quando houver estreitamento traqueal felino, investigar primeiro massa, corpo estranho, trauma, intubação e outras causas de obstrução. Doses e protocolos definidos para cães não devem ser extrapolados ao gato.',
   },
   pathogenesisTransmission: {
-    cicloAutoperpetuante: [
-      'Fraqueza cartilaginosa → estreitamento do lúmen → turbulência + tosse.',
-      'Contato repetido membrana dorsal × parede ventral → trauma epitelial → edema + inflamação.',
-      'Hipersecreção / disfunção mucociliar → maior sensibilidade à tosse → mais tosse.',
-      'Maior pressão dinâmica sobre traqueia → mais colapso — ciclo vicioso (Wolfe et al., VIN 2026; Johnson, 2020).',
+    cascataMecanica: [
+      'Predisposição estrutural ou dano adquirido reduz a rigidez dos anéis e/ou aumenta a flacidez da membrana dorsal.',
+      'As variações de pressão do ciclo respiratório estreitam o lúmen vulnerável.',
+      'Fluxo turbulento e contato da mucosa provocam tosse e inflamação.',
+      'Tosse eleva pressões, traumatiza a mucosa e piora o fechamento dinâmico.',
+      'Depuração mucociliar deficiente, secreção e doenças concomitantes perpetuam o ciclo.',
     ],
-    fisiologiaPoiseuille:
-      'Em fluxo laminar simplificado, resistência ∝ 1/r⁴ — reduzir raio pela metade aumenta resistência ~16×. Explica por que pequena redução luminal produz aumento desproporcional do esforço respiratório. Atenção: via aérea real é complacente, fluxo frequentemente turbulento — Poiseuille é aproximação didática, não modelo perfeito (Wolfe et al., VIN 2026; Johnson, 2020).',
-    tcComplicacoesGraves:
-      'Crises: hipoxemia, cianose, síncope (obstrução, pressão intratorácica na tosse, reflexo vagal, hipertensão pulmonar); raramente morte súbita (Johnson, 2020; Drobatz et al., 2019).',
+    pontoChave:
+      'A doença é multifatorial e geralmente progressiva. Não há agente transmissível: infecções respiratórias podem agravar um paciente predisposto, mas não constituem a causa única da síndrome estrutural.',
   },
-  pathophysiology:
-    'Colapso cervical na inspiração ocorre quando pressão intraluminal cai abaixo da pressão externa sobre segmento extratorácico; colapso intratorácico/brônquico predomina na expiração forçada e tosse, quando pressão pleural positiva comprime vias aéreas com parede enfraquecida. Trauma repetido da membrana dorsal gera edema e inflamação; obstrução dinâmica aumenta esforço respiratório. Broncomalácia associada reduz previsibilidade se apenas traqueia for tratada. Comorbidades (MMVD, obesidade, BOAS) somam ou mimetizam ruído e dispneia — avaliar independentemente (Johnson, 2020; Wolfe et al., VIN 2026; Kim et al., 2024).',
-  clinicalSignsPathophysiology: [
-    {
-      system: 'respiratory',
-      findings: [
-        {
-          finding: 'Tosse seca paroxística “goose honk”; piora com excitação, calor, umidade, coleira, comer/beber',
-          mechanism:
-            'Colapso dinâmico estreita lúmen → turbulência → tosse reflexa → trauma mucoso → edema → ciclo autoperpetuante.',
-          clinicalMeaning: 'História clássica em toy breed; palpação traqueal sensível pode induzir paroxismo — não patognomônico.',
-          priority: 'common',
-        },
-        {
-          finding: 'Gagging / retching pós-tosse (“tosse e tenta vomitar”)',
-          mechanism: 'Tosse paroxística estimula reflexo faríngeo — nem sempre vômito gastrointestinal.',
-          clinicalMeaning: 'Perguntar se movimento começa com honking ou esforço abdominal de vômito.',
-          priority: 'common',
-        },
-        {
-          finding: 'Stertor/stridor inspiratório (cervical) ou wheezing/expiratory effort (intratorácico/brônquico)',
-          mechanism: 'Fase respiratória do ruído reflete segmento colapsado — cervical inspiração vs intratorácico expiração.',
-          clinicalMeaning: 'Padrão respiratório ajuda localizar; bifásico sugere doença extensa ou obstrução severa.',
-          priority: 'common',
-        },
-        {
-          finding: 'Cianose, síncope, colapso em crises',
-          mechanism:
-            'Obstrução grave → hipoxemia; tosse → ↑ pressão intratorácica → ↓ retorno venoso/débito; reflexo vagal possível; hipertensão pulmonar contribui.',
-          clinicalMeaning: 'Emergência — O₂, mínimo estresse, sedação/antitussígeno; “cough syncope” não é apenas vagal.',
-          priority: 'emergency',
-        },
-        {
-          finding: 'Ruído musical/wheeze sobre traqueia; “end-expiratory snap”',
-          mechanism: 'Turbulência local e colapso brônquico/expiratório.',
-          clinicalMeaning: 'Crackles expiratórios podem sugerir bronquite; inspiratórios+expiratórios → bronchomalacia.',
-          priority: 'uncommon',
-        },
-        {
-          finding: 'Palpação traqueal reproduz tosse',
-          mechanism: 'Hiperresponsividade traqueal e colapso dinâmico.',
-          clinicalMeaning: 'Teste positivo não confirma colapso; evitar provocar em dispneico — risco hipoxemia/síncope.',
-          priority: 'common',
-        },
-      ],
-    },
-    {
-      system: 'cardiovascular',
-      findings: [
-        {
-          finding: 'Sopro cardíaco ou cardiomegalia concomitantes (~42–43% em séries citadas pelo VIN)',
-          mechanism: 'MMVD comprime brônquio esquerdo; tosse pode ser cardíaca, traqueal ou mista.',
-          clinicalMeaning: 'Não presumir causa única — ecocardiografia e imagem torácica integradas.',
-          priority: 'common',
-        },
-      ],
-    },
-  ],
+  pathophysiology: {
+    mecanicaRespiratoria:
+      'Quando a pressão fora da via aérea supera a pressão intraluminal, a parede vulnerável se desloca para dentro. No segmento cervical, isso tende a ocorrer na inspiração; dentro do tórax, na expiração e sobretudo na tosse. O ponto de maior estreitamento pode mudar entre fases e posições.',
+    consequencias: [
+      'Aumento da resistência e do trabalho respiratório, especialmente quando o lúmen se reduz muito.',
+      'Turbulência, vibração da membrana dorsal e estímulo de receptores da tosse.',
+      'Hipoxemia, cianose e exaustão nos episódios obstrutivos graves.',
+      'Síncope potencialmente multifatorial: hipoxemia, alterações hemodinâmicas da tosse, reflexos vagais ou hipertensão pulmonar concomitante.',
+      'Broncomalácia, colapso faríngeo/laríngeo e inflamação de vias aéreas podem limitar a resposta a uma intervenção apenas traqueal.',
+    ],
+  },
+  clinicalSignsPathophysiology: {
+    sinais: [
+      {
+        system: 'Apresentação típica',
+        findings: [
+          {
+            finding: 'Tosse seca, áspera e paroxística (“grasnado de ganso”)',
+            mechanism: 'Turbulência e trauma da mucosa em uma via aérea instável.',
+            clinicalMeaning: 'Característica, mas não patognomônica.',
+            priority: 'common',
+          },
+          {
+            finding: 'Ânsia ou engasgo ao final do paroxismo',
+            mechanism: 'Estimulação traqueal intensa e sequência prolongada de tosse.',
+            priority: 'common',
+          },
+          {
+            finding: 'Piora com excitação, exercício, calor, ingestão ou coleira',
+            mechanism: 'Maior fluxo, pressão e estímulo mecânico da traqueia.',
+            priority: 'common',
+          },
+        ],
+      },
+      {
+        system: 'Obstrução avançada',
+        findings: [
+          {
+            finding: 'Dispneia, estridor/estertor ou esforço respiratório',
+            mechanism: 'Estreitamento crítico da via aérea central.',
+            clinicalMeaning: 'Distinguir fase inspiratória de expiratória ajuda a localizar o componente dominante.',
+            priority: 'emergency',
+          },
+          {
+            finding: 'Cianose, exaustão ou síncope',
+            mechanism: 'Falha ventilatória e/ou consequências hemodinâmicas da tosse.',
+            clinicalMeaning: 'Emergência; estabilizar antes de provocar tosse ou obter imagem.',
+            priority: 'emergency',
+          },
+        ],
+      },
+    ],
+    gatilhosComuns: ['Excitação', 'Exercício', 'Calor', 'Fumaça e aerossóis', 'Tração na coleira', 'Alimentação ou ingestão de água'],
+    diagnosticosDiferenciais: [
+      'Bronquite crônica e outras doenças inflamatórias de vias aéreas inferiores.',
+      'Complexo respiratório infeccioso canino, pneumonia e parasitos respiratórios conforme epidemiologia.',
+      'Doença laríngea, síndrome obstrutiva dos braquicefálicos e colapso faríngeo.',
+      'Doença valvar mitral com ou sem insuficiência cardíaca; tosse e sopro podem coexistir sem edema pulmonar.',
+      'Massa, corpo estranho, estenose, hipoplasia traqueal ou compressão extrínseca.',
+    ],
+  },
   diagnosis: {
-    diagnosticPlanStepByStep: [
+    abordagem: [
       {
         stepNumber: 1,
-        title: 'História estruturada e exame físico',
-        purpose: 'Estabelecer suspeita e fenótipo clínico.',
+        title: 'Estabilizar e definir o problema dominante',
         description:
-          'Tosse honking, gatilhos (coleira, excitação, calor), gagging, padrão inspiratório vs expiratório; FR repouso; evitar provocar tosse em grave (Wolfe et al., VIN 2026).',
-        interpretation: 'Alta suspeita em toy com quadro clássico.',
-        limitations: 'Não patognomônico — bronquite, laríngeo, cardíaco mimetizam.',
+          'Diferenciar tosse crônica estável de obstrução aguda. Em dispneia importante, priorizar oxigênio e mínima manipulação; não provocar tosse para “confirmar” o diagnóstico.',
+        purpose: 'Segurança e triagem do fenótipo.',
       },
       {
         stepNumber: 2,
-        title: 'Radiografia cervical + torácica',
-        purpose: 'Triagem estática e comorbidades.',
-        description: 'Inspiração para cervical, expiração para intratorácico quando possível; VHS, padrão bronquial, cardiomegalia (Johnson, 2020).',
-        interpretation: 'Achados sugerem colapso mas subestimam gravidade dinâmica.',
-        limitations: 'RX normal não exclui — 14,1% grau IV broncoscópico com RX discreto/ausente (Suematsu et al., 2025).',
+        title: 'História e exame cardiorrespiratório completos',
+        description:
+          'Registrar gatilhos, fase do ruído, tolerância ao exercício, cianose/síncope, peso e fármacos. Avaliar laringe/vias aéreas superiores quando indicado e auscultar coração e pulmões.',
+        purpose: 'Identificar fatores agravantes e diagnósticos concorrentes.',
       },
       {
         stepNumber: 3,
-        title: 'Fluoroscopia dinâmica',
-        purpose: 'Documentar colapso funcional.',
-        description: 'Respiração natural + tosse; segmentos cervical, intratorácico, carina, brônquios (Kim et al., 2024).',
-        interpretation: 'Carina frequentemente severamente comprometida.',
-        limitations: '2D, subjetividade, provocação de tosse altera padrão.',
+        title: 'Radiografias cervicais e torácicas',
+        description:
+          'Usar projeções que incluam pescoço, entrada torácica e tórax, com fases inspiratória/expiratória quando tecnicamente possíveis. Avaliar parênquima, brônquios e silhueta cardíaca.',
+        purpose: 'Triagem do colapso e dos diferenciais.',
+        limitations:
+          'Radiografia é estática. Macready et al. e estudos posteriores demonstram subestimação; Suematsu et al. (2025) encontraram radiografias discretas ou sem colapso em 14,1% de cães com grau IV confirmado por broncoscopia.',
       },
       {
         stepNumber: 4,
-        title: 'Laringoscopia + traqueobroncoscopia',
-        purpose: 'Graduação anatômica e planejamento terapêutico.',
-        description: 'ACVS I–IV, malformação W, bronchomalacia, BAL/citologia/cultura; função laríngea (ACVS; Wolfe et al., VIN 2026).',
-        interpretation: 'Padrão de referência anatômico.',
-        limitations: 'Anestesia modifica dinâmica; risco em obstrução grave.',
-        isGoldStandard: true,
+        title: 'Fluoroscopia dinâmica',
+        description:
+          'Avaliar vários ciclos respiratórios e, quando seguro, tosse induzida, mapeando traqueia, carina e brônquios principais.',
+        purpose: 'Demonstrar localização, fase e extensão do colapso funcional.',
+        limitations: 'Disponibilidade, radiação, posicionamento e cooperação influenciam o exame.',
       },
       {
         stepNumber: 5,
-        title: 'Fenotipar e excluir comorbidades',
-        purpose: 'Orientar tratamento médico vs invasivo.',
-        description: 'Tosse-dominante vs obstrução-dominante vs misto; MMVD, BOAS, pneumonia (Kim et al., 2024; Congiusta et al., 2021).',
-        interpretation: 'Grau anatômico isolado não decide stent.',
-        limitations: 'Múltiplos níveis frequentes.',
+        title: 'Laringoscopia e traqueobroncoscopia',
+        description:
+          'Inspecionar laringe, membrana dorsal, anéis, carina e árvore brônquica; coletar lavado/escovado quando a investigação de inflamação ou infecção mudar a conduta.',
+        purpose: 'Caracterização anatômica direta e pesquisa de comorbidades.',
+        limitations: 'Anestesia modifica a dinâmica e acrescenta risco em obstrução grave; requer equipe preparada para recuperação.',
+        isGoldStandard: true,
       },
     ],
-    tabelaGrauI_IV: {
+    graduacaoEndoscopica: {
       kind: 'clinicalTable' as const,
-      title: 'Classificação ACVS — graus I–IV',
-      headers: ['Grau', 'Redução do lúmen', 'Cartilagem / membrana'],
+      caption: 'Graduação anatômica tradicional — interpretar junto ao quadro clínico',
+      headers: ['Grau', 'Redução aproximada do lúmen', 'Leitura prática'],
       rows: [
-        ['I', '~25%', 'Cartilagem quase normal; membrana discretamente pendular'],
-        ['II', '~50%', 'Cartilagem parcialmente achatada; membrana alargada'],
-        ['III', '~75%', 'Cartilagem quase plana; membrana quase toca parede ventral'],
-        ['IV', '~90–100%', 'Cartilagem achatada/invertida; membrana encosta na parede — obstrução severa'],
+        ['I', '25%', 'Alteração leve; pequena variação pode ocorrer fisiologicamente.'],
+        ['II', '50%', 'Colapso moderado.'],
+        ['III', '75%', 'Colapso acentuado.'],
+        ['IV', '90–100%', 'Aposição quase completa ou completa.'],
       ],
     },
-    alertaRxNormal:
-      'RX NORMAL ≠ SEM COLAPSO TRAQUEAL. Processo dinâmico; radiografia estática subestima. VIN: RX detectou colapso em ~76% dos casos com fluoroscopia positiva; concordância exata de grau ~19%. Suematsu et al. (2025): 14,1% grau IV broncoscópico com RX discreto/ausente (Wolfe et al., VIN 2026; Suematsu et al., 2025).',
-    tabelaDiferenciais: {
-      kind: 'clinicalTable' as const,
-      title: 'Diagnósticos diferenciais',
-      headers: ['Diferencial', 'Dica clínica'],
-      rows: [
-        ['Bronquite crônica', 'Tosse crônica, padrão bronquial, BAL'],
-        ['Bronchomalacia', 'Colapso expiratório, broncoscopia/fluoroscopia'],
-        ['MMVD/ICC', 'AE aumentado, edema, taquipneia repouso'],
-        ['Compressão brônquio esquerdo', 'AE grande sem edema franco'],
-        ['Paralisia laríngea', 'Estridor inspiratório + laringoscopia'],
-        ['BOAS', 'Braquicefalia + vias aéreas superiores'],
-        ['Colapso faríngeo dinâmico', 'Fluoroscopia'],
-        ['Hipoplasia/estenose traqueal', 'Estreitamento estático persistente'],
-        ['Corpo estranho / neoplasia', 'Início abrupto ou massa focal'],
-        ['Pneumonia / CIRDC', 'Febre, infiltrado, citologia'],
-        ['Bronquiectasia', 'Imagem + doença crônica'],
-      ],
-    },
-    kim2024:
-      'Kim et al. (2024) — n=110 cães pequenos, TC confirmado por fluoroscopia. Colapso de brônquios principais 68,1%; localização/grau fluoroscópico não associou-se significativamente à gravidade da tosse; manejo multimodal (peso, ambiente, farmacoterapia) melhorou 86,6%. Mensagem: fenótipo clínico > grau isolado. DOI: 10.3389/fvets.2024.1448249.',
-    suematsu2025:
-      'Suematsu et al. (2025) — n=78 cães grau IV broncoscópico; 14,1% (11/78) RX discreto/ausente. Concordância regional: inlet 87,2%, mid-thoracic 76,9%, carina 66,7%, mid-cervical 47,4%. Mensagem: RX estático perigoso para excluir/graduar definitivamente.',
-    robin2024:
-      'Robin et al. (2024) meta-análise JVIM — complicações pós-stent: tosse precoce 99%, tardia 75%, tardia clinicamente relevante 46% (IC95% 34–59%; sensibilidade ~52%), infecção 24%, granuloma 20%, fratura 12%, recollapse 10%, migração 5%. Stent não é cura da tosse. DOI: 10.1111/jvim.17117.',
-    congiusta2021:
-      'Congiusta et al. (2021) — n=159: médico 84 vs stent 75; mediana sobrevida global médico ~3,7 anos vs stent ~5,2 anos (retrospectivo, não randomizado). Severamente comprometidos: médico mediana ~12 dias vs stent ~1.338 dias — stent life-saving em obstrução real. DOI: 10.2460/javma.258.3.279.',
-    weisse2026:
-      'Weisse et al. (2026) — 11.061 Yorkshire Terriers, CTCS severa 6,7%, mediana idade diagnóstico 10 anos. Reforça predisposição racial; viés institucional.',
-    talavera2023:
-      'Talavera-López et al. (2023) — RCT n=30, prednisona oral vs fluticasona inalatória: ambos melhoraram; fluticasona menos poliúria/polidipsia. Alternativa racional ao corticoide oral crônico. DOI: 10.3390/vetsci10090548.',
-    tcRadiografia: {
-      kind: 'clinicalTable' as const,
-      headers: ['Papel da radiografia', 'Detalhe'],
-      rows: [
-        ['Triagem', 'Calibre traqueal, cardiomegalia, bronquite, pneumonia, edema'],
-        ['Limite', 'Estático para doença dinâmica — discordância frequente vs fluoroscopia'],
-        ['Técnica', 'Cervical inspiração; intratorácico expiração quando possível'],
-      ],
-    },
-    tcFluoroscopia:
-      'Melhor imagem funcional — respiração, expiração forçada, tosse; avalia carina, brônquios, colapso faríngeo; pode ser acordado (Kim et al., 2024; Johnson, 2020).',
-    tcTraqueoBroncoscopia:
-      'Padrão de referência anatômico ACVS I–IV; malformação W; bronchomalacia; BAL. Planejar anestesia experiente — Lumb & Jones: opioide pré-med, intubação suave, recuperação calma.',
-    tcLavadoCultura:
-      'BAL quando secreção, febre, infiltrado, refratariedade ou pré-stent. Cultura positiva isolada ≠ pneumonia — citologia + clínica (Wolfe et al., VIN 2026).',
+    interpretacaoIntegrada:
+      'Não transformar a graduação em indicação automática de stent. Kim et al. (2024) observaram correlação fraca entre grau fluoroscópico e tosse; a indicação deve integrar obstrução, qualidade de vida, extensão brônquica, comorbidades e resposta ao tratamento.',
+    examesComplementares:
+      'Hemograma, bioquímica, investigação infecciosa/parasitária, ecocardiografia e avaliação de hipertensão pulmonar são selecionados pela história, exame e imagem — não como painel obrigatório idêntico para todos.',
   },
   treatment: {
-    fenotiposCards: {
-      kind: 'clinicalTable' as const,
-      title: 'Fenótipos clínicos — conduta',
-      headers: ['Fenótipo', 'Características', 'Prioridade terapêutica'],
-      rows: [
-        ['Tosse-dominante', 'Honking frequente, pouca dispneia, sem cianose/síncope', 'Antitussígeno + peso + peitoral + anti-inflamatório se indicado; stent geralmente não 1ª linha'],
-        ['Obstrução-dominante', 'Dispneia, cianose, síncope, air hunger', 'Estabilização + caracterização anatômica + considerar stent/anéis após falha médica'],
-        ['Misto', 'Tosse importante + episódios obstrutivos', 'Tratar inflamação/comorbidades + reavaliar intervenção conforme resposta'],
-      ],
-    },
-    criseAguda: [
-      'Mínima manipulação — excitação piora ciclo ventilação→tosse→colapso→hipoxemia (Wolfe et al., VIN 2026).',
-      'O₂ pelo método menos estressante (gaiola, flow-by); FiO₂ menor com paciente calmo > luta por máscara.',
-      'Sedação titulada: butorfanol 0,05–0,2 mg/kg SC q4–6h; acepromazina 0,01–0,1 mg/kg SC — menor dose eficaz (Wolfe et al., VIN 2026).',
-      'Antitussígeno + corticoide curto se edema/inflamação — dexametasona 0,05–0,1 mg/kg (Drobatz et al., 2019); VIN até 0,2 mg/kg — não usar automaticamente dose alta.',
-      'Intubação/ventilação se hipoxemia refratária; traqueostomia raramente resolve colapso difuso (BSAVA Emergency).',
+    decisaoInicial:
+      'A primeira decisão é estabilidade. Crise obstrutiva exige oxigênio com mínimo estresse, ambiente fresco e controle rápido da tosse/agitação; falha ventilatória pode exigir intubação e ventilação. Evitar radiografias, contenção intensa e indução de tosse até recuperar ventilação e coloração de mucosas.',
+    ordemDePrioridadeEstruturada: [
+      {
+        title: '1. Medidas mecânicas e ambientais',
+        summary:
+          'Substituir coleira por peitoral, instituir perda de peso se necessário e reduzir calor, fumaça, aerossóis e excitação. Corrigir doenças de via aérea superior e tratar comorbidades demonstradas.',
+        duration: 'Contínua.',
+        reassess: 'Revisão em 2–4 semanas; depois a cada 3–6 meses quando estável. Registrar peso, escore corporal, paroxismos e tolerância ao exercício.',
+        evidence: 'Ettinger 9ª ed.; Nelson & Couto 6ª ed.; ACVS.',
+      },
+      {
+        title: '2. Controlar tosse seca e inflamação quando presentes',
+        summary:
+          'Antitussígeno pode quebrar o ciclo tosse–trauma–inflamação. Corticosteroide sistêmico deve ser curto e individualizado; via inalatória é alternativa quando há componente inflamatório e necessidade de reduzir exposição sistêmica.',
+        options:
+          'Antitussígeno — escolher apenas um:\n• butorfanol 0,55 mg/kg VO q6–12h (até 1,1 mg/kg se necessário)\n• hidrocodona 0,2–0,5 mg/kg VO q6–12h\n• codeína 1–2 mg/kg VO q6–12h (alternativa de menor evidência)\nInflamação de mucosa:\n• prednisona/prednisolona em curso com desmame\n• fluticasona 110–220 µg/puff, 1 puff por via inalatória q6–12h',
+        duration:
+          '• Antitussígeno: teste curto e menor frequência eficaz\n• Corticosteroide sistêmico: curso limitado com desmame\n• Fluticasona: avaliar resposta em 2–4 semanas',
+        reassess:
+          '• Contato em 48–72h para tosse intensa\n• Consulta em até 7–14 dias: avaliar paroxismos, sono, exercício, sedação, constipação, polifagia e PU/PD',
+        evidence: 'Ettinger 9ª ed.; Nelson & Couto 6ª ed.; Talavera-López et al. (2023).',
+      },
+      {
+        title: '3. Tratar apenas o componente comprovado',
+        summary:
+          'Broncodilatador é selecionado para doença de vias aéreas inferiores/broncoespasmo, não para “endurecer” a traqueia. Antimicrobiano não é rotina: usar quando citologia, cultura e quadro clínico sustentarem infecção.',
+        options:
+          'Broncoespasmo ou pequenas vias aéreas:\n• terbutalina 0,625–5 mg/cão VO q8–12h\n• teofilina de liberação prolongada 10 mg/kg VO q12h\n• Nota: Não associar automaticamente e não usar como tratamento isolado',
+        duration: 'Teste terapêutico de 1–2 semanas; manter somente se houver melhora objetiva.',
+        reassess:
+          'Em 7–14 dias: frequência cardíaca e ritmo, tremores/agitação, sinais gastrointestinais, esforço respiratório e diário de tosse.',
+        evidence: 'Nelson & Couto 6ª ed.; Ettinger 9ª ed.',
+      },
+      {
+        title: '4. Encaminhar obstrução grave refratária',
+        summary:
+          'Prótese extraluminal é opção sobretudo para segmentos cervicais acessíveis; stent intraluminal pode abranger doença extensa ou intratorácica. Seleção depende da anatomia, experiência do centro e capacidade de seguimento.',
+        reassess: 'Tosse, infecção, tecido de granulação, fratura, migração e colapso fora do segmento tratado.',
+        evidence: 'ACVS; Robin et al. (2024); Suematsu et al. (2026).',
+      },
     ],
-    tcPrincipioConservador:
-      'Tratamento médico é paliativo da expressão clínica — não reconstrói cartilagem. Efetivo em 71–93% por ≥1 ano em séries citadas pelo VIN quando multimodal (Wolfe et al., VIN 2026; Kim et al., 2024).',
-    tcMedidasNaoFarmacologicas: [
-      'Perda de peso — terapia respiratória central se BCS elevado.',
-      'Peitoral em vez de coleira cervical.',
-      'Evitar calor, umidade, fumaça, perfumes, excitação.',
-      'Tratar bronquite, BOAS, cardiopatia, doença periodontal.',
+    terapiaFarmacologica:
+      'Escolher fármaco pelo problema dominante: antitussígeno para tosse seca e improdutiva; corticosteroide para inflamação de mucosa; sedativo apenas quando ansiedade/agitação amplia a obstrução; broncodilatador somente com doença de pequenas vias aéreas ou broncoespasmo. Não associar empiricamente butorfanol, hidrocodona e codeína: selecionar um opioide, começar pela menor dose eficaz, definir prazo de resposta e retirar o que não demonstrar benefício.',
+    protocolosCriseObstrutiva: [
+      {
+        drug: 'Butorfanol — crise obstrutiva',
+        indication: 'Tosse seca paroxística com agitação ou dispneia, após iniciar oxigênio e mínima manipulação.',
+        dose: '0,05–0,2 mg/kg',
+        frequency: 'q4–6h, conforme resposta',
+        route: 'SC',
+        duration: 'Durante a estabilização; não converter automaticamente em uso crônico.',
+        mechanism:
+          'Agonismo opioide κ com antagonismo/agonismo parcial μ; eleva o limiar central da tosse e fornece sedação de curta duração.',
+        reassess:
+          'Monitorização contínua de esforço, SpO₂, coloração, nível de consciência e capacidade de eliminar secreções. Escalonar via aérea se houver fadiga, hipoxemia ou obstrução persistente.',
+        cautions:
+          'Pode causar sedação, ataxia, bradicardia e depressão respiratória. Reduzir dose com outros depressores do SNC e em cães MDR1; evitar supressão da tosse quando há secreção abundante.',
+        contraindications: 'Hipersensibilidade; extrema cautela em disfunção hepática/renal grave e doença respiratória secretória.',
+        notes: 'Ettinger 9ª ed. descreve esta faixa para estabilização aguda. Naloxona pode reverter efeitos opioides clinicamente importantes.',
+      },
+      {
+        drug: 'Acepromazina — adjuvante para agitação',
+        indication: 'Agitação que aumenta esforço e fechamento dinâmico, somente se perfusão e pressão arterial forem adequadas.',
+        dose: '0,01–0,05 mg/kg; faixa publicada até 0,1 mg/kg',
+        frequency: 'Dose única; aguardar 15–30 min antes de considerar reforço',
+        route: 'SC, IM ou IV lenta',
+        duration: 'Efeito usual 3–4h; pode persistir 6–8h.',
+        mechanism:
+          'Fenotiazínico com bloqueio dopaminérgico central e α₁-adrenérgico; reduz excitação, mas não produz analgesia e não possui reversor específico.',
+        reassess: 'Pressão arterial, temperatura, ventilação e sedação após 5–15 minutos e até recuperação.',
+        cautions:
+          'Preferir a extremidade baixa da faixa, sobretudo com opioide. Pode causar hipotensão, hipotermia e sedação prolongada; maior sensibilidade em MDR1.',
+        contraindications: 'Evitar em choque, hipotensão, hipovolemia/desidratação, anemia importante ou disfunção hepática grave.',
+        notes: 'Não substitui oxigênio nem controle da tosse. Epinefrina não é o vasopressor de escolha na hipotensão por fenotiazínico.',
+      },
     ],
-    tabelaFarmacologica: {
-      kind: 'clinicalTable' as const,
-      title: 'Terapia farmacológica — consulta rápida',
-      headers: ['Fármaco', 'Dose publicada', 'Situação', 'Observação / fonte'],
-      rows: [
-        ['Butorfanol', '0,05–0,2 mg/kg SC q4–6h', 'Sedação/crise', 'VIN 2026 — titular'],
-        ['Acepromazina', '0,01–0,1 mg/kg SC', 'Sedação/crise', 'VIN 2026 — cautela cardiovascular'],
-        ['Dexametasona', '0,05–0,1 mg/kg IV/IM/SC q12–24h', 'Crise inflamatória', 'Drobatz et al., 2019 — preferir faixa conservadora'],
-        ['Dexametasona', '0,2 mg/kg IV/IM/SC q12h', 'Crise (faixa VIN)', 'Wolfe et al., VIN 2026 — não interpretar como obrigatória'],
-        ['Hidrocodona', '0,2–0,5 mg/kg VO q8–12h', 'Antitussígeno', 'VIN 2026'],
-        ['Hidrocodona', '0,25–0,5 mg/kg VO q6–8h', 'Antitussígeno', 'Drobatz et al., 2019'],
-        ['Butorfanol', '0,5–1 mg/kg VO q6–12h', 'Antitussígeno crônico', 'VIN 2026'],
-        ['Diphenoxylate', '0,2–0,5 mg/kg VO q8–12h', 'Alternativa antitussígena', 'VIN 2026 — dose do diphenoxylate'],
-        ['Prednisona/prednisolona', '0,5–1 mg/kg VO q24h', 'Curso curto', 'VIN 2026 — evitar cronicidade'],
-        ['Prednisona', '0,25–0,5 mg/kg q12h ou 0,5–1 mg/kg q24h', 'Inflamação', 'Drobatz et al., 2019 — desmame progressivo'],
-        ['Fluticasona inalatória', '110 µg/puff, 1 puff q12h', 'Manutenção anti-inflamatória', 'VIN 2026; Talavera-López et al., 2023'],
-        ['Teofilina', '10–20 mg/kg VO q12h', 'Lower airway selecionado', 'Drobatz et al., 2019 — farmacocinética variável'],
-        ['Aminofilina', '5–10 mg/kg IM/IV q8h', 'Hospitalar', 'Drobatz et al., 2019'],
-        ['Terbutalina', '0,625–5 mg/cão VO q12h', 'Componente bronquial', 'VIN 2026 — cautela cardíaca'],
-        ['Maropitant', '2 mg/kg VO q48h ×14d', 'Antitussígeno experimental', 'fora da bula; evidência indireta bronquite — VIN 2026'],
-        ['Stanozolol', '0,15 mg/kg VO q12h ×2 meses', 'Experimental/limitado', 'Pequeno RCT 2011 — não rotina'],
-      ],
-    },
-    notaDexametasona:
-      'Discrepância de dose na crise: VIN 2026 cita dexametasona até 0,2 mg/kg q12h; Drobatz et al. (2019) 0,05–0,1 mg/kg. Priorizar menor dose anti-inflamatória efetiva e curta duração — evidência específica sobre dose ótima limitada (Wolfe et al., VIN 2026; Drobatz et al., 2019).',
-    tcAntitussigenosTabela: {
-      kind: 'clinicalTable' as const,
-      title: 'Antitussígenos — doses',
-      headers: ['Fármaco', 'Faixa', 'Notas'],
-      rows: [
-        ['Hidrocodona', '0,2–0,5 mg/kg PO q8–12h (VIN); 0,25–0,5 q6–8h (emergência)', '1ª linha; escolher apenas um opioide'],
-        ['Butorfanol', '0,5–1 mg/kg PO q6–12h', 'Opioide misto; sedação possível'],
-        ['Diphenoxylate', '0,2–0,5 mg/kg PO q8–12h', 'Alternativa; dose do diphenoxylate'],
-      ],
-    },
-    tcCorticosteroides:
-      'Crise: dexametasona conforme nota de discrepância; prednisona curta. Manutenção: budesonida/fluticasona inalatória preferível a cronicidade oral — ganho ponderal/panting pioram colapso (Talavera-López et al., 2023; Johnson, 2020).',
-    tcBroncodilatadores:
-      'Não dilatam traqueia cartilaginosa — teofilina, terbutalina, albuterol quando bronchomalacia/bronquite. Controversos no colapso “puro” (Wolfe et al., VIN 2026).',
-    tcStentIntraluminal:
-      'Considerar obstrução respiratória relevante persistente após manejo médico máximo documentado. Stent trata calibre, não bronchomalacia/laringe/bronquite. Complicações frequentes — ver Robin et al. (2024). Sobrevida mediana ~502 dias em série com eventos adversos (Nelson & Couto, 2020).',
-    tcTabelaComplicacoesStent2024: {
-      kind: 'clinicalTable' as const,
-      title: 'Complicações após stent (Robin et al., 2024)',
-      headers: ['Complicação', 'Prevalência agrupada'],
-      rows: [
-        ['Tosse precoce', '~99%'],
-        ['Tosse tardia', '~75%'],
-        ['Tosse tardia clinicamente relevante', '~46% (IC95% 34–59%)'],
-        ['Infecção traqueobrônquica', '~24%'],
-        ['Granuloma', '~20%'],
-        ['Fratura do stent', '~12%'],
-        ['Recollapse/shortening', '~10%'],
-        ['Migração', '~5%'],
-      ],
-    },
-    tcAnéisExtraluminais:
-      'Indicação clássica colapso cervical/thoracic inlet; sem corpo estranho intraluminal. Riscos: paralisia laríngea iatrogênica (nervo laríngeo recorrente), pneumonia, necrose, pneumotórax (Johnson, 2020; BSAVA Emergency). Suematsu et al. (2026): W-shaped pode responder a prótese extraluminal contínua em centro experiente.',
-    principiosAnestesia: [
-      'Alto risco: tosse pós-extubação, edema, hipoxemia — manter antitussígeno prévio quando indicado (Lumb & Jones, 6ª ed.).',
-      'Pré-medicação com opioide; evitar intubação superficial; lidocaína IV 1,5–2 mg/kg citada para atenuar resposta — evidência indireta, não RCT em TC.',
-      'Recuperação calma: O₂, antitussígeno, sedação, plano reintubação; monitorar pneumotórax pós-stent (Lumb & Jones, 6ª ed.; Wolfe et al., VIN 2026).',
+    protocolosAmbulatoriais: [
+      {
+        drug: 'Butorfanol — antitussígeno oral',
+        indication: 'Tosse seca, áspera e improdutiva que interrompe sono, exercício ou perpetua irritação traqueal.',
+        dose: '0,55 mg/kg; se necessário, até 1,1 mg/kg',
+        frequency: 'q6–12h',
+        route: 'VO',
+        duration: 'Curso curto; o Plumb’s orienta que normalmente não ultrapasse 7 dias.',
+        mechanism:
+          'Modulação opioide central do reflexo da tosse; a baixa biodisponibilidade oral ainda permite efeito antitussígeno.',
+        reassess: 'Contato em 48–72h e consulta em até 7 dias; reduzir dose ou intervalo assim que o ciclo da tosse estiver controlado.',
+        cautions: 'Sedação, ataxia, constipação/bradicardia e retenção de muco; efeitos somam-se aos de outros sedativos.',
+        contraindications: 'Não usar para tosse produtiva com secreção copiosa ou quando a depuração de secreções é necessária.',
+      },
+      {
+        drug: 'Hidrocodona — antitussígeno oral',
+        indication: 'Alternativa para tosse seca e improdutiva intensa ou refratária; não é escolha para tosse produtiva.',
+        dose: '0,2–0,5 mg/kg (Ettinger: 0,22 mg/kg)',
+        frequency: 'q6–12h (Ettinger: q12h)',
+        route: 'VO',
+        duration: 'Até controlar a exacerbação; reavaliar antes de prolongar.',
+        mechanism: 'Agonista μ-opioide que suprime diretamente o centro medular da tosse e reduz excitabilidade neuronal.',
+        reassess: 'Em 48–72h se tosse intensa; formalmente em até 7 dias. Titular para controle sem sedação excessiva.',
+        cautions:
+          'Sedação, constipação, vômito e depressão respiratória. Opioide controlado; disponibilidade e regras de prescrição variam.',
+        contraindications:
+          'Evitar em depressão respiratória importante, obstrução GI e secreção respiratória aumentada. Não usar combinações com ibuprofeno em cães; produtos com paracetamol nunca em gatos.',
+      },
+      {
+        drug: 'Codeína — antitussígeno oral (alternativa)',
+        indication:
+          'Tosse seca e improdutiva quando um produto de codeína isolada está disponível e as opções preferenciais não estão disponíveis, não foram toleradas ou não produziram resposta adequada.',
+        dose: '1–2 mg/kg',
+        frequency: 'q6–12h',
+        route: 'VO',
+        duration: 'Teste curto, com reavaliação precoce; manter somente se houver benefício clínico objetivo sem sedação excessiva.',
+        mechanism:
+          'Atividade agonista em receptores μ-opioides com modulação central do reflexo da tosse. Em cães, o principal metabólito é codeína-6-glicuronídeo, cuja contribuição antitussígena permanece incerta.',
+        reassess:
+          'Contato em 48–72h e consulta em até 7 dias; comparar frequência/intensidade dos paroxismos, sono e tolerância ao exercício com sedação, ventilação e trânsito intestinal.',
+        cautions:
+          'Biodisponibilidade oral em cães é muito baixa (aproximadamente 4–6%) e a resposta pode ser imprevisível. Sedação, vômito, constipação, íleo e depressão respiratória são possíveis; outros depressores do SNC aumentam esses riscos.',
+        contraindications:
+          'Não usar em depressão respiratória importante, obstrução GI suspeita ou tosse produtiva que exige depuração de secreções. Contraindicada com inibidor da monoaminoxidase durante o uso e por 14 dias após sua suspensão.',
+        notes:
+          'Uso extrabula. O Plumb’s não identifica estudos que comprovem definitivamente eficácia antitussígena oral em pacientes veterinários e considera a hidrocodona mais potente. Preferir codeína isolada; em produtos de associação, calcular e avaliar separadamente a segurança de cada princípio ativo. Medicamento sujeito a controle especial conforme a legislação vigente.',
+      },
+      {
+        drug: 'Prednisona ou prednisolona — curso anti-inflamatório',
+        indication: 'Exacerbação com inflamação/edema de mucosa; não corrige condromalácia e não deve ser automática em todo cão.',
+        dose: '0,5 mg/kg por dose → 0,25 mg/kg por dose',
+        frequency: 'q12h × 3d; 0,25 mg/kg q12h × 5d; q24h × 10d; q48h × 12d',
+        route: 'VO',
+        duration: '30 dias no protocolo prospectivo publicado.',
+        mechanism:
+          'Ativação do receptor glicocorticoide reduz citocinas, permeabilidade vascular, edema e hipersensibilidade da mucosa.',
+        reassess: 'Em 7–14 dias e ao final de 4 semanas; verificar tosse, esforço, peso, PU/PD, polifagia, ofegação e infecção.',
+        cautions:
+          'Usar a menor exposição eficaz. Diabetes, cardiopatia avançada, doença renal, infecção e obesidade aumentam o risco; evitar associação com AINE.',
+        contraindications: 'Infecção fúngica sistêmica; cautela forte em diabetes descompensado, úlcera GI e infecção não controlada.',
+        notes:
+          'Regime testado em apenas 30 cães. Ettinger também descreve 0,2 mg/kg q24h por 1–2 semanas como opção de baixa dose; Nelson & Couto admite 0,5–1 mg/kg q12h na exacerbação, com desmame em 3–4 semanas.',
+      },
+      {
+        drug: 'Fluticasona — corticosteroide inalatório',
+        indication: 'Inflamação traqueobrônquica quando se deseja reduzir efeitos sistêmicos ou há resposta prévia a glicocorticoide.',
+        dose: 'Plumb’s: 110–220 µg/puff, 1 puff por dose',
+        frequency: 'q6–12h, ajustando à resposta',
+        route: 'Inalatória por MDI + espaçador e máscara',
+        duration: 'Reavaliar em 2 e 4 semanas; manutenção depende do fenótipo e da resposta.',
+        mechanism:
+          'Glicocorticoide de alta potência com ação predominantemente local; reduz inflamação da mucosa sem efeito de resgate imediato.',
+        reassess: 'Semanas 2 e 4. Conferir técnica, vedação da máscara, tosse, esforço, PU/PD e sinais de hipercortisolismo.',
+        cautions:
+          'Manter máscara por 7–10 respirações após o jato. Ao migrar de corticoide sistêmico, sobrepor e desmamar por 10–14 dias para evitar insuficiência adrenal.',
+        contraindications: 'Não usar como broncodilatador de resgate em crise aguda; evitar em hipersensibilidade ao produto.',
+        notes:
+          'No ensaio de 30 cães: 100 µg/cão q8h × 5d, q12h × 5d, q24h × 5d, q48h × 5d; depois 50 µg/cão q48h × 10d. Foi eficaz com menos PU/PD que prednisona.',
+      },
     ],
-    escoreControleConsultaVet: {
+    adjuvantesViasAereasInferiores: [
+      {
+        drug: 'Terbutalina — teste terapêutico selecionado',
+        indication: 'Broncoespasmo ou colapso/doença de pequenas vias aéreas concomitante; benefício no colapso traqueal isolado é controverso.',
+        dose: '0,625–5 mg/cão (dose total, não mg/kg)',
+        frequency: 'q8–12h',
+        route: 'VO',
+        duration: 'Teste de 1–2 semanas; continuar apenas com melhora objetiva.',
+        mechanism:
+          'Agonista β₂-adrenérgico: relaxa músculo liso brônquico, reduz resistência das pequenas vias e pode diminuir pressões intratorácicas.',
+        reassess: 'Em 7–14 dias; frequência cardíaca, ritmo, esforço, ausculta, tremores e resposta do diário de tosse.',
+        cautions: 'Pode causar taquicardia, tremor, excitação, hipotensão, hiperglicemia e hipocalemia.',
+        contraindications: 'Cautela em arritmia/cardiopatia, hipertensão, hipertireoidismo, diabetes, glaucoma ou convulsões.',
+      },
+      {
+        drug: 'Teofilina de liberação prolongada — teste selecionado',
+        indication: 'Doença/colapso de pequenas vias aéreas ou bronquite crônica concomitante; não fortalece a cartilagem traqueal.',
+        dose: 'Inicial 10 mg/kg; faixa 5–20 mg/kg conforme tolerância e formulação',
+        frequency: 'q12h inicialmente; faixa publicada q12–24h',
+        route: 'VO, liberação prolongada',
+        duration: 'Teste de 1–2 semanas; manutenção somente se benefício superar efeitos adversos.',
+        mechanism:
+          'Inibe PDE III/IV, antagoniza adenosina, aumenta cAMP, relaxa músculo liso, melhora depuração mucociliar e contratilidade diafragmática.',
+        reassess: 'Em 7–14 dias; antes se vômito, agitação, tremor ou taquicardia. Considerar nível sérico se falha ou toxicidade.',
+        cautions:
+          'Índice terapêutico estreito e absorção variável. Calcular pelo peso magro em obesos; não triturar formulação de liberação prolongada.',
+        contraindications:
+          'Contraindicada em cães com histórico de convulsões; cautela em taquiarritmia, cardiopatia grave, úlcera GI, hepatopatia e hipoxemia grave.',
+        notes: 'Enrofloxacina pode reduzir a depuração em cerca de 50%; macrolídeos, cimetidina e outros fármacos também podem elevar a exposição.',
+      },
+    ],
+    evidenciaCorticoideInalatorio:
+      'Talavera-López et al. (2023) randomizaram 30 cães com tosse e colapso traqueal para fluticasona inalatória ou prednisona oral por quatro semanas. Ambos os grupos melhoraram; ao final, o grupo inalatório apresentou escore clínico discretamente menor e menos poliúria/polidipsia. O tamanho amostral pequeno limita a precisão e não demonstra superioridade para todos os fenótipos.',
+    planoDeReavaliacao: {
       kind: 'clinicalTable' as const,
-      title: 'Escore de controle ConsultaVET (ferramenta longitudinal interna — não validado)',
-      headers: ['Domínio', 'Escala'],
+      caption: 'Seguimento orientado pelo risco e pela resposta',
+      headers: ['Momento', 'O que verificar', 'Decisão esperada'],
       rows: [
-        ['Tosse', '0=nenhuma; 1=ocasional; 2=diária; 3=múltiplos paroxismos/dia; 4=incapacitante/noturna'],
-        ['Dispneia', '0=nenhuma; 1=exercício intenso; 2=exercício leve/excitação; 3=repouso episódico; 4=repouso persistente/crises'],
-        ['Síncope', '0=nenhuma; 1=rara; 2=recorrente'],
-        ['Cianose', '0=nenhuma; 1=em crise'],
-        ['Qualidade de vida', '0–10 (tutor)'],
+        ['Durante a crise', 'Esforço, SpO₂, mucosas, fadiga, temperatura, pressão e sedação.', 'Manter mínima manipulação; intubar/ventilar se oxigenação ou ventilação falhar.'],
+        ['48–72 horas', 'Paroxismos, sono, alimentação, secreção, sedação, vômito/constipação.', 'Ajustar antitussígeno; antecipar retorno se piora, cianose ou síncope.'],
+        ['7–14 dias', 'Diário de tosse, peso, exercício, técnica inalatória e efeitos dos fármacos.', 'Manter apenas o que trouxe benefício; iniciar/continuar desmame do corticoide.'],
+        ['4 semanas', 'Resposta global, necessidade diária de resgate e comorbidades não controladas.', 'Redefinir fenótipo; discutir imagem dinâmica/endoscopia se resposta insuficiente.'],
+        ['Estável: a cada 3–6 meses', 'Peso/BCS, tosse, exercício, síncope, efeitos crônicos e adesão ambiental.', 'Usar a menor carga medicamentosa eficaz e atualizar plano de crise.'],
+        ['Após stent/prótese', 'Tosse, febre, secreção, dispneia, migração/fratura e tecido de granulação.', 'Seguir o calendário do centro intervencionista; sinais novos exigem avaliação imediata.'],
       ],
     },
+    criteriosIntervencao: [
+      'Obstrução respiratória importante, recorrente ou incapacitante apesar de manejo médico bem executado.',
+      'Anatomia e extensão documentadas por avaliação dinâmica e/ou endoscópica.',
+      'Comorbidades potencialmente tratáveis avaliadas antes do implante.',
+      'Tutor compreende que tosse e medicamentos podem persistir e aceita seguimento prolongado.',
+    ],
+    oQueEvitar: [
+      'Indicar stent apenas por grau anatômico alto em cão clinicamente controlado.',
+      'Usar antibiótico empiricamente em toda exacerbação sem evidência de infecção.',
+      'Prescrever broncodilatador como tratamento estrutural da cartilagem traqueal.',
+      'Manter glicocorticoide sistêmico crônico sem reavaliar peso, efeitos adversos e alternativas.',
+      'Provocar tosse ou realizar contenção intensa em paciente cianótico ou exausto.',
+    ],
     monitoramento: [
-      'Frequência/intensidade tosse, síncope, cianose, tolerância exercício — diário pelo tutor.',
-      'Peso/ECC, FR repouso, ausculta, comorbidades cardíacas a cada revisão.',
-      'Pós-stent: tosse nova, febre, piora respiratória — investigar migração, fratura, granuloma, infecção.',
+      'Diário semanal: frequência e duração dos paroxismos, sono interrompido, esforço respiratório e gatilhos.',
+      'Peso e escore corporal em toda revisão.',
+      'Eventos de cianose, síncope ou queda de tolerância ao exercício exigem reavaliação precoce.',
+      'Após implante: tosse nova/pior, febre, secreção, dispneia ou alteração radiográfica justificam investigação de complicação.',
     ],
-    prognostico:
-      'Doença estruturalmente progressiva e não curável, mas irreversível ≠ prognóstico ruim — muitos cães mantêm boa qualidade de vida por anos com peso, ambiente, antitussígenos e comorbidades tratadas. Manejo médico efetivo ≥1 ano em 71–93% em séries citadas (Wolfe et al., VIN 2026). Objetivo: conforto respiratorio, não abolir cada tosse. Severamente obstrutivos: stent pode prolongar sobrevida (Congiusta et al., 2021).',
-    errosComuns: [
-      '“RX normal, então não tem colapso” — errado; exame dinâmico necessário.',
-      '“Grau IV = stent obrigatório” — errado; sintomas + refratariedade + obstrução importam.',
-      '“Stent vai acabar com a tosse” — errado; tosse tardia ~75%, clinicamente relevante ~46%.',
-      '“Broncodilatador abre a traqueia” — errado; atua em músculo liso brônquico.',
-      '“Todo colapso precisa antibiótico” — errado; usar só com infecção sustentada.',
-      '“Sopro = tosse cardíaca” — errado; avaliar MMVD e TC independentemente.',
-      '“Toda síncope é vagal” — errado; hipoxemia e hemodinâmica participam.',
-      '“Maior grau = maior tosse” — não sustentado (Kim et al., 2024).',
-      '“Prednisona crônica inofensiva” — errado; ganho ponderal/panting pioram TC.',
-      '“Colapso é só cervical” — errado; avaliar carina e brônquios.',
+    prognosticoResumo:
+      'Muitos cães mantêm boa qualidade de vida com manejo multimodal, mas a alteração estrutural é crônica e pode progredir. Em doença leve/moderada, tratamento médico costuma ser a primeira escolha. Intervenções podem aliviar obstrução grave, porém não corrigem broncomalácia distal nem eliminam necessariamente tosse e medicações.',
+  },
+  complications: {
+    doencaNatural: [
+      'Progressão da obstrução, broncomalácia, inflamação crônica, depuração mucociliar prejudicada e infecção secundária selecionada.',
+      'Cianose, síncope, exaustão respiratória e possível hipertensão pulmonar em doença avançada ou multissegmentar.',
     ],
-    cronica: [
-      'Kim et al. (2024): perda ponderal + peitoral + ambiente + farmacoterapia → melhora 86,6% com seguimento.',
-      'Talavera-López et al. (2023): fluticasona inalatória alternativa racional ao prednisolona oral prolongado.',
-    ],
-    aguda: [
-      'Drobatz et al. (2019): O₂, mínimo estresse, sedação/antitussígenos, corticoide curto; excluir pneumonia/edema.',
-    ],
-    preclinica: [
-      'Robin et al. (2024): consentimento informado sobre complicações pós-stent antes de procedimento eletivo.',
-    ],
+    aposStent: {
+      kind: 'clinicalTable' as const,
+      caption: 'Meta-análise de 15 estudos de stent traqueal em cães (Robin et al., 2024)',
+      headers: ['Desfecho', 'Estimativa combinada'],
+      rows: [
+        ['Tosse precoce', '99%'],
+        ['Tosse tardia', '75%'],
+        ['Tosse tardia clinicamente relevante', '52%'],
+        ['Infecção', '24%'],
+        ['Tecido de granulação', '20%'],
+        ['Fratura', '12%'],
+        ['Recorrência do colapso', '10%'],
+        ['Migração', '5%'],
+      ],
+    },
+    leituraDaEvidencia:
+      'As estimativas pós-stent vêm de estudos heterogêneos e centros especializados. Servem para consentimento e vigilância, não para prever exatamente o risco de um cão individual.',
   },
   prevention: {
-    pesoPeitoralAmbiente:
-      'Controle ponderal, peitoral (nunca coleira cervical), redução de calor/umidade/irritantes e tratamento de comorbidades respiratórias/cardíacas — “prevenção” de descompensação e cirurgia de resgate (Wolfe et al., VIN 2026; ACVS).',
-    tcPrevencaoDescompensacao:
-      'Identificação precoce de piora (FR repouso, tosse noturna, síncope) e plano de crise com tutor — evitar tração cervical e obesidade.',
+    prevencaoPrimaria:
+      'Não há método comprovado para impedir a alteração estrutural em um cão predisposto. O objetivo prático é reduzir gatilhos e evitar que obesidade, irritantes e doenças respiratórias amplifiquem os sinais.',
+    planoDomiciliar: [
+      'Usar peitoral bem ajustado; evitar pressão no pescoço.',
+      'Manter peso e condição corporal adequados.',
+      'Evitar fumaça, incensos, sprays, poeira e ambientes quentes/abafados.',
+      'Planejar exercício leve em horários frescos e reduzir excitação intensa.',
+      'Filmar episódios e registrar frequência, duração e contexto para as revisões.',
+    ],
+    sinaisDeUrgencia:
+      'Respiração difícil em repouso, língua ou mucosas azuladas, colapso/síncope, incapacidade de interromper o paroxismo ou exaustão exigem atendimento imediato.',
   },
   relatedConsensusSlugs: [],
-  relatedDiseaseSlugs: ['bronquite-cronica-caes-gatos', 'cardiomiopatia-dilatada-caes-gatos'],
-  relatedMedicationSlugs: [],
+  relatedDiseaseSlugs: ['bronquite-cronica-caes-gatos', 'doenca-valvar-mitral-degenerativa-caes'],
+  relatedMedicationSlugs: ['butorfanol', 'prednisolona'],
   references: [
     {
-      id: 'ref-vin-2026',
+      id: 'ref-plumbs-10e',
       citationText:
-        'Wolfe TM, Rothrock K, Shell L. Tracheal Collapse (Canine). VINcyclopedia of Diseases. Veterinary Information Network. Revised August 6, 2026.',
-      sourceType: 'VINcyclopedia',
-      url: null,
-      notes: 'Fonte-âncora: definição, classificação, doses, emergência, prognóstico.',
-      evidenceLevel: 'A/B',
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. Wiley-Blackwell; 2023. Monografias: acepromazina, butorfanol, codeína, fluticasona, hidrocodona, terbutalina, teofilina e prednisolona/prednisona.',
+      sourceType: 'Manual farmacológico do acervo',
+      notes: 'Doses, mecanismos, contraindicações, interações, duração e monitorização dos fármacos.',
+      evidenceLevel: 'Referência farmacológica',
     },
     {
-      id: 'ref-johnson-resp-2020',
-      citationText: 'Johnson LR. Canine and Feline Respiratory Medicine. 2nd ed. Wiley-Blackwell; 2020. Cap. Diseases of Airways.',
-      sourceType: 'Livro especialidade',
-      url: null,
-      notes: 'Dinâmica pressões, fluoroscopia, broncomalácia, tratamento.',
-      evidenceLevel: 'A/B',
-    },
-    {
-      id: 'ref-drobatz-emerg-2019',
+      id: 'ref-ettinger-9e',
       citationText:
-        'Clarke DL. Tracheobronchial Injury and Collapse. In: Drobatz KJ et al. Textbook of Small Animal Emergency Medicine. Wiley-Blackwell; 2019.',
-      sourceType: 'Emergência',
-      url: null,
-      notes: 'Crise aguda, antitussígenos, dexametasona conservadora.',
-      evidenceLevel: 'A/B',
+        'Ettinger SJ, Feldman EC, Côté E, eds. Textbook of Veterinary Internal Medicine. 9th ed. Elsevier; 2024. Chapter 215: Large Airway Diseases, “Tracheal Collapse (Dogs)”, pp. 1158–1160.',
+      sourceType: 'Livro-texto do acervo',
+      notes: 'Fundamentos, apresentação, diagnóstico, manejo e prognóstico.',
+      evidenceLevel: 'Referência clínica',
     },
     {
-      id: 'ref-lumb-jones-6',
+      id: 'ref-nelson-couto-6e',
       citationText:
-        'Veterinary Anesthesia and Analgesia: The Sixth Edition of Lumb and Jones. Wiley-Blackwell; 2024. Cap. 38 — doença respiratória/anestesia.',
-      sourceType: 'Anestesiologia',
-      url: null,
-      notes: 'Anestesia e recuperação em TC.',
-      evidenceLevel: 'B',
+        'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. Elsevier; 2020. Chapter 21: Disorders of the Trachea and Bronchi, “Tracheobronchomalacia (Collapsing Trachea)”, pp. 333–337.',
+      sourceType: 'Livro-texto do acervo',
+      notes: 'Terminologia, diagnóstico, tratamento médico, stent e prognóstico.',
+      evidenceLevel: 'Referência clínica',
     },
     {
-      id: 'ref-bsava-emergency',
-      citationText: 'BSAVA Manual of Canine and Feline Emergency and Critical Care. 3rd ed. BSAVA; 2018. Seção Tracheal Collapse.',
-      sourceType: 'Emergência',
-      url: null,
-      notes: 'Anéis extraluminais, traqueostomia, compressão brônquica.',
-      evidenceLevel: 'B',
+      id: 'ref-thrall-8e',
+      citationText:
+        'Thrall DE, ed. Textbook of Veterinary Diagnostic Radiology. 8th ed. Elsevier. Chapter 29: Canine and Feline Larynx and Trachea, “Tracheal and Bronchial Collapse”, pp. 602–603.',
+      sourceType: 'Livro de diagnóstico por imagem do acervo',
+      notes: 'Radiografia, fluoroscopia, graduação e planejamento de stent.',
+      evidenceLevel: 'Referência clínica',
     },
     {
-      id: 'ref-nelson-2020',
-      citationText: 'Nelson RW, Couto CG. Small Animal Internal Medicine. 6th ed. 2020. Disorders of the Trachea and Bronchi.',
-      sourceType: 'Livro-texto',
-      url: null,
-      notes: 'TBM, stent, sobrevida.',
-      evidenceLevel: 'A/B',
+      id: 'ref-endoscopy-2e',
+      citationText:
+        'McCarthy TC, ed. Veterinary Endoscopy for the Small Animal Practitioner. 2nd ed. Wiley-Blackwell; 2021. Chapter 5: Bronchoscopy, pp. 195–214.',
+      sourceType: 'Livro de endoscopia do acervo',
+      notes: 'Achados broncoscópicos, amostragem e segurança anestésica.',
+      evidenceLevel: 'Referência clínica',
     },
     {
       id: 'ref-kim-2024',
       citationText:
-        'Kim MR, Kim SH, Ryu MO, Youn HY, Choi JH, Seo KW. A retrospective study of tracheal collapse in small-breed dogs: 110 cases (2022–2024). Front Vet Sci. 2024;11:1448249.',
+        'Kim MR, Kim SH, Ryu MO, et al. A retrospective study of tracheal collapse in small-breed dogs: 110 cases (2022–2024). Front Vet Sci. 2024;11:1448249.',
       sourceType: 'Estudo retrospectivo',
       url: 'https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2024.1448249/full',
-      notes: 'Broncomalácia 68,1%; grau ≠ tosse; melhora multimodal 86,6%. CC BY.',
-      evidenceLevel: 'B',
+      notes: 'Fatores associados, broncomalácia e dissociação entre grau e tosse.',
+      evidenceLevel: 'Observacional',
     },
     {
       id: 'ref-robin-2024',
       citationText:
         'Robin T, Robin E, Le Boedec K, et al. A systematic review and meta-analysis of prevalence of complications after tracheal stenting in dogs. J Vet Intern Med. 2024;38(4):2034–2048.',
-      sourceType: 'Meta-análise',
-      url: 'https://doi.org/10.1111/jvim.17117',
-      notes: 'Complicações pós-stent.',
-      evidenceLevel: 'A',
+      sourceType: 'Revisão sistemática e meta-análise',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC11256162/',
+      notes: 'Estimativas combinadas de complicações pós-stent.',
+      evidenceLevel: 'Síntese de estudos observacionais',
+    },
+    {
+      id: 'ref-carr-2022',
+      citationText:
+        'Carr SV, Reinero C, Rishniw M, Pritchard JC. Specialists’ approach to tracheal collapse: survey-based opinions on diagnostics, medical management, and comorbid diseases. J Am Vet Med Assoc. 2023;261(1):80–86.',
+      sourceType: 'Levantamento internacional com especialistas',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/36166502/',
+      notes: '180 especialistas de 22 países; descreve prática contemporânea e lacunas de evidência, sem constituir guideline.',
+      evidenceLevel: 'Survey clínico',
+    },
+    {
+      id: 'ref-talavera-2023',
+      citationText:
+        'Talavera-López J, Sáez-Mengual O, Fernández-del-Palacio MJ. Comparative Study of Inhaled Fluticasone Versus Oral Prednisone in 30 Dogs with Cough and Tracheal Collapse. Vet Sci. 2023;10:548.',
+      sourceType: 'Estudo prospectivo randomizado',
+      url: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10535501/',
+      notes: 'Amostra pequena; fornece esquema de quatro semanas, resposta clínica e eventos adversos comparativos.',
+      evidenceLevel: 'Ensaio clínico pequeno',
     },
     {
       id: 'ref-congiusta-2021',
       citationText:
         'Congiusta M, Weisse C, Berent AC, Tozier E. Comparison of medical management alone and tracheal endoluminal stent placement in dogs with tracheal collapse. J Am Vet Med Assoc. 2021;258(3):279–289.',
       sourceType: 'Estudo retrospectivo',
-      url: 'https://doi.org/10.2460/javma.258.3.279',
-      evidenceLevel: 'B',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/33496623/',
+      notes: 'Seleção de casos médicos versus stent; comparação não randomizada.',
+      evidenceLevel: 'Observacional',
     },
     {
-      id: 'ref-suematsu-2025',
+      id: 'ref-suematsu-radiography-2025',
       citationText:
         'Suematsu M, et al. Radiography underestimates the severity of tracheobronchoscopy-confirmed grade IV tracheal collapse in dogs. Am J Vet Res. 2025;86(9).',
-      sourceType: 'Estudo',
+      sourceType: 'Estudo retrospectivo',
       url: 'https://pubmed.ncbi.nlm.nih.gov/40466662/',
-      evidenceLevel: 'B',
+      notes: 'Limitações da radiografia para excluir ou graduar doença grave.',
+      evidenceLevel: 'Observacional',
+    },
+    {
+      id: 'ref-suematsu-prosthesis-2026',
+      citationText:
+        'Suematsu M, Minamoto T, Suematsu H, et al. Long-term outcomes of dogs with W-shaped or traditional tracheal collapse treated with a continuous extraluminal tracheal prosthesis. Vet Surg. 2026;55(1):118–130.',
+      sourceType: 'Estudo retrospectivo',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/41148950/',
+      notes: 'Resultados de centro especializado; não comparar diretamente com stent sem ajuste de seleção.',
+      evidenceLevel: 'Observacional',
     },
     {
       id: 'ref-weisse-2026',
       citationText:
-        'Weisse C, Kwok SY, Berent AC, et al. Prevalence of tracheal collapse syndrome in Yorkshire Terriers at one veterinary hospital. J Vet Intern Med. 2026;40(3).',
-      sourceType: 'Estudo retrospectivo',
+        'Weisse C, Kwok SY, Berent A, Andy C. Prevalence of tracheal collapse syndrome, congenital portosystemic shunts, or both in Yorkshire Terriers at one veterinary hospital. J Vet Intern Med. 2026;40(3):aalag094.',
+      sourceType: 'Estudo transversal de centro único',
       url: 'https://pubmed.ncbi.nlm.nih.gov/42132355/',
-      evidenceLevel: 'B',
-    },
-    {
-      id: 'ref-talavera-2023',
-      citationText:
-        'Talavera-López J, Sáez-Mengual O, Fernández-del-Palacio MJ. Comparative Study of Inhaled Fluticasone Versus Oral Prednisone in 30 Dogs with Cough and Tracheal Collapse. Vet Sci. 2023;10:548.',
-      sourceType: 'Ensaio randomizado',
-      url: 'https://doi.org/10.3390/vetsci10090548',
-      evidenceLevel: 'B',
+      notes: 'Estimativa institucional em Yorkshire Terriers; não representa prevalência populacional global.',
+      evidenceLevel: 'Observacional',
     },
     {
       id: 'ref-acvs',
-      citationText: 'American College of Veterinary Surgeons (ACVS). Tracheal Collapse.',
-      sourceType: 'Revisão especializada',
+      citationText: 'American College of Veterinary Surgeons. Tracheal Collapse. Animal Health Topics.',
+      sourceType: 'Revisão técnica especializada',
       url: 'https://www.acvs.org/small-animal/tracheal-collapse/',
-      evidenceLevel: 'B',
-    },
-    {
-      id: 'ref-suematsu-2026-w',
-      citationText:
-        'Suematsu M, Minamoto T, Suematsu H, et al. Long-term outcomes of dogs with W-shaped or traditional tracheal collapse treated with continuous extraluminal tracheal prosthesis. Vet Surg. 2026;55(1):118–130.',
-      sourceType: 'Estudo retrospectivo',
-      url: 'https://doi.org/10.1111/vsu.70046',
-      evidenceLevel: 'B',
-    },
-    {
-      id: 'ref-toone-2024',
-      citationText:
-        'Toone E, Grobman M, Lascola K, et al. Assessment of the circulating inflammatory mediator interleukin-8 in dogs with tracheal collapse. Can Vet J. 2024;65:1055–1060.',
-      sourceType: 'Estudo prospectivo',
-      url: null,
-      evidenceLevel: 'C',
-    },
-    {
-      id: 'ref-jung-2024',
-      citationText:
-        'Jung DY, Park SM, Lim GH, et al. Assessment of MMP-9 and clinical characteristics in dogs with tracheal collapse. BMC Vet Res. 2024;20:52.',
-      sourceType: 'Estudo',
-      url: 'https://doi.org/10.1186/s12917-023-03872-1',
-      evidenceLevel: 'C',
+      notes: 'Material educacional de especialista; não é consenso formal.',
+      evidenceLevel: 'Revisão especializada',
     },
   ],
   isPublished: true,

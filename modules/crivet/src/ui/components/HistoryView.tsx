@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { historyService, HistoryItem } from '../../application/services/historyService';
 import { History, Trash2, ArrowRight, FlaskConical, Activity, Droplets, AlertTriangle } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface HistoryViewProps {
@@ -22,17 +23,14 @@ export const HistoryView: React.FC<HistoryViewProps> = ({ onLoadHistory }) => {
   };
 
   return (
-    <div className="w-full space-y-6">
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 border border-indigo-100 dark:border-indigo-500/20 transition-colors duration-200">
-            <History className="w-6 h-6" />
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Histórico</h2>
-            <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Últimos cálculos realizados (salvos ou copiados)</p>
-          </div>
-        </div>
+    <div className="mx-auto w-full max-w-5xl space-y-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <PageHeader
+          icon={History}
+          title="Histórico"
+          description="Cálculos recentes salvos automaticamente neste dispositivo"
+          className="mb-0"
+        />
         
         {history.length > 0 && (
           <button

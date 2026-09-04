@@ -37,6 +37,8 @@ export interface CalculationSnapshotV2 {
   target: Partial<WeightTargetPlan>
   canonicalInput: CanonicalNutritionInput
   prescribedEnergy: PrescribedEnergySnapshotV2
+  assessment?: any
+  therapeuticReview?: any
   reportId?: string
 }
 
@@ -116,7 +118,7 @@ export function getCalculationSnapshotByReportId(reportId: string): CalculationS
 }
 
 export function migrateLegacySnapshotV2(raw: Record<string, unknown>): CalculationSnapshotV2 | null {
-  if (raw.canonicalInput) return raw as CalculationSnapshotV2
+  if (raw.canonicalInput) return raw as unknown as CalculationSnapshotV2
   return buildCalculationSnapshotV2({
     patient: (raw.patient as Partial<Patient>) ?? {},
     energy: (raw.energy as Partial<EnergyCalculation>) ?? {},

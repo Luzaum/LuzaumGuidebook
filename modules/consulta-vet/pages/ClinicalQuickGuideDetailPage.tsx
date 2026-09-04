@@ -69,7 +69,7 @@ export function ClinicalQuickGuideDetailPage() {
         <h1 className="text-xl font-bold text-foreground">{UI_TEXT.notFoundTitle}</h1>
         <p className="text-muted-foreground">{UI_TEXT.notFoundBody}</p>
         <Link
-          to="/consulta-vet/guias-rapidos"
+          to="/consulta-vet/guias-rápidos"
           className="inline-flex rounded-xl bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground"
         >
           {UI_TEXT.back}
@@ -88,7 +88,7 @@ export function ClinicalQuickGuideDetailPage() {
           {UI_TEXT.home}
         </Link>
         <ChevronRight className="h-3 w-3" />
-        <Link to="/consulta-vet/guias-rapidos" className="transition-colors hover:text-primary">
+        <Link to="/consulta-vet/guias-rápidos" className="transition-colors hover:text-primary">
           {UI_TEXT.section}
         </Link>
         <ChevronRight className="h-3 w-3" />
@@ -141,7 +141,7 @@ export function ClinicalQuickGuideDetailPage() {
 
       <div className="flex justify-center border-t border-border/60 pt-8">
         <Link
-          to="/consulta-vet/guias-rapidos"
+          to="/consulta-vet/guias-rápidos"
           className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40 hover:bg-muted/40"
         >
           <BookOpen className="h-4 w-4" />

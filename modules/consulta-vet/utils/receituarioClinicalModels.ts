@@ -24,7 +24,7 @@ const FILL = 'A PREENCHER';
 /** Termos técnicos explicados para o tutor na receita impressa. Ordem: frases mais longas primeiro. */
 const PATIENT_TERM_GLOSSARY: Array<[string, string]> = [
   ['colapso intratorácico', 'estreitamento da traqueia dentro do tórax'],
-  ['ulceração gastrointestinal', 'feridas no estômago ou intestino'],
+  ['úlceração gastrointestinal', 'feridas no estômago ou intestino'],
   ['hipertensão pulmonar', 'pressão elevada na circulação dos pulmões'],
   ['paralisia laríngea', 'alteração da laringe que dificulta respirar'],
   ['secreção purulenta', 'secreção com pus'],

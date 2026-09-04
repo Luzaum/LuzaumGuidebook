@@ -4,12 +4,19 @@
  */
 
 import type { Differential, NeuroAxis } from '../../types/analysis'
+import {
+  lifeStageMatchesDdxRule,
+  speciesMatchesDdxRule,
+  temporalPatternMatchesRule,
+} from '../../lib/analysis/ddxNormalization'
 import vestibularPerifericoData from './vestibular_periferico.json'
 import vestibularCentralData from './vestibular_central.json'
 import prosencefaloData from './prosencefalo.json'
 import troncoEncefalicoData from './tronco_encefalico.json'
 import cerebeloData from './cerebelo.json'
 import medulaT3L3Data from './medula_t3_l3.json'
+import medulaC1C5Data from './medula_c1_c5.json'
+import medulaC6T2Data from './medula_c6_t2.json'
 import medulaL4S3Data from './medula_l4_s3.json'
 import caudaEquinaData from './cauda_equina.json'
 import neuromuscularData from './neuromuscular.json'
@@ -163,6 +170,40 @@ const DIFFERENTIAL_LIBRARY: Record<string, LoadedDifferential[]> = {
     compatibleAxes: ['MEDULA_T3_L3'] as NeuroAxis[],
   })),
 
+  MEDULA_C1_C5: (medulaC1C5Data as DifferentialJSON[]).map((dx) => ({
+    name: dx.name,
+    category: dx.category,
+    rules: dx.rules,
+    whyTemplates: dx.whyTemplates,
+    diagnostics: dx.diagnostics,
+    treatment: [
+      { phase: '0-6H' as const, plan: dx.treatment['0-6H'].plan, cautions: dx.treatment['0-6H'].cautions },
+      {
+        phase: 'DEFINITIVO' as const,
+        plan: dx.treatment.DEFINITIVO.plan,
+        cautions: dx.treatment.DEFINITIVO.cautions,
+      },
+    ],
+    compatibleAxes: ['MEDULA_C1_C5'] as NeuroAxis[],
+  })),
+
+  MEDULA_C6_T2: (medulaC6T2Data as DifferentialJSON[]).map((dx) => ({
+    name: dx.name,
+    category: dx.category,
+    rules: dx.rules,
+    whyTemplates: dx.whyTemplates,
+    diagnostics: dx.diagnostics,
+    treatment: [
+      { phase: '0-6H' as const, plan: dx.treatment['0-6H'].plan, cautions: dx.treatment['0-6H'].cautions },
+      {
+        phase: 'DEFINITIVO' as const,
+        plan: dx.treatment.DEFINITIVO.plan,
+        cautions: dx.treatment.DEFINITIVO.cautions,
+      },
+    ],
+    compatibleAxes: ['MEDULA_C6_T2'] as NeuroAxis[],
+  })),
+
   MEDULA_L4_S3: (medulaL4S3Data as DifferentialJSON[]).map((dx) => ({
     name: dx.name,
     category: dx.category,
@@ -263,16 +304,16 @@ export function convertToDifferential(
   const why = [loaded.whyTemplates[0] || `Suspeita de ${loaded.name} baseada em neurolocalização e achados clínicos.`]
 
   // Adicionar justificativas adicionais baseadas em regras
-  if (history.temporalPattern && loaded.rules.course.includes(history.temporalPattern.toUpperCase())) {
+  if (history.temporalPattern && temporalPatternMatchesRule(history.temporalPattern, loaded.rules.course)) {
     why.push(`Curso temporal (${history.temporalPattern}) compatível.`)
   }
 
-  if (patient.species && loaded.rules.species.includes(patient.species.toUpperCase().substring(0, 3).toUpperCase())) {
+  if (speciesMatchesDdxRule(patient.species, loaded.rules.species)) {
     why.push(`Espécie (${patient.species === 'dog' ? 'cão' : 'gato'}) compatível.`)
   }
 
-  if (patient.lifeStage && loaded.rules.ageStages.includes(patient.lifeStage.toUpperCase())) {
-    why.push(`Idade (${patient.lifeStage}) compatível.`)
+  if (lifeStageMatchesDdxRule(patient.lifeStage, loaded.rules.ageStages)) {
+    why.push(`Faixa etária (${patient.lifeStage}) compatível.`)
   }
 
   // Adicionar cautelas por comorbidades

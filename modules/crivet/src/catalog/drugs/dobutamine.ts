@@ -1,4 +1,5 @@
 import { Drug, DoseUnit } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 const toMcgKgMin = (dose: number, unit: DoseUnit) => {
   switch (unit) {
@@ -451,17 +452,8 @@ export const dobutamine: Drug = {
   ],
 
   references: [
-    "Plumb's Veterinary Drug Handbook, 10ª ed. — Dobutamine, indicações, farmacologia, contraindicações, eventos adversos, compatibilidade, preparo, macete 6×peso e estabilidade/diluição",
-    'Lumb and Jones — Veterinary Anesthesia and Analgesia, 6ª ed. — fisiologia cardiovascular, comportamento em cães e gatos, potencial proarrítmico ≥10 mcg/kg/min, uso em hipotensão anestésica com baixa contratilidade',
-    'BSAVA Small Animal Formulary, 10ª ed. — apresentações 12,5/50 mg/mL, usos, monitorização e segurança; cães 2–15 mcg/kg/min; gatos 1–5 mcg/kg/min',
-    'BSAVA Manual of Canine and Feline Emergency and Critical Care, 3ª ed. — faixas por espécie, obrigatoriedade de CRI, monitorização, tolerância com uso prolongado',
-    "Nelson & Couto — Small Animal Internal Medicine — faixa elegante 3–7 mcg/kg/min, início 1 mcg/kg/min, titulação q15–30 min, desmame 24–48 h, macete 250 mg/500 mL = 500 mcg/mL",
-    'Textbook of Small Animal Emergency Medicine — papel em inotropia no choque cardiogênico/baixo débito e necessidade de desmame gradual',
-    'Pfizer/Hospira label oficial — apresentação 12,5 mg/mL (20 mL), necessidade de diluir, faixa clássica 2,5–15 mcg/kg/min, estabilidade 24 h, teto 5.000 mcg/mL, incompatibilidade com bicarbonato',
-    'Bula profissional brasileira ABL/Dobutrex — 250 mg/20 mL (12,5 mg/mL), uso exclusivamente IV por infusão',
-    'Merck/MSD Veterinary Manual — cautela em gatos, não bolus nas tabelas clínicas, 0,5–10 mcg/kg/min (gatos), 2–15 mcg/kg/min (cães)',
-    'Frontiers 2021 — sépsis: considerar dobutamina quando há hipoperfusão persistente após fluidos + vasopressor',
-    'Review 2024 — choque séptico: perfil benefício/risco menos favorável quando provoca mais taquicardia e vasodilatação do que ganho contrátil real',
-    'Estudos anestésicos 2022/2023 em cães — norepinefrina mais eficiente para corrigir MAP em vasodilatação grave por isoflurano; dobutamina melhorou CO mas não estabilizou MAP >65 mmHg',
+    cite.plumbs(416),
+    cite.lumbJones(),
+    cite.ettinger(),
   ],
 };

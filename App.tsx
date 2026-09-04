@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
 import { AppLayout } from './layouts/AppLayout'
 import { ProtectedRoute } from './src/components/ProtectedRoute'
@@ -17,8 +17,6 @@ const TransfusaoSanguineaPage = lazy(() => import('./pages/TransfusaoSanguineaPa
 const HemogasoVetPage = lazy(() => import('./modules/hemogasovet'))
 const NeurologiaPage = lazy(() => import('./pages/NeurologiaPage').then((m) => ({ default: m.NeurologiaPage })))
 const EscalasDorPage = lazy(() => import('./modules/escalas-dor/App'))
-const EscalasDorMobilePage = lazy(() => import('./modules/escalas-dor-mobile/App'))
-const NeurologiaMobilePage = lazy(() => import('./pages/NeurologiaMobilePage').then((m) => ({ default: m.NeurologiaMobilePage })))
 
 const CrivetPage = lazy(() => import('./pages/Crivet').then((m) => ({ default: m.Crivet })))
 const ConsultaVetShell = lazy(() => import('./modules/consulta-vet/components/layout/ConsultaVetShell').then((m) => ({ default: m.ConsultaVetShell })))
@@ -79,6 +77,14 @@ function LoadingScreen() {
   return <div className="p-6 text-center text-slate-500">Carregando...</div>
 }
 
+/** Rotas antigas /neuro-mobile/* → NeuroVet unificado em /neurologia. */
+function LegacyNeuroMobileRedirect() {
+  const { pathname, search, hash } = useLocation()
+  const suffix = pathname.replace(/^\/neuro-mobile\/?/, '')
+  const target = suffix ? `/neurologia/${suffix}` : '/neurologia'
+  return <Navigate to={`${target}${search}${hash}`} replace />
+}
+
 const appRoutes = (
   <Route element={<AppLayout />}>
     <Route path="/" element={<LandingPage />} />
@@ -89,16 +95,19 @@ const appRoutes = (
     <Route path="/conta/configuracoes" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/configurações" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/clinica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
-    <Route path="/conta/clínica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
     <Route path="/calculadora-energetica/*" element={<EnergiaVetPage />} />
+    <Route path="/nutricaovet/*" element={<Navigate to="/calculadora-energetica" replace />} />
+    <Route path="/nutricao-vet/*" element={<Navigate to="/calculadora-energetica" replace />} />
+    <Route path="/nutricao/*" element={<Navigate to="/calculadora-energetica" replace />} />
+    <Route path="/energia-vet/*" element={<Navigate to="/calculadora-energetica" replace />} />
     <Route path="/fluidoterapia" element={<Navigate to="/fluidoterapia-vet" replace />} />
     <Route path="/fluidoterapia-vet" element={<FluidoterapiaVetPage />} />
     <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/transfusão-sanguinea" element={<TransfusaoSanguineaPage />} />
     <Route path="/hemogasovet/*" element={<HemogasoVetPage />} />
-    <Route path="/dor" element={<EscalasDorPage />} />
-    <Route path="/dor-mobile" element={<EscalasDorMobilePage />} />
-    <Route path="/neuro-mobile/*" element={<NeurologiaMobilePage />} />
+    <Route path="/dor/*" element={<EscalasDorPage />} />
+    <Route path="/dor-mobile" element={<Navigate to="/dor" replace />} />
+    <Route path="/neuro-mobile/*" element={<LegacyNeuroMobileRedirect />} />
     <Route path="/antibioticoterapia" element={<AntibioticoterapiaVetPage />} />
     <Route path="/crivet" element={<CrivetPage />} />
     <Route path="/neurologia/*" element={<NeurologiaPage />} />

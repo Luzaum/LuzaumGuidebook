@@ -73,6 +73,7 @@ const ReferencesPage = lazy(() =>
 const PlaceholderSection = lazy(() => import('./pages/PlaceholderSection'))
 const DiseasesBySystemPage = lazy(() => import('./pages/DiseasesBySystemPage'))
 const PerioperativePage = lazy(() => import('./pages/PerioperativePage'))
+const PatientContextPage = lazy(() => import('./pages/PatientContextPage'))
 
 function AbvRouteFallback() {
   return (
@@ -307,7 +308,7 @@ export function App() {
         return <PerioperativePage setPage={setActiveTab} abDict={abDict} dzDict={dzDict} onDeepLinkDrug={onDeepLinkDrug} />
       }
       case 'patient-context':
-        return <PlaceholderSection tab={activeTab} />
+        return <PatientContextPage setPage={setActiveTab} />
       default:
         return null
     }

@@ -6,6 +6,7 @@ import { cn } from '../lib/utils';
 import { motion } from 'framer-motion';
 import { InfoModal } from './InfoModal';
 import { TipButton } from './TipButton';
+import { SectionCard } from './SectionCard';
 import {
   CUSTOM_PRESENTATION_ID,
   formatAccessLabel,
@@ -131,19 +132,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
 
   return (
     <>
-      <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6 xl:p-7">
-        <div className="mb-4 flex items-center gap-3 md:mb-6">
-          <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-amber-100 bg-amber-50 text-amber-600 dark:border-amber-500/20 dark:bg-amber-500/10 dark:text-amber-400 md:h-10 md:w-10">
-            <Settings2 className="h-5 w-5" />
-          </div>
-          <div className="min-w-0">
-            <h2 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">3. Configuração da infusão</h2>
-            <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-              Ajuste dose, estoque, preparo e administração em uma malha mais ampla.
-            </p>
-          </div>
-        </div>
-
+      <SectionCard step={3} icon={Settings2} title="Preparo" subtitle="Dose, diluente e taxa de infusão">
         <div className="grid gap-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(340px,0.9fr)] xl:gap-5 2xl:grid-cols-[minmax(0,1.38fr)_minmax(360px,0.85fr)]">
           <div className="space-y-4 xl:space-y-5">
             <section className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
@@ -578,7 +567,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
             )}
           </div>
         </div>
-      </div>
+      </SectionCard>
 
       <InfoModal
         open={activeModal === 'dose'}

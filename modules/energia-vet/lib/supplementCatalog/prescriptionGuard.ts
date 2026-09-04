@@ -10,7 +10,7 @@ export interface PrescriptionGuardResult {
 
 export function evaluateSupplementPrescription(product: SupplementProduct): PrescriptionGuardResult {
   const reasons: string[] = []
-  const disclaimers = [...PRESCRIPTION_DISCLAIMER_PT]
+  const disclaimers: string[] = [...PRESCRIPTION_DISCLAIMER_PT]
 
   if (product.catalogEligibility === 'excluded') {
     reasons.push('Produto excluído do catálogo de suplementos.')

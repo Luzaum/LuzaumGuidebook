@@ -9,6 +9,8 @@ export interface DiseaseQuickSummaryFlowStep {
   duration?: string;
   /** Quando reavaliar ou critério de ajuste. */
   reassess?: string;
+  /** Limitações do método ou exame no passo do fluxo. */
+  limitations?: string;
   /** @deprecated Preferir citação inline no fim de `detail`. Mantido só para compatibilidade de renderização. */
   evidence?: string;
   /** Momento no fluxo (ex.: triagem, estabilização). */
@@ -29,6 +31,8 @@ export interface DiseaseQuickSummaryRich {
   pillars?: { title: string; body: string; highlights?: string[] }[];
   diagnosticFlow?: DiseaseQuickSummaryFlow;
   treatmentFlow?: DiseaseQuickSummaryFlow;
+  tabelaDecisaoClinicaRapida?: Record<string, unknown> | Array<unknown>;
+  tabelaComparacaoTresMecanismos?: Record<string, unknown> | Array<unknown>;
 }
 
 /** Linguagem acessível — bloco “O que é em palavras simples?” no resumo rápido. */
@@ -66,7 +70,9 @@ export interface DiseaseRecord extends ContentFlag {
   /** Diagnóstico: ordem de exames; use passos com `isGoldStandard` para padrão ouro. */
   diagnosis: EditorialSectionValue;
   treatment: EditorialSectionValue;
-  prevention: EditorialSectionValue;
+  complications?: EditorialSectionValue;
+  figures?: Array<Record<string, unknown>> | Record<string, unknown>;
+  prevention?: EditorialSectionValue;
   relatedConsensusSlugs: string[];
   relatedDiseaseSlugs?: string[];
   relatedMedicationSlugs: string[];

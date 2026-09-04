@@ -116,16 +116,15 @@ export function AppLayout() {
   const decodedPathname = decodeURIComponent(location.pathname)
   const isActive = (route: string) => decodedPathname === route
   const isImmersiveModuleRoute =
-    decodedPathname.startsWith('/dados-veterinarios') ||
-    decodedPathname.startsWith('/dor-mobile')
+    decodedPathname.startsWith('/dados-veterinarios')
   const isInternalScrollShellRoute =
     decodedPathname.startsWith('/fluidoterapia') ||
+    decodedPathname.startsWith('/dor') ||
     decodedPathname.startsWith('/antibioticoterapia') ||
     decodedPathname.startsWith('/hemogasovet') ||
     decodedPathname.startsWith('/calculadora-energetica') ||
     decodedPathname.startsWith('/crivet') ||
     decodedPathname.startsWith('/consulta-vet') ||
-    decodedPathname.startsWith('/dor') ||
     decodedPathname.startsWith('/neurologia') ||
     decodedPathname.startsWith('/transfusao-sanguinea') ||
     decodedPathname.startsWith('/transfusão-sanguinea')
@@ -136,7 +135,8 @@ export function AppLayout() {
     isInternalScrollShellRoute
   const usesOwnMobileBottomNav =
     decodedPathname.startsWith('/fluidoterapia') ||
-    decodedPathname.startsWith('/calculadora-energetica')
+    decodedPathname.startsWith('/calculadora-energetica') ||
+    decodedPathname.startsWith('/dor')
   const showGlobalMobileNav = isMobile && !usesOwnMobileBottomNav
 
   const saveCurrentFormDraft = useCallback(() => {
@@ -452,15 +452,13 @@ export function AppLayout() {
             
             {/* Left Side: Toggle and Branding */}
             <div className="flex items-center gap-3">
-              {!isMobile && (
-                <button
-                  onClick={() => setSidebarOpen(true)}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-350 transition-colors hover:bg-slate-900/50 hover:text-white"
-                  aria-label="Abrir menu"
-                >
-                  <Menu className="h-5 w-5" />
-                </button>
-              )}
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-slate-500 transition-colors hover:bg-slate-900/10 hover:text-slate-900 dark:text-slate-350 dark:hover:bg-slate-900/50 dark:hover:text-white"
+                aria-label="Abrir navegação do Vetius"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
               
               <Link
                 to="/"

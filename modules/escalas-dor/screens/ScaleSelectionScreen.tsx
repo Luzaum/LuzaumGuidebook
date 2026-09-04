@@ -3,8 +3,9 @@ import { Species, Scale, PainType } from '../types';
 import { DOG_SCALES } from '../data/dog-scales';
 import { CAT_SCALES } from '../data/cat-scales';
 import ScaleCard from '../components/ScaleCard';
-import { motion } from 'framer-motion';
-import { ArrowLeft, BookOpen } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, BookOpen, X } from 'lucide-react';
+import { SpeciesPortrait } from '@/components/SpeciesPortraitCards';
 
 interface ScaleSelectionScreenProps {
   species: Species;
@@ -18,6 +19,7 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({
   onBack,
 }) => {
   const [activeTab, setActiveTab] = useState<PainType>('acute');
+  const [infoScale, setInfoScale] = useState<Scale | null>(null);
 
   // Collect the scales based on chosen species
   const allScales = species === 'dog' ? DOG_SCALES : CAT_SCALES;
@@ -43,7 +45,7 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({
   return (
     <div className="space-y-6 max-w-5xl mx-auto px-4">
       {/* Top back button and title header */}
-      <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-850">
+      <div className="hidden lg:flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-850">
         <button
           onClick={onBack}
           className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-slate-500 hover:text-teal-500 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"
@@ -52,9 +54,17 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({
           <span>Voltar</span>
         </button>
 
-        <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 dark:text-slate-500">
-          {species === 'dog' ? '🐕 Escalas Caninas' : '🐱 Escalas Felinas'}
-        </h3>
+        <div className="flex items-center gap-2 rounded-2xl border border-slate-200/80 bg-white/65 py-1.5 pl-2 pr-3 dark:border-slate-800/80 dark:bg-slate-900/55">
+          <span className="h-9 w-9 overflow-hidden rounded-xl bg-white shadow-sm">
+            <SpeciesPortrait species={species} decorative className="h-full w-full" />
+          </span>
+          <div>
+            <p className="text-[9px] font-black uppercase tracking-[0.16em] text-teal-600 dark:text-teal-400">Paciente</p>
+            <h3 className="text-xs font-black text-slate-750 dark:text-slate-100">
+              {species === 'dog' ? 'Escalas caninas' : 'Escalas felinas'}
+            </h3>
+          </div>
+        </div>
       </div>
 
       {/* Segmented control tabs for Acute vs Chronic */}
@@ -112,14 +122,7 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({
               <ScaleCard
                 scale={scale}
                 onSelect={onSelectScale}
-                onInfo={(s) => {
-                  alert(
-                    `📚 Protocolo de Avaliação (${s.name}):\n\n` +
-                      s.assessmentProtocol.join('\n') +
-                      `\n\n🔬 Referências:\n` +
-                      s.references.join('\n')
-                  );
-                }}
+                onInfo={setInfoScale}
               />
             </motion.div>
           ))
@@ -135,6 +138,69 @@ const ScaleSelectionScreen: React.FC<ScaleSelectionScreenProps> = ({
           </div>
         )}
       </motion.div>
+
+      <AnimatePresence>
+        {infoScale && (
+          <div className="fixed inset-0 z-[70] flex items-center justify-center p-4">
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm border-0"
+              onClick={() => setInfoScale(null)}
+              aria-label="Fechar detalhes"
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96, y: 12 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 12 }}
+              className="relative z-10 w-full max-w-lg max-h-[80vh] overflow-y-auto rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 shadow-2xl"
+            >
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <h4 className="text-lg font-black text-slate-800 dark:text-teal-50">
+                    {infoScale.name}
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    {infoScale.developer}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setInfoScale(null)}
+                  className="rounded-full p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500"
+                  aria-label="Fechar"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="space-y-4 text-sm">
+                <div>
+                  <h5 className="text-xs font-black uppercase tracking-wider text-teal-600 dark:text-teal-400 mb-2">
+                    Protocolo de Avaliação
+                  </h5>
+                  <ul className="space-y-1.5 text-slate-600 dark:text-slate-300">
+                    {infoScale.assessmentProtocol.map((step, idx) => (
+                      <li key={idx}>{step}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div>
+                  <h5 className="text-xs font-black uppercase tracking-wider text-teal-600 dark:text-teal-400 mb-2">
+                    Referências
+                  </h5>
+                  <ul className="space-y-1.5 text-xs text-slate-500 dark:text-slate-400">
+                    {infoScale.references.map((ref, idx) => (
+                      <li key={idx}>{ref}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

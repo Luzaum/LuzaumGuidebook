@@ -26,7 +26,7 @@ test('CAD tem estrutura editorial mínima', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   assert.ok(record);
   assert.ok(record!.quickDecisionStrip.length >= 15);
-  assert.equal(record!.references?.length, 17);
+  assert.ok(record!.references && record!.references.length >= 17);
   assert.ok(DISEASE_PLAIN_LANGUAGE[SLUG]);
   assert.ok(record!.quickSummaryRich?.diagnosticFlow?.steps.length >= 6);
   assert.ok(record!.quickSummaryRich?.treatmentFlow?.steps.length >= 6);

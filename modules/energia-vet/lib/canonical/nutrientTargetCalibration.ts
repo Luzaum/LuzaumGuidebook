@@ -2,12 +2,12 @@ import { calculateMaintenanceEnergy } from './energyCalculator'
 import type { CanonicalNutritionInput, CanonicalSpecies, ResolvedNutrientTarget } from './types'
 import { getTherapeuticProfileV3ById } from './therapeuticProfilesV3'
 
-export type NutritionalGoalMode = 'maintenance' | 'weight_loss' | 'weight_gain'
+export type NutritionalGoalMode = 'maintenance' | 'weight_loss' | 'weight_gain' | 'hospital' | 'refeeding'
 
 /** Referências NRC 2006 / AAHA 2021 — proteína mínima em g/1000 kcal ME. */
 const PROTEIN_G_PER_1000_KCAL: Record<CanonicalSpecies, Record<NutritionalGoalMode, number>> = {
-  dog: { maintenance: 45, weight_loss: 52, weight_gain: 45 },
-  cat: { maintenance: 40, weight_loss: 48, weight_gain: 42 },
+  dog: { maintenance: 45, weight_loss: 52, weight_gain: 45, hospital: 45, refeeding: 45 },
+  cat: { maintenance: 40, weight_loss: 48, weight_gain: 42, hospital: 40, refeeding: 40 },
 }
 
 /** Densidade energética típica de alimento seco (kcal/kg MS) para converter g/Mcal ↔ %MS. */
@@ -61,6 +61,8 @@ export function buildCalibrationSummaryLabel(ctx: NutrientCalibrationContext): s
 function goalLabel(goal: NutritionalGoalMode): string {
   if (goal === 'weight_loss') return 'emagrecimento'
   if (goal === 'weight_gain') return 'recuperação de peso'
+  if (goal === 'hospital') return 'hospitalar'
+  if (goal === 'refeeding') return 'realimentação gradual'
   return 'manutenção'
 }
 

@@ -1,0 +1,129 @@
+{
+  "generatedAt": "2026-08-25T13:00:03.706Z",
+  "books": [
+    {
+      "id": "practical-guide-3ed",
+      "title": "Practical Guide to Canine and Feline Neurology, 3rd ed. (Dewey & da Costa)",
+      "path": "C:\\Users\\luzau\\OneDrive\\Desktop\\Livros\\Practical Guide to Canine and Feline Neurology, 3rd Edition (VetBooks.ir).pdf",
+      "chapters": [
+        {
+          "id": "signalment-history",
+          "title": "Signalment and History",
+          "start": 1,
+          "end": 8,
+          "outFile": "practical-guide-3ed--signalment-history.txt",
+          "charCount": 8716,
+          "pageCount": 8
+        },
+        {
+          "id": "neuro-exam",
+          "title": "Neurologic Examination",
+          "start": 9,
+          "end": 28,
+          "outFile": "practical-guide-3ed--neuro-exam.txt",
+          "charCount": 61488,
+          "pageCount": 20
+        },
+        {
+          "id": "lesion-localization",
+          "title": "Lesion Localization",
+          "start": 29,
+          "end": 52,
+          "outFile": "practical-guide-3ed--lesion-localization.txt",
+          "charCount": 73547,
+          "pageCount": 24
+        },
+        {
+          "id": "differential-diagnosis",
+          "title": "Differential Diagnosis",
+          "start": 53,
+          "end": 60,
+          "outFile": "practical-guide-3ed--differential-diagnosis.txt",
+          "charCount": 21955,
+          "pageCount": 8
+        },
+        {
+          "id": "neurodiagnostics",
+          "title": "Neurodiagnostics",
+          "start": 61,
+          "end": 86,
+          "outFile": "practical-guide-3ed--neurodiagnostics.txt",
+          "charCount": 93096,
+          "pageCount": 26
+        },
+        {
+          "id": "myelopathies",
+          "title": "Myelopathies",
+          "start": 329,
+          "end": 404,
+          "outFile": "practical-guide-3ed--myelopathies.txt",
+          "charCount": 288283,
+          "pageCount": 76
+        },
+        {
+          "id": "cauda-equina",
+          "title": "Cauda Equina",
+          "start": 405,
+          "end": 422,
+          "outFile": "practical-guide-3ed--cauda-equina.txt",
+          "charCount": 98024,
+          "pageCount": 18
+        },
+        {
+          "id": "seizures",
+          "title": "Seizures",
+          "start": 249,
+          "end": 268,
+          "outFile": "practical-guide-3ed--seizures.txt",
+          "charCount": 96914,
+          "pageCount": 20
+        },
+        {
+          "id": "vestibular",
+          "title": "Vestibulocochlear",
+          "start": 277,
+          "end": 298,
+          "outFile": "practical-guide-3ed--vestibular.txt",
+          "charCount": 99351,
+          "pageCount": 22
+        }
+      ],
+      "numPages": 687
+    },
+    {
+      "id": "delahunta-5ed",
+      "title": "de Lahunta's Veterinary Neuroanatomy and Clinical Neurology, 5th ed.",
+      "path": "C:\\Users\\luzau\\OneDrive\\Desktop\\Livros\\de Lahunta's Veterinary Neuroanatomy and Clinical Neurology, 5th Edition (VetBooks.ir).pdf",
+      "chapters": [
+        {
+          "id": "neuroanatomy-overview",
+          "title": "Overview",
+          "start": 1,
+          "end": 30,
+          "outFile": "delahunta-5ed--neuroanatomy-overview.txt",
+          "charCount": 93347,
+          "pageCount": 30
+        },
+        {
+          "id": "spinal-cord",
+          "title": "Spinal cord segments",
+          "start": 180,
+          "end": 230,
+          "outFile": "delahunta-5ed--spinal-cord.txt",
+          "charCount": 214597,
+          "pageCount": 51
+        },
+        {
+          "id": "brain-stem-cerebellum",
+          "title": "Brain stem and cerebellum",
+          "start": 250,
+          "end": 320,
+          "outFile": "delahunta-5ed--brain-stem-cerebellum.txt",
+          "charCount": 379788,
+          "pageCount": 71
+        }
+      ],
+      "numPages": 621
+    }
+  ]
+}

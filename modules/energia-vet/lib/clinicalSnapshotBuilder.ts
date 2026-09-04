@@ -2,6 +2,7 @@ import type { StoredCalculationReport } from '../types'
 import type { CalculationSnapshotV2 } from './calculationPersistenceV2'
 import type {
   BuildClinicalSnapshotInput,
+  ClinicalWarningSnapshot,
   NutritionClinicalRecord,
   NutritionEnteralSnapshot,
   NutritionHydrationSnapshot,
@@ -413,9 +414,9 @@ export function buildFullClinicalSnapshot(input: BuildClinicalSnapshotInput): Nu
 
   const therapeuticReview = input.therapeuticReview ?? report.therapeuticReview ?? snapshot?.therapeuticReview
 
-  const warnings = [
-    { level: 'info' as const, message: 'Não oferecer outros alimentos além dos prescritos sem orientação.' },
-    { level: 'info' as const, message: 'A quantidade prescrita poderá ser ajustada conforme a evolução do peso.' },
+  const warnings: ClinicalWarningSnapshot[] = [
+    { level: 'info', message: 'Não oferecer outros alimentos além dos prescritos sem orientação.' },
+    { level: 'info', message: 'A quantidade prescrita poderá ser ajustada conforme a evolução do peso.' },
   ]
   if (report.target.goal === 'weight_loss') {
     warnings.push({

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Activity, ArrowRight, BookOpen, ShieldAlert } from 'lucide-react';
+import { Activity, ArrowRight, BookOpen, ShieldAlert, AlertCircle } from 'lucide-react';
 import { Drug, DrugCategory } from '../../shared/types/drug';
 import { cn } from '../lib/utils';
 
@@ -270,6 +270,36 @@ export const DrugReferenceCard: React.FC<DrugReferenceCardProps> = ({
               )}
             </div>
           </section>
+
+          {!condensed && drug.adverseEffects.length > 0 && (
+            <section className="rounded-2xl border border-rose-100 bg-rose-50/50 p-4 dark:border-rose-500/20 dark:bg-rose-500/5">
+              <h4 className="mb-2 flex items-center gap-2 text-sm font-bold text-rose-800 dark:text-rose-300">
+                <AlertCircle className="h-4 w-4" /> Efeitos adversos
+              </h4>
+              <ul className="space-y-1.5">
+                {drug.adverseEffects.map((item) => (
+                  <li key={item} className="text-sm text-rose-900/90 dark:text-rose-100/90">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {!condensed && drug.references.length > 0 && (
+            <section className="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-slate-700 dark:bg-slate-900/50">
+              <h4 className="mb-3 flex items-center gap-2 text-sm font-bold text-slate-800 dark:text-slate-200">
+                <BookOpen className="h-4 w-4 text-emerald-600 dark:text-emerald-400" /> Fontes (acervo)
+              </h4>
+              <ul className="space-y-2">
+                {drug.references.map((ref) => (
+                  <li key={ref} className="text-xs leading-relaxed text-slate-600 dark:text-slate-400">
+                    {ref}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const lidocaine: Drug = {
   id: 'lidocaine',
@@ -48,8 +49,8 @@ export const lidocaine: Drug = {
   highAlert: true,
   
   doses: {
-    dog: { min: 20, max: 80, unit: 'mcg/kg/min', observations: 'Para analgesia/pró-cinético: 20-50 mcg/kg/min. Para arritmias: 50-80 mcg/kg/min.' },
-    cat: { min: 5, max: 20, unit: 'mcg/kg/min', observations: 'USO EXTREMAMENTE CAUTELOSO. Muitos autores não recomendam CRI em gatos. Se necessário, não exceder 20 mcg/kg/min.' }
+    dog: { min: 25, max: 50, unit: 'mcg/kg/min', observations: 'Plumb\'s MLK: 50 mcg/kg/min. Analgésico/pró-cinético: 25–50 mcg/kg/min (1,5–3 mg/kg/h).' },
+    cat: { min: 10, max: 20, unit: 'mcg/kg/min', observations: 'Plumb\'s: 10–20 mcg/kg/min (0,6–1,2 mg/kg/h) se antiarrítmico; analgesia IV sistêmica em gatos é controversa.' }
   },
   bolusDoses: {
     dog: { min: 1, max: 2, unit: 'mg/kg', observations: 'Pode ser repetido até um máximo de 8 mg/kg no total. Administrar lentamente.' },
@@ -117,5 +118,35 @@ export const lidocaine: Drug = {
     clinicalObservations: 'Sinais de toxicidade inicial no SNC (tremores, nistagmo, sedação) geralmente precedem a toxicidade cardiovascular (hipotensão, arritmias, colapso). Em caso de toxicidade grave (convulsões), tratar com diazepam ou propofol e intubação/ventilação. Emulsão lipídica intravenosa (ILE) pode ser considerada em intoxicações refratárias.'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Silverstein & Hopper: Small Animal Critical Care Medicine", "Tratado de Anestesiologia Veterinária"]
+  references: [
+    cite.plumbs(759),
+    cite.lumbJones(),
+    cite.ettinger(),
+  ],
+  doseGuides: [
+    {
+      id: 'lid-mlk',
+      regimen: 'CRI',
+      title: 'MLK — componente lidocaína',
+      indication: 'Analgesia multimodal (cães)',
+      doseText: '50 mcg/kg/min (≈ 3 mg/kg/h)',
+      rationale: 'Plumb\'s 10ª ed., p. 759 e p. 911.',
+    },
+    {
+      id: 'lid-flk',
+      regimen: 'CRI',
+      title: 'FLK — componente lidocaína',
+      indication: 'Dor severa (cães)',
+      doseText: '3 mg/kg/h IV',
+      rationale: 'Plumb\'s 10ª ed., p. 721.',
+    },
+    {
+      id: 'lid-cat-arr',
+      regimen: 'CRI',
+      title: 'Antiarrítmico (gato)',
+      indication: 'TV com monitorização intensiva',
+      doseText: '10–20 mcg/kg/min após bolus 0,25–0,5 mg/kg IV lento',
+      rationale: 'Plumb\'s 10ª ed., p. 759 — cautela extrema em felinos.',
+    },
+  ],
 };

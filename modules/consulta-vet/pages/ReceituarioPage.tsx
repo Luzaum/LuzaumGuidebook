@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { ArrowLeft, Cat, Dog, FileCheck, FileSignature, Pill, Plus, Scale, Star, UserCheck, X } from 'lucide-react';
+import { ArrowLeft, FileCheck, FileSignature, Pill, Plus, Scale, Star, UserCheck, X } from 'lucide-react';
+import { SpeciesPortrait } from '@/components/SpeciesPortraitCards';
 import { useAuthSession } from '../../../src/components/AuthSessionProvider';
 import { useClinic } from '../../../src/components/ClinicProvider';
 import { DocumentosEmitidosTab } from '../components/receituario/DocumentosEmitidosTab';
@@ -347,11 +348,11 @@ export function ReceituarioPage() {
             {setupStep === 'species' ? (
               <div className="mt-6 grid grid-cols-2 gap-4">
                 {([
-                  { value: 'cão' as const, label: 'Cão', Icon: Dog, color: 'border-sky-500/35 bg-sky-500/10 text-sky-700' },
-                  { value: 'gato' as const, label: 'Gato', Icon: Cat, color: 'border-violet-500/35 bg-violet-500/10 text-violet-700' },
-                ]).map(({ value, label, Icon, color }) => {
+                  { value: 'cão' as const, species: 'dog' as const, label: 'Cão', color: 'border-sky-500/35 bg-sky-500/10 text-sky-700' },
+                  { value: 'gato' as const, species: 'cat' as const, label: 'Gato', color: 'border-violet-500/35 bg-violet-500/10 text-violet-700' },
+                ]).map(({ value, species, label, color }) => {
                   const disabled = pendingTemplate.species !== 'ambos' && pendingTemplate.species !== value;
-                  return <button key={value} type="button" disabled={disabled} onClick={() => handleSelectSetupSpecies(value)} className={`flex min-h-44 flex-col items-center justify-center rounded-2xl border-2 p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-35 ${color}`}><span className="flex h-20 w-20 items-center justify-center rounded-full bg-background/80"><Icon className="h-11 w-11" /></span><strong className="mt-4 text-lg">{label}</strong>{disabled ? <small className="mt-1">Modelo não indicado</small> : <small className="mt-1">Selecionar {label.toLowerCase()}</small>}</button>;
+                  return <button key={value} type="button" disabled={disabled} onClick={() => handleSelectSetupSpecies(value)} className={`flex min-h-44 flex-col items-center justify-center rounded-2xl border-2 p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-35 ${color}`}><span className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-2xl bg-white shadow-sm"><SpeciesPortrait species={species} decorative className="h-full w-full" /></span><strong className="mt-4 text-lg">{label}</strong>{disabled ? <small className="mt-1">Modelo não indicado</small> : <small className="mt-1">Selecionar {label.toLowerCase()}</small>}</button>;
                 })}
               </div>
             ) : (

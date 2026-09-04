@@ -33,6 +33,34 @@ const GUABI = {
   officialBase: 'https://www.guabinatural.com.br',
 }
 
+const QUATREE = {
+  manufacturer: 'Granvita',
+  brand: 'Quatree',
+  officialBase: 'https://www.quatreepet.com.br',
+}
+
+function quatreeSupremeSache(idSuffix, name, speciesScope, grams, guaranteed, extra = {}) {
+  return {
+    id: `quatree-supreme-sache-${idSuffix}-${grams}g`,
+    name: `Quatree Supreme Sachê — ${name}`,
+    category: 'Sachê',
+    speciesScope,
+    foodType: 'commercial',
+    presentation: `Sachê ${grams} g`,
+    packageGrams: grams,
+    format: 'sachet',
+    completenessClass: 'complete',
+    nutrientBasis: 'as_fed_guaranteed',
+    manufacturer: QUATREE.manufacturer,
+    brand: QUATREE.brand,
+    line: 'Supreme Úmidos',
+    energyKcalKg: guaranteed.energyKcalKg,
+    guaranteed,
+    officialSourceUrl: extra.url ?? `${QUATREE.officialBase}/saches-${speciesScope === 'dog' ? 'caes' : 'gatos'}`,
+    extraNotes: extra.notes ?? [],
+  }
+}
+
 function premierNC(idSuffix, name, speciesScope, grams, guaranteed, extra = {}) {
   return {
     id: `premier-nc-${idSuffix}-${grams}g`,
@@ -473,8 +501,11 @@ export function getBrazilWetFoodProducts() {
   // ── 4. ROYAL CANIN VETERINARY ÚMIDA ──────────────────────────────────────
 
   const rcVetTable = [
-    ['hypoallergenic-canine-pate', 'Hypoallergenic Canine Pâté', 'dog', 400, { moistureMax: 77.3, proteinMin: 5.0, fatMin: 1.5, fiberMax: 3.7, ashMax: 2.6, calciumMin: 0.24, calciumMax: 0.44, phosphorusMin: 0.18, sodiumMin: 0.12, magnesiumMin: 0.01 }],
-    ['renal-feline', 'Renal Feline', 'cat', 85, { moistureMax: 78.5, proteinMin: 5.8, fatMin: 6.0, fiberMax: 1.5, ashMax: 1.4, calciumMin: 0.075, calciumMax: 0.55, phosphorusMin: 0.045, sodiumMin: 0.055, magnesiumMin: 0.009, energyKcalKg: 1271, taurineMinMgKg: 1120, epaMinMgKg: 600, dhaMinMgKg: 300 }],
+    ['hypoallergenic-canine-pate', 'Hypoallergenic Canine Pâté', 'dog', 400, { moistureMax: 76.8, proteinMin: 5.0, fatMin: 1.5, fiberMax: 2.7, ashMax: 2.64, calciumMin: 0.204, calciumMax: 1.036, phosphorusMin: 0.15, sodiumMin: 0.138, chlorideMin: 0.126, potassiumMin: 0.12, magnesiumMin: 0.0144, taurineMinMgKg: 840 }],
+    ['renal-feline', 'Renal Feline', 'cat', 85, { moistureMax: 78.5, proteinMin: 6.0, fatMin: 6.0, fiberMax: 1.5, ashMax: 1.3, calciumMin: 0.07, calciumMax: 0.54, phosphorusMin: 0.04, sodiumMin: 0.05, chlorideMin: 0.1, potassiumMin: 0.13, magnesiumMin: 0.01, energyKcalKg: 1277, taurineMinMgKg: 1200, epaMinMgKg: 600, dhaMinMgKg: 300 }],
+    ['renal-feline-peixe-molho', 'Renal Feline com Peixe Pedaços ao Molho', 'cat', 85, { moistureMax: 82.3, proteinMin: 4.4, fatMin: 3.9, fiberMax: 3.0, ashMax: 1.2, calciumMin: 0.11, calciumMax: 0.2, phosphorusMin: 0.06, sodiumMin: 0.05, chlorideMin: 0.08, potassiumMin: 0.11, magnesiumMin: 0.01, energyKcalKg: 1015, taurineMinMgKg: 800, methionineMinMgKg: 600 }],
+    ['renal-canine-wet', 'Renal Canine Wet', 'dog', 410, { moistureMax: 67.5, proteinMin: 3.4, fatMin: 7.0, fiberMax: 2.0, ashMax: 1.9, calciumMin: 0.085, calciumMax: 0.57, phosphorusMin: 0.055, phosphorusMax: 0.51, sodiumMin: 0.085, chlorideMin: 0.11, potassiumMin: 0.14, magnesiumMin: 0.018, energyKcalKg: 1662, taurineMinMgKg: 1400 }],
+    ['renal-special-canine-pate', 'Renal Special Canine Pâté', 'dog', 410, { moistureMax: 68.0, proteinMin: 4.0, fatMin: 7.0, fiberMax: 2.2, ashMax: 2.1, energyKcalKg: 1546 }],
     ['urinary-so-feline-molho', 'Urinary S/O Feline Molho', 'cat', 85, { moistureMax: 82.5, proteinMin: 8.0, fatMin: 1.5, fiberMax: 2.8, ashMax: 2.31, calciumMin: 0.21, calciumMax: 0.39, phosphorusMin: 0.17, sodiumMin: 0.17, magnesiumMin: 0.01, energyKcalKg: 901, taurineMinMgKg: 700, methionineMinMgKg: 1400 }],
     ['gastrointestinal-canine', 'Gastrointestinal Canine', 'dog', 400, { moistureMax: 75.5, proteinMin: 6.9, fatMin: 3.9, fiberMax: 2.2, ashMax: 2.6, calciumMin: 0.175, calciumMax: 0.75, phosphorusMin: 0.15, sodiumMin: 0.135, magnesiumMin: 0.015, energyKcalKg: 1179 }],
     ['gastrointestinal-feline-so', 'Gastrointestinal Feline S/O', 'cat', 85, { moistureMax: 81.5, proteinMin: 6.0, fatMin: 3.6, fiberMax: 1.2, ashMax: 2.0, calciumMin: 0.15, calciumMax: 0.7, phosphorusMin: 0.12, sodiumMin: 0.06, magnesiumMin: 0.01, energyKcalKg: 1031 }],
@@ -489,13 +520,45 @@ export function getBrazilWetFoodProducts() {
 
   for (const [slug, displayName, species, grams, g] of rcVetTable) {
     const extra = {}
-    if (slug === 'renal-canine-pate') extra.energyKcalKgAlt = 1662
+    if (slug === 'renal-canine-pate') {
+      extra.energyKcalKgAlt = 1662
+      extra.replaceLegacyId = 'pate-royal-canin-renal-canine'
+      extra.url = 'https://portalvet.royalcanin.com.br/produtos/renal-canine-pate/'
+    }
+    if (slug === 'renal-canine-wet') {
+      extra.url = 'https://portalvet.royalcanin.com.br/produtos/renal-canine-wet/'
+      extra.presentation = 'Lata 410 g'
+      extra.format = 'canned'
+      extra.indications = ['DRC cães adultos', 'Baixo fósforo']
+    }
+    if (slug === 'renal-feline-peixe-molho') {
+      extra.url = 'https://portalvet.royalcanin.com.br/produtos/renal-feline-com-peixe-pedacos-ao-molho/'
+      extra.format = 'stew'
+      extra.presentation = 'Sachê 85 g'
+    }
+    if (slug === 'renal-special-canine-pate') {
+      extra.url = 'https://www.royalcanin.com/br/dogs/products/vet-products/renal-special-dry-4161'
+      extra.indications = ['DRC cães adultos', 'Perfil aromático diferenciado']
+    }
+    if (slug === 'renal-feline') {
+      extra.url = 'https://portalvet.royalcanin.com.br/produtos/renal-feline-wet/'
+    }
+    if (slug === 'hypoallergenic-canine-pate') {
+      extra.url = 'https://portalvet.royalcanin.com.br/produtos/hypoallergenic-canine-pate/'
+      extra.replaceLegacyId = 'pate-royal-canin-hypoallergenic'
+      extra.presentation = 'Lata 400 g'
+      extra.format = 'pate'
+      extra.indications = ['Redução de sensibilidades alimentares', 'Proteína hidrolisada de soja']
+    }
     products.push(
       rcVet(`royal-canin-vet-${slug}-${grams}g`, displayName, species, grams, g, {
-        url: `${RC.officialBase}/dogs/products/vet-products/`,
+        url: extra.url ?? `${RC.officialBase}/dogs/products/vet-products/`,
         ...extra,
       }),
     )
+    if (extra.replaceLegacyId) {
+      products[products.length - 1].replaceLegacyId = extra.replaceLegacyId
+    }
   }
 
   // ── 5. ROYAL CANIN RETAIL ÚMIDA ──────────────────────────────────────────
@@ -745,61 +808,92 @@ export function getBrazilWetFoodProducts() {
 
   // ── 8. FARMINA VET LIFE ÚMIDA ────────────────────────────────────────────
 
-  for (const [slug, name] of [
-    ['hepatic', 'Hepatic'],
-    ['gastrointestinal', 'Gastrointestinal'],
-    ['hypoallergenic-pork-potato', 'Hypoallergenic Pork & Potato'],
-    ['obesity', 'Obesity'],
-    ['convalescence', 'Convalescence'],
+  for (const [slug, name, ga] of [
+    [
+      'renal',
+      'Renal',
+      {
+        moistureMax: 80,
+        proteinMin: 6.0,
+        fatMin: 5.0,
+        fiberMax: 0.2,
+        ashMax: 2.2,
+        calciumMin: 0.15,
+        calciumMax: 0.3,
+        phosphorusMin: 0.15,
+        sodiumMin: 0.16,
+        potassiumMin: 0.2,
+        taurineMinMgKg: 1250,
+        epaMinMgKg: 500,
+        dhaMinMgKg: 600,
+        energyKcalKg: 979,
+      },
+    ],
+    ['hepatic', 'Hepatic', null],
+    ['gastrointestinal', 'Gastrointestinal', null],
+    ['hypoallergenic-pork-potato', 'Hypoallergenic Pork & Potato', null],
+    ['obesity', 'Obesity', null],
+    ['convalescence', 'Convalescence', null],
   ]) {
     const isHepatic = slug === 'hepatic'
+    const isRenal = slug === 'renal'
     products.push({
       id: `farmina-vet-life-gatos-${slug}`,
       name: `Farmina Vet Life Feline — ${name}`,
-      category: 'Lata',
+      category: isRenal ? 'Sachê' : 'Lata',
       speciesScope: 'cat',
       foodType: 'commercial',
-      presentation: 'Conforme SKU',
-      format: 'canned',
+      presentation: isRenal ? 'Sachê 85 g' : 'Conforme SKU',
+      packageGrams: isRenal ? 85 : null,
+      format: isRenal ? 'sachet' : 'canned',
       completenessClass: 'coadjuvant_complete',
       manufacturer: FARMINA.manufacturer,
       brand: FARMINA.brand,
       line: 'Vet Life',
-      officialSourceUrl: 'https://www.farmina.com/br/eshop/alimentos-para-gatos/farmina-vet-life-feline/973-hepatic-wet-food-feline.html',
-      ...(isHepatic
+      officialSourceUrl: isRenal
+        ? 'https://www.farmina.com/br/eshop/alimentos-para-gatos/vet-life-natural-feline/639-renal-wet-food-feline.html'
+        : 'https://www.farmina.com/br/eshop/alimentos-para-gatos/farmina-vet-life-feline/973-hepatic-wet-food-feline.html',
+      ...(isRenal
         ? {
-            guaranteed: {
-              moistureMax: 80,
-              proteinMin: 6.0,
-              fatMin: 3.8,
-              fiberMax: 0.5,
-              ashMax: 2.3,
-              calciumMin: 0.1,
-              calciumMax: 0.3,
-              phosphorusMin: 0.1,
-              sodiumMin: 0.1,
-              potassiumMin: 0.2,
-              methionineMinMgKg: 800,
-              taurineMinMgKg: 1300,
-              energyKcalKg: 979,
-            },
-            extraNotes: [
-              'sodioMgKg=1000',
-              'potassioMgKg=2000',
-              'lCarnitinaMinMgKg=40',
-              'mosMinMgKg=1000',
-              'fosMinMgKg=1500',
-              'omega6MinMgKg=8000',
-              'omega3MinMgKg=3500',
-              'epaMinMgKg=1000',
-              'dhaMinMgKg=1000',
-            ],
+            guaranteed: ga,
+            nutrientBasis: 'as_fed_guaranteed',
+            extraNotes: ['lCarnitinaMinMgKg=40', 'fosMinMgKg=1000', 'gosMinMgKg=120'],
           }
-        : { extraNotes: ['nutrient_levels=pending_label_review'] }),
+        : isHepatic
+          ? {
+              guaranteed: {
+                moistureMax: 80,
+                proteinMin: 6.0,
+                fatMin: 3.8,
+                fiberMax: 0.5,
+                ashMax: 2.3,
+                calciumMin: 0.1,
+                calciumMax: 0.3,
+                phosphorusMin: 0.1,
+                sodiumMin: 0.1,
+                potassiumMin: 0.2,
+                methionineMinMgKg: 800,
+                taurineMinMgKg: 1300,
+                energyKcalKg: 979,
+              },
+              extraNotes: [
+                'sodioMgKg=1000',
+                'potassioMgKg=2000',
+                'lCarnitinaMinMgKg=40',
+                'mosMinMgKg=1000',
+                'fosMinMgKg=1500',
+                'omega6MinMgKg=8000',
+                'omega3MinMgKg=3500',
+                'epaMinMgKg=1000',
+                'dhaMinMgKg=1000',
+              ],
+            }
+          : { extraNotes: ['nutrient_levels=pending_label_review'] }),
     })
   }
 
   for (const [slug, name] of [
+    ['renal', 'Renal'],
     ['ultrahypo', 'UltraHypo'],
     ['struvite', 'Struvite'],
     ['hypoallergenic-fish-potato', 'Hypoallergenic Fish & Potato'],
@@ -950,6 +1044,79 @@ export function getBrazilWetFoodProducts() {
       extraNotes: g.energyKcalKg == null ? ['energy_not_confirmed'] : [],
     })
   }
+
+  // ── QUATREE SUPREME SACHÊS ───────────────────────────────────────────────
+
+  const quatreeDogSacheGa = {
+    moistureMax: 82,
+    proteinMin: 8.0,
+    fatMin: 3.0,
+    fiberMax: 1.0,
+    ashMax: 2.5,
+    calciumMin: 0.15,
+    calciumMax: 0.35,
+    phosphorusMin: 0.12,
+    sodiumMin: 0.05,
+    omega6MinPct: 0.36,
+    omega3MinMgKg: 360,
+    energyKcalKg: 680,
+  }
+
+  for (const [slug, flavor] of [
+    ['caes-adultos-carne', 'Cães Adultos — Carne ao molho'],
+    ['caes-adultos-cordeiro', 'Cães Adultos — Cordeiro ao molho'],
+    ['caes-adultos-frango', 'Cães Adultos — Frango ao molho'],
+  ]) {
+    products.push(
+      quatreeSupremeSache(slug, flavor, 'dog', 100, quatreeDogSacheGa, {
+        url: 'https://www.quatreepet.com.br/saches-caes',
+        notes: ['energiaPorSacheKcal≈68', `sabor=${flavor.split('—')[1]?.trim() ?? slug}`],
+      }),
+    )
+  }
+
+  const quatreeCatCastradosGa = {
+    moistureMax: 82,
+    proteinMin: 9.0,
+    fatMin: 2.0,
+    fiberMax: 1.0,
+    ashMax: 2.0,
+    calciumMin: 0.15,
+    calciumMax: 0.35,
+    phosphorusMin: 0.12,
+    sodiumMin: 0.05,
+    taurineMinMgKg: 700,
+    omega6MinPct: 0.36,
+    omega3MinMgKg: 360,
+    energyKcalKg: 670,
+  }
+
+  for (const [slug, flavor] of [
+    ['gatos-castrados-carne', 'Gatos Castrados — Carne ao molho'],
+    ['gatos-castrados-frango', 'Gatos Castrados — Frango ao molho'],
+    ['gatos-castrados-peixe', 'Gatos Castrados — Peixe ao molho'],
+  ]) {
+    products.push(
+      quatreeSupremeSache(slug, flavor, 'cat', 85, quatreeCatCastradosGa, {
+        url: 'https://www.quatreepet.com.br/saches-gatos',
+        notes: ['energiaPorSacheKcal≈57'],
+      }),
+    )
+  }
+
+  products.push(
+    quatreeSupremeSache(
+      'gatos-adultos-peixe',
+      'Gatos Adultos — Peixe ao molho',
+      'cat',
+      85,
+      { ...quatreeCatCastradosGa, proteinMin: 8.0, energyKcalKg: 680 },
+      {
+        url: 'https://www.quatreepet.com.br/saches-gatos',
+        notes: ['energiaPorSacheKcal≈58', 'GA adultos peixe — proteína 8% em alguns lotes; confirmar rótulo.'],
+      },
+    ),
+  )
 
   return products
 }

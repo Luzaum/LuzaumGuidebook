@@ -166,7 +166,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     drcGraficoPerfusaoCortical: {
       kind: 'clinicalFigure',
       src: '/assets/consulta-vet/drc/jvim-ckd-cortex-curve.jpg',
-      alt: 'Curvas de intensidade-tempo do cortex renal em gatos saudaveis e gatos com DRC',
+      alt: 'Curvas de intensidade-tempo do cortex renal em gatos saudáveis e gatos com DRC',
       caption:
         'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo do cortex renal; gatos com DRC apresentam atraso do pico e menor tempo medio de transito. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
@@ -174,9 +174,9 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     drcGraficoPerfusaoMedular: {
       kind: 'clinicalFigure',
       src: '/assets/consulta-vet/drc/jvim-ckd-medulla-curve.jpg',
-      alt: 'Curvas de intensidade-tempo da medula renal em gatos saudaveis e gatos com DRC',
+      alt: 'Curvas de intensidade-tempo da medula renal em gatos saudáveis e gatos com DRC',
       caption:
-        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo da medula renal durante 90 segundos após contraste, comparando gatos saudaveis e gatos com DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+        'Grafico de artigo JVIM/PMC: curvas de intensidade-tempo da medula renal durante 90 segundos após contraste, comparando gatos saudáveis e gatos com DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
     },
     perdaNefronsHiperfiltracao:
@@ -184,7 +184,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     perdaConcentracaoUrina:
       'Entre as primeiras funções a deteriorar está a capacidade de concentrar a urina: poliúria com urina diluída e polidipsia compensatória frequentemente antecedem azotemia marcada. Em gatos, massa urinária aumentada com densidade urinária abaixo de 1,035 (em amostra adequada) pode ser pista precoce, embora não seja patognomônica (diabetes, iatrogenia com diuréticos, etc.).',
     retencaoUremica:
-      'A queda da taxa de filtração glomerular acumula ureia, creatinina e outros solutos urémicos — associando-se a náuseas, vômito, halitose, ulceração oral, apatia e mal-estar sistêmico nas fases mais avançadas.',
+      'A queda da taxa de filtração glomerular acumula ureia, creatinina e outros solutos urémicos — associando-se a náuseas, vômito, halitose, úlceração oral, apatia e mal-estar sistêmico nas fases mais avançadas.',
     fosforoMineralBone:
       'A hiperfosfatemia estimula alterações na regulação do eixo mineral (por exemplo PTH aumentado relativamente, FGF23) com impacto ósseo e vascular; o controle do fósforo dietético e medicamentoso é central para retardar progressão e complicações secundárias.',
     acidoseAnemiaHipertensao:
@@ -262,9 +262,9 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
     drcFiguraIrisStaging: {
       kind: 'clinicalFigure',
       src: '/assets/consulta-vet/drc/jvim-ckd-contrast-ultrasound.jpg',
-      alt: 'Ultrassom contrastado seriado comparando rim de gato saudavel e gato com DRC',
+      alt: 'Ultrassom contrastado seriado comparando rim de gato saudável e gato com DRC',
       caption:
-        'Imagem representativa de ultrassom contrastado seriado: gato com DRC (esquerda) versus gato saudavel (direita), com chegada de contraste cortical atrasada e realce mais curto no paciente DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+        'Imagem representativa de ultrassom contrastado seriado: gato com DRC (esquerda) versus gato saudável (direita), com chegada de contraste cortical atrasada e realce mais curto no paciente DRC. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
     },
     drcTabelaAchadosImagem: {
@@ -273,7 +273,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       rows: [
         ['Rins pequenos ou irregulares', 'Sugere cronicidade e fibrose/atrofia', 'Não exclui agudizacao sobre DRC'],
         ['Perda de distincao corticomedular', 'Compatível com alteração arquitetural crônica', 'Integrar com urinálise, creatinina/SDMA e historia'],
-        ['Hiperecogenicidade/mineralizacao', 'Pode acompanhar nefropatia crônica', 'Não e especifico isoladamente'],
+        ['Hiperecogenicidade/mineralizacao', 'Pode acompanhar nefropatia crônica', 'Não e específico isoladamente'],
         ['Pieliectasia, ureterolitos ou nefrolitase', 'Pode indicar componente obstrutivo ou causa tratavel', 'Evitar estadiar antes de corrigir pos-renal quando relevante'],
       ],
     },
@@ -283,7 +283,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       rows: [
         ['Doença renal policistica', 'Causa hereditaria/predisponente, especialmente em Persas e racas relacionadas', 'Rins aumentados/irregulares, cistos em ultrassom, histórico familiar'],
         ['Ureterolitos', 'Causa potencialmente tratavel de obstrução parcial ou intermitente', 'Pieliectasia, dor, piora abrupta de azotemia'],
-        ['Pielonefrite crônica', 'Pode manter inflamacao e progressao renal', 'Sedimento ativo, cultura positiva, febre/dor renal ou piora sem explicacao'],
+        ['Pielonefrite crônica', 'Pode manter inflamação e progressao renal', 'Sedimento ativo, cultura positiva, febre/dor renal ou piora sem explicacao'],
       ],
     },
     drcCronicoVersusAgudo: {
@@ -401,7 +401,7 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       rows: [
         ['Alimentacao e calorias', 'Melhora qualidade de vida e reduz crise por inapetencia', 'Dieta renal se aceita; se não aceita, priorizar comer'],
         ['Hidratação', 'Reduz descompensacoes pre-renais', 'Plano simples e reavaliavel'],
-        ['PA, RPCU e fosforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
+        ['PA, RPCU e fósforo', 'Alvos com impacto prognostico', 'Poucos medicamentos por vez, com retorno marcado'],
       ],
     },
     decisaoInicial:
@@ -473,12 +473,12 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
       src: '/assets/consulta-vet/drc/jvim-perfusion-parameters.jpg',
       alt: 'Curva intensidade-tempo de ultrassom contrastado renal com parametros de perfusão',
       caption:
-        'Grafico de artigo JVIM/PMC: curva intensidade-tempo após bolus de contraste ultrassonografico, com parametros de perfusão renal. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
+        'Grafico de artigo JVIM/PMC: curva intensidade-tempo após bolus de contraste ultrassonográfico, com parametros de perfusão renal. Fonte: Stock et al., J Vet Intern Med 2018, CC BY-NC.',
       display: 'wide',
     },
     drcTabelaAlvosFosforo: {
       kind: 'clinicalTable',
-      headers: ['Estagio IRIS', 'Alvo prático de fosforo', 'Conduta se acima do alvo'],
+      headers: ['Estágio IRIS', 'Alvo prático de fósforo', 'Conduta se acima do alvo'],
       rows: [
         ['1', 'Avaliar tendência, causa e sinais de DRC-MBD', 'Corrigir dieta e investigar progressao quando indicado'],
         ['2', '<4,5-4,6 mg/dL', 'Dieta renal; quelante se persistir elevado após transicao alimentar'],

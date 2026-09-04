@@ -17,6 +17,7 @@ interface EntityCardProps {
   linkState?: unknown;
   className?: string;
   category?: string;
+  compact?: boolean;
   key?: React.Key;
 }
 
@@ -201,6 +202,7 @@ export const EntityCard = React.memo(function EntityCard({
   linkState,
   className,
   category,
+  compact = false,
 }: EntityCardProps) {
   const theme = getEntityCategoryTheme(category);
 
@@ -210,7 +212,8 @@ export const EntityCard = React.memo(function EntityCard({
   return (
     <article
       className={cn(
-        'group relative flex h-full flex-col rounded-2xl border border-border/80 bg-card p-5 transition-all duration-300',
+        'group relative flex h-full flex-col border border-border/80 bg-card transition-all duration-300',
+        compact ? 'rounded-xl p-4' : 'rounded-2xl p-5',
         theme.borderHover,
         theme.glow,
         className
@@ -219,15 +222,20 @@ export const EntityCard = React.memo(function EntityCard({
         background: `linear-gradient(135deg, var(--card) 0%, ${theme.glowBg || 'var(--card)'} 100%)`,
       }}
     >
-      <div className="mb-4 flex items-start justify-between gap-3">
+      <div className={cn('flex items-start justify-between gap-3', compact ? 'mb-3' : 'mb-4')}>
         <div className="min-w-0 flex-1">
-          <div className="mb-2 flex items-center gap-2">
+          <div className={cn('flex items-center gap-2', compact ? 'mb-1.5' : 'mb-2')}>
             {icon && (
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-105">
                 {icon}
               </span>
             )}
-            <h3 className="line-clamp-2 text-base font-bold leading-snug text-foreground transition-colors group-hover:text-primary">
+            <h3
+              className={cn(
+                'line-clamp-2 font-bold leading-snug text-foreground transition-colors group-hover:text-primary',
+                compact ? 'text-sm' : 'text-base'
+              )}
+            >
               <Link to={to} state={linkState} className="focus:outline-none">
                 <span className="absolute inset-0" aria-hidden="true" />
                 {title}
@@ -235,12 +243,13 @@ export const EntityCard = React.memo(function EntityCard({
             </h3>
           </div>
           {subtitleParts.length > 0 ? (
-            <div className="mt-2 flex flex-wrap gap-1.5">
+            <div className={cn('flex flex-wrap', compact ? 'mt-1.5 gap-1' : 'mt-2 gap-1.5')}>
               {subtitleParts.map((part, idx) => (
                 <span
                   key={idx}
                   className={cn(
-                    'inline-flex items-center rounded-lg border px-2.5 py-0.5 text-[10px] font-semibold leading-normal tracking-wide',
+                    'inline-flex items-center rounded-lg border py-0.5 font-semibold leading-normal tracking-wide',
+                    compact ? 'px-2 text-[9px]' : 'px-2.5 text-[10px]',
                     idx === 0
                       ? theme.badge
                       : 'border-border/50 bg-muted/40 text-muted-foreground/80'
@@ -252,7 +261,8 @@ export const EntityCard = React.memo(function EntityCard({
             </div>
           ) : subtitle ? (
             <span className={cn(
-              'mt-2 inline-flex items-center rounded-lg border px-2.5 py-0.5 text-[10px] font-semibold leading-normal tracking-wide',
+              'mt-2 inline-flex items-center rounded-lg border py-0.5 font-semibold leading-normal tracking-wide',
+              compact ? 'px-2 text-[9px]' : 'px-2.5 text-[10px]',
               theme.badge
             )}>
               {subtitle}
@@ -260,17 +270,38 @@ export const EntityCard = React.memo(function EntityCard({
           ) : null}
         </div>
         <div className="relative z-10 shrink-0">
-          <FavoriteButton entityType={entityType} entityId={entityId} className="h-9 w-9 border border-border/60 bg-background/50 p-2 backdrop-blur-xs transition-colors hover:bg-background" />
+          <FavoriteButton
+            entityType={entityType}
+            entityId={entityId}
+            className={cn(
+              'border border-border/60 bg-background/50 backdrop-blur-xs transition-colors hover:bg-background',
+              compact ? 'h-8 w-8 p-1.5' : 'h-9 w-9 p-2'
+            )}
+          />
         </div>
       </div>
 
       {description && (
-        <p className="mb-4 line-clamp-3 text-sm leading-relaxed text-muted-foreground/90">{description}</p>
+        <p
+          className={cn(
+            'leading-relaxed text-muted-foreground/90',
+            compact ? 'mb-3 line-clamp-2 text-xs' : 'mb-4 line-clamp-3 text-sm'
+          )}
+        >
+          {description}
+        </p>
       )}
 
-      <div className={cn('mt-auto flex items-center justify-between border-t pt-3.5', theme.line)}>
-        <span className="text-[11px] font-medium text-muted-foreground/75">Clique para consultar</span>
-        <span className="inline-flex items-center gap-0.5 text-xs font-bold uppercase tracking-wider text-primary transition-all duration-300">
+      <div className={cn('mt-auto flex items-center justify-between border-t', compact ? 'pt-3' : 'pt-3.5', theme.line)}>
+        <span className={cn('font-medium text-muted-foreground/75', compact ? 'text-[10px]' : 'text-[11px]')}>
+          Clique para consultar
+        </span>
+        <span
+          className={cn(
+            'inline-flex items-center gap-0.5 font-bold uppercase tracking-wider text-primary transition-all duration-300',
+            compact ? 'text-[10px]' : 'text-xs'
+          )}
+        >
           Abrir
           <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>

@@ -77,6 +77,7 @@ export type CommercialMedicationSubclass =
   | 'gi_pancreatic_enzyme'
   | 'gi_hepatobiliary'
   | 'gi_orexigenic'
+  | 'analgesic_nonopioid'
   | 'analgesic_opioid_combo'
   | 'sedative_anesthetic'
   | 'neuro_anticonvulsant'
@@ -145,6 +146,8 @@ export interface CommercialMedicationProduct {
   strength?: CommercialOticStrength;
   presentations: string[];
   activeComponents: string[];
+  /** Grafias alternativas usadas somente para busca; não representam ingredientes adicionais. */
+  searchAliases?: string[];
   labelCompositionSummary: string;
   labelDirections: string;
   dosageGuidance?: CommercialMedicationDosageGuidance;

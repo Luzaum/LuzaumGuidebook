@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
+import { AnimatePresence, motion } from 'framer-motion';
 import {
   Calculator,
   ChevronRight,
   FileText,
+  Fish,
   Home,
   Info,
+  Stethoscope,
   Users,
   Utensils,
 } from 'lucide-react';
@@ -15,11 +18,15 @@ import Dashboard from './pages/Dashboard';
 import NewCalculation from './pages/NewCalculation';
 import Patients from './pages/Patients';
 import Foods from './pages/Foods';
+import CommercialDietsPage from './pages/CommercialDietsPage';
 import Reports from './pages/Reports';
 import BcsGuide from './pages/BcsGuide';
 import NaturalFoods from './pages/NaturalFoods';
 import PatientHistoryDetail from './pages/PatientHistoryDetail';
 import ReportDetail from './pages/ReportDetail';
+import Hospitalized from './pages/Hospitalized';
+import HumanOmega3Page from './pages/HumanOmega3Page';
+import SupplementCatalogPage from './pages/SupplementCatalogPage';
 import { cn } from './lib/utils';
 import './index.css';
 
@@ -30,8 +37,10 @@ const MODULE_LOGO = '/apps/nutricaovet.png';
 const navigation = [
   { name: 'Visão geral', shortName: 'Início', path: '/', icon: Home },
   { name: 'Novo cálculo', shortName: 'Novo', path: '/new', icon: Calculator },
+  { name: 'Rações comerciais', shortName: 'Rações', path: '/commercial', icon: Utensils },
+  { name: 'Hospitalizados', shortName: 'Internados', path: '/hospitalized', icon: Stethoscope },
   { name: 'Pacientes', shortName: 'Pacientes', path: '/patients', icon: Users },
-  { name: 'Alimentos', shortName: 'Alimentos', path: '/foods', icon: Utensils },
+  { name: 'Base de alimentos', shortName: 'Alimentos', path: '/foods', icon: FileText },
   { name: 'Relatórios', shortName: 'Relatórios', path: '/reports', icon: FileText },
   { name: 'Guia de ECC', shortName: 'ECC', path: '/bcs', icon: Info },
 ];
@@ -117,11 +126,11 @@ function MobileHeader() {
 
 function MobileNav() {
   const location = useLocation();
-  const mobileItems = navigation.slice(0, 6);
+  const mobileItems = navigation;
 
   return (
     <nav className="energia-vet-mobile-nav fixed inset-x-0 bottom-0 z-40 border-t border-border bg-card/95 px-2 pb-[max(0.5rem,env(safe-area-inset-bottom))] pt-2 backdrop-blur lg:hidden">
-      <div className="mx-auto grid max-w-3xl grid-cols-6 gap-0.5">
+      <div className="mx-auto flex max-w-3xl items-center justify-between gap-0.5 overflow-x-auto no-scrollbar">
         {mobileItems.map((item) => {
           const Icon = item.icon;
           const href = modulePath(item.path);
@@ -133,7 +142,7 @@ function MobileNav() {
               to={href}
               aria-current={isActive ? 'page' : undefined}
               className={cn(
-                'flex min-h-12 min-w-0 flex-col items-center justify-center gap-1 rounded-lg px-0.5 py-1 text-[9px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring sm:text-[10px]',
+                'flex min-h-12 min-w-[56px] flex-1 flex-col items-center justify-center gap-1 rounded-lg px-1 py-1 text-[9px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-ring sm:text-[10px]',
                 isActive ? 'bg-primary/10 text-primary' : 'text-muted-foreground',
               )}
             >
@@ -162,15 +171,32 @@ function Layout({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function App() {
+function AnimatedRoutes() {
+  const location = useLocation();
+  const pathSegment = location.pathname.replace(BASE_ROUTE, '').split('/').filter(Boolean)[0] || 'dashboard';
+
   return (
-    <>
-      <Layout>
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={pathSegment}
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full"
+      >
         <Routes>
           <Route index element={<Dashboard />} />
           <Route path="new/*" element={<NewCalculation />} />
           <Route path="patients" element={<Patients />} />
           <Route path="patients/:patientKey" element={<PatientHistoryDetail />} />
+          <Route path="commercial" element={<CommercialDietsPage />} />
+          <Route path="racoes" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
+          <Route path="racoes-comerciais" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
+          <Route path="hospitalized" element={<Hospitalized />} />
+          <Route path="internados" element={<Navigate to={`${BASE_ROUTE}/hospitalized`} replace />} />
+          <Route path="omega3" element={<HumanOmega3Page />} />
+          <Route path="suplementos" element={<SupplementCatalogPage />} />
           <Route path="bcs" element={<BcsGuide />} />
           <Route path="foods" element={<Foods />} />
           <Route path="foods/natural" element={<NaturalFoods />} />
@@ -178,6 +204,16 @@ export default function App() {
           <Route path="reports/:reportId" element={<ReportDetail />} />
           <Route path="*" element={<Navigate to={BASE_ROUTE} replace />} />
         </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
+export default function App() {
+  return (
+    <>
+      <Layout>
+        <AnimatedRoutes />
       </Layout>
       <Toaster position="top-right" richColors />
     </>

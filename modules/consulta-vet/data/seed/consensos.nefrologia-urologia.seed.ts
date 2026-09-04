@@ -258,7 +258,7 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     tags: ['Terminologia', 'ITU', 'Bacteriúria', 'Cistite', 'Pielonefrite', 'Delphi'],
     pdfUrl: 'https://onlinelibrary.wiley.com/doi/10.1111/jsap.70127',
     pdfFileName: 'terminologia-infeccoes-urinarias-2026',
-    storagePath: 'external/terminologia-infeccoes-urinarias-2026',
+    storagePath: 'external/terminologia-infecções-urinarias-2026',
     summary:
       'Consenso internacional de 2026 que padroniza 29 termos usados nas infecções urinárias de cães e gatos.',
     articleSummaryRichText:

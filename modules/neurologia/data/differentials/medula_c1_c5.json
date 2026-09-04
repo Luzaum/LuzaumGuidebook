@@ -1,0 +1,203 @@
+[
+  {
+    "name": "Extrusão discal cervical Hansen tipo I (C1–C5)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["severe_cervical_pain", "cervical_instability_trauma"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Dor cervical intensa com postura típica de cabeça baixa e relutância em mover pescoço sugere extrusão discal cervical aguda (Dewey & da Costa, cap. 13).",
+      "Root signature em membro torácico (claudicação com membro flexionado) pode acompanhar extrusão lateral de disco cervical."
+    ],
+    "diagnostics": [
+      {
+        "test": "Radiografias cervicais (triagem)",
+        "priority": "MEDIA",
+        "whatItAssesses": "Discos calcificados e alinhamento vertebral.",
+        "expectedFindings": "Material discal mineralizado entre vértebras cervicais craniais.",
+        "limitations": "Não quantifica compressão medular; TC/RM necessárias se déficit neurológico."
+      },
+      {
+        "test": "TC ou RM cervical",
+        "priority": "ALTA",
+        "whatItAssesses": "Localiza compressão extradural e edema medular.",
+        "expectedFindings": "Extrusão focal com compressão do cordão em C2–C5.",
+        "limitations": "Requer anestesia/sedação."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": [
+          "Analgesia multimodal e confinamento estrito",
+          "Evitar manipulação cervical forçada",
+          "Avaliar déficit motor e nocicepção profunda"
+        ],
+        "cautions": ["Não forçar flexo-extensão cervical se instabilidade suspeita"]
+      },
+      "DEFINITIVO": {
+        "plan": [
+          "Confinamento 3–4 semanas se dor isolada sem déficit",
+          "Ventral slot ou descompressão se paresia/tetraparesia ou falha conservadora"
+        ],
+        "cautions": ["Recidiva ~30–40% com manejo médico isolado em algumas séries"]
+      }
+    }
+  },
+  {
+    "name": "Subluxação atlantoaxial (instabilidade C1–C2)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["AGUDO", "SUBAGUDO", "CRONICO"],
+      "ageStages": ["PEDIATRICO", "ADULTO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["cervical_instability_trauma", "severe_cervical_pain", "respiratory_compromise"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Toy/miniatura jovem com tetraparesia, dor cervical e possível hipoplasia/aplasia do dente — padrão clássico de subluxação atlantoaxial (Dewey & da Costa, cap. 13).",
+      "Manipulação cervical agressiva pode piorar compressão; preferir avaliação de amplitude com isca alimentar."
+    ],
+    "diagnostics": [
+      {
+        "test": "Radiografias laterais flexão/extensão (C1–C2)",
+        "priority": "ALTA",
+        "whatItAssesses": "Instabilidade atlantoaxial e espaço arco atlas–eixo.",
+        "expectedFindings": "Aumento do espaço entre arco de C1 e processo espinhoso de C2.",
+        "limitations": "Sedação cuidadosa; RM se déficit neurológico."
+      },
+      {
+        "test": "RM cervical",
+        "priority": "ALTA",
+        "whatItAssesses": "Grau de compressão medular e sinal intramedular.",
+        "expectedFindings": "Compressão dorsal em C1–C2 com possível hiperintensidade T2 caudal.",
+        "limitations": "Custo e anestesia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": [
+          "Imobilização cervical externa",
+          "Analgesia",
+          "Monitorar ventilação se tetraplegia"
+        ],
+        "cautions": ["Evitar tração cervical"]
+      },
+      "DEFINITIVO": {
+        "plan": [
+          "Fixação ventral C1–C2 ou colar rígido prolongado conforme gravidade",
+          "Cirurgia se deterioração ou instabilidade documentada"
+        ],
+        "cautions": ["Sinais >30 dias antes do tratamento associam-se a pior prognóstico em séries"]
+      }
+    }
+  },
+  {
+    "name": "Mielopatia espondilótica cervical (Wobbler / CSM)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": [],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Doberman de meia-idade com marcha espástica em membros torácicos e ataxia pélvica — compressão dinâmica/estática C5–C7 (Dewey & da Costa, cap. 13).",
+      "Great Dane jovem pode apresentar forma óssea com estenose vertebral e artropatia facetária."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM cervical (incluir transição C7–T2)",
+        "priority": "ALTA",
+        "whatItAssesses": "Compressões múltiplas, disco e componente ósseo.",
+        "expectedFindings": "Estreitamento canal em C5–C6/C6–C7; lesões adicionais em raças gigantes.",
+        "limitations": "Posicionamento neutro vs flexão pode alterar grau de compressão."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Restrição de atividade", "Analgesia se dor cervical"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": [
+          "Descompressão/discartrodesia conforme localização",
+          "Fisioterapia e controle de peso"
+        ],
+        "cautions": ["Múltiplos sítios de compressão são comuns em raças gigantes"]
+      }
+    }
+  },
+  {
+    "name": "Evento isquêmico medular cervical (FCE / infarto)",
+    "category": "VASCULAR",
+    "rules": {
+      "course": ["PERAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["inicio_agudo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Déficit assimétrico de instalação peraguda, mínima dor espinhal, sugere FCE — comum após exercício (Dewey & da Costa, cap. 13).",
+      "Gatos idosos podem apresentar ventroflexão cervical com lesão ventral C1–C2 na RM."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM cervical",
+        "priority": "ALTA",
+        "whatItAssesses": "Lesão intramedular focal compatível com infarto.",
+        "expectedFindings": "Hiperintensidade T2 segmentar, often assimetrica, pouca compressão extradural.",
+        "limitations": "Sinal pode ser sutil nas primeiras horas."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Suporte", "Analgesia se indicada", "Evitar corticoide rotineiro"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Reabilitação precoce", "Prognóstico favorável se nocicepção preservada"],
+        "cautions": ["Choque medular pode mascarar reflexos por 12–48 h em lesões UMN"]
+      }
+    }
+  },
+  {
+    "name": "Mielite / meningomielite cervical",
+    "category": "INFLAMATORIA",
+    "rules": {
+      "course": ["SUBAGUDO", "AGUDO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "PEDIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Progressão de déficit com possível febre ou doença sistêmica sugere mielite infecciosa/imunomediada.",
+      "Dor cervical pode estar presente, mas padrão menos típico que extrusão discal pura."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM + análise de LCR",
+        "priority": "ALTA",
+        "whatItAssesses": "Realce meníngeo/intramedular e citologia.",
+        "expectedFindings": "Realce multifocal ou segmentar; pleocitose no LCR.",
+        "limitations": "Diagnóstico etiológico exige painel infeccioso/imunológico."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Estabilização", "Analgesia", "Antimicrobiano se suspeita infecciosa aguda"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Imunomodulação ou terapia específica conforme etiologia"],
+        "cautions": ["Não atrasar RM/LCR se progressão rápida"]
+      }
+    }
+  }
+]

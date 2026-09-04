@@ -36,7 +36,7 @@ export const infectiousAntiparasiticMedicationsSeed: MedicationRecord[] = [
       'Meningite bacteriana — penetração no sistema nervoso central limitada.',
     ],
     cautions: [
-      '⚠️ Gatos: comprimido/cápsula sólida NUNCA “a seco” — risco de esofagite, ulceração e estenose esofágica.',
+      '⚠️ Gatos: comprimido/cápsula sólida NUNCA “a seco” — risco de esofagite, úlceração e estenose esofágica.',
       'Evitar associação com eritromicina, macrolídeos, lincomicina ou cloranfenicol (antagonismo/disputa ribossomal).',
       'Potencialização de bloqueadores neuromusculares não despolarizantes.',
       'Infusão intravenosa: nunca bolus concentrado; diluir e infundir lentamente (ver apresentações).',
@@ -403,7 +403,7 @@ export const infectiousAntiparasiticMedicationsSeed: MedicationRecord[] = [
         variant: 'caution',
         title: '⚠️ Gatos — lesão esofágica',
         body:
-          'NÃO administrar comprimido ou cápsula “a seco”. Clindamicina sólida retida no esôfago felino pode causar esofagite, ulceração e estenose. Oferecer imediatamente água ou alimento úmido após formas sólidas.',
+          'NÃO administrar comprimido ou cápsula “a seco”. Clindamicina sólida retida no esôfago felino pode causar esofagite, úlceração e estenose. Oferecer imediatamente água ou alimento úmido após formas sólidas.',
       },
       {
         kind: 'clinicalTable',

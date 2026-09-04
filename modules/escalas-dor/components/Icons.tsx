@@ -1,9 +1,9 @@
-
 import React from 'react';
+import { PAIN_SCALE_IMAGES } from '../data/pain-scale-images';
 
 export const AppLogo = ({ className }: { className?: string }) => (
   <img
-    src="https://res.cloudinary.com/dwta1roq1/image/upload/w_200,q_auto,f_auto,e_background_removal/logo-analgesia/app"
+    src={PAIN_SCALE_IMAGES.logo}
     alt="Logo de Analgesia e controle de dor veterinária"
     className={className}
     width="200"

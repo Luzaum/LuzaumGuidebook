@@ -1,4 +1,5 @@
-// Gerado automaticamente a partir de modules/neurologia/data/diseases.ts
+// Catálogo estático para o motor de diferenciais (analysisDiseaseCatalog.ts).
+// Edite este arquivo diretamente ou regenere via script interno, se disponível.
 // Nao editar manualmente; regenere a partir da lista-mestre quando necessario.
 
 export const ANALYSIS_DISEASE_CATALOG_RAW = [

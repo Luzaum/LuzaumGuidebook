@@ -171,17 +171,6 @@ function buildPatientSummary(s: any): string {
     geriatric: 'Geriatrico',
   }
   const lifeStage = s?.patient?.lifeStage ? lifeStageLabels[s.patient.lifeStage] || 'Não informado' : 'Não informado'
-  const weight = s?.patient?.weightKg ? `${s.patient.weightKg} kg` : 'Não informado'
-  const comorbidities =
-    Array.isArray(s?.patient?.comorbidities) && s.patient.comorbidities.length
-      ? s.patient.comorbidities
-          .map((item: any) => {
-            const label = typeof item === 'string' ? item : item?.label || item?.key || 'Comorbidade não informada'
-            const severity = typeof item === 'object' && item?.severity ? ` (${item.severity})` : ''
-            return `${label}${severity}`
-          })
-          .join(', ')
-      : 'Nenhuma informada'
   const physiologicConditions = [
     s?.patient?.pregnant ? 'Gestante' : null,
     s?.patient?.lactating ? 'Lactante' : null,
@@ -193,9 +182,7 @@ function buildPatientSummary(s: any): string {
     `Sexo: ${sex}`,
     `Estado reprodutivo: ${reproStatus}`,
     `Faixa etaria: ${lifeStage}`,
-    `Peso: ${weight}`,
     `Condicoes fisiologicas: ${physiologicConditions.length > 0 ? physiologicConditions.join(', ') : 'Nenhuma informada'}`,
-    `Comorbidades: ${comorbidities}`,
   ].join('\n')
 }
 
@@ -211,29 +198,11 @@ function buildHistorySummary(s: any): string {
     ? EVOLUTION_LABELS[s.complaint.evolutionPattern as keyof typeof EVOLUTION_LABELS] || 'Não informado'
     : 'Não informado'
 
-  const contextFlags: string[] = []
-  if (s?.complaint?.trauma) contextFlags.push('Trauma')
-  if (s?.complaint?.toxin) contextFlags.push('Toxina')
-  if (s?.complaint?.fever) contextFlags.push('Febre')
-  if (s?.complaint?.ectoparasiticideExposure) contextFlags.push('Exposicao a ectoparasiticidas')
-  if (s?.complaint?.systemicDisease) contextFlags.push('Doença sistêmica')
-  if (s?.complaint?.recentSurgeryAnesthesia) contextFlags.push('Cirurgia/anestesia recente')
-  if (s?.complaint?.vaccinationOrTravel) contextFlags.push('Vacinacao/viagem/endemico')
-  if (s?.complaint?.videoOfEpisode) contextFlags.push('Video do episodio')
-  if (s?.complaint?.respiratoryGiSigns) contextFlags.push('Sinais respiratorios ou GI')
-
-  const redFlags =
-    Array.isArray(s?.complaint?.redFlags) && s.complaint.redFlags.length
-      ? s.complaint.redFlags.map(humanizeRedFlag)
-      : []
-
   return [
     `Sinais principais: ${chiefComplaints.length > 0 ? chiefComplaints.join(', ') : 'Nenhum informado'}`,
     `Padrao temporal: ${temporalPattern}`,
     `Evolucao: ${evolutionPattern}`,
-    `Contexto clínico: ${contextFlags.length > 0 ? contextFlags.join(', ') : 'Sem contexto adicional marcado'}`,
-    `Red flags: ${redFlags.length > 0 ? redFlags.join(', ') : 'Nenhuma red flag marcada'}`,
-    `Observacoes adicionais: ${s?.complaint?.contextNotes?.trim() || 'Nenhuma observacao livre informada'}`,
+    `Observacoes: ${s?.complaint?.contextNotes?.trim() || 'Nenhuma observacao informada'}`,
   ].join('\n')
 }
 

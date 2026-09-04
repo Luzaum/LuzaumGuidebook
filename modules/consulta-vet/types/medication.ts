@@ -104,7 +104,7 @@ export interface MedicationRecord extends ContentFlag {
   routes?: string[];
   doses: MedicationDose[];
   presentations: MedicationPresentation[];
-  clinicalNotesRichText: string;
+  clinicalNotesRichText?: string;
   /** Blocos estruturados (tabelas, destaques) renderizados antes do HTML de observações clínicas. */
   clinicalStructuredBlocks?: MedicationStructuredBlock[];
   adminNotesText?: string;

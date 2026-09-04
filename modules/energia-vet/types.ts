@@ -1,3 +1,5 @@
+import type { NutritionClinicalRecord } from './lib/clinicalSnapshotTypes'
+
 export type Species = 'dog' | 'cat'
 export type SpeciesScope = Species | 'both' | 'unknown'
 export type Sex = 'male' | 'female'
@@ -95,6 +97,7 @@ export interface EnergyCalculation {
   specialBreedObservation?: 'none' | 'great_dane' | 'newfoundland'
   litterSize?: number
   lactationWeek?: number
+  gestationWeek?: number
   gestationPhase?: 'first_4_weeks' | 'last_5_weeks'
   energyProfileMode?: 'fediaf' | 'clinical'
   merFormula?: string[]
@@ -166,6 +169,10 @@ export interface FoodItem {
   nutrientsDryMatter: NutrientAmountMap
   missingNutrients: string[]
   notes: string[]
+  lifeStage?: 'PUPPY' | 'ADULT' | 'SENIOR' | 'ALL'
+  neuterStatus?: 'NEUTERED' | 'INTACT' | 'ANY'
+  isTherapeutic?: boolean
+  therapeuticIndications?: string[]
 }
 
 export interface RequirementProfile {
@@ -229,8 +236,8 @@ export interface DietPlan {
   gramsPerDay?: number
   formulationMode?: 'manual' | 'complement'
   programmedFeeding?: ProgrammedFeedingPlan
-  dietTransition?: import('./clinicalSnapshotTypes').DietTransitionConfig
-  hydrationPlan?: import('./clinicalSnapshotTypes').HydrationPlanConfig
+  dietTransition?: import('./lib/clinicalSnapshotTypes').DietTransitionConfig
+  hydrationPlan?: import('./lib/clinicalSnapshotTypes').HydrationPlanConfig
 }
 
 export interface DietNutrientBreakdown {
@@ -428,7 +435,7 @@ export type {
   NutritionEnteralSnapshot,
   NutritionParenteralSnapshot,
   NutritionRefeedingSnapshot,
-} from './clinicalSnapshotTypes'
+} from './lib/clinicalSnapshotTypes'
 
 export interface StoredCalculationReport {
   id: string

@@ -1,52 +1,61 @@
 import React, { useState } from 'react';
-import { Scale, Category } from '../types';
+import { Scale } from '../types';
 import AssessmentRenderer from '../components/AssessmentRenderer';
-import ImagePlaceholder from '../components/ImagePlaceholder';
+import ScaleImage from '../components/ImagePlaceholder';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Info } from 'lucide-react';
+import { AlertCircle, ArrowLeft, ArrowRight, ChevronDown, ChevronUp, CheckCircle, Info } from 'lucide-react';
 
 interface AssessmentScreenProps {
   scale: Scale;
+  answers: Record<string, number | string>;
+  onAnswersChange: (answers: Record<string, number | string>) => void;
   onSubmit: (answers: Record<string, number | string>) => void;
   onBack: () => void;
 }
 
 const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
   scale,
+  answers,
+  onAnswersChange,
   onSubmit,
   onBack,
 }) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
-  const [answers, setAnswers] = useState<Record<string, number | string>>({});
   const [showProtocol, setShowProtocol] = useState(false);
-  const [direction, setDirection] = useState<1 | -1>(1); // 1 = forward, -1 = backward
+  const [direction, setDirection] = useState<1 | -1>(1);
+  const [validationMessage, setValidationMessage] = useState<string | null>(null);
 
   const categories = scale.categories;
   const currentCategory = categories[currentStepIndex];
-  
+
   const isFirstStep = currentStepIndex === 0;
   const isLastStep = currentStepIndex === categories.length - 1;
 
   const handleAnswerChange = (questionId: string, value: number | string) => {
-    setAnswers((prev) => ({
-      ...prev,
+    setValidationMessage(null);
+    onAnswersChange({
+      ...answers,
       [questionId]: value,
-    }));
+    });
   };
 
   const handleNext = () => {
-    // Validate if current category questions are answered (optional, let's keep it friendly but alert)
     const currentQuestions = currentCategory.questions;
     const unanswered = currentQuestions.filter((q) => answers[q.id] === undefined);
 
     if (unanswered.length > 0 && currentCategory.id !== 'mobility') {
-      alert('Por favor, responda todas as questões desta seção antes de avançar.');
+      setValidationMessage(
+        unanswered.length === 1
+          ? 'Falta responder 1 item desta seção.'
+          : `Faltam responder ${unanswered.length} itens desta seção.`,
+      );
       return;
     }
 
     if (!isLastStep) {
       setDirection(1);
       setCurrentStepIndex((prev) => prev + 1);
+      setValidationMessage(null);
     } else {
       onSubmit(answers);
     }
@@ -56,6 +65,7 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
     if (!isFirstStep) {
       setDirection(-1);
       setCurrentStepIndex((prev) => prev - 1);
+      setValidationMessage(null);
     }
   };
 
@@ -89,8 +99,9 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
   return (
     <div className="max-w-3xl mx-auto px-4 space-y-6">
       {/* Header and Back navigation */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-850">
+      <div className="hidden lg:flex lg:items-center justify-between gap-4 pb-4 border-b border-slate-100 dark:border-slate-850">
         <button
+          type="button"
           onClick={onBack}
           className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-slate-500 hover:text-teal-500 dark:text-slate-400 dark:hover:text-teal-400 transition-colors self-start"
         >
@@ -108,6 +119,16 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
         </div>
       </div>
 
+      {isFirstStep && scale.compositeImageUrl && (
+        <div className="mb-2">
+          <ScaleImage
+            src={scale.compositeImageUrl}
+            alt={`Referência visual — ${scale.name}`}
+            className="max-h-[320px]"
+          />
+        </div>
+      )}
+
       {/* Progress Bar */}
       <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
         <motion.div
@@ -118,9 +139,32 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
         />
       </div>
 
+      <div className="dorvet-step-scroll flex gap-1.5 overflow-x-auto pb-1" aria-label="Progresso das seções">
+        {categories.map((category, index) => {
+          const current = index === currentStepIndex;
+          const completed = index < currentStepIndex;
+          return (
+            <span
+              key={category.id}
+              aria-current={current ? 'step' : undefined}
+              className={`min-w-max rounded-full px-3 py-1.5 text-[10px] font-black transition-colors ${
+                current
+                  ? 'bg-teal-500 text-white shadow-sm shadow-teal-500/20'
+                  : completed
+                    ? 'bg-teal-500/10 text-teal-700 dark:text-teal-300'
+                    : 'bg-slate-100 text-slate-400 dark:bg-slate-800/70 dark:text-slate-500'
+              }`}
+            >
+              {index + 1}. {category.name}
+            </span>
+          );
+        })}
+      </div>
+
       {/* Collapsible Assessment Protocol Instruction Guide */}
       <div className="border border-slate-200/80 bg-white/60 dark:border-slate-800 dark:bg-slate-900/40 rounded-2xl overflow-hidden backdrop-blur-sm">
         <button
+          type="button"
           onClick={() => setShowProtocol(!showProtocol)}
           className="w-full flex items-center justify-between px-5 py-3.5 text-left text-xs font-black uppercase tracking-widest text-slate-500 hover:text-teal-500 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"
         >
@@ -151,6 +195,24 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
         </AnimatePresence>
       </div>
 
+      <AnimatePresence>
+        {validationMessage && (
+          <motion.div
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            role="alert"
+            className="flex items-start gap-3 rounded-2xl border border-amber-400/35 bg-amber-50/90 px-4 py-3 text-amber-900 shadow-sm dark:border-amber-400/25 dark:bg-amber-950/35 dark:text-amber-100"
+          >
+            <AlertCircle className="mt-0.5 h-4 w-4 shrink-0 text-amber-600 dark:text-amber-400" />
+            <div>
+              <p className="text-xs font-black">Revise esta seção</p>
+              <p className="mt-0.5 text-xs leading-5 opacity-80">{validationMessage} Selecione a opção que melhor descreve o paciente.</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Slide transition container for the active category */}
       <div className="relative overflow-hidden min-h-[300px] border border-slate-200/80 bg-white/70 dark:border-slate-800/80 dark:bg-slate-900/60 p-6 rounded-2xl backdrop-blur-md">
         
@@ -169,7 +231,10 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
         {/* Optional Category Image */}
         {currentCategory.hasImage && (
           <div className="mb-6">
-            <ImagePlaceholder text={currentCategory.imageDescription ?? 'Ilustração de suporte para a categoria'} />
+            <ScaleImage
+              src={currentCategory.imageUrl}
+              text={currentCategory.imageDescription ?? 'Ilustração de suporte para a categoria'}
+            />
           </div>
         )}
 
@@ -195,37 +260,41 @@ const AssessmentScreen: React.FC<AssessmentScreenProps> = ({
         </AnimatePresence>
       </div>
 
-      {/* Navigation Buttons (Previous / Next) */}
-      <div className="flex items-center justify-between gap-4 pt-4">
-        <button
-          onClick={handlePrev}
-          disabled={isFirstStep}
-          className={`flex items-center gap-1.5 rounded-xl border px-5 py-3 text-xs font-black uppercase tracking-wider transition-all ${
-            isFirstStep
-              ? 'border-slate-100 text-slate-350 cursor-not-allowed dark:border-slate-850 dark:text-slate-600'
-              : 'border-slate-200 bg-white hover:border-slate-300 text-slate-600 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-slate-700'
-          }`}
-        >
-          <ArrowLeft className="h-4 w-4" />
-          <span>Anterior</span>
-        </button>
+      {/* Navigation Buttons (Previous / Next) — sticky so they stay reachable */}
+      <div className="sticky bottom-0 z-20 -mx-4 mt-2 border-t border-slate-200/80 bg-[#f4fffd]/95 px-4 py-3 backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-950/90 sm:mx-0 sm:rounded-2xl sm:border">
+        <div className="flex items-center justify-between gap-4">
+          <button
+            type="button"
+            onClick={handlePrev}
+            disabled={isFirstStep}
+            className={`flex items-center gap-1.5 rounded-xl border px-5 py-3 text-xs font-black uppercase tracking-wider transition-all ${
+              isFirstStep
+                ? 'border-slate-100 text-slate-350 cursor-not-allowed dark:border-slate-850 dark:text-slate-600'
+                : 'border-slate-200 bg-white hover:border-slate-300 text-slate-600 dark:border-slate-800 dark:bg-slate-900/60 dark:text-slate-300 dark:hover:border-slate-700'
+            }`}
+          >
+            <ArrowLeft className="h-4 w-4" />
+            <span className="hidden min-[380px]:inline">Anterior</span>
+          </button>
 
-        <button
-          onClick={handleNext}
-          className="flex items-center gap-1.5 rounded-xl bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500 px-6 py-3 text-xs font-black uppercase tracking-wider text-white transition-all shadow-md shadow-teal-500/10 hover:shadow-teal-500/20"
-        >
-          {isLastStep ? (
-            <>
-              <span>Finalizar</span>
-              <CheckCircle className="h-4 w-4" />
-            </>
-          ) : (
-            <>
-              <span>Próximo</span>
-              <ArrowRight className="h-4 w-4" />
-            </>
-          )}
-        </button>
+          <button
+            type="button"
+            onClick={handleNext}
+            className="flex items-center gap-1.5 rounded-xl bg-teal-500 hover:bg-teal-600 dark:bg-teal-600 dark:hover:bg-teal-500 px-6 py-3 text-xs font-black uppercase tracking-wider text-white transition-all shadow-md shadow-teal-500/10 hover:shadow-teal-500/20"
+          >
+            {isLastStep ? (
+              <>
+                <span>Finalizar avaliação</span>
+                <CheckCircle className="h-4 w-4" />
+              </>
+            ) : (
+              <>
+                <span>Próximo</span>
+                <ArrowRight className="h-4 w-4" />
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

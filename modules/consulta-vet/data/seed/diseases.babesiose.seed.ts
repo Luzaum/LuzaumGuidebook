@@ -15,6 +15,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
   ],
   species: ['dog'],
   category: 'infectologia',
+  categories: ['parasitologia'],
   tags: [
     'Carrapato',
     'Rhipicephalus sanguineus',
@@ -72,7 +73,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
           label: 'Esfregaço de ponta de orelha',
           timing: 'Na admissão',
           detail:
-            'Sangue capilar periférico da margem interna da orelha para visualização de morulas/merozoítos — sensibilidade limitada se parasitemia baixa (Nelson & Couto, 6ª ed.; BSAVA Emergency and Critical Care).',
+            'Sangue capilar periférico da margem interna da orelha para visualização de mórulas/merozoítos — sensibilidade limitada se parasitemia baixa (Nelson & Couto, 6ª ed.; BSAVA Emergency and Critical Care).',
         },
         {
           label: 'Hemograma e triagem bioquímica',
@@ -251,7 +252,7 @@ export const babesioseCaninaRecord: DiseaseRecord = {
       title: 'Esfregaço sanguíneo periférico (ponta de orelha)',
       purpose: 'Detectar merozoítos piriformes quando a parasitemia é detectável.',
       description:
-        'Sangue capilar da margem interna da orelha aumenta sensibilidade. Visualiza morulas/merozoítos em formato de pera (Nelson & Couto, 6ª ed.).',
+        'Sangue capilar da margem interna da orelha aumenta sensibilidade. Visualiza mórulas/merozoítos em formato de pera (Nelson & Couto, 6ª ed.).',
       interpretation: 'Parasita visível confirma infecção ativa, mas a espécie nem sempre é distinguível morfologicamente.',
       limitations: 'Sensibilidade baixa em parasitemias baixas ou após tratamento parcial; esfregaço negativo não exclui.',
     },

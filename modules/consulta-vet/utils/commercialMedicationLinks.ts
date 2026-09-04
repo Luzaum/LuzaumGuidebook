@@ -6,7 +6,7 @@ export function normalizeMedicationLinkText(value: string): string {
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .toLowerCase()
-    .replace(/\b(cloridrato|citrato|sodico|sodica|monoidratado|monoidratada|uso humano|uso veterinario)\b/g, ' ')
+    .replace(/\b(cloridrato|citrato|sodico|sodica|monoidratado|monoidratada|uso humano|uso veterinário)\b/g, ' ')
     .replace(/[^a-z0-9]+/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();

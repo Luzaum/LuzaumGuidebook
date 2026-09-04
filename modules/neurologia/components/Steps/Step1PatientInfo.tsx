@@ -3,28 +3,13 @@ import { motion } from 'framer-motion'
 import { SpeciesPortraitCards } from '@/components/SpeciesPortraitCards'
 import { Card } from '../UI/Card'
 import type { Patient } from '../../stores/caseStore'
-import type { ComorbidityKey, ComorbidityItem, LifeStage } from '../../stores/caseStore'
+import type { LifeStage } from '../../stores/caseStore'
 import { normalizePatient } from '../../lib/validation/normalizePatient'
 
 interface Step1Props {
   patient: Patient
   setPatient: (patch: Partial<Patient>) => void
 }
-
-const COMORBIDITY_CONFIG: Record<ComorbidityKey, { label: string; description?: string }> = {
-  renal: { label: 'Nefropatia (DRC/IRA)', description: 'Insuficiência renal crônica ou aguda' },
-  hepática: { label: 'Hepatopatia', description: 'Doença hepática' },
-  cardíaca: { label: 'Cardiopatia', description: 'Doença cardíaca' },
-  endocrina: { label: 'Endocrinopatia', description: 'Distúrbios endócrinos' },
-  respiratória: { label: 'Pneumopatia', description: 'Doença respiratória' },
-  neuromuscular: { label: 'Neuromuscular', description: 'Doença neuromuscular' },
-  neoplasica: { label: 'Neoplasia', description: 'Neoplasia ativa' },
-  imunomediada: { label: 'Imunomediada', description: 'Doença imunomediada' },
-  hipertensão: { label: 'Hipertensão', description: 'Hipertensão arterial sistêmica' },
-  coagulopatia: { label: 'Coagulopatia', description: 'Distúrbio de coagulação' },
-}
-
-const COMORBIDITY_KEYS = Object.keys(COMORBIDITY_CONFIG) as ComorbidityKey[]
 
 const LIFE_STAGE_LABELS: Record<LifeStage, string> = {
   neonate: 'Neonato',
@@ -52,6 +37,10 @@ function clampInteger(value: string, min: number, max: number): number | null {
   return Math.max(min, Math.min(max, parsed))
 }
 
+function hasAge(patient: Patient): boolean {
+  return (patient.ageYears ?? 0) > 0 || (patient.ageMonths ?? 0) > 0
+}
+
 export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
   const handleSetPatient = (patch: Partial<Patient>) => {
     const merged = { ...patient, ...patch }
@@ -64,28 +53,14 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
     setPatient(normalized)
   }
 
-  const toggleComorbidity = (key: ComorbidityKey) => {
-    const current = patient.comorbidities
-    const existingIndex = current.findIndex((c) => c.key === key)
-
-    let newComorbidities: ComorbidityItem[]
-    if (existingIndex >= 0) {
-      newComorbidities = current.filter((c) => c.key !== key)
-    } else {
-      const config = COMORBIDITY_CONFIG[key]
-      newComorbidities = [...current, { key, label: config.label }]
-    }
-
-    setPatient({ comorbidities: newComorbidities })
-  }
-
-  const lifeStageLabel = patient.lifeStage ? LIFE_STAGE_LABELS[patient.lifeStage] : 'Não definido'
+  const lifeStageLabel = patient.lifeStage ? LIFE_STAGE_LABELS[patient.lifeStage] : 'Informe a idade'
+  const ageMissing = !hasAge(patient)
 
   return (
     <div className="space-y-8 pb-24">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h2 className="text-2xl font-bold text-foreground mb-2">Identificação do paciente</h2>
-        <p className="text-muted-foreground">Dados básicos para contextualizar o exame neurológico.</p>
+        <p className="text-muted-foreground">Espécie, idade e dados reprodutivos para contextualizar o exame.</p>
       </motion.div>
 
       <motion.section
@@ -106,9 +81,16 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       </motion.section>
 
       <Card>
+        <div className="mb-3 flex items-center justify-between gap-2">
+          <span className="text-sm font-medium text-foreground">Idade</span>
+          <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-200">
+            Obrigatório
+          </span>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end">
           <div>
-            <label className="text-sm font-medium text-muted-foreground mb-2 block">Idade (anos)</label>
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">Anos</label>
             <input
               type="number"
               min={0}
@@ -116,12 +98,14 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
               inputMode="numeric"
               value={patient.ageYears ?? ''}
               onChange={(e) => handleSetPatient({ ageYears: clampInteger(e.target.value, 0, 30) })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-3 text-foreground outline-none focus:ring-2 focus:ring-gold/50"
-              placeholder="Ex.: 12"
+              className={`w-full rounded-xl border bg-background px-3 py-3 text-foreground outline-none focus:ring-2 focus:ring-gold/50 ${
+                ageMissing ? 'border-amber-500/50' : 'border-border'
+              }`}
+              placeholder="Ex.: 8"
             />
           </div>
           <div>
-            <label className="text-sm font-medium text-muted-foreground mb-2 block">Idade (meses)</label>
+            <label className="text-sm font-medium text-muted-foreground mb-2 block">Meses (0–11)</label>
             <input
               type="number"
               min={0}
@@ -129,8 +113,10 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
               inputMode="numeric"
               value={patient.ageMonths ?? ''}
               onChange={(e) => handleSetPatient({ ageMonths: clampInteger(e.target.value, 0, 11) })}
-              className="w-full rounded-xl border border-border bg-background px-3 py-3 text-foreground outline-none focus:ring-2 focus:ring-gold/50"
-              placeholder="0 a 11"
+              className={`w-full rounded-xl border bg-background px-3 py-3 text-foreground outline-none focus:ring-2 focus:ring-gold/50 ${
+                ageMissing ? 'border-amber-500/50' : 'border-border'
+              }`}
+              placeholder="Ex.: 6"
             />
           </div>
           <div className="rounded-xl border border-gold/35 bg-gold/10 px-4 py-3">
@@ -139,20 +125,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
           </div>
         </div>
 
-        <div className="pt-5 mt-5 border-t border-border">
-          <label className="text-sm font-medium text-muted-foreground mb-2 block">Peso (kg)</label>
-          <input
-            type="number"
-            value={patient.weightKg || ''}
-            onChange={(e) =>
-              handleSetPatient({
-                weightKg: e.target.value ? Number.parseFloat(e.target.value) : null,
-              })
-            }
-            className="w-full bg-background border border-border rounded-xl p-3 text-foreground focus:ring-2 focus:ring-gold/50 outline-none"
-            placeholder="0,0 kg"
-          />
-        </div>
+        {ageMissing && (
+          <p className="mt-3 text-xs text-amber-200/90">Informe pelo menos anos ou meses para continuar.</p>
+        )}
       </Card>
 
       <Card>
@@ -164,7 +139,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 type="button"
                 onClick={() => handleSetPatient({ sex: 'male' })}
                 className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                  patient.sex === 'male' ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                  patient.sex === 'male'
+                    ? 'border-gold/65 bg-gold/12 text-gold'
+                    : 'border-border bg-background text-foreground hover:border-gold/40'
                 }`}
               >
                 Macho
@@ -173,7 +150,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 type="button"
                 onClick={() => handleSetPatient({ sex: 'female' })}
                 className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                  patient.sex === 'female' ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                  patient.sex === 'female'
+                    ? 'border-gold/65 bg-gold/12 text-gold'
+                    : 'border-border bg-background text-foreground hover:border-gold/40'
                 }`}
               >
                 Fêmea
@@ -188,7 +167,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 type="button"
                 onClick={() => handleSetPatient({ reproStatus: 'intact' })}
                 className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                  patient.reproStatus === 'intact' ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                  patient.reproStatus === 'intact'
+                    ? 'border-gold/65 bg-gold/12 text-gold'
+                    : 'border-border bg-background text-foreground hover:border-gold/40'
                 }`}
               >
                 Inteiro
@@ -197,7 +178,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                 type="button"
                 onClick={() => handleSetPatient({ reproStatus: 'neutered' })}
                 className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                  patient.reproStatus === 'neutered' ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                  patient.reproStatus === 'neutered'
+                    ? 'border-gold/65 bg-gold/12 text-gold'
+                    : 'border-border bg-background text-foreground hover:border-gold/40'
                 }`}
               >
                 Castrado
@@ -213,7 +196,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   type="button"
                   onClick={() => handleSetPatient({ pregnant: !patient.pregnant })}
                   className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                    patient.pregnant ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                    patient.pregnant
+                      ? 'border-gold/65 bg-gold/12 text-gold'
+                      : 'border-border bg-background text-foreground hover:border-gold/40'
                   }`}
                 >
                   Gestante
@@ -222,7 +207,9 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
                   type="button"
                   onClick={() => handleSetPatient({ lactating: !patient.lactating })}
                   className={`flex-1 rounded-xl border px-3 py-2 text-sm font-medium transition ${
-                    patient.lactating ? 'border-gold/65 bg-gold/12 text-gold' : 'border-border bg-background text-foreground hover:border-gold/40'
+                    patient.lactating
+                      ? 'border-gold/65 bg-gold/12 text-gold'
+                      : 'border-border bg-background text-foreground hover:border-gold/40'
                   }`}
                 >
                   Lactante
@@ -232,44 +219,6 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
           )}
         </div>
       </Card>
-
-      <section className="space-y-4">
-        <div>
-          <h3 className="text-lg font-semibold text-foreground mb-1">Comorbidades</h3>
-          <p className="text-sm text-muted-foreground">Selecione as comorbidades relevantes. A severidade foi removida desta etapa.</p>
-        </div>
-
-        <Card>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            {COMORBIDITY_KEYS.map((key) => {
-              const config = COMORBIDITY_CONFIG[key]
-              const isSelected = patient.comorbidities.some((c) => c.key === key)
-
-              return (
-                <motion.button
-                  key={key}
-                  type="button"
-                  whileTap={{ scale: 0.98 }}
-                  onClick={() => toggleComorbidity(key)}
-                  className={`text-left rounded-xl border p-3 transition ${
-                    isSelected
-                      ? 'border-gold/65 bg-gold/12'
-                      : 'border-border bg-background hover:border-gold/40'
-                  }`}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className={`mt-0.5 h-5 w-5 rounded border ${isSelected ? 'border-gold bg-gold/30' : 'border-border bg-background'}`} />
-                    <div>
-                      <div className={`font-medium ${isSelected ? 'text-gold' : 'text-foreground'}`}>{config.label}</div>
-                      {config.description && <p className="text-xs text-muted-foreground mt-1">{config.description}</p>}
-                    </div>
-                  </div>
-                </motion.button>
-              )
-            })}
-          </div>
-        </Card>
-      </section>
     </div>
   )
 }

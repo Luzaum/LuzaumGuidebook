@@ -1,0 +1,101 @@
+{
+  "summary": {
+    "total": 360,
+    "ok": 360,
+    "stillBad": 0,
+    "byClass": {
+      "analgesic": {
+        "total": 3,
+        "ok": 3,
+        "bad": 0
+      },
+      "antiinflammatory": {
+        "total": 4,
+        "ok": 4,
+        "bad": 0
+      },
+      "behavioral": {
+        "total": 1,
+        "ok": 1,
+        "bad": 0
+      },
+      "cardiologic": {
+        "total": 16,
+        "ok": 16,
+        "bad": 0
+      },
+      "dental": {
+        "total": 22,
+        "ok": 22,
+        "bad": 0
+      },
+      "dermatologic": {
+        "total": 92,
+        "ok": 92,
+        "bad": 0
+      },
+      "emergency": {
+        "total": 2,
+        "ok": 2,
+        "bad": 0
+      },
+      "endocrine": {
+        "total": 16,
+        "ok": 16,
+        "bad": 0
+      },
+      "gastrointestinal": {
+        "total": 39,
+        "ok": 39,
+        "bad": 0
+      },
+      "infectious": {
+        "total": 29,
+        "ok": 29,
+        "bad": 0
+      },
+      "neurologic": {
+        "total": 1,
+        "ok": 1,
+        "bad": 0
+      },
+      "nutraceutical": {
+        "total": 25,
+        "ok": 25,
+        "bad": 0
+      },
+      "oncologic": {
+        "total": 1,
+        "ok": 1,
+        "bad": 0
+      },
+      "ophthalmologic": {
+        "total": 29,
+        "ok": 29,
+        "bad": 0
+      },
+      "orthopedic": {
+        "total": 26,
+        "ok": 26,
+        "bad": 0
+      },
+      "parasiticide": {
+        "total": 47,
+        "ok": 47,
+        "bad": 0
+      },
+      "renal": {
+        "total": 6,
+        "ok": 6,
+        "bad": 0
+      },
+      "reproductive": {
+        "total": 1,
+        "ok": 1,
+        "bad": 0
+      }
+    }
+  },
+  "stillBad": [],
+  "generatedAt": "2026-08-26T13:47:49.178Z"
+}

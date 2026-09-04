@@ -341,6 +341,7 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
   },
   relatedConsensusSlugs: ['consensual-endocrinologia-aaha-diabetes-dogs-cats'],
   relatedDiseaseSlugs: [
+    'cetoacidose-diabetica-caes-gatos',
     'sindrome-cushing-caes',
     'hipertireoidismo',
     'insuficiencia-pancreatica-exocrina-caes-gatos',

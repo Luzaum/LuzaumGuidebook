@@ -117,7 +117,7 @@ export function evaluateClinicalMedicationCatalogStatus(
       ...base,
       editable: false,
       needsRegistration: true,
-      reason: `O modelo referencia a monografia "${resolved.canonicalMedicationId}", mas ela não está cadastrada no ConsultaVet.`,
+      reason: `O modelo referência a monografia "${resolved.canonicalMedicationId}", mas ela não está cadastrada no ConsultaVet.`,
       registrationTargets: ['medicamentos'],
     };
   }
@@ -240,7 +240,7 @@ export function getCommercialProductsByIds(ids: string[]): CommercialMedicationP
 function matchesPresentationFilter(presentation: MedicationPresentation, filter?: ClinicalMedicationDefinition['presentationFilter']): boolean {
   if (!filter || filter === 'none') return true;
   const haystack = normalizeText(`${presentation.form} ${presentation.label}`);
-  if (filter === 'oral') return /comp|capsul|oral|solucao oral|suspensao oral|comprimido/.test(haystack);
+  if (filter === 'oral') return /comp|capsul|oral|solucao oral|suspensão oral|comprimido/.test(haystack);
   if (filter === 'injectable') return /inj|injet|solucao injetavel|ampola|frasco ampola/.test(haystack);
   if (filter === 'immediate_release') return !/retard|liberacao prolongada|modified|depot/.test(haystack);
   return true;
@@ -255,22 +255,29 @@ function mapPresentationOption(
   const concentrationValue = option?.concentrationValue ?? presentation.concentrationValue ?? null;
   const concentrationUnit = option?.concentrationUnit ?? presentation.concentrationUnit ?? null;
   const perUnit = concentrationUnit?.includes('/') ? concentrationUnit.split('/').slice(1).join('/') : null;
-  const valueUnit = concentrationUnit?.includes('/') ? concentrationUnit.split('/')[0] : concentrationUnit;
   return {
     id: option ? `${presentation.id}:${option.id}` : presentation.id,
     clinic_id: '',
     medication_id: globalMedicationId,
     pharmaceutical_form: presentation.form || null,
     concentration_text: option?.label || presentation.label,
+    additional_component: null,
+    presentation_unit: null,
     commercial_name: presentation.label.split('—')[0]?.trim() || medication.title,
     value: concentrationValue,
     value_unit: concentrationUnit || null,
     per_value: 1,
     per_unit: perUnit,
+    avg_price_brl: null,
+    pharmacy_veterinary: presentation.channel !== 'human_pharmacy',
+    pharmacy_human: presentation.channel === 'human_pharmacy',
+    pharmacy_compounding: presentation.channel === 'compounded',
     metadata: {
       seed_presentation_id: presentation.id,
       seed_concentration_id: option?.id || null,
     },
+    created_at: new Date().toISOString(),
+    source: 'global',
   };
 }
 
@@ -304,6 +311,7 @@ export function mapEditorialDoseToRecommended(dose: MedicationDose, medication: 
     frequency: formatPrescriptionFrequency(dose.frequency),
     frequency_text: formatPrescriptionFrequency(dose.frequency),
     duration: dose.duration || null,
+    notes: dose.notes || null,
     calculator_default_dose: dose.doseMin,
     metadata: {
       presentation_id: dose.presentationId || null,

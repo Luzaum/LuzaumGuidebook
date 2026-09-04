@@ -4,6 +4,7 @@ import { Trash2, FolderOpen } from 'lucide-react'
 import { useHistoryStore, type SavedNeuroCase } from '../stores/historyStore'
 import { useCaseStore } from '../stores/caseStore'
 import { Button } from '../components/UI/Button'
+import { isMgcsComplete, mgcsTotal } from '../data/glasgowMgcs'
 
 function formatDate(iso: string) {
   try {
@@ -23,6 +24,8 @@ export function NeuroHistoryPage() {
   const setPatient = useCaseStore((s) => s.setPatient)
   const setComplaint = useCaseStore((s) => s.setComplaint)
   const setNeuroExam = useCaseStore((s) => s.setNeuroExam)
+  const setAnalysis = useCaseStore((s) => s.setAnalysis)
+  const setMgcs = useCaseStore((s) => s.setMgcs)
   const setCurrentStep = useCaseStore((s) => s.setCurrentStep)
   const resetCase = useCaseStore((s) => s.resetCase)
 
@@ -31,6 +34,8 @@ export function NeuroHistoryPage() {
     setPatient(e.patient)
     setComplaint(e.complaint)
     setNeuroExam(e.neuroExam as Record<string, unknown>)
+    setAnalysis((e.analysis as Parameters<typeof setAnalysis>[0]) ?? null)
+    setMgcs(e.mgcs ?? null)
     setCurrentStep(Math.min(Math.max(e.currentStep, 1), 5))
     navigate('/neurologia/exame')
   }
@@ -63,6 +68,13 @@ export function NeuroHistoryPage() {
                 <div className="mt-1 text-xs text-muted-foreground">
                   Etapa {e.currentStep} ·{' '}
                   {e.patient.species === 'dog' ? 'Cão' : e.patient.species === 'cat' ? 'Gato' : 'Espécie ?'}
+                  {e.analysis ? ' · relatório salvo' : ''}
+                  {isMgcsComplete(e.mgcs) && mgcsTotal(e.mgcs) != null
+                    ? ` · MGCS ${mgcsTotal(e.mgcs)}/18`
+                    : e.mgcs &&
+                        (e.mgcs.motor != null || e.mgcs.brainstem != null || e.mgcs.consciousness != null)
+                      ? ' · MGCS parcial'
+                      : ''}
                 </div>
               </div>
               <div className="flex shrink-0 gap-2">

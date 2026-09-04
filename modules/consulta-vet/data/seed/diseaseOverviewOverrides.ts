@@ -34,7 +34,7 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
     lead: 'A síndrome de Cushing canina é um conjunto de manifestações clínicas produzidas pela exposição crônica dos tecidos à atividade glicocorticoide excessiva — geralmente hipercortisolismo hipófise-dependente (PDH, ~80–85%), menos frequentemente hipercortisolismo adrenal-dependente (ADH, ~15–20%) ou glicocorticoide exógeno. O diagnóstico exige primeiro reconhecer um fenótipo compatível e depois demonstrar disfunção do eixo HPA com testes apropriados; LDDST é o screening preferencial na maioria dos casos.',
     leadHighlights: ['atividade glicocorticoide excessiva', 'PDH', 'LDDST', 'trilostano'],
     pillars: [
-      { title: 'Fenótipo antes do laboratório', body: 'Poliúria, polidipsia, polifagia, panting, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não diagnostica Cushing.', highlights: ['ALP isolada não diagnostica'] },
+      { title: 'Fenótipo antes do laboratório', body: 'Poliúria, polidipsia, polifagia, panting, abdômen pendular, alopecia simétrica e ALP elevada compõem a suspeita — ALP isolada não diagnóstica Cushing.', highlights: ['ALP isolada não diagnóstica'] },
       { title: 'Triagem e diferenciação', body: 'LDDST (0,01 mg/kg dexametasona IV) confirma hipercortisolismo; eACTH + ultrassom adrenal diferenciam PDH de ADH. Ausência de supressão no LDDST não significa automaticamente ADH.', highlights: ['eACTH', 'ultrassom adrenal'] },
       { title: 'Tratamento guiado por clínica', body: 'Trilostano (1 mg/kg q12h ou 2 mg/kg q24h com alimento) é primeira linha médica. Ajuste pela clínica e Cushing Clinical Score ALIVE — não por cortisol isolado.', highlights: ['Cushing Clinical Score', 'não por cortisol isolado'] },
     ],
@@ -64,15 +64,6 @@ const OVERVIEWS: Record<string, DiseaseOverview> = {
       { title: 'Interpretar os testes', body: 'Sorologia indica contato e resposta imune, mas não prova sozinha doença ativa. A reação em cadeia da polimerase procura material genético do agente e deve ser interpretada com fase clínica e tratamento prévio.', highlights: ['não prova sozinha doença ativa'] },
       { title: 'Pesquisar coinfecções', body: 'O mesmo carrapato e a mesma exposição podem transmitir outros agentes. Anemia intensa, hemólise ou resposta incompleta justificam ampliar a investigação.', highlights: ['Pesquisar coinfecções'] },
       { title: 'Tratamento e prognóstico', body: 'Doxiciclina é o tratamento de referência, acompanhada de suporte conforme a gravidade. Casos agudos tendem a responder melhor; hipoplasia grave da medula óssea piora o prognóstico.', highlights: ['Doxiciclina', 'hipoplasia grave da medula óssea'] },
-    ],
-  },
-  'colapso-traqueal-canino': {
-    lead: 'O colapso traqueal canino é doença obstrutiva e dinâmica das vias aéreas: cartilagem amolecida e membrana dorsal redundante reduzem o lúmen na inspiração (segmento cervical) ou na expiração e tosse (intratorácico/brônquico). Predomina em cães toy; obesidade, coleira e comorbidades respiratórias/cardíacas agravam. Radiografia triagem frequentemente subestima; fluoroscopia e broncoscopia caracterizam. Manejo médico (peso, peitoral, antitussígenos) precede stent, reservado a obstrução refratária — não a tosse isolada.',
-    leadHighlights: ['dinâmica', 'inspiração', 'expiração', 'peitoral', 'stent'],
-    pillars: [
-      { title: 'Cinco conceitos-chave', body: 'Cervical piora na inspiração; intratorácico na expiração; RX normal não exclui; grau anatômico ≠ gravidade clínica; stent alivia obstrução mais que tosse.', highlights: ['RX normal', 'grau anatômico', 'stent'] },
-      { title: 'Diagnóstico dinâmico', body: 'Fluoroscopia mostra colapso funcional; broncoscopia gradua ACVS I–IV e detecta broncomalácia — comum em ~68% dos casos.', highlights: ['fluoroscopia', 'broncomalácia'] },
-      { title: 'Manejo clínico', body: 'Perda de peso e peitoral são terapia respiratória central. Antitussígenos quebram o ciclo tosse–inflamação–colapso; broncodilatadores só se componente bronquial.', highlights: ['peso', 'peitoral', 'antitussígenos'] },
     ],
   },
   'micoplasmoses-hemotropicas': {

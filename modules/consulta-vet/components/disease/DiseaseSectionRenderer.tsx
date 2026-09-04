@@ -481,11 +481,11 @@ function DrugProtocolList({ protocols }: { protocols: EditorialDrugProtocol[] })
           key={`${protocol.drug}-${index}`}
           className="rounded-xl border border-border/80 bg-muted/[0.06] px-5 py-4"
         >
-          <div className="grid gap-4 lg:grid-cols-[minmax(0,1.3fr)_repeat(4,minmax(0,0.7fr))]">
-            <div>
-              <h4 className="text-base font-semibold text-foreground">{protocol.drug}</h4>
-              {protocol.indication ? <p className="mt-1 text-sm leading-7 text-muted-foreground">{protocol.indication}</p> : null}
-            </div>
+          <div>
+            <h4 className="text-base font-semibold text-foreground">{protocol.drug}</h4>
+            {protocol.indication ? <p className="mt-1 text-sm leading-7 text-muted-foreground">{protocol.indication}</p> : null}
+          </div>
+          <div className="mt-4 grid gap-x-6 gap-y-4 border-t border-border/60 pt-4 sm:grid-cols-2">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Dose</p>
               <p className="mt-1.5 text-sm leading-7 text-foreground">{protocol.dose || '—'}</p>
@@ -504,8 +504,20 @@ function DrugProtocolList({ protocols }: { protocols: EditorialDrugProtocol[] })
             </div>
           </div>
 
-          {(protocol.notes || protocol.cautions || protocol.contraindications) ? (
-            <div className="mt-4 grid gap-4 border-t border-border/60 pt-4 lg:grid-cols-3">
+          {(protocol.mechanism || protocol.reassess || protocol.notes || protocol.cautions || protocol.contraindications) ? (
+            <div className="mt-4 grid gap-x-6 gap-y-4 border-t border-border/60 pt-4 md:grid-cols-2">
+              {protocol.mechanism ? (
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Mecanismo</p>
+                  <p className="mt-1.5 text-sm leading-7 text-muted-foreground">{protocol.mechanism}</p>
+                </div>
+              ) : null}
+              {protocol.reassess ? (
+                <div>
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 dark:text-sky-300">Reavaliar</p>
+                  <p className="mt-1.5 text-sm leading-7 text-foreground/85">{protocol.reassess}</p>
+                </div>
+              ) : null}
               {protocol.notes ? (
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Observações</p>
@@ -537,6 +549,14 @@ type SubsectionTone = 'default' | 'warning' | 'danger' | 'teaching' | 'species' 
 /** Ordem editorial dos blocos longos do tratamento após a timeline de prioridade (Cushing, DRC, etc.). */
 const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'principios',
+  'terapiaFarmacologica',
+  'protocolosCriseObstrutiva',
+  'protocolosAmbulatoriais',
+  'adjuvantesViasAereasInferiores',
+  'evidenciaCorticoideInalatorio',
+  'planoDeReavaliacao',
+  'criteriosIntervencao',
+  'oQueEvitar',
   'tratamentoSuporte',
   'tratamentoDeSuporte',
   'tratamentoDoencasAssociadas',
@@ -571,9 +591,9 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'dmvdEstrategiaPorEstagioAcvim',
   'preclinica',
   'aguda',
-  'cronica',
+  'crônica',
   'dmvdIccAgudaHospitalar',
-  'farmacos',
+  'fármacos',
   'dmvdPimobendanFormaJeJumMarcas',
   'dmvdFurosemidaAgudaCronicaTorasemida',
   'dmvdEspironolactonaBloqueioNefron',
@@ -603,7 +623,7 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'arrAblationAvrt',
   'arrTorsades',
   'arrVfVtSemPulso',
-  'farmacos',
+  'fármacos',
   'tabelaClassesAntiarritmicos',
   'arrInteracoesAltoRisco',
   'alertasSeguranca',
@@ -617,7 +637,7 @@ const TREATMENT_NARRATIVE_AFTER_PRIORITY = [
   'tratarAssintomatico',
   'monitoramentoPosTratamento',
   'falhaReinfecaoAlgoritmo',
-  'farmacos',
+  'fármacos',
   'figuraCiuca2021',
   'perolasClinicas',
   'zoonoseCard',
@@ -889,7 +909,7 @@ function tryRenderTreatmentRichObject(
     }
     if (Array.isArray(value) && value.length > 0) {
       if (value.every((x) => typeof x === 'string')) {
-        if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogenese'))) {
+        if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogênese'))) {
           return <CascataFlowTimeline items={value as string[]} visual={visual} />;
         }
         return <BulletList items={value as string[]} visual={visual} />;
@@ -975,7 +995,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
       if (isSystemGroupArray(content)) return <ClinicalSignsTable groups={content} visual={visual} />;
-      if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogenese'))) {
+      if (key && (key === 'cascata' || key.includes('cascata') || key.includes('patogênese'))) {
         return <CascataFlowTimeline items={content as string[]} visual={visual} />;
       }
       return <BulletList items={content.filter((item): item is string => typeof item === 'string')} visual={visual} />;

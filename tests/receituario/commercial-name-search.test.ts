@@ -48,6 +48,38 @@ test('erro de digitação em ondansetrona não vaza produto cardiológico', asyn
   assert.equal(results.some((item) => /vetmedin/i.test(item.name)), false);
 });
 
+test('sulfa encontra a combinação antibiótica sem confundir sulfato ou polissulfato', async () => {
+  const results = await searchPrescriptionCommercialProducts({ query: 'sulfa' });
+
+  assert.ok(results.some((item) => /^Sulfaprim\b/i.test(item.name)));
+  assert.equal(results.some((item) => /cartrophen/i.test(item.name)), false);
+  assert.equal(
+    results.some((item) => /\b(?:poli)?sulfato\b/i.test(String(item.metadata?.active_ingredient || ''))),
+    false,
+  );
+});
+
+test('termos específicos do Cartrophen continuam encontrando o produto', async () => {
+  const byPentosan = await searchPrescriptionCommercialProducts({ query: 'pentosano' });
+  const byPolysulfate = await searchPrescriptionCommercialProducts({ query: 'polissulfato' });
+
+  assert.ok(byPentosan.some((item) => /cartrophen/i.test(item.name)));
+  assert.ok(byPolysulfate.some((item) => /cartrophen/i.test(item.name)));
+});
+
+test('dipirona encontra apresentações comerciais isoladas em gotas e 1.000 mg', async () => {
+  const results = await searchPrescriptionCommercialProducts({ query: 'dipirona' });
+  const drops = results.find((item) => /Novalgina.*Gotas/i.test(item.name));
+  const tablets = results.find((item) => /Novalgina.*Comprimidos/i.test(item.name));
+
+  assert.ok(drops, 'Novalgina Gotas deve aparecer na busca por dipirona');
+  assert.ok(tablets, 'Novalgina Comprimidos deve aparecer na busca por dipirona');
+  assert.match(String((drops?.metadata?.presentation_labels as string[])?.join(' ')), /500 mg\/mL/i);
+  assert.match(String((tablets?.metadata?.presentation_labels as string[])?.join(' ')), /1\.000 mg|1 g/i);
+  assert.equal(drops?.metadata?.catalog_medication_id, 'med-dipirona');
+  assert.equal(tablets?.metadata?.catalog_medication_id, 'med-dipirona');
+});
+
 test('mantém produto relacionado visível mesmo quando a bula não inclui a espécie selecionada', async () => {
   const results = await searchPrescriptionCommercialProducts({ query: 'pimobendan', species: 'cat' });
 

@@ -44,7 +44,7 @@ export const medicationsSeed: MedicationRecord[] = [
     ],
     cautions: [
       'Gatos: maior risco diabetogênico com uso prolongado; obesidade e prednisolona — ajustar à massa magra quando possível.',
-      'Não associar AINEs (incl. aspirina) sem critério — risco de ulceração GI.',
+      'Não associar AINEs (incl. aspirina) sem critério — risco de úlceração GI.',
       'Desmame gradual após uso prolongado (eixo HPA).',
       'Monitorar glicemia, peso, PU/PD, comportamento e enzimas hepáticas conforme duração/dose.',
     ],
@@ -53,7 +53,7 @@ export const medicationsSeed: MedicationRecord[] = [
       'Crônico/alto: iatrogenic hyperadrenocorticism, infecções, atrofia muscular, hiperlipidemia, catarata, glaucoma, osteoporose; jovens: possível atraso de crescimento.',
     ],
     interactions: [
-      'AINEs — ulceração GI.',
+      'AINEs — úlceração GI.',
       'Insulina — necessidade pode variar.',
       'Cetoconazol — pode reduzir metabolismo de corticoides.',
       'Fenobarbital — pode acelerar metabolismo.',

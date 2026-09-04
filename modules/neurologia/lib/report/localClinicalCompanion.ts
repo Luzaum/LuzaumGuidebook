@@ -189,6 +189,12 @@ function getClinicalCompanionDetail(dx: Differential): ClinicalCompanionDetail |
   if (name.includes('meningioma')) return CLINICAL_COMPANION_DETAILS.ddx_011
   if (name.includes('glioma')) return CLINICAL_COMPANION_DETAILS.ddx_012
   if (name.includes('avc') || name.includes('evento vascular')) return CLINICAL_COMPANION_DETAILS.ddx_013
+  if (name.includes('degenerativa') || name.includes('mielopatia degener')) return CLINICAL_COMPANION_DETAILS.ddx_014
+  if (name.includes('disco intervertebral') || name.includes('ivdd') || name.includes('hansen')) {
+    return CLINICAL_COMPANION_DETAILS.ddx_015
+  }
+  if (name.includes('embolia fibrocartilag') || name.includes('fce')) return CLINICAL_COMPANION_DETAILS.ddx_016
+  if (name.includes('discospondilite') || name.includes('mielite')) return CLINICAL_COMPANION_DETAILS.ddx_017
   if (name.includes('hipertensao intracraniana') || name.includes('herniacao')) return CLINICAL_COMPANION_DETAILS.ddx_040
   if (name.includes('encefalopatia hipertensiva')) return CLINICAL_COMPANION_DETAILS.ddx_041
   if (name.includes('epilepsia idiopatica')) return CLINICAL_COMPANION_DETAILS.ddx_001

@@ -108,6 +108,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary: 'Polihexanida 0,1%, undecilenamidopropil betaína 0,1% e água purificada.',
     labelDirections:
       'Irrigar e limpar o leito da ferida conforme protocolo de curativos. Mesma lógica clínica do Curatec Solução: irrigação, redução de biofilme e preparo do leito.',
+    dosageGuidance: {
+      labelDose: 'Irrigar o leito da ferida a cada troca de curativo; manter contato suficiente para limpeza antes de gel ou cobertura.',
+    },
     plumbsContext: 'Usar conforme instruções do fabricante e protocolo de feridas.',
     clinicalUse:
       'Limpeza e irrigação de feridas crônicas ou com biofilme; não substitui coleta para cultura nem desbridamento quando necessário.',
@@ -173,6 +176,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary: 'Gel com polihexanida 0,1% e surfactante para permanência no leito da ferida.',
     labelDirections:
       'Aplicar sobre leito limpo após irrigação com solução compatível. Cobrir com curativo secundário quando indicado.',
+    dosageGuidance: {
+      labelDose: 'Após irrigação com solução PHMB, aplicar camada uniforme de 3–5 mm sobre o leito; cobrir com curativo não aderente.',
+    },
     plumbsContext: 'Mesma lógica clínica do gel PHMB: permanência no leito, umidade e ação antimicrobiana prolongada.',
     clinicalUse: 'Feridas crônicas ou com biofilme; gel para permanência no leito após limpeza com solução.',
     reassessment: 'Reavaliar exsudato e necessidade de troca do curativo.',
@@ -313,6 +319,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary:
       'Associação de sulfadiazina de prata 1% com nitrato de cério 0,4%. Produto diferente da sulfadiazina pura; não intercambiável automaticamente.',
     labelDirections: 'Aplicar conforme bula sobre lesão limpa.',
+    dosageGuidance: {
+      labelDose: 'Após higienização, camada fina de 1–2 mm recobrindo a lesão, 1x/dia (ou 2x/dia se muito exsudativa). Impedir lambedura 20–30 min.',
+    },
     plumbsContext: 'Usar lógica de sulfadiazina de prata com ressalva da associação com cério.',
     clinicalUse: 'Lesões selecionadas com indicação de sulfadiazina de prata; avaliar se associação com cério é desejável.',
     reassessment: 'Reavaliar resposta e necessidade de continuidade.',
@@ -343,6 +352,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary: 'Polissulfato de mucopolissacarídeo 5 mg/g — heparinoide tópico/antiedematoso. Bula humana; uso veterinário extra-label.',
     labelDirections:
       'Aplicar camada fina sobre a região, normalmente 3 a 4 vezes ao dia, massageando suavemente quando não houver contraindicação.',
+    dosageGuidance: {
+      labelDose: 'Camada fina 3–4x/dia com massagem suave sobre pele íntegra (hematoma/edema fechado). Não usar em ferida aberta.',
+    },
     plumbsContext:
       'Não há monografia veterinária específica no Plumb\'s ou BSAVA consultados. Uso extra-label; frequência baseada na bula humana.',
     clinicalUse:
@@ -380,6 +392,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
       'Óxido de zinco 150 mg/g (15%), vitamina A 5.000 UI/g, vitamina D 900 UI/g, óleo de fígado de bacalhau 86,6 mg/g.',
     labelDirections:
       'Aplicar película fina sobre pele limpa e seca, principalmente ao redor da região exposta à urina ou fezes. Reaplicar após nova higienização.',
+    dosageGuidance: {
+      labelDose: 'Película fina sobre pele limpa e seca perilesional; reaplicar após cada higienização. Impedir lambedura.',
+    },
     plumbsContext: 'Creme-barreira com óxido de zinco descrito no manejo de dermatite por urina em pacientes neurológicos.',
     clinicalUse:
       'Dermatite por urina/fezes, incontinência, proteção perilesional e barreira cutânea após limpeza e secagem completas.',
@@ -439,6 +454,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['nistatina 100.000 UI/g', 'óxido de zinco 20%'],
     labelCompositionSummary: 'Nistatina 100.000 UI/g associada a óxido de zinco 200 mg/g (20%).',
     labelDirections: 'Aplicar conforme bula humana sobre pele limpa e seca.',
+    dosageGuidance: {
+      labelDose: 'Camada fina 2–3x/dia sobre pele limpa e seca, somente se citologia indicar Candida/leveduras.',
+    },
     plumbsContext: 'Considerar somente quando citologia compatível com leveduras.',
     clinicalUse:
       'Assadura com componente por Candida, intertrigo com componente fúngico e dermatite úmida superficial com indicação de nistatina — não para qualquer assadura.',
@@ -470,6 +488,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary:
       'Creme protetor de barreira. Composição quantitativa completa não encontrada de forma suficientemente confiável; não cadastrar ingredientes presumidos.',
     labelDirections: 'Aplicar camada fina sobre pele limpa e seca como prevenção de assaduras.',
+    dosageGuidance: {
+      labelDose: 'Camada fina preventiva sobre pele limpa e seca perilesional; reaplicar após higienização.',
+    },
     plumbsContext: 'Barreira preventiva; não substitui tratamento de infecção.',
     clinicalUse: 'Prevenção de dermatite por umidade e proteção perilesional.',
     reassessment: 'Se assadura instalar, investigar causa e considerar versão Tratamento se houver componente fúngico.',
@@ -499,6 +520,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['dexpanthenol'],
     labelCompositionSummary: 'Dexpanthenol associado a veículo protetor.',
     labelDirections: 'Aplicar camada fina sobre pele limpa; reaplicar após higienização.',
+    dosageGuidance: {
+      labelDose: 'Camada fina sobre pele limpa e seca; reaplicar após higienização. Hidratação/barreira leve — não trata infecção.',
+    },
     plumbsContext: 'Suporte à barreira e hidratação leve; sem ação antibacteriana ou antifúngica relevante.',
     clinicalUse:
       'Hidratação, suporte à barreira, prevenção de maceração leve e pele íntegra ou superficialmente irritada.',
@@ -630,6 +654,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary: 'Alantoína 3% e óxido de zinco 3%.',
     labelDirections:
       'Após limpeza, aplicar camada sobre toda a superfície, 1 a 3 vezes ao dia, até cicatrização completa.',
+    dosageGuidance: {
+      labelDose: 'Após limpeza, camada fina 1–3x/dia sobre ferida superficial limpa, até cicatrização completa.',
+    },
     plumbsContext: 'Alantoína favorece epitelização; óxido de zinco cria barreira adstringente.',
     clinicalUse: 'Feridas superficiais limpas, úlceras e lesões em fase de epitelização.',
     reassessment: 'Confirmar espécie indicada no rótulo da apresentação selecionada.',
@@ -792,6 +819,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['sulfato de neomicina 5 mg/g', 'bacitracina zíncica 250 UI/g'],
     labelCompositionSummary: 'Neomicina 5 mg/g + bacitracina zíncica 250 UI/g.',
     labelDirections: 'Aplicar camada fina sobre lesões superficiais selecionadas.',
+    dosageGuidance: {
+      labelDose: 'Camada fina 2–3x/dia sobre lesão superficial limpa e selecionada, por curto prazo. Impedir lambedura.',
+    },
     plumbsContext: 'Uso seletivo; espectro limitado e risco de dermatite de contato por neomicina.',
     clinicalUse: 'Pequenas lesões superficiais selecionadas; não recomendação automática para feridas.',
     reassessment: 'Suspender se irritação ou falta de resposta.',
@@ -829,6 +859,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary:
       'Nistatina + neomicina + tiostreptona + triancinolona. Bula veterinária para cães e gatos.',
     labelDirections: 'Usar conforme bula veterinária para dermatoses/otite específicas.',
+    dosageGuidance: {
+      labelDose: 'Otológico/tópico: aplicar quantidade suficiente no ouvido ou lesão diagnosticada, conforme bula veterinária (nistatina + neomicina + tiostreptona + triancinolona).',
+    },
     plumbsContext: 'Não cadastrar como cicatrizante universal.',
     clinicalUse: 'Dermatoses específicas, otite e inflamações com componente bacteriano/fúngico sensível.',
     reassessment: 'Reavaliar integridade timpânica em uso otológico.',
@@ -862,6 +895,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     labelCompositionSummary:
       'Dexametasona + neomicina + bacitracina + griseofulvina + benzocaína. Bula veterinária.',
     labelDirections: 'Usar conforme bula veterinária em dermatoses específicas.',
+    dosageGuidance: {
+      labelDose: 'Camada fina sobre lesão diagnosticada (dexametasona + neomicina + bacitracina + griseofulvina + benzocaína). Evitar áreas lambíveis.',
+    },
     plumbsContext: 'Combina antibióticos, antifúngico e corticoide.',
     clinicalUse: 'Dermatoses inflamatórias selecionadas com diagnóstico confirmado.',
     reassessment: 'Especial cautela em gatos.',
@@ -891,6 +927,9 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     activeComponents: ['gentamicina', 'miconazol', 'betametasona'],
     labelCompositionSummary: 'Gentamicina + miconazol + betametasona. Bula veterinária.',
     labelDirections: 'Usar conforme bula em dermatoses inflamatórias associadas a bactérias ou fungos sensíveis.',
+    dosageGuidance: {
+      labelDose: 'Camada fina sobre lesão diagnosticada (gentamicina + miconazol + betametasona). Evitar áreas lambíveis.',
+    },
     plumbsContext: 'Não usar automaticamente em feridas cirúrgicas, úlceras ou demodicose.',
     clinicalUse: 'Dermatoses inflamatórias com componente bacteriano ou fúngico sensível.',
     reassessment: 'Evitar em áreas que o animal consegue lamber.',

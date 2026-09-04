@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//agener.com.br' />
+<style id="wp-img-auto-sizes-contain-inline-css">
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<style id="wp-block-library-inline-css">
+:root{--wp-block-synced-color:#7a00df;--wp-block-synced-color--rgb:122,0,223;--wp-bound-block-color:var(--wp-block-synced-color);--wp-editor-canvas-background:#ddd;--wp-admin-theme-color:#007cba;--wp-admin-theme-color--rgb:0,124,186;--wp-admin-theme-color-darker-10:#006ba1;--wp-admin-theme-color-darker-10--rgb:0,107,160.5;--wp-admin-theme-color-darker-20:#005a87;--wp-admin-theme-color-darker-20--rgb:0,90,135;--wp-admin-border-width-focus:2px}@media (min-resolution:192dpi){:root{--wp-admin-border-width-focus:1.5px}}.wp-element-button{cursor:pointer}:root .has-very-light-gray-background-color{background-color:#eee}:root .has-very-dark-gray-background-color{background-color:#313131}:root .has-very-light-gray-color{color:#eee}:root .has-very-dark-gray-color{color:#313131}:root .has-vivid-green-cyan-to-vivid-cyan-blue-gradient-background{background:linear-gradient(135deg,#00d084,#0693e3)}:root .has-purple-crush-gradient-background{background:linear-gradient(135deg,#34e2e4,#4721fb 50%,#ab1dfe)}:root .has-hazy-dawn-gradient-background{background:linear-gradient(135deg,#faaca8,#dad0ec)}:root .has-subdued-olive-gradient-background{background:linear-gradient(135deg,#fafae1,#67a671)}:root .has-atomic-cream-gradient-background{background:linear-gradient(135deg,#fdd79a,#004a59)}:root .has-nightshade-gradient-background{background:linear-gradient(135deg,#330968,#31cdcf)}:root .has-midnight-gradient-background{background:linear-gradient(135deg,#020381,#2874fc)}:root{--wp--preset--font-size--normal:16px;--wp--preset--font-size--huge:42px}.has-regular-font-size{font-size:1em}.has-larger-font-size{font-size:2.625em}.has-normal-font-size{font-size:var(--wp--preset--font-size--normal)}.has-huge-font-size{font-size:var(--wp--preset--font-size--huge)}:root .has-text-align-center{text-align:center}:root .has-text-align-left{text-align:left}:root .has-text-align-right{text-align:right}.has-fit-text{white-space:nowrap!important}#end-resizable-editor-section{display:none}.aligncenter{clear:both}.items-justified-left{justify-content:flex-start}.items-justified-center{justify-content:center}.items-justified-right{justify-content:flex-end}.items-justified-space-between{justify-content:space-between}.screen-reader-text{word-wrap:normal!important;border:0;clip-path:inset(50%);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.screen-reader-text:focus{background-color:#ddd;clip-path:none;color:#444;display:block;font-size:1em;height:auto;left:5px;line-height:normal;padding:15px 23px 14px;text-decoration:none;top:5px;width:auto;z-index:100000}html :where(.has-border-color){border-style:solid}html :where([style*=border-color]){border-style:solid}html :where([style*=border-top-color]){border-top-style:solid}html :where([style*=border-right-color]){border-right-style:solid}html :where([style*=border-bottom-color]){border-bottom-style:solid}html :where([style*=border-left-color]){border-left-style:solid}html :where([style*=border-width]){border-style:solid}html :where([style*=border-top-width]){border-top-style:solid}html :where([style*=border-right-width]){border-right-style:solid}html :where([style*=border-bottom-width]){border-bottom-style:solid}html :where([style*=border-left-width]){border-left-style:solid}html :where(img[class*=wp-image-]){height:auto;max-width:100%}:where(figure){margin:0 0 1em}html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:var(--wp-admin--admin-bar--height,0px)}@media screen and (max-width:600px){html :where(.is-position-sticky){--wp-admin--admin-bar--position-offset:0px}}
+
+/*# sourceURL=/wp-includes/css/dist/block-library/common.min.css */
+</style>
+<style id="classic-theme-styles-inline-css">
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+
+<style id="global-styles-inline-css">
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(body) { margin: 0; }:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='contact-form-7-css' href='https://agener.com.br/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=6.1.7' media='all' />
+<link rel='stylesheet' id='flexy-breadcrumb-css' href='https://agener.com.br/wp-content/plugins/flexy-breadcrumb/public/css/flexy-breadcrumb-public.css?ver=1.2.1' media='all' />
+<link rel='stylesheet' id='flexy-breadcrumb-font-awesome-css' href='https://agener.com.br/wp-content/plugins/flexy-breadcrumb/public/css/font-awesome.min.css?ver=4.7.0' media='all' />
+<link rel='stylesheet' id='wpsl-styles-css' href='https://agener.com.br/wp-content/plugins/wp-store-locator/css/styles.min.css?ver=2.3.22' media='all' />
+<script id="jquery-core-js" src="https://agener.com.br/wp-includes/js/jquery/jquery.min.js?ver=3.7.1"></script>
+<script id="jquery-migrate-js" src="https://agener.com.br/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://agener.com.br/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 7.0.4" />
+<style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://agener.com.br/wp-content/uploads/2020/02/cropped-favi_agener-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://agener.com.br/wp-content/uploads/2020/02/cropped-favi_agener-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://agener.com.br/wp-content/uploads/2020/02/cropped-favi_agener-180x180.png" />
+<meta name="msapplication-TileImage" content="https://agener.com.br/wp-content/uploads/2020/02/cropped-favi_agener-270x270.png" />
+    
+    <META HTTP-EQUIV="EXPIRES" CONTENT="Mon, 22 Jul 2002 11:12:01 GMT">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="favicon.gif" />
+    <title></title>    
+  
+    <link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/navik_menu/src/reset.css">
+    <link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/navik_menu/src/modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/navik_menu/src/modules/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/navik_menu/src/navik.menu.css">
+    <link href="https://agener.com.br/wp-content/themes/agener/timeline/dist/jquery.roadmap.min.css" rel="stylesheet">
+
+  
+    <!-- Bootstrap core CSS -->
+    <script src="https://agener.com.br/wp-content/themes/agener/jquery-1.11.2.min.js" type="text/javascript"></script>
+    
+    <link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/horizontal-timeline/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="https://agener.com.br/wp-content/themes/agener/horizontal-timeline/css/style.css"> <!-- Resource style -->
+    
+    
+        <!-- LOADING FONTS AND ICONS -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,900&display=swap" rel="stylesheet">
+		
+		<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css">
+		<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/fonts/font-awesome/css/font-awesome.css">
+		
+		<!-- REVOLUTION STYLE SHEETS -->
+		<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/css/settings.css">
+		<!-- REVOLUTION LAYERS STYLES -->
+		
+
+			<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/css/layers.css">
+			
+			<!-- REVOLUTION NAVIGATION STYLES -->
+			<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/css/navigation.css">
+    
+    
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    
+    <link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slick-1.8.1/slick/slick.css"/>
+
+<link rel="stylesheet" type="text/css" href="https://agener.com.br/wp-content/themes/agener/slick-1.8.1/slick/slick-theme.css"/>
+
+<meta name="adopt-website-id" content="bab915d3-b270-4116-86c9-fe954d886f6b" />
+
+          <script src="//tag.goadopt.io/injector.js?website_code=bab915d3-b270-4116-86c9-fe954d886f6b" class="adopt-injector"></script>
+
+
+    <script src="https://agener.com.br/wp-content/themes/agener/bootstrap/js/bootstrap.min.js " type="text/javascript"></script>
+    
+    <link href="https://agener.com.br/wp-content/themes/agener/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="https://agener.com.br/wp-content/themes/agener/stellar.js"></script>
+    <script src="https://agener.com.br/wp-content/themes/agener/respond.src.js"></script>
+    
+    <style>
+    .row,sem-margem{margin:0px;padding:0px}
+    .sem-margem{margin:0px;padding:0px}
+    .container-fluid{max-width:1024px}
+    
+    blockquote {
+  background: white;
+  border-left: 10px solid red;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+}
+blockquote:before {
+  color: red;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+  font-family:'Roboto';
+  font-style:italic;
+  color:black
+}
+    em{font-style:italic}
+   img.alignright { float: right; margin: 0 0 1em 1em; }
+   img.alignleft { float: left; margin: 0 1em 1em 0; }
+   img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+   .alignright { float: right; }
+   .alignleft { float: left; }
+   .aligncenter { display: block; margin-left: auto; margin-right: auto; }
+    
+    a{font-family:'Roboto';color:#E2261D}
+    a:hover{text-decoration:none}
+    
+    p img {
+
+  width: initial;
+max-width: 100%;
+height: auto;
+
+}
+    
+    
+    .wpcf7-form-control{width: 100% !important;padding:10px;color:gray;font-family:'Roboto';font-size:16px;}
+    .wpcf7-submit{width: 20% !important;padding:10px;color:gray;border:1px solid silver;font-family:'Roboto';font-size:16px;}
+    label{font-family:'Roboto';font-size:16px;color:black;text-align: left;font-weight:400;margin-bottom:10px}
+
+    
+    h2{font-family:'Roboto';font-size:40px;color:black;text-align: left;font-weight:800}
+    h3{font-family:'Roboto';font-size:30px;color:#E2261D;text-align: left;font-weight:800}
+    h4{font-family:'Roboto';font-size:18px;color:black;text-align: left;font-weight:800}
+    
+    .det-icones{font-family:'Roboto';font-size:40px;color:black;text-align: center;font-weight:800}
+    
+    .verm_prods{font-family:'Roboto';font-size:18px;color:#E2251D;text-align: left;font-weight:800}
+    
+    .texto_produtos{font-family:'Roboto';font-size:17px;color:gray;font-weight:400}
+    
+    .selo-cinza{font-family:'Roboto';font-size:14px;background-color:#A7A7A7;padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;border-radius:40px;color:white}
+    
+    .prod-lista-icones{padding:4px}
+    
+    .link_home{font-family:'Roboto';font-size:16px;color:#E2261D;text-align: center;font-weight:bold}
+    .link_home:hover{font-family:'Roboto';font-size:16px;color:#E2261D;text-align: center;text-decoration: none;font-weight:bold}
+    
+    .titulo-interno{font-family:'Roboto';font-size:45px;color:#E2261D;text-align: left;font-weight:bold}
+    .subtitulo-interno{font-family:'Roboto';font-size:27px;color:gray;text-align: left;font-weight:bold}
+    .subtitulo-interno-rosa{font-family:'Roboto';font-size:20px;color:#E2261D;text-align: left;font-weight:bold}
+    p{font-family:'Roboto';font-size:17px;color:gray;font-weight:400;text-align:justify}
+    
+    .blocos-dis {font-family:'Roboto';font-size:13px;color:gray;font-weight:400;text-align:left}
+    .blocos-dis .col-md-4{padding:15px;min-height:140px}
+    .blocos-dis h3{text-align:center;margin-left:auto;margin-right:auto}
+    
+    .story_title{font-family:'Roboto';font-size:13px;color:gray;font-weight:400;text-align:left}
+    
+    .control-label{font-family:'Roboto';font-size:16px;color:black;text-align: left;font-weight:500}
+     
+    
+    .titulo-lista-prod{font-family:'Roboto';font-size:27px;color:black;text-align: left;font-weight:800}
+    .titulo-lista-prod-2{font-family:'Roboto';font-size:17px;color:black;font-weight:400}
+    
+    .home-numeros-numero{font-family:'Roboto';font-size:40px;color:black;font-weight:800}
+    .home-numeros-desc{font-family:'Roboto';font-size:16px;color:black;font-weight:600}
+    .home-numeros-texto{font-family:'Roboto';font-size:14px;color:black;font-weight:400;margin-top:18px;text-align:center}
+    
+    .meio-slide{font-family:'Roboto';font-size:27px;color:white;text-align: left;font-weight:100;line-height:50px}
+    
+    ul li texto-normal{font-family:'Roboto';font-size:18px;color:gray;text-align: left;font-weight:normal}
+           .texto_form{font-family:'Roboto';font-size:18px;color:gray;text-align:left}
+
+    .super-titulo{font-family:'Roboto';font-size:46px;color:#E2261D;text-align: center;font-weight:bold}
+    
+    .titulo-lista-blog-cinza{font-family:'Roboto';font-size:16px;color:gray;text-align: center;font-weight: 700}
+    .titulo-lista-blog-cinza-2{font-family:'Roboto';font-size:16px;color:gray;text-align: center}
+    
+    .titulo-lista-blog{font-family:'Roboto';font-size:22px;color:#E2261D;text-align: center;font-weight:bold;}
+    .chamada-lista-blog{font-family:'Roboto';font-size:17px;color:gray;text-align: center;font-weight:normal;padding-top:5px}
+    
+    .chamada-lista-blog-3{font-family:'Roboto';font-size:16px;color:gray;text-align: left;font-weight:normal;padding-top:5px}
+    
+    .titulo-lista-blog-2{font-family:'Roboto';font-size:18px;color:#E2261D;text-align: center;font-weight:bold;}
+    .chamada-lista-blog-2{font-family:'Roboto';font-size:17px;color:gray;text-align: center;font-weight:normal;line-height:22px;padding-top:5px}
+    
+    
+    .bot-lista-blog{font-family:'Roboto';font-size:16px;color:#E2261D;text-align: center;font-weight:bold;line-height:18px}
+    
+    .link-videos{font-family:'Roboto';font-size:22px;color:gray;text-align: left;font-weight:300}
+    .link-videos:hover{font-family:'Roboto';font-size:22px;color:black;text-align: left;font-weight:300;text-decoration: none}
+    
+    .modal-title{font-family:'Roboto';font-size:25px;color:#E2261D;text-align: left;font-weight:300}
+    
+    .titulo-blog{font-family:'Roboto';font-size:42px;color:#E2261D;text-align: left;font-weight:300}
+    .titulo-blog-menor{font-family:'Roboto';font-size:32px;color:#E2261D;text-align: left;font-weight:300}
+    .titulo-blog-menor-menor{font-family:'Roboto';font-size:22px;color:gray;text-align: left;font-weight:300}
+    .chamada-blog{font-family:'Roboto';font-size:22px;color:black;text-align: left;font-weight:normal;line-height:22px;padding-top:5px}
+    .chamada-blog-3{font-family:'Roboto';font-size:21px;color:black;text-align: left;font-weight:normal}
+    .bot-blog{font-family:'Roboto';font-size:16px;color:#E2261D;text-align: left;font-weight:bold;line-height:18px}
+    
+    #cats a{font-family:'Roboto';font-size:16px;color:#E2261D;text-align: left;font-weight:bold;line-height:18px}
+    
+    .home-barra-azul{font-family:'Roboto';font-size:20px;color:white;padding:20px;text-align: center;font-weight:200}
+    .titulo-home-cinza{font-family:'Roboto';font-size:30px;color:#999999;text-align: center;font-weight:200}
+    .titulo-home-verde{font-family:'Roboto';font-size:35px;color:#54B84C;text-align: center;font-weight:200}
+    .titulo-home-azul{font-family:'Roboto';font-size:35px;color:#0079BF;text-align: center;font-weight:200}
+    .titulo-icone-home{font-family:'Roboto';font-size:22px;color:#56BA4C;text-align: center;font-weight:200}
+    .titulo-icone-home-2{font-family:'Roboto';font-size:18px;color:#56BA4C;text-align: center;font-weight:400}
+    .desc-icone-home{font-family:'Roboto';font-size:18px;color:gray;text-align: center;font-weight:200}
+    
+    .blog-titulo-home{font-family:'Roboto';font-size:25px;color:#0079BF;text-align: center;font-weight:200}
+    .blog-resumo-home{font-family:'Roboto';font-size:18px;color:gray;text-align: center;font-weight:300}
+    
+    .indicadores-numero{font-family:'Roboto';font-size:40px;color:#0079C0;text-align: center;font-weight:bold}
+    
+    
+    .img-borda-azul{border-bottom:8px solid #0079BF}
+    .img-borda-verde{border-bottom:8px solid #56BA4C}
+    
+    .barra-azul{background-color:#0079C0;min-height:50px;padding:15px}
+    .barra-azul span{font-family:'Roboto';font-size:32px;color:white;text-align: right;font-weight:200}
+    
+    .barra-verde{background-color:#56BA4C;min-height:50px;padding:15px}
+    .barra-verde span{font-family:'Roboto';font-size:16px;color:white;text-align: center;font-weight:200}
+    
+    .barra-rosa{background-color:#eeeeee;min-height:50px;padding:15px}
+    .barra-rosa span{font-family:'Roboto';font-size:16px;color:gray;text-align: center;font-weight:200}
+    
+    
+    .home-meio-cinza{background-color:#FBFBFB;min-height:200px}
+    
+    .home-footer-cinza{background-color:#EEEEEE;min-height:20px}
+    .home-footer-cinza p{font-family:'Roboto';font-size:15px;color:gray;text-align: center;font-weight:400;padding:15px}
+    
+    .alinhado-centro{text-align: center}
+    
+    .navik-menu ul li a{font-family:'Roboto';font-size:14px;font-weight:400;text-transform: initial}
+    .navik-menu ul li a:hover{font-family:'Roboto';font-size:14px;color:gray;font-weight:400;text-transform: initial}
+    
+    .navik-menu ul li ul li a{font-family:'Roboto';font-size:14px;font-weight:400;text-transform: initial}
+    .navik-menu ul li ul li a:hover{font-family:'Roboto';font-size:14px;color:gray;font-style: normal;font-weight:400;text-transform: initial}
+    
+        /*PROJETOS*/
+    .categoria-projeto{font-family:'Roboto';font-size:35px;color:white;text-align: left;font-weight:200;padding:0px;margin:0px}
+    .titulo-fixo-projetos{font-family:'Roboto';font-weight:700;font-size:65px;color:white;text-align:left;padding:0px;margin:0px}
+    .titulo-projetos{font-family:'Roboto';font-size:23px;color:white;text-align: left;font-weight:bold;width:60%}
+    
+    .espaco{position: relative;margin-top:12%}
+    .espaco2{position: relative;margin-top:110px}
+    .espaco3{position: relative;margin-top:130px}
+    
+    .seta{position: relative;top:-5px;margin-left:-2px}
+    
+    .botao-doacao{background-color:#C64C3C;border-radius:100px;padding:15px;float: right}
+    .botao-doacao span{font-family:'Roboto';font-size:25px;color:white;text-align: center;font-weight:500;padding:15px}
+    
+    .projetos-objetivo-titulo{font-family:'Roboto';font-size:35px;color:#0079BF;text-align: left;font-weight:200}
+    .texto-normal{font-family:'Roboto';font-size:18px;color:gray;text-align: left;font-weight:200}
+    #barrasp{height:110px}
+    
+    .texto_home{font-family:'Roboto';font-size:19px;color:gray;text-align: left;font-weight:normal}
+    
+    /*.navik-header{position: fixed;width:100%}*/
+    .navik-menu ul li a:hover{color:#E2261D}
+    .navik-menu ul li ul li a:hover{color:#E2261D}
+    
+    .redondo{border-radius:5px}
+    .redondo:hover{opacity: 0.7}
+    
+    .frase-home{font-family:'Roboto';font-size:18px;color:white;text-align: center;font-weight:100}
+    
+    
+    .frase-home-cinza{font-family:'Roboto';font-size:20px;color:gray;text-align: center;font-weight:100}
+    
+    .rodape{background-color:#dddddd;min-height:100px}
+    .texto_rodape_menor{font-family:'Roboto';font-size:12px;color:#6C6C6C;text-align: left;font-weight:300;padding-left:33px}
+    .titulo_menu_rodape{font-family:'Roboto';font-size:16px;color:#6C6C6C;text-align: left;font-weight:500}
+    
+    .item_menu_rodape{font-family:'Roboto';font-size:13px;color:#6C6C6C;text-align: left;font-weight:300;line-height:35px;text-decoration:none}
+    .item_menu_rodape:hover{font-family:'Roboto';font-size:13px;color:#ED1C24;text-align: left;font-weight:300;line-height:35px;text-decoration:none}
+    
+    .texto_rodape{font-family:'Roboto';font-size:13px;color:#6C6C6C;text-align: left;font-weight:300;padding-left:33px}
+    .topos{background-position:center top;min-height:360px;background-repeat:no-repeat;background-size:cover}
+    
+    .logo{position:relative;margin-top: -15px}
+    
+    .alignwide {
+	margin: 32px calc(25% - 25vw);
+	max-width: 100vw;
+	width: 100vw;
+     }
+     #div-up{position:relative;top:0px}
+     .contato-bottom{padding-left:65px}
+     
+    #home-b-1{padding-left:0px;padding-right:5px}
+    #home-b-2{padding-left:10px;padding-right:0px}
+    #home-b-3{padding-left:12px;padding-right:0px}
+    #boxes-noticias{padding-left:47px;padding-right:47px}
+    
+    
+    @media(max-width:1150px)  {
+    .navik-menu ul li a{font-family:'Roboto';font-size:12px}
+    .navik-menu ul li a:hover{font-family:'Roboto';font-size:12px;color:blue}
+    
+    .navik-menu ul li ul li a{font-family:'Roboto';font-size:12px}
+    .navik-menu ul li ul li a:hover{font-family:'Roboto';font-size:12px;color:gray;font-style: normal}
+    }
+    
+    @media(max-width:1280px)  {
+    
+       #barrasp{height:130px}
+    }
+    
+    
+    
+    @media(max-width:1024px)  {
+    
+       .navik-menu ul li a{font-family:'Roboto';font-size:16px}
+    .navik-menu ul li a:hover{font-family:'Roboto';font-size:16px;color:blue}
+    
+    .navik-menu ul li ul li a{font-family:'Roboto';font-size:16px}
+    .navik-menu ul li ul li a:hover{font-family:'Roboto';font-size:16px;color:gray;font-style: normal}
+    .contato-bottom{padding-left:15px}
+    #div-up{position:relative;top:0px}
+    
+    #home-b-1{padding-left:0px;padding-right:0px}
+    #home-b-2{padding-left:0px;padding-right:0px}
+    #home-b-3{padding-left:0px;padding-right:0px}
+    #boxes-noticias{padding-left:5px;padding-right:5px}
+    }
+    
+    @media(max-width:720px)  {
+    .topos{background-position:center top;min-height:160px;background-repeat:no-repeat;background-size:cover}
+    .titulo-fixo-projetos{font-family:'Roboto';font-weight:700;font-size:45px;color:white;text-align:left;padding:0px;margin:0px}
+    .navik-header{background-color:white}
+    .navik-menu{background-color:white}
+    
+    
+    
+    
+    }
+    
+.carousel-control.left, .carousel-control.right {
+    background-image: none
+}
+
+  /*
+  Bootstrap Carousel Fade Transition (for Bootstrap 3.3.x)
+  CSS from:       http://codepen.io/transportedman/pen/NPWRGq
+  and:            http://stackoverflow.com/questions/18548731/bootstrap-3-carousel-fading-to-new-slide-instead-of-sliding-to-new-slide
+  Inspired from:  http://codepen.io/Rowno/pen/Afykb 
+*/
+.carousel-fade .carousel-inner .item {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+  opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+  z-index: 2;
+}
+
+/*
+  WHAT IS NEW IN 3.3: "Added transforms to improve carousel performance in modern browsers."
+  Need to override the 3.3 new styles for modern browsers & apply opacity
+*/
+@media all and (transform-3d), (-webkit-transform-3d) {
+    .carousel-fade .carousel-inner > .item.next,
+    .carousel-fade .carousel-inner > .item.active.right {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.prev,
+    .carousel-fade .carousel-inner > .item.active.left {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+    .carousel-fade .carousel-inner > .item.next.left,
+    .carousel-fade .carousel-inner > .item.prev.right,
+    .carousel-fade .carousel-inner > .item.active {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+              transform: translate3d(0, 0, 0);
+    }
+}
+
+.navik-header.viewport-sm.sticky {
+  position: fixed;
+  width: 100%;
+  max-height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  
+  -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-name: mobileStickyTransition;
+  animation-name: mobileStickyTransition;
+}
+
+@-webkit-keyframes mobileStickyTransition {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes mobileStickyTransition {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+ 
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.navik-header.viewport-sm.sticky .logo {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navik-header.viewport-sm.sticky .container-wrap {
+  background-color: #fff;
+}
+
+.navik-header.viewport-sm.header-dark.sticky .container-wrap {
+  background-color: #111111;
+}
+
+.navik-header.viewport-sm.sticky .header-shadow-wrapper {
+  position: relative;
+}
+
+.navik-header.viewport-sm.sticky .burger-menu {
+  top: 25px;
+}
+
+.navik-header #sm2 {
+  display:none
+}
+
+.navik-header #lupa2 {
+  display:none
+}
+.navik-header.sticky #lupa1 {
+  display:none
+}
+
+.navik-header.sticky #lupa2 {
+  display:block
+}
+
+.navik-header.sticky #sm2 {
+  display:block
+}
+
+.navik-header.sticky #sm1 {
+  display:none
+}
+
+
+
+
+    @media(max-width:1024px)  {
+    .navik-header{background-color:white}
+    .navik-menu{background-color:white}
+    }
+
+</style>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MS9G67F');</script>
+<!-- End Google Tag Manager -->
+    
+
+
+
+
+    
+  </head>
+    <body>
+      
+
+<!-- Elfsight Website Translator | Untitled Website Translator -->
+<script src="https://static.elfsight.com/platform/platform.js" async></script>
+
+
+
+    <script type="text/javascript"> _linkedin_partner_id = "4074388"; window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || []; window._linkedin_data_partner_ids.push(_linkedin_partner_id); </script><script type="text/javascript"> (function(l) { if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])}; window.lintrk.q=[]} var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(window.lintrk); </script> <noscript> <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4074388&fmt=gif" /> </noscript>
+
+<!-- Header -->
+<div class="navik-header header-shadow">
+<div style="padding-bottom:20px;padding-top:0px;max-width:1340px" class="container-fluid">
+  <div style="padding-top:20px;padding-bottom:0px">
+    
+    <div style="text-align:right;width:100%" id="sm1" class="hidden-sm hidden-xs">
+    <div style="width:250px;float:right" class="elfsight-app-6cd124a7-8a53-4824-b902-804c32867219" data-elfsight-app-lazy></div>
+    <img src="https://agener.com.br/wp-content/themes/agener/images/redes-topo-22b.png" usemap="#image-map">
+    </div>
+    <div style="text-align:right;width:100%" id="sm2" class="hidden-sm hidden-xs">
+    <img src="https://agener.com.br/wp-content/themes/agener/images/redes-topo-22b.png" usemap="#image-map">
+    </div>
+        
+          <!-- Navik header -->
+    <div class="navik-header-container">
+			<div class="visible-sm visible-xs" style="position:absolute;z-index:500000;top:50px"><a href="javascript:openSearch()">
+			      <img src="https://agener.com.br/wp-content/themes/agener/images/lupa.png">
+			   </a>
+		  </div>
+      <!--Logo-->
+            <div class="logo" data-overlay-logo="https://agener.com.br/wp-content/themes/agener/images/logo-agener-novo.png" data-mobile-logo="https://agener.com.br/wp-content/themes/agener/images/logo-agener-novo.png" data-sticky-logo="https://agener.com.br/wp-content/themes/agener/images/logo-agener-novo.png">
+        <a href="/"><img src="https://agener.com.br/wp-content/themes/agener/images/logo-agener-novo.png" alt="logo" /></a>
+      </div>
+      		
+			
+
+				
+      <!-- Burger menu -->
+      <div class="burger-menu" style="top:55px">
+	<div class="line-menu line-half first-line"></div>
+        <div class="line-menu"></div>
+        <div class="line-menu line-half last-line"></div>
+      </div>
+
+      <!--Navigation menu-->
+      
+      <!--Navigation menu-->
+                <nav class="navik-menu menu-caret menu-hover-3 submenu-top-border" style="padding:0px;margin:0px">
+                <ul>
+                   
+             <li><a href="#">Institucional</a>
+            <ul>
+              <li><a href="https://agener.com.br/historia-da-agener-uniao/">História da Agener União</a></li>
+              <li><a href="https://agener.com.br/linha-do-tempo/">Linha do Tempo</a></li>
+            </ul>
+          </li>
+		   
+		   <!--------------------------------------------------------------->
+		  		    <li class="mega-menu"><a href="#">Produtos</a>
+							<ul style="padding:0px;margin:0px">
+								<li style="padding:0px;margin:0px">
+
+									<!-- Mega menu container -->
+									<div class="mega-menu-container" style="padding:0px;margin:0px">
+										<div class="row" style="background-color:#EFEFEF">
+
+		   <!-- Column -->
+		   <div class="col-md-5" style="background-color:white;padding:30px;margin:0px">
+		   <div class="mega-menu-box">
+		   <h4 class="mega-menu-heading"><a href="https://agener.com.br/produtos/grandes-animais/">GRANDES ANIMAIS</a></h4>
+                   <div class="col-md-6">
+		   <ul class="mega-menu-list" style="font-weight:200;line-height:23px;background-color:transparent;padding-top:10px;padding-bottom:15px;list-style-image: url('https://agener.com.br/wp-content/themes/agener/images/seta-rodape.png');">
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/anti-inflamatorios/">Anti-Inflamatórios</a></li>
+                   <li><a href="https://agener.com.br/produtos/grandes-animais/antimicrobianos/">Antimicrobianos</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/ectoparasiticidas/">Ectoparasiticidas</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/endectocidas/">Endectocidas</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/endoparasiticidas/">Endoparasiticidas</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/especialidades/">Especialidades</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/biologicos-grandes-animais/">Biológicos</a></li>
+                   </ul>
+                   </div>
+		   <div class="col-md-6">
+		   <ul class="mega-menu-list" style="font-weight:200;line-height:23px;background-color:transparent;padding-top:10px;padding-bottom:15px;list-style-image: url('https://agener.com.br/wp-content/themes/agener/images/seta-rodape.png');">
+                   <li><a href="https://agener.com.br/produtos/grandes-animais/hemoparasiticida/">Hemoparasiticida</a></li>
+		   <li><a href="/produtos/grandes-animais/lactotropin">Lactotropin</a></li>
+		   <li><a href="/posilac">Posilac 325mg</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/tecnopec-linha-reprodutiva/">Tecnopec Linha Reprodutiva</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/mata-bicheiras/">Mata-Bicheiras</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/tonicos-revigorantes/reviplus/">Tônicos Revigorantes</a></li>
+		   <li><a href="https://agener.com.br/produtos/grandes-animais/"><strong>Ver Todos</strong></a></li>
+                   </ul>
+                   </div>							
+		   
+		   </div>
+		   
+		   </div>
+                   
+		   <!-- Column -->
+		   <!-- Column -->
+		   <div class="col-md-6" style="background-color:#EFEFEF;padding:30px;margin:0px">
+		   <div class="mega-menu-box">
+		   <h4 class="mega-menu-heading"><a href="https://agener.com.br/produtos/pequenos-animais/">PEQUENOS ANIMAIS</a></h4>
+                   <div class="col-md-6">
+		   <ul class="mega-menu-list" style="font-weight:200;line-height:20px;background-color:transparent;padding-top:10px;padding-bottom:15px;list-style-image: url('https://agener.com.br/wp-content/themes/agener/images/seta-rodape.png');">
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/">Antimicrobianos</a></li>
+                   <li><a href="https://agener.com.br/produtos/pequenos-animais/antiparasitarios/">Antiparasitários</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/biologicos/">Biológicos</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/dermatologicos/">Dermatológicos</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/desinfetantes/">Desinfetantes</a></li>
+                   <li><a href="https://agener.com.br/produtos/pequenos-animais/ectoparasiticidas-pt/">Ectoparasiticidas</a></li>
+
+		   </ul>
+		   
+                   </div>
+		   
+		    <div class="col-md-6">
+		   <ul class="mega-menu-list" style="font-weight:200;line-height:20px;background-color:transparent;padding-top:10px;padding-bottom:15px;list-style-image: url('https://agener.com.br/wp-content/themes/agener/images/seta-rodape.png');">
+		   
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/especialidades-pt/">Especialidades</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/linha-cardio/">Linha Cardio</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/linha-dor/">Linha Dor</a></li>
+		   <li><a href="https://agener.com.br/produtos/pequenos-animais/linha-equilibrio/">Linha Equilíbrio</a></li>
+            
+			<li><a href="https://agener.com.br/produtos/pequenos-animais/gastro">Gastro</a></li>
+			<li><a href="https://agener.com.br/produtos/pequenos-animais/suplementos">Suplementos</a></li>
+			<li><a href="https://agener.com.br/produtos/pequenos-animais/"><strong>Ver Todos</strong></a></li>
+		   </ul>
+                   </div>
+		   </div>
+		   
+		   </div>
+
+
+
+										
+										
+
+										</div>
+									</div>
+
+								</li>
+							</ul>
+						</li>
+		  
+		  
+		  
+		  
+		  
+		  
+		  
+			
+						<!--------------------------------------------->
+						
+                        
+			<li><a href="#">Distribuidores</a>
+            <ul>
+              <li><a href="https://agener.com.br/distribuidores/">Distribuidores de produtos Pet</a></li>
+              <li><a href="https://agener.com.br/distribuidores-grandes-animais/">Distribuidores de produtos Grandes Animais</a></li>
+            </ul>
+          </li>
+			
+			
+			
+			
+			<li><a href="/novidades">Novidades</a></li>
+			<li><a href="/lactotropin">Lactotropin</a></li>
+			<li><a href="/mirtz" target="_blank">Mirtz</a></li>
+			<li><a href="https://agener.com.br/contato">Contato</a>
+			<li class="visible-xs visible-sm"><div style="width:150px;float:left" class="elfsight-app-6cd124a7-8a53-4824-b902-804c32867219" data-elfsight-app-lazy></div></li>
+
+			
+			
+			<li class="hidden-sm hidden-xs">
+			   			   <a href="javascript:openSearch()" id="lupa1">
+			      <img style="position:relative;top:35%" src="https://agener.com.br/wp-content/themes/agener/images/lupa-branca.png">
+			   </a>
+			   
+			   <a href="javascript:openSearch()" id="lupa2">
+			      <img style="position:relative;top:35%" src="https://agener.com.br/wp-content/themes/agener/images/lupa.png">
+			   </a>
+			   			   
+			</li>
+           <li class="hidden-sm hidden-xs">
+	          <div style="text-align:right;width:100%" id="sm2">
+			  <!--<div style="width:150px;float:left" class="elfsight-app-6cd124a7-8a53-4824-b902-804c32867219" data-elfsight-app-lazy></div>-->
+	
+    </div>
+	   </li>
+	            </ul>
+          
+		</nav>      
+    </div>
+</div>
+  </div>
+</div>
+<script src="https://agener.com.br/wp-content/themes/agener/navik_menu/src/jquery-3.3.1.min.js"></script>
+<script src="https://agener.com.br/wp-content/themes/agener/navik_menu/src/navik.menu.js"></script>
+
+
+
+ <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+      <!-- Indicators -->
+
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1" class="active"></li>
+        
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+            <div class="item active">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/produtos/pequenos-animais/antiparasitarios/ectocid/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_1.jpg" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/produtos/pequenos-animais/antiparasitarios/ectocid/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_1.jpg" class="img-responsive" style="width:100%"></a>
+          </div>
+                <div class="item">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/produtos/grandes-animais/endectocidas/epmox/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_2.jpg" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/produtos/grandes-animais/endectocidas/epmox/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_2.jpg" class="img-responsive" style="width:100%"></a>
+          </div>
+                          <div class="item ">
+          <a class="hidden-xs hidden-sm" href=""><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_3.jpg" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href=""><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_3.jpg" class="img-responsive" style="width:100%"></a>
+          </div>
+                    <div class="item">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/produtos/grandes-animais/endectocidas/combatt3/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_4.jpg" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/produtos/grandes-animais/endectocidas/combatt3/"><img src="https://agener.com.br/wp-content/uploads/2025/09/a_banner_4.jpg" class="img-responsive" style="width:100%"></a>
+          </div>
+                    	  <div class="item">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/lactotropin/"><img src="https://agener.com.br/wp-content/uploads/2025/09/6509B-AGL-Banner-Digital-Site-Agener.jpg" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/lactotropin/"><img src="https://agener.com.br/wp-content/uploads/2025/09/6509B-AGL-Banner-Digital-Site-Agener.jpg" class="img-responsive" style="width:100%"></a>
+          </div>
+                    	  <div class="item">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/produtos/grandes-animais/tecnopec-linha-reprodutiva/"><img src="https://agener.com.br/wp-content/uploads/2025/06/AGE0056-BANNER-Tecnopec-gonaser-Website.png" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/produtos/grandes-animais/tecnopec-linha-reprodutiva//"><img src="https://agener.com.br/wp-content/uploads/2025/06/AGE0056-BANNER-Tecnopec-gonaser-Website.png" class="img-responsive" style="width:100%"></a>
+          </div>
+                    	  <div class="item">
+          <a class="hidden-xs hidden-sm" href="https://agener.com.br/produtos/grandes-animais/ectoparasiticidas/ectocid-pulverizacao/"><img src="https://agener.com.br/wp-content/uploads/2025/09/AGE0026-BANNER-Ectocid-Website-Agener.png" class="img-responsive" style="width:100%"></a>
+	  <a class="visible-xs visible-sm" href="https://agener.com.br/produtos/grandes-animais/ectoparasiticidas/ectocid-pulverizacao/"><img src="https://agener.com.br/wp-content/uploads/2025/09/AGE0026-BANNER-Ectocid-Website-Agener.png" class="img-responsive" style="width:100%"></a>
+          </div>
+          
+      </div>
+
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+
+        <span class="sr-only">Previous</span>
+
+      </a>
+
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+
+        <span class="sr-only">Next</span>
+
+      </a>
+
+    </div><!-- /.carousel -->
+
+
+<style>
+/* The slow way */
+.make-it-slow {
+   cursor: pointer;
+  border-radius:0px;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+/* Transition to a bigger shadow on hover */
+.make-it-slow:hover {
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+</style>
+<br>
+<div id="div-up">
+<div class="row" style="padding:0px">
+<div class="container-fluid" style="padding:0px">
+   <div class="col-md-6 col-sm-12 col-xs-12" id="home-b-1">
+    <a href="/lactotropin/"><img id="p_meio_banner_1" src="https://agener.com.br/wp-content/themes/agener/images/lactotropin_correto.jpg" class="img-responsive" style="width:100%"></a>
+   </div>
+   <div class="col-md-3 col-sm-12 col-xs-12" id="home-b-2">
+    <a href="/produtos/grandes-animais/"><img id="p_meio_banner_2" src="https://agener.com.br/wp-content/themes/agener/images/home-gd-animais.jpg" class="img-responsive" style="width:100%;padding-bottom:15px"></a>
+    <a href="/produtos/pequenos-animais/"><img id="p_meio_banner_3" src="https://agener.com.br/wp-content/themes/agener/images/pequenos_animais_agener.jpg" class="img-responsive" style="width:100%"></a>
+   </div>
+   <div class="col-md-3 col-sm-12 col-xs-12" id="home-b-3">
+    <a href="/produtos/grandes-animais/tecnopec-linha-reprodutiva"><img id="p_meio_banner_4" src="https://agener.com.br/wp-content/themes/agener/images/novo-home-tecnopec.jpg" style="width:100%"></a>
+   </div>
+</div>
+</div>
+<br>
+
+
+
+<div class="row">
+<div class="container-fluid" style="background-color:#CDCDCD;padding:0px">
+<div class="col-md-12" style="padding:0px">
+<br>
+<img src="https://agener.com.br/wp-content/themes/agener/images/i-conteudo.png">
+<br>
+<div id="boxes-noticias">
+<h2 style="font-size:30px">Saiba Mais</h2>
+<br>
+    <div class="slider multiple-items">
+        
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/mudanca-do-perfil-da-pecuaria-acelera-crescimentoda-agener/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2022/08/logo-novo-1.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Mudança do perfil da pecuária acelera crescimento da Agener</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">Faturamento da divisão da União Química deve chegar a R$ 1 bi </span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/mastite/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/11/mastite_agener.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Mastite bovina: o que é e como prevenir o vilão da produção leiteira</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">Um dos principais problemas que prejudicam a rentabilidade da ...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/outubro-rosa-pet/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/10/outubro_rosa_agener.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Outubro Rosa Pet</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">No mês em que o câncer de mama é alvo da campanha de conscientização ...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/vacinacao-em-caes/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/09/vacinacao_agener.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Vacinação em cães: a importância da Vacina Déctupla (V10)</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">Necessária desde os primeiros meses de vida, a vacina ajuda a prevenir ...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/dia-do-veterinario/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/09/dia_vet.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Dia do veterinário</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">Hoje é o Dia do Médico Veterinário e essa data representa um grande marco ...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/cadastro-no-sipeagro/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/06/sipeagro.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Passo a passo para cadastro no SIPEAGRO</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">Passo a passo para pet shops, clínicas veterinárias e agropecuárias se cadastrarem no SIPEAGRO</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/webinar-posilac325m/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/03/webinar_agener_saude_animal.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Webinar Agener</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">No dia 07/05/2020 estivemos juntos no Webinar Agener Saúde Animal ...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/lancamento-clinbacter/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/03/capa_clinbacter.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Clinbacter</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">A convivência com outros cães pode ser divertida ou, pelo menos, deve ser tolerável...</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+          
+    <div style="padding:20px">
+    <a style="text-decoration:none" href="https://agener.com.br/novidades/union-agener/">
+             <div style="min-height:430px;padding:0px;background-color:white" class="make-it-slow">
+	     
+	     <img src="https://agener.com.br/wp-content/uploads/2020/01/union_agener.jpg" class="img-responsive" style="width:100%"><br>
+	     <div style="padding-left:18px;padding-right:18px">
+	     <span class="titulo-lista-blog" style="font-size:20px;color:black">Unidade fabril Union Agener</span><br><br>
+	     <span style="font-size:13px;color:black;text-align:left">O negócio inclui marcas e registros assim como a patente do produto, e representa um marco importan</span><br>
+	     <br>
+	     <span style="font-size:13px;color:#C70506;text-align:left">Saiba Mais -></span><br><br>
+	     </div>
+	     </div>
+<br><br>
+    </a>  
+   </div>
+      
+            </div>
+<br><br>
+</div>
+</div>
+</div>
+</div>
+<br>
+
+</div>
+      
+
+
+
+
+<div class="row rodape">
+<div class="container-fluid" style="max-width:1340px">
+  <div style="padding-top:50px">
+    <div class="col-md-3 col-sm-4">
+    <img src="https://agener.com.br/wp-content/themes/agener/images/logo-rodape-uq-2.png"><br><br>
+    <p class="texto_rodape">
+        
+    É a Divisão veterinária da União Química Farmacêutica Nacional, empresa brasileira com mais de 88 anos de história no mercado farmacêutico.
+
+    </p>
+    <br><br>
+    <img src="https://agener.com.br/wp-content/themes/agener/images/icone-gps-rodape.png">
+    <p class="texto_rodape" style="position:relative;top:-20px">Avenida Magalhães de Castro, 4.800<br>16º andar - Conjuntos 161 e 162<br>Edifício Continental Tower<br>05676-120 / São Paulo-SP</p>
+    </div>
+    <div class="col-md-5 col-sm-4 contato-bottom" style="padding-top:10px">
+      <span class="titulo_menu_rodape">Links Úteis</span>
+
+      
+      <ul style="padding-top:16px;padding-left:15px;list-style-image: url('https://agener.com.br/wp-content/themes/agener/images/seta-rodape.png');">
+      <li><a class="item_menu_rodape" href="https://www.milkpoint.com.br/noticias-e-mercado/giro-noticias/" target="_blank">MilkPoint</a></li>
+      <li><a class="item_menu_rodape" href="https://www.canalrural.com.br/cotacao/soja/" target="_blank">Cotações de Pecuária - Rural BR</a></li>
+      <li><a class="item_menu_rodape" href="https://www.scotconsultoria.com.br/cotacoes/boi-gordo/" target="_blank">Boi Gordo - Scot Consultoria</a></li>
+      <li><a class="item_menu_rodape" href="https://www.tempoagora.com.br/previsao-do-tempo/sp/SaoPaulo" target="_blank">Previsão do Tempo - Tempo Agora</a></li>
+      <li><a class="item_menu_rodape" href="https://economia.uol.com.br/agronegocio/" target="_blank">Agronegócio - UOL Notícias</a></li>
+      <li><a class="item_menu_rodape" href="/politica-de-privacidade/">Política de Privacidade</a></li>
+      <li><a class="item_menu_rodape" href="/canal-de-privacidade-lgpd/">Canal de Privacidade - LGPD</a></li>
+      <li><a class="item_menu_rodape" href="/politica-de-cookies/">Política de Cookies</a></li>
+      <li><a class="item_menu_rodape" href="/termo-de-uso/">Termo de Uso</a></li>
+      </ul>
+    </div>
+     <div class="col-md-4" style="padding-left:10px;padding-top:10px">
+      <span class="titulo_menu_rodape">Siga-nos nas redes</span><br>
+      <img style="margin-top:15px;" src="https://agener.com.br/wp-content/themes/agener/images/icones-redes-rodape.png" usemap="#image-map2">
+      <br><br>
+    </div>
+
+    <div class="col-md-3" style="padding-left:10px;padding-top:10px">
+    
+    </div>
+  </div>
+
+</div>
+
+<div style="height:2px;border-top:1px solid #BBBBBB;border-bottom:1px solid white;width:100%"></div>
+<div class="container-fluid">
+   <div style="padding-top:25px;padding-bottom:45px">
+      <div class="col-md-12">
+      <p class="texto_rodape_menor" style="text-align:center">Copyright © 2026 União Química. Todos os direitos reservados.</p>
+      </div>
+      <!--<div class="col-md-6" style="text-align:right">
+      <p class="texto_rodape_menor" style="text-align:right">Termos de Uso  |  Cookies  |  Política de Privacidade</p>
+      </div>-->
+      </div>
+</div>
+</div>      
+      
+<script src="https://agener.com.br/wp-content/themes/agener/horizontal-timeline/js/main.js"></script> <!-- Resource jQuery -->
+
+
+
+<!-- REVOLUTION JS FILES -->
+		<script type="text/javascript" src="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/js/jquery.themepunch.tools.min.js"></script>
+		<script type="text/javascript" src="https://agener.com.br/wp-content/themes/agener/slider-revolution/revolution/js/jquery.themepunch.revolution.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+ 
+    /* https://learn.jquery.com/using-jquery-core/document-ready/ */
+    jQuery(document).ready(function() {
+ 
+        /* initialize the slider based on the Slider's ID attribute */
+        jQuery('#rev_slider_1').show().revolution({
+ 
+ 
+ 
+ 
+    gridheight: [750, 750, 750, 750],
+ 
+            /* options are 'auto', 'fullwidth' or 'fullscreen' */
+            sliderLayout: 'auto',
+	    
+
+	    
+	    stopLoop: 'off',
+    stopAfterLoops: -1,
+    stopAtSlide: -1,
+            /* basic navigation arrows and bullets */
+            navigation: {
+ 
+                arrows: {
+                    enable: true,
+                    style: 'uranus',
+                    hide_onleave: true,
+	
+	left: {
+            container: 'slider',
+            h_align: 'left',
+            v_align: 'center',
+            h_offset: 0,
+            v_offset: 0
+        },
+ 
+        right: {
+            container: 'slider',
+            h_align: 'right',
+            v_align: 'center',
+            h_offset: 0,
+            v_offset: 0
+        }
+                },
+ 
+                bullets: {
+                    enable: false,
+                    style: 'hesperiden',
+                    hide_onleave: false,
+                    h_align: 'center',
+                    v_align: 'bottom',
+                    h_offset: 0,
+                    v_offset: 20,
+                    space: 5
+                }
+            }
+        });
+    });
+ 
+</script>
+
+
+<style>
+/* The overlay effect with black background */
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #333333;
+  background-color: rgba(68,68,68, 0.9); /* Black with a little bit see-through */
+}
+
+/* The content */
+.overlay-content {
+  position: relative;
+  top: 46%;
+  width: 80%;
+  text-align: center;
+  margin-top: 30px;
+  margin: auto;
+}
+
+/* Close button */
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+  cursor: pointer;
+  color: white;
+}
+
+.overlay .closebtn:hover {
+  color: #ccc;
+}
+
+/* Style the search field */
+.overlay input[type=text] {
+  padding: 15px;
+  font-size: 17px;
+  border: none;
+  float: left;
+  width: 80%;
+  background: white;
+}
+
+.overlay input[type=text]:hover {
+  background: #f1f1f1;
+}
+
+/* Style the submit button */
+.overlay button {
+  float: left;
+  width: 20%;
+  padding: 15px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay button:hover {
+  background: #bbb;
+}
+</style>
+
+<div id="myOverlay" class="overlay" style="z-index:800000">
+  <span class="closebtn" onclick="closeSearch()" title="Close Overlay">x</span>
+  <div class="overlay-content">
+    <form action="/" method="get">
+      <input type="text" placeholder="Localizar.." name="s" id="s">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+</div>
+
+<script>
+   function openSearch() {
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+// Close the full screen search box
+function closeSearch() {
+  document.getElementById("myOverlay").style.display = "none";
+}
+</script>
+
+
+
+<map name="image-map">
+    <area target="" alt="" title="" href="https://www.facebook.com/uniaoquimicafarmaceutica/" coords="83,0,113,25" shape="rect">
+    <area target="" alt="" title="" href="https://www.linkedin.com/company/uni-o-qu-mica-farmac-utica-nacional/?originalSubdomain=pt" coords="121,2,145,24" shape="rect">
+    <area target="" alt="" title="" href="https://www.instagram.com/agener.oficial/" coords="153,0,177,25" shape="rect">
+    
+    <area target="" alt="" title="" href="https://www.agener.com.br" coords="1,6,17,18" shape="rect">
+    <area target="" alt="" title="" href="https://www.agener.com.br/en" coords="24,8,42,20" shape="rect">
+    <area target="" alt="" title="" href="https://www.agener.com.br/es" coords="48,6,64,20" shape="rect">
+
+</map>
+
+<map name="image-map2">
+    <area target="_blank" alt="" title="" href="https://www.facebook.com/uniaoquimicafarmaceutica/" coords="0,1,31,30" shape="rect">
+    <area target="_blank" alt="" title="" href="https://www.linkedin.com/company/uni-o-qu-mica-farmac-utica-nacional/?originalSubdomain=pt" coords="38,1,72,30" shape="rect">
+    <area target="_blank" alt="" title="" href="https://www.instagram.com/agener.oficial/" coords="80,0,110,29" shape="rect">
+</map>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+<script>
+   $('.multiple-items').slick({
+  dots: true,
+  infinite: true,
+  slidesToShow: 3,
+  slidesToScroll: 3,
+  responsive: [
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        infinite: true,
+        dots: true
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1
+      }
+    }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+  ]
+});
+</script>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MS9G67F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+
+
+
+
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/agener/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script id="wp-hooks-js" src="https://agener.com.br/wp-includes/js/dist/hooks.min.js?ver=7496969728ca0f95732d"></script>
+<script id="wp-i18n-js" src="https://agener.com.br/wp-includes/js/dist/i18n.min.js?ver=781d11515ad3d91786ec"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script id="swv-js" src="https://agener.com.br/wp-content/plugins/contact-form-7/includes/swv/js/index.js?ver=6.1.7"></script>
+<script id="contact-form-7-js-translations">
+( function( domain, translations ) {
+	var localeData = translations.locale_data[ domain ] || translations.locale_data.messages;
+	localeData[""].domain = domain;
+	wp.i18n.setLocaleData( localeData, domain );
+} )( "contact-form-7", {"translation-revision-date":"2025-05-19 13:41:20+0000","generator":"GlotPress\/4.0.1","domain":"messages","locale_data":{"messages":{"":{"domain":"messages","plural-forms":"nplurals=2; plural=n > 1;","lang":"pt_BR"},"Error:":["Erro:"]}},"comment":{"reference":"includes\/js\/index.js"}} );
+//# sourceURL=contact-form-7-js-translations
+</script>
+<script id="contact-form-7-js-before">
+var wpcf7 = {
+    "api": {
+        "root": "https:\/\/agener.com.br\/wp-json\/",
+        "namespace": "contact-form-7\/v1"
+    }
+};
+//# sourceURL=contact-form-7-js-before
+</script>
+<script id="contact-form-7-js" src="https://agener.com.br/wp-content/plugins/contact-form-7/includes/js/index.js?ver=6.1.7"></script>
+<script id="flexy-breadcrumb-js" src="https://agener.com.br/wp-content/plugins/flexy-breadcrumb/public/js/flexy-breadcrumb-public.js?ver=1.2.1"></script>
+<script id="jquery-fitvids-js" src="https://agener.com.br/wp-content/plugins/install-fitvids-embed-fluid-width-videos/public/js/jquery.fitvids.js?ver=1.1"></script>
+<script id="fitvids-fluid-video-js" src="https://agener.com.br/wp-content/plugins/install-fitvids-embed-fluid-width-videos/public/js/fitvids-fluid-video-public.js?ver=1.0.0"></script>
+
+
+
+</body>
+    
+</html>

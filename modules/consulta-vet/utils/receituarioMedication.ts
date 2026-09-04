@@ -42,7 +42,7 @@ export function prescriptionPharmaceuticalFormLabel(value: unknown): string {
   if (/solucao.*oftalm|colirio/.test(normalized)) return 'Solução oftálmica';
   if (/pomada.*oftalm/.test(normalized)) return 'Pomada oftálmica';
   if (/solucao.*otolog|solucao.*otic/.test(normalized)) return 'Solução otológica';
-  if (/suspensao.*oral/.test(normalized)) return 'Suspensão oral';
+  if (/suspensão.*oral/.test(normalized)) return 'Suspensão oral';
   if (/solucao.*oral/.test(normalized)) return 'Solução oral';
   if (/solucao.*injet|injetav/.test(normalized)) return 'Solução injetável';
   if (/xarope/.test(normalized)) return 'Xarope';
@@ -69,7 +69,7 @@ function concentrationDenominator(form: string): string {
   const normalized = normalize(form);
   if (normalized.includes('comprim')) return 'comprimido';
   if (normalized.includes('capsul')) return 'cápsula';
-  if (/solucao|suspensao|xarope/.test(normalized)) return 'mL';
+  if (/solucao|suspensão|xarope/.test(normalized)) return 'mL';
   if (normalized.includes('gota')) return 'gota';
   if (normalized.includes('sache')) return 'sachê';
   return '';
@@ -254,11 +254,11 @@ export const ROUTE_ORDER = [
 export function getRouteCategory(routeOrText: string): string {
   const normalized = normalize(routeOrText);
   if (/oftalm|colirio|ocular|\bolho\b|\bolhos\b/.test(normalized)) return 'USO OFTÁLMICO';
-  if (/otolog|otico|auricular|\bouvido\b|\bouvidos\b|\borelha\b/.test(normalized)) return 'USO OTOLÓGICO';
+  if (/otolog|ótico|auricular|\bouvido\b|\bouvidos\b|\borelha\b/.test(normalized)) return 'USO OTOLÓGICO';
   if (/shampoo|xampu|pomada|creme|gel|spray|topico|topica|\bpele\b|banho/.test(normalized)) return 'USO TÓPICO';
   if (/subcutan|intramuscul|intravenos|endovenos|\bsc\b|\bim\b|\biv\b|\bev\b|injetav/.test(normalized)) return 'USO INJETÁVEL';
   if (/inalat|nebuliz|inalac/.test(normalized)) return 'USO INALATÓRIO';
-  if (/comprim|capsul|xarope|solucao oral|suspensao oral|oral|\bvo\b|\bpo\b|dragea|pasta/.test(normalized)) return 'USO ORAL';
+  if (/comprim|capsul|xarope|solucao oral|suspensão oral|oral|\bvo\b|\bpo\b|dragea|pasta/.test(normalized)) return 'USO ORAL';
   if (normalized.includes('oral') || !normalized.trim()) return 'USO ORAL';
   return 'OUTRAS VIAS';
 }
@@ -271,7 +271,7 @@ function cleanMedicationItemBlock(blockText: string): string {
     .trim();
 
   const normalized = normalize(cleaned);
-  if (!cleaned || /^uso\s+(oral|topico|topica|otologico|otologica|oftalmico|oftalmica|injetavel|inalatorio|outras\s+vias)$/.test(normalized)) {
+  if (!cleaned || /^uso\s+(oral|topico|topica|otologico|otologica|oftálmico|oftálmica|injetavel|inalatorio|outras\s+vias)$/.test(normalized)) {
     return '';
   }
 

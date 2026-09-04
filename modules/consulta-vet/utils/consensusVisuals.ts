@@ -30,7 +30,7 @@ const CONSENSUS_SYMBOLS: Record<string, string> = {
   'acvim-incontinencia-urinaria-canina-2024': `${SYMBOL_ROOT}/acvim-incontinencia-urinaria-canina-2024.webp`,
   'iris-doenca-glomerular-canina-2013': `${SYMBOL_ROOT}/iris-doenca-glomerular-canina-2013.webp`,
   'isfm-drc-felina-2016': `${SYMBOL_ROOT}/isfm-drc-felina-2016.webp`,
-  'terminologia-infeccoes-urinarias-2026': `${SYMBOL_ROOT}/terminologia-infeccoes-urinarias-2026.webp`,
+  'terminologia-infeccoes-urinarias-2026': `${SYMBOL_ROOT}/terminologia-infecções-urinarias-2026.webp`,
   'acvim-proteinuria-caes-gatos-2005': `${SYMBOL_ROOT}/acvim-proteinuria-caes-gatos-2005.webp`,
   'leishmaniose-brasileiro-2020': `${SYMBOL_ROOT}/leishmaniose-brasileiro-2020.webp`,
   'iris-drc-2023': `${SYMBOL_ROOT}/iris-drc-2026.webp`,
@@ -39,7 +39,7 @@ const CONSENSUS_SYMBOLS: Record<string, string> = {
   'consenso-de-epilepsia': `${SYMBOL_ROOT}/consenso-de-epilepsia.webp`,
   'ddiv-em-caes': `${SYMBOL_ROOT}/ddiv-em-caes.webp`,
   'consenso-doenca-mixomatosa-de-miltral': `${SYMBOL_ROOT}/consenso-doenca-mixomatosa-de-miltral.webp`,
-  'hipertensao-sistemica': `${SYMBOL_ROOT}/hipertensao-sistemica.webp`,
+  'hipertensao-sistemica': `${SYMBOL_ROOT}/hipertensao-sistêmica.webp`,
 };
 
 export type ConsensusEditorialStatus =

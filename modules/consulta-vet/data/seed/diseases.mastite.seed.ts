@@ -343,7 +343,7 @@ export const mastiteRecord: DiseaseRecord = {
     {
       id: 'ref-normal-canine-milk-2023',
       citationText:
-        'Svensson A, et al. Bacteria in normal canine milk analyzed by blood agar medium. Animals. 2023.',
+        'Svensson A, et al. Bactéria in normal canine milk analyzed by blood agar medium. Animals. 2023.',
       sourceType: 'Estudo prospectivo pequeno',
       url: 'https://pubmed.ncbi.nlm.nih.gov/37444004/',
       notes: '11 cadelas; demonstra que cultura positiva isolada pode não significar mastite.',

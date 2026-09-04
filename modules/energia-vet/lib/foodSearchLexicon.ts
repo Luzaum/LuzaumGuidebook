@@ -36,6 +36,9 @@ const SYNONYM_GROUPS: string[][] = [
   ['obesity', 'obesidade', 'sobrepeso', 'emagrecimento', 'overweight'],
   ['diabetic', 'diabetes', 'diabetico', 'glicemia', 'metabolic'],
   ['hypoallergenic', 'hipoalergenico', 'anallergenic', 'anallergenico', 'ultrahypo', 'hidrolisado', 'hydrolyzed', 'hydrolized'],
+  ['small', 'pequeno', 'mini', 'small dog'],
+  ['large', 'grande', 'maxi', 'large breed', 'grande porte'],
+  ['moderate', 'calorie', 'calorias', 'moderate calorie'],
   ['satiety', 'saciedade'],
   ['weight', 'peso', 'light', 'management', 'controle', 'manejo'],
   ['care', 'cuidado', 'cuidados'],
@@ -69,6 +72,7 @@ const SYNONYM_GROUPS: string[][] = [
   ['royal', 'canin', 'royalcanin'],
   ['farmina', 'nd', 'vetlife', 'vet', 'life'],
   ['guabi', 'guabifit'],
+  ['quatree', 'granvita'],
   ['purina', 'proplan', 'chow'],
   ['organic', 'organico', 'organica'],
   ['quinoa', 'quinoa'],
@@ -254,15 +258,59 @@ function escapeRegExp(value: string): string {
   return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
 }
 
-/** Casamento por token inteiro — evita "gua" dentro de "agua" ou "guabi" → "natural". */
+/** Calcula a distância de Levenshtein entre duas strings para tolerância a erros de digitação. */
+export function levenshteinDistance(a: string, b: string): number {
+  if (a === b) return 0
+  if (!a.length) return b.length
+  if (!b.length) return a.length
+
+  const row = Array.from({ length: b.length + 1 }, (_, i) => i)
+
+  for (let i = 1; i <= a.length; i++) {
+    let prev = i - 1
+    row[0] = i
+    for (let j = 1; j <= b.length; j++) {
+      const current = a[i - 1] === b[j - 1] ? prev : Math.min(prev, row[j - 1], row[j]) + 1
+      prev = row[j]
+      row[j] = current
+    }
+  }
+
+  return row[b.length]
+}
+
+/** Casamento por token inteiro ou fuzzy — com tolerância inteligente a erros para palavras > 3 caracteres. */
 function haystackContainsToken(haystack: string, form: string): boolean {
   const token = normalizeFoodSearchText(form)
   if (!token) return false
+
+  // 1. Exact token match
   const pattern = new RegExp(`(?:^|\\s)${escapeRegExp(token)}(?:\\s|$)`)
-  return pattern.test(` ${haystack} `)
+  if (pattern.test(` ${haystack} `)) return true
+
+  // 2. Prefix match if token >= 3 chars
+  if (token.length >= 3) {
+    const prefixPattern = new RegExp(`(?:^|\\s)${escapeRegExp(token)}[a-z0-9]*`, 'g')
+    if (prefixPattern.test(haystack)) return true
+  }
+
+  // 3. Typo tolerance / Fuzzy match (Levenshtein) para palavras médias/longas
+  const maxDistance = token.length >= 8 ? 2 : token.length >= 4 ? 1 : 0
+  if (maxDistance > 0) {
+    const haystackTokens = haystack.split(/\s+/).filter(Boolean)
+    for (const hToken of haystackTokens) {
+      if (Math.abs(hToken.length - token.length) <= maxDistance) {
+        if (levenshteinDistance(hToken, token) <= maxDistance) {
+          return true
+        }
+      }
+    }
+  }
+
+  return false
 }
 
-/** Verifica se todos os tokens da query casam (com sinônimos PT/EN). */
+/** Verifica se todos os tokens da query casam (com sinônimos PT/EN e tolerância a digitação). */
 export function foodSearchTokensMatch(query: string, haystack: string): boolean {
   const tokens = normalizeFoodSearchText(query).split(' ').filter(Boolean)
   if (!tokens.length) return true
@@ -288,15 +336,97 @@ export function scoreFoodSearchMatch(
   const queryTokens = normalizedQuery.split(' ').filter(Boolean)
 
   let score = 0
-  if (displayName === normalizedQuery) score += 120
-  else if (displayName.startsWith(normalizedQuery)) score += 90
-  else if (displayName.includes(normalizedQuery)) score += 70
+  if (displayName === normalizedQuery) score += 140
+  else if (displayName.startsWith(normalizedQuery)) score += 100
+  else if (displayName.includes(normalizedQuery)) score += 75
 
   for (const token of queryTokens) {
-    if (displayName.includes(token)) score += 25
+    if (displayName === token) score += 40
+    else if (displayName.startsWith(token)) score += 30
+    else if (displayName.includes(token)) score += 20
     if (haystackContainsToken(displayName, token)) score += 15
   }
 
+  // Bônus se tiver densidade energética cadastrada
   if (food.foodType === 'commercial') score += 5
   return score
+}
+
+export type SearchSuggestionCategory = {
+  title: string
+  items: Array<{
+    label: string
+    query: string
+    badge?: string
+    description?: string
+  }>
+}
+
+/** Sugestões inteligentes para o popup da barra de pesquisa. */
+export const SMART_SEARCH_SUGGESTIONS: SearchSuggestionCategory[] = [
+  {
+    title: 'Condições Clínicas & Terapêuticas',
+    items: [
+      { label: 'Renal / DRC', query: 'renal', badge: 'Terapêutico', description: 'Hill\'s k/d, Royal Renal, Farmina Renal' },
+      { label: 'Gastrointestinal & Digestivo', query: 'gastrointestinal', badge: 'Terapêutico', description: 'Hill\'s i/d, Gastrointestinal, N&D Quinoa' },
+      { label: 'Hipoalergênico & Hidrolisado', query: 'hipoalergenico', badge: 'Terapêutico', description: 'UltraHypo, Anallergenic, Proteína Hidrolisada' },
+      { label: 'Recuperação & Convalescença', query: 'recovery', badge: 'Intensivo', description: 'Hill\'s a/d, Royal Recovery, Convalescence' },
+      { label: 'Obesidade & Perda de Peso', query: 'obesidade', badge: 'Terapêutico', description: 'Metabolic, Satiety, Weight Management' },
+      { label: 'Urinário / Trato Urinário', query: 'urinario', badge: 'Terapêutico', description: 'Hill\'s c/d, Royal Urinary, Struvite' },
+      { label: 'Hepático', query: 'hepatico', badge: 'Terapêutico', description: 'Suporte à função hepática e cobre reduzido' },
+      { label: 'Diabético', query: 'diabetico', badge: 'Terapêutico', description: 'Controle de glicemia e carboidratos' },
+    ],
+  },
+  {
+    title: 'Marcas & Fabricantes Principais',
+    items: [
+      { label: 'Royal Canin', query: 'royal canin', badge: 'Marca' },
+      { label: 'Hill\'s Prescription Diet', query: 'hills prescription', badge: 'Marca' },
+      { label: 'Farmina (N&D / Vet Life)', query: 'farmina', badge: 'Marca' },
+      { label: 'PremieR Nutrição Clínica', query: 'premier', badge: 'Marca' },
+      { label: 'Guabi Natural', query: 'guabi natural', badge: 'Marca' },
+    ],
+  },
+  {
+    title: 'Ingredientes Naturais (TACO / USDA)',
+    items: [
+      { label: 'Peito de frango cozido', query: 'frango peito', badge: 'Natural' },
+      { label: 'Carne bovina moída', query: 'carne bovina', badge: 'Natural' },
+      { label: 'Arroz branco / integral cozido', query: 'arroz cozido', badge: 'Natural' },
+      { label: 'Abóbora cabotiá / moranga', query: 'abobora', badge: 'Natural' },
+      { label: 'Ovo de galinha cozido', query: 'ovo', badge: 'Natural' },
+      { label: 'Batata-doce cozida', query: 'batata doce', badge: 'Natural' },
+      { label: 'Fígado bovino / frango', query: 'figado', badge: 'Natural' },
+      { label: 'Óleo de peixe / Ômega-3', query: 'oleo peixe', badge: 'Suplemento' },
+    ],
+  },
+]
+
+/** Divide um texto destacando os trechos que casam com a consulta de busca. */
+export function highlightMatchingSegments(text: string, query: string): Array<{ text: string; match: boolean }> {
+  if (!query || !query.trim()) return [{ text, match: false }]
+
+  const tokens = normalizeFoodSearchText(query).split(' ').filter(Boolean)
+  if (!tokens.length) return [{ text, match: false }]
+
+  const regexParts = tokens.map((t) => escapeRegExp(t))
+  const regex = new RegExp(`(${regexParts.join('|')})`, 'gi')
+
+  const segments: Array<{ text: string; match: boolean }> = []
+  let lastIndex = 0
+  let match: RegExpExecArray | null
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push({ text: text.slice(lastIndex, match.index), match: false })
+    }
+    segments.push({ text: match[0], match: true })
+    lastIndex = match.index + match[0].length
+  }
+
+  if (lastIndex < text.length) {
+    segments.push({ text: text.slice(lastIndex), match: false })
+  }
+
+  return segments.length ? segments : [{ text, match: false }]
 }

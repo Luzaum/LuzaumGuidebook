@@ -146,8 +146,8 @@ const CATEGORY_ALIASES: Record<string, string> = {
     'respiratoria': 'respiratorio',
     'pneumologia': 'respiratorio',
     'cardio': 'cardiologia',
-    'endocrino': 'endocrinologia',
-    'metabolico': 'endocrinologia',
+    'endócrino': 'endocrinologia',
+    'metabólico': 'endocrinologia',
     'nefro': 'nefrologia-urologia',
     'nefrologia': 'nefrologia-urologia',
     'urologia': 'nefrologia-urologia',
@@ -183,8 +183,8 @@ const CATEGORY_ALIASES: Record<string, string> = {
     'medicina-preventiva': 'medicina-preventiva',
     'paliativos': 'cuidados-paliativos',
     'cuidados-paliativos': 'cuidados-paliativos',
-    'clinica': 'clinica-medica',
-    'clinico': 'clinica-medica'
+    'clínica': 'clínica-medica',
+    'clínico': 'clínica-medica'
 };
 
 export function normalizeCategoryName(rawCategory: string): string {

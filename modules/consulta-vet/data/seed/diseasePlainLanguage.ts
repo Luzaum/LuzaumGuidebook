@@ -52,11 +52,11 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'colapso-traqueal-canino': {
     whatIsIt:
-      'O colapso traqueal é o amolecimento dos anéis da traqueia (canal da respiração). A traqueia achata durante a inspiração ou expiração, provocando tosse seca e alta, parecida com o som de um ganso.',
+      'No colapso traqueal, a parede do tubo que leva o ar aos pulmões perde firmeza e pode se achatar enquanto o cão respira ou tosse. Isso costuma causar tosse seca em crises e, nos casos mais graves, dificuldade para respirar.',
     keyPoints: [
-      'Afeta sobretudo cães pequenos e miniaturas (Yorkshire, Poodle, Chihuahua).',
-      'Tosse piora com excitação, calor, exercício ou tração na coleira.',
-      'Controle de peso, peitoral (nunca coleira no pescoço) e antitussígenos prescritos pelo veterinário ajudam no dia a dia.',
+      'É mais comum em cães pequenos, mas a tosse sozinha não confirma o diagnóstico.',
+      'Peso adequado, peitoral e distância de fumaça, calor e excitação ajudam a reduzir as crises.',
+      'Língua azulada, desmaio, exaustão ou dificuldade para respirar em repouso exigem atendimento imediato.',
     ],
   },
   'fistula-perianal-furunculose-anal': {
@@ -246,24 +246,6 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Filhote pequeno, ossos atrasados, cabeça grande, orelhas caídas ou surdez — investigar cedo.',
       'Tratamento precoce (idealmente antes de 12 semanas) protege o desenvolvimento neurológico.',
       'Reposição hormonal é geralmente vitalícia; exames acompanham crescimento e hormônios.',
-    ],
-  },
-  'diabetes-mellitus-canina': {
-    whatIsIt:
-      'A diabetes mellitus canina é a falta de insulina eficaz para controlar a glicose no sangue. Sem insulina, a glicose acumula-se e o corpo usa gordura e proteína como combustível alternativo.',
-    keyPoints: [
-      'Beber e urinar muito, perda de peso apesar de boa ou aumentada apetência.',
-      'Catarata pode aparecer em cães diabéticos.',
-      'Insulina injetável, dieta e monitoramento domiciliar são pilares do tratamento.',
-    ],
-  },
-  'diabetes-mellitus-felina': {
-    whatIsIt:
-      'A diabetes felina é o descontrole crônico da glicose por falta de insulina ou resistência a ela — semelhante ao diabetes tipo 2 humano. Muitos gatos podem entrar em remissão com tratamento precoce.',
-    keyPoints: [
-      'Perda de peso, poliúria/polidipsia e postura plantigrada (andando “no calcanhar”) em casos avançados.',
-      'Obesidade e hipertireoidismo não tratado aumentam o risco.',
-      'Insulina, dieta rica em proteína e monitoramento buscam remissão quando possível.',
     ],
   },
   'doencas-trato-urinario-inferior-felino-dtuif': {

@@ -264,7 +264,7 @@ export function IrisCkdStagingTables() {
       <a
         href="https://www.iris-kidney.com/s/IRIS_staging_guidelines-2026.pdf"
         target="_blank"
-        rel="noreferrer"
+        rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
       >
         Consultar o quadro oficial IRIS 2026

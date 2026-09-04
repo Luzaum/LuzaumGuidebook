@@ -46,7 +46,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
       'Colocar o dorso da pata torácica esquerda no solo e observar a correção. Repetir e comparar com o lado direito.',
     interpretation:
       'Déficit isolado sugere lesão lateralizada. Déficits bilaterais sugerem lesão cervical ou encefálica. Déficits em torácicos ajudam a diferenciar lesões cervicais (C1–T2) de lesões toracolombares.',
-    pitfalls: 'Confundir incapacidade motora com déficit sensorial.',
+    pitfalls:
+      'Confundir incapacidade motora pura com déficit sensorial; não apoiar o tronco (inclinação corporal pode mascarar ou simular falha); piso escorregadio; dor ortopédica de ombro/cotovelo não considerada. Em lesão cervical instável, evitar manobras bruscas — adaptar suporte.',
     tags: ['propriocepcao', 'toracico', 'esquerdo', 'vias-longas', 'C1-T2'],
     severityWeight: 2,
     localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
@@ -62,7 +63,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
       'Mesmo método do membro esquerdo, sempre comparando simetria e velocidade da correção.',
     interpretation:
       'Déficit unilateral aponta para lesão contralateral encefálica ou ipsilateral periférica. Comparação bilateral é essencial para identificar lateralização da lesão.',
-    pitfalls: 'Não comparar com o lado oposto.',
+    pitfalls:
+      'Não comparar simetria e velocidade com o lado oposto; interpretar recusa por medo como déficit; não sustentar o animal (queda ou inclinação invalidam o teste). Déficit torácico unilateral com pélvicos normais reforça lesão ipsilateral periférica ou contralateral encefálica — integrar com NC e reflexos.',
     tags: ['propriocepcao', 'toracico', 'direito', 'vias-longas', 'C1-T2'],
     severityWeight: 2,
     localizationHint: ['C1-T2', 'prosencefalo-contralateral', 'periferico-ipsilateral'],
@@ -77,7 +79,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     howToPerform: 'Colocar o dorso da pata pélvica esquerda no solo e observar correção.',
     interpretation:
       'Déficits apenas em pélvicos com torácicos normais sugerem lesão T3–S3. Fundamental para identificar lesões toracolombares (T3–L3) ou lombossacras.',
-    pitfalls: 'Avaliar com dor ortopédica não controlada.',
+    pitfalls:
+      'Avaliar com dor ortopédica de quadril/joelho não controlada (recusa ou lentidão); confundir fraqueira LMN com déficit proprioceptivo; não correlacionar com reflexos patelares e cutâneo-trunci. Déficits só em pélvicos com torácicos normais apontam para T3–L3 ou caudal, não cervical.',
     tags: ['propriocepcao', 'pelvico', 'esquerdo', 'vias-longas', 'T3-S3'],
     severityWeight: 2,
     localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],
@@ -92,7 +95,8 @@ export const section3ReacoesPosturais: HelpTopic[] = [
     howToPerform: 'Mesmo método do pélvico esquerdo.',
     interpretation:
       'Déficits bilaterais reforçam mielopatia; unilateral sugere lateralização. Confirma simetria e lateralização do déficit neurológico.',
-    pitfalls: 'Não correlacionar com reflexos patelares.',
+    pitfalls:
+      'Não correlacionar com reflexos patelares e sensibilidade superficial; assumir lateralização só pelo pélvico sem comparar torácicos. Em pacientes obesos ou ansiosos, repetir o teste após acalmamento; déficit bilateral reforça mielopatia difusa ou cervical alta.',
     tags: ['propriocepcao', 'pelvico', 'direito', 'vias-longas', 'T3-S3'],
     severityWeight: 2,
     localizationHint: ['T3-L3', 'L4-S3', 'medula-toracolombar'],

@@ -330,7 +330,7 @@ export const miasteniaGravisCaesGatosRecord: DiseaseRecord = {
       interpretation:
         'Positivo com fenótipo compatível confirma fortemente; negativo mantém suspeita se clínica for típica.',
       limitations:
-        'Falsos negativos no início, em imunossupressão, formas focais ou seronegativas; não diagnostica CMS.',
+        'Falsos negativos no início, em imunossupressão, formas focais ou seronegativas; não diagnóstica CMS.',
       isGoldStandard: true,
     },
     {

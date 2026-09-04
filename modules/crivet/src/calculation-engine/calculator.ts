@@ -281,6 +281,8 @@ const calculateContinuous = (input: CalculationInput): CalculationResult => {
     '', formatNumber(reverseDoseFinal), reverseDoseUnit
   ));
 
+  const reverseCheckPassed = checkReverseMatchTolerance(reverseDoseFinal, dose);
+
   const practicalSummary = [
     ...(input.usePreDilution ? [
       `ESTÁGIO 1: Prepare solução de trabalho: 1 mL de ${input.drug.namePt} + 9 mL de NaCl 0.9% (Nova conc: ${formatNumber(presentation.concentration / 10)} ${presentation.concentrationUnit}/mL).`,
@@ -308,6 +310,7 @@ const calculateContinuous = (input: CalculationInput): CalculationResult => {
     nonApplicableFields: [],
     instructions: practicalSummary.join(' '),
     isImpossible: false,
+    reverseCheckPassed,
     clinicalPearls: input.drug.clinicalPearls || []
   };
 };

@@ -568,7 +568,7 @@ export function ClinicalMedicationDosePanel({
             <a
               href={selectedProduct.productPageUrl}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
             >
               Ver ficha comercial <ExternalLink className="h-3.5 w-3.5" />

@@ -151,7 +151,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
       'Antígenos orais persistentes (dente–biofilme–periodonto–vírus) → barreira mucosa alterada (Soltero-Rivera et al., 2023).',
       'Ativação imune inapropriada → células T CD8+ efetoras ↑, citocinas inflamatórias ↑ (Soltero-Rivera et al., 2023).',
       'Ativação de linfócitos B/plasmócitos → hiperglobulinemia possível → inflamação mucosa persistente (Soltero-Rivera et al., 2023).',
-      'Ulceração + proliferação + dor → barreira epitelial pior → maior exposição antigênica → ciclo auto-perpetuante.',
+      'Úlceração + proliferação + dor → barreira epitelial pior → maior exposição antigênica → ciclo auto-perpetuante.',
       'Antibiótico melhora temporariamente carga bacteriana mas não corrige resposta T anormal — recidiva ao suspender (Soltero-Rivera et al., 2023).',
     ],
     porQueExtracaoFunciona:
@@ -163,7 +163,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
       src: '/assets/consulta-vet/diseases/gengivoestomatite-cronica-felina/fcgs-fenotipos-soltero-rivera-2023.jpg',
       alt: 'Fenótipos clínicos da FCGS — ulcerativo, proliferativo e misto',
       caption:
-        'Apresentação heterogênea da gengivoestomatite crônica felina (FCGS): ulceração e proliferação podem coexistir e envolver mucosa bucal, alveolar, sublingual e caudal. Soltero-Rivera M, Goldschmidt S, Arzi B. J Feline Med Surg. 2023. Licença CC BY-NC 4.0.',
+        'Apresentação heterogênea da gengivoestomatite crônica felina (FCGS): úlceração e proliferação podem coexistir e envolver mucosa bucal, alveolar, sublingual e caudal. Soltero-Rivera M, Goldschmidt S, Arzi B. J Feline Med Surg. 2023. Licença CC BY-NC 4.0.',
     },
     figuraImunologia: {
       kind: 'clinicalFigure' as const,
@@ -230,7 +230,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
         },
         {
           finding: 'Sangramento espontâneo e halitose intensa',
-          mechanism: 'Ulceração friável e colonização bacteriana secundária.',
+          mechanism: 'Úlceração friável e colonização bacteriana secundária.',
           clinicalMeaning: 'Analgesia obrigatória; não tratar só com antibiótico tópico/sistêmico (Lobprise et al., 2025).',
           priority: 'common',
         },
@@ -285,7 +285,7 @@ export const gengivoestomatiteCronicaFelinaRecord: DiseaseRecord = {
         ['Linfoma oral', 'Infiltração/massa; contexto compatível'],
         ['Complexo granuloma eosinofílico', 'Morfológias típicas (úlcera labial, placa, linear)'],
         ['Estomatite urêmica', 'Doença renal avançada + hálito urêmico'],
-        ['Calicivírus agudo', 'Ulceração aguda + sinais respiratórios upper'],
+        ['Calicivírus agudo', 'Úlceração aguda + sinais respiratórios upper'],
         ['Maloclusão traumática caudal', 'Mucosite localizada por contato mecânico (Lobprise et al., 2025)'],
       ],
     },

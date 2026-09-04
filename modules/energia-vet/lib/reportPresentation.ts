@@ -209,7 +209,7 @@ export function buildPrintableReportViewModel(report: StoredCalculationReport): 
 
   const clinicalFields: ReportField[] = [
     { label: 'Perfil clínico final', value: physiologicState },
-    { label: 'Perfil de exigencia', value: getHumanRequirementLabel(requirement) },
+    { label: 'Perfil de exigencia', value: getHumanRequirementLabel(report.diet.requirementProfileId) },
     { label: 'Indoor', value: report.patient.isIndoor ? 'Sim' : 'Não' },
     { label: 'Hospitalizado', value: report.patient.isHospitalized ? 'Sim' : 'Não' },
   ]

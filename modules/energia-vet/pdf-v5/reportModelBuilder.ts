@@ -333,7 +333,7 @@ export function buildNutritionPdfDocumentModel(
         target: row.target?.raw != null ? String(row.target.raw) : 'Não informado',
         status: adequacyStatusLabel(row.status),
         interpretation: row.reason ?? adequacyStatusLabel(row.status),
-        basis: row.basisLabel ?? 'por dia',
+        basis: (row as any).basisLabel ?? 'por dia',
       }))
 
   const macroRows: PdfKeyValueRow[] =
@@ -391,7 +391,9 @@ export function buildNutritionPdfDocumentModel(
     macroRows,
     nutrientRows,
     therapeuticProfiles,
-    therapeuticConflicts: therapeuticReview?.conflicts ?? [],
+    therapeuticConflicts: (therapeuticReview?.conflicts ?? []).map((c: any) =>
+      typeof c === 'string' ? c : c.messagePt || `${c.profileA ?? ''} vs ${c.profileB ?? ''}`,
+    ),
     monitoringRecommendations: therapeuticReview?.monitoringRecommendations ?? [],
     dataQualityRows,
     hospitalRows,

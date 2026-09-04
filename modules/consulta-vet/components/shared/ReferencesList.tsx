@@ -53,7 +53,7 @@ export function ReferencesList({
                 <a
                   href={reference.url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
                 >
                   <Link2 className="h-4 w-4" />

@@ -36,6 +36,10 @@ const REQUIRED_NUTRIENT_KEYS = new Set([
   'phosphorusPct',
 ])
 
+/** Eletrólitos: só alertar déficit quando faltar ≥ 30% do requisito mínimo. */
+const ELECTROLYTE_NUTRIENT_KEYS = new Set(['potassiumPct', 'sodiumPct', 'chloridePct', 'magnesiumPct'])
+const ELECTROLYTE_DEFICIT_ALERT_THRESHOLD = 0.3
+
 function round(value: number | null | undefined, decimals = 4): number | null {
   if (value == null || Number.isNaN(value) || !Number.isFinite(value)) {
     return null
@@ -155,29 +159,81 @@ function makeEmptyMap(keys: string[]): NutrientAmountMap {
   return Object.fromEntries(keys.map((key) => [key, null]))
 }
 
-function compareAgainstTarget(deliveredValue: number, target: NutrientTargetValue): Pick<EvaluatedNutrient, 'status' | 'reason'> {
+function getMinimumTargetValue(target: NutrientTargetValue): number | null {
+  if (target.kind === 'number' || target.kind === 'number_with_text') return target.value
+  if (target.kind === 'range') return target.min ?? null
+  if (target.kind === 'comparator' && target.value != null && (target.operator === '>' || target.operator === '>=')) {
+    return target.value
+  }
+  return null
+}
+
+function compareAgainstTarget(
+  deliveredValue: number,
+  target: NutrientTargetValue,
+  nutrientKey?: string,
+): Pick<EvaluatedNutrient, 'status' | 'reason'> {
+  let comparison: Pick<EvaluatedNutrient, 'status' | 'reason'>
+
   if (target.kind === 'number' || target.kind === 'number_with_text') {
     if (target.value == null) return { status: 'manual', reason: 'Alvo sem valor operacional.' }
-    if (deliveredValue < target.value) return { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo do alvo ${target.value.toFixed(2)}.` }
-    return { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ou supera o alvo ${target.value.toFixed(2)}.` }
-  }
-
-  if (target.kind === 'range') {
+    if (deliveredValue < target.value) {
+      comparison = { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo do alvo ${target.value.toFixed(2)}.` }
+    } else {
+      comparison = { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ou supera o alvo ${target.value.toFixed(2)}.` }
+    }
+  } else if (target.kind === 'range') {
     if (target.min == null || target.max == null) return { status: 'manual', reason: 'Faixa incompleta.' }
-    if (deliveredValue < target.min) return { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
-    if (deliveredValue > target.max) return { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} acima da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
-    return { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} dentro da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
-  }
-
-  if (target.kind === 'comparator') {
+    if (deliveredValue < target.min) {
+      comparison = { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
+    } else if (deliveredValue > target.max) {
+      comparison = { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} acima da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
+    } else {
+      comparison = { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} dentro da faixa ${target.min.toFixed(2)}-${target.max.toFixed(2)}.` }
+    }
+  } else if (target.kind === 'comparator') {
     if (target.value == null || !target.operator) return { status: 'manual', reason: 'Comparador inválido.' }
-    if (target.operator === '>') return deliveredValue > target.value ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} acima de ${target.value.toFixed(2)}.` } : { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} não ultrapassa ${target.value.toFixed(2)}.` }
-    if (target.operator === '>=') return deliveredValue >= target.value ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ≥ ${target.value.toFixed(2)}.` } : { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo de ≥ ${target.value.toFixed(2)}.` }
-    if (target.operator === '<') return deliveredValue < target.value ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo de ${target.value.toFixed(2)}.` } : { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} não fica abaixo de ${target.value.toFixed(2)}.` }
-    if (target.operator === '<=') return deliveredValue <= target.value ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ≤ ${target.value.toFixed(2)}.` } : { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} acima de ≤ ${target.value.toFixed(2)}.` }
+    if (target.operator === '>') {
+      comparison = deliveredValue > target.value
+        ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} acima de ${target.value.toFixed(2)}.` }
+        : { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} não ultrapassa ${target.value.toFixed(2)}.` }
+    } else if (target.operator === '>=') {
+      comparison = deliveredValue >= target.value
+        ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ≥ ${target.value.toFixed(2)}.` }
+        : { status: 'below', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo de ≥ ${target.value.toFixed(2)}.` }
+    } else if (target.operator === '<') {
+      comparison = deliveredValue < target.value
+        ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} abaixo de ${target.value.toFixed(2)}.` }
+        : { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} não fica abaixo de ${target.value.toFixed(2)}.` }
+    } else if (target.operator === '<=') {
+      comparison = deliveredValue <= target.value
+        ? { status: 'adequate', reason: `Entregue ${deliveredValue.toFixed(2)} atende ≤ ${target.value.toFixed(2)}.` }
+        : { status: 'above', reason: `Entregue ${deliveredValue.toFixed(2)} acima de ≤ ${target.value.toFixed(2)}.` }
+    } else {
+      return { status: 'manual', reason: 'Comparação manual/assistida.' }
+    }
+  } else {
+    return { status: 'manual', reason: 'Comparação manual/assistida.' }
   }
 
-  return { status: 'manual', reason: 'Comparação manual/assistida.' }
+  if (
+    nutrientKey &&
+    ELECTROLYTE_NUTRIENT_KEYS.has(nutrientKey) &&
+    comparison.status === 'below'
+  ) {
+    const minimum = getMinimumTargetValue(target)
+    if (minimum != null && minimum > 0) {
+      const relativeDeficit = (minimum - deliveredValue) / minimum
+      if (relativeDeficit < ELECTROLYTE_DEFICIT_ALERT_THRESHOLD) {
+        return {
+          status: 'adequate',
+          reason: `Entregue ${deliveredValue.toFixed(2)} ligeiramente abaixo do alvo ${minimum.toFixed(2)} (déficit ${(relativeDeficit * 100).toFixed(0)}% < 30% do requisito).`,
+        }
+      }
+    }
+  }
+
+  return comparison
 }
 
 function getMetabolicExponent(species: Species) {
@@ -522,7 +578,7 @@ function evaluateDiet(
         }
       }
 
-      const comparison = compareAgainstTarget(deliveredValue, target)
+      const comparison = compareAgainstTarget(deliveredValue, target, key)
       return {
         key,
         label,

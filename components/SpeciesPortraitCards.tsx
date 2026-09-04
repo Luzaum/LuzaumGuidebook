@@ -1,4 +1,6 @@
 import { cn } from '@/lib/utils';
+import caninePortrait from '@/components/assets/species/dog-playful.webp';
+import felinePortrait from '@/components/assets/species/cat-playful.webp';
 
 export type SpeciesPortraitVariant = 'teal' | 'purple' | 'indigo' | 'rose' | 'gold' | 'slate';
 
@@ -72,6 +74,35 @@ export interface SpeciesPortraitCardsProps {
   headingClassName?: string;
 }
 
+export type SharedSpecies = 'dog' | 'cat';
+
+const SPECIES_PORTRAITS: Record<SharedSpecies, { src: string; alt: string }> = {
+  dog: { src: caninePortrait, alt: 'Ilustração de cão' },
+  cat: { src: felinePortrait, alt: 'Ilustração de gato' },
+};
+
+export function SpeciesPortrait({
+  species,
+  className,
+  decorative = false,
+}: {
+  species: SharedSpecies;
+  className?: string;
+  decorative?: boolean;
+}) {
+  const portrait = SPECIES_PORTRAITS[species];
+
+  return (
+    <img
+      src={portrait.src}
+      alt={decorative ? '' : portrait.alt}
+      aria-hidden={decorative || undefined}
+      draggable={false}
+      className={cn('select-none object-contain', className)}
+    />
+  );
+}
+
 export function SpeciesPortraitCards({
   canineSelected,
   felineSelected,
@@ -90,8 +121,8 @@ export function SpeciesPortraitCards({
   const v = VARIANT_STYLES[variant];
   const photoBox =
     size === 'compact'
-      ? 'h-[140px] w-[128px] rounded-[20px]'
-      : 'h-[180px] w-[160px] rounded-[24px]';
+      ? 'h-[128px] w-[128px] rounded-[24px]'
+      : 'h-[160px] w-[160px] rounded-[28px]';
   const titleSize = size === 'compact' ? 'text-xl' : 'text-[22px] sm:text-[26px]';
 
   const options = [
@@ -101,7 +132,7 @@ export function SpeciesPortraitCards({
       onClick: onSelectCanine,
       title: canineLabel,
       subtitle: canineSubtitle,
-      emoji: '\u{1F415}',
+      species: 'dog' as const,
     },
     {
       key: 'feline' as const,
@@ -109,7 +140,7 @@ export function SpeciesPortraitCards({
       onClick: onSelectFeline,
       title: felineLabel,
       subtitle: felineSubtitle,
-      emoji: '\u{1F408}',
+      species: 'cat' as const,
     },
   ];
 
@@ -143,21 +174,18 @@ export function SpeciesPortraitCards({
             >
               <div
                 className={cn(
-                  'relative mx-auto overflow-hidden transition-all duration-300',
+                  'species-portrait-frame relative mx-auto overflow-hidden border border-slate-200/80 bg-white p-1.5 transition-all duration-300 dark:border-slate-700/70 dark:bg-white',
                   photoBox,
-                  active ? v.ring : 'shadow-[0_8px_28px_rgba(0,0,0,0.45)] group-hover:shadow-[0_8px_32px_rgba(0,0,0,0.35)]',
+                  active
+                    ? v.ring
+                    : 'shadow-[0_10px_28px_rgba(15,23,42,0.12)] group-hover:border-slate-300 group-hover:shadow-[0_14px_34px_rgba(15,23,42,0.16)] dark:shadow-[0_10px_28px_rgba(0,0,0,0.28)]',
                 )}
               >
-                <div
-                  className={cn(
-                    'absolute inset-0 flex items-center justify-center bg-gradient-to-b text-[72px] leading-none sm:text-[88px]',
-                    v.fallbackGradient,
-                  )}
-                  aria-hidden
-                >
-                  {option.emoji}
-                </div>
-                <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-black/55 to-transparent sm:h-12" />
+                <SpeciesPortrait
+                  species={option.species}
+                  decorative
+                  className="h-full w-full rounded-[18px] bg-white object-contain transition-transform duration-500 group-hover:scale-[1.025]"
+                />
               </div>
 
               <p

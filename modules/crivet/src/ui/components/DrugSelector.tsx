@@ -5,6 +5,7 @@ import { Search, AlertTriangle, CheckCircle2, Beaker, X, Sparkles, BookOpen } fr
 import { DrugReferenceCard } from './DrugReferenceCard';
 import { InfoModal } from './InfoModal';
 import { TipButton } from './TipButton';
+import { SectionCard } from './SectionCard';
 import { formatRegimeLabel, getSupportedRegimes } from '../lib/drugContent';
 import { motion } from 'framer-motion';
 
@@ -49,86 +50,38 @@ export const DrugSelector: React.FC<DrugSelectorProps> = ({
   }, [drugs, searchTerm, selectedCategory]);
 
   return (
-    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6">
-      {/* Title Header */}
-      <div className="mb-3 flex items-center gap-3 md:mb-5">
-        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-emerald-100 bg-emerald-50 text-emerald-600 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-400 md:h-10 md:w-10">
-          <Beaker className="h-5 w-5" />
-        </div>
-        <div>
-          <h2 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">2. Seleção de Fármaco</h2>
-          <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-            Escolha o medicamento para infusão
-          </p>
-        </div>
-      </div>
-
-      {/* Selected Drug Banner (Active State Summary) */}
+    <SectionCard step={2} icon={Beaker} title="Fármaco" subtitle="Busque e selecione o medicamento">
       {selectedDrug && (
-        <div className="mb-5 flex flex-col gap-4 rounded-2xl border-2 border-emerald-500 bg-emerald-50/40 p-4 shadow-sm dark:border-emerald-500/50 dark:bg-emerald-950/15 md:p-5">
-          <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-            <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-3">
-                <h3 className="text-xl font-bold tracking-tight text-emerald-900 dark:text-emerald-450 md:text-2xl">
+        <div className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50/50 p-3 dark:border-emerald-500/30 dark:bg-emerald-500/5">
+          <div className="flex items-start justify-between gap-3">
+            <div className="min-w-0">
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="text-base font-semibold text-slate-900 dark:text-white">
                   {selectedDrug.namePt}
                 </h3>
-                <span className="rounded-lg bg-emerald-550 px-2.5 py-0.5 text-[10px] font-black uppercase tracking-wider text-white dark:bg-emerald-600">
-                  Fármaco Ativo
-                </span>
                 <TipButton
                   variant="book"
-                  label="Ver Referência"
+                  label="Referência"
                   compact
                   onClick={() => setShowReference(true)}
                 />
               </div>
-              <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-700 dark:text-emerald-500/80">
-                {categories.find((category) => category.id === selectedDrug.category)?.label}
-              </p>
-              <p className="mt-3 max-w-3xl text-sm font-medium leading-relaxed text-emerald-900/85 dark:text-emerald-100/80">
+              <p className="mt-1 line-clamp-2 text-xs text-slate-600 dark:text-slate-400">
                 {selectedDrug.clinicalSummary}
               </p>
             </div>
-
-            <div className="flex items-center gap-2.5">
-              <button
-                type="button"
-                onClick={() => onSelect(null)}
-                className="flex h-10 px-4 items-center justify-center rounded-xl text-xs font-black border border-emerald-200 text-emerald-700 bg-white hover:bg-emerald-50 dark:border-emerald-500/30 dark:text-emerald-400 dark:bg-slate-800 dark:hover:bg-slate-750 transition-colors cursor-pointer"
-              >
-                Limpar
-              </button>
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/20">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
-              </div>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2 border-t border-emerald-150 dark:border-emerald-500/10 pt-3">
-            {getSupportedRegimes(selectedDrug).map((regime) => (
-              <span
-                key={regime}
-                className="rounded-lg border border-emerald-150 bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-700 shadow-sm dark:border-emerald-500/30 dark:bg-slate-800 dark:text-emerald-400"
-              >
-                {formatRegimeLabel(regime)}
-              </span>
-            ))}
-            {selectedDrug.safetyMetadata?.dedicatedLineRequired && (
-              <span className="flex items-center gap-1.5 rounded-lg bg-rose-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-rose-700 shadow-sm dark:bg-rose-500/20 dark:text-rose-400">
-                <AlertTriangle className="h-3.5 w-3.5" /> Via Exclusiva
-              </span>
-            )}
-            {selectedDrug.highAlert && (
-              <span className="flex items-center gap-1.5 rounded-lg bg-amber-100 px-2.5 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-700 shadow-sm dark:bg-amber-500/20 dark:text-amber-400">
-                <AlertTriangle className="h-3.5 w-3.5" /> Alto Risco
-              </span>
-            )}
+            <button
+              type="button"
+              onClick={() => onSelect(null)}
+              className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:bg-white dark:border-slate-700 dark:text-slate-300"
+            >
+              Trocar
+            </button>
           </div>
         </div>
       )}
 
-      {/* Warnings & Inputs Section */}
-      <div className="space-y-3 md:space-y-4">
+      <div className="space-y-3">
         {patientWeight <= 0 && (
           <div className="flex items-start gap-2.5 rounded-xl bg-amber-500/10 p-3 text-xs font-bold text-amber-700 dark:text-amber-450">
             <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" />
@@ -270,6 +223,6 @@ export const DrugSelector: React.FC<DrugSelectorProps> = ({
       >
         {selectedDrug && <DrugReferenceCard drug={selectedDrug} categories={categories} condensed />}
       </InfoModal>
-    </div>
+    </SectionCard>
   );
 };

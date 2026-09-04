@@ -6,7 +6,7 @@ const ASSET_BASE = '/assets/consulta-vet';
 export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   id: 'disease-erliquiose-monocitica-canina',
   slug: 'erliquiose-monocitica-canina',
-  title: 'Erliquiose monocitica canina (Ehrlichia canis)',
+  title: 'Erliquiose monocítica canina (Ehrlichia canis)',
   synonyms: [
     'Canine monocytic ehrlichiosis',
     'CME',
@@ -17,7 +17,8 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     'Pancitopenia tropical canina',
   ],
   species: ['dog'],
-  category: 'infecciosas',
+  category: 'infectologia',
+  categories: ['parasitologia'],
   tags: [
     'Carrapato',
     'Rhipicephalus sanguineus',
@@ -31,18 +32,18 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     'Coinfeccao',
   ],
   quickSummary:
-    'A erliquiose monocitica canina e uma doença infecciosa transmitida por carrapatos, causada por Ehrlichia canis. O agente infecta monocitos e macrofagos, forma morulas intracitoplasmaticas e dissemina pelo sistema mononuclear fagocitico. O quadro pode ser agudo, subclinico ou crônico. A pista laboratorial mais importante e trombocitopenia, mas a doença tambem pode cursar com anemia não regenerativa, hiperglobulinemia, proteinuria, sinais hemorragicos, uveite, sinais neurologicos e, na fase crônica grave, mielossupressao com pancitopenia.',
+    'A erliquiose monocítica canina e uma doença infecciosa transmitida por carrapatos, causada por Ehrlichia canis. O agente infecta monócitos e macrófagos, forma mórulas intracitoplasmaticas e dissemina pelo sistema mononuclear fagocítico. O quadro pode ser agudo, subclínico ou crônico. A pista laboratorial mais importante e trombocitopenia, mas a doença tambem pode cursar com anemia não regenerativa, hiperglobulinemia, proteinuria, sinais hemorragicos, uveíte, sinais neurologicos e, na fase crônica grave, mielossupressao com pancitopenia.',
   quickDecisionStrip: [
     'Cão + carrapatos + trombocitopenia = erliquiose sempre entra alto na lista.',
     'Sorologia positiva sozinha indica exposicao; não prova doença ativa sem contexto.',
-    'PCR positiva antes de antibiotico confirma infeccao; PCR negativa não exclui fases cronicas/subclinicas.',
+    'PCR positiva antes de antibiótico confirma infecção; PCR negativa não exclui fases crônicas/subclínicas.',
     'Doxiciclina por 28 dias e o eixo terapêutico preferencial.',
     'Pancitopenia crônica, Pastor Alemao e falta de resposta em 48-72 h pioram o cenario.',
   ],
   quickSummaryRich: {
     lead:
-      'Pense na CME como uma doença de tres tempos: aguda com febre e plaquetas baixas; subclinica silenciosa, muitas vezes apenas com trombocitopenia discreta; crônica com medula cansada, imunocomplexos e sangramentos. O segredo da ficha e não tratar o SNAP isolado, e sim o paciente inteiro.',
-    leadHighlights: ['tres tempos', 'plaquetas baixas', 'subclinica', 'cronica', 'SNAP isolado'],
+      'Pense na CME como uma doença de tres tempos: aguda com febre e plaquetas baixas; subclínica silenciosa, muitas vezes apenas com trombocitopenia discreta; crônica com medula cansada, imunocomplexos e sangramentos. O segredo da ficha e não tratar o SNAP isolado, e sim o paciente inteiro.',
+    leadHighlights: ['tres tempos', 'plaquetas baixas', 'subclínica', 'crônica', 'SNAP isolado'],
     pillars: [
       {
         title: 'O que mais entrega',
@@ -53,13 +54,13 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       {
         title: 'Onde a prova e a clínica confundem',
         body:
-          'IFA, ELISA/SNAP e titulos altos podem refletir exposicao passada. PCR ajuda a documentar infeccao ativa, principalmente antes de iniciar doxiciclina.',
+          'IFA, ELISA/SNAP e titulos altos podem refletir exposicao passada. PCR ajuda a documentar infecção ativa, principalmente antes de iniciar doxiciclina.',
         highlights: ['exposicao passada', 'PCR'],
       },
       {
         title: 'Quando preocupar mais',
         body:
-          'Pancitopenia, hipoplasia medular, uveite grave, proteinuria, sinais neurologicos ou coinfeccoes indicam forma mais complexa e prognostico pior.',
+          'Pancitopenia, hipoplasia medular, uveíte grave, proteinuria, sinais neurologicos ou coinfeccoes indicam forma mais complexa e prognostico pior.',
         highlights: ['Pancitopenia', 'prognostico pior'],
       },
     ],
@@ -122,9 +123,9 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   etiology: {
     agente:
-      '*Ehrlichia canis* e uma bacteria pequena, gram-negativa, intracelular obrigatoria, da ordem Rickettsiales. No cão, infecta principalmente monocitos e macrofagos, onde forma morulas e se multiplica.',
+      '*Ehrlichia canis* e uma bactéria pequena, gram-negativa, intracelular obrigatória, da ordem Rickettsiales. No cão, infecta principalmente monócitos e macrófagos, onde forma mórulas e se multiplica.',
     alvoCelular:
-      'A afinidade por celulas do sistema mononuclear fagocitico explica a disseminacao sistêmica, a relação com baco, figado, linfonodos, medula ossea e a dificuldade de interpretar testes isolados em fases diferentes.',
+      'A afinidade por células do sistema mononuclear fagocítico explica a disseminação sistêmica, a relação com baço, fígado, linfonodos, medula ossea e a dificuldade de interpretar testes isolados em fases diferentes.',
     sinonimiaClinica:
       'Os nomes febre hemorragica canina e pancitopenia tropical canina refletem duas faces importantes da doença: sangramento por alteração plaquetaria/vascular e falencia medular na fase crônica.',
   },
@@ -140,7 +141,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
   },
   pathogenesisTransmission: {
     transmissao:
-      'A transmissao ocorre durante o repasto sanguineo. Pode acontecer em poucas horas de fixacao do carrapato, aproximadamente 3-8 horas. O periodo de incubacao costuma ser de 1 a 3 semanas.',
+      'A transmissao ocorre durante o repasto sanguineo. Pode acontecer em poucas horas de fixacao do carrapato, aproximadamente 3-8 horas. O período de incubacao costuma ser de 1 a 3 semanas.',
     figuraCicloCarrapato: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/ciclo-rhipicephalus-sanguineus-1600.jpg`,
@@ -158,23 +159,23 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         'Comparativo morfologico do vetor Rhipicephalus sanguineus: macho a esquerda (pequeno, plano e escuro) e fêmea ingurgitada a direita (aumentada de tamanho e repleta de sangue após o repasto sanguineo).',
     },
     patogeneseInicial:
-      'No hospedeiro, E. canis se aloja em monocitos e macrofagos, forma morulas e se dissemina para baco, figado, linfonodos e endotelio vascular. A vasculite, a ativacao imune e a disfuncao plaquetaria explicam boa parte dos sinais iniciais.',
+      'No hospedeiro, E. canis se aloja em monócitos e macrófagos, forma mórulas e se dissemina para baço, fígado, linfonodos e endotélio vascular. A vasculite, a ativacao imune e a disfuncao plaquetaria explicam boa parte dos sinais iniciais.',
     fases:
-      'Fase aguda: multiplicacao sistêmica, febre, organomegalia, vasculite e trombocitopenia. Fase subclinica: animal clinicamente normal, mas com possível trombocitopenia discreta e sequestro esplenico do agente. Fase crônica: resposta imune persistente, imunocomplexos, hipoplasia medular, pancitopenia, glomerulonefrite, uveite e sinais neurologicos/articulares.',
+      'Fase aguda: multiplicação sistêmica, febre, organomegalia, vasculite e trombocitopenia. Fase subclínica: animal clinicamente normal, mas com possível trombocitopenia discreta e sequestro esplenico do agente. Fase crônica: resposta imune persistente, imunocomplexos, hipoplasia medular, pancitopenia, glomerulonefrite, uveíte e sinais neurologicos/articulares.',
   },
   pathophysiology: {
     desenvolvimentoCelular: {
       kind: 'clinicalFigure',
       src: `${ASSET_BASE}/fig-26-3-desenvolvimento-e-canis.jpg`,
-      alt: 'Ciclo de desenvolvimento de Ehrlichia canis em celulas do cão',
+      alt: 'Ciclo de desenvolvimento de Ehrlichia canis em células do cão',
       display: 'full',
       caption:
-        'Esquema do ciclo intracelular de desenvolvimento de Ehrlichia canis: fixacao e entrada no monocito, replicacao binaria em vacuolos formando morulas, maturacao e liberacao atraves da lise ou exocitose para infectar novas celulas.',
+        'Esquema do ciclo intracelular de desenvolvimento de Ehrlichia canis: fixacao e entrada no monócito, replicacao binaria em vacuolos formando mórulas, maturacao e liberacao atraves da lise ou exocitose para infectar novas células.',
     },
     faseAguda:
-      'Na fase aguda, o agente se multiplica em macrofagos e se dissemina. A chegada a figado, baco e linfonodos pode causar organomegalia; o envolvimento vascular contribui para vasculite, febre, edema e sangramentos.',
+      'Na fase aguda, o agente se multiplica em macrófagos e se dissemina. A chegada a fígado, baço e linfonodos pode causar organomegalia; o envolvimento vascular contribui para vasculite, febre, edema e sangramentos.',
     faseSubclinica:
-      'Na fase subclinica, o cão pode parecer saudavel. A bacteria pode permanecer sequestrada no baco e escapar da resposta imune por mecanismos como inibicao da fusao fagolisossomal, modulacao de MHC II e variacao antigenica.',
+      'Na fase subclínica, o cão pode parecer saudável. A bactéria pode permanecer sequestrada no baço e escapar da resposta imune por mecanismos como inibicao da fusao fagolisossomal, modulacao de MHC II e variacao antigenica.',
     faseCronica:
       'Na fase crônica, a marca de maior gravidade e a mielossupressao. Hipoplasia de medula ossea pode causar pancitopenia. Imunocomplexos contribuem para glomerulonefrite, poliartrite, meningite e alteracoes oculares.',
     figurasHemorragicas: {
@@ -184,7 +185,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         alt: 'Petequias cutaneas no abdomen ventral de um cão',
         display: 'wide',
         caption:
-          'Petequias e sufoes hemorragicas difusas na pele da região abdominal ventral de um cão, caracteristicas de trombocitopenia grave e vasculite na fase aguda da infeccao.',
+          'Petequias e sufoes hemorragicas difusas na pele da região abdominal ventral de um cão, caracteristicas de trombocitopenia grave e vasculite na fase aguda da infecção.',
       },
       petequiasMucosas: {
         kind: 'clinicalFigure',
@@ -208,7 +209,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         alt: 'Acumulo de sangue na camara anterior do olho (hifema)',
         display: 'wide',
         caption:
-          'Hifema unilateral resultante de uveite anterior grave e vasculite associadas a erliquiose.',
+          'Hifema unilateral resultante de uveíte anterior grave e vasculite associadas a erliquiose.',
       },
     },
   },
@@ -307,7 +308,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         title: 'Suspeita clínica e triagem',
         purpose: 'Identificar combinação de carrapatos, trombocitopenia e sinais sistêmicos.',
         description:
-          'Procurar carrapatos, exposição ambiental, febre, anorexia, linfadenomegalia, esplenomegalia, petequias, epistaxe, uveite ou sinais neurológicos (Neer et al., ACVIM 2002).',
+          'Procurar carrapatos, exposição ambiental, febre, anorexia, linfadenomegalia, esplenomegalia, petequias, epistaxe, uveíte ou sinais neurológicos (Neer et al., ACVIM 2002).',
         interpretation: 'Trombocitopenia em cão de área endêmica eleva erliquiose no topo dos diferenciais.',
         limitations: 'Coinfecções (Babesia, Anaplasma) podem mimetizar ou sobrepor o quadro.',
       },
@@ -322,12 +323,12 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
       },
       {
         stepNumber: 3,
-        title: 'Citologia de morulas (quando disponível)',
+        title: 'Citologia de mórulas (quando disponível)',
         purpose: 'Confirmar visualmente quando parasitemia detectável.',
         description:
-          'Morulas em monocitos no sangue ou macrofagos de aspirados; buffy coat e aspirado de linfonodo aumentam rendimento.',
+          'Morulas em monócitos no sangue ou macrófagos de aspirados; buffy coat e aspirado de linfonodo aumentam rendimento.',
         interpretation: 'Morula vista confirma infecção ativa no momento da coleta.',
-        limitations: 'Sensibilidade baixa; ausência de morulas não exclui doença.',
+        limitations: 'Sensibilidade baixa; ausência de mórulas não exclui doença.',
       },
       {
         stepNumber: 4,
@@ -360,7 +361,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     ],
     fasesELaboratorio: {
       kind: 'clinicalTable',
-      headers: ['Fase', 'Achado clínico comum', 'Laboratorio que ajuda', 'Armadilha'],
+      headers: ['Fase', 'Achado clínico comum', 'Laboratório que ajuda', 'Armadilha'],
       rows: [
         [
           'Aguda',
@@ -369,14 +370,14 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
           'Sorologia pode vir negativa nos primeiros dias/semanas.',
         ],
         [
-          'Subclinica',
-          'Cão aparentemente saudavel.',
+          'Subclínica',
+          'Cão aparentemente saudável.',
           'Trombocitopenia discreta, hiperglobulinemia; sorologia positiva.',
-          'Tratar todo soropositivo saudavel pode não trazer beneficio e favorece uso desnecessario de antibiotico.',
+          'Tratar todo soropositivo saudável pode não trazer beneficio e favorece uso desnecessario de antibiótico.',
         ],
         [
           'Crônica',
-          'Emagrecimento, sangramentos, uveite, edema, sinais neurologicos/articulares.',
+          'Emagrecimento, sangramentos, uveíte, edema, sinais neurologicos/articulares.',
           'Pancitopenia, hipoplasia medular, proteinuria, hiperglobulinemia.',
           'PCR pode ser menos confiável e a resposta hematologica pode ser lenta ou incompleta.',
         ],
@@ -384,19 +385,19 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     },
     morulaTvmdl: {
       kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/tvmdl-morula-e-canis-esfregaco.jpg`,
-      alt: 'Morula de Ehrlichia canis em monocito no esfregaco sanguineo de um cão',
+      src: `${ASSET_BASE}/tvmdl-mórula-e-canis-esfregaco.jpg`,
+      alt: 'Morula de Ehrlichia canis em monócito no esfregaco sanguineo de um cão',
       display: 'wide',
       caption:
-        'Esfregaco de sangue periferico corado demonstrando uma morula basofilica tipica de Ehrlichia canis no citoplasma de um monocito (estrutura arredondada composta por multiplos organismos agrupados).',
+        'Esfregaco de sangue periferico corado demonstrando uma mórula basofilica tipica de Ehrlichia canis no citoplasma de um monócito (estrutura arredondada composta por multiplos organismos agrupados).',
     },
     morulaDetalhada: {
       kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-1-morula-e-ciclo-celular.jpg`,
-      alt: 'Morula de Ehrlichia canis em monocito e em cultura DH82',
+      src: `${ASSET_BASE}/fig-26-1-mórula-e-ciclo-celular.jpg`,
+      alt: 'Morula de Ehrlichia canis em monócito e em cultura DH82',
       display: 'wide',
       caption:
-        'Morfologia e ultraestrutura de E. canis: (A) Morula no citoplasma de monocito; (B) Multiplas morulas em cultura de celulas DH82; (C) Microscopia eletronica de transmissao revelando a morfologia individual e divisao binaria dos organismos.',
+        'Morfologia e ultraestrutura de E. canis: (A) Morula no citoplasma de monócito; (B) Multiplas mórulas em cultura de células DH82; (C) Microscopia eletronica de transmissao revelando a morfologia individual e divisao binaria dos organismos.',
     },
     diferenciais: [
       'Anaplasmose granulocitica',
@@ -442,7 +443,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     saudePublica:
       'E. canis não e considerada atualmente uma zoonose comprovada por transmissao direta de cães para pessoas. O risco compartilhado e o carrapato: controlar ectoparasitas protege o animal e reduz exposicao humana.',
     educacaoTutor:
-      'Explicar que reinfeccao pode ocorrer e que teste sorologico positivo pode permanecer por meses. O objetivo e controlar clínica, laboratorio e exposicao a carrapatos.',
+      'Explicar que reinfecção pode ocorrer e que teste sorológico positivo pode permanecer por meses. O objetivo e controlar clínica, laboratório e exposicao a carrapatos.',
   },
   relatedConsensusSlugs: [],
   relatedMedicationSlugs: [],
@@ -471,16 +472,16 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
         'Harrus S, Waner T, Neer TM. Ehrlichia and Anaplasma Infections. In: Infectious Diseases of the Dog and Cat, 4th ed. Elsevier Saunders, 2012; via Veterian Key.',
       sourceType: 'Livro-texto / capitulo online',
       url: 'https://veteriankey.com/ehrlichia-and-anaplasma-infections/',
-      notes: 'Fonte das imagens Veterian Key Figs. 26-1 a 26-8 usadas na ficha: morulas, carrapato-marrom, desenvolvimento intracelular, petequias, epistaxe, hifema e hemorragia escleral.',
+      notes: 'Fonte das imagens Veterian Key Figs. 26-1 a 26-8 usadas na ficha: mórulas, carrapato-marrom, desenvolvimento intracelular, petequias, epistaxe, hifema e hemorragia escleral.',
       evidenceLevel: 'B',
     },
     {
       id: 'ref-tvmdl-e-canis-dog-2024',
       citationText:
         'Piccione J, Schroeder M. Ehrlichia canis discovered in dog. Texas A&M Veterinary Medical Diagnostic Laboratory case study. August 8, 2024.',
-      sourceType: 'Estudo de caso / imagem diagnostica',
+      sourceType: 'Estudo de caso / imagem diagnóstica',
       url: 'https://tvmdl.tamu.edu/case-studies/ehrlichia-canis-discovered-in-dog/',
-      notes: 'Fonte da imagem de esfregaco sanguineo com morula citoplasmatica em monocito, Fig. 1.',
+      notes: 'Fonte da imagem de esfregaco sanguineo com mórula citoplasmatica em monócito, Fig. 1.',
       evidenceLevel: 'C',
     },
     {

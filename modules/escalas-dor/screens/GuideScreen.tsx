@@ -53,7 +53,7 @@ const GuideScreen: React.FC<GuideScreenProps> = ({ onBack }) => {
   return (
     <div className="max-w-5xl mx-auto px-4 space-y-6">
       {/* Top back navigation */}
-      <div className="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-850">
+      <div className="hidden lg:flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-850">
         <button
           onClick={onBack}
           className="flex items-center gap-1.5 text-xs font-black uppercase tracking-wider text-slate-500 hover:text-teal-500 dark:text-slate-400 dark:hover:text-teal-400 transition-colors"

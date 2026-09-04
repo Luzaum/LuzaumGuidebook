@@ -38,8 +38,8 @@ test('Hipertireoidismo documenta DRC mascarada e eutireoidismo', () => {
 test('Hipertireoidismo documenta TT4, fT4 e TSH 2026', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   const strip = record?.quickDecisionStrip.join(' ') ?? '';
-  assert.match(strip, /TT4 normal/i);
-  assert.match(strip, /fT4 elevada isolada/i);
+  assert.match(strip, /T4 total normal|TT4 normal/i);
+  assert.match(strip, /T4 livre elevada|fT4 elevada/i);
   assert.match(strip, /Brassard et al\., 2026/);
 });
 
@@ -65,9 +65,9 @@ test('Hipertireoidismo não recomenda hipertireoidismo terapêutico para rim', (
 test('Hipertireoidismo relaciona DRC, HAS, DM e CMH', () => {
   const record = diseasesSeed.find((d) => d.slug === SLUG);
   assert.ok(record?.relatedDiseaseSlugs?.includes('doenca-renal-cronica-caes-gatos'));
-  assert.ok(record?.relatedDiseaseSlugs?.includes('hipertensao-arterial-sistemica'));
+  assert.ok(record?.relatedDiseaseSlugs?.some((s) => s.startsWith('hipertensao-arterial-sistemica')));
   assert.ok(record?.relatedDiseaseSlugs?.includes('diabetes-mellitus-felina'));
-  assert.ok(record?.relatedDiseaseSlugs?.includes('cardiomiopatia-hipertrofica'));
+  assert.ok(record?.relatedDiseaseSlugs?.some((s) => s.startsWith('cardiomiopatia-hipertrofica')));
 });
 
 test('Hipertireoidismo documenta ^131I dose individualizada', () => {

@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import { Patient } from '../../shared/types/patient';
 import { AccessType, Diluent, DoseUnit, Drug, DrugPresentation, PumpType, RegimeType } from '../../shared/types/drug';
 import { CalculationInput } from '../../shared/types/calculation';
@@ -12,6 +12,7 @@ import {
   CUSTOM_PRESENTATION_ID,
   getSupportedRegimes,
 } from '../../ui/lib/drugContent';
+import { historyService } from '../services/historyService';
 
 interface CalculationConfigState {
   dose: number;
@@ -55,6 +56,16 @@ export const useCalculation = () => {
 
   const [selectedDrug, setSelectedDrug] = useState<Drug | null>(null);
   const [config, setConfig] = useState<CalculationConfigState>(DEFAULT_CONFIG);
+  const lastHistoryKey = useRef<string>('');
+
+  const getDefaultDoseForRegime = (drug: Drug, species: Patient['species'], regime: RegimeType) => {
+    const isBolus = regime === 'bolus' || regime === 'bolus_maintenance';
+    const range = isBolus ? drug.bolusDoses?.[species] : drug.doses[species];
+    return {
+      dose: range?.min || 0,
+      doseUnit: range?.unit || (isBolus ? 'mg/kg' : drug.preferredUnit),
+    };
+  };
 
   const getDefaultRegime = (drug: Drug): RegimeType => {
     const supportedRegimes = getSupportedRegimes(drug);
@@ -77,14 +88,13 @@ export const useCalculation = () => {
     setSelectedDrug(drug);
 
     const defaultRegime = getDefaultRegime(drug);
-    const defaultDoseRange =
-      defaultRegime === 'bolus' ? drug.bolusDoses?.[patient.species] : drug.doses[patient.species];
+    const { dose, doseUnit } = getDefaultDoseForRegime(drug, patient.species, defaultRegime);
     const defaultPresentation = drug.presentations[0];
 
     setConfig((prev) => ({
       ...prev,
-      dose: defaultDoseRange?.min || 0,
-      doseUnit: defaultDoseRange?.unit || drug.preferredUnit,
+      dose,
+      doseUnit,
       presentationId: defaultPresentation?.id || '',
       diluent: drug.safetyMetadata.preferredDiluent || 'NaCl 0.9%',
       regime: defaultRegime,
@@ -210,9 +220,48 @@ export const useCalculation = () => {
     return { input, result, safety };
   }, [patient, selectedDrug, config]);
 
+  const updatePatient = (nextPatient: Patient) => {
+    const speciesChanged = nextPatient.species !== patient.species;
+    setPatient(nextPatient);
+
+    if (speciesChanged && selectedDrug) {
+      setConfig((prev) => {
+        const { dose, doseUnit } = getDefaultDoseForRegime(selectedDrug, nextPatient.species, prev.regime);
+        return { ...prev, dose, doseUnit };
+      });
+    }
+  };
+
+  useEffect(() => {
+    const { input, result } = calculationData;
+    if (!input || !result || result.isImpossible) return;
+
+    const historyKey = JSON.stringify({
+      drug: input.drug.id,
+      weight: input.patient.weight,
+      species: input.patient.species,
+      dose: input.dose,
+      doseUnit: input.doseUnit,
+      presentation: input.presentation.id,
+      volume: input.totalVolume,
+      rate: input.infusionRate,
+      regime: input.regime,
+      drugVolume: result.drugVolume,
+    });
+
+    if (historyKey === lastHistoryKey.current) return;
+
+    const timer = window.setTimeout(() => {
+      lastHistoryKey.current = historyKey;
+      historyService.addHistory(input, result);
+    }, 800);
+
+    return () => window.clearTimeout(timer);
+  }, [calculationData]);
+
   return {
     patient,
-    setPatient,
+    setPatient: updatePatient,
     selectedDrug,
     handleDrugSelect,
     config,

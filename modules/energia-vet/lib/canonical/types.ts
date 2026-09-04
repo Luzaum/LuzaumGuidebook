@@ -169,7 +169,7 @@ export interface EnergyDecision {
     coefficient?: number
     exponent?: number
     weightKg: number
-    weightBasis: 'current_weight' | 'ideal_weight' | 'expected_adult_weight' | 'clinician_defined'
+    weightBasis: 'current_weight' | 'ideal_weight' | 'expected_adult_weight' | 'clinician_defined' | 'target_weight'
     source: EvidenceReference
   }
   selectedEnergyTarget: {
@@ -196,8 +196,8 @@ export interface ResolvedNutrientTarget {
   evidenceIds: string[]
   confidence: EvidenceReference['confidence']
   rationale: string
-  /** Objetivo ponderal usado na calibração (manutenção, emagrecimento, ganho). */
-  calibratedForGoal?: 'maintenance' | 'weight_loss' | 'weight_gain'
+  /** Objetivo ponderal usado na calibração (manutenção, emagrecimento, ganho, hospitalar, realimentação). */
+  calibratedForGoal?: 'maintenance' | 'weight_loss' | 'weight_gain' | 'hospital' | 'refeeding'
   /** Equivalente em g/1000 kcal ME quando aplicável. */
   equivalentPer1000Kcal?: { minimum?: number; maximum?: number }
   /** Nota sobre energia de referência na calibração. */

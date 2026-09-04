@@ -126,7 +126,7 @@ export const doencaPeriodontalCaesRecord: DiseaseRecord = {
     respostaHospedeiro:
       'Bactérias do biofilme ativam receptores de reconhecimento de padrão (PRRs/TLRs) no epitélio gengival e neutrófilos, recrutando macrófagos e linfócitos T (Th1/Th17). A liberação de metaloproteinases de matriz (MMPs), espécies reativas de oxigênio (ROS), IL-1β, TNF-α e IL-17 leva à degradação do colágeno do ligamento periodontal. A elevação do mediador RANKL em relação à osteoprotegerina (OPG) estimula a maturação de osteoclastos e a reabsorção do osso alveolar (Tizard, 2020; Hendy et al., 2026).',
     catalaseDeficiency:
-      'Acatalasemia canina (mutação no gene CAT c.979G>A): condição hereditária rara descrita em Beagles e outras raças húngaras/poodles, na qual a incapacidade de degradar o peróxido de hidrogênio (H₂O₂) gerado na boca resulta em ulceração gangrenosa grave, necrose óssea e perda dentária precoce desproporcional à quantidade de placa (Pavlovsky, 2023).',
+      'Acatalasemia canina (mutação no gene CAT c.979G>A): condição hereditária rara descrita em Beagles e outras raças húngaras/poodles, na qual a incapacidade de degradar o peróxido de hidrogênio (H₂O₂) gerado na boca resulta em úlceração gangrenosa grave, necrose óssea e perda dentária precoce desproporcional à quantidade de placa (Pavlovsky, 2023).',
   },
   epidemiology: {
     caes:
@@ -167,7 +167,7 @@ export const doencaPeriodontalCaesRecord: DiseaseRecord = {
         {
           finding: 'Sangramento gengival à manipulação ou escovação',
           mechanism:
-            'Ulceração do epitélio sulcular e neovascularização frágil associadas à gengivite hiperêmica.',
+            'Úlceração do epitélio sulcular e neovascularização frágil associadas à gengivite hiperêmica.',
           clinicalMeaning: 'Indica inflamação ativa do sulco gengival (Índice Gengival elevado).',
           priority: 'common',
         },

@@ -18,7 +18,7 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     'Vírus da leucemia felina',
   ],
   species: ['cat'],
-  category: 'infecciosas',
+  category: 'infectologia',
   tags: [
     'Retrovirose',
     'p27',
@@ -163,9 +163,9 @@ export const leucemiaViralFelinaRecord: DiseaseRecord = {
     figuraPatogenese: {
       kind: 'clinicalFigure' as const,
       src: '/assets/consulta-vet/diseases/leucemia-viral-felina/felv-pathophysiology-infection.jpg',
-      alt: 'Diagrama da patogenese da infecção pelo vírus da leucemia felina',
+      alt: 'Diagrama da patogênese da infecção pelo vírus da leucemia felina',
       caption:
-        'ABCD. Fig. 7 — Patogenese da infecção por FeLV (via oral-nasal, viremia primária e secundária, eliminação viral). European Advisory Board on Cat Diseases, 2021. Adaptado de Hartmann K. Viruses. 2012;4(11):2684–2710.',
+        'ABCD. Fig. 7 — Patogênese da infecção por FeLV (via oral-nasal, viremia primária e secundária, eliminação viral). European Advisory Board on Cat Diseases, 2021. Adaptado de Hartmann K. Viruses. 2012;4(11):2684–2710.',
       display: 'wide',
     },
     figuraRespostaImune: {

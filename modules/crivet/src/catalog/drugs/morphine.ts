@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const morphine: Drug = {
   id: 'morphine',
@@ -125,5 +126,35 @@ export const morphine: Drug = {
     clinicalObservations: 'A morfina é um excelente analgésico, mas seus efeitos adversos (vômito, liberação de histamina) limitam seu uso em alguns cenários. A metadona é frequentemente preferida na pré-medicação por não causar vômito ou liberação de histamina, embora a morfina seja mais barata e amplamente utilizada em CRI (MLK).'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Veterinary Anesthesia and Analgesia (Lumb and Jones)", "BSAVA Manual of Canine and Feline Anaesthesia and Analgesia"]
+  references: [
+    cite.plumbs(911),
+    cite.lumbJones(),
+    cite.ettinger(),
+  ],
+  doseGuides: [
+    {
+      id: 'morph-mlk',
+      regimen: 'CRI',
+      title: 'MLK — componente opioide',
+      indication: 'Analgesia multimodal (cães)',
+      doseText: '3,3–4 mcg/kg/min (≈ 0,2 mg/kg/h)',
+      rationale: 'Plumb\'s 10ª ed., p. 911; reduz MAC de isoflurano.',
+    },
+    {
+      id: 'morph-dmlk',
+      regimen: 'CRI',
+      title: 'DMLK — componente opioide',
+      indication: 'UTI / dor hospitalar',
+      doseText: '0,2 mg/kg/h IV',
+      rationale: 'Plumb\'s 10ª ed., p. 721 e p. 911.',
+    },
+    {
+      id: 'morph-cat-cri',
+      regimen: 'CRI',
+      title: 'CRI analgésica (gato)',
+      indication: 'Dor moderada titulada',
+      doseText: '0,05–0,1 mg/kg/h IV',
+      rationale: 'Plumb\'s 10ª ed., p. 911.',
+    },
+  ],
 };

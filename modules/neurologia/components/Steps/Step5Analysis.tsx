@@ -1,6 +1,17 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { AlertTriangle, Brain, CheckCircle2, FileText } from 'lucide-react'
+import {
+  Activity,
+  AlertTriangle,
+  Brain,
+  CheckCircle2,
+  Download,
+  FileText,
+  Layers,
+  MapPin,
+  RefreshCw,
+  Stethoscope,
+} from 'lucide-react'
 import { Card } from '../UI/Card'
 import { InlineBanner } from '../UI/InlineBanner'
 import { SaveToHistoryButton } from '../SaveToHistoryButton'
@@ -12,20 +23,156 @@ import { parseAiClinicalReport } from '../../lib/report/aiClinicalReportParser'
 import type { CaseReport } from '../../types/analysis'
 import {
   DISTRIBUTION_LABELS_PT,
-  MOTOR_PATTERN_LABELS_PT,
   NEURO_AXIS_LABELS_PT,
 } from '../../data/axisLabelsPt'
-import { LOCALIZATION_PRINCIPLES_BULLETS, LOCALIZATION_PRINCIPLES_INTRO } from '../../data/localizationPrinciplesPt'
+import { buildAlteredExamSections, buildFullExamSections } from '../../lib/exam/examDefaults'
+import { MgcsSummaryBanner } from '../MgcsSummaryBanner'
 
 function sleep(ms: number) {
   return new Promise((resolve) => window.setTimeout(resolve, ms))
 }
 
-function MetricCard({ label, value }: { label: string; value: string }) {
+function MetricCard({
+  label,
+  value,
+  variant = 'cyan',
+}: {
+  label: string
+  value: string
+  variant?: 'cyan' | 'emerald' | 'gold'
+}) {
+  const styles = {
+    cyan: 'border-cyan-500/20 bg-cyan-950/20 text-cyan-50',
+    emerald: 'border-emerald-500/25 bg-emerald-950/25 text-emerald-50',
+    gold: 'border-gold/25 bg-gold/5 text-gold',
+  }
+  const labelStyles = {
+    cyan: 'text-cyan-200/55',
+    emerald: 'text-emerald-200/55',
+    gold: 'text-gold/55',
+  }
+
   return (
-    <div className="rounded-xl border border-cyan-500/20 bg-black/20 p-4">
-      <p className="text-xs uppercase tracking-[0.18em] text-cyan-200/60">{label}</p>
-      <p className="mt-2 text-base font-semibold text-cyan-50">{value || 'Não informado'}</p>
+    <div className={`rounded-xl border p-4 ${styles[variant]}`}>
+      <p className={`text-[11px] font-medium uppercase tracking-[0.16em] ${labelStyles[variant]}`}>{label}</p>
+      <p className="mt-2 text-base font-semibold leading-snug">{value || 'Não informado'}</p>
+    </div>
+  )
+}
+
+function ConfidenceRing({ value }: { value: number }) {
+  const pct = Math.min(100, Math.max(0, Math.round(value)))
+  const radius = 34
+  const circumference = 2 * Math.PI * radius
+  const offset = circumference - (pct / 100) * circumference
+
+  return (
+    <div className="flex shrink-0 flex-col items-center gap-1.5">
+      <div className="relative h-[84px] w-[84px]">
+        <svg className="h-full w-full -rotate-90" viewBox="0 0 84 84" aria-hidden>
+          <circle cx="42" cy="42" r={radius} fill="none" stroke="currentColor" strokeWidth="5" className="text-emerald-950/80" />
+          <circle
+            cx="42"
+            cy="42"
+            r={radius}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="5"
+            strokeLinecap="round"
+            className="text-emerald-400"
+            strokeDasharray={circumference}
+            strokeDashoffset={offset}
+          />
+        </svg>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <span className="text-lg font-bold text-emerald-50">{pct}%</span>
+        </div>
+      </div>
+      <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-200/65">Confiança</span>
+    </div>
+  )
+}
+
+function HighlightStat({
+  icon: Icon,
+  label,
+  value,
+}: {
+  icon: React.ComponentType<{ className?: string }>
+  label: string
+  value: string
+}) {
+  return (
+    <div className="flex items-start gap-3 rounded-xl border border-emerald-500/20 bg-emerald-950/20 px-4 py-3">
+      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-300">
+        <Icon className="h-4 w-4" />
+      </div>
+      <div className="min-w-0">
+        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-emerald-200/55">{label}</p>
+        <p className="mt-1 text-sm font-semibold leading-snug text-emerald-50">{value}</p>
+      </div>
+    </div>
+  )
+}
+
+function DifferentialRankCard({
+  rank,
+  name,
+  likelihood,
+  category,
+}: {
+  rank: number
+  name: string
+  likelihood: number
+  category: string
+}) {
+  const pct = Math.min(100, Math.max(0, Math.round(likelihood)))
+
+  return (
+    <div className="rounded-xl border border-white/10 bg-slate-950/50 p-4 transition hover:border-emerald-500/25">
+      <div className="mb-3 flex items-start justify-between gap-2">
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-xs font-bold text-emerald-200">
+          {rank}
+        </span>
+        <span className="rounded-full border border-emerald-500/25 bg-emerald-950/40 px-2 py-0.5 text-[10px] font-medium text-emerald-200/80">
+          {category}
+        </span>
+      </div>
+      <p className="text-sm font-semibold leading-snug text-slate-100">{name}</p>
+      <div className="mt-3">
+        <div className="mb-1 flex items-center justify-between text-[11px] text-slate-400">
+          <span>Probabilidade relativa</span>
+          <span className="font-semibold text-emerald-200/90">~{pct}%</span>
+        </div>
+        <div className="h-1.5 overflow-hidden rounded-full bg-slate-800">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400"
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function SectionHeader({
+  icon: Icon,
+  title,
+  subtitle,
+}: {
+  icon: React.ComponentType<{ className?: string }>
+  title: string
+  subtitle?: string
+}) {
+  return (
+    <div className="mb-4 flex items-start gap-3">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gold/25 bg-gold/10 text-gold">
+        <Icon className="h-5 w-5" />
+      </div>
+      <div>
+        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+        {subtitle && <p className="mt-0.5 text-xs text-muted-foreground">{subtitle}</p>}
+      </div>
     </div>
   )
 }
@@ -90,15 +237,18 @@ function parseSummaryLines(summary: string | undefined) {
     })
 }
 
-function SummaryGrid({ items }: { items: Array<{ label: string; value: string }> }) {
+function SummaryGrid({ items, compact }: { items: Array<{ label: string; value: string }>; compact?: boolean }) {
   return (
-    <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+    <div className={`grid gap-2.5 ${compact ? 'sm:grid-cols-2' : 'md:grid-cols-2 xl:grid-cols-3'}`}>
       {items.map((item, index) => (
-        <div key={`${item.label}-${index}`} className="rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+        <div
+          key={`${item.label}-${index}`}
+          className="rounded-xl border border-white/8 bg-slate-950/30 px-3.5 py-3"
+        >
           {item.label ? (
             <>
-              <p className="text-xs uppercase tracking-[0.14em] text-slate-400">{item.label}</p>
-              <p className="mt-2 text-sm leading-relaxed text-slate-100/90">{item.value || 'Não informado'}</p>
+              <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500">{item.label}</p>
+              <p className="mt-1.5 text-sm leading-relaxed text-slate-100/90">{item.value || 'Não informado'}</p>
             </>
           ) : (
             <p className="text-sm leading-relaxed text-slate-100/90">{item.value}</p>
@@ -108,78 +258,6 @@ function SummaryGrid({ items }: { items: Array<{ label: string; value: string }>
     </div>
   )
 }
-
-const EXAM_FIELD_LABELS: Record<string, string> = {
-  mentation: 'Mentacao',
-  behavior: 'Comportamento',
-  head_posture: 'Postura da cabeca',
-  ambulation: 'Deambulacao',
-  gait_thoracic: 'Marcha dos membros toracicos',
-  gait_pelvic: 'Marcha dos membros pelvicos',
-  ataxia_type: 'Tipo de ataxia',
-  proprioception_thoracic_left: 'Propriocepcao toracico esquerdo',
-  proprioception_thoracic_right: 'Propriocepcao toracico direito',
-  proprioception_pelvic_left: 'Propriocepcao pelvico esquerdo',
-  proprioception_pelvic_right: 'Propriocepcao pelvico direito',
-  menace_left: 'Resposta a ameaca esquerda',
-  menace_right: 'Resposta a ameaca direita',
-  plr_left: 'PLR esquerdo',
-  plr_right: 'PLR direito',
-  nystagmus: 'Nistagmo',
-  strabismus: 'Estrabismo',
-  cn_facial_sensation: 'Sensibilidade facial',
-  cn_swallowing: 'Reflexo de degluticao',
-  reflex_patellar_left: 'Patelar esquerdo',
-  reflex_patellar_right: 'Patelar direito',
-  reflex_withdrawal_left_thoracic: 'Retirada toracico esquerdo',
-  reflex_withdrawal_right_thoracic: 'Retirada toracico direito',
-  reflex_panniculus: 'Panniculus',
-  deep_pain: 'Dor profunda',
-  pain_cervical: 'Dor cervical',
-  pain_thoracolumbar: 'Dor toracolombar',
-  pain_lumbosacral: 'Dor lombossacra',
-}
-
-const EXAM_SECTIONS: Array<{ title: string; keys: string[] }> = [
-  { title: 'Mentacao e comportamento', keys: ['mentation', 'behavior', 'head_posture'] },
-  { title: 'Marcha e postura', keys: ['ambulation', 'gait_thoracic', 'gait_pelvic', 'ataxia_type'] },
-  {
-    title: 'Reacoes posturais',
-    keys: [
-      'proprioception_thoracic_left',
-      'proprioception_thoracic_right',
-      'proprioception_pelvic_left',
-      'proprioception_pelvic_right',
-    ],
-  },
-  {
-    title: 'Nervos cranianos',
-    keys: [
-      'menace_left',
-      'menace_right',
-      'plr_left',
-      'plr_right',
-      'nystagmus',
-      'strabismus',
-      'cn_facial_sensation',
-      'cn_swallowing',
-    ],
-  },
-  {
-    title: 'Reflexos espinhais',
-    keys: [
-      'reflex_patellar_left',
-      'reflex_patellar_right',
-      'reflex_withdrawal_left_thoracic',
-      'reflex_withdrawal_right_thoracic',
-      'reflex_panniculus',
-    ],
-  },
-  {
-    title: 'Dor e nocicepcao',
-    keys: ['deep_pain', 'pain_cervical', 'pain_thoracolumbar', 'pain_lumbosacral'],
-  },
-]
 
 const CATEGORY_LABELS: Record<string, string> = {
   INFLAMATORIA: 'Inflamatoria',
@@ -194,28 +272,19 @@ const CATEGORY_LABELS: Record<string, string> = {
   ENDOCRINA: 'Endocrina',
 }
 
-function buildExamSections(exam: Record<string, any> | undefined) {
-  const source = exam || {}
-
-  return EXAM_SECTIONS.map((section) => ({
-    title: section.title,
-    items: section.keys
-      .filter((key) => source[key] !== null && source[key] !== undefined && String(source[key]).trim() !== '')
-      .map((key) => `${EXAM_FIELD_LABELS[key] || key}: ${String(source[key]).trim()}`),
-  })).filter((section) => section.items.length > 0)
-}
-
 function formatCategoryLabel(category: string) {
   return CATEGORY_LABELS[category] || category
 }
 
 export function Step5Analysis() {
   const [compactAi, setCompactAi] = React.useState(true)
+  const [examTab, setExamTab] = React.useState<'altered' | 'full'>('altered')
   const analysis = useCaseStore((s) => s.analysis)
   const setAnalysis = useCaseStore((s) => s.setAnalysis)
   const patient = useCaseStore((s) => s.patient)
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
+  const mgcs = useCaseStore((s) => s.mgcs)
 
   const report: CaseReport | undefined = analysis?.report
   const clinicalReportText = analysis?.aiOpinion || null
@@ -223,7 +292,8 @@ export function Step5Analysis() {
   const progress = analysis?.aiProgress || null
   const parsedClinicalReport = clinicalReportText ? parseAiClinicalReport(clinicalReportText) : null
   const status = analysis?.status || 'idle'
-  const examSections = buildExamSections(neuroExam as Record<string, any>)
+  const fullExamSections = buildFullExamSections(neuroExam as Record<string, unknown>)
+  const alteredExamSections = buildAlteredExamSections(neuroExam as Record<string, unknown>)
   const patientSummaryItems = parseSummaryLines(report?.patientSummary)
   const historySummaryItems = parseSummaryLines(report?.historySummary)
 
@@ -473,134 +543,197 @@ export function Step5Analysis() {
 
   if (status === 'done' && report) {
     return (
-      <div className="space-y-6 pb-24">
-        <div className="flex flex-col gap-4 sm:flex-row">
-          <motion.button
-            onClick={handleExportPDF}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-700 hover:to-blue-800"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <FileText className="h-5 w-5" />
-            Exportar em PDF
-          </motion.button>
+      <div className="space-y-5 pb-24">
+        {/* Barra de ações */}
+        <Card className="sticky top-2 z-10 border-white/10 bg-slate-950/85 p-3 shadow-lg backdrop-blur-md">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex flex-wrap gap-2">
+              <motion.button
+                type="button"
+                onClick={handleExportPDF}
+                className="inline-flex items-center gap-2 rounded-lg border border-blue-500/35 bg-blue-600/15 px-4 py-2 text-sm font-medium text-blue-100 transition hover:bg-blue-600/25"
+                whileTap={{ scale: 0.98 }}
+              >
+                <Download className="h-4 w-4" />
+                Exportar PDF
+              </motion.button>
+              <motion.button
+                type="button"
+                onClick={runAnalysis}
+                className="inline-flex items-center gap-2 rounded-lg border border-gold/35 bg-gold/10 px-4 py-2 text-sm font-medium text-gold transition hover:bg-gold/15"
+                whileTap={{ scale: 0.98 }}
+              >
+                <RefreshCw className="h-4 w-4" />
+                Atualizar
+              </motion.button>
+            </div>
+            <div className="flex flex-wrap items-center gap-2">
+              <SaveToHistoryButton />
+              <button
+                type="button"
+                onClick={() => setCompactAi((v) => !v)}
+                className="rounded-lg border border-cyan-500/30 bg-cyan-950/25 px-3 py-2 text-xs font-medium text-cyan-100 transition hover:border-cyan-400/45"
+              >
+                {compactAi ? 'Análise detalhada' : 'Modo resumo'}
+              </button>
+            </div>
+          </div>
+        </Card>
 
-          <motion.button
-            onClick={runAnalysis}
-            className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 hover:from-yellow-600 hover:to-yellow-700"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <Brain className="h-5 w-5" />
-            Atualizar relatorio
-          </motion.button>
-        </div>
-
-        <div className="flex flex-wrap items-center justify-center gap-3">
-          <SaveToHistoryButton />
-          <button
-            type="button"
-            onClick={() => setCompactAi((v) => !v)}
-            className="rounded-xl border border-cyan-500/35 bg-cyan-950/30 px-4 py-2 text-sm font-medium text-cyan-100 transition hover:border-cyan-400/50"
-          >
-            {compactAi ? 'Ver análise detalhada' : 'Modo resumo (recomendado)'}
-          </button>
-        </div>
+        <MgcsSummaryBanner mgcs={mgcs} />
 
         {report.neuroLocalization.status === 'ok' && (
-          <Card className="border-emerald-500/30 bg-[linear-gradient(135deg,rgba(6,78,59,0.35),rgba(15,23,42,0.92))] p-6 shadow-[0_20px_50px_rgba(16,185,129,0.12)]">
-            <h3 className="text-lg font-semibold text-emerald-100">Resumo clínico (motor de regras)</h3>
-            <p className="mt-1 text-xs leading-relaxed text-emerald-100/75">
-              Leitura automática da neurolocalização e dos diferenciais priorizados — útil como checklist antes do texto
-              detalhado abaixo.
-            </p>
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-              <MetricCard
-                label="Localização principal"
-                value={NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
-              />
-              <MetricCard
-                label="Distribuição"
-                value={DISTRIBUTION_LABELS_PT[report.neuroLocalization.distribution]}
-              />
-              <MetricCard
-                label="Padrão motor"
-                value={MOTOR_PATTERN_LABELS_PT[report.neuroLocalization.motorPattern]}
-              />
-              <MetricCard label="Confiança" value={`${report.neuroLocalization.confidence}%`} />
+          <Card className="overflow-hidden border-emerald-500/25 p-0 shadow-[0_16px_48px_rgba(16,185,129,0.08)]">
+            <div className="border-b border-emerald-500/15 bg-gradient-to-br from-emerald-950/45 via-slate-950/90 to-slate-950 px-5 py-5 sm:px-6">
+              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="min-w-0 flex-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300/70">
+                    Síntese do caso
+                  </p>
+                  <h3 className="mt-1 text-xl font-bold text-emerald-50 sm:text-2xl">Resumo clínico</h3>
+                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-100/65">
+                    Neurolocalização e diferenciais prioritários para apoio à conduta no plantão.
+                  </p>
+                </div>
+                <ConfidenceRing value={report.neuroLocalization.confidence} />
+              </div>
             </div>
-            {report.neuroLocalization.secondary && report.neuroLocalization.secondary.length > 0 && (
-              <p className="mt-3 text-sm text-emerald-50/90">
-                <span className="font-semibold text-emerald-200/90">Sobreposições: </span>
-                {report.neuroLocalization.secondary.map((a) => NEURO_AXIS_LABELS_PT[a]).join(', ')}
-              </p>
-            )}
-            <p className="mt-4 text-sm leading-relaxed text-slate-100/90">{report.neuroLocalization.narrative}</p>
-            {report.differentials.length > 0 && (
-              <div className="mt-5 rounded-xl border border-emerald-500/25 bg-black/25 p-4">
-                <p className="text-xs font-semibold uppercase tracking-wide text-emerald-200/90">
-                  Três diferenciais mais prováveis (escore do motor)
+
+            <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+              <div className="space-y-2.5">
+                <HighlightStat
+                  icon={MapPin}
+                  label="Localização principal"
+                  value={NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
+                />
+                <HighlightStat
+                  icon={Layers}
+                  label="Distribuição"
+                  value={DISTRIBUTION_LABELS_PT[report.neuroLocalization.distribution]}
+                />
+                {report.neuroLocalization.secondary && report.neuroLocalization.secondary.length > 0 && (
+                  <div className="rounded-xl border border-emerald-500/15 bg-emerald-950/15 px-4 py-3">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-emerald-200/55">
+                      Sobreposições
+                    </p>
+                    <p className="mt-1.5 text-sm text-emerald-50/90">
+                      {report.neuroLocalization.secondary.map((a) => NEURO_AXIS_LABELS_PT[a]).join(' · ')}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              <div className="rounded-xl border border-white/8 bg-slate-950/40 p-4">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
+                  Interpretação
                 </p>
-                <ul className="mt-3 space-y-2 text-sm text-slate-100/90">
-                  {report.differentials.slice(0, 3).map((d) => (
-                    <li key={d.id} className="flex flex-wrap items-baseline gap-2">
-                      <span className="font-medium text-emerald-100">{d.name}</span>
-                      <span className="text-xs text-slate-400">~{d.likelihood}%</span>
-                      <span className="text-emerald-200/70">· {formatCategoryLabel(d.category)}</span>
-                    </li>
+                <p className="mt-3 text-sm leading-relaxed text-slate-100/90">
+                  {report.neuroLocalization.narrative}
+                </p>
+              </div>
+            </div>
+
+            {report.differentials.length > 0 && (
+              <div className="border-t border-emerald-500/10 bg-slate-950/30 px-5 py-5 sm:px-6">
+                <div className="mb-4 flex items-center gap-2">
+                  <Stethoscope className="h-4 w-4 text-emerald-300/80" />
+                  <p className="text-sm font-semibold text-emerald-100">Três diferenciais mais prováveis</p>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {report.differentials.slice(0, 3).map((d, index) => (
+                    <DifferentialRankCard
+                      key={d.id}
+                      rank={index + 1}
+                      name={d.name}
+                      likelihood={d.likelihood}
+                      category={formatCategoryLabel(d.category)}
+                    />
                   ))}
-                </ul>
+                </div>
               </div>
             )}
           </Card>
         )}
 
-        <Card className="border-white/10 bg-slate-950/40 p-5">
-          <h3 className="text-base font-semibold text-foreground">Princípios de neurolocalização (referência)</h3>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{LOCALIZATION_PRINCIPLES_INTRO}</p>
-          <details className="mt-3 rounded-xl border border-white/10 bg-black/20 p-3">
-            <summary className="cursor-pointer text-sm font-medium text-gold/90">
-              Ver segmentos e padrões (lista rápida)
-            </summary>
-            <ul className="mt-3 list-inside list-disc space-y-2 text-xs leading-relaxed text-muted-foreground sm:text-sm">
-              {LOCALIZATION_PRINCIPLES_BULLETS.map((line, idx) => (
-                <li key={`loc-principle-${idx}`}>{line}</li>
-              ))}
-            </ul>
-          </details>
-        </Card>
+        {/* Dados do caso — duas colunas */}
+        <div className="grid gap-5 lg:grid-cols-2">
+          <Card className="p-5 sm:p-6">
+            <SectionHeader icon={FileText} title="Identificação" subtitle="Perfil do paciente" />
+            <SummaryGrid items={patientSummaryItems} compact />
+          </Card>
 
-        <Card className="p-6">
-          <h3 className="mb-3 flex items-center gap-2 text-lg font-semibold text-gold">
-            <FileText className="h-5 w-5" />
-            Identificacao
-          </h3>
-          <SummaryGrid items={patientSummaryItems} />
-        </Card>
+          <Card className="p-5 sm:p-6">
+            <SectionHeader icon={Brain} title="História e sinais" subtitle="Queixa, curso temporal e observações" />
+            <SummaryGrid items={historySummaryItems} compact />
+          </Card>
+        </div>
 
-        <Card className="p-6">
-          <h3 className="mb-3 text-lg font-semibold text-gold">Historia e sinais</h3>
-          <SummaryGrid items={historySummaryItems} />
-        </Card>
+        {/* Exame neurológico — abas */}
+        <Card className="p-5 sm:p-6">
+          <SectionHeader
+            icon={Activity}
+            title="Exame neurológico"
+            subtitle="Alterações registradas e registro completo por secção"
+          />
 
-        <Card className="p-6">
-          <h3 className="mb-3 text-lg font-semibold text-gold">Resumo do exame neurologico</h3>
-          {examSections.length > 0 ? (
-            <div className="grid gap-4 xl:grid-cols-2">
-              {examSections.map((section) => (
-                <div key={section.title} className="rounded-2xl border border-white/10 bg-slate-950/40 p-4">
-                  <p className="mb-3 text-sm font-semibold text-slate-100">{section.title}</p>
-                  <BulletList items={section.items} dotClassName="bg-cyan-400" />
+          <div className="mb-4 inline-flex rounded-xl border border-border bg-background/50 p-1">
+            <button
+              type="button"
+              onClick={() => setExamTab('altered')}
+              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+                examTab === 'altered'
+                  ? 'bg-gold/15 text-gold shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Alterações
+              {alteredExamSections.length > 0 && (
+                <span className="ml-1.5 rounded-full bg-gold/20 px-1.5 py-0.5 text-[10px]">{alteredExamSections.length}</span>
+              )}
+            </button>
+            <button
+              type="button"
+              onClick={() => setExamTab('full')}
+              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
+                examTab === 'full'
+                  ? 'bg-slate-700/50 text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              Exame completo
+            </button>
+          </div>
+
+          {examTab === 'altered' ? (
+            alteredExamSections.length > 0 ? (
+              <div className="grid gap-3 sm:grid-cols-2">
+                {alteredExamSections.map((section) => (
+                  <div key={section.title} className="rounded-xl border border-gold/20 bg-gold/5 p-4">
+                    <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-gold/90">{section.title}</p>
+                    <BulletList items={section.items} dotClassName="bg-gold" textClassName="text-gold/90" />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-950/15 px-4 py-3 text-sm text-emerald-200/90">
+                <CheckCircle2 className="h-4 w-4 shrink-0" />
+                Nenhuma alteração registrada — exame presumido normal.
+              </div>
+            )
+          ) : (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {fullExamSections.map((section) => (
+                <div key={section.title} className="rounded-xl border border-white/8 bg-slate-950/35 p-4">
+                  <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-slate-300">{section.title}</p>
+                  <BulletList items={section.items} dotClassName="bg-slate-500" />
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="text-sm text-foreground/90">{report.examSummary}</p>
           )}
         </Card>
 
         {reportError && (
-          <InlineBanner variant="warning" title="Relatorio clínico indisponivel" message={reportError} />
+          <InlineBanner variant="warning" title="Relatório clínico indisponível" message={reportError} />
         )}
 
         {parsedClinicalReport ? (
@@ -905,7 +1038,7 @@ export function Step5Analysis() {
           </div>
         ) : (
           <Card className="border-amber-500/20 bg-amber-950/10 p-6">
-            <h3 className="mb-3 text-lg font-semibold text-amber-200">Relatorio bruto</h3>
+            <h3 className="mb-3 text-lg font-semibold text-amber-200">Relatório bruto</h3>
             <p className="whitespace-pre-line text-sm leading-relaxed text-amber-50/90">
               {clinicalReportText || 'Não foi possível gerar o relatorio clínico.'}
             </p>

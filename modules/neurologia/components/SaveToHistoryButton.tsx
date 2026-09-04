@@ -11,7 +11,9 @@ export function SaveToHistoryButton() {
   const patient = useCaseStore((s) => s.patient)
   const complaint = useCaseStore((s) => s.complaint)
   const neuroExam = useCaseStore((s) => s.neuroExam)
+  const analysis = useCaseStore((s) => s.analysis)
   const currentStep = useCaseStore((s) => s.currentStep)
+  const mgcs = useCaseStore((s) => s.mgcs)
   const addEntry = useHistoryStore((s) => s.addEntry)
 
   const save = () => {
@@ -21,6 +23,8 @@ export function SaveToHistoryButton() {
       complaint,
       neuroExam: neuroExam as Record<string, unknown>,
       currentStep,
+      analysis: analysis ? (analysis as Record<string, unknown>) : null,
+      mgcs,
     })
     setOpen(false)
     setLabel('')
@@ -35,8 +39,8 @@ export function SaveToHistoryButton() {
       <Modal isOpen={open} onClose={() => setOpen(false)} title="Salvar exame" size="sm">
         <div className="space-y-4">
           <p className="text-sm text-foreground/90">
-            Os dados ficam armazenados apenas neste navegador (dispositivo). Opcional: nome para
-            identificar depois.
+            Os dados ficam armazenados apenas neste navegador (dispositivo), incluindo o relatório
+            clínico e a MGCS se já registradas. Opcional: nome para identificar depois.
           </p>
           <input
             type="text"

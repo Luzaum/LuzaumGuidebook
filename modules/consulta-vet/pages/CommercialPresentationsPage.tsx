@@ -25,10 +25,14 @@ import {
 import { VetSpecies } from '../types/common';
 import { medicationsSeed } from '../data/seed/medications.seed';
 import { getMedicationsForCommercialProduct } from '../utils/commercialMedicationLinks';
-import { commercialProductSearchText } from '../services/receituarioCommercialCatalogService';
+import { hasPracticalLabelDoseText } from '../utils/commercialLabelDose';
+import {
+  groupCommercialDoseEntries,
+  shouldGroupCommercialDoseEntries,
+} from '../utils/commercialDoseGrouping';
+import { filterAndRankCommercialProducts } from '../services/receituarioCommercialCatalogService';
 
 const UI_TEXT = {
-  eyebrow: 'ConsultaVET',
   title: 'Apresentações Comerciais',
   body: 'Busca rápida de apresentações comerciais de medicamentos veterinários e humanos.',
   searchPlaceholder: 'Buscar por produto, fabricante, princípio ativo ou indicação...',
@@ -104,6 +108,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   gi_pancreatic_enzyme: 'Enzimas pancreáticas',
   gi_hepatobiliary: 'Hepatobiliares',
   gi_orexigenic: 'Orexígenos',
+  analgesic_nonopioid: 'Analgésicos não opioides',
   analgesic_opioid_combo: 'Analgésicos multimodais',
   sedative_anesthetic: 'Sedativos / anestesia clínica',
   neuro_anticonvulsant: 'Anticonvulsivantes',
@@ -197,7 +202,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
     'ophthalmic_nsaid',
   ],
   infectious: ['infectious_antifungal', 'infectious_antibiotic'],
-  analgesic: ['analgesic_opioid_combo', 'neuro_pain', 'sedative_anesthetic'],
+  analgesic: ['analgesic_nonopioid', 'analgesic_opioid_combo', 'neuro_pain', 'sedative_anesthetic'],
   antiinflammatory: ['ortho_antiinflammatory'],
   nutraceutical: ['nutra_omega3', 'nutra_general_support', 'nutra_mineral_vitamin', 'gi_probiotic'],
   reproductive: ['repro_antigalactogenic'],
@@ -280,7 +285,38 @@ function FieldBlock({ label, children }: { label: string; children: React.ReactN
   );
 }
 
+function GroupedDoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }) {
+  const groups = groupCommercialDoseEntries(entries);
+
+  return (
+    <div className="mt-3 space-y-2">
+      {groups.map((group) => (
+        <div key={group.regimen} className="rounded-lg border border-border/70 bg-background/70 p-3">
+          <p className="text-base font-extrabold leading-6 text-foreground">{group.regimen}</p>
+          <ul className="mt-2 space-y-1.5">
+            {group.indications.map((indication) => (
+              <li key={`${group.regimen}-${indication.title}`} className="text-sm leading-5">
+                <span className="font-semibold text-foreground/90">{indication.title}</span>
+                {indication.duration ? (
+                  <span className="text-muted-foreground"> · {indication.duration}</span>
+                ) : null}
+                {indication.note ? (
+                  <span className="mt-0.5 block text-xs leading-5 text-muted-foreground">{indication.note}</span>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }) {
+  if (shouldGroupCommercialDoseEntries(entries)) {
+    return <GroupedDoseEntryList entries={entries} />;
+  }
+
   return (
     <div className="mt-3 space-y-2.5">
       {entries.map((entry) => (
@@ -294,16 +330,8 @@ function DoseEntryList({ entries }: { entries: CommercialMedicationDoseEntry[] }
   );
 }
 
-const PRACTICAL_DOSE_PATTERN =
-  /(\d+(?:[,.]\d+)?\s*(?:a|-)?\s*\d*(?:[,.]\d+)?\s*(?:mg|mcg|ug|µg|m²|m2|ml|mL|UI|U|%)\s*(?:\/\s*(?:kg|m²|m2|5 kg|10 kg|20 kg|40 kg))?|\d+(?:[,.]\d+)?\s*(?:cm|min|minuto|minutos|h|hora|horas|dia|dias|semana|semanas)\b|\d+\s*(?:a|-)\s*\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|\d+\s*(?:x|vez|vezes)\s*(?:\/|por)?\s*(?:dia|semana)|(?:uma|duas|tres|três)\s+vez(?:es)?\s+(?:ao|por)\s+(?:dia|mes|mês|semana)|\b(?:q\s*\d+\s*h?|q\d+h?|sid|bid|tid|qid)\b|\b(?:a\s+)?cada\s+\d+|\d+\s*(?:gota|gotas|pipeta|pipetas|tablete|tabletes|aplicador|aplicadores|flaconete|flaconetes|comprimido|comprimidos|comp|capsula|capsulas|cápsula|cápsulas|spray|jato|jatos|borrifada|borrifadas|aplicação|aplicações|aplicacao|aplicacoes|coleira)\b|(?:preencher|instilar)\s+(?:o\s+)?conduto|quantidade\s+suficiente|fina\s+camada|faixa\s+de\s+peso|dose\s+do\s+medidor|diretamente\s+(?:na|no)|todas\s+as\s+refeições|número\s+de\s+borrifadas|(?:borrifar|borrifação|embeber\s+algodão|seringa\s+graduada|pós-banho)|(?:deixar\s+agir|tempo\s+de\s+contato|banhar|molhar|umedecer|massagear|enxaguar|aplicar\s+no\s+banho|escovar)|diariamente|semanal(?:mente)?|mensal(?:mente)?)/i;
-
-const BLOCKED_DOSE_PATTERN =
-  /(dose bloqueada|bloquear receita|conferir bula|pendente de bula|posologia de bula n[aã]o cadastrada|sem dose padr[aã]o|sem dose espec[ií]fica)/i;
-
 function hasPracticalDoseText(dose: string | undefined): dose is string {
-  if (!dose || BLOCKED_DOSE_PATTERN.test(dose)) return false;
-
-  return PRACTICAL_DOSE_PATTERN.test(dose);
+  return hasPracticalLabelDoseText(dose);
 }
 
 function hasPracticalDose(entry: CommercialMedicationDoseEntry) {
@@ -623,7 +651,7 @@ function ProductCard({
               <a
                 href={product.productPageUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/[0.08] px-2.5 py-1 text-xs font-semibold text-cyan-800 transition-colors hover:bg-cyan-500/[0.14]"
               >
                 Página do produto
@@ -634,7 +662,7 @@ function ProductCard({
               <a
                 href={product.labelUrl}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/[0.08] px-2.5 py-1 text-xs font-semibold text-emerald-800 transition-colors hover:bg-emerald-500/[0.14]"
               >
                 Bula
@@ -717,7 +745,7 @@ export function CommercialPresentationsPage() {
   const products = useMemo(() => {
     if (!commercialClass && !normalizedQuery) return [];
 
-    const filtered = commercialOticProductsSeed.filter((product) => {
+    const eligibleProducts = commercialOticProductsSeed.filter((product) => {
       const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
       const selectedClassSubclasses = commercialClass ? SUBCLASSES_BY_CLASS[commercialClass] || [] : [];
       const matchesClass =
@@ -731,26 +759,21 @@ export function CommercialPresentationsPage() {
         commercialSubclass === 'all' ||
         productSubclasses.includes(commercialSubclass);
       const matchesSpecies = species === 'all' || product.species.includes(species);
-      const searchHaystack = [
-        commercialProductSearchText(product),
-        CLASS_LABELS[product.commercialClass],
-        productSubclasses.map((subclass) => SUBCLASS_LABELS[subclass]).join(' '),
-      ]
-        .join(' ')
-        .concat(' ortopedicos antiinflamatorios anti inflamatorios analgesicos ');
-      const normalizedSearchHaystack = normalizeSearchText(searchHaystack);
-
-      const matchesQuery = !normalizedQuery || normalizedSearchHaystack.includes(normalizedQuery);
-      return matchesClass && matchesSubclass && matchesSpecies && matchesQuery;
+      return matchesClass && matchesSubclass && matchesSpecies;
     });
 
-    return [...filtered].sort((a, b) => a.name.localeCompare(b.name, 'pt-BR'));
+    return filterAndRankCommercialProducts(eligibleProducts, normalizedQuery, (product) => {
+      const productSubclasses = product.commercialSubclasses || [product.commercialSubclass];
+      return [
+        CLASS_LABELS[product.commercialClass],
+        productSubclasses.map((subclass) => SUBCLASS_LABELS[subclass]).join(' '),
+      ].join(' ');
+    });
   }, [commercialClass, commercialSubclass, normalizedQuery, species]);
 
   return (
     <div className="mx-auto w-full max-w-[1560px] space-y-8 p-4 md:p-8">
       <ConsultaVetPageHero
-        eyebrow={UI_TEXT.eyebrow}
         title={UI_TEXT.title}
         description={UI_TEXT.body}
         icon={PackageSearch}

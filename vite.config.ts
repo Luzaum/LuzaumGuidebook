@@ -55,23 +55,10 @@ export default defineConfig(({ mode }) => {
         strict: false,
         allow: [projectRoot],
       },
-      proxy: {
-        '/api/deepseek': {
-          target: 'https://api.deepseek.com',
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api\/deepseek/, '')
-        }
-      }
     },
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-      'process.env.VITE_DEEPSEEK_API_KEY': JSON.stringify(
-        env.VITE_DEEPSEEK_API_KEY || env.DEEPSEEK_API_KEY || '',
-      ),
-      'process.env.DEEPSEEK_API_KEY': JSON.stringify(
-        env.DEEPSEEK_API_KEY || env.VITE_DEEPSEEK_API_KEY || '',
-      ),
     },
     resolve: {
       alias: {

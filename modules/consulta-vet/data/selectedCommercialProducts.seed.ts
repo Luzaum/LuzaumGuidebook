@@ -3,39 +3,39 @@ import { CommercialMedicationProduct } from '../types/commercialMedication';
 const SOURCE_DATE = '2026-07-21';
 
 const OPHTHALMIC_STEROID_ALERT =
-  'ALERTA VERMELHO: corticosteroide oftalmico. Confirmar fluoresceina negativa e excluir ulcera, ceratomalacia, perfuração, infeccao fungica/viral e infeccao bacteriana não controlada antes da prescricao.';
+  'ALERTA VERMELHO: corticosteroide oftálmico. Confirmar fluoresceína negativa e excluir úlcera, ceratomalacia, perfuração, infecção fungica/viral e infecção bacteriana não controlada antes da prescricao.';
 
 const TOBRAMYCIN_ALERT =
-  'Antibiotico aminoglicosideo oftalmico. Em ulcera infiltrada, profunda, malacica ou de evolucao rapida, realizar citologia/cultura e considerar solução fortificada sob avaliação oftalmologica.';
+  'Antibiótico aminoglicosideo oftálmico. Em úlcera infiltrada, profunda, malácica ou de evolução rápida, realizar citologia/cultura e considerar solução fortificada sob avaliação oftalmologica.';
 
 const ALUMINUM_ALERT =
-  'Para quelar fosforo, administrar misturado a todas as refeicoes. Separar de outros medicamentos por pelo menos 2 horas; separar 4 horas de fluoroquinolonas. Monitorar constipacao e fosforo/cálcio.';
+  'Para quelar fósforo, administrar misturado a todas as refeicoes. Separar de outros medicamentos por pelo menos 2 horas; separar 4 horas de fluoroquinolonas. Monitorar constipacao e fósforo/cálcio.';
 
 const RIVAROXABAN_ALERT =
   'ALERTA VERMELHO: anticoagulante. Avaliar hemorragia ativa, plaquetas, função renal/hepática e medicamentos concomitantes. Associação com clopidogrel, AINE, heparina, AAS ou outro anticoagulante aumenta risco de sangramento.';
 
 const PREDNISOLONE_OPHTHALMIC_DOSAGE = {
   labelDose:
-    "Bula humana: 1-2 gotas no olho afetado 2-4x/dia; nas primeiras 24-48 h pode intensificar sob prescricao. Plumb's: cães/gatos, 1 gota no olho afetado q6h para conjuntivite/ceratite/uveite não ulcerativas.",
+    "Bula humana: 1-2 gotas no olho afetado 2-4x/dia; nas primeiras 24-48 h pode intensificar sob prescricao. Plumb's: cães/gatos, 1 gota no olho afetado q6h para conjuntivite/ceratite/uveíte não ulcerativas.",
   plumbs: {
     dog: [
       {
         title: 'Inflamacao ocular não ulcerativa',
         dose: '1 gota no olho afetado q6h',
-        note: 'Reduzir gradualmente após melhora; exigir fluoresceina negativa e monitorar PIO.',
+        note: 'Reduzir gradualmente após melhora; exigir fluoresceína negativa e monitorar PIO.',
       },
     ],
     cat: [
       {
         title: 'Inflamacao ocular não ulcerativa',
         dose: '1 gota no olho afetado q6h',
-        note: 'Cautela adicional se houver suspeita de herpesvirus felino; exigir fluoresceina negativa.',
+        note: 'Cautela adicional se houver suspeita de herpesvirus felino; exigir fluoresceína negativa.',
       },
     ],
   },
   notes: [
     'Ster 1% e Ster MD 0,12% não sao intercambiaveis mL por mL; Ster MD tem concentração muito menor.',
-    'Agitar a suspensao antes de usar e separar colirios por pelo menos 5 minutos.',
+    'Agitar a suspensão antes de usar e separar colirios por pelo menos 5 minutos.',
   ],
 };
 
@@ -66,26 +66,26 @@ const TOBRAMYCIN_OPHTHALMIC_DOSAGE = {
 
 const ALUMINUM_HYDROXIDE_DOSAGE = {
   labelDose:
-    "Hiperfosfatemia/DRC: Plumb's cães/gatos, 30-100 mg/kg/dia VO, dividido e misturado com todas as refeicoes. Suspensao 60 mg/mL: 0,50-1,67 mL/kg/dia total.",
+    "Hiperfosfatemia/DRC: Plumb's cães/gatos, 30-100 mg/kg/dia VO, dividido e misturado com todas as refeicoes. Suspensão 60 mg/mL: 0,50-1,67 mL/kg/dia total.",
   plumbs: {
     dog: [
       {
-        title: 'Quelante de fosforo na DRC',
+        title: 'Quelante de fósforo na DRC',
         dose: '30-100 mg/kg/dia VO dividido em todas as refeicoes',
         note: 'Ajustar pela fosfatemia, dieta renal e tolerancia gastrointestinal.',
       },
     ],
     cat: [
       {
-        title: 'Quelante de fosforo na DRC',
+        title: 'Quelante de fósforo na DRC',
         dose: '30-100 mg/kg/dia VO dividido em todas as refeicoes',
         note: 'Misturar uniformemente ao alimento; monitorar constipacao e adesao.',
       },
     ],
   },
   notes: [
-    'Suspensao 61,5 mg/mL: 30 mg/kg/dia = 0,49 mL/kg/dia; 100 mg/kg/dia = 1,63 mL/kg/dia.',
-    'Suspensao manipulada 90 mg/mL: 30 mg/kg/dia = 0,33 mL/kg/dia; 100 mg/kg/dia = 1,11 mL/kg/dia.',
+    'Suspensão 61,5 mg/mL: 30 mg/kg/dia = 0,49 mL/kg/dia; 100 mg/kg/dia = 1,63 mL/kg/dia.',
+    'Suspensão manipulada 90 mg/mL: 30 mg/kg/dia = 0,33 mL/kg/dia; 100 mg/kg/dia = 1,11 mL/kg/dia.',
     'Dose antiacida humana não deve ser transposta para cães/gatos com DRC.',
   ],
 };
@@ -131,15 +131,15 @@ function ophthalmicSteroidProduct(product: {
 }): CommercialMedicationProduct {
   return {
     ...product,
-    manufacturer: 'Uniao Quimica / Genom',
+    manufacturer: 'União Química / Genom',
     commercialClass: 'ophthalmologic',
     commercialSubclass: 'ophthalmic_corticosteroid',
     species: ['dog', 'cat'],
     labelDirections:
-      'Uso humano oftalmico. Em cães e gatos, uso extra-label apenas após exame oftalmico, fluoresceina negativa e exclusao de infeccao ativa não controlada.',
+      'Uso humano oftálmico. Em cães e gatos, uso extra-label apenas após exame oftálmico, fluoresceína negativa e exclusão de infecção ativa não controlada.',
     dosageGuidance: PREDNISOLONE_OPHTHALMIC_DOSAGE,
     plumbsContext:
-      'Prednisolona oftalmica e corticosteroide para inflamacao ocular não ulcerativa, conjuntivite/ceratite inflamatoria e uveite anterior. Deve ser reduzida gradualmente após melhora.',
+      'Prednisolona oftálmica e corticosteroide para inflamação ocular não ulcerativa, conjuntivite/ceratite inflamatória e uveíte anterior. Deve ser reduzida gradualmente após melhora.',
     reassessment:
       'Uveite moderada/intensa: 24-72 h. Doença corneana: 24-48 h. Casos estaveis: 5-7 dias. Retornar imediatamente se dor, blefaroespasmo, edema corneano, secrecao purulenta ou perda visual.',
     prescriptionExample:
@@ -164,19 +164,19 @@ function tobramycinProduct(product: {
     commercialClass: 'ophthalmologic',
     commercialSubclass: 'ophthalmic_antibiotic',
     species: ['dog', 'cat'],
-    presentations: ['Solução oftalmica esteril 3 mg/mL (0,3%) - frasco 5 mL'],
+    presentations: ['Solução oftálmica estéril 3 mg/mL (0,3%) - frasco 5 mL'],
     activeComponents: ['tobramicina 3 mg/mL (0,3%)'],
     labelCompositionSummary:
-      'Tobramicina 3 mg/mL em solução oftalmica esteril. Antibiotico aminoglicosideo humano; uso veterinario extra-label.',
+      'Tobramicina 3 mg/mL em solução oftálmica estéril. Antibiótico aminoglicosideo humano; uso veterinário extra-label.',
     labelDirections:
-      'Uso exclusivamente oftalmico. Bula humana: 1-2 gotas q4h em infeccoes leves a moderadas; graves podem iniciar com frequencia horaria e reduzir conforme resposta.',
+      'Uso exclusivamente oftálmico. Bula humana: 1-2 gotas q4h em infecções leves a moderadas; graves podem iniciar com frequência horaria e reduzir conforme resposta.',
     dosageGuidance: TOBRAMYCIN_OPHTHALMIC_DOSAGE,
     plumbsContext:
-      'Tobramicina oftalmica tem utilidade contra bacterias suscetiveis, especialmente bacilos Gram-negativos aerobios, incluindo Pseudomonas. Não cobre virus, fungos ou anaerobios.',
+      'Tobramicina oftálmica tem utilidade contra bactérias suscetíveis, especialmente bacilos Gram-negativos aeróbios, incluindo Pseudomonas. Não cobre virus, fungos ou anaerobios.',
     clinicalUse:
-      'Conjuntivite bacteriana documentada, blefaroconjuntivite, infeccao secundaria de superficie ocular, ceratite bacteriana e ulcera corneana infectada dentro de manejo completo da ulcera.',
+      'Conjuntivite bacteriana documentada, blefaroconjuntivite, infecção secundaria de superficie ocular, ceratite bacteriana e úlcera corneana infectada dentro de manejo completo da úlcera.',
     reassessment:
-      'Reavaliar em 24-72 h conforme gravidade; imediatamente se dor piorar, ulcera aprofundar, houver malacia, secrecao intensa ou perda visual.',
+      'Reavaliar em 24-72 h conforme gravidade; imediatamente se dor piorar, úlcera aprofundar, houver malacia, secrecao intensa ou perda visual.',
     prescriptionExample:
       `${product.name}: instilar 1 gota no olho afetado a cada 4-6 horas por ___ dias. Separar outros colirios por pelo menos 5 minutos.`,
     safetyAlert: TOBRAMYCIN_ALERT,
@@ -204,14 +204,14 @@ function aluminumHydroxideProduct(product: {
     commercialSubclasses: ['renal_ckd_support', 'gi_gastric_protector'],
     species: ['dog', 'cat'],
     labelDirections:
-      'Uso humano como antiacido; em cães/gatos com DRC, uso extra-label como quelante de fosforo misturado as refeicoes.',
+      'Uso humano como antiacido; em cães/gatos com DRC, uso extra-label como quelante de fósforo misturado as refeicoes.',
     dosageGuidance: ALUMINUM_HYDROXIDE_DOSAGE,
     plumbsContext:
-      'Hidroxido de aluminio reduz absorcao intestinal de fosforo quando administrado junto ao alimento. Não substitui dieta renal, controle de DRC e monitoramento seriado.',
+      'Hidroxido de aluminio reduz absorcao intestinal de fósforo quando administrado junto ao alimento. Não substitui dieta renal, controle de DRC e monitoramento seriado.',
     clinicalUse:
-      'Quelante de fosforo em hiperfosfatemia associada a DRC em cães e gatos; tambem pode ter uso antiacido, mas a dose antiacida humana não deve ser copiada para DRC.',
+      'Quelante de fósforo em hiperfosfatemia associada a DRC em cães e gatos; tambem pode ter uso antiacido, mas a dose antiacida humana não deve ser copiada para DRC.',
     reassessment:
-      'Reavaliar fosforo, cálcio, produto cálcio x fosforo, creatinina/ureia, apetite e constipacao em 2-4 semanas após inicio/ajuste.',
+      'Reavaliar fósforo, cálcio, produto cálcio x fósforo, creatinina/ureia, apetite e constipacao em 2-4 semanas após inicio/ajuste.',
     prescriptionExample:
       `${product.name}: administrar dose calculada de hidroxido de aluminio misturada a cada refeicao, totalizando ___ mg/kg/dia, conforme fosfatemia.`,
     safetyAlert: ALUMINUM_ALERT,
@@ -223,12 +223,12 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     id: 'ster-prednisolona-1-uniao-quimica',
     slug: 'ster-acetato-prednisolona-1',
     name: 'Ster',
-    presentations: ['Suspensao oftalmica esteril 10 mg/mL (1%) - frasco 5 mL'],
+    presentations: ['Suspensão oftálmica estéril 10 mg/mL (1%) - frasco 5 mL'],
     activeComponents: ['acetato de prednisolona 10 mg/mL (1%)'],
     labelCompositionSummary:
-      'Acetato de prednisolona 10 mg/mL, equivalente a 1%. Suspensao oftalmica esteril humana.',
+      'Acetato de prednisolona 10 mg/mL, equivalente a 1%. Suspensão oftálmica estéril humana.',
     clinicalUse:
-      'Uveite anterior, conjuntivite/ceratite não ulcerativa, pannus e inflamacao ocular pos-operatoria quando não ha ulcera/infeccao ativa não controlada.',
+      'Uveite anterior, conjuntivite/ceratite não ulcerativa, pannus e inflamação ocular pos-operatoria quando não ha úlcera/infecção ativa não controlada.',
     price: {
       averageLabel: 'R$ 31,11',
       rangeLabel: 'Drogasil R$ 31,99; Drogaria Sao Paulo R$ 32,75; Drogarias Pacheco R$ 28,59',
@@ -237,13 +237,13 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.uniaoquimica.com.br/produtos/genom/saude-ocular/ster/',
     labelUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/2024.08_STER_STER-MD_1.-Bula-Paciente.pdf',
     imageUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/Ster.png',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Foto oficial do fabricante.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Foto oficial do fabricante.',
   }),
   ophthalmicSteroidProduct({
     id: 'ster-md-prednisolona-012-uniao-quimica',
     slug: 'ster-md-acetato-prednisolona-012',
     name: 'Ster MD',
-    presentations: ['Suspensao oftalmica esteril 1,2 mg/mL (0,12%) - frasco 10 mL'],
+    presentations: ['Suspensão oftálmica estéril 1,2 mg/mL (0,12%) - frasco 10 mL'],
     activeComponents: ['acetato de prednisolona 1,2 mg/mL (0,12%)'],
     labelCompositionSummary:
       'Acetato de prednisolona 1,2 mg/mL, equivalente a 0,12%. Concentração cerca de 8,3 vezes menor que Ster 1%.',
@@ -257,7 +257,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.uniaoquimica.com.br/produtos/genom/saude-ocular/ster-md/',
     labelUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/2024.08_STER-MD_2.-Bula-Profissional.pdf',
     imageUrl: 'https://www.uniaoquimica.com.br/wp-content/uploads/2020/01/Ster-MD.png',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Foto oficial do fabricante.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Foto oficial do fabricante.',
   }),
   tobramycinProduct({
     id: 'tobrex-tobramicina-alcon',
@@ -272,7 +272,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://portal.novartis.com.br/medicamentos/tobrex/',
     labelUrl: 'https://portal.novartis.com.br/medicamentos/wp-content/uploads/2021/10/Bula-TOBREX-Solucao-Oftalmica-Esteril-Medico.pdf',
     imageUrl: 'https://www.farmaciasahumada.cl/dw/image/v2/BJVH_PRD/on/demandware.static/-/Sites-ahumada-master-catalog/default/dw4cb14e76/images/products/7987/7987.jpg?sh=1050&sm=fit&sw=1050',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Imagem de varejo do mesmo produto 0,3% 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Imagem de varejo do mesmo produto 0,3% 5 mL.',
   }),
   tobramycinProduct({
     id: 'tobracin-tobramicina-cristalia',
@@ -286,7 +286,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     },
     productPageUrl: 'https://www.cristalia.com.br/produto/tobracina%C2%AE_solucao-oftalmologica-esteril-3mgml',
     imageUrl: 'https://images.tcdn.com.br/img/img_prod/1408954/tobracin_colirio_3mg_ml_5ml_27201_1_e48242515106812ac69078ec298cba89.png',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Imagem de varejo com embalagem Tobracin 0,3% 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Imagem de varejo com embalagem Tobracin 0,3% 5 mL.',
   }),
   tobramycinProduct({
     id: 'tobramicina-geolab-oftalmica',
@@ -301,7 +301,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.geolab.com.br/produtos/tobramicina/',
     labelUrl: 'https://www.geolab.com.br/wp-content/uploads/2023/09/TOBRAMICINA-Bula-Profissional.pdf',
     imageUrl: 'https://irapurupetcenter.com.br/wp-content/uploads/2021/01/tobramicina-geolab.jpg',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Foto corresponde a Geolab 3 mg/mL 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Foto corresponde a Geolab 3 mg/mL 5 mL.',
   }),
   tobramycinProduct({
     id: 'tobracular-legrand-tobramicina',
@@ -315,7 +315,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     },
     productPageUrl: 'https://www.drogariaspacheco.com.br/tobramicina-3mg-ml-generico-legrand-1-frasco-com-5ml/p',
     imageUrl: 'https://cliniguia.com/media/2023/03/24103449/Tobramicina-3mg-03-Col%C3%ADrio-Com-5ml-Germed-Gen%C3%A9rico.jpg',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Imagem identifica embalagem Tobracular/Legrand 3 mg/mL 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Imagem identifica embalagem Tobracular/Legrand 3 mg/mL 5 mL.',
   }),
   tobramycinProduct({
     id: 'tobramicina-germed-oftalmica',
@@ -331,13 +331,13 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     labelUrl: 'https://img.drogasil.com.br/raiadrogasil_bula/TobramicinaGermed.pdf',
     imageUrl:
       'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/9636760a2/tobramicina-3mg-ml-solucao-oftalmica-5ml-generico-germed.jpg',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Imagem de varejo identifica Germed 3 mg/mL 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Imagem de varejo identifica Germed 3 mg/mL 5 mL.',
   }),
   tobramycinProduct({
     id: 'tobramicina-neo-quimica-oftalmica',
     slug: 'tobramicina-neo-quimica-oftalmica-03',
-    name: 'Tobramicina Neo Quimica',
-    manufacturer: 'Neo Quimica / Hypera',
+    name: 'Tobramicina Neo Química',
+    manufacturer: 'Neo Química / Hypera',
     price: {
       averageLabel: 'Não consolidado',
       rangeLabel: 'Pagina comercial localizada, mas preço estavel não consolidado',
@@ -346,17 +346,17 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.drogasil.com.br/tobramicina-3mg-ml-colirio-nova-quimica-genericos-5ml.html',
     imageUrl:
       'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/6503096e4/tobramicina-3mg-ml-5ml-generico-nova-quimica.jpg',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Imagem de varejo identifica Neo Quimica 3 mg/mL 5 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Imagem de varejo identifica Neo Química 3 mg/mL 5 mL.',
   }),
   aluminumHydroxideProduct({
     id: 'hidroxido-aluminio-ems-615',
     slug: 'hidroxido-aluminio-ems-615',
     name: 'Hidroxido de Aluminio EMS',
     manufacturer: 'EMS',
-    presentations: ['Suspensao oral 61,5 mg/mL - frasco 240 mL'],
+    presentations: ['Suspensão oral 61,5 mg/mL - frasco 240 mL'],
     activeComponents: ['hidroxido de aluminio 61,5 mg/mL'],
     labelCompositionSummary:
-      'Suspensao oral humana 61,5 mg/mL, sabor hortela, sem acucar, frasco 240 mL.',
+      'Suspensão oral humana 61,5 mg/mL, sabor hortela, sem acucar, frasco 240 mL.',
     price: {
       averageLabel: 'Preço variavel',
       rangeLabel: 'Produto oficial EMS localizado; consultar varejo conforme estoque/CEP',
@@ -364,17 +364,17 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     },
     productPageUrl: 'https://www.ems.com.br/medicamentos/hidroxido-de-aluminio/',
     imageUrl: 'https://bandshop.vtexassets.com/arquivos/ids/267821/image-4096946d5c27408dbb1b2bcc956c4b3e.jpg?v=638826677110630000',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label como quelante de fosforo.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label como quelante de fósforo.',
   }),
   aluminumHydroxideProduct({
     id: 'hidroxido-aluminio-airela-60',
     slug: 'hidroxido-aluminio-airela-60',
     name: 'Hidroxido de Aluminio Airela',
     manufacturer: 'Airela',
-    presentations: ['Suspensao oral 60 mg/mL (6%) - frasco 100 mL ou 150 mL'],
+    presentations: ['Suspensão oral 60 mg/mL (6%) - frasco 100 mL ou 150 mL'],
     activeComponents: ['hidroxido de aluminio 60 mg/mL (6%)'],
     labelCompositionSummary:
-      'Suspensao oral humana 6%, sabor hortela, apresentacoes de 100 mL e 150 mL conforme bula/pagina comercial.',
+      'Suspensão oral humana 6%, sabor hortela, apresentacoes de 100 mL e 150 mL conforme bula/pagina comercial.',
     price: {
       averageLabel: 'Conforme varejo',
       rangeLabel: 'Fonte comercial Farmais para 150 mL; preço varia por CEP/estoque',
@@ -383,17 +383,17 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.farmais.com.br/hidroxido-de-aluminio-6--suspensao-de-uso-oral-sabor-hortela-frasco-150ml-24906/p',
     labelUrl: 'https://airela.com.br/wp-content/uploads/2022/12/Hidroxido_De_aluminio_bula-10x15-cm.pdf',
     imageUrl: 'https://novafarmais.vtexassets.com/arquivos/ids/507269/7894164006762-1730148477618___3e8f6ef218febed8ccb9f623f7266183.jpg?v=638862377717130000',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label como quelante de fosforo. Foto corresponde a Airela 6% 150 mL.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label como quelante de fósforo. Foto corresponde a Airela 6% 150 mL.',
   }),
   aluminumHydroxideProduct({
     id: 'alumimax-natulab-60',
     slug: 'alumimax-hidroxido-aluminio-60',
     name: 'Alumimax',
     manufacturer: 'Natulab',
-    presentations: ['Suspensao oral 60 mg/mL - frasco 100 mL'],
+    presentations: ['Suspensão oral 60 mg/mL - frasco 100 mL'],
     activeComponents: ['hidroxido de aluminio 60 mg/mL'],
     labelCompositionSummary:
-      'Suspensao oral humana 60 mg/mL, frasco 100 mL. Agitar antes de usar.',
+      'Suspensão oral humana 60 mg/mL, frasco 100 mL. Agitar antes de usar.',
     price: {
       averageLabel: 'R$ 12,70 aprox.',
       rangeLabel: 'Bemol Farma: Alumimax 60 mg/mL 100 mL',
@@ -401,7 +401,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     },
     productPageUrl: 'https://www.bemolfarma.com.br/alumimax-60mg-ml-solucao-oral-100ml/p',
     imageUrl: 'https://bemolfarma.vtexassets.com/arquivos/ids/158702/4012941.jpg?v=639021334951800000',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label como quelante de fosforo.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label como quelante de fósforo.',
   }),
   aluminumHydroxideProduct({
     id: 'pepsamar-sanofi-230',
@@ -420,14 +420,14 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.paguemenos.com.br/pepsamar-envelope-com-10-comprimidos/p',
     labelUrl: 'https://www.drogaraia.com.br/bulas/pepsamar',
     imageUrl: 'https://paguemenos.vtexassets.com/arquivos/ids/1118630/7896714292137-Anti_cido_Pepsamar_Menta_10_Comprimidos_Mastig_veis-Anti_cido-Pepsamar--1-.jpg?v=639029785944070000',
-    evidenceLevel: 'Produto humano; para DRC, po puro ou suspensao manipulada costuma permitir mistura mais uniforme a refeicao.',
+    evidenceLevel: 'Produto humano; para DRC, po puro ou suspensão manipulada costuma permitir mistura mais uniforme a refeicao.',
   }),
   aluminumHydroxideProduct({
     id: 'hidroxido-aluminio-manipulado',
     slug: 'hidroxido-aluminio-manipulado',
     name: 'Hidroxido de Aluminio Manipulado',
-    manufacturer: 'Manipulado veterinario',
-    presentations: ['Po USP', 'Suspensao manipulada 60, 80, 90 ou 100 mg/mL', 'Capsulas/saches conforme prescricao'],
+    manufacturer: 'Manipulado veterinário',
+    presentations: ['Po USP', 'Suspensão manipulada 60, 80, 90 ou 100 mg/mL', 'Capsulas/saches conforme prescricao'],
     activeComponents: ['hidroxido de aluminio em concentração manipulada'],
     labelCompositionSummary:
       'Fórmula manipulada sob prescricao. O po USP e descrito como apresentacao pratica por ser relativamente insipido e permitir mistura direta ao alimento.',
@@ -476,6 +476,6 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     productPageUrl: 'https://www.drogariasaopaulo.com.br/xarelto-rivaroxabana-2-5mg-28-comprimidos/p',
     labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/pro/Bula-Xarelto-Profissional-Consulta-Remedios.pdf',
     imageUrl: 'https://drogariasp.vteximg.com.br/arquivos/ids/1457806-1000-1000/904740---Xarelto-Rivaroxabana-2-5mg-28-Comprimidos-1.jpg?v=638980649887930000',
-    evidenceLevel: 'Produto humano; uso veterinario extra-label. Foto corresponde ao Xarelto Bayer 2,5 mg 28 comprimidos.',
+    evidenceLevel: 'Produto humano; uso veterinário extra-label. Foto corresponde ao Xarelto Bayer 2,5 mg 28 comprimidos.',
   },
 ];

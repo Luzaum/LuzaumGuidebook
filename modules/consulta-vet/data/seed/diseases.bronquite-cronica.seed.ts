@@ -1,6 +1,6 @@
 import { DiseaseRecord } from '../../types/disease';
 
-const ASSET_BASE = '/assets/consulta-vet/diseases/bronquite-cronica';
+const ASSET_BASE = '/assets/consulta-vet/diseases/bronquite-crônica';
 const BRUYETTE_SOURCE =
   'Fonte: Bruyette D. Clinical Small Animal Internal Medicine. Wiley Blackwell.';
 
@@ -17,6 +17,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
   ],
   species: ['dog', 'cat'],
   category: 'respiratorio',
+  categories: ['bombas-asma-terapia-inalatoria'],
   tags: [
     'Tosse crônica',
     'Neutrófilos',
@@ -284,7 +285,7 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
     },
     figuraTcBronquiteCronica: {
       kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/tc-torax-bronquite-cronica.png`,
+      src: `${ASSET_BASE}/tc-torax-bronquite-crônica.png`,
       alt: 'Tomografia computadorizada do tórax de paciente com bronquite crônica',
       display: 'wide',
       caption:

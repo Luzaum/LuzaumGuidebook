@@ -52,7 +52,7 @@ const BUNDLED_CONSENSUS_DOCUMENTS: Record<string, ConsensusDocumentOverride> = {
   ),
   'consenso-cardiorrenal-2015': bundledConsensusPdf('consenso-cardiorrenal-2015.pdf'),
   'acvim-valvular-canina-2009': bundledConsensusPdf('acvim-valvular-canina-2009.pdf'),
-  'hipertensao-sistemica': bundledConsensusPdf('acvim-hipertensao-sistemica-2018.pdf'),
+  'hipertensao-sistemica': bundledConsensusPdf('acvim-hipertensao-sistêmica-2018.pdf'),
 
   'aaha-diabetes-felino-2026': bundledConsensusPdf('aaha-diabetes-felino-2026.pdf'),
   'icatcare-diabetes-felino-2025': bundledConsensusPdf(

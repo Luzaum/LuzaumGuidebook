@@ -32,6 +32,8 @@ export interface EditorialDrugProtocol {
   frequency?: string;
   duration?: string;
   route?: string;
+  mechanism?: string;
+  reassess?: string;
   cautions?: string;
   contraindications?: string;
   notes?: string;
@@ -41,6 +43,7 @@ export interface EditorialDrugProtocol {
 export interface EditorialTreatmentPriorityStep {
   title: string;
   summary: string;
+  options?: string;
   dose?: string;
   duration?: string;
   reassess?: string;
@@ -75,7 +78,7 @@ export interface EditorialClinicalFigure {
   src: string;
   alt: string;
   caption?: string;
-  /** Ajuste editorial da visualizacao: diagramas/citologia podem precisar de mais area que fotos clinicas simples. */
+  /** Ajuste editorial da visualizacao: diagramas/citologia podem precisar de mais area que fotos clínicas simples. */
   display?: 'compact' | 'default' | 'wide' | 'full';
 }
 

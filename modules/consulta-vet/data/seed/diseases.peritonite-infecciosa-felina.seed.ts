@@ -19,7 +19,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
     'FIPV',
   ],
   species: ['cat'],
-  category: 'infecciosas',
+  category: 'infectologia',
   tags: [
     'FCoV',
     'GS-441524',
@@ -219,7 +219,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
           'Fezes',
           'PCR para coronavírus felino (FCoV) em fezes — detecção de RNA/DNA viral fecal',
           'Triagem de exposição a FCoV entérico e controle ambiental em multicat',
-          'Não diagnostica PIF — positivo indica FCoV entérico/exposição, não doença sistêmica (Thayer et al., 2022)',
+          'Não diagnóstica PIF — positivo indica FCoV entérico/exposição, não doença sistêmica (Thayer et al., 2022)',
         ],
         [
           'Sistema nervoso central (SNC)',
@@ -236,7 +236,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
     imunidade:
       'Resposta humoral robusta sem clearance viral eficiente; hiperglobulinemia policlonal reflete estimulação imune persistente. Linfopenia com frequência — possível sequestro/depleção (Tasker et al., ABCD 2023).',
     caveatADE:
-      'Antibody-dependent enhancement (ADE) explica parcialmente a patogenese em modelos experimentais, mas PIF ocorre também com titulações variadas — não usar nível de anticorpos isolado para diagnosticar ou prognosticar (Pedersen, 2014; Dewerchin et al., 2005).',
+      'Antibody-dependent enhancement (ADE) explica parcialmente a patogênese em modelos experimentais, mas PIF ocorre também com titulações variadas — não usar nível de anticorpos isolado para diagnosticar ou prognosticar (Pedersen, 2014; Dewerchin et al., 2005).',
   },
   clinicalSignsPathophysiology: [
     {
@@ -404,7 +404,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
           'Fezes',
           '—',
           '—',
-          'Detecta coronavírus felino entérico/exposição — não diagnostica PIF (Thayer et al., 2022; Tasker et al., ABCD 2023)',
+          'Detecta coronavírus felino entérico/exposição — não diagnóstica PIF (Thayer et al., 2022; Tasker et al., ABCD 2023)',
         ],
         [
           'Sorologia — anticorpos anti-coronavírus felino (FCoV)',
@@ -475,7 +475,7 @@ export const peritoniteInfecciosaFelinaRecord: DiseaseRecord = {
       description:
         'Efusão, tecido (FNA de linfonodo, baço) ou LCR — maior sensibilidade que sangue/fezes (Thayer et al., 2022; Tasker et al., ABCD 2023).',
       interpretation: 'RNA positivo em efusão/tecido com contexto clínico compatível confirma fortemente PIF.',
-      limitations: 'RNA negativo não exclui PIF seca; PCR em fezes não diagnostica PIF.',
+      limitations: 'RNA negativo não exclui PIF seca; PCR em fezes não diagnóstica PIF.',
     },
     {
       stepNumber: 7,

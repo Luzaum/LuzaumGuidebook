@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import {
   ChevronRight,
@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { PdfViewerShell } from '../components/consensus/PdfViewerShell';
+import { ConsensusExternalArticlePanel } from '../components/consensus/ConsensusExternalArticlePanel';
 import { ConsensusStructuredText } from '../components/consensus/ConsensusStructuredText';
 import { IrisCkdStagingTables } from '../components/consensus/IrisCkdStagingTables';
 import {
@@ -40,6 +41,10 @@ import {
   getConsensusSymbol,
 } from '../utils/consensusVisuals';
 import { cn } from '../../../lib/utils';
+import {
+  getConsensusArticleUrl,
+  isLocalHostedConsensusPdf,
+} from '../utils/consensusDocumentAccess';
 
 const UI_TEXT = {
   notFoundTitle: 'Consenso não encontrado',
@@ -88,10 +93,6 @@ function toSharedForm(details: ConsensusDocumentDetails | null): SharedDetailsFo
     appNotesText: details.appNotesText || '',
     references: details.references || [],
   };
-}
-
-function isPdfDocumentUrl(url: string): boolean {
-  return /\.pdf(?:$|[?#])/i.test(String(url || '').trim());
 }
 
 function hasText(value: string | null | undefined): boolean {
@@ -344,7 +345,8 @@ export function ConsensoDetailPage() {
   const categoryTheme = getEntityCategoryTheme(consenso.category);
   const consensusSymbol = getConsensusSymbol(consenso.slug);
   const editorialStatus = getConsensusEditorialStatus(consenso.slug);
-  const hasPdfDocument = isPdfDocumentUrl(consenso.fileUrl);
+  const hasLocalPdf = isLocalHostedConsensusPdf(consenso);
+  const articleUrl = getConsensusArticleUrl(consenso, sharedDetails?.references);
 
   return (
     <>
@@ -450,12 +452,20 @@ export function ConsensoDetailPage() {
           </section>
         )}
 
-        {hasPdfDocument && (
+        {hasLocalPdf && (
           <PdfViewerShell
             url={consenso.fileUrl}
             title={consenso.title}
             initialPage={resumeState?.pageNumber || 1}
             onPageChange={handlePdfPageChange}
+          />
+        )}
+
+        {!hasLocalPdf && (
+          <ConsensusExternalArticlePanel
+            title={consenso.title}
+            articleUrl={articleUrl}
+            organization={consenso.organization}
           />
         )}
 
@@ -493,32 +503,6 @@ export function ConsensoDetailPage() {
             references={sharedDetails.references}
             title={UI_TEXT.sharedReferencesTitle}
           />
-        )}
-
-        {!hasPdfDocument && (
-          <section className="flex flex-col gap-4 rounded-2xl border border-border bg-card p-5 md:flex-row md:items-center md:justify-between md:p-6">
-            <div className="flex items-start gap-3">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-violet-500/10 text-violet-700 dark:text-violet-300">
-                <FileText className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <div>
-                <h2 className="font-semibold text-foreground">Publicação original e DOI</h2>
-                <p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">
-                  Abra a fonte oficial para ler o texto integral, os anexos e eventuais atualizações
-                  publicadas pela organização responsável.
-                </p>
-              </div>
-            </div>
-            <a
-              href={consenso.fileUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
-            >
-              Abrir fonte oficial
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </section>
         )}
 
         {(relatedDiseases.length > 0 || relatedMedications.length > 0) && (

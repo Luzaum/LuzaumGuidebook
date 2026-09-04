@@ -1,5 +1,6 @@
 import { CommercialMedicationProduct } from '../types/commercialMedication';
 import { excludeSedativeAnestheticCommercialProducts } from '../utils/commercialProductPresentationFilters';
+import { enrichCommercialProductLabelDose } from '../utils/commercialLabelDose';
 import { hepatoprotectiveCommercialProductsSeed } from './hepatoprotectiveCommercialProducts.seed';
 import { insulinCommercialProductsSeed } from './insulinCommercialProducts.seed';
 import { selectedCommercialProductsSeed } from './selectedCommercialProducts.seed';
@@ -10,6 +11,17 @@ import {
   potassiumIodideCommercialProductsSeed,
 } from './potassiumIodideCommercialProducts.seed';
 import { convlessCommercialProductSeed } from './convlessCommercialProduct.seed';
+import { betnovateCommercialProductSeed } from './betnovateCommercialProduct.seed';
+import {
+  enrichRequestedAntiparasiticCommercialProduct,
+  requestedAntiparasiticCommercialProductsSeed,
+} from './requestedAntiparasiticCommercialProducts.seed';
+import { sulfaToltrazurilCommercialProductsSeed } from './sulfaToltrazurilCommercialProducts.seed';
+import {
+  enrichPraziquantelCommercialProduct,
+  praziquantelCommercialProductsSeed,
+} from './praziquantelCommercialProducts.seed';
+import { dipyroneCommercialProductsSeed } from './dipyroneCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -44,6 +56,7 @@ const CARDIO_DIURETIC_ALERT =
   'Diurético de alça trata congestão, não a causa estrutural. Usar a menor dose eficaz e monitorar desidratação, azotemia pré-renal, hipocalemia, hipocloremia, hiponatremia, alcalose metabólica, pressão arterial e interação com AINE.';
 
 const commercialProductsRaw: CommercialMedicationProduct[] = [
+  ...betnovateCommercialProductSeed,
   ...convlessCommercialProductSeed,
   ...selectedCommercialProductsSeed,
   ...insulinCommercialProductsSeed,
@@ -52,6 +65,10 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...itraconazolePrednisoloneCommercialProductsSeed,
   ...woundTopicalCommercialProductsSeed,
   ...potassiumIodideCommercialProductsSeed,
+  ...requestedAntiparasiticCommercialProductsSeed,
+  ...sulfaToltrazurilCommercialProductsSeed,
+  ...praziquantelCommercialProductsSeed,
+  ...dipyroneCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -232,7 +249,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     prescriptionExample:
       'Preencher o conduto, massagear a base da orelha e remover excesso com algodão. Usar conforme orientação, inclusive como adjuvante durante terapia.',
     safetyAlert:
-      'Apesar do pH neutro, contém docusato, EDTA e emulsionantes; evitar uso indiscriminado em dor intensa, ulceração ou suspeita de otite média.',
+      'Apesar do pH neutro, contém docusato, EDTA e emulsionantes; evitar uso indiscriminado em dor intensa, úlceração ou suspeita de otite média.',
     price: {
       averageLabel: 'R$ 56,43 a R$ 96,03',
       rangeLabel: '50 mL em torno de R$ 56,43 a R$ 66,39; 120 mL em torno de R$ 90,70 a R$ 96,03',
@@ -481,7 +498,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse:
       'Limpador emoliente, queratolítico e acidificante, interessante para cerúmen/oleosidade e pré-limpeza.',
     reassessment:
-      'Reavaliar rapidamente se houver dor importante, ulceração ou piora após aplicação.',
+      'Reavaliar rapidamente se houver dor importante, úlceração ou piora após aplicação.',
     prescriptionExample:
       'Aplicar 5 a 10 gotas em cada ouvido, massagear a base, permitir que o paciente balance a cabeça e remover excesso. Usar conforme orientação.',
     safetyAlert:
@@ -593,7 +610,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse:
       'Ceruminolítico/acidificante mais forte para cerúmen aderido e pré-tratamento de otite, não para limpeza casual.',
     reassessment:
-      'Reavaliar cedo em gato, dor intensa, ulceração ou qualquer sinal vestibular.',
+      'Reavaliar cedo em gato, dor intensa, úlceração ou qualquer sinal vestibular.',
     prescriptionExample:
       'Aplicar 1 a 2 doses no conduto auditivo, massagear a base e remover excesso. Usar somente conforme orientação veterinária.',
     safetyAlert:
@@ -4585,7 +4602,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['metronidazol', 'sulfadimethoxina'],
     labelCompositionSummary: 'Metronidazol + sulfadimethoxina em suspensão ou comprimidos.',
     labelDirections: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo q12h por 5 dias; Giardicid 500 em cães usualmente 25 mg/kg q12h. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg q12h por 5 dias.',
-    dosageGuidance: { labelDose: 'Cães/gatos: q12h por 5 dias conforme apresentação.', plumbs: { dog: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Evitar uso prolongado.' }], cat: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Monitorar neurotoxicidade.' }] } },
+    dosageGuidance: { labelDose: 'Comprimidos: 12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias. Suspensão: cães 0,5 mL/kg q12h; gatos 0,5 a 1 mL/2 kg q12h por 5 dias.', plumbs: { dog: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Evitar uso prolongado.' }], cat: [{ title: 'Giardíase/protozoários', dose: '12,5 a 25 mg/kg de cada ativo VO q12h por 5 dias', note: 'Monitorar neurotoxicidade.' }] } },
     plumbsContext: 'Metronidazol tem risco de neurotoxicidade em doses altas/prolongadas; reduzir muito em hepatopatia importante.',
     clinicalUse: 'Giardíase, coccidiose/protozoários e infecções entéricas sensíveis quando há diagnóstico ou forte suspeita.',
     reassessment: 'Suspender e reavaliar se ataxia, tremores, nistagmo, vômitos persistentes ou apatia importante.',
@@ -4776,7 +4793,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Comprimidos veterinários para cães contendo pimobendan nas apresentações de 1,25 mg, 5 mg ou 10 mg.',
     labelDirections: 'Selecionar a apresentação conforme o peso e a dose de pimobendan definida pelo médico-veterinário. A dose diária costuma ser dividida em duas administrações por via oral.',
     dosageGuidance: {
-      labelDose: 'Cães: calcular a dose de pimobendan pelo peso e dividir a dose diária em duas administrações por via oral.',
+      labelDose: 'Cães: 0,5 mg/kg/dia VO, dividido em 2 administrações a cada 12 h, preferencialmente cerca de 1 h antes do alimento.',
       plumbs: {
         dog: [
           { title: 'ICC por DCM/DMVM', dose: '0,5 mg/kg/dia VO dividido a cada 12 h', note: 'Selecionar a potência que permita a quantidade prática mais próxima.' },
@@ -4839,7 +4856,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Diurético de alça oral à base de torasemida, comprimidos palatáveis divisíveis conforme apresentação.',
     labelDirections: 'Plumb’s: cães/gatos, dose inicial 0,1 a 0,3 mg/kg VO a cada 24 h. Ao substituir furosemida, iniciar com cerca de 5% a 10% da dose diária total de furosemida, pois torasemida é aproximadamente 10 a 20 vezes mais potente.',
     dosageGuidance: {
-      labelDose: 'Cães: seguir bula/apresentação veterinária e titular pela resposta congestiva; confirmar apresentação disponível antes de prescrever.',
+      labelDose: 'Cães: 0,1 a 0,6 mg/kg VO SID; a maioria estabiliza com ≤ 0,3 mg/kg SID. Titular em incrementos de 0,1 mg/kg conforme congestão, função renal e eletrólitos.',
       plumbs: {
         dog: [
           { title: 'Dose inicial', dose: '0,1 a 0,3 mg/kg VO SID', note: 'Útil especialmente quando a resposta à furosemida é insuficiente.' },
@@ -4870,7 +4887,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'A página oficial informa furosemida 10 g/100 g; apresentações equivalentes a 10, 20, 40 e 80 mg por comprimido conforme peso do comprimido.',
     labelDirections: 'Plumb’s: cães, edema/ICC 2,2 a 5,5 mg/kg VO, IV ou IM 1 a 2 vezes ao dia, ajustando resposta; edema cardiogênico grave 1 a 3 mg/kg IV/IM/SC, repetir a cada 1 a 2 h até melhorar respiração e reduzir fortemente depois. Gatos em CHF oral variam muito: menor dose eficaz, de 1 mg/kg VO a cada 2 a 3 dias até 2 mg/kg VO a cada 8 a 12 h na maioria dos casos.',
     dosageGuidance: {
-      labelDose: 'Cães e gatos: bula veterinária varia por apresentação; usar a menor dose eficaz e titular conforme congestão, hidratação e eletrólitos.',
+      labelDose: 'Cães e gatos: 2 a 6 mg/kg VO. Cães: 2 a 3 vezes/dia por 7 dias (2 mg/kg pode ir até 15 dias). Gatos: 3 vezes/dia por 7 dias.',
       plumbs: {
         dog: [
           { title: 'Edema / ICC', dose: '2,2 a 5,5 mg/kg VO, IV ou IM 1 a 2x/dia', note: 'Ajustar à resposta do paciente.' },
@@ -4905,7 +4922,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Solução oral para gatos contendo telmisartana 4 mg/mL.',
     labelDirections: 'Plumb’s: gatos hipertensos, 1,5 mg/kg VO a cada 12 h por 14 dias, depois 2 mg/kg VO a cada 24 h, reduzindo em incrementos de 0,5 mg/kg se houver hipotensão; proteinúria por DRC em gatos, 1 mg/kg VO a cada 24 h. Cães com proteinúria/hipertensão: 1 mg/kg VO a cada 24 h, podendo titular até 3 mg/kg SID em proteinúria persistente.',
     dosageGuidance: {
-      labelDose: 'Semintra 4 mg/mL: dose conforme indicação registrada/local; medir com seringa dosadora e agitar antes do uso.',
+      labelDose: 'Gatos (DRC/proteinúria): 1 mg/kg VO SID (0,25 mL/kg da solução 4 mg/mL). Agitar antes do uso; medir com seringa dosadora.',
       plumbs: {
         cat: [
           { title: 'Hipertensão sistêmica', dose: '1,5 mg/kg VO BID por 14 dias; depois 2 mg/kg VO SID', note: 'Reduzir em 0,5 mg/kg se houver hipotensão.' },
@@ -4936,7 +4953,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'IECA de uso humano ou manipulado veterinário; concentração varia conforme farmácia/prescrição.',
     labelDirections: 'Plumb’s: cães, iniciar 0,25 a 0,5 mg/kg VO a cada 24 h; em ICC pode ser usado com furosemida, pimobendan e espironolactona, e alguns casos usam divisão a cada 12 h. Proteinúria em cães: 0,5 mg/kg VO SID, titulando conforme RPCU até cerca de 2 mg/kg/dia. Gatos hipertensos/proteinúricos: pode ser adjuvante, incluindo 0,5 mg/kg VO a cada 12 h quando amlodipina isolada não controla ou há proteinúria.',
     dosageGuidance: {
-      labelDose: 'Sem bula veterinária brasileira única para manipulado/uso humano; prescrever como uso extra-bula, ajustado por indicação e monitoramento.',
+      labelDose: 'Extra-bula — Cães: 0,25 a 0,5 mg/kg VO SID; proteinúria 0,5 mg/kg VO SID (titular até ~2 mg/kg/dia). Gatos: 0,5 mg/kg VO q12h quando indicado.',
       plumbs: {
         dog: [
           { title: 'Início / cardiologia', dose: '0,25 a 0,5 mg/kg VO SID', note: 'Em ICC pode compor terapia com furosemida, pimobendan e espironolactona.' },
@@ -4971,7 +4988,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Bloqueador de canal de cálcio diidropiridínico; apresentações humanas comuns de 2,5 mg e 5 mg, além de manipulado para doses pequenas.',
     labelDirections: 'Plumb’s: cães hipertensos, 0,1 a 0,25 mg/kg VO a cada 24 h, iniciando no limite baixo; emergência hipertensiva 0,2 a 0,4 mg/kg VO a cada 24 h, podendo chegar a 0,6 mg/kg com monitoramento. Gatos hipertensos: iniciar 0,625 mg/gato VO SID; usual 0,625 a 1,25 mg/gato SID, podendo aumentar até 2,5 mg/gato SID se PA seguir elevada.',
     dosageGuidance: {
-      labelDose: 'Sem dose veterinária em bula humana; uso veterinário extra-bula. Formular/manipular quando o comprimido humano não permitir dose segura.',
+      labelDose: 'Extra-bula — Cães: 0,1 a 0,25 mg/kg VO SID (emergência até 0,4–0,6 mg/kg). Gatos: iniciar 0,625 mg/gato VO SID; usual 0,625 a 1,25 mg/gato SID; titular até 2,5 mg/gato SID.',
       plumbs: {
         dog: [
           { title: 'Hipertensão sistêmica', dose: '0,1 a 0,25 mg/kg VO SID', note: 'Iniciar no limite baixo; geralmente após IECA.' },
@@ -5006,7 +5023,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Antiagregante plaquetário P2Y12, apresentação humana comum de 75 mg; em gatos geralmente exige fracionamento ou manipulação.',
     labelDirections: 'Plumb’s: cães antiagregante, 1 a 4 mg/kg VO a cada 24 h; pode considerar dose de ataque de 4 a 10 mg/kg no primeiro dia. Gatos com ATE: ataque 37,5 a 75 mg/gato VO uma vez após diagnóstico; manutenção 18,75 mg/gato VO a cada 24 h. Sabor muito amargo, considerar cápsula gelatinosa.',
     dosageGuidance: {
-      labelDose: 'Sem dose veterinária em bula humana; uso extra-bula como antiagregante. Em gatos, fracionar/manipular para evitar erro de dose.',
+      labelDose: 'Extra-bula — Cães: 1 a 4 mg/kg VO SID. Gatos (ATE): ataque 37,5 a 75 mg/gato VO uma vez; manutenção 18,75 mg/gato VO SID (1/4 de comp. 75 mg).',
       plumbs: {
         dog: [
           { title: 'Antiagregante', dose: '1 a 4 mg/kg VO SID', note: 'Pode considerar ataque de 4 a 10 mg/kg no primeiro dia.' },
@@ -5040,7 +5057,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Inibidor de fosfodiesterase tipo 5, vasodilatador pulmonar; apresentações humanas comuns 25, 50 e 100 mg.',
     labelDirections: 'Plumb’s: cães com hipertensão pulmonar, iniciar 0,5 a 1 mg/kg VO a cada 8 h e titular conforme sinais clínicos até 3 mg/kg VO a cada 8 h. Gatos: evidência limitada a casos selecionados, com relato de 0,25 a 1,6 mg/kg VO a cada 12 h para hipertensão pulmonar associada a síndrome de Eisenmenger.',
     dosageGuidance: {
-      labelDose: 'Sem dose veterinária em bula humana; uso extra-bula. Não prescrever como medicação para sopro sem hipertensão pulmonar confirmada ou fortemente suspeita.',
+      labelDose: 'Extra-bula — Cães (hipertensão pulmonar): 0,5 a 1 mg/kg VO q8h para iniciar; titular até 3 mg/kg VO q8h. Gatos: 0,25 a 1,6 mg/kg VO q12h em casos selecionados.',
       plumbs: {
         dog: [
           { title: 'Hipertensão pulmonar', dose: '0,5 a 1 mg/kg VO a cada 8 h para iniciar', note: 'Titular conforme sinais clínicos.' },
@@ -5075,7 +5092,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Beta-bloqueador beta-1 seletivo de uso humano/manipulado em cães e gatos conforme indicação cardiológica.',
     labelDirections: 'Plumb’s: cães, beta-bloqueio para taquiarritmias/doença obstrutiva 0,25 a 1,5 mg/kg VO a cada 12 h, iniciando baixo e titulando. Boxer cardiomyopathy/ARVC: 0,3 a 0,6 mg/kg VO a cada 12 h associado a mexiletina. Gatos: iniciar 6,25 mg/gato VO a cada 12 h e titular; hipertireoidismo com taquicardia 1 a 2 mg/kg VO a cada 12 h. Ajustar em DRC felina conforme estágio IRIS.',
     dosageGuidance: {
-      labelDose: 'Sem dose veterinária em bula humana; uso extra-bula guiado por ECG, ecocardiograma, frequência cardíaca e pressão arterial.',
+      labelDose: 'Extra-bula — Cães: 0,25 a 1,5 mg/kg VO q12h. Gatos: iniciar 6,25 mg/gato VO q12h; hipertireoidismo com taquicardia 1 a 2 mg/kg VO q12h.',
       plumbs: {
         dog: [
           { title: 'Taquiarritmia / obstrução', dose: '0,25 a 1,5 mg/kg VO a cada 12 h', note: 'Iniciar baixo e titular.' },
@@ -5130,7 +5147,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     clinicalUse: 'Analgésico, anti-inflamatório e antiexsudativo para artrites, osteoartrites, displasias coxofemorais, reparação de fraturas e pós-operatório ortopédico.',
     reassessment: 'Monitorar sinais de vômito, diarreia, fezes escuras, inapetência, redução de urina ou piora clínica.',
     prescriptionExample: 'Maxicam [0,5 mg ou 2 mg], administrar por via oral na dose calculada pelo peso, a cada 24 horas, preferencialmente junto ou logo após alimento, pelo período prescrito. Não associar com outro anti-inflamatório, corticoide ou AINE sem orientação.',
-    safetyAlert: 'Evitar em desidratação, hipovolemia, hipotensão, DRC/IRA, hepatopatia importante, ulceração gastrointestinal, gestação/lactação ou associação com corticoide.',
+    safetyAlert: 'Evitar em desidratação, hipovolemia, hipotensão, DRC/IRA, hepatopatia importante, úlceração gastrointestinal, gestação/lactação ou associação com corticoide.',
     price: { averageLabel: 'R$ 37,72 a R$ 59,50', rangeLabel: 'Maxicam 0,5 mg 10 comp: R$ 37,72-37,90; Maxicam 2 mg 10 comp: R$ 59,18-59,50 (Cobasi/varejo online)', sourceDate: '2026-05-25' },
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1055787/maxicam-0_5-mg-ourofino-10-comprimidos.jpg'
   },
@@ -5754,7 +5771,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Mucopolissacarídeos (condroitina e glucosamina), cobre quelatado, manganês quelatado, zinco quelatado.',
     labelDirections: 'Cães e gatos: administrar por via oral, uma vez ao dia antes das refeições, por no mínimo 30 dias. Dose inicial: Até 10 kg: 1/2 tablete; De 11 a 20 kg: 1 tablete; De 21 a 40 kg: 2 tabletes; Acima de 40 kg: 3 tabletes.',
     dosageGuidance: {
-      labelDose: 'Cães e gatos: Administrar 1 vez ao dia antes das refeições por 30 dias consecutivos. Dose conforme faixas de peso.',
+      labelDose: 'Cães e gatos: 1 tablete VO SID antes das refeições por 30 dias. Até 10 kg: 1/2 tablete; 11–20 kg: 1 tablete; 21–40 kg: 2 tabletes; acima de 40 kg: 3 tabletes.',
       plumbs: {
         dog: [
           { title: 'Condroproteção e suporte mineral', dose: '11 a 20 kg: 1 tablete mastigável VO SID', note: 'Fornece mucopolissacarídeos e minerais essenciais à saúde da cartilagem.' }
@@ -5787,7 +5804,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Condroprotetor à base de sulfato de glicosamina + sulfato de condroitina, em comprimidos de 500 mg ou 1000 mg.',
     labelDirections: 'Uso oral em cães. Condroton 500 mg: até 5 kg, 1 comp SID na dose inicial e 1 comp em dias alternados na manutenção; 5 a 10 kg, 1 comp BID inicialmente e 1 comp SID na manutenção. Condroton 1000 mg: 10 a 15 kg, 1 comp BID inicialmente e 1 comp SID na manutenção; 15 a 25 kg, 1,5 comp BID inicialmente e 1 comp SID na manutenção; 25 a 50 kg, 2 comp BID inicialmente e 2 comp SID na manutenção; acima de 50 kg, 3 comp BID inicialmente e 2 comp SID na manutenção.',
     dosageGuidance: {
-      labelDose: 'Cães: dose por faixa de peso e apresentação. Usar dose inicial mais intensa e reduzir para manutenção conforme bula e resposta clínica.',
+      labelDose: 'Cães (Condroton 500 mg): até 5 kg 1 comp SID; 5–10 kg 1 comp BID. Condroton 1000 mg: 10–15 kg 1 comp BID; 15–25 kg 1,5 comp BID; 25–50 kg 2 comp BID; >50 kg 3 comp BID. Reduzir para manutenção conforme bula.',
       plumbs: {
         dog: [
           { title: 'Até 10 kg - Condroton 500 mg', dose: 'Até 5 kg: 1 comp SID; 5 a 10 kg: 1 comp BID', note: 'Manutenção: até 5 kg em dias alternados; 5 a 10 kg, 1 comp SID.' },
@@ -5849,7 +5866,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     labelCompositionSummary: 'Suplemento articular com condroitina, glucosamina, aminoácidos, ômega 3, vitamina E e probióticos, conforme descrição comercial.',
     labelDirections: 'Dose diária recomendada conforme peso: até 10 kg, 1 comprimido de 660 mg SID; 10,1 a 20 kg, 2 comprimidos de 660 mg SID; 20,1 a 30 kg, 1 comprimido de 2000 mg SID; acima de 30,1 kg, 2 comprimidos de 2000 mg SID. Pode fracionar no período de 24 horas conforme orientação veterinária.',
     dosageGuidance: {
-      labelDose: 'Cães e gatos: dose por faixa de peso. Até 20 kg usar apresentação 660 mg; acima de 20 kg usar 2000 mg.',
+      labelDose: 'Cães e gatos: até 10 kg 1 comp 660 mg SID; 10,1–20 kg 2 comp 660 mg SID; 20,1–30 kg 1 comp 2000 mg SID; acima de 30,1 kg 2 comp 2000 mg SID.',
       plumbs: {
         dog: [
           { title: 'Até 20 kg', dose: 'Até 10 kg: 1 comp 660 mg SID; 10,1 a 20 kg: 2 comp 660 mg SID', note: 'Pode ser administrado direto na boca ou misturado ao alimento.' },
@@ -6108,7 +6125,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['atipamezol'],
     labelCompositionSummary: 'Antagonista alfa-2 para reversão de medetomidina/dexmedetomidina.',
     labelDirections: 'Uso hospitalar. Dose e via dependem do alfa-2 usado, espécie e protocolo.',
-    dosageGuidance: { labelDose: 'Uso hospitalar: reversão de alfa-2 conforme protocolo.', plumbs: { dog: [{ title: 'Reversão alfa-2', dose: 'Dose conforme dexmedetomidina/medetomidina administrada', note: 'Monitorar recidiva de sedação.' }], cat: [{ title: 'Reversão alfa-2', dose: 'Dose conforme protocolo', note: 'Uso clínico com monitoramento.' }] } },
+    dosageGuidance: { labelDose: 'Cães/gatos (IM): 375 µg/m² ou mesmo volume da dexmedetomidina 0,5 mg/mL administrada.', plumbs: { dog: [{ title: 'Reversão alfa-2', dose: '375 µg/m² IM ou volume equivalente à dexmedetomidina', note: 'Monitorar recidiva de sedação.' }], cat: [{ title: 'Reversão alfa-2', dose: '375 µg/m² IM ou volume equivalente à dexmedetomidina', note: 'Uso clínico com monitoramento.' }] } },
     plumbsContext: 'Reversor de alfa-2 agonistas; analgesia também é revertida, podendo haver retorno de dor.',
     clinicalUse: 'Reversão de sedação por dexmedetomidina/medetomidina em cães e gatos.',
     reassessment: 'Monitorar despertar, dor, FC, pressão e comportamento após reversão.',
@@ -6262,7 +6279,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['limpador auricular'],
     labelCompositionSummary: 'Limpador auricular/ceruminolítico de suporte otológico; composição quantitativa pendente de bula completa.',
     labelDirections: 'Aplicar no conduto auditivo conforme orientação do fabricante e necessidade clínica; não é dose mg/kg.',
-    dosageGuidance: { labelDose: 'Cães e gatos: aplicar no ouvido conforme bula/orientação clínica.', plumbs: { dog: [{ title: 'Higiene auricular', dose: 'Aplicar quantidade suficiente, massagear e remover excesso', note: 'Não substitui tratamento de otite.' }], cat: [{ title: 'Higiene auricular', dose: 'Aplicar com cautela e conforto do paciente', note: 'Avaliar tímpano se houver otite/dor.' }] } },
+    dosageGuidance: { labelDose: 'Cães e gatos: aplicar quantidade suficiente no conduto auditivo, massagear a base da orelha e remover excesso.', plumbs: { dog: [{ title: 'Higiene auricular', dose: 'Aplicar quantidade suficiente, massagear e remover excesso', note: 'Não substitui tratamento de otite.' }], cat: [{ title: 'Higiene auricular', dose: 'Aplicar com cautela e conforto do paciente', note: 'Avaliar tímpano se houver otite/dor.' }] } },
     plumbsContext: 'Produto de suporte local; não é antibiótico, antifúngico ou antiparasitário.',
     clinicalUse: 'Higiene de conduto auditivo, remoção de cerúmen/oleosidade, redução de odor e suporte em rotina otológica.',
     reassessment: 'Reavaliar citologia, dor, odor, secreção e integridade timpânica em otites recorrentes.',
@@ -6438,7 +6455,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['nitenpiram'],
     labelCompositionSummary: 'Nitenpiram oral de ação rápida contra pulgas adultas.',
     labelDirections: 'Administrar comprimido conforme espécie/peso; efeito rápido, sem proteção residual mensal prolongada.',
-    dosageGuidance: { labelDose: 'Cães e gatos: 1 comprimido conforme peso; repetir conforme bula/orientação.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: 'Dose por faixa de peso', note: 'Knockdown rápido, sem efeito mensal prolongado.' }], cat: [{ title: 'Pulgas adultas', dose: 'Dose por faixa de peso', note: 'Confirmar apresentação felina/baixo peso.' }] } },
+    dosageGuidance: { labelDose: 'Cães e gatos: 1 mg/kg VO dose única. Invicto 11,4 mg: até 11,4 kg; Invicto 57 mg: 11,4 a 57 kg.', plumbs: { dog: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única por faixa de peso', note: 'Knockdown rápido, sem efeito mensal prolongado.' }], cat: [{ title: 'Pulgas adultas', dose: '1 mg/kg VO dose única; Invicto 11,4 mg até 11,4 kg', note: 'Confirmar apresentação felina/baixo peso.' }] } },
     plumbsContext: 'Nitenpiram elimina pulgas adultas rapidamente; não substitui controle ambiental e preventivo residual.',
     clinicalUse: 'Infestação por pulgas adultas e necessidade de redução rápida da carga parasitária.',
     reassessment: 'Reavaliar controle ambiental, reinfestação e necessidade de produto residual.',
@@ -6704,7 +6721,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['doxiciclina'],
     labelCompositionSummary: 'Doxiciclina veterinária; tetraciclina oral.',
     labelDirections: 'Cães e gatos: 5 a 10 mg/kg VO q12-24h conforme indicação; separar de cátions e sucralfato.',
-    dosageGuidance: { labelDose: 'Cães e gatos: dose por bula; literatura usual 5 a 10 mg/kg q12-24h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Separar de sucralfato/cátions.' }], cat: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Dar água/alimento para reduzir lesão esofágica.' }] } },
+    dosageGuidance: { labelDose: 'Cães e gatos: 5 a 10 mg/kg VO q12-24h.', plumbs: { dog: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Separar de sucralfato/cátions.' }], cat: [{ title: 'Infecção sensível', dose: '5 a 10 mg/kg VO q12-24h conforme indicação', note: 'Dar água/alimento para reduzir lesão esofágica.' }] } },
     plumbsContext: 'Doxiciclina interage com sucralfato, ferro, zinco, cálcio, magnésio e alumínio.',
     clinicalUse: 'Infecções sensíveis, hemoparasitoses/respiratórias e outras indicações conforme diagnóstico.',
     reassessment: 'Reavaliar resposta, vômitos, esofagite, aderência e necessidade de cultura/testes.',
@@ -6859,7 +6876,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['ivermectina'],
     labelCompositionSummary: 'Ivermectina oral em comprimidos.',
     labelDirections: 'Cães: 0,2 mg/kg q7d por 2 a 4 administrações para sarna sarcóptica/otodécica/carrapatos/nematódeos; demodicose 0,6 mg/kg q24h por 2 a 3 meses. Gatos: sarna otodécica 0,3 mg/kg q7d por 2 a 4 administrações.',
-    dosageGuidance: { labelDose: 'Cães/gatos: dose por indicação; demodicose canina exige alerta máximo.', plumbs: { dog: [{ title: 'Sarna/nematódeos', dose: '0,2 mg/kg VO q7d, 2 a 4 administrações', note: 'Dose de bula.' }, { title: 'Demodicose', dose: '0,6 mg/kg VO q24h por 2 a 3 meses', note: 'Não liberar sem alerta MDR1/toxicidade.' }], cat: [{ title: 'Sarna otodécica', dose: '0,3 mg/kg VO q7d, 2 a 4 administrações', note: 'Monitorar neurotoxicidade.' }] } },
+    dosageGuidance: { labelDose: 'Cães: sarna/nematódeos 0,2 mg/kg VO q7d por 2–4 administrações; demodicose 0,6 mg/kg VO q24h por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 administrações.', plumbs: { dog: [{ title: 'Sarna/nematódeos', dose: '0,2 mg/kg VO q7d, 2 a 4 administrações', note: 'Dose de bula.' }, { title: 'Demodicose', dose: '0,6 mg/kg VO q24h por 2 a 3 meses', note: 'Não liberar sem alerta MDR1/toxicidade.' }], cat: [{ title: 'Sarna otodécica', dose: '0,3 mg/kg VO q7d, 2 a 4 administrações', note: 'Monitorar neurotoxicidade.' }] } },
     plumbsContext: 'Ivermectina em doses altas pode causar toxicidade neurológica, especialmente em cães MDR1/ABCB1.',
     clinicalUse: 'Sarnas e parasitoses sensíveis; demodicose exige cautela e hoje compete com alternativas mais seguras.',
     reassessment: 'Monitorar tremores, ataxia, midríase, cegueira, depressão, hipersalivação e resposta parasitológica.',
@@ -6903,7 +6920,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['maleato de enalapril'],
     labelCompositionSummary: 'Enalapril oral palatável e bissulcado para cães e gatos.',
     labelDirections: 'Cães: 5 mg 1 comp/10 kg q12-24h; 10 mg 1 comp/20 kg q12-24h. Gatos: Petpril 5 mg, 1/4 a 1/2 comp/5 kg q12-24h.',
-    dosageGuidance: { labelDose: 'Cães/gatos: dose por faixa; monitorar renal/K/PA.', plumbs: { dog: [{ title: 'ICC/hipertensão/proteinúria', dose: '0,5 mg/kg VO q12-24h aproximadamente', note: 'Conforme apresentação de bula.' }], cat: [{ title: 'Cardiorrenal', dose: '1/4 a 1/2 comp 5 mg/5 kg q12-24h', note: 'Monitorar pressão e função renal.' }] } },
+    dosageGuidance: { labelDose: 'Cães: Petpril 5 mg 1 comp/10 kg q12–24h; Petpril 10 mg 1 comp/20 kg q12–24h. Gatos: Petpril 5 mg, 1/4 a 1/2 comp/5 kg q12–24h.', plumbs: { dog: [{ title: 'ICC/hipertensão/proteinúria', dose: '0,5 mg/kg VO q12-24h aproximadamente', note: 'Conforme apresentação de bula.' }], cat: [{ title: 'Cardiorrenal', dose: '1/4 a 1/2 comp 5 mg/5 kg q12-24h', note: 'Monitorar pressão e função renal.' }] } },
     plumbsContext: 'Enalapril é IECA cardiovascular/vasodilatador; monitorar pressão, função renal e potássio.',
     clinicalUse: 'Insuficiência cardíaca, hipertensão e proteinúria/doença renal conforme diagnóstico.',
     reassessment: 'Monitorar PA, creatinina, ureia, potássio, hidratação, apetite e sinais de hipotensão.',
@@ -6925,7 +6942,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     activeComponents: ['metergolina'],
     labelCompositionSummary: 'Metergolina em comprimidos palatáveis e bissulcados.',
     labelDirections: 'Cadelas: Sec Lac 5, 1 comp/5 kg q12h por 4 a 8 dias; Sec Lac 20, 1 comp/20 kg q12h por 4 a 8 dias. Gatas: Sec Lac 5, 1 comp/4 kg q12h por 4 a 8 dias.',
-    dosageGuidance: { labelDose: 'Cadelas/gatas: q12h por 4 a 8 dias conforme apresentação/peso.', plumbs: { dog: [{ title: 'Pseudociese/lactação', dose: 'Sec Lac 5: 1 comp/5 kg q12h; Sec Lac 20: 1 comp/20 kg q12h', note: 'Por 4 a 8 dias.' }], cat: [{ title: 'Interrupção lactação', dose: 'Sec Lac 5: 1 comp/4 kg q12h', note: 'Por 4 a 8 dias.' }] } },
+    dosageGuidance: { labelDose: 'Cadelas: Sec Lac 5, 1 comp/5 kg q12h; Sec Lac 20, 1 comp/20 kg q12h. Gatas: Sec Lac 5, 1 comp/4 kg q12h. Por 4 a 8 dias.', plumbs: { dog: [{ title: 'Pseudociese/lactação', dose: 'Sec Lac 5: 1 comp/5 kg q12h; Sec Lac 20: 1 comp/20 kg q12h', note: 'Por 4 a 8 dias.' }], cat: [{ title: 'Interrupção lactação', dose: 'Sec Lac 5: 1 comp/4 kg q12h', note: 'Por 4 a 8 dias.' }] } },
     plumbsContext: 'Metergolina deve seguir dose de bula do produto comercial.',
     clinicalUse: 'Pseudociese e interrupção de lactação em cadelas e gatas quando clinicamente indicado.',
     reassessment: 'Excluir gestação real, mastite, piometra e neoplasia mamária; monitorar resposta e vômitos.',
@@ -7634,5 +7651,13 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   }
 ];
 
+const commercialProductsAfterAntiparasiticEnrichment = commercialProductsRaw.map((product) =>
+  enrichPraziquantelCommercialProduct(enrichRequestedAntiparasiticCommercialProduct(product)),
+);
+
+/** Catálogo antes do enriquecimento automático de labelDose (auditoria/relatórios). */
+export const commercialProductsBeforeLabelDoseEnrichment: CommercialMedicationProduct[] =
+  excludeSedativeAnestheticCommercialProducts(commercialProductsAfterAntiparasiticEnrichment);
+
 export const commercialOticProductsSeed: CommercialMedicationProduct[] =
-  excludeSedativeAnestheticCommercialProducts(commercialProductsRaw);
+  commercialProductsBeforeLabelDoseEnrichment.map(enrichCommercialProductLabelDose);

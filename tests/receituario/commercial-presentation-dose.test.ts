@@ -28,6 +28,17 @@ const maxicam = {
   activeComponents: ['meloxicam'],
 } as const;
 
+test('produtos cardiológicos prioritários exibem dose de bula com mg/kg ou mg/gato', () => {
+  const ids = ['semintra-boehringer', 'furolisin-vetnil', 'upcard-vetoquinol', 'cardisure-dechra'];
+  for (const id of ids) {
+    const product = commercialOticProductsSeed.find((item) => item.id === id)!;
+    assert.ok(product, `Produto ${id} não encontrado`);
+    const labelDose = product.dosageGuidance?.labelDose || '';
+    assert.match(labelDose, /mg\/kg|mg\/gato|mL\/kg|comp\/\d+ kg/i, `${id} sem dose prática na bula`);
+    assert.doesNotMatch(labelDose, /conforme indicação registrada|seguir bula|Sem dose veterinária|calcular a dose de/i, `${id} ainda com texto genérico`);
+  }
+});
+
 test('detecta concentração de cápsula mesmo quando apresentações não trazem mg', () => {
   const potencies = parseCommercialPotencies(eurofarma);
   assert.equal(potencies.length, 1);

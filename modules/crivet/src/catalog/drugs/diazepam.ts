@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const diazepam: Drug = {
   id: 'diazepam',
@@ -116,5 +117,23 @@ export const diazepam: Drug = {
     clinicalObservations: 'Para sedação em animais saudáveis, o midazolam ou a dexmedetomidina são superiores. O diazepam brilha no controle emergencial de convulsões.'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Veterinary Anesthesia and Analgesia (Lumb and Jones)"]
+  references: [cite.plumbs(378), cite.lumbJones(336), cite.ettinger()],
+  doseGuides: [
+    {
+      id: 'diaz-seizure-bolus',
+      regimen: 'bolus',
+      title: 'Status epilepticus — bolus',
+      indication: 'Convulsão ativa refratária',
+      doseText: '0,5 – 1 mg/kg IV lento; repetir até 3 mg/kg total',
+      rationale: 'Benzodiazepínico de escolha para controle emergencial; transicionar para CRI se recorrência.',
+    },
+    {
+      id: 'diaz-seizure-cri',
+      regimen: 'CRI',
+      title: 'Status epilepticus — CRI',
+      indication: 'Convulsões recorrentes ou refratárias',
+      doseText: '0,5 – 1 mg/kg/h IV',
+      rationale: 'Cães metabolizam rapidamente; CRI mantém níveis terapêuticos enquanto se estabiliza o paciente.',
+    },
+  ],
 };

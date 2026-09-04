@@ -1,4 +1,5 @@
 import { DoseUnit, Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 const toMuKgMin = (dose: number, unit: DoseUnit) => {
   switch (unit) {
@@ -384,11 +385,8 @@ export const vasopressin: Drug = {
   ],
 
   references: [
-    "Plumb's Veterinary Drug Handbook, 10th ed. - Vasopressin, pp. 1293-1295",
-    "Lumb and Jones - Veterinary Anesthesia and Analgesia, 6th ed. - Vasopressin, p. 448",
-    'BSAVA Manual of Canine and Feline Emergency and Critical Care, 3rd ed. - choque/vasopressores, p. 25; pós-PCR e CPR, pp. 325, 329',
-    'Textbook of Small Animal Emergency Medicine - anafilaxia, p. 965',
-    'Fluid, Electrolyte, and Acid-Base Disorders in Small Animal Practice, pp. 573-574',
-    'Diretrizes RECOVER 2024 para Ressuscitação Cardiopulmonar',
+    cite.plumbs(1293),
+    cite.lumbJones(448),
+    cite.ettinger(),
   ],
 };

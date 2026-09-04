@@ -123,7 +123,7 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     category: 'dermatologia',
     tags: ['Períneo', 'Imunomediada', 'Pastor alemão', 'Disquesia', 'Ciclosporina'],
     quickSummary:
-      'A furunculose anal / fístula perianal é doença imunomediada crônica da região perianal e pararretal em que a resposta inflamatória desregulada destrói a arquitetura tecidual normal, gerando ulcerações dolorosas, tratos fistulosos e, nos casos avançados, estenose ou incontinência. Classicamente sobredimensionada em Pastor Alemão, mas descrita em outros grandes; não é “abscesso de saco anal simples” — embora saculite possa coexistir ou mimetizar. O diagnóstico permanece fundamentalmente clínico: inspeção após tosa e limpeza, palpação digital e toque retal sob sedação/analgesia quando a dor impede exame consciente. Exames de imagem ou histopatologia entram em casos atípicos. O tratamento contemporâneo ancora-se na ciclosporina (consenso 2025 e estudos clássicos), com suporte local, analgesia multimodal, controle de infecção secundária quando documentada e dieta de eliminação em subset de pacientes com componente gastrointestinal. Cirurgia deixou de ser primeira linha e reserva-se a fibrose, estenose ou falha terapêutica documentada após curso médico adequado.',
+      'A furunculose anal / fístula perianal é doença imunomediada crônica da região perianal e pararretal em que a resposta inflamatória desregulada destrói a arquitetura tecidual normal, gerando úlcerações dolorosas, tratos fistulosos e, nos casos avançados, estenose ou incontinência. Classicamente sobredimensionada em Pastor Alemão, mas descrita em outros grandes; não é “abscesso de saco anal simples” — embora saculite possa coexistir ou mimetizar. O diagnóstico permanece fundamentalmente clínico: inspeção após tosa e limpeza, palpação digital e toque retal sob sedação/analgesia quando a dor impede exame consciente. Exames de imagem ou histopatologia entram em casos atípicos. O tratamento contemporâneo ancora-se na ciclosporina (consenso 2025 e estudos clássicos), com suporte local, analgesia multimodal, controle de infecção secundária quando documentada e dieta de eliminação em subset de pacientes com componente gastrointestinal. Cirurgia deixou de ser primeira linha e reserva-se a fibrose, estenose ou falha terapêutica documentada após curso médico adequado.',
   }),
   diseaseListCard({
     id: 'disease-sindrome-cushing-caes',
@@ -207,9 +207,9 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     synonyms: ['Traqueobroncomalácia', 'Tracheal collapse', 'TBM', 'Tosse em grasnado de ganso'],
     species: ['dog'],
     category: 'respiratorio',
-    tags: ['Toy', 'Tosse', 'Fluoroscopia', 'Broncoscopia', 'Stent', 'Hidrocodona'],
+    tags: ['Tosse crônica', 'Pequeno porte', 'Fluoroscopia', 'Broncoscopia', 'Stent'],
     quickSummary:
-      'O colapso traqueal e a traqueobroncomalácia (TBM) são manifestações de perda de rigidez da parede traqueobrônquica: anéis cartilaginosos em C amolecidos e membrana dorsal redundante passam a invaginar com as variações de pressão transpulmonar — na inspiração predomina colapso cervical (pressão intratraqueal mais negativa que pleural), na expiração e na tosse predomina colapso intratorácico e brônquico (pressão pleural positiva). O resultado clínico é tosse seca em “honking”, piora com excitação, calor, umidade e tração de coleira, às vezes síncope por reflexo vagal ou hipóxia. Toy breeds e miniaturas são o epicentro epidemiológico; obesidade e comorbidades respiratórias (bronquite, BOAS, cardiomegalia comprimindo brônquio esquerdo) são agravantes massivos. A radiografia é triagem estática que frequentemente subestima o grau funcional; a fluoroscopia mostra o comportamento dinâmico; a broncoscopia gradua severidade (escalas ACVS) e permite BAL quando seguro. O manejo conservador (perda de peso, peitoral, antitussígenos, corticoide curto sistêmico ou inalado) deve esgotar-se antes de stent ou anéis — intervenções têm complicações frequentes (tosse pós-stent, granuloma, infecção, fratura de stent em proporções alarmantes nas revisões sistemáticas recentes).',
+      'Doença dinâmica da via aérea central, comum em cães pequenos, que causa tosse seca paroxística e, nos casos graves, obstrução respiratória. Radiografia é triagem; fluoroscopia ou broncoscopia podem ser necessárias. Manejo começa por peso, peitoral, redução de gatilhos e terapia médica individualizada.',
   }),
   diseaseListCard({
     id: 'disease-asma-felina',
@@ -464,7 +464,7 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
       'AAHA 2023',
     ],
     quickSummary:
-      'Deficiência de hormônios tireoidianos adquirida: tireoidite/atrofia em cães; iatrogenia pós-hipertireoidismo em gatos. TT4 baixo isolado não diagnostica — integrar clínica, fT4ED, cTSH e NTIS. Cão: levotiroxina 0,02 mg/kg q12h; gato: 0,05–0,10 mg/GATO q24h (Bugbee et al., 2023).',
+      'Deficiência de hormônios tireoidianos adquirida: tireoidite/atrofia em cães; iatrogenia pós-hipertireoidismo em gatos. TT4 baixo isolado não diagnóstica — integrar clínica, fT4ED, cTSH e NTIS. Cão: levotiroxina 0,02 mg/kg q12h; gato: 0,05–0,10 mg/GATO q24h (Bugbee et al., 2023).',
   }),
   diseaseListCard({
     id: 'disease-hipotireoidismo-congenito-caes-gatos',

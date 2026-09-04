@@ -180,7 +180,7 @@ export const cardiomiopatiaHipertroficaRecord: DiseaseRecord = {
         {
           finding: 'Tosse (menos típica que em cães)',
           mechanism:
-            'Bronquios principais comprimidos por átrio esquerdo muito dilatado ou edema peribrônquico podem provocar tosse; muitas vezes o gato apresenta apenas dispneia.',
+            'Brônquios principais comprimidos por átrio esquerdo muito dilatado ou edema peribrônquico podem provocar tosse; muitas vezes o gato apresenta apenas dispneia.',
           clinicalMeaning: 'Não atribuir tosse isolada à CMH sem imagem; dispneia felina tem prioridade sobre tosse como sinal guia.',
           priority: 'uncommon',
         },

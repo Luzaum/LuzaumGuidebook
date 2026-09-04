@@ -56,7 +56,7 @@ export const tumoresMamariosRecord: DiseaseRecord = {
           label: 'Mapa mamário completo',
           timing: 'Primeira consulta',
           detail:
-            'Registrar glândula, diâmetro, mobilidade, consistência, ulceração, calor, dor e fixação de cada nódulo; fotografar com escala (Nelson & Couto, 6ª ed.).',
+            'Registrar glândula, diâmetro, mobilidade, consistência, úlceração, calor, dor e fixação de cada nódulo; fotografar com escala (Nelson & Couto, 6ª ed.).',
         },
         {
           label: 'Linfonodos regionais',
@@ -146,7 +146,7 @@ export const tumoresMamariosRecord: DiseaseRecord = {
       'Tumores felinos costumam apresentar maior taxa de malignidade, invasão e metástase que o espectro canino, justificando estadiamento e cirurgia mais agressivos quando o paciente é elegível.',
   },
   pathophysiology:
-    'O crescimento local comprime e invade pele, ductos, vasos e tecido subcutâneo, gerando nódulo, ulceração, dor e secreção. A angiogênese sustenta o tumor, mas vasos frágeis favorecem necrose e sangramento. A invasão linfática explica edema e metástase nodal; metástase pulmonar reduz a troca gasosa e causa tosse ou dispneia tardiamente. No carcinoma inflamatório, êmbolos neoplásicos obstruem os linfáticos dérmicos; por isso a mama fica quente, eritematosa e edemaciada sem que uma infecção seja a causa primária.',
+    'O crescimento local comprime e invade pele, ductos, vasos e tecido subcutâneo, gerando nódulo, úlceração, dor e secreção. A angiogênese sustenta o tumor, mas vasos frágeis favorecem necrose e sangramento. A invasão linfática explica edema e metástase nodal; metástase pulmonar reduz a troca gasosa e causa tosse ou dispneia tardiamente. No carcinoma inflamatório, êmbolos neoplásicos obstruem os linfáticos dérmicos; por isso a mama fica quente, eritematosa e edemaciada sem que uma infecção seja a causa primária.',
   clinicalSignsPathophysiology: [
     {
       system: 'mammary',
@@ -159,7 +159,7 @@ export const tumoresMamariosRecord: DiseaseRecord = {
           priority: 'common',
         },
         {
-          finding: 'Ulceração, sangramento ou eritema difuso sem massa delimitada',
+          finding: 'Úlceração, sangramento ou eritema difuso sem massa delimitada',
           mechanism:
             'Crescimento excede vascularização (necrose) ou invasão linfática dérmica (carcinoma inflamatório).',
           clinicalMeaning: 'Eritema difuso + calor exige diferenciar carcinoma inflamatório de mastite.',
@@ -199,7 +199,7 @@ export const tumoresMamariosRecord: DiseaseRecord = {
         title: 'Exame clínico e mapeamento das massas',
         purpose: 'Documentar número, tamanho, localização e fixação de cada lesão.',
         description:
-          'Palpar todas as cadeias mamárias e linfonodos; medir em três dimensões; registrar ulceração e fixação.',
+          'Palpar todas as cadeias mamárias e linfonodos; medir em três dimensões; registrar úlceração e fixação.',
         interpretation: 'Múltiplas massas exigem identificação separada no frasco de histopatologia.',
         limitations: 'Palpação não distingue benigno de maligno.',
         isGoldStandard: false,

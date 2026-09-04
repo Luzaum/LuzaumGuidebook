@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const fentanyl: Drug = {
   id: 'fentanyl',
@@ -46,12 +47,12 @@ export const fentanyl: Drug = {
   highAlert: true,
   
   doses: {
-    dog: { min: 2, max: 20, unit: 'mcg/kg/h', observations: 'Doses acima de 10 mcg/kg/h geralmente requerem ventilação mecânica controlada.' },
-    cat: { min: 2, max: 10, unit: 'mcg/kg/h', observations: 'Gatos são mais sensíveis à disforia. Doses acima de 5 mcg/kg/h requerem monitoramento rigoroso.' }
+    dog: { min: 2, max: 10, unit: 'mcg/kg/h', observations: 'Plumb\'s: ataque 2–10 mcg/kg IV; CRI 2–10 mcg/kg/h. Diretriz perioperatória: 10 mcg/kg + 10 mcg/kg/h.' },
+    cat: { min: 2, max: 10, unit: 'mcg/kg/h', observations: 'Plumb\'s: ataque 5 mcg/kg IV; CRI 5 mcg/kg/h. Titular com cautela — disforia em doses altas.' }
   },
   bolusDoses: {
-    dog: { min: 2, max: 10, unit: 'mcg/kg', observations: 'Administrar lentamente (ao longo de 1-2 minutos) para evitar rigidez muscular e apneia súbita.' },
-    cat: { min: 1, max: 5, unit: 'mcg/kg', observations: 'Titular ao efeito.' }
+    dog: { min: 2, max: 10, unit: 'mcg/kg', observations: 'Administrar lentamente (1–2 min) para evitar rigidez torácica.' },
+    cat: { min: 2, max: 8, unit: 'mcg/kg', observations: 'Plumb\'s: 5–8 mcg/kg IV se bolus isolado; duração ~20–30 min sem CRI.' }
   },
   
   preferredUnit: 'mcg/kg/h',
@@ -134,5 +135,35 @@ export const fentanyl: Drug = {
     clinicalObservations: 'Pode ser revertido com antagonistas puros (Naloxona). A bradicardia responde bem à atropina ou glicopirrolato. Para evitar rigidez muscular torácica ("chest wall rigidity"), administrar bolus lentamente.'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Tratado de Anestesiologia Veterinária", "Lumb and Jones' Veterinary Anesthesia and Analgesia"]
+  references: [
+    cite.plumbs(512),
+    cite.lumbJones(),
+    cite.ettinger(),
+  ],
+  doseGuides: [
+    {
+      id: 'fent-periop-dog',
+      regimen: 'CRI',
+      title: 'Analgesia perioperatória (cão)',
+      indication: 'Durante anestesia inalatória',
+      doseText: 'Ataque 10 mcg/kg IV → CRI 10 mcg/kg/h',
+      rationale: 'Plumb\'s 10ª ed., p. 512–514.',
+    },
+    {
+      id: 'fent-periop-cat',
+      regimen: 'CRI',
+      title: 'Analgesia perioperatória (gato)',
+      indication: 'Controle analgésico titulado',
+      doseText: 'Ataque 5 mcg/kg IV → CRI 5 mcg/kg/h',
+      rationale: 'Plumb\'s 10ª ed., p. 512–514.',
+    },
+    {
+      id: 'fent-flk',
+      regimen: 'CRI',
+      title: 'Protocolo FLK (componente opioide)',
+      indication: 'Dor severa multimodal',
+      doseText: '3.6 mcg/kg/h IV (sem ataque no estudo de referência)',
+      rationale: 'Plumb\'s 10ª ed., p. 721 (ketamina — combinações CRI).',
+    },
+  ],
 };

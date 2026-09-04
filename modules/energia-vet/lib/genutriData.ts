@@ -43,6 +43,11 @@ export function getAllFoods(): FoodItem[] {
   return [...GENUTRI_FOODS, ...getHumanOmega3FoodsMerged()]
 }
 
+/** Retorna todas as rações e alimentos comerciais. */
+export function getCommercialFoods(): FoodItem[] {
+  return getAllFoods().filter((food) => food.foodType === 'commercial')
+}
+
 const NON_DUPLICATE_REQUIREMENTS = dataset.requirements.filter((profile) => profile.source !== 'FEDIAF')
 export const GENUTRI_REQUIREMENTS = [...FEDIAF_REQUIREMENT_PROFILES, ...NON_DUPLICATE_REQUIREMENTS]
 export const GENUTRI_ENERGY_RULES = dataset.energyRules

@@ -595,7 +595,7 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
     tags: ['NAC', 'Acetilcisteína', 'Paracetamol', 'Intoxicação', 'Hospitalar', 'Antídoto'],
     plainLanguageSummary:
       'Antídoto hospitalar principal na intoxicação por paracetamol — repõe glutationa. Não é suplemento hepatoprotetor domiciliar; SAMe não substitui NAC nessa emergência.',
-    mechanismOfAction: 'Fornece grupos sulfidrila → reposição de precursores de glutationa → detoxificação de metabolitos reativos do paracetamol.',
+    mechanismOfAction: 'Fornece grupos sulfidrila → reposição de precursores de glutationa → detoxificação de metabólitos reativos do paracetamol.',
     indications: ['Intoxicação por paracetamol/acetaminofeno.', 'Hepatotoxicidade aguda selecionada em protocolo hospitalar.'],
     contraindications: ['Substituir descontaminação, suporte hemodinâmico e controle de metemoglobinemia.'],
     cautions: ['Uso intravenoso diluído e monitorado; reações anafilactoides possíveis.', 'Gatos com paracetamol: emergência crítica.'],

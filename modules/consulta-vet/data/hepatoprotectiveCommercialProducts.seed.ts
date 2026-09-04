@@ -16,7 +16,7 @@ export const hepatoprotectiveCommercialProductsSeed: CommercialMedicationProduct
     labelCompositionSummary: 'Suplemento alimentar com SAMe associado a vitaminas C e E. A página oficial informa comprimidos revestidos para protecao dos nutrientes.',
     labelDirections: 'Nutri SAMe 100: 1 comprimido para cada 5 kg SID. Nutri SAMe 200: 1 comprimido para cada 10 kg SID.',
     dosageGuidance: {
-      labelDose: 'Cães e gatos: cerca de 20 mg/kg de SAMe SID conforme apresentacao.',
+      labelDose: 'Cães e gatos: cerca de 20 mg/kg de SAMe VO SID (Nutri SAMe 100: 1 comp/5 kg; Nutri SAMe 200: 1 comp/10 kg).',
       plumbs: {
         dog: [{ title: 'Suporte hepatobiliar', dose: '18-20 mg/kg VO SID', note: 'Preferir em jejum; não substituir investigacao da causa.' }],
         cat: [{ title: 'Suporte hepatobiliar', dose: '18-20 mg/kg VO SID', note: 'Avaliar aceitacao e suporte nutricional.' }],
@@ -143,7 +143,7 @@ export const hepatoprotectiveCommercialProductsSeed: CommercialMedicationProduct
     clinicalUse: 'Suporte nutricional em cães/gatos convalescentes ou hepatopatas quando pasta facilita adesao.',
     reassessment: 'Reavaliar tolerancia, resposta laboratorial e necessidade real do produto.',
     prescriptionExample: 'Hep Vita: administrar ___ g, por via oral, 1 vez ao dia, por ___ dias ou ate reavaliação.',
-    safetyAlert: 'Bula oficial/página oficial especifica não localizada com segurança; revisar embalagem antes de prescrever.',
+    safetyAlert: 'Bula oficial/página oficial específica não localizada com segurança; revisar embalagem antes de prescrever.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: SOURCE_DATE, notes: 'Imagem de varejo Cobasi identifica Hep Vita Konig.' },
     productPageUrl: 'https://www.cobasi.com.br/hep-vita-konig-3770051/p',
     imageUrl: 'https://cobasi.vteximg.com.br/arquivos/ids/1015773-368-368',
@@ -163,7 +163,7 @@ export const hepatoprotectiveCommercialProductsSeed: CommercialMedicationProduct
     dosageGuidance: { labelDose: 'Liquido: 2 mL/10 kg VO SID. Comprimidos: validar ficha técnica/rótulo antes de prescrever.' },
     plumbsContext: 'Sem dose Plumb propria; produto nutraceutico adjuvante.',
     clinicalUse: 'Suporte nutricional em hepatopatias/intoxicacoes como adjuvante.',
-    reassessment: 'Reavaliar enzimas hepaticas, sinais clinicos e causa primária.',
+    reassessment: 'Reavaliar enzimas hepaticas, sinais clínicos e causa primária.',
     prescriptionExample: 'Vitasil Hep: administrar ___ mL ou ___ comprimido(s), por via oral, 1 vez ao dia, por ___ dias ou ate reavaliação.',
     safetyAlert: 'Não misturar liquid/comprimido como se fossem a mesma apresentacao. Confirmar rótulo vigente.',
     price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não consolidado', sourceDate: SOURCE_DATE, notes: 'Imagem Petz identifica Vitasil Hep comprimidos.' },
@@ -203,10 +203,10 @@ export const hepatoprotectiveCommercialProductsSeed: CommercialMedicationProduct
     species: ['dog', 'cat'],
     presentations: ['Solução injetavel 100 mg/mL - ampola 3 mL'],
     activeComponents: ['acetilcisteina 100 mg/mL'],
-    labelCompositionSummary: 'Medicamento humano injetavel com acetilcisteina 100 mg/mL; uso veterinario extra-label/hospitalar.',
-    labelDirections: 'Bula humana não orienta dose veterinária. Em intoxicacao, protocolos veterinarios usam dose de ataque seguida de manutenção.',
+    labelCompositionSummary: 'Medicamento humano injetavel com acetilcisteina 100 mg/mL; uso veterinário extra-label/hospitalar.',
+    labelDirections: 'Bula humana não orienta dose veterinária. Em intoxicacao, protocolos veterinários usam dose de ataque seguida de manutenção.',
     dosageGuidance: {
-      labelDose: 'Hospitalar: 140 mg/kg ataque, depois 70 mg/kg q6h por 7 tratamentos ou conforme protocolo.',
+      labelDose: 'Hospitalar: 140 mg/kg ataque IV/VO, depois 70 mg/kg q6h por 7 tratamentos.',
       plumbs: {
         dog: [{ title: 'Intoxicacao por paracetamol/hepatotoxicos', dose: '140 mg/kg ataque; 70 mg/kg q6h', note: 'Monitorar e ajustar ao toxico/tempo de exposicao.' }],
         cat: [{ title: 'Intoxicacao por paracetamol/hepatotoxicos', dose: '140 mg/kg ataque; 70 mg/kg q6h', note: 'Emergência crítica; combinar suporte.' }],

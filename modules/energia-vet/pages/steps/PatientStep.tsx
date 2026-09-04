@@ -168,7 +168,7 @@ export default function PatientStep() {
               <Label htmlFor="pat-age">Idade (anos)</Label>
               <LocalizedNumberInput
                 id="pat-age"
-                min="0"
+                min={0}
                 value={patient.ageMonths != null ? Math.round((patient.ageMonths / 12) * 10) / 10 : null}
                 onValueChange={(value) => {
                   const years = value ?? 0

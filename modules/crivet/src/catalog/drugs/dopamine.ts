@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const dopamine: Drug = {
   id: 'dopamine',
@@ -120,5 +121,35 @@ export const dopamine: Drug = {
     clinicalObservations: 'A prática de usar "dose renal" (1-3 mcg/kg/min) para prevenir insuficiência renal aguda ou tratar oligúria não é mais recomendada na medicina veterinária moderna, pois carece de evidências de benefício na sobrevida ou função renal a longo prazo, e pode induzir efeitos adversos. O foco deve ser na otimização da hemodinâmica global (débito cardíaco e pressão arterial).'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Veterinary Emergency and Critical Care Manual (Mathews)", "Silverstein & Hopper: Small Animal Critical Care Medicine", "Lumb and Jones' Veterinary Anesthesia and Analgesia"]
+  references: [
+    cite.plumbs(423),
+    cite.lumbJones(),
+    cite.ettinger(),
+  ],
+  doseGuides: [
+    {
+      id: 'dopa-inotropic',
+      regimen: 'CRI',
+      title: 'Inotrópico (beta-1)',
+      indication: 'Hipotensão com baixo débito cardíaco',
+      doseText: '3 – 10 mcg/kg/min',
+      rationale: 'Faixa inotrópica dose-dependente; titular com MAP, ECG e perfusão.',
+    },
+    {
+      id: 'dopa-vasopressor',
+      regimen: 'CRI',
+      title: 'Vasopressor (alfa-1)',
+      indication: 'Hipotensão refratária',
+      doseText: '10 – 20 mcg/kg/min',
+      rationale: 'Acima de 10 mcg/kg/min predomina vasoconstrição; considerar dobutamina se objetivo for inotropismo.',
+    },
+    {
+      id: 'dopa-cat-low',
+      regimen: 'CRI',
+      title: 'Gato — dose inicial baixa',
+      indication: 'Suporte hemodinâmico felino',
+      doseText: '2 – 5 mcg/kg/min (iniciar baixo)',
+      rationale: 'Gatos são mais arritmogênicos; "dose renal" dopaminérgica é ineficaz em felinos.',
+    },
+  ],
 };

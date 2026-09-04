@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const midazolam: Drug = {
   id: 'midazolam',
@@ -115,5 +116,31 @@ export const midazolam: Drug = {
     clinicalObservations: 'O midazolam é superior ao diazepam para uso IM e IN devido à sua hidrossolubilidade. É um excelente co-indutor anestésico, permitindo reduzir significativamente a dose de propofol ou alfaxalona, minimizando a depressão cardiovascular.'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Veterinary Anesthesia and Analgesia (Lumb and Jones)"]
+  references: [cite.plumbs(880), cite.lumbJones(336), cite.ettinger()],
+  doseGuides: [
+    {
+      id: 'mid-sed-std',
+      regimen: 'bolus',
+      title: 'Sedação / co-indução',
+      indication: 'Premedicação ou sedação procedimental',
+      doseText: '0,1 – 0,3 mg/kg IV, IM ou IN',
+      rationale: 'Hidrossolúvel; absorção IM/IN superior ao diazepam; reduz dose de propofol.',
+    },
+    {
+      id: 'mid-seizure',
+      regimen: 'bolus',
+      title: 'Convulsão — acesso alternativo',
+      indication: 'Status epilepticus sem acesso IV',
+      doseText: '0,2 – 0,5 mg/kg IM ou IN',
+      rationale: 'Via IM/IN confiável quando IV não disponível; transicionar para diazepam CRI se necessário.',
+    },
+    {
+      id: 'mid-cri-sed',
+      regimen: 'CRI',
+      title: 'Sedação contínua UTI',
+      indication: 'Paciente ventilado ou crítico',
+      doseText: '0,1 – 0,3 mg/kg/h',
+      rationale: 'Sedação titulável; associar opioide para analgesia adequada.',
+    },
+  ],
 };

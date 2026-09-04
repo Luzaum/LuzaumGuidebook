@@ -1,4 +1,5 @@
 import { Drug } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 export const propofol: Drug = {
   id: 'propofol',
@@ -124,5 +125,31 @@ export const propofol: Drug = {
     clinicalObservations: 'Para minimizar a hipotensão e apneia durante a indução, administre 25% da dose calculada a cada 30 segundos até a perda do reflexo palpebral e tônus mandibular. A co-indução com midazolam ou fentanil reduz significativamente a dose necessária de propofol.'
   },
   
-  references: ["Plumb's Veterinary Drug Handbook", "Veterinary Anesthesia and Analgesia (Lumb and Jones)", "Tratado de Anestesiologia Veterinária", "BSAVA Manual of Canine and Feline Anaesthesia and Analgesia"]
+  references: [cite.plumbs(1080), cite.lumbJones(), cite.ettinger()],
+  doseGuides: [
+    {
+      id: 'prop-tiva-dog',
+      regimen: 'CRI',
+      title: 'TIVA — manutenção anestésica',
+      indication: 'Anestesia geral intravenosa total',
+      doseText: '0,1 – 0,4 mg/kg/min (cão); reduzir com co-indução opioide/alfa-2/cetamina',
+      rationale: 'Plumb\'s e Lumb & Jones: dose titulada em bomba; menor necessidade com analgesia multimodal.',
+    },
+    {
+      id: 'prop-tiva-cat',
+      regimen: 'CRI',
+      title: 'TIVA — gato (curta duração)',
+      indication: 'Manutenção anestésica em felinos',
+      doseText: '0,1 – 0,3 mg/kg/min; evitar CRI > 1–2 h',
+      rationale: 'Gatos metabolizam mais lentamente; risco de toxicidade eritrocitária com infusão prolongada.',
+    },
+    {
+      id: 'prop-induction',
+      regimen: 'bolus',
+      title: 'Indução IV titulada',
+      indication: 'Indução rápida',
+      doseText: 'Cão 2–6 mg/kg | Gato 4–8 mg/kg IV (1/4 da dose a cada 30 s)',
+      rationale: 'Titulação lenta reduz apneia e hipotensão pós-indução.',
+    },
+  ],
 };

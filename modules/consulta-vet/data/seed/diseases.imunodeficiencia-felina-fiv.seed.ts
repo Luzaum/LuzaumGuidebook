@@ -16,7 +16,7 @@ export const imunodeficienciaFelinaFivRecord: DiseaseRecord = {
     'AIDS felina (histórico)',
   ],
   species: ['cat'],
-  category: 'infecciosas',
+  category: 'infectologia',
   tags: [
     'Retrovirose',
     'Lentivirus',

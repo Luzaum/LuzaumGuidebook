@@ -1,5 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { Species, PainType, Scale, InterpretationResult } from './types';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { AnimatePresence, MotionConfig, motion } from 'framer-motion';
+import type { InterpretationResult, Scale, Species } from './types';
+import { DOG_SCALES } from './data/dog-scales';
+import { CAT_SCALES } from './data/cat-scales';
 import HomeScreen from './screens/HomeScreen';
 import ScaleSelectionScreen from './screens/ScaleSelectionScreen';
 import AssessmentScreen from './screens/AssessmentScreen';
@@ -7,317 +11,216 @@ import ResultScreen from './screens/ResultScreen';
 import GuideScreen from './screens/GuideScreen';
 import RescueScreen from './screens/RescueScreen';
 import ReferencesScreen from './screens/ReferencesScreen';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Home, BookOpen, AlertTriangle, Bookmark, ArrowLeft, Menu, X, Activity, ShieldAlert, Award } from 'lucide-react';
+import PainNavigation, { type PainNavigationTarget } from './components/PainNavigation';
 import './theme.css';
 
-type Screen = 'home' | 'scaleSelect' | 'assessment' | 'result' | 'guide' | 'rescue' | 'references';
+type Screen = PainNavigationTarget | 'assessment' | 'result';
+
+const ALL_SCALES = [...DOG_SCALES, ...CAT_SCALES];
+
+function screenFromPath(pathname: string): Screen {
+  if (pathname.startsWith('/dor/avaliacao/')) return 'assessment';
+  if (pathname === '/dor/avaliacao') return 'scaleSelect';
+  if (pathname === '/dor/resultado') return 'result';
+  if (pathname === '/dor/guia') return 'guide';
+  if (pathname === '/dor/resgate') return 'rescue';
+  if (pathname === '/dor/referencias') return 'references';
+  return 'home';
+}
+
+const pathForScreen: Record<PainNavigationTarget | 'result', string> = {
+  home: '/dor',
+  scaleSelect: '/dor/avaliacao',
+  guide: '/dor/guia',
+  rescue: '/dor/resgate',
+  references: '/dor/referencias',
+  result: '/dor/resultado',
+};
+
+function getSpeciesFromSearch(search: string): Species | null {
+  const value = new URLSearchParams(search).get('species');
+  return value === 'dog' || value === 'cat' ? value : null;
+}
 
 export default function App() {
-  const [screen, setScreen] = useState<Screen>('home');
-  const [species, setSpecies] = useState<Species | null>(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const shellRef = useRef<HTMLDivElement | null>(null);
+  const screen = useMemo(() => screenFromPath(location.pathname), [location.pathname]);
+  const searchSpecies = useMemo(() => getSpeciesFromSearch(location.search), [location.search]);
+  const [species, setSpecies] = useState<Species | null>(searchSpecies);
   const [selectedScale, setSelectedScale] = useState<Scale | null>(null);
   const [result, setResult] = useState<InterpretationResult | null>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [answers, setAnswers] = useState<Record<string, number | string>>({});
+  const [themeMode, setThemeMode] = useState<'dark' | 'light'>(() =>
+    typeof window !== 'undefined' && document.documentElement.classList.contains('dark') ? 'dark' : 'light',
+  );
 
-  // Sincronização automatizada com o tema global do Vetius (classe .dark na tag html)
-  const [themeMode, setThemeMode] = useState<'dark' | 'light'>(() => {
-    if (typeof window === 'undefined') return 'dark';
-    return document.documentElement.classList.contains('dark') ? 'dark' : 'light';
-  });
+  const navigateWithSpecies = useCallback((path: string, nextSpecies = species, replace = false) => {
+    const suffix = nextSpecies ? `?species=${nextSpecies}` : '';
+    navigate(`${path}${suffix}`, { replace });
+  }, [navigate, species]);
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-
-    // Verificação inicial do tema
-    const isDark = document.documentElement.classList.contains('dark');
-    setThemeMode(isDark ? 'dark' : 'light');
-
-    // MutationObserver para detectar quando o tutor/veterinário troca o tema no cabeçalho global do Vetius
     const observer = new MutationObserver(() => {
-      const currentIsDark = document.documentElement.classList.contains('dark');
-      setThemeMode(currentIsDark ? 'dark' : 'light');
+      setThemeMode(document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     });
-
-    observer.observe(document.documentElement, {
-      attributes: true,
-      attributeFilter: ['class'],
-    });
-
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
     return () => observer.disconnect();
   }, []);
 
-  // Fechar menu mobile ao trocar de tela
   useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [screen]);
+    if (searchSpecies && searchSpecies !== species) setSpecies(searchSpecies);
+  }, [searchSpecies, species]);
 
-  // Ações de navegação
-  const handleSelectSpecies = useCallback((selectedSp: Species) => {
-    setSpecies(selectedSp);
-    setScreen('scaleSelect');
+  useEffect(() => {
+    if (screen === 'assessment') {
+      const scaleId = decodeURIComponent(location.pathname.slice('/dor/avaliacao/'.length));
+      const routeScale = ALL_SCALES.find((item) => item.id === scaleId);
+      if (!routeScale) {
+        navigateWithSpecies('/dor/avaliacao', species, true);
+        return;
+      }
+      if (selectedScale?.id !== routeScale.id) {
+        setSelectedScale(routeScale);
+        setSpecies(routeScale.species);
+        setAnswers({});
+        setResult(null);
+      }
+    }
+
+    if (screen === 'scaleSelect' && !species && !searchSpecies) {
+      navigate('/dor', { replace: true });
+    }
+
+    if (screen === 'result' && (!result || !selectedScale)) {
+      navigateWithSpecies(selectedScale ? `/dor/avaliacao/${selectedScale.id}` : '/dor/avaliacao', species, true);
+    }
+  }, [location.pathname, navigate, navigateWithSpecies, result, screen, searchSpecies, selectedScale, species]);
+
+  useEffect(() => {
+    shellRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [screen, selectedScale?.id]);
+
+  const resetAssessment = useCallback(() => {
+    setSelectedScale(null);
+    setResult(null);
+    setAnswers({});
   }, []);
+
+  const handleSelectSpecies = useCallback((nextSpecies: Species) => {
+    setSpecies(nextSpecies);
+    resetAssessment();
+    navigateWithSpecies('/dor/avaliacao', nextSpecies);
+  }, [navigateWithSpecies, resetAssessment]);
 
   const handleSelectScale = useCallback((scale: Scale) => {
+    setSpecies(scale.species);
     setSelectedScale(scale);
-    setScreen('assessment');
-  }, []);
+    setResult(null);
+    setAnswers({});
+    navigateWithSpecies(`/dor/avaliacao/${scale.id}`, scale.species);
+  }, [navigateWithSpecies]);
 
-  const handleAssessmentSubmit = useCallback((answers: Record<string, number | string>) => {
+  const handleSubmit = useCallback((submittedAnswers: Record<string, number | string>) => {
     if (!selectedScale) return;
-    const calcResult = selectedScale.interpretation(answers);
-    setResult(calcResult);
-    setScreen('result');
-  }, [selectedScale]);
+    setAnswers(submittedAnswers);
+    setResult(selectedScale.interpretation(submittedAnswers));
+    navigateWithSpecies(pathForScreen.result, selectedScale.species);
+  }, [navigateWithSpecies, selectedScale]);
 
-  const handleRestart = useCallback(() => {
-    setScreen('assessment');
-    setResult(null);
-  }, []);
+  const handleNavigate = useCallback((target: PainNavigationTarget) => {
+    if (target === 'home') {
+      resetAssessment();
+      navigate(pathForScreen.home);
+      return;
+    }
+    if (target === 'scaleSelect') {
+      if (!species) {
+        navigate('/dor');
+        return;
+      }
+      setSelectedScale(null);
+      setResult(null);
+      setAnswers({});
+      navigateWithSpecies(pathForScreen.scaleSelect);
+      return;
+    }
+    navigateWithSpecies(pathForScreen[target]);
+  }, [navigate, navigateWithSpecies, resetAssessment, species]);
 
-  const handleNewAssessment = useCallback(() => {
-    setScreen('scaleSelect');
-    setResult(null);
-    setSelectedScale(null);
-  }, []);
+  const handleBack = useCallback(() => {
+    if (screen === 'assessment') {
+      setSelectedScale(null);
+      setAnswers({});
+      navigateWithSpecies(pathForScreen.scaleSelect);
+      return;
+    }
+    if (screen === 'result' && selectedScale) {
+      setResult(null);
+      navigateWithSpecies(`/dor/avaliacao/${selectedScale.id}`);
+      return;
+    }
+    navigate(pathForScreen.home);
+  }, [navigate, navigateWithSpecies, screen, selectedScale]);
 
-  const handleShowGuide = useCallback(() => {
-    setScreen('guide');
-  }, []);
-
-  const handleBackToHome = useCallback(() => {
-    setScreen('home');
-    setSpecies(null);
-    setSelectedScale(null);
-    setResult(null);
-  }, []);
-
-  // Renderizador do Conteúdo Interno do Menu Lateral
-  const renderSidebarContent = () => (
-    <>
-      {/* Brand Header */}
-      <div className="dorvet-sidebar-header">
-        <div className="dorvet-sidebar-logo">
-          <Activity className="h-5 w-5 animate-pulse" />
-        </div>
-        <div>
-          <h2 className="dorvet-sidebar-title text-slate-800 dark:text-teal-50">
-            Analgesia VET
-          </h2>
-          <span className="dorvet-sidebar-subtitle">
-            Escalas e Manejo de Dor
-          </span>
-        </div>
-      </div>
-
-      {/* Navigation list items */}
-      <nav className="dorvet-sidebar-nav mt-4 flex-1">
-        <button
-          onClick={() => setScreen('home')}
-          className={`dorvet-nav-item ${screen === 'home' ? 'dorvet-nav-item-active' : ''}`}
-        >
-          <Home className="h-4 w-4 shrink-0" />
-          <span>Início</span>
-        </button>
-
-        <button
-          onClick={() => {
-            if (species) {
-              setScreen('scaleSelect');
-            } else {
-              setScreen('home');
-            }
-          }}
-          className={`dorvet-nav-item ${
-            screen === 'scaleSelect' || screen === 'assessment' || screen === 'result'
-              ? 'dorvet-nav-item-active'
-              : ''
-          }`}
-        >
-          <Award className="h-4 w-4 shrink-0" />
-          <span>Avaliação de Dor</span>
-        </button>
-
-        <button
-          onClick={() => setScreen('guide')}
-          className={`dorvet-nav-item ${screen === 'guide' ? 'dorvet-nav-item-active' : ''}`}
-        >
-          <BookOpen className="h-4 w-4 shrink-0" />
-          <span>Guia de Manejo</span>
-        </button>
-
-        <button
-          onClick={() => setScreen('rescue')}
-          className={`dorvet-nav-item ${screen === 'rescue' ? 'dorvet-nav-item-active' : ''}`}
-        >
-          <AlertTriangle className="h-4 w-4 shrink-0" />
-          <span>Resgate Analgésico</span>
-        </button>
-
-        <button
-          onClick={() => setScreen('references')}
-          className={`dorvet-nav-item ${screen === 'references' ? 'dorvet-nav-item-active' : ''}`}
-        >
-          <Bookmark className="h-4 w-4 shrink-0" />
-          <span>Referências</span>
-        </button>
-      </nav>
-
-      {/* Footer credits inside sidebar */}
-      <div className="pt-4 border-t border-slate-100 dark:border-slate-850 text-center">
-        <span className="text-[9px] font-black tracking-widest text-slate-400 dark:text-slate-600 block uppercase">
-          Baseado em animalpain.org
-        </span>
-      </div>
-    </>
-  );
+  const contextLabel = screen === 'assessment' || screen === 'result'
+    ? selectedScale?.name
+    : screen === 'scaleSelect'
+      ? species === 'dog' ? 'Escalas caninas' : 'Escalas felinas'
+      : screen === 'guide'
+        ? 'Guia de manejo'
+        : screen === 'rescue'
+          ? 'Resgate analgésico'
+          : screen === 'references'
+            ? 'Referências científicas'
+            : undefined;
 
   return (
-    <div className={`dorvet-shell ${themeMode === 'dark' ? 'dorvet-dark dark' : 'dorvet-light'}`}>
-      {/* Aurora Ambient Background Pattern */}
-      <div className="dorvet-aurora" />
+    <MotionConfig reducedMotion="user">
+      <div ref={shellRef} className={`dorvet-shell dorvet-shell-immersive ${themeMode === 'dark' ? 'dorvet-dark dark' : 'dorvet-light'}`}>
+        <div className="dorvet-aurora" />
+        <PainNavigation
+          active={screen}
+          species={species}
+          contextLabel={contextLabel}
+          canGoBack={screen !== 'home'}
+          onBack={handleBack}
+          onNavigate={handleNavigate}
+          onHub={() => navigate('/hub')}
+        />
 
-      {/* DESKTOP SIDEBAR: Hidden on mobile, Flex on desktop */}
-      <aside className="dorvet-sidebar hidden lg:flex">
-        {renderSidebarContent()}
-      </aside>
-
-      {/* MOBILE DRAWER: slide-in panel */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <div className="fixed inset-0 z-50 flex lg:hidden">
-            <motion.button
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="dorvet-drawer-overlay border-0 outline-none w-full h-full text-left"
-              onClick={() => setMobileMenuOpen(false)}
-            />
-            <motion.div
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 220 }}
-              className="dorvet-drawer-panel relative"
-            >
-              {/* Close Button on Mobile Drawer */}
-              <button
-                onClick={() => setMobileMenuOpen(false)}
-                className="absolute right-3.5 top-3.5 rounded-full border border-slate-200 dark:border-slate-800 p-1.5 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 transition-colors"
-                aria-label="Fechar menu"
+        <div className="dorvet-content-wrap">
+          <main className="relative mx-auto max-w-6xl py-5 sm:py-7 lg:py-8">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                key={`${screen}-${selectedScale?.id ?? ''}`}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -6 }}
+                transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
               >
-                <X className="h-4 w-4" />
-              </button>
-
-              {renderSidebarContent()}
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
-
-      {/* STICKY HEADER FOR MOBILE & BACK NAVIGATION */}
-      <header className="sticky top-0 z-40 w-full border-b border-slate-200/60 bg-white/75 dark:border-slate-800/60 dark:bg-slate-950/75 backdrop-blur-md px-4 sm:px-6">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between">
-          <div className="flex items-center gap-3">
-            {/* Mobile Menu trigger */}
-            <button
-              onClick={() => setMobileMenuOpen(true)}
-              className="lg:hidden rounded-lg p-1.5 text-slate-550 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800/80 transition-colors"
-              aria-label="Abrir menu"
-            >
-              <Menu className="h-5.5 w-5.5" />
-            </button>
-
-            {screen !== 'home' && (
-              <button
-                onClick={handleBackToHome}
-                className="rounded-lg p-1.5 text-slate-550 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800/80 transition-colors"
-                aria-label="Voltar para o início"
-              >
-                <ArrowLeft className="h-5 w-5" />
-              </button>
-            )}
-            <span className="text-sm font-black uppercase tracking-widest text-teal-650 dark:text-teal-400">
-              VETIUS ANAGESIA
-            </span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            {/* Quick Home action */}
-            <button
-              onClick={() => setScreen('home')}
-              className={`rounded-lg p-2 text-slate-555 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800/80 transition-colors ${
-                screen === 'home' ? 'bg-slate-100 dark:bg-slate-800 text-teal-500' : ''
-              }`}
-              title="Tela Inicial"
-            >
-              <Home className="h-4.5 w-4.5" />
-            </button>
-          </div>
+                {screen === 'home' && <HomeScreen selectedSpecies={species} onSelectSpecies={handleSelectSpecies} onNavigate={(target) => handleNavigate(target as PainNavigationTarget)} />}
+                {screen === 'scaleSelect' && species && <ScaleSelectionScreen species={species} onSelectScale={handleSelectScale} onBack={handleBack} />}
+                {screen === 'assessment' && selectedScale && <AssessmentScreen key={selectedScale.id} scale={selectedScale} answers={answers} onAnswersChange={setAnswers} onSubmit={handleSubmit} onBack={handleBack} />}
+                {screen === 'result' && result && selectedScale && (
+                  <ResultScreen
+                    result={result}
+                    scaleName={selectedScale.name}
+                    species={species}
+                    onRestart={() => { setAnswers({}); setResult(null); navigateWithSpecies(`/dor/avaliacao/${selectedScale.id}`); }}
+                    onNewAssessment={() => handleNavigate('scaleSelect')}
+                    onShowGuide={() => handleNavigate('guide')}
+                  />
+                )}
+                {screen === 'guide' && <GuideScreen onBack={handleBack} />}
+                {screen === 'rescue' && <RescueScreen onBack={handleBack} />}
+                {screen === 'references' && <ReferencesScreen onBack={handleBack} />}
+              </motion.div>
+            </AnimatePresence>
+          </main>
         </div>
-      </header>
-
-      {/* MAIN CONTENT BODY WRAPPER: .dorvet-content-wrap handles responsive sidebar padding */}
-      <div className="dorvet-content-wrap">
-        <main className="mx-auto max-w-6xl py-8 relative">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={screen}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.22, ease: 'easeInOut' }}
-            >
-              {screen === 'home' && (
-                <HomeScreen
-                  selectedSpecies={species}
-                  onSelectSpecies={handleSelectSpecies}
-                  onNavigate={(scr) => setScreen(scr as Screen)}
-                />
-              )}
-
-              {screen === 'scaleSelect' && species && (
-                <ScaleSelectionScreen
-                  species={species}
-                  onSelectScale={handleSelectScale}
-                  onBack={handleBackToHome}
-                />
-              )}
-
-              {screen === 'assessment' && selectedScale && (
-                <AssessmentScreen
-                  scale={selectedScale}
-                  onSubmit={handleAssessmentSubmit}
-                  onBack={() => setScreen('scaleSelect')}
-                />
-              )}
-
-              {screen === 'result' && result && (
-                <ResultScreen
-                  result={result}
-                  scaleName={selectedScale?.name || ''}
-                  species={species}
-                  onRestart={handleRestart}
-                  onNewAssessment={handleNewAssessment}
-                  onShowGuide={handleShowGuide}
-                />
-              )}
-
-              {screen === 'guide' && (
-                <GuideScreen onBack={handleBackToHome} />
-              )}
-
-              {screen === 'rescue' && (
-                <RescueScreen onBack={handleBackToHome} />
-              )}
-
-              {screen === 'references' && (
-                <ReferencesScreen onBack={handleBackToHome} />
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </main>
       </div>
-    </div>
+    </MotionConfig>
   );
 }

@@ -167,7 +167,7 @@ Preferir manipulação na concentração exata quando não houver apresentação
 
 Administrar A PREENCHER por via oral, a cada 12 horas, durante 5 a 7 dias.
 
-O anti-inflamatório somente deve ser administrado após confirmação de que o paciente está hidratado, com pressão arterial adequada e sem evidências de lesão renal, hemorragia ou ulceração gastrointestinal.`, {
+O anti-inflamatório somente deve ser administrado após confirmação de que o paciente está hidratado, com pressão arterial adequada e sem evidências de lesão renal, hemorragia ou úlceração gastrointestinal.`, {
         presentations: CARPROFEN_ORAL_PRODUCTS,
         presentationFilter: 'oral',
       })],
@@ -181,7 +181,7 @@ O anti-inflamatório somente deve ser administrado após confirmação de que o 
 
 Administrar A PREENCHER por via oral, a cada 24 horas, durante 5 a 7 dias.
 
-O anti-inflamatório somente deve ser administrado após confirmação de que o paciente está hidratado, com pressão arterial adequada e sem evidências de lesão renal, hemorragia ou ulceração gastrointestinal.`, {
+O anti-inflamatório somente deve ser administrado após confirmação de que o paciente está hidratado, com pressão arterial adequada e sem evidências de lesão renal, hemorragia ou úlceração gastrointestinal.`, {
         presentations: MELOXICAM_ORAL_PRODUCTS,
         presentationFilter: 'oral',
       })],

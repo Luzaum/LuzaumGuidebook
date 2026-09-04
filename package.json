@@ -25,7 +25,9 @@
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "seed:admin-users": "tsx scripts/seed-admin-users.ts",
     "import:energia-vet-data": "python scripts/import_genutri_dataset.py",
-    "extract:neuro-pdf": "node scripts/extract-neuro-pdf-outline.mjs"
+    "extract:neuro-pdf": "node scripts/extract-neuro-pdf-outline.mjs",
+    "extract:neuro-books": "node scripts/extract-neuro-books.mjs",
+    "test:neurologia": "tsx --test modules/neurologia/lib/**/__tests__/*.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.3.0",

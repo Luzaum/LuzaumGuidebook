@@ -8,12 +8,22 @@ import { Step4Review } from './components/Steps/Step4Review'
 import { Step5Analysis } from './components/Steps/Step5Analysis'
 import { Modal } from './components/UI/Modal'
 import { Button } from './components/UI/Button'
+import { ExamIncompleteModal } from './components/ExamIncompleteModal'
 import { useCaseStore } from './stores/caseStore'
 import { NeuroMobileWizardNav } from './components/NeuroMobileWizardNav'
 import { NEURO_WIZARD_STEPS } from './neuroWizardSteps'
+import { validateWizardStep } from './lib/analysis/validate'
+import {
+  applyNormalExamDefaults,
+  getUnfilledExamFieldDetails,
+  type UnfilledExamFieldDetail,
+} from './lib/exam/examDefaults'
 
 export function NeuroFullExamFlow() {
   const [showResetModal, setShowResetModal] = useState(false)
+  const [showExamIncompleteModal, setShowExamIncompleteModal] = useState(false)
+  const [pendingMissingFields, setPendingMissingFields] = useState<UnfilledExamFieldDetail[]>([])
+  const [stepError, setStepError] = useState<string | null>(null)
   const currentStep = useCaseStore((s) => s.currentStep)
   const patient = useCaseStore((s) => s.patient)
   const complaint = useCaseStore((s) => s.complaint)
@@ -29,17 +39,48 @@ export function NeuroFullExamFlow() {
     setShowResetModal(false)
   }
 
-  const nextStep = () => {
+  const advanceStep = () => {
+    setStepError(null)
     setCurrentStep(Math.min(currentStep + 1, 5))
     window.scrollTo(0, 0)
   }
 
+  const nextStep = () => {
+    const validation = validateWizardStep(currentStep, { patient, complaint, neuroExam })
+    if (!validation.ok) {
+      setStepError(`Complete esta etapa antes de continuar: ${validation.missing.join('; ')}.`)
+      return
+    }
+
+    if (currentStep === 3) {
+      const missing = getUnfilledExamFieldDetails(neuroExam as Record<string, unknown>)
+      if (missing.length > 0) {
+        setPendingMissingFields(missing)
+        setShowExamIncompleteModal(true)
+        return
+      }
+    }
+
+    advanceStep()
+  }
+
+  const confirmExamWithDefaults = () => {
+    setNeuroExam(applyNormalExamDefaults(neuroExam as Record<string, unknown>))
+    setShowExamIncompleteModal(false)
+    setPendingMissingFields([])
+    advanceStep()
+  }
+
   const prevStep = () => {
+    setStepError(null)
     setCurrentStep(Math.max(currentStep - 1, 1))
     window.scrollTo(0, 0)
   }
 
-  const isNextDisabled = () => false
+  const isNextDisabled = () => {
+    if (currentStep >= 5) return true
+    return !validateWizardStep(currentStep, { patient, complaint, neuroExam }).ok
+  }
 
   return (
     <>
@@ -64,6 +105,13 @@ export function NeuroFullExamFlow() {
         </div>
       </Modal>
 
+      <ExamIncompleteModal
+        isOpen={showExamIncompleteModal}
+        fields={pendingMissingFields}
+        onClose={() => setShowExamIncompleteModal(false)}
+        onConfirm={confirmExamWithDefaults}
+      />
+
       <div className="relative w-full">
         <div className="mb-3 flex items-center justify-end gap-2">
           <Button variant="secondary" type="button" onClick={() => setShowResetModal(true)}>
@@ -72,6 +120,11 @@ export function NeuroFullExamFlow() {
         </div>
 
         <main className="relative z-10 w-full px-0 pb-32 pt-0 lg:pb-32 pointer-events-auto">
+          {stepError && (
+            <div className="mb-3 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-sm text-foreground">
+              {stepError}
+            </div>
+          )}
           <NeuroMobileWizardNav
             steps={NEURO_WIZARD_STEPS}
             currentStep={currentStep}
@@ -108,7 +161,7 @@ export function NeuroFullExamFlow() {
             onBack={prevStep}
             onNext={nextStep}
             isNextDisabled={isNextDisabled()}
-            nextLabel={currentStep === 4 ? 'Ir para Análise IA' : 'Continuar'}
+            nextLabel={currentStep === 4 ? 'Ir para análise clínica' : 'Continuar'}
           />
         )}
       </div>

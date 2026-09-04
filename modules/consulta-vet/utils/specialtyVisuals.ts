@@ -142,7 +142,7 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     textActive: 'text-red-600 dark:text-red-400',
     bgActive: 'bg-red-500/[0.06]',
   },
-  'clinica-medica': {
+  'clínica-medica': {
     label: 'Clínica médica',
     icon: '🩺',
     borderActive: 'border-slate-500',

@@ -8,6 +8,7 @@ import { testValidateMinimumData } from '../analysis/__tests__/validate.test'
 import { testDetermineNeuroLocalization } from '../analysis/__tests__/localization.test'
 import { testGenerateDifferentials } from '../analysis/__tests__/differentials.test'
 import { testFindForbiddenEnglish, testReplaceForbiddenEnglish } from '../quality/__tests__/noEnglish.test'
+import { testExamDefaults } from '../exam/__tests__/examDefaults.test'
 
 /**
  * Executa todos os testes (smoke tests básicos)
@@ -22,6 +23,7 @@ export function runAllTests() {
     testGenerateDifferentials()
     testFindForbiddenEnglish()
     testReplaceForbiddenEnglish()
+    testExamDefaults()
 
     console.log('\n✅ Todos os testes passaram!')
     return true

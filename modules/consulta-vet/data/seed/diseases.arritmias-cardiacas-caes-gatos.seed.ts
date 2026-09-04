@@ -343,7 +343,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
         purpose: 'Buscar anemia, inflamação e disfunção orgânica.',
         description: 'Anemia e doença sistêmica aumentam demanda simpática; azotemia orienta doses de digoxina e escolha de fármacos. (4)(9)',
         interpretation: 'Doença sistêmica pode ser causa primária de taquicardia sinusal ou ectopia.',
-        limitations: 'Não diagnostica mecanismo elétrico isoladamente.',
+        limitations: 'Não diagnóstica mecanismo elétrico isoladamente.',
       },
       {
         stepNumber: 6,
@@ -474,7 +474,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
         ['2', 'ECG multiderivações', 'Identifica mecanismo/morfologia', 'Minutos de ECG não excluem eventos intermitentes'],
         ['3', 'Pressão + pulso simultâneo', 'Relaciona evento elétrico à ejeção', 'Déficit de pulso pode variar'],
         ['4', 'Eletrólitos/glicemia', 'Detecta causas reversíveis', 'Mg sérico normal não exclui déficit corporal'],
-        ['5', 'Hemograma/bioquímica', 'Anemia, inflamação, disfunção orgânica', 'Não diagnostica mecanismo elétrico'],
+        ['5', 'Hemograma/bioquímica', 'Anemia, inflamação, disfunção orgânica', 'Não diagnóstica mecanismo elétrico'],
         ['6', 'Ecocardiograma', 'Identifica substrato estrutural', 'Eco normal não exclui canalopatia'],
         ['7', 'Holter 24–48 h', 'Quantifica carga e correlaciona sintomas', 'Variação diária exige interpretação'],
         ['8', 'Event monitor/loop recorder', 'Eventos muito raros', 'Maior custo/invasividade'],
@@ -489,7 +489,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       'Padronizar ECG conforme BSAVA Guide to Procedures: paciente calmo, ambiente silencioso, minimizar contenção, posição lateral direita quando tolerada, eletrodos corretos, documentar velocidade (25 mm/s; 50 mm/s para medidas finas) e ganho (10 mm/mV). Registrar espécie, peso, data, medicamentos, posição, velocidade e ganho. (3)',
     figuraHolterGatosSaudaveis: {
       kind: 'clinicalFigure' as const,
-      src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudaveis-cofaru-2026.png',
+      src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudáveis-cofaru-2026.png',
       alt: 'Exemplos de ectopia ventricular em gatos clinicamente saudáveis durante Holter de 24 horas — couplets, bigeminismo e taquicardia ventricular breve.',
       caption:
         'Ectopia ventricular registrada em gatos saudáveis durante Holter de 24 h — VPC isolado ou complexo não equivale automaticamente a cardiomiopatia; interpretar no contexto clínico e ecocardiográfico. Cofaru et al., 2026. (14)',

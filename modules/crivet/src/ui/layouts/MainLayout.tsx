@@ -1,22 +1,43 @@
-import React, { useState } from 'react';
-import { Calculator, Database, FileText, Star, History, Settings, Info, Menu, X, type LucideIcon } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import {
+  Calculator,
+  Database,
+  FileText,
+  Star,
+  History,
+  Settings,
+  Info,
+  MoreHorizontal,
+  X,
+  type LucideIcon,
+} from 'lucide-react';
 import { cn } from '../lib/utils';
+import { CrivetLogo } from '../components/CrivetLogo';
 
 interface NavItem {
   id: string;
   label: string;
+  shortLabel: string;
   icon: LucideIcon;
+  mobilePrimary?: boolean;
 }
 
 const navItems: NavItem[] = [
-  { id: 'calculator', label: 'Calculadora CRI', icon: Calculator },
-  { id: 'database', label: 'Banco de Fármacos', icon: Database },
-  { id: 'protocols', label: 'Protocolos', icon: FileText },
-  { id: 'favorites', label: 'Favoritos', icon: Star },
-  { id: 'history', label: 'Histórico', icon: History },
-  { id: 'settings', label: 'Configurações', icon: Settings },
-  { id: 'about', label: 'Sobre / Referências', icon: Info },
+  { id: 'calculator', label: 'Calculadora', shortLabel: 'Calc', icon: Calculator, mobilePrimary: true },
+  { id: 'database', label: 'Fármacos', shortLabel: 'Fármacos', icon: Database, mobilePrimary: true },
+  { id: 'protocols', label: 'Protocolos', shortLabel: 'Protocolos', icon: FileText, mobilePrimary: true },
+  { id: 'favorites', label: 'Favoritos', shortLabel: 'Favoritos', icon: Star, mobilePrimary: true },
+  { id: 'history', label: 'Histórico', shortLabel: 'Histórico', icon: History },
+  { id: 'settings', label: 'Configurações', shortLabel: 'Config', icon: Settings },
+  { id: 'about', label: 'Sobre', shortLabel: 'Sobre', icon: Info },
 ];
+
+const mobilePrimaryItems = navItems.filter((item) => item.mobilePrimary);
+const mobileMoreItems = navItems.filter((item) => !item.mobilePrimary);
+
+const pageTitles: Record<string, string> = Object.fromEntries(
+  navItems.map((item) => [item.id, item.label]),
+);
 
 interface MainLayoutProps {
   children: React.ReactNode;
@@ -25,29 +46,36 @@ interface MainLayoutProps {
 }
 
 export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, onNavigate }) => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
+
+  const navigate = (pageId: string) => {
+    onNavigate(pageId);
+    setShowMoreMenu(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  useEffect(() => {
+    setShowMoreMenu(false);
+  }, [activePage]);
+
+  const isMoreActive = mobileMoreItems.some((item) => item.id === activePage);
 
   return (
-    <div className="flex min-h-dvh font-sans text-slate-900 transition-colors duration-200 dark:bg-slate-950 dark:text-slate-100">
-      <aside className="fixed hidden h-dvh w-60 flex-col border-r border-transparent bg-slate-900 text-slate-300 dark:border-slate-800 md:flex">
-        <div className="border-b border-slate-800 px-4 py-4">
-          <div className="flex flex-col items-center text-center">
-            <button 
-              onClick={() => onNavigate('calculator')}
-              className="group relative flex items-center justify-center transition-transform duration-300 hover:scale-[1.05]"
-              aria-label="Ir para calculadora CRI"
-            >
-              <img
-                src="/apps/CRIVET.png"
-                alt="Logo do CRI VET"
-                className="h-20 w-20 rounded-full object-contain drop-shadow-[0_0_28px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:drop-shadow-[0_0_44px_rgba(56,189,248,0.85)]"
-              />
-            </button>
-            <h1 className="mt-3 text-lg font-bold tracking-tight text-white">CRI VET</h1>
-          </div>
+    <div className="flex min-h-dvh font-sans text-slate-900 dark:bg-slate-950 dark:text-slate-100">
+      {/* Desktop sidebar */}
+      <aside className="fixed hidden h-dvh w-[220px] flex-col border-r border-slate-800 bg-slate-900 md:flex">
+        <div className="border-b border-slate-800 px-4 py-5">
+          <button
+            type="button"
+            onClick={() => navigate('calculator')}
+            className="w-full transition-opacity hover:opacity-90"
+            aria-label="Ir para calculadora"
+          >
+            <CrivetLogo size="md" />
+          </button>
         </div>
 
-        <nav className="flex-1 space-y-1 overflow-y-auto px-3 py-4">
+        <nav className="flex-1 space-y-0.5 overflow-y-auto px-2 py-3">
           {navItems.map((item) => {
             const Icon = item.icon;
             const isActive = activePage === item.id;
@@ -56,56 +84,53 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
               <button
                 key={item.id}
                 type="button"
-                onClick={() => onNavigate(item.id)}
+                onClick={() => navigate(item.id)}
                 className={cn(
-                  'flex w-full items-center gap-3 rounded-xl px-4 py-3 text-[13px] font-medium transition-all',
-                  isActive ? 'bg-emerald-500/10 text-emerald-400' : 'hover:bg-slate-800 hover:text-white',
+                  'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-emerald-500/15 text-emerald-400'
+                    : 'text-slate-400 hover:bg-slate-800 hover:text-white',
                 )}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-4 w-4 shrink-0" />
                 {item.label}
               </button>
             );
           })}
         </nav>
 
-        <div className="border-t border-slate-800 p-4">
-          <div className="text-center text-xs text-slate-500">Uso veterinário &copy; {new Date().getFullYear()}</div>
+        <div className="border-t border-slate-800 px-4 py-3">
+          <p className="text-center text-[11px] text-slate-500">Uso veterinário</p>
         </div>
       </aside>
 
-      <div className="fixed left-0 right-0 top-0 z-50 grid h-14 grid-cols-[52px_1fr_52px] items-center bg-slate-900 px-2 text-white shadow-md md:hidden">
+      {/* Mobile top bar */}
+      <header className="fixed left-0 right-0 top-0 z-40 flex h-12 items-center border-b border-slate-800 bg-slate-900 px-4 md:hidden">
         <button
           type="button"
-          onClick={() => setIsMobileMenuOpen((value) => !value)}
-          className="flex h-11 w-11 items-center justify-center rounded-xl text-slate-200 transition-colors hover:bg-slate-800"
-          aria-label={isMobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+          onClick={() => navigate('calculator')}
+          className="min-w-0 flex-1"
+          aria-label="Ir para calculadora"
         >
-          {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          <CrivetLogo size="sm" showLabel={false} />
         </button>
+        <p className="truncate text-sm font-semibold text-white">
+          {pageTitles[activePage] ?? 'CRI VET'}
+        </p>
+        <div className="min-w-0 flex-1" />
+      </header>
 
-        <div className="flex items-center justify-center gap-2">
-          <button 
-            onClick={() => {
-              onNavigate('calculator');
-              setIsMobileMenuOpen(false);
-            }} 
-            className="group transition-transform duration-300 hover:scale-105"
-          >
-            <img
-              src="/apps/CRIVET.png"
-              alt="Logo do CRI VET"
-              className="h-9 w-9 rounded-full object-contain drop-shadow-[0_0_18px_rgba(56,189,248,0.45)] transition-all duration-300 group-hover:drop-shadow-[0_0_28px_rgba(56,189,248,0.9)]"
-            />
-          </button>
-          <span className="text-sm font-bold tracking-tight text-white">CRI VET</span>
-        </div>
+      {/* Main content */}
+      <main className="flex min-h-dvh min-w-0 flex-1 flex-col bg-slate-50 pt-12 pb-[4.5rem] dark:bg-slate-950 md:ml-[220px] md:pt-0 md:pb-0">
+        <div className="min-w-0 flex-1 w-full px-3 py-4 sm:px-5 md:p-6 lg:p-7">{children}</div>
+      </main>
 
-        <div />
-      </div>
-
-      <nav className="fixed left-0 right-0 top-14 z-40 flex gap-2 overflow-x-auto border-b border-slate-200 bg-white/95 px-3 py-2 shadow-sm backdrop-blur scrollbar-hide dark:border-slate-800 dark:bg-slate-950/95 md:hidden">
-        {navItems.map((item) => {
+      {/* Mobile bottom nav */}
+      <nav
+        className="fixed bottom-0 left-0 right-0 z-50 grid grid-cols-5 border-t border-slate-200 bg-white/95 backdrop-blur dark:border-slate-800 dark:bg-slate-950/95 md:hidden"
+        aria-label="Navegação principal"
+      >
+        {mobilePrimaryItems.map((item) => {
           const Icon = item.icon;
           const isActive = activePage === item.id;
 
@@ -113,55 +138,84 @@ export const MainLayout: React.FC<MainLayoutProps> = ({ children, activePage, on
             <button
               key={item.id}
               type="button"
-              onClick={() => onNavigate(item.id)}
+              onClick={() => navigate(item.id)}
               className={cn(
-                'flex min-h-10 shrink-0 items-center gap-2 rounded-xl border px-3 text-xs font-bold transition-all',
+                'flex min-h-[3.25rem] flex-col items-center justify-center gap-0.5 px-1 py-2 text-[10px] font-semibold transition-colors',
                 isActive
-                  ? 'border-emerald-200 bg-emerald-50 text-emerald-700 dark:border-emerald-500/30 dark:bg-emerald-500/15 dark:text-emerald-300'
-                  : 'border-slate-200 bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300',
+                  ? 'text-emerald-600 dark:text-emerald-400'
+                  : 'text-slate-500 dark:text-slate-400',
               )}
             >
-              <Icon className="h-4 w-4" />
-              <span className="whitespace-nowrap">{item.label}</span>
+              <Icon className={cn('h-5 w-5', isActive && 'stroke-[2.5]')} />
+              <span className="truncate">{item.shortLabel}</span>
             </button>
           );
         })}
+
+        <button
+          type="button"
+          onClick={() => setShowMoreMenu((value) => !value)}
+          className={cn(
+            'flex min-h-[3.25rem] flex-col items-center justify-center gap-0.5 px-1 py-2 text-[10px] font-semibold transition-colors',
+            isMoreActive || showMoreMenu
+              ? 'text-emerald-600 dark:text-emerald-400'
+              : 'text-slate-500 dark:text-slate-400',
+          )}
+          aria-expanded={showMoreMenu}
+          aria-label="Mais opções"
+        >
+          <MoreHorizontal className="h-5 w-5" />
+          <span>Mais</span>
+        </button>
       </nav>
 
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-40 flex flex-col bg-slate-900/95 pt-16 md:hidden">
-          <nav className="flex-1 space-y-2 overflow-y-auto p-4">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activePage === item.id;
+      {/* Mobile more menu sheet */}
+      {showMoreMenu && (
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 z-[60] bg-black/40 md:hidden"
+            aria-label="Fechar menu"
+            onClick={() => setShowMoreMenu(false)}
+          />
+          <div className="fixed bottom-[3.25rem] left-0 right-0 z-[70] rounded-t-2xl border border-slate-200 bg-white p-3 shadow-xl dark:border-slate-700 dark:bg-slate-900 md:hidden">
+            <div className="mb-2 flex items-center justify-between px-1">
+              <p className="text-sm font-semibold text-slate-900 dark:text-white">Mais opções</p>
+              <button
+                type="button"
+                onClick={() => setShowMoreMenu(false)}
+                className="flex h-8 w-8 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"
+                aria-label="Fechar"
+              >
+                <X className="h-4 w-4" />
+              </button>
+            </div>
+            <div className="space-y-1">
+              {mobileMoreItems.map((item) => {
+                const Icon = item.icon;
+                const isActive = activePage === item.id;
 
-              return (
-                <button
-                  key={item.id}
-                  type="button"
-                  onClick={() => {
-                    onNavigate(item.id);
-                    setIsMobileMenuOpen(false);
-                  }}
-                  className={cn(
-                    'flex min-h-12 w-full items-center gap-4 rounded-xl px-4 py-3 text-base font-medium transition-all',
-                    isActive
-                      ? 'bg-emerald-500/20 text-emerald-400'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-white',
-                  )}
-                >
-                  <Icon className="h-6 w-6" />
-                  {item.label}
-                </button>
-              );
-            })}
-          </nav>
-        </div>
+                return (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => navigate(item.id)}
+                    className={cn(
+                      'flex w-full items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium transition-colors',
+                      isActive
+                        ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400'
+                        : 'text-slate-700 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-800',
+                    )}
+                  >
+                    <Icon className="h-5 w-5" />
+                    {item.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </>
       )}
-
-      <main className="flex min-h-dvh min-w-0 flex-1 flex-col bg-slate-50 pt-[7.25rem] dark:bg-slate-950 md:ml-60 md:pt-0">
-        <div className="min-w-0 flex-1 w-full px-3 py-3 pb-8 sm:px-4 md:p-6 xl:p-7">{children}</div>
-      </main>
     </div>
   );
 };

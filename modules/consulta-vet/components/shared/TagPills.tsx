@@ -6,9 +6,11 @@ interface TagPillsProps {
   className?: string;
   /** Quantidade máxima antes de agregar; `all` exibe todas (recomendado na ficha de doença). */
   maxVisible?: number | 'all';
+  /** Força exibição estrita em uma única linha (sem quebra de linha / wrap) */
+  singleLine?: boolean;
 }
 
-export function TagPills({ tags, className, maxVisible = 2 }: TagPillsProps) {
+export function TagPills({ tags, className, maxVisible = 2, singleLine = false }: TagPillsProps) {
   if (!tags?.length) return null;
 
   const limit = maxVisible === 'all' ? tags.length : maxVisible;
@@ -16,17 +18,26 @@ export function TagPills({ tags, className, maxVisible = 2 }: TagPillsProps) {
   const hiddenCount = tags.length - visibleTags.length;
 
   return (
-    <div className={cn('flex flex-wrap gap-1.5', className)}>
+    <div
+      className={cn(
+        'flex items-center gap-1.5',
+        singleLine ? 'h-[23px] flex-wrap overflow-hidden w-full' : 'flex-wrap',
+        className
+      )}
+    >
       {visibleTags.map((tag) => (
         <span
           key={tag}
-          className="max-w-[min(100%,220px)] rounded-md border border-border bg-muted px-2 py-0.5 text-[11px] leading-snug text-muted-foreground sm:max-w-none"
+          className={cn(
+            'inline-flex items-center rounded-md border border-border bg-muted/80 px-2 py-0.5 text-[11px] leading-snug text-muted-foreground',
+            singleLine ? 'whitespace-nowrap' : 'max-w-[min(100%,220px)] sm:max-w-none'
+          )}
           title={tag}
         >
           {tag}
         </span>
       ))}
-      {hiddenCount > 0 && (
+      {!singleLine && hiddenCount > 0 && (
         <span
           className="rounded-md border border-dashed border-border/80 bg-muted/50 px-2 py-0.5 text-[11px] text-muted-foreground"
           title={`Mais ${hiddenCount} etiqueta(s): ${tags.slice(limit).join(', ')}`}

@@ -10,12 +10,12 @@ export const medicationPriceReferencesBySlug: Record<string, MedicationPriceRefe
     checkedAt: '2026-06-24',
   },
   'sulfametoxazol-trimetoprima': {
-    amountBrl: 53.5,
-    label: 'R$ 53,50',
+    amountBrl: 43.44,
+    label: 'R$ 43,44',
     presentation: 'Sulfaprim Bravet, 10 comprimidos',
-    sourceName: 'Pett Farma',
+    sourceName: 'Mednanet / Pett Farma',
     sourceUrl: 'https://www.pettfarma.com.br/produto/sulfaprim-bravet-10-comprimidos-7174',
-    checkedAt: '2026-06-24',
+    checkedAt: '2026-08-31',
   },
   'amoxicilina-clavulanato': {
     amountBrl: 65.61,
@@ -74,12 +74,12 @@ export const medicationPriceReferencesBySlug: Record<string, MedicationPriceRefe
     checkedAt: '2026-06-24',
   },
   'sulfaprim-comprimidos': {
-    amountBrl: 53.5,
-    label: 'R$ 53,50',
+    amountBrl: 43.44,
+    label: 'R$ 43,44',
     presentation: 'Sulfaprim Bravet, 10 comprimidos',
-    sourceName: 'Pett Farma',
+    sourceName: 'Mednanet / Pett Farma',
     sourceUrl: 'https://www.pettfarma.com.br/produto/sulfaprim-bravet-10-comprimidos-7174',
-    checkedAt: '2026-06-24',
+    checkedAt: '2026-08-31',
   },
   cefex: {
     amountBrl: 116.32,

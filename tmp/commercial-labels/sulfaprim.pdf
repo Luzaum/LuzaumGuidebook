@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <script type="text/javascript">var Domain = 'https://www.bravet.com.br/';</script>
+        
+        <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+        
+        <link href="/favicon.ico" type="image/x-icon" rel="icon"><link href="/favicon.ico" type="image/x-icon" rel="shortcut icon"><link rel="stylesheet" href="/css/site/style.css"><link rel="stylesheet" href="/css/site/flexslider.css">
+<meta name="url" content="https://www.bravet.com.br/" />
+<base href="https://www.bravet.com.br/" />
+
+<meta name="language" content="pt-BR">    
+
+<!-- ---------- META SITE -------------- -->
+<title>Laboratório Bravet LTDA. </title>
+<meta name="description" lang="pt-br" content=""/>
+<meta name="keywords" lang="pt-br" content=""/>
+<meta name="google-site-verification" content="" />
+<meta name="author" content="Grupo Grow">
+<meta name="company" content="Grupo Grow" />
+<meta name="revisit-after" content="7" />
+<meta http-equiv="pragma" content="cache">
+<meta name="robots" content="index, follow" />
+<meta name="robots" content="archive">
+<link rev="made" href="mailto:dayvison@grupogrow.com" />
+
+<meta property="og:locale" content="pt_BR" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Laboratório Bravet" />
+<meta property="og:description" content="O Laboratório Bravet é uma indústria de medicamentos veterinários que atua há mais de 45 anos no Brasil e América Latina, desenvolvendo produtos de alta qualidade para melhoria da sanidade animal. Com produtos reconhecidos pelo mercado em seu portifólio, o Laboratório Bravet investe constantemente em tecnologia e inovação, buscando excelência na manutenção da qualidade de vida dos animais." />
+<meta property="og:url" content="https://bravet.com.br/" />
+<meta property="og:site_name" content="Laboratório Bravet" />
+<meta property="article:modified_time" content="2026-08-26 06:38:58" />
+<meta property="og:image" content="https://bravet.com.br/img/site/img-share-whatsapp.png" />
+<meta property="og:image:width" content="1024" />
+<meta property="og:image:height" content="578" />
+<meta property="og:image:type" content="image/png" />
+<!-- ---------- END META SITE -------------- -->
+
+
+<!-- ---------- FACEBOOK -------------- -->
+<meta property="fb:admins" content="100003466626521" />
+<meta property="og:site_name" content="Laboratório Bravet LTDA."/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.bravet.com.br/"/>
+<meta property="og:title" content="Laboratório Bravet LTDA. " />
+<meta property="og:description" content="" />
+<meta property="og:image" content="https://www.bravet.com.br/img/site/logo-200x200.jpg" />
+<meta property="og:locale" content="en_US" />
+<!-- ---------- FACEBOOK -------------- --><script src="/js/site/jquery.js"></script><script src="/js/site/jquery.flexslider-min.js"></script><script src="/js/site/actions.js"></script>    </head>
+    <body class="error">
+
+        <div class="erro404">
+	<a href="/" title="Voltar para página incial" class="btn-back">Voltar para home</a></div>
+        <!-- ---------- GOOGLE ANALYTICS -------------- -->
+        <script type="text/javascript">
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-61457070-4', 'https://www.bravet.com.br/');
+        ga('send', 'pageview');
+
+        </script>
+        <!-- ---------- END GOOGLE ANALYTICS -------------- -->
+        
+    </body>
+</html>

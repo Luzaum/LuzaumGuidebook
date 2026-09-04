@@ -21,7 +21,7 @@ export function ClinicalQuickGuideCard({ guide, categoryLabel }: ClinicalQuickGu
       transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
     >
       <Link
-        to={`/consulta-vet/guias-rapidos/${guide.slug}`}
+        to={`/consulta-vet/guias-rápidos/${guide.slug}`}
         className={cn(
           'group relative flex h-full min-h-[11.5rem] flex-col overflow-hidden rounded-[1.35rem] border border-border/80 bg-card/85 shadow-sm ring-1 ring-transparent transition-all duration-200 ease-out',
           'hover:-translate-y-0.5 hover:border-teal-500/40 hover:shadow-lg hover:shadow-teal-500/10 hover:ring-teal-500/15',

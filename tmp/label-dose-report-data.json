@@ -1,0 +1,1757 @@
+{
+  "generatedAt": "2026-08-26T13:48:43.656Z",
+  "summary": {
+    "total": 360,
+    "rawOk": 206,
+    "rawBlocked": 6,
+    "rawMissing": 147,
+    "rawWeak": 1,
+    "finalOk": 360,
+    "bySource": {
+      "seedLabelDose": 211,
+      "labelDirections": 148,
+      "plumbs": 1,
+      "prescriptionExample": 0,
+      "unresolved": 0
+    },
+    "byClassRaw": {
+      "analgesic": {
+        "total": 3,
+        "rawOk": 3,
+        "finalOk": 3
+      },
+      "antiinflammatory": {
+        "total": 4,
+        "rawOk": 4,
+        "finalOk": 4
+      },
+      "behavioral": {
+        "total": 1,
+        "rawOk": 1,
+        "finalOk": 1
+      },
+      "cardiologic": {
+        "total": 16,
+        "rawOk": 16,
+        "finalOk": 16
+      },
+      "dental": {
+        "total": 22,
+        "rawOk": 0,
+        "finalOk": 22
+      },
+      "dermatologic": {
+        "total": 92,
+        "rawOk": 23,
+        "finalOk": 92
+      },
+      "emergency": {
+        "total": 2,
+        "rawOk": 1,
+        "finalOk": 2
+      },
+      "endocrine": {
+        "total": 16,
+        "rawOk": 10,
+        "finalOk": 16
+      },
+      "gastrointestinal": {
+        "total": 39,
+        "rawOk": 39,
+        "finalOk": 39
+      },
+      "infectious": {
+        "total": 29,
+        "rawOk": 29,
+        "finalOk": 29
+      },
+      "neurologic": {
+        "total": 1,
+        "rawOk": 1,
+        "finalOk": 1
+      },
+      "nutraceutical": {
+        "total": 25,
+        "rawOk": 3,
+        "finalOk": 25
+      },
+      "oncologic": {
+        "total": 1,
+        "rawOk": 1,
+        "finalOk": 1
+      },
+      "ophthalmologic": {
+        "total": 29,
+        "rawOk": 29,
+        "finalOk": 29
+      },
+      "orthopedic": {
+        "total": 26,
+        "rawOk": 26,
+        "finalOk": 26
+      },
+      "parasiticide": {
+        "total": 47,
+        "rawOk": 13,
+        "finalOk": 47
+      },
+      "renal": {
+        "total": 6,
+        "rawOk": 6,
+        "finalOk": 6
+      },
+      "reproductive": {
+        "total": 1,
+        "rawOk": 1,
+        "finalOk": 1
+      }
+    }
+  },
+  "manualCorrections": [
+    {
+      "id": "cardisure-dechra",
+      "name": "Cardisure",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Cães: 0,5 mg/kg/dia VO, dividido em 2 administrações a cada 12 h, preferencialmente cerca de 1 h antes do alimento.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães: 0,5 mg/kg/dia VO, dividido em 2 administrações a cada 12 h, preferencialmente cerca de 1 h antes do alimento.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "upcard-vetoquinol",
+      "name": "UpCard",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Cães: 0,1 a 0,6 mg/kg VO SID; a maioria estabiliza com ≤ 0,3 mg/kg SID. Titular em incrementos de 0,1 mg/kg conforme congestão, função renal e eletrólitos.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães: 0,1 a 0,6 mg/kg VO SID; a maioria estabiliza com ≤ 0,3 mg/kg SID. Titular em incrementos de 0,1 mg/kg conforme congestão, função renal e eletrólitos.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "furolisin-vetnil",
+      "name": "Furolisin",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Cães e gatos: 2 a 6 mg/kg VO. Cães: 2 a 3 vezes/dia por 7 dias (2 mg/kg pode ir até 15 dias). Gatos: 3 vezes/dia por 7 dias.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães e gatos: 2 a 6 mg/kg VO. Cães: 2 a 3 vezes/dia por 7 dias (2 mg/kg pode ir até 15 dias). Gatos: 3 vezes/dia por 7 dias.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "semintra-boehringer",
+      "name": "Semintra",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Gatos (DRC/proteinúria): 1 mg/kg VO SID (0,25 mL/kg da solução 4 mg/mL). Agitar antes do uso; medir com seringa dosadora.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Gatos (DRC/proteinúria): 1 mg/kg VO SID (0,25 mL/kg da solução 4 mg/mL). Agitar antes do uso; medir com seringa dosadora.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "benazepril-manipulado",
+      "name": "Benazepril manipulado ou humano",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Extra-bula — Cães: 0,25 a 0,5 mg/kg VO SID; proteinúria 0,5 mg/kg VO SID (titular até ~2 mg/kg/dia). Gatos: 0,5 mg/kg VO q12h quando indicado.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Extra-bula — Cães: 0,25 a 0,5 mg/kg VO SID; proteinúria 0,5 mg/kg VO SID (titular até ~2 mg/kg/dia). Gatos: 0,5 mg/kg VO q12h quando indicado.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "doxitrat-agener",
+      "name": "Doxitrat",
+      "commercialClass": "infectious",
+      "rawLabelDose": "Cães e gatos: 5 a 10 mg/kg VO q12-24h.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães e gatos: 5 a 10 mg/kg VO q12-24h.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "mectimax-agener",
+      "name": "Mectimax",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "Cães: sarna/nematódeos 0,2 mg/kg VO q7d por 2–4 administrações; demodicose 0,6 mg/kg VO q24h por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 administrações.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães: sarna/nematódeos 0,2 mg/kg VO q7d por 2–4 administrações; demodicose 0,6 mg/kg VO q24h por 2–3 meses. Gatos: sarna otodécica 0,3 mg/kg VO q7d por 2–4 administrações.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "petpril-agener",
+      "name": "Petpril",
+      "commercialClass": "cardiologic",
+      "rawLabelDose": "Cães: Petpril 5 mg 1 comp/10 kg q12–24h; Petpril 10 mg 1 comp/20 kg q12–24h. Gatos: Petpril 5 mg, 1/4 a 1/2 comp/5 kg q12–24h.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cães: Petpril 5 mg 1 comp/10 kg q12–24h; Petpril 10 mg 1 comp/20 kg q12–24h. Gatos: Petpril 5 mg, 1/4 a 1/2 comp/5 kg q12–24h.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "sec-lac-agener",
+      "name": "Sec Lac",
+      "commercialClass": "reproductive",
+      "rawLabelDose": "Cadelas: Sec Lac 5, 1 comp/5 kg q12h; Sec Lac 20, 1 comp/20 kg q12h. Gatas: Sec Lac 5, 1 comp/4 kg q12h. Por 4 a 8 dias.",
+      "rawStatus": "ok",
+      "resolvedLabelDose": "Cadelas: Sec Lac 5, 1 comp/5 kg q12h; Sec Lac 20, 1 comp/20 kg q12h. Gatas: Sec Lac 5, 1 comp/4 kg q12h. Por 4 a 8 dias.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    }
+  ],
+  "runtimeEnriched": [
+    {
+      "id": "levemir-detemir-u100-novo-nordisk",
+      "name": "Levemir FlexPen / Penfill",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Em cães/gatos, dose deve ser individualizada; usar inicio conservador e curva/CGM por risco de hipoglicemia.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Cães: Cães selecionados: Individualizar; iniciar conservador q12h. Gatos: Gatos selecionados: Individualizar q12h conforme curva/CGM",
+      "source": "plumbs",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "pielsana-sabonete-phmb-dbs",
+      "name": "Pielsana Sabonete Antisséptico com PHMB",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Molhar a pele, aplicar quantidade suficiente para produzir espuma, massagear suavemente, remover sujidades e enxaguar completamente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "curatec-solucao-phmb-lm-farma",
+      "name": "Curatec Solução com PHMB e EDTA",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Irrigar a ferida diretamente ou umedecer gaze estéril, mantendo contato com a superfície por até aproximadamente 15 minutos conforme necessidade clínica",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "curatec-gel-phmb-lm-farma",
+      "name": "Curatec Gel com PHMB e EDTA",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar camada de aproximadamente 3 a 5 mm sobre o leito limpo",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "silglos-30g-silvestre",
+      "name": "Silglós 1% Creme",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar camada fina recobrindo completamente a lesão após limpeza, geralmente uma vez ao dia",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "sulfadiazina-prata-generico-uniao-quimica",
+      "name": "Sulfadiazina de Prata 1% — Genérico União Química",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar camada fina sobre lesão limpa, conforme bula humana e orientação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "desitin-maximum-strength-kenvue",
+      "name": "Desitin Máxima Proteção",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar película fina sobre pele limpa e seca",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "regepil-spray-ourofino",
+      "name": "Regepil",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar quantidade suficiente para cobrir toda a superfície e bordas da ferida: diariamente, até 3x/dia, ou a cada higienização/troca de curativo, até cicatrização completa",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "furanil-pet-vetnil",
+      "name": "Furanil Pet",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "2) deixar agir 10 minutos;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "vetaglos-pomada-vetnil",
+      "name": "Vetaglós Pomada",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar fina camada após limpeza, 1 a 2 vezes ao dia;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ganadol-pomada-zoetis",
+      "name": "Ganadol Pomada",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Lavar a região, aplicar quantidade suficiente para recobrir a ferida e realizar curativo",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "bactroban-2-gsk",
+      "name": "Bactroban 2% Pomada",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Permitir pelo menos 10 minutos de contato",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "verutex-2-ache",
+      "name": "Verutex 2% Creme",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar na pele a cada 12 horas por aproximadamente 5 dias;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "iruxol-mono-colagenase-abbott",
+      "name": "Iruxol Mono",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar camada fina, normalmente 1x/dia, após umedecer/limpar o tecido conforme protocolo",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "peroxydex-spherulites-virbac",
+      "name": "Peroxydex Spherulites",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Molhar, aplicar, massagear e manter contato por 5 a 10 minutos antes de enxaguar",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "sebotrat-s-agener-uniao",
+      "name": "Sebotrat S",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Banho 1 a 2 vezes por semana, mantendo contato por aproximadamente 10 minutos antes do enxágue",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "sebotrat-o-agener-uniao",
+      "name": "Sebotrat O",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Banhos 2 a 3 vezes por semana, com contato por aproximadamente 10 minutos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "allerdog-hipoalergenico-cepav",
+      "name": "Allerdog Hipoalergênico",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "enxaguar completamente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "sebocalm-spherulites-virbac",
+      "name": "Sebocalm Spherulites",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "enxaguar completamente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "iodeto-potassio-laqfa-130mg",
+      "name": "LAQFA — Iodeto de Potássio 130 mg",
+      "commercialClass": "emergency",
+      "rawLabelDose": "Indicação humana de emergência nuclear — não aplicar dose veterinária antifúngica.",
+      "rawStatus": "weak",
+      "resolvedLabelDose": "Bula de emergência nuclear: adultos 130 mg;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "epiotic-sis-virbac",
+      "name": "Epiotic SIS",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Uso tópico otológico: aplicar no conduto auditivo, massagear a base da orelha e remover excesso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "clean-up-agener-uniao",
+      "name": "Clean-up Solução Otológica",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Higiene rotineira 1 a 2 vezes por semana, ou conforme critério veterinário",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "septclean-oto-agener-uniao",
+      "name": "SeptClean Oto",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Usar a cada 12 ou 24 horas por pelo menos 14 dias, ou sob orientação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aurivet-clean-vetnil",
+      "name": "Aurivet Clean",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Conduto: 2 gotas por orelha a cada 5 kg, máximo 10 gotas;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aurivet-clean-ph-neutro-vetnil",
+      "name": "Aurivet Clean pH Neutro",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Conduto: preencher com o produto, massagear a base da orelha e retirar excesso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "phisioderm-virbac",
+      "name": "Phisioderm Limpador Auricular",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Preencher o conduto com o produto, massagear a base da orelha e enxugar pavilhão com algodão umedecido",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "oto-clean-up-pet-society",
+      "name": "Oto Clean Up",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Instilar no conduto, massagear e retirar excesso da parte externa com algodão ou gaze",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "propcalm-otologico-pet-society",
+      "name": "PROPCALM Otológico",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 mL em cada conduto, massagear a base da orelha, deixar o animal balançar a cabeça e remover excesso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "k-treat-oto-micelar-pet-society",
+      "name": "K-TREAT Oto Micelar",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Instilar até preencher o conduto, massagear e remover excesso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dermogen-oto-agener-uniao",
+      "name": "Dermogen Oto",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar diretamente no pavilhão auricular e no conduto, 1 a 2 vezes por semana ou conforme orientação",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ouvipet-dermocalmante-ibasa",
+      "name": "Ouvipet Dermocalmante",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 5 a 10 gotas no conduto e massagear cerca de 1 minuto",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "oto-top-clean-chemitec",
+      "name": "Oto-Top Clean",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Para conduto, aplicar 5 a 10 gotas, massagear, permitir agitação da cabeça e remover excesso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cerumisyn-konig",
+      "name": "Cerumisyn Loção/Gel",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "instilar 5 a 10 gotas no conduto, massagear, permitir agitação da cabeça e limpar externamente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otiflex-l-labyes",
+      "name": "Otiflex Limpiador / Otiflex L",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 a 2 pulsações em cada ouvido conforme tamanho/profundidade do conduto, massagear a base",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "easotic-virbac",
+      "name": "easOtic",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 mL por orelha, 1 vez ao dia, por no mínimo 5 dias consecutivos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aurigen-ourofino",
+      "name": "Aurigen",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães até 15 kg: 4 gotas a cada 12 h",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aurivet-vetnil",
+      "name": "Aurivet",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães até 15 kg e gatos: 4 gotas a cada 12 h por 15 dias",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "auritop-ourofino",
+      "name": "Auritop",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Bula Auritop: cães <15 kg, 4 gotas no ouvido afetado;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otocalm-agener-uniao",
+      "name": "Otocalm",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Menos de 15 kg: 4 gotas por orelha, BID, por 7 dias",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otodex-ucbvet",
+      "name": "Otodex",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães até 7 kg: 1 borrifada BID",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otoguard-cepav",
+      "name": "Otoguard",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Bula/material Otoguard: aplicar 5-15 gotas no canal auditivo e massagear cerca de 20 s",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otosyn-konig",
+      "name": "Otosyn",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Limpar antes, aplicar 4 a 8 gotas no conduto, 2 vezes ao dia, até desaparecimento dos sintomas, com acompanhamento veterinário",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otodermin-bravet",
+      "name": "Otodermin",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Otite externa: 5 a 15 gotas em cada ouvido afetado, 2 a 3 vezes ao dia",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "otomax-msd",
+      "name": "Otomax",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães <15 kg: 4 gotas BID por 7 dias",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "posatex-msd",
+      "name": "Posatex",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "<2 kg: 2 gotas SID",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cipro-otic-syntec",
+      "name": "Cipro-Otic",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães até 15 kg: 5 gotas em cada ouvido a cada 12 h",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "apoquel-zoetis",
+      "name": "Apoquel",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "0,4 a 0,6 mg/kg VO a cada 12 horas por até 14 dias;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cytopoint-zoetis",
+      "name": "Cytopoint",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose mínima de 2 mg/kg SC",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cyclavance-virbac",
+      "name": "Cyclavance",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "0,05 mL/kg VO a cada 24 horas, equivalente a 5 mg/kg VO SID",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cortavance-virbac",
+      "name": "Cortavance",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicação tópica sobre área afetada, em geral 1 vez ao dia por 7 dias, conforme bula e avaliação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cortotic-virbac",
+      "name": "Cortotic",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Instilar 2 borrifadas por orelha acometida a cada 24 horas, por 7 a 14 dias consecutivos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "prednisolona-humana",
+      "name": "Prednisolona humana",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães: 0,5 a 1 mg/kg VO SID, podendo dividir BID em crise por poucos dias",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "azium-msd",
+      "name": "Azium",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Quando usado, considerar dose anti-inflamatória baixa, geralmente em torno de 0,05 a 0,1 mg/kg conforme caso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "hixizine-hidroxizina",
+      "name": "Hixizine / hidroxizina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães: 2 mg/kg VO a cada 12 horas, podendo haver uso de 3 mg/kg BID",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dexclorfeniramina-polaramine-polaren",
+      "name": "Dexclorfeniramina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães: 0,2 a 0,4 mg/kg VO a cada 8 a 12 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "difenidramina-difenidrin",
+      "name": "Difenidramina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães e gatos: 2 a 4 mg/kg VO a cada 8 a 12 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "alergovet-c-coveli",
+      "name": "Alergovet C",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de bula: 0,07 mg/kg, podendo dividir a dose diária em duas administrações a cada 12 horas, com tabela por peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aliv-pet-agener-uniao",
+      "name": "Aliv Pet",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "50 mg: 1 comprimido para cada 5 kg VO SID",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-derme-avert",
+      "name": "Ograx Derme",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Gatos: 1 cápsula VO SID por no mínimo 4 semanas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cloresten-shampoo-agener-uniao",
+      "name": "Cloresten Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Banhar o corpo todo, massagear, deixar agir por 10 minutos antes do enxágue e repetir 1 a 2 vezes por semana, ou conforme critério veterinário",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cloreximicol-shampoo-cepav",
+      "name": "Cloreximicol Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "clorexiderm-4-shampoo-cepav",
+      "name": "Clorexiderm 4% Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Umedecer a pelagem, aplicar até espuma abundante, massagear, deixar agir por 10 a 15 minutos e enxaguar",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "hexadene-spherulites-virbac",
+      "name": "Hexadene Spherulites",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Molhar a pelagem, aplicar, massagear até formar espuma, enxaguar e repetir a aplicação deixando o produto agir por 10 minutos antes do enxágue final",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "clorexsyn-shampoo-konig",
+      "name": "Clorexsyn Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Molhar o pelo, aplicar e massagear até espuma abundante, deixar agir por 10 minutos e enxaguar",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "megatrat-clorexidina-centagrovet",
+      "name": "Megatrat Clorexidina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Umedecer a pelagem com água morna",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "megatrat-clorexidina-4-centagrovet",
+      "name": "Megatrat Clorexidina 4%",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Umedecer a pelagem com água morna",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "micodine-shampoo-syntec",
+      "name": "Micodine Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Uso tópico: aplicar na pele molhada em quantidade suficiente, massagear e espalhar pelo corpo",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "douxo-s3-pyo-shampoo-ceva",
+      "name": "DOUXO S3 PYO Shampoo",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "A linha recomenda shampoo como etapa de limpeza e associação com mousse para maior tempo de contato, conforme orientação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "shampoo-clorexidina-manipulado-petfarma",
+      "name": "Shampoo Clorexidina 2% ou 3% Manipulado",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar no pelo molhado, deixar agir por 10 a 15 minutos e enxaguar, retirando todo o produto",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "x-dine-shampoo-clorexidina-lavizoo",
+      "name": "X-Dine Shampoo Clorexidina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar no pelo molhado, massagear até formar espuma, deixar agir por 5 minutos e enxaguar;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "world-dugs-shampoo-clorexidina",
+      "name": "World Veterinária / Dug’s Shampoo Clorexidina",
+      "commercialClass": "dermatologic",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Molhar bem a pelagem do animal com água (preferencialmente morna)",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "nexgard-spectra-caes-boehringer",
+      "name": "NexGard Spectra Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar 1 tablete inteiro por via oral, uma vez ao mês, conforme faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "nexgard-combo-gatos-boehringer",
+      "name": "NexGard Combo Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 aplicador tópico na pele, conforme faixa de peso, uma vez ao mês",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "bravecto-caes-msd",
+      "name": "Bravecto Comprimido Mastigável",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar 1 comprimido por via oral a cada 12 semanas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "bravecto-transdermal-gatos-msd",
+      "name": "Bravecto Transdermal Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente na pele conforme faixa de peso, com intervalo de proteção de até 12 semanas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "bravecto-plus-gatos-msd",
+      "name": "Bravecto Plus Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente conforme faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "simparic-caes-zoetis",
+      "name": "Simparic Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar por via oral, 1 comprimido conforme faixa de peso, mensalmente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "simparic-trio-caes-zoetis",
+      "name": "Simparic Trio Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar 1 comprimido por via oral, uma vez ao mês, conforme faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "credeli-caes-elanco",
+      "name": "Credeli Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar por via oral uma vez ao mês, com alimento ou logo após refeição, conforme faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "credeli-gatos-elanco",
+      "name": "Credeli Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar 1 comprimido por via oral mensalmente, por faixa de peso, preferencialmente com alimento",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "revolution-zoetis",
+      "name": "Revolution 6%/12%",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente uma vez ao mês, conforme espécie, concentração e faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "advocate-elanco",
+      "name": "Advocate Cães e Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente uma vez ao mês, conforme espécie e faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "advantage-elanco",
+      "name": "Advantage Cães e Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente, mensalmente, conforme faixa de peso e bula",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "advantage-max3-caes-elanco",
+      "name": "Advantage Max3 Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar topicamente uma vez ao mês, conforme faixa de peso do cão",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "seresto-elanco",
+      "name": "Seresto Coleira",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Colocar 1 coleira ajustada ao pescoço e substituir conforme período de proteção indicado, até 8 meses",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "scalibor-msd",
+      "name": "Scalibor Coleira",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Colocar 1 coleira no pescoço do cão, ajustar e cortar a sobra conforme orientação do fabricante",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "vectra-3d-caes-ceva",
+      "name": "Vectra 3D Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar pipeta tópica conforme faixa de peso e bula Ceva",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "vectra-gatos-ceva",
+      "name": "Vectra Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar pipeta tópica conforme faixa de peso e bula Ceva",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "frontline-plus-boehringer",
+      "name": "Frontline Plus Cães/Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 pipeta tópica conforme espécie e faixa de peso, seguindo intervalo de bula",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "frontline-topspot-boehringer",
+      "name": "Frontline TopSpot Cães/Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 pipeta tópica conforme espécie e peso, no intervalo definido em bula",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "frontline-spray-boehringer",
+      "name": "Frontline Spray Cães/Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar conforme número de borrifadas indicado na bula para o peso do animal, contra o sentido do pelo, evitando olhos, boca e mucosas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "drontal-gatos-comprimidos-elanco",
+      "name": "Drontal Gatos Comprimidos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "dose usual 1 comprimido/4 kg em dose única",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "drontal-gatos-spoton-elanco",
+      "name": "Drontal Gatos SpotOn",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar todo o conteúdo da pipeta diretamente sobre a pele seca na nuca, conforme faixa de peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "profender-gatos-elanco",
+      "name": "Profender SpotOn Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 0,14 mL/kg ou pipeta correspondente ao peso, diretamente na pele da nuca",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "milbemax-elanco",
+      "name": "Milbemax Cães e Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar por faixa de peso conforme bula;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "endogard-caes-virbac",
+      "name": "Endogard Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Bula Endogard: Endogard 2,5 = 1 comp/2,5 kg;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "canex-premium-caes-ceva",
+      "name": "Canex Premium Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar conforme faixa de peso e bula Ceva",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "canex-giardia-caes-ceva",
+      "name": "Canex Giárdia Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Giardia spp.: 1 comprimido/10 kg VO q24h por 3 dias consecutivos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "canex-original-ceva",
+      "name": "Canex Original Cães e Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Bula reproduzida informa 1 comprimido para cada 10 kg em cães e 1 comprimido para cada 2,5 kg em gatos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "fiprolex-drop-spot-ceva",
+      "name": "Fiprolex Drop Spot",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar pipeta tópica conforme espécie e faixa de peso, seguindo bula Ceva",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "capstar-elanco",
+      "name": "Capstar Cães/Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Pode repetir após 24 horas se indicado, conforme bula e avaliação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "banni-caes-ourofino",
+      "name": "Banni Cães",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 flaconete por via tópica, conforme faixa de peso, diretamente sobre a pele seca entre a nuca e as escápulas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "banni-3-gatos-ourofino",
+      "name": "Banni 3 Gatos",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar 1 flaconete por via tópica diretamente sobre a pele seca da nuca, próximo à base do crânio, afastando bem os pelos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "vetmax-plus-comprimido-vetnil",
+      "name": "Vetmax Plus Comprimido",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Giardíase: 1 comprimido para cada 4 kg, VO, a cada 24 horas, por 3 dias consecutivos",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "vetmax-plus-suspensao-vetnil",
+      "name": "Vetmax Plus Suspensão Oral",
+      "commercialClass": "parasiticide",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Pode repetir após 15 ou 30 dias se indicado",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-3-500-avert",
+      "name": "Ograx-3 500",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 9 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-3-1000-avert",
+      "name": "Ograx-3 1000",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 18 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-3-1500-avert",
+      "name": "Ograx-3 1500",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 33 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-plus-5-avert",
+      "name": "Ograx Plus 5",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-plus-15-avert",
+      "name": "Ograx Plus 15",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 15 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-gatos-avert",
+      "name": "Ograx Gatos",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula ao dia para gatos até 5 kg, por via oral",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-baby-avert",
+      "name": "Ograx Baby",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 0,1 mL para cada 0,5 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-derme-10-avert",
+      "name": "Ograx Derme 10",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: cães, 1 cápsula para cada 10 kg SID;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-artro-10-avert",
+      "name": "Ograx Artro 10",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 10 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-artro-20-avert",
+      "name": "Ograx Artro 20",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 20 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-cell-5-avert",
+      "name": "Ograx Cell 5",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-cell-15-avert",
+      "name": "Ograx Cell 15",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 15 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-senior-5-avert",
+      "name": "Ograx Senior 5",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 5 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "ograx-senior-10-avert",
+      "name": "Ograx Senior 10",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula para cada 10 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-se-550-vetnil",
+      "name": "Ômega 3 + SE 550",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula ao dia para animais até 8 kg",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-se-1100-vetnil",
+      "name": "Ômega 3 + SE 1100",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 cápsula ao dia para animais de 8 a 16 kg",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-dog-500-organnact",
+      "name": "Omega 3 Dog 500 mg",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 a 2 cápsulas ao dia para cada 10 kg",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-dog-1000-organnact",
+      "name": "Omega 3 Dog 1000 mg",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: 1 a 2 cápsulas ao dia para cada 20 kg",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-6-d-cat-organnact",
+      "name": "Omega 3+6+D Cat",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de rótulo: gatos até 10 kg, 1 mL SID;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omega-3-vet-botupharma",
+      "name": "Omega 3 Vet",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose técnica encontrada: animais até 10 kg podem receber 1 a 3 cápsulas ao dia, conforme orientação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omegatop-3-500-agener",
+      "name": "OmegaTop 3 500 mg",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose comercial: 1 cápsula para cada 9 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "omegatop-3-1000-agener",
+      "name": "OmegaTop 3 1000 mg",
+      "commercialClass": "nutraceutical",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose comercial: 1 cápsula para cada 18 kg, por via oral, a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "periovet-spray-vetnil",
+      "name": "Periovet Spray",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar quantidade suficiente para atingir superfícies dentárias e gengivais;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "periovet-gel-vetnil",
+      "name": "Periovet Gel",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar quantidade suficiente diretamente em dentes e gengivas, com gaze, dedeira ou escova macia, conforme orientação veterinária",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "oralclin-spray-agener",
+      "name": "Oralclin Spray",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Borrifar diretamente nos dentes e gengiva quando necessário;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "oralclin-gel-agener",
+      "name": "Oralclin Gel",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar o gel diretamente nos dentes e gengiva quando necessário",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "solucao-bucal-ibasa",
+      "name": "Solução Bucal Ibasa",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar diretamente na boca ou com gaze/escova, atingindo dentes e gengivas;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "espuma-bucal-ibasa",
+      "name": "Espuma Bucal Ibasa",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar diretamente na cavidade oral sobre dentes e gengivas conforme rótulo/fabricante",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "cet-pasta-enzimatica-virbac",
+      "name": "C.E.T. Pasta Enzimática",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar em escova/dedeira umedecida e escovar na junção gengiva-dente com movimentos a 45°",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aquadent-fr3sh-virbac",
+      "name": "Aquadent FR3SH",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Diluir na água de bebida conforme rótulo e trocar a solução a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dental-splash-softcare",
+      "name": "Dental Splash",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Diluir 5 mL em 250 mL de água fresca e limpa;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dental-splash-spray-softcare",
+      "name": "Dental Splash Spray",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Borrifar diretamente sobre dentes e gengivas conforme rótulo e necessidade",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dental-guard-suave-abrasao-softcare",
+      "name": "Dental Guard Suave Abrasão",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar em escova ou dedeira e escovar dentes/margem gengival",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "dental-special-care-softcare",
+      "name": "Dental Special Care",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Aplicar fina camada na gengiva 3 a 5 vezes ao dia, massageando com dedos limpos ou escova macia",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "good-care-creme-dental-mundo-animal",
+      "name": "Good Care Creme Dental",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "usar pelo menos duas vezes por semana, idealmente diariamente",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "good-care-haliclean-gel-mundo-animal",
+      "name": "Good Care Haliclean Gel",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "evitar água ou comida por 30 minutos;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "maxiguard-oral-cleansing-gel-bioctal",
+      "name": "MAXI/GUARD Oral Cleansing Gel",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "até 10 kg, 1 gota em cada lado;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "maxiguard-orazn-bioctal",
+      "name": "MAXI/GUARD OraZn",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "até 10 kg, 1 gota em cada lado;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "orozyme-gel-inovet",
+      "name": "Orozyme Gel",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar 1 vez ao dia: gatos/cães pequenos ~1 cm;",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "aqualitus-blue-inovet",
+      "name": "Aqualitus Blue",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "referência comercial: 1 jato do bico dosador para cada 125 mL de água, ou 4 jatos para 500 mL",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "plaqueoff-animal-inovet",
+      "name": "PlaqueOff Animal",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Administrar misturado ao alimento 1 vez ao dia, conforme dose do medidor/rótulo para o peso",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "bocahelp-pet-help",
+      "name": "BocaHelp",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Diluir na água de bebida conforme rótulo do fabricante e trocar a solução a cada 24 horas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "oralguard-cepav",
+      "name": "Oralguard",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Cães infecções dentárias/tecidos moles: 5 mg/kg VO a cada 12 h por 7 a 14 dias",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    },
+    {
+      "id": "stomorgyl-boehringer",
+      "name": "Stomorgyl",
+      "commercialClass": "dental",
+      "rawLabelDose": "",
+      "rawStatus": "missing",
+      "resolvedLabelDose": "Dose de bula: 75.000 UI/kg de espiramicina + 12,5 mg/kg de metronidazol VO a cada 24 h, por 5 a 10 dias, mantendo por 48 h após desaparecimento dos sintomas",
+      "source": "labelDirections",
+      "wasRuntimeEnriched": true
+    }
+  ],
+  "stillUnresolved": [],
+  "blockedBefore": [
+    {
+      "id": "lantus-glargina-u100-sanofi",
+      "name": "Lantus",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: gatos geralmente 1 UI/gato SC q12h como ponto de partida; cães selecionados 0,25-0,5 UI/kg SC q12h.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: gatos geralmente 1 UI/gato SC q12h como ponto de partida; cães selecionados 0,25-0,5 UI/kg SC q12h.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "basaglar-glargina-u100-lilly",
+      "name": "Basaglar KwikPen",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: gatos geralmente 1 UI/gato SC q12h como ponto de partida; cães selecionados 0,25-0,5 UI/kg SC q12h.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: gatos geralmente 1 UI/gato SC q12h como ponto de partida; cães selecionados 0,25-0,5 UI/kg SC q12h.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "toujeo-glargina-u300-sanofi",
+      "name": "Toujeo SoloStar",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Literatura felina emergente: 0,5 UI/kg SC q12-24h ou 2 UI/gato q24h como pontos de partida descritos; ajustar por CGM/curva.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Bula humana: dose individualizada. Literatura felina emergente: 0,5 UI/kg SC q12-24h ou 2 UI/gato q24h como pontos de partida descritos; ajustar por CGM/curva.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "humulin-n-nph-u100-lilly",
+      "name": "Humulin N",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: cães 0,25-0,5 UI/kg SC q12h; gatos geralmente evitar como escolha inicial por duração curta.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: cães 0,25-0,5 UI/kg SC q12h; gatos geralmente evitar como escolha inicial por duração curta.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "novolin-n-nph-u100-novo-nordisk",
+      "name": "Novolin N",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: cães 0,25-0,5 UI/kg SC q12h; gatos geralmente evitar como escolha inicial por duração curta.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Bula humana: dose individualizada. Uso veterinario extra-label: cães 0,25-0,5 UI/kg SC q12h; gatos geralmente evitar como escolha inicial por duração curta.",
+      "source": "seedLabelDose",
+      "wasRuntimeEnriched": false
+    },
+    {
+      "id": "levemir-detemir-u100-novo-nordisk",
+      "name": "Levemir FlexPen / Penfill",
+      "commercialClass": "endocrine",
+      "rawLabelDose": "Bula humana: dose individualizada. Em cães/gatos, dose deve ser individualizada; usar inicio conservador e curva/CGM por risco de hipoglicemia.",
+      "rawStatus": "blocked",
+      "resolvedLabelDose": "Cães: Cães selecionados: Individualizar; iniciar conservador q12h. Gatos: Gatos selecionados: Individualizar q12h conforme curva/CGM",
+      "source": "plumbs",
+      "wasRuntimeEnriched": true
+    }
+  ]
+}

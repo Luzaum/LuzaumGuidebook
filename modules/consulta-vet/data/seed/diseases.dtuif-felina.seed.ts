@@ -44,7 +44,7 @@ export const dtuifFelinaRecord: DiseaseRecord = {
       {
         title: 'Nome correto',
         body:
-          'Use "doenças do trato urinário inferior" no plural. "DTUIF/FLUTD" ajuda a agrupar sinais, mas não deve virar rótulo diagnóstico.',
+          'Preferir "doenças do trato urinário inferior" no plural. "DTUIF/FLUTD" ajuda a agrupar sinais, mas não deve virar rótulo diagnóstico.',
         highlights: ['plural', 'não deve virar rótulo'],
       },
       {

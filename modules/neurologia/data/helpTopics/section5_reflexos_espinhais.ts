@@ -13,7 +13,7 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     interpretation:
       'Reflexos pélvicos aumentados sugerem lesão cranial a L4 (tipicamente T3–L3). Reflexos pélvicos diminuídos sugerem L4–S3 (LMN). Reflexos torácicos diminuídos sugerem C6–T2. Use sempre em conjunto com propriocepção e nervos cranianos.',
     pitfalls:
-      'Ansiedade/dor aumentam reflexos e tônus; sedação reduz reflexos. Posição do membro inadequada altera resposta. Não comparar lados causa erro de interpretação.',
+      'Ansiedade/dor aumentam reflexos e tônus; sedação reduz reflexos. Posição do membro inadequada altera resposta. Choque medular pós-trauma ou FCE pode reduzir reflexos caudais por horas mesmo com lesão UMN — não confundir com LMN definitivo no primeiro exame.',
     tags: ['reflexos', 'UMN', 'LMN', 'arco-reflexo', 'segmentar', 'hiperreflexia', 'hiporreflexia'],
     severityWeight: 2,
     localizationHint: ['UMN-T3-L3', 'LMN-L4-S3', 'LMN-C6-T2'],
@@ -131,7 +131,8 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     howToPerform: 'Animal em decúbito lateral, membro em leve flexão. Percutir tendão patelar e observar extensão do joelho. Comparar lados.',
     interpretation:
       'Aumentado + paresia pélvica → suspeitar T3–L3. Diminuído/ausente → suspeitar L4–S3/femoral/plexo lombar.',
-    pitfalls: 'Tensão muscular ou posição errada do membro. Dor articular/ortopédica altera resposta.',
+    pitfalls:
+      'Tensão muscular ou posição errada do membro; luxação patelar medial reduz o tendão sob tensão e simula hiporreflexia; cães geriátricos (>10 anos) podem ter patelar diminuído sem lesão aguda; choque medular pós-trauma/FCE pode reduzir reflexos por 12–48 h antes de retornarem — reavaliar seriadamente.',
     tags: ['patelar', 'reflexo-pelvico', 'femoral', 'L4-L6', 'UMN', 'LMN', 'T3-L3', 'L4-S3'],
     severityWeight: 3,
     localizationHint: ['UMN-T3-L3', 'LMN-L4-S3', 'femoral', 'plexo-lombar'],
@@ -274,6 +275,7 @@ export const section5ReflexosEspinhais: HelpTopic[] = [
     howToPerform:
       'Confirmar técnica e intensidade, avaliar se há sedação profunda e checar em regiões cranializadas.',
     interpretation: 'Interpretar com cautela; correlacionar com quadro geral e outros reflexos.',
-    pitfalls: 'Falso negativo por pelagem/obesidade/estímulo fraco.',
+    pitfalls:
+      'Falso negativo por pelagem/obesidade/estímulo fraco; perda ipsilateral após toracotomia ou lesão de plexo braquial (nervo torácico lateral) não indica nível medular caudal ao estímulo.',
   },
 ]

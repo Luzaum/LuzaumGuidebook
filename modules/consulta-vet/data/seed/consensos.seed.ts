@@ -2,6 +2,9 @@ import { endocrinologiaConsensosSeed } from './consensos.endocrinologia.seed';
 import { cardiologiaConsensosSeed } from './consensos.cardiologia.seed';
 import { nefrologiaUrologiaConsensosSeed } from './consensos.nefrologia-urologia.seed';
 import { sepseAhimConsensosSeed } from './consensos.sepse-ahim.seed';
+import { neurologiaConsensosSeed } from './consensos.neurologia.seed';
+import { dermatologiaConsensosSeed } from './consensos.dermatologia.seed';
+import { infectologiaConsensosSeed } from './consensos.infectologia.seed';
 
 const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
   'icatcare-dtuif-felina-2025': {
@@ -43,6 +46,9 @@ export const consensosSeed: Array<Record<string, any>> = [
   ...cardiologiaConsensosSeed,
   ...endocrinologiaConsensosSeed,
   ...nefrologiaUrologiaConsensosSeed,
+  ...neurologiaConsensosSeed,
+  ...dermatologiaConsensosSeed,
+  ...infectologiaConsensosSeed,
   {
     id: 'con-icatcare-dtuif-felina-2025',
     slug: 'icatcare-dtuif-felina-2025',
@@ -53,9 +59,9 @@ export const consensosSeed: Array<Record<string, any>> = [
     species: 'cat',
     category: 'nefrologia-urologia',
     tags: ['DTUIF', 'FIC', 'Obstrução uretral', 'Urolitíase', 'ITU', 'Manejo ambiental'],
-    pdfUrl: '/documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
-    pdfFileName: 'icatcare-dtuif-felina-2025.pdf',
-    storagePath: 'documents/consulta-vet/consensos/icatcare-dtuif-felina-2025.pdf',
+    pdfUrl: 'https://doi.org/10.1177/1098612X241309176',
+    pdfFileName: 'doi-10.1177-1098612X241309176',
+    storagePath: 'external/doi-10.1177-1098612X241309176',
     summary:
       'Consenso iCatCare 2025 para abordagem de gatos com sinais do trato urinário inferior, com foco em diagnóstico por causa, cistite idiopática felina, urolitíase, ITU, obstrução uretral, manejo ambiental e comunicação com cuidadores.',
     articleSummaryRichText:
@@ -92,7 +98,7 @@ export const consensosSeed: Array<Record<string, any>> = [
     sourceOrganization: 'Brasileish',
     year: 2025,
     species: 'dog',
-    category: 'infecciosas',
+    category: 'infectologia',
     tags: ['LVC', 'Zoonose', 'Estadiamento'],
     pdfUrl: '/documents/consulta-vet/consensos/brasileish-leishmaniose-canina-2025.pdf',
     pdfFileName: 'brasileish-leishmaniose-canina-2025.pdf',

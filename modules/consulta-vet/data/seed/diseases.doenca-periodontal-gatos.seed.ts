@@ -167,7 +167,7 @@ export const doencaPeriodontalGatosRecord: DiseaseRecord = {
         {
           finding: 'Sangramento gengival à exploração ou ao alimento',
           mechanism:
-            'Gengivite com ulceração do epitélio sulcular e neovascularização frágil.',
+            'Gengivite com úlceração do epitélio sulcular e neovascularização frágil.',
           clinicalMeaning: 'Indica gengivite ativa ou periodontite no sulco (profundidade ≥1 mm).',
           priority: 'common',
         },

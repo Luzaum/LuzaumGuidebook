@@ -41,6 +41,7 @@ export const RED_FLAG_LABELS: Record<RedFlagId, string> = {
 }
 
 export const CHIEF_COMPLAINT_LABELS: Record<string, string> = {
+  Convulsao: 'Convulsão',
   ConvulsaoFocal: 'Convulsão focal',
   ConvulsaoGeneralizada: 'Convulsão generalizada',
   ClusterConvulsoes: 'Cluster de convulsões',

@@ -1,0 +1,172 @@
+[
+  {
+    "name": "Extrusão/protrusão discal cervical C6–T2 (Hansen I ou II)",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO", "SUBAGUDO", "CRONICO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["severe_cervical_pain", "nao_ambulatorio"],
+      "comorbidityCautions": ["CARDIOPATA"]
+    },
+    "whyTemplates": [
+      "Dor cervical com tetraparesia de padrão UMN em todos os membros localiza lesão em C6–T2 (Dewey & da Costa, cap. 13, fig. 13.1).",
+      "Tipo II cervical causa paresia progressiva com dor leve; tipo I causa dor intensa e déficit agudo."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM ou TC cervical",
+        "priority": "ALTA",
+        "whatItAssesses": "Compressão extradural e mielomalacia.",
+        "expectedFindings": "Extrusão/protrusão em C6–T1 ou C7–T1.",
+        "limitations": "Identificar C6 pelos processos transversos grandes antes de cirurgia."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Confinamento", "Avaliar nocicepção profunda nos quatro membros"],
+        "cautions": ["Schiff-Sherrington nos torácicos não exclui lesão caudal"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Ventral slot ou hemilaminectomia cervical conforme localização"],
+        "cautions": ["Fenestração profilática reduz recidiva em alguns estudos"]
+      }
+    }
+  },
+  {
+    "name": "Mielopatia espondilótica cervical (CSM) — segmento C6–T2",
+    "category": "COMPRESSIVA",
+    "rules": {
+      "course": ["CRONICO", "PROGRESSIVO", "SUBAGUDO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": [],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "90% das compressões discogênicas em Dobermans ocorrem em C5–C6 e C6–C7 — neurolocalização C6–T2 (Dewey & da Costa, cap. 13).",
+      "Incluir região C7–T2 na imagem: lesões torácicas cranianas presentes em ~14–22% dos casos."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM cervical estendida até T2",
+        "priority": "ALTA",
+        "whatItAssesses": "Compressões múltiplas dinâmicas/estáticas.",
+        "expectedFindings": "Protrusão discal + hipertrofia ligamentar/articular.",
+        "limitations": "Myelografia substituída por RM na prática atual."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Restrição de atividade", "Analgesia"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia descompressiva ± artrodeses conforme sítios"],
+        "cautions": ["50% dos Dobermans têm dois ou mais sítios de compressão similar"]
+      }
+    }
+  },
+  {
+    "name": "Neoplasia vertebral/medular cervical baixa",
+    "category": "NEOPLASICA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["progressivo"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Lesão expansiva unilateral pode causar déficit assimétrico; lesões grandes → bilateral (Dewey & da Costa, cap. 13, início do capítulo).",
+      "Progressão lenta com dor cervical intermitente sugere neoplasia vertebral."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM coluna cervical com contraste",
+        "priority": "ALTA",
+        "whatItAssesses": "Massa extradural/intradural e extensão.",
+        "expectedFindings": "Realce heterogêneo e compressão medular.",
+        "limitations": "Biópsia para histologia definitiva."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Analgesia", "Corticosteróide se edema significativo (caso a caso)"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Cirurgia, radioterapia ou paliação conforme tipo tumoral"],
+        "cautions": []
+      }
+    }
+  },
+  {
+    "name": "Trauma vertebral cervical (fratura/luxação)",
+    "category": "TRAUMATICA",
+    "rules": {
+      "course": ["PERAGUDO", "AGUDO"],
+      "ageStages": ["ADULTO", "PEDIATRICO"],
+      "species": ["CAO", "GATO"],
+      "redFlagsBoost": ["cervical_instability_trauma", "respiratory_compromise", "deep_pain_loss"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "História traumática + dor cervical + déficit tetraparético exige estabilização antes de imagem extensa.",
+      "Choque medular pode reduzir reflexos por até 12–48 h após lesão UMN (Dewey & da Costa, cap. 2)."
+    ],
+    "diagnostics": [
+      {
+        "test": "TC coluna cervical",
+        "priority": "ALTA",
+        "whatItAssesses": "Fraturas, luxações, canal estreitado.",
+        "expectedFindings": "Desalinhamento vertebral e compressão medular.",
+        "limitations": "RM complementar se contusão medular suspeita."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Imobilização", "Oxigenoterapia se necessário", "Analgesia"],
+        "cautions": ["Evitar movimentação excessiva"]
+      },
+      "DEFINITIVO": {
+        "plan": ["Fixação cirúrgica ou colar rígido prolongado"],
+        "cautions": ["Monitorar função respiratória em lesões cranio-cervicais altas"]
+      }
+    }
+  },
+  {
+    "name": "Discoespondilite cervical",
+    "category": "INFECCIOSA",
+    "rules": {
+      "course": ["SUBAGUDO", "CRONICO", "PROGRESSIVO"],
+      "ageStages": ["ADULTO", "GERIATRICO"],
+      "species": ["CAO"],
+      "redFlagsBoost": ["fever"],
+      "comorbidityCautions": []
+    },
+    "whyTemplates": [
+      "Dor cervical persistente, febre ou bacteremia deve incluir discoespondilite.",
+      "Progressão lenta com dor à palpação vertebral."
+    ],
+    "diagnostics": [
+      {
+        "test": "RM + hemocultura / aspirado disco",
+        "priority": "ALTA",
+        "whatItAssesses": "Realce endplate e organismos.",
+        "expectedFindings": "Hiperssinal em T1/T2 nos platôs adjacentes.",
+        "limitations": "Cultura nem sempre positiva."
+      }
+    ],
+    "treatment": {
+      "0-6H": {
+        "plan": ["Antibiótico empírico após coleta se instável", "Analgesia"],
+        "cautions": []
+      },
+      "DEFINITIVO": {
+        "plan": ["Antibiótico prolongado guiado por cultura/sensibilidade"],
+        "cautions": ["Monitorar compressão progressiva"]
+      }
+    }
+  }
+]

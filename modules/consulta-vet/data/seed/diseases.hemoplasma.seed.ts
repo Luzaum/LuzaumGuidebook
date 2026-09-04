@@ -13,7 +13,8 @@ export const micoplasmosesHemotropicasRecord: DiseaseRecord = {
     'Anemia infecciosa felina',
   ],
   species: ['cat', 'dog'],
-  category: 'infecciosas',
+  category: 'infectologia',
+  categories: ['parasitologia'],
   tags: [
     'PCR',
     'Doxiciclina',

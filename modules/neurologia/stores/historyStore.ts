@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { ComplaintContext, Patient } from './caseStore'
+import type { MgcsRecord } from '../data/glasgowMgcs'
 
 export type SavedNeuroCase = {
   id: string
@@ -10,6 +11,8 @@ export type SavedNeuroCase = {
   complaint: ComplaintContext
   neuroExam: Record<string, unknown>
   currentStep: number
+  analysis?: Record<string, unknown> | null
+  mgcs?: MgcsRecord | null
 }
 
 type HistoryState = {
@@ -38,6 +41,8 @@ export const useHistoryStore = create<HistoryState>()(
           complaint: payload.complaint,
           neuroExam: payload.neuroExam,
           currentStep: payload.currentStep,
+          analysis: payload.analysis ?? null,
+          mgcs: payload.mgcs ?? null,
         }
         set({ entries: [row, ...get().entries.filter((e) => e.id !== id)] })
         return id

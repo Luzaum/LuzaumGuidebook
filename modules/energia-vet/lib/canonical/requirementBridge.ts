@@ -1,4 +1,4 @@
-import type { Species } from '../types'
+import type { Species } from '../../types'
 
 /** Perfil energético → exigência FEDIAF para adequação nutricional (sem perfis de doença legados). */
 export const BOOK_ENERGY_TO_REQUIREMENT_PROFILE: Record<string, string> = {

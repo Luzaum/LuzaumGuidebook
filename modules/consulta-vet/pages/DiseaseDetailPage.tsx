@@ -49,8 +49,9 @@ const UI_TEXT = {
   clinicalSigns: '5. Sinais clínicos e correlação fisiopatológica',
   diagnosis: '6. Como diagnosticar',
   treatment: '7. Como tratar',
-  prevention: '8. Prevenção',
-  references: '9. Referências',
+  complications: '8. Complicações e prognóstico',
+  prevention: '9. Prevenção e plano domiciliar',
+  references: '10. Referências',
   related: 'Relacionados',
   relatedContent: 'Conteúdo relacionado',
   consensus: 'Consensos',
@@ -72,10 +73,10 @@ function EditorialPanel({
   className?: string;
 }) {
   return (
-    <section id={id} className={`scroll-mt-24 rounded-[30px] border border-border bg-card/92 p-7 shadow-sm md:p-8 ${className}`.trim()}>
+    <section id={id} className={`scroll-mt-24 rounded-[28px] border border-border bg-card/92 p-6 shadow-sm md:p-8 ${className}`.trim()}>
       <div className="mb-6">
-        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
-        {lead ? <p className="mt-2 max-w-[102ch] text-sm leading-7 text-muted-foreground">{lead}</p> : null}
+        <h2 className="text-2xl md:text-[26px] font-bold tracking-tight text-foreground">{title}</h2>
+        {lead ? <p className="mt-2 max-w-[102ch] text-sm leading-relaxed text-muted-foreground">{lead}</p> : null}
       </div>
       {children}
     </section>
@@ -186,6 +187,7 @@ export function DiseaseDetailPage() {
       { id: 'clinicalSignsPathophysiology', label: UI_TEXT.clinicalSigns },
       { id: 'diagnosis', label: UI_TEXT.diagnosis },
       { id: 'treatment', label: UI_TEXT.treatment },
+      disease.complications ? { id: 'complications', label: UI_TEXT.complications } : null,
       { id: 'prevention', label: UI_TEXT.prevention },
       relatedConsensos.length > 0 || relatedMedications.length > 0 ? { id: 'related', label: UI_TEXT.related } : null,
       disease.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
@@ -254,9 +256,9 @@ export function DiseaseDetailPage() {
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <DiseaseReferenceProvider references={disease.references}>
     <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
-      <div className="w-full min-w-0 flex-1 px-4 py-4 md:px-8 md:py-8 xl:px-10 xl:pr-8 2xl:px-12">
+      <div className="w-full min-w-0 flex-1 px-4 py-3 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
-          className="consulta-vet-breadcrumb mb-7 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
+          className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
           aria-label="Navegação estrutural"
         >
           <Link to="/consulta-vet" className="transition-colors hover:text-primary">
@@ -270,59 +272,59 @@ export function DiseaseDetailPage() {
           <span className="truncate text-foreground">{disease.title}</span>
         </nav>
 
-        <ConsultaVetSurface accent="primary" className="p-6 shadow-md md:p-8 xl:p-10">
+        <ConsultaVetSurface accent="primary" className="p-4 shadow-sm sm:p-5 md:p-6">
           {disease.isDemonstrative && disease.warningLabel ? (
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
-              <AlertTriangle className="h-3 w-3" />
+            <div className="mb-3.5 inline-flex items-center gap-2 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-800 dark:bg-amber-900/30 dark:text-amber-400">
+              <AlertTriangle className="h-3.5 w-3.5" />
               {disease.warningLabel}
             </div>
           ) : null}
 
-          <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0 flex-1">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-primary">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                   {formatSpeciesList(disease.species)}
                 </span>
                 {getDiseaseCategorySlugs(disease).map((catSlug) => (
                   <span
                     key={catSlug}
-                    className="rounded-full border border-border bg-muted/40 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground"
+                    className="rounded-full border border-border bg-muted/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
                   >
                     {getSpecialtyVisual(catSlug).label}
                   </span>
                 ))}
               </div>
 
-              <h1 className="mt-5 text-3xl font-bold leading-tight tracking-tight text-foreground md:text-5xl">
+              <h1 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2rem]">
                 {disease.title}
               </h1>
               {disease.subtitle ? (
-                <p className="mt-3 max-w-[72ch] text-base leading-relaxed text-muted-foreground md:text-lg">
+                <p className="mt-1 max-w-[80ch] text-xs leading-relaxed text-muted-foreground sm:text-sm">
                   {disease.subtitle}
                 </p>
               ) : null}
 
-              <div className="mt-5">
-                <TagPills tags={disease.tags} maxVisible="all" />
+              <div className="mt-3">
+                <TagPills tags={disease.tags} maxVisible="all" singleLine />
               </div>
             </div>
 
-            <div className="flex shrink-0 items-center gap-2 self-start">
+            <div className="flex shrink-0 items-center gap-1.5 self-start pt-0.5">
               <button
-                className="rounded-full border border-border bg-background/80 p-3 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-background/80 text-muted-foreground transition-colors hover:border-primary/30 hover:text-foreground"
                 title={UI_TEXT.copyLink}
                 type="button"
                 onClick={handleCopyLink}
               >
-                <Share2 className="h-5 w-5" />
+                <Share2 className="h-4 w-4" />
               </button>
-              <FavoriteButton entityType="disease" entityId={disease.id} className="h-12 w-12 border border-border bg-background/80 p-3" />
+              <FavoriteButton entityType="disease" entityId={disease.id} className="h-9 w-9 border border-border bg-background/80 p-2" />
             </div>
           </div>
         </ConsultaVetSurface>
 
-        <div className="space-y-8 pb-10 pt-8 md:space-y-10">
+        <div className="space-y-6 pb-8 pt-5 md:space-y-7">
           <section id="quick-summary" className="scroll-mt-24">
             {(() => {
               const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
@@ -415,7 +417,7 @@ export function DiseaseDetailPage() {
               return (
                 <div
                   className={cn(
-                    'relative overflow-hidden rounded-[34px] border p-6 text-white shadow-lg md:p-8 xl:p-10 transition-all duration-300',
+                    'relative overflow-hidden rounded-[28px] border p-5 text-white shadow-lg md:p-7 xl:p-8 transition-all duration-300',
                     theme.border,
                     theme.gradient,
                     'ring-1 ring-white/10 dark:ring-white/5'
@@ -430,7 +432,7 @@ export function DiseaseDetailPage() {
                     className={cn("pointer-events-none absolute -right-10 -top-10 h-64 w-64 rounded-full blur-3xl opacity-40", theme.glow)}
                   />
                   <div className="relative z-10">
-                    <p className="mb-5 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
+                    <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.24em] text-white/85 drop-shadow-sm">
                       {UI_TEXT.quickSummary}
                     </p>
                     {disease.quickSummaryRich ? (
@@ -441,7 +443,7 @@ export function DiseaseDetailPage() {
                       />
                     ) : (
                       <div className="max-w-[108ch] text-white/95">
-                        <p className="text-xl leading-9 drop-shadow-sm md:text-[28px] md:leading-[1.45]">{disease.quickSummary}</p>
+                        <p className="text-xl leading-9 drop-shadow-sm md:text-[26px] md:leading-[1.4]">{disease.quickSummary}</p>
                       </div>
                     )}
                   </div>
@@ -491,6 +493,16 @@ export function DiseaseDetailPage() {
               <DiseaseSectionFrame sectionId="treatment" title={UI_TEXT.treatment}>
                 <DiseaseSectionRenderer id="treatment" hideTitle title={UI_TEXT.treatment} data={disease.treatment} />
               </DiseaseSectionFrame>
+              {disease.complications ? (
+                <DiseaseSectionFrame sectionId="complications" title={UI_TEXT.complications}>
+                  <DiseaseSectionRenderer
+                    id="complications"
+                    hideTitle
+                    title={UI_TEXT.complications}
+                    data={disease.complications}
+                  />
+                </DiseaseSectionFrame>
+              ) : null}
               <DiseaseSectionFrame sectionId="prevention" title={UI_TEXT.prevention}>
                 <DiseaseSectionRenderer id="prevention" hideTitle title={UI_TEXT.prevention} data={disease.prevention} />
               </DiseaseSectionFrame>
@@ -568,4 +580,3 @@ export function DiseaseDetailPage() {
     </AbbreviationExpandedContext.Provider>
   );
 }
-

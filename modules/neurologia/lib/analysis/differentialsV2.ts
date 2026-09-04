@@ -10,6 +10,11 @@ import {
   type AnalysisDiseaseCatalogEntry,
 } from '../../data/analysisDiseaseCatalog'
 import { getComorbidityScoreBoost } from '../engine/comorbidityRules'
+import {
+  lifeStageMatchesDdxRule,
+  speciesMatchesDdxRule,
+  temporalPatternMatchesRule,
+} from './ddxNormalization'
 
 type PatientData = {
   species: 'dog' | 'cat' | null
@@ -1136,26 +1141,17 @@ export function generateDifferentials(
       let score = 64
       score += getAxisMatchScore(loaded.compatibleAxes, neuroLocalization.primary, secondaryAxes)
 
-      if (
-        history.temporalPattern &&
-        loaded.rules.course.map((c) => c.toLowerCase()).includes(history.temporalPattern.toLowerCase())
-      ) {
+      if (history.temporalPattern && temporalPatternMatchesRule(history.temporalPattern, loaded.rules.course)) {
         score += 10
       }
 
-      if (
-        patient.species &&
-        loaded.rules.species.map((s) => s.toLowerCase()).includes(patient.species.toUpperCase().substring(0, 3))
-      ) {
+      if (speciesMatchesDdxRule(patient.species, loaded.rules.species)) {
         score += 8
       } else if (patient.species && loaded.rules.species.length > 0) {
         score -= 8
       }
 
-      if (
-        patient.lifeStage &&
-        loaded.rules.ageStages.map((a) => a.toLowerCase()).includes(patient.lifeStage.toLowerCase())
-      ) {
+      if (lifeStageMatchesDdxRule(patient.lifeStage, loaded.rules.ageStages)) {
         score += 6
       }
 

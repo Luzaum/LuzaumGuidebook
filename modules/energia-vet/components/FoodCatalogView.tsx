@@ -1,11 +1,14 @@
 import { useMemo, useState } from 'react'
-import { AlertTriangle, ChevronRight, Database, Search } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { AlertTriangle, ChevronRight, Database, Search, Utensils } from 'lucide-react'
 import { Badge } from './ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
 import { filterFoods, getFoodById, getFoodDisplayName, getNutrientDefinition } from '../lib/genutriData'
 import { getCatalogDatasetStats } from '../lib/catalog'
+import { highlightMatchingSegments } from '../lib/foodSearchLexicon'
+import { SmartFoodSearchBar } from './SmartFoodSearchBar'
 import { cn } from '../lib/utils'
 import type { FoodItem } from '../types'
 
@@ -54,19 +57,50 @@ function NutrientPanel({ title, subtitle, values }: { title: string; subtitle: s
 export function FoodCatalogView({
   title,
   description,
+  initialFoodType,
+  initialCategory,
 }: {
   title: string
   description: string
+  initialFoodType?: string
+  initialCategory?: string
 }) {
   const [query, setQuery] = useState('')
+  const [activeFilter, setActiveFilter] = useState<string>(initialFoodType ?? 'all')
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null)
 
   const datasetStats = useMemo(() => getCatalogDatasetStats(), [])
-  const foods = useMemo(() => filterFoods({ query: query.trim() || undefined }), [query])
+  
+  const foods = useMemo(() => {
+    const raw = filterFoods({
+      query: query.trim() || undefined,
+      category: initialCategory,
+    })
+
+    if (activeFilter === 'all') return raw
+    if (activeFilter === 'commercial') return raw.filter((f) => f.foodType === 'commercial')
+    if (activeFilter === 'natural') return raw.filter((f) => f.foodType === 'natural')
+    if (activeFilter === 'wet') return raw.filter((f) => {
+      const pres = (f.presentation || '').toLowerCase()
+      const cat = (f.categoryNormalized || '').toLowerCase()
+      return pres.includes('sachê') || pres.includes('lata') || pres.includes('ensopado') || cat.includes('sachê') || cat.includes('lata') || cat.includes('ensopado')
+    })
+    if (activeFilter === 'supplement') return raw.filter((f) => f.foodType === 'suplemento' || f.foodType === 'enteral')
+    return raw
+  }, [activeFilter, initialCategory, query])
+
   const selectedFood = useMemo(() => getFoodById(selectedFoodId ?? foods[0]?.id ?? ''), [foods, selectedFoodId])
   const visibleMissingFields = selectedFood?.missingNutrients
     .map((key) => getNutrientDefinition(key)?.label ?? key)
     .sort((left, right) => left.localeCompare(right, 'pt-BR'))
+
+  const filterTabs = [
+    { id: 'all', label: 'Todos' },
+    { id: 'commercial', label: 'Rações Comerciais' },
+    { id: 'natural', label: 'Base Natural (TACO / USDA)' },
+    { id: 'wet', label: 'Sachês & Latas' },
+    { id: 'supplement', label: 'Suplementos & Enteral' },
+  ]
 
   return (
     <div className="nutrition-page w-full space-y-6 pb-16">
@@ -94,20 +128,62 @@ export function FoodCatalogView({
         </CardHeader>
 
         <CardContent className="space-y-5 p-5 lg:p-6">
-          <div className="relative max-w-xl">
-            <Search className="pointer-events-none absolute left-3.5 top-3.5 h-4 w-4 text-muted-foreground" />
-            <Input
-              aria-label="Buscar alimentos"
-              placeholder="Buscar em português ou inglês (ex.: renal royal, frango farmina, recovery)"
-              className="pl-10"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-            />
+          {/* Banner para o visor interativo de rações */}
+          <Link
+            to="/calculadora-energetica/commercial"
+            className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-4 rounded-2xl bg-gradient-to-r from-primary/10 via-indigo-500/10 to-primary/5 border border-primary/20 hover:border-primary/40 transition-all shadow-sm"
+          >
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+                <Utensils className="h-5 w-5" />
+              </span>
+              <div>
+                <span className="block font-bold text-sm text-foreground group-hover:text-primary transition-colors">
+                  Visor Interativo de Rações Comerciais (Saudáveis & Terapêuticas)
+                </span>
+                <span className="block text-xs text-muted-foreground">
+                  Explore 349 rações com fotos, fichas clínicas detalhadas e animação de passagem lateral.
+                </span>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-1 text-xs font-bold text-primary shrink-0 self-end sm:self-center">
+              Abrir visor interativo <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </span>
+          </Link>
+
+          <div className="flex flex-col gap-3">
+            <div className="max-w-2xl">
+              <SmartFoodSearchBar
+                value={query}
+                onChange={setQuery}
+                placeholder="Buscar por alimento, marca, indicação clínica (ex.: renal royal, farmina frango, recovery)..."
+                showQuickChips={false}
+              />
+            </div>
+
+            {/* Pílulas de filtro rápido */}
+            <div className="flex flex-wrap items-center gap-1.5 pt-1">
+              {filterTabs.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveFilter(tab.id)}
+                  className={cn(
+                    'rounded-full px-3 py-1 text-xs font-medium transition-colors outline-none focus-visible:ring-2 focus-visible:ring-ring',
+                    activeFilter === tab.id
+                      ? 'bg-primary text-primary-foreground font-semibold shadow-sm'
+                      : 'bg-muted/70 text-muted-foreground hover:bg-muted hover:text-foreground',
+                  )}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
           </div>
 
           <p className="text-sm text-muted-foreground">
             <strong className="font-semibold text-foreground">{foods.length}</strong>
-            {query.trim() ? ' resultados' : ' alimentos cadastrados'} · clique em uma linha para abrir a ficha
+            {query.trim() || activeFilter !== 'all' ? ' resultados encontrados' : ' alimentos cadastrados'} · clique em uma linha para abrir a ficha
           </p>
 
           <div className="grid gap-5 2xl:grid-cols-[minmax(0,1.5fr)_minmax(360px,0.5fr)]">
@@ -117,7 +193,6 @@ export function FoodCatalogView({
                   <TableRow>
                     <TableHead className="w-[280px] px-4">Alimento</TableHead>
                     <TableHead>Categoria</TableHead>
-                    <TableHead>Espécie</TableHead>
                     <TableHead className="text-right">Energia</TableHead>
                     <TableHead className="text-right">Proteína</TableHead>
                     <TableHead className="text-right">Gordura</TableHead>
@@ -129,12 +204,14 @@ export function FoodCatalogView({
                 <TableBody>
                   {foods.map((food, foodIndex) => {
                     const active = selectedFood?.id === food.id
+                    const displayName = getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })
+                    const segments = query.trim() ? highlightMatchingSegments(displayName, query) : null
                     return (
                       <TableRow
                         key={`${food.id}-${foodIndex}`}
                         role="button"
                         tabIndex={0}
-                        aria-label={`Abrir ficha de ${getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}`}
+                        aria-label={`Abrir ficha de ${displayName}`}
                         className={cn('cursor-pointer outline-none focus-visible:bg-primary/[0.06]', active && 'bg-primary/[0.06]')}
                         onClick={() => setSelectedFoodId(food.id)}
                         onKeyDown={(event) => {
@@ -145,12 +222,33 @@ export function FoodCatalogView({
                         }}
                       >
                         <TableCell className="px-4 py-3">
-                          <p className="max-w-[260px] truncate font-semibold text-foreground">{getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })}</p>
+                          <p className="max-w-[260px] truncate font-semibold text-foreground">
+                            {segments ? (
+                              segments.map((seg, i) =>
+                                seg.match ? (
+                                  <mark key={i} className="rounded bg-primary/20 text-primary font-bold px-0.5">
+                                    {seg.text}
+                                  </mark>
+                                ) : (
+                                  <span key={i}>{seg.text}</span>
+                                ),
+                              )
+                            ) : (
+                              displayName
+                            )}
+                          </p>
                           <p className="mt-0.5 max-w-[260px] truncate text-xs text-muted-foreground">{food.presentation || food.foodType}</p>
                         </TableCell>
                         <TableCell className="max-w-[160px] truncate text-muted-foreground">{food.categoryNormalized ?? 'Sem categoria'}</TableCell>
-                        <TableCell><Badge variant="outline">{getSpeciesLabel(food)}</Badge></TableCell>
-                        <TableCell className="text-right font-semibold tabular-nums">{formatNumber(food.nutrientsAsFed.energyKcalPer100g, ' kcal', 0)}</TableCell>
+                        <TableCell className="text-right font-semibold tabular-nums">
+                          {food.nutrientsAsFed.energyKcalPer100g != null && food.nutrientsAsFed.energyKcalPer100g > 0 ? (
+                            formatNumber(food.nutrientsAsFed.energyKcalPer100g, ' kcal', 0)
+                          ) : (
+                            <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[11px] font-medium text-amber-700 dark:text-amber-300">
+                              Pendente
+                            </span>
+                          )}
+                        </TableCell>
                         <TableCell className="text-right tabular-nums">{formatNumber(food.nutrientsAsFed.crudeProteinPct, '%')}</TableCell>
                         <TableCell className="text-right tabular-nums">{formatNumber(food.nutrientsAsFed.etherExtractPct, '%')}</TableCell>
                         <TableCell className="text-right tabular-nums">{formatNumber(food.nutrientsAsFed.dryMatterPct, '%')}</TableCell>

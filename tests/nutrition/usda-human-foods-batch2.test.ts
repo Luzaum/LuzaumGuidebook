@@ -84,26 +84,26 @@ test('nome USDA original preservado — não substituído por equivalente brasil
 
 test('dados ausentes permanecem null — nunca zero forçado', () => {
   for (const food of batchFoods()) {
-    if (food.id.startsWith('br-pending-')) {
+    if (food.id.startsWith('br-pending-') && note(food.id, 'source_type') === 'BRAZILIAN_COMPOSITION_REQUIRED') {
       assert.ok(food.nutrientsAsFed.taurinePct == null)
-      assert.ok(food.nutrientsAsFed.epaPct == null || food.nutrientsAsFed.epaPct == null)
+      assert.ok(food.nutrientsAsFed.omega3Pct == null)
       continue
     }
-    assert.ok(food.nutrientsAsFed.vitaminDIu == null || food.nutrientsAsFed.vitaminDIu === null)
-    assert.ok(food.nutrientsAsFed.omega3Pct == null)
+    assert.ok(food.nutrientsAsFed.chloridePct == null)
+    assert.ok(food.nutrientsAsFed.iodineMg == null)
   }
 })
 
 test('energia calculada identificada nos metadados', () => {
   for (const food of batchFoods()) {
-    if (food.id.startsWith('br-pending-')) continue
+    if (food.id.startsWith('br-pending-') && note(food.id, 'source_type') === 'BRAZILIAN_COMPOSITION_REQUIRED') continue
     assert.equal(note(food.id, 'energy_value_kind'), 'calculated')
     assert.equal(note(food.id, 'energy_derivation'), 'general_atwater_4_4_9')
   }
 })
 
 test('registros USDA exigem atualização FDC futura', () => {
-  for (const item of source.filter((row) => !row.pending)) {
+  for (const item of source.filter((row) => !row.pending && row.usdaFoodCode)) {
     assert.equal(note(item.id, 'requires_current_fdc_refresh'), 'true')
   }
 })
@@ -129,6 +129,10 @@ test('busca encontra novos peixes e vísceras em português (dataset completo)',
   assert.ok(find('truta', 'usda-fndds-26151123'))
   assert.ok(find('figado frango', 'usda-fndds-25110420'))
   assert.ok(find('quinoa cozida', 'usda-fndds-56204005'))
+  assert.ok(find('traira', 'br-pending-traira'))
+  assert.ok(find('chuchu', 'br-pending-chuchu'))
+  assert.ok(find('jilo', 'br-pending-jilo'))
+  assert.ok(find('tapioca', 'br-pending-tapioca-goma-mandioca'))
 })
 
 test('lote FNDDS permanece oculto na busca padrão do catálogo', () => {
@@ -140,12 +144,24 @@ test('lote FNDDS permanece oculto na busca padrão do catálogo', () => {
 
 test('pendentes brasileiros sem composição nutricional', () => {
   const pending = source.filter((item) => item.pending)
-  assert.equal(pending.length, 21)
+  assert.equal(pending.length, 17)
   for (const item of pending) {
     const food = getFoodById(item.id)
     assert.ok(food)
     assert.equal(note(item.id, 'source_type'), 'BRAZILIAN_COMPOSITION_REQUIRED')
     assert.equal(note(item.id, 'clinical_use_status'), 'blocked_pending_data')
     assert.equal(food.nutrientsAsFed.energyKcalPer100g, null)
+  }
+})
+
+test('alimentos brasileiros integrados possuem composição nutricional completa', () => {
+  const integratedIds = ['br-pending-traira', 'br-pending-chuchu', 'br-pending-jilo', 'br-pending-tapioca-goma-mandioca']
+  for (const id of integratedIds) {
+    const food = getFoodById(id)
+    assert.ok(food)
+    assert.equal(note(id, 'source_type'), 'TACO')
+    assert.equal(note(id, 'clinical_use_status'), 'reference_only')
+    assert.ok(typeof food.nutrientsAsFed.energyKcalPer100g === 'number' && food.nutrientsAsFed.energyKcalPer100g > 0)
+    assert.ok(food.nutrientsAsFed.dryMatterPct != null && food.nutrientsAsFed.dryMatterPct > 0)
   }
 })

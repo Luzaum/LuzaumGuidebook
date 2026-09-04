@@ -1,5 +1,7 @@
 # Lista de Alimentos para Classificação
 
+> **Status (ago/2026):** Os **311 alimentos comerciais** em `modules/energia-vet/data/genutri-dataset.json` foram classificados automaticamente pelo script `scripts/classify-commercial-foods.mjs`, inferindo `lifeStage`, `neuterStatus`, `isTherapeutic` e `therapeuticIndications` a partir do **nome e da indicação já existentes** (sem regras clínicas customizadas). A lista abaixo permanece como referência editorial; valores inferidos estão no JSON.
+
 ## Formato de Resposta Esperado
 
 Para cada alimento, você deve fornecer:

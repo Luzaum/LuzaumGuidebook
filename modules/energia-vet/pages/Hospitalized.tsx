@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
-import { AlertTriangle, Cat, ClipboardList, Dog, Download, ShieldAlert, Stethoscope, Syringe } from 'lucide-react'
+import { AlertTriangle, ClipboardList, Download, ShieldAlert, Stethoscope, Syringe } from 'lucide-react'
+import { SpeciesPortrait } from '@/components/SpeciesPortraitCards'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Input } from '../components/ui/input'
 import { LocalizedNumberInput } from '../components/ui/localized-number-input'
@@ -95,9 +96,8 @@ export default function Hospitalized() {
             <section>
               <Label>Espécie</Label>
               <div className="mt-2 grid grid-cols-2 gap-2">
-                {([{ id: 'dog' as const, label: 'Cão', icon: Dog }, { id: 'cat' as const, label: 'Gato', icon: Cat }]).map((item) => {
-                  const Icon = item.icon
-                  return <button key={item.id} type="button" aria-pressed={species === item.id} onClick={() => setSpecies(item.id)} className={cn('flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', species === item.id ? 'border-primary/45 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}><Icon className="h-5 w-5" /> {item.label}</button>
+                {([{ id: 'dog' as const, label: 'Cão' }, { id: 'cat' as const, label: 'Gato' }]).map((item) => {
+                  return <button key={item.id} type="button" aria-pressed={species === item.id} onClick={() => setSpecies(item.id)} className={cn('flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border text-sm font-semibold outline-none transition-colors focus-visible:ring-3 focus-visible:ring-ring/25', species === item.id ? 'border-primary/45 bg-primary/[0.08] text-primary' : 'border-border bg-card text-muted-foreground hover:bg-muted')}><span className="h-8 w-8 overflow-hidden rounded-lg bg-white"><SpeciesPortrait species={item.id} decorative className="h-full w-full" /></span>{item.label}</button>
                 })}
               </div>
             </section>

@@ -446,7 +446,7 @@ Dose clínica: conforme orientação do fabricante.`)],
   medicationPrecautions: [
     'Não selecionar maropitant e ondansetrona automaticamente; reservar a associação para náusea ou vômito refratário',
     'Não utilizar metronidazol, tilosina ou outros antimicrobianos rotineiramente em cães estáveis com gastroenterite aguda não complicada',
-    'Não incluir omeprazol, sucralfato ou outros gastroprotetores automaticamente; reservá-los para hematêmese, melena, esofagite ou suspeita de erosão/ulceração gastrointestinal',
+    'Não incluir omeprazol, sucralfato ou outros gastroprotetores automaticamente; reservá-los para hematêmese, melena, esofagite ou suspeita de erosão/úlceração gastrointestinal',
   ],
   returnSigns: [
     'Vômitos persistentes',
@@ -483,12 +483,12 @@ Após controle da tosse, aumentar gradualmente o intervalo entre as administraç
       key: 'codeine',
       label: 'Codeína (alternativa)',
       medications: [medication('codeine-tc-dog', 'Codeína', {
-        min: 1, max: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 a 12 horas', duration: '5 a 7 dias',
+        min: 1, max: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 6 a 12 horas', duration: 'teste curto; reavaliar em 48 a 72 horas e antes de prolongar além de 7 dias',
       }, `1. CODEÍNA — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 5 a 7 dias.
+Administrar A PREENCHER por via oral, a cada 6 a 12 horas. Fazer contato de reavaliação em 48 a 72 horas e manter somente se houver benefício clínico sem sedação excessiva.
 
-Não associar codeína e hidrocodona.`, { presentationFilter: 'oral' })],
+Não associar a hidrocodona, butorfanol ou outro antitussígeno opioide. Não usar para tosse produtiva com retenção de secreções.`, { presentationFilter: 'oral' })],
     },
     {
       key: 'prednisolone',

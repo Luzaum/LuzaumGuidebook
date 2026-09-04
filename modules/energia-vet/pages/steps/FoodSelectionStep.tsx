@@ -6,7 +6,9 @@ import { Button } from '../../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../../components/ui/card'
 import { Input } from '../../components/ui/input'
 import { FoodDetailDialog, FoodInfoButton } from '../../components/FoodDetailDialog'
+import { SmartFoodSearchBar } from '../../components/SmartFoodSearchBar'
 import { filterFoods, getFoodById, getFoodDisplayName } from '../../lib/genutriData'
+import { highlightMatchingSegments } from '../../lib/foodSearchLexicon'
 import { classifyFoodByBook } from '../../lib/foodTaxonomy'
 import { distributeEqually } from '../../lib/diet-math'
 import { useCalculationStore } from '../../store/calculationStore'
@@ -111,20 +113,17 @@ export default function FoodSelectionStep() {
         <CardContent className="space-y-5 pt-4">
           <section className="rounded-2xl border border-border p-3 space-y-4">
             <div className="grid gap-3 lg:grid-cols-[1fr_auto]">
-              <div className="relative">
-                <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-                <Input
-                  aria-label="Buscar alimentos"
+              <div className="w-full">
+                <SmartFoodSearchBar
                   value={query}
-                  onChange={(event) => {
-                    setQuery(event.target.value)
+                  onChange={(value) => {
+                    setQuery(value)
                     setShowAll(false)
                   }}
-                  placeholder="Buscar por alimento, marca ou apresentação"
-                  className="pl-10"
+                  placeholder="Buscar por alimento, marca, condição clínica (ex.: renal royal, frango)..."
                 />
               </div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground self-start mt-2">
                 <SlidersHorizontal className="h-4 w-4" /> {filteredFoods.length} alimento(s)
               </div>
             </div>
@@ -165,6 +164,7 @@ export default function FoodSelectionStep() {
                 const selected = selectedIds.has(food.id)
                 const displayName = getFoodDisplayName(food.name, { id: food.id, foodType: food.foodType })
                 const completeness = Object.values(food.nutrientsAsFed).filter((value) => value != null).length
+                const segments = query.trim() ? highlightMatchingSegments(displayName, query) : null
                 return (
                   <article
                     key={food.id}
@@ -176,15 +176,37 @@ export default function FoodSelectionStep() {
                     <div className="flex items-start gap-1.5">
                       <FoodInfoButton food={food} onOpen={() => setDetailsFoodId(food.id)} />
                       <div className="min-w-0">
-                        <p className="text-sm font-semibold text-foreground">{displayName}</p>
+                        <p className="text-sm font-semibold text-foreground">
+                          {segments ? (
+                            segments.map((seg, i) =>
+                              seg.match ? (
+                                <mark key={i} className="rounded bg-primary/20 text-primary font-bold px-0.5">
+                                  {seg.text}
+                                </mark>
+                              ) : (
+                                <span key={i}>{seg.text}</span>
+                              ),
+                            )
+                          ) : (
+                            displayName
+                          )}
+                        </p>
                         <p className="mt-0.5 text-[11px] text-muted-foreground">
                           {food.presentation || 'Apresentação não informada'} · {completeness} nutrientes
                         </p>
                       </div>
                     </div>
                     <p className="text-xs text-muted-foreground">{classifyFoodByBook(food)}</p>
-                    <p className="text-xs font-medium">{food.nutrientsAsFed.energyKcalPer100g?.toFixed(0) ?? '—'} kcal/100g</p>
-                    <p className="text-xs">{food.nutrientsDryMatter.crudeProteinPct?.toFixed(1) ?? '—'}% MS</p>
+                    <div>
+                      {food.nutrientsAsFed.energyKcalPer100g != null && food.nutrientsAsFed.energyKcalPer100g > 0 ? (
+                        <p className="text-xs font-semibold tabular-nums text-foreground">{food.nutrientsAsFed.energyKcalPer100g.toFixed(0)} <span className="font-normal text-muted-foreground">kcal/100g</span></p>
+                      ) : (
+                        <span className="rounded bg-amber-500/10 px-1.5 py-0.5 text-[10px] font-medium text-amber-700 dark:text-amber-300">
+                          Kcal pendente
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-xs text-muted-foreground">{food.nutrientsDryMatter.crudeProteinPct != null ? `${food.nutrientsDryMatter.crudeProteinPct.toFixed(1)}% MS` : '—'}</p>
                     <Button
                       type="button"
                       variant={selected ? 'default' : 'outline'}

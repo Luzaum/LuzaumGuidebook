@@ -335,6 +335,88 @@ export const CLINICAL_COMPANION_DETAILS: Record<string, ClinicalCompanionDetail>
       'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
     ],
   },
+  ddx_014: {
+    clinicalLinks: [
+      'Mielopatia degenerativa encaixa quando há paraparesia progressiva simétrica, ausência de dor espinhal marcante e resposta fraca ou nula a corticoide em cão de raça predisposta.',
+      'IVDD e FCE precisam ser razoavelmente excluídos antes de fechar o diagnóstico — especialmente se o curso for peragudo ou houver dor.',
+    ],
+    diagnosticPriorities: [
+      'ALTA | RM ou mielografia quando disponível | rendimento alto | Estimativa qualitativa | Confirma compressão ausente e padrão compatível com degeneração. Espera-se atrofia medular e sinal intramedular crônico.',
+      'MEDIA | Teste genético SOD1 em raças elegíveis | rendimento moderado | Estimativa qualitativa | Apoia etiologia hereditária quando o fenótipo é típico. Espera-se homozigose/at-risk conforme raça.',
+    ],
+    assessment: [
+      'Documentar simetria, progressão lenta, ausência de dor e resposta (ou não) a anti-inflamatório — isso separa DM de compressivo agudo.',
+    ],
+    monitoring: [
+      'Reavaliar escala de marcha e função urinária a cada consulta; progressão acelerada sugere reabrir diferencial compressivo.',
+    ],
+    treatment: [
+      'Fisioterapia, manejo de peso e suporte urinário/fecal costumam ser o núcleo do plano; corticoide não deve ser a única resposta se a história não sustenta inflamação.',
+    ],
+    references: [
+      'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
+    ],
+  },
+  ddx_015: {
+    clinicalLinks: [
+      'Hérnia de disco (Hansen I/II) permanece no topo quando há dor espinhal, início agudo/subagudo, raça condrodistrófica e déficit UMN ou LMN compatível com o segmento.',
+      'Dor profunda ausente em paraplegia aguda eleva urgência e muda conversa de prognóstico — não é sinônimo automático de “irreversível”, mas exige decisão rápida.',
+    ],
+    diagnosticPriorities: [
+      'ALTA | RM ou mielografia | rendimento muito alto | Estimativa qualitativa | Localiza compressão, grau e lateralização. Espera-se extrusão/protrusão e possível compressão medular.',
+      'ALTA | Dor profunda seriada e escala neurológica documentada | rendimento alto | Estimativa qualitativa | Marcadores prognósticos e de urgência. Espera-se estabilidade ou piora nas primeiras horas.',
+      'MEDIA | Radiografia ou TC se RM indisponível | rendimento moderado | Estimativa qualitativa | Triagem e planejamento cirúrgico inicial. Espera-se mineralização discal ou colapso compatível.',
+    ],
+    assessment: [
+      'Registrar horas desde perda ambulatória e status de dor profunda; Schiff–Sherrington indica lesão toracolombar cranial à intumescência lombossacra, não mau prognóstico isolado.',
+    ],
+    monitoring: [
+      'Repetir dor profunda e função motora em intervalos definidos (ex.: 4–8 h nas primeiras 24 h em casos graves).',
+    ],
+    treatment: [
+      'Analgesia multimodal, repouso estrito e decisão precoce sobre descompressão quando indicada pelo grau neurológico e tempo de evolução.',
+    ],
+    avoidDrugs: [
+      'Evitar manipulação cervical vigorosa ou posturais agressivas se houver suspeita de instabilidade ou dor cervical intensa.',
+    ],
+    references: [
+      'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
+      'ACVIM Consensus Statement on IVDD',
+    ],
+  },
+  ddx_016: {
+    clinicalLinks: [
+      'Embolia fibrocartilaginosa (FCE) entra forte com déficit peragudo, frequentemente lateralizado, dor espinhal leve ou ausente e possível redução transitória de reflexos (choque medular).',
+    ],
+    diagnosticPriorities: [
+      'ALTA | RM medular | rendimento alto | Estimativa qualitativa | Pode mostrar hiperintensidade intramedular compatível com infarto. Espera-se lesão focal sem compressão extradural dominante.',
+      'MEDIA | Reavaliação neurológica seriada nas primeiras 48 h | rendimento alto | Estimativa qualitativa | Diferencia evolução típica de FCE vs compressivo progressivo. Espera-se estabilização ou melhora parcial.',
+    ],
+    assessment: [
+      'Confirmar início máximo no primeiro exame e lateralização; piora contínua após 24–48 h favorece compressivo ou neoplasia.',
+    ],
+    monitoring: [
+      'Fisioterapia precoce quando estável; vigiar úlcera de decúbito e bexiga neurogênica.',
+    ],
+    references: [
+      'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
+    ],
+  },
+  ddx_017: {
+    clinicalLinks: [
+      'Mielite ou discospondilite devem ser lembradas com dor espinhal, febre, rigidez, curso subagudo e possível origem hematogênica (infecciosa) ou imunomediada.',
+    ],
+    diagnosticPriorities: [
+      'ALTA | RM + hemocultura/PCR conforme suspeita + liquor após imagem | rendimento alto | Estimativa qualitativa | Confirma inflamação/infecciosa vertebral ou medular. Espera-se realce discal/vertebral ou mielite.',
+      'MEDIA | Hemograma, proteína C reativa e bioquímica | rendimento moderado | Estimativa qualitativa | Sustentam processo infeccioso/inflamatório sistêmico. Espera-se inflamação variável.',
+    ],
+    treatment: [
+      'Antimicrobiano direcionado ou imunossupressão dependem da etiologia — estabilizar dor e função antes de terapia prolongada.',
+    ],
+    references: [
+      'Dewey & da Costa - Practical Guide to Canine and Feline Neurology',
+    ],
+  },
   ddx_047: {
     clinicalLinks: [
       'Raiva e uma hipotese epidemiologica e de biosseguranca; quando plausivel, muda primeiro a conduta da equipe e so depois o restante da investigacao.',

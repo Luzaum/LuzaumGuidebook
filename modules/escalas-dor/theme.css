@@ -22,6 +22,15 @@
     radial-gradient(circle at 92% 92%, rgba(45, 212, 191, 0.2), transparent 42%),
     linear-gradient(180deg, var(--dv-bg), var(--dv-bg-2));
   overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.dorvet-shell.dorvet-shell-immersive {
+  --dv-host-header-height: 3.5rem;
+  height: 100%;
+  min-height: 100%;
+  max-height: 100%;
 }
 
 .dorvet-shell.dorvet-dark {
@@ -89,6 +98,11 @@
   backdrop-filter: blur(16px);
 }
 
+.dorvet-shell .species-portrait-frame {
+  background-color: #ffffff !important;
+  backdrop-filter: none;
+}
+
 .dorvet-shell .bg-slate-50,
 .dorvet-shell .bg-slate-100 {
   background-color: color-mix(in srgb, var(--dv-surface-strong) 84%, transparent) !important;
@@ -118,7 +132,8 @@
   box-shadow: var(--dv-shadow) !important;
 }
 
-.dorvet-shell header.sticky {
+.dorvet-shell header.sticky,
+.dorvet-shell .dorvet-module-header {
   top: 0;
   z-index: 20;
   background-color: var(--dv-surface-strong) !important;
@@ -126,7 +141,8 @@
   backdrop-filter: blur(16px);
 }
 
-.dorvet-shell header.sticky > div {
+.dorvet-shell header.sticky > div,
+.dorvet-shell .dorvet-module-header > div {
   width: min(100%, 1180px);
   margin-inline: auto;
 }
@@ -152,6 +168,7 @@
   left: 14px;
   bottom: 12px;
   width: var(--dv-sidebar-width);
+  overflow-y: auto;
   border: 1px solid var(--dv-border);
   border-radius: 1.2rem;
   background: var(--dv-surface-strong);
@@ -352,6 +369,11 @@
   .dorvet-content-wrap {
     padding-left: calc(var(--dv-sidebar-width) + 1.1rem);
     padding-right: 1.1rem;
+    padding-top: 0.85rem;
+  }
+
+  .dorvet-shell .dorvet-module-header {
+    display: none;
   }
 }
 
@@ -360,4 +382,296 @@
   .dorvet-screen-frame {
     animation: none;
   }
+}
+
+/* Adaptive navigation — one information architecture, three device-specific presentations. */
+.dorvet-desktop-nav {
+  position: fixed;
+  inset: calc(var(--dv-host-header-height) + 14px) auto 14px 14px;
+  z-index: 40;
+  display: none;
+  width: var(--dv-sidebar-width);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--dv-border);
+  border-radius: 24px;
+  background: color-mix(in srgb, var(--dv-surface-strong) 94%, transparent);
+  box-shadow: var(--dv-shadow);
+  backdrop-filter: blur(22px) saturate(1.15);
+}
+
+.dorvet-brand-block {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--dv-border);
+}
+
+.dorvet-brand-logo,
+.dorvet-header-logo {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(20, 184, 166, 0.2), rgba(13, 148, 136, 0.08));
+  box-shadow: inset 0 0 0 1px rgba(20, 184, 166, 0.2);
+}
+
+.dorvet-brand-logo { width: 46px; height: 46px; }
+.dorvet-header-logo { width: 40px; height: 40px; }
+.dorvet-brand-kicker { font-size: 0.58rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dv-primary-2); }
+.dorvet-brand-title { margin-top: 0.12rem; font-size: 1rem; font-weight: 900; letter-spacing: -0.02em; color: var(--dv-text); }
+
+.dorvet-patient-context {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.85rem 0.85rem 0;
+  padding: 0.7rem;
+  border: 1px solid color-mix(in srgb, var(--dv-primary) 30%, var(--dv-border));
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--dv-primary) 8%, transparent);
+}
+
+.dorvet-species-avatar,
+.dorvet-header-species {
+  display: block;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.12);
+}
+
+.dorvet-species-avatar { width: 48px; height: 48px; }
+.dorvet-header-species { width: 38px; height: 38px; }
+
+.dorvet-adaptive-nav-list {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0.35rem;
+  overflow-y: auto;
+  padding: 0.85rem;
+}
+
+.dorvet-adaptive-nav-item,
+.dorvet-bottom-nav-item {
+  border: 1px solid transparent;
+  color: var(--dv-text-muted);
+  background: transparent;
+  transition: color 180ms ease, background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+}
+
+.dorvet-adaptive-nav-item {
+  display: flex;
+  min-height: 46px;
+  align-items: center;
+  gap: 0.7rem;
+  border-radius: 14px;
+  padding: 0.55rem 0.7rem;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.dorvet-adaptive-nav-item:hover,
+.dorvet-adaptive-nav-item.is-active {
+  color: var(--dv-text);
+  border-color: color-mix(in srgb, var(--dv-primary) 35%, transparent);
+  background: color-mix(in srgb, var(--dv-primary) 12%, transparent);
+}
+
+.dorvet-adaptive-nav-item.is-active {
+  box-shadow: inset 3px 0 0 var(--dv-primary);
+}
+
+.dorvet-nav-icon-wrap {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--dv-text) 6%, transparent);
+}
+
+.is-active .dorvet-nav-icon-wrap {
+  color: #fff;
+  background: linear-gradient(145deg, var(--dv-primary), var(--dv-primary-2));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--dv-primary) 28%, transparent);
+}
+
+.dorvet-desktop-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 1px solid var(--dv-border);
+}
+
+.dorvet-hub-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--dv-border);
+  border-radius: 12px;
+  padding: 0.5rem 0.75rem;
+  color: var(--dv-text-muted);
+  background: transparent;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.dorvet-hub-button:hover { color: var(--dv-text); background: color-mix(in srgb, var(--dv-primary) 10%, transparent); }
+
+.dorvet-responsive-header {
+  position: sticky;
+  top: 0;
+  z-index: 45;
+  display: flex;
+  min-height: 60px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--dv-border);
+  padding: max(0.45rem, env(safe-area-inset-top)) 0.75rem 0.45rem;
+  background: color-mix(in srgb, var(--dv-surface-strong) 94%, transparent);
+  backdrop-filter: blur(20px) saturate(1.2);
+}
+
+.dorvet-header-icon {
+  display: inline-flex;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--dv-border);
+  border-radius: 13px;
+  color: var(--dv-text-muted);
+  background: color-mix(in srgb, var(--dv-surface) 88%, transparent);
+}
+
+.dorvet-header-icon:hover { color: var(--dv-text); border-color: color-mix(in srgb, var(--dv-primary) 45%, var(--dv-border)); }
+
+.dorvet-tablet-nav {
+  position: sticky;
+  top: 60px;
+  z-index: 42;
+  display: none;
+  gap: 0.4rem;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--dv-border);
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--dv-surface-strong) 91%, transparent);
+  backdrop-filter: blur(16px);
+  scrollbar-width: none;
+}
+
+.dorvet-tablet-nav::-webkit-scrollbar { display: none; }
+.dorvet-tablet-nav .dorvet-adaptive-nav-item { min-width: max-content; }
+
+.dorvet-mobile-bottom-nav {
+  position: fixed;
+  inset: auto 0 0;
+  z-index: 55;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  min-height: calc(66px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--dv-border);
+  padding: 0.35rem 0.35rem env(safe-area-inset-bottom, 0px);
+  background: color-mix(in srgb, var(--dv-surface-strong) 96%, transparent);
+  box-shadow: 0 -12px 34px rgba(15, 23, 42, 0.09);
+  backdrop-filter: blur(22px) saturate(1.2);
+}
+
+.dorvet-bottom-nav-item {
+  display: flex;
+  min-width: 0;
+  min-height: 58px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  border-radius: 14px;
+  font-size: 0.61rem;
+  font-weight: 800;
+}
+
+.dorvet-bottom-nav-item .dorvet-nav-icon-wrap { width: 30px; height: 28px; background: transparent; }
+.dorvet-bottom-nav-item.is-active { color: var(--dv-primary-2); }
+.dorvet-bottom-nav-item.is-active .dorvet-nav-icon-wrap { color: #fff; background: linear-gradient(145deg, var(--dv-primary), var(--dv-primary-2)); }
+
+.dorvet-shell .dorvet-content-wrap {
+  min-height: 0;
+  padding: 0 0.35rem calc(82px + env(safe-area-inset-bottom, 0px));
+}
+
+.dorvet-shell .dorvet-content-wrap > main { padding-inline: 0; }
+
+.dorvet-step-scroll { scrollbar-width: none; }
+.dorvet-step-scroll::-webkit-scrollbar { display: none; }
+.dorvet-shell .scrollbar-none { scrollbar-width: none; }
+.dorvet-shell .scrollbar-none::-webkit-scrollbar { display: none; }
+
+.dorvet-feature-chip {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid color-mix(in srgb, var(--dv-primary) 24%, transparent);
+  border-radius: 999px;
+  padding: 0.35rem 0.65rem;
+  color: color-mix(in srgb, var(--dv-primary-2) 80%, var(--dv-text));
+  background: color-mix(in srgb, var(--dv-primary) 8%, transparent);
+  font-size: 0.67rem;
+  font-weight: 800;
+}
+
+.dorvet-quick-icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 15px;
+}
+
+.dorvet-quick-icon-teal { color: #0f766e; background: rgba(20, 184, 166, 0.12); }
+.dorvet-quick-icon-rose { color: #e11d48; background: rgba(244, 63, 94, 0.1); }
+.dorvet-quick-icon-indigo { color: #4f46e5; background: rgba(99, 102, 241, 0.11); }
+.dorvet-dark .dorvet-quick-icon-teal { color: #5eead4; background: rgba(20, 184, 166, 0.15); }
+.dorvet-dark .dorvet-quick-icon-rose { color: #fda4af; background: rgba(244, 63, 94, 0.13); }
+.dorvet-dark .dorvet-quick-icon-indigo { color: #a5b4fc; background: rgba(99, 102, 241, 0.14); }
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .dorvet-tablet-nav { display: flex; }
+  .dorvet-mobile-bottom-nav { display: none; }
+  .dorvet-shell .dorvet-content-wrap { padding: 0 0.75rem 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .dorvet-desktop-nav { display: flex; }
+  .dorvet-responsive-header,
+  .dorvet-tablet-nav,
+  .dorvet-mobile-bottom-nav { display: none; }
+  .dorvet-shell .dorvet-content-wrap {
+    padding: 0 1rem 1.5rem calc(var(--dv-sidebar-width) + 2rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .dorvet-shell main { padding-top: 1rem; }
+  .dorvet-shell .sticky.bottom-0 { bottom: calc(70px + env(safe-area-inset-bottom, 0px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dorvet-adaptive-nav-item,
+  .dorvet-bottom-nav-item,
+  .dorvet-nav-icon-wrap { transition: none; }
 }

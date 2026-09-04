@@ -264,3 +264,72 @@ export function interpretMgcsTotal(total: number): {
     monitoring: [],
   }
 }
+
+/** Pontuação parcial ou completa vinculada ao caso clínico. */
+export type MgcsRecord = {
+  motor: number | null
+  brainstem: number | null
+  consciousness: number | null
+  /** Preenchido quando os três domínios estão completos. */
+  recordedAt: string | null
+}
+
+export type MgcsSelection = Record<MgcsDomainId, number | null>
+
+export const EMPTY_MGCS: MgcsRecord = {
+  motor: null,
+  brainstem: null,
+  consciousness: null,
+  recordedAt: null,
+}
+
+export function mgcsToSelection(record: MgcsRecord | null | undefined): MgcsSelection {
+  if (!record) {
+    return { motor: null, brainstem: null, consciousness: null }
+  }
+  return {
+    motor: record.motor,
+    brainstem: record.brainstem,
+    consciousness: record.consciousness,
+  }
+}
+
+export function isMgcsComplete(record: MgcsRecord | null | undefined): record is MgcsRecord & {
+  motor: number
+  brainstem: number
+  consciousness: number
+} {
+  return (
+    record != null &&
+    record.motor != null &&
+    record.brainstem != null &&
+    record.consciousness != null
+  )
+}
+
+export function mgcsTotal(record: MgcsRecord | null | undefined): number | null {
+  if (!isMgcsComplete(record)) return null
+  return record.motor + record.brainstem + record.consciousness
+}
+
+export function mgcsPreviewTotal(record: MgcsRecord | null | undefined): number {
+  const sel = mgcsToSelection(record)
+  return (sel.motor ?? 0) + (sel.brainstem ?? 0) + (sel.consciousness ?? 0)
+}
+
+export function applyMgcsDomainScore(
+  record: MgcsRecord | null | undefined,
+  domain: MgcsDomainId,
+  score: number,
+): MgcsRecord {
+  const next: MgcsRecord = { ...(record ?? EMPTY_MGCS), [domain]: score }
+  next.recordedAt = isMgcsComplete(next) ? new Date().toISOString() : null
+  return next
+}
+
+export function formatMgcsLine(record: MgcsRecord | null | undefined): string | null {
+  const total = mgcsTotal(record)
+  if (total == null || !record) return null
+  const band = interpretMgcsTotal(total)
+  return `MGCS ${total}/18 (${band.severity}) — M ${record.motor} · TE ${record.brainstem} · NC ${record.consciousness}`
+}

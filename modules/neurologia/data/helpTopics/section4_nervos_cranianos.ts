@@ -238,4 +238,24 @@ export const section4NervosCranianos: HelpTopic[] = [
     suggestedTests: ['thoracic_radiograph'],
     clinicalAlerts: ['Risco imediato de aspiração. Não forçar via oral.'],
   },
+  {
+    id: 's4-oculocefalico-oquee',
+    title: 'Reflexo oculocefálico (VOR) — o que avalia',
+    whatItAssesses:
+      'Movimentos compensatórios dos olhos quando a cabeça é movida lentamente em horizontal/vertical. Avalia integração vestibular central (núcleos vestibulares, VIII, conexões oculomotoras) e é útil em TCE, coma e suspeita de lesão de tronco — especialmente quando PLR está alterado.',
+    neuroanatomy:
+      'Estímulo vestibular → núcleos vestibulares → vias para III/IV/VI. Depende de tronco encefálico íntegro; diferente da ameaça (cortical). Ausência com PLR alterado reforça comprometimento bulbar ou de via pupilar associada.',
+    howToPerform:
+      'Somente se não houver suspeita de instabilidade cervical. Mover a cabeça lentamente para os lados e observar se os olhos acompanham (ou se há nistagmo fisiológico). Evitar rotação brusca em trauma cervical.',
+    interpretation:
+      'Preservado com mentação rebaixada sugere tronco parcialmente funcional. Ausente em paciente com déficits de NC e rebaixamento aumenta suspeita de lesão troncoencefálica grave. Correlacionar com MGCS (domínio tronco).',
+    pitfalls:
+      'Movimento rápido demais induz nistagmo fisiológico; trauma cervical instável; confundir com estrabismo posicional vestibular.',
+    tags: ['oculocefalico', 'VOR', 'vestibular-central', 'VIII', 'tronco'],
+    severityWeight: 2,
+    localizationHint: ['tronco-encefalico', 'vestibular-central'],
+    diagnosticWeight: 2,
+    neuroLocalization: ['brainstem', 'vestibular_central'],
+    cranialNerves: [3, 4, 6, 8],
+  },
 ]

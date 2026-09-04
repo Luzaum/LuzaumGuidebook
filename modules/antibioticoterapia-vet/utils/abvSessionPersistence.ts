@@ -7,6 +7,7 @@ export const ABV_SESSION_KEYS = {
   diseasesUi: 'vetius.abv.diseasesUi.v1',
   antibioticsUi: 'vetius.abv.antibioticsUi.v1',
   perioperativeUi: 'vetius.abv.perioperativeUi.v1',
+  patientContextUi: 'vetius.abv.patientContextUi.v1',
 } as const
 
 export type AbvAppPersistV1 = {

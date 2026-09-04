@@ -69,6 +69,69 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
         highlights: ['causa da exacerbação', 'citologia', 'tratamento antisséptico'],
       },
     ],
+    diagnosticFlow: {
+      title: 'Fluxo diagnóstico (exclusão)',
+      steps: [
+        {
+          label: '1. História e distribuição',
+          detail:
+            'Início tipicamente <3 anos; prurido recorrente em face, orelhas, axilas, virilhas e patas. Aplicar critérios de Favrot como apoio, não como prova isolada (Olivry et al., ICADA 2015).',
+        },
+        {
+          label: '2. Excluir ectoparasitas',
+          detail:
+            'Tratamento rigoroso contra pulgas (DAPP) por ≥4–8 semanas e raspado/pente para Sarcoptes, Demodex e outros. Pulga pode ser o único gatilho ou co-fator (Hensel et al., 2015).',
+        },
+        {
+          label: '3. Excluir alergia alimentar',
+          detail:
+            'Dieta de eliminação exclusiva por 8–12 semanas com desafio opcional. Resposta alimentar não exclui atopia concomitante (Olivry et al., 2015).',
+        },
+        {
+          label: '4. Excluir infecção secundária',
+          detail:
+            'Citologia cutânea/auricular antes de rotular “falha de antipruriginoso”. Piodermite por Staphylococcus e Malassezia amplificam prurido (ISCAID Pyoderma 2025).',
+        },
+        {
+          label: '5. Confirmar DAC clinicamente',
+          detail:
+            'Após exclusões, o diagnóstico é clínico. Teste intradérmico (TID) ou IgE sérica NÃO diagnosticam — servem apenas para selecionar alérgenos da imunoterapia alérgeno-específica (ASIT) (Olivry et al., 2015).',
+          limitations: 'IgE sérica tem sensibilidade/especificidade limitadas para diagnóstico primário.',
+        },
+      ],
+    },
+    treatmentFlow: {
+      title: 'Fluxo terapêutico',
+      steps: [
+        {
+          label: '1. Crise aguda',
+          detail:
+            'Identificar e tratar gatilho (infecção, pulga). Prurido focal: glucocorticoide tópico. Generalizado: oclacitinib 0,4–0,6 mg/kg q12h até 14 dias → q24h; lokivetmab ≥2 mg/kg SC q4–8 sem; ou glucocorticoide oral curto (Plumb\'s 10ª ed.).',
+          reassess: 'Reavaliar em 2–4 semanas; citologia se piora.',
+        },
+        {
+          label: '2. Infecção secundária',
+          detail:
+            'Piodermite superficial: terapia tópica antisséptica (clorexidina ± miconazol) como primeira linha (ISCAID 2025). Sistêmico se profunda, generalizada ou falha tópica.',
+        },
+        {
+          label: '3. Manutenção de barreira',
+          detail:
+            'Shampoo/condicionador emoliente, ácidos graxos essenciais e controle ambiental de alérgenos. Base contínua independentemente do antipruriginoso sistêmico.',
+        },
+        {
+          label: '4. Imunomodulação de longo prazo',
+          detail:
+            'ASIT após TID/IgE para formulação; ciclosporina 5 mg/kg q24h (4–6 sem para efeito máximo); ou oclacitinib/lokivetmab/ilunocitinib conforme perfil do paciente (Olivry et al., 2015).',
+          duration: 'ASIT: 6–12 meses para resposta máxima; ciclosporina: manutenção após indução.',
+        },
+        {
+          label: '5. Monitorização',
+          detail:
+            'Revisar otite, recidiva infecciosa, efeitos adversos de JAK/inibidores e adesão ambiental. Documentar vacinação se ilunocitinib (suspender 28 d–3 meses antes de vacinas — FDA Zenrelia).',
+        },
+      ],
+    },
   },
   etiology: {
     definicao:

@@ -1,85 +1,76 @@
 import React from 'react';
 import { Info, BookOpen, ShieldAlert, ActivitySquare } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { PageHeader } from './PageHeader';
+import { ACERVO_BOOKS, ACERVO_PATH } from '../../lib/acervo';
 
-export const AboutView: React.FC = () => {
-  return (
-    <div className="w-full space-y-8">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-12 h-12 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 flex items-center justify-center text-indigo-500 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-500/20 transition-colors duration-200">
-          <Info className="w-6 h-6" />
+export const AboutView: React.FC = () => (
+  <div className="mx-auto w-full max-w-4xl space-y-6">
+    <PageHeader
+      icon={Info}
+      title="Referências e segurança"
+      description="Escopo clínico, acervo bibliográfico e limites de uso"
+    />
+
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="mb-4 flex items-center gap-3">
+        <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-500 text-white">
+          <ActivitySquare className="h-5 w-5" />
         </div>
         <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Referências e segurança</h2>
-          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Escopo clínico, fontes e limites de uso</p>
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Escopo clínico</h2>
+          <p className="text-sm text-emerald-600 dark:text-emerald-400">Infusões contínuas e preparo hospitalar</p>
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:col-span-2 space-y-6"
-        >
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-8 transition-colors duration-200">
-            <div className="flex items-center gap-4 mb-6">
-              <div className="w-16 h-16 bg-emerald-500 rounded-2xl flex items-center justify-center shadow-inner shrink-0">
-                <ActivitySquare className="w-8 h-8 text-white" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight transition-colors duration-200">Escopo clínico</h1>
-                <p className="text-emerald-600 dark:text-emerald-400 font-bold tracking-widest uppercase text-sm mt-1 transition-colors duration-200">Infusões contínuas</p>
-              </div>
-            </div>
-            
-            <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 transition-colors duration-200">
-              <p className="text-lg leading-relaxed mb-4">
-                Cálculos de infusão contínua (CRI), diluições e preparo de fármacos para uso hospitalar veterinário.
-              </p>
-              <p className="leading-relaxed">
-                Os cálculos consideram os dados do paciente e as propriedades físico-químicas e farmacocinéticas dos medicamentos para sinalizar riscos relevantes.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20 rounded-2xl p-6 shadow-sm transition-colors duration-200">
-            <h3 className="text-red-800 dark:text-red-400 font-bold text-lg flex items-center gap-2 mb-3 transition-colors duration-200">
-              <ShieldAlert className="w-5 h-5" /> Aviso Legal Importante
-            </h3>
-            <p className="text-red-700 dark:text-red-300 text-sm leading-relaxed font-medium transition-colors duration-200">
-              Os cálculos são auxiliares e <strong>NÃO SUBSTITUEM</strong> o julgamento clínico do médico-veterinário. Doses e diluições devem ser conferidas pelo profissional responsável antes da administração.
-            </p>
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="space-y-6"
-        >
-          <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 transition-colors duration-200">
-            <h3 className="font-bold text-slate-800 dark:text-white flex items-center gap-2 mb-4 transition-colors duration-200">
-              <BookOpen className="w-5 h-5 text-indigo-500 dark:text-indigo-400" /> Referências Base
-            </h3>
-            <ul className="space-y-3 text-sm text-slate-600 dark:text-slate-400 transition-colors duration-200">
-              <li className="flex gap-2 items-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 mt-1.5 shrink-0 transition-colors duration-200" />
-                <span>Plumb's Veterinary Drug Handbook (9th Ed.)</span>
-              </li>
-              <li className="flex gap-2 items-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 mt-1.5 shrink-0 transition-colors duration-200" />
-                <span>BSAVA Small Animal Formulary (10th Ed.)</span>
-              </li>
-              <li className="flex gap-2 items-start">
-                <div className="w-1.5 h-1.5 rounded-full bg-slate-300 dark:bg-slate-600 mt-1.5 shrink-0 transition-colors duration-200" />
-                <span>Veterinary Anesthesia and Analgesia (Lumb and Jones, 5th Ed.)</span>
-              </li>
-            </ul>
-          </div>
-
-        </motion.div>
-      </div>
+      <p className="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        Cálculos de CRI, diluições e prescrições práticas para uso veterinário. Doses e protocolos foram
+        alinhados ao acervo local, com prioridade para{' '}
+        <strong>Lumb &amp; Jones</strong> (anestesia), <strong>Plumb&apos;s 10ª ed.</strong> (fármacos) e{' '}
+        <strong>Ettinger 9ª ed.</strong> (medicina interna, linha Nelson &amp; Couto).
+      </p>
     </div>
-  );
-};
+
+    <div className="rounded-2xl border border-rose-200 bg-rose-50 p-5 dark:border-rose-500/30 dark:bg-rose-500/10">
+      <h3 className="mb-2 flex items-center gap-2 text-base font-semibold text-rose-800 dark:text-rose-300">
+        <ShieldAlert className="h-5 w-5" /> Aviso legal
+      </h3>
+      <p className="text-sm leading-relaxed text-rose-900/90 dark:text-rose-100/90">
+        Ferramenta auxiliar — não substitui julgamento clínico. Conferir doses, compatibilidades e
+        prescrição final antes de administrar.
+      </p>
+    </div>
+
+    <div className="rounded-2xl border border-slate-200 bg-white p-5 dark:border-slate-800 dark:bg-slate-900">
+      <h3 className="mb-4 flex items-center gap-2 text-base font-semibold text-slate-900 dark:text-white">
+        <BookOpen className="h-5 w-5 text-emerald-600" /> Acervo bibliográfico
+      </h3>
+      <p className="mb-4 text-xs text-slate-500 dark:text-slate-400">
+        PDFs consultados em: <code className="rounded bg-slate-100 px-1.5 py-0.5 dark:bg-slate-800">{ACERVO_PATH}</code>
+      </p>
+      <div className="space-y-3">
+        {ACERVO_BOOKS.sort((a, b) => a.priority - b.priority).map((book) => (
+          <div
+            key={book.id}
+            className="rounded-xl border border-slate-100 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/40"
+          >
+            <div className="flex flex-wrap items-baseline gap-2">
+              <p className="font-semibold text-slate-900 dark:text-white">
+                {book.priority === 1 && '★ '}
+                {book.shortLabel}
+              </p>
+              <span className="text-xs text-slate-500">{book.edition}</span>
+            </div>
+            <p className="mt-1 text-sm text-slate-600 dark:text-slate-400">{book.title}</p>
+            {book.note && (
+              <p className="mt-2 text-xs text-slate-500 dark:text-slate-500">{book.note}</p>
+            )}
+            <p className="mt-2 font-mono text-[11px] text-slate-400">{book.filename}</p>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-xs text-slate-500 dark:text-slate-400">
+        Nelson &amp; Couto não está no acervo local; Ettinger 9ª ed. é utilizado como referência equivalente
+        de medicina interna.
+      </p>
+    </div>
+  </div>
+);

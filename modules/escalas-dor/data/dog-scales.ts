@@ -1,4 +1,5 @@
 import { Scale, InterpretationResult } from '../types';
+import { PAIN_SCALE_IMAGES } from './pain-scale-images';
 
 export const DOG_SCALES: Scale[] = [
   {
@@ -13,6 +14,7 @@ export const DOG_SCALES: Scale[] = [
     maxScore: 24,
     rescueThreshold: 6,
     rescueLabel: '≥ 6/24 (ou ≥ 5/20 se mobilidade não avaliada)',
+    compositeImageUrl: PAIN_SCALE_IMAGES.glasgow.dogs,
     references: [
       'Reid J, Nolan AM, Hughes JML, Lascelles D, Pawson P, Scott EM. Development of the short-form Glasgow Composite Measure Pain Scale (CMPS-SF) and its validation in dogs with acute pain. Animal Welfare 2007;16:97-104.'
     ],

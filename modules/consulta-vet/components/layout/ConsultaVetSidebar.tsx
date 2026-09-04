@@ -108,7 +108,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
       { to: '/consulta-vet/apresentacoes-comerciais', label: 'Comerciais', icon: ShoppingBag, accent: 'cyan' },
       { to: '/consulta-vet/receituario', label: 'Receituário', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap, accent: 'orange' },
-      { to: '/consulta-vet/guias-rapidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
+      { to: '/consulta-vet/guias-rápidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/favoritos', label: 'Favoritos', icon: Bookmark, accent: 'rose' },
       { to: '/consulta-vet/recentes', label: 'Recentes', icon: Clock, accent: 'cyan' },
@@ -135,27 +135,23 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
-        <button
-          type="button"
-          onClick={onToggleCollapsed}
-          aria-label={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
-          title={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
-          className={cn(
-            'consulta-vet-sidebar-toggle absolute right-0 top-1/2 z-[70] hidden h-12 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border/80 bg-background/95 text-muted-foreground shadow-lg backdrop-blur-md transition-all duration-300 ease-out hover:border-primary/35 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:flex',
-            isDesktopPreviewOpen && 'md:left-72 md:right-auto opacity-90'
-          )}
-        >
-          {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
-        </button>
-
         <div
           className={cn(
-            'consulta-vet-sidebar-surface flex flex-1 flex-col overflow-hidden transition-[width,box-shadow,background-color] duration-300 ease-in-out',
+            'consulta-vet-sidebar-surface relative flex flex-1 flex-col overflow-visible transition-[width,box-shadow,background-color] duration-300 ease-in-out',
             isExpanded
               ? 'md:w-72 md:shadow-2xl md:shadow-black/20'
               : 'md:w-20'
           )}
         >
+          <button
+            type="button"
+            onClick={onToggleCollapsed}
+            aria-label={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
+            title={isCollapsed ? 'Mostrar barra lateral' : 'Esconder barra lateral'}
+            className="consulta-vet-sidebar-toggle absolute right-0 top-1/2 z-[70] hidden h-12 w-10 -translate-y-1/2 translate-x-1/2 items-center justify-center rounded-full border border-border/80 bg-background/95 text-muted-foreground shadow-lg backdrop-blur-md transition-colors duration-200 ease-out hover:border-primary/35 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary md:flex"
+          >
+            {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}
+          </button>
           <div
             className={cn(
               'consulta-vet-sidebar-header flex items-start justify-between gap-1.5 border-b border-border/60 px-2 pb-1 pt-1 transition-[height,padding,border-color] duration-300 ease-in-out md:px-2 md:pb-1 md:pt-1',

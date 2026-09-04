@@ -1,7 +1,7 @@
 import React from 'react';
-import { Question, Option } from '../types';
+import { Question } from '../types';
 import { motion } from 'framer-motion';
-import ImagePlaceholder from './ImagePlaceholder';
+import ScaleImage from './ImagePlaceholder';
 
 interface AssessmentRendererProps {
   question: Question;
@@ -15,6 +15,7 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
   onChange,
 }) => {
   const selectedScore = value !== undefined ? Number(value) : undefined;
+  const referenceImage = question.compositeImageUrl ?? question.imageUrl;
 
   const renderRadio = () => {
     if (!question.options) return null;
@@ -25,6 +26,8 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
           return (
             <motion.button
               key={index}
+              type="button"
+              aria-pressed={isSelected}
               whileHover={{ scale: 1.005 }}
               whileTap={{ scale: 0.995 }}
               onClick={() => onChange(question.id, option.score)}
@@ -49,6 +52,14 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
                     />
                   )}
                 </div>
+                {option.imageUrl && (
+                  <ScaleImage
+                    src={option.imageUrl}
+                    alt={`Opção ${option.score}: ${option.text}`}
+                    className="h-20 w-20 shrink-0 object-cover rounded-lg"
+                    zoomable={false}
+                  />
+                )}
                 <span className="text-sm font-semibold leading-relaxed text-slate-700 dark:text-slate-200">
                   {option.text}
                 </span>
@@ -87,6 +98,7 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
 
         <input
           type="range"
+          aria-label={question.text}
           min={minVal}
           max={maxVal}
           step={question.step ?? 1}
@@ -106,51 +118,57 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
   const renderGrimace = () => {
     if (!question.options) return null;
     return (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        {question.options.map((option, index) => {
-          const isSelected = selectedScore === option.score;
-          return (
-            <motion.button
-              key={index}
-              whileHover={{ y: -3 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => onChange(question.id, option.score)}
-              className={`flex flex-col overflow-hidden rounded-2xl border text-left transition-all duration-300 bg-white/70 dark:bg-slate-900/40 ${
-                isSelected
-                  ? 'border-teal-500 bg-teal-50/60 dark:border-teal-400 dark:bg-teal-950/20 shadow-md shadow-teal-500/10'
-                  : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
-              }`}
-            >
-              <div className="p-2 w-full bg-slate-50/50 dark:bg-slate-950/20 border-b border-slate-100 dark:border-slate-850">
-                <ImagePlaceholder
-                  text={option.imageDescription ?? `Foto: ${option.text}`}
-                  className="h-[120px]"
-                />
-              </div>
+      <div className="space-y-4">
+        {referenceImage && (
+          <ScaleImage
+            src={referenceImage}
+            alt={question.text}
+            text={question.imageDescription}
+            className="max-h-[280px]"
+          />
+        )}
 
-              <div className="p-4 flex-1 flex flex-col justify-between">
-                <p className="text-xs font-bold leading-relaxed text-slate-700 dark:text-slate-200 mb-3">
-                  {option.text}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {question.options.map((option, index) => {
+            const isSelected = selectedScore === option.score;
+            return (
+              <motion.button
+                key={index}
+                type="button"
+                aria-pressed={isSelected}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => onChange(question.id, option.score)}
+                className={`flex flex-col overflow-hidden rounded-2xl border text-left transition-all duration-300 bg-white/70 dark:bg-slate-900/40 ${
+                  isSelected
+                    ? 'border-teal-500 bg-teal-50/60 dark:border-teal-400 dark:bg-teal-950/20 shadow-md shadow-teal-500/10'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700'
+                }`}
+              >
+                <div className="p-4 flex-1 flex flex-col justify-between">
+                  <p className="text-xs font-bold leading-relaxed text-slate-700 dark:text-slate-200 mb-3">
+                    {option.text}
+                  </p>
 
-                <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100 dark:border-slate-800/60">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                    Escore Unitário
-                  </span>
-                  <span
-                    className={`rounded-full px-2.5 py-1 text-xs font-black ring-1 ${
-                      isSelected
-                        ? 'bg-teal-500 text-white ring-teal-500 dark:bg-teal-400 dark:text-slate-900'
-                        : 'bg-slate-100 text-slate-500 ring-slate-200 dark:bg-slate-800 dark:text-slate-400'
-                    }`}
-                  >
-                    +{option.score}
-                  </span>
+                  <div className="flex items-center justify-between mt-auto pt-2 border-t border-slate-100 dark:border-slate-800/60">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                      Escore Unitário
+                    </span>
+                    <span
+                      className={`rounded-full px-2.5 py-1 text-xs font-black ring-1 ${
+                        isSelected
+                          ? 'bg-teal-500 text-white ring-teal-500 dark:bg-teal-400 dark:text-slate-900'
+                          : 'bg-slate-100 text-slate-500 ring-slate-200 dark:bg-slate-800 dark:text-slate-400'
+                      }`}
+                    >
+                      +{option.score}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            </motion.button>
-          );
-        })}
+              </motion.button>
+            );
+          })}
+        </div>
       </div>
     );
   };
@@ -175,9 +193,19 @@ const AssessmentRenderer: React.FC<AssessmentRendererProps> = ({
         {question.text}
       </h4>
 
-      {question.imageDescription && (
+      {question.type !== 'grimace' && referenceImage && (
         <div className="mb-4">
-          <ImagePlaceholder text={question.imageDescription} />
+          <ScaleImage
+            src={referenceImage}
+            alt={question.text}
+            text={question.imageDescription}
+          />
+        </div>
+      )}
+
+      {question.type !== 'grimace' && !referenceImage && question.imageDescription && (
+        <div className="mb-4">
+          <ScaleImage text={question.imageDescription} />
         </div>
       )}
 

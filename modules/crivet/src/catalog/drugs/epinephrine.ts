@@ -1,4 +1,5 @@
 import { Drug, DoseUnit } from '../../shared/types/drug';
+import { cite } from '../../lib/acervo';
 
 const toMcgKgMin = (dose: number, unit: DoseUnit) => {
   switch (unit) {
@@ -447,14 +448,8 @@ export const epinephrine: Drug = {
   ],
 
   references: [
-    "Plumb's Veterinary Drug Handbook, 10ª ed. — indicação de CRI para hipotensão anestésica refratária (0,125–2 μg/kg/min), 0,05 μg/kg/min em anafilaxia com choque, estabilidade/compatibilidade, confusão de concentrações, acesso central, extravasamento",
-    'Lumb and Jones — Veterinary Anesthesia and Analgesia, 6ª ed. — farmacodinâmica dose-dependente, dados de infusão em gatos anestesiados com isoflurano (0,125–2 μg/kg/min), aumento de MAP a partir de 0,5, elevação de lactato/acidose e risco arrítmico',
-    'BSAVA Small Animal Formulary, 10ª ed. — efeitos dose-dependentes, duração curta (2–5 min), risco de overdose, hipovolemia, diabetes, hiper/tireoidismo, sensibilidade à luz/ar, aviso de instabilidade em D5W',
-    'BSAVA Manual of Canine and Feline Emergency and Critical Care — pós-ROSC: texto 0,1–0,5 μg/kg/min, tabela 0,1–1,0 μg/kg/min; hipotensão por vasodilatação, bradicardia severa e prevenção de re-arresto',
-    'Textbook of Small Animal Emergency Medicine — anafilaxia sistêmica: CRI 0,05 μg/kg/min se choque presente; infusão contínua mais eficaz que bolus isolado em modelos experimentais caninos',
-    'Fluid, Electrolyte, and Acid-Base Disorders in Small Animal Practice — faixa geral 0,05–1,0 mcg/kg/min como vasopressor/inotrópico; alerta de efeitos colaterais significativos e pior perfusão esplâncnica',
-    'FDA/AccessData e rotulagem oficial atual — solução 1 mg/mL; diluição em soluções com dextrose; concentração clássica 1 mcg/mL (1 mg em 1.000 mL); taxa 0,05–2 μg/kg/min; ajuste a cada 10–15 min; desmame 12–24 h; infundir em grande veia',
-    'DailyMed — apresentações atuais: 1 mg/mL em frascos/viais de 1 mL e 30 mL',
-    'PubMed / revisão de anafilaxia — modelo experimental canino: infusão contínua melhorou recuperação hemodinâmica vs bolus isolado',
+    cite.plumbs(457),
+    cite.lumbJones(),
+    cite.ettinger(),
   ],
 };

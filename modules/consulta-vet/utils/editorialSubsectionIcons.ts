@@ -125,9 +125,9 @@ function heuristicIcon(key: string): LucideIcon | undefined {
   if (k.includes('fluido') || k.includes('sc ') || k.includes('hidrat')) return Droplets;
   if (k.includes('anemia') || k.includes('ferro') || k.includes('eritrop')) return Droplets;
   if (k.includes('acidose') || k.includes('potass') || k.includes('k+')) return Zap;
-  if (k.includes('antibio') || k.includes('doxic') || k.includes('farmaco')) return Pill;
+  if (k.includes('antibio') || k.includes('doxic') || k.includes('fármaco')) return Pill;
   if (k.includes('tabela') || k.includes('compar')) return Table2;
-  if (k.includes('diagnostico') || k.includes('suspeita')) return Stethoscope;
+  if (k.includes('diagnóstico') || k.includes('suspeita')) return Stethoscope;
   if (k.includes('prognost')) return BarChart3;
   if (k.includes('vacin') || k.includes('prevenc')) return Shield;
   return undefined;

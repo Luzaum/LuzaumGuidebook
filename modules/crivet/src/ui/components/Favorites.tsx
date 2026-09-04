@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { favoritesService, FavoriteItem } from '../../application/services/favoritesService';
 import { Star, Trash2, ArrowRight, FlaskConical, Activity, Droplets, AlertTriangle } from 'lucide-react';
+import { PageHeader } from './PageHeader';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface FavoritesProps {
@@ -27,23 +28,22 @@ export const Favorites: React.FC<FavoritesProps> = ({ onLoadFavorite }) => {
   };
 
   return (
-    <div className="w-full space-y-6">
-      <div className="flex items-center gap-3 mb-8">
-        <div className="w-12 h-12 rounded-xl bg-amber-50 dark:bg-amber-500/10 flex items-center justify-center text-amber-500 border border-amber-100 dark:border-amber-500/20 transition-colors duration-200">
-          <Star className="w-6 h-6" />
-        </div>
-        <div>
-          <h2 className="text-2xl font-bold text-slate-800 dark:text-white transition-colors duration-200">Protocolos Favoritos</h2>
-          <p className="text-slate-500 dark:text-slate-400 transition-colors duration-200">Acesse rapidamente suas prescrições salvas</p>
-        </div>
-      </div>
+    <div className="mx-auto w-full max-w-5xl">
+      <PageHeader
+        icon={Star}
+        title="Favoritos"
+        description="Protocolos salvos na sua conta Vetius"
+      />
 
       {favorites.length === 0 ? (
-        <div className="bg-white dark:bg-slate-900 p-12 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-800 flex flex-col items-center justify-center text-center transition-colors duration-200">
-          <Star className="w-16 h-16 text-slate-300 dark:text-slate-600 mb-4" />
-          <h3 className="text-xl font-bold text-slate-700 dark:text-slate-300 mb-2">Nenhum favorito salvo</h3>
-          <p className="text-slate-500 dark:text-slate-400 max-w-md">
-            Você ainda não salvou nenhum protocolo. Use o botão "Salvar" na tela de resultados da calculadora para adicionar protocolos aqui.
+        <div className="rounded-2xl border border-dashed border-slate-200 bg-white p-10 text-center dark:border-slate-800 dark:bg-slate-900">
+          <Star className="mx-auto h-10 w-10 text-slate-300 dark:text-slate-600" />
+          <h3 className="mt-4 text-base font-semibold text-slate-700 dark:text-slate-300">
+            Nenhum favorito salvo
+          </h3>
+          <p className="mx-auto mt-2 max-w-md text-sm text-slate-500 dark:text-slate-400">
+            Use &quot;Favoritar&quot; nos resultados da calculadora. É necessário estar logado no Vetius para
+            sincronizar na nuvem.
           </p>
         </div>
       ) : (

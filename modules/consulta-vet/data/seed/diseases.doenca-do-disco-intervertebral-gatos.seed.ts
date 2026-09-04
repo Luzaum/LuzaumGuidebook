@@ -20,6 +20,7 @@ export const doencaDoDiscoIntervertebralGatosRecord: DiseaseRecord = {
   ],
   species: ['cat'],
   category: 'neurologia',
+  categories: ['cirurgia-neurologica'],
   tags: [
     'DDIV felina',
     'IVDD',
@@ -68,6 +69,68 @@ export const doencaDoDiscoIntervertebralGatosRecord: DiseaseRecord = {
         highlights: ['Gabapentina 5-10 mg/kg', 'AINEs felinos', 'Fowler 2022'],
       },
     ],
+    diagnosticFlow: {
+      title: 'Fluxo diagnóstico',
+      steps: [
+        {
+          label: '1. Suspeita clínica felina',
+          detail:
+            'Relutância em saltar, cauda baixa, dor epaxial lombossacra, constipação ou déficit motor. Gatos mascaram dor leve (Fowler et al., 2022).',
+        },
+        {
+          label: '2. Exame neurológico',
+          detail:
+            'Neurolocalização, nocicepção profunda consciente vs reflexo, palpação vesical delicada. NÃO extrapolar graduação ACVIM canina automaticamente.',
+        },
+        {
+          label: '3. RM (exame de escolha)',
+          detail:
+            'Obrigatória antes de cirurgia. Diferenciar DDIV compressiva de linfoma espinhal, PIF neurológica, meningomielite, FCE e ANNPE (De Decker et al., 2017).',
+          limitations: 'Protrusão em gato idoso pode ser achado incidental assintomático.',
+        },
+        {
+          label: '4. Correlacionar imagem + clínica',
+          detail:
+            'Confirmar que a lesão explica a neurolocalização antes de indicar descompressão. Hansen II assintomática é frequente em felinos idosos (~12 anos).',
+        },
+        {
+          label: '5. Classificar forma',
+          detail:
+            'Extrusão Hansen I (~9 anos), protrusão Hansen II incidental ou lombossacra, ANNPE pós-salto com contusão sem compressão residual.',
+        },
+      ],
+    },
+    treatmentFlow: {
+      title: 'Fluxo terapêutico',
+      steps: [
+        {
+          label: '1. Dor leve / suspeita lombossacra',
+          detail:
+            'Repouso relativo, gabapentina 5–10 mg/kg PO q8–12h (ajustar se DRC), AINE felino autorizado localmente (meloxicam/robenacoxib) com hidratação e função renal verificadas.',
+          reassess: 'Reavaliar em 7–14 dias.',
+        },
+        {
+          label: '2. ANNPE felina',
+          detail:
+            'Suporte, analgesia, fisioterapia. Sem cirurgia se RM sem compressão residual (Crawford et al., 2018).',
+        },
+        {
+          label: '3. Compressão com déficit grave',
+          detail:
+            'Hemilaminectomia (TL/lombar) ou ventral slot (cervical). Prognóstico favorável com nocicepção preservada (Fowler et al., 2022).',
+        },
+        {
+          label: '4. Bexiga neurogênica',
+          detail:
+            'Palpar bexiga; esvaziamento manual delicado q6–8h se retenção. Evitar manipulação brusca — risco de rotura vesical.',
+        },
+        {
+          label: '5. Reabilitação',
+          detail:
+            'Fisioterapia, controle de peso, modificar ambiente (rampas, reduzir saltos). Monitorar micção e pele por decúbito.',
+        },
+      ],
+    },
   },
   etiology: {
     definicao:

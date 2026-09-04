@@ -24,7 +24,11 @@ export function evaluateDietAgainstTherapeuticProfiles(options: {
       activeProfileIds: [],
       ruleSetVersion: THERAPEUTIC_PROFILE_REGISTRY_VERSION,
       profiles: [],
-      conflicts: resolution.unresolvedConflicts.map((c) => c.messagePt),
+      conflicts: resolution.unresolvedConflicts.map((c) => ({
+        profileA: c.profileIds[0] ?? '',
+        profileB: c.profileIds[1] ?? '',
+        messagePt: c.messagePt,
+      })),
       monitoringRecommendations: [],
       overallStatus: 'none',
     }
@@ -56,10 +60,15 @@ export function evaluateDietAgainstTherapeuticProfiles(options: {
     activeProfileIds: resolution.activeProfileIds,
     ruleSetVersion: THERAPEUTIC_PROFILE_REGISTRY_VERSION,
     profiles,
-    conflicts: resolution.unresolvedConflicts.map((c) => c.messagePt),
+    conflicts: resolution.unresolvedConflicts.map((c) => ({
+      profileA: c.profileIds[0] ?? '',
+      profileB: c.profileIds[1] ?? '',
+      messagePt: c.messagePt,
+    })),
     monitoringRecommendations: resolution.activeProfileIds.flatMap((id) => {
       const p = getTherapeuticProfileV3ById(id)
-      return p?.monitoring ? [p.monitoring] : []
+      if (!p?.monitoring) return []
+      return Array.isArray(p.monitoring) ? p.monitoring : [p.monitoring]
     }),
     overallStatus: hasHardConflict ? 'caution' : 'adequate',
   }

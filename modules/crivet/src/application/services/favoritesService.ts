@@ -1,5 +1,5 @@
 import { CalculationResult, CalculationInput } from '../../shared/types/calculation';
-import { supabase } from '../../lib/supabase';
+import { isSupabaseConfigured, supabase } from '../../lib/supabase';
 
 export interface FavoriteItem {
   id: string;
@@ -9,8 +9,13 @@ export interface FavoriteItem {
   result: CalculationResult;
 }
 
+export type SaveFavoriteResult =
+  | { ok: true; item: FavoriteItem }
+  | { ok: false; reason: 'auth' | 'error' };
+
 export const favoritesService = {
   getFavorites: async (): Promise<FavoriteItem[]> => {
+    if (!isSupabaseConfigured) return [];
     try {
       const { data, error } = await supabase
         .from('crivet_favorites')
@@ -32,12 +37,12 @@ export const favoritesService = {
     }
   },
 
-  saveFavorite: async (name: string, input: CalculationInput, result: CalculationResult): Promise<FavoriteItem | null> => {
+  saveFavorite: async (name: string, input: CalculationInput, result: CalculationResult): Promise<SaveFavoriteResult> => {
+    if (!isSupabaseConfigured) return { ok: false, reason: 'auth' };
     try {
       const { data: { session } } = await supabase.auth.getSession();
       if (!session?.user) {
-        console.error('User not authenticated');
-        return null;
+        return { ok: false, reason: 'auth' };
       }
 
       const { data, error } = await supabase
@@ -51,22 +56,26 @@ export const favoritesService = {
         .select()
         .single();
 
-      if (error) return null;
+      if (error) return { ok: false, reason: 'error' };
 
       return {
-        id: data.id,
-        name: data.name,
-        date: data.created_at,
-        input: data.input_data as CalculationInput,
-        result: data.result_data as CalculationResult,
+        ok: true,
+        item: {
+          id: data.id,
+          name: data.name,
+          date: data.created_at,
+          input: data.input_data as CalculationInput,
+          result: data.result_data as CalculationResult,
+        },
       };
     } catch (e) {
       console.error('Exception saving favorite', e);
-      return null;
+      return { ok: false, reason: 'error' };
     }
   },
 
   deleteFavorite: async (id: string): Promise<void> => {
+    if (!isSupabaseConfigured) return;
     try {
       const { error } = await supabase.from('crivet_favorites').delete().eq('id', id);
       if (error) {

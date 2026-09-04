@@ -32,7 +32,7 @@ export const endocrinologyOncologyMedicationsSeed: MedicationRecord[] = [
     ],
     cautions: [
       '⚠️ Apesar do metabolismo de primeira passagem, supressão do eixo HPA foi documentada em cães e gatos. Hiperadrenocorticismo iatrogênico e hipocortisolemia após retirada abrupta são possíveis.',
-      'Cautela em diabetes mellitus, infecções ativas, hiperadrenocorticismo, risco de ulceração GI e demais condições em que glicocorticoides possam agravar doença.',
+      'Cautela em diabetes mellitus, infecções ativas, hiperadrenocorticismo, risco de úlceração GI e demais condições em que glicocorticoides possam agravar doença.',
       'Após uso prolongado, evitar retirada abrupta por risco de supressão adrenal.',
       'Não triturar ou danificar pellets gastro-resistentes indiscriminadamente.',
       'Pó inalatório humano não deve ser convertido simplesmente em formulação oral.',
@@ -1080,7 +1080,7 @@ export const endocrinologyOncologyMedicationsSeed: MedicationRecord[] = [
       'Consistência alimentar > alternar aleatoriamente jejum vs alimento.',
       'Cão obeso (AAHA): calcular dose pelo peso magro estimado.',
       'Gato: dose fixa por gato (0,05–0,1 mg/gato q24h) — NÃO converter automaticamente para mg/kg.',
-      'Não tratar eutireoidismo doente (NTIS) — TT4 baixo isolado não diagnostica.',
+      'Não tratar eutireoidismo doente (NTIS) — TT4 baixo isolado não diagnóstica.',
     ],
     adverseEffects: [
       'Terapia corretamente titulada: geralmente bem tolerada.',

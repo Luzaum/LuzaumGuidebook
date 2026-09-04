@@ -266,7 +266,7 @@ export const cardiomiopatiaDilatadaRecord: DiseaseRecord = {
       title: 'ECG e Holter de 24 horas',
       purpose: 'Identificar fibrilação atrial e quantificar ectopia ventricular intermitente.',
       description:
-        'O eletrocardiograma diagnostica fibrilação atrial e arritmia presente durante o exame. Holter é essencial quando a ectopia é intermitente, em síncope e no rastreio de Dobermann; um eletrocardiograma curto normal não exclui a fase oculta.',
+        'O eletrocardiograma diagnóstica fibrilação atrial e arritmia presente durante o exame. Holter é essencial quando a ectopia é intermitente, em síncope e no rastreio de Dobermann; um eletrocardiograma curto normal não exclui a fase oculta.',
       interpretation: 'Complexidade, frequência e agrupamento da ectopia orientam risco e necessidade de acompanhamento ou terapia.',
       limitations: 'O ECG de poucos minutos tem baixa capacidade de excluir arritmias episódicas.',
     },
