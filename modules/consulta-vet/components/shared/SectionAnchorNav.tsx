@@ -47,7 +47,7 @@ export function SectionAnchorNav({ sections, className, onActiveChange, title = 
   };
 
   return (
-    <nav aria-label={title} className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto xl:block', className)}>
+    <nav aria-label={title} className={cn('sticky top-24 hidden max-h-[calc(100vh-7rem)] w-60 shrink-0 overflow-y-auto 2xl:block', className)}>
       <div className="border-l border-border/80 px-3 py-2">
         <h2 className="mb-3 px-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">{title}</h2>
         <ul className="space-y-0.5">

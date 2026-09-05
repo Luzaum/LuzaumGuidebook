@@ -73,9 +73,9 @@ function EditorialPanel({
   className?: string;
 }) {
   return (
-    <section id={id} className={`scroll-mt-24 rounded-[28px] border border-border bg-card/92 p-6 shadow-sm md:p-8 ${className}`.trim()}>
-      <div className="mb-6">
-        <h2 className="text-2xl md:text-[26px] font-bold tracking-tight text-foreground">{title}</h2>
+    <section id={id} className={`scroll-mt-24 rounded-[22px] border border-border bg-card/92 p-3 shadow-sm sm:rounded-[28px] sm:p-5 md:p-8 ${className}`.trim()}>
+      <div className="mb-5 sm:mb-6">
+        <h2 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl md:text-[26px]">{title}</h2>
         {lead ? <p className="mt-2 max-w-[102ch] text-sm leading-relaxed text-muted-foreground">{lead}</p> : null}
       </div>
       {children}
@@ -255,7 +255,7 @@ export function DiseaseDetailPage() {
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <DiseaseReferenceProvider references={disease.references}>
-    <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
+    <div className="mx-auto flex w-full max-w-[1840px] flex-col 2xl:flex-row">
       <div className="w-full min-w-0 flex-1 px-4 py-3 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
           className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
@@ -306,7 +306,7 @@ export function DiseaseDetailPage() {
               ) : null}
 
               <div className="mt-3">
-                <TagPills tags={disease.tags} maxVisible="all" singleLine />
+                <TagPills tags={disease.tags} maxVisible="all" />
               </div>
             </div>
 
@@ -572,7 +572,7 @@ export function DiseaseDetailPage() {
         </div>
       </div>
 
-      <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
+      <div className="hidden w-64 shrink-0 py-8 pr-8 2xl:block">
         <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
       </div>
     </div>

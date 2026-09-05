@@ -20,7 +20,7 @@ import { Card, CardContent } from './ui/card'
 import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { getCommercialFoods } from '../lib/genutriData'
-import { classifyCommercialDiet, CommercialDietMetadata } from '../lib/commercialDietClassifier'
+import { classifyCommercialDiet, CommercialDietMetadata, CommercialDietType } from '../lib/commercialDietClassifier'
 import { CommercialDietCardVisual } from './CommercialDietCardVisual'
 import { SpeciesSilhouette } from './SpeciesSilhouette'
 import { useCalculationStore } from '../store/calculationStore'
@@ -33,6 +33,8 @@ export function CommercialDietsShowcase() {
   // 1. State
   const [query, setQuery] = useState('')
   const [speciesFilter, setSpeciesFilter] = useState<'all' | 'dog' | 'cat'>('all')
+  const [dietTypeFilter, setDietTypeFilter] = useState<'all' | CommercialDietType>('all')
+  const [categoryFilter, setCategoryFilter] = useState('all')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [slideDirection, setSlideDirection] = useState<number>(1)
   const [copied, setCopied] = useState(false)
@@ -61,6 +63,13 @@ export function CommercialDietsShowcase() {
       if (speciesFilter === 'dog' && item.food.speciesScope === 'cat') return false
       if (speciesFilter === 'cat' && item.food.speciesScope === 'dog') return false
 
+      if (dietTypeFilter !== 'all' && item.dietType !== dietTypeFilter) return false
+
+      if (categoryFilter !== 'all') {
+        const itemCategory = item.dietType === 'therapeutic' ? item.specialty : item.maintenanceCategory
+        if (itemCategory !== categoryFilter) return false
+      }
+
       // Query search
       if (query.trim()) {
         const q = query.toLowerCase()
@@ -73,12 +82,40 @@ export function CommercialDietsShowcase() {
 
       return true
     })
-  }, [allClassifiedDiets, query, speciesFilter])
+  }, [allClassifiedDiets, categoryFilter, dietTypeFilter, query, speciesFilter])
+
+  const categoryOptions = useMemo(() => {
+    if (dietTypeFilter === 'all') return []
+
+    const categories = new Map<string, { label: string; count: number }>()
+    allClassifiedDiets
+      .filter((item) => {
+        if (item.dietType !== dietTypeFilter) return false
+        if (speciesFilter === 'dog' && item.food.speciesScope === 'cat') return false
+        if (speciesFilter === 'cat' && item.food.speciesScope === 'dog') return false
+        return true
+      })
+      .forEach((item) => {
+        const key = item.dietType === 'therapeutic' ? item.specialty : item.maintenanceCategory
+        const label = item.dietType === 'therapeutic' ? item.specialtyLabel : item.maintenanceCategoryLabel
+        if (!key || !label) return
+        const current = categories.get(key)
+        categories.set(key, { label, count: (current?.count ?? 0) + 1 })
+      })
+
+    return Array.from(categories.entries())
+      .map(([id, value]) => ({ id, ...value }))
+      .sort((left, right) => left.label.localeCompare(right.label, 'pt-BR'))
+  }, [allClassifiedDiets, dietTypeFilter, speciesFilter])
 
   // 4. Reset current index safely on filter change
   useEffect(() => {
     setCurrentIndex(0)
-  }, [speciesFilter, query])
+  }, [categoryFilter, dietTypeFilter, speciesFilter, query])
+
+  useEffect(() => {
+    setCategoryFilter('all')
+  }, [dietTypeFilter, speciesFilter])
 
   const currentDiet: CommercialDietMetadata | undefined = filteredDiets[currentIndex] ?? filteredDiets[0]
 
@@ -195,20 +232,20 @@ Fonte: Catálogo NutriçãoVET`
   }
 
   return (
-    <div className="w-full space-y-4 pb-8">
+    <div className="w-full space-y-3 pb-5">
       {/* 1. Clean, Modern Header Card (No dark gloomy background, no switcher tabs) */}
-      <div className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-        <h1 className="text-2xl font-black tracking-tight text-foreground sm:text-3xl">
+      <div className="rounded-2xl border border-border/80 bg-card px-4 py-3 shadow-sm sm:px-5">
+        <h1 className="text-xl font-black tracking-tight text-foreground sm:text-2xl">
           Rações Comerciais
         </h1>
-        <p className="mt-1 text-xs text-muted-foreground sm:text-sm">
+        <p className="mt-0.5 text-[11px] leading-snug text-muted-foreground sm:text-xs">
           Catálogo completo de dietas coadjuvantes de prescrição veterinária e opções fisiológicas para cães e gatos, com composição nutricional detalhada e indicações clínicas.
         </p>
       </div>
 
       {/* 2. Compact Filter Toolbar: Search + Compact Species Selector */}
       <Card className="border-border/80 bg-card shadow-sm">
-        <CardContent className="p-2.5 sm:p-3">
+        <CardContent className="p-2 sm:p-2.5">
           <div className="flex flex-col gap-2.5 sm:flex-row sm:items-center">
             {/* Search Input */}
             <div className="relative flex-1">
@@ -218,7 +255,7 @@ Fonte: Catálogo NutriçãoVET`
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Buscar ração por nome, fabricante ou formulação..."
-                className="h-9 rounded-xl pl-8 text-xs font-medium bg-background"
+                className="h-8 rounded-lg bg-background pl-8 text-xs font-medium"
               />
             </div>
 
@@ -228,7 +265,7 @@ Fonte: Catálogo NutriçãoVET`
                 type="button"
                 onClick={() => setSpeciesFilter('all')}
                 className={cn(
-                  'px-3 py-1 text-xs font-bold rounded-lg transition-all',
+                  'px-2.5 py-0.5 text-[11px] font-bold rounded-lg transition-all',
                   speciesFilter === 'all'
                     ? 'bg-background text-foreground shadow-sm'
                     : 'text-muted-foreground hover:text-foreground',
@@ -241,7 +278,7 @@ Fonte: Catálogo NutriçãoVET`
                 type="button"
                 onClick={() => setSpeciesFilter('dog')}
                 className={cn(
-                  'flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-lg transition-all',
+                  'flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-bold rounded-lg transition-all',
                   speciesFilter === 'dog'
                     ? 'bg-background text-foreground shadow-sm ring-1 ring-primary/20'
                     : 'text-muted-foreground hover:text-foreground',
@@ -255,7 +292,7 @@ Fonte: Catálogo NutriçãoVET`
                 type="button"
                 onClick={() => setSpeciesFilter('cat')}
                 className={cn(
-                  'flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-lg transition-all',
+                  'flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-bold rounded-lg transition-all',
                   speciesFilter === 'cat'
                     ? 'bg-background text-foreground shadow-sm ring-1 ring-primary/20'
                     : 'text-muted-foreground hover:text-foreground',
@@ -265,6 +302,66 @@ Fonte: Catálogo NutriçãoVET`
                 <span>Gatos</span>
               </button>
             </div>
+          </div>
+
+          <div className="mt-2 flex flex-col gap-2 border-t border-border/60 pt-2">
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="mr-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Tipo</span>
+              {([
+                { id: 'all', label: 'Todas as rações' },
+                { id: 'therapeutic', label: 'Terapêuticas' },
+                { id: 'healthy', label: 'Manutenção' },
+              ] as const).map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => setDietTypeFilter(option.id)}
+                  className={cn(
+                    'rounded-lg border px-2.5 py-1 text-[11px] font-semibold transition-colors',
+                    dietTypeFilter === option.id
+                      ? 'border-primary bg-primary text-primary-foreground shadow-sm'
+                      : 'border-border bg-background text-muted-foreground hover:border-primary/40 hover:text-foreground',
+                  )}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
+
+            {dietTypeFilter !== 'all' && (
+              <div className="flex flex-wrap items-center gap-1.5">
+                <span className="mr-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
+                  {dietTypeFilter === 'therapeutic' ? 'Área clínica' : 'Categoria'}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setCategoryFilter('all')}
+                  className={cn(
+                    'rounded-full border px-2.5 py-1 text-[10px] font-semibold transition-colors',
+                    categoryFilter === 'all'
+                      ? 'border-primary/30 bg-primary/10 text-primary'
+                      : 'border-border bg-background text-muted-foreground hover:text-foreground',
+                  )}
+                >
+                  Todas ({categoryOptions.reduce((total, option) => total + option.count, 0)})
+                </button>
+                {categoryOptions.map((option) => (
+                  <button
+                    key={option.id}
+                    type="button"
+                    onClick={() => setCategoryFilter(option.id)}
+                    className={cn(
+                      'rounded-full border px-2.5 py-1 text-[10px] font-semibold transition-colors',
+                      categoryFilter === option.id
+                        ? 'border-primary/30 bg-primary/10 text-primary'
+                        : 'border-border bg-background text-muted-foreground hover:text-foreground',
+                    )}
+                  >
+                    {option.label} ({option.count})
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </CardContent>
       </Card>
@@ -290,7 +387,7 @@ Fonte: Catálogo NutriçãoVET`
           </Button>
         </Card>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3">
           {/* Animated Slide Showcase Card */}
           <div className="relative overflow-hidden rounded-3xl border border-border/80 bg-card shadow-sm">
             <AnimatePresence mode="wait" custom={slideDirection}>
@@ -302,31 +399,31 @@ Fonte: Catálogo NutriçãoVET`
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="grid gap-6 p-5 sm:p-7 lg:grid-cols-[1.25fr_0.85fr] lg:gap-7 xl:p-8 items-stretch"
+                  className="grid items-stretch gap-4 p-4 sm:p-5 lg:grid-cols-[1.35fr_0.65fr] lg:gap-5"
                 >
                   {/* Left Side: Clinical Info & Nutrient Profile */}
-                  <div className="flex flex-col justify-between space-y-4">
+                  <div className="flex flex-col justify-between space-y-3">
                     <div>
                       {/* Clean Main Title */}
-                      <h2 className="text-xl font-extrabold tracking-tight text-foreground sm:text-2xl">
+                      <h2 className="text-lg font-extrabold tracking-tight text-foreground sm:text-xl">
                         {currentDiet.food.name}
                       </h2>
 
                       {/* Clinical Summary */}
-                      <p className="mt-2 text-xs sm:text-sm leading-relaxed text-muted-foreground">
+                      <p className="mt-1 text-[11px] leading-snug text-muted-foreground sm:text-xs">
                         {currentDiet.summaryPt}
                       </p>
                     </div>
 
                     {/* Quando é indicada & Objetivos Clínicos */}
-                    <div className="rounded-2xl border border-border/80 bg-muted/30 p-3.5 sm:p-4">
-                      <div className="flex items-center gap-1.5 mb-2.5">
+                    <div className="rounded-xl border border-border/80 bg-muted/30 p-2.5 sm:p-3">
+                      <div className="mb-1.5 flex items-center gap-1.5">
                         <ShieldCheck className="h-4 w-4 text-primary shrink-0" />
                         <h4 className="text-xs font-bold uppercase tracking-wider text-foreground">
                           Quando é indicada & Objetivos Clínicos
                         </h4>
                       </div>
-                      <ul className="space-y-1.5 text-xs leading-relaxed text-foreground">
+                      <ul className="space-y-1 text-[11px] leading-snug text-foreground">
                         {currentDiet.clinicalIndications.map((ind, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <Check className="h-3.5 w-3.5 shrink-0 text-emerald-500 mt-0.5" />
@@ -337,43 +434,43 @@ Fonte: Catálogo NutriçãoVET`
                     </div>
 
                     {/* Composição de Macronutrientes com as cores do cálculo principal */}
-                    <div className="space-y-2.5">
+                    <div className="space-y-1.5">
                       <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">
                         Composição de Macronutrientes
                       </h4>
 
-                      <div className="grid grid-cols-3 gap-2.5">
+                      <div className="grid grid-cols-3 gap-2">
                         {/* Carboidrato (ENN) - Azul (#3b82f6) */}
-                        <div className="rounded-xl border border-blue-500/20 bg-blue-500/5 p-3 shadow-sm">
+                        <div className="rounded-lg border border-blue-500/20 bg-blue-500/5 p-2 shadow-sm">
                           <div className="flex items-center justify-between">
                             <span className="text-[11px] font-bold text-blue-600 dark:text-blue-400">Carboidrato</span>
                             <Bean className="h-3.5 w-3.5 text-blue-500" />
                           </div>
-                          <span className="mt-1.5 block text-xl font-black tracking-tight text-blue-600 dark:text-blue-400">
+                          <span className="mt-0.5 block text-lg font-black tracking-tight text-blue-600 dark:text-blue-400">
                             {currentDiet.carbPctDm.toFixed(1)}%
                           </span>
                           <span className="text-[10px] text-muted-foreground block">matéria seca</span>
                         </div>
 
                         {/* Extrato Etéreo (Gordura) - Amarelo/Âmbar (#eab308) */}
-                        <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-3 shadow-sm">
+                        <div className="rounded-lg border border-amber-500/20 bg-amber-500/5 p-2 shadow-sm">
                           <div className="flex items-center justify-between">
                             <span className="text-[11px] font-bold text-amber-600 dark:text-amber-400">Extrato Etéreo</span>
                             <Droplets className="h-3.5 w-3.5 text-amber-500" />
                           </div>
-                          <span className="mt-1.5 block text-xl font-black tracking-tight text-amber-600 dark:text-amber-400">
+                          <span className="mt-0.5 block text-lg font-black tracking-tight text-amber-600 dark:text-amber-400">
                             {currentDiet.fatPctDm.toFixed(1)}%
                           </span>
                           <span className="text-[10px] text-muted-foreground block">matéria seca</span>
                         </div>
 
                         {/* Proteína Bruta - Laranja (#f97316) */}
-                        <div className="rounded-xl border border-orange-500/20 bg-orange-500/5 p-3 shadow-sm">
+                        <div className="rounded-lg border border-orange-500/20 bg-orange-500/5 p-2 shadow-sm">
                           <div className="flex items-center justify-between">
                             <span className="text-[11px] font-bold text-orange-600 dark:text-orange-400">Proteína Bruta</span>
                             <Drumstick className="h-3.5 w-3.5 text-orange-500" />
                           </div>
-                          <span className="mt-1.5 block text-xl font-black tracking-tight text-orange-600 dark:text-orange-400">
+                          <span className="mt-0.5 block text-lg font-black tracking-tight text-orange-600 dark:text-orange-400">
                             {currentDiet.proteinPctDm.toFixed(1)}%
                           </span>
                           <span className="text-[10px] text-muted-foreground block">matéria seca</span>
@@ -381,9 +478,9 @@ Fonte: Catálogo NutriçãoVET`
                       </div>
 
                       {/* Lista de Nutrientes estruturada em exatamente 4 linhas */}
-                      <div className="rounded-xl bg-muted/40 p-3 border border-border/60 divide-y divide-border/50 text-xs">
+                      <div className="divide-y divide-border/50 rounded-lg border border-border/60 bg-muted/40 px-2.5 py-2 text-[11px]">
                         {/* Linha 1: Energia & Matéria Seca */}
-                        <div className="grid grid-cols-2 gap-3 py-1.5 first:pt-0">
+                        <div className="grid grid-cols-2 gap-3 py-1 first:pt-0">
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Energia Metabolizável</span>
                             <span className="font-bold text-foreground tabular-nums">
@@ -399,7 +496,7 @@ Fonte: Catálogo NutriçãoVET`
                         </div>
 
                         {/* Linha 2: Cálcio & Fósforo */}
-                        <div className="grid grid-cols-2 gap-3 py-1.5">
+                        <div className="grid grid-cols-2 gap-3 py-1">
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Cálcio</span>
                             <span className="font-bold text-foreground tabular-nums">
@@ -415,7 +512,7 @@ Fonte: Catálogo NutriçãoVET`
                         </div>
 
                         {/* Linha 3: Relação Ca:P & Sódio */}
-                        <div className="grid grid-cols-2 gap-3 py-1.5">
+                        <div className="grid grid-cols-2 gap-3 py-1">
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Relação Ca:P</span>
                             <span className="font-bold text-foreground tabular-nums">
@@ -431,7 +528,7 @@ Fonte: Catálogo NutriçãoVET`
                         </div>
 
                         {/* Linha 4: Potássio & Fibra Bruta */}
-                        <div className="grid grid-cols-2 gap-3 py-1.5 last:pb-0">
+                        <div className="grid grid-cols-2 gap-3 py-1 last:pb-0">
                           <div className="flex items-center justify-between">
                             <span className="text-muted-foreground">Potássio</span>
                             <span className="font-bold text-foreground tabular-nums">
@@ -449,10 +546,10 @@ Fonte: Catálogo NutriçãoVET`
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                    <div className="flex flex-wrap items-center gap-2 pt-0.5">
                       <Button
                         size="default"
-                        className="gap-2 font-semibold shadow-sm text-xs sm:text-sm h-10"
+                        className="h-8 gap-1.5 px-3 text-xs font-semibold shadow-sm"
                         onClick={handleUseInPlan}
                       >
                         <Utensils className="h-4 w-4" />
@@ -463,7 +560,7 @@ Fonte: Catálogo NutriçãoVET`
                         variant="outline"
                         size="default"
                         onClick={handleCopySummary}
-                        className="gap-2 text-xs sm:text-sm h-10"
+                        className="h-8 gap-1.5 px-3 text-xs"
                       >
                         {copied ? <Check className="h-4 w-4 text-emerald-500" /> : <Copy className="h-4 w-4" />}
                         {copied ? 'Copiado!' : 'Copiar Ficha'}
@@ -481,19 +578,19 @@ Fonte: Catálogo NutriçãoVET`
           </div>
 
           {/* 4. Navigation Arrows at the Bottom of the Page */}
-          <div className="flex items-center justify-between pt-2 px-1">
+          <div className="flex items-center justify-between px-1 pt-0.5">
             <Button
               variant="outline"
               size="sm"
               onClick={handlePrev}
               disabled={filteredDiets.length <= 1}
-              className="gap-2 rounded-xl text-xs font-semibold h-9 px-4"
+              className="h-8 gap-1.5 rounded-lg px-3 text-[11px] font-semibold"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               <span>Ração Anterior</span>
             </Button>
 
-            <span className="text-xs text-muted-foreground font-medium">
+            <span className="hidden text-[11px] font-medium text-muted-foreground sm:inline">
               Navegue pelas rações ou use as setas do teclado ← →
             </span>
 
@@ -502,7 +599,7 @@ Fonte: Catálogo NutriçãoVET`
               size="sm"
               onClick={handleNext}
               disabled={filteredDiets.length <= 1}
-              className="gap-2 rounded-xl text-xs font-semibold h-9 px-4"
+              className="h-8 gap-1.5 rounded-lg px-3 text-[11px] font-semibold"
             >
               <span>Próxima Ração</span>
               <ArrowRight className="h-3.5 w-3.5" />

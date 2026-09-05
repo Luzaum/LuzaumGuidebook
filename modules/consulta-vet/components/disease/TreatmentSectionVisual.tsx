@@ -60,11 +60,11 @@ export function TreatmentPriorityPanel({ items, visual }: { items: string[]; vis
           const n = step || index + 1;
           const isLast = index === items.length - 1;
           return (
-            <li key={`${n}-${index}`} className="flex items-stretch gap-4 md:gap-5">
-              <div className="flex w-11 shrink-0 flex-col items-center md:w-12">
+            <li key={`${n}-${index}`} className="flex items-stretch gap-2 sm:gap-4 md:gap-5">
+              <div className="flex w-8 shrink-0 flex-col items-center sm:w-11 md:w-12">
                 <span
                   className={cn(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] md:h-10 md:w-10 md:text-sm',
+                    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] sm:h-9 sm:w-9 md:h-10 md:w-10 md:text-sm',
                     visual.diagnosticNumBgClass,
                     visual.diagnosticNumTextClass
                   )}
@@ -81,7 +81,7 @@ export function TreatmentPriorityPanel({ items, visual }: { items: string[]; vis
               <div className={cn('min-w-0 flex-1', !isLast && 'pb-6')}>
                 <div
                   className={cn(
-                    'rounded-xl border border-border/50 bg-card/60 p-4 shadow-sm backdrop-blur-[2px] md:p-5',
+                    'rounded-xl border border-border/50 bg-card/60 p-3 shadow-sm backdrop-blur-[2px] sm:p-4 md:p-5',
                     visual.contentTintClass
                   )}
                 >
@@ -296,11 +296,11 @@ export function TreatmentPriorityRichPanel({
         {steps.map((step, index) => {
           const isLast = index === steps.length - 1;
           return (
-            <li key={`${step.title}-${index}`} className="flex gap-4 md:gap-5">
-              <div className="flex w-11 shrink-0 flex-col items-center md:w-12">
+            <li key={`${step.title}-${index}`} className="flex gap-2 sm:gap-4 md:gap-5">
+              <div className="flex w-8 shrink-0 flex-col items-center sm:w-11 md:w-12">
                 <span
                   className={cn(
-                    'flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] md:h-10 md:w-10 md:text-sm',
+                    'flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold shadow-sm ring-1 ring-black/[0.06] dark:ring-white/[0.08] sm:h-9 sm:w-9 md:h-10 md:w-10 md:text-sm',
                     visual.diagnosticNumBgClass,
                     visual.diagnosticNumTextClass
                   )}
@@ -317,7 +317,7 @@ export function TreatmentPriorityRichPanel({
               <div className={cn('min-w-0 flex-1', !isLast && 'pb-6')}>
                 <div
                   className={cn(
-                    'rounded-xl border border-border/50 bg-card/60 p-4 shadow-sm backdrop-blur-[2px] md:p-5',
+                    'rounded-xl border border-border/50 bg-card/60 p-3 shadow-sm backdrop-blur-[2px] sm:p-4 md:p-5',
                     visual.contentTintClass
                   )}
                 >

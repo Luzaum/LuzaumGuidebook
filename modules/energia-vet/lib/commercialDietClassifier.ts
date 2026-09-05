@@ -2,6 +2,16 @@ import type { FoodItem } from '../types'
 
 export type CommercialDietType = 'healthy' | 'therapeutic'
 
+export type MaintenanceCategory =
+  | 'breed_specific'
+  | 'size_specific'
+  | 'growth_reproduction'
+  | 'adult_maintenance'
+  | 'mature_senior'
+  | 'sterilised_indoor'
+  | 'specific_care'
+  | 'general_maintenance'
+
 export type TherapeuticSpecialty =
   | 'renal'
   | 'gastrointestinal'
@@ -22,6 +32,8 @@ export interface CommercialDietMetadata {
   lineName: string
   specialty?: TherapeuticSpecialty
   specialtyLabel?: string
+  maintenanceCategory?: MaintenanceCategory
+  maintenanceCategoryLabel?: string
   textureType: 'dry' | 'wet'
   textureLabel: string
   summaryPt: string
@@ -52,7 +64,7 @@ export interface CommercialDietMetadata {
 
 const THERAPEUTIC_KEYWORDS: Record<TherapeuticSpecialty, string[]> = {
   renal: ['renal', 'early renal', 'renal select', 'renal special', 'k/d', 'estágios iniciais'],
-  gastrointestinal: ['gastrointestinal', 'gastro intestinal', 'gastro', 'intestinal', 'i/d', 'low fat', 'fiber response', 'sensible', 'sensível', 'sensitive'],
+  gastrointestinal: ['gastrointestinal', 'gastro intestinal', 'gastro', 'intestinal', 'i/d', 'low fat', 'fiber response'],
   dermatology_allergy: ['hypoallergenic', 'hipoalergênico', 'anallergenic', 'skin support', 'dermatosis', 'derm', 'z/d', 'dermatoses'],
   urinary: ['urinary', 'urinary so', 'c/d', 'u/d', 's/o', 'oxalati', 'struvite', 'estruvita', 'urinária'],
   hepatic: ['hepatic', 'hepático', 'hepática', 'l/d'],
@@ -60,7 +72,7 @@ const THERAPEUTIC_KEYWORDS: Record<TherapeuticSpecialty, string[]> = {
   obesity_satiety: ['obesity', 'satiety', 'obeso', 'obesidade', 'weight control', 'r/d', 'w/d', 'metabolic', 'light clínico'],
   convalescence_recovery: ['recovery', 'urgent care', 'a/d', 'critical care', 'convalescence', 'revalescence', 'alta energia'],
   diabetic: ['diabetic', 'diabético', 'diabéticos', 'w/d', 'glicêmico'],
-  joint_mobility: ['mobility', 'articular', 'j/d', 'joint care'],
+  joint_mobility: ['mobility', 'articular', 'j/d'],
   general_clinical: ['veterinary', 'vet care', 'nutrição clínica', 'prescription diet', 'vet life'],
 }
 
@@ -209,6 +221,53 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
     specialtyLabel = SPECIALTY_LABELS[specialty]
   }
 
+  let maintenanceCategory: MaintenanceCategory | undefined
+  let maintenanceCategoryLabel: string | undefined
+
+  if (dietType === 'healthy') {
+    const searchableName = ` ${nameLower.replace(/[-_/]+/g, ' ')} `
+    const breedTerms = [
+      'bulldog', 'pug', 'persian', 'persa', 'maine coon', 'boxer', 'dachshund', 'teckel',
+      'french bulldog', 'bulldog francês', 'german shepherd', 'pastor alemão', 'golden retriever',
+      'labrador', 'maltese', 'maltês', 'schnauzer', 'pomeranian', 'spitz', 'poodle', 'rottweiler',
+      'shih tzu', 'yorkshire', 'siamese', 'siamês', 'bengal', 'sphynx', 'ragdoll',
+    ]
+    const sizeTerms = ['x-small', 'x small', 'mini ', 'medium ', 'maxi ', 'giant ', 'porte pequeno', 'porte médio', 'porte grande', 'porte gigante']
+    const growthTerms = ['puppy', 'kitten', 'filhote', 'junior', 'starter', 'mother', 'babycat', 'babydog', 'gestação', 'lactação']
+    const seniorTerms = ['senior', 'sênior', 'mature', 'maduro', 'ageing', 'aging', '7+', '8+', '10+', '12+', 'idoso']
+    const lifestyleTerms = ['sterilised', 'sterilized', 'castrado', 'indoor', 'ambiente interno']
+    const careTerms = [
+      'care', 'sensible', 'sensível', 'sensitive', 'exigent', 'fit 32', 'light', 'hairball',
+      'hair & skin', 'hair skin', 'coat', 'dental', 'relax', 'appetite control', 'controle do apetite',
+    ]
+
+    if (breedTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'breed_specific'
+      maintenanceCategoryLabel = 'Raças específicas'
+    } else if (lifestyleTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'sterilised_indoor'
+      maintenanceCategoryLabel = 'Castrados & vida indoor'
+    } else if (careTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'specific_care'
+      maintenanceCategoryLabel = 'Cuidados específicos'
+    } else if (growthTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'growth_reproduction'
+      maintenanceCategoryLabel = 'Filhotes, gestação & lactação'
+    } else if (seniorTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'mature_senior'
+      maintenanceCategoryLabel = 'Maduros & idosos'
+    } else if (sizeTerms.some((term) => searchableName.includes(term))) {
+      maintenanceCategory = 'size_specific'
+      maintenanceCategoryLabel = 'Porte específico'
+    } else if (searchableName.includes('adult') || searchableName.includes('adulto')) {
+      maintenanceCategory = 'adult_maintenance'
+      maintenanceCategoryLabel = 'Adultos — manutenção diária'
+    } else {
+      maintenanceCategory = 'general_maintenance'
+      maintenanceCategoryLabel = 'Manutenção geral'
+    }
+  }
+
   // 4. Extract Nutrients
   const moisturePct = food.nutrientsAsFed.moisturePct ?? (isWet ? 78 : 10)
   const dryMatterPct = food.nutrientsAsFed.dryMatterPct ?? (100 - moisturePct)
@@ -242,7 +301,7 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
       case 'renal':
         summaryPt = `Dieta clínica coadjuvante de precisão para ${speciesLabel} com doença renal crônica (DRC), formulada com teores rigorosamente controlados de fósforo e sódio.`
         clinicalIndications.push('Restrição de fósforo para desacelerar a progressão da nefropatia.')
-        clinicalIndications.push('Proteínas de alto valor biológico para reduzir escórias nitrogenadas e azotemia.')
+        clinicalIndications.push('Proteínas de alto valor biológico para reduzir o acúmulo de metabólitos nitrogenados e minimizar a azotemia.')
         clinicalIndications.push('Enriquecimento com ácidos graxos ômega-3 (EPA/DHA) para suporte hemodinâmico renal.')
         clinicalIndications.push('Alta densidade calórica para prevenir caquexia e perda de escore corporal (ECC).')
         break
@@ -343,6 +402,8 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
     lineName,
     specialty,
     specialtyLabel,
+    maintenanceCategory,
+    maintenanceCategoryLabel,
     textureType,
     textureLabel,
     summaryPt,

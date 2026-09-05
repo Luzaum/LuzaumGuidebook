@@ -21,7 +21,7 @@ function MetricText({ value, visual }: { value: string; visual?: DiseaseSectionV
           <mark
             key={`${part}-${index}`}
             className={cn(
-              'rounded-sm px-1.5 py-0.5 font-bold text-inherit [box-decoration-break:clone]',
+              'inline whitespace-nowrap rounded-sm px-1 py-px font-bold leading-[inherit] text-inherit [box-decoration-break:clone]',
               visual.headerTintClass,
               visual.titleClass
             )}

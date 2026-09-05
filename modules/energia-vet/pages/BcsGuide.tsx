@@ -58,8 +58,8 @@ export default function BcsGuide() {
 
       <section className="rounded-[1.5rem] border border-border bg-card p-5">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div><h2 className="text-base font-semibold text-foreground">Como o escore orienta a meta</h2><p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">Escores abaixo do ideal sugerem ganho planejado; escores acima orientam redução proporcional. A decisão clínica permanece ajustável na etapa Meta.</p></div>
-          <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-9">
+          <div className="min-w-0 lg:flex-1"><h2 className="text-base font-semibold text-foreground">Como o escore orienta a meta</h2><p className="mt-1 max-w-2xl text-sm leading-relaxed text-muted-foreground">Escores abaixo do ideal sugerem ganho planejado; escores acima orientam redução proporcional. A decisão clínica permanece ajustável na etapa Meta.</p></div>
+          <div className="grid w-full grid-cols-5 gap-1.5 sm:grid-cols-9 lg:w-[52%] lg:max-w-[680px] lg:shrink-0">
             {WEIGHT_RULES.map((rule) => (
               <div key={rule.bcs} className={`flex h-14 min-w-0 flex-col items-center justify-center rounded-xl ${rule.direction === 'ideal' ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-200' : rule.direction === 'loss' ? 'bg-blue-50 text-blue-700 dark:bg-blue-500/10 dark:text-blue-200' : 'bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-200'}`}>
                 <span className="text-xs font-bold">{rule.bcs}</span><span className="mt-0.5 text-[9px] font-medium">{rule.change}</span>

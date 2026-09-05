@@ -96,7 +96,7 @@ export default function Patients() {
           <h1>Pacientes</h1>
           <p>Históricos organizados por paciente para revisar evolução, prescrições e relatórios anteriores.</p>
         </div>
-        <Button className="w-full gap-2 sm:w-auto" onClick={() => navigate(NEW_ROUTE)}><Plus className="h-4 w-4" /> Novo cálculo</Button>
+        <Button className="w-full gap-2 sm:w-auto" onClick={() => navigate(NEW_ROUTE)}><Plus className="h-4 w-4" /> Calculadora energética</Button>
       </header>
 
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">

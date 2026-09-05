@@ -44,6 +44,8 @@ export interface SmartFoodSearchBarProps {
   className?: string
   autoFocus?: boolean
   showQuickChips?: boolean
+  showVoiceSearch?: boolean
+  showKeyboardShortcut?: boolean
 }
 
 export function SmartFoodSearchBar({
@@ -53,6 +55,8 @@ export function SmartFoodSearchBar({
   className,
   autoFocus,
   showQuickChips = true,
+  showVoiceSearch = true,
+  showKeyboardShortcut = true,
 }: SmartFoodSearchBarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [recentSearches, setRecentSearches] = useState<string[]>(() => getRecentSearches())
@@ -64,6 +68,8 @@ export function SmartFoodSearchBar({
 
   // Speech Recognition support
   useEffect(() => {
+    if (!showVoiceSearch) return
+
     const SpeechRecognition =
       (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
     if (SpeechRecognition) {
@@ -93,10 +99,12 @@ export function SmartFoodSearchBar({
 
       recognitionRef.current = recognition
     }
-  }, [onChange])
+  }, [onChange, showVoiceSearch])
 
   // Keyboard shortcut (Ctrl+K / Cmd+K or /)
   useEffect(() => {
+    if (!showKeyboardShortcut) return
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'k') {
         e.preventDefault()
@@ -111,7 +119,7 @@ export function SmartFoodSearchBar({
 
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
-  }, [])
+  }, [showKeyboardShortcut])
 
   // Close dropdown when clicked outside
   useEffect(() => {
@@ -189,7 +197,10 @@ export function SmartFoodSearchBar({
           }}
           placeholder={placeholder}
           autoFocus={autoFocus}
-          className="h-11 w-full rounded-2xl border border-input bg-card pl-10 pr-24 text-sm font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/70 focus:border-primary/50 focus:ring-4 focus:ring-primary/10"
+          className={cn(
+            'h-11 w-full rounded-2xl border border-input bg-card pl-10 text-sm font-medium text-foreground outline-none transition-all placeholder:text-muted-foreground/70 focus:border-primary/50 focus:ring-4 focus:ring-primary/10',
+            showVoiceSearch || showKeyboardShortcut ? 'pr-24' : 'pr-10',
+          )}
         />
 
         <div className="absolute right-2.5 top-1/2 flex -translate-y-1/2 items-center gap-1">
@@ -204,7 +215,7 @@ export function SmartFoodSearchBar({
             </button>
           )}
 
-          {hasSpeechSupport && (
+          {showVoiceSearch && hasSpeechSupport && (
             <button
               type="button"
               onClick={toggleVoiceSearch}
@@ -220,9 +231,11 @@ export function SmartFoodSearchBar({
             </button>
           )}
 
-          <span className="hidden items-center gap-0.5 rounded-md border border-border bg-muted/60 px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground sm:inline-flex">
-            <Command className="h-3 w-3" /> K
-          </span>
+          {showKeyboardShortcut && (
+            <span className="hidden items-center gap-0.5 rounded-md border border-border bg-muted/60 px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground sm:inline-flex">
+              <Command className="h-3 w-3" /> K
+            </span>
+          )}
         </div>
       </div>
 

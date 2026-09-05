@@ -27,7 +27,7 @@ export const modules: Module[] = [
   {
     id: 'energia-vet',
     title: 'NutriçãoVET',
-    description: 'Fluxo nutricional veterinário com cálculo, pacientes, dietas e relatórios.',
+    description: 'Avalie necessidades energéticas, organize dietas e acompanhe pacientes nutricionais.',
     route: '/calculadora-energetica',
     status: 'internal',
     icon: Activity,
@@ -36,7 +36,7 @@ export const modules: Module[] = [
   {
     id: 'fluidoterapia-vet',
     title: 'Fluidoterapia Vet',
-    description: 'Cálculos e protocolos clínicos de fluidoterapia veterinária.',
+    description: 'Calcule reposição, manutenção e perdas para estruturar a fluidoterapia do paciente.',
     route: '/fluidoterapia-vet',
     status: 'internal',
     icon: Activity,
@@ -45,7 +45,7 @@ export const modules: Module[] = [
   {
     id: 'transfusão-sanguinea',
     title: 'Transfusão Sanguínea',
-    description: 'Cálculo de transfusão sanguínea e compatibilidade',
+    description: 'Planeje transfusões com volume, compatibilidade, produtos sanguíneos e monitorização.',
     route: '/transfusão-sanguinea',
     status: 'internal',
     icon: Heart,
@@ -54,7 +54,7 @@ export const modules: Module[] = [
   {
     id: 'hemogasovet',
     title: 'HemoGasoVet',
-    description: 'Interpretação de hemogasometria arterial e venosa',
+    description: 'Interprete hemogasometria, equilíbrio ácido-base, eletrólitos e oxigenação com clareza.',
     route: '/hemogasovet',
     status: 'internal',
     icon: TestTube,
@@ -63,7 +63,7 @@ export const modules: Module[] = [
   {
     id: 'escalas-dor',
     title: 'Escalas de Dor',
-    description: 'Escalas de dor e protocolos de analgesia',
+    description: 'Aplique escalas de dor e estruture a analgesia conforme espécie e contexto clínico.',
     route: '/dor',
     status: 'internal',
     icon: Cat,
@@ -72,7 +72,7 @@ export const modules: Module[] = [
   {
     id: 'antibioticoterapia',
     title: 'Antibioticoterapia Vet',
-    description: 'Escolha guiada e racional de antimicrobianos (protocolos, doses e condutas)',
+    description: 'Escolha antimicrobianos por síndrome, espectro, dose, cultura e uso responsável.',
     route: '/antibioticoterapia',
     status: 'internal',
     icon: Pill,
@@ -81,7 +81,7 @@ export const modules: Module[] = [
   {
     id: 'crivet',
     title: 'CRI VET',
-    description: 'Calculadora auditável de CRI veterinário',
+    description: 'Monte infusões contínuas com concentração, velocidade e cálculos conferíveis.',
     route: '/crivet',
     status: 'internal',
     icon: Syringe,
@@ -90,7 +90,7 @@ export const modules: Module[] = [
   {
     id: 'neurologia',
     title: 'Neurologia',
-    description: 'Exame neurológico, localização didática e MGCS — desktop, tablet e celular.',
+    description: 'Conduza o exame neurológico, localize a lesão e aplique a escala MGCS.',
     route: '/neurologia',
     status: 'internal',
     icon: Brain,
@@ -99,7 +99,7 @@ export const modules: Module[] = [
   {
     id: 'consulta-vet',
     title: 'ConsultaVET',
-    description: 'Base clínica com doenças, medicamentos, consensos, favoritos e retomada de leitura.',
+    description: 'Consulte doenças, fármacos, produtos comerciais, consensos e modelos de prescrição.',
     route: '/consulta-vet',
     status: 'internal',
     icon: Stethoscope,

@@ -33,19 +33,19 @@ export function ReferencesList({
                     {index + 1}
                   </span>
                   {reference.sourceType ? (
-                    <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    <span className="max-w-full break-words rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-primary">
                       {reference.sourceType}
                     </span>
                   ) : null}
                   {reference.evidenceLevel ? (
-                    <span className="rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-amber-800 dark:text-amber-200">
+                    <span className="max-w-full break-words rounded-full border border-amber-500/25 bg-amber-500/[0.08] px-3 py-1 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-amber-800 dark:text-amber-200">
                       Evidência: {reference.evidenceLevel}
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-3 text-[15px] leading-7 text-foreground/92">{reference.citationText}</p>
+                <p className="mt-3 break-words text-[15px] leading-7 text-foreground/92 [overflow-wrap:anywhere]">{reference.citationText}</p>
                 {reference.notes ? (
-                  <p className="mt-2 max-w-[82ch] text-sm leading-7 text-muted-foreground">{reference.notes}</p>
+                  <p className="mt-2 max-w-[82ch] break-words text-sm leading-7 text-muted-foreground [overflow-wrap:anywhere]">{reference.notes}</p>
                 ) : null}
               </div>
 

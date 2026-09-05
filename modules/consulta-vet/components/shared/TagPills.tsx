@@ -21,7 +21,9 @@ export function TagPills({ tags, className, maxVisible = 2, singleLine = false }
     <div
       className={cn(
         'flex items-center gap-1.5',
-        singleLine ? 'h-[23px] flex-wrap overflow-hidden w-full' : 'flex-wrap',
+        singleLine
+          ? 'w-full flex-nowrap overflow-x-auto overflow-y-hidden pb-0.5 [scrollbar-width:thin]'
+          : 'flex-wrap',
         className
       )}
     >

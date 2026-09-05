@@ -82,7 +82,7 @@ export default function NewCalculation() {
     <div className="nutrition-page w-full pb-16">
       <div className="mb-6 border-b border-border pb-6">
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary">Plano individualizado</p>
-        <h1 className="text-3xl font-semibold tracking-tight">Novo cálculo nutricional</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Calculadora energética</h1>
         <p className="text-muted-foreground mt-2">
           Construa o plano em sete etapas. Você pode voltar sem perder o que já informou.
         </p>

@@ -36,7 +36,7 @@ const MODULE_LOGO = '/apps/nutricaovet.png';
 
 const navigation = [
   { name: 'Visão geral', shortName: 'Início', path: '/', icon: Home },
-  { name: 'Novo cálculo', shortName: 'Novo', path: '/new', icon: Calculator },
+  { name: 'Calculadora energética', shortName: 'Calculadora', path: '/new', icon: Calculator },
   { name: 'Rações comerciais', shortName: 'Rações', path: '/commercial', icon: Utensils },
   { name: 'Hospitalizados', shortName: 'Internados', path: '/hospitalized', icon: Stethoscope },
   { name: 'Pacientes', shortName: 'Pacientes', path: '/patients', icon: Users },

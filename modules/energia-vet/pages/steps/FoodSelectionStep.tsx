@@ -121,6 +121,8 @@ export default function FoodSelectionStep() {
                     setShowAll(false)
                   }}
                   placeholder="Buscar por alimento, marca, condição clínica (ex.: renal royal, frango)..."
+                  showVoiceSearch={false}
+                  showKeyboardShortcut={false}
                 />
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground self-start mt-2">
