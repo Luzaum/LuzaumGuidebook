@@ -227,7 +227,7 @@ export function HomePage() {
       accent: 'sky' as const,
     },
     {
-      to: '/consulta-vet/guias-rápidos',
+      to: '/consulta-vet/guias-rapidos',
       label: 'Guia r\u00e1pido cl\u00ednico',
       icon: BookOpen,
       body: 'Conceitos por sistema, figuras e v\u00eddeos',
