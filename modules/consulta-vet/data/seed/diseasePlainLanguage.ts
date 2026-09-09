@@ -5,6 +5,15 @@ import type { DiseasePlainLanguage } from '../../types/disease';
  * Cada doença nova deve ter entrada aqui E `plainLanguage` no seed (ou import via getPlainLanguageForSlug).
  */
 export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
+  'coagulacao-intravascular-disseminada-caes-gatos': {
+    whatIsIt:
+      'A coagulação intravascular disseminada (CID) é uma emergência crítica em que o sistema que faz o sangue coagular entra em pane generalizada devido a outra doença grave. Em vez de formar coágulos apenas em cortes ou machucados, o corpo passa a criar milhares de microcoágulos invisíveis dentro dos vasos sanguíneos, entupindo a circulação de órgãos vitais como rins, pulmões e fígado. Ao mesmo tempo, como todos os componentes de coagulação são gastos rapidamente nessa tempestade, o sangue perde a capacidade de estancar hemorragias, fazendo com que o animal possa ter manchas roxas na pele, sangramentos e falência de órgãos.',
+    keyPoints: [
+      'A CID nunca surge sozinha: ela é sempre consequência de uma condição muito grave, como infecções generalizadas (sepse), tumores avançados, inflamação severa no pâncreas ou traumas graves.',
+      'O animal pode estar sofrendo danos graves em órgãos internos mesmo sem sangrar por fora — a falta de sangramento visível não significa que ele esteja fora de perigo.',
+      'O tratamento foca em combater com urgência a doença de base que disparou o problema, manter a hidratação e perfusão na UTI e repor componentes do sangue quando necessário.',
+    ],
+  },
   'miastenia-gravis-caes-gatos': {
     whatIsIt:
       'A miastenia gravis adquirida é uma doença em que o sistema imune do animal ataca a “ponte” entre o nervo e o músculo. Com isso, o cão ou gato fica fraco de forma progressiva — principalmente depois de caminhar, brincar ou comer — e pode ter dificuldade para engolir ou respirar.',

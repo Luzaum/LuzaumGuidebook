@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="grad_kititraconazoliodetofloravetsvg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#f1f5f9" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  <rect width="400" height="400" fill="url(#grad_kititraconazoliodetofloravetsvg)" rx="24"/>
+  
+  <!-- Outer Medicine Box/Bottle Container -->
+  <g transform="translate(60, 45)" filter="url(#shadow)">
+    <!-- Box Body -->
+    <rect width="280" height="310" rx="16" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    
+    <!-- Top Accent Bar -->
+    <rect width="280" height="14" rx="8" fill="#4f46e5"/>
+    
+    <!-- Badge -->
+    <rect x="20" y="30" width="240" height="24" rx="6" fill="#4f46e5" fill-opacity="0.12"/>
+    <text x="140" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4f46e5" text-anchor="middle" letter-spacing="1">KIT ESPOROTRICOSE</text>
+    
+    <!-- Pill/Bottle Icon Graphic -->
+    <g transform="translate(110, 75)">
+      <rect x="15" y="0" width="30" height="12" rx="4" fill="#4f46e5" opacity="0.3"/>
+      <rect x="5" y="12" width="50" height="70" rx="10" fill="#f8fafc" stroke="#4f46e5" stroke-width="3"/>
+      <line x1="5" y1="47" x2="55" y2="47" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 2"/>
+      <!-- Cross symbol -->
+      <path d="M30 28 v16 M22 36 h16" stroke="#4f46e5" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Product Name -->
+    <text x="140" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="800" fill="#0f172a" text-anchor="middle">
+      Kit Itraconazol + Iodeto
+    </text>
+    
+    <!-- Subtitle / Formulation -->
+    <text x="140" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">
+      Floravet / Farmacell - Tratamento Duplo
+    </text>
+    
+    <!-- Pharmacy Rx Footer Bar -->
+    <rect x="20" y="255" width="240" height="36" rx="8" fill="#f8fafc" stroke="#f1f5f9"/>
+    <text x="140" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600" fill="#475569" text-anchor="middle">
+      Rx • Prescrição Médico-Veterinária
+    </text>
+  </g>
+</svg>

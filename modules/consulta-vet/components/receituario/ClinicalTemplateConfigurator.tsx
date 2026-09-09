@@ -1,9 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Check, FlaskConical, Hospital, ShieldCheck } from 'lucide-react';
 import type { ClinicalMedicationOverride, ClinicalRecipeModel } from '../../types/receituario';
-import { buildClinicalMedicationOverridesMap } from '../../utils/clinicalMedicationCatalogBridge';
+import { buildClinicalMedicationOverridesMap, buildDefaultClinicalMedicationOverride } from '../../utils/clinicalMedicationCatalogBridge';
 import {
   getDefaultClinicalOptionKeys,
+  normalizeClinicalOptionKeys,
   renderClinicalRecipe,
   type PatientSize,
 } from '../../utils/receituarioClinicalModels';
@@ -77,22 +78,23 @@ export function ClinicalTemplateConfigurator({
     species,
     doseAlternativeKeys,
     medicationOverrides,
-  ), [doseAlternativeKeys, medicationOverrides, selectedMedications, species]);
+    parsedWeight,
+  ), [doseAlternativeKeys, medicationOverrides, parsedWeight, selectedMedications, species]);
 
   useEffect(() => {
     if (!onMedicationOverridesChange) return;
-    const hasMissing = selectedMedications.some((item) => !medicationOverrides[item.key]);
-    if (!hasMissing) return;
+    const changed = JSON.stringify(effectiveOverrides) !== JSON.stringify(medicationOverrides);
+    if (!changed) return;
     onMedicationOverridesChange(effectiveOverrides);
   }, [effectiveOverrides, medicationOverrides, onMedicationOverridesChange, selectedMedications]);
 
   useEffect(() => {
-    setSelectedKeys(getDefaultClinicalOptionKeys(model));
+    if (controlledSelectedKeys === undefined) setInternalSelectedKeys(getDefaultClinicalOptionKeys(model));
     setPatientSize(null);
     setFormulaForm('cápsula');
     setCustomFormulaForm('');
-    setDoseAlternativeKeys({});
-  }, [model]);
+    if (controlledDoseAlternativeKeys === undefined) setInternalDoseAlternativeKeys({});
+  }, [controlledDoseAlternativeKeys, controlledSelectedKeys, model]);
 
   useEffect(() => {
     onBodyChange(renderClinicalRecipe(
@@ -113,7 +115,7 @@ export function ClinicalTemplateConfigurator({
       setSelectedKeys([key]);
       return;
     }
-    setSelectedKeys((current) => current.includes(key) ? current.filter((item) => item !== key) : [...current, key]);
+    setSelectedKeys((current) => normalizeClinicalOptionKeys(model, current.includes(key) ? current.filter((item) => item !== key) : [...current, key]));
   };
 
   return (
@@ -227,10 +229,20 @@ export function ClinicalTemplateConfigurator({
         <label key={item.key} className="block space-y-1.5 rounded-xl border border-border bg-muted/25 p-3">
           <span className="block text-xs font-bold">Indicação por dose — {item.name}</span>
           <select
-            value={doseAlternativeKeys[item.key] || item.doseAlternatives?.[0]?.key || ''}
-            onChange={(event) => setDoseAlternativeKeys((current) => ({ ...current, [item.key]: event.target.value }))}
+            value={doseAlternativeKeys[item.key] || ''}
+            onChange={(event) => {
+              const key = event.target.value;
+              setDoseAlternativeKeys((current) => ({ ...current, [item.key]: key }));
+              const dose = item.doseAlternatives?.find((alternative) => alternative.key === key)?.dose || item.dose;
+              const defaults = buildDefaultClinicalMedicationOverride(item, species, key, parsedWeight);
+              onMedicationOverridesChange?.({ ...medicationOverrides, [item.key]: {
+                ...effectiveOverrides[item.key], doseId: defaults.doseId, selectedDoseValue: dose.min,
+                route: dose.route, frequency: dose.frequency, duration: dose.duration,
+              } });
+            }}
             className="h-11 w-full rounded-lg border border-border bg-background px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/15"
           >
+            <option value="">Dose inicial do modelo — {item.dose.min} {item.dose.unit}</option>
             {item.doseAlternatives?.map((alternative) => (
               <option key={alternative.key} value={alternative.key}>{alternative.label}</option>
             ))}

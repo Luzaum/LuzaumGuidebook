@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Activity, AlertTriangle, ArrowRight, Calculator, FileText, Fish, Leaf, Stethoscope, Users, Utensils } from 'lucide-react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Button } from '../components/ui/button'
-import { getDatasetStats, getTopAuditIssues } from '../lib/genutriData'
+import { getCommercialFoods, getDatasetStats, getTopAuditIssues } from '../lib/genutriData'
 import { getSavedPatients, getSavedReports } from '../lib/persistence'
 
 const BASE_ROUTE = '/calculadora-energetica'
@@ -13,9 +13,10 @@ export default function Dashboard() {
   const savedPatients = useMemo(() => getSavedPatients().slice(0, 5), [])
   const auditIssues = useMemo(() => getTopAuditIssues(4), [])
   const stats = useMemo(() => getDatasetStats(), [])
+  const commercialFoodCount = useMemo(() => getCommercialFoods().length, [])
 
   const destinations = [
-    { name: 'Rações comerciais', description: '349 rações saudáveis e terapêuticas', icon: Utensils, path: `${BASE_ROUTE}/commercial` },
+    { name: 'Rações comerciais', description: `${commercialFoodCount} rações de manutenção e terapêuticas`, icon: Utensils, path: `${BASE_ROUTE}/commercial` },
     { name: 'Hospitalizados & Sondas', description: 'RER, transição e osmolaridade', icon: Stethoscope, path: `${BASE_ROUTE}/hospitalized` },
     { name: 'Base natural TACO/USDA', description: 'Ingredientes para dieta caseira', icon: Leaf, path: `${BASE_ROUTE}/foods/natural` },
     { name: 'Pacientes', description: 'Histórico clínico e evolução', icon: Users, path: `${BASE_ROUTE}/patients` },

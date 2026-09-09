@@ -1,49 +1,115 @@
+import {
+  COMMERCIAL_DIET_MEDIA_SEED,
+  type CommercialDietMedia,
+} from '../data/commercialDietMedia.seed'
+
+export type { CommercialDietMedia }
+
 export interface DietImageMetadata {
   imageUrl: string
   alt: string
   brandName: string
+  productUrl?: string
 }
 
-// Mapeamento curado de imagens com links diretos confiáveis
-export const COMMERCIAL_DIET_IMAGES: Record<string, string> = {
-  // Royal Canin Renais e Clínicas
-  'royal-canin-renal-caes': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-renal-small-dog': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'racao-royal-canin-renal-special-caes': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'pate-royal-canin-renal-canine': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-vet-renal-canine-wet-410g': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-renal-feline': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-renal-special-feline': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-vet-renal-feline-85g': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-recovery-mousse': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'pate-royal-canin-gastrointestinal-low-fat-canine': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  'royal-canin-veterinary-hypoallergenic-canine-pate': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10',
-  
-  // Farmina Vet Life
-  'racao-vetlife-renal-canine-farmina': 'https://www.farmina.com/fotoprodotti/1663748281_vetlife-canine-renal-2kg.png',
-  'farmina-vet-life-caes-renal': 'https://www.farmina.com/fotoprodotti/1663748281_vetlife-canine-renal-2kg.png',
-  'racao-vetlife-renal-feline-farmina': 'https://www.farmina.com/fotoprodotti/1663748281_vetlife-feline-renal-2kg.png',
-  'pate-vetlife-renal-caes-farmina': 'https://www.farmina.com/fotoprodotti/1663748281_vetlife-canine-renal-wet.png',
+/**
+ * Dicionário retrocompatível contendo apenas a URL da imagem.
+ */
+export const COMMERCIAL_DIET_IMAGES: Record<string, string> = Object.fromEntries(
+  Object.entries(COMMERCIAL_DIET_MEDIA_SEED).map(([id, item]) => [id, item.imageUrl])
+)
 
-  // PremieR Pet Nutrição Clínica
-  'racao-premier-nutricao-clinica-renal': 'https://www.premierpet.com.br/wp-content/uploads/2021/04/premier-nutricao-clinica-renal-caes.png',
-  'racao-premierpet-nutricao-clinica-renal-estagios-iniciais': 'https://www.premierpet.com.br/wp-content/uploads/2021/04/premier-nutricao-clinica-renal-estagios-iniciais.png',
-  'premier-nutricao-clinica-renal-caes-pequeno': 'https://www.premierpet.com.br/wp-content/uploads/2021/04/premier-nutricao-clinica-renal-caes.png',
-  'premier-nutricao-clinica-renal-caes-medio-grande': 'https://www.premierpet.com.br/wp-content/uploads/2021/04/premier-nutricao-clinica-renal-caes.png',
+/**
+ * URLs dos portais oficiais de fabricantes para fallback inteligente.
+ */
+const BRAND_OFFICIAL_WEBSITES: Array<{ match: RegExp; url: string; brand: string }> = [
+  { match: /royal\s*canin/i, url: 'https://www.royalcanin.com/br', brand: 'Royal Canin' },
+  { match: /hill'?s/i, url: 'https://www.hillspet.com.br', brand: "Hill's Pet Nutrition" },
+  { match: /farmina|vet\s*life/i, url: 'https://www.farmina.com/br', brand: 'Farmina' },
+  { match: /premier|premio/i, url: 'https://www.premierpet.com.br', brand: 'PremieR Pet' },
+  { match: /purina|pro\s*plan/i, url: 'https://www.purina.com.br', brand: 'Purina' },
+  { match: /f[oó]rmula\s*natural|adimax/i, url: 'https://www.adimax.com.br', brand: 'Fórmula Natural' },
+  { match: /equil[ií]brio/i, url: 'https://www.equilibrioveterinary.com.br', brand: 'Equilíbrio Veterinary' },
+  { match: /pet\s*del[ií]cia/i, url: 'https://www.petdelicia.com.br', brand: 'Pet Delícia' },
+  { match: /guabi/i, url: 'https://www.guabinatural.com.br', brand: 'Guabi Natural' },
+  { match: /quatree/i, url: 'https://www.quatree.com.br', brand: 'Quatree' },
+  { match: /granplus/i, url: 'https://www.granplus.com.br', brand: 'GranPlus' },
+  { match: /golden/i, url: 'https://www.goldenpet.com.br', brand: 'Golden' },
+]
+
+/**
+ * Normaliza o ID para busca com aliases (remove prefixos de forma cosmética).
+ */
+function normalizeId(id: string): string {
+  return id
+    .toLowerCase()
+    .trim()
+    .replace(/^(?:racao|pate|sache)-/i, '')
 }
 
-export function getCommercialDietImageUrl(foodId: string, foodName: string): string {
-  if (COMMERCIAL_DIET_IMAGES[foodId]) {
-    return COMMERCIAL_DIET_IMAGES[foodId]
+/**
+ * Retorna os metadados de mídia completos (foto oficial + link do fabricante).
+ */
+export function getCommercialDietMedia(foodId: string, foodName?: string): CommercialDietMedia | null {
+  if (!foodId) return null
+
+  // 1. Busca direta exata por ID
+  const direct = COMMERCIAL_DIET_MEDIA_SEED[foodId]
+  if (direct) return direct
+
+  // 2. Busca por ID normalizado
+  const normId = normalizeId(foodId)
+  for (const [key, item] of Object.entries(COMMERCIAL_DIET_MEDIA_SEED)) {
+    if (normalizeId(key) === normId) {
+      return item
+    }
   }
 
-  const nameLower = foodName.toLowerCase()
-  if (nameLower.includes('royal canin')) {
-    return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10'
-  }
-  if (nameLower.includes('renal')) {
-    return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10'
+  // 3. Busca por nome do produto se fornecido
+  if (foodName) {
+    const nameLower = foodName.toLowerCase()
+    for (const [key, item] of Object.entries(COMMERCIAL_DIET_MEDIA_SEED)) {
+      if (
+        nameLower.includes(key.toLowerCase()) ||
+        item.alt.toLowerCase().includes(nameLower) ||
+        (item.alt.length > 8 && nameLower.includes(item.alt.toLowerCase()))
+      ) {
+        return item
+      }
+    }
+
+    // 4. Fallback de marca com link do portal oficial
+    for (const brand of BRAND_OFFICIAL_WEBSITES) {
+      if (brand.match.test(foodName) || brand.match.test(foodId)) {
+        return {
+          brand: brand.brand,
+          imageUrl: '',
+          productUrl: brand.url,
+          alt: foodName,
+          verified: false,
+        }
+      }
+    }
   }
 
-  return 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsIVeTiZbdfrZDqT5_1UETYJF3eNczvVJXcWsfIK_IRA&s=10'
+  return null
+}
+
+/**
+ * Retorna a URL da foto oficial da ração comercial, se disponível.
+ */
+export function getCommercialDietImageUrl(foodId: string, foodName?: string): string | null {
+  const media = getCommercialDietMedia(foodId, foodName)
+  if (media?.imageUrl) {
+    return media.imageUrl
+  }
+  return COMMERCIAL_DIET_IMAGES[foodId] ?? null
+}
+
+/**
+ * Retorna a URL da página oficial do produto no site da fabricante.
+ */
+export function getCommercialDietProductUrl(foodId: string, foodName?: string): string | null {
+  const media = getCommercialDietMedia(foodId, foodName)
+  return media?.productUrl ?? null
 }

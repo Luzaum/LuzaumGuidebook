@@ -19,10 +19,10 @@ export function Chip({
     <button
       type="button"
       className={cn(
-        'inline-flex items-center gap-1.5 px-3 py-1 rounded-full transition-colors text-sm',
+        'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full transition-all text-xs sm:text-sm font-medium',
         selected
-          ? 'bg-gold/20 border border-gold/50 text-gold'
-          : 'bg-white/5 border border-white/10 text-white/70 hover:bg-white/10',
+          ? 'bg-gold/20 border border-gold text-gold shadow-[0_0_12px_rgba(245,197,66,0.2)]'
+          : 'bg-muted/70 border border-border text-foreground/80 hover:bg-muted hover:text-foreground hover:border-gold/40',
         className,
       )}
       {...props}

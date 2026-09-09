@@ -38,23 +38,23 @@ export function Accordion({
         return (
           <div
             key={`${item.title}-${index}`}
-            className="border border-white/10 rounded-lg overflow-hidden"
+            className="border border-border bg-card/70 rounded-xl overflow-hidden shadow-sm"
           >
             <button
               type="button"
               onClick={() => toggleItem(index)}
-              className="w-full flex items-center justify-between p-4 text-left hover:bg-white/5 transition-colors"
+              className="w-full flex items-center justify-between p-4 text-left hover:bg-muted/40 transition-colors"
             >
-              <span className="font-medium text-white">{item.title}</span>
+              <span className="font-semibold text-foreground text-sm sm:text-base">{item.title}</span>
               <ChevronDown
                 className={cn(
-                  'w-5 h-5 text-gold transition-transform duration-200',
+                  'w-5 h-5 text-gold transition-transform duration-200 shrink-0',
                   isOpen && 'transform rotate-180',
                 )}
               />
             </button>
             {isOpen && (
-              <div className="p-4 pt-0 text-white/70">{item.content}</div>
+              <div className="p-4 pt-0 text-foreground/80 text-sm leading-relaxed border-t border-border/50">{item.content}</div>
             )}
           </div>
         )

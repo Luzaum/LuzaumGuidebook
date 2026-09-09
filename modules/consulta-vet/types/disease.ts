@@ -1,4 +1,4 @@
-import { ContentFlag, EditorialReference, EditorialSectionValue, VetSpecies } from './common';
+import { ContentFlag, EditorialClinicalFigure, EditorialReference, EditorialSectionValue, VetSpecies } from './common';
 
 export interface DiseaseQuickSummaryFlowStep {
   label: string;
@@ -71,7 +71,7 @@ export interface DiseaseRecord extends ContentFlag {
   diagnosis: EditorialSectionValue;
   treatment: EditorialSectionValue;
   complications?: EditorialSectionValue;
-  figures?: Array<Record<string, unknown>> | Record<string, unknown>;
+  figures?: EditorialClinicalFigure[] | Array<Record<string, unknown>> | Record<string, unknown>;
   prevention?: EditorialSectionValue;
   relatedConsensusSlugs: string[];
   relatedDiseaseSlugs?: string[];

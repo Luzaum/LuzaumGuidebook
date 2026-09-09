@@ -17,7 +17,7 @@ export function FluidSelectionCard({ config, onChange }: Props) {
           <Settings2 className="h-5 w-5 text-slate-500" />
           Prescrição do fluido
         </CardTitle>
-        <CardDescription>Fluido e droga: tipo, via e modo de entrega devem ficar explícitos.</CardDescription>
+        <CardDescription>Fluido e modo de infusão: tipo de solução, via e entrega devem ficar explícitos.</CardDescription>
       </CardHeader>
 
       <CardContent className="grid gap-6 p-6 md:grid-cols-2">

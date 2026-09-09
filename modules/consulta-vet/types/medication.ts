@@ -45,6 +45,13 @@ export interface MedicationDose {
   presentationId?: string;
   /** Se a apresentação tiver concentrationOptions, sugere a concentração inicial. */
   presentationConcentrationId?: string;
+  /** Etapas calculáveis que devem seguir a primeira dose sem exigir nova inclusão do medicamento. */
+  followUpPhases?: Array<{
+    doseValue: number;
+    frequency: string;
+    duration: string;
+    route?: string;
+  }>;
 }
 
 export interface MedicationPresentation {
@@ -62,6 +69,8 @@ export interface MedicationPresentation {
   packInfo?: string;
   route?: string;
   scoringInfo?: string;
+  /** Fator estruturado do gotejador; necessário para converter mL em gotas com segurança. */
+  dropsPerMl?: number;
   channel?: MedicationSupplyChannel;
   /** Produto da seção Comerciais que representa esta apresentação. */
   commercialProductSlug?: string;

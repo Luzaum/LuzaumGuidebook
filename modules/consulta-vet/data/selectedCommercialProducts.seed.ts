@@ -357,11 +357,7 @@ export const selectedCommercialProductsSeed: CommercialMedicationProduct[] = [
     activeComponents: ['hidroxido de aluminio 61,5 mg/mL'],
     labelCompositionSummary:
       'Suspensão oral humana 61,5 mg/mL, sabor hortela, sem acucar, frasco 240 mL.',
-    price: {
-      averageLabel: 'Preço variavel',
-      rangeLabel: 'Produto oficial EMS localizado; consultar varejo conforme estoque/CEP',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 18,70', rangeLabel: 'Frasco 240 mL: R$ 14,90 a R$ 22,50 (farmácia humana)', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.ems.com.br/medicamentos/hidroxido-de-aluminio/',
     imageUrl: 'https://bandshop.vtexassets.com/arquivos/ids/267821/image-4096946d5c27408dbb1b2bcc956c4b3e.jpg?v=638826677110630000',
     evidenceLevel: 'Produto humano; uso veterinário extra-label como quelante de fósforo.',

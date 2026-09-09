@@ -1,0 +1,283 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 620" fill="none" role="img" aria-labelledby="title-liquor desc-liquor">
+  <title id="title-liquor">Coleta de Líquor em Cães e Gatos — Landmarks, Anatomia Sagital e Punção Lombar</title>
+  <desc id="desc-liquor">Diagrama técnico dos pontos de referência da cisterna cerebelomedular (triângulo atlanto-occipital), camadas do corte sagital, técnica lombar L5-L6 e regras críticas de segurança neurológica.</desc>
+
+  <defs>
+    <linearGradient id="bgLiquor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelLiquor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="csfGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="brainTissue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fda4af" />
+      <stop offset="100%" stop-color="#e11d48" />
+    </linearGradient>
+
+    <filter id="boxShadowLiq" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .pulse-dot { animation: pulseAnim 2s infinite ease-in-out; transform-origin: center; }
+    @keyframes pulseAnim {
+      0% { r: 4px; opacity: 0.9; }
+      50% { r: 10px; opacity: 0.3; }
+      100% { r: 15px; opacity: 0; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="880" height="620" rx="20" fill="url(#bgLiquor)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Grid overlay -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <path d="M0,77 L880,77 M0,155 L880,155 M0,232 L880,232 M0,310 L880,310 M0,387 L880,387 M0,465 L880,465 M0,542 L880,542" />
+    <path d="M110,0 L110,620 M220,0 L220,620 M330,0 L330,620 M440,0 L440,620 M550,0 L550,620 M660,0 L660,620 M770,0 L770,620" />
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(30, 26)">
+    <rect x="0" y="0" width="220" height="22" rx="11" fill="#06b6d4" fill-opacity="0.15" stroke="#06b6d4" stroke-width="1" stroke-opacity="0.4" />
+    <text x="110" y="15" text-anchor="middle" fill="#22d3ee" font-size="10" font-weight="700" letter-spacing="0.1em" class="font-sans">NEUROLOGIA &amp; PROCEDIMENTOS</text>
+    
+    <text x="0" y="44" fill="#f8fafc" font-size="20" font-weight="800" class="font-sans">Coleta de Líquor (LCR) — Landmarks &amp; Vias de Punção</text>
+    <text x="0" y="62" fill="#94a3b8" font-size="12" class="font-sans">Triângulo atlanto-occipital (cisterna magna), corte sagital subaracnoide e punção lombar (L5–L6 / L6–L7)</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PANEL 1: LANDMARKS DO TRIÂNGULO ATLANTO-OCCIPITAL (Top Left) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(30, 100)">
+    <rect width="400" height="240" rx="14" fill="url(#panelLiquor)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowLiq)" />
+    
+    <!-- Header -->
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#06b6d4" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#22d3ee" font-size="13" font-weight="800" class="font-sans">1</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Triângulo Atlanto-Occipital (Visão Dorsal)</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Landmarks ósseos essenciais da cisterna cerebelomedular (BSAVA 2024)</text>
+
+    <g transform="translate(30, 52)">
+      <!-- Occipital Crest / Protuberance (Top apex) -->
+      <path d="M 130 20 C 150 15, 190 15, 210 20 L 190 35 L 150 35 Z" fill="#475569" stroke="#94a3b8" stroke-width="1.2" />
+      <circle cx="170" cy="22" r="5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
+      <text x="170" y="12" text-anchor="middle" fill="#fbbf24" font-size="9" font-weight="700" class="font-sans">Protuberância Occipital Externa</text>
+
+      <!-- Atlas Wings (Left and Right) -->
+      <!-- Left Wing -->
+      <path d="M 60 90 C 70 70, 95 75, 105 95 L 95 125 C 80 120, 65 110, 60 90 Z" fill="#475569" stroke="#94a3b8" stroke-width="1.2" />
+      <circle cx="85" cy="85" r="4.5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
+      <text x="65" y="140" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600" class="font-sans">Asa Esquerda do Atlas</text>
+
+      <!-- Right Wing -->
+      <path d="M 280 90 C 270 70, 245 75, 235 95 L 245 125 C 260 120, 275 110, 280 90 Z" fill="#475569" stroke="#94a3b8" stroke-width="1.2" />
+      <circle cx="255" cy="85" r="4.5" fill="#f59e0b" stroke="#ffffff" stroke-width="1.5" />
+      <text x="275" y="140" text-anchor="middle" fill="#cbd5e1" font-size="8.5" font-weight="600" class="font-sans">Asa Direita do Atlas</text>
+
+      <!-- Triangle Guide Lines -->
+      <line x1="170" y1="22" x2="85" y2="85" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+      <line x1="170" y1="22" x2="255" y2="85" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+      <line x1="85" y1="85" x2="255" y2="85" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3" />
+
+      <!-- Sagittal Midline -->
+      <line x1="170" y1="5" x2="170" y2="145" stroke="#38bdf8" stroke-width="1.2" stroke-dasharray="2,2" opacity="0.7" />
+      <text x="170" y="155" text-anchor="middle" fill="#38bdf8" font-size="8" class="font-sans">Linha Média Sagital</text>
+
+      <!-- Puncture Target (Center of Triangle) -->
+      <g transform="translate(170, 75)">
+        <circle cx="0" cy="0" r="12" fill="#06b6d4" fill-opacity="0.25" class="pulse-dot" />
+        <circle cx="0" cy="0" r="5" fill="#22d3ee" stroke="#ffffff" stroke-width="1.5" />
+        <line x1="-8" y1="0" x2="8" y2="0" stroke="#090d16" stroke-width="1.5" />
+        <line x1="0" y1="-8" x2="0" y2="8" stroke="#090d16" stroke-width="1.5" />
+      </g>
+
+      <!-- Callout Box: Entry Point -->
+      <g transform="translate(12, 145)">
+        <rect width="130" height="24" rx="4" fill="#0f172a" stroke="#06b6d4" stroke-width="0.8" />
+        <text x="6" y="16" fill="#22d3ee" font-size="8.5" font-weight="700" class="font-sans">🎯 Ponto de Entrada Central</text>
+      </g>
+      <g transform="translate(195, 145)">
+        <rect width="140" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="6" y="16" fill="#fbbf24" font-size="8.5" font-weight="600" class="font-sans">Flexão cervical ~90° obrigatória</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PANEL 2: CORTE SAGITAL DA CISTERNA MAGNA (Top Right) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(450, 100)">
+    <rect width="400" height="240" rx="14" fill="url(#panelLiquor)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowLiq)" />
+    
+    <!-- Header -->
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#34d399" font-size="13" font-weight="800" class="font-sans">2</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Corte Sagital: Camadas &amp; Profundidade da Agulha</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">A agulha penetra a dura-máter e PARA NO LCR — NUNCA na medula!</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Skin and subcutaneous tissue -->
+      <rect x="10" y="5" width="340" height="10" rx="2" fill="#fdba74" fill-opacity="0.3" stroke="#fb923c" stroke-width="0.8" />
+      <text x="20" y="13" fill="#fdba74" font-size="7.5" font-weight="700" class="font-sans">Pele / Tecido Subcutâneo</text>
+
+      <!-- Dorsal neck muscles -->
+      <rect x="10" y="20" width="340" height="22" rx="2" fill="#991b1b" fill-opacity="0.35" stroke="#ef4444" stroke-width="0.8" />
+      <text x="20" y="34" fill="#fca5a5" font-size="7.5" font-weight="600" class="font-sans">Músculos Cervicais Dorsais (Reto / Oblíquo)</text>
+
+      <!-- Bones (Occipital Cranial + Atlas Caudal) -->
+      <!-- Occipital Bone -->
+      <path d="M 10 47 L 110 47 L 90 75 L 10 75 Z" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+      <text x="20" y="64" fill="#cbd5e1" font-size="8" font-weight="700" class="font-sans">Osso Occipital</text>
+
+      <!-- Atlas Arch (C1) -->
+      <path d="M 230 47 L 340 47 L 340 75 L 250 75 Z" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+      <text x="260" y="64" fill="#cbd5e1" font-size="8" font-weight="700" class="font-sans">Arco Dorsal C1 (Atlas)</text>
+
+      <!-- Atlanto-Occipital Membrane + Dura Mater (Thick line spanning the gap) -->
+      <line x1="100" y1="52" x2="240" y2="52" stroke="#fbbf24" stroke-width="3" stroke-linecap="round" />
+      <text x="170" y="44" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="700" class="font-sans">Membrana Atlanto-Occipital / Dura-Máter</text>
+
+      <!-- Cerebellomedullary Cistern (Subarachnoid Space with CSF) -->
+      <rect x="10" y="78" width="340" height="26" rx="4" fill="url(#csfGlow)" fill-opacity="0.25" stroke="#06b6d4" stroke-width="1.2" />
+      <text x="30" y="94" fill="#22d3ee" font-size="9" font-weight="800" class="font-sans">CISTERNA CEREBELOMEDULAR (LCR / CSF)</text>
+
+      <!-- Spinal Cord / Brainstem / Cerebellar Vermis -->
+      <rect x="10" y="108" width="340" height="34" rx="4" fill="url(#brainTissue)" fill-opacity="0.3" stroke="#f43f5e" stroke-width="1.2" />
+      <text x="30" y="124" fill="#fda4af" font-size="9" font-weight="800" class="font-sans">TRONCO ENCEFÁLICO / MEDULA ESPINHAL CERVICAL</text>
+      <text x="30" y="136" fill="#fca5a5" font-size="7.5" class="font-sans">⚠️ ZONA PROIBIDA: NÃO TOCAR COM A AGULHA!</text>
+
+      <!-- Spinal Needle (Entering vertically through gap, stopping exactly in CSF) -->
+      <g transform="translate(170, 0)">
+        <!-- Needle shaft -->
+        <line x1="0" y1="0" x2="0" y2="90" stroke="#f8fafc" stroke-width="2.5" />
+        <line x1="0" y1="0" x2="0" y2="90" stroke="#38bdf8" stroke-width="1" />
+        <!-- Needle Bevel -->
+        <polygon points="0,92 -2,88 2,88" fill="#38bdf8" />
+        <!-- CSF Droplet at Hub / Tip -->
+        <circle cx="0" cy="92" r="3" fill="#22d3ee" />
+        
+        <!-- Needle Hub at top -->
+        <rect x="-6" y="-6" width="12" height="10" rx="2" fill="#38bdf8" stroke="#ffffff" stroke-width="1" />
+        <!-- Passive CSF Droplet coming out of hub -->
+        <circle cx="0" cy="-12" r="3.5" fill="#22d3ee" />
+      </g>
+
+      <!-- Callout: Stop rule -->
+      <g transform="translate(200, 70)">
+        <rect width="145" height="30" rx="4" fill="#0f172a" stroke="#10b981" stroke-width="0.8" />
+        <text x="8" y="14" fill="#34d399" font-size="8" font-weight="800" class="font-sans">✓ LCR no hub: PARE!</text>
+        <text x="8" y="24" fill="#94a3b8" font-size="7.5" class="font-sans">Gotejamento puramente passivo</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PANEL 3: PUNÇÃO LOMBAR (L5-L6 CÃO / L6-L7 GATO) (Bottom Left) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(30, 355)">
+    <rect width="400" height="240" rx="14" fill="url(#panelLiquor)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowLiq)" />
+    
+    <!-- Header -->
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#a855f7" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#c084fc" font-size="13" font-weight="800" class="font-sans">3</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Punção Lombar: Técnica do "Trilho Ósseo"</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Cão: L5–L6 | Gato: L6–L7 (Coluna flexionada cranialmente)</text>
+
+    <g transform="translate(25, 52)">
+      <!-- Vertebra L5 schematic (Cranial) -->
+      <rect x="30" y="70" width="70" height="45" rx="6" fill="#334155" stroke="#64748b" stroke-width="1.2" />
+      <polygon points="65,25 50,70 80,70" fill="#475569" stroke="#94a3b8" stroke-width="1.2" />
+      <text x="65" y="45" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="700" class="font-sans">L5</text>
+      <text x="65" y="95" text-anchor="middle" fill="#94a3b8" font-size="8" class="font-sans">Corpo L5</text>
+
+      <!-- Intervertebral Space L5-L6 -->
+      <g transform="translate(105, 68)">
+        <rect width="50" height="50" rx="4" fill="url(#csfGlow)" fill-opacity="0.15" stroke="#06b6d4" stroke-width="0.8" stroke-dasharray="3,2" />
+        <text x="25" y="44" text-anchor="middle" fill="#22d3ee" font-size="7.5" font-weight="700" class="font-sans">Espaço L5-L6</text>
+      </g>
+
+      <!-- Vertebra L6 schematic (Caudal) -->
+      <rect x="160" y="70" width="70" height="45" rx="6" fill="#334155" stroke="#64748b" stroke-width="1.2" />
+      <polygon points="195,25 180,70 210,70" fill="#475569" stroke="#94a3b8" stroke-width="1.2" />
+      <text x="195" y="45" text-anchor="middle" fill="#cbd5e1" font-size="8" font-weight="700" class="font-sans">L6</text>
+      <text x="195" y="95" text-anchor="middle" fill="#94a3b8" font-size="8" class="font-sans">Corpo L6</text>
+
+      <!-- Step 1 Needle: Encosta em L6 -->
+      <line x1="205" y1="5" x2="195" y2="30" stroke="#f59e0b" stroke-width="2" stroke-dasharray="3,2" />
+      <text x="250" y="20" fill="#fbbf24" font-size="7.5" font-weight="700" class="font-sans">1. Tocar processo L6</text>
+
+      <!-- Step 2 Needle: "Caminhar" cranialmente para o espaço L5-L6 -->
+      <path d="M 195 30 C 175 30, 145 40, 130 75" fill="none" stroke="#22c55e" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+      <circle cx="130" cy="75" r="3.5" fill="#22d3ee" stroke="#ffffff" stroke-width="1" />
+      <text x="145" y="40" fill="#4ade80" font-size="7.5" font-weight="700" class="font-sans">2. "Caminhar" p/ espaço</text>
+
+      <!-- Twitch Warning Box -->
+      <g transform="translate(10, 125)">
+        <rect width="330" height="36" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="0.8" />
+        <text x="8" y="15" fill="#f87171" font-size="8.5" font-weight="800" class="font-sans">⚡ CONTRAÇÃO DE CAUDA OU PERNA (TWITCH):</text>
+        <text x="8" y="27" fill="#cbd5e1" font-size="7.5" class="font-sans">Atingiu raiz nervosa / cauda equina! Ultrapassou o espaço dorsal; recue delicadamente.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- PANEL 4: REGRAS CRÍTICAS DE SEGURANÇA (Bottom Right) -->
+  <!-- ========================================================================= -->
+  <g transform="translate(450, 355)">
+    <rect width="400" height="240" rx="14" fill="url(#panelLiquor)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowLiq)" />
+    
+    <!-- Header -->
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#ef4444" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#f87171" font-size="13" font-weight="800" class="font-sans">4</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Regras de Segurança Absoluta (Caixa de Ouro)</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Diretrizes vitais para prevenção de herniação e lesão neural iatrogênica</text>
+
+    <g transform="translate(20, 52)">
+      <!-- Rule 1: Never Aspirate -->
+      <g transform="translate(0, 0)">
+        <rect width="360" height="26" rx="4" fill="#ef4444" fill-opacity="0.12" stroke="#ef4444" stroke-width="0.8" />
+        <text x="10" y="17" fill="#f87171" font-size="8.5" font-weight="800" class="font-sans">⛔ NUNCA ASPIRE COM SERINGA:</text>
+        <text x="165" y="17" fill="#cbd5e1" font-size="8" class="font-sans">Gotejamento puramente passivo!</text>
+      </g>
+
+      <!-- Rule 2: 1-2 mm progression -->
+      <g transform="translate(0, 32)">
+        <rect width="360" height="26" rx="4" fill="#0284c7" fill-opacity="0.12" stroke="#0284c7" stroke-width="0.8" />
+        <text x="10" y="17" fill="#38bdf8" font-size="8.5" font-weight="800" class="font-sans">📏 AVANCE 1–2 mm POR VEZ:</text>
+        <text x="155" y="17" fill="#cbd5e1" font-size="8" class="font-sans">Retire o mandril e confira o hub a cada avanço.</text>
+      </g>
+
+      <!-- Rule 3: 3 Attempt Rule -->
+      <g transform="translate(0, 64)">
+        <rect width="360" height="26" rx="4" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="10" y="17" fill="#fbbf24" font-size="8.5" font-weight="800" class="font-sans">⏱️ REGRA DAS 3 TENTATIVAS:</text>
+        <text x="155" y="17" fill="#cbd5e1" font-size="8" class="font-sans">Sem sucesso? Troque operador ou vá para lombar.</text>
+      </g>
+
+      <!-- Rule 4: Volume limits -->
+      <g transform="translate(0, 96)">
+        <rect width="360" height="26" rx="4" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-width="0.8" />
+        <text x="10" y="17" fill="#34d399" font-size="8.5" font-weight="800" class="font-sans">🧪 LIMITE DE VOLUME:</text>
+        <text x="135" y="17" fill="#cbd5e1" font-size="8" class="font-sans">Não exceder 1 mL / 5 kg (mínimo ~0,5 mL).</text>
+      </g>
+
+      <!-- Rule 5: Cavalier King Charles Spaniel alert -->
+      <g transform="translate(0, 128)">
+        <rect width="360" height="34" rx="4" fill="#0f172a" stroke="#a855f7" stroke-width="0.8" />
+        <text x="10" y="15" fill="#c084fc" font-size="8.5" font-weight="800" class="font-sans">🐶 CAVALIER KING CHARLES SPANIEL:</text>
+        <text x="10" y="27" fill="#cbd5e1" font-size="7.5" class="font-sans">Alto risco de Chiari-like e verme cerebelar ectópico → preferir via lombar!</text>
+      </g>
+    </g>
+  </g>
+</svg>

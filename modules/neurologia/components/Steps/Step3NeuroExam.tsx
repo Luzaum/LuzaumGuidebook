@@ -147,14 +147,14 @@ function ExamItem({
                   onSelect(opt.value)
                 }}
                 className={`
-                  px-3 py-2 rounded-lg text-sm font-medium border-2 transition-all flex items-center gap-2
+                  px-3 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all flex items-center gap-2
                   ${isSelected
                     ? isNormal
-                      ? 'bg-green-900/30 border-green-500 text-green-400 shadow-[0_0_12px_rgba(34,197,94,0.3)]'
+                      ? 'bg-emerald-500/15 border-emerald-500 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/40 shadow-[0_0_12px_rgba(16,185,129,0.25)] ring-1 ring-emerald-500/40'
                       : isAltered
-                        ? 'bg-red-900/30 border-red-500 text-red-400 shadow-[0_0_12px_rgba(239,68,68,0.3)]'
-                        : 'bg-gold/20 border-gold text-gold shadow-[0_0_12px_rgba(245,197,66,0.3)]'
-                    : 'bg-card border-border text-muted-foreground hover:border-gold/50 hover:text-foreground'
+                        ? 'bg-red-500/15 border-red-500 text-red-700 dark:text-red-300 dark:bg-red-950/40 shadow-[0_0_12px_rgba(239,68,68,0.25)] ring-1 ring-red-500/40'
+                        : 'bg-gold/20 border-gold text-gold dark:bg-gold/15 shadow-[0_0_12px_rgba(245,197,66,0.25)] ring-1 ring-gold/40'
+                    : 'bg-card border-border text-muted-foreground hover:border-gold/50 hover:text-foreground hover:bg-muted/40'
                   }
                 `}
               >

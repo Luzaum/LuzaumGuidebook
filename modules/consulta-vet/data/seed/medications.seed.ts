@@ -7,6 +7,7 @@ import { infectiousAntiparasiticMedicationsSeed } from './medications.infectious
 import { respiratoryAnesthesiaMedicationsSeed } from './medications.respiratory-anesthesia.seed';
 import { neurologyBehaviorMedicationsSeed } from './medications.neurology-behavior.seed';
 import { phenobarbitalMedicationsSeed } from './medications.phenobarbital.seed';
+import { levetiracetamMedicationsSeed } from './medications.levetiracetam.seed';
 import { mannitolMedicationsSeed } from './medications.mannitol.seed';
 import { MEDICATION_EVIDENCE_ADDITIONS } from '../medicationEvidenceAdditions';
 import { applyPlumbs10MedicationAudit } from '../plumbs10MedicationAudit';
@@ -1370,6 +1371,8 @@ export const medicationsSeed: MedicationRecord[] = [
         concentrationValue: 16,
         concentrationUnit: 'mg/comprimido',
         channel: 'veterinary',
+        route: 'oral',
+        scoringInfo: 'Ranhurado para partição ao meio conforme bula Zoetis Brasil',
         packInfo: 'Apresentacoes 16 mg, 24 mg, 60 mg e 160 mg',
         concentrationOptions: [
           { id: '16', label: '16 mg', concentrationValue: 16, concentrationUnit: 'mg/comprimido' },
@@ -1922,6 +1925,7 @@ export const medicationsSeed: MedicationRecord[] = [
   ...hepatoprotectorMedicationsSeed,
   ...hospitalCoreMedicationsSeed,
   ...phenobarbitalMedicationsSeed,
+  ...levetiracetamMedicationsSeed,
   ...mannitolMedicationsSeed,
   ...endocrinologyOncologyMedicationsSeed,
   ...cardiovascularAntiarrhythmicsMedicationsSeed,

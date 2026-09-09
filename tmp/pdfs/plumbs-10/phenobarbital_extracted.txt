@@ -1,0 +1,631 @@
+===== PDF_PAGE_1034 =====
+Phenobarbital   1007
+(GABA). At high anesthetic doses, barbiturates have been demon -
+strated to inhibit the uptake of calcium at nerve endings. The seizure 
+threshold is raised, and the spread of seizures is limited. In humans, 
+selective anticonvulsant activity of phenobarbital is independent of 
+the degree of sedation produced.
+The degree of CNS depression produced is dependent on the 
+dose, route of administration, the pharmacokinetics of the drug, and 
+species treated. In addition, patient age, physical condition, and/or 
+concurrent use of other drugs can alter drug effects. Barbiturates 
+may depress the sensory cortex, lessen motor activity, and produce 
+sedation at low doses. In humans, barbiturates have been shown to 
+reduce the rapid eye movement (REM) stage of sleep. Barbiturates 
+have no true intrinsic analgesic activity.
+In most species, barbiturates can cause dose-dependent respira -
+tory depression and, in some species, can cause slight respiratory 
+stimulation. At sedative/hypnotic doses, respiratory depression is 
+similar to that during normal physiologic sleep. As doses increase, 
+the medullary respiratory center is progressively depressed, with re-
+sultant decreases in rate, depth, and volume. Respiratory arrest can 
+occur at doses 4 times lower than those that can cause cardiac arrest. 
+Barbiturates must be used very cautiously in cats, as cats are particu-
+larly sensitive to their respiratory depressant effects.
+Barbiturates can cause reduced tone and motility of the intestinal, 
+uterine, ureteral, and bladder musculature, likely secondary to their 
+central depressant action. Barbiturates can reduce the sensitivity of 
+the motor endplate to acetylcholine, thereby slightly relaxing the 
+skeletal muscle. 
+Liver function is not directly affected when barbiturates are used 
+short-term, but hepatic microsomal enzyme induction is well doc -
+umented with extended barbiturate administration, 11–14 particularly 
+with phenobarbital, and may persist for up to 4 weeks after discon -
+tinuation.11 Although barbiturates reduce oxygen consumption in all 
+tissue, no change in metabolic rate is measurable when barbiturates 
+are administered at sedative doses; however, basal metabolic rates 
+may be reduced with resultant decreases in body temperature when 
+barbiturates are administered at anesthetic doses.
+Pharmacokinetics
+Phenobarbital is slowly absorbed from the GI tract. Bioavailability 
+ranges from 70% to 90% in humans and ≈90% in dogs. 15,16 Absorp-
+tion is practically complete in cats17 and adult horses.18 Peak concen-
+trations occur 4 to 8 hours after oral administration in dogs 19 and 8 
+to 12 hours in humans. One study in cats showed that phenobarbi -
+tal compounded in PLO gel and applied transdermally to the pinna 
+twice daily achieved steady-state serum concentrations within the 
+therapeutic range in some cats; more individual variation was seen 
+when Lipoderm ActiveMax® was used instead of PLO.20
+Phenobarbital is widely distributed throughout the body, but be-
+cause of its lower lipid solubility, it does not distribute as rapidly into 
+the CNS as compared with most other barbiturates. In humans, peak 
+drug concentration in the CNS may be delayed up to 15 minutes after 
+IV administration. In humans, the amount of phenobarbital bound 
+to plasma proteins has been reported to be 40% to 60%. The report-
+ed apparent volumes of distribution are ≈0.8 to 1 L/kg in horses, 21,22 
+≈0.86 L/kg in foals, ≈0.7 L/kg in cats, 23 and ≈0.75 L/kg in dogs. 24
+The drug is metabolized in the liver primarily by hydroxylated 
+oxidation to p-hydroxyphenobarbital; sulfate and glucuronide con -
+jugates are also formed. In humans, elimination half-life ranges 
+from 2 to 6 days compared to 12 to 125 hours (average of ≈2 days) 
+in dogs. 16,19,24 Elimination half-life in dogs fed protein- or fat-re -
+stricted diets appears to be shorter (26 and 24 hours, respectively).25 
+Because of phenobarbital’s ability to induce the hepatic enzymes 
+used to metabolize itself and other drugs, elimination half-life may 
+decrease with time, along with concomitant reductions in serum 
+concentrations. The half-life of phenobarbital may be less than 24 
+hours in some dogs that may require 3 times daily administration 
+for maximal control.26 An elimination half-life of 34 to 43 hours has 
+been reported in cats.23 Elimination half-life in horses is considerably 
+shorter, with reported values of ≈13 hours in foals and 10 to 12 hours 
+in adult horses with chronic administration.21,22 Approximately 25% 
+of a dose is excreted unchanged by the kidney; alkalinizing urine 
+and/or substantially increasing urine flow increases phenobarbital 
+excretion rates. The remaining 75% of a dose is renally excreted as 
+metabolites. Anuric or oliguric patients may accumulate the unmet-
+abolized drug; dose adjustments may be required.
+In dogs, changes in diet, body weight, and body composition may 
+alter the pharmacokinetics of phenobarbital and necessitate dosage 
+adjustment.
+In goats given phenobarbital 10 mg/kg IV and PO, bioavailability 
+was ≈25%, and half-life was ≈4 hours for both routes. 27
+Contraindications/Precautions/Warnings
+Barbiturates are contraindicated in patients that have severe liver 
+disease, severe respiratory distress, or those that have demonstrat -
+ed previous hypersensitivity reactions to these drugs. 28 Large doses 
+are contraindicated in patients with nephritis.29 Barbiturates should 
+be used cautiously in patients with hypovolemia, anemia, border -
+line hypoadrenal function, and/or cardiac or respiratory disease. 
+Dose reductions may be necessary in patients with significant renal 
+ impairment.
+The drug should be given slowly (not more than 1 – 2 mg/kg per 
+minute) when administered IV; IV administration that is too rapid 
+can cause respiratory depression. Commercially available injectable 
+preparations are very alkaline and must not be administered SC, in-
+traarterially, or perivascularly, as significant pain, tissue irritation, 
+and possible necrosis can result. 29 Extreme care should be taken to 
+avoid extravasation. Applications of moist heat and local infiltration 
+of 0.5% procaine solution have been recommended to treat extrava-
+sation reactions.
+In humans, IM injection is limited to a total volume of 5 mL and 
+injected into a large muscle to avoid tissue irritation.29
+PHENobarbital should not be confused with PENTobarbital.
+Adverse Effects
+Dogs may exhibit increased clinical signs of anxiety/agitation or 
+lethargy when therapy is initiated. These effects are generally transi-
+tory in nature. Occasionally, dogs will exhibit profound depression at 
+lower doses (and plasma concentrations). Decreased physical activ -
+ity levels have been observed in dogs receiving phenobarbital-con -
+taining antiepileptic drug combinations.30
+Polydipsia, polyuria, and polyphagia are also commonly observed; 
+these signs usually begin 2 to 3 weeks after initiating phenobarbital 
+therapy. Sedation and/or ataxia often become significant concerns 
+as serum phenobarbital concentrations reach the higher ends of the 
+therapeutic range. Anemia, thrombocytopenia, and/or neutropenia 
+occur rarely and are reversible if detected early. 31–33 Increased tri -
+glycerides34 and pancreatic lipase activity 35,36 have been reported in 
+dogs. 
+Increases in liver enzymes with phenobarbital in dogs are well de-
+scribed37–39 and are not necessarily indicative of liver dysfunction but 
+should raise concern if serum ALT or ALP is more than 4 to 5 times 
+the upper limit of normal or if any elevation in gamma-glutamyl -
+transferase (GGT) is noted. Of note, in a study, serum ALP was high-
+er in dogs receiving phenobarbital and fed protein- or fat-restricted 
+diets as compared with dogs receiving a maintenance diet.25 Pheno-
+barbital should generally be discontinued if any increases in serum 
+bilirubin, total serum bile acids, or hypoalbuminemia are detected. If 
+phenobarbital needs to be discontinued yet antiepileptic medication 
+is required, alternative antiepileptic therapy (eg, potassium bromide, 
+
+===== PDF_PAGE_1035 =====
+1008    Phenobarbital
+levetiracetam) should be started immediately. Frank hepatic failure 
+is uncommon and is usually associated with higher serum pheno -
+barbital levels (greater than 30 to 40 µg/mL). 39 In a study, hemato -
+logic abnormalities occurred within the first 3 months of therapy in 
+4.2% of dogs treated with standard doses.40
+In dogs, phenobarbital rarely causes superficial necrolytic der -
+matitis (SND) associated with changes in hepatocytes (ie, severe pa-
+renchymal collapse with glycogen-laden hepatocytes and moderate 
+fibrosis sharply demarcated by nodules of normal hepatic parenchy-
+ma)41 distinct from that seen with phenobarbital hepatotoxicity (ie, 
+chronic hepatic fibrosis with nodular regeneration [cirrhosis]). 39 A 
+presumed case of Stevens-Johnson syndrome in a dog has also been 
+reported.42 
+Phenobarbital may increase the metabolism of cortisol and has 
+been implicated in contributing to relative adrenal insufficiency, 43 
+including a case of Addisonian crisis in an Irish setter.44 Pseudolym-
+phoma has been documented or suspected in at least 1 dog 45 and 2 
+cats.46,47
+Cats may develop ataxia, persistent sedation and/or lethargy, 
+ facial pruritus, polyphagia/weight gain, and/or polydipsia/polyuria. 
+Rarely, immune-mediated reactions and bone marrow hypoplasia 
+(eg, thrombocytopenia, neutropenia) may be seen. 48 A presumed 
+case of phenobarbital-induced fever has been reported in a cat. 49 
+Phenobarbital-induced anticonvulsant hypersensitivity syndrome 
+has also been reported. In 1 cat, tachypnea, hyperthermia, high se -
+rum amyloid A, and abdominal lymph node enlargement were seen 
+8 days after initiation of phenobarbital.50 Another cat presented im-
+mune-mediated anemia 2 weeks after starting phenobarbital.51 
+Cats, unlike dogs, do not develop increased liver enzymes; in -
+creases in liver enzymes in cats on phenobarbital should prompt fur-
+ther investigation. High doses (ie, 10 – 40 mg/kg/day) have caused 
+coagulopathies in cats.52,53 
+Although there is much less information regarding phenobarbital 
+use in horses (and foals in particular), cattle, goats, and ferrets, it 
+would generally be expected for adverse effects to mirror those seen 
+in other species.
+In humans, phenobarbital can cause rare, possibly fatal, hypersen-
+sitivity reactions, including exfoliative dermatitis and Stevens-John-
+son syndrome. 28 It is recommended to discontinue use whenever 
+dermatologic reactions occur.
+Reproductive/Nursing Safety
+Barbiturates readily cross the placenta. 28,29 Phenobarbital has been 
+associated with rare congenital defects and bleeding problems in 
+newborns but may be safer than other anticonvulsants. Clinical signs 
+related to withdrawal can occur in offspring born to dams receiving 
+phenobarbital.
+Caution should be used when administering to a nursing dam, as 
+small amounts are excreted in maternal milk. Drowsiness in nursing 
+offspring has been reported. A foal born to a mare receiving phe -
+nobarbital reportedly had a serum phenobarbital concentration of  
+12.2 µg/mL, and the concentration in the mare’s milk was  
+7.5 µg/mL.54
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Clinical signs caused by overdoses of phenobarbital are an extension 
+of its adverse effect profile. Animals may present with ataxia, lethar-
+gy/sedation, hypothermia, recumbency, and mydriasis (cats). 
+Barbiturates have no direct effect on the kidneys, but severe renal 
+impairment can occur secondary to hypotensive effects in overdose 
+situations.
+Treatment of phenobarbital overdose consists of GI decontami -
+nation, if appropriate, and respiratory and cardiovascular support. 
+Activated charcoal has been shown to be of considerable benefit in 
+enhancing the clearance of phenobarbital even when the drug was 
+administered parenterally. Charcoal acts as a sink for the drug to dif-
+fuse from the vasculature back into the gut. Forced alkaline diure -
+sis can also be of substantial benefit in augmenting the elimination 
+of phenobarbital in patients with normal renal function. Peritone -
+al dialysis or hemodialysis can be helpful in severe intoxications or 
+anuric patients.55
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+In humans, phenobarbital induces CYP 3A strongly and most other 
+CYP isoenzymes to a lesser degree; it is a substrate of CYP 2C19. The 
+following drug interactions have either been reported or are theoret-
+ical in humans or animals receiving phenobarbital and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Acetaminophen : Increased risk for hepatotoxicity, particularly 
+when large or chronic doses of barbiturates are administered
+ ■ Alpha-2 Agonists (eg, dexmedetomidine, xylazine): Concur-
+rent use may result in additive respiratory depression. 
+ ■ Antihistamines (eg, diphenhydramine): May increase the ef -
+fects of phenobarbital
+ ■ Benzodiazepines (eg, diazepam, midazolam): Concurrent use 
+may result in additive respiratory depression.
+ ■ Bromides : Synergistic efficacy and toxicity 
+ ■ Carprofen : There may be an increased risk for hepatotoxicity 
+secondary to carprofen metabolites. One source states that pa -
+tients should not receive phenobarbital or other hepatic drug-me-
+tabolizing enzyme inducers when receiving carprofen.56
+ ■ Chloramphenicol : May increase the effects of phenobarbital
+ ■ Cholestyramine : May reduce phenobarbital absorption and/
+or levels. Should be administered separately
+ ■ CNS Depressants (eg, methocarbamol, mirtazapine, tra-
+zodone): Concurrent use may result in additive respiratory and 
+CNS depression.
+ ■ Felbamate : May increase the effects of phenobarbital
+ ■ Monoamine Oxidase Inhibitors  (MAOIs; eg, amitraz, sele-
+giline): May prolong phenobarbital effects
+ ■ Opioids (eg, buprenorphine, hydrocodone, morphine, trama-
+dol): Concurrent use may result in additive respiratory and CNS 
+depression.
+ ■ Phenothiazines  (eg, acepromazine): May increase the effects 
+of phenobarbital
+ ■ Rifampin : May induce enzymes that increase the metabolism of 
+barbiturates
+ ■ Urinary Acidifiers  (eg, ammonium chloride ): Unchanged 
+phenobarbital elimination in urine may be decreased and cause 
+an increase in serum half-life.57
+Phenobarbital (particularly after chronic therapy) may decrease the 
+effects of the following drugs/drug classes by lowering their serum 
+concentrations; effects may persist for several weeks after pheno -
+barbital is discontinued 11; these drugs may require initial or main -
+tenance doses that are at or above the higher end of the dosing range, 
+and doses of these drugs may need to be reduced when phenobarbi-
+tal is being discontinued:
+
+===== PDF_PAGE_1036 =====
+Phenobarbital   1009
+ ■ Azole Antifungals (eg, itraconazole, ketoconazole, 
+voriconazole): Phenobarbital levels may be increased, and anti -
+fungal levels may be decreased. Concurrent use is contraindicated 
+in humans.
+ ■ Benzimidazoles (eg, albendazole, fenbendazole): May reduce 
+active metabolite concentration
+ ■ Benzodiazepines ( eg, clorazepate, diazepam)58
+ ■ Buspirone
+ ■ Chloramphenicol : Concurrent use also may increase the risk 
+for phenobarbital toxicity.
+ ■ Clarithromycin
+ ■ Clindamycin
+ ■ Corticosteroids (eg, dexamethasone, methylprednisolone, 
+prednis[ol]one)
+ ■ Cyclosporine 59
+ ■ Digoxin 60
+ ■ Doxorubicin
+ ■ Doxycycline
+ ■ Estrogens (eg, diethylstilbestrol [DES], estriol)
+ ■ Felbamate : Phenobarbital concentrations may increase, and fel-
+bamate concentrations may decrease.
+ ■ Griseofulvin
+ ■ Ivermectin
+ ■ Levetiracetam : Levetiracetam dosage requirements are in -
+creased by phenobarbital. In dogs receiving immediate-release 
+levetiracetam, phenobarbital therapy reduced levetiracetam 
+elimination half-life by ≈35% to 50%. 61 In dogs receiving extend-
+ed-release levetiracetam, phenobarbital reduced levetiracetam 
+peak concentration and increased clearance, although half-life 
+appeared to be unaffected.62
+ ■ Levothyroxine
+ ■ Methadone
+ ■ Metoprolol
+ ■ Metronidazole
+ ■ Quinidine
+ ■ Paroxetine
+ ■ Phenothiazines (eg, acepromazine)
+ ■ Praziquantel
+ ■ Progestins (eg, medroxyprogesterone)
+ ■ Sulfonamides 14
+ ■ Tacrolimus
+ ■ Theophylline, Aminophylline
+ ■ Topiramate
+ ■ Tricyclic Antidepressants
+ ■ Urinary Alkalinizers  (eg, potassium citrate ): Unchanged 
+phenobarbital elimination in urine may be increased and cause a 
+decrease in serum half-life.57
+ ■ Verapamil
+ ■ Vincristine
+ ■ Vitamin D
+ ■ W arfarin
+ ■ Zonisamide 63
+Laboratory Considerations
+ ■ Barbiturates may cause increased retention of bromosulfophtha-
+lein (BSP; sulfobromophthalein) and give falsely elevated results. 
+It is recommended that barbiturates not be administered within 
+the 24 hours before a BSP retention test is performed or, if they 
+must be administered (eg, for seizure control), the results be in -
+terpreted accordingly.64,65
+ ■ Phenobarbital can alter the results of thyroid testing. Decreased 
+total and free thyroxine (T 4), normal triiodothyronine (T 3), and 
+either normal or increased thyroid-stimulating hormone (TSH) 
+have been reported. It has been suggested to wait at least 4 weeks 
+after discontinuing phenobarbital to perform thyroid testing.38,66
+ ■ In some dogs, phenobarbital may cause a false-positive low dose 
+dexamethasone suppression test by increasing the clearance of 
+dexamethasone. Phenobarbital apparently has no effect either on 
+adrenocorticotropic hormone (ACTH) stimulation tests or on the 
+hormonal equilibrium of the adrenal axis. Because phenobarbital 
+can potentially increase the metabolism of cortisol, it has been 
+implicated in contributing to relative adrenal insufficiency.
+Dosages
+DOGS:
+Idiopathic epilepsy (extra-label): Initially, 2.5 – 3 mg/kg PO ev -
+ery 12 hours is commonly recommended, although starting dos -
+ages may vary. To achieve therapeutic phenobarbital concentra -
+tions sooner in phenobarbital-naïve dogs, some clinicians suggest 
+an initial loading dose of 12 – 20 mg/kg (total dose); this dose 
+can be administered as a single, slow (over at least 5 minutes) IV 
+injection but may cause profound sedation and respiratory de -
+pression.67 To minimize these effects, the total dose can be divided 
+into increments of 3 – 4 mg/kg IV every 1 to 4 hours; the degree 
+of sedation and respiratory depression during administration 
+should be monitored, and subsequent doses should be adjusted 
+accordingly. Doses should be adjusted based on phenobarbital 
+concentrations, efficacy, and adverse effects. Administration of 
+3 – 5.6 mg/kg PO every 8 hours in dogs with a shorter pheno -
+barbital elimination half-life appeared safe and improved seizure 
+management in some patients.26 Combination with other anticon-
+vulsants is common. 
+Adjunctive treatment of status epilepticus  (extra-label): After 
+use of benzodiazepines (eg, diazepam, midazolam), phenobarbital 
+4 – 8 mg/kg IV slow (over at least 5 minutes) can be administered. 
+If seizure activity continues, additional increments of phenobar -
+bital can be administered at 4 mg/kg IV every 20 to 30 minutes 
+with a maximum total phenobarbital dose of 20 – 24 mg/kg IV .67,68 
+Once seizure activity has diminished and the patient is alert, the 
+patient can be transitioned to oral phenobarbital, as noted above.
+Sialadenosis (extra-label): In case reports, 1 mg/kg PO every 
+12 hours appears to be most common, although dosages up to  
+2.5 mg/kg PO twice daily have been noted. 69 In one case, 5  
+6 mg/kg IM every 12 hours was initially prescribed. In several but 
+not all cases, dogs were slowly weaned off phenobarbital without 
+relapse.5,6,9,70
+Discontinuing phenobarbital therapy (taper guidelines) : Ta-
+pering guidelines may vary and are anecdotal. In general, for 
+patients stabilized on another anticonvulsant, a typical tapering 
+schedule involves reducing the phenobarbital dose by 25% every 
+2 weeks. Smaller dose decreases (eg, 10% to 20%) or longer inter-
+vals between reductions (eg, every 3 to 4 weeks) can be consid -
+ered. Available tablet size may dictate actual dose decrease. Re -
+ductions can be made more rapidly (eg, every 7 days) if necessary 
+(eg, fulminant phenobarbital hepatotoxicity); because seizure 
+activity may increase during a rapid taper, concurrently initiat -
+ing another anticonvulsant is recommended. Doses of other anti-
+convulsants may need to be reduced as phenobarbital’s effects on 
+CYP enzyme induction wane, which may take several weeks after 
+discontinuation.
+CATS:
+Idiopathic epilepsy (extra-label): Initially, 1 – 3 mg/kg PO every 
+12 hours is commonly recommended, although starting dosages 
+may vary. Cats receiving phenobarbital 2.5 – 8.6 mg/kg/day PO 
+
+===== PDF_PAGE_1037 =====
+1010   Phenobarbital
+had a therapeutic serum phenobarbital concentration between 15 
+and 45 µg/mL; seizure control can be achieved in most cats in 
+this range regardless of the cause of the seizures. 71 Practically, ½ 
+to one 15 mg tablet/cat (NOT mg/kg) PO every 12 hours is used. 
+To achieve therapeutic phenobarbital concentrations sooner in 
+phenobarbital-naïve cats, some suggest an initial phenobarbi -
+tal loading dose of 12 – 24 mg/kg IV given in increments of 3 to  
+4 mg/kg IV every 2 to 6 hours. The dose should be adjusted based 
+on phenobarbital concentrations, efficacy, and adverse effects. 
+Transdermal phenobarbital compounded in PLO (extra-label): 
+9 mg/kg applied to the inside of the pinna every 12 hours  
+(18 mg/kg/day). Therapeutic concentrations may be achieved in 
+some cats, and consistent monitoring is recommended. 20,72 Fur-
+ther study is warranted to prove this route effectively controls 
+ seizures.
+Adjunctive treatment of status epilepticus  (extra-label): After 
+use of benzodiazepines (eg, diazepam, midazolam), phenobarbi -
+tal 3 mg/kg IV can be administered. Phenobarbital can be repeat-
+ed every 20 minutes up to 24 mg/kg in a 24-hour period or given 
+as loading of 10 mg/kg IV bolus.67,68,73
+Discontinuing phenobarbital therapy (taper guidelines) : In 
+patients stabilized on another anticonvulsant, a typical tapering 
+schedule involves reducing the phenobarbital dose by 25% every 2 
+weeks. Smaller dose decreases (eg, 10% to 20%) or longer intervals 
+between reductions (eg, every 3 to 4 weeks) can be considered. 
+Available tablet size may dictate actual dose decrease. Reductions 
+can be made more rapidly (eg, every 7 days) if necessary; because 
+seizure activity may increase during a rapid taper, concurrently 
+initiating another anticonvulsant is recommended. Doses of other 
+anticonvulsants may need to be reduced as phenobarbital’s effects 
+on CYP enzyme induction wane, which may take several weeks 
+after discontinuation.
+HORSES : 
+Seizure control (extra-label): 
+a) Adult horses: Loading dose of 16 – 20 mg/kg IV once; mainte-
+nance dose of 1 – 5 mg/kg PO every 12 hours
+b) Foals: Loading dose of 16 – 20 mg/kg IV once; maintenance 
+dose of 100 – 500 mg/foal (NOT mg/kg) PO every 12 hours74,75
+CATTLE:
+Enzyme induction in organochlorine toxicity  (extra-label):  
+5 g/animal (NOT mg/kg) PO for 3 to 4 weeks, off 3 to 4 weeks, 
+then repeat for 3 to 4 more weeks76
+FERRETS :
+Seizure control (extra-label): Loading dose of 16 – 20 mg/kg IV 
+once; maintenance dose of 1 – 2 mg/kg PO every 8 to 12 hours74,75
+Monitoring
+ ■ Anticonvulsant efficacy
+ ■ Adverse effects (eg, CNS related, polyuria/polydipsia, weight 
+gain)
+ ■ Serum phenobarbital concentration:
+• After initiation of therapy or dosage change: 
+ ■ If a loading dose of phenobarbital was not administered, 
+at least 5 to 6 half-lives (dogs, ≈12 to 14 days; cats, 9 to 10 
+days) should be allowed to pass before measuring serum 
+phenobarbital concentrations to confirm that therapeutic 
+levels have been reached; on the day of sampling, the time 
+between drug administration sampling does not appear to 
+be significant.77,78 
+ ■ Re-measure at 6 weeks postinitiation of phenobarbital to 
+determine the patient’s steady-state concentration and the 
+extent of autoinduction of phenobarbital metabolism.2 
+• Once steady-state is achieved and the patient’s clinical con -
+dition is controlled with a maintenance dose: measure serum 
+phenobarbital concentrations every 6 months in dogs and cats. 
+Rechecking concentration more often should be considered 
+when efficacy is reduced or adverse effects are suspected.
+• Dogs: Serum phenobarbital concentrations of 15 to 35 µg/mL 
+(86 to 150 mmol/L) have been recommended, with the high 
+end of the range reflecting suggested changes to minimize the 
+potential for hepatotoxicity.2 Approximately ⅓ of dogs receiv -
+ing phenobarbital with bromides may require lower phenobar-
+bital doses and serum concentrations that are ≈33% less for 
+seizure control.79 
+• Cats: In a retrospective study of 30 cats, 93% of cats had sei -
+zures controlled with serum phenobarbital concentrations be-
+tween 15 and 45 µg/mL. 71 Optimum therapeutic levels of 23 
+to 30 µg/mL (100 to 130 mmol/L) have been recommended in 
+cats in an attempt to maximize seizure control with the lowest 
+potential for adverse effects.80 Cats being treated with a trans -
+dermal formulation will require more frequent monitoring.
+ ■ If phenobarbital is used long term, routine CBC and comprehen-
+sive serum chemistry profile are recommended at least every 6 
+months.
+ ■ If results of routine serum chemistry profile suggest possible hep-
+atotoxicity, bile acids and abdominal ultrasonography should be 
+considered for further evaluation.
+Client Information
+ ■ This medicine may be given with or without food. If your ani -
+mal vomits or acts sick after getting it on an empty stomach, give 
+it with food or a small treat. If vomiting continues, contact your 
+veterinarian.
+ ■ Do not skip doses. Try to give doses at the same time each day. Do 
+not suddenly stop giving this medicine to your animal.
+ ■ Do not change the amount you are giving your animal without 
+first talking with your veterinarian.
+ ■ Sleepiness, lack of energy, greater thirst, appetite, and increased 
+need to urinate commonly occur when starting therapy.
+ ■ Liver problems can occur in dogs. Contact your veterinarians if 
+your animal has any vomiting, diarrhea, lethargy, loss of appe -
+tite, or swollen abdomen. Y our veterinarian will need to perform 
+examinations and blood work on your dog while it is taking this 
+medicine. Do not miss these important follow-up visits.
+ ■ Phenobarbital is classified as a schedule-IV controlled drug by the 
+federal Drug Enforcement Agency (DEA). The use of this medi -
+cation in animals or humans other than those for whom they are 
+prescribed is illegal.
+Chemistry/Synonyms
+Phenobarbital, a barbiturate, occurs as glistening, odorless, small, 
+white crystals or a white crystalline powder with a melting point of 
+174°C to 178°C (345.2°F-352.4°F) and a p Ka of 7.41. One gram is 
+slightly soluble in ≈1000 mL of water and freely soluble in 10 mL of 
+alcohol. Compared with other barbiturates, it has a low lipid solu -
+bility.
+Phenobarbital sodium occurs as bitter-tasting, odorless, flaky, 
+white crystals, crystalline granules, or powder. It is very soluble in 
+water, soluble in alcohol, and freely soluble in propylene glycol. The 
+injectable product has a pH of 8.5 to 10.5.
+SI units (mmol/L) are multiplied by 0.232 to convert phenobar -
+bital levels to conventional units (µg/mL); conversely, conventional 
+units are multiplied by 4.31 to obtain SI units.
+Phenobarbital may also be known as fenobarbital, phenemalum, 
+phenobarbitalum, phenobarbitone, phenylethylbarbituric acid, pheny-
+lethylmalonylurea, Luminal Sodium®, or Solfoton®.
+
+===== PDF_PAGE_1038 =====
+Phenoxybenzamine    1011
+Storage/Stability
+Store phenobarbital tablets in tight, light-resistant containers at 
+room temperature 20°C to 25°C (68°F-77°F); protect from moisture.
+Store phenobarbital elixir in tight containers at room temperature 
+(15°C-30°C [59°F-86°F]).
+Store phenobarbital sodium injection at room temperature 
+(15°C-30°C [59°F-86°F]). Do not add solutions of phenobarbital so-
+dium to acidic solutions or use them if they contain a precipitate or 
+are grossly discolored.
+Aqueous solutions of phenobarbital are not very stable. Propyl -
+ene glycol is often used in injectable products to help stabilize the 
+solution. 
+Phenobarbital is a DEA Schedule-IV controlled substance (C-IV) 
+that should be stored in an area that is substantially constructed and 
+securely locked. Follow applicable local, state, and federal rules re -
+garding the disposal of unused or wasted controlled drugs.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+The following solutions and drugs have been reported to be phys-
+ically compatible with phenobarbital sodium: dextrose IV solutions, 
+Ringer’s injection, lactated Ringer’s injection, sodium chloride IV 
+solutions, dextrose-sodium chloride combinations, dextrose-Ring -
+er’s combinations, dextrose-Ringer’s lactate combinations, amikacin 
+sulfate, aminophylline, atropine sulfate (stable for at least 15 minutes 
+but not 24 hours), calcium chloride and gluconate, dexmedetomi -
+dine, dimenhydrinate, glycopyrrolate, heparin sodium, methylpred-
+nisolone sodium succinate, piperacillin-tazobactam, polymyxin B 
+sulfate, ranitidine, sodium bicarbonate, and verapamil.
+The following drugs have been reported to be physically  incom-
+patible with phenobarbital sodium: buprenorphine, chlorproma -
+zine, codeine phosphate, cyclosporine, diazepam, diphenhydramine, 
+dobutamine, ephedrine sulfate, fentanyl citrate, glycopyrrolate, 
+hydralazine, hydrocortisone sodium succinate, hydroxyzine, insu -
+lin (regular), ketamine, meperidine, midazolam, morphine sulfate, 
+nalbuphine, norepinephrine bitartrate, oxytetracycline, pentazocine 
+lactate, procaine, prochlorperazine, promazine, and promethazine. 
+Phenobarbital 10 mg/mL oral suspension can be made by crush -
+ing the appropriate number of tablets and suspending in ORA-Blend® 
+(regular or sugar-free). In a study, potency was maintained over the 
+115-day study period when stored at room temperature in amber 
+plastic bottles.81
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+The Association of Racing Commissioners International [ARCI] 
+Uniform Classification Guidelines for Foreign Substances [UCGFS] 
+has designated this drug as a class 2 substance. Use of this drug may 
+not be allowed in certain animal competitions. Check rules and reg-
+ulations before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS :
+Phenobarbital Tablets: 15 mg, 16.2 mg, 30 mg, 32.4 mg, 60 mg,  
+64.8 mg, 97.2 mg, and 100 mg; Solfoton®, generic; (Rx; C-IV). NOTE: 
+Phenobarbital strengths previously were expressed in grains, whose 
+abbreviation (“gr”) can easily be confused with gram (g). To prevent 
+medication errors, using grains to express strength should be avoid-
+ed when prescribing phenobarbital.
+Phenobarbital Elixir/Oral Solution: 20 mg/5 mL (4 mg/mL); generic; 
+(Rx, C-IV). Contains 15% ethanol
+Phenobarbital Sodium Injection: 65 mg/mL and 130 mg/mL; Lumi-
+nal Sodium®, generic; (Rx; C-IV). Contains benzyl alcohol
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Phenoxybenzamine 
+(fen-ox-ee-ben-za-meen) Dibenzyline®
+Alpha-adrenergic Antagonist (nonselective), Vasodilator 
+Prescriber Highlights
+ ▶ An alpha-adrenergic antagonist used primarily in small ani-
+mals for urethral hypertonus and urethral obstruction and to 
+control hypertension in cases of pheochromocytoma 
+ ▶ May be contraindicated in patients with hypotension, glauco-
+ma, or diabetes mellitus and in horses with colic
+ ▶ Use with caution in patients with congestive heart failure or 
+other heart disease, renal impairment, or cerebral/coronary 
+arteriosclerosis.
+ ▶ Adverse effects include hypotension, rebound hypertension, 
+miosis, increased intraocular pressure, tachycardia, inhibition 
+of ejaculation, nasal congestion, weakness, ataxia, and GI ef-
+fects (eg, nausea, vomiting). Constipation may occur in horses.
+ ▶ Availability and cost can be problematic; product may need to 
+be obtained from compounding pharmacy.
+ ▶  The National Institute for Occupational Safety and Health 
+(NIOSH) classifies phenoxybenzamine as a hazardous drug; 
+use appropriate precautions when handling.
+Uses/Indications
+Phenoxybenzamine is used primarily for its effect in reducing in -
+ternal urethral sphincter tone when urethral sphincter hypertonus 
+is present. It can also be used to treat hypertension associated with 
+pheochromocytoma before surgery. It was used in the management 
+of tachycardia resulting from phenylpropanolamine overdose in a 
+dog.1 In cats with recurrence of urethral obstruction, prazosin ap -
+pears to be more effective to prevent the incidence of reobstruction 
+as compared with phenoxybenzamine.2,3
+Phenoxybenzamine has been anecdotally reported to increase 
+acupuncture effectiveness.4
+In horses, phenoxybenzamine has been used to decrease urethral 
+sphincter tone with bladder paresis. It has also been historically tried 
+for preventing or treating laminitis in early stages5-7 and treating se-
+cretory diarrhea.8,9
+Pharmacology/Actions
+Phenoxybenzamine noncompetitively blocks the alpha-adrenergic 
+response to circulating epinephrine or norepinephrine; it is consid -
+ered a nonselective alpha-adrenergic antagonist, with greater affinity 
+for alpha-1 receptors than alpha-2 receptors. The effect of phenoxy-
+benzamine has been described as a chemical sympathectomy. Phe -
+noxybenzamine has no effects on beta-adrenergic receptors or on 
+the parasympathetic nervous system.
+Phenoxybenzamine increases cutaneous blood flow, but little ef -
+fect is noted on skeletal muscle or cerebral blood flow. 
+Phenoxybenzamine can also block pupillary dilation, lid retrac -
+tion, and nictitating membrane contraction. Prevention of epineph-
+rine inhibitory action on insulin secretion is noted. Both standing 
+and supine systolic blood pressures are decreased when this drug is 
+used in humans.
+Pharmacokinetics
+No information was located on the pharmacokinetics of this agent 
+in veterinary species. In humans, phenoxybenzamine is variably ab-
+sorbed from the GI tract and has a bioavailability of 20% to 30%. 
+

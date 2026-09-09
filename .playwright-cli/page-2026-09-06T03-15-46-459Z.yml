@@ -1,0 +1,379 @@
+- generic [ref=f1e5]:
+  - banner [ref=f1e6]:
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]:
+        - button "Abrir navegação do Vetius" [ref=f1e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f1e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f1e13]
+          - generic [ref=f1e14]: Vetius
+      - generic [ref=f1e15]:
+        - button "Ativar modo escuro" [ref=f1e16] [cursor=pointer]
+        - link "Entrar" [ref=f1e19] [cursor=pointer]:
+          - /url: /login?next=%2Fcalculadora-energetica%2Fcommercial
+  - main [ref=f1e20]:
+    - generic [ref=f1e21]:
+      - generic [ref=f1e22]:
+        - complementary [ref=f1e23]:
+          - link "NutriçãoVET — ir para o início" [ref=f1e25] [cursor=pointer]:
+            - /url: /calculadora-energetica
+            - generic [ref=f1e27]:
+              - generic [ref=f1e28]: NutriçãoVET
+              - generic [ref=f1e29]: Nutrição clínica
+          - navigation "Navegação do NutriçãoVET" [ref=f1e30]:
+            - link "Visão geral" [ref=f1e31] [cursor=pointer]:
+              - /url: /calculadora-energetica
+            - link "Calculadora energética" [ref=f1e36] [cursor=pointer]:
+              - /url: /calculadora-energetica/new
+            - link "Rações comerciais" [ref=f1e40] [cursor=pointer]:
+              - /url: /calculadora-energetica/commercial
+            - link "Hospitalizados" [ref=f1e47] [cursor=pointer]:
+              - /url: /calculadora-energetica/hospitalized
+            - link "Pacientes" [ref=f1e53] [cursor=pointer]:
+              - /url: /calculadora-energetica/patients
+            - link "Base de alimentos" [ref=f1e60] [cursor=pointer]:
+              - /url: /calculadora-energetica/foods
+            - link "Relatórios" [ref=f1e65] [cursor=pointer]:
+              - /url: /calculadora-energetica/reports
+            - link "Guia de ECC" [ref=f1e70] [cursor=pointer]:
+              - /url: /calculadora-energetica/bcs
+          - paragraph [ref=f1e75]: Vetius Clinical Suite
+        - main [ref=f1e77]:
+          - generic [ref=f1e81]:
+            - generic [ref=f1e82]:
+              - heading "Rações Comerciais" [level=1] [ref=f1e83]
+              - paragraph [ref=f1e84]: Catálogo completo de dietas coadjuvantes de prescrição veterinária e opções fisiológicas para cães e gatos, com composição nutricional detalhada e indicações clínicas.
+            - generic [ref=f1e86]:
+              - generic [ref=f1e87]:
+                - textbox "Buscar ração por nome, fabricante ou formulação..." [ref=f1e92]
+                - generic [ref=f1e93]:
+                  - button "🐾 Todos" [ref=f1e94] [cursor=pointer]
+                  - button "Cães" [ref=f1e95] [cursor=pointer]
+                  - button "Gatos" [ref=f1e98] [cursor=pointer]
+              - generic [ref=f1e102]:
+                - generic [ref=f1e103]: Tipo
+                - button "Todas as rações" [ref=f1e104] [cursor=pointer]
+                - button "Terapêuticas" [active] [ref=f1e105] [cursor=pointer]
+                - button "Manutenção" [ref=f1e106] [cursor=pointer]
+            - generic [ref=f1e587]:
+              - generic [ref=f1e588]:
+                - generic [ref=f1e589]:
+                  - paragraph [ref=f1e590]: Área clínica
+                  - heading "Qual é o objetivo terapêutico?" [level=2] [ref=f1e591]
+                - paragraph [ref=f1e592]: Selecione um bloco para refinar os resultados
+              - generic [ref=f1e593]:
+                - button "Todas as áreas clínicas 142 Explore todas as opções disponíveis neste grupo." [ref=f1e594] [cursor=pointer]:
+                  - generic [ref=f1e602]:
+                    - generic [ref=f1e603]:
+                      - strong [ref=f1e604]: Todas as áreas clínicas
+                      - generic [ref=f1e605]: "142"
+                    - generic [ref=f1e606]: Explore todas as opções disponíveis neste grupo.
+                - button "Suporte Renal (DRC / IRIS) 30 Fósforo controlado e suporte nutricional à função renal." [ref=f1e607] [cursor=pointer]:
+                  - generic [ref=f1e612]:
+                    - generic [ref=f1e613]:
+                      - strong [ref=f1e614]: Suporte Renal (DRC / IRIS)
+                      - generic [ref=f1e615]: "30"
+                    - generic [ref=f1e616]: Fósforo controlado e suporte nutricional à função renal.
+                - button "Gastrointestinal & Low Fat 26 Alta digestibilidade, fibras e opções com gordura reduzida." [ref=f1e617] [cursor=pointer]:
+                  - generic [ref=f1e621]:
+                    - generic [ref=f1e622]:
+                      - strong [ref=f1e623]: Gastrointestinal & Low Fat
+                      - generic [ref=f1e624]: "26"
+                    - generic [ref=f1e625]: Alta digestibilidade, fibras e opções com gordura reduzida.
+                - button "Dermatológica & Hipoalergênica 19 Proteínas selecionadas e suporte à barreira cutânea." [ref=f1e626] [cursor=pointer]:
+                  - generic [ref=f1e631]:
+                    - generic [ref=f1e632]:
+                      - strong [ref=f1e633]: Dermatológica & Hipoalergênica
+                      - generic [ref=f1e634]: "19"
+                    - generic [ref=f1e635]: Proteínas selecionadas e suporte à barreira cutânea.
+                - button "Trato Urinário & Dissolução de Cálculos 11 Manejo nutricional do trato urinário e de urólitos." [ref=f1e636] [cursor=pointer]:
+                  - generic [ref=f1e641]:
+                    - generic [ref=f1e642]:
+                      - strong [ref=f1e643]: Trato Urinário & Dissolução de Cálculos
+                      - generic [ref=f1e644]: "11"
+                    - generic [ref=f1e645]: Manejo nutricional do trato urinário e de urólitos.
+                - button "Hepatologia & Suporte Hepático 2 Perfil nutricional adaptado ao suporte da função hepática." [ref=f1e646] [cursor=pointer]:
+                  - generic [ref=f1e651]:
+                    - generic [ref=f1e652]:
+                      - strong [ref=f1e653]: Hepatologia & Suporte Hepático
+                      - generic [ref=f1e654]: "2"
+                    - generic [ref=f1e655]: Perfil nutricional adaptado ao suporte da função hepática.
+                - button "Cardiologia & Baixo Sódio 1 Sódio controlado e nutrientes de suporte cardiovascular." [ref=f1e656] [cursor=pointer]:
+                  - generic [ref=f1e661]:
+                    - generic [ref=f1e662]:
+                      - strong [ref=f1e663]: Cardiologia & Baixo Sódio
+                      - generic [ref=f1e664]: "1"
+                    - generic [ref=f1e665]: Sódio controlado e nutrientes de suporte cardiovascular.
+                - button "Manejo de Obesidade & Saciedade 29 Saciedade e redução calórica para manejo do peso." [ref=f1e666] [cursor=pointer]:
+                  - generic [ref=f1e672]:
+                    - generic [ref=f1e673]:
+                      - strong [ref=f1e674]: Manejo de Obesidade & Saciedade
+                      - generic [ref=f1e675]: "29"
+                    - generic [ref=f1e676]: Saciedade e redução calórica para manejo do peso.
+                - button "Recuperação, UTI & Alta Densidade 7 Alta densidade energética para recuperação e suporte intensivo." [ref=f1e677] [cursor=pointer]:
+                  - generic [ref=f1e683]:
+                    - generic [ref=f1e684]:
+                      - strong [ref=f1e685]: Recuperação, UTI & Alta Densidade
+                      - generic [ref=f1e686]: "7"
+                    - generic [ref=f1e687]: Alta densidade energética para recuperação e suporte intensivo.
+                - button "Endocrinologia & Controle Glicêmico 5 Controle glicêmico e perfil de carboidratos adaptado." [ref=f1e688] [cursor=pointer]:
+                  - generic [ref=f1e692]:
+                    - generic [ref=f1e693]:
+                      - strong [ref=f1e694]: Endocrinologia & Controle Glicêmico
+                      - generic [ref=f1e695]: "5"
+                    - generic [ref=f1e696]: Controle glicêmico e perfil de carboidratos adaptado.
+                - button "Articular & Suporte Osteoarticular 0 Suporte osteoarticular e manutenção da mobilidade." [disabled] [ref=f1e697]:
+                  - generic [ref=f1e701]:
+                    - generic [ref=f1e702]:
+                      - strong [ref=f1e703]: Articular & Suporte Osteoarticular
+                      - generic [ref=f1e704]: "0"
+                    - generic [ref=f1e705]: Suporte osteoarticular e manutenção da mobilidade.
+                - button "Oncologia & Suporte Metabólico 4 Suporte metabólico e preservação de massa corporal." [ref=f1e706] [cursor=pointer]:
+                  - generic [ref=f1e711]:
+                    - generic [ref=f1e712]:
+                      - strong [ref=f1e713]: Oncologia & Suporte Metabólico
+                      - generic [ref=f1e714]: "4"
+                    - generic [ref=f1e715]: Suporte metabólico e preservação de massa corporal.
+                - button "Coadjuvante Clínica 8 Outras dietas coadjuvantes de uso veterinário." [ref=f1e716] [cursor=pointer]:
+                  - generic [ref=f1e722]:
+                    - generic [ref=f1e723]:
+                      - strong [ref=f1e724]: Coadjuvante Clínica
+                      - generic [ref=f1e725]: "8"
+                    - generic [ref=f1e726]: Outras dietas coadjuvantes de uso veterinário.
+            - generic [ref=f1e107]:
+              - generic [ref=f1e108]:
+                - generic [ref=f1e109]:
+                  - paragraph [ref=f1e110]: Resultados
+                  - heading "142 rações encontradas" [level=2] [ref=f1e727]
+                - paragraph [ref=f1e112]: Compare os diferenciais e macronutrientes. Clique em uma ração para abrir a ficha clínica completa.
+              - generic [ref=f1e113]:
+                - button "Abrir ficha de Royal Canin Renal Cães" [ref=f1e114] [cursor=pointer]:
+                  - generic [ref=f1e115]:
+                    - img "Royal Canin Renal Cães" [ref=f1e116]
+                    - generic [ref=f1e117]: Royal Canin
+                  - generic [ref=f1e118]:
+                    - generic [ref=f1e119]: Suporte Renal (DRC / IRIS)
+                    - heading "Royal Canin Renal Cães" [level=3] [ref=f1e120]
+                    - paragraph [ref=f1e121]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e122]:
+                      - generic [ref=f1e123]:
+                        - generic [ref=f1e124]: Carboidrato
+                        - strong [ref=f1e128]: 56.6%
+                      - generic [ref=f1e129]:
+                        - generic [ref=f1e130]: PB
+                        - strong [ref=f1e134]: 13.6%
+                      - generic [ref=f1e135]:
+                        - generic [ref=f1e136]: EE
+                        - strong [ref=f1e140]: 18.1%
+                    - generic [ref=f1e141]: Ver ficha completa
+                - button "Abrir ficha de Dieta Enteral Padrão" [ref=f1e145] [cursor=pointer]:
+                  - generic [ref=f1e146]:
+                    - generic [ref=f1e147]: Foto faltando
+                    - generic [ref=f1e157]: Marca Selecionada
+                  - generic [ref=f1e158]:
+                    - generic [ref=f1e159]: Recuperação, UTI & Alta Densidade
+                    - heading "Dieta Enteral Padrão" [level=3] [ref=f1e160]
+                    - paragraph [ref=f1e161]: Altíssima densidade energética (RER suprido em volumes reduzidos).
+                    - generic [ref=f1e162]:
+                      - generic [ref=f1e163]:
+                        - generic [ref=f1e164]: Carboidrato
+                        - strong [ref=f1e168]: 33.2%
+                      - generic [ref=f1e169]:
+                        - generic [ref=f1e170]: PB
+                        - strong [ref=f1e174]: 28.5%
+                      - generic [ref=f1e175]:
+                        - generic [ref=f1e176]: EE
+                        - strong [ref=f1e180]: 24.8%
+                    - generic [ref=f1e181]: Ver ficha completa
+                - button "Abrir ficha de Equilíbrio Veterinary Obesity & Diabetic (cão)" [ref=f1e185] [cursor=pointer]:
+                  - generic [ref=f1e186]:
+                    - generic [ref=f1e187]: Foto faltando
+                    - generic [ref=f1e197]: Equilíbrio Veterinary
+                  - generic [ref=f1e198]:
+                    - generic [ref=f1e199]: Manejo de Obesidade & Saciedade
+                    - heading "Equilíbrio Veterinary Obesity & Diabetic (cão)" [level=3] [ref=f1e200]
+                    - paragraph [ref=f1e201]: Alta relação proteína/caloria para preservar 100% da massa muscular (EMC) no emagrecimento.
+                    - generic [ref=f1e202]:
+                      - generic [ref=f1e203]:
+                        - generic [ref=f1e204]: Carboidrato
+                        - strong [ref=f1e208]: 39.2%
+                      - generic [ref=f1e209]:
+                        - generic [ref=f1e210]: PB
+                        - strong [ref=f1e214]: 33.3%
+                      - generic [ref=f1e215]:
+                        - generic [ref=f1e216]: EE
+                        - strong [ref=f1e220]: 8.3%
+                    - generic [ref=f1e221]: Ver ficha completa
+                - button "Abrir ficha de Equilíbrio Veterinary Obesity & Diabetic (gato)" [ref=f1e225] [cursor=pointer]:
+                  - generic [ref=f1e226]:
+                    - generic [ref=f1e227]: Foto faltando
+                    - generic [ref=f1e237]: Equilíbrio Veterinary
+                  - generic [ref=f1e238]:
+                    - generic [ref=f1e239]: Manejo de Obesidade & Saciedade
+                    - heading "Equilíbrio Veterinary Obesity & Diabetic (gato)" [level=3] [ref=f1e240]
+                    - paragraph [ref=f1e241]: Alta relação proteína/caloria para preservar 100% da massa muscular (EMC) no emagrecimento.
+                    - generic [ref=f1e242]:
+                      - generic [ref=f1e243]:
+                        - generic [ref=f1e244]: Carboidrato
+                        - strong [ref=f1e248]: 27.2%
+                      - generic [ref=f1e249]:
+                        - generic [ref=f1e250]: PB
+                        - strong [ref=f1e254]: 44.4%
+                      - generic [ref=f1e255]:
+                        - generic [ref=f1e256]: EE
+                        - strong [ref=f1e260]: 8.3%
+                    - generic [ref=f1e261]: Ver ficha completa
+                - button "Abrir ficha de Farmina N&D Quinoa — Digestive Care" [ref=f1e265] [cursor=pointer]:
+                  - generic [ref=f1e266]:
+                    - generic [ref=f1e267]: Foto faltando
+                    - generic [ref=f1e277]: Farmina Vet Life
+                  - generic [ref=f1e278]:
+                    - generic [ref=f1e279]: Gastrointestinal & Low Fat
+                    - heading "Farmina N&D Quinoa — Digestive Care" [level=3] [ref=f1e280]
+                    - paragraph [ref=f1e281]: Ingredientes de altíssima digestibilidade para reduzir a sobrecarga osmótica intestinal.
+                    - generic [ref=f1e282]:
+                      - generic [ref=f1e283]:
+                        - generic [ref=f1e284]: Carboidrato
+                        - strong [ref=f1e288]: 94.0%
+                      - generic [ref=f1e289]:
+                        - generic [ref=f1e290]: PB
+                        - strong [ref=f1e294]: 0.0%
+                      - generic [ref=f1e295]:
+                        - generic [ref=f1e296]: EE
+                        - strong [ref=f1e300]: 0.0%
+                    - generic [ref=f1e301]: Ver ficha completa
+                - button "Abrir ficha de Farmina N&D Quinoa — Digestive Care" [ref=f1e305] [cursor=pointer]:
+                  - generic [ref=f1e306]:
+                    - generic [ref=f1e307]: Foto faltando
+                    - generic [ref=f1e317]: Farmina Vet Life
+                  - generic [ref=f1e318]:
+                    - generic [ref=f1e319]: Gastrointestinal & Low Fat
+                    - heading "Farmina N&D Quinoa — Digestive Care" [level=3] [ref=f1e320]
+                    - paragraph [ref=f1e321]: Ingredientes de altíssima digestibilidade para reduzir a sobrecarga osmótica intestinal.
+                    - generic [ref=f1e322]:
+                      - generic [ref=f1e323]:
+                        - generic [ref=f1e324]: Carboidrato
+                        - strong [ref=f1e328]: 9.5%
+                      - generic [ref=f1e329]:
+                        - generic [ref=f1e330]: PB
+                        - strong [ref=f1e334]: 54.5%
+                      - generic [ref=f1e335]:
+                        - generic [ref=f1e336]: EE
+                        - strong [ref=f1e340]: 17.3%
+                    - generic [ref=f1e341]: Ver ficha completa
+                - button "Abrir ficha de Farmina N&D Quinoa — Urinary" [ref=f1e345] [cursor=pointer]:
+                  - generic [ref=f1e346]:
+                    - generic [ref=f1e347]: Foto faltando
+                    - generic [ref=f1e357]: Farmina Vet Life
+                  - generic [ref=f1e358]:
+                    - generic [ref=f1e359]: Trato Urinário & Dissolução de Cálculos
+                    - heading "Farmina N&D Quinoa — Urinary" [level=3] [ref=f1e360]
+                    - paragraph [ref=f1e361]: Controle estrito de magnésio, fósforo e precursores de cálculos de estruvita e oxalato.
+                    - generic [ref=f1e362]:
+                      - generic [ref=f1e363]:
+                        - generic [ref=f1e364]: Carboidrato
+                        - strong [ref=f1e368]: 94.0%
+                      - generic [ref=f1e369]:
+                        - generic [ref=f1e370]: PB
+                        - strong [ref=f1e374]: 0.0%
+                      - generic [ref=f1e375]:
+                        - generic [ref=f1e376]: EE
+                        - strong [ref=f1e380]: 0.0%
+                    - generic [ref=f1e381]: Ver ficha completa
+                - button "Abrir ficha de Farmina N&D Quinoa — Weight Management" [ref=f1e385] [cursor=pointer]:
+                  - generic [ref=f1e386]:
+                    - generic [ref=f1e387]: Foto faltando
+                    - generic [ref=f1e397]: Farmina Vet Life
+                  - generic [ref=f1e398]:
+                    - generic [ref=f1e399]: Manejo de Obesidade & Saciedade
+                    - heading "Farmina N&D Quinoa — Weight Management" [level=3] [ref=f1e400]
+                    - paragraph [ref=f1e401]: Alta relação proteína/caloria para preservar 100% da massa muscular (EMC) no emagrecimento.
+                    - generic [ref=f1e402]:
+                      - generic [ref=f1e403]:
+                        - generic [ref=f1e404]: Carboidrato
+                        - strong [ref=f1e408]: 94.0%
+                      - generic [ref=f1e409]:
+                        - generic [ref=f1e410]: PB
+                        - strong [ref=f1e414]: 0.0%
+                      - generic [ref=f1e415]:
+                        - generic [ref=f1e416]: EE
+                        - strong [ref=f1e420]: 0.0%
+                    - generic [ref=f1e421]: Ver ficha completa
+                - button "Abrir ficha de Farmina N&D Quinoa — Weight Management" [ref=f1e425] [cursor=pointer]:
+                  - generic [ref=f1e426]:
+                    - generic [ref=f1e427]: Foto faltando
+                    - generic [ref=f1e437]: Farmina Vet Life
+                  - generic [ref=f1e438]:
+                    - generic [ref=f1e439]: Manejo de Obesidade & Saciedade
+                    - heading "Farmina N&D Quinoa — Weight Management" [level=3] [ref=f1e440]
+                    - paragraph [ref=f1e441]: Alta relação proteína/caloria para preservar 100% da massa muscular (EMC) no emagrecimento.
+                    - generic [ref=f1e442]:
+                      - generic [ref=f1e443]:
+                        - generic [ref=f1e444]: Carboidrato
+                        - strong [ref=f1e448]: 94.0%
+                      - generic [ref=f1e449]:
+                        - generic [ref=f1e450]: PB
+                        - strong [ref=f1e454]: 0.0%
+                      - generic [ref=f1e455]:
+                        - generic [ref=f1e456]: EE
+                        - strong [ref=f1e460]: 0.0%
+                    - generic [ref=f1e461]: Ver ficha completa
+                - button "Abrir ficha de Farmina Vet Life Canine — Convalescence" [ref=f1e465] [cursor=pointer]:
+                  - generic [ref=f1e466]:
+                    - generic [ref=f1e467]: Foto faltando
+                    - generic [ref=f1e477]: Farmina Vet Life
+                  - generic [ref=f1e478]:
+                    - generic [ref=f1e479]: Recuperação, UTI & Alta Densidade
+                    - heading "Farmina Vet Life Canine — Convalescence" [level=3] [ref=f1e480]
+                    - paragraph [ref=f1e481]: Altíssima densidade energética (RER suprido em volumes reduzidos).
+                    - generic [ref=f1e482]:
+                      - generic [ref=f1e483]:
+                        - generic [ref=f1e484]: Carboidrato
+                        - strong [ref=f1e488]: 94.0%
+                      - generic [ref=f1e489]:
+                        - generic [ref=f1e490]: PB
+                        - strong [ref=f1e494]: 0.0%
+                      - generic [ref=f1e495]:
+                        - generic [ref=f1e496]: EE
+                        - strong [ref=f1e500]: 0.0%
+                    - generic [ref=f1e501]: Ver ficha completa
+                - button "Abrir ficha de Farmina Vet Life Canine — Diabetic" [ref=f1e505] [cursor=pointer]:
+                  - generic [ref=f1e506]:
+                    - generic [ref=f1e507]: Foto faltando
+                    - generic [ref=f1e517]: Farmina Vet Life
+                  - generic [ref=f1e518]:
+                    - generic [ref=f1e519]: Endocrinologia & Controle Glicêmico
+                    - heading "Farmina Vet Life Canine — Diabetic" [level=3] [ref=f1e520]
+                    - paragraph [ref=f1e521]: Carboidratos complexos de liberação lenta para evitar picos glicêmicos pós-prandiais.
+                    - generic [ref=f1e522]:
+                      - generic [ref=f1e523]:
+                        - generic [ref=f1e524]: Carboidrato
+                        - strong [ref=f1e528]: 94.0%
+                      - generic [ref=f1e529]:
+                        - generic [ref=f1e530]: PB
+                        - strong [ref=f1e534]: 0.0%
+                      - generic [ref=f1e535]:
+                        - generic [ref=f1e536]: EE
+                        - strong [ref=f1e540]: 0.0%
+                    - generic [ref=f1e541]: Ver ficha completa
+                - button "Abrir ficha de Farmina Vet Life Canine — Gastrointestinal" [ref=f1e545] [cursor=pointer]:
+                  - generic [ref=f1e546]:
+                    - generic [ref=f1e547]: Foto faltando
+                    - generic [ref=f1e557]: Farmina Vet Life
+                  - generic [ref=f1e558]:
+                    - generic [ref=f1e559]: Gastrointestinal & Low Fat
+                    - heading "Farmina Vet Life Canine — Gastrointestinal" [level=3] [ref=f1e560]
+                    - paragraph [ref=f1e561]: Ingredientes de altíssima digestibilidade para reduzir a sobrecarga osmótica intestinal.
+                    - generic [ref=f1e562]:
+                      - generic [ref=f1e563]:
+                        - generic [ref=f1e564]: Carboidrato
+                        - strong [ref=f1e568]: 94.0%
+                      - generic [ref=f1e569]:
+                        - generic [ref=f1e570]: PB
+                        - strong [ref=f1e574]: 0.0%
+                      - generic [ref=f1e575]:
+                        - generic [ref=f1e576]: EE
+                        - strong [ref=f1e580]: 0.0%
+                    - generic [ref=f1e581]: Ver ficha completa
+              - button "Mostrar mais 12 rações" [ref=f1e586] [cursor=pointer]
+      - region "Notifications alt+T"

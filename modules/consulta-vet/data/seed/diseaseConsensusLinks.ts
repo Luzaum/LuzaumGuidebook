@@ -46,6 +46,10 @@ export const DISEASE_CONSENSUS_LINKS: Record<string, string[]> = {
   'dermatite-atopica-canina': ['icada-dermatite-atopica-canina-2015'],
   'sindrome-cutanea-atopica-felina': ['icada-sindrome-cutanea-atopica-felina-2021'],
   'leishmaniose-visceral-canina': ['leishmaniose-brasileiro-2020'],
+  'coagulacao-intravascular-disseminada-caes-gatos': [
+    'curative-risco-trombotico-2022',
+    'veccs-sepse-definicao-caes-gatos-2026',
+  ],
 };
 
 export function mergeConsensusSlugsForDisease(slug: string, existing: string[] = []): string[] {

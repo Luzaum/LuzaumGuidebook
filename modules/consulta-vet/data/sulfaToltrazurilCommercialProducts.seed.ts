@@ -136,11 +136,7 @@ export const sulfaToltrazurilCommercialProductsSeed: CommercialMedicationProduct
       'Uso extrabula em cão/gato: Powerzuril 5% (50 mg/mL), calcular volume = peso × dose (mg/kg) ÷ 50. Registrar apresentação suína no receituário.',
     safetyAlert:
       'Não confundir com ponazuril. Não usar dose de leitão em cães/gatos sem cálculo mg/kg. Agitar antes de usar; frasco aberto válido por até 180 dias (bula).',
-    price: {
-      averageLabel: 'Consultar distribuidor agropecuário',
-      rangeLabel: 'Sem faixa estável em varejo pet; MSD Saúde Animal — frascos 250 mL a 1 L',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 185,00', rangeLabel: 'Frasco 250 mL suspensão 5%: R$ 160,00 a R$ 220,00', sourceDate: '2026-09-06' },
     evidenceLevel: 'Página oficial MSD Saúde Animal + Plumb\'s Veterinary Drug Handbook, 10ª ed.',
     productPageUrl: 'https://www.msd-saude-animal.com.br/produto/powerzuril/',
     labelUrl: 'https://www.msd-saude-animal.com.br/produto/powerzuril/',

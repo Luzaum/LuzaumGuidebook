@@ -1,0 +1,572 @@
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - button "Abrir navegação do Vetius" [ref=e8] [cursor=pointer]
+        - link "Voltar para a Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=e12]
+          - generic [ref=e13]: Vetius
+      - generic [ref=e14]:
+        - button "Ativar modo escuro" [ref=e15] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=e23] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=e24]
+          - generic [ref=e25]: Luis
+  - main [ref=e19]:
+    - generic [ref=e30]:
+      - complementary [ref=e31]:
+        - generic [ref=e32]:
+          - button "Esconder barra lateral" [ref=e33] [cursor=pointer]
+          - link [ref=e38] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=e39]
+          - navigation [ref=e40]:
+            - link "Início" [ref=e41] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=e45] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=e51] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=e56] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=e61] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=e67] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=e71] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rápidos
+            - link "Consensos" [ref=e75] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=e80] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=e84] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - heading "Receituário" [level=1] [ref=e94]
+              - paragraph [ref=e95]: Calcule por espécie e peso, revise o documento e salve na sua conta.
+            - button "Nova receita" [ref=e96] [cursor=pointer]
+          - tablist "Abas do Receituário" [ref=e99]:
+            - tab "Receitas" [selected] [ref=e100] [cursor=pointer]
+            - tab "Termos" [ref=e105] [cursor=pointer]
+            - tab "Meus modelos (0)" [ref=e110] [cursor=pointer]
+            - tab "Meus modelos favoritos (0)" [ref=e116] [cursor=pointer]
+            - tab "Documentos emitidos (0)" [ref=e120] [cursor=pointer]
+          - generic [ref=e1133]:
+            - generic [ref=e1134]:
+              - textbox "Doença, condição ou medicamento..." [ref=e1139]
+              - generic [ref=e1140]:
+                - button "Todos" [ref=e1141] [cursor=pointer]
+                - button "🐶 Cão" [ref=e1142] [cursor=pointer]
+                - button "🐱 Gato" [ref=e1143] [cursor=pointer]
+              - button "Favoritos (0)" [ref=e1144] [cursor=pointer]
+            - generic [ref=e1147]:
+              - complementary [ref=e1148]:
+                - generic [ref=e1149]:
+                  - heading "Especialidades" [level=2] [ref=e1150]
+                  - generic [ref=e1151]: 8 ativas
+                - navigation "Filtrar receitas por especialidade" [ref=e1152]:
+                  - button "Todas 28" [ref=e1153] [cursor=pointer]:
+                    - generic [ref=e1159]: Todas
+                    - generic [ref=e1160]: "28"
+                  - button "Gastroenterologia 4" [ref=e1161] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1162]: 🩺
+                    - generic [ref=e1163]: Gastroenterologia
+                    - generic [ref=e1164]: "4"
+                  - button "Endocrinologia 7" [ref=e1165] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1166]: 🧬
+                    - generic [ref=e1167]: Endocrinologia
+                    - generic [ref=e1168]: "7"
+                  - button "Respiratório 2" [ref=e1169] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1170]: 🫁
+                    - generic [ref=e1171]: Respiratório
+                    - generic [ref=e1172]: "2"
+                  - button "Neurologia 5" [ref=e1173] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1174]: 🧠
+                    - generic [ref=e1175]: Neurologia
+                    - generic [ref=e1176]: "5"
+                  - button "Dermatologia 1" [ref=e1177] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1178]: 🐾
+                    - generic [ref=e1179]: Dermatologia
+                    - generic [ref=e1180]: "1"
+                  - button "Infectologia 4" [ref=e1181] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1182]: 🦠
+                    - generic [ref=e1183]: Infectologia
+                    - generic [ref=e1184]: "4"
+                  - button "Dor e pós-operatório 4" [ref=e1185] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1186]: 📁
+                    - generic [ref=e1187]: Dor e pós-operatório
+                    - generic [ref=e1188]: "4"
+                  - button "Cuidados gerais 1" [ref=e1189] [cursor=pointer]:
+                    - generic [aria-hidden] [ref=e1190]: 📁
+                    - generic [ref=e1191]: Cuidados gerais
+                    - generic [ref=e1192]: "1"
+              - main [ref=e1193]:
+                - generic [ref=e1194]:
+                  - heading "Modelos de receita" [level=2] [ref=e1195]
+                  - generic [ref=e1200]:
+                    - generic [ref=e1201]: 28 receitas
+                    - button "Editar modelos" [ref=e1202] [cursor=pointer]
+                - generic [ref=e1206]:
+                  - article [ref=e1207]:
+                    - generic [ref=e1208]:
+                      - generic [ref=e1209]:
+                        - heading "Esporotricose — Gatos" [level=3] [ref=e1210]
+                        - generic [ref=e1211]:
+                          - generic [ref=e1212]: 🦠 Infectologia
+                          - generic [ref=e1213]: gato
+                      - button "Favoritar Esporotricose — Gatos" [ref=e1214] [cursor=pointer]
+                    - generic [ref=e1217]:
+                      - paragraph [ref=e1218]: Medicamentos do modelo
+                      - generic [ref=e1222]:
+                        - generic [ref=e1223]: Itraconazol
+                        - generic [ref=e1224]: Iodeto de potássio
+                        - generic [ref=e1225]: Terbinafina
+                    - generic [ref=e1226]:
+                      - generic [ref=e1227]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1228] [cursor=pointer]
+                  - article [ref=e1229]:
+                    - generic [ref=e1230]:
+                      - generic [ref=e1231]:
+                        - heading "Esporotricose — Cães" [level=3] [ref=e1232]
+                        - generic [ref=e1233]:
+                          - generic [ref=e1234]: 🦠 Infectologia
+                          - generic [ref=e1235]: cão
+                      - button "Favoritar Esporotricose — Cães" [ref=e1236] [cursor=pointer]
+                    - generic [ref=e1239]:
+                      - paragraph [ref=e1240]: Medicamentos do modelo
+                      - generic [ref=e1244]:
+                        - generic [ref=e1245]: Itraconazol
+                        - generic [ref=e1246]: Terbinafina
+                        - generic [ref=e1247]: Iodeto de potássio
+                    - generic [ref=e1248]:
+                      - generic [ref=e1249]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1250] [cursor=pointer]
+                  - article [ref=e1251]:
+                    - generic [ref=e1252]:
+                      - generic [ref=e1253]:
+                        - heading "Cinomose — Cães" [level=3] [ref=e1254]
+                        - generic [ref=e1255]:
+                          - generic [ref=e1256]: 🦠 Infectologia
+                          - generic [ref=e1257]: cão
+                      - button "Favoritar Cinomose — Cães" [ref=e1258] [cursor=pointer]
+                    - generic [ref=e1261]:
+                      - paragraph [ref=e1262]: Medicamentos do modelo
+                      - generic [ref=e1266]:
+                        - generic [ref=e1267]: Ribavirina
+                        - generic [ref=e1268]: Dimetilsulfóxido — DMSO
+                        - generic [ref=e1269]: Ondansetrona
+                        - generic [ref=e1270]: Doxiciclina
+                        - generic [ref=e1271]: "+1"
+                    - generic [ref=e1272]:
+                      - generic [ref=e1273]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1274] [cursor=pointer]
+                  - article [ref=e1275]:
+                    - generic [ref=e1276]:
+                      - generic [ref=e1277]:
+                        - heading "Erliquiose/Anaplasmose — Cães" [level=3] [ref=e1278]
+                        - generic [ref=e1279]:
+                          - generic [ref=e1280]: 🦠 Infectologia
+                          - generic [ref=e1281]: cão
+                      - button "Favoritar Erliquiose/Anaplasmose — Cães" [ref=e1282] [cursor=pointer]
+                    - generic [ref=e1285]:
+                      - paragraph [ref=e1286]: Medicamentos do modelo
+                      - generic [ref=e1290]: Doxiciclina
+                    - generic [ref=e1292]:
+                      - generic [ref=e1293]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1294] [cursor=pointer]
+                  - article [ref=e1295]:
+                    - generic [ref=e1296]:
+                      - generic [ref=e1297]:
+                        - heading "Pós-operatório de castração — Cadela" [level=3] [ref=e1298]
+                        - generic [ref=e1299]:
+                          - generic [ref=e1300]: 📁 Dor e pós-operatório
+                          - generic [ref=e1301]: cão
+                      - button "Favoritar Pós-operatório de castração — Cadela" [ref=e1302] [cursor=pointer]
+                    - generic [ref=e1305]:
+                      - paragraph [ref=e1306]: Medicamentos do modelo
+                      - generic [ref=e1310]:
+                        - generic [ref=e1311]: Meloxicam
+                        - generic [ref=e1312]: Carprofeno
+                    - generic [ref=e1313]:
+                      - generic [ref=e1314]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1315] [cursor=pointer]
+                  - article [ref=e1316]:
+                    - generic [ref=e1317]:
+                      - generic [ref=e1318]:
+                        - heading "Pós-operatório de castração — Gata" [level=3] [ref=e1319]
+                        - generic [ref=e1320]:
+                          - generic [ref=e1321]: 📁 Dor e pós-operatório
+                          - generic [ref=e1322]: gato
+                      - button "Favoritar Pós-operatório de castração — Gata" [ref=e1323] [cursor=pointer]
+                    - generic [ref=e1326]:
+                      - paragraph [ref=e1327]: Medicamentos do modelo
+                      - generic [ref=e1331]:
+                        - generic [ref=e1332]: Robenacoxibe
+                        - generic [ref=e1333]: Meloxicam
+                        - generic [ref=e1334]: Buprenorfina
+                    - generic [ref=e1335]:
+                      - generic [ref=e1336]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1337] [cursor=pointer]
+                  - article [ref=e1338]:
+                    - generic [ref=e1339]:
+                      - generic [ref=e1340]:
+                        - heading "Pós-operatório de castração — Cão macho" [level=3] [ref=e1341]
+                        - generic [ref=e1342]:
+                          - generic [ref=e1343]: 📁 Dor e pós-operatório
+                          - generic [ref=e1344]: cão
+                      - button "Favoritar Pós-operatório de castração — Cão macho" [ref=e1345] [cursor=pointer]
+                    - generic [ref=e1348]:
+                      - paragraph [ref=e1349]: Medicamentos do modelo
+                      - generic [ref=e1353]:
+                        - generic [ref=e1354]: Meloxicam
+                        - generic [ref=e1355]: Carprofeno
+                    - generic [ref=e1356]:
+                      - generic [ref=e1357]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1358] [cursor=pointer]
+                  - article [ref=e1359]:
+                    - generic [ref=e1360]:
+                      - generic [ref=e1361]:
+                        - heading "Pós-operatório de castração — Gato macho" [level=3] [ref=e1362]
+                        - generic [ref=e1363]:
+                          - generic [ref=e1364]: 📁 Dor e pós-operatório
+                          - generic [ref=e1365]: gato
+                      - button "Favoritar Pós-operatório de castração — Gato macho" [ref=e1366] [cursor=pointer]
+                    - generic [ref=e1369]:
+                      - paragraph [ref=e1370]: Medicamentos do modelo
+                      - generic [ref=e1374]:
+                        - generic [ref=e1375]: Robenacoxibe
+                        - generic [ref=e1376]: Buprenorfina
+                    - generic [ref=e1377]:
+                      - generic [ref=e1378]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1379] [cursor=pointer]
+                  - article [ref=e1380]:
+                    - generic [ref=e1381]:
+                      - generic [ref=e1382]:
+                        - heading "Gastroenterite aguda não complicada — Cão" [level=3] [ref=e1383]
+                        - generic [ref=e1384]:
+                          - generic [ref=e1385]: 🩺 Gastroenterologia
+                          - generic [ref=e1386]: cão
+                      - button "Favoritar Gastroenterite aguda não complicada — Cão" [ref=e1387] [cursor=pointer]
+                    - generic [ref=e1390]:
+                      - paragraph [ref=e1391]: Medicamentos do modelo
+                      - generic [ref=e1395]:
+                        - generic [ref=e1396]: Maropitant
+                        - generic [ref=e1397]: Ondansetrona
+                        - generic [ref=e1398]: Probiótico ou simbiótico veterinário
+                    - generic [ref=e1399]:
+                      - generic [ref=e1400]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1401] [cursor=pointer]
+                  - article [ref=e1402]:
+                    - generic [ref=e1403]:
+                      - generic [ref=e1404]:
+                        - heading "Colapso de traqueia — Cão" [level=3] [ref=e1405]
+                        - generic [ref=e1406]:
+                          - generic [ref=e1407]: 🫁 Respiratório
+                          - generic [ref=e1408]: cão
+                      - button "Favoritar Colapso de traqueia — Cão" [ref=e1409] [cursor=pointer]
+                    - generic [ref=e1412]:
+                      - paragraph [ref=e1413]: Medicamentos do modelo
+                      - generic [ref=e1417]:
+                        - generic [ref=e1418]: Hidrocodona
+                        - generic [ref=e1419]: Codeína
+                        - generic [ref=e1420]: Prednisolona
+                        - generic [ref=e1421]: Teofilina de liberação prolongada
+                    - generic [ref=e1422]:
+                      - generic [ref=e1423]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1424] [cursor=pointer]
+                  - article [ref=e1425]:
+                    - generic [ref=e1426]:
+                      - generic [ref=e1427]:
+                        - heading "Asma felina" [level=3] [ref=e1428]
+                        - generic [ref=e1429]:
+                          - generic [ref=e1430]: 🫁 Respiratório
+                          - generic [ref=e1431]: gato
+                      - button "Favoritar Asma felina" [ref=e1432] [cursor=pointer]
+                    - generic [ref=e1435]:
+                      - paragraph [ref=e1436]: Medicamentos do modelo
+                      - generic [ref=e1440]:
+                        - generic [ref=e1441]: Prednisolona
+                        - generic [ref=e1442]: Propionato de fluticasona — Flixotide
+                        - generic [ref=e1443]: Propionato de fluticasona + salmeterol — Seretide Evohaler
+                        - generic [ref=e1444]: Salbutamol
+                    - generic [ref=e1445]:
+                      - generic [ref=e1446]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1447] [cursor=pointer]
+                  - article [ref=e1448]:
+                    - generic [ref=e1449]:
+                      - generic [ref=e1450]:
+                        - heading "Manejo de ferida pós-operatória" [level=3] [ref=e1451]
+                        - generic [ref=e1452]:
+                          - generic [ref=e1453]: 📁 Cuidados gerais
+                          - generic [ref=e1454]: Cão e gato
+                      - button "Favoritar Manejo de ferida pós-operatória" [ref=e1455] [cursor=pointer]
+                    - generic [ref=e1458]:
+                      - paragraph [ref=e1459]: Medicamentos do modelo
+                      - generic [ref=e1463]:
+                        - generic [ref=e1464]: Sulfadiazina de prata 1%
+                        - generic [ref=e1465]: Sabonete com PHMB
+                        - generic [ref=e1466]: Gel com PHMB
+                    - generic [ref=e1467]:
+                      - generic [ref=e1468]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1469] [cursor=pointer]
+                  - article [ref=e1470]:
+                    - generic [ref=e1471]:
+                      - generic [ref=e1472]:
+                        - heading "Dermatite atópica — Cão" [level=3] [ref=e1473]
+                        - generic [ref=e1474]:
+                          - generic [ref=e1475]: 🐾 Dermatologia
+                          - generic [ref=e1476]: cão
+                      - button "Favoritar Dermatite atópica — Cão" [ref=e1477] [cursor=pointer]
+                    - generic [ref=e1480]:
+                      - paragraph [ref=e1481]: Medicamentos do modelo
+                      - generic [ref=e1485]:
+                        - generic [ref=e1486]: Prednisolona
+                        - generic [ref=e1487]: Oclacitinibe — Apoquel
+                        - generic [ref=e1488]: Ilunocitinibe — Zenrelia
+                        - generic [ref=e1489]: Cloresten — xampu com clorexidina e miconazol
+                        - generic [ref=e1490]: "+1"
+                    - generic [ref=e1491]:
+                      - generic [ref=e1492]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1493] [cursor=pointer]
+                  - article [ref=e1494]:
+                    - generic [ref=e1495]:
+                      - generic [ref=e1496]:
+                        - heading "Pancreatite — Cão (após estabilização)" [level=3] [ref=e1497]
+                        - generic [ref=e1498]:
+                          - generic [ref=e1499]: 🩺 Gastroenterologia
+                          - generic [ref=e1500]: cão
+                      - button "Favoritar Pancreatite — Cão (após estabilização)" [ref=e1501] [cursor=pointer]
+                    - generic [ref=e1504]:
+                      - paragraph [ref=e1505]: Medicamentos do modelo
+                      - generic [ref=e1509]:
+                        - generic [ref=e1510]: Maropitant
+                        - generic [ref=e1511]: Ondansetrona
+                    - generic [ref=e1512]:
+                      - generic [ref=e1513]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1514] [cursor=pointer]
+                  - article [ref=e1515]:
+                    - generic [ref=e1516]:
+                      - generic [ref=e1517]:
+                        - heading "Pancreatite — Gato (após estabilização)" [level=3] [ref=e1518]
+                        - generic [ref=e1519]:
+                          - generic [ref=e1520]: 🩺 Gastroenterologia
+                          - generic [ref=e1521]: gato
+                      - button "Favoritar Pancreatite — Gato (após estabilização)" [ref=e1522] [cursor=pointer]
+                    - generic [ref=e1525]:
+                      - paragraph [ref=e1526]: Medicamentos do modelo
+                      - generic [ref=e1530]:
+                        - generic [ref=e1531]: Maropitant
+                        - generic [ref=e1532]: Ondansetrona
+                        - generic [ref=e1533]: Buprenorfina
+                    - generic [ref=e1534]:
+                      - generic [ref=e1535]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1536] [cursor=pointer]
+                  - article [ref=e1537]:
+                    - generic [ref=e1538]:
+                      - generic [ref=e1539]:
+                        - heading "Tríade felina — tratamento individualizado" [level=3] [ref=e1540]
+                        - generic [ref=e1541]:
+                          - generic [ref=e1542]: 🩺 Gastroenterologia
+                          - generic [ref=e1543]: gato
+                      - button "Favoritar Tríade felina — tratamento individualizado" [ref=e1544] [cursor=pointer]
+                    - generic [ref=e1547]:
+                      - paragraph [ref=e1548]: Medicamentos do modelo
+                      - generic [ref=e1552]:
+                        - generic [ref=e1553]: Maropitant
+                        - generic [ref=e1554]: Ondansetrona
+                        - generic [ref=e1555]: Buprenorfina
+                        - generic [ref=e1556]: Ácido ursodesoxicólico
+                        - generic [ref=e1557]: "+1"
+                    - generic [ref=e1558]:
+                      - generic [ref=e1559]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1560] [cursor=pointer]
+                  - article [ref=e1561]:
+                    - generic [ref=e1562]:
+                      - generic [ref=e1563]:
+                        - heading "Diabetes mellitus — Cão — Caninsulin" [level=3] [ref=e1564]
+                        - generic [ref=e1565]:
+                          - generic [ref=e1566]: 🧬 Endocrinologia
+                          - generic [ref=e1567]: cão
+                      - button "Favoritar Diabetes mellitus — Cão — Caninsulin" [ref=e1568] [cursor=pointer]
+                    - generic [ref=e1571]:
+                      - paragraph [ref=e1572]: Medicamentos do modelo
+                      - generic [ref=e1576]: Insulina lente suína — Caninsulin U-40
+                    - generic [ref=e1578]:
+                      - generic [ref=e1579]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1580] [cursor=pointer]
+                  - article [ref=e1581]:
+                    - generic [ref=e1582]:
+                      - generic [ref=e1583]:
+                        - heading "Diabetes mellitus — Cão — Insulina NPH" [level=3] [ref=e1584]
+                        - generic [ref=e1585]:
+                          - generic [ref=e1586]: 🧬 Endocrinologia
+                          - generic [ref=e1587]: cão
+                      - button "Favoritar Diabetes mellitus — Cão — Insulina NPH" [ref=e1588] [cursor=pointer]
+                    - generic [ref=e1591]:
+                      - paragraph [ref=e1592]: Medicamentos do modelo
+                      - generic [ref=e1596]: Insulina NPH U-100
+                    - generic [ref=e1598]:
+                      - generic [ref=e1599]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1600] [cursor=pointer]
+                  - article [ref=e1601]:
+                    - generic [ref=e1602]:
+                      - generic [ref=e1603]:
+                        - heading "Diabetes mellitus — Cão — Glargina U-100" [level=3] [ref=e1604]
+                        - generic [ref=e1605]:
+                          - generic [ref=e1606]: 🧬 Endocrinologia
+                          - generic [ref=e1607]: cão
+                      - button "Favoritar Diabetes mellitus — Cão — Glargina U-100" [ref=e1608] [cursor=pointer]
+                    - generic [ref=e1611]:
+                      - paragraph [ref=e1612]: Medicamentos do modelo
+                      - generic [ref=e1616]: Insulina glargina U-100
+                    - generic [ref=e1618]:
+                      - generic [ref=e1619]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1620] [cursor=pointer]
+                  - article [ref=e1621]:
+                    - generic [ref=e1622]:
+                      - generic [ref=e1623]:
+                        - heading "Diabetes mellitus — Cão — Toujeo U-300" [level=3] [ref=e1624]
+                        - generic [ref=e1625]:
+                          - generic [ref=e1626]: 🧬 Endocrinologia
+                          - generic [ref=e1627]: cão
+                      - button "Favoritar Diabetes mellitus — Cão — Toujeo U-300" [ref=e1628] [cursor=pointer]
+                    - generic [ref=e1631]:
+                      - paragraph [ref=e1632]: Medicamentos do modelo
+                      - generic [ref=e1636]: Insulina glargina U-300 — Toujeo
+                    - generic [ref=e1638]:
+                      - generic [ref=e1639]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1640] [cursor=pointer]
+                  - article [ref=e1641]:
+                    - generic [ref=e1642]:
+                      - generic [ref=e1643]:
+                        - heading "Diabetes mellitus — Gato — Glargina U-100" [level=3] [ref=e1644]
+                        - generic [ref=e1645]:
+                          - generic [ref=e1646]: 🧬 Endocrinologia
+                          - generic [ref=e1647]: gato
+                      - button "Favoritar Diabetes mellitus — Gato — Glargina U-100" [ref=e1648] [cursor=pointer]
+                    - generic [ref=e1651]:
+                      - paragraph [ref=e1652]: Medicamentos do modelo
+                      - generic [ref=e1656]: Insulina glargina U-100
+                    - generic [ref=e1658]:
+                      - generic [ref=e1659]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1660] [cursor=pointer]
+                  - article [ref=e1661]:
+                    - generic [ref=e1662]:
+                      - generic [ref=e1663]:
+                        - heading "Diabetes mellitus — Gato — Toujeo U-300" [level=3] [ref=e1664]
+                        - generic [ref=e1665]:
+                          - generic [ref=e1666]: 🧬 Endocrinologia
+                          - generic [ref=e1667]: gato
+                      - button "Favoritar Diabetes mellitus — Gato — Toujeo U-300" [ref=e1668] [cursor=pointer]
+                    - generic [ref=e1671]:
+                      - paragraph [ref=e1672]: Medicamentos do modelo
+                      - generic [ref=e1676]: Insulina glargina U-300 — Toujeo
+                    - generic [ref=e1678]:
+                      - generic [ref=e1679]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1680] [cursor=pointer]
+                  - article [ref=e1681]:
+                    - generic [ref=e1682]:
+                      - generic [ref=e1683]:
+                        - heading "Diabetes mellitus — Gato — Caninsulin" [level=3] [ref=e1684]
+                        - generic [ref=e1685]:
+                          - generic [ref=e1686]: 🧬 Endocrinologia
+                          - generic [ref=e1687]: gato
+                      - button "Favoritar Diabetes mellitus — Gato — Caninsulin" [ref=e1688] [cursor=pointer]
+                    - generic [ref=e1691]:
+                      - paragraph [ref=e1692]: Medicamentos do modelo
+                      - generic [ref=e1696]: Insulina lente suína — Caninsulin U-40
+                    - generic [ref=e1698]:
+                      - generic [ref=e1699]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1700] [cursor=pointer]
+                  - article [ref=e1701]:
+                    - generic [ref=e1702]:
+                      - generic [ref=e1703]:
+                        - heading "Trauma vertebromedular — Cão" [level=3] [ref=e1704]
+                        - generic [ref=e1705]:
+                          - generic [ref=e1706]: 🧠 Neurologia
+                          - generic [ref=e1707]: cão
+                      - button "Favoritar Trauma vertebromedular — Cão" [ref=e1708] [cursor=pointer]
+                    - generic [ref=e1711]:
+                      - paragraph [ref=e1712]: Medicamentos do modelo
+                      - generic [ref=e1716]:
+                        - generic [ref=e1717]: Gabapentina
+                        - generic [ref=e1718]: Tramadol
+                        - generic [ref=e1719]: Dipirona
+                        - generic [ref=e1720]: Carprofeno
+                        - generic [ref=e1721]: "+1"
+                    - generic [ref=e1722]:
+                      - generic [ref=e1723]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1724] [cursor=pointer]
+                  - article [ref=e1725]:
+                    - generic [ref=e1726]:
+                      - generic [ref=e1727]:
+                        - heading "Trauma vertebromedular — Gato" [level=3] [ref=e1728]
+                        - generic [ref=e1729]:
+                          - generic [ref=e1730]: 🧠 Neurologia
+                          - generic [ref=e1731]: gato
+                      - button "Favoritar Trauma vertebromedular — Gato" [ref=e1732] [cursor=pointer]
+                    - generic [ref=e1735]:
+                      - paragraph [ref=e1736]: Medicamentos do modelo
+                      - generic [ref=e1740]:
+                        - generic [ref=e1741]: Gabapentina
+                        - generic [ref=e1742]: Tramadol
+                        - generic [ref=e1743]: Dipirona
+                        - generic [ref=e1744]: Robenacoxibe
+                    - generic [ref=e1745]:
+                      - generic [ref=e1746]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1747] [cursor=pointer]
+                  - article [ref=e1748]:
+                    - generic [ref=e1749]:
+                      - generic [ref=e1750]:
+                        - heading "Hérnia de disco — Cão (manejo conservador)" [level=3] [ref=e1751]
+                        - generic [ref=e1752]:
+                          - generic [ref=e1753]: 🧠 Neurologia
+                          - generic [ref=e1754]: cão
+                      - button "Favoritar Hérnia de disco — Cão (manejo conservador)" [ref=e1755] [cursor=pointer]
+                    - generic [ref=e1758]:
+                      - paragraph [ref=e1759]: Medicamentos do modelo
+                      - generic [ref=e1763]:
+                        - generic [ref=e1764]: Carprofeno
+                        - generic [ref=e1765]: Meloxicam
+                        - generic [ref=e1766]: Gabapentina
+                        - generic [ref=e1767]: Pregabalina
+                        - generic [ref=e1768]: "+2"
+                    - generic [ref=e1769]:
+                      - generic [ref=e1770]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1771] [cursor=pointer]
+                  - article [ref=e1772]:
+                    - generic [ref=e1773]:
+                      - generic [ref=e1774]:
+                        - heading "Síndrome vestibular — Cão" [level=3] [ref=e1775]
+                        - generic [ref=e1776]:
+                          - generic [ref=e1777]: 🧠 Neurologia
+                          - generic [ref=e1778]: cão
+                      - button "Favoritar Síndrome vestibular — Cão" [ref=e1779] [cursor=pointer]
+                    - generic [ref=e1782]:
+                      - paragraph [ref=e1783]: Medicamentos do modelo
+                      - generic [ref=e1787]:
+                        - generic [ref=e1788]: Maropitant
+                        - generic [ref=e1789]: Ondansetrona
+                        - generic [ref=e1790]: Meclizina
+                    - generic [ref=e1791]:
+                      - generic [ref=e1792]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1793] [cursor=pointer]
+                  - article [ref=e1794]:
+                    - generic [ref=e1795]:
+                      - generic [ref=e1796]:
+                        - heading "Síndrome vestibular — Gato" [level=3] [ref=e1797]
+                        - generic [ref=e1798]:
+                          - generic [ref=e1799]: 🧠 Neurologia
+                          - generic [ref=e1800]: gato
+                      - button "Favoritar Síndrome vestibular — Gato" [ref=e1801] [cursor=pointer]
+                    - generic [ref=e1804]:
+                      - paragraph [ref=e1805]: Medicamentos do modelo
+                      - generic [ref=e1809]:
+                        - generic [ref=e1810]: Maropitant
+                        - generic [ref=e1811]: Ondansetrona
+                    - generic [ref=e1812]:
+                      - generic [ref=e1813]: Revise antes de emitir
+                      - button "Usar modelo" [ref=e1814] [cursor=pointer]

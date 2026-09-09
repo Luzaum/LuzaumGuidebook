@@ -173,6 +173,23 @@ export interface FoodItem {
   neuterStatus?: 'NEUTERED' | 'INTACT' | 'ANY'
   isTherapeutic?: boolean
   therapeuticIndications?: string[]
+  dietClass?: 'maintenance' | 'therapeutic' | 'coadjuvant_complete' | 'treat' | 'supplemental'
+  productStatus?: 'active' | 'consolidated_alias' | 'blocked_pending_data' | 'blocked_license_review' | 'blocked_pending_exact_sku' | 'discontinued' | 'newly_added_pending_data'
+  clinicalUseStatus?: 'active' | 'reference_only' | 'blocked_pending_data' | 'blocked_license_review' | 'blocked_pending_exact_sku' | 'consolidated_alias'
+  isCompleteAndBalanced?: boolean
+  productionLicenseOk?: boolean
+  licenseType?: string
+  scientificName?: string
+  aliases?: string[]
+  canonicalTargetId?: string
+  brand?: string
+  manufacturer?: string
+  officialSourceUrl?: string
+  productUrl?: string
+  photoUrl?: string
+  imageUrl?: string
+  dataOrigin?: string
+  dryMatterDerivation?: string
 }
 
 export interface RequirementProfile {

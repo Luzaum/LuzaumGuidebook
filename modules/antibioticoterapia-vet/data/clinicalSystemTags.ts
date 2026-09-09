@@ -64,10 +64,12 @@ export const CLINICAL_SYSTEM_TAGS: ClinicalSystemTagDef[] = [
 export const DISEASE_SYSTEM_KEY_TO_TAG_IDS: Record<string, ClinicalSystemTagId[]> = {
   'Sistema Respiratório': ['pneumo'],
   'Sistema Reprodutor': ['reprodutor'],
+  'Sistema Gastrointestinal e Digestivo': ['gastro', 'odonto'],
   'Sepse e instabilidade sistémica': ['vascular_sepse'],
   'Sistema Urinário': ['urinario', 'renal'],
-  /** Profilaxia e cenários cirúrgicos (alinhado v2 perioperatorio + CCIH). */
-  Perioperatório: ['cirurgia'],
+  'Pele, Tecidos Moles e Musculoesquelético': ['dermato', 'ortopedico'],
+  'Outras Infecções e Zoonoses': ['vascular_sepse', 'neuro'],
+  'Perioperatório': ['cirurgia'],
 }
 
 export function tagIdsForDiseaseSystemKey(systemKey: string): ClinicalSystemTagId[] {

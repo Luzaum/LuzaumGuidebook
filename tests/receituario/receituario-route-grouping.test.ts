@@ -4,10 +4,25 @@ import {
   getRouteCategory,
   groupMedicationBlocksByRoute,
   formatGroupedPrescriptionBlocks,
+  formatPrescriptionPlainLanguage,
   insertMedicationIntoPrescriptionText,
+  prescriptionReadyDuration,
   removeMedicationFromPrescriptionText,
   updateMedicationInPrescriptionText,
 } from '../../modules/consulta-vet/utils/receituarioMedication';
+
+test('prescriptionReadyDuration aceita tempo objetivo e rejeita nota clínica vaga', () => {
+  assert.equal(prescriptionReadyDuration('7 dias'), '7 dias');
+  assert.equal(prescriptionReadyDuration('Uso contínuo'), 'Uso contínuo');
+  assert.equal(prescriptionReadyDuration('Até reavaliação clínica'), 'Até reavaliação clínica');
+  assert.equal(prescriptionReadyDuration('Curto prazo; associar analgesia multimodal adequada.'), '');
+  assert.equal(prescriptionReadyDuration('Curto prazo.'), '');
+});
+
+test('linguagem do tutor expande a via sem alterar algarismo romano clínico', () => {
+  assert.equal(formatPrescriptionPlainLanguage('Administrar por via IV, q8h.'), 'Administrar por via intravenosa, a cada 8 horas.');
+  assert.equal(formatPrescriptionPlainLanguage('Doença renal em estágio IV.'), 'Doença renal em estágio IV.');
+});
 
 test('getRouteCategory classifica vias de uso corretamente', () => {
   assert.equal(getRouteCategory('oral'), 'USO ORAL');
@@ -112,4 +127,46 @@ RECOMENDAÇÕES DA DOENÇA
   assert.doesNotMatch(result, /AMOXICILINA/);
   assert.match(result, /1\. DIPIRONA/);
   assert.match(result, /RECOMENDAÇÕES DA DOENÇA/);
+});
+
+test('vias de receituário ambulatorial não contêm intravenosa e normalizam VO para oral', async () => {
+  const { OUTPATIENT_PRESCRIPTION_ROUTES, normalizePrescriptionRouteToOption, formatPracticalAmountWithFraction } = await import('../../modules/consulta-vet/utils/receituarioMedication');
+
+  // Não pode conter IV/EV/intravenosa
+  const values = OUTPATIENT_PRESCRIPTION_ROUTES.map((item: { value: string }) => item.value.toLowerCase());
+  const labels = OUTPATIENT_PRESCRIPTION_ROUTES.map((item: { label: string }) => item.label.toLowerCase());
+  assert.ok(!values.includes('intravenosa'), 'não deve conter intravenosa em value');
+  assert.ok(!values.includes('iv'), 'não deve conter iv em value');
+  assert.ok(!values.includes('ev'), 'não deve conter ev em value');
+  assert.ok(!labels.some((l: string) => l.includes('intravenosa')), 'não deve conter intravenosa em labels');
+
+  // Contém somente vias de uso domiciliar
+  assert.ok(values.includes('oral'));
+  assert.ok(values.includes('tópica'));
+  assert.ok(values.includes('otológica'));
+  assert.ok(values.includes('oftálmica'));
+  assert.ok(values.includes('nasal'));
+  assert.ok(!values.includes('subcutânea'));
+  assert.ok(!values.includes('intramuscular'));
+  assert.ok(values.includes('inalatória'));
+  assert.ok(values.includes('transmucosa'));
+  assert.ok(values.includes('retal'));
+  assert.ok(values.includes('outra'));
+
+  // Normalização de siglas comuns como VO, PO, SC, IM
+  assert.equal(normalizePrescriptionRouteToOption('VO'), 'oral');
+  assert.equal(normalizePrescriptionRouteToOption('vo'), 'oral');
+  assert.equal(normalizePrescriptionRouteToOption('PO'), 'oral');
+  assert.equal(normalizePrescriptionRouteToOption('oral'), 'oral');
+  assert.equal(normalizePrescriptionRouteToOption('via oral'), 'oral');
+  assert.equal(normalizePrescriptionRouteToOption('SC'), 'subcutânea');
+  assert.equal(normalizePrescriptionRouteToOption('subcutânea'), 'subcutânea');
+  assert.equal(normalizePrescriptionRouteToOption('IM'), 'intramuscular');
+  assert.equal(normalizePrescriptionRouteToOption('otológica'), 'otológica');
+
+  // Frações de comprimidos
+  assert.equal(formatPracticalAmountWithFraction(0.25, 'comprimido'), '0,25 comprimido (1/4 de comprimido)');
+  assert.equal(formatPracticalAmountWithFraction(0.5, 'comprimido'), '0,5 comprimido (1/2 comprimido)');
+  assert.equal(formatPracticalAmountWithFraction(0.75, 'comprimido'), '0,75 comprimido (3/4 de comprimido)');
+  assert.equal(formatPracticalAmountWithFraction(1, 'comprimido'), '1 comprimido');
 });

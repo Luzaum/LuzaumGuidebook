@@ -2356,12 +2356,83 @@ input[type="range"]:focus::-moz-range-thumb {
   will-change: transform;
 }
 
+/* ── Hero Neon Light Border Contour ── */
+@keyframes heroNeonSweep {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-neon-border-track {
+  position: absolute;
+  inset: -1.5px;
+  border-radius: 1rem;
+  padding: 1.5px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  filter: drop-shadow(0 0 6px rgba(56, 189, 248, 0.8)) drop-shadow(0 0 14px rgba(14, 165, 233, 0.4));
+}
+
+@media (min-width: 640px) {
+  .hero-neon-border-track {
+    border-radius: 1.5rem;
+  }
+}
+
+.hero-neon-beam {
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 180deg,
+    rgba(14, 165, 233, 0.08) 220deg,
+    rgba(56, 189, 248, 0.45) 270deg,
+    rgba(0, 210, 255, 0.95) 325deg,
+    rgba(224, 242, 254, 1) 346deg,
+    rgba(56, 189, 248, 0.85) 355deg,
+    transparent 360deg
+  );
+  animation: heroNeonSweep 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+.hero-neon-glow {
+  position: absolute;
+  inset: -150%;
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    transparent 0deg,
+    transparent 200deg,
+    rgba(56, 189, 248, 0.25) 270deg,
+    rgba(0, 210, 255, 0.7) 330deg,
+    rgba(186, 230, 253, 0.9) 346deg,
+    rgba(56, 189, 248, 0.6) 355deg,
+    transparent 360deg
+  );
+  animation: heroNeonSweep 7s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-image-moving {
     animation: none;
     transform: none;
   }
+  .hero-neon-beam,
+  .hero-neon-glow {
+    animation: none;
+    display: none;
+  }
 }
+
 @media print {
   @page {
     size: A4 portrait;

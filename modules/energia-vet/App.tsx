@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link, Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { Toaster } from 'sonner';
-import { AnimatePresence, motion } from 'framer-motion';
 import {
   Calculator,
   ChevronRight,
   FileText,
-  Fish,
   Home,
   Info,
   Stethoscope,
@@ -172,40 +170,28 @@ function Layout({ children }: { children: React.ReactNode }) {
 }
 
 function AnimatedRoutes() {
-  const location = useLocation();
-  const pathSegment = location.pathname.replace(BASE_ROUTE, '').split('/').filter(Boolean)[0] || 'dashboard';
-
   return (
-    <AnimatePresence mode="wait">
-      <motion.div
-        key={pathSegment}
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -6 }}
-        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-        className="w-full"
-      >
-        <Routes>
-          <Route index element={<Dashboard />} />
-          <Route path="new/*" element={<NewCalculation />} />
-          <Route path="patients" element={<Patients />} />
-          <Route path="patients/:patientKey" element={<PatientHistoryDetail />} />
-          <Route path="commercial" element={<CommercialDietsPage />} />
-          <Route path="racoes" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
-          <Route path="racoes-comerciais" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
-          <Route path="hospitalized" element={<Hospitalized />} />
-          <Route path="internados" element={<Navigate to={`${BASE_ROUTE}/hospitalized`} replace />} />
-          <Route path="omega3" element={<HumanOmega3Page />} />
-          <Route path="suplementos" element={<SupplementCatalogPage />} />
-          <Route path="bcs" element={<BcsGuide />} />
-          <Route path="foods" element={<Foods />} />
-          <Route path="foods/natural" element={<NaturalFoods />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="reports/:reportId" element={<ReportDetail />} />
-          <Route path="*" element={<Navigate to={BASE_ROUTE} replace />} />
-        </Routes>
-      </motion.div>
-    </AnimatePresence>
+    <div className="w-full">
+      <Routes>
+        <Route index element={<Dashboard />} />
+        <Route path="new/*" element={<NewCalculation />} />
+        <Route path="patients" element={<Patients />} />
+        <Route path="patients/:patientKey" element={<PatientHistoryDetail />} />
+        <Route path="commercial" element={<CommercialDietsPage />} />
+        <Route path="racoes" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
+        <Route path="racoes-comerciais" element={<Navigate to={`${BASE_ROUTE}/commercial`} replace />} />
+        <Route path="hospitalized" element={<Hospitalized />} />
+        <Route path="internados" element={<Navigate to={`${BASE_ROUTE}/hospitalized`} replace />} />
+        <Route path="omega3" element={<HumanOmega3Page />} />
+        <Route path="suplementos" element={<SupplementCatalogPage />} />
+        <Route path="bcs" element={<BcsGuide />} />
+        <Route path="foods" element={<Foods />} />
+        <Route path="foods/natural" element={<NaturalFoods />} />
+        <Route path="reports" element={<Reports />} />
+        <Route path="reports/:reportId" element={<ReportDetail />} />
+        <Route path="*" element={<Navigate to={BASE_ROUTE} replace />} />
+      </Routes>
+    </div>
   );
 }
 

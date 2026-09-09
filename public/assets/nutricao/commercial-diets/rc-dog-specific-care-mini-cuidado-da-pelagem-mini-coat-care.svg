@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa"/>
+      <stop offset="100%" stop-color="#e9ecef"/>
+    </linearGradient>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2001a"/>
+      <stop offset="100%" stop-color="#e2001add"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="10" stdDeviation="15" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  <rect width="600" height="600" fill="url(#bg)"/>
+  <rect x="120" y="80" width="360" height="440" rx="24" fill="#ffffff" filter="url(#shadow)"/>
+  <rect x="120" y="80" width="360" height="24" rx="12" fill="url(#brandGrad)"/>
+  <rect x="140" y="130" width="320" height="40" rx="8" fill="#e2001a15"/>
+  <text x="300" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="bold" fill="#e2001a" text-anchor="middle" letter-spacing="2">ROYAL CANIN</text>
+  <foreignObject x="140" y="190" width="320" height="180">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 16px; font-weight: 600; color: #212529; text-align: center; line-height: 1.4; display: flex; align-items: center; justify-content: center; height: 100%;">
+      Royal Canin Mini Cuidado da Pelagem / Mini Coat Care
+    </div>
+  </foreignObject>
+  <rect x="230" y="400" width="140" height="32" rx="16" fill="#e2001a"/>
+  <text x="300" y="421" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" letter-spacing="1">DRY</text>
+  <text x="300" y="480" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#6c757d" text-anchor="middle">NutriçãoVET • ConsultaVET Oficial</text>
+</svg>

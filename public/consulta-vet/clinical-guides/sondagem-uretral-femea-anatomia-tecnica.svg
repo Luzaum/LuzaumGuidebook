@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" fill="none" role="img" aria-labelledby="title-sondagem desc-sondagem">
+  <title id="title-sondagem">Sondagem Uretral em Fêmeas (Cadelas e Gatas) — Anatomia e Técnicas</title>
+  <desc id="desc-sondagem">Diagrama anatômico sagital do trato urogenital de fêmeas, técnica do dedo como teto na cadela, técnica dos dois cateteres para fêmeas menores de 10 kg e sondagem felina com tração vulvar e otoscópio.</desc>
+  
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="urineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <linearGradient id="urethraGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="vaginaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9333ea" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <filter id="boxShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .pulse-dot { animation: pulseAnim 2s infinite ease-in-out; transform-origin: center; }
+    @keyframes pulseAnim {
+      0% { r: 4px; opacity: 0.9; }
+      50% { r: 10px; opacity: 0.3; }
+      100% { r: 14px; opacity: 0; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="880" height="600" rx="20" fill="url(#bgGrad)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Grid overlay -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <path d="M0,75 L880,75 M0,150 L880,150 M0,225 L880,225 M0,300 L880,300 M0,375 L880,375 M0,450 L880,450 M0,525 L880,525" />
+    <path d="M110,0 L110,600 M220,0 L220,600 M330,0 L330,600 M440,0 L440,600 M550,0 L550,600 M660,0 L660,600 M770,0 L770,600" />
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(30, 26)">
+    <rect x="0" y="0" width="180" height="22" rx="11" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="1" stroke-opacity="0.4" />
+    <text x="90" y="15" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700" letter-spacing="0.1em" class="font-sans">PROCEDIMENTO UROLÓGICO</text>
+    
+    <text x="0" y="44" fill="#f8fafc" font-size="20" font-weight="800" class="font-sans">Sondagem Uretral em Fêmeas — Anatomia e Vias de Abordagem</text>
+    <text x="0" y="62" fill="#94a3b8" font-size="12" class="font-sans">Topografia vestibulouretral, técnica digital ("dedo teto"), método dos dois cateteres e abordagem felina</text>
+  </g>
+
+  <!-- PANEL 1: ANATOMIA SAGITAL E BIFURCAÇÃO (Top Left) -->
+  <g transform="translate(30, 100)">
+    <rect width="400" height="230" rx="14" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadow)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#38bdf8" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="800" class="font-sans">1</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Anatomia Sagital: Vestíbulo, Papila e Vagina</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">O meato uretral situa-se no assoalho ventral, cranial à fossa clitoridiana</text>
+
+    <g transform="translate(20, 52)">
+      <path d="M 10 120 C 60 120, 110 135, 170 135 C 230 135, 290 125, 340 100" fill="none" stroke="#334155" stroke-width="1.5" stroke-dasharray="4,4" />
+      <text x="335" y="94" fill="#64748b" font-size="9" class="font-sans">Sínfise púbica</text>
+
+      <ellipse cx="285" cy="116" rx="40" ry="24" fill="#f59e0b" fill-opacity="0.12" stroke="#f59e0b" stroke-width="2" />
+      <text x="285" y="114" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700" class="font-sans">Bexiga</text>
+      <text x="285" y="125" text-anchor="middle" fill="#fef08a" font-size="8.5" class="font-sans">(Lúmen vesical)</text>
+
+      <!-- Urethra (Ventral) -->
+      <path d="M 145 108 C 185 108, 215 112, 245 116" fill="none" stroke="#0284c7" stroke-width="5" stroke-linecap="round" />
+      <path d="M 145 108 C 185 108, 215 112, 245 116" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+
+      <!-- Vagina (Dorsal) -->
+      <path d="M 140 82 C 180 68, 230 58, 300 52" fill="none" stroke="#9333ea" stroke-width="6" stroke-linecap="round" stroke-dasharray="2,2" />
+      <path d="M 140 82 C 180 68, 230 58, 300 52" fill="none" stroke="#c084fc" stroke-width="2" stroke-linecap="round" />
+      <text x="285" y="45" fill="#c084fc" font-size="9" font-weight="600" class="font-sans">Canal Vaginal (DORSAL)</text>
+
+      <!-- Vestibule Entrance -->
+      <path d="M 15 98 C 55 98, 100 92, 140 82" fill="none" stroke="#64748b" stroke-width="4" />
+      <path d="M 15 98 C 55 103, 100 113, 145 108" fill="none" stroke="#64748b" stroke-width="4" />
+
+      <!-- Vulva Lips -->
+      <path d="M 12 78 C 22 93, 22 113, 12 128" fill="none" stroke="#f43f5e" stroke-width="4" stroke-linecap="round" />
+      <text x="8" y="70" text-anchor="middle" fill="#f43f5e" font-size="9" font-weight="700" class="font-sans">Vulva</text>
+
+      <!-- Clitoral Fossa (trap!) -->
+      <circle cx="45" cy="110" r="3" fill="#e11d48" />
+      <text x="45" y="128" text-anchor="middle" fill="#fda4af" font-size="7.5" class="font-sans">Fossa clitoridiana</text>
+      <text x="45" y="137" text-anchor="middle" fill="#f43f5e" font-size="7" font-weight="600" class="font-sans">(Armadilha! Fundo cego)</text>
+
+      <!-- Urethral Papilla / Meatus -->
+      <g transform="translate(145, 108)">
+        <circle cx="0" cy="0" r="10" fill="#38bdf8" fill-opacity="0.2" class="pulse-dot" />
+        <circle cx="0" cy="0" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5" />
+      </g>
+      <line x1="145" y1="108" x2="135" y2="148" stroke="#38bdf8" stroke-width="1" />
+      <text x="135" y="158" text-anchor="middle" fill="#38bdf8" font-size="9" font-weight="800" class="font-sans">Óstio / Papila Uretral</text>
+      <text x="135" y="168" text-anchor="middle" fill="#94a3b8" font-size="8" class="font-sans">(No assoalho ventral)</text>
+
+      <g transform="translate(200, 138)">
+        <rect x="0" y="0" width="155" height="22" rx="4" fill="#0284c7" fill-opacity="0.2" stroke="#0284c7" stroke-width="0.8" />
+        <text x="8" y="15" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">✓ Uretra (Ventral): CORRETO</text>
+      </g>
+      <g transform="translate(200, 164)">
+        <rect x="0" y="0" width="155" height="20" rx="4" fill="#9333ea" fill-opacity="0.2" stroke="#9333ea" stroke-width="0.8" />
+        <text x="8" y="14" fill="#c084fc" font-size="8.5" font-weight="600" class="font-sans">✗ Vagina (Dorsal): Falso trajeto</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 2: TÉCNICA DIGITAL NA CADELA (Top Right) -->
+  <g transform="translate(450, 100)">
+    <rect width="400" height="230" rx="14" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadow)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#2dd4bf" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#2dd4bf" font-size="13" font-weight="800" class="font-sans">2</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Técnica Digital: &quot;Dedo Indicador como Teto&quot;</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Bloqueio físico da vagina dorsal + condução ventral da sonda</text>
+
+    <g transform="translate(20, 46)">
+      <!-- Finger entering from vulva -->
+      <path d="M 10 98 C 45 98, 90 95, 140 85 C 165 80, 175 90, 160 98 C 120 108, 80 110, 10 108 Z" fill="#fdba74" fill-opacity="0.35" stroke="#f97316" stroke-width="1.8" />
+      <text x="130" y="72" text-anchor="middle" fill="#fb923c" font-size="9" font-weight="700" class="font-sans">Dedo Indicador (TETO)</text>
+      <text x="130" y="62" text-anchor="middle" fill="#fdba74" font-size="8" class="font-sans">Bloqueia canal vaginal</text>
+
+      <!-- Papilla on floor -->
+      <ellipse cx="145" cy="122" rx="9" ry="4" fill="#38bdf8" stroke="#0284c7" stroke-width="1.2" />
+      <circle cx="145" cy="122" r="2.5" fill="#ffffff" />
+      <text x="145" y="139" text-anchor="middle" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">Papila uretral</text>
+
+      <!-- Catheter passing under finger -->
+      <path d="M 5 122 C 50 122, 100 122, 145 122" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round" />
+      <path d="M 145 122 C 180 122, 230 119, 290 116" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="4,3" stroke-linecap="round" />
+      <polygon points="175,119 168,115 168,123" fill="#22c55e" />
+      <text x="50" y="138" fill="#4ade80" font-size="8.5" font-weight="700" class="font-sans">Sonda avança sob a polpa</text>
+
+      <!-- Alert Box inside panel -->
+      <g transform="translate(195, 55)">
+        <rect width="165" height="78" rx="8" fill="#0f172a" fill-opacity="0.95" stroke="#ef4444" stroke-width="1" />
+        <text x="8" y="16" fill="#ef4444" font-size="9" font-weight="800" class="font-sans">⚠️ REGRA DO ERRO:</text>
+        <text x="8" y="30" fill="#f87171" font-size="8.5" class="font-sans">• Sonda passou além do dedo</text>
+        <text x="14" y="42" fill="#fca5a5" font-size="8.5" class="font-sans">sem resistência? Foi para Vagina!</text>
+        <text x="8" y="56" fill="#94a3b8" font-size="8" class="font-sans">• Recue 3 cm e reposicione</text>
+        <text x="14" y="68" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">estritamente no assoalho ventral.</text>
+      </g>
+
+      <g transform="translate(5, 146)">
+        <rect width="360" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="0.8" />
+        <text x="8" y="15" fill="#94a3b8" font-size="8.5" class="font-sans"><tspan fill="#2dd4bf" font-weight="700">Sensação tátil:</tspan> a ponta &quot;cai/escorrega&quot; no orifício e a resistência cede imediatamente.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 3: TÉCNICA DOS DOIS CATETERES (<10 kg) (Bottom Left) -->
+  <g transform="translate(30, 345)">
+    <rect width="400" height="230" rx="14" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadow)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#a855f7" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#a855f7" font-size="13" font-weight="800" class="font-sans">3</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Técnica dos Dois Cateteres (&lt;10 kg / Gatas)</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Dornbusch et al. (JAVMA) — Cateter vaginal oclui o canal dorsal</text>
+
+    <g transform="translate(20, 50)">
+      <path d="M 10 65 C 50 70, 100 70, 150 50 L 240 35" fill="none" stroke="#ef4444" stroke-width="6" stroke-linecap="round" />
+      <text x="150" y="25" fill="#f87171" font-size="8.5" font-weight="700" class="font-sans">Cateter 1 (Vaginal): 18 Fr (cão) / 10 Fr (gato)</text>
+      <text x="10" y="45" fill="#fca5a5" font-size="8" font-weight="700" class="font-sans">▲ Tracionar dorsalmente</text>
+
+      <!-- Catheter 2: Urinary -->
+      <path d="M 10 102 C 50 104, 95 108, 140 114" fill="none" stroke="#38bdf8" stroke-width="3.2" stroke-linecap="round" />
+      <path d="M 140 114 L 240 114" fill="none" stroke="#38bdf8" stroke-width="3.2" stroke-linecap="round" stroke-dasharray="3,3" />
+      <circle cx="140" cy="114" r="3.5" fill="#0284c7" stroke="#ffffff" stroke-width="1" />
+      <text x="140" y="128" text-anchor="middle" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">Óstio uretral</text>
+
+      <g transform="translate(5, 136)">
+        <rect width="225" height="22" rx="4" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="0.8" />
+        <text x="8" y="15" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">Cateter 2 (Urinário): 8 Fr (cão) / 3.5–5 Fr (gato)</text>
+      </g>
+
+      <!-- Evidence Stat Box -->
+      <g transform="translate(245, 42)">
+        <rect width="115" height="95" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1" />
+        <text x="57" y="18" text-anchor="middle" fill="#c084fc" font-size="9" font-weight="800" class="font-sans">EVIDÊNCIA CLÍNICA</text>
+        <text x="57" y="40" text-anchor="middle" fill="#38bdf8" font-size="17" font-weight="900" class="font-sans">79,5%</text>
+        <text x="57" y="55" text-anchor="middle" fill="#94a3b8" font-size="7.5" class="font-sans">Taxa de sucesso com 2 cateteres</text>
+        <text x="57" y="69" text-anchor="middle" fill="#64748b" font-size="7.5" class="font-sans">vs. 43,6% tradicional</text>
+        <text x="57" y="83" text-anchor="middle" fill="#fbbf24" font-size="7.5" font-weight="700" class="font-sans">(8/9 em iniciantes!)</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 4: FELINAS & VISUALIZAÇÃO COM OTOSCÓPIO (Bottom Right) -->
+  <g transform="translate(450, 345)">
+    <rect width="400" height="230" rx="14" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadow)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#f59e0b" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="800" class="font-sans">4</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Gatas: Técnica às Cegas e com Otoscópio</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Tração vulvar caudal retifica o canal; otoscópio expõe a papila</text>
+
+    <g transform="translate(20, 50)">
+      <g transform="translate(0, 0)">
+        <rect x="0" y="2" width="170" height="102" rx="8" fill="#1e293b" stroke="#475569" stroke-width="0.8" />
+        <text x="10" y="20" fill="#fbbf24" font-size="9" font-weight="700" class="font-sans">TÉCNICA ÀS CEGAS (GATA)</text>
+        
+        <path d="M 15 42 C 40 42, 60 40, 85 35" fill="none" stroke="#64748b" stroke-width="1.5" />
+        <path d="M 15 62 C 40 62, 60 65, 85 70" fill="none" stroke="#64748b" stroke-width="1.5" />
+        
+        <polygon points="10,52 18,47 18,57" fill="#f43f5e" />
+        <text x="10" y="82" fill="#fda4af" font-size="7.5" font-weight="600" class="font-sans">Tração vulvar caudal</text>
+        <text x="10" y="93" fill="#94a3b8" font-size="7" class="font-sans">(retifica o vestíbulo)</text>
+
+        <line x1="25" y1="58" x2="80" y2="68" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" />
+        <text x="92" y="72" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">30–45° ventral</text>
+      </g>
+
+      <g transform="translate(185, 0)">
+        <rect x="0" y="2" width="175" height="102" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="0.8" />
+        <text x="10" y="20" fill="#38bdf8" font-size="9" font-weight="700" class="font-sans">VISUALIZAÇÃO / OTOSCÓPIO</text>
+
+        <polygon points="15,38 55,46 55,60 15,68" fill="#475569" stroke="#94a3b8" stroke-width="1" />
+        <polygon points="55,48 95,42 95,64 55,58" fill="#fbbf24" fill-opacity="0.2" />
+        
+        <circle cx="95" cy="53" r="3.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1" />
+        <line x1="5" y1="53" x2="105" y2="53" stroke="#22c55e" stroke-width="1.8" stroke-dasharray="2,2" />
+        
+        <text x="10" y="82" fill="#94a3b8" font-size="7.5" class="font-sans">Cone esterilizado lubrificado</text>
+        <text x="10" y="93" fill="#4ade80" font-size="7.5" font-weight="600" class="font-sans">Inserção direta sob visão</text>
+      </g>
+
+      <g transform="translate(0, 116)">
+        <rect width="360" height="25" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="10" y="16" fill="#fbbf24" font-size="8.5" font-weight="600" class="font-sans">⚡ Regra de ouro:</text>
+        <text x="82" y="16" fill="#e2e8f0" font-size="8.5" class="font-sans">2 tentativas às cegas sem sucesso → use otoscópio ou 2 cateteres!</text>
+      </g>
+    </g>
+  </g>
+</svg>

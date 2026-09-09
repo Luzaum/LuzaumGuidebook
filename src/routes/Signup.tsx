@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
-import { getSession, signInWithGoogle, signInWithGoogleToken, signUp } from '../lib/auth'
+import { getSession, signInWithGoogle, signUp } from '../lib/auth'
 
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
   if (!target) return null
-  if (!target.startsWith('/')) return '/app'
+  if (!target.startsWith('/') || target.startsWith('//') || target.startsWith('/signup')) return '/hub'
   return target
 }
 
@@ -25,7 +25,7 @@ export default function Signup() {
       typeof (location.state as { from?: string } | null)?.from === 'string'
         ? normalizeTargetPath((location.state as { from?: string }).from)
         : null
-    return queryTarget ?? stateTarget ?? '/app'
+    return queryTarget ?? stateTarget ?? '/hub'
   }, [location.search, location.state])
 
   useEffect(() => {
@@ -59,27 +59,12 @@ export default function Signup() {
     setMsg('')
 
     try {
-      await signUp(payload.email, payload.password)
-      setMsg('Conta criada! Verifique seu email para confirmar.')
+      await signUp(payload.email, payload.password, nextPath)
+      setMsg('Conta criada! Verifique seu e-mail para confirmar o acesso.')
     } catch (error) {
       const message = error instanceof Error ? error.message : 'Falha ao criar conta.'
       setErr(message)
       throw new Error(message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  async function handleGoogleSignInToken(idToken: string) {
-    setLoading(true)
-    setErr('')
-    setMsg('')
-    try {
-      await signInWithGoogleToken(idToken)
-      nav(nextPath, { replace: true })
-    } catch (error) {
-      const message = error instanceof Error ? error.message : 'Falha ao autenticar com Google.'
-      setErr(message)
     } finally {
       setLoading(false)
     }
@@ -103,9 +88,8 @@ export default function Signup() {
       successMessage={msg}
       onSubmit={handleSubmit}
       onGoogleSignIn={handleGoogleSignIn}
-      onGoogleSignInToken={handleGoogleSignInToken}
       onGoToLogin={() => nav(`/login?next=${encodeURIComponent(nextPath)}`)}
-      onBackToVetius={() => nav('/hub')}
+      onBackToVetius={() => nav('/')}
     />
   )
 }

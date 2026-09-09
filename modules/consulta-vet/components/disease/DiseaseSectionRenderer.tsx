@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import {
   AlertTriangle,
   ArrowDown,
@@ -85,32 +86,53 @@ function isClinicalFigure(value: unknown): value is EditorialClinicalFigure {
   return v.kind === 'clinicalFigure' && typeof v.src === 'string' && v.src.length > 0 && typeof v.alt === 'string' && v.alt.length > 0;
 }
 
+function isClinicalFigureArray(value: unknown): value is EditorialClinicalFigure[] {
+  return Array.isArray(value) && value.length > 0 && value.every(isClinicalFigure);
+}
+
 function figureViewportClass(display: EditorialClinicalFigure['display']) {
   switch (display) {
     case 'compact':
-      return 'h-52 md:h-60';
+      return 'min-h-[14rem] max-h-[18rem] h-60';
     case 'wide':
-      return 'h-80 md:h-[30rem]';
+      return 'min-h-[20rem] max-h-[32rem] h-96';
     case 'full':
-      return 'h-96 md:h-[36rem]';
+      return 'min-h-[24rem] max-h-[38rem] h-[32rem]';
     default:
-      return 'h-64 md:h-72';
+      return 'min-h-[18rem] max-h-[28rem] h-80';
   }
 }
 
-function figureGridSpanClass(figure: EditorialClinicalFigure) {
-  return figure.display === 'full' || figure.display === 'wide' ? 'sm:col-span-2' : '';
+function figureGridSpanClass(figure: EditorialClinicalFigure, isOnlyInGroup = false) {
+  if (isOnlyInGroup || figure.display === 'full' || figure.display === 'wide') {
+    return 'sm:col-span-2';
+  }
+  return '';
 }
 
 function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
   const [isOpen, setIsOpen] = React.useState(false);
 
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen]);
+
   return (
     <>
-      <figure className="space-y-3">
+      <figure className="space-y-3 mx-auto w-full max-w-4xl flex flex-col items-center">
         <div
           onClick={() => setIsOpen(true)}
-          className="group relative overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30"
+          className="group relative w-full overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30 flex items-center justify-center"
         >
           <div className={cn('relative w-full flex items-center justify-center bg-black/5 dark:bg-black/20 rounded-lg overflow-hidden', figureViewportClass(figure.display))}>
             <img
@@ -118,7 +140,7 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
               alt={figure.alt}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-contain rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+              className="h-full w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
             />
           </div>
           <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-center justify-center">
@@ -128,23 +150,24 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
           </div>
         </div>
         {figure.caption ? (
-          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground">
+          <figcaption className="text-center text-sm leading-relaxed text-muted-foreground max-w-3xl mx-auto">
             <EditorialRichText value={figure.caption} />
           </figcaption>
         ) : null}
       </figure>
 
-      {isOpen && (
+      {isOpen && typeof document !== 'undefined' && createPortal(
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm transition-opacity duration-300 cursor-zoom-out"
+          className="fixed inset-0 z-[99999] flex flex-col items-center justify-between overflow-y-auto bg-black/95 p-4 sm:p-6 backdrop-blur-md transition-opacity duration-200 cursor-zoom-out"
+          style={{ isolation: 'isolate' }}
         >
           <button
             onClick={(e) => {
               e.stopPropagation();
               setIsOpen(false);
             }}
-            className="absolute top-4 right-4 text-white hover:text-gray-300 bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all duration-200 hover:scale-105"
+            className="fixed top-4 right-4 z-[100000] flex items-center justify-center h-10 w-10 text-white hover:text-white bg-black/80 hover:bg-black border border-white/30 rounded-full transition-transform duration-200 hover:scale-110 shadow-2xl cursor-pointer"
             aria-label="Fechar ampliação"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -154,22 +177,23 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
           
           <div 
             onClick={(e) => e.stopPropagation()}
-            className="relative flex flex-col items-center justify-center max-w-[95vw] md:max-w-6xl max-h-[90vh] overflow-hidden rounded-2xl border border-white/15 bg-neutral-950 p-2.5 shadow-2xl transition-all duration-300"
+            className="m-auto flex flex-col items-center justify-center w-full max-w-5xl cursor-default py-4"
           >
-            <div className="flex items-center justify-center w-full h-full">
+            <div className="flex items-center justify-center w-full">
               <img
                 src={figure.src}
                 alt={figure.alt}
-                className="max-w-full max-h-[75vh] md:max-h-[80vh] h-auto object-contain rounded-xl mx-auto"
+                className="block max-h-[70vh] w-auto max-w-[95vw] md:max-w-[85vw] object-contain rounded-xl shadow-2xl select-none mx-auto ring-1 ring-white/10"
               />
             </div>
             {figure.caption ? (
-              <p className="mt-3 text-center text-sm text-neutral-300 leading-relaxed px-4 pb-1.5 max-w-3xl mx-auto">
+              <div className="mt-4 w-full max-w-3xl text-center text-xs sm:text-sm text-neutral-200 leading-relaxed px-4 py-2.5 bg-neutral-900/90 rounded-xl border border-white/10 shadow-lg mx-auto">
                 <EditorialRichText value={figure.caption} />
-              </p>
+              </div>
             ) : null}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
@@ -180,7 +204,7 @@ function ClinicalComparisonTable({ table, visual }: { table: EditorialClinicalTa
 }
 
 const BULLET_LINE_RE = /^\s*[-•*]\s+/;
-const NUMBERED_LINE_RE = /^\s*\d+[\).]\s+/;
+const NUMBERED_LINE_RE = /^\s*\d+[\).][\s]+/;
 const STUDY_CITATION_RE =
   /\b(?:[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+(?:\s+[A-ZÀ-Ý][A-Za-zÀ-ÿ'-]+){0,2})\s+et al\.\s*\(\d{4}\)/;
 const CLINICAL_METRIC_RE =
@@ -992,6 +1016,22 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
     if (Array.isArray(content)) {
       if (content.length === 0) return null;
+      if (isClinicalFigureArray(content)) {
+        const isSingle = content.length === 1;
+        return (
+          <div className={cn(
+            isSingle 
+              ? 'w-full' 
+              : 'grid grid-cols-1 sm:grid-cols-2 gap-6 items-start'
+          )}>
+            {content.map((fig, idx) => (
+              <div key={fig.src || `figure-${idx}`} className={isSingle ? 'w-full' : figureGridSpanClass(fig, content.length === 1)}>
+                <ClinicalFigureBlock figure={fig} />
+              </div>
+            ))}
+          </div>
+        );
+      }
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
       if (isSystemGroupArray(content)) return <ClinicalSignsTable groups={content} visual={visual} />;
@@ -1070,8 +1110,16 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                 </FlowSubsection>
               );
             } else {
+              const isSingleFigure = group.entries.length === 1;
               return (
-                <div key={`figures-grid-${idx}`} className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-start">
+                <div
+                  key={`figures-grid-${idx}`}
+                  className={cn(
+                    isSingleFigure
+                      ? 'w-full'
+                      : 'grid grid-cols-1 sm:grid-cols-2 gap-6 items-start'
+                  )}
+                >
                   {group.entries.map(([k, value]) => {
                     const figure = value as EditorialClinicalFigure;
                     const tone = subsectionToneForKey(k);
@@ -1082,7 +1130,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                         tone={tone}
                         subsectionKey={k}
                         visual={visual}
-                        className={figureGridSpanClass(figure)}
+                        className={isSingleFigure ? 'w-full' : figureGridSpanClass(figure, group.entries.length === 1)}
                       >
                         {renderContent(value as EditorialSectionValue)}
                       </FlowSubsection>

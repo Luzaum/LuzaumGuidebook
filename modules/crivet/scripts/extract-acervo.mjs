@@ -13,6 +13,10 @@ const BOOKS = {
     file: path.join(ACERVO, "Plumb's Veterinary Drug Handbook, 10th edition.pdf"),
     label: "Plumb's Veterinary Drug Handbook, 10ª ed.",
   },
+  nelsonCouto: {
+    file: path.join(ACERVO, 'NELSON E COUTO 6_compressed (2) (1).pdf'),
+    label: 'Nelson & Couto — Small Animal Internal Medicine, 6ª ed.',
+  },
   ettinger: {
     file: path.join(ACERVO, "Ettinger's Textbook of Veterinary Internal Medicine,9ed 2024.pdf"),
     label: "Ettinger's Textbook of Veterinary Internal Medicine, 9ª ed. (medicina interna)",

@@ -55,6 +55,11 @@ export default defineConfig(({ mode }) => {
         strict: false,
         allow: [projectRoot],
       },
+      watch: {
+        usePolling: true,
+        interval: 1000,
+        ignored: ['**/tmp/**', '**/.git/**', '**/scratch/**'],
+      },
     },
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),

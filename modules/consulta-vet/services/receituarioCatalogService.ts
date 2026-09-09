@@ -10,6 +10,8 @@ import {
 } from '../../../src/lib/clinicRecords';
 import type { PrescriptionPrecaution } from '../types/receituario';
 import { PUBLIC_CATALOG_MEDICATION_CARD_STUBS } from '../data/publicCatalogCardStubs';
+import { inferTabletSplitIncrement } from '../utils/receituarioDoseEngine';
+import { isInjectablePrescriptionText, isTakeHomeMedicationPresentation, isTakeHomePresentationRecord, isTakeHomePrescriptionRoute } from '../utils/receituarioTakeHome';
 
 type PrecautionRow = {
   id: string;
@@ -59,7 +61,11 @@ export async function searchPrescriptionMedicationCatalog(clinicId: string, quer
       scope: 'global' as const,
       metadata: { ...(item.metadata || {}), active_ingredient: item.active_ingredient || item.name, species: item.species || [], routes: item.routes || [] },
   }));
-  const editorial = PUBLIC_CATALOG_MEDICATION_CARD_STUBS
+  const { medicationsSeed } = await import('../data/seed/medications.seed');
+  const seededSlugs = new Set(medicationsSeed.map(item => item.slug));
+  const editorialRecords = [...medicationsSeed, ...PUBLIC_CATALOG_MEDICATION_CARD_STUBS.filter(item => !seededSlugs.has(item.slug))];
+  const editorialBySlug = new Map(editorialRecords.map((item) => [item.slug, item]));
+  const editorial = editorialRecords
     .filter((item) => !needle || [item.title, item.activeIngredient, ...(item.tradeNames || []), ...(item.tags || [])].join(' ').toLowerCase().includes(needle))
     .map((item): MedicationSearchResult => ({
       id: `editorial:${item.slug}`,
@@ -73,12 +79,27 @@ export async function searchPrescriptionMedicationCatalog(clinicId: string, quer
         trade_names: item.tradeNames || [],
         pharmacologic_class: item.pharmacologicClass || '',
         species: item.species || [],
+        routes: item.routes || [],
         editorial_slug: item.slug,
       },
     }));
 
   const seen = new Set<string>();
   return [...remote, ...bundled, ...editorial].filter((item) => {
+    const slug = item.id.startsWith('editorial:')
+      ? item.id.slice('editorial:'.length)
+      : isGlobalMedicationId(item.id) ? parseGlobalMedicationId(item.id) : String(item.metadata?.editorial_slug || '');
+    const editorialRecord = slug ? editorialBySlug.get(slug) : null;
+    const hasTakeHomePresentation = editorialRecord?.presentations?.some(isTakeHomeMedicationPresentation) || false;
+    const editorialLooksInjectable = editorialRecord && isInjectablePrescriptionText([
+      editorialRecord.title,
+      ...(editorialRecord.tradeNames || []),
+      ...(editorialRecord.tags || []),
+      ...(editorialRecord.routes || []),
+    ].join(' '));
+    if (editorialRecord && !hasTakeHomePresentation && (editorialRecord.presentations?.length || editorialLooksInjectable)) return false;
+    const routes = Array.isArray(item.metadata?.routes) ? item.metadata.routes.map(String).filter(Boolean) : [];
+    if (routes.length && routes.every((route) => !isTakeHomePrescriptionRoute(route))) return false;
     const key = String(item.metadata?.active_ingredient || item.name || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
     if (!key || seen.has(key)) return false;
     seen.add(key);
@@ -100,26 +121,28 @@ export async function getPrescriptionMedicationPresentations(
   medicationId: string,
 ): Promise<MedicationPresentationRecord[]> {
   const slug = editorialMedicationSlug(medicationId);
-  if (!slug) return getMedicationPresentations(clinicId, medicationId);
+  if (!slug) return (await getMedicationPresentations(clinicId, medicationId)).filter(isTakeHomePresentationRecord);
 
   const { medicationsSeed } = await import('../data/seed/medications.seed');
   const medication = medicationsSeed.find((item) => item.slug === slug);
   if (!medication) return [];
 
-  return medication.presentations.map((presentation) => ({
-    id: `editorial-presentation:${slug}:${presentation.id}`,
+  return medication.presentations.filter(isTakeHomeMedicationPresentation).flatMap((presentation) => (presentation.concentrationOptions?.length
+    ? presentation.concentrationOptions.map((option) => ({ ...presentation, id: `${presentation.id}:${option.id}`, label: `${presentation.label} — ${option.label}`, concentrationValue: option.concentrationValue, concentrationUnit: option.concentrationUnit }))
+    : [presentation]).map((variant) => ({
+    id: `editorial-presentation:${slug}:${variant.id}`,
     clinic_id: '',
     medication_id: medicationId,
     pharmaceutical_form: presentation.form || null,
-    concentration_text: presentation.concentrationValue != null && presentation.concentrationUnit
-      ? `${presentation.concentrationValue} ${presentation.concentrationUnit}`
+    concentration_text: variant.concentrationValue != null && variant.concentrationUnit
+      ? `${variant.concentrationValue} ${variant.concentrationUnit}`
       : null,
     additional_component: null,
     presentation_unit: null,
     // O label editorial contém nome/forma legível e precisa aparecer como opção comercial.
-    commercial_name: presentation.label || null,
-    value: presentation.concentrationValue ?? null,
-    value_unit: presentation.concentrationUnit || null,
+    commercial_name: variant.label || null,
+    value: variant.concentrationValue ?? null,
+    value_unit: variant.concentrationUnit || null,
     per_value: null,
     per_unit: null,
     avg_price_brl: null,
@@ -128,17 +151,20 @@ export async function getPrescriptionMedicationPresentations(
     pharmacy_compounding: presentation.channel === 'compounded',
     metadata: {
       source: 'editorial_catalog',
+      seed_presentation_id: presentation.id,
+      seed_concentration_id: variant.id === presentation.id ? null : variant.id.slice(presentation.id.length + 1),
       route: presentation.route || null,
       pack_info: presentation.packInfo || null,
       scoring_info: presentation.scoringInfo || null,
+      drops_per_ml: presentation.dropsPerMl || null,
     },
     package_quantity: null,
     package_unit: null,
     created_at: '',
     updated_at: '',
     source: 'global',
-    tablet_split_increment: null,
-  }));
+    tablet_split_increment: inferTabletSplitIncrement(presentation.form, presentation.scoringInfo),
+  })));
 }
 
 /** Mantém as doses do mesmo registro editorial disponíveis depois da seleção. */
@@ -147,13 +173,13 @@ export async function getPrescriptionMedicationRecommendedDoses(
   medicationId: string,
 ): Promise<RecommendedDose[]> {
   const slug = editorialMedicationSlug(medicationId);
-  if (!slug) return getMedicationRecommendedDoses(clinicId, medicationId);
+  if (!slug) return (await getMedicationRecommendedDoses(clinicId, medicationId)).filter((dose) => isTakeHomePrescriptionRoute(dose.route));
 
   const { medicationsSeed } = await import('../data/seed/medications.seed');
   const medication = medicationsSeed.find((item) => item.slug === slug);
   if (!medication) return [];
 
-  return medication.doses.map((dose) => ({
+  return medication.doses.filter((dose) => isTakeHomePrescriptionRoute(dose.route)).map((dose) => ({
     id: `editorial-dose:${slug}:${dose.id}`,
     clinic_id: '',
     medication_id: medicationId,
@@ -174,8 +200,10 @@ export async function getPrescriptionMedicationRecommendedDoses(
       source: 'editorial_catalog',
       calculator_enabled: dose.calculatorEnabled,
       presentation_id: dose.presentationId || null,
+      presentation_concentration_id: dose.presentationConcentrationId || null,
       clinical_context: dose.clinicalContext || null,
       monitoring: dose.monitoring || null,
+      follow_up_phases: dose.followUpPhases || [],
     },
   }));
 }

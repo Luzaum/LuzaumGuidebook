@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 620" fill="none" role="img" aria-labelledby="title-felino desc-felino">
+  <title id="title-felino">Desobstrução Uretral Felina — Retificação em S, Flush Pulsátil e Triagem de Hipercalemia</title>
+  <desc id="desc-felino">Diagrama técnico das manobras anatômicas para desobstrução de gatos machos (iCatCare 2025): retificação da curvatura em S, flush hidráulico pulsátil, segurança do mandril e correlação de hipercalemia no ECG.</desc>
+
+  <defs>
+    <linearGradient id="bgFel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelFel" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="salineFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <filter id="boxShadowFel" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    .pulse-dot { animation: pulseAnim 2s infinite ease-in-out; transform-origin: center; }
+    @keyframes pulseAnim {
+      0% { r: 4px; opacity: 0.9; }
+      50% { r: 10px; opacity: 0.3; }
+      100% { r: 15px; opacity: 0; }
+    }
+  </style>
+
+  <!-- Background -->
+  <rect width="880" height="620" rx="20" fill="url(#bgFel)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Grid overlay -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <path d="M0,77 L880,77 M0,155 L880,155 M0,232 L880,232 M0,310 L880,310 M0,387 L880,387 M0,465 L880,465 M0,542 L880,542" />
+    <path d="M110,0 L110,620 M220,0 L220,620 M330,0 L330,620 M440,0 L440,620 M550,0 L550,620 M660,0 L660,620 M770,0 L770,620" />
+  </g>
+
+  <!-- Header Section -->
+  <g transform="translate(30, 26)">
+    <rect x="0" y="0" width="220" height="22" rx="11" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="1" stroke-opacity="0.4" />
+    <text x="110" y="15" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700" letter-spacing="0.1em" class="font-sans">MEDICINA FELINA &amp; EMERGÊNCIA</text>
+    
+    <text x="0" y="44" fill="#f8fafc" font-size="20" font-weight="800" class="font-sans">Desobstrução Uretral Felina — Consenso iCatCare 2025</text>
+    <text x="0" y="62" fill="#94a3b8" font-size="12" class="font-sans">Retificação da curvatura em S, hidropropulsão com flush pulsátil e estabilização da hipercalemia</text>
+  </g>
+
+  <!-- PANEL 1: RETIFICAÇÃO DA CURVATURA EM S (Top Left) -->
+  <g transform="translate(30, 100)">
+    <rect width="400" height="240" rx="14" fill="url(#panelFel)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowFel)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#38bdf8" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="800" class="font-sans">1</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Manobra de Retificação da Curvatura em "S"</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Alinhamento das porções peniana e pélvica da uretra (iCatCare Fig. 21)</text>
+
+    <g transform="translate(20, 50)">
+      <!-- S-Curvature (Repouso) -->
+      <g transform="translate(0, 0)">
+        <text x="10" y="14" fill="#f43f5e" font-size="9" font-weight="700" class="font-sans">❌ URETRA EM REPOUSO (CURVADA EM S):</text>
+        <!-- S-shape path -->
+        <path d="M 15 45 C 50 45, 60 75, 100 75 C 140 75, 150 45, 180 45" fill="none" stroke="#f43f5e" stroke-width="3" stroke-linecap="round" />
+        <text x="190" y="48" fill="#fda4af" font-size="8" class="font-sans">Rumo à bexiga</text>
+        <circle cx="15" cy="45" r="4" fill="#f43f5e" />
+        <text x="15" y="60" text-anchor="middle" fill="#94a3b8" font-size="7.5" class="font-sans">Pênis</text>
+        <text x="100" y="90" text-anchor="middle" fill="#f87171" font-size="7.5" font-weight="600" class="font-sans">Dobra acentuada (Atrito máximo)</text>
+      </g>
+
+      <!-- Straightened Urethra (Tração) -->
+      <g transform="translate(0, 85)">
+        <text x="10" y="14" fill="#34d399" font-size="9" font-weight="700" class="font-sans">✓ APÓS TRAÇÃO DORSOCAUDAL DO PREPÚCIO:</text>
+        <!-- Straightened path -->
+        <path d="M 15 35 L 180 35" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" />
+        <circle cx="15" cy="35" r="4" fill="#22c55e" />
+        
+        <!-- Traction Vector Arrows -->
+        <path d="M 15 35 L -5 18" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+        <text x="0" y="10" fill="#38bdf8" font-size="7.5" font-weight="700" class="font-sans">▲ Tração Dorsal e Caudal</text>
+        <text x="190" y="38" fill="#4ade80" font-size="8" font-weight="700" class="font-sans">Trajeto Retificado</text>
+      </g>
+
+      <!-- Callout Box -->
+      <g transform="translate(10, 140)">
+        <rect width="345" height="28" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="0.8" />
+        <text x="8" y="18" fill="#38bdf8" font-size="8.5" class="font-sans"><tspan font-weight="800">Regra de Ouro:</tspan> 90% da resistência mecânica cede com a retificação!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 2: FLUSH PULSÁTIL (Top Right) -->
+  <g transform="translate(450, 100)">
+    <rect width="400" height="240" rx="14" fill="url(#panelFel)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowFel)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#34d399" font-size="13" font-weight="800" class="font-sans">2</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Técnica de Uro-hidropropulsão com Flush Pulsátil</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">A água desobstrui; a ponta do cateter NUNCA age como aríete!</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Urethral Lumen -->
+      <rect x="10" y="30" width="340" height="40" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1" />
+      
+      <!-- Mucous / Crystal Plug lodged -->
+      <g transform="translate(200, 34)">
+        <ellipse cx="25" cy="16" rx="20" ry="12" fill="#f59e0b" stroke="#d97706" stroke-width="1.5" />
+        <text x="25" y="19" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800" class="font-sans">PLUG</text>
+      </g>
+
+      <!-- Catheter advancing -->
+      <rect x="10" y="44" width="130" height="12" rx="2" fill="#64748b" stroke="#94a3b8" stroke-width="1" />
+      <text x="40" y="53" fill="#ffffff" font-size="7.5" font-weight="700" class="font-sans">Cateter 3,5 Fr</text>
+
+      <!-- Saline Fluid Stream Pulsing around the plug -->
+      <path d="M 140 46 C 160 36, 190 34, 220 34 L 250 34" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4,2" />
+      <path d="M 140 54 C 160 64, 190 66, 220 66 L 250 66" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="4,2" />
+      
+      <polygon points="180,36 170,32 170,40" fill="#38bdf8" />
+      <polygon points="180,64 170,60 170,68" fill="#38bdf8" />
+
+      <text x="145" y="24" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">Coluna de Salina Estéril</text>
+      <text x="145" y="85" fill="#94a3b8" font-size="7.5" class="font-sans">(Dilata o lúmen e solta o plug)</text>
+
+      <!-- Key Concept Box -->
+      <g transform="translate(10, 110)">
+        <rect width="345" height="52" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="0.8" />
+        <text x="10" y="18" fill="#34d399" font-size="9" font-weight="800" class="font-sans">Mecanismo Hidráulico vs. Mecânico:</text>
+        <text x="10" y="32" fill="#cbd5e1" font-size="8" class="font-sans">• Pequenos jatos de NaCl 0,9% expandem a uretra ao redor do material.</text>
+        <text x="10" y="44" fill="#fca5a5" font-size="8" font-weight="700" class="font-sans">• Forçar a ponta plástica contra o plug = laceração uretral e estenose!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 3: ALERTA DO MANDRIL & CATETER (Bottom Left) -->
+  <g transform="translate(30, 355)">
+    <rect width="400" height="240" rx="14" fill="url(#panelFel)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowFel)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#ef4444" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#ef4444" font-size="13" font-weight="800" class="font-sans">3</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Seleção do Cateter &amp; Alerta do Mandril</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Critérios de calibre e segurança para prevenir necrose uretral</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Critical Warning Banner -->
+      <rect width="360" height="42" rx="6" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="1" />
+      <text x="12" y="18" fill="#f87171" font-size="9.5" font-weight="800" class="font-sans">🚨 REGRA VITAL: REMOVER O MANDRIL (STYLET)!</text>
+      <text x="12" y="32" fill="#fca5a5" font-size="8.5" class="font-sans">Se o cateter vier com estilete metálico, RETIRE-O ANTES da inserção!</text>
+
+      <!-- Comparison List -->
+      <g transform="translate(0, 55)">
+        <text x="0" y="14" fill="#fbbf24" font-size="9" font-weight="700" class="font-sans">📏 ESCOLHA DO CALIBRE (3 a 3,5 Fr):</text>
+        <text x="8" y="26" fill="#94a3b8" font-size="8" class="font-sans">• <tspan fill="#34d399" font-weight="700">3,0 ou 3,5 Fr ponta aberta:</tspan> ideal para desobstrução atraumática.</text>
+        <text x="8" y="38" fill="#94a3b8" font-size="8" class="font-sans">• <tspan fill="#ef4444" font-weight="700">5,0 Fr (Evitar):</tspan> calibre excessivo gera trauma e maior reobstrução.</text>
+
+        <text x="0" y="58" fill="#38bdf8" font-size="9" font-weight="700" class="font-sans">⏱️ SONDA DE DEMORA (24 a 36 HORAS):</text>
+        <text x="8" y="70" fill="#94a3b8" font-size="8" class="font-sans">• Desobstruiu? Troque para silicone macio ou poliuretano (iCatCare).</text>
+        <text x="8" y="82" fill="#94a3b8" font-size="8" class="font-sans">• Não deixe cateter de polietileno/rígido como sonda permanente.</text>
+        <text x="8" y="94" fill="#94a3b8" font-size="8" class="font-sans">• Remover assim que a azotemia resolver (alvo: 24–36 h, não 48 h fixas).</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 4: HIPERCALEMIA E TRIAGEM (Bottom Right) -->
+  <g transform="translate(450, 355)">
+    <rect width="400" height="240" rx="14" fill="url(#panelFel)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowFel)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#f59e0b" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="800" class="font-sans">4</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Triagem da Hipercalemia Crítica &amp; ECG</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Identificação relâmpago de K⁺ &gt; 8,0 mmol/L antes dos exames</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Clinical Pearl Box -->
+      <g transform="translate(0, 0)">
+        <rect width="360" height="38" rx="6" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1" />
+        <text x="10" y="16" fill="#fbbf24" font-size="9" font-weight="800" class="font-sans">⚡ PÉROLA CLÍNICA DE OURO (VPP &gt;98%):</text>
+        <text x="10" y="30" fill="#fef08a" font-size="8.5" font-weight="700" class="font-sans">FC &lt;140 bpm + Temp &lt;35,5°C = K⁺ &gt; 8,0 mmol/L!</text>
+      </g>
+
+      <!-- ECG Progression Mini-diagram -->
+      <g transform="translate(0, 48)">
+        <text x="0" y="12" fill="#cbd5e1" font-size="8.5" font-weight="700" class="font-sans">Progressão Eletrocardiográfica da Hipercalemia:</text>
+        
+        <!-- ECG Wave schematic -->
+        <path d="M 10 32 L 30 32 L 35 26 L 40 32 L 60 32 L 65 38 L 70 12 L 75 32 L 85 10 L 95 32 L 120 32" fill="none" stroke="#f43f5e" stroke-width="1.8" />
+        <text x="90" y="8" text-anchor="middle" fill="#f43f5e" font-size="7.5" font-weight="700" class="font-sans">T apiculada</text>
+        <text x="35" y="22" text-anchor="middle" fill="#94a3b8" font-size="6.5" class="font-sans">P achatada</text>
+        <text x="75" y="44" text-anchor="middle" fill="#fca5a5" font-size="7" class="font-sans">QRS alargado</text>
+
+        <!-- Therapy Card -->
+        <g transform="translate(135, 18)">
+          <rect width="225" height="58" rx="4" fill="#0f172a" stroke="#0284c7" stroke-width="0.8" />
+          <text x="8" y="13" fill="#38bdf8" font-size="8" font-weight="800" class="font-sans">PROTEÇÃO CARDIOPROTETORA IMEDIATA:</text>
+          <text x="8" y="26" fill="#cbd5e1" font-size="7.5" class="font-sans">• <tspan fill="#fbbf24" font-weight="700">Gluconato de Cálcio 10%:</tspan> 0,5–1,5 mL/kg IV lento</text>
+          <text x="14" y="37" fill="#94a3b8" font-size="7" class="font-sans">(em 10–20 min sob ECG contínuo; estabiliza membrana)</text>
+          <text x="8" y="49" fill="#cbd5e1" font-size="7.5" class="font-sans">• <tspan fill="#34d399" font-weight="700">Insulina Regular + Dextrose:</tspan> 0,2–0,5 UI/kg + 2g/UI</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

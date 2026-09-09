@@ -1,0 +1,628 @@
+===== PDF_PAGE_0773 =====
+746    Levetiracetam
+Levetiracetam
+(lee-ve-tye-ra-see-tam) Keppra®
+Anticonvulsant
+Prescriber Highlights
+ ▶ Levetiracetam is a broad-spectrum anticonvulsant that can be 
+used as adjunct therapy for canine epilepsy or when pheno-
+barbital or bromides are not tolerated. Dogs may become 
+refractory to therapy over time.
+ ▶ In cats, levetiracetam may be used as a second-line drug when 
+phenobarbital alone does not control seizures but can also be 
+tried as sole therapy when phenobarbital is not tolerated.
+ ▶ Appears to be well tolerated; adverse effects may be transient 
+and can include sedation in dogs, and lethargy, decreased 
+appetite, and ataxia in cats
+ ▶ In dogs, phenobarbital may cause significant drug interactions 
+with levetiracetam.
+ ▶ Owner compliance with dosing frequency (every 8 hours) of 
+immediate-release tablets and oral solution may be problem-
+atic.
+ ▶ Do not confuse immediate-release and extended-release tab-
+lets; use caution when prescribing and dispensing.
+Uses/Indications
+Levetiracetam can be useful as adjunct therapy to phenobarbital and 
+bromides in patients with canine epilepsy. Convincing evidence for 
+efficacy of levetiracetam monotherapy is lacking. 1–3 Levetiracetam 
+has been shown to be useful in the treatment of status epilepticus and 
+acute repetitive seizures (ie, cluster seizures) in dogs.4 It has been used 
+at home for oral pulse therapy to abort seizure activity,5 and SC admin-
+istration at home may be useful in dogs that develop status epilepticus 
+or acute repetitive seizures that do not always respond sufficiently to 
+benzodiazepine (via rectal and/or intranasal administration).4 A small 
+open-label study found that the addition of rectal levetiracetam to 
+standard treatment (rectal/IV diazepam and IV phenobarbital) sig -
+nificantly increased response rate for dogs with cluster seizures com-
+pared to the standard treatment alone.6 In addition, in a study, IV le-
+vetiracetam was used successfully to treat refractory seizures in a dog 
+that ingested a lethal dose of fluorouracil (5-FU).7 In one case report, 
+levetiracetam was successfully used to manage a dog with paroxysmal 
+exertion-induced dyskinesia.8 Another study found levetiracetam to 
+be effective for reactive seizures that were thought to be due to exoge-
+nous toxicity.9 Levetiracetam may have reduced efficacy in dogs over 
+time (ie, “honeymoon effect”), and there have been reports that phe-
+nobarbital can significantly affect levetiracetam pharmacokinetics in 
+dogs.3,10 Lack of efficacy has also been noted when levetiracetam was 
+used as adjunct therapy in dogs with refractory epilepsy.11 
+Levetiracetam appears to be useful as add-on therapy in cats when 
+phenobarbital does not control seizures or as sole therapy in cats that 
+are unable to tolerate phenobarbital.12 Studies have shown levetirac-
+etam to be more effective than phenobarbital and well tolerated as a 
+monotherapy agent in cats with myoclonic seizures.13
+Pharmacokinetic data in horses suggest that levetiracetam may be 
+efficacious when given orally.14–16
+Pharmacology/Actions
+The exact mechanism of levetiracetam’s antiseizure activity is not 
+well understood. Levetiracetam appears to affect the release of neu -
+rotransmitters in the CNS by selective binding to the presynaptic 
+protein SV2A on synaptic vesicles, and it may selectively prevent 
+hypersynchronization of epileptiform burst-firing and propagation 
+of seizure activity.17 It does not affect normal neuronal excitability. 
+Pharmacokinetics
+In dogs, levetiracetam (immediate-release tablet or oral solution) is 
+rapidly and almost completely absorbed after oral administration. 
+Volume of distribution is 0.5 to 0.7 L/kg.18–20 Protein binding is min-
+imal, and ≈90% of a dose is renally eliminated. 21 Peak concentration 
+(Cmax, ≈34 μg/mL; range, 9.2 to 60 μg/mL) occurs 0.6 to 2.2 hours 
+after a single dose of immediate-release tablets, and elimination 
+half-life (T½) is 2.2 to 4.4 hours.18,22,23 Concurrent phenobarbital re-
+duces Cmax and T½. 24–26 Repeat oral doses do not appreciably alter 
+pharmacokinetic values.24,26 In a study, peak concentrations occurred 
+40 minutes after IM administration; the drug was completely ab -
+sorbed, and peak concentration was similar to IV administration. 27 
+SC levetiracetam (60 mg/kg, undiluted) yielded drug concentrations 
+between 65 μg/mL and 114 μg/mL, 15 to 420 minutes after admin -
+istration.28 In fasted dogs given an extended-release tablet formula -
+tion at 30 mg/kg PO, maximum plasma drug concentration, time to 
+reach maximum plasma concentration, disappearance half-life, and 
+bioavailability were 27 μg/mL, 3.4 hours, 4.4 hours, and 100%, re -
+spectively. Pharmacokinetics were similar when dogs were fed, with 
+the exception of the time to reach maximum plasma concentration, 
+which was longer (6.6 hours), and bioavailability, which was greater 
+(126%).29 Data from different studies suggest that administering ex-
+tended-release tablets every 12 hours should maintain therapeutic 
+levels in dogs.22,23,29,30 In a study in dogs, when levetiracetam solution 
+for injection was administered rectally at 40 mg/kg, the maximum 
+serum concentration was 36 μg/mL and time to reach maximum se-
+rum concentration was 1.5 to 1.7 hours. Presence of feces may limit 
+absorption.31,32 Bioequivalence of generic extended-release tablets to 
+Keppra XR® has been demonstrated in dogs.22 
+In cats, oral bioavailability of immediate-release levetiracetam is 
+≈100%, and elimination half-life is ≈3 hours. The authors concluded 
+that 20 mg/kg administered IV or PO every 8 hours should be ade -
+quate in most cats. 33 Similar pharmacokinetic values were reported 
+in cats concurrently receiving phenobarbital.12 In healthy cats receiv-
+ing a single 500 mg tablet dose of extended-release levetiracetam, 
+serum concentrations remained above 5 μg/mL for 21 hours, with 
+an average peak concentration of ≈90 μg/mL. 34 CSF concentrations 
+appear to parallel serum concentrations, suggesting adequate CSF 
+concentrations are attained after oral administration in cats. 35 With 
+daily administration of extended-release levetiracetam tablets for 7 
+days, median peak and trough serum concentrations were 92.3 μg/
+mL and 7 μg/mL, respectively. In a small pilot study, a compounded 
+liposomal levetiracetam cream was administered to the inner pinna 
+at 60 mg/kg every 8 hours for 6 days, which resulted in serum con -
+centrations above 5 µg/mL.36 
+In 1- to 10-day-old foals receiving levetiracetam (32 mg/kg PO 
+and IV as single doses), oral absorption was ≈100%. Peak concentra-
+tion (38.3 μg/mL) occurred after 0.9 hours, and elimination half-life 
+was 7.8 hours.15 In adult horses, terminal half-life and volume of dis-
+tribution at steady-state after IV administration of levetiracetam at 
+20 mg/kg were 6.22 hours and 630 mL/kg, respectively. When imme-
+diate-release and extended-release tablets were crushed and admin-
+istered orally at 30 mg/kg, maximum plasma concentration, terminal 
+half-life, bioavailability, clearance/bioavailability, and time to peak 
+concentration were 50.72 μg/mL and 53.58 μg/mL, 6.38 hours and 
+7.07 hours, 96% and 98%, 76.8 mL/kg/hour and 76.8 mL/kg/hour, 
+and 0.66 hours and 0.64 hours, respectively. 14,37 No difference was 
+found between these formulations; however, the extended-release 
+tablets were crushed, which may have affected its pharmacokinetic 
+profile. The authors concluded that oral administration of 30 mg/kg  
+of either the regular or extended-release tablets in healthy adult 
+horses is likely to achieve therapeutic concentrations for at least 12 
+hours.14 In another study, generic immediate-release levetiracetam 
+tablets administered to healthy adult horses resulted in equivalent 
+
+===== PDF_PAGE_0774 =====
+Levetiracetam   747
+pharmacokinetic parameters as branded levetiracetam. 38 Healthy 
+adult horses receiving levetiracetam 30 mg/kg PO every 12 hours 
+achieved trough levetiracetam CSF and serum concentrations of 
+33.7 μg/mL and 28.8 μg/mL, respectively, after 4 days.16
+In humans, levetiracetam is rapidly and nearly completely ab -
+sorbed after oral administration. Peak levels occur ≈60 minutes after 
+administration. The presence of food in the gut delays the rate but 
+not the extent of drug absorbed, and the drug can be administered 
+regardless of feeding status. Less than 10% of the drug is bound to 
+plasma proteins. Although not extensively metabolized, the drug’s 
+acetamide group is enzymatically hydrolyzed to the carboxylic acid 
+metabolite that is apparently not active. Hepatic CYP450 isoenzymes 
+are not involved. In humans, half-life is ≈7 hours and ≈66% of a 
+given dose is excreted unchanged via renal mechanisms, primarily 
+glomerular filtration and active tubular secretion. Clearance can be 
+significantly reduced in patients with impaired renal function.
+Contraindications/Precautions/Warnings
+Levetiracetam is contraindicated in patients that have previously ex-
+hibited hypersensitivity to it or any of its components. Respiratory 
+failure and cardiac arrest were reported in a dog with cluster seizures 
+that received an undiluted levetiracetam injection of 60 mg/kg IV .39 
+Levetiracetam should be used with caution in patients with re -
+nal impairment; changes in dose or frequency should be considered. 
+One small retrospective study found that dogs with chronic kidney 
+disease (CKD) had a higher incidence of adverse effects from leveti-
+racetam than dogs without CKD. 40 In humans, renal elimination of 
+levetiracetam correlates with creatinine clearance; total clearance is 
+reduced by 40% in patients with mild renal impairment and up to 
+60% in patients with severe renal impairment.17,41
+Anecdotally, it has been reported that extended-release tablets 
+may not fully disintegrate in the canine GI tract. Some neurologists 
+have had experience with this situation and found that these patients 
+still had levetiracetam concentrations within the therapeutic range.  
+The presumption amongst many neurologists is that what is found 
+in the stool is the matrix of the pill and that the medication is still 
+being absorbed.42 
+Discontinuation should be done gradually to decrease risk for 
+withdrawal seizures.
+LevETIRAcetam should not be confused with levOCARNitine or 
+levOFLOXacin. Do not confuse immediate-release tablets with ex -
+tended-release tablets; use caution when prescribing or dispensing. 
+Immediate-release prescriptions can be written as “levetiracetam” or 
+“levetiracetam IR” (immediate-release). “Levetiracetam ER” or “Le-
+vetiracetam XR” refers to extended-release tablets.
+Adverse Effects
+Levetiracetam appears to be well tolerated in dogs and cats. The 
+most common adverse effects reported include sedation and ataxia 
+in dogs and reduced appetite, ataxia, hypersalivation, and lethargy 
+in cats. These effects may be transient. Changes in behavior and GI 
+effects (eg, vomiting) can occur.43 Transient head-lowering has been 
+observed in horses.14
+In a study, IM administration produced less muscle inflammation 
+in dogs than the saline control solution. 27 In another study, SC ad -
+ministration of undiluted levetiracetam solution for injection was 
+well-tolerated, but the sample size was small (n = 4 healthy dogs).28
+A systematic review and meta-analysis of adverse effects of antie-
+pileptic drugs in dogs showed a strong level of evidence for levetirac-
+etam’s safety profile as monotherapy and adjunct therapy. Only type 
+I adverse effects (ie, dose-dependent, predictable) were reported and 
+these included vomiting and sedation, followed by ataxia and hyper-
+activity. Less common adverse effects included anorexia, polyphagia, 
+and polydipsia, followed by polyuria, diarrhea, aggression, disobedi-
+ence, and attention-seeking.44
+In humans, adverse effects include sedation, asthenia, anxiety, and 
+headache. Neuropsychiatric adverse effects (eg, aggression, agitation, 
+irritability, depression) have also been reported. It is recommended 
+to withdraw the drug slowly to prevent withdrawal seizures. 
+Reproductive/Nursing Safety
+In pregnant dogs or cats, levetiracetam should be used with caution. 
+At high dosages, levetiracetam has caused increased embryofetal 
+mortality in rabbits and rats. At doses equivalent to the maximum 
+human therapeutic dose, levetiracetam has caused minor skeletal ab-
+normalities and retarded offspring growth in rats.45 
+Levetiracetam is excreted into maternal milk, and its safety in 
+nursing offspring is unknown. Levetiracetam should be used with 
+caution in nursing patients. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Levetiracetam is a relatively safe agent. Dogs receiving 1200 mg/kg/
+day (≈20 times the therapeutic dose) developed only salivation and 
+vomiting.46 Other clinical signs seen with overdose in dogs include 
+lethargy, hyperthermia, and recumbency. Human patients receiving 
+6000 mg/kg during drug testing developed only drowsiness.45 Other 
+effects noted in human overdoses (doses not specified) after the drug 
+was released included depressed levels of consciousness, agitation, 
+aggression, and respiratory depression.
+Treatment is supportive based on clinical signs; levetiracetam can 
+be removed with hemodialysis. 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving levetiracetam and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but the potential risks 
+should be weighed and additional monitoring performed when ap -
+propriate.
+ ■ Carbamazepine : Concurrent use may result in signs of carba -
+mazepine toxicity (eg, nystagmus, ataxia, dizziness).
+ ■ CNS Depressants (eg, antihistamines, benzodiazepines, gab-
+apentin, opioids): May increase risk for CNS depression
+ ■ Methotrexate : May increase methotrexate concentrations and 
+risk for toxicity
+ ■ Phenobarbital : In dogs, ongoing (21 days in the study) phe -
+nobarbital use significantly increased levetiracetam clearance and 
+reduced half-life; levetiracetam dose adjustments (increases) may 
+be required.24,25 Pharmacokinetic values of levetiracetam appear 
+unchanged in cats concurrently receiving phenobarbital.12
+Laboratory Considerations
+ ■ No specific laboratory interactions or considerations were noted.
+Dosages
+DOGS:
+Refractory epilepsy (extra-label):
+a) Using immediate-release tablets: 20 mg/kg PO every 8 hours,10 
+although recommendations up to 30 mg/kg PO every 8 hours 
+have been noted. Because of the drug’s safety, doses may be in-
+creased (every 1 to 2 weeks; up to 60 mg/kg PO every 8 hours) 
+further until efficacy is achieved, adverse effects become ap -
+
+===== PDF_PAGE_0775 =====
+748    Levetiracetam
+parent, or drug cost becomes prohibitive. If using as an add-on 
+to phenobarbital therapy, levetiracetam exposure is reduced 
+and half-life may be shortened; levetiracetam dose adjustment 
+(increase) may be necessary.24,25,47 
+b) Using extended-release tablets: Begin with 30 mg/kg PO with 
+or without food every 12 hours. Because of the drug’s safety, 
+doses may be increased (up to 60 mg/kg PO every 12 hours) 
+further until efficacy is achieved, adverse effects become ap -
+parent, or drug cost becomes prohibitive. Administering ev -
+ery 24 hours may be acceptable in some dogs. Tablets should 
+not be split or crushed. The smallest extended-release tablet is  
+500 mg, so it cannot be practically administered in small 
+dogs.22,23,29 Higher doses may be needed if using concurrently 
+with phenobarbital.24 
+Prevention of seizures following surgical correction of porto -
+systemic shunt (extra-label): 20 mg/kg PO every 8 hours for a 
+minimum of 24 hours prior to surgery may decrease the likeli -
+hood of seizures after portosystemic shunt ligation, 48 although 
+another study found that perioperative use did not reduce postat-
+tenuation neurologic signs or seizures.49
+Status epilepticus or acute repetitive (cluster) seizures  (ex -
+tra-label): 
+a) IV use : 30 mg/kg or 60 mg/kg IV were considered safe and 
+effective in 56% of treated dogs. 4 In healthy dogs from a sin -
+gle-dose pharmacokinetic study, a 60 mg/kg IV bolus dose of 
+levetiracetam was well tolerated and achieved plasma drug 
+concentrations within or above the therapeutic range reported 
+for humans for at least 8 hours after administration.19 IV doses 
+should be administered over 5 to 15 minutes.
+b) Rectal use: 40 mg/kg rectally using a 200 mg/mL suspension 
+compounded with levetiracetam powder and sterile water in 
+combination with benzodiazepine and IV phenobarbital. 32 A 
+study in healthy dogs reported that levetiracetam at 40 mg/kg 
+(using commercial levetiracetam 100 mg/mL solution for in -
+jection) administered rectally achieved target concentrations 
+in the target range within 10 minutes of administration.31
+c) Home administration as pulse therapy for cluster seizures : 
+30 mg/kg PO every 8 hours until seizure-free for 24 hours50
+d) Home administration in dogs that do not always respond 
+sufficiently to benzodiazepine (rectal and/or intranasal ad -
+ministration): 60 mg/kg SC; based on a pilot study in healthy 
+dogs28 
+Reactive seizures (extra-label): From one open-label study,  
+60 mg/kg IV loading dose followed by maintenance dosage of  
+20 mg/kg PO every 8 hours until reaching a 6-month sei -
+zure-free period. Levetiracetam may then be tapered slowly and 
+ discontinued.9
+CATS:
+Epilepsy (extra-label): 
+a) Based on the drug’s pharmacokinetics in cats and the presumed 
+therapeutic levels for the drug, 20 mg/kg IV or PO every 8 hours. 
+Doses up to 40 mg/kg PO every 8 hours may be necessary.33 
+b) As an add-on to phenobarbital treatment: Initially, 20 mg/kg 
+PO every 8 hours. If ineffective, levetiracetam dose should be 
+increased in 20 mg/kg increments.12,51 
+c) Using extended-release tablets: 500 mg/cat (NOT mg/kg) PO 
+once daily52
+Myoclonic seizures (extra-label): 60 – 75 mg/kg PO divided ev -
+ery 8 hours achieved a reduction greater than or equal to 50% in 
+the number of myoclonic seizure days in 100% of patients.13
+HORSES :
+Anticonvulsant (extra-label): Based on pharmacokinetic studies 
+and presumed therapeutic levels: 30 mg/kg PO every 12 hours 
+using immediate-release tablets. 14,16 Crushing extended-release 
+tablets has yielded similar serum concentrations (see Pharmaco-
+kinetics) but may be cost-prohibitive.
+Monitoring
+ ■ The levetiracetam therapeutic range for animals has not been spe-
+cifically determined, but it is thought to be similar to humans at  
+5 – 45 μg/mL. Because the drug appears to be very safe, thera -
+peutic drug monitoring is usually unnecessary but can be consid-
+ered to establish individual patient variation in drug absorption 
+or half-life.53
+ ■ Owners should be encouraged to keep a record of seizure activity 
+(eg, seizure frequency, severity, and duration; severity and dura -
+tion of any postictal signs) to document efficacy and report any 
+potential levetiracetam-associated adverse effects.
+Client Information
+ ■ This medicine may be given with or without food. If your animal 
+vomits or acts sick after getting it on an empty stomach, give the 
+medicine with food or small treat to see if this helps. If vomiting 
+continues, contact your veterinarian.
+ ■ Give this medicine as directed by your veterinarian.
+ ■ Lethargy (ie, tiredness, lack of energy) and reduced appetite are 
+the most common side effects.
+ ■ Do not crush or allow your pet to chew the extended-release tab-
+lets. The matrix of the extended-release tablets may not fully dis-
+integrate in the GI tract and is sometimes seen in the dog’s feces. 
+However, the medication is still being absorbed. 
+ ■ Do not discontinue therapy without talking with your veterinar -
+ian first as withdrawal seizures or severe neurologic side effects 
+may result.
+Chemistry/Synonyms
+Levetiracetam, a pyrrolidone-derivative antiepileptic agent, occurs 
+as an odorless, bitter-tasting, white to off-white crystalline powder. 
+It is very soluble in water and soluble in ethanol. It is a chiral mole -
+cule with one asymmetric carbon atom. Levetiracetam is not related 
+chemically to other antiseizure medications.
+Levetiracetam may also be known as S-Etiracetam, UCB-22059, 
+UCB-L059, and Keppra®.
+Storage/Stability
+Levetiracetam tablets and oral solution should be stored at 25°C 
+(77°F); excursions between 15°C and 30°C (59°F-86°F) are permitted.
+Compatibility/Compounding Considerations
+A levetiracetam 50-mg/mL oral suspension prepared with imme -
+diate-release levetiracetam tablets crushed and suspended in Ora-
+Blend® was determined to be stable when stored at either 4°C (39.2°F) 
+or 25°C (77°F) in plastic prescription bottles for 91 days.54 
+Extended-release tablets should be taken whole; do not split or 
+crush tablets or allow animal to chew it. In a study, a 200 mg/mL rec-
+tal suspension was prepared by mixing levetiracetam powder with 
+sterile water; a new suspension was prepared every month, and it 
+was stored at room temperature and away from direct sunlight; anal-
+ysis of potency and stability was not reported.32
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+HUMAN-LABELED PRODUCTS :
+Levetiracetam Oral Tablets (film-coated, scored): 250 mg, 500 mg, 
+750 mg, and 1000 mg; Keppra®, generic; (Rx)
+Levetiracetam Extended-Release Oral Tablets (film-coated): 500 mg 
+and 750 mg; Keppra XR®, generic; (Rx). Do not crush or split.
+Levetiracetam Oral Solution: 100 mg/mL in 473 mL, 480 mL, and 
+
+===== PDF_PAGE_0776 =====
+Levothyroxine   749
+500 mL; Keppra®, generic; (Rx). May also contain acesulfame K, am-
+monium glycyrrhizinate, or maltitol
+Levetiracetam Concentrate for Injection: 100 mg/mL in 5 mL  
+single-use vials, 5 mg/mL in 100 mL, 15 mg/mL in 100 mL, and  
+10 mg/mL in 100 mL; Keppra®, generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Levothyroxine
+(lee-voe-thye-rox-een)
+Thyro-Tabs® Canine, Leventa®,  Synthroid®
+Thyroid Hormone
+Prescriber Highlights
+ ▶ Used for the treatment of hypothyroidism in all species
+ ▶ Contraindications include thyrotoxicosis and untreated adre-
+nal insufficiency.
+ ▶ Use with caution in geriatric animals and those with con-
+current hypoadrenocorticism (treated), cardiac disease, and 
+diabetes mellitus.
+ ▶ Adverse effects are associated with iatrogenic hyperthyroid-
+ism (eg, tachycardia, polyphagia, polyuria/polydipsia, excit-
+ability, nervousness, and excessive panting); some cats may 
+appear apathetic.
+ ▶ Review drug–drug and drug–laboratory interactions prior to 
+prescribing.
+ ▶ Should not be confused with liothyronine or desiccated 
+ thyroid
+Uses/Indications
+Levothyroxine is indicated for the treatment of hypothyroidism in 
+all species. In horses, it has been used as an adjunct therapy to treat 
+equine metabolic syndrome (EMS).1 
+Pharmacology/Actions
+Levothyroxine is a synthetic form of thyroxine (T 4), which is the 
+principal hormone released by the thyroid. Levothyroxine is mainly 
+converted (deiodinated) to triiodothyronine (T3) peripherally in the 
+human body. In humans, T3 is the primary hormone responsible for 
+activity. Approximately 80% of T3 found in the peripheral tissues is 
+derived from T4.
+Thyroid hormones affect the rate of many physiologic processes, in-
+cluding increasing fat, protein, and carbohydrate metabolism, protein 
+synthesis, gluconeogenesis, cellular metabolism, oxygen consumption, 
+body temperature, heart rate and cardiac output, blood volume, en-
+zyme system activity, and growth and maturity. Thyroid hormones 
+also promote mobilization and utilization of glycogen stores. The thy-
+roid hormone is particularly important for adequate development of 
+the CNS. Although the exact mechanisms of how thyroid hormones 
+exert their effects are not fully understood, it is known that thyroid 
+hormones (primarily triiodothyronine) act at the cellular level by con-
+trolling DNA transcription and protein synthesis.
+Pharmacokinetics
+In dogs, orally administered levothyroxine has relatively low bio -
+availability (ie, 10% to 20%) and short elimination half-life as com -
+pared with humans. Peak serum concentrations reportedly occur 4 
+to 6 hours after oral administration and the serum half-life is ≈10 
+to 14 hours. However, there can be wide interpatient variability in 
+pharmacokinetic parameters. Elimination in the feces may account 
+for 50% of a dose.
+An oral liquid formulated for dogs (Leventa®, not approved in the 
+United States) appears to be better absorbed than tablet formula -
+tions. When comparing oral tablets given at 200 μg twice daily with 
+oral liquid given at 200 μg once daily, the relative bioavailability of 
+the liquid was 206% (median) that of the tablets.2
+Studies in dogs have shown that levothyroxine absorption is af -
+fected by delivery with food; administration with food causes less 
+medication to be absorbed and delays time to full absorption. 2 Be-
+cause absorption of levothyroxine is affected by food at different rates 
+and the levothyroxine dose is titrated individually to each animal, it 
+is important that owners give this medication to their animal at the 
+same time each day, in a consistent manner relative to food, and that 
+the same method of delivery is used each time.
+Contraindications/Precautions/Warnings
+Levothyroxine (and other replacement thyroid hormones) are con -
+traindicated in animals with thyrotoxicosis or untreated adrenal 
+insufficiency. It should be used with caution, and at a lower initial 
+dosage, in animals with concurrent hypoadrenocorticism (treated), 
+cardiac disease, diabetes mellitus, or in senior animals. For these an-
+imals, the recommendation for reduction in the initial levothyroxine 
+dose varies and ranges from 25% to 75% of the usual dose. Because 
+levothyroxine can cause an increased basal metabolic rate that may 
+exacerbate electrolyte disturbances, dogs with hypoadrenocorticism 
+should receive replacement mineralocorticoid and glucocorticoid 
+therapy before receiving levothyroxine.
+Do not confuse levothyroxine with liothyronine or desiccated 
+thyroid.
+Adverse Effects
+The most commonly reported adverse effects include anorexia, der-
+matitis, vomiting, otitis externa, lethargy, polydipsia, diarrhea, leuko-
+cytosis, pruritus, tachypnea, polyuria, hyperactivity, and seborrhea.3 
+Case reports of rare incidences of fixed drug eruptions and erythema 
+multiforme have been reported in dogs treated with levothyroxine.
+Hypersensitivity to 2 inactive ingredients, magnesium stearate 
+and polyvinylpyrrolidone, found in certain levothyroxine products 
+has been observed in dogs. Reactions include cutaneous reactions 
+that resolve after medication has been discontinued. Dogs that expe-
+rienced this reaction were then treated with levothyroxine products 
+that did not contain magnesium stearate or polyvinylpyrrolidone 
+and tolerated the medication well.4
+Reproductive/Nursing Safety
+Levothyroxine is considered safe for use during pregnancy, as thyroid 
+hormone is essential for fetal development.5 In humans, levothyroxine 
+is considered the drug of choice for hypothyroidism during pregnancy. 
+Levothyroxine requirements may increase during pregnancy. In 
+humans, increasing levothyroxine dose on confirmation of preg -
+nancy is recommended. 6 In hypothyroid bitches, one small study 
+found that standard levothyroxine supplementation was adequate to 
+maintain a euthyroid state during pregnancy7; however, thyroid sta-
+tus should be monitored regularly throughout pregnancy and in the 
+postparturient period. 
+Minimal amounts of thyroid hormones are excreted in milk and 
+should not affect nursing offspring. The World Health Organization 
+(WHO) considers levothyroxine to be compatible with breastfeeding.8
+Overdose/Acute Toxicity
+Long-term overdoses produce signs of hyperthyroidism, including 
+tachycardia, polyphagia, chronic vomiting and diarrhea, weight loss, 
+polyuria/polydipsia, excitability, nervousness, and excessive pant -
+ing. The dose should be reduced and/or temporarily withheld until 
+signs subside. Some cats (≈10%) may exhibit signs of apathy (eg, list-
+lessness, anorexia).9 Toxicosis occurred in a dog that routinely con -
+sumed the feces of a housemate receiving levothyroxine.
+A single, acute overdose in small animals is less likely to cause se-
+vere thyrotoxicosis as compared with long-term overdoses. Vomiting, 
+
+===== PDF_PAGE_0777 =====
+750   Levothyroxine
+diarrhea, hyperactivity to lethargy, hypertension, tachycardia, tachy-
+pnea, dyspnea, and abnormal pupillary light reflexes may be noted in 
+dogs and cats 1 to 9 hours after ingestion. If ingestion occurred within 
+2 hours, treatment to reduce absorption of the drug should be accom-
+plished using standard protocols (eg, emetics, cathartics, charcoal) un-
+less contraindicated by the animal’s condition. Treatment is supportive 
+based on clinical signs. Oxygen, artificial ventilation, cardiac glyco -
+sides, beta-blockers (eg, propranolol), fluids, dextrose, and antipyretic 
+agents have all been suggested if necessary. One case of a healthy dog 
+that ingested up to 10 g/kg was managed with gut decontamination, 
+and the dog had normal T 3 concentrations 6 days postingestion and 
+normal T4 concentrations after 36 days.10
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving levothyroxine and may be of 
+significance in veterinary patients. Unless otherwise noted, use to -
+gether is not necessarily contraindicated, but the potential risks must 
+be weighed and additional monitoring performed when appropriate.
+ ■ Amiodarone : May decrease the metabolism of T4 to T3
+ ■ Antacids, Oral (eg, aluminum, calcium, or magnesium 
+salts): May reduce levothyroxine absorption; doses should be 
+separated by 4 hours
+ ■ Antidiabetic Agents  (eg, insulin, oral agents ): Levothyrox-
+ine may increase requirements for insulin or oral agents.
+ ■ Antithyroid Agents  (eg, carbimazole, methimazole ): De -
+creased conversion of T4 to T3
+ ■ Cholestyramine : May reduce levothyroxine absorption; doses 
+should be separated by 4 hours
+ ■ Corticosteroids, High-Dose  (eg, dexamethasone, fludro-
+cortisone, prednis(ol)one): Decreased conversion of T4 to T3
+ ■ Digoxin : Potential for reduced digoxin concentrations and/or 
+therapeutic response
+ ■ Estriol : May decrease serum free thyroxine concentration
+ ■ Ferrous Sulfate : May reduce levothyroxine absorption; doses 
+should be separated by 4 hours
+ ■ Fiber Supplements ( eg, psyllium), High Fiber Diet : May 
+reduce levothyroxine absorption
+ ■ Ketamine : May cause tachycardia and hypertension
+ ■ Lanthanum : May reduce levothyroxine absorption; doses 
+should be separated by 4 hours 
+ ■ Phenobarbital : Possible increased metabolism of thyroxine; 
+dosage adjustments may be needed
+ ■ Proton Pump Inhibitors (PPIs; eg, omeprazole, pantopra-
+zole): Reduced gastric acid may reduce levothyroxine absorption.
+ ■ Rifampin : Possible increased clearance of thyroxine; dosage ad-
+justments may be needed.
+ ■ Sertraline : May increase levothyroxine requirements; likely 
+applies to other SSRIs 
+ ■ Sevelamer : May reduce levothyroxine absorption; doses should 
+be separated by 4 hours 
+ ■ Sodium Polystyrene Sulfonate : May reduce levothyroxine 
+absorption; doses should be separated by 4 hours
+ ■ Sucralfate : May reduce levothyroxine absorption; doses 
+should be separated by 4 hours
+ ■ Sympathomimetics (eg, epinephrine, norepinephrine): 
+Levothyroxine can potentiate effects.
+ ■ Theophylline, Aminophylline : Levothyroxine may decrease 
+theophylline concentration. 
+ ■ Tricyclic Antidepressants (eg, amitriptyline, clomip -
+ramine): Increased risk for CNS stimulation and cardiac 
+ arrhythmias
+ ■ W arfarin : Thyroid hormones increase the catabolism of vita -
+min K-dependent clotting factors that may increase the anticoag-
+ulation effects in animals on warfarin.
+Laboratory Considerations
+ ■ Renal function tests: Hypothyroid dogs can have a decreased glo-
+merular filtration rate (GFR); restoration to a euthyroid state can 
+increase GFR and reduce serum creatinine concentrations. 
+The following drugs may have effects on thyroid function tests; re -
+sults should be evaluated accordingly.
+ ■ Effects on serum total T4 (TT4): Decreases may be caused by ami-
+noglutethimide, anabolic steroids/androgens, antithyroid drugs 
+(eg, propylthiouracil [PTU], carbimazole, methimazole), aspara -
+ginase, barbiturates, corticosteroids, danazol, diazepam, heparin, 
+methadone, mitotane, nitroprusside, phenylbutazone, phenytoin, 
+salicylates (large doses), sulfonamides, and sulfonylureas; increas-
+es may be caused by estrogens ( NOTE: Estrogens may have no 
+effect on canine T 3 or T 4 concentrations), fluorouracil, insulin, 
+and propranolol.
+ ■ Effects on serum total T3: Decreases may be caused by antithyroid 
+drugs (eg, PTU, carbimazole, methimazole), barbiturates, corti -
+costeroids, heparin, propranolol, salicylates (large doses), and 
+sulfonamides; increases may be caused by estrogens, fluorouracil, 
+and thiazides.
+ ■ Effects on T3 uptake resin: Decreases may be caused by antithy -
+roid drugs (eg, PTU, carbimazole, methimazole), estrogens, and 
+fluorouracil; increases may be caused by anabolic steroids/andro-
+gens, asparaginase, corticosteroids, danazol, heparin, phenylbuta-
+zone, and salicylates (large doses).
+ ■ Effects on serum TSH : Decreases may be caused by corticoste -
+roids, danazol; increases may be caused by aminoglutethimide, 
+antithyroid drugs (eg, PTU, carbimazole, methimazole), sulfon -
+amides, and toceranib.11
+ ■ Effects on serum free T4: Decreases may be caused by antithyroid 
+drugs (eg, PTU, methimazole), barbiturates, corticosteroids, and 
+NSAIDs; increases may be caused by furosemide and heparin.
+Dosages
+DOGS: 
+Hypothyroidism:
+Oral therapy: 
+a) Replacement therapy for diminished thyroid function (label 
+dosage; FDA-approved): The initial recommended daily dose 
+is 0.022 mg/kg (22 µg/kg) PO in single or divided doses. The 
+dosage is then adjusted by monitoring serum TT 4 concentra-
+tions 4 to 6 hours after a dose is given, every 4 to 8 weeks until 
+an adequate maintenance dose is established. In field stud -
+ies, the majority of dogs required at least one dosage adjust -
+ment, and most dogs were maintained on an oral dosage of  
+0.018 – 0.026 mg/kg/day (18 – 26 µg/kg/day). Administer con-
+sistently, with or without food.3
+b) Oral tablets (extra-label): NOTE: Initial dosages vary. There 
+is inadequate published evidence or general consensus sup -
+porting one recommendation over another. Initial dosages of  
+0.01 – 0.02 mg/kg (10 – 20 µg/kg) PO every 12 to 24 hours 
+are typical. A maximum initial dosage of 0.8 mg/dog (NOT 
+mg/kg) every 12 hours is often recommended. Lower doses 
+(eg, 25% reduction) are recommended in dogs with certain 
+concurrent conditions (see Contraindications/Precautions/
+

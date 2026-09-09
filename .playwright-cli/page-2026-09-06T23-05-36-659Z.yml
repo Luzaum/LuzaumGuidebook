@@ -1,0 +1,161 @@
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - button "Abrir navegação do Vetius" [ref=e8] [cursor=pointer]
+        - link "Voltar para a Home" [ref=e13] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=e15]
+          - generic [ref=e16]: Vetius
+      - generic [ref=e17]:
+        - button "Ativar modo escuro" [ref=e18] [cursor=pointer]
+        - link "Entrar" [ref=e21] [cursor=pointer]:
+          - /url: /login?next=%2F
+  - main [ref=e22]:
+    - generic [ref=e24]:
+      - generic [ref=e25]:
+        - img "Hero Vetius" [ref=e27]
+        - generic:
+          - generic:
+            - generic [ref=e28]: Validado por Especialistas
+            - generic [ref=e33]:
+              - heading "Medicina Veterinária de Alta Precisão" [level=1] [ref=e34]
+              - paragraph [ref=e35]:
+                - text: Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
+                - strong [ref=e36]: Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS
+                - text: e muito mais!)
+              - button "Explorar Módulos" [ref=e37] [cursor=pointer]
+            - generic [ref=e41]:
+              - generic [ref=e42]: Validado por Especialistas
+              - generic [ref=e47]: Literatura Atualizada
+              - generic [ref=e52]: Comunidade Ativa
+      - generic [ref=e60]:
+        - generic [ref=e61]:
+          - generic [ref=e62]: Por que o Vetius?
+          - heading "Um companheiro de plantão robusto e completo" [level=2] [ref=e72]
+          - paragraph [ref=e73]: Feito por veterinários, para veterinários. Cada funcionalidade foi pensada para resolver problemas reais da rotina clínica.
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - heading "Baseado em Evidências Científicas" [level=3] [ref=e80]
+            - paragraph [ref=e81]: "Conteúdo extraído das melhores referências: Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM e muito mais. Cada protocolo tem respaldo literário sólido."
+            - generic [ref=e82]:
+              - generic [ref=e83]: Plumb's
+              - generic [ref=e84]: Nelson & Couto
+              - generic [ref=e85]: ACVIM
+              - generic [ref=e86]: BSAVA
+          - generic [ref=e87]:
+            - heading "Todas as Áreas Integradas" [level=3] [ref=e93]
+            - paragraph [ref=e94]: De emergências à neurologia, de hemogasometria à anestesiologia, tudo junto em um ecossistema clínico completo para cães e gatos.
+            - generic [ref=e95]:
+              - generic [ref=e96]: Neurologia
+              - generic [ref=e97]: Emergências
+              - generic [ref=e98]: CRI/Infusão
+              - generic [ref=e99]: Hemogasometria
+          - generic [ref=e100]:
+            - heading "Aliado Inteligente no Plantão" [level=3] [ref=e104]
+            - paragraph [ref=e105]: Interface projetada para decisões rápidas e precisas. Menos tempo calculando, mais tempo cuidando. Perfeito para o ritmo intenso da rotina veterinária.
+            - generic [ref=e106]:
+              - generic [ref=e107]: Decisão rápida
+              - generic [ref=e108]: Plantão
+              - generic [ref=e109]: Mobile-friendly
+              - generic [ref=e110]: Offline
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic [ref=e114]: Depoimentos Reais
+          - heading "O que nossos veterinários estão dizendo" [level=2] [ref=e120]
+          - paragraph [ref=e121]: De norte a sul do Brasil, o Vetius está transformando a rotina clínica.
+        - generic [ref=e122]:
+          - generic [ref=e123]:
+            - paragraph [ref=e135]: "\"O Vetius virou meu companheiro de plantão. O acesso rápido às ferramentas clínicas reduziu meu tempo de decisão e deixou a rotina muito mais segura.\""
+            - generic [ref=e136]:
+              - generic [ref=e137]: CR
+              - generic [ref=e138]:
+                - paragraph [ref=e139]: Dra. Camila Rodrigues
+                - paragraph [ref=e140]: Clínica Geral · SP
+          - generic [ref=e141]:
+            - paragraph [ref=e153]: "\"Trabalho em UPA veterinária e os protocolos de emergência já salvaram pacientes. A base literária sólida passa confiança real nas decisões críticas.\""
+            - generic [ref=e154]:
+              - generic [ref=e155]: FA
+              - generic [ref=e156]:
+                - paragraph [ref=e157]: Dr. Felipe Araújo
+                - paragraph [ref=e158]: Emergenciologia · MG
+          - generic [ref=e159]:
+            - paragraph [ref=e171]: "\"A área de neurologia é impressionante. A lógica de diagnóstico diferencial me ajuda a estruturar o raciocínio clínico de forma muito mais eficiente.\""
+            - generic [ref=e172]:
+              - generic [ref=e173]: LM
+              - generic [ref=e174]:
+                - paragraph [ref=e175]: Dra. Larissa Mendes
+                - paragraph [ref=e176]: Neurologia · RS
+          - generic [ref=e177]:
+            - paragraph [ref=e189]: "\"A calculadora de infusão de drogas é fantástica. Posso calcular CRI de cetamina e dexmedetomidina em tempo real durante o procedimento.\""
+            - generic [ref=e190]:
+              - generic [ref=e191]: RC
+              - generic [ref=e192]:
+                - paragraph [ref=e193]: Dr. Rafael Costa
+                - paragraph [ref=e194]: Anestesiologia · RJ
+          - generic [ref=e195]:
+            - paragraph [ref=e207]: "\"Uso diariamente na minha clínica em Salvador. A facilidade de ter todo o conhecimento do Nelson & Couto acessível no celular é algo que não tem preço.\""
+            - generic [ref=e208]:
+              - generic [ref=e209]: BS
+              - generic [ref=e210]:
+                - paragraph [ref=e211]: Dra. Beatriz Santos
+                - paragraph [ref=e212]: Clínica Geral · BA
+          - generic [ref=e213]:
+            - paragraph [ref=e225]: "\"Recomendo para todos os colegas. A integração entre as diferentes áreas facilita o raciocínio clínico desde o diagnóstico até o tratamento.\""
+            - generic [ref=e226]:
+              - generic [ref=e227]: TO
+              - generic [ref=e228]:
+                - paragraph [ref=e229]: Dr. Thiago Oliveira
+                - paragraph [ref=e230]: Medicina Interna · PR
+      - generic [ref=e235]:
+        - generic [ref=e236]: Comunidade Vetius
+        - heading "Faça parte da comunidade" [level=2] [ref=e242]
+        - paragraph [ref=e243]: Cadastre-se e receba um link no seu e-mail para salvar seu progresso, sincronizar dados e usar o Vetius em qualquer dispositivo, em qualquer lugar.
+        - paragraph [ref=e244]: Sem spam. Sem taxas. Apenas ferramentas que facilitam seu dia a dia.
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - textbox "Seu nome" [ref=e251]
+            - textbox "Seu e-mail profissional" [ref=e256]
+          - button "Quero meu acesso" [ref=e257] [cursor=pointer]
+          - paragraph [ref=e260]:
+            - text: Ao se cadastrar, você concorda com nossa
+            - button "Política de Privacidade" [ref=e261] [cursor=pointer]
+            - text: .
+      - generic [ref=e263]:
+        - generic [ref=e264]:
+          - generic [ref=e265]:
+            - generic [ref=e266]:
+              - img "Logo Vetius" [ref=e267]
+              - generic [ref=e268]: Vetius
+            - paragraph [ref=e269]: Plataforma de suporte à decisão clínica veterinária, baseada em evidências científicas e desenvolvida por veterinários para veterinários.
+            - button "Acessar Plataforma" [ref=e270] [cursor=pointer]
+          - generic [ref=e275]:
+            - heading "Institucional" [level=4] [ref=e276]
+            - list [ref=e277]:
+              - listitem [ref=e278]:
+                - button "Quem Somos" [ref=e279] [cursor=pointer]
+              - listitem [ref=e280]:
+                - button "Nossa Missão" [ref=e281] [cursor=pointer]
+              - listitem [ref=e282]:
+                - button "Time Veterinário" [ref=e283] [cursor=pointer]
+              - listitem [ref=e284]:
+                - button "Parceiros" [ref=e285] [cursor=pointer]
+          - generic [ref=e286]:
+            - heading "Legal & Suporte" [level=4] [ref=e287]
+            - list [ref=e288]:
+              - listitem [ref=e289]:
+                - button "Política de Privacidade" [ref=e290] [cursor=pointer]
+              - listitem [ref=e291]:
+                - button "Termos de Uso" [ref=e292] [cursor=pointer]
+              - listitem [ref=e293]:
+                - button "Ouvidoria" [ref=e294] [cursor=pointer]
+              - listitem [ref=e295]:
+                - button "Reportar Problema" [ref=e296] [cursor=pointer]
+              - listitem [ref=e297]:
+                - button "Contato" [ref=e298] [cursor=pointer]
+        - generic [ref=e299]:
+          - paragraph [ref=e300]: © 2025 Vetius. Todos os direitos reservados.
+          - paragraph [ref=e301]:
+            - text: Ferramenta de
+            - strong [ref=e302]: suporte à decisão clínica
+            - text: . Não substitui o julgamento profissional.

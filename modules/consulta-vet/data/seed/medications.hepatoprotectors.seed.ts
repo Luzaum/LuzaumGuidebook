@@ -623,7 +623,15 @@ export const hepatoprotectorMedicationsSeed: MedicationRecord[] = [
         perWeightUnit: 'kg',
         route: 'por via intravenosa ou por via oral',
         frequency: 'dose de ataque',
-        duration: 'Seguida de 70 mg/kg a cada 6 horas',
+        duration: 'uma única administração',
+        followUpPhases: [
+          {
+            doseValue: 70,
+            route: 'por via intravenosa ou por via oral',
+            frequency: 'a cada 6 horas',
+            duration: '7 administrações; ajustar conforme evolução e protocolo hospitalar',
+          },
+        ],
         clinicalContext: 'protocolo_hospitalar',
         evidenceLevel: '🟢 Protocolo clássico de intoxicação',
         notes: '7 tratamentos ou ~5 dias conforme protocolo e evolução.',

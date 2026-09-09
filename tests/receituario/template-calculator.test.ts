@@ -39,7 +39,7 @@ test('troca asteriscos por marcadores visuais de lista', () => {
 
 test('remove dados técnicos e cuidados automáticos de receitas antigas', () => {
   const cleaned = stripPrescriptionTechnicalDetails(`5. MEDICAMENTO — Comprimido
-Administrar 0,75 comprimido por via oral.
+Administrar 0,75 comprimido por via VO, q8h.
 Dose selecionada: 0,75 mg/kg — fonte: Cadastro da clínica.
 Dose real após conversão: 0,5 mg/kg.
 Dose clínica: 0,75 mg/kg • Faixa indicada: 0,5 a 1 mg/kg.
@@ -55,6 +55,8 @@ RECOMENDAÇÕES
 • Manter acompanhamento.`);
   assert.doesNotMatch(cleaned, /Dose selecionada|Dose real|Dose clínica|CUIDADOS IMPORTANTES|Cuidado automático|INFORMAÇÕES IMPORTANTES|Referência clínica/);
   assert.match(cleaned, /Administrar 0,75 comprimido/);
+  assert.match(cleaned, /por via oral, a cada 8 horas/i);
+  assert.doesNotMatch(cleaned, /\b(?:VO|q8h)\b/i);
   assert.match(cleaned, /RECOMENDAÇÕES/);
 });
 

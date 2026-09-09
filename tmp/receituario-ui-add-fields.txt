@@ -1,0 +1,206 @@
+### Page
+- Page URL: http://localhost:5173/tmp/receituario-review.html
+### Snapshot
+```yaml
+- main [ref=f3e3]:
+  - heading "Validação isolada dos componentes reais — dados fictícios" [level=1] [ref=f3e4]
+  - generic [ref=f3e5]:
+    - text: Modelo
+    - combobox "Modelo" [ref=f3e6]:
+      - option "Esporotricose — Gatos"
+      - option "Esporotricose — Cães"
+      - option "Cinomose — Cães"
+      - option "Erliquiose/Anaplasmose — Cães"
+      - option "Pós-operatório de castração — Cadela"
+      - option "Pós-operatório de castração — Gata"
+      - option "Pós-operatório de castração — Cão macho"
+      - option "Pós-operatório de castração — Gato macho"
+      - option "Gastroenterite aguda não complicada — Cão"
+      - option "Colapso de traqueia — Cão"
+      - option "Asma felina"
+      - option "Manejo de ferida pós-operatória"
+      - option "Dermatite atópica — Cão"
+      - option "Pancreatite — Cão (após estabilização)"
+      - option "Pancreatite — Gato (após estabilização)" [selected]
+      - option "Tríade felina — tratamento individualizado"
+      - option "Diabetes mellitus — Cão — Caninsulin"
+      - option "Diabetes mellitus — Cão — Insulina NPH"
+      - option "Diabetes mellitus — Cão — Glargina U-100"
+      - option "Diabetes mellitus — Cão — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Glargina U-100"
+      - option "Diabetes mellitus — Gato — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Caninsulin"
+      - option "Trauma vertebromedular — Cão"
+      - option "Trauma vertebromedular — Gato"
+      - option "Hérnia de disco — Cão (manejo conservador)"
+      - option "Síndrome vestibular — Cão"
+      - option "Síndrome vestibular — Gato"
+  - generic [ref=f3e7]:
+    - text: Espécie
+    - combobox "Espécie" [ref=f3e8]:
+      - option "gato" [selected]
+      - option "cão"
+  - generic [ref=f3e9]:
+    - text: Peso
+    - textbox "Peso" [ref=f3e10]: "4"
+  - generic [ref=f3e11]:
+    - generic [ref=f3e12]:
+      - region "Configuração clínica do modelo" [ref=f3e13]:
+        - generic [ref=f3e14]:
+          - generic [ref=f3e15]:
+            - heading "Suporte após avaliação e estabilização" [level=3] [ref=f3e16]
+            - paragraph [ref=f3e17]: Marque somente os blocos que deseja prescrever.
+          - generic [ref=f3e18]: Dose do modelo · revisão de fonte pendente
+        - generic [ref=f3e22]:
+          - button "Maropitant oral — vômitos, paciente estável Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação." [ref=f3e23] [cursor=pointer]:
+            - generic [ref=f3e26]:
+              - generic [ref=f3e27]: Maropitant oral — vômitos, paciente estável
+              - generic [ref=f3e28]: Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação.
+          - button "Ondansetrona oral — náusea persistente Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica." [ref=f3e29] [cursor=pointer]:
+            - generic [ref=f3e32]:
+              - generic [ref=f3e33]: Ondansetrona oral — náusea persistente
+              - generic [ref=f3e34]: Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica.
+          - button "Buprenorfina na mucosa da boca — dor em gato Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium." [ref=f3e35] [cursor=pointer]:
+            - generic [ref=f3e38]:
+              - generic [ref=f3e39]: Buprenorfina na mucosa da boca — dor em gato
+              - generic [ref=f3e40]: Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium.
+        - paragraph [ref=f3e41]: Nenhum tratamento opcional foi incluído. As recomendações continuam disponíveis para revisão.
+        - paragraph [ref=f3e44]: Não é protocolo de internação. Confirmar hidratação, analgesia, ingestão e necessidade de sonda. Selecionar apenas medicamentos indicados; nenhuma medicação é inserida automaticamente.
+      - generic [ref=f3e48]:
+        - generic [ref=f3e127]:
+          - generic [ref=f3e128]:
+            - paragraph [ref=f3e129]: Princípio ativo selecionado
+            - paragraph [ref=f3e130]: Ondansetrona (cloridrato)
+            - paragraph [ref=f3e131]: Ondansetrona
+          - button "Trocar medicamento" [ref=f3e132] [cursor=pointer]
+        - generic [ref=f3e136]:
+          - text: 2. Apresentação comercial
+          - combobox "Apresentação e concentração" [ref=f3e137]:
+            - option "Sem conversão por apresentação"
+            - option "Ondansetrona humana — solução injetável 2 mg/mL — Solução injetável — 2 mg/mL"
+            - option "Emedron 1% — solução injetável 10 mg/mL (Agener) — Solução injetável — 10 mg/mL"
+            - option "Vonau Vet — solução oral 4 mg/5 mL (Avert) — Solução oral — 0.8 mg/mL" [selected]
+            - option "Comprimido orodispersível 4 mg (humano — Vonau Flash) — Comprimido orodispersível — 4 mg/comprimido"
+            - option "Comprimido 8 mg (humano) — Comprimido — 8 mg/comprimido"
+          - generic [ref=f3e138]:
+            - generic [ref=f3e139]: "Concentração: 0.8 mg/mL"
+            - generic [ref=f3e140]: "Forma: Solução oral"
+            - generic [ref=f3e141]: "Fabricante: não cadastrado"
+            - generic [ref=f3e142]: "Origem: Catálogo global"
+        - generic [ref=f3e143]:
+          - text: 3. Dose ou modo de uso
+          - combobox "Dose ou modo de uso" [ref=f3e144]:
+            - option "Náusea/vômito — IV ou SC • 0.1–1 mg/kg"
+            - option "Náusea — VO (baixa biodisponibilidade ~32%) • 0.4–0.5 mg/kg" [selected]
+            - option "Definir dose ou modo de uso manualmente"
+          - generic [ref=f3e145]: VO • q8–12h (ajustar à resposta)
+        - generic [ref=f3e147]:
+          - generic [ref=f3e148]:
+            - text: Peso para cálculo
+            - generic [ref=f3e149]: 4 kg
+          - generic [ref=f3e150]:
+            - generic [ref=f3e151]: Dose para o cálculo (mg/kg)
+            - spinbutton "Dose para o cálculo (mg/kg)" [active] [ref=f3e152]: "0.5"
+          - generic [ref=f3e153]:
+            - text: Via de administração
+            - textbox "Via de administração" [ref=f3e154]:
+              - /placeholder: "Ex.: oral, subcutânea, tópica"
+              - text: VO
+        - generic [ref=f3e155]:
+          - generic [ref=f3e156]:
+            - text: Frequência
+            - combobox "Frequência" [ref=f3e157]:
+              - option "Selecionar frequência"
+              - option "Dose única"
+              - option "A cada 2 horas"
+              - option "A cada 4 horas"
+              - option "A cada 6 horas"
+              - option "A cada 8 horas" [selected]
+              - option "A cada 12 horas"
+              - option "A cada 24 horas"
+              - option "Escrever outra frequência"
+          - generic [ref=f3e158]:
+            - text: Duração
+            - combobox "Duração 7" [ref=f3e159]:
+              - option "Selecionar duração"
+              - option "Uso contínuo"
+              - option "Até reavaliação clínica"
+              - option "Por X dias" [selected]
+              - option "Por X semanas"
+              - option "Por X meses"
+              - option "Por X administrações"
+              - option "Escrever outra duração"
+            - spinbutton "Quantidade da duração" [ref=f3e160]: "7"
+        - generic [ref=f3e161]:
+          - generic [ref=f3e162]:
+            - generic [ref=f3e163]:
+              - text: Dose total calculada
+              - paragraph [ref=f3e164]: 2 mg
+            - generic [ref=f3e165]:
+              - text: Quantidade exata
+              - paragraph [ref=f3e166]: 2,5 mL
+            - generic [ref=f3e167]:
+              - text: Quantidade prática sugerida
+              - paragraph [ref=f3e168]: 2,5 mL
+          - paragraph [ref=f3e169]:
+            - text: "Dose real após arredondamento:"
+            - strong [ref=f3e170]: 0,5 mg/kg
+            - text: • diferença 0%
+        - button "Inserir medicamento na receita" [ref=f3e171] [cursor=pointer]
+    - article [ref=f3e68]:
+      - generic [ref=f3e69]:
+        - generic [ref=f3e70]:
+          - paragraph [ref=f3e71]: Vetius — validação local
+          - paragraph [ref=f3e72]: Receituário veterinário
+        - generic [ref=f3e73]:
+          - paragraph [ref=f3e74]: Teste técnico
+          - paragraph [ref=f3e75]: "CRMV: TESTE"
+          - paragraph [ref=f3e76]: 07/09/2026
+      - generic [ref=f3e77]:
+        - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=f3e78]
+        - generic [ref=f3e79]:
+          - generic [ref=f3e80]:
+            - term [ref=f3e81]: "Paciente:"
+            - definition [ref=f3e82]: Paciente fictício
+          - generic [ref=f3e83]:
+            - term [ref=f3e84]: "Responsável:"
+            - definition [ref=f3e85]: Tutor fictício
+          - generic [ref=f3e86]:
+            - term [ref=f3e87]: "Espécie:"
+            - definition [ref=f3e88]: gato
+          - generic [ref=f3e89]:
+            - term [ref=f3e90]: "Raça:"
+            - definition [ref=f3e91]: SRD
+          - generic [ref=f3e92]:
+            - term [ref=f3e93]: "Sexo:"
+            - definition [ref=f3e94]: fêmea
+          - generic [ref=f3e95]:
+            - term [ref=f3e96]: "Idade / peso:"
+            - definition [ref=f3e97]: 5 anos • 4 kg
+      - main [ref=f3e98]:
+        - paragraph [ref=f3e99]: RECOMENDAÇÕES DA DOENÇA
+        - paragraph [ref=f3e101]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+        - paragraph [ref=f3e102]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+        - paragraph [ref=f3e103]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+        - paragraph [ref=f3e104]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+        - paragraph [ref=f3e105]: • Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido
+        - paragraph [ref=f3e106]: para este gato, considerando também o intestino e o fígado.
+        - paragraph [ref=f3e107]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+        - paragraph [ref=f3e108]: vomitando, muito fraco ou com dificuldade para engolir.
+        - paragraph [ref=f3e109]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+        - paragraph [ref=f3e110]: comportamento. Levar essas informações no retorno.
+        - paragraph [ref=f3e111]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+        - paragraph [ref=f3e112]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+        - paragraph [ref=f3e113]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+        - paragraph [ref=f3e114]: própria.
+        - paragraph [ref=f3e115]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+        - paragraph [ref=f3e116]: manter e quando repetir exames.
+        - paragraph [ref=f3e118]: SINAIS PARA RETORNO
+        - paragraph [ref=f3e120]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+        - paragraph [ref=f3e121]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+        - paragraph [ref=f3e122]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+        - paragraph [ref=f3e123]: apetite.
+      - generic [ref=f3e124]:
+        - generic [ref=f3e125]: ConsultaVet • Documento emitido pelo profissional responsável
+        - generic [ref=f3e126]: Página 1 de 1
+```

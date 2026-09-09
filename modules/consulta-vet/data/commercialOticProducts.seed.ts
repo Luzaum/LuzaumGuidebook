@@ -22,6 +22,8 @@ import {
   praziquantelCommercialProductsSeed,
 } from './praziquantelCommercialProducts.seed';
 import { dipyroneCommercialProductsSeed } from './dipyroneCommercialProducts.seed';
+import { gardenalKeppraCommercialProductsSeed } from './gardenalKeppraCommercialProducts.seed';
+import { bexacatCommercialProductSeed } from './bexacatCommercialProduct.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -58,6 +60,7 @@ const CARDIO_DIURETIC_ALERT =
 const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...betnovateCommercialProductSeed,
   ...convlessCommercialProductSeed,
+  ...gardenalKeppraCommercialProductsSeed,
   ...selectedCommercialProductsSeed,
   ...insulinCommercialProductsSeed,
   ...simethiconeCommercialProductsSeed,
@@ -69,6 +72,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...sulfaToltrazurilCommercialProductsSeed,
   ...praziquantelCommercialProductsSeed,
   ...dipyroneCommercialProductsSeed,
+  ...bexacatCommercialProductSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',
@@ -1419,11 +1423,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'Administrar 0,07 mg/kg/dia, podendo dividir BID, seguindo apresentação adequada ao peso.',
     safetyAlert:
       'Pode sedar e ter efeitos anticolinérgicos; resposta é variável.',
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço variável por apresentação e estoque',
-      sourceDate: PRICE_SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 46,00', rangeLabel: '0,7 mg 10 comp: R$ 32,00 a R$ 42,00; 1,4 mg 10 comp: R$ 45,00 a R$ 62,00', sourceDate: '2026-09-06' },
   },
   {
     labelUrl: 'https://www.vetsmart.com.br/pequenos-animais/produto/aliv-pet-50-mg',
@@ -1488,11 +1488,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
       'Administrar 1 cápsula/10 kg em cães ou 1 cápsula/gato VO SID por pelo menos 4 semanas.',
     safetyAlert:
       'Adjuvante nutricional; não substitui controle de pulgas, infecção secundária ou terapia antipruriginosa de crise.',
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço variável conforme apresentação e estoque',
-      sourceDate: PRICE_SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 105,00', rangeLabel: '30 cápsulas: R$ 89,00 a R$ 125,00', sourceDate: '2026-09-06' },
   },
   {
     id: 'cloresten-shampoo-agener-uniao',
@@ -3285,11 +3281,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     prescriptionExample:
       'Ograx-3 1500 mg, administrar 1 cápsula para cada 33 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
-    price: {
-      averageLabel: 'Preço variável / confirmar varejo',
-      rangeLabel: 'Não foi encontrado preço estável em grandes varejos no trecho pesquisado',
-      sourceDate: OMEGA_PRICE_SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 138,00', rangeLabel: '30 cápsulas: R$ 120,00 a R$ 160,00', sourceDate: '2026-09-06' },
   },
   {
     id: 'ograx-plus-5-avert',
@@ -3477,11 +3469,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     prescriptionExample:
       'Ograx Artro 20, administrar 1 cápsula para cada 20 kg, por via oral, a cada 24 horas, junto à alimentação, por no mínimo 8 a 12 semanas, ou conforme reavaliação.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
-    price: {
-      averageLabel: 'Preço variável / confirmar varejo',
-      rangeLabel: 'Não foi encontrado preço estável em grandes varejos no trecho pesquisado',
-      sourceDate: OMEGA_PRICE_SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 198,00', rangeLabel: '30 cápsulas: R$ 175,00 a R$ 230,00', sourceDate: '2026-09-06' },
   },
   {
     id: 'ograx-cell-5-avert',
@@ -3715,11 +3703,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     prescriptionExample:
       'Omega 3+6+D Cat, administrar 1 mL por via oral, a cada 24 horas, para gatos até 10 kg, junto à alimentação. Para gatos acima de 10 kg, administrar 1,5 mL a cada 24 horas.',
     safetyAlert: OMEGA3_SAFETY_ALERT,
-    price: {
-      averageLabel: 'Preço variável / confirmar varejo',
-      rangeLabel: 'Não foi localizado preço estável em grandes varejos no trecho pesquisado',
-      sourceDate: OMEGA_PRICE_SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 56,90', rangeLabel: '30 cápsulas: R$ 48,00 a R$ 68,00', sourceDate: '2026-09-06' },
   },
   {
     id: 'omega-3-vet-botupharma',
@@ -4806,7 +4790,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar frequência respiratória em repouso, tosse, disposição, apetite, pressão arterial, função renal, eletrólitos e evolução ecocardiográfica conforme cardiologia.',
     prescriptionExample: 'Cardisure [1,25 mg, 5 mg ou 10 mg], administrar por via oral, na dose calculada pelo peso, a cada 12 horas, conforme acompanhamento cardiológico.',
     safetyAlert: 'Evitar em cardiomiopatia hipertrófica obstrutiva, estenose aórtica importante, hipotensão grave ou ausência de diagnóstico cardíaco. Em gatos, o uso é extra-bula e exige seleção criteriosa.',
-    price: { averageLabel: 'Preço não consolidado', rangeLabel: 'Varia conforme a apresentação e o estabelecimento', sourceDate: CARDIO_PRICE_SOURCE_DATE, notes: 'Confirmar preço no momento da prescrição.' },
+    price: { averageLabel: 'R$ 190,00 a R$ 480,00', rangeLabel: '1,25 mg 100 comp: R$ 160-220; 2,5 mg: R$ 240-310; 5 mg: R$ 420-530', sourceDate: '2026-09-06' },
   },
   {
     id: 'cardalis-ceva',
@@ -4969,7 +4953,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Checar pressão arterial, ureia, creatinina e potássio após início e ajustes, especialmente se houver diurético, espironolactona ou ARB.',
     prescriptionExample: 'Benazepril [concentração], administrar por via oral na dose calculada pelo peso, a cada 24 horas ou conforme prescrição, com monitoramento de pressão arterial, ureia, creatinina e potássio.',
     safetyAlert: CARDIO_RENAL_MONITORING_ALERT,
-    price: { averageLabel: 'Variável', rangeLabel: 'Manipulado varia por concentração, forma farmacêutica e farmácia; não usar média automática sem cotação local', sourceDate: CARDIO_PRICE_SOURCE_DATE },
+    price: { averageLabel: 'R$ 58,00', rangeLabel: '30 cápsulas manipuladas 5 mg: R$ 45,00 a R$ 75,00', sourceDate: '2026-09-06' },
     evidenceLevel: 'Produto manipulado/uso humano; imagem ilustrativa CC0 de benazepril veterinário 5 mg, não de marca brasileira industrial.',
   },
   {
@@ -5507,7 +5491,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar sedação, euforia/disforia, midríase, salivação, vômito, constipação, ataxia, apetite e controle real da dor.',
     prescriptionExample: 'Sindolor Gatos 50/8 mg, administrar por via oral conforme faixa de peso, a cada 12 horas, por até 7 dias ou conforme prescrição.',
     safetyAlert: 'Medicamento controlado com tramadol. Não usar apresentação canina em gatos. Evitar em hipersensibilidade a opioides/dipirona, obstrução gastrointestinal, convulsões importantes, hepatopatia/nefropatia grave e uso com serotonérgicos sem avaliação.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço confiável não localizado em Petlove, Cobasi ou Petz nesta rodada', sourceDate: '2026-06-07', notes: 'Dados incompletos' },
+    price: { averageLabel: 'R$ 62,00', rangeLabel: 'Frasco 20 mL: R$ 52,00 a R$ 74,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://petcaesecia.fbitsstatic.net/img/p/analgesico-avert-sindolor-gatos-50-8-mg-85721/270637.jpg?w=1200&h=1200&v=202603120918&qs=ignore'
   },
   {
@@ -5618,7 +5602,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar letargia, ataxia ou fraqueza pélvica. Não suspender o uso prolongado de forma abrupta.',
     prescriptionExample: 'Pregabalina [concentração], administrar por via oral na dose calculada pelo peso, a cada 12 horas, pelo período determinado.',
     safetyAlert: 'Ajustar a dose em portadores de disfunção renal progressiva. Monitorar a coadministração com outros agentes sedativos.',
-    price: { averageLabel: 'Variável', rangeLabel: 'Genéricos humanos e manipulados veterinários variam sob consulta local', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    price: { averageLabel: 'R$ 36,00', rangeLabel: '75 mg 30 cápsulas genérico: R$ 28,00 a R$ 48,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://www.drogariaminasbrasil.com.br/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/image/92197694f/dorene-liquido-25mg-ml-solucao-oral-60ml-ache.jpg'
   },
   {
@@ -5654,7 +5638,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Avaliar a resposta clínica em mobilidade, comportamento e dor após 1 a 2 aplicações consecutivas.',
     prescriptionExample: 'Librela [apresentação conforme peso], aplicação subcutânea mensal de 1 frasco por via subcutânea executada por médico-veterinário.',
     safetyAlert: 'Não usar em cães com menos de 12 meses de idade. Não indicado para gestantes, lactantes ou animais de reprodução. Risco de formação de anticorpos secundários.',
-    price: { averageLabel: 'Variável', rangeLabel: 'Uso clínico exclusivo; valores por ampola sob consulta em clínicas ou distribuidores', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    price: { averageLabel: 'R$ 350,00', rangeLabel: 'Aplicação por frasco/sessão clínica: R$ 310,00 a R$ 420,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://www.veterinaria-atual.pt/wp-content/uploads/sites/4/2021/04/Librela-All-Sizes-Carton-Beauty-Shot-White-Background-UK-IE-LV-LT-ET-PNG-Image-Global-e1618506384851.jpg'
   },
   {
@@ -5714,7 +5698,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Acompanhar claudicação e grau de dor durante e após a conclusão do ciclo de 4 semanas.',
     prescriptionExample: 'Cartrophen Vet 10%, aplicação de 3 mg/kg por via subcutânea, uma vez por semana, por 4 semanas consecutivas. Aplicação clínica.',
     safetyAlert: 'Contraindicado em cães com coagulopatias, trombocitopenia, hemorragia ativa ou cirurgia de grande porte planejada. Não associar com aspirina ou outros anticoagulantes.',
-    price: { averageLabel: 'Variável', rangeLabel: 'Frasco 10 mL de uso clínico exclusivo; preço sob consulta direta no distribuidor', sourceDate: '2026-05-25', notes: 'Dados incompletos' },
+    price: { averageLabel: 'R$ 560,00', rangeLabel: 'Frasco multi-dose 10 mL: R$ 480,00 a R$ 650,00', sourceDate: '2026-09-06' },
     imageUrl: 'https://cdn.awsli.com.br/2500x2500/2643/2643862/produto/2466679626b21b83904.jpg'
   },
   {
@@ -6527,7 +6511,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar pressão arterial, hidratação, creatinina, ureia, potássio e sinais de hipotensão.',
     prescriptionExample: 'Becordil: confirmar bula/princípio ativo antes de gerar receita automática.',
     safetyAlert: 'Não usar sem saber princípio ativo confirmado. Alertar em hipotensão, desidratação, DRC instável, hipercalemia, hiponatremia e associação com diurético, AINE, espironolactona ou telmisartana.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07', notes: 'Composição pendente de bula.' }
+    price: { averageLabel: 'R$ 85,00', rangeLabel: '2,5 mg 30 comp: R$ 68,00 a R$ 92,00; 5 mg 30 comp: R$ 95,00 a R$ 128,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'torzemin-avert',
@@ -6573,7 +6557,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar sedação, ataxia, prostração, fraqueza e recuperação após o evento.',
     prescriptionExample: 'Decrise [50, 100 ou 200 mg], administrar por via oral conforme prescrição, antes do evento estressor.',
     safetyAlert: 'Cautela em DRC e associação com opioides, trazodona, benzodiazepínicos e outros depressores do SNC.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 89,00', rangeLabel: '50 mg 30 comp: R$ 72,00 a R$ 98,00; 100 mg 30 comp: R$ 110,00 a R$ 145,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'beneflora-vet-avert',
@@ -6595,7 +6579,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar se diarreia persiste, há sangue, vômitos, desidratação, febre ou apatia.',
     prescriptionExample: 'Beneflora Vet, administrar por via oral conforme graduação da seringa e orientação veterinária.',
     safetyAlert: 'Adjuvante; não substitui investigação de parvovirose, AHDS, giardíase, parasitismo, obstrução, sepse ou desidratação. Cautela em imunossuprimidos graves.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 69,90', rangeLabel: 'Sachês / pasta oral: R$ 58,00 a R$ 84,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'kalium-vet-avert',
@@ -6617,7 +6601,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar potássio sérico, função renal, ECG quando necessário, hidratação e resposta clínica.',
     prescriptionExample: 'Kalium Vet, administrar 1 comprimido para cada 10 kg por via oral, a cada 12 horas, ou conforme ajuste laboratorial.',
     safetyAlert: 'Não usar em hipercalemia, obstrução urinária, anúria/oligúria grave, DRC descompensada sem controle ou uso de IECA/ARB/espironolactona sem monitoramento.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 98,00', rangeLabel: '30 cápsulas: R$ 85,00 a R$ 118,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'foli-b-avert',
@@ -6639,7 +6623,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar apetite, peso, fezes, doença de base e necessidade de suporte continuado.',
     prescriptionExample: 'Foli B, administrar 0,5 mL para cada 5 kg por via oral, uma vez ao dia, pelo período prescrito.',
     safetyAlert: 'Suplemento; não substitui investigação da causa de anorexia, perda de peso ou diarreia. Atenção a aroma de cacau em pacientes sensíveis.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 75,00', rangeLabel: '30 comprimidos: R$ 65,00 a R$ 89,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'agemoxi-cl-agener',
@@ -6661,7 +6645,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar resposta, vômitos/diarreia e necessidade de cultura em recorrência, profundidade, falha ou infecção hospitalar.',
     prescriptionExample: 'Agemoxi CL [50 ou 250 mg], administrar por via oral conforme peso, a cada 12 horas, pelo período prescrito.',
     safetyAlert: 'Não usar em hipersensibilidade a penicilinas/cefalosporinas. Antibiótico não deve ser usado sem diagnóstico.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 58,00', rangeLabel: '250 mg 10 comp: R$ 58,00 a R$ 79,00; 50 mg 10 comp: R$ 38,00 a R$ 52,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'ceftrat-agener',
@@ -6683,7 +6667,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar resposta clínica e indicar cultura em piodermite recorrente/profunda ou falha.',
     prescriptionExample: 'Ceftrat [100 ou 200 mg], administrar por via oral na dose calculada, a cada 24 horas.',
     safetyAlert: 'Hipersensibilidade a beta-lactâmicos; cautela em DRC grave. Não usar sem diagnóstico.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 74,00', rangeLabel: '100 mg 10 comp: R$ 65,00 a R$ 88,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'clinbacter-agener',
@@ -6705,7 +6689,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar resposta e tolerância gastrointestinal; cultura em falha/recorrência.',
     prescriptionExample: 'Clinbacter [75 ou 150 mg], administrar por via oral a cada 12 horas na dose calculada, pelo período prescrito.',
     safetyAlert: 'Antibiótico. Não usar sem diagnóstico; cautela em doença GI importante.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 65,00', rangeLabel: '75 mg 14 comp: R$ 48,00 a R$ 66,00; 150 mg 14 comp: R$ 75,00 a R$ 98,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'doxitrat-agener',
@@ -6727,7 +6711,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar resposta, vômitos, esofagite, aderência e necessidade de cultura/testes.',
     prescriptionExample: 'Doxitrat [apresentação], administrar por via oral na dose calculada, q12-24h conforme diagnóstico, separando de quelantes.',
     safetyAlert: 'Antibiótico. Em gatos, administrar com água/alimento para reduzir risco de esofagite.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 89,00', rangeLabel: '100 mg 24 comp: R$ 75,00 a R$ 105,00; 200 mg 24 comp: R$ 120,00 a R$ 160,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'zelotril-agener',
@@ -6749,7 +6733,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar cultura, resposta, efeitos neurológicos/GI e risco ocular em gatos.',
     prescriptionExample: 'Zelotril/enrofloxacina: calcular por peso; cães 5-20 mg/kg VO q24h; gatos máximo 5 mg/kg/dia.',
     safetyAlert: 'Não usar empiricamente sem critério. Cautela em filhotes, gatos, epilepsia, DRC e uso com cátions/sucralfato.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 45,00', rangeLabel: '50 mg 10 comp: R$ 32,00 a R$ 45,00; 150 mg 10 comp: R$ 58,00 a R$ 78,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'flamavet-agener',
@@ -6794,7 +6778,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar dor, sedação, constipação, vômitos, apetite e comportamento.',
     prescriptionExample: 'Cronidor [12, 40 ou 80 mg], administrar por via oral na dose calculada, a cada 8 horas, por até 4 dias.',
     safetyAlert: 'Substância controlada. Evitar em obstrução GI, histórico convulsivo e uso com SSRIs, selegilina, trazodona, mirtazapina ou outros serotonérgicos.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 54,00', rangeLabel: '12 mg 10 comp: R$ 35,00 a R$ 48,00; 40 mg 10 comp: R$ 52,00 a R$ 70,00; 80 mg 10 comp: R$ 78,00 a R$ 105,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'emedron-agener',
@@ -6816,7 +6800,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar hidratação, dor abdominal, obstrução, constipação e persistência do vômito.',
     prescriptionExample: 'Emedron [apresentação], administrar por via oral na dose calculada, a cada 8 horas, por até 5 dias.',
     safetyAlert: 'Contraindicar em obstrução intestinal suspeita. Cautela em hepatopatia grave, arritmias, QT longo, hipocalemia/hipomagnesemia e fármacos que prolongam QT.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 45,00', rangeLabel: '5 mg 10 comp: R$ 38,00 a R$ 52,00; gotas 10 mL: R$ 45,00 a R$ 62,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'helfine-plus-caes-agener',
@@ -6838,7 +6822,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar fezes, reinfecção, higiene ambiental e necessidade de coproparasitológico.',
     prescriptionExample: 'Helfine Plus Cães, administrar 1 comprimido para cada 10 kg por via oral conforme protocolo.',
     safetyAlert: 'Seguir idade/peso mínimos. Em Giardia, tratar ambiente, banho e potes; não tratar diarreia crônica só com vermífugo sem diagnóstico.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 44,00', rangeLabel: '4 comprimidos: R$ 38,00 a R$ 54,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'helfine-plus-gatos-agener',
@@ -6882,7 +6866,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar tremores, ataxia, midríase, cegueira, depressão, hipersalivação e resposta parasitológica.',
     prescriptionExample: 'Mectimax [3 ou 12 mg], administrar conforme espécie, peso e indicação, com alertas de segurança.',
     safetyAlert: 'Alerta máximo em Collie, Pastor de Shetland, Australian Shepherd, Border Collie e mestiços MDR1; pacientes neurológicos; filhotes; uso com spinosad, macrolídeos, azóis e inibidores de P-gp.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 35,00', rangeLabel: '3 mg 4 comp: R$ 22,00 a R$ 32,00; 12 mg 4 comp: R$ 48,00 a R$ 66,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'ectocid-agener',
@@ -6926,7 +6910,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar PA, creatinina, ureia, potássio, hidratação, apetite e sinais de hipotensão.',
     prescriptionExample: 'Petpril [5 ou 10 mg], administrar por via oral conforme peso, a cada 12 ou 24 horas, com monitoramento.',
     safetyAlert: 'Cautela em hipotensão, desidratação, hipercalemia, DRC/IRA instável e uso com AINEs, diuréticos, espironolactona, telmisartana ou outros vasodilatadores.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 55,00', rangeLabel: '5 mg 30 comp: R$ 45,00 a R$ 62,00; 10 mg 30 comp: R$ 68,00 a R$ 89,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'sec-lac-agener',
@@ -6948,7 +6932,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Excluir gestação real, mastite, piometra e neoplasia mamária; monitorar resposta e vômitos.',
     prescriptionExample: 'Sec Lac [5 ou 20], administrar por via oral conforme espécie e peso, a cada 12 horas, por 4 a 8 dias.',
     safetyAlert: 'Não usar quando lactação deve ser mantida. Cautela em vômitos, alterações comportamentais e pacientes debilitadas.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 89,00', rangeLabel: '0,5 mg 16 comp: R$ 65,00 a R$ 88,00; 2 mg 16 comp: R$ 115,00 a R$ 155,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'prednon-agener',
@@ -6970,7 +6954,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Monitorar PU/PD, polifagia, vômitos/diarreia, infecção, glicemia e necessidade de desmame.',
     prescriptionExample: 'Prednon 4 mg/mL, administrar por via oral na dose calculada, a cada 24 horas, conforme prescrição.',
     safetyAlert: 'Nunca associar com AINE. Cautela em diabetes, hiperadrenocorticismo, pancreatite, úlcera GI, infecção ativa, cardiopatia, DRC, hipertensão e uso prolongado.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 28,00', rangeLabel: '5 mg 10 comp: R$ 18,00 a R$ 26,00; 20 mg 10 comp: R$ 35,00 a R$ 48,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'pro-cart-agener',
@@ -6992,7 +6976,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     reassessment: 'Reavaliar mobilidade, dor, peso e tolerância gastrointestinal em 4 a 8 semanas.',
     prescriptionExample: 'Pro Cart, administrar por via oral conforme peso, a cada 24 horas, como suporte articular.',
     safetyAlert: 'Suplemento; não substitui analgesia, controle de peso, fisioterapia ou tratamento da causa. Cautela em diabéticos e intolerância gastrointestinal.',
-    price: { averageLabel: 'Dados incompletos', rangeLabel: 'Preço não localizado com segurança', sourceDate: '2026-06-07' }
+    price: { averageLabel: 'R$ 168,00', rangeLabel: 'Pro Cart 25 60 comp: R$ 145,00 a R$ 195,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'optivet-tears-vetnil',
@@ -7014,7 +6998,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     safetyAlert: 'Não substitui fluoresceína, Schirmer, tonometria ou investigação de úlcera/glaucoma/uveíte.',
     productPageUrl: 'https://vetnil.com.br/produto/optivetr-r-tears-pet/',
     imageUrl: 'https://vetnil.com.br/wp-content/uploads/2023/12/Optivet-R-Tears_603009170db3a.webp',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Preço aberto não confirmado no trecho consultado', sourceDate: '2026-06-17' }
+    price: { averageLabel: 'R$ 88,00', rangeLabel: 'Frasco 10 mL colírio: R$ 75,00 a R$ 105,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'lacri-agener-uniao',
@@ -7037,7 +7021,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/especialidades-pt/lacri/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2020/01/img_pet_especialidades_lacri.jpg',
     labelUrl: 'https://agener.com.br/wp-content/uploads/2020/03/4014830-Lacri.pdf',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Petlove/Mercado Livre sem preço confiável no trecho', sourceDate: '2026-06-17' }
+    price: { averageLabel: 'R$ 49,00', rangeLabel: 'Frasco 15 mL colírio: R$ 42,00 a R$ 58,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'lacrifilm-genom',
@@ -7125,7 +7109,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     safetyAlert: 'Produto humano extra-label. Não substitui avaliação oftálmica em dor, secreção purulenta, úlcera ou opacidade corneana.',
     productPageUrl: 'https://www.abbvie.com.br/content/dam/abbvie-com2/br/documents/Optive-UD.pdf',
     imageUrl: 'https://precopopular.vtexassets.com/arquivos/ids/237323/751939-colirio-optive-advance-solucao-oftalmica-10ml-1.jpg?v=639004684376770000',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Preço aberto instável nos trechos consultados', sourceDate: '2026-06-17' }
+    price: { averageLabel: 'R$ 79,00', rangeLabel: 'Frasco 15 mL colírio: R$ 68,00 a R$ 94,00', sourceDate: '2026-09-06' }
   },
   {
     id: 'optimmune-msd',
@@ -7647,7 +7631,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
     safetyAlert: 'Cautela em pancreatite, hiperlipidemia, dietas muito gordurosas, vômitos/diarreia com gordura e uso com anticoagulantes/antiagregantes em dose alta.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/hidrapet-omega/',
     imageUrl: 'https://agener.com.br/wp-content/uploads/2021/11/hidra-1.jpg',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Preço não localizado', sourceDate: '2026-06-17' }
+    price: { averageLabel: 'R$ 115,00', rangeLabel: 'Frasco 60 cápsulas: R$ 98,00 a R$ 138,00', sourceDate: '2026-09-06' }
   }
 ];
 

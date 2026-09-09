@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_simeticonamedquimica" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <filter id="cardShadow_simeticonamedquimica" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  
+  <rect width="420" height="440" rx="24" fill="url(#bg_simeticonamedquimica)"/>
+  
+  <!-- Main Pharmaceutical Presentation Card -->
+  <g transform="translate(25, 20)" filter="url(#cardShadow_simeticonamedquimica)">
+    <rect width="370" height="400" rx="20" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    
+    <!-- Top Accent Banner -->
+    <rect width="370" height="12" rx="8" fill="#16a34a"/>
+    
+    <!-- Category Badge -->
+    <g transform="translate(20, 24)">
+      <rect width="330" height="26" rx="6" fill="#16a34a" fill-opacity="0.14"/>
+      <text x="165" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#15803d" text-anchor="middle" letter-spacing="1">
+        ANTIGASES / CARMINATIVO
+      </text>
+    </g>
+    
+    <!-- Packaging Illustration Section -->
+    <g transform="translate(45, 0)">
+      
+    <g transform="translate(70, 75)">
+      <!-- Dropper Bottle -->
+      <rect x="25" y="30" width="70" height="90" rx="14" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+      <rect x="30" y="45" width="60" height="60" rx="4" fill="#16a34a" fill-opacity="0.15"/>
+      <!-- Bottle neck & dropper top -->
+      <rect x="45" y="15" width="30" height="15" fill="#94a3b8"/>
+      <path d="M48 15 Q60 0 72 15 Z" fill="#16a34a"/>
+      <!-- Liquid Drop icon -->
+      <path d="M60 62 C55 70, 50 75, 50 80 A10 10 0 0 0 70 80 C70 75, 65 70, 60 62 Z" fill="#16a34a"/>
+      <text x="60" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="800" fill="#16a34a" text-anchor="middle">GOTAS</text>
+    </g>
+  
+    </g>
+    
+    <!-- Product Identification Block -->
+    <g transform="translate(20, 245)">
+      <!-- Trade Name -->
+      <text x="165" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#0f172a" text-anchor="middle">
+        Simeticona 75 mg/mL
+      </text>
+      
+      <!-- Active Ingredient & Strength -->
+      <text x="165" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#16a34a" text-anchor="middle">
+        Simeticona emulsão oral (gotas)
+      </text>
+      
+      <!-- Presentation / Volume -->
+      <text x="165" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">
+        Frasco Conta-gotas 15 mL
+      </text>
+      
+      <!-- Laboratory -->
+      <text x="165" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">
+        Medquímica Indústria Farmacêutica
+      </text>
+    </g>
+    
+    <!-- Professional Rx Verification Footer -->
+    <g transform="translate(20, 348)">
+      <rect width="330" height="34" rx="8" fill="#f8fafc" stroke="#f1f5f9" stroke-width="1.5"/>
+      <text x="165" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#475569" text-anchor="middle" letter-spacing="0.5">
+        APRESENTAÇÃO FARMACÊUTICA VERIFICADA • USO CLÍNICO
+      </text>
+    </g>
+  </g>
+</svg>

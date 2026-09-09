@@ -12,31 +12,31 @@ export function GuidePage() {
             <BookOpen className="h-8 w-8 text-teal-500" />
             Guia clínico
           </h2>
-          <p className="mt-2 text-slate-500 dark:text-slate-400">Fisiologia, compartimentos, manutenção, tipos de fluido e monitorização clínica.</p>
+          <p className="mt-2 text-slate-500 dark:text-slate-400">Fisiologia, compartimentos corporais, taxas de manutenção, soluções e monitorização clínica.</p>
         </header>
 
         <section className="grid gap-6 lg:grid-cols-3">
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader><CardTitle className="text-lg">Água corporal total</CardTitle></CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Água corporal total gira em torno de 60% do peso.</p>
-              <p>Aproximadamente 67% fica no intracelular e 33% no extracelular.</p>
-              <p>No extracelular, cerca de 25% é intersticial e 8% vascular.</p>
+              <p>A água corporal total representa aproximadamente 60% do peso corporal do paciente.</p>
+              <p>Cerca de 67% (dois terços) reside no compartimento intracelular e 33% no extracelular.</p>
+              <p>Do extracelular, aproximadamente 25% é líquido intersticial e 8% volume intravascular plasmático.</p>
             </CardContent>
           </Card>
           <Card className="border-slate-200 dark:border-slate-800">
-            <CardHeader><CardTitle className="text-lg">Por que isso importa</CardTitle></CardHeader>
+            <CardHeader><CardTitle className="text-lg">Dinâmica dos fluidos</CardTitle></CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Cristaloide isotônico IV corrige primeiro o intravascular e depois redistribui para o interstício.</p>
-              <p>Por isso desidratação não se resolve com um bolus e pronto.</p>
+              <p>Cristaloides isotônicos IV expandem inicialmente o intravascular e redistribuem-se para o interstício em 30 a 60 minutos.</p>
+              <p>Por isso a desidratação tecidual requer reposição sustentada e calculada, e não apenas um bolus rápido.</p>
             </CardContent>
           </Card>
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader><CardTitle className="text-lg">Mensagem-chave</CardTitle></CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Hipovolemia e desidratação não são sinônimos.</p>
-              <p>Manutenção não substitui ressuscitação.</p>
-              <p>Fluido é droga, então tipo, via, taxa, metas e reavaliação importam.</p>
+              <p>Hipovolemia e desidratação são entidades clínicas distintas que exigem abordagens diferentes.</p>
+              <p>A taxa de manutenção nunca substitui a fase de ressuscitação volêmica em choque.</p>
+              <p>Fluido é medicamento: tipo de solução, via, taxa e metas de reavaliação contínua são cruciais.</p>
             </CardContent>
           </Card>
         </section>
@@ -45,21 +45,21 @@ export function GuidePage() {
           <Card className="border-rose-200 dark:border-rose-900/50">
             <CardHeader className="bg-rose-50/50 dark:bg-rose-900/20">
               <CardTitle className="text-lg text-rose-700 dark:text-rose-300">Hipovolemia</CardTitle>
-              <CardDescription>Problema do compartimento intravascular.</CardDescription>
+              <CardDescription>Déficit do compartimento intravascular.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2 p-6 text-sm text-slate-600 dark:text-slate-300">
-              <p>Corrige perfusão com rapidez, em alíquotas e com reavaliação.</p>
-              <p>Bolus fracionado, não manutenção, é a linguagem correta.</p>
+              <p>Corrige a perfusão tecidual com rapidez, em alíquotas (bolus fracionados) e com reavaliação frequente dos parâmetros vitais.</p>
+              <p>Bolus fracionado titulado ao efeito hemodinâmico.</p>
             </CardContent>
           </Card>
           <Card className="border-indigo-200 dark:border-indigo-900/50">
             <CardHeader className="bg-indigo-50/50 dark:bg-indigo-900/20">
               <CardTitle className="text-lg text-indigo-700 dark:text-indigo-300">Desidratação</CardTitle>
-              <CardDescription>Déficit do interstício e intracelular.</CardDescription>
+              <CardDescription>Déficit dos compartimentos intersticial e intracelular.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-2 p-6 text-sm text-slate-600 dark:text-slate-300">
-              <p>Reposição sustentada, geralmente em 12 a 24 h em estáveis.</p>
-              <p>Em crônicos, debilitados e cardiopatas, 24 a 48 h pode ser mais seguro.</p>
+              <p>Reposição gradual e sustentada, geralmente distribuída em 12 a 24 horas em pacientes estáveis.</p>
+              <p>Em pacientes cardiopatas, nefropatas ou geriátricos, 24 a 48 horas é a conduta mais segura.</p>
             </CardContent>
           </Card>
         </section>
@@ -67,7 +67,7 @@ export function GuidePage() {
         <section className="space-y-6">
           <div className="flex items-center gap-3">
             <Waves className="h-6 w-6 text-blue-500" />
-            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Avaliação Visual de Hidratação</h3>
+            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100">Avaliação visual de desidratação</h3>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             <Card className="border-emerald-200 bg-emerald-50/30 dark:border-emerald-900/30 dark:bg-emerald-950/20 shadow-sm">
@@ -114,7 +114,7 @@ export function GuidePage() {
         <section>
           <Card className="overflow-hidden border-slate-200 dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="text-lg">Tabela clinica de desidratacao</CardTitle>
+              <CardTitle className="text-lg">Tabela clínica de desidratação</CardTitle>
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
@@ -122,7 +122,7 @@ export function GuidePage() {
                   <thead className="bg-slate-50 dark:bg-slate-900/50">
                     <tr>
                       <th className="px-5 py-4 font-bold text-slate-700 dark:text-slate-300">Faixa</th>
-                      <th className="px-5 py-4 font-bold text-slate-700 dark:text-slate-300">Leitura clinica</th>
+                      <th className="px-5 py-4 font-bold text-slate-700 dark:text-slate-300">Leitura clínica</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 dark:divide-slate-800">
@@ -139,28 +139,25 @@ export function GuidePage() {
           </Card>
         </section>
 
-
-
-
         <section className="grid gap-6 lg:grid-cols-2">
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg"><Eye className="h-5 w-5 text-amber-500" /> Monitorização e sobrecarga</CardTitle>
+              <CardTitle className="flex items-center gap-2 text-lg"><Eye className="h-5 w-5 text-amber-500" /> Monitorização e sobrecarga volêmica</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Sinais clássicos: taquipneia, aumento do esforço respiratório, crepitações, corrimento nasal seroso, quemoses, edema periférico e ganho rápido de peso.</p>
-              <p>Queda de PCV, TP ou USG em contexto compatível pode ajudar a enxergar excesso de fluido.</p>
-              <p>Quando sobrecarga ocorrer, reduzir ou suspender fluidos e reavaliar a estratégia.</p>
+              <p>Sinais clássicos: taquipneia, aumento do esforço respiratório, crepitações pulmonares, corrimento nasal seroso, quemose, edema periférico e ganho súbito de peso.</p>
+              <p>Queda de hematócrito (VG/HT), proteínas totais (PT) ou densidade urinária em contexto compatível alerta para hemodiluição e sobrecarga.</p>
+              <p>Diante de sinais de sobrecarga, reduza ou suspenda a infusão e reavalie a conduta.</p>
             </CardContent>
           </Card>
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg"><Thermometer className="h-5 w-5 text-rose-500" /> Panting, febre e perdas insensíveis</CardTitle>
+              <CardTitle className="flex items-center gap-2 text-lg"><Thermometer className="h-5 w-5 text-rose-500" /> Taquipneia térmica, febre e perdas insensíveis</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Cães em repouso geralmente ficam abaixo de 1 mL/kg/h de perda evaporativa.</p>
-              <p>Com panting intenso ou atividade, isso pode subir bastante.</p>
-              <p>Gatos tendem a perder menos por evaporação em ambiente termoneutro.</p>
+              <p>Cães em repouso geralmente apresentam perdas evaporativas abaixo de 1 mL/kg/h.</p>
+              <p>Com respiração ofegante intensa, febre ou atividade, as perdas insensíveis aumentam substancialmente.</p>
+              <p>Gatos apresentam menor perda evaporativa em ambiente termoneutro.</p>
             </CardContent>
           </Card>
         </section>
@@ -168,13 +165,13 @@ export function GuidePage() {
         <section className="grid gap-6 lg:grid-cols-2">
           <Card className="border-slate-200 dark:border-slate-800">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-lg"><Info className="h-5 w-5 text-indigo-500" /> Sódio, cloro e honestidade</CardTitle>
+              <CardTitle className="flex items-center gap-2 text-lg"><Info className="h-5 w-5 text-indigo-500" /> Referências de sódio e cloro</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Em adultos e idosos, não há uma tabela geriátrica única sustentada por evidência robusta; individualize conforme perfusão, comorbidades e resposta.</p>
-              <p>Como referência de raciocínio: sódio médio canino gira em torno de 145 mEq/L e felino em torno de 155 mEq/L.</p>
-              <p>Cloro corrigido aproximado: cão 107 a 113 mEq/L e gato 117 a 123 mEq/L, sempre lembrando a variação entre laboratórios.</p>
-              <p>Em adultos e idosos, preferir faixa do laboratório, tendência seriada e contexto clínico.</p>
+              <p>Em animais adultos e idosos, individualize conforme perfusão, comorbidades e resposta terapêutica.</p>
+              <p>Valores médios de referência: sódio sérico canino em torno de 145 mEq/L e felino em torno de 155 mEq/L.</p>
+              <p>Cloro corrigido aproximado: cão 107 a 113 mEq/L e gato 117 a 123 mEq/L, respeitando as variações laboratoriais locais.</p>
+              <p>Priorize a faixa de referência do laboratório executor, o perfil sequencial e a evolução clínica.</p>
             </CardContent>
           </Card>
           <Card className="border-slate-200 dark:border-slate-800">
@@ -182,9 +179,9 @@ export function GuidePage() {
               <CardTitle className="text-lg">Segurança eletrolítica</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-sm text-slate-600 dark:text-slate-300">
-              <p>Correção de hipernatremia crônica: máximo 0,5 mEq/L/h ou 10 a 12 mEq/L/dia, com rechecagem a cada 4 a 6 h.</p>
-              <p>Helper de free water deficit: [(Na do paciente / Na desejado) - 1] x (0,6 x peso).</p>
-              <p>KCl em fluidos IV não pode exceder 0,5 mEq/kg/h, nunca deve ser bolusado e a bolsa precisa ser homogeneizada antes de administrar.</p>
+              <p>Correção de hipernatremia crônica: taxa máxima de 0,5 mEq/L/h (10 a 12 mEq/L em 24h), com reavaliação a cada 4 a 6 horas para prevenir edema cerebral.</p>
+              <p>Cálculo de déficit de água livre: [(Na do paciente / Na desejado) - 1] × (0,6 × peso em kg).</p>
+              <p>A taxa de infusão de cloreto de potássio (KCl) IV não deve exceder 0,5 mEq/kg/h, nunca deve ser administrada em bolus e a bolsa/frasco deve ser homogeneizada rigorosamente antes do uso.</p>
             </CardContent>
           </Card>
         </section>
@@ -196,7 +193,7 @@ export function GuidePage() {
               <Card key={species} className="overflow-hidden border-slate-200 dark:border-slate-800">
                 <CardHeader>
                   <CardTitle className="text-lg">{species === 'canine' ? 'Filhotes caninos' : 'Filhotes felinos'}</CardTitle>
-                  <CardDescription>Tabela etária do Nelson & Couto.</CardDescription>
+                  <CardDescription>Tabela etária pediátrica (Nelson & Couto).</CardDescription>
                 </CardHeader>
                 <CardContent className="p-0">
                   <div className="overflow-x-auto">

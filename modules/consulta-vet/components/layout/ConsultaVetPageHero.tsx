@@ -41,7 +41,7 @@ export function ConsultaVetPageHero({
           aside ? cn('xl:flex-row xl:justify-between', compact ? 'xl:items-center' : 'xl:items-end') : ''
         )}
       >
-        <div className={cn('min-w-0', compact ? 'max-w-2xl space-y-1.5' : 'max-w-3xl space-y-2.5')}>
+        <div className={cn('min-w-0', aside ? (compact ? 'max-w-2xl space-y-1.5' : 'max-w-3xl space-y-2.5') : (compact ? 'max-w-4xl space-y-1.5' : 'max-w-4xl space-y-2.5'))}>
           {eyebrow ? (
             <div className={consultaVetEyebrowClass(accent)}>
               <Icon className="h-3.5 w-3.5 shrink-0" aria-hidden />
@@ -63,7 +63,8 @@ export function ConsultaVetPageHero({
           {description ? (
             <p
               className={cn(
-                'max-w-2xl text-muted-foreground',
+                'text-muted-foreground',
+                aside ? 'max-w-2xl' : 'max-w-4xl',
                 compact ? 'text-xs leading-relaxed sm:text-sm' : 'text-sm leading-relaxed sm:text-[15px]'
               )}
             >

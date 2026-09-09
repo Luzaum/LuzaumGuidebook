@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import type { MedicationPresentationRecord, RecommendedDose } from '../../src/lib/clinicRecords';
-import { calculateReceituarioDose, normalizeDoseUnit, resolveAdministrationBasis } from '../../modules/consulta-vet/utils/receituarioDoseEngine';
+import { calculateReceituarioDose, formatAdministrationAmount, formatRecommendedDoseUnit, inferTabletSplitIncrement, normalizeDoseUnit, resolveAdministrationBasis } from '../../modules/consulta-vet/utils/receituarioDoseEngine';
 
 const presentation = (overrides: Partial<MedicationPresentationRecord> = {}): MedicationPresentationRecord => ({
   id: 'p1', clinic_id: 'c1', medication_id: 'm1', pharmaceutical_form: 'Comprimido', concentration_text: '5 mg/comprimido',
@@ -16,6 +16,26 @@ const dose = (overrides: Partial<RecommendedDose> = {}): RecommendedDose => ({
 
 test('preserva unidades mg/kg, mcg/kg, UI/kg, mEq/kg, mg/m² e mL/kg', () => {
   for (const unit of ['mg/kg', 'mcg/kg', 'UI/kg', 'mEq/kg', 'mg/m²', 'mL/kg']) assert.equal(normalizeDoseUnit(unit).canonical, unit);
+});
+
+test('recompõe unidades clínicas armazenadas em colunas separadas', () => {
+  assert.equal(formatRecommendedDoseUnit(dose({ dose_unit: 'mg', per_weight_unit: 'kg' })), 'mg/kg');
+  assert.equal(formatRecommendedDoseUnit(dose({ dose_unit: 'UI', per_weight_unit: 'kg' })), 'UI/kg');
+  assert.equal(formatRecommendedDoseUnit(dose({ dose_unit: 'mL', per_weight_unit: 'kg' })), 'mL/kg');
+  assert.equal(formatRecommendedDoseUnit(dose({ dose_unit: 'mcg/kg', per_weight_unit: 'kg' })), 'mcg/kg');
+});
+
+test('formata a unidade prática no singular e plural para o tutor', () => {
+  assert.equal(formatAdministrationAmount(1, 'comprimido'), '1 comprimido');
+  assert.equal(formatAdministrationAmount(0.5, 'comprimido'), '0,5 comprimido');
+  assert.equal(formatAdministrationAmount(5, 'gota'), '5 gotas');
+  assert.equal(formatAdministrationAmount(0.25, 'mL'), '0,25 mL');
+});
+
+test('reconhece kg/dia como dose dependente do peso', () => {
+  const dailyDose = dose({ dose_unit: 'mg', per_weight_unit: 'kg/dia' });
+  assert.equal(formatRecommendedDoseUnit(dailyDose), 'mg/kg/dia');
+  assert.equal(resolveAdministrationBasis(dailyDose), 'weight_based');
 });
 
 test('calcula dose por peso para cão e gato', () => {
@@ -67,17 +87,72 @@ test('aceita três quartos de comprimido como quantidade prática', () => {
   assert.equal(result.requiresConfirmation, true);
 });
 
-test('usa quartos como padrão para comprimido sem divisibilidade cadastrada', () => {
+test('bloqueia comprimido inteiro quando a apresentação sem divisibilidade causaria sobredose', () => {
   const result = calculateReceituarioDose({ species: 'dog', weightKg: 7.5, selectedDoseValue: 0.5, dose: dose(), presentation: presentation({ value: 5, tablet_split_increment: null }) });
-  assert.equal(result.blockedReason, undefined);
   assert.equal(result.practicalAmount, 1);
-  assert.match(String(result.warning), /Divisibilidade não cadastrada/);
+  assert.match(String(result.blockedReason), /forneceria .*% a mais/i);
 });
 
 test('cápsula é inteira e exige alternativa quando a dose é fracionada', () => {
   const result = calculateReceituarioDose({ species: 'dog', weightKg: 4, selectedDoseValue: 0.5, dose: dose(), presentation: presentation({ pharmaceutical_form: 'Cápsula', presentation_unit: 'cápsula', per_unit: 'cápsula' }) });
   assert.equal(result.practicalAmount, 1);
-  assert.equal(result.requiresConfirmation, true);
+  assert.equal(result.requiresConfirmation, false);
+  assert.match(String(result.blockedReason), /forneceria .*% a mais/i);
+});
+
+test('dipirona de 500 mg não vira um comprimido inteiro para cão de 5 kg', () => {
+  const oralDose = dose({ dose_value: 25, dose_unit: 'mg', per_weight_unit: 'kg', frequency: 'q8h' });
+  const splitIncrement = inferTabletSplitIncrement('Comprimido', 'Partível');
+  const presentation500 = presentation({ value: 500, value_unit: 'mg/comprimido', tablet_split_increment: splitIncrement });
+  assert.equal(formatRecommendedDoseUnit(oralDose), 'mg/kg');
+  assert.equal(splitIncrement, 0.5);
+
+  const result = calculateReceituarioDose({
+    species: 'dog',
+    weightKg: 5,
+    selectedDoseValue: 25,
+    dose: oralDose,
+    presentation: presentation500,
+  });
+  assert.equal(result.totalDose, 125);
+  assert.equal(result.exactAmount, 0.25);
+  assert.equal(result.practicalAmount, 0.5);
+  assert.match(String(result.blockedReason), /100,0% a mais/i);
+});
+
+test('converte dipirona 500 mg/mL em gotas apenas quando o gotejador está estruturado', () => {
+  const oralDose = dose({ dose_value: 25, dose_unit: 'mg', per_weight_unit: 'kg' });
+  const drops = presentation({
+    pharmaceutical_form: 'Solução oral (gotas)',
+    presentation_unit: null,
+    value: 500,
+    value_unit: 'mg/mL',
+    per_value: null,
+    per_unit: null,
+    metadata: { drops_per_ml: 20 },
+  });
+  const result = calculateReceituarioDose({ species: 'dog', weightKg: 5, selectedDoseValue: 25, dose: oralDose, presentation: drops });
+  assert.equal(result.totalDose, 125);
+  assert.equal(result.exactAmount, 5);
+  assert.equal(result.practicalAmount, 5);
+  assert.equal(result.administrationUnit, 'gota');
+});
+
+test('solução em gotas sem fator documentado permanece em mL', () => {
+  const oralDose = dose({ dose_value: 25, dose_unit: 'mg', per_weight_unit: 'kg' });
+  const drops = presentation({
+    pharmaceutical_form: 'Solução oral (gotas)',
+    presentation_unit: null,
+    value: 500,
+    value_unit: 'mg/mL',
+    per_value: null,
+    per_unit: null,
+    metadata: {},
+  });
+  const result = calculateReceituarioDose({ species: 'dog', weightKg: 5, selectedDoseValue: 25, dose: oralDose, presentation: drops });
+  assert.equal(result.exactAmount, 0.25);
+  assert.equal(result.practicalAmount, 0.25);
+  assert.equal(result.administrationUnit, 'mL');
 });
 
 test('converte mcg para mg sem interpretar como mg/kg', () => {

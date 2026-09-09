@@ -1,26 +1,23 @@
-import React, { useState } from 'react';
-import { CalculationInput, CalculationResult } from '../../shared/types/calculation';
-import { SafetyEvaluation } from '../../safety-rules/evaluator';
+import React, { useMemo, useState } from 'react';
 import {
-  Activity,
   AlertTriangle,
   Calculator,
-  CheckCircle2,
+  Check,
   ChevronDown,
   ChevronRight,
+  Clipboard,
   Copy,
-  Droplets,
   FlaskConical,
-  Gauge,
+  Heart,
   Info,
   ShieldAlert,
-  ShieldCheck,
   Star,
 } from 'lucide-react';
-import { cn } from '../lib/utils';
-import { motion, AnimatePresence } from 'framer-motion';
+import { CalculationInput, CalculationResult } from '../../shared/types/calculation';
+import { SafetyEvaluation } from '../../safety-rules/evaluator';
 import { favoritesService } from '../../application/services/favoritesService';
 import { historyService } from '../../application/services/historyService';
+import { cn } from '../lib/utils';
 
 interface ResultsProps {
   input: CalculationInput | null;
@@ -28,47 +25,141 @@ interface ResultsProps {
   safety: SafetyEvaluation | null;
 }
 
+type NoticeSeverity = 'critical' | 'moderate' | 'low';
+
+interface SafetyNotice {
+  id: string;
+  severity: NoticeSeverity;
+  title: string;
+  message: string;
+}
+
+const severityOrder: Record<NoticeSeverity, number> = { critical: 3, moderate: 2, low: 1 };
+
+const severityCopy = {
+  critical: {
+    button: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500/30',
+    card: 'border-red-200 bg-red-50 text-red-950 dark:border-red-900/60 dark:bg-red-950/35 dark:text-red-100',
+    label: 'Avisos críticos',
+    itemLabel: 'Crítico',
+  },
+  moderate: {
+    button: 'bg-orange-500 text-orange-950 hover:bg-orange-600 focus:ring-orange-500/30',
+    card: 'border-orange-200 bg-orange-50 text-orange-950 dark:border-orange-900/60 dark:bg-orange-950/30 dark:text-orange-100',
+    label: 'Avisos importantes',
+    itemLabel: 'Importante',
+  },
+  low: {
+    button: 'bg-yellow-300 text-yellow-950 hover:bg-yellow-400 focus:ring-yellow-400/30',
+    card: 'border-yellow-200 bg-yellow-50 text-yellow-950 dark:border-yellow-800/60 dark:bg-yellow-950/25 dark:text-yellow-100',
+    label: 'Avisos informativos',
+    itemLabel: 'Informativo',
+  },
+};
+
+const classifyWarning = (message: string): NoticeSeverity => {
+  const normalized = message.toLocaleUpperCase('pt-BR');
+  if (normalized.includes('INCOMPATIBILIDADE') || normalized.includes('NEGATIVO') || normalized.includes('EXCEDE')) return 'critical';
+  if (normalized.startsWith('NOTA:') || normalized.includes('DILUENTE PREFERENCIAL')) return 'low';
+  return 'moderate';
+};
+
 export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }) => {
   const [isSaved, setIsSaved] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [showSaveForm, setShowSaveForm] = useState(false);
   const [favoriteName, setFavoriteName] = useState('');
+  const [showSafety, setShowSafety] = useState(false);
+  const [showAdditional, setShowAdditional] = useState(false);
   const [showMath, setShowMath] = useState(false);
+
+  const notices = useMemo<SafetyNotice[]>(() => {
+    if (!input || !result || !safety) return [];
+
+    const items: SafetyNotice[] = [];
+    if (result.isImpossible) {
+      items.push({
+        id: 'impossible',
+        severity: 'critical',
+        title: 'Preparo inviável',
+        message: result.impossibleReason || 'Revise os dados do preparo antes de administrar.',
+      });
+    }
+
+    result.alerts?.forEach((alert) => {
+      items.push({
+        id: `calculation-${alert.id}`,
+        severity: alert.severity === 'block' || alert.severity === 'critical' ? 'critical' : alert.severity === 'warning' ? 'moderate' : 'low',
+        title: alert.title,
+        message: alert.recommendation ? `${alert.message} ${alert.recommendation}` : alert.message,
+      });
+    });
+
+    safety.alerts.forEach((alert) => {
+      items.push({
+        id: `clinical-${alert.id}`,
+        severity: alert.level === 'danger' ? 'critical' : alert.level === 'warning' ? 'moderate' : 'low',
+        title: alert.level === 'danger' ? 'Alerta clínico' : alert.level === 'warning' ? 'Atenção clínica' : 'Informação clínica',
+        message: alert.message,
+      });
+    });
+
+    safety.warnings.forEach((message, index) => {
+      const severity = classifyWarning(message);
+      items.push({
+        id: `warning-${index}`,
+        severity,
+        title: severity === 'critical' ? 'Incompatibilidade ou risco' : severity === 'moderate' ? 'Atenção no preparo' : 'Observação',
+        message,
+      });
+    });
+
+    const unique = Array.from(new Map(items.map((item) => [item.message, item])).values());
+    return unique.sort((a, b) => severityOrder[b.severity] - severityOrder[a.severity]);
+  }, [input, result, safety]);
 
   if (!input || !result || !safety) return null;
 
+  const highestSeverity = notices.reduce<NoticeSeverity>(
+    (highest, notice) => severityOrder[notice.severity] > severityOrder[highest] ? notice.severity : highest,
+    'low',
+  );
+  const criticalCount = notices.filter((notice) => notice.severity === 'critical').length;
+  const moderateCount = notices.filter((notice) => notice.severity === 'moderate').length;
+  const lowCount = notices.filter((notice) => notice.severity === 'low').length;
+  const sourceList = Array.from(new Set([
+    'Lumb & Jones, 6ª ed.',
+    "Plumb's Veterinary Drug Handbook, 10ª ed.",
+    'Nelson & Couto, 6ª ed.',
+    ...input.drug.references,
+  ]));
+
+  const practicalLines = (result.practicalSummary || [result.instructions]).filter(Boolean);
+
   const handleCopySummary = () => {
     const text = [
-      'PRESCRIÇÃO PRÁTICA',
-      '--------------------------------',
-      ...(result.practicalSummary || [result.instructions]),
-      '--------------------------------',
-      `• Paciente: ${input.patient.species === 'dog' ? 'Cão' : 'Gato'} (${input.patient.weight} kg)`,
-      `• Droga: ${input.drug.namePt}`,
-      `• Apresentação: ${input.presentation.description}`,
-      ''
+      'PREPARO E ADMINISTRAÇÃO',
+      ...practicalLines,
+      '',
+      `Paciente: ${input.patient.species === 'dog' ? 'Cão' : 'Gato'} · ${input.patient.weight} kg`,
+      `Fármaco: ${input.drug.namePt}`,
+      `Apresentação: ${input.presentation.description}`,
     ].join('\n');
-
     navigator.clipboard.writeText(text);
     historyService.addHistory(input, result);
   };
 
   const handleCopyCalculations = () => {
-    const text = [
+    navigator.clipboard.writeText([
       'MEMÓRIA DE CÁLCULO',
-      '--------------------------------',
-      ...result.steps.map(s => `[PASSO ${s.step}] ${s.title}\n   ${s.explanation}\n   Cálculo: ${s.formula}\n   Resultado: ${s.result} ${s.unit}\n`),
-      '🔹 CHECAGEM REVERSA:',
-      ...(result.reverseCheckSteps?.map(r => `   ${r.explanation}\n   Provado: ${r.result}`) || []),
-      '--------------------------------',
-      `Paciente: ${input.patient.weight} kg | Dose: ${input.dose} ${input.doseUnit}`,
-    ].join('\n');
-
-    navigator.clipboard.writeText(text);
+      ...result.steps.map((step) => `${step.step}. ${step.title || 'Cálculo'}\n${step.formula}\nResultado: ${step.result}${step.unit ? ` ${step.unit}` : ''}`),
+      '',
+      `Paciente: ${input.patient.weight} kg · Dose: ${input.dose} ${input.doseUnit}`,
+    ].join('\n\n'));
   };
 
   const initiateSave = () => {
-    setFavoriteName(`${input.drug.namePt} - ${input.dose} ${input.doseUnit}`);
+    setFavoriteName(`${input.drug.namePt} — ${input.dose} ${input.doseUnit}`);
     setShowSaveForm(true);
   };
 
@@ -77,416 +168,201 @@ export const ResultsDisplay: React.FC<ResultsProps> = ({ input, result, safety }
     setSaveError(null);
     const outcome = await favoritesService.saveFavorite(favoriteName.trim(), input, result);
     if (outcome.ok === false) {
-      setSaveError(
-        outcome.reason === 'auth'
-          ? 'Entre na sua conta Vetius para salvar favoritos na nuvem.'
-          : 'Não foi possível salvar. Tente novamente.',
-      );
+      setSaveError(outcome.reason === 'auth' ? 'Entre na sua conta Vetius para salvar.' : 'Não foi possível salvar. Tente novamente.');
       return;
     }
     historyService.addHistory(input, result);
     setShowSaveForm(false);
     setIsSaved(true);
-    setTimeout(() => setIsSaved(false), 3000);
+    window.setTimeout(() => setIsSaved(false), 2500);
   };
 
-  const hasDanger = result.isImpossible || safety.alerts.some((alert) => alert.level === 'danger');
-  const hasWarnings = safety.alerts.length > 0 || safety.warnings.length > 0;
-
   return (
-    <div className="flex flex-col gap-4">
-      {!result.isImpossible && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.985 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900 p-4 text-white shadow-xl md:p-6"
-        >
-          <div className="pointer-events-none absolute -right-16 -top-16 opacity-[0.04]">
-            <FlaskConical className="h-64 w-64 rotate-12" />
-          </div>
-
-          <div className="relative z-10">
-            <div className="mb-4 flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-              <div className="flex items-center gap-3">
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-emerald-500/30 bg-emerald-500/15 text-emerald-300">
-                  <CheckCircle2 className="h-5 w-5" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold tracking-tight text-white">Prescrição pronta</h2>
-                  <p className="mt-0.5 text-[11px] font-bold uppercase tracking-[0.24em] text-emerald-400">
-                    cálculo conferível
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:gap-2.5">
-                <button
-                  onClick={handleCopySummary}
-                  className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-500/30 bg-emerald-500/10 px-4 py-2 text-sm font-semibold text-emerald-100 transition-all hover:bg-emerald-500/20"
-                >
-                  <Copy className="h-4 w-4" /> Copiar Resumo
-                </button>
-                <button
-                  onClick={handleCopyCalculations}
-                  className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-sm font-semibold text-white transition-all hover:border-slate-600 hover:bg-slate-700"
-                >
-                  <Calculator className="h-4 w-4" /> Copiar Memória
-                </button>
-                <button
-                  onClick={initiateSave}
-                  className={cn(
-                    'flex min-h-11 items-center justify-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all',
-                    isSaved ? 'bg-amber-500 text-amber-950' : 'bg-slate-800 text-white hover:bg-slate-700 border border-slate-700',
-                  )}
-                >
-                  <Star className={cn('h-4 w-4', isSaved && 'fill-amber-950')} />
-                  {isSaved ? 'Salvo' : 'Favoritar'}
-                </button>
-              </div>
-            </div>
-
-            <AnimatePresence>
-              {showSaveForm && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="mb-5 overflow-hidden"
-                >
-                  <div className="flex flex-col gap-3 rounded-2xl border border-slate-700 bg-slate-800/80 p-4 backdrop-blur-sm lg:flex-row lg:items-end">
-                    <div className="min-w-0 flex-1">
-                      <label className="mb-2 block text-[11px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                        Nome do protocolo
-                      </label>
-                      <input
-                        type="text"
-                        value={favoriteName}
-                        onChange={(event) => setFavoriteName(event.target.value)}
-                        className="w-full rounded-xl border border-slate-600 bg-slate-900/60 px-4 py-3 text-white transition-all focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500"
-                        autoFocus
-                      />
-                    </div>
-                    <div className="flex gap-2">
-                      <button
-                        onClick={() => {
-                          setShowSaveForm(false);
-                          setSaveError(null);
-                        }}
-                        className="min-h-10 rounded-xl bg-slate-700 px-5 py-2 text-sm font-bold transition-colors hover:bg-slate-600"
-                      >
-                        Cancelar
-                      </button>
-                      <button
-                        onClick={confirmSave}
-                        className="min-h-10 rounded-xl bg-emerald-600 px-5 py-2 text-sm font-bold transition-colors hover:bg-emerald-500"
-                      >
-                        Confirmar
-                      </button>
-                    </div>
-                    {saveError && (
-                      <p className="text-sm font-medium text-rose-300">{saveError}</p>
-                    )}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            <div className="rounded-2xl border border-slate-700/60 bg-slate-800/40 p-4 backdrop-blur-md md:p-5">
-              {result.practicalSummary ? (
-                result.practicalSummary.map((line, idx) => (
-                  <p key={idx} className="mb-1 text-sm font-semibold leading-relaxed text-slate-100 md:text-lg">{line}</p>
-                ))
-              ) : (
-                <p className="text-sm font-semibold leading-relaxed text-slate-100 md:text-lg">{result.instructions}</p>
-              )}
-            </div>
-
-            <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/35 p-3.5">
-                <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                  <FlaskConical className="h-3.5 w-3.5 text-emerald-400/80" /> Vol. fármaco
-                </p>
-                <div className="flex min-w-0 flex-wrap items-baseline gap-1">
-                  {result.nonApplicableFields?.includes('drugVolume') ? (
-                    <span className="text-base font-bold tracking-tight text-slate-500">Não se aplica</span>
-                  ) : (
-                    <>
-                      <span className="text-2xl font-bold tracking-tight text-emerald-400">{result.drugVolume.toFixed(2)}</span>
-                      <span className="text-xs text-slate-500">mL</span>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/35 p-3.5">
-                <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                  <Droplets className="h-3.5 w-3.5 text-blue-400/80" /> Vol. diluente
-                </p>
-                <div className="flex min-w-0 flex-wrap items-baseline gap-1">
-                  {result.nonApplicableFields?.includes('diluent') ? (
-                    <span className="text-base font-bold tracking-tight text-slate-500">Sem diluição</span>
-                  ) : (
-                    <>
-                      <span className="text-2xl font-bold tracking-tight text-blue-400">{result.diluentVolume.toFixed(2)}</span>
-                      <span className="text-xs text-slate-500">mL</span>
-                    </>
-                  )}
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/35 p-3.5">
-                <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                  <Activity className="h-3.5 w-3.5 text-amber-400/80" /> Conc. final
-                </p>
-                <div className="flex min-w-0 flex-wrap items-baseline gap-1">
-                  <span className="text-2xl font-bold tracking-tight text-amber-400">{result.finalConcentration.toFixed(2)}</span>
-                  <span className="text-xs text-slate-500">{result.finalConcentrationUnit}</span>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border border-slate-700/50 bg-slate-800/35 p-3.5">
-                <p className="mb-1.5 flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-slate-400">
-                  <Gauge className="h-3.5 w-3.5 text-white/80" /> Taxa bomba
-                </p>
-                <div className="flex min-w-0 flex-wrap items-baseline gap-1">
-                  {result.nonApplicableFields?.includes('infusionRate') ? (
-                    <span className="text-base font-bold tracking-tight text-slate-500">Não se aplica</span>
-                  ) : (
-                    <>
-                      <span className="text-2xl font-bold tracking-tight text-white">{result.infusionRate.toFixed(1)}</span>
-                      <span className="text-xs text-slate-500">mL/h</span>
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="rounded-2xl border border-emerald-500/20 bg-emerald-500/10 p-4">
-                <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-400">Dose entregue</p>
-                <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-xl font-bold tracking-tight text-emerald-300">{result.deliveredDose.toFixed(2)}</span>
-                  <span className="text-xs text-emerald-500/80">{result.deliveredDoseUnit}</span>
-                </div>
-              </div>
-
-              <div
-                className={cn(
-                  'rounded-2xl border p-4',
-                  input.presentation.custom
-                    ? 'border-indigo-500/20 bg-indigo-500/10'
-                    : 'border-slate-700/50 bg-slate-800/35',
-                )}
-              >
-                <p
-                  className={cn(
-                    'text-[10px] font-bold uppercase tracking-[0.24em]',
-                    input.presentation.custom ? 'text-indigo-300' : 'text-slate-400',
-                  )}
-                >
-                  Estoque utilizado
-                </p>
-                <p className="mt-1 text-sm font-semibold leading-relaxed text-white">{input.presentation.description}</p>
-                <p className={cn('mt-1 text-xs', input.presentation.custom ? 'text-indigo-200/80' : 'text-slate-400')}>
-                  {input.presentation.custom ? 'Apresentação personalizada aplicada ao cálculo.' : 'Apresentação cadastrada no catálogo.'}
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      )}
-
-      <AnimatePresence>
-        {(safety.alerts.length > 0 || safety.warnings.length > 0 || result.isImpossible) && (
-          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-6">
-            <div className="flex items-center gap-3 border-b border-slate-100 pb-4 dark:border-slate-800">
-              <ShieldAlert className="h-5 w-5 text-amber-500" />
-              <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">Avisos e Segurança</h3>
-            </div>
-            {result.isImpossible && (
-              <div className="rounded-2xl border-2 border-red-200 bg-red-50 p-4 shadow-sm dark:border-red-900/50 dark:bg-red-950/30">
-                <div className="flex items-start gap-3">
-                  <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-red-600 dark:text-red-400" />
-                  <div>
-                    <h4 className="font-bold text-red-800 dark:text-red-300">Motivo da inviabilidade</h4>
-                    <p className="mt-1 text-sm font-medium leading-relaxed text-red-700 dark:text-red-400/90">
-                      {result.impossibleReason}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {safety.alerts.map((alert, index) => (
-              <div
-                key={`${alert.id}-${index}`}
-                className={cn(
-                  'rounded-2xl border-2 p-4 shadow-sm',
-                  alert.level === 'danger'
-                    ? 'border-red-200 bg-red-50 dark:border-red-900/50 dark:bg-red-950/30'
-                    : 'border-amber-200 bg-amber-50 dark:border-amber-900/50 dark:bg-amber-950/30',
-                )}
-              >
-                <div className="flex items-start gap-3">
-                  <AlertTriangle
-                    className={cn(
-                      'mt-0.5 h-5 w-5 shrink-0',
-                      alert.level === 'danger' ? 'text-red-600 dark:text-red-400' : 'text-amber-600 dark:text-amber-400',
-                    )}
-                  />
-                  <div>
-                    <h4
-                      className={cn(
-                        'font-bold',
-                        alert.level === 'danger' ? 'text-red-800 dark:text-red-300' : 'text-amber-800 dark:text-amber-300',
-                      )}
-                    >
-                      Alerta clínico
-                    </h4>
-                    <p
-                      className={cn(
-                        'mt-1 text-sm font-medium leading-relaxed',
-                        alert.level === 'danger' ? 'text-red-700 dark:text-red-400/90' : 'text-amber-700 dark:text-amber-400/90',
-                      )}
-                    >
-                      {alert.message}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-
-            {safety.warnings.map((warning, index) => (
-              <div key={`${warning}-${index}`} className="rounded-2xl border-2 border-blue-200 bg-blue-50 p-4 shadow-sm dark:border-blue-900/50 dark:bg-blue-950/30">
-                <div className="flex items-start gap-3">
-                  <Info className="mt-0.5 h-5 w-5 shrink-0 text-blue-600 dark:text-blue-400" />
-                  <div>
-                    <h4 className="font-bold text-blue-800 dark:text-blue-300">Aviso clínico</h4>
-                    <p className="mt-1 text-sm font-medium leading-relaxed text-blue-700 dark:text-blue-400/90">{warning}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      {result.clinicalPearls && result.clinicalPearls.length > 0 && (
-        <div className="rounded-2xl border border-amber-200 bg-amber-50/50 p-4 shadow-sm dark:border-amber-500/20 dark:bg-amber-500/5 md:p-6">
-          <div className="mb-4 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400">
-              <Star className="h-5 w-5 fill-current" />
-            </div>
-            <div>
-              <h3 className="text-lg font-bold tracking-tight text-amber-900 dark:text-amber-100">Pérolas Clínicas</h3>
-              <p className="text-xs font-medium text-amber-700/70 dark:text-amber-300/60">Dicas essenciais para este fármaco.</p>
-            </div>
-          </div>
-          <ul className="space-y-3">
-            {result.clinicalPearls.map((pearl, i) => (
-              <li key={i} className="flex gap-3 text-sm font-medium leading-relaxed text-amber-800 dark:text-amber-200">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400" />
-                <span>{pearl}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      {!result.isImpossible && result.steps.length > 0 && (
-        <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm transition-colors duration-200 dark:border-slate-800 dark:bg-slate-900 md:p-6">
-          <button
-            type="button"
-            onClick={() => setShowMath(!showMath)}
-            className="flex w-full items-center justify-between text-left focus:outline-none"
-          >
+    <section aria-labelledby="result-title" className="space-y-3">
+      <div className="overflow-hidden rounded-[24px] bg-slate-950 text-white shadow-[0_18px_50px_rgba(15,23,42,0.16)] dark:ring-1 dark:ring-slate-800">
+        <div className="border-b border-white/10 p-5 md:p-7">
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-indigo-100 bg-indigo-50 text-indigo-600 dark:border-indigo-500/20 dark:bg-indigo-500/10 dark:text-indigo-400">
-                <Calculator className="h-5 w-5" />
+              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-emerald-400 text-emerald-950">
+                <Check className="h-5 w-5 stroke-[3]" />
               </div>
               <div>
-                <h3 className="text-lg font-bold tracking-tight text-slate-800 dark:text-white">Memória de cálculo</h3>
-                <p className="mt-0.5 text-xs font-medium text-slate-500 dark:text-slate-400">
-                  Passo a passo matemático para conferência.
-                </p>
+                <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">Cálculo concluído</p>
+                <h2 id="result-title" className="mt-0.5 text-xl font-bold tracking-tight md:text-2xl">
+                  Como preparar
+                </h2>
               </div>
             </div>
-            <div className="text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-350">
-              {showMath ? <ChevronDown className="h-5 w-5" /> : <ChevronRight className="h-5 w-5" />}
+            <div className="flex gap-2">
+              <button type="button" onClick={handleCopySummary} className="flex min-h-10 flex-1 items-center justify-center gap-2 rounded-xl bg-white px-3 text-xs font-bold text-slate-950 hover:bg-slate-100 sm:flex-none">
+                <Copy className="h-4 w-4" /> Copiar
+              </button>
+              <button type="button" onClick={initiateSave} className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/15 text-slate-200 hover:bg-white/10" aria-label="Salvar como favorito">
+                <Star className={cn('h-4 w-4', isSaved && 'fill-yellow-300 text-yellow-300')} />
+              </button>
             </div>
+          </div>
+
+          {showSaveForm && (
+            <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.06] p-3">
+              <label className="text-xs font-semibold text-slate-300">Nome do preparo</label>
+              <div className="mt-2 flex flex-col gap-2 sm:flex-row">
+                <input value={favoriteName} onChange={(event) => setFavoriteName(event.target.value)} className="min-h-11 min-w-0 flex-1 rounded-lg border border-white/15 bg-slate-900 px-3 text-sm text-white outline-none focus:border-emerald-400" autoFocus />
+                <div className="flex gap-2">
+                  <button type="button" onClick={() => setShowSaveForm(false)} className="min-h-11 flex-1 rounded-lg px-3 text-xs font-bold text-slate-300 hover:bg-white/10">Cancelar</button>
+                  <button type="button" onClick={confirmSave} className="min-h-11 flex-1 rounded-lg bg-emerald-400 px-4 text-xs font-bold text-emerald-950">Salvar</button>
+                </div>
+              </div>
+              {saveError && <p className="mt-2 text-xs text-red-300">{saveError}</p>}
+            </div>
+          )}
+        </div>
+
+        {result.isImpossible ? (
+          <div className="p-5 md:p-7">
+            <p className="text-base font-semibold leading-7 text-red-200">Não administre este preparo antes de revisar os dados.</p>
+          </div>
+        ) : (
+          <>
+            <div className="p-5 md:p-7">
+              <ol className="space-y-4">
+                {practicalLines.map((line, index) => (
+                  <li key={`${line}-${index}`} className="flex gap-3">
+                    <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-white/10 text-[11px] font-bold text-emerald-300">{index + 1}</span>
+                    <p className="pt-0.5 text-[15px] font-semibold leading-6 text-slate-100 md:text-base">{line}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+
+            <div className="grid grid-cols-2 border-t border-white/10 md:grid-cols-4">
+              {[
+                { label: 'Fármaco', value: result.nonApplicableFields?.includes('drugVolume') ? '—' : result.drugVolume.toFixed(2), unit: 'mL' },
+                { label: 'Diluente', value: result.nonApplicableFields?.includes('diluent') ? 'Sem diluição' : result.diluentVolume.toFixed(2), unit: result.nonApplicableFields?.includes('diluent') ? '' : 'mL' },
+                { label: 'Concentração', value: result.finalConcentration.toFixed(2), unit: result.finalConcentrationUnit },
+                { label: 'Bomba', value: result.nonApplicableFields?.includes('infusionRate') ? '—' : result.infusionRate.toFixed(1), unit: result.nonApplicableFields?.includes('infusionRate') ? '' : 'mL/h' },
+              ].map((metric) => (
+                <div key={metric.label} className="min-w-0 border-b border-r border-white/10 p-4 last:border-r-0 md:border-b-0">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.16em] text-slate-500">{metric.label}</p>
+                  <p className="mt-1 truncate text-lg font-bold text-white">{metric.value} <span className="text-[10px] font-medium text-slate-400">{metric.unit}</span></p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {notices.length > 0 && (
+        <div>
+          <button
+            type="button"
+            onClick={() => setShowSafety((value) => !value)}
+            className={cn('flex min-h-14 w-full items-center gap-3 rounded-2xl px-4 text-left shadow-sm outline-none transition focus:ring-4', severityCopy[highestSeverity].button)}
+            aria-expanded={showSafety}
+          >
+            <ShieldAlert className="h-5 w-5 shrink-0" />
+            <span className="min-w-0 flex-1">
+              <span className="block text-sm font-bold">{severityCopy[highestSeverity].label}</span>
+              <span className="block text-[11px] font-semibold opacity-75">{notices.length} {notices.length === 1 ? 'item para revisar' : 'itens para revisar'} antes da administração</span>
+            </span>
+            <span className="hidden items-center gap-1.5 text-[10px] font-bold sm:flex">
+              {criticalCount > 0 && <span>{criticalCount} crítico{criticalCount > 1 ? 's' : ''}</span>}
+              {moderateCount > 0 && <span>· {moderateCount} importante{moderateCount > 1 ? 's' : ''}</span>}
+              {lowCount > 0 && <span>· {lowCount} info.</span>}
+            </span>
+            <ChevronDown className={cn('h-5 w-5 shrink-0 transition-transform', showSafety && 'rotate-180')} />
           </button>
 
-          <AnimatePresence>
-            {showMath && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                className="mt-5 overflow-hidden"
-              >
-                <div className="relative space-y-4 before:absolute before:bottom-0 before:left-5 before:top-0 before:w-px before:bg-gradient-to-b before:from-transparent before:via-slate-200 before:to-transparent dark:before:via-slate-700">
-                  {result.steps.map((step) => (
-                    <div key={step.step} className="relative flex items-start gap-3">
-                      <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-4 border-white bg-indigo-100 text-sm font-bold text-indigo-700 shadow dark:border-slate-900 dark:bg-indigo-500/20 dark:text-indigo-400">
-                        {step.step}
-                      </div>
-                      <div className="min-w-0 flex-1 rounded-2xl border border-slate-200 bg-slate-50 p-4 shadow-sm dark:border-slate-700/50 dark:bg-slate-800/50">
-                        <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-indigo-500 dark:text-indigo-400">PASSO {step.step} — {step.title || 'Cálculo'}</p>
-                        <p className="mt-1 mb-3 text-sm font-medium text-slate-700 dark:text-slate-300">
-                          {step.explanation || step.description}
-                        </p>
-                        
-                        <div className="rounded-xl border border-slate-200/60 bg-white p-3 shadow-sm dark:border-slate-700/60 dark:bg-slate-900/50">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-slate-400 mb-1">Cálculo</p>
-                          <code className="block break-all text-sm font-mono text-slate-800 dark:text-slate-200">
-                            {step.formula}
-                          </code>
-                        </div>
-                        
-                        <div className="mt-3 flex items-center gap-3 rounded-xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-emerald-800 dark:border-emerald-500/20 dark:bg-emerald-500/10 dark:text-emerald-300">
-                          <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-500" />
-                          <div className="flex-1">
-                            <span className="text-[10px] block font-bold uppercase tracking-[0.1em] text-emerald-600/70 dark:text-emerald-400/70 mb-0.5">Resultado</span>
-                            <span className="text-lg font-bold tracking-tight">{step.result}</span>
-                          </div>
+          {showSafety && (
+            <div className="mt-2 rounded-[22px] border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900 md:p-5">
+              <div className="space-y-2.5">
+                {notices.map((notice) => {
+                  const style = severityCopy[notice.severity];
+                  return (
+                    <div key={notice.id} className={cn('rounded-xl border p-3.5', style.card)}>
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
+                        <div>
+                          <p className="text-[10px] font-extrabold uppercase tracking-[0.16em] opacity-70">{style.itemLabel}</p>
+                          <p className="mt-0.5 text-sm font-bold">{notice.title}</p>
+                          <p className="mt-1 text-xs font-medium leading-5 opacity-85">{notice.message}</p>
                         </div>
                       </div>
                     </div>
-                  ))}
-                  
-                  {result.reverseCheckSteps && result.reverseCheckSteps.length > 0 && (
-                    <div className="relative pt-4">
-                      <div className="absolute left-10 right-0 top-0 h-px bg-slate-200 dark:bg-slate-800" />
-                      <div className="relative flex items-start gap-3">
-                        <div className="z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-4 border-white bg-emerald-100 text-sm font-bold text-emerald-700 shadow dark:border-slate-900 dark:bg-emerald-500/20 dark:text-emerald-400">
-                          <ShieldCheck className="h-5 w-5" />
-                        </div>
-                        <div className="min-w-0 flex-1 rounded-2xl border-2 border-emerald-100 bg-emerald-50/50 p-4 shadow-sm dark:border-emerald-500/20 dark:bg-emerald-500/5">
-                          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-600 dark:text-emerald-400">CHECAGEM REVERSA</p>
-                          {result.reverseCheckSteps.map((rk, idx) => (
-                            <div key={idx} className="mt-3">
-                              <p className="mb-2 text-sm font-medium text-emerald-900/80 dark:text-emerald-100/80">
-                                {rk.explanation}
-                              </p>
-                              <code className="block break-all rounded-xl border border-emerald-200/50 bg-white/60 px-3 py-2 text-xs text-emerald-900 shadow-sm dark:border-emerald-500/30 dark:bg-slate-900/60 dark:text-emerald-100">
-                                {rk.formula}
-                              </code>
-                              <div className="mt-2 flex items-center gap-2 font-bold text-emerald-700 dark:text-emerald-400">
-                                <ChevronRight className="h-4 w-4" />
-                                <span className="text-lg">{rk.result}</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                  );
+                })}
+              </div>
+
+              <div className="mt-4 border-t border-slate-100 pt-4 dark:border-slate-800">
+                <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-slate-400">Base clínica da graduação e do fármaco</p>
+                <p className="mt-1 text-xs leading-5 text-slate-500 dark:text-slate-400">{sourceList.join(' · ')}</p>
+              </div>
+            </div>
+          )}
         </div>
       )}
-    </div>
+
+      <div className="rounded-[22px] border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+        <button type="button" onClick={() => setShowAdditional((value) => !value)} className="flex min-h-16 w-full items-center gap-3 px-4 text-left md:px-5" aria-expanded={showAdditional}>
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-300">
+            <Info className="h-4 w-4" />
+          </div>
+          <span className="min-w-0 flex-1">
+            <span className="block text-sm font-bold text-slate-900 dark:text-white">Informações adicionais</span>
+            <span className="block text-xs text-slate-500 dark:text-slate-400">Dose entregue, estoque, notas clínicas e memória</span>
+          </span>
+          <ChevronDown className={cn('h-5 w-5 text-slate-400 transition-transform', showAdditional && 'rotate-180')} />
+        </button>
+
+        {showAdditional && (
+          <div className="border-t border-slate-100 p-4 dark:border-slate-800 md:p-5">
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="rounded-xl bg-emerald-50 p-4 dark:bg-emerald-500/10">
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-emerald-700 dark:text-emerald-400">Dose entregue</p>
+                <p className="mt-1 text-xl font-bold text-emerald-950 dark:text-emerald-200">{result.deliveredDose.toFixed(2)} <span className="text-xs font-semibold">{result.deliveredDoseUnit}</span></p>
+              </div>
+              <div className="rounded-xl bg-slate-100 p-4 dark:bg-slate-800">
+                <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-slate-500">Estoque utilizado</p>
+                <p className="mt-1 text-sm font-bold leading-5 text-slate-900 dark:text-white">{input.presentation.description}</p>
+              </div>
+            </div>
+
+            {result.clinicalPearls && result.clinicalPearls.length > 0 && (
+              <div className="mt-4 rounded-xl border border-slate-200 p-4 dark:border-slate-700">
+                <p className="flex items-center gap-2 text-sm font-bold text-slate-900 dark:text-white"><Heart className="h-4 w-4 text-emerald-600" /> Pontos práticos</p>
+                <ul className="mt-3 space-y-2">
+                  {result.clinicalPearls.map((pearl) => <li key={pearl} className="flex gap-2 text-xs leading-5 text-slate-600 dark:text-slate-300"><span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-emerald-500" />{pearl}</li>)}
+                </ul>
+              </div>
+            )}
+
+            {result.steps.length > 0 && (
+              <div className="mt-4 overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
+                <div className="flex min-h-12 items-center gap-2 px-3">
+                  <button type="button" onClick={() => setShowMath((value) => !value)} className="flex min-h-10 min-w-0 flex-1 items-center gap-2 text-left" aria-expanded={showMath}>
+                    <Calculator className="h-4 w-4 text-slate-400" />
+                    <span className="flex-1 text-sm font-bold text-slate-800 dark:text-slate-200">Memória de cálculo</span>
+                    <ChevronRight className={cn('h-4 w-4 text-slate-400 transition-transform', showMath && 'rotate-90')} />
+                  </button>
+                  <button type="button" onClick={handleCopyCalculations} className="flex min-h-9 items-center gap-1.5 rounded-lg px-2 text-[11px] font-bold text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800"><Clipboard className="h-3.5 w-3.5" /> Copiar</button>
+                </div>
+                {showMath && (
+                  <div className="space-y-3 border-t border-slate-200 bg-slate-50 p-3 dark:border-slate-700 dark:bg-slate-950/40">
+                    {result.steps.map((step) => (
+                      <div key={step.step} className="rounded-lg bg-white p-3 dark:bg-slate-900">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">Passo {step.step} · {step.title || 'Cálculo'}</p>
+                        <p className="mt-1 text-xs leading-5 text-slate-600 dark:text-slate-300">{step.explanation || step.description}</p>
+                        <code className="mt-2 block break-words rounded-md bg-slate-100 px-2.5 py-2 text-xs text-slate-700 dark:bg-slate-800 dark:text-slate-200">{step.formula}</code>
+                        <p className="mt-2 flex items-center gap-1.5 text-sm font-bold text-emerald-700 dark:text-emerald-400"><Check className="h-3.5 w-3.5" /> {step.result} {step.unit}</p>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    </section>
   );
 };

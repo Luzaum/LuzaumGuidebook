@@ -290,7 +290,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
         {
           finding: 'Sepse, choque, peritonite séptica',
           mechanism: 'Bacteremia por próstata altamente vascularizada; ruptura de abscesso intraperitoneal.',
-          clinicalMeaning: 'Emergência — fluidoterapia, antimicrobiano IV, source control cirúrgico (Kutzler, Merck 2025).',
+          clinicalMeaning: 'Emergência — fluidoterapia, antimicrobiano IV, controle cirúrgico do foco infeccioso (Kutzler, Merck 2025).',
           priority: 'emergency',
         },
       ],
@@ -412,7 +412,7 @@ export const prostatiteCaesGatosRecord: DiseaseRecord = {
       'Ruptura com peritonite séptica = cirurgia de emergência.',
     ],
     suporteAguda: [
-      'Internação se sistêmico: fluidoterapia, analgesia multimodal, correção eletrolítica, monitorização de perfusão/lactato, antieméticos, source control de abscesso (Kutzler, Merck 2025).',
+      'Internação se sistêmico: fluidoterapia, analgesia multimodal, correção eletrolítica, monitorização de perfusão/lactato, antieméticos, drenagem e controle do foco de abscesso (Kutzler, Merck 2025).',
       'Anti-inflamatório não esteroidal (AINE) somente após estabilização hidroeletrolítica — evitar em choque/desidratação (Davidson, BSAVA Nephrology 2017).',
     ],
     gatos:

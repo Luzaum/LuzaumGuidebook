@@ -1,0 +1,1403 @@
+{
+  "generatedAt": "2026-09-08T23:59:14.890Z",
+  "scope": "Matriz automatizada do catálogo editorial e de todos os blocos de modelos. Não equivale a revisão bibliográfica de todas as doses nem a teste manual da interface.",
+  "medications": 52,
+  "models": 21,
+  "cases": 3103,
+  "successful": 1205,
+  "blocked": 1898,
+  "confirmations": 506,
+  "errors": [],
+  "blockedReasons": {
+    "A apresentação escolhida forneceria 900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 87,
+    "A apresentação escolhida forneceria 400,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 83,
+    "A apresentação escolhida forneceria 3900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 16,
+    "A apresentação escolhida forneceria 1900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 44,
+    "A apresentação escolhida forneceria 7900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 100,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 61,
+    "A apresentação escolhida forneceria 700,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 19,
+    "A apresentação escolhida forneceria 300,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 36,
+    "A apresentação escolhida forneceria 1500,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 12,
+    "A apresentação escolhida forneceria 150,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 94,
+    "A apresentação escolhida forneceria 4900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 15,
+    "A apresentação escolhida forneceria 2172,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 19900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 8990,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 39900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 18081,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 354,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 17,
+    "A apresentação escolhida forneceria 1718,2% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 8,
+    "A apresentação escolhida forneceria 3536,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 7,
+    "A apresentação escolhida forneceria 809,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 8,
+    "A apresentação escolhida forneceria 127,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 8,
+    "A apresentação escolhida forneceria 2400,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 24,
+    "A apresentação escolhida forneceria 9900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 525,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 33,
+    "A apresentação escolhida forneceria 212,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 23,
+    "A apresentação escolhida forneceria 1150,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 30,
+    "A apresentação escolhida forneceria 220,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 3100,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 11,
+    "A apresentação escolhida forneceria 540,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 6,
+    "A apresentação escolhida forneceria 60,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 8,
+    "A apresentação escolhida forneceria 8650,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 1650,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 337,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 118,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 733,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 17,
+    "A apresentação escolhida forneceria 1775,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 14,
+    "A apresentação escolhida forneceria 3650,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 66,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 17,
+    "A apresentação escolhida forneceria 275,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 18,
+    "A apresentação escolhida forneceria 650,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 9,
+    "A apresentação escolhida forneceria 87,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 12,
+    "A apresentação escolhida forneceria 1400,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 14,
+    "A apresentação escolhida forneceria 7400,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 2900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 7,
+    "A apresentação escolhida forneceria 200,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 11,
+    "A apresentação escolhida forneceria 500,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 50,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 8,
+    "A apresentação escolhida forneceria 614,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 2042,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 4185,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 42,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 328,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 757,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 114,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 14900,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 837,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 6,
+    "A apresentação escolhida forneceria 56,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 15,
+    "A apresentação escolhida forneceria 368,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 5,
+    "A apresentação escolhida forneceria 108,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 12,
+    "A apresentação selecionada não corresponde à via desta dose. Escolha uma apresentação compatível ou outro regime de administração.": 371,
+    "A apresentação escolhida forneceria 1100,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 316,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 15,
+    "A apresentação escolhida forneceria 1566,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 12,
+    "A apresentação escolhida forneceria 233,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 12,
+    "A apresentação escolhida forneceria 488,2% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 1076,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 135,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 81,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 9,
+    "A apresentação escolhida forneceria 263,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 7,
+    "A apresentação escolhida forneceria 455,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 1011,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 122,2% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação não possui concentração estruturada para cálculo.": 500,
+    "A apresentação escolhida forneceria 476,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 1823,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 3746,2% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 284,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 669,2% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 92,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 134,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 6,
+    "A apresentação escolhida forneceria 2300,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 380,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 3471,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 78,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 4066,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 1983,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 12400,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 8233,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 2627,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 445,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 36,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 1263,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 6,
+    "A apresentação escolhida forneceria 172,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 140,0% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 581,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 240,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3,
+    "A apresentação escolhida forneceria 70,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 941,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 635,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 83,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 420,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 1036,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 117,4% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 2,
+    "A apresentação escolhida forneceria 627,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 1354,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 2809,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 1370,6% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 190,9% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 481,8% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 194,1% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 45,5% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 1,
+    "A apresentação escolhida forneceria 3233,3% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 4,
+    "A apresentação escolhida forneceria 566,7% a mais do que a dose calculada. Escolha outra concentração ou apresentação.": 3
+  },
+  "modelResults": [
+    {
+      "id": "seed-infectologia-esporotricose-gatos",
+      "title": "Esporotricose — Gatos",
+      "options": [
+        {
+          "key": "initial",
+          "medications": [
+            {
+              "name": "Itraconazol",
+              "medicationName": "Itraconazol",
+              "lookupName": "Itraconazol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "refractory",
+          "medications": [
+            {
+              "name": "Itraconazol",
+              "medicationName": "Itraconazol",
+              "lookupName": "Itraconazol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            },
+            {
+              "name": "Iodeto de potássio",
+              "medicationName": "Iodeto de potássio",
+              "lookupName": "Iodeto de potássio",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "intolerance",
+          "medications": [
+            {
+              "name": "Terbinafina",
+              "medicationName": "Terbinafina",
+              "lookupName": "Terbinafina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": false,
+              "needsRegistration": true,
+              "reason": "\"Terbinafina\" não está no Consulta Medicamentos nem no catálogo comercial. Cadastre a monografia (apresentações e doses) ou vincule produtos comerciais ao modelo."
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-infectologia-esporotricose-caes",
+      "title": "Esporotricose — Cães",
+      "options": [
+        {
+          "key": "initial",
+          "medications": [
+            {
+              "name": "Itraconazol",
+              "medicationName": "Itraconazol",
+              "lookupName": "Itraconazol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "refractory",
+          "medications": [
+            {
+              "name": "Terbinafina",
+              "medicationName": "Terbinafina",
+              "lookupName": "Terbinafina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false,
+              "reason": "Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado."
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "potassium-iodide",
+          "medications": [
+            {
+              "name": "Iodeto de potássio",
+              "medicationName": "Iodeto de potássio",
+              "lookupName": "Iodeto de potássio",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-infectologia-cinomose-caes",
+      "title": "Cinomose — Cães",
+      "options": [
+        {
+          "key": "experimental-adjuvant-protocol",
+          "medications": [],
+          "requiresCompletion": false
+        },
+        {
+          "key": "nausea",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "respiratory-infection",
+          "medications": [
+            {
+              "name": "Doxiciclina",
+              "medicationName": "Doxiciclina",
+              "lookupName": "Doxiciclina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "seizures",
+          "medications": [
+            {
+              "name": "Levetiracetam de liberação imediata",
+              "medicationName": "Levetiracetam de liberação imediata",
+              "lookupName": "Levetiracetam de liberação imediata",
+              "editorialSlug": "levetiracetam",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-infectologia-erliquiose-anaplasmose",
+      "title": "Erliquiose/Anaplasmose — Cães",
+      "options": [
+        {
+          "key": "doxy-10",
+          "medications": [
+            {
+              "name": "Doxiciclina",
+              "medicationName": "Doxiciclina",
+              "lookupName": "Doxiciclina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "doxy-5",
+          "medications": [
+            {
+              "name": "Doxiciclina",
+              "medicationName": "Doxiciclina",
+              "lookupName": "Doxiciclina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pos-operatorio-castracao-cadela",
+      "title": "Pós-operatório de castração — Cadela",
+      "options": [
+        {
+          "key": "meloxicam",
+          "medications": [
+            {
+              "name": "Meloxicam",
+              "medicationName": "Meloxicam",
+              "lookupName": "Meloxicam",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "carprofen",
+          "medications": [
+            {
+              "name": "Carprofeno",
+              "medicationName": "Carprofeno",
+              "lookupName": "Carprofeno",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pos-operatorio-castracao-gata",
+      "title": "Pós-operatório de castração — Gata",
+      "options": [
+        {
+          "key": "robenacoxib",
+          "medications": [
+            {
+              "name": "Robenacoxibe",
+              "medicationName": "Robenacoxibe",
+              "lookupName": "Robenacoxibe",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "meloxicam",
+          "medications": [
+            {
+              "name": "Meloxicam",
+              "medicationName": "Meloxicam",
+              "lookupName": "Meloxicam",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pos-operatorio-castracao-cao-macho",
+      "title": "Pós-operatório de castração — Cão macho",
+      "options": [
+        {
+          "key": "meloxicam",
+          "medications": [
+            {
+              "name": "Meloxicam",
+              "medicationName": "Meloxicam",
+              "lookupName": "Meloxicam",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "carprofen",
+          "medications": [
+            {
+              "name": "Carprofeno",
+              "medicationName": "Carprofeno",
+              "lookupName": "Carprofeno",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pos-operatorio-castracao-gato-macho",
+      "title": "Pós-operatório de castração — Gato macho",
+      "options": [
+        {
+          "key": "robenacoxib",
+          "medications": [
+            {
+              "name": "Robenacoxibe",
+              "medicationName": "Robenacoxibe",
+              "lookupName": "Robenacoxibe",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-gastroenterite-aguda-nao-complicada-cao",
+      "title": "Gastroenterite aguda não complicada — Cão",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "probiotic",
+          "medications": [
+            {
+              "name": "Probiótico ou simbiótico veterinário",
+              "medicationName": "Probiótico ou simbiótico veterinário",
+              "lookupName": "Probiótico ou simbiótico veterinário",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-colapso-traqueia-cao",
+      "title": "Colapso de traqueia — Cão",
+      "options": [
+        {
+          "key": "hydrocodone",
+          "medications": [
+            {
+              "name": "Hidrocodona",
+              "medicationName": "Hidrocodona",
+              "lookupName": "Hidrocodona",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false,
+              "reason": "Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado."
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "codeine",
+          "medications": [
+            {
+              "name": "Codeína",
+              "medicationName": "Codeína",
+              "lookupName": "Codeína",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false,
+              "reason": "Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado."
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "prednisolone",
+          "medications": [
+            {
+              "name": "Prednisolona",
+              "medicationName": "Prednisolona",
+              "lookupName": "Prednisolona",
+              "editorialSlug": "prednisolona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "theophylline",
+          "medications": [
+            {
+              "name": "Teofilina de liberação prolongada",
+              "medicationName": "Teofilina de liberação prolongada",
+              "lookupName": "Teofilina de liberação prolongada",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false,
+              "reason": "Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado."
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-asma-felina-protocolo",
+      "title": "Asma felina",
+      "options": [
+        {
+          "key": "prednisolone",
+          "medications": [
+            {
+              "name": "Prednisolona",
+              "medicationName": "Prednisolona",
+              "lookupName": "Prednisolona",
+              "editorialSlug": "prednisolona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "fluticasone",
+          "medications": [
+            {
+              "name": "Propionato de fluticasona — Flixotide",
+              "medicationName": "Propionato de fluticasona — Flixotide",
+              "lookupName": "Propionato de fluticasona — Flixotide",
+              "editorialSlug": "propionato-de-fluticasona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "seretide",
+          "medications": [
+            {
+              "name": "Propionato de fluticasona + salmeterol — Seretide Evohaler",
+              "medicationName": "Propionato de fluticasona + salmeterol — Seretide Evohaler",
+              "lookupName": "Propionato de fluticasona + salmeterol — Seretide Evohaler",
+              "editorialSlug": "fluticasona-salmeterol",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "salbutamol",
+          "medications": [
+            {
+              "name": "Salbutamol",
+              "medicationName": "Salbutamol",
+              "lookupName": "Salbutamol",
+              "editorialSlug": "salbutamol",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-manejo-ferida-pos-operatoria",
+      "title": "Manejo de ferida pós-operatória",
+      "options": [
+        {
+          "key": "clean-closed",
+          "medications": [],
+          "requiresCompletion": false
+        },
+        {
+          "key": "silver-sulfadiazine",
+          "medications": [
+            {
+              "name": "Sulfadiazina de prata 1%",
+              "medicationName": "Sulfadiazina de prata 1%",
+              "lookupName": "Sulfadiazina de prata 1%",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "phmb-soap",
+          "medications": [
+            {
+              "name": "Sabonete com PHMB",
+              "medicationName": "Sabonete com PHMB",
+              "lookupName": "Sabonete com PHMB",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "phmb-soap-gel",
+          "medications": [
+            {
+              "name": "Sabonete com PHMB",
+              "medicationName": "Sabonete com PHMB",
+              "lookupName": "Sabonete com PHMB",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            },
+            {
+              "name": "Gel com PHMB",
+              "medicationName": "Gel com PHMB",
+              "lookupName": "Gel com PHMB",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-dermatite-atopica-cao",
+      "title": "Dermatite atópica — Cão",
+      "options": [
+        {
+          "key": "prednisolone",
+          "medications": [
+            {
+              "name": "Prednisolona",
+              "medicationName": "Prednisolona",
+              "lookupName": "Prednisolona",
+              "editorialSlug": "prednisolona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "apoquel",
+          "medications": [
+            {
+              "name": "Oclacitinibe — Apoquel",
+              "medicationName": "Oclacitinibe — Apoquel",
+              "lookupName": "Oclacitinibe — Apoquel",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "zenrelia",
+          "medications": [
+            {
+              "name": "Ilunocitinibe — Zenrelia",
+              "medicationName": "Ilunocitinibe — Zenrelia",
+              "lookupName": "Ilunocitinibe — Zenrelia",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "cloresten",
+          "medications": [
+            {
+              "name": "Cloresten — xampu com clorexidina e miconazol",
+              "medicationName": "Cloresten — xampu com clorexidina e miconazol",
+              "lookupName": "Cloresten — xampu com clorexidina e miconazol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "hidrapet",
+          "medications": [
+            {
+              "name": "Hidrapet — hidratante pós-banho",
+              "medicationName": "Hidrapet — hidratante pós-banho",
+              "lookupName": "Hidrapet — hidratante pós-banho",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pancreatite-cao",
+      "title": "Pancreatite — Cão (após estabilização)",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-pancreatite-gato",
+      "title": "Pancreatite — Gato (após estabilização)",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-triade-felina",
+      "title": "Tríade felina — tratamento individualizado",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ursodiol",
+          "medications": [
+            {
+              "name": "Ácido ursodesoxicólico",
+              "medicationName": "Ácido ursodesoxicólico",
+              "lookupName": "Ácido ursodesoxicólico",
+              "editorialSlug": "acido-ursodesoxicolico",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "prednisolone",
+          "medications": [
+            {
+              "name": "Prednisolona",
+              "medicationName": "Prednisolona",
+              "lookupName": "Prednisolona",
+              "editorialSlug": "prednisolona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-trauma-vertebromedular-cao",
+      "title": "Trauma vertebromedular — Cão",
+      "options": [
+        {
+          "key": "gabapentin",
+          "medications": [
+            {
+              "name": "Gabapentina",
+              "medicationName": "Gabapentina",
+              "lookupName": "Gabapentina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "tramadol",
+          "medications": [
+            {
+              "name": "Tramadol",
+              "medicationName": "Tramadol",
+              "lookupName": "Tramadol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "dipirona",
+          "medications": [
+            {
+              "name": "Dipirona",
+              "medicationName": "Dipirona",
+              "lookupName": "Dipirona",
+              "editorialSlug": "dipirona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "carprofen",
+          "medications": [
+            {
+              "name": "Carprofeno",
+              "medicationName": "Carprofeno",
+              "lookupName": "Carprofeno",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "meloxicam",
+          "medications": [
+            {
+              "name": "Meloxicam",
+              "medicationName": "Meloxicam",
+              "lookupName": "Meloxicam",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-trauma-vertebromedular-gato",
+      "title": "Trauma vertebromedular — Gato",
+      "options": [
+        {
+          "key": "gabapentin",
+          "medications": [
+            {
+              "name": "Gabapentina",
+              "medicationName": "Gabapentina",
+              "lookupName": "Gabapentina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "tramadol",
+          "medications": [
+            {
+              "name": "Tramadol",
+              "medicationName": "Tramadol",
+              "lookupName": "Tramadol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "dipirona",
+          "medications": [
+            {
+              "name": "Dipirona",
+              "medicationName": "Dipirona",
+              "lookupName": "Dipirona",
+              "editorialSlug": "dipirona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "robenacoxib",
+          "medications": [
+            {
+              "name": "Robenacoxibe",
+              "medicationName": "Robenacoxibe",
+              "lookupName": "Robenacoxibe",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-hernia-disco-cao",
+      "title": "Hérnia de disco — Cão (manejo conservador)",
+      "options": [
+        {
+          "key": "carprofen",
+          "medications": [
+            {
+              "name": "Carprofeno",
+              "medicationName": "Carprofeno",
+              "lookupName": "Carprofeno",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "meloxicam",
+          "medications": [
+            {
+              "name": "Meloxicam",
+              "medicationName": "Meloxicam",
+              "lookupName": "Meloxicam",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "gabapentin",
+          "medications": [
+            {
+              "name": "Gabapentina",
+              "medicationName": "Gabapentina",
+              "lookupName": "Gabapentina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "pregabalin",
+          "medications": [
+            {
+              "name": "Pregabalina",
+              "medicationName": "Pregabalina",
+              "lookupName": "Pregabalina",
+              "editorialSlug": "pregabalina",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "tramadol",
+          "medications": [
+            {
+              "name": "Tramadol",
+              "medicationName": "Tramadol",
+              "lookupName": "Tramadol",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "dipirona",
+          "medications": [
+            {
+              "name": "Dipirona",
+              "medicationName": "Dipirona",
+              "lookupName": "Dipirona",
+              "editorialSlug": "dipirona",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-sindrome-vestibular-cao",
+      "title": "Síndrome vestibular — Cão",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "meclizine",
+          "medications": [
+            {
+              "name": "Meclizina",
+              "medicationName": "Meclizina",
+              "lookupName": "Meclizina",
+              "editorialSlug": null,
+              "registrationTargets": [
+                "medicamentos",
+                "comerciais"
+              ],
+              "editable": true,
+              "needsRegistration": false,
+              "reason": "Sem produto comercial vinculado. Ajuste a dose e utilize manipulação quando indicado."
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    },
+    {
+      "id": "seed-sindrome-vestibular-gato",
+      "title": "Síndrome vestibular — Gato",
+      "options": [
+        {
+          "key": "maropitant",
+          "medications": [
+            {
+              "name": "Maropitant",
+              "medicationName": "Maropitant",
+              "lookupName": "Maropitant",
+              "editorialSlug": "maropitant",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        },
+        {
+          "key": "ondansetron",
+          "medications": [
+            {
+              "name": "Ondansetrona",
+              "medicationName": "Ondansetrona",
+              "lookupName": "Ondansetrona",
+              "editorialSlug": "ondansetron",
+              "registrationTargets": [
+                "medicamentos"
+              ],
+              "editable": true,
+              "needsRegistration": false
+            }
+          ],
+          "requiresCompletion": false
+        }
+      ]
+    }
+  ]
+}

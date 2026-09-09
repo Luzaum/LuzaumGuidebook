@@ -38,7 +38,12 @@ export async function fetchAllTemplates(clinicId?: string | null, userId?: strin
   writeCache(cacheKey('templates', userId), remote.filter((item) => !item.is_global));
   const map = new Map<string, DocumentTemplate>();
   RECEITUARIO_SEED_TEMPLATES.forEach((item) => map.set(item.id, item));
-  remote.forEach((item) => map.set(item.id, item));
+  // Modelos clínicos versionados contêm funções e correções que o JSON remoto
+  // antigo não preserva. Cópias personalizadas continuam tendo seus próprios IDs.
+  remote.forEach((item) => {
+    if (item.is_global && GLOBAL_RECIPE_TEMPLATE_IDS.has(item.id) && map.has(item.id)) return;
+    map.set(item.id, item);
+  });
   return Array.from(map.values());
 }
 

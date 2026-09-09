@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { Info } from 'lucide-react'
+import { ExternalLink, Info } from 'lucide-react'
 import { Button } from './ui/button'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from './ui/dialog'
 import { Badge } from './ui/badge'
@@ -12,6 +12,7 @@ import {
   getMissingNutrientLabels,
   parseAllFoodNotes,
 } from '../lib/foodDetailPresentation'
+import { getCommercialDietMedia } from '../lib/commercialDietImages'
 import { getFoodDisplayName } from '../lib/genutriData'
 import { cn } from '../lib/utils'
 import type { FoodItem } from '../types'
@@ -94,6 +95,7 @@ export function FoodDetailDialog({ food, open, onOpenChange }: FoodDetailDialogP
   const missingLabels = getMissingNutrientLabels(food)
   const counts = countReportedNutrients(food)
   const sourceType = structured.find((r) => r.label === 'Tipo de fonte')?.value
+  const commercialMedia = food.foodType === 'commercial' ? getCommercialDietMedia(food.id, food.name) : null
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -101,19 +103,64 @@ export function FoodDetailDialog({ food, open, onOpenChange }: FoodDetailDialogP
         <DialogHeader className="shrink-0 pr-10 text-left">
           <DialogTitle className="text-xl leading-snug sm:text-2xl">{displayName}</DialogTitle>
           <p className="text-sm text-muted-foreground sm:text-base">{food.presentation || 'Apresentação não informada'}</p>
-          <div className="mt-2 flex flex-wrap gap-1.5">
+          <div className="mt-2 flex flex-wrap items-center gap-1.5">
             <Badge variant="outline">{food.categoryNormalized ?? food.category ?? 'Sem categoria'}</Badge>
             {sourceType && <Badge variant="secondary">{sourceType}</Badge>}
             <Badge variant="secondary">{food.foodType}</Badge>
             <Badge variant="outline">
               {counts.asFed}/{counts.catalogTotal} nutrientes MN
             </Badge>
+            {commercialMedia?.productUrl && (
+              <a
+                href={commercialMedia.productUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-0.5 text-xs font-semibold text-primary transition-colors hover:bg-primary hover:text-white"
+                title={`Abrir página oficial de ${food.name} no site da fabricante (${commercialMedia.brand})`}
+              >
+                <span>Site Oficial ({commercialMedia.brand})</span>
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            )}
           </div>
         </DialogHeader>
 
         <div className="min-h-0 flex-1 space-y-4 overflow-y-auto overscroll-y-contain pr-1 [-webkit-overflow-scrolling:touch]">
           <DetailSection title="Identificação">
-            <DetailGrid rows={identityRows} />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex-1 min-w-0">
+                <DetailGrid rows={identityRows} />
+              </div>
+              {commercialMedia?.imageUrl && (
+                <div className="flex flex-col items-center justify-center self-center sm:self-start p-3 rounded-2xl border border-border/70 bg-gradient-to-b from-white to-slate-50 dark:from-slate-900/80 dark:to-slate-950/80 shrink-0 shadow-xs">
+                  {commercialMedia.productUrl ? (
+                    <a
+                      href={commercialMedia.productUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/dphoto flex flex-col items-center gap-1.5"
+                      title={`Abrir página oficial de ${displayName} na fabricante (${commercialMedia.brand})`}
+                    >
+                      <img
+                        src={commercialMedia.imageUrl}
+                        alt={commercialMedia.alt || displayName}
+                        className="h-32 w-32 object-contain transition-transform duration-300 group-hover/dphoto:scale-105"
+                      />
+                      <span className="inline-flex items-center gap-1 text-[10px] font-bold text-primary group-hover/dphoto:underline">
+                        <span>Site Oficial ({commercialMedia.brand})</span>
+                        <ExternalLink className="h-2.5 w-2.5" />
+                      </span>
+                    </a>
+                  ) : (
+                    <img
+                      src={commercialMedia.imageUrl}
+                      alt={commercialMedia.alt || displayName}
+                      className="h-32 w-32 object-contain"
+                    />
+                  )}
+                </div>
+              )}
+            </div>
           </DetailSection>
 
           {(structured.length > 0 || flags.length > 0) && (

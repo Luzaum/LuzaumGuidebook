@@ -5,14 +5,12 @@ import { RECEITUARIO_PROTOCOL_MODELS } from '../../modules/consulta-vet/data/rec
 import { isRetiredRecipeTemplate, SEEDED_TEMPLATES } from '../../modules/consulta-vet/data/receituarioSeed';
 import {
   calculateClinicalMedicationAmount,
-  calculateMagistralFormula,
   explainPatientTerms,
   getClinicalRecipeObservations,
   getDefaultClinicalOptionKeys,
   hasTechnicalPlaceholders,
   renderClinicalRecipe,
 } from '../../modules/consulta-vet/utils/receituarioClinicalModels';
-import { stripPrescriptionTechnicalDetails } from '../../modules/consulta-vet/utils/receituarioTemplateCalculator';
 
 function template(id: string) {
   const found = [...RECEITUARIO_INFECTOLOGIA_MODELS, ...RECEITUARIO_PROTOCOL_MODELS].find((item) => item.id === id);
@@ -67,46 +65,16 @@ test('iodeto de potássio felino registra escalonamento de 2,5 mg/kg e máximo d
   assert.match(item.prescriptionText, /incrementos de 2,5 mg\/kg/i);
 });
 
-test('protocolo experimental calcula ribavirina e DMSO separadamente', () => {
+test('cinomose não transforma protocolo experimental em receita automática', () => {
   const model = template('seed-infectologia-cinomose-caes').structured_defaults!.clinical_model!;
-  const ribavirin = medication('seed-infectologia-cinomose-caes', 'ribavirin-distemper');
-  const dmso = medication('seed-infectologia-cinomose-caes', 'dmso-distemper');
-  assert.equal(calculateClinicalMedicationAmount(ribavirin, 10), '200 mg');
-  assert.equal(calculateClinicalMedicationAmount(dmso, 10), '500 mg');
-  const rendered = renderClinicalRecipe(model, getDefaultClinicalOptionKeys(model), 10, 'small');
-  assert.match(rendered, /Dose clínica: 20 mg\/kg/);
-  assert.match(rendered, /Dose clínica: 50 mg\/kg/);
-  const issued = stripPrescriptionTechnicalDetails(rendered);
-  assert.doesNotMatch(issued, /Dose clínica|20 mg\/kg|50 mg\/kg/);
-  assert.match(issued, /Administrar 200 mg por via oral/);
-  assert.match(issued, /Administrar 500 mg/);
-  assert.doesNotMatch(rendered, /INFORMAÇÕES IMPORTANTES/);
-  assert.doesNotMatch(rendered, /A eficácia clínica da associação completa ainda não está definitivamente comprovada/i);
-  assert.doesNotMatch(rendered, /Pessoas gestantes ou tentando engravidar não devem manipular/i);
-  assert.doesNotMatch(rendered, /definir manualmente a via de administração, a concentração, a diluição e o volume final/i);
-  assert.match(model.veterinarianNotes?.join(' ') || '', /definir manualmente a via de administração, a concentração, a diluição e o volume final/i);
-  assert.match(model.recipeInformation?.join(' ') || '', /A eficácia clínica da associação completa ainda não está definitivamente comprovada/i);
-  assert.match(model.recipeInformation?.join(' ') || '', /Pessoas gestantes ou tentando engravidar não devem manipular/i);
-});
-
-test('fórmula de suplementação preserva mg, UI e mcg sem misturar unidades', () => {
-  const model = template('seed-infectologia-cinomose-caes').structured_defaults!.clinical_model!;
-  const formula = model.options.find((option) => option.key === 'experimental-adjuvant-protocol')!.formula!;
-  const result = calculateMagistralFormula(formula.components, 10, 'small', formula.frequency, formula.durationDays);
-  assert.equal(result.find((item) => item.key === 'vitamin-a')!.amountPerDose, '400 UI');
-  assert.equal(result.find((item) => item.key === 'vitamin-b12')!.amountPerDose, '200 mcg');
-  assert.equal(result.find((item) => item.key === 'vitamin-e')!.amountPerDose, '100 mg');
-  assert.doesNotMatch(result.map((item) => item.amountPerDose).join(' '), /UI\/mg|mcg\/mg/);
-});
-
-test('Coenzima Q10 exige porte e aplica a faixa correta', () => {
-  const model = template('seed-infectologia-cinomose-caes').structured_defaults!.clinical_model!;
-  const formula = model.options.find((option) => option.key === 'experimental-adjuvant-protocol')!.formula!;
-  const small = calculateMagistralFormula(formula.components, 10, 'small', formula.frequency, formula.durationDays);
-  const large = calculateMagistralFormula(formula.components, 10, 'large', formula.frequency, formula.durationDays);
-  assert.equal(small.find((item) => item.name === 'Coenzima Q10')!.amountPerDose, '15 a 20 mg');
-  assert.equal(large.find((item) => item.name === 'Coenzima Q10')!.amountPerDose, '30 mg');
-  assert.equal(formula.requiresPatientSize, true);
+  const experimental = model.options.find((option) => option.key === 'experimental-adjuvant-protocol')!;
+  assert.deepEqual(experimental.medications || [], []);
+  assert.equal(experimental.formula, undefined);
+  assert.match(experimental.description || '', /não devem virar prescrição automática/i);
+  assert.match(experimental.veterinarianNotes?.join(' ') || '', /estudos|evidência/i);
+  assert.deepEqual(getDefaultClinicalOptionKeys(model), []);
+  const rendered = renderClinicalRecipe(model, ['experimental-adjuvant-protocol'], 10, 'small');
+  assert.doesNotMatch(rendered, /RIBAVIRINA|DIMETILSULFÓXIDO|FÓRMULA VITAMÍNICA|A PREENCHER/i);
 });
 
 test('levetiracetam aceita somente apresentação de liberação imediata', () => {

@@ -1,27 +1,27 @@
-import type { ReferenceDomain, ReferenceGroupV2, SourceEntryV2 } from '../model/institutional'
+﻿import type { ReferenceDomain, ReferenceGroupV2, SourceEntryV2 } from '../model/institutional'
 import { INSTITUTIONAL_SOURCE_CCIH_2024 } from './sourceRegistry'
 
 /**
- * Registro canônico de fontes do módulo (chaves estáveis para fichas v2).
+ * Registro canÃ´nico de fontes do mÃ³dulo (chaves estÃ¡veis para fichas v2).
  * Fontes institucionais versionadas: metadado completo em sourceRegistry.ts.
  */
 export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
   'ref_registry.institutional_ccih_2024': {
     key: 'ref_registry.institutional_ccih_2024',
     domain: 'institutional_versioned',
-    title: 'Guia de controle de infecção hospitalar — 2024',
+    title: 'Guia de Uso de Antimicrobianos e Controle de InfecÃ§Ã£o Hospitalar â€” HV-UFMG (EdiÃ§Ã£o 2026)',
     description:
-      'Diretriz institucional para prevenção de infecções e uso racional de antimicrobianos.',
+      'Diretriz da CCIH do Hospital VeterinÃ¡rio da UFMG (Portaria NÂ°9737) com regras de uso racional, condutas empÃ­ricas e dirigidas, desescalonamento e doses.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'As páginas indicadas foram conferidas na edição institucional.',
+    note: 'Diretriz institucional de 03 de Julho de 2026 com tabela completa de afecÃ§Ãµes e tratamentos.',
   },
   'ref_registry.clinical_syndromes_v2': {
     key: 'ref_registry.clinical_syndromes_v2',
     domain: 'clinical_v2',
-    title: 'Síndromes infecciosas e terapia antimicrobiana',
+    title: 'SÃ­ndromes infecciosas e terapia antimicrobiana',
     description:
-      'Raciocínio por foco infeccioso, gravidade, coleta de cultura e desescalonamento.',
+      'RaciocÃ­nio por foco infeccioso, gravidade, coleta de cultura e desescalonamento.',
     status: 'placeholder',
     note: 'A conduta deve ser individualizada conforme o paciente e o protocolo local.',
   },
@@ -30,33 +30,33 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
     domain: 'molecules_v2',
     title: 'Monografias de antimicrobianos',
     description:
-      'Espectro, farmacocinética, farmacodinâmica, doses, cautelas e monitorização; confirmar bula e protocolo local.',
+      'Espectro, farmacocinÃ©tica, farmacodinÃ¢mica, doses, cautelas e monitorizaÃ§Ã£o; confirmar bula e protocolo local.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'As recomendações institucionais são indicadas quando disponíveis.',
+    note: 'As recomendaÃ§Ãµes institucionais sÃ£o indicadas quando disponÃ­veis.',
   },
   'ref_registry.microbiology_v2_general': {
     key: 'ref_registry.microbiology_v2_general',
     domain: 'microbiology_v2',
-    title: 'Microbiologia clínica e resistência',
-    description: 'Perfis de patógenos e conceitos de resistência para apoio ao raciocínio clínico e ao uso racional de antimicrobianos.',
+    title: 'Microbiologia clÃ­nica e resistÃªncia',
+    description: 'Perfis de patÃ³genos e conceitos de resistÃªncia para apoio ao raciocÃ­nio clÃ­nico e ao uso racional de antimicrobianos.',
     status: 'placeholder',
   },
   'ref_registry.microbiology_v2_resistance': {
     key: 'ref_registry.microbiology_v2_resistance',
     domain: 'microbiology_v2',
-    title: 'Conceitos de resistência (MRSP, ESBL, etc.)',
+    title: 'Conceitos de resistÃªncia (MRSP, ESBL, etc.)',
     description:
-      'Definições clínicas de resistência e sua relação com a escolha e o uso racional de antimicrobianos.',
+      'DefiniÃ§Ãµes clÃ­nicas de resistÃªncia e sua relaÃ§Ã£o com a escolha e o uso racional de antimicrobianos.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Interpretar em conjunto com cultura, antibiograma e contexto clínico.',
+    note: 'Interpretar em conjunto com cultura, antibiograma e contexto clÃ­nico.',
   },
   'ref_registry.microbiology_v2_sampling': {
     key: 'ref_registry.microbiology_v2_sampling',
     domain: 'microbiology_v2',
-    title: 'Amostragem e interpretação',
-    description: 'Boas práticas de coleta, transporte, cultura, antibiograma e interpretação clínica.',
+    title: 'Amostragem e interpretaÃ§Ã£o',
+    description: 'Boas prÃ¡ticas de coleta, transporte, cultura, antibiograma e interpretaÃ§Ã£o clÃ­nica.',
     status: 'placeholder',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
     note: 'Alinhar a coleta aos manuais laboratoriais e ao protocolo institucional.',
@@ -64,67 +64,67 @@ export const SOURCE_REGISTRY: Record<string, SourceEntryV2> = {
   'ref_registry.hospital_culture_timing': {
     key: 'ref_registry.hospital_culture_timing',
     domain: 'hospital_institutional_pending',
-    title: 'Momento da cultura e início do antimicrobiano',
+    title: 'Momento da cultura e inÃ­cio do antimicrobiano',
     description:
-      'Como conciliar coleta adequada, gravidade clínica e início oportuno da terapia.',
+      'Como conciliar coleta adequada, gravidade clÃ­nica e inÃ­cio oportuno da terapia.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Em pacientes instáveis, a estabilização e a terapia não devem ser atrasadas indevidamente.',
+    note: 'Em pacientes instÃ¡veis, a estabilizaÃ§Ã£o e a terapia nÃ£o devem ser atrasadas indevidamente.',
   },
   'ref_registry.hospital_stewardship_core': {
     key: 'ref_registry.hospital_stewardship_core',
     domain: 'hospital_institutional_pending',
     title: 'Uso racional de antimicrobianos',
     description:
-      'Seleção, reavaliação, descalonamento e duração do tratamento com foco em segurança.',
+      'SeleÃ§Ã£o, reavaliaÃ§Ã£o, descalonamento e duraÃ§Ã£o do tratamento com foco em seguranÃ§a.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'A decisão final depende do foco, da cultura, da resposta e do protocolo local.',
+    note: 'A decisÃ£o final depende do foco, da cultura, da resposta e do protocolo local.',
   },
   'ref_registry.hospital_institutional_pending': {
     key: 'ref_registry.hospital_institutional_pending',
     domain: 'hospital_institutional_pending',
-    title: 'Prevenção e controle de infecção hospitalar',
+    title: 'PrevenÃ§Ã£o e controle de infecÃ§Ã£o hospitalar',
     description:
-      'Medidas de vigilância, isolamento, higiene e prevenção da transmissão hospitalar.',
+      'Medidas de vigilÃ¢ncia, isolamento, higiene e prevenÃ§Ã£o da transmissÃ£o hospitalar.',
     status: 'versioned_restricted_metadata',
     versionedSourceId: INSTITUTIONAL_SOURCE_CCIH_2024,
-    note: 'Referência institucional para medidas de prevenção e controle.',
+    note: 'ReferÃªncia institucional para medidas de prevenÃ§Ã£o e controle.',
   },
-  /** Síntese educacional das fichas de fisiopatologia — metadado; PDFs dos manuais não são distribuídos no app. */
+  /** SÃ­ntese educacional das fichas de fisiopatologia â€” metadado; PDFs dos manuais nÃ£o sÃ£o distribuÃ­dos no app. */
   'ref_registry.textbook_nelson_couto_siim_6': {
     key: 'ref_registry.textbook_nelson_couto_siim_6',
     domain: 'clinical_v2',
-    title: 'Nelson & Couto — Small Animal Internal Medicine (6.ª ed.)',
+    title: 'Nelson & Couto â€” Small Animal Internal Medicine (6.Âª ed.)',
     description:
-      'Base conceitual para condições sistêmicas, reprodutivas e infecciosas descritas nas fichas.',
+      'Base conceitual para condiÃ§Ãµes sistÃªmicas, reprodutivas e infecciosas descritas nas fichas.',
     status: 'placeholder',
-    note: 'Referência de medicina interna para raciocínio clínico, diagnóstico e tratamento.',
+    note: 'ReferÃªncia de medicina interna para raciocÃ­nio clÃ­nico, diagnÃ³stico e tratamento.',
   },
   'ref_registry.textbook_cunningham_physiology_6': {
     key: 'ref_registry.textbook_cunningham_physiology_6',
     domain: 'clinical_v2',
-    title: "Cunningham's Textbook of Veterinary Physiology (6.ª ed.)",
+    title: "Cunningham's Textbook of Veterinary Physiology (6.Âª ed.)",
     description:
-      'Fundamentos de inflamação sistémica, febre, resposta vascular e fisiologia respiratória integrados nas explicações de sepse e pneumonia.',
+      'Fundamentos de inflamaÃ§Ã£o sistÃ©mica, febre, resposta vascular e fisiologia respiratÃ³ria integrados nas explicaÃ§Ãµes de sepse e pneumonia.',
     status: 'placeholder',
-    note: 'Síntese educacional; doses e decisões seguem bula e protocolo local.',
+    note: 'SÃ­ntese educacional; doses e decisÃµes seguem bula e protocolo local.',
   },
   'ref_registry.textbook_neuro_practical_3': {
     key: 'ref_registry.textbook_neuro_practical_3',
     domain: 'clinical_v2',
-    title: 'Practical Guide to Canine and Feline Neurology (3.ª ed.)',
+    title: 'Practical Guide to Canine and Feline Neurology (3.Âª ed.)',
     description:
-      'Referência para localização neurológica e abordagem de processos neurológicos infecciosos/inflamatórios quando relevantes ao raciocínio clínico global do doente séptico ou com complicações neurológicas.',
+      'ReferÃªncia para localizaÃ§Ã£o neurolÃ³gica e abordagem de processos neurolÃ³gicos infecciosos/inflamatÃ³rios quando relevantes ao raciocÃ­nio clÃ­nico global do doente sÃ©ptico ou com complicaÃ§Ãµes neurolÃ³gicas.',
     status: 'placeholder',
-    note: 'A neurologia contribui para a avaliação de complicações infecciosas e inflamatórias.',
+    note: 'A neurologia contribui para a avaliaÃ§Ã£o de complicaÃ§Ãµes infecciosas e inflamatÃ³rias.',
   },
   'ref_registry.pathophysiology_excluded_pathologic_basis': {
     key: 'ref_registry.pathophysiology_excluded_pathologic_basis',
     domain: 'clinical_v2',
     title: 'Pathologic Basis of Veterinary Disease',
     description:
-      'Referência para mecanismos de lesão tecidual e fundamentos anatomopatológicos.',
+      'ReferÃªncia para mecanismos de lesÃ£o tecidual e fundamentos anatomopatolÃ³gicos.',
     status: 'placeholder',
   },
 }
@@ -137,12 +137,12 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'clinical_v2',
-    label: 'Literatura clínica',
+    label: 'Literatura clÃ­nica',
     sourceKeys: ['ref_registry.clinical_syndromes_v2'],
   },
   {
     domain: 'clinical_v2',
-    label: 'Literatura de apoio — síntese das fichas de fisiopatologia',
+    label: 'Literatura de apoio â€” sÃ­ntese das fichas de fisiopatologia',
     sourceKeys: [
       'ref_registry.textbook_nelson_couto_siim_6',
       'ref_registry.textbook_cunningham_physiology_6',
@@ -157,7 +157,7 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'microbiology_v2',
-    label: 'Microbiologia e resistência',
+    label: 'Microbiologia e resistÃªncia',
     sourceKeys: [
       'ref_registry.microbiology_v2_general',
       'ref_registry.microbiology_v2_resistance',
@@ -166,7 +166,7 @@ export const REFERENCE_GROUPS: ReferenceGroupV2[] = [
   },
   {
     domain: 'hospital_institutional_pending',
-    label: 'Hospital e controle de infecção',
+    label: 'Hospital e controle de infecÃ§Ã£o',
     sourceKeys: [
       'ref_registry.hospital_culture_timing',
       'ref_registry.hospital_stewardship_core',

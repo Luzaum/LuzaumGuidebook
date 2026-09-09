@@ -132,8 +132,8 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
 
   return (
     <>
-      <SectionCard step={3} icon={Settings2} title="Preparo" subtitle="Dose, diluente e taxa de infusão">
-        <div className="grid gap-4 xl:grid-cols-[minmax(0,1.3fr)_minmax(340px,0.9fr)] xl:gap-5 2xl:grid-cols-[minmax(0,1.38fr)_minmax(360px,0.85fr)]">
+      <SectionCard step={3} icon={Settings2} title="Preparo" subtitle="Dose, diluente e administração" complete={dose > 0 && presentationId !== '' && (activeRegime === 'bolus' || (totalVolume > 0 && infusionRate > 0))}>
+        <div className="grid gap-4 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] lg:gap-5">
           <div className="space-y-4 xl:space-y-5">
             <section className="rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
               <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
@@ -165,7 +165,7 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
               </div>
             </section>
 
-            <div className="grid gap-4 2xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] 2xl:gap-5">
+            <div className="grid gap-4">
               <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:p-4">
                 <div className="flex items-center justify-between gap-3">
                   <label className="flex items-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-300">
@@ -208,41 +208,10 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 </div>
 
                 {currentDoseHint && (
-                  <div className="rounded-2xl border border-indigo-100 bg-indigo-50 p-4 dark:border-indigo-500/20 dark:bg-indigo-500/10">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-white text-indigo-600 shadow-sm dark:bg-slate-900 dark:text-indigo-300">
-                        <BadgeCheck className="h-4 w-4" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-indigo-700 dark:text-indigo-300">
-                          Dose indicada
-                        </p>
-                        <p className="mt-1 text-sm font-semibold leading-relaxed text-indigo-950 dark:text-indigo-100">
-                          {currentDoseHint.title}: {currentDoseHint.doseText}
-                        </p>
-                        {currentDoseHint.rationale && (
-                          <p className="mt-2 text-sm leading-relaxed text-indigo-800/90 dark:text-indigo-200/80">
-                            {currentDoseHint.rationale}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {doseGuides.length > 1 && (
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3.5 dark:border-slate-700 dark:bg-slate-900">
-                    <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-slate-500 dark:text-slate-400">
-                      Outras faixas cadastradas
-                    </p>
-                    <div className="mt-2 space-y-2">
-                      {doseGuides.slice(0, 3).map((guide) => (
-                        <div key={guide.id} className="text-sm font-medium leading-relaxed text-slate-600 dark:text-slate-300">
-                          <span className="font-semibold text-slate-900 dark:text-white">{guide.title}:</span> {guide.doseText}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  <p className="flex items-start gap-2 rounded-xl bg-indigo-50 px-3 py-2.5 text-xs font-medium leading-5 text-indigo-900 dark:bg-indigo-500/10 dark:text-indigo-200">
+                    <BadgeCheck className="mt-0.5 h-4 w-4 shrink-0 text-indigo-600 dark:text-indigo-400" />
+                    <span><strong>Faixa do acervo:</strong> {currentDoseHint.doseText}</span>
+                  </p>
                 )}
 
                 {dose <= 0 && <p className="text-xs font-medium text-red-500 dark:text-red-400">A dose deve ser maior que zero.</p>}
@@ -265,9 +234,9 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                 </select>
 
                 {selectedPresentation && selectedPresentation.id !== CUSTOM_PRESENTATION_ID && (
-                  <div className="rounded-2xl border border-slate-200 bg-white p-3.5 text-sm font-medium text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-                    Estoque cadastrado: {selectedPresentation.concentration} {selectedPresentation.concentrationUnit}
-                  </div>
+                  <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                    Estoque: {selectedPresentation.concentration} {selectedPresentation.concentrationUnit}
+                  </p>
                 )}
 
                 {presentationId === CUSTOM_PRESENTATION_ID && (
@@ -456,9 +425,9 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                   </option>
                 ))}
               </select>
-              <div className="rounded-2xl border border-slate-200 bg-white p-3.5 text-sm font-medium leading-relaxed text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-                Diluente preferencial: {drug.safetyMetadata.preferredDiluent}
-              </div>
+              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">
+                Preferencial: {drug.safetyMetadata.preferredDiluent}
+              </p>
             </section>
 
             <section className="space-y-3 rounded-2xl border border-slate-200 bg-slate-50/80 p-3.5 dark:border-slate-800 dark:bg-slate-950/35 md:space-y-4 md:p-4">
@@ -555,9 +524,6 @@ export const CalculationConfig: React.FC<ConfigProps> = ({
                       : 'border-slate-200 bg-white text-slate-800 focus:border-amber-500 focus:ring-amber-500/10 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:focus:border-amber-500 dark:focus:ring-amber-500/20',
                   )}
                 />
-                <div className="rounded-2xl border border-slate-200 bg-white p-3.5 text-sm font-medium leading-relaxed text-slate-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300">
-                  A taxa da bomba define a concentração final necessária no preparo e quanto tempo a solução vai durar.
-                </div>
                 {infusionRate <= 0 && (
                   <p className="text-xs font-medium text-red-500 dark:text-red-400">
                     A taxa de infusão deve ser maior que zero.

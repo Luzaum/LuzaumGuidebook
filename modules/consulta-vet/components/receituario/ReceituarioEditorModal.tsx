@@ -9,8 +9,8 @@ import { insertMedicationIntoPrescriptionText, normalizePrescriptionSpecies, rem
 import { buildDocumentBodyPlainText, buildDocumentPlainText, normalizeLegacyDocumentBody, sanitizeIssuedText, stripTextSignatureSection } from '../../utils/receituarioDocument';
 import { downloadReceituarioPdf } from '../../utils/receituarioPdf';
 import { ensureEditableRecipeReturn, ensureRecipeClinicalWorseningNotice, normalizeRecipeListMarkers, stripPrescriptionTechnicalDetails } from '../../utils/receituarioTemplateCalculator';
-import { resolveSelectedClinicalMedications, listClinicalMedicationsNeedingRegistration } from '../../utils/clinicalMedicationCatalogBridge';
-import { getClinicalRecipeObservations, getDefaultClinicalOptionKeys } from '../../utils/receituarioClinicalModels';
+import { resolveSelectedClinicalMedications } from '../../utils/clinicalMedicationCatalogBridge';
+import { getClinicalRecipeObservations, getDefaultClinicalOptionKeys, normalizeClinicalOptionKeys } from '../../utils/receituarioClinicalModels';
 import { ClinicalMedicationDosePanel } from './ClinicalMedicationDosePanel';
 import { ClinicalRecipeObservations } from './ClinicalRecipeObservations';
 import { ClinicalTemplateConfigurator } from './ClinicalTemplateConfigurator';
@@ -25,6 +25,7 @@ interface Props {
   initialTitle?: string;
   documentType?: 'recipe' | 'term';
   initialIdentification?: Partial<PrintIdentification>;
+  initialDocumentData?: Partial<ReceituarioDocumentData> | null;
 }
 
 const EMPTY_IDENTIFICATION: PrintIdentification = {
@@ -229,7 +230,7 @@ function HighlightedPlainTextEditor({ value, onChange, weightKg, highlightClinic
   );
 }
 
-export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyText, initialTitle, documentType = 'recipe', initialIdentification }: Props) {
+export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyText, initialTitle, documentType = 'recipe', initialIdentification, initialDocumentData }: Props) {
   const { user, profile } = useAuthSession();
   const { clinicId, clinicName } = useClinic();
   const [activeMobileTab, setActiveMobileTab] = useState<'edit' | 'preview'>('edit');
@@ -252,7 +253,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   const [clinicalMedicationOverrides, setClinicalMedicationOverrides] = useState<Record<string, ClinicalMedicationOverride>>({});
   const editorInitializedRef = useRef(false);
   const prescriptionItemsRef = useRef<PrescriptionMedicationSnapshot[]>([]);
-  const clinicalModel = template?.structured_defaults?.clinical_model;
+  const clinicalModel = template?.structured_defaults?.clinical_model || initialDocumentData?.clinicalModel || undefined;
 
   const metadata = user?.user_metadata || {};
   const header = useMemo(() => ({
@@ -276,7 +277,8 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     setModelCategory(template?.category || 'Cuidados gerais');
     setModelSpecies(template?.species || 'ambos');
     setSavedPersonalTemplateId(template && !template.is_global ? template.id : null);
-    const normalizedBody = normalizeLegacyDocumentBody(initialBodyText || template?.body_plain_text || '');
+    const persistedDocument = initialDocumentData || template?.structured_defaults || null;
+    const normalizedBody = normalizeLegacyDocumentBody(initialBodyText || persistedDocument?.bodyPlainText || template?.body_plain_text || '');
     const editableBody = documentType === 'recipe' ? ensureEditableRecipeReturn(normalizedBody) : normalizedBody;
     setBody(documentType === 'term' ? stripTextSignatureSection(editableBody) : editableBody);
     setIdentification({
@@ -284,18 +286,20 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
       species: template?.species === 'cão' ? 'Cão' : template?.species === 'gato' ? 'Gato' : '',
       veterinarianName: header.veterinarianName === 'Médico-veterinário' ? '' : header.veterinarianName,
       crmv: header.crmv,
+      ...(persistedDocument?.identification || {}),
       ...initialIdentification,
     });
     setWorkspace('text');
     setActiveMobileTab('edit');
     setIdentificationOpen(false);
-    setPrescriptionItems([]);
-    prescriptionItemsRef.current = [];
+    const persistedItems = (persistedDocument?.prescriptionItems || []).filter((item) => item.origin !== 'clinical_model');
+    setPrescriptionItems(persistedItems);
+    prescriptionItemsRef.current = persistedItems;
     setEditingSnapshot(null);
-    setClinicalSelectedKeys(clinicalModel ? getDefaultClinicalOptionKeys(clinicalModel) : []);
-    setClinicalDoseAlternativeKeys({});
-    setClinicalMedicationOverrides({});
-  }, [clinicalModel, documentType, header.crmv, header.veterinarianName, initialBodyText, initialIdentification, initialTitle, isOpen, template]);
+    setClinicalSelectedKeys(clinicalModel ? normalizeClinicalOptionKeys(clinicalModel, persistedDocument?.clinicalSelectedKeys || getDefaultClinicalOptionKeys(clinicalModel)) : []);
+    setClinicalDoseAlternativeKeys(persistedDocument?.clinicalDoseAlternativeKeys || {});
+    setClinicalMedicationOverrides(persistedDocument?.clinicalMedicationOverrides || {});
+  }, [clinicalModel, documentType, header.crmv, header.veterinarianName, initialBodyText, initialDocumentData, initialIdentification, initialTitle, isOpen, template]);
 
   useEffect(() => {
     prescriptionItemsRef.current = prescriptionItems;
@@ -317,6 +321,44 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     return () => document.body.classList.remove('receituario-editor-open');
   }, [isOpen]);
 
+  const persistedClinicalModel = useMemo(() => clinicalModel ? {
+    ...clinicalModel,
+    appendBodySections: clinicalModel.appendBodySectionsBuilder?.(parseWeight(identification.weightKg), identification.species)
+      ?? clinicalModel.appendBodySections,
+    appendBodySectionsBuilder: undefined,
+  } : null, [clinicalModel, identification.species, identification.weightKg]);
+
+  const selectedClinicalMedications = useMemo(() => (
+    clinicalModel ? resolveSelectedClinicalMedications(clinicalModel, clinicalSelectedKeys) : []
+  ), [clinicalModel, clinicalSelectedKeys]);
+
+  const clinicalPrescriptionItems = useMemo<PrescriptionMedicationSnapshot[]>(() => selectedClinicalMedications.map((medication) => {
+    const override = clinicalMedicationOverrides[medication.key] || {};
+    return {
+      origin: 'clinical_model',
+      medicationId: override.catalogMedicationId || override.editorialMedicationId || override.commercialProductId || medication.canonicalMedicationId || `clinical:${medication.key}`,
+      medicationName: medication.name,
+      activeIngredient: medication.canonicalLookupName || medication.name,
+      presentationId: override.presentationId || override.commercialProductId || null,
+      doseId: override.doseId || null,
+      doseSourceType: 'clinic',
+      doseSourceLabel: medication.doseSourceLabel,
+      doseSourceUrl: null,
+      doseUnit: medication.dose.unit,
+      selectedDose: override.selectedDoseValue ?? medication.dose.min,
+      precautions: [],
+      frequency: override.frequency || medication.dose.frequency,
+      duration: override.duration || medication.dose.duration,
+      route: override.route || medication.dose.route,
+      manualPresentation: override.manualPresentation,
+      manualInstruction: override.manualAdministrationAmount,
+      presentationSnapshot: override.presentationSnapshot || null,
+      doseSnapshot: override.doseSnapshot || null,
+    };
+  }), [clinicalMedicationOverrides, selectedClinicalMedications]);
+
+  const allPrescriptionItems = useMemo(() => [...clinicalPrescriptionItems, ...prescriptionItems], [clinicalPrescriptionItems, prescriptionItems]);
+
   const documentData: ReceituarioDocumentData = useMemo(() => ({
     title,
     documentType,
@@ -329,21 +371,16 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     bodyPlainText: documentType === 'recipe'
       ? ensureRecipeClinicalWorseningNotice(normalizeRecipeListMarkers(stripPrescriptionTechnicalDetails(sanitizeIssuedText(body))))
       : sanitizeIssuedText(body),
-  }), [body, documentType, header, identification, title]);
-
-  const selectedClinicalMedications = useMemo(() => (
-    clinicalModel ? resolveSelectedClinicalMedications(clinicalModel, clinicalSelectedKeys) : []
-  ), [clinicalModel, clinicalSelectedKeys]);
+    prescriptionItems: allPrescriptionItems,
+    clinicalModel: persistedClinicalModel,
+    clinicalSelectedKeys,
+    clinicalDoseAlternativeKeys,
+    clinicalMedicationOverrides,
+  }), [allPrescriptionItems, body, clinicalDoseAlternativeKeys, clinicalMedicationOverrides, clinicalSelectedKeys, documentType, header, identification, persistedClinicalModel, title]);
 
   const clinicalRecipeObservations = useMemo(() => (
     clinicalModel ? getClinicalRecipeObservations(clinicalModel, clinicalSelectedKeys) : []
   ), [clinicalModel, clinicalSelectedKeys]);
-
-  const missingClinicalCatalog = useMemo(() => (
-    selectedClinicalMedications.length
-      ? listClinicalMedicationsNeedingRegistration(selectedClinicalMedications, identification.species, clinicalDoseAlternativeKeys)
-      : []
-  ), [clinicalDoseAlternativeKeys, identification.species, selectedClinicalMedications]);
 
   const showClinicalMedicationEditor = Boolean(clinicalModel && selectedClinicalMedications.length);
 
@@ -353,7 +390,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   const handleInsert = (block: string, snapshot: PrescriptionMedicationSnapshot) => {
     const editableBlock = sanitizeIssuedText(block);
     setBody((current) => insertMedicationIntoPrescriptionText(current, editableBlock));
-    const nextItems = [...prescriptionItemsRef.current, { ...snapshot, rawBlockText: snapshot.rawBlockText || editableBlock }];
+    const nextItems = [...prescriptionItemsRef.current, { ...snapshot, origin: 'composer' as const, rawBlockText: snapshot.rawBlockText || editableBlock }];
     prescriptionItemsRef.current = nextItems;
     setPrescriptionItems(nextItems);
     setWorkspace('text');
@@ -379,7 +416,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     setBody((current) => updateMedicationInPrescriptionText(current, oldBlockText, sanitizeIssuedText(newBlockText)));
     const nextItems = prescriptionItemsRef.current.map((item) => (
       item === editingSnapshot || item.rawBlockText === oldBlockText
-        ? { ...updatedSnapshot, rawBlockText: updatedSnapshot.rawBlockText || sanitizeIssuedText(newBlockText) }
+        ? { ...updatedSnapshot, origin: 'composer' as const, rawBlockText: updatedSnapshot.rawBlockText || sanitizeIssuedText(newBlockText) }
         : item
     ));
     prescriptionItemsRef.current = nextItems;
@@ -405,7 +442,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     if (!user?.id) { notify('Entre na sua conta para salvar o documento.'); return; }
     setSaving(true);
     try {
-      await issueGeneratedDocument({ title, document_type: documentType, body_plain_text: buildDocumentPlainText(documentData), structured_data: documentData, prescription_items: prescriptionItems, template_id: template?.id || null, clinic_id: clinicId || null, created_by: user.id });
+      await issueGeneratedDocument({ title, document_type: documentType, body_plain_text: buildDocumentPlainText(documentData), structured_data: documentData, prescription_items: allPrescriptionItems, template_id: template?.id || null, clinic_id: clinicId || null, created_by: user.id });
       notify('Documento emitido e salvo na sua conta.');
     } catch (error) { notify(error instanceof Error ? error.message : 'Não foi possível emitir o documento.'); }
     finally { setSaving(false); }
@@ -416,7 +453,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     setSaving(true);
     try {
       const editableModelBody = documentType === 'recipe' ? sanitizeIssuedText(body) : documentData.bodyPlainText;
-      const savedTemplate = await saveCustomTemplate({ templateId: savedPersonalTemplateId, title: modelTitle.trim(), category: modelCategory, document_type: documentType, species: modelSpecies, body_plain_text: editableModelBody, structured_defaults: { ...documentData, bodyPlainText: editableModelBody, identification: EMPTY_IDENTIFICATION }, clinicId, userId: user.id });
+      const savedTemplate = await saveCustomTemplate({ templateId: savedPersonalTemplateId, title: modelTitle.trim(), category: modelCategory, document_type: documentType, species: modelSpecies, body_plain_text: editableModelBody, structured_defaults: { ...(template?.structured_defaults || {}), ...documentData, bodyPlainText: editableModelBody, identification: EMPTY_IDENTIFICATION }, medication_ids: allPrescriptionItems.map((item) => item.medicationId), clinicId, userId: user.id });
       setSavedPersonalTemplateId(savedTemplate.id);
       setSaveModelOpen(false);
       notify(savedPersonalTemplateId ? 'Modelo pessoal atualizado.' : 'Modelo pessoal criado.');
@@ -507,13 +544,10 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
               <div className="min-h-[min(480px,52vh)] space-y-4 p-4 sm:p-5">
                 <p className="text-xs text-muted-foreground">
                   Ajuste apresentações, doses e confira as faixas indicadas. Alertas em vermelho intenso indicam sobredose grave (a receita mostrará ERRO DE DOSE P/ CONCENTRAÇÃO); em laranja, subdose ou sobredose leve.
-                  {missingClinicalCatalog.length ? (
-                    <>
-                      {' '}Medicamentos em roxo precisam ser cadastrados no ConsultaVet antes de habilitar a edição automática.
-                    </>
-                  ) : null}
+                  {' '}Quando um vínculo antigo estiver ausente, o sistema também procura o medicamento pelo nome nos cadastros da clínica e no catálogo global.
                 </p>
                 <ClinicalMedicationDosePanel
+                  clinicId={clinicId}
                   medications={selectedClinicalMedications}
                   species={identification.species}
                   weightKg={identification.weightKg}

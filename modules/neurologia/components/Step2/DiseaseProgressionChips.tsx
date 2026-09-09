@@ -12,57 +12,49 @@ const PROGRESSION_OPTIONS: Array<{
   id: EvolutionPattern
   label: string
   color: string
-  bgColor: string
-  borderColor: string
-  textColor: string
+  selectedClasses: string
 }> = [
   {
     id: 'melhorando',
     label: 'Melhorando',
     color: '#22c55e',
-    bgColor: 'bg-green-900/30',
-    borderColor: 'border-green-500',
-    textColor: 'text-green-400',
+    selectedClasses:
+      'bg-emerald-500/15 border-emerald-500 text-emerald-700 dark:text-emerald-300 dark:bg-emerald-950/30 ring-1 ring-emerald-500/40',
   },
   {
     id: 'melhora_parcial',
     label: 'Melhora parcial',
-    color: '#4ade80',
-    bgColor: 'bg-emerald-900/25',
-    borderColor: 'border-emerald-500',
-    textColor: 'text-emerald-300',
+    color: '#10b981',
+    selectedClasses:
+      'bg-teal-500/15 border-teal-500 text-teal-700 dark:text-teal-300 dark:bg-teal-950/30 ring-1 ring-teal-500/40',
   },
   {
     id: 'estático',
     label: 'Estático',
     color: '#eab308',
-    bgColor: 'bg-yellow-900/30',
-    borderColor: 'border-yellow-500',
-    textColor: 'text-yellow-400',
+    selectedClasses:
+      'bg-yellow-500/15 border-yellow-500 text-yellow-700 dark:text-yellow-300 dark:bg-yellow-950/30 ring-1 ring-yellow-500/40',
   },
   {
     id: 'flutuante',
     label: 'Flutuante',
     color: '#f97316',
-    bgColor: 'bg-orange-900/30',
-    borderColor: 'border-orange-500',
-    textColor: 'text-orange-400',
+    selectedClasses:
+      'bg-orange-500/15 border-orange-500 text-orange-700 dark:text-orange-300 dark:bg-orange-950/30 ring-1 ring-orange-500/40',
   },
   {
     id: 'progressivo',
     label: 'Progressivo',
     color: '#ef4444',
-    bgColor: 'bg-red-900/30',
-    borderColor: 'border-red-500',
-    textColor: 'text-red-400',
+    selectedClasses:
+      'bg-red-500/15 border-red-500 text-red-700 dark:text-red-300 dark:bg-red-950/30 ring-1 ring-red-500/40',
   },
   {
     id: 'assintomatico_entre_episodios',
     label: 'Assintomático entre episódios',
     color: '#06b6d4',
-    bgColor: 'bg-cyan-900/25',
-    borderColor: 'border-cyan-500',
-    textColor: 'text-cyan-300',
+    selectedClasses:
+      'bg-cyan-500/15 border-cyan-500 text-cyan-700 dark:text-cyan-300 dark:bg-cyan-950/30 ring-1 ring-cyan-500/40',
   },
 ]
 
@@ -73,7 +65,7 @@ export function DiseaseProgressionChips({
 }: DiseaseProgressionChipsProps) {
   return (
     <div className="space-y-3">
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2.5">
         {PROGRESSION_OPTIONS.map((option) => {
           const isSelected = value === option.id
           return (
@@ -82,14 +74,14 @@ export function DiseaseProgressionChips({
               type="button"
               onClick={() => !disabled && onChange(option.id)}
               disabled={disabled}
-              whileTap={disabled ? {} : { scale: 0.95 }}
-              style={isSelected ? { boxShadow: `0 0 12px ${option.color}40` } : undefined}
+              whileTap={disabled ? {} : { scale: 0.96 }}
+              style={isSelected ? { boxShadow: `0 0 14px ${option.color}33` } : undefined}
               className={`
-                px-4 py-3 rounded-lg border-2 font-medium text-sm transition-all
+                px-3.5 py-2 rounded-xl border font-semibold text-xs sm:text-sm transition-all
                 ${
                   isSelected
-                    ? `${option.bgColor} ${option.borderColor} ${option.textColor}`
-                    : 'bg-neutral-800 border-neutral-700 text-neutral-400 hover:border-neutral-600 hover:text-neutral-300'
+                    ? option.selectedClasses
+                    : 'bg-card border-border text-muted-foreground hover:border-gold/45 hover:text-foreground hover:bg-muted/40'
                 }
                 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
               `}
@@ -101,11 +93,11 @@ export function DiseaseProgressionChips({
       </div>
       {value && (
         <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-xs text-neutral-400 italic"
+          initial={{ opacity: 0, y: -3 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-xs text-muted-foreground italic"
         >
-          Impacta diferenciais e urgência do caso
+          Característica temporal integrada aos diferenciais etiológicos.
         </motion.p>
       )}
     </div>

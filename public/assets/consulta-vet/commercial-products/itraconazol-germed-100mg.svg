@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 440" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_itraconazolgermed100mg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8fafc" />
+      <stop offset="100%" stop-color="#e2e8f0" />
+    </linearGradient>
+    <filter id="cardShadow_itraconazolgermed100mg" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-opacity="0.14"/>
+    </filter>
+  </defs>
+  
+  <rect width="420" height="440" rx="24" fill="url(#bg_itraconazolgermed100mg)"/>
+  
+  <!-- Main Pharmaceutical Presentation Card -->
+  <g transform="translate(25, 20)" filter="url(#cardShadow_itraconazolgermed100mg)">
+    <rect width="370" height="400" rx="20" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    
+    <!-- Top Accent Banner -->
+    <rect width="370" height="12" rx="8" fill="#eab308"/>
+    
+    <!-- Category Badge -->
+    <g transform="translate(20, 24)">
+      <rect width="330" height="26" rx="6" fill="#eab308" fill-opacity="0.14"/>
+      <text x="165" y="17" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#ca8a04" text-anchor="middle" letter-spacing="1">
+        MEDICAMENTO GENÉRICO
+      </text>
+    </g>
+    
+    <!-- Packaging Illustration Section -->
+    <g transform="translate(45, 0)">
+      
+    <g transform="translate(45, 75)">
+      <!-- Box Container -->
+      <rect x="10" y="0" width="170" height="120" rx="10" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+      <!-- Generic Yellow Stripe -->
+      <rect x="10" y="25" width="170" height="40" fill="#facc15"/>
+      <!-- Large 'G' Symbol -->
+      <circle cx="45" cy="45" r="16" fill="#0f172a"/>
+      <text x="45" y="53" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="900" fill="#facc15" text-anchor="middle">G</text>
+      <!-- Generic Text -->
+      <text x="70" y="42" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#0f172a">MEDICAMENTO</text>
+      <text x="70" y="55" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="800" fill="#0f172a">GENÉRICO</text>
+      <!-- Law ref -->
+      <text x="70" y="63" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7" font-weight="600" fill="#334155">Lei nº 9.787, de 1999</text>
+      <!-- Blister capsules preview -->
+      <g transform="translate(30, 80)">
+        <rect x="0" y="0" width="22" height="12" rx="6" fill="#cbd5e1"/>
+        <rect x="35" y="0" width="22" height="12" rx="6" fill="#cbd5e1"/>
+        <rect x="70" y="0" width="22" height="12" rx="6" fill="#cbd5e1"/>
+        <rect x="105" y="0" width="22" height="12" rx="6" fill="#cbd5e1"/>
+      </g>
+    </g>
+  
+    </g>
+    
+    <!-- Product Identification Block -->
+    <g transform="translate(20, 245)">
+      <!-- Trade Name -->
+      <text x="165" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="900" fill="#0f172a" text-anchor="middle">
+        Itraconazol 100 mg
+      </text>
+      
+      <!-- Active Ingredient & Strength -->
+      <text x="165" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#eab308" text-anchor="middle">
+        Itraconazol 100 mg
+      </text>
+      
+      <!-- Presentation / Volume -->
+      <text x="165" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#64748b" text-anchor="middle">
+        Medicamento Genérico — 15 Cápsulas
+      </text>
+      
+      <!-- Laboratory -->
+      <text x="165" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#334155" text-anchor="middle">
+        Germed Farmacêutica
+      </text>
+    </g>
+    
+    <!-- Professional Rx Verification Footer -->
+    <g transform="translate(20, 348)">
+      <rect width="330" height="34" rx="8" fill="#f8fafc" stroke="#f1f5f9" stroke-width="1.5"/>
+      <text x="165" y="21" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#475569" text-anchor="middle" letter-spacing="0.5">
+        APRESENTAÇÃO FARMACÊUTICA VERIFICADA • USO CLÍNICO
+      </text>
+    </g>
+  </g>
+</svg>

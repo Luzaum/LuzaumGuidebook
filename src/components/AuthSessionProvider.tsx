@@ -109,8 +109,9 @@ export function AuthSessionProvider({ children }: { children: ReactNode }) {
     try {
       const { data, error } = await supabase.auth.getSession()
       if (error) throw error
-      setSession(data.session || null)
-      const nextProfile = data.session?.user ? toAuthProfile(data.session.user) : null
+      const nextSession = data.session || null
+      setSession(nextSession)
+      const nextProfile = nextSession?.user ? toAuthProfile(nextSession.user) : null
       setProfile(nextProfile)
       persistProfile(nextProfile)
     } finally {
@@ -134,8 +135,9 @@ export function AuthSessionProvider({ children }: { children: ReactNode }) {
         if (!alive) return
         if (error) throw error
 
-        setSession(data.session || null)
-        const nextProfile = data.session?.user ? toAuthProfile(data.session.user) : null
+        const nextSession = data.session || null
+        setSession(nextSession)
+        const nextProfile = nextSession?.user ? toAuthProfile(nextSession.user) : null
         setProfile(nextProfile)
         persistProfile(nextProfile)
       } catch {

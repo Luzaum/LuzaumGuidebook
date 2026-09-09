@@ -39,10 +39,10 @@ const MELOXICAM_ORAL_PRODUCTS = ['maxicam-ourofino', 'meloxivet-duprat', 'mellis
 const CARPROFEN_ORAL_PRODUCTS = ['carproflan-agener-uniao', 'rimadyl-comprimidos-zoetis'];
 const ROBENACOXIB_ORAL_PRODUCTS = ['onsior-elanco'];
 const GABAPENTIN_PRODUCTS = ['gabapentina-humana-manipulada', 'decrise-avert'];
-const PREGABALIN_PRODUCTS = ['pregabalina-humana-manipulada'];
+const PREGABALIN_PRODUCTS = ['pres-preg-caps', 'pres-preg-sol-25'];
 const TRAMADOL_PRODUCTS = ['cronidor-agener'];
-const ONDANSETRON_ORAL_PRODUCTS = ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'];
-const MAROPITANT_ORAL_PRODUCTS = ['cerenia-zoetis'];
+const ONDANSETRON_ORAL_PRODUCTS = ['pres-ondansetron-vonau-vet', 'pres-ondansetron-cp-4', 'pres-ondansetron-cp-8'];
+const MAROPITANT_ORAL_PRODUCTS = ['pres-maro-cp'];
 
 type MedicationOptions = {
   canonicalId?: string | null;

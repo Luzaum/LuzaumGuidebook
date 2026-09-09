@@ -1,0 +1,105 @@
+// src/lib/auth.ts
+import { supabase } from "./supabaseClient";
+import { resolveSupabaseAuthEmail } from "./authIdentifier";
+function resolveAppBaseUrl() {
+  const explicitAppUrl = String(import.meta.env.VITE_PUBLIC_APP_URL || "").trim();
+  if (explicitAppUrl) return explicitAppUrl;
+  if (typeof window !== "undefined") {
+    return window.location.origin;
+  }
+  return "https://vetiusv0.netlify.app";
+}
+function resolveAppUrl(pathname) {
+  return new URL(pathname, resolveAppBaseUrl()).toString();
+}
+function resolveAuthCallbackUrl(nextPath) {
+  const explicitUrl = String(
+    import.meta.env.VITE_SUPABASE_AUTH_REDIRECT_TO || import.meta.env.VITE_AUTH_REDIRECT_TO || ""
+  ).trim();
+  const fallbackBase = resolveAppUrl("/auth/callback");
+  const callbackUrl = new URL(explicitUrl || fallbackBase);
+  if (nextPath && nextPath.trim()) {
+    callbackUrl.searchParams.set("next", nextPath.trim());
+  }
+  return callbackUrl.toString();
+}
+async function signUp(identifier, password, nextPath = "/hub") {
+  const email = resolveSupabaseAuthEmail(identifier);
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: {
+      emailRedirectTo: resolveAuthCallbackUrl(nextPath)
+    }
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+async function signIn(identifier, password) {
+  const email = resolveSupabaseAuthEmail(identifier);
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+async function signInWithGoogle(nextPath = "/app") {
+  const { data, error } = await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: resolveAuthCallbackUrl(nextPath)
+    }
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+async function signInWithGoogleToken(idToken) {
+  const { data, error } = await supabase.auth.signInWithIdToken({
+    provider: "google",
+    token: idToken
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+async function requestPasswordReset(identifier, nextPath = "/login") {
+  const email = resolveSupabaseAuthEmail(identifier);
+  const redirectPath = nextPath.startsWith("/") ? nextPath : "/login";
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: resolveAppUrl("/reset-password") + `?next=${encodeURIComponent(redirectPath)}`
+  });
+  if (error) {
+    throw error;
+  }
+  return data;
+}
+async function signOut() {
+  const { error } = await supabase.auth.signOut();
+  if (error) {
+    throw error;
+  }
+}
+async function getSession() {
+  const { data, error } = await supabase.auth.getSession();
+  if (error) {
+    throw error;
+  }
+  return data.session;
+}
+export {
+  getSession,
+  requestPasswordReset,
+  signIn,
+  signInWithGoogle,
+  signInWithGoogleToken,
+  signOut,
+  signUp
+};

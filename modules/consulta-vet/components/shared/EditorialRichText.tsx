@@ -11,8 +11,10 @@ const CLINICAL_METRIC_RE =
 const CLINICAL_METRIC_EXACT_RE =
   /^\d+(?:[.,]\d+)?(?:\s*[–-]\s*\d+(?:[.,]\d+)?)?\s*(?:%|mg\/kg|mg\/gato|mg\/m²|µg\/kg|μg\/kg|mEq\/kg|UI\/kg|dias?|semanas?|meses?|horas?|minutos?|mm|cm|gatos?|cães?|cadelas?)$/i;
 
-function MetricText({ value, visual }: { value: string; visual?: DiseaseSectionVisual }) {
-  if (!visual) return <>{value}</>;
+function FormattedInline({ value, visual }: { value: string; visual?: DiseaseSectionVisual }) {
+  if (!visual) {
+    return <ClinicalAbbreviationText text={value} />;
+  }
 
   return (
     <>
@@ -32,6 +34,47 @@ function MetricText({ value, visual }: { value: string; visual?: DiseaseSectionV
           <ClinicalAbbreviationText key={`${part}-${index}`} text={part} />
         )
       )}
+    </>
+  );
+}
+
+function MetricTextInner({ value, visual }: { value: string; visual?: DiseaseSectionVisual }) {
+  const italicParts = value.split(/(\*[^*\n]+\*)/g);
+
+  return (
+    <>
+      {italicParts.map((iPart, iIdx) => {
+        if (iPart.startsWith('*') && iPart.endsWith('*') && iPart.length >= 3) {
+          const inner = iPart.slice(1, -1);
+          return (
+            <em key={`i-${iIdx}`} className="italic">
+              <FormattedInline value={inner} visual={visual} />
+            </em>
+          );
+        }
+        return <FormattedInline key={`p-${iIdx}`} value={iPart} visual={visual} />;
+      })}
+    </>
+  );
+}
+
+function MetricText({ value, visual }: { value: string; visual?: DiseaseSectionVisual }) {
+  const boldParts = value.split(/(\b\*\*[^*]+(?:\*[^*]+)*\*\*|\*\*[^*]+(?:\*[^*]+)*\*\*)/g);
+
+  return (
+    <>
+      {boldParts.map((bPart, bIdx) => {
+        if (bPart.startsWith('**') && bPart.endsWith('**') && bPart.length >= 4) {
+          const inner = bPart.slice(2, -2);
+          return (
+            <strong key={`b-${bIdx}`} className="font-semibold text-foreground">
+              <MetricTextInner value={inner} visual={visual} />
+            </strong>
+          );
+        }
+        const cleanPart = bPart.replace(/\*\*/g, '');
+        return <MetricTextInner key={`t-${bIdx}`} value={cleanPart} visual={visual} />;
+      })}
     </>
   );
 }

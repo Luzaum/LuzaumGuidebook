@@ -168,11 +168,7 @@ export const requestedAntiparasiticCommercialProductsSeed: CommercialMedicationP
       'Uso extrabula em pequenos animais: calcular a dose de ponazuril em mg/kg conforme o diagnóstico e dispensar diluição veterinária validada. Não orientar o tutor a medir diretamente a pasta equina a 150 mg/g.',
     safetyAlert:
       'Produto equino e muito concentrado. Não usar a regulagem da seringa equina para cães ou gatos, não copiar a dose equina e não confundir ponazuril com toltrazuril. Uso apenas sob prescrição veterinária.',
-    price: {
-      averageLabel: 'Produto importado; consultar disponibilidade',
-      rangeLabel: 'Sem preço brasileiro estável confirmado',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 150,00 (fracionado)', rangeLabel: 'Manipulação fracionada: R$ 120,00 a R$ 180,00; seringa importada: ~R$ 1.500,00', sourceDate: '2026-09-06' },
     evidenceLevel: 'Bula oficial FDA/DailyMed do Marquis + Plumb’s Veterinary Drug Handbook, 10ª ed.',
     imageUrl:
       'https://horseowner.boehringer-ingelheim.com/us/sites/default/files/styles/scale_1080/public/2024-03/MARQUIS_4dose_pck_quarter%2Bsyringe_qtr_1080x720.jpg?itok=0e_SA6EH',

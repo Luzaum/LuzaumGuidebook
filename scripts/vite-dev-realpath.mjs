@@ -14,7 +14,7 @@ process.chdir(realCwd);
 const viteCli = path.join(realCwd, 'node_modules', 'vite', 'bin', 'vite.js');
 const extra = process.argv.slice(2);
 const child = spawn(process.execPath, [viteCli, ...extra], {
-  stdio: 'inherit',
+  stdio: ['ignore', 'inherit', 'inherit'],
   cwd: realCwd,
   env: process.env,
 });

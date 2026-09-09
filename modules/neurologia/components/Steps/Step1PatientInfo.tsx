@@ -83,7 +83,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
       <Card>
         <div className="mb-3 flex items-center justify-between gap-2">
           <span className="text-sm font-medium text-foreground">Idade</span>
-          <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-200">
+          <span className="rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-amber-700 dark:text-amber-200">
             Obrigatório
           </span>
         </div>
@@ -126,7 +126,7 @@ export function Step1PatientInfo({ patient, setPatient }: Step1Props) {
         </div>
 
         {ageMissing && (
-          <p className="mt-3 text-xs text-amber-200/90">Informe pelo menos anos ou meses para continuar.</p>
+          <p className="mt-3 text-xs text-amber-600 dark:text-amber-300 font-medium">Informe pelo menos anos ou meses para continuar.</p>
         )}
       </Card>
 

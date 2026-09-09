@@ -6,6 +6,7 @@ import {
   ClipboardList,
   Dna,
   GitBranch,
+  Image as ImageIcon,
   Pill,
   ShieldCheck,
   Stethoscope,
@@ -156,6 +157,20 @@ const VISUAL_BY_ID: Record<string, DiseaseSectionVisual> = {
     diagnosticNumBgClass: 'bg-slate-500/12 dark:bg-slate-400/18',
     diagnosticNumTextClass: 'text-slate-800 dark:text-slate-200',
     systemRailClass: 'border-l-slate-500/18 dark:border-l-slate-400/22',
+  },
+  figures: {
+    Icon: ImageIcon,
+    titleClass: 'text-indigo-800 dark:text-indigo-200',
+    headerTintClass: 'bg-indigo-500/[0.09] dark:bg-indigo-400/[0.12]',
+    iconWrapClass: 'bg-indigo-500/20 dark:bg-indigo-400/25',
+    iconClass: 'text-indigo-700 dark:text-indigo-300',
+    leftBarClass: 'border-l-indigo-600 dark:border-l-indigo-400',
+    contentTintClass: 'bg-indigo-500/[0.025] dark:bg-indigo-400/[0.05]',
+    bulletDotClass: 'bg-indigo-600/70 dark:bg-indigo-400/70',
+    diagnosticRailClass: 'border-l-indigo-500/35 dark:border-l-indigo-400/40',
+    diagnosticNumBgClass: 'bg-indigo-500/15 dark:bg-indigo-400/20',
+    diagnosticNumTextClass: 'text-indigo-800 dark:text-indigo-200',
+    systemRailClass: 'border-l-indigo-500/20 dark:border-l-indigo-400/25',
   },
 };
 

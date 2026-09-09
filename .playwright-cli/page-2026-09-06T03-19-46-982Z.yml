@@ -1,0 +1,354 @@
+- generic [ref=f1e5]:
+  - banner [ref=f1e6]:
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]:
+        - button "Abrir navegação do Vetius" [ref=f1e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f1e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f1e13]
+      - generic [ref=f1e15]:
+        - button "Ativar modo escuro" [ref=f1e16] [cursor=pointer]
+        - link "Entrar" [ref=f1e19] [cursor=pointer]:
+          - /url: /login?next=%2Fcalculadora-energetica%2Fcommercial
+  - main [ref=f1e20]:
+    - generic [ref=f1e21]:
+      - generic [ref=f1e22]:
+        - generic [ref=f1e76]:
+          - link "NutriçãoVET Nutrição clínica" [ref=f1e1860] [cursor=pointer]:
+            - /url: /calculadora-energetica
+            - generic [ref=f1e1862]:
+              - generic [ref=f1e1863]: NutriçãoVET
+              - generic [ref=f1e1864]: Nutrição clínica
+          - main [ref=f1e77]:
+            - generic [ref=f1e81]:
+              - generic [ref=f1e82]:
+                - heading "Rações Comerciais" [level=1] [ref=f1e83]
+                - paragraph [ref=f1e84]: Catálogo completo de dietas coadjuvantes de prescrição veterinária e opções fisiológicas para cães e gatos, com composição nutricional detalhada e indicações clínicas.
+              - generic [ref=f1e86]:
+                - generic [ref=f1e87]:
+                  - textbox "Buscar ração por nome, fabricante ou formulação..." [ref=f1e92]
+                  - generic [ref=f1e93]:
+                    - button "🐾 Todos" [ref=f1e94] [cursor=pointer]
+                    - button "Cães" [ref=f1e95] [cursor=pointer]
+                    - button "Gatos" [ref=f1e98] [cursor=pointer]
+                - generic [ref=f1e102]:
+                  - generic [ref=f1e103]: Tipo
+                  - button "Todas as rações" [ref=f1e104] [cursor=pointer]
+                  - button "Terapêuticas" [ref=f1e105] [cursor=pointer]
+                  - button "Manutenção" [active] [ref=f1e106] [cursor=pointer]
+              - generic [ref=f1e1257]:
+                - generic [ref=f1e1258]:
+                  - generic [ref=f1e1259]:
+                    - paragraph [ref=f1e1260]: Perfil de manutenção
+                    - heading "Qual perfil de alimentação você procura?" [level=2] [ref=f1e1908]
+                  - paragraph [ref=f1e1262]: Selecione um bloco para refinar os resultados
+                - generic [ref=f1e1263]:
+                  - button "Todas as categorias 206 Explore todas as opções disponíveis neste grupo." [ref=f1e1909] [cursor=pointer]:
+                    - generic [ref=f1e1271]:
+                      - generic [ref=f1e1272]:
+                        - strong [ref=f1e1273]: Todas as categorias
+                        - generic [ref=f1e1274]: "206"
+                      - generic [ref=f1e1275]: Explore todas as opções disponíveis neste grupo.
+                  - button "Raças específicas 4 Croquete e composição adaptados às particularidades da raça." [ref=f1e1911] [cursor=pointer]:
+                    - generic [ref=f1e1918]:
+                      - generic [ref=f1e1919]:
+                        - strong [ref=f1e1920]: Raças específicas
+                        - generic [ref=f1e1921]: "4"
+                      - generic [ref=f1e1922]: Croquete e composição adaptados às particularidades da raça.
+                  - button "Porte específico 21 Nutrição ajustada aos portes mini, médio, grande e gigante." [ref=f1e1923] [cursor=pointer]:
+                    - generic [ref=f1e1931]:
+                      - generic [ref=f1e1932]:
+                        - strong [ref=f1e1933]: Porte específico
+                        - generic [ref=f1e1934]: "21"
+                      - generic [ref=f1e1935]: Nutrição ajustada aos portes mini, médio, grande e gigante.
+                  - button "Filhotes, gestação & lactação 32 Crescimento, gestação, lactação e primeiros meses de vida." [ref=f1e1936] [cursor=pointer]:
+                    - generic [ref=f1e1941]:
+                      - generic [ref=f1e1942]:
+                        - strong [ref=f1e1943]: Filhotes, gestação & lactação
+                        - generic [ref=f1e1944]: "32"
+                      - generic [ref=f1e1945]: Crescimento, gestação, lactação e primeiros meses de vida.
+                  - button "Adultos — manutenção diária 52 Nutrição completa para a rotina saudável do adulto." [ref=f1e1946] [cursor=pointer]:
+                    - generic [ref=f1e1952]:
+                      - generic [ref=f1e1953]:
+                        - strong [ref=f1e1954]: Adultos — manutenção diária
+                        - generic [ref=f1e1955]: "52"
+                      - generic [ref=f1e1956]: Nutrição completa para a rotina saudável do adulto.
+                  - button "Maduros & idosos 11 Vitalidade e suporte nutricional durante o envelhecimento." [ref=f1e1957] [cursor=pointer]:
+                    - generic [ref=f1e1962]:
+                      - generic [ref=f1e1963]:
+                        - strong [ref=f1e1964]: Maduros & idosos
+                        - generic [ref=f1e1965]: "11"
+                      - generic [ref=f1e1966]: Vitalidade e suporte nutricional durante o envelhecimento.
+                  - button "Castrados & vida indoor 42 Controle calórico para castrados e animais de ambiente interno." [ref=f1e1967] [cursor=pointer]:
+                    - generic [ref=f1e1972]:
+                      - generic [ref=f1e1973]:
+                        - strong [ref=f1e1974]: Castrados & vida indoor
+                        - generic [ref=f1e1975]: "42"
+                      - generic [ref=f1e1976]: Controle calórico para castrados e animais de ambiente interno.
+                  - button "Cuidados específicos 17 Pelagem, digestão, peso, dentes e outros cuidados específicos." [ref=f1e1977] [cursor=pointer]:
+                    - generic [ref=f1e1982]:
+                      - generic [ref=f1e1983]:
+                        - strong [ref=f1e1984]: Cuidados específicos
+                        - generic [ref=f1e1985]: "17"
+                      - generic [ref=f1e1986]: Pelagem, digestão, peso, dentes e outros cuidados específicos.
+                  - button "Manutenção geral 27 Alimentos completos para manutenção cotidiana." [ref=f1e1987] [cursor=pointer]:
+                    - generic [ref=f1e1992]:
+                      - generic [ref=f1e1993]:
+                        - strong [ref=f1e1994]: Manutenção geral
+                        - generic [ref=f1e1995]: "27"
+                      - generic [ref=f1e1996]: Alimentos completos para manutenção cotidiana.
+              - generic [ref=f1e1997]:
+                - generic [ref=f1e1998]:
+                  - generic [ref=f1e1999]:
+                    - paragraph [ref=f1e2000]: Resultados
+                    - heading "206 rações encontradas" [level=2] [ref=f1e2001]
+                  - paragraph [ref=f1e2002]: Compare os diferenciais e macronutrientes. Clique em uma ração para abrir a ficha clínica completa.
+                - generic [ref=f1e2003]:
+                  - button "Abrir ficha de Churu" [ref=f1e2004] [cursor=pointer]:
+                    - generic [ref=f1e2005]:
+                      - generic [ref=f1e2006]: Foto faltando
+                      - generic [ref=f1e2016]: Marca Selecionada
+                    - generic [ref=f1e2017]:
+                      - generic [ref=f1e2018]: Manutenção geral
+                      - heading "Churu" [level=3] [ref=f1e2019]
+                      - paragraph [ref=f1e2020]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2021]:
+                        - generic [ref=f1e2022]:
+                          - generic [ref=f1e2023]: Carboidrato
+                          - strong [ref=f1e2027]: 16.7%
+                        - generic [ref=f1e2028]:
+                          - generic [ref=f1e2029]: PB
+                          - strong [ref=f1e2033]: 77.8%
+                        - generic [ref=f1e2034]:
+                          - generic [ref=f1e2035]: EE
+                          - strong [ref=f1e2039]: 2.2%
+                      - generic [ref=f1e2040]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Natural — Tuna" [ref=f1e2044] [cursor=pointer]:
+                    - generic [ref=f1e2045]:
+                      - generic [ref=f1e2046]: Foto faltando
+                      - generic [ref=f1e2056]: Farmina Vet Life
+                    - generic [ref=f1e2057]:
+                      - generic [ref=f1e2058]: Manutenção geral
+                      - heading "Farmina N&D Natural — Tuna" [level=3] [ref=f1e2059]
+                      - paragraph [ref=f1e2060]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2061]:
+                        - generic [ref=f1e2062]:
+                          - generic [ref=f1e2063]: Carboidrato
+                          - strong [ref=f1e2067]: 94.0%
+                        - generic [ref=f1e2068]:
+                          - generic [ref=f1e2069]: PB
+                          - strong [ref=f1e2073]: 0.0%
+                        - generic [ref=f1e2074]:
+                          - generic [ref=f1e2075]: EE
+                          - strong [ref=f1e2079]: 0.0%
+                      - generic [ref=f1e2080]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Natural — Tuna & Chicken" [ref=f1e2084] [cursor=pointer]:
+                    - generic [ref=f1e2085]:
+                      - generic [ref=f1e2086]: Foto faltando
+                      - generic [ref=f1e2096]: Farmina Vet Life
+                    - generic [ref=f1e2097]:
+                      - generic [ref=f1e2098]: Manutenção geral
+                      - heading "Farmina N&D Natural — Tuna & Chicken" [level=3] [ref=f1e2099]
+                      - paragraph [ref=f1e2100]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2101]:
+                        - generic [ref=f1e2102]:
+                          - generic [ref=f1e2103]: Carboidrato
+                          - strong [ref=f1e2107]: 94.0%
+                        - generic [ref=f1e2108]:
+                          - generic [ref=f1e2109]: PB
+                          - strong [ref=f1e2113]: 0.0%
+                        - generic [ref=f1e2114]:
+                          - generic [ref=f1e2115]: EE
+                          - strong [ref=f1e2119]: 0.0%
+                      - generic [ref=f1e2120]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Ocean — Tuna & Salmon" [ref=f1e2124] [cursor=pointer]:
+                    - generic [ref=f1e2125]:
+                      - generic [ref=f1e2126]: Foto faltando
+                      - generic [ref=f1e2136]: Farmina Vet Life
+                    - generic [ref=f1e2137]:
+                      - generic [ref=f1e2138]: Manutenção geral
+                      - heading "Farmina N&D Ocean — Tuna & Salmon" [level=3] [ref=f1e2139]
+                      - paragraph [ref=f1e2140]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2141]:
+                        - generic [ref=f1e2142]:
+                          - generic [ref=f1e2143]: Carboidrato
+                          - strong [ref=f1e2147]: 94.0%
+                        - generic [ref=f1e2148]:
+                          - generic [ref=f1e2149]: PB
+                          - strong [ref=f1e2153]: 0.0%
+                        - generic [ref=f1e2154]:
+                          - generic [ref=f1e2155]: EE
+                          - strong [ref=f1e2159]: 0.0%
+                      - generic [ref=f1e2160]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Ocean — Tuna & Shrimp" [ref=f1e2164] [cursor=pointer]:
+                    - generic [ref=f1e2165]:
+                      - generic [ref=f1e2166]: Foto faltando
+                      - generic [ref=f1e2176]: Farmina Vet Life
+                    - generic [ref=f1e2177]:
+                      - generic [ref=f1e2178]: Manutenção geral
+                      - heading "Farmina N&D Ocean — Tuna & Shrimp" [level=3] [ref=f1e2179]
+                      - paragraph [ref=f1e2180]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2181]:
+                        - generic [ref=f1e2182]:
+                          - generic [ref=f1e2183]: Carboidrato
+                          - strong [ref=f1e2187]: 94.0%
+                        - generic [ref=f1e2188]:
+                          - generic [ref=f1e2189]: PB
+                          - strong [ref=f1e2193]: 0.0%
+                        - generic [ref=f1e2194]:
+                          - generic [ref=f1e2195]: EE
+                          - strong [ref=f1e2199]: 0.0%
+                      - generic [ref=f1e2200]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Ocean — Tuna, Sardine & Shrimp" [ref=f1e2204] [cursor=pointer]:
+                    - generic [ref=f1e2205]:
+                      - generic [ref=f1e2206]: Foto faltando
+                      - generic [ref=f1e2216]: Farmina Vet Life
+                    - generic [ref=f1e2217]:
+                      - generic [ref=f1e2218]: Manutenção geral
+                      - heading "Farmina N&D Ocean — Tuna, Sardine & Shrimp" [level=3] [ref=f1e2219]
+                      - paragraph [ref=f1e2220]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2221]:
+                        - generic [ref=f1e2222]:
+                          - generic [ref=f1e2223]: Carboidrato
+                          - strong [ref=f1e2227]: 94.0%
+                        - generic [ref=f1e2228]:
+                          - generic [ref=f1e2229]: PB
+                          - strong [ref=f1e2233]: 0.0%
+                        - generic [ref=f1e2234]:
+                          - generic [ref=f1e2235]: EE
+                          - strong [ref=f1e2239]: 0.0%
+                      - generic [ref=f1e2240]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Adult Boar & Apple" [ref=f1e2244] [cursor=pointer]:
+                    - generic [ref=f1e2245]:
+                      - generic [ref=f1e2246]: Foto faltando
+                      - generic [ref=f1e2256]: Farmina Vet Life
+                    - generic [ref=f1e2257]:
+                      - generic [ref=f1e2258]: Adultos — manutenção diária
+                      - heading "Farmina N&D Prime — Adult Boar & Apple" [level=3] [ref=f1e2259]
+                      - paragraph [ref=f1e2260]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2261]:
+                        - generic [ref=f1e2262]:
+                          - generic [ref=f1e2263]: Carboidrato
+                          - strong [ref=f1e2267]: 94.0%
+                        - generic [ref=f1e2268]:
+                          - generic [ref=f1e2269]: PB
+                          - strong [ref=f1e2273]: 0.0%
+                        - generic [ref=f1e2274]:
+                          - generic [ref=f1e2275]: EE
+                          - strong [ref=f1e2279]: 0.0%
+                      - generic [ref=f1e2280]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Adult Chicken & Pomegranate" [ref=f1e2284] [cursor=pointer]:
+                    - generic [ref=f1e2285]:
+                      - generic [ref=f1e2286]: Foto faltando
+                      - generic [ref=f1e2296]: Farmina Vet Life
+                    - generic [ref=f1e2297]:
+                      - generic [ref=f1e2298]: Adultos — manutenção diária
+                      - heading "Farmina N&D Prime — Adult Chicken & Pomegranate" [level=3] [ref=f1e2299]
+                      - paragraph [ref=f1e2300]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2301]:
+                        - generic [ref=f1e2302]:
+                          - generic [ref=f1e2303]: Carboidrato
+                          - strong [ref=f1e2307]: 10.9%
+                        - generic [ref=f1e2308]:
+                          - generic [ref=f1e2309]: PB
+                          - strong [ref=f1e2313]: 52.3%
+                        - generic [ref=f1e2314]:
+                          - generic [ref=f1e2315]: EE
+                          - strong [ref=f1e2319]: 25.0%
+                      - generic [ref=f1e2320]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Adult Chicken & Pomegranate" [ref=f1e2324] [cursor=pointer]:
+                    - generic [ref=f1e2325]:
+                      - generic [ref=f1e2326]: Foto faltando
+                      - generic [ref=f1e2336]: Farmina Vet Life
+                    - generic [ref=f1e2337]:
+                      - generic [ref=f1e2338]: Adultos — manutenção diária
+                      - heading "Farmina N&D Prime — Adult Chicken & Pomegranate" [level=3] [ref=f1e2339]
+                      - paragraph [ref=f1e2340]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2341]:
+                        - generic [ref=f1e2342]:
+                          - generic [ref=f1e2343]: Carboidrato
+                          - strong [ref=f1e2347]: 94.0%
+                        - generic [ref=f1e2348]:
+                          - generic [ref=f1e2349]: PB
+                          - strong [ref=f1e2353]: 0.0%
+                        - generic [ref=f1e2354]:
+                          - generic [ref=f1e2355]: EE
+                          - strong [ref=f1e2359]: 0.0%
+                      - generic [ref=f1e2360]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Adult Lamb & Blueberry" [ref=f1e2364] [cursor=pointer]:
+                    - generic [ref=f1e2365]:
+                      - generic [ref=f1e2366]: Foto faltando
+                      - generic [ref=f1e2376]: Farmina Vet Life
+                    - generic [ref=f1e2377]:
+                      - generic [ref=f1e2378]: Adultos — manutenção diária
+                      - heading "Farmina N&D Prime — Adult Lamb & Blueberry" [level=3] [ref=f1e2379]
+                      - paragraph [ref=f1e2380]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2381]:
+                        - generic [ref=f1e2382]:
+                          - generic [ref=f1e2383]: Carboidrato
+                          - strong [ref=f1e2387]: 94.0%
+                        - generic [ref=f1e2388]:
+                          - generic [ref=f1e2389]: PB
+                          - strong [ref=f1e2393]: 0.0%
+                        - generic [ref=f1e2394]:
+                          - generic [ref=f1e2395]: EE
+                          - strong [ref=f1e2399]: 0.0%
+                      - generic [ref=f1e2400]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Kitten Chicken & Pomegranate" [ref=f1e2404] [cursor=pointer]:
+                    - generic [ref=f1e2405]:
+                      - generic [ref=f1e2406]: Foto faltando
+                      - generic [ref=f1e2416]: Farmina Vet Life
+                    - generic [ref=f1e2417]:
+                      - generic [ref=f1e2418]: Filhotes, gestação & lactação
+                      - heading "Farmina N&D Prime — Kitten Chicken & Pomegranate" [level=3] [ref=f1e2419]
+                      - paragraph [ref=f1e2420]: Relação cálcio/fósforo e densidade energética ideais para suporte ao crescimento esquelético saudável.
+                      - generic [ref=f1e2421]:
+                        - generic [ref=f1e2422]:
+                          - generic [ref=f1e2423]: Carboidrato
+                          - strong [ref=f1e2427]: 94.0%
+                        - generic [ref=f1e2428]:
+                          - generic [ref=f1e2429]: PB
+                          - strong [ref=f1e2433]: 0.0%
+                        - generic [ref=f1e2434]:
+                          - generic [ref=f1e2435]: EE
+                          - strong [ref=f1e2439]: 0.0%
+                      - generic [ref=f1e2440]: Ver ficha completa
+                  - button "Abrir ficha de Farmina N&D Prime — Lamb & Blueberry" [ref=f1e2444] [cursor=pointer]:
+                    - generic [ref=f1e2445]:
+                      - generic [ref=f1e2446]: Foto faltando
+                      - generic [ref=f1e2456]: Farmina Vet Life
+                    - generic [ref=f1e2457]:
+                      - generic [ref=f1e2458]: Manutenção geral
+                      - heading "Farmina N&D Prime — Lamb & Blueberry" [level=3] [ref=f1e2459]
+                      - paragraph [ref=f1e2460]: Equilíbrio de macronutrientes conforme parâmetros de referência FEDIAF 2025.
+                      - generic [ref=f1e2461]:
+                        - generic [ref=f1e2462]:
+                          - generic [ref=f1e2463]: Carboidrato
+                          - strong [ref=f1e2467]: 94.0%
+                        - generic [ref=f1e2468]:
+                          - generic [ref=f1e2469]: PB
+                          - strong [ref=f1e2473]: 0.0%
+                        - generic [ref=f1e2474]:
+                          - generic [ref=f1e2475]: EE
+                          - strong [ref=f1e2479]: 0.0%
+                      - generic [ref=f1e2480]: Ver ficha completa
+                - button "Mostrar mais 12 rações" [ref=f1e2485] [cursor=pointer]
+        - navigation [ref=f1e1865]:
+          - generic [ref=f1e1866]:
+            - link "Início" [ref=f1e1867] [cursor=pointer]:
+              - /url: /calculadora-energetica
+            - link "Calculadora" [ref=f1e1872] [cursor=pointer]:
+              - /url: /calculadora-energetica/new
+            - link "Rações" [ref=f1e1876] [cursor=pointer]:
+              - /url: /calculadora-energetica/commercial
+            - link "Internados" [ref=f1e1881] [cursor=pointer]:
+              - /url: /calculadora-energetica/hospitalized
+            - link "Pacientes" [ref=f1e1887] [cursor=pointer]:
+              - /url: /calculadora-energetica/patients
+            - link "Alimentos" [ref=f1e1894] [cursor=pointer]:
+              - /url: /calculadora-energetica/foods
+            - link "Relatórios" [ref=f1e1899] [cursor=pointer]:
+              - /url: /calculadora-energetica/reports
+            - link "ECC" [ref=f1e1904] [cursor=pointer]:
+              - /url: /calculadora-energetica/bcs
+      - region "Notifications alt+T"

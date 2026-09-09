@@ -33,9 +33,25 @@ export function buildDrugToDiseasesIndex(dzDict: DiseaseSystem): Map<string, Dis
   for (const [system, diseases] of Object.entries(dzDict)) {
     for (const d of safeList(diseases) as Disease[]) {
       for (const raw of collectDrugNamesFromDisease(d)) {
-        for (const token of tokenizeDrugLine(String(raw))) {
+        const rawStr = String(raw).trim()
+        if (!rawStr) continue
+
+        // 1) Sempre indexa o nome completo canônico (ex.: "Amoxicilina + Clavulanato", "Piperacilina + Tazobactam (IV)")
+        const fullKey = canonicalDrugName(rawStr)
+        if (fullKey) {
+          const list = map.get(fullKey) ?? []
+          list.push({ system, name: d.name })
+          map.set(fullKey, list)
+        }
+
+        // 2) Se for uma combinação de drogas distintas em texto legado, indexa também os tokens
+        for (const token of tokenizeDrugLine(rawStr)) {
           const key = canonicalDrugName(token)
-          if (!key) continue
+          if (!key || key === fullKey) continue
+          // Não fragmenta compostos fixos conhecidos em componentes isolados que descaracterizam o espectro
+          if (fullKey.includes(' + ') && !token.includes(' + ')) {
+            continue
+          }
           const list = map.get(key) ?? []
           list.push({ system, name: d.name })
           map.set(key, list)

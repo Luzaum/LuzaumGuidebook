@@ -119,9 +119,6 @@ export function MedicationsPage() {
         <aside className="w-full shrink-0 rounded-2xl border border-border/80 bg-background/50 p-5 backdrop-blur-xs xl:w-72">
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Classe Farmacológica</h3>
-            <span className="rounded-full bg-muted/60 px-2 py-0.5 text-[10px] font-bold text-muted-foreground">
-              {activeClasses.length} Ativas
-            </span>
           </div>
 
           <nav className="flex flex-row flex-wrap gap-2 xl:flex-col xl:gap-1.5">

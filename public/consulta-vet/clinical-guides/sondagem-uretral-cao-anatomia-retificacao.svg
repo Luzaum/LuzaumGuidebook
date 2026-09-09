@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+    <linearGradient id="bladderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#ef4444" />
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#10b981" />
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M1,1 L7,4 L1,7 Z" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <rect width="1000" height="640" fill="url(#bgGrad)" />
+
+  <!-- Main Header -->
+  <g id="header" transform="translate(40, 24)">
+    <rect width="920" height="64" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <circle cx="36" cy="32" r="18" fill="#3b82f6" fill-opacity="0.2" />
+    <path d="M26,32 L46,32 M36,22 L36,42" stroke="#38bdf8" stroke-width="3" stroke-linecap="round" />
+    <text x="70" y="29" fill="#f8fafc" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700">
+      Sondagem Uretral no Cão Macho: Anatomia Sagital e Manobra de Retificação
+    </text>
+    <text x="70" y="49" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13">
+      Os 3 pontos de resistência fisiológica e o vetor de tração caudal (BSAVA 2024 / VECC 2025)
+    </text>
+  </g>
+
+  <!-- Panel 1: Sagittal Anatomy & 3 Resistance Points -->
+  <g id="panel-anatomy" transform="translate(40, 104)">
+    <rect width="920" height="250" rx="12" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+    <text x="24" y="32" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="700" letter-spacing="0.5">
+      PAINEL A: TRAJETO ANATÔMICO SAGITAL &amp; PONTOS DE RESISTÊNCIA FISIOLÓGICA
+    </text>
+
+    <!-- Pelvis and Spine -->
+    <path d="M280,75 Q320,65 370,68 T440,78" fill="none" stroke="#64748b" stroke-width="8" stroke-linecap="round" />
+    <text x="320" y="58" fill="#94a3b8" font-size="11" font-family="system-ui">Coluna lombossacra</text>
+
+    <path d="M380,105 Q410,100 450,115 L430,150 Q390,140 370,125 Z" fill="#475569" stroke="#64748b" stroke-width="1.5" />
+    <text x="445" y="112" fill="#cbd5e1" font-size="12" font-weight="600" font-family="system-ui">Ísquio / Pelve</text>
+
+    <!-- Bladder -->
+    <path d="M120,115 C90,85 180,60 230,85 C270,105 260,150 210,165 C160,180 130,135 120,115 Z" fill="url(#bladderGrad)" stroke="#f59e0b" stroke-width="2.5" />
+    <text x="165" y="125" fill="#fde68a" font-size="14" font-weight="700" font-family="system-ui" text-anchor="middle">Bexiga</text>
+    <text x="165" y="142" fill="#d97706" font-size="11" font-family="system-ui" text-anchor="middle">Lúmen vesical</text>
+
+    <!-- Prostate Gland -->
+    <ellipse cx="265" cy="132" rx="26" ry="22" fill="#6366f1" fill-opacity="0.35" stroke="#818cf8" stroke-width="2" />
+    <text x="265" y="122" fill="#c7d2fe" font-size="12" font-weight="700" font-family="system-ui" text-anchor="middle">Próstata</text>
+
+    <!-- Urethral Lumen -->
+    <path d="M225,130 L285,134 Q340,140 385,155 Q410,172 400,188 Q380,205 450,205 L720,205 L820,205" fill="none" stroke="#f43f5e" stroke-width="6" stroke-linecap="round" />
+    <path d="M225,130 L285,134 Q340,140 385,155 Q410,172 400,188 Q380,205 450,205 L720,205 L820,205" fill="none" stroke="#fda4af" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Os Penis (Penile bone) -->
+    <path d="M680,192 L780,192 Q800,192 805,198 Q795,202 780,202 L680,202 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+    <text x="735" y="185" fill="#f8fafc" font-size="12" font-weight="700" font-family="system-ui" text-anchor="middle">Os Penis (Osso Peniano)</text>
+    <text x="735" y="218" fill="#94a3b8" font-size="10" font-family="system-ui" text-anchor="middle">Sulco ventral inextensível</text>
+
+    <!-- Prepuce and Glans -->
+    <path d="M660,180 Q780,180 830,195 Q840,205 830,215 Q780,230 660,230" fill="none" stroke="#0ea5e9" stroke-width="1.5" stroke-dasharray="4,4" />
+    <text x="840" y="235" fill="#38bdf8" font-size="11" font-family="system-ui">Glande / Óstio externo</text>
+
+    <!-- Resistance 1: Os Penis -->
+    <g transform="translate(670, 75)">
+      <rect width="180" height="54" rx="8" fill="#1e1b4b" stroke="#eab308" stroke-width="1.5" />
+      <circle cx="20" cy="27" r="12" fill="#eab308" />
+      <text x="20" y="32" fill="#0f172a" font-size="13" font-weight="800" text-anchor="middle" font-family="system-ui">1</text>
+      <text x="38" y="24" fill="#fef08a" font-size="12" font-weight="700" font-family="system-ui">Região do Os Penis</text>
+      <text x="38" y="40" fill="#cbd5e1" font-size="10" font-family="system-ui">Discreto estreitamento; não forçar!</text>
+      <path d="M70,54 L75,115" stroke="#eab308" stroke-width="1.5" stroke-dasharray="3,3" />
+    </g>
+
+    <!-- Resistance 2: Ischial Arch -->
+    <g transform="translate(360, 195)">
+      <rect width="190" height="48" rx="8" fill="#1e1b4b" stroke="#eab308" stroke-width="1.5" />
+      <circle cx="20" cy="24" r="12" fill="#eab308" />
+      <text x="20" y="29" fill="#0f172a" font-size="13" font-weight="800" text-anchor="middle" font-family="system-ui">2</text>
+      <text x="38" y="21" fill="#fef08a" font-size="12" font-weight="700" font-family="system-ui">Arco Isquiático (Curvatura)</text>
+      <text x="38" y="37" fill="#cbd5e1" font-size="10" font-family="system-ui">Mudança de direção pélvica</text>
+      <path d="M60,0 L45,-15" stroke="#eab308" stroke-width="1.5" stroke-dasharray="3,3" />
+    </g>
+
+    <!-- Resistance 3: Prostate -->
+    <g transform="translate(190, 185)">
+      <rect width="160" height="48" rx="8" fill="#1e1b4b" stroke="#eab308" stroke-width="1.5" />
+      <circle cx="20" cy="24" r="12" fill="#eab308" />
+      <text x="20" y="29" fill="#0f172a" font-size="13" font-weight="800" text-anchor="middle" font-family="system-ui">3</text>
+      <text x="38" y="21" fill="#fef08a" font-size="12" font-weight="700" font-family="system-ui">Uretra Prostática</text>
+      <text x="38" y="37" fill="#cbd5e1" font-size="10" font-family="system-ui">Resistência por hiperplasia</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: Comparative Biomechanics -->
+  <g id="panel-biomechanics" transform="translate(40, 370)">
+    <rect width="920" height="245" rx="12" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" filter="url(#shadow)" />
+
+    <!-- Left: Wrong -->
+    <g transform="translate(20, 18)">
+      <rect width="425" height="210" rx="10" fill="#450a0a" fill-opacity="0.3" stroke="#ef4444" stroke-width="1.5" />
+      <rect x="14" y="14" width="160" height="26" rx="6" fill="#ef4444" />
+      <text x="94" y="32" fill="#ffffff" font-size="12" font-weight="800" font-family="system-ui" text-anchor="middle">❌ POSIÇÃO ERRADA</text>
+      <text x="14" y="60" fill="#fca5a5" font-size="12" font-weight="600" font-family="system-ui">Pênis apontado cranialmente (vetor para frente)</text>
+
+      <path d="M50,110 L160,110" stroke="#94a3b8" stroke-width="6" stroke-linecap="round" />
+      <text x="70" y="98" fill="#94a3b8" font-size="11" font-family="system-ui">Uretra pélvica</text>
+
+      <path d="M160,110 Q190,110 190,140 L190,180" stroke="#f43f5e" stroke-width="8" stroke-linecap="round" fill="none" />
+      <line x1="190" y1="180" x2="190" y2="105" stroke="#ef4444" stroke-width="3" stroke-dasharray="4,4" marker-end="url(#arrowRed)" />
+
+      <rect x="210" y="100" width="195" height="58" rx="6" fill="#7f1d1d" stroke="#f87171" stroke-width="1" />
+      <text x="220" y="120" fill="#fecaca" font-size="11" font-weight="700" font-family="system-ui">⚠️ Impacto na Parede Dorsal</text>
+      <text x="220" y="136" fill="#fca5a5" font-size="10" font-family="system-ui">Ângulo agudo de ~90°.</text>
+      <text x="220" y="149" fill="#fca5a5" font-size="10" font-family="system-ui">Forçar causa dor, falso trajeto e rotura.</text>
+
+      <text x="14" y="195" fill="#f87171" font-size="11" font-style="italic" font-family="system-ui">
+        "A sonda parece travada; empurrar com força lacera o arco isquiático."
+      </text>
+    </g>
+
+    <!-- Right: Right -->
+    <g transform="translate(475, 18)">
+      <rect width="425" height="210" rx="10" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="1.5" />
+      <rect x="14" y="14" width="220" height="26" rx="6" fill="#10b981" />
+      <text x="124" y="32" fill="#ffffff" font-size="12" font-weight="800" font-family="system-ui" text-anchor="middle">✅ MANOBRA DE RETIFICAÇÃO</text>
+      <text x="14" y="60" fill="#6ee7b7" font-size="12" font-weight="600" font-family="system-ui">Pênis e prepúcio tracionados caudalmente (vetor posterior)</text>
+
+      <path d="M50,120 L160,120 Q190,120 220,135 L330,145" stroke="#10b981" stroke-width="6" stroke-linecap="round" fill="none" />
+      <text x="70" y="105" fill="#a7f3d0" font-size="11" font-family="system-ui">Uretra pélvica</text>
+
+      <path d="M340,145 L220,135 Q190,120 80,120" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" fill="none" marker-end="url(#arrowCyan)" />
+
+      <rect x="210" y="70" width="195" height="52" rx="6" fill="#065f46" stroke="#34d399" stroke-width="1" />
+      <text x="220" y="90" fill="#d1fae5" font-size="11" font-weight="700" font-family="system-ui">🎯 Ângulo Aberto (~160°)</text>
+      <text x="220" y="105" fill="#a7f3d0" font-size="10" font-family="system-ui">Uretra peniana alinha-se à pélvica.</text>
+      <text x="220" y="117" fill="#a7f3d0" font-size="10" font-family="system-ui">Deslize suave sem atrito mecânico.</text>
+
+      <line x1="280" y1="170" x2="350" y2="170" stroke="#34d399" stroke-width="3" marker-end="url(#arrowGreen)" />
+      <text x="315" y="195" fill="#6ee7b7" font-size="11" font-weight="700" font-family="system-ui" text-anchor="middle">Vetor de Tração Caudal</text>
+    </g>
+  </g>
+</svg>

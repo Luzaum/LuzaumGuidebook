@@ -27,7 +27,7 @@ const applyClinicalSafetyRules = (input: CalculationInput, alerts: CalculationAl
     alerts.push({
       id: 'dedicated-line',
       title: 'Via Exclusiva',
-      message: `${drug.namePt} deve ser administrado em via exclusiva (sem outras drogas no mesmo lúmen).`,
+      message: `${drug.namePt} deve ser administrado em via exclusiva (sem outros fármacos no mesmo lúmen).`,
       severity: 'info'
     });
   }
@@ -35,7 +35,7 @@ const applyClinicalSafetyRules = (input: CalculationInput, alerts: CalculationAl
   if (drug.safetyMetadata.photosensitive) {
      alerts.push({
       id: 'photosensitive',
-      title: 'Droga Fotossensível',
+      title: 'Fármaco Fotossensível',
       message: `Esta medicação é fotossensível. Proteja a bolsa e o equipo da luz.`,
       severity: 'info'
     });
@@ -232,7 +232,7 @@ const calculateContinuous = (input: CalculationInput): CalculationResult => {
   steps.push(buildDidacticStep(
     stepCounter++,
     'QUANTO DE FÁRMACO PRECISA HAVER NO RECIPIENTE',
-    'Transformamos a concentração na quantidade total de droga na bolsa.',
+    'Transformamos a concentração na quantidade total de fármaco na bolsa.',
     `${formatNumber(targetConcDisplay)} ${targetConcUnit} × ${totalVolume} mL`, '', formatNumber(totalDrugDisplay), totalDrugUnit
   ));
 
@@ -345,7 +345,7 @@ const calculateEpidural = (input: CalculationInput): CalculationResult => {
   steps.push(buildDidacticStep(
     stepCounter++,
     'VOLUME ALVO FINAL (0.2 mL/kg)',
-    'Para epidural, usamos um volume total fixo por kg para garantir que a droga banhe o canal medular sem excessos.',
+    'Para epidural, usamos um volume total fixo por kg para garantir que o fármaco banhe o canal medular sem excessos.',
     `0.2 mL/kg × ${patient.weight} kg`,
     '', formatNumber(targetTotalVolume), 'mL'
   ));

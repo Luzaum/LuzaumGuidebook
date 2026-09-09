@@ -1,5 +1,6 @@
 import { MedicationDose, MedicationPresentation, MedicationRecord } from '../types/medication';
 import { calculatePracticalEquivalent, PracticalEquivalentResult, toPracticalPresentation } from './practicalEquivalent';
+import { formatAdministrationAmount } from './receituarioDoseEngine';
 
 export type PrescriptionSpecies = 'dog' | 'cat';
 
@@ -25,11 +26,46 @@ function normalize(value: string): string {
     .trim()
     .toLowerCase();
 }
-export interface PrescriptionMedicationHeaderInput {
-  medicationName: string;
-  commercialName?: string | null;
-  concentration?: string | null;
-  pharmaceuticalForm?: string | null;
+
+export const OUTPATIENT_PRESCRIPTION_ROUTES: Array<{ value: string; label: string }> = [
+  { value: 'oral', label: 'Via oral (VO)' },
+  { value: 'tópica', label: 'Tópica (pele / dermatológica)' },
+  { value: 'otológica', label: 'Otológica (ouvido)' },
+  { value: 'oftálmica', label: 'Oftálmica (olho)' },
+  { value: 'nasal', label: 'Nasal' },
+  { value: 'inalatória', label: 'Inalatória' },
+  { value: 'transmucosa', label: 'Transmucosa oral' },
+  { value: 'retal', label: 'Retal' },
+  { value: 'outra', label: 'Outra via' },
+];
+
+export function normalizePrescriptionRouteToOption(route?: string | null): string {
+  const norm = normalize(String(route || ''));
+  if (!norm) return '';
+  if (/^vo\b|\bvo\b|\bpo\b|oral/.test(norm)) return 'oral';
+  if (/^sc\b|subcutan/.test(norm)) return 'subcutânea';
+  if (/^im\b|intramuscul/.test(norm)) return 'intramuscular';
+  if (/otolog|ótico|otico|auricular|ouvido/.test(norm)) return 'otológica';
+  if (/oftalm|ocular|olho/.test(norm)) return 'oftálmica';
+  if (/nasal/.test(norm)) return 'nasal';
+  if (/inalat|inalac|nebuliz/.test(norm)) return 'inalatória';
+  if (/transmucos|mucosa.*boc|bucal/.test(norm)) return 'transmucosa';
+  if (/retal/.test(norm)) return 'retal';
+  if (/topica|tópica|pele|cutanea/.test(norm)) return 'tópica';
+  return 'outra';
+}
+
+export function formatPracticalAmountWithFraction(amount: number, unit: string): string {
+  const base = formatAdministrationAmount(amount, unit);
+  if (/comprim/i.test(unit)) {
+    if (Math.abs(amount - 0.25) < 0.001) return `${base} (1/4 de comprimido)`;
+    if (Math.abs(amount - 0.5) < 0.001) return `${base} (1/2 comprimido)`;
+    if (Math.abs(amount - 0.75) < 0.001) return `${base} (3/4 de comprimido)`;
+    if (Math.abs(amount - 1.25) < 0.001) return `${base} (1 comprimido e 1/4)`;
+    if (Math.abs(amount - 1.5) < 0.001) return `${base} (1 comprimido e meio)`;
+    if (Math.abs(amount - 1.75) < 0.001) return `${base} (1 comprimido e 3/4)`;
+  }
+  return base;
 }
 
 export function prescriptionPharmaceuticalFormLabel(value: unknown): string {
@@ -58,7 +94,7 @@ export function prescriptionPharmaceuticalFormLabel(value: unknown): string {
 
 export function extractPrescriptionConcentration(value: unknown): string {
   const text = String(value || '').trim();
-  const match = text.match(/\d+(?:[.,]\d+)?\s*(?:mcg|µg|ug|mg|g|mL|ml|UI|U)(?:\s*\/\s*(?:comprimido|cápsula|capsula|mL|ml|gota|dose|aplicação|aplicacao|animal))?/i);
+  const match = text.match(/\d+(?:[.,]\d+)?\s*(?:mcg|µg|ug|mg|g|mL|ml|UI|U|%)(?:\s*\/\s*(?:\d+(?:[.,]\d+)?\s*)?(?:comprimido|cápsula|capsula|mL|ml|gota|jato|dose|g|aplicação|aplicacao|animal))?/i);
   return match?.[0]
     ?.replace(/\bml\b/gi, 'mL')
     .replace(/\bui\b/gi, 'UI')
@@ -75,6 +111,13 @@ function concentrationDenominator(form: string): string {
   return '';
 }
 
+export interface PrescriptionMedicationHeaderInput {
+  medicationName: string;
+  commercialName?: string | null;
+  concentration?: string | null;
+  pharmaceuticalForm?: string | null;
+}
+
 export function formatPrescriptionMedicationHeader({
   medicationName,
   commercialName,
@@ -85,7 +128,7 @@ export function formatPrescriptionMedicationHeader({
   const brand = String(commercialName || '').trim();
   const form = prescriptionPharmaceuticalFormLabel(pharmaceuticalForm);
   let strength = extractPrescriptionConcentration(concentration);
-  if (strength && !strength.includes('/')) {
+  if (strength && !strength.includes('/') && !strength.includes('%')) {
     const denominator = concentrationDenominator(form);
     if (denominator) strength = `${strength}/${denominator}`;
   }
@@ -159,6 +202,7 @@ function expandRouteToken(token: string): string {
     vo: 'oral',
     po: 'oral',
     iv: 'intravenosa',
+    ev: 'intravenosa',
     im: 'intramuscular',
     sc: 'subcutânea',
     topica: 'tópica',
@@ -171,8 +215,9 @@ export function formatPrescriptionRoute(route: string): string {
   const cleaned = String(route || '').trim();
   if (!cleaned) return 'pela via indicada';
 
-  const expanded = cleaned.replace(/\b(VO|PO|IV|IM|SC)\b/gi, (match) => expandRouteToken(match));
+  const expanded = cleaned.replace(/\b(VO|PO|IV|EV|IM|SC)\b/gi, (match) => expandRouteToken(match));
   if (/^uso\s+/i.test(expanded)) return expanded.toLowerCase();
+  if (/^(?:por|pela)\s+via\s+/i.test(expanded)) return expanded.toLowerCase();
   if (/^via\s+/i.test(expanded)) return `por ${expanded.toLowerCase()}`;
   return `por via ${expanded.toLowerCase()}`;
 }
@@ -203,6 +248,38 @@ export function formatPrescriptionFrequency(frequency: string): string {
     .replace(/\bQID\b/gi, 'a cada 6 horas')
     .replace(/q\s*(\d+)\s*[–—-]\s*(\d+)\s*h/gi, 'a cada $1 a $2 horas')
     .replace(/q\s*(\d+)\s*h/gi, 'a cada $1 horas');
+}
+
+/**
+ * Mantém somente durações que já constituem uma orientação objetiva para o tutor.
+ * Notas clínicas vagas (por exemplo, "curto prazo; associar analgesia") continuam
+ * disponíveis na monografia, mas não preenchem silenciosamente o tempo de uso.
+ */
+export function prescriptionReadyDuration(value: string | null | undefined): string {
+  const cleaned = String(value || '').trim();
+  if (!cleaned || cleaned.includes(';')) return '';
+
+  const normalized = normalize(cleaned);
+  if (/\b(?:uso\s+continuo|ate\s+reavaliacao)\b/.test(normalized)) return cleaned;
+  if (/^(?:dose unica|uma unica administracao|uma unica vez)$/.test(normalized)) return cleaned;
+  if (/\b\d+(?:[.,]\d+)?\s*(?:hora|horas|dia|dias|semana|semanas|mes|meses|administracao|administracoes)\b/.test(normalized)) return cleaned;
+  if (/^(?:ate|enquanto)\b/.test(normalized)) return cleaned;
+  return '';
+}
+
+/** Converte abreviações clínicas residuais antes de entregar o texto ao tutor. */
+export function formatPrescriptionPlainLanguage(value: string): string {
+  return String(value || '')
+    .replace(/q\s*(\d+)\s*[–—-]\s*(\d+)\s*h\b/gi, 'a cada $1 a $2 horas')
+    .replace(/q\s*(\d+)\s*h\b/gi, 'a cada $1 horas')
+    .replace(/\bSID\b/gi, 'a cada 24 horas')
+    .replace(/\bBID\b/gi, 'a cada 12 horas')
+    .replace(/\bTID\b/gi, 'a cada 8 horas')
+    .replace(/\bQID\b/gi, 'a cada 6 horas')
+    .replace(/(\bvia\s+)(?:VO|PO)\b/gi, '$1oral')
+    .replace(/(\bvia\s+)SC\b/gi, '$1subcutânea')
+    .replace(/(\bvia\s+)IM\b/gi, '$1intramuscular')
+    .replace(/(\bvia\s+)(?:IV|EV)\b/gi, '$1intravenosa');
 }
 
 function stripTrailingPunctuation(value: string): string {
@@ -243,6 +320,7 @@ export function buildPrescriptionMedicationBlock({
 
 export const ROUTE_ORDER = [
   'USO ORAL',
+  'USO NA MUCOSA DA BOCA',
   'USO TÓPICO',
   'USO OTOLÓGICO',
   'USO OFTÁLMICO',
@@ -252,7 +330,12 @@ export const ROUTE_ORDER = [
 ] as const;
 
 export function getRouteCategory(routeOrText: string): string {
+  const administration = routeOrText.match(/(?:^|\n)\s*(?:Administrar|Aplicar|Instilar|Oferecer)[^\n]*/i)?.[0];
+  const explicitRoute = administration?.match(/\bvia\s+([^,.;\n]+)/i)?.[1];
+  if (explicitRoute) return getRouteCategory(explicitRoute);
   const normalized = normalize(routeOrText);
+  if (/mucosa oral|transmucosa|mucosa da (?:boca|bochecha)/.test(normalized)) return 'USO NA MUCOSA DA BOCA';
+  if (/inalat|nebuliz|inalac/.test(normalized)) return 'USO INALATÓRIO';
   if (/oftalm|colirio|ocular|\bolho\b|\bolhos\b/.test(normalized)) return 'USO OFTÁLMICO';
   if (/otolog|ótico|auricular|\bouvido\b|\bouvidos\b|\borelha\b/.test(normalized)) return 'USO OTOLÓGICO';
   if (/shampoo|xampu|pomada|creme|gel|spray|topico|topica|\bpele\b|banho/.test(normalized)) return 'USO TÓPICO';
@@ -280,7 +363,7 @@ function cleanMedicationItemBlock(blockText: string): string {
 
 function isNonMedicationSectionHeading(line: string): boolean {
   const normalized = normalize(line);
-  return /^(recomendacoes|sinais para retorno|orientacoes|alerta|aviso de piora|observacoes|nota)/.test(normalized);
+  return /^(recomendacoes|sinais para retorno|como usar os medicamentos|orientacoes|alerta|aviso de piora|observacoes|nota)/.test(normalized);
 }
 
 export function groupMedicationBlocksByRoute(blocks: string[]): Array<{ route: string; items: string[] }> {

@@ -1,0 +1,379 @@
+- generic [ref=f1e5]:
+  - banner [ref=f1e6]:
+    - generic [ref=f1e7]:
+      - generic [ref=f1e8]:
+        - button "Abrir navegação do Vetius" [ref=f1e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f1e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f1e13]
+          - generic [ref=f1e14]: Vetius
+      - generic [ref=f1e15]:
+        - button "Ativar modo escuro" [ref=f1e16] [cursor=pointer]
+        - link "Entrar" [ref=f1e19] [cursor=pointer]:
+          - /url: /login?next=%2Fcalculadora-energetica%2Fcommercial
+  - main [ref=f1e20]:
+    - generic [ref=f1e21]:
+      - generic [ref=f1e22]:
+        - complementary [ref=f1e23]:
+          - link "NutriçãoVET — ir para o início" [ref=f1e25] [cursor=pointer]:
+            - /url: /calculadora-energetica
+            - generic [ref=f1e27]:
+              - generic [ref=f1e28]: NutriçãoVET
+              - generic [ref=f1e29]: Nutrição clínica
+          - navigation "Navegação do NutriçãoVET" [ref=f1e30]:
+            - link "Visão geral" [ref=f1e31] [cursor=pointer]:
+              - /url: /calculadora-energetica
+            - link "Calculadora energética" [ref=f1e36] [cursor=pointer]:
+              - /url: /calculadora-energetica/new
+            - link "Rações comerciais" [ref=f1e40] [cursor=pointer]:
+              - /url: /calculadora-energetica/commercial
+            - link "Hospitalizados" [ref=f1e47] [cursor=pointer]:
+              - /url: /calculadora-energetica/hospitalized
+            - link "Pacientes" [ref=f1e53] [cursor=pointer]:
+              - /url: /calculadora-energetica/patients
+            - link "Base de alimentos" [ref=f1e60] [cursor=pointer]:
+              - /url: /calculadora-energetica/foods
+            - link "Relatórios" [ref=f1e65] [cursor=pointer]:
+              - /url: /calculadora-energetica/reports
+            - link "Guia de ECC" [ref=f1e70] [cursor=pointer]:
+              - /url: /calculadora-energetica/bcs
+          - paragraph [ref=f1e75]: Vetius Clinical Suite
+        - main [ref=f1e77]:
+          - generic [ref=f1e81]:
+            - generic [ref=f1e82]:
+              - heading "Rações Comerciais" [level=1] [ref=f1e83]
+              - paragraph [ref=f1e84]: Catálogo completo de dietas coadjuvantes de prescrição veterinária e opções fisiológicas para cães e gatos, com composição nutricional detalhada e indicações clínicas.
+            - generic [ref=f1e86]:
+              - generic [ref=f1e87]:
+                - textbox "Buscar ração por nome, fabricante ou formulação..." [ref=f1e92]
+                - generic [ref=f1e93]:
+                  - button "🐾 Todos" [ref=f1e94] [cursor=pointer]
+                  - button "Cães" [ref=f1e95] [cursor=pointer]
+                  - button "Gatos" [ref=f1e98] [cursor=pointer]
+              - generic [ref=f1e102]:
+                - generic [ref=f1e103]: Tipo
+                - button "Todas as rações" [ref=f1e104] [cursor=pointer]
+                - button "Terapêuticas" [ref=f1e105] [cursor=pointer]
+                - button "Manutenção" [ref=f1e106] [cursor=pointer]
+            - generic [ref=f1e1257]:
+              - generic [ref=f1e1258]:
+                - generic [ref=f1e1259]:
+                  - paragraph [ref=f1e1260]: Área clínica
+                  - heading "Qual é o objetivo terapêutico?" [level=2] [ref=f1e1261]
+                - paragraph [ref=f1e1262]: Selecione um bloco para refinar os resultados
+              - generic [ref=f1e1263]:
+                - button "Todas as áreas clínicas 142 Explore todas as opções disponíveis neste grupo." [ref=f1e1264] [cursor=pointer]:
+                  - generic [ref=f1e1271]:
+                    - generic [ref=f1e1272]:
+                      - strong [ref=f1e1273]: Todas as áreas clínicas
+                      - generic [ref=f1e1274]: "142"
+                    - generic [ref=f1e1275]: Explore todas as opções disponíveis neste grupo.
+                - button "Suporte Renal (DRC / IRIS) 30 Fósforo controlado e suporte nutricional à função renal." [ref=f1e1276] [cursor=pointer]:
+                  - generic [ref=f1e1282]:
+                    - generic [ref=f1e1283]:
+                      - strong [ref=f1e1284]: Suporte Renal (DRC / IRIS)
+                      - generic [ref=f1e1285]: "30"
+                    - generic [ref=f1e1286]: Fósforo controlado e suporte nutricional à função renal.
+                - button "Gastrointestinal & Low Fat 26 Alta digestibilidade, fibras e opções com gordura reduzida." [ref=f1e1287] [cursor=pointer]:
+                  - generic [ref=f1e1291]:
+                    - generic [ref=f1e1292]:
+                      - strong [ref=f1e1293]: Gastrointestinal & Low Fat
+                      - generic [ref=f1e1294]: "26"
+                    - generic [ref=f1e1295]: Alta digestibilidade, fibras e opções com gordura reduzida.
+                - button "Dermatológica & Hipoalergênica 19 Proteínas selecionadas e suporte à barreira cutânea." [ref=f1e1296] [cursor=pointer]:
+                  - generic [ref=f1e1301]:
+                    - generic [ref=f1e1302]:
+                      - strong [ref=f1e1303]: Dermatológica & Hipoalergênica
+                      - generic [ref=f1e1304]: "19"
+                    - generic [ref=f1e1305]: Proteínas selecionadas e suporte à barreira cutânea.
+                - button "Trato Urinário & Dissolução de Cálculos 11 Manejo nutricional do trato urinário e de urólitos." [ref=f1e1306] [cursor=pointer]:
+                  - generic [ref=f1e1311]:
+                    - generic [ref=f1e1312]:
+                      - strong [ref=f1e1313]: Trato Urinário & Dissolução de Cálculos
+                      - generic [ref=f1e1314]: "11"
+                    - generic [ref=f1e1315]: Manejo nutricional do trato urinário e de urólitos.
+                - button "Hepatologia & Suporte Hepático 2 Perfil nutricional adaptado ao suporte da função hepática." [ref=f1e1316] [cursor=pointer]:
+                  - generic [ref=f1e1321]:
+                    - generic [ref=f1e1322]:
+                      - strong [ref=f1e1323]: Hepatologia & Suporte Hepático
+                      - generic [ref=f1e1324]: "2"
+                    - generic [ref=f1e1325]: Perfil nutricional adaptado ao suporte da função hepática.
+                - button "Cardiologia & Baixo Sódio 1 Sódio controlado e nutrientes de suporte cardiovascular." [ref=f1e1326] [cursor=pointer]:
+                  - generic [ref=f1e1331]:
+                    - generic [ref=f1e1332]:
+                      - strong [ref=f1e1333]: Cardiologia & Baixo Sódio
+                      - generic [ref=f1e1334]: "1"
+                    - generic [ref=f1e1335]: Sódio controlado e nutrientes de suporte cardiovascular.
+                - button "Manejo de Obesidade & Saciedade 29 Saciedade e redução calórica para manejo do peso." [ref=f1e1336] [cursor=pointer]:
+                  - generic [ref=f1e1342]:
+                    - generic [ref=f1e1343]:
+                      - strong [ref=f1e1344]: Manejo de Obesidade & Saciedade
+                      - generic [ref=f1e1345]: "29"
+                    - generic [ref=f1e1346]: Saciedade e redução calórica para manejo do peso.
+                - button "Recuperação, UTI & Alta Densidade 7 Alta densidade energética para recuperação e suporte intensivo." [ref=f1e1347] [cursor=pointer]:
+                  - generic [ref=f1e1353]:
+                    - generic [ref=f1e1354]:
+                      - strong [ref=f1e1355]: Recuperação, UTI & Alta Densidade
+                      - generic [ref=f1e1356]: "7"
+                    - generic [ref=f1e1357]: Alta densidade energética para recuperação e suporte intensivo.
+                - button "Endocrinologia & Controle Glicêmico 5 Controle glicêmico e perfil de carboidratos adaptado." [ref=f1e1358] [cursor=pointer]:
+                  - generic [ref=f1e1362]:
+                    - generic [ref=f1e1363]:
+                      - strong [ref=f1e1364]: Endocrinologia & Controle Glicêmico
+                      - generic [ref=f1e1365]: "5"
+                    - generic [ref=f1e1366]: Controle glicêmico e perfil de carboidratos adaptado.
+                - button "Articular & Suporte Osteoarticular 0 Suporte osteoarticular e manutenção da mobilidade." [disabled] [ref=f1e1367]:
+                  - generic [ref=f1e1371]:
+                    - generic [ref=f1e1372]:
+                      - strong [ref=f1e1373]: Articular & Suporte Osteoarticular
+                      - generic [ref=f1e1374]: "0"
+                    - generic [ref=f1e1375]: Suporte osteoarticular e manutenção da mobilidade.
+                - button "Oncologia & Suporte Metabólico 4 Suporte metabólico e preservação de massa corporal." [ref=f1e1376] [cursor=pointer]:
+                  - generic [ref=f1e1381]:
+                    - generic [ref=f1e1382]:
+                      - strong [ref=f1e1383]: Oncologia & Suporte Metabólico
+                      - generic [ref=f1e1384]: "4"
+                    - generic [ref=f1e1385]: Suporte metabólico e preservação de massa corporal.
+                - button "Coadjuvante Clínica 8 Outras dietas coadjuvantes de uso veterinário." [ref=f1e1386] [cursor=pointer]:
+                  - generic [ref=f1e1392]:
+                    - generic [ref=f1e1393]:
+                      - strong [ref=f1e1394]: Coadjuvante Clínica
+                      - generic [ref=f1e1395]: "8"
+                    - generic [ref=f1e1396]: Outras dietas coadjuvantes de uso veterinário.
+            - generic [ref=f1e1397]:
+              - generic [ref=f1e1398]:
+                - generic [ref=f1e1399]:
+                  - paragraph [ref=f1e1400]: Resultados
+                  - heading "30 rações encontradas" [level=2] [ref=f1e1401]
+                - paragraph [ref=f1e1402]: Compare os diferenciais e macronutrientes. Clique em uma ração para abrir a ficha clínica completa.
+              - generic [ref=f1e1403]:
+                - button "Abrir ficha de Royal Canin Renal Cães" [ref=f1e1404] [cursor=pointer]:
+                  - generic [ref=f1e1405]:
+                    - img "Royal Canin Renal Cães" [ref=f1e1406]
+                    - generic [ref=f1e1407]: Royal Canin
+                  - generic [ref=f1e1408]:
+                    - generic [ref=f1e1409]: Suporte Renal (DRC / IRIS)
+                    - heading "Royal Canin Renal Cães" [level=3] [ref=f1e1410]
+                    - paragraph [ref=f1e1411]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1412]:
+                      - generic [ref=f1e1413]:
+                        - generic [ref=f1e1414]: Carboidrato
+                        - strong [ref=f1e1418]: 56.6%
+                      - generic [ref=f1e1419]:
+                        - generic [ref=f1e1420]: PB
+                        - strong [ref=f1e1424]: 13.6%
+                      - generic [ref=f1e1425]:
+                        - generic [ref=f1e1426]: EE
+                        - strong [ref=f1e1430]: 18.1%
+                    - generic [ref=f1e1431]: Ver ficha completa
+                - button "Abrir ficha de Farmina Vet Life Canine — Renal" [ref=f1e1435] [cursor=pointer]:
+                  - generic [ref=f1e1436]:
+                    - generic [ref=f1e1437]: Foto faltando
+                    - generic [ref=f1e1447]: Farmina Vet Life
+                  - generic [ref=f1e1448]:
+                    - generic [ref=f1e1449]: Suporte Renal (DRC / IRIS)
+                    - heading "Farmina Vet Life Canine — Renal" [level=3] [ref=f1e1450]
+                    - paragraph [ref=f1e1451]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1452]:
+                      - generic [ref=f1e1453]:
+                        - generic [ref=f1e1454]: Carboidrato
+                        - strong [ref=f1e1458]: 94.0%
+                      - generic [ref=f1e1459]:
+                        - generic [ref=f1e1460]: PB
+                        - strong [ref=f1e1464]: 0.0%
+                      - generic [ref=f1e1465]:
+                        - generic [ref=f1e1466]: EE
+                        - strong [ref=f1e1470]: 0.0%
+                    - generic [ref=f1e1471]: Ver ficha completa
+                - button "Abrir ficha de Farmina Vet Life Feline — Renal" [ref=f1e1475] [cursor=pointer]:
+                  - generic [ref=f1e1476]:
+                    - generic [ref=f1e1477]: Foto faltando
+                    - generic [ref=f1e1487]: Farmina Vet Life
+                  - generic [ref=f1e1488]:
+                    - generic [ref=f1e1489]: Suporte Renal (DRC / IRIS)
+                    - heading "Farmina Vet Life Feline — Renal" [level=3] [ref=f1e1490]
+                    - paragraph [ref=f1e1491]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1492]:
+                      - generic [ref=f1e1493]:
+                        - generic [ref=f1e1494]: Carboidrato
+                        - strong [ref=f1e1498]: 33.0%
+                      - generic [ref=f1e1499]:
+                        - generic [ref=f1e1500]: PB
+                        - strong [ref=f1e1504]: 30.0%
+                      - generic [ref=f1e1505]:
+                        - generic [ref=f1e1506]: EE
+                        - strong [ref=f1e1510]: 25.0%
+                    - generic [ref=f1e1511]: Ver ficha completa
+                - button "Abrir ficha de Hill's Prescription Diet k/d Atum e Vegetais" [ref=f1e1515] [cursor=pointer]:
+                  - generic [ref=f1e1516]:
+                    - generic [ref=f1e1517]: Foto faltando
+                    - generic [ref=f1e1527]: Hill's Prescription Diet
+                  - generic [ref=f1e1528]:
+                    - generic [ref=f1e1529]: Suporte Renal (DRC / IRIS)
+                    - heading "Hill's Prescription Diet k/d Atum e Vegetais" [level=3] [ref=f1e1530]
+                    - paragraph [ref=f1e1531]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1532]:
+                      - generic [ref=f1e1533]:
+                        - generic [ref=f1e1534]: Carboidrato
+                        - strong [ref=f1e1538]: 94.0%
+                      - generic [ref=f1e1539]:
+                        - generic [ref=f1e1540]: PB
+                        - strong [ref=f1e1544]: 0.0%
+                      - generic [ref=f1e1545]:
+                        - generic [ref=f1e1546]: EE
+                        - strong [ref=f1e1550]: 0.0%
+                    - generic [ref=f1e1551]: Ver ficha completa
+                - button "Abrir ficha de Hill's Prescription Diet k/d Frango e Vegetais" [ref=f1e1555] [cursor=pointer]:
+                  - generic [ref=f1e1556]:
+                    - generic [ref=f1e1557]: Foto faltando
+                    - generic [ref=f1e1567]: Hill's Prescription Diet
+                  - generic [ref=f1e1568]:
+                    - generic [ref=f1e1569]: Suporte Renal (DRC / IRIS)
+                    - heading "Hill's Prescription Diet k/d Frango e Vegetais" [level=3] [ref=f1e1570]
+                    - paragraph [ref=f1e1571]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1572]:
+                      - generic [ref=f1e1573]:
+                        - generic [ref=f1e1574]: Carboidrato
+                        - strong [ref=f1e1578]: 94.0%
+                      - generic [ref=f1e1579]:
+                        - generic [ref=f1e1580]: PB
+                        - strong [ref=f1e1584]: 0.0%
+                      - generic [ref=f1e1585]:
+                        - generic [ref=f1e1586]: EE
+                        - strong [ref=f1e1590]: 0.0%
+                    - generic [ref=f1e1591]: Ver ficha completa
+                - button "Abrir ficha de Hill's Prescription Diet k/d Kidney Care — Cães (seco)" [ref=f1e1595] [cursor=pointer]:
+                  - generic [ref=f1e1596]:
+                    - generic [ref=f1e1597]: Foto faltando
+                    - generic [ref=f1e1607]: Hill's Prescription Diet
+                  - generic [ref=f1e1608]:
+                    - generic [ref=f1e1609]: Suporte Renal (DRC / IRIS)
+                    - heading "Hill's Prescription Diet k/d Kidney Care — Cães (seco)" [level=3] [ref=f1e1610]
+                    - paragraph [ref=f1e1611]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1612]:
+                      - generic [ref=f1e1613]:
+                        - generic [ref=f1e1614]: Carboidrato
+                        - strong [ref=f1e1618]: 56.2%
+                      - generic [ref=f1e1619]:
+                        - generic [ref=f1e1620]: PB
+                        - strong [ref=f1e1624]: 15.1%
+                      - generic [ref=f1e1625]:
+                        - generic [ref=f1e1626]: EE
+                        - strong [ref=f1e1630]: 22.3%
+                    - generic [ref=f1e1631]: Ver ficha completa
+                - button "Abrir ficha de Hill's Prescription Diet k/d Kidney Care — Gatos (seco)" [ref=f1e1635] [cursor=pointer]:
+                  - generic [ref=f1e1636]:
+                    - generic [ref=f1e1637]: Foto faltando
+                    - generic [ref=f1e1647]: Hill's Prescription Diet
+                  - generic [ref=f1e1648]:
+                    - generic [ref=f1e1649]: Suporte Renal (DRC / IRIS)
+                    - heading "Hill's Prescription Diet k/d Kidney Care — Gatos (seco)" [level=3] [ref=f1e1650]
+                    - paragraph [ref=f1e1651]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1652]:
+                      - generic [ref=f1e1653]:
+                        - generic [ref=f1e1654]: Carboidrato
+                        - strong [ref=f1e1658]: 37.1%
+                      - generic [ref=f1e1659]:
+                        - generic [ref=f1e1660]: PB
+                        - strong [ref=f1e1664]: 31.3%
+                      - generic [ref=f1e1665]:
+                        - generic [ref=f1e1666]: EE
+                        - strong [ref=f1e1670]: 24.0%
+                    - generic [ref=f1e1671]: Ver ficha completa
+                - button "Abrir ficha de Hill's Prescription Diet k/d Kidney Care Frango" [ref=f1e1675] [cursor=pointer]:
+                  - generic [ref=f1e1676]:
+                    - generic [ref=f1e1677]: Foto faltando
+                    - generic [ref=f1e1687]: Hill's Prescription Diet
+                  - generic [ref=f1e1688]:
+                    - generic [ref=f1e1689]: Suporte Renal (DRC / IRIS)
+                    - heading "Hill's Prescription Diet k/d Kidney Care Frango" [level=3] [ref=f1e1690]
+                    - paragraph [ref=f1e1691]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1692]:
+                      - generic [ref=f1e1693]:
+                        - generic [ref=f1e1694]: Carboidrato
+                        - strong [ref=f1e1698]: 94.0%
+                      - generic [ref=f1e1699]:
+                        - generic [ref=f1e1700]: PB
+                        - strong [ref=f1e1704]: 0.0%
+                      - generic [ref=f1e1705]:
+                        - generic [ref=f1e1706]: EE
+                        - strong [ref=f1e1710]: 0.0%
+                    - generic [ref=f1e1711]: Ver ficha completa
+                - button "Abrir ficha de Patê Hills Kidney Care k/d" [ref=f1e1715] [cursor=pointer]:
+                  - generic [ref=f1e1716]:
+                    - generic [ref=f1e1717]: Foto faltando
+                    - generic [ref=f1e1727]: Hill's Prescription Diet
+                  - generic [ref=f1e1728]:
+                    - generic [ref=f1e1729]: Suporte Renal (DRC / IRIS)
+                    - heading "Patê Hills Kidney Care k/d" [level=3] [ref=f1e1730]
+                    - paragraph [ref=f1e1731]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1732]:
+                      - generic [ref=f1e1733]:
+                        - generic [ref=f1e1734]: Carboidrato
+                        - strong [ref=f1e1738]: 30.0%
+                      - generic [ref=f1e1739]:
+                        - generic [ref=f1e1740]: PB
+                        - strong [ref=f1e1744]: 26.7%
+                      - generic [ref=f1e1745]:
+                        - generic [ref=f1e1746]: EE
+                        - strong [ref=f1e1750]: 16.7%
+                    - generic [ref=f1e1751]: Ver ficha completa
+                - button "Abrir ficha de Patê Renal Fórmula Natural Gatos" [ref=f1e1755] [cursor=pointer]:
+                  - generic [ref=f1e1756]:
+                    - generic [ref=f1e1757]: Foto faltando
+                    - generic [ref=f1e1767]: Marca Selecionada
+                  - generic [ref=f1e1768]:
+                    - generic [ref=f1e1769]: Suporte Renal (DRC / IRIS)
+                    - heading "Patê Renal Fórmula Natural Gatos" [level=3] [ref=f1e1770]
+                    - paragraph [ref=f1e1771]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1772]:
+                      - generic [ref=f1e1773]:
+                        - generic [ref=f1e1774]: Carboidrato
+                        - strong [ref=f1e1778]: 38.2%
+                      - generic [ref=f1e1779]:
+                        - generic [ref=f1e1780]: PB
+                        - strong [ref=f1e1784]: 22.9%
+                      - generic [ref=f1e1785]:
+                        - generic [ref=f1e1786]: EE
+                        - strong [ref=f1e1790]: 27.9%
+                    - generic [ref=f1e1791]: Ver ficha completa
+                - button "Abrir ficha de Patê Vetlife Renal Cães - Farmina" [ref=f1e1795] [cursor=pointer]:
+                  - generic [ref=f1e1796]:
+                    - img "Patê Vetlife Renal Cães - Farmina" [ref=f1e1797]
+                    - generic [ref=f1e1798]: Farmina Vet Life
+                  - generic [ref=f1e1799]:
+                    - generic [ref=f1e1800]: Suporte Renal (DRC / IRIS)
+                    - heading "Patê Vetlife Renal Cães - Farmina" [level=3] [ref=f1e1801]
+                    - paragraph [ref=f1e1802]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1803]:
+                      - generic [ref=f1e1804]:
+                        - generic [ref=f1e1805]: Carboidrato
+                        - strong [ref=f1e1809]: 23.9%
+                      - generic [ref=f1e1810]:
+                        - generic [ref=f1e1811]: PB
+                        - strong [ref=f1e1815]: 28.3%
+                      - generic [ref=f1e1816]:
+                        - generic [ref=f1e1817]: EE
+                        - strong [ref=f1e1821]: 32.6%
+                    - generic [ref=f1e1822]: Ver ficha completa
+                - button "Abrir ficha de PremieR Nutrição Clínica Renal — Cães Porte Médio e Grande" [ref=f1e1826] [cursor=pointer]:
+                  - generic [ref=f1e1827]:
+                    - img "PremieR Nutrição Clínica Renal — Cães Porte Médio e Grande" [ref=f1e1828]
+                    - generic [ref=f1e1829]: PremierPet
+                  - generic [ref=f1e1830]:
+                    - generic [ref=f1e1831]: Suporte Renal (DRC / IRIS)
+                    - heading "PremieR Nutrição Clínica Renal — Cães Porte Médio e Grande" [level=3] [ref=f1e1832]
+                    - paragraph [ref=f1e1833]: Restrição de fósforo para desacelerar a progressão da nefropatia.
+                    - generic [ref=f1e1834]:
+                      - generic [ref=f1e1835]:
+                        - generic [ref=f1e1836]: Carboidrato
+                        - strong [ref=f1e1840]: 53.9%
+                      - generic [ref=f1e1841]:
+                        - generic [ref=f1e1842]: PB
+                        - strong [ref=f1e1846]: 16.1%
+                      - generic [ref=f1e1847]:
+                        - generic [ref=f1e1848]: EE
+                        - strong [ref=f1e1852]: 20.0%
+                    - generic [ref=f1e1853]: Ver ficha completa
+              - button "Mostrar mais 12 rações" [ref=f1e1858] [cursor=pointer]
+      - region "Notifications alt+T"

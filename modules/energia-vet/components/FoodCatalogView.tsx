@@ -5,7 +5,7 @@ import { Badge } from './ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card'
 import { Input } from './ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from './ui/table'
-import { filterFoods, getFoodById, getFoodDisplayName, getNutrientDefinition } from '../lib/genutriData'
+import { filterFoods, getCommercialFoods, getFoodById, getFoodDisplayName, getNutrientDefinition } from '../lib/genutriData'
 import { getCatalogDatasetStats } from '../lib/catalog'
 import { highlightMatchingSegments } from '../lib/foodSearchLexicon'
 import { SmartFoodSearchBar } from './SmartFoodSearchBar'
@@ -70,6 +70,7 @@ export function FoodCatalogView({
   const [selectedFoodId, setSelectedFoodId] = useState<string | null>(null)
 
   const datasetStats = useMemo(() => getCatalogDatasetStats(), [])
+  const commercialFoodCount = useMemo(() => getCommercialFoods().length, [])
   
   const foods = useMemo(() => {
     const raw = filterFoods({
@@ -142,7 +143,7 @@ export function FoodCatalogView({
                   Visor Interativo de Rações Comerciais (Saudáveis & Terapêuticas)
                 </span>
                 <span className="block text-xs text-muted-foreground">
-                  Explore 349 rações com fotos, fichas clínicas detalhadas e animação de passagem lateral.
+                  Explore {commercialFoodCount} rações com fotos, fichas clínicas detalhadas e animação de passagem lateral.
                 </span>
               </div>
             </div>

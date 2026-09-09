@@ -1,0 +1,188 @@
+### Page
+- Page URL: http://localhost:5173/consulta-vet/receituario
+- Page Title: Vetius
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - button "Abrir navegação do Vetius" [ref=e8] [cursor=pointer]
+        - link "Voltar para a Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=e12]
+          - generic [ref=e13]: Vetius
+      - generic [ref=e14]:
+        - button "Ativar modo escuro" [ref=e15] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=e23] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=e24]
+          - generic [ref=e25]: Luis
+  - main [ref=e19]:
+    - generic [ref=e30]:
+      - complementary [ref=e31]:
+        - generic [ref=e32]:
+          - button "Esconder barra lateral" [ref=e33] [cursor=pointer]
+          - link [ref=e38] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=e39]
+          - navigation [ref=e40]:
+            - link "Início" [ref=e41] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=e45] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=e51] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=e56] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=e61] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=e67] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=e71] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rápidos
+            - link "Consensos" [ref=e75] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=e80] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=e84] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=e90]:
+        - generic [ref=e91]:
+          - generic [ref=e92]:
+            - generic [ref=e93]:
+              - heading "Receituário" [level=1] [ref=e94]
+              - paragraph [ref=e95]: Calcule por espécie e peso, revise o documento e salve na sua conta.
+            - button "Nova receita" [ref=e96] [cursor=pointer]
+          - tablist "Abas do Receituário" [ref=e99]:
+            - tab "Receitas" [ref=e100] [cursor=pointer]
+            - tab "Termos" [ref=e105] [cursor=pointer]
+            - tab "Meus modelos (0)" [ref=e110] [cursor=pointer]
+            - tab "Meus modelos favoritos (0)" [ref=e116] [cursor=pointer]
+            - tab "Documentos emitidos (1)" [selected] [ref=e2958] [cursor=pointer]
+          - generic [ref=e3654]:
+            - generic [ref=e3655]:
+              - textbox "Pesquisar nos documentos emitidos (paciente, título, tutor...)" [ref=e3660]
+              - generic [ref=e3661]:
+                - text: "Total emitidos:"
+                - strong [ref=e3662]: "1"
+            - generic [ref=e3664]:
+              - generic [ref=e3665]:
+                - generic [ref=e3666]:
+                  - heading "TESTE QA — Pancreatite felina — NÃO UTILIZAR" [level=3] [ref=e3670]
+                  - generic [ref=e3671]: Emitido
+                - generic [ref=e3672]: "Data: 08/09/2026"
+              - generic [ref=e3674]:
+                - button "Ver" [active] [ref=e3675] [cursor=pointer]
+                - button "Imprimir" [ref=e3680] [cursor=pointer]
+                - button "PDF" [ref=e3686] [cursor=pointer]
+                - button "Anexar Assinado" [ref=e3691] [cursor=pointer]
+                - button "Gerar nova cópia" [ref=e3695] [cursor=pointer]
+            - generic [ref=e3701]:
+              - generic [ref=e3702]:
+                - heading "TESTE QA — Pancreatite felina — NÃO UTILIZAR" [level=3] [ref=e3703]
+                - button "Fechar visualização do documento" [ref=e3704] [cursor=pointer]
+              - generic [ref=e3709]:
+                - article [ref=e3710]:
+                  - generic [ref=e3711]:
+                    - generic [ref=e3712]:
+                      - paragraph [ref=e3713]: Clínica Veterinária
+                      - paragraph [ref=e3714]: Receituário veterinário
+                    - generic [ref=e3715]:
+                      - paragraph [ref=e3716]: M.V. Luis
+                      - paragraph [ref=e3717]: "CRMV: TESTE"
+                      - paragraph [ref=e3718]: 08/09/2026
+                  - generic [ref=e3719]:
+                    - heading "TESTE QA — Pancreatite felina — NÃO UTILIZAR" [level=1] [ref=e3720]
+                    - generic [ref=e3721]:
+                      - generic [ref=e3722]:
+                        - term [ref=e3723]: "Paciente:"
+                        - definition [ref=e3724]: Paciente Fictício QA
+                      - generic [ref=e3725]:
+                        - term [ref=e3726]: "Responsável:"
+                        - definition [ref=e3727]: Tutor Fictício QA
+                      - generic [ref=e3728]:
+                        - term [ref=e3729]: "Espécie:"
+                        - definition [ref=e3730]: Gato
+                      - generic [ref=e3731]:
+                        - term [ref=e3732]: "Raça:"
+                        - definition [ref=e3733]: SRD
+                      - generic [ref=e3734]:
+                        - term [ref=e3735]: "Sexo:"
+                        - definition [ref=e3736]: fêmea
+                      - generic [ref=e3737]:
+                        - term [ref=e3738]: "Idade / peso:"
+                        - definition [ref=e3739]: 5 anos • 4 kg
+                  - main [ref=e3740]:
+                    - paragraph [ref=e3741]: USO ORAL
+                    - paragraph [ref=e3743]:
+                      - generic [ref=e3744]: 1. MAROPITANT — MANIPULADO — 4 mg/cápsula
+                      - generic [ref=e3746]: Cápsulas
+                    - paragraph [ref=e3748]: "Forma farmacêutica: cápsula."
+                    - paragraph [ref=e3750]: Manipular cápsulas contendo 4 mg de maropitant por cápsula.
+                    - paragraph [ref=e3752]: Administrar 1 cápsula por via por via oral, a cada 24 horas, durante 3 dias; reavaliar em
+                    - paragraph [ref=e3753]: 24 a 48 horas.
+                    - paragraph [ref=e3755]: Oferecer com pequena quantidade de alimento. Se vomitar após a medicação, não repetir a
+                    - paragraph [ref=e3756]: dose sem falar com a equipe.
+                    - paragraph [ref=e3758]: Este remédio reduz o vômito, mas não substitui o tratamento da dor nem garante que o animal
+                    - paragraph [ref=e3759]: esteja conseguindo se alimentar.
+                    - paragraph [ref=e3761]:
+                      - generic [ref=e3762]: 2. ONDANSETRONA — VONAU VET — 4 mg/5 mL
+                      - generic [ref=e3764]: Solução oral
+                    - paragraph [ref=e3766]: Administrar 2,5 mL, por via oral, a cada 8 horas, durante 3 dias; reavaliar em 24 a 48
+                    - paragraph [ref=e3767]: horas.
+                    - paragraph [ref=e3769]: Pode ser oferecido com ou sem alimento. Anotar se há vômitos, salivação ou recusa da comida
+                    - paragraph [ref=e3770]: e informar à equipe.
+                    - paragraph [ref=e3772]: Se o animal não consegue engolir ou vomita tudo o que recebe, procurar atendimento para
+                    - paragraph [ref=e3773]: mudar a forma de tratamento.
+                    - paragraph [ref=e3775]: USO NA MUCOSA DA BOCA
+                    - paragraph [ref=e3777]:
+                      - generic [ref=e3778]: 3. BUPRENORFINA — BUPRENORFINA 0,3 MG/ML (TEMGESIC® / GENÉRICO) — 0,3 mg/mL
+                      - generic [ref=e3780]: Solução injetável
+                    - paragraph [ref=e3782]: Administrar 0,4 mL, por via mucosa oral, a cada 8 horas, durante 2 dias; reavaliar a dor em
+                    - paragraph [ref=e3783]: até 24 horas.
+                  - generic [ref=e3785]:
+                    - generic [ref=e3786]: ConsultaVet • Documento emitido pelo profissional responsável
+                    - generic [ref=e3787]: Página 1 de 2
+                - article [ref=e3788]:
+                  - generic [ref=e3789]:
+                    - generic [ref=e3790]:
+                      - paragraph [ref=e3791]: Clínica Veterinária
+                      - paragraph [ref=e3792]: Receituário veterinário
+                    - generic [ref=e3793]:
+                      - paragraph [ref=e3794]: M.V. Luis
+                      - paragraph [ref=e3795]: "CRMV: TESTE"
+                      - paragraph [ref=e3796]: 08/09/2026
+                  - heading "TESTE QA — Pancreatite felina — NÃO UTILIZAR" [level=1] [ref=e3798]
+                  - main [ref=e3799]:
+                    - paragraph [ref=e3800]: Com a seringa sem agulha fornecida pela equipe, colocar o volume prescrito entre a bochecha
+                    - paragraph [ref=e3801]: e a gengiva. Não jogar no fundo da garganta nem misturar à comida.
+                    - paragraph [ref=e3803]: Guardar trancado, longe de crianças e animais. Se ficar muito sonolento, difícil de acordar
+                    - paragraph [ref=e3804]: ou com respiração lenta, procurar atendimento imediatamente.
+                    - paragraph [ref=e3806]: RECOMENDAÇÕES DA DOENÇA
+                    - paragraph [ref=e3808]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+                    - paragraph [ref=e3809]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+                    - paragraph [ref=e3810]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+                    - paragraph [ref=e3811]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+                    - paragraph [ref=e3812]: • Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido
+                    - paragraph [ref=e3813]: para este gato, considerando também o intestino e o fígado.
+                    - paragraph [ref=e3814]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+                    - paragraph [ref=e3815]: vomitando, muito fraco ou com dificuldade para engolir.
+                    - paragraph [ref=e3816]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+                    - paragraph [ref=e3817]: comportamento. Levar essas informações no retorno.
+                    - paragraph [ref=e3818]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+                    - paragraph [ref=e3819]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+                    - paragraph [ref=e3820]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+                    - paragraph [ref=e3821]: própria.
+                    - paragraph [ref=e3822]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+                    - paragraph [ref=e3823]: manter e quando repetir exames.
+                    - paragraph [ref=e3825]: SINAIS PARA RETORNO
+                    - paragraph [ref=e3827]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+                    - paragraph [ref=e3828]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+                    - paragraph [ref=e3829]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+                    - paragraph [ref=e3830]: apetite.
+                    - paragraph [ref=e3832]: Em caso de piora clínica, retornar ao hospital ou buscar serviço veterinário externo.
+                  - generic [ref=e3833]:
+                    - generic [ref=e3834]: ConsultaVet • Documento emitido pelo profissional responsável
+                    - generic [ref=e3835]: Página 2 de 2
+```

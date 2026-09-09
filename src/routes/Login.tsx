@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 import TravelConnectSignIn from '@/components/ui/travel-connect-signin'
-import { getSession, requestPasswordReset, signIn, signInWithGoogle, signInWithGoogleToken } from '../lib/auth'
+import { getSession, requestPasswordReset, signIn, signInWithGoogle } from '../lib/auth'
 
 function normalizeTargetPath(value: string | null | undefined) {
   const target = String(value || '').trim()
   if (!target) return null
-  if (!target.startsWith('/')) return '/app'
+  if (!target.startsWith('/') || target.startsWith('//') || target.startsWith('/login')) return '/hub'
   return target
 }
 
@@ -24,7 +24,7 @@ export default function Login() {
       typeof (location.state as { from?: string } | null)?.from === 'string'
         ? normalizeTargetPath((location.state as { from?: string }).from)
         : null
-    return queryTarget ?? stateTarget ?? '/app'
+    return queryTarget ?? stateTarget ?? '/hub'
   }, [location.search, location.state])
 
   useEffect(() => {
@@ -68,23 +68,12 @@ export default function Login() {
       await signIn(payload.email, payload.password)
       nav(nextPath, { replace: true })
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Falha ao entrar.'
+      const rawMessage = err instanceof Error ? err.message : ''
+      const message = /invalid login credentials/i.test(rawMessage)
+        ? 'Usuário ou senha incorretos.'
+        : rawMessage || 'Falha ao entrar.'
       setError(message)
       throw new Error(message)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  async function handleGoogleSignInToken(idToken: string) {
-    setLoading(true)
-    setError('')
-    try {
-      await signInWithGoogleToken(idToken)
-      nav(nextPath, { replace: true })
-    } catch (err) {
-      const message = err instanceof Error ? err.message : 'Falha ao entrar com Google.'
-      setError(message)
     } finally {
       setLoading(false)
     }
@@ -95,8 +84,8 @@ export default function Login() {
     await signInWithGoogle(nextPath)
   }
 
-  async function handleForgotPassword(email: string) {
-    await requestPasswordReset(email, nextPath)
+  async function handleForgotPassword(identifier: string) {
+    await requestPasswordReset(identifier, nextPath)
   }
 
   if (checkingSession) {
@@ -110,10 +99,9 @@ export default function Login() {
       errorMessage={error}
       onSubmit={handleSubmit}
       onGoogleSignIn={handleGoogleSignIn}
-      onGoogleSignInToken={handleGoogleSignInToken}
       onForgotPassword={handleForgotPassword}
       onGoToSignup={() => nav(`/signup?next=${encodeURIComponent(nextPath)}`)}
-      onBackToVetius={() => nav('/hub')}
+      onBackToVetius={() => nav('/')}
     />
   )
 }

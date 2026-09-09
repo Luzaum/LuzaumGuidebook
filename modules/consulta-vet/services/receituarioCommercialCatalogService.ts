@@ -1,8 +1,15 @@
-import type { MedicationPresentationRecord, MedicationSearchResult } from '../../../src/lib/clinicRecords';
+import type { MedicationPresentationRecord, MedicationSearchResult, RecommendedDose } from '../../../src/lib/clinicRecords';
 import { RECEITUARIO_SUBCLASSES_BY_CLASS } from '../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationProduct, CommercialMedicationSubclass } from '../types/commercialMedication';
 import type { VetSpecies } from '../types/common';
 import { medicationSearchScore, normalizeMedicationSearch } from '../utils/medicationSearch';
+import { buildCommercialMedicationPresentationRecords } from '../utils/commercialPresentationDose';
+import {
+  isInjectablePrescriptionText,
+  isTakeHomePresentationRecord,
+  isTakeHomePrescriptionRoute,
+  sanitizeCommercialProductForTakeHome,
+} from '../utils/receituarioTakeHome';
 
 function normalizeSearchTerm(value: unknown): string {
   return normalizeMedicationSearch(value);
@@ -190,6 +197,9 @@ export function filterAndRankCommercialProducts(
 }
 
 function mapCommercialProduct(product: CommercialMedicationProduct): MedicationSearchResult {
+  const takeHomeProduct = sanitizeCommercialProductForTakeHome(product);
+  if (!takeHomeProduct) throw new Error(`Produto sem apresentação domiciliar: ${product.name}`);
+  product = takeHomeProduct;
   const subclasses = Array.from(new Set([product.commercialSubclass, ...(product.commercialSubclasses || [])]));
   return {
     id: `commercial:${product.slug}`,
@@ -200,6 +210,7 @@ function mapCommercialProduct(product: CommercialMedicationProduct): MedicationS
     scope: 'global' as const,
     metadata: {
       search_result_type: 'commercial',
+      commercial_product_id: product.id,
       active_ingredient: product.activeComponents.join(' + '),
       active_components: product.activeComponents,
       search_aliases: product.searchAliases || [],
@@ -211,12 +222,93 @@ function mapCommercialProduct(product: CommercialMedicationProduct): MedicationS
       label_directions: product.labelDirections,
       dosage_guidance: product.dosageGuidance || null,
       plumbs_context: product.plumbsContext || null,
-      prescription_example: product.prescriptionExample || null,
+      prescription_example: isInjectablePrescriptionText(product.prescriptionExample) ? null : product.prescriptionExample || null,
       product_page_url: product.productPageUrl || null,
       label_url: product.labelUrl || null,
       catalog_medication_id: product.catalogMedicationId || null,
+      structured_presentations: buildCommercialMedicationPresentationRecords(product),
     },
   };
+}
+
+function parseDecimal(value: string): number {
+  return Number(value.replace(',', '.'));
+}
+
+function parseCommercialDoseText(
+  entry: MedicationSearchResult,
+  text: string,
+  species: VetSpecies,
+  index: number,
+  sourceType: 'plumbs' | 'leaflet',
+  indication?: string,
+): RecommendedDose | null {
+  const match = text.match(/(\d+(?:[.,]\d+)?)\s*(?:(?:a|até|[-–—])\s*(\d+(?:[.,]\d+)?)\s*)?(mcg|µg|ug|mg|g|mL|ml|UI|U)\s*\/\s*(kg|animal|gato|cão)/i);
+  if (!match) return null;
+  const routeMatch = text.match(/\b(VO|PO|SC|SQ|IV|IM|tópica|otológica|oftálmica|inalatória)\b/i);
+  const intervalMatch = text.match(/\bq\s*(\d+)(?:\s*[-–]\s*(\d+))?\s*h\b/i);
+  const frequencyToken = text.match(/\b(SID|BID|TID|QID)\b/i)?.[1]?.toUpperCase();
+  const tokenFrequency: Record<string, string> = {
+    SID: 'a cada 24 horas', BID: 'a cada 12 horas', TID: 'a cada 8 horas', QID: 'a cada 6 horas',
+  };
+  const frequency = intervalMatch
+    ? intervalMatch[2]
+      ? `a cada ${intervalMatch[1]} a ${intervalMatch[2]} horas`
+      : `a cada ${intervalMatch[1]} horas`
+    : frequencyToken ? tokenFrequency[frequencyToken] : null;
+  const duration = text.match(/\b(?:por|durante)\s+(.+?)(?:[.;]|$)/i)?.[1]?.trim() || null;
+  const denominator = normalizeSearchTerm(match[4]);
+  const doseUnit = `${match[3].replace(/^u$/i, 'UI').replace(/^ml$/i, 'mL')}/${denominator === 'kg' ? 'kg' : 'animal'}`;
+  return {
+    id: `commercial-dose:${entry.id}:${species}:${sourceType}:${index}`,
+    medication_id: entry.id,
+    species: species === 'dog' ? 'cão' : 'gato',
+    route: routeMatch?.[1] || '',
+    dose_value: parseDecimal(match[1]),
+    dose_max: match[2] ? parseDecimal(match[2]) : null,
+    dose_unit: doseUnit,
+    per_weight_unit: denominator === 'kg' ? 'kg' : null,
+    administration_basis: denominator === 'kg' ? 'weight_based' : 'per_animal',
+    indication: indication || null,
+    frequency,
+    frequency_text: frequency,
+    duration,
+    notes: text,
+    is_active: true,
+    source: 'global',
+    source_type: sourceType,
+    source_label: sourceType === 'plumbs' ? "Plumb's / ficha comercial" : 'Bula / ficha comercial',
+    source_url: String(entry.metadata?.label_url || entry.metadata?.product_page_url || '') || null,
+    metadata: { source: 'commercial_catalog', calculator_enabled: true, original_guidance: text },
+  };
+}
+
+/** Transforma as orientações estruturadas da aba Comerciais em regimes selecionáveis. */
+export function buildCommercialProductRecommendedDoses(
+  entry: MedicationSearchResult,
+  species: VetSpecies | null,
+): RecommendedDose[] {
+  if (!species || entry.metadata?.search_result_type !== 'commercial') return [];
+  const dosage = entry.metadata?.dosage_guidance as CommercialMedicationProduct['dosageGuidance'] | null | undefined;
+  const plumbs = dosage?.plumbs?.[species] || [];
+  const fromPlumbs = plumbs.flatMap((item, index) => {
+    const dose = parseCommercialDoseText(
+      entry,
+      [item.dose, item.note].filter(Boolean).join(' '),
+      species,
+      index,
+      'plumbs',
+      item.title,
+    );
+    return dose ? [dose] : [];
+  });
+  if (fromPlumbs.length) return fromPlumbs.filter((dose) => isTakeHomePrescriptionRoute(dose.route));
+
+  const labelText = String(dosage?.labelDose || entry.metadata?.label_directions || '');
+  return labelText.split(/[;\n]/).flatMap((part, index) => {
+    const dose = parseCommercialDoseText(entry, part, species, index, 'leaflet');
+    return dose && isTakeHomePrescriptionRoute(dose.route) ? [dose] : [];
+  });
 }
 
 function catalogPresentationLabel(presentation: MedicationPresentationRecord): string {
@@ -251,7 +343,7 @@ export function buildCatalogPresentationCommercialResults(
   presentations: MedicationPresentationRecord[],
 ): MedicationSearchResult[] {
   const grouped = new Map<string, MedicationPresentationRecord[]>();
-  presentations.forEach((presentation) => {
+  presentations.filter(isTakeHomePresentationRecord).forEach((presentation) => {
     const name = presentation.metadata?.source === 'editorial_catalog'
       ? String(presentation.commercial_name || '').trim()
       : commercialBrandName(presentation.commercial_name);
@@ -317,7 +409,9 @@ export async function searchPrescriptionCommercialProducts({
       const matchesClass = !commercialClass || product.commercialClass === commercialClass || subclasses.some((item) => classSubclasses.includes(item));
       const matchesSubclass = !commercialSubclass || subclasses.includes(commercialSubclass);
       return matchesClass && matchesSubclass;
-    });
+    })
+    .map(sanitizeCommercialProductForTakeHome)
+    .filter((product): product is CommercialMedicationProduct => product !== null);
   return filterAndRankCommercialProducts(eligibleProducts, needle)
     .slice(0, Number.isFinite(limit) && limit > 0 ? limit : commercialOticProductsSeed.length)
     .map(mapCommercialProduct);
@@ -329,4 +423,13 @@ export async function searchPrescriptionCommercialProductsByName(query: string):
   const needle = normalizeSearchTerm(query);
   const nameMatches = results.filter((item) => medicationSearchScore(needle, normalizeSearchTerm(item.name)) !== null);
   return nameMatches.length ? nameMatches : results;
+}
+
+/** Informa ao compositor quando a busca corresponde somente a produtos parenterais. */
+export async function isKnownInjectionOnlyPrescriptionQuery(query: string): Promise<boolean> {
+  const needle = normalizeSearchTerm(query);
+  if (needle.length < 2) return false;
+  const { commercialOticProductsSeed } = await import('../data/commercialOticProducts.seed');
+  const matches = filterAndRankCommercialProducts(commercialOticProductsSeed, needle);
+  return matches.length > 0 && matches.every((product) => sanitizeCommercialProductForTakeHome(product) === null);
 }

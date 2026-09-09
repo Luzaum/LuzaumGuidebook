@@ -1,0 +1,197 @@
+- main [ref=f10e5]:
+  - generic [ref=f10e9]:
+    - complementary [ref=f10e10]:
+      - generic [ref=f10e11]:
+        - button "Esconder barra lateral" [ref=f10e12] [cursor=pointer]
+        - link [ref=f10e17] [cursor=pointer]:
+          - /url: /consulta-vet
+          - img "ConsultaVET — base clínica para consulta rápida" [ref=f10e18]
+        - navigation [ref=f10e19]:
+          - link "Início" [ref=f10e20] [cursor=pointer]:
+            - /url: /consulta-vet
+          - link "Doenças" [ref=f10e24] [cursor=pointer]:
+            - /url: /consulta-vet/doencas
+          - link "Medicamentos" [ref=f10e30] [cursor=pointer]:
+            - /url: /consulta-vet/medicamentos
+          - link "Comerciais" [ref=f10e35] [cursor=pointer]:
+            - /url: /consulta-vet/apresentacoes-comerciais
+          - link "Receituário" [ref=f10e40] [cursor=pointer]:
+            - /url: /consulta-vet/receituario
+          - link "Manejo emergencial" [ref=f10e46] [cursor=pointer]:
+            - /url: /consulta-vet/manejo-emergencial
+          - link "Guia rápido clínico" [ref=f10e50] [cursor=pointer]:
+            - /url: /consulta-vet/guias-rápidos
+          - link "Consensos" [ref=f10e54] [cursor=pointer]:
+            - /url: /consulta-vet/consensos
+          - link "Favoritos" [ref=f10e59] [cursor=pointer]:
+            - /url: /consulta-vet/favoritos
+          - link "Recentes" [ref=f10e63] [cursor=pointer]:
+            - /url: /consulta-vet/recentes
+    - main [ref=f10e69]:
+      - generic [ref=f10e70]:
+        - generic [ref=f10e71]:
+          - generic [ref=f10e72]:
+            - heading "Receituário" [level=1] [ref=f10e73]
+            - paragraph [ref=f10e74]: Calcule por espécie e peso, revise o documento e salve na sua conta.
+          - button "Nova receita" [ref=f10e75] [cursor=pointer]
+        - tablist "Abas do Receituário" [ref=f10e78]:
+          - tab "Receitas" [selected] [ref=f10e79] [cursor=pointer]
+          - tab "Termos" [ref=f10e84] [cursor=pointer]
+          - tab "Meus modelos (0)" [ref=f10e89] [cursor=pointer]
+          - tab "Meus modelos favoritos (0)" [ref=f10e95] [cursor=pointer]
+          - tab "Documentos emitidos (2)" [ref=f10e99] [cursor=pointer]
+        - generic [ref=f10e106]:
+          - generic [ref=f10e107]:
+            - textbox "Doença, condição ou medicamento..." [ref=f10e112]: Pancreatite — Cão (após estabilização)
+            - generic [ref=f10e113]:
+              - button "Todos" [ref=f10e114] [cursor=pointer]
+              - button "🐶 Cão" [ref=f10e115] [cursor=pointer]
+              - button "🐱 Gato" [ref=f10e116] [cursor=pointer]
+            - button "Favoritos (0)" [ref=f10e117] [cursor=pointer]
+          - generic [ref=f10e120]:
+            - complementary [ref=f10e121]:
+              - generic [ref=f10e122]:
+                - heading "Especialidades" [level=2] [ref=f10e123]
+                - generic [ref=f10e124]: 1 ativas
+              - navigation "Filtrar receitas por especialidade" [ref=f10e125]:
+                - button "Todas 1" [ref=f10e126] [cursor=pointer]:
+                  - generic [ref=f10e132]: Todas
+                  - generic [ref=f10e133]: "1"
+                - button "Gastroenterologia 1" [ref=f10e134] [cursor=pointer]:
+                  - generic [aria-hidden] [ref=f10e135]: 🩺
+                  - generic [ref=f10e136]: Gastroenterologia
+                  - generic [ref=f10e137]: "1"
+            - main [ref=f10e138]:
+              - generic [ref=f10e139]:
+                - heading "Modelos de receita" [level=2] [ref=f10e140]
+                - generic [ref=f10e145]:
+                  - generic [ref=f10e146]: 1 receita
+                  - button "Editar modelos" [ref=f10e147] [cursor=pointer]
+              - article [ref=f10e152]:
+                - generic [ref=f10e153]:
+                  - generic [ref=f10e154]:
+                    - heading "Pancreatite — Cão (após estabilização)" [level=3] [ref=f10e155]
+                    - generic [ref=f10e156]:
+                      - generic [ref=f10e157]: 🩺 Gastroenterologia
+                      - generic [ref=f10e158]: cão
+                  - button "Favoritar Pancreatite — Cão (após estabilização)" [ref=f10e159] [cursor=pointer]
+                - generic [ref=f10e162]:
+                  - paragraph [ref=f10e163]: Medicamentos do modelo
+                  - generic [ref=f10e167]:
+                    - generic [ref=f10e168]: Maropitant
+                    - link "Ondansetrona" [ref=f10e169] [cursor=pointer]:
+                      - /url: /consulta-vet/medicamentos/ondansetron
+                - generic [ref=f10e170]:
+                  - generic [ref=f10e171]: Revise antes de emitir
+                  - button "Usar modelo" [ref=f10e172] [cursor=pointer]
+        - generic [ref=f10e174]:
+          - generic [ref=f10e175]:
+            - textbox "Título do documento" [ref=f10e181]: Pancreatite — Cão (após estabilização)
+            - button "Fechar" [ref=f10e182] [cursor=pointer]
+          - generic [ref=f10e187]:
+            - generic [ref=f10e188]:
+              - generic [ref=f10e189]: Espécie
+              - combobox "Espécie" [ref=f10e190]:
+                - option "Selecionar"
+                - option "Cão" [selected]
+                - option "Gato"
+            - generic [ref=f10e191]:
+              - generic [ref=f10e192]: Peso para cálculo
+              - spinbutton "Peso para cálculo" [ref=f10e193]: "10"
+            - button "Identificação para impressão opcional, sem cadastro" [ref=f10e194] [cursor=pointer]
+          - generic [ref=f10e198]:
+            - generic [ref=f10e199]:
+              - region "Configuração clínica do modelo" [ref=f10e200]:
+                - generic [ref=f10e201]:
+                  - generic [ref=f10e202]:
+                    - heading "Suporte após avaliação e estabilização" [level=3] [ref=f10e203]
+                    - paragraph [ref=f10e204]: Marque somente os blocos que deseja prescrever.
+                  - generic [ref=f10e205]: Dose do modelo · revisão de fonte pendente
+                - generic [ref=f10e209]:
+                  - button "Maropitant oral — vômitos, paciente estável Regime oral para vômitos; não usar a dose de cinetose." [active] [ref=f10e210] [cursor=pointer]:
+                    - generic [ref=f10e213]:
+                      - generic [ref=f10e214]: Maropitant oral — vômitos, paciente estável
+                      - generic [ref=f10e215]: Regime oral para vômitos; não usar a dose de cinetose.
+                  - button "Ondansetrona oral — náusea persistente Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica." [ref=f10e216] [cursor=pointer]:
+                    - generic [ref=f10e219]:
+                      - generic [ref=f10e220]: Ondansetrona oral — náusea persistente
+                      - generic [ref=f10e221]: Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica.
+                - paragraph [ref=f10e222]: Nenhum tratamento opcional foi incluído. As recomendações continuam disponíveis para revisão.
+                - paragraph [ref=f10e225]: Não é protocolo de internação. Confirmar hidratação, analgesia, ingestão e necessidade de sonda. Selecionar apenas medicamentos indicados; nenhuma medicação é inserida automaticamente.
+              - generic [ref=f10e229]:
+                - generic [ref=f10e230]:
+                  - button "Editar texto" [ref=f10e231] [cursor=pointer]
+                  - button "Adicionar medicamento" [ref=f10e234] [cursor=pointer]
+                - generic [ref=f10e237]: Campos de identificação ficam separados do corpo
+              - generic [ref=f10e239]:
+                - generic: "RECOMENDAÇÕES DA DOENÇA • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare de vomitar, o animal ainda pode precisar de tratamento e acompanhamento. • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”. • Oferecer somente a dieta indicada. Evitar restos de comida, frituras, queijos, pele de frango e petiscos gordurosos. • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver vomitando, muito fraco ou com dificuldade para engolir. • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno. • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário. • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta própria. • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames. SINAIS PARA RETORNO Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa, postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do apetite."
+                - textbox "Corpo editável do documento" [ref=f10e240]:
+                  - /placeholder: Digite o conteúdo clínico do documento.
+                  - text: "RECOMENDAÇÕES DA DOENÇA • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare de vomitar, o animal ainda pode precisar de tratamento e acompanhamento. • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”. • Oferecer somente a dieta indicada. Evitar restos de comida, frituras, queijos, pele de frango e petiscos gordurosos. • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver vomitando, muito fraco ou com dificuldade para engolir. • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno. • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário. • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta própria. • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames. SINAIS PARA RETORNO Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa, postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do apetite."
+            - article [ref=f10e243]:
+              - generic [ref=f10e244]:
+                - generic [ref=f10e245]:
+                  - paragraph [ref=f10e246]: Clínica Veterinária
+                  - paragraph [ref=f10e247]: Receituário veterinário
+                - generic [ref=f10e248]:
+                  - paragraph [ref=f10e249]: M.V. Luis
+                  - paragraph [ref=f10e250]: "CRMV: A PREENCHER"
+                  - paragraph [ref=f10e251]: 08/09/2026
+              - generic [ref=f10e252]:
+                - heading "Pancreatite — Cão (após estabilização)" [level=1] [ref=f10e253]
+                - generic [ref=f10e254]:
+                  - generic [ref=f10e255]:
+                    - term [ref=f10e256]: "Paciente:"
+                    - definition [ref=f10e257]: A PREENCHER
+                  - generic [ref=f10e258]:
+                    - term [ref=f10e259]: "Responsável:"
+                    - definition [ref=f10e260]: A PREENCHER
+                  - generic [ref=f10e261]:
+                    - term [ref=f10e262]: "Espécie:"
+                    - definition [ref=f10e263]: Cão
+                  - generic [ref=f10e264]:
+                    - term [ref=f10e265]: "Raça:"
+                    - definition [ref=f10e266]: A PREENCHER
+                  - generic [ref=f10e267]:
+                    - term [ref=f10e268]: "Sexo:"
+                    - definition [ref=f10e269]: macho
+                  - generic [ref=f10e270]:
+                    - term [ref=f10e271]: "Idade / peso:"
+                    - definition [ref=f10e272]: 10 kg
+              - main [ref=f10e273]:
+                - paragraph [ref=f10e274]: RECOMENDAÇÕES DA DOENÇA
+                - paragraph [ref=f10e276]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+                - paragraph [ref=f10e277]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+                - paragraph [ref=f10e278]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+                - paragraph [ref=f10e279]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+                - paragraph [ref=f10e280]: • Oferecer somente a dieta indicada. Evitar restos de comida, frituras, queijos, pele de
+                - paragraph [ref=f10e281]: frango e petiscos gordurosos.
+                - paragraph [ref=f10e282]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+                - paragraph [ref=f10e283]: vomitando, muito fraco ou com dificuldade para engolir.
+                - paragraph [ref=f10e284]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+                - paragraph [ref=f10e285]: comportamento. Levar essas informações no retorno.
+                - paragraph [ref=f10e286]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+                - paragraph [ref=f10e287]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+                - paragraph [ref=f10e288]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+                - paragraph [ref=f10e289]: própria.
+                - paragraph [ref=f10e290]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+                - paragraph [ref=f10e291]: manter e quando repetir exames.
+                - paragraph [ref=f10e293]: SINAIS PARA RETORNO
+                - paragraph [ref=f10e295]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+                - paragraph [ref=f10e296]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+                - paragraph [ref=f10e297]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+                - paragraph [ref=f10e298]: apetite.
+                - paragraph [ref=f10e300]: Em caso de piora clínica, retornar ao hospital ou buscar serviço veterinário externo.
+              - generic [ref=f10e301]:
+                - generic [ref=f10e302]: ConsultaVet • Documento emitido pelo profissional responsável
+                - generic [ref=f10e303]: Página 1 de 1
+          - generic [ref=f10e304]:
+            - generic [ref=f10e305]:
+              - button "Rascunho" [ref=f10e306] [cursor=pointer]
+              - button "Salvar modelo próprio" [ref=f10e311] [cursor=pointer]
+            - generic [ref=f10e315]:
+              - button "Copiar somente o conteúdo da receita" [ref=f10e316] [cursor=pointer]: Copiar conteúdo
+              - button "Imprimir" [ref=f10e320] [cursor=pointer]
+              - button "Exportar PDF" [ref=f10e326] [cursor=pointer]:
+                - generic [ref=f10e330]: PDF
+              - button "Emitir e salvar" [ref=f10e331] [cursor=pointer]

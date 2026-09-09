@@ -1,0 +1,4 @@
+### Ran Playwright code
+```js
+await (async page => { const input=page.getByRole("searchbox",{name:"Busque princípio ativo, sinônimo ou nome comercial"}); await input.fill("ondansetrona"); await page.getByRole("button",{name:"Ondansetrona (cloridrato) Ondansetrona",exact:false}).click({force:true}); console.log((await page.locator("main").first().innerText()).slice(0,12000)); })(page);
+```

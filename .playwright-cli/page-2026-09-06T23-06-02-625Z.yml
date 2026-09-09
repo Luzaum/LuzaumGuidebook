@@ -1,0 +1,39 @@
+- generic [ref=e304]:
+  - button "Voltar para Vetius" [ref=e305] [cursor=pointer]
+  - generic [ref=e306]:
+    - generic [ref=e307]:
+      - img "Dog portrait with warm light" [ref=e308]
+      - button "Foto anterior" [ref=e310] [cursor=pointer]
+      - button "Proxima foto" [ref=e313] [cursor=pointer]
+      - generic [ref=e316]:
+        - generic [ref=e317]:
+          - heading "Acesso seguro em qualquer plantão" [level=2] [ref=e318]
+          - paragraph [ref=e319]: Seus dados clínicos ficam protegidos e sincronizados na nuvem.
+        - generic [ref=e320]:
+          - button "Ir para foto 1" [ref=e321] [cursor=pointer]
+          - button "Ir para foto 2" [ref=e323] [cursor=pointer]
+          - button "Ir para foto 3" [ref=e325] [cursor=pointer]
+          - button "Ir para foto 4" [ref=e327] [cursor=pointer]
+          - button "Ir para foto 5" [ref=e329] [cursor=pointer]
+          - button "Ir para foto 6" [ref=e331] [cursor=pointer]
+          - button "Ir para foto 7" [ref=e333] [cursor=pointer]
+          - button "Ir para foto 8" [ref=e335] [cursor=pointer]
+          - button "Ir para foto 9" [ref=e337] [cursor=pointer]
+          - button "Ir para foto 10" [ref=e339] [cursor=pointer]
+    - generic [ref=e342]:
+      - generic [ref=e343]:
+        - heading "Acesso restrito" [level=1] [ref=e344]
+        - paragraph [ref=e345]: Entre com o usuário e a senha fornecidos para acessar os módulos.
+      - generic [ref=e346]:
+        - generic [ref=e347]:
+          - generic [ref=e348]: Usuário *
+          - textbox "Usuário *" [ref=e349]:
+            - /placeholder: Digite seu usuário
+        - generic [ref=e350]:
+          - generic [ref=e351]: Senha *
+          - generic [ref=e352]:
+            - textbox "Senha *" [ref=e353]:
+              - /placeholder: Digite sua senha
+            - button "Mostrar senha" [ref=e354] [cursor=pointer]
+        - button "Entrar" [ref=e358] [cursor=pointer]
+      - paragraph [ref=e362]: Acesso exclusivo para usuários autorizados.

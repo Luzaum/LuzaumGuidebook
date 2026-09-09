@@ -1,15 +1,25 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   Activity,
   AlertTriangle,
+  BookOpen,
   Brain,
+  Check,
   CheckCircle2,
+  ChevronDown,
+  ChevronUp,
+  Copy,
   Download,
+  FileCheck,
+  FileDown,
   FileText,
   Layers,
   MapPin,
+  Pill,
   RefreshCw,
+  ShieldAlert,
+  Sparkles,
   Stethoscope,
 } from 'lucide-react'
 import { Card } from '../UI/Card'
@@ -18,8 +28,9 @@ import { SaveToHistoryButton } from '../SaveToHistoryButton'
 import { useCaseStore } from '../../stores/caseStore'
 import { buildCaseReport } from '../../lib/analysis/report'
 import { buildLocalClinicalCompanionReport } from '../../lib/report/localClinicalCompanion'
-import { exportToPDF } from '../../lib/report/pdfExporter'
+import { exportToPDF, exportExamOnlyPDF } from '../../lib/report/pdfExporter'
 import { parseAiClinicalReport } from '../../lib/report/aiClinicalReportParser'
+import { buildQuickExamReportText } from '../../lib/quickExamReportText'
 import type { CaseReport } from '../../types/analysis'
 import {
   DISTRIBUTION_LABELS_PT,
@@ -27,6 +38,8 @@ import {
 } from '../../data/axisLabelsPt'
 import { buildAlteredExamSections, buildFullExamSections } from '../../lib/exam/examDefaults'
 import { MgcsSummaryBanner } from '../MgcsSummaryBanner'
+import { NeuralScanAnimation } from '../Step5/NeuralScanAnimation'
+import { NeuroLocalizationMatrixCard } from '../Step5/NeuroLocalizationMatrixCard'
 
 function sleep(ms: number) {
   return new Promise((resolve) => window.setTimeout(resolve, ms))
@@ -42,20 +55,20 @@ function MetricCard({
   variant?: 'cyan' | 'emerald' | 'gold'
 }) {
   const styles = {
-    cyan: 'border-cyan-500/20 bg-cyan-950/20 text-cyan-50',
-    emerald: 'border-emerald-500/25 bg-emerald-950/25 text-emerald-50',
-    gold: 'border-gold/25 bg-gold/5 text-gold',
+    cyan: 'border-cyan-500/30 bg-cyan-500/10 text-foreground dark:bg-cyan-950/20',
+    emerald: 'border-emerald-500/30 bg-emerald-500/10 text-foreground dark:bg-emerald-950/20',
+    gold: 'border-gold/35 bg-gold/10 text-foreground dark:bg-gold/10',
   }
   const labelStyles = {
-    cyan: 'text-cyan-200/55',
-    emerald: 'text-emerald-200/55',
-    gold: 'text-gold/55',
+    cyan: 'text-cyan-700 dark:text-cyan-300',
+    emerald: 'text-emerald-700 dark:text-emerald-300',
+    gold: 'text-gold font-bold',
   }
 
   return (
-    <div className={`rounded-xl border p-4 ${styles[variant]}`}>
-      <p className={`text-[11px] font-medium uppercase tracking-[0.16em] ${labelStyles[variant]}`}>{label}</p>
-      <p className="mt-2 text-base font-semibold leading-snug">{value || 'Não informado'}</p>
+    <div className={`rounded-2xl border p-4 shadow-sm transition-all ${styles[variant]}`}>
+      <p className={`text-[11px] font-bold uppercase tracking-[0.14em] ${labelStyles[variant]}`}>{label}</p>
+      <p className="mt-2 text-base font-semibold leading-snug text-foreground">{value || 'Não informado'}</p>
     </div>
   )
 }
@@ -70,25 +83,35 @@ function ConfidenceRing({ value }: { value: number }) {
     <div className="flex shrink-0 flex-col items-center gap-1.5">
       <div className="relative h-[84px] w-[84px]">
         <svg className="h-full w-full -rotate-90" viewBox="0 0 84 84" aria-hidden>
-          <circle cx="42" cy="42" r={radius} fill="none" stroke="currentColor" strokeWidth="5" className="text-emerald-950/80" />
           <circle
             cx="42"
             cy="42"
             r={radius}
             fill="none"
             stroke="currentColor"
-            strokeWidth="5"
+            strokeWidth="6"
+            className="text-muted/60"
+          />
+          <circle
+            cx="42"
+            cy="42"
+            r={radius}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="6"
             strokeLinecap="round"
-            className="text-emerald-400"
+            className="text-emerald-500"
             strokeDasharray={circumference}
             strokeDashoffset={offset}
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-lg font-bold text-emerald-50">{pct}%</span>
+          <span className="text-lg font-bold text-foreground">{pct}%</span>
         </div>
       </div>
-      <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-emerald-200/65">Confiança</span>
+      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-emerald-700 dark:text-emerald-300">
+        Concordância
+      </span>
     </div>
   )
 }
@@ -103,13 +126,13 @@ function HighlightStat({
   value: string
 }) {
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-emerald-500/20 bg-emerald-950/20 px-4 py-3">
-      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-300">
+    <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-sm">
+      <div className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gold/20 text-gold">
         <Icon className="h-4 w-4" />
       </div>
       <div className="min-w-0">
-        <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-emerald-200/55">{label}</p>
-        <p className="mt-1 text-sm font-semibold leading-snug text-emerald-50">{value}</p>
+        <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">{label}</p>
+        <p className="mt-1 text-sm font-semibold leading-snug text-foreground">{value}</p>
       </div>
     </div>
   )
@@ -129,24 +152,24 @@ function DifferentialRankCard({
   const pct = Math.min(100, Math.max(0, Math.round(likelihood)))
 
   return (
-    <div className="rounded-xl border border-white/10 bg-slate-950/50 p-4 transition hover:border-emerald-500/25">
+    <div className="rounded-2xl border border-border bg-card p-4 shadow-sm transition hover:border-gold/50 hover:shadow-md">
       <div className="mb-3 flex items-start justify-between gap-2">
-        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-emerald-500/15 text-xs font-bold text-emerald-200">
-          {rank}
+        <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-gold/20 text-xs font-bold text-gold">
+          #{rank}
         </span>
-        <span className="rounded-full border border-emerald-500/25 bg-emerald-950/40 px-2 py-0.5 text-[10px] font-medium text-emerald-200/80">
+        <span className="rounded-full border border-border bg-muted/60 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-foreground/80">
           {category}
         </span>
       </div>
-      <p className="text-sm font-semibold leading-snug text-slate-100">{name}</p>
+      <p className="text-sm font-bold leading-snug text-foreground">{name}</p>
       <div className="mt-3">
-        <div className="mb-1 flex items-center justify-between text-[11px] text-slate-400">
+        <div className="mb-1 flex items-center justify-between text-[11px] text-muted-foreground">
           <span>Probabilidade relativa</span>
-          <span className="font-semibold text-emerald-200/90">~{pct}%</span>
+          <span className="font-bold text-gold">~{pct}%</span>
         </div>
-        <div className="h-1.5 overflow-hidden rounded-full bg-slate-800">
+        <div className="h-2 overflow-hidden rounded-full bg-muted">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-emerald-600 to-emerald-400"
+            className="h-full rounded-full bg-gradient-to-r from-amber-400 to-gold"
             style={{ width: `${pct}%` }}
           />
         </div>
@@ -166,11 +189,11 @@ function SectionHeader({
 }) {
   return (
     <div className="mb-4 flex items-start gap-3">
-      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-gold/25 bg-gold/10 text-gold">
+      <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-gold/30 bg-gold/15 text-gold shadow-sm">
         <Icon className="h-5 w-5" />
       </div>
       <div>
-        <h3 className="text-lg font-semibold text-foreground">{title}</h3>
+        <h3 className="text-lg font-bold text-foreground">{title}</h3>
         {subtitle && <p className="mt-0.5 text-xs text-muted-foreground">{subtitle}</p>}
       </div>
     </div>
@@ -180,17 +203,17 @@ function SectionHeader({
 function BulletList({
   items,
   dotClassName,
-  textClassName = 'text-slate-100/90',
+  textClassName = 'text-foreground/90',
 }: {
   items: string[]
   dotClassName: string
   textClassName?: string
 }) {
   return (
-    <ul className={`space-y-2 text-sm ${textClassName}`}>
+    <ul className={`space-y-2 text-xs sm:text-sm leading-relaxed ${textClassName}`}>
       {items.map((item, index) => (
         <li key={`${item}-${index}`} className="flex items-start gap-2">
-          <span className={`mt-1 h-2 w-2 rounded-full ${dotClassName}`} />
+          <span className={`mt-1.5 h-2 w-2 rounded-full shrink-0 ${dotClassName}`} />
           <span>{item}</span>
         </li>
       ))}
@@ -212,8 +235,8 @@ function DifferentialSection({
   if (items.length === 0) return null
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-black/15 p-4">
-      <p className="mb-3 text-sm font-semibold text-slate-100">{title}</p>
+    <div className="rounded-2xl border border-border bg-muted/30 p-4 shadow-sm">
+      <p className="mb-3 text-xs sm:text-sm font-bold uppercase tracking-wide text-foreground">{title}</p>
       <BulletList items={items} dotClassName={dotClassName} textClassName={textClassName} />
     </div>
   )
@@ -243,15 +266,15 @@ function SummaryGrid({ items, compact }: { items: Array<{ label: string; value: 
       {items.map((item, index) => (
         <div
           key={`${item.label}-${index}`}
-          className="rounded-xl border border-white/8 bg-slate-950/30 px-3.5 py-3"
+          className="rounded-xl border border-border bg-card/80 p-3.5 shadow-sm"
         >
           {item.label ? (
             <>
-              <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-slate-500">{item.label}</p>
-              <p className="mt-1.5 text-sm leading-relaxed text-slate-100/90">{item.value || 'Não informado'}</p>
+              <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground">{item.label}</p>
+              <p className="mt-1.5 text-sm font-medium leading-relaxed text-foreground">{item.value || 'Não informado'}</p>
             </>
           ) : (
-            <p className="text-sm leading-relaxed text-slate-100/90">{item.value}</p>
+            <p className="text-sm font-medium leading-relaxed text-foreground">{item.value}</p>
           )}
         </div>
       ))}
@@ -260,16 +283,17 @@ function SummaryGrid({ items, compact }: { items: Array<{ label: string; value: 
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
-  INFLAMATORIA: 'Inflamatoria',
+  INFLAMATORIA: 'Inflamatória',
   INFECCIOSA: 'Infecciosa',
-  NEOPLASICA: 'Neoplasica',
+  NEOPLASICA: 'Neoplásica',
   VASCULAR: 'Vascular',
   DEGENERATIVA: 'Degenerativa',
-  TRAUMATICA: 'Traumatica',
-  TOXICO_METABOLICA: 'Toxico-metabolica',
+  TRAUMATICA: 'Traumática',
+  TOXICO_METABOLICA: 'Tóxico-metabólica',
   COMPRESSIVA: 'Compressiva',
-  IDIOPATICA: 'Idiopatica',
-  ENDOCRINA: 'Endocrina',
+  IDIOPATICA: 'Idiopática',
+  ENDOCRINA: 'Endócrina',
+  ANOMALIA: 'Anomalia Congênita',
 }
 
 function formatCategoryLabel(category: string) {
@@ -277,8 +301,11 @@ function formatCategoryLabel(category: string) {
 }
 
 export function Step5Analysis() {
-  const [compactAi, setCompactAi] = React.useState(true)
+  const [copied, setCopied] = React.useState(false)
+  const [compactAi, setCompactAi] = React.useState(false)
   const [examTab, setExamTab] = React.useState<'altered' | 'full'>('altered')
+  const [activeTab, setActiveTab] = React.useState<'exam_report' | 'matrix' | 'differentials' | 'management'>('exam_report')
+
   const analysis = useCaseStore((s) => s.analysis)
   const setAnalysis = useCaseStore((s) => s.setAnalysis)
   const patient = useCaseStore((s) => s.patient)
@@ -288,7 +315,6 @@ export function Step5Analysis() {
 
   const report: CaseReport | undefined = analysis?.report
   const clinicalReportText = analysis?.aiOpinion || null
-  const reportError = analysis?.aiError || null
   const progress = analysis?.aiProgress || null
   const parsedClinicalReport = clinicalReportText ? parseAiClinicalReport(clinicalReportText) : null
   const status = analysis?.status || 'idle'
@@ -317,7 +343,7 @@ export function Step5Analysis() {
         detail,
       },
     })
-    await sleep(45)
+    await sleep(220)
   }
 
   const runAnalysis = async () => {
@@ -325,17 +351,17 @@ export function Step5Analysis() {
 
     try {
       await updateRunningState(
-        8,
-        'Organizando caso',
-        'Consolidando identificacao, histórico e exame neurologico em uma única leitura clínica.',
+        15,
+        'Organizando dados semiológicos',
+        'Consolidando resenha, queixa temporal e exame neurológico sistemático.',
       )
 
       const nextReport = buildCaseReport(caseState)
 
       await updateRunningState(
-        28,
-        'Consolidando neurolocalizacao',
-        'Revisando topografia, distribuicao e coerencia entre queixa, exame e comorbidades.',
+        40,
+        'Cruzando matriz de neurolocalização',
+        'Avaliando NMS vs NMI, reações posturais e pares cranianos conforme de Lahunta & Dewey.',
         nextReport,
       )
 
@@ -355,27 +381,27 @@ export function Step5Analysis() {
       }
 
       await updateRunningState(
-        52,
-        'Hierarquizando diagnosticos',
-        'Ordenando os diferenciais mais provaveis e cruzando exames, monitorização e cautelas terapeuticas.',
+        68,
+        'Estruturando hipóteses conceituais DAMN-IT-V',
+        'Ponderando diagnósticos diferenciais conforme literatura neurológica veterinária.',
         nextReport,
       )
 
       const nextClinicalReport = buildLocalClinicalCompanionReport(caseState, nextReport)
 
       await updateRunningState(
-        78,
-        'Montando relatorio clínico',
-        'Transformando o caso em um relatorio estruturado para plantao e exportacao em PDF.',
+        90,
+        'Compilando laudo e condutas',
+        'Organizando exame físico, neurolocalização e plano terapêutico conceitual.',
         nextReport,
       )
 
       const parsed = parseAiClinicalReport(nextClinicalReport)
 
       await updateRunningState(
-        96,
-        'Finalizando',
-        'Validando a estrutura final do relatorio e preparando a exibicao.',
+        100,
+        'Laudo pronto',
+        'Validação concluída.',
         nextReport,
       )
 
@@ -387,11 +413,11 @@ export function Step5Analysis() {
         aiUsedFallback: false,
         aiCoverage: null,
         aiProgress: null,
-        aiError: parsed ? null : 'Não foi possível estruturar o relatorio clínico final. Gere novamente o caso.',
+        aiError: parsed ? null : 'Não foi possível estruturar o relatório clínico final.',
       })
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } catch (error) {
-      console.error('Erro ao montar relatorio clínico local:', error)
+      console.error('Erro ao montar relatório clínico:', error)
       setAnalysis({
         status: 'done',
         report,
@@ -406,124 +432,114 @@ export function Step5Analysis() {
     }
   }
 
-  const handleExportPDF = () => {
+  const handleCopyExamReport = async () => {
+    const text = buildQuickExamReportText(patient, complaint, neuroExam as Record<string, unknown>, { kind: 'full' })
+    try {
+      if (navigator?.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text)
+      } else {
+        const textarea = document.createElement('textarea')
+        textarea.value = text
+        document.body.appendChild(textarea)
+        textarea.select()
+        document.execCommand('copy')
+        document.body.removeChild(textarea)
+      }
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2200)
+    } catch (err) {
+      console.error('Falha ao copiar:', err)
+    }
+  }
+
+  const handleExportExamOnlyPDF = () => {
+    const caseState = { patient, complaint, neuroExam }
+    try {
+      exportExamOnlyPDF(caseState, report)
+    } catch (error) {
+      console.error('Erro ao gerar PDF do Exame:', error)
+      alert('Não foi possível gerar o PDF do Exame. Tente novamente.')
+    }
+  }
+
+  const handleExportFullPDF = () => {
     if (!report) return
     const caseState = { patient, complaint, neuroExam }
-
     try {
       exportToPDF(report, caseState, clinicalReportText)
     } catch (error) {
-      console.error('Erro ao gerar PDF:', error)
+      console.error('Erro ao gerar PDF Completo:', error)
       alert('Não foi possível gerar o PDF. Tente novamente.')
     }
   }
 
+  // IDLE STATE
   if (status === 'idle') {
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
+      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-8 pb-24 text-center max-w-2xl mx-auto">
         <motion.div
           initial={{ scale: 0.94, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="space-y-4 text-center"
+          className="space-y-4"
         >
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 shadow-lg shadow-yellow-500/50">
-            <Brain className="h-10 w-10 text-white" />
+          <div className="mx-auto relative flex h-24 w-24 items-center justify-center rounded-3xl bg-gradient-to-tr from-gold via-amber-500 to-amber-600 shadow-[0_0_40px_rgba(245,197,66,0.45)]">
+            <Brain className="h-12 w-12 text-slate-950" />
+            <motion.div
+              className="absolute -inset-2 rounded-3xl border border-gold/50"
+              animate={{ scale: [1, 1.1, 1], opacity: [0.4, 0.8, 0.4] }}
+              transition={{ duration: 2.5, repeat: Infinity }}
+            />
           </div>
-          <h2 className="text-2xl font-bold text-foreground">Análise do caso</h2>
-          <p className="mx-auto max-w-md text-muted-foreground">
-            Clique abaixo para gerar uma leitura clinica estruturada do caso com neurolocalizacao,
-            prioridades do plantao e diagnosticos diferenciais organizados por probabilidade.
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
+            Neurolocalização & Laudo do Exame
+          </h2>
+          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            Consolide a identificação do paciente, queixa clínica e o exame neurológico sistemático.
+            O NeuroVet auxilia na <strong>neurolocalização anatômica (NMS vs NMI)</strong> segundo os tratados
+            de <em>de Lahunta</em> e <em>Dewey &amp; da Costa</em>, permitindo copiar o laudo formatado e exportar o PDF clínico.
           </p>
         </motion.div>
 
-        <motion.button
-          onClick={runAnalysis}
-          className="animate-pulse rounded-xl bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 px-8 py-4 text-lg font-bold text-black shadow-lg shadow-yellow-500/50 transition-all duration-300 hover:from-yellow-500 hover:via-yellow-600 hover:to-yellow-700"
-          whileTap={{ scale: 0.95 }}
-        >
-          <Brain className="mr-2 inline-block h-5 w-5" />
-          Analisar Caso
-        </motion.button>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md">
+          <motion.button
+            onClick={runAnalysis}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="w-full relative inline-flex items-center justify-center gap-3 overflow-hidden rounded-2xl bg-gradient-to-r from-gold via-amber-400 to-amber-500 px-8 py-4 text-base sm:text-lg font-bold text-slate-950 shadow-[0_12px_32px_rgba(245,197,66,0.35)] transition-all hover:brightness-105"
+          >
+            <Sparkles className="h-5 w-5 text-slate-950" />
+            <span>Gerar Neurolocalização & Laudo</span>
+          </motion.button>
+        </div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center pt-2">
           <SaveToHistoryButton />
         </div>
       </div>
     )
   }
 
+  // RUNNING STATE WITH SCAN ANIMATION
   if (status === 'running') {
     const progressValue = Math.min(100, Math.max(8, progress?.value || 10))
-    const progressStages = [
-      { label: 'Organizar caso', threshold: 10 },
-      { label: 'Neurolocalizar', threshold: 30 },
-      { label: 'Hierarquizar DDx', threshold: 55 },
-      { label: 'Montar relatorio', threshold: 80 },
-      { label: 'Finalizar', threshold: 96 },
-    ]
-
     return (
-      <div className="min-h-[60vh] flex flex-col items-center justify-center space-y-6 pb-24">
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="h-16 w-16 rounded-full border-4 border-yellow-500 border-t-transparent"
+      <div className="min-h-[60vh] flex flex-col items-center justify-center pb-24">
+        <NeuralScanAnimation
+          progressValue={progressValue}
+          stageText={progress?.stage}
+          detailText={progress?.detail}
         />
-
-        <Card className="w-full max-w-2xl border-yellow-500/20 bg-slate-950/60 p-6">
-          <div className="flex items-start justify-between gap-4">
-            <div>
-              <h3 className="text-xl font-semibold text-foreground">Preparando relatório clínico</h3>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {progress?.stage || 'Processando os achados do caso.'}
-              </p>
-              {progress?.detail && (
-                <p className="mt-2 text-sm leading-relaxed text-foreground/80">{progress.detail}</p>
-              )}
-            </div>
-            <div className="rounded-2xl border border-yellow-500/30 bg-yellow-500/10 px-4 py-3 text-center">
-              <p className="text-xs uppercase tracking-[0.18em] text-yellow-200/70">Progresso</p>
-              <p className="mt-1 text-2xl font-bold text-yellow-300">{progressValue}%</p>
-            </div>
-          </div>
-
-          <div className="mt-5 h-3 overflow-hidden rounded-full bg-white/8">
-            <motion.div
-              className="h-full rounded-full bg-[linear-gradient(90deg,#facc15,#f59e0b)]"
-              initial={{ width: 0 }}
-              animate={{ width: `${progressValue}%` }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-            />
-          </div>
-
-          <div className="mt-5 grid gap-3 md:grid-cols-5">
-            {progressStages.map((item, index) => {
-              const reached = progressValue >= item.threshold
-              return (
-                <div
-                  key={`progress-stage-${index}`}
-                  className={`rounded-xl border px-3 py-3 text-center text-xs ${
-                    reached
-                      ? 'border-yellow-400/40 bg-yellow-400/10 text-yellow-100'
-                      : 'border-white/10 bg-white/5 text-slate-400'
-                  }`}
-                >
-                  {item.label}
-                </div>
-              )
-            })}
-          </div>
-        </Card>
       </div>
     )
   }
 
+  // INSUFFICIENT DATA
   if (status === 'insufficient_data' && report) {
     return (
-      <div className="space-y-6 pb-24">
+      <div className="space-y-6 pb-24 max-w-2xl mx-auto">
         <motion.button
           onClick={runAnalysis}
-          className="w-full rounded-xl bg-gradient-to-r from-yellow-500 to-yellow-600 px-8 py-4 text-lg font-bold text-white shadow-lg transition-all duration-300 hover:from-yellow-600 hover:to-yellow-700"
+          className="w-full rounded-2xl bg-gradient-to-r from-gold to-amber-500 px-8 py-4 text-base font-bold text-slate-950 shadow-lg transition-all hover:brightness-105"
         >
           <Brain className="mr-2 inline-block h-5 w-5" />
           Tentar Reanalisar Caso
@@ -531,9 +547,9 @@ export function Step5Analysis() {
 
         <InlineBanner
           variant="error"
-          title="Dados insuficientes"
+          title="Dados insuficientes para neurolocalização"
           message={[
-            'Não foi possível firmar uma neurolocalizacao segura com os dados registrados.',
+            'Não foi possível estabelecer uma neurolocalização consistente com os dados preenchidos.',
             ...(report.neuroLocalization.missing || []).map((item) => `- ${item}`),
           ]}
         />
@@ -541,508 +557,461 @@ export function Step5Analysis() {
     )
   }
 
+  // DONE STATE: FOCUSED DASHBOARD
   if (status === 'done' && report) {
     return (
-      <div className="space-y-5 pb-24">
-        {/* Barra de ações */}
-        <Card className="sticky top-2 z-10 border-white/10 bg-slate-950/85 p-3 shadow-lg backdrop-blur-md">
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div className="flex flex-wrap gap-2">
+      <div className="space-y-6 pb-24">
+        {/* Barra de Controle Superior Sticky com Ações Primárias */}
+        <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-xl pt-2 pb-3 border-b border-border/80 -mx-4 px-4 sm:-mx-6 sm:px-6 shadow-sm space-y-3">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            {/* Ações Rápidas em Destaque */}
+            <div className="flex flex-wrap items-center gap-2">
               <motion.button
                 type="button"
-                onClick={handleExportPDF}
-                className="inline-flex items-center gap-2 rounded-lg border border-blue-500/35 bg-blue-600/15 px-4 py-2 text-sm font-medium text-blue-100 transition hover:bg-blue-600/25"
-                whileTap={{ scale: 0.98 }}
+                onClick={handleCopyExamReport}
+                className={`inline-flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold shadow-sm transition-all ${
+                  copied
+                    ? 'bg-emerald-500 text-white'
+                    : 'border border-emerald-500/40 bg-emerald-500/10 text-emerald-800 dark:text-emerald-300 hover:bg-emerald-500/20'
+                }`}
+                whileTap={{ scale: 0.97 }}
               >
-                <Download className="h-4 w-4" />
-                Exportar PDF
+                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {copied ? 'Copiado para a Área de Transferência!' : 'Copiar Ficha & Exame'}
               </motion.button>
+
+              <motion.button
+                type="button"
+                onClick={handleExportExamOnlyPDF}
+                className="inline-flex items-center gap-2 rounded-xl border border-blue-500/40 bg-blue-500/10 px-4 py-2.5 text-xs sm:text-sm font-bold text-blue-800 dark:text-blue-300 transition hover:bg-blue-500/20 shadow-sm"
+                whileTap={{ scale: 0.97 }}
+                title="Exporta PDF direto com identificação do paciente e exame neurológico completo para prontuário"
+              >
+                <FileDown className="h-4 w-4" />
+                Exportar PDF (Exame & Paciente)
+              </motion.button>
+
+              <motion.button
+                type="button"
+                onClick={handleExportFullPDF}
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-card px-3.5 py-2.5 text-xs sm:text-sm font-semibold text-foreground/80 hover:text-foreground hover:bg-muted/50 transition"
+                whileTap={{ scale: 0.97 }}
+                title="Exporta PDF estendido contendo também a análise de diferenciais DAMN-IT-V e condutas"
+              >
+                <Download className="h-4 w-4 text-gold" />
+                PDF Completo (+ Diferenciais)
+              </motion.button>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
               <motion.button
                 type="button"
                 onClick={runAnalysis}
-                className="inline-flex items-center gap-2 rounded-lg border border-gold/35 bg-gold/10 px-4 py-2 text-sm font-medium text-gold transition hover:bg-gold/15"
-                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 rounded-xl border border-gold/40 bg-gold/10 px-3.5 py-2 text-xs sm:text-sm font-semibold text-gold transition hover:bg-gold/20"
+                whileTap={{ scale: 0.97 }}
               >
                 <RefreshCw className="h-4 w-4" />
-                Atualizar
+                Reanalisar
               </motion.button>
-            </div>
-            <div className="flex flex-wrap items-center gap-2">
               <SaveToHistoryButton />
-              <button
-                type="button"
-                onClick={() => setCompactAi((v) => !v)}
-                className="rounded-lg border border-cyan-500/30 bg-cyan-950/25 px-3 py-2 text-xs font-medium text-cyan-100 transition hover:border-cyan-400/45"
-              >
-                {compactAi ? 'Análise detalhada' : 'Modo resumo'}
-              </button>
             </div>
           </div>
-        </Card>
+
+          {/* Abas de Navegação */}
+          <div className="flex overflow-x-auto gap-2 pt-1 no-scrollbar border-t border-border/40">
+            {[
+              { id: 'exam_report', label: 'Neurolocalização & Exame', icon: FileCheck },
+              { id: 'matrix', label: 'Guia Anatômico (Matriz NMS/NMI)', icon: BookOpen },
+              { id: 'differentials', label: 'Opinião Conceitual (DAMN-IT-V)', icon: Stethoscope },
+              { id: 'management', label: 'Conduta de Plantão & Alertas', icon: ShieldAlert },
+            ].map((tab) => {
+              const Icon = tab.icon
+              const isActive = activeTab === tab.id
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                  className={`flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
+                    isActive
+                      ? 'bg-gold text-slate-950 shadow-md ring-2 ring-gold/40'
+                      : 'bg-card border border-border text-muted-foreground hover:text-foreground hover:bg-muted/50'
+                  }`}
+                >
+                  <Icon className="h-4 w-4" />
+                  {tab.label}
+                </button>
+              )
+            })}
+          </div>
+        </div>
 
         <MgcsSummaryBanner mgcs={mgcs} />
 
-        {report.neuroLocalization.status === 'ok' && (
-          <Card className="overflow-hidden border-emerald-500/25 p-0 shadow-[0_16px_48px_rgba(16,185,129,0.08)]">
-            <div className="border-b border-emerald-500/15 bg-gradient-to-br from-emerald-950/45 via-slate-950/90 to-slate-950 px-5 py-5 sm:px-6">
-              <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-                <div className="min-w-0 flex-1">
-                  <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300/70">
-                    Síntese do caso
-                  </p>
-                  <h3 className="mt-1 text-xl font-bold text-emerald-50 sm:text-2xl">Resumo clínico</h3>
-                  <p className="mt-2 max-w-2xl text-sm leading-relaxed text-emerald-100/65">
-                    Neurolocalização e diferenciais prioritários para apoio à conduta no plantão.
-                  </p>
+        {/* TAB 1: NEUROLOCALIZAÇÃO & RELATÓRIO DO EXAME (FOCO PRINCIPAL DO APP) */}
+        {activeTab === 'exam_report' && (
+          <div className="space-y-6">
+            {/* Cartão Principal de Neurolocalização Topográfica */}
+            {report.neuroLocalization.status === 'ok' && (
+              <Card className="overflow-hidden p-0 border-border bg-card shadow-lg">
+                <div className="border-b border-border/80 bg-gradient-to-r from-emerald-500/15 via-gold/10 to-transparent p-5 sm:p-6">
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                    <div className="min-w-0 flex-1">
+                      <div className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-3 py-1 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+                        <CheckCircle2 className="h-3.5 w-3.5" />
+                        SÍNTESE TOPOGRÁFICA DETERMINÍSTICA
+                      </div>
+                      <h3 className="mt-2 text-xl sm:text-2xl font-bold text-foreground">
+                        {NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
+                      </h3>
+                      <p className="mt-1 text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed">
+                        Classificação fundamentada nos tratados veterinários (<em>de Lahunta</em> e <em>Dewey &amp; da Costa</em>) a partir dos reflexos espinhais e respostas posturais.
+                      </p>
+                    </div>
+                    <ConfidenceRing value={report.neuroLocalization.confidence} />
+                  </div>
                 </div>
-                <ConfidenceRing value={report.neuroLocalization.confidence} />
-              </div>
-            </div>
 
-            <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
-              <div className="space-y-2.5">
-                <HighlightStat
-                  icon={MapPin}
-                  label="Localização principal"
-                  value={NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
-                />
-                <HighlightStat
-                  icon={Layers}
-                  label="Distribuição"
-                  value={DISTRIBUTION_LABELS_PT[report.neuroLocalization.distribution]}
-                />
-                {report.neuroLocalization.secondary && report.neuroLocalization.secondary.length > 0 && (
-                  <div className="rounded-xl border border-emerald-500/15 bg-emerald-950/15 px-4 py-3">
-                    <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-emerald-200/55">
-                      Sobreposições
+                <div className="grid gap-5 p-5 sm:p-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+                  <div className="space-y-3">
+                    <HighlightStat
+                      icon={MapPin}
+                      label="Localização Anatômica Sugerida"
+                      value={NEURO_AXIS_LABELS_PT[report.neuroLocalization.primary]}
+                    />
+                    <HighlightStat
+                      icon={Layers}
+                      label="Distribuição Anatômica"
+                      value={DISTRIBUTION_LABELS_PT[report.neuroLocalization.distribution]}
+                    />
+                    {report.neuroLocalization.secondary && report.neuroLocalization.secondary.length > 0 && (
+                      <div className="rounded-2xl border border-border bg-muted/30 p-4">
+                        <p className="text-[11px] font-bold uppercase tracking-[0.12em] text-muted-foreground">
+                          Sobreposições Possíveis
+                        </p>
+                        <p className="mt-1.5 text-sm font-semibold text-foreground">
+                          {report.neuroLocalization.secondary.map((a) => NEURO_AXIS_LABELS_PT[a]).join(' · ')}
+                        </p>
+                      </div>
+                    )}
+
+                    <div className="pt-2">
+                      <button
+                        type="button"
+                        onClick={() => setActiveTab('matrix')}
+                        className="inline-flex items-center gap-2 text-xs font-bold text-gold hover:underline"
+                      >
+                        <BookOpen className="h-4 w-4" />
+                        Ver tabela comparativa NMS/NMI para todos os 8 eixos &rarr;
+                      </button>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-border bg-muted/20 p-5 space-y-2">
+                    <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">
+                      Raciocínio Clínico Semiologia
                     </p>
-                    <p className="mt-1.5 text-sm text-emerald-50/90">
-                      {report.neuroLocalization.secondary.map((a) => NEURO_AXIS_LABELS_PT[a]).join(' · ')}
+                    <p className="text-xs sm:text-sm leading-relaxed text-foreground/90 pt-1">
+                      {report.neuroLocalization.narrative}
                     </p>
                   </div>
-                )}
-              </div>
+                </div>
+              </Card>
+            )}
 
-              <div className="rounded-xl border border-white/8 bg-slate-950/40 p-4">
-                <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-slate-400">
-                  Interpretação
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-100/90">
-                  {report.neuroLocalization.narrative}
-                </p>
-              </div>
+            {/* Identificação e Queixa */}
+            <div className="grid gap-5 lg:grid-cols-2">
+              <Card className="p-5 sm:p-6">
+                <SectionHeader icon={FileText} title="Identificação do Paciente" subtitle="Resenha e estágio de vida" />
+                <SummaryGrid items={patientSummaryItems} compact />
+              </Card>
+
+              <Card className="p-5 sm:p-6">
+                <SectionHeader icon={Brain} title="História e Sinais Clínicos" subtitle="Queixa e padrão temporal" />
+                <SummaryGrid items={historySummaryItems} compact />
+              </Card>
             </div>
 
-            {report.differentials.length > 0 && (
-              <div className="border-t border-emerald-500/10 bg-slate-950/30 px-5 py-5 sm:px-6">
-                <div className="mb-4 flex items-center gap-2">
-                  <Stethoscope className="h-4 w-4 text-emerald-300/80" />
-                  <p className="text-sm font-semibold text-emerald-100">Três diferenciais mais prováveis</p>
+            {/* Exame Neurológico - Alterações vs Completo */}
+            <Card className="p-5 sm:p-6">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4">
+                <SectionHeader
+                  icon={Activity}
+                  title="Registro do Exame Neurológico"
+                  subtitle="Achados semiológicos organizados por etapa"
+                />
+
+                <div className="inline-flex rounded-2xl border border-border bg-muted/50 p-1 self-start sm:self-auto">
+                  <button
+                    type="button"
+                    onClick={() => setExamTab('altered')}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
+                      examTab === 'altered'
+                        ? 'bg-gold text-slate-950 shadow-sm'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    Alterações Registradas
+                    {alteredExamSections.length > 0 && (
+                      <span className="ml-1.5 rounded-full bg-slate-950/20 px-1.5 py-0.5 text-[10px] font-extrabold">
+                        {alteredExamSections.length}
+                      </span>
+                    )}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setExamTab('full')}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-bold transition ${
+                      examTab === 'full'
+                        ? 'bg-gold text-slate-950 shadow-sm'
+                        : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    Exame Completo
+                  </button>
                 </div>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {report.differentials.slice(0, 3).map((d, index) => (
-                    <DifferentialRankCard
-                      key={d.id}
-                      rank={index + 1}
-                      name={d.name}
-                      likelihood={d.likelihood}
-                      category={formatCategoryLabel(d.category)}
-                    />
+              </div>
+
+              {examTab === 'altered' ? (
+                alteredExamSections.length > 0 ? (
+                  <div className="grid gap-3 sm:grid-cols-2">
+                    {alteredExamSections.map((section) => (
+                      <div key={section.title} className="rounded-2xl border border-gold/30 bg-gold/10 p-4">
+                        <p className="mb-2 text-xs font-bold uppercase tracking-wide text-gold">{section.title}</p>
+                        <BulletList items={section.items} dotClassName="bg-gold" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2.5 rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-xs sm:text-sm font-semibold text-emerald-800 dark:text-emerald-300">
+                    <CheckCircle2 className="h-5 w-5 shrink-0" />
+                    Nenhuma alteração registrada — exame físico presumido sem déficits focais evidentes.
+                  </div>
+                )
+              ) : (
+                <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+                  {fullExamSections.map((section) => (
+                    <div key={section.title} className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+                      <p className="mb-2 text-xs font-bold uppercase tracking-wide text-muted-foreground">{section.title}</p>
+                      <BulletList items={section.items} dotClassName="bg-muted-foreground" />
+                    </div>
                   ))}
                 </div>
-              </div>
-            )}
-          </Card>
-        )}
-
-        {/* Dados do caso — duas colunas */}
-        <div className="grid gap-5 lg:grid-cols-2">
-          <Card className="p-5 sm:p-6">
-            <SectionHeader icon={FileText} title="Identificação" subtitle="Perfil do paciente" />
-            <SummaryGrid items={patientSummaryItems} compact />
-          </Card>
-
-          <Card className="p-5 sm:p-6">
-            <SectionHeader icon={Brain} title="História e sinais" subtitle="Queixa, curso temporal e observações" />
-            <SummaryGrid items={historySummaryItems} compact />
-          </Card>
-        </div>
-
-        {/* Exame neurológico — abas */}
-        <Card className="p-5 sm:p-6">
-          <SectionHeader
-            icon={Activity}
-            title="Exame neurológico"
-            subtitle="Alterações registradas e registro completo por secção"
-          />
-
-          <div className="mb-4 inline-flex rounded-xl border border-border bg-background/50 p-1">
-            <button
-              type="button"
-              onClick={() => setExamTab('altered')}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
-                examTab === 'altered'
-                  ? 'bg-gold/15 text-gold shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Alterações
-              {alteredExamSections.length > 0 && (
-                <span className="ml-1.5 rounded-full bg-gold/20 px-1.5 py-0.5 text-[10px]">{alteredExamSections.length}</span>
               )}
-            </button>
-            <button
-              type="button"
-              onClick={() => setExamTab('full')}
-              className={`rounded-lg px-4 py-2 text-xs font-medium transition ${
-                examTab === 'full'
-                  ? 'bg-slate-700/50 text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
-              }`}
-            >
-              Exame completo
-            </button>
-          </div>
+            </Card>
 
-          {examTab === 'altered' ? (
-            alteredExamSections.length > 0 ? (
-              <div className="grid gap-3 sm:grid-cols-2">
-                {alteredExamSections.map((section) => (
-                  <div key={section.title} className="rounded-xl border border-gold/20 bg-gold/5 p-4">
-                    <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-gold/90">{section.title}</p>
-                    <BulletList items={section.items} dotClassName="bg-gold" textClassName="text-gold/90" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-950/15 px-4 py-3 text-sm text-emerald-200/90">
-                <CheckCircle2 className="h-4 w-4 shrink-0" />
-                Nenhuma alteração registrada — exame presumido normal.
-              </div>
-            )
-          ) : (
-            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
-              {fullExamSections.map((section) => (
-                <div key={section.title} className="rounded-xl border border-white/8 bg-slate-950/35 p-4">
-                  <p className="mb-2.5 text-xs font-semibold uppercase tracking-wide text-slate-300">{section.title}</p>
-                  <BulletList items={section.items} dotClassName="bg-slate-500" />
-                </div>
-              ))}
-            </div>
-          )}
-        </Card>
-
-        {reportError && (
-          <InlineBanner variant="warning" title="Relatório clínico indisponível" message={reportError} />
-        )}
-
-        {parsedClinicalReport ? (
-          <div className="space-y-5">
-            <Card className="border-cyan-500/30 bg-[linear-gradient(135deg,rgba(8,47,73,0.42),rgba(17,24,39,0.9))] p-6 shadow-[0_24px_60px_rgba(6,182,212,0.12)]">
-              <div>
-                <h3 className="text-xl font-bold text-cyan-100">Relatório clínico</h3>
-                <p className="mt-2 max-w-4xl text-sm leading-relaxed text-cyan-50/80">
-                  {compactAi
-                    ? 'Síntese: localização provável, DDx priorizados e conduta — expanda para listas completas de achados e exames.'
-                    : 'Leitura integrada do caso para plantao: neurolocalizacao, prioridades imediatas e diferenciais do mais provável ao menos provável, sempre cruzando exame, comorbidades, exames prioritarios e conduta inicial.'}
+            {/* Banner de Chamada para Opinião Conceitual se o clínico quiser aprofundar */}
+            <div className="rounded-2xl border border-gold/30 bg-gold/10 p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <p className="text-sm font-bold text-foreground">Deseja consultar hipóteses DAMN-IT-V e condutas de plantão?</p>
+                <p className="text-xs text-muted-foreground">
+                  Consulte os diagnósticos diferenciais, exames sugeridos e guia farmacológico baseados na literatura médica (sem IA).
                 </p>
               </div>
-            </Card>
+              <button
+                type="button"
+                onClick={() => setActiveTab('differentials')}
+                className="inline-flex items-center gap-2 rounded-xl bg-gold px-4 py-2 text-xs font-bold text-slate-950 hover:brightness-105 whitespace-nowrap shadow-sm"
+              >
+                <Stethoscope className="h-4 w-4" />
+                Ver Diferenciais &amp; Conduta
+              </button>
+            </div>
+          </div>
+        )}
 
-            <Card className="border-cyan-500/30 bg-cyan-950/10 p-6">
-              <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-cyan-200">
-                <Brain className="h-6 w-6" />
-                Neurolocalizacao
-              </h3>
+        {/* TAB 2: GUIA DIDÁTICO DE NEUROLOCALIZAÇÃO */}
+        {activeTab === 'matrix' && (
+          <div className="space-y-6">
+            <NeuroLocalizationMatrixCard
+              detectedAxis={report.neuroLocalization.primary}
+              confidence={report.neuroLocalization.confidence}
+            />
+          </div>
+        )}
 
-              <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                <MetricCard
-                  label="Localizacao provável"
-                  value={parsedClinicalReport.neurolocalization.probableLocation}
-                />
-                <MetricCard label="Distribuicao" value={parsedClinicalReport.neurolocalization.distribution} />
-                <MetricCard label="Padrão motor" value={parsedClinicalReport.neurolocalization.motorPattern} />
-                <MetricCard label="Confiança" value={parsedClinicalReport.neurolocalization.confidence} />
-              </div>
+        {/* TAB 3: DIFERENCIAIS DAMN-IT-V CONCEITUAIS (LITERATURA MÉDICA / SEM IA) */}
+        {activeTab === 'differentials' && (
+          <div className="space-y-6">
+            <div className="rounded-2xl border border-border bg-muted/30 p-4">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                💡 <strong>Opinião Conceitual Baseada em Literatura:</strong> As hipóteses abaixo são derivadas deterministicamente dos tratados de <em>de Lahunta (Veterinary Neuroanatomy and Clinical Neurology)</em> e <em>Dewey &amp; da Costa (Practical Guide to Canine and Feline Neurology)</em> cruzando espécie, faixa etária, curso temporal e topografia. <strong>Nenhuma Inteligência Artificial generativa é utilizada.</strong>
+              </p>
+            </div>
 
-              {compactAi ? (
-                <details className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-4">
-                  <summary className="cursor-pointer text-sm font-semibold text-cyan-200">
-                    Raciocínio e achados (expandir)
-                  </summary>
-                  <p className="mt-3 text-sm leading-relaxed text-cyan-50/90">
-                    {parsedClinicalReport.neurolocalization.reasoning || 'Não informado'}
-                  </p>
-                  <div className="mt-4 grid gap-4 lg:grid-cols-2">
-                    <DifferentialSection
-                      title="Achados que sustentam"
-                      items={parsedClinicalReport.neurolocalization.supportiveFindings}
-                      dotClassName="bg-emerald-400"
-                      textClassName="text-emerald-50/90"
-                    />
-                    <DifferentialSection
-                      title="Achados contraditorios"
-                      items={parsedClinicalReport.neurolocalization.contradictoryFindings}
-                      dotClassName="bg-orange-400"
-                      textClassName="text-orange-50/90"
-                    />
-                  </div>
-                </details>
-              ) : (
-                <>
-                  <div className="mt-5 rounded-2xl border border-cyan-500/20 bg-black/20 p-5">
-                    <p className="mb-2 text-sm font-semibold text-cyan-200">Raciocinio de neurolocalizacao</p>
-                    <p className="text-sm leading-relaxed text-cyan-50/90">
-                      {parsedClinicalReport.neurolocalization.reasoning || 'Não informado'}
-                    </p>
-                  </div>
-
-                  <div className="mt-5 grid gap-4 lg:grid-cols-2">
-                    <DifferentialSection
-                      title="Achados que sustentam"
-                      items={parsedClinicalReport.neurolocalization.supportiveFindings}
-                      dotClassName="bg-emerald-400"
-                      textClassName="text-emerald-50/90"
-                    />
-                    <DifferentialSection
-                      title="Achados contraditorios"
-                      items={parsedClinicalReport.neurolocalization.contradictoryFindings}
-                      dotClassName="bg-orange-400"
-                      textClassName="text-orange-50/90"
-                    />
-                  </div>
-                </>
-              )}
-            </Card>
-
-            {(parsedClinicalReport.priorities.length > 0 || parsedClinicalReport.criticalAlerts.length > 0) && (
-              <div className="grid gap-4 xl:grid-cols-2">
-                {parsedClinicalReport.priorities.length > 0 && (
-                  <Card className="border-blue-500/20 bg-blue-950/10 p-6">
-                    <h3 className="mb-4 text-lg font-semibold text-blue-300">Condutas imediatas do plantao</h3>
-                    <BulletList items={parsedClinicalReport.priorities} dotClassName="bg-blue-400" />
-                  </Card>
-                )}
-
-                {parsedClinicalReport.criticalAlerts.length > 0 && (
-                  <Card className="border-orange-500/20 bg-orange-950/10 p-6">
-                    <h3 className="mb-4 flex items-center gap-2 text-lg font-semibold text-orange-300">
-                      <AlertTriangle className="h-5 w-5" />
-                      Alertas clinicos criticos
-                    </h3>
-                    <BulletList items={parsedClinicalReport.criticalAlerts} dotClassName="bg-orange-400" />
-                  </Card>
-                )}
-              </div>
-            )}
-
-            {parsedClinicalReport.differentials.length > 0 && (
+            {parsedClinicalReport?.differentials && parsedClinicalReport.differentials.length > 0 ? (
               <div className="space-y-4">
-                <h3 className="flex items-center gap-2 text-xl font-bold text-gold">
-                  <CheckCircle2 className="h-6 w-6" />
-                  Top 5 diagnosticos diferenciais
-                </h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="flex items-center gap-2 text-lg sm:text-xl font-bold text-foreground">
+                    <CheckCircle2 className="h-5 w-5 text-gold" />
+                    Diagnósticos Diferenciais DAMN-IT-V
+                  </h3>
+                  <button
+                    type="button"
+                    onClick={() => setCompactAi((v) => !v)}
+                    className="rounded-xl border border-border bg-card px-3 py-1.5 text-xs font-semibold text-foreground hover:border-gold/50"
+                  >
+                    {compactAi ? 'Expandir Todos os Detalhes' : 'Modo Resumido'}
+                  </button>
+                </div>
 
                 {parsedClinicalReport.differentials.map((dx, index) => (
-                  <Card key={`${dx.title}-${index}`} className="border-white/10 bg-slate-950/60 p-6">
-                    <div className="flex flex-col gap-4 border-b border-white/10 pb-4 lg:flex-row lg:items-start lg:justify-between">
+                  <Card key={`${dx.title}-${index}`} className="border-border bg-card p-5 sm:p-6 shadow-md space-y-4">
+                    <div className="flex flex-col gap-3 border-b border-border pb-4 sm:flex-row sm:items-start sm:justify-between">
                       <div>
-                        <h4 className="text-lg font-semibold text-foreground">
-                          {index + 1}. {dx.title}
-                        </h4>
-                        <p className="mt-1 text-sm text-muted-foreground">Categoria: {dx.category || 'Não informada'}</p>
+                        <div className="flex items-center gap-2">
+                          <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-gold/20 text-xs font-bold text-gold">
+                            {index + 1}
+                          </span>
+                          <h4 className="text-base sm:text-lg font-bold text-foreground">{dx.title}</h4>
+                        </div>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          Categoria Etiológica: <strong className="text-foreground">{dx.category || 'Geral'}</strong>
+                        </p>
                       </div>
-                      <div className="rounded-2xl border border-gold/20 bg-gold/5 px-4 py-3 text-right">
-                        <p className="text-xs uppercase tracking-[0.18em] text-gold/60">Probabilidade</p>
-                        <p className="mt-1 text-2xl font-bold text-gold">{dx.probability ?? 0}%</p>
+                      <div className="rounded-2xl border border-gold/30 bg-gold/10 px-4 py-2 text-left sm:text-right">
+                        <p className="text-[10px] font-bold uppercase tracking-wider text-gold">Probabilidade Relativa</p>
+                        <p className="text-xl font-extrabold text-gold">{dx.probability ?? 0}%</p>
                       </div>
                     </div>
 
-                    <div className="mt-5 rounded-2xl border border-cyan-500/10 bg-cyan-950/10 p-4">
-                      <p className="mb-2 text-sm font-semibold text-cyan-200">Sintese clinica</p>
-                      <p
-                        className={`text-sm leading-relaxed text-slate-100/90 ${compactAi ? 'line-clamp-4' : ''}`}
-                      >
+                    {/* Síntese Clínica */}
+                    <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 dark:bg-cyan-950/20 p-4">
+                      <p className="text-xs font-bold uppercase tracking-wider text-cyan-800 dark:text-cyan-300">
+                        Síntese Semiologia & Encaixe
+                      </p>
+                      <p className="mt-1.5 text-xs sm:text-sm text-foreground/90 leading-relaxed">
                         {dx.clinicalFit || 'Não informado'}
                       </p>
                     </div>
 
-                    {compactAi ? null : (
-                    <div className="mt-5 grid gap-4 xl:grid-cols-2">
-                      <DifferentialSection
-                        title="Achados a favor"
-                        items={dx.supportingFindings}
-                        dotClassName="bg-emerald-400"
-                        textClassName="text-emerald-50/90"
-                      />
-                      <DifferentialSection
-                        title="Achados contra"
-                        items={dx.opposingFindings}
-                        dotClassName="bg-orange-400"
-                        textClassName="text-orange-50/90"
-                      />
-                      <DifferentialSection
-                        title="Exames priorizados"
-                        items={dx.prioritizedDiagnostics}
-                        dotClassName="bg-blue-400"
-                      />
-                      <DifferentialSection
-                        title="Como avaliar este paciente no plantao"
-                        items={dx.patientAssessment}
-                        dotClassName="bg-sky-400"
-                      />
-                      <DifferentialSection
-                        title="Monitorização e reavaliação"
-                        items={dx.monitoringPlan}
-                        dotClassName="bg-violet-400"
-                      />
-                      <DifferentialSection
-                        title="Tratamento e conduta"
-                        items={dx.treatmentPlan}
-                        dotClassName="bg-green-400"
-                      />
-                      <DifferentialSection
-                        title="Fármacos que posso considerar"
-                        items={dx.allowedDrugs}
-                        dotClassName="bg-emerald-300"
-                      />
-                      <DifferentialSection
-                        title="Fármacos a evitar ou ajustar"
-                        items={dx.avoidDrugs}
-                        dotClassName="bg-rose-400"
-                      />
-                    </div>
-                    )}
-
-                    {!compactAi && dx.comorbidityIntegration.length > 0 && (
-                      <div className="mt-5 rounded-2xl border border-indigo-500/20 bg-indigo-950/10 p-4">
-                        <p className="mb-3 text-sm font-semibold text-indigo-200">
-                          Como as comorbidades mudam a conduta
-                        </p>
-                        <BulletList items={dx.comorbidityIntegration} dotClassName="bg-indigo-400" />
+                    {/* Detalhes Clínicos */}
+                    {!compactAi && (
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <DifferentialSection
+                          title="Achados a Favor"
+                          items={dx.supportingFindings}
+                          dotClassName="bg-emerald-500"
+                        />
+                        <DifferentialSection
+                          title="Achados Contra / Incomuns"
+                          items={dx.opposingFindings}
+                          dotClassName="bg-orange-500"
+                        />
+                        <DifferentialSection
+                          title="Exames Priorizados"
+                          items={dx.prioritizedDiagnostics}
+                          dotClassName="bg-blue-500"
+                        />
+                        <DifferentialSection
+                          title="Tratamento & Conduta de Plantão"
+                          items={dx.treatmentPlan}
+                          dotClassName="bg-gold"
+                        />
+                        <DifferentialSection
+                          title="Fármacos a Considerar"
+                          items={dx.allowedDrugs}
+                          dotClassName="bg-emerald-500"
+                        />
+                        <DifferentialSection
+                          title="Fármacos a Evitar / Cautela"
+                          items={dx.avoidDrugs}
+                          dotClassName="bg-red-500"
+                        />
                       </div>
                     )}
                   </Card>
                 ))}
               </div>
-            )}
-
-            {report.differentials.length > 5 && (
-              <Card className="border-slate-500/20 bg-slate-950/40 p-6">
-                <h3 className="mb-4 text-lg font-semibold text-slate-100">Outras hipoteses que ainda merecem radar</h3>
-                <div className="grid gap-4 xl:grid-cols-2">
-                  {report.differentials.slice(5, 12).map((dx, index) => (
-                    <div key={`${dx.id}-${index}`} className="rounded-2xl border border-white/10 bg-black/15 p-4">
-                      <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <p className="text-sm font-semibold text-slate-100">{dx.name}</p>
-                          <p className="mt-1 text-xs uppercase tracking-[0.14em] text-slate-400">
-                            {formatCategoryLabel(dx.category)}
-                          </p>
-                        </div>
-                        <span className="rounded-full border border-slate-400/20 bg-slate-400/10 px-3 py-1 text-xs font-semibold text-slate-200">
-                          {dx.likelihood}%
-                        </span>
-                      </div>
-                      {dx.why.length > 0 && (
-                        <div className="mt-3">
-                          <BulletList
-                            items={dx.why.slice(0, 3)}
-                            dotClassName="bg-slate-400"
-                            textClassName="text-slate-200/85"
-                          />
-                        </div>
-                      )}
-                      {dx.diagnostics[0] && (
-                        <div className="mt-4 rounded-xl border border-blue-500/15 bg-blue-950/10 p-3">
-                          <p className="text-xs uppercase tracking-[0.14em] text-blue-300/80">Primeiro exame a priorizar</p>
-                          <p className="mt-2 text-sm text-slate-100/90">
-                            {dx.diagnostics[0].test}
-                          </p>
-                        </div>
-                      )}
-                      {dx.treatment[0]?.plan?.[0] && (
-                        <div className="mt-3 rounded-xl border border-emerald-500/15 bg-emerald-950/10 p-3">
-                          <p className="text-xs uppercase tracking-[0.14em] text-emerald-300/80">Primeira conduta</p>
-                          <p className="mt-2 text-sm text-slate-100/90">
-                            {dx.treatment[0].plan[0]}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
+            ) : (
+              <Card className="p-6 text-center text-muted-foreground">
+                Diferenciais estruturados disponíveis após gerar a análise.
               </Card>
-            )}
-
-            {(parsedClinicalReport.comorbidityImpact.alerts.length > 0 ||
-              parsedClinicalReport.comorbidityImpact.cautions.length > 0 ||
-              parsedClinicalReport.comorbidityImpact.recommendedTests.length > 0 ||
-              parsedClinicalReport.comorbidityImpact.avoidOrAdjust.length > 0) && (
-              <Card className="border-indigo-500/30 bg-indigo-900/10 p-6">
-                <h3 className="mb-4 flex items-center gap-2 text-xl font-bold text-indigo-300">
-                  <AlertTriangle className="h-6 w-6" />
-                  Pontos transversais de seguranca
-                </h3>
-
-                <div className="grid gap-4 xl:grid-cols-2">
-                  <DifferentialSection
-                    title="Alertas clinicos"
-                    items={parsedClinicalReport.comorbidityImpact.alerts}
-                    dotClassName="bg-orange-400"
-                  />
-                  <DifferentialSection
-                    title="Cautelas terapeuticas"
-                    items={parsedClinicalReport.comorbidityImpact.cautions}
-                    dotClassName="bg-yellow-400"
-                  />
-                  <DifferentialSection
-                    title="Exames recomendados"
-                    items={parsedClinicalReport.comorbidityImpact.recommendedTests}
-                    dotClassName="bg-blue-400"
-                  />
-                  <DifferentialSection
-                    title="Evitar ou ajustar"
-                    items={parsedClinicalReport.comorbidityImpact.avoidOrAdjust}
-                    dotClassName="bg-rose-400"
-                  />
-                </div>
-              </Card>
-            )}
-
-            {(parsedClinicalReport.limitations.length > 0 || parsedClinicalReport.references.length > 0) && (
-              <div className="grid gap-4 xl:grid-cols-2">
-                {parsedClinicalReport.limitations.length > 0 && (
-                  <Card className="border-slate-500/20 bg-slate-900/40 p-6">
-                    <h3 className="mb-4 text-lg font-semibold text-slate-200">Limitacoes e dados faltantes</h3>
-                    <BulletList
-                      items={parsedClinicalReport.limitations}
-                      dotClassName="bg-slate-400"
-                      textClassName="text-slate-100/85"
-                    />
-                  </Card>
-                )}
-
-                {parsedClinicalReport.references.length > 0 && (
-                  <Card className="border-fuchsia-500/20 bg-fuchsia-950/10 p-6">
-                    <h3 className="mb-4 text-lg font-semibold text-fuchsia-200">Base bibliografica considerada</h3>
-                    <BulletList
-                      items={parsedClinicalReport.references}
-                      dotClassName="bg-fuchsia-400"
-                      textClassName="text-slate-100/85"
-                    />
-                  </Card>
-                )}
-              </div>
             )}
           </div>
-        ) : (
-          <Card className="border-amber-500/20 bg-amber-950/10 p-6">
-            <h3 className="mb-3 text-lg font-semibold text-amber-200">Relatório bruto</h3>
-            <p className="whitespace-pre-line text-sm leading-relaxed text-amber-50/90">
-              {clinicalReportText || 'Não foi possível gerar o relatorio clínico.'}
-            </p>
-          </Card>
+        )}
+
+        {/* TAB 4: CONDUTA DE PLANTÃO & ALERTAS */}
+        {activeTab === 'management' && (
+          <div className="space-y-6">
+            {parsedClinicalReport && (
+              <>
+                {/* Condutas Imediatas e Alertas */}
+                <div className="grid gap-5 md:grid-cols-2">
+                  {parsedClinicalReport.priorities.length > 0 && (
+                    <Card className="border-blue-500/30 bg-card p-5 sm:p-6 shadow-md">
+                      <SectionHeader
+                        icon={Activity}
+                        title="Prioridades Imediatas de Plantão"
+                        subtitle="Manejo agudo e estabilização clínica"
+                      />
+                      <BulletList items={parsedClinicalReport.priorities} dotClassName="bg-blue-500" />
+                    </Card>
+                  )}
+
+                  {parsedClinicalReport.criticalAlerts.length > 0 && (
+                    <Card className="border-red-500/30 bg-card p-5 sm:p-6 shadow-md">
+                      <SectionHeader
+                        icon={AlertTriangle}
+                        title="Alertas Críticos de Segurança"
+                        subtitle="Sinais de gravidade e contraindicações"
+                      />
+                      <BulletList items={parsedClinicalReport.criticalAlerts} dotClassName="bg-red-500" />
+                    </Card>
+                  )}
+                </div>
+
+                {/* Comorbidades & Segurança Terapêutica */}
+                {(parsedClinicalReport.comorbidityImpact.alerts.length > 0 ||
+                  parsedClinicalReport.comorbidityImpact.cautions.length > 0 ||
+                  parsedClinicalReport.comorbidityImpact.recommendedTests.length > 0 ||
+                  parsedClinicalReport.comorbidityImpact.avoidOrAdjust.length > 0) && (
+                  <Card className="border-border bg-card p-5 sm:p-6 shadow-md space-y-4">
+                    <SectionHeader
+                      icon={ShieldAlert}
+                      title="Segurança Terapêutica & Comorbidades"
+                      subtitle="Ajustes de dose e precauções clínicas"
+                    />
+
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <DifferentialSection
+                        title="Alertas de Comorbidade"
+                        items={parsedClinicalReport.comorbidityImpact.alerts}
+                        dotClassName="bg-orange-500"
+                      />
+                      <DifferentialSection
+                        title="Cautelas Terapêuticas"
+                        items={parsedClinicalReport.comorbidityImpact.cautions}
+                        dotClassName="bg-yellow-500"
+                      />
+                      <DifferentialSection
+                        title="Exames Complementares"
+                        items={parsedClinicalReport.comorbidityImpact.recommendedTests}
+                        dotClassName="bg-blue-500"
+                      />
+                      <DifferentialSection
+                        title="Fármacos a Evitar / Ajustar"
+                        items={parsedClinicalReport.comorbidityImpact.avoidOrAdjust}
+                        dotClassName="bg-red-500"
+                      />
+                    </div>
+                  </Card>
+                )}
+
+                {/* Referências Bibliográficas dos Tratados */}
+                {parsedClinicalReport.references.length > 0 && (
+                  <Card className="border-border bg-card p-5 sm:p-6 shadow-md">
+                    <SectionHeader
+                      icon={BookOpen}
+                      title="Base Bibliográfica de Referência"
+                      subtitle="Tratados de Neurologia Veterinária"
+                    />
+                    <BulletList items={parsedClinicalReport.references} dotClassName="bg-gold" />
+                  </Card>
+                )}
+              </>
+            )}
+          </div>
         )}
       </div>
     )

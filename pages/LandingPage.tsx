@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../components/Logo'
-import { ArrowRight, ShieldCheck, BookOpen, Zap, Layers, Users, Brain, Mail, User, ChevronRight, ExternalLink, X } from 'lucide-react'
+import { ArrowRight, ShieldCheck, BookOpen, Zap, Layers, Users, Brain, ExternalLink, X } from 'lucide-react'
 
 /* ─── Footer Content Data ───────────────────────────────────────── */
 const footerContent: Record<string, { title: string; content: string }> = {
@@ -136,17 +136,8 @@ const valueProps = [
 export function LandingPage() {
     const navigate = useNavigate()
     const valueRef = useRef<HTMLDivElement>(null)
-    const [formData, setFormData] = useState({ name: '', email: '' })
-    const [submitted, setSubmitted] = useState(false)
     const [hoveredTestimonial, setHoveredTestimonial] = useState<number | null>(null)
     const [activeModal, setActiveModal] = useState<string | null>(null)
-
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault()
-        if (formData.name && formData.email) {
-            setSubmitted(true)
-        }
-    }
 
     return (
         <div className="relative w-full overflow-x-hidden">
@@ -169,53 +160,54 @@ export function LandingPage() {
 
                 {/* Content */}
                 <div className="relative z-10 w-full px-4 sm:px-8 lg:px-16 pointer-events-none h-full flex items-end sm:items-center">
-                    {/* Card: full-width on mobile, max-xl on larger */}
-                    <div className="w-full sm:max-w-lg md:max-w-xl mr-auto p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
-                          bg-[#0a1532] backdrop-blur-md border border-white/10 sm:border-blue-500/20 shadow-none dark:shadow-[0_8px_32px_rgba(0,0,0,0.24)]">
-
-                        {/* Badge */}
-                        <div className="pointer-events-auto mb-4 sm:mb-6">
-                            <span className="inline-flex items-center gap-1.5 bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-widest">
-                                <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
-                                Validado por Especialistas
-                            </span>
+                    {/* Hero Main Card with Neon Contour Animation */}
+                    <div className="relative w-full sm:max-w-lg md:max-w-xl mr-auto pointer-events-auto group">
+                        {/* 1. Ambient soft neon glow strictly outside/behind the card */}
+                        <div
+                            className="pointer-events-none absolute -inset-2.5 rounded-2xl sm:rounded-3xl overflow-hidden blur-xl opacity-60 dark:opacity-80 z-0"
+                            aria-hidden="true"
+                        >
+                            <div className="hero-neon-glow" />
                         </div>
 
-                        <div className="pointer-events-auto">
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-4 sm:mb-6 drop-shadow-sm">
-                                Medicina Veterinária de{' '}
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
-                                    Alta Precisão
-                                </span>
-                            </h1>
-
-                            <p className="text-base sm:text-lg md:text-xl text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
-                                Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
-                                <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
-                            </p>
-
-                            <button
-                                onClick={() => navigate('/hub')}
-                                className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                            >
-                                Explorar Módulos
-                                <ArrowRight className="w-5 h-5 shrink-0" />
-                            </button>
+                        {/* 2. Crisp neon light beam contouring strictly along the outer border */}
+                        <div
+                            className="hero-neon-border-track pointer-events-none absolute -inset-[1.5px] rounded-2xl sm:rounded-3xl z-20 overflow-hidden"
+                            aria-hidden="true"
+                        >
+                            <div className="hero-neon-beam" />
                         </div>
 
-                        {/* Trust badges - hidden on tiny screens */}
-                        <div className="hidden sm:flex mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 flex-wrap gap-4 sm:gap-5 text-xs sm:text-sm font-medium text-blue-100/80 pointer-events-auto">
-                            <div className="flex items-center gap-2">
-                                <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
-                                <span>Validado por Especialistas</span>
+                        {/* 3. Hero Card Content - 100% solid background, zero light inside */}
+                        <div className="relative z-10 w-full h-full p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
+                              bg-[#0a1532] border border-white/10 sm:border-blue-500/20 shadow-2xl">
+
+                            <div>
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-4 sm:mb-6 drop-shadow-sm">
+                                    Medicina Veterinária de{' '}
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+                                        Alta Precisão
+                                    </span>
+                                </h1>
+
+                                <p className="text-base sm:text-lg md:text-xl text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
+                                    Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
+                                    <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
+                                </p>
+
+                                <button
+                                    onClick={() => navigate('/login?next=%2Fhub')}
+                                    className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full bg-blue-600 hover:bg-blue-500 active:scale-95 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                                >
+                                    Explorar Módulos
+                                    <ArrowRight className="w-5 h-5 shrink-0" />
+                                </button>
                             </div>
-                            <div className="flex items-center gap-2">
+
+                            {/* Trust badge - hidden on tiny screens */}
+                            <div className="hidden sm:flex mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 items-center gap-2 text-xs sm:text-sm font-medium text-blue-100/80">
                                 <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 shrink-0" />
                                 <span>Literatura Atualizada</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Users className="w-4 h-4 sm:w-5 sm:h-5 text-violet-400 shrink-0" />
-                                <span>Comunidade Ativa</span>
                             </div>
                         </div>
                     </div>
@@ -353,7 +345,7 @@ export function LandingPage() {
                 </div>
             </section>
 
-            {/* ── SECTION 4: CTA / COMMUNITY FORM ── */}
+            {/* ── SECTION 4: RESTRICTED ACCESS CTA ── */}
             <section className="py-16 sm:py-20 lg:py-28 relative overflow-hidden">
                 <div className="absolute inset-0 -z-10">
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-background to-emerald-500/10" />
@@ -362,87 +354,33 @@ export function LandingPage() {
 
                 <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                     <span className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-semibold mb-6 sm:mb-8">
-                        <Users className="w-4 h-4" />
-                        Comunidade Vetius
+                        <ShieldCheck className="w-4 h-4" />
+                        Acesso protegido
                     </span>
 
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4 sm:mb-6 leading-tight">
-                        Faça parte da{' '}
+                        Ferramentas exclusivas para{' '}
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-400">
-                            comunidade
+                            usuários cadastrados
                         </span>
                     </h2>
 
                     <p className="text-base sm:text-lg text-muted-foreground mb-2 sm:mb-3 max-w-xl mx-auto">
-                        Cadastre-se e receba um link no seu e-mail para salvar seu progresso, sincronizar dados
-                        e usar o Vetius em qualquer dispositivo, em qualquer lugar.
+                        Os módulos clínicos do Vetius são protegidos. Qualquer usuário cadastrado no Supabase
+                        pode entrar com suas credenciais e acessar as ferramentas.
                     </p>
                     <p className="text-sm text-muted-foreground/70 mb-8 sm:mb-12">
-                        Sem spam. Sem taxas. Apenas ferramentas que facilitam seu dia a dia.
+                        Sua sessão permanece segura e pode ser encerrada a qualquer momento.
                     </p>
 
-                    {/* Form */}
-                    {!submitted ? (
-                        <form
-                            onSubmit={handleSubmit}
-                            className="bg-background/60 backdrop-blur-md border border-border/60 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-10 shadow-2xl shadow-primary/5 max-w-md mx-auto"
-                        >
-                            <div className="space-y-3 sm:space-y-4 mb-5 sm:mb-6">
-                                <div className="relative">
-                                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                                    <input
-                                        type="text"
-                                        placeholder="Seu nome"
-                                        required
-                                        value={formData.name}
-                                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className="w-full pl-11 pr-4 py-3.5 sm:py-4 rounded-xl border border-border/60 bg-background/80 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition-all duration-200 text-sm"
-                                    />
-                                </div>
-                                <div className="relative">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-                                    <input
-                                        type="email"
-                                        placeholder="Seu e-mail profissional"
-                                        required
-                                        value={formData.email}
-                                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className="w-full pl-11 pr-4 py-3.5 sm:py-4 rounded-xl border border-border/60 bg-background/80 text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary/50 transition-all duration-200 text-sm"
-                                    />
-                                </div>
-                            </div>
-
-                            <button
-                                type="submit"
-                                className="w-full h-12 sm:h-14 px-8 rounded-xl bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-500 active:scale-[0.98] text-white font-bold text-base shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
-                            >
-                                Quero meu acesso
-                                <ChevronRight className="w-5 h-5" />
-                            </button>
-
-                            <p className="text-xs text-muted-foreground/60 mt-4 text-center">
-                                Ao se cadastrar, você concorda com nossa{' '}
-                                <button
-                                    type="button"
-                                    onClick={() => setActiveModal('Política de Privacidade')}
-                                    className="inline-flex min-h-11 items-center underline transition-colors hover:text-primary"
-                                >
-                                    Política de Privacidade
-                                </button>.
-                            </p>
-                        </form>
-                    ) : (
-                        <div className="bg-background/60 backdrop-blur-md border border-emerald-500/30 rounded-2xl sm:rounded-3xl p-8 sm:p-10 max-w-md mx-auto shadow-2xl shadow-emerald-500/10">
-                            <div className="w-14 h-14 sm:w-16 sm:h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <ShieldCheck className="w-7 h-7 sm:w-8 sm:h-8 text-emerald-400" />
-                            </div>
-                            <h3 className="text-lg sm:text-xl font-bold text-foreground mb-2">Obrigado, {formData.name.split(' ')[0]}!</h3>
-                            <p className="text-muted-foreground text-sm">
-                                Enviamos um link para <strong>{formData.email}</strong>.
-                                Verifique sua caixa de entrada e spam!
-                            </p>
-                        </div>
-                    )}
+                    <button
+                        type="button"
+                        onClick={() => navigate('/login?next=%2Fhub')}
+                        className="mx-auto flex h-12 items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary to-purple-600 px-8 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all duration-300 hover:-translate-y-0.5 hover:from-primary/90 hover:to-purple-500 hover:shadow-primary/50 active:scale-[0.98] sm:h-14"
+                    >
+                        Entrar no Vetius
+                        <ArrowRight className="w-5 h-5" />
+                    </button>
                 </div>
             </section>
 
@@ -462,7 +400,7 @@ export function LandingPage() {
                                 e desenvolvida por veterinários para veterinários.
                             </p>
                             <button
-                                onClick={() => navigate('/hub')}
+                                onClick={() => navigate('/login?next=%2Fhub')}
                                 className="inline-flex items-center gap-2 bg-primary/10 hover:bg-primary/20 active:bg-primary/30 text-primary rounded-lg px-4 py-2 text-sm font-semibold transition-colors duration-200 cursor-pointer"
                             >
                                 Acessar Plataforma

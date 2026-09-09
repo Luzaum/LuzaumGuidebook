@@ -15,8 +15,19 @@ export interface AcervoBook {
   note?: string;
 }
 
-/** Ordem de prioridade clínica: Lumb & Jones → Plumb's → Ettinger (medicina interna). */
+/** Fontes clínicas principais do Crivet, mantidas no acervo local do usuário. */
 export const ACERVO_BOOKS: AcervoBook[] = [
+  {
+    id: 'nelson-couto',
+    title: 'Small Animal Internal Medicine',
+    shortLabel: 'Nelson & Couto',
+    authors: 'Nelson & Couto',
+    edition: '6ª ed.',
+    filename: 'NELSON E COUTO 6_compressed (2) (1).pdf',
+    role: 'internal',
+    priority: 1,
+    note: 'Referência principal para condições clínicas, contraindicações, monitorização e medicina interna.',
+  },
   {
     id: 'lumb-jones',
     title: 'Veterinary Anesthesia and Analgesia',
@@ -62,6 +73,8 @@ export const cite = {
     `Lumb & Jones, 6ª ed.${page != null ? `, p. ${page}` : ''}`,
   plumbs: (page?: string | number) =>
     `Plumb's, 10ª ed.${page != null ? `, p. ${page}` : ''}`,
+  nelsonCouto: (page?: string | number) =>
+    `Nelson & Couto, 6ª ed.${page != null ? `, p. ${page}` : ''}`,
   ettinger: (page?: string | number) =>
     `Ettinger, 9ª ed.${page != null ? `, p. ${page}` : ''}`,
 };
@@ -70,5 +83,6 @@ export const cite = {
 export const DEFAULT_DRUG_REFERENCES = [
   cite.lumbJones(),
   cite.plumbs(),
+  cite.nelsonCouto(),
   cite.ettinger(),
 ];

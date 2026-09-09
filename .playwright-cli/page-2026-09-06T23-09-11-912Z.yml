@@ -1,0 +1,39 @@
+- generic [ref=f1e255]:
+  - button "Voltar para Vetius" [ref=f1e256] [cursor=pointer]
+  - generic [ref=f1e257]:
+    - generic [ref=f1e258]:
+      - img "Dog portrait with warm light" [ref=f1e259]
+      - button "Foto anterior" [ref=f1e261] [cursor=pointer]
+      - button "Proxima foto" [ref=f1e264] [cursor=pointer]
+      - generic [ref=f1e267]:
+        - generic [ref=f1e268]:
+          - heading "Acesso seguro em qualquer plantão" [level=2] [ref=f1e269]
+          - paragraph [ref=f1e270]: Seus dados clínicos ficam protegidos e sincronizados na nuvem.
+        - generic [ref=f1e271]:
+          - button "Ir para foto 1" [ref=f1e272] [cursor=pointer]
+          - button "Ir para foto 2" [ref=f1e274] [cursor=pointer]
+          - button "Ir para foto 3" [ref=f1e276] [cursor=pointer]
+          - button "Ir para foto 4" [ref=f1e278] [cursor=pointer]
+          - button "Ir para foto 5" [ref=f1e280] [cursor=pointer]
+          - button "Ir para foto 6" [ref=f1e282] [cursor=pointer]
+          - button "Ir para foto 7" [ref=f1e284] [cursor=pointer]
+          - button "Ir para foto 8" [ref=f1e286] [cursor=pointer]
+          - button "Ir para foto 9" [ref=f1e288] [cursor=pointer]
+          - button "Ir para foto 10" [ref=f1e290] [cursor=pointer]
+    - generic [ref=f1e293]:
+      - generic [ref=f1e294]:
+        - heading "Acesso restrito" [level=1] [ref=f1e295]
+        - paragraph [ref=f1e296]: Entre com o usuário e a senha fornecidos para acessar os módulos.
+      - generic [ref=f1e297]:
+        - generic [ref=f1e298]:
+          - generic [ref=f1e299]: Usuário *
+          - textbox "Usuário *" [ref=f1e300]:
+            - /placeholder: Digite seu usuário
+        - generic [ref=f1e301]:
+          - generic [ref=f1e302]: Senha *
+          - generic [ref=f1e303]:
+            - textbox "Senha *" [ref=f1e304]:
+              - /placeholder: Digite sua senha
+            - button "Mostrar senha" [ref=f1e305] [cursor=pointer]
+        - button "Entrar" [ref=f1e309] [cursor=pointer]
+      - paragraph [ref=f1e313]: Acesso exclusivo para usuários autorizados.

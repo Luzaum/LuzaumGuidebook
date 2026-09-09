@@ -197,9 +197,16 @@ export function paginateDocument(document: ReceituarioDocumentData, options?: { 
     const blockSize = block.length;
     const current = pages[pages.length - 1];
     const shouldKeepTogether = blockSize <= 8;
-    const nextBlockSize = blocks[blockIndex + 1]?.length || 0;
-    const isSectionHeading = block[0]?.kind === 'heading';
-    const shouldKeepHeadingWithNextBlock = isSectionHeading && nextBlockSize > 0 && blockSize + nextBlockSize <= 8;
+    let nextIndex = blockIndex + 1;
+    let interveningSpacers = 0;
+    while (blocks[nextIndex]?.every(line => line.kind === 'spacer')) {
+      interveningSpacers += blocks[nextIndex].length;
+      nextIndex += 1;
+    }
+    const nextContentSize = blocks[nextIndex]?.length || 0;
+    const nextBlockSize = interveningSpacers + (nextContentSize <= 8 ? nextContentSize : 2);
+    const isSectionHeading = block[0]?.kind === 'heading' || block[0]?.kind === 'medication';
+    const shouldKeepHeadingWithNextBlock = isSectionHeading && nextContentSize > 0;
     if (used > 0 && (shouldKeepTogether || shouldKeepHeadingWithNextBlock) && used + blockSize + (shouldKeepHeadingWithNextBlock ? nextBlockSize : 0) > pageCapacity()) {
       pages.push([]); used = 0;
     }

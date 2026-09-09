@@ -1,0 +1,262 @@
+[
+  {
+    "id": "med-prednisolona",
+    "title": "Prednisolona",
+    "query": "Prednisolona"
+  },
+  {
+    "id": "med-sulfametoxazol-trimetoprima",
+    "title": "Sulfametoxazol + trimetoprima",
+    "query": "Sulfametoxazol + trimetoprima"
+  },
+  {
+    "id": "med-amoxicilina-clavulanato",
+    "title": "Amoxicilina + ácido clavulânico",
+    "query": "Amoxicilina + ácido clavulânico"
+  },
+  {
+    "id": "med-pregabalina",
+    "title": "Pregabalina",
+    "query": "Pregabalina"
+  },
+  {
+    "id": "med-maropitant",
+    "title": "Maropitant (Cerenia®)",
+    "query": "Maropitant"
+  },
+  {
+    "id": "med-benazepril",
+    "title": "Benazepril",
+    "query": "Benazepril"
+  },
+  {
+    "id": "med-pimobendan",
+    "title": "Pimobendan",
+    "query": "Pimobendan"
+  },
+  {
+    "id": "med-benzafibrato",
+    "title": "Bezafibrato (fibrato)",
+    "query": "Bezafibrato"
+  },
+  {
+    "id": "med-same-sadenosilmetionina",
+    "title": "S-adenosil-L-metionina (SAMe)",
+    "query": "S-adenosil-L-metionina"
+  },
+  {
+    "id": "med-suplementos-hepaticos-silimarina",
+    "title": "Silimarina, silibina e suplementos hepáticos",
+    "query": "Silimarina, silibina e suplementos hepáticos"
+  },
+  {
+    "id": "med-acido-ursodesoxicolico",
+    "title": "Ácido ursodesoxicólico (UDCA)",
+    "query": "Ácido ursodesoxicólico"
+  },
+  {
+    "id": "med-n-acetilcisteina",
+    "title": "N-acetilcisteína (NAC)",
+    "query": "N-acetilcisteína"
+  },
+  {
+    "id": "med-ondansetron",
+    "title": "Ondansetrona",
+    "query": "Ondansetrona"
+  },
+  {
+    "id": "med-dipirona",
+    "title": "Dipirona (metamizol)",
+    "query": "Dipirona"
+  },
+  {
+    "id": "med-ampicilina-sulbactam",
+    "title": "Ampicilina + sulbactam",
+    "query": "Ampicilina + sulbactam"
+  },
+  {
+    "id": "med-ampicilina",
+    "title": "Ampicilina",
+    "query": "Ampicilina"
+  },
+  {
+    "id": "med-fenobarbital",
+    "title": "Fenobarbital",
+    "query": "Fenobarbital"
+  },
+  {
+    "id": "med-levetiracetam",
+    "title": "Levetiracetam",
+    "query": "Levetiracetam"
+  },
+  {
+    "id": "med-manitol",
+    "title": "Manitol",
+    "query": "Manitol"
+  },
+  {
+    "id": "med-budesonida",
+    "title": "Budesonida",
+    "query": "Budesonida"
+  },
+  {
+    "id": "med-clorambucil",
+    "title": "Clorambucil",
+    "query": "Clorambucil"
+  },
+  {
+    "id": "med-desoxicorticosterona-pivalato",
+    "title": "Desoxicorticosterona pivalato (DOCP)",
+    "query": "Desoxicorticosterona pivalato"
+  },
+  {
+    "id": "med-metimazol",
+    "title": "Metimazol",
+    "query": "Metimazol"
+  },
+  {
+    "id": "med-levotiroxina-sodica",
+    "title": "Levotiroxina sódica",
+    "query": "Levotiroxina sódica"
+  },
+  {
+    "id": "med-diltiazem",
+    "title": "Diltiazem",
+    "query": "Diltiazem"
+  },
+  {
+    "id": "med-digoxina",
+    "title": "Digoxina",
+    "query": "Digoxina"
+  },
+  {
+    "id": "med-atenolol",
+    "title": "Atenolol",
+    "query": "Atenolol"
+  },
+  {
+    "id": "med-propranolol",
+    "title": "Propranolol",
+    "query": "Propranolol"
+  },
+  {
+    "id": "med-esmolol",
+    "title": "Esmolol",
+    "query": "Esmolol"
+  },
+  {
+    "id": "med-sotalol",
+    "title": "Sotalol",
+    "query": "Sotalol"
+  },
+  {
+    "id": "med-atropina",
+    "title": "Atropina",
+    "query": "Atropina"
+  },
+  {
+    "id": "med-lidocaina",
+    "title": "Lidocaína",
+    "query": "Lidocaína"
+  },
+  {
+    "id": "med-clindamicina",
+    "title": "Clindamicina",
+    "query": "Clindamicina"
+  },
+  {
+    "id": "med-metronidazol",
+    "title": "Metronidazol",
+    "query": "Metronidazol"
+  },
+  {
+    "id": "med-fenbendazol",
+    "title": "Fenbendazol",
+    "query": "Fenbendazol"
+  },
+  {
+    "id": "med-praziquantel",
+    "title": "Praziquantel",
+    "query": "Praziquantel"
+  },
+  {
+    "id": "med-enrofloxacina",
+    "title": "Enrofloxacina",
+    "query": "Enrofloxacina"
+  },
+  {
+    "id": "med-marbofloxacina",
+    "title": "Marbofloxacina",
+    "query": "Marbofloxacina"
+  },
+  {
+    "id": "med-ciprofloxacina",
+    "title": "Ciprofloxacina",
+    "query": "Ciprofloxacina"
+  },
+  {
+    "id": "med-selegilina",
+    "title": "Selegilina",
+    "query": "Selegilina"
+  },
+  {
+    "id": "med-fluoxetina",
+    "title": "Fluoxetina",
+    "query": "Fluoxetina"
+  },
+  {
+    "id": "med-amitriptilina",
+    "title": "Amitriptilina",
+    "query": "Amitriptilina"
+  },
+  {
+    "id": "med-amantadina",
+    "title": "Amantadina",
+    "query": "Amantadina"
+  },
+  {
+    "id": "med-propionato-de-fluticasona",
+    "title": "Propionato de fluticasona",
+    "query": "Propionato de fluticasona"
+  },
+  {
+    "id": "med-fluticasona-salmeterol",
+    "title": "Propionato de fluticasona + salmeterol",
+    "query": "Propionato de fluticasona + salmeterol"
+  },
+  {
+    "id": "med-salbutamol",
+    "title": "Salbutamol",
+    "query": "Salbutamol"
+  },
+  {
+    "id": "med-brometo-de-ipratropio",
+    "title": "Brometo de ipratrópio",
+    "query": "Brometo de ipratrópio"
+  },
+  {
+    "id": "med-butorfanol",
+    "title": "Butorfanol",
+    "query": "Butorfanol"
+  },
+  {
+    "id": "med-dexmedetomidina",
+    "title": "Dexmedetomidina",
+    "query": "Dexmedetomidina"
+  },
+  {
+    "id": "med-propofol",
+    "title": "Propofol",
+    "query": "Propofol"
+  },
+  {
+    "id": "med-tiopental",
+    "title": "Tiopental sódico",
+    "query": "Tiopental sódico"
+  },
+  {
+    "id": "med-buprenorfina",
+    "title": "Buprenorfina",
+    "query": "Buprenorfina"
+  }
+]

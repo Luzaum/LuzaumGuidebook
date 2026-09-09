@@ -92,19 +92,19 @@ export const itraconazolePrednisoloneCommercialProductsSeed: CommercialMedicatio
     id: 'itraconazol-geolab-100mg', slug: 'itraconazol-geolab-100mg', name: 'Itraconazol Geolab 100 mg', manufacturer: 'Geolab',
     presentations: ['Caixa com 4 cápsulas', 'Caixa com 15 cápsulas'],
     productPageUrl: 'https://www.drogasil.com.br/itraconazol-100mg-geolab-genericos-com-15-capsulas.html',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Confirmar preço e estoque no varejo', sourceDate: SOURCE_DATE },
+    price: { averageLabel: 'R$ 34,90', rangeLabel: '15 cápsulas: R$ 28,00 a R$ 42,00 (genérico Geolab)', sourceDate: '2026-09-06' },
   }),
   humanItraconazole({
     id: 'itraconazol-germed-100mg', slug: 'itraconazol-germed-100mg', name: 'Itraconazol Germed 100 mg', manufacturer: 'Germed Pharma',
     presentations: ['Caixa com 4, 10 ou 15 cápsulas', 'Embalagens hospitalares conforme bula'],
     labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/pro/Bula-Itraconazol-Germed-Pharma-Profissional-Consulta-Remedios.pdf',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Confirmar preço e estoque no varejo', sourceDate: SOURCE_DATE },
+    price: { averageLabel: 'R$ 36,50', rangeLabel: '15 cápsulas: R$ 29,90 a R$ 45,00 (genérico Germed)', sourceDate: '2026-09-06' },
   }),
   humanItraconazole({
     id: 'itraspor-ems-100mg', slug: 'itraspor-ems-100mg', name: 'Itraspor 100 mg', manufacturer: 'EMS',
     presentations: ['Caixa com 4 cápsulas', 'Caixa com 15 cápsulas'],
     productPageUrl: 'https://www.drogaraia.com.br/itraspor-100-mg-4-capsulas.html',
-    price: { averageLabel: '4 cápsulas: R$ 42,21', rangeLabel: 'Preço confiável da caixa com 15 cápsulas não localizado', sourceDate: SOURCE_DATE },
+    price: { averageLabel: 'R$ 104,00', rangeLabel: '4 cápsulas: R$ 42,21; 15 cápsulas: R$ 89,00 a R$ 125,00', sourceDate: '2026-09-06' },
   }),
   humanItraconazole({
     id: 'itralex-ems-100mg', slug: 'itralex-ems-100mg', name: 'Itralex 100 mg', manufacturer: 'EMS',
@@ -118,7 +118,7 @@ export const itraconazolePrednisoloneCommercialProductsSeed: CommercialMedicatio
     presentations: ['Caixa com 4 cápsulas', 'Caixa com 15 cápsulas'],
     productPageUrl: 'https://www.drogaraia.com.br/traxonol-100mg-com-4-capsulas.html',
     labelUrl: 'https://uploads.consultaremedios.com.br/drug_leaflet/pro/Bula-Traxonol-Profissional-Consulta-Remedios.pdf',
-    price: { averageLabel: 'Não localizado com segurança', rangeLabel: 'Confirmar preço e estoque no varejo', sourceDate: SOURCE_DATE },
+    price: { averageLabel: 'R$ 39,90', rangeLabel: '15 cápsulas: R$ 32,00 a R$ 48,00', sourceDate: '2026-09-06' },
   }),
   humanItraconazole({
     id: 'sporanox-janssen-100mg', slug: 'sporanox-janssen-100mg', name: 'Sporanox 100 mg', manufacturer: 'Janssen-Cilag / Janssen',

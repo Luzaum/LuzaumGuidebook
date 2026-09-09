@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 600" fill="none" role="img" aria-labelledby="title-canino desc-canino">
+  <title id="title-canino">Retro-hidropropulsão Uretral em Cães Machos — Técnica Passo a Passo</title>
+  <desc id="desc-canino">Diagrama técnico da retro-hidropropulsão uretral canina (BSAVA 2024 e ACVIM): impactação no osso peniano, oclusão digital retal e descompressão vesical.</desc>
+
+  <defs>
+    <linearGradient id="bgCan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelCan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <filter id="boxShadowCan" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+
+  <!-- Background -->
+  <rect width="880" height="600" rx="20" fill="url(#bgCan)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Grid overlay -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <path d="M0,75 L880,75 M0,150 L880,150 M0,225 L880,225 M0,300 L880,300 M0,375 L880,375 M0,450 L880,450 M0,525 L880,525" />
+    <path d="M110,0 L110,600 M220,0 L220,600 M330,0 L330,600 M440,0 L440,600 M550,0 L550,600 M660,0 L660,600 M770,0 L770,600" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(30, 24)">
+    <rect x="0" y="0" width="220" height="22" rx="11" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1" stroke-opacity="0.4" />
+    <text x="110" y="15" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700" letter-spacing="0.1em" class="font-sans">URORRADIOLOGIA &amp; CIRURGIA CANINA</text>
+    
+    <text x="0" y="44" fill="#f8fafc" font-size="20" font-weight="800" class="font-sans">Retro-hidropropulsão de Uretrólitos em Cães Machos</text>
+    <text x="0" y="62" fill="#94a3b8" font-size="12" class="font-sans">Técnica da oclusão digital retal, expansão hidrostática da uretra e retorno do cálculo à bexiga</text>
+  </g>
+
+  <!-- PANEL 1: ANATOMIA E PONTO DE IMPACTAÇÃO (Top Left) -->
+  <g transform="translate(30, 95)">
+    <rect width="400" height="230" rx="14" fill="url(#panelCan)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowCan)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#f59e0b" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#fbbf24" font-size="13" font-weight="800" class="font-sans">1</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Anatomia do Cão Macho &amp; Sítio de Impactação</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">A base do osso peniano é o ponto de menor expansibilidade</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Os Penis schematic -->
+      <rect x="15" y="35" width="130" height="24" rx="6" fill="#cbd5e1" stroke="#94a3b8" stroke-width="1.5" />
+      <text x="80" y="50" text-anchor="middle" fill="#1e293b" font-size="9" font-weight="800" class="font-sans">OS PENIS (OSSO PENIANO)</text>
+      
+      <!-- Urethral Groove -->
+      <path d="M 15 65 L 145 65 C 180 65, 210 50, 240 50 L 320 50" fill="none" stroke="#0284c7" stroke-width="6" stroke-linecap="round" />
+      <text x="280" y="42" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">Uretra Pélvica</text>
+
+      <!-- Calculus lodged at base of os penis -->
+      <g transform="translate(140, 58)">
+        <circle cx="0" cy="7" r="7" fill="#ef4444" stroke="#ffffff" stroke-width="1.5" />
+        <text x="0" y="28" text-anchor="middle" fill="#f87171" font-size="8" font-weight="800" class="font-sans">URETRÓLITO</text>
+        <text x="0" y="38" text-anchor="middle" fill="#fda4af" font-size="7" class="font-sans">(Base do osso peniano)</text>
+      </g>
+
+      <g transform="translate(10, 115)">
+        <rect width="345" height="48" rx="6" fill="#0f172a" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="8" y="16" fill="#fbbf24" font-size="8.5" font-weight="700" class="font-sans">Particularidade Anatômica:</text>
+        <text x="8" y="28" fill="#94a3b8" font-size="8" class="font-sans">O sulco ósseo do os penis impede a dilatação radial da uretra.</text>
+        <text x="8" y="40" fill="#cbd5e1" font-size="8" class="font-sans">Cálculos migram da bexiga e travam quase invariavelmente nesta curva!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 2: TÉCNICA DE RETRO-HIDROPULSAO (Top Right) -->
+  <g transform="translate(450, 95)">
+    <rect width="400" height="230" rx="14" fill="url(#panelCan)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowCan)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#34d399" font-size="13" font-weight="800" class="font-sans">2</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Técnica da Oclusão Retal e Liberação Súbita</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">BSAVA Guide to Procedures (2024) — Pressurização hidrostática</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Step 1: Catheter distal to stone -->
+      <g transform="translate(0, 0)">
+        <text x="5" y="12" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">1. Cateter distal ao cálculo (nunca empurrar com a ponta)</text>
+      </g>
+      <!-- Step 2: Rectal compression -->
+      <g transform="translate(0, 24)">
+        <text x="5" y="12" fill="#fbbf24" font-size="8.5" font-weight="700" class="font-sans">2. Dedo no reto comprime uretra pélvica contra a sínfise</text>
+      </g>
+      <!-- Step 3: Mix 50:50 -->
+      <g transform="translate(0, 48)">
+        <text x="5" y="12" fill="#34d399" font-size="8.5" font-weight="700" class="font-sans">3. Instilar mistura 50/50 salina + lubrificante (3 a 8 mL)</text>
+      </g>
+      <!-- Step 4: Seringa 20-50 ml distende -->
+      <g transform="translate(0, 72)">
+        <text x="5" y="12" fill="#c084fc" font-size="8.5" font-weight="700" class="font-sans">4. Seringa 20–50 mL distende a uretra ao redor da pedra</text>
+      </g>
+
+      <!-- Step 5: Sudden release box -->
+      <g transform="translate(0, 95)">
+        <rect width="360" height="55" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+        <text x="10" y="18" fill="#34d399" font-size="9" font-weight="800" class="font-sans">5. LIBERAÇÃO SÚBITA DA COMPRESSÃO RETAL:</text>
+        <text x="10" y="32" fill="#cbd5e1" font-size="8" class="font-sans">O auxiliar solta o reto de repente enquanto o operador continua o flush:</text>
+        <text x="10" y="45" fill="#fef08a" font-size="8.5" font-weight="700" class="font-sans">A onda hidrostática arremessa o cálculo livremente para a bexiga!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 3: CONFIRMAÇÃO POR IMAGEM (Bottom Left) -->
+  <g transform="translate(30, 345)">
+    <rect width="400" height="235" rx="14" fill="url(#panelCan)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowCan)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#a855f7" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#c084fc" font-size="13" font-weight="800" class="font-sans">3</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Estatística de Sucesso &amp; RX Obrigatório</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">Não assuma sucesso apenas porque a sonda agora avança</text>
+
+    <g transform="translate(20, 50)">
+      <!-- Success Stats -->
+      <g transform="translate(10, 5)">
+        <rect width="150" height="75" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1" />
+        <text x="75" y="22" text-anchor="middle" fill="#c084fc" font-size="8.5" font-weight="700" class="font-sans">1ª TENTATIVA</text>
+        <text x="75" y="48" text-anchor="middle" fill="#f87171" font-size="20" font-weight="900" class="font-sans">55,6%</text>
+        <text x="75" y="64" text-anchor="middle" fill="#94a3b8" font-size="7.5" class="font-sans">Êxito completo isolado</text>
+      </g>
+
+      <g transform="translate(180, 5)">
+        <rect width="165" height="75" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+        <text x="82.5" y="22" text-anchor="middle" fill="#34d399" font-size="8.5" font-weight="700" class="font-sans">2ª TENTATIVA CUMULATIVA</text>
+        <text x="82.5" y="48" text-anchor="middle" fill="#34d399" font-size="20" font-weight="900" class="font-sans">86,7%</text>
+        <text x="82.5" y="64" text-anchor="middle" fill="#94a3b8" font-size="7.5" class="font-sans">Sucesso com 2º ciclo</text>
+      </g>
+
+      <!-- Bottom Warning -->
+      <g transform="translate(0, 95)">
+        <rect width="355" height="52" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="0.8" />
+        <text x="10" y="18" fill="#fbbf24" font-size="8.5" font-weight="800" class="font-sans">Armadilha do Cateter Passante:</text>
+        <text x="10" y="30" fill="#cbd5e1" font-size="8" class="font-sans">O cateter pode contornar um cálculo e entrar na bexiga deixando fragmentos</text>
+        <text x="10" y="42" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">na uretra membranosa. Faça RX lateral de toda a uretra pós-procedimento!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- PANEL 4: DESTINO DEFINITIVO DO CÁLCULO (Bottom Right) -->
+  <g transform="translate(450, 345)">
+    <rect width="400" height="235" rx="14" fill="url(#panelCan)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowCan)" />
+    
+    <rect x="14" y="12" width="24" height="24" rx="6" fill="#0284c7" fill-opacity="0.15" />
+    <text x="26" y="28" text-anchor="middle" fill="#38bdf8" font-size="13" font-weight="800" class="font-sans">4</text>
+    <text x="46" y="24" fill="#f1f5f9" font-size="13" font-weight="700" class="font-sans">Destino do Cálculo &amp; Análise Mineral</text>
+    <text x="46" y="38" fill="#64748b" font-size="10.5" class="font-sans">A retropulsão transforma uma emergência em tratamento eletivo</text>
+
+    <g transform="translate(20, 50)">
+      <g transform="translate(0, 0)">
+        <rect width="360" height="70" rx="6" fill="#0f172a" stroke="#0284c7" stroke-width="0.8" />
+        <text x="10" y="16" fill="#38bdf8" font-size="8.5" font-weight="800" class="font-sans">URÓLITO NA BEXIGA: COMO PROCEDER?</text>
+        <text x="10" y="30" fill="#cbd5e1" font-size="8" class="font-sans">• <tspan fill="#34d399" font-weight="700">Cistoscopia / Basket Retrieval:</tspan> padrão-ouro mini-invasivo (ACVIM).</text>
+        <text x="10" y="42" fill="#cbd5e1" font-size="8" class="font-sans">• <tspan fill="#fbbf24" font-weight="700">Cistotomia Cirúrgica:</tspan> amplamente disponível e eficaz.</text>
+        <text x="10" y="54" fill="#cbd5e1" font-size="8" class="font-sans">• <tspan fill="#a855f7" font-weight="700">Dissolução Clínica:</tspan> apenas se estruvita comprovada e cão desobstruído.</text>
+      </g>
+
+      <g transform="translate(0, 80)">
+        <rect width="360" height="65" rx="6" fill="#ef4444" fill-opacity="0.1" stroke="#ef4444" stroke-width="0.8" />
+        <text x="10" y="16" fill="#f87171" font-size="9" font-weight="800" class="font-sans">🔬 ANÁLISE MINERAL QUANTITATIVA OBRIGATÓRIA:</text>
+        <text x="10" y="30" fill="#fca5a5" font-size="8" class="font-sans">TODO cálculo extraído deve ser enviado para análise por difração de raios-X.</text>
+        <text x="10" y="42" fill="#cbd5e1" font-size="8" class="font-sans">O cristal na urina NÃO determina com certeza a composição do cálculo!</text>
+        <text x="10" y="54" fill="#fef08a" font-size="8" font-weight="700" class="font-sans">Sem espectroscopia mineral, a prevenção de recidiva é pura adivinhação.</text>
+      </g>
+    </g>
+  </g>
+</svg>

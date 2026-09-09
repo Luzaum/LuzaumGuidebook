@@ -34,13 +34,13 @@ function resolveAuthCallbackUrl(nextPath?: string) {
   return callbackUrl.toString()
 }
 
-export async function signUp(identifier: string, password: string) {
+export async function signUp(identifier: string, password: string, nextPath = '/hub') {
   const email = resolveSupabaseAuthEmail(identifier)
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      emailRedirectTo: resolveAuthCallbackUrl('/app'),
+      emailRedirectTo: resolveAuthCallbackUrl(nextPath),
     },
   })
 

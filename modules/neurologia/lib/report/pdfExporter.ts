@@ -560,3 +560,85 @@ export function exportToPDF(report: CaseReport, caseState: any, aiOpinion?: stri
   const fileDate = new Date().toISOString().split('T')[0]
   doc.save(`Ficha_Clinica_Neurologica_${speciesLabel}_${fileDate}.pdf`)
 }
+
+export function exportExamOnlyPDF(caseState: any, report?: CaseReport) {
+  const doc = new jsPDF()
+  const left = 14
+  const top = 16
+  const width = 182
+  const pageHeight = 297
+  const state: RenderState = { y: top }
+
+  const ensureSpace = (required: number) => {
+    if (state.y + required > pageHeight - 16) {
+      doc.addPage()
+      state.y = top
+    }
+  }
+
+  const writeWrapped = (
+    text: string,
+    style: 'bold' | 'normal' = 'normal',
+    fontSize = 11,
+    gap = 2,
+  ) => {
+    doc.setFont('helvetica', style)
+    doc.setFontSize(fontSize)
+    const lines = doc.splitTextToSize(sanitizeText(text), width)
+    ensureSpace(lines.length * (fontSize * 0.38) + gap)
+    doc.text(lines, left, state.y)
+    state.y += lines.length * (fontSize * 0.38) + gap
+  }
+
+  const writeList = (items: string[]) => {
+    items.forEach((item) => {
+      writeWrapped(item, 'normal', 10, 1.5)
+    })
+    state.y += 2
+  }
+
+  // Header do Laudo
+  writeWrapped('NEUROVET — LAUDO DE EXAME NEUROLÓGICO VETERINÁRIO', 'bold', 14, 2)
+  writeWrapped(`Data de Emissão: ${toPtBrDate()}`, 'normal', 9, 4)
+
+  // 1. Identificação do Paciente
+  writeWrapped('1. IDENTIFICAÇÃO DO PACIENTE', 'bold', 11, 2)
+  writeList(buildPatientSection(caseState))
+
+  // 2. Queixa e História Clínica
+  writeWrapped('2. HISTÓRIA E QUEIXA CLÍNICA', 'bold', 11, 2)
+  writeList(buildSignsSection(caseState))
+
+  // 3. Exame Físico Neurológico
+  writeWrapped('3. EXAME NEUROLÓGICO COMPLETO', 'bold', 11, 2)
+  buildExamSections(caseState).forEach((sec) => {
+    writeWrapped(sec.title, 'bold', 10, 1.5)
+    writeList(sec.lines)
+  })
+
+  // 4. Síntese da Neurolocalização
+  if (report?.neuroLocalization?.status === 'ok') {
+    writeWrapped('4. SÍNTESE DA NEUROLOCALIZAÇÃO ANATÔMICA', 'bold', 11, 2)
+    writeWrapped(`Localização provável: ${report.neuroLocalization.primary.toUpperCase()}`, 'bold', 10, 1.5)
+    writeWrapped(`Distribuição: ${report.neuroLocalization.distribution}`, 'normal', 10, 1.5)
+    if (report.neuroLocalization.narrative) {
+      writeWrapped(`Interpretação semiológica: ${report.neuroLocalization.narrative}`, 'normal', 10, 2)
+    }
+    state.y += 2
+  }
+
+  // Espaço para Assinatura e Carimbo
+  ensureSpace(30)
+  state.y += 10
+  doc.setFont('helvetica', 'normal')
+  doc.setFontSize(9)
+  doc.line(left, state.y, left + 85, state.y)
+  state.y += 4
+  doc.text('Médico(a) Veterinário(a) / CRMV', left, state.y)
+
+  doc.text(`Gerado via NeuroVet — ${toPtBrDate()}`, left, pageHeight - 10)
+
+  const speciesLabel = sanitizeText(caseState?.patient?.species || 'paciente').replace(/\s+/g, '_')
+  const fileDate = new Date().toISOString().split('T')[0]
+  doc.save(`Exame_Neurologico_${speciesLabel}_${fileDate}.pdf`)
+}

@@ -17,6 +17,11 @@ export function pkpdForClass(cls: string): PkPdInfo {
   if (s.includes('glicopeptideo')) return { pd: 'concentração‑dependente', hydro: 'hidrofílico', elim: 'renal', moa: 'Inibe síntese da parede celular (liga-se a D-Ala-D-Ala).' };
   if (s.includes('rifamicina')) return { pd: 'concentração‑dependente', hydro: 'lipofílico', elim: 'hepática/biliar', moa: 'Inibe RNA polimerase → bloqueia transcrição.' };
   if (s.includes('fosfonato')) return { pd: 'concentração‑dependente', hydro: 'hidrofílico', elim: 'renal', moa: 'Inibe 1ª etapa da síntese da parede celular (enzima MurA).' };
+  if (s.includes('nitrofurano') || s.includes('nitrofurantoina')) return { pd: 'tempo‑dependente', hydro: 'hidrofílico', elim: 'renal', moa: 'Redução a intermediários reativos bactericidas com alta concentração na luz vesical.' };
+  if (s.includes('antifungico') || s.includes('itraconazol') || s.includes('iodeto')) return { pd: 'concentração‑dependente', hydro: 'lipofílico', elim: 'hepática', moa: 'Inibe a síntese de ergosterol na membrana fúngica ou estimula fagocitose (iodeto).' };
+  if (s.includes('antiprotozoario') || s.includes('parasit') || s.includes('fenbendazol') || s.includes('febantel')) return { pd: 'tempo‑dependente', hydro: 'lipofílico', elim: 'hepática/fecal', moa: 'Inibe a polimerização de tubulina e esgota reservas energéticas parasitárias.' };
+  if (s.includes('tópico') || s.includes('topico') || s.includes('fusídico') || s.includes('fusidico') || s.includes('clorexidina')) return { pd: 'tópico', hydro: 'tópico', elim: 'local', moa: 'Ação antibacteriana/antisséptica tópica na epiderme e mucosas.' };
+  if (s.includes('gastro') || s.includes('omeprazol')) return { pd: 'antissecretor ácido', hydro: 'lipofílico', elim: 'hepática', moa: 'Inibição irreversível da bomba H+/K+ ATPase parietal gástrica.' };
   if (s.includes('imunossupressor')) return { pd: '—', hydro: '—', elim: '—', moa: 'Imunossupressor - não é antibiótico.' };
   return { pd: '—', hydro: '—', elim: '—', moa: '—' };
 }
@@ -30,15 +35,20 @@ export function subclassFor(drugName: string, cls: string): string {
   if (lowerCls.includes('lincos')) return 'lincosamida';
   if (lowerCls.includes('tetrac')) return 'tetraciclina';
   if (lowerCls.includes('amino')) return 'aminoglico';
-  if (lowerCls.includes('nitro')) return 'nitro';
-  if (lowerCls.includes('sulfon')) return 'sulfa';
-  if (lowerCls.includes('macrol')) return 'macrolideo';
+  if (lowerCls.includes('nitroimidaz') || n.includes('metronidazol')) return 'nitro';
+  if (lowerCls.includes('nitrofurano') || n.includes('nitrofurantoina')) return 'nitrofurano';
+  if (lowerCls.includes('antifung') || n.includes('itraconazol') || n.includes('iodeto')) return 'antifungico';
+  if (lowerCls.includes('parasit') || lowerCls.includes('protozo') || n.includes('fenbendazol') || n.includes('febantel') || n.includes('imidocarb')) return 'antiprotozoario';
+  if (lowerCls.includes('tópico') || lowerCls.includes('topico') || n.includes('fusídico') || n.includes('fusidico') || n.includes('clorexidina')) return 'topico';
+  if (lowerCls.includes('gastro') || n.includes('omeprazol')) return 'gastroprotetor';
+  if (lowerCls.includes('sulfon') || lowerCls.includes('sulfa')) return 'sulfa';
+  if (lowerCls.includes('macrol') || n.includes('eritromicina')) return 'macrolideo';
   if (lowerCls.includes('anfenicol')) return 'anfenicol';
   if (lowerCls.includes('glicopeptideo')) return 'glicopeptideo';
   if (lowerCls.includes('rifamicina')) return 'rifamicina';
   if (lowerCls.includes('fosfonato')) return 'fosfonato';
   if (lowerCls.includes('imunossupressor')) return 'imunossupressor';
-  if (lowerCls.includes('β')) {
+  if (lowerCls.includes('β') || lowerCls.includes('lactam') || lowerCls.includes('penicil') || lowerCls.includes('cefa')) {
     if (n.startsWith('cef') || n.includes('podox')) return 'cefalosporina';
     return 'penicilina';
   }

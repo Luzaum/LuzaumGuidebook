@@ -1,0 +1,236 @@
+- main [ref=f4e3]:
+  - heading "Validação isolada dos componentes reais — dados fictícios" [level=1] [ref=f4e4]
+  - generic [ref=f4e5]:
+    - text: Modelo
+    - combobox "Modelo" [ref=f4e6]:
+      - option "Esporotricose — Gatos"
+      - option "Esporotricose — Cães"
+      - option "Cinomose — Cães"
+      - option "Erliquiose/Anaplasmose — Cães"
+      - option "Pós-operatório de castração — Cadela"
+      - option "Pós-operatório de castração — Gata"
+      - option "Pós-operatório de castração — Cão macho"
+      - option "Pós-operatório de castração — Gato macho"
+      - option "Gastroenterite aguda não complicada — Cão"
+      - option "Colapso de traqueia — Cão"
+      - option "Asma felina"
+      - option "Manejo de ferida pós-operatória"
+      - option "Dermatite atópica — Cão"
+      - option "Pancreatite — Cão (após estabilização)"
+      - option "Pancreatite — Gato (após estabilização)"
+      - option "Tríade felina — tratamento individualizado"
+      - option "Diabetes mellitus — Cão — Caninsulin"
+      - option "Diabetes mellitus — Cão — Insulina NPH"
+      - option "Diabetes mellitus — Cão — Glargina U-100"
+      - option "Diabetes mellitus — Cão — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Glargina U-100"
+      - option "Diabetes mellitus — Gato — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Caninsulin"
+      - option "Trauma vertebromedular — Cão"
+      - option "Trauma vertebromedular — Gato"
+      - option "Hérnia de disco — Cão (manejo conservador)"
+      - option "Síndrome vestibular — Cão"
+      - option "Síndrome vestibular — Gato" [selected]
+  - generic [ref=f4e7]:
+    - text: Espécie
+    - combobox "Espécie" [ref=f4e8]:
+      - option "gato" [selected]
+      - option "cão"
+  - generic [ref=f4e9]:
+    - text: Peso
+    - textbox "Peso" [ref=f4e10]: "4"
+  - generic [ref=f4e11]:
+    - generic [ref=f4e12]:
+      - region "Configuração clínica do modelo" [ref=f4e13]:
+        - generic [ref=f4e14]: A síndrome vestibular felina provoca perda de equilíbrio, inclinação da cabeça, quedas, rolamentos, desorientação, náusea e movimentos rápidos dos olhos. Em gatos, pode estar associada a doença idiopática, pólipo, otite média ou interna, trauma, toxicidade, deficiência nutricional, inflamação ou doença cerebral.
+        - generic [ref=f4e20]:
+          - generic [ref=f4e21]:
+            - heading "Antiemético" [level=3] [ref=f4e22]
+            - paragraph [ref=f4e23]: Escolha uma variante; o texto e os cálculos serão atualizados.
+          - generic [ref=f4e24]: Dose do modelo · revisão de fonte pendente
+        - generic [ref=f4e28]:
+          - button "Maropitant" [active] [pressed] [ref=f4e29] [cursor=pointer]
+          - button "Ondansetrona" [ref=f4e34] [cursor=pointer]
+      - article [ref=f4e199]:
+        - heading "1. Maropitant" [level=4] [ref=f4e200]
+        - generic [ref=f4e202]:
+          - generic [ref=f4e203]:
+            - paragraph [ref=f4e204]:
+              - strong [ref=f4e205]: "Faixa do modelo clínico:"
+              - text: 1 mg/kg
+            - paragraph [ref=f4e206]:
+              - strong [ref=f4e207]: "Faixa ConsultaVet:"
+              - text: 1 mg/kg
+          - generic [ref=f4e208]:
+            - generic [ref=f4e209]: Apresentação (Consulta Medicamentos)
+            - combobox "Apresentação (Consulta Medicamentos)" [ref=f4e210]:
+              - option "Selecionar apresentação e concentração" [selected]
+              - option "Cerenia - comprimido (cão) — Comprimido — 16 mg"
+              - option "Cerenia - comprimido (cão) — Comprimido — 24 mg"
+              - option "Cerenia - comprimido (cão) — Comprimido — 60 mg"
+              - option "Cerenia - comprimido (cão) — Comprimido — 160 mg"
+          - generic [ref=f4e211] [cursor=pointer]:
+            - checkbox "Usar cápsula manipulada com a quantidade calculada para este paciente." [checked] [ref=f4e212]
+            - generic [ref=f4e213]: Usar cápsula manipulada com a quantidade calculada para este paciente.
+          - generic [ref=f4e214]:
+            - generic [ref=f4e215]: Regime indicado (Consulta Medicamentos)
+            - combobox "Regime indicado (Consulta Medicamentos)" [ref=f4e216]:
+              - option "Vômito associado à DRC (extra-label; dose fixa) — 4 mg/gato"
+              - option "Prevenção de vômito — uso oral extra-label — 1 mg/kg" [selected]
+          - generic [ref=f4e217]:
+            - generic [ref=f4e218]: Dose escolhida (mg/kg)
+            - textbox "Dose escolhida (mg/kg)" [ref=f4e219]: "1"
+          - generic [ref=f4e220]:
+            - generic [ref=f4e221]:
+              - generic [ref=f4e222]: Via de administração
+              - textbox "Via de administração" [ref=f4e223]:
+                - /placeholder: "Ex.: oral"
+                - text: oral
+            - generic [ref=f4e224]:
+              - generic [ref=f4e225]: Frequência
+              - textbox "Frequência" [ref=f4e226]:
+                - /placeholder: "Ex.: a cada 12 horas"
+                - text: a cada 24 horas
+            - generic [ref=f4e227]:
+              - generic [ref=f4e228]: Tempo de uso
+              - textbox "Tempo de uso" [ref=f4e229]:
+                - /placeholder: "Ex.: por 7 dias"
+                - text: 3 a 5 dias
+          - paragraph [ref=f4e230]: Informe o peso para ver o cálculo prático da apresentação.
+      - generic [ref=f4e73]:
+        - generic [ref=f4e74]: 1. Medicamento
+        - searchbox "Busque princípio ativo, sinônimo ou nome comercial" [ref=f4e79]
+        - paragraph [ref=f4e80]:
+          - text: Digite o
+          - strong [ref=f4e81]: princípio ativo
+          - text: "(ex.: pimobendan) ou o"
+          - strong [ref=f4e82]: nome comercial
+          - text: "(ex.: Vetmedin). A busca aceita pequenos erros de digitação."
+        - generic [ref=f4e83]:
+          - generic [ref=f4e84]:
+            - text: Categoria / classe
+            - combobox "Categoria ou classe do medicamento" [ref=f4e85]:
+              - option "Buscar pelo nome" [selected]
+              - option "Analgésicas"
+              - option "Anti-inflamatórios"
+              - option "Antiparasitárias"
+              - option "Cardiológicos"
+              - option "Comportamentais"
+              - option "Dermatológicas"
+              - option "Emergenciais"
+              - option "Endócrinas"
+              - option "Gastrointestinais"
+              - option "Infecciosas / antimicrobianos"
+              - option "Medicações pneumo"
+              - option "Neurológicas"
+              - option "Nutracêuticas"
+              - option "Odontológicas"
+              - option "Oftalmológicas"
+              - option "Oncológicas"
+              - option "Ortopédicas"
+              - option "Renais"
+              - option "Reprodutivas"
+              - option "Urológicas"
+          - generic [ref=f4e86]:
+            - text: Subcategoria
+            - combobox "Subcategoria do medicamento" [disabled] [ref=f4e87]:
+              - option "Todas as subcategorias" [selected]
+          - paragraph [ref=f4e88]: Se não souber o nome, escolha uma categoria e refine pela subcategoria.
+    - generic [ref=f4e90]:
+      - article [ref=f4e91]:
+        - generic [ref=f4e92]:
+          - generic [ref=f4e93]:
+            - paragraph [ref=f4e94]: Vetius — validação local
+            - paragraph [ref=f4e95]: Receituário veterinário
+          - generic [ref=f4e96]:
+            - paragraph [ref=f4e97]: Teste técnico
+            - paragraph [ref=f4e98]: "CRMV: TESTE"
+            - paragraph [ref=f4e99]: 07/09/2026
+        - generic [ref=f4e100]:
+          - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=f4e101]
+          - generic [ref=f4e102]:
+            - generic [ref=f4e103]:
+              - term [ref=f4e104]: "Paciente:"
+              - definition [ref=f4e105]: Paciente fictício
+            - generic [ref=f4e106]:
+              - term [ref=f4e107]: "Responsável:"
+              - definition [ref=f4e108]: Tutor fictício
+            - generic [ref=f4e109]:
+              - term [ref=f4e110]: "Espécie:"
+              - definition [ref=f4e111]: gato
+            - generic [ref=f4e112]:
+              - term [ref=f4e113]: "Raça:"
+              - definition [ref=f4e114]: SRD
+            - generic [ref=f4e115]:
+              - term [ref=f4e116]: "Sexo:"
+              - definition [ref=f4e117]: fêmea
+            - generic [ref=f4e118]:
+              - term [ref=f4e119]: "Idade / peso:"
+              - definition [ref=f4e120]: 5 anos • 4 kg
+        - main [ref=f4e121]:
+          - paragraph [ref=f4e122]: SÍNDROME VESTIBULAR — GATO
+          - paragraph [ref=f4e124]: A síndrome vestibular felina provoca perda de equilíbrio, inclinação da cabeça, quedas,
+          - paragraph [ref=f4e125]: rolamentos, desorientação, náusea e movimentos rápidos dos olhos. Em gatos, pode estar
+          - paragraph [ref=f4e126]: associada a doença idiopática, pólipo, otite média ou interna, trauma, toxicidade,
+          - paragraph [ref=f4e127]: deficiência nutricional, inflamação ou doença cerebral.
+          - paragraph [ref=f4e129]: USO ORAL
+          - paragraph [ref=f4e131]:
+            - generic [ref=f4e132]: 1. MAROPITANT — MANIPULADO — 4 mg/cápsula
+            - generic [ref=f4e134]: Cápsulas
+          - paragraph [ref=f4e136]: "Forma farmacêutica: cápsula."
+          - paragraph [ref=f4e138]: Manipular cápsulas contendo 4 mg de maropitant por cápsula.
+          - paragraph [ref=f4e140]: Administrar 1 cápsula por via oral, a cada 24 horas, durante 3 a 5 dias.
+          - paragraph [ref=f4e142]: RECOMENDAÇÕES
+          - paragraph [ref=f4e144]: • Manter o gato exclusivamente dentro de casa.
+          - paragraph [ref=f4e145]: • Colocar em ambiente pequeno, silencioso, acolchoado e sem locais altos.
+          - paragraph [ref=f4e146]: • Retirar acesso a janelas, escadas, móveis, camas e prateleiras.
+          - paragraph [ref=f4e147]: • Utilizar caixa de areia com bordas baixas.
+          - paragraph [ref=f4e148]: • Colocar água e alimento próximos ao local de repouso.
+          - paragraph [ref=f4e149]: • Preferir alimento úmido completo e palatável.
+          - paragraph [ref=f4e150]: • Oferecer pequenas porções várias vezes ao dia.
+          - paragraph [ref=f4e151]: • Não forçar alimentação se houver dificuldade para engolir ou alteração de consciência.
+          - paragraph [ref=f4e152]: • Manter o gato limpo e seco após urinar ou defecar.
+          - paragraph [ref=f4e153]: • Utilizar toalhas enroladas para formar barreiras acolchoadas ao redor do paciente.
+          - paragraph [ref=f4e154]: • Evitar contenção excessiva, pois o movimento da cabeça pode piorar a náusea.
+          - paragraph [ref=f4e233]: • Não aplicar produtos nos ouvidos sem avaliação veterinária.
+          - paragraph [ref=f4e156]: • Não utilizar corticosteroides ou antibióticos automaticamente.
+          - paragraph [ref=f4e157]: • Investigar pólipo nasofaríngeo, otite média ou interna, trauma, intoxicação e doença
+          - paragraph [ref=f4e158]: cerebral quando indicado.
+        - generic [ref=f4e161]:
+          - generic [ref=f4e162]: ConsultaVet • Documento emitido pelo profissional responsável
+          - generic [ref=f4e163]: Página 1 de 2
+      - article [ref=f4e164]:
+        - generic [ref=f4e165]:
+          - generic [ref=f4e166]:
+            - paragraph [ref=f4e167]: Vetius — validação local
+            - paragraph [ref=f4e168]: Receituário veterinário
+          - generic [ref=f4e169]:
+            - paragraph [ref=f4e170]: Teste técnico
+            - paragraph [ref=f4e171]: "CRMV: TESTE"
+            - paragraph [ref=f4e172]: 07/09/2026
+        - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=f4e174]
+        - main [ref=f4e175]:
+          - paragraph [ref=f4e176]: A síndrome vestibular idiopática felina é aguda e geralmente não progressiva, mas constitui
+          - paragraph [ref=f4e235]: diagnóstico de exclusão. Alterações de outros nervos cranianos, déficits de posicionamento
+          - paragraph [ref=f4e178]: das patas, redução da consciência ou nistagmo vertical indicam necessidade de investigação
+          - paragraph [ref=f4e179]: intracraniana.
+          - paragraph [ref=f4e181]: "Retornar imediatamente ou buscar serviço veterinário externo de emergência se ocorrer:"
+          - paragraph [ref=f4e183]: • Piora progressiva.
+          - paragraph [ref=f4e184]: • Rolamentos contínuos.
+          - paragraph [ref=f4e185]: • Incapacidade de permanecer em posição esternal.
+          - paragraph [ref=f4e186]: • Recusa completa de água e alimento.
+          - paragraph [ref=f4e187]: • Vômitos persistentes.
+          - paragraph [ref=f4e188]: • Dificuldade para engolir.
+          - paragraph [ref=f4e189]: • Convulsões.
+          - paragraph [ref=f4e190]: • Sonolência intensa.
+          - paragraph [ref=f4e191]: • Fraqueza ou paralisia.
+          - paragraph [ref=f4e192]: • Movimentos verticais dos olhos.
+          - paragraph [ref=f4e193]: • Nistagmo que muda de direção.
+          - paragraph [ref=f4e238]: • Dor intensa.
+          - paragraph [ref=f4e239]: • Dificuldade respiratória.
+          - paragraph [ref=f4e240]: • Incapacidade de fechar um dos olhos.
+          - paragraph [ref=f4e241]: • Ausência de melhora clínica.
+          - paragraph [ref=f4e242]: • Qualquer piora clínica.
+        - generic [ref=f4e194]:
+          - generic [ref=f4e195]: ConsultaVet • Documento emitido pelo profissional responsável
+          - generic [ref=f4e196]: Página 2 de 2

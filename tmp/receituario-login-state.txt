@@ -1,0 +1,51 @@
+### Page
+- Page URL: http://localhost:5173/login?next=%2Fconsulta-vet%2Freceituario
+- Page Title: Vetius
+### Snapshot
+```yaml
+- generic [ref=f13e4]:
+  - button "Voltar para Vetius" [ref=f13e5] [cursor=pointer]
+  - generic [ref=f13e6]:
+    - generic [ref=f13e7]:
+      - img "Dog running in open field" [ref=f13e8]
+      - button "Foto anterior" [ref=f13e10] [cursor=pointer]
+      - button "Proxima foto" [ref=f13e13] [cursor=pointer]
+      - generic [ref=f13e16]:
+        - generic [ref=f13e17]:
+          - heading "Fluxo rápido e intuitivo" [level=2] [ref=f13e18]
+          - paragraph [ref=f13e19]: Menos cliques para emitir receitas com qualidade.
+        - generic [ref=f13e20]:
+          - button "Ir para foto 1" [ref=f13e21] [cursor=pointer]
+          - button "Ir para foto 2" [ref=f13e23] [cursor=pointer]
+          - button "Ir para foto 3" [ref=f13e25] [cursor=pointer]
+          - button "Ir para foto 4" [ref=f13e27] [cursor=pointer]
+          - button "Ir para foto 5" [ref=f13e29] [cursor=pointer]
+          - button "Ir para foto 6" [ref=f13e31] [cursor=pointer]
+          - button "Ir para foto 7" [ref=f13e33] [cursor=pointer]
+          - button "Ir para foto 8" [ref=f13e35] [cursor=pointer]
+          - button "Ir para foto 9" [ref=f13e37] [cursor=pointer]
+          - button "Ir para foto 10" [ref=f13e39] [cursor=pointer]
+    - generic [ref=f13e42]:
+      - generic [ref=f13e43]:
+        - heading "Bem-vindo de volta" [level=1] [ref=f13e44]
+        - paragraph [ref=f13e45]: Entre para continuar seu trabalho clínico com segurança.
+      - button "Entrar com Google" [ref=f13e47] [cursor=pointer]
+      - generic [ref=f13e53]: ou
+      - generic [ref=f13e58]:
+        - generic [ref=f13e59]:
+          - generic [ref=f13e60]: Usuário ou e-mail *
+          - textbox "Usuário ou e-mail *" [ref=f13e61]:
+            - /placeholder: "ex.: usuário ou nome@gmail.com"
+        - generic [ref=f13e62]:
+          - generic [ref=f13e63]: Senha *
+          - generic [ref=f13e64]:
+            - textbox "Senha *" [ref=f13e65]:
+              - /placeholder: Digite sua senha
+            - button "Mostrar senha" [ref=f13e66] [cursor=pointer]
+        - button "Entrar" [ref=f13e70] [cursor=pointer]
+      - generic [ref=f13e73]:
+        - button "Esqueceu sua senha?" [ref=f13e74] [cursor=pointer]
+        - button "Não tem conta? Criar conta" [ref=f13e75] [cursor=pointer]
+```
+### Events
+- New console entries: .playwright-cli\console-2026-09-07T09-10-36-748Z.log#L2-L31

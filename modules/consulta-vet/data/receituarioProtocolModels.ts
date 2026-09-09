@@ -34,6 +34,8 @@ type MedicationOptions = {
   presentationFilter?: ClinicalMedicationDefinition['presentationFilter'];
   alert?: string;
   linkedProtocolKey?: string;
+  patientInstructions?: string[];
+  followUpPhases?: ClinicalMedicationDefinition['followUpPhases'];
 };
 
 function medication(
@@ -58,6 +60,8 @@ function medication(
     prescriptionText,
     internalAlert: options.alert,
     linkedProtocolKey: options.linkedProtocolKey,
+    patientInstructions: options.patientInstructions,
+    followUpPhases: options.followUpPhases,
   };
 }
 
@@ -68,6 +72,10 @@ function template(
   species: 'cão' | 'gato' | 'ambos',
   model: ClinicalRecipeModel,
 ): DocumentTemplate {
+  model = { ...model, options: model.options.map((option) => ({
+    ...option,
+    exclusiveGroup: option.exclusiveGroup || (['meloxicam', 'carprofen', 'robenacoxib', 'prednisolone', 'apoquel', 'zenrelia'].includes(option.key) ? 'anti-inflamatorio-sistemico' : undefined),
+  })) };
   return {
     id,
     title,
@@ -201,23 +209,9 @@ Iniciar 24 horas após uma dose perioperatória de 0,2 mg/kg, quando esta tiver 
         presentationFilter: 'oral',
       })],
     },
-    {
-      key: 'buprenorphine',
-      label: 'Buprenorfina (analgesia complementar)',
-      optional: true,
-      medications: [medication('buprenorphine-spay-cat', 'Buprenorfina', {
-        min: 0.02, unit: 'mg/kg', basis: 'weight', route: 'transmucosa oral', frequency: 'a cada 6 a 8 horas', duration: '24 a 48 horas',
-      }, `2. BUPRENORFINA — APRESENTAÇÃO A SELECIONAR
-
-Administrar A PREENCHER pela via transmucosa oral, a cada 6 a 8 horas, durante 24 a 48 horas.
-
-Colocar o medicamento entre a gengiva e a mucosa da bocheca. Não misturar na comida e não direcionar para o fundo da garganta.`, { presentationFilter: 'oral' })],
-      medicationPrecautions: ['A buprenorfina pode causar midríase, euforia, ronronar excessivo, agitação ou sedação'],
-    },
   ],
   recipeInformation: [
     'O robenacoxibe e o meloxicam são opções para o controle da dor pós-operatória felina, respeitando as limitações de dose e duração',
-    'A buprenorfina deve integrar um protocolo multimodal e pode ser utilizada pela via transmucosa oral em gatos',
   ],
   diseaseRecommendations: [
     'Manter a gata em ambiente calmo, aquecido e separado de outros animais durante a recuperação inicial',
@@ -228,8 +222,8 @@ Colocar o medicamento entre a gengiva e a mucosa da bocheca. Não misturar na co
     'Restringir saltos, corridas e brincadeiras durante 10 a 14 dias',
     'Não permitir acesso à rua',
     'Não dar banho até liberação veterinária',
-    'Verificar a incisão duas vezes ao dia',
-    'Antibióticos não são indicados rotineiramente em castração eletiva limpa e sem complicações',
+    'Observar a região dos pontos duas vezes ao dia',
+    'Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores',
   ],
   medicationPrecautions: [
     'Escolher apenas uma opção de anti-inflamatório',
@@ -306,7 +300,7 @@ Administrar A PREENCHER por via oral, a cada 24 horas, durante 3 dias.`,
     'Não dar banho durante o período de cicatrização',
     'Verificar a região operada duas vezes ao dia',
     'Pequeno edema escrotal pode ocorrer, mas deve permanecer discreto e diminuir progressivamente',
-    'Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa',
+    'Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores',
   ],
   medicationPrecautions: [
     'Suspender o anti-inflamatório diante de vômitos, diarreia, melena ou anorexia',
@@ -342,20 +336,6 @@ Administrar A PREENCHER por via oral, a cada 24 horas, durante 3 dias.`, {
         presentationFilter: 'oral',
       })],
     },
-    {
-      key: 'buprenorphine',
-      label: 'Buprenorfina (analgesia complementar)',
-      optional: true,
-      medications: [medication('buprenorphine-neuter-cat', 'Buprenorfina', {
-        min: 0.02, unit: 'mg/kg', basis: 'weight', route: 'transmucosa oral', frequency: 'a cada 6 a 8 horas', duration: '24 a 48 horas',
-      }, `2. BUPRENORFINA — APRESENTAÇÃO A SELECIONAR
-
-Administrar A PREENCHER pela via transmucosa oral, a cada 6 a 8 horas, durante 24 horas.
-
-Nos pacientes que ainda apresentarem dor, manter por até 48 horas.
-
-Não misturar ao alimento. Aplicar entre a gengiva e a mucosa da bocheca.`, { presentationFilter: 'oral' })],
-    },
   ],
   recipeInformation: [
     'Protocolos multimodais com bloqueio local, opioide e AINE proporcionam analgesia mais adequada após a orquiectomia felina',
@@ -366,8 +346,8 @@ Não misturar ao alimento. Aplicar entre a gengiva e a mucosa da bocheca.`, { pr
     'Restringir corridas, saltos e brincadeiras durante pelo menos 7 dias',
     'Não aplicar pomadas ou antissépticos na região escrotal sem orientação',
     'Pequena quantidade de sangue nas primeiras horas pode ocorrer, mas sangramento contínuo não é esperado',
-    'A incisão escrotal pode permanecer aberta e cicatrizar por segunda intenção, conforme a técnica utilizada',
-    'Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa',
+    'A pequena abertura da cirurgia pode ser deixada sem pontos e fechar aos poucos, conforme explicado pela equipe; não tentar fechar ou cobrir sem orientação',
+    'Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores',
   ],
   medicationPrecautions: [
     'Não associar o robenacoxibe a outro AINE ou a corticosteroides',
@@ -425,7 +405,10 @@ Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 dias.`, {
 
 Administrar por via oral, conforme a dose recomendada pelo fabricante, a cada 24 horas, durante 7 a 10 dias.
 
-Dose clínica: conforme orientação do fabricante.`)],
+Dose clínica: conforme orientação do fabricante.`, {
+        presentations: ['probiotico-vetnil', 'beneflora-vet-avert', 'florentero-act-bioctal'],
+        alert: 'Probióticos dependem de cepa, quantidade de microrganismos viáveis e produto. Usar como adjuvante e seguir a dose do rótulo da apresentação escolhida.',
+      })],
     },
   ],
   recipeInformation: [
@@ -470,6 +453,7 @@ const TRACHEAL_COLLAPSE_DOG: ClinicalRecipeModel = {
   options: [
     {
       key: 'hydrocodone',
+      exclusiveGroup: 'antitussigeno',
       label: 'Hidrocodona (antitussígeno de primeira escolha)',
       medications: [medication('hydrocodone-tc-dog', 'Hidrocodona', {
         min: 0.22, max: 0.5, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 6 a 8 horas', duration: '7 a 14 dias',
@@ -481,6 +465,7 @@ Após controle da tosse, aumentar gradualmente o intervalo entre as administraç
     },
     {
       key: 'codeine',
+      exclusiveGroup: 'antitussigeno',
       label: 'Codeína (alternativa)',
       medications: [medication('codeine-tc-dog', 'Codeína', {
         min: 1, max: 2, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 6 a 12 horas', duration: 'teste curto; reavaliar em 48 a 72 horas e antes de prolongar além de 7 dias',
@@ -530,10 +515,13 @@ Não inserir teofilina automaticamente em colapso cervical isolado.`, { presenta
     'Evitar calor, umidade intensa, fumaça de cigarro, perfumes, aerossóis, poeira e produtos de limpeza voláteis',
     'Reduzir situações de excitação, latidos intensos e exercícios extenuantes',
     'Manter adequada higiene oral e tratar doença periodontal',
-    'Investigar cardiopatia, hipertensão pulmonar, paralisia laríngea, broncomalácia, pneumonia e doença brônquica concomitante',
+    'Gravar as crises de tosse, se for possível sem estressar o animal, e anotar os horários e o que estava acontecendo antes da crise',
+    'Se o medicamento causar sonolência intensa, dificuldade para despertar ou respiração lenta, procurar atendimento imediatamente',
+    'Não aumentar, diminuir nem combinar remédios para tosse por conta própria; combinar a reavaliação em 48 a 72 horas após iniciar ou ajustar o tratamento',
   ],
   medicationPrecautions: [
     'Escolher apenas uma opção de antitussígeno; não associar codeína e hidrocodona',
+    'Investigar cardiopatia, hipertensão pulmonar, paralisia laríngea, broncomalácia e pneumonia concomitantes. Referência consultada: Ettinger, 9ª ed., capítulo de doença traqueobrônquica, PDF pp. 1310–1314',
     'Não utilizar antitussígenos quando houver pneumonia, tosse produtiva ou necessidade de eliminar secreções',
     'Antibióticos não devem ser incluídos automaticamente; utilizar somente quando houver evidência de infecção bacteriana',
     'A hidrocodona e a codeína podem causar sedação, constipação, vômitos e depressão respiratória',
@@ -562,64 +550,67 @@ const FELINE_ASTHMA: ClinicalRecipeModel = {
       key: 'prednisolone',
       label: 'Prednisolona (transição inicial)',
       medications: [medication('prednisolone-asthma-cat', 'Prednisolona', {
-        min: 1, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 12 horas', duration: '5 dias',
+        min: 1, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 12 horas', duration: '7 dias; reavaliar antes de reduzir a dose',
       }, `1. PREDNISOLONA — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 12 horas, durante 5 dias.
+Administrar A PREENCHER por via oral, a cada 12 horas, durante 7 dias. Reavaliar antes de reduzir a dose.
 
-Em seguida, administrar A PREENCHER por via oral, a cada 24 horas, durante mais 5 dias.
-
-Após esse período, suspender se o gato estiver controlado com o corticosteroide inalatório. Em pacientes que ainda apresentem sinais, reduzir gradualmente até a menor dose eficaz.`, {
+Não suspender nem reduzir por conta própria. A próxima etapa será definida na reavaliação.`, {
         canonicalId: 'med-prednisolona',
         presentationFilter: 'oral',
       })],
     },
     {
       key: 'fluticasone',
+      exclusiveGroup: 'controlador-inalatorio',
       label: 'Propionato de fluticasona — Flixotide',
       medications: [
         medication('fluticasone-asthma-cat', 'Propionato de fluticasona — Flixotide', {
-          min: 125, max: 250, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.',
+          min: 250, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.',
         }, `2. PROPIONATO DE FLUTICASONA — FLIXOTIDE — APRESENTAÇÃO A SELECIONAR
 
-Para doença leve a moderada: administrar 125 microgramas por gato, por via inalatória, a cada 12 horas, continuamente.
+Aplicar 1 jato da apresentação de 250 microgramas, por via inalatória, a cada 12 horas, continuamente. Manter a máscara bem ajustada ao focinho por 7 a 10 respirações depois do jato.
 
-Para doença moderada a grave: administrar 250 microgramas por gato, por via inalatória, a cada 12 horas, continuamente.
-
-Não utilizar apresentações em pó seco, como Diskus ou Accuhaler. Utilizar somente inalador pressurizado compatível com espaçador.`, {
+Não utilizar apresentações em pó seco, como Diskus ou Accuhaler. Utilizar somente a bombinha em spray encaixada no espaçador indicado para gatos. Não interromper nem reduzir por conta própria.`, {
+          canonicalId: 'med-propionato-de-fluticasona',
+          presentations: ['pres-flixotide-50', 'pres-flixotide-250'],
+          alert: 'Fluticasona é controladora, não medicação de resgate. O modelo inicia com 250 mcg q12h porque corresponde a 1 jato inteiro da apresentação brasileira e à dose inicial prática de 220–250 mcg descrita na literatura. Reavaliar para redução. Sobrepor corticoide sistêmico na transição quando clinicamente indicado.',
           doseAlternatives: [{
-            key: 'severe',
-            label: '250 microgramas por gato',
-            dose: { min: 250, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.' },
+            key: 'step-down',
+            label: '50 microgramas por gato (redução após controle e reavaliação)',
+            dose: { min: 50, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.' },
             prescriptionText: `2. PROPIONATO DE FLUTICASONA — FLIXOTIDE — APRESENTAÇÃO A SELECIONAR
 
-Administrar 250 microgramas por gato, por via inalatória, a cada 12 horas, continuamente.
+Aplicar 1 jato da apresentação de 50 microgramas, por via inalatória, a cada 12 horas, continuamente. Manter a máscara bem ajustada ao focinho por 7 a 10 respirações depois do jato.
 
-Não utilizar apresentações em pó seco. Utilizar somente inalador pressurizado compatível com espaçador.`,
+Não utilizar apresentações em pó seco. Utilizar somente a bombinha em spray encaixada no espaçador indicado para gatos. Não interromper nem aumentar a dose por conta própria.`,
           }],
         }),
       ],
     },
     {
       key: 'seretide',
-      label: 'Fluticasona + salmeterol — Seretide Evohaler',
+      exclusiveGroup: 'controlador-inalatorio',
+      label: 'Fluticasona + salmeterol — seleção individual; evidência felina limitada',
       medications: [medication('seretide-asthma-cat', 'Propionato de fluticasona + salmeterol — Seretide Evohaler', {
-        min: 125, max: 250, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.',
+        min: 125, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.',
       }, `2. PROPIONATO DE FLUTICASONA + SALMETEROL — SERETIDE EVOHALER — APRESENTAÇÃO A SELECIONAR
 
-Para doença leve a moderada: administrar 125 microgramas de fluticasona + 25 microgramas de salmeterol por gato, por via inalatória, a cada 12 horas, continuamente.
+Aplicar 1 jato da apresentação 25/125 microgramas, por via inalatória, a cada 12 horas, continuamente. Manter a máscara bem ajustada ao focinho por 7 a 10 respirações depois do jato.
 
-Para doença moderada a grave: administrar 250 microgramas de fluticasona + 25 microgramas de salmeterol por gato, por via inalatória, a cada 12 horas, continuamente.
-
-Não utilizar apresentações em pó seco. Utilizar somente inalador pressurizado compatível com espaçador.`, {
-        alert: 'Seretide contém salmeterol de longa duração e não deve ser utilizado como resgate durante uma crise.',
+Não utilizar apresentações em pó seco. Utilizar somente a bombinha em spray encaixada no espaçador indicado para gatos. Esta medicação é de uso diário e não serve para aliviar uma crise de falta de ar.`, {
+        canonicalId: 'med-fluticasona-salmeterol',
+        presentations: ['pres-seretide-25-50', 'pres-seretide-25-125', 'pres-seretide-25-250'],
+        alert: 'A evidência direta em gatos para fluticasona + salmeterol é limitada e principalmente experimental, com regime diferente do uso crônico deste modelo. Selecionar somente após avaliação individual. Seretide contém broncodilatador de longa duração e não deve ser utilizado como resgate durante uma crise.',
         doseAlternatives: [{
-          key: 'severe',
+          key: 'higher-fluticasone',
           label: '250 microgramas de fluticasona + 25 microgramas de salmeterol',
           dose: { min: 250, unit: 'mcg/animal', basis: 'per_animal', route: 'inalatória', frequency: 'a cada 12 horas', duration: 'Continuamente.' },
           prescriptionText: `2. PROPIONATO DE FLUTICASONA + SALMETEROL — SERETIDE EVOHALER — APRESENTAÇÃO A SELECIONAR
 
-Administrar 250 microgramas de fluticasona + 25 microgramas de salmeterol por gato, por via inalatória, a cada 12 horas, continuamente.`,
+Aplicar 1 jato da apresentação 25/250 microgramas, por via inalatória, a cada 12 horas, continuamente. Manter a máscara bem ajustada ao focinho por 7 a 10 respirações depois do jato.
+
+Utilizar somente a bombinha em spray encaixada no espaçador indicado para gatos. Esta medicação não serve para aliviar uma crise de falta de ar.`,
         }],
       })],
     },
@@ -633,7 +624,9 @@ Administrar 250 microgramas de fluticasona + 25 microgramas de salmeterol por ga
 
 Administrar 100 microgramas por gato, correspondentes a um jato, por via inalatória, em caso de broncoespasmo.
 
-Pode ser repetido uma vez após 20 a 30 minutos enquanto o paciente é encaminhado para atendimento. O uso frequente não substitui o controle anti-inflamatório e exige reavaliação.`)],
+Pode ser repetido uma vez após 20 a 30 minutos enquanto o paciente é encaminhado para atendimento. O uso frequente não substitui o controle anti-inflamatório e exige reavaliação.`, {
+        patientInstructions: ['Usar a bombinha de resgate com espaçador e máscara conforme a demonstração da equipe. Se necessário, repetir somente uma vez após 20 a 30 minutos enquanto leva o gato para atendimento. Não ficar repetindo doses em casa para adiar o atendimento.', 'Se houver falta de ar intensa, respiração de boca aberta ou língua azulada, procurar atendimento imediatamente. Não substituir a bombinha diária por esta medicação.'],
+      })],
     },
   ],
   recipeInformation: [
@@ -655,6 +648,14 @@ Pode ser repetido uma vez após 20 a 30 minutos enquanto o paciente é encaminha
   ],
   diseaseRecommendations: [
     'Eliminar exposição a fumaça de cigarro, incenso, perfumes, sprays, aromatizadores e produtos de limpeza voláteis',
+    'Para usar a bombinha prescrita, utilizar espaçador com máscara própria para gatos ou máscara que vede suavemente o focinho; pedir demonstração à equipe antes da primeira aplicação',
+    'Acostumar o gato à máscara aos poucos, com carinho e recompensa, sem forçar quando ele estiver com falta de ar',
+    'Agitar a bombinha conforme a bula, encaixar no espaçador, ajustar a máscara ao focinho e disparar somente um jato por vez',
+    'Manter a máscara vedada por 7 a 10 respirações; observar o indicador do espaçador. Se houver outro jato prescrito, aguardar cerca de 30 segundos e repetir',
+    'Limpar delicadamente o focinho com pano úmido após a aplicação; lavar e secar o espaçador conforme o fabricante',
+    'A bombinha de uso diário previne crises e deve continuar mesmo sem tosse. Ela não substitui o remédio de alívio rápido prescrito para crises',
+    'Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos',
+    'Respiração de boca aberta, língua azulada, desmaio ou grande esforço para respirar exigem atendimento imediato; manter o gato calmo e não forçar comida, água ou comprimidos',
     'Preferir areia sanitária sem perfume e com baixa produção de poeira',
     'Evitar varrer ou usar aerossóis no mesmo ambiente do gato',
     'Controlar o peso corporal',
@@ -664,6 +665,7 @@ Pode ser repetido uma vez após 20 a 30 minutos enquanto o paciente é encaminha
   ],
   medicationPrecautions: [
     'Escolher apenas uma opção de tratamento inalatório contínuo',
+    'Dose inicial de prednisolona 1 mg/kg q12h; individualizar a indução e o desmame segundo resposta, comorbidades e sobreposição com o inalatório. Ettinger 9ª ed., PDF pp. 1322–1323: indução por 1–2 semanas; não há esquema universal de suspensão em dez dias',
     'Seretide contém salmeterol de longa duração e não deve ser utilizado como resgate durante uma crise',
     'Não utilizar broncodilatador como monoterapia crônica; a inflamação das vias aéreas deve ser controlada com corticosteroide',
   ],
@@ -798,7 +800,15 @@ Dose clínica: conforme orientação do fabricante e avaliação da ferida.`, {
     'Curativos impregnados com PHMB demonstram atividade contra bactérias veterinárias Gram-positivas e Gram-negativas e podem reduzir a contaminação do leito da ferida',
     'A irrigação com solução fisiológica, o uso de técnica limpa ou estéril e a proteção do leito com cobertura apropriada são fundamentos do manejo de feridas',
   ],
-  diseaseRecommendations: [],
+  diseaseRecommendations: [
+    'Manter a ferida limpa e protegida conforme o protocolo selecionado',
+    'Lavar as mãos antes e depois do cuidado e utilizar luvas limpas quando houver contato com o leito da ferida',
+    'Impedir lambedura, mordedura ou coçadura com colar elizabetano, roupa cirúrgica ou outra barreira indicada',
+    'Manter curativos limpos, secos e bem posicionados; trocar imediatamente se estiverem molhados, sujos, deslocados ou com odor',
+    'Não aplicar álcool, água oxigenada, pomadas humanas, antibióticos ou outros antissépticos sem orientação médico-veterinária',
+    'Examinar a ferida pelo menos duas vezes ao dia e registrar mudanças de abertura, secreção, odor, dor, calor, cor ou inchaço',
+    'Comparecer às reavaliações para definir limpeza, desbridamento, cultura, troca de cobertura ou retirada de pontos',
+  ],
   medicationPrecautions: [],
   returnSigns: [
     'Abertura, secreção, odor, dor, calor ou vermelhidão progressiva',
@@ -825,13 +835,14 @@ const ATOPIC_DERMATITIS_DOG: ClinicalRecipeModel = {
 
 Administrar A PREENCHER por via oral, a cada 24 horas, durante 5 a 7 dias.
 
-Em seguida, administrar 0,5 mg/kg por via oral, a cada 24 horas, durante 5 a 7 dias.
-
-Depois, administrar 0,5 mg/kg por via oral, a cada 48 horas, por três administrações, e suspender.
-
-Utilizar para controle de crise aguda, evitando manutenção prolongada sempre que houver alternativa.`, {
+Não alterar as etapas sem orientação da equipe.`, {
         canonicalId: 'med-prednisolona',
         presentationFilter: 'oral',
+        followUpPhases: [
+          { doseMultiplier: 0.5, frequency: 'a cada 24 horas', duration: '5 a 7 dias' },
+          { doseMultiplier: 0.5, frequency: 'a cada 48 horas', duration: '3 administrações' },
+        ],
+        patientInstructions: ['Após completar a última etapa prescrita, suspender e manter o acompanhamento. Se a coceira voltar, falar com a equipe antes de reiniciar.'],
       })],
     },
     {
@@ -843,9 +854,10 @@ Utilizar para controle de crise aguda, evitando manutenção prolongada sempre q
 
 Administrar A PREENCHER por via oral, a cada 12 horas, durante 14 dias.
 
-Após os primeiros 14 dias, administrar A PREENCHER por via oral, a cada 24 horas, continuamente até reavaliação.`, {
+O tratamento terá uma etapa de manutenção após os primeiros 14 dias.`, {
         presentations: APOQUEL_ORAL_PRODUCTS,
         presentationFilter: 'oral',
+        followUpPhases: [{ doseMultiplier: 1, frequency: 'a cada 24 horas', duration: 'uso contínuo até reavaliação' }],
       })],
       medicationPrecautions: [
         'Não utilizar em cães com menos de 12 meses',
@@ -917,17 +929,18 @@ Dose clínica: conforme orientação do fabricante.`, {
   ],
   diseaseRecommendations: [
     'Manter controle rigoroso de pulgas e outros ectoparasitas durante todo o ano',
-    'Investigar piodermite, malasseziose e otite por citologia',
-    'Não prescrever antibiótico ou antifúngico sistêmico automaticamente; utilizar conforme citologia, cultura e extensão da infecção',
-    'Considerar dieta de eliminação adequada quando reação cutânea adversa ao alimento ainda não tiver sido excluída',
-    'Informar que a dermatite atópica é crônica e exige manejo contínuo',
+    'Avisar se aparecerem feridas, secreção, mau cheiro na pele ou dor nos ouvidos; pode ser necessário examinar amostras da pele antes de escolher outro remédio',
+    'Não usar antibióticos ou remédios contra fungos por conta própria',
+    'Se a equipe recomendar um teste com alimento especial, oferecer somente esse alimento pelo período combinado, sem petiscos nem restos de comida',
+    'A alergia de pele pode voltar e precisa de acompanhamento mesmo depois de melhorar',
     'Identificar e reduzir exposições ambientais associadas às crises',
-    'Tratar alterações da barreira cutânea com banhos e hidratação regular',
-    'Avaliar imunoterapia alérgeno-específica nos pacientes com doença recorrente ou necessidade contínua de medicamentos',
-    'Utilizar sempre a menor dose eficaz de corticosteroide',
+    'Dar banhos e hidratar a pele somente com os produtos e a frequência prescritos',
+    'Se as crises voltarem com frequência, combinar uma reavaliação para ajustar o controle de longo prazo',
+    'Seguir cada etapa da receita e não aumentar, reduzir ou combinar remédios por conta própria',
   ],
   medicationPrecautions: [
     'Selecionar apenas uma opção sistêmica; não administrar prednisolona, Apoquel e Zenrelia simultaneamente como protocolo rotineiro',
+    'Investigar piodermite, Malassezia e otite por citologia; indicar antimicrobianos conforme diagnóstico. Avaliar dieta de eliminação e imunoterapia alérgeno-específica quando indicadas.',
     'Não associar prednisolona a AINE',
   ],
   returnSigns: [

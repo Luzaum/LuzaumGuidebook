@@ -1,0 +1,1169 @@
+{
+  "researchedAt": "2026-09-05",
+  "market": "Brasil",
+  "source": "https://www.royalcanin.com/br/pt-br/sitemap/sitemap-products.xml",
+  "status": "research_reference",
+  "note": "Inventário oficial para conciliação. Não ativar no cálculo sem análise garantida e energia metabolizável validadas.",
+  "products": [
+    {
+      "officialId": "1612",
+      "name": "Cuidado Digestivo - Patê",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "adult_maintenance",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/digestive-care-loaf-1612"
+    },
+    {
+      "officialId": "4059",
+      "name": "Instinctive Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "adult_maintenance",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/instinctive-gravy-4059"
+    },
+    {
+      "officialId": "2550",
+      "name": "Maine Coon Adult",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/maine-coon-adult-2550"
+    },
+    {
+      "officialId": "2552",
+      "name": "Persa Adult",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/persian-adult-2552"
+    },
+    {
+      "officialId": "2554",
+      "name": "Persa Kitten/Filhote",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/persian-kitten-2554"
+    },
+    {
+      "officialId": "2588",
+      "name": "Boxer Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/boxer-adult-2588"
+    },
+    {
+      "officialId": "3966",
+      "name": "Boxer Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/boxer-puppy-3966"
+    },
+    {
+      "officialId": "3991",
+      "name": "Bulldog Francês Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/french-bulldog-adult-3991"
+    },
+    {
+      "officialId": "3990",
+      "name": "Bulldog Francês Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/french-bulldog-puppy-3990"
+    },
+    {
+      "officialId": "2590",
+      "name": "Bulldog Inglês Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/english-bulldog-adult-2590"
+    },
+    {
+      "officialId": "3967",
+      "name": "Bulldog Inglês Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/bulldog-puppy-3967"
+    },
+    {
+      "officialId": "3059",
+      "name": "Dachshund adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/dachshund-adult-3059"
+    },
+    {
+      "officialId": "2437",
+      "name": "Dachshund Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/dachshund-puppy-2437"
+    },
+    {
+      "officialId": "3970",
+      "name": "Golden Retriever Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/golden-retriever-adult-3970"
+    },
+    {
+      "officialId": "3979",
+      "name": "Golden Retriever Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/golden-retriever-puppy-3979"
+    },
+    {
+      "officialId": "2487",
+      "name": "Labrador Retriever Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/labrador-retriever-adult-2487"
+    },
+    {
+      "officialId": "2491",
+      "name": "labrador-retriever-puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/labrador-retriever-puppy-2491"
+    },
+    {
+      "officialId": "3995",
+      "name": "Maltês Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maltese-adult-3995"
+    },
+    {
+      "officialId": "3998",
+      "name": "Maltês Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maltese-puppy-3998"
+    },
+    {
+      "officialId": "2220",
+      "name": "Miniature Schnauzer Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/miniature-schnauzer-adult-2220"
+    },
+    {
+      "officialId": "2518",
+      "name": "Pastor Alemão Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/german-shepherd-adult-2518"
+    },
+    {
+      "officialId": "2519",
+      "name": "Pastor Alemão Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/german-shepherd-puppy-2519"
+    },
+    {
+      "officialId": "1256",
+      "name": "Pomeranian - Alimento úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/pomeranian-1256"
+    },
+    {
+      "officialId": "1255",
+      "name": "Pomeranian Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/pomeranian-adult-1255"
+    },
+    {
+      "officialId": "3057",
+      "name": "Poodle Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/poodle-adult-3057"
+    },
+    {
+      "officialId": "3985",
+      "name": "Pug Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/pug-adult-3985"
+    },
+    {
+      "officialId": "4130",
+      "name": "Pug Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/pug-puppy-4130"
+    },
+    {
+      "officialId": "3971",
+      "name": "Rottweiler Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/rottweiler-adult-3971"
+    },
+    {
+      "officialId": "3987",
+      "name": "Rottweiler Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/rottweiler-puppy-3987"
+    },
+    {
+      "officialId": "1258",
+      "name": "Shih Tzu - Alimento úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/shih-tzu-1258"
+    },
+    {
+      "officialId": "2200",
+      "name": "Shih Tzu Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/shih-tzu-adult-2200"
+    },
+    {
+      "officialId": "2439",
+      "name": "Shih Tzu Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/shih-tzu-puppy-2439"
+    },
+    {
+      "officialId": "2040",
+      "name": "Yorkshire Terrier - Alimento úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/yorkshire-terrier-2040"
+    },
+    {
+      "officialId": "1260",
+      "name": "Yorkshire Terrier 8+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/yorkshire-terrier-8%2b-1260"
+    },
+    {
+      "officialId": "3051",
+      "name": "Yorkshire Terrier Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/yorkshire-terrier-adult-3051"
+    },
+    {
+      "officialId": "3972",
+      "name": "Yorkshire Terrier Puppy/Filhote",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "breed_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/yorkshire-terrier-puppy-3972"
+    },
+    {
+      "officialId": "2522",
+      "name": "Filhotes / Kitten",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/kitten-2522"
+    },
+    {
+      "officialId": "4058",
+      "name": "Filhotes / Kitten - Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/kitten-chunks-in-gravy-4058"
+    },
+    {
+      "officialId": "2544",
+      "name": "Mother & Babycat",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/mother-%26-babycat-2544"
+    },
+    {
+      "officialId": "4098",
+      "name": "Mother & Babycat Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/mother-%26-babycat-ultra-soft-mousse-4098"
+    },
+    {
+      "officialId": "3030",
+      "name": "Giant Filhotes / Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---giant-3030"
+    },
+    {
+      "officialId": "3031",
+      "name": "Giant Junior",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/junior---giant-3031"
+    },
+    {
+      "officialId": "3003",
+      "name": "Medium Filhotes / Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---medium-3003"
+    },
+    {
+      "officialId": "1098",
+      "name": "Medium Puppy - Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---medium---chunks-in-gravy-1098"
+    },
+    {
+      "officialId": "3000",
+      "name": "Mini Filhotes / Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---mini-3000"
+    },
+    {
+      "officialId": "1099",
+      "name": "Mini Filhotes / Puppy - Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---mini---chunks-in-gravy-1099"
+    },
+    {
+      "officialId": "2990",
+      "name": "Mini Starter - Mother & Babydog",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/starter-mother-%26-babydog---mini-2990"
+    },
+    {
+      "officialId": "3006",
+      "name": "PUPPY - MAXI",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---maxi-3006"
+    },
+    {
+      "officialId": "1002",
+      "name": "X-Small Filhotes / Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "growth_reproduction",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/puppy---x-small-1002"
+    },
+    {
+      "officialId": "4083",
+      "name": "Instinctive 7+ Pedaços ao Molho Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/instinctive-7%2b-gravy-4083"
+    },
+    {
+      "officialId": "3008",
+      "name": "Maxi Adult 5+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-adult-5%2b-3008"
+    },
+    {
+      "officialId": "2454",
+      "name": "Maxi Ageing 8+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-ageing-8%2b-2454"
+    },
+    {
+      "officialId": "3005",
+      "name": "Medium Adult 7+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-adult-7%2b-3005"
+    },
+    {
+      "officialId": "2448",
+      "name": "Medium Ageing 10+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-ageing-10%2b-2448"
+    },
+    {
+      "officialId": "3002",
+      "name": "Mini Adult 8+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-adult-8%2b-3002"
+    },
+    {
+      "officialId": "1093",
+      "name": "Mini Ageing - Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-ageing-1093"
+    },
+    {
+      "officialId": "1007",
+      "name": "Mini Ageing 12+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-ageing-12%2b-1007"
+    },
+    {
+      "officialId": "1004",
+      "name": "X-Small Adult 8+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/x-small-adult-8%2b-1004"
+    },
+    {
+      "officialId": "1005",
+      "name": "X-Small Ageing 12+",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "mature_senior",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/x-small-ageing-12%2b-1005"
+    },
+    {
+      "officialId": "3009",
+      "name": "Giant Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/giant-adult-3009"
+    },
+    {
+      "officialId": "3007",
+      "name": "Maxi Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-adult-3007"
+    },
+    {
+      "officialId": "3004",
+      "name": "Medium Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-adult-3004"
+    },
+    {
+      "officialId": "1095",
+      "name": "medium-adult---pouch",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-adult---pouch-1095"
+    },
+    {
+      "officialId": "3001",
+      "name": "Mini Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-adult-3001"
+    },
+    {
+      "officialId": "1096",
+      "name": "Mini Adult - Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-adult---pouch-1096"
+    },
+    {
+      "officialId": "1003",
+      "name": "X-Small Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "size_specific",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/x-small-adult-1003"
+    },
+    {
+      "officialId": "2563",
+      "name": "Appetite Control / Controle do Apetite",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/appetite-control-care-2563"
+    },
+    {
+      "officialId": "1466",
+      "name": "Appetite Control Gravy",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/appetite-control-care-thin-slices-in-gravy-1466"
+    },
+    {
+      "officialId": "4158",
+      "name": "Care Hairball Bolas de Pelo Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/hairball-care-gravy-4158"
+    },
+    {
+      "officialId": "2532",
+      "name": "Dental Care / Cuidado Dental",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/dental-care-2532"
+    },
+    {
+      "officialId": "2555",
+      "name": "Digestive Care / Cuidado Digestivo",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/digestive-care-2555"
+    },
+    {
+      "officialId": "4076",
+      "name": "Digestive Care Gravy/Pate",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/digestive-care-thin-slices-in-gravy-4076"
+    },
+    {
+      "officialId": "2531",
+      "name": "Exigent",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/savour-exigent-2531"
+    },
+    {
+      "officialId": "2520",
+      "name": "Fit Feline",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/fit-32-2520"
+    },
+    {
+      "officialId": "2526",
+      "name": "Hair & Skin / Pele & Pelagem",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/hair%26skin-care-2526"
+    },
+    {
+      "officialId": "4071",
+      "name": "Hair & Skin / Pele e Pelagem - Patê",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/hair%26skin-care-thin-slices-in-gravy-4071"
+    },
+    {
+      "officialId": "2534",
+      "name": "Hairball Care / Bolas de Pelo",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/hairball-care-2534"
+    },
+    {
+      "officialId": "4070",
+      "name": "Light Weight Care Alimento Úmido - Gravy",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/light-weight-care-thin-slices-in-gravy-4070"
+    },
+    {
+      "officialId": "2524",
+      "name": "light-weight-care",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/light-weight-care-2524"
+    },
+    {
+      "officialId": "2521",
+      "name": "Sensible",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/sensible-33-2521"
+    },
+    {
+      "officialId": "1181",
+      "name": "Dermacomfort Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/dermacomfort-1181"
+    },
+    {
+      "officialId": "1178",
+      "name": "Light Weight Alimento Úmido",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/light-weight-care-1178"
+    },
+    {
+      "officialId": "2444",
+      "name": "Maxi Dermacomfort",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-dermacomfort-2444"
+    },
+    {
+      "officialId": "2390",
+      "name": "Maxi Joint Care",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-joint-care-2390"
+    },
+    {
+      "officialId": "2446",
+      "name": "Maxi Light",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/maxi-light-2446"
+    },
+    {
+      "officialId": "3016",
+      "name": "Medium Cuidado Digestivo / Digestive Care",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-sensible-3016"
+    },
+    {
+      "officialId": "2442",
+      "name": "Medium Dermacomfort",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-dermacomfort-2442"
+    },
+    {
+      "officialId": "3021",
+      "name": "Medium Light",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/medium-light-3021"
+    },
+    {
+      "officialId": "1220",
+      "name": "Mini Cuidado da Pelagem / Mini Coat Care",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-coat-care-1220"
+    },
+    {
+      "officialId": "1221",
+      "name": "Mini Cuidado Dental",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-dental-care-1221"
+    },
+    {
+      "officialId": "2441",
+      "name": "Mini Dermacomfort",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-dermacomfort-2441"
+    },
+    {
+      "officialId": "2447",
+      "name": "Mini Digestive Care",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-digestive-care-2447"
+    },
+    {
+      "officialId": "3018",
+      "name": "Mini Light",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-light-3018"
+    },
+    {
+      "officialId": "1224",
+      "name": "Mini Relax Care",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "specific_care",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-relax-care-1224"
+    },
+    {
+      "officialId": "2537",
+      "name": "Castrados",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/sterilised-37-2537"
+    },
+    {
+      "officialId": "2560",
+      "name": "Castrados 7+",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/sterilised-7%2b-2560"
+    },
+    {
+      "officialId": "2562",
+      "name": "Filhotes Castrados",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/kitten-sterilised-2562"
+    },
+    {
+      "officialId": "4095",
+      "name": "Gatos Castrados - Alimento Úmido",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/sterilised-gravy-4095"
+    },
+    {
+      "officialId": "4147",
+      "name": "Gatos Castrados Alimentos Úmidos - Patê",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/sterilised-loaf-4147"
+    },
+    {
+      "officialId": "2565",
+      "name": "Idosos Castrados 12+",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/ageing-sterilised-12%2b-2565"
+    },
+    {
+      "officialId": "2529",
+      "name": "Indoor",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/indoor-27-2529"
+    },
+    {
+      "officialId": "2548",
+      "name": "Indoor 7+",
+      "species": "cat",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/retail-products/indoor-7%2b-2548"
+    },
+    {
+      "officialId": "2434",
+      "name": "Mini Indoor Adult",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-indoor-adult-2434"
+    },
+    {
+      "officialId": "2433",
+      "name": "Mini Indoor Puppy",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-indoor-puppy-2433"
+    },
+    {
+      "officialId": "2435",
+      "name": "Mini Indoor Senior",
+      "species": "dog",
+      "dietType": "maintenance",
+      "category": "sterilised_indoor",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/retail-products/mini-indoor-senior-2435"
+    },
+    {
+      "officialId": "3930",
+      "name": "Cardiac Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "cardiac",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/cardiac-3930"
+    },
+    {
+      "officialId": "4023",
+      "name": "Cardiac Canine Patê Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "cardiac",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/cardiac-canine-wet-4023"
+    },
+    {
+      "officialId": "3910",
+      "name": "Hypoallergenic Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "dermatology_allergy",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hypoallergenic-dr-21-3910"
+    },
+    {
+      "officialId": "4084",
+      "name": "Hypoallergenic Canine Patê Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "dermatology_allergy",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hypoallergenic-4084"
+    },
+    {
+      "officialId": "3964",
+      "name": "HYPOALLERGENIC MODERATE CALORIE",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "dermatology_allergy",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hypoallergenic-moderate-calorie-3964"
+    },
+    {
+      "officialId": "3952",
+      "name": "Hypoallergenic Small Dog",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "dermatology_allergy",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hypoallergenic-small-dog-hsd-24-3952"
+    },
+    {
+      "officialId": "4006",
+      "name": "Skin Care Adult Small Dog",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "dermatology_allergy",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/skin-care-adult-small-dog-4006"
+    },
+    {
+      "officialId": "3905",
+      "name": "Gastrointestinal Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/gastrointestinal-3905"
+    },
+    {
+      "officialId": "4039",
+      "name": "Gastrointestinal S/O Feline Pedaços ao Molho Alimento Úmido",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/gastrointestinal-4039"
+    },
+    {
+      "officialId": "3911",
+      "name": "Gastro Intestinal Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastro-intestinal-3911"
+    },
+    {
+      "officialId": "4038",
+      "name": "Gastro Intestinal Canine Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastrointestinal-4038"
+    },
+    {
+      "officialId": "3959",
+      "name": "Gastro Intestinal High Fibre Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/fibre-response-3959"
+    },
+    {
+      "officialId": "3932",
+      "name": "Gastro Intestinal Low Fat Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastrointestinal-low-fat-3932"
+    },
+    {
+      "officialId": "4029",
+      "name": "Gastro Intestinal Low Fat Canine Patê Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastrointestinal-low-fat-4029"
+    },
+    {
+      "officialId": "3958",
+      "name": "Gastro Intestinal Moderate Calorie Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastro-intestinal-moderate-calorie-3958"
+    },
+    {
+      "officialId": "3957",
+      "name": "Gastrointestinal Puppy",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "gastrointestinal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/gastrointestinal-puppy-3957"
+    },
+    {
+      "officialId": "4012",
+      "name": "Hepatic Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "hepatic",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/hepatic-4012"
+    },
+    {
+      "officialId": "3927",
+      "name": "Hepatic Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "hepatic",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hepatic-3927"
+    },
+    {
+      "officialId": "4022",
+      "name": "Hepatic Canine Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "hepatic",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/hepatic-4022"
+    },
+    {
+      "officialId": "4055",
+      "name": "Recovery para Cães e Gatos em Recuperação Mousse Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "recovery",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/recovery-4055"
+    },
+    {
+      "officialId": "3900",
+      "name": "Renal Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/renal-3900"
+    },
+    {
+      "officialId": "4030",
+      "name": "Renal Feline Pedaços ao Molho Alimento Úmido",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/renal-with-chicken-wet---pouch-4030"
+    },
+    {
+      "officialId": "3949",
+      "name": "Renal Special Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/renal-special-3949"
+    },
+    {
+      "officialId": "3916",
+      "name": "Renal Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/renal-3916"
+    },
+    {
+      "officialId": "4020",
+      "name": "Renal Canine Patê Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/renal-4020"
+    },
+    {
+      "officialId": "1249",
+      "name": "Renal Canine Small Dog",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/renal-small-dog-1249"
+    },
+    {
+      "officialId": "4161",
+      "name": "Renal Special Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "renal",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/renal-special-dry-4161"
+    },
+    {
+      "officialId": "3901",
+      "name": "Urinary S/O",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "urinary",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/urinary-so-3901"
+    },
+    {
+      "officialId": "4032",
+      "name": "Urinary S/O Feline Pedaços ao Molho Alimento Úmido",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "urinary",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/urinary-so-4032"
+    },
+    {
+      "officialId": "3913",
+      "name": "Urinary S/O",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "urinary",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/urinary-so-3913"
+    },
+    {
+      "officialId": "4021",
+      "name": "Urinary S/O Canine Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "urinary",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/urinary-so-4021"
+    },
+    {
+      "officialId": "3801",
+      "name": "Urinary S/O Small Dog",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "urinary",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/urinary-so-small-dog-3801"
+    },
+    {
+      "officialId": "3906",
+      "name": "Diabetic Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/diabetic-3906"
+    },
+    {
+      "officialId": "3943",
+      "name": "Satiety Feline",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/satiety-weight-management-3943"
+    },
+    {
+      "officialId": "1070",
+      "name": "Satiety Feline Pedaços ao Molho Alimento Úmido",
+      "species": "cat",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/cats/products/vet-products/satiety-weight-management-1070"
+    },
+    {
+      "officialId": "4086",
+      "name": "Diabetic Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/diabetic-dog-4086"
+    },
+    {
+      "officialId": "4015",
+      "name": "Diabetic Special Low Carbohydrate Canine Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/diabetic-special-low-carbohydrate-4015"
+    },
+    {
+      "officialId": "3948",
+      "name": "Satiety Canine",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/satiety-3948"
+    },
+    {
+      "officialId": "4250",
+      "name": "Satiety Canine Alimento Úmido",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/satiety-support-weight-management-4250"
+    },
+    {
+      "officialId": "4252",
+      "name": "Satiety Canine Small Dog",
+      "species": "dog",
+      "dietType": "therapeutic",
+      "category": "weight_diabetes",
+      "sourceUrl": "https://www.royalcanin.com/br/dogs/products/vet-products/satiety-small-dog-4252"
+    }
+  ]
+}

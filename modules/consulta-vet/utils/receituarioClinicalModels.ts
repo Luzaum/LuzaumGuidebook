@@ -175,13 +175,23 @@ function renderMedication(
     index,
     alternativeKey,
   );
-  if (overrideBlock) return overrideBlock;
+  const followUpBlocks = (medication.followUpPhases || []).map((phase) => {
+    const baseDose = override?.selectedDoseValue ?? medication.dose.min;
+    const nextDose = baseDose * phase.doseMultiplier;
+    const phaseOverride = override ? {
+      ...override, selectedDoseValue: nextDose, frequency: phase.frequency, duration: phase.duration,
+    } : undefined;
+    const phaseBlock = buildClinicalMedicationPrescriptionBlock(medication, phaseOverride, weightKg, speciesValue, index, alternativeKey);
+    if (phaseBlock) return phaseBlock.split('\n').slice(1).join('\n').trim().replace(/^Administrar/, 'Em seguida, administrar');
+    const amount = calculateClinicalMedicationAmount({ ...medication, dose: { ...medication.dose, min: nextDose, max: undefined } }, weightKg);
+    return `Em seguida, administrar ${amount} por via ${medication.dose.route}, ${phase.frequency}, ${phase.duration}.`;
+  });
+  if (overrideBlock) return [overrideBlock, ...followUpBlocks, ...(medication.patientInstructions || [])].join('\n\n');
 
-  const alternative = medication.doseAlternatives?.find((item) => item.key === alternativeKey)
-    || medication.doseAlternatives?.[0];
+  const alternative = medication.doseAlternatives?.find((item) => item.key === alternativeKey);
   const resolved = alternative ? { ...medication, dose: alternative.dose, prescriptionText: alternative.prescriptionText } : medication;
   const calculated = calculateClinicalMedicationAmount(resolved, weightKg);
-  const text = resolved.prescriptionText.replace(/A PREENCHER/i, calculated);
+  const text = [resolved.prescriptionText.replace(/A PREENCHER/gi, calculated).replace(/APRESENTAÇÃO A SELECIONAR/g, 'APRESENTAÇÃO: A PREENCHER'), ...followUpBlocks, ...(medication.patientInstructions || [])].join('\n\n');
   const normalizedText = text
     .replace(/^Dose:\s*/gim, `${CLINICAL_DOSE_LABEL} `)
     .replace(/^\d+\./, `${index}.`);
@@ -241,7 +251,8 @@ export function renderClinicalRecipe(
   medicationOverrides: Record<string, ClinicalMedicationOverride> = {},
   speciesValue = '',
 ): string {
-  const selected = model.options.filter((option) => selectedOptionKeys.includes(option.key));
+  const safeKeys = normalizeClinicalOptionKeys(model, selectedOptionKeys);
+  const selected = model.options.filter((option) => safeKeys.includes(option.key));
   let medicationIndex = 1;
   const rawBlocks: string[] = [];
   for (const option of selected) {
@@ -282,12 +293,13 @@ export function renderClinicalRecipe(
     ? formatGroupedPrescriptionBlocks(grouped)
     : rawBlocks.length
       ? rawBlocks.join('\n\n')
-      : 'TRATAMENTOS OPCIONAIS\n\nSelecione os blocos clínicos que deseja incluir nesta receita.';
+      : '';
 
   const sections = [
     model.documentHeading,
     model.hospitalWarning,
     formattedTreatments,
+    listSection('COMO USAR OS MEDICAMENTOS', selected.flatMap((option) => option.patientInstructions || [])),
     listSection('RECOMENDAÇÕES DA DOENÇA', model.diseaseRecommendations),
     inlineTextSection('SINAIS PARA RETORNO', model.returnSigns, 'Retornar diante de '),
     ...(model.appendBodySectionsBuilder?.(weightKg, speciesValue)
@@ -314,6 +326,19 @@ export function getClinicalRecipeObservations(
 export function getDefaultClinicalOptionKeys(model: ClinicalRecipeModel): string[] {
   if (model.selectionMode === 'fixed') return model.options.map((option) => option.key);
   return model.defaultOptionKey ? [model.defaultOptionKey] : [];
+}
+
+/** A última escolha substitui a anterior no mesmo grupo, inclusive em rascunhos antigos. */
+export function normalizeClinicalOptionKeys(model: ClinicalRecipeModel, keys: string[]): string[] {
+  const uniqueKeys = Array.from(new Set(keys)).filter(key => model.options.some(option => option.key === key));
+  if (model.selectionMode === 'single') return uniqueKeys.slice(-1);
+  return uniqueKeys.filter((key, index) => {
+    const option = model.options.find((item) => item.key === key);
+    if (!option) return false;
+    return !option.exclusiveGroup || !uniqueKeys.slice(index + 1).some((next) =>
+      model.options.find((item) => item.key === next)?.exclusiveGroup === option.exclusiveGroup,
+    );
+  });
 }
 
 export function hasTechnicalPlaceholders(value: string): boolean {

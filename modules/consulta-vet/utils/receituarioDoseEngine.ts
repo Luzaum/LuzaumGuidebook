@@ -60,13 +60,42 @@ export function normalizeDoseUnit(value: string): { numerator: string; denominat
   return { numerator, denominator, canonical: denominator ? `${numerator}/${denominator}` : numerator };
 }
 
+function normalizeDoseDenominator(value: unknown): string | null {
+  const normalized = normalizeText(value).replace(/^por\s+/, '').replace('m2', 'm²');
+  if (!normalized) return null;
+  if (/^(animal|cao|canino|gato|felino)$/.test(normalized)) return normalized === 'animal' ? 'animal' : normalized.includes('gat') || normalized.includes('felin') ? 'gato' : 'cão';
+  return normalized;
+}
+
+export function inferTabletSplitIncrement(form: unknown, scoringInfo: unknown): number | null {
+  const normalizedForm = normalizeText(form);
+  if (!/comprim|tablet|dragea/.test(normalizedForm)) return null;
+  const normalizedScoring = normalizeText(scoringInfo);
+  if (/quadr|bissulc|quatro|1\s*\/\s*4/.test(normalizedScoring)) return 0.25;
+  if (/partiv|sulc|meio|1\s*\/\s*2/.test(normalizedScoring)) return 0.5;
+  return null;
+}
+
+/**
+ * Os registros históricos podem guardar a unidade em duas colunas
+ * (`dose_unit: mg` + `per_weight_unit: kg`). Esta função recompõe a unidade
+ * clínica completa sem duplicar denominadores de registros mais novos.
+ */
+export function formatRecommendedDoseUnit(dose: Pick<RecommendedDose, 'dose_unit' | 'per_weight_unit'>): string {
+  const unit = normalizeDoseUnit(dose.dose_unit);
+  if (unit.denominator) return unit.canonical;
+  const denominator = normalizeDoseDenominator(dose.per_weight_unit);
+  return denominator ? `${unit.numerator}/${denominator}` : unit.canonical;
+}
+
 export function resolveAdministrationBasis(dose: RecommendedDose): AdministrationBasis {
   const explicit = normalizeText(dose.administration_basis);
   if (explicit === 'per_animal') return 'per_animal';
   if (explicit === 'per_application_site' || explicit === 'application_per_site') return 'per_application_site';
   if (explicit === 'weight_band') return 'weight_band';
   const unit = normalizeDoseUnit(dose.dose_unit);
-  if (unit.denominator === 'kg' || normalizeText(dose.per_weight_unit) === 'kg') return 'weight_based';
+  const denominator = unit.denominator || normalizeDoseDenominator(dose.per_weight_unit) || '';
+  if (/^kg(?:\/|$)/.test(denominator)) return 'weight_based';
   if (/olho|ouvido|narina|local|sitio|aplicacao/.test(normalizeText(dose.administration_target))) return 'per_application_site';
   return 'per_animal';
 }
@@ -85,12 +114,19 @@ function convertDose(value: number, from: string, to: string): number | null {
   return null;
 }
 
-function presentationAdministrationUnit(presentation: MedicationPresentationRecord): string {
+function presentationAdministrationUnit(
+  presentation: MedicationPresentationRecord,
+  concentrationPerUnit: string | null,
+  metadata: ReturnType<typeof getDoseEngineMetadata>,
+): string {
   const haystack = normalizeText(`${presentation.pharmaceutical_form} ${presentation.presentation_unit} ${presentation.per_unit}`);
   if (/caps/.test(haystack)) return 'cápsula';
   if (/comp|tablet|drag/.test(haystack)) return 'comprimido';
-  if (/gota/.test(haystack)) return 'gota';
-  if (/spray|jato|borrif/.test(haystack)) return 'jato';
+  if (/^ml$/.test(normalizeText(concentrationPerUnit))) {
+    return /gota/.test(haystack) && metadata.drops_per_ml ? 'gota' : 'mL';
+  }
+  if (/gota/.test(normalizeText(concentrationPerUnit)) || /gota/.test(haystack)) return 'gota';
+  if (/spray|jato|borrif|aerossol|pmdi/.test(haystack)) return 'jato';
   if (/ml|solu|susp|xarope|liquid/.test(haystack)) return 'mL';
   return String(presentation.per_unit || presentation.presentation_unit || 'unidade');
 }
@@ -109,6 +145,7 @@ function parsePresentationConcentration(presentation: MedicationPresentationReco
   value: number;
   valueUnit: string;
   perValue: number;
+  perUnit: string | null;
 } | null {
   const concentrationValue = Number(presentation.value);
   const rawValueUnit = String(presentation.value_unit || '').trim();
@@ -126,7 +163,11 @@ function parsePresentationConcentration(presentation: MedicationPresentationReco
       ? explicitPerValue
       : 1;
 
-  return { value: concentrationValue, valueUnit, perValue };
+  const perUnit = (denominatorMatch ? denominatorMatch[2] : rawDenominator)
+    || String(presentation.per_unit || '').trim()
+    || null;
+
+  return { value: concentrationValue, valueUnit, perValue, perUnit };
 }
 
 function roundToIncrement(value: number, increment: number): number {
@@ -149,6 +190,22 @@ function buildAlternatives(exact: number, increment: number, concentrationPerUni
   }).sort((a, b) => Math.abs(a.percentDifference) - Math.abs(b.percentDifference));
 }
 
+export function isPresentationRouteCompatible(presentation: MedicationPresentationRecord | null | undefined, route: string): boolean {
+  if (!presentation) return true;
+  const form = normalizeText(presentation.pharmaceutical_form);
+  const prescribed = normalizeText(route);
+  // Formulações injetáveis convencionais podem ter uso transmucoso explícito (ex.: buprenorfina).
+  if (/\botm\b|transmucos|mucosa.*boc|bucal/.test(prescribed) && /injet|injec/.test(form)) return true;
+  const categories = (value: string) => [
+    /\bvo\b|\bpo\b|oral|comprim|capsul|orodispers/.test(value) ? 'oral' : '',
+    /\biv\b|\bsc\b|\bim\b|injet|injec|intraven|subcut|intramusc/.test(value) ? 'injetável' : '',
+    /inal|inhal|pmdi|aerossol/.test(value) ? 'inalatória' : '',
+  ].filter(Boolean);
+  const available = categories(normalizeText(presentation.metadata?.route) || form);
+  const requested = categories(prescribed);
+  return !available.length || !requested.length || available.some(item => requested.includes(item));
+}
+
 export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalculationResult {
   const basis = resolveAdministrationBasis(input.dose);
   const sourceUnit = normalizeDoseUnit(input.dose.dose_unit);
@@ -163,6 +220,13 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
     alternatives: [],
     requiresConfirmation: false,
   };
+
+  if (!isSpeciesCompatible(input.dose.species, input.species)) {
+    return { ...base, blockedReason: 'Esta dose não está cadastrada para a espécie do paciente.' };
+  }
+  if (!isPresentationRouteCompatible(input.presentation, input.dose.route)) {
+    return { ...base, blockedReason: 'A apresentação selecionada não corresponde à via desta dose. Escolha uma apresentação compatível ou outro regime de administração.' };
+  }
 
   if (!Number.isFinite(input.selectedDoseValue) || input.selectedDoseValue <= 0) {
     return { ...base, blockedReason: 'Informe uma dose válida.' };
@@ -185,7 +249,9 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
   if (!input.presentation) return base;
 
   const presentation = input.presentation;
-  const administrationUnit = presentationAdministrationUnit(presentation);
+  const metadata = getDoseEngineMetadata(presentation);
+  const concentration = parsePresentationConcentration(presentation);
+  const administrationUnit = presentationAdministrationUnit(presentation, concentration?.perUnit || null, metadata);
   if (isDirectAdministrationUnit(sourceUnit.numerator, administrationUnit)) {
     return {
       ...base,
@@ -198,7 +264,6 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
     };
   }
 
-  const concentration = parsePresentationConcentration(presentation);
   if (!concentration) {
     return { ...base, blockedReason: 'A apresentação não possui concentração estruturada para cálculo.' };
   }
@@ -207,14 +272,25 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
     return { ...base, blockedReason: `A unidade ${sourceUnit.numerator} não é compatível com ${concentration.valueUnit}.` };
   }
 
-  const concentrationPerUnit = concentration.value / concentration.perValue;
+  const concentrationPerMeasuredUnit = concentration.value / concentration.perValue;
+  const dropsPerMl = Number(metadata.drops_per_ml);
+  const concentrationPerUnit = administrationUnit === 'gota'
+    && normalizeText(concentration.perUnit) === 'ml'
+    && Number.isFinite(dropsPerMl)
+    && dropsPerMl > 0
+    ? concentrationPerMeasuredUnit / dropsPerMl
+    : concentrationPerMeasuredUnit;
   const exactAmount = convertedTotal / concentrationPerUnit;
-  const metadata = getDoseEngineMetadata(presentation);
   const isCapsule = administrationUnit === 'cápsula';
   const isTablet = administrationUnit === 'comprimido';
+  const isDrop = administrationUnit === 'gota';
+  const isActuation = /^(jato|puff|dose|acionamento)$/i.test(administrationUnit);
+  if (isActuation && Math.abs(exactAmount - Math.round(exactAmount)) > 1e-8) {
+    return { ...base, exactAmount, administrationUnit, blockedReason: 'A dose exige uma fração de jato, que esta bombinha não fornece. Escolha outra concentração ou revise a dose clínica; não arredonde os jatos automaticamente.' };
+  }
   const configuredIncrement = Number(presentation.tablet_split_increment ?? metadata.split_increment);
   const hasConfiguredIncrement = Number.isFinite(configuredIncrement) && configuredIncrement > 0;
-  const increment = metadata.whole_unit_only || isCapsule
+  const increment = metadata.whole_unit_only || isCapsule || isDrop || isActuation
     ? 1
     : isTablet
       ? hasConfiguredIncrement ? configuredIncrement : 1
@@ -237,6 +313,7 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
     const tolerance = input.roundingTolerancePercent ?? 10;
     const rounded = Math.abs(selected.amount - exactAmount) > 1e-9;
     const missingTabletDivisibility = isTablet && !hasConfiguredIncrement && !metadata.whole_unit_only;
+    const unsafeOverdose = selected.percentDifference > 25;
     return {
       ...base,
       totalDose: convertedTotal,
@@ -247,8 +324,13 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
       actualDosePerBasis: selected.actualDosePerBasis,
       percentDifference: selected.percentDifference,
       alternatives,
-      requiresConfirmation: rounded,
-      warning: missingTabletDivisibility
+      requiresConfirmation: rounded && !unsafeOverdose,
+      blockedReason: unsafeOverdose
+        ? `A apresentação escolhida forneceria ${Math.abs(selected.percentDifference).toFixed(1).replace('.', ',')}% a mais do que a dose calculada. Escolha outra concentração ou apresentação.`
+        : undefined,
+      warning: unsafeOverdose
+        ? undefined
+        : missingTabletDivisibility
         ? 'Divisibilidade não cadastrada; por segurança, a quantidade foi limitada a comprimidos inteiros.'
         : Math.abs(selected.percentDifference) > tolerance
         ? `A diferença de ${Math.abs(selected.percentDifference).toFixed(1).replace('.', ',')}% excede a tolerância de ${tolerance}%.`
@@ -270,4 +352,17 @@ export function calculateReceituarioDose(input: DoseCalculationInput): DoseCalcu
 
 export function formatDecimalPtBr(value: number, maximumFractionDigits = 3): string {
   return new Intl.NumberFormat('pt-BR', { maximumFractionDigits }).format(value);
+}
+
+export function formatAdministrationAmount(amount: number, unit: string): string {
+  const singular = String(unit || '').trim();
+  const pluralByUnit: Record<string, string> = {
+    comprimido: 'comprimidos',
+    'cápsula': 'cápsulas',
+    gota: 'gotas',
+    jato: 'jatos',
+    unidade: 'unidades',
+  };
+  const displayUnit = amount > 1 ? pluralByUnit[singular] || singular : singular;
+  return `${formatDecimalPtBr(amount)} ${displayUnit}`.trim();
 }

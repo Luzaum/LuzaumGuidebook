@@ -1,0 +1,15 @@
+### Result
+Total messages: 7 (Errors: 1, Warnings: 1)
+Returning 1 messages for level "error"
+
+TypeError: Cannot destructure property 'basename' of 'React10.useContext(...)' as it is null.
+    at LinkWithRef (http://localhost:5173/node_modules/.vite/deps/react-router-dom.js?v=d621977b:11081:11)
+    at Object.react_stack_bottom_frame (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:18509:20)
+    at renderWithHooks (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:5654:24)
+    at updateForwardRef (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:7198:21)
+    at beginWork (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:8735:20)
+    at runWithFiberInDEV (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:997:72)
+    at performUnitOfWork (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:12561:98)
+    at workLoopSync (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:12424:43)
+    at renderRootSync (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:12408:13)
+    at performWorkOnRoot (http://localhost:5173/node_modules/.vite/deps/react-dom_client.js?v=d621977b:11827:37)

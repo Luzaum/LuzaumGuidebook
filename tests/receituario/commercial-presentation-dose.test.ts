@@ -4,6 +4,7 @@ import { itraconazolePrednisoloneCommercialProductsSeed } from '../../modules/co
 import { commercialOticProductsSeed } from '../../modules/consulta-vet/data/commercialOticProducts.seed';
 import { buildClinicalMedicationPrescriptionBlock, buildDefaultClinicalMedicationOverride } from '../../modules/consulta-vet/utils/clinicalMedicationCatalogBridge';
 import {
+  buildCommercialMedicationPresentationRecords,
   buildReceituarioCommercialSelectOptions,
   calculateCommercialPracticalDose,
   evaluateCompoundingRecommendation,
@@ -12,6 +13,8 @@ import {
   parseCommercialPotencies,
 } from '../../modules/consulta-vet/utils/commercialPresentationDose';
 import { RECEITUARIO_INFECTOLOGIA_MODELS } from '../../modules/consulta-vet/data/receituarioInfectologiaModels';
+import { buildCommercialProductRecommendedDoses, searchPrescriptionCommercialProducts } from '../../modules/consulta-vet/services/receituarioCommercialCatalogService';
+import { isTakeHomePresentationRecord } from '../../modules/consulta-vet/utils/receituarioTakeHome';
 
 const eurofarma = itraconazolePrednisoloneCommercialProductsSeed.find((item) => item.id === 'itraconazol-eurofarma-100mg')!;
 const decrise = commercialOticProductsSeed.find((item) => item.id === 'decrise-avert')!;
@@ -101,6 +104,42 @@ test('solução oral comercial é convertida para mL', () => {
   const practical = calculateCommercialPracticalDose(vonau as never, 2.5);
   assert.ok(practical);
   assert.equal(practical!.displayAmount, '0,5 mL');
+});
+
+test('Maxicam mantém somente as apresentações domiciliares', () => {
+  const product = commercialOticProductsSeed.find((item) => item.id === 'maxicam-ourofino')!;
+  const presentations = buildCommercialMedicationPresentationRecords(product);
+  assert.equal(presentations.length, 3);
+  assert.ok(presentations.some((item) => item.value === 0.5 && item.value_unit === 'mg' && item.presentation_unit === 'comprimido'));
+  assert.ok(presentations.some((item) => item.value === 2 && item.value_unit === 'mg' && item.presentation_unit === 'comprimido'));
+  assert.ok(presentations.some((item) => item.value === 1 && item.value_unit === 'mg/mL'));
+  assert.ok(!presentations.some((item) => /injet/i.test(`${item.pharmaceutical_form} ${item.metadata?.original_label}`)));
+  assert.ok(presentations.every(isTakeHomePresentationRecord));
+
+  const options = buildReceituarioCommercialSelectOptions([product]);
+  const twoMgOptions = options.filter((item) => item.potencyMg === 2);
+  assert.deepEqual(twoMgOptions.map((item) => item.unitLabel).sort(), ['comprimido']);
+  assert.equal(new Set(twoMgOptions.map((item) => item.optionKey)).size, 1);
+  assert.equal(calculateCommercialPracticalDose(product, 2, 2, 'comprimido')?.displayAmount, '1 comprimido');
+  assert.equal(calculateCommercialPracticalDose(product, 2, 2, 'mL'), null);
+});
+
+test('apresentação comercial com várias potências gera uma opção por concentração', () => {
+  const product = commercialOticProductsSeed.find((item) => item.id === 'cerenia-zoetis')!;
+  const presentations = buildCommercialMedicationPresentationRecords(product);
+  assert.deepEqual(presentations.map((item) => item.value), [16, 24, 60, 160]);
+});
+
+test('dose estruturada da aba Comerciais fica selecionável no receituário', async () => {
+  const entry = (await searchPrescriptionCommercialProducts({ query: 'Vonau Vet' }))
+    .find((item) => item.metadata?.commercial_product_id === 'vonau-vet-avert')!;
+  assert.ok(entry);
+  const doses = buildCommercialProductRecommendedDoses(entry, 'dog');
+  assert.equal(doses.length, 1);
+  assert.equal(doses[0].dose_value, 0.5);
+  assert.equal(doses[0].dose_max, 1);
+  assert.equal(doses[0].route, 'VO');
+  assert.equal(doses[0].frequency, 'a cada 12 horas');
 });
 
 test('ignora linhas de embalagem sem concentração ao interpretar apresentação comercial', () => {

@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 540" fill="none" role="img" aria-labelledby="title-sistema desc-sistema">
+  <title id="title-sistema">Sistema Fechado de Drenagem Urinária e Prevenção de ITU (ISCAID / iCatCare)</title>
+  <desc id="desc-sistema">Diagrama de montagem e boas práticas do cateter de demora Foley, circuito fechado de drenagem, posicionamento da bolsa coletora e prevenção de infecção do trato urinário associada ao cateter.</desc>
+
+  <defs>
+    <linearGradient id="bgSys" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelSys" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="urineSys" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <filter id="boxShadowSys" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <style>
+    .font-sans { font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  </style>
+
+  <!-- Background -->
+  <rect width="880" height="540" rx="20" fill="url(#bgSys)" stroke="#1e293b" stroke-width="1.5" />
+
+  <!-- Subtle Grid overlay -->
+  <g opacity="0.03" stroke="#ffffff" stroke-width="1">
+    <path d="M0,67 L880,67 M0,135 L880,135 M0,202 L880,202 M0,270 L880,270 M0,337 L880,337 M0,405 L880,405 M0,472 L880,472" />
+    <path d="M110,0 L110,540 M220,0 L220,540 M330,0 L330,540 M440,0 L440,540 M550,0 L550,540 M660,0 L660,540 M770,0 L770,540" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(30, 24)">
+    <rect x="0" y="0" width="200" height="22" rx="11" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" stroke-opacity="0.4" />
+    <text x="100" y="15" text-anchor="middle" fill="#34d399" font-size="10" font-weight="700" letter-spacing="0.1em" class="font-sans">MANUTENÇÃO &amp; CONTROLE DE ITU</text>
+    
+    <text x="0" y="44" fill="#f8fafc" font-size="20" font-weight="800" class="font-sans">Sistema Fechado de Drenagem Urinária &amp; Diretrizes ISCAID / iCatCare</text>
+    <text x="0" y="62" fill="#94a3b8" font-size="12" class="font-sans">Segurança do balão Foley, circuito antirrefluxo gravitacional e uso racional de antimicrobianos</text>
+  </g>
+
+  <!-- MAIN CIRCUIT DIAGRAM (Left Side) -->
+  <g transform="translate(30, 95)">
+    <rect width="520" height="420" rx="14" fill="url(#panelSys)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowSys)" />
+
+    <!-- Panel Title -->
+    <text x="20" y="28" fill="#f8fafc" font-size="14" font-weight="700" class="font-sans">Circuito de Drenagem Gravitacional Fechado</text>
+    <text x="20" y="44" fill="#94a3b8" font-size="11" class="font-sans">Bolsa sempre ABAIXO do paciente e NUNCA repousando no piso</text>
+
+    <!-- Bladder and Foley Schematic -->
+    <g transform="translate(40, 60)">
+      <!-- Animal Bed Line -->
+      <line x1="0" y1="90" x2="180" y2="90" stroke="#475569" stroke-width="2" stroke-dasharray="4,4" />
+      <text x="5" y="82" fill="#64748b" font-size="10" font-weight="600" class="font-sans">NÍVEL DO PACIENTE / LEITO</text>
+
+      <!-- Bladder -->
+      <ellipse cx="75" cy="40" rx="45" ry="30" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="2" />
+      <text x="75" y="32" text-anchor="middle" fill="#fbbf24" font-size="10" font-weight="700" class="font-sans">Bexiga Urinária</text>
+
+      <!-- Foley Balloon inflated INSIDE bladder -->
+      <circle cx="75" cy="52" r="14" fill="#38bdf8" fill-opacity="0.3" stroke="#0284c7" stroke-width="2" />
+      <circle cx="75" cy="52" r="6" fill="#38bdf8" />
+      <text x="75" y="55" text-anchor="middle" fill="#ffffff" font-size="8" font-weight="800" class="font-sans">Balão</text>
+
+      <!-- Balloon Annotation -->
+      <line x1="90" y1="52" x2="150" y2="35" stroke="#38bdf8" stroke-width="1" />
+      <rect x="150" y="20" width="130" height="34" rx="4" fill="#0f172a" stroke="#0284c7" stroke-width="0.8" />
+      <text x="156" y="33" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">Balão de Foley (Intravesical)</text>
+      <text x="156" y="46" fill="#94a3b8" font-size="7.5" class="font-sans">• Apenas Água Estéril!</text>
+
+      <!-- Catheter tube exiting urethra -->
+      <path d="M 75 70 L 75 110 L 140 110" fill="none" stroke="#22c55e" stroke-width="4" stroke-linecap="round" />
+      <text x="95" y="105" fill="#4ade80" font-size="8.5" font-weight="700" class="font-sans">Sonda Foley</text>
+
+      <!-- Two-way hub -->
+      <g transform="translate(140, 98)">
+        <rect width="40" height="24" rx="4" fill="#334155" stroke="#64748b" stroke-width="1" />
+        <text x="20" y="15" text-anchor="middle" fill="#f8fafc" font-size="7.5" font-weight="700" class="font-sans">Y-Hub</text>
+        <!-- Balloon port branch -->
+        <line x1="20" y1="98" x2="20" y2="85" stroke="#38bdf8" stroke-width="2" />
+      </g>
+
+      <!-- Sampling Port with disinfection prompt -->
+      <g transform="translate(200, 95)">
+        <rect width="110" height="30" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1" />
+        <circle cx="15" cy="15" r="5" fill="#f59e0b" />
+        <text x="26" y="14" fill="#fbbf24" font-size="8" font-weight="700" class="font-sans">Porta de Amostragem</text>
+        <text x="26" y="24" fill="#94a3b8" font-size="7.5" class="font-sans">Álcool 70% antes de puncionar</text>
+      </g>
+
+      <!-- Connecting Tubing down to bag -->
+      <path d="M 180 110 L 255 110 C 275 110, 275 150, 275 180 L 275 220" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+
+      <!-- Anti-reflux valve -->
+      <g transform="translate(255, 175)">
+        <rect width="40" height="22" rx="4" fill="#0284c7" stroke="#38bdf8" stroke-width="1" />
+        <text x="20" y="14" text-anchor="middle" fill="#ffffff" font-size="7.5" font-weight="700" class="font-sans">Válvula</text>
+      </g>
+      <text x="302" y="190" fill="#38bdf8" font-size="8" font-weight="700" class="font-sans">Válvula Antirrefluxo</text>
+
+      <!-- Urine Drainage Bag -->
+      <g transform="translate(230, 220)">
+        <rect width="90" height="110" rx="8" fill="#1e293b" stroke="#cbd5e1" stroke-width="1.5" />
+        
+        <!-- Graduated markings -->
+        <line x1="240" y1="245" x2="250" y2="245" stroke="#94a3b8" stroke-width="1" />
+        <line x1="240" y1="265" x2="255" y2="265" stroke="#94a3b8" stroke-width="1" />
+        <line x1="240" y1="285" x2="250" y2="285" stroke="#94a3b8" stroke-width="1" />
+        <line x1="240" y1="305" x2="260" y2="305" stroke="#94a3b8" stroke-width="1" />
+
+        <!-- Urine liquid level in bag -->
+        <rect x="2" y="55" width="86" height="53" rx="6" fill="url(#urineSys)" fill-opacity="0.5" />
+        <text x="45" y="85" text-anchor="middle" fill="#fef08a" font-size="9" font-weight="800" class="font-sans">Urina</text>
+        <text x="45" y="97" text-anchor="middle" fill="#f8fafc" font-size="7" class="font-sans">(Débito ml/kg/h)</text>
+
+        <!-- Emptying spigot at bottom -->
+        <rect x="38" y="110" width="14" height="12" fill="#475569" rx="2" />
+      </g>
+
+      <!-- Floor Level line and Warning -->
+      <line x1="0" y1="345" x2="440" y2="345" stroke="#ef4444" stroke-width="2" />
+      <text x="5" y="340" fill="#f87171" font-size="9" font-weight="700" class="font-sans">CHÃO / PISO HOSPITALAR</text>
+
+      <g transform="translate(210, 322)">
+        <rect width="130" height="18" rx="4" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="0.8" />
+        <text x="65" y="12" text-anchor="middle" fill="#f87171" font-size="8" font-weight="800" class="font-sans">⛔ NUNCA TOCAR NO CHÃO!</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- RIGHT CARDS: ISCAID GUIDELINES & FOLEY RULES -->
+  <g transform="translate(570, 95)">
+    <!-- Card 1: Regras do Balão Foley -->
+    <rect width="280" height="195" rx="14" fill="url(#panelSys)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowSys)" />
+    
+    <g transform="translate(16, 16)">
+      <rect width="24" height="24" rx="6" fill="#ef4444" fill-opacity="0.15" />
+      <text x="12" y="16" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="800" class="font-sans">⚠️</text>
+      <text x="32" y="16" fill="#f87171" font-size="12" font-weight="800" class="font-sans">REGRAS DO BALÃO DE FOLEY</text>
+
+      <g transform="translate(0, 32)">
+        <text x="0" y="12" fill="#f1f5f9" font-size="10" font-weight="700" class="font-sans">1. Confirmação Prévia Obrigatória:</text>
+        <text x="8" y="24" fill="#94a3b8" font-size="9" class="font-sans">Nunca insufle o balão antes de obter fluxo</text>
+        <text x="8" y="36" fill="#94a3b8" font-size="9" class="font-sans">espontâneo de urina e avançar mais 1–2 cm.</text>
+
+        <text x="0" y="54" fill="#f1f5f9" font-size="10" font-weight="700" class="font-sans">2. Somente Água Estéril:</text>
+        <text x="8" y="66" fill="#94a3b8" font-size="9" class="font-sans">Salina cristaliza no canal do balonete;</text>
+        <text x="8" y="78" fill="#94a3b8" font-size="9" class="font-sans">ar flutua e não ancora adequadamente.</text>
+
+        <text x="0" y="96" fill="#f1f5f9" font-size="10" font-weight="700" class="font-sans">3. Tracionar Delicadamente:</text>
+        <text x="8" y="108" fill="#94a3b8" font-size="9" class="font-sans">Após insuflar o volume rotulado, tracione até</text>
+        <text x="8" y="120" fill="#94a3b8" font-size="9" class="font-sans">sentir resistência suave no colo vesical.</text>
+
+        <rect x="0" y="128" width="248" height="26" rx="4" fill="#ef4444" fill-opacity="0.15" stroke="#ef4444" stroke-width="0.8" />
+        <text x="8" y="145" fill="#fca5a5" font-size="8.5" font-weight="700" class="font-sans">Insuflar na uretra = RUPTURA URETRAL GRAVE!</text>
+      </g>
+    </g>
+
+    <!-- Card 2: ISCAID 2019 / iCatCare Guidelines -->
+    <g transform="translate(0, 210)">
+      <rect width="280" height="210" rx="14" fill="url(#panelSys)" stroke="#334155" stroke-width="1.2" filter="url(#boxShadowSys)" />
+      
+      <g transform="translate(16, 16)">
+        <rect width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.15" />
+        <text x="12" y="16" text-anchor="middle" fill="#34d399" font-size="12" font-weight="800" class="font-sans">✓</text>
+        <text x="32" y="16" fill="#34d399" font-size="12" font-weight="800" class="font-sans">CONTROLE DE ITU (ISCAID 2019)</text>
+
+        <g transform="translate(0, 30)">
+          <text x="0" y="12" fill="#fbbf24" font-size="9.5" font-weight="700" class="font-sans">🚫 Sem Antibiótico Profilático:</text>
+          <text x="8" y="24" fill="#94a3b8" font-size="8.5" class="font-sans">Não previne ITU; apenas seleciona cepas</text>
+          <text x="8" y="35" fill="#94a3b8" font-size="8.5" class="font-sans">hospitalares multirresistentes.</text>
+
+          <text x="0" y="52" fill="#38bdf8" font-size="9.5" font-weight="700" class="font-sans">🚫 Não Cultivar Ponta da Sonda ou Bolsa:</text>
+          <text x="8" y="64" fill="#94a3b8" font-size="8.5" class="font-sans">Reflete apenas biofilme / colonização;</text>
+          <text x="8" y="75" fill="#94a3b8" font-size="8.5" class="font-sans">colha urina por cistocentese ou porta estéril.</text>
+
+          <text x="0" y="92" fill="#a855f7" font-size="9.5" font-weight="700" class="font-sans">⏱️ Menor Tempo Possível:</text>
+          <text x="8" y="104" fill="#94a3b8" font-size="8.5" class="font-sans">Reavalie a necessidade a cada 12–24h.</text>
+          <text x="8" y="115" fill="#94a3b8" font-size="8.5" class="font-sans">Remover assim que o paciente estabilizar.</text>
+
+          <rect x="0" y="126" width="248" height="28" rx="4" fill="#0284c7" fill-opacity="0.15" stroke="#0284c7" stroke-width="0.8" />
+          <text x="8" y="140" fill="#38bdf8" font-size="8.5" font-weight="700" class="font-sans">Bacteriúria em sondados varia de 10% a 55%.</text>
+          <text x="8" y="150" fill="#94a3b8" font-size="7.5" class="font-sans">Apenas trate se houver sinais clínicos de cistite/pielonefrite.</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -51,6 +51,29 @@ test('síndrome vestibular felina usa maropitant ou ondansetrona em seleção ú
   assert.doesNotMatch(body, /SINAIS PARA RETORNO/i);
 });
 
+test('recalcula apresentação do maropitant quando a espécie muda para gato', () => {
+  const model = RECEITUARIO_NEUROLOGIA_MODELS.find((item) => item.id === 'seed-sindrome-vestibular-gato')!.structured_defaults!.clinical_model!;
+  const medication = model.options.find((item) => item.key === 'maropitant')!.medications![0];
+  const staleDogDefaults = buildClinicalMedicationOverridesMap([medication], 'Cão', {}, {}, 4);
+  const catOverrides = buildClinicalMedicationOverridesMap([medication], 'Gato', {}, staleDogDefaults, 4);
+  const body = renderClinicalRecipe(model, ['maropitant'], 4, null, 'cápsula', {}, catOverrides, 'Gato');
+
+  assert.match(body, /MAROPITANT — MANIPULADO — 4 MG\/CÁPSULA/i);
+  assert.match(body, /Administrar 1 cápsula/i);
+  assert.doesNotMatch(body, /ERRO DE DOSE|APRESENTAÇÃO A SELECIONAR/i);
+});
+
+test('recalcula apresentação automática quando o peso muda', () => {
+  const model = RECEITUARIO_NEUROLOGIA_MODELS.find((item) => item.id === 'seed-sindrome-vestibular-gato')!.structured_defaults!.clinical_model!;
+  const medication = model.options.find((item) => item.key === 'maropitant')!.medications![0];
+  const tenKgDefaults = buildClinicalMedicationOverridesMap([medication], 'Gato', {}, {}, 10);
+  const fourKgOverrides = buildClinicalMedicationOverridesMap([medication], 'Gato', {}, tenKgDefaults, 4);
+  const body = renderClinicalRecipe(model, ['maropitant'], 4, null, 'cápsula', {}, fourKgOverrides, 'Gato');
+
+  assert.match(body, /MAROPITANT — MANIPULADO — 4 MG\/CÁPSULA/i);
+  assert.doesNotMatch(body, /ERRO DE DOSE|APRESENTAÇÃO A SELECIONAR/i);
+});
+
 test('síndrome vestibular canina inclui meclizina opcional e sinais centrais', () => {
   const model = RECEITUARIO_NEUROLOGIA_MODELS.find((item) => item.id === 'seed-sindrome-vestibular-cao')!.structured_defaults!.clinical_model!;
   assert.ok(model.options.some((item) => item.key === 'meclizine' && item.optional));

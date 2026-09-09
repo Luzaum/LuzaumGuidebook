@@ -21,6 +21,11 @@ const UI_TEXT = {
   empty: 'Nenhum guia corresponde à busca ou ao filtro.',
 } as const;
 
+const titleCollator = new Intl.Collator('pt-BR', {
+  sensitivity: 'base',
+  numeric: true,
+});
+
 /** Remove marcas diacríticas latinas — evita `\p{M}` (Unicode property), incompatível com alguns WebViews/navegadores. */
 function normalize(s: string) {
   return s
@@ -77,14 +82,16 @@ export function ClinicalQuickGuidesPage() {
   );
 
   const filtered = useMemo(() => {
-    return guides.filter((g) => {
-      if (category !== 'all' && g.category !== category) return false;
-      return matchesQuery(g, deferredQuery);
-    });
+    return guides
+      .filter((g) => {
+        if (category !== 'all' && g.category !== category) return false;
+        return matchesQuery(g, deferredQuery);
+      })
+      .sort((a, b) => titleCollator.compare(a.title, b.title));
   }, [guides, category, deferredQuery]);
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] space-y-8 p-4 md:p-8">
+    <div className="mx-auto w-full max-w-[1200px] space-y-4 p-4 md:p-6">
       <nav
         className="consulta-vet-breadcrumb flex flex-wrap items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
         aria-label="Navegação estrutural"
@@ -97,17 +104,11 @@ export function ClinicalQuickGuidesPage() {
       </nav>
 
       <ConsultaVetPageHero
-        eyebrow="Consulta objetiva"
         title={UI_TEXT.title}
         description={UI_TEXT.lead}
         icon={BookOpen}
         accent="emerald"
-        footer={
-          <div className="rounded-2xl border border-primary/18 bg-primary/[0.06] px-5 py-5 md:px-6">
-            <h2 className="text-sm font-bold text-foreground">{UI_TEXT.howTitle}</h2>
-            <p className="mt-2 text-sm leading-7 text-muted-foreground">{UI_TEXT.howBody}</p>
-          </div>
-        }
+        compact
       />
 
       {error ? (
@@ -121,7 +122,6 @@ export function ClinicalQuickGuidesPage() {
             aria-hidden
           />
           <input
-            type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={UI_TEXT.searchPlaceholder}
@@ -170,7 +170,7 @@ export function ClinicalQuickGuidesPage() {
           {UI_TEXT.empty}
         </p>
       ) : (
-        <section className="grid grid-cols-1 gap-5 md:grid-cols-2" aria-label="Lista de guias">
+        <section className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Lista de guias">
           {filtered.map((g) => (
             <ClinicalQuickGuideCard
               key={g.id}

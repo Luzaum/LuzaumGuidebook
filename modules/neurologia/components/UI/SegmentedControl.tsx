@@ -23,7 +23,7 @@ export function SegmentedControl({
   return (
     <div
       className={cn(
-        'flex p-1 bg-white/5 rounded-xl border border-white/10',
+        'flex p-1 bg-muted/60 rounded-xl border border-border',
         className,
       )}
     >
@@ -35,10 +35,10 @@ export function SegmentedControl({
             type="button"
             onClick={() => onChange(option.value)}
             className={cn(
-              'flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all',
+              'flex-1 flex items-center justify-center gap-2 px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all',
               isActive
-                ? 'bg-gold text-neutral-deep shadow-lg'
-                : 'text-white/60 hover:text-white hover:bg-white/5',
+                ? 'bg-gold text-slate-950 shadow-md ring-1 ring-gold/40'
+                : 'text-muted-foreground hover:text-foreground hover:bg-background/50',
             )}
           >
             {option.icon}

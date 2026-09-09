@@ -50,6 +50,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'sindrome-cutanea-atopica-felina',
   'doenca-do-disco-intervertebral-caes',
   'doenca-do-disco-intervertebral-gatos',
+  'coagulacao-intravascular-disseminada-caes-gatos',
 ] as const;
 
 

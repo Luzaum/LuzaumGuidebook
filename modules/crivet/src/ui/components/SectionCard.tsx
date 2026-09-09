@@ -9,6 +9,7 @@ interface SectionCardProps {
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
+  complete?: boolean;
 }
 
 export const SectionCard: React.FC<SectionCardProps> = ({
@@ -18,15 +19,16 @@ export const SectionCard: React.FC<SectionCardProps> = ({
   subtitle,
   children,
   className,
+  complete = false,
 }) => (
   <section
     className={cn(
-      'rounded-2xl border border-slate-200/80 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900 md:p-5',
+      'rounded-[22px] border border-slate-200 bg-white p-4 shadow-[0_1px_2px_rgba(15,23,42,0.03)] dark:border-slate-800 dark:bg-slate-900 md:p-6',
       className,
     )}
   >
-    <div className="mb-4 flex items-center gap-3">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300">
+    <div className="mb-5 flex items-center gap-3">
+      <div className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-sm font-bold', complete ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300' : 'bg-slate-950 text-white dark:bg-white dark:text-slate-950')}>
         {step != null ? (
           <span className="text-sm font-bold">{step}</span>
         ) : (
@@ -34,7 +36,7 @@ export const SectionCard: React.FC<SectionCardProps> = ({
         )}
       </div>
       <div className="min-w-0">
-        <h2 className="text-base font-semibold text-slate-900 dark:text-white">{title}</h2>
+        <h2 className="text-base font-bold tracking-tight text-slate-950 dark:text-white">{title}</h2>
         {subtitle && (
           <p className="text-xs text-slate-500 dark:text-slate-400">{subtitle}</p>
         )}

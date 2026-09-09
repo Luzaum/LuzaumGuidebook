@@ -1,0 +1,213 @@
+- main [ref=f2e3]:
+  - heading "Validação isolada dos componentes reais — dados fictícios" [level=1] [ref=f2e4]
+  - generic [ref=f2e5]:
+    - text: Modelo
+    - combobox "Modelo" [ref=f2e6]:
+      - option "Esporotricose — Gatos"
+      - option "Esporotricose — Cães"
+      - option "Cinomose — Cães"
+      - option "Erliquiose/Anaplasmose — Cães"
+      - option "Pós-operatório de castração — Cadela"
+      - option "Pós-operatório de castração — Gata"
+      - option "Pós-operatório de castração — Cão macho"
+      - option "Pós-operatório de castração — Gato macho"
+      - option "Gastroenterite aguda não complicada — Cão"
+      - option "Colapso de traqueia — Cão"
+      - option "Asma felina"
+      - option "Manejo de ferida pós-operatória"
+      - option "Dermatite atópica — Cão"
+      - option "Pancreatite — Cão (após estabilização)"
+      - option "Pancreatite — Gato (após estabilização)" [selected]
+      - option "Tríade felina — tratamento individualizado"
+      - option "Diabetes mellitus — Cão — Caninsulin"
+      - option "Diabetes mellitus — Cão — Insulina NPH"
+      - option "Diabetes mellitus — Cão — Glargina U-100"
+      - option "Diabetes mellitus — Cão — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Glargina U-100"
+      - option "Diabetes mellitus — Gato — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Caninsulin"
+      - option "Trauma vertebromedular — Cão"
+      - option "Trauma vertebromedular — Gato"
+      - option "Hérnia de disco — Cão (manejo conservador)"
+      - option "Síndrome vestibular — Cão"
+      - option "Síndrome vestibular — Gato"
+  - generic [ref=f2e7]:
+    - text: Espécie
+    - combobox "Espécie" [ref=f2e8]:
+      - option "gato" [selected]
+      - option "cão"
+  - generic [ref=f2e9]:
+    - text: Peso
+    - textbox "Peso" [ref=f2e10]: "4"
+  - generic [ref=f2e11]:
+    - generic [ref=f2e12]:
+      - region "Configuração clínica do modelo" [ref=f2e13]:
+        - generic [ref=f2e14]:
+          - generic [ref=f2e15]:
+            - heading "Suporte após avaliação e estabilização" [level=3] [ref=f2e16]
+            - paragraph [ref=f2e17]: Marque somente os blocos que deseja prescrever.
+          - generic [ref=f2e18]: Dose do modelo · revisão de fonte pendente
+        - generic [ref=f2e22]:
+          - button "Maropitant oral — vômitos, paciente estável Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação." [ref=f2e23] [cursor=pointer]:
+            - generic [ref=f2e26]:
+              - generic [ref=f2e27]: Maropitant oral — vômitos, paciente estável
+              - generic [ref=f2e28]: Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação.
+          - button "Ondansetrona oral — náusea persistente Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica." [ref=f2e29] [cursor=pointer]:
+            - generic [ref=f2e32]:
+              - generic [ref=f2e33]: Ondansetrona oral — náusea persistente
+              - generic [ref=f2e34]: Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica.
+          - button "Buprenorfina na mucosa da boca — dor em gato Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium." [ref=f2e35] [cursor=pointer]:
+            - generic [ref=f2e38]:
+              - generic [ref=f2e39]: Buprenorfina na mucosa da boca — dor em gato
+              - generic [ref=f2e40]: Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium.
+        - paragraph [ref=f2e41]: Nenhum tratamento opcional foi incluído. As recomendações continuam disponíveis para revisão.
+        - paragraph [ref=f2e44]: Não é protocolo de internação. Confirmar hidratação, analgesia, ingestão e necessidade de sonda. Selecionar apenas medicamentos indicados; nenhuma medicação é inserida automaticamente.
+      - generic [ref=f2e48]:
+        - generic [ref=f2e159]:
+          - generic [ref=f2e160]:
+            - paragraph [ref=f2e161]: Princípio ativo selecionado
+            - paragraph [ref=f2e162]: Acetilcisteína
+            - paragraph [ref=f2e163]: N-acetilcisteína (NAC)
+          - button "Trocar medicamento" [ref=f2e164] [cursor=pointer]
+        - generic [ref=f2e168]:
+          - text: 2. Apresentação comercial
+          - combobox "Apresentação e concentração" [ref=f2e169]:
+            - option "Sem conversão por apresentação"
+            - option "Fluimucil® injetável 100 mg/mL — ampola 3 mL — Solução injetável — 100 mg/mL" [selected]
+          - generic [ref=f2e170]:
+            - generic [ref=f2e171]: "Concentração: 100 mg/mL"
+            - generic [ref=f2e172]: "Forma: Solução injetável"
+            - generic [ref=f2e173]: "Fabricante: não cadastrado"
+            - generic [ref=f2e174]: "Origem: Catálogo global"
+        - generic [ref=f2e175]:
+          - text: 3. Dose ou modo de uso
+          - combobox "Dose ou modo de uso" [ref=f2e176]:
+            - option "Intoxicação por paracetamol — dose de ataque • 140–140 mg/kg" [selected]
+            - option "Intoxicação por paracetamol — manutenção • 70–70 mg/kg"
+            - option "Hepatotoxicidade oxidativa — ataque IV • 140–180 mg/kg"
+            - option "Hepatotoxicidade oxidativa — ataque oral • 280–280 mg/kg"
+            - option "Hepatotoxicidade oxidativa — manutenção após ataque • 70–70 mg/kg"
+            - option "Definir dose ou modo de uso manualmente"
+          - generic [ref=f2e177]: por via intravenosa ou por via oral • dose de ataque
+        - generic [ref=f2e179]:
+          - generic [ref=f2e180]:
+            - text: Peso para cálculo
+            - generic [ref=f2e181]: 4 kg
+          - generic [ref=f2e182]:
+            - generic [ref=f2e183]: Dose para o cálculo (mg/kg)
+            - spinbutton "Dose para o cálculo (mg/kg)" [ref=f2e184]: "140"
+          - generic [ref=f2e185]:
+            - text: Via de administração
+            - textbox "Via de administração" [ref=f2e186]:
+              - /placeholder: "Ex.: oral, subcutânea, tópica"
+              - text: por via intravenosa ou por via oral
+        - generic [ref=f2e187]:
+          - generic [ref=f2e188]:
+            - text: Frequência
+            - combobox "Frequência dose de ataque" [ref=f2e189]:
+              - option "Selecionar frequência"
+              - option "Dose única"
+              - option "A cada 2 horas"
+              - option "A cada 4 horas"
+              - option "A cada 6 horas"
+              - option "A cada 8 horas"
+              - option "A cada 12 horas"
+              - option "A cada 24 horas"
+              - option "Escrever outra frequência" [selected]
+            - textbox "Frequência personalizada" [ref=f2e190]:
+              - /placeholder: "Ex.: duas vezes ao dia ou conforme necessidade"
+              - text: dose de ataque
+          - generic [ref=f2e191]:
+            - text: Duração
+            - combobox "Duração uma única administração" [ref=f2e192]:
+              - option "Selecionar duração"
+              - option "Uso contínuo"
+              - option "Até reavaliação clínica"
+              - option "Por X dias"
+              - option "Por X semanas"
+              - option "Por X meses"
+              - option "Por X administrações"
+              - option "Escrever outra duração" [selected]
+            - textbox "Duração personalizada" [ref=f2e193]:
+              - /placeholder: "Ex.: até terminar o frasco"
+              - text: uma única administração
+        - generic [ref=f2e194]:
+          - generic [ref=f2e195]:
+            - generic [ref=f2e196]:
+              - text: Dose total calculada
+              - paragraph [ref=f2e197]: 560 mg
+            - generic [ref=f2e198]:
+              - text: Quantidade exata
+              - paragraph [ref=f2e199]: 5,6 mL
+            - generic [ref=f2e200]:
+              - text: Quantidade prática sugerida
+              - paragraph [ref=f2e201]: 5,6 mL
+          - paragraph [ref=f2e202]:
+            - text: "Dose real após arredondamento:"
+            - strong [ref=f2e203]: 140 mg/kg
+            - text: • diferença 0%
+          - paragraph [ref=f2e204]:
+            - strong [ref=f2e205]: "Etapa seguinte calculada:"
+            - text: 2,8 mL, a cada 6 horas, durante 7 administrações; ajustar conforme evolução e protocolo hospitalar.
+        - button "Inserir medicamento na receita" [active] [ref=f2e206] [cursor=pointer]
+    - article [ref=f2e69]:
+      - generic [ref=f2e70]:
+        - generic [ref=f2e71]:
+          - paragraph [ref=f2e72]: Vetius — validação local
+          - paragraph [ref=f2e73]: Receituário veterinário
+        - generic [ref=f2e74]:
+          - paragraph [ref=f2e75]: Teste técnico
+          - paragraph [ref=f2e76]: "CRMV: TESTE"
+          - paragraph [ref=f2e77]: 07/09/2026
+      - generic [ref=f2e78]:
+        - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=f2e79]
+        - generic [ref=f2e80]:
+          - generic [ref=f2e81]:
+            - term [ref=f2e82]: "Paciente:"
+            - definition [ref=f2e83]: Paciente fictício
+          - generic [ref=f2e84]:
+            - term [ref=f2e85]: "Responsável:"
+            - definition [ref=f2e86]: Tutor fictício
+          - generic [ref=f2e87]:
+            - term [ref=f2e88]: "Espécie:"
+            - definition [ref=f2e89]: gato
+          - generic [ref=f2e90]:
+            - term [ref=f2e91]: "Raça:"
+            - definition [ref=f2e92]: SRD
+          - generic [ref=f2e93]:
+            - term [ref=f2e94]: "Sexo:"
+            - definition [ref=f2e95]: fêmea
+          - generic [ref=f2e96]:
+            - term [ref=f2e97]: "Idade / peso:"
+            - definition [ref=f2e98]: 5 anos • 4 kg
+      - main [ref=f2e99]:
+        - paragraph [ref=f2e100]: RECOMENDAÇÕES DA DOENÇA
+        - paragraph [ref=f2e102]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+        - paragraph [ref=f2e103]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+        - paragraph [ref=f2e104]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+        - paragraph [ref=f2e105]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+        - paragraph [ref=f2e106]: • Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido
+        - paragraph [ref=f2e107]: para este gato, considerando também o intestino e o fígado.
+        - paragraph [ref=f2e108]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+        - paragraph [ref=f2e109]: vomitando, muito fraco ou com dificuldade para engolir.
+        - paragraph [ref=f2e110]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+        - paragraph [ref=f2e111]: comportamento. Levar essas informações no retorno.
+        - paragraph [ref=f2e112]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+        - paragraph [ref=f2e113]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+        - paragraph [ref=f2e114]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+        - paragraph [ref=f2e115]: própria.
+        - paragraph [ref=f2e116]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+        - paragraph [ref=f2e117]: manter e quando repetir exames.
+        - paragraph [ref=f2e119]: SINAIS PARA RETORNO
+        - paragraph [ref=f2e121]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+        - paragraph [ref=f2e122]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+        - paragraph [ref=f2e123]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+        - paragraph [ref=f2e124]: apetite.
+        - paragraph [ref=f2e211]: ACETILCISTEÍNA — FLUIMUCIL® INJETÁVEL 100 MG/ML — AMPOLA 3 ML — 100 mg/mL — Solução
+        - paragraph [ref=f2e212]: injetável
+        - paragraph [ref=f2e213]: Administrar 5,6 mL, por via intravenosa ou por via oral, dose de ataque, em dose única.
+        - paragraph [ref=f2e214]: Em seguida, administrar 2,8 mL, por via intravenosa ou por via oral, a cada 6 horas,
+        - paragraph [ref=f2e215]: durante 7 administrações; ajustar conforme evolução e protocolo hospitalar.
+      - generic [ref=f2e125]:
+        - generic [ref=f2e126]: ConsultaVet • Documento emitido pelo profissional responsável
+        - generic [ref=f2e127]: Página 1 de 1

@@ -1,0 +1,148 @@
+- main [ref=e3]:
+  - heading "Validação isolada dos componentes reais — dados fictícios" [level=1] [ref=e4]
+  - generic [ref=e5]:
+    - text: Modelo
+    - combobox "Modelo" [ref=e6]:
+      - option "Esporotricose — Gatos"
+      - option "Esporotricose — Cães"
+      - option "Cinomose — Cães"
+      - option "Erliquiose/Anaplasmose — Cães"
+      - option "Pós-operatório de castração — Cadela"
+      - option "Pós-operatório de castração — Gata"
+      - option "Pós-operatório de castração — Cão macho"
+      - option "Pós-operatório de castração — Gato macho"
+      - option "Gastroenterite aguda não complicada — Cão"
+      - option "Colapso de traqueia — Cão"
+      - option "Asma felina"
+      - option "Manejo de ferida pós-operatória"
+      - option "Dermatite atópica — Cão"
+      - option "Pancreatite — Cão (após estabilização)"
+      - option "Pancreatite — Gato (após estabilização)" [selected]
+      - option "Tríade felina — tratamento individualizado"
+      - option "Trauma vertebromedular — Cão"
+      - option "Trauma vertebromedular — Gato"
+      - option "Hérnia de disco — Cão (manejo conservador)"
+      - option "Síndrome vestibular — Cão"
+      - option "Síndrome vestibular — Gato"
+  - generic [ref=e7]:
+    - text: Espécie
+    - combobox "Espécie" [ref=e8]:
+      - option "gato" [selected]
+      - option "cão"
+  - generic [ref=e9]:
+    - text: Peso
+    - textbox "Peso" [ref=e10]: "4"
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - region "Configuração clínica do modelo" [ref=e13]:
+        - generic [ref=e14]:
+          - generic [ref=e15]:
+            - heading "Suporte após avaliação e estabilização" [level=3] [ref=e16]
+            - paragraph [ref=e17]: Marque somente os blocos que deseja prescrever.
+          - generic [ref=e18]: Dose do modelo · revisão de fonte pendente
+        - generic [ref=e22]:
+          - button "Maropitant oral — vômitos, paciente estável Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação." [ref=e23] [cursor=pointer]:
+            - generic [ref=e26]:
+              - generic [ref=e27]: Maropitant oral — vômitos, paciente estável
+              - generic [ref=e28]: Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação.
+          - button "Ondansetrona oral — náusea persistente Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica." [ref=e29] [cursor=pointer]:
+            - generic [ref=e32]:
+              - generic [ref=e33]: Ondansetrona oral — náusea persistente
+              - generic [ref=e34]: Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica.
+        - paragraph [ref=e35]: Nenhum tratamento opcional foi incluído. As recomendações continuam disponíveis para revisão.
+        - paragraph [ref=e38]: Não é protocolo de internação. Confirmar hidratação, analgesia, ingestão e necessidade de sonda. Selecionar apenas medicamentos indicados; nenhuma medicação é inserida automaticamente.
+      - generic [ref=e43]:
+        - generic [ref=e44]: 1. Medicamento
+        - searchbox "Busque princípio ativo, sinônimo ou nome comercial" [active] [ref=e49]
+        - paragraph [ref=e52]:
+          - text: Digite o
+          - strong [ref=e53]: princípio ativo
+          - text: "(ex.: pimobendan) ou o"
+          - strong [ref=e54]: nome comercial
+          - text: "(ex.: Vetmedin). A busca aceita pequenos erros de digitação."
+        - generic [ref=e55]:
+          - generic [ref=e56]:
+            - text: Categoria / classe
+            - combobox "Categoria ou classe do medicamento" [ref=e57]:
+              - option "Buscar pelo nome" [selected]
+              - option "Analgésicas"
+              - option "Anti-inflamatórios"
+              - option "Antiparasitárias"
+              - option "Cardiológicos"
+              - option "Comportamentais"
+              - option "Dermatológicas"
+              - option "Emergenciais"
+              - option "Endócrinas"
+              - option "Gastrointestinais"
+              - option "Infecciosas / antimicrobianos"
+              - option "Medicações pneumo"
+              - option "Neurológicas"
+              - option "Nutracêuticas"
+              - option "Odontológicas"
+              - option "Oftalmológicas"
+              - option "Oncológicas"
+              - option "Ortopédicas"
+              - option "Renais"
+              - option "Reprodutivas"
+              - option "Urológicas"
+          - generic [ref=e58]:
+            - text: Subcategoria
+            - combobox "Subcategoria do medicamento" [disabled] [ref=e59]:
+              - option "Todas as subcategorias" [selected]
+          - paragraph [ref=e60]: Se não souber o nome, escolha uma categoria e refine pela subcategoria.
+    - article [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e65]:
+          - paragraph [ref=e66]: Vetius — validação local
+          - paragraph [ref=e67]: Receituário veterinário
+        - generic [ref=e68]:
+          - paragraph [ref=e69]: Teste técnico
+          - paragraph [ref=e70]: "CRMV: TESTE"
+          - paragraph [ref=e71]: 07/09/2026
+      - generic [ref=e72]:
+        - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=e73]
+        - generic [ref=e74]:
+          - generic [ref=e75]:
+            - term [ref=e76]: "Paciente:"
+            - definition [ref=e77]: Paciente fictício
+          - generic [ref=e78]:
+            - term [ref=e79]: "Responsável:"
+            - definition [ref=e80]: Tutor fictício
+          - generic [ref=e81]:
+            - term [ref=e82]: "Espécie:"
+            - definition [ref=e83]: gato
+          - generic [ref=e84]:
+            - term [ref=e85]: "Raça:"
+            - definition [ref=e86]: SRD
+          - generic [ref=e87]:
+            - term [ref=e88]: "Sexo:"
+            - definition [ref=e89]: fêmea
+          - generic [ref=e90]:
+            - term [ref=e91]: "Idade / peso:"
+            - definition [ref=e92]: 5 anos • 4 kg
+      - main [ref=e93]:
+        - paragraph [ref=e94]: RECOMENDAÇÕES DA DOENÇA
+        - paragraph [ref=e96]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+        - paragraph [ref=e97]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+        - paragraph [ref=e98]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+        - paragraph [ref=e99]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+        - paragraph [ref=e100]: • Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido
+        - paragraph [ref=e101]: para este gato, considerando também o intestino e o fígado.
+        - paragraph [ref=e102]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+        - paragraph [ref=e103]: vomitando, muito fraco ou com dificuldade para engolir.
+        - paragraph [ref=e104]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+        - paragraph [ref=e105]: comportamento. Levar essas informações no retorno.
+        - paragraph [ref=e106]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+        - paragraph [ref=e107]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+        - paragraph [ref=e108]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+        - paragraph [ref=e109]: própria.
+        - paragraph [ref=e110]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+        - paragraph [ref=e111]: manter e quando repetir exames.
+        - paragraph [ref=e113]: SINAIS PARA RETORNO
+        - paragraph [ref=e115]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+        - paragraph [ref=e116]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+        - paragraph [ref=e117]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+        - paragraph [ref=e118]: apetite.
+      - generic [ref=e119]:
+        - generic [ref=e120]: ConsultaVet • Documento emitido pelo profissional responsável
+        - generic [ref=e121]: Página 1 de 1

@@ -40,9 +40,9 @@ export function Slider({
     <div className={cn('space-y-2', className)}>
       {label && (
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium text-white/70">{label}</label>
+          <label className="text-sm font-medium text-foreground/80">{label}</label>
           {showValue && (
-            <span className="text-sm font-medium text-gold">
+            <span className="text-sm font-semibold text-gold">
               {value}
               {unit}
             </span>

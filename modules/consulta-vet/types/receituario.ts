@@ -35,6 +35,12 @@ export interface ReceituarioDocumentData {
   identification: PrintIdentification;
   header: DocumentHeaderData;
   bodyPlainText: string;
+  /** Estado estruturado que permite reabrir a receita sem perder a edição dos itens. */
+  prescriptionItems?: PrescriptionMedicationSnapshot[];
+  clinicalModel?: ClinicalRecipeModel | null;
+  clinicalSelectedKeys?: string[];
+  clinicalDoseAlternativeKeys?: Record<string, string>;
+  clinicalMedicationOverrides?: Record<string, ClinicalMedicationOverride>;
 }
 
 export type ClinicalDoseBasis = 'weight' | 'weight_per_day' | 'per_animal' | 'manual';
@@ -70,20 +76,37 @@ export interface ClinicalMedicationDefinition {
   sourceReviewStatus: 'Revisão de fonte pendente';
   prescriptionText: string;
   internalAlert?: string;
+  /** Instruções ao tutor preservadas ao trocar a apresentação ou recalcular a dose. */
+  patientInstructions?: string[];
+  followUpPhases?: Array<{ doseMultiplier: number; frequency: string; duration: string }>;
   linkedProtocolKey?: string;
 }
 
 /** Escolhas do veterinário para apresentação/dose ao usar um modelo clínico. */
 export interface ClinicalMedicationOverride {
+  /** Identifica o contexto que originou os valores automáticos, para recalcular ao trocar modelo ou espécie. */
+  defaultContextKey?: string;
   editorialMedicationId?: string | null;
+  /** ID de medicamento vindo do catálogo global ou da clínica, resolvido pelo nome canônico. */
+  catalogMedicationId?: string | null;
   commercialProductId?: string | null;
   /** Concentração escolhida no receituário quando o produto tem múltiplas potências. */
   commercialPotencyMg?: number | null;
+  /** Distingue apresentações com a mesma potência numérica, como 2 mg/comprimido e 2 mg/mL. */
+  commercialPresentationUnit?: string | null;
   presentationId?: string | null;
   doseId?: string | null;
   selectedDoseValue?: number | null;
   /** Quando true, a receita usa texto de manipulação baseado na dose calculada. */
   useCompounding?: boolean;
+  route?: string;
+  frequency?: string;
+  duration?: string;
+  manualPresentation?: string;
+  manualAdministrationAmount?: string;
+  /** Snapshots tornam o documento independente de alterações futuras no catálogo. */
+  presentationSnapshot?: Record<string, unknown> | null;
+  doseSnapshot?: Record<string, unknown> | null;
 }
 
 export interface MagistralFormulaComponent {
@@ -99,9 +122,12 @@ export interface ClinicalRecipeOption {
   label: string;
   description?: string;
   optional?: boolean;
+  /** Opções deste grupo são alternativas entre si, nunca associações automáticas. */
+  exclusiveGroup?: string;
   medications?: ClinicalMedicationDefinition[];
   medicationPrecautions?: string[];
   veterinarianNotes?: string[];
+  patientInstructions?: string[];
   formula?: {
     title: string;
     components: MagistralFormulaComponent[];
@@ -219,6 +245,7 @@ export interface PrescriptionPrecaution {
 }
 
 export interface PrescriptionMedicationSnapshot {
+  origin?: 'clinical_model' | 'composer';
   medicationId: string;
   medicationName: string;
   activeIngredient: string;
@@ -237,4 +264,9 @@ export interface PrescriptionMedicationSnapshot {
   manualInstruction?: string;
   manualPresentation?: string;
   manualAdditionalInstructions?: string;
+  manualTarget?: string;
+  /** Resultado selecionado e registros usados no cálculo, necessários para reedição posterior. */
+  catalogEntrySnapshot?: Record<string, unknown> | null;
+  presentationSnapshot?: Record<string, unknown> | null;
+  doseSnapshot?: Record<string, unknown> | null;
 }

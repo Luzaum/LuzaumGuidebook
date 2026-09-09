@@ -1,8 +1,9 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { BookOpen, ChevronRight, ListChecks } from 'lucide-react';
+import { BookOpen, ChevronRight, ListChecks, ZoomIn } from 'lucide-react';
 import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { ClinicalQuickGuideBody } from '../components/clinicalQuickGuide/ClinicalQuickGuideBody';
+import { ClinicalImageZoomModal } from '../components/clinicalQuickGuide/ClinicalImageZoomModal';
 import { getClinicalQuickGuideRepository } from '../services/clinicalQuickGuideRepository';
 import { ClinicalQuickGuide } from '../types/clinicalQuickGuide';
 import { CLINICAL_QUICK_GUIDE_CATEGORIES } from '../data/seed/clinicalQuickGuides.categories';
@@ -21,6 +22,7 @@ export function ClinicalQuickGuideDetailPage() {
   const repo = useMemo(() => getClinicalQuickGuideRepository(), []);
   const [guide, setGuide] = useState<ClinicalQuickGuide | null>(null);
   const [loading, setLoading] = useState(true);
+  const [heroZoomOpen, setHeroZoomOpen] = useState(false);
 
   useEffect(() => {
     let ok = true;
@@ -109,13 +111,31 @@ export function ClinicalQuickGuideDetailPage() {
           </div>
 
           {guide.heroImageSrc ? (
-            <div className="w-28 shrink-0 overflow-hidden rounded-xl border border-border/80 bg-muted/20 shadow-sm sm:w-32 md:w-36">
+            <div
+              role="button"
+              tabIndex={0}
+              onClick={() => setHeroZoomOpen(true)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setHeroZoomOpen(true);
+                }
+              }}
+              className="group relative w-28 shrink-0 cursor-zoom-in overflow-hidden rounded-xl border border-border/80 bg-muted/20 shadow-sm transition-all hover:border-primary/50 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary sm:w-32 md:w-36"
+              title="Clique para ampliar a imagem"
+            >
               <img
                 src={guide.heroImageSrc}
                 alt={guide.heroImageAlt ?? ''}
-                className="aspect-square h-full w-full object-cover"
+                className="aspect-square h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity group-hover:opacity-100">
+                <span className="flex items-center gap-1 rounded-full bg-slate-900/90 px-2.5 py-1 text-[11px] font-semibold text-white shadow-md backdrop-blur-sm">
+                  <ZoomIn className="h-3 w-3" />
+                  Zoom
+                </span>
+              </div>
             </div>
           ) : null}
         </div>
@@ -148,6 +168,17 @@ export function ClinicalQuickGuideDetailPage() {
           {UI_TEXT.back}
         </Link>
       </div>
+
+      {guide.heroImageSrc ? (
+        <ClinicalImageZoomModal
+          isOpen={heroZoomOpen}
+          onClose={() => setHeroZoomOpen(false)}
+          src={guide.heroImageSrc}
+          alt={guide.heroImageAlt ?? guide.title}
+          caption={guide.heroImageAlt}
+          title={guide.title}
+        />
+      ) : null}
     </div>
   );
 }

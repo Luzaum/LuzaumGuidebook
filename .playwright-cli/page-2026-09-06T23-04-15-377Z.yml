@@ -1,0 +1,205 @@
+- generic [ref=e3]:
+  - banner [ref=e119]:
+    - button "Ir para a calculadora" [ref=e120]:
+      - generic [ref=e130]:
+        - paragraph [ref=e131]: CRI VET
+        - paragraph [ref=e132]: Infusão contínua
+  - main [ref=e48]:
+    - generic [ref=e50]:
+      - generic [ref=e51]:
+        - generic [ref=e52]: Calculadora de infusão veterinária
+        - heading "Prepare com clareza." [level=1] [ref=e55]
+        - paragraph [ref=e56]: Informe o paciente, escolha o fármaco e ajuste o preparo. A prescrição aparece logo abaixo.
+        - generic "Progresso do cálculo" [ref=e57]:
+          - generic [ref=e58]: Paciente
+          - generic [ref=e63]: Fármaco
+          - generic [ref=e68]: Preparo
+      - generic [ref=e73]:
+        - generic [ref=e75]:
+          - generic [ref=e76]:
+            - generic [ref=e77]: "1"
+            - generic [ref=e79]:
+              - heading "Paciente" [level=2] [ref=e80]
+              - paragraph [ref=e81]: Espécie, peso e condições clínicas
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - text: Espécie
+                - generic [ref=e85]:
+                  - button "Cão" [ref=e86]
+                  - button "Gato" [ref=e91]
+              - generic [ref=e95]:
+                - text: Peso (kg)
+                - spinbutton "15.5" [ref=e96]: "5"
+            - generic [ref=e98]:
+              - generic [ref=e99]: Fase de vida (opcional)
+              - generic [ref=e100]:
+                - button "Neonato" [ref=e101]
+                - button "Filhote" [ref=e102]
+                - button "Adulto" [ref=e103]
+                - button "Idoso" [ref=e104]
+            - button "Comorbidades" [ref=e106]
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - generic [ref=e158]: "2"
+            - generic [ref=e160]:
+              - heading "Fármaco" [level=2] [ref=e161]
+              - paragraph [ref=e162]: Paciente de 5 kg
+          - generic [ref=e163]:
+            - generic [ref=e330]:
+              - generic [ref=e331]:
+                - heading "Cetamina" [level=3] [ref=e332]
+                - generic [ref=e333]: Anestésico dissociativo / Antagonista NMDA
+              - paragraph [ref=e334]: Anestésico dissociativo com papel fundamental como analgésico adjuvante, agindo via bloqueio de receptores NMDA para reduzir a sensibilização central e o fenômeno de wind-up. É extremamente útil em protocolos multimodais (como MLK/FLK) para dor inflamatória, visceral e neuropática.
+              - generic [ref=e335]:
+                - generic [ref=e336]: CRI
+                - generic [ref=e337]: Bolus
+            - generic [ref=e166]:
+              - button "Trocar fármaco" [ref=e338]
+              - button [ref=e339]:
+                - generic [ref=e342]: Informaçõesadicionais
+        - generic [ref=e343]:
+          - generic [ref=e344]:
+            - generic [ref=e345]: "3"
+            - generic [ref=e347]:
+              - heading "Preparo" [level=2] [ref=e348]
+              - paragraph [ref=e349]: Dose, diluente e administração
+          - generic [ref=e350]:
+            - generic [ref=e351]:
+              - generic [ref=e352]:
+                - generic [ref=e353]:
+                  - text: Regime terapêutico
+                  - generic [ref=e356]: "*"
+                - generic [ref=e357]:
+                  - button "CRI" [ref=e358]
+                  - button "Bolus" [ref=e360]
+              - generic [ref=e361]:
+                - generic [ref=e362]:
+                  - generic [ref=e363]:
+                    - generic [ref=e364]:
+                      - text: Dose alvo
+                      - generic [ref=e368]: "*"
+                    - button "Guia" [ref=e369]
+                  - generic [ref=e374]:
+                    - 'spinbutton "Ex: 0.05" [ref=e375]': "2"
+                    - combobox [ref=e376]:
+                      - option "mcg/kg/min" [selected]
+                      - option "mcg/kg/h"
+                      - option "mg/kg/h"
+                  - paragraph [ref=e377]:
+                    - generic [ref=e381]:
+                      - strong [ref=e382]: "Faixa do acervo:"
+                      - text: 2 – 10 mcg/kg/min (0.12 - 0.6 mg/kg/h)
+                - generic [ref=e383]:
+                  - generic [ref=e384]:
+                    - text: Apresentação
+                    - generic [ref=e388]: "*"
+                  - combobox [ref=e389]:
+                    - option "Cetamina 100 mg/mL – 10 mL (Veterinária)" [selected]
+                    - option "Cetamina 50 mg/mL – 10 mL (Humana)"
+                    - option "Cetamina 10 mg/mL – 20 mL (Humana)"
+                    - option "Apresentação personalizada"
+                  - paragraph [ref=e390]: "Estoque: 100 mg/mL"
+                  - generic [ref=e391]:
+                    - generic [ref=e392]:
+                      - checkbox "Pré-diluição 1:10 (Solução de Trabalho)" [ref=e393]
+                      - text: Pré-diluição 1:10 (Solução de Trabalho)
+                    - paragraph [ref=e394]: Gera um passo inicial de diluição para 10x o volume da ampola (útil para volumes a aspirar < 0.1 mL).
+              - generic [ref=e395]:
+                - generic [ref=e396]: Recipiente de preparo
+                - generic [ref=e400]:
+                  - generic [ref=e401]: Bolsas
+                  - generic [ref=e402]:
+                    - button "100 mL" [ref=e403]
+                    - button "250 mL" [ref=e406]
+                    - button "500 mL" [ref=e408]
+                    - button "1000 mL" [ref=e410]
+                - generic [ref=e412]:
+                  - generic [ref=e413]: Seringas
+                  - generic [ref=e414]:
+                    - button "5 mL" [ref=e415]
+                    - button "10 mL" [ref=e417]
+                    - button "20 mL" [ref=e419]
+                    - button "60 mL" [ref=e421]
+                - generic [ref=e423]:
+                  - generic [ref=e424]:
+                    - checkbox "Usar volume personalizado" [ref=e425]
+                    - text: Usar volume personalizado
+                  - 'spinbutton "Ex: 75 mL" [disabled] [ref=e426]'
+            - generic [ref=e427]:
+              - generic [ref=e428]:
+                - generic [ref=e429]:
+                  - generic [ref=e430]:
+                    - text: Diluente
+                    - generic [ref=e434]: "*"
+                  - button "Guia" [ref=e435]
+                - combobox [ref=e440]:
+                  - option "NaCl 0.9%" [selected]
+                  - option "Ringer Lactato"
+                  - option "Glicose 5%"
+                  - option "Nenhum"
+                - paragraph [ref=e441]: "Preferencial: NaCl 0.9%"
+              - generic [ref=e442]:
+                - generic [ref=e443]:
+                  - generic [ref=e444]: Via de acesso
+                  - button "Guia" [ref=e447]
+                - generic [ref=e452]:
+                  - button "Periférico" [ref=e453]
+                  - button "Central" [ref=e455]
+                - paragraph [ref=e456]: Acesso periférico
+              - generic [ref=e457]:
+                - generic [ref=e458]: Tipo de bomba
+                - generic [ref=e462]:
+                  - button "Seringa" [ref=e463]
+                  - button "Infusão" [ref=e464]
+              - generic [ref=e466]:
+                - generic [ref=e467]:
+                  - generic [ref=e468]: Taxa de infusão na bomba (mL/h)
+                  - button "Guia" [ref=e472]
+                - spinbutton [ref=e477]: "10"
+        - region [ref=e479]:
+          - generic [ref=e480]:
+            - generic [ref=e482]:
+              - generic [ref=e487]:
+                - paragraph [ref=e488]: Cálculo concluído
+                - heading "Como preparar" [level=2] [ref=e489]
+              - generic [ref=e490]:
+                - button "Copiar" [ref=e491]
+                - button "Salvar como favorito" [ref=e495]
+            - list [ref=e499]:
+              - listitem [ref=e500]:
+                - generic [ref=e501]: "1"
+                - paragraph [ref=e502]: Aspire 0,06 mL de Cetamina.
+              - listitem [ref=e503]:
+                - generic [ref=e504]: "2"
+                - paragraph [ref=e505]: Complete com 99,94 mL de NaCl 0.9% (Total = 100 mL).
+              - listitem [ref=e506]:
+                - generic [ref=e507]: "3"
+                - paragraph [ref=e508]: Administre em bomba a 10 mL/h.
+            - generic [ref=e509]:
+              - generic [ref=e510]:
+                - paragraph [ref=e511]: Fármaco
+                - paragraph [ref=e512]: 0.06 mL
+              - generic [ref=e513]:
+                - paragraph [ref=e514]: Diluente
+                - paragraph [ref=e515]: 99.94 mL
+              - generic [ref=e516]:
+                - paragraph [ref=e517]: Concentração
+                - paragraph [ref=e518]: 60.00 mcg/mL
+              - generic [ref=e519]:
+                - paragraph [ref=e520]: Bomba
+                - paragraph [ref=e521]: 10.0 mL/h
+          - button "Avisos importantes 7 itens para revisar antes da administração" [ref=e523]:
+            - generic [ref=e526]:
+              - generic [ref=e527]: Avisos importantes
+              - generic [ref=e528]: 7 itens para revisar antes da administração
+          - button "Informações adicionais Dose entregue, estoque, notas clínicas e memória" [ref=e532]:
+            - generic [ref=e536]:
+              - generic [ref=e537]: Informações adicionais
+              - generic [ref=e538]: Dose entregue, estoque, notas clínicas e memória
+  - navigation "Navegação principal" [ref=e133]:
+    - button "Calcular" [ref=e134]
+    - button "Fármacos" [ref=e137]
+    - button "Protocolos" [ref=e142]
+    - button "Favoritos" [ref=e146]
+    - button "Mais" [ref=e149]

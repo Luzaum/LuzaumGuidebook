@@ -60,20 +60,20 @@ export function Modal({
         aria-modal="true"
         aria-labelledby={title ? 'neuro-modal-title' : undefined}
         className={cn(
-          'relative w-full bg-neutral-900 border border-gold/20 rounded-2xl shadow-2xl max-h-[min(92vh,56rem)] overflow-hidden',
+          'relative w-full bg-card text-foreground border border-border rounded-2xl shadow-2xl max-h-[min(92vh,56rem)] overflow-hidden',
           sizeStyles[size],
         )}
         onClick={(e) => e.stopPropagation()}
       >
         {title && (
-          <div className="flex items-center justify-between p-6 border-b border-white/10">
-            <h2 id="neuro-modal-title" className="text-xl font-semibold text-white">
+          <div className="flex items-center justify-between p-5 sm:p-6 border-b border-border bg-muted/20">
+            <h2 id="neuro-modal-title" className="text-lg sm:text-xl font-bold text-foreground">
               {title}
             </h2>
             <Button
               variant="ghost"
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-white/10"
+              className="p-2 rounded-full hover:bg-muted"
               aria-label="Fechar"
             >
               <X className="w-5 h-5" />
@@ -81,7 +81,7 @@ export function Modal({
           </div>
         )}
 
-        <div className="max-h-[calc(96vh-4.5rem)] overflow-y-auto p-4 sm:p-6">{children}</div>
+        <div className="max-h-[calc(96vh-4.5rem)] overflow-y-auto p-4 sm:p-6 text-foreground">{children}</div>
       </div>
     </div>,
     document.body,

@@ -29,11 +29,7 @@ export const convlessCommercialProductSeed: CommercialMedicationProduct[] = [
     reassessment: 'Avaliar concentração sérica e tolerância em aproximadamente 10–14 dias após início ou ajuste; repetir por volta de 6 semanas e, quando estável, monitorar concentração, hemograma e bioquímica aproximadamente a cada 6 meses.',
     prescriptionExample: 'CONVLESS® 20 mg/mL — solução oral. Administrar ___ mL por via oral a cada 12 horas, continuamente. Não interromper abruptamente. Agitar antes de usar e medir com a seringa dosadora. Após aberto, utilizar em até 60 dias.',
     safetyAlert: 'MEDICAMENTO DE CONTROLE ESPECIAL. Uso exclusivamente canino conforme a indicação comercial atual. Não extrapolar para gatos. Contraindicado em hepatopatia grave/hipersensibilidade a barbitúricos; cautela em doença renal, respiratória, hipovolemia, anemia, cardiopatia e hipofunção adrenal. Não suspender abruptamente. Confirmar regras regulatórias vigentes.',
-    price: {
-      averageLabel: 'Preço não cadastrado',
-      rangeLabel: 'Produto recém-lançado; consultar canal veterinário habilitado',
-      sourceDate: '2026-08-19',
-    },
+    price: { averageLabel: 'R$ 98,00', rangeLabel: 'Frasco 60 mL: R$ 85,00 a R$ 115,00 (varejo/distribuidor vet)', sourceDate: '2026-09-06' },
     evidenceLevel: 'Faixa de dose e apresentação conforme fabricante; farmacologia e monitorização conforme literatura veterinária. Sem afirmação de superioridade clínica.',
     productPageUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/convless/',
     labelUrl: 'https://agener.com.br/produtos/pequenos-animais/suplementos/convless/',

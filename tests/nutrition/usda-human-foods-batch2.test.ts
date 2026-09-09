@@ -142,15 +142,24 @@ test('lote FNDDS permanece oculto na busca padrão do catálogo', () => {
   )
 })
 
-test('pendentes brasileiros sem composição nutricional', () => {
+test('pendentes brasileiros com governança auditada (auditoria 2026-09-07)', () => {
   const pending = source.filter((item) => item.pending)
   assert.equal(pending.length, 17)
+  const unlockedIds = new Set(['br-pending-pescada-amarela', 'br-pending-bagre-brasileiro'])
   for (const item of pending) {
     const food = getFoodById(item.id)
     assert.ok(food)
-    assert.equal(note(item.id, 'source_type'), 'BRAZILIAN_COMPOSITION_REQUIRED')
-    assert.equal(note(item.id, 'clinical_use_status'), 'blocked_pending_data')
-    assert.equal(food.nutrientsAsFed.energyKcalPer100g, null)
+    if (unlockedIds.has(item.id)) {
+      assert.equal(note(item.id, 'clinical_use_status'), 'active')
+      assert.equal(note(item.id, 'production_license_ok'), 'true')
+      assert.ok(food.nutrientsAsFed.energyKcalPer100g != null && food.nutrientsAsFed.energyKcalPer100g > 0)
+    } else if (note(item.id, 'clinical_use_status') === 'blocked_license_review') {
+      assert.equal(note(item.id, 'production_license_ok'), 'false')
+      assert.ok(food.notes.some((n) => n.includes('TBCA_CC_BY_NC_ND_4.0') || n.includes('licenca=')))
+    } else {
+      assert.equal(note(item.id, 'clinical_use_status'), 'blocked_pending_data')
+      assert.equal(food.nutrientsAsFed.energyKcalPer100g, null)
+    }
   }
 })
 

@@ -24,6 +24,7 @@
     "sync:consulta-consensos": "tsx scripts/sync-consulta-vet-consensos.ts",
     "import:global-catalog": "tsx scripts/import-global-catalog.ts",
     "seed:admin-users": "tsx scripts/seed-admin-users.ts",
+    "seed:app-users": "tsx scripts/seed-app-users.ts",
     "import:energia-vet-data": "python scripts/import_genutri_dataset.py",
     "extract:neuro-pdf": "node scripts/extract-neuro-pdf-outline.mjs",
     "extract:neuro-books": "node scripts/extract-neuro-books.mjs",

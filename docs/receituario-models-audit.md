@@ -623,4 +623,3 @@ Gerado em 2026-08-17T18:23:56.417Z. O relatório reflete os modelos carregados p
 | Placeholders | Nenhum |
 | Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
 | Status | needs-review |
-

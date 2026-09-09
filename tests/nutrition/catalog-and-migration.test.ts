@@ -55,8 +55,8 @@ test('catálogo legado retorna alimentos visíveis na busca', async () => {
 
 test('getCatalogDatasetStats reflete dataset real', () => {
   const stats = getCatalogDatasetStats()
-  assert.equal(stats.foods, 618)
-  assert.equal(stats.bySource.legacy_genutri, 618)
+  assert.equal(stats.foods, 702)
+  assert.equal(stats.bySource.legacy_genutri, 702)
 })
 
 test('normalizer não converte ausente em zero', () => {

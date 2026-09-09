@@ -211,8 +211,22 @@
   border-color: hsl(var(--border)) !important;
 }
 
-.energia-vet-shell [class~="text-white"] {
+/* Superfícies legadas: apenas o texto solto em containers escuros antigos é convertido */
+.energia-vet-shell [class*="bg-[#1"] :not(button):not(a):not([class*="bg-"])[class~="text-white"],
+.energia-vet-shell [class*="bg-[#2"] :not(button):not(a):not([class*="bg-"])[class~="text-white"] {
   color: hsl(var(--foreground)) !important;
+}
+
+/* Garante que botões e elementos com fundo colorido ou escuro sempre tenham texto branco nítido */
+.energia-vet-shell [class*="bg-blue"] [class~="text-white"],
+.energia-vet-shell [class*="bg-blue"][class~="text-white"],
+.energia-vet-shell [class*="bg-primary"] [class~="text-white"],
+.energia-vet-shell [class*="bg-primary"][class~="text-white"],
+.energia-vet-shell [class*="bg-slate-9"] [class~="text-white"],
+.energia-vet-shell [class*="bg-slate-9"][class~="text-white"],
+.energia-vet-shell [class*="bg-slate-8"] [class~="text-white"],
+.energia-vet-shell [class*="bg-slate-8"][class~="text-white"] {
+  color: #ffffff !important;
 }
 
 .energia-vet-shell [class*="bg-black/10"],

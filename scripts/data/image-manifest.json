@@ -1,0 +1,2842 @@
+{
+  "quatree-supreme-caes-adultos-rmg": {
+    "id": "quatree-supreme-caes-adultos-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Adultos Raças Médias e Grandes — Frango, Batata-doce, Brócolis e Maçã",
+    "format": "png",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-adultos-rmg.png",
+    "bytes": 660282,
+    "sha256": "26a9782f9631e87ba88588955fe16ba6985e1e32d209dd445ca63be0a7770876",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_ab8a87ed8dc44cb890eb5f40d19e17b0~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-C%C3%83ES-ADULTOS_RMG.png"
+  },
+  "quatree-supreme-caes-adultos-rp": {
+    "id": "quatree-supreme-caes-adultos-rp",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Adultos Raças Pequenas — Frango, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-adultos-rp.svg",
+    "bytes": 2120,
+    "sha256": "ddcc506962f36a3a5dd036edad799d76e2a56f88235bdbc4b9505bb86ed98365",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_80a7dd95caec49f0a2feec5ba8f78810~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-supreme-caes-dermasense-rmg": {
+    "id": "quatree-supreme-caes-dermasense-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Dermasense Cães Adultos Raças Médias e Grandes — Cordeiro, Salmão, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-dermasense-rmg.svg",
+    "bytes": 2137,
+    "sha256": "56dce85d6c72cf25a2893967a4dc2288428af87f07522c91227a06d0bf1c1e76",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_446ad0a5b2904573bce495fbdae7a4b8~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0003_SUPREME-C%C3%83ES-DERMA_RMG.png"
+  },
+  "quatree-supreme-caes-dermasense-rp": {
+    "id": "quatree-supreme-caes-dermasense-rp",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Dermasense Cães Adultos Raças Pequenas — Cordeiro, Salmão, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-dermasense-rp.svg",
+    "bytes": 2128,
+    "sha256": "c9aeb7c540566b2218aac4032a4013043e6ca20d3a7b92374c2505210dc238b3",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_893b8aa6f3b04c00be0883d2987eb30c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0002_SUPREME-C%C3%83ES-DERMA_RP.png"
+  },
+  "quatree-supreme-caes-filhotes-rmg": {
+    "id": "quatree-supreme-caes-filhotes-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Filhotes Raças Médias e Grandes — Frango, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-filhotes-rmg.svg",
+    "bytes": 2130,
+    "sha256": "92ee2e3f14811f1758dbad2cde2c7dfeab3561233e3607a50f1d9a64593316f2",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_415f3cf65a1240c1bfca4008df483863~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-C%C3%83ES-FILHOTES_RMG.png"
+  },
+  "quatree-supreme-caes-filhotes-rp": {
+    "id": "quatree-supreme-caes-filhotes-rp",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Filhotes Raças Pequenas — Frango, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-filhotes-rp.svg",
+    "bytes": 2121,
+    "sha256": "9e3c44bb453e75fab7ea49ca482c181456ca77a1b7ee14323520bc767f93dbe6",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_be562c1d81ff4bb59a68a5c363999914~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-C%C3%83ES-FILHOTES_RP.png"
+  },
+  "quatree-supreme-caes-light-castrados-rmg": {
+    "id": "quatree-supreme-caes-light-castrados-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Light e Castrados Raças Médias e Grandes — Frango, Salmão, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-light-castrados-rmg.svg",
+    "bytes": 2134,
+    "sha256": "957d77dd56fab6bca7e95320d10dd53095fc2b7668223ca7a79974add4d9b264",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_28a30a84a6224729986bf30eb957270f~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-C%C3%83ES-LIGHT_RMG.png"
+  },
+  "quatree-supreme-caes-light-castrados-rp": {
+    "id": "quatree-supreme-caes-light-castrados-rp",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Light e Castrados Raças Pequenas — Frango, Salmão, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-light-castrados-rp.svg",
+    "bytes": 2125,
+    "sha256": "c53e2827c1e295c53d66b46d56633ccfcea76efa434f3618070dac892a38a6a7",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_3fc61a1ae7ee410bbf4a2430eb6bcff4~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-C%C3%83ES-LIGHT_RP.png"
+  },
+  "quatree-supreme-caes-senior7-rmg": {
+    "id": "quatree-supreme-caes-senior7-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Sênior 7+ Raças Médias e Grandes — Cordeiro, Frango, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-senior7-rmg.svg",
+    "bytes": 2128,
+    "sha256": "0c9f0890c93e7f80d47d896511c5f68f18ef50f965e7dcd1acd2c5f54e16444e",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_238e8ec4e8aa4c379bfdf2b8aa07455d~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-C%C3%83ES-SENIOR_RMG.png"
+  },
+  "quatree-supreme-caes-senior7-rp": {
+    "id": "quatree-supreme-caes-senior7-rp",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Cães Sênior 7+ Raças Pequenas — Salmão, Frango, Mandioca e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-caes-senior7-rp.svg",
+    "bytes": 2118,
+    "sha256": "a6c473e1b4246e87f6ee4613dd489b23f7a796fa707e324e41da4ba7392f2565",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_ff8c51a029cf46ff9d933703ba242223~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-C%C3%83ES-SENIOR_RP.png"
+  },
+  "quatree-life-caes-adultos-rmg": {
+    "id": "quatree-life-caes-adultos-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Life Cães Adultos Raças Médias e Grandes — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-caes-adultos-rmg.svg",
+    "bytes": 2096,
+    "sha256": "7414a146bc7c30614b422cdc53b10498b508933c9cb8292a5afe93450103c1e7",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_e0eb064973c7490ca9ea1fba5e1dff22~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0001_LIFE-C%C3%83ES-ADULTOS_RMG.png"
+  },
+  "quatree-life-caes-adultos-rp": {
+    "id": "quatree-life-caes-adultos-rp",
+    "brand": "Quatree",
+    "name": "Quatree Life Cães Adultos Raças Pequenas — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-caes-adultos-rp.svg",
+    "bytes": 2087,
+    "sha256": "432051fdfe866c503d3481f4b9ae7e9c6db76f494aff990f8f6b8c60b3222c0f",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cf73e1c6ae7843109a96e6a10ce5c898~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-life-caes-filhotes-rmg": {
+    "id": "quatree-life-caes-filhotes-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Life Cães Filhotes Raças Médias e Grandes — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-caes-filhotes-rmg.svg",
+    "bytes": 2097,
+    "sha256": "41eb8e836f03cdd91a75c4e9c32e898a29532818909f1245b46161808f322cd0",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_76a9172bbcb1495c8ba09c6809635fec~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0001_LIFE-C%C3%83ES-FILHOTES_RMG.png"
+  },
+  "quatree-life-caes-filhotes-rp": {
+    "id": "quatree-life-caes-filhotes-rp",
+    "brand": "Quatree",
+    "name": "Quatree Life Cães Filhotes Raças Pequenas — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-caes-filhotes-rp.svg",
+    "bytes": 2088,
+    "sha256": "e7448e6d28cada5489a2489c487f1cd29d07c18674ce3871a39cd9ccb37a7688",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_2dd160a28f804fcdaff9741e17ba6cf6~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-FILHOTES_RP.png"
+  },
+  "quatree-select-caes-adultos-rmg": {
+    "id": "quatree-select-caes-adultos-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Adultos Raças Médias e Grandes — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-adultos-rmg.svg",
+    "bytes": 2098,
+    "sha256": "c81268962120d320da4b267a3ccaa926751e9a2fa9a391875b8485dac780bf5f",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_9f6e729ea8bc4a5b8e9185a6a570f7cf~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-ADULTOS_RMG.png"
+  },
+  "quatree-select-caes-adultos-rmg-carne": {
+    "id": "quatree-select-caes-adultos-rmg-carne",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Adultos Raças Médias e Grandes — Carne e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-adultos-rmg-carne.svg",
+    "bytes": 2097,
+    "sha256": "591e2dbe681a92383070fa42fb7253f5a96f6c1f5d4b5992400701250d9bbce2",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_7be940b2ff82449787ff8178d4ea923c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-ADULTOS_RMG-carne.png"
+  },
+  "quatree-select-caes-adultos-rp": {
+    "id": "quatree-select-caes-adultos-rp",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Adultos Raças Pequenas — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-adultos-rp.svg",
+    "bytes": 2089,
+    "sha256": "91fef705c933eb18d84ba4fd5310d306f56ee54c48817bd8c89c698849a85e8c",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_10dbb1219b6e4e8eb8703a891823eb2c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0000_SELECT-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-select-caes-adultos-rp-carne": {
+    "id": "quatree-select-caes-adultos-rp-carne",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Adultos Raças Pequenas — Carne e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-adultos-rp-carne.svg",
+    "bytes": 2088,
+    "sha256": "f0cbd696df2f250f099e29b669916c2cb1b042cc48e69bc101b80ddcb877fae4",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_bc0988ea3aa14fe4872149b1ff1bbbf3~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0000_SELECT-C%C3%83ES-ADULTOS_RP-carne.png"
+  },
+  "quatree-select-caes-filhotes-rmg": {
+    "id": "quatree-select-caes-filhotes-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Filhotes Raças Médias e Grandes — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-filhotes-rmg.svg",
+    "bytes": 2099,
+    "sha256": "97f6dfb372400c5bf423af11dd7277f9490b96d517538b76fece4e1f312d43a2",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_e096417757ce4d989f66085a6fc576a9~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-FILHOTES_RMG.png"
+  },
+  "quatree-select-caes-filhotes-rp": {
+    "id": "quatree-select-caes-filhotes-rp",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Filhotes Raças Pequenas — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-filhotes-rp.svg",
+    "bytes": 2090,
+    "sha256": "ba0b986d8312e4655a98de9dd9d148a4a2739960eab2aa172f3134bdbca032a0",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_1fcdd4c498ae41539207865243dafeee~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0000_SELECT-C%C3%83ES-FILHOTES_RP.png"
+  },
+  "quatree-select-caes-senior7-rmg": {
+    "id": "quatree-select-caes-senior7-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Sênior 7+ Raças Médias e Grandes — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-senior7-rmg.svg",
+    "bytes": 2101,
+    "sha256": "198f53bcc4f10e8d5e87ca032517b804b290abb3798bd601b1decb2a5c45fb38",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_9e530058b79f4ae09a08e1ec27e283da~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-SENIOR_RMG.png"
+  },
+  "quatree-select-caes-senior7-rp": {
+    "id": "quatree-select-caes-senior7-rp",
+    "brand": "Quatree",
+    "name": "Quatree Select Cães Sênior 7+ Raças Pequenas — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-caes-senior7-rp.svg",
+    "bytes": 2092,
+    "sha256": "ee82c18cf94aab94e8fc3fa3b5b50ccbe63df2113f3333dd16def851b381dfd2",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_c9314421d00346a099435b67119ff089~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0000_SELECT-C%C3%83ES-SENIOR_RP.png"
+  },
+  "quatree-select-power-caes-adultos": {
+    "id": "quatree-select-power-caes-adultos",
+    "brand": "Quatree",
+    "name": "Quatree Select Power Cães Adultos Alta Energia Todas as Raças",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-power-caes-adultos.svg",
+    "bytes": 2089,
+    "sha256": "9122fb953c29a3e3e8d3d665bdf8f04d98df9c55aa7d546f8e763d2637deecdd",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_319ea9faee154e58b888995ba1a6cefa~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-POWER_ADULTOS.png"
+  },
+  "quatree-select-one-caes-adultos": {
+    "id": "quatree-select-one-caes-adultos",
+    "brand": "Quatree",
+    "name": "Quatree Select ONE Cães Adultos Proteína Única Todas as Raças",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-one-caes-adultos.svg",
+    "bytes": 2091,
+    "sha256": "22689bf4abcd76d38e2576f156603d1beea3c1e401a74d1119b95609f4752a94",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_d24ca7dd395c4793b8d7ef2dd62c82e0~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0002s_0001_SELECT-C%C3%83ES-ONE_ADULTOS.png"
+  },
+  "quatree-gourmet-caes-adultos-rmg": {
+    "id": "quatree-gourmet-caes-adultos-rmg",
+    "brand": "Quatree",
+    "name": "Quatree Gourmet Cães Adultos Raças Médias e Grandes — Mix de Carnes",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-gourmet-caes-adultos-rmg.svg",
+    "bytes": 2098,
+    "sha256": "b4f836a08694cc669b93549952264ba168fb69936c750a3f871973b5e53a96e5",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cf73e1c6ae7843109a96e6a10ce5c898~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-gourmet-caes-adultos-rp": {
+    "id": "quatree-gourmet-caes-adultos-rp",
+    "brand": "Quatree",
+    "name": "Quatree Gourmet Cães Adultos Raças Pequenas — Peixe, Carne e Frango",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-gourmet-caes-adultos-rp.svg",
+    "bytes": 2097,
+    "sha256": "bb6af25ee96d9ef01aa2dece95000567497c32d0e7ef90e97a05a0dcdef4c4db",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cf73e1c6ae7843109a96e6a10ce5c898~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-premium-adultos-carne": {
+    "id": "quatree-premium-adultos-carne",
+    "brand": "Quatree",
+    "name": "Quatree Premium Cães Adultos Todas as Raças — Sabor Carne",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-premium-adultos-carne.svg",
+    "bytes": 2087,
+    "sha256": "c73dcce4df66a6b130f6aa0b51c50ed9bfbc84f159e786c3442f54b20428810d",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cf73e1c6ae7843109a96e6a10ce5c898~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-premium-adultos-frango": {
+    "id": "quatree-premium-adultos-frango",
+    "brand": "Quatree",
+    "name": "Quatree Premium Cães Adultos Todas as Raças — Sabor Frango",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-premium-adultos-frango.svg",
+    "bytes": 2088,
+    "sha256": "b2a3f44ccb3f57e21d78a66efc8ae672373e433bc2770af837fa2a5fe0e9f8d6",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cf73e1c6ae7843109a96e6a10ce5c898~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0001s_0000_LIFE-C%C3%83ES-ADULTOS_RP.png"
+  },
+  "quatree-supreme-gatos-adultos-salmao": {
+    "id": "quatree-supreme-gatos-adultos-salmao",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Gatos Adultos — Salmão, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-gatos-adultos-salmao.svg",
+    "bytes": 2105,
+    "sha256": "6804e4998007877666c5f5e848182bfa5ef14fac6d765df008deb2036a8de172",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_b3ebf2bfbc9a49c9860bfa2df9f1b145~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0004_SUPREME-GATOS-ADULTOS.png"
+  },
+  "quatree-supreme-gatos-castrado-senior7": {
+    "id": "quatree-supreme-gatos-castrado-senior7",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Gatos Castrados Sênior 7+ — Salmão, Frango e Cranberry",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-gatos-castrado-senior7.svg",
+    "bytes": 2105,
+    "sha256": "5187a5b75f9bb9c366c63425e32bae5a7100684fe6b3b0f57cba7d0a70267d28",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_5c7a0d1e57c64cfb8bc215d2a939e658~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0002_SUPREME-GATOS-SENIOR_CASTRADOS.png"
+  },
+  "quatree-supreme-gatos-castrados-frango": {
+    "id": "quatree-supreme-gatos-castrados-frango",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Gatos Castrados — Frango, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-gatos-castrados-frango.svg",
+    "bytes": 2106,
+    "sha256": "10437a5926c89e57ac1fda3a236a054a46ff630de7200bea0fa9fb513fbf5ca7",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_9d7c37497d544078be1fb32b07e5e347~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-GATOS-CASTRADOS_FRANGO.png"
+  },
+  "quatree-supreme-gatos-castrados-salmao": {
+    "id": "quatree-supreme-gatos-castrados-salmao",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Gatos Castrados — Salmão, Batata-doce, Brócolis e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-gatos-castrados-salmao.svg",
+    "bytes": 2107,
+    "sha256": "73e57ab5c1172315781104d01c5d2ef98cf559f05fffec0f67f0ac96b8455f89",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_ebbc99f0f9b542028aeecbcff55c1503~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-GATOS-CASTRADOS_SALMAO.png"
+  },
+  "quatree-supreme-gatos-filhotes": {
+    "id": "quatree-supreme-gatos-filhotes",
+    "brand": "Quatree",
+    "name": "Quatree Nova Supreme Gatos Filhotes — Salmão, Frango, Batata-doce e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-gatos-filhotes.svg",
+    "bytes": 2103,
+    "sha256": "0dc6c048fd4ef2cfbb2eca227cf63c282d82ff8c351a7513c9811e8e16a0b1bf",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cfc0137785534f4094a96b30616b3d1c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0003_SUPREME-GATOS-FILHOTES.png"
+  },
+  "quatree-life-gatos-adultos": {
+    "id": "quatree-life-gatos-adultos",
+    "brand": "Quatree",
+    "name": "Quatree Life Gatos Adultos — Salmão e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-gatos-adultos.svg",
+    "bytes": 2072,
+    "sha256": "90b2641b756a6d78be3e0d5991908e5db77639bccb8379b3951aefefad499f35",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_b3ebf2bfbc9a49c9860bfa2df9f1b145~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0004_SUPREME-GATOS-ADULTOS.png"
+  },
+  "quatree-life-gatos-castrados": {
+    "id": "quatree-life-gatos-castrados",
+    "brand": "Quatree",
+    "name": "Quatree Life Gatos Castrados — Salmão e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-gatos-castrados.svg",
+    "bytes": 2074,
+    "sha256": "80ed8c12281832da5b6079cfaffd08a9fa543d0aaa6d960a895c3bb816ab88ad",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_ebbc99f0f9b542028aeecbcff55c1503~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0000_SUPREME-GATOS-CASTRADOS_SALMAO.png"
+  },
+  "quatree-life-gatos-castrados-frango": {
+    "id": "quatree-life-gatos-castrados-frango",
+    "brand": "Quatree",
+    "name": "Quatree Life Gatos Castrados — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-gatos-castrados-frango.svg",
+    "bytes": 2073,
+    "sha256": "4ee4a3d1e731ec0632364b893a1975a7851fc6a0f771167829827792bffcdbc5",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_9d7c37497d544078be1fb32b07e5e347~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0001_SUPREME-GATOS-CASTRADOS_FRANGO.png"
+  },
+  "quatree-life-gatos-filhotes": {
+    "id": "quatree-life-gatos-filhotes",
+    "brand": "Quatree",
+    "name": "Quatree Life Gatos Filhotes — Salmão e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-life-gatos-filhotes.svg",
+    "bytes": 2073,
+    "sha256": "a86975733ddf8b273669455e142345f5b28a0fe1615ae4130420919b5dd40b28",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cfc0137785534f4094a96b30616b3d1c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0003_SUPREME-GATOS-FILHOTES.png"
+  },
+  "quatree-select-gatos-castrados-frango": {
+    "id": "quatree-select-gatos-castrados-frango",
+    "brand": "Quatree",
+    "name": "Quatree Select Gatos Castrados — Frango e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-gatos-castrados-frango.svg",
+    "bytes": 2075,
+    "sha256": "dc45b632e34900b91f79252ec272899193c3683b63f34e47ba732be992c87d06",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_a92634e7c75b42d7a9ca9dc4bc9cf3e2~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0003s_0001_SELECT-GATOS-CASTRADOS_FRANGO.png"
+  },
+  "quatree-select-gatos-castrados-carne": {
+    "id": "quatree-select-gatos-castrados-carne",
+    "brand": "Quatree",
+    "name": "Quatree Select Gatos Castrados — Carne e Arroz",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-gatos-castrados-carne.svg",
+    "bytes": 2074,
+    "sha256": "82fd5d96dc9e686004d271857395ceabf8509f87ad41fc3a6ef4b1834b8d57a7",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_eeadbb61f5164cf3bd94f83ebc2980fa~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0003s_0000_SELECT-GATOS-CASTRADOS_CARNE.png"
+  },
+  "quatree-select-gatos-castrados-mix-carnes": {
+    "id": "quatree-select-gatos-castrados-mix-carnes",
+    "brand": "Quatree",
+    "name": "Quatree Select Gatos Castrados — Mix de Carnes",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-select-gatos-castrados-mix-carnes.svg",
+    "bytes": 2074,
+    "sha256": "a4e5b604e9df8ee9472f3d3c48e25e0064e53dcaf8361cde45d06ca88042c8e5",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_893b8aa6f3b04c00be0883d2987eb30c~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0002_SUPREME-C%C3%83ES-DERMA_RP.png"
+  },
+  "quatree-gourmet-gatos-castrados-mar": {
+    "id": "quatree-gourmet-gatos-castrados-mar",
+    "brand": "Quatree",
+    "name": "Quatree Gourmet Gatos Castrados — Delícias do Mar",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-gourmet-gatos-castrados-mar.svg",
+    "bytes": 2078,
+    "sha256": "ab60ac8a1f33f265371562110db29706e49f70fbe52e44b29b7bfa0541bf4c3c",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_b3ebf2bfbc9a49c9860bfa2df9f1b145~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0004_SUPREME-GATOS-ADULTOS.png"
+  },
+  "quatree-gourmet-gatos-castrados-carnes": {
+    "id": "quatree-gourmet-gatos-castrados-carnes",
+    "brand": "Quatree",
+    "name": "Quatree Gourmet Gatos Castrados — Mix de Carnes",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-gourmet-gatos-castrados-carnes.svg",
+    "bytes": 2075,
+    "sha256": "6c3b49c4c5bbad90e5092b3f26bc9ca901749db98fc43943e52276beecd061b3",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_b3ebf2bfbc9a49c9860bfa2df9f1b145~mv2.png/v1/fill/w_800,h_800,al_c/PACK_0000s_0004_SUPREME-GATOS-ADULTOS.png"
+  },
+  "quatree-supreme-sache-caes-adultos-carne-100g": {
+    "id": "quatree-supreme-sache-caes-adultos-carne-100g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Cães Adultos — Carne ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-caes-adultos-carne-100g.svg",
+    "bytes": 2084,
+    "sha256": "0b548f190fdf41c6f058d9e75e7b1c46c38c556df5e2c74f07e37163584520cd",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_e5bfe63870634ee0b3bfaef4b94f15a3~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-CAO-CARNE.png"
+  },
+  "quatree-supreme-sache-caes-adultos-cordeiro-100g": {
+    "id": "quatree-supreme-sache-caes-adultos-cordeiro-100g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Cães Adultos — Cordeiro ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-caes-adultos-cordeiro-100g.svg",
+    "bytes": 2087,
+    "sha256": "5018944f792137a29d41d779fa7ef5afef22ad0ac4ce9594c8d68170815a2408",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_cfbb98b820a240dbb54a7cce69b0dcf8~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-CAO-CORDEIRO.png"
+  },
+  "quatree-supreme-sache-caes-adultos-frango-100g": {
+    "id": "quatree-supreme-sache-caes-adultos-frango-100g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Cães Adultos — Frango ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-caes-adultos-frango-100g.svg",
+    "bytes": 2085,
+    "sha256": "4396c2d7f0d9c79f33b49e248bf5e330f73abccb106da44da73ddc2c23ab7c3a",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_c93a0279c78f4a138c23788da6193fe3~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-CAO-FRANGO.png"
+  },
+  "quatree-supreme-sache-gatos-castrados-carne-85g": {
+    "id": "quatree-supreme-sache-gatos-castrados-carne-85g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Gatos Castrados — Carne ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-gatos-castrados-carne-85g.svg",
+    "bytes": 2086,
+    "sha256": "74ea1b92fa6ca8ec9c1bc58b8707b4e0fe9a5e01d4b4897aefd3eae605aa7003",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_30a74ea85a974b6db650fcb44a4b11f7~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-GATO-CARNE.png"
+  },
+  "quatree-supreme-sache-gatos-castrados-frango-85g": {
+    "id": "quatree-supreme-sache-gatos-castrados-frango-85g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Gatos Castrados — Frango ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-gatos-castrados-frango-85g.svg",
+    "bytes": 2087,
+    "sha256": "c960610bd6f641c753e784676ab41741159629b900c5e73851055cf458540b41",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_165080c58e574f8fa632bb0a0aa7a102~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-GATO-FRANGO.png"
+  },
+  "quatree-supreme-sache-gatos-castrados-peixe-85g": {
+    "id": "quatree-supreme-sache-gatos-castrados-peixe-85g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Gatos Castrados — Peixe ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-gatos-castrados-peixe-85g.svg",
+    "bytes": 2086,
+    "sha256": "98f3bbbf43f550484cd6b0200c4d1edd3b49bca909be771899ba33b29a0ecdc9",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_8ca372e5057b4588820cfb5658e37e95~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-GATO-PEIXE.png"
+  },
+  "quatree-supreme-sache-gatos-adultos-peixe-85g": {
+    "id": "quatree-supreme-sache-gatos-adultos-peixe-85g",
+    "brand": "Quatree",
+    "name": "Quatree Supreme Sachê Gatos Adultos — Peixe ao Molho",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/quatree-supreme-sache-gatos-adultos-peixe-85g.svg",
+    "bytes": 2084,
+    "sha256": "566f23a438cf9f39478fdb31959764abf8f4ecb01975d1487d9b3c6c2e2b2109",
+    "sourceUrl": "https://static.wixstatic.com/media/cb1d30_8ca372e5057b4588820cfb5658e37e95~mv2.png/v1/fill/w_800,h_800,al_c/SACHE-GATO-PEIXE.png"
+  },
+  "racao-premier-ambiente-internos-gatos-filhotes-sabor-frango": {
+    "id": "racao-premier-ambiente-internos-gatos-filhotes-sabor-frango",
+    "brand": "PremieR",
+    "name": "PremieR Ambientes Internos Gatos Filhotes — Sabor Frango e Salmão",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-ambiente-internos-gatos-filhotes-sabor-frango.webp",
+    "bytes": 97752,
+    "sha256": "23b9499871fccaf568650d56f33515d17a597b5ca544f95e97207bedd2dd4913",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935515/Racao-Premier-Ambientes-Internos-Gatos-Filhotes-Frango-e-Salmao-75kg-frente.webp"
+  },
+  "racao-premier-nattu-felinos-seca-frango-adulto": {
+    "id": "racao-premier-nattu-felinos-seca-frango-adulto",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Gatos Adultos — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-nattu-felinos-seca-frango-adulto.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935496/Racao-Premier-Nattu-Gatos-Adultos-Castrados-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-75kg-frente.webp"
+  },
+  "racao-premier-nattu-felinos-frango-filhote-seca": {
+    "id": "racao-premier-nattu-felinos-frango-filhote-seca",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Gatos Filhotes — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-nattu-felinos-frango-filhote-seca.svg",
+    "bytes": 2108,
+    "sha256": "470eea2172ac77e03ea477097ff98b80769278d37b491f016ebc6d7a3389a92a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935497/Racao-Premier-Nattu-Gatos-Filhotes-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-15kg-frente.webp"
+  },
+  "racao-premierpet-porte-pequeno-filhotes-sabor-frango-e-salmao": {
+    "id": "racao-premierpet-porte-pequeno-filhotes-sabor-frango-e-salmao",
+    "brand": "PremieR",
+    "name": "PremieR Formula Cães Filhotes Porte Pequeno — Frango e Salmão",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premierpet-porte-pequeno-filhotes-sabor-frango-e-salmao.svg",
+    "bytes": 2091,
+    "sha256": "91a119f236bc8019de5e2831c369ebc5705adf8687b21c0708894314a33172ef",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/1070857/Racao-Premier-Formula-Caes-Filhotes-Porte-Pequeno-Frango-e-Salmao-25kg-frente.webp"
+  },
+  "sache-premier-gourmet-peito-de-frango-filhotes-gato": {
+    "id": "sache-premier-gourmet-peito-de-frango-filhotes-gato",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Filhotes — Peito de Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-gourmet-peito-de-frango-filhotes-gato.webp",
+    "bytes": 120374,
+    "sha256": "b9f00ddc2a903930ae7cd8d75d67f9343356e53a40cf7dd104a2e3512695cf65",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935489/Sache-Premier-Gourmet-Gatos-Filhotes-Peito-de-Frango-70g-frente.webp"
+  },
+  "sache-premier-nattu-frango-com-batata-doce-gatos": {
+    "id": "sache-premier-nattu-frango-com-batata-doce-gatos",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Gatos — Frango, Batata-doce, Espinafre e Linhaça",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-nattu-frango-com-batata-doce-gatos.webp",
+    "bytes": 37182,
+    "sha256": "76df137649f4b44b2ba284ba91915b7233171a42c7aff617008a353cb687da60",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935502/Sache-Premier-Nattu-Gatos-Frango-Batata-Doce-85g-frente.webp"
+  },
+  "racao-premier-gatos-filhotes-sabor-frango": {
+    "id": "racao-premier-gatos-filhotes-sabor-frango",
+    "brand": "PremieR",
+    "name": "PremieR Gatos Filhotes — Frango e Salmão",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-gatos-filhotes-sabor-frango.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935510/Racao-Premier-Gatos-Filhotes-Frango-e-Salmao-75kg-frente.webp"
+  },
+  "sache-premier-gourmet-carne-espinafre-e-arroz-integral": {
+    "id": "sache-premier-gourmet-carne-espinafre-e-arroz-integral",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Adultos — Carne, Espinafre e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-gourmet-carne-espinafre-e-arroz-integral.webp",
+    "bytes": 22780,
+    "sha256": "d4e6a289b58b89984f640ba95548d57ded92ea1d7636f31977f258474249291b",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935487/Sache-Premier-Gourmet-Gatos-Adultos-Carne-70g-frente.webp"
+  },
+  "sache-premier-formula-gatos-atum-brocolis-e-cenoura": {
+    "id": "sache-premier-formula-gatos-atum-brocolis-e-cenoura",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Gatos Castrados — Atum, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-formula-gatos-atum-brocolis-e-cenoura.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935484/Sache-Premier-Formula-Gatos-Castrados-Atum-85g-frente.webp"
+  },
+  "racao-premier-nattu-felinos-seca-frango-com-mandioca-adulto-castrado": {
+    "id": "racao-premier-nattu-felinos-seca-frango-com-mandioca-adulto-castrado",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Gatos Adultos Castrados — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-nattu-felinos-seca-frango-com-mandioca-adulto-castrado.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935496/Racao-Premier-Nattu-Gatos-Adultos-Castrados-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-75kg-frente.webp"
+  },
+  "racao-premier-gatos-adultos-salmao-light": {
+    "id": "racao-premier-gatos-adultos-salmao-light",
+    "brand": "PremieR",
+    "name": "PremieR Gatos Adultos Light — Sabor Salmão",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-gatos-adultos-salmao-light.webp",
+    "bytes": 107404,
+    "sha256": "257d1ace486042fde42d6c6a9002630186267b29b4d708be63610f225c7c707f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935512/Racao-Premier-Gatos-Adultos-Light-Salmao-75kg-frente.webp"
+  },
+  "sache-premier-formula-frango-brocolis-e-cenoura-gatos": {
+    "id": "sache-premier-formula-frango-brocolis-e-cenoura-gatos",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Gatos Castrados — Frango, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-formula-frango-brocolis-e-cenoura-gatos.webp",
+    "bytes": 50470,
+    "sha256": "de50ad4ba1ced5ae1b0bdf740abcc67fc15772d2df44f3e28cbde4c59a9d9de2",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935483/Sache-Premier-Formula-Gatos-Castrados-Frango-85g-frente.webp"
+  },
+  "premier-nattu-caes-filhotes-frango": {
+    "id": "premier-nattu-caes-filhotes-frango",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Cães Filhotes — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-caes-filhotes-frango.webp",
+    "bytes": 135782,
+    "sha256": "8236aede4dd03e1eb3e54d8b84ddece0205c7b8bcb02840a934489bd9495af8e",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935492/Racao-Premier-Nattu-Caes-Filhotes-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-25kg-frente.webp"
+  },
+  "sache-caes-premier-frango-brocolis-cenoura": {
+    "id": "sache-caes-premier-frango-brocolis-cenoura",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Cães Adultos Pequeno — Frango, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-caes-premier-frango-brocolis-cenoura.webp",
+    "bytes": 25542,
+    "sha256": "92a399bb13fd69f5c18fd3bc87aed4b7abcb9bf3ef0ae96a6e9c3b07df27ddfb",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935482/Sache-Premier-Formula-Caes-Adultos-Porte-Pequeno-Frango-85g-frente.webp"
+  },
+  "racao-premier-nattu-caes-filhotes-frango-mandioca": {
+    "id": "racao-premier-nattu-caes-filhotes-frango-mandioca",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Cães Filhotes Pequeno Porte — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-nattu-caes-filhotes-frango-mandioca.webp",
+    "bytes": 135782,
+    "sha256": "8236aede4dd03e1eb3e54d8b84ddece0205c7b8bcb02840a934489bd9495af8e",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935492/Racao-Premier-Nattu-Caes-Filhotes-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-25kg-frente.webp"
+  },
+  "racao-premier-caes-frango-linhaca-cranberry": {
+    "id": "racao-premier-caes-frango-linhaca-cranberry",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Cães Adultos Médio Porte — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-caes-frango-linhaca-cranberry.webp",
+    "bytes": 24440,
+    "sha256": "9687201c59b61e878463f15af3c4ea834aedd601cc1e0bb3a5840d99853e12f0",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935494/Racao-Premier-Nattu-Caes-Adultos-Porte-Medio-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-12kg-frente.webp"
+  },
+  "racao-caes-nattu-premier-frango-mandioca-linhaca-e-cranberry-adulto": {
+    "id": "racao-caes-nattu-premier-frango-mandioca-linhaca-e-cranberry-adulto",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Cães Adultos Grande Porte — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-caes-nattu-premier-frango-mandioca-linhaca-e-cranberry-adulto.webp",
+    "bytes": 24440,
+    "sha256": "9687201c59b61e878463f15af3c4ea834aedd601cc1e0bb3a5840d99853e12f0",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935494/Racao-Premier-Nattu-Caes-Adultos-Porte-Medio-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-12kg-frente.webp"
+  },
+  "racao-premier-nattu-caes-adultos-pequeno-porte-frango-mandioca-beterraba-e-cranberry": {
+    "id": "racao-premier-nattu-caes-adultos-pequeno-porte-frango-mandioca-beterraba-e-cranberry",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Cães Adultos Pequeno Porte — Frango, Mandioca, Beterraba, Linhaça e Cranberry",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-premier-nattu-caes-adultos-pequeno-porte-frango-mandioca-beterraba-e-cranberry.webp",
+    "bytes": 351977,
+    "sha256": "67b4ce805552d6af79ea1f60df933463a04b2ea6dc7b9f54ce01e1c0d0ed60e2",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935493/Racao-Premier-Nattu-Caes-Adultos-Porte-Pequeno-Frango-Mandioca-Beterraba-Linhaca-e-Cranberry-25kg-frente.webp"
+  },
+  "sache-premier-gourmet-peito-de-frango-e-arroz-integral": {
+    "id": "sache-premier-gourmet-peito-de-frango-e-arroz-integral",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Adultos — Peito de Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-gourmet-peito-de-frango-e-arroz-integral.webp",
+    "bytes": 103340,
+    "sha256": "8fd04380e1c54444b8aede0766a31e1124954194ebfd1da7ab269716ae4822af",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935488/Sache-Premier-Gourmet-Gatos-Adultos-Peito-de-Frango-70g-frente.webp"
+  },
+  "sache-premier-nattu-frango-batata-doce-espinafre-e-linhaca": {
+    "id": "sache-premier-nattu-frango-batata-doce-espinafre-e-linhaca",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Cães — Frango, Batata-doce, Espinafre e Linhaça",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-premier-nattu-frango-batata-doce-espinafre-e-linhaca.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935501/Sache-Premier-Nattu-Caes-Frango-Batata-Doce-85g-frente.webp"
+  },
+  "papinha-desmame-premier": {
+    "id": "papinha-desmame-premier",
+    "brand": "PremieR",
+    "name": "PremieR Papinha Desmame para Cães Filhotes",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/papinha-desmame-premier.webp",
+    "bytes": 12868,
+    "sha256": "d0cf6586a30c935333b014e7faa31c82ac1205806f4ac553e4ab0a3962da63b6",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935517/Papinha-Premier-Desmame-Caes-Filhotes-1kg-frente.webp"
+  },
+  "premier-formula-caes-filhotes-porte-pequeno-frango": {
+    "id": "premier-formula-caes-filhotes-porte-pequeno-frango",
+    "brand": "PremieR",
+    "name": "PremieR Formula Cães Filhotes Porte Pequeno — Frango",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-caes-filhotes-porte-pequeno-frango.svg",
+    "bytes": 2081,
+    "sha256": "82506487e26adc2b95b5a1c532f5a167a614bac3bc4c622b5df41980283ef4bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/1070857/Racao-Premier-Formula-Caes-Filhotes-Porte-Pequeno-Frango-e-Salmao-25kg-frente.webp"
+  },
+  "premier-formula-caes-filhotes-porte-pequeno-frango-salmao": {
+    "id": "premier-formula-caes-filhotes-porte-pequeno-frango-salmao",
+    "brand": "PremieR",
+    "name": "PremieR Formula Cães Filhotes Porte Pequeno — Frango e Salmão",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-caes-filhotes-porte-pequeno-frango-salmao.svg",
+    "bytes": 2091,
+    "sha256": "91a119f236bc8019de5e2831c369ebc5705adf8687b21c0708894314a33172ef",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/1070857/Racao-Premier-Formula-Caes-Filhotes-Porte-Pequeno-Frango-e-Salmao-25kg-frente.webp"
+  },
+  "premier-feline-formula-adultos": {
+    "id": "premier-feline-formula-adultos",
+    "brand": "PremieR",
+    "name": "PremieR Feline Formula Gatos Adultos — Frango",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-feline-formula-adultos.webp",
+    "bytes": 107732,
+    "sha256": "61c4eb10a5113fd9968285051cf0d232e7c42a41d73d54bc661809652b3ec778",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935511/Racao-Premier-Gatos-Adultos-Frango-75kg-frente.webp"
+  },
+  "premier-formula-umido-caes-adultos-pequeno-carne": {
+    "id": "premier-formula-umido-caes-adultos-pequeno-carne",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Cães Adultos Pequeno — Carne, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-umido-caes-adultos-pequeno-carne.webp",
+    "bytes": 28050,
+    "sha256": "3f675313d409b14f57aa7fb8ddc1507cee84257136750a48c5af5ebc750a76c2",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935481/Sache-Premier-Formula-Caes-Adultos-Porte-Pequeno-Carne-85g-frente.webp"
+  },
+  "premier-formula-umido-caes-adultos-pequeno-frango": {
+    "id": "premier-formula-umido-caes-adultos-pequeno-frango",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Cães Adultos Pequeno — Frango, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-umido-caes-adultos-pequeno-frango.webp",
+    "bytes": 25542,
+    "sha256": "92a399bb13fd69f5c18fd3bc87aed4b7abcb9bf3ef0ae96a6e9c3b07df27ddfb",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935482/Sache-Premier-Formula-Caes-Adultos-Porte-Pequeno-Frango-85g-frente.webp"
+  },
+  "premier-formula-umido-gatos-castrados-frango": {
+    "id": "premier-formula-umido-gatos-castrados-frango",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Gatos Castrados — Frango, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-umido-gatos-castrados-frango.webp",
+    "bytes": 50470,
+    "sha256": "de50ad4ba1ced5ae1b0bdf740abcc67fc15772d2df44f3e28cbde4c59a9d9de2",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935483/Sache-Premier-Formula-Gatos-Castrados-Frango-85g-frente.webp"
+  },
+  "premier-formula-umido-gatos-castrados-atum": {
+    "id": "premier-formula-umido-gatos-castrados-atum",
+    "brand": "PremieR",
+    "name": "PremieR Formula Úmido Gatos Castrados — Atum, Brócolis e Cenoura ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-formula-umido-gatos-castrados-atum.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935484/Sache-Premier-Formula-Gatos-Castrados-Atum-85g-frente.webp"
+  },
+  "premier-nattu-umido-caes-filhotes": {
+    "id": "premier-nattu-umido-caes-filhotes",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Cães Filhotes — Frango, Abóbora, Brócolis e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-caes-filhotes.webp",
+    "bytes": 366478,
+    "sha256": "b4945cb2153ea9e3dc093e0d63b4ce0a01cf5e1e153e7743091a8753844d406b",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935499/Sache-Premier-Nattu-Caes-Filhotes-Frango-Abobora-85g-frente.webp"
+  },
+  "premier-nattu-umido-caes-adultos-pequeno-quinoa": {
+    "id": "premier-nattu-umido-caes-adultos-pequeno-quinoa",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Cães Adultos Pequeno — Frango, Abóbora, Brócolis e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-caes-adultos-pequeno-quinoa.webp",
+    "bytes": 41428,
+    "sha256": "7b259dfd485085cd20d82037e4caa2cb88d45206606cf048387042ea8641c41d",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935500/Sache-Premier-Nattu-Caes-Adultos-Frango-Abobora-85g-frente.webp"
+  },
+  "premier-nattu-umido-caes-adultos-linhaca": {
+    "id": "premier-nattu-umido-caes-adultos-linhaca",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Cães Adultos Pequeno — Frango, Batata-doce, Espinafre e Linhaça",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-caes-adultos-linhaca.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935501/Sache-Premier-Nattu-Caes-Frango-Batata-Doce-85g-frente.webp"
+  },
+  "premier-nattu-umido-gatos-filhotes": {
+    "id": "premier-nattu-umido-gatos-filhotes",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Gatos Filhotes — Frango, Abóbora, Brócolis e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-gatos-filhotes.webp",
+    "bytes": 281807,
+    "sha256": "9b0f1369f66f193dac2ee7e751b276cb3af7e8b6836b7fb8c2f1e1e7a5592876",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935503/Sache-Premier-Nattu-Gatos-Filhotes-Frango-Abobora-85g-frente.webp"
+  },
+  "premier-nattu-umido-gatos-castrados-quinoa": {
+    "id": "premier-nattu-umido-gatos-castrados-quinoa",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Gatos Castrados — Frango, Abóbora, Brócolis e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-gatos-castrados-quinoa.webp",
+    "bytes": 27510,
+    "sha256": "6b8c088efebd1c5fcd704a6bb19b20d2d51968297fc6230b8d84ac151f5c70e0",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935504/Sache-Premier-Nattu-Gatos-Castrados-Frango-Abobora-85g-frente.webp"
+  },
+  "premier-nattu-umido-gatos-castrados-linhaca": {
+    "id": "premier-nattu-umido-gatos-castrados-linhaca",
+    "brand": "PremieR",
+    "name": "PremieR Nattu Úmido Gatos Castrados — Frango, Batata-doce, Espinafre e Linhaça",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-nattu-umido-gatos-castrados-linhaca.webp",
+    "bytes": 37182,
+    "sha256": "76df137649f4b44b2ba284ba91915b7233171a42c7aff617008a353cb687da60",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935502/Sache-Premier-Nattu-Gatos-Frango-Batata-Doce-85g-frente.webp"
+  },
+  "premier-gourmet-umido-caes-filhotes-frango": {
+    "id": "premier-gourmet-umido-caes-filhotes-frango",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Cães Filhotes — Peito de Frango, Batata-doce e Brócolis",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-caes-filhotes-frango.webp",
+    "bytes": 47830,
+    "sha256": "0a03a58083e05699f43d7b750ee1b19d3d395e2b395ebb8691f4121cea6095df",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935485/Sache-Premier-Gourmet-Caes-Filhotes-Frango-85g-frente.webp"
+  },
+  "premier-gourmet-umido-caes-adultos-carne": {
+    "id": "premier-gourmet-umido-caes-adultos-carne",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Cães Adultos Pequeno — Carne, Batata-doce e Brócolis",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-caes-adultos-carne.webp",
+    "bytes": 33112,
+    "sha256": "e2a90af268a035010812eafddd509585f4d76235899eff9becdea036c7fea09d",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935486/Sache-Premier-Gourmet-Caes-Adultos-Carne-85g-frente.webp"
+  },
+  "premier-gourmet-umido-caes-adultos-salmao": {
+    "id": "premier-gourmet-umido-caes-adultos-salmao",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Cães Adultos Pequeno — Salmão e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-caes-adultos-salmao.webp",
+    "bytes": 74514,
+    "sha256": "dfbebc54ca1962051fa7bc8dad79e4f9462f9d53c5fea1beaa80b11f75da54f6",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935490/Sache-Premier-Gourmet-Caes-Adultos-Salmao-85g-frente.webp"
+  },
+  "premier-gourmet-umido-gatos-adultos-carne": {
+    "id": "premier-gourmet-umido-gatos-adultos-carne",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Adultos — Carne, Espinafre e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-gatos-adultos-carne.webp",
+    "bytes": 22780,
+    "sha256": "d4e6a289b58b89984f640ba95548d57ded92ea1d7636f31977f258474249291b",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935487/Sache-Premier-Gourmet-Gatos-Adultos-Carne-70g-frente.webp"
+  },
+  "premier-gourmet-umido-gatos-castrados-atum": {
+    "id": "premier-gourmet-umido-gatos-castrados-atum",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Castrados — Atum e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-gatos-castrados-atum.webp",
+    "bytes": 21206,
+    "sha256": "5602da82a5075ce1f7b95afafe42b4a2e69b61859a2cc4f1fe4ccb1da5b34ed7",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935491/Sache-Premier-Gourmet-Gatos-Castrados-Atum-70g-frente.webp"
+  },
+  "premier-gourmet-umido-gatos-castrados-frango": {
+    "id": "premier-gourmet-umido-gatos-castrados-frango",
+    "brand": "PremieR",
+    "name": "PremieR Gourmet Gatos Castrados — Peito de Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-gourmet-umido-gatos-castrados-frango.webp",
+    "bytes": 103340,
+    "sha256": "8fd04380e1c54444b8aede0766a31e1124954194ebfd1da7ab269716ae4822af",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935488/Sache-Premier-Gourmet-Gatos-Adultos-Peito-de-Frango-70g-frente.webp"
+  },
+  "premier-organico-caes-frango-chia-quinoa-85g": {
+    "id": "premier-organico-caes-frango-chia-quinoa-85g",
+    "brand": "PremieR",
+    "name": "PremieR Orgânico Cães Adultos Pequeno Porte — Frango, Chia e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-organico-caes-frango-chia-quinoa-85g.webp",
+    "bytes": 57718,
+    "sha256": "85c74efb7cc8d94d86eb4c13ab5a28cfff21571d128c2eca16102b947ca5970f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935495/Sache-Premier-Organico-Caes-Adultos-Frango-85g-frente.webp"
+  },
+  "premier-organico-gatos-frango-chia-quinoa-70g": {
+    "id": "premier-organico-gatos-frango-chia-quinoa-70g",
+    "brand": "PremieR",
+    "name": "PremieR Orgânico Gatos Adultos — Frango, Chia e Quinoa",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/premier-organico-gatos-frango-chia-quinoa-70g.webp",
+    "bytes": 91602,
+    "sha256": "6d8c4514a8698518239004ea2817fd85fc42f6f188f37ae0f4bf15b27851c2a7",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/935498/Sache-Premier-Organico-Gatos-Adultos-Frango-70g-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-medio-frango-arroz": {
+    "id": "racao-guabi-natural-cao-adulto-medio-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Médio — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-medio-frango-arroz.webp",
+    "bytes": 65668,
+    "sha256": "3d27b8fd3528254f81cc4f94684756cf04eb7f9d80b723174de769929c7a9b7b",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936412/Racao-Guabi-Natural-Caes-Adultos-Porte-Medio-Frango-e-Arroz-Integral-12kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-filhote-medio-frango-arroz": {
+    "id": "racao-guabi-natural-cao-filhote-medio-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Filhote Porte Médio — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-filhote-medio-frango-arroz.webp",
+    "bytes": 69852,
+    "sha256": "f36e763ef7a850dec9ab4c9fcee5deab6dc2d350be4b965eea12fce64608a4fd",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936413/Racao-Guabi-Natural-Caes-Filhotes-Porte-Medio-Frango-e-Arroz-Integral-12kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-filhote-mini-pequeno-frango-arroz-integral": {
+    "id": "racao-guabi-natural-cao-filhote-mini-pequeno-frango-arroz-integral",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Filhote Porte Mini e Pequeno — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-filhote-mini-pequeno-frango-arroz-integral.webp",
+    "bytes": 70742,
+    "sha256": "7c601d3d99068e68234a0891a1890868fcaedce93bb27ffa0610a6821b65f30d",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936414/Racao-Guabi-Natural-Caes-Filhotes-Porte-Mini-e-Pequeno-Frango-e-Arroz-Integral-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-filhote-grande-gigante-frango-arroz": {
+    "id": "racao-guabi-natural-cao-filhote-grande-gigante-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Filhote Porte Grande e Gigante — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-filhote-grande-gigante-frango-arroz.webp",
+    "bytes": 8572,
+    "sha256": "ca4295e4a37e1749eb273c07a5dc5d86b5134452cc10c0c08391604fd5c78afd",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936415/Racao-Guabi-Natural-Caes-Filhotes-Porte-Grande-e-Gigante-Frango-e-Arroz-Integral-15kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-senior-mini-pequeno-frango-arroz": {
+    "id": "racao-guabi-natural-cao-senior-mini-pequeno-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Sênior Porte Mini e Pequeno — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-senior-mini-pequeno-frango-arroz.webp",
+    "bytes": 11100,
+    "sha256": "d6c462ef4951fca49a7b795ecbc244f9d910929719a69f421d9dedc6b6e961f5",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936416/Racao-Guabi-Natural-Caes-Senior-Porte-Mini-e-Pequeno-Frango-e-Arroz-Integral-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-medio-salmao-cevada": {
+    "id": "racao-guabi-natural-cao-adulto-medio-salmao-cevada",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Médio — Salmão e Cevada",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-medio-salmao-cevada.webp",
+    "bytes": 40026,
+    "sha256": "a0e4cbcf7e5830d94606e799d0e820e05c8bf45f4e5bdea4053ba2f75a5074cb",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936417/Racao-Guabi-Natural-Caes-Adultos-Porte-Medio-Salmao-e-Cevada-12kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-medio-cordeiro-aveia": {
+    "id": "racao-guabi-natural-cao-adulto-medio-cordeiro-aveia",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Médio — Cordeiro e Aveia",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-medio-cordeiro-aveia.webp",
+    "bytes": 49610,
+    "sha256": "1193558f948d5e842daa4c396c713b412513557053b936834f7ec31b61abaa71",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936418/Racao-Guabi-Natural-Caes-Adultos-Porte-Medio-Cordeiro-e-Aveia-12kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-mini-pequeno-frango-arroz": {
+    "id": "racao-guabi-natural-cao-adulto-mini-pequeno-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Mini e Pequeno — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-mini-pequeno-frango-arroz.webp",
+    "bytes": 14702,
+    "sha256": "1d16f8b092053568b250dd2de52faa5f7ca064bc9f1f29513301b32329f3ee81",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936419/Racao-Guabi-Natural-Caes-Adultos-Porte-Mini-e-Pequeno-Frango-e-Arroz-Integral-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-mini-pequeno-salmao-cevada": {
+    "id": "racao-guabi-natural-cao-adulto-mini-pequeno-salmao-cevada",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Mini e Pequeno — Salmão e Cevada",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-mini-pequeno-salmao-cevada.webp",
+    "bytes": 44284,
+    "sha256": "13c8e40df6e257d472105784cc5094aaa4ac981cb353d94edde4ec11b4d26f77",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936420/Racao-Guabi-Natural-Caes-Adultos-Porte-Mini-e-Pequeno-Salmao-e-Cevada-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-mini-pequeno-cordeiro-aveia": {
+    "id": "racao-guabi-natural-cao-adulto-mini-pequeno-cordeiro-aveia",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Mini e Pequeno — Cordeiro e Aveia",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-mini-pequeno-cordeiro-aveia.webp",
+    "bytes": 10246,
+    "sha256": "8e23ebac4db836c90d0999c55592dd22a48bbeba9b06b081f011d1a5d0c02dbf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936421/Racao-Guabi-Natural-Caes-Adultos-Porte-Mini-e-Pequeno-Cordeiro-e-Aveia-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-grande-gigante-frango-arroz": {
+    "id": "racao-guabi-natural-cao-adulto-grande-gigante-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Grande e Gigante — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-grande-gigante-frango-arroz.webp",
+    "bytes": 25318,
+    "sha256": "81d84c455f1979833cfecfcc7189e134883c414448feb09cfc296752a5f4e779",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936422/Racao-Guabi-Natural-Caes-Adultos-Porte-Grande-e-Gigante-Frango-e-Arroz-Integral-15kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-grande-gigante-cordeiro-aveia": {
+    "id": "racao-guabi-natural-cao-adulto-grande-gigante-cordeiro-aveia",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Grande e Gigante — Cordeiro e Aveia",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-grande-gigante-cordeiro-aveia.webp",
+    "bytes": 14330,
+    "sha256": "ab5019034f0bea4af96412834bda89a4593b12c750af81f1d22899bb9f4d2ba3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936423/Racao-Guabi-Natural-Caes-Adultos-Porte-Grande-e-Gigante-Cordeiro-e-Aveia-15kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-mini-pequeno-grain-free-frango-lentilha": {
+    "id": "racao-guabi-natural-cao-adulto-mini-pequeno-grain-free-frango-lentilha",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Mini e Pequeno — Grain Free Frango e Lentilha",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-mini-pequeno-grain-free-frango-lentilha.webp",
+    "bytes": 10562,
+    "sha256": "f9788a396ef26ef9fc4d609cb0cc75373a681aabc99dbec2d76b5ac3c3321ca0",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936424/Racao-Guabi-Natural-Grain-Free-Caes-Adultos-Porte-Mini-e-Pequeno-Frango-e-Lentilha-25kg-frente.webp"
+  },
+  "racao-guabi-natural-cao-adulto-medio-grain-free-frango-lentilha": {
+    "id": "racao-guabi-natural-cao-adulto-medio-grain-free-frango-lentilha",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Cão Adulto Porte Médio — Grain Free Frango e Lentilha",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-cao-adulto-medio-grain-free-frango-lentilha.webp",
+    "bytes": 53954,
+    "sha256": "b23102e6a88a93329942d425a39392bf7588f00e4d91cbecd08d04f05a8f718f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936425/Racao-Guabi-Natural-Grain-Free-Caes-Adultos-Porte-Medio-Frango-e-Lentilha-12kg-frente.webp"
+  },
+  "racao-guabi-natural-gato-adulto-castrado-frango-arroz-integral": {
+    "id": "racao-guabi-natural-gato-adulto-castrado-frango-arroz-integral",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Gato Adulto Castrado — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-gato-adulto-castrado-frango-arroz-integral.webp",
+    "bytes": 8300,
+    "sha256": "9b9e2bdc4819aa318c826375d1dd5aa53ae49da2561757f31a77be26fea2001d",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936426/Racao-Guabi-Natural-Gatos-Adultos-Castrados-Frango-e-Arroz-Integral-75kg-frente.webp"
+  },
+  "racao-guabi-natural-gato-senior-castrado-frango-arroz-integral": {
+    "id": "racao-guabi-natural-gato-senior-castrado-frango-arroz-integral",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Gato Sênior Castrado — Frango e Arroz Integral",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-gato-senior-castrado-frango-arroz-integral.webp",
+    "bytes": 13704,
+    "sha256": "0dda107ea5c04dbcae0417d103903bccf5ebfc1fbe78c5ef3bd604d72bd5ec67",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936427/Racao-Guabi-Natural-Gatos-Senior-Castrados-Frango-e-Arroz-Integral-75kg-frente.webp"
+  },
+  "racao-guabi-natural-gato-adulto-grain-free-salmao-lentilha": {
+    "id": "racao-guabi-natural-gato-adulto-grain-free-salmao-lentilha",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Gato Adulto Castrado Grain Free — Salmão e Lentilha",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-gato-adulto-grain-free-salmao-lentilha.webp",
+    "bytes": 8584,
+    "sha256": "e08cdf2312c08637c4d69c63493aaa00e8538a2d21b11d54425fb752ec782f5d",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936428/Racao-Guabi-Natural-Grain-Free-Gatos-Adultos-Castrados-Salmao-e-Lentilha-75kg-frente.webp"
+  },
+  "racao-guabi-natural-gato-adulto-salmao-cevada": {
+    "id": "racao-guabi-natural-gato-adulto-salmao-cevada",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Gato Adulto — Salmão e Cevada",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-gato-adulto-salmao-cevada.webp",
+    "bytes": 20334,
+    "sha256": "0ba91618c1a910dd8b8eb420b85121acdeb8c250dad737dd3899952823f6c823",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936429/Racao-Guabi-Natural-Gatos-Adultos-Salmao-e-Cevada-75kg-frente.webp"
+  },
+  "racao-guabi-natural-gato-adulto-castrado-cordeiro-aveia": {
+    "id": "racao-guabi-natural-gato-adulto-castrado-cordeiro-aveia",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Gato Adulto Castrado — Cordeiro e Aveia",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-guabi-natural-gato-adulto-castrado-cordeiro-aveia.webp",
+    "bytes": 33042,
+    "sha256": "c0fe22957b81f3e64a7ab169bfa76abcd74fd23d40a229e8798ca2e9c458f229",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936430/Racao-Guabi-Natural-Gatos-Adultos-Castrados-Cordeiro-e-Aveia-75kg-frente.webp"
+  },
+  "guabi-natural-sache-gatos-frango-cereais-vegetais-85g": {
+    "id": "guabi-natural-sache-gatos-frango-cereais-vegetais-85g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Gato — Frango, Cereais Integrais e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-gatos-frango-cereais-vegetais-85g.webp",
+    "bytes": 10526,
+    "sha256": "0cfad71a7b12479123cbf05d6621d29f3509707d62cf44eb0d377e60b332963a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936431/Sache-Guabi-Natural-Gatos-Frango-Cereais-e-Vegetais-85g-frente.webp"
+  },
+  "guabi-natural-sache-gatos-frango-salmao-cereais-vegetais-85g": {
+    "id": "guabi-natural-sache-gatos-frango-salmao-cereais-vegetais-85g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Gato — Frango, Salmão, Cereais Integrais e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-gatos-frango-salmao-cereais-vegetais-85g.webp",
+    "bytes": 16140,
+    "sha256": "fc56a11cc44071d2873a253d037796a821f16811b6ad546861e6f7b558b4b168",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936432/Sache-Guabi-Natural-Gatos-Frango-Salmao-Cereais-e-Vegetais-85g-frente.webp"
+  },
+  "guabi-natural-sache-gatos-frango-salmao-vegetais-85g": {
+    "id": "guabi-natural-sache-gatos-frango-salmao-vegetais-85g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Gato — Sabor Frango, Salmão e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-gatos-frango-salmao-vegetais-85g.webp",
+    "bytes": 18678,
+    "sha256": "3a18ce187f8063518fd42c80e5fa31542b7e2058c9b7f21f0d208d4674e762fb",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936433/Sache-Guabi-Natural-Gatos-Frango-Salmao-e-Vegetais-85g-frente.webp"
+  },
+  "guabi-natural-sache-caes-frango-cereais-vegetais-100g": {
+    "id": "guabi-natural-sache-caes-frango-cereais-vegetais-100g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Cão — Frango, Cereais Integrais e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-caes-frango-cereais-vegetais-100g.webp",
+    "bytes": 10526,
+    "sha256": "0cfad71a7b12479123cbf05d6621d29f3509707d62cf44eb0d377e60b332963a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936434/Sache-Guabi-Natural-Caes-Frango-Cereais-e-Vegetais-100g-frente.webp"
+  },
+  "guabi-natural-sache-caes-frango-salmao-cereais-vegetais-100g": {
+    "id": "guabi-natural-sache-caes-frango-salmao-cereais-vegetais-100g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Cão — Frango, Salmão, Cereais Integrais e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-caes-frango-salmao-cereais-vegetais-100g.webp",
+    "bytes": 10526,
+    "sha256": "0cfad71a7b12479123cbf05d6621d29f3509707d62cf44eb0d377e60b332963a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936435/Sache-Guabi-Natural-Caes-Frango-Salmao-Cereais-e-Vegetais-100g-frente.webp"
+  },
+  "guabi-natural-sache-caes-frango-salmao-vegetais-100g": {
+    "id": "guabi-natural-sache-caes-frango-salmao-vegetais-100g",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Sachê Cão — Frango, Salmão e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-sache-caes-frango-salmao-vegetais-100g.webp",
+    "bytes": 22270,
+    "sha256": "7df15978bd6646a4fa2dc1c5ed22a7676abe60a6f74c5bf0d24627de3af7b8b3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936436/Sache-Guabi-Natural-Caes-Frango-Salmao-e-Vegetais-100g-frente.webp"
+  },
+  "guabi-natural-racao-gatos-filhotes-frango-arroz": {
+    "id": "guabi-natural-racao-gatos-filhotes-frango-arroz",
+    "brand": "Guabi Natural",
+    "name": "Guabi Natural Filhotes — Frango e Arroz Integral (Consolidado)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/guabi-natural-racao-gatos-filhotes-frango-arroz.webp",
+    "bytes": 42624,
+    "sha256": "0d64f8c1538da03968bccafb8a1320fcd8a8c1dec52caaaf35656d9b692b7155",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936437/Racao-Guabi-Natural-Gatos-Filhotes-Frango-e-Arroz-Integral-15kg-frente.webp"
+  },
+  "farmina-nd-prime-caes-puppy-chicken-pomegranate-140g": {
+    "id": "farmina-nd-prime-caes-puppy-chicken-pomegranate-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Cães Filhotes Mini — Frango e Romã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-caes-puppy-chicken-pomegranate-140g.svg",
+    "bytes": 2089,
+    "sha256": "dca6eecf059bce39b39afe3b585da6a8b9af3a5cbac81330b76f386ac57e9ceb",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4317_14_farmina-nd-prime-wet-canine-puppy-chicken-pomegranate.png"
+  },
+  "farmina-nd-prime-caes-adult-chicken-pomegranate-140g": {
+    "id": "farmina-nd-prime-caes-adult-chicken-pomegranate-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Cães Adultos Mini — Frango e Romã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-caes-adult-chicken-pomegranate-140g.svg",
+    "bytes": 2088,
+    "sha256": "78d0601e78efd0f14f744e25a9170f164b17338d8e9644ab49027a6035382828",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4317_14_farmina-nd-prime-wet-canine-puppy-chicken-pomegranate.png"
+  },
+  "farmina-nd-prime-caes-adult-boar-apple-140g": {
+    "id": "farmina-nd-prime-caes-adult-boar-apple-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Cães Adultos Mini — Javali e Maçã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-caes-adult-boar-apple-140g.svg",
+    "bytes": 2089,
+    "sha256": "8e7bff87ef8eb8c1ca97fa9cc7830ceb5d82f15437797a89cbb44d74b698eaa4",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4318_14_farmina-nd-prime-wet-canine-adult-boar-apple.png"
+  },
+  "farmina-nd-prime-caes-adult-lamb-blueberry-140g": {
+    "id": "farmina-nd-prime-caes-adult-lamb-blueberry-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Cães Adultos Mini — Cordeiro e Blueberry",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-caes-adult-lamb-blueberry-140g.svg",
+    "bytes": 2094,
+    "sha256": "e2044c7e2f9610ad30cee135933aae22fc050e7c8591ac1103f242587cf046ca",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4319_14_farmina-nd-prime-wet-canine-adult-lamb-blueberry.png"
+  },
+  "farmina-nd-pumpkin-caes-adult-lamb-blueberry-140g": {
+    "id": "farmina-nd-pumpkin-caes-adult-lamb-blueberry-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Pumpkin Cães Adultos Mini — Cordeiro, Abóbora e Blueberry",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-pumpkin-caes-adult-lamb-blueberry-140g.svg",
+    "bytes": 2106,
+    "sha256": "143c075eb7f15e72e69ff09719be532af95a4a5a730c222936976aebbdc91eb9",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4320_14_farmina-nd-pumpkin-wet-canine-adult-lamb-pumpkin-blueberry.png"
+  },
+  "farmina-nd-quinoa-caes-skin-coat-duck-140g": {
+    "id": "farmina-nd-quinoa-caes-skin-coat-duck-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Quinoa Cães Mini — Skin & Coat Pato",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-quinoa-caes-skin-coat-duck-140g.svg",
+    "bytes": 2087,
+    "sha256": "ae42fae6d46ae407443fccfd7851573b03840b0737d18147075d7e9246a96d0b",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4321_14_farmina-nd-quinoa-wet-canine-skin-coat-duck.png"
+  },
+  "farmina-nd-quinoa-caes-skin-coat-fish-140g": {
+    "id": "farmina-nd-quinoa-caes-skin-coat-fish-140g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Quinoa Cães Mini — Skin & Coat Arenque",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-quinoa-caes-skin-coat-fish-140g.svg",
+    "bytes": 2090,
+    "sha256": "832e4d75e052fa0e10d10a87cfa8e9028f6b473fd782c3b8f7d5474600c42c25",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4322_14_farmina-nd-quinoa-wet-canine-skin-coat-herring.png"
+  },
+  "farmina-nd-prime-gatos-adult-chicken-pomegranate-70g": {
+    "id": "farmina-nd-prime-gatos-adult-chicken-pomegranate-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Gatos Adultos — Frango e Romã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-gatos-adult-chicken-pomegranate-70g.svg",
+    "bytes": 2083,
+    "sha256": "3d59e86a85d40408082f588fdcf11308a2db91385377b648901c2ee1d9dff130",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4323_14_farmina-nd-prime-wet-feline-adult-chicken-pomegranate.png"
+  },
+  "farmina-nd-prime-gatos-kitten-chicken-pomegranate-70g": {
+    "id": "farmina-nd-prime-gatos-kitten-chicken-pomegranate-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Gatos Filhotes — Frango e Romã",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-gatos-kitten-chicken-pomegranate-70g.svg",
+    "bytes": 2084,
+    "sha256": "54396c416cc6165f6445fddff8483bf7fa4df6a5fdf17a0c7bebeefca61e0892",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4324_14_farmina-nd-prime-wet-feline-kitten-chicken-pomegranate.png"
+  },
+  "farmina-nd-prime-gatos-lamb-blueberry-70g": {
+    "id": "farmina-nd-prime-gatos-lamb-blueberry-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Prime Gatos Adultos — Cordeiro e Blueberry",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-prime-gatos-lamb-blueberry-70g.svg",
+    "bytes": 2089,
+    "sha256": "bdf4ed4ef2ae329e1737a1dfbb49848a613129c0ab704383ee6328bda1731979",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4325_14_farmina-nd-prime-wet-feline-adult-lamb-blueberry.png"
+  },
+  "farmina-nd-ocean-gatos-tuna-salmon-70g": {
+    "id": "farmina-nd-ocean-gatos-tuna-salmon-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Ocean Gatos Adultos — Atum e Salmão",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-ocean-gatos-tuna-salmon-70g.svg",
+    "bytes": 2083,
+    "sha256": "3f9cd4d1a6024fcc3b757ad3ab46a228b39f56829341574bc352ebdea844ad49",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4326_14_farmina-nd-ocean-wet-feline-adult-tuna-salmon.png"
+  },
+  "farmina-nd-ocean-gatos-tuna-sardine-shrimp-70g": {
+    "id": "farmina-nd-ocean-gatos-tuna-sardine-shrimp-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Ocean Gatos Adultos — Atum, Sardinha e Camarão",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-ocean-gatos-tuna-sardine-shrimp-70g.svg",
+    "bytes": 2094,
+    "sha256": "00f9bf442e047edf0b9e277ce733f87810a7950e891d7a0e8bf16ecb4f37d932",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4327_14_farmina-nd-ocean-wet-feline-adult-tuna-sardine-shrimp.png"
+  },
+  "farmina-nd-ocean-gatos-tuna-shrimp-70g": {
+    "id": "farmina-nd-ocean-gatos-tuna-shrimp-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Ocean Gatos Adultos — Atum e Camarão",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-ocean-gatos-tuna-shrimp-70g.svg",
+    "bytes": 2084,
+    "sha256": "916d121da0d583c804f35830204e372abc21075d8a624481883a668b1c21195e",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4328_14_farmina-nd-ocean-wet-feline-adult-tuna-shrimp.png"
+  },
+  "farmina-nd-natural-gatos-tuna-70g": {
+    "id": "farmina-nd-natural-gatos-tuna-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Natural Gatos Adultos — Atum",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-natural-gatos-tuna-70g.svg",
+    "bytes": 2075,
+    "sha256": "bcb75ffb823fd2121a60755aad62e0ddf698a37a9282fee8667a03d0468a361b",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4329_14_farmina-nd-natural-wet-feline-adult-tuna.png"
+  },
+  "farmina-nd-natural-gatos-tuna-chicken-70g": {
+    "id": "farmina-nd-natural-gatos-tuna-chicken-70g",
+    "brand": "Farmina",
+    "name": "Farmina N&D Natural Gatos Adultos — Atum e Frango",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/farmina-nd-natural-gatos-tuna-chicken-70g.svg",
+    "bytes": 2084,
+    "sha256": "69a6ccccc1e46e1c68f98a00a81a6a4258c15876f0dc17e4d98888a46fa42c2d",
+    "sourceUrl": "https://www.farmina.com/fotoprodotti/l_4330_14_farmina-nd-natural-wet-feline-adult-tuna-chicken.png"
+  },
+  "racao-purina-pro-plan-gatos-castrados-1-anos-frango-ao-molho": {
+    "id": "racao-purina-pro-plan-gatos-castrados-1-anos-frango-ao-molho",
+    "brand": "Purina",
+    "name": "Purina Pro Plan Gatos Adultos Castrados — Frango ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-purina-pro-plan-gatos-castrados-1-anos-frango-ao-molho.webp",
+    "bytes": 31256,
+    "sha256": "dda5e99cfa2768343d1805e6b6cb1b92d53a1117f32491e97c9911aaf73a88f9",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936450/Sache-Pro-Plan-Gatos-Castrados-Frango-85g-frente.webp"
+  },
+  "purina-dog-chow-adulto-minis-seco": {
+    "id": "purina-dog-chow-adulto-minis-seco",
+    "brand": "Purina",
+    "name": "Purina Dog Chow ExtraLife Adulto Minis e Pequenos — Carne, Frango e Arroz",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-dog-chow-adulto-minis-seco.webp",
+    "bytes": 38636,
+    "sha256": "03ae0980327787de16e9ab43f669c5d8b5cc061fe1b1b33c897d34960855b18f",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936451/Racao-Dog-Chow-ExtraLife-Adultos-Minis-e-Pequenos-Carne-Frango-Arroz-15kg-frente.webp"
+  },
+  "purina-dog-chow-adulto-minis-salmao-sache": {
+    "id": "purina-dog-chow-adulto-minis-salmao-sache",
+    "brand": "Purina",
+    "name": "Purina Dog Chow ExtraLife Adulto Minis e Pequenos — Salmão ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-dog-chow-adulto-minis-salmao-sache.webp",
+    "bytes": 17610,
+    "sha256": "f253d5623651334d053b779e26e39cefaa12f88b9511cd015bf3c4f6a5c2c103",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936452/Sache-Dog-Chow-ExtraLife-Adultos-Minis-e-Pequenos-Salmao-100g-frente.webp"
+  },
+  "purina-one-caes-adultos-minis-pequenos": {
+    "id": "purina-one-caes-adultos-minis-pequenos",
+    "brand": "Purina",
+    "name": "Purina ONE Cães Adultos Raças Minis e Pequenas — Frango e Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-caes-adultos-minis-pequenos.webp",
+    "bytes": 42624,
+    "sha256": "0d64f8c1538da03968bccafb8a1320fcd8a8c1dec52caaaf35656d9b692b7155",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936453/Racao-Purina-ONE-Adultos-Minis-e-Pequenos-Frango-e-Carne-6kg-frente.webp"
+  },
+  "purina-one-caes-filhotes": {
+    "id": "purina-one-caes-filhotes",
+    "brand": "Purina",
+    "name": "Purina ONE Cães Filhotes Todos os Portes — Frango e Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-caes-filhotes.webp",
+    "bytes": 31522,
+    "sha256": "cef8c5295c27f7e3468564d64be232b1e9dfbe4b8749cdab310823fb489c7234",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936454/Racao-Purina-ONE-Filhotes-Todos-os-Portes-Frango-e-Carne-6kg-frente.webp"
+  },
+  "purina-one-caes-adultos-medios-grandes": {
+    "id": "purina-one-caes-adultos-medios-grandes",
+    "brand": "Purina",
+    "name": "Purina ONE Cães Adultos Raças Médias e Grandes — Frango e Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-caes-adultos-medios-grandes.webp",
+    "bytes": 22270,
+    "sha256": "7df15978bd6646a4fa2dc1c5ed22a7676abe60a6f74c5bf0d24627de3af7b8b3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936455/Racao-Purina-ONE-Adultos-Medios-e-Grandes-Frango-e-Carne-15kg-frente.webp"
+  },
+  "purina-cat-chow-castrados-frango-seco": {
+    "id": "purina-cat-chow-castrados-frango-seco",
+    "brand": "Purina",
+    "name": "Purina Cat Chow Defense Plus Gatos Castrados — Frango",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-cat-chow-castrados-frango-seco.webp",
+    "bytes": 10526,
+    "sha256": "0cfad71a7b12479123cbf05d6621d29f3509707d62cf44eb0d377e60b332963a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936456/Racao-Cat-Chow-Castrados-Frango-10.1kg-frente.webp"
+  },
+  "purina-one-gatos-adultos": {
+    "id": "purina-one-gatos-adultos",
+    "brand": "Purina",
+    "name": "Purina ONE Gatos Adultos — Frango e Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-gatos-adultos.webp",
+    "bytes": 15466,
+    "sha256": "5c0ef6363a38fdbfa6037b8b1ca856b55517a50fbe52b3d887776ded3b681c80",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936457/Racao-Purina-ONE-Gatos-Adultos-Frango-e-Carne-2kg-frente.webp"
+  },
+  "purina-one-gatos-filhotes": {
+    "id": "purina-one-gatos-filhotes",
+    "brand": "Purina",
+    "name": "Purina ONE Gatos Filhotes — Frango e Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-gatos-filhotes.webp",
+    "bytes": 10526,
+    "sha256": "0cfad71a7b12479123cbf05d6621d29f3509707d62cf44eb0d377e60b332963a",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936458/Racao-Purina-ONE-Gatos-Filhotes-Frango-e-Carne-2kg-frente.webp"
+  },
+  "purina-one-gatos-castrados-salmao": {
+    "id": "purina-one-gatos-castrados-salmao",
+    "brand": "Purina",
+    "name": "Purina ONE Gatos Castrados — Salmão e Atum",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-one-gatos-castrados-salmao.webp",
+    "bytes": 22344,
+    "sha256": "71eab2461d23eaee8bb28905ebf7e88a61053b31eb0f74358ebde95725062119",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936459/Racao-Purina-ONE-Gatos-Castrados-Salmao-e-Atum-2kg-frente.webp"
+  },
+  "purina-friskies-megamix-7-proteinas": {
+    "id": "purina-friskies-megamix-7-proteinas",
+    "brand": "Purina",
+    "name": "Purina Friskies Megamix 7 Proteínas Gatos Adultos",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-friskies-megamix-7-proteinas.webp",
+    "bytes": 29316,
+    "sha256": "a81fa0560a8bd31e5d5099621915130ef75b7eff6cb6440ef33e0cf7d212d803",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936460/Racao-Friskies-Megamix-7-Proteinas-Gatos-Adultos-10.1kg-frente.webp"
+  },
+  "purina-friskies-megamix-adultos-castrados": {
+    "id": "purina-friskies-megamix-adultos-castrados",
+    "brand": "Purina",
+    "name": "Purina Friskies Megamix Gatos Adultos Castrados",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-friskies-megamix-adultos-castrados.webp",
+    "bytes": 25438,
+    "sha256": "2b3faeff8eb59e88ee42a35a6e7d68b5aefede64405beffdb9ac196f6a78e974",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936461/Racao-Friskies-Megamix-Gatos-Castrados-10.1kg-frente.webp"
+  },
+  "purina-friskies-mar-de-sabores": {
+    "id": "purina-friskies-mar-de-sabores",
+    "brand": "Purina",
+    "name": "Purina Friskies Mar de Sabores Gatos Adultos",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-friskies-mar-de-sabores.webp",
+    "bytes": 31256,
+    "sha256": "dda5e99cfa2768343d1805e6b6cb1b92d53a1117f32491e97c9911aaf73a88f9",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936462/Racao-Friskies-Mar-de-Sabores-Gatos-Adultos-3kg-frente.webp"
+  },
+  "purina-fancy-feast-goulash-atum-sache": {
+    "id": "purina-fancy-feast-goulash-atum-sache",
+    "brand": "Purina",
+    "name": "Purina Fancy Feast Goulash com Atum Gatos Adultos",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/purina-fancy-feast-goulash-atum-sache.webp",
+    "bytes": 35620,
+    "sha256": "9d320de2d955a34c9cec1adf04684b260183cbee198e3a9815da12007cffc7fe",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936463/Sache-Fancy-Feast-Goulash-Atum-85g-frente.webp"
+  },
+  "hills-science-diet-senior-vitality-7-frango-vegetais": {
+    "id": "hills-science-diet-senior-vitality-7-frango-vegetais",
+    "brand": "Hill's",
+    "name": "Hill's Science Diet Senior Vitality 7+ — Ensopado de Frango e Vegetais",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/hills-science-diet-senior-vitality-7-frango-vegetais.webp",
+    "bytes": 7566,
+    "sha256": "cd980a57f926f23fc281fc6b089ae9b6a8116eeda7e7c433a6fe32a022099ad3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936470/Racao-Umida-Hills-Science-Diet-Senior-Vitality-7-Frango-e-Vegetais-354g-frente.webp"
+  },
+  "hills-prescription-id-digestive-care-peru": {
+    "id": "hills-prescription-id-digestive-care-peru",
+    "brand": "Hill's",
+    "name": "Hill's Prescription Diet i/d Digestive Care — Pedaços com Peru",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/hills-prescription-id-digestive-care-peru.webp",
+    "bytes": 117296,
+    "sha256": "2f7f437425c3ca379dedee93b05308fcf25c0bb2dd77c17c83a490dfed2956bc",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936471/Racao-Umida-Hills-Prescription-Diet-id-Digestive-Care-Peru-370g-frente.webp"
+  },
+  "racao-all-canis-adultos": {
+    "id": "racao-all-canis-adultos",
+    "brand": "All Canis",
+    "name": "All Canis Cães Adultos Todas as Raças — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-all-canis-adultos.webp",
+    "bytes": 57636,
+    "sha256": "dc99ac04c7709dc81c25e1c5d278cb44a5e4a041b6e3f4b6ab6a432450d62fe4",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936472/Racao-All-Canis-Adultos-Carne-15kg-frente.webp"
+  },
+  "pate-colosso-caes-adultos-sabor-carne": {
+    "id": "pate-colosso-caes-adultos-sabor-carne",
+    "brand": "Colosso",
+    "name": "Patê Colosso Cães Adultos — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/pate-colosso-caes-adultos-sabor-carne.webp",
+    "bytes": 77242,
+    "sha256": "d115d47e89b87be7cb32867be2d3361152aaac932752a374eb99093922c91382",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936473/Pate-Colosso-Caes-Adultos-Carne-280g-frente.webp"
+  },
+  "pate-colosso-gatos-adultos-sabor-carne": {
+    "id": "pate-colosso-gatos-adultos-sabor-carne",
+    "brand": "Colosso",
+    "name": "Patê Colosso Gatos Adultos — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/pate-colosso-gatos-adultos-sabor-carne.webp",
+    "bytes": 27904,
+    "sha256": "31ae0cb281f1c6c6397bb060489472bb52cc3f1e1d91d88867519b6aa9eb9a6c",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936474/Pate-Colosso-Gatos-Adultos-Carne-280g-frente.webp"
+  },
+  "racao-all-cats": {
+    "id": "racao-all-cats",
+    "brand": "All Cats",
+    "name": "All Cats Gatos Adultos — Sabor Peixe e Frango",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-all-cats.webp",
+    "bytes": 21166,
+    "sha256": "f64e24b8bf10cbcb22eb87baad2d67e364ef4987ade297f8890119d9fbc487e3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936475/Racao-All-Cats-Adultos-Peixe-e-Frango-10.1kg-frente.webp"
+  },
+  "racao-magnus-caes-adultos-pequeno-porte": {
+    "id": "racao-magnus-caes-adultos-pequeno-porte",
+    "brand": "Magnus",
+    "name": "Magnus Todo Dia Cães Adultos Pequeno Porte — Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-magnus-caes-adultos-pequeno-porte.webp",
+    "bytes": 176068,
+    "sha256": "4c6bcbca481ac44f78a7772966af36fa873cf8032609d6a4ae9854f0cf9db366",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936476/Racao-Magnus-Todo-Dia-Caes-Adultos-Pequeno-Porte-Carne-15kg-frente.webp"
+  },
+  "racao-magnus-caes-adultos": {
+    "id": "racao-magnus-caes-adultos",
+    "brand": "Magnus",
+    "name": "Magnus Todo Dia Cães Adultos — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-magnus-caes-adultos.webp",
+    "bytes": 59924,
+    "sha256": "d1f1ca81ef308b3241ce99b2aea0f0f8aa8d132c6e21aafad3babc88c36ee360",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936477/Racao-Magnus-Todo-Dia-Caes-Adultos-Carne-15kg-frente.webp"
+  },
+  "churu": {
+    "id": "churu",
+    "brand": "Inaba",
+    "name": "Inaba Churu Purê Cremoso para Gatos — Atum",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/churu.webp",
+    "bytes": 193926,
+    "sha256": "2f54d629a9965d5c43ff2a496fd28194c5f390b983dc74bf5b1932db7abf3551",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936478/Petisco-Inaba-Churu-Gatos-Pure-Atum-56g-frente.webp"
+  },
+  "petmilk": {
+    "id": "petmilk",
+    "brand": "Vetnil",
+    "name": "Pet Milk Vetnil — Substituto do Leite Materno Neonatal",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/petmilk.svg",
+    "bytes": 2084,
+    "sha256": "987dc66c9891090e8df1f3b82fa9ae7e87e4fb09d74d387bda2e0bfc57695e5f",
+    "sourceUrl": "https://vetnil.com.br/wp-content/uploads/2021/04/Pet-Milk-300g-Frontal.png"
+  },
+  "racao-magnus-caes-adultos-grande-porte": {
+    "id": "racao-magnus-caes-adultos-grande-porte",
+    "brand": "Magnus",
+    "name": "Magnus Todo Dia Cães Adultos Grande Porte — Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-magnus-caes-adultos-grande-porte.webp",
+    "bytes": 34018,
+    "sha256": "d7eacce5ae3258628910ced87d63944bd744c9b019ee493ca9143c0dd278de76",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936480/Racao-Magnus-Todo-Dia-Caes-Adultos-Grande-Porte-Carne-15kg-frente.webp"
+  },
+  "sache-whiskas": {
+    "id": "sache-whiskas",
+    "brand": "Whiskas",
+    "name": "Whiskas 1+ Sachê Adultos — Carne ao Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-whiskas.webp",
+    "bytes": 21166,
+    "sha256": "f64e24b8bf10cbcb22eb87baad2d67e364ef4987ade297f8890119d9fbc487e3",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936481/Sache-Whiskas-Adultos-Carne-ao-Molho-85g-frente.webp"
+  },
+  "pate-chanin": {
+    "id": "pate-chanin",
+    "brand": "Chanin",
+    "name": "Chanin Patê Gatos Adultos — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/pate-chanin.webp",
+    "bytes": 173584,
+    "sha256": "40a5c820a410800f4ffecd2e811e63558b01018a70495de66c5a20ceeb63aec8",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936482/Pate-Chanin-Gatos-Adultos-Carne-280g-frente.webp"
+  },
+  "pate-bomguy": {
+    "id": "pate-bomguy",
+    "brand": "Bomguy",
+    "name": "Bomguy Patê Cães Adultos — Sabor Carne",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/pate-bomguy.webp",
+    "bytes": 70690,
+    "sha256": "eb88aa0cdda2bf671762b78d1163afa21c2939901d0db557edd28f3a64e2e371",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936483/Pate-Bomguy-Caes-Adultos-Carne-280g-frente.webp"
+  },
+  "racao-royal-canin-mother-and-baby-cat": {
+    "id": "racao-royal-canin-mother-and-baby-cat",
+    "brand": "Royal Canin",
+    "name": "Ração Royal Canin Mother and Baby Cat",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-mother-and-baby-cat.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/racao-royal-canin-mother-and-baby-cat-frente.webp"
+  },
+  "sache-royal-canin-care-digestive-gato": {
+    "id": "sache-royal-canin-care-digestive-gato",
+    "brand": "Royal Canin",
+    "name": "Sachê Royal Canin Care Digestive Gato",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/sache-royal-canin-care-digestive-gato.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/sache-royal-canin-care-digestive-gato-frente.webp"
+  },
+  "pate-royal-canin-mother-and-baby-cat": {
+    "id": "pate-royal-canin-mother-and-baby-cat",
+    "brand": "Royal Canin",
+    "name": "Patê Royal Canin Mother and Baby Cat",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/pate-royal-canin-mother-and-baby-cat.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/pate-royal-canin-mother-and-baby-cat-frente.webp"
+  },
+  "racao-royal-canin-exigent-gatos": {
+    "id": "racao-royal-canin-exigent-gatos",
+    "brand": "Royal Canin",
+    "name": "Ração Royal Canin Exigent Gatos",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-exigent-gatos.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/racao-royal-canin-exigent-gatos-frente.webp"
+  },
+  "racao-royal-canin-maxi-joint-care-seca": {
+    "id": "racao-royal-canin-maxi-joint-care-seca",
+    "brand": "Royal Canin",
+    "name": "Ração Royal Canin Articulação Maxi Joint Care (seca)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-maxi-joint-care-seca.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/racao-royal-canin-articulacao-maxi-joint-care-seca-frente.webp"
+  },
+  "racao-royal-canin-anallergenic-feline": {
+    "id": "racao-royal-canin-anallergenic-feline",
+    "brand": "Royal Canin",
+    "name": "Ração Royal Canin Anallergenic Feline",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-anallergenic-feline.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/racao-royal-canin-anallergenic-feline-frente.webp"
+  },
+  "racao-royal-canin-maxi-adult": {
+    "id": "racao-royal-canin-maxi-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-maxi-adult.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-maxi-adult-frente.webp"
+  },
+  "racao-royal-canin-medium-adult": {
+    "id": "racao-royal-canin-medium-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-medium-adult.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-medium-adult-frente.webp"
+  },
+  "racao-royal-canin-mini-adult": {
+    "id": "racao-royal-canin-mini-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-mini-adult.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-adult-frente.webp"
+  },
+  "racao-royal-canin-mini-indoor-adult": {
+    "id": "racao-royal-canin-mini-indoor-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Indoor Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-mini-indoor-adult.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-indoor-adult-frente.webp"
+  },
+  "racao-royal-canin-feline-indoor-27": {
+    "id": "racao-royal-canin-feline-indoor-27",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Indoor 27 / Indoor Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-indoor-27.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-indoor-27-indoor-adult-frente.webp"
+  },
+  "racao-royal-canin-feline-sensible-33": {
+    "id": "racao-royal-canin-feline-sensible-33",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Sensible 33",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-sensible-33.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-sensible-33-frente.webp"
+  },
+  "racao-royal-canin-feline-light-weight-care": {
+    "id": "racao-royal-canin-feline-light-weight-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Light Weight Care (gato)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-light-weight-care.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-light-weight-care-gato-frente.webp"
+  },
+  "racao-royal-canin-mini-coat-care": {
+    "id": "racao-royal-canin-mini-coat-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Coat Care",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-mini-coat-care.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-coat-care-frente.webp"
+  },
+  "racao-royal-canin-mini-ageing-12": {
+    "id": "racao-royal-canin-mini-ageing-12",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Ageing 12+",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-mini-ageing-12.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-ageing-12-frente.webp"
+  },
+  "racao-royal-canin-bulldog-ingles-adult": {
+    "id": "racao-royal-canin-bulldog-ingles-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Bulldog Inglês Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-bulldog-ingles-adult.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-bulldog-ingles-adult-frente.webp"
+  },
+  "racao-royal-canin-pug-puppy": {
+    "id": "racao-royal-canin-pug-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pug Puppy",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-pug-puppy.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-pug-puppy-frente.webp"
+  },
+  "racao-royal-canin-feline-fit-32": {
+    "id": "racao-royal-canin-feline-fit-32",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Fit 32 (Fit Feline)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-fit-32.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-fit-32-fit-feline-frente.webp"
+  },
+  "racao-royal-canin-feline-sterilised-37": {
+    "id": "racao-royal-canin-feline-sterilised-37",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Sterilised 37 (castrados 1–7 anos)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-sterilised-37.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-sterilised-37-castrados-1-7-anos-frente.webp"
+  },
+  "racao-royal-canin-feline-sterilised-7plus": {
+    "id": "racao-royal-canin-feline-sterilised-7plus",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Sterilised 7+ (castrados ≥7 anos)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-sterilised-7plus.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-sterilised-7-castrados-7-anos-frente.webp"
+  },
+  "racao-royal-canin-feline-digestive-care": {
+    "id": "racao-royal-canin-feline-digestive-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Digestive Care (gato)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-digestive-care.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-digestive-care-gato-frente.webp"
+  },
+  "racao-royal-canin-feline-indoor-7plus": {
+    "id": "racao-royal-canin-feline-indoor-7plus",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Indoor 7+",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-indoor-7plus.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-indoor-7-frente.webp"
+  },
+  "racao-royal-canin-feline-exigent-savour": {
+    "id": "racao-royal-canin-feline-exigent-savour",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Exigent (Savour Exigent)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-exigent-savour.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-exigent-savour-exigent-frente.webp"
+  },
+  "racao-royal-canin-feline-persian-kitten": {
+    "id": "racao-royal-canin-feline-persian-kitten",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Persian Kitten (filhote Persa)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-persian-kitten.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-persian-kitten-filhote-persa-frente.webp"
+  },
+  "racao-royal-canin-feline-appetite-control": {
+    "id": "racao-royal-canin-feline-appetite-control",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Appetite Control (gato)",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/racao-royal-canin-feline-appetite-control.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-appetite-control-gato-frente.webp"
+  },
+  "royal-canin-retail-gatos-sterilised-pate-85g": {
+    "id": "royal-canin-retail-gatos-sterilised-pate-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Sterilised Pâté",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-sterilised-pate-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-sterilised-pate-frente.webp"
+  },
+  "royal-canin-retail-gatos-sterilised-molho-85g": {
+    "id": "royal-canin-retail-gatos-sterilised-molho-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Sterilised Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-sterilised-molho-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-sterilised-molho-frente.webp"
+  },
+  "royal-canin-retail-gatos-ageing-12-molho-85g": {
+    "id": "royal-canin-retail-gatos-ageing-12-molho-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Ageing 12+ Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-ageing-12-molho-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-ageing-12-molho-frente.webp"
+  },
+  "royal-canin-retail-gatos-instinctive-7-molho-85g": {
+    "id": "royal-canin-retail-gatos-instinctive-7-molho-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Instinctive 7+ Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-instinctive-7-molho-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-instinctive-7-molho-frente.webp"
+  },
+  "royal-canin-retail-gatos-light-weight-care-molho-85g": {
+    "id": "royal-canin-retail-gatos-light-weight-care-molho-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Light Weight Care Molho",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-light-weight-care-molho-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-light-weight-care-molho-frente.webp"
+  },
+  "royal-canin-retail-gatos-digestive-care-pate-85g": {
+    "id": "royal-canin-retail-gatos-digestive-care-pate-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Digestive Care Pâté",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-gatos-digestive-care-pate-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-digestive-care-pate-frente.webp"
+  },
+  "royal-canin-retail-caes-medium-adult-140g": {
+    "id": "royal-canin-retail-caes-medium-adult-140g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Adult",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-medium-adult-140g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-medium-adult-frente.webp"
+  },
+  "royal-canin-retail-caes-light-weight-care-85g": {
+    "id": "royal-canin-retail-caes-light-weight-care-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Light Weight Care",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-light-weight-care-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-light-weight-care-frente.webp"
+  },
+  "royal-canin-retail-caes-mini-ageing-85g": {
+    "id": "royal-canin-retail-caes-mini-ageing-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Ageing",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-mini-ageing-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-ageing-frente.webp"
+  },
+  "royal-canin-retail-caes-digestive-care-85g": {
+    "id": "royal-canin-retail-caes-digestive-care-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Digestive Care",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-digestive-care-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-digestive-care-frente.webp"
+  },
+  "royal-canin-retail-caes-mini-puppy-85g": {
+    "id": "royal-canin-retail-caes-mini-puppy-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Puppy",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-mini-puppy-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-mini-puppy-frente.webp"
+  },
+  "royal-canin-retail-caes-yorkshire-terrier-85g": {
+    "id": "royal-canin-retail-caes-yorkshire-terrier-85g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Yorkshire Terrier",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-yorkshire-terrier-85g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-yorkshire-terrier-frente.webp"
+  },
+  "royal-canin-retail-caes-maxi-puppy-140g": {
+    "id": "royal-canin-retail-caes-maxi-puppy-140g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Puppy",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-maxi-puppy-140g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-maxi-puppy-frente.webp"
+  },
+  "royal-canin-retail-caes-medium-puppy-140g": {
+    "id": "royal-canin-retail-caes-medium-puppy-140g",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Puppy",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-retail-caes-medium-puppy-140g.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-medium-puppy-frente.webp"
+  },
+  "royal-canin-anallergenic-canine": {
+    "id": "royal-canin-anallergenic-canine",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Anallergenic Canine",
+    "format": "webp",
+    "localAssetPath": "/assets/nutricao/commercial-diets/royal-canin-anallergenic-canine.webp",
+    "bytes": 31750,
+    "sha256": "352491da4095a919f4b991838ab810201273f86f8810c577cff23090842600bf",
+    "sourceUrl": "https://cobasi.vtexassets.com/arquivos/ids/936490/royal-canin-anallergenic-canine-frente.webp"
+  },
+  "rc-cat-adult-maintenance-cuidado-digestivo-pate": {
+    "id": "rc-cat-adult-maintenance-cuidado-digestivo-pate",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Cuidado Digestivo - Patê",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-adult-maintenance-cuidado-digestivo-pate.svg",
+    "bytes": 2070,
+    "sha256": "6fc694976fa28ef43a708ccec96c79ab19a6e4936963c344d5b122e2d26cf83c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-adult-maintenance-instinctive-alimento-umido": {
+    "id": "rc-cat-adult-maintenance-instinctive-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Instinctive Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-adult-maintenance-instinctive-alimento-umido.svg",
+    "bytes": 2069,
+    "sha256": "2f40d26ef235f21bc85d431809721ba298442022ef978340ff724f5b73766128",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-breed-specific-maine-coon-adult": {
+    "id": "rc-cat-breed-specific-maine-coon-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maine Coon Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-breed-specific-maine-coon-adult.svg",
+    "bytes": 2058,
+    "sha256": "db96a659e90be6780dec50f375a5a6e0250a7903dc626d59d49289c1d9cf2123",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-breed-specific-persa-adult": {
+    "id": "rc-cat-breed-specific-persa-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Persa Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-breed-specific-persa-adult.svg",
+    "bytes": 2053,
+    "sha256": "063743c224015ecb95c7a20bb830e280f0a817bd7d78fae566a50a3f424e266d",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-breed-specific-persa-kitten-filhote": {
+    "id": "rc-cat-breed-specific-persa-kitten-filhote",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Persa Kitten/Filhote",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-breed-specific-persa-kitten-filhote.svg",
+    "bytes": 2062,
+    "sha256": "510709f60ddd5731b8608b4beaf2149fe24913b97a30a5834ef624f881039bd8",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-boxer-adult": {
+    "id": "rc-dog-breed-specific-boxer-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Boxer Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-boxer-adult.svg",
+    "bytes": 2053,
+    "sha256": "ea0259f88ccd4df178c73d7ba1e3db0cb0cd429e0314acebe612a1851a9e1290",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-boxer-puppy": {
+    "id": "rc-dog-breed-specific-boxer-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Boxer Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-boxer-puppy.svg",
+    "bytes": 2053,
+    "sha256": "193cdd84a19e28c676d3860bad38738e15ba15bbdd49d2b28159700b0d7bca77",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-bulldog-frances-adult": {
+    "id": "rc-dog-breed-specific-bulldog-frances-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Bulldog Francês Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-bulldog-frances-adult.svg",
+    "bytes": 2064,
+    "sha256": "2d9403589b403a42927be77d4bb72c4fe7f85945188932fe7d810dd6dec7c2af",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-bulldog-frances-puppy": {
+    "id": "rc-dog-breed-specific-bulldog-frances-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Bulldog Francês Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-bulldog-frances-puppy.svg",
+    "bytes": 2064,
+    "sha256": "1732e2cb790aae1ab683ac7e74ff478598bbdf623eb9a667189035bc8e9d6d67",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-bulldog-ingles-puppy": {
+    "id": "rc-dog-breed-specific-bulldog-ingles-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Bulldog Inglês Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-bulldog-ingles-puppy.svg",
+    "bytes": 2063,
+    "sha256": "91edec2fecd2679474a883a8726a9e515da4b3e828da65f083455f326cc20f99",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-dachshund-adult": {
+    "id": "rc-dog-breed-specific-dachshund-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Dachshund adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-dachshund-adult.svg",
+    "bytes": 2057,
+    "sha256": "68065f8aca2cc48dc9ec2abe121bf335819d3f9589f969d064d3fbc868ea82ae",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-dachshund-puppy": {
+    "id": "rc-dog-breed-specific-dachshund-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Dachshund Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-dachshund-puppy.svg",
+    "bytes": 2057,
+    "sha256": "086546dc381a7c3b2a757923c0d386c3eb9c82ebc3a272848894c46a0aece95b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-golden-retriever-adult": {
+    "id": "rc-dog-breed-specific-golden-retriever-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Golden Retriever Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-golden-retriever-adult.svg",
+    "bytes": 2064,
+    "sha256": "9150e20a7882ae140649c25bb9bd8b45469fb930d67984e5ce119ec84aa5acf0",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-golden-retriever-puppy": {
+    "id": "rc-dog-breed-specific-golden-retriever-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Golden Retriever Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-golden-retriever-puppy.svg",
+    "bytes": 2064,
+    "sha256": "2a9741a018ab4cc5970bfe55f639c36e31e411b8ad4e35f92064b2006c37e11c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-labrador-retriever-adult": {
+    "id": "rc-dog-breed-specific-labrador-retriever-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Labrador Retriever Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-labrador-retriever-adult.svg",
+    "bytes": 2066,
+    "sha256": "79c39e0a5d8f1d70a9a5195e393bcaf254ac4a01eefb07fd9b7b0ebbe8e24618",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-labrador-retriever-puppy": {
+    "id": "rc-dog-breed-specific-labrador-retriever-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin labrador-retriever-puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-labrador-retriever-puppy.svg",
+    "bytes": 2066,
+    "sha256": "f2422cd7124e9f7c5dc6f38814fe16904e4f5b736073efea3588ffb952aa2c39",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-maltes-adult": {
+    "id": "rc-dog-breed-specific-maltes-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maltês Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-maltes-adult.svg",
+    "bytes": 2055,
+    "sha256": "1a0def7bba2daa916770e8bd7a06e68c118f9f28fb2aac2d2343c70b34a8c053",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-maltes-puppy": {
+    "id": "rc-dog-breed-specific-maltes-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maltês Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-maltes-puppy.svg",
+    "bytes": 2055,
+    "sha256": "6b6ca409ca1c1ca9a64011eeea0d48dbe183212e7abbb27eb952cae8c0ab6bc6",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-miniature-schnauzer-adult": {
+    "id": "rc-dog-breed-specific-miniature-schnauzer-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Miniature Schnauzer Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-miniature-schnauzer-adult.svg",
+    "bytes": 2067,
+    "sha256": "12f3ec780490df5f7c4e8cc2d7daec8efeacc5246160911c381bd5c973b64afa",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-pastor-alemao-adult": {
+    "id": "rc-dog-breed-specific-pastor-alemao-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pastor Alemão Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-pastor-alemao-adult.svg",
+    "bytes": 2062,
+    "sha256": "a24a636f8512cd4814903598887a0466d4e1f2c630e9199efc1a38b390ad5de8",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-pastor-alemao-puppy": {
+    "id": "rc-dog-breed-specific-pastor-alemao-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pastor Alemão Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-pastor-alemao-puppy.svg",
+    "bytes": 2062,
+    "sha256": "c3fea9754f5e6f545f4b2f643f40ed03c30f9ebe4c10a0091fcee3ca1f061fb5",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-pomeranian-alimento-umido": {
+    "id": "rc-dog-breed-specific-pomeranian-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pomeranian - Alimento úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-pomeranian-alimento-umido.svg",
+    "bytes": 2070,
+    "sha256": "9de68e0766a169df95b4491b9fcea8d6858c23188b7bd5e67345bbb1989ed907",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-pomeranian-adult": {
+    "id": "rc-dog-breed-specific-pomeranian-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pomeranian Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-pomeranian-adult.svg",
+    "bytes": 2058,
+    "sha256": "486a946bb769562fb38d24c8c3ce227e30098a54bae0e04f7b19da84541cb91c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-poodle-adult": {
+    "id": "rc-dog-breed-specific-poodle-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Poodle Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-poodle-adult.svg",
+    "bytes": 2054,
+    "sha256": "ce6be324a15d8e8cf3f45b72d6ebf10609fb0f20034ac3aa1e2f012caad05d0f",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-pug-adult": {
+    "id": "rc-dog-breed-specific-pug-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Pug Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-pug-adult.svg",
+    "bytes": 2051,
+    "sha256": "69a9a85a29ae2130c9ae97aaedf9df55ad410924e474a1d2b903484d29618cb7",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-rottweiler-adult": {
+    "id": "rc-dog-breed-specific-rottweiler-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Rottweiler Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-rottweiler-adult.svg",
+    "bytes": 2058,
+    "sha256": "b829924a292c8f586fa3ec14ead20a06db89779881be413324ca7e1129e35afd",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-rottweiler-puppy": {
+    "id": "rc-dog-breed-specific-rottweiler-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Rottweiler Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-rottweiler-puppy.svg",
+    "bytes": 2058,
+    "sha256": "d40dad48ec91bf279e392888256359f6dc2226f971ed307759d40d53e9b53e7c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-shih-tzu-alimento-umido": {
+    "id": "rc-dog-breed-specific-shih-tzu-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Shih Tzu - Alimento úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-shih-tzu-alimento-umido.svg",
+    "bytes": 2068,
+    "sha256": "db757b058e6e587c4f8ad889147f3ac7490bd2e793f12cac18fc7f68d8cc8d55",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-shih-tzu-puppy": {
+    "id": "rc-dog-breed-specific-shih-tzu-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Shih Tzu Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-shih-tzu-puppy.svg",
+    "bytes": 2056,
+    "sha256": "df03e65b79131e5e4534c10312b45b04b388ac9b87a0e7810b9a035094f35002",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-yorkshire-terrier-8": {
+    "id": "rc-dog-breed-specific-yorkshire-terrier-8",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Yorkshire Terrier 8+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-yorkshire-terrier-8.svg",
+    "bytes": 2062,
+    "sha256": "0c75f82817583c7f0bc0acd4e034d3e3c2aed4311d09dcb1cf2c71ffec7e34f2",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-breed-specific-yorkshire-terrier-puppy-filhote": {
+    "id": "rc-dog-breed-specific-yorkshire-terrier-puppy-filhote",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Yorkshire Terrier Puppy/Filhote",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-breed-specific-yorkshire-terrier-puppy-filhote.svg",
+    "bytes": 2073,
+    "sha256": "029d77bbc251ac33a7e52ca49ebc08e9076afdd36a3e244a7883e8111710ebf1",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-growth-reproduction-filhotes-kitten": {
+    "id": "rc-cat-growth-reproduction-filhotes-kitten",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Filhotes / Kitten",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-growth-reproduction-filhotes-kitten.svg",
+    "bytes": 2059,
+    "sha256": "13e6914b2c08316bb89995b1f25e410e91c7f9320dea8bbf99ac6e6ef1af6f4c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-growth-reproduction-filhotes-kitten-alimento-umido": {
+    "id": "rc-cat-growth-reproduction-filhotes-kitten-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Filhotes / Kitten - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-growth-reproduction-filhotes-kitten-alimento-umido.svg",
+    "bytes": 2077,
+    "sha256": "46b5a1d4e4a940c7769a8ac28d5741b72e0879ab3599c5515c5c6b657c31189b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-growth-reproduction-mother-babycat": {
+    "id": "rc-cat-growth-reproduction-mother-babycat",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mother & Babycat",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-growth-reproduction-mother-babycat.svg",
+    "bytes": 2062,
+    "sha256": "e090c956d157c84bda3c560ab8bad786068919a3775c2ea43310dfae3f0b5ce4",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-growth-reproduction-mother-babycat-alimento-umido": {
+    "id": "rc-cat-growth-reproduction-mother-babycat-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mother & Babycat Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-growth-reproduction-mother-babycat-alimento-umido.svg",
+    "bytes": 2078,
+    "sha256": "a473c0efe138d8edf3fae70b5f734b8c10d4b6af1b425ce85401c0700852065b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-giant-filhotes-puppy": {
+    "id": "rc-dog-growth-reproduction-giant-filhotes-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Giant Filhotes / Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-giant-filhotes-puppy.svg",
+    "bytes": 2064,
+    "sha256": "4553297e842d995a4e52ac1dbba11b3baaef5e4829fc36f9ad6b43c4052e696d",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-medium-filhotes-puppy": {
+    "id": "rc-dog-growth-reproduction-medium-filhotes-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Filhotes / Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-medium-filhotes-puppy.svg",
+    "bytes": 2065,
+    "sha256": "aa9eb24c8d2e2bce21863b2cbc795f3d44c6ffb24f8e4a0877355def9d618e82",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-medium-puppy-alimento-umido": {
+    "id": "rc-dog-growth-reproduction-medium-puppy-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Puppy - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-medium-puppy-alimento-umido.svg",
+    "bytes": 2072,
+    "sha256": "1910200604fdcee09ebcf1063fab8c66ef8d78af2831da54a11a02abfe695f6f",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-mini-filhotes-puppy-alimento-umido": {
+    "id": "rc-dog-growth-reproduction-mini-filhotes-puppy-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Filhotes / Puppy - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-mini-filhotes-puppy-alimento-umido.svg",
+    "bytes": 2081,
+    "sha256": "ff77324d9cc21fcdbff9bdfc6ed7dfdb409b3ddb84b423e538c4d0abd1dafa0d",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-mini-starter-mother-babydog": {
+    "id": "rc-dog-growth-reproduction-mini-starter-mother-babydog",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Starter - Mother & Babydog",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-mini-starter-mother-babydog.svg",
+    "bytes": 2077,
+    "sha256": "5eb42914b47d4f99b69002ba1a230654fe307fcb0cdc2403012bb2d64bbf9413",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-puppy-maxi": {
+    "id": "rc-dog-growth-reproduction-puppy-maxi",
+    "brand": "Royal Canin",
+    "name": "Royal Canin PUPPY - MAXI",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-puppy-maxi.svg",
+    "bytes": 2054,
+    "sha256": "e0595adace3925faf4212ce46ff8709e5d5d151d602d8026f2fe3aa81bd30794",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-growth-reproduction-x-small-filhotes-puppy": {
+    "id": "rc-dog-growth-reproduction-x-small-filhotes-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin X-Small Filhotes / Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-growth-reproduction-x-small-filhotes-puppy.svg",
+    "bytes": 2066,
+    "sha256": "97f9b6bef6b060728d3a3d404a778fc17334da05e714cf974582010063f3d2f1",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-mature-senior-instinctive-7-pedacos-ao-molho-alimento-umido": {
+    "id": "rc-cat-mature-senior-instinctive-7-pedacos-ao-molho-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Instinctive 7+ Pedaços ao Molho Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-mature-senior-instinctive-7-pedacos-ao-molho-alimento-umido.svg",
+    "bytes": 2090,
+    "sha256": "1113eb1ae50f5dff1c2dddaa5ec86d75335b5f9066b8c0986053df7218486d8e",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-maxi-adult-5": {
+    "id": "rc-dog-mature-senior-maxi-adult-5",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Adult 5+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-maxi-adult-5.svg",
+    "bytes": 2055,
+    "sha256": "f5fc1e48b537407ab353c0f42494e69bf2853c1b2cc642cda2b39aeaa4214a1c",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-maxi-ageing-8": {
+    "id": "rc-dog-mature-senior-maxi-ageing-8",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Ageing 8+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-maxi-ageing-8.svg",
+    "bytes": 2056,
+    "sha256": "8a1b6acc9fa16df81ce06fd9cd6c0347a03d183d9d32fbb4392efe6ae5e8b948",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-medium-adult-7": {
+    "id": "rc-dog-mature-senior-medium-adult-7",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Adult 7+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-medium-adult-7.svg",
+    "bytes": 2057,
+    "sha256": "383d6e9095e3e99336d90419a4d1fa41c42e754070b2f5017f5dfd5855e3f577",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-medium-ageing-10": {
+    "id": "rc-dog-mature-senior-medium-ageing-10",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Ageing 10+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-medium-ageing-10.svg",
+    "bytes": 2059,
+    "sha256": "b83bf91061c3decdb547ae0a356e4129340ad04c7cae788d2fb06da70ccdc53f",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-mini-adult-8": {
+    "id": "rc-dog-mature-senior-mini-adult-8",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Adult 8+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-mini-adult-8.svg",
+    "bytes": 2055,
+    "sha256": "f9a332d19645963d8d71b339f5f884b39a72e5d7908b1acfd2f08098434b73eb",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-mini-ageing-alimento-umido": {
+    "id": "rc-dog-mature-senior-mini-ageing-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Ageing - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-mini-ageing-alimento-umido.svg",
+    "bytes": 2071,
+    "sha256": "00fff713a09b5764e447bdb43c46b84c17ca3693dbed85d49b75cb871443eea4",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-x-small-adult-8": {
+    "id": "rc-dog-mature-senior-x-small-adult-8",
+    "brand": "Royal Canin",
+    "name": "Royal Canin X-Small Adult 8+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-x-small-adult-8.svg",
+    "bytes": 2058,
+    "sha256": "ca8a98f444e3dd3c49f74d4d8a833b635b82303ce790b65952d5c65f0cdc1f7d",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-mature-senior-x-small-ageing-12": {
+    "id": "rc-dog-mature-senior-x-small-ageing-12",
+    "brand": "Royal Canin",
+    "name": "Royal Canin X-Small Ageing 12+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-mature-senior-x-small-ageing-12.svg",
+    "bytes": 2060,
+    "sha256": "b30b8b6a63e0bcfa375b15bbba604695f06ea4e407e8164872da812b2616c32b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-size-specific-giant-adult": {
+    "id": "rc-dog-size-specific-giant-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Giant Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-size-specific-giant-adult.svg",
+    "bytes": 2053,
+    "sha256": "2d35f139dadfdee5aaf8a6a9b0de0f4b5b7b2b7b2cabe4dbe4fff4c4f390ffde",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-size-specific-mini-adult-alimento-umido": {
+    "id": "rc-dog-size-specific-mini-adult-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Adult - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-size-specific-mini-adult-alimento-umido.svg",
+    "bytes": 2070,
+    "sha256": "e52fc347594f70026f74d845401d02a8f2055fcb730f9b151e03279069780ca7",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-size-specific-x-small-adult": {
+    "id": "rc-dog-size-specific-x-small-adult",
+    "brand": "Royal Canin",
+    "name": "Royal Canin X-Small Adult",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-size-specific-x-small-adult.svg",
+    "bytes": 2055,
+    "sha256": "eb1ab1495a35c49c1b06f9ab594dbf8d8ccec519e10c3a3440aa41f07753e000",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-appetite-control-controle-do-apetite": {
+    "id": "rc-cat-specific-care-appetite-control-controle-do-apetite",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Appetite Control / Controle do Apetite",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-appetite-control-controle-do-apetite.svg",
+    "bytes": 2080,
+    "sha256": "83a754683dd9fb5b6d55863626fd138cd5a223239b3318247f44ac74ba0b95f4",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-appetite-control-gravy": {
+    "id": "rc-cat-specific-care-appetite-control-gravy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Appetite Control Gravy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-appetite-control-gravy.svg",
+    "bytes": 2064,
+    "sha256": "c241b253d30df37eca4a20eeab7cc717e25d6140afec8ea4bc52f39b0b5d3539",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-care-hairball-bolas-de-pelo-alimento-umido": {
+    "id": "rc-cat-specific-care-care-hairball-bolas-de-pelo-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Care Hairball Bolas de Pelo Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-care-hairball-bolas-de-pelo-alimento-umido.svg",
+    "bytes": 2085,
+    "sha256": "bcfe4b52651b3d839a2291a9d4ba20cd890f49205ed014848d259d7edc42bd2d",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-dental-care-cuidado-dental": {
+    "id": "rc-cat-specific-care-dental-care-cuidado-dental",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Dental Care / Cuidado Dental",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-dental-care-cuidado-dental.svg",
+    "bytes": 2070,
+    "sha256": "f509144a08a041f4ab0c655b66f10fe1f18aefa82838982404a47bb7830f7fab",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-digestive-care-cuidado-digestivo": {
+    "id": "rc-cat-specific-care-digestive-care-cuidado-digestivo",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Digestive Care / Cuidado Digestivo",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-digestive-care-cuidado-digestivo.svg",
+    "bytes": 2076,
+    "sha256": "1f5ed0d9376dac60b0f03086eaf5aaf0d9b144171327a8199cfbe10e767565cb",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-digestive-care-gravy-pate": {
+    "id": "rc-cat-specific-care-digestive-care-gravy-pate",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Digestive Care Gravy/Pate",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-digestive-care-gravy-pate.svg",
+    "bytes": 2067,
+    "sha256": "2175371695a24d0d0a433e7b44b72592c01f13f788a929d28cfaaf5fa9c5e49b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-hair-skin-pele-pelagem": {
+    "id": "rc-cat-specific-care-hair-skin-pele-pelagem",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Hair & Skin / Pele & Pelagem",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-hair-skin-pele-pelagem.svg",
+    "bytes": 2078,
+    "sha256": "73ddf3f22b382bea62b862ad7a3558b1206a500416b8a1f33e652f3a263f51a6",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-hair-skin-pele-e-pelagem-pate": {
+    "id": "rc-cat-specific-care-hair-skin-pele-e-pelagem-pate",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Hair & Skin / Pele e Pelagem - Patê",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-hair-skin-pele-e-pelagem-pate.svg",
+    "bytes": 2085,
+    "sha256": "eed8eefb2ea8edbca667f01a0e3b055253662d56bb0cb37314c9aa131d060689",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-hairball-care-bolas-de-pelo": {
+    "id": "rc-cat-specific-care-hairball-care-bolas-de-pelo",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Hairball Care / Bolas de Pelo",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-hairball-care-bolas-de-pelo.svg",
+    "bytes": 2071,
+    "sha256": "fea203795248428e4e9c67691cae681aa76f2e9793d0a3835c934eb2d3165883",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-light-weight-care-alimento-umido-gravy": {
+    "id": "rc-cat-specific-care-light-weight-care-alimento-umido-gravy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Light Weight Care Alimento Úmido - Gravy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-light-weight-care-alimento-umido-gravy.svg",
+    "bytes": 2083,
+    "sha256": "ead4a89b1080982f3d81ef6e63a6f6f8f768089899eda9d65c9b7c92fe1fe7f7",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-specific-care-light-weight-care": {
+    "id": "rc-cat-specific-care-light-weight-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin light-weight-care",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-specific-care-light-weight-care.svg",
+    "bytes": 2059,
+    "sha256": "33dd81dd307bb52fa462fc5c3e43e95cedc659fc3260161ca4819e5e4b793e7f",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-dermacomfort-alimento-umido": {
+    "id": "rc-dog-specific-care-dermacomfort-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Dermacomfort Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-dermacomfort-alimento-umido.svg",
+    "bytes": 2070,
+    "sha256": "f511b01afa51276838d7e84b60b36a1b3acfe84f581a3d2a5e26ed6d8636d440",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-light-weight-alimento-umido": {
+    "id": "rc-dog-specific-care-light-weight-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Light Weight Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-light-weight-alimento-umido.svg",
+    "bytes": 2070,
+    "sha256": "5cdcedf4f87253f6ca3b6a653dc27bc4a5e93678793520ecdec2ae5e8c23989a",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-maxi-dermacomfort": {
+    "id": "rc-dog-specific-care-maxi-dermacomfort",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Dermacomfort",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-maxi-dermacomfort.svg",
+    "bytes": 2059,
+    "sha256": "e6bd99b07d641a68913de64a9d6e79e8b05731c83566989ad0ed25b515547e8b",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-maxi-light": {
+    "id": "rc-dog-specific-care-maxi-light",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Maxi Light",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-maxi-light.svg",
+    "bytes": 2052,
+    "sha256": "9c4d3f89d0d3ad8bc0c3f5e7ac274aaf299e3df405f1bf3dafec7976904122a6",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-medium-cuidado-digestivo-digestive-care": {
+    "id": "rc-dog-specific-care-medium-cuidado-digestivo-digestive-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Cuidado Digestivo / Digestive Care",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-medium-cuidado-digestivo-digestive-care.svg",
+    "bytes": 2083,
+    "sha256": "ead44daac8c332af685a41b2063e043b71d568280d312ac871eac9840d431d03",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-medium-dermacomfort": {
+    "id": "rc-dog-specific-care-medium-dermacomfort",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Dermacomfort",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-medium-dermacomfort.svg",
+    "bytes": 2061,
+    "sha256": "de8a142119331c622333ac83e05ace27d4fd1ddbcd512ea643416e8810ad7308",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-medium-light": {
+    "id": "rc-dog-specific-care-medium-light",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Medium Light",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-medium-light.svg",
+    "bytes": 2054,
+    "sha256": "88faa6403c0c258bb947f3439222df1f7bd9a818ac88063339068d1d0efa4651",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-cuidado-da-pelagem-mini-coat-care": {
+    "id": "rc-dog-specific-care-mini-cuidado-da-pelagem-mini-coat-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Cuidado da Pelagem / Mini Coat Care",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-cuidado-da-pelagem-mini-coat-care.svg",
+    "bytes": 2082,
+    "sha256": "e0da5cc9d87d19ae7410ac98b5ae9c4e9a6f667c811456f285ba1bc124dc90eb",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-cuidado-dental": {
+    "id": "rc-dog-specific-care-mini-cuidado-dental",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Cuidado Dental",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-cuidado-dental.svg",
+    "bytes": 2061,
+    "sha256": "206fc3a14ca95aeda0154faf750c1f807bf36480b0685bae0e8af7881842923a",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-dermacomfort": {
+    "id": "rc-dog-specific-care-mini-dermacomfort",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Dermacomfort",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-dermacomfort.svg",
+    "bytes": 2059,
+    "sha256": "d072410048c2f5c78d697fc71f2a92cf6171d8b9f672ea14b77446ff4cc15f75",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-digestive-care": {
+    "id": "rc-dog-specific-care-mini-digestive-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Digestive Care",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-digestive-care.svg",
+    "bytes": 2061,
+    "sha256": "b8fc59f22fee3b14d7082b508322fe7ffe204db4ce2cb9dc87600229e8cad220",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-light": {
+    "id": "rc-dog-specific-care-mini-light",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Light",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-light.svg",
+    "bytes": 2052,
+    "sha256": "57873a6aaa86be24114d3ffb9d070c670de897970048b6a9bf45b0ba851cfe9a",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-specific-care-mini-relax-care": {
+    "id": "rc-dog-specific-care-mini-relax-care",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Relax Care",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-specific-care-mini-relax-care.svg",
+    "bytes": 2057,
+    "sha256": "e143be4ac39e5a539126316fca78d45d192abb3a8f749807d2e722c58e4c65d2",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-sterilised-indoor-castrados-7": {
+    "id": "rc-cat-sterilised-indoor-castrados-7",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Castrados 7+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-sterilised-indoor-castrados-7.svg",
+    "bytes": 2054,
+    "sha256": "88939c93481c61996d61b86adbafb3a0efa01c4c906123af23f6cba5254fb610",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-sterilised-indoor-filhotes-castrados": {
+    "id": "rc-cat-sterilised-indoor-filhotes-castrados",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Filhotes Castrados",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-sterilised-indoor-filhotes-castrados.svg",
+    "bytes": 2060,
+    "sha256": "62a21e0c1391e8bfbd305ca55b64fd4c7fcbe5573d6b452500fba97dddac82b6",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-sterilised-indoor-gatos-castrados-alimento-umido": {
+    "id": "rc-cat-sterilised-indoor-gatos-castrados-alimento-umido",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Gatos Castrados - Alimento Úmido",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-sterilised-indoor-gatos-castrados-alimento-umido.svg",
+    "bytes": 2075,
+    "sha256": "9cfccc12434c2066c7ae8e1bfab552894ec0a9c0be71de50b6563ccaf09ffd02",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-cat-sterilised-indoor-idosos-castrados-12": {
+    "id": "rc-cat-sterilised-indoor-idosos-castrados-12",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Idosos Castrados 12+",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-cat-sterilised-indoor-idosos-castrados-12.svg",
+    "bytes": 2062,
+    "sha256": "3ba1fd2ad96333c390bc9d0a6ad2bef71a019f3471ba90b6594919daef4cec27",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-sterilised-indoor-mini-indoor-puppy": {
+    "id": "rc-dog-sterilised-indoor-mini-indoor-puppy",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Indoor Puppy",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-sterilised-indoor-mini-indoor-puppy.svg",
+    "bytes": 2059,
+    "sha256": "40d61fe144371aa3c1a16a551c4d41fc7a10fb00d8ba4aec6583ec7d9b60a1a0",
+    "sourceUrl": "generated_local_vector_packshot"
+  },
+  "rc-dog-sterilised-indoor-mini-indoor-senior": {
+    "id": "rc-dog-sterilised-indoor-mini-indoor-senior",
+    "brand": "Royal Canin",
+    "name": "Royal Canin Mini Indoor Senior",
+    "format": "svg",
+    "localAssetPath": "/assets/nutricao/commercial-diets/rc-dog-sterilised-indoor-mini-indoor-senior.svg",
+    "bytes": 2060,
+    "sha256": "2cdf359d3f6211d156b83391e48bb14dbb70f1f1a19fe8900621a42e693d6388",
+    "sourceUrl": "generated_local_vector_packshot"
+  }
+}

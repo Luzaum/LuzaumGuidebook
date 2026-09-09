@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, Database, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { ClinicalMedicationDefinition, ClinicalMedicationOverride } from '../../types/receituario';
@@ -34,6 +34,7 @@ import {
 } from '../../utils/receituarioMedication';
 
 interface Props {
+  clinicId?: string;
   medications: ClinicalMedicationDefinition[];
   species?: string;
   weightKg?: string;
@@ -144,12 +145,10 @@ function ManualWeightMedicationPanel({
 
       <label className="space-y-1.5">
         <FieldLabel>Dose escolhida (mg/kg)</FieldLabel>
-        <input
-          type="text"
-          inputMode="decimal"
-          value={override.selectedDoseValue ?? dose.min}
-          onChange={(event) => {
-            const parsed = parsePositiveDecimal(event.target.value);
+        <DoseInputField
+          value={override.selectedDoseValue}
+          fallbackValue={dose.min}
+          onChange={(parsed) => {
             onOverridesChange({
               ...overrides,
               [medicationKey]: { ...override, selectedDoseValue: parsed },
@@ -195,6 +194,75 @@ function CriticalDoseHighlight({ alert, children }: { alert: ClinicalDoseAlert; 
     >
       {children}
     </span>
+  );
+}
+
+function DoseInputField({
+  value,
+  fallbackValue,
+  onChange,
+  className,
+  title,
+}: {
+  value: number | null | undefined;
+  fallbackValue?: number;
+  onChange: (parsed: number | null) => void;
+  className?: string;
+  title?: string;
+}) {
+  const [text, setText] = useState<string>(() => {
+    const val = value ?? fallbackValue;
+    return val != null ? String(val).replace('.', ',') : '';
+  });
+
+  useEffect(() => {
+    const numericVal = value ?? fallbackValue;
+    const currentParsed = parsePositiveDecimal(text);
+    if (numericVal !== currentParsed) {
+      setText(numericVal != null ? String(numericVal).replace('.', ',') : '');
+    }
+  }, [value, fallbackValue]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const raw = e.target.value;
+    // Permite apenas números (dígitos) e separador decimal (vírgula ou ponto)
+    const cleaned = raw.replace(/[^0-9.,]/g, '');
+    const firstSep = cleaned.search(/[,.]/);
+    let sanitized = cleaned;
+    if (firstSep !== -1) {
+      const sep = cleaned[firstSep];
+      const intPart = cleaned.slice(0, firstSep);
+      const decPart = cleaned.slice(firstSep + 1).replace(/[,.]/g, '');
+      sanitized = intPart + sep + decPart;
+    }
+
+    setText(sanitized);
+    const parsed = parsePositiveDecimal(sanitized);
+    onChange(parsed);
+  };
+
+  const handleBlur = () => {
+    const parsed = parsePositiveDecimal(text);
+    if (parsed != null) {
+      setText(String(parsed).replace('.', ','));
+      onChange(parsed);
+    } else {
+      const fallback = fallbackValue != null ? fallbackValue : null;
+      setText(fallback != null ? String(fallback).replace('.', ',') : '');
+      onChange(fallback);
+    }
+  };
+
+  return (
+    <input
+      type="text"
+      inputMode="decimal"
+      value={text}
+      onChange={handleChange}
+      onBlur={handleBlur}
+      title={title}
+      className={className}
+    />
   );
 }
 
@@ -260,10 +328,10 @@ export function ClinicalMedicationDosePanel({
   ), [doseAlternativeKeys, medications, species]);
 
   useEffect(() => {
-    const nextOverrides = buildClinicalMedicationOverridesMap(medications, species, doseAlternativeKeys, overrides);
+    const nextOverrides = buildClinicalMedicationOverridesMap(medications, species, doseAlternativeKeys, overrides, parsedWeight);
     const changed = JSON.stringify(nextOverrides) !== JSON.stringify(overrides);
     if (changed) onOverridesChange(nextOverrides);
-  }, [doseAlternativeKeys, medications, onOverridesChange, overrides, species]);
+  }, [doseAlternativeKeys, medications, onOverridesChange, overrides, parsedWeight, species]);
 
   const cards = useMemo(() => medications.map((medication, index) => {
     const alternativeKey = doseAlternativeKeys[medication.key];
@@ -366,12 +434,10 @@ export function ClinicalMedicationDosePanel({
               <label className="space-y-1.5">
                 <FieldLabel>Dose escolhida (mg/kg)</FieldLabel>
                 <CriticalDoseHighlight alert={alert || { severity: 'underdose', message: '' }}>
-                  <input
-                    type="text"
-                    inputMode="decimal"
-                    value={override.selectedDoseValue ?? resolvedMedication.dose.min}
-                    onChange={(event) => {
-                      const parsed = parsePositiveDecimal(event.target.value);
+                  <DoseInputField
+                    value={override.selectedDoseValue}
+                    fallbackValue={resolvedMedication.dose.min}
+                    onChange={(parsed) => {
                       onOverridesChange({
                         ...overrides,
                         [medication.key]: { ...override, selectedDoseValue: parsed },
@@ -504,12 +570,10 @@ export function ClinicalMedicationDosePanel({
             <label className="space-y-1.5">
               <FieldLabel>Dose escolhida (mg/kg)</FieldLabel>
               <CriticalDoseHighlight alert={alert || { severity: 'underdose', message: '' }}>
-                <input
-                  type="text"
-                  inputMode="decimal"
-                  value={override.selectedDoseValue ?? resolvedMedication.dose.min}
-                  onChange={(event) => {
-                    const parsed = parsePositiveDecimal(event.target.value);
+                <DoseInputField
+                  value={override.selectedDoseValue}
+                  fallbackValue={resolvedMedication.dose.min}
+                  onChange={(parsed) => {
                     onOverridesChange({
                       ...overrides,
                       [medication.key]: {

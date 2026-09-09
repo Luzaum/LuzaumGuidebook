@@ -1,0 +1,159 @@
+- main [ref=f3e3]:
+  - heading "Validação isolada dos componentes reais — dados fictícios" [level=1] [ref=f3e4]
+  - generic [ref=f3e5]:
+    - text: Modelo
+    - combobox "Modelo" [ref=f3e6]:
+      - option "Esporotricose — Gatos"
+      - option "Esporotricose — Cães"
+      - option "Cinomose — Cães"
+      - option "Erliquiose/Anaplasmose — Cães"
+      - option "Pós-operatório de castração — Cadela"
+      - option "Pós-operatório de castração — Gata"
+      - option "Pós-operatório de castração — Cão macho"
+      - option "Pós-operatório de castração — Gato macho"
+      - option "Gastroenterite aguda não complicada — Cão"
+      - option "Colapso de traqueia — Cão"
+      - option "Asma felina"
+      - option "Manejo de ferida pós-operatória"
+      - option "Dermatite atópica — Cão"
+      - option "Pancreatite — Cão (após estabilização)"
+      - option "Pancreatite — Gato (após estabilização)" [selected]
+      - option "Tríade felina — tratamento individualizado"
+      - option "Diabetes mellitus — Cão — Caninsulin"
+      - option "Diabetes mellitus — Cão — Insulina NPH"
+      - option "Diabetes mellitus — Cão — Glargina U-100"
+      - option "Diabetes mellitus — Cão — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Glargina U-100"
+      - option "Diabetes mellitus — Gato — Toujeo U-300"
+      - option "Diabetes mellitus — Gato — Caninsulin"
+      - option "Trauma vertebromedular — Cão"
+      - option "Trauma vertebromedular — Gato"
+      - option "Hérnia de disco — Cão (manejo conservador)"
+      - option "Síndrome vestibular — Cão"
+      - option "Síndrome vestibular — Gato"
+  - generic [ref=f3e7]:
+    - text: Espécie
+    - combobox "Espécie" [ref=f3e8]:
+      - option "gato" [selected]
+      - option "cão"
+  - generic [ref=f3e9]:
+    - text: Peso
+    - textbox "Peso" [ref=f3e10]: "4"
+  - generic [ref=f3e11]:
+    - generic [ref=f3e12]:
+      - region "Configuração clínica do modelo" [ref=f3e13]:
+        - generic [ref=f3e14]:
+          - generic [ref=f3e15]:
+            - heading "Suporte após avaliação e estabilização" [level=3] [ref=f3e16]
+            - paragraph [ref=f3e17]: Marque somente os blocos que deseja prescrever.
+          - generic [ref=f3e18]: Dose do modelo · revisão de fonte pendente
+        - generic [ref=f3e22]:
+          - button "Maropitant oral — vômitos, paciente estável Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação." [ref=f3e23] [cursor=pointer]:
+            - generic [ref=f3e26]:
+              - generic [ref=f3e27]: Maropitant oral — vômitos, paciente estável
+              - generic [ref=f3e28]: Uso oral extrabula em gatos. Confirmar idade, função hepática e apresentação.
+          - button "Ondansetrona oral — náusea persistente Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica." [ref=f3e29] [cursor=pointer]:
+            - generic [ref=f3e32]:
+              - generic [ref=f3e33]: Ondansetrona oral — náusea persistente
+              - generic [ref=f3e34]: Selecionar após avaliação da náusea; associação ao maropitant é decisão clínica.
+          - button "Buprenorfina na mucosa da boca — dor em gato Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium." [ref=f3e35] [cursor=pointer]:
+            - generic [ref=f3e38]:
+              - generic [ref=f3e39]: Buprenorfina na mucosa da boca — dor em gato
+              - generic [ref=f3e40]: Somente formulação convencional 0,3 mg/mL. Não intercambiar com Simbadol ou Zorbium.
+        - paragraph [ref=f3e41]: Nenhum tratamento opcional foi incluído. As recomendações continuam disponíveis para revisão.
+        - paragraph [ref=f3e44]: Não é protocolo de internação. Confirmar hidratação, analgesia, ingestão e necessidade de sonda. Selecionar apenas medicamentos indicados; nenhuma medicação é inserida automaticamente.
+      - generic [ref=f3e49]:
+        - generic [ref=f3e50]: 1. Medicamento
+        - searchbox "Busque princípio ativo, sinônimo ou nome comercial" [active] [ref=f3e55]
+        - paragraph [ref=f3e58]:
+          - text: Digite o
+          - strong [ref=f3e59]: princípio ativo
+          - text: "(ex.: pimobendan) ou o"
+          - strong [ref=f3e60]: nome comercial
+          - text: "(ex.: Vetmedin). A busca aceita pequenos erros de digitação."
+        - generic [ref=f3e61]:
+          - generic [ref=f3e62]:
+            - text: Categoria / classe
+            - combobox "Categoria ou classe do medicamento" [ref=f3e63]:
+              - option "Buscar pelo nome" [selected]
+              - option "Analgésicas"
+              - option "Anti-inflamatórios"
+              - option "Antiparasitárias"
+              - option "Cardiológicos"
+              - option "Comportamentais"
+              - option "Dermatológicas"
+              - option "Emergenciais"
+              - option "Endócrinas"
+              - option "Gastrointestinais"
+              - option "Infecciosas / antimicrobianos"
+              - option "Medicações pneumo"
+              - option "Neurológicas"
+              - option "Nutracêuticas"
+              - option "Odontológicas"
+              - option "Oftalmológicas"
+              - option "Oncológicas"
+              - option "Ortopédicas"
+              - option "Renais"
+              - option "Reprodutivas"
+              - option "Urológicas"
+          - generic [ref=f3e64]:
+            - text: Subcategoria
+            - combobox "Subcategoria do medicamento" [disabled] [ref=f3e65]:
+              - option "Todas as subcategorias" [selected]
+          - paragraph [ref=f3e66]: Se não souber o nome, escolha uma categoria e refine pela subcategoria.
+    - article [ref=f3e68]:
+      - generic [ref=f3e69]:
+        - generic [ref=f3e70]:
+          - paragraph [ref=f3e71]: Vetius — validação local
+          - paragraph [ref=f3e72]: Receituário veterinário
+        - generic [ref=f3e73]:
+          - paragraph [ref=f3e74]: Teste técnico
+          - paragraph [ref=f3e75]: "CRMV: TESTE"
+          - paragraph [ref=f3e76]: 07/09/2026
+      - generic [ref=f3e77]:
+        - heading "RECEITA DE TESTE — NÃO UTILIZAR" [level=1] [ref=f3e78]
+        - generic [ref=f3e79]:
+          - generic [ref=f3e80]:
+            - term [ref=f3e81]: "Paciente:"
+            - definition [ref=f3e82]: Paciente fictício
+          - generic [ref=f3e83]:
+            - term [ref=f3e84]: "Responsável:"
+            - definition [ref=f3e85]: Tutor fictício
+          - generic [ref=f3e86]:
+            - term [ref=f3e87]: "Espécie:"
+            - definition [ref=f3e88]: gato
+          - generic [ref=f3e89]:
+            - term [ref=f3e90]: "Raça:"
+            - definition [ref=f3e91]: SRD
+          - generic [ref=f3e92]:
+            - term [ref=f3e93]: "Sexo:"
+            - definition [ref=f3e94]: fêmea
+          - generic [ref=f3e95]:
+            - term [ref=f3e96]: "Idade / peso:"
+            - definition [ref=f3e97]: 5 anos • 4 kg
+      - main [ref=f3e98]:
+        - paragraph [ref=f3e99]: RECOMENDAÇÕES DA DOENÇA
+        - paragraph [ref=f3e101]: • O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare
+        - paragraph [ref=f3e102]: de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.
+        - paragraph [ref=f3e103]: • Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando
+        - paragraph [ref=f3e104]: a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.
+        - paragraph [ref=f3e105]: • Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido
+        - paragraph [ref=f3e106]: para este gato, considerando também o intestino e o fígado.
+        - paragraph [ref=f3e107]: • Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver
+        - paragraph [ref=f3e108]: vomitando, muito fraco ou com dificuldade para engolir.
+        - paragraph [ref=f3e109]: • Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de
+        - paragraph [ref=f3e110]: comportamento. Levar essas informações no retorno.
+        - paragraph [ref=f3e111]: • Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar
+        - paragraph [ref=f3e112]: "vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário."
+        - paragraph [ref=f3e113]: • Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta
+        - paragraph [ref=f3e114]: própria.
+        - paragraph [ref=f3e115]: • Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios
+        - paragraph [ref=f3e116]: manter e quando repetir exames.
+        - paragraph [ref=f3e118]: SINAIS PARA RETORNO
+        - paragraph [ref=f3e120]: Retornar diante de Vômitos repetidos ou incapacidade de manter água, Dor, barriga tensa,
+        - paragraph [ref=f3e121]: postura encurvada ou dificuldade para descansar, Fraqueza intensa, desmaio ou dificuldade
+        - paragraph [ref=f3e122]: para respirar, Olhos ou gengivas amarelados ou Recusa de alimento ou piora importante do
+        - paragraph [ref=f3e123]: apetite.
+      - generic [ref=f3e124]:
+        - generic [ref=f3e125]: ConsultaVet • Documento emitido pelo profissional responsável
+        - generic [ref=f3e126]: Página 1 de 1

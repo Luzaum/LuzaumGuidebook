@@ -61,6 +61,39 @@ function medicationListCard(
 
 export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
   diseaseListCard({
+    id: 'disease-coagulacao-intravascular-disseminada',
+    slug: 'coagulacao-intravascular-disseminada-caes-gatos',
+    title: 'Coagulação intravascular disseminada (CID/DIC)',
+    synonyms: [
+      'CID',
+      'DIC',
+      'Disseminated intravascular coagulation',
+      'Coagulopatia consumptiva',
+      'Imunotrombose desregulada',
+      'Síndrome de desfibrinação',
+    ],
+    species: ['dog', 'cat'],
+    category: 'emergencia-intensivismo',
+    categories: ['hematologia', 'clinica-medica', 'oncologia', 'infectologia'],
+    tags: [
+      'CID',
+      'DIC',
+      'Hemostasia',
+      'Microtrombose',
+      'D-dímero',
+      'Antitrombina',
+      'TEG',
+      'Sepse',
+      'Hemangiossarcoma',
+      'Pancreatite',
+      'Heparina',
+      'Plasma fresco congelado',
+      'CURATIVE',
+    ],
+    quickSummary:
+      'A coagulação intravascular disseminada (CID/DIC) é uma síndrome adquirida grave e dinâmica caracterizada pela ativação sistêmica desregulada da hemostasia, lesão endotelial disseminada, exaustão dos freios anticoagulantes naturais (antitrombina, proteína C e TFPI) e fibrinólise alterada. A consequência biológica imediata é a formação maciça de microtrombos na microcirculação, provocando hipoperfusão tecidual e falência de múltiplos órgãos (MODS), acompanhada por consumo acelerado de plaquetas e fatores com hemorragias paradoxais. É sempre secundária a doenças graves como sepse/SIRS, neoplasias (hemangiossarcoma), pancreatite aguda necrosante, torção gástrica (GDV), insolação, politrauma e hemólise. O tratamento exige controle imediato da causa primária, suporte microvascular por metas sem diluição excessiva e transfusão fenotípica (FFP, crioprecipitado, concentrado de hemácias); a heparina é controversa e reservada a fenótipos trombóticos sem sangramento ativo.',
+  }),
+  diseaseListCard({
     id: 'disease-babesiose-canina',
     slug: 'babesiose-canina',
     title: 'Babesiose canina',

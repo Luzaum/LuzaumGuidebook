@@ -57,7 +57,7 @@ test('renderiza receita clínica com overrides aplicados', () => {
 
 test('mantém seed inicial sem overrides explícitos', () => {
   const rendered = renderClinicalRecipe(gastroModel, getDefaultClinicalOptionKeys(gastroModel), null);
-  assert.match(rendered, /APRESENTAÇÃO A SELECIONAR/i);
+  assert.match(rendered, /APRESENTAÇÃO: A PREENCHER/i);
 });
 
 test('nota clínica de parvovirose fica nas observações e não na receita', () => {
@@ -78,11 +78,13 @@ test('precauções de medicamento ficam nas observações e não na receita', ()
   assert.ok(observations.some((note) => /metronidazol/i.test(note)));
 });
 
-test('maropitant está no catálogo e probiótico exige cadastro', () => {
+test('maropitant e probiótico possuem opções cadastradas', () => {
   const maropitant = gastroModel.options.find((item) => item.key === 'maropitant')!.medications![0];
   const probiotic = gastroModel.options.find((item) => item.key === 'probiotic')!.medications![0];
   assert.equal(evaluateClinicalMedicationCatalogStatus(maropitant, 'cão').editable, true);
-  assert.equal(evaluateClinicalMedicationCatalogStatus(probiotic, 'cão').needsRegistration, true);
+  const probioticStatus = evaluateClinicalMedicationCatalogStatus(probiotic, 'cão');
+  assert.equal(probioticStatus.editable, true);
+  assert.equal(probioticStatus.needsRegistration, false);
 });
 
 test('meloxicam com catálogo comercial é editável', () => {
@@ -133,4 +135,43 @@ test('alerta comercial identifica sobredose grave por concentração', () => {
   );
   assert.equal(alert?.severity, 'overdose');
   assert.equal(alert?.critical, true);
+});
+
+test('vínculo canônico antigo é recuperado pelo nome do medicamento cadastrado', () => {
+  const status = evaluateClinicalMedicationCatalogStatus({
+    ...maropitant,
+    canonicalMedicationId: 'cadastro-antigo-inexistente',
+    canonicalLookupName: 'maropitant',
+  }, 'cão');
+  assert.equal(status.needsRegistration, false);
+  assert.equal(status.editable, true);
+});
+
+test('medicamento localizado na clínica usa apresentação, dose e administração escolhidas', () => {
+  const block = buildClinicalMedicationPrescriptionBlock(maropitant, {
+    catalogMedicationId: 'clinic-medication-1',
+    presentationId: 'presentation-10mg',
+    doseId: 'dose-2mgkg',
+    selectedDoseValue: 2,
+    route: 'subcutânea',
+    frequency: 'q8h',
+    duration: 'por 3 dias',
+    presentationSnapshot: {
+      id: 'presentation-10mg', clinic_id: 'clinic', medication_id: 'clinic-medication-1',
+      pharmaceutical_form: 'comprimido', concentration_text: '10 mg', additional_component: null,
+      presentation_unit: 'comprimido', commercial_name: 'Produto da clínica', value: 10, value_unit: 'mg',
+      per_value: 1, per_unit: 'comprimido', avg_price_brl: null, pharmacy_veterinary: true,
+      pharmacy_human: false, pharmacy_compounding: false, metadata: {}, created_at: '',
+    },
+    doseSnapshot: {
+      id: 'dose-2mgkg', medication_id: 'clinic-medication-1', species: 'cão', route: 'VO',
+      dose_value: 2, dose_max: null, dose_unit: 'mg/kg', per_weight_unit: 'kg',
+      administration_basis: 'weight_based', frequency: 'a cada 12 horas', frequency_text: 'a cada 12 horas',
+      duration: 'por 5 dias', notes: null, metadata: { calculator_enabled: true },
+    },
+  }, 5, 'Cão', 1);
+  assert.match(block || '', /PRODUTO DA CLÍNICA — 10 mg\/comprimido — Comprimidos/i);
+  assert.match(block || '', /Administrar 1 comprimido, por via subcutânea, a cada 8 horas, por 3 dias/i);
+  assert.doesNotMatch(block || '', /\bq8h\b/i);
+  assert.match(block || '', /Dose clínica: 1 comprimido \(2 mg\/kg\)/i);
 });

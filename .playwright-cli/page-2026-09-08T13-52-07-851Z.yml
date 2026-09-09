@@ -1,0 +1,87 @@
+- generic [ref=e4]:
+  - banner [ref=e5]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - button "Abrir navegação do Vetius" [ref=e8] [cursor=pointer]
+        - link "Voltar para a Home" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=e12]
+          - generic [ref=e13]: Vetius
+      - generic [ref=e14]:
+        - button "Ativar modo escuro" [ref=e15] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=e18] [cursor=pointer]:
+          - img "Avatar de Luis" [ref=e19]
+          - generic [ref=e20]: Luis
+  - main [ref=e23]:
+    - generic [ref=e27]:
+      - complementary [ref=e28]:
+        - generic [ref=e29]:
+          - button "Esconder barra lateral" [ref=e30] [cursor=pointer]
+          - link [ref=e35] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=e36]
+          - navigation [ref=e37]:
+            - link "Início" [ref=e38] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=e42] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=e48] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=e53] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=e58] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=e64] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=e68] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rápidos
+            - link "Consensos" [ref=e72] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=e77] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=e81] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - heading "Receituário" [level=1] [ref=e91]
+              - paragraph [ref=e92]: Calcule por espécie e peso, revise o documento e salve na sua conta.
+            - button "Nova receita" [ref=e93] [cursor=pointer]
+          - tablist "Abas do Receituário" [ref=e96]:
+            - tab "Receitas" [ref=e97] [cursor=pointer]
+            - tab "Termos" [ref=e102] [cursor=pointer]
+            - tab "Meus modelos (0)" [ref=e107] [cursor=pointer]
+            - tab "Meus modelos favoritos (0)" [ref=e113] [cursor=pointer]
+            - tab "Documentos emitidos (2)" [active] [selected] [ref=e1221] [cursor=pointer]
+          - generic [ref=e1917]:
+            - generic [ref=e1918]:
+              - textbox "Pesquisar nos documentos emitidos (paciente, título, tutor...)" [ref=e1923]
+              - generic [ref=e1924]:
+                - text: "Total emitidos:"
+                - strong [ref=e1925]: "2"
+            - generic [ref=e1926]:
+              - generic [ref=e1927]:
+                - generic [ref=e1928]:
+                  - generic [ref=e1929]:
+                    - heading "TESTE QA 2 — Pancreatite felina — NÃO UTILIZAR" [level=3] [ref=e1933]
+                    - generic [ref=e1934]: Emitido
+                  - generic [ref=e1935]: "Data: 08/09/2026"
+                - generic [ref=e1937]:
+                  - button "Ver" [ref=e1938] [cursor=pointer]
+                  - button "Imprimir" [ref=e1943] [cursor=pointer]
+                  - button "PDF" [ref=e1949] [cursor=pointer]
+                  - button "Anexar Assinado" [ref=e1954] [cursor=pointer]
+                  - button "Gerar nova cópia" [ref=e1958] [cursor=pointer]
+              - generic [ref=e1963]:
+                - generic [ref=e1964]:
+                  - generic [ref=e1965]:
+                    - heading "TESTE QA — Pancreatite felina — NÃO UTILIZAR" [level=3] [ref=e1969]
+                    - generic [ref=e1970]: Emitido
+                  - generic [ref=e1971]: "Data: 08/09/2026"
+                - generic [ref=e1973]:
+                  - button "Ver" [ref=e1974] [cursor=pointer]
+                  - button "Imprimir" [ref=e1979] [cursor=pointer]
+                  - button "PDF" [ref=e1985] [cursor=pointer]
+                  - button "Anexar Assinado" [ref=e1990] [cursor=pointer]
+                  - button "Gerar nova cópia" [ref=e1994] [cursor=pointer]

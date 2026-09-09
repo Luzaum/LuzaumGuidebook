@@ -1,13 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { AlertTriangle, Beaker, BookOpen, Check, ChevronRight, Search, X } from 'lucide-react';
 import { Drug, DrugCategory } from '../../shared/types/drug';
 import { cn } from '../lib/utils';
-import { Search, AlertTriangle, CheckCircle2, Beaker, X, Sparkles, BookOpen } from 'lucide-react';
+import { formatRegimeLabel, getSupportedRegimes } from '../lib/drugContent';
 import { DrugReferenceCard } from './DrugReferenceCard';
 import { InfoModal } from './InfoModal';
-import { TipButton } from './TipButton';
 import { SectionCard } from './SectionCard';
-import { formatRegimeLabel, getSupportedRegimes } from '../lib/drugContent';
-import { motion } from 'framer-motion';
 
 interface DrugSelectorProps {
   drugs: Drug[];
@@ -15,6 +13,19 @@ interface DrugSelectorProps {
   onSelect: (drug: Drug | null) => void;
   patientWeight: number;
 }
+
+const categories: { id: DrugCategory | 'all'; label: string }[] = [
+  { id: 'all', label: 'Todos' },
+  { id: 'anestesicos_analgesicos', label: 'Anestesia e analgesia' },
+  { id: 'sedativos_tranquilizantes', label: 'Sedação' },
+  { id: 'opioides', label: 'Opioides' },
+  { id: 'vasopressores_inotropicos', label: 'Vasoativos' },
+  { id: 'antiarritmicos', label: 'Antiarrítmicos' },
+  { id: 'anticonvulsivantes', label: 'Anticonvulsivantes' },
+  { id: 'diureticos', label: 'Diuréticos' },
+  { id: 'metabolicos_insulina', label: 'Metabólicos' },
+  { id: 'outros', label: 'Outros' },
+];
 
 export const DrugSelector: React.FC<DrugSelectorProps> = ({
   drugs,
@@ -24,205 +35,134 @@ export const DrugSelector: React.FC<DrugSelectorProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<DrugCategory | 'all'>('all');
-  const [showReference, setShowReference] = useState(false);
+  const [showAdditionalInfo, setShowAdditionalInfo] = useState(false);
+  const [isChoosing, setIsChoosing] = useState(!selectedDrug);
 
-  const categories: { id: DrugCategory | 'all'; label: string }[] = [
-    { id: 'all', label: 'Todos' },
-    { id: 'anestesicos_analgesicos', label: 'Anestésicos/Analgésicos' },
-    { id: 'sedativos_tranquilizantes', label: 'Sedativos/Tranquilizantes' },
-    { id: 'opioides', label: 'Opioides' },
-    { id: 'vasopressores_inotropicos', label: 'Vasopressores/Inotrópicos' },
-    { id: 'antiarritmicos', label: 'Antiarrítmicos' },
-    { id: 'anticonvulsivantes', label: 'Anticonvulsivantes' },
-    { id: 'diureticos', label: 'Diuréticos' },
-    { id: 'metabolicos_insulina', label: 'Metabólicos/Insulina' },
-    { id: 'outros', label: 'Outros' },
-  ];
+  useEffect(() => {
+    if (selectedDrug) setIsChoosing(false);
+  }, [selectedDrug]);
 
   const filteredDrugs = useMemo(() => {
+    const query = searchTerm.trim().toLocaleLowerCase('pt-BR');
     return drugs.filter((drug) => {
-      const matchesSearch =
-        drug.namePt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        drug.synonyms.some((synonym) => synonym.toLowerCase().includes(searchTerm.toLowerCase()));
-      const matchesCategory = selectedCategory === 'all' || drug.category === selectedCategory;
-      return matchesSearch && matchesCategory;
+      const matchesText = !query || drug.namePt.toLocaleLowerCase('pt-BR').includes(query) ||
+        drug.synonyms.some((synonym) => synonym.toLocaleLowerCase('pt-BR').includes(query));
+      return matchesText && (selectedCategory === 'all' || drug.category === selectedCategory);
     });
   }, [drugs, searchTerm, selectedCategory]);
 
+  const selectDrug = (drug: Drug) => {
+    onSelect(drug);
+    setIsChoosing(false);
+  };
+
   return (
-    <SectionCard step={2} icon={Beaker} title="Fármaco" subtitle="Busque e selecione o medicamento">
-      {selectedDrug && (
-        <div className="mb-4 rounded-xl border border-emerald-200 bg-emerald-50/50 p-3 dark:border-emerald-500/30 dark:bg-emerald-500/5">
-          <div className="flex items-start justify-between gap-3">
-            <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2">
-                <h3 className="text-base font-semibold text-slate-900 dark:text-white">
-                  {selectedDrug.namePt}
-                </h3>
-                <TipButton
-                  variant="book"
-                  label="Referência"
-                  compact
-                  onClick={() => setShowReference(true)}
-                />
+    <>
+      <SectionCard step={2} icon={Beaker} title="Fármaco" subtitle={`Paciente de ${patientWeight} kg`} complete={Boolean(selectedDrug)}>
+        {selectedDrug && !isChoosing ? (
+          <div className="rounded-2xl border border-emerald-200 bg-emerald-50/60 p-4 dark:border-emerald-500/25 dark:bg-emerald-500/[0.07]">
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 grid h-9 w-9 shrink-0 place-items-center rounded-full bg-emerald-600 text-white">
+                <Check className="h-4 w-4 stroke-[3]" />
               </div>
-              <p className="mt-1 line-clamp-2 text-xs text-slate-600 dark:text-slate-400">
-                {selectedDrug.clinicalSummary}
-              </p>
-            </div>
-            <button
-              type="button"
-              onClick={() => onSelect(null)}
-              className="shrink-0 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs font-medium text-slate-600 hover:bg-white dark:border-slate-700 dark:text-slate-300"
-            >
-              Trocar
-            </button>
-          </div>
-        </div>
-      )}
-
-      <div className="space-y-3">
-        {patientWeight <= 0 && (
-          <div className="flex items-start gap-2.5 rounded-xl bg-amber-500/10 p-3 text-xs font-bold text-amber-700 dark:text-amber-450">
-            <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5" />
-            <p>Defina o peso do paciente no Passo 1 para ativar os cálculos automáticos e ver as faixas de doses indicadas.</p>
-          </div>
-        )}
-
-        <div className="relative">
-          <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 dark:text-slate-500" />
-          <input
-            type="text"
-            placeholder="Buscar fármaco por nome..."
-            value={searchTerm}
-            onChange={(event) => setSearchTerm(event.target.value)}
-            className="w-full rounded-xl border-2 border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-base font-medium text-slate-800 transition-all focus:border-emerald-500 focus:outline-none focus:ring-4 focus:ring-emerald-500/10 dark:border-slate-700 dark:bg-slate-800 dark:text-white dark:focus:border-emerald-500 dark:focus:ring-emerald-500/20"
-          />
-        </div>
-
-        {/* Categories Bar */}
-        <div className="-mx-2 flex gap-2 overflow-x-auto px-2 pb-2 scrollbar-hide">
-          {categories.map((category) => {
-            const isActive = selectedCategory === category.id;
-            return (
-              <button
-                key={category.id}
-                type="button"
-                onClick={() => setSelectedCategory(category.id)}
-                className="relative min-h-10 shrink-0 min-w-max w-auto whitespace-nowrap rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2 text-xs font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700/60 overflow-hidden cursor-pointer"
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeCategory"
-                    className="absolute inset-0 border-2 border-emerald-500 bg-emerald-50 dark:border-emerald-500/30 dark:bg-emerald-500/20"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className={cn("relative z-10 transition-colors duration-200", isActive ? "text-emerald-700 dark:text-emerald-400" : "")}>
-                  {category.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Grid of Drugs */}
-      <div className="grid max-h-[58dvh] grid-cols-1 gap-3 overflow-y-auto pr-1 custom-scrollbar sm:max-h-[400px] sm:grid-cols-2 sm:gap-4 xl:grid-cols-3">
-        {filteredDrugs.length === 0 ? (
-          <div className="col-span-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 py-12 text-center text-slate-500 dark:border-slate-700 dark:bg-slate-800/50 dark:text-slate-400">
-            <Beaker className="mx-auto mb-3 h-12 w-12 text-slate-300 dark:text-slate-650" />
-            <p className="font-medium">Nenhum fármaco encontrado com os filtros atuais.</p>
-          </div>
-        ) : (
-          filteredDrugs.map((drug) => {
-            const isSelected = selectedDrug?.id === drug.id;
-            return (
-              <motion.button
-                key={drug.id}
-                type="button"
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => onSelect(drug)}
-                className={cn(
-                  "group flex min-h-36 flex-col gap-3 rounded-xl border p-4 text-left shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer",
-                  isSelected
-                    ? "border-emerald-500 bg-emerald-50/10 dark:border-emerald-550/40 dark:bg-emerald-950/10 ring-2 ring-emerald-500/10"
-                    : "border-slate-200 hover:border-emerald-450 bg-white dark:border-slate-700 dark:bg-slate-900"
-                )}
-              >
-                <div className="flex w-full items-start justify-between gap-3">
-                  <div className="min-w-0 flex-1">
-                    <h3 className={cn(
-                      "text-base font-bold tracking-tight transition-colors line-clamp-1",
-                      isSelected ? "text-emerald-900 dark:text-emerald-400" : "text-slate-800 group-hover:text-emerald-700 dark:text-slate-200 dark:group-hover:text-emerald-400"
-                    )}>
-                      {drug.namePt}
-                    </h3>
-                    <p className="mt-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 dark:text-slate-400 line-clamp-1">
-                      {categories.find((category) => category.id === drug.category)?.label}
-                    </p>
-                  </div>
-                  {isSelected ? (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-500/20">
-                      <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 dark:text-emerald-400" />
-                    </div>
-                  ) : drug.highAlert ? (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-500/20">
-                      <AlertTriangle className="h-4.5 w-4.5 text-amber-600 dark:text-amber-400" />
-                    </div>
-                  ) : (
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-slate-100 text-slate-500 dark:bg-slate-800 dark:text-slate-400">
-                      <Sparkles className="h-4 w-4" />
-                    </div>
-                  )}
+              <div className="min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                  <h3 className="text-lg font-bold tracking-tight text-slate-950 dark:text-white">{selectedDrug.namePt}</h3>
+                  <span className="text-xs font-medium text-slate-500 dark:text-slate-400">{selectedDrug.pharmacologicalClass}</span>
                 </div>
-
-                <p className="line-clamp-3 text-sm font-medium leading-relaxed text-slate-600 dark:text-slate-400">
-                  {drug.clinicalSummary}
-                </p>
-
-                <div className="mt-auto flex flex-wrap gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
-                  {isSelected && (
-                    <span className="rounded-lg bg-emerald-550 text-white px-2 py-1 text-[9px] font-black uppercase tracking-widest dark:bg-emerald-650">
-                      Ativo
-                    </span>
-                  )}
-                  {getSupportedRegimes(drug).map((regime) => (
-                    <span
-                      key={regime}
-                      className={cn(
-                        "rounded-lg px-2 py-1 text-[9px] font-bold uppercase tracking-widest border",
-                        isSelected
-                          ? "border-emerald-250 bg-white text-emerald-800 dark:border-emerald-500/20 dark:bg-slate-800 dark:text-emerald-400"
-                          : "border-slate-100 bg-slate-50 text-slate-600 dark:border-slate-800 dark:bg-slate-850 dark:text-slate-400"
-                      )}
-                    >
+                <p className="mt-1 line-clamp-2 text-sm leading-5 text-slate-600 dark:text-slate-300">{selectedDrug.clinicalSummary}</p>
+                <div className="mt-3 flex flex-wrap gap-1.5">
+                  {getSupportedRegimes(selectedDrug).map((regime) => (
+                    <span key={regime} className="rounded-full bg-white px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-slate-600 ring-1 ring-slate-200 dark:bg-slate-900 dark:text-slate-300 dark:ring-slate-700">
                       {formatRegimeLabel(regime)}
                     </span>
                   ))}
-                  {drug.safetyMetadata?.dedicatedLineRequired && (
-                    <span className="flex items-center gap-1 rounded-lg bg-rose-100 px-2 py-1 text-[9px] font-bold uppercase tracking-widest text-rose-700 dark:bg-rose-500/20 dark:text-rose-450">
-                      <AlertTriangle className="h-3 w-3" /> Via Exclusiva
-                    </span>
-                  )}
                 </div>
-              </motion.button>
-            );
-          })
-        )}
-      </div>
+              </div>
+            </div>
 
-      {/* Info Modal Reference */}
+            <div className="mt-4 grid grid-cols-2 gap-2 border-t border-emerald-200/70 pt-3 dark:border-emerald-500/15">
+              <button type="button" onClick={() => setIsChoosing(true)} className="min-h-11 rounded-xl border border-slate-200 bg-white px-3 text-sm font-semibold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+                Trocar fármaco
+              </button>
+              <button type="button" onClick={() => setShowAdditionalInfo(true)} aria-label={`Informações adicionais sobre ${selectedDrug.namePt}`} className="flex min-h-11 items-center justify-center gap-2 rounded-xl border border-emerald-200 bg-white px-3 text-sm font-semibold leading-4 text-emerald-800 hover:bg-emerald-50 dark:border-emerald-500/20 dark:bg-slate-900 dark:text-emerald-300">
+                <BookOpen className="h-4 w-4 shrink-0" />
+                <span>Informações<br />adicionais</span>
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <input
+                type="search"
+                placeholder="Buscar fármaco"
+                value={searchTerm}
+                onChange={(event) => setSearchTerm(event.target.value)}
+                autoFocus={isChoosing && Boolean(selectedDrug)}
+                className="min-h-12 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-10 text-sm font-medium text-slate-900 outline-none transition focus:border-emerald-500 focus:bg-white focus:ring-4 focus:ring-emerald-500/10 dark:border-slate-700 dark:bg-slate-950 dark:text-white"
+              />
+              {selectedDrug && (
+                <button type="button" onClick={() => setIsChoosing(false)} className="absolute right-2 top-1/2 grid h-8 w-8 -translate-y-1/2 place-items-center rounded-lg text-slate-400 hover:bg-slate-200" aria-label="Cancelar troca">
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+
+            <div className="-mx-1 mt-3 flex gap-2 overflow-x-auto px-1 pb-2 scrollbar-hide">
+              {categories.map((category) => (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={cn(
+                    'min-h-9 shrink-0 rounded-full px-3 text-xs font-semibold transition-colors',
+                    selectedCategory === category.id
+                      ? 'bg-slate-950 text-white dark:bg-white dark:text-slate-950'
+                      : 'bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300',
+                  )}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-1 max-h-[410px] divide-y divide-slate-100 overflow-y-auto rounded-xl border border-slate-200 bg-white custom-scrollbar dark:divide-slate-800 dark:border-slate-800 dark:bg-slate-900">
+              {filteredDrugs.length === 0 ? (
+                <div className="p-8 text-center text-sm text-slate-500">Nenhum fármaco encontrado.</div>
+              ) : filteredDrugs.map((drug) => {
+                const isSelected = selectedDrug?.id === drug.id;
+                return (
+                  <button key={drug.id} type="button" onClick={() => selectDrug(drug)} className={cn('group flex min-h-[72px] w-full items-center gap-3 px-3 py-3 text-left transition-colors hover:bg-slate-50 dark:hover:bg-slate-800/60', isSelected && 'bg-emerald-50 dark:bg-emerald-500/[0.07]')}>
+                    <div className={cn('grid h-9 w-9 shrink-0 place-items-center rounded-xl', isSelected ? 'bg-emerald-600 text-white' : drug.highAlert ? 'bg-orange-50 text-orange-600 dark:bg-orange-500/10' : 'bg-slate-100 text-slate-400 dark:bg-slate-800')}>
+                      {isSelected ? <Check className="h-4 w-4" /> : drug.highAlert ? <AlertTriangle className="h-4 w-4" /> : <Beaker className="h-4 w-4" />}
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="truncate text-sm font-bold text-slate-900 dark:text-white">{drug.namePt}</span>
+                        {drug.highAlert && <span className="shrink-0 text-[9px] font-bold uppercase tracking-wide text-orange-600">Alta vigilância</span>}
+                      </div>
+                      <p className="mt-0.5 truncate text-xs text-slate-500 dark:text-slate-400">{drug.clinicalSummary}</p>
+                    </div>
+                    <ChevronRight className="h-4 w-4 shrink-0 text-slate-300 transition-transform group-hover:translate-x-0.5" />
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        )}
+      </SectionCard>
+
       <InfoModal
-        open={showReference}
-        onClose={() => setShowReference(false)}
-        title={selectedDrug ? `Banco de Fármacos • ${selectedDrug.namePt}` : 'Banco de Fármacos'}
-        subtitle="Referência rápida do fármaco selecionado"
+        open={showAdditionalInfo}
+        onClose={() => setShowAdditionalInfo(false)}
+        title={selectedDrug ? `Informações adicionais • ${selectedDrug.namePt}` : 'Informações adicionais'}
+        subtitle="Dados farmacológicos, uso clínico e fontes do acervo"
         icon={<BookOpen className="h-5 w-5" />}
       >
         {selectedDrug && <DrugReferenceCard drug={selectedDrug} categories={categories} condensed />}
       </InfoModal>
-    </SectionCard>
+    </>
   );
 };

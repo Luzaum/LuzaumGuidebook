@@ -19,7 +19,7 @@ import {
   trackRecentlyUsedTemplate,
   toggleFavorite,
 } from '../services/receituarioService';
-import { DocumentTemplate, GeneratedDocument, PrintIdentification, ReceituarioSpecies } from '../types/receituario';
+import { DocumentTemplate, GeneratedDocument, PrintIdentification, ReceituarioDocumentData, ReceituarioSpecies } from '../types/receituario';
 import { parsePositiveDecimal } from '../utils/receituarioMedication';
 import { calculateTemplateDosesByWeight } from '../utils/receituarioTemplateCalculator';
 
@@ -46,6 +46,7 @@ export function ReceituarioPage() {
   const [editorInitialTitle, setEditorInitialTitle] = useState<string | undefined>(undefined);
   const [editorDocType, setEditorDocType] = useState<'recipe' | 'term'>('recipe');
   const [editorInitialIdentification, setEditorInitialIdentification] = useState<Partial<PrintIdentification>>({});
+  const [editorInitialDocumentData, setEditorInitialDocumentData] = useState<Partial<ReceituarioDocumentData> | null>(null);
   const [pendingTemplate, setPendingTemplate] = useState<DocumentTemplate | null>(null);
   const [setupStep, setSetupStep] = useState<'species' | 'weight'>('species');
   const [setupSpecies, setSetupSpecies] = useState<PatientSpecies | null>(null);
@@ -109,6 +110,7 @@ export function ReceituarioPage() {
     setEditorInitialTitle(template.title);
     setEditorDocType(template.document_type);
     setEditorInitialIdentification(initialIdentification);
+    setEditorInitialDocumentData(null);
     setIsEditorOpen(true);
   };
 
@@ -156,6 +158,7 @@ export function ReceituarioPage() {
 • Retornar para reavaliação em A PREENCHER ou antes, caso necessário.`);
     setEditorDocType('recipe');
     setEditorInitialIdentification({});
+    setEditorInitialDocumentData(null);
     setIsEditorOpen(true);
   };
 
@@ -163,9 +166,10 @@ export function ReceituarioPage() {
   const handleOpenIssuedAsNewCopy = (doc: GeneratedDocument) => {
     setEditorTemplate(null);
     setEditorInitialTitle(`${doc.title} (Cópia)`);
-    setEditorInitialBodyText(doc.body_plain_text);
+    setEditorInitialBodyText(doc.structured_data?.bodyPlainText || doc.body_plain_text);
     setEditorDocType(doc.document_type);
-    setEditorInitialIdentification({});
+    setEditorInitialIdentification(doc.structured_data?.identification || {});
+    setEditorInitialDocumentData(doc.structured_data || null);
     setIsEditorOpen(true);
   };
 
@@ -181,21 +185,21 @@ export function ReceituarioPage() {
       : null;
 
   return (
-    <div className="mx-auto w-full max-w-7xl flex-1 space-y-6 p-4 sm:p-6 md:p-8">
+    <div className="mx-auto w-full max-w-7xl flex-1 space-y-4 p-3 sm:p-5 md:p-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
+          <h1 className="text-xl font-bold tracking-tight text-foreground sm:text-2xl">
             Receituário
           </h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <p className="text-xs text-muted-foreground mt-0.5">
             Calcule por espécie e peso, revise o documento e salve na sua conta.
           </p>
         </div>
         <button
           type="button"
           onClick={handleCreateNewBlankModel}
-          className="inline-flex min-h-11 items-center justify-center gap-2 self-start rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:self-auto"
+          className="inline-flex h-9 items-center justify-center gap-2 self-start rounded-xl bg-primary px-3.5 text-xs font-semibold text-primary-foreground shadow-xs transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 sm:self-auto"
         >
           <Plus className="h-4 w-4" />
           Nova receita
@@ -204,19 +208,19 @@ export function ReceituarioPage() {
 
       {/* Main 4 Tabs Navigation */}
       <div className="border-b border-border/80">
-        <nav className="flex gap-5 overflow-x-auto pb-px" aria-label="Abas do Receituário" role="tablist">
+        <nav className="flex gap-4 overflow-x-auto pb-px" aria-label="Abas do Receituário" role="tablist">
           <button
             type="button"
             onClick={() => setActiveTab('receitas')}
             role="tab"
             aria-selected={activeTab === 'receitas'}
-            className={`inline-flex items-center gap-2 py-3 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'receitas'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >
-            <Pill className="h-4 w-4" />
+            <Pill className="h-3.5 w-3.5" />
             <span>Receitas</span>
           </button>
 
@@ -225,13 +229,13 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('termos')}
             role="tab"
             aria-selected={activeTab === 'termos'}
-            className={`inline-flex items-center gap-2 py-3 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'termos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >
-            <FileSignature className="h-4 w-4" />
+            <FileSignature className="h-3.5 w-3.5" />
             <span>Termos</span>
           </button>
 
@@ -240,13 +244,13 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('meus-modelos')}
             role="tab"
             aria-selected={activeTab === 'meus-modelos'}
-            className={`inline-flex items-center gap-2 py-3 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'meus-modelos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >
-            <UserCheck className="h-4 w-4" />
+            <UserCheck className="h-3.5 w-3.5" />
             <span>Meus modelos ({customTemplates.length})</span>
           </button>
 
@@ -255,13 +259,13 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('favoritos')}
             role="tab"
             aria-selected={activeTab === 'favoritos'}
-            className={`inline-flex items-center gap-2 whitespace-nowrap border-b-2 py-3 text-sm font-medium transition-colors ${
+            className={`inline-flex items-center gap-1.5 whitespace-nowrap border-b-2 py-2.5 text-xs font-medium transition-colors ${
               activeTab === 'favoritos'
                 ? 'border-primary font-semibold text-primary'
                 : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
             }`}
           >
-            <Star className="h-4 w-4" />
+            <Star className="h-3.5 w-3.5" />
             <span>Meus modelos favoritos ({favorites.length})</span>
           </button>
 
@@ -270,13 +274,13 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('emitidos')}
             role="tab"
             aria-selected={activeTab === 'emitidos'}
-            className={`inline-flex items-center gap-2 py-3 border-b-2 text-sm font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'emitidos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >
-            <FileCheck className="h-4 w-4" />
+            <FileCheck className="h-3.5 w-3.5" />
             <span>Documentos emitidos ({issuedDocs.length})</span>
           </button>
         </nav>
@@ -381,6 +385,7 @@ export function ReceituarioPage() {
         initialTitle={editorInitialTitle}
         documentType={editorDocType}
         initialIdentification={editorInitialIdentification}
+        initialDocumentData={editorInitialDocumentData}
       />
     </div>
   );

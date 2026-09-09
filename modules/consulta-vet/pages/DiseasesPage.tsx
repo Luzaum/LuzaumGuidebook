@@ -116,9 +116,6 @@ export function DiseasesPage() {
         <aside className="w-full shrink-0 rounded-xl border border-border/80 bg-background/50 p-4 backdrop-blur-xs xl:w-56">
           <div className="mb-3 flex items-center justify-between gap-2">
             <h3 className="text-[11px] font-bold uppercase tracking-wider text-muted-foreground">Especialidades</h3>
-            <span className="rounded-full bg-muted/60 px-1.5 py-0.5 text-[9px] font-bold text-muted-foreground">
-              {activeCategories.length} Ativas
-            </span>
           </div>
 
           <nav className="flex flex-row flex-wrap gap-1.5 xl:flex-col xl:gap-1">
@@ -145,6 +142,7 @@ export function DiseasesPage() {
 
             {activeCategories.map((cat) => {
               const visual = getSpecialtyVisual(cat.slug);
+              const IconComponent = visual.Icon;
               const isSelected =
                 selectedCategory === cat.slug ||
                 normalizeCategorySlug(selectedCategory) === normalizeCategorySlug(cat.slug);
@@ -160,8 +158,8 @@ export function DiseasesPage() {
                       : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
                   )}
                 >
-                  <span className="flex h-4 w-4 items-center justify-center text-sm">
-                    {visual.icon}
+                  <span className="flex h-4 w-4 items-center justify-center">
+                    <IconComponent className={cn('h-3.5 w-3.5 shrink-0', isSelected ? visual.textActive : 'text-muted-foreground')} />
                   </span>
                   <span className="flex-1 truncate">{visual.label}</span>
                   <span className={cn(
@@ -202,6 +200,8 @@ export function DiseasesPage() {
             {!isLoading && !error && filteredDiseases.map((disease) => {
               const primarySlug = normalizeCategorySlug(disease.category);
               const categoryLabel = formatDiseaseCategoryLabels(disease);
+              const visual = getSpecialtyVisual(primarySlug);
+              const PrimaryIcon = visual.Icon;
 
               return (
                 <div
@@ -216,17 +216,12 @@ export function DiseasesPage() {
                     entityType="disease"
                     entityId={disease.id}
                     category={primarySlug}
+                    icon={<PrimaryIcon className="h-4 w-4" />}
                     compact
                   />
                 </div>
               );
             })}
-
-            {!isLoading && !error && filteredDiseases.length === 0 && (
-              <div className="col-span-full rounded-2xl border border-border bg-card py-20 text-center">
-                <p className="text-sm font-medium text-muted-foreground">{UI_TEXT.empty}</p>
-              </div>
-            )}
           </div>
         </main>
       </div>

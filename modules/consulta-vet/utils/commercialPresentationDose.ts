@@ -1,5 +1,7 @@
 import type { CommercialMedicationProduct } from '../types/commercialMedication';
+import type { MedicationPresentationRecord } from '../../../src/lib/clinicRecords';
 import { formatDecimalPtBr } from './receituarioDoseEngine';
+import { sanitizeCommercialProductForTakeHome, takeHomeCommercialPresentationLines } from './receituarioTakeHome';
 
 export interface CommercialPotency {
   mgPerUnit: number;
@@ -40,7 +42,7 @@ function detectUnitMeta(text: string): Pick<CommercialPotency, 'unitLabel' | 'wh
   if (/gota/.test(normalized)) {
     return { unitLabel: 'gota', wholeUnitOnly: false, splitIncrement: 1 };
   }
-  if (/ml|solu|susp|xarope|liqu/.test(normalized)) {
+  if (/ml|solu|susp|xarope|liqu|injet|ampola|frasco/.test(normalized)) {
     return { unitLabel: 'mL', wholeUnitOnly: false, splitIncrement: 0.01 };
   }
   if (/sache/.test(normalized)) {
@@ -52,6 +54,19 @@ function detectUnitMeta(text: string): Pick<CommercialPotency, 'unitLabel' | 'wh
 function parseLiquidMgPerMl(text: string): number | null {
   const match = text.match(/(\d+(?:[.,]\d+)?)\s*mg\s*\/\s*mL/i);
   return match ? parseNumber(match[1]) : null;
+}
+
+function parseLiquidConcentration(text: string): { value: number; unit: string } | null {
+  const massPerVolume = text.match(/(\d+(?:[.,]\d+)?)\s*(mcg|µg|ug|mg|g|UI|U)\s*\/\s*(?:1\s*)?mL/i);
+  if (massPerVolume) {
+    return { value: parseNumber(massPerVolume[1]), unit: `${massPerVolume[2].replace(/^u$/i, 'UI')}/mL` };
+  }
+  const percentage = text.match(/(\d+(?:[.,]\d+)?)\s*%/);
+  if (percentage) {
+    // Soluções farmacêuticas em % m/v: 1% = 10 mg/mL.
+    return { value: parseNumber(percentage[1]) * 10, unit: 'mg/mL' };
+  }
+  return null;
 }
 
 function isPackagingOnlyLine(line: string): boolean {
@@ -86,22 +101,25 @@ function parseMgMatches(
 }
 
 function dedupePotencies(items: CommercialPotency[]): CommercialPotency[] {
-  const map = new Map<number, CommercialPotency>();
+  const map = new Map<string, CommercialPotency>();
   for (const item of items) {
-    const existing = map.get(item.mgPerUnit);
+    const key = `${item.unitLabel}:${item.mgPerUnit}`;
+    const existing = map.get(key);
     if (!existing || existing.source.startsWith('embalagem')) {
-      map.set(item.mgPerUnit, item);
+      map.set(key, item);
     }
   }
-  return Array.from(map.values()).sort((a, b) => a.mgPerUnit - b.mgPerUnit);
+  return Array.from(map.values()).sort((a, b) => a.unitLabel.localeCompare(b.unitLabel, 'pt-BR') || a.mgPerUnit - b.mgPerUnit);
 }
 
 export function parseCommercialPotencies(product: CommercialMedicationProduct): CommercialPotency[] {
+  const takeHomePresentations = takeHomeCommercialPresentationLines(product);
+  if (!takeHomePresentations.length) return [];
   const contextText = [
     product.name,
     product.labelCompositionSummary,
     ...(product.activeComponents || []),
-    ...(product.presentations || []),
+    ...takeHomePresentations,
   ].join(' ');
   const defaultUnit = detectUnitMeta(contextText);
   const potencies: CommercialPotency[] = [];
@@ -117,30 +135,121 @@ export function parseCommercialPotencies(product: CommercialMedicationProduct): 
     potencies.push(...parseMgMatches(component, defaultUnit, 'componente ativo'));
   }
 
-  for (const line of product.presentations || []) {
+  for (const line of takeHomePresentations) {
     if (isPackagingOnlyLine(line)) continue;
     const lineUnit = detectUnitMeta(line);
     if (lineUnit.unitLabel === 'mL' && !/comp|caps|tablet|drag/i.test(normalizeText(line))) {
+      const liquid = parseLiquidConcentration(line)
+        || parseLiquidConcentration(product.labelCompositionSummary || '');
+      if (liquid && /mg/i.test(liquid.unit)) {
+        potencies.push({
+          mgPerUnit: liquid.value,
+          ...lineUnit,
+          source: `apresentação: ${line}`,
+        });
+      }
       continue;
     }
     potencies.push(...parseMgMatches(line, lineUnit, `apresentação: ${line}`));
   }
 
   const solids = dedupePotencies(potencies.filter((item) => item.unitLabel !== 'mL'));
-  if (solids.length) return solids;
-
   const liquidMgPerMl = parseLiquidMgPerMl(contextText);
+  const liquids = dedupePotencies(potencies.filter((item) => item.unitLabel === 'mL'));
   if (liquidMgPerMl) {
-    return [{
+    liquids.push({
       mgPerUnit: liquidMgPerMl,
       unitLabel: 'mL',
       wholeUnitOnly: false,
       splitIncrement: 0.01,
       source: 'solução mg/mL',
-    }];
+    });
   }
+  return dedupePotencies([...solids, ...liquids]);
+}
 
+function commercialPresentationForm(line: string, unitLabel: string): string {
+  const normalized = normalizeText(line);
+  if (/injet|ampola|frasco.?ampola/.test(normalized)) return 'solução injetável';
+  if (/susp/.test(normalized)) return /oral/.test(normalized) ? 'suspensão oral' : 'suspensão';
+  if (/solu/.test(normalized)) return /oral/.test(normalized) ? 'solução oral' : 'solução';
+  if (/gota/.test(normalized)) return 'gotas';
+  if (/caps/.test(normalized) || unitLabel === 'cápsula') return 'cápsula';
+  if (/comp|tablet|drag/.test(normalized) || unitLabel === 'comprimido') return 'comprimido';
+  if (/pomada|creme|gel|xampu|shampoo|spray/.test(normalized)) return line.match(/pomada|creme|gel|xampu|shampoo|spray/i)?.[0] || 'tópico';
+  return unitLabel === 'mL' ? 'solução' : unitLabel;
+}
+
+function linePotencies(product: CommercialMedicationProduct, line: string): Array<{ value: number; valueUnit: string; unitLabel: string; splitIncrement: number }> {
+  const normalized = normalizeText(line);
+  const liquid = parseLiquidConcentration(line);
+  if (liquid) {
+    return [{ value: liquid.value, valueUnit: liquid.unit, unitLabel: 'mL', splitIncrement: 0.01 }];
+  }
+  const unitMeta = detectUnitMeta(line);
+  const solids = parseMgMatches(line, unitMeta, line);
+  if (solids.length) {
+    return solids.map((item) => ({
+      value: item.mgPerUnit,
+      valueUnit: 'mg',
+      unitLabel: item.unitLabel,
+      splitIncrement: item.splitIncrement,
+    }));
+  }
+  if (/solu|susp|injet|frasco/.test(normalized)) {
+    const fallback = parseLiquidConcentration(product.labelCompositionSummary || '');
+    if (fallback) return [{ value: fallback.value, valueUnit: fallback.unit, unitLabel: 'mL', splitIncrement: 0.01 }];
+  }
+  const units = line.match(/(\d+(?:[.,]\d+)?)\s*(UI|U)\s*\/\s*mL/i);
+  if (units) return [{ value: parseNumber(units[1]), valueUnit: 'UI/mL', unitLabel: 'mL', splitIncrement: 0.01 }];
   return [];
+}
+
+/** Converte as apresentações da aba Comerciais para o contrato usado pela calculadora. */
+export function buildCommercialMedicationPresentationRecords(
+  product: CommercialMedicationProduct,
+  medicationId = `commercial:${product.slug}`,
+): MedicationPresentationRecord[] {
+  const takeHomeProduct = sanitizeCommercialProductForTakeHome(product);
+  if (!takeHomeProduct) return [];
+  return takeHomeProduct.presentations.flatMap((line, lineIndex) => {
+    const concentrations = linePotencies(takeHomeProduct, line);
+    if (!concentrations.length) {
+      return [{
+        id: `${medicationId}:presentation:${lineIndex}`,
+        clinic_id: '', medication_id: medicationId,
+        pharmaceutical_form: commercialPresentationForm(line, 'unidade'),
+        concentration_text: line,
+        additional_component: product.labelCompositionSummary || null,
+        presentation_unit: null,
+        commercial_name: product.name,
+        value: null, value_unit: null, per_value: null, per_unit: null,
+        avg_price_brl: null, pharmacy_veterinary: true, pharmacy_human: false, pharmacy_compounding: false,
+        metadata: { manufacturer: product.manufacturer, source: 'commercial_catalog', original_label: line },
+        package_quantity: null, package_unit: null, created_at: '', source: 'global' as const,
+      }];
+    }
+    return concentrations.map((concentration, concentrationIndex) => ({
+      id: `${medicationId}:presentation:${lineIndex}:${concentrationIndex}`,
+      clinic_id: '', medication_id: medicationId,
+      pharmaceutical_form: commercialPresentationForm(line, concentration.unitLabel),
+      concentration_text: `${formatDecimalPtBr(concentration.value)} ${concentration.valueUnit}`,
+      additional_component: product.labelCompositionSummary || null,
+      presentation_unit: concentration.unitLabel,
+      commercial_name: product.name,
+      value: concentration.value,
+      value_unit: concentration.valueUnit,
+      per_value: 1,
+      per_unit: concentration.unitLabel,
+      avg_price_brl: null,
+      pharmacy_veterinary: true,
+      pharmacy_human: false,
+      pharmacy_compounding: false,
+      metadata: { manufacturer: product.manufacturer, source: 'commercial_catalog', original_label: line, split_increment: concentration.splitIncrement },
+      package_quantity: null, package_unit: null, created_at: '', source: 'global' as const,
+      tablet_split_increment: concentration.unitLabel === 'comprimido' ? concentration.splitIncrement : null,
+    }));
+  });
 }
 
 function roundToIncrement(value: number, increment: number): number {
@@ -174,6 +283,7 @@ export interface ReceituarioCommercialSelectOption {
   optionKey: string;
   productId: string;
   potencyMg: number | null;
+  unitLabel: string | null;
   label: string;
 }
 
@@ -184,18 +294,19 @@ export interface CompoundingRecommendation {
   severity: 'overdose' | 'underdose';
 }
 
-export function encodeReceituarioCommercialOptionKey(productId: string, potencyMg?: number | null): string {
-  if (potencyMg != null && potencyMg > 0) return `${productId}::${potencyMg}`;
+export function encodeReceituarioCommercialOptionKey(productId: string, potencyMg?: number | null, unitLabel?: string | null): string {
+  if (potencyMg != null && potencyMg > 0) return `${productId}::${potencyMg}${unitLabel ? `::${encodeURIComponent(unitLabel)}` : ''}`;
   return productId;
 }
 
-export function parseReceituarioCommercialOptionKey(optionKey: string): { productId: string; potencyMg: number | null } {
-  const separatorIndex = optionKey.indexOf('::');
-  if (separatorIndex === -1) return { productId: optionKey, potencyMg: null };
-  const potency = Number(optionKey.slice(separatorIndex + 2));
+export function parseReceituarioCommercialOptionKey(optionKey: string): { productId: string; potencyMg: number | null; unitLabel: string | null } {
+  const [productId, potencyText, unitText] = optionKey.split('::');
+  if (!potencyText) return { productId, potencyMg: null, unitLabel: null };
+  const potency = Number(potencyText);
   return {
-    productId: optionKey.slice(0, separatorIndex),
+    productId,
     potencyMg: Number.isFinite(potency) ? potency : null,
+    unitLabel: unitText ? decodeURIComponent(unitText) : null,
   };
 }
 
@@ -213,7 +324,9 @@ export function buildReceituarioCommercialSelectOptions(
   products: CommercialMedicationProduct[],
 ): ReceituarioCommercialSelectOption[] {
   const options: ReceituarioCommercialSelectOption[] = [];
-  for (const product of products) {
+  for (const rawProduct of products) {
+    const product = sanitizeCommercialProductForTakeHome(rawProduct);
+    if (!product) continue;
     const potencies = parseCommercialPotencies(product);
     const solids = potencies.filter((item) => item.unitLabel !== 'mL');
     const liquids = potencies.filter((item) => item.unitLabel === 'mL');
@@ -221,9 +334,10 @@ export function buildReceituarioCommercialSelectOptions(
     if (solids.length <= 1 && liquids.length <= 1 && solids.length + liquids.length <= 1) {
       const potency = solids[0] || liquids[0];
       options.push({
-        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency?.mgPerUnit ?? null),
+        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency?.mgPerUnit ?? null, potency?.unitLabel),
         productId: product.id,
         potencyMg: potency?.mgPerUnit ?? null,
+        unitLabel: potency?.unitLabel ?? null,
         label: formatCommercialProductOptionLabel(product),
       });
       continue;
@@ -231,17 +345,19 @@ export function buildReceituarioCommercialSelectOptions(
 
     for (const potency of solids) {
       options.push({
-        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency.mgPerUnit),
+        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency.mgPerUnit, potency.unitLabel),
         productId: product.id,
         potencyMg: potency.mgPerUnit,
+        unitLabel: potency.unitLabel,
         label: formatReceituarioPotencyLabel(product, potency),
       });
     }
     for (const potency of liquids) {
       options.push({
-        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency.mgPerUnit),
+        optionKey: encodeReceituarioCommercialOptionKey(product.id, potency.mgPerUnit, potency.unitLabel),
         productId: product.id,
         potencyMg: potency.mgPerUnit,
+        unitLabel: potency.unitLabel,
         label: formatReceituarioPotencyLabel(product, potency),
       });
     }
@@ -329,11 +445,12 @@ export function calculateCommercialPracticalDose(
   product: CommercialMedicationProduct,
   totalMg: number,
   selectedPotencyMg?: number | null,
+  selectedUnitLabel?: string | null,
 ): CommercialPracticalDoseResult | null {
   if (!totalMg || totalMg <= 0) return null;
   const allPotencies = parseCommercialPotencies(product);
   const potencies = selectedPotencyMg != null && selectedPotencyMg > 0
-    ? allPotencies.filter((item) => item.mgPerUnit === selectedPotencyMg)
+    ? allPotencies.filter((item) => item.mgPerUnit === selectedPotencyMg && (!selectedUnitLabel || item.unitLabel === selectedUnitLabel))
     : allPotencies;
   if (!potencies.length) return null;
 
@@ -387,15 +504,19 @@ export function formatCommercialAdministrationAmount(
   doseMgKg: number,
   weightKg: number | null,
   selectedPotencyMg?: number | null,
+  selectedUnitLabel?: string | null,
 ): string {
   if (!weightKg || weightKg <= 0) return 'A PREENCHER';
   const totalMg = doseMgKg * weightKg;
-  const result = calculateCommercialPracticalDose(product, totalMg, selectedPotencyMg);
+  const result = calculateCommercialPracticalDose(product, totalMg, selectedPotencyMg, selectedUnitLabel);
   if (!result) return `${formatDecimalPtBr(totalMg)} mg`;
   return result.displayAmount;
 }
 
 export function formatCommercialProductOptionLabel(product: CommercialMedicationProduct): string {
+  const takeHomeProduct = sanitizeCommercialProductForTakeHome(product);
+  if (!takeHomeProduct) return product.name;
+  product = takeHomeProduct;
   const potencies = parseCommercialPotencies(product);
   const strength = potencies.length === 1 && potencies[0].unitLabel !== 'mL'
     ? `${formatDecimalPtBr(potencies[0].mgPerUnit)} mg/${potencies[0].unitLabel}`

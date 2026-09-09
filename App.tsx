@@ -51,6 +51,7 @@ const ConsultaVetClinicalQuickGuidesPage = lazy(() =>
 const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
   import('./modules/consulta-vet/pages/ClinicalQuickGuideDetailPage').then((m) => ({ default: m.ClinicalQuickGuideDetailPage }))
 )
+
 const ConsultaVetReceituarioPage = lazy(() =>
   import('./modules/consulta-vet/pages/ReceituarioPage').then((m) => ({ default: m.ReceituarioPage }))
 )
@@ -85,10 +86,18 @@ function LegacyNeuroMobileRedirect() {
   return <Navigate to={`${target}${search}${hash}`} replace />
 }
 
+/** Rotas antigas /energia-vet/* e sinônimos → Calculadora Energética / NutriçãoVET. */
+function LegacyEnergiaVetRedirect() {
+  const { pathname, search, hash } = useLocation()
+  const suffix = pathname.replace(/^\/(?:energia-vet|nutricaovet|nutricao-vet|nutricao)\/?/, '')
+  const target = suffix ? `/calculadora-energetica/${suffix}` : '/calculadora-energetica'
+  return <Navigate to={`${target}${search}${hash}`} replace />
+}
+
 const appRoutes = (
   <Route element={<AppLayout />}>
     <Route path="/" element={<LandingPage />} />
-    <Route path="/hub" element={<Hub />} />
+    <Route path="/hub" element={<ProtectedRoute><Hub /></ProtectedRoute>} />
     <Route path="/app" element={<ProtectedClinicRoute><AccountHome /></ProtectedClinicRoute>} />
     <Route path="/conta" element={<ProtectedRoute><Navigate to="/app" replace /></ProtectedRoute>} />
     <Route path="/conta/perfil" element={<ProtectedRoute><AccountProfile /></ProtectedRoute>} />
@@ -96,22 +105,25 @@ const appRoutes = (
     <Route path="/conta/configurações" element={<ProtectedRoute><AccountSettings /></ProtectedRoute>} />
     <Route path="/conta/clinica" element={<ProtectedRoute><AccountClinic /></ProtectedRoute>} />
     <Route path="/calculadora-energetica/*" element={<EnergiaVetPage />} />
-    <Route path="/nutricaovet/*" element={<Navigate to="/calculadora-energetica" replace />} />
-    <Route path="/nutricao-vet/*" element={<Navigate to="/calculadora-energetica" replace />} />
-    <Route path="/nutricao/*" element={<Navigate to="/calculadora-energetica" replace />} />
-    <Route path="/energia-vet/*" element={<Navigate to="/calculadora-energetica" replace />} />
+    <Route path="/commercial" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
+    <Route path="/racoes" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
+    <Route path="/racoes-comerciais" element={<Navigate to="/calculadora-energetica/commercial" replace />} />
+    <Route path="/nutricaovet/*" element={<LegacyEnergiaVetRedirect />} />
+    <Route path="/nutricao-vet/*" element={<LegacyEnergiaVetRedirect />} />
+    <Route path="/nutricao/*" element={<LegacyEnergiaVetRedirect />} />
+    <Route path="/energia-vet/*" element={<LegacyEnergiaVetRedirect />} />
     <Route path="/fluidoterapia" element={<Navigate to="/fluidoterapia-vet" replace />} />
-    <Route path="/fluidoterapia-vet" element={<FluidoterapiaVetPage />} />
-    <Route path="/transfusao-sanguinea" element={<TransfusaoSanguineaPage />} />
-    <Route path="/transfusão-sanguinea" element={<TransfusaoSanguineaPage />} />
-    <Route path="/hemogasovet/*" element={<HemogasoVetPage />} />
-    <Route path="/dor/*" element={<EscalasDorPage />} />
+    <Route path="/fluidoterapia-vet" element={<ProtectedRoute><FluidoterapiaVetPage /></ProtectedRoute>} />
+    <Route path="/transfusao-sanguinea" element={<ProtectedRoute><TransfusaoSanguineaPage /></ProtectedRoute>} />
+    <Route path="/transfusão-sanguinea" element={<ProtectedRoute><TransfusaoSanguineaPage /></ProtectedRoute>} />
+    <Route path="/hemogasovet/*" element={<ProtectedRoute><HemogasoVetPage /></ProtectedRoute>} />
+    <Route path="/dor/*" element={<ProtectedRoute><EscalasDorPage /></ProtectedRoute>} />
     <Route path="/dor-mobile" element={<Navigate to="/dor" replace />} />
     <Route path="/neuro-mobile/*" element={<LegacyNeuroMobileRedirect />} />
-    <Route path="/antibioticoterapia" element={<AntibioticoterapiaVetPage />} />
-    <Route path="/crivet" element={<CrivetPage />} />
-    <Route path="/neurologia/*" element={<NeurologiaPage />} />
-    <Route path="/consulta-vet" element={<ConsultaVetShell />}>
+    <Route path="/antibioticoterapia" element={<ProtectedRoute><AntibioticoterapiaVetPage /></ProtectedRoute>} />
+    <Route path="/crivet" element={<ProtectedRoute><CrivetPage /></ProtectedRoute>} />
+    <Route path="/neurologia/*" element={<ProtectedRoute><NeurologiaPage /></ProtectedRoute>} />
+    <Route path="/consulta-vet" element={<ProtectedRoute><ConsultaVetShell /></ProtectedRoute>}>
       <Route index element={<ConsultaVetHomePage />} />
       <Route path="receituario" element={<ConsultaVetReceituarioPage />} />
       <Route path="doencas" element={<ConsultaVetDiseasesPage />} />
@@ -136,8 +148,10 @@ const appRoutes = (
       <Route path="manejo-emergencial/:slug" element={<ConsultaVetManejoEmergencialGuidePage />} />
       <Route path="guias-rapidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
       <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
+      <Route path="guias-rápidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
+      <Route path="guias-rápidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
     </Route>
-    <Route path="/rifa" element={<ModuleIframe />} />
+    <Route path="/rifa" element={<ProtectedRoute><ModuleIframe /></ProtectedRoute>} />
     <Route path="*" element={<Navigate to="/" replace />} />
   </Route>
 )

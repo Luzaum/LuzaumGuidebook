@@ -220,7 +220,7 @@ Administrar A PREENCHER por via oral, a cada 12 horas, junto com alimento.`, {
     'Não interromper o tratamento após melhora parcial',
     'Utilizar luvas ao manipular lesões e secreções',
     'Evitar contato das secreções com pele lesionada ou mucosas',
-    'Investigar comprometimento osteoarticular, pulmonar ou disseminado quando houver sinais compatíveis',
+    'Avisar à equipe se houver dificuldade para andar, inchaço nas patas, tosse ou dificuldade para respirar, pois a infecção pode atingir outras partes do corpo',
     'Não utilizar tratamento tópico isoladamente como terapia principal',
   ],
   medicationPrecautions: [],
@@ -233,44 +233,17 @@ const DISTEMPER: ClinicalRecipeModel = {
   categoryPath: 'Infectologia > Doenças virais',
   selectionMode: 'multiple',
   selectorLabel: 'Protocolo e condutas complementares',
-  defaultOptionKey: 'experimental-adjuvant-protocol',
+  incompleteProtocolWarning: 'O suporte deve ser individualizado. O protocolo experimental é opcional e exige decisão explícita; não há eficácia clínica estabelecida da associação completa.',
   options: [
     {
-      key: 'experimental-adjuvant-protocol', label: 'Protocolo experimental adjuvante',
-      medications: [
-        medication('ribavirin-distemper', 'Ribavirina', {
-          min: 20, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 24 horas', duration: '21 dias',
-        }, `1. RIBAVIRINA
-
-Dose clínica: 20 mg/kg.
-
-Administrar A PREENCHER por via oral, a cada 24 horas, durante 21 dias.`),
-        medication('dmso-distemper', 'Dimetilsulfóxido — DMSO', {
-          min: 50, unit: 'mg/kg', basis: 'weight', route: 'definir manualmente', frequency: 'a cada 24 horas', duration: '21 dias',
-        }, `2. DIMETILSULFÓXIDO — DMSO
-
-Dose clínica: 50 mg/kg.
-
-Administrar A PREENCHER a cada 24 horas, durante 21 dias, associado à ribavirina.`),
+      key: 'experimental-adjuvant-protocol',
+      label: 'Antiviral experimental — não gerar receita automática',
+      optional: true,
+      description: 'Não existe antiviral específico ou uniformemente eficaz para cinomose. Ribavirina e DMSO permanecem experimentais e não devem virar prescrição automática.',
+      veterinarianNotes: [
+        'O suporte individualizado permanece a base do tratamento. Estudos com ribavirina/DMSO são pequenos, heterogêneos ou laboratoriais e não sustentam uma fórmula automática para uso rotineiro.',
+        'Se houver decisão excepcional de uso experimental, documentar consentimento, protocolo, via, monitorização hematológica e bioquímica e riscos reprodutivos de forma separada.',
       ],
-      formula: {
-        title: 'FÓRMULA VITAMÍNICA E ANTIOXIDANTE', route: 'oral', frequency: 'a cada 24 horas', durationDays: 30,
-        requiresPatientSize: true,
-        referenceLabel: 'FMVZ Unesp',
-        referenceUrl: 'https://www2.fmvz.unesp.br/etica/protocolo.aspx?chave_email=1d6dde31-53d2-4f6e-8e00-2ed4f1c2eac1',
-        components: [
-          { key: 'zinc', name: 'Zinco', amount: 2, unit: 'mg/kg' },
-          { key: 'vitamin-a', name: 'Vitamina A', amount: 40, unit: 'UI/kg' },
-          { key: 'vitamin-b1', name: 'Vitamina B1', amount: 3, unit: 'mg/kg' },
-          { key: 'vitamin-b6', name: 'Vitamina B6', amount: 100, unit: 'mg/animal' },
-          { key: 'vitamin-b12', name: 'Vitamina B12', amount: 200, unit: 'mcg/animal' },
-          { key: 'vitamin-d', name: 'Vitamina D', amount: 30, unit: 'UI/kg' },
-          { key: 'vitamin-e', name: 'Vitamina E', amount: 10, unit: 'mg/kg' },
-          { key: 'selenium', name: 'Selênio', amount: 50, unit: 'mcg/animal' },
-          { key: 'coq10-small', name: 'Coenzima Q10', amount: 15, maxAmount: 20, unit: 'mg/animal-small' },
-          { key: 'coq10-large', name: 'Coenzima Q10', amount: 30, unit: 'mg/animal-large' },
-        ],
-      },
     },
     {
       key: 'nausea', label: 'Controle de náusea ou vômito', optional: true,
@@ -280,7 +253,7 @@ Administrar A PREENCHER a cada 24 horas, durante 21 dias, associado à ribavirin
 
 Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, {
         canonicalId: 'med-ondansetron',
-        presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'],
+        presentations: ['pres-ondansetron-vonau-vet', 'pres-ondansetron-cp-4', 'pres-ondansetron-cp-8'],
         linkedDoseIds: ['dose-ondansetron-dog-po-caution'],
         presentationFilter: 'oral',
       })],
@@ -313,6 +286,7 @@ Administrar A PREENCHER por via oral, a cada 24 horas, durante 7 a 10 dias.`,
         ],
       })],
       medicationPrecautions: ['Administrar a doxiciclina seguida de alimento ou água; não oferecer comprimidos ou cápsulas secos'],
+      patientInstructions: ['Oferecer a doxiciclina seguida de pequena porção de alimento ou água conforme a orientação da equipe. Não dar o comprimido ou a cápsula secos; não forçar se houver dificuldade para engolir.'],
     },
     {
       key: 'seizures', label: 'Controle de convulsões', optional: true,
@@ -338,9 +312,21 @@ Administrar A PREENCHER por via oral, a cada 8 horas, continuamente até reavali
   veterinarianNotes: [
     'Antes da emissão, definir manualmente a via de administração, a concentração, a diluição e o volume final do DMSO',
   ],
-  diseaseRecommendations: [],
+  diseaseRecommendations: [
+    'Manter o cão isolado de outros cães durante a fase contagiosa e seguir a orientação veterinária para o término do isolamento',
+    'Oferecer água e alimento palatável em pequenas porções, sem forçar quando houver dificuldade para engolir, tosse ou alteração da consciência',
+    'Manter olhos e narinas limpos com gaze e solução fisiológica, sem usar colírios ou descongestionantes por conta própria',
+    'Manter o paciente aquecido, em local limpo, seco, acolchoado e com piso antiderrapante',
+    'Registrar diariamente apetite, ingestão de água, vômitos, diarreia, secreções, tosse, equilíbrio e ocorrência de tremores ou convulsões',
+    'Não interromper anticonvulsivantes ou outras medicações sem orientação médico-veterinária',
+    'Realizar as reavaliações e os exames de controle nas datas definidas pelo médico-veterinário',
+  ],
   medicationPrecautions: [],
-  returnSigns: [],
+  returnSigns: [
+    'Convulsões, tremores intensos, dificuldade para caminhar ou piora neurológica',
+    'Dificuldade respiratória, incapacidade de beber ou comer, vômitos persistentes ou prostração intensa',
+    'Qualquer piora clínica durante o tratamento',
+  ],
 };
 
 const PARVO_HOSPITAL: ClinicalRecipeModel = {
@@ -395,7 +381,7 @@ const PARVO_OUTPATIENT: ClinicalRecipeModel = {
 Administrar A PREENCHER por via subcutânea, a cada 24 horas, com reavaliação clínica diária.`, { canonicalId: 'med-maropitant', presentations: ['pres-maro-inj-20'], linkedDoseIds: ['dose-maro-dog-sc'], presentationFilter: 'injectable' })] },
     { key: 'ondansetron', label: 'Uso domiciliar após controle do vômito', medications: [medication('ondansetron-outpatient', 'Ondansetrona', { min: 0.5, unit: 'mg/kg', basis: 'weight', route: 'oral', frequency: 'a cada 8 a 12 horas', duration: '3 a 5 dias' }, `2. ONDANSETRONA — APRESENTAÇÃO A SELECIONAR
 
-Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, { canonicalId: 'med-ondansetron', linkedDoseIds: ['dose-ondansetron-dog-po-caution'], presentations: ['vonau-vet-avert', 'vonau-flash-biolab', 'emedron-agener'], presentationFilter: 'oral' })] },
+Administrar A PREENCHER por via oral, a cada 8 a 12 horas, durante 3 a 5 dias.`, { canonicalId: 'med-ondansetron', linkedDoseIds: ['dose-ondansetron-dog-po-caution'], presentations: ['pres-ondansetron-vonau-vet', 'pres-ondansetron-cp-4', 'pres-ondansetron-cp-8'], presentationFilter: 'oral' })] },
   ],
   diseaseRecommendations: [
     'Realizar reavaliação veterinária diária até estabilização',

@@ -79,10 +79,6 @@ export function Home() {
             {/* Footer do Card - Interativo */}
             <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-6 text-sm font-medium text-blue-100/80 pointer-events-auto">
               <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-400" />
-                <span>Validado por Especialistas</span>
-              </div>
-              <div className="flex items-center gap-2">
                 <BookOpen className="w-5 h-5 text-blue-400" />
                 <span>Literatura Atualizada</span>
               </div>

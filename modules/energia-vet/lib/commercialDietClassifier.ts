@@ -23,6 +23,7 @@ export type TherapeuticSpecialty =
   | 'convalescence_recovery'
   | 'diabetic'
   | 'joint_mobility'
+  | 'oncology'
   | 'general_clinical'
 
 export interface CommercialDietMetadata {
@@ -39,14 +40,14 @@ export interface CommercialDietMetadata {
   summaryPt: string
   clinicalIndications: string[]
   keyHighlights: Array<{ label: string; value: string; hint?: string }>
-  caloricDensityKcalKg: number
-  caloricDensityKcal100g: number
-  proteinPctDm: number
-  fatPctDm: number
-  carbPctDm: number
-  fiberPctDm: number
-  moisturePct: number
-  dryMatterPct: number
+  caloricDensityKcalKg?: number
+  caloricDensityKcal100g?: number
+  proteinPctDm?: number
+  fatPctDm?: number
+  carbPctDm?: number
+  fiberPctDm?: number
+  moisturePct?: number
+  dryMatterPct?: number
   calciumPctDm?: number
   phosphorusPctDm?: number
   caPRatio?: string
@@ -73,7 +74,22 @@ const THERAPEUTIC_KEYWORDS: Record<TherapeuticSpecialty, string[]> = {
   convalescence_recovery: ['recovery', 'urgent care', 'a/d', 'critical care', 'convalescence', 'revalescence', 'alta energia'],
   diabetic: ['diabetic', 'diabético', 'diabéticos', 'w/d', 'glicêmico'],
   joint_mobility: ['mobility', 'articular', 'j/d'],
+  oncology: ['oncology', 'oncológico', 'oncológica'],
   general_clinical: ['veterinary', 'vet care', 'nutrição clínica', 'prescription diet', 'vet life'],
+}
+
+const INDICATION_SPECIALTIES: Record<string, TherapeuticSpecialty> = {
+  ALLERGY: 'dermatology_allergy',
+  CARDIAC: 'cardiac',
+  CKD: 'renal',
+  DIABETES: 'diabetic',
+  GI: 'gastrointestinal',
+  HEPATIC: 'hepatic',
+  JOINT: 'joint_mobility',
+  ONCOLOGY: 'oncology',
+  RECOVERY: 'convalescence_recovery',
+  URINARY: 'urinary',
+  WEIGHT_LOSS: 'obesity_satiety',
 }
 
 export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
@@ -194,18 +210,31 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
   let specialty: TherapeuticSpecialty | undefined = undefined
   let specialtyLabel: string | undefined = undefined
 
-  for (const [spec, keywords] of Object.entries(THERAPEUTIC_KEYWORDS) as Array<[TherapeuticSpecialty, string[]]>) {
-    if (keywords.some((kw) => nameLower.includes(kw) || catLower.includes(kw))) {
-      specialty = spec
-      break
+  // Alimentos explicitamente marcados como não terapêuticos (manutenção/raças) não devem ser capturados
+  const isExplicitlyHealthy = food.isTherapeutic === false
+
+  if (!isExplicitlyHealthy) {
+    for (const [spec, keywords] of Object.entries(THERAPEUTIC_KEYWORDS) as Array<[TherapeuticSpecialty, string[]]>) {
+      if (keywords.some((kw) => nameLower.includes(kw) || catLower.includes(kw))) {
+        specialty = spec
+        break
+      }
     }
+
+    if (!specialty) {
+      specialty = food.therapeuticIndications
+        ?.map((indication) => INDICATION_SPECIALTIES[indication])
+        .find((value): value is TherapeuticSpecialty => Boolean(value))
+    }
+
+    if (!specialty && food.isTherapeutic === true) specialty = 'general_clinical'
   }
 
-  const dietType: CommercialDietType = specialty ? 'therapeutic' : 'healthy'
+  const dietType: CommercialDietType = !isExplicitlyHealthy && (food.isTherapeutic === true || Boolean(specialty)) ? 'therapeutic' : 'healthy'
 
   const SPECIALTY_LABELS: Record<TherapeuticSpecialty, string> = {
     renal: 'Suporte Renal (DRC / IRIS)',
-    gastrointestinal: 'Gastrointestinal & Low Fat',
+    gastrointestinal: 'Gastrointestinal & Baixo Teor de Gordura',
     dermatology_allergy: 'Dermatológica & Hipoalergênica',
     urinary: 'Trato Urinário & Dissolução de Cálculos',
     hepatic: 'Hepatologia & Suporte Hepático',
@@ -214,6 +243,7 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
     convalescence_recovery: 'Recuperação, UTI & Alta Densidade',
     diabetic: 'Endocrinologia & Controle Glicêmico',
     joint_mobility: 'Articular & Suporte Osteoarticular',
+    oncology: 'Oncologia & Suporte Metabólico',
     general_clinical: 'Coadjuvante Clínica',
   }
 
@@ -246,7 +276,7 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
       maintenanceCategoryLabel = 'Raças específicas'
     } else if (lifestyleTerms.some((term) => searchableName.includes(term))) {
       maintenanceCategory = 'sterilised_indoor'
-      maintenanceCategoryLabel = 'Castrados & vida indoor'
+      maintenanceCategoryLabel = 'Castrados & ambiente interno'
     } else if (careTerms.some((term) => searchableName.includes(term))) {
       maintenanceCategory = 'specific_care'
       maintenanceCategoryLabel = 'Cuidados específicos'
@@ -269,26 +299,39 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
   }
 
   // 4. Extract Nutrients
-  const moisturePct = food.nutrientsAsFed.moisturePct ?? (isWet ? 78 : 10)
-  const dryMatterPct = food.nutrientsAsFed.dryMatterPct ?? (100 - moisturePct)
-  const caloricDensityKcal100g = food.nutrientsAsFed.energyKcalPer100g ?? (isWet ? 95 : 380)
+  const moisturePct = Number.isFinite(food.nutrientsAsFed.moisturePct) ? (food.nutrientsAsFed.moisturePct as number) : (isWet ? 78 : 10)
+  const dryMatterPct = Number.isFinite(food.nutrientsAsFed.dryMatterPct) ? (food.nutrientsAsFed.dryMatterPct as number) : Math.max(1, 100 - moisturePct)
+  const caloricDensityKcal100g = Number.isFinite(food.nutrientsAsFed.energyKcalPer100g) ? (food.nutrientsAsFed.energyKcalPer100g as number) : (isWet ? 95 : 380)
   const caloricDensityKcalKg = Math.round(caloricDensityKcal100g * 10)
 
-  const proteinPctDm = food.nutrientsDryMatter.crudeProteinPct ?? ((food.nutrientsAsFed.crudeProteinPct ?? 0) / (dryMatterPct / 100))
-  const fatPctDm = food.nutrientsDryMatter.etherExtractPct ?? ((food.nutrientsAsFed.etherExtractPct ?? 0) / (dryMatterPct / 100))
-  const fiberPctDm = food.nutrientsDryMatter.crudeFiberPct ?? ((food.nutrientsAsFed.crudeFiberPct ?? 0) / (dryMatterPct / 100))
-  const carbPctDm = food.nutrientsDryMatter.nitrogenFreeExtractPct ?? Math.max(0, 100 - (proteinPctDm + fatPctDm + fiberPctDm + (food.nutrientsDryMatter.ashPct ?? 6)))
+  const proteinPctDm = Number.isFinite(food.nutrientsDryMatter.crudeProteinPct)
+    ? (food.nutrientsDryMatter.crudeProteinPct as number)
+    : (food.nutrientsAsFed.crudeProteinPct != null ? ((food.nutrientsAsFed.crudeProteinPct) / (dryMatterPct / 100)) : undefined)
 
-  const calciumPctDm = food.nutrientsDryMatter.calciumPct ?? undefined
-  const phosphorusPctDm = food.nutrientsDryMatter.phosphorusPct ?? undefined
+  const fatPctDm = Number.isFinite(food.nutrientsDryMatter.etherExtractPct)
+    ? (food.nutrientsDryMatter.etherExtractPct as number)
+    : (food.nutrientsAsFed.etherExtractPct != null ? ((food.nutrientsAsFed.etherExtractPct) / (dryMatterPct / 100)) : undefined)
+
+  const fiberPctDm = Number.isFinite(food.nutrientsDryMatter.crudeFiberPct)
+    ? (food.nutrientsDryMatter.crudeFiberPct as number)
+    : (food.nutrientsAsFed.crudeFiberPct != null ? ((food.nutrientsAsFed.crudeFiberPct) / (dryMatterPct / 100)) : undefined)
+
+  const carbPctDm = Number.isFinite(food.nutrientsDryMatter.nitrogenFreeExtractPct)
+    ? (food.nutrientsDryMatter.nitrogenFreeExtractPct as number)
+    : (proteinPctDm != null && fatPctDm != null
+        ? Math.max(0, 100 - (proteinPctDm + fatPctDm + (fiberPctDm ?? 0) + (food.nutrientsDryMatter.ashPct ?? 6)))
+        : (food.nutrientsAsFed.nitrogenFreeExtractPct != null ? ((food.nutrientsAsFed.nitrogenFreeExtractPct) / (dryMatterPct / 100)) : undefined))
+
+  const calciumPctDm = Number.isFinite(food.nutrientsDryMatter.calciumPct) ? (food.nutrientsDryMatter.calciumPct as number) : undefined
+  const phosphorusPctDm = Number.isFinite(food.nutrientsDryMatter.phosphorusPct) ? (food.nutrientsDryMatter.phosphorusPct as number) : undefined
   const caPRatio =
-    calciumPctDm && phosphorusPctDm && phosphorusPctDm > 0
+    calciumPctDm != null && phosphorusPctDm != null && phosphorusPctDm > 0
       ? `${(calciumPctDm / phosphorusPctDm).toFixed(2)} : 1`
       : undefined
 
-  const sodiumPctDm = food.nutrientsDryMatter.sodiumPct ?? undefined
-  const potassiumPctDm = food.nutrientsDryMatter.potassiumPct ?? undefined
-  const omega3PctDm = food.nutrientsDryMatter.omega3Pct ?? undefined
+  const sodiumPctDm = Number.isFinite(food.nutrientsDryMatter.sodiumPct) ? (food.nutrientsDryMatter.sodiumPct as number) : undefined
+  const potassiumPctDm = Number.isFinite(food.nutrientsDryMatter.potassiumPct) ? (food.nutrientsDryMatter.potassiumPct as number) : undefined
+  const omega3PctDm = Number.isFinite(food.nutrientsDryMatter.omega3Pct) ? (food.nutrientsDryMatter.omega3Pct as number) : undefined
 
   // 5. Build Summary & Clinical Indications
   const speciesLabel = food.speciesScope === 'dog' ? 'cães' : food.speciesScope === 'cat' ? 'gatos' : 'cães e gatos'
@@ -308,13 +351,13 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
       case 'gastrointestinal':
         summaryPt = `Fórmula altamente digestível e balanceada para ${speciesLabel} com distúrbios digestivos agudos ou crônicos, gastrites e enteropatias.`
         clinicalIndications.push('Ingredientes de altíssima digestibilidade para reduzir a sobrecarga osmótica intestinal.')
-        clinicalIndications.push('Perfil lipídico moderado ou baixo (Low Fat) para redução de esteatorreia e estímulo pancreático.')
+        clinicalIndications.push('Perfil lipídico moderado ou estritamente hipolipídico (baixo teor de gordura) para redução de esteatorreia e menor estímulo pancreático.')
         clinicalIndications.push('Fibras prebióticas (FOS/MOS) para modulação da microbiota e suporte à barreira mucosa.')
         clinicalIndications.push('Eletrólitos ajustados para reposição de perdas em vômitos e diarreias.')
         break
       case 'dermatology_allergy':
         summaryPt = `Dieta terapêutica hipoalergênica para ${speciesLabel} com reações adversas ao alimento (RAA), dermatite atópica ou alergias cutâneas.`
-        clinicalIndications.push('Proteína hidrolisada ou fonte proteica nobre/novel para evitar reações imunomediadas.')
+        clinicalIndications.push('Proteína hidrolisada ou fonte proteica não convencional (inédita) para evitar reações imunomediadas.')
         clinicalIndications.push('Elevada concentração de ácidos graxos essenciais (ômega-3 e ômega-6) para barreira cutânea.')
         clinicalIndications.push('Fonte purificada de carboidratos com digestibilidade superior.')
         clinicalIndications.push('Complexo sinérgico de antioxidantes e vitaminas para regeneração da derme e pelos.')
@@ -322,7 +365,7 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
       case 'urinary':
         summaryPt = `Alimento formulado para manejo das afecções do trato urinário inferior em ${speciesLabel}, auxiliando na dissolução e prevenção de recidivas de urólitos.`
         clinicalIndications.push('Controle estrito de magnésio, fósforo e precursores de cálculos de estruvita e oxalato.')
-        clinicalIndications.push('Manejo do RSS (Relative Super Saturation) e modulação do pH urinário.')
+        clinicalIndications.push('Manejo da RSS (Super Saturação Relativa) e modulação do pH urinário.')
         clinicalIndications.push('Estímulo ao aumento do volume urinário e diluição de solutos litogênicos.')
         break
       case 'hepatic':
@@ -359,6 +402,11 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
         clinicalIndications.push('Altas doses de EPA/DHA para inibição de mediadores pró-inflamatórios articulares.')
         clinicalIndications.push('Sulfato de condroitina e glicosamina para proteção da matriz cartilaginosa.')
         break
+      case 'oncology':
+        summaryPt = `Dieta de suporte nutricional para ${speciesLabel} em tratamento oncológico, com densidade energética e perfil proteico adaptados ao estado clínico.`
+        clinicalIndications.push('Suporte ao aporte energético e proteico em pacientes com risco de perda de peso e massa magra.')
+        clinicalIndications.push('Uso individualizado conforme tolerância gastrointestinal, tratamento e avaliação oncológica.')
+        break
       default:
         summaryPt = `Dieta clínica veterinária coadjuvante desenvolvida para fornecer suporte específico a pacientes sob tratamento médico.`
         clinicalIndications.push('Suporte nutricional sob prescrição e acompanhamento do médico-veterinário.')
@@ -389,10 +437,26 @@ export function classifyCommercialDiet(food: FoodItem): CommercialDietMetadata {
   }
 
   const keyHighlights = [
-    { label: 'Energia Metabolizável', value: `${caloricDensityKcal100g.toFixed(0)} kcal/100g`, hint: `${caloricDensityKcalKg} kcal/kg` },
-    { label: 'Proteína Bruta (MS)', value: `${proteinPctDm.toFixed(1)}%`, hint: `${(food.nutrientsAsFed.crudeProteinPct ?? 0).toFixed(1)}% na MN` },
-    { label: 'Extrato Etéreo (MS)', value: `${fatPctDm.toFixed(1)}%`, hint: `${(food.nutrientsAsFed.etherExtractPct ?? 0).toFixed(1)}% na MN` },
-    { label: 'Carboidratos (ENN)', value: `${carbPctDm.toFixed(1)}%`, hint: 'Estimativa Atwater' },
+    {
+      label: 'Energia Metabolizável',
+      value: caloricDensityKcal100g != null ? `${caloricDensityKcal100g.toFixed(0)} kcal/100g` : 'Sob consulta',
+      hint: caloricDensityKcalKg != null ? `${caloricDensityKcalKg} kcal/kg` : undefined,
+    },
+    {
+      label: 'Proteína Bruta (MS)',
+      value: proteinPctDm != null ? `${proteinPctDm.toFixed(1)}%` : 'Sob consulta',
+      hint: food.nutrientsAsFed.crudeProteinPct != null ? `${food.nutrientsAsFed.crudeProteinPct.toFixed(1)}% na MN` : undefined,
+    },
+    {
+      label: 'Extrato Etéreo (MS)',
+      value: fatPctDm != null ? `${fatPctDm.toFixed(1)}%` : 'Sob consulta',
+      hint: food.nutrientsAsFed.etherExtractPct != null ? `${food.nutrientsAsFed.etherExtractPct.toFixed(1)}% na MN` : undefined,
+    },
+    {
+      label: 'Carboidratos (ENN)',
+      value: carbPctDm != null ? `${carbPctDm.toFixed(1)}%` : 'Sob consulta',
+      hint: carbPctDm != null ? 'Estimativa Atwater' : undefined,
+    },
   ]
 
   return {

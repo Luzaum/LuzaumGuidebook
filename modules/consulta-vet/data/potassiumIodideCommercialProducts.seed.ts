@@ -253,11 +253,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     prescriptionExample:
       'Iodenax (20 mg/mL): administrar ___ mL VO conforme prescrição, correspondendo a ___ mg/kg.',
     safetyAlert: `${KI_HUMAN_SYRUP_ALERT} Contém açúcar. Confirmar estoque antes de prescrever. ${KI_IODISM_ALERT}`,
-    price: {
-      averageLabel: 'Indisponível',
-      rangeLabel: 'Listado como indisponível no varejo consultado em 06/08/2026',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 22,00', rangeLabel: 'Frasco 100 mL xarope 20 mg/mL: R$ 18,00 a R$ 26,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://consultaremedios.com.br/iodenax/p',
   }),
   kiOralProduct({
@@ -274,11 +270,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     prescriptionExample:
       'Iodeto de potássio ___ mg/mL — solução ManipulaVet: administrar ___ mL VO q24h, correspondendo a ___ mg/kg.',
     safetyAlert: `${KI_CONCENTRATION_ALERT} ${KI_COMPOUNDING_ALERT} ${KI_IODISM_ALERT}`,
-    price: {
-      averageLabel: 'Confirmar farmácia',
-      rangeLabel: 'Preço variável conforme concentração e volume',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 45,00', rangeLabel: 'Solução oral manipulada 100 mL: R$ 35,00 a R$ 55,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.manipulavet.com.br/',
     imageUrl:
       'https://images.tcdn.com.br/img/img_prod/1211273/iodeto_de_potassio_20mg_722_4_b5d4b66b6758485afe47ea6adc98cdd0.jpg',
@@ -337,11 +329,7 @@ export const potassiumIodideCommercialProductsSeed: CommercialMedicationProduct[
     reassessment: 'Monitoramento intensivo se uso parenteral for considerado; preferir formulações orais para esporotricose.',
     prescriptionExample: 'Não prescrever conversão automática do injetável para uso oral.',
     safetyAlert: KI_INJECTABLE_ALERT,
-    price: {
-      averageLabel: 'Indisponível',
-      rangeLabel: 'Indisponível ou sem preço estável em 06/08/2026',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 34,00', rangeLabel: 'Frasco 100 mL injetável: R$ 28,00 a R$ 42,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://vetsmart.com.br/cg/produto/527/iodeto-de-potassio-10',
     imageUrl:
       'https://cdn.awsli.com.br/64x50/2420/2420132/produto/166765617/8aba6a7733.jpg',

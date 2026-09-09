@@ -1,7 +1,17 @@
 import * as THREE from "three";
-import { Canvas, useFrame, useThree } from "@react-three/fiber";
+import { Canvas, useFrame, useThree, type ThreeElements } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import { useMemo, useRef, useState, useEffect } from "react";
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      mesh: ThreeElements['mesh'];
+      planeGeometry: ThreeElements['planeGeometry'];
+      shaderMaterial: ThreeElements['shaderMaterial'];
+    }
+  }
+}
 
 /* =========================================================
    RevealWaveImage Component (Optimized)

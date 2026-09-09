@@ -49,7 +49,7 @@ const DEFAULT_CONFIG: CalculationConfigState = {
 export const useCalculation = () => {
   const [patient, setPatient] = useState<Patient>({
     species: 'dog',
-    weight: 10,
+    weight: 0,
     state: 'adult',
     comorbidities: [],
   });

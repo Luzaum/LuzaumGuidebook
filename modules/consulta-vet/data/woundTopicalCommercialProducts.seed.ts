@@ -329,11 +329,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
       'Aplicar Dermacerium em camada fina sobre lesão limpa, conforme orientação veterinária.',
     safetyAlert:
       'Não intercambiável automaticamente com sulfadiazina de prata pura. ' + COLLAGENASE_SILVER_ALERT,
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço variável conforme estoque',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 56,00', rangeLabel: 'Bisnaga 30 g: R$ 45,00 a R$ 68,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.drogariaspacheco.com.br/dermacerium-creme-1-silvestre-30g/p',
   },
 
@@ -867,11 +863,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     reassessment: 'Reavaliar integridade timpânica em uso otológico.',
     prescriptionExample: 'Aplicar Panolog conforme orientação veterinária sobre lesão diagnosticada.',
     safetyAlert: CORTICOSTEROID_TOPICAL_ALERT,
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço confiável não localizado na data da pesquisa',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 165,00', rangeLabel: 'Bisnaga 15 mL: R$ 145,00 a R$ 189,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.amorepets.com.br/produto/panolog-pomada-15ml-elanco.html',
     imageUrl: 'https://cdn.awsli.com.br/600x450/1300/1300473/produto/1121575552b971b2959.jpg',
   },
@@ -935,11 +927,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     reassessment: 'Evitar em áreas que o animal consegue lamber.',
     prescriptionExample: 'Aplicar Dermotrat em camada fina sobre lesão diagnosticada, conforme bula.',
     safetyAlert: CORTICOSTEROID_TOPICAL_ALERT,
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço variável conforme apresentação',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 48,50', rangeLabel: 'Bisnaga 20 g: R$ 41,00 a R$ 56,00 (Cobasi/Petlove)', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.petz.com.br/produto/dermotrat-creme-ourofino-20-g',
     imageUrl: 'https://images.petz.com.br/fotos/1554813213356.jpg',
   },
@@ -1064,11 +1052,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     prescriptionExample:
       'Dar banho com Allerdog Hipoalergênico conforme frequência de higiene orientada; enxaguar completamente.',
     safetyAlert: 'Não substitui clorexidina, miconazol ou outro agente quando existe infecção documentada.',
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: 'Preço variável conforme volume e estoque',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 68,00', rangeLabel: 'Frasco 230 mL: R$ 59,00 a R$ 78,00', sourceDate: '2026-09-06' },
     productPageUrl: 'https://www.cobasi.com.br/shampoo-allerdog-hipoalergenico-cepav-3201081/p',
     imageUrl:
       'https://cobasi.vteximg.com.br/arquivos/ids/189253-368-368/Allerdog-hipoalergenico-shampoo-230-ml-Cepav.jpg?v=638134522420170000',
@@ -1092,11 +1076,7 @@ export const woundTopicalCommercialProductsSeed: CommercialMedicationProduct[] =
     prescriptionExample:
       'Dar banho com Sebocalm Spherulites conforme orientação; enxaguar completamente.',
     safetyAlert: 'Adjuvante; não substitui terapia antimicrobiana documentada.',
-    price: {
-      averageLabel: 'Confirmar varejo',
-      rangeLabel: '250 mL: preço variável conforme varejo',
-      sourceDate: SOURCE_DATE,
-    },
+    price: { averageLabel: 'R$ 145,00', rangeLabel: 'Frasco 250 mL: R$ 125,00 a R$ 168,00', sourceDate: '2026-09-06' },
     productPageUrl:
       'https://www.magazineluiza.com.br/shampoo-virbac-sebocalm-spherulites-para-seborreia-250-ml/p/akf569dkb2/pe/shcs/',
     imageUrl:

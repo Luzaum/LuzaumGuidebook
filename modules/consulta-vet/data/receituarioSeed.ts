@@ -1,9 +1,9 @@
 import { DocumentTemplate } from '../types/receituario';
 import { normalizeLegacyDocumentBody } from '../utils/receituarioDocument';
 import { RECEITUARIO_INFECTOLOGIA_MODELS } from './receituarioInfectologiaModels';
-import { RECEITUARIO_DIABETES_MODELS } from './receituarioDiabetesModels';
 import { RECEITUARIO_NEUROLOGIA_MODELS } from './receituarioNeurologiaModels';
 import { RECEITUARIO_PROTOCOL_MODELS } from './receituarioProtocolModels';
+import { RECEITUARIO_PANCREATITIS_MODELS } from './receituarioPancreatitisModels';
 
 export const RECEITUARIO_CATEGORIES = [
   'Gastroenterologia',
@@ -630,7 +630,7 @@ export const SEEDED_TEMPLATES: DocumentTemplate[] = [
   ...RAW_SEEDED_TEMPLATES.filter((template) => template.document_type === 'term'),
   ...RECEITUARIO_INFECTOLOGIA_MODELS,
   ...RECEITUARIO_PROTOCOL_MODELS,
-  ...RECEITUARIO_DIABETES_MODELS,
+  ...RECEITUARIO_PANCREATITIS_MODELS,
   ...RECEITUARIO_NEUROLOGIA_MODELS,
 ].map((template) => ({
   ...template,
@@ -642,6 +642,13 @@ export const GLOBAL_RECIPE_TEMPLATE_IDS = new Set(
 );
 
 export const RETIRED_RECIPE_TEMPLATE_IDS = new Set([
+  'seed-dm-cao-caninsulin',
+  'seed-dm-cao-nph',
+  'seed-dm-cao-glargina-u100',
+  'seed-dm-cao-toujeo-u300',
+  'seed-dm-gato-glargina-u100',
+  'seed-dm-gato-toujeo-u300',
+  'seed-dm-gato-caninsulin',
   'seed-diabetes-mellitus',
   'seed-gastrite-aguda',
   'seed-cardio-b2',

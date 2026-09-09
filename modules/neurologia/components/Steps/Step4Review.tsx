@@ -424,12 +424,9 @@ export function Step4Review({ patient, complaint, exam, onEditStep }: Step4Props
 
             ) : (
 
-              <div className="flex items-center gap-2 text-emerald-400 text-sm">
-
-                <CheckCircle size={18} />
-
+              <div className="flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/10 p-3 text-emerald-700 dark:text-emerald-300 text-sm font-semibold">
+                <CheckCircle size={18} className="shrink-0" />
                 <span>Nenhuma alteração registrada — exame presumido normal.</span>
-
               </div>
 
             )}

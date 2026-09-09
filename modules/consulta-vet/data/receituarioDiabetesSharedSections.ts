@@ -156,9 +156,9 @@ Ração seca (exemplos disponíveis no Brasil):
 
 Ração úmida (exemplos):
 
-• Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g
+• Royal Canin Diabetic Special Baixo Carboidrato Úmida — 410 g
 • PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g
-• Farmina Vet Life Diabetic Wet Food Canine — 300 g
+• Farmina Vet Life Diabetic Úmida Cães — 300 g
 
 Dividir a quantidade diária em duas refeições iguais, pesar a ração em balança de cozinha e incluir petiscos no total do dia.`;
   }
@@ -173,7 +173,7 @@ Ração seca (exemplos):
 
 Ração úmida (exemplo):
 
-• Farmina Vet Life Diabetic Wet Food Feline — 85 g
+• Farmina Vet Life Diabetic Úmida Gatos — 85 g
 
 Priorize alimento que o gato aceite bem todos os dias; não force uma dieta se isso fizer o gato parar de comer.`;
 }

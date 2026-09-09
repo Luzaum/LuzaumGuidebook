@@ -9,6 +9,21 @@ interface EditorialClinicalTableBlockProps {
   className?: string;
 }
 
+function renderTableText(text: string) {
+  if (!text || (!text.includes('**') && !text.includes('*'))) return text;
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+      return (
+        <strong key={idx} className="font-semibold text-foreground">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part.replace(/\*\*/g, '');
+  });
+}
+
 /**
  * Tabela clínica reutilizável (doenças, medicamentos) — acessível e consistente claro/escuro.
  */
@@ -31,7 +46,7 @@ export function EditorialClinicalTableBlock({
     >
       {table.caption ? (
         <p className="break-words border-b border-border/55 bg-muted/[0.12] px-4 py-2.5 text-sm font-semibold text-foreground [overflow-wrap:anywhere]">
-          {table.caption}
+          {renderTableText(table.caption)}
         </p>
       ) : null}
       <table
@@ -46,7 +61,7 @@ export function EditorialClinicalTableBlock({
                 scope="col"
                 className="break-words px-3 py-3 text-[11px] font-bold uppercase tracking-[0.1em] text-muted-foreground [overflow-wrap:anywhere] first:pl-4 last:pr-4 md:px-4 md:tracking-[0.12em]"
               >
-                {h}
+                {renderTableText(h)}
               </th>
             ))}
           </tr>
@@ -68,7 +83,7 @@ export function EditorialClinicalTableBlock({
                     j === 0 && 'font-semibold text-foreground'
                   )}
                 >
-                  {cell}
+                  {renderTableText(cell)}
                 </td>
               ))}
             </tr>

@@ -7,6 +7,15 @@ const CATEGORY_ALIASES: Record<string, string> = {
   nefrologia: 'nefrologia-urologia',
   urologia: 'nefrologia-urologia',
   odontologia: 'odontologia-odontostomatologia',
+  'emergencia-uti': 'emergencia-intensivismo',
+  emergencia: 'emergencia-intensivismo',
+  intensivismo: 'emergencia-intensivismo',
+  uti: 'emergencia-intensivismo',
+  'bombas-asma-terapia-inalatoria': 'respiratorio',
+  'terapia-inalatoria': 'respiratorio',
+  bombas: 'respiratorio',
+  'bomba-asma': 'respiratorio',
+  pneumologia: 'respiratorio',
 };
 
 export function normalizeCategorySlug(slug: string): string {

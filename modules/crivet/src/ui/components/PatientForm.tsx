@@ -59,10 +59,11 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
       icon={Activity}
       title="Paciente"
       subtitle="Espécie, peso e condições clínicas"
+      complete={patient.weight > 0}
     >
       <div className="space-y-4">
         {/* Espécie + peso em linha */}
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+        <div className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_180px] sm:items-end">
           <div className="flex-1 space-y-2">
             <label className="text-xs font-medium text-slate-600 dark:text-slate-400">
               Espécie
@@ -92,7 +93,7 @@ export const PatientForm: React.FC<PatientFormProps> = ({ patient, onChange }) =
             </div>
           </div>
 
-          <div className="w-full space-y-2 sm:w-36">
+          <div className="w-full space-y-2">
             <label className="text-xs font-medium text-slate-600 dark:text-slate-400">
               Peso (kg)
             </label>

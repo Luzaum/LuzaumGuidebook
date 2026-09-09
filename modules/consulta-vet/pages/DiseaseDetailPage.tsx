@@ -20,6 +20,7 @@ import { getMedicationRepository } from '../services/medicationRepository';
 import { ConsensusRecord } from '../types/consenso';
 import { DiseaseRecord } from '../types/disease';
 import { MedicationRecord } from '../types/medication';
+import { EditorialSectionValue } from '../types/common';
 import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
 import { getDiseaseCategorySlugs } from '../utils/diseaseCategories';
@@ -189,6 +190,7 @@ export function DiseaseDetailPage() {
       { id: 'treatment', label: UI_TEXT.treatment },
       disease.complications ? { id: 'complications', label: UI_TEXT.complications } : null,
       { id: 'prevention', label: UI_TEXT.prevention },
+      disease.figures ? { id: 'figures', label: 'Figuras clínicas' } : null,
       relatedConsensos.length > 0 || relatedMedications.length > 0 ? { id: 'related', label: UI_TEXT.related } : null,
       disease.references?.length ? { id: 'references', label: UI_TEXT.references } : null,
     ].filter(Boolean) as Array<{ id: string; label: string }>;
@@ -255,7 +257,7 @@ export function DiseaseDetailPage() {
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <DiseaseReferenceProvider references={disease.references}>
-    <div className="mx-auto flex w-full max-w-[1840px] flex-col 2xl:flex-row">
+    <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
       <div className="w-full min-w-0 flex-1 px-4 py-3 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
           className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
@@ -286,14 +288,19 @@ export function DiseaseDetailPage() {
                 <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
                   {formatSpeciesList(disease.species)}
                 </span>
-                {getDiseaseCategorySlugs(disease).map((catSlug) => (
-                  <span
-                    key={catSlug}
-                    className="rounded-full border border-border bg-muted/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
-                  >
-                    {getSpecialtyVisual(catSlug).label}
-                  </span>
-                ))}
+                {getDiseaseCategorySlugs(disease).map((catSlug) => {
+                  const visual = getSpecialtyVisual(catSlug);
+                  const Icon = visual.Icon;
+                  return (
+                    <span
+                      key={catSlug}
+                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                    >
+                      <Icon className="h-3 w-3 text-muted-foreground" />
+                      {visual.label}
+                    </span>
+                  );
+                })}
               </div>
 
               <h1 className="mt-2 text-2xl font-bold leading-tight tracking-tight text-foreground sm:text-3xl lg:text-[2rem]">
@@ -506,6 +513,16 @@ export function DiseaseDetailPage() {
               <DiseaseSectionFrame sectionId="prevention" title={UI_TEXT.prevention}>
                 <DiseaseSectionRenderer id="prevention" hideTitle title={UI_TEXT.prevention} data={disease.prevention} />
               </DiseaseSectionFrame>
+              {disease.figures ? (
+                <DiseaseSectionFrame sectionId="figures" title="Figuras e imagens clínicas">
+                  <DiseaseSectionRenderer
+                    id="figures"
+                    hideTitle
+                    title="Figuras e imagens clínicas"
+                    data={disease.figures as EditorialSectionValue}
+                  />
+                </DiseaseSectionFrame>
+              ) : null}
             </div>
           </EditorialPanel>
 
@@ -572,7 +589,7 @@ export function DiseaseDetailPage() {
         </div>
       </div>
 
-      <div className="hidden w-64 shrink-0 py-8 pr-8 2xl:block">
+      <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
         <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
       </div>
     </div>

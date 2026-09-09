@@ -33,9 +33,9 @@ export function ExamIncompleteModal({
             compact ? 'p-3' : 'p-4'
           }`}
         >
-          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-300" aria-hidden />
+          <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-amber-500 dark:text-amber-400" aria-hidden />
           <div className="min-w-0 text-sm text-foreground/90">
-            <p className="font-medium text-amber-100">
+            <p className="font-semibold text-amber-800 dark:text-amber-200">
               {fields.length} item(ns) não selecionado(s)
               {highImpactCount > 0 ? ` — ${highImpactCount} de alto impacto diagnóstico` : ''}.
             </p>

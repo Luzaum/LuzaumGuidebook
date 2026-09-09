@@ -2,12 +2,6 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight, Eye, EyeOff, Loader2 } from 'lucide-react'
 import { AnimatePresence, motion } from 'framer-motion'
 
-declare global {
-  interface Window {
-    google?: any
-  }
-}
-
 const cn = (...classes: Array<string | false | null | undefined>) => classes.filter(Boolean).join(' ')
 
 const Button = React.forwardRef<
@@ -142,11 +136,11 @@ type TravelConnectSignInProps = {
   successMessage?: string
   onSubmit: (payload: { email: string; password: string }) => Promise<void> | void
   onGoogleSignIn?: () => Promise<void> | void
-  onGoogleSignInToken?: (idToken: string) => Promise<void> | void
   onForgotPassword?: (email: string) => Promise<void> | void
   onGoToSignup?: () => void
   onGoToLogin?: () => void
   onBackToVetius?: () => void
+  restrictedAccess?: boolean
 }
 
 const slideMotionVariants = {
@@ -174,11 +168,11 @@ export default function TravelConnectSignIn({
   successMessage = '',
   onSubmit,
   onGoogleSignIn,
-  onGoogleSignInToken,
   onForgotPassword,
   onGoToSignup,
   onGoToLogin,
   onBackToVetius,
+  restrictedAccess = false,
 }: TravelConnectSignInProps) {
   const isLogin = mode === 'login'
   const [activeSlide, setActiveSlide] = useState(0)
@@ -190,65 +184,6 @@ export default function TravelConnectSignIn({
   const [resetMessage, setResetMessage] = useState('')
   const [googleLoading, setGoogleLoading] = useState(false)
   const [forgotLoading, setForgotLoading] = useState(false)
-
-  const googleBtnRef = React.useRef<HTMLDivElement>(null)
-  const clientId = import.meta.env.VITE_GOOGLE_CLIENT_ID as string | undefined
-
-  useEffect(() => {
-    if (!clientId) return
-
-    let alive = true
-
-    if (!window.google) {
-      const script = document.createElement('script')
-      script.src = 'https://accounts.google.com/gsi/client'
-      script.async = true
-      script.defer = true
-      script.onload = () => {
-        if (alive) initializeGoogleSignIn()
-      }
-      document.body.appendChild(script)
-
-      return () => {
-        alive = false
-      }
-    } else {
-      initializeGoogleSignIn()
-    }
-
-    function initializeGoogleSignIn() {
-      if (!window.google || !alive) return
-      try {
-        window.google.accounts.id.initialize({
-          client_id: clientId,
-          callback: async (response: any) => {
-            if (!alive) return
-            try {
-              if (onGoogleSignInToken) {
-                await onGoogleSignInToken(response.credential)
-              }
-            } catch (err) {
-              // ignore
-            }
-          },
-        })
-
-        if (googleBtnRef.current) {
-          window.google.accounts.id.renderButton(googleBtnRef.current, {
-            theme: 'filled_black',
-            size: 'large',
-            type: 'standard',
-            shape: 'rectangular',
-            text: isLogin ? 'signin_with' : 'signup_with',
-            logo_alignment: 'left',
-            width: 320,
-          })
-        }
-      } catch (e) {
-        console.error('Error initializing Google GSI:', e)
-      }
-    }
-  }, [clientId, isLogin, onGoogleSignInToken])
 
   const slideCount = AUTH_SLIDES_4K.length
   const currentError = errorMessage || localError
@@ -299,6 +234,21 @@ export default function TravelConnectSignIn({
       setLocalError(message)
     } finally {
       setForgotLoading(false)
+    }
+  }
+
+  async function handleGoogleButton() {
+    if (!onGoogleSignIn) return
+    setGoogleLoading(true)
+    setLocalError('')
+    setResetMessage('')
+    try {
+      await onGoogleSignIn()
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Falha ao autenticar com Google.'
+      setLocalError(message)
+    } finally {
+      setGoogleLoading(false)
     }
   }
 
@@ -372,19 +322,22 @@ export default function TravelConnectSignIn({
                       key={slide.id}
                       type="button"
                       aria-label={`Ir para foto ${index + 1}`}
+                      aria-current={activeSlide === index ? 'true' : undefined}
                       onClick={() => {
                         setSlideDirection(index > activeSlide ? 1 : -1)
                         setActiveSlide(index)
                       }}
                       className={cn(
-                        'flex h-8 min-w-8 items-center justify-center rounded-full transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80',
-                        activeSlide === index ? 'bg-white/15' : 'bg-transparent hover:bg-white/10'
+                        'flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-transparent p-0 transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80',
+                        activeSlide === index && 'bg-white/10'
                       )}
                     >
                       <span
                         className={cn(
-                          'block h-2 rounded-full transition-all',
-                          activeSlide === index ? 'w-8 bg-white' : 'w-2 bg-white/45'
+                          'block h-2 w-2 rounded-full transition-all',
+                          activeSlide === index
+                            ? 'scale-125 bg-white shadow-[0_0_10px_rgba(255,255,255,0.65)]'
+                            : 'bg-white/45'
                         )}
                       />
                     </button>
@@ -403,47 +356,62 @@ export default function TravelConnectSignIn({
               className="mx-auto w-full max-w-md"
             >
               <div className="mb-8">
-                <h1 className="text-3xl font-bold">{isLogin ? 'Bem-vindo de volta' : 'Criar conta Vetius'}</h1>
+                <h1 className="text-3xl font-bold">
+                  {restrictedAccess ? 'Entrar no Vetius' : isLogin ? 'Bem-vindo de volta' : 'Criar conta Vetius'}
+                </h1>
                 <p className="mt-2 text-sm text-slate-400">
-                  {isLogin
+                  {restrictedAccess
+                    ? 'Use sua conta cadastrada no Supabase para acessar todos os módulos.'
+                    : isLogin
                     ? 'Entre para continuar seu trabalho clínico com segurança.'
                     : 'Cadastre sua conta para salvar seu trabalho na nuvem.'}
                 </p>
               </div>
 
-              <div className="mb-6 flex justify-center w-full min-h-[44px]">
-                {clientId ? (
-                  <div ref={googleBtnRef} className="w-full flex justify-center" />
-                ) : (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    className="h-11 w-full rounded-lg border-slate-700 bg-slate-900 text-slate-100 hover:bg-slate-800"
-                    disabled
-                  >
-                    <span>Google desabilitado</span>
-                  </Button>
-                )}
-              </div>
+              {!restrictedAccess && onGoogleSignIn ? (
+                <>
+                  <div className="mb-6 flex min-h-[44px] w-full justify-center">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="h-11 w-full gap-3 rounded-lg border-slate-700 bg-white text-slate-900 hover:bg-slate-100"
+                      onClick={handleGoogleButton}
+                      disabled={loading || googleLoading}
+                    >
+                      {googleLoading ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5">
+                          <path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4h5.4a4.7 4.7 0 0 1-2 3v2.6h3.3c1.9-1.8 2.9-4.4 2.9-7.4Z" />
+                          <path fill="#34A853" d="M12 22c2.7 0 5-.9 6.7-2.4L15.4 17c-.9.6-2.1 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3v2.7A10 10 0 0 0 12 22Z" />
+                          <path fill="#FBBC05" d="M6.4 13.9A6 6 0 0 1 6.1 12c0-.7.1-1.3.3-1.9V7.4H3A10 10 0 0 0 2 12c0 1.6.4 3.2 1 4.6l3.4-2.7Z" />
+                          <path fill="#EA4335" d="M12 6c1.5 0 2.8.5 3.8 1.5l2.9-2.8A9.7 9.7 0 0 0 12 2a10 10 0 0 0-9 5.4l3.4 2.7C7.2 7.8 9.4 6 12 6Z" />
+                        </svg>
+                      )}
+                      {isLogin ? 'Entrar com Google' : 'Cadastrar com Google'}
+                    </Button>
+                  </div>
 
-              <div className="relative my-6">
-                <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-800" />
-                </div>
-                <div className="relative flex justify-center text-xs uppercase tracking-[0.18em]">
-                  <span className="bg-[#090b13] px-2 text-slate-400">ou</span>
-                </div>
-              </div>
+                  <div className="relative my-6">
+                    <div className="absolute inset-0 flex items-center">
+                      <div className="w-full border-t border-slate-800" />
+                    </div>
+                    <div className="relative flex justify-center text-xs uppercase tracking-[0.18em]">
+                      <span className="bg-[#090b13] px-2 text-slate-400">ou</span>
+                    </div>
+                  </div>
+                </>
+              ) : null}
 
               <form className="space-y-5" onSubmit={handleSubmit}>
                 <div>
                   <label htmlFor={`${mode}-email`} className="mb-1 block text-sm font-medium text-slate-300">
-                    Usuário ou e-mail <span className="text-blue-400">*</span>
+                    {isLogin ? 'Usuário ou e-mail' : 'E-mail'} <span className="text-blue-400">*</span>
                   </label>
                   <Input
                     id={`${mode}-email`}
-                    type="text"
-                    placeholder="ex.: rani ou seuemail@clínica.com"
+                    type={isLogin ? 'text' : 'email'}
+                    placeholder={isLogin ? 'ex.: usuário ou nome@gmail.com' : 'Digite seu e-mail'}
                     value={email}
                     onChange={(event) => setEmail(event.target.value)}
                     autoComplete="username"
@@ -500,7 +468,11 @@ export default function TravelConnectSignIn({
               {successMessage ? <p className="mt-4 text-sm text-emerald-400">{successMessage}</p> : null}
               {resetMessage ? <p className="mt-4 text-sm text-emerald-400">{resetMessage}</p> : null}
 
-              <div className="mt-6 flex items-center justify-between gap-3 text-sm">
+              {restrictedAccess ? (
+                <p className="mt-6 text-center text-sm text-slate-500">
+                  Acesso disponível para todos os usuários cadastrados.
+                </p>
+              ) : <div className="mt-6 flex items-center justify-between gap-3 text-sm">
                 {isLogin ? (
                   <button
                     type="button"
@@ -531,7 +503,7 @@ export default function TravelConnectSignIn({
                     Ja tem conta? <span className="font-semibold text-blue-400">Entrar</span>
                   </button>
                 )}
-              </div>
+              </div>}
             </motion.div>
           </div>
         </motion.div>

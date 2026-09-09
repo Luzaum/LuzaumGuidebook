@@ -128,6 +128,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   nutra_mineral_vitamin: 'Vitaminas / minerais',
   endocrine_adrenal: 'Adrenais',
   endocrine_insulin: 'Insulinas',
+  endocrine_sglt2: 'Inibidores de SGLT2 (antidiabéticos orais)',
   endocrine_thyroid: 'Tireoide',
   endocrine_erythropoiesis: 'Eritropoiese / DRC',
   endocrine_diagnostic: 'Diagnóstico endócrino',
@@ -189,7 +190,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   urologic: ['uro_urinary_support'],
   renal: ['renal_ckd_support', 'endocrine_erythropoiesis'],
   orthopedic: ['ortho_joint_support', 'ortho_antiinflammatory'],
-  endocrine: ['endocrine_insulin', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
+  endocrine: ['endocrine_insulin', 'endocrine_sglt2', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
   ophthalmologic: [
     'ophthalmic_lubricant',
     'ophthalmic_immunomodulator',
@@ -606,12 +607,19 @@ function ProductCard({
   const relatedMedications = getMedicationsForCommercialProduct(product, medicationsSeed);
 
   const isControlled =
+    Boolean(product.isControlled) ||
     product.id === 'nulli-ourofino' ||
     product.id === 'gabapentina-humana-manipulada' ||
     product.id === 'pregabalina-humana-manipulada' ||
     product.activeComponents.some((comp) => {
       const norm = comp.toLowerCase();
-      return norm.includes('tramadol') || norm.includes('gabapentina') || norm.includes('pregabalina');
+      return (
+        norm.includes('tramadol') ||
+        norm.includes('gabapentina') ||
+        norm.includes('pregabalina') ||
+        norm.includes('fenobarbital') ||
+        norm.includes('levetiracetam')
+      );
     });
 
   return (
@@ -691,8 +699,8 @@ function ProductCard({
             <div>
               <p className="text-sm font-bold text-red-950 dark:text-red-200">Atenção: Medicamento de Controle Especial</p>
               <p className="mt-1 text-sm leading-6 text-red-900 dark:text-red-100">
-                Este medicamento exige **Receita de Controle Especial em Duas Vias** com retenção obrigatória da primeira via no ato da venda.
-                A prescrição e uso veterinário de produtos sob controle especial do **MAPA (Portaria 837/2025)** devem ser emitidas exclusivamente por profissional cadastrado no sistema do ministério.
+                Este medicamento exige <strong>Receita de Controle Especial em Duas Vias</strong> com retenção obrigatória da primeira via no ato da venda.
+                A prescrição e uso veterinário de produtos sob controle especial do <strong>MAPA (Portaria 837/2025)</strong> devem ser emitidas exclusivamente por profissional cadastrado no sistema do ministério.
               </p>
             </div>
           </div>

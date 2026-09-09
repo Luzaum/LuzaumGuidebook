@@ -1,3 +1,6 @@
+import { formatPrescriptionPlainLanguage } from './receituarioMedication';
+import { simplifyPrescriptionTutorLanguage } from './prescriptionTutorLanguage';
+
 const WEIGHT_BASED_ADMINISTRATION = /\bAdministrar\s+(\d+(?:[.,]\d+)?)\s*(?:(?:a|até|ate|–|—|-)\s*(\d+(?:[.,]\d+)?)\s*)?(mg|mcg|µg|mL|UI)\/kg\b/gi;
 
 export const CLINICAL_DOSE_LABEL = 'Dose clínica:';
@@ -89,7 +92,7 @@ export function stripPrescriptionTechnicalDetails(bodyText: string): string {
     output.push(line);
   }
 
-  return output.join('\n').replace(/\n{3,}/g, '\n\n').trim();
+  return simplifyPrescriptionTutorLanguage(formatPrescriptionPlainLanguage(output.join('\n').replace(/\n{3,}/g, '\n\n').trim()));
 }
 
 /** Padroniza recomendações como lista visual, sem expor a sintaxe de asteriscos. */

@@ -1,3 +1,4 @@
+import { prescriptionDurationClause as durationClause, inferPrescriptionDurationPreset as inferDurationPreset } from '../../utils/prescriptionSchedule';
 import React, { useEffect, useMemo, useState } from 'react';
 import { AlertTriangle, CheckCircle2, ExternalLink, FileInput, Loader2, Pill, Plus, Search, X } from 'lucide-react';
 import {
@@ -8,17 +9,24 @@ import {
 import type { PrescriptionMedicationSnapshot } from '../../types/receituario';
 import {
   calculateReceituarioDose,
+  formatAdministrationAmount,
   formatDecimalPtBr,
+  formatRecommendedDoseUnit,
   isSpeciesCompatible,
-  normalizeDoseUnit,
   resolveAdministrationBasis,
 } from '../../utils/receituarioDoseEngine';
 import {
   extractPrescriptionConcentration,
+  formatPracticalAmountWithFraction,
+  formatPrescriptionFrequency,
   formatPrescriptionMedicationHeader,
+  formatPrescriptionRoute,
+  normalizePrescriptionRouteToOption,
   normalizePrescriptionSpecies,
   parsePositiveDecimal,
+  prescriptionReadyDuration,
   prescriptionPharmaceuticalFormLabel,
+  OUTPATIENT_PRESCRIPTION_ROUTES,
 } from '../../utils/receituarioMedication';
 import { CLINICAL_DOSE_LABEL } from '../../utils/receituarioTemplateCalculator';
 import {
@@ -26,7 +34,7 @@ import {
   getPrescriptionMedicationRecommendedDoses,
   searchPrescriptionMedicationCatalog,
 } from '../../services/receituarioCatalogService';
-import { buildCatalogPresentationCommercialResults, searchPrescriptionCommercialProducts } from '../../services/receituarioCommercialCatalogService';
+import { buildCatalogPresentationCommercialResults, buildCommercialProductRecommendedDoses, isKnownInjectionOnlyPrescriptionQuery, searchPrescriptionCommercialProducts } from '../../services/receituarioCommercialCatalogService';
 import {
   RECEITUARIO_COMMERCIAL_CLASS_OPTIONS,
   RECEITUARIO_COMMERCIAL_SUBCLASS_LABELS,
@@ -34,6 +42,11 @@ import {
 } from '../../data/receituarioCommercialTaxonomy';
 import type { CommercialMedicationClass, CommercialMedicationSubclass } from '../../types/commercialMedication';
 import { matchesExactMedicationSearch, medicationMatchesCommercialProducts, medicationSearchScore } from '../../utils/medicationSearch';
+import {
+  isInjectablePrescriptionText,
+  isTakeHomePresentationRecord,
+  isTakeHomePrescriptionRoute,
+} from '../../utils/receituarioTakeHome';
 
 interface Props {
   clinicId?: string | null;
@@ -53,6 +66,7 @@ type FrequencyPreset = '' | 'single' | '2' | '4' | '6' | '8' | '12' | '24' | 'cu
 type DurationPreset = '' | 'continuous' | 'reevaluation' | 'days' | 'weeks' | 'months' | 'administrations' | 'custom';
 type CommercialDoseEntry = { title?: string; dose?: string; note?: string };
 type CommercialDosageGuidance = { labelDose?: string; plumbs?: Partial<Record<'dog' | 'cat', CommercialDoseEntry[]>> };
+type DoseFollowUpPhase = { doseValue: number; frequency: string; duration: string; route?: string };
 
 const FREQUENCY_OPTIONS: Array<{ value: FrequencyPreset; label: string; text: string }> = [
   { value: '', label: 'Selecionar frequência', text: '' },
@@ -84,28 +98,6 @@ function durationText(preset: DurationPreset, quantity: string): string {
   return '';
 }
 
-function inferDurationPreset(value: string): DurationPreset {
-  const normalized = normalize(value);
-  if (normalized.includes('uso continuo')) return 'continuous';
-  if (normalized.includes('reavaliacao')) return 'reevaluation';
-  if (/\bdias?\b/.test(normalized)) return 'days';
-  if (/\bsemanas?\b/.test(normalized)) return 'weeks';
-  if (/\bmes(?:es)?\b/.test(normalized)) return 'months';
-  if (/\badministrac/.test(normalized)) return 'administrations';
-  return value.trim() ? 'custom' : '';
-}
-
-function durationClause(value: string): string {
-  const cleaned = value.trim().replace(/[.\s]+$/, '');
-  const normalized = normalize(cleaned);
-  if (!cleaned) return '';
-  if (normalized.includes('uso continuo')) return ', em uso contínuo';
-  if (normalized.includes('reavaliacao')) return ', até reavaliação clínica';
-  if (/^(ate|durante|por)\b/.test(normalized)) return `, ${cleaned.charAt(0).toLowerCase()}${cleaned.slice(1)}`;
-  if (/administrac/.test(normalized)) return `, por ${cleaned}`;
-  return `, durante ${cleaned}`;
-}
-
 function normalize(value: unknown): string {
   return String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 }
@@ -129,7 +121,8 @@ function metadataArray(entry: MedicationSearchResult, ...keys: string[]): string
 function searchableActiveIngredient(entry: MedicationSearchResult): string {
   const activeIngredient = metadataText(entry, 'active_ingredient', 'activeIngredient');
   return normalize([
-    activeIngredient || entry.name,
+    activeIngredient,
+    entry.name,
     ...metadataArray(entry, 'synonyms', 'active_ingredient_synonyms'),
     ...metadataArray(entry, 'trade_names'),
     ...metadataArray(entry, 'tags'),
@@ -144,6 +137,48 @@ function commercialActiveIngredientNames(entry: MedicationSearchResult): string[
     .map((component) => normalize(component.split(/\d/)[0] || component))
     .map((component) => component.replace(/\b(mg|mcg|g|ml|ui)\b.*$/i, '').trim())
     .filter((component) => component.length >= 3);
+}
+
+function doseFollowUpPhases(dose: RecommendedDose | null): DoseFollowUpPhase[] {
+  const value = dose?.metadata?.follow_up_phases;
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((item) => {
+    if (!item || typeof item !== 'object') return [];
+    const record = item as Record<string, unknown>;
+    const doseValue = Number(record.doseValue);
+    const frequency = String(record.frequency || '').trim();
+    const duration = String(record.duration || '').trim();
+    if (!Number.isFinite(doseValue) || doseValue <= 0 || !frequency || !duration) return [];
+    const route = String(record.route || '').trim();
+    return [{ doseValue, frequency, duration, route: route || undefined }];
+  });
+}
+
+function medicationMatchesActiveIngredient(entry: MedicationSearchResult, ingredients: string[]): boolean {
+  const candidate = searchableActiveIngredient(entry);
+  if (!candidate) return false;
+  const candidateTokens = new Set(candidate.match(/[a-z0-9]+/g) || []);
+  const ignored = new Set(['cloridrato', 'citrato', 'sodico', 'sodica', 'di', 'hidratado', 'monoidratado']);
+  return ingredients.some((ingredient) => {
+    if (candidate.includes(ingredient) || ingredient.includes(candidate)) return true;
+    const meaningful = ingredient.split(/[^a-z0-9]+/).filter((token: string) => token.length >= 5 && !ignored.has(token));
+    return meaningful.some((token) => candidateTokens.has(token));
+  });
+}
+
+function embeddedCommercialPresentations(entry: MedicationSearchResult): MedicationPresentationRecord[] {
+  const value = entry.metadata?.structured_presentations;
+  return Array.isArray(value) ? value as MedicationPresentationRecord[] : [];
+}
+
+function uniqueRecordsById<T extends { id?: string }>(items: T[]): T[] {
+  const seen = new Set<string>();
+  return items.filter((item, index) => {
+    const key = item.id || `index:${index}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function prescriptionActiveIngredientLabel(entry: MedicationSearchResult): string {
@@ -285,6 +320,7 @@ export function PrescriptionMedicationComposer({
   const [commercialResults, setCommercialResults] = useState<MedicationSearchResult[]>([]);
   const [catalogCommercialResults, setCatalogCommercialResults] = useState<MedicationSearchResult[]>([]);
   const [commercialLoading, setCommercialLoading] = useState(false);
+  const [injectionOnlyQuery, setInjectionOnlyQuery] = useState(false);
   const [commercialClass, setCommercialClass] = useState<CommercialMedicationClass | ''>('');
   const [commercialSubclass, setCommercialSubclass] = useState<CommercialMedicationSubclass | ''>('');
   const [query, setQuery] = useState('');
@@ -298,6 +334,7 @@ export function PrescriptionMedicationComposer({
   const [doseValue, setDoseValue] = useState('');
   const [frequency, setFrequency] = useState('');
   const [frequencyPreset, setFrequencyPreset] = useState<FrequencyPreset>('');
+
   const [duration, setDuration] = useState('');
   const [durationPreset, setDurationPreset] = useState<DurationPreset>('');
   const [durationQuantity, setDurationQuantity] = useState('');
@@ -310,6 +347,7 @@ export function PrescriptionMedicationComposer({
   const [manualRouteCustom, setManualRouteCustom] = useState('');
   const [manualTarget, setManualTarget] = useState('');
   const [roundingConfirmed, setRoundingConfirmed] = useState(false);
+  const [tabletDivisibility, setTabletDivisibility] = useState<'auto' | '0.25' | '0.5' | '1'>('auto');
   const [rawBlockEdit, setRawBlockEdit] = useState('');
 
   useEffect(() => {
@@ -324,7 +362,7 @@ export function PrescriptionMedicationComposer({
   const activeIngredientResults = useMemo(() => {
     const needle = normalize(query.trim());
     const ranked = catalog
-      .map((item) => ({ item, score: medicationSearchScore(needle, searchableActiveIngredient(item)) }))
+      .map((item) => ({ item, score: normalize(item.name) === needle ? -1 : medicationSearchScore(needle, searchableActiveIngredient(item)) }))
       .filter((entry): entry is { item: MedicationSearchResult; score: number } => entry.score !== null)
       .sort((left, right) => left.score - right.score || left.item.name.localeCompare(right.item.name, 'pt-BR'));
     if (needle.length < 2) return catalog;
@@ -343,6 +381,7 @@ export function PrescriptionMedicationComposer({
     const browsingByClass = Boolean(commercialClass);
     if (!browsingByClass && needle.length < 2) {
       setCommercialResults([]);
+      setInjectionOnlyQuery(false);
       setCommercialLoading(false);
       return;
     }
@@ -351,13 +390,20 @@ export function PrescriptionMedicationComposer({
     setCommercialResults([]);
     setCommercialLoading(true);
     const timer = window.setTimeout(() => {
-      void searchPrescriptionCommercialProducts({
-        query: needle,
-        commercialClass,
-        commercialSubclass,
-        species: normalizedSpecies,
-      })
-        .then((items) => { if (active) setCommercialResults(items); })
+      void Promise.all([
+        searchPrescriptionCommercialProducts({
+          query: needle,
+          commercialClass,
+          commercialSubclass,
+          species: normalizedSpecies,
+        }),
+        browsingByClass ? Promise.resolve(false) : isKnownInjectionOnlyPrescriptionQuery(needle),
+      ])
+        .then(([items, injectionOnly]) => {
+          if (!active) return;
+          setCommercialResults(items);
+          setInjectionOnlyQuery(injectionOnly);
+        })
         .finally(() => { if (active) setCommercialLoading(false); });
     }, 180);
     return () => { active = false; window.clearTimeout(timer); };
@@ -432,8 +478,9 @@ export function PrescriptionMedicationComposer({
     const isCommercial = isCommercialSearchResult(selected);
     const catalogRoutes = metadataArray(selected, 'routes');
     const route = isCommercial ? inferCommercialRoute(selected) : catalogRoutes.length === 1 ? catalogRoutes[0] : '';
-    setManualRoute(route);
-    setManualPresentation(isCommercial ? metadataArray(selected, 'presentation_labels')[0] || '' : '');
+    setManualRoute(isTakeHomePrescriptionRoute(route) ? route : '');
+    setManualRouteCustom('');
+    setManualPresentation('');
     setManualAdditionalInstructions('');
     setManualInstruction('');
     setFrequency('');
@@ -450,14 +497,20 @@ export function PrescriptionMedicationComposer({
     const linkedCatalogMedicationId = isCommercial ? metadataText(selected, 'catalog_medication_id') : '';
     const catalogMatch = isCommercial
       ? catalog.find((item) => item.id === linkedCatalogMedicationId)
-        || catalog.find((item) => commercialActiveNames.some((ingredient) => searchableActiveIngredient(item).includes(ingredient)))
+        || catalog.find((item) => medicationMatchesActiveIngredient(item, commercialActiveNames))
         || catalog.find((item) => searchableActiveIngredient(item).includes(normalize(activeName)))
       : selected;
     const targetId = linkedCatalogMedicationId || catalogMatch?.id || selected.id;
+    const embeddedPresentations = isCommercial ? embeddedCommercialPresentations(selected) : [];
+    const embeddedDoses = isCommercial ? buildCommercialProductRecommendedDoses(selected, normalizedSpecies) : [];
 
-    Promise.all(selected.id.startsWith('manual:')
+    const skipCatalogLookup = selected.id.startsWith('manual:') || (isCommercial && targetId === selected.id);
+    Promise.all(skipCatalogLookup
       ? [Promise.resolve([] as MedicationPresentationRecord[]), Promise.resolve([] as RecommendedDose[])]
-      : [getPrescriptionMedicationPresentations(catalogClinicId, targetId), getPrescriptionMedicationRecommendedDoses(catalogClinicId, targetId)])
+      : [
+        getPrescriptionMedicationPresentations(catalogClinicId, targetId).catch(() => [] as MedicationPresentationRecord[]),
+        getPrescriptionMedicationRecommendedDoses(catalogClinicId, targetId).catch(() => [] as RecommendedDose[]),
+      ])
       .then(([nextPresentations, nextDoses]) => {
         if (!active) return;
         const matchingCommercialPresentations = isCommercial
@@ -467,11 +520,20 @@ export function PrescriptionMedicationComposer({
             return presentationName === selectedName || presentationName.startsWith(`${selectedName} `);
           })
           : [];
-        const visiblePresentations = isCommercial && matchingCommercialPresentations.length
-          ? matchingCommercialPresentations
-          : nextPresentations;
+        const restoredPresentation = editingSnapshot?.presentationSnapshot as MedicationPresentationRecord | null | undefined;
+        const restoredDose = editingSnapshot?.doseSnapshot as unknown as RecommendedDose | null | undefined;
+        const visiblePresentations = uniqueRecordsById([
+          ...(restoredPresentation && isTakeHomePresentationRecord(restoredPresentation) ? [restoredPresentation] : []),
+          ...embeddedPresentations,
+          ...(isCommercial && matchingCommercialPresentations.length ? matchingCommercialPresentations : nextPresentations),
+        ]).filter(isTakeHomePresentationRecord);
+        const visibleDoses = uniqueRecordsById([
+          ...(restoredDose && isTakeHomePrescriptionRoute(restoredDose.route) ? [restoredDose] : []),
+          ...embeddedDoses,
+          ...nextDoses,
+        ]).filter((dose) => isTakeHomePrescriptionRoute(dose.route));
         setPresentations(visiblePresentations);
-        setDoses(nextDoses);
+        setDoses(visibleDoses);
         const editingThisMedication = editingSnapshot && (
           editingSnapshot.medicationId === selected.id
           || normalize(editingSnapshot.activeIngredient) === normalize(activeName)
@@ -486,15 +548,26 @@ export function PrescriptionMedicationComposer({
           setDoseId(editingThisMedication.doseId || 'manual');
           setManualDoseChosen(!editingThisMedication.doseId);
           setDoseValue(editingThisMedication.selectedDose > 0 ? String(editingThisMedication.selectedDose) : '');
-          setFrequency(editingThisMedication.frequency || '');
-          setFrequencyPreset(inferFrequencyPreset(editingThisMedication.frequency || ''));
+          const restoredFrequency = formatPrescriptionFrequency(editingThisMedication.frequency || '');
+          setFrequency(restoredFrequency);
+          setFrequencyPreset(inferFrequencyPreset(restoredFrequency));
           setDuration(editingThisMedication.duration || '');
           setDurationPreset(inferDurationPreset(editingThisMedication.duration || ''));
           setDurationQuantity(editingThisMedication.duration?.match(/[\d.,]+/)?.[0] || '');
           setManualInstruction(editingThisMedication.manualInstruction || '');
-          setManualPresentation(editingThisMedication.manualPresentation || '');
+          setManualPresentation(isInjectablePrescriptionText(editingThisMedication.manualPresentation) ? '' : editingThisMedication.manualPresentation || '');
           setManualAdditionalInstructions(editingThisMedication.manualAdditionalInstructions || '');
-          if (editingThisMedication.route) setManualRoute(editingThisMedication.route);
+          setManualTarget(editingThisMedication.manualTarget || '');
+          if (editingThisMedication.route && isTakeHomePrescriptionRoute(editingThisMedication.route)) {
+            const norm = normalizePrescriptionRouteToOption(editingThisMedication.route);
+            if (norm && norm !== 'outra') {
+              setManualRoute(norm);
+              setManualRouteCustom('');
+            } else {
+              setManualRoute('outra');
+              setManualRouteCustom(editingThisMedication.route);
+            }
+          }
         } else {
           setPresentationId(visiblePresentations[0]?.id || '');
         }
@@ -502,12 +575,13 @@ export function PrescriptionMedicationComposer({
       })
       .finally(() => active && setLoading(false));
     return () => { active = false; };
-  }, [catalog, catalogClinicId, editingSnapshot, selected]);
+  }, [catalog, catalogClinicId, editingSnapshot, normalizedSpecies, selected]);
 
   const compatibleDoses = useMemo(
     () => normalizedSpecies ? doses.filter((dose) => (
       isSpeciesCompatible(dose.species, normalizedSpecies)
       && dose.metadata?.calculator_enabled !== false
+      && isTakeHomePrescriptionRoute(dose.route)
     )) : [],
     [doses, normalizedSpecies],
   );
@@ -536,18 +610,92 @@ export function PrescriptionMedicationComposer({
 
   useEffect(() => {
     if (!selectedDose) return;
-    const initial = selectedDose.calculator_default_dose ?? (selectedDose.dose_max == null ? selectedDose.dose_value : null);
-    const nextFrequency = selectedDose.frequency_text || selectedDose.frequency || 'a cada 12 horas';
-    const nextDuration = selectedDose.duration || 'durante 7 dias';
+    const restoring = editingSnapshot?.doseId === selectedDose.id ? editingSnapshot : null;
+    const initial = restoring?.selectedDose
+      ?? selectedDose.calculator_default_dose
+      ?? (selectedDose.dose_max == null || selectedDose.dose_max === selectedDose.dose_value
+        ? selectedDose.dose_value
+        : null);
+    const nextFrequency = formatPrescriptionFrequency(restoring?.frequency || selectedDose.frequency_text || selectedDose.frequency || '');
+    const nextDuration = restoring?.duration || prescriptionReadyDuration(selectedDose.duration);
     setDoseValue(initial == null ? '' : String(initial));
     setFrequency(nextFrequency);
     setFrequencyPreset(inferFrequencyPreset(nextFrequency));
     setDuration(nextDuration);
     setDurationPreset(inferDurationPreset(nextDuration));
-    setDurationQuantity(nextDuration.match(/[\d.,]+/)?.[0] || '7');
+    setDurationQuantity(nextDuration.match(/[\d.,]+/)?.[0] || '');
     setRoundingConfirmed(false);
     setLaterality('');
-  }, [selectedDose?.id]);
+    const initialRoute = restoring?.route || selectedDose.route || '';
+    const normRoute = normalizePrescriptionRouteToOption(initialRoute);
+    if (normRoute && normRoute !== 'outra') {
+      setManualRoute(normRoute);
+      setManualRouteCustom('');
+    } else if (initialRoute) {
+      setManualRoute('outra');
+      setManualRouteCustom(initialRoute);
+    } else {
+      setManualRoute('');
+      setManualRouteCustom('');
+    }
+  }, [editingSnapshot, selectedDose?.id]);
+
+  useEffect(() => {
+    const linkedPresentationId = String(selectedDose?.metadata?.presentation_id || '').trim();
+    const linkedConcentrationId = String(selectedDose?.metadata?.presentation_concentration_id || '').trim();
+    if (!linkedPresentationId || !presentations.length) return;
+    const linkedPresentation = presentations.find((item) => (
+      (item.id === linkedPresentationId || item.id.endsWith(`:${linkedPresentationId}`) || item.metadata?.seed_presentation_id === linkedPresentationId)
+      && (!linkedConcentrationId || item.metadata?.seed_concentration_id === linkedConcentrationId)
+    ));
+    if (linkedPresentation) setPresentationId(linkedPresentation.id);
+  }, [presentations, selectedDose?.id]);
+
+  const isTabletPresentation = Boolean(
+    selectedPresentation && (
+      /comprim|tablet|dragea/i.test(selectedPresentation.pharmaceutical_form || '')
+      || /comprim/i.test(selectedPresentation.presentation_unit || '')
+      || /comprim/i.test(String(selectedPresentation.metadata?.presentation_unit || ''))
+      || /comprim/i.test(selectedPresentation.concentration_text || '')
+    )
+  );
+
+  const effectivePresentation = useMemo(() => {
+    if (!selectedPresentation) return null;
+    if (!isTabletPresentation) return selectedPresentation;
+    let splitIncrement: number | null = null;
+    if (tabletDivisibility === '0.25') {
+      splitIncrement = 0.25;
+    } else if (tabletDivisibility === '0.5') {
+      splitIncrement = 0.5;
+    } else if (tabletDivisibility === '1') {
+      splitIncrement = 1;
+    } else {
+      const dbIncrement = Number(selectedPresentation.tablet_split_increment ?? selectedPresentation.metadata?.split_increment);
+      if (Number.isFinite(dbIncrement) && dbIncrement > 0) {
+        splitIncrement = dbIncrement;
+      } else {
+        splitIncrement = 0.25;
+      }
+    }
+    return {
+      ...selectedPresentation,
+      tablet_split_increment: splitIncrement,
+    };
+  }, [isTabletPresentation, selectedPresentation, tabletDivisibility]);
+
+  const selectedRouteOptionValue = useMemo(() => {
+    const current = manualRoute || (selectedDose ? selectedDose.route : '');
+    if (!current) return '';
+    if (current === 'outra') return 'outra';
+    const canonical = normalizePrescriptionRouteToOption(current);
+    if (OUTPATIENT_PRESCRIPTION_ROUTES.some((opt) => opt.value === canonical)) {
+      return canonical;
+    }
+    return 'outra';
+  }, [manualRoute, selectedDose]);
+
+  const resolvedManualRoute = (manualRoute === 'outra' ? manualRouteCustom.trim() : (manualRoute || (selectedDose ? selectedDose.route : ''))) || '';
 
   const parsedDoseValue = parsePositiveDecimal(doseValue);
   const calculation = useMemo(() => {
@@ -555,48 +703,101 @@ export function PrescriptionMedicationComposer({
     return calculateReceituarioDose({
       species: normalizedSpecies,
       weightKg: parsedWeight,
-      dose: selectedDose,
+      dose: { ...selectedDose, route: resolvedManualRoute || selectedDose.route },
       selectedDoseValue: parsedDoseValue,
-      presentation: selectedPresentation,
+      presentation: effectivePresentation,
     });
-  }, [normalizedSpecies, parsedDoseValue, parsedWeight, selectedDose, selectedPresentation]);
+  }, [normalizedSpecies, parsedDoseValue, parsedWeight, selectedDose, effectivePresentation, resolvedManualRoute]);
+  const followUpCalculations = useMemo(() => {
+    if (!normalizedSpecies || !selectedDose) return [];
+    return doseFollowUpPhases(selectedDose).map((phase) => ({
+      phase,
+      calculation: calculateReceituarioDose({
+        species: normalizedSpecies,
+        weightKg: parsedWeight,
+        dose: { ...selectedDose, route: phase.route || resolvedManualRoute || selectedDose.route },
+        selectedDoseValue: phase.doseValue,
+        presentation: effectivePresentation,
+      }),
+    }));
+  }, [normalizedSpecies, parsedWeight, selectedDose, effectivePresentation, resolvedManualRoute]);
 
   const sourceUrl = selectedDose ? String(selectedDose.source_url || selectedDose.metadata?.source_url || selectedDose.metadata?.url || '') : '';
   const weightMissing = basis === 'weight_based' && !parsedWeight;
   const lateralityMissing = Boolean(lateralityTarget && !laterality);
   const manualMode = Boolean(selected && !selectedDose && doseId === 'manual');
-  const resolvedManualRoute = manualRoute === 'outra' ? manualRouteCustom.trim() : manualRoute;
   const manualSentence = manualInstructionSentence(manualInstruction, resolvedManualRoute);
   const manualProductPresentation = manualPresentation.trim()
-    || (commercialSelection ? commercialPresentations[0] || '' : selectedPresentation ? presentationLabel(selectedPresentation) : '');
+    || (selectedPresentation ? presentationLabel(selectedPresentation) : commercialSelection ? commercialPresentations[0] || '' : '');
   const manualHeading = selected ? medicationPrescriptionHeader(selected, selectedPresentation, manualProductPresentation) : '';
   const manualTargetText = manualTarget.trim() ? ` em ${manualTarget.trim()}` : '';
   const manualAdministrationLine = manualSentence
-    ? `${manualSentence}${resolvedManualRoute ? `, por via ${resolvedManualRoute}` : ''}${manualTargetText}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`
+    ? `${manualSentence}${resolvedManualRoute ? `, ${formatPrescriptionRoute(resolvedManualRoute)}` : ''}${manualTargetText}${frequency ? `, ${formatPrescriptionFrequency(frequency)}` : ''}${durationClause(duration)}.`
     : '';
   const manualPreviewLines = [
     manualHeading,
     manualAdministrationLine,
     manualAdditionalInstructions.trim() ? `Orientações: ${manualAdditionalInstructions.trim().replace(/[.\s]+$/, '')}.` : '',
   ].filter(Boolean);
-  const manualReady = manualMode && manualInstruction.trim() && resolvedManualRoute && frequency.trim() && duration.trim();
-  const calculatedReady = selectedDose && parsedDoseValue && frequency.trim() && duration.trim() && calculation && !calculation.blockedReason && !weightMissing && !lateralityMissing && (!calculation.requiresConfirmation || roundingConfirmed);
-  const canInsert = Boolean(selected && (manualReady || calculatedReady));
+  const hasInjectableHomeConflict = !isTakeHomePrescriptionRoute(resolvedManualRoute)
+    || isInjectablePrescriptionText(manualPresentation)
+    || Boolean(selectedPresentation && !isTakeHomePresentationRecord(selectedPresentation))
+    || followUpCalculations.some((item) => !isTakeHomePrescriptionRoute(item.phase.route));
+  const manualReady = manualMode && manualInstruction.trim() && resolvedManualRoute && frequency.trim() && duration.trim() && !hasInjectableHomeConflict;
+  const followUpBlocked = followUpCalculations.some((item) => Boolean(item.calculation.blockedReason));
+  const isDoseDifferenceWarning = Boolean(
+    calculation?.blockedReason && /forneceria .* a mais do que a dose calculada|excede a tolerância/i.test(calculation.blockedReason)
+  );
+  const effectiveBlockedReason = isDoseDifferenceWarning ? undefined : calculation?.blockedReason;
+  const requiresRoundingConfirmation = Boolean(
+    calculation?.requiresConfirmation
+    || isDoseDifferenceWarning
+    || followUpCalculations.some((item) => item.calculation.requiresConfirmation)
+  );
+  const calculatedReady = selectedDose
+    && parsedDoseValue
+    && frequency.trim()
+    && duration.trim()
+    && calculation
+    && !effectiveBlockedReason
+    && !followUpBlocked
+    && !weightMissing
+    && !lateralityMissing
+    && !hasInjectableHomeConflict
+    && (!requiresRoundingConfirmation || roundingConfirmed);
+  const canInsert = Boolean(selected && !loading && (manualReady || calculatedReady));
 
   const reset = () => {
-    setSelected(null); setQuery(''); setPresentations([]); setDoses([]); setDoseId(''); setManualDoseChosen(false); setPresentationId('');
-    setDoseValue(''); setFrequency(''); setFrequencyPreset(''); setDuration(''); setDurationPreset(''); setDurationQuantity('');
-    setLaterality(''); setApplicationSite(''); setManualInstruction(''); setManualPresentation(''); setManualAdditionalInstructions(''); setManualRoute(''); setManualRouteCustom(''); setManualTarget('');
+    setSelected(null);
+    setPresentationId('');
+    setDoseId('');
+    setDoseValue('');
+    setFrequency('');
+    setFrequencyPreset('');
+    setDuration('');
+    setDurationPreset('');
+    setDurationQuantity('');
+    setRoundingConfirmed(false);
+    setTabletDivisibility('auto');
+    setLaterality('');
+    setApplicationSite('');
+    setManualInstruction('');
+    setManualPresentation('');
+    setManualAdditionalInstructions('');
+    setManualRoute('');
+    setManualRouteCustom('');
+    setManualTarget('');
   };
 
   const importCommercialPrescription = () => {
     if (!selected || !commercialSelection || !commercialPrescriptionExample) return;
-    const productHeading = medicationPrescriptionHeader(selected, null, commercialPresentations[0] || '');
+    const productPresentation = selectedPresentation ? presentationLabel(selectedPresentation) : commercialPresentations[0] || '';
+    const productHeading = medicationPrescriptionHeader(selected, selectedPresentation, productPresentation);
     onInsert(`${productHeading}\n${commercialPrescriptionExample.trim()}`, {
       medicationId: selected.id,
       medicationName: selected.name,
       activeIngredient: metadataText(selected, 'active_ingredient', 'activeIngredient') || selected.name,
-      presentationId: null,
+      presentationId: selectedPresentation?.id || null,
       doseId: null,
       doseSourceType: 'other',
       doseSourceLabel: 'Receita prática do catálogo comercial',
@@ -604,12 +805,19 @@ export function PrescriptionMedicationComposer({
       doseUnit: 'modelo pronto',
       selectedDose: 0,
       precautions: [],
+      rawBlockText: `${productHeading}\n${commercialPrescriptionExample.trim()}`,
+      catalogEntrySnapshot: selected as unknown as Record<string, unknown>,
+      presentationSnapshot: selectedPresentation as unknown as Record<string, unknown> || null,
     });
   };
 
   useEffect(() => {
     if (!editingSnapshot) return;
     setRawBlockEdit(editingSnapshot.rawBlockText || '');
+    if (editingSnapshot.catalogEntrySnapshot) {
+      setSelected(editingSnapshot.catalogEntrySnapshot as unknown as MedicationSearchResult);
+      return;
+    }
     if (!catalog.length && !editingSnapshot.medicationId.startsWith('manual:')) return;
     const match = catalog.find((item) => item.id === editingSnapshot.medicationId)
       || catalog.find((item) => searchableActiveIngredient(item).includes(normalize(editingSnapshot.activeIngredient)));
@@ -651,6 +859,9 @@ export function PrescriptionMedicationComposer({
         manualInstruction,
         manualPresentation,
         manualAdditionalInstructions,
+        manualTarget,
+        catalogEntrySnapshot: selected as unknown as Record<string, unknown>,
+        presentationSnapshot: selectedPresentation as unknown as Record<string, unknown> || null,
       };
 
       if (editingSnapshot && onUpdate) {
@@ -661,20 +872,28 @@ export function PrescriptionMedicationComposer({
       return;
     }
 
+
     if (!selectedDose || !calculation) return;
-    const unit = normalizeDoseUnit(selectedDose.dose_unit).canonical;
+    const unit = formatRecommendedDoseUnit(selectedDose);
     const presentation = selectedPresentation ? presentationLabel(selectedPresentation) : 'Apresentação não selecionada';
     const amount = calculation.practicalAmount != null && calculation.administrationUnit
-      ? `${formatDecimalPtBr(calculation.practicalAmount)} ${calculation.administrationUnit}${calculation.practicalAmount > 1 ? 's' : ''}`
+      ? formatPracticalAmountWithFraction(calculation.practicalAmount, calculation.administrationUnit)
       : `${formatDecimalPtBr(calculation.totalDose)} ${calculation.totalDoseUnit}`;
     const indicatedRange = selectedDose.dose_max != null
       ? `${formatDecimalPtBr(selectedDose.dose_value)} a ${formatDecimalPtBr(selectedDose.dose_max)} ${unit}`
       : `${formatDecimalPtBr(selectedDose.dose_value)} ${unit}`;
     const clinicalDose = `${CLINICAL_DOSE_LABEL} ${formatDecimalPtBr(parsedDoseValue)} ${unit} • Faixa indicada: ${indicatedRange}`;
     const target = lateralityTarget && laterality ? ` no ${lateralityTarget} ${laterality}` : applicationSite ? ` em ${applicationSite}` : '';
+    const followUpLines = followUpCalculations.map(({ phase, calculation: phaseCalculation }) => {
+      const phaseAmount = phaseCalculation.practicalAmount != null && phaseCalculation.administrationUnit
+        ? formatPracticalAmountWithFraction(phaseCalculation.practicalAmount, phaseCalculation.administrationUnit)
+        : `${formatDecimalPtBr(phaseCalculation.totalDose)} ${phaseCalculation.totalDoseUnit}`;
+      return `Em seguida, administrar ${phaseAmount}${target}, ${formatPrescriptionRoute(phase.route || resolvedManualRoute || selectedDose.route || '')}, ${formatPrescriptionFrequency(phase.frequency)}${durationClause(phase.duration)}.`;
+    });
     const lines = [
       medicationPrescriptionHeader(selected, selectedPresentation, presentation),
-      `Administrar ${amount}${target}, por via ${selectedDose.route || 'indicada'}${frequency ? `, ${frequency}` : ''}${durationClause(duration)}.`,
+      `Administrar ${amount}${target}, ${formatPrescriptionRoute(resolvedManualRoute || selectedDose.route || '')}${frequency ? `, ${formatPrescriptionFrequency(frequency)}` : ''}${durationClause(duration)}.`,
+      ...followUpLines,
       clinicalDose,
     ];
     const snapshot: PrescriptionMedicationSnapshot = {
@@ -692,7 +911,10 @@ export function PrescriptionMedicationComposer({
       rawBlockText: lines.join('\n'),
       frequency,
       duration,
-      route: selectedDose.route,
+      route: resolvedManualRoute || selectedDose.route,
+      catalogEntrySnapshot: selected as unknown as Record<string, unknown>,
+      presentationSnapshot: selectedPresentation as unknown as Record<string, unknown> || null,
+      doseSnapshot: selectedDose as unknown as Record<string, unknown>,
     };
 
     if (editingSnapshot && onUpdate) {
@@ -866,8 +1088,12 @@ export function PrescriptionMedicationComposer({
               {!loading && !commercialLoading && !results.length ? (
                 <div className="p-4 text-center">
                   <p className="text-sm font-semibold text-foreground">Nenhum medicamento encontrado</p>
-                  <p className="mt-1 text-xs leading-5 text-muted-foreground">Confira a escrita ou crie uma prescrição manual com o nome informado.</p>
-                  {query.trim().length >= 2 ? (
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                    {injectionOnlyQuery
+                      ? 'Este produto possui somente apresentação injetável e não pode ser incluído em uma receita para uso em casa.'
+                      : 'Confira a escrita ou crie uma prescrição manual com o nome informado.'}
+                  </p>
+                  {query.trim().length >= 2 && !injectionOnlyQuery ? (
                     <button
                       type="button"
                       onClick={() => setSelected({
@@ -887,6 +1113,10 @@ export function PrescriptionMedicationComposer({
             </div>
           ) : null}
         </div>
+      ) : loading ? (
+        <div role="status" className="flex items-center gap-2 p-4 text-sm text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" /> Carregando apresentações e doses do medicamento…
+        </div>
       ) : (
         <>
           <div className="flex items-start justify-between rounded-xl border border-primary/20 bg-primary/[0.05] p-4">
@@ -903,19 +1133,65 @@ export function PrescriptionMedicationComposer({
 
           {commercialSelection ? (
             <div className="space-y-2 rounded-xl border border-sky-500/20 bg-sky-500/[0.06] p-4">
-              <FieldLabel>Produto comercial — apresentação já selecionada</FieldLabel>
+              <FieldLabel>Produto comercial selecionado</FieldLabel>
               <p className="text-sm font-semibold">{selected.name}</p>
               {commercialPresentations.length ? <p className="text-xs text-muted-foreground">{commercialPresentations.join(' • ')}</p> : null}
-              <p className="text-xs text-muted-foreground">Não é necessário escolher outra apresentação.</p>
             </div>
-          ) : presentations.length ? (
+          ) : null}
+
+          {presentations.length ? (
             <div className="space-y-2">
               <FieldLabel>2. Apresentação comercial</FieldLabel>
-              <select value={presentationId} onChange={(event) => { setPresentationId(event.target.value); setRoundingConfirmed(false); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
+              <select aria-label="Apresentação e concentração" value={presentationId} onChange={(event) => { setPresentationId(event.target.value); setRoundingConfirmed(false); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
                 <option value="">Sem conversão por apresentação</option>
                 {presentations.map((item) => <option key={item.id} value={item.id}>{presentationLabel(item)}</option>)}
               </select>
               {selectedPresentation ? <div className="grid gap-1 rounded-lg bg-muted/40 p-3 text-xs text-muted-foreground sm:grid-cols-2"><span>Concentração: {selectedPresentation.concentration_text || 'não cadastrada'}</span><span>Forma: {selectedPresentation.pharmaceutical_form || 'não cadastrada'}</span><span>Fabricante: {String(selectedPresentation.metadata?.manufacturer || 'não cadastrado')}</span><span>Origem: {selectedPresentation.source === 'global' ? 'Catálogo global' : 'Clínica'}</span></div> : null}
+            </div>
+          ) : null}
+
+          {isTabletPresentation ? (
+            <div className="space-y-2 rounded-xl border border-border/80 bg-muted/20 p-3">
+              <div className="flex items-center justify-between">
+                <FieldLabel>Divisibilidade do comprimido</FieldLabel>
+                <span className="text-xs text-muted-foreground">Arredondamento fracionado</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+                <button
+                  type="button"
+                  onClick={() => { setTabletDivisibility('0.25'); setRoundingConfirmed(false); }}
+                  className={`h-9 rounded-lg border px-2 text-xs font-semibold transition-colors ${tabletDivisibility === '0.25' ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-background hover:bg-muted'}`}
+                >
+                  1/4 comp. (0,25)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setTabletDivisibility('0.5'); setRoundingConfirmed(false); }}
+                  className={`h-9 rounded-lg border px-2 text-xs font-semibold transition-colors ${tabletDivisibility === '0.5' ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-background hover:bg-muted'}`}
+                >
+                  1/2 comp. (0,5)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setTabletDivisibility('1'); setRoundingConfirmed(false); }}
+                  className={`h-9 rounded-lg border px-2 text-xs font-semibold transition-colors ${tabletDivisibility === '1' ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-background hover:bg-muted'}`}
+                >
+                  Inteiro (1,0)
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { setTabletDivisibility('auto'); setRoundingConfirmed(false); }}
+                  className={`h-9 rounded-lg border px-2 text-xs font-semibold transition-colors ${tabletDivisibility === 'auto' ? 'border-primary bg-primary/10 text-primary' : 'border-border bg-background hover:bg-muted'}`}
+                >
+                  Automático (1/4)
+                </button>
+              </div>
+            </div>
+          ) : null}
+
+          {!presentations.length && selected ? (
+            <div className="rounded-xl border border-amber-500/25 bg-amber-500/[0.07] p-3 text-xs text-amber-800 dark:text-amber-200">
+              Nenhuma apresentação estruturada foi encontrada. Use a prescrição manual assistida e informe a concentração.
             </div>
           ) : null}
 
@@ -958,8 +1234,8 @@ export function PrescriptionMedicationComposer({
           {compatibleDoses.length ? (
             <div className="space-y-2">
               <FieldLabel>{commercialSelection ? 'Modo de prescrição' : '3. Dose ou modo de uso'}</FieldLabel>
-              <select value={doseId} onChange={(event) => { setDoseId(event.target.value); setManualDoseChosen(event.target.value === 'manual'); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
-                {compatibleDoses.map((dose) => <option key={dose.id} value={dose.id}>{dose.indication || 'Indicação não informada'} • {dose.dose_value}{dose.dose_max != null ? `–${dose.dose_max}` : ''} {normalizeDoseUnit(dose.dose_unit).canonical}</option>)}
+              <select aria-label="Dose ou modo de uso" value={doseId} onChange={(event) => { setDoseId(event.target.value); setManualDoseChosen(event.target.value === 'manual'); }} className="min-h-11 w-full rounded-xl border border-border bg-background px-3 py-2 text-sm">
+                {compatibleDoses.map((dose) => <option key={dose.id} value={dose.id}>{dose.indication || 'Indicação não informada'} • {dose.dose_value}{dose.dose_max != null ? `–${dose.dose_max}` : ''} {formatRecommendedDoseUnit(dose)}</option>)}
                 <option value="manual">Definir dose ou modo de uso manualmente</option>
               </select>
               {selectedDose ? <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground"><span>{selectedDose.route} • {selectedDose.frequency_text || selectedDose.frequency || 'frequência não cadastrada'}</span>{sourceUrl ? <a href={sourceUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-primary">Abrir fonte <ExternalLink className="h-3 w-3" /></a> : null}</div> : null}
@@ -974,7 +1250,34 @@ export function PrescriptionMedicationComposer({
           {selectedDose ? (
             <div className="grid gap-4 sm:grid-cols-2">
               {basis === 'weight_based' ? <label className="space-y-2"><FieldLabel>Peso para cálculo</FieldLabel><div className="flex h-11 items-center rounded-xl border border-border bg-muted/35 px-3 text-sm">{parsedWeight ? `${formatDecimalPtBr(parsedWeight)} kg` : 'Informe o peso no início da receita'}</div></label> : null}
-              <label className="space-y-2"><FieldLabel>Dose para o cálculo ({normalizeDoseUnit(selectedDose.dose_unit).canonical})</FieldLabel><input type="number" min="0" step="0.001" value={doseValue} onChange={(event) => { setDoseValue(event.target.value); setRoundingConfirmed(false); }} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" /></label>
+              <label className="space-y-2"><FieldLabel>Dose para o cálculo ({formatRecommendedDoseUnit(selectedDose)})</FieldLabel><input type="number" min="0" step="0.001" value={doseValue} onChange={(event) => { setDoseValue(event.target.value); setRoundingConfirmed(false); }} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" /></label>
+              <div className="space-y-2 sm:col-span-2">
+                <FieldLabel>Via de administração</FieldLabel>
+                <select
+                  aria-label="Via de administração"
+                  value={selectedRouteOptionValue}
+                  onChange={(event) => {
+                    const val = event.target.value;
+                    setManualRoute(val);
+                    if (val !== 'outra') setManualRouteCustom('');
+                  }}
+                  className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm"
+                >
+                  <option value="">Selecionar via</option>
+                  {OUTPATIENT_PRESCRIPTION_ROUTES.map((opt) => (
+                    <option key={opt.value} value={opt.value}>{opt.label}</option>
+                  ))}
+                </select>
+                {selectedRouteOptionValue === 'outra' ? (
+                  <input
+                    value={manualRouteCustom}
+                    onChange={(event) => setManualRouteCustom(event.target.value)}
+                    className="mt-2 h-11 w-full rounded-xl border border-border bg-background px-3 text-sm"
+                    placeholder="Descreva a via de administração (ex.: inalatória)"
+                    aria-label="Outra via de administração"
+                  />
+                ) : null}
+              </div>
               {lateralityTarget ? <label className="space-y-2 sm:col-span-2"><FieldLabel>Lateralidade — {lateralityTarget}</FieldLabel><select value={laterality} onChange={(event) => setLaterality(event.target.value as Laterality)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm"><option value="">Selecionar</option><option value="direito">Direito</option><option value="esquerdo">Esquerdo</option><option value="ambos">Ambos</option><option value="afetado">Afetado</option></select></label> : basis === 'per_application_site' ? <label className="space-y-2 sm:col-span-2"><FieldLabel>Local de aplicação</FieldLabel><input value={applicationSite} onChange={(event) => setApplicationSite(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" placeholder="Ex.: camada fina na área afetada" /></label> : null}
             </div>
           ) : null}
@@ -998,26 +1301,40 @@ export function PrescriptionMedicationComposer({
                 <span className="block text-[11px] text-muted-foreground">Não informe a frequência aqui; ela será escolhida separadamente abaixo.</span>
               </label>
               <div className="grid gap-4 sm:grid-cols-2">
-                <label className="space-y-2">
+                <div className="space-y-2">
                   <FieldLabel>Via de administração</FieldLabel>
-                  <select value={manualRoute} onChange={(event) => setManualRoute(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm">
+                  <select
+                    aria-label="Via de administração"
+                    value={selectedRouteOptionValue}
+                    onChange={(event) => {
+                      const val = event.target.value;
+                      setManualRoute(val);
+                      if (val !== 'outra') setManualRouteCustom('');
+                    }}
+                    className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm"
+                  >
                     <option value="">Selecionar via</option>
-                    <option value="oral">Oral</option>
-                    <option value="tópica">Tópica / pele</option>
-                    <option value="otológica">Otológica</option>
-                    <option value="oftálmica">Oftálmica / olho</option>
-                    <option value="nasal">Nasal</option>
-                    <option value="subcutânea">Subcutânea</option>
-                    <option value="intramuscular">Intramuscular</option>
-                    <option value="intravenosa">Intravenosa</option>
-                    <option value="outra">Outra via</option>
+                    {OUTPATIENT_PRESCRIPTION_ROUTES.map((opt) => (
+                      <option key={opt.value} value={opt.value}>{opt.label}</option>
+                    ))}
                   </select>
-                </label>
+                </div>
                 <label className="space-y-2">
                   <FieldLabel>Local ou lateralidade (opcional)</FieldLabel>
                   <input value={manualTarget} onChange={(event) => setManualTarget(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" placeholder="Ex.: ambos os ouvidos, olho direito, área afetada" />
                 </label>
-                {manualRoute === 'outra' ? <label className="space-y-2 sm:col-span-2"><FieldLabel>Descreva a via</FieldLabel><input value={manualRouteCustom} onChange={(event) => setManualRouteCustom(event.target.value)} className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm" placeholder="Ex.: inalatória" /></label> : null}
+                {selectedRouteOptionValue === 'outra' ? (
+                  <label className="space-y-2 sm:col-span-2">
+                    <FieldLabel>Descreva a via</FieldLabel>
+                    <input
+                      value={manualRouteCustom}
+                      onChange={(event) => setManualRouteCustom(event.target.value)}
+                      className="h-11 w-full rounded-xl border border-border bg-background px-3 text-sm"
+                      placeholder="Ex.: inalatória"
+                      aria-label="Outra via de administração"
+                    />
+                  </label>
+                ) : null}
               </div>
               <label className="block space-y-2">
                 <FieldLabel>Orientação adicional (opcional)</FieldLabel>
@@ -1067,12 +1384,81 @@ export function PrescriptionMedicationComposer({
 
           {calculation ? (
             <section className="rounded-xl border border-border bg-muted/30 p-4">
-              <div className="grid gap-3 sm:grid-cols-3"><div><FieldLabel>Dose total calculada</FieldLabel><p className="mt-1 text-lg font-bold">{formatDecimalPtBr(calculation.totalDose)} {calculation.totalDoseUnit}</p></div>{calculation.exactAmount != null ? <div><FieldLabel>Quantidade exata</FieldLabel><p className="mt-1 text-lg font-bold">{formatDecimalPtBr(calculation.exactAmount)} {calculation.administrationUnit}</p></div> : null}{calculation.practicalAmount != null ? <div><FieldLabel>Quantidade prática sugerida</FieldLabel><p className="mt-1 text-lg font-bold text-primary">{formatDecimalPtBr(calculation.practicalAmount)} {calculation.administrationUnit}</p></div> : null}</div>
-              {calculation.actualDosePerBasis != null && basis === 'weight_based' ? <p className="mt-3 text-xs text-muted-foreground">Dose real após arredondamento: <strong>{formatDecimalPtBr(calculation.actualDosePerBasis)} {calculation.totalDoseUnit}/kg</strong> • diferença {formatDecimalPtBr(calculation.percentDifference || 0)}%</p> : null}
-              {calculation.blockedReason ? <p className="mt-3 flex gap-2 rounded-lg border border-rose-500/25 bg-rose-500/10 p-3 text-xs text-rose-700"><AlertTriangle className="h-4 w-4 shrink-0" />{calculation.blockedReason}</p> : null}
-              {calculation.warning ? <p className="mt-3 flex gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 p-3 text-xs text-amber-800"><AlertTriangle className="h-4 w-4 shrink-0" />{calculation.warning}</p> : null}
-              {calculation.requiresConfirmation ? <label className="mt-3 flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border border-border bg-background px-3 text-xs"><input type="checkbox" checked={roundingConfirmed} onChange={(event) => setRoundingConfirmed(event.target.checked)} /><span>Confirmo a quantidade prática arredondada e revisei a dose real.</span></label> : null}
+              {!calculation.blockedReason || isDoseDifferenceWarning ? (
+                <div className="grid gap-3 sm:grid-cols-3">
+                  <div>
+                    <FieldLabel>Dose total calculada</FieldLabel>
+                    <p className="mt-1 text-lg font-bold">{formatDecimalPtBr(calculation.totalDose)} {calculation.totalDoseUnit}</p>
+                  </div>
+                  {calculation.exactAmount != null && calculation.administrationUnit ? (
+                    <div>
+                      <FieldLabel>Quantidade exata</FieldLabel>
+                      <p className="mt-1 text-lg font-bold">{formatAdministrationAmount(calculation.exactAmount, calculation.administrationUnit)}</p>
+                    </div>
+                  ) : null}
+                  {calculation.practicalAmount != null && calculation.administrationUnit ? (
+                    <div>
+                      <FieldLabel>Quantidade prática sugerida</FieldLabel>
+                      <p className="mt-1 text-lg font-bold text-primary">
+                        {formatPracticalAmountWithFraction(calculation.practicalAmount, calculation.administrationUnit)}
+                      </p>
+                    </div>
+                  ) : null}
+                </div>
+              ) : null}
+              {calculation.actualDosePerBasis != null && (!calculation.blockedReason || isDoseDifferenceWarning) && basis === 'weight_based' ? (
+                <p className="mt-3 text-xs text-muted-foreground">
+                  Dose real após arredondamento: <strong>{formatDecimalPtBr(calculation.actualDosePerBasis)} {calculation.totalDoseUnit}/kg</strong> • diferença {formatDecimalPtBr(calculation.percentDifference || 0)}%
+                </p>
+              ) : null}
+              {calculation.blockedReason && !isDoseDifferenceWarning ? (
+                <p className="mt-3 flex gap-2 rounded-lg border border-rose-500/25 bg-rose-500/10 p-3 text-xs text-rose-700">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  {calculation.blockedReason}
+                </p>
+              ) : null}
+              {isDoseDifferenceWarning && calculation.blockedReason ? (
+                <div className="mt-3 flex flex-col gap-1.5 rounded-lg border border-amber-500/30 bg-amber-500/10 p-3 text-xs text-amber-900 dark:text-amber-100">
+                  <div className="flex items-center gap-2 font-semibold">
+                    <AlertTriangle className="h-4 w-4 shrink-0 text-amber-600" />
+                    Aviso de variação de dose por arredondamento
+                  </div>
+                  <p>{calculation.blockedReason}</p>
+                  <p className="text-[11px] text-muted-foreground">
+                    Para confirmar o uso desta apresentação comercial, marque a caixa de ciência abaixo.
+                  </p>
+                </div>
+              ) : null}
+              {calculation.warning ? (
+                <p className="mt-3 flex gap-2 rounded-lg border border-amber-500/25 bg-amber-500/10 p-3 text-xs text-amber-800">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  {calculation.warning}
+                </p>
+              ) : null}
+              {followUpCalculations.map(({ phase, calculation: phaseCalculation }, index) => phaseCalculation.blockedReason ? (
+                <p key={`follow-up-blocked-${index}`} className="mt-3 flex gap-2 rounded-lg border border-rose-500/25 bg-rose-500/10 p-3 text-xs text-rose-700">
+                  <AlertTriangle className="h-4 w-4 shrink-0" />
+                  Etapa seguinte: {phaseCalculation.blockedReason}
+                </p>
+              ) : (
+                <p key={`follow-up-${index}`} className="mt-3 rounded-lg border border-sky-500/20 bg-sky-500/10 p-3 text-xs text-sky-900 dark:text-sky-100">
+                  <strong>Etapa seguinte calculada:</strong> {phaseCalculation.practicalAmount != null && phaseCalculation.administrationUnit ? formatPracticalAmountWithFraction(phaseCalculation.practicalAmount, phaseCalculation.administrationUnit) : `${formatDecimalPtBr(phaseCalculation.totalDose)} ${phaseCalculation.totalDoseUnit}`}, {formatPrescriptionFrequency(phase.frequency)}{durationClause(phase.duration)}.
+                </p>
+              ))}
+              {requiresRoundingConfirmation ? (
+                <label className="mt-3 flex min-h-11 cursor-pointer items-center gap-2 rounded-lg border border-amber-500/40 bg-amber-500/10 px-3 text-xs text-foreground">
+                  <input type="checkbox" checked={roundingConfirmed} onChange={(event) => setRoundingConfirmed(event.target.checked)} />
+                  <span className="font-medium">Confirmo as quantidades práticas arredondadas e revisei as doses reais.</span>
+                </label>
+              ) : null}
             </section>
+          ) : null}
+
+          {hasInjectableHomeConflict ? (
+            <p className="flex gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-800 dark:text-rose-100" role="alert">
+              <AlertTriangle className="h-4 w-4 shrink-0" />
+              O Receituário é destinado ao uso em casa e não aceita apresentações ou vias injetáveis.
+            </p>
           ) : null}
 
           <button type="button" disabled={!canInsert} onClick={insert} className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-45"><CheckCircle2 className="h-4 w-4" />{editingSnapshot ? 'Salvar alterações no medicamento' : 'Inserir medicamento na receita'}</button>

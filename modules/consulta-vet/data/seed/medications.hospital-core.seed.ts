@@ -52,12 +52,22 @@ export const hospitalCoreMedicationsSeed: MedicationRecord[] = [
     presentations: [
       {
         id: 'pres-ondansetron-inj',
-        label: 'Solução injetável 2 mg/mL (humano) ou Emedron 1% (veterinário)',
+        label: 'Ondansetrona humana — solução injetável 2 mg/mL',
         form: 'Solução injetável',
         concentrationValue: 2,
         concentrationUnit: 'mg/mL',
         channel: 'human_pharmacy',
-        packInfo: 'Ampolas 2 mL e 4 mL; Emedron 1% veterinário',
+        packInfo: 'Ampolas 2 mL e 4 mL',
+      },
+      {
+        id: 'pres-ondansetron-emedron-inj-10',
+        label: 'Emedron 1% — solução injetável 10 mg/mL (Agener)',
+        form: 'Solução injetável',
+        concentrationValue: 10,
+        concentrationUnit: 'mg/mL',
+        channel: 'veterinary',
+        route: 'IV',
+        packInfo: 'Frasco-ampola 10 mL. Fonte: bula Agener 4020080-BU-EMEDRON-INJ.pdf; 10 mg de ondansetrona base por mL.',
         commercialProductSlug: 'emedron',
       },
       {
@@ -373,6 +383,7 @@ export const hospitalCoreMedicationsSeed: MedicationRecord[] = [
         form: 'Solução oral (gotas)',
         concentrationValue: 500,
         concentrationUnit: 'mg/mL',
+        dropsPerMl: 20,
         channel: 'human_pharmacy',
       },
     ],

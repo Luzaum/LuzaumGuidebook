@@ -1,0 +1,58 @@
+{
+  "tool": "Built-in image_gen",
+  "date": "2026-09-08",
+  "assets": [
+    {
+      "slug": "exame-ruptura-ligamento-cruzado-cranial",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/exame-ruptura-ligamento-cruzado-cranial.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: An isolated plastic teaching model of a canine stifle joint on a small stand, with visible synthetic cruciate ligaments and a metal orthopedic goniometer beside it. Clearly an artificial classroom model, no actual tissue. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "toracocentese-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/toracocentese-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Thoracocentesis equipment: a large empty syringe, three-way stopcock, clear extension tubing and an over-the-needle catheter neatly arranged on a sterile tray. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "abdominocentese-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/abdominocentese-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Abdominocentesis equipment: a sterile collection needle with protective cover beside an empty syringe and capped clear sample tubes, with an ultrasound probe in the background. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "bandagem-robert-jones",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/bandagem-robert-jones.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Robert Jones bandage materials: prominent thick white orthopedic cotton padding rolls, gauze rolls, a beige cohesive elastic bandage and blunt bandage scissors neatly arranged. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "coleta-sangue-arterial-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/coleta-sangue-arterial-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Arterial blood gas sampling equipment: a small empty heparinized blood gas syringe with a protective needle cap, sterile gauze and a compact blood gas analyzer softly out of focus. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "puncao-biopsia-medula-ossea-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/puncao-biopsia-medula-ossea-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Bone marrow aspiration and biopsy equipment: a recognizable sturdy T-handled bone marrow biopsy needle with separate obturator, aspiration syringe and empty microscope slides on a sterile tray. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "sondagem-cateterizacao-uretral-femeas",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/sondagem-cateterizacao-uretral-femeas.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Female veterinary urinary catheterization equipment: flexible urinary catheter, small veterinary speculum, penlight, sealed lubricant sachet without writing and sterile gauze, neatly arranged. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "coleta-liquor-lcr-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/coleta-liquor-lcr-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Cerebrospinal fluid collection equipment: slim spinal needle with its stylet beside it, three small empty sterile sample tubes standing in a rack, sterile gauze on a tray. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    },
+    {
+      "slug": "desobstrucao-uretral-caes-gatos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/desobstrucao-uretral-caes-gatos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Veterinary urethral unblocking equipment: a short feline urinary catheter, clear flushing syringe, three-way stopcock, saline irrigation tubing and collection dish, all unused and neatly arranged. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure.",
+      "edit": "Remove inflated balloon; use a uniform slim feline urinary catheter with rounded tip and lateral eye."
+    },
+    {
+      "slug": "sondagem-uretral-caes-machos",
+      "file": "public/consulta-vet/clinical-guides/procedure-covers/sondagem-uretral-caes-machos.webp",
+      "prompt": "Use case: product-mockup. Create a landscape 3:2 editorial photographic cover for a veterinary clinical quick guide. Subject: Male canine urinary catheterization equipment: a long flexible urinary catheter loosely curved, a closed urine collection bag with clear connecting tubing, sealed plain lubricant sachet and sterile gauze. Soft studio light, pale neutral background and muted teal sterile drape, realistic materials, clean premium medical catalog photography, centered composition with all equipment within frame. No people, hands, animals, patients, real body parts, tissue, blood, text, logos or watermarks. This is a conceptual equipment still life, not a demonstration of the procedure."
+    }
+  ]
+}
+

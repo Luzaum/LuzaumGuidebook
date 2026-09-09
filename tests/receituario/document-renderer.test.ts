@@ -26,6 +26,13 @@ test('preview curto ocupa uma página e PDF usa a mesma quantidade', () => {
   assert.equal(pdf.getNumberOfPages(), pages.length);
 });
 
+test('título de sinais para retorno acompanha o texto mesmo com linha em branco', () => {
+  const value = document('Texto inicial.\nOutra linha.\nMais uma linha.\nSINAIS PARA RETORNO\n\nRetornar se houver piora.');
+  const pages = paginateDocument(value, { bodyLinesPerPage: 5 });
+  const page = pages.find(item => item.lines.some(line => line.text === 'SINAIS PARA RETORNO'))!;
+  assert.ok(page.lines.some(line => line.text === 'Retornar se houver piora.'));
+});
+
 test('texto longo gera duas ou mais folhas A4 e PDF mantém a contagem', () => {
   const body = Array.from({ length: 70 }, (_, index) => `${index + 1}. Linha longa de orientação veterinária com palavras suficientes para testar a quebra automática e evitar vazamento.`).join('\n');
   const value = document(body);

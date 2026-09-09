@@ -1,0 +1,123 @@
+- generic:
+  - generic [aria-hidden]:
+    - generic:
+      - generic:
+        - banner:
+          - generic:
+            - generic:
+              - button
+              - link:
+                - /url: /
+                - generic: Vetius
+            - generic:
+              - button
+              - button [expanded]:
+                - generic: Luis
+        - main:
+          - generic:
+            - main:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - button: Voltar ao início
+                    - generic:
+                      - generic: Todas as Ferramentas
+                      - heading [level=1]: Ecossistema Clínico Completo
+                      - paragraph: Explore nossa suíte de ferramentas especializadas. De cálculos de emergência a guias terapêuticos complexos, tudo em um só lugar.
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: Antibioticoterapia Vet
+                                - paragraph: Escolha antimicrobianos por síndrome, espectro, dose, cultura e uso responsável.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: ConsultaVET
+                                - paragraph: Consulte doenças, fármacos, produtos comerciais, consensos e modelos de prescrição.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: CRI VET
+                                - paragraph: Monte infusões contínuas com concentração, velocidade e cálculos conferíveis.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: Escalas de Dor
+                                - paragraph: Aplique escalas de dor e estruture a analgesia conforme espécie e contexto clínico.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: Fluidoterapia Vet
+                                - paragraph: Calcule reposição, manutenção e perdas para estruturar a fluidoterapia do paciente.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: HemoGasoVet
+                                - paragraph: Interprete hemogasometria, equilíbrio ácido-base, eletrólitos e oxigenação com clareza.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: Neurologia
+                                - paragraph: Conduza o exame neurológico, localize a lesão e aplique a escala MGCS.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: NutriçãoVET
+                                - paragraph: Avalie necessidades energéticas, organize dietas e acompanhe pacientes nutricionais.
+                              - generic:
+                                - button: Abrir
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: DISPONÍVEL
+                              - generic:
+                                - heading [level=3]: Transfusão Sanguínea
+                                - paragraph: Planeje transfusões com volume, compatibilidade, produtos sanguíneos e monitorização.
+                              - generic:
+                                - button: Abrir
+  - menu "Abrir menu do usuário" [active] [ref=f1e219]:
+    - generic [ref=f1e221]:
+      - img "Avatar de Luis" [ref=f1e222]
+      - generic [ref=f1e223]:
+        - paragraph [ref=f1e224]: Luis
+        - paragraph [ref=f1e225]: luis@vetius.link
+    - separator [ref=f1e226]
+    - menuitem "Área logada" [ref=f1e227]
+    - menuitem "Alterar perfil" [ref=f1e231]
+    - menuitem "Configurações" [ref=f1e235]
+    - menuitem "Minha clínica" [ref=f1e239]
+    - separator [ref=f1e248]
+    - menuitem "Sair" [ref=f1e249]

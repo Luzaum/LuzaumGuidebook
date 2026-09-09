@@ -4,6 +4,7 @@ import { ChevronRight } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { FavoriteButton } from './FavoriteButton';
 import { FavoriteEntityType } from '../../types/favorites';
+import { normalizeCategorySlug } from '../../utils/diseaseCategories';
 
 interface EntityCardProps {
   to: string;
@@ -30,6 +31,34 @@ export interface EntityCategoryTheme {
 }
 
 export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
+  'emergencia-intensivismo': {
+    borderHover: 'hover:border-red-500/50 dark:hover:border-red-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(239,68,68,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.25)]',
+    badge: 'bg-red-100/80 text-red-700 dark:bg-red-950/45 dark:text-red-300 border-red-200/50 dark:border-red-800/40',
+    line: 'border-red-500/20 dark:border-red-400/15',
+    glowBg: 'rgba(239,68,68,0.015)',
+  },
+  'emergencia-uti': {
+    borderHover: 'hover:border-red-500/50 dark:hover:border-red-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(239,68,68,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.25)]',
+    badge: 'bg-red-100/80 text-red-700 dark:bg-red-950/45 dark:text-red-300 border-red-200/50 dark:border-red-800/40',
+    line: 'border-red-500/20 dark:border-red-400/15',
+    glowBg: 'rgba(239,68,68,0.015)',
+  },
+  hematologia: {
+    borderHover: 'hover:border-rose-600/50 dark:hover:border-rose-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(225,29,72,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(225,29,72,0.25)]',
+    badge: 'bg-rose-100/80 text-rose-700 dark:bg-rose-950/45 dark:text-rose-300 border-rose-200/50 dark:border-rose-800/40',
+    line: 'border-rose-500/20 dark:border-rose-400/15',
+    glowBg: 'rgba(225,29,72,0.015)',
+  },
+  'clinica-medica': {
+    borderHover: 'hover:border-slate-500/50 dark:hover:border-slate-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(100,116,139,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(100,116,139,0.25)]',
+    badge: 'bg-slate-100/80 text-slate-700 dark:bg-slate-950/45 dark:text-slate-300 border-slate-200/50 dark:border-slate-800/40',
+    line: 'border-slate-500/20 dark:border-slate-400/15',
+    glowBg: 'rgba(100,116,139,0.015)',
+  },
   endocrinologia: {
     borderHover: 'hover:border-purple-500/50 dark:hover:border-purple-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(168,85,247,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(168,85,247,0.25)]',
@@ -44,39 +73,6 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-sky-500/20 dark:border-sky-400/15',
     glowBg: 'rgba(14,165,233,0.015)',
   },
-  'bombas-asma-terapia-inalatoria': {
-    borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(6,182,212,0.25)]',
-    badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
-    line: 'border-cyan-500/20 dark:border-cyan-400/15',
-    glowBg: 'rgba(6,182,212,0.015)',
-  },
-  'terapia-inalatoria': {
-    borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(6,182,212,0.25)]',
-    badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
-    line: 'border-cyan-500/20 dark:border-cyan-400/15',
-    glowBg: 'rgba(6,182,212,0.015)',
-  },
-  cardiologia: {
-    borderHover: 'hover:border-rose-500/50 dark:hover:border-rose-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(244,63,94,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(244,63,94,0.25)]',
-    badge: 'bg-rose-100/80 text-rose-700 dark:bg-rose-950/45 dark:text-rose-300 border-rose-200/50 dark:border-rose-800/40',
-    line: 'border-rose-500/20 dark:border-rose-400/15',
-    glowBg: 'rgba(244,63,94,0.015)',
-  },
-  infecciosas: {
-    borderHover: 'hover:border-emerald-500/50 dark:hover:border-emerald-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]',
-    badge: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/45 dark:text-emerald-300 border-emerald-200/50 dark:border-emerald-800/40',
-    line: 'border-emerald-500/20 dark:border-emerald-400/15',
-    glowBg: 'rgba(16,185,129,0.015)',
-  },
-  infectologia: {
-    borderHover: 'hover:border-emerald-500/50 dark:hover:border-emerald-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]',
-    badge: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/45 dark:text-emerald-300 border-emerald-200/50 dark:border-emerald-800/40',
-    line: 'border-emerald-500/20 dark:border-emerald-400/15',
     glowBg: 'rgba(16,185,129,0.015)',
   },
   'nefrologia-urologia': {

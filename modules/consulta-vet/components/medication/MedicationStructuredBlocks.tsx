@@ -17,6 +17,20 @@ function isCallout(
   return block.kind === 'clinicalCallout';
 }
 
+function renderCalloutText(text: string) {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, idx) => {
+    if (part.startsWith('**') && part.endsWith('**') && part.length >= 4) {
+      return (
+        <strong key={idx} className="font-semibold text-foreground">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    return part.replace(/\*\*/g, '');
+  });
+}
+
 function CalloutCard({ callout }: { callout: MedicationClinicalCallout }) {
   const variant = callout.variant;
   const Icon = variant === 'caution' ? AlertTriangle : variant === 'brazil' ? Flag : Info;
@@ -40,9 +54,9 @@ function CalloutCard({ callout }: { callout: MedicationClinicalCallout }) {
     >
       <h4 className="flex items-start gap-2 text-sm font-bold leading-snug text-foreground">
         <Icon className={cn('mt-0.5 h-4 w-4 shrink-0', iconStyles[variant])} aria-hidden />
-        {callout.title}
+        {renderCalloutText(callout.title)}
       </h4>
-      <p className="mt-3 whitespace-pre-line text-[15px] leading-7 text-foreground/88">{callout.body}</p>
+      <p className="mt-3 whitespace-pre-line text-[15px] leading-7 text-foreground/88">{renderCalloutText(callout.body)}</p>
     </aside>
   );
 }

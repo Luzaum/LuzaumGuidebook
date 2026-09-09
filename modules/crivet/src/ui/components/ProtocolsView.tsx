@@ -638,7 +638,7 @@ export const ProtocolsView: React.FC<ProtocolsViewProps> = ({ patient, onPatient
         open={Boolean(referenceDrug)}
         onClose={() => setReferenceDrug(null)}
         title={referenceDrug ? `Banco de Fármacos • ${referenceDrug.namePt}` : 'Banco de Fármacos'}
-        subtitle="Referência rápida do fármaco selecionado"
+        subtitle="Informações adicionais do fármaco selecionado"
         icon={<BookOpen className="h-5 w-5" />}
       >
         {referenceDrug && <DrugReferenceCard drug={referenceDrug} categories={drugCategories as any} condensed />}
