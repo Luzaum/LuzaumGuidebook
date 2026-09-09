@@ -7,10 +7,9 @@ import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getCategoryRepository } from '../services/categoryRepository';
 import { DiseaseRecord } from '../types/disease';
 import { Category } from '../types/category';
-import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
 import { diseaseMatchesCategoryFilter, getDiseaseCategorySlugs, normalizeCategorySlug } from '../utils/diseaseCategories';
-import { formatDiseaseCategoryLabels, getSpecialtyVisual } from '../utils/specialtyVisuals';
+import { getSpecialtyVisual } from '../utils/specialtyVisuals';
 
 const UI_TEXT = {
   title: 'Doenças & Especialidades',
@@ -199,9 +198,8 @@ export function DiseasesPage() {
 
             {!isLoading && !error && filteredDiseases.map((disease) => {
               const primarySlug = normalizeCategorySlug(disease.category);
-              const categoryLabel = formatDiseaseCategoryLabels(disease);
               const visual = getSpecialtyVisual(primarySlug);
-              const PrimaryIcon = visual.Icon;
+              const categoryLabel = visual.label;
 
               return (
                 <div
@@ -211,13 +209,13 @@ export function DiseasesPage() {
                   <EntityCard
                     to={`/consulta-vet/doencas/${disease.slug}`}
                     title={disease.title}
-                    subtitle={`${categoryLabel} \u2022 ${formatSpeciesList(disease.species)}`}
+                    subtitle={categoryLabel}
                     description={disease.quickSummary}
                     entityType="disease"
                     entityId={disease.id}
                     category={primarySlug}
-                    icon={<PrimaryIcon className="h-4 w-4" />}
                     compact
+                    minimal
                   />
                 </div>
               );

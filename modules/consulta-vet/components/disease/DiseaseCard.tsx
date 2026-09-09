@@ -1,5 +1,4 @@
 import React from 'react';
-import { Stethoscope } from 'lucide-react';
 import { EntityCard } from '../shared/EntityCard';
 import { DiseaseRecord } from '../../types/disease';
 
@@ -14,8 +13,9 @@ export function DiseaseCard({ disease }: DiseaseCardProps) {
       title={disease.title}
       subtitle={disease.category}
       description={disease.quickSummary}
-      tags={disease.tags}
-      icon={<Stethoscope className="w-5 h-5" />}
+      category={disease.category}
+      compact
+      minimal
       entityType="disease"
       entityId={disease.id}
     />

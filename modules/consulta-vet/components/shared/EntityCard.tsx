@@ -19,6 +19,7 @@ interface EntityCardProps {
   className?: string;
   category?: string;
   compact?: boolean;
+  minimal?: boolean;
   key?: React.Key;
 }
 
@@ -73,6 +74,11 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-sky-500/20 dark:border-sky-400/15',
     glowBg: 'rgba(14,165,233,0.015)',
   },
+  infectologia: {
+    borderHover: 'hover:border-emerald-500/50 dark:hover:border-emerald-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]',
+    badge: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/45 dark:text-emerald-300 border-emerald-200/50 dark:border-emerald-800/40',
+    line: 'border-emerald-500/20 dark:border-emerald-400/15',
     glowBg: 'rgba(16,185,129,0.015)',
   },
   'nefrologia-urologia': {
@@ -199,6 +205,7 @@ export const EntityCard = React.memo(function EntityCard({
   className,
   category,
   compact = false,
+  minimal = false,
 }: EntityCardProps) {
   const theme = getEntityCategoryTheme(category);
 
@@ -209,7 +216,7 @@ export const EntityCard = React.memo(function EntityCard({
     <article
       className={cn(
         'group relative flex h-full flex-col border border-border/80 bg-card transition-all duration-300',
-        compact ? 'rounded-xl p-4' : 'rounded-2xl p-5',
+        minimal ? 'rounded-xl p-3.5' : compact ? 'rounded-xl p-4' : 'rounded-2xl p-5',
         theme.borderHover,
         theme.glow,
         className
@@ -218,10 +225,10 @@ export const EntityCard = React.memo(function EntityCard({
         background: `linear-gradient(135deg, var(--card) 0%, ${theme.glowBg || 'var(--card)'} 100%)`,
       }}
     >
-      <div className={cn('flex items-start justify-between gap-3', compact ? 'mb-3' : 'mb-4')}>
+      <div className={cn('flex items-start justify-between gap-3', minimal ? 'mb-2' : compact ? 'mb-3' : 'mb-4')}>
         <div className="min-w-0 flex-1">
           <div className={cn('flex items-center gap-2', compact ? 'mb-1.5' : 'mb-2')}>
-            {icon && (
+            {!minimal && icon && (
               <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-105">
                 {icon}
               </span>
@@ -265,7 +272,7 @@ export const EntityCard = React.memo(function EntityCard({
             </span>
           ) : null}
         </div>
-        <div className="relative z-10 shrink-0">
+        {!minimal && <div className="relative z-10 shrink-0">
           <FavoriteButton
             entityType={entityType}
             entityId={entityId}
@@ -274,21 +281,25 @@ export const EntityCard = React.memo(function EntityCard({
               compact ? 'h-8 w-8 p-1.5' : 'h-9 w-9 p-2'
             )}
           />
-        </div>
+        </div>}
       </div>
 
       {description && (
         <p
           className={cn(
             'leading-relaxed text-muted-foreground/90',
-            compact ? 'mb-3 line-clamp-2 text-xs' : 'mb-4 line-clamp-3 text-sm'
+            minimal
+              ? 'line-clamp-2 text-xs leading-snug'
+              : compact
+                ? 'mb-3 line-clamp-2 text-xs'
+                : 'mb-4 line-clamp-3 text-sm'
           )}
         >
           {description}
         </p>
       )}
 
-      <div className={cn('mt-auto flex items-center justify-between border-t', compact ? 'pt-3' : 'pt-3.5', theme.line)}>
+      {!minimal && <div className={cn('mt-auto flex items-center justify-between border-t', compact ? 'pt-3' : 'pt-3.5', theme.line)}>
         <span className={cn('font-medium text-muted-foreground/75', compact ? 'text-[10px]' : 'text-[11px]')}>
           Clique para consultar
         </span>
@@ -301,7 +312,7 @@ export const EntityCard = React.memo(function EntityCard({
           Abrir
           <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
         </span>
-      </div>
+      </div>}
     </article>
   );
 });
