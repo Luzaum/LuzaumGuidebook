@@ -24,6 +24,7 @@ import {
 import { dipyroneCommercialProductsSeed } from './dipyroneCommercialProducts.seed';
 import { gardenalKeppraCommercialProductsSeed } from './gardenalKeppraCommercialProducts.seed';
 import { bexacatCommercialProductSeed } from './bexacatCommercialProduct.seed';
+import { requestedClinicalCommercialProductsSeed } from './requestedClinicalCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -73,6 +74,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...praziquantelCommercialProductsSeed,
   ...dipyroneCommercialProductsSeed,
   ...bexacatCommercialProductSeed,
+  ...requestedClinicalCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',

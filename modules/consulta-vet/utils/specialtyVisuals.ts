@@ -45,8 +45,16 @@ export interface SpecialtyVisual {
 }
 
 export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
+  intensivismo: {
+    label: 'Intensivismo',
+    icon: '',
+    Icon: Siren,
+    borderActive: 'border-red-500',
+    textActive: 'text-red-600 dark:text-red-400',
+    bgActive: 'bg-red-500/[0.06]',
+  },
   'emergencia-intensivismo': {
-    label: 'Emergência / Intensivismo',
+    label: 'Intensivismo',
     icon: '',
     Icon: Siren,
     borderActive: 'border-red-500',
@@ -54,7 +62,7 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     bgActive: 'bg-red-500/[0.06]',
   },
   'emergencia-uti': {
-    label: 'Emergência / Intensivismo',
+    label: 'Intensivismo',
     icon: '',
     Icon: Siren,
     borderActive: 'border-red-500',
@@ -142,7 +150,15 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     bgActive: 'bg-pink-500/[0.06]',
   },
   neurologia: {
-    label: 'Neurologia',
+    label: 'Neurologia e Cirurgia Neurológica',
+    icon: '',
+    Icon: Brain,
+    borderActive: 'border-indigo-500',
+    textActive: 'text-indigo-600 dark:text-indigo-400',
+    bgActive: 'bg-indigo-500/[0.06]',
+  },
+  'cirurgia-neurologica': {
+    label: 'Neurologia e Cirurgia Neurológica',
     icon: '',
     Icon: Brain,
     borderActive: 'border-indigo-500',
@@ -157,13 +173,29 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     textActive: 'text-yellow-600 dark:text-yellow-400',
     bgActive: 'bg-yellow-500/[0.06]',
   },
-  'reproducao-neonatologia': {
-    label: 'Reprodução e Neonatologia',
+  'reproducao-obstetricia': {
+    label: 'Reprodução e Obstetrícia',
     icon: '',
     Icon: Baby,
     borderActive: 'border-fuchsia-500',
     textActive: 'text-fuchsia-600 dark:text-fuchsia-400',
     bgActive: 'bg-fuchsia-500/[0.06]',
+  },
+  'reproducao-neonatologia': {
+    label: 'Reprodução e Obstetrícia',
+    icon: '',
+    Icon: Baby,
+    borderActive: 'border-fuchsia-500',
+    textActive: 'text-fuchsia-600 dark:text-fuchsia-400',
+    bgActive: 'bg-fuchsia-500/[0.06]',
+  },
+  neonatologia: {
+    label: 'Neonatologia',
+    icon: '',
+    Icon: Baby,
+    borderActive: 'border-pink-400',
+    textActive: 'text-pink-500 dark:text-pink-300',
+    bgActive: 'bg-pink-500/[0.06]',
   },
   ortopedia: {
     label: 'Ortopedia',
@@ -189,21 +221,13 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     textActive: 'text-emerald-700 dark:text-emerald-400',
     bgActive: 'bg-emerald-500/[0.06]',
   },
-  'cirurgia-neurologica': {
-    label: 'Cirurgia neurológica',
-    icon: '',
-    Icon: Brain,
-    borderActive: 'border-indigo-600',
-    textActive: 'text-indigo-700 dark:text-indigo-400',
-    bgActive: 'bg-indigo-500/[0.06]',
-  },
   imunologia: {
-    label: 'Imunologia',
+    label: 'Hematologia e Imunologia',
     icon: '',
-    Icon: ShieldCheck,
-    borderActive: 'border-violet-500',
-    textActive: 'text-violet-600 dark:text-violet-400',
-    bgActive: 'bg-violet-500/[0.06]',
+    Icon: Droplet,
+    borderActive: 'border-rose-600',
+    textActive: 'text-rose-600 dark:text-rose-400',
+    bgActive: 'bg-rose-500/[0.06]',
   },
   odontologia: {
     label: 'Odontologia',
@@ -230,12 +254,12 @@ export const SPECIALTY_VISUALS: Record<string, SpecialtyVisual> = {
     bgActive: 'bg-yellow-500/[0.06]',
   },
   'clinica-medica': {
-    label: 'Clínica médica',
+    label: 'Hematologia e Imunologia',
     icon: '',
-    Icon: Stethoscope,
-    borderActive: 'border-slate-500',
-    textActive: 'text-slate-600 dark:text-slate-400',
-    bgActive: 'bg-slate-500/[0.06]',
+    Icon: Droplet,
+    borderActive: 'border-rose-600',
+    textActive: 'text-rose-600 dark:text-rose-400',
+    bgActive: 'bg-rose-500/[0.06]',
   },
   otologia: {
     label: 'Otologia',

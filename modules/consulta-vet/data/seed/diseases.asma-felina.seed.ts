@@ -17,7 +17,6 @@ export const asmaFelinaRecord: DiseaseRecord = {
   ],
   species: ['cat'],
   category: 'respiratorio',
-  categories: ['bombas-asma-terapia-inalatoria'],
   tags: [
     'Eosinófilos',
     'Broncoespasmo',
@@ -27,7 +26,7 @@ export const asmaFelinaRecord: DiseaseRecord = {
     'Padrão broncointersticial',
   ],
   quickSummary:
-    'A asma felina é uma reação de hipersensibilidade tipo I (mediada por Th2/IgE) das vias aéreas inferiores frente a alérgenos inalados (poeira de areia sanitária, fumaça, aerossóis domésticos, pólen, ácaros): mastócitos e eosinófilos ativados liberam mediadores que provocam broncoconstrição aguda, edema de mucosa, hipersecreção de muco e, com a cronicidade, remodelamento da parede brônquica (hipertrofia de músculo liso, hiperplasia de células caliciformes, fibrose subepitelial). Acomete predominantemente gatos jovens a de meia-idade, com sobrerrepresentação de Siamês e raças orientais. O quadro clínico varia de tosse crônica intermitente a crises agudas de dispneia expiratória com sibilos audíveis — estas últimas são emergência respiratória verdadeira. O diagnóstico não tem teste único confirmatório: exige excluir diferenciais importantes (doença respiratória associada à dirofilariose — HARD, bronquite parasitária por Aelurostrongylus abstrusus, bronquite crônica neutrofílica, insuficiência cardíaca) e integrar radiografia (padrão broncointersticial, hiperinsuflação), quando seguro lavado broncoalveolar com eosinofilia, e resposta terapêutica ao corticoide. O tratamento tem dois eixos permanentes: controle anti-inflamatório (corticoide sistêmico para indução/crise, inalatório para manutenção crônica) e broncodilatador de resgate — nunca o inverso, pois broncodilatador isolado mascara sintomas sem tratar a inflamação subjacente.',
+    'Reação alérgica e inflamatória crônica das vias aéreas inferiores mediada por eosinófilos. Cursa com broncoconstrição, tosse intermitente e crises de dispneia expiratória com sibilos audíveis.',
   quickDecisionStrip: [
     'Gato jovem a adulto, sobretudo Siamês/oriental, com tosse crônica ou sibilos expiratórios: pense asma felina.',
     'Crise respiratória aguda é emergência — manuseio mínimo, oxigênio e broncodilatador antes de qualquer exame estressante.',

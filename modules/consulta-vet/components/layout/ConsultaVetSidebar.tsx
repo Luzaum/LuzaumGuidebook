@@ -9,6 +9,7 @@ import {
   Clock,
   FileText,
   Grid,
+  Layers,
   LucideIcon,
   Pill,
   ShieldCheck,
@@ -109,6 +110,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
       { to: '/consulta-vet/receituario', label: 'Receituário', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/manejo-emergencial', label: 'Manejo emergencial', icon: Zap, accent: 'orange' },
       { to: '/consulta-vet/guias-rapidos', label: 'Guia rápido clínico', icon: BookOpen, accent: 'slate' },
+      { to: '/consulta-vet/referencias-rapidas', label: 'Referências rápidas', icon: Layers, accent: 'cyan' },
       { to: '/consulta-vet/consensos', label: 'Consensos', icon: FileText, accent: 'violet' },
       { to: '/consulta-vet/favoritos', label: 'Favoritos', icon: Bookmark, accent: 'rose' },
       { to: '/consulta-vet/recentes', label: 'Recentes', icon: Clock, accent: 'cyan' },
@@ -130,8 +132,8 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
         onMouseEnter={openHoverPreview}
         onMouseLeave={closeHoverPreview}
         className={cn(
-          'consulta-vet-sidebar-panel fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] left-0 top-14 z-50 flex w-[min(100vw,18rem)] shrink-0 flex-col border-r transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:inset-y-0 md:translate-x-0 md:overflow-visible',
-          isCollapsed ? 'md:w-20' : 'md:w-72',
+          'consulta-vet-sidebar-panel fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] left-0 top-14 z-50 flex w-[min(100vw,14rem)] shrink-0 flex-col border-r transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:inset-y-0 md:translate-x-0 md:overflow-visible',
+          isCollapsed ? 'md:w-20' : 'md:w-56',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -139,7 +141,7 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
           className={cn(
             'consulta-vet-sidebar-surface relative flex flex-1 flex-col overflow-visible transition-[width,box-shadow,background-color] duration-300 ease-in-out',
             isExpanded
-              ? 'md:w-72 md:shadow-2xl md:shadow-black/20'
+              ? 'md:w-56 md:shadow-2xl md:shadow-black/20'
               : 'md:w-20'
           )}
         >

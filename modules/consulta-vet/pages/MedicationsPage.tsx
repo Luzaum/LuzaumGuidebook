@@ -13,8 +13,7 @@ import {
 } from '../utils/medicationTherapeuticClasses';
 
 const UI_TEXT = {
-  eyebrow: 'Farmacologia',
-  title: 'Medicamentos & Classes',
+  title: 'Medicamentos',
   body: 'Busca rápida de posologias, apresentações e diretrizes de dosagem organizadas por classes farmacológicas.',
   placeholder: 'Buscar por princípio ativo, nome comercial ou indicação...',
   resultsLabel: 'Catálogo de Fármacos',
@@ -99,7 +98,6 @@ export function MedicationsPage() {
   return (
     <div className="mx-auto w-full max-w-[1720px] space-y-8 p-4 md:p-8">
       <ConsultaVetPageHero
-        eyebrow={UI_TEXT.eyebrow}
         title={UI_TEXT.title}
         description={UI_TEXT.body}
         icon={Pill}
@@ -217,7 +215,7 @@ export function MedicationsPage() {
                     to={`/consulta-vet/medicamentos/${medication.slug}`}
                     title={medication.title}
                     subtitle={`${classInfo?.label || 'Classe farmacológica a revisar'} \u2022 ${medication.pharmacologicClass}`}
-                    description={medication.indications.join(', ')}
+                    description={medication.indications.slice(0, 3).join(', ')}
                     entityType="medication"
                     entityId={medication.id}
                     category={classInfo?.theme || 'default'}

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Stethoscope, LayoutGrid } from 'lucide-react';
+import { Stethoscope } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
@@ -121,15 +121,12 @@ export function DiseasesPage() {
             <button
               onClick={() => handleCategorySelect('all')}
               className={cn(
-                'flex items-center gap-2.5 rounded-lg border border-border/60 px-3 py-2.5 text-left text-xs font-semibold transition-all duration-300 xl:w-full',
+                'flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-left text-xs font-semibold transition-all duration-300 xl:w-full',
                 selectedCategory === 'all'
                   ? 'border-primary bg-primary/[0.06] text-primary shadow-[0_0_12px_-3px_rgba(var(--primary),0.12)]'
                   : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
               )}
             >
-              <span className="flex h-4 w-4 items-center justify-center text-xs">
-                <LayoutGrid className="h-3.5 w-3.5" />
-              </span>
               <span className="flex-1">{UI_TEXT.allCategories}</span>
               <span className={cn(
                 'rounded-full px-2 py-0.5 text-[10px] font-bold',
@@ -141,7 +138,6 @@ export function DiseasesPage() {
 
             {activeCategories.map((cat) => {
               const visual = getSpecialtyVisual(cat.slug);
-              const IconComponent = visual.Icon;
               const isSelected =
                 selectedCategory === cat.slug ||
                 normalizeCategorySlug(selectedCategory) === normalizeCategorySlug(cat.slug);
@@ -151,15 +147,12 @@ export function DiseasesPage() {
                   key={cat.id}
                   onClick={() => handleCategorySelect(cat.slug)}
                   className={cn(
-                    'flex items-center gap-2.5 rounded-lg border border-border/60 px-3 py-2.5 text-left text-xs font-semibold transition-all duration-300 xl:w-full',
+                    'flex items-center justify-between gap-2 rounded-lg border border-border/60 px-3 py-2.5 text-left text-xs font-semibold transition-all duration-300 xl:w-full',
                     isSelected
                       ? cn('border-solid shadow-xs', visual.borderActive, visual.bgActive, visual.textActive)
                       : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
                   )}
                 >
-                  <span className="flex h-4 w-4 items-center justify-center">
-                    <IconComponent className={cn('h-3.5 w-3.5 shrink-0', isSelected ? visual.textActive : 'text-muted-foreground')} />
-                  </span>
                   <span className="flex-1 truncate">{visual.label}</span>
                   <span className={cn(
                     'rounded-full px-2 py-0.5 text-[10px] font-bold transition-colors',
@@ -198,8 +191,6 @@ export function DiseasesPage() {
 
             {!isLoading && !error && filteredDiseases.map((disease) => {
               const primarySlug = normalizeCategorySlug(disease.category);
-              const visual = getSpecialtyVisual(primarySlug);
-              const categoryLabel = visual.label;
 
               return (
                 <div
@@ -209,13 +200,10 @@ export function DiseasesPage() {
                   <EntityCard
                     to={`/consulta-vet/doencas/${disease.slug}`}
                     title={disease.title}
-                    subtitle={categoryLabel}
                     description={disease.quickSummary}
                     entityType="disease"
                     entityId={disease.id}
                     category={primarySlug}
-                    compact
-                    minimal
                   />
                 </div>
               );

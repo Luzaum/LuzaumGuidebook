@@ -14,6 +14,8 @@ export type ClinicalQuickGuideCategoryId =
   | 'procedimentos';
 
 export type ClinicalQuickGuideBlock =
+  | { type: 'list'; items: string[]; checklist?: boolean }
+  | { type: 'preformatted'; text: string }
   | { type: 'heading'; level: 2 | 3 | 4; text: string }
   | { type: 'paragraph'; text: string }
   | { type: 'callout'; variant: 'info' | 'warning' | 'tip'; title?: string; text: string }
@@ -56,6 +58,10 @@ export interface ClinicalQuickGuide {
   quickBullets: string[];
   /** Conteúdo completo */
   sections: ClinicalQuickGuideBlock[];
+  /** Optional reading navigation; each tab starts at the given section index. */
+  readingTabs?: Array<{ label: string; startIndex: number }>;
+  richText?: boolean;
+  showTableOfContents?: boolean;
   isPublished: boolean;
 }
 

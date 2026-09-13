@@ -80,10 +80,144 @@ export interface MedicationPriceReference {
   amountBrl: number;
   label: string;
   presentation: string;
+  /** Produto da seção Comerciais que representa esta apresentação. */
+  commercialProductSlug?: string;
+}
+
+export interface MedicationPriceReference {
+  amountBrl: number;
+  label: string;
+  presentation: string;
   sourceName: string;
   sourceUrl: string;
   checkedAt: string;
   notes?: string | null;
+}
+
+export interface MedicationQuickIndication {
+  condition: string;
+  species: 'dog' | 'cat' | 'both';
+  doseSummary: string;
+  route: string;
+  duration: string;
+  clinicalContext?: string;
+}
+
+export interface MedicationDetailedIndication {
+  id: string;
+  indication: string;
+  clinicalContext?: string;
+  species: 'dog' | 'cat' | 'both';
+  dose: string;
+  route: string;
+  frequency: string;
+  duration: string;
+  mechanismOfAction: string;
+  clinicalRationale: string;
+  monitoring?: string;
+  referenceIds: string[];
+  evidenceLevel?: string;
+}
+
+export interface MedicationPharmacokinetics {
+  absorption: string;
+  distribution: string;
+  metabolism: string;
+  elimination: string;
+  cnsPenetration?: string;
+  plasmaBinding?: string;
+  halfLife?: string;
+}
+
+export interface MedicationAdministrationRouteDetailed {
+  route: string;
+  technique: string;
+  nursingCare: string;
+  limitations?: string;
+}
+
+export interface MedicationSpeciesPeculiarity {
+  species: 'dog' | 'cat';
+  title: string;
+  description: string;
+  clinicalImplications: string;
+}
+
+export interface MedicationPrecautionDetailed {
+  condition: string;
+  alertLevel: 'contraindicated' | 'warning' | 'caution';
+  physiologicalExplanation: string;
+  clinicalAction: string;
+}
+
+export interface MedicationAdverseEffectDetailed {
+  effect: string;
+  frequency: 'common' | 'uncommon' | 'rare' | 'very_rare' | 'overdose';
+  mechanism: string;
+  clinicalManagement: string;
+}
+
+export interface MedicationDoseReductionGuideline {
+  clinicalCondition: string;
+  recommendedAdjustment: string;
+  physiologicalRationale: string;
+}
+
+export interface MedicationDrugInteractionDetailed {
+  drugOrClass: string;
+  severity: 'contraindicated' | 'major' | 'moderate' | 'minor';
+  clinicalEffect: string;
+  pharmacologicalMechanism: string;
+}
+
+export interface MedicationDilutionGuide {
+  compatibleFluids: string[];
+  incompatibleFluids: string[];
+  infusionRateGuidance: string;
+  preparationNotes: string;
+}
+
+export interface MedicationClinicalStudyCommented {
+  title: string;
+  authorsYear: string;
+  journal?: string;
+  studyDesign: string;
+  sampleSize?: string;
+  mainFindings: string;
+  clinicalTakeaway: string;
+  referenceId?: string;
+}
+
+export interface MedicationAttentionData {
+  precautions: MedicationPrecautionDetailed[];
+  adverseEffectsDetailed?: MedicationAdverseEffectDetailed[];
+  doseReductionGuidelines?: MedicationDoseReductionGuideline[];
+  drugInteractionsDetailed?: MedicationDrugInteractionDetailed[];
+  dilutionGuide?: MedicationDilutionGuide;
+}
+
+export interface MedicationGeneralInfoData {
+  routesDetailed?: MedicationAdministrationRouteDetailed[];
+  pharmacologicalClassification?: {
+    chemicalClass: string;
+    therapeuticClass: string;
+    atcCode?: string;
+    receptorTargets?: string[];
+    detailedTargets?: Array<{
+      target: string;
+      action: string;
+      clinicalSignificance: string;
+    }>;
+  };
+  prescriptionType?: {
+    category: string;
+    ordinanceOrLaw?: string;
+    retentionRequired: boolean;
+    guidelines: string;
+  };
+  dilutionGuide?: MedicationDilutionGuide;
+  speciesPeculiarities?: MedicationSpeciesPeculiarity[];
+  curiositiesAndHistory?: string[];
 }
 
 export interface MedicationRecord extends ContentFlag {
@@ -122,4 +256,12 @@ export interface MedicationRecord extends ContentFlag {
   isPublished?: boolean;
   createdAt?: string;
   updatedAt?: string;
+
+  /** Novos campos estruturados padrão ouro para navegação por abas */
+  quickIndications?: MedicationQuickIndication[];
+  detailedIndications?: MedicationDetailedIndication[];
+  pharmacokineticsData?: MedicationPharmacokinetics;
+  attentionData?: MedicationAttentionData;
+  generalInfoData?: MedicationGeneralInfoData;
+  clinicalStudiesCommented?: MedicationClinicalStudyCommented[];
 }

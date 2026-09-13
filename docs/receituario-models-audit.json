@@ -1,36 +1,35 @@
 {
   "summary": {
-    "generatedAt": "2026-08-17T18:23:56.417Z",
+    "generatedAt": "2026-09-13T03:13:12.176Z",
     "sources": [
       "Código: modules/consulta-vet/data/receituarioSeed.ts",
       "Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json"
     ],
     "supabaseReceituario": "A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.",
-    "total": 29,
+    "total": 25,
     "bySpecies": {
       "ambos": 5,
-      "cão": 15,
-      "gato": 9
+      "cão": 12,
+      "gato": 8
     },
     "byCategory": {
       "Cuidados gerais": 1,
       "Dermatologia": 1,
       "Dor e pós-operatório": 4,
-      "Endocrinologia": 7,
-      "Gastroenterologia": 1,
+      "Gastroenterologia": 4,
       "Infectologia": 4,
       "Neurologia": 5,
       "Respiratório": 2,
       "Termos": 4
     },
     "byType": {
-      "recipe": 25,
+      "recipe": 21,
       "term": 4
     },
-    "incomplete": 20,
-    "withoutSource": 24,
-    "withUnlinkedMedication": 20,
-    "withGenericRecommendations": 4
+    "incomplete": 16,
+    "withoutSource": 16,
+    "withUnlinkedMedication": 16,
+    "withGenericRecommendations": 3
   },
   "models": [
     {
@@ -180,7 +179,7 @@
         "• Não interromper o tratamento após melhora parcial.",
         "• Utilizar luvas ao manipular lesões e secreções.",
         "• Evitar contato das secreções com pele lesionada ou mucosas.",
-        "• Investigar comprometimento osteoarticular, pulmonar ou disseminado quando houver sinais compatíveis.",
+        "• Avisar à equipe se houver dificuldade para andar, inchaço nas patas, tosse ou dificuldade para respirar, pois a infecção pode atingir outras partes do corpo.",
         "• Não utilizar tratamento tópico isoladamente como terapia principal."
       ],
       "warningSigns": [],
@@ -202,38 +201,25 @@
         "cão"
       ],
       "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "RIBAVIRINA",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "FÓRMULA VITAMÍNICA E ANTIOXIDANTE",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "DIMETILSULFÓXIDO",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
+      "medications": [],
       "linkedCommercialPresentations": [],
       "doses": [],
       "doseSources": [],
       "precautions": [],
-      "recommendations": [],
-      "warningSigns": [],
-      "followUp": "",
-      "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo.",
-        "Não possui recomendações em lista."
+      "recommendations": [
+        "• Manter o cão isolado de outros cães durante a fase contagiosa e seguir a orientação veterinária para o término do isolamento.",
+        "• Oferecer água e alimento palatável em pequenas porções, sem forçar quando houver dificuldade para engolir, tosse ou alteração da consciência.",
+        "• Manter olhos e narinas limpos com gaze e solução fisiológica, sem usar colírios ou descongestionantes por conta própria.",
+        "• Manter o paciente aquecido, em local limpo, seco, acolchoado e com piso antiderrapante.",
+        "• Registrar diariamente apetite, ingestão de água, vômitos, diarreia, secreções, tosse, equilíbrio e ocorrência de tremores ou convulsões.",
+        "• Não interromper anticonvulsivantes ou outras medicações sem orientação médico-veterinária.",
+        "• Realizar as reavaliações e os exames de controle nas datas definidas pelo médico-veterinário."
       ],
-      "status": "incomplete"
+      "warningSigns": [],
+      "followUp": "• Realizar as reavaliações e os exames de controle nas datas definidas pelo médico-veterinário.",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
     },
     {
       "templateId": "seed-infectologia-erliquiose-anaplasmose",
@@ -345,8 +331,8 @@
         "• Restringir saltos, corridas e brincadeiras durante 10 a 14 dias.",
         "• Não permitir acesso à rua.",
         "• Não dar banho até liberação veterinária.",
-        "• Verificar a incisão duas vezes ao dia.",
-        "• Antibióticos não são indicados rotineiramente em castração eletiva limpa e sem complicações."
+        "• Observar a região dos pontos duas vezes ao dia.",
+        "• Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores."
       ],
       "warningSigns": [],
       "followUp": "",
@@ -388,7 +374,7 @@
         "• Não dar banho durante o período de cicatrização.",
         "• Verificar a região operada duas vezes ao dia.",
         "• Pequeno edema (inchaço) escrotal pode ocorrer, mas deve permanecer discreto e diminuir progressivamente.",
-        "• Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa."
+        "• Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores."
       ],
       "warningSigns": [],
       "followUp": "",
@@ -426,8 +412,8 @@
         "• Restringir corridas, saltos e brincadeiras durante pelo menos 7 dias.",
         "• Não aplicar pomadas ou antissépticos na região escrotal sem orientação.",
         "• Pequena quantidade de sangue nas primeiras horas pode ocorrer, mas sangramento contínuo não é esperado.",
-        "• A incisão escrotal pode permanecer aberta e cicatrizar por segunda intenção, conforme a técnica utilizada.",
-        "• Antibióticos não são indicados rotineiramente em orquiectomia eletiva limpa."
+        "• A pequena abertura da cirurgia pode ser deixada sem pontos e fechar aos poucos, conforme explicado pela equipe; não tentar fechar ou cobrir sem orientação.",
+        "• Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores."
       ],
       "warningSigns": [],
       "followUp": "",
@@ -451,71 +437,14 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": "med-maropitant",
-          "activeIngredient": "Maropitant (citrato)"
+          "medicationId": null,
+          "activeIngredient": null
         }
       ],
-      "linkedCommercialPresentations": [
-        {
-          "id": "pres-maro-inj-20",
-          "label": "Solução injetável 10 mg/mL (citrato) — frasco 20 mL"
-        },
-        {
-          "id": "pres-maro-cp",
-          "label": "Cerenia - comprimido (cão)"
-        }
-      ],
-      "doses": [
-        {
-          "id": "dose-maro-dog-sc",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — SC ou IV lenta (rotulado)"
-        },
-        {
-          "id": "dose-maro-dog-po",
-          "value": 2,
-          "max": 2,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — VO (biodisponibilidade oral ~50%)"
-        },
-        {
-          "id": "dose-maro-dog-motion",
-          "value": 8,
-          "max": 8,
-          "unit": "mg/kg",
-          "indication": "Enjoo de movimento (cão)"
-        },
-        {
-          "id": "dose-maro-cat-vomito",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Tratamento do vômito — regime parenteral rotulado"
-        },
-        {
-          "id": "dose-maro-cat-drc",
-          "value": 4,
-          "max": 4,
-          "unit": "mg/por gato",
-          "indication": "Vômito associado à DRC (extra-label; dose fixa)"
-        },
-        {
-          "id": "dose-maro-cat-po",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Prevenção de vômito — uso oral extra-label"
-        }
-      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
       "doseSources": [],
-      "precautions": [
-        "Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).",
-        "Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.",
-        "Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).",
-        "BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local."
-      ],
+      "precautions": [],
       "recommendations": [
         "• Oferecer dieta veterinária altamente digestível em pequenas porções, divididas em 4 a 6 refeições ao dia.",
         "• Reiniciar a alimentação precocemente assim que o vômito estiver controlado.",
@@ -530,10 +459,11 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
+        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "needs-review"
+      "status": "incomplete"
     },
     {
       "templateId": "seed-colapso-traqueia-cao",
@@ -562,10 +492,14 @@
         "• Evitar calor, umidade intensa, fumaça de cigarro, perfumes, aerossóis, poeira e produtos de limpeza voláteis.",
         "• Reduzir situações de excitação, latidos intensos e exercícios extenuantes.",
         "• Manter adequada higiene oral e tratar doença periodontal.",
-        "• Investigar cardiopatia, hipertensão pulmonar (pressão elevada na circulação dos pulmões), paralisia laríngea (alteração da laringe que dificulta respirar), broncomalácia (enfraquecimento das vias aéreas), pneumonia e doença brônquica concomitante."
+        "• Gravar as crises de tosse, se for possível sem estressar o animal, e anotar os horários e o que estava acontecendo antes da crise.",
+        "• Se o medicamento causar sonolência intensa, dificuldade para despertar ou respiração lenta, procurar atendimento imediatamente.",
+        "• Não aumentar, diminuir nem combinar remédios para tosse por conta própria; combinar a reavaliação em 48 a 72 horas após iniciar ou ajustar o tratamento."
       ],
-      "warningSigns": [],
-      "followUp": "",
+      "warningSigns": [
+        "• Se o medicamento causar sonolência intensa, dificuldade para despertar ou respiração lenta, procurar atendimento imediatamente."
+      ],
+      "followUp": "• Não aumentar, diminuir nem combinar remédios para tosse por conta própria; combinar a reavaliação em 48 a 72 horas após iniciar ou ajustar o tratamento.",
       "placeholders": [],
       "issues": [
         "Possui medicamento sem vínculo canônico.",
@@ -586,92 +520,24 @@
       "medications": [
         {
           "enteredName": "PREDNISOLONA",
-          "medicationId": "med-prednisolona",
-          "activeIngredient": "Prednisolona"
+          "medicationId": null,
+          "activeIngredient": null
         }
       ],
-      "linkedCommercialPresentations": [
-        {
-          "id": "pres-preni-cp",
-          "label": "Preni - comprimido (Eurofarma, uso humano)"
-        },
-        {
-          "id": "pres-pred-sol-3mg-ml",
-          "label": "Solução oral 3 mg/mL (fosfato sódico Aché / Preni solução)"
-        },
-        {
-          "id": "pres-prelone-gotas-11",
-          "label": "Prelone gotas — 11 mg/mL (Aché, uso humano)"
-        },
-        {
-          "id": "pres-prediderm",
-          "label": "Prediderm - comprimido (Ourofino, vet)"
-        },
-        {
-          "id": "pres-predivet",
-          "label": "Predivet - comprimido (Mundo Animal, vet)"
-        }
-      ],
-      "doses": [
-        {
-          "id": "dose-pred-dog-anti",
-          "value": 0.5,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Anti-inflamatório (cão)"
-        },
-        {
-          "id": "dose-pred-cat-anti",
-          "value": 1,
-          "max": 2,
-          "unit": "mg/kg",
-          "indication": "Anti-inflamatório (gato) — preferir prednisolona, não prednisona"
-        },
-        {
-          "id": "dose-pred-dog-imuno",
-          "value": 2,
-          "max": 4,
-          "unit": "mg/kg",
-          "indication": "Imunossupressor inicial (cão)"
-        },
-        {
-          "id": "dose-pred-cat-imuno",
-          "value": 2,
-          "max": 8,
-          "unit": "mg/kg",
-          "indication": "Imunossupressor inicial (gato)"
-        },
-        {
-          "id": "dose-pred-reposicao",
-          "value": 0.1,
-          "max": 0.22,
-          "unit": "mg/kg",
-          "indication": "Reposição glicocorticoide — hipoadrenocorticismo canino"
-        },
-        {
-          "id": "dose-pred-dog-onc",
-          "value": 2,
-          "max": 2,
-          "unit": "mg/kg",
-          "indication": "Esquema antineoplásico isolado ou combinado (cão) — guia geral"
-        },
-        {
-          "id": "dose-pred-cat-reposicao",
-          "value": 0.2,
-          "max": 0.2,
-          "unit": "mg/kg",
-          "indication": "Reposição glicocorticoide — hipoadrenocorticismo felino"
-        }
-      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
       "doseSources": [],
-      "precautions": [
-        "Gatos: maior risco diabetogênico com uso prolongado; obesidade e prednisolona — ajustar à massa magra quando possível.",
-        "Não associar AINEs (incl. aspirina) sem critério — risco de ulceração GI.",
-        "Desmame gradual após uso prolongado (eixo HPA).",
-        "Monitorar glicemia, peso, PU/PD, comportamento e enzimas hepáticas conforme duração/dose."
-      ],
+      "precautions": [],
       "recommendations": [
         "• Eliminar exposição a fumaça de cigarro, incenso, perfumes, sprays, aromatizadores e produtos de limpeza voláteis.",
+        "• Para usar a bombinha prescrita, utilizar espaçador com máscara própria para gatos ou máscara que vede suavemente o focinho; pedir demonstração à equipe antes da primeira aplicação.",
+        "• Acostumar o gato à máscara aos poucos, com carinho e recompensa, sem forçar quando ele estiver com falta de ar.",
+        "• Agitar a bombinha conforme a bula, encaixar no espaçador, ajustar a máscara ao focinho e disparar somente um jato por vez.",
+        "• Manter a máscara vedada por 7 a 10 respirações; observar o indicador do espaçador. Se houver outro jato prescrito, aguardar cerca de 30 segundos e repetir.",
+        "• Limpar delicadamente o focinho com pano úmido após a aplicação; lavar e secar o espaçador conforme o fabricante.",
+        "• A bombinha de uso diário previne crises e deve continuar mesmo sem tosse. Ela não substitui o remédio de alívio rápido prescrito para crises.",
+        "• Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos.",
+        "• Respiração de boca aberta, língua azulada, desmaio ou grande esforço para respirar exigem atendimento imediato; manter o gato calmo e não forçar comida, água ou comprimidos.",
         "• Preferir areia sanitária sem perfume e com baixa produção de poeira.",
         "• Evitar varrer ou usar aerossóis no mesmo ambiente do gato.",
         "• Controlar o peso corporal.",
@@ -679,14 +545,17 @@
         "• Contar periodicamente a frequência respiratória durante o sono.",
         "• Uso de salbutamol mais de duas ou três vezes por semana indica controle inadequado e necessidade de reavaliação."
       ],
-      "warningSigns": [],
-      "followUp": "• Uso de salbutamol mais de duas ou três vezes por semana indica controle inadequado e necessidade de reavaliação.",
+      "warningSigns": [
+        "• Respiração de boca aberta, língua azulada, desmaio ou grande esforço para respirar exigem atendimento imediato; manter o gato calmo e não forçar comida, água ou comprimidos."
+      ],
+      "followUp": "• Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos.",
       "placeholders": [],
       "issues": [
+        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "needs-review"
+      "status": "incomplete"
     },
     {
       "templateId": "seed-manejo-ferida-pos-operatoria",
@@ -702,14 +571,20 @@
       "doses": [],
       "doseSources": [],
       "precautions": [],
-      "recommendations": [],
-      "warningSigns": [],
-      "followUp": "",
-      "placeholders": [],
-      "issues": [
-        "Não possui recomendações em lista."
+      "recommendations": [
+        "• Manter a ferida limpa e protegida conforme o protocolo selecionado.",
+        "• Lavar as mãos antes e depois do cuidado e utilizar luvas limpas quando houver contato com o leito da ferida.",
+        "• Impedir lambedura, mordedura ou coçadura com colar elizabetano, roupa cirúrgica ou outra barreira indicada.",
+        "• Manter curativos limpos, secos e bem posicionados; trocar imediatamente se estiverem molhados, sujos, deslocados ou com odor.",
+        "• Não aplicar álcool, água oxigenada, pomadas humanas, antibióticos ou outros antissépticos sem orientação médico-veterinária.",
+        "• Examinar a ferida pelo menos duas vezes ao dia e registrar mudanças de abertura, secreção, odor, dor, calor, cor ou inchaço.",
+        "• Comparecer às reavaliações para definir limpeza, desbridamento, cultura, troca de cobertura ou retirada de pontos."
       ],
-      "status": "needs-review"
+      "warningSigns": [],
+      "followUp": "• Comparecer às reavaliações para definir limpeza, desbridamento, cultura, troca de cobertura ou retirada de pontos.",
+      "placeholders": [],
+      "issues": [],
+      "status": "complete"
     },
     {
       "templateId": "seed-dermatite-atopica-cao",
@@ -733,17 +608,17 @@
       "precautions": [],
       "recommendations": [
         "• Manter controle rigoroso de pulgas e outros ectoparasitas durante todo o ano.",
-        "• Investigar piodermite (infecção bacteriana da pele), malasseziose (infecção por fungo na pele ou ouvido) e otite por citologia.",
-        "• Não prescrever antibiótico ou antifúngico sistêmico automaticamente; utilizar conforme citologia, cultura e extensão da infecção.",
-        "• Considerar dieta de eliminação adequada quando reação cutânea adversa ao alimento ainda não tiver sido excluída.",
-        "• Informar que a dermatite atópica é crônica e exige manejo contínuo.",
+        "• Avisar se aparecerem feridas, secreção, mau cheiro na pele ou dor nos ouvidos; pode ser necessário examinar amostras da pele antes de escolher outro remédio.",
+        "• Não usar antibióticos ou remédios contra fungos por conta própria.",
+        "• Se a equipe recomendar um teste com alimento especial, oferecer somente esse alimento pelo período combinado, sem petiscos nem restos de comida.",
+        "• A alergia de pele pode voltar e precisa de acompanhamento mesmo depois de melhorar.",
         "• Identificar e reduzir exposições ambientais associadas às crises.",
-        "• Tratar alterações da barreira cutânea com banhos e hidratação regular.",
-        "• Avaliar imunoterapia alérgeno-específica nos pacientes com doença recorrente ou necessidade contínua de medicamentos.",
-        "• Utilizar sempre a menor dose eficaz de corticosteroide."
+        "• Dar banhos e hidratar a pele somente com os produtos e a frequência prescritos.",
+        "• Se as crises voltarem com frequência, combinar uma reavaliação para ajustar o controle de longo prazo.",
+        "• Seguir cada etapa da receita e não aumentar, reduzir ou combinar remédios por conta própria."
       ],
       "warningSigns": [],
-      "followUp": "",
+      "followUp": "• Se as crises voltarem com frequência, combinar uma reavaliação para ajustar o controle de longo prazo.",
       "placeholders": [],
       "issues": [
         "Possui medicamento sem vínculo canônico.",
@@ -753,1210 +628,103 @@
       "status": "incomplete"
     },
     {
-      "templateId": "seed-dm-cao-caninsulin",
-      "title": "Diabetes mellitus — Cão — Caninsulin",
-      "condition": "Diabetes mellitus — Cão — Caninsulin",
-      "category": "Endocrinologia",
+      "templateId": "seed-pancreatite-cao",
+      "title": "Pancreatite — Cão (após estabilização)",
+      "condition": "Pancreatite — Cão (após estabilização)",
+      "category": "Gastroenterologia",
       "species": [
         "cão"
       ],
       "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA LENTE SUÍNA",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
+      "medications": [],
       "linkedCommercialPresentations": [],
       "doses": [],
       "doseSources": [],
       "precautions": [],
       "recommendations": [
-        "• Caninsulin possui 40 unidades/mL; utilizar exclusivamente seringa U-40 ou caneta veterinária compatível.",
-        "• Antes de cada aplicação, agitar o frasco até a suspensão ficar branca e leitosa; aguardar a espuma desaparecer.",
-        "• Não utilizar se houver grumos persistentes, cristais ou alteração de cor.",
-        "• Oferecer duas refeições equivalentes separadas por cerca de 12 horas.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é U-40: use apenas seringa U-40 ou caneta veterinária compatível com Caninsulin. Nunca use seringa U-100 para medir esta insulina.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo.",
-        "• Confirmar que o cão comeu a refeição antes de aplicar a insulina.",
-        "• Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível.",
-        "• Evitar petiscos extras, restos de comida e doces.",
-        "• Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Canine",
-        "• PremieR Nutrição Clínica Cães Diabetes — porte pequeno",
-        "• PremieR Nutrição Clínica Cães Diabetes — portes médio e grande",
-        "• Farmina Vet Life Obesity & Diabetic Canine",
-        "• Farmina Vet Life Obesity & Diabetic Fish Canine",
-        "• Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g",
-        "• PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g",
-        "• Farmina Vet Life Diabetic Wet Food Canine — 300 g"
+        "• O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.",
+        "• Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.",
+        "• Oferecer somente a dieta indicada. Evitar restos de comida, frituras, queijos, pele de frango e petiscos gordurosos.",
+        "• Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver vomitando, muito fraco ou com dificuldade para engolir.",
+        "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
+        "• Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário.",
+        "• Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta própria.",
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames."
       ],
       "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames."
       ],
-      "followUp": "",
+      "followUp": "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
       "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
+      "issues": [],
+      "status": "complete"
     },
     {
-      "templateId": "seed-dm-cao-nph",
-      "title": "Diabetes mellitus — Cão — Insulina NPH",
-      "condition": "Diabetes mellitus — Cão — Insulina NPH",
-      "category": "Endocrinologia",
-      "species": [
-        "cão"
-      ],
-      "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA NPH U-100",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
-      "doseSources": [],
-      "precautions": [],
-      "recommendations": [
-        "• NPH possui 100 unidades/mL; utilizar exclusivamente seringa U-100.",
-        "• Preferir seringa de 0,3 mL para doses pequenas, com marcação de meia unidade quando possível.",
-        "• Suspensão turva: rolar delicadamente entre as mãos e inverter lentamente até ficar uniformemente turvo; não agitar vigorosamente.",
-        "• Não utilizar se permanecerem aglomerados, cristais ou alterações importantes de aparência.",
-        "• Duas refeições semelhantes com cerca de 12 horas de intervalo; aplicar após confirmar que o cão comeu.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo.",
-        "• Confirmar que o cão comeu a refeição antes de aplicar a insulina.",
-        "• Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível.",
-        "• Evitar petiscos extras, restos de comida e doces.",
-        "• Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Canine",
-        "• PremieR Nutrição Clínica Cães Diabetes — porte pequeno",
-        "• PremieR Nutrição Clínica Cães Diabetes — portes médio e grande",
-        "• Farmina Vet Life Obesity & Diabetic Canine",
-        "• Farmina Vet Life Obesity & Diabetic Fish Canine",
-        "• Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g",
-        "• PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g",
-        "• Farmina Vet Life Diabetic Wet Food Canine — 300 g"
-      ],
-      "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
-      ],
-      "followUp": "",
-      "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
-    },
-    {
-      "templateId": "seed-dm-cao-glargina-u100",
-      "title": "Diabetes mellitus — Cão — Glargina U-100",
-      "condition": "Diabetes mellitus — Cão — Glargina U-100",
-      "category": "Endocrinologia",
-      "species": [
-        "cão"
-      ],
-      "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA GLARGINA U-100",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
-      "doseSources": [],
-      "precautions": [],
-      "recommendations": [
-        "• Glargina U-100 possui 100 unidades/mL; utilizar seringa U-100 ou caneta compatível.",
-        "• Para doses pequenas, preferir seringa U-100 de 0,3 mL com meia unidade.",
-        "• Solução límpida e incolor: não agitar, não rolar, não diluir e não misturar na mesma seringa.",
-        "• Descartar se turva, com partículas ou alteração de cor.",
-        "• Duas refeições semelhantes em horários regulares; aplicar após confirmar que o cão comeu.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo.",
-        "• Confirmar que o cão comeu a refeição antes de aplicar a insulina.",
-        "• Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível.",
-        "• Evitar petiscos extras, restos de comida e doces.",
-        "• Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Canine",
-        "• PremieR Nutrição Clínica Cães Diabetes — porte pequeno",
-        "• PremieR Nutrição Clínica Cães Diabetes — portes médio e grande",
-        "• Farmina Vet Life Obesity & Diabetic Canine",
-        "• Farmina Vet Life Obesity & Diabetic Fish Canine",
-        "• Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g",
-        "• PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g",
-        "• Farmina Vet Life Diabetic Wet Food Canine — 300 g"
-      ],
-      "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
-      ],
-      "followUp": "",
-      "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
-    },
-    {
-      "templateId": "seed-dm-cao-toujeo-u300",
-      "title": "Diabetes mellitus — Cão — Toujeo U-300",
-      "condition": "Diabetes mellitus — Cão — Toujeo U-300",
-      "category": "Endocrinologia",
-      "species": [
-        "cão"
-      ],
-      "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA GLARGINA U-300",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
-      "doseSources": [],
-      "precautions": [],
-      "recommendations": [
-        "• Toujeo possui 300 unidades/mL; utilizar exclusivamente a caneta original do fabricante.",
-        "• O número no visor corresponde às unidades reais administradas.",
-        "• Agulha nova a cada aplicação; teste de fluxo antes de cada dose; manter agulha cerca de 10 segundos após o visor retornar a zero.",
-        "• Não agitar, diluir ou misturar; solução límpida e incolor.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é Toujeo U-300: use apenas a caneta original do fabricante. Nunca tire o medicamento da caneta com seringa.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Dividir a comida do dia em duas refeições iguais, com cerca de 12 horas de intervalo.",
-        "• Manter horários de alimentação previsíveis todos os dias e registrar se o cão comeu bem.",
-        "• Manter sempre a mesma marca, sabor e quantidade de ração, sempre que possível.",
-        "• Evitar petiscos extras, restos de comida e doces.",
-        "• Manter passeios e brincadeiras em rotina; evitar exercício muito intenso ou diferente do habitual de um dia para o outro.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Olhos turvos, dor no olho ou perda de visão que apareceu rapidamente.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Canine",
-        "• PremieR Nutrição Clínica Cães Diabetes — porte pequeno",
-        "• PremieR Nutrição Clínica Cães Diabetes — portes médio e grande",
-        "• Farmina Vet Life Obesity & Diabetic Canine",
-        "• Farmina Vet Life Obesity & Diabetic Fish Canine",
-        "• Royal Canin Diabetic Special Low Carbohydrate Wet — 410 g",
-        "• PremieR Nutrição Clínica Úmidos Cães Diabetes — 85 g",
-        "• Farmina Vet Life Diabetic Wet Food Canine — 300 g"
-      ],
-      "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
-      ],
-      "followUp": "• Agulha nova a cada aplicação; teste de fluxo antes de cada dose; manter agulha cerca de 10 segundos após o visor retornar a zero.",
-      "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
-    },
-    {
-      "templateId": "seed-dm-gato-glargina-u100",
-      "title": "Diabetes mellitus — Gato — Glargina U-100",
-      "condition": "Diabetes mellitus — Gato — Glargina U-100",
-      "category": "Endocrinologia",
+      "templateId": "seed-pancreatite-gato",
+      "title": "Pancreatite — Gato (após estabilização)",
+      "condition": "Pancreatite — Gato (após estabilização)",
+      "category": "Gastroenterologia",
       "species": [
         "gato"
       ],
       "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA GLARGINA U-100",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
+      "medications": [],
       "linkedCommercialPresentations": [],
       "doses": [],
       "doseSources": [],
       "precautions": [],
       "recommendations": [
-        "• Utilizar seringa U-100 ou dispositivo compatível; preferir seringa 0,3 mL com meia unidade para doses pequenas.",
-        "• Solução límpida e incolor: não agitar, rolar, diluir ou misturar.",
-        "• Aplicar a cada 12 horas em horários consistentes; preferível confirmar alimentação antes da aplicação.",
-        "• Observar apetite e comportamento nos primeiros meses, pois a necessidade de insulina pode diminuir.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é U-100: use apenas seringa U-100 ou caneta/refil compatível com U-100.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Preferir aplicar depois de confirmar que o gato está se alimentando.",
-        "• Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia.",
-        "• Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada.",
-        "• Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Feline",
-        "• PremieR Nutrição Clínica Gatos Diabetes",
-        "• Farmina Vet Life Diabetic Feline",
-        "• Farmina Vet Life Diabetic Wet Food Feline — 85 g"
+        "• O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.",
+        "• Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.",
+        "• Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido para este gato, considerando também o intestino e o fígado.",
+        "• Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver vomitando, muito fraco ou com dificuldade para engolir.",
+        "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
+        "• Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário.",
+        "• Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta própria.",
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames."
       ],
       "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames."
       ],
-      "followUp": "",
+      "followUp": "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
       "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
+      "issues": [],
+      "status": "complete"
     },
     {
-      "templateId": "seed-dm-gato-toujeo-u300",
-      "title": "Diabetes mellitus — Gato — Toujeo U-300",
-      "condition": "Diabetes mellitus — Gato — Toujeo U-300",
-      "category": "Endocrinologia",
+      "templateId": "seed-triade-felina",
+      "title": "Tríade felina — tratamento individualizado",
+      "condition": "Tríade felina — tratamento individualizado",
+      "category": "Gastroenterologia",
       "species": [
         "gato"
       ],
       "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA GLARGINA U-300",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
+      "medications": [],
       "linkedCommercialPresentations": [],
       "doses": [],
       "doseSources": [],
       "precautions": [],
       "recommendations": [
-        "• Administrar exclusivamente com a caneta original; nunca aspirar com seringa.",
-        "• A caneta administra apenas unidades inteiras; fazer teste de fluxo antes de cada aplicação.",
-        "• Manter a agulha inserida por aproximadamente 10 segundos após pressionar o botão.",
-        "• Não agitar, diluir ou misturar; a solução deve permanecer límpida e incolor.",
-        "• O apetite deve ser observado todos os dias, mesmo que a aplicação não coincida exatamente com a refeição.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é Toujeo U-300: use apenas a caneta original do fabricante. Nunca tire o medicamento da caneta com seringa.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Não é obrigatório aplicar exatamente na hora da refeição, mas o apetite deve ser observado todos os dias.",
-        "• Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia.",
-        "• Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada.",
-        "• Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Feline",
-        "• PremieR Nutrição Clínica Gatos Diabetes",
-        "• Farmina Vet Life Diabetic Feline",
-        "• Farmina Vet Life Diabetic Wet Food Feline — 85 g"
+        "• Há inflamação envolvendo o pâncreas, o intestino e as vias que levam a bile do fígado ao intestino. O tratamento é ajustado conforme o problema que mais afeta este gato.",
+        "• O pâncreas está inflamado e isso pode causar dor, enjoo e falta de apetite. Mesmo que pare de vomitar, o animal ainda pode precisar de tratamento e acompanhamento.",
+        "• Oferecer pequenas porções do alimento indicado pela equipe várias vezes ao dia, respeitando a quantidade diária prescrita. Não deixar em jejum para “descansar o pâncreas”.",
+        "• Não trocar automaticamente por alimento com pouca gordura. O alimento deve ser escolhido para este gato, considerando também o intestino e o fígado.",
+        "• Manter água fresca disponível. Não forçar água, comida ou remédio com seringa se estiver vomitando, muito fraco ou com dificuldade para engolir.",
+        "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
+        "• Se recusar as refeições ou comer muito menos, avisar à equipe no mesmo dia. Não esperar vários dias: pode ser necessário oferecer alimento por uma sonda colocada pelo veterinário.",
+        "• Não dar remédios humanos para dor nem acrescentar antibióticos ou outros produtos por conta própria.",
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames.",
+        "• Se for prescrita dieta especial para o intestino, oferecer somente ela, sem petiscos, restos de comida ou outros alimentos, pelo período combinado.",
+        "• Se houver antibiótico prescrito, cumprir os horários e o período indicado. Não reutilizar sobras nem interromper porque o gato parece melhor."
       ],
       "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
+        "• Reavaliar em 24 a 48 horas após a alta ou antes se piorar. A equipe definirá quais remédios manter e quando repetir exames."
       ],
-      "followUp": "",
+      "followUp": "• Anotar quanto comeu e bebeu, horários dos remédios, vômitos, fezes e mudanças de comportamento. Levar essas informações no retorno.",
       "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
-    },
-    {
-      "templateId": "seed-dm-gato-caninsulin",
-      "title": "Diabetes mellitus — Gato — Caninsulin",
-      "condition": "Diabetes mellitus — Gato — Caninsulin",
-      "category": "Endocrinologia",
-      "species": [
-        "gato"
-      ],
-      "type": "recipe",
-      "medications": [
-        {
-          "enteredName": "INSULINA LENTE SUÍNA",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Oferecer imediatamente a refeição habitual.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se não quiser comer, oferecer um alimento gostoso e fácil de comer, ou colocar um pouco de mel no alimento.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não aplicar nova insulina até ser avaliado por um veterinário.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Passar A PREENCHER mL de mel ou xarope de milho sobre a gengiva e a parte interna da bochecha.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Não despejar líquido no fundo da boca e não forçar a engolir.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Se melhorar em até cinco minutos, oferecer comida.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Separar glicosímetro, tira, lanceta, gaze e petisco.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Lavar e secar as mãos.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Colocar a tira no aparelho.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Fazer uma pequena perfuração no local escolhido e formar uma gota de sangue.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Encostar a ponta da tira na gota, sem esfregar.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Anotar o valor, horário, se o animal comeu e se a insulina já foi aplicada.",
-          "medicationId": null,
-          "activeIngredient": null
-        },
-        {
-          "enteredName": "Comprimir levemente com gaze e recompensar o animal.",
-          "medicationId": null,
-          "activeIngredient": null
-        }
-      ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
-      "doseSources": [],
-      "precautions": [],
-      "recommendations": [
-        "• Utilizar apenas seringa U-40 ou caneta veterinária compatível.",
-        "• Agitar até suspensão uniforme branca e leitosa; não utilizar se houver aglomerados persistentes.",
-        "• Aplicar após confirmar que o gato está se alimentando; manter quantidade diária de alimento controlada.",
-        "• Acompanhar glicemia em casa ou com sensor, conforme orientação da clínica.",
-        "• Lavar e secar as mãos.",
-        "• Conferir o nome da insulina, a dose e o horário antes de cada aplicação.",
-        "• Esta insulina é U-40: use apenas seringa U-40 ou caneta veterinária compatível com Caninsulin. Nunca use seringa U-100 para medir esta insulina.",
-        "• Preparar a insulina conforme as instruções desta receita.",
-        "• Escolher um local com pele solta (lateral do peito, flanco ou região das costas) e alternar o local a cada aplicação.",
-        "• Levantar delicadamente uma prega de pele, aplicar a agulha por baixo da pele e administrar toda a dose.",
-        "• Retirar a agulha e verificar se a pelagem não ficou molhada.",
-        "• Usar seringa ou agulha nova em cada aplicação.",
-        "• Se houver dúvida se a dose entrou toda, não repetir a aplicação e aguardar a próxima dose programada.",
-        "• Nunca aplicar dose dobrada para compensar uma dose perdida.",
-        "• Manter na geladeira entre 2 °C e 8 °C, salvo orientação diferente na bula.",
-        "• Não guardar na porta da geladeira nem encostar no congelador.",
-        "• Não congelar; descartar se congelar.",
-        "• Proteger do calor e do sol; não deixar dentro do carro.",
-        "• Na transportadora, usar bolsa térmica sem encostar gelo direto no frasco.",
-        "• Anotar a data de abertura no frasco ou na caneta.",
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação.",
-        "• Não reutilizar agulha de caneta.",
-        "• Preferir aplicar depois de confirmar que o gato está se alimentando.",
-        "• Preferir ração úmida completa ou combinação de úmido e seco, em quantidade medida por dia.",
-        "• Gatos que comem várias vezes ao longo do dia podem manter esse hábito, desde que a quantidade total diária seja controlada.",
-        "• Não deixar o gato ficar longas horas sem comer, principalmente se estiver acima do peso ou comendo pouco.",
-        "• Não aplique automaticamente a dose completa de insulina.",
-        "• Meça a glicemia em casa, se souber fazer.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Falta de apetite, vômito, muito abatimento ou pouca água ingerida podem indicar complicação importante.",
-        "• Muita fome de repente, inquietação ou sonolência.",
-        "• Fraqueza, tremores, “bamboleio” ao caminhar ou confusão.",
-        "• Convulsão, desmaio ou animal que não responde direito.",
-        "• Passar mel ou xarope sobre a gengiva, sem forçar engolir.",
-        "• Não oferecer água ou comida pela boca.",
-        "• Levar imediatamente a um serviço veterinário de emergência 24 horas.",
-        "• Animal tremendo, muito fraco, desorientado, convulsionando ou desmaiando.",
-        "• Recusa total de comida, vômitos repetidos ou diarreia intensa.",
-        "• Muito abatido, cada vez mais fraco ou aparentando desidratação.",
-        "• Respiração muito rápida ou profunda, ou hálito com cheiro forte e diferente do normal.",
-        "• Muita sede e muito xixi voltando depois de um período de melhora.",
-        "• Urina e sede diminuíram muito de repente, junto com melhora do apetite — avise o veterinário, pois a necessidade de insulina pode estar caindo.",
-        "• O sensor deve ser colocado e protegido pela equipe veterinária.",
-        "• Anotar no aplicativo: horários de comida, insulina, passeios, vômitos e sinais observados.",
-        "• Observar se a glicemia está subindo ou caindo, e não decidir mudanças só por uma leitura isolada.",
-        "• Se o sensor soltar ou der leituras estranhas, usar o glicosímetro e avisar a clínica.",
-        "• Borda interna da orelha — a parte fina da orelha, onde dá para ver os vasinhos.",
-        "• Almofada da pata — a parte macia embaixo da pata, atrás das almofadas digitais.",
-        "• Parte interna da boca — apenas se o animal estiver calmo e o veterinário já tiver orientado esse local.",
-        "• Horário e dose de cada aplicação de insulina.",
-        "• Quanto de comida foi oferecido e quanto foi comido.",
-        "• Quanto de água o animal bebeu.",
-        "• Se urinou mais ou menos que o normal.",
-        "• Apetite, atividade, vômitos ou fezes moles.",
-        "• Episódios de fraqueza, tremores ou comportamento estranho.",
-        "• Glicemias medidas em casa ou leituras do sensor, se houver.",
-        "• Royal Canin Veterinary Diabetic Feline",
-        "• PremieR Nutrição Clínica Gatos Diabetes",
-        "• Farmina Vet Life Diabetic Feline",
-        "• Farmina Vet Life Diabetic Wet Food Feline — 85 g"
-      ],
-      "warningSigns": [
-        "• Trocar o frasco ou refil se mudar de aparência, formar grumos ou o controle piorar sem explicação."
-      ],
-      "followUp": "",
-      "placeholders": [],
-      "issues": [
-        "Possui medicamento sem vínculo canônico.",
-        "Possui concentração ou dose digitada no texto histórico.",
-        "Não há fonte estruturada vinculada às doses do modelo."
-      ],
-      "status": "incomplete"
+      "issues": [],
+      "status": "complete"
     },
     {
       "templateId": "seed-trauma-vertebromedular-cao",
@@ -2229,71 +997,14 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": "med-maropitant",
-          "activeIngredient": "Maropitant (citrato)"
+          "medicationId": null,
+          "activeIngredient": null
         }
       ],
-      "linkedCommercialPresentations": [
-        {
-          "id": "pres-maro-inj-20",
-          "label": "Solução injetável 10 mg/mL (citrato) — frasco 20 mL"
-        },
-        {
-          "id": "pres-maro-cp",
-          "label": "Cerenia - comprimido (cão)"
-        }
-      ],
-      "doses": [
-        {
-          "id": "dose-maro-dog-sc",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — SC ou IV lenta (rotulado)"
-        },
-        {
-          "id": "dose-maro-dog-po",
-          "value": 2,
-          "max": 2,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — VO (biodisponibilidade oral ~50%)"
-        },
-        {
-          "id": "dose-maro-dog-motion",
-          "value": 8,
-          "max": 8,
-          "unit": "mg/kg",
-          "indication": "Enjoo de movimento (cão)"
-        },
-        {
-          "id": "dose-maro-cat-vomito",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Tratamento do vômito — regime parenteral rotulado"
-        },
-        {
-          "id": "dose-maro-cat-drc",
-          "value": 4,
-          "max": 4,
-          "unit": "mg/por gato",
-          "indication": "Vômito associado à DRC (extra-label; dose fixa)"
-        },
-        {
-          "id": "dose-maro-cat-po",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Prevenção de vômito — uso oral extra-label"
-        }
-      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
       "doseSources": [],
-      "precautions": [
-        "Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).",
-        "Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.",
-        "Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).",
-        "BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local."
-      ],
+      "precautions": [],
       "recommendations": [
         "• Manter o cão em ambiente pequeno, silencioso, acolchoado e com iluminação suave.",
         "• Bloquear completamente o acesso a escadas, piscinas, varandas, sofás e camas.",
@@ -2354,10 +1065,11 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
+        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "needs-review"
+      "status": "incomplete"
     },
     {
       "templateId": "seed-sindrome-vestibular-gato",
@@ -2371,71 +1083,14 @@
       "medications": [
         {
           "enteredName": "MAROPITANT",
-          "medicationId": "med-maropitant",
-          "activeIngredient": "Maropitant (citrato)"
+          "medicationId": null,
+          "activeIngredient": null
         }
       ],
-      "linkedCommercialPresentations": [
-        {
-          "id": "pres-maro-inj-20",
-          "label": "Solução injetável 10 mg/mL (citrato) — frasco 20 mL"
-        },
-        {
-          "id": "pres-maro-cp",
-          "label": "Cerenia - comprimido (cão)"
-        }
-      ],
-      "doses": [
-        {
-          "id": "dose-maro-dog-sc",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — SC ou IV lenta (rotulado)"
-        },
-        {
-          "id": "dose-maro-dog-po",
-          "value": 2,
-          "max": 2,
-          "unit": "mg/kg",
-          "indication": "Vômito agudo — VO (biodisponibilidade oral ~50%)"
-        },
-        {
-          "id": "dose-maro-dog-motion",
-          "value": 8,
-          "max": 8,
-          "unit": "mg/kg",
-          "indication": "Enjoo de movimento (cão)"
-        },
-        {
-          "id": "dose-maro-cat-vomito",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Tratamento do vômito — regime parenteral rotulado"
-        },
-        {
-          "id": "dose-maro-cat-drc",
-          "value": 4,
-          "max": 4,
-          "unit": "mg/por gato",
-          "indication": "Vômito associado à DRC (extra-label; dose fixa)"
-        },
-        {
-          "id": "dose-maro-cat-po",
-          "value": 1,
-          "max": 1,
-          "unit": "mg/kg",
-          "indication": "Prevenção de vômito — uso oral extra-label"
-        }
-      ],
+      "linkedCommercialPresentations": [],
+      "doses": [],
       "doseSources": [],
-      "precautions": [
-        "Hipotensão em anestesia: maropitant IV pode reduzir mais a PA sob isoflurano; risco acrescido com acepromazina (Plumb’s).",
-        "Incompatibilidade em Y com pantoprazol (precipitação) — não misturar na mesma linha sem dados de compatibilidade.",
-        "Filhotes: segurança não estabelecida nas idades mais baixas (BSAVA: referências de semanas mínimas por espécie/indicação).",
-        "BR: bula Zoetis consultada descreve indicação divulgada para cães; uso felino pode ser extra-label — documentação e consentimento conforme prática local."
-      ],
+      "precautions": [],
       "recommendations": [
         "• Manter o gato exclusivamente dentro de casa.",
         "• Colocar em ambiente pequeno, silencioso, acolchoado e sem locais altos.",
@@ -2476,10 +1131,11 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
+        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "needs-review"
+      "status": "incomplete"
     }
   ]
 }

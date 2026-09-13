@@ -42,7 +42,7 @@ export const cetoacidoseDiabeticaCaesGatosRecord: DiseaseRecord = {
   ],
   species: ['dog', 'cat'],
   category: 'endocrinologia',
-  categories: ['emergencia-intensivismo'],
+  categories: ['intensivismo'],
   tags: [
     'Cetonemia',
     'Beta-hidroxibutirato',

@@ -25,7 +25,7 @@ export const insulinomaCaesGatosRecord: DiseaseRecord = {
   ],
   species: ['dog', 'cat'],
   category: 'endocrinologia',
-  categories: ['oncologia', 'neurologia', 'emergencia-intensivismo'],
+  categories: ['oncologia', 'neurologia', 'intensivismo'],
   tags: [
     'Hipoglicemia',
     'Insulina',

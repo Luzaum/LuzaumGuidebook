@@ -116,7 +116,7 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     shortLabel: 'Diuréticos',
     description: 'Diuréticos osmóticos e agentes para redução aguda de pressões intracraniana ou intraocular.',
     icon: Waves,
-    theme: 'emergencia-intensivismo',
+    theme: 'intensivismo',
     selectedClassName: 'border-sky-500 bg-sky-500/[0.07] text-sky-800 dark:text-sky-300',
     iconClassName: 'text-sky-600 dark:text-sky-400',
     medicationSlugs: ['manitol'],

@@ -1,0 +1,1865 @@
+
+===== PDF PAGE 166 =====
+145CHAPTER 7 Diagnostic Cytopathology in Clinical Oncology
+Tumor Metastases and Tumors Exfoliating 
+into Cavity Effusions
+Specific tumor types preferentially metastasize to certain organs 
+or sites, depending on location of the primary tumor, vascular or 
+lymphatic dissemination, and many other factors. Regional lymph 
+nodes, lung, liver, and spleen are common metastatic sites, but 
+any tissue or organ can be involved, including skin, bone, bone 
+marrow, and the central nervous system. Cytologic identification 
+of tumor metastases begins with recognizing an abnormal popu -
+lation of cells in the metastatic site followed by determining the 
+tissue of origin, if possible, based on cytomorphologic features.
+Both primary and metastatic tumors may exfoliate into cavi -
+ties, including the thoracic, abdominal, and pericardial cavities, 
+or into cerebrospinal or synovial fluid. Although neoplastic cells 
+in these abnormal locations may be categorized as epithelial, mes-
+enchymal, or discrete round cell tumors, the specific origin of the 
+primary tumor is only rarely determined by examining cells in 
+the effusion. A major cytologic challenge when examining cells 
+in cavity effusions is distinguishing reactive mesothelium, meso -
+thelioma, and carcinoma (i.e., carcinomatosis). Mesothelium 
+undergoes hyperplasia and exfoliation whenever an effusion forms 
+in the thoracic, abdominal, or pericardial cavities, and reactive 
+mesothelial cells can adopt all the criteria of malignancy described 
+for tumor cells, including marked anisocytosis and anisokaryo -
+sis, macrocytosis and macrokaryosis, multinuclearity, variation of 
+nuclear size within the same cell, nucleolar pleomorphism, and 
+abnormal mitotic figures (Fig. 7.38). Identification of a mass and 
+histologic examination often are required for a definitive diagnosis.
+References
+ 1.  Langenbach A , McManus PM, Hendrick MJ, et al.: Sensitivity and 
+specificity of methods for assessing the regional lymph nodes for evi-
+dence of metastasis in dogs and cats with solid tumors, J Am Vet Med 
+Assoc 218:1424–1428, 2001.
+ 2.  Akhtar M , Ali M A, Huq M , et  al.: Fine-needle biopsy: compari -
+son of cellular yield with and without aspiration, Diagn Cytopathol 
+5:162–165, 1989.
+ 3.  Nyland TG, Wallack ST, Wisner ER: Needle-tract implantation fol-
+lowing US-guided fine-needle aspiration biopsy of transitional cell 
+carcinoma of the bladder, urethra, and prostate, Vet Rad Ultrasound 
+43:50–53, 2002.
+ 4.  Barger A , Graca R , Bailey K , et  al.: Use of alkaline phosphatase 
+staining to differentiate canine osteosarcoma from other vimentin-
+positive tumors, Vet Pathol 42:161–165, 2005.
+ 5.  Masserdotti C : Architectural patterns in cytology: correlation with 
+histology, Vet Clin Pathol 35:388–396, 2006.
+ 6.  Christopher M M, Hotz CS, Shelly SM, et al.: Interpretation by cli -
+nicians of probability expressions in cytology reports and effect on 
+clinical decision-making, J Vet Intern Med 24:496–503, 2010.
+ 7.  Masserdotti C, Drigo M: Retrospective study of cytologic features of 
+canine well-differentiated hepatocellular carcinoma, Vet Clin Pathol 
+41:382–390, 2012.
+ 8.  Alleman A R, Choi U S: Endocrine system. In Raskin R E, Meyer 
+DJ, editors: Canine and feline cytology: a color atlas and interpretation 
+guide, ed 2, St. Louis, 2010, Saunders.
+ 9.  Barthez PY, Marks SL, Woo J, et al.: Pheochromocytoma in dogs: 61 
+cases (1984–1995), J Vet Intern Med 11:272–278, 1997.
+ 10.  Bertazzolo W , Dell’Orco M, Bonfanti U , et al.: Canine angiosar -
+coma: cytologic, histologic, and immunohistochemical correlations, 
+Vet Clin Pathol 34:28–34, 2005.
+ 11.  Craig L E, Julian ME, Ferracone JD: The diagnosis and prognosis of 
+synovial tumors in dogs: 35 cases, Vet Pathol 39:66–73, 2002.
+ 12.  Vail D M, Powers B E, Getzy D M, et al.: Evaluation of prognostic 
+factors for dogs with synovial sarcoma: 36 cases (1986-1991), J Am 
+Vet Med Assoc 205:1300–1307, 1994.
+ 13.  Monti P , Barnes D , Adrian A M, et al.: Synovial cell sarcoma in a 
+dog: a misnomer-Cytologic and histologic findings and review of the 
+literature, Vet Clin Pathol 47:181–185, 2018.
+ 14.  Camus MS, Priest HL, Koehler JW, et al.: Cytologic criteria for mast 
+cell tumor grading in dogs with evaluation of clinical outcome, Vet 
+Pathol 53:1117–1123, 2016.
+ 15.  Flatland B , Fry M M, Newman S J, et  al.: Large anaplastic spinal 
+B-cell lymphoma in a cat, Vet Clin Pathol 37:389–396, 2008.
+ 16.  Affolter V K, Moore PF: Localized and disseminated histiocytic sar -
+coma of dendritic cell origin in dogs, Vet Pathol 39:74–83, 2002.
+ 17.  Moore PF, Affolter VK, Vernau W: Canine hemophagocytic histio-
+cytic sarcoma: a proliferative disorder of CD11d + macrophages, Vet 
+Pathol 43:632–645, 2006.
+• Fig. 7.38  Reactive mesothelial cells in pleural fluid from a cat with chylo-
+thorax. These cells may be highly pleomorphic and have criteria of malig -
+nancy, but they represented hyperplastic mesothelium in this cat.
+
+===== PDF PAGE 167 =====
+146
+8
+Molecular Diagnostics
+ANNE C. AVERY, KARA MAGEE, MELISSA C. PAOLONI, AND CHAND KHANNA
+Goals of Molecular Diagnostic Testing in 
+Oncology
+Molecular diagnostic testing in oncology is performed to achieve 
+one of several goals: (1) to determine whether a patient has can -
+cer, typically in circumstances in which visual examination of tis-
+sue by cytology or histology cannot distinguish a reactive from a 
+neoplastic process; (2) to establish a prognosis; and (3) to guide 
+treatment. Some of these goals currently are realized in veterinary 
+oncology; the polymerase chain reaction for antigen receptor rear-
+rangement (PARR) assay is used to confirm hematopoietic malig-
+nancy in both canine and feline patients, and the presence of c-kit 
+gene mutations can inform the prognosis in canine mast cell dis -
+ease. Increasingly, global analysis of oncogenes and gene expres -
+sion is being used in human oncology, and advances in technology 
+and ongoing veterinary research will make such testing available, 
+affordable, and informative in veterinary medicine within the next 
+few years.
+The presence of a particular mutation or chromosomal abnor-
+mality can help subclassify a tumor. For example, in people, leuke-
+mia/small cell lymphoma (CLL/SCL) and mantle cell lymphoma 
+(MCL) are both neoplasms of mature B cells, with a similar (but 
+not identical) immunophenotype. However, MCL almost always 
+has a rearrangement between the immunoglobulin heavy chain 
+locus (IgH) and the CCND1 gene (encoding cyclinD1), whereas 
+this rearrangement is very rare in CLL/SCL. 1 The prognosis for 
+and treatment of these two diseases are quite different, so the dis-
+tinction is important to make.
+Molecular diagnostic testing also can help guide therapy. This 
+may be best illustrated by the development of tyrosine kinase 
+inhibitors (TKIs). These drugs inhibit signaling through tyro -
+sine kinase receptors, such as KIT , platelet-derived growth fac -
+tor receptor (PDGFR), and epidermal growth factor receptor 
+(EGFR). T umors with mutations in these receptors that result in 
+their constitutive activation may respond well to TKIs, whereas 
+those without such mutations may require different kinds of 
+therapy. Thus testing for mutations in these genes has become 
+commonplace in human medicine (e.g., EGFR in small cell lung 
+carcinoma, stem cell factor [SCF] receptor [c-kit] in gastrointesti-
+nal stromal cell tumors). Similarly, mast cell tumors in dogs that 
+harbor a c-kit mutation may respond better to TKIs than those 
+without the mutation.2
+Oncogenes and chromosomal translocations uniquely distin -
+guish neoplastic from normal tissue. As such, sensitive detection 
+of mutations can be used to quantify residual disease in patients 
+that have been treated. The best example of this is detection of 
+the bcr-abl fusion gene, which can allow oncologists to detect 
+as few as 1:10 3 neoplastic cells in the peripheral blood of people 
+with chronic myelogenous leukemia. 4 T umor-specific primers 
+that recognize the unique immunoglobulin genes found in both 
+canine and human B-cell lymphomas have been used to quantify 
+tumor burden and monitor disease in both dogs and people with 
+lymphoma.1,4,5
+The previous examples describe testing for single genetic altera-
+tions that are known to be shared by most tumors of the same 
+type. Increasingly, the field of oncology is moving toward person-
+alized, or precision, medicine (PMED). The goal of PMED is to 
+identify genetic mutations and activated signaling pathways that 
+are found in an individual’s cancer, even when such changes have 
+not yet been described in a particular cancer type. (PMED is dis -
+cussed at the end of this chapter.)
+For the purposes of this chapter, molecular diagnostics refers to 
+the analysis of genes and gene expression. The goal of this chapter 
+is to review several molecular techniques useful in the diagnosis 
+and classification of cancer. Advanced molecular methodologies 
+and diagnostics likely will continue to improve, become increas -
+ingly inexpensive, simpler to use, and more broadly available to 
+veterinarians over the next few years. 
+Genomic Dysregulation in Cancer
+Most molecular diagnostics target genomic dysregulation that 
+may exist in cancer cells. Such dysregulation may occur at the level 
+of the copy number of a gene; a point mutation in that gene that 
+changes its function; epigenetic modification of deoxyribonucleic 
+acid (DNA) that changes the level of expression; or large-scale 
+changes to chromosomes that remove genes from their normal 
+regulatory environment. Different methods are required for iden-
+tifying each of these types of changes.
+Methods for Analyzing Genes
+DNA represents the genetic code of all species. This code consists 
+of a series of continuous nucleic acid sugar strands linked through 
+hydrogen bonds. This series of nucleic acids takes on a tertiary 
+folded structure through modification by binding proteins called 
+histones. The folded and wrapped DNA strand is packaged within 
+the chromosomes of the cell. The earliest techniques used to assess 
+the genetic changes of cancer defined gains, losses, or structural 
+changes in chromosomes, referred to as cytogenetics. Subsequently, 
+
+===== PDF PAGE 168 =====
+147CHAPTER 8 Molecular Diagnostics
+polymerase chain reaction (PCR)-based methods and high-
+throughput sequencing have allowed us to detect smaller discrete 
+mutations in DNA that do not involve changes in large portions 
+of the chromosome. Small deletions and insertions in genes, in 
+addition to single-nucleotide changes, are now routinely detected. 
+Detection of Chromosomal Abnormalities
+Historically these techniques involved the examination of meta -
+phase preparations made from chromosomes. The metaphase 
+preparations were then stained (banded) to help in the identifi -
+cation of distinct chromosome morphologies. These techniques 
+allowed detection of gross abnormalities in the chromosome 
+number (ploidy) and the presence of chromosomal translocations; 
+they also led to the identification of genes associated with tumor 
+development and progression. Cytogenetic analysis has been most 
+useful in the clinical assessment of leukemias, for which meta -
+phase preparations are relatively easy to develop from whole blood 
+samples.6 For most human leukemias, cytogenetic descriptors are 
+used to define distinct subgroups into prognostic groups and to 
+guide treatment decisions.
+The use of cytogenetic approaches in the management of com-
+panion animals has been limited because of the difficulty involved 
+in using conventional chromosomal banding to identify canine 
+chromosomes. The development of chromosome-specific “paints” 
+that allow the identification of specific canine chromosomes has 
+improved the opportunity to apply cytogenetic descriptors to 
+canine cancers. Using these techniques, Breen et al have identi -
+fied a chromosomal translocation in canine chronic myelogenous 
+leukemia and chronic monocytic leukemia that is the equivalent 
+of the bcr-abl Philadelphia chromosome found in human chronic 
+myelogenous leukemia.3,7
+For the most part traditional cytogenetic techniques, including 
+the use of chromosome-specific paints, are labor intensive and have 
+been replaced by alternative modalities. Comparative genomic 
+hybridization (CGH) arrays can define gains and losses in chromo-
+some number in tumor specimens rapidly and with highly repro-
+ducible results. In CGH analysis the investigator labels genomic 
+DNA from a normal individual and from a patient’s tumor cells 
+with two different-colored fluorescent probes. The labeled DNA 
+then is hybridized to an array of DNA probes that span most of 
+the genome. These probes are printed onto a chip or slide, such 
+that the location of each individual probe is identified. The degree 
+of hybridization to each probe is determined by the level of fluo -
+rescence detected by laser excitation. Equal hybridization of the 
+DNA from both sources to an individual probe indicates a normal 
+copy number, whereas increased binding by the tumor DNA indi-
+cates the presence of chromosomal duplication in the area of the 
+genome covered by that probe (Fig. 8.1). Similarly, higher binding 
+by the DNA from the normal individual indicates chromosomal 
+loss in the area.
+CGH arrays are useful for localizing chromosomal regions 
+where investigators should focus their search for genes impor -
+tant to that cancer. Studies of a number of cancers have shown 
+widespread gains and losses of genomic regions. Breen et al have 
+shown that a subset of T-cell lymphomas (histologically defined 
+as peripheral T-cell lymphoma, unspecified) exhibits copy num -
+ber gain in regions common to most examples of this histologic 
+type, but not present in other T-cell lymphoma subtypes. 8 This 
+finding will help identify genes within the duplicated areas that 
+might be useful for diagnostics and therapy and for understanding 
+the genesis of the neoplasm. A similar study in canine malignant 
+histiocytosis (MH) demonstrated that MH frequently exhib -
+its loss of chromosomal regions that contain tumor suppressor 
+genes,9 and transitional cell carcinomas (TCCs) were found to 
+commonly exhibit complete gain of a chromosome. 10 The latter 
+discovery led to the development of a diagnostic test for detection 
+of canine TCC by enumerating chromosomal copy numbers. 11 
+Thus such genetic characterization offers opportunities to develop 
+specific diagnostics, therapies, and management strategies.
+Whole genome sequencing (WGS, discussed later in the chap-
+ter) can also detect chromosomal rearrangements. Because this 
+technology rapidly is becoming less expensive and very efficient, 
+WGS likely will replace CGH arrays within the next decade. 
+PCR-Based Techniques—Detection of 
+Mutations and Novel Genes and Assessment 
+of Clonality
+PCR is the process of amplifying a small specific segment of DNA 
+for the purpose of further analysis. T wo small segments of DNA 
+(commonly about 20 bases long) that are complementary to the 
+DNA sequence surrounding the area to be amplified are synthe -
+sized. These primers are then used to amplify the DNA that lies 
+between them (typically less than 1000 bases). This amplified 
+Tumor DNA Reference DNA
+• Fig. 8.1  The principle of array analysis. A chip or slide is printed such that 
+each position on the chip (there are thousands) has a single probe, which 
+can range in size, depending on the type of array. DNA from a tumor tested 
+is labeled with one dye (green), and DNA from the reference sample with 
+another (red). Both samples are hybridized to the same chip. The separate 
+red and green panels indicate that the tumor DNA exhibits both chro -
+mosomal gain (increased green fluorescence) and loss (decreased green 
+fluorescence). When the two DNA preparations are cohybridized, a yellow 
+signal indicates equal degrees of red and green fluorescence. When a gain 
+in copy number occurs in a region of DNA, the signal is green. When a 
+loss in copy number occurs, the signal is red. This is one of several ways 
+microarrays can be performed.
+
+===== PDF PAGE 169 =====
+148
+PART II  Diagnostic Procedures for the Cancer Patient
+DNA product can be analyzed in a number of ways for mutations 
+and to quantify the product for measurement of gene expression; 
+or, in the case of lymphoid malignancy, the DNA can be separated 
+by size to look for clonal populations of B and T cells. The same 
+methods can be applied to the analysis of ribonucleic acid (RNA) 
+once the RNA has been transcribed into DNA (reverse transcrip -
+tase PCR [RT-PCR]).
+For primer synthesis the sequence of the target gene typically 
+must be known. The publication of good quality canine 12 and 
+feline13 genomes has been invaluable in this regard—it is now pos-
+sible simply to use the known sequences, rather than hope for 
+sequence similarities with mice and humans.
+Detection of Genetic Insertions and Deletions
+PCR-based assays commonly are used in human oncology to 
+detect insertions or deletions in genes relevant to the prognosis 
+or treatment of a neoplasm. In veterinary medicine detection of 
+internal tandem duplications in the c-kit gene in canine mast cell 
+tumors is now a routine part of the diagnosis for the purpose 
+of obtaining prognostic information. The primary mutations 
+described are internal tandem duplications (ITDs) in two dif -
+ferent exons, exon 8 and exon 11. 14 The mutations involve the 
+duplication of a small segment of DNA so that it is repeated, 
+resulting in a larger gene ( Fig. 8.2). Approximately 14% to 20% 
+of canine mast cell tumors have a duplication in either exon 8 or 
+exon 11. 14 Dogs with tumors that carry the ITDs consistently 
+have been shown to have a worse outcome than dogs with a wild-
+type c-kit gene.15,16
+Detection of this type is fairly simple, because the presence of 
+a larger (or smaller, in the case of deletions) PCR product is deter-
+mined by size separation. As more genes are identified as targets of 
+therapy, such assays likely will become more frequent. Suter et al 
+identified an internal duplication in the flt3 gene using the same 
+methods17 and provided preliminary evidence that the response 
+to a small molecule inhibitor is predicted by the presence of this 
+mutation in cell lines. Thus we are likely to see routine use of 
+mutation detection in the near future. 
+Detection of Single-Base Mutations
+Some cancers will have predictable, single-base mutations that 
+can be detected by standard sequencing. However, sequencing can 
+be insensitive; therefore a variety of PCR-based assays have been 
+developed for mutation analysis. The best example of this type of 
+assay currently in use is detection of a single nucleotide change 
+found in the BRAF gene in 80% of cases of canine TCC. 18 The 
+mutation found in the canine gene is equivalent to a BRAF muta-
+tion common in a variety of human cancers (V600E), and it causes 
+constitutive activation of the BRAF protein. BRAF is a  serine/
+threonine kinase, which activates a series of downstream signaling 
+pathways to drive cellular metabolism and proliferation.19
+Breen et al developed a PCR-based assay to detect this muta -
+tion (in dogs the mutation is called V595E).20 The purpose of the 
+assay is to diagnose TCC in urine samples with suspicious cells, 
+which can often be difficult by cytology alone. The method used 
+for detection is a technique called droplet digital PCR  (ddPCR). 
+ddPCR can detect the V595E mutation when it is present in 
+as little as .01% of the DNA. 20 This method was considerably 
+more sensitive than standard sequencing, which could not detect 
+the mutation when it was present in less than 10% of the DNA. 
+ddPCR probably will be used more commonly in the future, 
+because it provides a way of quantifying mutations and DNA 
+copy number changes with high precision. 
+Detection of Fusion Gene Products by PCR
+One mechanism by which chromosomal translocation causes 
+malignant transformation of cells is to create novel proteins with 
+altered function. The best studied of these fusion genes, the Phila-
+delphia chromosome, is the bcr-abl fusion gene found in greater 
+than 90% of all human chronic myelogenous leukemias (CMLs) 
+and occasionally acute lymphoblastic leukemia (ALL) and acute 
+myelogenous leukemia (AML).21 ABL is a tyrosine kinase that has 
+myriad activities in cell growth and differentiation. It is encoded 
+on human chromosome 9, and in CML is translocated to chro -
+mosome 22. The site of the translocation varies within the bcr 
+(breakpoint cluster region) gene, so that a new fusion gene, bcr-
+abl, is formed. The new fusion protein allows for the constitutive 
+activation of the ABL tyrosine kinase, which in turn promotes the 
+development of CML. This novel protein is the product of a novel 
+RNA transcript, which can be readily detected by RT-PCR. This 
+assay can detect as few as 1:10 3 tumor cells 4 and therefore can 
+be used both for diagnosis of CML and for quantifying residual 
+disease after treatment.
+Assays for a large number of translocations in human cancers 
+have been developed over the past 10 years.22 These assays are now 
+routinely available for characterization of human tumors, particu-
+larly leukemia and sarcoma. The finding that canine leukemia and 
+lymphoma can exhibit the same translocations as their human 
+counterparts7,23 suggests that detection of novel fusion genes 
+will provide inexpensive and sensitive diagnostic testing both for 
+detecting cancer and for monitoring disease in the near future. 
+Assessment of Clonality in Lymphoma and Leukemia
+A clonality assay demonstrates that a group of cells is derived from 
+a single clone. The term usually is used to refer to detection of 
+the unique genes found in each individual B or T cell—immu -
+noglobulin genes in B cells and T-cell receptor (TCR) genes in T 
+cells. The portion of these genes that encodes the antigen binding 
+region is the portion that varies between cells, both in size and 
+sequence. Once a B or T cell is mature and divides in response 
+to antigenic stimulation, the immunoglobulin and T-cell receptor 
+genes are passed on to the daughter cells.24,25
+In the course of a normal immune response to a pathogen, 
+B and T cells are activated, expand, and eventually die, leaving 
+behind a small number of residual memory cells. On the other 
+hand, when a cell becomes neoplastic, it no longer responds to 
+growth controls and undergoes unlimited expansion. Therefore if 
+it can be established that most of the cells in a particular collection 
+of lymphocytes have the same immunoglobulin or T-cell receptor 
+gene, these cells most likely are neoplastic rather than reactive.26
+When immunoglobulin and T-cell receptor genes rearrange 
+during the course of B-cell and T-cell development, respectively, 
+the length and sequence of the resultant gene differs from cell 
+to cell. This happens for many reasons; for example, nucleotides 
+are added between V , D, and J segments as they rearrange into 
+a contiguous formation. The clonality assay takes advantage of 
+this development. A sample consisting of many different lympho-
+cytes, as in a reactive process (e.g., the lymph nodes of a dog with 
+chronic pyoderma or poor dental hygiene), will have multiple, 
+different-sized, T-cell receptor and immunoglobulin genes. On 
+the other hand, in a sample consisting of neoplastic lymphocytes, 
+the immunoglobulin gene or the T-cell receptor gene (depending 
+on whether it is a B-cell or a T-cell lymphoma) will be a single 
+size (Fig. 8.3). (All methods used in veterinary medicine to detect 
+clonally rearranged T-cell receptor genes target the TCR gamma 
+gene.)
+
+===== PDF PAGE 170 =====
+149CHAPTER 8 Molecular Diagnostics
+Exons 1–7 12–2181 19–10
+Exons 1–7 12–2181 19–10
+Exons 1–7 12–2181 19–10
+Exons 1–7 12–2181 19–10
+Exons 1–7 12–2181 19–10
+Exons 1–7 12–2181 19–10
+Exons 1–7
+12,000
+100 110 120 130
+132.5
+140 150 160 170 180 190 200 210 220 230 240
+10,000
+8,000
+6,000
+4,000
+2,000
+0
+9,000
+8,000
+7,000
+6,000
+100 110 120 130
+132.6
+140 150 160 170 180 190 200 210 220 230 240
+5,000
+4,000
+3,000
+2,000
+1,000
+0
+/H110021,000
+16,000
+12,000
+14,000
+85 90 95 100
+91.8
+105 110 115 120 125 130 135 140 145
+10,000
+8,000
+6,000
+4,000
+2,000
+0
+18,000
+16,000
+14,000
+12,000
+85 90 95 100
+91.9
+105 110 115 120 125 130 135 140 145
+10,000
+8,000
+6,000
+4,000
+2,000
+0
+/H110022,000
+12–2181 19–10
+Exons 1–7 12–2181 19–10
+A
+B
+• Fig. 8.2  Detection of c-kit mutations by polymerase chain reaction (PCR). (A) Two different tumor types 
+are depicted: one has two copies of a wild-type c-kit gene, and the other has one copy of a c-kit gene 
+containing an internal tandem duplication in exon 11. On the right are shown the PCR products detected 
+after amplification with primers surrounding the duplication (arrows) for each tumor. (B) Same as in (A), but 
+in this case the second tumor has an internal duplication in exon 8, and the PCR products are amplified 
+with primers flanking the region of the duplication.
+
+===== PDF PAGE 171 =====
+150
+PART II  Diagnostic Procedures for the Cancer Patient
+Clonality assays are accomplished by isolating DNA from cells 
+suspected to be neoplastic. PCR primers directed at the conserved 
+regions of T-cell receptor or immunoglobulin genes are used to 
+amplify the variable regions, and the PCR products are separated 
+by size using a variety of methods. The presence of a single-sized 
+PCR product indicates clonality, whereas the presence of multiple 
+PCR products supports a reactive process. 27 This assay has been 
+reported by a number of laboratories for both dogs and cats27; it is 
+termed the PCR for antigen receptor rearrangements  (PARR) assay 
+to distinguish it from other types of clonality assays.28 It should be 
+noted, however, that the term “PARR” is not used in the human 
+literature, where the assay instead is referred to as a clonality assay.
+The PARR assay can detect approximately 1:100 neoplastic 
+cells. The sensitivity and specificity of the assay differ between 
+laboratories; however, because the results are significantly affected 
+by the conditions under which the assay is run and the technique 
+used to separate the PCR products, clinicians must consult the 
+laboratory providing the testing about the sensitivity and specific-
+ity of the assay as performed under their conditions.
+The main application of the PARR assay is to establish clon -
+ality in a sample that is cytologically or histologically ambigu -
+ous. Another application is to compare two neoplasms arising at 
+different times to determine whether they have the same clonal 
+origin.29 The PARR assay increasingly is used to distinguish 
+0 0
+1,000
+2,000
+3,000
+4,000
+5,000
+6,000
+7,000
+8,000
+9,000
+10,000
+Size Size
+500
+1,000
+1,500
+2,000
+2,500
+V region
+V1 V2 V3
+V1 V2 V3
+V3
+V4
+V4
+V79 V80 12
+2
+2
+34
+4
+4V79
+A
+BC
+4
+56 J1 J2
+J2
+J2
+J3
+J3
+J3
+J3
+V4 2J 3
+V4 2J 3
+J4
+J4
+J5
+J5
+J5
+D region J region
+404550556065707580859095100105110115120125130135140 404550556065707580859095100105110115120125130135140
+• Fig. 8.3  Rearrangement of immunoglobulin genes. (A) There are approximately 80 V region genes, 6 D 
+region genes, and 5 J region genes. Single V, D, and J genes are brought together at random to create 
+a single VDJ gene segment, which encodes the antigen-binding portion of an antibody, and the interven-
+ing sequence is removed. (B) In the process of bringing together V, D and J genes, a variable number of 
+nucleotides (black) are added between V and D, and D and J. As a result, each individual B cell will have a 
+VDJ gene segment with a unique length. When DNA from a heterogeneous population of B cells is isolated 
+and amplified with primers bracketing the VDJ gene segment (small arrows), the polymerase chain reac-
+tion (PCR) products will be different lengths. The lower panel shows the PCR products separated by size 
+by capillary gel electrophoresis; it illustrates multiple different-sized PCR products. (C) When a population 
+of B cells comprises cells derived from a single clone, all the VDJ gene segments will be identically sized. 
+PCR amplification of the VDJ gene segment will yield a single-sized product (see lower panel).  All the 
+principles illustrated here apply to T-cell receptor (TCR) genes. For the clonality assay, the T-cell receptor 
+γ-chain is amplified, although in theory the TCR β -chain could also be used.
+
+===== PDF PAGE 172 =====
+151CHAPTER 8 Molecular Diagnostics
+inflammatory bowel disease from gastrointestinal (GI) lymphoma 
+in dogs30,31 and cats 32,33 and to aid in the diagnosis of nodular 
+splenic lymphoma, which can be difficult to distinguish from 
+nodular hyperplasia.34
+Clonality assays sometimes can be useful for establishing the 
+lineage (B cell vs. T cell) in cytologically unambiguous lympho -
+mas if additional case material is not obtainable from the patient. 
+However, flow cytometry or immunohistochemistry generally is 
+preferable for this purpose, for several reasons: first, aberrant rear-
+rangements occasionally can be seen in nonlymphoid tumors, such 
+as myelogenous leukemias.35 Second, simply knowing whether a 
+neoplasm is derived from a B cell or a T cell may not be clinically 
+useful. Both lineages can give rise to markedly different tumor 
+types with significantly different outcomes. For example, the 
+two most common forms of T-cell lymphoma (peripheral T-cell 
+lymphoma and T-zone lymphoma) both have clonally rearranged 
+T-cell receptor genes. Peripheral T-cell lymphoma, however, has a 
+median survival time of 150 days,36 whereas T-zone lymphoma is 
+indolent and may not require treatment at all.37
+The principle of the clonality assay also can be used to quan -
+tify tumor cells in blood, bone marrow, or node and to monitor 
+minimum residual disease. For this type of analysis PCR primers 
+specific for the immunoglobulin or T-cell receptor gene carried by 
+the tumor are used instead of the broadly reactive primers used 
+to screen samples. In this way the investigator is certain that only 
+tumor DNA is amplified, and not nonneoplastic lymphocytes. 
+The specificity of this reaction permits determination of the num-
+ber of tumor cells in a sample of blood, even when those cells are 
+as rare as 1:10 4 cells. Yamazaki et al demonstrated that with cur-
+rent chemotherapy protocols, all seven dogs they examined had at 
+least 1:104 cells in their peripheral blood, even though the dogs 
+achieved clinical remission. 5 Although this kind of analysis may 
+not be practical for routine diagnostics, it is a powerful research 
+tool to compare the efficacy of novel chemotherapy regimens, and 
+it also can be used to refine current protocols. Indeed, this method 
+subsequently was used by Sato et  al to evaluate the responsive -
+ness of B-cell lymphoma to individual components of the cyclo-
+phosphamide, hydroxydaunorubicin, Oncovin and prednisone or 
+prednisolone (CHOP) chemotherapy protocol.38 
+Assessment of Clonality in Nonlymphoid Neoplasms
+Nonlymphoid cells do not have unique DNA sequences that dif -
+fer from cell to cell, so other methods must be used for clonality 
+assessment. The question of whether a collection of cells is neo -
+plastic arises in a variety of circumstances—eosinophilia in the 
+cat, for example, or pleural effusion in a dog, which is dominated 
+by cells that could be either reactive or neoplastic mesothelium. 
+One way to determine whether the cells in these cases are derived 
+from the same clone is to examine the pattern of X chromosome 
+inactivation. One copy of the X chromosome in the cells of female 
+animals is inactivated by DNA methylation. The purpose of the 
+inactivation is to ensure that both male and female animals have 
+the same “dosage” of genes found on the X chromosome. Inacti -
+vation is thought to be random, so in a nonneoplastic collection 
+of cells, any given cell would have an equal chance of either the 
+maternal or paternal X chromosome being inactivated. If the cells 
+are all derived from the same clone, however, the same X chromo-
+some would be inactivated in each cell.
+In female animals, X chromosome inactivation can be mea -
+sured using the androgen receptor gene. This gene contains 
+repeated DNA elements (CAG repeats), the number of which 
+varies. If an animal is heterozygous for the number of repeats, 
+it is possible to determine whether the same X chromosome is 
+inactivated in all the cells in a particular sample. Because not all 
+animals will be heterozygous, the assay is useful only in a subset of 
+female animals—68% of cats 39 and 50% of dogs.40 The assay has 
+been used for canine patients with possible chronic myelogenous 
+leukemia40 and for cats with possible myelodysplastic syndrome.39 
+In dogs this assay has been named the canine androgen receptor 
+assay (CANARA assay).41 
+Whole Genome and Whole Exome Sequencing—
+Next Generation Sequencing
+Next generation sequencing (also known as massively parallel 
+sequencing) is a technology that allows investigators to sequence the 
+entire genome of an individual (or an individual’s tumor). Sequenc-
+ing an entire genome was considered an enormous and expensive 
+endeavor not many years ago, but it is now a routine part of inves-
+tigating the biology of cancer. Thousands of human cancers have 
+been fully sequenced, and the cost and efficiency of this process 
+means that individual tumors can be sequenced to aid clinical deci-
+sion making. The main types of information that can be obtained 
+from whole genome sequencing of a tumor include (1) mutations 
+in potential oncogenes or tumor suppressor genes, including single 
+nucleotide variants (SNVs) and insertions and deletions (indels); 
+(2) structural changes in chromosomes, including fustion genes 
+and copy number variations (CNVs) , in which whole genetic 
+regions may be duplicated; and (3) the mutational load of a par -
+ticular tumor, which may predict responsiveness to checkpoint 
+inhibitor therapy and also identify potential neoantigens that may 
+be targeted in immunotherapy strategies. The principles of next 
+generation sequencing are described in the next section. 
+Quantifying Genes and Gene Expression
+The complete genetic code, or DNA sequence, is present within 
+every cell in the body. The effective genetic information that uniquely 
+defines each cell type within the body is defined by the genes 
+expressed (transcribed) as messenger RNA (mRNA). The complete 
+profile of mRNA expression is more responsible for the phenotype 
+of a cancer than the individual genes, although mutations in a gene 
+often are individual drivers of a cancer phenotype. T o assess the level 
+of expression of one or a few genes, three methods could be used: 
+(1) real-time quantitative PCR (RT-qPCR), which has been used 
+for many years; (2) ddPCR, which is a more recent development 
+that has many advantages over RT-qPCR and which probably will 
+replace RT-qPCR for most applications; and (3) non-PCR–based 
+gene counting methods, such as Nanostring.
+If the goal is to measure expression of all the genes in a tumor, 
+microarrays and, more recently, RNA sequencing (RNA seq) 
+methods have been used. Assessment of the global level of gene 
+expression is called gene expression profiling.
+Real-Time PCR and Droplet Digital PCR
+RT-qPCR refers to the quantitative (Q) measurement of 
+DNA—either genes or, more commonly, RNA that has be 
+reversed transcribed to cDNA. 42 The principle of RT-qPCR 
+is that DNA is amplified using primers, just as in a routine 
+PCR reaction, but at each round of amplification, the amount 
+of PCR product is quantified. Unlike endpoint PCR, in which 
+the reaction runs to completion and the product is separated by 
+size, real-time PCR is quantitative and relies on the change in 
+the amount of PCR product, as measured by fluorescence, as 
+the reaction progresses.
+
+===== PDF PAGE 173 =====
+152
+PART II  Diagnostic Procedures for the Cancer Patient
+Real-time PCR typically uses fluorescently labeled DNA 
+probes. These are short segments of DNA complementary to the 
+target sequence between the two primer sites. A fluorescent mol -
+ecule attached to the probe is quenched (no fluorescence detect -
+able) until the 5′ to 3′ exonuclease activity of the Taq polymerase 
+releases the fluorescent molecule. As the amount of PCR product 
+increases proportional to the starting material, the amount of fluo-
+rescence increases ( Fig. 8.4A). The expression level of a gene of 
+interest is normalized to housekeeping genes and can be compared 
+between samples.
+ddPCR rapidly is replacing RT-qPCR because it has a number 
+of distinct advantages.43 In this method, RNA is reverse transcribed 
+into cDNA and then the cDNA is dispersed into thousands of oil 
+droplets, in such a proportion that the oil droplet will have either 
+one copy of the gene of interest or no copies (see Fig. 8.4B). Also 
+in the oil droplet is the other material for a PCR reaction (primers, 
+fluorescent probes as described previously, and polymerase). An 
+endpoint PCR reaction is performed in each droplet (all drop -
+lets are amplified simultaneously), and the number of fluorescent 
+droplets is counted. This is called “digital” PCR because the level 
+of gene expression is correlated with the count of positive droplets. 
+By contrast, RT-qPCR measures the level of gene by the cumula-
+tive fluorescence of all the cDNA in the sample.
+The reason ddPCR is an improvement on RT-qPCR is that for 
+the latter, scrupulous attention must be paid to primer efficiency, 
+and the range of gene expression over which it is useful is limited. 
+PCR in each
+droplet
+Number of fluorescent
+droplets counted
+High gene expression Low gene expression
+Fluorescence
+Fluorescence
+PCR cycle
+Fluorescence
+01 0
+B
+A
+20 30
+• Fig. 8.4  Comparison of a real-time quantitative polymerase chain reaction (RT-qPCR) assay and a drop-
+let digital PCR (ddPCR) assay. (A) An RT-qPCR assay shows different levels of expression of a gene in two 
+different tumors. The green lines are from a tumor (performed in triplicate) that expresses high levels of the 
+gene being measured; the blue lines are from a tumor that expresses lower levels of the gene being mea-
+sured. At the end of the reaction (cycle 40 in this example), the two samples have almost the same level 
+of fluorescence. In RT-qPCR, gene expression is assessed by measuring the difference in fluorescence in 
+the early cycles. The difference in fluorescence at cycle 22 is significant. The same curves are generated 
+for a housekeeping gene (not shown) to normalize the amount of input complementary DNA (cDNA) for 
+both samples. (B) In ddPCR, RNA is reverse transcribed into cDNA, and the cDNA (which includes all 
+genes) then is partitioned into thousands of oil droplets, using special instrumentation, together with the 
+other materials for a PCR reaction (primers, polymerase, fluorescent probes). Many droplets will be empty; 
+some will have cDNA but not the gene of interest (black); and some will have the gene of interest. The PCR 
+reaction is performed to endpoint (e.g., 30 cycles). The amount of RNA of the gene of interest is reflected 
+by the number of fluorescent droplets. As with RT-qPCR, a similar reaction using a housekeeping gene is 
+performed to normalize input cDNA levels.
+
+===== PDF PAGE 174 =====
+153CHAPTER 8 Molecular Diagnostics
+With ddPCR, as long as the PCR reaction produces a fluorescent 
+signal, the efficiency with which the reaction achieves that signal 
+is not as relevant to the results. The technology is also less limited 
+by the amount of sample available. 
+Gene Expression Profiling
+Gene expression profiling refers to the quantification of thou -
+sands of mRNAs simultaneously, to create a picture of global gene 
+expression in the cell population. The pattern of gene expression is 
+called a gene expression profile. In most cases gene expression profil-
+ing is comparative. Investigators can compare expression profiles 
+of tumor cells to the normal cellular counterpart, to similar tumors 
+with different clinical outcomes, to tumor cells from the same 
+patient before and after therapy, or between primary and meta -
+static lesions, to determine how different pathways have changed. 
+Such information has proven invaluable in a variety of settings. 
+For example, in a study of cervical cancer in people, investiga -
+tors analyzed gene expression profiles of tumors that responded 
+to chemotherapy and radiation and compared those with tumors 
+that did not. Their study revealed that activation of the PI3K/Akt 
+signaling pathway was associated with a poor response, suggesting 
+one potential therapeutic target.44 It is important to note that the 
+collective signature of an expression profile can be an informa -
+tive predictor of disease biology or response to therapy; however, 
+alterations in the expression of a single gene are rarely informative 
+and require extensive post hoc validation.
+Another example of how gene expression profiling has advanced 
+oncology is the studies of B-cell lymphoma by Staudt and col -
+leagues. Noting that diffuse large B-cell lymphoma (DLBCL) has 
+a heterogeneous outcome in people, this group compared the gene 
+expression profiles of 96 DLBCLs with B cells derived from dif -
+ferent stages of normal B-cell development.45 They found that the 
+gene expression profile of DLBCL could be categorized either as 
+similar to germinal center B cells or similar to activated B cells. 
+Importantly, these two categories had prognostic significance; 
+germinal center–like DLBCL patients have a better prognosis. 
+The distinction between germinal center DLBCL and activated 
+B-cell DLBCL is now well established as a prognostic indicator 
+in people. Studies of canine lymphoma have offered conflicting 
+data with regard to subclassification of canine DLBCL into germi-
+nal center and activated B-cell subtypes based on gene expression 
+profiling, so additional study is necessary. 46,47 Staudt et al made 
+another important discovery about human B-cell lymphoma, 
+using gene expression profiling, that provided insights into immu-
+nity to cancer. Expression profiles of lymph nodes from patients 
+with follicular B-cell lymphoma demonstrated that the type of 
+immune response signature was prognostic in this disease. Patients 
+whose lymph node gene expression patterns exhibited evidence of 
+T-cell activation had a better overall survival than patients whose 
+gene expression patterns resembled activated macrophages.48 The 
+expression profile of the tumor cells themselves was not predic -
+tive. This finding suggests that the immune response contributes 
+to survival in patients with follicular B-cell lymphoma, a result 
+corroborated in other types of B-cell lymphoma.49,50
+Microarrays
+Microarrays are solid chips on which DNA probes that are com -
+plementary to thousands of different genes are imprinted. 51 Such 
+platforms expand the study of expression of single genes to a larger 
+scale needed for an expression signature to be defined. RNA from 
+a tumor is transcribed into cDNA and labeled with a fluorescent 
+molecule. The labeled cDNA is then hybridized with the probes 
+on the chip, and the level of fluorescence is proportional to the 
+number of copies of RNA molecules in the sample ( Fig. 8.5). A 
+microarray experiment can be performed in a large variety of ways, 
+but ultimately the goal is to measure expression of all the genes in 
+the sample. 
+mRNA labeled with a green fluorescent molecule
+Low gene
+expression
+(few mRNAs)
+MICROARRAYSR NA SEQ
+High gene
+expression
+(many
+ mRNAs)
+High gene
+expression
+(many
+ mRNAs)
+Low gene
+expression
+(few mRNAs)
+9 copies
+Level of fluorescence
+27 copies
+• Fig. 8.5  Comparison of the measurement of gene expression using microarrays and RNA seq. Micro -
+arrays are carried out by labeling all the messenger RNAs (mRNAs) (reverse transcribed into cDNAs) in 
+a sample with a fluorescent molecule, and then allowing that molecule to anneal to a chip coated with 
+thousands of DNA probes complementary to each cDNA. The level of fluorescence at each position on 
+the chip (corresponding to an individual gene) reflects the total number of mRNA molecules in the sample, 
+but the number of mRNA molecules is not counted. RNA seq, on the other hand, uses technology that 
+allows every single expressed gene to be sequenced. Because the sequence of every gene is known, the 
+absolute number of mRNAs for each gene in the sample can be counted.
+
+===== PDF PAGE 175 =====
+154
+PART II  Diagnostic Procedures for the Cancer Patient
+RNA seq
+As does a microarray, RNA seq measures global gene expression.52 
+In microarrays the amount of mRNA from an individual gene is 
+measured by the cumulative fluorescence contributed by all cop -
+ies of the mRNA transcribed from a given gene (see Fig. 8.5). 
+RNA seq, however, uses massively parallel sequencing, also known 
+as Next Gen sequencing, to sequence every mRNA in a sample. 
+The sequence allows for identification of the gene from which it 
+was derived. Because all mRNAs are sequenced, this methodol -
+ogy allows the investigator to count the number of individual 
+mRNAs. Genes that are highly expressed will have high numbers 
+of mRNAs.
+Although RNA seq experiments involve a great deal more 
+bioinformatic complexity, they also can provide information not 
+obtainable using microarrays. This includes the ability to identify 
+potential mutations in coding regions because sequence informa -
+tion is being obtained, and the ability to identify some fusion 
+genes that create fusion transcripts. 
+Personalized Medicine in Cancer
+Foundations of Precision Medicine: the Genetic 
+Basis of Cancer
+Cancer is a genetic disease that arises as a consequence of the step-
+wise accumulation of disruptive mutations in genes that regulate 
+cell life and death. Clonal expansion of cell populations bearing 
+cancer gene mutations fuels the formation of malignant tumors. 
+This genetic model of cancer emerged in the latter 20th century 
+as a product of advances in genetics, evolution, and cancer medi -
+cine. Through this mutational process, cancers acquire specific key 
+properties, including self-sufficient growth signaling, resistance to 
+growth inhibitory signaling, invasion and metastasis, unlimited 
+replication potential, angiogenic signaling, immune modulation, 
+DNA instability, metabolic dysregulation, and immune evasion.53
+The genetic model and its downstream phenotypes have since 
+been validated in many cancer types and provide a framework 
+for our growing genomic understanding of cancer. The concept 
+of personalized or precision medicine stems from the previously 
+described genomic underpinning of cancer and its nascent and 
+emerging complexity. Indeed, truly personalized and genomic 
+medicine now seeks to define the genomic drivers of a particular 
+patient’s cancer and match these alterations to specific therapeu -
+tics. PMED is ushering in a new era in cancer therapy in which 
+clinical and translational value are applied to advances in the 
+genomic analysis of cancer. The discoveries and tools described 
+previously have provided new opportunities to tailor cancer ther -
+apy to the individual molecular characteristics of a specific cancer, 
+in a specific patient, to guide diagnosis, prognosis, and treatment 
+selection. In many cases these genetic alterations can be matched 
+to specific therapeutic agents as a means to uniquely improve 
+outcomes for patients. T umor samples and matched germline 
+samples (from peripheral blood or cheek swabs) may be collected, 
+preserved, and then analyzed for genetic alterations in a core set of 
+cancer genes, which ultimately are matched to an individualized 
+therapeutic prescription. 
+How Precision Medicine Differs from the Current 
+Practice of Oncology
+The use of patient-specific information as a means to deliver 
+PMED is not new to the treatment of cancer patients. Through 
+the history of cancer medicine, treatments have been administered 
+in a patient-specific and personalized manner. Even in the modern 
+era, the use of molecular data to guide the therapy of specific indi-
+viduals with cancer is not entirely novel. The use of specific immu-
+nohistochemical or cytogenetic markers to guide the diagnosis 
+and prognosis has been a critical and routine practice in pathol -
+ogy laboratories for many decades. Furthermore, in some cancers 
+molecular markers have been used to guide treatment selection. 
+For example, in human breast cancer a long-standing practice has 
+been to define the expression of hormone receptors as a means to 
+deliver specific therapeutics that alter downstream signaling path-
+ways.54 C-kit mutation status has been used in veterinary medi -
+cine to direct therapy for mast cell tumors,2,55 but conflicting data 
+in the literature raise questions about this approach, and more 
+investigation is needed.16
+Although genomic data is expected to affect patient outcomes 
+dramatically, genomic data has been slow to enter the clinic. One 
+of the first pilot studies incorporating molecular profiling to guide 
+therapy in advanced cancers was published in 2010. 56 This study 
+faced considerable challenges, but the researchers found that 27% 
+of 68 patients treated according to molecular profiling recom -
+mendations (i.e., PMED) experienced a longer progression-free 
+survival than during the most recent treatment on which they had 
+progressed. Although it is perhaps intuitively beneficial to incor -
+porate precise target identification into patient treatment, this 
+approach still faces significant hurdles, and it remains to be proven 
+through prospective trials that treatment based on PMED out -
+performs a physician’s choice of treatment. Now, multiple clinical 
+trials incorporating genomics-guided therapy selection are under-
+way to test this very hypothesis. In one such trial, the Stand Up T o 
+Cancer and Melanoma Research Alliance Dream T eam Clinical 
+T rial, molecularly guided therapy in non-V600E mutant BRAF 
+metastatic melanoma is being assessed. This is now an ongoing 
+randomized clinical trial.
+Returning clinically relevant and actionable information based 
+on genomic analysis within a window that enables effective treat -
+ment selection is a substantial challenge. Notable hurdles include 
+those associated with tumor biopsy; sample preservation and 
+transport; nucleic acid extraction and quality control; genomic 
+sequencing infrastructure and platform; data analysis and integra-
+tion; generation of digestible genomic reports for physicians, vet -
+erinarians, and scientists alike; and performance of tumor board 
+reviews to provide a treatment recommendation. Additional 
+hurdles involve the implementation of precision medicine in the 
+clinic.
+In the broadest sense, the clinician seeking a PMED approach 
+for a patient must first ask what data would be most helpful.
+“I need new treatment options.” In the setting of a rare tumor or 
+a patient with unusual tumor biology, new ideas for therapy may 
+be needed. In this setting an optimal PMED platform will identify 
+specific drivers of this patient’s cancer biology and propose new 
+treatments. For such a clinical question, an optimal PMED plat -
+form likely will include an analysis of mutations in cancer-associ-
+ated genes, with drug matching to target the presumed aberrant 
+mutational targets of the individual cancer. The validation of the 
+value of this approach has been difficult using conventional clini-
+cal trial designs and may demand novel perspectives on evidence 
+for clinical validation. Because many solid tumors are clinical 
+problems as a result of metastatic progression (e.g., canine osteo -
+sarcoma), the optimal PMED platform will derive a list of “shed” 
+mutational targets from circulating biofluids (i.e., so-called liquid 
+biopsy) alone or in combination with tumor analysis.
+
+===== PDF PAGE 176 =====
+155CHAPTER 8 Molecular Diagnostics
+“I have some idea on treatments but want to prioritize the best 
+therapy.” It is not uncommon that the selection of the best treat -
+ment for a cancer histology is unclear and often defaults to the 
+clinician’s preference (e.g., selection of a specific cytotoxic che -
+motherapy for canine bladder carcinoma). A distinct PMED 
+approach may provide assistance in known drug selection. The 
+theoretical value of selecting the best drug, based on intrinsic 
+resistance and sensitivity signatures, may be effectively provided 
+through transcriptomic, proteomic, and cell-based PMED plat -
+forms. The validation of these drug selection strategies will require 
+prospective validation in specific cancers in which cohorts of indi-
+viduals may receive a PMED-described medication compared 
+with clinician’s best choice. Such transcriptomic, proteomic, and 
+cell-based PMED platforms are less likely to identify specific driv-
+ers of cancer biology and generate new options for therapy.
+An ever-growing array of tests designed to inform diagnostic 
+and treatment decisions in the human clinic is available from 
+more than 100 academic and 50 commercial laboratories. These 
+tests range in scope from single genes to gene panels, exomes, and 
+even whole genomes. Indeed, the multiomic analysis of cancer 
+(multiple modalities used in a single cancer) is now common and 
+has reulted in a need to display and share such multiomic data. 
+In everyday clinical practice the cost is still prohibitive, and the 
+expertise and infrastructure required to bring them to bear on 
+patient care are also largely lacking. Finally, more comprehensive 
+data showing improvements in genomics-correlated clinical out -
+comes is needed to support the use of these tests. 
+The Path to PMED for Veterinary Cancer Patients
+Although much work remains to be done to chart the genomic 
+landscapes of companion animal cancers, the PMED approach 
+nonetheless is poised to have a dramatic effect on the care of 
+canine cancer patients. Indeed, we have published on the clinical 
+feasibility of this approach in dogs. 57 PMED now represents a 
+cutting edge opportunity in veterinary cancer care and is the sub-
+ject of ongoing prospective clinical trials. In fact, not only would 
+this approach make great headway in the care of canine cancer 
+patients, but also, given the unique aspects of naturally occur -
+ring cancer in pet dogs and the forward-thinking perspectives of 
+the veterinary profession on the whole, veterinary oncology may 
+be able to provide key data validating this model and refining its 
+implementation for human medicine. As a means to change the 
+biology of an important canine cancer problem, we have initiated 
+a research agenda that will deliver personalized medicine for the 
+canine cancer hemangiosarcoma through clinical trials that have 
+recently launched. 
+Using Molecular Diagnostics as a Clinician
+It has been historically acceptable for one laboratory to describe 
+the performance of a specific assay in their hands and for clini -
+cians to expect similar if not identical results from the same analysis 
+performed by a distinct laboratory. Indeed, based on this expected 
+consistency of analysis among laboratories, there was little need 
+for distinct laboratories performing the same assay to publish their 
+own independent results and experiences. Standardization has yet 
+to come to the field of molecular diagnostics, and clinicians should 
+expect the publication of a laboratory experience with a given 
+assay and should not expect the performance of the assay to be the 
+same across laboratories. Further complicating the issue of assay 
+performance, characterized by sensitivity, specificity, and positive 
+and negative predictive values, is the need to understand carefully 
+the relevance of the patient populations used in manuscripts that 
+describe assay performance. Assay performance is closely regulated 
+in the human molecular diagnostics field (e.g., Clinical Laboratory 
+Improvement Amendments [CLIA] laboratory certification), but 
+such regulation is absent in the veterinary reference laboratory diag-
+nostic model. Therefore rigor and the requirement of transparency 
+appropriately become the responsibility of the diagnostic scientist 
+and must be demanded and understood by the attending clinician. 
+Summary
+Molecular diagnostics is becoming more integrated into veteri -
+nary medicine and at the same time becoming more affordable. 
+One important feature of such advanced diagnostics is that many 
+of these techniques save money for owners and eliminate the need 
+for invasive procedures for their pets. For example, sensitive meth-
+ods for detecting lymphoma through a combination of cytology, 
+flow cytometry, and PARR assays can mean that a diagnosis of 
+splenic lymphoma can be made without splenectomy. Detection 
+of the c-kit mutation can guide therapy so that the most effica -
+cious (and therefore cost-effective) drugs are used. More expensive 
+exploratory techniques, such as whole genome sequencing and 
+proteomic analysis of tumors, will almost certainly lead to discov-
+ery of new testing that can further simplify diagnoses. Veterinar -
+ians are encouraged to participate in these developmental studies 
+when they can, by providing biologic materials and clinical data 
+to researchers, because ultimately patients and their owners will 
+derive great benefit from current research.
+References
+ 1.  Jevremovic D , Viswanatha D S: Molecular diagnosis of hemato -
+poietic and lymphoid neoplasms, Hematol Oncol Clin North Am  
+23:903–933, 2009.
+ 2.  London C A, Malpas P B, Wood-Follis S L, et  al.: Multi-center,  
+placebo-controlled, double-blind, randomized study of oral tocera -
+nib phosphate (SU11654), a receptor tyrosine kinase inhibitor, for 
+the treatment of dogs with recurrent (either local or distant) mast 
+cell tumor following surgical excision, Clin Cancer Res  15:3856–
+3865, 2009.
+ 3.  Cruz Cardona J A, Milner R , Alleman A R, et al.: BCR-ABL trans-
+location in a dog with chronic monocytic leukemia, Vet Clin Pathol 
+40:40–47, 2011.
+ 4.  Morley A: Quantifying leukemia, N Engl J Med 339:627–629, 1998.
+ 5.  Yamazaki J, Baba K, Goto-Koshino Y, et al.: Quantitative assessment 
+of minimal residual disease (MRD) in canine lymphoma by using 
+real-time polymerase chain reaction, Vet Immunol Immunopathol  
+126:321–331, 2008.
+ 6.  Knuutila S : Cytogenetics and molecular pathology in cancer diag -
+nostics, Ann Med 36:162–171, 2004.
+ 7.  Breen M , Modiano J F: Evolutionarily conserved cytogenetic 
+changes in hematological malignancies of dogs and humans—man 
+and his best friend share more than companionship, Chromosome Res 
+16:145–154, 2008.
+ 8.  Thomas R, Seiser EL, Motsinger-Reif A, et al.: Refining tumor-asso-
+ciated aneuploidy through ‘genomic recoding’ of recurrent DNA 
+copy number aberrations in 150 canine non-Hodgkin lymphomas, 
+Leuk Lymphoma 52:1321–1335, 2011.
+ 9.  Hedan B, Thomas R, Motsinger-Reif A, et al.: Molecular cytogenetic 
+characterization of canine histiocytic sarcoma: a spontaneous model 
+for human histiocytic cancer identifies deletion of tumor suppres -
+sor genes and highlights influence of genetic background on tumor 
+behavior, BMC Cancer 11:201–215, 2011.
+
+===== PDF PAGE 177 =====
+156
+PART II  Diagnostic Procedures for the Cancer Patient
+ 10.  Shapiro SG, Raghunath S, Williams C, et al.: Canine urothelial car-
+cinoma: genomically aberrant and comparatively relevant, Chromo-
+some Res 23:311–331, 2015.
+ 11.  Mochizuki H , Shapiro S G, Breen M : Detection of copy number 
+imbalance in canine urothelial carcinoma with droplet digital poly -
+merase chain reaction, Vet Pathol 53:764–772, 2016.
+ 12.  Hoeppner M P, Lundquist A, Pirun M, et al.: An improved canine 
+genome and a comprehensive catalogue of coding genes and non-
+coding transcripts, PLoS One 9:e91172, 2014.
+ 13.  Montague M J, Li G , Gandolfi B , et  al.: Comparative analysis of 
+the domestic cat genome reveals genetic signatures underlying feline 
+biology and domestication, Proc Natl Acad Sci U S A  111:17230–
+17235, 2014.
+ 14.  Letard S , Yang Y , Hanssens K , et al.: Gain-of-function mutations 
+in the extracellular domain of KIT are common in canine mast cell 
+tumors, Mol Cancer Res 6:1137–1145, 2008.
+ 15.  Takeuchi Y, Fujino Y, Watanabe M, et al.: Validation of the prog-
+nostic value of histopathological grading or c-kit mutation in canine 
+cutaneous mast cell tumours: a retrospective cohort study, Vet J 
+196:492–498, 2013.
+ 16.  Weishaar K M, Ehrhart E J, Avery A C, et  al.: c-Kit mutation and 
+localization status as response predictors in mast cell tumors in dogs 
+treated with prednisone and toceranib or vinblastine, J Vet Intern 
+Med 32:394–405, 2018.
+ 17.  Suter S E, Small G W, Seiser E L, et al.: FLT3 mutations in canine 
+acute lymphocytic leukemia, BMC Cancer 11:38, 2011.
+ 18.  Decker B , Parker H G, Dhawan D , et  al.: Homologous mutation 
+to human BRAF V600E is common in naturally occurring canine 
+bladder cancer - evidence for a relevant model system and urine-
+based diagnostic test, Mol Cancer Res 13:993–1002, 2015.
+ 19.  Holderfield M , Deuker MM, McCormick F, et al.: Targeting RAF 
+kinases for cancer therapy: BRAF-mutated melanoma and beyond, 
+Nat Rev Cancer 14:455–467, 2014.
+ 20.  Mochizuki H , Shapiro SG, Breen M: Detection of BRAF mutation 
+in uring DNA as a molecular diagnostic for canine urothelial and 
+prostatic carcinoma, PLoS One 10:e0144170, 2015.
+ 21.  Wong S , Witte O N: The BCR-ABL story: bench to bedside and 
+back, Annu Rev Immunol 22:247–306, 2004.
+ 22.  Osumi K , Fukui T , Kiyoi H , et  al.: Rapid screening of leukemia 
+fusion transcripts in acute leukemia by real-time PCR, Leuk Lym-
+phoma 43:2291–2299, 2002.
+ 23.  Ulve R , Rault M, Bahin M, et al.: Discovery of human-similar gene 
+fusions in canine cancers, Cancer Res 77:5721–5727, 2017.
+ 24.  Blom B, Spits H: Development of human lymphoid cells, Annu Rev 
+Immunol 24:287–320, 2006.
+ 25.  Delves PJ, Roitt IM: The immune system. First of two parts, N Engl 
+J Med 343:37–49, 2000.
+ 26.  Swerdlow SH: Genetic and molecular genetic studies in the diagno-
+sis of atypical lymphoid hyperplasias versus lymphoma, Hum Pathol 
+34:346–351, 2003.
+ 27.  Keller S M, Vernau W , Moore P F: Clonality testing in veterinary 
+medicine: a review with diagnostic guidelines, Vet Pathol 53:711–
+725, 2016.
+ 28.  Burnett R C, Vernau W , Modiano J F, et  al.: Diagnosis of canine 
+lymphoid neoplasia using clonal rearrangements of antigen receptor 
+genes, Vet Pathol 40:32–41, 2003.
+ 29.  Burnett R C, Blake MK, Thompson LJ, et al.: Evolution of a B-cell 
+lymphoma to multiple myeloma after chemotherapy, J Vet Intern 
+Med 18:768–771, 2004.
+ 30.  Lane J, Price J, Moore A, et al.: Low-grade gastrointestinal lymphoma in 
+dogs: 20 cases (2010 to 2016), J Small Anim Pract 59:147–153, 2018.
+ 31.  Ohmura S, Leipig M, Schopper I, et al.: Detection of monoclonality 
+in intestinal lymphoma with polymerase chain reaction for antigen 
+receptor gene rearrangement analysis to differentiate from enteritis 
+in dogs, Vet Comp Oncol 15:194–207, 2017.
+ 32.  Gress V, Wolfesberger B, Fuchs-Baumgartinger A, et al.: Character-
+ization of the T-cell receptor gamma chain gene rearrangements as 
+an adjunct tool in the diagnosis of T-cell lymphomas in the gastroin-
+testinal tract of cats, Res Vet Sci 107:261–266, 2016.
+ 33.  Moore P F, Rodriguez-Bertos A , Kass P H: Feline gastrointestinal 
+lymphoma: mucosal architecture, immunophenotype, and molecu -
+lar clonality, Vet Pathol 49:658–668, 2012.
+ 34.  Sabattini S, Lopparelli RM, Rigillo A, et al.: Canine splenic nodular 
+lymphoid lesions: immunophenotyping, proliferative activity and 
+clonality assessment, Vet Pathol 55:645–653, 2018.
+ 35.  Stokol T, Nickerson GA, Shuman M, et al.: Dogs with acute myeloid 
+leukemia have clonal rearrangements in T and B cell receptors, Front 
+Vet Sci 4:76, 2017.
+ 36.  Avery P R, Burton J, Bromberek JL, et al.: Flow cytometric charac-
+terization and clinical outcome of CD4+ T-cell lymphoma in dogs: 
+67 cases, J Vet Intern Med 28:538–546, 2014.
+ 37.  Flood-Knapik K E, Durham AC, Gregor TP, et al.: Clinical, histo-
+pathological and immunohistochemical characterization of canine 
+indolent lymphoma, Vet Comp Oncol 11:272–286, 2013.
+ 38.  Sato M , Yamazaki J , Goto-Koshino Y , et  al.: Evaluation of cyto -
+reductive efficacy of vincristine, cyclophosphamide, and doxorubi -
+cin in dogs with lymphoma by measuring the number of neoplastic 
+lymphoid cells with real-time polymerase chain reaction, J Vet Intern 
+Med 25:285–291, 2011.
+ 39.  Mochizuki H, Goto-Koshino Y, Takahashi M, et al.: X-chromosome 
+inactivation pattern analysis for the assessment of cell clonality in 
+cats, Vet Pathol 49:963–970, 2012.
+ 40.  Mochizuki H, Goto-Koshino Y, Takahashi M, et al.: Demonstration 
+of the cell clonality in canine hematopoietic tumors by X-chromo -
+some inactivation pattern analysis, Vet Pathol 52:61–69, 2015.
+ 41.  Delcour N M, Klopfleisch R, Gruber AD, et al.: Canine cutaneous 
+histiocytomas are clonal lesions as defined by X-linked clonality test-
+ing, J Comp Pathol 149:192–198, 2013.
+ 42.  Wong M L, Medrano J F: Real-time PCR for mRNA quantitation, 
+Biotechniques 39:75–85, 2005.
+ 43.  Quan P L, Sauzade M, Brouzes E: dPCR: a technology review, Sen-
+sors (Basel) 18:E1271, 2018.
+ 44.  Schwarz J K, Payton JE, Rashmi R , et al.: Pathway-specific analysis 
+of gene expression data identifies the PI3K/Akt pathway as a novel 
+therapeutic target in cervical cancer, Clin Cancer Res 18:1464–1471, 
+2012.
+ 45.  Alizadeh A A, Eisen M B, Davis R E, et  al.: Distinct types of dif -
+fuse large B-cell lymphoma identified by gene expression profiling, 
+Nature 403:503–511, 2000.
+ 46.  Aresu L , Ferraresso S , Marconato L , et  al.: New molecular and 
+therapeutic insights into canine diffuse large B cell lymphoma 
+elucidates the role of the dog as a model for human disease, Hae-
+matologica, 2018; epub ahead of print. https://doi.org/10.3324/hae-
+matol.2018.207027.
+ 47.  Richards K L, Motsinger-Reif AA, Chen HW, et al.: Gene profiling 
+of canine B-cell lymphoma reveals germinal center and postgermi -
+nal center subtypes with different survival times, modeling human 
+DLBCL, Cancer Res 73:5029–5039, 2013.
+ 48.  Dave S S, Wright G, Tan B, et al.: Prediction of survival in follicu -
+lar lymphoma based on molecular features of tumor-infiltrating 
+immune cells, N Engl J Med 351:2159–2169, 2004.
+ 49.  Lenz G , Wright G, Dave SS, et al.: Stromal gene signatures in large-
+B-cell lymphomas, N Engl J Med 359:2313–2323, 2008.
+ 50.  Rimsza L M, Roberts R A, Miller T P, et al.: Loss of MHC class II 
+gene and protein expression in diffuse large B-cell lymphoma is 
+related to decreased tumor immunosurveillance and poor patient 
+survival regardless of other prognostic factors: a follow-up study 
+from the Leukemia and Lymphoma Molecular Profiling Project, 
+Blood 103:4251–4258, 2004.
+ 51.  Bumgarner R : Overview of DNA microarrays: types, applications, 
+and their future, Curr Protoc Mol Biol Chapter 22, 2013. Unit 22 21.
+ 52.  Wang Z, Gerstein M, Snyder M: RNA-Seq: a revolutionary tool for 
+transcriptomics, Nat Rev Genet 10:57–63, 2009.
+ 53.  Hanahan D , Weinberg RA: Hallmarks of cancer: the next genera -
+tion, Cell 144:646–674, 2011.
+ 54.  Zhang M H, Man H T, Zhao X D, et  al.: Estrogen receptor-posi -
+tive breast cancer molecular signatures and therapeutic potentials 
+(Review), Biomed Rep 2:41–52, 2014.
+
+===== PDF PAGE 178 =====
+157CHAPTER 8 Molecular Diagnostics
+ 55.  London C A, AL Hannah, Zadovoskaya R, et al.: Phase I dose-esca-
+lating study of SU11654, a small molecule receptor tyrosine kinase 
+inhibitor, in dogs with spontaneous malignancies, Clin Cancer Res  
+9:2755–2768, 2003.
+ 56.  Von Hoff D D, Stephenson Jr JJ, Rosen P, et al.: Pilot study using 
+molecular profiling of patients’ tumors to find potential targets and 
+select treatments for their refractory cancers, J Clin Oncol 28:4877–
+4883, 2010.
+ 57.  Paoloni M , Webb C, Mazcko C, et al.: Prospective molecular pro-
+filing of canine cancers provides a clinically relevant comparative 
+model for evaluating personalized medicine (PMed) trials, PLoS One 
+9:e90028, 2014.
+
+===== PDF PAGE 179 =====
+158
+9
+Biopsy and Sentinel Lymph Node 
+Mapping Principles
+NICOLE P. EHRHART
+A biopsy refers to a procedure that involves obtaining a tissue 
+specimen for microscopic (i.e., histopathologic) analysis to estab -
+lish a precise diagnosis. Histopathologic interpretation of tissue 
+removed from a tumor is not foolproof and is highly dependent 
+on the quality of the biopsy sample submitted. Therefore it is 
+important to understand basic principles of biopsy procurement 
+and submission to obtain an accurate diagnosis. If the tissue diag-
+nosis is incorrect, every subsequent step in the treatment of the 
+patient may also be incorrect.
+Fine-needle aspiration cytology (FNAC) is a simple and rapid 
+way to obtain information about a tumor and is often the first 
+step in the diagnostic workup. Results of FNAC help guide the 
+diagnostic tests for staging. Studies have shown that FNAC is a 
+reliable and useful method to guide further workup when neo -
+plasia is suspected or to rule out neoplasia.1,2 Nonetheless, FNAC 
+gives limited information and may be nondiagnostic or equivocal. 
+Inflammation, necrosis, and hemorrhage may result in cytopa -
+thologic changes that do not accurately represent the underlying 
+disease process. Histologic confirmation may be necessary for 
+definitive diagnosis of neoplasia.
+There are many available techniques for obtaining tissue speci-
+mens, ranging from needle-core techniques to complete surgi -
+cal excision. The choice of technique depends on the anatomic 
+location of the tumor, the overall health of the patient, suspected 
+tumor type, and clinician preference. Biopsy techniques can be 
+grouped under one of two major categories: pretreatment biopsy 
+(e.g., needle-core biopsy, punch biopsy, wedge biopsy, etc.) or 
+excisional biopsy. Pretreatment biopsy is performed to obtain 
+additional information about the tumor before definitive treat -
+ment. Posttreatment (i.e., excisional) biopsy refers to the process 
+of obtaining histopathologic information after surgical removal 
+of the tumor. Excisional biopsy is best used to obtain a more 
+complete picture of the disease process (e.g., histologic grade, 
+histologic subtype, degree of invasion into regional vasculature 
+and lymphatics, etc.) and provides an opportunity to evaluate 
+completeness of excision. It is rarely ever the best first step in 
+obtaining a tissue diagnosis. Although excisional biopsy is attrac -
+tive to many clinicians because it allows for definitive treatment 
+and diagnosis in one step, it is often used inappropriately in the 
+management of a cancer patient, resulting in incomplete surgical 
+margins. Incomplete surgical margins can result in local tumor 
+recurrence and the need for radiation therapy or a wider, more 
+extensive surgery. All of these sequelae compromise the optimum 
+treatment pathway for the patient and will involve more morbid-
+ity and expense than a properly performed first excision. The issue 
+to be determined before surgery then is: how aggressive should the 
+surgery to remove the tumor be? It is intuitive that wide, ablative 
+surgery (e.g., body wall resection) would be inappropriate for a 
+simple lipoma. It also follows that marginal excision (shell out) is 
+inappropriate for definitive treatment of an aggressive infiltrative 
+tumor such as a soft tissue sarcoma. Thus thorough knowledge of 
+the tumor type is imperative before attempting surgical excision. 
+The best way to obtain this information is often via biopsy.
+Specific indications for pretreatment biopsy are as follows:
+ 1.  When FNAC is nondiagnostic or equivocal
+ 2.  When the type of recommended treatment (radiation, chemo-
+therapy, surgery) would be altered by knowledge of the tumor 
+type or grade
+ 3.  When the extent of recommended treatment (ablative surgery, 
+wide excision, marginal excision) would be altered by knowl -
+edge of the tumor type or grade
+ 4.  When the tumor is in a difficult area to reconstruct (maxillec -
+tomy, locations requiring extensive flaps, head and neck, etc.) 
+and planning is needed to prepare the patient and client appro-
+priately
+ 5.  When knowledge of the tumor type or histologic grade would 
+change the willingness of the client to proceed with curative-
+intent treatment
+If any one of the listed criteria is met, a pretreatment biopsy 
+should be pursued.
+There are occasions when pretreatment biopsy would be con -
+traindicated. These include cases when the type of treatment or 
+extent of surgery would not be changed by knowing the tumor 
+type (e.g., testicular mass, solitary splenic mass) or when the surgi-
+cal procedure to obtain the biopsy is as risky as definitive removal 
+(e.g., spinal cord biopsy). In these cases, the patient would best be 
+served by excisional biopsy of the tumor if staging results support 
+this choice.
+Biopsy Methods
+The more commonly used methods of tissue procurement are 
+needle-core biopsy, punch biopsy, incisional (wedge) biopsy, and 
+excisional biopsy.
+
+===== PDF PAGE 180 =====
+159CHAPTER 9 Biopsy and Sentinel Lymph Node Mapping Principles
+Needle-Core Biopsy
+Needle-core biopsy utilizes various types of needle core instru -
+ments (T ru-Cut, etc.) to obtain soft tissue (Fig. 9.1). Most of these 
+needles use spring or pneumatically powered needles, although 
+manually operated devices are still available as well. Specialized 
+core instruments are used for bone biopsies and will be covered in 
+Chapter 25. These instruments are generally 14-gauge in diameter 
+and procure a piece of tissue that is about 1 mm wide and 1.0 
+to 1.5 cm long. In spite of this small sample size, the structural 
+relationship of the tissue and tumor cells can usually be visualized 
+by the pathologist. Virtually any accessible mass can be sampled 
+by this method. It may be used for externally located lesions or 
+for deeply seated lesions (kidney, liver, prostate, etc.) with image-
+guidance via closed methods or at the time of open surgery.
+The most common use of the needle-core biopsy is for exter -
+nally palpable masses. Except for highly inflamed and necrotic 
+cancers (especially in the oral cavity), where incisional biopsy 
+is preferred, needle-core biopsies can be done on an outpatient 
+basis with local anesthesia and sedation. The area to be biopsied is 
+clipped and cleaned. The skin or overlying tissue is aseptically pre-
+pared as for minor surgery. If the overlying tissue (usually skin and 
+muscle) is intact, it is blocked with local anesthetic in the region 
+that the biopsy needle will penetrate. T umor tissue itself is very 
+poorly innervated and generally does not require local anesthesia. 
+The mass is then fixed in place with one hand or by an assistant. 
+A small 1- to 2-mm stab incision is made in the overlying skin 
+with a scalpel blade to allow insertion of the biopsy instrument. 
+The stab incision is necessary to prevent dulling of the needle tip 
+and allow better penetration into the underlying tissue. Through 
+the same skin incision, several needle cores are removed from dif-
+ferent sites to get a “cross section” of tissue types within the mass. 
+The stab incision can be sutured with a single interrupted suture. 
+The tissue is gently removed from the instrument with a scalpel 
+blade or hypodermic needle and placed in formalin and/or alter -
+native media (e.g., culture media) or snap frozen as necessary. For 
+smaller-gauge needle-core biopsy instruments, the tissue may be 
+flushed off the needle with saline. Samples may be gently rolled on 
+a glass slide for cytologic preparations before fixation. With expe-
+rience, the operator can generally tell from the appearance of the 
+core sample whether diagnostic material has been attained. Small, 
+discontinuous segments of tissue and fluid within the trough will 
+only rarely be diagnostic and usually imply the need for incisional 
+biopsy. Soft tissue sarcomas in particular may not yield good tissue 
+cores because of necrosis and fibrous septa that often permeate the 
+mass. Cystic masses are also problematic.
+Needle biopsy tracts are probably a minimal risk for local 
+tumor seeding but should be removed en bloc with the tumor at 
+subsequent resection. Therefore it is important to plan where the 
+stab incision and needle biopsy tract should be placed to make 
+subsequent excision simpler. Avoid excessive tunneling through 
+uninvolved tissues by choosing the most direct path from the skin 
+to the tumor to obtain a representative sample.
+Many of these needles are “disposable” with plastic casings and 
+therefore cannot be steam sterilized. It is not uncommon, how -
+ever, for veterinary practices to resterilize these instruments (using 
+ethylene oxide or hydrogen peroxide gas) and use them repeatedly 
+until they become dull.
+Needle-core biopsy instruments are inexpensive, easy to use, 
+and needle-core biopsy procedures can be performed as outpatient 
+procedures. They are generally more accurate than cytology but 
+likely have lower accuracy than incisional or excisional biopsies, 
+especially when a tumor is heterogeneous, inflamed, cystic, or 
+contains a large amount of necrosis. It is important to understand 
+that for a 5-cm diameter mass, one needle-core biopsy sample rep-
+resents less than 1% of the tumor tissue. The smaller the biopsy 
+specimen, the less representative it may be for the entire tumor.
+Needle-core biopsy can be performed with the aid of image-
+guidance. Utilization of image-guidance for needle-core biopsy is 
+very helpful for obtaining tissue from deeply seated lesions. Ultra-
+sound-, fluoroscopic-, and computed tomographic-assistance may 
+be used to obtain samples from tumors located in areas where per-
+cutaneous biopsy would be risky or unlikely to yield a representa-
+tive sample. In situations in which the lesion is located within a 
+body cavity, the risk of tumor seeding from uncontrolled hemor -
+rhage or fluid leakage as a result of image-guided biopsy must be 
+taken into account before deciding if image-guided needle-core 
+biopsy techniques will hold an advantage over more direct access 
+in a given patient. 
+Punch Biopsy
+Punch biopsy tools were originally designed for biopsy of the skin 
+(Fig. 9.2). They deliver a shorter and wider (2–8 mm) biopsy than 
+does a needle core. They can be used on any external tumor (skin, 
+oral, perianal) or tumors where there is direct access (e.g., liver 
+biopsy during laparotomy). They do not work as well for tumors 
+located under intact skin unless the skin is incised first. Prepara -
+tion of the site is the same as for needle-core biopsy. If the lesion is 
+cutaneous, the punch biopsy instrument is placed on the surface 
+of the area of interest and rotated back and forth using pressure to 
+penetrate the involved tissue. If the skin is intact over the tumor, 
+the skin is first incised using a scalpel. The punch is then intro -
+duced through the skin incision to the surface of the tumor. Once 
+• Fig. 9.1  Mechanism of action of needle-core biopsy for typical solid tumor. 
+(A) A small stab incision is made with a scalpel blade to allow for insertion 
+of the instrument. With the instrument closed, the needle is advanced into 
+the tumor, taking care to ensure the capsule is penetrated. (B) The outer 
+canula is fixed in place while the inner canula with the specimen notch is 
+advanced into the mass. This allows the tumor tissue to protrude into the 
+specimen notch. (C) The inner canula is held steady while the outer canula 
+is advanced. This traps the tumor specimen in the notch. (D) The instru -
+ment is removed. (E) The inner canula is advanced again to allow access 
+to the tissue within the specimen notch.
+
+===== PDF PAGE 181 =====
+160
+PART II  Diagnostic Procedures for the Cancer Patient
+the punch has cut into the tumor, the core is gently lifted, and the 
+base of the core is cut off with scissors. One or two sutures may be 
+placed to close the incision and tamponade bleeding. 
+Incisional Biopsy
+Incisional biopsy is utilized when neither cytology nor needle-core 
+biopsy has yielded diagnostic material (Fig. 9.3). Incisional biopsy 
+is also preferred for ulcerated and necrotic lesions because larger 
+samples can be obtained, making it more likely for the surgeon to 
+sample representative areas. Most tumors are very poorly inner -
+vated and may be biopsied without the need for local anesthesia 
+or sedation as long as the overlying normal skin and tissue has 
+been anesthetized. Preparation involves clipping the hair over the 
+incision site. After an aseptic preparation is made, surgical drapes 
+are used to protect the field from the surrounding environment. 
+Under aseptic conditions, the skin, if intact over the tumor, is 
+incised and a wedge of tumor tissue is removed from the mass. 
+It is not necessary to remove a wedge of intact skin overlying the 
+tumor if it appears to be normal and not fixed to the underlying 
+tumor. It is important for the surgeon to confirm at the time of 
+the biopsy that he or she has not simply removed a small section 
+of the reactive tissue surrounding the tumor. This can be difficult 
+in some cases; however, most tumors have coloration and texture 
+that is distinct from that of the surrounding normal and reactive 
+tissue. If needed, cytologic assessment of touch impressions can be 
+made using the resected tissue to confirm that neoplastic cells are 
+present in the removed tissue.
+Many authors have recommended that the surgeon acquire 
+a composite biopsy of normal and abnormal tissue to assure 
+accuracy in diagnosis on histopathologic examination. Although 
+this may be helpful to the pathologist in benign skin disease and 
+subtle lesions, it is not recommended in cases in which neopla -
+sia is suspected, as this may result in extending the biopsy inci -
+sion into previously uninvolved tissues. This can compromise 
+the surgical margins needed to remove the mass entirely at the 
+time of definitive surgery and exposes previously uninvolved tis -
+sues to freshly incised tumor. Instead, a representative sample of 
+the tumor itself should be submitted. This may require obtaining 
+multiple samples via the same incision to ensure that a representa-
+tive sample has been achieved. Care must be taken to ensure that 
+any biopsy tract (incisional or other) will not compromise sub -
+sequent curative-intent resection, contaminate uninvolved tissue 
+needed for reconstruction, or compromise subsequent radiation 
+therapy. The surgeon should avoid widely opening uninvolved tis-
+sue planes that could become contaminated with released tumor 
+cells. Small incisions, even through expendable muscle bellies, are 
+preferred to contaminating an entire intramuscular compartment. 
+The incisional biopsy tract is always removed in continuity with 
+the tumor at the time of curative-intent resection. 
+Specialized Biopsy Techniques
+Specialized biopsy techniques will generally be covered under spe-
+cific individual tumors. However, some general comments follow.
+Endoscopic Biopsies
+These techniques use flexible or occasionally rigid scopes that 
+allow visualized or blind biopsy of hollow lumens, especially gas -
+trointestinal, respiratory, and urogenital systems. Although these 
+• Fig. 9.2  Mechanism of action of punch biopsy. (A) The instrument is applied with pressure and back and 
+forth rotation to allow the instrument to penetrate the mass. (B) The punch is removed or angled across 
+the base to sever the deep attachment. (C) If needed, the specimen can be gently grasped with forceps 
+and cut at the base with metzenbaum scissors.
+
+===== PDF PAGE 182 =====
+161CHAPTER 9 Biopsy and Sentinel Lymph Node Mapping Principles
+techniques are convenient, cost effective, and generally safe, they 
+may suffer from inadequate visualization and limited biopsy sam-
+ple size compared with other techniques. For example, an endo -
+scopic biopsy result of ulcerative gastritis in a dog with a firm, 
+infiltrative mass of the lesser curvature of the stomach does not 
+rule out gastric adenocarcinoma. 
+Laparoscopy and Thoracoscopy
+Evaluation of the abdomen and thorax via minimally invasive 
+techniques, when performed by an experienced operator, can yield 
+important information regarding stage of disease and can procure 
+tissue for biopsy. In addition, laparoscopic- and thoracoscopic- 
+assisted removal results in smaller incisions and more rapid recov-
+ery times compared with open procedures. The option to convert 
+to an open procedure should be available if problems are encoun-
+tered that cannot be adequately addressed using minimally invasive 
+methods. As specialists become more proficient at these techniques, 
+more and more options are becoming available for tumor removal. 
+Image-Guided Biopsy
+Diagnostic imaging has greatly expanded the ability to stage 
+various neoplasias. The use of positron emission tomography–  
+computed tomography (PET–CT) in veterinary medicine has also 
+led to significant advances in sentinel node mapping, novel staging 
+methods, and the ability to assess response to treatment. In addi -
+tion, the use of radiographic-, fluoroscopic-, ultrasonographic-, 
+CT-, and magnetic resonance imaging (MRI)-guided needle 
+aspirates or core biopsies can prevent the need for more invasive 
+diagnostic procedures. Commonly biopsied tissue includes lung, 
+kidney, liver, spleen, prostate, and, more recently, brain. 
+Excisional Biopsy
+This method is utilized when the treatment would not be altered 
+by knowledge of tumor type (e.g., “benign” skin tumors, solitary 
+splenic mass, testicular tumor, etc.). It is more frequently per -
+formed than indicated but when used on properly selected cases, 
+it can be both diagnostic and therapeutic as well as cost effective. 
+Sentinel Lymph Node Mapping and Biopsy
+In veterinary medicine, assessment of nodal metastasis has been 
+largely predicated on palpation or imaging of nodal size and archi-
+tecture with cytologic sampling when abnormal. Sentinel lymph 
+node (SLN) mapping and subsequent biopsy are performed to 
+identify the first lymph node (LN) to which a cancer is likely to 
+spread from a primary tumor and to sample that LN for evidence 
+of metastasis. If the SLN is free of metastasis, subsequent LNs in 
+the drainage pattern are also likely to be negative. This method 
+was initially studied in human cutaneous melanoma to detect 
+lymphatic drainage patterns before surgery. It is now a widely uti-
+lized staging procedure in many human cancers, but the evidence 
+for its usefulness in staging has been primarily from the applica -
+tion of this technique in human breast cancer patients. The SLN 
+has been classically defined as the first node detectable after peri -
+tumoral injection of a radioactive marker and subsequent scintig-
+raphy. Visual identification in surgery is typically aided by the use 
+of vital dye injection (e.g., methylene blue) in conjunction with 
+use of a portable gamma probe in the operating room to detect 
+the LN with the greatest radioactivity. In one study of 19 dogs 
+with cutaneous mast cell tumors,3 the SLN was different from the 
+regional anatomic LN in eight (42%) of these dogs. SLN map -
+ping and biopsy identified LN metastasis in these eight dogs  and 
+clients were offered adjunctive therapy that otherwise would not 
+have been considered.3
+Indirect lymphography is an alternative to scintigraphic SLN 
+mapping. This procedure involves injection of a contrast agent in 
+the periphery of the tumor and serial or real-time imaging to fol -
+low contrast uptake in the draining lymphatic basin. This method 
+uses contrast enhancement of nearby LNs and lymphatic channels 
+• Fig. 9.3  Excisional (top) contrasted with incisional (bottom) biopsy. The top tumor should be small 
+enough that excisional biopsy will not negatively influence other possible treatments. The bottom tumor, 
+however, requires knowledge of the tumor type before excision to ensure appropriate surgical “dose” is 
+used at the time of definitive removal. Note that the biopsy incision is oriented in such a way to make it 
+easiest to include during wide excision and minimize difficulty with closure.
+
+===== PDF PAGE 183 =====
+162
+PART II  Diagnostic Procedures for the Cancer Patient
+to identify the SLN. In this technique, the contrast medium is 
+injected in four quadrants around or within the tumor. The first 
+contrasting node(s) is identified via imaging providing a surgical 
+target (as opposed to extensive dissection within the lymphatic 
+basin to find a lymph node with vital dye). A vital dye, such as 
+methylene blue, is injected intraoperatively in the same locations 
+as the contrast agent. The use of the vital dye provides the sur -
+geon with visual confirmation of the SLN. Some authors have 
+advocated using lipid-based contrast medium because it slows 
+clearance and therefore may permit imaging for longer periods 
+compared with water-soluble contrast agents. In a recent study, 
+this method was successful at identifying the sentinel lymph 
+node in 96.6% of veterinary patients with solid tumors of various 
+histologies.4 
+General Guidelines for Tissue Procurement 
+and Fixation
+ 1.  When properly performed, a pretreatment biopsy will not 
+negatively influence survival. The metastatic cascade involves 
+a series of complex events that are not dependent on the num-
+ber of neoplastic cells in circulation (see Chapter 2). On the 
+other hand, neoplastic cells contaminate the local tissues sur-
+rounding the mass and, in some cases, successfully attach and 
+grow within these normal tissues. Careful hemostasis, obliter-
+ation of dead space, and avoidance of seromas or hematomas 
+will minimize local contamination of the incisional biopsy 
+site. Definitive surgery to remove the tumor along with the 
+associated biopsy tract should take place as soon as possible 
+after the biopsy procedure. Surgical drains should not be 
+placed in biopsy sites, if possible, because the drain tract can 
+become contaminated with tumor cells and seed tumor cells 
+through uninvolved tissue planes. In particular, care should 
+be taken during biopsy not to “spill” cancer cells within the 
+thoracic or abdominal cavities, where they may seed pleural 
+or peritoneal surfaces.
+ 2.  When biopsies are performed on the limbs or the tail, the 
+incision should be made along the long axis of the limb or tail 
+rather than transversely. T ransverse incisions are much more 
+difficult to resect completely. If a biopsy is near the midline, 
+the incision should be oriented parallel to the midline.
+ 3.  Avoid taking the junction of normal and abnormal tissue for 
+pretreatment biopsy. Care should be taken not to incise nor-
+mal tissue that cannot be resected or would be used in recon-
+structing the surgical defect. Avoid biopsies that contain only 
+ulcerated or inflamed tissues.
+ 4.  The larger the sample, the more likely it is to be diagnostic. 
+T umors are not homogeneous and usually contain areas of 
+necrosis, inflammation, and reactive tissue. Several samples 
+from one mass are more likely to yield an accurate diagnosis 
+than a single sample.
+ 5.  Biopsies should not be obtained with electrocautery or laser, 
+as it can deform (autolysis or polarization) the cellular archi-
+tecture of the tissue sample. Electrocautery is better utilized 
+for hemostasis after blade removal of a diagnostic specimen.
+ 6.  Care should be taken not to unduly deform the specimen 
+with forceps, suction, or other handling methods before 
+fixation.
+ 7.  Intraoperative diagnosis of disease by frozen sections, 
+although not routinely available in veterinary medicine, 
+is used widely in human hospitals. Special equipment and 
+training are required for this technique to be fully utilized. 
+One study in veterinary medicine revealed an accurate and 
+specific diagnosis rate of 83%.5
+ 8.  If evaluation of margins of excision is desired, it is best if the 
+surgeon indicates the surgical margin on the specimen using 
+tissue ink. Several commercial inking systems are available for 
+this use. The resected tissue should be blotted with a paper 
+towel, as the dyes will adhere better to the tissue when the tis-
+sue is slightly tacky. The tissue ink is “painted” on the surgical 
+margins using a cotton swab. The dye should then be allowed 
+to dry for up to 20 minutes before the tissue is placed in 
+formalin. Tissue already fixed in formalin can be marked, but 
+the dyes may not adhere as well and drying time is extended. 
+When the pathologist reads the slides and sees tumor cells 
+at the inked edge, you can be certain tumor cells have been 
+left in the patient. Different colored ink can also be used to 
+denote different sites on the tumor, such as proximal margin 
+or deep margin. Even with inking, proper fixation, and pro -
+cessing, the clinician must realize the entire margin will not 
+be examined by the pathologist. Rather, representative sec -
+tions will be obtained from the inked margin. Therefore any 
+guidance that the clinician can give to the pathologist as to 
+the most important sections to assess for tumor cells will help 
+the pathologist pay particular attention to such areas. It is 
+essential that both the pathologist and the clinician commu-
+nicate if the pathology report is confusing or does not match 
+the clinical picture. Of course, margin evaluation is necessary 
+only for excisional biopsy or after curative-intent surgery and 
+does not apply to needle-core or incisional biopsies, which by 
+definition will have inadequate margins.
+ 9.  Stainless steel vascular clips or staples in the resected speci -
+men will damage the microtomes used by the pathology labo-
+ratory. Remove them before the tissue is submitted.
+ 10.  Proper fixation is essential. Tissue is generally fixed in 10% 
+buffered neutral formalin with 1 part tissue to 10 parts fixa -
+tive. If more than one lesion has been biopsied, they should 
+each be placed in a separate well identified container. Cer -
+tain tissues such as eye, nerve, and muscle may require special 
+fixation techniques. The clinician may want to call and con -
+sult with the pathologist on how to submit tissue for special 
+circumstances.
+ 11.  Tissue should not be thicker than 1 cm or it will not fix prop-
+erly. Masses greater than 1 cm in diameter can be sliced like a 
+loaf of bread, leaving the deep inked margin intact, to allow 
+fixation. Extremely large masses can be incompletely sliced 
+as described earlier, fixed in a large bucket of formalin for 2 
+to 3 days, and then shipped in a container with 1 part tissue 
+to 1 part formalin. A less ideal but alternative approach is to 
+have the surgeon take representative smaller samples from the 
+mass (e.g., soft and hard pieces, red and pale pieces, deep and 
+superficial pieces, etc.) and the lateral and deep margins in 
+the hope that they are representative. The rest of the mass can 
+be saved in the clinic in formalin in case more tissue needs to 
+be evaluated. This extra tissue should never be frozen. Freez-
+ing causes severe artifact in the tissue.
+ 12.  A detailed history should accompany all biopsy requests. 
+Interpretation of surgical biopsies is a combination of art and 
+science. Without all of the essential diagnostic information 
+(e.g., signalment, history of recurrences, invasion into bone, 
+rate of growth, etc.), the pathologist will be significantly com-
+promised in his or her ability to deliver accurate and clinically 
+useful information.
+
+===== PDF PAGE 184 =====
+163CHAPTER 9 Biopsy and Sentinel Lymph Node Mapping Principles
+ 13.  A veterinary-trained pathologist is preferred over a patholo -
+gist trained in human diseases. Although many cancers are 
+histologically similar across species lines, enough differences 
+exist to result in interpretive errors.
+In 2011 the American College of Veterinary Pathologists, 
+along with several medical and surgical oncologists, published a 
+comprehensive set of recommendations and guidelines for sub -
+mission, trimming, margin evaluation, and reporting of tumor 
+biopsy specimens.6 This landmark paper was the first collaborative 
+attempt to standardize pathology reporting in veterinary oncol -
+ogy and has been endorsed by a large international group of vet -
+erinary pathologists and oncology specialists. It is recommended 
+that clinicians utilize diagnostic laboratories that adhere to these 
+guidelines so that results are standardized and easier to interpret. 
+Interpretation of Results
+The job of the pathologist is to determine (1) tumor versus no 
+tumor, (2) benign versus malignant, (3) histologic type, (4) his -
+tologic grade (if available clinically), and to (5) assess surgical 
+margins (if excisional biopsy). Making an accurate diagnosis is 
+not as simple as putting a piece of tissue in formalin and wait -
+ing for results. Many pitfalls can occur to render the end result 
+inaccurate. Potential errors can take place at any level of diagnosis 
+and it is up to the clinician in charge of the case to interpret the 
+full meaning of the biopsy result. In cases in which the biopsy 
+result does not correlate with the clinical behavior of the tumor, a 
+second opinion should be requested. A study published in 2009 
+reviewed first- and second-opinion histopathology reports.7 There 
+was diagnostic agreement between first and second opinions in 
+70% of cases. In 20% of cases, there was partial agreement, where 
+the diagnosis did not change but information such as grade or 
+presence of lymphatic or vascular invasion was disparate. In 10% 
+of cases, there was complete diagnostic disagreement. Of these, 
+7% were a disagreement between malignant versus nonmalignant 
+disease and 3% were disagreements about the cell of origin of the 
+tumor. If the biopsy result does not correlate with the biologic 
+behavior of the tumor, several options are possible:
+ 1.  Call the pathologist and express your concern over the biopsy 
+result. This exchange of information should be helpful for both 
+parties and not looked upon as an affront to the pathologist’s 
+authority or expertise. It may lead to
+ a.  Resectioning of available tissue or paraffin blocks
+ b.  Special stains for certain possible tumor types (e.g., tolu -
+idine blue for mast cells)
+ c.  A second opinion by another pathologist
+ 2.  If the tumor is still present in the patient, and particularly 
+if widely varied options exist for therapy, a second (or third) 
+biopsy should be performed.
+A carefully performed, submitted, and interpreted biopsy is the 
+most important step in management and subsequent prognosis 
+of the patient with cancer. The biopsy report is key in decision 
+making regarding therapeutic options, prognosis, and overall case 
+management. All too often tumors are not submitted for histo -
+logic evaluation after removal because “the owner didn’t want to 
+pay for it.” Histopathology interpretation should not be an elec -
+tive decision. Instead, it should be as automatic as closing the skin 
+after surgery. The charge for submission and interpretation of the 
+biopsy should be included in the surgery fee, but histopathology 
+interpretation is not optional. Because of increasing medicolegal 
+concerns, it is not medical curiosity alone that mandates knowl -
+edge of tumor type. Understanding how and when to perform 
+a biopsy, how to submit a biopsy specimen for histopathologic 
+interpretation, and how to interpret the report are of paramount 
+importance in the treatment of veterinary cancer patients.
+References
+ 1.  Ghisleni G , Roccabianca P , Ceruti R , et  al.: Correlation between 
+fine-needle aspiration cytology and histopathology in the evaluation 
+of cutaneous and subcutaneous masses from dogs and cats, Vet Clin 
+Pathol 35:24–30, 2006.
+ 2.  Sharkey L C, Wellman ML: Diagnostic cytology in veterinary medi -
+cine: a comparative and evidence-based approach, Clinics Lab Med  
+31:1–19, 2011.
+ 3.  Worley DR: Incorporation of sentinel lymph node mapping in dogs 
+with mast cell tumours: 20 consecutive procedures, Vet Comp Oncol 
+12:215–226, 2014.
+ 4.  Brissot H N, Edery E G: Use of indirect lymphography to identify 
+sentinel lymph node in dogs: a pilot study in 30 tumours, Vet Comp 
+Oncol 15:740–753, 2017.
+ 5.  Whitehair J G, Griffey S M, Olander H J, et  al.: The accuracy of 
+intraoperative diagnoses based on examination of frozen sections. A 
+prospective comparison with paraffin-embedded sections, Vet Surg 
+22:255–259, 1993.
+ 6.  Kamstock D A, Ehrhart EJ, Getzy DM, et al.: Recommended guide-
+lines for submission, trimming, margin evaluation, and reporting of 
+tumor biopsy specimens in veterinary surgical pathology, Vet Pathol 
+48:19–31, 2011.
+ 7.  Regan RC, Rassnick KM, Balkman CE, Bailey DB, McDonough SP:  
+Comparison of first-opinion and second-opinion histopathology from 
+dogs and cats with cancer: 430 cases (2001-2008), Vet Comp Oncol 
+8:1–10, 2010.
+
+===== PDF PAGE 185 =====
+PART III  Therapeutic Modalities for the Cancer Patient
+164
+10
+Surgical Oncology
+JAMES P. FARESE, JULIUS M. LIPTAK, AND STEPHEN J. WITHROW
+Complete surgical removal of localized cancer cures more can -
+cer patients than any other form of treatment, 1 in part because 
+this modality is generally applied as the sole treatment for local 
+disease, early stage disease, and tumors with limited potential to 
+metastasize. In humans, 60% of patients who are cured of can -
+cer are cured by surgery alone. 2 Before this hope for cure can be 
+realized in veterinary medicine, surgeons must have a thorough 
+understanding of anatomy, physiology, resection, and reconstruc-
+tion options for all organs; expected tumor behavior; and the 
+various alternatives or adjuvants to surgery. Surgical oncologists 
+should not only be good technical surgeons, but also dedicated 
+tumor biologists. Surgery will likely play a role at one point or 
+another in the management of most cancer patients.
+Surgical procedures may include any of the following: diagno-
+sis (biopsy), resection for cure, resection for palliation of symp -
+toms, and a wide variety of ancillary procedures to enhance and 
+complement other forms of treatment.
+Surgical resection of cancer was introduced in the 16th century 
+BC and remained relatively underutilized until the development 
+of general anesthesia (1840s), antisepsis (1860s), and effective 
+analgesia, which made aggressive resection safer and more toler -
+able for the patient. Dr. William Halstead developed the basic 
+principles of surgical oncology in the 1890s. In the 21st century, 
+radical resection has increasingly been customized to meet the 
+needs of the patient . Further refinements in surgery have been 
+made possible with newer equipment, advanced imaging, modifi-
+cations in analgesic drugs and techniques, use of blood products, 
+and advancements in critical care medicine.
+Most dogs and cats with cancerous conditions are geriatric; 
+however, with normal major organ function, dogs and cats at an 
+advanced age can still be good candidates for surgery, and age has 
+not been shown to affect the tumor-related prognosis for tumor 
+types. In fact, dogs with osteosarcoma that are younger than 2 
+years of age have a worse prognosis than dogs that are older than 
+2 years of age after amputation alone. 3 In most instances older 
+animals will tolerate aggressive surgical intervention as well as 
+younger patients do. Screening for comorbidities (e.g., thoracic 
+radiographs and abdominal ultrasound) is recommended before 
+major surgical procedures, especially in older dogs and cats.
+Surgery for Diagnosis
+Although biopsy principles are covered in Chapter 9, it is worth 
+emphasizing that properly timed, performed, and interpreted 
+biopsies are one of the most crucial steps in the management of 
+the cancer patient. Not only does the surgeon need to procure 
+adequate and representative tissue to establish a diagnosis, but 
+also the biopsy must not compromise subsequent curative surgi -
+cal resection or radiation field planning.
+Levels of Tumor Excision
+The aggressiveness of surgical resection, or surgical dose, is catego-
+rized as intralesional (or debulking), marginal, wide, and radical 
+(Fig. 10.1). These categories were first proposed for musculoskeletal 
+tumors by Dr. William Enneking, but they have since gained wide 
+acceptance for all solid tumors.4 The most common mistake in sur-
+gical oncology is to use too low a surgical dose, particularly because 
+of the fear of being unable to close the resultant defect. In human 
+medicine, two surgical teams are sometimes involved in the excision 
+of tumors, one team for surgical resection and another team for 
+subsequent reconstruction, to avoid this situation. Because this is 
+unrealistic in veterinary medicine, the use of sterile surgical markers 
+to delineate margins before incision assists in orientating the sur-
+geon and overcoming the subconscious concerns of wound closure. 
+Surgery for Cure
+Before a surgeon can provide the optimal operation for the patient 
+with cancer, the following questions need to be considered:
+ 1.  What is the histologic type, histologic grade, and clinical stage 
+of the cancer to be treated?
+ 2.  What are the expected local and systemic effects of this tumor?
+ 3.  Is a cure possible and at what price in terms of function and 
+cosmetics?
+ 4.  Is an operation indicated at all?
+ 5.  Are there alternative options to surgery, or does surgery need 
+to be combined with other modalities?
+A recurring theme in surgical management of cancer is that 
+the first surgery has the best chance of cure. Several reasons for 
+this improvement in survival have been proposed. Untreated 
+tumors often have had less chronologic time to metastasize and 
+acquire more biologically aggressive phenotypes than recurrent 
+cancers. Untreated tumors and adjacent normal tissues have near 
+normal anatomy, which facilitates surgical dissection and resec -
+tion. Recurrent tumors may contaminate previously uninvolved 
+tissue planes, thereby requiring wider resection than otherwise 
+would have been needed on the initial tumor excision.

@@ -5,6 +5,7 @@ import { cn } from '../../../../lib/utils';
 import { FavoriteButton } from './FavoriteButton';
 import { FavoriteEntityType } from '../../types/favorites';
 import { normalizeCategorySlug } from '../../utils/diseaseCategories';
+import { getSpecialtyVisual } from '../../utils/specialtyVisuals';
 
 interface EntityCardProps {
   to: string;
@@ -32,6 +33,13 @@ export interface EntityCategoryTheme {
 }
 
 export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
+  intensivismo: {
+    borderHover: 'hover:border-red-500/50 dark:hover:border-red-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(239,68,68,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.25)]',
+    badge: 'bg-red-100/80 text-red-700 dark:bg-red-950/45 dark:text-red-300 border-red-200/50 dark:border-red-800/40',
+    line: 'border-red-500/20 dark:border-red-400/15',
+    glowBg: 'rgba(239,68,68,0.015)',
+  },
   'emergencia-intensivismo': {
     borderHover: 'hover:border-red-500/50 dark:hover:border-red-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(239,68,68,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(239,68,68,0.25)]',
@@ -53,12 +61,19 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-rose-500/20 dark:border-rose-400/15',
     glowBg: 'rgba(225,29,72,0.015)',
   },
+  imunologia: {
+    borderHover: 'hover:border-rose-600/50 dark:hover:border-rose-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(225,29,72,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(225,29,72,0.25)]',
+    badge: 'bg-rose-100/80 text-rose-700 dark:bg-rose-950/45 dark:text-rose-300 border-rose-200/50 dark:border-rose-800/40',
+    line: 'border-rose-500/20 dark:border-rose-400/15',
+    glowBg: 'rgba(225,29,72,0.015)',
+  },
   'clinica-medica': {
-    borderHover: 'hover:border-slate-500/50 dark:hover:border-slate-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(100,116,139,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(100,116,139,0.25)]',
-    badge: 'bg-slate-100/80 text-slate-700 dark:bg-slate-950/45 dark:text-slate-300 border-slate-200/50 dark:border-slate-800/40',
-    line: 'border-slate-500/20 dark:border-slate-400/15',
-    glowBg: 'rgba(100,116,139,0.015)',
+    borderHover: 'hover:border-rose-600/50 dark:hover:border-rose-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(225,29,72,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(225,29,72,0.25)]',
+    badge: 'bg-rose-100/80 text-rose-700 dark:bg-rose-950/45 dark:text-rose-300 border-rose-200/50 dark:border-rose-800/40',
+    line: 'border-rose-500/20 dark:border-rose-400/15',
+    glowBg: 'rgba(225,29,72,0.015)',
   },
   endocrinologia: {
     borderHover: 'hover:border-purple-500/50 dark:hover:border-purple-400/50',
@@ -74,7 +89,28 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-sky-500/20 dark:border-sky-400/15',
     glowBg: 'rgba(14,165,233,0.015)',
   },
+  pneumologia: {
+    borderHover: 'hover:border-sky-500/50 dark:hover:border-sky-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(14,165,233,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(14,165,233,0.25)]',
+    badge: 'bg-sky-100/80 text-sky-700 dark:bg-sky-950/45 dark:text-sky-300 border-sky-200/50 dark:border-sky-800/40',
+    line: 'border-sky-500/20 dark:border-sky-400/15',
+    glowBg: 'rgba(14,165,233,0.015)',
+  },
+  cardiologia: {
+    borderHover: 'hover:border-rose-500/50 dark:hover:border-rose-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(244,63,94,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(244,63,94,0.25)]',
+    badge: 'bg-rose-100/80 text-rose-700 dark:bg-rose-950/45 dark:text-rose-300 border-rose-200/50 dark:border-rose-800/40',
+    line: 'border-rose-500/20 dark:border-rose-400/15',
+    glowBg: 'rgba(244,63,94,0.015)',
+  },
   infectologia: {
+    borderHover: 'hover:border-emerald-500/50 dark:hover:border-emerald-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]',
+    badge: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/45 dark:text-emerald-300 border-emerald-200/50 dark:border-emerald-800/40',
+    line: 'border-emerald-500/20 dark:border-emerald-400/15',
+    glowBg: 'rgba(16,185,129,0.015)',
+  },
+  infecciosas: {
     borderHover: 'hover:border-emerald-500/50 dark:hover:border-emerald-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(16,185,129,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(16,185,129,0.25)]',
     badge: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/45 dark:text-emerald-300 border-emerald-200/50 dark:border-emerald-800/40',
@@ -109,12 +145,26 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-yellow-500/20 dark:border-yellow-400/15',
     glowBg: 'rgba(234,179,8,0.015)',
   },
+  'reproducao-obstetricia': {
+    borderHover: 'hover:border-fuchsia-500/50 dark:hover:border-fuchsia-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(217,70,239,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(217,70,239,0.25)]',
+    badge: 'bg-fuchsia-100/80 text-fuchsia-700 dark:bg-fuchsia-950/45 dark:text-fuchsia-300 border-fuchsia-200/50 dark:border-fuchsia-800/40',
+    line: 'border-fuchsia-500/20 dark:border-fuchsia-400/15',
+    glowBg: 'rgba(217,70,239,0.015)',
+  },
   'reproducao-neonatologia': {
     borderHover: 'hover:border-fuchsia-500/50 dark:hover:border-fuchsia-400/50',
     glow: 'hover:shadow-[0_0_20px_-3px_rgba(217,70,239,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(217,70,239,0.25)]',
     badge: 'bg-fuchsia-100/80 text-fuchsia-700 dark:bg-fuchsia-950/45 dark:text-fuchsia-300 border-fuchsia-200/50 dark:border-fuchsia-800/40',
     line: 'border-fuchsia-500/20 dark:border-fuchsia-400/15',
     glowBg: 'rgba(217,70,239,0.015)',
+  },
+  neonatologia: {
+    borderHover: 'hover:border-pink-400/50 dark:hover:border-pink-300/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(244,114,182,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(244,114,182,0.25)]',
+    badge: 'bg-pink-100/80 text-pink-700 dark:bg-pink-950/45 dark:text-pink-300 border-pink-200/50 dark:border-pink-800/40',
+    line: 'border-pink-400/20 dark:border-pink-300/15',
+    glowBg: 'rgba(244,114,182,0.015)',
   },
   ortopedia: {
     borderHover: 'hover:border-teal-500/50 dark:hover:border-teal-400/50',
@@ -123,19 +173,19 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-teal-500/20 dark:border-teal-400/15',
     glowBg: 'rgba(20,184,166,0.015)',
   },
-  imunologia: {
-    borderHover: 'hover:border-violet-500/50 dark:hover:border-violet-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(139,92,246,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(139,92,246,0.25)]',
-    badge: 'bg-violet-100/80 text-violet-700 dark:bg-violet-950/45 dark:text-violet-300 border-violet-200/50 dark:border-violet-800/40',
-    line: 'border-violet-500/20 dark:border-violet-400/15',
-    glowBg: 'rgba(139,92,246,0.015)',
+  oftalmologia: {
+    borderHover: 'hover:border-blue-500/50 dark:hover:border-blue-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(59,130,246,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(59,130,246,0.25)]',
+    badge: 'bg-blue-100/80 text-blue-700 dark:bg-blue-950/45 dark:text-blue-300 border-blue-200/50 dark:border-blue-800/40',
+    line: 'border-blue-500/20 dark:border-blue-400/15',
+    glowBg: 'rgba(59,130,246,0.015)',
   },
-  odontologia: {
-    borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(6,182,212,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(6,182,212,0.25)]',
-    badge: 'bg-cyan-100/80 text-cyan-700 dark:bg-cyan-950/45 dark:text-cyan-300 border-cyan-200/50 dark:border-cyan-800/40',
-    line: 'border-cyan-500/20 dark:border-cyan-400/15',
-    glowBg: 'rgba(6,182,212,0.015)',
+  gastroenterologia: {
+    borderHover: 'hover:border-orange-500/50 dark:hover:border-orange-400/50',
+    glow: 'hover:shadow-[0_0_20px_-3px_rgba(249,115,22,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(249,115,22,0.25)]',
+    badge: 'bg-orange-100/80 text-orange-700 dark:bg-orange-950/45 dark:text-orange-300 border-orange-200/50 dark:border-orange-800/40',
+    line: 'border-orange-500/20 dark:border-orange-400/15',
+    glowBg: 'rgba(249,115,22,0.015)',
   },
   'anestesia-dor': {
     borderHover: 'hover:border-cyan-500/50 dark:hover:border-cyan-400/50',
@@ -144,33 +194,12 @@ export const SPECIALTY_THEMES: Record<string, EntityCategoryTheme> = {
     line: 'border-cyan-500/20 dark:border-cyan-400/15',
     glowBg: 'rgba(6,182,212,0.015)',
   },
-  parasitologia: {
-    borderHover: 'hover:border-lime-600/50 dark:hover:border-lime-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(101,163,13,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(101,163,13,0.25)]',
-    badge: 'bg-lime-100/80 text-lime-800 dark:bg-lime-950/45 dark:text-lime-300 border-lime-200/50 dark:border-lime-800/40',
-    line: 'border-lime-500/20 dark:border-lime-400/15',
-    glowBg: 'rgba(101,163,13,0.015)',
-  },
-  gastroenterologia: {
-    borderHover: 'hover:border-pink-500/50 dark:hover:border-pink-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(236,72,153,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(236,72,153,0.25)]',
-    badge: 'bg-pink-100/80 text-pink-700 dark:bg-pink-950/45 dark:text-pink-300 border-pink-200/50 dark:border-pink-800/40',
-    line: 'border-pink-500/20 dark:border-pink-400/15',
-    glowBg: 'rgba(236,72,153,0.015)',
-  },
-  'hepatologia-pancreas': {
-    borderHover: 'hover:border-yellow-500/50 dark:hover:border-yellow-400/50',
-    glow: 'hover:shadow-[0_0_20px_-3px_rgba(234,179,8,0.18)] dark:hover:shadow-[0_0_25px_-5px_rgba(234,179,8,0.25)]',
-    badge: 'bg-yellow-100/80 text-yellow-700 dark:bg-yellow-950/45 dark:text-yellow-300 border-yellow-200/50 dark:border-yellow-800/40',
-    line: 'border-yellow-500/20 dark:border-yellow-400/15',
-    glowBg: 'rgba(234,179,8,0.015)',
-  },
 };
 
-export const DEFAULT_THEME: EntityCategoryTheme = {
-  borderHover: 'hover:border-primary/40',
-  glow: 'hover:shadow-sm',
-  badge: 'bg-muted text-muted-foreground border-border',
+const DEFAULT_THEME: EntityCategoryTheme = {
+  borderHover: 'hover:border-border-hover',
+  glow: 'hover:shadow-[0_0_15px_-3px_rgba(0,0,0,0.08)] dark:hover:shadow-[0_0_20px_-5px_rgba(0,0,0,0.3)]',
+  badge: 'bg-muted/70 text-muted-foreground border-border/60',
   line: 'border-border/60',
   glowBg: 'transparent',
 };
@@ -178,19 +207,37 @@ export const DEFAULT_THEME: EntityCategoryTheme = {
 export function getEntityCategoryTheme(category?: string | null): EntityCategoryTheme {
   if (!category) return DEFAULT_THEME;
 
-  const normalized = category
-    .trim()
-    .toLowerCase()
-    .replace(/[_\s]+/g, '-');
-  const aliases: Record<string, string> = {
-    infecciosa: 'infectologia',
-    infecciosas: 'infectologia',
-    nefrologia: 'nefrologia-urologia',
-    urologia: 'nefrologia-urologia',
-    gastrointestinal: 'gastroenterologia',
-  };
+  const normalized = normalizeCategorySlug(
+    category
+      .trim()
+      .toLowerCase()
+      .replace(/[_\s]+/g, '-')
+  );
 
-  return SPECIALTY_THEMES[aliases[normalized] || normalized] || DEFAULT_THEME;
+  return SPECIALTY_THEMES[normalized] || DEFAULT_THEME;
+}
+
+export function getBriefDiseaseSummary(text?: string | null): string {
+  if (!text) return '';
+  const clean = text.replace(/\*\*/g, '').trim();
+  const safeText = clean.replace(/(\b(?:ex|etc|vs|dr|dra|sp|spp|fig|tab)\.)/gi, '$1___TMP_DOT___');
+  const matches = safeText.match(/[^.!?]+[.!?]+/g);
+  if (!matches || matches.length === 0) return clean;
+
+  const s1 = matches[0].trim();
+  // Se a primeira frase for muito longa (>220 caracteres), retorna apenas ela tratada
+  if (s1.length > 220) {
+    return s1.replace(/___TMP_DOT___/g, '.');
+  }
+
+  // Se a primeira for curta, podemos anexar a segunda caso o total não ultrapasse ~240 caracteres (~3-4 linhas)
+  if (matches.length > 1) {
+    const s2 = matches[1].trim();
+    if (s1.length + s2.length <= 240) {
+      return (s1 + ' ' + s2).replace(/___TMP_DOT___/g, '.');
+    }
+  }
+  return s1.replace(/___TMP_DOT___/g, '.');
 }
 
 export const EntityCard = React.memo(function EntityCard({
@@ -204,19 +251,26 @@ export const EntityCard = React.memo(function EntityCard({
   linkState,
   className,
   category,
-  compact = false,
-  minimal = false,
 }: EntityCardProps) {
   const theme = getEntityCategoryTheme(category);
 
-  // Split subtitles using bullet delimiter to show separate clean tags
-  const subtitleParts = subtitle ? subtitle.split(/\s*[\u2022•]\s*/) : [];
+  // Single primary specialty label - no multiple loose tags
+  const primaryCategorySlug = category ? normalizeCategorySlug(category) : null;
+  const specialtyLabel = primaryCategorySlug
+    ? getSpecialtyVisual(primaryCategorySlug).label
+    : subtitle
+      ? subtitle.split(/\s*[\u2022•]\s*/)[0]
+      : null;
+
+  const displayDescription =
+    entityType === 'disease' && description
+      ? getBriefDiseaseSummary(description)
+      : description;
 
   return (
     <article
       className={cn(
-        'group relative flex h-full flex-col border border-border/80 bg-card transition-all duration-300',
-        minimal ? 'rounded-xl p-3.5' : compact ? 'rounded-xl p-4' : 'rounded-2xl p-5',
+        'group relative flex h-full flex-col justify-between rounded-xl border border-border/70 bg-card p-3.5 transition-all duration-300',
         theme.borderHover,
         theme.glow,
         className
@@ -225,95 +279,59 @@ export const EntityCard = React.memo(function EntityCard({
         background: `linear-gradient(135deg, var(--card) 0%, ${theme.glowBg || 'var(--card)'} 100%)`,
       }}
     >
-      <div className={cn('flex items-start justify-between gap-3', minimal ? 'mb-2' : compact ? 'mb-3' : 'mb-4')}>
-        <div className="min-w-0 flex-1">
-          <div className={cn('flex items-center gap-2', compact ? 'mb-1.5' : 'mb-2')}>
-            {!minimal && icon && (
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-105">
+      <div>
+        {/* Top: Title + Bookmark */}
+        <div className="mb-2 flex items-start justify-between gap-2.5">
+          <div className="flex min-w-0 items-baseline gap-2">
+            {icon && (
+              <span className="shrink-0 translate-y-0.5 text-muted-foreground/70 transition-colors group-hover:text-primary">
                 {icon}
               </span>
             )}
-            <h3
-              className={cn(
-                'line-clamp-2 font-bold leading-snug text-foreground transition-colors group-hover:text-primary',
-                compact ? 'text-sm' : 'text-base'
-              )}
-            >
-              <Link to={to} state={linkState} className="focus:outline-none">
-                <span className="absolute inset-0" aria-hidden="true" />
+            <h3 className="line-clamp-2 text-sm font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary">
+              <Link to={to} state={linkState} className="focus:outline-hidden">
                 {title}
               </Link>
             </h3>
           </div>
-          {subtitleParts.length > 0 ? (
-            <div className={cn('flex flex-wrap', compact ? 'mt-1.5 gap-1' : 'mt-2 gap-1.5')}>
-              {subtitleParts.map((part, idx) => (
-                <span
-                  key={idx}
-                  className={cn(
-                    'inline-flex items-center rounded-lg border py-0.5 font-semibold leading-normal tracking-wide',
-                    compact ? 'px-2 text-[9px]' : 'px-2.5 text-[10px]',
-                    idx === 0
-                      ? theme.badge
-                      : 'border-border/50 bg-muted/40 text-muted-foreground/80'
-                  )}
-                >
-                  {part}
-                </span>
-              ))}
-            </div>
-          ) : subtitle ? (
-            <span className={cn(
-              'mt-2 inline-flex items-center rounded-lg border py-0.5 font-semibold leading-normal tracking-wide',
-              compact ? 'px-2 text-[9px]' : 'px-2.5 text-[10px]',
-              theme.badge
-            )}>
-              {subtitle}
-            </span>
-          ) : null}
+          <div className="relative z-10 shrink-0">
+            <FavoriteButton
+              entityType={entityType}
+              entityId={entityId}
+              className="h-7 w-7 border border-border/60 bg-background/50 p-1 backdrop-blur-xs transition-colors hover:bg-background"
+            />
+          </div>
         </div>
-        {!minimal && <div className="relative z-10 shrink-0">
-          <FavoriteButton
-            entityType={entityType}
-            entityId={entityId}
-            className={cn(
-              'border border-border/60 bg-background/50 backdrop-blur-xs transition-colors hover:bg-background',
-              compact ? 'h-8 w-8 p-1.5' : 'h-9 w-9 p-2'
-            )}
-          />
-        </div>}
+
+        {/* Resumo com teto estrito de no máximo 5 linhas */}
+        {displayDescription && (
+          <p className="line-clamp-5 text-xs leading-relaxed text-muted-foreground/90">
+            {displayDescription}
+          </p>
+        )}
       </div>
 
-      {description && (
-        <p
-          className={cn(
-            'leading-relaxed text-muted-foreground/90',
-            minimal
-              ? 'line-clamp-2 text-xs leading-snug'
-              : compact
-                ? 'mb-3 line-clamp-2 text-xs'
-                : 'mb-4 line-clamp-3 text-sm'
-          )}
-        >
-          {description}
-        </p>
-      )}
-
-      {!minimal && <div className={cn('mt-auto flex items-center justify-between border-t', compact ? 'pt-3' : 'pt-3.5', theme.line)}>
-        <span className={cn('font-medium text-muted-foreground/75', compact ? 'text-[10px]' : 'text-[11px]')}>
-          Clique para consultar
-        </span>
-        <span
-          className={cn(
-            'inline-flex items-center gap-0.5 font-bold uppercase tracking-wider text-primary transition-all duration-300',
-            compact ? 'text-[10px]' : 'text-xs'
-          )}
-        >
+      {/* Footer com tag de especialidade no lugar de 'Clique para consultar' */}
+      <div className={cn('mt-3 flex items-center justify-between gap-2 border-t pt-2', theme.line)}>
+        {specialtyLabel ? (
+          <span
+            className={cn(
+              'inline-flex max-w-[200px] truncate items-center rounded-md border px-2 py-0.5 text-[10px] font-semibold leading-tight tracking-wide',
+              theme.badge
+            )}
+          >
+            {specialtyLabel}
+          </span>
+        ) : (
+          <span className="text-[10px] font-medium text-muted-foreground/75">
+            Clique para consultar
+          </span>
+        )}
+        <span className="inline-flex shrink-0 items-center gap-0.5 text-[10px] font-bold uppercase tracking-wider text-primary transition-all duration-300">
           Abrir
-          <ChevronRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+          <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
         </span>
-      </div>}
+      </div>
     </article>
   );
 });
-

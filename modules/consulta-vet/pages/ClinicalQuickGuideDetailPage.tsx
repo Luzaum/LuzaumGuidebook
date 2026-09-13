@@ -22,10 +22,12 @@ export function ClinicalQuickGuideDetailPage() {
   const repo = useMemo(() => getClinicalQuickGuideRepository(), []);
   const [guide, setGuide] = useState<ClinicalQuickGuide | null>(null);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState(0);
   const [heroZoomOpen, setHeroZoomOpen] = useState(false);
 
   useEffect(() => {
     let ok = true;
+    setActiveTab(0);
     if (!slug) {
       setGuide(null);
       setLoading(false);
@@ -153,11 +155,35 @@ export function ClinicalQuickGuideDetailPage() {
         </ul>
       </ConsultaVetSurface>
 
+      {guide.showTableOfContents ? (
+        <details className="rounded-2xl border border-border bg-card p-5">
+          <summary className="cursor-pointer text-base font-bold text-foreground">Neste guia — navegar pelos capítulos</summary>
+          <nav aria-label="Capítulos do procedimento" className="mt-4 grid gap-2 sm:grid-cols-2">
+            {sectionsForBody.map((block, index) => block.type === 'heading' && block.level === 2 ? (
+              <a key={index} href={`#cqg-section-${index}`} className="rounded-lg px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-primary">{block.text}</a>
+            ) : null)}
+          </nav>
+        </details>
+      ) : null}
+      {guide.readingTabs ? (
+        <nav aria-label="Tópicos do procedimento" className="flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-3">
+          {guide.readingTabs.map((tab, index) => <button type="button" key={tab.label}
+            aria-pressed={activeTab === index} aria-controls="clinical-guide-reading"
+            onClick={() => setActiveTab(index)}
+            className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeTab === index ? 'bg-primary text-primary-foreground' : 'bg-muted/40 text-foreground hover:bg-muted'}`}>
+            {tab.label}
+          </button>)}
+        </nav>
+      ) : null}
+      <section id="clinical-guide-reading" aria-label={guide.readingTabs?.[activeTab]?.label ?? 'Conteúdo completo'}>
       <ClinicalQuickGuideBody
-        blocks={sectionsForBody}
+        key={guide.slug}
+        richText={guide.richText}
+        blocks={guide.readingTabs ? sectionsForBody.slice(guide.readingTabs[activeTab]?.startIndex ?? 0, guide.readingTabs[activeTab + 1]?.startIndex) : sectionsForBody}
         youtubeVideoId={guide.youtubeVideoId}
         youtubeTitle={guide.title}
       />
+      </section>
 
       <div className="flex justify-center border-t border-border/60 pt-8">
         <Link

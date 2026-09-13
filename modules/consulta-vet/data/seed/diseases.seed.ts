@@ -47,6 +47,7 @@ import { fistulaPerianalFurunculoseAnalRecord } from './diseases.fistula-periana
 import { insulinomaCaesGatosRecord } from './diseases.insulinoma-caes-gatos.seed';
 import { cetoacidoseDiabeticaCaesGatosRecord } from './diseases.cetoacidose-diabetica-caes-gatos.seed';
 import { coagulacaoIntravascularDisseminadaRecord } from './diseases.coagulacao-intravascular-disseminada.seed';
+import { sindromeMielodisplasicaRecord } from './diseases.sindrome-mielodisplasica.seed';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
@@ -105,4 +106,5 @@ export const diseasesSeed: DiseaseRecord[] = [
   doencaDoDiscoIntervertebralCaesRecord,
   doencaDoDiscoIntervertebralGatosRecord,
   coagulacaoIntravascularDisseminadaRecord,
+  sindromeMielodisplasicaRecord,
 ].map(withPlainLanguage);

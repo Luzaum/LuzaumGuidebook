@@ -1,0 +1,408 @@
+PDF PAGE 420
+390  P ART III  Digestive System Disorders
+Halitosis often accompanies dysphagia, in which case it is 
+usually more productive to determine the cause of the dys -
+phagia. If halitosis occurs without dysphagia, the clinician 
+should first be sure that the odor is abnormal and then check 
+for the ingestion of odoriferous substances (e.g., feces). A 
+thorough oral examination is still the most important test. 
+Halitosis not attributable to an oropharyngeal lesion may be 
+If oral examination findings are not helpful, plain oral and 
+laryngeal radiographs are usually the best next steps. Oral 
+cultures are rarely helpful because normal oral flora makes 
+interpretation of results difficult. Even animals with severe 
+halitosis or stomatitis secondary to bacterial infection rarely 
+benefit from bacterial culture, unless there is a draining tract 
+or abscess.
+Oral Pain
+Fractured bones or teeth
+Trauma
+Periodontitis or caries (especially cats)
+Mandibular or maxillary osteomyelitis
+Other causes
+Retrobulbar abscess/inflammation
+Various other abscesses or granulomas of the oral 
+cavity
+Temporal-masseter myositis
+Stomatitis, glossitis, pharyngitis, gingivitis, tonsillitis, or 
+sialoadenitis
+Immune-mediated disease
+Feline viral rhinotracheitis, calicivirus, leukemia virus, or 
+immunodeficiency virus
+Lingual foreign objects, other foreign objects, or 
+granulomas
+Tooth root abscess
+Uremia
+Electrical cord burn
+Miscellaneous causes
+• Thallium
+• Caustics
+Pain associated with swallowing: esophageal stricture or 
+esophagitis
+Oral Mass
+Tumor (malignant or benign)
+Eosinophilic granuloma
+Foreign object (oral, pharyngeal, or laryngeal)
+Retropharyngeal lymphadenomegaly
+Inflammatory polyp of middle ear (primarily cats)
+Sialocele
+Oral Trauma
+Fractured bones (e.g., mandible, maxilla)
+Soft tissue laceration
+Hematoma
+Neuromuscular Disease
+Localized myasthenia
+Temporal-masseter myositis
+Temporomandibular joint disease
+Oral, pharyngeal, or cricopharyngeal dysfunction
+Cricopharyngeal achalasia
+Tick paralysis
+Rabies
+Tetanus
+Botulism
+Various cranial nerve dysfunctions/central nervous system 
+disease
+ BOX 26.1
+Causes of Dysphagia
+Bacterial Causes
+Food retained in the mouth
+Anatomic defect allowing retention (exposed tooth 
+roots, tumor, large ulcer)
+Neuromuscular defect allowing retention (pharyngeal 
+dysphagia)
+Food retained in the esophagus
+Tartar or periodontitis
+Damaged oral tissue
+Neoplasia/granuloma of mouth or esophagus
+Severe stomatitis/glossitis
+Eating Noxious Substances
+Necrotic or odoriferous food
+Feces
+ BOX 26.2
+Causes of Halitosis
+Ptyalism
+Nausea
+Hepatic encephalopathy (especially feline)
+Seizure activity
+Chemical or toxic stimulation of salivation 
+(organophosphates, caustics, bitter drugs [e.g., 
+atropine, metronidazole])
+Behavior
+Hyperthermia
+Salivary gland hypersecretion
+Pseudoptyalism
+Oral pain, especially stomatitis, glossitis, gingivitis, 
+pharyngitis, tonsillitis, or sialoadenitis (see Box 26.1)
+Oral or pharyngeal dysphagia (see Box 26.1)
+Facial nerve paralysis
+ BOX 26.3
+Major Causes of Drooling
+VetBooks.ir
+PDF PAGE 477
+447
+CHAPTER  29 
+Disorders of the Oral 
+Cavity, Pharynx,  
+and Esophagus
+MASSES, PROLIFERATIONS, AND 
+INFLAMMATION OF THE OROPHARYNX
+SIALOCELE
+Etiology
+Sialoceles are accumulations of saliva in subcutaneous tissues 
+caused by salivary duct obstruction and/or rupture, and 
+subsequent leakage of secretions into subcutaneous tissues. 
+Most cases are probably traumatic, but some are idiopathic.
+Clinical Features
+A large swelling is found under the jaw or tongue or occa -
+sionally in the pharynx. Acutely the swelling may be painful, 
+but most are nonpainful. Oral cavity sialoceles may cause 
+dysphagia, whereas those located in the pharynx often 
+produce gagging or dyspnea. If traumatized, sialoceles may 
+bleed or cause anorexia due to discomfort. Classically found 
+in 2- to 4-year-old dogs; German Shepherds and Miniature 
+Poodles seem to be predisposed.
+Diagnosis
+Aspiration with a large-bore needle reveals thick fluid with 
+some neutrophils. The fluid usually resembles mucus, 
+strongly suggesting its salivary gland origin. Contrast sialo -
+grams and/or contrast computed tomography (CT) some -
+times define which gland is involved.
+Treatment
+The mass is opened and drained. The salivary gland respon-
+sible for the secretions must be excised.
+Prognosis
+The prognosis is excellent if the correct gland is removed.
+SIALOADENITIS/SIALOADENOSIS/
+SALIVARY GLAND NECROSIS
+Etiology
+The etiology is unknown, but the condition apparently has 
+occurred as an idiopathic event as well as secondary to 
+chronic vomiting/regurgitation.
+Clinical Features
+The condition may cause a painless enlargement of one or 
+more salivary glands (usually the submandibular). If there 
+is substantial inflammation, animals may be dysphagic. A 
+syndrome has been reported in which noninflammatory 
+swelling (sialoadenosis) is associated with vomiting only 
+responsive to phenobarbital therapy. Cause and effect are 
+unclear, but it is clear that chronic vomiting will cause sialo-
+adenitis and even necrosis in some dogs.
+Diagnosis
+Cytology or histopathology confirms that the mass is sali -
+vary tissue and determines whether inflammation or necro -
+sis is present.
+Treatment
+If there is substantial inflammation and pain, surgical 
+removal seems most efficacious. If the patient is vomiting, a 
+search should be made for an underlying cause. If a cause is 
+found, it should be treated and the size of the salivary glands 
+monitored. If no other cause for vomiting can be found, 
+phenobarbital may be administered at anticonvulsant doses 
+(see Chapter 62).
+Prognosis
+The prognosis is usually excellent.
+NEOPLASMS OF THE ORAL CAVITY  
+IN DOGS
+Etiology
+Most soft tissue masses of the oral cavity are neoplasms, and 
+most of these are malignant (i.e., melanoma, squamous cell 
+carcinoma, fibrosarcoma). However, acanthomatous amelo-
+blastomas (previously called epulides), fibromatous epulides 
+(classically in Boxers), oral papillomatosis, and eosinophilic 
+granulomas (e.g., in Siberian Huskies and Cavalier King 
+Charles Spaniels) also occur.
+Clinical Features
+The most common signs of tumors of the oral cavity  
+are halitosis, dysphagia, bleeding, salivation, or a growth 
+VetBooks.ir
+PDF PAGE 478
+448  P ART III  Digestive System Disorders
+cytologic or histopathologic analysis, although papillomato-
+sis and melanomas may be strongly suspected based upon 
+their gross appearance. The preferred diagnostic approach in 
+a dog with a mass of the oral cavity is to image the area (e.g., 
+CT) and perform a relatively deep incisional biopsy. A deep 
+biopsy is necessary to avoid misdiagnosis that often occurs 
+if only the superficial, ulcerated, necrotic surface is obtained. 
+If malignancy is possible, thoracic radiographs or CT should 
+be obtained to evaluate for metastases (uncommon but a 
+very poor prognostic sign if present). Fine-needle aspiration 
+of regional lymph nodes, even if they appear normal, is indi-
+cated to detect metastases. Melanomas may be amelanotic 
+protruding from the mouth. Papillomatosis and fibromatous 
+periodontal hyperplasia are benign growths that may cause 
+discomfort when eating and occasionally cause bleeding, 
+mild halitosis, or tissue protrusion from the mouth. The 
+biologic behaviors of the different tumors are presented in  
+Table 29.1.
+Diagnosis
+A thorough examination of the oral cavity (which may 
+require that the animal be under anesthesia) usually reveals 
+a mass involving the gingiva, although the tonsillar area, 
+hard palate, and tongue may be affected. Diagnosis requires 
+ TABLE 29.1
+Some Characteristics of Selected Oral Tumors
+TUMOR
+TYPICAL 
+APPEARANCE/
+LOCATION
+BIOLOGIC 
+BEHAVIOR PREFERRED THERAPY
+Squamous Cell Carcinoma
+Gingiva Fleshy or ulcerated/on 
+rostral gingiva
+Malignant, locally 
+invasive
+Wide surgical resection on rostral gingiva ± 
+radiation; piroxicam may help palliate.
+Tonsil Fleshy or ulcerated/on 
+one or rarely both 
+tonsils
+Malignant, commonly 
+spreads to regional 
+lymph nodes
+None (chemotherapy may be of some benefit); 
+piroxicam may be helpful for palliation.
+Tongue margin 
+(dog)
+Ulcerated/on margin of 
+tongue
+Malignant, locally 
+invasive
+Surgical resection of tongue/radiotherapy; piroxicam 
+may be helpful for palliation.
+Base of tongue 
+(cat)
+Ulcerated/at base of 
+tongue
+Malignant, locally 
+invasive
+None (radiotherapy of tongue may be used 
+palliatively).
+Malignant 
+Melanoma
+Gray, black, or pink; 
+can be smooth, 
+usually fleshy/on 
+gum, tongue, or 
+palate
+Very malignant, early 
+metastases to lungs
+Surgery and/or radiation therapy for local control. 
+For systemic control, carboplatin chemotherapy has 
+been used with limited success.
+Fibrosarcoma Pink and fleshy/on 
+palate or gums
+Malignant, very 
+invasive locally
+Wide surgical resection (radiation may be of some 
+value in selected cases after surgical excision). 
+Biologically high-grade, histologically low-grade 
+tumors in young Labradors, Golden Retrievers, and 
+German Shepherd Dogs may have higher 
+metastatic potential).
+Acanthomatous 
+Ameloblastoma 
+(Epulis)
+Pink and fleshy/on 
+gum or rostral 
+mandible
+Benign, locally 
+invasive into bone
+Surgical resection ± radiation for gross or 
+microscopic disease. Must remove associated tooth 
+and dental ligament.
+Fibromatous 
+Epulis
+Pink, fleshy, solitary or 
+multiple/on gums
+Benign Surgical resection, must remove associated tooth and 
+dental ligament
+Ossifying Epulis Pink, fleshy, solitary or 
+multiple/on gums
+Benign Surgical resection, must remove associated tooth and 
+dental ligament
+Papillomatosis Pink or white, 
+cauliflower-like, 
+multiple/seen 
+anywhere
+Benign; malignant 
+transformation to 
+squamous cell 
+carcinoma may 
+occur rarely.
+Nothing, surgical resection or cryotherapy
+Plasmacytoma Fleshy or ulcerated 
+growth on gingiva
+Malignant, locally 
+invasive, rarely 
+metastasizes
+Surgical resection and/or radiation or melphalan 
+chemotherapy
+VetBooks.ir
+PDF PAGE 479
+ CHAPTER 29  Disorders of the Oral Cavity, Pharynx, and Esophagus  449
+Clinical Features
+Dysphagia, halitosis, anorexia, and/or bleeding are common 
+features of these tumors.
+Diagnosis
+A large, deep biopsy specimen is needed because it is crucial 
+to differentiate malignant tumors from eosinophilic granu -
+lomas. The superficial aspect of many oral cavity masses is 
+ulcerated and necrotic because of proliferation of normal 
+oral bacterial flora, making it difficult to accurately diagnose 
+a mass when deep tissue samples are not obtained.
+Treatment
+Surgical excision is desirable, but cats often do not tolerate 
+aggressive oral surgery as well as dogs do. Long-term or 
+permanent feeding tubes may be required. Radiation therapy 
+and/or chemotherapy may benefit cats with incompletely 
+excised squamous cell carcinomas not involving the tongue 
+or tonsil.
+Prognosis
+In general, the prognosis for cats with oral squamous cell 
+carcinoma is poor (see Chapter 81).
+FELINE EOSINOPHILIC GRANULOMA
+Etiology
+The cause of feline eosinophilic granuloma is uncertain. 
+Hypersensitivity reactions are thought to be responsible, and 
+a genetic predisposition has been suggested.
+Clinical Features
+Feline eosinophilic granuloma complex includes indolent 
+ulcer, eosinophilic plaque, and linear granuloma, but it has 
+not been established that these diseases are related. Indolent 
+ulcers are classically found on the lip or oral mucosa (espe-
+cially the maxillary canine teeth) of middle-aged cats. Eosin-
+ophilic plaque usually occurs on the skin of the medial thighs 
+and abdomen. Linear granuloma is typically found on the 
+posterior aspect of the rear legs of young cats but may also 
+occur on the tongue, palate, and oral mucosa. Severe oral 
+involvement of an eosinophilic ulcer or plaque typically pro-
+duces dysphagia, halitosis, and/or anorexia. Eosinophilic 
+granuloma may affect the chin and paw pads in addition to 
+the mouth.
+Diagnosis
+An ulcerated mass may be found at the base of the tongue 
+or on the hard palate, the glossopalatine arches, or anywhere 
+else in the mouth. A deep biopsy specimen of the mass is 
+necessary for accurate diagnosis. Peripheral eosinophilia is 
+inconsistently present.
+Treatment
+Systemic antibiotics directed against Staphylococcus spp. 
+(e.g., amoxicillin plus clavulanic acid, trimethoprim-sulfa 
+combinations) are often effective in treating indolent 
+and can cytologically resemble fibrosarcomas, carcinomas, 
+or undifferentiated round cell tumors. Biopsy and subse -
+quent histopathologic analysis may be required for a defini -
+tive diagnosis.
+Treatment and Prognosis
+The preferred therapeutic approach in dogs with confirmed 
+malignant neoplasms of the oral cavity and lack of clinically 
+detectable metastases is wide, aggressive surgical excision 
+of the mass and surrounding tissues (e.g., mandibulectomy, 
+maxillectomy) and/or radiation. Enlarged regional lymph 
+nodes should be excised and evaluated histopathologically, 
+even if they are cytologically negative for neoplasia. Early 
+complete excision (especially gingival or hard palate squa -
+mous cell carcinomas and acanthomatous epulides) may be 
+curative. Sometimes, fibrosarcomas can be cured if diag-
+nosed early and resected completely (i.e., 3  cm ma rgins). 
+However, young Labrador Retrievers and Golden Retriev -
+ers in particular tend to have a histologically low-grade but 
+biologically high-grade subtype of fibrosarcoma, which has 
+a very high metastatic rate. Melanomas have metastatic rates 
+of 60% to 80%, making surgical cure extremely rare. Rostral 
+tumors tend to have a better prognosis, probably because they 
+are diagnosed earlier than more caudal tumors. Acanthoma-
+tous ameloblastomas may respond to radiation therapy alone 
+(complete surgical excision is preferred), and squamous cell 
+carcinomas or fibrosarcomas with residual postoperative 
+disease may benefit from postoperative adjunctive radiation 
+therapy. Lingual squamous cell carcinomas affecting the base 
+of the tongue and tonsillar carcinomas have a very poor 
+prognosis; complete excision or irradiation usually causes 
+severe morbidity. Melanomas metastasize early and have a 
+very guarded prognosis. Chemotherapy is usually not ben -
+eficial in dogs with squamous cell carcinoma, acanthoma -
+tous ameloblastomas, or melanoma. Piroxicam can palliate 
+some patients with squamous cell carcinoma. Combination 
+chemotherapy may palliate some dogs with fibrosarcomas 
+(see Chapter 76). Radiotherapy plus hyperthermia has been 
+successful in some dogs with oral fibrosarcoma. In all cases, 
+an oncologist should be consulted.
+Papillomatosis usually resolves spontaneously, although it 
+may be necessary to resect some of the masses if they inter -
+fere with eating. Rarely there may be malignant transforma-
+tion to squamous cell carcinoma. Fibromatous epulides may 
+be resected if they cause problems.
+NEOPLASMS OF THE ORAL CAVITY  
+IN CATS
+Etiology
+Tumors of the oral cavity are less common in cats than 
+in dogs, but they are almost all malignant and are usually 
+squamous cell carcinomas that are diagnosed and treated as 
+described for dogs. Cats are different from dogs in that they 
+also have sublingual squamous cell carcinomas and eosino -
+philic granulomas (which mimic carcinoma but have a much 
+better prognosis).
+VetBooks.ir

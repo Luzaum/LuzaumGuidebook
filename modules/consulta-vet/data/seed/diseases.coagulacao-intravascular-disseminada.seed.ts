@@ -79,8 +79,8 @@ export const coagulacaoIntravascularDisseminadaRecord: DiseaseRecord = {
     'Síndrome de desfibrinação',
   ],
   species: ['dog', 'cat'],
-  category: 'emergencia-intensivismo',
-  categories: ['hematologia', 'clinica-medica', 'oncologia', 'infectologia'],
+  category: 'intensivismo',
+  categories: ['hematologia', 'oncologia', 'infectologia'],
   tags: [
     'CID',
     'DIC',

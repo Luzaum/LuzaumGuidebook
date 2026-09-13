@@ -335,4 +335,10 @@ export const commercialProductImageAssets: Record<string, string> = {
   "keppra-250-ucb": "https://product-data.raiadrogasil.io/images/14981920.webp",
   "levetiracetam-generico": "https://qualidoc-plataforma.s3.us-east-2.amazonaws.com/attachments/9cacbd08-35da-482d-b67e-a1098ad8f50c.jpeg",
   "levetiracetam-500-ems": "https://qualidoc-plataforma.s3.us-east-2.amazonaws.com/attachments/9cacbd08-35da-482d-b67e-a1098ad8f50c.jpeg",
+  "apevitin-bc-xarope-ems": "/assets/consulta-vet/commercial-products/apevitin-bc-xarope-ems.png",
+  "cobavital-microcomprimidos-abbott": "/assets/consulta-vet/commercial-products/cobavital-microcomprimidos-abbott.jpg",
+  "same-complex-pet-tabs": "/assets/consulta-vet/commercial-products/hep-same-pet-tabs-soft-care.webp",
+  "ezetimiba-generico-humano": "/assets/consulta-vet/commercial-products/ezetimiba-10mg-ems.webp",
+  "benzafibrato-bezafibrato-generico": "/assets/consulta-vet/commercial-products/benzafibrato-200mg.webp",
+  "leukeran-clorambucila-aspen": "/assets/consulta-vet/commercial-products/leukeran-2mg-aspen.png",
 };

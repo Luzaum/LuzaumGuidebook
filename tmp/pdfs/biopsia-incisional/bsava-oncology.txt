@@ -1,0 +1,2844 @@
+
+===== PDF PAGE 13 =====
+Chapter 1 Introduction: cancer in cats and dogs
+4
+•	 Osteosarcoma in large-breed dogs: with 
+amputation alone, average survival time is 3–6 
+months; ‘failure’ is due to development of 
+pulmonary metastatic disease in 90% of patients
+•	 Oral malignant melanoma, an aggressive and 
+highly metastatic disease: the primary tumour 
+may be controlled by surgery/radiotherapy, giving 
+average survival times in the order of 6 months, 
+with failure due to metastasis
+•	 Splenic haemangiosarcoma: following 
+splenectomy, average survival times are less than 
+6 months, due to development of metastases.
+In cats the majority of oral and pharyngeal 
+tumours are squamous cell carcinoma and similar to 
+human head-and-neck cancers. These tumours 
+respond poorly to conventional therapy (especially 
+when lingual) and in the absence of an effective 
+means of therapy these feline patients would be 
+ideal candidates for new approaches.
+Breed predilections
+In dogs it is well recognized that differences exist 
+between different breeds regarding their risk of 
+developing certain types of cancer, but there are few 
+large-scale epidemiological studies on the incidence 
+of different types of cancer in the canine population 
+and its variation between breeds. In a study of rates 
+and causes of death in insured dogs in Sweden, 
+Bonnett et al. (1997) found that the Bernese 
+Mountain Dog, Irish Wolfhound, Flat-coated 
+Retriever, Boxer and St Bernard were the five breeds 
+with the highest mortality from tumour-related death. 
+In Denmark, Bernese Mountain Dog, Flat-coated 
+Retriever, Golden Retriever and Rottweiler were the 
+top four breeds, with over 20% of deaths due to can-
+cer (Proschowsky et al., 2003).
+These population-based studies provide useful 
+indicators to breeds at risk of cancer, but should not 
+be regarded as completely definitive. The outcome 
+often depends on the structure of the population at 
+risk with respect to breed, which explains the differ-
+ences found in studies from different countries. 
+However, the fact that there are undoubtedly breed-
+related predispositions to development of cancer 
+has important implications in understanding the aeti-
+ology of cancer, as it suggests a possible genetic, 
+heritable component.
+Some breeds of dog have been associated with 
+specific types of tumour, such as Bernese Mountain 
+Dog (systemic and malignant histiocytosis) and Irish 
+Wolfhound (osteosarcoma); others, such as Boxer, 
+Golden Retriever and Rottweiler, are associated with 
+a higher risk of tumours in general. This observation 
+also has important genetic implications, suggesting 
+that the situation in some breeds may be like the 
+rare human Li-Fraumeni syndrome where a germ 
+line mutation in a tumour suppressor gene (p53) 
+results in a hereditary predisposition to certain forms 
+of cancer (Tabori and Malkin, 2008); whereas other 
+breeds may have a more specific genetic abnormal-
+ity leading to a particular type of tumour.
+Far less is published about breed predilections in 
+cats. Siamese cats appear to have a predilection for 
+lymphoma. Early-onset mediastinal lymphoma has 
+been reported in FeLV-negative Siamese-type 
+breeds, suggesting a possible genetic predisposition 
+to this condition. Siamese cats have been reported 
+to respond more favourably than other breeds to 
+chemotherapeutic treatment of lymphoma (Teske et 
+al., 2002).
+Treatment of cancer
+The last 20 years have seen many changes in the 
+attitude and approach of the pet-owning public and 
+of the veterinary profession to the diagnosis and 
+treatment of cancer in cats and dogs, with the result 
+that the demand for both basic and specialist treat-
+ment of animals with cancer has continually 
+increased. However, while knowledge of the basic 
+disease process has advanced hugely in the past 
+two decades, this has yet to make a major impact on 
+the clinical management of cancer in pet animals. 
+Thus surgery, radiotherapy and chemotherapy 
+remain for the time being the main weapons in the 
+fight against cancer.
+Surgery is and remains the most effective 
+method of treatment for many ‘solid’ tumours such as 
+mast cell tumours, low-grade sarcomas and low-
+grade carcinomas. The development of surgical 
+techniques to allow adequate margins of excision for 
+such tumours can frequently result in surgical cure.
+The increasing availability of radiotherapy facili-
+ties, firstly in North America and then in the UK and 
+Europe, has led to an increasing application of radi-
+ation, either as a primary treatment for brain and 
+nasal tumours, for example, or in conjunction with 
+surgery for the more invasive mast cell tumours  
+and sarcomas.
+Chemotherapy remains the treatment of choice 
+for systemic diseases, particularly lymphoma, and is 
+increasingly used as an adjunct to surgery for those 
+tumours with a high risk of metastasis. With the 
+exception of osteosarcoma, however, the latter indi-
+cation has yet to be validated by clear demonstration 
+of efficacy in controlled clinical trials.
+Future directions
+New technology is having an impact on the veteri-
+nary approach to the cancer patient. In terms of 
+diagnostics, the use of monoclonal antibodies to 
+immunophenotype tumours such as lymphoma and 
+leukaemia has been shown to be of prognostic 
+value, and immunocytochemistry has become more 
+widely used in the diagnosis and classification of this 
+and other forms of cancer. Increased availability of 
+advanced imaging techniques such as advanced 
+ultrasonography, computed tomography and mag-
+netic resonance imaging is starting to revolutionize 
+the ability to detect and determine the true extent of 
+some tumours, allowing better planning for surgical 
+approaches and radiotherapy.
+Ch01 Oncology.indd   4 11/10/2010   11:35
+VetBooks.ir
+
+===== PDF PAGE 14 =====
+Chapter 1 Introduction: cancer in cats and dogs
+5
+Some novel methods of treatment have become 
+available. For example, photodynamic therapy is 
+being used for the treatment of superficial squamous 
+cell carcinomas and other head and neck tumours. A 
+novel immune system modulator, imiquimod, which 
+possesses both antiviral and anti-tumour activity, has 
+been used with variable degrees of success in 
+human patients with cutaneous tumours, including 
+basal and squamous cell carcinoma and epithelio-
+trophic lymphoma, and has also been used in veteri-
+nary practice.
+In recent years much more targeted methods of 
+cancer therapy have met with success in human 
+medicine, such as the small molecule tyrosine 
+kinase inhibitor imatinib (Gleevec, Novartis), which 
+targets cells with activating mutations in KIT for treat-
+ment of chronic myeloid leukaemia and gastrointesti-
+nal stromal tumours (GISTs). It has been shown that 
+20–30% of canine mast cell tumours have mutations 
+in the juxtamembrane region of c-kit, implicating KIT 
+tyrosine kinase in the pathogenesis of these 
+tumours. Tyrosine kinase inhibitors have been shown 
+to have some efficacy in the treatment of non-resect-
+able mast cell tumours in dogs (London et al., 2003; 
+Hahn et al., 2008) and two such agents – masitinib 
+(Masivet, AB Science) and toceranib phosphate 
+(Palladia, Pfizer) – have recently been authorized for 
+treatment of canine mast cell tumours.
+Specific growth factor receptors are another 
+potential target for newer therapeutic approaches. 
+The antibody targeting the human epidermal growth 
+factor receptor (HER-2), ‘Herceptin’, has proven to 
+be effective in the treatment of HER-2-positive 
+breast cancer. Antibodies have also been developed 
+to target other receptors involved with cell signalling: 
+CD20 is a transmembrane protein that regulates 
+early steps in the activation of cell cycle initiation and 
+differentiation. The antigen is expressed on most 
+B-cell non-Hodgkin’s lymphomas but is not found on 
+stem cells, pro-B cells, normal plasma cells or other 
+normal tissues. Rituximab, an anti-human CD20 anti-
+body, is approved for treatment of B-cell lymphoma 
+in adults. Further humanized anti-CD20 antibodies, 
+some carrying radiopharmaceuticals, are in develop-
+ment for treatment of B-cell lymphoma.
+Whilst there is much to be learnt from compara-
+tive oncology, these advances cannot be directly 
+translated into veterinary medicine. For rational 
+application of such targeted cytostatic treatments in 
+veterinary cancer medicine the targets need to be 
+defined, and so research is required to determine 
+which cell surface receptors are expressed in differ-
+ent tumours and what signalling pathways are func-
+tional or dysfunctional in the neoplastic cells. Work 
+already in progress in these areas offers a promising 
+start to an exciting future.
+References and further reading
+Bonnett BN, Egenvall A, Olson P and Hedhammar A (1997) Mortality in 
+insured Swedish dogs: rates and causes of death in various 
+breeds. Veterinary Record 141, 40–44
+Dobson JM, Samuel S,
+ 
+Milstein H, Rogers K and Wood JLN (2002) 
+Canine neoplasia in the UK: estimates of incidence rates from a 
+population of insured dogs. Journal of Small Animal Practice 43, 
+240–246
+Dorn CR, Taylor DO, Schneider R, Hibbard HH and Klauber MR (1968) 
+Survey of animal neoplasms in Alameda and Contra Costa 
+counties, California. II. Cancer morbidity in dogs and cats from 
+Alameda County. Journal of the National Cancer Institute 40, 307–
+318
+Hanahan D and Weinberg RA (2000) The hallmarks of cancer. Cell 100, 
+57–70
+Hahn KA, Oglivie G, Devauchelle P et al. (2008) Masitinib is safe and 
+effective for the treatment of canine mast cell tumours. Journal of 
+Veterinary Internal Medicine 22, 1301–1309
+London C, Hannah AL, Zadovoskaya R et al. (2003) Phase I dose 
+escalating study of SU11654, a small molecule receptor tyrosine 
+kinase inhibitor, in dogs with spontaneous malignancies. Clinical 
+Cancer Research 9, 2755–2768
+Michell AR (1999) Longevity of British breeds of dog and its 
+relationships with sex, size, cardiovascular variables and disease. 
+Veterinary Record 145, 625–629
+Proschowsky HF , Rugbjerg H and Ersboll AK (2003) Morbidity of 
+purebred dogs in Denmark. Preventive Veterinary Medicine 58, 53–
+62
+Tabori U and Malkin D (2008) Risk stratiﬁcation in cancer predisposition 
+syndromes: lessons learned from novel molecular developments in 
+Li-Fraumeni syndrome. Cancer Research 68, 2053–2057
+Teske E, van Straten G, van Noort R and Rutteman GR (2002) 
+Chemotherapy with cyclophosphamide, vincristine and 
+prednisolone (COP) in cats with malignant lymphoma: new results 
+with an old protocol. Journal of Veterinary Internal Medicine 16, 
+179–186
+Ch01 Oncology.indd   5 11/10/2010   11:35
+VetBooks.ir
+
+===== PDF PAGE 15 =====
+Chapter 2 How to make a diagnosis
+6
+2
+How to make a diagnosis
+Timothy J. Scase and Jane M. Dobson
+Introduction
+Obtaining an accurate pathological diagnosis is an 
+essential requirement for optimizing the treatment  
+of the individual cancer patient and for providing the 
+client with an assessment of likely cancer behaviour 
+and likely prognosis. An accurate diagnosis provides 
+a rational starting point for selecting the best treat-
+ment for the cancer patient. Without an accurate 
+pathological diagnosis, the clinician can only rely on 
+empirical evidence to decide how best to treat the 
+patient. At the most basic level, differentiation of neo-
+plasia from non-neoplastic disease is likely to greatly 
+increase the chance of therapy success.
+With the increasing sophistication of techniques 
+available to the diagnostic pathologist, there is much 
+greater potential for obtaining an accurate diagnosis 
+from submitted tissue samples. It is also expected that, 
+with the refinement of diagnostic techniques, method-
+ologies and classification schemes, the requirement to 
+obtain an accurate and highly specific diagnosis for 
+treatment and prognosis will increase in the future.
+This chapter discusses the optimum strategies 
+for achieving a pathological diagnosis, how to inter-
+pret a pathology report and what to expect from the 
+pathologist in terms of diagnostic quality, margin 
+examination and special stains. All of these factors 
+can increase or decrease the likelihood of achieving 
+the true pathological diagnosis, and from there the 
+more likely it is that rational therapies can be chosen.
+Choosing the correct biopsy modality for any par-
+ticular tumour type can present a challenge to the 
+clinician when trying to optimize the cost/benefit ratio 
+of the extent of any investigations into the tumour 
+prior to treatment. In some cases, if an excisional 
+biopsy is chosen as the primary diagnostic modality 
+and if a benign tumour has been excised with com-
+plete tumour-free surgical margins, the diagnostic 
+and treatment modality have been the same and no 
+money will have been used in the diagnostic work-up 
+of the case. However, if histopathology shows a mast 
+cell tumour (MCT) or soft tissue sarcoma that has 
+been incompletely removed, the best chance of  
+surgical cure has been lost. Thus in many cases the 
+clinician will wish to have some idea as to what 
+tumour type they are dealing with prior to further 
+biopsy or treatment. In many cases, choosing an 
+aspirate or smear as the first diagnostic procedure 
+will enable rational decision making for choosing the 
+subsequent diagnostic modality.
+Cytology
+Cytological examination of tissue samples is a quick 
+and simple technique, requiring a minimum of equip-
+ment, that can easily be performed in the general 
+practice setting. Many commercial clinical pathology 
+laboratories will report on cytological samples and, 
+with practice, most veterinary surgeons should be 
+able to use cytology to discriminate between reactive 
+and neoplastic lesions and even to diagnose some 
+particularly characteristic tumours, such as MCTs.
+Fine-needle aspirates or impression smears from 
+solid tumours and the cytological examination of the 
+cellular content of fluids collected from organs or body 
+cavities can provide a great deal of information about 
+the lesion and in most cases will enable differentiation 
+between inflammatory and neoplastic processes. In 
+the hands of an experienced clinical pathologist, it can 
+be a highly rewarding diagnostic technique that can 
+greatly assist in choosing the most appropriate sub-
+sequent diagnostic or therapeutic decision (Figure 
+2.1). In inexperienced hands, however, or if the sam-
+ples are taken using poor technique or handled in-
+appropriately, cytology can be either unrewarding or, 
+at worst, misleading and result in the wrong diagnos-
+tic or therapeutic choices being made.
+Decision tree for cytological diagnosis.2.1
+Cell population
+Round
+cells
+Apply criteria for malignancy
+EpithelialSpindle
+cells
+Inflammatory or
+reactive tissue
+One cell type
+predominates
+Multiple cell
+types present
+Ch02 Oncology.indd   6 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 16 =====
+Chapter 2 How to make a diagnosis
+7
+The morphology of neoplastic cells will also often 
+provide an indication of the likely nature of a tumour 
+and its degree of malignancy (Figures 2.2 and 2.3).
+•	 Cytology cannot be used to ‘grade’ most tumours, 
+as grading is largely dependent on consideration 
+of the relationship of the neoplastic cells with the 
+surrounding normal tissues, and other factors such 
+as the mitotic rate, the degree of inflammation and 
+necrosis, all of which can be difficult or impossible 
+to assess on cytological examination alone
+•	 Some tumours, such as mammary tumours, have 
+a very complex architecture and examination of 
+histological tissue sections is required to make a 
+diagnosis. In these cases, cytology is much less 
+useful, as it may not be able to distinguish 
+between different mammary tumour types 
+(Figures 2.4 and 2.5).
+Cytological and histological features of 
+malignancy. (Adapted from Morris and Dobson, 
+2001, with permission of the publisher)
+2.2
+Cytological features
+Cell population Pleomorphism
+Presence of mitoses, especially abnormal or 
+bizarre forms
+Cellular features Large cell size/giant cells (anisocytosis)
+Poorly differentiated, anaplastic cells
+High nuclear to cytoplasmic ratio
+Nuclear features Large nuclear size, nuclear pleomorphism 
+(anisokaryosis)
+Multiple nuclei (often of variable size)
+Hyperchromatic nuclei with clumping or 
+stippling of chromatin
+Prominent and often multiple nucleoli of 
+variable size and shape
+Histological features
+Cellular features As above
+Tumour architecture Lack of structural organization of cells into 
+recognizable form
+Relationship with 
+adjacent tissues
+Invasion of cells into adjacent normal tissues
+Evidence of 
+metastatic behaviour
+Tumour cells invading or present within 
+lymphatics or venules
+Criteria for malignancy: a cluster of cells from 
+an aspirate of a prostatic carcinoma. The cells 
+are displaying marked anisocytosis and anisokaryosis. In 
+some cells the nuclear to cytoplasmic ratio is increased. 
+There are bi- and even multinucleated cells. The nuclei 
+contain prominent, often multiple, nucleoli. (Modiﬁ  ed 
+Wright’s stain, original magniﬁ  cation X1000)
+2.3
+In contrast to Figure 2.4, this histological section 
+from a mixed mammary tumour shows the 
+architectural arrangement of the cells, forming lobules and 
+ducts. This is an important aspect of diagnosis and cannot 
+be represented cytologically. (Giemsa, X20 objective)
+2.5
+Mast cell tumour. (a) Histological section from a 
+well differentiated MCT, showing homogenous 
+sheets of mast cells; tumour architecture is not important 
+in diagnosis. (H&E, X20 objective) (b) A ﬁ  ne-needle 
+aspirate from such a tumour is likely to yield a similar 
+population of tumour cells. (Giemsa, X40 objective)
+2.4
+(a)
+(b)
+Cytology is undoubtedly a useful diagnostic 
+technique in the investigation of neoplasia, but it is 
+important to be aware of its limitations:
+•	 Cytology often will not provide a definitive tumour 
+diagnosis. For instance, in some solid tumours, 
+neoplastic cells may not exfoliate sufficiently to 
+provide enough cells for diagnosis. This may 
+occur with any tumours that produce 
+considerable stromal components, such as a 
+fibroma or osteoma
+Ch02 Oncology.indd   7 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 17 =====
+Chapter 2 How to make a diagnosis
+8
+Cytology techniques
+Impression smears
+Impression smears can be performed with the mass 
+in situ, or using biopsy specimens from the mass.
+1. Pat the cleanly incised surface dry with gauze 
+(sterility dependent on whether the impression 
+smear is taken in situ or not) to remove excess 
+blood that would otherwise swamp the cytology 
+preparation.
+2. Dab a clean glass slide on to the cut surface if the 
+mass is in situ, or dab the cut face of a sample on 
+to a slide (Figure 2.6), and allow to air dry.
+This might be particularly important where the 
+fluid-filled structure is close to a joint or body 
+cavity (for instance, aspiration of a perineal mass 
+that could represent a perineal hernia), where 
+there is a possibility of communication between 
+the mass and a body cavity.
+2. Prepare a needle (20–25 G, starting with 1-inch 
+23 G) and syringe (5–10 ml). Insert the needle 
+into the mass and reposition using a stabbing 
+action three to five times. This can be done either 
+with negative pressure generated by pulling back 
+on the syringe plunger, or with no negative 
+pressure. In some cases, excessive negative 
+pressure on the aspirated cells can result in cell 
+damage and thereby reduce the diagnostic utility 
+of the sample.
+FNA technique for a subcutaneous nodule.  
+(a) The lesion is located and held ﬁrmly while 
+the needle is inserted. (b) An air-ﬁlled syringe is 
+connected to the hub of the needle and the contents 
+blown on to a clean glass slide. (c) A second clean glass 
+slide is placed gently on top of the sample, allowing the 
+ﬁlm to spread between the slides, which are then gently 
+drawn apart. See text for full details.
+2.7
+(a)
+(b)
+(c)
+Making an impression smear.2.6
+To increase the likelihood of a diagnostic prepa-
+ration being achieved, multiple slides should be pre-
+pared. Multiple impressions can be placed on a 
+single slide if the surface area of the tissue is small.
+Performing impression smears from the tissue in-
+house prior to submission of a biopsy for histological 
+examination can be rewarding for the practitioner, as 
+it enables direct correlation of the in-house cytologi-
+cal diagnosis with the final histological diagnosis and 
+allows the practitioner to pit themselves against the 
+pathologist.
+Fine-needle aspiration
+Fine-needle aspiration (FNA; Figure 2.7) is the cyto-
+logical technique of choice for those situations where 
+a provisional diagnosis is required prior to incisional/
+excisional biopsy or where an aspirate can be 
+obtained via imaging-guided techniques rather than 
+requiring surgical intervention, such as when sam-
+pling an intra-abdominal mass using ultrasound 
+guidance. FNA is frequently used for diagnosis and 
+staging of lymphoma, as the neoplastic cells exfoli-
+ate well and it is usually diagnostic without resorting 
+to more invasive surgical biopsy techniques.
+1. Prepare the skin. In most cases, the skin does not 
+need clipping or preparing other than wetting the 
+fur with alcohol. In those cases where the FNA 
+sample might be cultured, it is good practice to 
+clip and prepare the skin as for a surgical biopsy, 
+in order to reduce the possibility of contaminating 
+the sample with cutaneous microorganisms. In 
+some cases, where a fluctuant mass is being 
+aspirated, it is similarly prudent to prepare the 
+skin further in order to reduce the chance of 
+contamination of the fluid within the mass/cavity. 
+Ch02 Oncology.indd   8 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 18 =====
+Chapter 2 How to make a diagnosis
+9
+3. Release any pressure on the syringe plunger and 
+withdraw the needle and attached syringe from 
+the patient. Detach the syringe from the needle 
+hub (any aspirated cells will be in the hub/
+needle). Air is drawn into the syringe. Reattach 
+the syringe to the needle hub.
+4. Place a clean slide on a horizontal surface, and 
+press the plunger down firmly to expel the 
+needle/needle-hub contents on to the slide. A 
+single FNA may be enough to make two or three 
+slide preparations.
+5. To make the smears, and to prevent the 
+preparation being too thick to examine 
+microscopically, place a second clean slide at 
+right angles on top of the first and smoothly and 
+gently smear out to the edge. No extra pressure 
+should be exerted on the slide beyond that 
+required to move it over the slide beneath. 
+Excessive pressure will result in extensive 
+rupture of the aspirated cells and render the 
+preparation impossible to interpret (Figure 2.8).
+6. The smears are then air dried prior to submission 
+or in-house staining.
+Bone marrow sampling
+Aspiration: Specialized needles with stylets to pre-
+vent cortical bone blocking the end of the needle are 
+required for bone marrow aspiration. The ‘Klima’  
+needle (Figure 2.10) is one example but other types 
+(e.g. Jamshidi; see Figure 2.13) and disposable ver-
+sions are available.
+Poor smearing technique: the stringy blue 
+streaks reﬂect DNA material from ruptured cells. 
+(Modiﬁed Wright’s stain, original magniﬁcation X400) 
+(Courtesy of Clinical Pathology Laboratory, Department of 
+Veterinary Medicine, University of Cambridge)
+2.8
+Cytospin preparation of pleural ﬂuid from a cat 
+with a mediastinal mass. (Giemsa, X100 
+objective)
+2.9
+Klima needle for bone marrow aspiration.2.10
+Cytospins of body ﬂuids/effusions
+For any body cavity, or indeed any fluid-filled mass, 
+cytological examination of cells exfoliating into the 
+fluid may enable a diagnosis to be made and in par-
+ticular may provide evidence for the presence or 
+absence of a neoplastic process. As the cells are 
+often present at low density within the fluid, a con-
+centrating technique is usually required in order to 
+provide enough cells on a slide to make a confident 
+diagnosis. This is most easily achieved by using a 
+cytospin machine – a specialized centrifuge where 
+one or more drops of the fluid are placed in a holder 
+attached to a glass slide, and the cells are precipi-
+tated on to the slide by the spinning of the centrifuge 
+arm. Once the arm has stopped spinning, the slide is 
+detached and left to air dry and the cytospin prepar-
+ation is stained routinely (Figure 2.9). In most cases 
+cytospin preparations will be performed at a diag-
+nostic laboratory rather than in a practice laboratory.
+In the dog, bone marrow can be collected from 
+any of the larger long bones, the pelvis or the ribs. 
+Different clinicians have their preferred approaches: 
+the dorsal wing of the ileum is an easy site to sample 
+provided the patient is not overweight (Figure 2.11); 
+other people prefer the cranial aspect of the proximal 
+humerus. In the cat the femur is usually the preferred 
+site and the procedure is often performed under 
+general anaesthetic.
+1. In the dog: with the patient sedated and local 
+anaesthetic infiltrated into the surrounding skin, 
+muscle and periosteum, insert the Klima needle 
+(with stylet in place) into the dorsal wing of the 
+iliac crest using a twisting action (Figure 2.12.a).
+2. Once the needle is deeply seated within the 
+bone, remove the stylet, connect a 10 ml syringe 
+and apply suction, resulting in a sample of bone 
+marrow bubbling into the syringe (Figure 2.12b) .
+3. Withdraw the syringe and needle from the bone as 
+one unit and apply drops of bone marrow to 5–10 
+clean glass slides positioned at about 45 degrees 
+Ch02 Oncology.indd   9 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 19 =====
+Chapter 2 How to make a diagnosis
+10
+to vertical. This allows the excess blood to run 
+down the slide, thus reducing the haemodilution of 
+the sample. In a good sample of bone marrow, it 
+should be possible to see globules of fat and 
+flecks of marrow (Figure 2.12c).
+4. Use a second clean glass slide, drawn 
+perpendicularly across the first, to make the 
+smear (Figure 2.12 d). Speed is important here to 
+prevent the marrow from clotting before the 
+smear is made (some people advocate use of 
+anticoagulants, e.g. ACD, in the syringe prior to 
+suction, but in the authors’ experience tilting the 
+slides allows excess blood to run off, thus 
+preventing haemodilution of the sample, and 
+prompt and adept smearing gives good results). 
+The sample is then air dried and sent to the 
+laboratory for fixation and staining.
+Biopsy: The same approach and positioning may 
+be used with a Jamshidi needle (Figure 2.13) to 
+collect a core of bone marrow. This will require fixa-
+tion in formalin and processing by standard histo-
+logical methods.
+Bone marrow sampling sites. (1) The dorsal 
+wing of the iliac crest is one of the most 
+common sites used in medium to large dogs. (2) The 
+femur may be sampled via the trochanteric fossa (dog 
+and cat, anaesthesia required). (3) The caudal ischium 
+may be more easily located in overweight dogs.
+2.11
+1
+2
+3
+Bone marrow aspiration technique. (a) The 
+needle is inserted, using a twisting action.  
+(b) Bone marrow bubbles into the syringe. (c) Globules of 
+fat and ﬂecks of marrow are visible in the sample.  
+(d) Making the smear. See text for full details.
+2.12
+(a)
+ (b)
+ (c)
+(d)
+Jamshidi biopsy needle.2.13
+Submission of cytological specimens
+It is imperative that cytological specimens, in particu-
+lar smears, do not come into contact with formalin 
+fumes. Exposure to formalin markedly decreases the 
+intensity and microscopic appearance of standard 
+cytological stains, rendering examination of the 
+smears almost impossible. This is mostly a problem 
+when cytological preparations and histological speci-
+mens are submitted in the same packaging to a 
+diagnostic pathology laboratory. If at all possible, the 
+cytological preparations should be sent to the labo-
+ratory in separate packaging to prevent formalin 
+exposure, as even tightly closed specimen contain-
+ers containing formalin can emit small amounts of 
+formalin fumes, sufficient to destroy the cytological 
+detail on the smears.
+Surgical biopsy techniques
+Histological examination of a biopsy sample is the 
+most accurate method of cancer diagnosis and is 
+likely to lead to a more definitive diagnosis than sam-
+pling for cytological diagnosis alone. In general, 
+larger tissue specimens will be obtained, enabling 
+the neoplastic cells to be observed with the sur-
+rounding tissue architecture. This also has the 
+advantage that histological examination of the 
+tumour may allow identification of invasive features, 
+such as invasion of blood vessels or lymphatics, and 
+may allow grading of the tumour. In many cases, the 
+smaller the sample of tissue submitted for examina-
+tion, the greater the chance of the tissue sections 
+Ch02 Oncology.indd   10 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 20 =====
+Chapter 2 How to make a diagnosis
+11
+being non-representative, or of the pathologist being 
+unable to make an accurate diagnosis. This is one 
+reason why post-mortem examination is the ultimate 
+diagnostic modality.
+Excisional versus incisional biopsy
+In the majority of cases it is useful to determine the 
+likely type and grade of tumour prior to definitive sur-
+gery, so that the definitive surgical approach can be 
+optimized. An incisional biopsy is therefore most 
+appropriate in many cases, such as when approach-
+ing a large cutaneous or subcutaneous mass, or a 
+mass in a surgically challenging location. However, 
+biopsy prior to surgery is not necessary if prior 
+knowledge of tumour type and grade will not affect 
+the surgical approach, e.g. with splenic, renal or 
+canine mammary tumours.
+The variety of biopsy techniques that may be 
+used to collect tumour samples includes:
+•	 Punch
+•	 Needle core
+ o Tru-cut (soft tissue)
+ o Jamshidi (bone)
+•	 Grab
+•	 Incisional
+•	 Excisional.
+Selection of technique will depend upon the size, 
+site and nature of the suspected tumour. Careful 
+thought should be given to the biopsy procedure in 
+order to ensure that a representative sample of tis-
+sue is collected, without predisposing to local tumour 
+dissemination or compromising future therapy 
+(Figure 2.14).
+2. Press the circular blade of the punch (Figure 
+2.15) on to the surface of the lesion and rotate 
+under gentle pressure to the required depth to 
+collect a cylindrical specimen within the punch. 
+One or more sutures may be required to close 
+the wound.
+Biopsy considerations. (Adapted from Morris and 
+Dobson, 2001, with permission of the publisher)2.14
+Objective Considerations
+Procure a 
+representative 
+sample of the 
+tumour
+Avoid superﬁcal ulceration, areas of 
+inﬂammation or necrosis
+Ensure adequate depth of biopsy, particularly 
+for oral tumours
+Try to include tumour/normal tissue boundary 
+in the biopsy sample
+Procedure should 
+not predispose to 
+local tumour 
+recurrence or local 
+dissemination
+Minimize handling of tumour by adequate 
+surgical exposure
+Ensure adequate haemostasis
+Minimize trauma to tumour and normal tissues
+Avoid contamination of normal tissue by 
+surgical instruments
+Do not 
+compromise 
+subsequent 
+therapy
+Any biopsy procedure should be sited well 
+within the margins of future excision, as the 
+biopsy tract will potentially be contaminated 
+with tumour cells
+Skin biopsy punch.2.15
+Punch biopsy
+Punch biopsy is suitable for collecting samples from 
+superficial lesions (e.g. skin or any external relatively 
+superficial tumour). It can also be used at lapar-
+otomy for organs such as liver or spleen.
+1. Clip and surgically prepare the site and infiltrate 
+local anaesthetic into the area to be sampled.
+The punch does not penetrate deeply into the 
+lesion and so care should be taken to collect  
+representative tissue in cases where there is necro-
+sis or inflammatory tissue (e.g. oral tumours). 
+Additionally, if going through the skin to retrieve a 
+sample from a subcutaneous mass, care must be 
+taken to ensure that the punch biopsy instrument 
+does not just fill with skin. In this scenario, it is best 
+to make a small incision to allow the instrument to 
+reach the mass.
+Needle core biopsy
+Needle core biopsy is suitable for collecting small 
+cores of tissue from solid soft tissue lesions that can 
+be located and fixed for sampling. This technique 
+can be used with ultrasound guidance for sampling 
+intra-abdominal (and certain intrathoracic) lesions.
+1. Clip and surgically prepare the skin over the 
+lesion. The patient should be sedated and local 
+anaesthetic infiltrated into the skin and soft tissue 
+in the region of the lesion.
+2. The ‘Tru-cut’ biopsy needle (Figure 2.16) is most 
+commonly used. Some types are manually 
+operated: following introduction of the needle into 
+the lesion, the central core is advanced further 
+into the lesion and rotated to collect tissue in the 
+specimen notch. The outer sleeve is then 
+advanced, trapping the tissue in the notch. The 
+needle is withdrawn and opened for collection of 
+the biopsy sample. Spring-loaded versions of the 
+‘Tru-cut’ needle perform this procedure 
+automatically and are particularly useful, as they 
+allow the operator to have one hand free to 
+stabilize the lesion.
+The Tru-cut needle is not usually sufficiently 
+robust to sample bony lesions. Specialized needles 
+(e.g. Jamshidi, see Figure 2.13) are available for this 
+purpose, as described in Chapter 13.
+Ch02 Oncology.indd   11 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 21 =====
+Chapter 2 How to make a diagnosis
+12
+Grab or pinch biopsy
+Grab or pinch biopsy is suitable for collecting sam-
+ples from mucosal surfaces (e.g. respiratory, alimen-
+tary and urogenital systems). This technique is often 
+used in conjunction with endoscopy, allowing visual-
+ization of the surface to be sampled. Most endo-
+scopes are equipped with biopsy cups (Figure 2.17), 
+which collect mucosal samples through a biting 
+action. General anaesthesia is usually required.
+Whilst allowing access to hollow organ systems 
+in a relatively non-invasive manner, the disadvantage 
+of the grab or pinch biopsy technique lies in the 
+superficial nature of the samples collected, which 
+may not be truly representative of the pathology 
+affecting the organ. Indeed, due to the nature of the 
+biopsy technique and the size of the biopsy cup that 
+may need to be used in a restricted space (for 
+instance, when biopsying the urethra), the samples 
+obtained may be extremely small. This may make a 
+meaningful histopathological diagnosis very difficult 
+to achieve.
+Submission of histological samples
+The whole sample should be sent in formalin wher-
+ever possible, as this allows the assessment of the 
+entire tumour specimen, including surgical margins. 
+For complex specimens, the tissue orientation 
+should be marked if important. If it is necessary to 
+send part of a large tissue mass (e.g. spleen), a 
+number of representative portions from the periphery 
+of the mass should be sent, avoiding areas of haem-
+orrhage or necrosis. It is important to ensure a high 
+ratio of formalin volume to tissue volume (e.g. 10:1) 
+and not to force big samples into small containers.
+If only part of the tumour is being submitted, 
+necrotic or haemorrhagic areas (e.g. the centre of an 
+ulcerated mammary gland mass or the centre of a 
+suspected splenic haemangiosarcoma) should be 
+avoided, as these areas often lack sufficient cellular 
+detail for a diagnosis to be made.
+If very small samples are to be submitted (e.g. 
+endoscopic biopsies), it is imperative to avoid 
+artefacts that are introduced during collection of the 
+specimens. For instance, crush artefacts obscure 
+cellular detail within the sections, as all the nuclei 
+and cytoplasm are squeezed out of the damaged 
+Needle core biopsy. (a) Tru-cut needle.  
+(b) With the stylet retracted, the needle is 
+advanced into the lesion. (c) The stylet is advanced to 
+expose the specimen notch, which is then rotated to 
+collect tissue. (d) The outer sleeve is advanced to cover 
+the sample. (e) The sample is removed from the notch. 
+(b–d reproduced from the BSAVA Guide to Procedures in 
+Small Animal Practice).
+2.16
+(a)
+(b)
+(c)
+(d)
+(e)
+Grab biopsy equipment.2.17
+Ch02 Oncology.indd   12 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 22 =====
+Chapter 2 How to make a diagnosis
+13
+cells. Other artefacts to be avoided are those caused 
+by cautery, especially at important tumour margins.
+The accuracy of the diagnosis will be much 
+greater where the clinician provides further informa-
+tion about the case, including signalment, lesion 
+location and orientation (where appropriate) and any 
+important clinical details such as evidence of meta-
+stasis, presence of invasion based on imaging stud-
+ies, etc. The pathologist should then be able to 
+provide an accurate diagnosis and prognostically 
+useful information such as tumour grade, presence 
+of vascular/lymphatic invasion, and extent of surgical 
+excision. Where there is uncertainty in the diagnosis, 
+it is useful for the pathologist to provide details of the 
+degree of uncertainty and the likely differential diag-
+nosis. The pathologist may recommend further diag-
+nostic or prognostic assays, such as undertaking 
+different histochemical stains or through the use of 
+immunohistochemical staining.
+Surgical margins
+The evaluation of surgical margins as an indicator of 
+the effectiveness of surgical excision can often pre-
+sent a challenge to clinicians, pathologists and his-
+tology technicians. Because the entire tissue cannot 
+be easily examined, the evaluation represents a 
+trade-off between what is most practical and what is 
+most cost-effective for an individual case. For 
+instance, if the entire specimen of an elliptical piece 
+of skin measuring 3 × 2 × 1 cm was cut into 5 micro-
+metre sections, it would take approximately 4000 
+histological sections to examine the entire tissue 
+(Figure 2.18). Consequently any practical evaluation 
+of surgical margins involves some pragmatism and 
+degree of judgement as to which of the many orien-
+tations or planes of sections are the most likely to 
+provide the information.
+In human medicine, it has been recognized that it 
+is very important to have a pathologist involved in 
+the evaluation and dissection of a gross specimen 
+right from its initial receipt into the laboratory. This 
+should enable the most appropriate sections to be 
+taken for subsequent microscopic evaluation.
+There are set guidelines for how tissue speci-
+mens should be examined and processed in human 
+medicine, provided by, for instance, the Royal 
+College of Pathologists in the UK and the College of 
+American Pathologists in the US. Y et even in human 
+medicine there is a degree of controversy about how 
+best to take the margins from any given tissue or 
+tumour type, and indeed for some tissues the guide-
+lines are much less stringent than for others.
+The meaningful interpretation of the surgical mar-
+gins of a tumour mass by the histopathologist is 
+unfortunately not quite as straightforward as might 
+be imagined. The most reliable way for the submit-
+ting clinician to be assured that the pathologist is 
+examining the ‘true’ surgical margins of a specimen 
+is for those margins to be marked. There are a num-
+ber of different ways that this can be done.
+Ink
+The cut surgical margins of the unfixed specimen 
+can be painted using one or more different inks. 
+Drawing a diagram on the submission form with the 
+coloured margins indicated will also help the labora-
+tory technician trimming the specimen. Painting the 
+specimen is the most reliable method of margin 
+identification and the use of different colours to paint 
+different surgical margins can enable specific mar-
+gins to be identified and individually assessed.
+There are many different types and colours of 
+commercially available surgical inks, but the cheap-
+est and easiest method is to use one or more  
+Options for the evaluation of surgical margins.2.18
+Embed the entire tissue in wax and cut at 5 µm sections:  
+e.g. 2 cm would yield about 4000 sections.
+The choice in some veterinary laboratories: cruciate  
+sections.
+A pragmatic choice between the two extremes.
+The other extreme: a single section through the mass.
+Alternative for skin ellipses – includes shave margins.
+Ch02 Oncology.indd   13 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 23 =====
+Chapter 2 How to make a diagnosis
+14
+different colours of Indian ink. In order to ink the mar-
+gins (Figure 2.19):
+1. Pat the tissue dry with paper towels to remove 
+the surface blood.
+2. Paint the tissue with undiluted Indian ink over the 
+margin surfaces as appropriate (for instance, 
+over the subcutaneous fat over the deep border 
+of a skin tumour). The tissue should be painted 
+(a) A typical ellipse of skin from an excisional 
+biopsy of a subcutaneous mass. (b) The 
+subcutaneous tissues are dried with paper towels and 
+painted with indian ink. (c) The tissues are then dipped in 
+acetic acid (white vinegar) to precipitate the ink on to the 
+tissue surface.
+2.19
+(a)
+(b)
+(c)
+with a soft brush or cotton-buds, rather than 
+being immersed in the ink, as otherwise ink can 
+percolate through small fissures in the tissue and 
+result in ink accumulating on the tissue that is not 
+actually the margin.
+3. Immerse the painted tissue in 10% acetic acid 
+(e.g. white vinegar) to stop it being washed away 
+in the formalin.
+4. Pat the tissue with a paper towel to remove the 
+excess ink/acetic acid and then place it into 
+formalin for submission to the laboratory.
+For the pathologists at the microscope, prior 
+inking of the tissues can make a huge difference to 
+how easy it is identify the ‘real’ surgical margins from 
+false margins.
+Suture-tagging
+Sutures can be placed at the appropriate margins 
+that are of particular importance (e.g. a margin that 
+grossly is close to normal tissue, or at an anatomi-
+cally important site). This method works less well for 
+broad tumour fronts or very large specimens, or 
+where multiple surgical margins are being assessed. 
+Because the sutures have to be removed prior to 
+processing, it is often impossible to identify the spe-
+cific margins again on the wet tissue should further 
+sections be requested.
+Separate surgical margins
+Marginal tissue is taken from the tissue bed that is 
+left behind in the animal and this tissue is submitted 
+separately as representing the tissue margins. 
+Particularly for large samples, this is a very good 
+way of submitting margins. It reduces the chances of 
+processing/trimming errors, allows the surgeon to 
+submit the most anatomically relevant margins and 
+may also be cheaper, as fewer blocks may need to 
+be processed. In addition, when done in combina-
+tion with the standard ‘cruciate’ sections through  
+the main tumour mass, useful measurements can 
+still be obtained for the tissue margin/tumour  
+margin distance.
+At the diagnostic laboratory, the tissue will be 
+removed from the fixative and appropriate samples 
+taken for processing and subsequent histological 
+examination. In most veterinary diagnostic laborato-
+ries examination of margins may not be as thorough 
+as it is in human medicine. Indeed, in the majority of 
+commercial diagnostic practices, trimming of gross 
+tissues will be performed by a technician rather than 
+a pathologist. The ‘standard’ method for tissues, 
+where it can be done, is to take ‘cruciate’ sections 
+(north, east, south, west) (Figure 2.20) such that 
+margins can be assessed around the tissue. 
+However, this process does not work particularly well 
+in all cases. Therefore, peripheral or tangential 
+‘shave’ sections may be more representative of the 
+tissue margins in these cases, aided by pre-fixation 
+inking. This is particularly appropriate where there 
+are large specimens, specimens from anatomically 
+complex sites (head/neck), tissues from an extremity 
+(for instance, the ear pinna or tail) or tissue from a 
+tubular organ (for instance the intestine).
+Ch02 Oncology.indd   14 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 24 =====
+Chapter 2 How to make a diagnosis
+15
+Gross tumour specimen showing cruciate 
+sections for margins. Typical full-thickness 
+cruciate sections are taken, and the tissue samples are 
+placed into cassettes prior to processing into parafﬁn 
+blocks.
+2.20
+Standardized pathology report format.2.21
+Line Description Signiﬁcance
+Line 1: Subgross 
+description
+Includes: subgross tissue location; size; shape; cell 
+density; expansile or inﬁltrative; encapsulated or 
+non-encapsulated; well demarcated or poorly 
+demarcated; fully excised or not fully excised
+The most important line of the description, giving some of the 
+most clinically relevant information. For instance, is it inﬁltrating 
+(carcinoma) versus expanding (adenoma); are the surgical 
+margins tumour-free? 
+Line 2: Patterns of 
+cells and types of 
+stroma
+The patterns in which the tumour cells are arranged, e.g. 
+nests, packets, lobules, cords (carcinoma); acini, tubules 
+(adenocarcinoma); streams, bundles, fascicles, storiform 
+patterns (sarcoma); sheets, cords (round cell tumour). 
+The amount and type of stroma are also assessed
+Describes whether the tumour is of epithelial, mesenchymal or 
+round cell origin. Provides a large amount of potentially useful 
+prognostic and therapeutic information
+Line 3: Cytological 
+features 
+Individual cellular features, including cell size, shape, 
+cytoplasm features
+This line and the following lines give some indication as to the 
+degree of differentiation of the neoplastic cells. In many cases, 
+the less well the tumour is differentiated, the worse the prognosis
+Line 4: Nuclear 
+features
+Details of nuclear shape, size, chromatin patterns, 
+nucleoli features
+Large, irregular nuclei with very prominent nucleoli are often a 
+feature of aggressive tumours
+Line 5: Unique 
+features 
+Examples: presence of multinucleated cells; degree of 
+anisokaryosis (variation in nuclear size) or anisocytosis 
+(variation in cell size)
+In general, the higher the degree of cellular and nuclear 
+pleomorphism, the less well differentiated the tumour
+Line 6: Mitotic 
+activity
+Usually expressed as numbers of mitotic ﬁgures per high 
+power ﬁeld (HPF) or per 3, 5 or 10 HPFs
+The higher the mitotic rate, the more quickly the neoplastic cells 
+are proliferating. A high mitotic rate is often associated with more 
+aggressive tumour behaviour
+Line 7: Evidence of 
+malignancy
+Evidence of capsular invasion, vascular invasion, 
+lymphatic invasion, necrosis, haemorrhage 
+In general, the more invasive and inﬁltrative the tumour, the more 
+likely it is that the tumour has already metastasized or will recur 
+locally
+Line 8: Anything 
+else 
+Any other pathological feature related to, or unrelated to, 
+the neoplastic process, e.g. ulceration or peritumoral 
+inﬂammation
+Many tumours will result in pathological changes within the 
+adjacent tissues, e.g. inﬂammation in adjacent tissue, atrophy of 
+adjacent skeletal muscle
+Interpretation of tumour 
+descriptions
+As with any other diagnostic modality‚ the clinician 
+should read the pathology report critically, i.e. does 
+the histological diagnosis fit the clinical picture?
+There are two main types of technique that patho-
+logists use to describe tumours. The first, which is 
+most widely used in the UK, is a free-form description. 
+This method, although often more flowing, does not 
+always provide sufficient information for a clinician to 
+be able to assess the degree of differentiation, ade-
+quacy of margins, etc. It is one of the main reasons 
+that oncologists might request a second opinion.
+Many pathologists are now using a more stand-
+ardized format that has been promoted by the Armed 
+Forces Institute of Pathologists and the American and 
+European Colleges of Veterinary Pathology. This 
+descriptive technique mirrors the diagnostic process 
+that a pathologist will go through. More importantly, it 
+provides large amounts of information on the tumour 
+specimen in a relatively concise form, with the major-
+ity of the most clinically relevant information being 
+presented at the beginning (Figure 2.21). The aim of 
+the approach is both to convey the descriptive infor-
+mation that enables a definitive histological diagnosis 
+to be made (e.g. peripheral nerve sheath tumour) and 
+to convey clinically important information (e.g. degree 
+of differentiation).
+By reading the histological description, the 
+clinician can form a mental picture of the lesion. In 
+particular, a good description should include both 
+qualitative and quantitative detail that should enable 
+diagnostically and prognostically useful information 
+to be gleaned from it. For instance, enumeration of 
+the mitotic index is prognostically relevant in canine 
+cutaneous MCTs; where terms such as ‘brisk mitotic 
+activity’ or ‘small numbers of mitoses’ are used, it can 
+be impossible to obtain this information.
+In some cases, if there is insufficient tissue 
+available for examination it can be very difficult for a 
+pathologist to reach a definitive diagnosis about the 
+tissue. Other problems facing the pathologist include 
+orientation of the tissue sample, artefacts introduced 
+by crushing of small samples, and thermocautery of 
+the tissue edges.
+Ch02 Oncology.indd   15 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 25 =====
+Chapter 2 How to make a diagnosis
+16
+The basic principle of immunohistochemistry.2.22
+Tissue section
+Chromogen
+and enzyme
+Secondary antibody
+Primary antibody
+Antigen
+Slide
+Immunohistochemistry
+Immunohistochemistry (IHC) can enable the patholo-
+gist to confirm a histological diagnosis made from a 
+standard stained section and to determine the cell of 
+origin of poorly differentiated tumours. In addition, it 
+can be used to aid in tumour prognostication. This 
+can provide the clinician with useful information for 
+deciding on the best treatment for the tumour and for 
+helping to predict how the tumour is likely to behave. 
+As the number of antibodies that can be successfully 
+employed in veterinary diagnostic pathology is grow-
+ing, IHC is increasingly being seen as an essential 
+part of the pathologist’s and clinician’s armoury.
+The technique involves the detection of antigen-
+specific antibodies binding to their antigen targets in 
+a tissue section. An insoluble coloured precipitate 
+forms at the antigen–antibody binding site and is vis-
+ualized using a microscope. Positive and negative 
+controls are used to aid interpretation and for quality 
+control purposes. The extremely selective nature of 
+antibody binding to its ligand is utilized to identify the 
+extent and cellular localization of expression of the 
+antibody, and its target antigen within a tissue 
+(Figure 2.22).
+In practice there are many factors that can affect 
+the quality and quantity of IHC staining. For instance, 
+tissues that are inadequately fixed in formalin will 
+often show very high levels of background staining, 
+which can make it very difficult to assess the true 
+staining characteristics and raises the possibility of 
+false positive results. Conversely, tissues that have 
+been exposed to formalin for extended periods of 
+time may lose their ability to bind some antibodies, 
+thereby creating false negative results. Fixation arte-
+facts are some of the reasons that controls are so 
+essential for the interpretation of IHC staining results.
+Figure 2.23 lists some of the tumour markers 
+that are commonly identified using IHC. In cancer 
+diagnostics, the main use of IHC has been to aid the 
+pathologist in determining the cell or tissue of origin 
+of the neoplastic cell population. This has significant 
+practical application: it can be very difficult to  
+determine the exact cell of origin for some poorly 
+Tumour markers commonly identiﬁed using 
+immunohistochemistry.2.23
+Marker 
+(antigen)
+Signiﬁcance and usage
+Vimentin Identiﬁes all mesenchymal cells. Often used to 
+help conﬁrm diagnosis of a tumour of 
+mesenchymal origin, e.g. all sarcomas are positive 
+for vimentin whereas most carcinomas are 
+negative
+Cytokeratin Identiﬁes most epithelial cells. Often used to help 
+conﬁrm diagnosis of a tumour of epithelial origin, 
+e.g. most carcinomas are positive for cytokeratin 
+whereas sarcomas are almost always negative
+CD3 A marker of T -cell origin. Together with CD79a, 
+used to help distinguish between T - and B-cell 
+lymphomas, and essential in helping to apply the 
+WHO–REAL lymphoma classiﬁcation system
+CD79a A marker of B-cell origin. Used in a similar manner 
+to CD3. Most plasma cells do not express CD79a, 
+making it of less use in diagnosing plasmacytomas
+CD18 A marker of leucocytes. Very useful in helping to 
+diagnose tumours of monocyte/macrophage 
+origin, such as histiocytic sarcomas
+Desmin A marker of muscle origin. Is expressed in most 
+tumours of smooth muscle or striated muscle 
+origin
+S100 A marker of neuroectoderm origin. Is expressed in 
+a number of different tumours, including peripheral 
+nerve sheath tumours, melanomas, 
+chondrosarcomas
+Glial ﬁbrillary 
+acid protein 
+(GFAP)
+A marker of glial origin. Used for conﬁrming the 
+diagnosis of gliomas
+CD117 (KIT) A marker of mast cell origin or interstitial cells of 
+Cajal
+Mac387 A marker of macrophages. Can be used to help 
+distinguish histiocytic tumours from granulomatous 
+inﬂammation
+Synaptophysin A marker of neuroendocrine cells
+Melan A A speciﬁc marker of melanocyte differentiation. 
+Can be used to help conﬁrm a diagnosis of 
+amelanotic melanoma
+The main steps in performing IHC are as follows:
+1. A tissue section is incubated with a specific 
+dilution of a primary antibody that has been 
+developed to bind to a single tissue antigen (such 
+as a particular protein, or part thereof).
+2. A secondary antibody that is linked to a marker 
+enzyme (usually horseradish peroxidase) is 
+incubated with the tissue and the primary 
+antibody. This secondary antibody will bind to the 
+non-antigen-binding end of the primary antibody 
+molecule (for example, it might be a rabbit 
+antibody that will bind specifically to all mouse 
+antibodies).
+3. A substrate is added to the final mixture, which 
+undergoes a colour change and precipitates on 
+to the tissue section when it is activated by the 
+enzyme bound to the secondary antibody.
+4. The sections are then counterstained with 
+haematoxylin, coverslipped and examined under 
+a microscope. Specific positive staining is 
+identified where there is staining of the cells by 
+the coloured enzyme substrate.
+Ch02 Oncology.indd   16 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 26 =====
+Chapter 2 How to make a diagnosis
+17
+Examples of use of immunohistochemistry in distinguishing certain tumours.2.24
+Histological differential diagnosis Response to antibodies 
+Amelanotic melanoma versus ﬁ  brosarcoma in 
+oral cavity
+Amelanotic melanoma:
+S100 
++, Melan A +
+Fibrosarcoma:
+S100 
+–, Melan A –
+Osteosarcoma versus ﬁ  brosarcoma Osteosarcoma:
+osteocalcin 
++
+Fibrosarcoma:
+osteocalcin 
+–
+Synovial sarcoma versus histiocytic sarcoma Synovial sarcoma:
+vimentin 
++, cytokeratin +, CD18 –
+Histiocytic sarcoma:
+vimentin 
++, cytokeratin –, CD18 +
+Nasal carcinoma versus lymphoma Carcinoma:
+cytokeratin 
++, CD18 –, CD79a –, CD3 –
+Lymphoma:
+cytokeratin 
+–, CD18 +, CD79a/CD3 ±
+differentiated tumours based on routine light micro-
+scopy alone, and without IHC the amount of infor-
+mation that can be gleaned from examination of the 
+specimens may be greatly limited.
+Using a panel of antibodies against a range of 
+intermediate filament proteins, the general tissue of 
+origin can usually be identified and the tumour class-
+ified into the broad categories of epithelial/glandular 
+versus mesenchymal. In general, the former tumour 
+types often metastasize via lymphatics and fre-
+quently early in the course of disease, whilst the lat-
+ter type often metastasizes haematogenously and 
+later on in the disease course. Antibody panels can 
+also help to distinguish mesenchymal tumours from 
+the general category of ‘round cell tumours’, which 
+are likely to have a different biological behaviour and 
+to be sensitive to different treatment protocols. Inter-
+mediate filaments of a variety of different specific 
+tissue types are found in all cells and range from 8 to 
+10 nm in diameter. For instance, cytokeratins are 
+expressed by cells of epithelial origin and vimentin is 
+expressed by mesenchymal cells, with only some 
+cell types (e.g. mesothelium) expressing both. 
+Vimentin is particularly useful because, as all mes-
+enchymal cells express it, all tissues would be 
+expected to contain some vimentin-positive cells 
+within them. It therefore acts as a useful control to 
+assess fixation artefacts: if no vimentin staining is 
+identified, it is likely that the tissue is over-fixed, and 
+Histological sections showing 
+IHC staining of a histiocytic 
+sarcoma for: (a) vimentin; 
+(b) cytokeratin; (c) lysosyme; 
+(d) CD18. Note that the tumour is 
+negative for cytokeratin.
+2.25
+(a)
+(c)
+(b)
+(d)
+that the absence of positive staining using other IHC 
+markers cannot be interpreted.
+In order to classify tumours further, a range of 
+tissue-specific proteins can be targeted using spe-
+cific antisera raised against them. For instance, the 
+intermediate filament protein desmin can be used to 
+confirm a muscle origin of the tumour tissue. Then, 
+using antibodies against a range of different actins 
+and myoglobin, it is possible to characterize the 
+cell of origin as smooth muscle, skeletal muscle or 
+cardiac muscle.
+In general, the most useful information for the 
+clin ician treating a cancer patient is likely to be 
+provided by panels of antibodies that enable distinc-
+tion between two tumours that, although they 
+appear grossly and microscopically similar, are likely 
+to have very different biological behaviours or 
+responses to therapies.
+However, it should be noted that in general when 
+a tumour appears very poorly differentiated 
+microscopically, it is likely that, whatever the cell of 
+origin, the response to therapy and prognosis will be 
+poor. Indeed, when neoplastic cells are very poorly 
+differentiated, they can often exhibit aberrant 
+expression of cellular proteins, such that it becomes 
+very difficult to identify the cell of origin with certainty.
+Some examples where IHC would be very useful 
+to help to distinguish tumours of different prognosis/
+treatment options are given in Figures 2.24 and 2.25.
+Ch02 Oncology.indd   17 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 27 =====
+Chapter 2 How to make a diagnosis
+18
+Tumour markers and targeted treatment
+The Holy Grail of cancer therapy is to identify 
+tumour-specific targets that will allow tumour cells to 
+be targeted and killed, leaving normal, non-neoplas-
+tic cells unharmed. IHC plays a vital role in a 
+research setting to aid identification of novel targets; 
+and in a diagnostic setting it is often the tool of 
+choice to determine whether the individual case is 
+likely to benefit from such targeted therapy. It is rou-
+tinely used in human surgical pathology to determine 
+the extent of HER-2/Neu expression in breast cancer 
+to identify those women who would benefit from anti-
+HER-2/Neu antibody therapy (i.e. Herceptin). This 
+protein is similarly expressed in some canine and 
+feline mammary tumours and it is possible that, 
+should the drug ever become affordable, it might be 
+of potential use in a veterinary setting. Similarly, 
+detection of oestrogen receptor expression in mam-
+mary tumours can be used to predict whether the 
+patient will benefit from anti-oestrogen therapy.
+In canine MCTs, the expression of the receptor 
+tyrosine kinase KIT (CD117) may help to predict 
+response to a new class of small-molecule tyrosine 
+kinase inhibitors. KIT is expressed by normal mast 
+cells, but is variably expressed in neoplastic mast 
+cells. Those individual MCTs that express minimal or 
+undetectable levels of KIT and other similar receptor 
+tyrosine kinases would be predicted to respond less 
+favourably to this class of drugs, compared with those 
+that express high levels of the drug target. Although 
+relative KIT expression levels can be determined by 
+IHC, IHC cannot be used to identify whether KIT 
+mutations are present. Rather, molecular methods 
+such as PCR and nucleotide sequencing are required 
+to identify the presence or absence of mutations.
+Tumour grading
+The specific histological/immunohistochemical diag-
+nosis itself is likely to give the most important prog-
+nostic information for the clinician. For instance, a 
+diagnosis of lymphoma versus soft tissue sarcoma is 
+likely to result in very different treatments and a dif-
+ferent prognosis. However, identifying various fea-
+tures of different subtypes of the same tumour (e.g. 
+low-grade versus high-grade soft tissue sarcomas; 
+grade I versus grade III MCTs) can also be used to 
+direct therapy and to predict prognosis. Tumour grad-
+ing can be further augmented by assessment of a 
+variety of other markers of potential prognostic bene-
+fit, such as by measurement of proliferation markers.
+Proliferation markers
+One of the hallmarks of a neoplastic mass is un-
+controlled growth. Several different techniques of 
+measuring cell proliferation have been developed, 
+the most robust and reliable of which are based on 
+histochemical stains (AgNORs) and immunohisto-
+chemical stains (PCNA, Ki67).
+AgNORs
+Argyrophilic nucleolar organizing regions (AgNORs) 
+are loops of DNA that contain ribosomal genes, and it 
+is the NOR-associated proteins that bind the silver 
+molecules of the stain. An increase in the number of 
+AgNOR proteins indicates an increased demand for 
+ribosomal biogenesis and therefore a higher meta-
+bolic activity. High AgNOR counts are associated with 
+a shorter cell cycle and therefore a higher rate of cell 
+proliferation. AgNOR counts are independent prog-
+nostic factors in many human tumours. In companion 
+animal species, they are predictive of survival times 
+in canine lymphoma and canine MCTs. However, 
+only recently have the techniques for AgNOR staining 
+and quantification been standardized, making com-
+parisons between different studies difficult.
+Ki67
+This is an unidentified antigen to which the monoclo-
+nal antibody MIB-1 binds. Ki67 is a very large 
+nuclear protein that is expressed exclusively by cells 
+during the cell cycle; therefore, if a cell is expressing 
+Ki67, it is actively replicating. Ki67 provides a meas-
+ure of the growth fraction of a cell population. It is an 
+independent prognostic factor in many human 
+tumours and it has been shown to be an independ-
+ent prognostic factor in canine MCTs. In general, the 
+greater the proliferation index of a mast cell tumour, 
+the more likely it is to recur locally and to metasta-
+size, and hence the worse the prognosis.
+PCNA
+Proliferating cell nuclear antigen (PCNA) is the delta 
+subunit of DNA polymerase I. PCNA expression is 
+determined by immunohistochemistry. PCNA counts 
+are expressed as the number of positively staining 
+nuclei as a percentage of all neoplastic nuclei 
+counted. It is an independent prognostic factor in a 
+number of human tumours, but the role for it as a 
+prognostic marker in canine and feline tumours is 
+still unclear.
+Summary
+With the increased sophistication of clinical oncology 
+in cats and dogs, obtaining an accurate diagnosis 
+prior to embarking on therapy is becoming of ever 
+greater importance. In most cases this will entail 
+obtaining a tissue biopsy or cytology sample and 
+submitting it to a qualified veterinary pathologist. The 
+manner in which these samples are taken, and the 
+associated information that the clinician provides to 
+the pathologist, can greatly enhance or potentially 
+detract from the diagnosis that can be made based 
+on those samples. Therefore it is of utmost impor-
+tance (if valuable resources, time and expense are 
+not to be wasted) that thought is put into deciding 
+what sampling modality will provide the best cost/
+benefit balance for the patient and the client.
+It is incumbent on the pathologist to examine the 
+samples in such a way as to provide the clinician 
+with the most accurate and prognostically relevant 
+information. In this way, a highly fruitful relationship 
+can be developed between clinician and pathologist, 
+such that patient care is optimized and the tissue 
+samples obtained can be utilized and analysed to 
+their full potential.
+Ch02 Oncology.indd   18 11/10/2010   11:34
+VetBooks.ir
+
+===== PDF PAGE 50 =====
+Chapter 5 When to treat animals with cancer
+41
+•	 In the first place, in the US more than half of 
+marriages end in divorce. The UK has the highest 
+divorce rate in Europe. Many divorced 
+professionals with children live in urban 
+environments, where the best jobs are to be 
+found, where they are separated from extended 
+family and making friends is notoriously difficult. 
+Thus the animal assumes greater prominence in 
+people’s emotional lives, with upwards of 85% of 
+the US public affirming that their animals are 
+‘members of the family’ (Harris Interactive, 2007). 
+This strong emotional bond was well illustrated 
+during Hurricane Katrina, where people refused 
+rescue when told they could not bring their pets.
+•	 There has been an explosion in veterinary 
+specialty practices offering high-level complicated 
+and aggressive treatment.
+•	 At the same time, many companion animal 
+owners will fight their animal’s cancer as 
+aggressively as they would fight their own. For 
+such people, euthanasia is a last-resort option.
+In some senses, these factors are salubrious. For 
+example, the cost of treatment is far less of a deter-
+rent to treating animal disease than it once was; 
+therefore many animals who would historically have 
+been euthanized now regain extended and good 
+quality lives. It is in the field of oncology that this is 
+most apparent.
+But there is an offsetting negative side, again 
+produced by converging factors. First of all, many 
+academic oncologists are also researchers, who 
+admirably utilize sick companion animals in their 
+research, rather than creating disease in healthy 
+animals. While this approach is inherently laudable, 
+it also engenders some untoward effects, mainly  
+the tendency to prolong treatment for reasons serv-
+ing the science, not the individual animal. This  
+obviously plays into natural owner reluctance  
+to euthanize, sometimes resulting in extended 
+unnecessary suffering.
+Secondly, some clients simply cannot accept the 
+need to euthanize their ‘best friend’ or ‘family mem-
+ber’. The result is a willingness to ‘try anything’ to save 
+the animal, however far gone or suffering it may be. A 
+particularly pernicious consequence of this is the pro-
+liferation of evidentially baseless, unproven ‘comple-
+mentary’ and ‘alternative’ therapies. Such modalities 
+range from ‘Bach flower essences’ to homeopathy 
+which, if true, invalidates basic principles of modern 
+chemistry. Whether practitioners of alternative medi-
+cine are true believers or are simply bilking the gull-
+ible, access to the Internet assures that desperate 
+clients can find an inexhaustible number of allegedly 
+therapeutic modalities that they wish to pursue.
+A particularly dangerous corollary to such an  
+attitude can be represented by hospices for dying  
+animals. In some cases, where an owner wishes to 
+pursue palliative care and legitimate treatment for the 
+cancer animal and has money but no time to provide 
+care, the pet hospice can fulfil a valuable function. But 
+just as often, the hospice can allow the owner to 
+dodge the issue of euthanasia for untreated or 
+untreatable suffering while endless new unproven and 
+likely ineffective treatments are pursued. Of course, 
+the same catering to an owner’s unwillingness to let 
+go can occur in general veterinary practice.
+Thus, paradoxically, the rise of love for compan-
+ion animals can result in new sources of uncon-
+trolled suffering, buttressing the dictum that loving 
+something is not sufficient in its own right to assure 
+that one provides the beloved with good care.
+Role of the veterinary surgeon
+In the author’s experience, the vast majority of veteri-
+nary surgeons, particularly companion animal practi-
+tioners, embrace the view of the veterinary surgeon 
+as ideally analogous to a paediatrician rather than a 
+garage mechanic. That is, in the case of competing 
+obligations such as the owner electing to prolong 
+suffering by pursuing useless therapies, the veteri-
+nary surgeon’s primary obligation is to the animal 
+and its wellbeing, not to the owner.
+Plato sagely made this point with regard to the 
+shepherd: in one’s capacity as shepherd, one’s 
+primary role is to care for the sheep. What one 
+earns doing this occurs in one’s capacity as wage-
+earner, which is connected but subordinate to the 
+shepherd role.
+Obviously, given that animals are the property of 
+owners, veterinary surgeons are not in a position to 
+dictate treatments or, more relevant to this discus-
+sion, euthanasia to end suffering. Furthermore, we 
+live in a society in which medical paternalism is a 
+dirty word, and patient or client autonomy is a trendy 
+slogan. Nonetheless, a powerful element of paternal-
+ism is alive and thriving, and can be deployed to 
+good effect by veterinary surgeons.
+That element is a practitioner’s Aesculapian 
+authority, the singular authority possessed by physi-
+cians and veterinary surgeons by virtue of being 
+medical professionals (Rollin, 2002). To deploy such 
+authority on behalf of the animal to end suffering is, 
+in the author’s view, not only permissible but obliga-
+tory under certain circumstances. When clients ask, 
+‘What would you do if it were your dog, Doctor?’, 
+they are appealing to the practitioner’s Aesculapian 
+authority. Thus the dictum (sometimes pronounced in 
+veterinary circles) that a practitioner should never 
+suggest or advocate euthanasia, lest the client later 
+blame the veterinary surgeon for ‘killing’ their beloved 
+animal, should categorically be rejected.
+Mental life of the animal
+Inextricably bound up with successful deployment of 
+such authority regarding the need for euthanasia to 
+alleviate untreated or untreatable suffering is the 
+issue of explaining to clients some fundamental dif-
+ferences between human and animal mental life  
+that have major and radically distinct implications  
+for quality of life in people versus companion ani-
+mals. Human thought is irreducibly tied to language, 
+which allows ingression into modes of thought 
+closed to animals. Humans can think in very 
+abstract terms (e.g. mathematics and logic); in  
+negative terms (‘there are no dragons in the library’); 
+in conditional terms (‘if it does rain, we will hold 
+graduation indoors’); in future terms (‘I wish to retire 
+Ch05 Oncology.indd   41 11/10/2010   11:18
+VetBooks.ir
+
+===== PDF PAGE 51 =====
+Chapter 5 When to treat animals with cancer
+42
+in Iceland someday’); in universal terms (‘all trian-
+gles have three sides’); in fictional terms (writing 
+novels); in counter- factual terms (‘if Darwin had not 
+discovered natural selection, someone else would 
+have’). These are all made possible by being able to 
+structure thought linguistically, which in turn allows 
+linguistic syntax to transcend thought rooted in 
+immediate experience.
+The richness and moral relevance of animal men-
+tal life should not be denied. There is, however, a 
+striking dissimilarity between humans and animals 
+facing life-threatening illnesses, even as the tools of 
+medicine dealing with such crises converge in the 
+two areas. Human cognition is such that it can value 
+long-term future goals and endure short-run nega-
+tive experiences for the sake of achieving them. 
+Examples are plentiful. Many people undergo volun-
+tary food restriction, and the unpleasant experience 
+attendant in its wake, for the sake of lowering blood 
+pressure, or looking good in a bikini as summer 
+approaches. They memorize volumes of boring 
+material for the sake of gaining admission to veteri-
+nary or medical school. They endure the excruciating 
+pain of cosmetic surgery in order to look better. And 
+they similarly endure chemotherapy, radiation, dialy-
+sis, physical therapy and transplants to achieve 
+longer life and a better quality of life than they would 
+have without it, or, in some cases, merely to prolong 
+the length of life to see their children graduate, or to 
+complete an opus, or fulfil some other goal.
+However, there is no evidence, either empirical or 
+conceptual, that animals have the capability to weigh 
+future benefits or possibilities against current misery.
+To treat companion animals morally and with 
+respect, their mentational limits need to be kept in 
+mind. Paramount in importance is the extreme 
+unlikelihood that they can understand the concepts 
+of ‘life’ and ‘death’ in themselves, rather than the 
+pains and pleasure associated with life or death. To 
+the animal mind, in a real sense there is only quality 
+of life, i.e. whether its experiential content is pleasant 
+or unpleasant in all of the modes it is capable of – 
+bored or occupied, fearful or not fearful, lonely or 
+enjoying companionship, painful or not, hungry or 
+not, thirsty or not, etc. There is no reason to believe 
+that an animal can grasp the notion of extended life, 
+let alone choose to trade current suffering for it.
+This in turn demands a realistic assessment, as 
+far as possible, of what animals are experiencing. An 
+animal cannot weigh being treated for cancer against 
+the suffering that this entails. An animal cannot 
+affirm or even conceive of a desire to endure current 
+suffering for the sake of future life; cannot choose to 
+lose a leg to preclude metastasis. It must be remem-
+bered that an animal is its pain, for it is incapable of 
+anticipating or even hoping for cessation of that pain. 
+Thus when life-threatening illnesses afflict compan-
+ion animals, it is not axiomatic that they be treated at 
+whatever qualitative, experiential cost that may 
+involve. The owner may consider the suffering that a 
+treatment modality entails to be a small price for 
+extra life, but the animal neither values nor compre-
+hends ‘extra life’, let alone the trade-off this requires. 
+The owner, in turn, may ignore the difference 
+between the human and animal mind and choose 
+the possibility of life prolongation at any qualitative 
+cost. It is at this point that the morally responsible 
+veterinary surgeon is thrust into their role as animal 
+advocate, speaking for what matters to the animal.
+Quality of life
+The best way to accomplish this sort of advocacy is 
+to set up the type of relationship with a client from 
+the outset that has both parties agreeing to keep the 
+best interests of the animal in view as the paramount 
+goal of treatment. In this way, the clinician can 
+educate the client on the nature of animal mentation, 
+suffering, and what matters to the animal. Such 
+education should begin along with treatment, as 
+should the veterinary surgeon’s claim for advocacy 
+for the animal’s quality of life. Quality of life 
+considerations should be introduced at the beginning 
+of a relationship with the client, not suddenly sprung 
+on them when treatment is over. The client (who, 
+after all, knows the animal better than the veterinary 
+surgeon) should be encouraged from the beginning 
+to help to define quality of life for that animal.
+Beginning with the onset of treatment for cancer, 
+the veterinary surgeon should obtain from the client 
+a list, as long as possible, of what makes the animal 
+happy or unhappy, and how they know. This list, 
+written down as part of the medical record, can 
+serve to remind owners of their own criteria for 
+quality of life at the point where treatment is failing, 
+when wishful thinking and essentially selfish desires 
+may replace objectivity. I used this method with a 
+friend who asked me how to judge when it was time 
+for euthanasia and how to avoid compromising his 
+animal’s quality of life by overly prolonging treatment. 
+He later thanked me and told me that, was it not for 
+his own encoded notes defining the animal’s quality 
+of life while the animal was still well, he would have 
+rationalized trying a variety of modalities that would 
+have greatly impaired the animal’s quality of life. 
+Unquestionably, he said, denial would have distorted 
+his perception but for his own reflective, codified 
+deliberations on that animal’s quality of life which, 
+even in extremis, was impossible to ignore.
+The British Veterinary Association, in conjunction 
+with the Universities Federation for Animal Welfare, 
+held a groundbreaking seminar in 2006 on quality of 
+life in animals. In the end, it is essential that veterinary 
+medicine should learn from the mistakes of human 
+medicine and not sacrifice quality of life for quantity.
+This chapter is designed to assist veterinary sur-
+geons in optimizing quality of life for cancer patients, 
+through treatment and support. In treating and sup-
+porting their cancer patients, veterinary surgeons 
+have a duty to be an advocate for the animal, and to 
+assess the current situation from the perspective of 
+the animal.
+References and further reading
+Ferrell BR and Rhiner M (1991) High-tech comfort: ethereal issues in 
+cancer pain management for the 1990s. Journal of Clinical Ethics 
+2, 108–115
+Ch05 Oncology.indd   42 11/10/2010   11:18
+VetBooks.ir
+
+===== PDF PAGE 52 =====
+Chapter 5 When to treat animals with cancer
+43
+Flexner A (1910) Medical Education in the United States and Canada. 
+Carnegie Foundation for Higher Education, Princeton, New Jersey
+Harris Interactive Inc. (2007) Pets are ‘Members of the Family’ and Two-
+Thirds of Pet Owners Buy Their Pets Holiday Presents. Harris Poll 
+#120, December 4, 2007, www.harrisinteractive.com/harris–_poll/
+index.asp?PID=840
+Marks RM and Sacher EJ (1973) Undertreatment of medical patients 
+with narcotic analgesia. Annals of Internal Medicine 78, 173–181
+Polton G (2010) Patients with neoplastic disease. In: BSAVA Manual of 
+Canine and Feline Rehabilitation, Supportive and Palliative Care: 
+Case Studies in Patient Management, ed. S Lindley and P Watson, 
+pp. 232–267. BSAVA Publications, Gloucester
+Ramey DW and Rollin BE (2004) Complementary and Alternative 
+Medicine Considered. Blackwell, Ames, Iowa
+Rollin BE (1987) The rights of the dying person. In: Principles of 
+Thanatology, ed. AH Kutscher, AG Carr and LG Kutscher, pp. 109–
+133. Columbia University Press, New Y ork
+Rollin BE (2002) The use and abuse of Aesculapian authority in 
+veterinary medicine. Journal of the American Veterinary Medical 
+Association 220, 1144–1149
+Ch05 Oncology.indd   43 11/10/2010   11:18
+VetBooks.ir
+
+===== PDF PAGE 53 =====
+Chapter 6 Principles of oncological surgery
+44
+6
+Principles of oncological 
+surgery
+Kieri Jermyn and B. Duncan X. Lascelles
+Introduction
+Oncological surgery is probably the most interesting 
+and multifaceted surgery a veterinary surgeon can 
+carry out. It encompasses aspects of soft tissue, 
+orthopaedic and neurological surgery, and demands 
+a comprehensive knowledge of anatomy and recon-
+structive procedures for resultant deficits. Boundaries 
+are continually being pushed forward on the surgical 
+procedures that can be employed to treat localized 
+cancer in small animals. However, if oncological sur-
+gery is to be effective and successful, there are cer-
+tain principles that must be adhered to, and these are 
+outlined in this chapter.
+Compared with other treatment modalities, surgery 
+of localized tumours provides the possibility for an 
+immediate cure, is not carcinogenic, is not immuno -
+suppressive and does not have local toxic effects. 
+With sensible and appropriate anaesthetic and an -
+algesic protocols and adherence to the principles of 
+oncological surgery, any morbidity associated with 
+anaesthesia and surgery can be minimized and a 
+successful outcome realized.
+In order to carry out successful oncological sur-
+gery, surgeons require more than a comprehensive 
+knowledge of anatomy, physiology and resection and 
+reconstruction techniques for the specific area or 
+organ involved. A thorough understanding of general 
+tumour biology, the specific characteristics of the 
+neoplasm involved, the stage of disease, and thus 
+prognosis and the adjunctive therapies that may be 
+appropriate, is essential in each case.
+The decision to use surgery
+Surgery in oncology is mainly used to facilitate diag-
+nosis and for treatment of localized neoplasia. Prior 
+to contemplating surgical management of a cancer, 
+the patient and treatment options must be fully 
+appraised to determine the most effective approach.
+•	 The cancer must be characterized (type and 
+grade). A surgical procedure (biopsy) may be 
+involved in this process (see Chapters 2 and 3).
+•	 The locoregional and systemic extent of the 
+disease (stage) must be assessed using 
+appropriate investigations, such as physical 
+examination, blood evaluations, radiography, 
+ultrasonography, or advanced imaging modalities 
+(see Chapter 3).
+•	 Complete patient evaluation is necessary to 
+determine the options for surgical intervention. 
+When indicated, the aim of surgery must be 
+clearly recognized, i.e. curative intent, 
+cytoreductive or palliative.
+•	 Alternative treatment options, or a decision not to 
+treat (see Chapter 5), must be fully assessed 
+from a practical and prognostic standpoint, both 
+individually and in combination with surgery.
+•	 The owner must be fully informed of the intent of 
+surgery, the adjunctive therapies available and 
+the likely prognosis.
+Primary surgery
+The opportunity for the most favourable outcome 
+exists when employing surgery for the first time; revi-
+sion surgeries are less successful. The greatest 
+chance of a cure lies with the primary surgery for a 
+number of reasons:
+•	 Untreated tumours tend to have more normal 
+surrounding anatomy, which facilitates surgical 
+removal
+•	 Recurrent tumours may have seeded to 
+previously non-involved tissue planes, hence 
+increasing the required resection
+•	 The most active and invasive parts of the tumour 
+are at the periphery, where the blood supply is 
+greatest, and subtotal resection may thus leave 
+behind the most aggressive components of the 
+tumour
+•	 Patients with recurrence often have significant 
+anatomical disruption and less normal tissue 
+available for closure.
+Preoperative planning
+To optimize the likelihood of successful surgery, it is 
+necessary to define precisely the role of the proce-
+dure whilst giving due consideration to the recon-
+structive aspects. Many tumour resections result in 
+substantial tissue deficits. Apprehension about not 
+being able to close the subsequent defect is a 
+potent deterrent to following excision guidelines rig-
+orously (Figure 6.1). Ideally, one individual should 
+remove the tumour, adhering to the oncological prin-
+ciples on the margins required, and a second indi-
+vidual should then perform the reconstruction. This 
+is rarely feasible and hence the surgeon must give 
+full consideration to the reconstruction prior to 
+embarking on the excision.
+Ch06 Oncology.indd   44 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 54 =====
+Chapter 6 Principles of oncological surgery
+45
+Preoperative planning of the anaesthetic and 
+analgesic regimen and the postoperative care will 
+minimize perioperative morbidity.
+Revision surgery
+As previously stated, the first surgery has the best 
+chance of a successful outcome. Excised tissue 
+margins are examined histologically and further sur-
+gery may be indicated if the margins are positive for 
+tumour cells or narrow (presence of tumour cells 
+very close to the margin). Management of incom-
+pletely or closely excised tumours requires that the 
+entire existing surgical scar and any drainage sites 
+are considered ‘contaminated’. The surgical margins 
+indicated are then the same as for the initial surgery. 
+Usually this results in a much wider resection than 
+the original surgery (Figure 6.2).
+The role of oncological surgery
+Oncological surgery may have the following purposes:
+•	 Prophylactic surgery
+•	 Diagnosis and staging of neoplastic disease
+•	 Definitive excision
+•	 Cytoreduction of the tumour mass
+•	 Palliative surgery
+•	 Dealing with emergencies
+•	 Support surgery
+•	 Surgical treatment of metastatic disease.
+Prophylactic surgery
+Prophylactic oncological surgery can be defined as 
+surgery that results in a reduction of either the antici-
+pated incidence rate of a particular tumour type, or 
+the rate of recurrence of a neoplastic disease after 
+therapy. There are several common examples of pro-
+phylactic surgery in small animal surgery.
+Mammary tumours in the bitch
+Ovariohysterectomy performed prior to the first sea-
+son is known to reduce the incidence of malignant 
+mammary tumours to 0.05% of that which might be 
+expected in entire bitches (Schneider et al., 1969). 
+This relative risk rises quickly beyond the first oes-
+trus. The incidence is 25% of that which might be 
+expected in intact bitches for bitches spayed after the 
+second season. The relative risk for queens is 9% 
+and 14%, respectively. By the age of 2 years, little or 
+no cancer-sparing effect can be expected in bitches.
+The sarcoma in this 
+cat required wide 
+resection margins, including 
+full-thickness resection of the 
+body wall. Apprehension about 
+closing the resulting defect 
+(almost complete resection of 
+the ventral body wall) could 
+result in the surgeon’s 
+compromising the resection 
+margins in favour of being able 
+to close the defect more easily.
+6.1
+Management of an incompletely excised grade II 
+mast cell tumour. (a) The entire surgical scar 
+and any adherent tissue must be considered contaminated. 
+(b) The surgical margins indicated for revision surgery on 
+this tumour resulted in a much wider resection and 
+subsequent tissue deﬁ  cit than the original surgery.
+6.2
+(a)
+(b)
+Ch06 Oncology.indd   45 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 55 =====
+Chapter 6 Principles of oncological surgery
+46
+Oestrogen receptor and/or progesterone receptor 
+expression has been demonstrated in both benign 
+(70%) and malignant (50%) mammary tumours. 
+Expression of progesterone receptors appears to 
+occur more frequently in benign tumours and may be 
+of positive prognostic significance. Even late-stage 
+ovariectomy can reduce the risk for benign tumours. 
+There also appears to be a histological continuum in 
+the progression of canine mammary tumours from 
+benign to malignant, which would argue for prophy-
+lactic removal of benign neoplasms (see Chapter 16 
+for more information).
+Benign vaginal tumours in the bitch
+Ovariectomy is an effective means of preventing 
+both the development and the recurrence of benign 
+and possibly malignant vaginal tumours in the bitch, 
+and this procedure should be considered an integral 
+part of the surgical management of this disease 
+along with local excision (Figure 6.3). Malignant vagi-
+nal tumours are not as hormonally influenced as 
+benign tumours (see also Chapter 17).
+Dermal squamous cell carcinoma in the cat
+Exposure of unpigmented skin to ultraviolet radiation 
+can result in the development of squamous cell carc-
+inoma (SCC). Often this is preceded by the develop-
+ment of a crusting erythematous pigmented 
+premalignant lesion. The removal of this, together 
+with any susceptible unpigmented area (e.g. resec-
+tion of the complete pinna and vertical aural canal; 
+nasal planum amputation) is highly successful in pre-
+venting the development of SCC (see also Chapters 
+12 and 18).
+Colorectal tumours in the dog
+Up to 18% of benign polypoid lesions and carcinoma 
+in situ of the colon and rectum have demonstrated 
+potential to undergo malignant transformation into 
+carcinoma. Early wide local resection of these lesions 
+is able to prevent some forms of rectal cancer.
+Trauma/chronic inﬂammation
+Chronic inflammation can lead to mutations that 
+result in tissues undergoing neoplastic transforma-
+tion. This process may play a role in development of 
+digital SCC following chronic subungual infection/
+inflammation, aural sebaceous cell adenocarcinoma 
+and feline injection site sarcomas, to name a few. 
+The current recommendation from the Vaccine-
+Associated Feline Sarcoma Task Force is that 
+masses that occur at sites following vaccination 
+should be treated by surgical excision if the lesion is 
+still evident more than 3 months after vaccination, if 
+it is >2 cm or if it is increasing in size more than 4 
+weeks following vaccine administration.
+Diagnosis and staging
+Obtaining a diagnosis and clinical staging of sus-
+pected neoplasia are of paramount importance before 
+determining treatment options. The histopathological 
+diagnosis will influence prognosis and help to estab-
+lish the most appropriate recommendations for surgi-
+cal and adjunctive therapy (Figure 6.4). This will assist 
+the veterinary surgeon and owner in making decisions 
+about how to progress. With the exception of truly 
+emergent cases, treatment without diagnosis will at 
+best be speculative and can rarely be justified, even in 
+the hands of an experienced oncologist.
+Biopsy technique
+There is a variety of biopsy techniques (see also 
+Chapter 2):
+•	 Cytology (fluid and exfoliative cell recovery, fine 
+needle aspiration (FNA), impression smears)
+•	 Needle core biopsy (Tru-cut, Menghini or 
+Jamshidi type needles)
+•	 Incisional biopsy (surgically removed pinch, 
+punch or wedge samples)
+•	 Excisional biopsy (‘complete’ postsurgical 
+specimen).
+The type of biopsy procedure chosen will depend 
+on the information that the clinician requires. If the 
+detection of individual neoplastic cells is sufficient, 
+cytological techniques will suffice (e.g. for mast cell 
+ 
+ 
+Local resection of 
+a vaginal 
+leiomyoma 
+following an 
+episiotomy 
+approach. 
+Ovariectomy is an 
+important part of 
+the approach to 
+these tumours to 
+prevent 
+recurrence.
+6.3
+Testicular tumours in the dog
+The incidence of testicular neoplasia is significantly 
+greater (by about 14 times) in an undescended tes-
+ticle over the incidence in a normal dog. This 
+means that about 50% of cryptorchid testicles will 
+develop neoplastic lesions. Neoplasia is also more 
+common than expected in the descended testicle of 
+crypt orchid dogs, probably due to genetic factors 
+that predispose to the development of neoplasia. 
+Sertoli cell tumours (60% of cryptorchid tumours) 
+and seminomas are the most frequent tumour types 
+associated with cryptorchidism. Bilateral elective 
+orchidectomy prevents the development of such 
+tumours in at- risk patients.
+Castration of the non-cryptorchid male dog will 
+also help to prevent perianal adenomas and testicu-
+lar cancer. Although castration does not appear to 
+precipitate development of prostatic neoplasia in 
+dogs, it may favour tumour progression.
+Ch06 Oncology.indd   46 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 56 =====
+Chapter 6 Principles of oncological surgery
+47
+tumours (MCTs)). However, if a stromal tumour is 
+suspected (e.g. a sarcoma), the tissue architecture 
+will need to be examined and needle core or inci-
+sional biopsy techniques will be the minimum 
+requirement. Also, if tumours are to be graded, 
+needle core or incisional techniques are generally 
+indicated. Tumour type and grade are usually 
+required to help to direct the surgeon towards the 
+requisite or recommended resection margins. Often 
+a relatively non-invasive or simple procedure is used 
+initially (e.g. FNA) followed by sequential employ-
+ment of other techniques until sufficient is known 
+about the neoplasm to allow formulation of the most 
+effective surgical and adjunctive therapy protocol.
+To avoid compromising future treatment, a few 
+general principles of biopsy should be observed.
+•	 The biopsy site should be positioned within the 
+probable surgical or radiation field.
+•	 The biopsy incision should be as small as is 
+required, and oriented so as not to increase the 
+size of the subsequent treatment area 
+unnecessarily (usually along skin tension lines). 
+For example, biopsy incisions on limbs should be 
+oriented parallel to the long axis of the limb.
+•	 Specimens should be handled carefully. Use of 
+electrocautery to obtain the sample will distort 
+tissue architecture and make it unreadable by the 
+pathologist. Electrocautery may be used 
+afterwards for haemostasis.
+•	 Multiple samples should be obtained if possible 
+and from different areas of the lesion. The tumour 
+should be carefully examined prior to biopsy, and 
+areas of inflammation and necrosis avoided, as 
+the underlying neoplastic process may be 
+masked by secondary tissue changes. Often the 
+best area for biopsy is the junction of normal and 
+abnormal tissue. Important exceptions to this are 
+primary bone tumours; as they often have an 
+extensive reactive process surrounding the 
+primary lesion, samples should be obtained from 
+the centre.
+•	 The biopsy should result in minimal risk of local 
+dissemination of the neoplastic disease. 
+Uninvolved anatomical planes and compartments 
+should not be breached and fresh 
+instrumentation should be used for each site 
+sampled.
+•	 Adequate exposure is necessary for both 
+incisional and excision biopsies to ensure 
+minimal disruption of the tumour and adjacent 
+tissues.
+Use of biopsy
+In the majority of instances, preoperative biopsy is 
+indicated because the kind or extent of treatment will 
+be altered by knowledge of the tumour type (Figure 
+6.4). The biopsy report will provide information on 
+diagnosis and, where appropriate, grades that are 
+major prognostic determinants and this provides the 
+cornerstone for subsequent surgical planning. For 
+example, soft tissue sarcomas, oral fibrosarcomas 
+and MCTs (intermediate to high grade) have a high 
+rate of local recurrence after conservative resection 
+and thus require removal with much wider margins 
+than benign or other low- grade tumours. Permanent 
+local tumour control and survival are positively corre-
+lated, and preoperative knowledge of the tumour type 
+will help in planning the correct definitive surgery and 
+thus achieving a local cure.
+In some instances, however, prior knowledge of 
+the tumour type will not alter the surgical treatment 
+plan. Examples of this include lobectomy for a soli-
+tary lung mass and splenectomy for localized splenic 
+neoplasia. In many instances of aggressively destruc-
+tive bony lesions the treatment plan will include 
+amputation, regardless of the diagnosis. Conversely, 
+the ability to obtain a diagnostic cytology with the 
+assistance of imaging (such as ultrasonography  
+and computed tomography) in a minimally invasive 
+fashion is improving. For example, imaging- guided 
+FNA can make a positive diagnosis in 89% of  
+osteosarcomas (Britt et al., 2007) and 65% of intra-
+thoracic lesions (Zekas et al., 2005). If the biopsy is 
+as difficult as the postulated curative surgery, such  
+as is true for the removal of brain tumours, informa-
+tion about the tumour type should be obtained after 
+surgical removal.
+In some instances, usually driven by owners and 
+often on financial grounds, masses are removed 
+without any preoperative knowledge of what the 
+mass is. Examples include old dogs bothered by 
+ulcerated cutaneous masses. Communication is of 
+paramount importance in these cases: the owner 
+must understand that the surgery being carried  
+out may not be appropriate for this mass, could 
+Some examples of when biopsy should be performed prior to surgery.6.4
+Tumour presentation Reason for performing biopsy prior to surgery
+Subcutaneous mass on the 
+lateral thorax/abdomen of a 
+dog
+Two possible diagnoses are a lipoma and a peripheral nerve sheath tumour (spindle cell sarcoma). The surgeries 
+required to gain a cure are vastly different. The prognosis for the two tumours is very different, and the prognosis for 
+differing grades of nerve sheath tumours is also very different. Grade I tumours can be cured by wide surgical 
+resection. About 40% of grade III tumours will metastasize. This knowledge may well affect the owner’s decision on 
+treatment strategy. Removal of the whole mass to obtain a diagnosis may well result in a more difﬁcult surgery being 
+required later, with less chance of complete resection
+A large cranial mediastinal 
+mass
+The distinction between lymphoma and thymoma is important. Lymphoma is best treated by chemotherapy, and 
+thymoma best treated by surgery
+A 2 cm diameter mass on 
+the rostral mandible of a dog
+The distinction between peripheral odontogenic ﬁbroma (an epulis) and osteosarcoma is important. The epulis requires 
+only narrow margins of resection; the osteosarcoma requires wide resection and carries a signiﬁcantly worse 
+prognosis. However, the prognosis for a mandibular osteosarcoma is much better than for an amelanotic melanoma
+Ch06 Oncology.indd   47 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 57 =====
+Chapter 6 Principles of oncological surgery
+48
+impact future treatment options and may not effect  
+a local cure.
+It is important to remember that tumour tissue 
+itself often has a poor or absent nerve supply and so 
+biopsy samples representative of the neoplastic 
+process can be obtained using only the minimum of 
+sedation and local analgesia; general anaesthesia is 
+not necessarily required. The argument that ‘it is just 
+as much hassle to get the biopsy as to chop it off’ is 
+sometimes used against procuring a biopsy. This is 
+not true.
+Deﬁnitive excision
+This refers to the use of surgery as the sole treat-
+ment, without adjunctive radiotherapy or chemo-
+therapy, to achieve an outright cure – ‘curative 
+intent’. Surgical excision remains the dominant 
+modality of curative therapy. This is possible with 
+localized and occasionally with regionally confined 
+neoplastic disease. The goal is complete removal of 
+all neoplastic tissue, with clear negative margins 
+and maximum preservation of function, in one sur-
+gery. Realistically, the definitive surgery probably 
+does not remove every last tumour cell; instead, the 
+anim al’s own local immune defence mechanism 
+may well ‘mop up’ the remaining neoplastic cells. 
+However, this process should not be relied on to 
+correct compromised surgical technique. The  inci-
+sion, the surgical exposure and the surgical margin 
+are the most important aspects of a definitive 
+surgery.
+The incision and surgical exposure
+The placing of the incision should take into account 
+the need to resect any scars that are a result of 
+previous surgery or sites of biopsy. Such scars 
+should be afforded the same margins as the bulk of 
+the tumour due to contamination from the primary 
+mass. These margins will have been decided on 
+prior to surgery on the basis of the biopsy 
+information. The incision should also allow adequate 
+access to the tumour to avoid rough handling and 
+fragmentation of the neoplastic tissue.
+The surgical margin
+The choice of the margin at surgery will profoundly 
+affect the success of the surgery as a curative proce-
+dure. The apparently normal tissue surrounding 
+malignant tumours is frequently infiltrated by neo-
+plastic cells. Generally, the greater the likelihood of 
+local infiltration, the wider the surgical margin must 
+be because of the propensity for local, unappreci-
+ated spread (Figure 6.5). The magnitude of grossly 
+normal tissue taken with the obvious ‘primary’ mass 
+will depend on the histological type and grade of 
+tumour, again emphasizing the need for establishing 
+this information by biopsy preoperatively. The tumour 
+and adjacent tissues need to be considered three-
+dimensionally with respect to margin determination, 
+peripheral/circumferential and deep, all of which are 
+equally important.
+Although margins are usually described in terms 
+of a specified measurable distance, consideration 
+should also be given to the biological behaviour of 
+the tumour in question. The most effective natural 
+barriers to the spread of cancer are collagen-rich 
+relatively avascular tissues, including fascia, 
+tendons, ligaments and cartilage. Fat, subcutaneous 
+tissue, muscle and other parenchymatous organs 
+offer relatively little resistance to invading neoplastic 
+cells. Peripheral margins are frequently referred to in 
+terms of metric measurements and deep margins in 
+terms of metric measurements or fascial planes. 
+Fixation of the tumour to adjacent structures or 
+fascial planes mandates removal of the adherent 
+area in continuity with the tumour.
+Guideline resection margins required for a range of tumours. These are guidelines only and do not guarantee 
+complete resection.6.5
+Tumour type and grade Required margins to give ‘good’ 
+chance of clean resection
+Depth of resection needed
+Peripheral odontogenic ﬁbroma (POF) and 
+ameloblastoma (epulides)
+0.5 cm Through tissue in all directions. Some surgeons will 
+‘scrape’ the POF from bone (they do not invade 
+bone), but this can be associated with recurrence
+Oral basal cell carcinoma (epulis) 1 cm Through tissue in all directions
+Grade I (low grade) MCT 1 cm Down to and including the muscle or fascial plane 
+below the tumour
+Grade I soft tissue sarcomas (spindle cell sarcomas)
+Osteosarcomas that have not invaded soft tissues
+Well differentiated dermal SCC
+Grade II (intermediate grade) MCTs 2 cm Down to and including the muscle or fascial plane 
+below the tumour; or tissue in all directions (for oral 
+tumours)Most malignant oral tumours (ﬁbrosarcoma, 
+osteosarcoma, squamous cell sarcoma)
+Intermediate or poorly differentiated dermal SCC
+Ch06 Oncology.indd   48 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 58 =====
+Chapter 6 Principles of oncological surgery
+49
+Figure 6.6 outlines some natural barriers to 
+tumour spread at different locations in the body. 
+These are taken into consideration when deciding on 
+the appropriate extent of resection.
+There is substantial evidence to support the 
+theo ry that a ‘positive surgical margin’ (presence of 
+tumour cells at the edge of the excised tissue) has a 
+negative impact on local recurrence rates, risk of 
+metastatic disease, length of disease-free interval 
+and disease-related death. Equally, margins exces-
+sively wide or too narrow may adversely affect qual-
+ity of life. Significant debate remains as to the 
+optimal excision margins. Excessively wide margins 
+contribute to increased duration of hospitalization, 
+cost, increased cosmetic disfigurement and wound 
+complications. If margins are too narrow there will be 
+increased incidence of recurrence, metastasis and 
+mortality. Surgeons aim for a margin that is wide 
+enough to remove the tumour completely for an 
+acceptable percentage of time and narrow enough to 
+minimize removal of excessive normal tissue.
+One study in MCTs evaluated the presence of 
+tumour cells in excised tissue at locations of 1, 2 and 
+3 cm from the primary mass (Simpson et al., 2004). 
+For low-grade lesions, all were completely excised at 
+a distance of 1 cm; intermediate grades achieved 
+75% complete excision at 1 cm and 100% at 2 cm. 
+Another study demonstrated 91% complete excision 
+of low- and intermediate-grade MCTs at a distance 
+of 2 cm with no local recurrence during the follow-up 
+period (Fulcher et al., 2006). Even with histologically 
+complete excision, local recurrence is still possible 
+(Weisse et al., 2002). The likelihood of recurrence 
+following marginal excision varies with tumour type 
+and histological grade.
+It is also well recognized that the prognosis for 
+certain tumours is impacted by tumour size and ana-
+tomical location, for example with MCTs and SCCs. 
+Intuitively this could be expected to influence the 
+size of appropriate margins and, indeed, has been 
+demonstrated to be correct for melanoma in human 
+patients, where anatomical site and thickness are 
+independent predictors of outcome. Current margin 
+recommendations for melanoma are site- and size-
+dependent and vary from 1 to 2 cm to reflect this 
+(Zitelli et al., 1997).
+The ability to appreciate accurately the extent of 
+the gross disease (particularly where it is not possi-
+ble to palpate the entire tumour externally) and 
+hence obtain adequate surgical margins is substan-
+tially improved by use of advanced imaging modal -
+ities (Wallack et al., 2002). Attempting to achieve a 
+negative surgical margin in the case of metastatec-
+tomy still appears to be important, as some studies 
+have demonstrated an impact on risk of disease 
+recurrence and survival times.
+The extent of the surgical margin can be 
+categorized anatomically as:
+•	 Local excision
+•	 Wide local excision
+•	 Radical local excision.
+Local excision: This is the removal of the gross 
+tumour with the minimal amount of surrounding nor-
+mal tissue. This often means removal of the tumour 
+through its natural capsule or immediate boundaries, 
+usually leaving residual microscopic disease. 
+Although an additional margin of normal tissue is 
+usually removed, there are some instances when it 
+is desirable not to exceed the boundary of the 
+tumour, so as to preserve vital surrounding tissue 
+(e.g. removal of feline thyroid tumours with preserva-
+tion of the parathyroid tissue, or removal of central 
+nervous system tumours with preservation of sur-
+rounding neuronal tissue).
+Examples of natural barriers to tumour spread. a If the tumour has inﬁltrated through this layer, it no longer acts as 
+a barrier and the resection must go to below the next uninvolved fascial/muscle layer.6.6
+Area of the body Fascial or muscle structure that can be removed and may act as a ventral barrier to tumour spread a
+Antebrachium Antebrachial fascia covering the antebrachial muscles
+Head Fascia covering the temporalis muscles 
+Lateral thorax Latissimus dorsi muscle. Although the muscle does not need to be sutured back together, dead space should be carefully closed 
+to prevent seroma formation
+Lateral abdomen Abdominal muscles (e.g. external abdominal oblique). Once two of the three main abdominal muscles have been resected, the 
+deﬁcit should be closed or reinforced
+Ventral abdomen Rectus sheath. Deﬁcits in the rectus sheath should be closed; if they cannot be closed, further deep muscle should be resected 
+to allow apposition of the edges of the rectus sheath
+Dorsum Fascia over the dorsal spinal and paralumbar muscles. If tumours are attached to fascia that is in turn attached to spinous 
+processes of vertebrae, these spinous processes should be removed
+Crural region There is no fascial sheath comparable to that in the forelimb. Although locally the fascia over muscles such as the cranial tibial 
+muscle can be resected, and periosteum used as a deep margin, tumours in this area often can only be cytoreduced without 
+amputation
+Lateral thigh Fascia over the biceps femoris. This is intimately associated with the biceps femoris muscle, and usually margins are gained by 
+partial resection of the biceps femoris muscle
+Ch06 Oncology.indd   49 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 59 =====
+Chapter 6 Principles of oncological surgery
+50
+Tumour types suitable for local excision are:
+•	 Lipoma
+•	 Histiocytoma
+•	 Sebaceous adenoma
+•	 Thyroid adenoma.
+Wide local excision: When a significant predeter-
+mined margin of surrounding tissue is removed 
+together with the primary mass, the excision is 
+termed ‘wide local excision’. Again, preoperative 
+knowledge of the tumour type and grade is essential 
+for deciding on that appropriate margin. Figure 6.5 
+gives some guidelines as to the resection margins 
+required, and how they differ for various tumour 
+types and grades.
+Anatomical considerations may dictate whether it 
+is possible to resect the mass with the appropriate 
+margin; if not possible, consideration should be given 
+to the use of suitable adjunctive therapy. Very often, 
+especially on the limbs, the appropriate depth of sur-
+gical margin cannot be obtained without significant 
+functional consequence. In these circumstances use 
+is made of the known biology of tumours. A collagen-
+rich fascial plane (e.g. a muscle sheath or aponeuro-
+sis) may act as a natural boundary to tumour spread. 
+Figure 6.7 shows how grade and fascial plane 
+involvement alter the resection required. This form of 
+surgery (wide local resection) is probably the most 
+difficult because it is so tempting to take less tissue 
+than may be required in order to preserve tissue for 
+closure. The required margins, when measured out in 
+the patient, can often appear very large (Figure 6.8). 
+Preoperative planning is essential in these cases.
+For example, for a grade II MCT, the suggested 
+margin of excision is 2 cm. On the antebrachium of a 
+dog, 2 cm deep would take the surgeon down to 
+bone, or even into bone. However, the thick antebra-
+chial fascial sheath acts as a barrier to the ventral 
+spread of tumour cells; this is removed with the 
+tumour and acts as the ‘deep margin’. The fascia is 
+removed over the same area as the skin resection. If 
+there is any adhesion of the fascia to the underlying 
+muscle or tissue, the next layer down should be 
+removed also. Preoperative evaluation is therefore 
+essential to plan for such findings. Other examples of 
+natural barriers to spread of tumours are indicated in 
+Figure 6.6; removal of indicated structures does not 
+compromise function.
+Radical local excision, supraradical excision, 
+compartmental excision and amputation: 
+Removal of the tumour with anatomically extensive 
+margins of tissue, including fascial planes that are 
+undisturbed by the primary growth of the tumour, is 
+termed radical local, supraradical or compartmental 
+excision. Sarcomas, in particular, extend along fas-
+cial planes rather than through them and this pattern 
+of growth dictates removal of the entire anatomical 
+Required resection margins often seem very 
+large. This skin tumour has 3 cm margins 
+marked out.
+6.8
+The degree of local tissue 
+inﬁ  ltration varies with the 
+tumour grade. The central tumour 
+mass is the grossly visible and 
+palpable part. Invisible to the naked 
+eye are strands, or tentacles, of 
+neoplastic tissue penetrating out 
+into normal tissue. It is this inﬁ  ltration 
+that determines the required 
+margins of resection, and the 
+degree of inﬁ  ltration varies with 
+tumour type and grade. Tumour 
+grade is generally designated as I,II 
+or III, with III usually being the most 
+aggressive. Other terms used are 
+low, intermediate and high grade 
+and well differentiated through to 
+poorly differentiated. x indicates the 
+necessary peripheral or 
+circumferential margin (usually a 
+metric measurement) and y the 
+deep margin (usually measured in 
+terms of fascial planes, also can be 
+measured metrically).
+6.7
+x
+y
+x
+y
+Skin
+Fascial
+planes
+Involved
+fascial
+planes
+Uninvolved
+fascial
+planes
+x
+y
+x
+y
+Skin
+Fascial
+planes
+Involved
+fascial
+plane
+Uninvolved
+fascial
+plane
+Grade I
+Grade III
+Gross disease Microscopic disease Surgical incision
+Ch06 Oncology.indd   50 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 60 =====
+Chapter 6 Principles of oncological surgery
+51
+compartment rather than simply wide margins of tis-
+sue. One example of this is the resection of a single 
+muscle group for small tumours involving muscle 
+bellies where the outer fascial planes have not been 
+breached. Resection to clean fascial planes on all 
+sides necessitates removal of all blood vessels, 
+nerves and lymphatics that lie within the affected 
+compartment. In the limbs, muscles with their associ-
+ated fascial capsules comprise individual compart-
+ments. Other examples of compartmental or 
+supraradical resections include:
+•	 Removal of the whole pinna and vertical ear 
+canal for resection of SCC of the pinna
+•	 Resection of the complete mandible and its 
+muscle attachments for treatment of mandibular 
+chondro- or osteosarcomas (OSAs)
+•	 Amputation of a limb for appendicular OSA
+•	 Hemipelvectomy for high hindlimb tumours
+•	 Removal of the scapula and associated muscles 
+for scapular tumours.
+Examples of radical resections include:
+•	 Excision of the eyelids and orbital contents for 
+removal of invasive SCCs of the eyelid
+•	 Total or partial orbitectomy for the treatment of 
+periorbital tumours
+•	 Radical chest wall resection or abdominal wall 
+resection for the removal of sarcomas
+•	 Radical resections of the nasal planum and 
+rostral maxilla.
+For margins equalling or exceeding 3 cm, surgery 
+often involves resection of large compartments of tis-
+sue such as amputation, hemipelvectomy, extensive 
+maxillofacial surgery, or abdominal and chest wall 
+resections. Higher-grade tumours often travel exten-
+sively along fascial planes; hence surgeries such as 
+amputation are indicated rather than local resection.
+Examples of tumours that require radical excision 
+(3 cm, down to and including an uninvolved muscle 
+or fascial plane below the tumour) include the 
+following, but these are only guidelines and 
+unfortunately do not guarantee complete resection of 
+the tumour:
+•	 Grade III (high grade) MCTs
+•	 Grade II and III soft tissue sarcomas (spindle cell 
+sarcomas)
+•	 OSAs that have invaded soft tissues
+•	 Feline vaccine-associated sarcomas.
+In summary, in order to formulate a surgical plan 
+the surgeon must establish:
+1. The local, regional and systemic extent of the 
+tumour in the patient
+2. The margins required for attempted definitive 
+excision
+3. How those margins will translate anatomically on 
+to the patient in the area of the tumour
+4. The impact on the patient and the anticipated 
+postoperative care
+5. Whether the surgeon has the requisite skill, 
+facilities and comfort level to perform the 
+procedure or will offer referral
+6. What the owners’ expectations are and whether 
+they can be met or modified.
+Dissection technique
+A scalpel offers or provides the least traumatic form 
+of tissue separation and is recommended for the skin 
+incision and incisions into hollow viscera. Scissors 
+and swabs should be used for the separation of fas-
+cial planes, the separation of adhesions and in body 
+cavities where use of a scalpel may be dangerous. 
+Blood vessels should be identified and ligated or 
+cauterized prior to transection, and tissues should be 
+placed under moderate tension as the dissection is 
+carried out to facilitate the identification of fascial 
+planes and tumour margins.
+Reduction of tumour cell contamination within 
+surgical ﬁeld
+There are many reports of tumour seeding after 
+biopsy or surgical procedures in human patients, and 
+veterinary cases of surgically induced tumour seed-
+ing have also been identified. The pseudocapsule 
+around many tumours, especially sarcomas, has via-
+ble tumour cells on its surface. Manipulation and  
+surgical exposure of the pseudocapsule promote 
+tumour spread via exfoliated cells.
+Although it is tempting to grasp a tumour using 
+traumatic tissue forceps, this may lead to tissue frag-
+mentation and dissemination of neoplastic cells; stay 
+sutures, placed in normal surrounding tissue being 
+resected, are the best way to manipulate a tumour. 
+In body cavities, neoplasms should be isolated from 
+surrounding viscera by large laparotomy pads to 
+minimize contamination of normal tissue by exfoli-
+ated tumour cells.
+It is often helpful to approach tumours as if they 
+were abscesses or infected tissue, and the tech-
+niques and precautions used to prevent spread of 
+bacteria will also help to minimize the spread of neo-
+plastic cells through inadvertent tumour violation. 
+However, there are some differences. With respect to 
+adhesions between neoplastic tissue and adjacent 
+structures, these adhesions represent direct tumour 
+invasion in up to 57% of cases, and the tumour and 
+the adhesions should be removed en bloc whenever 
+possible. Seeded tumour cells appear to adhere to 
+normal tissue via specific cell surface receptors, and 
+routine wound or cavity lavage following removal is 
+of little benefit in terms of ‘washing out’ remaining 
+tumour cells. However, remaining tumour cells are 
+not likely to be spread by lavage; thus, lavage is rec-
+ommended to effect removal of blood clots, foreign 
+material, necrotic tissue fragments and any unat-
+tached tumour cells. In human patients with inadvert-
+ent contamination of the surgical site following soft 
+tissue sarcoma resection, it is possible to achieve 
+similar outcomes when compared with those without 
+contamination, but re-excision and wound irrigation 
+is necessary (Virkus et al., 2002). Gloves, instru-
+ments and drapes should be changed after tumour 
+excision and lavage, as tumour cells will adhere to 
+Ch06 Oncology.indd   51 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 61 =====
+Chapter 6 Principles of oncological surgery
+52
+these inanimate objects and potentially be seeded to 
+tissues as closure is carried out. Gloves and equip-
+ment should also be changed when performing mul-
+tiple procedures in the same patient, to avoid 
+mechanical contamination.
+Avoidance of wound complications
+Local cellular defence mechanisms and immuno -
+modulation may well be very important in the 
+removal of residual tumour cells. The development of 
+haematomas, seromas or sepsis will interfere with 
+this function and these should be avoided by meticu-
+lous haemostasis, effective closure of dead space 
+and appropriate use of drains and perioperative anti-
+biotics. The use of drains is somewhat controversial 
+amongst veterinary oncological surgeons, especially 
+if the resection has been incomplete. There is poten-
+tial for seeding of tumour cells along the tissues 
+where the drain is placed (this may be decreased 
+with the use of active versus passive drains), making 
+further surgery or adjunctive therapy very much 
+more difficult if there is recurrence. The author [KJ] 
+does use drains, but positions their exits close to the 
+incision so as not to compromise further adjunctive 
+therapy that may be needed.
+Vascular occlusion techniques
+Vascular supply to the tumour, and venous and lym-
+phatic drainage from it, should be ligated as early  
+as possible during surgery. The predominant reason 
+for vascular occlusion is improved intraoperative 
+haemostasis and visualization but it is of notable 
+importance where the probability of cell exfoliation is 
+high, such as for tumours of ectodermal origin (e.g. 
+SCCs, MCTs).
+Management of local lymph nodes
+The flow of lymph is directional; lymph nodes that 
+are the first to receive drainage from any given loca-
+tion are called ‘sentinel’ lymph nodes. Sentinel lymph 
+nodes have been mapped in humans using contrast, 
+dyes and radioactive tracers; in human patients it is 
+the ‘sentinel’ lymph nodes that are targeted for 
+biopsy to stage disease, or for removal in the treat-
+ment of disease (Krag, 2000). Once the marker is 
+injected, the first sentinel lymph node is identified 
+and biopsy is performed. If that node is negative for 
+the cancer, further dissection is avoided; if the senti-
+nel node is positive, further dissection is performed.
+In veterinary medicine such studies are limited 
+and oncologists usually refer to the ‘regional’ lymph 
+nodes. These nodes should be sampled (usually via 
+FNA) as a component of routine oncological staging, 
+as it is not possible to determine the presence, or 
+absence, of micrometastasis through mere palp-
+ation. This is especially important if the decision 
+regarding the use of adjunctive therapy is dependent 
+on whether or not there is disease in the lymph 
+nodes. Tumour grade and survival have been linked 
+with the presence of micrometastasis in the lymph 
+nodes, as detected by cytological assessment 
+(Withrow and Vail, 2007; Krick et al., 2009). Further 
+studies, using contrast-enhanced imaging modali-
+ties, are starting to chart these lymph nodes and this 
+practice is likely to become more commonplace 
+(Pereira et al., 2008; Tang et al., 2009).
+Lymph nodes are only minimally effective barriers 
+to the passage of tumour cells and their function is 
+probably one of immunological surveillance and 
+immune editing, rather than filtration of tumour cells. 
+The immunological response of regional lymph 
+nodes appears to be more effective early on in the 
+course of disease. Local lymph node metastasis 
+is common for malignant melanomas and most 
+carcinomas, of intermediate frequency for sarcomas, 
+respiratory tumours, cutaneous carcinomas and 
+MCTs, and rare for nervous system tumours, skeletal 
+tumours, nasal tumours and most endocrine tumours 
+(e.g. thyroid carcinoma). Removing lymph nodes 
+may interfere with local immune defence mecha-
+nisms in the postoperative period. There is also a 
+potential increase in surgical morbidity related to the 
+more extensive surgical procedure.
+The practice of routinely removing the ‘sentinel’ 
+or regional lymph nodes in both humans and anim-
+als prophylactically is a matter of continued contro-
+versy but is generally no longer recommended 
+(Krag, 2000).
+In general, although decisions must be made on 
+a case-by-case basis, current recommendations are 
+the non-destructive biopsy (FNA) of grossly normal 
+local nodes, and removal of the node in the following 
+situations:
+•	 The node is histologically proven to contain 
+tumour cells
+•	 The node appears grossly abnormal at surgery
+•	 The node is intimately associated with the tissue 
+being removed and surgical margins dictate its 
+removal (e.g. as part of a compartmental 
+resection such as the inguinal lymph node during 
+mastectomy)
+•	 The node is sufficiently large and/or located in 
+such an area as to cause some degree of 
+functional impairment associated with space 
+occupation.
+One case where local lymph node removal is 
+probably beneficial is the removal of the medial iliac 
+lymph nodes (often erroneously referred to as the 
+sublumbar lymph nodes) in patients with metastatic 
+apocrine or anal sac gland adenocarcinomas of the 
+perineum. Removal of these positive lymph nodes 
+does not result in a cure, but can help to alleviate the 
+paraneoplastic syndrome of hypercalcaemia and may 
+help to prevent large bowel obstruction. It is recom-
+mended that, in critical areas (retropharyngeal, hilar, 
+mesenteric), lymph nodes that have eroded through 
+the capsule and become adherent to surrounding tis-
+sues are not removed, because attempting to do this 
+would cause significant harm to the patient.
+Reconstruction of the resulting deﬁcit
+There is often a great temptation to compromise 
+excision margins through a lack of confidence in 
+one’s ability to reconstruct the resulting deficit. This 
+compromise may result in failure of a single surgical 
+procedure that could have produced a cure. It may 
+Ch06 Oncology.indd   52 11/10/2010   12:07
+VetBooks.ir
+
+===== PDF PAGE 62 =====
+Chapter 6 Principles of oncological surgery
+53
+also result in death of an animal that should have 
+been cured. It is the resection of tumours involving 
+the skin and associated structures that often results 
+in substantial deficits, and a variety of techniques 
+are available to deal with these deficits (see BSAVA 
+Manual of Canine and Feline Wound Management 
+and Reconstruction).
+Primary skin closure: This is the coaptation of the 
+wound edges at the time of the initial surgery without 
+the need for extensive skin-releasing techniques. It is 
+used mainly in the closure of smaller deficits or 
+where there is a lot of loose skin. Towel clamps may 
+be used temporarily to help to align skin edges and 
+stretch skin, and ‘walking’ sutures should be used to 
+bring skin edges together gradually. There are many 
+other tension-releasing techniques that can be used 
+to facilitate primary skin closure and in oncological 
+surgery full consideration should be given to these 
+prior to planning extensive flap techniques.
+Secondary skin healing: This is the closure of the 
+wound by the natural processes of wound contracture 
+and epithelialization. It is particularly suited to contam-
+inated wounds or where the reconstruction of the 
+wound is prohibited by the lack of surrounding skin.
+Pedicle flap closure of the skin: This is closure of 
+wounds using sliding flaps of skin, e.g. local plasty 
+techniques, skin meshing, advancement flaps, rota-
+tion flaps and transposition flaps. It also includes  
+the use of axial (Figure 6.9) or island flaps. Such 
+techniques can be used immediately after the exci-
+sional surgery.
+dead space. Gastro-omental pedicle flaps can also 
+be used to provide a source of extra tissue in the 
+reconstruction of hollow viscera such as the bladder. 
+Skin expanders can potentially be used to augment 
+skin in the area of a tumour prior to resection.
+Myocutaneous flaps: These may be harvested  
+as muscle flaps or combined muscle and skin flaps 
+for closure and support of larger structural defects 
+such as those involving thoracic wall (Halfacree et 
+al., 2007).
+Mesh implants: These can be used on their own, or 
+combined with omental transfer techniques, to pro-
+vide a scaffold for reconstruction of the thoracic and 
+abdominal wall (Matthiesen et al., 1992; Liptak et al., 
+2008) (Figure 6.10). Cutaneous reconstruction tech-
+niques are then used to close the skin. As an alter-
+native to the use of mesh to reconstruct the thoracic 
+wall after resections, diaphragmatic advancement 
+with or without caudal lung lobectomy can be used 
+to obviate the necessity to reconstruct a thoracic wall 
+(Matthiesen et al., 1992).
+Completed caudal superﬁcial epigastric axial 
+pattern ﬂap being used in a dog to close a skin 
+deﬁcit resulting from tumour resection.
+6.9
+Mesh being used to reconstruct the body wall 
+defect created in Figure 6.2.
+6.10
+Free skin grafts: This is particularly suited to the 
+clos   ure of skin deficits over the distal limbs where 
+there is a lack of adjacent skin and axial or island 
+flaps are not possible. These techniques will be 
+delayed until after the excisional surgery to allow for 
+the establishment of a good recipient granulation bed.
+Local tissue augmentation: Omentum can be 
+tunnelled, after appropriate extension, to most areas 
+of the body to provide extra tissue to allow closure of 
+Closure considerations
+The oncological surgeon should be familiar with all of 
+the above techniques. A suitable closure technique 
+should be planned prior to resection of the tumour. 
+Appropriate alternatives for closure must also be 
+considered in the event the resection has to be more 
+radical than originally planned. Most often primary 
+closure techniques are used in veterinary oncology 
+due to the fact that if elaborate cutaneous recon-
+structive techniques are used, there is potential for 
+very wide tumour recurrence with incomplete resec-
+tion. To minimize this potential for seeding, separate 
+instruments should be used for the reconstructive 
+part of the procedure.
+Ch06 Oncology.indd   53 11/10/2010   12:07
+VetBooks.ir

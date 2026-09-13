@@ -17,7 +17,6 @@ export const bronquiteCronicaRecord: DiseaseRecord = {
   ],
   species: ['dog', 'cat'],
   category: 'respiratorio',
-  categories: ['bombas-asma-terapia-inalatoria'],
   tags: [
     'Tosse crônica',
     'Neutrófilos',

@@ -12,7 +12,8 @@ export const mastiteRecord: DiseaseRecord = {
     'Mastite gangrenosa',
   ],
   species: ['dog', 'cat'],
-  category: 'reproducao-neonatologia',
+  category: 'reproducao-obstetricia',
+  categories: ['neonatologia', 'infectologia'],
   tags: ['Puerpério', 'Lactação', 'Cultura do leite', 'Sepse', 'Abscesso', 'Neonatos', 'Antimicrobiano'],
   quickSummary:
     'Mastite é inflamação geralmente séptica de uma ou mais glândulas mamárias, sobretudo no pós-parto. Bactérias da pele, ambiente ou corrente sanguínea ascendem pelo teto ou chegam por via hematógena; galactostase, trauma por unhas e metrite aumentam o risco. O espectro vai de calor, dor e leite descolorido até abscesso, necrose e choque séptico. O diagnóstico é primariamente clínico, apoiado por citologia e cultura de leite coletado assepticamente; uma cultura positiva isolada não prova doença porque leite de cadelas saudáveis pode conter bactérias. Tratamento não deve esperar cultura em paciente sistêmico: colher amostras, iniciar antimicrobiano bactericida compatível com lactação, controlar dor e favorecer drenagem. Abscesso ou necrose exige drenagem, debridamento ou mastectomia. Antibiótico profilático não previne mastite e seleciona resistência.',

@@ -428,6 +428,15 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'O tratamento inclui remédios específicos para dor neuropática e repouso, ou cirurgia de descompressão em casos de paralisia grave.',
     ],
   },
+  'sindrome-mielodisplasica-caes-gatos': {
+    whatIsIt:
+      'A síndrome mielodisplásica (MDS) é uma doença rara da medula óssea (a "fábrica de sangue" localizada dentro dos ossos). Nela, a medula trabalha ativamente e produz muitas células, mas essas células nascem com defeitos e morrem antes de chegarem à circulação sanguínea. Como consequência, o animal fica com falta de glóbulos vermelhos (anemia), glóbulos brancos (baixa imunidade) ou plaquetas (risco de sangramento), sentindo-se muito fraco e prostrado.',
+    keyPoints: [
+      'O animal pode ter a medula óssea cheia de células, mas o sangue periférico vazio (anemia e citopenias persistentes).',
+      'É fundamental diferenciar a doença de causas secundárias e tratáveis, como remédios tóxicos, infecções, inflamações ou o vírus da FeLV em gatos.',
+      'O tratamento foca em suporte com transfusão de sangue para dar disposição e oxigênio, antibióticos para prevenir infecções e acompanhamento especializado com oncologista.',
+    ],
+  },
 };
 
 export function getPlainLanguageForSlug(slug: string): DiseasePlainLanguage | undefined {

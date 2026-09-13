@@ -1,0 +1,133 @@
+- main [ref=f1e2]:
+  - heading "Biópsia incisional em cães e gatos" [level=1] [ref=f1e3]
+  - generic [ref=f1e4]:
+    - note [ref=f1e5]:
+      - paragraph [ref=f1e6]: A biópsia faz parte da cirurgia definitiva
+      - paragraph [ref=f1e7]:
+        - strong [ref=f1e8]: O trajeto deve caber na futura ressecção em bloco.
+        - text: Planeje local, direção e profundidade antes de coletar. O objetivo é obter tecido representativo para histopatologia, e não margens livres.
+    - paragraph [ref=f1e9]:
+      - text: A
+      - strong [ref=f1e10]: biópsia incisional
+      - text: remove apenas uma porção representativa da lesão, preservando a maior parte da massa no paciente, para orientar o tratamento definitivo.
+    - heading "Objetivos da biópsia incisional" [level=2] [ref=f1e11]
+    - paragraph [ref=f1e12]: "O objetivo não é obter margens livres. O objetivo é obter tecido suficiente para responder perguntas que mudarão a conduta:"
+    - note [ref=f1e13]:
+      - paragraph [ref=f1e14]:
+        - strong [ref=f1e15]: Existe neoplasia? → qual a linhagem? → qual o subtipo? → qual o grau histológico quando aplicável? → isso muda extensão cirúrgica, radioterapia, quimioterapia ou prognóstico?
+    - paragraph [ref=f1e16]:
+      - text: "A histopatologia possui uma vantagem fundamental em relação à citologia: ela preserva a"
+      - strong [ref=f1e17]: arquitetura tecidual
+      - text: . Isso permite avaliar diferenciação, mitoses, necrose, invasão vascular/linfática e, para alguns tumores, estabelecer graduação histológica. O BSAVA destaca justamente essa vantagem das técnicas histológicas sobre a avaliação citológica isolada.
+    - heading "Comparação prática" [level=4] [ref=f1e18]
+    - table [ref=f1e20]:
+      - rowgroup [ref=f1e21]:
+        - row [ref=f1e22]:
+          - columnheader "Técnica" [ref=f1e23]
+          - columnheader "Material" [ref=f1e24]
+          - columnheader "Principal vantagem" [ref=f1e25]
+          - columnheader "Principal limitação" [ref=f1e26]
+      - rowgroup [ref=f1e27]:
+        - row [ref=f1e28]:
+          - cell "PAAF" [ref=f1e29]
+          - cell "Células" [ref=f1e30]
+          - cell "Rápida, barata, pouco invasiva" [ref=f1e31]
+          - cell "Arquitetura ausente" [ref=f1e32]
+        - row [ref=f1e33]:
+          - cell "Core/Tru-cut" [ref=f1e34]
+          - cell "Cilindro de tecido" [ref=f1e35]
+          - cell "Arquitetura com baixa morbidade" [ref=f1e36]
+          - cell "Amostra pequena; heterogeneidade tumoral" [ref=f1e37]
+        - row [ref=f1e38]:
+          - cell "Punch" [ref=f1e39]
+          - cell "Cilindro relativamente largo" [ref=f1e40]
+          - cell "Excelente para pele/lesões superficiais" [ref=f1e41]
+          - cell "Profundidade limitada" [ref=f1e42]
+        - row [ref=f1e43]:
+          - cell [ref=f1e44]:
+            - strong [ref=f1e45]: Incisional
+          - cell [ref=f1e46]:
+            - strong [ref=f1e47]: Fragmento/wedge relativamente grande
+          - cell [ref=f1e48]:
+            - strong [ref=f1e49]: Excelente arquitetura e representatividade
+          - cell [ref=f1e50]:
+            - strong [ref=f1e51]: Mais invasiva; cria trajeto cirúrgico contaminado
+        - row [ref=f1e52]:
+          - cell "Excisional" [ref=f1e53]
+          - cell "Massa inteira" [ref=f1e54]
+          - cell "Diagnóstico + potencial tratamento" [ref=f1e55]
+          - cell "Pode arruinar a primeira cirurgia oncológica se feita sem planejamento" [ref=f1e56]
+    - paragraph [ref=f1e57]:
+      - text: O
+      - emphasis [ref=f1e58]: Withrow
+      - text: "ressalta que a biópsia excisional é empregada com frequência maior do que deveria: uma remoção marginal de uma massa posteriormente diagnosticada como sarcoma pode transformar uma cirurgia inicialmente simples em uma segunda operação muito maior ou necessidade de radioterapia."
+    - heading "Quando indicar biópsia incisional" [level=2] [ref=f1e59]
+    - heading "Indicações fortes" [level=3] [ref=f1e60]
+    - paragraph [ref=f1e61]: "A indicação é especialmente importante quando:"
+    - list [ref=f1e63]:
+      - listitem [ref=f1e64]:
+        - strong [ref=f1e65]: PAAF ou core biopsy foram inconclusivos ou discordantes da clínica.
+      - listitem [ref=f1e66]:
+        - text: O
+        - strong [ref=f1e67]: tipo tumoral modifica a modalidade de tratamento
+        - text: .
+      - listitem [ref=f1e68]:
+        - text: O
+        - strong [ref=f1e69]: grau histológico modifica a extensão cirúrgica
+        - text: .
+      - listitem [ref=f1e70]: A lesão é grande, infiltrativa ou fixa.
+      - listitem [ref=f1e71]: A localização torna a cirurgia definitiva complexa.
+      - listitem [ref=f1e72]: Uma reconstrução por retalho, enxerto, maxilectomia, mandibulectomia ou amputação pode ser necessária.
+      - listitem [ref=f1e73]: A decisão do tutor depende de informações prognósticas.
+      - listitem [ref=f1e74]: A lesão apresenta grande quantidade de inflamação, ulceração ou necrose, tornando pequenas amostras menos confiáveis.
+      - listitem [ref=f1e75]: É necessário preservar arquitetura para diferenciar neoplasias mesenquimais.
+      - listitem [ref=f1e76]: A lesão oral exige uma amostra profunda e representativa.
+    - paragraph [ref=f1e77]:
+      - text: Essas são essencialmente as indicações estabelecidas no capítulo de princípios de biópsia do
+      - emphasis [ref=f1e78]: Withrow & MacEwen
+      - text: .
+    - 'heading "Exemplo clássico: sarcoma de tecidos moles" [level=4] [ref=f1e79]'
+    - paragraph [ref=f1e80]:
+      - text: O consenso brasileiro da ABROVET de 2026 recomenda histopatologia para o diagnóstico definitivo dos tumores de tecidos moles e considera a
+      - strong [ref=f1e81]: biópsia incisional o método de escolha antes do tratamento definitivo
+      - text: ", particularmente em massas grandes ou situações nas quais a ressecção pode ser complexa. ("
+      - link "Frontiers" [ref=f1e82] [cursor=pointer]:
+        - /url: https://www.frontiersin.org/journals/veterinary-science/articles/10.3389/fvets.2026.1750148/full
+      - text: )
+    - paragraph [ref=f1e83]: "Isso acontece porque:"
+    - note [ref=f1e84]:
+      - paragraph [ref=f1e85]:
+        - strong [ref=f1e86]: grau histológico → prediz comportamento biológico → influencia “dose” cirúrgica → portanto tentar retirar primeiro e descobrir depois pode resultar em cirurgia inadequada.
+    - heading "Quando NÃO fazer uma biópsia incisional" [level=2] [ref=f1e87]
+    - paragraph [ref=f1e88]:
+      - text: É importante distinguir
+      - strong [ref=f1e89]: “contraindicação”
+      - text: de
+      - strong [ref=f1e90]: “biópsia pré-operatória desnecessária”
+      - text: .
+    - heading "Pode não haver benefício quando" [level=4] [ref=f1e91]
+    - paragraph [ref=f1e92]: O conhecimento prévio do diagnóstico não alteraria a cirurgia.
+    - paragraph [ref=f1e93]:
+      - text: Exemplos clássicos do
+      - emphasis [ref=f1e94]: Withrow
+      - text: "incluem:"
+    - list [ref=f1e95]:
+      - listitem [ref=f1e96]: massa testicular;
+      - listitem [ref=f1e97]: massa esplênica solitária em paciente cuja indicação já seja esplenectomia;
+      - listitem [ref=f1e98]: determinadas lesões em que o procedimento para obtenção da biópsia apresenta morbidade semelhante à própria cirurgia definitiva.
+    - heading "Contraindicações ou motivos para adiar" [level=4] [ref=f1e99]
+    - list [ref=f1e100]:
+      - listitem [ref=f1e101]: coagulopatia clinicamente relevante não corrigida;
+      - listitem [ref=f1e102]: trombocitopenia grave ou disfunção hemostática importante;
+      - listitem [ref=f1e103]: instabilidade cardiovascular/respiratória incompatível com sedação ou anestesia;
+      - listitem [ref=f1e104]: infecção ativa importante na via de acesso, quando existe alternativa;
+      - listitem [ref=f1e105]: impossibilidade de posicionar o trajeto dentro da futura área de ressecção;
+      - listitem [ref=f1e106]: necessidade de atravessar uma articulação, cavidade corporal, importante compartimento muscular ou estrutura neurovascular que não precisaria ser removida;
+      - listitem [ref=f1e107]: lesão extremamente vascular em que outra técnica seja mais segura.
+    - note [ref=f1e108]:
+      - paragraph [ref=f1e109]:
+        - text: 📌
+        - strong [ref=f1e110]: "Princípio:"
+        - text: se você não consegue imaginar como vai retirar o trajeto da biópsia junto com a massa depois, provavelmente precisa reconsiderar o trajeto
+        - strong [ref=f1e111]: antes de biopsiar
+        - text: .

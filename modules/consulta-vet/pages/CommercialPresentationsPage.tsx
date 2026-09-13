@@ -129,12 +129,14 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   endocrine_adrenal: 'Adrenais',
   endocrine_insulin: 'Insulinas',
   endocrine_sglt2: 'Inibidores de SGLT2 (antidiabéticos orais)',
+  endocrine_lipid_lowering: 'Hipolipemiantes',
   endocrine_thyroid: 'Tireoide',
   endocrine_erythropoiesis: 'Eritropoiese / DRC',
   endocrine_diagnostic: 'Diagnóstico endócrino',
   infectious_antifungal: 'Antifúngicos sistêmicos',
   infectious_antibiotic: 'Antimicrobianos sistêmicos',
   oncologic_tki: 'Inibidores de tirosina quinase',
+  oncologic_chemotherapy: 'Quimioterápicos / agentes citotóxicos',
   repro_antigalactogenic: 'Antigalactogênicos',
   ortho_joint_support: 'Suporte articular',
   ortho_antiinflammatory: 'Anti-inflamatórios ortopédicos',
@@ -190,7 +192,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   urologic: ['uro_urinary_support'],
   renal: ['renal_ckd_support', 'endocrine_erythropoiesis'],
   orthopedic: ['ortho_joint_support', 'ortho_antiinflammatory'],
-  endocrine: ['endocrine_insulin', 'endocrine_sglt2', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
+  endocrine: ['endocrine_insulin', 'endocrine_sglt2', 'endocrine_lipid_lowering', 'endocrine_adrenal', 'endocrine_thyroid', 'endocrine_erythropoiesis', 'endocrine_diagnostic'],
   ophthalmologic: [
     'ophthalmic_lubricant',
     'ophthalmic_immunomodulator',
@@ -207,7 +209,7 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   antiinflammatory: ['ortho_antiinflammatory'],
   nutraceutical: ['nutra_omega3', 'nutra_general_support', 'nutra_mineral_vitamin', 'gi_probiotic'],
   reproductive: ['repro_antigalactogenic'],
-  oncologic: ['oncologic_tki'],
+  oncologic: ['oncologic_tki', 'oncologic_chemotherapy'],
   emergency: ['sedative_anesthetic', 'endocrine_diagnostic'],
   parasiticide: [
     'parasite_oral_isoxazoline_dog',
@@ -710,7 +712,12 @@ function ProductCard({
       <div className="mt-5 rounded-xl border border-amber-500/25 bg-amber-500/[0.07] p-4">
         <div className="flex gap-3">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-amber-700 dark:text-amber-300" />
-          <p className="text-sm leading-6 text-amber-900 dark:text-amber-100">{product.safetyAlert}</p>
+          <div className="space-y-1">
+            <p className="text-xs font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300">
+              Alerta de Segurança e Advertência Máxima (Boxed Warning / Cuidados Críticos de Bula)
+            </p>
+            <p className="text-sm leading-6 text-amber-900 dark:text-amber-100">{product.safetyAlert}</p>
+          </div>
         </div>
       </div>
 

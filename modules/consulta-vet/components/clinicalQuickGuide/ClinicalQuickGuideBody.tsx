@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { ClinicalGuideInline } from './ClinicalGuideInline';
 import { ZoomIn } from 'lucide-react';
 import { ClinicalQuickGuideBlock } from '../../types/clinicalQuickGuide';
 import { ClinicalQuickGuideYoutubeEmbed } from './ClinicalQuickGuideYoutubeEmbed';
@@ -7,6 +8,7 @@ import { cn } from '../../../../lib/utils';
 
 interface ClinicalQuickGuideBodyProps {
   blocks: ClinicalQuickGuideBlock[];
+  richText?: boolean;
   youtubeVideoId: string | null;
   youtubeTitle: string;
 }
@@ -57,7 +59,9 @@ function FlowchartBlock({
   );
 }
 
-export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }: ClinicalQuickGuideBodyProps) {
+export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, richText = false }: ClinicalQuickGuideBodyProps) {
+  const inline = (text: string) => richText ? <ClinicalGuideInline text={text} /> : text;
+  const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
   const [activeImage, setActiveImage] = useState<{
     src: string;
     alt: string;
@@ -83,21 +87,30 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
             return (
               <Tag
                 key={key}
+                id={`cqg-section-${i}`}
                 className={cn(
-                  'font-bold tracking-tight text-foreground',
+                  'scroll-mt-24 font-bold tracking-tight text-foreground',
                   block.level === 2 && 'text-xl md:text-2xl',
                   block.level === 3 && 'text-lg md:text-xl',
                   block.level === 4 && 'text-base md:text-lg'
                 )}
               >
-                {block.text}
+                {inline(block.text)}
               </Tag>
             );
           }
+          case 'list':
+            return <ul key={key} className={cn('space-y-2 text-[15px] leading-7', !block.checklist && 'list-disc pl-5')}>
+              {block.items.map((item, index) => <li key={index}>{block.checklist
+                ? <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-border bg-muted/20 p-3"><input type="checkbox" checked={Boolean(checkedItems[item])} onChange={(event) => setCheckedItems((previous) => ({ ...previous, [item]: event.target.checked }))} className="mt-1.5 h-4 w-4 shrink-0 accent-teal-600" /><span>{inline(item)}</span></label>
+                : inline(item)}</li>)}
+            </ul>;
+          case 'preformatted':
+            return <pre key={key} className="overflow-x-auto rounded-2xl border border-teal-500/30 bg-teal-500/5 p-4 text-xs leading-relaxed text-foreground" tabIndex={0}>{block.text}</pre>;
           case 'paragraph':
             return (
               <p key={key} className="max-w-[75ch] text-[15px] leading-7 text-foreground/90">
-                {block.text}
+                {inline(block.text)}
               </p>
             );
           case 'callout':
@@ -107,8 +120,8 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
                 className={cn('rounded-2xl border px-4 py-3 text-sm leading-relaxed', CALLOUT[block.variant])}
                 role="note"
               >
-                {block.title ? <p className="font-semibold">{block.title}</p> : null}
-                <p className={block.title ? 'mt-1' : ''}>{block.text}</p>
+                {block.title ? <p className="font-semibold">{inline(block.title)}</p> : null}
+                <p className={cn('whitespace-pre-line', block.title && 'mt-1')}>{inline(block.text)}</p>
               </div>
             );
           case 'table':
@@ -134,7 +147,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
                       <tr key={ri} className="border-b border-border/50 last:border-0">
                         {row.map((cell, ci) => (
                           <td key={ci} className="align-top px-4 py-3 text-muted-foreground">
-                            {cell}
+                            {inline(cell)}
                           </td>
                         ))}
                       </tr>
@@ -146,10 +159,10 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
           case 'steps':
             return (
               <div key={key} className="space-y-3">
-                {block.title ? <p className="text-sm font-semibold text-foreground">{block.title}</p> : null}
+                {block.title ? <p className="text-sm font-semibold text-foreground">{inline(block.title)}</p> : null}
                 <ol className="list-decimal space-y-2 pl-5 text-[15px] leading-7 text-foreground/90">
                   {block.items.map((item, si) => (
-                    <li key={si}>{item}</li>
+                    <li key={si}>{inline(item)}</li>
                   ))}
                 </ol>
               </div>
@@ -196,7 +209,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
                 <div className="flex items-start justify-between gap-3">
                   {block.caption ? (
                     <figcaption className="flex-1 text-xs leading-relaxed text-muted-foreground">
-                      {block.caption}
+                      {inline(block.caption)}
                     </figcaption>
                   ) : null}
                   <button
@@ -223,7 +236,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
                 key={key}
                 className="rounded-2xl border border-dashed border-primary/35 bg-primary/[0.04] px-4 py-5 text-sm text-muted-foreground"
               >
-                <p className="font-semibold text-foreground">{block.title}</p>
+                <p className="font-semibold text-foreground">{inline(block.title)}</p>
                 <p className="mt-2 leading-relaxed">{block.body}</p>
               </div>
             );
@@ -231,7 +244,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle }:
             return (
               <section key={key} className="space-y-3" aria-labelledby={`${key}-yt`}>
                 <h3 id={`${key}-yt`} className="text-base font-semibold tracking-tight text-foreground">
-                  {block.title}
+                  {inline(block.title)}
                 </h3>
                 <ClinicalQuickGuideYoutubeEmbed videoId={block.videoId} title={block.title} />
                 {block.caption ? (

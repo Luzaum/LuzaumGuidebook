@@ -6,6 +6,7 @@ import {
   ChevronRight,
   Clock,
   FileText,
+  Layers,
   Pill,
   Search,
   Stethoscope,
@@ -232,6 +233,13 @@ export function HomePage() {
       icon: BookOpen,
       body: 'Conceitos por sistema, figuras e v\u00eddeos',
       accent: 'slate' as const,
+    },
+    {
+      to: '/consulta-vet/referencias-rapidas',
+      label: 'Referências rápidas',
+      icon: Layers,
+      body: 'Calculadoras, BSA e tabelas clínicas',
+      accent: 'cyan' as const,
     },
     {
       to: '/consulta-vet/manejo-emergencial',

@@ -55,6 +55,9 @@ const ConsultaVetClinicalQuickGuideDetailPage = lazy(() =>
 const ConsultaVetReceituarioPage = lazy(() =>
   import('./modules/consulta-vet/pages/ReceituarioPage').then((m) => ({ default: m.ReceituarioPage }))
 )
+const ConsultaVetQuickReferencesPage = lazy(() =>
+  import('./modules/consulta-vet/pages/QuickReferencesPage').then((m) => ({ default: m.QuickReferencesPage }))
+)
 
 const Login = lazy(() => import('./src/routes/Login'))
 const Signup = lazy(() => import('./src/routes/Signup'))
@@ -150,6 +153,8 @@ const appRoutes = (
       <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
       <Route path="guias-rápidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
       <Route path="guias-rápidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
+      <Route path="referencias-rapidas" element={<ConsultaVetQuickReferencesPage />} />
+      <Route path="referências-rápidas" element={<Navigate to="/consulta-vet/referencias-rapidas" replace />} />
     </Route>
     <Route path="/rifa" element={<ProtectedRoute><ModuleIframe /></ProtectedRoute>} />
     <Route path="*" element={<Navigate to="/" replace />} />
