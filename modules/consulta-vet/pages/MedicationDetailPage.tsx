@@ -343,18 +343,18 @@ export function MedicationDetailPage() {
                     />
                   )}
 
-                  {/* 3. Farmacocinética Aprofundada (4-MAA/4-AA, ADME, Stats) */}
+                  {/* 3. Fundamentos Clínicos & Evidências Publicadas Interligadas (Estilo CID) */}
+                  <MedicationClinicalFoundationsSection medication={medication} />
+
+                  {/* 4. Farmacocinética Aprofundada (ADME, Stats) */}
                   <MedicationPharmacokineticsSection data={medication.pharmacokineticsData} />
 
-                  {/* 4. Classificação Farmacológica & Mecânica (Sítios & Receptores-Alvo) */}
+                  {/* 5. Classificação Farmacológica & Mecânica (Sítios & Receptores-Alvo) */}
                   <MedicationPharmacologicalClassificationSection
                     classification={medication.generalInfoData?.pharmacologicalClassification}
                     activeIngredient={medication.activeIngredient}
                     pharmacologicClass={medication.pharmacologicClass}
                   />
-
-                  {/* 5. Fundamentos Clínicos & Evidências Publicadas Interligadas (Estilo CID) */}
-                  <MedicationClinicalFoundationsSection medication={medication} />
 
                   {/* 5. Conteúdo Relacionado (Doenças e Consensos) */}
                   {(relatedDiseases.length > 0 || relatedConsensos.length > 0) && (

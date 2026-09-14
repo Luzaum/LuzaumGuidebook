@@ -321,4 +321,10 @@ export interface MedicationRecord extends ContentFlag {
 
   /** Nota sobre marcas genéricas registradas */
   genericBrandsNote?: string;
+
+  /** Avisos clínicos importantes exibidos no painel de resumo rápido */
+  clinicalWarningItems?: Array<{
+    label: string;
+    text: string;
+  }>;
 }

@@ -977,4 +977,15 @@ export const dipironaMedicationRecord: MedicationRecord = {
 
   genericBrandsNote:
     'Dipirona monoidratada 500 mg/mL gotas é amplamente produzida por laboratórios certificados como Medley, EMS, Neo Química, Eurofarma e Teuto, mantendo a mesma concentração e fator gotejador de 20 gotas/mL.',
+
+  clinicalWarningItems: [
+    {
+      label: 'Via Intravenosa:',
+      text: 'Administrar SEMPRE por infusão lenta (2 a 5 minutos) diluída em SF 0,9% para prevenir vasodilatação abrupta e hipotensão transitória.',
+    },
+    {
+      label: 'Felinos:',
+      text: 'Utilizar doses de 10 a 12,5 mg/kg com intervalos q12h a q24h (máx. 3 dias). Evitar gotejamento oral direto sem veículo palatável ou cápsula para evitar ptialismo espumoso severo.',
+    },
+  ],
 };

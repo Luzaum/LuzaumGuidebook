@@ -70,12 +70,13 @@ interface EvidenceBlockProps {
 function EvidenceFindingBlock({
   citation,
   referenceId,
+  refIndex,
   sourceType,
   summaryText,
   summaryHighlights,
   metrics,
   clinicalConclusion,
-}: EvidenceBlockProps) {
+}: EvidenceBlockProps & { refIndex?: number }) {
   return (
     <div
       data-clinical-visual="evidence"
@@ -104,10 +105,19 @@ function EvidenceFindingBlock({
           )}
           <a
             href={`#${referenceId}`}
-            className="inline-flex items-center rounded-md bg-background/80 px-2 py-0.5 text-xs font-bold text-cyan-700 dark:text-cyan-300 hover:underline border border-cyan-600/30"
-            title="Ver referência bibliográfica completa"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = document.getElementById(referenceId);
+              if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                target.classList.add('ring-2', 'ring-primary', 'transition-all');
+                setTimeout(() => target.classList.remove('ring-2', 'ring-primary'), 2000);
+              }
+            }}
+            className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-2 text-xs font-bold text-primary transition-all hover:scale-110 hover:bg-primary/20 active:scale-95"
+            title={citation || `Ver referência ${(refIndex ?? 0) + 1}`}
           >
-            Ref. #{referenceId.replace('ref-', '')}
+            {(refIndex ?? 0) + 1}
           </a>
         </div>
       </div>
@@ -148,6 +158,11 @@ export function MedicationClinicalFoundationsSection({
 }) {
   const isPhenobarbital = medication?.slug === 'fenobarbital';
   const customFoundations = medication?.clinicalFoundationsData;
+  const allRefs = medication?.references ?? [];
+  const getRefIndex = (refId: string): number => {
+    const idx = allRefs.findIndex((r) => r.id === refId);
+    return idx >= 0 ? idx : 0;
+  };
   return (
     <section
       id="fundamentos-clinicos"
@@ -185,6 +200,7 @@ export function MedicationClinicalFoundationsSection({
                   key={study.referenceId || studyIdx}
                   citation={study.citation}
                   referenceId={study.referenceId}
+                  refIndex={getRefIndex(study.referenceId)}
                   sourceType={study.sourceType}
                   summaryText={study.summaryText}
                   summaryHighlights={study.summaryHighlights || []}

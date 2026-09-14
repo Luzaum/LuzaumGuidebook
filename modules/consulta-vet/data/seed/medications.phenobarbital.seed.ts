@@ -995,6 +995,17 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
     genericBrandsNote:
       'O fenobarbital conta com formulação de uso veterinário exclusivo com seringa graduada (Convless® 20 mg/mL - Agener União) e formulações de uso humano sob receita de controle especial (Gardenal® 50/100 mg e gotas 40 mg/mL - Sanofi, Fenocris® injetável - Cristália, além de genéricos como União Química, Teuto, EMS e Medley).',
 
+    clinicalWarningItems: [
+      {
+        label: 'Retirada Abrupta:',
+        text: 'NUNCA suspender o fenobarbital abruptamente em pacientes em uso crônico. A retirada súbita pode precipitar status epilepticus refratário com risco de morte. Toda redução deve ser gradual (≤ 25% da dose a cada 2 semanas) sob monitoramento clínico rigoroso.',
+      },
+      {
+        label: 'Via Intravenosa:',
+        text: 'Administrar SEMPRE por infusão lenta, não excedendo 1 a 2 mg/kg/min. Velocidades superiores provocam depressão respiratória grave, hipotensão e parada cardiorrespiratória. Diluir em SF 0,9% e nunca misturar com soluções ácidas.',
+      },
+    ],
+
     isControlled: true,
     isPublished: true,
     source: 'seed',

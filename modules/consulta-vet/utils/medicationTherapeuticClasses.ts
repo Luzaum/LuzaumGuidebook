@@ -95,8 +95,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-300',
     iconClassName: 'text-cyan-600 dark:text-cyan-400',
-    medicationSlugs: ['lidocaina', 'amantadina'],
-    keywords: ['analgésico', 'anestésico local'],
+    medicationSlugs: ['tramadol', 'lidocaina', 'amantadina'],
+    keywords: ['analgésico', 'anestésico local', 'tramadol', 'opioide'],
   },
   {
     slug: 'neurologicos-anticonvulsivantes',
@@ -179,8 +179,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'endocrinologia',
     selectedClassName: 'border-violet-500 bg-violet-500/[0.07] text-violet-700 dark:text-violet-300',
     iconClassName: 'text-violet-600 dark:text-violet-400',
-    medicationSlugs: ['desoxicorticosterona-pivalato', 'metimazol', 'levotiroxina-sodica'],
-    keywords: ['hormônio', 'hormonal', 'antitireoidiano', 't4 sintético', 'mineralocorticoide'],
+    medicationSlugs: ['desoxicorticosterona-pivalato', 'metimazol', 'levotiroxina-sodica', 'capromorelina'],
+    keywords: ['hormônio', 'hormonal', 'antitireoidiano', 't4 sintético', 'mineralocorticoide', 'capromorelina', 'grelina', 'secretagogo', 'orexigênico', 'estimulante de apetite'],
   },
   {
     slug: 'metabolicos-hipolipemiantes',

@@ -75,6 +75,16 @@ const HIGHLIGHT_PHRASES = [
   'reavaliação em 6 semanas',
   'a cada 6 meses',
   'Dose Nova = Dose Atual × (Nível Alvo ÷ Nível Atual)',
+
+  // Tramadol
+  'Reduzir a dose habitual em 30% a 50%',
+  'cada 12 a 24 horas',
+  'contraindicado em hepatopatia severa descompensada',
+  '1 a 2 mg/kg a cada 12 horas',
+  'não ultrapassar 2 mg/kg q12h em gatos idosos',
+  'desmame gradual ao longo de 2 a 3 semanas',
+  'nunca interromper de forma súbita',
+  '2 mg/kg a cada 8 a 12 horas em cães',
 ];
 
 const ESCAPED_HIGHLIGHTS = HIGHLIGHT_PHRASES.map((h) =>

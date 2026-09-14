@@ -1,5 +1,5 @@
-import React from 'react';
-import { ChevronDown, ExternalLink, ShieldCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { ChevronDown, ExternalLink, ShieldCheck, FlaskConical, Info } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import type { MedicationDetailedIndication } from '../../types/medication';
 import type { EditorialReference } from '../../types/common';
@@ -13,20 +13,20 @@ interface MedicationIndicationsTableProps {
 function SpeciesBadge({ species }: { species: 'dog' | 'cat' | 'both' }) {
   if (species === 'dog') {
     return (
-      <span className="inline-flex items-center rounded-full border border-sky-500/25 bg-sky-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
+      <span className="inline-flex items-center rounded-full border border-sky-500/25 bg-sky-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-sky-700 dark:text-sky-300">
         Canino
       </span>
     );
   }
   if (species === 'cat') {
     return (
-      <span className="inline-flex items-center rounded-full border border-amber-500/25 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
+      <span className="inline-flex items-center rounded-full border border-amber-500/25 bg-amber-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-amber-700 dark:text-amber-300">
         Felino
       </span>
     );
   }
   return (
-    <span className="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
+    <span className="inline-flex items-center rounded-full border border-emerald-500/25 bg-emerald-500/10 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-300">
       Cães & Gatos
     </span>
   );
@@ -69,6 +69,54 @@ function NumericReferenceButton({
   );
 }
 
+/** Disclosure toggle genérico para textos longos */
+function ExpandableBlock({
+  label,
+  icon: Icon,
+  children,
+  variant = 'default',
+}: {
+  label: string;
+  icon?: React.ElementType;
+  children: React.ReactNode;
+  variant?: 'default' | 'rationale';
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div className="mt-2">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        className={cn(
+          'flex w-full items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-left text-xs font-semibold transition-all duration-200',
+          variant === 'rationale'
+            ? 'border border-primary/20 bg-primary/[0.04] text-primary hover:bg-primary/[0.08]'
+            : 'border border-border/60 bg-muted/30 text-foreground/80 hover:bg-muted/50',
+        )}
+      >
+        {Icon && <Icon className="h-3.5 w-3.5 shrink-0" />}
+        <span className="flex-1">{label}</span>
+        <ChevronDown
+          className={cn('h-3.5 w-3.5 shrink-0 transition-transform duration-200', open && 'rotate-180')}
+        />
+      </button>
+      {open && (
+        <div
+          className={cn(
+            'mt-1.5 rounded-lg px-3 py-2.5 text-xs leading-relaxed animate-in fade-in-0 slide-in-from-top-1 duration-200',
+            variant === 'rationale'
+              ? 'border border-primary/15 bg-primary/[0.03] text-foreground/85'
+              : 'border border-border/40 bg-muted/20 text-foreground/80',
+          )}
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function MedicationIndicationsTable({
   indications,
   references = [],
@@ -87,64 +135,62 @@ export function MedicationIndicationsTable({
 
   return (
     <div className="overflow-hidden rounded-2xl border border-border/80 bg-card/60 backdrop-blur-xs shadow-xs">
-      {/* Visualização em Tabela Completa (Desktop & Notebook) */}
-      <div className="hidden xl:block overflow-x-auto">
-        <table className="w-full table-fixed border-collapse text-left" aria-label="Indicações de uso detalhadas com mecanismo de ação e posologia">
-          <thead>
-            <tr className="border-b border-border/80 bg-muted/40 text-[11px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
-              <th scope="col" className="w-[23%] px-5 py-4">Indicação Clínica & Quadro</th>
-              <th scope="col" className="w-[33%] px-5 py-4">Mecanismo de Ação na Indicação</th>
-              <th scope="col" className="w-[18%] px-5 py-4">Posologia & Como Fazer</th>
-              <th scope="col" className="w-[14%] px-5 py-4">Duração & Conduta</th>
-              <th scope="col" className="w-[12%] px-5 py-4">Fontes & Nível</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-border/60 text-sm">
-            {indications.map((item, idx) => (
-              <tr key={item.id || idx} className="align-top transition-colors hover:bg-muted/20">
-                {/* Indicação & Espécie */}
-                <td className="px-5 py-4.5">
-                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+      {/* ──────── Visualização Desktop/Notebook (Cards por Indicação) ──────── */}
+      <div className="hidden lg:block">
+        <div className="divide-y divide-border/60">
+          {indications.map((item, idx) => (
+            <div
+              key={item.id || idx}
+              className="p-5 transition-colors hover:bg-muted/10"
+            >
+              {/* Cabeçalho: Badge + Título + Posologia resumida */}
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                {/* Lado esquerdo: Espécie + Indicação */}
+                <div className="min-w-0 flex-1 max-w-[55%]">
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
                     <SpeciesBadge species={item.species} />
                   </div>
-                  <h4 className="font-bold text-foreground text-sm leading-snug">{item.indication}</h4>
-                  {item.clinicalContext ? (
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.clinicalContext}</p>
-                  ) : null}
-                </td>
+                  <h4 className="font-bold text-foreground text-[15px] leading-snug">
+                    {item.indication}
+                  </h4>
+                </div>
 
-                {/* Mecanismo de ação detalhado */}
-                <td className="px-5 py-4.5 text-[13px] leading-relaxed text-foreground/90">
-                  <p className="whitespace-pre-line">{item.mechanismOfAction}</p>
-                  {item.clinicalRationale ? (
-                    <div className="mt-2.5 rounded-lg border border-primary/20 bg-primary/[0.04] p-2.5 text-xs leading-relaxed text-foreground/85">
-                      <span className="font-bold text-primary">Por que e como fazer: </span>
-                      {item.clinicalRationale}
-                    </div>
-                  ) : null}
-                </td>
-
-                {/* Posologia & Via */}
-                <td className="px-5 py-4.5">
-                  <div className="font-bold text-foreground text-xs leading-tight">
+                {/* Lado direito: Posologia compacta */}
+                <div className="shrink-0 text-right space-y-1 max-w-[42%]">
+                  <div className="font-bold text-foreground text-sm leading-tight">
                     {item.dose}
                   </div>
-                  <div className="mt-1 text-xs text-primary font-medium">{item.route}</div>
-                  <div className="mt-0.5 text-xs text-muted-foreground">{item.frequency}</div>
-                </td>
+                  <div className="text-xs font-medium text-primary">{item.route}</div>
+                  <div className="text-xs text-muted-foreground">{item.frequency}</div>
+                </div>
+              </div>
 
-                {/* Duração & Monitoramento */}
-                <td className="px-5 py-4.5 text-xs leading-relaxed">
-                  <div className="font-semibold text-foreground">{item.duration}</div>
-                  {item.monitoring ? (
-                    <div className="mt-2 rounded-md bg-amber-500/10 px-2 py-1.5 text-[11px] text-amber-900 dark:text-amber-200">
-                      <span className="font-bold">Monitorar:</span> {item.monitoring}
-                    </div>
-                  ) : null}
-                </td>
+              {/* Grid inferior: Duração + Monitoramento + Referências */}
+              <div className="mt-3 flex flex-wrap items-start gap-3">
+                {/* Duração */}
+                <div className="rounded-lg bg-muted/30 border border-border/50 px-3 py-2 text-xs">
+                  <span className="font-bold text-[10px] uppercase tracking-wider text-muted-foreground block">
+                    Duração
+                  </span>
+                  <span className="mt-0.5 block font-semibold text-foreground text-xs leading-snug">
+                    {item.duration}
+                  </span>
+                </div>
 
-                {/* Fontes com botões numéricos ancorados */}
-                <td className="px-5 py-4.5">
+                {/* Monitoramento (se houver) */}
+                {item.monitoring && (
+                  <div className="rounded-lg bg-amber-500/10 border border-amber-500/20 px-3 py-2 text-xs max-w-xs">
+                    <span className="font-bold text-[10px] uppercase tracking-wider text-amber-700 dark:text-amber-300 block">
+                      Monitorar
+                    </span>
+                    <span className="mt-0.5 block text-amber-900 dark:text-amber-200 leading-snug">
+                      {item.monitoring}
+                    </span>
+                  </div>
+                )}
+
+                {/* Referências */}
+                <div className="flex items-center gap-2 ml-auto">
                   <div className="flex flex-wrap items-center gap-1.5">
                     {item.referenceIds?.map((refId) => (
                       <NumericReferenceButton
@@ -156,20 +202,44 @@ export function MedicationIndicationsTable({
                       />
                     ))}
                   </div>
-                  {item.evidenceLevel ? (
-                    <p className="mt-2 text-[11px] leading-tight text-muted-foreground">
+                  {item.evidenceLevel && (
+                    <span className="text-[10px] text-muted-foreground italic max-w-[140px] leading-tight">
                       {item.evidenceLevel}
-                    </p>
-                  ) : null}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Expandibles: Contexto Clínico + Mecanismo + Racional */}
+              <div className="mt-2 grid grid-cols-1 xl:grid-cols-3 gap-2">
+                {/* Contexto Clínico (expandível) */}
+                {item.clinicalContext && (
+                  <ExpandableBlock label="Contexto Clínico Detalhado" icon={Info}>
+                    <p className="whitespace-pre-line">{item.clinicalContext}</p>
+                  </ExpandableBlock>
+                )}
+
+                {/* Mecanismo de Ação (expandível) */}
+                {item.mechanismOfAction && (
+                  <ExpandableBlock label="Mecanismo de Ação" icon={FlaskConical}>
+                    <p className="whitespace-pre-line">{item.mechanismOfAction}</p>
+                  </ExpandableBlock>
+                )}
+
+                {/* Por que e como fazer (expandível) */}
+                {item.clinicalRationale && (
+                  <ExpandableBlock label="Por que e como fazer" icon={ShieldCheck} variant="rationale">
+                    <p className="whitespace-pre-line">{item.clinicalRationale}</p>
+                  </ExpandableBlock>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
-      {/* Visualização Responsiva em Cartões (Mobile & Tablet) */}
-      <div className="divide-y divide-border/60 xl:hidden">
+      {/* ──────── Visualização Responsiva em Cartões (Mobile & Tablet) ──────── */}
+      <div className="divide-y divide-border/60 lg:hidden">
         {indications.map((item, idx) => (
           <details key={item.id || idx} className="group p-4 transition-colors hover:bg-muted/10">
             <summary className="flex cursor-pointer list-none items-start justify-between gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary">
@@ -180,9 +250,6 @@ export function MedicationIndicationsTable({
                 </div>
                 <h4 className="text-sm font-bold text-foreground">{item.indication}</h4>
                 <p className="mt-1 text-xs font-semibold text-foreground/90">{item.dose} • {item.frequency}</p>
-                {item.clinicalContext ? (
-                  <p className="mt-1 text-xs text-muted-foreground line-clamp-2">{item.clinicalContext}</p>
-                ) : null}
               </div>
               <div className="flex shrink-0 items-center gap-1.5 text-xs font-semibold text-muted-foreground group-open:text-primary">
                 <span>Detalhes</span>
@@ -191,17 +258,21 @@ export function MedicationIndicationsTable({
             </summary>
 
             <div className="mt-4 space-y-3.5 border-t border-border/50 pt-3.5 text-xs">
-              <div>
-                <h5 className="font-bold uppercase tracking-wider text-muted-foreground text-[10px]">Mecanismo de ação na indicação</h5>
-                <p className="mt-1 leading-relaxed text-foreground/90">{item.mechanismOfAction}</p>
-              </div>
+              {item.clinicalContext && (
+                <ExpandableBlock label="Contexto Clínico" icon={Info}>
+                  <p className="leading-relaxed">{item.clinicalContext}</p>
+                </ExpandableBlock>
+              )}
 
-              {item.clinicalRationale ? (
-                <div className="rounded-lg border border-primary/20 bg-primary/[0.04] p-3 leading-relaxed text-foreground/85">
-                  <span className="font-bold text-primary">Por que e como fazer: </span>
-                  {item.clinicalRationale}
-                </div>
-              ) : null}
+              <ExpandableBlock label="Mecanismo de Ação" icon={FlaskConical}>
+                <p className="leading-relaxed">{item.mechanismOfAction}</p>
+              </ExpandableBlock>
+
+              {item.clinicalRationale && (
+                <ExpandableBlock label="Por que e como fazer" icon={ShieldCheck} variant="rationale">
+                  <p className="leading-relaxed">{item.clinicalRationale}</p>
+                </ExpandableBlock>
+              )}
 
               <div className="grid grid-cols-2 gap-3 pt-1">
                 <div className="rounded-lg bg-muted/40 p-2.5">

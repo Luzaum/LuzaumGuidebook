@@ -60,8 +60,12 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
 
 /** Mesma regra de sincronização com `data/publicCatalogCardStubs.ts`. */
 export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
+  'amoxicilina-clavulanato',
+  'ampicilina-sulbactam',
+  'capromorelina',
   'dipirona',
   'fenobarbital',
+  'tramadol',
 ] as const;
 
 export function isPublicDiseaseSlug(slug: string): boolean {

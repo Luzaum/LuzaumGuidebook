@@ -340,35 +340,30 @@ export function MedicationQuickSummaryPanel({
           </div>
         </div>
 
-        {/* Banner de Segurança: Aviso Clínico Importante - formatado em linhas separadas */}
-        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-amber-100 space-y-3">
-          <div className="flex items-center gap-2 text-amber-300">
-            <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
-            <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">
-              Aviso Clínico Importante
-            </span>
-          </div>
-
-          <div className="space-y-2.5 text-xs sm:text-sm pl-1">
-            <div className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
-                1
+        {/* Banner de Segurança: Aviso Clínico Importante - dinâmico por medicamento */}
+        {medication.clinicalWarningItems && medication.clinicalWarningItems.length > 0 && (
+          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-amber-100 space-y-3">
+            <div className="flex items-center gap-2 text-amber-300">
+              <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
+              <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">
+                Aviso Clínico Importante
               </span>
-              <p className="text-slate-200 leading-relaxed">
-                <strong className="text-white font-semibold">Via Intravenosa:</strong> Administrar SEMPRE por infusão lenta (2 a 5 minutos) diluída em SF 0,9% para prevenir vasodilatação abrupta e hipotensão transitória.
-              </p>
             </div>
 
-            <div className="flex items-start gap-2.5">
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
-                2
-              </span>
-              <p className="text-slate-200 leading-relaxed">
-                <strong className="text-white font-semibold">Felinos:</strong> Utilizar doses de 10 a 12,5 mg/kg com intervalos q12h a q24h (máx. 3 dias). Evitar gotejamento oral direto sem veículo palatável ou cápsula para evitar ptialismo espumoso severo.
-              </p>
+            <div className="space-y-2.5 text-xs sm:text-sm pl-1">
+              {medication.clinicalWarningItems.map((item, idx) => (
+                <div key={idx} className="flex items-start gap-2.5">
+                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-amber-500/20 text-[11px] font-bold text-amber-300">
+                    {idx + 1}
+                  </span>
+                  <p className="text-slate-200 leading-relaxed">
+                    <strong className="text-white font-semibold">{item.label}</strong> {item.text}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

@@ -40,10 +40,19 @@ export function MedicationClinicalStudiesSection({
                 {study.referenceId && (
                   <a
                     href={`#${study.referenceId}`}
-                    className="inline-flex items-center gap-1 text-[11px] font-bold text-primary hover:underline"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const target = document.getElementById(study.referenceId!);
+                      if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        target.classList.add('ring-2', 'ring-primary', 'transition-all');
+                        setTimeout(() => target.classList.remove('ring-2', 'ring-primary'), 2000);
+                      }
+                    }}
+                    className="inline-flex h-6 min-w-6 items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-1.5 text-xs font-bold text-primary transition-all hover:scale-110 hover:bg-primary/20 active:scale-95"
                     title="Ver referência bibliográfica completa"
                   >
-                    <span>Ref. #{study.referenceId.replace('ref-', '')}</span>
+                    {idx + 1}
                   </a>
                 )}
               </div>
