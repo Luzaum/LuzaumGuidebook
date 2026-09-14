@@ -1,5 +1,8 @@
 export const commercialProductImageAssets: Record<string, string> = {
   "bexacat-elanco": "https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/0bc69770-4c56-46a0-9c94-553920f8d292/Bexacat_Group_Front_MF.png?w=1600&q=75&auto=format",
+  "citostal-lomustina-bms": "https://uploads.consultaremedios.com.br/product_images/full/193627c111a734df7b4cf2f16a07527ed6e65e78.png",
+  "lomustina-manipulada-veterinaria": "https://uploads.consultaremedios.com.br/product_images/full/193627c111a734df7b4cf2f16a07527ed6e65e78.png",
+  "gleostine-lomustina-importado": "https://uploads.consultaremedios.com.br/product_images/full/193627c111a734df7b4cf2f16a07527ed6e65e78.png",
   "epiotic-sis-virbac": "/assets/consulta-vet/commercial-products/epiotic-sis-virbac.png",
   "clean-up-agener-uniao": "/assets/consulta-vet/commercial-products/clean-up-agener-uniao.jpg",
   "septclean-oto-agener-uniao": "/assets/consulta-vet/commercial-products/septclean-oto-agener-uniao.jpg",

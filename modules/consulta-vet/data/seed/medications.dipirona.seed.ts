@@ -27,7 +27,7 @@ export const dipironaMedicationRecord: MedicationRecord = {
   officialSiteUrl: 'https://www.novalgina.com.br/',
   leafletUrl: 'https://www.novalgina.com.br/bulas/solucao-oral-gotas-500mg.pdf',
   imageUrl: 'https://www.novalgina.com.br/dam/jcr:cdf4c305-d4c4-4fde-adaa-b4ba85ab8245/Gotas%20Kids.webp',
-  pharmacologicClass: 'Analgésico, antipirético e antiespasmódico não-opioide (derivado pirazolônico; AINE atípico)',
+  pharmacologicClass: 'Anti-inflamatório não esteroidal (AINE)',
   species: ['dog', 'cat'],
   category: 'terapeutica-geral',
   tags: [
@@ -532,8 +532,10 @@ export const dipironaMedicationRecord: MedicationRecord = {
       },
     ],
     pharmacologicalClassification: {
-      chemicalClass: 'Derivado pirazolônico (noramidopirina metanossulfonato sódico / sulfonato de metilaminoantipirina).',
-      therapeuticClass: 'Analgésico periférico e central, antipirético de ação rápida e antiespasmódico não-opioide (AINE atípico).',
+      chemicalClass: 'Derivado pirazolônico (noramidopirina metanossulfonato sódico / sulfonato de metilaminoantipirina)',
+      chemicalClassDescription: 'Estrutura heterocíclica pirazolona hidrossolúvel com rápida hidrólise pré-sistêmica no metabólito ativo 4-MAA.',
+      therapeuticClass: 'Analgésico periférico e central, antipirético de ação rápida e antiespasmódico não-opioide (AINE atípico)',
+      therapeuticClassDescription: 'AINE atípico não-narcótico de ação mista (periférica, espinhal e supraespinhal) com perfil poupador gastrointestinal.',
       atcCode: 'QN02BB02',
       receptorTargets: ['Ciclo-oxigenase central (COX-3 / COX-1b)', 'Receptores Canabinoides CB1 centrais', 'Canais de cálcio dependentes de voltagem em músculo liso'],
       detailedTargets: [
@@ -894,4 +896,85 @@ export const dipironaMedicationRecord: MedicationRecord = {
       referenceId: 'ref-ferreira-2019',
     },
   ],
+
+  pillars: [
+    {
+      title: 'Pró-Fármaco de Conversão Pré-Sistêmica',
+      icon: 'ShieldCheck',
+      desc: 'Sofre hidrólise enzimática imediata no trato digestivo e circulação gerando o 4-MAA (4-metilaminoantipirina), metabólito ativo responsável pela quase totalidade do efeito analgésico e antipirético.',
+    },
+    {
+      title: 'Ação Analgésica Multimodal & Central',
+      icon: 'HeartPulse',
+      desc: 'Inibe seletivamente variantes centrais da ciclo-oxigenase (COX-3/COX-1b) e ativa vias endocanabinoides (receptores CB1) no corno dorsal e substância cinzenta periaquedutal.',
+    },
+    {
+      title: 'Antipirético de Referência & Termorregulação',
+      icon: 'Thermometer',
+      desc: 'Bloqueia a síntese de PGE2 no órgão vascular da lâmina terminal hipotalâmica (OVLT), redefinindo rapidamente o limiar termostático para níveis de normotermia segura.',
+    },
+    {
+      title: 'Espasmólise em Músculo Liso Visceral',
+      icon: 'Stethoscope',
+      desc: 'Inibe canais de cálcio dependentes de voltagem nas células musculares lisas, relaxando espasmos hipertônicos em gastroenterite, cólica biliar, pancreatite e afecções uretrais.',
+    },
+  ],
+
+  quickSummaryHighlights: [
+    'pró-fármaco',
+    '4-metilaminoantipirina',
+    '4-MAA',
+    'COX-3',
+    'endocanabinoide',
+    'CB1',
+    'antiespasmódica',
+    'antipirético',
+    'infusão lenta',
+    'gatos',
+    '10 a 12,5 mg/kg',
+    '25 mg/kg',
+    '2 a 5 minutos',
+  ],
+
+  attentionSubtitle:
+    'A dipirona possui excelente perfil terapêutico e gastrointestinal em carnívoros, mas seu uso requer vigilância rigorosa quanto à velocidade de infusão intravenosa, volemia prévia e limites posológicos e temporais em felinos e hepatopatas.',
+
+  samplePrescriptionText:
+    'USO ORAL:\n' +
+    '1. Novalgina® Gotas 500 mg/mL ------------------------- 1 frasco\n' +
+    '   Administrar 1 gota por kg de peso corporal (25 mg/kg) por via oral a cada 8 horas, durante 3 dias seguidos para controle de dor e febre.\n\n' +
+    'OU EM COMPRIMIDOS:\n' +
+    '1. Novalgina® Comprimidos 500 mg --------------------- 1 caixa\n' +
+    '   Administrar 1/2 comprimido (para cão de 10 kg) por via oral a cada 8 horas, durante 3 dias.',
+
+  practicalWeightTable: {
+    standardDoseText:
+      'Relação de gotejamento padrão (20 gotas = 1 mL = 500 mg) e tabela de posologia prática por peso corporal (25 mg/kg).',
+    headers: [
+      'Peso do Animal',
+      'Dose Total (25 mg/kg)',
+      'Gotas 500 mg/mL (1 gota/kg)',
+      'Comprimidos 500 mg',
+      'Injetável 500 mg/mL (0,05 mL/kg)',
+    ],
+    rows: [
+      { weight: '2 kg', totalDose: '50 mg', col1: '2 gotas (0,10 mL)', col2: 'Inadequado (usar gotas)', col3: '0,10 mL' },
+      { weight: '5 kg', totalDose: '125 mg', col1: '5 gotas (0,25 mL)', col2: '1/4 comprimido', col3: '0,25 mL' },
+      { weight: '10 kg', totalDose: '250 mg', col1: '10 gotas (0,50 mL)', col2: '1/2 comprimido', col3: '0,50 mL' },
+      { weight: '15 kg', totalDose: '375 mg', col1: '15 gotas (0,75 mL)', col2: '3/4 comprimido', col3: '0,75 mL' },
+      { weight: '20 kg', totalDose: '500 mg', col1: '20 gotas (1,00 mL)', col2: '1 comprimido inteiro', col3: '1,00 mL' },
+      { weight: '30 kg', totalDose: '750 mg', col1: '30 gotas (1,50 mL)', col2: '1 + 1/2 comprimido', col3: '1,50 mL' },
+      { weight: '40 kg', totalDose: '1.000 mg', col1: '40 gotas (2,00 mL)', col2: '2 comprimidos (ou 1 comp de 1g)', col3: '2,00 mL' },
+    ],
+    dropletCalibrator: {
+      title: 'Guia de Conversão Rápida (Gotas)',
+      concentration: '1 mL = 20 gotas',
+      dropletRatio: '1 gota = 25 mg',
+      practicalRule: '1 gota para cada 1 kg',
+      note: 'Gotejador calibrado oficial para soluções líquidas 500 mg/mL (500 mg ÷ 20 gotas = 25 mg/gota). Para dose de 25 mg/kg, prescrever 1 gota por kg de peso corporal.',
+    },
+  },
+
+  genericBrandsNote:
+    'Dipirona monoidratada 500 mg/mL gotas é amplamente produzida por laboratórios certificados como Medley, EMS, Neo Química, Eurofarma e Teuto, mantendo a mesma concentração e fator gotejador de 20 gotas/mL.',
 };

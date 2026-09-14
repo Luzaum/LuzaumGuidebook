@@ -1,8 +1,8 @@
-﻿import React from 'react'
+import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { modules, type Module } from '../modules/registry'
 import { ModuleCard } from '../components/ModuleCard'
-import { ArrowLeft, Layers } from 'lucide-react'
+import { ArrowLeft } from 'lucide-react'
 import { AuroraBackground } from '../components/ui/aurora-background'
 
 export function Hub() {
@@ -22,37 +22,33 @@ export function Hub() {
 
     return (
         <AuroraBackground className="w-full relative min-h-screen !h-auto" variant="solid">
-            <section className="py-10 sm:py-14 lg:py-16 relative">
+            <section className="pt-3 sm:pt-5 pb-12 relative">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                     {/* Header da seção */}
-                    <div className="flex items-center justify-between mb-8 sm:mb-10">
+                    <div className="flex items-center justify-between mb-2 sm:mb-3">
                         <button
                             onClick={() => navigate('/')}
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground active:text-foreground transition-colors duration-200 cursor-pointer group"
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm text-muted-foreground hover:text-foreground active:text-foreground transition-colors duration-200 cursor-pointer group font-medium"
                         >
-                            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform duration-200" />
+                            <ArrowLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:-translate-x-1 transition-transform duration-200" />
                             Voltar ao início
                         </button>
                     </div>
 
-                    <div className="text-center mb-10 sm:mb-12 lg:mb-16 max-w-3xl mx-auto">
-                        <div className="inline-flex items-center gap-2 bg-primary/10 text-primary rounded-full px-4 py-2 text-sm font-semibold mb-4 sm:mb-6">
-                            <Layers className="w-4 h-4" />
-                            Todas as Ferramentas
-                        </div>
-                        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 sm:mb-6">
+                    <div className="text-center mb-5 sm:mb-7 max-w-2xl mx-auto">
+                        <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-1.5 sm:mb-2">
                             Ecossistema Clínico Completo
                         </h1>
-                        <p className="text-base sm:text-lg text-muted-foreground">
+                        <p className="text-xs sm:text-sm md:text-base text-muted-foreground">
                             Explore nossa suíte de ferramentas especializadas. De cálculos de emergência a guias
                             terapêuticos complexos, tudo em um só lugar.
                         </p>
                     </div>
 
                     {/* TODOS OS MÓDULOS ATIVOS */}
-                    <div className="mb-20">
-                        <div className="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                    <div className="mb-14">
+                        <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {activeModules.map((module) => {
                                 return (
                                     <div

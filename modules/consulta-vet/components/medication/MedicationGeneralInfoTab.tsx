@@ -323,7 +323,9 @@ export function MedicationGeneralInfoTab({
                 : 'NÃO exige retenção de receita'}
             </p>
             <p className="text-xs text-muted-foreground leading-relaxed">
-              Sem controle especial sob Portaria SVS/MS nº 344/1998; dispensa notificação ou talonário de controle.
+              {generalInfo?.prescriptionType?.retentionRequired
+                ? 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1) com retenção obrigatória da 1ª via pelo estabelecimento dispensador e validade de 30 dias.'
+                : 'Sem controle especial sob Portaria SVS/MS nº 344/1998; dispensa notificação ou talonário de controle.'}
             </p>
           </div>
         </div>

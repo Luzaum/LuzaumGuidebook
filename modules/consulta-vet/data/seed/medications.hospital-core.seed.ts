@@ -306,7 +306,7 @@ export const hospitalCoreMedicationsSeed: MedicationRecord[] = [
       'Sindolor® — dipirona + tramadol (Agener; não confundir com dipirona isolada)',
       'Apresentações manipuladas/compostas conforme disponibilidade local',
     ],
-    pharmacologicClass: 'Analgésico, antipirético e espasmolítico (pirazolona; pró-fármaco)',
+    pharmacologicClass: 'Anti-inflamatório não esteroidal (AINE)',
     species: ['dog', 'cat'],
     category: 'anestesia-dor',
     tags: ['Analgesia', 'Multimodal', 'Antipirese', 'Espasmolítico', 'Perioperatório'],

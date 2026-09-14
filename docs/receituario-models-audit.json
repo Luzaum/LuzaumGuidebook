@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-09-13T03:13:12.176Z",
+    "generatedAt": "2026-09-14T00:56:44.472Z",
     "sources": [
       "Código: modules/consulta-vet/data/receituarioSeed.ts",
       "Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json"

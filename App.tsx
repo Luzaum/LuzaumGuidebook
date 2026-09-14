@@ -58,6 +58,18 @@ const ConsultaVetReceituarioPage = lazy(() =>
 const ConsultaVetQuickReferencesPage = lazy(() =>
   import('./modules/consulta-vet/pages/QuickReferencesPage').then((m) => ({ default: m.QuickReferencesPage }))
 )
+const ConsultaVetReferenceAppsLayout = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/ReferenceAppsLayout').then((m) => ({ default: m.ReferenceAppsLayout }))
+)
+const ConsultaVetOncologyReferencePage = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/OncologyReferencePage').then((m) => ({ default: m.OncologyReferencePage }))
+)
+const ConsultaVetVhsReferencePage = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/VhsReferencePage').then((m) => ({ default: m.VhsReferencePage }))
+)
+const ConsultaVetUltrasoundReferencePage = lazy(() =>
+  import('./modules/consulta-vet/pages/quickReferences/UltrasoundReferencePage').then((m) => ({ default: m.UltrasoundReferencePage }))
+)
 
 const Login = lazy(() => import('./src/routes/Login'))
 const Signup = lazy(() => import('./src/routes/Signup'))
@@ -153,7 +165,12 @@ const appRoutes = (
       <Route path="guias-rapidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
       <Route path="guias-rápidos" element={<ConsultaVetClinicalQuickGuidesPage />} />
       <Route path="guias-rápidos/:slug" element={<ConsultaVetClinicalQuickGuideDetailPage />} />
-      <Route path="referencias-rapidas" element={<ConsultaVetQuickReferencesPage />} />
+      <Route path="referencias-rapidas" element={<ConsultaVetReferenceAppsLayout />}>
+        <Route index element={<ConsultaVetQuickReferencesPage />} />
+        <Route path="oncologia" element={<ConsultaVetOncologyReferencePage />} />
+        <Route path="vhs" element={<ConsultaVetVhsReferencePage />} />
+        <Route path="ultrassom" element={<ConsultaVetUltrasoundReferencePage />} />
+      </Route>
       <Route path="referências-rápidas" element={<Navigate to="/consulta-vet/referencias-rapidas" replace />} />
     </Route>
     <Route path="/rifa" element={<ProtectedRoute><ModuleIframe /></ProtectedRoute>} />

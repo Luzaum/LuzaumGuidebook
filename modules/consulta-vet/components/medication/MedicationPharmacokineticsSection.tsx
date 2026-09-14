@@ -28,10 +28,30 @@ function applyHighlightTerms(segments: Seg[], term: string): Seg[] {
   return out;
 }
 
-function PKHighlightedText({ text, highlights }: { text: string; highlights: string[] }) {
+function applyMarkdownBold(segments: Seg[]): Seg[] {
+  const out: Seg[] = [];
+  const boldRegex = /\*\*([^*]+)\*\*/g;
+  for (const seg of segments) {
+    if (seg.mark) {
+      out.push(seg);
+      continue;
+    }
+    let last = 0;
+    let m: RegExpExecArray | null;
+    while ((m = boldRegex.exec(seg.value)) !== null) {
+      if (m.index > last) out.push({ mark: false, value: seg.value.slice(last, m.index) });
+      out.push({ mark: true, value: m[1] });
+      last = m.index + m[0].length;
+    }
+    if (last < seg.value.length) out.push({ mark: false, value: seg.value.slice(last) });
+  }
+  return out;
+}
+
+function PKHighlightedText({ text, highlights = [] }: { text: string; highlights?: string[] }) {
   const segments = useMemo(() => {
-    let segs: Seg[] = [{ mark: false, value: text }];
-    const sorted = [...highlights].sort((a, b) => b.length - a.length);
+    let segs: Seg[] = applyMarkdownBold([{ mark: false, value: text }]);
+    const sorted = [...highlights].filter(Boolean).sort((a, b) => b.length - a.length);
     for (const term of sorted) {
       segs = applyHighlightTerms(segs, term);
     }
@@ -152,7 +172,7 @@ export function MedicationPharmacokineticsSection({
                 Penetração Liquórica / SNC
               </span>
               <span className="text-xs font-bold text-emerald-950 dark:text-emerald-100 line-clamp-1">
-                Alta difusão na barreira hematoencefálica
+                {data.cnsPenetration}
               </span>
             </div>
           </div>

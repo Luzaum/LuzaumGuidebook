@@ -236,9 +236,9 @@ export function HomePage() {
     },
     {
       to: '/consulta-vet/referencias-rapidas',
-      label: 'Referências rápidas',
+      label: 'Referências clínicas',
       icon: Layers,
-      body: 'Calculadoras, BSA e tabelas clínicas',
+      body: 'Mini-apps, cálculos e tabelas clínicas',
       accent: 'cyan' as const,
     },
     {

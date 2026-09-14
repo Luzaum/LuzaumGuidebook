@@ -33,7 +33,7 @@ export type ClinicalQuickGuideBlock =
       nodes: Array<{ id: string; label: string; variant?: 'start' | 'decision' | 'action' | 'end' }>;
       edges: Array<{ from: string; to: string; label?: string }>;
     }
-  | { type: 'figure'; src: string; alt: string; caption?: string }
+  | { type: 'figure'; src: string; alt: string; caption?: string; width?: number; height?: number }
   | { type: 'videoPlaceholder'; title: string; body: string }
   /** Incorporação YouTube no fluxo do texto (um ou vários por guia) */
   | { type: 'youtubeEmbed'; videoId: string; title: string; caption?: string };

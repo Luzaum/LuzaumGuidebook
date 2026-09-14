@@ -155,7 +155,7 @@ export function ClinicalQuickGuideDetailPage() {
         </ul>
       </ConsultaVetSurface>
 
-      {guide.showTableOfContents ? (
+      {guide.showTableOfContents && !guide.readingTabs ? (
         <details className="rounded-2xl border border-border bg-card p-5">
           <summary className="cursor-pointer text-base font-bold text-foreground">Neste guia — navegar pelos capítulos</summary>
           <nav aria-label="Capítulos do procedimento" className="mt-4 grid gap-2 sm:grid-cols-2">
@@ -169,7 +169,14 @@ export function ClinicalQuickGuideDetailPage() {
         <nav aria-label="Tópicos do procedimento" className="flex flex-wrap gap-2 rounded-2xl border border-border bg-card p-3">
           {guide.readingTabs.map((tab, index) => <button type="button" key={tab.label}
             aria-pressed={activeTab === index} aria-controls="clinical-guide-reading"
-            onClick={() => setActiveTab(index)}
+            onClick={() => {
+              setActiveTab(index);
+              const el = document.getElementById('clinical-guide-reading');
+              if (el) {
+                const y = el.getBoundingClientRect().top + window.scrollY - 80;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+              }
+            }}
             className={`rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeTab === index ? 'bg-primary text-primary-foreground' : 'bg-muted/40 text-foreground hover:bg-muted'}`}>
             {tab.label}
           </button>)}
@@ -177,7 +184,7 @@ export function ClinicalQuickGuideDetailPage() {
       ) : null}
       <section id="clinical-guide-reading" aria-label={guide.readingTabs?.[activeTab]?.label ?? 'Conteúdo completo'}>
       <ClinicalQuickGuideBody
-        key={guide.slug}
+        key={`${guide.slug}-${activeTab}`}
         richText={guide.richText}
         blocks={guide.readingTabs ? sectionsForBody.slice(guide.readingTabs[activeTab]?.startIndex ?? 0, guide.readingTabs[activeTab + 1]?.startIndex) : sectionsForBody}
         youtubeVideoId={guide.youtubeVideoId}

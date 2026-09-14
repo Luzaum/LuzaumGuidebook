@@ -40,11 +40,18 @@ export function MedicationPharmacologicalClassificationSection({
             Classe Química
           </span>
           <p className="text-sm sm:text-base font-bold text-foreground leading-snug">
-            {classification.chemicalClass || pharmacologicClass || 'Derivado pirazolônico'}
+            {classification.chemicalClass || pharmacologicClass || 'Composto Farmacológico'}
           </p>
-          <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-            Estrutura heterocíclica pirazolona hidrossolúvel com rápida hidrólise pré-sistêmica no metabólito ativo 4-MAA.
-          </p>
+          {(classification.chemicalClassDescription || classification.chemicalClass) && (
+            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+              {classification.chemicalClassDescription ||
+                (classification.chemicalClass?.toLowerCase().includes('barbit')
+                  ? 'Composto heterocíclico pirimidínico (ácido barbitúrico lipofílico) com alta estabilidade metabólica e capacidade de transpor a barreira hematoencefálica.'
+                  : classification.chemicalClass?.toLowerCase().includes('pirazol')
+                  ? 'Estrutura heterocíclica pirazolona hidrossolúvel com rápida hidrólise pré-sistêmica no metabólito ativo 4-MAA.'
+                  : 'Classificação estrutural e caracterização molecular aplicada à medicina veterinária.')}
+            </p>
+          )}
         </div>
 
         {/* Ação Terapêutica Principal */}
@@ -53,11 +60,18 @@ export function MedicationPharmacologicalClassificationSection({
             Ação Terapêutica Principal
           </span>
           <p className="text-sm sm:text-base font-bold text-foreground leading-snug">
-            {classification.therapeuticClass || 'Analgésico, antipirético e antiespasmódico'}
+            {classification.therapeuticClass || 'Ação Terapêutica Específica'}
           </p>
-          <p className="text-xs text-muted-foreground leading-relaxed pt-1">
-            AINE atípico não-narcótico de ação mista (periférica, espinhal e supraespinhal) com perfil poupador gastrointestinal.
-          </p>
+          {(classification.therapeuticClassDescription || classification.therapeuticClass) && (
+            <p className="text-xs text-muted-foreground leading-relaxed pt-1">
+              {classification.therapeuticClassDescription ||
+                (classification.therapeuticClass?.toLowerCase().includes('anticonvuls')
+                  ? 'Agente antiepiléptico modulador alostérico com supressão de focos paroxísticos e elevação do limiar convulsivo cortical.'
+                  : classification.therapeuticClass?.toLowerCase().includes('analgés')
+                  ? 'AINE atípico não-narcótico de ação mista (periférica, espinhal e supraespinhal) com perfil poupador gastrointestinal.'
+                  : 'Ação farmacodinâmica direcionada a receptores e vias moleculares fisiológicas.')}
+            </p>
+          )}
         </div>
       </div>
 

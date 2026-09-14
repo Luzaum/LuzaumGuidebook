@@ -437,6 +437,38 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'O tratamento foca em suporte com transfusão de sangue para dar disposição e oxigênio, antibióticos para prevenir infecções e acompanhamento especializado com oncologista.',
     ],
   },
+  'linfoma-cutaneo-caes-gatos': {
+    whatIsIt:
+      'O linfoma cutâneo é um câncer dos linfócitos (células de defesa) que se instala primariamente na pele do cão ou gato. Ele não é uma doença única, mas sim um grupo de tumores com comportamentos muito diferentes. A forma mais comum no cão é o linfoma epiteliotrópico (ou micose fungoide), em que as células neoplásicas têm atração pelas camadas superficiais da pele, causando descamação, vermelhidão intensa, perda de cor (despigmentação) no focinho e nos lábios, feridas e nódulos que frequentemente são confundidos com alergias ou infecções por meses.',
+    keyPoints: [
+      'Pode imitar com perfeição alergias crônicas, sarnas ou doenças autoimunes — coceira e melhora temporária com corticoides NÃO descartam câncer de pele.',
+      'A biópsia precoce de pele em pacientes idosos com feridas, descamações que não saram ou perda de cor nos lábios e nariz é o único exame capaz de dar o diagnóstico correto.',
+      'Animais com apenas uma lesão localizada têm prognóstico muito mais favorável (podendo fazer cirurgia ou radioterapia), enquanto quadros generalizados costumam ser tratados com quimioterapia oral (como a lomustina) ou retinoides para controlar a doença e preservar o bem-estar.',
+    ],
+  },
+  'megacolon-caes-gatos': {
+    whatIsIt:
+      'O megacólon é uma condição em que a porção final do intestino (o cólon) perde a força para empurrar o cocô para fora, dilatando-se e acumulando fezes duras e ressecadas (fecalomas). Com o tempo, as paredes do intestino ficam esticadas demais e perdem o movimento, tornando o animal incapaz de evacuar sozinho. Nos gatos, na maioria das vezes isso ocorre por uma fraqueza própria do músculo do intestino (forma idiopática) ou por desidratação crônica ligada aos rins e dores na coluna; nos cães, quase sempre acontece por algum obstáculo físico no caminho, como próstata aumentada, fraturas antigas da bacia ou ingestão de ossos.',
+    keyPoints: [
+      'Dificuldade de evacuar não é sempre intestino: gatos machos fazendo força excessiva na caixa de areia precisam ter a bexiga examinada com urgência para afastar obstrução urinária, que é uma emergência fatal.',
+      'Nunca use enemas humanos contendo fosfato (como Fleet Enema) em gatos, pois são altamente tóxicos e podem causar colapso circulatório rápido e fatal por desequilíbrio de minerais.',
+      'O tratamento inicial exige hidratação na veia antes de tentar tirar as fezes, além de laxantes específicos seguros (como o PEG 3350) e remédios para estimular o intestino (como a cisaprida, somente após retirar as fezes duras).',
+      'Dar muita fibra pode piorar: se o intestino já perdeu a capacidade de contrair, mais fibra só vai criar um bolo fecal ainda maior; nesses casos graves, dietas muito fáceis de digerir e com pouco resíduo funcionam muito melhor.',
+      'Quando os remédios e a dieta deixam de funcionar e o gato volta a travar com frequência, a cirurgia de retirada da porção doente do intestino (colectomia subtotal) devolve a qualidade de vida ao paciente.',
+    ],
+  },
+  'linfoma-mediastinal-caes-gatos': {
+    whatIsIt:
+      'O linfoma mediastinal é um tipo de câncer que afeta os glóbulos brancos de defesa (chamados linfócitos) e se desenvolve na região frontal do peito do cão ou gato, chamada mediastino (onde ficam o timo e os gânglios linfáticos do tórax). Essa massa de células tumorais cresce dentro do peito e esmaga os pulmões e os vasos sanguíneos principais, dificultando muito a respiração e acumulando líquido ao redor dos pulmões (derrame pleural). Em cães, esse tumor quase sempre vem acompanhado de uma alteração grave no sangue: o aumento excessivo de cálcio (hipercalcemia), que faz o animal urinar e beber muita água. Em gatos, ele costuma se manifestar de repente como uma falta de ar grave e emergencial, com a respiração rápida e superficial.',
+    keyPoints: [
+      'Emergência de falta de ar: quando o animal está com dificuldade grave para respirar, a prioridade absoluta na clínica é colocá-lo no oxigênio e drenar o líquido do peito (toracocentese) para ele respirar melhor antes de qualquer raio-X estressante.',
+      'Não é um tumor para cirurgia de peito: o linfoma é uma doença do sistema imunológico que responde muito rápido e muito bem aos remédios de quimioterapia na veia; abrir o peito para operar a massa não cura e traz riscos imensos desnecessários.',
+      'Cuidado com corticoide antes da hora: dar remédios à base de cortisona (como prednisona ou dexametasona) antes de colher a amostra com a agulha pode esconder o tumor nos exames e fazer com que o câncer fique resistente à quimioterapia.',
+      'Cães com muita sede e xixi: o aumento do cálcio provocado pelo tumor ataca os rins; por isso, cães com linfoma mediastinal muitas vezes começam bebendo baldes de água antes de terem qualquer sintoma de tosse ou cansaço.',
+      'Gatos jovens e o vírus da FeLV: o linfoma do peito é clássico em gatos jovens que têm o vírus da leucemia felina, mas muitos gatos sem o vírus (especialmente siameses) também desenvolvem a doença e têm excelentes chances de controle quando tratados com os medicamentos corretos.',
+      'O tratamento padrão envolve ciclos planejados de quimioterapia combinada (como os protocolos CHOP ou COP), protegendo os rins e monitorando a contagem de células sanguíneas em cada visita para garantir total segurança e qualidade de vida.',
+    ],
+  },
 };
 
 export function getPlainLanguageForSlug(slug: string): DiseasePlainLanguage | undefined {

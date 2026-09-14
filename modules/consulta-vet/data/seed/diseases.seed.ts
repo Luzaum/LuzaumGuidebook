@@ -1,3 +1,4 @@
+import { linfomaMediastinalRecord } from './diseases.linfoma-mediastinal.seed';
 import { DiseaseRecord } from '../../types/disease';
 import { mergeConsensusSlugsForDisease } from './diseaseConsensusLinks';
 import { colapsoTraquealCaninoRecord } from './diseases.colapso-traqueal.seed';
@@ -48,6 +49,8 @@ import { insulinomaCaesGatosRecord } from './diseases.insulinoma-caes-gatos.seed
 import { cetoacidoseDiabeticaCaesGatosRecord } from './diseases.cetoacidose-diabetica-caes-gatos.seed';
 import { coagulacaoIntravascularDisseminadaRecord } from './diseases.coagulacao-intravascular-disseminada.seed';
 import { sindromeMielodisplasicaRecord } from './diseases.sindrome-mielodisplasica.seed';
+import { linfomaCutaneoRecord } from './diseases.linfoma-cutaneo.seed';
+import { megacolonRecord } from './diseases.megacolon.seed';
 import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 function withPlainLanguage(record: DiseaseRecord): DiseaseRecord {
@@ -107,4 +110,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   doencaDoDiscoIntervertebralGatosRecord,
   coagulacaoIntravascularDisseminadaRecord,
   sindromeMielodisplasicaRecord,
+  linfomaCutaneoRecord,
+  megacolonRecord,
+  linfomaMediastinalRecord,
 ].map(withPlainLanguage);

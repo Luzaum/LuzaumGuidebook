@@ -42,6 +42,7 @@ const FREQUENCY_META: Record<string, { label: string; badgeClass: string }> = {
 };
 
 const HIGHLIGHT_PHRASES = [
+  // Dipirona
   'cada 12 a 24 horas em cães',
   'cada 24 horas em gatos',
   'assegurando hidratação contínua',
@@ -56,6 +57,24 @@ const HIGHLIGHT_PHRASES = [
   '15–20 mg/kg em cães e 10 mg/kg em gatos',
   'intervalo de 12 horas',
   'apenas se estritamente necessário',
+
+  // Fenobarbital
+  '15 a 35 µg/mL',
+  '15 a 45 µg/mL',
+  '2,5 a 3 mg/kg a cada 12 horas',
+  '2 a 5 mg/kg a cada 12 horas',
+  '1,5 a 2,5 mg/kg a cada 12 horas',
+  'redução de 50% na dose inicial',
+  'contraindicado em insuficiência severa ou encefalopatia',
+  'redução lenta de 20% a 25% a cada 2 a 4 semanas',
+  'NUNCA interromper de forma súbita',
+  'nunca realizar descontinuação abrupta',
+  'fracionar em bólus lentos de 3 a 4 mg/kg a cada 20 a 30 minutos',
+  'dose cumulativa de 12 a 20 mg/kg',
+  'coleta entre 10 a 14 dias',
+  'reavaliação em 6 semanas',
+  'a cada 6 meses',
+  'Dose Nova = Dose Atual × (Nível Alvo ÷ Nível Atual)',
 ];
 
 const ESCAPED_HIGHLIGHTS = HIGHLIGHT_PHRASES.map((h) =>
@@ -136,9 +155,11 @@ export function MedicationAttentionTab({
               Efeitos Adversos, Contraindicações & Comorbidades
             </h2>
             <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
-              A dipirona possui excelente perfil terapêutico e gastrointestinal em carnívoros, mas seu uso
-              requer vigilância rigorosa quanto à velocidade de infusão intravenosa, volemia prévia e limites
-              posológicos e temporais em felinos e hepatopatas.
+              {medication.attentionSubtitle || (
+                medication.slug === 'fenobarbital'
+                  ? 'O fenobarbital é o anticonvulsivante de primeira escolha em pequenos animais, porém sua margem terapêutica estreita exige monitoramento sérico periódico (TDM), vigilância estrita quanto a hepatopatias, ajuste de dose por comorbidades e protocolo rígido de desmame gradual.'
+                  : `Diretrizes de farmacovigilância, monitoramento de reações adversas, contraindicações absolutas/relativas e protocolos de ajuste posológico para ${medication.title}.`
+              )}
             </p>
           </div>
         </div>

@@ -44,19 +44,19 @@ export function Home() {
         {/* Conteúdo em Card Flutuante na Esquerda - Pointer Events Controlado */}
         <div className="relative z-10 w-full px-4 sm:px-8 lg:px-12 pointer-events-none h-full flex items-center">
 
-          <div className="max-w-xl mr-auto p-8 md:p-10 rounded-3xl animate-in fade-in slide-in-from-left duration-700
+          <div className="max-w-xl mr-auto p-8 md:p-10 lg:p-12 rounded-3xl animate-in fade-in slide-in-from-left duration-700
                             bg-[#0a1532] backdrop-blur-md border border-blue-500/20 shadow-none dark:shadow-[0_8px_32px_rgba(0,0,0,0.12)]">
 
             {/* Título - Interativo */}
             <div className="pointer-events-auto">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-6 drop-shadow-sm">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.12] mb-5 sm:mb-6 drop-shadow-sm">
                 Medicina Veterinária de <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                   Alta Precisão
                 </span>
               </h1>
 
-              <p className="text-lg md:text-xl text-blue-50 dark:text-blue-100/90 leading-relaxed font-medium mb-8 drop-shadow-sm">
+              <p className="text-base sm:text-lg md:text-xl lg:text-[1.22rem] text-blue-50 dark:text-blue-100/95 leading-relaxed sm:leading-[1.65] font-medium mb-8 sm:mb-10 drop-shadow-sm">
                 Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
                 <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
                 Torne seu dia a dia mais eficiente, aprendendo muito no processo!
@@ -65,22 +65,14 @@ export function Home() {
               <div className="flex flex-col sm:flex-row items-center gap-4">
                 <button
                   onClick={scrollToModules}
-                  className="w-full sm:w-auto h-14 px-8 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full bg-blue-600 hover:bg-blue-500 text-white font-bold text-base sm:text-lg shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Explorar Módulos
                   <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
-                <button className="w-full sm:w-auto h-14 px-8 rounded-full bg-white/5 hover:bg-white/10 text-white font-semibold border border-white/20 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
+                <button className="w-full sm:w-auto h-13 sm:h-14 px-8 rounded-full bg-white/5 hover:bg-white/10 text-white font-semibold text-base sm:text-lg border border-white/20 hover:border-white/40 transition-all duration-300 backdrop-blur-sm">
                   Saiba Mais
                 </button>
-              </div>
-            </div>
-
-            {/* Footer do Card - Interativo */}
-            <div className="mt-8 pt-6 border-t border-white/10 flex flex-wrap gap-6 text-sm font-medium text-blue-100/80 pointer-events-auto">
-              <div className="flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-blue-400" />
-                <span>Literatura Atualizada</span>
               </div>
             </div>
           </div>

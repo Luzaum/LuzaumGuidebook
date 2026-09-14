@@ -25,12 +25,24 @@ export function MedicationMarketTab({
   const [copiedPrescription, setCopiedPrescription] = useState(false);
 
   const samplePrescription =
-    'USO ORAL:\n' +
-    '1. Novalgina® Gotas 500 mg/mL ------------------------- 1 frasco\n' +
-    '   Administrar 1 gota por kg de peso corporal (25 mg/kg) por via oral a cada 8 horas, durante 3 dias seguidos para controle de dor e febre.\n\n' +
-    'OU EM COMPRIMIDOS:\n' +
-    '1. Novalgina® Comprimidos 500 mg --------------------- 1 caixa\n' +
-    '   Administrar 1/2 comprimido (para cão de 10 kg) por via oral a cada 8 horas, durante 3 dias.';
+    medication.samplePrescriptionText ||
+    (medication.slug === 'fenobarbital'
+      ? 'RECEITUÁRIO DE CONTROLE ESPECIAL (LISTA C1 - 2 VIAS)\n\n' +
+        'USO ORAL:\n' +
+        '1. Convless® Solução Oral 20 mg/mL (Agener União) ------------ 1 frasco (100 mL)\n' +
+        '   Administrar 1,25 mL (25 mg) por via oral, utilizando a seringa dosadora graduada, a cada 12 horas (rigorosamente nos horários das 08h e 20h), de uso contínuo.\n\n' +
+        'OU EM COMPRIMIDOS:\n' +
+        '1. Gardenal® 100 mg (Sanofi) -------------------------------- 1 caixa (20 comprimidos)\n' +
+        '   Administrar 1/4 de comprimido (25 mg para cão de 10 kg) por via oral a cada 12 horas, de uso contínuo.\n\n' +
+        'ORIENTAÇÕES OBRIGATÓRIAS AO TUTOR:\n' +
+        '• NUNCA interromper ou atrasar as doses pelo risco de crises refratárias em salva ou status epilepticus.\n' +
+        '• Retornar em 14 a 21 dias para dosagem sérica de fenobarbital (TDM) e perfil bioquímico hepático.'
+      : 'USO ORAL:\n' +
+        '1. Novalgina® Gotas 500 mg/mL ------------------------- 1 frasco\n' +
+        '   Administrar 1 gota por kg de peso corporal (25 mg/kg) por via oral a cada 8 horas, durante 3 dias seguidos para controle de dor e febre.\n\n' +
+        'OU EM COMPRIMIDOS:\n' +
+        '1. Novalgina® Comprimidos 500 mg --------------------- 1 caixa\n' +
+        '   Administrar 1/2 comprimido (para cão de 10 kg) por via oral a cada 8 horas, durante 3 dias.');
 
   const handleCopyPrescription = () => {
     navigator.clipboard.writeText(samplePrescription);
@@ -38,15 +50,27 @@ export function MedicationMarketTab({
     setTimeout(() => setCopiedPrescription(false), 2500);
   };
 
-  const weightTable = [
-    { weight: '2 kg', drops: '2 gotas (0,10 mL)', doseMg: '50 mg', comp500: 'Inadequado (usar gotas)', inj500: '0,10 mL' },
-    { weight: '5 kg', drops: '5 gotas (0,25 mL)', doseMg: '125 mg', comp500: '1/4 comprimido', inj500: '0,25 mL' },
-    { weight: '10 kg', drops: '10 gotas (0,50 mL)', doseMg: '250 mg', comp500: '1/2 comprimido', inj500: '0,50 mL' },
-    { weight: '15 kg', drops: '15 gotas (0,75 mL)', doseMg: '375 mg', comp500: '3/4 comprimido', inj500: '0,75 mL' },
-    { weight: '20 kg', drops: '20 gotas (1,00 mL)', doseMg: '500 mg', comp500: '1 comprimido inteiro', inj500: '1,00 mL' },
-    { weight: '30 kg', drops: '30 gotas (1,50 mL)', doseMg: '750 mg', comp500: '1 + 1/2 comprimido', inj500: '1,50 mL' },
-    { weight: '40 kg', drops: '40 gotas (2,00 mL)', doseMg: '1.000 mg', comp500: '2 comprimidos (ou 1 comp de 1g)', inj500: '2,00 mL' },
+  const defaultWeightHeaders = [
+    'Peso do Animal',
+    'Dose Total (25 mg/kg)',
+    'Gotas 500 mg/mL (1 gota/kg)',
+    'Comprimidos 500 mg',
+    'Injetável 500 mg/mL (0,05 mL/kg)',
   ];
+
+  const defaultWeightRows = [
+    { weight: '2 kg', totalDose: '50 mg', col1: '2 gotas (0,10 mL)', col2: 'Inadequado (usar gotas)', col3: '0,10 mL' },
+    { weight: '5 kg', totalDose: '125 mg', col1: '5 gotas (0,25 mL)', col2: '1/4 comprimido', col3: '0,25 mL' },
+    { weight: '10 kg', totalDose: '250 mg', col1: '10 gotas (0,50 mL)', col2: '1/2 comprimido', col3: '0,50 mL' },
+    { weight: '15 kg', totalDose: '375 mg', col1: '15 gotas (0,75 mL)', col2: '3/4 comprimido', col3: '0,75 mL' },
+    { weight: '20 kg', totalDose: '500 mg', col1: '20 gotas (1,00 mL)', col2: '1 comprimido inteiro', col3: '1,00 mL' },
+    { weight: '30 kg', totalDose: '750 mg', col1: '30 gotas (1,50 mL)', col2: '1 + 1/2 comprimido', col3: '1,50 mL' },
+    { weight: '40 kg', totalDose: '1.000 mg', col1: '40 gotas (2,00 mL)', col2: '2 comprimidos (ou 1 comp de 1g)', col3: '2,00 mL' },
+  ];
+
+  const tableHeaders = medication.practicalWeightTable?.headers || defaultWeightHeaders;
+  const tableRows = medication.practicalWeightTable?.rows || defaultWeightRows;
+  const calibrator = medication.practicalWeightTable?.dropletCalibrator;
 
   const getFormLabel = (pres: MedicationPresentation) => {
     const formLower = pres.form.toLowerCase();
@@ -65,7 +89,12 @@ export function MedicationMarketTab({
   const getConcentrationDisplay = (pres: MedicationPresentation) => {
     const isDrops = pres.form.toLowerCase().includes('gota') || (pres.dropsPerMl && pres.dropsPerMl > 0);
     if (isDrops) {
-      return `${pres.concentrationValue} mg/mL • 20 gotas = 1 mL (25 mg/gota)`;
+      const drops = pres.dropsPerMl || 20;
+      const mgPerDrop = (pres.concentrationValue / drops).toFixed(1).replace('.0', '');
+      return `${pres.concentrationValue} mg/mL • ${drops} gotas = 1 mL (${mgPerDrop} mg/gota)`;
+    }
+    if (pres.form.toLowerCase().includes('solu') && pres.concentrationUnit?.toLowerCase().includes('ml')) {
+      return `${pres.concentrationValue} mg/mL (Solução oral com seringa graduada)`;
     }
     if (pres.concentrationUnit?.includes('comprimido')) {
       return `${pres.concentrationValue} mg por comprimido`;
@@ -77,10 +106,7 @@ export function MedicationMarketTab({
     if (pres.commercialProductSlug) {
       return `/consulta-vet/apresentacoes-comerciais?q=${encodeURIComponent(pres.commercialProductSlug)}`;
     }
-    if (pres.channel === 'veterinary') {
-      return `/consulta-vet/apresentacoes-comerciais?q=dipirona`;
-    }
-    return `/consulta-vet/apresentacoes-comerciais?q=novalgina`;
+    return `/consulta-vet/apresentacoes-comerciais?q=${encodeURIComponent(medication.slug)}`;
   };
 
   return (
@@ -252,7 +278,7 @@ export function MedicationMarketTab({
         </div>
       </section>
 
-      {/* SEÇÃO 2 (VEM NO FINAL): Guia de Conversão Rápida (Gotas) */}
+      {/* SEÇÃO 2 (VEM NO FINAL): Guia de Conversão Rápida / Tabela Prática */}
       <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
@@ -260,10 +286,10 @@ export function MedicationMarketTab({
           </span>
           <div>
             <h3 className="text-lg font-bold text-foreground">
-              Guia de Conversão Rápida (Gotas)
+              {calibrator?.title || 'Guia de Conversão Rápida (Gotas & Posologia)'}
             </h3>
             <p className="text-xs text-muted-foreground">
-              Relação de gotejamento padrão (20 gotas = 1 mL = 500 mg) e tabela de posologia prática por peso corporal
+              {calibrator?.note || medication.practicalWeightTable?.standardDoseText || 'Relação de gotejamento padrão e tabela de posologia prática por peso corporal'}
             </p>
           </div>
         </div>
@@ -272,37 +298,37 @@ export function MedicationMarketTab({
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 block">
-              Equivalência do Frasco
+              Equivalência / Concentração
             </span>
             <p className="text-base font-black text-foreground">
-              1 mL = 20 gotas
+              {calibrator?.concentration || '1 mL = 20 gotas'}
             </p>
             <p className="text-xs text-muted-foreground">
-              Gotejador calibrado oficial para soluções líquidas 500 mg/mL
+              {calibrator ? 'Apresentação comercial e veículo de dispensação' : 'Gotejador calibrado oficial para soluções líquidas 500 mg/mL'}
             </p>
           </div>
 
           <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 dark:text-amber-300 block">
-              Teor por Gota
+              Teor por Unidade / Gota
             </span>
             <p className="text-base font-black text-amber-600 dark:text-amber-400">
-              1 gota = 25 mg
+              {calibrator?.dropletRatio || '1 gota = 25 mg'}
             </p>
             <p className="text-xs text-muted-foreground">
-              Cálculo: 500 mg ÷ 20 gotas = exatamente 25 mg por gota
+              {calibrator ? 'Cálculo exato de princípio ativo por volume fracionado' : 'Cálculo: 500 mg ÷ 20 gotas = exatamente 25 mg por gota'}
             </p>
           </div>
 
           <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-4.5 space-y-1">
             <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 block">
-              Regra Prática Canina
+              Regra Prática de Dosagem
             </span>
             <p className="text-base font-black text-emerald-600 dark:text-emerald-400">
-              1 gota para cada 1 kg
+              {calibrator?.practicalRule || '1 gota para cada 1 kg'}
             </p>
             <p className="text-xs text-muted-foreground">
-              Para dose padrão de 25 mg/kg (cão de 10 kg recebe 10 gotas = 250 mg)
+              {medication.practicalWeightTable?.standardDoseText || 'Para dose padrão recomendada calculada por quilograma'}
             </p>
           </div>
         </div>
@@ -312,21 +338,34 @@ export function MedicationMarketTab({
           <table className="w-full text-left text-xs border-collapse">
             <thead>
               <tr className="bg-muted/60 border-b border-border text-muted-foreground font-semibold">
-                <th className="py-3 px-4">Peso do Animal</th>
-                <th className="py-3 px-4">Dose Total (25 mg/kg)</th>
-                <th className="py-3 px-4 text-amber-700 dark:text-amber-300">Gotas 500 mg/mL (1 gota/kg)</th>
-                <th className="py-3 px-4 text-blue-700 dark:text-blue-300">Comprimidos 500 mg</th>
-                <th className="py-3 px-4 text-purple-700 dark:text-purple-300">Injetável 500 mg/mL (0,05 mL/kg)</th>
+                {tableHeaders.map((header, idx) => (
+                  <th
+                    key={idx}
+                    className={`py-3 px-4 ${
+                      idx === 0
+                        ? ''
+                        : idx === 1
+                        ? ''
+                        : idx === 2
+                        ? 'text-amber-700 dark:text-amber-300'
+                        : idx === 3
+                        ? 'text-blue-700 dark:text-blue-300'
+                        : 'text-purple-700 dark:text-purple-300'
+                    }`}
+                  >
+                    {header}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60">
-              {weightTable.map((row, i) => (
+              {tableRows.map((row, i) => (
                 <tr key={i} className="hover:bg-muted/30 transition-colors">
                   <td className="py-2.5 px-4 font-bold text-foreground">{row.weight}</td>
-                  <td className="py-2.5 px-4 font-mono text-muted-foreground">{row.doseMg}</td>
-                  <td className="py-2.5 px-4 font-semibold text-amber-800 dark:text-amber-200">{row.drops}</td>
-                  <td className="py-2.5 px-4 text-foreground/90">{row.comp500}</td>
-                  <td className="py-2.5 px-4 font-mono text-foreground/80">{row.inj500}</td>
+                  <td className="py-2.5 px-4 font-mono text-muted-foreground">{row.totalDose}</td>
+                  <td className="py-2.5 px-4 font-semibold text-amber-800 dark:text-amber-200">{row.col1}</td>
+                  <td className="py-2.5 px-4 text-foreground/90">{row.col2}</td>
+                  <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col3}</td>
                 </tr>
               ))}
             </tbody>
@@ -362,7 +401,9 @@ export function MedicationMarketTab({
                   <FileText className="h-5 w-5 text-sky-500" />
                   <div>
                     <span className="font-bold text-foreground block">
-                      Bula Oficial da Novalgina® Gotas (PDF ANVISA)
+                      {medication.slug === 'fenobarbital'
+                        ? 'Bula Técnica Oficial do Convless® 20 mg/mL (MAPA)'
+                        : `Bula Oficial de ${medication.title} (PDF ANVISA)`}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
                       Bula completa para o paciente e profissional de saúde
@@ -384,7 +425,9 @@ export function MedicationMarketTab({
                   <Building2 className="h-5 w-5 text-muted-foreground" />
                   <div>
                     <span className="font-bold text-foreground block">
-                      Portal Oficial Novalgina® (Sanofi / Opella)
+                      {medication.slug === 'fenobarbital'
+                        ? 'Portal Fabricante / Linha Convless® (Agener União)'
+                        : `Portal Oficial de ${medication.title}`}
                     </span>
                     <span className="text-[11px] text-muted-foreground">
                       Linha de produtos, apresentações e farmacovigilância
@@ -397,10 +440,13 @@ export function MedicationMarketTab({
 
             <div className="rounded-xl bg-muted/40 p-3.5 space-y-1 text-muted-foreground">
               <span className="font-bold text-foreground block">
-                Marcas Genéricas Registradas
+                Marcas Registradas & Genéricos
               </span>
               <p className="text-[11px]">
-                Dipirona monoidratada 500 mg/mL gotas é amplamente produzida por laboratórios certificados como Medley, EMS, Neo Química, Eurofarma e Teuto, mantendo a mesma concentração e fator gotejador de 20 gotas/mL.
+                {medication.genericBrandsNote ||
+                  (medication.slug === 'fenobarbital'
+                    ? 'O fenobarbital conta com formulação de uso veterinário exclusivo com seringa dosadora (Convless® 20 mg/mL - Agener União) e formulações de uso humano sob receita de controle especial (Gardenal® 50/100 mg - Sanofi, Fenocris® injetável - Cristália, além de genéricos União Química, Teuto e EMS).'
+                    : `${medication.title} é amplamente produzida por laboratórios farmacêuticos certificados, mantendo formulações orais e parenterais sob estrito controle analítico.`)}
               </p>
             </div>
           </div>

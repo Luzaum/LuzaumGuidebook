@@ -202,6 +202,8 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                   <img
                     src={block.src}
                     alt={block.alt}
+                    width={block.width}
+                    height={block.height}
                     className="max-h-[34rem] w-full object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     loading="lazy"
                   />
@@ -264,6 +266,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
           src={activeImage.src}
           alt={activeImage.alt}
           caption={activeImage.caption}
+          richText={richText}
           title={youtubeTitle}
         />
       ) : null}

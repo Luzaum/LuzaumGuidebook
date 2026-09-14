@@ -66,13 +66,13 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     slug: 'aines',
     label: 'Anti-inflamatórios não esteroidais (AINEs)',
     shortLabel: 'AINEs',
-    description: 'AINEs e coxibes; não inclui dipirona nem corticosteroides.',
+    description: 'Anti-inflamatórios não esteroidais, coxibes e derivados analgésicos/antipiréticos.',
     icon: Thermometer,
     theme: 'anestesia-dor',
     selectedClassName: 'border-orange-500 bg-orange-500/[0.07] text-orange-700 dark:text-orange-300',
     iconClassName: 'text-orange-600 dark:text-orange-400',
-    medicationSlugs: [],
-    keywords: ['aine', 'anti-inflamatório não esteroidal', 'coxibe', 'meloxicam', 'carprofeno', 'firocoxib', 'robenacoxib'],
+    medicationSlugs: ['dipirona'],
+    keywords: ['aine', 'anti-inflamatório não esteroidal', 'anti-inflamatorio nao esteroidal', 'coxibe', 'dipirona', 'metamizol', 'meloxicam', 'carprofeno', 'firocoxib', 'robenacoxib'],
   },
   {
     slug: 'glicocorticoides',
@@ -95,8 +95,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-300',
     iconClassName: 'text-cyan-600 dark:text-cyan-400',
-    medicationSlugs: ['dipirona', 'lidocaina', 'amantadina'],
-    keywords: ['analgésico', 'anestésico local', 'pirazolona'],
+    medicationSlugs: ['lidocaina', 'amantadina'],
+    keywords: ['analgésico', 'anestésico local'],
   },
   {
     slug: 'neurologicos-anticonvulsivantes',
@@ -224,12 +224,12 @@ function normalizedMedicationText(medication: Pick<MedicationRecord, 'pharmacolo
   return [medication.pharmacologicClass, ...medication.tags, ...medication.indications]
     .join(' ')
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .toLocaleLowerCase('pt-BR');
 }
 
 function normalizeKeyword(value: string): string {
-  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt-BR');
+  return value.normalize('NFD').replace(/[̀-ͯ]/g, '').toLocaleLowerCase('pt-BR');
 }
 
 export function getMedicationTherapeuticClassIds(

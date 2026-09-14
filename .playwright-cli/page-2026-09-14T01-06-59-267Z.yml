@@ -1,0 +1,173 @@
+- generic [ref=f5e5]:
+  - banner [ref=f5e6]:
+    - generic [ref=f5e7]:
+      - generic [ref=f5e8]:
+        - button "Abrir navegação do Vetius" [ref=f5e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f5e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f5e13]
+          - generic [ref=f5e14]: Vetius
+      - generic [ref=f5e15]:
+        - button "Ativar modo escuro" [ref=f5e16] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f5e19] [cursor=pointer]:
+          - img "Avatar de QA Referências" [ref=f5e20]
+          - generic [ref=f5e21]: QA Referências
+  - main [ref=f5e24]:
+    - generic [ref=f5e28]:
+      - complementary [ref=f5e29]:
+        - generic [ref=f5e30]:
+          - button "Esconder barra lateral" [ref=f5e31] [cursor=pointer]
+          - link [ref=f5e36] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=f5e37]
+          - navigation [ref=f5e38]:
+            - link "Início" [ref=f5e39] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f5e43] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f5e49] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f5e54] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f5e59] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f5e64] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=f5e68] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f5e72] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f5e79] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f5e84] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f5e88] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=f5e94]:
+        - generic [ref=f5e96]:
+          - navigation "Navegação estrutural" [ref=f5e97]:
+            - link "Início" [ref=f5e98] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Referências clínicas" [ref=f5e101] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - generic [ref=f5e104]: Ultrassom
+            - generic [ref=f5e243]: Intestino delgado
+          - generic [ref=f5e105]:
+            - link "Voltar aos mini-apps" [ref=f5e106] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - generic [ref=f5e113]:
+              - heading "Valores de ultrassom" [level=1] [ref=f5e114]
+              - paragraph [ref=f5e115]: Escolha um órgão e filtre espécie e fase de vida. Cada medida mostra técnica, população e página exata do livro.
+          - main [ref=f5e244]:
+            - generic [ref=f5e246]:
+              - generic [ref=f5e247]:
+                - button "Voltar à lista de órgãos" [ref=f5e248] [cursor=pointer]
+                - generic [ref=f5e251]:
+                  - paragraph [ref=f5e252]: Órgão selecionado
+                  - heading "Intestino delgado" [level=2] [ref=f5e253]
+                  - paragraph [ref=f5e254]: Duodeno, jejuno e íleo
+              - generic [ref=f5e255]:
+                - group "Espécie" [ref=f5e256]:
+                  - generic [ref=f5e258]:
+                    - button "Cão" [pressed] [ref=f5e259] [cursor=pointer]
+                    - button "Gato" [ref=f5e264] [cursor=pointer]
+                - group "Fase de vida" [ref=f5e268]:
+                  - generic [ref=f5e270]:
+                    - button "Adulto" [pressed] [ref=f5e271] [cursor=pointer]
+                    - button "Filhote" [ref=f5e274] [cursor=pointer]
+            - generic [ref=f5e279]:
+              - generic [ref=f5e280]:
+                - heading "Cão · adulto" [level=3] [ref=f5e284]
+                - generic [ref=f5e285]: 6 referências
+              - table [ref=f5e287]:
+                - rowgroup [ref=f5e288]:
+                  - row [ref=f5e289]:
+                    - columnheader "Estrutura / medida" [ref=f5e290]
+                    - columnheader "População" [ref=f5e291]
+                    - columnheader "Peso / porte" [ref=f5e292]
+                    - columnheader "Referência" [ref=f5e293]
+                    - columnheader "Técnica e fonte" [ref=f5e294]
+                - rowgroup [ref=f5e295]:
+                  - row [ref=f5e296]:
+                    - cell "Parede do duodeno" [ref=f5e297]
+                    - cell "Cão adulto" [ref=f5e298]
+                    - cell "≤ 20 kg" [ref=f5e299]
+                    - cell [ref=f5e300]:
+                      - strong [ref=f5e301]: ≤ 5,1
+                      - text: mm
+                    - cell [ref=f5e302]:
+                      - paragraph [ref=f5e303]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e304]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+                  - row [ref=f5e305]:
+                    - cell "Parede do jejuno" [ref=f5e306]
+                    - cell "Cão adulto" [ref=f5e307]
+                    - cell "≤ 20 kg" [ref=f5e308]
+                    - cell [ref=f5e309]:
+                      - strong [ref=f5e310]: ≤ 4,1
+                      - text: mm
+                    - cell [ref=f5e311]:
+                      - paragraph [ref=f5e312]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e313]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+                  - row [ref=f5e314]:
+                    - cell "Parede do duodeno" [ref=f5e315]
+                    - cell "Cão adulto" [ref=f5e316]
+                    - cell "20–29,9 kg" [ref=f5e317]
+                    - cell [ref=f5e318]:
+                      - strong [ref=f5e319]: ≤ 5,3
+                      - text: mm
+                    - cell [ref=f5e320]:
+                      - paragraph [ref=f5e321]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e322]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+                  - row [ref=f5e323]:
+                    - cell "Parede do jejuno" [ref=f5e324]
+                    - cell "Cão adulto" [ref=f5e325]
+                    - cell "20–29,9 kg" [ref=f5e326]
+                    - cell [ref=f5e327]:
+                      - strong [ref=f5e328]: ≤ 4,4
+                      - text: mm
+                    - cell [ref=f5e329]:
+                      - paragraph [ref=f5e330]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e331]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+                  - row [ref=f5e332]:
+                    - cell "Parede do duodeno" [ref=f5e333]
+                    - cell "Cão adulto" [ref=f5e334]
+                    - cell "> 30 kg" [ref=f5e335]
+                    - cell [ref=f5e336]:
+                      - strong [ref=f5e337]: ≤ 6,0
+                      - text: mm
+                    - cell [ref=f5e338]:
+                      - paragraph [ref=f5e339]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e340]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+                  - row [ref=f5e341]:
+                    - cell "Parede do jejuno" [ref=f5e342]
+                    - cell "Cão adulto" [ref=f5e343]
+                    - cell "> 30 kg" [ref=f5e344]
+                    - cell [ref=f5e345]:
+                      - strong [ref=f5e346]: ≤ 4,7
+                      - text: mm
+                    - cell [ref=f5e347]:
+                      - paragraph [ref=f5e348]: Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.
+                      - paragraph [ref=f5e349]: Thrall, 8ª ed. · Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)
+            - generic [ref=f5e350]:
+              - generic [ref=f5e351]:
+                - generic [ref=f5e352]: Pontos de interpretação
+                - list [ref=f5e355]:
+                  - listitem [ref=f5e356]:
+                    - generic [ref=f5e358]: Preservação das camadas, motilidade e sinais clínicos importam tanto quanto a espessura total.
+                  - listitem [ref=f5e359]:
+                    - generic [ref=f5e361]: Alimentação recente altera a ecogenicidade mucosa; o consenso citado pelo livro recomenda medida longitudinal.
+              - generic [ref=f5e362]:
+                - generic [ref=f5e363]: Regra da tabela
+                - paragraph [ref=f5e370]: Peso ou porte só aparece como estrato quando o livro sustenta essa separação. “Todos os pesos” significa ausência de estratificação publicada, não equivalência perfeita entre pacientes.
+          - region [ref=f5e223]:
+            - heading "Livros consultados" [level=2] [ref=f5e227]
+            - generic [ref=f5e228]:
+              - article [ref=f5e229]:
+                - paragraph [ref=f5e230]: Thrall’s Textbook of Veterinary Diagnostic Radiology
+                - paragraph [ref=f5e231]: 8ª edição · 2025 · Gabriela S. Seiler e Donald E. Thrall
+                - paragraph [ref=f5e232]: Capítulos 39–47; a página impressa e a página do PDF aparecem em cada linha.
+              - article [ref=f5e233]:
+                - paragraph [ref=f5e234]: BSAVA Manual of Canine and Feline Ultrasonography
+                - paragraph [ref=f5e235]: 1ª edição · 2011 · Frances Barr e Lorrie Gaschen (editoras)
+                - paragraph [ref=f5e236]: Capítulo 13, glândulas adrenais, p. 149 (PDF p. 161).
+            - generic [ref=f5e237]: Ferramenta de consulta rápida. Medidas isoladas não substituem exame completo, correlação clínica, laudo do imaginologista ou amostragem quando indicada.

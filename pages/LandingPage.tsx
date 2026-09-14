@@ -143,7 +143,7 @@ export function LandingPage() {
         <div className="relative w-full overflow-x-hidden">
 
             {/* ── SECTION 1: HERO ── */}
-            {/* Mobile: auto height at least 100svh; tablet+: 88vh */}
+            {/* Mobile: auto height at least 100svh; tablet+: min-h-screen */}
             <section className="relative w-full min-h-screen flex items-end sm:items-center overflow-hidden pb-10 sm:pb-0">
 
                 {/* Background image */}
@@ -179,18 +179,18 @@ export function LandingPage() {
                         </div>
 
                         {/* 3. Hero Card Content - 100% solid background, zero light inside */}
-                        <div className="relative z-10 w-full h-full p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
+                        <div className="relative z-10 w-full h-full p-6 sm:p-8 md:p-10 lg:p-12 rounded-2xl sm:rounded-3xl animate-in fade-in slide-in-from-bottom sm:slide-in-from-left duration-700
                               bg-[#0a1532] border border-white/10 sm:border-blue-500/20 shadow-2xl">
 
                             <div>
-                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.1] mb-4 sm:mb-6 drop-shadow-sm">
+                                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight text-blue-50 leading-[1.12] mb-5 sm:mb-6 drop-shadow-sm">
                                     Medicina Veterinária de{' '}
                                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
                                         Alta Precisão
                                     </span>
                                 </h1>
 
-                                <p className="text-base sm:text-lg md:text-xl text-blue-100/90 leading-relaxed font-medium mb-6 sm:mb-8 drop-shadow-sm">
+                                <p className="text-base sm:text-lg md:text-xl lg:text-[1.22rem] text-blue-100/95 leading-relaxed sm:leading-[1.65] font-medium mb-8 sm:mb-10 drop-shadow-sm">
                                     Ferramentas de decisão clínica baseadas nas últimas evidências, consensos e literatura atualizada (
                                     <strong className="text-white">Plumb's, Nelson & Couto, Ettinger, BSAVA, ACVIM, iCatCare, IRIS</strong> e muito mais!)
                                 </p>
@@ -202,12 +202,6 @@ export function LandingPage() {
                                     Explorar Módulos
                                     <ArrowRight className="w-5 h-5 shrink-0" />
                                 </button>
-                            </div>
-
-                            {/* Trust badge - hidden on tiny screens */}
-                            <div className="hidden sm:flex mt-6 sm:mt-8 pt-5 sm:pt-6 border-t border-white/10 items-center gap-2 text-xs sm:text-sm font-medium text-blue-100/80">
-                                <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-blue-400 shrink-0" />
-                                <span>Literatura Atualizada</span>
                             </div>
                         </div>
                     </div>

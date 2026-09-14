@@ -1429,7 +1429,7 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
     title: 'Dipirona (metamizol)',
     activeIngredient: 'Dipirona (metamizol)',
     tradeNames: ['Novalgina® e genéricos', 'Sindolor® (associação com tramadol)'],
-    pharmacologicClass: 'Analgésico, antipirético e espasmolítico (pirazolona)',
+    pharmacologicClass: 'Anti-inflamatório não esteroidal (AINE)',
     species: ['dog', 'cat'],
     category: 'anestesia-dor',
     tags: ['Analgesia', 'Multimodal', 'Antipirese', 'Perioperatório'],

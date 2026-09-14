@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { FavoriteButton } from './FavoriteButton';
@@ -252,6 +252,7 @@ export const EntityCard = React.memo(function EntityCard({
   className,
   category,
 }: EntityCardProps) {
+  const navigate = useNavigate();
   const theme = getEntityCategoryTheme(category);
 
   // Single primary specialty label - no multiple loose tags
@@ -267,10 +268,19 @@ export const EntityCard = React.memo(function EntityCard({
       ? getBriefDiseaseSummary(description)
       : description;
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('button') || target.closest('a')) {
+      return;
+    }
+    navigate(to, { state: linkState });
+  };
+
   return (
     <article
+      onClick={handleCardClick}
       className={cn(
-        'group relative flex h-full flex-col justify-between rounded-xl border border-border/70 bg-card p-3.5 transition-all duration-300',
+        'group relative flex h-full flex-col justify-between rounded-xl border border-border/70 bg-card p-3.5 transition-all duration-300 cursor-pointer',
         theme.borderHover,
         theme.glow,
         className
@@ -327,10 +337,14 @@ export const EntityCard = React.memo(function EntityCard({
             Clique para consultar
           </span>
         )}
-        <span className="inline-flex shrink-0 items-center gap-0.5 text-[10px] font-bold uppercase tracking-wider text-primary transition-all duration-300">
+        <Link
+          to={to}
+          state={linkState}
+          className="relative z-10 inline-flex shrink-0 items-center gap-0.5 text-[10px] font-bold uppercase tracking-wider text-primary hover:text-primary/80 transition-all duration-300 cursor-pointer"
+        >
           Abrir
           <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-        </span>
+        </Link>
       </div>
     </article>
   );

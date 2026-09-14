@@ -1,6 +1,6 @@
 # Auditoria dos modelos do Receituário
 
-Gerado em 2026-09-13T03:13:12.176Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
+Gerado em 2026-09-14T00:56:44.472Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
 
 ## Resumo geral
 

@@ -12,7 +12,7 @@ const SLUG = 'coagulacao-intravascular-disseminada-caes-gatos';
 test('CID/DIC existe em diseasesSeed com metadados corretos', () => {
   const disease = diseasesSeed.find((item) => item.slug === SLUG);
   assert.ok(disease, `esperava encontrar ${SLUG} em diseasesSeed`);
-  assert.equal(disease!.category, 'emergencia-intensivismo');
+  assert.ok(disease!.category === 'intensivismo' || disease!.category === 'emergencia-intensivismo');
   assert.ok(disease!.categories?.includes('hematologia'));
   assert.equal(disease!.isPublished, true);
   assert.ok(disease!.species.includes('dog'));

@@ -200,7 +200,9 @@ export interface MedicationGeneralInfoData {
   routesDetailed?: MedicationAdministrationRouteDetailed[];
   pharmacologicalClassification?: {
     chemicalClass: string;
+    chemicalClassDescription?: string;
     therapeuticClass: string;
+    therapeuticClassDescription?: string;
     atcCode?: string;
     receptorTargets?: string[];
     detailedTargets?: Array<{
@@ -264,4 +266,59 @@ export interface MedicationRecord extends ContentFlag {
   attentionData?: MedicationAttentionData;
   generalInfoData?: MedicationGeneralInfoData;
   clinicalStudiesCommented?: MedicationClinicalStudyCommented[];
+
+  /** Pilares terapêuticos essenciais dinâmicos */
+  pillars?: Array<{
+    title: string;
+    icon?: string;
+    desc: string;
+  }>;
+  quickSummaryHighlights?: string[];
+
+  /** Fundamentos clínicos e evidências científicas comentadas dinâmicas */
+  clinicalFoundationsData?: Array<{
+    id: string;
+    title: string;
+    narrative: string;
+    narrativeHighlights?: string[];
+    studies: Array<{
+      citation: string;
+      referenceId: string;
+      sourceType?: string;
+      summaryText: string;
+      summaryHighlights?: string[];
+      metrics?: string[];
+      clinicalConclusion: string;
+      url?: string;
+    }>;
+  }>;
+
+  /** Subtítulo descritivo de segurança e atenção */
+  attentionSubtitle?: string;
+
+  /** Modelo de prescrição pronto e específico para cópia */
+  samplePrescriptionText?: string;
+
+  /** Tabela prática de conversão por faixa de peso e calibrador */
+  practicalWeightTable?: {
+    standardDoseText: string;
+    headers: string[];
+    rows: Array<{
+      weight: string;
+      totalDose: string;
+      col1: string;
+      col2: string;
+      col3: string;
+    }>;
+    dropletCalibrator?: {
+      title: string;
+      concentration: string;
+      dropletRatio: string;
+      practicalRule: string;
+      note: string;
+    };
+  };
+
+  /** Nota sobre marcas genéricas registradas */
+  genericBrandsNote?: string;
 }

@@ -1,0 +1,144 @@
+- generic [ref=f4e5]:
+  - banner [ref=f4e6]:
+    - generic [ref=f4e7]:
+      - generic [ref=f4e8]:
+        - button "Abrir navegação do Vetius" [ref=f4e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f4e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f4e13]
+          - generic [ref=f4e14]: Vetius
+      - generic [ref=f4e15]:
+        - button "Ativar modo escuro" [ref=f4e16] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f4e19] [cursor=pointer]:
+          - img "Avatar de QA Referências" [ref=f4e20]
+          - generic [ref=f4e21]: QA Referências
+  - main [ref=f4e24]:
+    - generic [ref=f4e28]:
+      - complementary [ref=f4e29]:
+        - generic [ref=f4e30]:
+          - button "Esconder barra lateral" [ref=f4e31] [cursor=pointer]
+          - link [ref=f4e36] [cursor=pointer]:
+            - /url: /consulta-vet
+            - img "ConsultaVET — base clínica para consulta rápida" [ref=f4e37]
+          - navigation [ref=f4e38]:
+            - link "Início" [ref=f4e39] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f4e43] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f4e49] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f4e54] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f4e59] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f4e64] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=f4e68] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f4e72] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f4e79] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f4e84] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f4e88] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - main [ref=f4e94]:
+        - generic [ref=f4e124]:
+          - navigation "Navegação estrutural" [ref=f4e125]:
+            - link "Início" [ref=f4e126] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Referências clínicas" [ref=f4e129] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - generic [ref=f4e132]: VHS
+          - generic [ref=f4e133]:
+            - link "Voltar aos mini-apps" [ref=f4e134] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - generic [ref=f4e141]:
+              - heading "VHS — Vertebral Heart Score" [level=1] [ref=f4e142]
+              - paragraph [ref=f4e143]: Some os eixos cardíacos convertidos em corpos vertebrais e compare o resultado com a referência adequada.
+          - region [ref=f4e144]:
+            - figure "Ilustração original do ConsultaVET, sem reprodução de figura de terceiros. Método adaptado da descrição e das Figuras 9.15–9.16 do BSAVA Thoracic Imaging, 2ª ed." [ref=f4e145]:
+              - 'img "Esquema da medição do VHS: eixo longo da carina ao ápice, eixo curto perpendicular e transposição a partir de T4." [ref=f4e146]'
+            - article [ref=f4e148]:
+              - heading "Como medir" [level=2] [ref=f4e156]
+              - list [ref=f4e157]:
+                - listitem [ref=f4e158]:
+                  - generic [ref=f4e159]: "1"
+                  - generic [ref=f4e160]: Use uma radiografia torácica lateral bem posicionada; direita ou esquerda são aceitas.
+                - listitem [ref=f4e161]:
+                  - generic [ref=f4e162]: "2"
+                  - generic [ref=f4e163]: Meça o eixo longo da margem ventral da carina até o contorno mais ventral do ápice cardíaco.
+                - listitem [ref=f4e164]:
+                  - generic [ref=f4e165]: "3"
+                  - generic [ref=f4e166]: Meça o maior eixo curto, perpendicular ao longo, na região central da silhueta.
+                - listitem [ref=f4e167]:
+                  - generic [ref=f4e168]: "4"
+                  - generic [ref=f4e169]: Transponha cada medida à coluna, iniciando na borda cranial de T4, e conte até 0,1 vértebra.
+                - listitem [ref=f4e170]:
+                  - generic [ref=f4e171]: "5"
+                  - generic [ref=f4e172]: Some eixo longo (L) + eixo curto (S). O resultado é o VHS em vértebras (v).
+          - region [ref=f4e173]:
+            - generic [ref=f4e174]:
+              - generic [ref=f4e175]:
+                - paragraph [ref=f4e176]: Calculadora
+                - heading "Calcule e interprete" [level=2] [ref=f4e177]
+              - paragraph [ref=f4e178]: "VHS = L + S · unidade: vértebras (v)"
+            - generic [ref=f4e179]:
+              - generic [ref=f4e180]:
+                - group "Espécie" [ref=f4e181]:
+                  - generic [ref=f4e183]:
+                    - button "Cão" [pressed] [ref=f4e184] [cursor=pointer]
+                    - button "Gato" [ref=f4e185] [cursor=pointer]
+                - generic [ref=f4e186]:
+                  - text: Referência para comparação
+                  - combobox "Referência para comparação" [ref=f4e187]:
+                    - option "Cão adulto — multirraças" [selected]
+                    - option "Cão filhote"
+                    - option "Australian Cattle Dog"
+                    - option "Beagle"
+                    - option "Boston Terrier"
+                    - option "Boxer"
+                    - option "Bulldog"
+                    - option "Cavalier King Charles Spaniel"
+                    - option "Chihuahua"
+                    - option "Dachshund"
+                    - option "Dobermann"
+                    - option "Pastor-alemão"
+                    - option "Greyhound"
+                    - option "Labrador Retriever"
+                    - option "Lhasa Apso"
+                    - option "Norwich Terrier"
+                    - option "Spitz alemão / Pomeranian"
+                    - option "Pug"
+                    - option "Rottweiler"
+                    - option "Whippet"
+                    - option "Yorkshire Terrier"
+                - generic [ref=f4e188]:
+                  - generic [ref=f4e189]:
+                    - text: Eixo longo — L (v)
+                    - spinbutton "Eixo longo — L (v)" [ref=f4e190]: "5.1"
+                  - generic [ref=f4e191]:
+                    - text: Eixo curto — S (v)
+                    - spinbutton "Eixo curto — S (v)" [ref=f4e192]: "4.6"
+              - complementary [ref=f4e193]:
+                - generic [ref=f4e194]: Resultado
+                - generic [ref=f4e197]:
+                  - strong [ref=f4e198]: "9.7"
+                  - generic [ref=f4e199]: v
+                - paragraph [ref=f4e200]: 5.1 + 4.6 vértebras
+                - generic [ref=f4e201]:
+                  - paragraph [ref=f4e202]: Dentro da faixa selecionada
+                  - paragraph [ref=f4e203]: O escore está dentro do intervalo de comparação escolhido. Isso não exclui cardiopatia; radiografias têm limitações para tamanho de câmaras e devem ser integradas à avaliação clínica.
+                - generic [ref=f4e204]:
+                  - paragraph [ref=f4e205]: Cão adulto — multirraças
+                  - paragraph [ref=f4e206]: "Comparação: 8.5–10.5 v · média 9.7 v"
+          - generic [ref=f4e207]:
+            - paragraph [ref=f4e211]:
+              - strong [ref=f4e212]: Interprete com cautela.
+              - text: Raça, conformação torácica, fase respiratória, ciclo cardíaco, escore corporal e anomalias vertebrais alteram o VHS. A ecocardiografia continua sendo o padrão para avaliar câmaras cardíacas.
+            - generic [ref=f4e213]:
+              - generic [ref=f4e214]: Fonte do livro
+              - paragraph [ref=f4e217]: BSAVA Manual of Canine and Feline Thoracic Imaging
+              - paragraph [ref=f4e218]: 2ª edição, 2024. Capítulo 9 — The heart and great vessels; pp. 179–180 (PDF pp. 186–187), Figuras 9.15–9.16.
+              - generic [ref=f4e219]: As faixas de raça exibidas como intervalo são derivadas de média ± 2 DP e aparecem identificadas como tal.

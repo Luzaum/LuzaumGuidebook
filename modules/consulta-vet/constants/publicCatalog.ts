@@ -52,12 +52,16 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'doenca-do-disco-intervertebral-gatos',
   'coagulacao-intravascular-disseminada-caes-gatos',
   'sindrome-mielodisplasica-caes-gatos',
+  'linfoma-cutaneo-caes-gatos',
+  'megacolon-caes-gatos',
+  'linfoma-mediastinal-caes-gatos',
 ] as const;
 
 
 /** Mesma regra de sincronização com `data/publicCatalogCardStubs.ts`. */
 export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'dipirona',
+  'fenobarbital',
 ] as const;
 
 export function isPublicDiseaseSlug(slug: string): boolean {

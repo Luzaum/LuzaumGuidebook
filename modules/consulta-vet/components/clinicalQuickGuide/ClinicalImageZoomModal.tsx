@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ZoomIn, ZoomOut, RotateCcw, X, ExternalLink, Move } from 'lucide-react';
+import { ClinicalGuideInline } from './ClinicalGuideInline';
 
 export interface ClinicalImageZoomModalProps {
   isOpen: boolean;
@@ -8,6 +9,7 @@ export interface ClinicalImageZoomModalProps {
   src: string;
   alt: string;
   caption?: string;
+  richText?: boolean;
   title?: string;
 }
 
@@ -17,6 +19,7 @@ export function ClinicalImageZoomModal({
   src,
   alt,
   caption,
+  richText = false,
   title,
 }: ClinicalImageZoomModalProps) {
   const [scale, setScale] = useState(1);
@@ -309,7 +312,7 @@ export function ClinicalImageZoomModal({
               exit={{ opacity: 0, y: 10 }}
               className="pointer-events-auto max-w-2xl w-full rounded-2xl border border-white/15 bg-slate-900/90 px-4 py-3 text-xs leading-relaxed text-slate-200 shadow-2xl backdrop-blur-md"
             >
-              <p>{caption}</p>
+              <p>{richText ? <ClinicalGuideInline text={caption} /> : caption}</p>
             </motion.div>
           ) : null}
         </footer>

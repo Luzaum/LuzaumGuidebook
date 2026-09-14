@@ -216,7 +216,6 @@ export function ReceitasTab({ templates, favorites, onToggleFavorite, onSelectTe
                   onClick={() => setSelectedCategory(category)}
                   className={cn('flex items-center gap-2 rounded-lg border border-border/60 px-2.5 py-1.5 text-left text-xs font-semibold transition-all duration-200 xl:w-full', selected ? cn(theme.badge, 'shadow-xs') : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card')}
                 >
-                  <span aria-hidden="true" className="text-xs leading-none">{visual.icon}</span>
                   <span className="flex-1 truncate">{category}</span>
                   <span className={cn('rounded-full px-1.5 py-0.5 text-[9px] font-bold', selected ? 'bg-background/80 text-foreground' : 'bg-muted text-muted-foreground')}>{count}</span>
                 </button>
@@ -327,7 +326,7 @@ function RecipeCard({
         <div className="min-w-0 flex-1">
           <h3 className="line-clamp-2 text-sm font-bold leading-snug text-foreground transition-colors group-hover:text-primary">{template.title}</h3>
           <div className="mt-1.5 flex flex-wrap gap-1">
-            <span className={cn('inline-flex items-center rounded-md border px-2 py-0.5 text-[9px] font-semibold tracking-wide', theme.badge)}>{visual.icon} {template.category}</span>
+            <span className={cn('inline-flex items-center rounded-md border px-2 py-0.5 text-[9px] font-semibold tracking-wide', theme.badge)}>{template.category}</span>
             <span className="inline-flex items-center rounded-md border border-border/50 bg-muted/40 px-2 py-0.5 text-[9px] font-semibold tracking-wide text-muted-foreground/80">{template.species === 'ambos' ? 'Cão e gato' : template.species}</span>
           </div>
         </div>

@@ -71,7 +71,7 @@ export function HighlightedText({ text, highlights }: { text: string; highlights
   );
 }
 
-const DEFAULT_HIGHLIGHTS = [
+const DIPIRONA_DEFAULT_HIGHLIGHTS = [
   'pró-fármaco',
   '4-metilaminoantipirina',
   '4-MAA',
@@ -87,6 +87,20 @@ const DEFAULT_HIGHLIGHTS = [
   '2 a 5 minutos',
 ];
 
+const PHENOBARBITAL_DEFAULT_HIGHLIGHTS = [
+  'GABA-A',
+  'anticonvulsivante',
+  'primeira escolha',
+  '12 horas',
+  'níveis no sangue (TDM)',
+  'TDM',
+  'NUNCA pode ser suspenso de forma abrupta',
+  'cães e gatos',
+  'epilepsia idiopática',
+  'autoindução',
+  'canais de cálcio',
+];
+
 export function MedicationQuickSummaryPanel({
   medication,
 }: {
@@ -100,33 +114,89 @@ export function MedicationQuickSummaryPanel({
       condition: ind,
       species: 'both' as const,
       doseSummary: 'Conforme tabela de posologia clínica',
-      route: medication.routes[0] || 'Oral / IV',
+      route: medication.routes?.[0] || 'Oral / IV',
       duration: 'Uso agudo monitorado',
     }));
   }, [medication.quickIndications, medication.indications, medication.routes]);
 
-  const pillars = [
-    {
-      title: 'Analgesia Multimodal',
-      icon: HeartPulse,
-      desc: 'Inibição seletiva de COX central (COX-3/COX-1b) e ativação de receptores canabinoides CB1 medulares. Excelente poupador de opioides.',
-    },
-    {
-      title: 'Ação Antiespasmódica',
-      icon: Stethoscope,
-      desc: 'Bloqueio do influxo de cálcio sensível a voltagem na musculatura lisa gastrintestinal e urogenital, sem paralisar o peristaltismo espontâneo.',
-    },
-    {
-      title: 'Antipirese Central Rápida',
-      icon: Thermometer,
-      desc: 'Bloqueio de PGE2 no órgão vascular da lâmina terminal (OVLT) hipotalâmico, reajustando rapidamente a temperatura corporal para a normotermia.',
-    },
-    {
-      title: 'Alta Segurança Digestiva',
-      icon: ShieldCheck,
-      desc: 'Mínima inibição da COX-1 constitutiva da mucosa gástrica e da perfusão renal basal quando comparada aos AINEs carboxílicos tradicionais.',
-    },
-  ];
+  const pillars = useMemo(() => {
+    if (medication.pillars && medication.pillars.length > 0) {
+      return medication.pillars.map((p) => ({
+        title: p.title,
+        icon:
+          p.icon === 'Brain'
+            ? Stethoscope
+            : p.icon === 'Zap'
+            ? HeartPulse
+            : p.icon === 'Thermometer'
+            ? Thermometer
+            : p.icon === 'Clock'
+            ? Clock
+            : p.icon === 'Syringe'
+            ? Syringe
+            : ShieldCheck,
+        desc: p.desc,
+      }));
+    }
+
+    if (medication.slug === 'fenobarbital') {
+      return [
+        {
+          title: 'Potencialização GABAérgica Sustentada',
+          icon: Stethoscope,
+          desc: 'Prolonga o tempo de abertura do canal de cloreto acoplado ao receptor GABA-A central, hiperpolarizando os neurônios corticais e elevando expressivamente o limiar convulsivo.',
+        },
+        {
+          title: 'Bloqueio de Canais de Cálcio & Glutamato',
+          icon: HeartPulse,
+          desc: 'Atenua os canais de cálcio voltagem-dependentes pré-sinápticos tipo N e P/Q, inibindo a exocitose do glutamato e suprimindo receptores AMPA/cainato.',
+        },
+        {
+          title: 'Padrão Ouro Internacional (IVETF/ACVIM)',
+          icon: ShieldCheck,
+          desc: 'Antiepiléptico de 1ª linha com nível 1 de evidência científica, alcançando redução de crises >50% em 70% a 85% dos pacientes com epilepsia idiopática.',
+        },
+        {
+          title: 'Monitoramento Sérico (TDM)',
+          icon: Clock,
+          desc: 'Calibração individual rigorosa por dosagem sérica periódica (alvo 15 a 35 µg/mL em cães e 15 a 45 µg/mL em gatos), compensando a autoindução microssomal.',
+        },
+      ];
+    }
+
+    return [
+      {
+        title: 'Analgesia Multimodal',
+        icon: HeartPulse,
+        desc: 'Inibição seletiva de COX central (COX-3/COX-1b) e ativação de receptores canabinoides CB1 medulares. Excelente poupador de opioides.',
+      },
+      {
+        title: 'Ação Antiespasmódica',
+        icon: Stethoscope,
+        desc: 'Bloqueio do influxo de cálcio sensível a voltagem na musculatura lisa gastrintestinal e urogenital, sem paralisar o peristaltismo espontâneo.',
+      },
+      {
+        title: 'Antipirese Central Rápida',
+        icon: Thermometer,
+        desc: 'Bloqueio de PGE2 no órgão vascular da lâmina terminal (OVLT) hipotalâmico, reajustando rapidamente a temperatura corporal para a normotermia.',
+      },
+      {
+        title: 'Alta Segurança Digestiva',
+        icon: ShieldCheck,
+        desc: 'Mínima inibição da COX-1 constitutiva da mucosa gástrica e da perfusão renal basal quando comparada aos AINEs carboxílicos tradicionais.',
+      },
+    ];
+  }, [medication.pillars, medication.slug]);
+
+  const highlights = useMemo(() => {
+    if (medication.quickSummaryHighlights && medication.quickSummaryHighlights.length > 0) {
+      return medication.quickSummaryHighlights;
+    }
+    if (medication.slug === 'fenobarbital') {
+      return PHENOBARBITAL_DEFAULT_HIGHLIGHTS;
+    }
+    return DIPIRONA_DEFAULT_HIGHLIGHTS;
+  }, [medication.quickSummaryHighlights, medication.slug]);
 
   return (
     <section
@@ -156,14 +226,14 @@ export function MedicationQuickSummaryPanel({
             <HighlightedText
               text={
                 medication.plainLanguageSummary ||
-                `${medication.title} é um potente analgésico e antipirético atípico que atua como pró-fármaco, gerando metabólitos ativos que controlam a dor visceral e a pirexia.`
+                `${medication.title}: ${medication.mechanismOfAction}`
               }
-              highlights={DEFAULT_HIGHLIGHTS}
+              highlights={highlights}
             />
           </p>
         </div>
 
-        {/* 4 Pilares de Ação Farmacológica (com ícones clínicos: HeartPulse, Stethoscope, Thermometer, ShieldCheck) */}
+        {/* 4 Pilares de Ação Farmacológica */}
         <div>
           <h3 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-3.5">
             Pilares Terapêuticos Essenciais

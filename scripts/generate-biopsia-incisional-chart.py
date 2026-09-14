@@ -4,7 +4,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 12, 'svg.fonttype': 'none'})
+plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 12, 'svg.fonttype': 'path'})
 fig, axes = plt.subplots(2, 1, figsize=(9, 7.5), layout='constrained')
 fig.patch.set_facecolor('#f8fafc')
 for ax, values, title, color in zip(

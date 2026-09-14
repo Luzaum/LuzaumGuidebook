@@ -336,7 +336,12 @@ export function MedicationDetailPage() {
                   <MedicationQuickSummaryPanel medication={medication} />
 
                   {/* 2. Tabela Completa de Indicações Clínicas Detalhadas com Mecanismos de Ação e Citações */}
-                  <MedicationIndicationsTable medication={medication} />
+                  {medication.detailedIndications && medication.detailedIndications.length > 0 && (
+                    <MedicationIndicationsTable
+                      indications={medication.detailedIndications}
+                      references={medication.references}
+                    />
+                  )}
 
                   {/* 3. Farmacocinética Aprofundada (4-MAA/4-AA, ADME, Stats) */}
                   <MedicationPharmacokineticsSection data={medication.pharmacokineticsData} />
@@ -349,7 +354,7 @@ export function MedicationDetailPage() {
                   />
 
                   {/* 5. Fundamentos Clínicos & Evidências Publicadas Interligadas (Estilo CID) */}
-                  <MedicationClinicalFoundationsSection />
+                  <MedicationClinicalFoundationsSection medication={medication} />
 
                   {/* 5. Conteúdo Relacionado (Doenças e Consensos) */}
                   {(relatedDiseases.length > 0 || relatedConsensos.length > 0) && (

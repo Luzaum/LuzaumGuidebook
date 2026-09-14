@@ -25,7 +25,7 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
   ],
   species: ['dog', 'cat'],
   category: 'hematologia',
-  categories: ['oncologia'],
+  categories: ['oncologia', 'clinica-medica'],
   tags: [
     'MDS',
     'Displasia mieloide',

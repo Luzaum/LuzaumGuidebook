@@ -290,13 +290,11 @@ export function DiseaseDetailPage() {
                 </span>
                 {getDiseaseCategorySlugs(disease).map((catSlug) => {
                   const visual = getSpecialtyVisual(catSlug);
-                  const Icon = visual.Icon;
                   return (
                     <span
                       key={catSlug}
-                      className="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
+                      className="inline-flex items-center rounded-full border border-border bg-muted/40 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground"
                     >
-                      <Icon className="h-3 w-3 text-muted-foreground" />
                       {visual.label}
                     </span>
                   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { Pill, LayoutGrid } from 'lucide-react';
+import { Pill } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
 import { ModuleSearchInput } from '../components/shared/ModuleSearchInput';
@@ -125,15 +125,12 @@ export function MedicationsPage() {
               aria-pressed={selectedClass === 'all'}
               onClick={() => setSelectedClass('all')}
               className={cn(
-                'group flex min-h-11 items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
+                'group flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border/60 px-4 py-2.5 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
                 selectedClass === 'all'
                   ? 'border-emerald-500 bg-emerald-500/[0.06] text-emerald-600 dark:text-emerald-400 shadow-[0_0_12px_-3px_rgba(16,185,129,0.12)]'
                   : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
               )}
             >
-              <span className="flex h-5 w-5 shrink-0 items-center justify-center">
-                <LayoutGrid className="h-4 w-4 transition-transform duration-300 group-hover:scale-110 text-muted-foreground" />
-              </span>
               <span className="flex-1 text-left text-xs sm:text-sm font-semibold leading-tight whitespace-normal break-words">{UI_TEXT.allClasses}</span>
               <span className={cn(
                 'rounded-full px-2 py-0.5 text-[10px] font-bold shrink-0',
@@ -145,7 +142,6 @@ export function MedicationsPage() {
 
             {activeClasses.map((cls) => {
               const isSelected = selectedClass === cls.slug;
-              const IconComponent = cls.icon;
 
               return (
                 <button
@@ -155,18 +151,12 @@ export function MedicationsPage() {
                   title={cls.description}
                   onClick={() => setSelectedClass(cls.slug)}
                   className={cn(
-                    'group flex min-h-11 items-center gap-3.5 rounded-xl border border-border/60 px-4 py-3 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
+                    'group flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border/60 px-4 py-2.5 text-left text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 motion-reduce:transition-none xl:w-full',
                     isSelected
                       ? cn('border-solid font-extrabold shadow-xs', cls.selectedClassName)
                       : 'bg-card/50 text-foreground/80 hover:border-border-hover hover:bg-card'
                   )}
                 >
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center">
-                    <IconComponent className={cn(
-                      'h-4.5 w-4.5 transition-transform duration-200 group-hover:scale-110 motion-reduce:transition-none',
-                      cls.iconClassName,
-                    )} />
-                  </span>
                   <span className="flex-1 text-left text-xs sm:text-sm font-semibold leading-tight whitespace-normal break-words">{cls.label}</span>
                   <span className={cn(
                     'rounded-full px-2 py-0.5 text-[10px] font-bold transition-colors shrink-0',
