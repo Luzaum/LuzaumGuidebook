@@ -23,7 +23,7 @@ function FormattedInline({ value, visual }: { value: string; visual?: DiseaseSec
           <mark
             key={`${part}-${index}`}
             className={cn(
-              'inline whitespace-nowrap rounded-sm px-1 py-px font-bold leading-[inherit] text-inherit [box-decoration-break:clone]',
+              'consulta-vet-readable-highlight inline whitespace-nowrap rounded-sm px-1 py-px font-bold leading-[inherit] text-inherit [box-decoration-break:clone]',
               visual.headerTintClass,
               visual.titleClass
             )}

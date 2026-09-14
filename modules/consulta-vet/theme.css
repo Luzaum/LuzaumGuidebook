@@ -99,6 +99,34 @@
   background-color: hsl(var(--background) / 0.82);
 }
 
+/* Grifos de leitura precisam manter contraste alto também no tema escuro. */
+.dark .consulta-vet-theme .consulta-vet-readable-highlight,
+.dark .consulta-vet-theme .consulta-vet-readable-highlights mark {
+  background-color: rgb(253 230 138 / 0.95) !important;
+  color: rgb(15 23 42) !important;
+}
+
+@media (max-width: 767px) {
+  /* Termos clínicos, URLs e citações longas não devem alargar ou esmagar colunas. */
+  .consulta-vet-theme .consulta-vet-main-scroll :where(p, li, dd, dt, td, th, figcaption) {
+    overflow-wrap: anywhere;
+  }
+
+  /* O título atual do breadcrumb ganha uma linha legível, sem truncar informação. */
+  .consulta-vet-theme .consulta-vet-breadcrumb {
+    flex-wrap: wrap;
+  }
+
+  .consulta-vet-theme .consulta-vet-breadcrumb > span:last-child {
+    flex-basis: 100%;
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
+    text-transform: none;
+    line-height: 1.5;
+  }
+}
+
 .consulta-vet-theme .consulta-vet-sidebar-panel {
   background-color: hsl(var(--sidebar) / 0.9);
   border-color: hsl(var(--sidebar-border));

@@ -344,4 +344,6 @@ export const commercialProductImageAssets: Record<string, string> = {
   "ezetimiba-generico-humano": "/assets/consulta-vet/commercial-products/ezetimiba-10mg-ems.webp",
   "benzafibrato-bezafibrato-generico": "/assets/consulta-vet/commercial-products/benzafibrato-200mg.webp",
   "leukeran-clorambucila-aspen": "/assets/consulta-vet/commercial-products/leukeran-2mg-aspen.png",
+  "pronefra-virbac": "https://br.virbac.com/files/live/sites/virbac-br/files/everydaycare/Feluro/401130_Packshot_Pronefra_60ml_face.png",
+  "nplate-romiplostim-amgen": "https://www.drugs.com/images/pills/custom/pill32728-1/nplate-250-mcg-lyophilized-powder-for-injection-medicine-114383.jpeg",
 };

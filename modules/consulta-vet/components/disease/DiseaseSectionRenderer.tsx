@@ -6,10 +6,12 @@ import {
   ArrowRight,
   BookOpen,
   Cat,
+  CheckCircle2,
   CircleAlert,
   Dog,
   FlaskConical,
   ShieldAlert,
+  Sparkles,
 } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import {
@@ -225,7 +227,7 @@ function getClinicalLead(value: string): string | null {
   const colonIndex = value.indexOf(':');
   if (colonIndex < 2 || colonIndex > 78) return null;
   const lead = value.slice(0, colonIndex).trim();
-  if (lead.includes('.') || lead.includes('://')) return null;
+  if (lead.includes('://') || /\.\s+[A-ZÀ-Ý]/.test(lead)) return null;
   return lead;
 }
 
@@ -265,7 +267,7 @@ function EvidenceFinding({
   return (
     <div
       data-clinical-visual="evidence"
-      className="border-y border-cyan-600/20 border-l-4 border-l-cyan-600 bg-cyan-500/[0.06] px-4 py-3.5 dark:border-cyan-400/20 dark:border-l-cyan-400 dark:bg-cyan-400/[0.08] md:px-5"
+      className="border-y border-cyan-600/20 border-l-4 border-l-cyan-600 bg-cyan-500/[0.06] px-4 py-3.5 dark:border-cyan-400/20 dark:border-l-cyan-400 dark:bg-cyan-400/[0.08] md:px-5 my-2 rounded-r-xl"
     >
       <div className="flex items-center gap-3">
         <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-cyan-500/15 text-cyan-800 dark:bg-cyan-400/15 dark:text-cyan-200">
@@ -286,7 +288,7 @@ function EvidenceFinding({
           {metrics.map((metric) => (
             <span
               key={metric}
-              className="inline-flex min-h-6 items-center border border-cyan-600/25 bg-background/70 px-2 py-0.5 text-[11px] font-bold text-cyan-900 dark:border-cyan-300/25 dark:bg-background/30 dark:text-cyan-100"
+              className="inline-flex min-h-6 items-center border border-cyan-600/25 bg-background/70 px-2 py-0.5 text-[11px] font-bold text-cyan-900 dark:border-cyan-300/25 dark:bg-background/30 dark:text-cyan-100 rounded"
             >
               {metric}
             </span>
@@ -297,102 +299,497 @@ function EvidenceFinding({
   );
 }
 
+function ClinicalSpeciesBadge({ species }: { species: 'dog' | 'cat' }) {
+  if (species === 'dog') {
+    return (
+      <span className="inline-flex items-center gap-1.5 rounded-full border border-sky-500/25 bg-sky-500/10 px-2.5 py-0.5 text-[11px] font-bold text-sky-800 dark:border-sky-400/30 dark:bg-sky-400/15 dark:text-sky-200">
+        <Dog className="h-3.5 w-3.5 text-sky-700 dark:text-sky-300" />
+        <span>Cães</span>
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/25 bg-violet-500/10 px-2.5 py-0.5 text-[11px] font-bold text-violet-800 dark:border-violet-400/30 dark:bg-violet-400/15 dark:text-violet-200">
+      <Cat className="h-3.5 w-3.5 text-violet-700 dark:text-violet-300" />
+      <span>Gatos</span>
+    </span>
+  );
+}
+
+function ClinicalCallout({
+  alertType,
+  title,
+  text,
+  visual,
+}: {
+  alertType: 'danger' | 'warning' | 'golden' | 'myth';
+  title: string;
+  text: string;
+  visual: DiseaseSectionVisual;
+}) {
+  let containerClass = 'border-l-4 border-l-rose-600 bg-rose-500/[0.08] dark:border-l-rose-500 dark:bg-rose-500/[0.12] border border-rose-500/25';
+  let titleClass = 'text-rose-900 dark:text-rose-100';
+  let badgeClass = 'bg-rose-500/15 text-rose-800 dark:bg-rose-400/20 dark:text-rose-200';
+  let Icon = ShieldAlert;
+
+  if (alertType === 'warning') {
+    containerClass = 'border-l-4 border-l-amber-500 bg-amber-500/[0.08] dark:border-l-amber-400 dark:bg-amber-500/[0.12] border border-amber-500/25';
+    titleClass = 'text-amber-950 dark:text-amber-100';
+    badgeClass = 'bg-amber-500/15 text-amber-900 dark:bg-amber-400/20 dark:text-amber-200';
+    Icon = AlertTriangle;
+  } else if (alertType === 'golden') {
+    containerClass = 'border-l-4 border-l-emerald-600 bg-emerald-500/[0.08] dark:border-l-emerald-400 dark:bg-emerald-500/[0.12] border border-emerald-500/25';
+    titleClass = 'text-emerald-950 dark:text-emerald-100';
+    badgeClass = 'bg-emerald-500/15 text-emerald-900 dark:bg-emerald-400/20 dark:text-emerald-200';
+    Icon = Sparkles;
+  } else if (alertType === 'myth') {
+    containerClass = 'border-l-4 border-l-purple-600 bg-purple-500/[0.07] dark:border-l-purple-400 dark:bg-purple-500/[0.10] border border-purple-500/25';
+    titleClass = 'text-purple-950 dark:text-purple-100';
+    badgeClass = 'bg-purple-500/15 text-purple-900 dark:bg-purple-400/20 dark:text-purple-200';
+    Icon = BookOpen;
+  }
+
+  return (
+    <div className={cn('rounded-xl p-3.5 md:p-4 my-2', containerClass)}>
+      <div className="flex items-start gap-3">
+        <span className={cn('flex h-7 w-7 shrink-0 items-center justify-center rounded-lg', badgeClass)}>
+          <Icon className="h-4 w-4" strokeWidth={2.3} />
+        </span>
+        <div className="min-w-0 flex-1">
+          <p className={cn('text-xs font-extrabold uppercase tracking-wider', titleClass)}>
+            {title}
+          </p>
+          <div className="mt-1 text-[14px] leading-relaxed text-foreground/90 md:text-[15px]">
+            <ClinicalInlineText value={text} visual={visual} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function ClinicalAlert({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  const alert = classifyAlert(value);
+  if (alert) {
+    return <ClinicalCallout alertType={alert.alertType} title={alert.title} text={alert.text} visual={visual} />;
+  }
   return (
     <div
       data-clinical-visual="alert"
-      className="flex items-start gap-3 border-l-4 border-l-rose-600 bg-rose-500/[0.07] px-4 py-3 dark:border-l-rose-400 dark:bg-rose-400/[0.09]"
+      className="flex items-start gap-3 border-l-4 border-l-rose-600 bg-rose-500/[0.07] px-4 py-3 dark:border-l-rose-400 dark:bg-rose-400/[0.09] my-2 rounded-r-xl border border-rose-500/20"
     >
       <CircleAlert className="mt-1 h-4 w-4 shrink-0 text-rose-700 dark:text-rose-300" strokeWidth={2.3} aria-hidden />
       <div className="min-w-0">
         <p className="text-[10px] font-bold uppercase tracking-[0.15em] text-rose-800/70 dark:text-rose-200/70">
           Atenção clínica
         </p>
-        <p className="mt-0.5 text-[14px] leading-7 text-foreground/90 md:text-[15px]">
+        <div className="mt-0.5 text-[14px] leading-7 text-foreground/90 md:text-[15px]">
           <ClinicalInlineText value={value} visual={visual} />
-        </p>
+        </div>
       </div>
     </div>
   );
 }
 
-/**
- * Quebra narrativas longas em blocos visuais: parágrafos e listas automáticas.
- */
-function StructuredNarrative({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
-  const blocks = value
-    .split(/\n\n+/)
-    .map((s) => s.trim())
-    .filter(Boolean);
+type ParsedChild =
+  | { type: 'text'; text: string; isNested?: boolean }
+  | { type: 'alert'; alertType: 'danger' | 'warning' | 'golden' | 'myth'; title: string; text: string; isNested?: boolean }
+  | { type: 'species'; species: 'dog' | 'cat'; title: string; text: string; isNested?: boolean };
+
+type ParsedNode =
+  | { type: 'paragraph'; text: string; isLead?: boolean }
+  | { type: 'alert'; alertType: 'danger' | 'warning' | 'golden' | 'myth'; title: string; text: string }
+  | { type: 'stepCard'; number: number; title: string; children: ParsedChild[] }
+  | { type: 'numberedList'; items: string[] }
+  | { type: 'bulletList'; items: ParsedChild[] };
+
+function classifyAlert(text: string): { alertType: 'danger' | 'warning' | 'golden' | 'myth'; title: string; text: string } | null {
+  const clean = text.replace(/^⚠️\s*/, '').trim();
+  
+  if (
+    /^(?:ALERTA\s+FARMACOL[ÓO]GICO(?:\s+ABSOLUTO)?|CONTRAINDICA[ÇC][ÃA]O(?:\s+FORMAL)?|ERRO(?:\s+CR[ÍI]TICO|\s+QUE\s+MATA)?|PROIBI[ÇC][ÕO]ES\s+FORMAIS)/i.test(clean)
+  ) {
+    const colonIdx = clean.indexOf(':');
+    const title = colonIdx > 0 ? clean.slice(0, colonIdx).trim() : 'Alerta Farmacológico / Clínico';
+    const body = colonIdx > 0 ? clean.slice(colonIdx + 1).trim() : clean;
+    return { alertType: 'danger', title, text: body };
+  }
+  
+  if (/^REGRA\s+(?:DE\s+OURO|VITAL)/i.test(clean)) {
+    const colonIdx = clean.indexOf(':');
+    const title = colonIdx > 0 ? clean.slice(0, colonIdx).trim() : 'Regra de Ouro';
+    const body = colonIdx > 0 ? clean.slice(colonIdx + 1).trim() : clean;
+    return { alertType: 'golden', title, text: body };
+  }
+
+  if (/^MITO(?:\s+\d+)?/i.test(clean)) {
+    const colonIdx = clean.indexOf(':');
+    const title = colonIdx > 0 ? clean.slice(0, colonIdx).trim() : 'Mito Clínico';
+    const body = colonIdx > 0 ? clean.slice(colonIdx + 1).trim() : clean;
+    return { alertType: 'myth', title, text: body };
+  }
+
+  if (/^(?:ATEN[ÇC][ÃA]O(?:\s+CL[ÍI]NICA)?|ALERTA|AVISO|CUIDADO)/i.test(clean)) {
+    const colonIdx = clean.indexOf(':');
+    const title = colonIdx > 0 ? clean.slice(0, colonIdx).trim() : 'Atenção Clínica';
+    const body = colonIdx > 0 ? clean.slice(colonIdx + 1).trim() : clean;
+    return { alertType: 'warning', title, text: body };
+  }
+
+  return null;
+}
+
+function classifyChild(rawText: string, isNested = false): ParsedChild {
+  const alert = classifyAlert(rawText);
+  if (alert) return { type: 'alert', ...alert, isNested };
+
+  // Species detection
+  const dogMatch = rawText.match(/^(?:Em\s+C[ãa]es|C[ãa]es|Caninos|Esp[ée]cie\s+Canina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
+  if (dogMatch) {
+    const rest = dogMatch[1].trim();
+    const innerAlert = classifyAlert(rest);
+    if (innerAlert) {
+      return { type: 'alert', alertType: innerAlert.alertType, title: `Em Cães — ${innerAlert.title}`, text: innerAlert.text, isNested };
+    }
+    return { type: 'species', species: 'dog', title: 'Cães', text: rest, isNested };
+  }
+
+  const catMatch = rawText.match(/^(?:Em\s+Gatos|Gatos|Felinos|Esp[ée]cie\s+Felina)(?:\s*—\s*|\s*:\s*)(.*)$/i);
+  if (catMatch) {
+    const rest = catMatch[1].trim();
+    const innerAlert = classifyAlert(rest);
+    if (innerAlert) {
+      return { type: 'alert', alertType: innerAlert.alertType, title: `Em Gatos — ${innerAlert.title}`, text: innerAlert.text, isNested };
+    }
+    return { type: 'species', species: 'cat', title: 'Gatos', text: rest, isNested };
+  }
+
+  return { type: 'text', text: rawText, isNested };
+}
+
+function parseClinicalNarrative(content: string): ParsedNode[] {
+  const rawLines = content.split(/\r?\n/).map((l) => l.trimEnd()).filter((l) => l.trim().length > 0);
+  if (rawLines.length === 0) return [];
+
+  const nodes: ParsedNode[] = [];
+  let i = 0;
+
+  while (i < rawLines.length) {
+    const rawLine = rawLines[i];
+    const line = rawLine.trim();
+
+    // Check if line is a numbered item: "1. Title"
+    const numMatch = line.match(NUMBERED_LINE_RE);
+    if (numMatch) {
+      const numMatchDetails = line.match(/^(\d+)[\).]\s+(.*)$/);
+      const num = numMatchDetails ? parseInt(numMatchDetails[1], 10) : nodes.length + 1;
+      const title = numMatchDetails ? numMatchDetails[2].trim() : line.replace(NUMBERED_LINE_RE, '').trim();
+
+      // Check if following lines are child bullets: "- Item"
+      const children: ParsedChild[] = [];
+      let j = i + 1;
+      while (j < rawLines.length) {
+        const nextRaw = rawLines[j];
+        const nextLine = nextRaw.trim();
+        const bulletMatch = nextLine.match(BULLET_LINE_RE);
+        if (bulletMatch) {
+          const isNested = nextRaw.search(/\S/) >= 2;
+          const cleanItem = nextLine.replace(BULLET_LINE_RE, '');
+          children.push(classifyChild(cleanItem, isNested));
+          j++;
+        } else if (nextLine.match(NUMBERED_LINE_RE)) {
+          break;
+        } else if (nextLine.endsWith(':') && j + 1 < rawLines.length && rawLines[j + 1].trim().match(BULLET_LINE_RE)) {
+          children.push({ type: 'text', text: nextLine, isNested: false });
+          j++;
+        } else {
+          break;
+        }
+      }
+
+      if (children.length > 0) {
+        nodes.push({ type: 'stepCard', number: num, title, children });
+        i = j;
+        continue;
+      } else {
+        // Standalone numbered item without child bullets.
+        const numItems: string[] = [title];
+        let k = i + 1;
+        while (k < rawLines.length) {
+          const nextLine = rawLines[k].trim();
+          const nextMatch = nextLine.match(/^(\d+)[\).]\s+(.*)$/);
+          if (nextMatch) {
+            if (k + 1 < rawLines.length && rawLines[k + 1].trim().match(BULLET_LINE_RE)) {
+              break;
+            }
+            numItems.push(nextMatch[2].trim());
+            k++;
+          } else {
+            break;
+          }
+        }
+        nodes.push({ type: 'numberedList', items: numItems });
+        i = k;
+        continue;
+      }
+    }
+
+    // Check if line is a bullet item: "- Item"
+    const bulletMatch = line.match(BULLET_LINE_RE);
+    if (bulletMatch) {
+      const bulletItems: ParsedChild[] = [];
+      let j = i;
+      while (j < rawLines.length) {
+        const nextRaw = rawLines[j];
+        const nextLine = nextRaw.trim();
+        const bMatch = nextLine.match(BULLET_LINE_RE);
+        if (bMatch) {
+          const isNested = nextRaw.search(/\S/) >= 2;
+          const cleanItem = nextLine.replace(BULLET_LINE_RE, '');
+          bulletItems.push(classifyChild(cleanItem, isNested));
+          j++;
+        } else {
+          break;
+        }
+      }
+      nodes.push({ type: 'bulletList', items: bulletItems });
+      i = j;
+      continue;
+    }
+
+    // Check if line is a standalone alert
+    const alert = classifyAlert(line);
+    if (alert) {
+      nodes.push({ type: 'alert', ...alert });
+      i++;
+      continue;
+    }
+
+    // Otherwise, paragraph
+    const isLead = line.endsWith(':');
+    nodes.push({ type: 'paragraph', text: line, isLead });
+    i++;
+  }
+
+  return nodes;
+}
+
+function ClinicalStepCard({
+  number,
+  title,
+  children,
+  visual,
+}: {
+  number: number;
+  title: string;
+  children: ParsedChild[];
+  visual: DiseaseSectionVisual;
+}) {
+  const isDogStep = /c[ãa]es|canin/i.test(title);
+  const isCatStep = /gatos|felin/i.test(title);
+  const isMythStep = /mito/i.test(title);
 
   return (
-    <div className="w-full space-y-4">
-      {blocks.map((block, i) => {
-        const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
-        if (lines.length >= 2 && lines.every((l) => BULLET_LINE_RE.test(l))) {
-          const items = lines.map((l) => l.replace(BULLET_LINE_RE, ''));
-          return <BulletList key={i} items={items} visual={visual} />;
-        }
-        if (lines.length >= 2 && lines.every((l) => NUMBERED_LINE_RE.test(l))) {
-          const items = lines.map((l) => l.replace(NUMBERED_LINE_RE, ''));
+    <div
+      className={cn(
+        'rounded-2xl border bg-card p-4 md:p-5 shadow-xs transition-all duration-200 space-y-3.5',
+        isMythStep
+          ? 'border-purple-500/30 bg-purple-500/[0.03] dark:bg-purple-500/[0.06]'
+          : isCatStep
+            ? 'border-violet-500/30 bg-violet-500/[0.03] dark:bg-violet-500/[0.06]'
+            : isDogStep
+              ? 'border-sky-500/30 bg-sky-500/[0.03] dark:bg-sky-500/[0.06]'
+              : 'border-border/80 hover:border-primary/40'
+      )}
+    >
+      <div className="flex items-center gap-3 border-b border-border/45 pb-3">
+        <span
+          className={cn(
+            'flex h-7 w-7 shrink-0 items-center justify-center rounded-xl text-xs font-black shadow-xs ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+            visual.diagnosticNumBgClass,
+            visual.diagnosticNumTextClass
+          )}
+        >
+          {number}
+        </span>
+        <div className="flex flex-wrap items-center gap-2 flex-1 min-w-0">
+          <h5 className="font-bold text-[15px] leading-snug text-foreground flex-1">
+            <ClinicalInlineText value={title} visual={visual} />
+          </h5>
+          {isCatStep && !isDogStep && <ClinicalSpeciesBadge species="cat" />}
+          {isDogStep && !isCatStep && <ClinicalSpeciesBadge species="dog" />}
+        </div>
+      </div>
+
+      <div className="space-y-2.5 pt-0.5">
+        {children.map((child, idx) => {
+          if (child.type === 'alert') {
+            return (
+              <div key={`child-alert-${idx}`} className={cn(child.isNested && 'pl-4')}>
+                <ClinicalCallout
+                  alertType={child.alertType}
+                  title={child.title}
+                  text={child.text}
+                  visual={visual}
+                />
+              </div>
+            );
+          }
+
+          if (child.type === 'species') {
+            return (
+              <div
+                key={`child-species-${idx}`}
+                className={cn(
+                  'flex items-start gap-3 rounded-xl border p-3 md:p-3.5',
+                  child.isNested && 'ml-4',
+                  child.species === 'cat'
+                    ? 'border-violet-500/25 bg-violet-500/[0.05] dark:bg-violet-500/[0.08]'
+                    : 'border-sky-500/25 bg-sky-500/[0.05] dark:bg-sky-500/[0.08]'
+                )}
+              >
+                <div className="pt-0.5">
+                  <ClinicalSpeciesBadge species={child.species} />
+                </div>
+                <div className="min-w-0 flex-1 text-[14px] leading-relaxed text-foreground/90 md:text-[15px]">
+                  <ClinicalInlineText value={child.text} visual={visual} />
+                </div>
+              </div>
+            );
+          }
+
+          const citation = getStudyCitation(child.text, visual);
+          if (citation) {
+            return (
+              <div key={`child-ev-${idx}`} className={cn(child.isNested && 'pl-4')}>
+                <EvidenceFinding value={child.text} citation={citation} visual={visual} />
+              </div>
+            );
+          }
+
+          const hasLead = Boolean(getClinicalLead(child.text));
           return (
-            <ol key={i} className="space-y-2.5">
-              {items.map((item, j) => (
-                <li key={j} className="flex items-start gap-3 text-[15px] leading-7 text-foreground/86">
-                  <span
-                    className={cn(
-                      'mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold shadow-sm ring-1 ring-black/[0.05] dark:ring-white/[0.08]',
-                      visual.diagnosticNumBgClass,
-                      visual.diagnosticNumTextClass
-                    )}
-                  >
-                    {j + 1}
-                  </span>
-                  <span className="min-w-0 pt-0.5">
-                    <ClinicalInlineText value={item} visual={visual} />
-                  </span>
-                </li>
-              ))}
-            </ol>
+            <div
+              key={`child-text-${idx}`}
+              className={cn(
+                'flex items-start gap-2.5 text-[14px] leading-relaxed text-foreground/88 md:text-[15px]',
+                child.isNested && 'ml-4',
+                hasLead ? 'border-l-2 bg-muted/[0.12] px-3.5 py-2 rounded-r-lg dark:bg-muted/[0.07]' : 'py-1',
+                hasLead && visual.leftBarClass
+              )}
+            >
+              {hasLead ? (
+                <span className={cn('mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-md', visual.iconWrapClass)}>
+                  <ArrowRight className={cn('h-3 w-3', visual.iconClass)} strokeWidth={2.5} />
+                </span>
+              ) : (
+                <span className={cn('mt-2 h-1.5 w-1.5 shrink-0 rounded-full', visual.bulletDotClass)} />
+              )}
+              <div className="min-w-0 flex-1">
+                <ClinicalInlineText value={child.text} visual={visual} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function EnhancedBulletList({ items, visual }: { items: ParsedChild[]; visual: DiseaseSectionVisual }) {
+  return (
+    <div className="space-y-2.5 my-1.5">
+      {items.map((item, idx) => {
+        if (item.type === 'alert') {
+          return (
+            <div key={`b-alert-${idx}`} className={cn(item.isNested && 'pl-4')}>
+              <ClinicalCallout
+                alertType={item.alertType}
+                title={item.title}
+                text={item.text}
+                visual={visual}
+              />
+            </div>
           );
         }
 
-        const citation = getStudyCitation(block, visual);
+        if (item.type === 'species') {
+          return (
+            <div
+              key={`b-species-${idx}`}
+              className={cn(
+                'flex items-start gap-3 rounded-xl border p-3 md:p-3.5',
+                item.isNested && 'ml-4',
+                item.species === 'cat'
+                  ? 'border-violet-500/25 bg-violet-500/[0.05] dark:bg-violet-500/[0.08]'
+                  : 'border-sky-500/25 bg-sky-500/[0.05] dark:bg-sky-500/[0.08]'
+              )}
+            >
+              <div className="pt-0.5">
+                <ClinicalSpeciesBadge species={item.species} />
+              </div>
+              <div className="min-w-0 flex-1 text-[14px] leading-relaxed text-foreground/90 md:text-[15px]">
+                <ClinicalInlineText value={item.text} visual={visual} />
+              </div>
+            </div>
+          );
+        }
+
+        const citation = getStudyCitation(item.text, visual);
         if (citation) {
-          return <EvidenceFinding key={i} value={block} citation={citation} visual={visual} />;
+          return (
+            <div key={`b-ev-${idx}`} className={cn(item.isNested && 'pl-4')}>
+              <EvidenceFinding value={item.text} citation={citation} visual={visual} />
+            </div>
+          );
         }
 
-        if (CLINICAL_ALERT_RE.test(block)) {
-          return <ClinicalAlert key={i} value={block} visual={visual} />;
-        }
-
+        const hasLead = Boolean(getClinicalLead(item.text));
         return (
-          <p key={i} className="text-[14px] leading-7 text-foreground/88 [text-wrap:pretty] md:text-[15px]">
-            <ClinicalInlineText value={block} visual={visual} />
-          </p>
+          <div
+            key={`b-text-${idx}`}
+            className={cn(
+              'flex items-start gap-3 text-[14px] leading-relaxed text-foreground/88 md:text-[15px]',
+              item.isNested && 'ml-4',
+              hasLead ? 'border-l-2 bg-muted/[0.12] px-3.5 py-2.5 rounded-r-xl dark:bg-muted/[0.07]' : 'py-1',
+              hasLead && visual.leftBarClass
+            )}
+          >
+            {hasLead ? (
+              <span className={cn('mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-md', visual.iconWrapClass)}>
+                <ArrowRight className={cn('h-3 w-3', visual.iconClass)} strokeWidth={2.5} />
+              </span>
+            ) : (
+              <span className={cn('mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full', visual.bulletDotClass)} />
+            )}
+            <div className="min-w-0 flex-1">
+              <ClinicalInlineText value={item.text} visual={visual} />
+            </div>
+          </div>
         );
       })}
     </div>
   );
 }
 
-function BulletList({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
+function EnhancedNumberedList({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
   return (
-    <ul className="space-y-2.5">
-      {items.map((item, index) => {
+    <ol className="space-y-3 my-1.5">
+      {items.map((item, idx) => {
         const citation = getStudyCitation(item, visual);
         if (citation) {
           return (
-            <li key={`${item}-${index}`}>
+            <li key={`num-ev-${idx}`}>
               <EvidenceFinding value={item} citation={citation} visual={visual} />
             </li>
           );
         }
 
-        if (CLINICAL_ALERT_RE.test(item)) {
+        const alert = classifyAlert(item);
+        if (alert) {
           return (
-            <li key={`${item}-${index}`}>
-              <ClinicalAlert value={item} visual={visual} />
+            <li key={`num-alert-${idx}`}>
+              <ClinicalCallout alertType={alert.alertType} title={alert.title} text={alert.text} visual={visual} />
             </li>
           );
         }
@@ -400,34 +797,114 @@ function BulletList({ items, visual }: { items: string[]; visual: DiseaseSection
         const hasLead = Boolean(getClinicalLead(item));
         return (
           <li
-            key={`${item}-${index}`}
-            data-clinical-visual={hasLead ? 'action' : 'finding'}
+            key={`num-item-${idx}`}
             className={cn(
-              'flex items-start gap-3 text-[14px] leading-7 text-foreground/88 md:text-[15px]',
-              hasLead && 'border-l-2 bg-muted/[0.12] px-3 py-2 dark:bg-muted/[0.07]',
+              'flex items-start gap-3 rounded-xl border border-border/65 bg-card/60 p-3.5 text-[14px] leading-relaxed text-foreground/90 shadow-2xs md:text-[15px]',
+              hasLead && 'border-l-4',
               hasLead && visual.leftBarClass
             )}
           >
-            {hasLead ? (
-              <span
-                className={cn(
-                  'mt-1.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-md',
-                  visual.iconWrapClass
-                )}
-                aria-hidden
-              >
-                <ArrowRight className={cn('h-3 w-3', visual.iconClass)} strokeWidth={2.5} />
-              </span>
-            ) : (
-              <span className={cn('mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full', visual.bulletDotClass)} />
-            )}
-            <span className="min-w-0">
-              <ClinicalInlineText value={item} visual={visual} />
+            <span
+              className={cn(
+                'mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg text-[11px] font-bold shadow-xs ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+                visual.diagnosticNumBgClass,
+                visual.diagnosticNumTextClass
+              )}
+            >
+              {idx + 1}
             </span>
+            <div className="min-w-0 flex-1 pt-0.5">
+              <ClinicalInlineText value={item} visual={visual} />
+            </div>
           </li>
         );
       })}
-    </ul>
+    </ol>
+  );
+}
+
+function BulletList({ items, visual }: { items: string[]; visual: DiseaseSectionVisual }) {
+  const parsedItems = items.map((it) => classifyChild(it));
+  return <EnhancedBulletList items={parsedItems} visual={visual} />;
+}
+
+/**
+ * Quebra narrativas longas em blocos semânticos e visuais de alta legibilidade:
+ * parágrafos introdutórios, cards de protocolos com etapas, listas estilizadas,
+ * callouts de alerta (farmacológicos/clínicos/mitos) e badges de espécie.
+ */
+function StructuredNarrative({ value, visual }: { value: string; visual: DiseaseSectionVisual }) {
+  const nodes = parseClinicalNarrative(value);
+
+  if (nodes.length === 0) return null;
+
+  return (
+    <div className="w-full space-y-4">
+      {nodes.map((node, i) => {
+        if (node.type === 'stepCard') {
+          return (
+            <ClinicalStepCard
+              key={`node-step-${node.number}-${i}`}
+              number={node.number}
+              title={node.title}
+              children={node.children}
+              visual={visual}
+            />
+          );
+        }
+
+        if (node.type === 'bulletList') {
+          return <EnhancedBulletList key={`node-bl-${i}`} items={node.items} visual={visual} />;
+        }
+
+        if (node.type === 'numberedList') {
+          return <EnhancedNumberedList key={`node-nl-${i}`} items={node.items} visual={visual} />;
+        }
+
+        if (node.type === 'alert') {
+          return (
+            <ClinicalCallout
+              key={`node-alert-${i}`}
+              alertType={node.alertType}
+              title={node.title}
+              text={node.text}
+              visual={visual}
+            />
+          );
+        }
+
+        // Paragraph
+        const citation = getStudyCitation(node.text, visual);
+        if (citation) {
+          return <EvidenceFinding key={`node-ev-${i}`} value={node.text} citation={citation} visual={visual} />;
+        }
+
+        const alert = classifyAlert(node.text);
+        if (alert) {
+          return (
+            <ClinicalCallout
+              key={`node-alert-${i}`}
+              alertType={alert.alertType}
+              title={alert.title}
+              text={alert.text}
+              visual={visual}
+            />
+          );
+        }
+
+        return (
+          <p
+            key={`node-p-${i}`}
+            className={cn(
+              'text-[14px] leading-relaxed text-foreground/88 [text-wrap:pretty] md:text-[15px]',
+              node.isLead && 'font-medium text-foreground pb-1'
+            )}
+          >
+            <ClinicalInlineText value={node.text} visual={visual} />
+          </p>
+        );
+      })}
+    </div>
   );
 }
 

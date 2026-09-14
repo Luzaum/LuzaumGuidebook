@@ -137,6 +137,7 @@ const SUBCLASS_LABELS: Record<CommercialMedicationSubclass, string> = {
   infectious_antibiotic: 'Antimicrobianos sistêmicos',
   oncologic_tki: 'Inibidores de tirosina quinase',
   oncologic_chemotherapy: 'Quimioterápicos / agentes citotóxicos',
+  emergency_thrombopoietin: 'Agonistas de TPO / Trombopoiese (PTI)',
   repro_antigalactogenic: 'Antigalactogênicos',
   ortho_joint_support: 'Suporte articular',
   ortho_antiinflammatory: 'Anti-inflamatórios ortopédicos',
@@ -209,8 +210,8 @@ const SUBCLASSES_BY_CLASS: Record<CommercialMedicationClass, CommercialMedicatio
   antiinflammatory: ['ortho_antiinflammatory'],
   nutraceutical: ['nutra_omega3', 'nutra_general_support', 'nutra_mineral_vitamin', 'gi_probiotic'],
   reproductive: ['repro_antigalactogenic'],
-  oncologic: ['oncologic_tki', 'oncologic_chemotherapy'],
-  emergency: ['sedative_anesthetic', 'endocrine_diagnostic'],
+  oncologic: ['oncologic_tki', 'oncologic_chemotherapy', 'emergency_thrombopoietin'],
+  emergency: ['sedative_anesthetic', 'endocrine_diagnostic', 'emergency_thrombopoietin'],
   parasiticide: [
     'parasite_oral_isoxazoline_dog',
     'parasite_oral_endectocide_dog',

@@ -26,8 +26,8 @@ export function ReferencesList({
             id={reference.id || `reference-${index + 1}`}
             className="scroll-mt-24 py-5 transition-colors duration-500 first:pt-0 last:pb-0 target:rounded-2xl target:bg-primary/[0.05] target:ring-2 target:ring-primary/25 target:ring-offset-2 target:ring-offset-background"
           >
-            <div className="flex flex-wrap items-start justify-between gap-3">
-              <div className="min-w-0 flex-1">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+              <div className="w-full min-w-0 flex-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="inline-flex h-7 min-w-7 items-center justify-center rounded-full border border-border bg-muted/45 px-2 text-xs font-bold text-foreground">
                     {index + 1}
@@ -54,7 +54,7 @@ export function ReferencesList({
                   href={reference.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary"
+                  className="inline-flex min-h-11 w-full shrink-0 items-center justify-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-primary/30 hover:text-primary sm:min-h-0 sm:w-auto sm:justify-start"
                 >
                   <Link2 className="h-4 w-4" />
                   Abrir fonte
@@ -79,9 +79,9 @@ export function ReferencesList({
   }
 
   return (
-    <section className={`rounded-[30px] border border-border bg-card/92 p-7 shadow-sm md:p-8 ${className || ''}`.trim()}>
-      <div className="mb-6">
-        <h2 className="text-[28px] font-bold tracking-tight text-foreground">{title}</h2>
+    <section className={`rounded-[22px] border border-border bg-card/92 p-4 shadow-sm md:rounded-[30px] md:p-8 ${className || ''}`.trim()}>
+      <div className="mb-5 md:mb-6">
+        <h2 className="text-[22px] font-bold tracking-tight text-foreground md:text-[28px]">{title}</h2>
         <p className="mt-2 text-sm leading-7 text-muted-foreground">
           Referências de apoio organizadas de forma mais compacta e discreta.
         </p>

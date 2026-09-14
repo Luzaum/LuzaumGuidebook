@@ -32,9 +32,9 @@ export function MedicationClinicalStudiesSection({
             className="flex flex-col justify-between rounded-2xl border border-border/80 bg-muted/20 p-5 sm:p-6 space-y-4 transition hover:border-emerald-500/30 hover:bg-muted/40"
           >
             <div className="space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-emerald-500/15 px-2.5 py-1 text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
-                  <FlaskConical className="h-3.5 w-3.5" />
+              <div className="flex flex-wrap items-start justify-between gap-2">
+                <span className="inline-flex min-w-0 max-w-full items-center gap-1.5 break-words rounded-lg bg-emerald-500/15 px-2.5 py-1 text-[11px] font-bold text-emerald-800 dark:text-emerald-300">
+                  <FlaskConical className="h-3.5 w-3.5 shrink-0" />
                   {study.journal}
                 </span>
                 {study.referenceId && (

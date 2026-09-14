@@ -17,12 +17,17 @@ export interface EditorialSystemGroup {
 
 export interface EditorialReference {
   id?: string;
-  citationText: string;
+  title?: string;
+  citationText?: string;
   sourceType?: string | null;
   url?: string | null;
   notes?: string | null;
   /** Ex.: A, B, meta-análise, consenso — livre para o editorial. */
   evidenceLevel?: string | null;
+  authors?: string;
+  year?: string | number;
+  journal?: string;
+  citation?: string;
 }
 
 export interface EditorialDrugProtocol {

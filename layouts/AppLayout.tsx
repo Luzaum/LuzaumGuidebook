@@ -287,7 +287,7 @@ export function AppLayout() {
                           <img
                             src={module.iconImage}
                             alt={`${module.title} logo`}
-                            className="object-contain flex-shrink-0 dark:invert"
+                            className="object-contain flex-shrink-0"
                             style={{ width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' }}
                           />
                         ) : (
@@ -329,7 +329,7 @@ export function AppLayout() {
                           <img
                             src={module.iconImage}
                             alt={`${module.title} logo`}
-                            className="object-contain flex-shrink-0 dark:invert"
+                            className="object-contain flex-shrink-0"
                             style={{ width: '20px', height: '20px', minWidth: '20px', minHeight: '20px' }}
                           />
                         ) : (
@@ -416,10 +416,6 @@ export function AppLayout() {
             </Link>
           )}
 
-          <div className="flex items-center justify-between gap-2 px-1">
-            <span className="text-[9px] font-black uppercase tracking-wider text-slate-650">Tema Visual</span>
-            <ThemeToggle />
-          </div>
         </div>
       </div>
     )

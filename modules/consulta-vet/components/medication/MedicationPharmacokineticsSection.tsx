@@ -119,7 +119,7 @@ export function MedicationPharmacokineticsSection({
   if (!data) return null;
 
   return (
-    <section id="farmacocinetica" className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+    <section id="farmacocinetica" className="consulta-vet-readable-highlights rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
       <div className="flex items-center gap-3 border-b border-border/70 pb-4">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">
           <Activity className="h-5 w-5" />

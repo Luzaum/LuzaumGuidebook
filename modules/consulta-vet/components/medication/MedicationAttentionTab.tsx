@@ -148,7 +148,7 @@ export function MedicationAttentionTab({
   }, [attention?.precautions]);
 
   return (
-    <div className="space-y-8 animate-in fade-in-50 duration-300">
+    <div className="consulta-vet-readable-highlights space-y-8 animate-in fade-in-50 duration-300">
       {/* Placa de Alerta Principal / Warning Board */}
       <div className="rounded-3xl border-2 border-amber-500/40 bg-gradient-to-br from-amber-500/15 via-amber-950/20 to-background p-6 sm:p-8 shadow-lg">
         <div className="flex flex-col sm:flex-row items-start gap-4">

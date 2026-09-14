@@ -58,12 +58,12 @@ export function OncologyBsaTable({
       {/* Barra de Ações da Tabela */}
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         {/* Alternador de Espécie */}
-        <div className="flex rounded-xl border border-border/80 bg-muted/40 p-1">
+        <div className="grid w-full grid-cols-2 rounded-xl border border-border/80 bg-muted/40 p-1 sm:flex sm:w-auto">
           <button
             type="button"
             onClick={() => onSpeciesChange('canine')}
             className={cn(
-              'rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+              'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
               species === 'canine'
                 ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
                 : 'text-muted-foreground hover:text-foreground'
@@ -75,7 +75,7 @@ export function OncologyBsaTable({
             type="button"
             onClick={() => onSpeciesChange('feline')}
             className={cn(
-              'rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+              'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
               species === 'feline'
                 ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
                 : 'text-muted-foreground hover:text-foreground'
@@ -100,8 +100,8 @@ export function OncologyBsaTable({
 
       {/* Tabela de Conversão */}
       <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm">
-        <div className="max-h-[520px] overflow-y-auto">
-          <table className="w-full border-collapse text-left text-xs">
+        <div className="max-h-[520px] overflow-auto">
+          <table className="w-full min-w-[520px] border-collapse text-left text-xs">
             <thead className="sticky top-0 z-10 border-b border-border/80 bg-muted/90 backdrop-blur-md">
               <tr>
                 <th className="px-4 py-3 font-bold text-foreground">Peso Corporal (kg)</th>

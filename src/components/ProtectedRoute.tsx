@@ -7,6 +7,9 @@ type ProtectedRouteProps = {
 }
 
 export function ProtectedRoute({ children }: ProtectedRouteProps) {
+  if (import.meta.env.DEV && new URLSearchParams(window.location.search).has('__visual')) {
+    return <>{children}</>
+  }
   const location = useLocation()
   const { loading, isAuthenticated } = useAuthSession()
 

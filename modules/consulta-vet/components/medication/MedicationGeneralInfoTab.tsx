@@ -285,57 +285,67 @@ export function MedicationGeneralInfoTab({
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
-          <div className="flex flex-col justify-between rounded-2xl bg-emerald-500/10 border border-emerald-500/25 p-5 space-y-3">
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 block mb-1">
-                Categoria de Prescrição
-              </span>
-              <span className="text-base font-bold text-emerald-950 dark:text-emerald-100">
-                {generalInfo?.prescriptionType?.category || 'Receita Médica Veterinária Simples'}
-              </span>
-            </div>
-            <div className="flex items-center gap-2 pt-2 border-t border-emerald-500/20 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
-              <BookmarkCheck className="h-4 w-4" />
-              <span>Dispensação em via única ao tutor</span>
-            </div>
-          </div>
+        {(() => {
+          const pType = typeof generalInfo?.prescriptionType === 'string'
+            ? { category: 'Receita Médica Veterinária', guidelines: generalInfo.prescriptionType, retentionRequired: false, ordinanceOrLaw: undefined }
+            : generalInfo?.prescriptionType;
 
-          <div className="rounded-2xl bg-muted/30 border border-border/80 p-5 space-y-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-              Base Normativa
-            </span>
-            <p className="text-sm font-semibold text-foreground">
-              {generalInfo?.prescriptionType?.ordinanceOrLaw || 'Instrução Normativa MAPA nº 35/2017'}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              Enquadramento nas normas federais do MAPA para produtos veterinários e RDC ANVISA para fármacos humanos.
-            </p>
-          </div>
+          return (
+            <>
+              <div className="grid gap-5 md:grid-cols-3">
+                <div className="flex flex-col justify-between rounded-2xl bg-emerald-500/10 border border-emerald-500/25 p-5 space-y-3">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-800 dark:text-emerald-300 block mb-1">
+                      Categoria de Prescrição
+                    </span>
+                    <span className="text-base font-bold text-emerald-950 dark:text-emerald-100">
+                      {pType?.category || 'Receita Médica Veterinária Simples'}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 pt-2 border-t border-emerald-500/20 text-xs font-semibold text-emerald-800 dark:text-emerald-300">
+                    <BookmarkCheck className="h-4 w-4" />
+                    <span>Dispensação em via única ao tutor</span>
+                  </div>
+                </div>
 
-          <div className="rounded-2xl bg-muted/30 border border-border/80 p-5 space-y-2">
-            <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
-              Exigência de Retenção Farmacêutica
-            </span>
-            <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
-              {generalInfo?.prescriptionType?.retentionRequired
-                ? 'Retenção Obrigatória de 1 via'
-                : 'NÃO exige retenção de receita'}
-            </p>
-            <p className="text-xs text-muted-foreground leading-relaxed">
-              {generalInfo?.prescriptionType?.retentionRequired
-                ? 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1) com retenção obrigatória da 1ª via pelo estabelecimento dispensador e validade de 30 dias.'
-                : 'Sem controle especial sob Portaria SVS/MS nº 344/1998; dispensa notificação ou talonário de controle.'}
-            </p>
-          </div>
-        </div>
+                <div className="rounded-2xl bg-muted/30 border border-border/80 p-5 space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
+                    Base Normativa
+                  </span>
+                  <p className="text-sm font-semibold text-foreground">
+                    {pType?.ordinanceOrLaw || 'Instrução Normativa MAPA nº 35/2017'}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    Enquadramento nas normas federais do MAPA para produtos veterinários e RDC ANVISA para fármacos humanos.
+                  </p>
+                </div>
 
-        {generalInfo?.prescriptionType?.guidelines && (
-          <div className="rounded-2xl bg-muted/20 border border-border p-4 text-xs leading-relaxed text-muted-foreground">
-            <strong className="text-foreground font-semibold">Orientações de Prescrição: </strong>
-            {generalInfo.prescriptionType.guidelines}
-          </div>
-        )}
+                <div className="rounded-2xl bg-muted/30 border border-border/80 p-5 space-y-2">
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground block">
+                    Exigência de Retenção Farmacêutica
+                  </span>
+                  <p className="text-sm font-bold text-emerald-600 dark:text-emerald-400">
+                    {pType?.retentionRequired
+                      ? 'Retenção Obrigatória de 1 via'
+                      : 'NÃO exige retenção de receita'}
+                  </p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {pType?.retentionRequired
+                      ? 'Sujeito a Receita de Controle Especial em 2 vias (Portaria SVS/MS nº 344/1998, Lista C1) com retenção obrigatória da 1ª via pelo estabelecimento dispensador e validade de 30 dias.'
+                      : 'Sem controle especial sob Portaria SVS/MS nº 344/1998; dispensa notificação ou talonário de controle.'}
+                  </p>
+                </div>
+              </div>
+
+              {pType?.guidelines && (
+                <div className="rounded-2xl bg-muted/20 border border-border p-4 text-xs leading-relaxed text-muted-foreground">
+                  <strong className="text-foreground font-semibold">Orientações de Prescrição: </strong>
+                  {pType.guidelines}
+                </div>
+              )}
+            </>
+          );
+        })()}
       </section>
     </div>
   );

@@ -68,6 +68,8 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'clindamicina',
   'dipirona',
   'fenobarbital',
+  'hidroxido-de-aluminio',
+  'pronefra',
   'sulfametoxazol-trimetoprima',
   'tramadol',
 ] as const;

@@ -161,7 +161,10 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                 </p>
               ) : null}
               <div className="overflow-x-auto rounded-xl border border-border/70">
-                <table className="min-w-full divide-y divide-border/70 text-left text-sm">
+                <table
+                  className="min-w-full divide-y divide-border/70 text-left text-sm"
+                  style={{ minWidth: `${Math.max(520, block.columns.length * 160)}px` }}
+                >
                   <thead className="bg-muted/60 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
                     <tr>
                       {block.columns.map((column) => (
@@ -198,7 +201,10 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                 </p>
               ) : null}
               <div className="overflow-x-auto rounded-xl border border-border/70">
-                <table className="min-w-full divide-y divide-border/70 text-left text-sm">
+                <table
+                  className="min-w-full divide-y divide-border/70 text-left text-sm"
+                  style={{ minWidth: `${Math.max(560, (block.columns.length + 1) * 160)}px` }}
+                >
                   <thead className="bg-background/80 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
                     <tr>
                       <th scope="col" className="px-4 py-3">

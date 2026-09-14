@@ -54,17 +54,23 @@ export interface MedicationDose {
   }>;
 }
 
+
 export interface MedicationPresentation {
   id: string;
-  label: string;
+  label?: string;
+  name?: string;
+  brand?: string;
   form: string;
   concentrationValue?: number;
   concentrationUnit?: string;
   concentrationOptions?: Array<{
     id: string;
     label: string;
-    concentrationValue: number;
-    concentrationUnit: string;
+    concentrationValue?: number;
+    concentrationUnit?: string;
+    unitValue?: number;
+    unitLabel?: string;
+    isDefault?: boolean;
   }>;
   packInfo?: string;
   route?: string;
@@ -72,16 +78,12 @@ export interface MedicationPresentation {
   /** Fator estruturado do gotejador; necessário para converter mL em gotas com segurança. */
   dropsPerMl?: number;
   channel?: MedicationSupplyChannel;
+  presentation?: string;
   /** Produto da seção Comerciais que representa esta apresentação. */
   commercialProductSlug?: string;
-}
-
-export interface MedicationPriceReference {
-  amountBrl: number;
-  label: string;
-  presentation: string;
-  /** Produto da seção Comerciais que representa esta apresentação. */
-  commercialProductSlug?: string;
+  commercialType?: string;
+  packageDescription?: string;
+  calculatedMlPerKgFormula?: string;
 }
 
 export interface MedicationPriceReference {
@@ -140,7 +142,7 @@ export interface MedicationSpeciesPeculiarity {
   species: 'dog' | 'cat';
   title: string;
   description: string;
-  clinicalImplications: string;
+  clinicalImplications?: string;
 }
 
 export interface MedicationPrecautionDetailed {
@@ -194,29 +196,34 @@ export interface MedicationAttentionData {
   doseReductionGuidelines?: MedicationDoseReductionGuideline[];
   drugInteractionsDetailed?: MedicationDrugInteractionDetailed[];
   dilutionGuide?: MedicationDilutionGuide;
+  attentionSubtitle?: string;
 }
 
 export interface MedicationGeneralInfoData {
   routesDetailed?: MedicationAdministrationRouteDetailed[];
   pharmacologicalClassification?: {
-    chemicalClass: string;
+    chemicalClass?: string;
     chemicalClassDescription?: string;
-    therapeuticClass: string;
+    therapeuticClass?: string;
     therapeuticClassDescription?: string;
     atcCode?: string;
     receptorTargets?: string[];
+    receptorsAndSites?: Array<string | { name: string; type: string; action: string; clinicalEffect: string; }>;
+    autonomicAndEndocrineEffects?: Array<{ system: string; effect: string; description: string; }>;
     detailedTargets?: Array<{
       target: string;
       action: string;
       clinicalSignificance: string;
     }>;
   };
-  prescriptionType?: {
-    category: string;
-    ordinanceOrLaw?: string;
-    retentionRequired: boolean;
-    guidelines: string;
-  };
+  prescriptionType?:
+    | string
+    | {
+        category: string;
+        ordinanceOrLaw?: string;
+        retentionRequired: boolean;
+        guidelines: string;
+      };
   dilutionGuide?: MedicationDilutionGuide;
   speciesPeculiarities?: MedicationSpeciesPeculiarity[];
   curiositiesAndHistory?: string[];

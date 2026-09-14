@@ -83,24 +83,24 @@ export function OncologyBsaCalculator({
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           {/* Coluna Esquerda: Entrada de Dados */}
           <div className="flex-1 space-y-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary/10 text-primary">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div className="flex w-full min-w-0 items-center gap-2.5 sm:w-auto">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
                   <Calculator className="h-5 w-5" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-base font-bold text-foreground">Calculadora de Superfície Corpórea (BSA)</h3>
                   <p className="text-xs text-muted-foreground">Fórmula oficial BSAVA: K × Peso²⁄³ (m²)</p>
                 </div>
               </div>
 
               {/* Seletor Cão / Gato */}
-              <div className="flex rounded-xl border border-border/80 bg-muted/40 p-1">
+              <div className="grid w-full grid-cols-2 rounded-xl border border-border/80 bg-muted/40 p-1 sm:flex sm:w-auto">
                 <button
                   type="button"
                   onClick={() => onSpeciesChange('canine')}
                   className={cn(
-                    'rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+                    'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
                     species === 'canine'
                       ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
                       : 'text-muted-foreground hover:text-foreground'
@@ -112,7 +112,7 @@ export function OncologyBsaCalculator({
                   type="button"
                   onClick={() => onSpeciesChange('feline')}
                   className={cn(
-                    'rounded-lg px-3 py-1.5 text-xs font-semibold transition-all',
+                    'rounded-lg px-2 py-1.5 text-xs font-semibold transition-all sm:px-3',
                     species === 'feline'
                       ? 'bg-background text-foreground shadow-sm ring-1 ring-border/60'
                       : 'text-muted-foreground hover:text-foreground'

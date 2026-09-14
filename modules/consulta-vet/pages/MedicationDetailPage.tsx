@@ -224,7 +224,7 @@ export function MedicationDetailPage() {
       <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto w-full max-w-[1580px] px-3 py-2.5 md:px-8 md:py-6 xl:px-10">
         {/* Breadcrumb de navegação */}
         <nav
-          className="mb-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
+          className="consulta-vet-breadcrumb mb-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
           aria-label="Navegação estrutural"
         >
           <Link to="/consulta-vet" className="transition-colors hover:text-primary">

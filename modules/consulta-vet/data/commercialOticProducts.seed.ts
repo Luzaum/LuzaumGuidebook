@@ -26,6 +26,7 @@ import { gardenalKeppraCommercialProductsSeed } from './gardenalKeppraCommercial
 import { bexacatCommercialProductSeed } from './bexacatCommercialProduct.seed';
 import { requestedClinicalCommercialProductsSeed } from './requestedClinicalCommercialProducts.seed';
 import { lomustineCommercialProductsSeed } from './lomustineCommercialProducts.seed';
+import { pronefraNplateCommercialProductsSeed } from './pronefraNplateCommercialProducts.seed';
 
 const PRICE_SOURCE_DATE = '2026-05-16';
 const ECTO_PRICE_SOURCE_DATE = '2026-05-24';
@@ -77,6 +78,7 @@ const commercialProductsRaw: CommercialMedicationProduct[] = [
   ...bexacatCommercialProductSeed,
   ...requestedClinicalCommercialProductsSeed,
   ...lomustineCommercialProductsSeed,
+  ...pronefraNplateCommercialProductsSeed,
   {
     id: 'epiotic-sis-virbac',
     slug: 'epiotic-sis',

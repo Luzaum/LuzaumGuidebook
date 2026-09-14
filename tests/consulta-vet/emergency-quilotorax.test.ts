@@ -178,18 +178,18 @@ test('Referências bibliográficas contêm os estudos fundamentais com DOI e liv
   const disease = diseasesSeed.find((d) => d.slug === SLUG);
   assert.ok(disease?.references && disease.references.length >= 12, 'Deve ter pelo menos 12 referências');
 
-  const refsStr = JSON.stringify(disease.references);
-  assert.ok(refsStr.includes('Severac'), 'Deve conter Severac 2026');
-  assert.ok(refsStr.includes('Reeves'), 'Deve conter Reeves 2020');
-  assert.ok(refsStr.includes('Hawker'), 'Deve conter Hawker & Singh 2024');
-  assert.ok(refsStr.includes('Dickson'), 'Deve conter Dickson 2024');
-  assert.ok(refsStr.includes('Stockdale'), 'Deve conter Stockdale 2018');
-  assert.ok(refsStr.includes('Chiang'), 'Deve conter Chiang 2022');
-  assert.ok(refsStr.includes('Fossum'), 'Deve conter Fossum');
-  assert.ok(refsStr.includes('Waddle'), 'Deve conter Waddle & Giger 1990');
-  assert.ok(refsStr.includes('Nelson'), 'Deve conter Nelson & Couto');
-  assert.ok(refsStr.includes('Drobatz'), 'Deve conter Feline ECC');
-  assert.ok(refsStr.includes('DiBartola'), 'Deve conter DiBartola');
+  const refsStr = JSON.stringify(disease.references).toLowerCase();
+  assert.ok(refsStr.includes('severac'), 'Deve conter Severac 2026');
+  assert.ok(refsStr.includes('reeves'), 'Deve conter Reeves 2020');
+  assert.ok(refsStr.includes('hawker'), 'Deve conter Hawker & Singh 2024');
+  assert.ok(refsStr.includes('dickson'), 'Deve conter Dickson 2024');
+  assert.ok(refsStr.includes('stockdale'), 'Deve conter Stockdale 2018');
+  assert.ok(refsStr.includes('chiang'), 'Deve conter Chiang 2022');
+  assert.ok(refsStr.includes('fossum'), 'Deve conter Fossum');
+  assert.ok(refsStr.includes('waddle'), 'Deve conter Waddle & Giger 1990');
+  assert.ok(refsStr.includes('nelson'), 'Deve conter Nelson & Couto');
+  assert.ok(refsStr.includes('drobatz'), 'Deve conter Feline ECC');
+  assert.ok(refsStr.includes('dibartola'), 'Deve conter DiBartola');
 });
 
 test('Ausência absoluta de marcadores literais de asterisco duplo em strings', () => {

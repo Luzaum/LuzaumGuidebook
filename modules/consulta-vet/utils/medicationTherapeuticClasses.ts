@@ -218,6 +218,18 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     medicationSlugs: ['n-acetilcisteina', 'atropina'],
     keywords: ['antídoto', 'antidoto', 'toxicologia', 'intoxicação', 'organofosforado'],
   },
+  {
+    slug: 'quelantes-antiacidos',
+    label: 'Quelantes de fósforo e antiácidos',
+    shortLabel: 'Quelantes e antiácidos',
+    description: 'Ligantes intestinais de fosfato para nefropatas com DRC e antiácidos neutralizantes de ação local.',
+    icon: TestTubes,
+    theme: 'nefrologia',
+    selectedClassName: 'border-teal-500 bg-teal-500/[0.07] text-teal-800 dark:text-teal-300',
+    iconClassName: 'text-teal-600 dark:text-teal-400',
+    medicationSlugs: ['hidroxido-de-aluminio', 'pronefra'],
+    keywords: ['quelante', 'ligante intestinal', 'fósforo', 'fosfato', 'antiácido', 'hidróxido de alumínio', 'carbonato de cálcio', 'sevelamer', 'pronefra', 'quitosana'],
+  },
 ] as const;
 
 function normalizedMedicationText(medication: Pick<MedicationRecord, 'pharmacologicClass' | 'tags' | 'indications'>): string {

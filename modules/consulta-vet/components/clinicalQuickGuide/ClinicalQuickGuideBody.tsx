@@ -208,9 +208,9 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                     loading="lazy"
                   />
                 </div>
-                <div className="flex items-start justify-between gap-3">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                   {block.caption ? (
-                    <figcaption className="flex-1 text-xs leading-relaxed text-muted-foreground">
+                    <figcaption className="w-full min-w-0 flex-1 text-xs leading-relaxed text-muted-foreground">
                       {inline(block.caption)}
                     </figcaption>
                   ) : null}
@@ -223,7 +223,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                         caption: block.caption,
                       })
                     }
-                    className="shrink-0 flex items-center gap-1.5 rounded-full border border-border/60 bg-muted/60 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm transition-all hover:bg-primary hover:text-primary-foreground hover:border-primary/40"
+                    className="flex w-full shrink-0 items-center justify-center gap-1.5 rounded-full border border-border/60 bg-muted/60 px-3 py-1 text-xs font-semibold text-muted-foreground shadow-sm transition-all hover:border-primary/40 hover:bg-primary hover:text-primary-foreground sm:w-auto"
                     aria-label="Ampliar imagem"
                   >
                     <ZoomIn className="h-3.5 w-3.5" />

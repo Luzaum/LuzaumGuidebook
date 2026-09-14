@@ -214,7 +214,7 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('receitas')}
             role="tab"
             aria-selected={activeTab === 'receitas'}
-            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex shrink-0 items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'receitas'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
@@ -229,7 +229,7 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('termos')}
             role="tab"
             aria-selected={activeTab === 'termos'}
-            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex shrink-0 items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'termos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
@@ -244,7 +244,7 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('meus-modelos')}
             role="tab"
             aria-selected={activeTab === 'meus-modelos'}
-            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex shrink-0 items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'meus-modelos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
@@ -259,7 +259,7 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('favoritos')}
             role="tab"
             aria-selected={activeTab === 'favoritos'}
-            className={`inline-flex items-center gap-1.5 whitespace-nowrap border-b-2 py-2.5 text-xs font-medium transition-colors ${
+            className={`inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap border-b-2 py-2.5 text-xs font-medium transition-colors ${
               activeTab === 'favoritos'
                 ? 'border-primary font-semibold text-primary'
                 : 'border-transparent text-muted-foreground hover:border-border hover:text-foreground'
@@ -274,7 +274,7 @@ export function ReceituarioPage() {
             onClick={() => setActiveTab('emitidos')}
             role="tab"
             aria-selected={activeTab === 'emitidos'}
-            className={`inline-flex items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
+            className={`inline-flex shrink-0 items-center gap-1.5 py-2.5 border-b-2 text-xs font-medium transition-colors whitespace-nowrap ${
               activeTab === 'emitidos'
                 ? 'border-primary text-primary font-semibold'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'

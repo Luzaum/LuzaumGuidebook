@@ -166,7 +166,7 @@ export function MedicationClinicalFoundationsSection({
   return (
     <section
       id="fundamentos-clinicos"
-      className="rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-xs space-y-8"
+      className="consulta-vet-readable-highlights rounded-3xl border border-border bg-card p-6 sm:p-8 lg:p-10 shadow-xs space-y-8"
     >
       <div className="flex items-center gap-3 border-b border-border/70 pb-4">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
