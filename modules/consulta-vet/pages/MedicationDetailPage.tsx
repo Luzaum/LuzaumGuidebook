@@ -221,7 +221,7 @@ export function MedicationDetailPage() {
 
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
-      <div className="mx-auto w-full max-w-[1580px] px-4 py-4 md:px-8 md:py-6 xl:px-10">
+      <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto w-full max-w-[1580px] px-3 py-2.5 md:px-8 md:py-6 xl:px-10">
         {/* Breadcrumb de navegação */}
         <nav
           className="mb-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
@@ -239,8 +239,8 @@ export function MedicationDetailPage() {
         </nav>
 
         {/* Header Compacto & Limpo: Apenas tag de Espécies, sem Terapêutica Geral e sem tabela inferior de metadados */}
-        <ConsultaVetSurface accent="emerald" className="p-6 md:p-7 xl:p-8 rounded-3xl shadow-xs">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+        <ConsultaVetSurface accent="emerald" className="rounded-[20px] p-4 shadow-xs md:rounded-3xl md:p-7 xl:p-8">
+          <div className="flex flex-col gap-4 md:gap-6 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0 flex-1 space-y-3">
               {/* Única tag permitida: Canino / Felino */}
               <div className="flex flex-wrap items-center gap-2">
@@ -280,8 +280,8 @@ export function MedicationDetailPage() {
         </ConsultaVetSurface>
 
         {/* NAVEGADOR DE ABAS PRINCIPAIS (Transição ultra-limpa e instantânea) */}
-        <div className="sticky top-2 z-20 mt-7 mb-8">
-          <div className="flex items-center gap-2 overflow-x-auto rounded-2xl border border-border/80 bg-background/95 p-1.5 shadow-md backdrop-blur-md">
+        <div className="consulta-vet-medication-tabs sticky top-0 z-20 mb-5 mt-4 md:top-2 md:mb-8 md:mt-7">
+          <div className="grid grid-cols-4 items-center gap-1 overflow-hidden rounded-xl border border-border/80 bg-background/95 p-1 shadow-md backdrop-blur-md md:flex md:gap-2 md:overflow-x-auto md:rounded-2xl md:p-1.5">
             {tabsConfig.map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -292,18 +292,18 @@ export function MedicationDetailPage() {
                   type="button"
                   onClick={() => handleTabChange(tab.id)}
                   className={cn(
-                    'flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl px-4 py-2.5 text-xs sm:text-sm font-bold transition-all duration-200 whitespace-nowrap',
+                    'relative flex min-h-11 min-w-0 flex-1 flex-col items-center justify-center gap-0.5 rounded-lg px-0.5 py-1 text-[9px] font-bold transition-all duration-200 whitespace-nowrap md:flex-row md:gap-2 md:rounded-xl md:px-4 md:py-2.5 md:text-sm',
                     isActive
                       ? tab.activeColor
                       : 'text-muted-foreground hover:bg-muted/50 hover:text-foreground'
                   )}
                 >
-                  <Icon className="h-4 w-4 shrink-0" />
+                  <Icon className="h-3.5 w-3.5 shrink-0 md:h-4 md:w-4" />
                   <span>{tab.label}</span>
                   {tab.badge && (
                     <span
                       className={cn(
-                        'rounded-full px-1.5 py-0.2 text-[10px] font-bold',
+                        'absolute right-1 top-1 rounded-full px-1 py-0 text-[8px] font-bold md:static md:px-1.5 md:py-0.2 md:text-[10px]',
                         isActive
                           ? 'bg-white/25 text-white'
                           : 'bg-muted text-muted-foreground'
@@ -319,7 +319,7 @@ export function MedicationDetailPage() {
         </div>
 
         {/* CONTEÚDO DAS 4 ABAS COM ANIMAÇÃO FLUIDA E SEM RELOAD */}
-        <main className="pb-16">
+        <main className="pb-10 md:pb-16">
           <AnimatePresence mode="wait">
             <motion.div
               key={activeTab}
@@ -327,11 +327,11 @@ export function MedicationDetailPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.18, ease: 'easeOut' }}
-              className="space-y-10"
+              className="consulta-vet-medication-tab space-y-5 md:space-y-10"
             >
               {/* ABA 1: MEDICAMENTO */}
               {activeTab === 'medicamento' && (
-                <div className="space-y-10">
+                <div className="space-y-5 md:space-y-10">
                   {/* 1. Resumo Rápido + Indicações de Uso Resumidas */}
                   <MedicationQuickSummaryPanel medication={medication} />
 

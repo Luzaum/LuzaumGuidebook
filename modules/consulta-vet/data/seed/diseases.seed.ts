@@ -1,4 +1,6 @@
 import { linfomaMediastinalRecord } from './diseases.linfoma-mediastinal.seed';
+import { piotoraxRecord } from './diseases.piotorax.seed';
+import { quilotoraxRecord } from './diseases.quilotorax.seed';
 import { DiseaseRecord } from '../../types/disease';
 import { mergeConsensusSlugsForDisease } from './diseaseConsensusLinks';
 import { colapsoTraquealCaninoRecord } from './diseases.colapso-traqueal.seed';
@@ -113,4 +115,6 @@ export const diseasesSeed: DiseaseRecord[] = [
   linfomaCutaneoRecord,
   megacolonRecord,
   linfomaMediastinalRecord,
+  piotoraxRecord,
+  quilotoraxRecord,
 ].map(withPlainLanguage);

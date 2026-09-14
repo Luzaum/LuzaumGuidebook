@@ -201,28 +201,28 @@ export function MedicationQuickSummaryPanel({
   return (
     <section
       id="resumo-rapido"
-      className="overflow-hidden rounded-3xl border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl"
+      className="overflow-hidden rounded-[20px] border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl md:rounded-3xl"
     >
-      <div className="p-6 sm:p-8 lg:p-10 space-y-8">
+      <div className="space-y-5 p-4 md:space-y-8 md:p-8 lg:p-10">
         {/* Cabeçalho do Resumo Rápido - Limpo, sem estrelas nem tags repetitivas */}
         <div className="border-b border-white/10 pb-4">
           <div className="flex items-center gap-3">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/20 text-amber-300 ring-1 ring-amber-500/30">
               <FileText className="h-5 w-5" />
             </span>
-            <h2 className="text-xl sm:text-2xl font-black text-white tracking-tight">
+            <h2 className="text-lg font-black tracking-tight text-white md:text-2xl">
               Resumo Clínico Executivo
             </h2>
           </div>
         </div>
 
         {/* Lead / Em Palavras Simples mas Aprofundado */}
-        <div className="rounded-2xl border border-white/15 bg-white/10 p-5 sm:p-6 backdrop-blur-md">
+        <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md md:rounded-2xl md:p-6">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-200 flex items-center gap-2 mb-3">
             <Info className="h-4 w-4" />
             Visão Geral em Linguagem Direta & Fisiologia
           </p>
-          <p className="text-base sm:text-lg font-medium leading-relaxed text-white/95">
+          <p className="text-sm font-medium leading-6 text-white/95 md:text-lg md:leading-relaxed">
             <HighlightedText
               text={
                 medication.plainLanguageSummary ||
@@ -244,7 +244,7 @@ export function MedicationQuickSummaryPanel({
               return (
                 <div
                   key={pillar.title}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-xs transition hover:bg-white/10 hover:border-white/20"
+                  className="rounded-xl border border-white/10 bg-white/5 p-3.5 backdrop-blur-xs transition hover:border-white/20 hover:bg-white/10 md:rounded-2xl md:p-4"
                 >
                   <div className="flex items-center gap-2.5 text-amber-300 mb-2">
                     <Icon className="h-4 w-4 shrink-0" />
@@ -271,7 +271,7 @@ export function MedicationQuickSummaryPanel({
               return (
                 <div
                   key={idx}
-                  className="flex flex-col justify-between rounded-2xl border border-white/15 bg-black/25 p-5 backdrop-blur-sm transition hover:border-amber-400/30 hover:bg-black/35"
+                  className="flex flex-col justify-between rounded-xl border border-white/15 bg-black/25 p-4 backdrop-blur-sm transition hover:border-amber-400/30 hover:bg-black/35 md:rounded-2xl md:p-5"
                 >
                   <div className="space-y-3">
                     {/* Top row: Title + Species badges */}
@@ -342,7 +342,7 @@ export function MedicationQuickSummaryPanel({
 
         {/* Banner de Segurança: Aviso Clínico Importante - dinâmico por medicamento */}
         {medication.clinicalWarningItems && medication.clinicalWarningItems.length > 0 && (
-          <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-amber-100 space-y-3">
+          <div className="space-y-3 rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-amber-100 md:rounded-2xl md:p-5">
             <div className="flex items-center gap-2 text-amber-300">
               <AlertTriangle className="h-5 w-5 shrink-0 text-amber-400" />
               <span className="font-bold uppercase tracking-wide text-xs sm:text-sm">

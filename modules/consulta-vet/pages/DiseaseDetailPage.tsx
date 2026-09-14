@@ -12,7 +12,6 @@ import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
 import { DiseaseReferenceProvider } from '../context/DiseaseReferenceContext';
 import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
-import { TagPills } from '../components/shared/TagPills';
 import { useRecents } from '../hooks/useRecents';
 import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
@@ -257,8 +256,8 @@ export function DiseaseDetailPage() {
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
     <DiseaseReferenceProvider references={disease.references}>
-    <div className="mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
-      <div className="w-full min-w-0 flex-1 px-4 py-3 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
+    <div className="consulta-vet-detail-page consulta-vet-disease-detail mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
+      <div className="w-full min-w-0 flex-1 px-3 py-2.5 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
         <nav
           className="consulta-vet-breadcrumb mb-4 flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.24em] text-muted-foreground"
           aria-label="Navegação estrutural"
@@ -309,10 +308,6 @@ export function DiseaseDetailPage() {
                   {disease.subtitle}
                 </p>
               ) : null}
-
-              <div className="mt-3">
-                <TagPills tags={disease.tags} maxVisible="all" />
-              </div>
             </div>
 
             <div className="flex shrink-0 items-center gap-1.5 self-start pt-0.5">
@@ -329,7 +324,14 @@ export function DiseaseDetailPage() {
           </div>
         </ConsultaVetSurface>
 
-        <div className="space-y-6 pb-8 pt-5 md:space-y-7">
+        <SectionAnchorNav
+          sections={sections}
+          variant="mobile"
+          onActiveChange={handleActiveSectionChange}
+          className="mt-3"
+        />
+
+        <div className="space-y-4 pb-8 pt-4 md:space-y-7 md:pt-5">
           <section id="quick-summary" className="scroll-mt-24">
             {(() => {
               const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
@@ -422,7 +424,7 @@ export function DiseaseDetailPage() {
               return (
                 <div
                   className={cn(
-                    'relative overflow-hidden rounded-[28px] border p-5 text-white shadow-lg md:p-7 xl:p-8 transition-all duration-300',
+                    'relative overflow-hidden rounded-[22px] border p-4 text-white shadow-lg transition-all duration-300 md:rounded-[28px] md:p-7 xl:p-8',
                     theme.border,
                     theme.gradient,
                     'ring-1 ring-white/10 dark:ring-white/5'
@@ -448,7 +450,7 @@ export function DiseaseDetailPage() {
                       />
                     ) : (
                       <div className="max-w-[108ch] text-white/95">
-                        <p className="text-xl leading-9 drop-shadow-sm md:text-[26px] md:leading-[1.4]">{disease.quickSummary}</p>
+                        <p className="text-base leading-7 drop-shadow-sm md:text-[26px] md:leading-[1.4]">{disease.quickSummary}</p>
                       </div>
                     )}
                   </div>
@@ -588,7 +590,7 @@ export function DiseaseDetailPage() {
       </div>
 
       <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
-        <SectionAnchorNav sections={sections} onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
+        <SectionAnchorNav sections={sections} variant="desktop" onActiveChange={handleActiveSectionChange} className="w-60 2xl:w-64" />
       </div>
     </div>
     </DiseaseReferenceProvider>

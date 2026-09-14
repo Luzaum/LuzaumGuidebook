@@ -84,9 +84,9 @@ export function DiseaseQuickSummaryPanel({
     { id: 'treatment', label: 'Plano de tratamento', icon: Heart },
   ] as const;
   return (
-    <div className="relative z-10 space-y-6">
+    <div className="relative z-10 space-y-4 md:space-y-6">
       {/* Sistema de Abas Clínicas premium com glassmorphism */}
-      <div className="flex flex-wrap gap-2 border-b border-white/10 pb-4">
+      <div className="grid grid-cols-3 gap-1.5 border-b border-white/10 pb-3 md:flex md:flex-wrap md:gap-2 md:pb-4">
         {tabs.map((tab) => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.id;
@@ -95,13 +95,13 @@ export function DiseaseQuickSummaryPanel({
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={cn(
-                'flex items-center gap-2 rounded-xl px-4 py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300',
+                'flex min-w-0 flex-col items-center justify-center gap-0.5 rounded-lg px-1 py-1 text-center text-[9px] font-bold uppercase leading-tight tracking-normal transition-all duration-300 md:flex-row md:gap-2 md:rounded-xl md:px-4 md:py-2.5 md:text-xs md:tracking-wider',
                 isActive
-                  ? 'bg-white text-slate-950 shadow-md scale-[1.02]'
+                  ? 'bg-white text-slate-950 shadow-md md:scale-[1.02]'
                   : 'bg-white/10 text-white/80 hover:bg-white/20 hover:text-white'
               )}
             >
-              <Icon className="h-4 w-4" />
+              <Icon className="h-3.5 w-3.5 md:h-4 md:w-4" />
               <span>{tab.label}</span>
             </button>
           );
@@ -114,12 +114,12 @@ export function DiseaseQuickSummaryPanel({
           <div className="space-y-6">
             {/* O que é em palavras simples - Callout moderno */}
             {simpleDef && (
-              <div className="rounded-2xl border border-white/20 bg-white/10 p-5 shadow-xs backdrop-blur-md">
+              <div className="rounded-xl border border-white/20 bg-white/10 p-4 shadow-xs backdrop-blur-md md:rounded-2xl md:p-5">
                 <h4 className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-200">
                   <ShieldAlert className="h-4 w-4 shrink-0" />
                   O que é isso em palavras simples?
                 </h4>
-                <p className="mt-2.5 text-base font-semibold leading-relaxed text-white/95 md:text-lg">
+                <p className="mt-2.5 text-sm font-semibold leading-6 text-white/95 md:text-lg md:leading-relaxed">
                   {simpleDef.whatIsIt}
                 </p>
                 <div className="mt-4 grid gap-2.5 text-xs leading-relaxed text-white/80 sm:grid-cols-3">
@@ -142,11 +142,11 @@ export function DiseaseQuickSummaryPanel({
               </div>
 
               {data.pillars && data.pillars.length > 0 && (
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                <div className="grid gap-3 md:gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {data.pillars.map((p) => (
                     <div
                       key={p.title}
-                      className="rounded-2xl border border-white/15 bg-white/5 p-5 shadow-xs backdrop-blur-md"
+                      className="rounded-xl border border-white/15 bg-white/5 p-4 shadow-xs backdrop-blur-md md:rounded-2xl md:p-5"
                     >
                       <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">{p.title}</p>
                       <p className="mt-2 text-sm leading-relaxed text-white/95">
@@ -161,7 +161,7 @@ export function DiseaseQuickSummaryPanel({
         )}
 
         {activeTab === 'diagnosis' && (
-          <div className="rounded-2xl border border-white/10 bg-black/10 p-5 backdrop-blur-sm dark:bg-black/20">
+          <div className="rounded-xl border border-white/10 bg-black/10 p-4 backdrop-blur-sm dark:bg-black/20 md:rounded-2xl md:p-5">
             {data.diagnosticFlow ? (
               <ClinicalFlowTimeline flow={data.diagnosticFlow} variant="dark" />
             ) : (              <p className="text-sm text-white/60">Fluxo diagnóstico indisponível.</p>
@@ -170,7 +170,7 @@ export function DiseaseQuickSummaryPanel({
         )}
 
         {activeTab === 'treatment' && (
-          <div className="rounded-2xl border border-white/10 bg-black/10 p-5 backdrop-blur-sm dark:bg-black/20">
+          <div className="rounded-xl border border-white/10 bg-black/10 p-4 backdrop-blur-sm dark:bg-black/20 md:rounded-2xl md:p-5">
             {data.treatmentFlow ? (
               <ClinicalFlowTimeline flow={data.treatmentFlow} variant="dark" />
             ) : (              <p className="text-sm text-white/60">Fluxo terapêutico indisponível.</p>

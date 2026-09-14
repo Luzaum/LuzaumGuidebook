@@ -17,10 +17,10 @@ export function QuickDecisionStrip({ items, className = '' }: QuickDecisionStrip
   return (
     <section
       id="quick-strip"
-      className={`scroll-mt-24 overflow-hidden rounded-[28px] border border-primary/20 bg-gradient-to-br from-primary/[0.06] via-card/80 to-card shadow-sm ${className}`.trim()}
+      className={`scroll-mt-24 overflow-hidden rounded-[20px] border border-primary/20 bg-gradient-to-br from-primary/[0.06] via-card/80 to-card shadow-sm md:rounded-[28px] ${className}`.trim()}
     >
       <div className="h-1 w-full bg-gradient-to-r from-blue-500 via-primary to-emerald-500 opacity-90" aria-hidden />
-      <div className="p-5 md:p-6">
+      <div className="p-4 md:p-6">
         <p className="mb-4 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.24em] text-primary">
           <Zap className="h-4 w-4" aria-hidden />
           Decisão rápida

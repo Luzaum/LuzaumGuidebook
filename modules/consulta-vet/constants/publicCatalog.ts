@@ -55,6 +55,8 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'linfoma-cutaneo-caes-gatos',
   'megacolon-caes-gatos',
   'linfoma-mediastinal-caes-gatos',
+  'piotorax-caes-gatos',
+  'quilotorax-caes-gatos',
 ] as const;
 
 
@@ -63,8 +65,10 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'amoxicilina-clavulanato',
   'ampicilina-sulbactam',
   'capromorelina',
+  'clindamicina',
   'dipirona',
   'fenobarbital',
+  'sulfametoxazol-trimetoprima',
   'tramadol',
 ] as const;
 

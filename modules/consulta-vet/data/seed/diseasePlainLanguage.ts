@@ -430,11 +430,14 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'sindrome-mielodisplasica-caes-gatos': {
     whatIsIt:
-      'A síndrome mielodisplásica (MDS) é uma doença rara da medula óssea (a "fábrica de sangue" localizada dentro dos ossos). Nela, a medula trabalha ativamente e produz muitas células, mas essas células nascem com defeitos e morrem antes de chegarem à circulação sanguínea. Como consequência, o animal fica com falta de glóbulos vermelhos (anemia), glóbulos brancos (baixa imunidade) ou plaquetas (risco de sangramento), sentindo-se muito fraco e prostrado.',
+      'A síndrome mielodisplásica (MDS) é uma doença rara da medula óssea (a "fábrica de sangue" localizada dentro dos ossos). Nela, a medula trabalha ativamente e produz muitas células, mas essas células nascem com defeitos graves e morrem antes de conseguirem sair para a circulação sanguínea. Ocorre então uma situação paradoxal: a medula fica completamente cheia e acelerada, mas o sangue periférico fica vazio. Como consequência, o animal desenvolve falta de glóbulos vermelhos (anemia profunda que não melhora), falta de glóbulos brancos de defesa (baixa imunidade com risco de infecções graves) ou falta de plaquetas (risco de sangramentos espontâneos). Em gatos, a enfermidade possui forte ligação histórica com o vírus da leucemia felina (FeLV).',
     keyPoints: [
-      'O animal pode ter a medula óssea cheia de células, mas o sangue periférico vazio (anemia e citopenias persistentes).',
-      'É fundamental diferenciar a doença de causas secundárias e tratáveis, como remédios tóxicos, infecções, inflamações ou o vírus da FeLV em gatos.',
-      'O tratamento foca em suporte com transfusão de sangue para dar disposição e oxigênio, antibióticos para prevenir infecções e acompanhamento especializado com oncologista.',
+      'Paradoxo da medula cheia e sangue vazio: a fábrica opera em alta velocidade, mas quase todas as células morrem lá dentro antes de chegar às ruas.',
+      'Anemia persistente e palidez: o animal fica apático, cansa muito rápido e suas gengivas tornam-se muito pálidas ou esbranquiçadas.',
+      'Risco crítico de infecções: a falta de neutrófilos maduros permite que bactérias simples causem febre alta e infecções generalizadas graves (sepse).',
+      'Sangramentos espontâneos: o mau funcionamento ou a queda das plaquetas provoca pontinhos vermelhos na gengiva e pele (petéquias), hematomas e sangramentos.',
+      'Diferenciar de causas reversíveis: nem toda displasia é câncer; remédios tóxicos, infecções e doenças autoimunes podem imitar a doença temporariamente e têm cura.',
+      'Tratamento de suporte contínuo: não existe cura simples; o manejo exige transfusões de sangue planejadas, antibióticos para febre e acompanhamento especializado com oncologista veterinário.',
     ],
   },
   'linfoma-cutaneo-caes-gatos': {
@@ -467,6 +470,30 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Cães com muita sede e xixi: o aumento do cálcio provocado pelo tumor ataca os rins; por isso, cães com linfoma mediastinal muitas vezes começam bebendo baldes de água antes de terem qualquer sintoma de tosse ou cansaço.',
       'Gatos jovens e o vírus da FeLV: o linfoma do peito é clássico em gatos jovens que têm o vírus da leucemia felina, mas muitos gatos sem o vírus (especialmente siameses) também desenvolvem a doença e têm excelentes chances de controle quando tratados com os medicamentos corretos.',
       'O tratamento padrão envolve ciclos planejados de quimioterapia combinada (como os protocolos CHOP ou COP), protegendo os rins e monitorando a contagem de células sanguíneas em cada visita para garantir total segurança e qualidade de vida.',
+    ],
+  },
+  'piotorax-caes-gatos': {
+    whatIsIt:
+      'O piotórax (ou empiema pleural) é uma infecção bacteriana grave com acúmulo de pus dentro do peito (no espaço pleural, que envolve os pulmões). Em condições normais, existe apenas uma fina película líquida para lubrificar os pulmões durante a respiração. No piotórax, bactérias entram nesse espaço fechado e provocam uma inflamação intensa, formando grande volume de pus e fibrina que esmaga os pulmões e impede a entrada de ar. Em gatos, a causa mais comum são mordidas e arranhões de outros gatos em brigas, cujos dentes inoculam bactérias da saliva para dentro do peito; a pele fecha rapidamente por fora, mas a infecção cresce por dentro. Em cães, a causa mais frequente é a inalação de espiguetas de gramíneas e corpos estranhos vegetais que perfuram o pulmão e levam bactérias para o tórax.',
+    keyPoints: [
+      'Emergência respiratória crítica: se o animal estiver com respiração rápida, superficial, barriga se movimentando muito para respirar ou boca aberta (em gatos), ele precisa de oxigênio e de alívio urgente com drenagem de líquido do peito antes de qualquer exame demorado ou estressante.',
+      'Remédio sozinho não resolve: por ser uma infecção em um espaço fechado com pus espesso e teias de fibrina, os antibióticos na veia não conseguem penetrar e limpar tudo sozinhos; colocar um dreno no peito para aspirar o pus e lavar com soro morno é tão importante quanto o remédio.',
+      'Dreno fino em gatos: estudos veterinários comprovam que tubos pequenos e delicados (fio-guiados de 6 F) funcionam muito bem e são muito seguros em gatos, permitindo esvaziar o peito e fazer lavagens sem cirurgias traumáticas.',
+      'Cuidado com antibióticos específicos: em gatos, o antibiótico enrofloxacina jamais pode ser usado em doses altas pelo risco real de causar cegueira permanente; existem opções seguras e eficazes indicadas pelo veterinário.',
+      'Cães e espiguetas vegetais: em cães que passeiam em campos com capim seco, pedacinhos pontiagudos de plantas podem migrar e ficar presos no peito; se o dreno não resolver em 2 a 3 dias, pode ser necessária uma tomografia e cirurgia para remover o vegetal e o tecido danificado.',
+      'Tratamento longo em casa: após a melhora no hospital e a retirada do dreno, o paciente ainda precisará tomar antibióticos em comprimido por 3 a 6 semanas para garantir que a infecção não volte.',
+    ],
+  },
+  'quilotorax-caes-gatos': {
+    whatIsIt:
+      'O quilotórax é uma doença grave em que ocorre o acúmulo de quilo dentro do peito (no espaço pleural, que envolve os pulmões). O quilo é um líquido leitoso especial da circulação linfática, rico em gorduras que foram absorvidas no intestino, além de proteínas e células de defesa (linfócitos). Em condições normais, esse líquido viaja por um canal chamado ducto torácico e desemboca no sangue. Quando esse caminho é bloqueado ou quando a pressão nas veias aumenta muito (especialmente por doenças do coração em gatos), o líquido não consegue escoar, vaza pelos vasos linfáticos e se acumula no peito. Esse líquido aperta os pulmões, impedindo que eles se encham de ar e fazendo com que o paciente fique sem fôlego.',
+    keyPoints: [
+      'Falta de ar é uma emergência absoluta: se o gato ou cão estiver respirando rápido, com a barriga se mexendo com força, deitado esticado ou respirando de boca aberta (em gatos), leve-o imediatamente ao hospital; ele precisa de oxigênio e de alívio rápido retirando o líquido com agulha fina antes de qualquer raio-X.',
+      'Coração é a principal causa em gatos: pesquisas recentes comprovam que mais da metade dos gatos com quilotórax têm um problema cardíaco por trás (como cardiomiopatias); por isso, fazer um ecocardiograma do coração é fundamental.',
+      'Não se engane pela cor leitosa: embora o quilo costume parecer leite, outras doenças (como infecções ou tumores) também podem deixar o líquido esbranquiçado; o laboratório precisa medir as gorduras (triglicerídeos) no líquido e no sangue para confirmar.',
+      'Perda de nutrientes e fraqueza: como o quilo é rico em gordura, proteínas e células imunológicas, drenar o peito muitas vezes faz o animal perder peso e defesas; a alimentação precisa ser saborosa e rica para ele não ficar fraco.',
+      'Atenção à complicação chamada pleurite fibrosante: se o quilo ficar muito tempo irritando os pulmões, forma-se uma casca dura de cicatriz que não deixa o pulmão abrir de novo mesmo depois de tirar todo o líquido; por isso não se deve esperar meses antes de decidir operar.',
+      'Cirurgia e acompanhamento em casa: quando os remédios ou a dieta não resolvem em poucas semanas, a cirurgia para amarrar o canal linfático (ducto torácico) pode ser necessária. Em casa, o tutor deve contar a respiração do animal dormindo todos os dias (deve ser menor que 30 movimentos por minuto).',
     ],
   },
 };
