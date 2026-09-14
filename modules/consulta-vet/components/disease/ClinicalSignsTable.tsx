@@ -65,9 +65,10 @@ function MobileFindingSummary({ item, visual, expandable }: { item: NormalizedFi
         ) : null}
       </span>
       {expandable ? (
-        <span className="mt-1 flex shrink-0 items-center gap-1.5 text-[11px] font-semibold text-muted-foreground">
-          <span className="hidden sm:inline">Mecanismo</span>
-          <ChevronDown className="h-4 w-4 transition-transform duration-200 group-open:rotate-180" aria-hidden />
+        <span className="mt-2 inline-flex min-h-7 w-fit shrink-0 self-end items-center gap-1.5 rounded-full border border-border/55 bg-muted/25 px-2.5 py-1 text-[10px] font-medium leading-4 text-muted-foreground/90 transition-colors group-hover:border-border group-hover:bg-muted/45 group-hover:text-foreground">
+          <span className="group-open:hidden">Clique para expandir explicação completa</span>
+          <span className="hidden group-open:inline">Clique para recolher explicação</span>
+          <ChevronDown className="h-3.5 w-3.5 transition-transform duration-200 group-open:rotate-180" aria-hidden />
         </span>
       ) : null}
     </>
@@ -147,7 +148,7 @@ export function ClinicalSignsTable({ groups, visual }: { groups: EditorialSystem
           }
           return (
             <details key={key} className="group px-4 py-3.5">
-              <summary className="flex min-h-11 cursor-pointer list-none items-start justify-between gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+              <summary className="flex min-h-11 cursor-pointer list-none flex-col items-stretch gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
                 <MobileFindingSummary item={item} visual={visual} expandable />
               </summary>
               <div className="mt-3 border-t border-border/50 pt-3">

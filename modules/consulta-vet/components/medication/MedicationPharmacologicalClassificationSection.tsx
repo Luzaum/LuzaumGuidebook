@@ -16,7 +16,7 @@ export function MedicationPharmacologicalClassificationSection({
   if (!classification) return null;
 
   return (
-    <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+    <section id="classificacao-farmacologica" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
       {/* Cabeçalho da Seção */}
       <div className="flex items-center gap-3 border-b border-border/70 pb-4">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400">

@@ -48,7 +48,7 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     selectedClassName: 'border-emerald-500 bg-emerald-500/[0.07] text-emerald-700 dark:text-emerald-300',
     iconClassName: 'text-emerald-600 dark:text-emerald-400',
     medicationSlugs: ['sulfametoxazol-trimetoprima', 'amoxicilina-clavulanato', 'ampicilina-sulbactam', 'ampicilina', 'clindamicina', 'metronidazol', 'enrofloxacina', 'marbofloxacina', 'ciprofloxacina'],
-    keywords: ['antibiótico', 'antibacteriano', 'aminopenicilina', 'sulfonamida', 'beta-lactâmico', 'β-lactâmico'],
+    keywords: ['antibiótico', 'antibacteriano', 'aminopenicilina', 'sulfonamida', 'beta-lactâmico', 'β-lactâmico', 'fluoroquinolona', 'quinolona', 'enrofloxacina'],
   },
   {
     slug: 'anti-helminticos-antiparasitarios',

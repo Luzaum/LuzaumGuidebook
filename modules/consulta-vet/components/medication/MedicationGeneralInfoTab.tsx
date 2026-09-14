@@ -48,7 +48,7 @@ export function MedicationGeneralInfoTab({
       </div>
 
       {/* SEÇÃO 1: Formas de Administração */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="formas-administracao" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400">
             <Syringe className="h-5 w-5" />
@@ -120,7 +120,7 @@ export function MedicationGeneralInfoTab({
 
       {/* SEÇÃO 2: Compatibilidade e Armazenamento (Trazido para Info, logo abaixo de Formas de Administração) */}
       {dilutionGuide && (
-        <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+        <section id="compatibilidade-diluicao" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
           <div className="flex items-center gap-3 border-b border-border/70 pb-4">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-600 dark:text-cyan-400">
               <Droplets className="h-5 w-5" />
@@ -195,7 +195,7 @@ export function MedicationGeneralInfoTab({
       )}
 
       {/* SEÇÃO 3: Peculiaridades das Espécies (Cão vs. Gato) com Ícone de Seleção de Espécie Nutrição Vet Centralizado */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="particularidades-especies" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
             <HelpCircle className="h-5 w-5" />
@@ -272,7 +272,7 @@ export function MedicationGeneralInfoTab({
       </section>
 
       {/* SEÇÃO 4: Regulamentação & Prescrição - Posicionado no Final da Página */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="aspectos-prescricao" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
             <FileText className="h-5 w-5" />

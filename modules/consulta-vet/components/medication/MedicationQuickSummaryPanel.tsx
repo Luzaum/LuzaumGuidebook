@@ -201,7 +201,7 @@ export function MedicationQuickSummaryPanel({
   return (
     <section
       id="resumo-rapido"
-      className="overflow-hidden rounded-[20px] border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl md:rounded-3xl"
+      className="scroll-mt-24 overflow-hidden rounded-[20px] border border-border/70 bg-gradient-to-br from-slate-900 via-slate-800 to-amber-950/80 text-white shadow-xl md:rounded-3xl"
     >
       <div className="space-y-5 p-4 md:space-y-8 md:p-8 lg:p-10">
         {/* Cabeçalho do Resumo Rápido - Limpo, sem estrelas nem tags repetitivas */}

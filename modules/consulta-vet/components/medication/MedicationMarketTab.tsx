@@ -133,7 +133,7 @@ export function MedicationMarketTab({
       </div>
 
       {/* SEÇÃO 1 (VEM PRIMEIRO): Apresentações Comerciais Disponíveis no Mercado */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="apresentacoes-comerciais" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
             <Pill className="h-5 w-5" />
@@ -279,7 +279,7 @@ export function MedicationMarketTab({
       </section>
 
       {/* SEÇÃO 2 (VEM NO FINAL): Guia de Conversão Rápida / Tabela Prática */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="tabela-posologia-pratica" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
             <Droplets className="h-5 w-5" />
@@ -376,7 +376,7 @@ export function MedicationMarketTab({
       {/* SEÇÃO 3: Bulas Oficiais, Links de Fabricantes & Prescrição Pronta */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Bulas & Links Oficiais */}
-        <section className="rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
+        <section id="bulas-fontes-oficiais" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
           <div className="flex items-center gap-3 border-b border-border/70 pb-4">
             <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-500/10 text-sky-600 dark:text-sky-400">
               <FileText className="h-5 w-5" />
@@ -453,7 +453,7 @@ export function MedicationMarketTab({
         </section>
 
         {/* Modelo de Prescrição Veterinária Pronta para Cópia */}
-        <section className="rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
+        <section id="modelo-receita" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-7 shadow-xs space-y-5">
           <div className="flex items-center justify-between border-b border-border/70 pb-4">
             <div className="flex items-center gap-3">
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">

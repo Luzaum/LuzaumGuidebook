@@ -27,8 +27,8 @@ export function InlineReferenceMarker({
       title={citationText}
       aria-label={`Ir para referência ${label}`}
       className={cn(
-        'group/ref mx-0.5 inline-flex h-[1.375rem] min-w-[1.375rem] shrink-0 translate-y-[-0.08em] items-center justify-center rounded-full border align-middle',
-        'cursor-pointer text-[10px] font-semibold tabular-nums leading-none antialiased',
+        'group/ref relative mx-px inline-flex h-4 min-w-4 shrink-0 translate-y-[-0.1em] items-center justify-center rounded-full border px-0.5 align-middle sm:mx-0.5 sm:h-[1.375rem] sm:min-w-[1.375rem] sm:translate-y-[-0.08em] sm:px-0',
+        'cursor-pointer text-[8px] font-semibold tabular-nums leading-none antialiased sm:text-[10px]',
         'transition-[transform,box-shadow,background-color,border-color] duration-200 ease-out',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-1',
         'motion-reduce:transition-none motion-reduce:hover:transform-none',
@@ -42,7 +42,7 @@ export function InlineReferenceMarker({
       <span
         aria-hidden
         className={cn(
-          'pointer-events-none absolute inset-[2px] rounded-full opacity-0 transition-opacity duration-200 group-hover/ref:opacity-100',
+          'pointer-events-none absolute inset-px rounded-full opacity-0 transition-opacity duration-200 group-hover/ref:opacity-100 sm:inset-[2px]',
           tone === 'dark' ? 'bg-white/10' : 'bg-primary/[0.06]'
         )}
       />

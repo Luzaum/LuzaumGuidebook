@@ -176,7 +176,7 @@ export function MedicationAttentionTab({
       </div>
 
       {/* SEÇÃO 1: Efeitos Adversos com Frequência, Conduta Imediata e Mecanismo Fisiopatológico no Clique */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
+      <section id="efeitos-adversos" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400">
             <HeartCrack className="h-5 w-5" />
@@ -251,7 +251,7 @@ export function MedicationAttentionTab({
       </section>
 
       {/* SEÇÃO 2: Contraindicações em Formato de Tabela (Estilo Doenças / Sinais Clínicos) */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-rose-500 dark:border-l-rose-400">
+      <section id="contraindicacoes" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-rose-500 dark:border-l-rose-400">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-rose-500/15 text-rose-700 dark:text-rose-400">
             <ShieldAlert className="h-5 w-5" />
@@ -336,7 +336,7 @@ export function MedicationAttentionTab({
       </section>
 
       {/* SEÇÃO 3: Ajuste de Dose nas Principais Comorbidades (Tabela Estilo Foto 2 com Tema Roxo/Lilás e Grifa Texto) */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-purple-500 dark:border-l-purple-400">
+      <section id="ajustes-renais-hepaticos" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-purple-500 dark:border-l-purple-400">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-purple-500/15 text-purple-700 dark:text-purple-300">
             <Activity className="h-5 w-5" />
@@ -396,7 +396,7 @@ export function MedicationAttentionTab({
       </section>
 
       {/* SEÇÃO 4: Interações Medicamentosas (Tabela estilo Doenças com mecanismo expansível) */}
-      <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-amber-500 dark:border-l-amber-400">
+      <section id="interacoes-medicamentosas" className="scroll-mt-24 rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-xs space-y-6 border-l-4 border-l-amber-500 dark:border-l-amber-400">
         <div className="flex items-center gap-3 border-b border-border/70 pb-4">
           <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-500/15 text-amber-700 dark:text-amber-400">
             <FlaskConical className="h-5 w-5" />

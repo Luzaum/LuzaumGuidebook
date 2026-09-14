@@ -1172,6 +1172,26 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     quickSummary:
       'A DDIV felina é infrequente (0,02–0,12%) e afeta predominantemente gatos idosos (~9–12 anos). Protrusões Hansen II são frequentes como achados incidentais em felinos assintomáticos. A RM é essencial para diferenciar Linfoma Espinhal, PIF e FCE. O tratamento envolve gabapentina (5–10 mg/kg), manejo vesical e descompressão cirúrgica em compressões graves com nocicepção mantida.',
   }),
+  diseaseListCard({
+    id: 'disease-cistite-enfisematosa-caes-gatos',
+    slug: 'cistite-enfisematosa-caes-gatos',
+    title: 'Cistite Enfisematosa em Cães e Gatos',
+    synonyms: ['Cistite gasosa', 'Emphysematous cystitis', 'Cistite com gás intramural', 'Infecção urinária produtora de gás'],
+    species: ['dog', 'cat'],
+    category: 'nefrologia',
+    tags: [
+      'Cistite Enfisematosa',
+      'Escherichia coli',
+      'Diabetes Mellitus',
+      'Bexiga Neurogênica',
+      'Gás Intramural',
+      'Reverberação Ultrassonográfica',
+      'ISCAID',
+      'Pielonefrite Enfisematosa',
+    ],
+    quickSummary:
+      'A cistite enfisematosa é afecção infecciosa e inflamatória profunda da bexiga com acúmulo de gás intraluminal e intramural por fermentação bacteriana (E. coli em ~68%, Klebsiella, Proteus, Clostridium). Associada a diabetes, bexiga neurogênica, cistólitos e imunossupressão. O diagnóstico exige ultrassom (reverberação em cauda de cometa), radiografia e urocultura com TSA/MIC; a tomografia mapeia extensão extravesical e pielonefrite enfisematosa. Tratamento com antibioticoterapia direcionada prolongada e controle do ambiente subjacente.',
+  }),
 ];
 
 
@@ -1490,6 +1510,43 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
       'Controle adjuvante da absorção de fósforo alimentar na DRC felina e canina (estágios 2, 3 e 4 IRIS) refratária à dieta renal isolada.',
       'Adsorção de toxinas urêmicas entéricas e suporte nutricional nitrogenado através da quitosana fúngica de Aspergillus niger.',
       'Manejo mineral com formulação líquida oleosa altamente palatável com seringa dosadora graduada por peso corporal.',
+    ],
+  }),
+  medicationListCard({
+    id: 'med-enrofloxacina',
+    slug: 'enrofloxacina',
+    title: 'Enrofloxacina',
+    activeIngredient: 'Enrofloxacina / Enrofloxacino',
+    isControlled: false,
+    tradeNames: [
+      'Baytril® Flavour Comprimidos 15 mg, 50 mg, 150 mg e 250 mg (Elanco)',
+      'Baytril® Injetável 5% (50 mg/mL) (Elanco)',
+      'Zelotril® Comprimidos Palatáveis 50 mg e 150 mg (Agener União)',
+      'Flotril® Comprimidos 50 mg e 150 mg (MSD)',
+      'Enropet® Comprimidos 50 mg e 150 mg (Ceva)',
+      'Chemitril® Comprimidos / Injetável (Chemitec)',
+    ],
+    pharmacologicClass: 'Antibacteriano bactericida da classe das fluoroquinolonas (inibidor da DNA-girase); ação concentração-dependente',
+    species: ['dog', 'cat'],
+    category: 'infectologia',
+    tags: [
+      'Enrofloxacina',
+      'Enrofloxacino',
+      'Fluoroquinolonas',
+      'Baytril',
+      'Zelotril',
+      'Flotril',
+      'Pielonefrite',
+      'Prostatite Canina',
+      'Pseudomonas',
+      'ISCAID',
+      'Retinotoxicidade Felina',
+    ],
+    indications: [
+      'Pielonefrite bacteriana aguda e crônica em cães e gatos, direcionada por cultura urinária e antibiograma.',
+      'Prostatite bacteriana canina aguda e crônica e abscessos prostáticos por transposição da barreira hemato-prostática.',
+      'Pneumonias bacterianas graves e infecções profundas por bacilos Gram-negativos e Pseudomonas aeruginosa.',
+      'Colite ulcerativa histiocítica / granulomatosa associada a E. coli invasiva em cães Boxer e Bulldog Francês.',
     ],
   }),
 ];

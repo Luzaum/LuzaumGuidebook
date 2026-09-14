@@ -132,14 +132,14 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
         onMouseEnter={openHoverPreview}
         onMouseLeave={closeHoverPreview}
         className={cn(
-          'consulta-vet-sidebar-panel fixed bottom-[calc(4rem+env(safe-area-inset-bottom,0px))] left-0 top-14 z-50 flex w-[min(100vw,14rem)] shrink-0 flex-col border-r transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:inset-y-0 md:translate-x-0 md:overflow-visible',
+          'consulta-vet-sidebar-panel fixed inset-y-0 left-0 z-50 flex w-[min(85vw,17.5rem)] shrink-0 flex-col border-r shadow-2xl transition-[width,transform,border-color,box-shadow] duration-300 ease-in-out md:relative md:inset-y-0 md:translate-x-0 md:shadow-none md:overflow-visible',
           isCollapsed ? 'md:w-20' : 'md:w-56',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
         <div
           className={cn(
-            'consulta-vet-sidebar-surface relative flex flex-1 flex-col overflow-visible transition-[width,box-shadow,background-color] duration-300 ease-in-out',
+            'consulta-vet-sidebar-surface relative flex h-full min-h-0 flex-1 flex-col overflow-hidden transition-[width,box-shadow,background-color] duration-300 ease-in-out md:overflow-visible',
             isExpanded
               ? 'md:w-56 md:shadow-2xl md:shadow-black/20'
               : 'md:w-20'
@@ -156,26 +156,26 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
           </button>
           <div
             className={cn(
-              'consulta-vet-sidebar-header flex items-start justify-between gap-1.5 border-b border-border/60 px-2 pb-1 pt-1 transition-[height,padding,border-color] duration-300 ease-in-out md:px-2 md:pb-1 md:pt-1',
+              'consulta-vet-sidebar-header flex items-center justify-between gap-1.5 border-b border-border/60 px-3 py-2 transition-[height,padding,border-color] duration-300 ease-in-out md:items-start md:px-2 md:pb-1 md:pt-1',
               !isExpanded && 'md:h-3 md:border-transparent md:p-0'
             )}
           >
             <div
               className={cn(
                 'consulta-vet-sidebar-logo-wrap min-w-0 flex-1 transition-[height,opacity,transform,width] duration-300 ease-in-out',
-                isExpanded ? 'h-24 opacity-100 md:h-28' : 'md:h-0 md:w-0 md:-translate-x-2 md:opacity-0'
+                isExpanded ? 'h-10 opacity-100 md:h-28' : 'md:h-0 md:w-0 md:-translate-x-2 md:opacity-0'
               )}
             >
               <Link
                 to="/consulta-vet"
                 onClick={() => window.innerWidth < 768 && onClose()}
-                className="group block h-full w-full rounded-lg outline-none ring-offset-background transition-transform duration-200 ease-out hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-primary active:scale-[0.99]"
+                className="group flex h-full w-full items-center rounded-lg outline-none ring-offset-background transition-transform duration-200 ease-out hover:scale-[1.01] focus-visible:ring-2 focus-visible:ring-primary active:scale-[0.99]"
               >
                 <img
                   src={CONSULTA_VET_LOGO_SRC}
                   alt={CONSULTA_VET_LOGO_ALT}
                   className={cn(
-                    'h-auto w-full max-w-full object-contain object-left transition-[filter,transform] duration-200 ease-out group-hover:brightness-105 group-hover:drop-shadow-md dark:group-hover:brightness-110',
+                    'h-8 w-auto max-h-full max-w-full object-contain object-left transition-[filter,transform] duration-200 ease-out group-hover:brightness-105 group-hover:drop-shadow-md dark:group-hover:brightness-110 md:h-auto md:w-full',
                     CONSULTA_VET_LOGO_SIDEBAR_CLASS
                   )}
                   width={220}
@@ -188,17 +188,17 @@ export function ConsultaVetSidebar({ isOpen, isCollapsed, onClose, onToggleColla
             <button
               type="button"
               onClick={onClose}
-              className="relative z-10 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-foreground shadow-sm hover:bg-accent md:hidden"
+              className="relative z-10 flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-muted text-foreground shadow-sm hover:bg-accent md:hidden"
               aria-label="Fechar menu lateral"
             >
-              <X className="h-5 w-5" />
+              <X className="h-4 w-4" />
             </button>
           </div>
 
           <LayoutGroup id="consulta-vet-sidebar-nav">
             <nav
               className={cn(
-                'consulta-vet-sidebar-nav-scroll flex-1 space-y-1 overflow-y-auto px-2 pb-3 pt-1 md:px-2',
+                'consulta-vet-sidebar-nav-scroll flex-1 min-h-0 space-y-1 overflow-y-auto overscroll-contain px-2 pb-6 pt-1 md:px-2 md:pb-3',
                 !isExpanded && 'md:px-3 md:pt-0'
               )}
             >

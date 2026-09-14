@@ -49,7 +49,7 @@ export function MedicationClinicalStudiesSection({
                         setTimeout(() => target.classList.remove('ring-2', 'ring-primary'), 2000);
                       }
                     }}
-                    className="inline-flex h-6 min-w-6 items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-1.5 text-xs font-bold text-primary transition-all hover:scale-110 hover:bg-primary/20 active:scale-95"
+                    className="inline-flex h-5 min-w-5 items-center justify-center rounded-full border border-primary/30 bg-primary/10 px-1 text-[10px] font-bold text-primary transition-all hover:scale-110 hover:bg-primary/20 active:scale-95 sm:h-6 sm:min-w-6 sm:px-1.5 sm:text-xs"
                     title="Ver referência bibliográfica completa"
                   >
                     {idx + 1}

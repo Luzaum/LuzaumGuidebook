@@ -4,6 +4,7 @@ import { ampicilinaSulbactamMedicationRecord } from './medications.ampicilina-su
 import { capromorelinaMedicationRecord } from './medications.capromorelina.seed';
 import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
 import { dipironaMedicationRecord } from './medications.dipirona.seed';
+import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
 import { pronefraMedicationRecord } from './medications.pronefra.seed';
@@ -18,6 +19,7 @@ import { tramadolMedicationRecord } from './medications.tramadol.seed';
  * - Capromorelina (Elura / Entyce)
  * - Clindamicina (Clinbacter / Dalacin C)
  * - Dipirona (metamizol)
+ * - Enrofloxacina (Baytril / Zelotril)
  * - Fenobarbital (Gardenal / Convless)
  * - Hidróxido de Alumínio [Al(OH)3] (quelante de fosfato e antiácido)
  * - Pronefra (CaCO3 + MgCO3 + quitosana + hidrolisado de peixe)
@@ -31,6 +33,7 @@ export const medicationsSeed: MedicationRecord[] = [
   capromorelinaMedicationRecord,
   clindamicinaMedicationRecord,
   dipironaMedicationRecord,
+  enrofloxacinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
   phenobarbitalMedicationRecord,
   pronefraMedicationRecord,

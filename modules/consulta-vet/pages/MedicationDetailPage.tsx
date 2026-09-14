@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react';
-import { Link, useSearchParams, useParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Link, useLocation, useSearchParams, useParams } from 'react-router-dom';
 import {
   ChevronRight,
   ExternalLink,
@@ -24,6 +24,7 @@ import { MedicationMarketTab } from '../components/medication/MedicationMarketTa
 import { MedicationSectionFrame } from '../components/medication/MedicationSectionFrame';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
+import { SectionAnchorNav } from '../components/shared/SectionAnchorNav';
 import { useRecents } from '../hooks/useRecents';
 import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
@@ -53,8 +54,13 @@ function ProductResourceLink({ href, label }: { href?: string | null; label: str
   );
 }
 
+type ResumeLocationState = {
+  sectionId?: string;
+};
+
 export function MedicationDetailPage() {
   const { slug } = useParams<{ slug: string }>();
+  const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const medicationRepository = useMemo(() => getMedicationRepository(), []);
@@ -68,6 +74,9 @@ export function MedicationDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+  const lastSavedSectionRef = useRef<string>('');
+
+  const resumeState = (location.state as ResumeLocationState | null) || null;
 
   // Tab State: Local state for instant switching without reloads, synced silently with query
   const [activeTab, setActiveTab] = useState<MedicationTab>(() => {
@@ -118,7 +127,7 @@ export function MedicationDetailPage() {
           return;
         }
 
-        addRecent('medication', found.id);
+        addRecent('medication', found.id, undefined, resumeState?.sectionId);
 
         const [loadedDiseases, loadedConsensos] = await Promise.all([
           diseaseRepository.list(),
@@ -147,7 +156,18 @@ export function MedicationDetailPage() {
     return () => {
       isMounted = false;
     };
-  }, [addRecent, consensoRepository, diseaseRepository, medicationRepository, slug]);
+  }, [addRecent, consensoRepository, diseaseRepository, medicationRepository, resumeState?.sectionId, slug]);
+
+  useEffect(() => {
+    if (!medication || !resumeState?.sectionId) return;
+
+    const timeoutId = window.setTimeout(() => {
+      const element = document.getElementById(resumeState.sectionId || '');
+      element?.scrollIntoView({ block: 'start' });
+    }, 150);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [medication, resumeState?.sectionId]);
 
   const handleCopyLink = async () => {
     try {
@@ -219,9 +239,79 @@ export function MedicationDetailPage() {
     },
   ];
 
+  const sections = useMemo(() => {
+    if (!medication) return [];
+
+    if (activeTab === 'medicamento') {
+      return [
+        { id: 'resumo-rapido', label: '1. Resumo rápido' },
+        medication.detailedIndications && medication.detailedIndications.length > 0
+          ? { id: 'indicacoes-clinicas', label: '2. Indicações clínicas' }
+          : null,
+        { id: 'fundamentos-clinicos', label: '3. Fundamentos e evidências' },
+        medication.pharmacokineticsData
+          ? { id: 'farmacocinetica', label: '4. Farmacocinética aplicada' }
+          : null,
+        medication.generalInfoData?.pharmacologicalClassification
+          ? { id: 'classificacao-farmacologica', label: '5. Classificação farmacológica' }
+          : null,
+        relatedDiseases.length > 0 || relatedConsensos.length > 0
+          ? { id: 'conteudo-relacionado', label: '6. Conteúdo relacionado' }
+          : null,
+        medication.references && medication.references.length > 0
+          ? { id: 'referencias-bibliograficas', label: '7. Referências bibliográficas' }
+          : null,
+      ].filter(Boolean) as Array<{ id: string; label: string }>;
+    }
+
+    if (activeTab === 'info') {
+      return [
+        { id: 'formas-administracao', label: '1. Formas de administração' },
+        { id: 'compatibilidade-diluicao', label: '2. Compatibilidade e diluição' },
+        { id: 'particularidades-especies', label: '3. Particularidades por espécie' },
+        { id: 'aspectos-prescricao', label: '4. Regulamentação e prescrição' },
+      ];
+    }
+
+    if (activeTab === 'atencao') {
+      return [
+        { id: 'efeitos-adversos', label: '1. Efeitos adversos' },
+        { id: 'contraindicacoes', label: '2. Contraindicações e cuidados' },
+        { id: 'ajustes-renais-hepaticos', label: '3. Ajuste em comorbidades' },
+        { id: 'interacoes-medicamentosas', label: '4. Interações medicamentosas' },
+      ];
+    }
+
+    if (activeTab === 'mercado') {
+      return [
+        { id: 'apresentacoes-comerciais', label: '1. Apresentações comerciais' },
+        { id: 'tabela-posologia-pratica', label: '2. Guia e posologia prática' },
+        { id: 'bulas-fontes-oficiais', label: '3. Bulas e fontes oficiais' },
+        { id: 'modelo-receita', label: '4. Modelo de prescrição' },
+      ];
+    }
+
+    return [];
+  }, [
+    activeTab,
+    medication,
+    relatedConsensos.length,
+    relatedDiseases.length,
+  ]);
+
+  const handleActiveSectionChange = useCallback(
+    (sectionId: string) => {
+      if (!medication || !sectionId || lastSavedSectionRef.current === sectionId) return;
+      lastSavedSectionRef.current = sectionId;
+      addRecent('medication', medication.id, undefined, sectionId);
+    },
+    [addRecent, medication]
+  );
+
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>
-      <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto w-full max-w-[1580px] px-3 py-2.5 md:px-8 md:py-6 xl:px-10">
+      <div className="consulta-vet-detail-page consulta-vet-medication-detail mx-auto flex w-full max-w-[1840px] flex-col xl:flex-row">
+        <div className="w-full min-w-0 flex-1 px-3 py-2.5 md:px-8 md:py-6 xl:px-10 xl:pr-8 2xl:px-12">
         {/* Breadcrumb de navegação */}
         <nav
           className="consulta-vet-breadcrumb mb-5 flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground"
@@ -317,6 +407,17 @@ export function MedicationDetailPage() {
             })}
           </div>
         </div>
+
+        {/* NAVEGADOR DE SEÇÕES MOBILE (TOC RESPONSIVO) */}
+        {sections.length > 0 && (
+          <SectionAnchorNav
+            sections={sections}
+            variant="mobile"
+            title="Índice deste medicamento"
+            onActiveChange={handleActiveSectionChange}
+            className="top-[3.25rem] mt-2 mb-4"
+          />
+        )}
 
         {/* CONTEÚDO DAS 4 ABAS COM ANIMAÇÃO FLUIDA E SEM RELOAD */}
         <main className="pb-10 md:pb-16">
@@ -438,6 +539,20 @@ export function MedicationDetailPage() {
           </AnimatePresence>
         </main>
       </div>
+
+      {/* NAVEGADOR DE SEÇÕES DESKTOP (STICKY SIDEBAR TOC) */}
+      {sections.length > 0 && (
+        <div className="hidden w-60 shrink-0 py-8 pr-6 2xl:w-64 2xl:pr-8 xl:block">
+          <SectionAnchorNav
+            sections={sections}
+            variant="desktop"
+            title="Índice do medicamento"
+            onActiveChange={handleActiveSectionChange}
+            className="w-60 2xl:w-64"
+          />
+        </div>
+      )}
+    </div>
     </AbbreviationExpandedContext.Provider>
   );
 }

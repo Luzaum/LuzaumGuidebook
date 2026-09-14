@@ -57,6 +57,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'linfoma-mediastinal-caes-gatos',
   'piotorax-caes-gatos',
   'quilotorax-caes-gatos',
+  'cistite-enfisematosa-caes-gatos',
 ] as const;
 
 
@@ -67,6 +68,7 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'capromorelina',
   'clindamicina',
   'dipirona',
+  'enrofloxacina',
   'fenobarbital',
   'hidroxido-de-aluminio',
   'pronefra',

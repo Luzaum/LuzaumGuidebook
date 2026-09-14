@@ -496,6 +496,18 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Cirurgia e acompanhamento em casa: quando os remédios ou a dieta não resolvem em poucas semanas, a cirurgia para amarrar o canal linfático (ducto torácico) pode ser necessária. Em casa, o tutor deve contar a respiração do animal dormindo todos os dias (deve ser menor que 30 movimentos por minuto).',
     ],
   },
+  'cistite-enfisematosa-caes-gatos': {
+    whatIsIt:
+      'A cistite enfisematosa é uma forma rara e perigosa de infecção da bexiga em que bactérias produtoras de gás colonizam o órgão e fermentam açúcares ou proteínas, fazendo com que bolhas de gás se formem dentro da bexiga e fiquem presas no meio das camadas musculares da sua parede. Isso causa inflamação profunda, dor intensa e risco de que as bactérias e o gás subam pelos canais urinários até os rins.',
+    keyPoints: [
+      'Gás na bexiga é a marca registrada: o exame de ultrassom ou raio-X revela um reflexo brilhante característico com sombra suja e pequenas bolhas de ar na parede da bexiga.',
+      'Não acontece apenas em animais diabéticos: embora o excesso de açúcar na urina do diabetes ajude as bactérias a fermentar, cães e gatos não diabéticos que têm retenção de urina, problemas na coluna ou pedras na bexiga também podem ter a doença.',
+      'Sintomas de alerta: urina avermelhada com sangue, dor ao urinar, tentativas frequentes de fazer xixi com saída de poucas gotas, dor na barriga e, em casos raros, saída de bolhas de gás pelo xixi (pneumatúria).',
+      'Cultura de urina é obrigatória: para curar a doença e não criar bactérias super-resistentes, o veterinário precisa colher a urina e fazer o teste de antibiograma para descobrir o remédio exato.',
+      'Cuidado com a dose em gatos: o antibiótico enrofloxacina jamais pode ser usado em doses altas em gatos pelo perigo de causar cegueira permanente irreversível.',
+      'Tratamento completo e controle da causa: o tratamento com antibióticos costuma ser prolongado e a ultrassonografia deve ser repetida para ter certeza de que todo o gás desapareceu da bexiga.',
+    ],
+  },
 };
 
 export function getPlainLanguageForSlug(slug: string): DiseasePlainLanguage | undefined {
