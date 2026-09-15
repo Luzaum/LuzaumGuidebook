@@ -1192,6 +1192,39 @@ export const PUBLIC_CATALOG_DISEASE_CARD_STUBS: DiseaseRecord[] = [
     quickSummary:
       'A cistite enfisematosa é afecção infecciosa e inflamatória profunda da bexiga com acúmulo de gás intraluminal e intramural por fermentação bacteriana (E. coli em ~68%, Klebsiella, Proteus, Clostridium). Associada a diabetes, bexiga neurogênica, cistólitos e imunossupressão. O diagnóstico exige ultrassom (reverberação em cauda de cometa), radiografia e urocultura com TSA/MIC; a tomografia mapeia extensão extravesical e pielonefrite enfisematosa. Tratamento com antibioticoterapia direcionada prolongada e controle do ambiente subjacente.',
   }),
+  diseaseListCard({
+    id: 'disease-trombocitopenia-caes-gatos',
+    slug: 'trombocitopenia-caes-gatos',
+    title: 'Trombocitopenia em Cães e Gatos',
+    synonyms: [
+      'Trombocitopenia',
+      'Thrombocytopenia',
+      'Plaquetopenia',
+      'Trombocitopenia imunomediada',
+      'ITP',
+      'pITP',
+      'Baixa contagem de plaquetas',
+    ],
+    species: ['dog', 'cat'],
+    category: 'hematologia',
+    categories: ['hematologia', 'urgencia-emergencia', 'imunologia', 'oncologia'],
+    tags: [
+      'Trombocitopenia',
+      'Plaquetas',
+      'ITP',
+      'Hemostasia Primária',
+      'Petéquias',
+      'Equimoses',
+      'Vincristina',
+      'Prednisolona',
+      'Pseudotrombocitopenia',
+      'DOGiBAT',
+      'ACVIM',
+      'Romiplostim',
+    ],
+    quickSummary:
+      'A trombocitopenia é a redução das plaquetas circulantes por cinco mecanismos: destruição imune acelerada (ITP), falha medular de produção, consumo microvascular (CID/sepse), sequestro e perda. A revisão do esfregaço sanguíneo é mandatória para afastar pseudotrombocitopenia por grumos em EDTA (afetando até 71% dos gatos). Na ITP primária canina hemorrágica, o consenso preconiza prednisona 2 mg/kg/dia associada a vincristina 0,02 mg/kg IV dose única (recuperação mediana de plaquetas em 2,5 a 3 dias vs 5 dias). Em gatos, a azatioprina é estritamente contraindicada e fatal.',
+  }),
 ];
 
 
@@ -1549,4 +1582,37 @@ export const PUBLIC_CATALOG_MEDICATION_CARD_STUBS: MedicationRecord[] = [
       'Colite ulcerativa histiocítica / granulomatosa associada a E. coli invasiva em cães Boxer e Bulldog Francês.',
     ],
   }),
+  medicationListCard({
+    id: 'med-pradofloxacina',
+    slug: 'pradofloxacina',
+    title: 'Pradofloxacina',
+    activeIngredient: 'Pradofloxacina / Pradofloxacino',
+    isControlled: false,
+    tradeNames: [
+      'Veraflox® Comprimidos Palatáveis 15 mg, 60 mg e 120 mg (Elanco — Uso Veterinário Oficial)',
+      'Veraflox® Suspensão Oral 25 mg/mL (2,5%) com Seringa Dosadora (Elanco — Uso Felino)',
+    ],
+    pharmacologicClass:
+      'Antibacteriano bactericida da classe das 8-ciano-fluoroquinolonas de 3ª geração (duplo inibidor da DNA-girase e topoisomerase IV); ação concentração-dependente',
+    species: ['dog', 'cat'],
+    category: 'infectologia',
+    tags: [
+      'Pradofloxacina',
+      'Pradofloxacino',
+      'Veraflox',
+      'Fluoroquinolonas',
+      '8-Ciano-fluoroquinolona',
+      'Segurança Retiniana Felina',
+      'Piodermite Canina',
+      'Mycoplasma haemofelis',
+      'ISCAID',
+    ],
+    indications: [
+      'Piodermite profunda canina e infecções de feridas por Staphylococcus pseudintermedius resistente a primeiras escolhas.',
+      'Abscessos subcutâneos, mordeduras e infecções respiratórias em felinos (Pasteurella, Mycoplasma e anaeróbios).',
+      'Infecção do trato urinário e pielonefrite com sensibilidade comprovada em antibiograma.',
+      'Micoplasmose hemotrópica felina (Mycoplasma haemofelis) como terapia de resgate para PCR-negativação.',
+    ],
+  }),
 ];
+

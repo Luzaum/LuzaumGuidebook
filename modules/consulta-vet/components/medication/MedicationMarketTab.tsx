@@ -58,7 +58,16 @@ export function MedicationMarketTab({
     'Injetável 500 mg/mL (0,05 mL/kg)',
   ];
 
-  const defaultWeightRows = [
+  type PracticalWeightTableRow = {
+    weight: string;
+    totalDose: string;
+    col1: string;
+    col2: string;
+    col3: string;
+    col4?: string;
+  };
+
+  const defaultWeightRows: PracticalWeightTableRow[] = [
     { weight: '2 kg', totalDose: '50 mg', col1: '2 gotas (0,10 mL)', col2: 'Inadequado (usar gotas)', col3: '0,10 mL' },
     { weight: '5 kg', totalDose: '125 mg', col1: '5 gotas (0,25 mL)', col2: '1/4 comprimido', col3: '0,25 mL' },
     { weight: '10 kg', totalDose: '250 mg', col1: '10 gotas (0,50 mL)', col2: '1/2 comprimido', col3: '0,50 mL' },
@@ -366,6 +375,9 @@ export function MedicationMarketTab({
                   <td className="py-2.5 px-4 font-semibold text-amber-800 dark:text-amber-200">{row.col1}</td>
                   <td className="py-2.5 px-4 text-foreground/90">{row.col2}</td>
                   <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col3}</td>
+                  {row.col4 ? (
+                    <td className="py-2.5 px-4 font-mono text-foreground/80">{row.col4}</td>
+                  ) : null}
                 </tr>
               ))}
             </tbody>

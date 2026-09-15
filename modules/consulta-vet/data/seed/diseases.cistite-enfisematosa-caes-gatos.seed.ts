@@ -1,4 +1,5 @@
-import { DiseaseRecord } from '../../types';
+import { DiseaseRecord } from '../../types/disease';
+import { DISEASE_PLAIN_LANGUAGE } from './diseasePlainLanguage';
 
 export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
   id: 'disease-cistite-enfisematosa-caes-gatos',
@@ -28,12 +29,7 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
   ],
   isPublished: true,
 
-  plainLanguage: {
-    whatIs: 'A cistite enfisematosa é uma inflamação grave e incomum da bexiga causada por bactérias que produzem gás dentro do órgão ou na sua própria parede muscular. Isso faz com que se formem pequenas bolhas de ar na parede ou na urina.',
-    warningSigns: 'Urina avermelhada ou com sangue vivo, esforço doloroso para urinar, urinar várias vezes em pequenas quantidades, dor na barriga, urina com aspecto espumoso ou com saída de gás (muito raro), febre, fraqueza e vômitos.',
-    diagnosis: 'O diagnóstico é confirmado por exames de imagem, principalmente o ultrassom da bexiga (que mostra um reflexo brilhante típico causado pelo gás) e radiografias ou tomografia. A cultura da urina é indispensável para identificar a bactéria exata e o antibiótico correto.',
-    homeCare: 'Administrar os antibióticos rigorosamente até o fim prescrito sem interrupções, controlar o diabetes ou problemas de retenção urinária com o veterinário, garantir água fresca em abundância e retornar para exames de imagem de controle.'
-  },
+  plainLanguage: DISEASE_PLAIN_LANGUAGE['cistite-enfisematosa-caes-gatos'],
 
   quickSummary: 'A cistite enfisematosa (CE) é uma enfermidade infecciosa e inflamatória vesical profunda caracterizada pela presença de gás no lúmen, na parede muscular ou em ambos, gerado pela fermentação bacteriana de glicose ou substratos proteicos. Escherichia coli é o microrganismo predominante em aproximadamente 68% dos casos, seguida por Klebsiella spp., Proteus spp. e Clostridium spp. Embora classicamente associada ao diabetes mellitus, séries recentes demonstram que infecção urinária crônica, bexiga neurogênica, urolitíase e imunossupressão constituem fatores predisponentes frequentes em pacientes não diabéticos. O diagnóstico baseia-se na demonstração imaginológica de gás (radiografia, ultrassonografia com artefato de reverberação em cauda de cometa e tomografia computadorizada para mapear extensões extravesicais), associada a urocultura quantitativa com teste de susceptibilidade aos antimicrobianos (TSA/MIC). O manejo fundamenta-se em antibioticoterapia prolongada e direcionada, correção estrita da comorbidade de base e vigilância contra complicações fatais como pielonefrite enfisematosa ascendente e ruptura vesical.',
 
@@ -81,60 +77,66 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
         highlights: ['TSA/MIC obrigatório', 'Controle glicêmico estrito', 'Monitoramento por imagem em 3 a 7 dias']
       }
     ],
-    diagnosticFlow: [
-      {
-        label: 'Etapa 1: Triagem Clínica e Suspeita',
-        timing: 'Imediato (0 a 1 hora)',
-        detail: 'Reconhecimento de sinais de trato urinário inferior (hematúria, disúria) ou dor abdominal em paciente de risco (diabético, portador de bexiga neurogênica ou imunossuprimido).'
-      },
-      {
-        label: 'Etapa 2: Imagem Pré-Instrumentação',
-        timing: '1 a 2 horas',
-        detail: 'Realização de ultrassonografia ou radiografia simples antes de qualquer sondagem uretral para evitar o confundidor diagnóstico de pneumatúria iatrogênica.'
-      },
-      {
-        label: 'Etapa 3: Coleta Estéril e Urinálise',
-        timing: '2 a 3 horas',
-        detail: 'Cistocentese cuidadosa guiada por ultrassom (se a parede vesical permitir com segurança) ou cateterismo estéril para urinálise completa, citologia do sedimento e urocultura com TSA/MIC.'
-      },
-      {
-        label: 'Etapa 4: Avaliação Sistêmica e Renal',
-        timing: '2 a 4 horas',
-        detail: 'Hemograma completo, perfil bioquímico (creatinina, ureia, SDMA, eletrólitos, glicose sérica e frutosamina) para detectar azotemia, acidose ou sepse associada.'
-      },
-      {
-        label: 'Etapa 5: Mapeamento Avançado por Tomografia',
-        timing: 'Conforme estabilidade clínica',
-        detail: 'Indicada se houver suspeita de pielonefrite enfisematosa, pneumoperitônio, gás retroperitoneal ou quando a reverberação ultrassonográfica impedir a avaliação da arquitetura vesical.'
-      }
-    ],
-    treatmentFlow: [
-      {
-        label: 'Fase 1: Estabilização e Analgesia',
-        timing: 'Primeiras 2 a 4 horas',
-        detail: 'Fluidoterapia balanceada para restabelecer débito urinário e perfusão tecidual; controle álgico multimodal evitando anti-inflamatórios não esteroidais em pacientes desidratados ou azotêmicos.'
-      },
-      {
-        label: 'Fase 2: Terapia Antimicrobiana Empírica Racional',
-        timing: 'Início imediato após colheita de cultura',
-        detail: 'Antimicrobiano com espectro para enterobactérias e capacidade de atingir concentração tecidual na parede vesical, considerando histórico e resistência prévia.'
-      },
-      {
-        label: 'Fase 3: Ajuste Definitivo pelo TSA / MIC',
-        timing: '48 a 72 horas pós-cultura',
-        detail: 'Descalonamento antimicrobiano para a droga de menor espectro efetiva; correção das doses em caso de disfunção renal associada.'
-      },
-      {
-        label: 'Fase 4: Controle Rígido dos Fatores de Risco',
-        timing: 'Contínuo durante a hospitalização',
-        detail: 'Protocolo intensivo de insulinoterapia em diabéticos para mitigar glicosúria; protocolo de esvaziamento vesical limpo e asséptico em bexigas atônicas.'
-      },
-      {
-        label: 'Fase 5: Reavaliação Imaginológica e Cura',
-        timing: '3 a 7 dias e pós-tratamento',
-        detail: 'Ultrassonografia seriada para comprovar reabsorção total do gás intramural e resolução do espessamento parietal; urocultura de controle após conclusão do ciclo.'
-      }
-    ]
+    diagnosticFlow: {
+      title: 'Fluxo Diagnostico Sequencial da Cistite Enfisematosa',
+      steps: [
+        {
+          label: 'Etapa 1: Triagem Clinica e Suspeita',
+          timing: 'Imediato (0 a 1 hora)',
+          detail: 'Reconhecimento de sinais de trato urinario inferior (hematuria, disuria) ou dor abdominal em paciente de risco (diabetico, portador de bexiga neurogenica ou imunossuprimido).'
+        },
+        {
+          label: 'Etapa 2: Imagem Pre-Instrumentacao',
+          timing: '1 a 2 horas',
+          detail: 'Realizacao de ultrassonografia ou radiografia simples antes de qualquer sondagem uretral para evitar o confundidor diagnostico de pneumaturia iatrogenica.'
+        },
+        {
+          label: 'Etapa 3: Coleta Esteril e Urinalise',
+          timing: '2 a 3 horas',
+          detail: 'Cistocentese cuidadosa guiada por ultrassom (se a parede vesical permitir com seguranca) ou cateterismo esteril para urinalise completa, citologia do sedimento e urocultura com TSA/MIC.'
+        },
+        {
+          label: 'Etapa 4: Avaliacao Sistemica e Renal',
+          timing: '2 a 4 horas',
+          detail: 'Hemograma completo, perfil bioquimico (creatinina, ureia, SDMA, eletrolitos, glicose serica e frutosamina) para detectar azotemia, acidose ou sepse associada.'
+        },
+        {
+          label: 'Etapa 5: Mapeamento Avancado por Tomografia',
+          timing: 'Conforme estabilidade clinica',
+          detail: 'Indicada se houver suspeita de pielonefrite enfisematosa, pneumoperitonio, gas retroperitoneal ou quando a reverberacao ultrassonografica impedir a avaliacao da arquitetura vesical.'
+        }
+      ]
+    },
+    treatmentFlow: {
+      title: 'Algoritmo Terapeutico e Manejo Clinico da Cistite Enfisematosa',
+      steps: [
+        {
+          label: 'Fase 1: Estabilizacao e Analgesia',
+          timing: 'Primeiras 2 a 4 horas',
+          detail: 'Fluidoterapia balanceada para restabelecer debito urinario e perfusao tecidual; controle algico multimodal evitando anti-inflamatorios nao esteroidais em pacientes desidratados ou azotemicos.'
+        },
+        {
+          label: 'Fase 2: Terapia Antimicrobiana Empirica Racional',
+          timing: 'Inicio imediato apos colheita de cultura',
+          detail: 'Antimicrobiano com espectro para enterobacterias e capacidade de atingir concentracao tecidual na parede vesical, considerando historico e resistencia previa.'
+        },
+        {
+          label: 'Fase 3: Ajuste Definitivo pelo TSA / MIC',
+          timing: '48 a 72 horas pos-cultura',
+          detail: 'Descalonamento antimicrobiano para a droga de menor espectro efetiva; correcao das doses em caso de disfuncao renal associada.'
+        },
+        {
+          label: 'Fase 4: Controle Rigido dos Fatores de Risco',
+          timing: 'Continuo durante a hospitalizacao',
+          detail: 'Protocolo intensivo de insulinoterapia em diabeticos para mitigar glicosuria; protocolo de esvaziamento vesical limpo e asseptico em bexigas atonicas.'
+        },
+        {
+          label: 'Fase 5: Reavaliacao Imaginologica e Cura',
+          timing: '3 a 7 dias e pos-tratamento',
+          detail: 'Ultrassonografia seriada para comprovar reabsorcao total do gas intramural e resolucao do espessamento parietal; urocultura de controle apos conclusao do ciclo.'
+        }
+      ]
+    }
   },
 
   etiology: {

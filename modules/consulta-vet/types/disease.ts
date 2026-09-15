@@ -18,27 +18,33 @@ export interface DiseaseQuickSummaryFlowStep {
 }
 
 export interface DiseaseQuickSummaryFlow {
-  title: string;
+  title?: string;
   steps: DiseaseQuickSummaryFlowStep[];
 }
 
-/** Conteúdo estruturado do “Resumo rápido” (fluxos, grifos, faixas). Opcional por doença. */
+export type DiseaseQuickSummaryFlowType = DiseaseQuickSummaryFlow;
+
+/** Conteudo estruturado do "Resumo rapido" (fluxos, grifos, faixas). Opcional por doenca. */
 export interface DiseaseQuickSummaryRich {
-  /** Texto-base; `highlights` são substrings destacadas com efeito marca-texto. */
+  /** Texto-base; `highlights` sao substrings destacadas com efeito marca-texto. */
   lead: string;
   leadHighlights?: string[];
-  /** Blocos lado a lado (ex.: definição / população / conduta imediata). */
+  /** Blocos lado a lado (ex.: definicao / populacao / conduta imediata). */
   pillars?: { title: string; body: string; highlights?: string[] }[];
-  diagnosticFlow?: DiseaseQuickSummaryFlow;
-  treatmentFlow?: DiseaseQuickSummaryFlow;
+  diagnosticFlow?: DiseaseQuickSummaryFlowType;
+  treatmentFlow?: DiseaseQuickSummaryFlowType;
   tabelaDecisaoClinicaRapida?: Record<string, unknown> | Array<unknown>;
   tabelaComparacaoTresMecanismos?: Record<string, unknown> | Array<unknown>;
 }
 
-/** Linguagem acessível — bloco “O que é em palavras simples?” no resumo rápido. */
+/** Linguagem acessivel - bloco "O que e em palavras simples?" no resumo rapido e orientacao a tutores. */
 export interface DiseasePlainLanguage {
   whatIsIt: string;
   keyPoints: string[];
+  whatIs?: string;
+  warningSigns?: string;
+  diagnosis?: string;
+  homeCare?: string;
 }
 
 export interface DiseaseRecord extends ContentFlag {
@@ -73,9 +79,9 @@ export interface DiseaseRecord extends ContentFlag {
   complications?: EditorialSectionValue;
   figures?: EditorialClinicalFigure[] | Array<Record<string, unknown>> | Record<string, unknown>;
   prevention?: EditorialSectionValue;
-  relatedConsensusSlugs: string[];
+  relatedConsensusSlugs?: string[];
   relatedDiseaseSlugs?: string[];
-  relatedMedicationSlugs: string[];
+  relatedMedicationSlugs?: string[];
   references?: EditorialReference[];
   isPublished?: boolean;
   createdAt?: string;

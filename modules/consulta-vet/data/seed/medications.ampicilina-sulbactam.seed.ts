@@ -43,17 +43,20 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
 
     contraindications: [
       'Histórico confirmado de hipersensibilidade grave, anafilaxia, urticária imune imediata ou broncoespasmo a penicilinas, aminopenicilinas ou a qualquer componente da fórmula.',
-      'Hipersensibilidade prévia documentada cruzada a outros antimicrobianos beta-lactâmicos (cefalosporinas, carbapenêmicos ou monobactâmicos).',
       'Monoterapia isolada em casos confirmados ou com forte suspeita de sepse por enterobacterales multirresistentes, Pseudomonas aeruginosa, bactérias produtoras de AmpC/ESBL ou Staphylococcus resistente à meticilina (MRSA/MRSP).',
       'Infecções exclusivas por bactérias atípicas desprovidas de parede celular de peptidoglicano, como Mycoplasma spp. ou Chlamydia spp. (resistência intrínseca completa).',
     ],
 
     cautions: [
       'As doses expressas no formulário internacional Plumb consideram a soma dos dois componentes (ampicilina + sulbactam). Sempre especificar na prescrição se a dose prescrita é da associação total ou do componente ampicilina para evitar subdosagem ou superdosagem de 50%.',
+      'Usar com cautela em pacientes com hipersensibilidade documentada a outros beta-lactâmicos, como cefalosporinas, cefamicinas e carbapenêmicos, devido à possibilidade de reação cruzada. A contraindicação absoluta se aplica ao histórico de hipersensibilidade grave ou anafilaxia a penicilinas.',
       'Em pacientes com azotemia e doença renal crônica (DRC), a depuração renal da ampicilina sofre redução acentuada e a meia-vida se estende de 1,5 h para aproximadamente 4 h; considerar espaçamento de intervalo para q12h em infecções por patógenos com MIC baixa.',
       'Incompatibilidade físico-química direta in vitro com aminoglicosídeos (amicacina, gentamicina): nunca misturar na mesma seringa ou frasco de infusão. Administrar em acessos venosos separados ou lavar a via abundantemente antes e depois.',
       'O controle mecânico de foco infeccioso (drenagem de piotórax, lavagem peritoneal cirúrgica, drenagem de abscessos) é determinante para o sucesso terapêutico; o antibiótico não supera alta carga bacteriana e debris em cavidades não drenadas.',
       'Durante anestesia geral com inalatórios, a depuração de ampicilina cai cerca de 40% em cães, mantendo níveis séricos prolongados no intraoperatório.',
+      'Gestação e lactação: ampicilina e sulbactam atravessam a placenta e são distribuídos no leite em baixas concentrações. Usar somente quando o benefício esperado superar o risco e observar filhotes lactentes quanto a alterações gastrointestinais.',
+      'Em hepatopatia preexistente, acompanhar periodicamente enzimas hepáticas e bilirrubina. A relevância veterinária da hepatite colestática descrita em humanos ainda é desconhecida.',
+      'A ampicilina pode gerar resultado falso-positivo de glicose urinária em testes baseados em redução do cobre; testes enzimáticos com glicose oxidase não sofrem essa interferência.',
     ],
 
     adverseEffects: [
@@ -61,9 +64,25 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       'Tromboflebite ou irritação endotelial na administração intravenosa rápida em veia periférica (mitigada por infusão lenta ao longo de 15 a 30 minutos).',
       'Distúrbios gastrointestinais leves a moderados (náusea, êmese reflexa, amolecimento fecal transitório por disbiose).',
       'Reações imunomediadas de hipersensibilidade (febre medicamentosa, exantema cutâneo, prurido ou angioedema).',
+      'Anafilaxia rara, porém potencialmente fatal, especialmente após administração intravenosa; interromper imediatamente e instituir suporte emergencial caso ocorra.',
       'Risco potencial de neurotoxicidade ou crises convulsivas apenas em superdoses acentuadas em pacientes nefropatas anúricos com acúmulo no sistema nervoso central.',
       'Elevação assintomática e transitória de transaminases hepáticas e fosfatase alcalina em tratamentos prolongados.',
+      'Hepatite colestática ou colestase foi descrita em humanos e costuma ser reversível após a suspensão; a relevância clínica em cães e gatos não está estabelecida.',
     ],
+
+    interactions: [
+      'Aminoglicosídeos (amicacina, gentamicina): beta-lactâmicos podem inativá-los in vitro; não misturar na mesma seringa, frasco ou equipo e separar a administração.',
+      'Alopurinol: pode aumentar a ocorrência de erupções cutâneas em humanos; relevância veterinária desconhecida.',
+      'Antimicrobianos bacteriostáticos (tetraciclinas, macrolídeos, cloranfenicol e sulfonamidas): antagonismo demonstrado in vitro, mas importância clínica incerta.',
+      'Metotrexato: a ampicilina pode reduzir sua excreção renal e elevar o risco de toxicidade.',
+      'Micofenolato: a associação pode reduzir as concentrações ou os efeitos do micofenolato.',
+      'Probenecida: reduz a secreção tubular de ampicilina e sulbactam, prolongando as concentrações sistêmicas.',
+      'Varfarina: pode aumentar o risco de sangramento por redução da produção intestinal de vitamina K; monitorar coagulação quando a associação for inevitável.',
+      'Diclorfenamida: a associação pode aumentar o risco de hipocalemia.',
+    ],
+    routes: ['Intravenosa', 'Intramuscular', 'Subcutânea'],
+    adminNotesText:
+      'Medicamento predominantemente hospitalar devido ao intervalo de 6 a 8 horas. As doses do Plumb são expressas pela soma de ampicilina e sulbactam. Armazenar o pó a até 30 °C. Após reconstituição, respeitar rigorosamente concentração, diluente, temperatura e prazo de uso; soluções a 30 mg/mL em água para injeção ou SF 0,9% permanecem estáveis por até 8 horas em temperatura ambiente ou 72 horas sob refrigeração a 4 °C. Não usar alteração de cor, precipitação ou turbidez como único critério de estabilidade.',
 
     // 1. Quatro Pilares Terapêuticos
     pillars: [
@@ -189,7 +208,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         mechanismOfAction:
           'Ação bactericida sinérgica rápida reduzindo a endotoxemia e proliferação bacteriana sistêmica e na cavidade celomática peritoneal.',
         clinicalRationale:
-          'A terapia precoce na primeira hora do reconhecimento da sepse (golden hour) associada a laparotomia exploratória e ressuscitação volêmica reduz a mortalidade em pequenos animais.',
+          'A terapia antimicrobiana precoce após o reconhecimento da sepse, associada à laparotomia exploratória quando indicada e à ressuscitação hemodinâmica, integra o controle urgente do foco infeccioso em pequenos animais.',
         monitoring: 'Lactato sérico, pressão arterial média (PAM), débito urinário, escore de sepse veterinária (APPLE), leucograma e glicemia.',
         referenceIds: ['ref-stewart-2022-peritonitis-pk', 'ref-goggs-2025-critically-ill-dogs', 'ref-wang-2025-azotemia-pk'],
         evidenceLevel: 'Nível 1b (Ensaios Clínicos Randomizados e Farmacocinéticos)',
@@ -241,13 +260,13 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       metabolism:
         'Diferentemente de outros fármacos veterinários, a eliminação da ampicilina e do sulbactam independe predominantemente do metabolismo microssomal do citocromo P450 (CYP450). Não sofrem autoindução enzimática e não dependem da via da glucuronidação, o que elimina a preocupação farmacológica clássica de toxicidade felina por deficiência funcional de glucuroniltransferase (UGT1A6). Uma fração pequena da ampicilina sofre hidrólise simples para ácidos peniciloicos inativos, enquanto a grande maioria do fármaco permanece inalterada.',
       elimination:
-        'A eliminação de ambos os componentes é quase totalmente renal, ocorrendo por filtração glomerular e secreção tubular ativa intensa mediada por transportadores de ânions orgânicos, gerando concentrações urinárias extremamente elevadas de fármaco ativo. Em cães e gatos saudáveis, a meia-vida plasmática da ampicilina oscila entre 45 e 80 minutos. Em cães azotêmicos hospitalizados com disfunção renal aguda ou crônica, a meia-vida se eleva substancialmente para 3,9 mais ou menos 2,4 horas (p menor que 0,0009), multiplicando a área sob a curva (AUC). A depuração plasmática canina em animais acordados saudáveis é de aproximadamente 318 mL/kg/h, sofrendo redução para 186 mL/kg/h sob anestesia geral por diminuição da perfusão renal.',
+        'A eliminação de ambos os componentes é predominantemente renal, por filtração glomerular e secreção tubular ativa mediada por transportadores de ânions orgânicos. Em cães não azotêmicos hospitalizados, a meia-vida média da ampicilina foi de 1,5 ± 0,3 hora; em cães azotêmicos, aumentou para 3,9 ± 2,4 horas, com maior exposição sistêmica. Em outro estudo, a depuração plasmática canina foi de aproximadamente 318 mL/kg/h em animais acordados e 186 mL/kg/h sob anestesia geral.',
       cnsPenetration:
         'Penetração baixa no sistema nervoso central com barreira hematoencefálica íntegra decorrente da hidrofilicidade; eleva-se significativamente (10% a 60% da concentração plasmática) na presença de meningite purulenta e inflamação endotelial ativa.',
       plasmaBinding:
         'Taxa de ligação às proteínas plasmáticas baixa, de aproximadamente 20% em cães e gatos. As frações livres ativas permanecem elevadas no compartimento intersticial e não sofrem interferência crítica por deslocamento competitivo com outros fármacos.',
       halfLife:
-        'Cães e gatos saudáveis: meia-vida de 45 a 80 minutos (cerca de 1,0 a 1,5 hora) | Cães azotêmicos em internação hospitalar: meia-vida estendida para 3,9 mais ou menos 2,4 horas (AUC de ampicilina triplicada).',
+        'Cães não azotêmicos hospitalizados: 1,5 ± 0,3 hora | Cães azotêmicos hospitalizados: 3,9 ± 2,4 horas. Dados específicos da associação em gatos são limitados; a monografia remete à farmacocinética da ampicilina.',
     },
 
     // 5. Informações Gerais e Práticas (Info Tab)
@@ -256,7 +275,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         {
           route: 'Intravenosa Lenta ou Infusão Intermitente (IV)',
           technique:
-            'Via de escolha primária em sepse, pneumonia grave, piotórax e peritonite. Reconstituir o frasco-ampola com água para injeção estéril e diluir a dose calculada em 20 a 100 mL de Solução Fisiológica 0,9% (ou SG 5%). Administrar em infusão intravenosa lenta ao longo de 15 a 30 minutos em bomba de infusão ou equipo microgotas. Em caso de administração IV direta em bólus, aplicar lentamente em no mínimo 10 a 15 minutos.',
+            'Via de escolha primária em sepse, pneumonia grave, piotórax e peritonite. Reconstituir o frasco-ampola com água para injeção estéril. A solução pode ser administrada diretamente por via IV lenta em 5 a 20 minutos ou ser diluída em bolsa de 50 a 100 mL de SF 0,9% e infundida em 15 a 30 minutos.',
           nursingCare:
             'Inspecionar o cateter intravenoso periférico regularmente para sinais de flebite ou extravasamento endotelial. Nunca aplicar em bólus rápido em jato.',
           limitations: 'Exige cateter venoso pérvio e monitoramento hospitalar constante.',
@@ -275,25 +294,24 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
             'Injeção no tecido subcutâneo dorso-cervical em animais estáveis sem acesso venoso viável.',
           nursingCare:
             'Massagear suavemente o sítio após aplicação e avaliar tolerância local.',
-          limitations: 'Absorção imprevisível em animais chocados, hipotérmicos ou gravemente desidratados. Contraindicada em sepse.',
+          limitations: 'Evitar como via inicial em choque, hipotermia ou desidratação grave porque a hipoperfusão pode tornar a absorção imprevisível; em pacientes críticos, preferir a via IV.',
         },
       ],
       dilutionGuide: {
         compatibleFluids: [
           'Solução Fisiológica (Cloreto de Sódio 0,9% - SF 0,9%) - DILUENTE DE ESCOLHA PADRÃO (estabilidade de até 8 horas em temperatura ambiente a 25°C)',
-          'Solução de Ringer com Lactato (SRL) - fisicamente estável e compatível por até 8 horas a 25°C',
-          'Solução de Glicose a 5% (SG 5%) - compatível, porém apresenta estabilidade menor (usar dentro de 2 a 4 horas)',
           'Água estéril para injeção - indicada para reconstituição inicial do frasco liofilizado',
         ],
         incompatibleFluids: [
           'NUNCA misturar na mesma seringa, frasco ou equipo com aminoglicosídeos (Amicacina, Gentamicina, Tobramicina) devido à inativação química mútua in vitro',
-          'Incompatível fisicamente com emulsões lipídicas e propofol',
+          'Solução de Ringer com lactato: compatibilidade em conector Y variável ou incerta; a administração conjunta pode reduzir a concentração de ampicilina em cerca de 30%',
+          'Solução de glicose a 5%: compatibilidade em conector Y variável ou incerta para a associação; não tratar como diluente intercambiável sem confirmar a bula e a concentração',
           'Incompatível com soluções ácidas parenterais e bicarbonato de sódio concentrado',
         ],
         infusionRateGuidance:
-          'Administração intermitente: infundir diluído em SF 0,9% ao longo de 15 a 30 minutos. Em infusão intravenosa direta, respeitar o tempo mínimo de 10 a 15 minutos. Em protocolos de infusão contínua (CRI) em cães com peritonite séptica, utiliza-se dose de ataque em bólus de 50 mg/kg seguida de infusão contínua de 0,1 mg/kg/minuto.',
+          'Administração intermitente: infundir diluído em SF 0,9% ao longo de 15 a 30 minutos. Em administração intravenosa direta, aplicar lentamente em 5 a 20 minutos. Em protocolos de infusão contínua (CRI) em cães com peritonite séptica, utiliza-se dose de ataque em bólus de 50 mg/kg seguida de infusão contínua de 0,1 mg/kg/minuto.',
         preparationNotes:
-          'Reconstituição do frasco de 1,5 g (1 g ampicilina + 0,5 g sulbactam): adicionar 3,2 mL de água para injeção estéril, obtendo volume final de aproximadamente 4,0 mL na concentração de 375 mg/mL da associação total (250 mg/mL de ampicilina + 125 mg/mL de sulbactam). Para o frasco de 3,0 g (2 g ampicilina + 1 g sulbactam), adicionar 6,4 mL de diluente obtendo volume de 8,0 mL na mesma concentração de 375 mg/mL total. Soluções diluídas em SF 0,9% a 30 mg/mL mantêm estabilidade por até 8 horas em temperatura ambiente (25°C) ou 48 a 72 horas sob refrigeração (4°C).',
+          'Reconstituição do frasco de 1,5 g (1 g ampicilina + 0,5 g sulbactam): adicionar 3,2 mL de água para injeção estéril, obtendo volume final de aproximadamente 4,0 mL na concentração de 375 mg/mL da associação total (250 mg/mL de ampicilina + 125 mg/mL de sulbactam). Para o frasco de 3,0 g (2 g ampicilina + 1 g sulbactam), adicionar 6,4 mL, obtendo cerca de 8,0 mL na mesma concentração. Após diluição a 30 mg/mL em água para injeção ou SF 0,9%, a solução é estável por até 8 horas em temperatura ambiente ou 72 horas sob refrigeração a 4°C. Para outras concentrações, diluentes ou condições, consultar a bula específica ou a farmácia hospitalar.',
       },
       pharmacologicalClassification: {
         receptorsAndSites: [
@@ -311,7 +329,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
             action:
               'O sulbactam sódico entra no sítio catalítico das beta-lactamases e é atacado pela serina, formando um complexo acil-enzima irreversível que bloqueia a destruição da ampicilina.',
             clinicalEffect:
-              'Restauração completa do espectro da ampicilina contra Staphylococcus sensíveis à meticilina, Pasteurella, E. coli suscetível, Klebsiella e anaeróbios como Bacteroides fragilis.',
+              'Ampliação do espectro da ampicilina contra isolados suscetíveis produtores de betalactamases inibidas pelo sulbactam, incluindo alguns Staphylococcus sensíveis à meticilina, Pasteurella, E. coli, Klebsiella e anaeróbios como Bacteroides fragilis. A atividade não é universal e deve ser confirmada por cultura e antibiograma.',
           },
         ],
         autonomicAndEndocrineEffects: [
@@ -388,7 +406,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
           physiologicalExplanation:
             'Risco de reação anafilática mediada por IgE com hipotensão súbita, broncoespasmo, colapso cardiovascular e óbito.',
           clinicalAction:
-            'Contraindicação absoluta. Em caso de anafilaxia acidental, suspender imediatamente, administrar adrenalina intramuscular/IV, oxigênio, fluidoterapia agressiva e anti-histamínicos.',
+            'Contraindicação absoluta apenas quando houver hipersensibilidade grave prévia a penicilinas. Em caso de anafilaxia, suspender imediatamente e instituir o protocolo de emergência da unidade, com adrenalina pela via indicada, oxigênio, suporte hemodinâmico e monitorização contínua.',
         },
       ],
       adverseEffectsDetailed: [
@@ -442,7 +460,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         {
           clinicalCondition: 'Paciente Submetido a Anestesia Geral Inalatória Prolongada',
           recommendedAdjustment: 'Repetir a dose profilática a cada 90 a 120 minutos durante o ato operatório',
-          physiologicalRationale: 'Sob anestesia o clearance renal da ampicilina cai 40%, mantendo níveis teciduais estáveis durante cirurgias extensas.',
+          physiologicalRationale: 'Sob anestesia, a depuração plasmática da ampicilina caiu cerca de 40% no estudo citado, prolongando a exposição; ainda assim, a redose deve seguir a duração do procedimento e o protocolo cirúrgico.',
         },
       ],
       drugInteractionsDetailed: [
@@ -456,7 +474,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
           drugOrClass: 'Metotrexato',
           severity: 'major',
           clinicalEffect: 'Aumento expressivo da concentração sérica e risco de toxicidade grave por metotrexato',
-          pharmacologicalMechanism: 'A ampicilina compete pelos transportadores de ânions orgânicos renais, reduzindo o clearance tubular do metotrexato.',
+          pharmacologicalMechanism: 'A ampicilina compete pelos transportadores de ânions orgânicos renais, reduzindo a depuração tubular do metotrexato.',
         },
         {
           drugOrClass: 'Probenecida',
@@ -469,6 +487,18 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
           severity: 'moderate',
           clinicalEffect: 'Potencial redução do efeito bactericida da ampicilina',
           pharmacologicalMechanism: 'Beta-lactâmicos necessitam de multiplicação celular ativa para exercer lise osmótica; bacteriostáticos paralisam a divisão.',
+        },
+        {
+          drugOrClass: 'Varfarina',
+          severity: 'moderate',
+          clinicalEffect: 'Possível aumento do risco de sangramento; acompanhar tempo de protrombina/INR quando houver uso concomitante',
+          pharmacologicalMechanism: 'Alteração da microbiota intestinal pode reduzir a produção de vitamina K e potencializar o efeito anticoagulante.',
+        },
+        {
+          drugOrClass: 'Micofenolato',
+          severity: 'moderate',
+          clinicalEffect: 'Possível redução das concentrações ou do efeito imunossupressor do micofenolato',
+          pharmacologicalMechanism: 'Interação descrita em compêndio; monitorar resposta clínica, pois a magnitude em pacientes veterinários não está definida.',
         },
       ],
     },
@@ -530,6 +560,8 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         duration: '10 a 14 dias (conforme resposta clínica)',
         clinicalContext: 'Dose calculada pela associação total (ampicilina + sulbactam 2:1). Equivale a 15-20 mg/kg de ampicilina + 7,5-10 mg/kg de sulbactam.',
         monitoring: 'SpO2, frequência respiratória, leucograma, radiografias e função renal.',
+        evidenceLevel: 'Compêndio farmacológico e consenso clínico',
+        referenceIds: ['ref-plumbs-10th-amp-sulb', 'ref-iscaid-respiratory-2017'],
         calculatorEnabled: true,
         presentationId: 'pres-amp-sulb-15g',
         presentationConcentrationId: 'conc-375mg-ml',
@@ -547,6 +579,8 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         duration: 'Fase aguda cirúrgica e hospitalar',
         clinicalContext: 'Dose máxima da associação total. Associar a cobertura para Gram-negativos multirresistentes até resultado do antibiograma.',
         monitoring: 'Lactato, pressão arterial invasiva, débito urinário e hemograma.',
+        evidenceLevel: 'Compêndio farmacológico e estudos farmacocinéticos clínicos',
+        referenceIds: ['ref-plumbs-10th-amp-sulb', 'ref-stewart-2022-peritonitis-pk', 'ref-goggs-2025-critically-ill-dogs'],
         calculatorEnabled: true,
         presentationId: 'pres-amp-sulb-15g',
         presentationConcentrationId: 'conc-375mg-ml',
@@ -564,6 +598,8 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         duration: 'Individualizada conforme evolução da creatinina',
         clinicalContext: 'Espaçamento do intervalo amparado por estudo farmacocinético canino de 2025 devido ao prolongamento da meia-vida para 3,9 horas.',
         monitoring: 'Creatinina sérica, ureia, eletrólitos e débito urinário.',
+        evidenceLevel: 'Estudo farmacocinético clínico prospectivo',
+        referenceIds: ['ref-wang-2025-azotemia-pk'],
         calculatorEnabled: true,
         presentationId: 'pres-amp-sulb-15g',
         presentationConcentrationId: 'conc-375mg-ml',
@@ -581,6 +617,8 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         duration: 'Dose intraoperatória única ou repetida durante a cirurgia',
         clinicalContext: 'Garante nível tecidual protetor no momento exato do corte e contaminação. Encerrar na recuperação da anestesia.',
         monitoring: 'Sítio cirúrgico, temperatura pós-operatória.',
+        evidenceLevel: 'Compêndio farmacológico e estudo farmacocinético clínico',
+        referenceIds: ['ref-plumbs-10th-amp-sulb', 'ref-vet-journal-2025-anesthesia-pk'],
         calculatorEnabled: true,
         presentationId: 'pres-amp-sulb-15g',
         presentationConcentrationId: 'conc-375mg-ml',
@@ -657,7 +695,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
             referenceId: 'ref-wang-2025-azotemia-pk',
             sourceType: 'Estudo Farmacocinético Clínico Prospectivo',
             summaryText:
-              'Avaliação de 29 cães hospitalizados recebendo 22 mg/kg total IV q8h. A meia-vida da ampicilina nos azotêmicos foi de 3,9 mais ou menos 2,4 h vs 1,5 mais ou menos 0,3 h nos não azotêmicos (p menor que 0,00001). A modelagem comprovou que q12h é suficiente para atingir o alvo farmacodinâmico em cães renais.',
+              'Avaliação de 29 cães hospitalizados recebendo 22 mg/kg total IV a cada 8 horas. A meia-vida da ampicilina nos azotêmicos foi de 3,9 ± 2,4 h, versus 1,5 ± 0,3 h nos não azotêmicos (p < 0,00001). A modelagem indicou que o intervalo de 12 horas pode atingir o alvo farmacodinâmico em cães azotêmicos quando o isolado é suscetível.',
             summaryHighlights: ['meia-vida de 3,9 h', 'AUC de 214,5 vs 60,3', 'alvo terapêutico em q12h'],
             metrics: ['n = 29 cães internados', 't1/2: 3,9h azotêmicos vs 1,5h controle', 'p < 0,0009'],
             clinicalConclusion:
@@ -687,19 +725,19 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       },
       {
         id: 'cf-vet-journal-anesthesia',
-        title: 'Anestesia Geral Reduz o Clearance Renal em 40% e Justifica Redose Cirúrgica',
+        title: 'Anestesia Geral Reduz a Depuração Plasmática em Cerca de 40%',
         narrative:
-          'A farmacocinética sob anestesia geral difere substancialmente do estado acordado. O estudo clínico de 2025 publicado no The Veterinary Journal avaliou 20 cães e demonstrou que a anestesia geral inalatória reduz a depuração plasmática da ampicilina de 318 mL/kg/h para 186 mL/kg/h (redução de 40%). Ao mesmo tempo, comprovou que doses de 20 mg/kg de ampicilina repetidas a cada 90 minutos mantêm concentrações teciduais acima de 4 mg/L durante 100% do procedimento, e que a infusão estendida por 4 horas eleva o breakpoint farmacodinâmico de 0,5 mg/L para 4 mg/L.',
-        narrativeHighlights: ['depuração reduzida em 40%', 'redose a cada 90 minutos', 'infusão estendida eleva breakpoint'],
+          'A farmacocinética sob anestesia geral difere do estado acordado. O estudo clínico de 2025 publicado no The Veterinary Journal avaliou 20 cães e observou redução da depuração plasmática da ampicilina de 318 mL/kg/h para 186 mL/kg/h (cerca de 40%). Doses de 20 mg/kg de ampicilina repetidas a cada 90 minutos mantiveram concentrações teciduais acima de 4 mg/L durante 100% do procedimento; a modelagem indicou que a infusão estendida por 4 horas aumentou o ponto de corte farmacodinâmico de 0,5 mg/L para 4 mg/L.',
+        narrativeHighlights: ['depuração reduzida em cerca de 40%', 'redose a cada 90 minutos', 'infusão estendida elevou o ponto de corte'],
         studies: [
           {
             citation: 'Population pharmacokinetics of IV ampicillin in dogs. Vet J. 2025;314:106435.',
             referenceId: 'ref-vet-journal-2025-anesthesia-pk',
             sourceType: 'Estudo Farmacocinético Populacional',
             summaryText:
-              'Ensaio prospectivo em 20 cães avaliando cinética acordado vs. anestesiado. O clearance caiu de 318 para 186 mL/kg/h. A redose intraoperatória q90min garantiu 100% de cobertura tecidual.',
-            summaryHighlights: ['clearance 318 vs 186 mL/kg/h', 'redose q90min', '100% tempo acima de 4 mg/L'],
-            metrics: ['n = 20 cães', 'queda de 40% no clearance', 'redose a cada 90 min'],
+              'Ensaio prospectivo em 20 cães avaliando a cinética no estado acordado e sob anestesia. A depuração caiu de 318 para 186 mL/kg/h. A redose intraoperatória a cada 90 minutos manteve 100% do tempo avaliado acima de 4 mg/L.',
+            summaryHighlights: ['depuração: 318 vs. 186 mL/kg/h', 'redose a cada 90 min', '100% do tempo acima de 4 mg/L'],
+            metrics: ['n = 20 cães', 'queda de cerca de 40% na depuração', 'redose a cada 90 min'],
             clinicalConclusion:
               'Fundamenta o protocolo cirúrgico padrão ouro de redose a cada 90 a 120 minutos em cirurgias prolongadas e apoia infusões estendidas na rotina.',
           },
@@ -709,7 +747,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
         id: 'cf-del-magno-pyothorax',
         title: 'Manejo Clínico do Piotórax Felino com Drenos de Pequeno Calibre',
         narrative:
-          'O piotórax em gatos exige abordagem combinada imediata. Del Magno et al. (2021) descreveram uma série de 10 felinos com piotórax tratados com drenos torácicos wire-guided de pequeno calibre e antimicrobianoterapia. Nove dos 10 gatos receberam ampicilina-sulbactam parenteral (isolada ou combinada). Os patógenos isolados incluíram Actinomyces, bactérias anaeróbias polimicrobianas, Streptococcus e Pasteurella multocida. Todos os 10 gatos sobreviveram à internação hospitalar. O estudo ilustra a excelente adequação microbiológica da ampicilina-sulbactam para a flora típica felina, reforçando que a drenagem torácica ativa é indispensável.',
+          'O piotórax em gatos exige abordagem combinada imediata. Del Magno et al. (2021) descreveram uma série de 10 felinos com piotórax tratados com drenos torácicos de pequeno calibre guiados por fio e antimicrobianoterapia. Nove dos 10 gatos receberam ampicilina-sulbactam parenteral, isolada ou combinada. Os patógenos isolados incluíram Actinomyces, bactérias anaeróbias polimicrobianas, Streptococcus e Pasteurella multocida; todos os 10 gatos sobreviveram à internação. Como se trata de uma série pequena e retrospectiva, o achado apoia a adequação microbiológica do esquema nesse contexto, mas não demonstra superioridade; a drenagem torácica ativa continua indispensável.',
         narrativeHighlights: ['10 gatos sobreviveram', '9/10 tratados com ampicilina-sulbactam', 'drenagem ativa essencial'],
         studies: [
           {
@@ -740,8 +778,8 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       {
         id: 'ref-bsava-10th-formulary',
         citationText:
-          'BSAVA Small Animal Formulary, 10th ed. Part A: Canine and Feline. Ampicillin and Sulbactam monograph, pp. 24-25; Appendix I: Guidelines for Antimicrobial Use, pp. 444-445. British Small Animal Veterinary Association; 2020.',
-        sourceType: 'Formulário Clínico Internacional BSAVA',
+          'BSAVA Small Animal Formulary, 10th ed. Part A: Canine and Feline. Ampicillin monograph, pp. 27-28. British Small Animal Veterinary Association; 2020. Nota editorial: esta edição não contém monografia própria da associação ampicilina/sulbactam.',
+        sourceType: 'Formulário Clínico Internacional BSAVA - componente ampicilina',
         url: 'https://www.bsavalibrary.com/content/book/10.22233/9781910443743',
         evidenceLevel: 'Consenso Internacional de Especialistas',
       },

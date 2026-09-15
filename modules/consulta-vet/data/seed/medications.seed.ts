@@ -7,6 +7,7 @@ import { dipironaMedicationRecord } from './medications.dipirona.seed';
 import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
+import { pradofloxacinaMedicationRecord } from './medications.pradofloxacina.seed';
 import { pronefraMedicationRecord } from './medications.pronefra.seed';
 import { sulfametoxazolTrimetoprimaMedicationRecord } from './medications.sulfametoxazol-trimetoprima.seed';
 import { tramadolMedicationRecord } from './medications.tramadol.seed';
@@ -22,6 +23,7 @@ import { tramadolMedicationRecord } from './medications.tramadol.seed';
  * - Enrofloxacina (Baytril / Zelotril)
  * - Fenobarbital (Gardenal / Convless)
  * - Hidróxido de Alumínio [Al(OH)3] (quelante de fosfato e antiácido)
+ * - Pradofloxacina (Veraflox)
  * - Pronefra (CaCO3 + MgCO3 + quitosana + hidrolisado de peixe)
  * - Sulfametoxazol / Sulfadiazina + Trimetoprima (1:5)
  * - Tramadol (Cronidor / Tramal)
@@ -36,6 +38,7 @@ export const medicationsSeed: MedicationRecord[] = [
   enrofloxacinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
   phenobarbitalMedicationRecord,
+  pradofloxacinaMedicationRecord,
   pronefraMedicationRecord,
   sulfametoxazolTrimetoprimaMedicationRecord,
   tramadolMedicationRecord,

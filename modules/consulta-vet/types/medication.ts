@@ -316,6 +316,7 @@ export interface MedicationRecord extends ContentFlag {
       col1: string;
       col2: string;
       col3: string;
+      col4?: string;
     }>;
     dropletCalibrator?: {
       title: string;

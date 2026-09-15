@@ -58,6 +58,7 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'piotorax-caes-gatos',
   'quilotorax-caes-gatos',
   'cistite-enfisematosa-caes-gatos',
+  'trombocitopenia-caes-gatos',
 ] as const;
 
 
@@ -71,6 +72,7 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'enrofloxacina',
   'fenobarbital',
   'hidroxido-de-aluminio',
+  'pradofloxacina',
   'pronefra',
   'sulfametoxazol-trimetoprima',
   'tramadol',
