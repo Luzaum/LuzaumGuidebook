@@ -59,20 +59,29 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'quilotorax-caes-gatos',
   'cistite-enfisematosa-caes-gatos',
   'trombocitopenia-caes-gatos',
+  'anemia-caes-gatos',
+  'leishmaniose-caes-gatos',
+  'cistite-idiopatica-felina',
+  'discinesia-paroxistica-caes-gatos',
 ] as const;
 
 
 /** Mesma regra de sincronização com `data/publicCatalogCardStubs.ts`. */
 export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
+  'acetilcisteina',
   'amoxicilina-clavulanato',
   'ampicilina-sulbactam',
+  'buprenorfina',
   'capromorelina',
   'clindamicina',
   'dipirona',
   'enrofloxacina',
   'fenobarbital',
   'hidroxido-de-aluminio',
+  'meloxicam',
+  'metadona',
   'pradofloxacina',
+  'prednisolona',
   'pronefra',
   'sulfametoxazol-trimetoprima',
   'tramadol',

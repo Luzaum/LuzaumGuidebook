@@ -35,6 +35,7 @@ import { MedicationRecord } from '../types/medication';
 import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline';
 import { formatSpeciesList } from '../utils/navigation';
 import { cn } from '../../../lib/utils';
+import { includesRelatedSlug } from '../utils/relatedContent';
 
 type MedicationTab = 'medicamento' | 'info' | 'atencao' | 'mercado';
 
@@ -137,14 +138,17 @@ export function MedicationDetailPage() {
         if (!isMounted) return;
 
         const nextRelatedDiseases = loadedDiseases.filter(
-          (item) => found.relatedDiseaseSlugs.includes(item.slug) || item.relatedMedicationSlugs.includes(found.slug),
+          (item) =>
+            includesRelatedSlug(found.relatedDiseaseSlugs, item.slug) ||
+            includesRelatedSlug(item.relatedMedicationSlugs, found.slug),
         );
         const consensusSlugSet = new Set(nextRelatedDiseases.flatMap((item) => item.relatedConsensusSlugs));
 
         setRelatedDiseases(nextRelatedDiseases);
         setRelatedConsensos(loadedConsensos.filter((item) => consensusSlugSet.has(item.slug)));
-      } catch {
+      } catch (loadError) {
         if (!isMounted) return;
+        console.error('[ConsultaVet] Falha ao carregar detalhes do medicamento.', { slug, error: loadError });
         setError('Falha ao carregar a monografia do medicamento.');
       } finally {
         if (isMounted) setIsLoading(false);
@@ -180,64 +184,6 @@ export function MedicationDetailPage() {
   };
 
   const abbrevExpanded = useMemo(() => new Set<string>(), [medication?.slug]);
-
-  if (isLoading) {
-    return (
-      <div className="flex h-96 items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-600 border-t-transparent" />
-      </div>
-    );
-  }
-
-  if (error || !medication) {
-    return (
-      <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
-        <div className="w-full rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center md:p-8">
-          <h2 className="mb-2 text-xl font-semibold text-destructive">Medicamento não encontrado</h2>
-          <p className="mb-6 text-sm text-destructive/80">
-            {error || 'Não foi possível localizar o medicamento solicitado.'}
-          </p>
-          <Link
-            to="/consulta-vet/medicamentos"
-            className="inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
-          >
-            Voltar para Medicamentos
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const tabsConfig = [
-    {
-      id: 'medicamento' as const,
-      label: 'Medicamento',
-      icon: Pill,
-      badge: null,
-      activeColor: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25',
-    },
-    {
-      id: 'info' as const,
-      label: 'Info',
-      icon: Info,
-      badge: null,
-      activeColor: 'bg-sky-600 text-white shadow-md shadow-sky-600/25',
-    },
-    {
-      id: 'atencao' as const,
-      label: 'Atenção',
-      icon: AlertTriangle,
-      badge: null,
-      activeColor: 'bg-amber-600 text-white shadow-md shadow-amber-600/25',
-    },
-    {
-      id: 'mercado' as const,
-      label: 'Mercado',
-      icon: ShoppingBag,
-      badge: `${medication.presentations.length}`,
-      activeColor: 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25',
-    },
-  ];
 
   const sections = useMemo(() => {
     if (!medication) return [];
@@ -307,6 +253,64 @@ export function MedicationDetailPage() {
     },
     [addRecent, medication]
   );
+
+  if (isLoading) {
+    return (
+      <div className="flex h-96 items-center justify-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-emerald-600 border-t-transparent" />
+      </div>
+    );
+  }
+
+  if (error || !medication) {
+    return (
+      <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
+        <div className="w-full rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center md:p-8">
+          <h2 className="mb-2 text-xl font-semibold text-destructive">Medicamento não encontrado</h2>
+          <p className="mb-6 text-sm text-destructive/80">
+            {error || 'Não foi possível localizar o medicamento solicitado.'}
+          </p>
+          <Link
+            to="/consulta-vet/medicamentos"
+            className="inline-flex rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
+          >
+            Voltar para Medicamentos
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const tabsConfig = [
+    {
+      id: 'medicamento' as const,
+      label: 'Medicamento',
+      icon: Pill,
+      badge: null,
+      activeColor: 'bg-emerald-600 text-white shadow-md shadow-emerald-600/25',
+    },
+    {
+      id: 'info' as const,
+      label: 'Info',
+      icon: Info,
+      badge: null,
+      activeColor: 'bg-sky-600 text-white shadow-md shadow-sky-600/25',
+    },
+    {
+      id: 'atencao' as const,
+      label: 'Atenção',
+      icon: AlertTriangle,
+      badge: null,
+      activeColor: 'bg-amber-600 text-white shadow-md shadow-amber-600/25',
+    },
+    {
+      id: 'mercado' as const,
+      label: 'Mercado',
+      icon: ShoppingBag,
+      badge: `${medication.presentations.length}`,
+      activeColor: 'bg-indigo-600 text-white shadow-md shadow-indigo-600/25',
+    },
+  ];
 
   return (
     <AbbreviationExpandedContext.Provider value={abbrevExpanded}>

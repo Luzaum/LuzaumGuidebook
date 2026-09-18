@@ -24,6 +24,7 @@ import { AbbreviationExpandedContext } from '../utils/clinicalAbbreviationInline
 import { formatSpeciesList } from '../utils/navigation';
 import { getDiseaseCategorySlugs } from '../utils/diseaseCategories';
 import { getSpecialtyVisual } from '../utils/specialtyVisuals';
+import { includesRelatedSlug } from '../utils/relatedContent';
 
 type ResumeLocationState = {
   sectionId?: string;
@@ -140,14 +141,17 @@ export function DiseaseDetailPage() {
 
         setRelatedMedications(
           loadedMedications.filter(
-            (item) => found.relatedMedicationSlugs.includes(item.slug) || item.relatedDiseaseSlugs.includes(found.slug),
+            (item) =>
+              includesRelatedSlug(found.relatedMedicationSlugs, item.slug) ||
+              includesRelatedSlug(item.relatedDiseaseSlugs, found.slug),
           ),
         );
         setRelatedConsensos(
-          loadedConsensos.filter((item) => found.relatedConsensusSlugs.includes(item.slug))
+          loadedConsensos.filter((item) => includesRelatedSlug(found.relatedConsensusSlugs, item.slug))
         );
       } catch (loadError) {
         if (!isMounted) return;
+        console.error('[ConsultaVet] Falha ao carregar detalhes da doença.', { slug, error: loadError });
         setError(UI_TEXT.loadErrorFallback);
       } finally {
         if (isMounted) setIsLoading(false);

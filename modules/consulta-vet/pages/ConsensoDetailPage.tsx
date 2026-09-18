@@ -30,6 +30,7 @@ import { getConsensoRepository } from '../services/consensoRepository';
 import { getDiseaseRepository } from '../services/diseaseRepository';
 import { getMedicationRepository } from '../services/medicationRepository';
 import { useRecents } from '../hooks/useRecents';
+import { includesRelatedSlug } from '../utils/relatedContent';
 import { ConsensusDocumentDetails, ConsensusRecord } from '../types/consenso';
 import { EditorialReference } from '../types/common';
 import { DiseaseRecord } from '../types/disease';
@@ -186,8 +187,8 @@ export function ConsensoDetailPage() {
 
           const nextRelatedDiseases = loadedDiseases.filter(
             (item) =>
-              item.relatedConsensusSlugs.includes(found.slug) ||
-              (found.relatedDiseaseSlugs || []).includes(item.slug)
+              includesRelatedSlug(item.relatedConsensusSlugs, found.slug) ||
+              includesRelatedSlug(found.relatedDiseaseSlugs, item.slug)
           );
           const relatedDiseaseSlugSet = new Set([
             ...nextRelatedDiseases.map((item) => item.slug),
@@ -202,7 +203,7 @@ export function ConsensoDetailPage() {
             loadedMedications.filter(
               (item) =>
                 relatedMedicationSlugSet.has(item.slug) ||
-                item.relatedDiseaseSlugs.some((relatedSlug) => relatedDiseaseSlugSet.has(relatedSlug))
+                (item.relatedDiseaseSlugs || []).some((relatedSlug) => relatedDiseaseSlugSet.has(relatedSlug))
             )
           );
         } catch (detailsLoadError) {

@@ -29,7 +29,7 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
     mechanismOfAction:
       'Atua como modulador alostérico positivo dos receptores GABA-A neuronais no sistema nervoso central. Liga-se seletivamente a sítios específicos nas subunidades beta/gama do complexo receptor-canal de cloreto, prolongando a duração de abertura do poro iônico em resposta ao GABA endógeno. Esse influxo sustentado de cloreto hiperpolariza a membrana pós-sináptica, estabiliza o potencial de repouso e eleva expressivamente o limiar convulsivo cortical. Concomitantemente, exerce bloqueio de canais de cálcio dependentes de voltagem pré-sinápticos (canais tipo N e P/Q), atenuando a liberação exocítica de glutamato, e inibe fracamente os receptores excitatórios AMPA/cainato, abortando a propagação paroxística de descargas epilépticas focais e generalizadas.',
     plainLanguageSummary:
-      'Anticonvulsivante de primeira escolha para cães e gatos com epilepsia idiopática ou crises convulsivas recorrentes. Atua aumentando a inibição cerebral e acalmando a atividade elétrica neuronal desregulada. Exige administração estrita a cada 12 horas, monitoramento laboratorial de níveis no sangue (TDM) e NUNCA pode ser suspenso de forma abrupta.',
+      'O fenobarbital é o anticonvulsivante de primeira escolha consagrado na medicina veterinária para o controle a longo prazo da epilepsia idiopática e crises convulsivas recorrentes em cães e gatos. Atua como modulador alostérico positivo dos receptores GABA-A, elevando o limiar convulsivo cortical e suprimindo a propagação de descargas elétricas anormais no cérebro. Exige administração rigorosa a cada 12 horas aliada a monitoramento periódico das concentrações séricas (TDM) e função hepática, nunca devendo ser interrompido subitamente pelo risco de desencadeamento de crises em salva ou estado de mal epiléptico.',
 
     indications: [
       'Controle crônico de crises em cães com epilepsia idiopática, estrutural ou reativa.',
@@ -180,19 +180,19 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
     // 3. Farmacocinética Clínica Detalhada (Sem emojis, formatação técnica com grifo)
     pharmacokineticsData: {
       absorption:
-        'Absorção lenta, porém praticamente completa no trato gastrointestinal após administração oral. A **biodisponibilidade oral é de aproximadamente 88% a 92% em cães** e **próxima a 100% em gatos**. O pico de concentração plasmática máxima (Tmax) ocorre entre **4 e 8 horas em cães** e entre **2 e 4 horas em gatos**. A presença de alimento na luz gastrointestinal retarda discretamente o tempo para atingir o pico (Tmax), porém não diminui a fração total absorvida (AUC). Na via intravenosa, a ação anticonvulsivante central tem início em 15 a 30 minutos devido à lipossolubilidade intermediária.',
+        'Absorção lenta, porém praticamente completa no trato gastrointestinal após administração oral. A biodisponibilidade oral é de aproximadamente 88% a 92% em cães e próxima a 100% em gatos. O pico de concentração plasmática máxima (Tmax) ocorre entre 4 e 8 horas em cães e entre 2 e 4 horas em gatos. A presença de alimento na luz gastrointestinal retarda discretamente o tempo para atingir o pico (Tmax), porém não diminui a fração total absorvida (AUC). Na via intravenosa, a ação anticonvulsivante central tem início em 15 a 30 minutos devido à lipossolubilidade intermediária.',
       distribution:
-        'Apresenta ampla distribuição sistêmica tecidual com volume aparente de distribuição (Vd) de **0,70 a 0,75 L/kg em cães** e **0,65 a 0,70 L/kg em gatos**. Por possuir menor lipossolubilidade do que barbitúricos tiobarbituratos (como tiopental), sua translocação através da barreira hematoencefálica (BHE) é gradual. As concentrações no líquido cefalorraquidiano (LCR) e no parênquima cerebral atingem o equilíbrio em relação ao plasma após 30 a 60 minutos, correspondendo rigorosamente à fração livre sérica.',
+        'Apresenta ampla distribuição sistêmica tecidual com volume aparente de distribuição (Vd) de 0,70 a 0,75 L/kg em cães e 0,65 a 0,70 L/kg em gatos. Por possuir menor lipossolubilidade do que barbitúricos tiobarbituratos (como tiopental), sua translocação através da barreira hematoencefálica (BHE) é gradual. As concentrações no líquido cefalorraquidiano (LCR) e no parênquima cerebral atingem o equilíbrio em relação ao plasma após 30 a 60 minutos, correspondendo rigorosamente à fração livre sérica.',
       metabolism:
-        'Biotransformação predominantemente hepática pelas enzimas do sistema citocromo P450 (CYP450). A principal via metabólica consiste na oxidação e hidroxilação microsomal aromática, gerando o metabólito **p-hidroxifenobarbital**, seguido de conjugação com ácido glicurônico e sulfato. **Fenômeno crucial em cães**: o fenobarbital é um **potente autoindutor enzimático** (induzindo fortemente as isoenzimas CYP2B11 e CYP3A12). A administração crônica acelera sua própria taxa metabólica e a de outros fármacos coexistentes ao longo de 2 a 4 semanas. Em contrapartida, **felinos não apresentam autoindução enzimática clinicamente relevante**, mantendo a taxa de biotransformação estável ao longo do tempo.',
+        'Biotransformação predominantemente hepática pelas enzimas do sistema citocromo P450 (CYP450). A principal via metabólica consiste na oxidação e hidroxilação microsomal aromática, gerando o metabólito p-hidroxifenobarbital, seguido de conjugação com ácido glicurônico e sulfato. Fenômeno crucial em cães: o fenobarbital é um potente autoindutor enzimático (induzindo fortemente as isoenzimas CYP2B11 e CYP3A12). A administração crônica acelera sua própria taxa metabólica e a de outros fármacos coexistentes ao longo de 2 a 4 semanas. Em contrapartida, felinos não apresentam autoindução enzimática clinicamente relevante, mantendo a taxa de biotransformação estável ao longo do tempo.',
       elimination:
-        'A excreção final é mista hepatorrenal. Cerca de **25% da dose ativa é eliminada de forma inalterada pela urina** através de filtração glomerular e secreção tubular, enquanto os 75% restantes são excretados como metabólitos inativos conjugados. Como o fenobarbital é um ácido fraco (pKa ≈ 7,4), a **alcalinização urinária (pH > 7,5)** induz ionização tubular e aprisionamento iônico, reduzindo a reabsorção passiva e acelerando drasticamente a depuração renal em episódios de intoxicação aguda.',
+        'A excreção final é mista hepatorrenal. Cerca de 25% da dose ativa é eliminada de forma inalterada pela urina através de filtração glomerular e secreção tubular, enquanto os 75% restantes são excretados como metabólitos inativos conjugados. Como o fenobarbital é um ácido fraco (pKa ≈ 7,4), a alcalinização urinária (pH > 7,5) induz ionização tubular e aprisionamento iônico, reduzindo a reabsorção passiva e acelerando drasticamente a depuração renal em episódios de intoxicação aguda.',
       cnsPenetration:
         'Permeabilidade liquórica estável e equilibrada: a concentração no líquor atinge cerca de 45% a 55% da concentração plasmática total, espelhando fielmente a fração livre não ligada a proteínas.',
       plasmaBinding:
-        'Taxa de ligação às proteínas plasmáticas (albumina) baixa a moderada: **40% a 50% em cães** e **40% a 55% em gatos**. Não sofre deslocamento proteico acentuado por outros fármacos ácidos.',
+        'Taxa de ligação às proteínas plasmáticas (albumina) baixa a moderada: 40% a 50% em cães e 40% a 55% em gatos. Não sofre deslocamento proteico acentuado por outros fármacos ácidos.',
       halfLife:
-        'Cães: **60 a 90 horas no início**, encurtando para **30 a 45 horas (média 40 horas)** após a autoindução microssomal | Gatos: **34 a 50 horas (média 43 horas)** estável.',
+        'Cães: 60 a 90 horas no início, encurtando para 30 a 45 horas (média 40 horas) após a autoindução microssomal | Gatos: 34 a 50 horas (média 43 horas) estável.',
     },
 
     // 4. Módulo de Informações Gerais (Info Tab)
@@ -209,7 +209,7 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
         {
           route: 'Intravenosa (IV Lenta Hospitalar)',
           technique:
-            'Infundir SEMPRE de forma lenta e controlada, respeitando a velocidade máxima de infusão de **1 a 2 mg/kg por minuto**. Recomenda-se aspirar a dose e diluir em seringa contendo SF 0,9% para administração ao longo de pelo menos 5 a 10 minutos (ou fracionamento em doses de ataque de 3 a 4 mg/kg a cada 20 a 30 minutos).',
+            'Infundir SEMPRE de forma lenta e controlada, respeitando a velocidade máxima de infusão de 1 a 2 mg/kg por minuto. Recomenda-se aspirar a dose e diluir em seringa contendo SF 0,9% para administração ao longo de pelo menos 5 a 10 minutos (ou fracionamento em doses de ataque de 3 a 4 mg/kg a cada 20 a 30 minutos).',
           nursingCare:
             'NUNCA realizar bólus rápido ("em jato"). A injeção intravenosa rápida desencadeia colapso cardiovascular agudo, hipotensão refratária, arritmias ventriculares e parada respiratória súbita, potencializadas pelo propilenoglicol utilizado como co-solvente no veículo injetável. Manter ambu e tubo orotraqueal prontos.',
           limitations: 'Uso restrito a regime de internação e terapia intensiva com monitorização contínua de parâmetros vitais.',
@@ -237,7 +237,7 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
           'Antibióticos beta-lactâmicos (Ampicilina, Cefalosporinas) e Doxiciclina injetável',
         ],
         infusionRateGuidance:
-          'A velocidade de infusão intravenosa não deve ultrapassar **1 a 2 mg/kg por minuto**. Na carga hospitalar (dose cumulativa de 12 a 20 mg/kg), administrar em etapas de 3 a 4 mg/kg a cada 20 a 30 minutos, diluídos em SF 0,9%, avaliando continuamente a resposta anticonvulsivante e o padrão respiratório do animal antes de cada novo incremento.',
+          'A velocidade de infusão intravenosa não deve ultrapassar 1 a 2 mg/kg por minuto. Na carga hospitalar (dose cumulativa de 12 a 20 mg/kg), administrar em etapas de 3 a 4 mg/kg a cada 20 a 30 minutos, diluídos em SF 0,9%, avaliando continuamente a resposta anticonvulsivante e o padrão respiratório do animal antes de cada novo incremento.',
         preparationNotes:
           'A solução injetável de fenobarbital sódico é límpida, incolor a levemente amarelada e fortemente alcalina (pH entre 9,2 e 10,2). NUNCA administrar por via subcutânea (SC) ou perivascular sob nenhuma hipótese: o extravasamento perivenoso acarreta dor lancinante, inflamação severa e necrose tecidual com esfacelo cutâneo. Em caso de extravasamento acidental: interromper a injeção, aspirar o líquido remanescente pelo cateter, infiltrar lidocaína 1% sem vasoconstritor ou SF 0,9% com compressas mornas locais.',
       },
@@ -442,35 +442,35 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
         {
           clinicalCondition: 'Monitoramento Terapêutico de Nível Sérico (TDM) & Calibração de Dose',
           recommendedAdjustment:
-            'Alvo terapêutico sérico de **15 a 35 µg/mL em cães** e **15 a 45 µg/mL em gatos**. Coleta obrigatória em **10 a 14 dias** (estabilização inicial) e reavaliação em **6 semanas** (após autoindução hepática plena). Ajuste proporcional de dose: **Dose Nova = Dose Atual × (Nível Alvo ÷ Nível Atual)**.',
+            'Alvo terapêutico sérico de 15 a 35 µg/mL em cães e 15 a 45 µg/mL em gatos. Coleta obrigatória em 10 a 14 dias (estabilização inicial) e reavaliação em 6 semanas (após autoindução hepática plena). Ajuste proporcional de dose: Dose Nova = Dose Atual × (Nível Alvo ÷ Nível Atual).',
           physiologicalRationale:
             'A correlação entre dose em mg/kg e concentração sérica varia em até 4 vezes entre pacientes devido a diferenças individuais de absorção, clearance e indução microssomal. O controle clínico e a segurança dependem do nível sérico efetivo, não apenas do cálculo teórico por peso.',
         },
         {
           clinicalCondition: 'Insuficiência Hepática Leve a Moderada ou Elevação Persistente de ALT',
           recommendedAdjustment:
-            'Aplicar **redução de 30% a 50% na dose inicial habitual** (ex.: iniciar com 1,5 mg/kg q12h em cães) com monitoramento frequente de níveis séricos a cada 7 a 10 dias. Fármaco formalmente contraindicado na insuficiência severa ou encefalopatia.',
+            'Aplicar redução de 30% a 50% na dose inicial habitual (ex.: iniciar com 1,5 mg/kg q12h em cães) com monitoramento frequente de níveis séricos a cada 7 a 10 dias. Fármaco formalmente contraindicado na insuficiência severa ou encefalopatia.',
           physiologicalRationale:
             'A redução da massa hepatocelular diminui a capacidade de oxidação pelo CYP450, acarretando acúmulo sérico rápido com risco iminente de hepatotoxicidade cumulativa.',
         },
         {
           clinicalCondition: 'Doença Renal Crônica (DRC) — Estágios IRIS 3 e 4',
           recommendedAdjustment:
-            'Iniciar no limite inferior de dose (**2,0 a 2,5 mg/kg a cada 12 horas em cães** e **1,0 a 1,5 mg/kg q12h em gatos**), garantindo hidratação constante e avaliando a concentração sérica precocemente.',
+            'Iniciar no limite inferior de dose (2,0 a 2,5 mg/kg a cada 12 horas em cães e 1,0 a 1,5 mg/kg q12h em gatos), garantindo hidratação constante e avaliando a concentração sérica precocemente.',
           physiologicalRationale:
             'Aproximadamente 25% do fenobarbital ativo é eliminado de forma inalterada pelos rins. Na falência da filtração glomerular, há retenção do fármaco livre e de metabólitos conjugados.',
         },
         {
           clinicalCondition: 'Pacientes Geriátricos Debilitados ou com Caquexia Severa',
           recommendedAdjustment:
-            'Adotar dose inicial conservadora de **1,5 a 2,0 mg/kg a cada 12 horas**, com monitoramento estrito de ataxia e reflexos posturais.',
+            'Adotar dose inicial conservadora de 1,5 a 2,0 mg/kg a cada 12 horas, com monitoramento estrito de ataxia e reflexos posturais.',
           physiologicalRationale:
             'Animais idosos apresentam declínio funcional fisiológico da taxa de filtração glomerular, menor clearance intrínseco hepático e redução da albumina plasmática.',
         },
         {
           clinicalCondition: 'Protocolo de Desmame Gradual (Pacientes Livres de Crises por ≥ 1 a 2 anos)',
           recommendedAdjustment:
-            'Realizar **redução lenta de 20% a 25% da dose a cada 2 a 4 semanas** ao longo de um período total de **2 a 6 meses**. NUNCA interromper de forma súbita.',
+            'Realizar redução lenta de 20% a 25% da dose a cada 2 a 4 semanas ao longo de um período total de 2 a 6 meses. NUNCA interromper de forma súbita.',
           physiologicalRationale:
             'O desmame lento permite que os receptores GABA-A readquiram sensibilidade basal e que o limiar epileptogênico endógeno se restabeleça sem crises de rebote.',
         },

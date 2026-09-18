@@ -22,6 +22,7 @@ export interface EditorialReference {
   sourceType?: string | null;
   url?: string | null;
   notes?: string | null;
+  relevance?: string | null;
   /** Ex.: A, B, meta-análise, consenso — livre para o editorial. */
   evidenceLevel?: string | null;
   authors?: string;

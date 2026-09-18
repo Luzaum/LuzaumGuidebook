@@ -13,6 +13,7 @@ const PLUMBS_CITATION = 'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handb
 /** Páginas conferidas no exemplar PDF fornecido pelo usuário em 14/08/2026. */
 export const PLUMBS_10_MONOGRAPH_AUDIT: Record<string, PlumbsMonographAudit> = {
   prednisolona: { title: 'PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate', printedPage: 1058, pdfPage: 1085, doseIds: ['dose-pred-dog-anti', 'dose-pred-cat-anti', 'dose-pred-dog-imuno', 'dose-pred-cat-imuno', 'dose-pred-reposicao', 'dose-pred-cat-reposicao', 'dose-pred-dog-onc'] },
+  meloxicam: { title: 'Meloxicam', printedPage: 825, pdfPage: 852, doseIds: ['dose-melox-dog-oa-oral', 'dose-melox-dog-acute-oral', 'dose-melox-dog-periop-sc', 'dose-melox-cat-acute-periop', 'dose-melox-cat-djd-chronic', 'dose-melox-cat-ckd-lowdose'] },
   'sulfametoxazol-trimetoprima': { title: 'Sulfa-/Trimethoprim', printedPage: 1193, pdfPage: 1220, doseIds: ['dose-tmp-smx-dog-geral', 'dose-tmp-smx-dog-geral-grave', 'dose-tmp-smx-dog-foliculite', 'dose-tmp-smx-dog-cistite-nc', 'dose-tmp-smx-dog-cistite-c', 'dose-tmp-smx-cat-uti', 'dose-tmp-smx-cat-uti-complicated', 'dose-tmp-smx-dog-coccidia', 'dose-tmp-smx-dog-coccidia-over4', 'dose-tmp-smx-cat-coccidia', 'dose-tmp-smx-dog-toxo', 'dose-tmp-smx-dog-neospora', 'dose-tmp-smx-dog-pneumocystis'] },
   'amoxicilina-clavulanato': { title: 'Amoxicillin/Clavulanate', printedPage: 70, pdfPage: 97, doseIds: ['dose-amox-clav-dog-geral', 'dose-amox-clav-dog-cistite', 'dose-amox-clav-cat-nelson', 'dose-amox-clav-cat-plumbs', 'dose-amox-clav-cat-uti'] },
   pregabalina: { title: 'Pregabalin', printedPage: 1064, pdfPage: 1091, doseIds: ['dose-preg-dog-epilepsy', 'dose-preg-dog-neuro', 'dose-preg-dog-periop', 'dose-preg-dog-ortho', 'dose-preg-cat-epi', 'dose-preg-cat-neuro', 'dose-preg-cat-transport'] },
@@ -21,6 +22,7 @@ export const PLUMBS_10_MONOGRAPH_AUDIT: Record<string, PlumbsMonographAudit> = {
   pimobendan: { title: 'Pimobendan', printedPage: 1026, pdfPage: 1053, doseIds: ['dose-pimo-dog-chf', 'dose-pimo-cat'] },
   'same-sadenosilmetionina': { title: 'S-Adenosyl-Methionine (SAMe)', printedPage: 1137, pdfPage: 1164, doseIds: ['dose-same-dog-primary', 'dose-same-cat-primary'] },
   'acido-ursodesoxicolico': { title: 'Ursodiol', printedPage: 1287, pdfPage: 1314, doseIds: ['dose-udca-both-primary'] },
+  acetilcisteina: { title: 'Acetylcysteine', printedPage: 12, pdfPage: 39, doseIds: ['dose-nac-intox-paracetamol-attack', 'dose-nac-intox-paracetamol-maintenance', 'dose-nac-respiratorio-nebulizacao', 'dose-nac-oftalmico-melting'] },
   'n-acetilcisteina': { title: 'Acetylcysteine', printedPage: 12, pdfPage: 39, doseIds: ['dose-nac-intox-attack', 'dose-nac-intox-maintenance'] },
   ondansetron: { title: 'Ondansetron', printedPage: 956, pdfPage: 983, doseIds: ['dose-ondansetron-dog-iv-nausea', 'dose-ondansetron-dog-iv-alt', 'dose-ondansetron-cat-iv-sc'] },
   dipirona: { title: 'Dipyrone / Metamizole', printedPage: 413, pdfPage: 440, doseIds: ['dose-dipirona-dog-iv-standard', 'dose-dipirona-cat-iv'] },
@@ -86,7 +88,6 @@ const REMOVED_DOSE_IDS = new Set([
 ]);
 
 const ADDED_DOSES: Record<string, MedicationDose[]> = {
-  prednisolona: [{ id: 'dose-pred-cat-reposicao', species: 'cat', indication: 'Reposição glicocorticoide — hipoadrenocorticismo felino', doseMin: 0.2, doseMax: 0.2, doseUnit: 'mg', perWeightUnit: 'kg', route: 'VO', frequency: 'q24h', notes: 'Baseado nos relatos felinos compilados no monógrafo de DOCP; individualizar e monitorar.', calculatorEnabled: true }],
   'sulfametoxazol-trimetoprima': [
     { id: 'dose-tmp-smx-dog-geral-grave', species: 'dog', indication: 'Infecção bacteriana sistêmica sensível — regime para infecção grave', doseMin: 15, doseMax: 15, doseUnit: 'mg', perWeightUnit: 'kg', route: 'VO', frequency: 'q12h', notes: 'Dose da associação total; alternativa ao regime rotulado de 30 mg/kg q24h.', calculatorEnabled: true, presentationId: 'pres-tmp-smx-susp-br' },
     { id: 'dose-tmp-smx-cat-uti-complicated', species: 'cat', indication: 'Cistite bacteriana complicada', doseMin: 15, doseMax: 30, doseUnit: 'mg', perWeightUnit: 'kg', route: 'VO', frequency: 'q12h', duration: 'Conforme cultura, complicação e resposta.', notes: 'Dose da associação total.', calculatorEnabled: true, presentationId: 'pres-tmp-smx-susp-br' },

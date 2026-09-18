@@ -84,7 +84,7 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     selectedClassName: 'border-amber-500 bg-amber-500/[0.07] text-amber-800 dark:text-amber-300',
     iconClassName: 'text-amber-600 dark:text-amber-400',
     medicationSlugs: ['prednisolona', 'budesonida'],
-    keywords: ['glicocorticoide', 'corticosteroide', 'corticoide'],
+    keywords: ['glicocorticoide', 'corticosteroide', 'corticoide', 'prednisolona', 'prednisona', 'preditabs', 'prediderm', 'prelone', 'predsim', 'imunossupressor'],
   },
   {
     slug: 'analgesicos-anestesicos',
@@ -95,8 +95,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-300',
     iconClassName: 'text-cyan-600 dark:text-cyan-400',
-    medicationSlugs: ['tramadol', 'lidocaina', 'amantadina'],
-    keywords: ['analgésico', 'anestésico local', 'tramadol', 'opioide'],
+    medicationSlugs: ['metadona', 'buprenorfina', 'tramadol', 'lidocaina', 'amantadina'],
+    keywords: ['analgésico', 'anestésico local', 'metadona', 'mytedom', 'comfortan', 'synthadon', 'tramadol', 'opioide', 'buprenorfina', 'buprenex', 'vetergesic', 'temgesic', 'restiva', 'transtec'],
   },
   {
     slug: 'neurologicos-anticonvulsivantes',
@@ -215,8 +215,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'emergencia-intensivismo',
     selectedClassName: 'border-orange-500 bg-orange-500/[0.07] text-orange-700 dark:text-orange-300',
     iconClassName: 'text-orange-600 dark:text-orange-400',
-    medicationSlugs: ['n-acetilcisteina', 'atropina'],
-    keywords: ['antídoto', 'antidoto', 'toxicologia', 'intoxicação', 'organofosforado'],
+    medicationSlugs: ['acetilcisteina', 'n-acetilcisteina', 'atropina'],
+    keywords: ['antídoto', 'antidoto', 'toxicologia', 'intoxicação', 'paracetamol', 'organofosforado', 'acetilcisteina', 'nac'],
   },
   {
     slug: 'quelantes-antiacidos',

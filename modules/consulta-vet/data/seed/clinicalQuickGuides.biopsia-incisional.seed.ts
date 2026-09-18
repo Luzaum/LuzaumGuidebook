@@ -529,7 +529,7 @@ export const guiaBiopsiaIncisional: ClinicalQuickGuide = {
   slug: 'biopsia-incisional-caes-gatos',
   title: 'Biópsia incisional em cães e gatos 🧬🔬',
   subtitle: 'Procedimentos Clínicos e Oncológicos — Biópsia em cunha, planejamento de trajeto, técnica cirúrgica e histopatologia',
-  summary: 'Guia técnico completo: a biópsia incisional como etapa da cirurgia definitiva. Aprenda o planejamento oncológico do trajeto, a preservação dos compartimentos, a técnica em cunha com bisturi frio, conservação da amostra em formalina 10%, resolução de laudos discordantes e prevenção de complicações.',
+  summary: 'Colheita cirúrgica em cunha com bisturi frio na transição entre neoplasia e tecido são, sem violar planos profundos. O trajeto incisional deve ser orientado no eixo da ressecção definitiva posterior para excisão em bloco, com fixação imediata em formalina a 10% (proporção 10:1).',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -539,7 +539,7 @@ export const guiaBiopsiaIncisional: ClinicalQuickGuide = {
     'formalina', 'imprint', 'withrow', 'bsava', 'kamstock', 'abrovet'
   ],
   youtubeVideoId: null,
-  heroImageSrc: '/consulta-vet/clinical-guides/biopsia-incisional/capa.svg',
+  heroImageSrc: '/consulta-vet/clinical-guides/biopsia-incisional/capa.webp',
   heroImageAlt: 'Esquema de uma cunha de tecido tumoral e frasco para histopatologia.',
   richText: true,
   showTableOfContents: false,

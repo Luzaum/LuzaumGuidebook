@@ -125,8 +125,35 @@ function fieldMatchScore(queryPhrase: string, fields: unknown[]): number {
   if (exactIndex >= 0) return exactIndex;
   const startsIndex = normalizedFields.findIndex((field) => field.startsWith(`${queryPhrase} `));
   if (startsIndex >= 0) return 20 + startsIndex;
+
+  // Prefixos digitados ainda não terminam com espaço ("benza" ->
+  // "benzafibrato"). A comparação anterior só reconhecia palavras completas e
+  // acabava empatando um prefixo no nome do produto com o mesmo prefixo perdido
+  // em sua composição (por exemplo, "benzatina" no Ganadol).
+  const fieldPrefixIndex = normalizedFields.findIndex((field) => field.startsWith(queryPhrase));
+  if (fieldPrefixIndex >= 0) return 30 + fieldPrefixIndex;
+
   const boundaryIndex = normalizedFields.findIndex((field) => (` ${field} `).includes(` ${queryPhrase} `));
-  return boundaryIndex >= 0 ? 40 + boundaryIndex : 80;
+  if (boundaryIndex >= 0) return 40 + boundaryIndex;
+
+  const queryTokens = searchTokens(queryPhrase);
+  let bestTokenPrefixScore = Number.POSITIVE_INFINITY;
+  normalizedFields.forEach((field, fieldIndex) => {
+    const fieldTokens = searchTokens(field);
+    const tokenPositions = queryTokens.map((queryToken) =>
+      fieldTokens.findIndex((fieldToken) => fieldToken.startsWith(queryToken)),
+    );
+    if (tokenPositions.every((position) => position >= 0)) {
+      bestTokenPrefixScore = Math.min(
+        bestTokenPrefixScore,
+        60 + fieldIndex * 10 + tokenPositions.reduce((sum, position) => sum + position, 0),
+      );
+    }
+  });
+  if (Number.isFinite(bestTokenPrefixScore)) return bestTokenPrefixScore;
+
+  const fragmentIndex = normalizedFields.findIndex((field) => field.includes(queryPhrase));
+  return fragmentIndex >= 0 ? 200 + fragmentIndex : 400;
 }
 
 function rankCommercialProduct(

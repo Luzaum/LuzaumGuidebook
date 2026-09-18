@@ -1,17 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
-import { BookOpen, ChevronRight } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
 import { ClinicalQuickGuide } from '../../types/clinicalQuickGuide';
 import { formatSpeciesList } from '../../utils/navigation';
 
 interface ClinicalQuickGuideCardProps {
   guide: ClinicalQuickGuide;
-  categoryLabel: string;
+  categoryLabel?: string;
 }
 
-export function ClinicalQuickGuideCard({ guide, categoryLabel }: ClinicalQuickGuideCardProps) {
+export function ClinicalQuickGuideCard({ guide }: ClinicalQuickGuideCardProps) {
   const reduceMotion = useReducedMotion();
 
   return (
@@ -43,30 +43,24 @@ export function ClinicalQuickGuideCard({ guide, categoryLabel }: ClinicalQuickGu
             className="relative aspect-[16/7] w-full object-cover"
           />
         ) : null}
-        <div className="relative flex flex-1 flex-col gap-2.5 p-4">
-          <div className="flex items-start justify-between gap-2">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-teal-500/15 text-teal-700 dark:text-teal-300">
-              <BookOpen className="h-4 w-4" strokeWidth={2.25} aria-hidden />
-            </div>
-            <span className="max-w-[10rem] truncate rounded-full border border-border/80 bg-background/80 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-muted-foreground">
-              {categoryLabel}
-            </span>
-          </div>
+        <div className="relative flex flex-1 flex-col p-4">
           <div className="min-w-0 flex-1">
             <h3 className="text-[15px] font-bold leading-snug tracking-tight text-foreground transition-colors group-hover:text-teal-800 dark:group-hover:text-teal-200">
               {guide.title}
             </h3>
-            <p className="mt-1.5 line-clamp-2 text-xs leading-relaxed text-muted-foreground">{guide.summary}</p>
+            <p className="mt-2 line-clamp-5 text-xs leading-relaxed text-muted-foreground">
+              {guide.summary}
+            </p>
           </div>
-          <div className="flex flex-wrap items-center gap-2 pt-1">
+          <div className="mt-4 flex items-center justify-between gap-2 border-t border-border/50 pt-3">
             <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-primary">
               {formatSpeciesList(guide.species)}
             </span>
+            <span className="inline-flex items-center gap-1 text-xs font-semibold text-teal-700 dark:text-teal-300">
+              Abrir guia
+              <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </span>
           </div>
-          <span className="mt-auto inline-flex items-center gap-1 text-xs font-semibold text-teal-700 dark:text-teal-300">
-            Abrir guia
-            <ChevronRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-          </span>
         </div>
       </Link>
     </motion.div>

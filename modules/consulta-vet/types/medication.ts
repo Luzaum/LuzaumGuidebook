@@ -173,10 +173,14 @@ export interface MedicationDrugInteractionDetailed {
 }
 
 export interface MedicationDilutionGuide {
-  compatibleFluids: string[];
-  incompatibleFluids: string[];
-  infusionRateGuidance: string;
-  preparationNotes: string;
+  compatibleFluids?: string[];
+  incompatibleFluids?: string[];
+  infusionRateGuidance?: string;
+  preparationNotes?: string;
+  diluentsCompatible?: string[];
+  incompatibilities?: string[];
+  infusionRate?: string;
+  storageRequirements?: string;
 }
 
 export interface MedicationClinicalStudyCommented {

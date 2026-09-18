@@ -432,7 +432,7 @@ const guiaToracocentese: ClinicalQuickGuide = {
   slug: 'toracocentese-caes-gatos',
   title: 'Toracocentese em cães e gatos',
   subtitle: 'Procedimentos Ambulatoriais — punção e drenagem pleural terapêutica ou diagnóstica',
-  summary: 'Procedimento emergencial e diagnóstico para alívio de efusão pleural e pneumotórax. Indicações, técnica de inserção (7º-9º EIC), materiais necessários e conduta pós-procedimento com furosemida.',
+  summary: 'Punção torácica emergencial e diagnóstica para alívio imediato de efusão pleural ou pneumotórax. Realizada com cateter ou scalp no 7º ao 9º espaço intercostal, rente à borda cranial da costela, acoplado a extensor, torneira de 3 vias e seringa para descompressão ventilatória e colheita para análise.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -608,7 +608,7 @@ const guiaAbdominocentese: ClinicalQuickGuide = {
   slug: 'abdominocentese-caes-gatos',
   title: 'Abdominocentese em cães e gatos',
   subtitle: 'Procedimentos Clínicos — Punção, coleta e análise de efusão peritoneal',
-  summary: 'Procedimento prático para triagem de líquido livre abdominal. Indicações, contraindicações, materiais necessários para diagnóstico e terapia, técnica de ponto único vs. 4 quadrantes, LPD/DPL e interpretação laboratorial de emergência.',
+  summary: 'Punção percutânea da cavidade peritoneal para coleta diagnóstica e alívio de líquido livre (ascite ou hemoabdome). Realizada com agulha ou cateter na linha média caudal ou em quatro quadrantes, permitindo análise citológica imediata, bioquímica e triagem de abdome agudo.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -923,7 +923,7 @@ const guiaBandagemRobertJones: ClinicalQuickGuide = {
   subtitle:
     'Ortopedia - imobilização temporária acolchoada para fraturas e luxações distais em cães e gatos.',
   summary:
-    'Guia visual, em ordem prática, para montar uma bandagem Robert Jones: quando usar, materiais, estribos, algodão, gaze, acabamento, dedos visíveis e revisão final.',
+    'Imobilização temporária acolchoada de membros para estabilização de fraturas e luxações distais ao cotovelo ou joelho. Aplica-se fita de estribo, camadas espessas de algodão hidrófilo e atadura crepe compressiva uniforme, mantendo os dígitos centrais expostos para monitoramento neurovascular.',
   category: 'ortopedia',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -1233,7 +1233,7 @@ const guiaColetaArterial: ClinicalQuickGuide = {
   slug: 'coleta-sangue-arterial-caes-gatos',
   title: 'Coleta de sangue arterial em cães e gatos',
   subtitle: 'Procedimentos Clínicos — Punção dorsal pedal e femoral, hemogasometria, cuidados pré-analíticos e interpretação',
-  summary: 'Guia completo e objetivo para o clínico veterinário: quando indicar a gasometria arterial, qual artéria escolher em cães e gatos, posicionamento sem estresse, técnica de punção com agulha fina, prevenção de erros pré-analíticos (bolhas, heparina, tempo), valores de referência e cateterização arterial.',
+  summary: 'Punção diagnóstica na artéria dorsal pedal ou femoral com seringa heparinizada para hemogasometria. Permite avaliar com precisão oxigenação (PaO₂), ventilação (PaCO₂) e equilíbrio ácido-base em pacientes críticos, com hemostasia compressiva obrigatória pós-punção.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -1762,7 +1762,7 @@ const guiaMedulaOssea: ClinicalQuickGuide = {
   slug: 'puncao-biopsia-medula-ossea-caes-gatos',
   title: 'Punção e biópsia de medula óssea em cães e gatos',
   subtitle: 'Procedimentos Clínicos — Aspirado (AMO), biópsia core (BMO), anatomia umeral, ilíaca e femoral, preparo de espículas e interpretação',
-  summary: 'Guia definitivo para o clínico veterinário: quando indicar a avaliação medular (pancitopenia, citopenias inexplicadas, células atípicas), diferença entre aspirado e core, escolha do sítio por espécie e porte, anestesia/analgesia perióstea obrigatória, técnica de penetração cortical com estilete, manejo imediato das espículas (coagulação em 10-20s), técnica de squash e conduta diagnóstica no dry tap.',
+  summary: 'Coleta diagnóstica de tecido hematopoiético por aspirado (agulha de Rosenthal/Klima) ou biópsia core (Jamshidi) no úmero proximal, crista ilíaca ou trocânter femoral. Indicada para investigar citopenias inexplicadas, exigindo analgesia perióstea e confecção rápida de esfregaços por squash para avaliação de espículas.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -2428,7 +2428,7 @@ const guiaSondagemUretralFemeas: ClinicalQuickGuide = {
   subtitle:
     'Procedimentos Clínicos — Palpação digital da papila, técnica às cegas felina, método dos dois cateteres (<10 kg), sistema fechado e prevenção de ITU (ISCAID)',
   summary:
-    'Guia prático e avançado para cateterização uretral em cadelas e gatas: anatomia do vestíbulo e meato uretral ventral, técnica de palpação digital ("dedo teto"), método dos dois cateteres (Dornbusch), visualização com otoscópio, uso seguro do balão de Foley, circuito fechado gravitacional e prevenção de infecção hospitalar baseada no ISCAID e iCatCare.',
+    'Cateterização vesical em cadelas e gatas por palpação digital da papila no assoalho vestibular ("dedo teto"), método dos dois cateteres ou visualização com espéculo/otoscópio. Indicada para descompressão e monitoramento estrito do débito urinário com sistema fechado estéril.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -3087,7 +3087,7 @@ const guiaColetaLiquor: ClinicalQuickGuide = {
   subtitle:
     'Neurologia & Procedimentos — Punção cisternal (cisterna magna) e lombar (L5–L6 / L6–L7), prevenção de herniação cerebral, manejo da amostra e citologia',
   summary:
-    'Guia completo para punção do espaço subaracnoide em cães e gatos: anatomia da cisterna cerebelomedular e espaço lombar, landmarks do triângulo atlanto-occipital, regras vitais de segurança contra herniação encefálica (Danciu 2025), técnica de gotejamento passivo sem aspiração, preservação da amostra em 30–60 min e interpretação citológica laboratorial.',
+    'Punção diagnóstica do espaço subaracnoideo na cisterna magna ou espaço lombar sob anestesia geral e ventilação controlada. O líquor é colhido exclusivamente por gotejamento passivo sem sucção para investigar meningoencefalites, exigindo descarte prévio de herniação cerebral e análise em até 60 minutos.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -3726,7 +3726,7 @@ const guiaDesobstrucaoUretral: ClinicalQuickGuide = {
   subtitle:
     'Urologia & Emergência — Consenso iCatCare 2025, retificação em S e flush pulsátil felino, retro-hidropropulsão canina (ACVIM/BSAVA), estabilização de hipercalemia e MEMO para CIF',
   summary:
-    'Guia clínico definitivo para desobstrução uretral em pequenos animais: reconhecimento e manejo da hipercalemia crítica (ECG e gluconato de cálcio), manobra de retificação da uretra felina em S e flush hidráulico pulsátil, retro-hidropropulsão canina com oclusão digital retal, uso criterioso da cistocentese descompressiva, descontinuação da prazosina rotineira e manejo multimodal da Cistite Idiopática Felina (CIF).',
+    'Manejo emergencial de obstrução uretral em pequenos animais: estabilização de hipercalemia, retificação da uretra peniana felina com hidropropulsão/flush pulsátil suave ou retro-hidropropulsão canina com oclusão retal, restabelecendo o fluxo urinário com alívio imediato e proteção vesical.',
   category: 'procedimentos',
   species: ['dog', 'cat'],
   searchKeywords: [
@@ -4308,7 +4308,7 @@ const guiaSondagemUretralMachos: ClinicalQuickGuide = {
   subtitle:
     'Nefro-Urologia & Emergência — Passagem atraumática, manobra de retificação pélvica, os penis e arco isquiático, protocolo seguro de Foley, prevenção de CAUTI (ISCAID) e conduta em obstruções',
   summary:
-    'Guia prático e avançado para cateterização uretral no cão macho: anatomia sagital e superação atraumática dos 3 pontos de resistência fisiológica (osso peniano, arco isquiático e próstata), a manobra de retificação peniana caudal, mensuração prévia antinó intravesical, regras absolutas para insuflação da sonda Foley, sistema fechado e prevenção de infecção (ISCAID 2019), escalonamento em obstruções e uso de fio-guia hidrofílico.',
+    'Cateterização uretral no cão macho: retificação caudal do pênis para vencer a curvatura isquiática, mensuração prévia do comprimento para prevenir nó intravesical, progressão atraumática sem força e balonamento estrito intravesical da sonda Foley acoplada a circuito fechado estéril.',
   category: 'procedimentos',
   species: ['dog'],
   searchKeywords: [

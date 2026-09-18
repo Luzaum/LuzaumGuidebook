@@ -8,9 +8,24 @@ export type SimplifiedMedicationDefinition = {
  * na monografia; este texto serve como porta de entrada para leitores não especialistas.
  */
 const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
+  meloxicam: {
+    whatItDoes:
+      'O meloxicam inibe preferencialmente a enzima COX-2, reduzindo a formação de prostaglandinas responsáveis pela dor, inflamação e febre em processos articulares, tecidos moles e perioperatório.',
+    keyPoints: [
+      'Ação COX-2 preferencial: a seletividade diminui em doses mais altas, afetando também a COX-1 gástrica e renal.',
+      'Contraindicado em pacientes hipovolêmicos, desidratados ou hipotensos pelo risco iminente de lesão renal aguda.',
+      'Em gatos com DRC estável e euvolêmicos, doses ultrabaixas (0,02 mg/kg/dia) possuem respaldo em consensos recentes com monitoramento rigoroso.',
+      'Nunca associar com corticosteroides ou outros AINEs pelo risco severo de ulceração e perfuração gastrointestinal.',
+    ],
+  },
   prednisolona: {
-    whatItDoes: 'A prednisolona imita a ação do cortisol e diminui a inflamação e a atividade exagerada do sistema de defesa. A intensidade do efeito muda bastante conforme a dose: doses baixas podem repor hormônio, enquanto doses maiores controlam inflamação ou suprimem a imunidade.',
-    keyPoints: ['A finalidade clínica define a dose.', 'Tratamentos prolongados geralmente exigem retirada gradual.', 'Infecções, diabetes e uso junto com anti-inflamatórios exigem cautela.'],
+    whatItDoes: 'A prednisolona imita e potencializa a ação do cortisol, diminuindo a inflamação e a atividade autoimune do sistema de defesa. A intensidade do efeito muda radicalmente conforme a dose: reposição hormonal em doses mínimas, controle anti-inflamatório em doses médias e imunossupressão potente em doses elevadas.',
+    keyPoints: [
+      'A indicação clínica define a dose: reposição << anti-inflamatório << imunossupressor.',
+      'Em gatos, usar sempre prednisolona ativa e nunca prednisona, pela baixa conversão oral felina.',
+      'Tratamentos superiores a 14 dias exigem desmame gradual obrigatório para evitar colapso adrenal.',
+      'Nunca associar rotineiramente com AINEs devido ao alto risco de úlceras e perfuração gástrica.',
+    ],
   },
   'sulfametoxazol-trimetoprima': {
     whatItDoes: 'A associação bloqueia duas etapas consecutivas que as bactérias usam para produzir ácido fólico. Esse bloqueio duplo dificulta a multiplicação bacteriana e torna o tratamento mais eficaz do que cada componente isolado.',
@@ -123,6 +138,15 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
   'acido-ursodesoxicolico': {
     whatItDoes: 'O ácido ursodesoxicólico torna a bile menos agressiva e favorece seu fluxo. Também pode exercer efeitos protetores sobre células do fígado e das vias biliares em doenças nas quais não existe obstrução completa.',
     keyPoints: ['Obstrução biliar completa deve ser descartada.', 'A administração com alimento costuma ser útil.', 'Exames e imagem orientam duração e resposta.'],
+  },
+  acetilcisteina: {
+    whatItDoes: 'A acetilcisteína repõe cisteína e glutationa, a principal defesa antioxidante celular contra metabólitos reativos tóxicos. É o antídoto padrão-ouro na intoxicação por paracetamol em cães e especialmente em gatos, atuando também como mucolítico respiratório e agente colagenolítico antimelting ocular.',
+    keyPoints: [
+      'Gatos com paracetamol: emergência crítica com risco rápido de metemoglobinemia severa e asfixia tecidual.',
+      'Dose de ataque IV diluída a 5% administrada lentamente ao longo de 15 a 20 minutos sob monitoramento.',
+      'Nebulização formalmente contraindicada em felinos asmáticos por desencadear broncoespasmo agudo.',
+      'A apresentação veterinária atual de Mucomucil Pet contém L-carbocisteína e NÃO substitui a acetilcisteína.',
+    ],
   },
   'n-acetilcisteina': {
     whatItDoes: 'A N-acetilcisteína ajuda a repor glutationa, importante defesa antioxidante do organismo. Também quebra ligações do muco, deixando secreções respiratórias menos espessas, e tem papel específico em algumas intoxicações.',
