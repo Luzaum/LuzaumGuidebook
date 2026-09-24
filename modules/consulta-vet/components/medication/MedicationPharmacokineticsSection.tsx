@@ -77,38 +77,47 @@ function PKHighlightedText({ text, highlights = [] }: { text: string; highlights
 }
 
 const PK_HIGHLIGHTS_ABSORPTION = [
-  'pró-fármaco',
-  '4-metilaminoantipirina (4-MAA)',
-  '85%',
-  '1,5 e 2 horas',
-  '35 a 40 minutos',
-  '5 a 6 horas após a dosagem oral',
+  'biodisponibilidade oral',
+  'biodisponibilidade',
+  'absorção oral',
+  'absorção intramuscular',
+  'pico plasmático',
+  'Cmax',
+  'Tmax',
+  'primeira passagem',
+  'trato gastrointestinal',
 ];
 
 const PK_HIGHLIGHTS_DISTRIBUTION = [
-  '5,0 a 7,5 L/kg em cães',
-  '1,0 a 1,4 L/kg em gatos',
-  '50% a 58%',
-  '>99% à albumina',
+  'volume de distribuição',
   'barreira hematoencefálica',
-  'livre penetração',
+  'líquido cefalorraquidiano',
+  'proteínas plasmáticas',
+  'tecido ósseo',
+  'penetração tecidual',
+  'lipofilicidade',
 ];
 
 const PK_HIGHLIGHTS_METABOLISM = [
   'citocromo P450',
-  '4-aminoantipirina (4-AA)',
-  'glicuronidação limitada',
-  'desmetilação e acetilação enzimática',
-  'não restringe a eliminação da dipirona',
+  'CYP450',
+  'biotransformação hepática',
+  'metabólito ativo',
+  'glicuronidação',
+  'autoindução enzimática',
+  'fase I',
+  'fase II',
 ];
 
 const PK_HIGHLIGHTS_ELIMINATION = [
-  '4,5 a 6 horas em cães saudáveis',
-  'clearance) de 552 a 921 mL/kg/h',
-  '6,0 a 7,5 horas',
-  '92 a 131 mL/kg/h',
-  'intervalos de 12 a 24 horas',
-  '90% da dose eliminada na urina',
+  'meia-vida de eliminação',
+  'meia-vida',
+  'clearance sistêmico',
+  'depuração renal',
+  'excreção renal',
+  'excreção biliar',
+  'filtração glomerular',
+  'secreção tubular',
 ];
 
 export function MedicationPharmacokineticsSection({
@@ -129,7 +138,7 @@ export function MedicationPharmacokineticsSection({
             Farmacocinética Aplicada & Metabolismo Comparado
           </h3>
           <p className="text-xs text-muted-foreground">
-            Comportamento de pró-fármaco, biotransformação microssomal e clearance renal
+            Absorção, distribuição, metabolismo e eliminação do medicamento
           </p>
         </div>
       </div>

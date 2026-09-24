@@ -819,7 +819,7 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
         citationText:
           'Bailey KS, Dewey CW, Boothe DM, Barone G, Kortz GD. Feline idiopathic epilepsy: a retrospective study of 30 cases (1998-2008) and treatment response to phenobarbital. J Feline Med Surg. 2009;11(8):657-664. doi: 10.1016/j.jfms.2008.12.008.',
         sourceType: 'Estudo Clínico Multicêntrico',
-        url: 'https://pubmed.ncbi.nlm.nih.gov/19671109/',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/19447661/',
         evidenceLevel: 'Nível 1b (Estudo Clínico)',
       },
       {
@@ -827,7 +827,7 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
         citationText:
           'Gizzi AB, Leal LM, Flor PB, Rivero BR, et al. Phenobarbital clearance and therapeutic drug monitoring in dogs with epilepsy: Impact of autoinduction. J Vet Intern Med. 2020;34(4):1532-1541. doi: 10.1111/jvim.15820.',
         sourceType: 'Estudo Clínico Prospectivo',
-        url: 'https://pubmed.ncbi.nlm.nih.gov/32666642/',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/32412140/',
         evidenceLevel: 'Nível 1b (Farmacocinética Clínica)',
       },
       {

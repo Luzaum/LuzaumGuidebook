@@ -258,6 +258,7 @@ export interface MedicationRecord extends ContentFlag {
   adverseEffects: string[];
   interactions?: string[];
   routes?: string[];
+  administration?: string[];
   doses: MedicationDose[];
   presentations: MedicationPresentation[];
   clinicalNotesRichText?: string;
@@ -292,6 +293,8 @@ export interface MedicationRecord extends ContentFlag {
     title: string;
     narrative: string;
     narrativeHighlights?: string[];
+    /** Referências da síntese; livros não são apresentados como ensaios clínicos. */
+    referenceIds?: string[];
     studies: Array<{
       citation: string;
       referenceId: string;

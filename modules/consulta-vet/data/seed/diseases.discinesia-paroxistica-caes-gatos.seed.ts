@@ -120,70 +120,76 @@ export const discinesiaParoxisticaCaesGatosSeed: DiseaseRecord = {
         highlights: ['Dieta sem glúten', 'Acetazolamida canina', 'Contraindicação felina', 'Tireoidectomia / Metimazol'],
       },
     ],
-    diagnosticFlow: [
-      {
-        label: 'Etapa 1: Triagem de Vídeo e Avaliação da Consciência',
-        timing: 'Imediato no atendimento',
-        detail:
-          'Verificação de responsividade, seguimento visual, ausência de sinais autonômicos grosseiros (micção/salivação) e término abrupto sem confusão mental pós-ictal.',
-      },
-      {
-        label: 'Etapa 2: Exame Neurológico Interictal Completo',
-        timing: 'Primeira consulta',
-        detail:
-          'Exame rigoroso dos pares cranianos, marcha, propriocepção postural e reflexos segmentares; qualquer anormalidade interictal redireciona para investigação de lesão estrutural encefálica.',
-      },
-      {
-        label: 'Etapa 3: Banco Laboratorial Mínimo e Exclusão Reativa',
-        timing: '24 a 48 horas',
-        detail:
-          'Hemograma, bioquímica sérica, glicemia, cálcio ionizado, eletrólitos, creatina quinase (CK), ácidos biliares e dosagem obrigatória de T4 total em felinos.',
-      },
-      {
-        label: 'Etapa 4: Painel Genético ou Testes Específicos',
-        timing: 'Conforme perfil racial',
-        detail:
-          'Investigação de variantes conhecidas em Cavalier (BCAN), Wheaten (PIGN), Sheltie (PCK2), Weimaraner (TNR) e sorologia anti-TG2/anti-gliadina no Border Terrier.',
-      },
-      {
-        label: 'Etapa 5: Neuroimagem Avançada (RM) e Líquor',
-        timing: 'Casos atípicos ou idosos',
-        detail:
-          'Ressonância magnética de alto campo e análise de líquor cefalorraquidiano indicadas se houver déficits interictais, início tardio, dor cervical ou assimetria motora.',
-      },
-    ],
-    treatmentFlow: [
-      {
-        label: 'Fase 1: Manejo de Emergência e Proteção Ambiental',
-        timing: 'Durante o ataque',
-        detail:
-          'Não tentar conter o paciente à força; remover escadas, piscinas e objetos pontiagudos; acalmar o ambiente com penumbra e silêncio; registrar o tempo exato de duração.',
-      },
-      {
-        label: 'Fase 2: Tratamento Etiológico da Causa Reativa',
-        timing: 'Após laudo laboratorial',
-        detail:
-          'Correção parenteral e oral de cálcio na hipocalcemia; controle médico ou definitivo do hipertireoidismo felino com metimazol, cirurgia ou iodo radioativo (remissão em 100%).',
-      },
-      {
-        label: 'Fase 3: Teste Terapêutico com Dieta sem Glúten',
-        timing: 'Manutenção (mínimo 3 a 6 meses)',
-        detail:
-          'Prescrição rigorosa de alimento comercial ou caseiro formulado com zero glúten para Border Terriers e raças reativas; veto irrestrito a petiscos, medicamentos palatáveis e contaminação cruzada.',
-      },
-      {
-        label: 'Fase 4: Farmacoterapia Neuromoduladora Seletiva',
-        timing: 'Casos frequentes ou debilitantes',
-        detail:
-          'Em cães: acetazolamida (4-8 mg/kg VO q8-12h) no CKCS com monitoramento eletrolítico; clonazepam sob risco de tolerância; fluoxetina no Scottie cramp; levetiracetam como alternativa neuromoduladora.',
-      },
-      {
-        label: 'Fase 5: Acompanhamento e Diário Clínico do Tutor',
-        timing: 'Retornos a cada 1 a 3 meses',
-        detail:
-          'Monitoramento da frequência e gravidade dos episódios em calendário dedicado; eletrólitos e gasometria séricos para usuários de acetazolamida; rastreamento de peso e função tireoidiana.',
-      },
-    ],
+    diagnosticFlow: {
+      title: 'Fluxo Diagnóstico Recomendado',
+      steps: [
+        {
+          label: 'Etapa 1: Triagem de Vídeo e Avaliação da Consciência',
+          timing: 'Imediato no atendimento',
+          detail:
+            'Verificação de responsividade, seguimento visual, ausência de sinais autonômicos grosseiros (micção/salivação) e término abrupto sem confusão mental pós-ictal.',
+        },
+        {
+          label: 'Etapa 2: Exame Neurológico Interictal Completo',
+          timing: 'Primeira consulta',
+          detail:
+            'Exame rigoroso dos pares cranianos, marcha, propriocepção postural e reflexos segmentares; qualquer anormalidade interictal redireciona para investigação de lesão estrutural encefálica.',
+        },
+        {
+          label: 'Etapa 3: Banco Laboratorial Mínimo e Exclusão Reativa',
+          timing: '24 a 48 horas',
+          detail:
+            'Hemograma, bioquímica sérica, glicemia, cálcio ionizado, eletrólitos, creatina quinase (CK), ácidos biliares e dosagem obrigatória de T4 total em felinos.',
+        },
+        {
+          label: 'Etapa 4: Painel Genético ou Testes Específicos',
+          timing: 'Conforme perfil racial',
+          detail:
+            'Investigação de variantes conhecidas em Cavalier (BCAN), Wheaten (PIGN), Sheltie (PCK2), Weimaraner (TNR) e sorologia anti-TG2/anti-gliadina no Border Terrier.',
+        },
+        {
+          label: 'Etapa 5: Neuroimagem Avançada (RM) e Líquor',
+          timing: 'Casos atípicos ou idosos',
+          detail:
+            'Ressonância magnética de alto campo e análise de líquor cefalorraquidiano indicadas se houver déficits interictais, início tardio, dor cervical ou assimetria motora.',
+        },
+      ],
+    },
+    treatmentFlow: {
+      title: 'Fluxo Terapêutico e Manejo',
+      steps: [
+        {
+          label: 'Fase 1: Manejo de Emergência e Proteção Ambiental',
+          timing: 'Durante o ataque',
+          detail:
+            'Não tentar conter o paciente à força; remover escadas, piscinas e objetos pontiagudos; acalmar o ambiente com penumbra e silêncio; registrar o tempo exato de duração.',
+        },
+        {
+          label: 'Fase 2: Tratamento Etiológico da Causa Reativa',
+          timing: 'Após laudo laboratorial',
+          detail:
+            'Correção parenteral e oral de cálcio na hipocalcemia; controle médico ou definitivo do hipertireoidismo felino com metimazol, cirurgia ou iodo radioativo (remissão em 100%).',
+        },
+        {
+          label: 'Fase 3: Teste Terapêutico com Dieta sem Glúten',
+          timing: 'Manutenção (mínimo 3 a 6 meses)',
+          detail:
+            'Prescrição rigorosa de alimento comercial ou caseiro formulado com zero glúten para Border Terriers e raças reativas; veto irrestrito a petiscos, medicamentos palatáveis e contaminação cruzada.',
+        },
+        {
+          label: 'Fase 4: Farmacoterapia Neuromoduladora Seletiva',
+          timing: 'Casos frequentes ou debilitantes',
+          detail:
+            'Em cães: acetazolamida (4-8 mg/kg VO q8-12h) no CKCS com monitoramento eletrolítico; clonazepam sob risco de tolerância; fluoxetina no Scottie cramp; levetiracetam como alternativa neuromoduladora.',
+        },
+        {
+          label: 'Fase 5: Acompanhamento e Diário Clínico do Tutor',
+          timing: 'Retornos a cada 1 a 3 meses',
+          detail:
+            'Monitoramento da frequência e gravidade dos episódios em calendário dedicado; eletrólitos e gasometria séricos para usuários de acetazolamida; rastreamento de peso e função tireoidiana.',
+        },
+      ],
+    },
   },
 
   etiology: {

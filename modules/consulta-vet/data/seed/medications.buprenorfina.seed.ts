@@ -966,6 +966,19 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         url: 'https://pubmed.ncbi.nlm.nih.gov/32142538/',
         evidenceLevel: 'Ensaio Clínico Randomizado Controlado Nível 1b',
       },
+      {
+        id: 'watanabe-2018-buprenorphine-carprofen',
+        title:
+          'The analgesic effects of buprenorphine (Vetergesic or Simbadol) in combination with carprofen in dogs undergoing ovariohysterectomy: a randomized, blinded, clinical trial',
+        authors: 'Watanabe R, Monteiro BP, Evangelista MC, et al.',
+        year: 2018,
+        journal: 'BMC Vet Res. 2018;14(1):304',
+        citation:
+          'Watanabe R, Monteiro BP, Evangelista MC, et al. The analgesic effects of buprenorphine (Vetergesic or Simbadol) in combination with carprofen in dogs undergoing ovariohysterectomy: a randomized, blinded, clinical trial. BMC Vet Res. 2018;14(1):304. doi: 10.1186/s12917-018-1628-4. PMID: 30290820.',
+        sourceType: 'Ensaio Clínico Randomizado Duplo-Cego em Cadelas',
+        url: 'https://pubmed.ncbi.nlm.nih.gov/30290820/',
+        evidenceLevel: 'Ensaio Clínico Randomizado Controlado Nível 1b',
+      },
     ],
 
     genericBrandsNote:

@@ -1,6 +1,6 @@
 {
   "summary": {
-    "generatedAt": "2026-09-14T13:44:14.916Z",
+    "generatedAt": "2026-09-20T01:17:13.664Z",
     "sources": [
       "Código: modules/consulta-vet/data/receituarioSeed.ts",
       "Catálogo: medications.seed.ts, medications.hepatoprotectors.seed.ts e globalMedicationCatalog.json"
@@ -26,9 +26,9 @@
       "recipe": 21,
       "term": 4
     },
-    "incomplete": 16,
+    "incomplete": 13,
     "withoutSource": 16,
-    "withUnlinkedMedication": 16,
+    "withUnlinkedMedication": 13,
     "withGenericRecommendations": 3
   },
   "models": [
@@ -271,14 +271,94 @@
       "medications": [
         {
           "enteredName": "MELOXICAM",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-meloxicam",
+          "activeIngredient": "Meloxicam (4-hidroxi-2-metil-N-(5-metil-2-tiazolil)-2H-1,2-benzotiazina-3-carboxamida 1,1-dióxido)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-maxicam-comp-05"
+        },
+        {
+          "id": "pres-maxicam-comp-2"
+        },
+        {
+          "id": "pres-maxicam-sol-1"
+        },
+        {
+          "id": "pres-maxicam-inj-02"
+        },
+        {
+          "id": "pres-flamavet-02"
+        },
+        {
+          "id": "pres-flamavet-05"
+        },
+        {
+          "id": "pres-flamavet-2"
+        },
+        {
+          "id": "pres-mellis-02"
+        },
+        {
+          "id": "pres-mellis-05"
+        },
+        {
+          "id": "pres-mellis-2"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-melox-dog-oa-oral",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Osteoartrite e Dor Musculoesquelética Crônica (Canina)"
+        },
+        {
+          "id": "dose-melox-dog-acute-oral",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Dor e Inflamação Musculoesquelética Aguda / Trauma (Canina)"
+        },
+        {
+          "id": "dose-melox-dog-periop-sc",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Analgesia Perioperatória em Cães (Pré ou Pós-operatório)"
+        },
+        {
+          "id": "dose-melox-cat-acute-periop",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Analgesia Perioperatória e Pós-Operatória em Gatos"
+        },
+        {
+          "id": "dose-melox-cat-djd-chronic",
+          "value": 0.05,
+          "max": 0.05,
+          "unit": "mg/kg",
+          "indication": "Osteoartrite e Doença Articular Degenerativa (DJD) Crônica em Felinos"
+        },
+        {
+          "id": "dose-melox-cat-ckd-lowdose",
+          "value": 0.02,
+          "max": 0.02,
+          "unit": "mg/kg",
+          "indication": "Gatos com Osteoartrite e Doença Renal Crônica (DRC) Estável IRIS 1 a 3"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Procedimentos anestésicos cirúrgicos: monitorar rigorosamente a pressão arterial média; se ocorrer hipotensão refratária intraoperatória (PAM menor que 60 mmHg), postergar a administração do meloxicam até a estabilização pós-anestésica.",
+        "Gatos com DRC estável (IRIS 1 a 3): exige prévia comprovação de euvolemia, estabilidade clínica de apetite e peso corporal, normotensão arterial e acompanhamento de microalbuminúria/UPC.",
+        "Pacientes idosos em uso prolongado: manter acompanhamento laboratorial semestral ou trimestral de creatinina, ureia, SDMA, urinálise completa e enzimas hepáticas.",
+        "Sinais de toxicidade digestiva: orientar tutores a suspenderem imediatamente o medicamento e buscarem atendimento se houver vômito, diarreia, fezes escuras, letargia ou hiporexia.",
+        "Condições com alto risco de hipoperfusão medular: insuficiência cardíaca congestiva descompensada e uso concomitante de diuréticos de alça."
+      ],
       "recommendations": [
         "• Utilizar roupa cirúrgica ou colar elizabetano durante todo o período de cicatrização.",
         "• Impedir que a paciente lamba, morda ou coce a incisão.",
@@ -296,11 +376,10 @@
       "followUp": "• Caso a paciente apresente dor moderada ou intensa apesar do tratamento, realizar reavaliação para analgesia de resgate.",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-pos-operatorio-castracao-gata",
@@ -356,14 +435,94 @@
       "medications": [
         {
           "enteredName": "MELOXICAM",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-meloxicam",
+          "activeIngredient": "Meloxicam (4-hidroxi-2-metil-N-(5-metil-2-tiazolil)-2H-1,2-benzotiazina-3-carboxamida 1,1-dióxido)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-maxicam-comp-05"
+        },
+        {
+          "id": "pres-maxicam-comp-2"
+        },
+        {
+          "id": "pres-maxicam-sol-1"
+        },
+        {
+          "id": "pres-maxicam-inj-02"
+        },
+        {
+          "id": "pres-flamavet-02"
+        },
+        {
+          "id": "pres-flamavet-05"
+        },
+        {
+          "id": "pres-flamavet-2"
+        },
+        {
+          "id": "pres-mellis-02"
+        },
+        {
+          "id": "pres-mellis-05"
+        },
+        {
+          "id": "pres-mellis-2"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-melox-dog-oa-oral",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Osteoartrite e Dor Musculoesquelética Crônica (Canina)"
+        },
+        {
+          "id": "dose-melox-dog-acute-oral",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Dor e Inflamação Musculoesquelética Aguda / Trauma (Canina)"
+        },
+        {
+          "id": "dose-melox-dog-periop-sc",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Analgesia Perioperatória em Cães (Pré ou Pós-operatório)"
+        },
+        {
+          "id": "dose-melox-cat-acute-periop",
+          "value": 0.2,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Analgesia Perioperatória e Pós-Operatória em Gatos"
+        },
+        {
+          "id": "dose-melox-cat-djd-chronic",
+          "value": 0.05,
+          "max": 0.05,
+          "unit": "mg/kg",
+          "indication": "Osteoartrite e Doença Articular Degenerativa (DJD) Crônica em Felinos"
+        },
+        {
+          "id": "dose-melox-cat-ckd-lowdose",
+          "value": 0.02,
+          "max": 0.02,
+          "unit": "mg/kg",
+          "indication": "Gatos com Osteoartrite e Doença Renal Crônica (DRC) Estável IRIS 1 a 3"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Procedimentos anestésicos cirúrgicos: monitorar rigorosamente a pressão arterial média; se ocorrer hipotensão refratária intraoperatória (PAM menor que 60 mmHg), postergar a administração do meloxicam até a estabilização pós-anestésica.",
+        "Gatos com DRC estável (IRIS 1 a 3): exige prévia comprovação de euvolemia, estabilidade clínica de apetite e peso corporal, normotensão arterial e acompanhamento de microalbuminúria/UPC.",
+        "Pacientes idosos em uso prolongado: manter acompanhamento laboratorial semestral ou trimestral de creatinina, ureia, SDMA, urinálise completa e enzimas hepáticas.",
+        "Sinais de toxicidade digestiva: orientar tutores a suspenderem imediatamente o medicamento e buscarem atendimento se houver vômito, diarreia, fezes escuras, letargia ou hiporexia.",
+        "Condições com alto risco de hipoperfusão medular: insuficiência cardíaca congestiva descompensada e uso concomitante de diuréticos de alça."
+      ],
       "recommendations": [
         "• Utilizar colar elizabetano continuamente durante 7 a 10 dias.",
         "• Não permitir lambedura ou mordedura da região escrotal.",
@@ -380,11 +539,10 @@
       "followUp": "",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-pos-operatorio-castracao-gato-macho",
@@ -520,14 +678,100 @@
       "medications": [
         {
           "enteredName": "PREDNISOLONA",
-          "medicationId": null,
-          "activeIngredient": null
+          "medicationId": "med-prednisolona",
+          "activeIngredient": "Prednisolona (Prednisolona base / Fosfato sódico / Acetato / Succinato sódico)"
         }
       ],
-      "linkedCommercialPresentations": [],
-      "doses": [],
+      "linkedCommercialPresentations": [
+        {
+          "id": "pres-preditabs-5",
+          "label": "Preditabs® 5 mg (Biovet — Caixa com 10 ou 20 Comprimidos Bissulcados)"
+        },
+        {
+          "id": "pres-preditabs-20",
+          "label": "Preditabs® 20 mg (Biovet — Blíster com 10 Comprimidos Bissulcados)"
+        },
+        {
+          "id": "pres-prediderm-5",
+          "label": "Prediderm® 5 mg (Ourofino — Cartucho com 10 Comprimidos Palatáveis)"
+        },
+        {
+          "id": "pres-prediderm-20",
+          "label": "Prediderm® 20 mg (Ourofino — Cartucho com 10 Comprimidos Palatáveis)"
+        },
+        {
+          "id": "pres-prelone-sol-3",
+          "label": "Prelone® Solução Oral 3 mg/mL (Aché — Frascos com 60 mL ou 120 mL e Seringa Dosadora)"
+        },
+        {
+          "id": "pres-predsim-gotas-11",
+          "label": "Predsim® Gotas 11 mg/mL (Cosmed / Hypera — Frasco Conta-Gotas 20 mL)"
+        },
+        {
+          "id": "pres-solu-delta-cortef-100",
+          "label": "Solu-Delta-Cortef® 100 mg (Zoetis — Frasco-Ampola Act-O-Vial com Diluente Estéril)"
+        }
+      ],
+      "doses": [
+        {
+          "id": "dose-pred-dog-anti",
+          "value": 0.5,
+          "max": 1,
+          "unit": "mg/kg",
+          "indication": "Anti-inflamatório e Antialérgico Geral"
+        },
+        {
+          "id": "dose-pred-cat-anti",
+          "value": 0.5,
+          "max": 1.5,
+          "unit": "mg/kg",
+          "indication": "Anti-inflamatório e Antialérgico Felino"
+        },
+        {
+          "id": "dose-pred-dog-imuno",
+          "value": 2,
+          "max": 3,
+          "unit": "mg/kg",
+          "indication": "Imunossupressão Padrão (IMHA, ITP, Pênfigo, Poliartrite)"
+        },
+        {
+          "id": "dose-pred-cat-imuno",
+          "value": 2,
+          "max": 4,
+          "unit": "mg/kg",
+          "indication": "Imunossupressão Felina (IMHA, ITP, Pênfigo, Complexo Eosinofílico)"
+        },
+        {
+          "id": "dose-pred-reposicao",
+          "value": 0.05,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Reposição Glicocorticoide Crônica no Hipoadrenocorticismo (Addison)"
+        },
+        {
+          "id": "dose-pred-cat-reposicao",
+          "value": 0.1,
+          "max": 0.2,
+          "unit": "mg/kg",
+          "indication": "Reposição Glicocorticoide Felina no Hipoadrenocorticismo"
+        },
+        {
+          "id": "dose-pred-dog-onc",
+          "value": 2,
+          "max": 2,
+          "unit": "mg/kg",
+          "indication": "Quimioterapia Linfolítica / Protocolos Antineoplásicos (Linfoma)"
+        }
+      ],
       "doseSources": [],
-      "precautions": [],
+      "precautions": [
+        "Em gatos, utilizar estritamente prednisolona ativa e não prednisona, pela ineficiência de bioativação oral felina.",
+        "Gatos com sobrepeso apresentam exposição plasmática duplicada, exigindo titulação ponderal cautelosa.",
+        "Diabetes mellitus: a prednisolona induz resistência periférica à insulina e estimula a gliconeogênese, exigindo monitoramento.",
+        "Doença renal crônica com proteinúria ou hipertensão arterial sistêmica exige vigilância periódica de PA e UPC.",
+        "Uso prolongado acima de 14 dias exige protocolo de desmame escalonado de cerca de 25% a cada 2 a 4 semanas.",
+        "Avaliação seriada de urinálise e urocultura quantitativa em animais sob imunossupressão prolongada."
+      ],
       "recommendations": [
         "• Eliminar exposição a fumaça de cigarro, incenso, perfumes, sprays, aromatizadores e produtos de limpeza voláteis.",
         "• Para usar a bombinha prescrita, utilizar espaçador com máscara própria para gatos ou máscara que vede suavemente o focinho; pedir demonstração à equipe antes da primeira aplicação.",
@@ -551,11 +795,10 @@
       "followUp": "• Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos.",
       "placeholders": [],
       "issues": [
-        "Possui medicamento sem vínculo canônico.",
         "Possui concentração ou dose digitada no texto histórico.",
         "Não há fonte estruturada vinculada às doses do modelo."
       ],
-      "status": "incomplete"
+      "status": "needs-review"
     },
     {
       "templateId": "seed-manejo-ferida-pos-operatoria",

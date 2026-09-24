@@ -1,0 +1,3972 @@
+{
+  "out": {
+    "phenobarbital-review": [
+      "25338624"
+    ],
+    "phenobarbital-thomas": [
+      "19942062"
+    ],
+    "phenobarbital-gizzi": [
+      "12148257"
+    ],
+    "phenobarbital-bailey": [
+      "18341442"
+    ],
+    "phenobarbital-podell": [
+      "26899355"
+    ],
+    "tramadol-budsberg": [
+      "29393744"
+    ],
+    "tramadol-monteiro": [
+      "28920533",
+      "28403347",
+      "28403198"
+    ],
+    "tramadol-pypendop": [
+      "18177319"
+    ],
+    "tramadol-seddighi": [
+      "19538570"
+    ],
+    "aaha": [
+      "35195712"
+    ],
+    "dipirona-giorgi": [
+      "40704286",
+      "29943417",
+      "29352476",
+      "29164623",
+      "27199202",
+      "27477925"
+    ],
+    "dipirona-teixeira": [
+      "42035836",
+      "37213402",
+      "35906453",
+      "31112057",
+      "29943135",
+      "27191230",
+      "26026350",
+      "25058903",
+      "23910901",
+      "14505729",
+      "9196559",
+      "8278786"
+    ],
+    "dipirona-ferreira": [],
+    "dipirona-imagawa": [
+      "21627755"
+    ]
+  },
+  "summaries": {
+    "header": {
+      "type": "esummary",
+      "version": "0.3"
+    },
+    "result": {
+      "8278786": {
+        "uid": "8278786",
+        "pubdate": "1993 Apr",
+        "epubdate": "",
+        "source": "Rev Saude Publica",
+        "authors": [
+          {
+            "name": "Béria JU",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Victora CG",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Barros FC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira AB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lombardi C",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Lombardi C",
+        "title": "[Epidemiology of drug consumption in children of a urban center of the southern region of Brazil].",
+        "sorttitle": "epidemiology of drug consumption in children of a urban center of the southern region of brazil",
+        "volume": "27",
+        "issue": "2",
+        "pages": "95-104",
+        "lang": [
+          "por"
+        ],
+        "nlmuniqueid": "0135043",
+        "issn": "0034-8910",
+        "essn": "",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "8278786"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1590/s0034-89101993000200004"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "1993/04/01 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "1993/04/01 00:01"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "1993/04/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Revista de saude publica",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "1993/04/01 00:00",
+        "sortfirstauthor": "Béria JU",
+        "vernaculartitle": "Epidemiologia do consumo de medicamentos em crianças de centro urbano da região sul do Brasil."
+      },
+      "9196559": {
+        "uid": "9196559",
+        "pubdate": "1996 Nov",
+        "epubdate": "",
+        "source": "Braz J Med Biol Res",
+        "authors": [
+          {
+            "name": "Fracasso JF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Nunes-de-Souza RL",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira CE",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Castro RC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lepera EZ",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Silva RF",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Silva RF",
+        "title": "Effect of dipyrone, L-NAME and L-arginine on endotoxin-induced rat paw edema.",
+        "sorttitle": "effect of dipyrone l name and l arginine on endotoxin induced rat paw edema",
+        "volume": "29",
+        "issue": "11",
+        "pages": "1543-8",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "8112917",
+        "issn": "0100-879X",
+        "essn": "",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "9196559"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "1996/11/01 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "1996/11/01 00:01"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "1996/11/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Brazilian journal of medical and biological research = Revista brasileira de pesquisas medicas e biologicas",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "1996/11/01 00:00",
+        "sortfirstauthor": "Fracasso JF",
+        "vernaculartitle": ""
+      },
+      "12148257": {
+        "uid": "12148257",
+        "pubdate": "2002 Jun 22",
+        "epubdate": "",
+        "source": "Presse Med",
+        "authors": [
+          {
+            "name": "Mégarbane B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Goldgran-Tolédano D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Delahaye A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Gizzi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Baud F",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Baud F",
+        "title": "[Suicide by internet].",
+        "sorttitle": "suicide by internet",
+        "volume": "31",
+        "issue": "22",
+        "pages": "1027",
+        "lang": [
+          "fre"
+        ],
+        "nlmuniqueid": "8302490",
+        "issn": "0755-4982",
+        "essn": "",
+        "pubtype": [
+          "Case Reports",
+          "Letter"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "12148257"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2002/08/01 10:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2002/08/14 10:01"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2002/08/01 10:00"
+          }
+        ],
+        "references": [],
+        "attributes": [],
+        "pmcrefcount": "",
+        "fulljournalname": "Presse medicale (Paris, France : 1983)",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2002/06/22 00:00",
+        "sortfirstauthor": "Mégarbane B",
+        "vernaculartitle": "Suicide par internet."
+      },
+      "14505729": {
+        "uid": "14505729",
+        "pubdate": "2003 Oct",
+        "epubdate": "",
+        "source": "Farmaco",
+        "authors": [
+          {
+            "name": "Marcolino-Júnior LH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Bergamini MF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira MF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Cavalheiro ET",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Fatibello-Filho O",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Fatibello-Filho O",
+        "title": "Flow injection amperometric determination of dipyrone in pharmaceutical formulations using a carbon paste electrode.",
+        "sorttitle": "flow injection amperometric determination of dipyrone in pharmaceutical formulations using a carbon paste electrode",
+        "volume": "58",
+        "issue": "10",
+        "pages": "999-1004",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "8912641",
+        "issn": "0014-827X",
+        "essn": "",
+        "pubtype": [
+          "Comparative Study",
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "14505729"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/S0014-827X(03)00182-4"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S0014-827X(03)00182-4"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2003/09/25 05:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2004/05/27 05:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2003/09/25 05:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Farmaco (Societa chimica italiana : 1989)",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2003/10/01 00:00",
+        "sortfirstauthor": "Marcolino-Júnior LH",
+        "vernaculartitle": ""
+      },
+      "18177319": {
+        "uid": "18177319",
+        "pubdate": "2008 Feb",
+        "epubdate": "",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Pypendop BH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ilkiw JE",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Ilkiw JE",
+        "title": "Pharmacokinetics of tramadol, and its metabolite O-desmethyl-tramadol, in cats.",
+        "sorttitle": "pharmacokinetics of tramadol and its metabolite o desmethyl tramadol in cats",
+        "volume": "31",
+        "issue": "1",
+        "pages": "52-9",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "18177319"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/j.1365-2885.2007.00921.x"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "JVP921"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2008/01/08 09:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2008/03/19 09:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2008/01/08 09:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/j.1365-2885.2007.00921.x",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2008/02/01 00:00",
+        "sortfirstauthor": "Pypendop BH",
+        "vernaculartitle": ""
+      },
+      "18341442": {
+        "uid": "18341442",
+        "pubdate": "2008 Mar 15",
+        "epubdate": "",
+        "source": "J Am Vet Med Assoc",
+        "authors": [
+          {
+            "name": "Bailey KS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Dewey CW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Boothe DM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Barone G",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Kortz GD",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Kortz GD",
+        "title": "Levetiracetam as an adjunct to phenobarbital treatment in cats with suspected idiopathic epilepsy.",
+        "sorttitle": "levetiracetam as an adjunct to phenobarbital treatment in cats with suspected idiopathic epilepsy",
+        "volume": "232",
+        "issue": "6",
+        "pages": "867-72",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7503067",
+        "issn": "0003-1488",
+        "essn": "",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "18341442"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.2460/javma.232.6.867"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2008/03/18 09:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2008/05/29 09:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2008/03/18 09:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of the American Veterinary Medical Association",
+        "elocationid": "doi: 10.2460/javma.232.6.867",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2008/03/15 00:00",
+        "sortfirstauthor": "Bailey KS",
+        "vernaculartitle": ""
+      },
+      "19538570": {
+        "uid": "19538570",
+        "pubdate": "2009 Jul",
+        "epubdate": "",
+        "source": "Vet Anaesth Analg",
+        "authors": [
+          {
+            "name": "Seddighi MR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Egger CM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Rohrbach BW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Cox SK",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Doherty TJ",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Doherty TJ",
+        "title": "Effects of tramadol on the minimum alveolar concentration of sevoflurane in dogs.",
+        "sorttitle": "effects of tramadol on the minimum alveolar concentration of sevoflurane in dogs",
+        "volume": "36",
+        "issue": "4",
+        "pages": "334-40",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100956422",
+        "issn": "1467-2987",
+        "essn": "1467-2995",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "19538570"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/j.1467-2995.2009.00468.x"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1467-2987(16)30713-9"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2009/06/23 09:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2009/06/23 09:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2009/10/06 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Veterinary anaesthesia and analgesia",
+        "elocationid": "doi: 10.1111/j.1467-2995.2009.00468.x",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2009/07/01 00:00",
+        "sortfirstauthor": "Seddighi MR",
+        "vernaculartitle": ""
+      },
+      "19942062": {
+        "uid": "19942062",
+        "pubdate": "2010 Jan",
+        "epubdate": "",
+        "source": "Vet Clin North Am Small Anim Pract",
+        "authors": [
+          {
+            "name": "Thomas WB",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Thomas WB",
+        "title": "Idiopathic epilepsy in dogs and cats.",
+        "sorttitle": "idiopathic epilepsy in dogs and cats",
+        "volume": "40",
+        "issue": "1",
+        "pages": "161-79",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7809942",
+        "issn": "0195-5616",
+        "essn": "1878-1306",
+        "pubtype": [
+          "Journal Article",
+          "Review"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "19942062"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/j.cvsm.2009.09.004"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S0195-5616(09)00142-9"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2009/11/28 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2009/11/28 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2010/01/27 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "The Veterinary clinics of North America. Small animal practice",
+        "elocationid": "doi: 10.1016/j.cvsm.2009.09.004",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2010/01/01 00:00",
+        "sortfirstauthor": "Thomas WB",
+        "vernaculartitle": ""
+      },
+      "21627755": {
+        "uid": "21627755",
+        "pubdate": "2011 Jul",
+        "epubdate": "2011 Jun 1",
+        "source": "Vet Anaesth Analg",
+        "authors": [
+          {
+            "name": "Imagawa VH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Fantoni DT",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Tatarunas AC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Mastrocinque S",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Almeida TF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ferreira F",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Posso IP",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Posso IP",
+        "title": "The use of different doses of metamizol for post-operative analgesia in dogs.",
+        "sorttitle": "use of different doses of metamizol for post operative analgesia in dogs",
+        "volume": "38",
+        "issue": "4",
+        "pages": "385-93",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100956422",
+        "issn": "1467-2987",
+        "essn": "1467-2995",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "21627755"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/j.1467-2995.2011.00617.x"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1467-2987(16)30673-0"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2011/06/02 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2011/06/02 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2012/01/06 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Veterinary anaesthesia and analgesia",
+        "elocationid": "doi: 10.1111/j.1467-2995.2011.00617.x",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2011/07/01 00:00",
+        "sortfirstauthor": "Imagawa VH",
+        "vernaculartitle": ""
+      },
+      "23910901": {
+        "uid": "23910901",
+        "pubdate": "2013 Nov",
+        "epubdate": "2013 Aug 5",
+        "source": "Vet Anaesth Analg",
+        "authors": [
+          {
+            "name": "Teixeira RC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Monteiro ER",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Campagnol D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Coelho K",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Bressan TF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Monteiro BS",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Monteiro BS",
+        "title": "Effects of tramadol alone, in combination with meloxicam or dipyrone, on postoperative pain and the analgesic requirement in dogs undergoing unilateral mastectomy with or without ovariohysterectomy.",
+        "sorttitle": "effects of tramadol alone in combination with meloxicam or dipyrone on postoperative pain and the analgesic requirement in dogs undergoing unilateral mastectomy with or without ovariohysterectomy",
+        "volume": "40",
+        "issue": "6",
+        "pages": "641-9",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100956422",
+        "issn": "1467-2987",
+        "essn": "1467-2995",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "23910901"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/vaa.12080"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1467-2987(16)30459-7"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2012/09/14 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2013/04/23 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2013/08/06 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2013/08/06 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2014/12/15 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Veterinary anaesthesia and analgesia",
+        "elocationid": "doi: 10.1111/vaa.12080",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2013/11/01 00:00",
+        "sortfirstauthor": "Teixeira RC",
+        "vernaculartitle": ""
+      },
+      "25058903": {
+        "uid": "25058903",
+        "pubdate": "2014 Oct 15",
+        "epubdate": "2014 Jul 21",
+        "source": "Eur J Pharmacol",
+        "authors": [
+          {
+            "name": "dos Santos GG",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Dias EV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira JM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Athie MC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Bonet IJ",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Tambeli CH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Parada CA",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Parada CA",
+        "title": "The analgesic effect of dipyrone in peripheral tissue involves two different mechanisms: neuronal K(ATP) channel opening and CB(1) receptor activation.",
+        "sorttitle": "analgesic effect of dipyrone in peripheral tissue involves two different mechanisms neuronal k atp channel opening and cb 1 receptor activation",
+        "volume": "741",
+        "issue": "",
+        "pages": "124-31",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "1254354",
+        "issn": "0014-2999",
+        "essn": "1879-0712",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "25058903"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/j.ejphar.2014.07.019"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S0014-2999(14)00556-1"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2014/03/20 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2014/07/10 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2014/07/11 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2014/07/25 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2014/07/25 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2015/06/24 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "European journal of pharmacology",
+        "elocationid": "doi: 10.1016/j.ejphar.2014.07.019",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2014/10/15 00:00",
+        "sortfirstauthor": "dos Santos GG",
+        "vernaculartitle": ""
+      },
+      "25338624": {
+        "uid": "25338624",
+        "pubdate": "2014 Oct 22",
+        "epubdate": "2014 Oct 22",
+        "source": "BMC Vet Res",
+        "authors": [
+          {
+            "name": "Charalambous M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Brodbelt D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Volk HA",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Volk HA",
+        "title": "Treatment in canine epilepsy--a systematic review.",
+        "sorttitle": "treatment in canine epilepsy a systematic review",
+        "volume": "10",
+        "issue": "",
+        "pages": "257",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101249759",
+        "issn": "",
+        "essn": "1746-6148",
+        "pubtype": [
+          "Journal Article",
+          "Systematic Review"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "3",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "25338624"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC4209066"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC4209066;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1186/s12917-014-0257-9"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "s12917-014-0257-9"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2014/09/06 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2014/10/15 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2014/10/24 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2014/10/24 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2015/05/15 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2014/10/22 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 53,
+        "fulljournalname": "BMC veterinary research",
+        "elocationid": "doi: 10.1186/s12917-014-0257-9",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2014/10/22 00:00",
+        "sortfirstauthor": "Charalambous M",
+        "vernaculartitle": ""
+      },
+      "26026350": {
+        "uid": "26026350",
+        "pubdate": "2015 Jul",
+        "epubdate": "2015 May 6",
+        "source": "Vet J",
+        "authors": [
+          {
+            "name": "Zanuzzo FS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira-Neto FJ",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira LR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Diniz MS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Souza VL",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Thomazini CM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Steagall PV",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Steagall PV",
+        "title": "Analgesic and antihyperalgesic effects of dipyrone, meloxicam or a dipyrone-meloxicam combination in bitches undergoing ovariohysterectomy.",
+        "sorttitle": "analgesic and antihyperalgesic effects of dipyrone meloxicam or a dipyrone meloxicam combination in bitches undergoing ovariohysterectomy",
+        "volume": "205",
+        "issue": "1",
+        "pages": "33-7",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "9706281",
+        "issn": "1090-0233",
+        "essn": "1532-2971",
+        "pubtype": [
+          "Comparative Study",
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "26026350"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/j.tvjl.2015.05.004"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1090-0233(15)00184-7"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2014/04/14 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2015/04/28 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2015/05/04 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2015/06/01 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2015/06/01 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2016/11/09 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Veterinary journal (London, England : 1997)",
+        "elocationid": "doi: 10.1016/j.tvjl.2015.05.004",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2015/07/01 00:00",
+        "sortfirstauthor": "Zanuzzo FS",
+        "vernaculartitle": ""
+      },
+      "26899355": {
+        "uid": "26899355",
+        "pubdate": "2016 Mar-Apr",
+        "epubdate": "2016 Feb 22",
+        "source": "J Vet Intern Med",
+        "authors": [
+          {
+            "name": "Podell M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Volk HA",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Berendt M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Löscher W",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Muñana K",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Patterson EE",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Platt SR",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Platt SR",
+        "title": "2015 ACVIM Small Animal Consensus Statement on Seizure Management in Dogs.",
+        "sorttitle": "2015 acvim small animal consensus statement on seizure management in dogs",
+        "volume": "30",
+        "issue": "2",
+        "pages": "477-90",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "8708660",
+        "issn": "0891-6640",
+        "essn": "1939-1676",
+        "pubtype": [
+          "Journal Article",
+          "Consensus Statement"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "26899355"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC4913615"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC4913615;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvim.13841"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2016/01/04 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2016/01/18 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2016/01/18 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2016/02/23 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2016/02/24 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2016/12/23 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2016/03/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 129,
+        "fulljournalname": "Journal of veterinary internal medicine",
+        "elocationid": "doi: 10.1111/jvim.13841",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2016/03/01 00:00",
+        "sortfirstauthor": "Podell M",
+        "vernaculartitle": ""
+      },
+      "27191230": {
+        "uid": "27191230",
+        "pubdate": "2016 May",
+        "epubdate": "",
+        "source": "Arq Neuropsiquiatr",
+        "authors": [
+          {
+            "name": "Ferreira Kdos S",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Oliver GZ",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Thomaz DC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira CT",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Foss MP",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Foss MP",
+        "title": "Cognitive deficits in chronic pain patients, in a brief screening test, are independent of comorbidities and medication use.",
+        "sorttitle": "cognitive deficits in chronic pain patients in a brief screening test are independent of comorbidities and medication use",
+        "volume": "74",
+        "issue": "5",
+        "pages": "361-6",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "0125444",
+        "issn": "0004-282X",
+        "essn": "1678-4227",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "27191230"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1590/0004-282X20160071"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S0004-282X2016000500361"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2015/08/19 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2016/02/01 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2016/05/19 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2016/05/19 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2017/06/28 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Arquivos de neuro-psiquiatria",
+        "elocationid": "doi: 10.1590/0004-282X20160071",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2016/05/01 00:00",
+        "sortfirstauthor": "Ferreira Kdos S",
+        "vernaculartitle": ""
+      },
+      "27199202": {
+        "uid": "27199202",
+        "pubdate": "2016 Dec",
+        "epubdate": "2016 May 20",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Burmańczuk A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Kowalski C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Owen H",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Grabowski T",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Grabowski T",
+        "title": "Pharmacokinetic investigations of the marker active metabolites 4-methylamino-antipyrine and 4-amino-antipyrine after intramuscular injection of metamizole in healthy piglets.",
+        "sorttitle": "pharmacokinetic investigations of the marker active metabolites 4 methylamino antipyrine and 4 amino antipyrine after intramuscular injection of metamizole in healthy piglets",
+        "volume": "39",
+        "issue": "6",
+        "pages": "616-620",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "1365-2885",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "27199202"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvp.12317"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2016/02/09 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2016/04/05 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2016/11/03 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2017/07/14 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2016/05/21 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/jvp.12317",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2016/12/01 00:00",
+        "sortfirstauthor": "Burmańczuk A",
+        "vernaculartitle": ""
+      },
+      "27477925": {
+        "uid": "27477925",
+        "pubdate": "2017 Apr",
+        "epubdate": "2016 Jul 31",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Aupanun S",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lee HK",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Poapolathep A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Rychshanova R",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Vullo C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Faillace V",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Laus F",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Laus F",
+        "title": "Pharmacokinetic profiles of the active metamizole metabolites in healthy horses.",
+        "sorttitle": "pharmacokinetic profiles of the active metamizole metabolites in healthy horses",
+        "volume": "40",
+        "issue": "2",
+        "pages": "165-171",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "1365-2885",
+        "pubtype": [
+          "Clinical Trial",
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "27477925"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvp.12342"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2016/01/05 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2016/05/28 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2016/08/02 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2017/10/06 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2016/08/02 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/jvp.12342",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2017/04/01 00:00",
+        "sortfirstauthor": "Giorgi M",
+        "vernaculartitle": ""
+      },
+      "28403198": {
+        "uid": "28403198",
+        "pubdate": "2017",
+        "epubdate": "2017 Apr 12",
+        "source": "PLoS One",
+        "authors": [
+          {
+            "name": "Monteiro BP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Klinck MP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Moreau M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Guillot M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Steagall PV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Pelletier JP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Martel-Pelletier J",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Gauvin D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Del Castillo JR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Troncy E",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Troncy E",
+        "title": "Analgesic efficacy of tramadol in cats with naturally occurring osteoarthritis.",
+        "sorttitle": "analgesic efficacy of tramadol in cats with naturally occurring osteoarthritis",
+        "volume": "12",
+        "issue": "4",
+        "pages": "e0175565",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101285081",
+        "issn": "",
+        "essn": "1932-6203",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "258",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "28403198"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC5389833"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC5389833;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1371/journal.pone.0175565"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "PONE-D-16-42341"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2016/10/24 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2017/03/28 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2017/04/14 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2017/04/14 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2017/04/22 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2017/04/12 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 37,
+        "fulljournalname": "PloS one",
+        "elocationid": "doi: 10.1371/journal.pone.0175565",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2017/04/12 00:00",
+        "sortfirstauthor": "Monteiro BP",
+        "vernaculartitle": ""
+      },
+      "28403347": {
+        "uid": "28403347",
+        "pubdate": "2017 Mar",
+        "epubdate": "",
+        "source": "Acta Cir Bras",
+        "authors": [
+          {
+            "name": "Oliveira RC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Brito MV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ribeiro RF Júnior",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Oliveira LO",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Monteiro AM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Brandão FM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Cavalcante LC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Gouveia EH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Henriques HY",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Henriques HY",
+        "title": "Influence of remote ischemic conditioning and tramadol hydrochloride on oxidative stress in kidney ischemia/reperfusion injury in rats.",
+        "sorttitle": "influence of remote ischemic conditioning and tramadol hydrochloride on oxidative stress in kidney ischemia reperfusion injury in rats",
+        "volume": "32",
+        "issue": "3",
+        "pages": "229-235",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "9103983",
+        "issn": "0102-8650",
+        "essn": "1678-2674",
+        "pubtype": [
+          "Evaluation Study",
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "28403347"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1590/S0102-865020170030000007"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S0102-86502017000300229"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2016/11/18 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2017/02/15 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2017/04/14 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2017/04/14 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2017/09/01 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Acta cirurgica brasileira",
+        "elocationid": "doi: 10.1590/S0102-865020170030000007",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2017/03/01 00:00",
+        "sortfirstauthor": "Oliveira RC",
+        "vernaculartitle": ""
+      },
+      "28920533": {
+        "uid": "28920533",
+        "pubdate": "2018 Aug",
+        "epubdate": "2017 Sep 18",
+        "source": "J Feline Med Surg",
+        "authors": [
+          {
+            "name": "Klinck MP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Monteiro BP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lussier B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Guillot M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Moreau M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Otis C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Steagall PV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Frank D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Martel-Pelletier J",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Pelletier JP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Del Castillo JR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Troncy E",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Troncy E",
+        "title": "Refinement of the Montreal Instrument for Cat Arthritis Testing, for Use by Veterinarians: detection of naturally occurring osteoarthritis in laboratory cats.",
+        "sorttitle": "refinement of the montreal instrument for cat arthritis testing for use by veterinarians detection of naturally occurring osteoarthritis in laboratory cats",
+        "volume": "20",
+        "issue": "8",
+        "pages": "728-740",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100897329",
+        "issn": "1098-612X",
+        "essn": "1532-2750",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "28920533"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC11104144"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC11104144;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1177/1098612X17730172"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2017/09/19 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2019/09/10 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2017/09/19 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2018/08/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 53,
+        "fulljournalname": "Journal of feline medicine and surgery",
+        "elocationid": "doi: 10.1177/1098612X17730172",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/08/01 00:00",
+        "sortfirstauthor": "Klinck MP",
+        "vernaculartitle": ""
+      },
+      "29164623": {
+        "uid": "29164623",
+        "pubdate": "2018 Apr",
+        "epubdate": "2017 Nov 21",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Lebkowska-Wieruszewska B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Kim TW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Chea B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Owen H",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Poapolathep A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Giorgi M",
+        "title": "Pharmacokinetic profiles of the two major active metabolites of metamizole (dipyrone) in cats following three different routes of administration.",
+        "sorttitle": "pharmacokinetic profiles of the two major active metabolites of metamizole dipyrone in cats following three different routes of administration",
+        "volume": "41",
+        "issue": "2",
+        "pages": "334-339",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "1365-2885",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "29164623"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvp.12471"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2017/08/21 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2017/10/31 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2017/11/23 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2018/08/30 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2017/11/23 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/jvp.12471",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/04/01 00:00",
+        "sortfirstauthor": "Lebkowska-Wieruszewska B",
+        "vernaculartitle": ""
+      },
+      "29352476": {
+        "uid": "29352476",
+        "pubdate": "2018 Jun",
+        "epubdate": "2018 Jan 19",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Łebkowska-Wieruszewska B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lisowski A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Owen H",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Poapolathep A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Kim TW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "De Vito V",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "De Vito V",
+        "title": "Pharmacokinetic profiles of the active metamizole metabolites after four different routes of administration in healthy dogs.",
+        "sorttitle": "pharmacokinetic profiles of the active metamizole metabolites after four different routes of administration in healthy dogs",
+        "volume": "41",
+        "issue": "3",
+        "pages": "428-436",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "1365-2885",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "29352476"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvp.12484"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2017/04/11 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2017/12/11 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2018/01/21 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2018/10/06 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2018/01/21 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/jvp.12484",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/06/01 00:00",
+        "sortfirstauthor": "Giorgi M",
+        "vernaculartitle": ""
+      },
+      "29393744": {
+        "uid": "29393744",
+        "pubdate": "2018 Feb 15",
+        "epubdate": "",
+        "source": "J Am Vet Med Assoc",
+        "authors": [
+          {
+            "name": "Budsberg SC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Torres BT",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Kleine SA",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Sandberg GS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Berjeski AK",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Berjeski AK",
+        "title": "Lack of effectiveness of tramadol hydrochloride for the treatment of pain and joint dysfunction in dogs with chronic osteoarthritis.",
+        "sorttitle": "lack of effectiveness of tramadol hydrochloride for the treatment of pain and joint dysfunction in dogs with chronic osteoarthritis",
+        "volume": "252",
+        "issue": "4",
+        "pages": "427-432",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7503067",
+        "issn": "0003-1488",
+        "essn": "1943-569X",
+        "pubtype": [
+          "Clinical Trial, Veterinary",
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "29393744"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.2460/javma.252.4.427"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2018/02/03 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2018/02/03 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2019/01/15 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of the American Veterinary Medical Association",
+        "elocationid": "doi: 10.2460/javma.252.4.427",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/02/15 00:00",
+        "sortfirstauthor": "Budsberg SC",
+        "vernaculartitle": ""
+      },
+      "29943135": {
+        "uid": "29943135",
+        "pubdate": "2018 Oct",
+        "epubdate": "2018 Jun 25",
+        "source": "J Gastrointest Surg",
+        "authors": [
+          {
+            "name": "Teixeira MB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "van Loon YT",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Wasowicz DK",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Langenhoff BS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "van Ieperen RP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Zimmerman DDE",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Zimmerman DDE",
+        "title": "Use of Epidural Analgesia in Sigmoidectomy: Is There Any Advantage in the Era of Minimally Invasive Surgery?",
+        "sorttitle": "use of epidural analgesia in sigmoidectomy is there any advantage in the era of minimally invasive surgery",
+        "volume": "22",
+        "issue": "10",
+        "pages": "1779-1784",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "9706084",
+        "issn": "1091-255X",
+        "essn": "1873-4626",
+        "pubtype": [
+          "Journal Article",
+          "Observational Study"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "29943135"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1007/s11605-018-3836-4"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1091-255X(23)02288-6"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2018/02/24 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2018/06/02 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2018/06/27 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2019/10/09 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2018/06/27 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of gastrointestinal surgery : official journal of the Society for Surgery of the Alimentary Tract",
+        "elocationid": "doi: 10.1007/s11605-018-3836-4",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/10/01 00:00",
+        "sortfirstauthor": "Teixeira MB",
+        "vernaculartitle": ""
+      },
+      "29943417": {
+        "uid": "29943417",
+        "pubdate": "2018 Oct",
+        "epubdate": "2018 Jun 25",
+        "source": "J Vet Pharmacol Ther",
+        "authors": [
+          {
+            "name": "Kim TW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Łebkowska-Wieruszewska B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Sitovs A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Poapolathep A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Owen H",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lisowski A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Abilova Z",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Giorgi M",
+        "title": "Pharmacokinetic profiles of metamizole (dipyrone) active metabolites in goats and its residues in milk.",
+        "sorttitle": "pharmacokinetic profiles of metamizole dipyrone active metabolites in goats and its residues in milk",
+        "volume": "41",
+        "issue": "5",
+        "pages": "699-705",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7910920",
+        "issn": "0140-7783",
+        "essn": "1365-2885",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "29943417"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvp.12679"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2018/01/08 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2018/03/04 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2018/03/14 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2018/06/27 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2018/12/12 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2018/06/27 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary pharmacology and therapeutics",
+        "elocationid": "doi: 10.1111/jvp.12679",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2018/10/01 00:00",
+        "sortfirstauthor": "Kim TW",
+        "vernaculartitle": ""
+      },
+      "31112057": {
+        "uid": "31112057",
+        "pubdate": "2020 Jun",
+        "epubdate": "2019 May 21",
+        "source": "J Feline Med Surg",
+        "authors": [
+          {
+            "name": "Teixeira LG",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Martins LR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Schimites PI",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Dornelles GL",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Aiello G",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Oliveira JS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "da Silva FC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Brum BT",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Walter TM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Andrade CM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Soares AV",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Soares AV",
+        "title": "Evaluation of postoperative pain and toxicological aspects of the use of dipyrone and tramadol in cats.",
+        "sorttitle": "evaluation of postoperative pain and toxicological aspects of the use of dipyrone and tramadol in cats",
+        "volume": "22",
+        "issue": "6",
+        "pages": "467-475",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100897329",
+        "issn": "1098-612X",
+        "essn": "1532-2750",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "31112057"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC10814344"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC10814344;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1177/1098612X19849969"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "2019/05/22 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2021/02/18 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2019/05/22 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2020/06/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 38,
+        "fulljournalname": "Journal of feline medicine and surgery",
+        "elocationid": "doi: 10.1177/1098612X19849969",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2020/06/01 00:00",
+        "sortfirstauthor": "Teixeira LG",
+        "vernaculartitle": ""
+      },
+      "35195712": {
+        "uid": "35195712",
+        "pubdate": "2022 Mar 1",
+        "epubdate": "",
+        "source": "J Am Anim Hosp Assoc",
+        "authors": [
+          {
+            "name": "Gruen ME",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lascelles BDX",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Colleran E",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Gottlieb A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Johnson J",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lotsikas P",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Marcellin-Little D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Wright B",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Wright B",
+        "title": "2022 AAHA Pain Management Guidelines for Dogs and Cats.",
+        "sorttitle": "2022 aaha pain management guidelines for dogs and cats",
+        "volume": "58",
+        "issue": "2",
+        "pages": "55-76",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "0415027",
+        "issn": "0587-2871",
+        "essn": "1547-3317",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "35195712"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.5326/JAAHA-MS-7292"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "478141"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2022/02/23 12:27"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2022/02/24 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2022/02/26 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of the American Animal Hospital Association",
+        "elocationid": "doi: 10.5326/JAAHA-MS-7292",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2022/03/01 00:00",
+        "sortfirstauthor": "Gruen ME",
+        "vernaculartitle": ""
+      },
+      "35906453": {
+        "uid": "35906453",
+        "pubdate": "2022 Dec",
+        "epubdate": "2022 Jul 29",
+        "source": "Braz J Microbiol",
+        "authors": [
+          {
+            "name": "Guerra JM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Navas-Suárez PE",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ferreira-Machado E",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ervedosa TB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Figueiredo KB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "de Carvalho ACSR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Silva ML",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Caiaffa MG",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "da Costa ALM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira RHF",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Buti TEM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Luchs A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Namiyama GM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "de Lima LB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Taniwaki NN",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Matsumoto PSS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "de Azevedo Fernandes NCC",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "de Azevedo Fernandes NCC",
+        "title": "Diagnosis and successful treatment of Brazillian porcupine poxvirus infection in a free-ranging hairy dwarf porcupine (Coendu spinosus).",
+        "sorttitle": "diagnosis and successful treatment of brazillian porcupine poxvirus infection in a free ranging hairy dwarf porcupine coendu spinosus",
+        "volume": "53",
+        "issue": "4",
+        "pages": "2321-2327",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101095924",
+        "issn": "1517-8382",
+        "essn": "1678-4405",
+        "pubtype": [
+          "Case Reports",
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "35906453"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC9679114"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC9679114;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1007/s42770-022-00804-3"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "10.1007/s42770-022-00804-3"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2022/01/28 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2022/07/21 00:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2022/07/30 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2022/11/24 06:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2022/07/29 23:34"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2023/07/29 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 19,
+        "fulljournalname": "Brazilian journal of microbiology : [publication of the Brazilian Society for Microbiology]",
+        "elocationid": "doi: 10.1007/s42770-022-00804-3",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2022/12/01 00:00",
+        "sortfirstauthor": "Guerra JM",
+        "vernaculartitle": ""
+      },
+      "37213402": {
+        "uid": "37213402",
+        "pubdate": "2023 May 7",
+        "epubdate": "",
+        "source": "World J Gastroenterol",
+        "authors": [
+          {
+            "name": "Peiter GC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Moesch Queiroz TK",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Michalkiewicz EL Jr",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Chappuis RH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Luz JS",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Casagrande Piovezani LH",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Ferreira Silva C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Nozomi Tsutumi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Fernandes Chaves A",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Luiz RM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Façanha Wendel C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Zarpelon-Schutz AC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira KN",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Teixeira KN",
+        "title": "Lafoensia pacari alleviates intestinal damage by modulating cyclooxygenase-2: In silico and in vivo evaluation in a colitis model.",
+        "sorttitle": "lafoensia pacari alleviates intestinal damage by modulating cyclooxygenase 2 in silico and in vivo evaluation in a colitis model",
+        "volume": "29",
+        "issue": "17",
+        "pages": "2628-2641",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100883448",
+        "issn": "1007-9327",
+        "essn": "2219-2840",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "37213402"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC10198052"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC10198052;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.3748/wjg.v29.i17.2628"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2022/11/19 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2023/03/12 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2023/04/10 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2023/05/24 06:42"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2023/05/22 13:04"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2023/05/22 11:58"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2023/05/07 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 51,
+        "fulljournalname": "World journal of gastroenterology",
+        "elocationid": "doi: 10.3748/wjg.v29.i17.2628",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2023/05/07 00:00",
+        "sortfirstauthor": "Peiter GC",
+        "vernaculartitle": ""
+      },
+      "40704286": {
+        "uid": "40704286",
+        "pubdate": "2025",
+        "epubdate": "2025 Jul 9",
+        "source": "Front Physiol",
+        "authors": [
+          {
+            "name": "Schönbeck C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Stutz J",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Schreiber ST",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Keller L",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Siep C",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Metzger W",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Giorgi M",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Sartini I",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Fritz T",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Pohlemann T",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Menger MD",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Liodakis E",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Laschke MW",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Orth M",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Orth M",
+        "title": "Metamizole does not affect fracture healing in a murine ischemia model.",
+        "sorttitle": "metamizole does not affect fracture healing in a murine ischemia model",
+        "volume": "16",
+        "issue": "",
+        "pages": "1630268",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101549006",
+        "issn": "1664-042X",
+        "essn": "1664-042X",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed",
+        "pubstatus": "258",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "40704286"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC12283648"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC12283648;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.3389/fphys.2025.1630268"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "1630268"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2025/05/17 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2025/06/30 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2025/07/24 06:31"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2025/07/24 06:30"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2025/07/24 05:16"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2025/07/09 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 39,
+        "fulljournalname": "Frontiers in physiology",
+        "elocationid": "doi: 10.3389/fphys.2025.1630268",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2025/07/09 00:00",
+        "sortfirstauthor": "Schönbeck C",
+        "vernaculartitle": ""
+      },
+      "42035836": {
+        "uid": "42035836",
+        "pubdate": "2026 Apr-Jun",
+        "epubdate": "2026 Apr 24",
+        "source": "Top Companion Anim Med",
+        "authors": [
+          {
+            "name": "Gasparotto JC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Teixeira LG",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Vaccarin CV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Schimites PI",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Griesang JM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Vargas D",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Degregori EB",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Andrade CM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Floriano BP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Freitas GC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Soares AV",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Soares AV",
+        "title": "Assessment of safety profile and analgesia provided by grapiprant and metamizole alone or combined for postoperative analgesia of queens undergoing elective ovariohysterectomy.",
+        "sorttitle": "assessment of safety profile and analgesia provided by grapiprant and metamizole alone or combined for postoperative analgesia of queens undergoing elective ovariohysterectomy",
+        "volume": "71",
+        "issue": "",
+        "pages": "101055",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101465592",
+        "issn": "",
+        "essn": "1946-9837",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial, Veterinary"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "42035836"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/j.tcam.2026.101055"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1938-9736(26)00011-5"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2025/09/10 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2026/04/01 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2026/04/20 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2026/06/01 08:04"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2026/04/27 00:30"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2026/04/26 19:12"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Topics in companion animal medicine",
+        "elocationid": "doi: 10.1016/j.tcam.2026.101055",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2026/04/01 00:00",
+        "sortfirstauthor": "Gasparotto JC",
+        "vernaculartitle": ""
+      },
+      "uids": [
+        "25338624",
+        "19942062",
+        "12148257",
+        "18341442",
+        "26899355",
+        "29393744",
+        "28920533",
+        "28403347",
+        "28403198",
+        "18177319",
+        "19538570",
+        "35195712",
+        "40704286",
+        "29943417",
+        "29352476",
+        "29164623",
+        "27199202",
+        "27477925",
+        "42035836",
+        "37213402",
+        "35906453",
+        "31112057",
+        "29943135",
+        "27191230",
+        "26026350",
+        "25058903",
+        "23910901",
+        "14505729",
+        "9196559",
+        "8278786",
+        "21627755"
+      ]
+    }
+  }
+}

@@ -1,0 +1,1 @@
+import fs from 'node:fs';const text=fs.readFileSync('tmp/pdfs/plumbs-10/plumbs-10.txt','utf8');const pages=text.split(/===== PDF_PAGE_\d+ =====/);for(const i of [39,71,97,109,175,209,270,440,482,773,852,1033,1075,1085,1220,1290]) { const p=pages[i];console.log('\nPDF PAGE '+i+'\n'+(p?.slice(0,13000)||'')); }

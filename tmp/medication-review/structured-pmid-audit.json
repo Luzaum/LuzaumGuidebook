@@ -1,0 +1,720 @@
+{
+  "refs": [
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-stomer-1980",
+      "title": "Acetylcysteine for treatment of acetaminophen toxicosis in the cat",
+      "authors": "St Omer VV, McKnight ED",
+      "year": 1980,
+      "journal": "Journal of the American Veterinary Medical Association (JAVMA)",
+      "volume": "176",
+      "pages": "911–913",
+      "pmid": "7400022",
+      "evidenceLevel": "Estudo Experimental In Vivo de Alta Relevância Toxicológica"
+    },
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-gaunt-1981",
+      "title": "Acetaminophen toxicosis in the cat: protective role of N-acetylcysteine",
+      "authors": "Gaunt SD, Baker DC, Green RA",
+      "year": 1981,
+      "journal": "American Journal of Veterinary Research (AJVR)",
+      "volume": "42",
+      "pages": "1582–1584",
+      "pmid": "7337295",
+      "evidenceLevel": "Estudo Farmacodinâmico Experimental"
+    },
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-buur-2013",
+      "title": "Pharmacokinetics of N-acetylcysteine after oral and intravenous administration to healthy cats",
+      "authors": "Buur JL, Diniz PVP, Roderick KV, KuKanich B, Tegzes JH",
+      "year": 2013,
+      "journal": "American Journal of Veterinary Research (AJVR)",
+      "volume": "74",
+      "pages": "290–293",
+      "doi": "10.2460/ajvr.74.2.290",
+      "pmid": "23363356",
+      "evidenceLevel": "Estudo Farmacocinético Cruzado de Referência"
+    },
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-reinero-2011",
+      "title": "Endotracheal nebulization of N-acetylcysteine increases airway resistance in cats with experimental asthma",
+      "authors": "Reinero CR, Lee-Fowler TM, Dodam JR, Cohn LA, DeClue AE",
+      "year": 2011,
+      "journal": "Journal of Feline Medicine and Surgery (JFMS)",
+      "volume": "13",
+      "pages": "69–73",
+      "doi": "10.1016/j.jfms.2010.09.010",
+      "pmid": "21145769",
+      "evidenceLevel": "Estudo Prospectivo Controlado de Segurança Respiratória"
+    },
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-viviano-2013",
+      "title": "Effect of N-acetylcysteine supplementation on intracellular glutathione, urine isoprostanes, clinical score, and survival in hospitalized ill dogs",
+      "authors": "Viviano KR, VanderWielen B",
+      "year": 2013,
+      "journal": "Journal of Veterinary Internal Medicine (JVIM)",
+      "volume": "27",
+      "pages": "250–258",
+      "doi": "10.1111/jvim.12048",
+      "pmid": "23458734",
+      "evidenceLevel": "Ensaio Clínico Randomizado Duplo-Cego Controlado (RCT)"
+    },
+    {
+      "slug": "acetilcisteina",
+      "id": "ref-alihosseini-2026",
+      "title": "N-acetylcysteine reduces serum creatinine, blood urea nitrogen, symmetric dimethylarginine and urine protein to creatinine ratio in cats with chronic kidney disease: a double-blind, placebo-controlled clinical trial",
+      "authors": "Alihosseini H, Çolakoğlu EÇ, Haydardedeoğlu AE, Özen D",
+      "year": 2026,
+      "journal": "BMC Veterinary Research",
+      "volume": "22",
+      "pages": "152",
+      "doi": "10.1186/s12917-026-05328-8",
+      "pmid": "41630014",
+      "evidenceLevel": "Ensaio Clínico Randomizado Duplo-Cego Controlado (RCT)"
+    }
+  ],
+  "d": {
+    "header": {
+      "type": "esummary",
+      "version": "0.3"
+    },
+    "result": {
+      "7337295": {
+        "uid": "7337295",
+        "pubdate": "1981 Nov",
+        "epubdate": "",
+        "source": "Am J Vet Res",
+        "authors": [
+          {
+            "name": "Gaunt SD",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Baker DC",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Green RA",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Green RA",
+        "title": "Clinicopathologic evaluation N-acetylcysteine therapy in acetaminophen toxicosis in the cat.",
+        "sorttitle": "clinicopathologic evaluation n acetylcysteine therapy in acetaminophen toxicosis in the cat",
+        "volume": "42",
+        "issue": "11",
+        "pages": "1982-4",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "0375011",
+        "issn": "0002-9645",
+        "essn": "",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "7337295"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "1981/11/01 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "1981/11/01 00:01"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "1981/11/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "American journal of veterinary research",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "1981/11/01 00:00",
+        "sortfirstauthor": "Gaunt SD",
+        "vernaculartitle": ""
+      },
+      "7400022": {
+        "uid": "7400022",
+        "pubdate": "1980 May 1",
+        "epubdate": "",
+        "source": "J Am Vet Med Assoc",
+        "authors": [
+          {
+            "name": "St Omer VV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "McKnight ED 3rd",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "McKnight ED 3rd",
+        "title": "Acetylcysteine for treatment of acetaminophen toxicosis in the cat.",
+        "sorttitle": "acetylcysteine for treatment of acetaminophen toxicosis in the cat",
+        "volume": "176",
+        "issue": "9",
+        "pages": "911-3",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "7503067",
+        "issn": "0003-1488",
+        "essn": "",
+        "pubtype": [
+          "Journal Article"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "7400022"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "pubmed",
+            "date": "1980/05/01 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "1980/05/01 00:01"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "1980/05/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of the American Veterinary Medical Association",
+        "elocationid": "",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "1980/05/01 00:00",
+        "sortfirstauthor": "St Omer VV",
+        "vernaculartitle": ""
+      },
+      "21145769": {
+        "uid": "21145769",
+        "pubdate": "2011 Feb",
+        "epubdate": "2010 Dec 9",
+        "source": "J Feline Med Surg",
+        "authors": [
+          {
+            "name": "Reinero CR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Lee-Fowler TM",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Dodam JR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Cohn LA",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "DeClue AE",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Guntur VP",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Guntur VP",
+        "title": "Endotracheal nebulization of N-acetylcysteine increases airway resistance in cats with experimental asthma.",
+        "sorttitle": "endotracheal nebulization of n acetylcysteine increases airway resistance in cats with experimental asthma",
+        "volume": "13",
+        "issue": "2",
+        "pages": "69-73",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "100897329",
+        "issn": "1098-612X",
+        "essn": "1532-2750",
+        "pubtype": [
+          "Journal Article",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "21145769"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC10822309"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC10822309;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1016/j.jfms.2010.09.010"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "S1098-612X(10)00296-2"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "accepted",
+            "date": "2010/09/21 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2010/12/15 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2010/12/15 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2011/04/05 06:00"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2011/02/01 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 22,
+        "fulljournalname": "Journal of feline medicine and surgery",
+        "elocationid": "doi: 10.1016/j.jfms.2010.09.010",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2011/02/01 00:00",
+        "sortfirstauthor": "Reinero CR",
+        "vernaculartitle": ""
+      },
+      "23363356": {
+        "uid": "23363356",
+        "pubdate": "2013 Feb",
+        "epubdate": "",
+        "source": "Am J Vet Res",
+        "authors": [
+          {
+            "name": "Buur JL",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Diniz PP",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Roderick KV",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "KuKanich B",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Tegzes JH",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Tegzes JH",
+        "title": "Pharmacokinetics of N-acetylcysteine after oral and intravenous administration to healthy cats.",
+        "sorttitle": "pharmacokinetics of n acetylcysteine after oral and intravenous administration to healthy cats",
+        "volume": "74",
+        "issue": "2",
+        "pages": "290-3",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "0375011",
+        "issn": "0002-9645",
+        "essn": "1943-5681",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "4",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "23363356"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.2460/ajvr.74.2.290"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "entrez",
+            "date": "2013/02/01 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2013/02/01 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2013/07/24 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "American journal of veterinary research",
+        "elocationid": "doi: 10.2460/ajvr.74.2.290",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2013/02/01 00:00",
+        "sortfirstauthor": "Buur JL",
+        "vernaculartitle": ""
+      },
+      "23458734": {
+        "uid": "23458734",
+        "pubdate": "2013 Mar-Apr",
+        "epubdate": "2013 Mar 4",
+        "source": "J Vet Intern Med",
+        "authors": [
+          {
+            "name": "Viviano KR",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "VanderWielen B",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "VanderWielen B",
+        "title": "Effect of N-acetylcysteine supplementation on intracellular glutathione, urine isoprostanes, clinical score, and survival in hospitalized ill dogs.",
+        "sorttitle": "effect of n acetylcysteine supplementation on intracellular glutathione urine isoprostanes clinical score and survival in hospitalized ill dogs",
+        "volume": "27",
+        "issue": "2",
+        "pages": "250-8",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "8708660",
+        "issn": "0891-6640",
+        "essn": "1939-1676",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial",
+          "Research Support, Non-U.S. Gov't"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "256",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "23458734"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1111/jvim.12048"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2012/06/19 00:00"
+          },
+          {
+            "pubstatus": "revised",
+            "date": "2012/11/24 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2013/01/07 00:00"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2013/03/06 06:00"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2013/03/06 06:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2013/09/21 06:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": "",
+        "fulljournalname": "Journal of veterinary internal medicine",
+        "elocationid": "doi: 10.1111/jvim.12048",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2013/03/01 00:00",
+        "sortfirstauthor": "Viviano KR",
+        "vernaculartitle": ""
+      },
+      "41630014": {
+        "uid": "41630014",
+        "pubdate": "2026 Feb 3",
+        "epubdate": "2026 Feb 3",
+        "source": "BMC Vet Res",
+        "authors": [
+          {
+            "name": "Ali̇hossei̇ni̇ H",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Çolakoğlu EÇ",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Haydardedeoğlu AE",
+            "authtype": "Author",
+            "clusterid": ""
+          },
+          {
+            "name": "Özen D",
+            "authtype": "Author",
+            "clusterid": ""
+          }
+        ],
+        "lastauthor": "Özen D",
+        "title": "N-acetylcysteine reduces serum creatinine, blood urea nitrogen, symmetric dimethylarginine and urine protein to creatinine ratio in cats with chronic kidney disease: a double-blind, placebo-controlled clinical trial.",
+        "sorttitle": "n acetylcysteine reduces serum creatinine blood urea nitrogen symmetric dimethylarginine and urine protein to creatinine ratio in cats with chronic kidney disease a double blind placebo controlled clinical trial",
+        "volume": "22",
+        "issue": "1",
+        "pages": "",
+        "lang": [
+          "eng"
+        ],
+        "nlmuniqueid": "101249759",
+        "issn": "",
+        "essn": "1746-6148",
+        "pubtype": [
+          "Journal Article",
+          "Randomized Controlled Trial, Veterinary"
+        ],
+        "recordstatus": "PubMed - indexed for MEDLINE",
+        "pubstatus": "3",
+        "articleids": [
+          {
+            "idtype": "pubmed",
+            "idtypen": 1,
+            "value": "41630014"
+          },
+          {
+            "idtype": "pmc",
+            "idtypen": 8,
+            "value": "PMC12955210"
+          },
+          {
+            "idtype": "pmcid",
+            "idtypen": 5,
+            "value": "pmc-id: PMC12955210;"
+          },
+          {
+            "idtype": "doi",
+            "idtypen": 3,
+            "value": "10.1186/s12917-026-05328-8"
+          },
+          {
+            "idtype": "pii",
+            "idtypen": 4,
+            "value": "10.1186/s12917-026-05328-8"
+          }
+        ],
+        "history": [
+          {
+            "pubstatus": "received",
+            "date": "2025/08/14 00:00"
+          },
+          {
+            "pubstatus": "accepted",
+            "date": "2026/01/22 00:00"
+          },
+          {
+            "pubstatus": "medline",
+            "date": "2026/03/08 01:38"
+          },
+          {
+            "pubstatus": "pubmed",
+            "date": "2026/02/03 07:41"
+          },
+          {
+            "pubstatus": "entrez",
+            "date": "2026/02/03 00:17"
+          },
+          {
+            "pubstatus": "pmc-release",
+            "date": "2026/02/03 00:00"
+          }
+        ],
+        "references": [],
+        "attributes": [
+          "Has Abstract"
+        ],
+        "pmcrefcount": 52,
+        "fulljournalname": "BMC veterinary research",
+        "elocationid": "doi: 10.1186/s12917-026-05328-8",
+        "doctype": "citation",
+        "srccontriblist": [],
+        "booktitle": "",
+        "medium": "",
+        "edition": "",
+        "publisherlocation": "",
+        "publishername": "",
+        "srcdate": "",
+        "reportnumber": "",
+        "availablefromurl": "",
+        "locationlabel": "",
+        "doccontriblist": [],
+        "docdate": "",
+        "bookname": "",
+        "chapter": "",
+        "sortpubdate": "2026/02/03 00:00",
+        "sortfirstauthor": "Ali̇hossei̇ni̇ H",
+        "vernaculartitle": ""
+      },
+      "uids": [
+        "7400022",
+        "7337295",
+        "23363356",
+        "21145769",
+        "23458734",
+        "41630014"
+      ]
+    }
+  }
+}

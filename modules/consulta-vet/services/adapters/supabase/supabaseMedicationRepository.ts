@@ -25,6 +25,7 @@ import {
   mapMedicationRow,
 } from './editorialRecordMappers';
 import { filterPublicMedications } from '../../../constants/publicCatalog';
+import { applyMedicationBookFoundations } from '../../../data/medicationBookFoundations';
 
 function matchesMedicationQuery(record: MedicationRecord, query: string): boolean {
   const normalized = query.toLowerCase();
@@ -120,7 +121,7 @@ export class SupabaseMedicationRepository implements MedicationRepository {
         'carregar medicamentos editoriais'
       );
       const medicationsSeed = await loadMedicationsEditorialSeed();
-      const merged = mergeBySlug(medicationsSeed, remote).sort((left, right) =>
+      const merged = mergeBySlug(medicationsSeed, remote).map(applyMedicationBookFoundations).sort((left, right) =>
         left.title.localeCompare(right.title, 'pt-BR')
       );
       const result = filterPublicMedications(merged, includeDrafts);

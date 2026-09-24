@@ -1,0 +1,1 @@
+import fs from 'node:fs';const p=fs.readFileSync('tmp/pdfs/plumbs-10/plumbs-10.txt','utf8').split(/===== PDF_PAGE_\d+ =====/);const t=p[441];console.log(t.slice(t.indexOf('Pharmacology/Actions'),t.indexOf('Adverse Effects')));

@@ -1,6 +1,6 @@
 # Auditoria dos modelos do Receituário
 
-Gerado em 2026-09-14T13:44:14.916Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
+Gerado em 2026-09-20T01:17:13.664Z. O relatório reflete os modelos carregados pelo código e os catálogos canônicos empacotados. A migration 20260801120000 foi aplicada ao projeto remoto Vetius em 2026-08-01. A auditoria reflete somente os modelos ativos atualmente versionados no código e seus vínculos com o catálogo canônico.
 
 ## Resumo geral
 
@@ -8,9 +8,9 @@ Gerado em 2026-09-14T13:44:14.916Z. O relatório reflete os modelos carregados p
 - Por espécie: {"ambos":5,"cão":12,"gato":8}
 - Por categoria: {"Cuidados gerais":1,"Dermatologia":1,"Dor e pós-operatório":4,"Gastroenterologia":4,"Infectologia":4,"Neurologia":5,"Respiratório":2,"Termos":4}
 - Por tipo: {"recipe":21,"term":4}
-- Incompletos: 16
+- Incompletos: 13
 - Sem fonte estruturada: 16
-- Com medicamento não vinculado: 16
+- Com medicamento não vinculado: 13
 - Com recomendações genéricas: 3
 
 ## Modelos
@@ -192,17 +192,17 @@ Gerado em 2026-09-14T13:44:14.916Z. O relatório reflete os modelos carregados p
 | Categoria | Dor e pós-operatório |
 | Espécie | cão |
 | Tipo | recipe |
-| Medicamentos | MELOXICAM → não vinculado |
-| Apresentações vinculadas | Nenhuma |
-| Doses cadastradas | Nenhuma |
+| Medicamentos | MELOXICAM → med-meloxicam |
+| Apresentações vinculadas | ; ; ; ; ; ; ; ; ;  |
+| Doses cadastradas | 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.05–0.05 mg/kg; 0.02–0.02 mg/kg |
 | Fontes | Nenhuma fonte estruturada |
-| Precauções | Nenhuma |
+| Precauções | Procedimentos anestésicos cirúrgicos: monitorar rigorosamente a pressão arterial média; se ocorrer hipotensão refratária intraoperatória (PAM menor que 60 mmHg), postergar a administração do meloxicam até a estabilização pós-anestésica.; Gatos com DRC estável (IRIS 1 a 3): exige prévia comprovação de euvolemia, estabilidade clínica de apetite e peso corporal, normotensão arterial e acompanhamento de microalbuminúria/UPC.; Pacientes idosos em uso prolongado: manter acompanhamento laboratorial semestral ou trimestral de creatinina, ureia, SDMA, urinálise completa e enzimas hepáticas.; Sinais de toxicidade digestiva: orientar tutores a suspenderem imediatamente o medicamento e buscarem atendimento se houver vômito, diarreia, fezes escuras, letargia ou hiporexia.; Condições com alto risco de hipoperfusão medular: insuficiência cardíaca congestiva descompensada e uso concomitante de diuréticos de alça. |
 | Recomendações | • Utilizar roupa cirúrgica ou colar elizabetano durante todo o período de cicatrização. / • Impedir que a paciente lamba, morda ou coce a incisão. / • Manter a ferida cirúrgica limpa e seca. / • Não aplicar pomadas, sprays, álcool, água oxigenada, iodo ou antissépticos na incisão fechada, salvo orientação veterinária. / • Restringir corridas, saltos, brincadeiras intensas e acesso a escadas durante 10 a 14 dias. / • Realizar passeios curtos, somente com guia, para urinar e defecar. / • Não dar banho até a retirada dos pontos ou liberação pelo médico-veterinário. / • Examinar a incisão duas vezes ao dia. / • Pequena quantidade de edema (inchaço) e equimose (manchas roxas na pele) pode ocorrer inicialmente, mas não deve aumentar progressivamente. / • Antibióticos não devem ser prescritos rotineiramente após uma cirurgia eletiva limpa e sem intercorrências. / • Caso a paciente apresente dor moderada ou intensa apesar do tratamento, realizar reavaliação para analgesia de resgate. |
 | Sinais de alerta | Nenhum |
 | Retorno | • Caso a paciente apresente dor moderada ou intensa apesar do tratamento, realizar reavaliação para analgesia de resgate. |
 | Placeholders | Nenhum |
-| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
-| Status | incomplete |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
 
 ### Pós-operatório de castração — Gata
 
@@ -234,17 +234,17 @@ Gerado em 2026-09-14T13:44:14.916Z. O relatório reflete os modelos carregados p
 | Categoria | Dor e pós-operatório |
 | Espécie | cão |
 | Tipo | recipe |
-| Medicamentos | MELOXICAM → não vinculado |
-| Apresentações vinculadas | Nenhuma |
-| Doses cadastradas | Nenhuma |
+| Medicamentos | MELOXICAM → med-meloxicam |
+| Apresentações vinculadas | ; ; ; ; ; ; ; ; ;  |
+| Doses cadastradas | 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.2–0.2 mg/kg; 0.05–0.05 mg/kg; 0.02–0.02 mg/kg |
 | Fontes | Nenhuma fonte estruturada |
-| Precauções | Nenhuma |
+| Precauções | Procedimentos anestésicos cirúrgicos: monitorar rigorosamente a pressão arterial média; se ocorrer hipotensão refratária intraoperatória (PAM menor que 60 mmHg), postergar a administração do meloxicam até a estabilização pós-anestésica.; Gatos com DRC estável (IRIS 1 a 3): exige prévia comprovação de euvolemia, estabilidade clínica de apetite e peso corporal, normotensão arterial e acompanhamento de microalbuminúria/UPC.; Pacientes idosos em uso prolongado: manter acompanhamento laboratorial semestral ou trimestral de creatinina, ureia, SDMA, urinálise completa e enzimas hepáticas.; Sinais de toxicidade digestiva: orientar tutores a suspenderem imediatamente o medicamento e buscarem atendimento se houver vômito, diarreia, fezes escuras, letargia ou hiporexia.; Condições com alto risco de hipoperfusão medular: insuficiência cardíaca congestiva descompensada e uso concomitante de diuréticos de alça. |
 | Recomendações | • Utilizar colar elizabetano continuamente durante 7 a 10 dias. / • Não permitir lambedura ou mordedura da região escrotal. / • Manter a incisão limpa e seca. / • Não aplicar pomadas, sprays ou antissépticos sem orientação. / • Restringir corridas, saltos, brincadeiras e escadas durante 7 a 10 dias. / • Realizar apenas passeios curtos com guia. / • Não dar banho durante o período de cicatrização. / • Verificar a região operada duas vezes ao dia. / • Pequeno edema (inchaço) escrotal pode ocorrer, mas deve permanecer discreto e diminuir progressivamente. / • Dar antibiótico somente se estiver prescrito; não usar sobras de tratamentos anteriores. |
 | Sinais de alerta | Nenhum |
 | Retorno | Não informado |
 | Placeholders | Nenhum |
-| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
-| Status | incomplete |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
 
 ### Pós-operatório de castração — Gato macho
 
@@ -318,17 +318,17 @@ Gerado em 2026-09-14T13:44:14.916Z. O relatório reflete os modelos carregados p
 | Categoria | Respiratório |
 | Espécie | gato |
 | Tipo | recipe |
-| Medicamentos | PREDNISOLONA → não vinculado |
-| Apresentações vinculadas | Nenhuma |
-| Doses cadastradas | Nenhuma |
+| Medicamentos | PREDNISOLONA → med-prednisolona |
+| Apresentações vinculadas | Preditabs® 5 mg (Biovet — Caixa com 10 ou 20 Comprimidos Bissulcados); Preditabs® 20 mg (Biovet — Blíster com 10 Comprimidos Bissulcados); Prediderm® 5 mg (Ourofino — Cartucho com 10 Comprimidos Palatáveis); Prediderm® 20 mg (Ourofino — Cartucho com 10 Comprimidos Palatáveis); Prelone® Solução Oral 3 mg/mL (Aché — Frascos com 60 mL ou 120 mL e Seringa Dosadora); Predsim® Gotas 11 mg/mL (Cosmed / Hypera — Frasco Conta-Gotas 20 mL); Solu-Delta-Cortef® 100 mg (Zoetis — Frasco-Ampola Act-O-Vial com Diluente Estéril) |
+| Doses cadastradas | 0.5–1 mg/kg; 0.5–1.5 mg/kg; 2–3 mg/kg; 2–4 mg/kg; 0.05–0.2 mg/kg; 0.1–0.2 mg/kg; 2–2 mg/kg |
 | Fontes | Nenhuma fonte estruturada |
-| Precauções | Nenhuma |
+| Precauções | Em gatos, utilizar estritamente prednisolona ativa e não prednisona, pela ineficiência de bioativação oral felina.; Gatos com sobrepeso apresentam exposição plasmática duplicada, exigindo titulação ponderal cautelosa.; Diabetes mellitus: a prednisolona induz resistência periférica à insulina e estimula a gliconeogênese, exigindo monitoramento.; Doença renal crônica com proteinúria ou hipertensão arterial sistêmica exige vigilância periódica de PA e UPC.; Uso prolongado acima de 14 dias exige protocolo de desmame escalonado de cerca de 25% a cada 2 a 4 semanas.; Avaliação seriada de urinálise e urocultura quantitativa em animais sob imunossupressão prolongada. |
 | Recomendações | • Eliminar exposição a fumaça de cigarro, incenso, perfumes, sprays, aromatizadores e produtos de limpeza voláteis. / • Para usar a bombinha prescrita, utilizar espaçador com máscara própria para gatos ou máscara que vede suavemente o focinho; pedir demonstração à equipe antes da primeira aplicação. / • Acostumar o gato à máscara aos poucos, com carinho e recompensa, sem forçar quando ele estiver com falta de ar. / • Agitar a bombinha conforme a bula, encaixar no espaçador, ajustar a máscara ao focinho e disparar somente um jato por vez. / • Manter a máscara vedada por 7 a 10 respirações; observar o indicador do espaçador. Se houver outro jato prescrito, aguardar cerca de 30 segundos e repetir. / • Limpar delicadamente o focinho com pano úmido após a aplicação; lavar e secar o espaçador conforme o fabricante. / • A bombinha de uso diário previne crises e deve continuar mesmo sem tosse. Ela não substitui o remédio de alívio rápido prescrito para crises. / • Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos. / • Respiração de boca aberta, língua azulada, desmaio ou grande esforço para respirar exigem atendimento imediato; manter o gato calmo e não forçar comida, água ou comprimidos. / • Preferir areia sanitária sem perfume e com baixa produção de poeira. / • Evitar varrer ou usar aerossóis no mesmo ambiente do gato. / • Controlar o peso corporal. / • Registrar a frequência das crises, tosse, chiado e uso do salbutamol. / • Contar periodicamente a frequência respiratória durante o sono. / • Uso de salbutamol mais de duas ou três vezes por semana indica controle inadequado e necessidade de reavaliação. |
 | Sinais de alerta | • Respiração de boca aberta, língua azulada, desmaio ou grande esforço para respirar exigem atendimento imediato; manter o gato calmo e não forçar comida, água ou comprimidos. |
 | Retorno | • Não reduzir nem suspender o remédio oral por conta própria: a bombinha pode levar uma a duas semanas para atingir o efeito esperado. Reavaliar em 7 dias para definir os próximos passos. |
 | Placeholders | Nenhum |
-| Problemas | Possui medicamento sem vínculo canônico. / Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
-| Status | incomplete |
+| Problemas | Possui concentração ou dose digitada no texto histórico. / Não há fonte estruturada vinculada às doses do modelo. |
+| Status | needs-review |
 
 ### Manejo de ferida pós-operatória
 

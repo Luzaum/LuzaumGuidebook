@@ -28,6 +28,10 @@ export interface EditorialReference {
   authors?: string;
   year?: string | number;
   journal?: string;
+  volume?: string;
+  pages?: string;
+  pmid?: string;
+  doi?: string;
   citation?: string;
 }
 

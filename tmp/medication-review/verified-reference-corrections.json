@@ -1,0 +1,106 @@
+{
+  "fenobarbital": {
+    "ref-ivetf-guidelines-2015": {
+      "id": "ref-ivetf-guidelines-2015",
+      "citationText": "Bhatti SF, De Risio L, Muñana K, et al.. International Veterinary Epilepsy Task Force consensus proposal: medical treatment of canine epilepsy in Europe. BMC Vet Res. 2015 Aug 28;11:176.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26316233/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-charalambous-meta-2014": {
+      "id": "ref-charalambous-meta-2014",
+      "citationText": "Charalambous M, Brodbelt D, Volk HA. Treatment in canine epilepsy--a systematic review. BMC Vet Res. 2014 Oct 22;10:257.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/25338624/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-boothe-comp-2012": {
+      "id": "ref-boothe-comp-2012",
+      "citationText": "Boothe DM, Dewey C, Carpenter DM. Comparison of phenobarbital with bromide as a first-choice antiepileptic drug for treatment of epilepsy in dogs. J Am Vet Med Assoc. 2012 May 1;240(9):1073-83.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/22515627/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-thomas-epilepsy-2010": {
+      "id": "ref-thomas-epilepsy-2010",
+      "citationText": "Thomas WB. Idiopathic epilepsy in dogs and cats. Vet Clin North Am Small Anim Pract. 2010 Jan;40(1):161-79.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19942062/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-podell-status-2016": {
+      "id": "ref-podell-status-2016",
+      "citationText": "Podell M, Volk HA, Berendt M, et al.. 2015 ACVIM Small Animal Consensus Statement on Seizure Management in Dogs. J Vet Intern Med. 2016 Mar-Apr;30(2):477-90.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26899355/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    }
+  },
+  "dipirona": {
+    "ref-giorgi-2017": {
+      "id": "ref-giorgi-2017",
+      "citationText": "Giorgi M, Łebkowska-Wieruszewska B, Lisowski A, et al.. Pharmacokinetic profiles of the active metamizole metabolites after four different routes of administration in healthy dogs. J Vet Pharmacol Ther. 2018 Jun;41(3):428-436.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29352476/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-giorgi-2018": {
+      "id": "ref-giorgi-2018",
+      "citationText": "Lebkowska-Wieruszewska B, Kim TW, Chea B, et al.. Pharmacokinetic profiles of the two major active metabolites of metamizole (dipyrone) in cats following three different routes of administration. J Vet Pharmacol Ther. 2018 Apr;41(2):334-339.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29164623/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-teixeira-2013": {
+      "id": "ref-teixeira-2013",
+      "citationText": "Zanuzzo FS, Teixeira-Neto FJ, Teixeira LR, et al.. Analgesic and antihyperalgesic effects of dipyrone, meloxicam or a dipyrone-meloxicam combination in bitches undergoing ovariohysterectomy. Vet J. 2015 Jul;205(1):33-7.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26026350/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-imagawa-2011": {
+      "id": "ref-imagawa-2011",
+      "citationText": "Imagawa VH, Fantoni DT, Tatarunas AC, et al.. The use of different doses of metamizol for post-operative analgesia in dogs. Vet Anaesth Analg. 2011 Jul;38(4):385-93.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/21627755/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    }
+  },
+  "tramadol": {
+    "ref-budsberg-2018-oa-dog": {
+      "id": "ref-budsberg-2018-oa-dog",
+      "citationText": "Budsberg SC, Torres BT, Kleine SA, et al.. Lack of effectiveness of tramadol hydrochloride for the treatment of pain and joint dysfunction in dogs with chronic osteoarthritis. J Am Vet Med Assoc. 2018 Feb 15;252(4):427-432.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/29393744/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-monteiro-2017-feline-oa": {
+      "id": "ref-monteiro-2017-feline-oa",
+      "citationText": "Monteiro BP, Klinck MP, Moreau M, et al.. Analgesic efficacy of tramadol in cats with naturally occurring osteoarthritis. PLoS One. 2017;12(4):e0175565.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/28403198/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-pypendop-ilkiw-2008-cat-pk": {
+      "id": "ref-pypendop-ilkiw-2008-cat-pk",
+      "citationText": "Pypendop BH, Ilkiw JE. Pharmacokinetics of tramadol, and its metabolite O-desmethyl-tramadol, in cats. J Vet Pharmacol Ther. 2008 Feb;31(1):52-9.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/18177319/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-seddighi-2009-mac-tramadol": {
+      "id": "ref-seddighi-2009-mac-tramadol",
+      "citationText": "Seddighi MR, Egger CM, Rohrbach BW, et al.. Effects of tramadol on the minimum alveolar concentration of sevoflurane in dogs. Vet Anaesth Analg. 2009 Jul;36(4):334-40.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/19538570/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    },
+    "ref-aaha-pain-guidelines": {
+      "id": "ref-aaha-pain-guidelines",
+      "citationText": "Gruen ME, Lascelles BDX, Colleran E, et al.. 2022 AAHA Pain Management Guidelines for Dogs and Cats. J Am Anim Hosp Assoc. 2022 Mar 1;58(2):55-76.",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/35195712/",
+      "sourceType": "Publicação indexada",
+      "notes": "Título e identificador conferidos no PubMed em 19/09/2026; resultados devem ser interpretados no contexto do estudo."
+    }
+  }
+}

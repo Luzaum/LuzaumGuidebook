@@ -1,4 +1,5 @@
 import { MedicationRecord } from '../../types/medication';
+import { applyMedicationBookFoundations } from '../medicationBookFoundations';
 import { acetilcisteinaMedicationRecord } from './medications.acetilcisteina.seed';
 import { amoxicilinaClavulanatoMedicationRecord } from './medications.amoxicilina-clavulanato.seed';
 import { ampicilinaSulbactamMedicationRecord } from './medications.ampicilina-sulbactam.seed';
@@ -8,6 +9,7 @@ import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
 import { dipironaMedicationRecord } from './medications.dipirona.seed';
 import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
+import { levetiracetamMedicationRecord } from './medications.levetiracetam.seed';
 import { meloxicamMedicationRecord } from './medications.meloxicam.seed';
 import { metadonaMedicationRecord } from './medications.metadona.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
@@ -47,6 +49,7 @@ export const medicationsSeed: MedicationRecord[] = [
   dipironaMedicationRecord,
   enrofloxacinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
+  levetiracetamMedicationRecord,
   meloxicamMedicationRecord,
   metadonaMedicationRecord,
   phenobarbitalMedicationRecord,
@@ -55,5 +58,4 @@ export const medicationsSeed: MedicationRecord[] = [
   pronefraMedicationRecord,
   sulfametoxazolTrimetoprimaMedicationRecord,
   tramadolMedicationRecord,
-];
-
+].map(applyMedicationBookFoundations);

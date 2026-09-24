@@ -1,6 +1,7 @@
 import { MedicationRecord } from '../../types/medication';
 
 export const prednisolonaMedicationRecord: MedicationRecord = {
+  relatedDiseaseSlugs: [],
   id: 'med-prednisolona',
   slug: 'prednisolona',
   title: 'Prednisolona',
@@ -298,13 +299,13 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       {
         species: 'dog',
         title: 'Sensibilidade Farmacodinâmica Aumentada & Isoenzima de Fosfatase Alcalina',
-        peculiarity:
+        description:
           'O cão possui elevada densidade de receptores hepáticos de glicocorticoides (cerca de 45 fmol/mg) com alta afinidade nanomolar (Kd 0,4 nM), tornando a espécie muito responsiva e suscetível aos efeitos adversos clássicos. O cão expressa uma isoenzima hepática exclusiva induzida por corticosteroides (C-ALP), resultando em elevações expressivas de fosfatase alcalina sérica mesmo em tratamentos curtos, acompanhada de glicogenose hepatocelular vacuolar. O antagonismo funcional do ADH nos ductos coletores renais desencadeia precocemente poliúria compensada por polidipsia marcante (PU/PD). O catabolismo proteico com atrofia muscular temporal/epaxial e alopecia simétrica não pruriginosa manifesta-se em tratamentos crônicos.',
       },
       {
         species: 'cat',
         title: 'Resistência ao Esteroide, Necessidade de Prednisolona Ativa & Risco Diabetogênico',
-        peculiarity:
+        description:
           'O gato possui aproximadamente a metade do número de receptores de glicocorticoide encontrados no cão (23,1 fmol/mg no fígado) e menor afinidade de ligação (Kd 3,2 nM), exigindo doses imunossupressoras frequentemente mais altas (2 a 4 mg/kg/dia). Crucialmente, os gatos possuem capacidade de absorção entérica e bioativação hepática da prednisona muito inferiores às do cão, resultando em AUC 4 vezes menor; logo, a prednisona NÃO deve ser utilizada em felinos quando a prednisolona ativa estiver disponível. Gatos não possuem a isoenzima de ALP induzida por corticoide, de modo que elevações de fosfatase alcalina em felinos em corticoterapia sugerem colangio-hepatite ou lipidose hepática real. Gatos são singularmente vulneráveis à hiperglicemia e indução de diabetes mellitus secundário à resistência periférica insulínica.',
       },
     ],
@@ -648,7 +649,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       concentrationUnit: 'mg/comprimido',
       packInfo: 'Blíster com 10 ou 20 comprimidos bissulcados para cães e gatos',
       route: 'Oral',
-      channel: 'veterinary_pharmacy',
+      channel: 'veterinary',
       packageDescription: 'Comprimido de 5 mg permitindo divisão precisa em metades (2,5 mg)',
       calculatedMlPerKgFormula: 'Dose total (mg) / 5 = Número de comprimidos',
     },
@@ -661,7 +662,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       concentrationUnit: 'mg/comprimido',
       packInfo: 'Cartucho com 10 comprimidos bissulcados para animais médios e grandes',
       route: 'Oral',
-      channel: 'veterinary_pharmacy',
+      channel: 'veterinary',
       packageDescription: 'Comprimido de 20 mg com sulco central (divisível em 10 mg)',
       calculatedMlPerKgFormula: 'Dose total (mg) / 20 = Número de comprimidos',
     },
@@ -674,7 +675,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       concentrationUnit: 'mg/comprimido',
       packInfo: 'Caixa com 10 comprimidos palatáveis registrados no MAPA nº 9.577 para cães',
       route: 'Oral',
-      channel: 'veterinary_pharmacy',
+      channel: 'veterinary',
       packageDescription: 'Comprimido palatável de 5 mg',
       calculatedMlPerKgFormula: 'Dose total (mg) / 5 = Número de comprimidos',
     },
@@ -687,7 +688,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       concentrationUnit: 'mg/comprimido',
       packInfo: 'Caixa com 10 comprimidos palatáveis registrados no MAPA nº 9.578 para cães',
       route: 'Oral',
-      channel: 'veterinary_pharmacy',
+      channel: 'veterinary',
       packageDescription: 'Comprimido palatável de 20 mg',
       calculatedMlPerKgFormula: 'Dose total (mg) / 20 = Número de comprimidos',
     },
@@ -726,7 +727,7 @@ export const prednisolonaMedicationRecord: MedicationRecord = {
       concentrationUnit: 'mg/frasco',
       packInfo: 'Sistema Act-O-Vial de 10 mL contendo succinato sódico de prednisolona liofilizado',
       route: 'Intravenosa lenta (após reconstituição imediata)',
-      channel: 'veterinary_pharmacy',
+      channel: 'veterinary',
       packageDescription: 'Frasco de 100 mg para emergências hospitalares',
       calculatedMlPerKgFormula: 'Dose total (mg) / 10 = Volume reconstituído a 10 mg/mL em mL',
     },

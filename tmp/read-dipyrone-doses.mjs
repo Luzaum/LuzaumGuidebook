@@ -1,0 +1,1 @@
+import fs from 'node:fs';const p=fs.readFileSync('tmp/pdfs/plumbs-10/plumbs-10.txt','utf8').split(/===== PDF_PAGE_\d+ =====/);console.log(p[442].slice(0,6100));const a=JSON.parse(fs.readFileSync('tmp/medication-review/pubmed-audit.json','utf8'));for(const r of a.refs.filter(r=>r.slug==='fenobarbital'))console.log(r.id+' '+r.citationText);

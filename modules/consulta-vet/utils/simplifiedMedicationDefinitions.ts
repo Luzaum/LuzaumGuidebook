@@ -8,6 +8,16 @@ export type SimplifiedMedicationDefinition = {
  * na monografia; este texto serve como porta de entrada para leitores não especialistas.
  */
 const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
+  levetiracetam: {
+    whatItDoes:
+      'O levetiracetam liga-se à proteína SV2A nas vesículas dos neurônios, impedindo a liberação exagerada e sincronizada de sinais excitatórios que causam as convulsões, sem provocar a sonolência profunda dos sedativos tradicionais.',
+    keyPoints: [
+      'Apresenta meia-vida curta e exige rigoroso cumprimento do horário a cada 8 horas (TID) para comprimidos convencionais ou líquido.',
+      'Excelente escolha em pacientes com doença no fígado ou em uso de vários remédios, pois quase não depende do metabolismo hepático.',
+      'O fenobarbital acelera a eliminação do levetiracetam em cães, podendo exigir doses mais altas na terapia combinada.',
+      'É o tratamento padrão-ouro com eficácia comprovada para crises mioclônicas desencadeadas por sons agudos em gatos (FARS).',
+    ],
+  },
   meloxicam: {
     whatItDoes:
       'O meloxicam inibe preferencialmente a enzima COX-2, reduzindo a formação de prostaglandinas responsáveis pela dor, inflamação e febre em processos articulares, tecidos moles e perioperatório.',

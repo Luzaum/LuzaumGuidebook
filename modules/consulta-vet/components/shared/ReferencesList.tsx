@@ -43,7 +43,7 @@ export function ReferencesList({
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-3 break-words text-[15px] leading-7 text-foreground/92 [overflow-wrap:anywhere]">{reference.citationText}</p>
+                <p className="mt-3 break-words text-[15px] leading-7 text-foreground/92 [overflow-wrap:anywhere]">{reference.citationText || reference.citation || [reference.authors, reference.title, reference.journal, reference.year, reference.volume, reference.pages].filter(Boolean).join('. ')}</p>
                 {reference.notes ? (
                   <p className="mt-2 max-w-[82ch] break-words text-sm leading-7 text-muted-foreground [overflow-wrap:anywhere]">{reference.notes}</p>
                 ) : null}

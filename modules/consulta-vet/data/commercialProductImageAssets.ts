@@ -346,4 +346,7 @@ export const commercialProductImageAssets: Record<string, string> = {
   "leukeran-clorambucila-aspen": "/assets/consulta-vet/commercial-products/leukeran-2mg-aspen.png",
   "pronefra-virbac": "https://br.virbac.com/files/live/sites/virbac-br/files/everydaycare/Feluro/401130_Packshot_Pronefra_60ml_face.png",
   "nplate-romiplostim-amgen": "https://www.drugs.com/images/pills/custom/pill32728-1/nplate-250-mcg-lyophilized-powder-for-injection-medicine-114383.jpeg",
+  "zyloric-alopurinol-aspen": "https://product-data.raiadrogasil.io/images/14982036.webp",
+  "alopurinol-generico-humano": "https://product-data.raiadrogasil.io/images/14982032.webp",
+  "alopurinol-manipulado-veterinario": "/assets/consulta-vet/commercial-products/alopurinol-manipulado-veterinario.svg",
 };
