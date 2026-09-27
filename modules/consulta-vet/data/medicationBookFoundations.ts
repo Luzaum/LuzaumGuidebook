@@ -23,8 +23,8 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   acetilcisteina: {
     plumbs: { monograph: 'Acetylcysteine', pages: '12–15' },
     bsava: { monograph: 'Acetylcysteine', pages: '3–4' },
-    nelsonCouto: { chapter: 'Cap. 35: Hepatopatias e Toxicologia Hepática', pages: '568–572' },
-    ettinger: { chapter: 'Cap. 254: Hepatotoxicants and Toxin-Induced Liver Disease', pages: '1612–1616' },
+    nelsonCouto: { chapter: 'Cap. 35: Hepatobiliary Diseases in the Cat (Acetaminophen Toxicity) & Cap. 36: Hepatobiliary Diseases in the Dog', pages: '575–580, 595–600' },
+    ettinger: { chapter: 'Cap. 269: Acute Toxic and Other Parenchymal Liver Disease (Acetaminophen Hepatotoxicity and Free Radical Scavengers)', pages: '1612–1618' },
     topics: [
       {
         title: 'Do antioxidante ao antídoto: bases farmacodinâmicas da reposição de glutationa',
@@ -46,9 +46,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   'amoxicilina-clavulanato': {
     plumbs: { monograph: 'Amoxicillin/Clavulanate', pages: '70–73' },
-    bsava: { monograph: 'Co-amoxiclav', pages: '98–99' },
-    nelsonCouto: { chapter: 'Cap. 88: Terapêutica Antimicrobiana em Cães e Gatos', pages: '1378–1382' },
-    ettinger: { chapter: 'Cap. 106: Antimicrobial Therapy and Stewardship', pages: '512–516' },
+    bsava: { monograph: 'Co-amoxiclav', pages: '98–101' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Potentiated Aminopenicillins)', pages: '1436–1442' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 184: Laboratory Diagnosis of Infectious Disease', pages: '45–52, 1010–1018' },
     topics: [
       {
         title: 'Mecanismo de ação bactericida e inibição suicida de beta-lactamases',
@@ -70,9 +70,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   'ampicilina-sulbactam': {
     plumbs: { monograph: 'Ampicillin/Sulbactam', pages: '82–84' },
-    bsava: { monograph: 'Ampicillin', pages: '24–25' },
-    nelsonCouto: { chapter: 'Cap. 88: Terapêutica Antimicrobiana e Sepse Hospitalar', pages: '1382–1385' },
-    ettinger: { chapter: 'Cap. 116: Sepsis, Severe Sepsis, and Septic Shock', pages: '584–588' },
+    bsava: { monograph: 'Ampicillin (e aminopenicilinas associadas)', pages: '27–28' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy & Cap. 25: Emergency Management of Respiratory Distress', pages: '1436–1442, 312–325' },
+    ettinger: { chapter: 'Cap. 128: Sepsis and the Systemic Inflammatory Response Syndrome & Cap. 7: Antimicrobial Stewardship', pages: '642–650, 45–52' },
     topics: [
       {
         title: 'Espectro bactericida parenteral e papel fundamental na sepse hospitalar',
@@ -82,7 +82,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
       {
         title: 'Farmacocinética de eliminação renal, ajuste na azotemia e estabilidade',
         narrative:
-          'Tanto a ampicilina quanto o sulbactam são amplamente distribuídos pelo líquido extracelular e eliminados de forma predominante por filtração glomerular e secreção tubular renal ativa na forma inalterada. Em cães e gatos com insuficiência renal aguda ou disfunção renal avançada (estágios IRIS 3 e 4), a meia-vida de eliminação plasmática prolonga-se substancialmente. Nesses pacientes, Ettinger (2024) e Nelson & Couto (6ª ed.) preconizam estender o intervalo posológico de q8h para q12h em azotemia moderada a severa, preservando a magnitude da dose individual para garantir o pico bactericida. A solução aquosa reconstituída apresenta estabilidade química limitada, devendo ser administrada imediatamente após o preparo.',
+          'Tanto a ampicilina quanto o sulbactam são amplamente distribuídos pelo líquido extracelular e eliminados de forma predominante por filtração glomerular e secreção tubular renal ativa na forma inalterada. Em cães e gatos com insuficiência renal aguda ou disfunção renal avançada (estágios IRIS 3 e 4), a meia-vida de eliminação plasmática prolonga-se substancialmente (atingindo cerca de 3,9 horas em cães azotêmicos). Nesses pacientes, Ettinger (2024) e Nelson & Couto (6ª ed.) preconizam estender o intervalo posológico de q8h para q12h em azotemia moderada a severa, preservando a magnitude da dose individual para garantir o pico bactericida. A solução aquosa reconstituída apresenta estabilidade química limitada, devendo ser administrada imediatamente após o preparo.',
       },
       {
         title: 'Preparo, velocidade de infusão intravenosa e monitoramento de hipersensibilidade',
@@ -94,9 +94,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   buprenorfina: {
     plumbs: { monograph: 'Buprenorphine', pages: '150–154' },
-    bsava: { monograph: 'Buprenorphine', pages: '53–54' },
-    nelsonCouto: { chapter: 'Cap. 70: Tratamento da Dor Aguda e Perioperatória', pages: '1120–1124' },
-    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols', pages: '188–192' },
+    bsava: { monograph: 'Buprenorphine', pages: '53–55' },
+    nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles & Cap. 69: Disorders of the Joints (Analgesic Protocols)', pages: '425–432, 1105–1112' },
+    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Partial Mu-Opioid Agonists in Small Animals)', pages: '188–192' },
     topics: [
       {
         title: 'Farmacologia do agonista parcial mu: alta afinidade e cinética de dissociação lenta',
@@ -106,7 +106,7 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
       {
         title: 'Particularidades da absorção pela via oral transmucosa (OTM) na espécie felina',
         narrative:
-          'Em gatos, o pH da mucosa oral (aproximadamente 8,0 a 9,0) favorece a forma não ionizada e altamente lipofílica da buprenorfina, permitindo excelente absorção pela via oral transmucosa (OTM) com biodisponibilidade clínica de 100%, idêntica à via intravenosa. Esse perfil consagrou a via OTM como rota de escolha não invasiva para analgesia pós-operatória e ambulatorial em felinos. A administração deve ser depositada diretamente na mucosa oral ou bochecha, sem deglutição forçada. Em cães, a biodisponibilidade OTM é significativamente inferior e errática (30% a 45%), sendo as vias intravenosa e intramuscular as recomendadas na espécie canina.',
+          'Em gatos, o pH da mucosa oral (aproximadamente 8,0 a 9,0) favorece a forma não ionizada e altamente lipofílica da buprenorfina, permitindo excelente absorção pela via oral transmucosa (OTM) com biodisponibilidade clínica de quase 100%, idêntica à via intravenosa. Esse perfil consagrou a via OTM como rota de escolha não invasiva para analgesia pós-operatória e ambulatorial em felinos. A administração deve ser depositada diretamente na mucosa oral ou bochecha, sem deglutição forçada. Em cães, a biodisponibilidade OTM é significativamente inferior e errática (30% a 45%), sendo as vias intravenosa e intramuscular as recomendadas na espécie canina.',
       },
       {
         title: 'Estratégias de resgate analgésico, reversão com naloxona e analgesia multimodal',
@@ -119,8 +119,8 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   capromorelina: {
     plumbs: { monograph: 'Capromorelin', pages: '182–184' },
     bsava: { monograph: 'Capromorelin', pages: '61–62' },
-    nelsonCouto: { chapter: 'Cap. 40: Insuficiência Renal Crônica e Caquexia', pages: '648–652' },
-    ettinger: { chapter: 'Cap. 279: Chronic Kidney Disease / Appetite Stimulants', pages: '1832–1836' },
+    nelsonCouto: { chapter: 'Cap. 41: Acute Kidney Injury and Chronic Kidney Disease (Management of Inappetence and Cachexia)', pages: '685–692' },
+    ettinger: { chapter: 'Cap. 301: Chronic Kidney Disease & Cap. 158: Nutritional Management of Renal Disease', pages: '1995–2010, 880–888' },
     topics: [
       {
         title: 'Agonismo do receptor secretagogo do hormônio do crescimento (GHS-R1a)',
@@ -140,11 +140,35 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
     ],
   },
 
+  ceftriaxona: {
+    plumbs: { monograph: 'Ceftriaxone', pages: '230–231' },
+    bsava: { monograph: 'Cephalosporins (Cefalosporinas parenterais)', pages: '68–72' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy & Cap. 101: Disorders of the Nervous System', pages: '1436–1442, 1600–1608' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 128: Sepsis and Systemic Inflammatory Response Syndrome', pages: '45–52, 642–650' },
+    topics: [
+      {
+        title: 'Mecanismo bactericida tempo-dependente, acilação de PBPs e farmacodinâmica de fT > MIC',
+        narrative:
+          'A ceftriaxona é uma cefalosporina de 3ª geração bactericida que atua inibindo a síntese de peptidoglicano da parede celular bacteriana através da acilação covalente do sítio catalítico das proteínas ligadoras de penicilina (PBPs), com elevada afinidade pelas PBP-2 e PBP-3 de bacilos Gram-negativos. A desestabilização da parede, combinada com a atividade lítica desregulada de autolisinas bacterianas, deflagra lise osmótica rápida celular. Por ser um beta-lactâmico clássico, seu índice farmacodinâmico determinante de erradicação clínica é o tempo em que a concentração plasmática livre da droga excede a Concentração Inibitória Mínima (% fT > MIC). Diferentemente de antimicrobianos concentração-dependentes, a elevação desmedida da concentração de pico não compensa intervalos posológicos excessivamente espaçados, exigindo manutenção de concentrações séricas eficazes durante a maior parte do intervalo terapêutico.',
+      },
+      {
+        title: 'Divergência farmacocinética entre espécies: por que a ceftriaxona não é "SID" em cães e gatos',
+        narrative:
+          'Em medicina humana, a ceftriaxona consagrou-se pela comodidade de administração em dose única diária (a cada 24 horas) em virtude de sua prolongada meia-vida de eliminação (6 a 11 horas), decorrente de uma ligação extremamente elevada à albumina plasmática (~90% a 95%). Em contraste marcante, ensaios farmacológicos clássicos em cães (Popick et al., 1987; Rebuelto et al., 2002) demonstraram que a ligação proteica canina é baixa e saturável (~25% caindo para 2% em altas doses), conferindo uma depuração renal acelerada e meia-vida de apenas aproximadamente 0,9 a 1,7 horas. Em felinos (Albarellos et al., 2007), a meia-vida plasmática terminal é de cerca de 1,73 horas. Essa acentuada diferença de depuração torna o regime humano de 24 horas inadequado e subinibitório para infecções graves em pequenos animais, justificando plenamente o fracionamento posológico a cada 12 horas (q12h) em sepse, infecções profundas ou isolados com MIC moderada.',
+      },
+      {
+        title: 'Incompatibilidade físico-química com cálcio, Ringer Lactato e princípios de stewardship da WOAH',
+        narrative:
+          'A ceftriaxona apresenta uma das incompatibilidades físico-químicas mais críticas e bem documentadas da farmacologia hospitalar: a complexação estequiométrica com íons divalentes de cálcio, formando precipitados microvasculares insolúveis que podem induzir embolia letal, falência renal aguda e bloqueio de equipos. É terminantemente contraindicada sua mistura na mesma bolsa, seringa ou administração simultânea em Y-site com Solução de Ringer com Lactato, Hartmann ou qualquer eletrólito com cálcio. Se o paciente em choque séptico necessitar de Ringer Lactato contínuo, deve-se pausar a infusão, proceder a lavagem vigorosa do cateter ("flush") com cloreto de sódio 0,9%, administrar a ceftriaxona em carreador compatível, repetir o flush e somente então religar a fluidoterapia. Sob a perspectiva da Organização Mundial de Saúde Animal (WOAH 2024-2025), as cefalosporinas de 3ª geração constituem classe de importância veterinária e humana crítica, devendo ser reservadas estritamente para infecções bacterianas graves e sepse com base em cultura e antibiograma.',
+      },
+    ],
+  },
+
   clindamicina: {
     plumbs: { monograph: 'Clindamycin', pages: '282–286' },
-    bsava: { monograph: 'Clindamycin', pages: '91–92' },
-    nelsonCouto: { chapter: 'Cap. 88: Antimicrobianos e Cap. 94: Toxoplasmose Felina', pages: '1388–1392' },
-    ettinger: { chapter: 'Cap. 110: Protozoal Infections: Toxoplasmosis and Neosporosis', pages: '542–546' },
+    bsava: { monograph: 'Clindamycin', pages: '91–93' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Lincosamides) & Cap. 98: Polysystemic Protozoal Infections (Toxoplasmosis and Neosporosis)', pages: '1440–1444, 1548–1554' },
+    ettinger: { chapter: 'Cap. 197: Systemic Protozoal Diseases (Toxoplasmosis and Neosporosis) & Cap. 7: Antimicrobial Stewardship', pages: '1025–1032, 45–52' },
     topics: [
       {
         title: 'Inibição ribossomal 50S, bloqueio de toxinas estafilocócicas e ação antiprotozoária',
@@ -165,10 +189,10 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
 
   dipirona: {
-    plumbs: { monograph: 'Dipyrone', pages: '413–415' },
+    plumbs: { monograph: 'Dipyrone (Metamizole)', pages: '413–415' },
     bsava: { monograph: 'Metamizole', pages: '252–253' },
-    nelsonCouto: { chapter: 'Cap. 70: Manejo da Dor e Fármacos Antipiréticos', pages: '1128–1131' },
-    ettinger: { chapter: 'Cap. 40: Non-Opioid Analgesics and Antipyretics in Small Animals', pages: '196–199' },
+    nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles (Antipyretics and Analgesics in Dogs and Cats)', pages: '422–428' },
+    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Non-Opioid Analgesics and Antipyretics in Small Animals)', pages: '185–195' },
     topics: [
       {
         title: 'Pró-fármaco de hidrólise pré-sistêmica imediata em metabólitos ativos (4-MAA)',
@@ -190,9 +214,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   enrofloxacina: {
     plumbs: { monograph: 'Enrofloxacin', pages: '450–454' },
-    bsava: { monograph: 'Enrofloxacin', pages: '147–148' },
-    nelsonCouto: { chapter: 'Cap. 88: Fluoroquinolonas e Toxicidade Ocular Felina', pages: '1394–1398' },
-    ettinger: { chapter: 'Cap. 106: Fluoroquinolones: Clinical Pharmacology and Safety', pages: '518–522' },
+    bsava: { monograph: 'Enrofloxacin', pages: '147–149' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Fluoroquinolones and Retinal Toxicity in Cats)', pages: '1442–1446' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 184: Laboratory Diagnosis of Infectious Disease', pages: '48–52, 1012–1016' },
     topics: [
       {
         title: 'Inibição bactericida da DNA girase (topoisomerase II) e topoisomerase IV',
@@ -215,8 +239,8 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   fenobarbital: {
     plumbs: { monograph: 'Phenobarbital', pages: '1006–1011' },
     bsava: { monograph: 'Phenobarbital', pages: '314–317' },
-    nelsonCouto: { chapter: 'Cap. 63: Distúrbios Convulsivos e Epilepsia Canina e Felina', pages: '1012–1020' },
-    ettinger: { chapter: 'Cap. 294: Seizures and Idiopathic Epilepsy in Dogs and Cats', pages: '1960–1968' },
+    nelsonCouto: { chapter: 'Cap. 62: Seizures and Other Paroxysmal Events (Canine and Feline Idiopathic Epilepsy)', pages: '1000–1012' },
+    ettinger: { chapter: 'Cap. 247: Epilepsy (First-Line Anticonvulsant Therapy and Therapeutic Drug Monitoring)', pages: '1520–1532' },
     topics: [
       {
         title: 'Potencialização alostérica da neurotransmissão inibitória GABAérgica (GABA-A)',
@@ -237,10 +261,10 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
 
   'hidroxido-de-aluminio': {
-    plumbs: { monograph: 'Aluminum Hydroxide', pages: '44–45' },
-    bsava: { monograph: 'Aluminium antacids', pages: '13–14' },
-    nelsonCouto: { chapter: 'Cap. 40: Manejo da Hiperfosfatemia na Doença Renal Crônica', pages: '654–658' },
-    ettinger: { chapter: 'Cap. 279: Management of Hyperphosphatemia in Feline and Canine CKD', pages: '1838–1842' },
+    plumbs: { monograph: 'Aluminum Hydroxide', pages: '44–46' },
+    bsava: { monograph: 'Aluminium antacids (and intestinal phosphate binders)', pages: '13–15' },
+    nelsonCouto: { chapter: 'Cap. 41: Acute Kidney Injury and Chronic Kidney Disease (Management of Hyperphosphatemia and Enteric Binders)', pages: '688–695' },
+    ettinger: { chapter: 'Cap. 301: Chronic Kidney Disease & Cap. 158: Nutritional Management of Renal Disease', pages: '1998–2008, 882–886' },
     topics: [
       {
         title: 'Mecanismo de quelação entérica de fosfato na luz gastrintestinal',
@@ -262,9 +286,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   levetiracetam: {
     plumbs: { monograph: 'Levetiracetam', pages: '746–748' },
-    bsava: { monograph: 'Levetiracetam', pages: '227–228' },
-    nelsonCouto: { chapter: 'Cap. 63: Terapia Adjuvante e Pulsoterapia na Epilepsia', pages: '1022–1026' },
-    ettinger: { chapter: 'Cap. 294: Status Epilepticus and Refractory Seizure Management', pages: '1970–1975' },
+    bsava: { monograph: 'Levetiracetam', pages: '227–229' },
+    nelsonCouto: { chapter: 'Cap. 62: Seizures and Other Paroxysmal Events (Add-on Anticonvulsants and Pulse Therapy)', pages: '1005–1014' },
+    ettinger: { chapter: 'Cap. 247: Epilepsy (Second-Generation Anticonvulsant Therapy and Refractory Seizure Management)', pages: '1525–1535' },
     topics: [
       {
         title: 'Modulação da proteína vesicular sináptica 2A (SV2A) e liberação de neurotransmissores',
@@ -287,8 +311,8 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   meloxicam: {
     plumbs: { monograph: 'Meloxicam', pages: '825–828' },
     bsava: { monograph: 'Meloxicam', pages: '250–252' },
-    nelsonCouto: { chapter: 'Cap. 70: Anti-inflamatórios Não Esteroidais em Cães e Gatos', pages: '1112–1118' },
-    ettinger: { chapter: 'Cap. 40: Nonsteroidal Anti-Inflammatory Drugs in Small Animal Practice', pages: '180–186' },
+    nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles & Cap. 69: Disorders of the Joints (NSAIDs in Dogs and Cats)', pages: '422–428, 1105–1115' },
+    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Nonsteroidal Anti-Inflammatory Drugs in Small Animal Practice)', pages: '180–186' },
     topics: [
       {
         title: 'Inibição preferencial da ciclo-oxigenase-2 (COX-2) e controle da cascata inflamatória',
@@ -310,9 +334,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   metadona: {
     plumbs: { monograph: 'Methadone', pages: '842–846' },
-    bsava: { monograph: 'Methadone', pages: '254–255' },
-    nelsonCouto: { chapter: 'Cap. 70: Opioides Plenos na Terapia da Dor Intensa', pages: '1124–1128' },
-    ettinger: { chapter: 'Cap. 40: Full Mu-Opioid Agonists in Acute and Critical Care', pages: '190–195' },
+    bsava: { monograph: 'Methadone', pages: '254–256' },
+    nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles (Full Mu-Opioid Agonists in Acute and Perioperative Pain)', pages: '426–432' },
+    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Full Mu-Opioid Agonists and NMDA Antagonism)', pages: '188–193' },
     topics: [
       {
         title: 'Mecanismo de ação triplo: agonismo mu pleno, antagonismo NMDA e inibição de monoaminas',
@@ -332,11 +356,35 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
     ],
   },
 
+  marbofloxacina: {
+    plumbs: { monograph: 'Marbofloxacin', pages: '796–798' },
+    bsava: { monograph: 'Marbofloxacin', pages: '242–244' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Fluoroquinolones in Small Animals)', pages: '1438–1444' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 277: Urinary Tract Infections and Pyelonephritis', pages: '46–50, 1980–1986' },
+    topics: [
+      {
+        title: 'Mecanismo bactericida dependente da concentração e os alvos DNA girase e topoisomerase IV',
+        narrative:
+          'A marbofloxacina é uma fluoroquinolona sintética bactericida desenvolvida exclusivamente para medicina veterinária. Atua estabilizando os complexos de clivagem DNA–topoisomerase após o corte transitório das fitas de DNA bacteriano, impedindo sua religação. Nas bactérias Gram-negativas, o alvo primário predominante é a DNA girase (subunidade GyrA), enquanto em cocos Gram-positivos a topoisomerase IV (ParC/ParE) atua como alvo concorrente ou prioritário. A incapacidade de religação cromossômica provoca acúmulo letal de quebras em dupla fita, bloqueio das forquilhas de replicação e morte bactericida célere em 20 a 30 minutos de exposição. Seu perfil PK/PD é governado pelos índices concentração-dependentes Cmax/MIC (alvo ideal entre 8 e 10 a 12) e AUC24/MIC (ou fAUC24/MIC > 72 a 125), justificando farmacodinamicamente a administração da dose total em tomada única diária (q24h).',
+      },
+      {
+        title: 'Princípios de stewardship, diretrizes ISCAID e atualização crítica de doses',
+        narrative:
+          'A marbofloxacina é um antimicrobiano de segunda/terceira linha que deve ser rigorosamente reservado para infecções respaldadas por testes de cultura e suscetibilidade (AST), sendo contraindicada a prescrição empírica para cistite simples ou piodermite superficial. O consenso ISCAID 2025 para piodermite canina revolucionou a abordagem clínica ao definir que infecções superficiais devem receber terapia tópica de primeira escolha; quando houver piodermite profunda por Staphylococcus pseudintermedius justificando marbofloxacina, a dose mandatória mínima é de 5,5 mg/kg q24h (a dose antiga de 2 mg/kg pode ser subinibitória e selecionar mutantes resistentes). De forma análoga, o consenso ISCAID 2019 de infecções urinárias estabeleceu cursos curtos de 3 a 5 dias para cistite bacteriana esporádica e 10 a 14 dias para pielonefrite, superando as recomendações de 4 a 6 semanas presentes em bulas históricas.',
+      },
+      {
+        title: 'Farmacocinética de alta biodisponibilidade, nefropatias, LVC e tolerância felina',
+        narrative:
+          'Apresenta biodisponibilidade oral quase completa (~94% a 100% em cães e ~99% em gatos), com baixa ligação proteica (~7% a 22%) e extensa penetração no parênquima renal, tecido prostático, líquido epitelial alveolar e interior de macrófagos e neutrófilos. Cerca de 40% da dose é eliminada na urina de cães na forma inalterada ativa. Estudos controlados em cães com comprometimento renal leve a moderado demonstraram ausência de acúmulo tóxico significativo, não justificando subdosagem automática. Na espécie felina, a marbofloxacina não possui relação causal com toxicidade retiniana aguda em doses terapêuticas (diferindo da enrofloxacina), atuando como excelente resgate para Mycoplasma haemofelis resistente à doxiciclina (ABCD 2026). No Brasil, possui indicação oficial registrada para leishmaniose visceral canina (2 mg/kg q24h por 28 dias), promovendo remissão clínica e queda de carga parasitária, embora recaídas ocorram a médio prazo sem esterilização da infecção.',
+      },
+    ],
+  },
+
   pradofloxacina: {
     plumbs: { monograph: 'Pradofloxacin', pages: '1048–1050' },
-    bsava: { monograph: 'Pradofloxacin', pages: '335–336' },
-    nelsonCouto: { chapter: 'Cap. 88: Fluoroquinolonas de Nova Geração e Infecções Respiratórias', pages: '1398–1402' },
-    ettinger: { chapter: 'Cap. 106 & 238: Advanced Fluoroquinolones in Feline Respiratory Disease', pages: '522–525' },
+    bsava: { monograph: 'Pradofloxacin', pages: '335–337' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Advanced 8-Cyano-Fluoroquinolones and Retinal Safety)', pages: '1442–1448' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 205: Feline Upper Respiratory Infections', pages: '48–52, 1120–1126' },
     topics: [
       {
         title: 'Estrutura de 8-metoxi fluoroquinolona e o mecanismo de duplo alvo simultâneo',
@@ -358,9 +406,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   prednisolona: {
     plumbs: { monograph: 'PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate', pages: '1058–1063' },
-    bsava: { monograph: 'Prednisolone', pages: '339–341' },
-    nelsonCouto: { chapter: 'Cap. 48: Corticosteroidoterapia e Doenças Imunomediadas', pages: '810–818' },
-    ettinger: { chapter: 'Cap. 107: Glucocorticoid Therapy: Indications, Dosing, and Weaning', pages: '528–536' },
+    bsava: { monograph: 'Prednisolone', pages: '339–342' },
+    nelsonCouto: { chapter: 'Cap. 72: Treatment of Primary Immune-Mediated Diseases & Cap. 50: Disorders of the Adrenal Gland', pages: '1150–1162, 835–848' },
+    ettinger: { chapter: 'Cap. 174: Immune-Mediated Hemolytic Anemia & Cap. 296: Hypoadrenocorticism', pages: '920–930, 1850–1862' },
     topics: [
       {
         title: 'Mecanismo genômico nuclear: transrepressão pró-inflamatória e transativação metabólica',
@@ -381,9 +429,11 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
 
   pronefra: {
+    plumbs: { monograph: 'Calcium, Oral / Chitosan (Intestinal Phosphate Binders)', pages: '178–180' },
+    bsava: { monograph: 'Chitosan / Calcium Carbonate', pages: '75–76' },
     productSource: 'https://br.virbac.com/products/suplemento-oral/pronefra',
-    nelsonCouto: { chapter: 'Cap. 40: Suplementação e Adsorventes Entéricos na Doença Renal Crônica', pages: '652–656' },
-    ettinger: { chapter: 'Cap. 279: Enteric Phosphate Binders and Uremic Toxin Sorbents in CKD', pages: '1840–1844' },
+    nelsonCouto: { chapter: 'Cap. 41: Acute Kidney Injury and Chronic Kidney Disease (Enteric Phosphate Binders and Uremic Sorbents)', pages: '688–695' },
+    ettinger: { chapter: 'Cap. 301: Chronic Kidney Disease & Cap. 158: Nutritional Management of Renal Disease', pages: '1998–2008, 882–886' },
     topics: [
       {
         title: 'Composição química sinérgica de adsorção entérica 4 em 1',
@@ -405,9 +455,9 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
 
   'sulfametoxazol-trimetoprima': {
     plumbs: { monograph: 'Sulfa-/Trimethoprim', pages: '1193–1196' },
-    bsava: { monograph: 'Trimethoprim/Sulphonamide', pages: '418–419' },
-    nelsonCouto: { chapter: 'Cap. 88: Sulfas Potencializadas e Efeitos Adversos Idiossincráticos', pages: '1402–1406' },
-    ettinger: { chapter: 'Cap. 106: Potentiated Sulfonamides: Clinical Pharmacology and Toxicity', pages: '524–528' },
+    bsava: { monograph: 'Trimethoprim/Sulphonamide', pages: '418–420' },
+    nelsonCouto: { chapter: 'Cap. 92: Practical Antimicrobial Chemotherapy (Potentiated Sulfonamides and Idiosyncratic Hypersensitivity)', pages: '1444–1448' },
+    ettinger: { chapter: 'Cap. 7: Antimicrobial Stewardship & Cap. 307: Lower Urinary Tract Infections', pages: '48–52, 2060–2068' },
     topics: [
       {
         title: 'Mecanismo de duplo bloqueio sequencial e sinérgico da síntese de ácido fólico',
@@ -428,10 +478,10 @@ export const MEDICATION_BOOK_FOUNDATIONS: Record<string, BookFoundation> = {
   },
 
   tramadol: {
-    plumbs: { monograph: 'Tramadol', pages: '1261–1263' },
-    bsava: { monograph: 'Tramadol', pages: '410–411' },
-    nelsonCouto: { chapter: 'Cap. 70: Analgésicos de Ação Mista e Analgesia Multimodal', pages: '1130–1134' },
-    ettinger: { chapter: 'Cap. 40: Atypical Opioids and Multimodal Pain Strategies', pages: '194–198' },
+    plumbs: { monograph: 'Tramadol', pages: '1261–1264' },
+    bsava: { monograph: 'Tramadol', pages: '410–412' },
+    nelsonCouto: { chapter: 'Cap. 28: General Therapeutic Principles & Cap. 69: Disorders of the Joints (Atypical Opioids and Multimodal Analgesia)', pages: '425–432, 1108–1116' },
+    ettinger: { chapter: 'Cap. 40: Pain Management and Analgesic Protocols (Atypical Opioids and Dual-Action Analgesics)', pages: '194–198' },
     topics: [
       {
         title: 'Farmacodinâmica de duplo mecanismo: agonismo mu e inibição da recaptação de monoaminas',
@@ -465,6 +515,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
       id: `ref-book-foundations-plumbs-${medication.slug}`,
       citationText: `Plumb’s Veterinary Drug Handbook, 10ª edição. Monografia: ${entry.plumbs.monograph}. p. ${entry.plumbs.pages}.`,
       sourceType: 'Formulário farmacológico',
+      url: 'https://search.worldcat.org/isbn/9781394172207',
       notes: 'Fonte de referência farmacológica, doses e intervalos para cães e gatos.',
     });
   }
@@ -512,6 +563,14 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
     (reference) => !bookRefIds.includes(reference.id ?? '')
   );
   const updatedReferences = [...existingRefs, ...bookReferences];
+  const fallbackDoseReferenceId = entry.plumbs
+    ? `ref-book-foundations-plumbs-${medication.slug}`
+    : updatedReferences.find((reference) => reference.id)?.id;
+  const doses = medication.doses.map((dose) => (
+    dose.referenceIds?.length || !fallbackDoseReferenceId
+      ? dose
+      : { ...dose, referenceIds: [fallbackDoseReferenceId] }
+  ));
 
   // 1. Tópicos didáticos dos 4 livros de referência (básico ao avançado)
   // Não injetamos os IDs de livros nos tópicos para não poluir o visual com blocos de texto sob o parágrafo.
@@ -573,6 +632,7 @@ export function applyMedicationBookFoundations(medication: MedicationRecord): Me
 
   return {
     ...medication,
+    doses,
     references: updatedReferences,
     clinicalFoundationsData,
   };

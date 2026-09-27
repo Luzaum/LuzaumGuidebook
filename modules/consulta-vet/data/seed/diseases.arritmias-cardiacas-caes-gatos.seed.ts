@@ -489,7 +489,7 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       'Padronizar ECG conforme BSAVA Guide to Procedures: paciente calmo, ambiente silencioso, minimizar contenção, posição lateral direita quando tolerada, eletrodos corretos, documentar velocidade (25 mm/s; 50 mm/s para medidas finas) e ganho (10 mm/mV). Registrar espécie, peso, data, medicamentos, posição, velocidade e ganho. (3)',
     figuraHolterGatosSaudaveis: {
       kind: 'clinicalFigure' as const,
-      src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudáveis-cofaru-2026.png',
+      src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/holter-gatos-saudaveis-cofaru-2026.png',
       alt: 'Exemplos de ectopia ventricular em gatos clinicamente saudáveis durante Holter de 24 horas — couplets, bigeminismo e taquicardia ventricular breve.',
       caption:
         'Ectopia ventricular registrada em gatos saudáveis durante Holter de 24 h — VPC isolado ou complexo não equivale automaticamente a cardiomiopatia; interpretar no contexto clínico e ecocardiográfico. Cofaru et al., 2026. (14)',
@@ -500,6 +500,14 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
   },
 
   treatment: {
+    figuraEstratificacaoUrgencia: {
+      kind: 'clinicalFigure' as const,
+      src: '/assets/consulta-vet/diseases/arritmias-cardiacas-caes-gatos/estratificacao-urgencia-arritmias.svg',
+      alt: 'Estratificação clínica de urgência das arritmias, do acompanhamento ambulatorial à ressuscitação cardiopulmonar.',
+      caption:
+        'Organização clínica do ConsultaVET para priorização de atendimento. Não corresponde a um sistema universal de estadiamento.',
+      display: 'wide',
+    },
     arrNotaEstratificacao:
       'Não existe sistema universal validado de “estágios de arritmia” comparável ao ACVIM da doença valvar. A estratificação de urgência abaixo é organização clínica do ConsultaVET — verde: monitorar/investigar (VPC/APC isolado assintomático, AIVR estável); amarelo: avaliação prioritária (ectopia frequente, nova arritmia em cardiopata, síncope leve); laranja: urgente (VT com pulso, SVT muito rápida com baixo débito, FA descompensada, BAV avançado sintomático); vermelho: emergência RECOVER (VF, VT sem pulso, PEA, assistolia). (4)(25)',
     arrFaCaninaOrca:
@@ -730,6 +738,18 @@ export const arritmiasCardiacasCaesGatosRecord: DiseaseRecord = {
       'SSS/BAV avançado sintomático: marcapasso permanente — farmacoterapia como ponte. (4)(5)(20)',
       'AVRT recorrente: considerar ablação por radiofrequência — potencialmente curativa. (16)',
     ],
+  },
+  complications: {
+    principais: [
+      'Morte Súbita Cardíaca (MSC) por Fibrilação Ventricular ou Assistolia: A degeneração hiperaguda de taquicardia ventricular rápida sustentada, fenômeno de "R-sobre-T" ou Torsades de Pointes em ritmo ventricular caótico e desorganizado (fibrilação ventricular) resulta em cessação instantânea do débito cardíaco sistêmico, perda de consciência em segundos e óbito caso não haja desfibrilação elétrica imediata (protocolo RECOVER 2024).',
+      'Taquimiocardiopatia (Cardiomiopatia Induzida por Taquicardia): Taquicardias supraventriculares incessantes, taquicardias ventriculares de via de saída ou fibrilação atrial com resposta ventricular rápida não controlada mantidas por semanas geram sobrecarga metabólica contínua nos cardiomiócitos com esgotamento das reservas energéticas mitocondriais de ATP. Manifesta-se com dilatação cavitária progressiva das 4 câmaras e disfunção sistólica biventricular severa (fração de encurtamento < 15%), simulando fenotipicamente uma cardiomiopatia dilatada, porém com elevado potencial de recuperação e reversibilidade miocárdica após o controle definitivo da frequência ou ritmo.',
+      'Síncope Arrítmica Recorrente e Traumatismo Secundário: A queda abrupta e transitória do débito cardíaco provocada por pausas sinusais prolongadas (> 4 a 6 segundos), bloqueio atrioventricular de 3º grau ou paroxismos de taquicardia ventricular culmina em hipoperfusão do córtex cerebral com perda súbita do tônus postural e da consciência, predispondo a traumatismos craniofaciais e acidentes físicos.',
+      'Insuficiência Cardíaca Congestiva Aguda Descompensada: A perda do enchimento atrial coordenado ("atrial kick") na fibrilação atrial ou o encurtamento dramático da fase diastólica em frequências > 200–240 bpm elevam subitamente as pressões de enchimento atrial e venosa pulmonar, precipitando edema pulmonar agudo ou ascite volumosa.',
+      'Tromboembolismo Sistêmico de Origem Atrial: A perda da contração mecânica das paredes atriais na fibrilação atrial crônica gera estase sanguínea pronunciada e turbilhonamento no interior do apêndice atrial, criando trombos murais com risco de desprendimento embólico e isquemia aguda de membros, rins ou cérebro.',
+      'Efeitos Pró-Arrítmicos Iatrogênicos: Paradoxalmente, quase todos os fármacos antiarrítmicos possuem potencial pró-arrítmico. O prolongamento excessivo do intervalo QT por sotalol ou amiodarona em pacientes hipocalêmicos deflagra Torsades de Pointes; a associação desavisada de diltiazem com betabloqueadores precipita bradicardia extrema e bloqueio AV completo; e a intoxicação digitálica culmina em arritmias ventriculares refratárias.',
+    ],
+    prognostico:
+      'O prognóstico para cães e gatos com arritmias cardíacas é altamente variável e depende diretamente do substrato miocárdico subjacente e da presença de sinais de baixo débito. Arritmias sem cardiopatia estrutural (ex.: taquicardia juncional mediada por via acessória curada por ablação, ou BAV de 3º grau tratado com marcapasso endocárdico definitivo) apresentam prognóstico excelente a longo prazo. Por outro lado, arritmias ventriculares complexas em Dobermanns com cardiomiopatia dilatada, Boxers com cardiomiopatia arritmogênica do ventrículo direito (ARVC) ou fibrilação atrial rápida em cães com DMVD avançada conferem prognóstico reservado a desfavorável, com risco perene de morte súbita.',
   },
   prevention: {
     rastreio:

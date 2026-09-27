@@ -135,13 +135,29 @@ const withdrawn: Record<string, string[]> = {
   fenobarbital: ['ref-bsava-neurology-2018'],
 };
 
+function publicReferenceUrl(reference: EditorialReference): string | null {
+  if (reference.url) return reference.url;
+  if (reference.doi) return `https://doi.org/${reference.doi}`;
+  if (reference.pmid) return `https://pubmed.ncbi.nlm.nih.gov/${reference.pmid}/`;
+
+  const sourceText = `${reference.citationText || ''} ${reference.citation || ''}`;
+  const doi = sourceText.match(/\bDOI:\s*(10\.\d{4,9}\/[-._;()/:A-Z0-9]+)/i)?.[1];
+  if (doi) return `https://doi.org/${doi.replace(/[.,;]+$/, '')}`;
+
+  const pmid = sourceText.match(/\bPMID:\s*(\d{5,10})/i)?.[1];
+  return pmid ? `https://pubmed.ncbi.nlm.nih.gov/${pmid}/` : null;
+}
+
 export function repairMedicationReferences(medication: MedicationRecord): MedicationRecord {
   const replacements = corrections[medication.slug] ?? {};
   const removed = new Set(withdrawn[medication.slug] ?? []);
   const keepIds = (ids: string[]) => ids.filter((id) => !removed.has(id));
   return {
     ...medication,
-    references: medication.references?.filter((ref) => !removed.has(ref.id ?? '')).map((ref) => replacements[ref.id ?? ''] ?? ref),
+    references: medication.references
+      ?.filter((ref) => !removed.has(ref.id ?? ''))
+      .map((ref) => replacements[ref.id ?? ''] ?? ref)
+      .map((ref) => ({ ...ref, url: publicReferenceUrl(ref) })),
     doses: medication.doses.map((dose) => ({ ...dose, referenceIds: dose.referenceIds ? keepIds(dose.referenceIds) : undefined })),
     detailedIndications: medication.detailedIndications?.map((item) => ({ ...item, referenceIds: keepIds(item.referenceIds) })),
     clinicalStudiesCommented: medication.clinicalStudiesCommented?.filter((study) =>

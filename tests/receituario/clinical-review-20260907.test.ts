@@ -7,7 +7,7 @@ import { buildClinicalMedicationPrescriptionBlock, buildDefaultClinicalMedicatio
 import { renderClinicalRecipe, normalizeClinicalOptionKeys } from '../../modules/consulta-vet/utils/receituarioClinicalModels';
 import { prescriptionDurationClause, inferPrescriptionDurationPreset } from '../../modules/consulta-vet/utils/prescriptionSchedule';
 import { calculateReceituarioDose, isPresentationRouteCompatible } from '../../modules/consulta-vet/utils/receituarioDoseEngine';
-import { medicationsSeed } from '../../modules/consulta-vet/data/seed/medications.seed';
+import { clinicalMedicationsSeed as medicationsSeed } from '../../modules/consulta-vet/data/seed/clinicalMedications.seed';
 import { simplifyPrescriptionTutorLanguage } from '../../modules/consulta-vet/utils/prescriptionTutorLanguage';
 import { extractPrescriptionConcentration, getRouteCategory } from '../../modules/consulta-vet/utils/receituarioMedication';
 

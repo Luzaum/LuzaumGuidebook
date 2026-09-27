@@ -945,6 +945,58 @@ export const sulfametoxazolTrimetoprimaMedicationsSeed: MedicationRecord[] = [
       },
     ],
 
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Taxas de Cura a Curto e Longo Prazo de Tratamento de Curta Duração com Trimetoprima-Sulfametoxazol em Cadelas com Cistite Bacteriana Não Complicada',
+        authorsYear: 'Clare S, Hartmann FA, Jooss M, et al. (2014)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Ensaio clínico prospectivo randomizado duplo-mascarado controlado.',
+        sampleSize: '38 cadelas com cistite bacteriana não complicada confirmada por urocultura.',
+        mainFindings:
+          'Um curso de apenas 3 dias de TMP-SMX oral (15 mg/kg da associação total q12h) produziu taxa de cura clínica e bacteriológica de 85%, estatisticamente equivalente a um curso convencional de 10 dias de cefalexina oral (72% de cura), mantendo eficácia em longo prazo após 30 dias sem recidivas.',
+        clinicalTakeaway:
+          'Estudo de impacto global que fundamentou a mudança de paradigma da diretriz ISCAID UTI, validando cursos curtos de 3 a 5 dias para cistite esporádica e minimizando a pressão de seleção bacteriana.',
+        referenceId: 'ref-clare-2014-short-uti',
+      },
+      {
+        title: 'Achados Clínicos em 40 Cães com Hipersensibilidade Associada à Administração de Sulfonamidas Potencializadas',
+        authorsYear: 'Trepanier LA, Danhof R, Toll J, Watrous D (2003)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Estudo clínico multicêntrico retrospectivo/prospectivo de farmacovigilância e caracterização de toxicidade.',
+        sampleSize: '40 cães de diversas raças apresentando reação de hipersensibilidade tardia à sulfadiazina ou sulfametoxazol.',
+        mainFindings:
+          'A síndrome de hipersensibilidade manifestou-se tipicamente após uma média de 12 dias de tratamento contínuo (faixa de 5 a 36 dias), caracterizada por febre (78%), poliartrite/claudicação (55%), hepatopatia com elevação de ALT/FA (45%), trombocitopenia e anemia imunomediadas (33%) e ceratoconjuntivite seca (KCS) (20%). Doberman Pinschers e cães de grande porte apresentaram risco desproporcional.',
+        clinicalTakeaway:
+          'Alerta farmacológico de referência que detalha a apresentação da síndrome de hipersensibilidade tardia a sulfonamidas no cão e preconiza suspensão imediata e suporte corticoide/hemodinâmico.',
+        referenceId: 'ref-trepanier-2003-hypersensitivity',
+      },
+      {
+        title: 'Farmacocinética Comparativa de Trimetoprima-Sulfadiazina e Trimetoprima-Sulfametoxazol em Cães',
+        authorsYear: 'Ekstrand C, Löwgren M, Erkas M, et al. (2026)',
+        journal: 'BMC Veterinary Research',
+        studyDesign: 'Ensaio farmacocinético cruzado IV/VO em Beagles hígidos.',
+        sampleSize: 'Cães adultos saudáveis avaliados com dosagem de alta precisão por LC-MS/MS.',
+        mainFindings:
+          'Demonstrou biodisponibilidade oral de 93% a 97% para ambos os componentes. A trimetoprima apresentou clearance muito superior (0,44 L/kg/h) e meia-vida de 4,2 horas, enquanto a sulfadiazina teve meia-vida de 7,6 horas e o sulfametoxazol de 12,6 horas.',
+        clinicalTakeaway:
+          'Comprova a excelente absorção oral da associação e justifica a necessidade estrita do intervalo posológico a cada 12 horas para manter a sinergia farmacodinâmica no cão.',
+        referenceId: 'ref-ekstrand-2026-pk',
+      },
+      {
+        title: 'Efeitos da Associação Sulfametoxazol-Trimetoprima na Função Tireoidiana em Cães',
+        authorsYear: 'Frank LA, Hnilica KA, May ER, et al. (2005)',
+        journal: 'American Journal of Veterinary Research',
+        studyDesign: 'Ensaio clínico prospectivo experimental controlado.',
+        sampleSize: 'Cães submetidos a protocolo com sulfametoxazol-trimetoprima por 3 a 6 semanas.',
+        mainFindings:
+          'Demonstrou que a sulfametoxazol-trimetoprima atua como inibidor reversível da peroxidase tireoidiana, promovendo queda acentuada das concentrações séricas de T4 livre e T4 total, acompanhada de elevação reflexa de TSH sérico. Os parâmetros retornaram à normalidade completa dentro de 2 a 4 semanas após o término da antibioticoterapia.',
+        clinicalTakeaway:
+          'Orienta os clínicos a nunca investigar ou diagnosticar hipotireoidismo canino durante ou imediatamente após um ciclo de tratamento com sulfonamidas potencializadas.',
+        referenceId: 'ref-frank-2005-thyroid',
+      },
+    ],
+
     // 12. Referências Bibliográficas Completas
     references: [
       {

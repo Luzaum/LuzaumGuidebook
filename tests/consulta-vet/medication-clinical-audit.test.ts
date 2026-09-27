@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { CONSULTA_VET_PUBLIC_MEDICATION_SLUGS } from '../../modules/consulta-vet/constants/publicCatalog';
 import { PLUMBS_10_MONOGRAPH_AUDIT } from '../../modules/consulta-vet/data/plumbs10MedicationAudit';
-import { medicationsSeed } from '../../modules/consulta-vet/data/seed/medications.seed';
+import { clinicalMedicationsSeed as medicationsSeed } from '../../modules/consulta-vet/data/seed/clinicalMedications.seed';
 import {
   getMedicationTherapeuticClassIds,
   MEDICATION_THERAPEUTIC_CLASSES,

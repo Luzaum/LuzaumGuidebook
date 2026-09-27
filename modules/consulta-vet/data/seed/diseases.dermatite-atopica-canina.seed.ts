@@ -263,6 +263,16 @@ export const dermatiteAtopicaCaninaRecord: DiseaseRecord = {
     otiteCronica:
       'Otite externa crônica com estenose do conduto, hiperplasia glandular e calcificação. Exige otoscopia e controle de fundo alérgico (1,3).',
   },
+  prevention: {
+    medidas: [
+      'Reparação e Reforço Contínuo da Barreira Cutânea: Aplicação tópica semanal de formulações contendo ceramidas, ácidos graxos essenciais (ômega-3 e ômega-6) e fitoesfingosina, associada a banhos com xampus hidratantes hipoalergênicos para reduzir a perda de água transepidérmica (TEWL) e a penetração de alérgenos ambientais.',
+      'Controle Rigoroso e Contínuo de Ectoparasitas: Manutenção ininterrupta de ectoparasiticidas de longa ação (isoxazolinas mensais ou trimestrais) durante todo o ano, prevenindo a hipersensibilidade à picada de pulga (DAPP), que atua como gatilho somatório ultrapassando o limiar de prurido do paciente atópico.',
+      'Limpeza Mecânica Pós-Passeio: Higienização de patas, abdômen ventral e face com toalhas umedecidas ou enxágue com água morna após passeios em gramados ou áreas externas para remoção física de pólens e alérgenos vegetais antes que ocorra absorção percutânea.',
+      'Manejo Ambiental dos Ácaros da Poeira: Redução de alérgenos domiciliares (Dermatophagoides farinae e D. pteronyssinus) mediante aspiração frequente com filtro HEPA, lavagem semanal das caminhas e cobertores em água quente (> 60°C) e desumidificação do ambiente interno (< 50% de umidade).',
+      'Terapia Proativa Intermitente ("Flare-up Prophylaxis"): Aplicação de corticoide tópico de baixo impacto sistêmico (hidrocortisona aceponato spray) duas vezes por semana em regiões anatômicas com histórico de recidiva frequente (patas, virilhas), prevenindo a reativação de crises inflamatórias agudas.',
+      'Imunoterapia Alérgeno-Específica (ITA) Precoce: Instituição precoce da imunoterapia como única modalidade terapêutica capaz de modular a resposta imunológica (aumento de linfócitos T reguladores FoxP3+ e IL-10), prevenindo a progressão cronificada da marcha atópica e a dependência de imunossupressores sistêmicos.',
+    ],
+  },
   figures: [
     {
       kind: 'clinicalFigure',

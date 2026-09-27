@@ -765,6 +765,58 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       },
     ],
 
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Comparação da Farmacocinética de Infusão Contínua e Intermitente de Ampicilina-Sulbactam em Cães com Peritonite Séptica',
+        authorsYear: 'Stewart SD, Allen S, Eisenberg B, et al. (2022)',
+        journal: 'American Journal of Veterinary Research',
+        studyDesign: 'Ensaio clínico prospectivo randomizado cruzado em cães em UTI com peritonite séptica.',
+        sampleSize: 'Cães hospitalizados em cuidados intensivos com sepse abdominal cirúrgica confirmada.',
+        mainFindings:
+          'Avaliou a farmacocinética comparativa da administração intermitente (30 mg/kg IV q8h) versus infusão contínua em cães com peritonite séptica. Demonstrou que a infusão contínua atinge fT>MIC significativamente mais previsível contra isolados bacterianos com sensibilidade intermediária, embora a administração intermitente a cada 6-8 horas ainda atinja concentrações bactericidas satisfatórias para patógenos altamente suscetíveis.',
+        clinicalTakeaway:
+          'Sustenta a recomendação de intervalos posológicos curtos (a cada 6 a 8 horas) em pacientes críticos e sugere o benefício potencial da infusão contínua em sepse abdominal grave.',
+        referenceId: 'ref-stewart-2022-peritonitis-pk',
+      },
+      {
+        title: 'Farmacocinética da Ampicilina-Sulbactam em Cães Azotêmicos e Não Azotêmicos',
+        authorsYear: 'Wang Z, Shropshire S, Gustafson D, et al. (2025)',
+        journal: 'Journal of Veterinary Pharmacology and Therapeutics',
+        studyDesign: 'Estudo prospectivo farmacocinético comparativo em cães azotêmicos vs. hígidos.',
+        sampleSize: 'Cães portadores de disfunção renal azotêmica e controles pareados.',
+        mainFindings:
+          'Demonstrou que a depuração plasmática da ampicilina e do sulbactam é predominantemente renal. Em cães com azotemia clínica, a meia-vida plasmática foi estendida para aproximadamente 3,9 horas (em contraste com cerca de 1 hora em hígidos), resultando em acúmulo sistêmico e concentrações séricas sustentadas prolongadas.',
+        clinicalTakeaway:
+          'Fornece justificativa farmacocinética robusta para o espaçamento do intervalo posológico para q12h em cães azotêmicos estáveis quando o patógeno apresentar MIC baixa.',
+        referenceId: 'ref-wang-2025-azotemia-pk',
+      },
+      {
+        title: 'Farmacocinética Variável da Ampicilina/Sulbactam Intravenosa em Cães Criticamente Enfermos',
+        authorsYear: 'Goggs R, Robbins S, Menard J, et al. (2025)',
+        journal: 'Journal of Veterinary Pharmacology and Therapeutics',
+        studyDesign: 'Estudo farmacocinético clínico prospectivo em pacientes caninos internados em UTI.',
+        sampleSize: 'Cães clinicamente doentes em unidade de terapia intensiva veterinária.',
+        mainFindings:
+          'Evidenciou extrema variabilidade individual no volume de distribuição e clearance em cães críticos (SIRS/sepse). Contra patógenos Gram-negativos com MIC limítrofe (ex.: 8 mcg/mL), a probabilidade de atingir alvos farmacodinâmicos (fT>MIC >= 50%) foi inferior a 10% com o regime padrão a cada 8 horas.',
+        clinicalTakeaway:
+          'Alerta crítico: ampicilina-sulbactam NÃO deve ser utilizada em monoterapia empírica para sepse por Enterobacterales sem associação de uma fluoroquinolona ou aminoglicosídeo.',
+        referenceId: 'ref-goggs-2025-critically-ill-dogs',
+      },
+      {
+        title: 'Uso de Drenos Torácicos de Pequeno Calibre Guiados por Fio no Manejo de Piotórax Felino',
+        authorsYear: 'Del Magno S, Foglia A, Golinelli L, et al. (2021)',
+        journal: 'Open Veterinary Journal',
+        studyDesign: 'Série de casos clínicos prospectiva/retrospectiva multicêntrica em gatos.',
+        sampleSize: '10 gatos com piotórax tratados com drenos finos percutâneos e antimicrobianos parenterais.',
+        mainFindings:
+          'Nove dos 10 felinos receberam ampicilina-sulbactam parenteral como esteio terapêutico contra a flora polimicrobiana anaeróbia e facultativa típica (Actinomyces, Pasteurella multocida). A sobrevida hospitalar foi de 100%, associando antibioticoterapia parenteral e evacuação torácica precoce.',
+        clinicalTakeaway:
+          'Confirma a ampicilina-sulbactam como droga de eleição na abordagem parenteral inicial do piotórax felino em conjunto com drenagem e lavagem pleural.',
+        referenceId: 'ref-del-magno-2021-feline-pyothorax',
+      },
+    ],
+
     // 12. Referências Bibliográficas Completas
     references: [
       {
@@ -810,7 +862,7 @@ export const ampicilinaSulbactamMedicationsSeed: MedicationRecord[] = [
       {
         id: 'ref-vet-journal-2025-anesthesia-pk',
         citationText:
-          'Population pharmacokinetics of intravenous ampicillin in awake and anaesthetised dogs. Vet J. 2025;314:106435. doi: 10.1016/j.tvjl.2025.106435.',
+          'Pressiat C, et al. Population pharmacokinetics of intravenous ampicillin in awake and anaesthetised dogs. Vet J. 2025;314:106435. doi: 10.1016/j.tvjl.2025.106435.',
         sourceType: 'Estudo Farmacocinético sob Anestesia Geral',
         url: 'https://pubmed.ncbi.nlm.nih.gov/40930245/',
         evidenceLevel: 'Nível 1b (Farmacocinética Populacional)',

@@ -714,6 +714,19 @@ export const cetoacidoseDiabeticaCaesGatosRecord: DiseaseRecord = {
     ],
   },
 
+  complications: {
+    principais: [
+      'Hipocalemia Iatrogênica Grave e Parada Respiratória: O déficit corporal total de potássio é universal na CAD decorrente da diurese osmótica. A administração precipitada de insulina regular ou fluidos sem suplementação prévia agressiva de KCl força o potássio plasmático para o compartimento intracelular, provocando queda abrupta do K+ sérico (< 2,5 mEq/L) com fraqueza muscular esquelética generalizada, ventroflexão cervical clássica no gato, paralisia de músculos intercostais, arritmias ventriculares e parada cardiorrespiratória.',
+      'Hipofosfatemia Severa e Hemólise Intravascular Aguda: A insulina estimula a captação celular de fósforo inorgânico para a fosforilação da glicose. Quedas do fósforo sérico abaixo de 1,0–1,5 mg/dL causam depleção crítica de ATP e 2,3-difosfoglicerato (2,3-DPG) nas hemácias, tornando a membrana eritrocitária extremamente frágil e desencadeando hemólise intravascular aguda maciça com anemia regenerativa fulminante, hemoglobinúria e icterícia.',
+      'Edema Cerebral Osmótico por Redução Glicêmica Acelerada: Se a glicemia sérica for reduzida a uma velocidade excessiva (> 75 a 100 mg/dL por hora), a osmolaridade do líquido extracelular despenca muito antes que os osmólitos idiopáticos cerebrais (mioinositol, taurina) possam ser exportados pelos neurônios. A água move-se bruscamente por gradiente osmótico para o parênquima cerebral, gerando edema cerebral agudo com perda súbita do nível de consciência, midríase, bradicardia com hipertensão sistólica reflexa (resposta de Cushing) e herniação cerebral transtentorial fatal.',
+      'Hipoglicemia Neuroglicopênica Iatrogênica: Ocorre quando a taxa de infusão de insulina não é reduzida ou a adição de dextrose (2,5% a 5%) à fluidoterapia é negligenciada no momento em que a glicemia atinge o limiar de segurança de 250 mg/dL. Manifesta-se com hipotermia severa, espasmos musculares e crises convulsivas.',
+      'Lesão Renal Aguda Pré-Renal Intensa e Necrose Tubular Isquêmica: A hipovolemia extrema por diurese osmótica prolongada e perdas digestivas provoca hipoperfusão medular renal severa, predispondo à perda persistente da taxa de filtração glomerular e falência renal anúrica ou oligúrica refratária.',
+      'Tromboembolismo e Coagulopatia por Hiperviscosidade: A desidratação hiperosmolar acentuada somada à liberação de citocinas inflamatórias das doenças desencadeantes (pancreatite, sepse) eleva dramaticamente a viscosidade sanguínea e induz microtromboses vasculares pulmonares e renais.',
+    ],
+    prognostico:
+      'O prognóstico para cães e gatos com cetoacidose diabética tratados em UTI com protocolos contemporâneos de fluidoterapia balanceada, reposição eletrolítica precoce e infusão contínua de insulina regular em baixas doses é moderado a favorável, com taxas de alta hospitalar entre 70% e 85%. Os principais fatores preditores de óbito incluem choque hipovolêmico refratário na admissão, acidemia profunda persistente (pH venoso < 7,00), hipofosfatemia grave não corrigida com hemólise, e a presença de comorbidades necrosantes graves como pancreatite aguda severa ou sepse.',
+  },
+
   prevention: {
     vigilanciaDm:
       'Monitoração periódica do paciente diabético com curvas glicêmicas ou sensores contínuos de glicose (CGM). Dosagem domiciliar ou ambulatorial de BHB portátil se houver alteração de apetite ou prostração. (3)(4)(5)',

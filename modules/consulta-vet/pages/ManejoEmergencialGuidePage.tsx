@@ -79,7 +79,8 @@ export function ManejoEmergencialGuidePage() {
       </nav>
 
       <ConsultaVetSurface accent="orange" className="p-5 shadow-md md:p-8">
-        <p className="text-sm font-semibold text-orange-800 dark:text-orange-200">{guide.subtitle}</p>
+        <h1 className="text-2xl font-bold tracking-tight text-foreground md:text-3xl">{guide.title}</h1>
+        <p className="mt-2 text-sm font-semibold text-orange-800 dark:text-orange-200">{guide.subtitle}</p>
         <p className="mt-2 max-w-[95ch] text-[15px] leading-7 text-foreground/90">{guide.description}</p>
       </ConsultaVetSurface>
 

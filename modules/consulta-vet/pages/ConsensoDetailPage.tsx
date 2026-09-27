@@ -208,11 +208,8 @@ export function ConsensoDetailPage() {
           );
         } catch (detailsLoadError) {
           if (!isMounted) return;
-          setDetailsError(
-            detailsLoadError instanceof Error
-              ? detailsLoadError.message
-              : 'Falha ao carregar detalhes compartilhados.'
-          );
+          console.error('Falha ao carregar detalhes compartilhados do consenso.', detailsLoadError);
+          setDetailsError('Não foi possível carregar os detalhes complementares. Tente novamente mais tarde. Código CON-01.');
         } finally {
           if (isMounted) setIsDetailsLoading(false);
         }
@@ -279,9 +276,8 @@ export function ConsensoDetailPage() {
       setSharedDetailsForm(toSharedForm(saved));
       setIsEditingSharedDetails(false);
     } catch (saveError) {
-      setSaveSharedDetailsError(
-        saveError instanceof Error ? saveError.message : 'Falha ao salvar detalhes compartilhados.'
-      );
+      console.error('Falha ao salvar detalhes compartilhados do consenso.', saveError);
+      setSaveSharedDetailsError('Não foi possível salvar os detalhes. Tente novamente. Código CON-02.');
     } finally {
       setIsSavingSharedDetails(false);
     }
@@ -313,7 +309,7 @@ export function ConsensoDetailPage() {
     return (
       <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
         <div className="w-full rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center md:p-8">
-          <h2 className="mb-2 text-xl font-semibold text-destructive">Erro ao abrir consenso</h2>
+          <h1 className="mb-2 text-xl font-semibold text-destructive">Erro ao abrir consenso</h1>
           <p className="mb-6 text-sm text-destructive/80">{error}</p>
           <Link
             to="/consulta-vet/consensos"
@@ -330,7 +326,7 @@ export function ConsensoDetailPage() {
     return (
       <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
         <div className="w-full rounded-2xl border border-border bg-card p-6 text-center md:p-8">
-          <h2 className="mb-2 text-xl font-semibold text-foreground">{UI_TEXT.notFoundTitle}</h2>
+          <h1 className="mb-2 text-xl font-semibold text-foreground">{UI_TEXT.notFoundTitle}</h1>
           <p className="mb-6 text-sm text-muted-foreground">{UI_TEXT.notFoundBody}</p>
           <Link
             to="/consulta-vet/consensos"

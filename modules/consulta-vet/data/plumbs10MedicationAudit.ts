@@ -42,6 +42,36 @@ export const PLUMBS_10_MONOGRAPH_AUDIT: Record<string, PlumbsMonographAudit> = {
   sotalol: { title: 'Sotalol', printedPage: 1169, pdfPage: 1196, doseIds: ['dose-sot-dog-plumb', 'dose-sot-dog-arvc', 'dose-sot-dog-arvc-combo'] },
   atropina: { title: 'Atropine', printedPage: 112, pdfPage: 139, doseIds: ['dose-atrop-anesth', 'dose-atrop-cpr-recover', 'dose-atrop-test-iv', 'dose-atrop-op', 'dose-atrop-cat-brady', 'dose-atrop-cpr-cat'] },
   lidocaina: { title: 'Lidocaine, Local Anesthetic / Lidocaine (Intravenous; Systemic)', printedPage: 752, pdfPage: 779, doseIds: ['dose-lido-dog-vt-bolus', 'dose-lido-dog-vt-cri-plumb', 'dose-lido-cat-vt-bolus', 'dose-lido-dog-local', 'dose-lido-cat-local'] },
+  marbofloxacina: { title: 'Marbofloxacin', printedPage: 796, pdfPage: 823, doseIds: ['dose-marbo-dog-piodermite-iscaid', 'dose-marbo-dog-cistite-resistente', 'dose-marbo-dog-cat-pielonefrite', 'dose-marbo-dog-respiratorio', 'dose-marbo-cat-infeccoes-gerais'] },
+  ceftriaxona: { title: 'Ceftriaxone', printedPage: 230, pdfPage: 257, doseIds: ['dose-ceftriaxona-dog-pk', 'dose-ceftriaxona-cat-pk', 'dose-ceftriaxona-dog-meningite', 'dose-ceftriaxona-dog-endocardite', 'dose-ceftriaxona-sepse-hospitalar'] },
+  diazepam: {
+    title: 'Diazepam',
+    printedPage: 379,
+    pdfPage: 406,
+    doseIds: [
+      'dose-diaz-dog-status-iv',
+      'dose-diaz-dog-rectal',
+      'dose-diaz-dog-cri',
+      'dose-diaz-dog-metro-iv',
+      'dose-diaz-dog-metro-po',
+      'dose-diaz-dog-preanest',
+      'dose-diaz-cat-status-iv',
+      'dose-diaz-dog-urethral',
+    ],
+  },
+  betanecol: {
+    title: 'Bethanechol',
+    printedPage: 130,
+    pdfPage: 157,
+    doseIds: [
+      'dose-beth-cat-post-obstruction',
+      'dose-beth-cat-detrusor-atony',
+      'dose-beth-dog-detrusor-atony-bsava',
+      'dose-beth-dog-detrusor-atony-plumb',
+      'dose-beth-dog-megaesophagus',
+      'dose-beth-cat-dysautonomia',
+    ],
+  },
 };
 
 const DOSE_PATCHES: Record<string, Partial<MedicationDose>> = {

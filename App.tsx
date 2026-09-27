@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from 'react'
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate, Link, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './utils/theme'
 import { AppLayout } from './layouts/AppLayout'
 import { ProtectedRoute } from './src/components/ProtectedRoute'
@@ -93,6 +93,28 @@ function LoadingScreen() {
   return <div className="p-6 text-center text-slate-500">Carregando...</div>
 }
 
+function ConsultaVetNotFound() {
+  return (
+    <main className="mx-auto flex min-h-[60dvh] w-full max-w-2xl items-center justify-center p-6">
+      <div className="w-full rounded-2xl border border-border bg-card p-6 text-center shadow-sm sm:p-8">
+        <p className="mb-2 text-xs font-bold uppercase tracking-[0.18em] text-primary">Erro 404</p>
+        <h1 className="text-2xl font-bold text-foreground">Página não encontrada no Consulta Vet</h1>
+        <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+          O endereço pode ter mudado ou o conteúdo ainda não está disponível.
+        </p>
+        <div className="mt-6 flex flex-col justify-center gap-2 sm:flex-row">
+          <Link to="/consulta-vet" className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-4 text-sm font-semibold text-primary-foreground">
+            Ir para o início
+          </Link>
+          <Link to="/consulta-vet/consensos" className="inline-flex min-h-11 items-center justify-center rounded-xl border border-border px-4 text-sm font-semibold text-foreground hover:bg-muted">
+            Abrir consensos
+          </Link>
+        </div>
+      </div>
+    </main>
+  )
+}
+
 /** Rotas antigas /neuro-mobile/* → NeuroVet unificado em /neurologia. */
 function LegacyNeuroMobileRedirect() {
   const { pathname, search, hash } = useLocation()
@@ -172,6 +194,7 @@ const appRoutes = (
         <Route path="ultrassom" element={<ConsultaVetUltrasoundReferencePage />} />
       </Route>
       <Route path="referências-rápidas" element={<Navigate to="/consulta-vet/referencias-rapidas" replace />} />
+      <Route path="*" element={<ConsultaVetNotFound />} />
     </Route>
     <Route path="/rifa" element={<ProtectedRoute><ModuleIframe /></ProtectedRoute>} />
     <Route path="*" element={<Navigate to="/" replace />} />

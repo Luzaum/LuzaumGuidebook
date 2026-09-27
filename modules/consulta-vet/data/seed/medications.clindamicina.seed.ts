@@ -1003,6 +1003,58 @@ export const clindamicinaMedicationsSeed: MedicationRecord[] = [
       },
     ],
 
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Lesão Esofágica Associada à Administração de Clindamicina em Gatos: Série de Casos Clínicos',
+        authorsYear: 'Beatty JA, Swift N, Foster DJ, Barrs VRD (2006)',
+        journal: 'Journal of Feline Medicine and Surgery',
+        studyDesign: 'Série de casos clínicos prospectiva/retrospectiva e farmacovigilância felina.',
+        sampleSize: '5 gatos domésticos com lesão esofágica ulcerativa e estenose cicatricial.',
+        mainFindings:
+          'Demonstrou que a administração de comprimidos ou cápsulas de clindamicina a seco (dry-pilling) em felinos resulta em retenção prolongada no esôfago proximal e distal. A liberação local do fármaco provoca esofagite cáustica necrotizante grave com formação subsequente de estenose esofágica fibrosa, exigindo dilatações repetidas por balão endoscópico.',
+        clinicalTakeaway:
+          'Evidência definitiva que estabelece a regra de ouro: clindamicina oral em gatos NUNCA deve ser administrada a seco, exigindo flush imediato com 3 a 5 mL de água ou alimento úmido.',
+        referenceId: 'ref-beatty-2006-esophageal',
+      },
+      {
+        title: 'Toxoplasmose Clínica Felina: Diagnóstico Sorológico e Manejo Terapêutico de 15 Casos',
+        authorsYear: 'Lappin MR, Greene CE, Winston S, et al. (1989)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Estudo clínico prospectivo de série de casos em felinos naturalmente infectados.',
+        sampleSize: '15 gatos domésticos com toxoplasmose sistêmica e ocular confirmada.',
+        mainFindings:
+          'O tratamento com cloridrato de clindamicina na dose de 25 mg/kg/dia dividido a cada 12 horas promoveu melhora clínica evidente em 48 a 72 horas em gatos com acometimento muscular e uveíte. O estudo consolidou a necessidade de manter o tratamento por no mínimo 4 semanas para prevenir recaídas de taquizoítos.',
+        clinicalTakeaway:
+          'Estudo pioneiro que consagrou a clindamicina como o tratamento padrão-ouro para a toxoplasmose clínica em felinos na dose de 12,5 mg/kg q12h por pelo menos 28 dias.',
+        referenceId: 'ref-lappin-1989-toxoplasmosis',
+      },
+      {
+        title: 'Eficácia da Clindamicina no Tratamento da Osteomielite por Staphylococcus aureus em Cães',
+        authorsYear: 'Braden TD, Johnson CA, Wakenell P, et al. (1988)',
+        journal: 'Journal of the American Veterinary Medical Association (JAVMA)',
+        studyDesign: 'Ensaio clínico experimental controlado avaliando penetração e cura de infecção óssea.',
+        sampleSize: 'Cães com osteomielite experimental induzida por Staphylococcus aureus.',
+        mainFindings:
+          'A administração oral de clindamicina (11 mg/kg a cada 12 horas por 28 dias consecutivos) atingiu concentrações ósseas elevadas, superando amplamente a CIM estafilocócica, resultando em taxa de cura clínica e radiológica de 93,7%.',
+        clinicalTakeaway:
+          'Base científica e farmacológica que respalda o uso formal da clindamicina como antimicrobiano de escolha em osteomielites bacterianas caninas.',
+        referenceId: 'ref-braden-1988-osteomyelitis',
+      },
+      {
+        title: 'Farmacocinética Sérica do Cloridrato de Clindamicina em Cães Normais sob Dois Regimes Posológicos',
+        authorsYear: 'Saridomichelakis MN, Athanasiou LV, Salame M, et al. (2011)',
+        journal: 'Veterinary Dermatology',
+        studyDesign: 'Ensaio farmacocinético cruzado avaliando regimes de 11 mg/kg q24h vs. 5,5 mg/kg q12h.',
+        sampleSize: 'Cães Beagles adultos hígidos em delineamento cruzado.',
+        mainFindings:
+          'Ambos os regimes atingiram concentrações séricas satisfatórias, porém o regime fracionado a cada 12 horas garantiu maior tempo acima da CIM (fT>CIM) contra cepas com sensibilidade intermediária, diminuindo oscilações de pico e vale.',
+        clinicalTakeaway:
+          'Justifica a recomendação das diretrizes atuais de preferir a administração a cada 12 horas em infecções profundas e de tecidos moles.',
+        referenceId: 'ref-saridomichelakis-2011',
+      },
+    ],
+
     // 12. Referências Bibliográficas Completas
     references: [
       {

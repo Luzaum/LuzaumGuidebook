@@ -288,6 +288,16 @@ export const doencaDoDiscoIntervertebralCaesRecord: DiseaseRecord = {
     ulcerasDeDecubitoEEscaldaduraUrinaria:
       'Lesões de pele por imobilidade prolongada e contato com urina. Exigem colchonete higiênico e rotação de decúbito (2,16).',
   },
+  prevention: {
+    medidas: [
+      'Controle Ponderal Rigoroso (Escore de Condição Corporal 4–5/9): A obesidade eleva substancialmente a carga biomecânica axial e as forças de cisalhamento sobre os discos intervertebrais; a manutenção de massa corporal magra é o pilar preventivo primário contra extrusões discais.',
+      'Modificação Ambiental e Eliminação de Impactos de Salto: Uso de rampas ou escadas com degraus baixos para acesso a sofás, camas e veículos para raças condrodistróficas (Dachshund, Basset Hound, Buldogue Francês); proibição estrita de saltos de locais altos.',
+      'Pisos Antiderrapantes e Aderência: Colocação de passadeiras e tapetes emborrachados em pisos lisos e escorregadios (porcelanato, taco encerado) para prevenir escorregões súbitos que geram forças de torção e cisalhamento vertebral agudo.',
+      'Uso Exclusivo de Guia Peitoral (Harness): Substituição de coleiras cervicais comuns por peitorais acolchoados durante passeios, evitando tração axial súbita e estresse mecânico sobre a coluna cervical e transição cervicotorácica.',
+      'Exercícios Físicos Regulares de Baixo Impacto: Caminhadas controladas em piso regular e hidroterapia/natação assistida para fortalecimento da musculatura paravertebral profunda e do core, provendo maior estabilidade dinâmica à coluna vertebral.',
+      'Fenestração Discal Profilática Transoperatória: Em cães condrodistróficos submetidos à hemilaminectomia descompressiva toracolombar, a realização de fenestração profilática dos espaços discais adjacentes de maior risco (T11-T12 a L2-L3) reduz drasticamente as taxas de recidiva de extrusão discal em sítios secundários.',
+    ],
+  },
   figures: [
     {
       kind: 'clinicalFigure',

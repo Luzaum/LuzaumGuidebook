@@ -32,6 +32,17 @@ const CONSENSUS_SYMBOLS: Record<string, string> = {
   'isfm-drc-felina-2016': `${SYMBOL_ROOT}/isfm-drc-felina-2016.webp`,
   'terminologia-infeccoes-urinarias-2026': `${SYMBOL_ROOT}/terminologia-infecções-urinarias-2026.webp`,
   'acvim-proteinuria-caes-gatos-2005': `${SYMBOL_ROOT}/acvim-proteinuria-caes-gatos-2005.webp`,
+  'aafp-retrovirus-felino-2020': `${SYMBOL_ROOT}/aafp-retrovirus-felino-2020.webp`,
+  'abcd-fip-2023': `${SYMBOL_ROOT}/abcd-fip-2023.webp`,
+  'abcd-fip-tratamento-2026': `${SYMBOL_ROOT}/abcd-fip-tratamento-2026.webp`,
+  'aafp-fip-diagnostico-2022': `${SYMBOL_ROOT}/aafp-fip-diagnostico-2022.webp`,
+  'veccs-sepse-definicao-caes-gatos-2026': `${SYMBOL_ROOT}/veccs-sepse-definicao-caes-gatos-2026.webp`,
+  'veccs-choque-septico-prognostico-2026': `${SYMBOL_ROOT}/veccs-choque-septico-prognostico-2026.webp`,
+  'acvim-ahim-diagnostico-caes-gatos-2019': `${SYMBOL_ROOT}/acvim-ahim-diagnostico-caes-gatos-2019.webp`,
+  'acvim-ahim-tratamento-canino-2019': `${SYMBOL_ROOT}/acvim-ahim-tratamento-canino-2019.webp`,
+  'icada-dermatite-atopica-canina-2015': `${SYMBOL_ROOT}/icada-dermatite-atopica-canina-2015.webp`,
+  'icada-sindrome-cutanea-atopica-felina-2021': `${SYMBOL_ROOT}/icada-sindrome-cutanea-atopica-felina-2021.webp`,
+  'acvim-ivdd-canina-2022': `${SYMBOL_ROOT}/acvim-ivdd-canina-2022.webp`,
   'leishmaniose-brasileiro-2020': `${SYMBOL_ROOT}/leishmaniose-brasileiro-2020.webp`,
   'iris-drc-2023': `${SYMBOL_ROOT}/iris-drc-2026.webp`,
   'acvim-cie-caes-2026': `${SYMBOL_ROOT}/acvim-cie-caes-2026.webp`,
@@ -39,7 +50,7 @@ const CONSENSUS_SYMBOLS: Record<string, string> = {
   'consenso-de-epilepsia': `${SYMBOL_ROOT}/consenso-de-epilepsia.webp`,
   'ddiv-em-caes': `${SYMBOL_ROOT}/ddiv-em-caes.webp`,
   'consenso-doenca-mixomatosa-de-miltral': `${SYMBOL_ROOT}/consenso-doenca-mixomatosa-de-miltral.webp`,
-  'hipertensao-sistemica': `${SYMBOL_ROOT}/hipertensao-sistêmica.webp`,
+  'hipertensao-sistemica': `${SYMBOL_ROOT}/hipertensao-sistemica.webp`,
 };
 
 export type ConsensusEditorialStatus =

@@ -8,6 +8,28 @@ export type SimplifiedMedicationDefinition = {
  * na monografia; este texto serve como porta de entrada para leitores não especialistas.
  */
 const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
+  betanecol: {
+    whatItDoes:
+      'O betanecol estimula diretamente os receptores muscarínicos da bexiga, promovendo a contração ativa do músculo detrusor para restabelecer o esvaziamento urinário em quadros de retenção por bexiga flácida ou atônica.',
+    keyPoints: [
+      'Patência antes da potência: contraindicado em obstrução uretral pelo risco grave de refluxo renal e ruptura vesical.',
+      'Em gatos, usar exclusivamente por via oral; vias injetáveis podem deflagrar crise colinérgica e choque.',
+      'Indicado na atonia pós-obstrução em felinos (1,25 a 5 mg/gato VO q12h segundo o Consenso iCatCare 2025).',
+      'As doses veterinárias são estabelecidas por animal (mg/paciente) e não devem ser calculadas de forma linear por peso.',
+      'A atropina é o antídoto de ação rápida em caso de superdosagem com salivação excessiva, vômitos ou bradicardia.',
+    ],
+  },
+  diazepam: {
+    whatItDoes:
+      'O diazepam potencializa a ação do GABA no cérebro, funcionando como um freio químico rápido do sistema nervoso para interromper convulsões em emergências, relaxar a musculatura e produzir sedação.',
+    keyPoints: [
+      'Primeira linha de emergência para interromper crises convulsivas ativas (status epilepticus) por via intravenosa lenta ou retal.',
+      'Nunca utilizar diazepam por via oral de forma repetida em gatos devido ao alto risco de necrose hepática fulminante fatal.',
+      'Em cães, o uso continuado induz tolerância rápida em 1 a 2 semanas, perdendo a eficácia como anticonvulsivante de manutenção.',
+      'Reverte rapidamente os sinais neurológicos da intoxicação por metronidazol ao competir pelos receptores GABA-A.',
+      'Adsorve fortemente ao plástico de equipos de PVC e seringas, devendo ser administrado imediatamente após ser aspirado.',
+    ],
+  },
   levetiracetam: {
     whatItDoes:
       'O levetiracetam liga-se à proteína SV2A nas vesículas dos neurônios, impedindo a liberação exagerada e sincronizada de sinais excitatórios que causam as convulsões, sem provocar a sonolência profunda dos sedativos tradicionais.',
@@ -183,8 +205,27 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
     keyPoints: ['Gatos: nunca exceder 5 mg/kg por dia — risco de degeneração retiniana irreversível.', 'Reservar para infecções realmente indicadas; não é primeira linha em cistite simples ou piodermite superficial.', 'Separar de ferro, cálcio e antiácidos por ~2 horas.'],
   },
   marbofloxacina: {
-    whatItDoes: 'A marbofloxacina também bloqueia a replicação do ácido desoxirribonucleico bacteriano, com excelente biodisponibilidade oral e meia-vida longa que favorece administração uma vez ao dia.',
-    keyPoints: ['Doses de bula (2,75–5,5 mg/kg) e BSAVA (2 mg/kg) não devem ser fundidas automaticamente.', 'Piodermite estafilocócica quando fluoroquinolona é necessária: ~5,5 mg/kg uma vez ao dia (ISCAID 2025).', 'Evitar em filhotes em rápido crescimento.'],
+    whatItDoes:
+      'A marbofloxacina é uma fluoroquinolona veterinária de alta potência que bloqueia a replicação bacteriana pela inibição da DNA girase e topoisomerase IV, com absorção oral quase completa e ação bactericida concentração-dependente a cada 24 horas.',
+    keyPoints: [
+      'Segunda/terceira linha: não usar de forma empírica em cistite simples ou piodermite superficial sem cultura prévia.',
+      'ISCAID 2025: dose mínima mandatória de 5,5 mg/kg q24h quando indicada para Staphylococcus spp. em cães.',
+      'Cistite esporádica resistente em cães: curso contemporâneo curto de 3 a 5 dias (ISCAID 2019).',
+      'Resgate comprovado na hemoplasmose felina (M. haemofelis) após persistência com doxiciclina (ABCD 2026).',
+      'Aprovada no Brasil para remissão clínica da leishmaniose visceral canina (Marbox-Leish®, 2 mg/kg q24h por 28 dias).',
+      'Contraindicada em cães jovens em crescimento rápido pelo risco de danos articulares e separada 2h de cátions/sucralfato.',
+    ],
+  },
+  ceftriaxona: {
+    whatItDoes:
+      'A ceftriaxona é uma cefalosporina bactericida injetável de 3ª geração que destrói a parede bacteriana por inibição das PBPs. Em cães e gatos, sua eliminação é muito mais rápida que em humanos, exigindo doses a cada 12 horas em infecções graves em vez da administração única diária humana.',
+    keyPoints: [
+      'Uso hospitalar de 3ª geração: reservar para infecções graves ou sepse orientadas por cultura (stewardship WOAH).',
+      'Meia-vida curta em cães e gatos (~1 a 1,7 h): a posologia q24h humana é inadequada para infecções graves em pequenos animais.',
+      'Incompatibilidade absoluta com cálcio e Ringer Lactato: risco crítico de precipitação vascular de cristais de ceftriaxona-cálcio.',
+      'A diluição com lidocaína 1% é exclusiva para alívio da dor na via intramuscular e é estritamente contraindicada por via intravenosa.',
+      'Não possui atividade confiável contra Pseudomonas, enterococos, MRSP ou anaeróbios estritos.',
+    ],
   },
   ciprofloxacina: {
     whatItDoes: 'A ciprofloxacina é uma fluoroquinolona humana que também pode ser metabólito ativo da enrofloxacina. Em cães e gatos, a absorção oral é baixa e imprevisível — não substitui fluoroquinolonas veterinárias mg por mg.',

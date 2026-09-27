@@ -17,7 +17,7 @@ test('Insulinoma existe no seed e no catálogo público', () => {
   assert.equal(record?.category, 'endocrinologia');
   assert.ok(getDiseaseCategorySlugs(record!).includes('oncologia'));
   assert.ok(getDiseaseCategorySlugs(record!).includes('neurologia'));
-  assert.ok(getDiseaseCategorySlugs(record!).includes('emergencia-intensivismo'));
+  assert.ok(getDiseaseCategorySlugs(record!).includes('intensivismo'));
   assert.deepEqual(record?.species, ['dog', 'cat']);
   assert.equal(record?.vinReferencePending, true);
   assert.ok(CONSULTA_VET_PUBLIC_DISEASE_SLUGS.includes(SLUG));

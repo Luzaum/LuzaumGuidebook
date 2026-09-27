@@ -138,6 +138,7 @@ export function AppLayout() {
     decodedPathname.startsWith('/calculadora-energetica') ||
     decodedPathname.startsWith('/dor')
   const showGlobalMobileNav = isMobile && !usesOwnMobileBottomNav
+  const hideGlobalHeaderOnMobile = isMobile && decodedPathname.startsWith('/consulta-vet')
 
   const saveCurrentFormDraft = useCallback(() => {
     const root = appContentRef.current
@@ -443,7 +444,7 @@ export function AppLayout() {
         }`}
       >
         {/* Header */}
-          <header className="app-main-header sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur-sm shrink-0">
+          <header className={`app-main-header sticky top-0 z-40 shrink-0 border-b border-border bg-background/95 backdrop-blur-sm ${hideGlobalHeaderOnMobile ? 'hidden md:block' : ''}`}>
           <div className="flex items-center justify-between px-4 py-2 h-14">
             
             {/* Left Side: Toggle and Branding */}

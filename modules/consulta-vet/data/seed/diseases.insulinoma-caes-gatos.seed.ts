@@ -658,6 +658,19 @@ export const insulinomaCaesGatosRecord: DiseaseRecord = {
       'Se o animal parece desorientado, tremendo ou convulsionando: aplicar mel/xarope na mucosa **se seguro**, não colocar dedos na boca se convulsionando, e procurar veterinário imediatamente. Severa hipoglicemia não tratada é fatal. (5)(7)(1)',
   },
 
+  complications: {
+    principais: [
+      'Neuroglicopenia Severa, Estado de Mal Epiléptico e Coma: A queda abrupta ou sustentada da glicemia plasmática abaixo de 30 a 40 mg/dL esgota as reservas energéticas de ATP nos neurônios corticais e hipocampais, provocando falência da bomba de Na+/K+-ATPase, despolarização neuronal maciça e excitotoxicidade por glutamato. O paciente evolui com crises convulsivas generalizadas contínuas (status epilepticus), edema cerebral hipóxico e óbito neurológico.',
+      'Encefalopatia Neuroglicopênica Irreversível e Cegueira Cortical: Sequelas neurológicas permanentes decorrentes de episódios prolongados de hipoglicemia profunda não corrigida a tempo. A necrose laminar cortical seletiva e a perda neuronal no hipocampo resultam em amaurose irreversível com reflexos pupilares preservados (cegueira cortical central), embotamento cognitivo, demência e déficits de marcha persistentes mesmo após a restauração dos níveis glicêmicos normais.',
+      'Pancreatite Aguda Necrotizante Pós-Operatória: Complicação cirúrgica temível decorrente do traumatismo mecânico e dissecção do parênquima pancreático durante a nodulectomia ou pancreatectomia parcial. A quebra de ácinos e ativação precoce de tripsina causam autodigestão peripancreática, dor abdominal intensa, peritonite e síndrome da resposta inflamatória sistêmica (SIRS) em 10% a 15% dos casos operados.',
+      'Diabetes Mellitus Iatrogênico Pós-Pancreatectomia: A supressão crônica de longa data exercida pela hiperinsulinemia tumoral sobre as células beta pancreáticas normais vizinhas induz atrofia funcional das mesmas. Após a extirpação cirúrgica do tumor, ocorre hiperglicemia transitória em cerca de 30% a 35% dos cães, evoluindo para diabetes mellitus permanente em 15% a 20% dos pacientes (Del Busto et al., 2020), exigindo insulinoterapia vitalícia.',
+      'Disseminação Metastática Hepática e Linfonodal com Hipoglicemia Refratária: O insulinoma canino e felino apresenta taxa de malignidade biológica de 90% a 95%; mesmo em animais com exames de imagem aparentemente normais, micrometástases funcionais hepáticas ou em linfonodos peripancreáticos e mesentéricos produzem insulina de forma descontrolada, causando recidiva precoce da hipoglicemia em meses.',
+      'Hipoglicemia de Rebote Paradoxal Induzida por Dextrose em Bolus Rápido: A infusão intravenosa rápida de bolus concentrado de glicose a 50% provoca um pico hiperglicêmico súbito que atua sobre as células neoplásicas do insulinoma, deflagrando uma liberação maciça e paradoxal de insulina armazenada, culminando em hipoglicemia de rebote ainda mais profunda e potencialmente fatal minutos após o procedimento.',
+    ],
+    prognostico:
+      'O prognóstico para cães com insulinoma depende primariamente da realização de descompressão cirúrgica precoce (nodulectomia/pancreatectomia parcial) e do estágio patológico. Cães submetidos à cirurgia sem metástases macroscópicas ao diagnóstico (Estágio I) apresentam sobrevida mediana de 12 a 24 meses (ultrapassando 700 dias em pacientes que normalizam a glicemia pós-operatória), em contraste com uma mediana de apenas 6 a 8 meses nos tratados exclusivamente com manejo médico paliativo. A presença de metástases hepáticas ao diagnóstico confere prognóstico reservado.',
+  },
+
   prevention: {
     vigilanciaRacial:
       'Cães de raças predisponentes (Boxer, WHWT, terriers, Pointer, FCR) com convulsão ou colapso episódico → glicemia antes de iniciar anticonvulsivante crônico. (9)(10)(11)',

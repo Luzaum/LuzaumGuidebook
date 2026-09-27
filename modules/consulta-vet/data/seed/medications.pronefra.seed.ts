@@ -356,10 +356,40 @@ export const pronefraMedicationsSeed: MedicationRecord[] = [
             'Verificar a relação custo-benefício em cães grandes frente a outras alternativas de quelantes de fósforo em pó. Se o produto Ca x P estiver acima de 60, evitar quelantes à base de cálcio até que a fosfatemia seja reduzida.',
         },
       ],
+      dilutionGuide: {
+        compatibleFluids: [
+          'Alimento úmido (sachê, patê ou ração úmida renal) - VEÍCULO PREFERENCIAL DE ADMINISTRAÇÃO para mistura e homogeneização imediata',
+          'Água potável fresca para higienização da seringa dosadora e garantia de hidratação contínua ao paciente nefropata',
+        ],
+        incompatibleFluids: [
+          'NÃO diluir previamente em grandes volumes de água ou mamadeiras (risco de desestabilização da suspensão lipofílica)',
+          'NUNCA administrar por vias parenterais (IV, SC ou IM) - risco fatal de embolia gordurosa por suspensão oleosa particulada',
+          'Não misturar antecipadamente no frasco com outros medicamentos orais líquidos ou suplementos de cálcio e magnésio',
+        ],
+        infusionRateGuidance:
+          'Administração estritamente oral (VO). Agitar vigorosamente o frasco fechado durante 10 a 15 segundos antes de cada tomada para ressuspender os minerais e a quitosana uniformemente. Utilizar a seringa dosadora graduada que acompanha o produto. Administrar a dose dividida a cada 12 horas, misturada a uma pequena porção apetitosa de comida úmida imediatamente antes da refeição principal, ou administrada suavemente na comissura labial.',
+        preparationNotes:
+          'Agitar vigorosamente antes de cada uso: se a suspensão não for homogeneizada, as primeiras doses ficarão subdosadas em minerais densos e as doses residuais do fundo ficarão excessivamente concentradas. Conservar o frasco fechado em temperatura ambiente (15°C a 25°C), protegido da luz e da umidade. Não congelar. Após aberto, utilizar preferencialmente em até 6 meses. Lavar a seringa dosadora com água corrente morna após cada administração e deixar secar ao ar livre antes de guardar.',
+      },
     },
 
     // 6. Atenção, Precauções e Interações
     attentionData: {
+      dilutionGuide: {
+        compatibleFluids: [
+          'Alimento úmido (sachê, patê ou ração úmida renal) - VEÍCULO PREFERENCIAL DE ADMINISTRAÇÃO para mistura e homogeneização imediata',
+          'Água potável fresca para higienização da seringa dosadora e garantia de hidratação contínua ao paciente nefropata',
+        ],
+        incompatibleFluids: [
+          'NÃO diluir previamente em grandes volumes de água ou mamadeiras (risco de desestabilização da suspensão lipofílica)',
+          'NUNCA administrar por vias parenterais (IV, SC ou IM) - risco fatal de embolia gordurosa por suspensão oleosa particulada',
+          'Não misturar antecipadamente no frasco com outros medicamentos orais líquidos ou suplementos de cálcio e magnésio',
+        ],
+        infusionRateGuidance:
+          'Administração estritamente oral (VO). Agitar vigorosamente o frasco fechado durante 10 a 15 segundos antes de cada tomada para ressuspender os minerais e a quitosana uniformemente. Utilizar a seringa dosadora graduada que acompanha o produto. Administrar a dose dividida a cada 12 horas, misturada a uma pequena porção apetitosa de comida úmida imediatamente antes da refeição principal, ou administrada suavemente na comissura labial.',
+        preparationNotes:
+          'Agitar vigorosamente antes de cada uso: se a suspensão não for homogeneizada, as primeiras doses ficarão subdosadas em minerais densos e as doses residuais do fundo ficarão excessivamente concentradas. Conservar o frasco fechado em temperatura ambiente (15°C a 25°C), protegido da luz e da umidade. Não congelar. Após aberto, utilizar preferencialmente em até 6 meses. Lavar a seringa dosadora com água corrente morna após cada administração e deixar secar ao ar livre antes de guardar.',
+      },
       attentionSubtitle:
         'Segurança Clínica, Controle de Calcemia, Quelação de Outros Fármacos e Manejo da Anorexia',
       precautions: [

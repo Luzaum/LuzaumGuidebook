@@ -725,8 +725,8 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
         id: 'dose-fenobarbital-convless-label',
         species: 'dog',
         indication: 'Convless® 20 mg/mL — Protocolo Veterinário em Solução Oral',
-        doseMin: 2.0,
-        doseMax: 4.0,
+        doseMin: 1.3,
+        doseMax: 6.0,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
         route: 'VO',
@@ -1013,4 +1013,3 @@ export const phenobarbitalMedicationsSeed: MedicationRecord[] = [
 ];
 
 export const phenobarbitalMedicationRecord = phenobarbitalMedicationsSeed[0];
-

@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Clock, FileText, Pill, Stethoscope } from 'lucide-react';
 import { ConsultaVetPageHero } from '../components/layout/ConsultaVetPageHero';
 import { EntityCard } from '../components/shared/EntityCard';
@@ -135,6 +136,9 @@ export function RecentsPage() {
           <Clock className="mx-auto mb-4 h-12 w-12 text-muted-foreground/50" />
           <h2 className="mb-2 text-lg font-medium text-foreground">{UI_TEXT.emptyTitle}</h2>
           <p className="text-muted-foreground">{UI_TEXT.emptyBody}</p>
+          <Link to="/consulta-vet" className="mt-5 inline-flex min-h-11 items-center rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">
+            Ir para o início da Consulta Vet
+          </Link>
         </div>
       ) : (
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">

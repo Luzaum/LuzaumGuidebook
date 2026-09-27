@@ -322,6 +322,18 @@ export const hipoadrenocorticismoAddisonRecord: DiseaseRecord = {
     cmeMedulaDeprimida:
       'Suporte a longo prazo e estresse: tutores devem ser instruídos sobre a incapacidade fisiológica de resposta ao estresse. Viagens, consultas veterinárias, banhos ou doenças concomitantes exigem aumento temporário da dose de Prednisona/Prednisolona de manutenção (ex: 2x a dose normal por 2–3 dias).',
   },
+  complications: {
+    principais: [
+      'Crise Addisoniana Hipercalêmica e Parada Cardíaca em Assistolia: A hipercalemia severa (> 7,5 a 8,5 mEq/L) decorrente da falta de aldosterona despolariza o potencial de repouso das fibras miocárdicas, inativando os canais de sódio rápidos. Manifesta-se no ECG com perda de ondas P (parada sinoatrial), prolongamento do intervalo PR, alargamento do complexo QRS, ondas T apiculadas estreitas e parada cardíaca por fibrilação ventricular ou assistolia.',
+      'Choque Hipovolêmico Refratário e Acidose Metabólica: A perda urinária contínua de cloreto de sódio e água, combinada à ausência do tônus arteriolar mantido pelo cortisol e à perda hídrica por vômitos/diarreia, reduz drasticamente o volume intravascular efetivo, gerando colapso hemodinâmico distributivo-hipovolêmico e acidose lática grave.',
+      'Hipoglicemia Neuroglicopênica Aguda e Convulsões: A carência crônica de cortisol abole a gliconeogênese hepática e maximiza a captação periférica de glicose pela insulina desimpedida; em situações de estresse físico ou jejum curto, o animal evolui para torpor hipoglicêmico, síncope, crises epilépticas e encefalopatia.',
+      'Ulceração Gastrointestinal Severa e Hemorragia Digestiva (Melena/Hematêmese): O cortisol é essencial para a manutenção da barreira mucosa gástrica e da microcirculação enteral; sem glicocorticoide, ocorre isquemia de mucosa, perda proteica intestinal, ulcerações extensas e sangramento gastrointestinal agudo.',
+      'Síndrome de Desmielinização Osmótica (Mielinólise Pontina Central): Complicação iatrogênica catastrófica induzida por ressuscitação volêmica inadequada que eleva a natremia muito rapidamente (> 10 a 12 mEq/L nas primeiras 24 horas) em pacientes cronicamente hiponatrêmicos. A desidratação celular abrupta no sistema nervoso central deflagra desmielinização axonal com tetraparesia, disfagia, depressão mental profunda e óbito neurológico.',
+      'Lesão Renal Aguda Pré-Renal e Necrose Tubular Isquêmica: A hipoperfusão prolongada dos néfrons associada à perda de autorregulação arteriolar glomerular resulta em azotemia pré-renal severa que, na ausência de reidratação célere, transiciona para necrose tubular aguda isquêmica persistente.',
+    ],
+    prognostico:
+      'O prognóstico a longo prazo para cães com hipoadrenocorticismo primário que sobrevivem à crise aguda inicial é excelente. Uma vez tituladas adequadamente as doses de reposição de mineralocorticoide (DOCP) e glicocorticoide (prednisona), os animais apresentam expectativa de vida plenamente idêntica à de cães hígidos normais, exigindo apenas manejo preventivo estrito de estresse e acompanhamento eletrolítico periódico.',
+  },
   prevention:
     'A doença primária espontânea é autoimune e não tem prevenção vacinal ou ambiental. Para evitar o Addison iatrogênico secundário, nunca suspenda de forma abrupta corticoides em cães sob terapia crônica prolongada — elabore sempre um desmame gradual monitorado. Em cães sob tratamento para Cushing (trilostano ou mitotano), realize monitoramento periódico com testes bioquímicos e clínicos para prevenir superdosagem.',
   relatedConsensusSlugs: [],

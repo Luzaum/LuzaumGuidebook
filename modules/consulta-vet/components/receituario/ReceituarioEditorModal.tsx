@@ -383,6 +383,15 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   ), [clinicalModel, clinicalSelectedKeys]);
 
   const showClinicalMedicationEditor = Boolean(clinicalModel && selectedClinicalMedications.length);
+  const hasPendingClinicalReview = selectedClinicalMedications.some(
+    (medication) => medication.sourceReviewStatus === 'Revisão de fonte pendente'
+  );
+  const hasBlockingDoseContent = /ERRO DE DOSE P\/ CONCENTRAÇÃO|A PREENCHER/i.test(body);
+  const finalizationBlockedReason = hasPendingClinicalReview
+    ? 'Este modelo clínico ainda aguarda revisão das fontes. Você pode salvar um rascunho, mas não copiar, imprimir, exportar ou emitir a prescrição.'
+    : hasBlockingDoseContent
+      ? 'Preencha os campos pendentes e corrija os erros de dose antes de finalizar a prescrição.'
+      : null;
 
   if (!isOpen) return null;
   const notify = (message: string) => { setToast(message); window.setTimeout(() => setToast(''), 3000); };
@@ -426,10 +435,21 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
     notify('Medicamento atualizado. Revise o documento antes de emitir.');
   };
   const handleCopyContent = async () => {
+    if (finalizationBlockedReason) { notify(finalizationBlockedReason); return; }
     await navigator.clipboard.writeText(buildDocumentBodyPlainText(documentData));
     notify('Conteúdo da receita copiado sem identificação.');
   };
-  const handlePrint = () => { document.body.classList.add('receituario-printing'); window.addEventListener('afterprint', () => document.body.classList.remove('receituario-printing'), { once: true }); window.print(); };
+  const handlePrint = () => {
+    if (finalizationBlockedReason) { notify(finalizationBlockedReason); return; }
+    document.body.classList.add('receituario-printing');
+    window.addEventListener('afterprint', () => document.body.classList.remove('receituario-printing'), { once: true });
+    window.print();
+  };
+
+  const handlePdfDownload = () => {
+    if (finalizationBlockedReason) { notify(finalizationBlockedReason); return; }
+    downloadReceituarioPdf(documentData);
+  };
 
   const handleDraft = async () => {
     setSaving(true);
@@ -439,6 +459,7 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
   };
 
   const handleIssue = async () => {
+    if (finalizationBlockedReason) { notify(finalizationBlockedReason); return; }
     if (!user?.id) { notify('Entre na sua conta para salvar o documento.'); return; }
     setSaving(true);
     try {
@@ -602,16 +623,21 @@ export function ReceituarioEditorModal({ isOpen, onClose, template, initialBodyT
           <section className={`${activeMobileTab === 'preview' ? 'flex' : 'hidden md:flex'} min-w-0 flex-1 overflow-y-auto bg-slate-200/70`}><PrintPreviewA4 document={documentData} /></section>
         </div>
 
+        {finalizationBlockedReason ? (
+          <div role="alert" className="relative z-10 border-t border-amber-500/30 bg-amber-500/10 px-4 py-2 text-xs font-medium text-amber-900 dark:text-amber-200 sm:px-6">
+            {finalizationBlockedReason}
+          </div>
+        ) : null}
         <footer className="relative z-10 flex shrink-0 flex-col gap-2 border-t border-border bg-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <div className="flex gap-2">
             <button onClick={() => void handleDraft()} disabled={saving} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none"><Save className="h-4 w-4 text-amber-500" />Rascunho</button>
             <button onClick={() => setSaveModelOpen(true)} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none"><Sparkles className="h-4 w-4 text-violet-500" />{savedPersonalTemplateId ? 'Atualizar modelo' : 'Salvar modelo próprio'}</button>
           </div>
           <div className="flex gap-2">
-            <button onClick={() => void handleCopyContent()} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted sm:flex-none" aria-label="Copiar somente o conteúdo da receita"><Copy className="h-4 w-4 text-sky-500" />Copiar conteúdo</button>
-            <button onClick={handlePrint} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted sm:w-auto sm:px-3" aria-label="Imprimir"><Printer className="h-4 w-4" /><span className="ml-2 hidden text-xs sm:inline">Imprimir</span></button>
-            <button onClick={() => downloadReceituarioPdf(documentData)} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted sm:w-auto sm:px-3" aria-label="Exportar PDF"><Download className="h-4 w-4 text-rose-500" /><span className="ml-2 hidden text-xs sm:inline">PDF</span></button>
-            <button onClick={() => void handleIssue()} disabled={saving} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"><FileCheck className="h-4 w-4" />{saving ? 'Salvando…' : 'Emitir e salvar'}</button>
+            <button onClick={() => void handleCopyContent()} disabled={Boolean(finalizationBlockedReason)} title={finalizationBlockedReason || undefined} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg border border-border px-3 text-xs font-semibold transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none" aria-label="Copiar somente o conteúdo da receita"><Copy className="h-4 w-4 text-sky-500" />Copiar conteúdo</button>
+            <button onClick={handlePrint} disabled={Boolean(finalizationBlockedReason)} title={finalizationBlockedReason || undefined} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-3" aria-label="Imprimir"><Printer className="h-4 w-4" /><span className="ml-2 hidden text-xs sm:inline">Imprimir</span></button>
+            <button onClick={handlePdfDownload} disabled={Boolean(finalizationBlockedReason)} title={finalizationBlockedReason || undefined} className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-border transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto sm:px-3" aria-label="Exportar PDF"><Download className="h-4 w-4 text-rose-500" /><span className="ml-2 hidden text-xs sm:inline">PDF</span></button>
+            <button onClick={() => void handleIssue()} disabled={saving || Boolean(finalizationBlockedReason)} title={finalizationBlockedReason || undefined} className="inline-flex min-h-10 flex-1 cursor-pointer items-center justify-center gap-2 rounded-lg bg-emerald-600 px-4 text-xs font-bold text-white transition-colors hover:bg-emerald-700 disabled:cursor-not-allowed disabled:opacity-50 sm:flex-none"><FileCheck className="h-4 w-4" />{saving ? 'Salvando…' : 'Emitir e salvar'}</button>
           </div>
         </footer>
       </div>

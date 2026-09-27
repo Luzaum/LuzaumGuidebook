@@ -1,0 +1,171 @@
+- generic [ref=f1e4]:
+  - main [ref=f1e5]:
+    - generic [ref=f1e9]:
+      - complementary [ref=f1e10]:
+        - generic [ref=f1e11]:
+          - generic [ref=f1e12]:
+            - link [ref=f1e14] [cursor=pointer]:
+              - /url: /consulta-vet
+              - img "ConsultaVET — base clínica para consulta rápida" [ref=f1e15]
+            - button "Fechar menu lateral" [ref=f1e16] [cursor=pointer]
+          - navigation [ref=f1e20]:
+            - link "Início" [ref=f1e21] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f1e25] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f1e31] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f1e36] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f1e41] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f1e46] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=f1e50] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f1e54] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f1e60] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f1e66] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f1e70] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - generic [ref=f1e75]:
+        - generic [ref=f1e76]:
+          - button "Abrir menu lateral" [ref=f1e77] [cursor=pointer]
+          - generic [ref=f1e79]: Menu do ConsultaVet
+        - main [ref=f1e80]:
+          - generic [ref=f1e81]:
+            - navigation "Navegação estrutural" [ref=f1e82]:
+              - link "Início" [ref=f1e83] [cursor=pointer]:
+                - /url: /consulta-vet
+              - link "Consensos" [ref=f1e86] [cursor=pointer]:
+                - /url: /consulta-vet/consensos
+              - generic [ref=f1e89]: Hipertensão sistêmica em cães e gatos
+            - generic [ref=f1e92]:
+              - generic [ref=f1e94]:
+                - heading "Hipertensão sistêmica em cães e gatos" [level=1] [ref=f1e95]
+                - paragraph [ref=f1e96]: ACVIM • 2018
+                - generic [ref=f1e97]:
+                  - generic [ref=f1e98]: cardiologia
+                  - generic [ref=f1e99]: Canino e felino
+                  - generic [ref=f1e100]: Interdisciplinar
+              - generic [ref=f1e101]:
+                - button "Copiar link" [ref=f1e102] [cursor=pointer]
+                - button "Adicionar aos favoritos" [ref=f1e109] [cursor=pointer]
+            - generic [ref=f1e112]:
+              - heading "Resumo do consenso" [level=2] [ref=f1e113]
+              - paragraph [ref=f1e116]: Consenso ACVIM 2018 para mensuração, classificação de risco, pesquisa de lesão em órgão-alvo e manejo da hipertensão em cães e gatos.
+            - generic [ref=f1e118]:
+              - generic [ref=f1e119]:
+                - generic [ref=f1e120]:
+                  - heading "Hipertensão sistêmica em cães e gatos" [level=3] [ref=f1e125]
+                  - paragraph [ref=f1e126]: Leitor PDF integrado
+                - generic [ref=f1e127]:
+                  - button "Página anterior" [ref=f1e128] [cursor=pointer]
+                  - generic [ref=f1e131]: Página 2 de 21
+                  - button "Próxima página" [active] [ref=f1e132] [cursor=pointer]
+                  - button "Diminuir zoom" [ref=f1e136] [cursor=pointer]
+                  - generic [ref=f1e140]: 100%
+                  - button "Aumentar zoom" [ref=f1e141] [cursor=pointer]
+                  - link "Abrir em nova aba" [ref=f1e145] [cursor=pointer]:
+                    - /url: /documents/consulta-vet/consensos/acvim-hipertensao-sistemica-2018.pdf
+                  - link "Baixar PDF" [ref=f1e150] [cursor=pointer]:
+                    - /url: /documents/consulta-vet/consensos/acvim-hipertensao-sistemica-2018.pdf
+                  - button "Abrir em tela cheia" [ref=f1e154] [cursor=pointer]
+              - generic [ref=f1e161]:
+                - textbox "Pesquisar palavra no consenso..." [ref=f1e166]
+                - button "Pesquisar" [ref=f1e167] [cursor=pointer]
+            - generic [ref=f1e187]:
+              - article [ref=f1e188]:
+                - heading "Pontos-chave" [level=3] [ref=f1e189]
+                - generic [ref=f1e190]:
+                  - generic [ref=f1e191]:
+                    - paragraph [ref=f1e196]: Quadros clínicos adaptados da estrutura e das recomendações da publicação original.
+                    - region "Classificação pela pressão arterial sistólica" [ref=f1e197]:
+                      - heading "Classificação pela pressão arterial sistólica" [level=4] [ref=f1e199]
+                      - table [ref=f1e202]:
+                        - caption [ref=f1e203]: Classificação pela pressão arterial sistólica
+                        - rowgroup [ref=f1e204]:
+                          - row [ref=f1e205]:
+                            - columnheader "PAS (mmHg)" [ref=f1e206]
+                            - columnheader "Categoria" [ref=f1e207]
+                            - columnheader "Risco de lesão em órgão-alvo" [ref=f1e208]
+                        - rowgroup [ref=f1e209]:
+                          - row [ref=f1e210]:
+                            - rowheader "< 140" [ref=f1e211]
+                            - cell "Normotenso" [ref=f1e212]
+                            - cell "Mínimo" [ref=f1e213]
+                          - row [ref=f1e214]:
+                            - rowheader "140–159" [ref=f1e215]
+                            - cell "Pré-hipertenso" [ref=f1e216]
+                            - cell "Baixo" [ref=f1e217]
+                          - row [ref=f1e218]:
+                            - rowheader "160–179" [ref=f1e219]
+                            - cell "Hipertenso" [ref=f1e220]
+                            - cell "Moderado" [ref=f1e221]
+                          - row [ref=f1e222]:
+                            - rowheader "≥ 180" [ref=f1e223]
+                            - cell "Gravemente hipertenso" [ref=f1e224]
+                            - cell "Alto" [ref=f1e225]
+                    - list [ref=f1e226]:
+                      - listitem [ref=f1e227]: Confirmar com técnica padronizada e múltiplas medidas, salvo lesão de órgão-alvo que exija ação imediata.
+                  - generic [ref=f1e229]:
+                    - generic [ref=f1e230]:
+                      - heading "CLASSIFICAÇÃO PELA PRESSÃO SISTÓLICA" [level=4] [ref=f1e231]
+                      - list [ref=f1e232]:
+                        - listitem [ref=f1e233]: "<140 mmHg: normotenso, risco mínimo."
+                        - listitem [ref=f1e234]: "140–159 mmHg: pré-hipertenso, risco baixo."
+                        - listitem [ref=f1e235]: "160–179 mmHg: hipertenso, risco moderado."
+                        - listitem [ref=f1e236]: "≥180 mmHg: hipertensão grave, risco alto."
+                    - generic [ref=f1e237]:
+                      - heading "DIAGNÓSTICO" [level=4] [ref=f1e238]
+                      - list [ref=f1e239]:
+                        - listitem [ref=f1e240]: Padronizar ambiente, aclimatação, manguito, posição e repetição das medidas.
+                        - listitem [ref=f1e241]: Procurar lesão em retina/coroide, cérebro, rins, coração e vasos.
+                        - listitem [ref=f1e242]: Lesão compatível pode justificar tratamento após uma sessão confiável.
+                        - listitem [ref=f1e243]: Investigar hipertireoidismo, hipercortisolismo, hiperaldosteronismo e outras causas secundárias.
+              - article [ref=f1e244]:
+                - heading "Aplicação prática" [level=3] [ref=f1e245]
+                - paragraph [ref=f1e248]: Registrar protocolo de medida e média final, classificar risco e pesquisar órgão-alvo. Em pacientes com doença tireoidiana ou adrenal, incluir pressão arterial e fundo de olho no fluxo. Tratar a causa de base quando possível e monitorar resposta pressórica sem reduzir a pressão de forma abrupta.
+            - generic [ref=f1e249]:
+              - generic [ref=f1e250]:
+                - heading "Referências editoriais" [level=2] [ref=f1e251]
+                - paragraph [ref=f1e252]: Referências de apoio organizadas de forma mais compacta e discreta.
+              - article [ref=f1e254]:
+                - generic [ref=f1e255]:
+                  - generic [ref=f1e256]:
+                    - generic [ref=f1e257]:
+                      - generic [ref=f1e258]: "1"
+                      - generic [ref=f1e259]: Consenso
+                      - generic [ref=f1e260]: "Evidência: Consenso de especialistas"
+                    - paragraph [ref=f1e261]: "Acierno M. J. et al. ACVIM consensus statement: Guidelines for the identification, evaluation, and management of systemic hypertension in dogs and cats. J Vet Intern Med. 2018;32:1803–1822."
+                    - paragraph [ref=f1e262]: Classificação pressórica, lesão em órgão-alvo e manejo.
+                  - link "Abrir fonte" [ref=f1e263] [cursor=pointer]:
+                    - /url: https://doi.org/10.1111/jvim.15331
+            - generic [ref=f1e271]:
+              - heading "Relacionados" [level=2] [ref=f1e272]
+              - generic [ref=f1e274]:
+                - heading "Doenças" [level=3] [ref=f1e275]
+                - generic [ref=f1e280]:
+                  - link [ref=f1e281] [cursor=pointer]:
+                    - /url: /consulta-vet/doencas/sindrome-cushing-caes
+                    - paragraph [ref=f1e282]: Síndrome de Cushing — Cão
+                    - paragraph [ref=f1e283]: endocrinologia
+                  - link [ref=f1e284] [cursor=pointer]:
+                    - /url: /consulta-vet/doencas/sindrome-cushing-gatos
+                    - paragraph [ref=f1e285]: Síndrome de Cushing — Gato
+                    - paragraph [ref=f1e286]: endocrinologia
+                  - link [ref=f1e287] [cursor=pointer]:
+                    - /url: /consulta-vet/doencas/hipertensao-arterial-sistemica-caes-gatos
+                    - paragraph [ref=f1e288]: Hipertensão arterial sistêmica (HAS)
+                    - paragraph [ref=f1e289]: cardiologia
+                  - link [ref=f1e290] [cursor=pointer]:
+                    - /url: /consulta-vet/doencas/hipertireoidismo-felino
+                    - paragraph [ref=f1e291]: Hipertireoidismo Felino
+                    - paragraph [ref=f1e292]: endocrinologia
+  - generic [ref=f1e293]:
+    - button "Hub" [ref=f1e294] [cursor=pointer]
+    - button "Consulta" [ref=f1e299] [cursor=pointer]
+    - button "Mais" [ref=f1e305] [cursor=pointer]

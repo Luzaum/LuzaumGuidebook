@@ -1,15 +1,20 @@
 import { MedicationRecord } from '../../types/medication';
 import { applyMedicationBookFoundations } from '../medicationBookFoundations';
+import { applyPlumbs10MedicationAudit } from '../plumbs10MedicationAudit';
 import { acetilcisteinaMedicationRecord } from './medications.acetilcisteina.seed';
 import { amoxicilinaClavulanatoMedicationRecord } from './medications.amoxicilina-clavulanato.seed';
 import { ampicilinaSulbactamMedicationRecord } from './medications.ampicilina-sulbactam.seed';
+import { betanecolMedicationRecord } from './medications.betanecol.seed';
 import { buprenorfinaMedicationRecord } from './medications.buprenorfina.seed';
 import { capromorelinaMedicationRecord } from './medications.capromorelina.seed';
+import { ceftriaxonaMedicationRecord } from './medications.ceftriaxona.seed';
 import { clindamicinaMedicationRecord } from './medications.clindamicina.seed';
+import { diazepamMedicationRecord } from './medications.diazepam.seed';
 import { dipironaMedicationRecord } from './medications.dipirona.seed';
 import { enrofloxacinaMedicationRecord } from './medications.enrofloxacina.seed';
 import { hidroxidoDeAluminioMedicationRecord } from './medications.hidroxido-de-aluminio.seed';
 import { levetiracetamMedicationRecord } from './medications.levetiracetam.seed';
+import { marbofloxacinaMedicationRecord } from './medications.marbofloxacina.seed';
 import { meloxicamMedicationRecord } from './medications.meloxicam.seed';
 import { metadonaMedicationRecord } from './medications.metadona.seed';
 import { phenobarbitalMedicationRecord } from './medications.phenobarbital.seed';
@@ -43,13 +48,17 @@ export const medicationsSeed: MedicationRecord[] = [
   acetilcisteinaMedicationRecord,
   amoxicilinaClavulanatoMedicationRecord,
   ampicilinaSulbactamMedicationRecord,
+  betanecolMedicationRecord,
   buprenorfinaMedicationRecord,
   capromorelinaMedicationRecord,
+  ceftriaxonaMedicationRecord,
   clindamicinaMedicationRecord,
+  diazepamMedicationRecord,
   dipironaMedicationRecord,
   enrofloxacinaMedicationRecord,
   hidroxidoDeAluminioMedicationRecord,
   levetiracetamMedicationRecord,
+  marbofloxacinaMedicationRecord,
   meloxicamMedicationRecord,
   metadonaMedicationRecord,
   phenobarbitalMedicationRecord,
@@ -58,4 +67,4 @@ export const medicationsSeed: MedicationRecord[] = [
   pronefraMedicationRecord,
   sulfametoxazolTrimetoprimaMedicationRecord,
   tramadolMedicationRecord,
-].map(applyMedicationBookFoundations);
+].map(applyPlumbs10MedicationAudit).map(applyMedicationBookFoundations);

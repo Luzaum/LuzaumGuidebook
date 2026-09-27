@@ -99,6 +99,25 @@ function readProfileFromStorage(): AuthProfile | null {
   }
 }
 
+const AUTH_SESSION_TIMEOUT_MS = 12_000
+
+async function getSessionWithTimeout() {
+  let timeoutId: ReturnType<typeof setTimeout> | undefined
+  try {
+    return await Promise.race([
+      supabase.auth.getSession(),
+      new Promise<never>((_, reject) => {
+        timeoutId = setTimeout(
+          () => reject(new Error('Tempo limite excedido ao validar a sessão.')),
+          AUTH_SESSION_TIMEOUT_MS
+        )
+      }),
+    ])
+  } finally {
+    if (timeoutId) clearTimeout(timeoutId)
+  }
+}
+
 export function AuthSessionProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
   const [session, setSession] = useState<Session | null>(null)
@@ -107,7 +126,7 @@ export function AuthSessionProvider({ children }: { children: ReactNode }) {
   const refreshSession = useCallback(async () => {
     setLoading(true)
     try {
-      const { data, error } = await supabase.auth.getSession()
+      const { data, error } = await getSessionWithTimeout()
       if (error) throw error
       const nextSession = data.session || null
       setSession(nextSession)
@@ -131,7 +150,7 @@ export function AuthSessionProvider({ children }: { children: ReactNode }) {
 
     ;(async () => {
       try {
-        const { data, error } = await supabase.auth.getSession()
+        const { data, error } = await getSessionWithTimeout()
         if (!alive) return
         if (error) throw error
 

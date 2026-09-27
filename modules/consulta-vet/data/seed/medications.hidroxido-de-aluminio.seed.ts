@@ -768,6 +768,46 @@ export const hidroxidoDeAluminioMedicationsSeed: MedicationRecord[] = [
       },
     ],
 
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Alumínio Sérico em 176 Felinos e Abordagem Diagnóstica do Paciente com Tremores e Doença Renal sob Terapia com Hidróxido de Alumínio',
+        authorsYear: 'Sheffler R, Karpf S, Rebolloso S, et al. (2025)',
+        journal: 'BMC Veterinary Research',
+        studyDesign: 'Estudo observacional prospectivo/retrospectivo de farmacovigilância e toxicologia clínica.',
+        sampleSize: '176 gatos domésticos com doença renal crônica tratados com ligantes de fósforo à base de alumínio.',
+        mainFindings:
+          'Demonstrou que gatos com DRC tratados com hidróxido de alumínio por períodos prolongados apresentam elevação mensurável das concentrações séricas de alumínio. Um subgrupo de animais desenvolveu neurotoxicidade manifestada por tremores de intenção, mioclonias e ataxia, com melhora acentuada após a suspensão da droga.',
+        clinicalTakeaway:
+          'Evidência contemporânea definitiva que alerta para a necessidade de monitorar sinais neurológicos sutis (tremores de cabeça, mioclonias) e microcitose eritrocitária em gatos recebendo hidróxido de alumínio cronicamente.',
+        referenceId: 'ref-sheffler-2025-toxicity',
+      },
+      {
+        title: 'Efeito do Hidróxido de Alumínio no Fósforo Sérico e Concentrações de Fator de Crescimento de Fibroblastos 23 (FGF-23) em Gatos com DRC',
+        authorsYear: 'Beita KG, Lourenço BN, Rehagen M, Schmiedt CW (2024)',
+        journal: 'American Journal of Veterinary Research',
+        studyDesign: 'Ensaio clínico prospectivo randomizado experimental em felinos.',
+        sampleSize: 'Gatos jovens adultos portadores de disfunção renal crônica induzida experimentalmente.',
+        mainFindings:
+          'A suplementação oral de hidróxido de alumínio misturado à dieta reduziu significativamente tanto as concentrações de fósforo sérico quanto os níveis circulantes de FGF-23 em felinos, demonstrando controle efetivo do hiperparatireoidismo secundário renal.',
+        clinicalTakeaway:
+          'Comprova experimentalmente que o hidróxido de alumínio suprime o eixo patológico fósforo-FGF-23, retardando a progressão das lesões tubulointersticiais renais.',
+        referenceId: 'ref-beita-2024-ajvr',
+      },
+      {
+        title: 'Toxicidade por Alumínio após Administração de Quelantes de Fósforo à Base de Alumínio em 2 Cães com Insuficiência Renal',
+        authorsYear: 'Segev G, Bandt C, Francey T, Cowgill LD (2008)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Série clínica descritiva com dosagem tecidual e sérica de metais pesados.',
+        sampleSize: '2 cães com insuficiência renal crônica sob terapia prolongada com hidróxido de alumínio.',
+        mainFindings:
+          'Ambos os cães desenvolveram ataxia locomotora severa, tremores corporais generalizados, letargia e anemia microcítica não regenerativa associados a concentrações séricas e ósseas tóxicas de alumínio após doses elevadas (> 100 mg/kg/dia). A descontinuação do ligante resultou em regressão gradual dos sinais neurológicos.',
+        clinicalTakeaway:
+          'Estabelece o teto de segurança clínica no cão e desaconselha doses superiores a 100 mg/kg/dia, preconizando a rotação ou associação com ligantes isentos de alumínio em casos refratários.',
+        referenceId: 'ref-segev-2008-canine',
+      },
+    ],
+
     // 12. Referências Bibliográficas Completas
     references: [
       {

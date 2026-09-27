@@ -89,7 +89,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         species: 'cat',
         indication:
           'Dor pós-operatória aguda leve a moderada em gatos (OHE, orquiectomia, tecidos moles e odontologia) - Consenso ISFM 2022',
-        doseMin: 0,
+        doseMin: 0.02,
         doseMax: 0.04,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
@@ -111,7 +111,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         species: 'dog',
         indication:
           'Dor pós-operatória aguda leve a moderada e trauma tecidual menor em cães',
-        doseMin: 0,
+        doseMin: 0.01,
         doseMax: 0.02,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
@@ -133,7 +133,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         species: 'both',
         indication:
           'Premedicação anestésica (MPA) balanceada e redução da CAM de anestésicos inalatórios',
-        doseMin: 0,
+        doseMin: 0.01,
         doseMax: 0.02,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
@@ -155,7 +155,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         species: 'dog',
         indication:
           'Infusão contínua intravenosa (CRI) intra e pós-operatória em cães para dor moderada',
-        doseMin: 0,
+        doseMin: 0.0025,
         doseMax: 0.0025,
         doseUnit: 'mg',
         perWeightUnit: 'kg',
@@ -177,7 +177,7 @@ export const buprenorfinaMedicationsSeed: MedicationRecord[] = [
         species: 'cat',
         indication:
           'Formulação concentrada de liberação estendida para felinos (Simbadol® 1,8 mg/mL) - Referência Internacional',
-        doseMin: 0,
+        doseMin: 0.24,
         doseMax: 0.24,
         doseUnit: 'mg',
         perWeightUnit: 'kg',

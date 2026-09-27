@@ -73,7 +73,7 @@ export interface ClinicalMedicationDefinition {
     prescriptionText: string;
   }>;
   doseSourceLabel: 'Modelo clínico do ConsultaVet';
-  sourceReviewStatus: 'Revisão de fonte pendente';
+  sourceReviewStatus: 'Revisão de fonte pendente' | 'Fonte revisada';
   prescriptionText: string;
   internalAlert?: string;
   /** Instruções ao tutor preservadas ao trocar a apresentação ou recalcular a dose. */

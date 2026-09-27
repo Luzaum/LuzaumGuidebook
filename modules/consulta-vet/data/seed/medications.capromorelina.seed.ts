@@ -638,6 +638,46 @@ export const capromorelinaMedicationsSeed: MedicationRecord[] = [
       },
     ],
 
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Capromorelina Promove Ganho de Peso em Gatos com Perda de Peso Involuntária: Ensaio Clínico Mascarado e Controlado por Placebo',
+        authorsYear: 'Wofford JA, Milliken MacKinnon A, Heinen E (2025)',
+        journal: 'Journal of Feline Medicine and Surgery',
+        studyDesign: 'Ensaio clínico prospectivo, randomizado, duplo-cego e multicêntrico controlado por placebo.',
+        sampleSize: '176 gatos domésticos com DRC confirmada e perda involuntária de pelo menos 5% do peso.',
+        mainFindings:
+          'Os felinos tratados com capromorelina oral (2 mg/kg q24h durante 55 dias) obtiveram ganho médio de peso corporal de +5,18%, enquanto o grupo placebo continuou perdendo peso (-1,65%), totalizando uma diferença média estatisticamente significativa de +6,81% (p < 0,0001).',
+        clinicalTakeaway:
+          'Ensaio pivotal de referência mundial que respalda o uso diário de capromorelina para reverter a perda de peso progressiva e caquexia na doença renal crônica felina.',
+        referenceId: 'ref-wofford-2025-pivotal-jfms',
+      },
+      {
+        title: 'Estudo Clínico Prospectivo, Randomizado, Mascarado e Controlado por Placebo de Capromorelina em Cães com Apetite Reduzido',
+        authorsYear: 'Zollers B, Wofford JA, Heinen E, et al. (2016)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Ensaio clínico prospectivo randomizado duplo-cego multicêntrico.',
+        sampleSize: '177 cães de clientes com histórico de hiporexia ou anorexia secundária.',
+        mainFindings:
+          'A administração oral de capromorelina (3 mg/kg q24h por 4 dias) melhorou o apetite em 68,6% dos cães tratados, versus 44,6% no grupo placebo (p = 0,008). Os cães tratados também apresentaram ganho médio de peso de +1,8% comparado a +0,1% no controle (p < 0,001).',
+        clinicalTakeaway:
+          'Comprova a alta eficácia da capromorelina como estimulante do apetite e indutor rápido de ganho ponderal em cães com diversas comorbidades.',
+        referenceId: 'ref-zollers-2016-dog-appetite-jvim',
+      },
+      {
+        title: 'Capromorelina Aumenta Consumo de Ração, Peso Corporal, GH e Concentrações Sustentadas de IGF-1 em Cães Saudáveis',
+        authorsYear: 'Zollers B, Rhodes L, Smith RG (2017)',
+        journal: 'Journal of Veterinary Pharmacology and Therapeutics',
+        studyDesign: 'Estudo experimental farmacodinâmico cruzado avaliando o eixo somatotrófico.',
+        sampleSize: 'Cães adultos saudáveis monitorados com coletas seriadas de sangue.',
+        mainFindings:
+          'Demonstrou que a capromorelina induz um pico rápido e transitório de GH sérico seguido por uma elevação sustentada e estatisticamente significativa de IGF-1 ao longo de 7 dias consecutivos de administração oral diária.',
+        clinicalTakeaway:
+          'Elucida o mecanismo fisiológico que explica como uma droga de meia-vida curta (1 hora) mantém efeito estimulador de apetite e anabolismo com administração em dose única diária.',
+        referenceId: 'ref-zollers-2017-gh-igf1-jvpt',
+      },
+    ],
+
     // 12. Referências Bibliográficas Completas
     references: [
       {

@@ -412,6 +412,20 @@ export const sindromeCushingCaesRecord: DiseaseRecord = {
     metaAnalise2025:
       'Meta-análise 2025 (Hanson/Meij) confirma trilostano como base terapêutica com perfil favorável vs mitotano na maioria dos cenários.',
   },
+  complications: {
+    principais: [
+      'Hipertensão Arterial Sistêmica (HAS): Presente em 60–80% dos cães com hiperadrenocorticismo espontâneo, secundária à retenção renal de sódio, ativação do SRAA, hipersensibilização dos receptores alfa-1 vasculares às catecolaminas e inibição da óxido nítrico sintase endotelial. Pode deflagrar lesões em órgãos-alvo (retinopatia com descolamento e cegueira súbita, encefalopatia e sobrecarga cardíaca esquerda).',
+      'Proteinúria Glomerular e Nefropatia Hipertensiva: Ocorre em > 50% dos pacientes (UPC > 0,5 a > 2,0) devido à hiperfiltração glomerular sustentada, glomeruloesclerose induzida pelo cortisol e lesão podocitária, servindo como forte fator prognóstico negativo para progressão de doença renal crônica.',
+      'Tromboembolismo Pulmonar (TEP) e Tromboses Venosas: Estado de hipercoagulabilidade acentuado impulsionado pela perda urinária de antitrombina III (AT-III), síntese hepática excessiva de fatores de coagulação pró-trombóticos (II, V, VII, VIII, X e fibrinogênio) e redução da atividade fibrinolítica tecidual. Manifesta-se como hipoxemia súbita e taquipneia severa com campos pulmonares radiograficamente desproporcionalmente limpos.',
+      'Infecções do Trato Urinário (ITU) Ocultas e Pielonefrite Ascendente: A imunossupressão leucocitária e a baixa densidade urinária (USG < 1,020) favorecem colonização bacteriana na bexiga sem sinais inflamatórios exuberantes (bacteriúria subclínica assintomática e ausência de piúria na urinálise), com alto risco de ascensão bacteriana renal e pielonefrite com perda súbita da função glomerular.',
+      'Mucocele da Vesícula Biliar: Alteração da composição e hiperviscosidade biliar com dismotilidade vesicular mediada por esteroides e dislipidemia; predispõe a obstrução biliar extra-hepática aguda, colangite e peritonite biliar potencialmente fatal por rotura de vesícula biliar.',
+      'Calcinose Cutânea Grave (Calcinosis Cutis): Deposição distrófica de cristais de fosfato de cálcio sobre fibras colágenas e elásticas da derme, resultando em placas cutâneas pétreas, eritematosas e ulceradas com fístulas calcárias e piodermite profunda secundária recalcitrante.',
+      'Diabetes Mellitus Secundário a Resistência Insulínica: O hipercortisolismo estimula a gliconeogênese hepática e inibe os transportadores GLUT-4 periféricos; a hiperglicemia refratária crônica esgota a reserva secretora das células beta pancreáticas, convertendo o cão em diabético insulinodependente.',
+      'Crise Hipoadrenocortical Iatrogênica (Hipocortisolismo Medicamentoso): Efeito adverso agudo do trilostano (ou mitotano) por superdosagem temporária ou necrose isquêmica adrenal idiossincrática fulminante, provocando colapso hipovolêmico, hiponatremia severa, hipercalemia com bradiarritmias e choque distributivo.',
+    ],
+    prognostico:
+      'O prognóstico para cães com hiperadrenocorticismo hipófise-dependente (PDH) tratados com trilostano é geralmente favorável a bom, com sobrevida mediana entre 2 e 3 anos e excelente restauração da qualidade de vida quando as complicações vasculares e renais são ativamente controladas. No caso de carcinomas adrenocorticais autônomos (ADH) com invasão de veia cava ou metástases hepáticas/pulmonares, o prognóstico torna-se reservado a desfavorável, enquanto adenomas adrenais unilaterais benignos submetidos à adrenalectomia completa sem intercorrências apresentam potencial curativo com sobrevidas prolongadas.',
+  },
   prevention: {
     deteccaoPrecoce:
       'Não banalizar PU/PD, panting crônico e alopecia simétrica em cãos de meia-idade. Forma espontânea não tem profilaxia; iatrogênia: menor dose eficaz e menor tempo de glicocorticoide (Bugbee et al., 2023).',

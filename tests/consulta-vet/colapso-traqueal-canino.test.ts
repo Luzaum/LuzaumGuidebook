@@ -1,5 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { existsSync, statSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { diseasesSeed } from '../../modules/consulta-vet/data/seed/diseases.seed';
 import { CONSULTA_VET_PUBLIC_DISEASE_SLUGS } from '../../modules/consulta-vet/constants/publicCatalog';
 import { PUBLIC_CATALOG_DISEASE_CARD_STUBS } from '../../modules/consulta-vet/data/publicCatalogCardStubs';
@@ -28,8 +30,8 @@ test('mantém uma única ficha canônica e um único cartão público', () => {
 test('organiza resumo e rotas clínicas sem repetição excessiva', () => {
   const record = getRecord();
 
-  assert.equal(record.title, 'Colapso Traqueal — Cães');
-  assert.deepEqual(record.species, ['dog']);
+  assert.equal(record.title, 'Colapso Traqueal em Cães e Gatos');
+  assert.deepEqual(record.species, ['dog', 'cat']);
   assert.equal(record.category, 'respiratorio');
   assert.equal(record.quickDecisionStrip.length, 5);
   assert.equal(record.quickSummaryRich?.diagnosticFlow?.steps.length, 5);
@@ -139,6 +141,52 @@ test('usa linguagem simples segura e inclui sinais de urgência', () => {
   assert.doesNotMatch(text, /broncodilatador/i);
 });
 
+test('valida particularidades felinas, causas secundárias e contraindicações', () => {
+  const record = getRecord();
+  const text = JSON.stringify(record);
+
+  assert.match(text, /Tanaka & Uemura/i);
+  assert.match(text, /Mims et al/i);
+  assert.match(text, /estenose traqueal cicatricial iatrogênica/i);
+  assert.match(text, /produtos com paracetamol nunca em gatos/i);
+  assert.match(text, /dispneia progressiva com respiração de boca aberta/i);
+});
+
+test('valida malformação em W e biofísica de Poiseuille', () => {
+  const record = getRecord();
+  const etiology = record.etiology as Record<string, unknown>;
+  const text = JSON.stringify(etiology);
+
+  assert.match(text, /W-shaped collapse/i);
+  assert.match(text, /12 vezes maior/i);
+  assert.match(text, /90,9% de sobrevida/i);
+  assert.match(text, /Lei de Poiseuille/i);
+  assert.match(text, /quarta potência do raio/i);
+  assert.match(text, /16 vezes/i);
+});
+
+test('valida imagens clínicas Open Access em disco e registradas no seed', () => {
+  const record = getRecord();
+  const text = JSON.stringify(record);
+
+  const images = [
+    'fluoroscopia-colapso-traqueal-kim-2024.jpg',
+    'mapeamento-anatomico-colapso-kim-2024.jpg',
+    'colapso-bronquico-kim-2024.jpg',
+    'radiografia-colapso-traqueal-gato-tanaka-2022.jpg',
+    'stent-traqueal-gato-tanaka-2022.jpg',
+  ];
+
+  for (const img of images) {
+    assert.match(text, new RegExp(img));
+    const publicPath = resolve('public/consulta-vet/colapso-traqueal', img);
+    const distPath = resolve('dist/consulta-vet/colapso-traqueal', img);
+    assert.ok(existsSync(publicPath), 'imagem ausente em public: ' + img);
+    assert.ok(existsSync(distPath), 'imagem ausente em dist: ' + img);
+    assert.ok(statSync(publicPath).size > 10000, 'imagem corrompida: ' + img);
+  }
+});
+
 test('referências distinguem livros, estudos e revisão especializada', () => {
   const record = getRecord();
   const references = record.references ?? [];
@@ -147,6 +195,7 @@ test('referências distinguem livros, estudos e revisão especializada', () => {
   for (const id of [
     'ref-ettinger-9e',
     'ref-plumbs-10e',
+    'ref-bsava-formulary-10e',
     'ref-nelson-couto-6e',
     'ref-thrall-8e',
     'ref-endoscopy-2e',
@@ -156,13 +205,21 @@ test('referências distinguem livros, estudos e revisão especializada', () => {
     'ref-carr-2022',
     'ref-suematsu-radiography-2025',
     'ref-suematsu-prosthesis-2026',
+    'ref-tanaka-2022',
+    'ref-mims-2008',
     'ref-weisse-2026',
     'ref-acvs',
   ]) {
-    assert.ok(ids.has(id), `referência ausente: ${id}`);
+    assert.ok(ids.has(id), 'referência ausente: ' + id);
   }
 
   assert.equal(record.relatedConsensusSlugs.length, 0, 'não existe consenso formal específico para vincular');
   assert.match(references.find((reference) => reference.id === 'ref-acvs')?.notes ?? '', /não é consenso formal/);
   assert.doesNotMatch(JSON.stringify(record), /VIN 2026|ZFYVE16|Wolfe et al/i);
+});
+
+test('assegura ausência absoluta de asteriscos duplos', () => {
+  const record = getRecord();
+  const json = JSON.stringify(record);
+  assert.doesNotMatch(json, /\*\*/, 'A ficha de colapso traqueal não deve conter asteriscos duplos em nenhum campo.');
 });

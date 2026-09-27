@@ -331,16 +331,18 @@ export const diabetesMellitusFelinaRecord: DiseaseRecord = {
       'Etapa 4 — HAC felino: fragilidade cutânea, hepatomegalia, proteinúria — testes endócrinos selecionados (Nelson & Couto, 2020).',
       'Etapa 5 — Pancreatite, obesidade, esteroides/progestágenos e doença periodontal: tratar comorbidades antes de escalar insulina indefinidamente (AAHA 2026; iCatCare 2025).',
     ],
-    complicacoes: {
-      edka:
-        'Cetoacidose diabética euglicêmica em uso de SGLT2: cetonemia/acidose com glicemia normal ou discretamente elevada (<250 mg/dL). Suspender SGLT2, insulinizar e administrar dextrose IV (AAHA 2026; FDA Bexacat/Senvelgo).',
-      neuropatia:
-        'Polineuropatia diabética distal com marcha plantígrada. Reversível com euglicemia continuada (iCatCare 2025).',
-      acromegalia:
-        'Hipersomatotropismo por adenoma hipofisário: resistência massiva (>5 U/gato/dose) e organomegalia. Diagnóstico por IGF-1 sérico (AAHA 2026; Nelson & Couto, 2020).',
-    },
+  },
+  complications: {
+    principais: [
+      'Cetoacidose Diabética Euglicêmica (eDKA): Complicação metabólica crítica observada primariamente com o uso de inibidores de SGLT2 (bexagliflozina, velagliflozina) ou em transições terapêuticas inadequadas. Caracteriza-se por acidose metabólica com ânion gap elevado e elevação grave de corpos cetônicos séricos (beta-hidroxibutirato > 2,4 mmol/L) na vigência de glicemia normal ou discretamente elevada (< 250 mg/dL). Ocorre devido à perda contínua de glicose urinária concomitante à carência relativa de insulina endógena e aumento desmedido de glucagon, mascarando a severidade da crise se o clínico monitorar apenas a glicemia capilar.',
+      'Cetoacidose Diabética Clássica (CAD / DKA): Emergência com alto risco de óbito por falência insulínica absoluta, associada a lipólise acelerada, acidose metabólica profunda, vômitos, desidratação extrema, hipocalemia e hipofosfatemia graves com risco de hemólise intravascular aguda.',
+      'Neuropatia Diabética Periférica (Postura Plantígrada): Degeneração axonal e desmielinização motora distal de nervos isquiáticos e tibiais por estresse oxidativo e acúmulo de produtos finais de glicação avançada (AGEs). Manifesta-se com apoio de todo o tarso e metatarso no solo durante a marcha (postura plantígrada clássica), fraqueza para saltar e hipotrofia muscular nos membros pélvicos; apresenta excelente potencial de reversibilidade após semanas a meses de euglicemia mantida.',
+      'Hipoglicemia Iatrogênica Fatal por Falha em Reduzir Insulina na Remissão: Cerca de 25% a 50% dos gatos diabéticos entram em remissão clínica parcial ou completa nos primeiros 3 a 6 meses de terapia intensiva precoce após a resolução da glicotoxicidade das células beta. Se a dose de insulina for mantida inalterada pelo tutor, o gato desenvolve hipoglicemia severa com hipotermia profunda (< 36°C), torpor, convulsões e óbito.',
+      'Hipersomatotropismo (Acromegalia) e Resistência Extrema à Insulina: Presente em até 25% a 30% dos gatos diabéticos "resistentes" (necessidade > 1,5 a 2 U/kg/dose ou > 4–5 U/gato). Provocado por adenoma hipofisário secretor de hormônio do crescimento (GH), que induz síntese hepática massiva de IGF-1, proliferação tecidual (prognatismo inferior, aumento da circunferência craniana e das patas), organomegalia e cardiomiopatia hipertrófica secundária.',
+      'Lipidose Hepática Felina Aguda: Desencadeada por períodos de anorexia superior a 48–72 horas (frequente em quadros de cetoacidose, pancreatite comórbida ou rejeição a dietas comerciais novas), com mobilização acelerada de ácidos graxos periféricos que sobrecarregam a capacidade mitocondrial de beta-oxidação hepática, resultando em colestase intra-hepática fulminante.',
+    ],
     prognostico:
-      'Prognóstico funcional favorável com controle precoce. Remissão (euglicemia >4 semanas sem tratamento) ocorre em ~25% em 2–3 meses e na maioria nos primeiros 6 meses — não é cura definitiva (AAHA 2026). Neuropatia plantígrada é reversível com controle. eDKA com SGLT2 é emergência potencialmente fatal se BHB não for monitorado (AAHA 2026).',
+      'O prognóstico geral para gatos diabéticos diagnosticados precocemente e manejados com protocolos modernos (glargina U100/PZI + dieta hipoglicídica ou SGLT2 em pacientes cuidadosamente selecionados) é favorável a excelente. As taxas de remissão clínica variam de 30% a mais de 70% em centros especializados que instituem monitoramento contínuo de glicose (CGM domiciliar) e intervenção precoce antes da perda irreversível da massa de células beta pancreáticas.',
   },
   prevention: {
     primaria:

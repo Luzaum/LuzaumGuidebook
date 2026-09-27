@@ -61,11 +61,11 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
   },
   'colapso-traqueal-canino': {
     whatIsIt:
-      'No colapso traqueal, a parede do tubo que leva o ar aos pulmões perde firmeza e pode se achatar enquanto o cão respira ou tosse. Isso costuma causar tosse seca em crises e, nos casos mais graves, dificuldade para respirar.',
+      'No colapso traqueal, a parede do tubo que conduz o ar aos pulmões perde a firmeza e pode sofrer achatamento enquanto o animal respira ou tosse. É muito frequente em cães de pequeno porte e raro em gatos, manifestando-se tipicamente com tosse seca em crises ou dificuldade para respirar.',
     keyPoints: [
-      'É mais comum em cães pequenos, mas a tosse sozinha não confirma o diagnóstico.',
-      'Peso adequado, peitoral e distância de fumaça, calor e excitação ajudam a reduzir as crises.',
-      'Língua azulada, desmaio, exaustão ou dificuldade para respirar em repouso exigem atendimento imediato.',
+      'Em cães a causa clássica é enfraquecimento da cartilagem; em gatos, o estreitamento quase sempre exige investigar outras causas, como massas ou traumas.',
+      'Manter o peso ideal, substituir a coleira tradicional por peitoral e afastar fumaça, calor e excitação ajudam a reduzir as crises.',
+      'Língua azulada, desmaio, exaustão ou dificuldade para respirar em repouso são sinais graves que exigem atendimento imediato.',
     ],
   },
   'fistula-perianal-furunculose-anal': {
@@ -603,6 +603,65 @@ export const DISEASE_PLAIN_LANGUAGE: Record<string, DiseasePlainLanguage> = {
       'Análise detalhada de vídeos caseiros da crise pelo neurologista veterinário, exame neurológico entre os episódios (que é totalmente normal), exames de sangue para checar cálcio e tireoide (T4 em gatos), testes genéticos de raça e ressonância magnética quando necessária.',
     homeCare:
       'Manter ambiente seguro sem riscos de queda durante as crises, gravar novos episódios em vídeo com anotação da data e duração em diário, evitar exercícios extenuantes ou calor excessivo se forem gatilhos, e seguir com rigor absoluto a dieta sem glúten se prescrita.'
+  },
+
+  'platinosomose-felina': {
+    whatIsIt:
+      'A platinosomose (ou platinossomíase felina) é uma doença parasitária provocada por um verme plano minúsculo chamado Platynosomum illiciens (também conhecido como Platynosomum fastosum). Ao contrário dos vermes comuns que vivem dentro do intestino, este parasita instala-se especificamente dentro dos canais da bile (ductos biliares) e da vesícula biliar do gato. A infecção ocorre quando o felino caça e come pequenos animais contaminados com as larvas do verme — principalmente tatuzinhos-de-jardim e lagartixas de parede. Uma vez alojado nos canais biliares, o verme causa irritação constante, inflamação intensa e cicatrizes (fibrose) que engrossam e entopem a passagem da bile. Com a passagem bloqueada, a bile não consegue descer para o intestino e vaza para o sangue, fazendo com que o gato fique com os olhos, gengivas e pele amarelados (icterícia), perca o apetite, vomite e possa desenvolver danos graves no fígado se não diagnosticado a tempo.',
+    keyPoints: [
+      'O gato não precisa comer lagartixas visivelmente: pesquisas brasileiras recentes demonstraram que tatuzinhos-de-jardim e pequenos artrópodes de quintal também transmitem o parasita. Gatos com acesso a quintais ou à rua estão sob risco mesmo que o tutor nunca os tenha visto caçar lagartos.',
+      'O exame de fezes comum de rotina frequentemente dá falso-negativo: como os ovos do verme são pesados, saem em pequena quantidade e os canais biliares podem estar entupidos, o exame de fezes simples pode vir negativo mesmo em gatos doentes. É necessário solicitar um método especial de centrifugação em solução densa (solução de Sheather) ou coletar uma amostra direta de bile por agulha guiada por ultrassom (colecistocentese).',
+      'Olhos, pele e gengivas amarelas (icterícia): o acúmulo de bile nos tecidos é o sinal clínico mais característico da doença, frequentemente acompanhado de vômitos, perda de peso, prostração e dor na barriga.',
+      'A dose comum de vermífugo de rotina não cura a doença: a dose habitual de praziquantel usada para outros vermes (5 mg/kg) é insuficiente para eliminar o Platynosomum nos ductos biliares. O veterinário precisará prescrever doses muito mais altas e por vários dias seguidos conforme compêndios especializados.',
+      'Mesmo após a morte dos vermes, o fígado pode demorar para sarar: as cicatrizes e o inchaço nos canais biliares podem persistir por semanas ou meses após o tratamento, exigindo remédios protetores hepáticos, dieta especial e ultrassons de controle periódico.',
+      'Prevenção número um: manter o gato exclusivamente dentro de casa (indoor), bloqueando o acesso a quintais e janelas onde haja lagartixas e tatuzinhos-de-jardim.'
+    ],
+    whatIs:
+      'A platinosomose felina é uma infecção dos canais biliares e da vesícula do gato provocada por um verme microscópico transmitido pela caça de tatuzinhos-de-jardim e lagartixas, causando inflamação da vesícula, icterícia e danos hepáticos.',
+    warningSigns:
+      'Amarelamento dos olhos, gengivas e pele (icterícia), urina escura como refrigerante de cola, fezes claras, vômitos frequentes, perda rápida de peso, desânimo severo e aumento do volume ou dor na barriga.',
+    diagnosis:
+      'Ultrassonografia do fígado e vesícula biliar (para avaliar canais dilatados e espessados), exames de sangue completos (para avaliar fígado e contagem de eosinófilos), exame de fezes por técnica de dupla centrifugação com solução pesada de Sheather e, nos casos suspeitos com fezes negativas, coleta de bile por agulha guiada por ultrassom (colecistocentese) para achar os ovos.',
+    homeCare:
+      'Manter o gato estritamente dentro de casa sem acesso a caça, administrar rigorosamente os medicamentos prescritos nas doses e horários exatos, oferecer alimentação úmida e apetitosa para prevenir jejum prolongado (que pode causar lipidose hepática fatal) e retornar para reavaliações com exames de sangue e ultrassom.'
+  },
+  'triade-felina': {
+    whatIsIt:
+      'A tríade felina (ou triadite felina) é uma síndrome inflamatória complexa e simultânea que afeta três órgãos digestivos vitais do gato: o pâncreas (pancreatite), as vias biliares e fígado (colangite ou colangioepatite) e o intestino delgado (enteropatia crônica inflamatória). Ao contrário dos cães e dos seres humanos, os felinos possuem uma peculiaridade anatômica marcante: em cerca de 80% dos gatos, o canal que drena o pâncreas e o canal que drena a bile se unem em um ducto comum antes de desembocar no intestino delgado. Essa "rua comum", combinada com uma quantidade natural muito elevada de bactérias no intestino do gato e a tendência a refluxos durante episódios de náusea ou vômito, faz com que a inflamação ou infecção em um desses órgãos se espalhe facilmente para os outros dois.',
+    keyPoints: [
+      'Não é uma doença única isolada: a tríade é um complexo inflamatório compartilhado. O paciente felino não tem apenas um pâncreas atacado ou uma infecção no fígado, mas sim um desequilíbrio integrado de todo o sistema digestivo superior.',
+      'O perigo mortal do jejum prolongado: a ideia antiga de "deixar o pâncreas descansar sem comida" é extremamente perigosa para gatos. Felinos que ficam mais de 24 a 48 horas sem comer correm altíssimo risco de desenvolver lipidose hepática (acúmulo fatal de gordura no fígado). A alimentação precoce, se necessário por sondazinha alimentar indolor, é um dos pilares mais importantes para salvar o paciente.',
+      'Cuidado com a falsa regra de que "tríade se trata sempre com corticoide": se o gato estiver com uma infecção bacteriana ativa nas vias biliares (colangite neutrofílica), usar corticoide antes da hora pode espalhar as bactérias e causar choque séptico gravíssimo. O veterinário precisa identificar se há infecção antes de iniciar anti-inflamatórios pesados.',
+      'A carência de Vitamina B12 (cobalamina) é quase unânime: nos gatos, a substância essencial para absorver a vitamina B12 (fator intrínseco) é fabricada unicamente pelo pâncreas. Como o pâncreas e o intestino estão inflamados, quase todos os gatos com tríade ficam anêmicos e sem energia por falta severa de vitamina B12, exigindo suplementação contínua por via oral ou injeções.',
+      'Sinais silenciosos e discretos: os gatos costumam esconder sintomas graves. Em vez de dor evidente, eles apenas ficam quietos, escondidos, param de se lamber, comem menos e perdem peso devagar. Vômitos frequentes ou bolas de pelo constantes NÃO são normais.',
+      'Investigação em etapas: exames de sangue gerais, dosagem de lipase pancreática felina específica (Spec fPL), ultrassonografia especializada e medição de vitamina B12 são fundamentais para traçar o mapa exato da inflamação em cada um dos três órgãos.'
+    ],
+    whatIs:
+      'A tríade felina é a inflamação simultânea e interligada do pâncreas, das vias biliares e do intestino delgado em gatos, favorecida pela junção anatômica única dos canais digestivos felinos.',
+    warningSigns:
+      'Falta de apetite ou recusa completa de alimentos por mais de 24 horas, vômitos frequentes (com comida, líquido amarelado ou espuma), prostração e isolamento, perda de peso progressiva, olhos, gengivas ou orelhas amareladas (icterícia), fezes pastosas e dor ao toque na barriga.',
+    diagnosis:
+      'O diagnóstico combina histórico clínico completo, exames de sangue laboratoriais (hemograma, enzimas hepáticas e bilirrubina), teste de lipase pancreática felina específica (Spec fPL), dosagem sérica de vitamina B12 (cobalamina) e ultrassonografia abdominal especializada para avaliar o pâncreas, a vesícula e o espessamento das camadas intestinais.',
+    homeCare:
+      'Nunca permitir jejum prolongado: oferecer alimentos úmidos mornos e palatáveis ou seguir rigorosamente o plano de alimentação por sonda se prescrito. Administrar antieméticos, analgésicos e antibióticos nos horários exatos prescritos pelo veterinário. Manter a reposição de vitamina B12 sem interrupções e monitorar diariamente a aceitação de água, comida e coloração das mucosas.'
+  },
+  'anemia-hemolitica-imunomediada-canina': {
+    whatIsIt:
+      'A Anemia Hemolítica Imunomediada (AHIM ou IMHA) é uma emergência crítica na qual o sistema imunológico do cão perde a tolerância e passa a fabricar anticorpos que destroem os próprios glóbulos vermelhos (as células responsáveis por levar oxigênio para todos os tecidos do corpo). Sem essas hemácias, o paciente sofre de hipóxia grave (falta de oxigênio nos órgãos). Além disso, os restos dos glóbulos rompidos e a inflamação sistêmica descontrolada ativam intensamente a coagulação, criando um perigo iminente de trombos (coágulos) nos pulmões e no abdômen, exigindo hospitalização imediata, imunossupressão e prevenção antitrombótica rigorosa.',
+    keyPoints: [
+      'Gengivas muito brancas ou amareladas (icterícia), urina com tonalidade escura (cor de refrigerante de cola ou vinho), fraqueza extrema e respiração ofegante em repouso são sinais de alarme máximo.',
+      'A AHIM é uma afecção tromboinflamatória: o maior risco de óbito nas primeiras duas semanas não é apenas a baixa do hematócrito, mas sim a formação de coágulos venosos; por isso, remédios anticoagulantes são obrigatórios desde o primeiro dia.',
+      'O tratamento inicial apoia-se em corticoides em doses imunossupressoras para frear a destruição das hemácias, transfusão de concentrado de hemácias compatível quando há sinais de falta de oxigênio e suporte hospitalar intensivo.',
+      'O processo de recuperação exige perseverança: a redução das medicações deve ser extremamente gradual ao longo de meses para evitar recidivas que podem ser fatais.',
+    ],
+    whatIs:
+      'A anemia hemolítica imunomediada é a destruição patológica precoce das hemácias provocada pelo próprio sistema imune do cão, resultando em anemia grave e risco elevado de complicações tromboembólicas.',
+    warningSigns:
+      'Palidez acentuada ou amarelamento das gengivas e olhos, urina escura acastanhada ou avermelhada, apatia profunda, respiração rápida ou com esforço, taquicardia, febre, desmaios e falta de ar súbita.',
+    diagnosis:
+      'A confirmação diagnóstica baseia-se na tríade do Consenso ACVIM: confirmação da anemia (hematócrito/PCV), comprovação de destruição imunomediada (presença de esferócitos no microscópio, teste de aglutinação salina positivo ou teste de Coombs positivo) e evidência de hemólise ativa (bilirrubina elevada, hemoglobinúria ou hemoglobinemia). Exames complementares excluem causas associadas como hemoparasitoses e tumores.',
+    homeCare:
+      'Administrar todas as medicações (imunossupressores e anticoagulantes) rigorosamente nos mesmos horários prescritos. Proporcionar repouso absoluto sem estresse ou exercícios físicos pesados. Monitorar a coloração da gengiva, a frequência respiratória em repouso e a cor da urina todos os dias. Jamais suspender ou diminuir a dose dos remédios por conta própria sem expressa autorização do médico-veterinário.',
   },
 };
 

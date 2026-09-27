@@ -42,7 +42,7 @@ test('Diabetes Mellitus Canino — Contrato estrutural e conteúdo científico',
   assert.ok(Array.isArray(treatment.exemploCalculoInsulina));
   assert.ok(!JSON.stringify(dogSeed.treatment).includes('rebound'));
   assert.ok(dogSeed.prevention && typeof dogSeed.prevention === 'object');
-  assert.ok(!('complications' in dogSeed), 'Complicações devem estar em treatment.complicacoes');
+  assert.ok(dogSeed.complications, 'Complicações devem estar na seção complications');
 });
 
 test('Diabetes Mellitus Felino — Contrato estrutural e conteúdo científico', () => {
@@ -82,7 +82,7 @@ test('Diabetes Mellitus Felino — Contrato estrutural e conteúdo científico',
   assert.ok(!JSON.stringify(catSeed.treatment).includes('Monitor the cat'));
   assert.ok(!JSON.stringify(catSeed.treatment).includes('High-Protein'));
   assert.ok(catSeed.prevention && typeof catSeed.prevention === 'object');
-  assert.ok(!('complications' in catSeed), 'Complicações devem estar em treatment.complicacoes');
+  assert.ok(catSeed.complications, 'Complicações devem estar na seção complications');
 
   // Correção editorial: cascata sem texto periodontal
   const cascata = (catSeed.pathogenesisTransmission as { cascata?: string[] })?.cascata ?? [];

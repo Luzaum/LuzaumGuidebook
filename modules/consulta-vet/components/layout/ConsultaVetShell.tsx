@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 import { Outlet } from 'react-router-dom';
 
@@ -10,8 +10,6 @@ import { ConsultaVetErrorBoundary } from './ConsultaVetErrorBoundary';
 
 import { AuroraBackground } from '../../../../components/ui/aurora-background';
 
-import { prefetchConsultaVetEditorialSeeds } from '../../data/seed/editorialSeedLazy';
-
 import '../../theme.css';
 
 
@@ -21,14 +19,6 @@ export function ConsultaVetShell() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-
-  useEffect(() => {
-
-    prefetchConsultaVetEditorialSeeds();
-
-  }, []);
-
-
 
   return (
 

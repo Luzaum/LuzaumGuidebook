@@ -1,0 +1,174 @@
+- generic [ref=f2e5]:
+  - banner [ref=f2e6]:
+    - generic [ref=f2e7]:
+      - generic [ref=f2e8]:
+        - button "Abrir navegação do Vetius" [ref=f2e9] [cursor=pointer]
+        - link "Voltar para a Home" [ref=f2e11] [cursor=pointer]:
+          - /url: /
+          - img "Logo Vetius" [ref=f2e13]
+      - generic [ref=f2e14]:
+        - button "Ativar modo escuro" [ref=f2e15] [cursor=pointer]
+        - button "Abrir menu do usuário" [ref=f2e18] [cursor=pointer]:
+          - img "Avatar de Auditoria local" [ref=f2e19]
+  - main [ref=f2e22]:
+    - generic [ref=f2e26]:
+      - complementary [ref=f2e27]:
+        - generic [ref=f2e28]:
+          - generic [ref=f2e29]:
+            - link [ref=f2e31] [cursor=pointer]:
+              - /url: /consulta-vet
+              - img "ConsultaVET — base clínica para consulta rápida" [ref=f2e32]
+            - button "Fechar menu lateral" [ref=f2e33] [cursor=pointer]
+          - navigation [ref=f2e37]:
+            - link "Início" [ref=f2e38] [cursor=pointer]:
+              - /url: /consulta-vet
+            - link "Doenças" [ref=f2e42] [cursor=pointer]:
+              - /url: /consulta-vet/doencas
+            - link "Medicamentos" [ref=f2e48] [cursor=pointer]:
+              - /url: /consulta-vet/medicamentos
+            - link "Comerciais" [ref=f2e53] [cursor=pointer]:
+              - /url: /consulta-vet/apresentacoes-comerciais
+            - link "Receituário" [ref=f2e58] [cursor=pointer]:
+              - /url: /consulta-vet/receituario
+            - link "Manejo emergencial" [ref=f2e63] [cursor=pointer]:
+              - /url: /consulta-vet/manejo-emergencial
+            - link "Guia rápido clínico" [ref=f2e67] [cursor=pointer]:
+              - /url: /consulta-vet/guias-rapidos
+            - link "Referências clínicas" [ref=f2e71] [cursor=pointer]:
+              - /url: /consulta-vet/referencias-rapidas
+            - link "Consensos" [ref=f2e77] [cursor=pointer]:
+              - /url: /consulta-vet/consensos
+            - link "Favoritos" [ref=f2e83] [cursor=pointer]:
+              - /url: /consulta-vet/favoritos
+            - link "Recentes" [ref=f2e87] [cursor=pointer]:
+              - /url: /consulta-vet/recentes
+      - generic [ref=f2e92]:
+        - generic [ref=f2e93]:
+          - button "Abrir menu lateral" [ref=f2e94] [cursor=pointer]
+          - generic [ref=f2e96]: Menu do ConsultaVet
+        - main [ref=f2e97]:
+          - generic [ref=f2e98]:
+            - navigation "Navegação estrutural" [ref=f2e99]:
+              - link "Início" [ref=f2e100] [cursor=pointer]:
+                - /url: /consulta-vet
+              - link "Consensos" [ref=f2e103] [cursor=pointer]:
+                - /url: /consulta-vet/consensos
+              - generic [ref=f2e106]: Leishmaniose visceral canina
+            - generic [ref=f2e109]:
+              - generic [ref=f2e111]:
+                - heading "Leishmaniose visceral canina" [level=1] [ref=f2e112]
+                - paragraph [ref=f2e113]: Brasileish • 2025
+                - generic [ref=f2e114]:
+                  - generic [ref=f2e115]: infectologia
+                  - generic [ref=f2e116]: Canino
+              - generic [ref=f2e117]:
+                - button "Copiar link" [ref=f2e118] [cursor=pointer]
+                - button "Adicionar aos favoritos" [ref=f2e125] [cursor=pointer]
+            - generic [ref=f2e128]:
+              - heading "Resumo do consenso" [level=2] [ref=f2e129]
+              - generic [ref=f2e130]:
+                - paragraph [ref=f2e132]: As diretrizes Brasileish estruturam diagnóstico, estadiamento, tratamento e acompanhamento da leishmaniose visceral canina no contexto brasileiro. A doença pode variar de infecção subclínica a comprometimento sistêmico grave, com dermatopatia, linfadenomegalia, alterações oculares, anemia, hiperglobulinemia, proteinúria e doença renal. O diagnóstico combina epidemiologia, sinais, sorologia e demonstração do parasito ou material genético quando indicada.
+                - paragraph [ref=f2e134]: O rim é determinante para prognóstico e escolha terapêutica. Creatinina/SDMA, urinálise, RPCU e pressão arterial devem ser avaliadas antes do protocolo e durante o seguimento. O tratamento reduz sinais e carga parasitária, mas não garante eliminação definitiva; controle vetorial e monitorização longitudinal continuam obrigatórios.
+            - generic [ref=f2e135]:
+              - generic [ref=f2e136]:
+                - generic [ref=f2e137]:
+                  - generic [ref=f2e138]:
+                    - heading "Leishmaniose visceral canina" [level=3] [ref=f2e143]
+                    - paragraph [ref=f2e144]: Leitor PDF integrado
+                  - generic [ref=f2e145]:
+                    - button "Página anterior" [disabled] [ref=f2e146]
+                    - generic [ref=f2e149]: Página 1 de 32
+                    - button "Próxima página" [ref=f2e150] [cursor=pointer]
+                    - button "Diminuir zoom" [ref=f2e154] [cursor=pointer]
+                    - generic [ref=f2e158]: 90%
+                    - button "Aumentar zoom" [ref=f2e159] [cursor=pointer]
+                    - link "Abrir em nova aba" [ref=f2e163] [cursor=pointer]:
+                      - /url: /documents/consulta-vet/consensos/brasileish-leishmaniose-canina-2025.pdf
+                    - link "Baixar PDF" [ref=f2e168] [cursor=pointer]:
+                      - /url: /documents/consulta-vet/consensos/brasileish-leishmaniose-canina-2025.pdf
+                    - button "Sair da tela cheia" [active] [ref=f2e327] [cursor=pointer]
+                - generic [ref=f2e179]:
+                  - textbox "Pesquisar palavra no consenso..." [ref=f2e184]
+                  - button "Pesquisar" [ref=f2e185] [cursor=pointer]
+              - generic [ref=f2e190]:
+                - button "Página anterior" [disabled] [ref=f2e191]
+                - button "Próxima página" [ref=f2e213] [cursor=pointer]
+            - generic [ref=f2e217]:
+              - article [ref=f2e218]:
+                - heading "Pontos-chave" [level=3] [ref=f2e219]
+                - generic [ref=f2e220]:
+                  - generic [ref=f2e221]:
+                    - paragraph [ref=f2e226]: Quadros clínicos adaptados da estrutura e das recomendações da publicação original.
+                    - region "Integração clínica e renal antes do tratamento" [ref=f2e227]:
+                      - heading "Integração clínica e renal antes do tratamento" [level=4] [ref=f2e229]
+                      - table [ref=f2e232]:
+                        - caption [ref=f2e233]: Integração clínica e renal antes do tratamento
+                        - rowgroup [ref=f2e234]:
+                          - row [ref=f2e235]:
+                            - columnheader "Domínio" [ref=f2e236]
+                            - columnheader "Avaliar" [ref=f2e237]
+                            - columnheader "Impacto" [ref=f2e238]
+                        - rowgroup [ref=f2e239]:
+                          - row [ref=f2e240]:
+                            - rowheader "Confirmação" [ref=f2e241]
+                            - cell "Clínica, epidemiologia e teste específico" [ref=f2e242]
+                            - cell "Evita tratar exposição isolada como doença" [ref=f2e243]
+                          - row [ref=f2e244]:
+                            - rowheader "Gravidade sistêmica" [ref=f2e245]
+                            - cell "Hemograma, albumina/proteínas, fígado e olhos" [ref=f2e246]
+                            - cell "Define suporte e prognóstico" [ref=f2e247]
+                          - row [ref=f2e248]:
+                            - rowheader "Rim" [ref=f2e249]
+                            - cell "Creatinina/SDMA, urinálise, RPCU e PA" [ref=f2e250]
+                            - cell "Modifica estágio, protocolo e prognóstico" [ref=f2e251]
+                          - row [ref=f2e252]:
+                            - rowheader "Controle parasitário" [ref=f2e253]
+                            - cell "Leishmanicida + leishmaniostático conforme caso" [ref=f2e254]
+                            - cell "Reduz sinais/carga; não garante cura" [ref=f2e255]
+                          - row [ref=f2e256]:
+                            - rowheader "Prevenção" [ref=f2e257]
+                            - cell "Repelente/coleira e ambiente" [ref=f2e258]
+                            - cell "Reduz exposição vetorial" [ref=f2e259]
+                          - row [ref=f2e260]:
+                            - rowheader "Seguimento" [ref=f2e261]
+                            - cell "Clínica, rim, fígado, proteínas, RPCU e urina" [ref=f2e262]
+                            - cell "Detecta resposta, toxicidade e recidiva" [ref=f2e263]
+                    - region "Regimes citados" [ref=f2e264]:
+                      - heading "Regimes citados" [level=4] [ref=f2e266]
+                      - table [ref=f2e269]:
+                        - caption [ref=f2e270]: Regimes citados
+                        - rowgroup [ref=f2e271]:
+                          - row [ref=f2e272]:
+                            - columnheader "Fármaco" [ref=f2e273]
+                            - columnheader "Dose" [ref=f2e274]
+                            - columnheader "Duração/cuidado" [ref=f2e275]
+                        - rowgroup [ref=f2e276]:
+                          - row [ref=f2e277]:
+                            - rowheader "Miltefosina" [ref=f2e278]
+                            - cell "2 mg/kg VO q24h" [ref=f2e279]
+                            - cell "28 dias; preferencialmente com alimento" [ref=f2e280]
+                          - row [ref=f2e281]:
+                            - rowheader "Alopurinol" [ref=f2e282]
+                            - cell "10 mg/kg VO q12h" [ref=f2e283]
+                            - cell "6–12 meses; monitorar xantina/cristalúria" [ref=f2e284]
+                  - list [ref=f2e288]:
+                    - listitem [ref=f2e289]: Classificar gravidade clínica e renal antes de tratar.
+                    - listitem [ref=f2e290]: "Miltefosina: 2 mg/kg VO q24h por 28 dias, preferencialmente com alimento."
+                    - listitem [ref=f2e291]: "Alopurinol: 10 mg/kg VO q12h por 6-12 meses; monitorar cristalúria e urolitíase por xantina."
+                    - listitem [ref=f2e292]: Proteinúria, hipertensão e DRC exigem tratamento paralelo e podem modificar o protocolo.
+                    - listitem [ref=f2e293]: Resposta clínica não equivale a cura parasitológica; recidiva é possível.
+              - article [ref=f2e294]:
+                - heading "Aplicação prática" [level=3] [ref=f2e295]
+                - paragraph [ref=f2e298]: Solicitar hemograma, bioquímica, proteínas/albumina, creatinina/SDMA, urinálise, RPCU e pressão; confirmar infecção por método apropriado; estadiar; tratar o parasito e as lesões orgânicas; manter repelente/coleira e controle ambiental. Reavaliar clínica, rim, fígado, proteínas, RPCU e urina nas primeiras semanas e depois periodicamente.
+            - generic [ref=f2e299]:
+              - heading "Relacionados" [level=2] [ref=f2e300]
+              - generic [ref=f2e302]:
+                - heading "Doenças" [level=3] [ref=f2e303]
+                - link [ref=f2e309] [cursor=pointer]:
+                  - /url: /consulta-vet/doencas/leishmaniose-visceral-canina
+                  - paragraph [ref=f2e310]: Leishmaniose visceral canina (leishmaniose canina por L. infantum)
+                  - paragraph [ref=f2e311]: infecciosas
+  - generic [ref=f2e312]:
+    - button "Hub" [ref=f2e313] [cursor=pointer]
+    - button "Consulta" [ref=f2e318] [cursor=pointer]
+    - button "Mais" [ref=f2e324] [cursor=pointer]

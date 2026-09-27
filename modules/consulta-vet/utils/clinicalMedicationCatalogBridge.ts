@@ -1,6 +1,6 @@
 import { prescriptionDurationClause as durationClause } from './prescriptionSchedule';
 import { commercialOticProductsSeed } from '../data/commercialOticProducts.seed';
-import { medicationsSeed } from '../data/seed/medications.seed';
+import { clinicalMedicationsSeed } from '../data/seed/clinicalMedications.seed';
 import type { CommercialMedicationProduct } from '../types/commercialMedication';
 import type { MedicationDose, MedicationPresentation, MedicationRecord } from '../types/medication';
 import type {
@@ -64,14 +64,14 @@ function normalizeText(value: unknown): string {
 
 export function resolveEditorialMedication(canonicalMedicationId?: string | null): MedicationRecord | null {
   if (!canonicalMedicationId) return null;
-  return medicationsSeed.find((item) => item.id === canonicalMedicationId) || null;
+  return clinicalMedicationsSeed.find((item) => item.id === canonicalMedicationId) || null;
 }
 
 function resolveEditorialMedicationByLookup(medication: ClinicalMedicationDefinition): MedicationRecord | null {
   const requested = normalizeText(medication.canonicalLookupName || medication.name);
   const requestedBase = requested.split(/\s+(?:-|—|–)\s+/)[0]?.trim() || requested;
   if (!requestedBase) return null;
-  return medicationsSeed.find((item) => {
+  return clinicalMedicationsSeed.find((item) => {
     const values = [item.title, item.activeIngredient, item.slug, ...(item.tradeNames || []), ...(item.tags || [])]
       .map(normalizeText)
       .filter(Boolean);

@@ -514,6 +514,18 @@ export const doencaValvarMitralDegenerativaRecord: DiseaseRecord = {
       'Eco seriado em B2/C para ajustar expectativa e detectar hipertensão pulmonar ou queda da função sistólica.',
     ],
   },
+  complications: {
+    principais: [
+      'Edema Pulmonar Cardiogênico Agudo Fulminante (ICC Esquerda): A regurgitação mitral grave sustentada eleva a pressão atrial esquerda e a pressão venocapilar pulmonar acima do limiar oncótico plasmático (> 20 a 25 mmHg). Ocorre transudação líquida maciça para os alvéolos, manifestando-se com dispneia ortopneica aguda, taquipneia severa com frequência respiratória de sono > 30–40 mpm, estertores crepitantes úmidos bilaterais, cianose e eliminação de secreção espumosa rosada.',
+      'Ruptura Aguda de Cordas Tendíneas (Mitral Flail): A degeneração mixomatosa fragiliza as cordas de primeira e segunda ordem; a ruptura súbita de uma corda primária causa eversão livre da cúspide valvar para o interior do átrio esquerdo ("flail leaflet"), quadruplicando subitamente o orifício regurgitante com colapso hemodinâmico hiperagudo e edema pulmonar refratário com risco imediato de óbito.',
+      'Ruptura da Parede do Átrio Esquerdo e Tamponamento Cardíaco: A distensão extrema e o estresse mecânico parietal sobre o átrio esquerdo gravemente dilatado podem deflagrar lacerações na parede atrial ou no septo interatrial. O sangramento para o espaço pericárdico inelástico produz tamponamento cardíaco agudo com abafamento de bulhas cardíacas, pulso paradoxal, choque obstrutivo e colapso cardiogênico.',
+      'Fibrilação Atrial (FA) com Resposta Ventricular Rápida: A dilatação biaxial do átrio esquerdo fragmenta os trajetos de condução elétrica e promove múltiplos circuitos de microrreentrada. A perda da contração atrial coordenada ("atrial kick", responsável por 20% a 30% do débito de enchimento do VE) associada a frequências ventriculares não controladas (> 220 bpm) reduz dramaticamente o tempo de relaxamento diastólico e precipita choque de baixo débito.',
+      'Hipertensão Pré-Capilar e Pós-Capilar Mista (Hipertensão Pulmonar Grupo 2): A elevação sustentada da pressão venosa pulmonar transmite-se retrogradamente às arteríolas pulmonares, deflagrando vasoconstrição reativa e proliferação miointimal. A hipertensão pulmonar severa sobrecarrega o ventrículo direito, culminando em regurgitação tricúspide secundária, hepatomegalia congestiva e ascite volumosa (ICC biventricular).',
+      'Síndrome Cardiorrenal Tipo 2 (Nefropatia Congestiva): A redução do débito cardíaco sistêmico efetivo (redução da perfusão anterógrada) associada à hipertensão venosa renal retrógrada e à hiperativação simpática/SRAA crônica compromete a taxa de filtração glomerular, estabelecendo um ciclo vicioso onde a uremia agrava a contratilidade miocárdica e limita o uso seguro de diuréticos de alça e inibidores da ECA.',
+    ],
+    prognostico:
+      'O prognóstico para cães com DMVD varia substancialmente conforme o estágio do consenso ACVIM. Pacientes no Estágio B1 podem permanecer assintomáticos por muitos anos sem impacto na expectativa de vida. No Estágio B2, a introdução de pimobendan posterga o início da ICC ou óbito cardíaco em uma mediana de 15 meses (estudo EPIC). Uma vez diagnosticada a insuficiência cardíaca congestiva no Estágio C, a sobrevida mediana varia de 9 a 18 meses com terapia quadrupla (pimobendan, furosemida, IECA e espironolactona). A progressão para o Estágio D ou complicações como ruptura de cordas tendíneas e hipertensão pulmonar grave conferem prognóstico altamente reservado.',
+  },
   prevention: {
     rastreio:
       'Ausculta anual (ou a cada consulta geriátrica) em raças predispostas. Sopro novo → eco para estadiar, não receita automática (Keene et al., 2019).',

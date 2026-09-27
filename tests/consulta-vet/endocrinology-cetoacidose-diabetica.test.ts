@@ -15,7 +15,7 @@ test('CAD existe no seed e no catálogo público', () => {
   assert.ok(record);
   assert.equal(record?.title, 'Cetoacidose diabética em cães e gatos');
   assert.equal(record?.category, 'endocrinologia');
-  assert.ok(getDiseaseCategorySlugs(record!).includes('emergencia-intensivismo'));
+  assert.ok(getDiseaseCategorySlugs(record!).includes('intensivismo'));
   assert.deepEqual(record?.species, ['dog', 'cat']);
   assert.equal(record?.vinReferencePending, true);
   assert.ok(CONSULTA_VET_PUBLIC_DISEASE_SLUGS.includes(SLUG));

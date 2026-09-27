@@ -63,6 +63,9 @@ export const CONSULTA_VET_PUBLIC_DISEASE_SLUGS = [
   'leishmaniose-caes-gatos',
   'cistite-idiopatica-felina',
   'discinesia-paroxistica-caes-gatos',
+  'platinosomose-felina',
+  'triade-felina',
+  'anemia-hemolitica-imunomediada-canina',
 ] as const;
 
 
@@ -71,14 +74,18 @@ export const CONSULTA_VET_PUBLIC_MEDICATION_SLUGS = [
   'acetilcisteina',
   'amoxicilina-clavulanato',
   'ampicilina-sulbactam',
+  'betanecol',
   'buprenorfina',
   'capromorelina',
+  'ceftriaxona',
   'clindamicina',
+  'diazepam',
   'dipirona',
   'enrofloxacina',
   'fenobarbital',
   'hidroxido-de-aluminio',
   'levetiracetam',
+  'marbofloxacina',
   'meloxicam',
   'metadona',
   'pradofloxacina',

@@ -312,16 +312,18 @@ export const diabetesMellitusCaninaRecord: DiseaseRecord = {
       'Etapa 4 — HAC: testes de triagem (LDDS/ACTHST) se sinais compatíveis ou resistência persistente (Nelson & Couto, 2020).',
       'Etapa 5 — Pancreatite, ITU, obesidade, esteroides e doença periodontal: tratar comorbidades antes de escalar insulina além de >1,5 U/kg/dose (Behrend et al., 2018; Nelson & Couto, 2020).',
     ],
-    complicacoes: {
-      catarata:
-        'Catarata diabética em 50% dos cães até 170 dias e 80% até 470 dias (Beam et al., 1999). Risco de uveíte lente-induzida. Avaliação oftalmológica periódica recomendada.',
-      dka:
-        'Cetoacidose diabética: acidose metabólica + cetonemia (BHB) + desidratação severa. Requer hospitalização, fluidoterapia, reposição de K+/fósforo e insulinização regular hospitalar (Textbook of Small Animal Emergency Medicine, 2020).',
-      hhs:
-        'Estado hiperglicêmico hiperosmolar: glicose >600 mg/dL, osmolalidade >350 mOsm/kg, sem cetose importante. Requer restauração volêmica lenta (queda glicêmica ≤50–75 mg/dL/h) para evitar edema cerebral (VINcyclopedia, 2022).',
-    },
+  },
+  complications: {
+    principais: [
+      'Catarata Diabética Bilateral e Uveíte Induzida pelo Cristalino (LIU): Complicação clássica decorrente da via do sorbitol; a aldose redutase converte o excesso de glicose intraocular em sorbitol e frutose, substâncias osmoticamente ativas que atraem água, rompem as fibras cristalinianas e geram opacificação intumescente rápida (50% dos cães até 170 dias e 80% até 470 dias pós-diagnóstico). O extravasamento de proteínas cristalinianas deflagra uveíte facogênica anterior crônica com risco de glaucoma secundário e sinéquias.',
+      'Cetoacidose Diabética (CAD / DKA): Emergência metabólica com risco de morte desencadeada pela deficiência absoluta ou relativa severa de insulina somada ao excesso de hormônios contrarreguladores (glucagon, cortisol, catecolaminas). Resulta em lipólise maciça, geração desregulada de corpos cetônicos (beta-hidroxibutirato e acetoacetato), acidose metabólica com ânion gap elevado, diurese osmótica extrema, hipofosfatemia severa e desidratação crítica.',
+      'Estado Hiperglicêmico Hiperosmolar (EHH / HHS): Síndrome hiperosmolar extrema (glicose sérica > 600–800 mg/dL, osmolalidade plasmática efetiva > 350 mOsm/kg) com cetose mínima ou ausente. Manifesta-se com desidratação hiperosmolar profunda, choque hipovolêmico e depressão neurológica severa/coma; requer restauração volêmica gradual (redução glicêmica ≤ 50–75 mg/dL/hora) para prevenir edema cerebral fatal.',
+      'Hipoglicemia Iatrogênica Induzida por Insulina: Decorrente de superdosagem acidental, uso de seringa inadequada (ex.: U100 em insulina U40), falta de apetite/vômito pós-dose ou realização de exercícios extenuantes. Apresenta-se com hiperexcitabilidade, fraqueza em membros pélvicos, ataxia, olhar fixo, coma hipoglicêmico e crises convulsivas generalizadas.',
+      'Infecção Oculta do Trato Urinário e Pielonefrite: A glicosúria perene associada à disfunção de neutrófilos favorece colonização bacteriana na bexiga sem sinais inflamatórios exuberantes; sem vigilância microbiológica periódica, evolui para pielonefrite com perda aguda da função glomerular renal.',
+      'Neuropatia Diabética Periférica: Degeneração axonal e desmielinização motora distal com fraqueza muscular, hiporreflexia e postura plantígrada sutil em cães de longa evolução.',
+    ],
     prognostico:
-      'Prognóstico funcional favorável com controle clínico estável e aderência familiar. Remissão espontânea é rara; exceção parcial após OVH em cadelas com DM induzida por diestro (Behrend et al., 2018). Catarata é complicação esperada na maioria — não indica mau controle isoladamente (Beam et al., 1999). DKA e HHS têm prognóstico reservado e exigem internação (Textbook of Small Animal Emergency Medicine, 2020).',
+      'O prognóstico para cães com diabetes mellitus estabilizados sob insulinoterapia e manejo alimentar consistente é favorável a bom, com sobrevida mediana superior a 2 a 3 anos e qualidade de vida plena. A perda de visão pela catarata não diminui a sobrevida e pode ser revertida cirurgicamente por facoemulsificação. A ocorrência de crises repetidas de cetoacidose ou estado hiperosmolar associadas a pancreatite necrosante, hiperadrenocorticismo ou sepse confere prognóstico reservado.',
   },
   prevention: {
     primaria:

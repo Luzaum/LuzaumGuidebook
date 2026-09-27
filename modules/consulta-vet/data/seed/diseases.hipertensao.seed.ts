@@ -438,6 +438,17 @@ export const hipertensaoArterialSistemicaRecord: DiseaseRecord = {
       'Peso, apetite e sinais neurológicos a cada revisão; monitor domiciliar quando disponível.',
     ],
   },
+  complications: {
+    principais: [
+      'Retinopatia Hipertensiva e Cegueira Aguda Irreversível (Amaurose Súbita): A falência da autorregulação dos leitos arteriolares retinianos sob pressões arteriais sistólicas elevadas (PAS > 160 a 180 mmHg) provoca ruptura endotelial, hemorragias em chama de vela, edema de papila óptica e descolamento seroso bolhoso agudo da retina. O descolamento retiniano mantido por mais de 48 a 72 horas resulta em anóxia isquêmica dos fotorreceptores com perda visual permanente mesmo que a retina seja subsequentemente reanexada.',
+      'Encefalopatia Hipertensiva e Hemorragia Cerebrovascular: A perda da autorregulação miogênica cerebral permite hiperperfusão capilar forçada com quebra da barreira hematoencefálica, edema cerebral vasogênico ou acidentes vasculares encefálicos (AVEs) isquêmicos e hemorrágicos. Manifesta-se com letargia severa, ataxia vestibular, convulsões de início tardio, estupor e coma.',
+      'Nefropatia Hipertensiva e Aceleração da Doença Renal Crônica: A hipertensão glomerular crônica lesiona mecanicamente o endotélio capilar e a lâmina basal dos glomérulos, agravando a proteinúria (fator independente de agressão tubular renal), glomeruloesclerose e acelerando a perda progressiva de néfrons funcionantes em cães e gatos com DRC subjacente.',
+      'Hipertrofia Ventricular Esquerda Concêntrica e Descompensação Cardíaca: O aumento sustentado da pós-carga aórtica exige maior estresse parietal do miocárdio, deflagrando espessamento concêntrico patológico do septo interventricular e da parede livre do ventrículo esquerdo com rigidez miocárdica e disfunção diastólica; em gatos idosos, pode induzir ritmo de galope (B4/B3), sopros e precipitar insuficiência cardíaca congestiva esquerda.',
+      'Epistaxe Severa Recorrente por Ruptura Vascular Mucosa: Ruptura espontânea dos plexos vasculares e arteríolas da mucosa dos cornetos nasais decorrente de picos hipertensivos agudos, resultando em sangramento nasal profuso com risco de anemia e broncoaspiração de sangue.',
+    ],
+    prognostico:
+      'O prognóstico para cães e gatos hipertensos é altamente dependente da velocidade de intervenção clínica e do controle da doença de base subjacente (DRC, hipertireoidismo, HAC). Quando o diagnóstico é precoce e a pressão arterial sistólica é mantida abaixo de 140 mmHg com bloqueadores de canais de cálcio (anlodipino) ou inibidores do SRAA, o risco de dano a órgãos-alvo é drasticamente reduzido. A presença de descolamento de retina com cegueira já instalada confere prognóstico visual reservado, enquanto encefalopatia grave com hemorragia cerebral impõe prognóstico desfavorável.',
+  },
   prevention:
     'Rastreio pressórico em gatos geriátricos com DRC ou em risco tireoidiano; controle de peso; evitar nefrotóxicos desnecessários; em animais em IECA/BRA, tutores devem reconhecer sinais de desidratação (vómito, diarreia) e procurar assistência precoce. Não há “profilaxia farmacológica” universal sem indicação.',
   relatedConsensusSlugs: [],

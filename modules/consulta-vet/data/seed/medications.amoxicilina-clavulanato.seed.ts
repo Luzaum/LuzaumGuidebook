@@ -76,7 +76,7 @@ export const amoxicilinaClavulanatoMedicationsSeed: MedicationRecord[] = [
       {
         title: 'Ataque à Parede',
         icon: 'Shield',
-        desc: 'A ampicilina/amoxicilina acila as PBPs transpeptidases, inibindo a síntese de peptidoglicano e provocando lise bacteriana osmótica bactericida em células em replicação.',
+        desc: 'A amoxicilina acila as PBPs transpeptidases, inibindo a síntese de peptidoglicano e provocando lise bacteriana osmótica bactericida em células em replicação.',
       },
       {
         title: 'Proteção Beta-Lactâmica',
@@ -760,6 +760,58 @@ export const amoxicilinaClavulanatoMedicationsSeed: MedicationRecord[] = [
               'Valida a recomendação de priorizar medicamentos veterinários registrados com controle de estabilidade e reforça o perigo de trocas aleatórias de proporções.',
           },
         ],
+      },
+    ],
+
+    // Estudos Clínicos Comentados
+    clinicalStudiesCommented: [
+      {
+        title: 'Diretrizes da ISCAID para o Diagnóstico e Tratamento Antimicrobiano de Doenças do Trato Respiratório em Cães e Gatos',
+        authorsYear: 'Lappin MR, Blondeau J, Boothe D, et al. (2017)',
+        journal: 'Journal of Veterinary Internal Medicine',
+        studyDesign: 'Diretriz de Consenso Internacional Especializado (ISCAID Working Group).',
+        sampleSize: 'Painel internacional com revisão sistemática de evidências clínicas.',
+        mainFindings:
+          'Define amoxicilina-clavulanato e doxiciclina como agentes empíricos de primeira escolha para infecções bacterianas do trato respiratório superior e traqueobronquites em cães e gatos, recomendando cursos de curta duração (7 a 10 dias) com monitoramento da resposta e prevenindo o uso abusivo de fluoroquinolonas.',
+        clinicalTakeaway:
+          'Consenso de referência mundial que respalda o uso racional de aminopenicilinas potencializadas em afecções respiratórias de pequenos animais.',
+        referenceId: 'ref-iscaid-respiratory-2017',
+      },
+      {
+        title: 'Farmacocinética da Combinação Amoxicilina e Ácido Clavulânico em Gatos após Administração Intravenosa e Oral',
+        authorsYear: 'Yang F, Yang F, Wang G, Xi W, Zhang C, Wang H (2019)',
+        journal: 'Journal of Veterinary Pharmacology and Therapeutics',
+        studyDesign: 'Estudo prospectivo farmacocinético cruzado avaliando administração IV e VO.',
+        sampleSize: '6 gatos domésticos adultos hígidos.',
+        mainFindings:
+          'Demonstrou biodisponibilidade oral média de 72,4% para a amoxicilina e 64,8% para o ácido clavulânico em felinos. A meia-vida de eliminação plasmática foi de aproximadamente 1,3 horas para ambos os componentes. Demonstrou que a administração a cada 12 horas mantém fT>MIC adequado para os principais patógenos respiratórios e cutâneos da espécie.',
+        clinicalTakeaway:
+          'Comprova a excelente biodisponibilidade e adequação do regime posológico a cada 12 horas em felinos.',
+        referenceId: 'ref-yang-2019-feline-pk',
+      },
+      {
+        title: 'Efeitos Adversos e Concentrações Séricas e Urinárias de Amoxicilina-Clavulanato em Gatos Azotêmicos e Não Azotêmicos',
+        authorsYear: 'Benson KK, Quimby JM, Dowers KL, et al. (2020)',
+        journal: 'Journal of Feline Medicine and Surgery',
+        studyDesign: 'Estudo clínico farmacocinético prospectivo comparativo em gatos com DRC e controles.',
+        sampleSize: '16 gatos (8 azotêmicos estágio IRIS 2 a 4 e 8 controles não azotêmicos).',
+        mainFindings:
+          'Gatos azotêmicos apresentaram concentrações séricas significativamente superiores de amoxicilina e clavulanato em comparação a animais hígidos, com redução paradoxal nas concentrações urinárias. Mais de 50% dos gatos azotêmicos apresentaram hiporexia ou êmese durante o tratamento oral.',
+        clinicalTakeaway:
+          'Alerta fundamental para o manejo de gatos com doença renal crônica: maior risco de intolerância gastrintestinal e necessidade de estrita vigilância clínica e hidratação.',
+        referenceId: 'ref-benson-2020-ckd-amox-jfms',
+      },
+      {
+        title: 'Estudo Comparativo de Biodisponibilidade de Duas Formulações Orais de Amoxicilina-Clavulanato em Cães Saudáveis',
+        authorsYear: 'Vasuntrarak K, Patthanachai K, Charoenlertkul P, et al. (2025)',
+        journal: 'BMC Veterinary Research',
+        studyDesign: 'Ensaio clínico farmacocinético cruzado de bioequivalência.',
+        sampleSize: '6 cães Beagles adultos hígidos em delineamento crossover.',
+        mainFindings:
+          'A formulação teste apresentou biodisponibilidade relativa de apenas 76,5% para amoxicilina e 72,7% para o ácido clavulânico em relação ao produto inovador de referência, reprovando nos limites regulatórios de bioequivalência (80% a 125%).',
+        clinicalTakeaway:
+          'Evidencia o perigo de formulações genéricas ou manipuladas sem controle de qualidade e reforça a preferência por medicamentos veterinários de referência comprovada.',
+        referenceId: 'ref-vasuntrarak-2025-bioequivalence-bmc',
       },
     ],
 

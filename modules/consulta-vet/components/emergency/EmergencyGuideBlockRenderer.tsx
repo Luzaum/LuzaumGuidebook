@@ -50,14 +50,17 @@ function Callout({
 }
 
 function blockLayoutClass(type: EmergencyGuideBlock['type'], variant?: 'critical' | 'warning' | 'info') {
-  if (type === 'table' || type === 'comparison' || type === 'formula' || type === 'targetStrip') return 'lg:col-span-2';
-  if (type === 'callout' && variant === 'critical') return 'lg:col-span-2';
-  return '';
+  const fullWidth = type === 'table'
+    || type === 'comparison'
+    || type === 'formula'
+    || type === 'targetStrip'
+    || (type === 'callout' && variant === 'critical');
+  return cn('min-w-0 max-w-full', fullWidth && 'lg:col-span-2');
 }
 
 export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuideBlock[] }) {
   return (
-    <div className="grid gap-4 lg:grid-cols-2">
+    <div className="grid min-w-0 max-w-full gap-4 lg:grid-cols-2">
       {blocks.map((block, i) => {
         if (block.type === 'callout') {
           return (

@@ -6,7 +6,7 @@
   "scripts": {
     "prebuild": "npm run check:conflicts",
     "check:conflicts": "node scripts/check-merge-conflicts.mjs",
-    "lint": "npm run check:conflicts && npm run lint:sql-comments && npm run validate:dbpayloads",
+    "lint": "npm run check:conflicts && npm run lint:sql-comments && npm run validate:dbpayloads && npm run typecheck",
     "dev": "node scripts/vite-dev-realpath.mjs",
     "build": "vite build",
     "preview": "vite preview",

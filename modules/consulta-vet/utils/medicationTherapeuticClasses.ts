@@ -47,8 +47,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'infectologia',
     selectedClassName: 'border-emerald-500 bg-emerald-500/[0.07] text-emerald-700 dark:text-emerald-300',
     iconClassName: 'text-emerald-600 dark:text-emerald-400',
-    medicationSlugs: ['sulfametoxazol-trimetoprima', 'amoxicilina-clavulanato', 'ampicilina-sulbactam', 'ampicilina', 'clindamicina', 'metronidazol', 'enrofloxacina', 'pradofloxacina', 'marbofloxacina', 'ciprofloxacina'],
-    keywords: ['antibiótico', 'antibacteriano', 'aminopenicilina', 'sulfonamida', 'beta-lactâmico', 'β-lactâmico', 'fluoroquinolona', 'quinolona', 'enrofloxacina', 'pradofloxacina', 'veraflox'],
+    medicationSlugs: ['sulfametoxazol-trimetoprima', 'amoxicilina-clavulanato', 'ampicilina-sulbactam', 'ampicilina', 'ceftriaxona', 'clindamicina', 'metronidazol', 'enrofloxacina', 'pradofloxacina', 'marbofloxacina', 'ciprofloxacina'],
+    keywords: ['antibiótico', 'antibacteriano', 'aminopenicilina', 'sulfonamida', 'beta-lactâmico', 'β-lactâmico', 'cefalosporina', 'ceftriaxona', 'rocefin', 'keftron', 'fluoroquinolona', 'quinolona', 'enrofloxacina', 'pradofloxacina', 'veraflox', 'marbofloxacina', 'marbofloxacino', 'marbopet', 'marbocyl', 'marbox', 'marbox-leish'],
   },
   {
     slug: 'anti-helminticos-antiparasitarios',
@@ -71,8 +71,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-orange-500 bg-orange-500/[0.07] text-orange-700 dark:text-orange-300',
     iconClassName: 'text-orange-600 dark:text-orange-400',
-    medicationSlugs: ['dipirona'],
-    keywords: ['aine', 'anti-inflamatório não esteroidal', 'anti-inflamatorio nao esteroidal', 'coxibe', 'dipirona', 'metamizol', 'meloxicam', 'carprofeno', 'firocoxib', 'robenacoxib'],
+    medicationSlugs: ['meloxicam'],
+    keywords: ['aine', 'anti-inflamatório não esteroidal', 'anti-inflamatorio nao esteroidal', 'coxibe', 'meloxicam', 'carprofeno', 'firocoxib', 'robenacoxib'],
   },
   {
     slug: 'glicocorticoides',
@@ -95,8 +95,8 @@ export const MEDICATION_THERAPEUTIC_CLASSES: readonly MedicationTherapeuticClass
     theme: 'anestesia-dor',
     selectedClassName: 'border-cyan-500 bg-cyan-500/[0.07] text-cyan-800 dark:text-cyan-300',
     iconClassName: 'text-cyan-600 dark:text-cyan-400',
-    medicationSlugs: ['metadona', 'buprenorfina', 'tramadol', 'lidocaina', 'amantadina'],
-    keywords: ['analgésico', 'anestésico local', 'metadona', 'mytedom', 'comfortan', 'synthadon', 'tramadol', 'opioide', 'buprenorfina', 'buprenex', 'vetergesic', 'temgesic', 'restiva', 'transtec'],
+    medicationSlugs: ['dipirona', 'metadona', 'buprenorfina', 'tramadol', 'lidocaina', 'amantadina'],
+    keywords: ['analgésico', 'antipirético', 'dipirona', 'metamizol', 'anestésico local', 'metadona', 'mytedom', 'comfortan', 'synthadon', 'tramadol', 'opioide', 'buprenorfina', 'buprenex', 'vetergesic', 'temgesic', 'restiva', 'transtec'],
   },
   {
     slug: 'neurologicos-anticonvulsivantes',

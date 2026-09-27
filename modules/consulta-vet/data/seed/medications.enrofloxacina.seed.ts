@@ -467,10 +467,42 @@ export const enrofloxacinaMedicationsSeed: MedicationRecord[] = [
             'Contraindicado formalmente em cães até 8 meses (portes miniatura, pequeno e médio), até 12 meses (porte grande) e até 18 meses (raças gigantes). Em cães adultos, respeitar a faixa posológica de 5 a 20 mg/kg q24h conforme a MIC e o foco infeccioso.',
         },
       ],
+      dilutionGuide: {
+        compatibleFluids: [
+          'Solução Fisiológica (Cloreto de Sódio 0,9% - SF 0,9%) - DILUENTE DE ESCOLHA PADRÃO (diluição recomendada de 1:1 a 1:4 para reduzir alcalinidade)',
+          'Solução Glicosada a 5% (SG 5%) - compatível para infusão intravenosa lenta',
+          'Água estéril para injeção - para preparo ou diluição extemporânea imediata',
+        ],
+        incompatibleFluids: [
+          'NUNCA misturar ou infundir concomitantemente com soluções contendo cátions polivalentes (Cálcio ou Magnésio, como Ringer com Lactato ou Solução de Ringer simples), devido à quelação imediata e risco de precipitação microcristalina',
+          'Soluções parenterais ácidas ou bicarbonato de sódio concentrado (a alteração drástica do pH alcalino precipita a enrofloxacina na linha)',
+          'Incompatível para mistura direta na mesma seringa ou frasco com aminoglicosídeos (gentamicina, amicacina), heparina, anfotericina B ou penicilinas',
+        ],
+        infusionRateGuidance:
+          'NUNCA administrar em bólus intravenoso rápido: a injeção IV rápida causa liberação maciça de histamina, colapso hemodinâmico agudo, hipotensão severa e convulsões por bloqueio de receptores GABAA centrais. Diluir obrigatoriamente a dose calculada em SF 0,9% ou SG 5% (na proporção mínima de 1:1 a 1:4) e infundir lentamente ao longo de 20 a 30 minutos (ou taxa não superior a 1 mL da solução diluída por minuto).',
+        preparationNotes:
+          'A solução injetável de enrofloxacina a 5% (50 mg/mL) possui pH extremamente alcalino (aproximadamente 10,5 a 11,0). O extravasamento perivascular acidental provoca flebite química severa, queimação aguda, necrose tecidual e esfacelo cutâneo. Assegurar cateterização venosa periférica patente antes do início da infusão. Em aplicações intramusculares (IM), a alcalinidade gera dor pronunciada e reação inflamatória estéril local transitória; alternar os sítios e migrar para a via oral assim que clinicamente estável. Em gatos, o teto inegociável de 5 mg/kg/dia deve ser rigorosamente respeitado para evitar retinotoxicidade e cegueira permanente.',
+      },
     },
 
     // 6. Atenção, Precauções e Interações
     attentionData: {
+      dilutionGuide: {
+        compatibleFluids: [
+          'Solução Fisiológica (Cloreto de Sódio 0,9% - SF 0,9%) - DILUENTE DE ESCOLHA PADRÃO (diluição recomendada de 1:1 a 1:4 para reduzir alcalinidade)',
+          'Solução Glicosada a 5% (SG 5%) - compatível para infusão intravenosa lenta',
+          'Água estéril para injeção - para preparo ou diluição extemporânea imediata',
+        ],
+        incompatibleFluids: [
+          'NUNCA misturar ou infundir concomitantemente com soluções contendo cátions polivalentes (Cálcio ou Magnésio, como Ringer com Lactato ou Solução de Ringer simples), devido à quelação imediata e risco de precipitação microcristalina',
+          'Soluções parenterais ácidas ou bicarbonato de sódio concentrado (a alteração drástica do pH alcalino precipita a enrofloxacina na linha)',
+          'Incompatível para mistura direta na mesma seringa ou frasco com aminoglicosídeos (gentamicina, amicacina), heparina, anfotericina B ou penicilinas',
+        ],
+        infusionRateGuidance:
+          'NUNCA administrar em bólus intravenoso rápido: a injeção IV rápida causa liberação maciça de histamina, colapso hemodinâmico agudo, hipotensão severa e convulsões por bloqueio de receptores GABAA centrais. Diluir obrigatoriamente a dose calculada em SF 0,9% ou SG 5% (na proporção mínima de 1:1 a 1:4) e infundir lentamente ao longo de 20 a 30 minutos (ou taxa não superior a 1 mL da solução diluída por minuto).',
+        preparationNotes:
+          'A solução injetável de enrofloxacina a 5% (50 mg/mL) possui pH extremamente alcalino (aproximadamente 10,5 a 11,0). O extravasamento perivascular acidental provoca flebite química severa, queimação aguda, necrose tecidual e esfacelo cutâneo. Assegurar cateterização venosa periférica patente antes do início da infusão. Em aplicações intramusculares (IM), a alcalinidade gera dor pronunciada e reação inflamatória estéril local transitória; alternar os sítios e migrar para a via oral assim que clinicamente estável. Em gatos, o teto inegociável de 5 mg/kg/dia deve ser rigorosamente respeitado para evitar retinotoxicidade e cegueira permanente.',
+      },
       attentionSubtitle:
         'Vigilância de Retinotoxicidade Felina, Danos Articulares em Jovens e Incompatibilidades Parenterais',
       precautions: [

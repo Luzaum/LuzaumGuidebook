@@ -42,8 +42,8 @@ type SearchablePdfDocument = {
 const MIN_ZOOM = 0.5;
 const MAX_ZOOM = 2.2;
 const ZOOM_STEP = 0.1;
-const DEFAULT_ZOOM = 0.65;
-const FULLSCREEN_ZOOM = 0.9;
+const DEFAULT_ZOOM = 1;
+const FULLSCREEN_ZOOM = 1;
 
 function normalizeSearchText(value: string): string {
   return value
@@ -152,7 +152,7 @@ export function PdfViewerShell({
   }, [numPages, pageNumber]);
 
   const pageWidth = useMemo(
-    () => Math.max(260, Math.min(1100, containerWidth - (containerWidth >= 640 ? 128 : 40))),
+    () => Math.max(200, Math.min(1100, containerWidth - (containerWidth >= 640 ? 128 : 16))),
     [containerWidth]
   );
   const canGoPrev = pageNumber > 1;
@@ -375,6 +375,10 @@ export function PdfViewerShell({
         if (searchableText.includes(normalizedQuery)) {
           matchedPages.push(page);
         }
+
+        if (page % 4 === 0) {
+          await new Promise<void>((resolve) => window.setTimeout(resolve, 0));
+        }
       }
 
       if (searchRequestRef.current !== requestId) return;
@@ -408,29 +412,40 @@ export function PdfViewerShell({
       )}
     >
       <header className="border-b border-border bg-muted/40">
-        <div className="flex flex-col gap-3 p-4 xl:flex-row xl:items-center xl:justify-between">
+        <div className="flex flex-col gap-2 p-3 sm:gap-3 sm:p-4 xl:flex-row xl:items-center xl:justify-between">
           <div className="min-w-0">
-            <div className="mb-1 flex items-center gap-2 text-foreground">
-              <FileText className="h-5 w-5 shrink-0 text-primary" />
-              <h3 className="truncate text-sm font-semibold sm:text-base" title={title}>
+            <div className="flex items-center gap-1.5 text-foreground sm:mb-1 sm:gap-2">
+              <FileText className="h-4 w-4 shrink-0 text-primary sm:h-5 sm:w-5" />
+              <h3 className="truncate text-xs font-semibold sm:text-base" title={title}>
                 {title}
               </h3>
             </div>
-            <p className="text-xs text-muted-foreground">Leitor PDF integrado</p>
+            <p className="hidden text-xs text-muted-foreground sm:block">Leitor PDF integrado</p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
+          <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Abrir PDF no leitor externo do dispositivo"
+            className="inline-flex h-9 w-full items-center justify-center gap-2 rounded-lg bg-primary px-3 text-[11px] font-semibold text-primary-foreground transition-opacity hover:opacity-90 sm:hidden"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+            Abrir no leitor de PDF do celular
+          </a>
+
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <button
               type="button"
               onClick={() => updatePageNumber(pageNumber - 1)}
               disabled={!canGoPrev}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40 sm:h-11 sm:w-11"
               title="Página anterior"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
 
-            <span className="min-w-[108px] text-center text-xs font-medium text-muted-foreground">
+            <span className="min-w-[82px] text-center text-[11px] font-medium text-muted-foreground sm:min-w-[108px] sm:text-xs">
               Página {numPages ? pageNumber : '-'} de {numPages || '-'}
             </span>
 
@@ -438,26 +453,26 @@ export function PdfViewerShell({
               type="button"
               onClick={() => updatePageNumber(pageNumber + 1)}
               disabled={!canGoNext}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted disabled:cursor-not-allowed disabled:opacity-40 sm:h-11 sm:w-11"
               title="Próxima página"
             >
               <ChevronRight className="h-4 w-4" />
             </button>
 
-            <div className="mx-1 h-6 w-px bg-border" />
+            <div className="mx-0.5 h-5 w-px bg-border sm:mx-1 sm:h-6" />
 
             <button
               type="button"
               onClick={() =>
                 setZoom((current) => Math.max(MIN_ZOOM, Number((current - ZOOM_STEP).toFixed(1))))
               }
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted sm:h-11 sm:w-11"
               title="Diminuir zoom"
             >
               <ZoomOut className="h-4 w-4" />
             </button>
 
-            <span className="min-w-[44px] text-center text-xs font-medium text-muted-foreground">
+            <span className="min-w-[36px] text-center text-[11px] font-medium text-muted-foreground sm:min-w-[44px] sm:text-xs">
               {Math.round(zoom * 100)}%
             </span>
 
@@ -466,7 +481,7 @@ export function PdfViewerShell({
               onClick={() =>
                 setZoom((current) => Math.min(MAX_ZOOM, Number((current + ZOOM_STEP).toFixed(1))))
               }
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted sm:h-11 sm:w-11"
               title="Aumentar zoom"
             >
               <ZoomIn className="h-4 w-4" />
@@ -476,7 +491,8 @@ export function PdfViewerShell({
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+              aria-label="Abrir PDF em nova aba"
+              className="hidden h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted sm:inline-flex"
               title="Abrir em nova aba"
             >
               <ExternalLink className="h-4 w-4" />
@@ -485,7 +501,8 @@ export function PdfViewerShell({
             <a
               href={url}
               download
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+              aria-label="Baixar PDF"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted sm:h-11 sm:w-11"
               title="Baixar PDF"
             >
               <Download className="h-4 w-4" />
@@ -494,7 +511,7 @@ export function PdfViewerShell({
             <button
               type="button"
               onClick={() => void toggleFullscreen()}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:bg-muted sm:h-11 sm:w-11"
               title={isFullscreen ? 'Sair da tela cheia' : 'Abrir em tela cheia'}
               aria-label={isFullscreen ? 'Sair da tela cheia' : 'Abrir em tela cheia'}
             >
@@ -505,9 +522,9 @@ export function PdfViewerShell({
 
         <form
           onSubmit={handleSearch}
-          className="space-y-2 border-t border-border/70 px-4 py-3"
+          className="space-y-1.5 border-t border-border/70 px-3 py-2 sm:space-y-2 sm:px-4 sm:py-3"
         >
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="flex gap-1.5 sm:gap-2">
             <div className="relative min-w-0 flex-1">
               <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
               <input
@@ -520,13 +537,13 @@ export function PdfViewerShell({
                   setSearchMessage(null);
                 }}
                 placeholder="Pesquisar palavra no consenso..."
-                className="h-11 w-full rounded-lg border border-border bg-background pl-9 pr-12 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15"
+                className="h-9 w-full rounded-lg border border-border bg-background pl-8 pr-10 text-xs text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary focus:ring-2 focus:ring-primary/15 sm:h-11 sm:pl-9 sm:pr-12 sm:text-sm"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={clearSearch}
-                  className="absolute top-1/2 inline-flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground"
+                  className="absolute top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground sm:h-10 sm:w-10"
                   style={{ right: 4 }}
                   title="Limpar pesquisa"
                   aria-label="Limpar pesquisa"
@@ -539,7 +556,7 @@ export function PdfViewerShell({
             <button
               type="submit"
               disabled={isSearching}
-              className="inline-flex h-11 min-w-[132px] items-center justify-center gap-2 rounded-lg bg-primary px-4 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-70"
+              className="inline-flex h-9 min-w-[94px] items-center justify-center gap-1.5 rounded-lg bg-primary px-3 text-xs font-semibold text-primary-foreground transition-opacity hover:opacity-90 disabled:cursor-wait disabled:opacity-70 sm:h-11 sm:min-w-[132px] sm:gap-2 sm:px-4 sm:text-sm"
             >
               {isSearching ? (
                 <LoaderCircle className="h-4 w-4 animate-spin" />
@@ -551,8 +568,8 @@ export function PdfViewerShell({
           </div>
 
           {(searchMessage || searchResults.length > 0) && (
-            <div className="flex min-h-10 items-center justify-between gap-3 rounded-lg border border-border/70 bg-background/70 px-3">
-              <span className="text-xs font-medium text-muted-foreground">
+            <div className="flex min-h-9 items-center justify-between gap-2 rounded-lg border border-border/70 bg-background/70 px-2.5 sm:min-h-10 sm:gap-3 sm:px-3">
+              <span className="text-[11px] font-medium text-muted-foreground sm:text-xs">
                 {searchResults.length && activeSearchResult >= 0
                   ? `Resultado ${activeSearchResult + 1} de ${searchResults.length} · página ${searchResults[activeSearchResult]}`
                   : searchMessage}
@@ -562,7 +579,7 @@ export function PdfViewerShell({
                   <button
                     type="button"
                     onClick={() => selectSearchResult(activeSearchResult - 1)}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground hover:bg-muted"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground hover:bg-muted sm:h-11 sm:w-11"
                     title="Resultado anterior"
                   >
                     <ChevronUp className="h-4 w-4" />
@@ -570,7 +587,7 @@ export function PdfViewerShell({
                   <button
                     type="button"
                     onClick={() => selectSearchResult(activeSearchResult + 1)}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-border bg-background text-foreground hover:bg-muted"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-border bg-background text-foreground hover:bg-muted sm:h-11 sm:w-11"
                     title="Próximo resultado"
                   >
                     <ChevronDown className="h-4 w-4" />
@@ -586,7 +603,7 @@ export function PdfViewerShell({
         ref={containerRef}
         className={cn(
           'relative overflow-auto bg-slate-900/95 px-2 py-3 sm:px-16 sm:py-4',
-          isFullscreen ? 'min-h-0 flex-1' : 'h-[560px]'
+          isFullscreen ? 'min-h-0 flex-1' : 'h-[min(680px,70dvh)] min-h-[480px]'
         )}
       >
         {loadingError ? (
@@ -605,17 +622,13 @@ export function PdfViewerShell({
           </div>
         ) : (
           <div
-            className="grid items-start gap-1 sm:gap-2"
-            style={{
-              gridTemplateColumns:
-                '44px minmax(0, 1fr) 44px',
-            }}
+            className="grid min-w-0 grid-cols-1 items-start gap-1 sm:grid-cols-[44px_minmax(0,1fr)_44px] sm:gap-2"
           >
             <button
               type="button"
               onClick={() => updatePageNumber(pageNumber - 1)}
               disabled={!canGoPrev}
-              className="sticky top-[45vh] z-10 inline-flex h-20 w-11 items-center justify-center rounded-md border border-slate-500/40 bg-slate-800/90 text-white shadow-lg transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-25"
+              className="sticky top-[45vh] z-10 hidden h-20 w-11 items-center justify-center rounded-md border border-slate-500/40 bg-slate-800/90 text-white shadow-lg transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-25 sm:inline-flex"
               style={{ top: 'calc(50% - 40px)' }}
               title="Página anterior"
               aria-label="Página anterior"
@@ -637,8 +650,9 @@ export function PdfViewerShell({
                   );
                   setLoadingError(null);
                 }}
-                onLoadError={(error) => {
-                  setLoadingError(error.message || 'Erro ao carregar arquivo PDF.');
+                  onLoadError={(error) => {
+                    console.error('Falha ao carregar PDF do consenso', { url, error });
+                    setLoadingError('O documento não pôde ser aberto. Tente baixar o arquivo ou abri-lo em outra aba. Código PDF-01.');
                 }}
                 loading={<p className="py-20 text-sm text-slate-300">Carregando PDF...</p>}
                 error={null}
@@ -672,7 +686,7 @@ export function PdfViewerShell({
               type="button"
               onClick={() => updatePageNumber(pageNumber + 1)}
               disabled={!canGoNext}
-              className="sticky top-[45vh] z-10 inline-flex h-20 w-11 items-center justify-center rounded-md border border-slate-500/40 bg-slate-800/90 text-white shadow-lg transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-25"
+              className="sticky top-[45vh] z-10 hidden h-20 w-11 items-center justify-center rounded-md border border-slate-500/40 bg-slate-800/90 text-white shadow-lg transition-colors hover:bg-slate-700 disabled:cursor-not-allowed disabled:opacity-25 sm:inline-flex"
               style={{ top: 'calc(50% - 40px)' }}
               title="Próxima página"
               aria-label="Próxima página"

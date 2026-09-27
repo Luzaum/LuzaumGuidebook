@@ -115,6 +115,7 @@ export function HomePage() {
   const [searchResults, setSearchResults] = useState<SearchResults>({ diseases: [], medications: [], consensos: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [searchError, setSearchError] = useState<string | null>(null);
   const [continueItem, setContinueItem] = useState<
     | { kind: 'disease'; item: DiseaseRecord; state?: { pageNumber?: number; sectionId?: string } }
     | { kind: 'medication'; item: MedicationRecord; state?: { pageNumber?: number; sectionId?: string } }
@@ -172,12 +173,14 @@ export function HomePage() {
     const normalizedQuery = deferredQuery.trim();
     if (!normalizedQuery) {
       setSearchResults({ diseases: [], medications: [], consensos: [] });
+      setSearchError(null);
       return;
     }
 
     let isMounted = true;
 
     const loadSearch = async () => {
+      setSearchError(null);
       try {
         const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
           diseaseRepository.search(normalizedQuery),
@@ -195,6 +198,7 @@ export function HomePage() {
       } catch {
         if (!isMounted) return;
         setSearchResults({ diseases: [], medications: [], consensos: [] });
+        setSearchError('A busca não pôde ser concluída. Verifique a conexão e tente novamente.');
       }
     };
 
@@ -388,6 +392,11 @@ export function HomePage() {
 
       {!isLoading && !error && (query.trim() ? (
         <section className="space-y-8">
+          {searchError ? (
+            <div className="rounded-2xl border border-destructive/30 bg-destructive/10 px-5 py-4 text-sm text-destructive" role="alert">
+              {searchError}
+            </div>
+          ) : null}
           <div className="grid gap-8 xl:grid-cols-3">
             <div>
               <div className="mb-4 flex items-center gap-2 text-lg font-bold tracking-tight text-foreground">
@@ -395,7 +404,7 @@ export function HomePage() {
                 {UI_TEXT.diseaseLabel}
               </div>
               <div className="space-y-4">
-                {searchResults.diseases.length > 0 ? (
+                {!searchError && searchResults.diseases.length > 0 ? (
                   searchResults.diseases.map((disease) => (
                     <EntityCard
                       key={disease.id}
@@ -407,11 +416,11 @@ export function HomePage() {
                       entityId={disease.id}
                     />
                   ))
-                ) : (
+                ) : !searchError ? (
                   <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
                     {UI_TEXT.searchEmptyDisease}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
 
@@ -421,7 +430,7 @@ export function HomePage() {
                 {UI_TEXT.medicationLabel}
               </div>
               <div className="space-y-4">
-                {searchResults.medications.length > 0 ? (
+                {!searchError && searchResults.medications.length > 0 ? (
                   searchResults.medications.map((medication) => (
                     <EntityCard
                       key={medication.id}
@@ -433,11 +442,11 @@ export function HomePage() {
                       entityId={medication.id}
                     />
                   ))
-                ) : (
+                ) : !searchError ? (
                   <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
                     {UI_TEXT.searchEmptyMedication}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
 
@@ -447,7 +456,7 @@ export function HomePage() {
                 {UI_TEXT.consensoLabel}
               </div>
               <div className="space-y-4">
-                {searchResults.consensos.length > 0 ? (
+                {!searchError && searchResults.consensos.length > 0 ? (
                   searchResults.consensos.map((consenso) => (
                     <EntityCard
                       key={consenso.id}
@@ -459,11 +468,11 @@ export function HomePage() {
                       entityId={consenso.id}
                     />
                   ))
-                ) : (
+                ) : !searchError ? (
                   <div className="rounded-2xl border border-border bg-card p-4 text-sm text-muted-foreground">
                     {UI_TEXT.searchEmptyConsenso}
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
           </div>

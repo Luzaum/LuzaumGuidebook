@@ -39,12 +39,15 @@ export function CategoryDetailPage() {
   const [medications, setMedications] = useState<MedicationRecord[]>([]);
   const [consensos, setConsensos] = useState<ConsensusRecord[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [reloadKey, setReloadKey] = useState(0);
 
   useEffect(() => {
     let isMounted = true;
 
     const loadData = async () => {
       setIsLoading(true);
+      setError(null);
 
       if (!slug) {
         if (isMounted) {
@@ -57,30 +60,38 @@ export function CategoryDetailPage() {
         return;
       }
 
-      const found = await categoryRepository.getBySlug(slug);
-      if (!isMounted) return;
+      try {
+        const found = await categoryRepository.getBySlug(slug);
+        if (!isMounted) return;
 
-      setCategory(found);
-      if (!found) {
+        setCategory(found);
+        if (!found) {
+          setDiseases([]);
+          setMedications([]);
+          setConsensos([]);
+          return;
+        }
+
+        const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
+          diseaseRepository.listByCategory(found.slug),
+          medicationRepository.listByCategory(found.slug),
+          consensoRepository.listByCategory(found.slug),
+        ]);
+
+        if (!isMounted) return;
+        setDiseases(loadedDiseases);
+        setMedications(loadedMedications);
+        setConsensos(loadedConsensos);
+      } catch {
+        if (!isMounted) return;
+        setCategory(null);
         setDiseases([]);
         setMedications([]);
         setConsensos([]);
-        setIsLoading(false);
-        return;
+        setError('Não foi possível carregar esta categoria. Verifique a conexão e tente novamente.');
+      } finally {
+        if (isMounted) setIsLoading(false);
       }
-
-      const [loadedDiseases, loadedMedications, loadedConsensos] = await Promise.all([
-        diseaseRepository.listByCategory(found.slug),
-        medicationRepository.listByCategory(found.slug),
-        consensoRepository.listByCategory(found.slug),
-      ]);
-
-      if (!isMounted) return;
-
-      setDiseases(loadedDiseases);
-      setMedications(loadedMedications);
-      setConsensos(loadedConsensos);
-      setIsLoading(false);
     };
 
     void loadData();
@@ -88,7 +99,7 @@ export function CategoryDetailPage() {
     return () => {
       isMounted = false;
     };
-  }, [categoryRepository, consensoRepository, diseaseRepository, medicationRepository, slug]);
+  }, [categoryRepository, consensoRepository, diseaseRepository, medicationRepository, reloadKey, slug]);
 
   if (isLoading) {
     return (
@@ -98,11 +109,25 @@ export function CategoryDetailPage() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
+        <div className="w-full rounded-2xl border border-destructive/30 bg-destructive/10 p-6 text-center md:p-8" role="alert">
+          <h1 className="mb-2 text-xl font-semibold text-destructive">Erro ao carregar categoria</h1>
+          <p className="mb-6 text-sm text-destructive/80">{error}</p>
+          <button type="button" onClick={() => setReloadKey((value) => value + 1)} className="rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground">
+            Tentar novamente
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   if (!category) {
     return (
       <div className="mx-auto flex h-full w-full max-w-[860px] items-center justify-center p-6">
         <div className="w-full rounded-2xl border border-border bg-card p-6 text-center md:p-8">
-          <h2 className="mb-2 text-xl font-semibold text-foreground">{UI_TEXT.notFoundTitle}</h2>
+          <h1 className="mb-2 text-xl font-semibold text-foreground">{UI_TEXT.notFoundTitle}</h1>
           <p className="mb-6 text-sm text-muted-foreground">{UI_TEXT.notFoundBody}</p>
           <Link
             to="/consulta-vet/categorias"

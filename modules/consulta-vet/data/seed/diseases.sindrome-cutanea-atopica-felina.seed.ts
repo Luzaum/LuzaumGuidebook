@@ -256,6 +256,16 @@ export const sindromeCutaneaAtopicaFelinaRecord: DiseaseRecord = {
     toxoplasmoseDisseminada:
       'Complicação rara em gatos sob imunossupressão intensa por ciclosporina ou oclacitinib que caçam ou consomem carne crua (19,20).',
   },
+  prevention: {
+    medidas: [
+      'Controle Antiparasitário Universal e Contínuo: Aplicação mensal ininterrupta de ectoparasiticidas tópicos (ex.: fluralaner tópico, selamectina/sarolaner ou esafoxolaner) em 100% dos felinos da residência, prevenindo a hipersensibilidade à picada de pulga (DAPP), principal gatilho de exacerbação da FASS.',
+      'Dieta Hipoalergênica Estrita de Longo Prazo: Manutenção de dieta com proteína hidrolisada ou novel protein em gatos com histórico comórbido de hipersensibilidade alimentar, evitando escapes alimentares e petiscos comerciais não hidrolisados.',
+      'Manejo de Estresse e Enriquecimento Ambiental Cat-Friendly: Implementação das 5 diretrizes de bem-estar ambiental felino da ISFM/AAHA (recursos distribuídos, arranhadores verticais e horizontais, áreas elevadas de descanso e rotinas de brincadeira predatória), mitigando a liberação de neuropeptídeos (substância P e CGRP) que exacerbam o prurido e a autolambedura psicogênica.',
+      'Redução de Aeroalérgenos e Irritantes Respiratórios Domiciliares: Uso de areia sanitária sem poeira e sem fragrâncias, aspiração periódica com filtros HEPA e proibição estrita de fumaça de tabaco, incensos, velas aromáticas e difusores de óleos essenciais no ambiente doméstico.',
+      'Prevenção de Toxoplasmose em Gatos sob Imunossupressão: Proibição absoluta do fornecimento de carnes cruas ou malcozidas e restrição total ao acesso externo (bloqueio de caça a roedores e aves) para gatos em terapia crônica com ciclosporina ou corticoides.',
+      'Imunoterapia Alérgeno-Específica Felina (ASIT): Introdução de dessensibilização alérgeno-específica sublingual (SLIT) ou subcutânea (SCIT) em casos ambientais puros para induzir tolerância imunológica de longo prazo e prevenir crises agudas recorrentes.',
+    ],
+  },
   figures: [
     {
       kind: 'clinicalFigure',

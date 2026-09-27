@@ -50,6 +50,11 @@ export const DISEASE_CONSENSUS_LINKS: Record<string, string[]> = {
     'curative-risco-trombotico-2022',
     'veccs-sepse-definicao-caes-gatos-2026',
   ],
+  'anemia-hemolitica-imunomediada-canina': [
+    'acvim-ahim-diagnostico-caes-gatos-2019',
+    'acvim-ahim-tratamento-canino-2019',
+    'curative-risco-trombotico-2022',
+  ],
 };
 
 export function mergeConsensusSlugsForDisease(slug: string, existing: string[] = []): string[] {

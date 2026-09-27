@@ -249,6 +249,15 @@ export const doencaDoDiscoIntervertebralGatosRecord: DiseaseRecord = {
     constipaçãoESecreçãoFecalStasis:
       'Imobilidade e dor Lombossacra interferindo com a postura defecatória. Exige adequação de dieta e laxantes suaves (4).',
   },
+  prevention: {
+    medidas: [
+      'Controle Ponderal e Prevenção da Obesidade Felina: A sobrecarga de peso corporal amplia exponencialmente o estresse biomecânico nas articulações vertebrais e acelera a degeneração do ânulo fibroso (Hansen tipo II); preconiza-se manutenção do ECC em 4–5/9 com alimentos úmidos de alta densidade proteica e fibras solúveis/insolúveis balanceadas.',
+      'Adaptação do Ambiente Cat-Friendly para Felinos Seniores: Instalação de rampas e escadas acarpetadas com inclinação suave para permitir acesso seguro a locais de repouso elevados (camas, sofás, janelas), reduzindo impactos axiais violentos decorrentes de saltos e quedas acidentais.',
+      'Acessibilidade da Caixa Sanitária: Disponibilização de caixas de areia com laterais rebaixadas (altura < 5–7 cm) para que o gato com dor vertebral ou paresia entre e saia facilmente sem necessidade de saltar, prevenindo retenção voluntária de fezes e urina.',
+      'Elevação e Ergonomia de Comedouros e Bebedouros: Utilização de suportes elevados e inclinados para tigelas de água e comida, minimizando a flexão extrema da coluna cervical durante as refeições em felinos com protrusão discal cervical crônica.',
+      'Manejo Proativo e Multimodal da Osteoartrite e Espondilose Concomitantes: Controle precoce da dor articular com analgésicos adequados para espécie felina (ex.: anticorpos monoclonais anti-NGF, gabapentina), prevenindo a sobrecarga compensatória sobre os discos intervertebrais adjacentes aos segmentos anquilosados.',
+    ],
+  },
   figures: [
     {
       kind: 'clinicalFigure',

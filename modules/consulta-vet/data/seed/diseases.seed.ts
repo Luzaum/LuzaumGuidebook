@@ -3,6 +3,9 @@ import { piotoraxRecord } from './diseases.piotorax.seed';
 import { quilotoraxRecord } from './diseases.quilotorax.seed';
 import { cistiteEnfisematosaCaesGatosSeed } from './diseases.cistite-enfisematosa-caes-gatos.seed';
 import { discinesiaParoxisticaCaesGatosSeed } from './diseases.discinesia-paroxistica-caes-gatos.seed';
+import { platinosomoseFelinaSeed } from './diseases.platinosomose-felina.seed';
+import { triadeFelinaSeed } from './diseases.triade-felina.seed';
+import { anemiaHemoliticaImunomediadaCaninaRecord } from './diseases.ahim-canina.seed';
 import { trombocitopeniaCaesGatosSeed } from './diseases.trombocitopenia-caes-gatos.seed';
 import { anemiaCaesGatosSeed } from './diseases.anemia-caes-gatos.seed';
 import { leishmanioseCaesGatosSeed } from './diseases.leishmaniose-caes-gatos.seed';
@@ -129,4 +132,7 @@ export const diseasesSeed: DiseaseRecord[] = [
   leishmanioseCaesGatosSeed,
   cistiteIdiopaticaFelinaSeed,
   discinesiaParoxisticaCaesGatosSeed,
+  platinosomoseFelinaSeed,
+  triadeFelinaSeed,
+  anemiaHemoliticaImunomediadaCaninaRecord,
 ].map(withPlainLanguage);
