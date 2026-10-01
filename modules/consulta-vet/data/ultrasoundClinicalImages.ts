@@ -1,6 +1,6 @@
 import type { UltrasoundOrganId } from './ultrasoundReferenceData';
 
-export type UltrasoundClinicalImage = { src: string; article: string; title: string; author: string; license: string; licenseUrl: string; figure: string; original: string; originalCaption?: string; speciesLabel: string; caption: string; changes: string };
+export type UltrasoundClinicalImage = { src: string; width: number; height: number; article: string; title: string; author: string; license: string; licenseUrl: string; figure: string; original: string; originalCaption?: string; speciesLabel: string; caption: string; changes: string };
 
 export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundClinicalImage> = {
   "liver": {
@@ -15,7 +15,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonograph (2D) in sagittal scan of shrunk liver with hyperechoic hepatic parenchyma and irregular lobe margins surrounded with anechoic abdominal effusion in a 5-year-old intact male Cocker spaniel dog.",
     "speciesLabel": "Cão — fígado remodelado",
     "caption": "Fígado reduzido, brilhante e com contorno irregular, cercado por líquido escuro. Observe o conjunto; brilho isolado não confirma cirrose.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 600,
+    "height": 458
   },
   "gallbladder": {
     "src": "/assets/consulta-vet/ultrasound-clinical/gallbladder.webp",
@@ -28,7 +30,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://www.frontiersin.org/files/Articles/1508705/xml-images/fvets-12-1508705-g002.webp",
     "speciesLabel": "Cão — mucocele, painel A",
     "caption": "A é ultrassom: conteúdo estrelado brilhante, parede espessa/escura, líquido e gordura reativa ao redor. B a D são tomografia do mesmo animal. O conjunto aumenta a preocupação com complicação; não confirma ruptura isoladamente.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 1535,
+    "height": 1330
   },
   "spleen": {
     "src": "/assets/consulta-vet/ultrasound-clinical/spleen.jpg",
@@ -42,7 +46,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonographic image of the spleen of two canine patients, using ARFI elastography (Virtual Touch Tissue Imaging and Quantification Elastography method). (A) Spleen with diffuse malignant alteration (multicentric lymphoma) presenting a mean shear velocity of 3.04 m/s; (B) Spleen with benign focal alteration (splenic hematoma) presenting an average shear velocity of 1.89 m/s.",
     "speciesLabel": "Cães — linfoma e hematoma",
     "caption": "Painel A: linfoma; B: hematoma. As imagens incluem elastografia ARFI. Contrastes e heterogeneidade se sobrepõem entre lesões; a cor desta técnica não representa Doppler.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 669,
+    "height": 746
   },
   "kidneys": {
     "src": "/assets/consulta-vet/ultrasound-clinical/kidneys.jpg",
@@ -56,7 +62,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Postoperative US images of left kidney. (A) Sagittal image. (B) Transverse image. Three days after surgery, the left renal pelvic height was observed to be within 2 mm on US, and a nephrostomy tube was observed normally as two parallel lines in the renal pelvis (white arrow).",
     "speciesLabel": "Gato — rim após desobstrução",
     "caption": "A: corte longitudinal; B: transversal. As linhas paralelas brilhantes correspondem a tubo de nefrostomia. Esta é uma imagem pós-operatória, não um modelo de rim normal.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 661,
+    "height": 257
   },
   "stomach": {
     "src": "/assets/consulta-vet/ultrasound-clinical/stomach.jpg",
@@ -70,7 +78,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
     "speciesLabel": "Gato — painel A",
     "caption": "No painel A, observe pregas do estômago vazio: contração e pregas interferem na espessura aparente. Os demais painéis mostram outros segmentos gastrointestinais.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 750,
+    "height": 416
   },
   "small-intestine": {
     "src": "/assets/consulta-vet/ultrasound-clinical/small-intestine.jpg",
@@ -84,7 +94,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
     "speciesLabel": "Cão e gato — painéis B, C e D",
     "caption": "B: duodeno canino; C: jejuno felino com camadas alternadas; D: íleo felino. As camadas são interfaces acústicas; medidas e proporções variam por segmento e espécie.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 750,
+    "height": 416
   },
   "colon": {
     "src": "/assets/consulta-vet/ultrasound-clinical/colon.jpg",
@@ -98,7 +110,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonographic images of the gastrointestinal segments routinely assessed in the US evaluation of dogs and cats (linear probe 9–11 MHz). (A) short axis US image of an empty stomach of a cat (rugal folds); (B) Longitudinal US image of the duodenum of a dog, and (C) jejunum of a cat, evidencing the five echogenic layers; (D) Transverse US image of the distal ileum of a cat; (E) Ileocecocolic region, cat: ileum and gas filled colon, exhibiting acoustic shadowing (*); (F) Colon, dog: gas filled, evidencing acoustic shadowing (*). Full wall between clippers in all images.",
     "speciesLabel": "Cão e gato — painéis E e F",
     "caption": "E: região ileocecocólica felina; F: cólon canino. Gás gera interface brilhante e sombra, escondendo a parede profunda. Não medir tecido que não está claramente visível.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 750,
+    "height": 416
   },
   "pancreas": {
     "src": "/assets/consulta-vet/ultrasound-clinical/pancreas.jpg",
@@ -112,7 +126,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Example of pancreatitis affecting the left limb of the pancreas (group 1): Left limb of the pancreas demonstrating coarse mixed hypoechoic (long arrow) pancreatic parenchyma with ill-defined hyperechoic surrounding fat (small arrows) typical of acute pancreatitis.",
     "speciesLabel": "Cão — pancreatite",
     "caption": "Parênquima misto/escuro indicado pela seta longa e gordura adjacente brilhante nas setas curtas. Edema e reação inflamatória da gordura ajudam a explicar o contraste.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 788,
+    "height": 487
   },
   "bladder": {
     "src": "/assets/consulta-vet/ultrasound-clinical/bladder.jpg",
@@ -126,7 +142,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "B-mode ultrasound images of the urinary bladder in patients with urothelial carcinoma. (A) B-mode ultrasound evaluation of pedunculated bladder formation with invasion of the bladder wall and dimensions (height and length). (B) Evaluation and measurement of bladder wall thickness in a canine patient with urothelial carcinoma.",
     "speciesLabel": "Cão — carcinoma urotelial",
     "caption": "A: formação ligada à parede; B: espessura mural. A continuidade e a implantação ajudam a distinguir massa de conteúdo móvel; a imagem sozinha não confirma o tipo celular.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 787,
+    "height": 276
   },
   "prostate": {
     "src": "/assets/consulta-vet/ultrasound-clinical/prostate.jpg",
@@ -140,7 +158,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "B-mode images of the prostate gland (case number 56). (a) Longitudinal view of the prostate gland, which appears oblong in shape, mildly echogenic, compared to the hypoechoic urethra (evidenced with arrows). (b) Transverse view of the same patient, in which the prostate appears ovoidal in shape and, in its center, the hypoechoic circular urethra is visible (evidenced with arrows).",
     "speciesLabel": "Cão castrado — modo B",
     "caption": "A: corte longitudinal; B: transversal. Identifique a uretra mais escura e a glândula ao redor. Castração e tempo de involução mudam tamanho e interpretação.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 722,
+    "height": 263
   },
   "ovaries": {
     "src": "/assets/consulta-vet/ultrasound-clinical/ovaries.jpg",
@@ -154,7 +174,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "The computed tomography (CT) appearance of a granulosa cell tumour that appears as a large, well-defined low-attenuation ovarian mass. (A) Non-enhanced CT scan shows multi cystic soft-tissue mass. (B) After contrast administration, CT scan shows mass as mildly and non-homogeneously enhanced. (C) Ultrasound longitudinal right ovarian mass with heterogeneous echotexture and multiloculated solid and cystic mass. (D) Sagittal cut of the right ovary containing polycystic structures.",
     "speciesLabel": "Cadela — massa ovariana",
     "caption": "O painel C é ultrassom e mostra regiões sólidas e císticas; A e B são tomografia e D é a peça anatômica. Conteúdo líquido e tecido sólido produzem contrastes distintos.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 741,
+    "height": 186
   },
   "lymph-nodes": {
     "src": "/assets/consulta-vet/ultrasound-clinical/lymph-nodes.jpg",
@@ -168,7 +190,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "B-mode ultrasound images of unaffected (a,b) and metastatic, (c,d) sentinel lymph nodes. Oval shape, S/L ratio less than 0.5, homogeneous echostructure and hyperechoic hilum of unaffected superficial inguinal sentinel lymph nodes in (a) and axillary sentinel lymph node in (b). The numbers in the image and the lower left corner of Figure 1a represent the long axis (1 and 2) and short axis (3 and 4) measurements of the examined SLNs. The distance between the two “+”signs in Figure 1b represents the measurement of the long axis, and the distance between the two “×” signs represents the measurement of the short axis of SLN. The values are found in the lower left corner of Figure 1b. (c) Metastatic superficial inguinal sentinel lymph node showing rounded shape, hypoechoic pattern, and inhomogeneous echostructure with coagulation necrosis inside of lymph node (horizontal arrow) as an echogenic structure which leaves no shadows. (d) Cortical thickening of a metastatic superficial inguinal sentinel lymph node (down arrow) located near a tumor—tu.",
     "speciesLabel": "Cães — linfonodos superficiais",
     "caption": "A e B: linfonodos inguinal/axilar sem infiltração descrita; C e D: metastáticos. Observe forma, hilo e textura. Estes exemplos superficiais não fornecem cortes para linfonodos abdominais.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 788,
+    "height": 549
   },
   "ureters": {
     "src": "/assets/consulta-vet/ultrasound-clinical/ureters.jpg",
@@ -182,7 +206,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Radiographic and ultrasonography (US) images of the bilateral hydronephrosis in a cat with bilateral ureteral anomalies. (A) It is observed that both kidneys overlap below the second to fourth lumbar vertebrae in the right lateral view. (B) When the length of the second lumbar vertebra was compared with the bilateral height measured by line in ventrodorsal view, the right kidney (5.51 cm) was measured to be 3.3 times the L2 length (1.53 cm), and the left kidney (5.05 cm) was measured to be 3.6 times the L2 length (1.53 cm). (C) A transverse US image shows pyelectasis of the right kidney. The height of the right renal pelvis was measured to be 14.6 mm. (D) A transverse US image shows the pyelectasis of the left kidney. The height of the left renal pelvis was measured to be 4.8 mm. (E) Focal polypoid mural thickening was observed in the middle of the right ureter. Focally thickened ureteral wall can be seen in circumferential form, and the thickness of the ureteral wall was measured to be 2.3 mm for the dorsal part and 2.5 mm for the ventral part. (F) Focal polypoid mural thickening was observed in the middle of the left ureter. Focally thickened ureteral wall can be seen in circumferential form, and the thickness of the ureteral wall was measured to be 1.5 mm for the dorsal part and 1.8 mm for the ventral part.",
     "speciesLabel": "Gato — painéis E e F",
     "caption": "E e F mostram espessamento ureteral polipoide; C e D, dilatação de pelve renal; A e B são radiografias. Uma lesão de parede pode obstruir sem cálculo.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 708,
+    "height": 213
   },
   "testes": {
     "src": "/assets/consulta-vet/ultrasound-clinical/testes.jpg",
@@ -196,7 +222,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "The spot-meter technique; a total of nine square-shaped spots (2 mm2) of testicular parenchyma are selected for evaluating grayscale intensity values (coloured squares). The grayscale intensity values of the capsule of the testis and mediastinum testis are also evaluated ((a): white rectangles; (b): black rectangles).",
     "speciesLabel": "Cão Beagle — parênquima e mediastino",
     "caption": "Observe o tecido testicular e a linha brilhante do mediastino. As caixas são regiões de análise de tons de cinza do estudo, não lesões.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 750,
+    "height": 339
   },
   "thyroid": {
     "src": "/assets/consulta-vet/ultrasound-clinical/thyroid.jpg",
@@ -210,7 +238,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonograms of the goiter caused by iodine deficiency in the dog. The echotexture of the left thyroid lobe (A) is homogeneous, whereas the echotexture of the right lobe (B) is heterogenous with some anechoic lesions. Both thyroid lobes are mildly enlarged and well marginated without invasion.",
     "speciesLabel": "Cão — bócio por deficiência de iodo",
     "caption": "A: lobo esquerdo homogêneo; B: lobo direito heterogêneo com cavidades. Aumento glandular pode coexistir com função insuficiente; volume não mede produção hormonal.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 661,
+    "height": 225
   },
   "parathyroids": {
     "src": "/assets/consulta-vet/ultrasound-clinical/parathyroids.jpg",
@@ -224,7 +254,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Ultrasonographic image of an oval hypoechogenic parathyroid nodule of 6.5 mm diameter (*), surrounded by thyroid tissue (original, credits to Centre Hospitalier Vétérinaire (CHV) Fregis).",
     "speciesLabel": "Cão — nódulo paratireoidiano",
     "caption": "O asterisco indica nódulo oval escuro cercado por tecido tireoidiano. Localização e contraste ajudam a encontrá-lo; cálcio e PTH orientam seu significado funcional.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 768,
+    "height": 537
   },
   "heart": {
     "src": "/assets/consulta-vet/ultrasound-clinical/heart.jpg",
@@ -238,7 +270,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "originalCaption": "Color-flow Doppler echocardiogram obtained in the right parasternal long-axis view during systole. Mitral valve regurgitation is visible.",
     "speciesLabel": "Cão — regurgitação mitral",
     "caption": "Doppler colorido em sístole mostra fluxo retrógrado pela mitral. A cor codifica movimento relativo ao transdutor; não significa sangue venoso ou arterial.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 473,
+    "height": 330
   },
   "adrenals": {
     "src": "/assets/consulta-vet/ultrasound-clinical/adrenals.webp",
@@ -251,7 +285,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://www.frontiersin.org/files/Articles/1477208/xml-images/fvets-11-1477208-g002.webp",
     "speciesLabel": "Cão — adrenal esquerda",
     "caption": "Os marcadores mostram polos cranial e caudal. O animal do estudo tinha síndrome de Cushing; as medidas deste exemplo não são limites de normalidade nem teste de função.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 1430,
+    "height": 1081
   },
   "eyes": {
     "src": "/assets/consulta-vet/ultrasound-clinical/eyes.webp",
@@ -264,7 +300,9 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://www.frontiersin.org/files/Articles/1482948/xml-images/fvets-11-1482948-g0001.webp",
     "speciesLabel": "Cão — anatomia ocular",
     "caption": "As linhas marcam dimensões das câmaras, lente e globo. Líquidos são escuros e interfaces da lente/parede produzem linhas; peso e raça interferem na comparação.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 945,
+    "height": 864
   },
   "uterus": {
     "src": "/assets/consulta-vet/ultrasound-clinical/uterus.webp",
@@ -277,6 +315,8 @@ export const ULTRASOUND_CLINICAL_IMAGES: Record<UltrasoundOrganId, UltrasoundCli
     "original": "https://www.frontiersin.org/files/Articles/1717774/xml-images/fvets-13-1717774-g002.webp",
     "speciesLabel": "Cadela — útero em anestro",
     "caption": "Observe a parede regular e a pequena dimensão neste exemplo de anestro. Ciclo, gestação e porte mudam o aspecto; uma fotografia não define um limite universal.",
-    "changes": "Imagem reproduzida integralmente; legenda explicativa em português."
+    "changes": "Imagem reproduzida integralmente; legenda explicativa em português.",
+    "width": 1441,
+    "height": 1074
   }
 };

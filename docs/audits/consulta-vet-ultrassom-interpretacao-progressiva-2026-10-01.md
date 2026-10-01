@@ -30,13 +30,14 @@ Manifesto em modules/consulta-vet/data/ultrasoundClinicalImages.ts. Arquivos loc
 
 A figura gastrointestinal é reutilizada para estômago, intestino delgado e cólon, com painéis correspondentes explicitamente identificados. A figura ovariana contém TC em A/B, ultrassom em C e peça anatômica em D. A figura de ureteres inclui radiografias A/B e ultrassom C–F. A foto renal é pós-operatória e contém nefrostomia, não é rotulada como rim normal. A imagem esplênica contém elastografia, distinguida de Doppler na legenda. As fotografias não mudam de espécie ao alternar o filtro; sua espécie real permanece indicada.
 
-Todas as imagens foram inspecionadas visualmente; créditos adicionais de Andi Parkinson/Intrapet Imaging e CHV Fregis foram preservados. A primeira candidata de mucocele foi substituída por imagem de pesquisa primária, evitando reutilização de uma figura cedida por terceiro com permissão específica.
+Dimensões intrínsecas foram cadastradas para reservar espaço antes do carregamento lazy, corrigindo uma falha detectada na navegação móvel. Todas as imagens foram inspecionadas visualmente; créditos adicionais de Andi Parkinson/Intrapet Imaging e CHV Fregis foram preservados. A primeira candidata de mucocele foi substituída por imagem de pesquisa primária, evitando reutilização de uma figura cedida por terceiro com permissão específica.
 
 ## Validação
 
 - 17 testes de ultrassom: passaram. Incluem cobertura das estruturas, campos clínicos, busca, espécie, mecanismos expansíveis, ordem de leitura, ausência de citações/contagens no componente, arquivos e licenças de imagem, e preservação das medidas.
 - Build de produção: passou.
 - Typecheck global: os erros prévios fora do ultrassom estão registrados em tmp/ultrasound-research/typecheck-validation.log; não foram modificados arquivos de outros conteúdos para contorná-los.
+- Verificação visual em Edge: mecanismos abertos no desktop e no celular; 20 órgãos conferidos em viewport de 390 px, com imagens carregadas e sem overflow horizontal (checked: 20, failed: []).
 - Preview local: work/ultrasound-preview.html usa a mesma página sem depender da sessão de autenticação; app na porta 5173.
 
 Nenhum deploy, gravação remota ou reversão de alterações de outras tarefas foi realizado.

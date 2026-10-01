@@ -26,6 +26,7 @@ test('imagens veterinárias de todos os órgãos têm arquivo, legenda e atribui
   assert.deepEqual(Object.keys(ULTRASOUND_CLINICAL_IMAGES).sort(), ULTRASOUND_ORGANS.map(x => x.id).sort());
   for (const image of Object.values(ULTRASOUND_CLINICAL_IMAGES)) {
     assert.ok(fs.existsSync(`public${image.src}`), image.src);
+    assert.ok(image.width > 0 && image.height > 0, 'Reserva de espaço antes de carregar imagem');
     assert.ok(fs.statSync(`public${image.src}`).size > 4000);
     assert.match(image.license, /^CC BY (3|4)\.0$/);
     assert.match(image.licenseUrl, /^https:\/\/creativecommons.org\/licenses\/by\//);

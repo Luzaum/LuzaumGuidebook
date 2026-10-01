@@ -1,0 +1,3209 @@
+
+--- PDF 75 ---
+Feline Emergency and Critical Care Medicine
+ 57
+c)	 Alpha-	 2 	adrenergic	agonists
+i)	 CNS
+Central	 depression	 at	 the	 locus	 coeruleus 	
+(awareness	 center	 of 	 the	 brain). 	
+Presynaptic	 alpha-	 2 	agonists	 inhibit	 nor- 	
+epinephrine	 (NE)	 release	 leading	 to 	
+decreased	neural	activity.
+1)	 Alpha-	 2 	agonists	 may	 stimulate	 the	 chemo -
+receptor	 trigger	 zone	 outside	 of 	the	 blood–
+brain	barrier	to	cause	emesis.
+ii)	 Cardiovascular
+1)	 Biphasic	 cardiovascular	 response	 due	 to	 acti-
+vation	 of 	postsynaptic	 a 2 	receptors	 and	 a 1 	
+receptors	 on	 peripheral	 vessels	 leading	 to 	
+vasoconstriction	 and	 baroreceptor-	 mediated 	
+reflex	bradycardia.
+2)	 Secondary	 vasodilation	 without	 increase	 in	
+heart	 rate	 from	 centrally	 mediated	 presyn-
+aptic	 activity	 causing	 an	 increase	 in	 vagal	
+outflow.
+3)	 Overall	 decrease	 in	 CO	 up	 to	 60%	 with	 these	
+drugs;	 however,	 myocardial	 perfusion	 is	
+maintained.
+iii)	 Respiratory
+1)	 Centrally	 mediated	 reduction	 in	 respiratory	
+rate	 and	 minute	 ventilation	 with	 a	 mild	
+increase	 in	 partial	 pressure	 of 	 carbon	
+dioxide.
+iv)	 Musculoskeletal
+1)	 Reliable	 muscle	 relaxation	 mediated	 at	 the	
+level	of 	the	spinal	cord.
+v)	 Renal
+1)	 A 2 	agonists	 consistently	 cause	 diuresis	 by 	
+several	 mechanisms	 including	 reduced	 pro -
+duction	 of 	anti- 	diuretic	 hormone	 (ADH), 	
+inhibition	 of 	the	 action	 of 	ADH	 on	 the	 col-
+lecting	 tubules	 leading	 to	 excretion	 of 	
+sodium,	 and	 decreased	 micturition	 pressure 	
+and	bladder	capacity.
+vi)	 Dexmedetomidine	and	medetomidine
+1)	 Highly	selective:	1620:1	α 2 :α 1 	ratio.
+d)	 Opioids
+i)	 Opioids	 are	 classified	 based	 on	 their	 action	 at	
+various	 opioid	 receptors:	 μ,	 κ,	 and	 δ.	 See	
+Table 6.1	for	doses.
+ii)	 CNS
+1)	 Bind	 to	 spinal	 and	 supraspinal	 presynaptic	
+opioid	 receptors	 in	 the	 dorsal	 horn	 and	 post -
+synaptic	 μ	receptors	 in	 dorsal	 root	 ganglia	
+leading	 to	 a	 decrease	 in	 propagation	 of 	noci-
+ceptive	signal.
+2)	 CNS	 excitation	 consistent	 with	 generalized	
+excitement	 and	 convulsant	 electro	 encepha-
+lography	 (EEG)	 activity	 with	 higher	 doses	 of 	
+morphine	 in	 cats,	 less	 common	 at	 clini-
+cal	doses.
+Table 6.1 Sedation protocols.
+Drug IV mg/kg IM mg/kg Comments
+Opioid
+ ● Butorphanol
+ ● Methadone
+ ● Buprenophine
+ ● Hydromorphone
+ ● Morphine
+ 
+0.2–0.5
+0.1–0.5
+0.005–0.04
+0.05–0.1
+0.05–0.3
+ 
+0.2–0.5
+0.1–0.5
+0.005–0.04
+0.05–0.1
+0.05–0.3
+Hydromorphone/morphine	may	cause	dysphoria	and	emesis
+Morphine	not	recommended
+Acepromazine
+Hydromorphone
+0.01–0.05
+0.05–1.0
+0.01–0.05
+0.05–1.0
+Can	be	given	SQ
+Alfaxalone
+±	opioid
+±	midazolam
+CRI
+0.5–3
+ 
+0.2–0.4
+0.05–0.2	(mg/kg/min)
+1–3
+ 
+0.2–0.4
+May	be	volume-	 limiting
+Dose- 	dependent	immobility
+Dexmedetomidine
+±	opioid
+0.001–0.005
+0.1–0.3
+0.005–0.010
+0.2–0.5
+CRI:	0.5–3 mcg/kg/h	IV
+Ketamine
+±	dexmedetomidine
+3
+0.005
+Deep	sedation/immobilization
+Telazol
+±	opioid
+±	a 2 	agonist
+2–3 2–3 IM	preferred
+Combination	produces	better	sedation/immobilization
+
+
+--- PDF 76 ---
+Anesthetic Protocols for Systemically Healthy Cats
+58
+3)	 High	 pharmacogenetic	 variability	 can	 lead 	
+to	 large	 individual	 response	 to	 opioids. 	
+Euphoria	 and	 dysphoria	 can	 be	 seen	 to 	
+varying	 degrees	 depending	 on	 the	 drug, 	
+route	 of 	administration,	 and	 patient	 status. 	
+Therapeutic	 plan	 including	 opioids	 should 	
+be	 used	 in	 combination	 to	 minimize	 these 	
+effects	 and	 should	 be	 tailored	 to	 the 	
+patient.
+iii)	 Cardiovascular
+1)	 Cardiac	 output	 may	 decrease	 minimally	 or	
+increase	 in	 the	 presence	 of 	 excitement.	
+Minimal	 vascular	 effects	 seen	 at	 clini-
+cal	doses.
+2)	 Histamine	 release	 associated	 with	 intrave -
+nous	 morphine	 and	 meperidine	 may	 cause	
+vasodilation.
+iv)	 Respiratory
+1)	 Dose- 	dependent	 respiratory	 depression	
+through	 μ	receptor	 activation,	 and	 decreased	
+response	 to	 changes	 in	 partial	 pressure	 of 	
+carbon	dioxide.
+v)	 Thermoregulation
+1)	 Administration	 of 	 opioids	 can	 lead	 to	
+increases	 in	 body	 temperature,	 most	 notable	
+in	 cats	 with	 the	 use	 of 	hydromorphone	 of 	up	
+to	41–42	 °C	for	5	hours.
+vi)	 Metabolism
+1)	 Morphine	 and	 buprenorphine	 metabolized	
+through	 hepatic	 glucuronidation;	 primary	
+metabolites	 are	 sulfate	 conjugates.	 Scarce	
+formation	 of 	the	 active	 metabolite	 of 	mor -
+phine	 (morphine-	 6- 	glucuronide)	 may	 be	
+responsible	 for	 reduced	 efficacy	 in	 cats	 com-
+pared	 to	 other	 species.	 Elimination	 of 	half-	
+life	 is	 similar	 to	 other	 species	 with	 a	 slower	
+clearance.
+vii)	 Antitussive	versus	emetic
+1)	 Fentanyl,	 butorphanol,	 methadone,	 and	
+tramadol	 can	 display	 antitussive	 effects	
+through	 central	 inhibition	 of 	cough	 center	
+through	μ	and	κ	receptors.
+2)	 Hydromorphone	 and	 morphine	 can	 cause 	
+emesis	 through	 the	 chemoreceptor	 trigger	
+zone	outside	the	blood–brain	barrier.
+3)	 Repeated	 doses	 may	 not	 cause	 repeated	
+emesis	 due	 to	 concurrent	 central	 antiemetic	
+activity.
+e)	 Gabapentin
+i)	 Antiepileptic	 shown	 to	 reduce	 anxiety	 by	 block -
+ing	 activity	 at	 a	 voltage- 	dependent	 subunit 	
+( α2 δ-	2)	 of 	the	 voltage- 	gated	 calcium	 channel. 	
+Well	 tolerated	 by	 cats	 at	 10–40	 mg/kg	 PO	 produc-
+ing	 peak	 sedation	 at	 1.5–2	 hours	 after	 administra-
+tion.	 Combination	 of 	gabapentin	 with	 trazodone 	
+at	 least	 2	 hours	 prior	 to	 transportation	 may 	
+improve	 efficacy	 in	 reducing	 stress	 associated 	
+with	 transportation	 and	 handling	 for	 IV 	catheter 	
+placement.
+f)	 Trazodone	hydrochloride
+i)	 Serotonin	 antagonist	 and	 re-	 uptake	 inhibitor.	
+Should	 be	 given	 orally	 at	 home	 prior	 to	 trans -
+port	 to	 hospital	 with	 peak	 sedation	 varying	
+between	 1.5	 and	 2.5	 hours	 and	 lasting	 up	 to	 4	
+hours.	5–8	 mg/kg	PO	is	well	tolerated.
+E)	 Injectable	 anesthetics	 used	 as	 induction	 agents	
+(Table 6.2)
+a)	 Dissociative	anesthetics
+i)	 CNS
+1)	 Dissociation	 of 	the	 thalamocortical	 and	 lim-
+bic	 systems.	 N-	 methyl-	 D-	 aspartate	 (NMDA) 	
+receptor	 antagonist	 preventing	 binding	 of 	
+excitatory	 neurotransmitters	 with	 a	 weak 	
+effect	acting	at	opioid	receptors.
+Table 6.2 Induction agents.
+Drug Dose (mg/kg) Route Comments
+Ketamine
+ ● midazolam
+2–5
+0.2–0.4
+IV ,	IM Painful	injectant
+Telazol 2–5 IV ,	IM Painful	injectant
+Propofol 2–8 IV Not	recommended	for	use	if 	anesthetizing	
+multiple	times	per	week
+Alfaxalone 2–5 IV ,	IM May	cause	rigidity	if 	used	alone
+Etomidate 1.5–4 IV Hyperosmolar	and	contains	propylene	
+glycol— 	dilute	to	reduce	irritation	to	veins
+
+
+--- PDF 77 ---
+Feline Emergency and Critical Care Medicine
+ 59
+2)	 Produces	 a	 cataleptic	 state	 where	 there	
+appears	 to	 be	 consciousness	 without	 reac-
+tion	 to	 noxious	 stimuli.	 Provides	 analgesia	
+in	 chronic	 pain	 patients	 and	 amnesia,	 but	
+does	 not	 produce	 enough	 muscle	 relaxa-
+tion	alone.
+3)	 Anesthetic	 doses	 increase	 cerebral	 blood	
+flow,	 intracranial	 pressure,	 and	 cerebral	
+oxygen	demand.
+ii)	 Cardiovascular	effects
+1)	 Direct	 myocardial	 depression	 with	 indirect	
+increase	 in	 cardiac	 output,	 mean	 arterial	
+pressure,	 pulmonary	 arterial	 pressure,	 and	
+heart	 rate	 through	 increased	 adrenergic	
+stimulation.	 Increased	 work	 results	 in	
+increased	myocardial	oxygen	demand.
+iii)	 Respiratory
+1)	 Can	 cause	 apneustic	 breathing	 pattern;	
+endotracheal	 intubation	 and	 airway	 protec-
+tion	are	recommended.
+iv)	 Ketamine
+1)	 Phencyclidine	 derivative	 existing	 as	 racemic 	
+mixture	 of 	R	 (−)	 and	 S	 (+)	 isomers	 in	 benze -
+thonium	chloride	preservative	solution.
+2)	 Metabolized	 to	 active	 metabolite,	 norketa-
+mine,	 through	 hepatic	 demethylation	 and	
+excreted	largely	unchanged	in	urine.
+v)	 Telazol ®
+1)	 Tiletamine,	 a	 phencyclidine	 derivative,	 is	
+only	 available	 in	 combination	 with	 the	 ben-
+zodiazepine	 zolazepam	 in	 the	 United	 States.
+2)	 Zolazepam	 effect	 lasts	 longer	 than	 tileta-
+mine	 in	 cats;	 therefore,	 after	 a	 period	 of 	
+time,	 sedation	 resembles	 other	 benzodiaz-
+epines	and	emergency	delirium.
+3)	 Duration	 is	 dose- 	dependent	 between	 30	 and	
+60	 minutes.
+b)	 Hypnotics
+i)	 Propofol
+1)	 Highly	 lipid	 soluble	 alkyl	 phenol	 derivative	
+acting	 at	 GABA A 	receptors	 causing	 inhibi-
+tion	 of 	 postsynaptic	 neuron	 activity;	
+decreases	 cerebral	 perfusion	 pressure	 and	
+cerebral	metabolic	oxygen	consumption.
+2)	 Vasodilation	 and	 negative	 inotropy	 result	 in	
+decreased	 blood	 pressure	 and	 can	 result	 in	
+systemic	 hypotension	 at	 clinical	 induc-
+tion	doses.
+3)	 Respiratory	 depression	 is	 associated	 with	
+dose	 and	 rate	 of 	administration;	 transient	
+apnea	 commonly	 occurs	 with	 increased	 rate	
+of 	infusion.
+4)	 Extrahepatic	 metabolism	 of 	propofol	 in 	
+pulmonary	 tissue	 is	 an	 important	 pathway. 	
+Hepatic	 metabolism	 likely	 through	 glucu-
+ronidation	 pathways	 is	 not	 well	 classified 	
+in	 cats;	 however,	 may	 cause	 prolonged 	
+recovery	 if 	used	 as	 a	 constant	 rate	 infu-
+sion	(CRI).
+5)	 Available	 without	 preservative	 or	 with	 2%	 ben-
+zyl	 alcohol	 preservative	 (Propoflo™	 28)	 for 	
+extended	 28- 	day	 shelf 	life.	 Caution	 with	 the 	
+repeated	 use	 of 	Propoflo	 28,	 as	 there	 are 	previ -
+ous	 reports	 of 	benzyl	 alcohol	 toxicity 	due 	to 	
+decreased	 hepatic	 metabolism.	 One	 study 	
+found	 no	 adverse	 effects	 of 	a	 single	 induction 	
+dose	of 	Propoflo	28.
+ii)	 Etomidate
+1)	 Maintains	 cardiovascular	 stability	 without	
+potentiation	 of 	 catecholamine-	 induced	
+arrhythmia.
+2)	 Transiently	 decreases	 cortisol	 production	 at	
+clinical	doses.
+3)	 Propylene	 glycol	 diluent	 causing	 high	 osmo -
+lality	 and	 risk	 of 	hemolysis	 and	 hemoglobi-
+nuria	if 	not	appropriately	diluted.
+c)	 Alfaxan ®	Multidose
+i)	 CNS
+1)	 Neuroactive	 synthetic	 steroid	 that	 works	 to	
+modulate	 neurodepression	 through	 GABA A 	
+receptor	 agonism	 through	 hyperpolariza-
+tion	 and	 inhibition	 of 	 the	 neuronal	
+excitability.
+ii)	 Cardiovascular
+1)	 Mildly	 cardiovascular	 depression	 when 	
+administered	 intravenously.	 A	 dose- 	
+dependent	 reduction	 of 	heart	 rate,	 CO,	 and 	
+blood	 pressure	 can	 become	 more	 evident 	
+when	 administered	 concurrently	 after	 other 	
+anesthetic	 drugs	 that	 have	 a	 negative	 effect 	
+on	 the	 cardiovascular	 system	 such	 as	 ace -
+promazine.	 Hypotension	 and	 decreased	 CO 	
+more	 evident	 when	 supraclinical	 doses 	
+administered.
+2)	 Dose- 	dependent	 respiratory	 rate	 depression	
+and	 transient	 apnea	 may	 lead	 to	 hypoxia	
+associated	 with	 hypoventilation	 (less	 than	
+propofol	 and	 barbiturates	 at	 equipo -
+tent	doses).
+iii)	 Metabolism
+1)	 Rapid	 hepatic	 metabolic	 clearance	 with	
+potentially	 minimal	 metabolism	 by	 renal	
+and	 pulmonary	 tissues.	 Hepatic	 disease	 may	
+prolong	recovery.
+
+
+--- PDF 78 ---
+Anesthetic Protocols for Systemically Healthy Cats
+60
+2)	 Mean	 terminal	 plasma	 half-	 life	 (t1/2)	 is	
+approximately	 45	 minutes.	 Less	 likely	 to	
+accumulate	 than	 propofol	 in	 cats	 after	
+repeated	doses	or	CRI.
+iv)	 Recovery
+1)	 Increased	 auditory	 sensitivity	 may	 be	 seen	
+during	 recovery	 in	 cats	 administered	 alfax -
+alone	 either	 by	 IM	 or	 IV 	route	 with	 twitch-
+ing,	 paddling,	 face	 rubbing,	 opisthotonos,	
+and	 tremors.	 The	 incidence	 of 	 adverse	
+behaviors	 during	 recovery	 is	 reported	 higher	
+for	IV 	route	than	IM	route.
+F)	 Volatile	 anesthetics—	 isoflurane	 (Iso),	 sevoflurane	
+(Sevo),	and	desflurane	(Des)
+a)	 Mechanism	of 	action
+i)	 Exact	 mechanism	 is	 unknown;	 however,	 more	
+recent	 studies	 suggest	 they	 act	 at	 protein	 recep -
+tors	 of 	neuronal	 tissue	 as	 well	 as	 GABA A 	and	
+NMDA	 receptors	 at	 the	 level	 of 	the	 brain,	 spi-
+nal	cord,	and	synapses.
+ii)	 CNS
+1)	 Decreased	 afferent	 transmission	 of 	noxious	
+stimulus	 from	 spinal	 cord	 to	 the	 brain	 with	
+concurrent	 decrease	 in	 efferent	 motor	
+response	 to	 pain.	 Depression	 of 	neuronal	
+activity	 with	 highest	 level	 of 	dampening	 at	
+the	 thalamus	 and	 midbrain	 reticular	
+formations.
+2)	 Inhibition	 of 	presynaptic	 neurotransmitter	
+release	 and	 postsynaptic	 channel	 activity	 is	
+believed	 to	 be	 through	 various	 neuronal	
+receptors.
+3)	 Decreased	 cerebral	 metabolic	 rate	 and	 oxy -
+gen	 consumption;	 variation	 in	 cerebral	
+blood	flow	is	multifactorial.
+iii)	 Cardiovascular	system
+1)	 Inhalants	 cause	 a	 dose- 	dependent	 reduction	
+in	 systemic	 vascular	 resistance,	 mean	 arte -
+rial	pressure,	and	cardiac	output.
+2)	 Desflurane	 may	 increase	 cardiac	 output	 or	
+heart	 rate	 through	 associated	 sympathetic	
+stimulation.
+3)	 Sevoflurane	 and	 desflurane	 may	 have	 lower 	
+arrhythmogenicity	than	isoflurane.
+iv)	 Metabolism
+1)	 Mainly	 excreted	 unchanged	 in	 exhaled	 air.	
+Approximately	 2%	 of 	sevoflurane	 undergoes	
+hepatic	metabolism.
+v)	 Renal	system
+1)	 Minimal	 effect	 on	 renal	 blood	 flow	 and	
+physiology.
+2)	 Interaction	 of 	sevoflurane	 with	 carbon	 dioxide 	
+absorbents	 has	 been	 shown	 to	 lead	 to	 forma-
+tion	 of 	nephrotoxic	 Compound	 A (trifluorome -
+thyl	 vinyl	 ether)	 in	 experimental	 settings. 	
+Highest	 risk	 occurs	 over	 long	 periods	 of 	anes -
+thesia	 with	 rebreathing	 system,	 low	 oxygen 	
+flows,	 and	 carbon	 dioxide	 absorber	 with	 lime. 	
+No	 studies	 or	 clinical	 reports	 of 	Compound	 A 	
+toxicity	in	cats.
+b)	 Isoflurane,	 sevoflurane,	 and	 desflurane	 are	 the 	
+most	 commonly	 available	 volatile	 anesthetics	 in 	
+the	 United	 States.	 Isoflurane	 and	 sevoflurane	 are 	
+most	 commonly	 used,	 and	 desflurane	 requires	 a 	
+specialized	 vaporizer	 due	 to	 its	 physiochemical 	
+properties.
+c)	 Anesthetic	 potency	 is	 measured	 by	 minimum	 alveo -
+lar	 concentration	 (MAC).	 MAC-	 incision	 is	 listed	 in 	
+Table 6.3.	 MAC-	 awake	 is	 approximately	 one	 third	 of 	
+MAC-	 incision.	 Cats	 typically	 have	 a	 higher	 MAC 	
+than	other	domestic	species.
+d)	 Solubility	 of 	inhalants	 is	 measured	 by	 blood:gas	
+partition	 coefficient.	 Lower	 solubility	 leads	 to	 a	
+faster	 change	 in	 alveolar	 concentrations,	 leading	 to	
+a	 faster	 induction	 and	 recovery	 period.	 Solubility:	
+desflurane	 <	 sevoflurane	 <	 isoflurane.
+G)	 Airway	management
+a)	 Face	 mask	 providing	 flow	 by	 oxygen	 during		 sedation	
+for	minor	procedures	helps	maintain	oxygenation.
+b)	 Cuffed	 endotracheal	 tubes	 maintain	 a	 patent	 airway	
+with	 increased	 protection	 from	 fluid	 or	 regurgitant	
+from	 reaching	 lower	 airways.	 Murphy	 eye	 endotra-
+cheal	 tubes	 are	 recommended	 in	 cats	 to	 provide	 an	
+alternate	 route	 of 	air	 flow	 if 	end	 of 	endotracheal	
+tube	becomes	occluded.
+c)	 Supraglottic	 airway	 device	 (v- 	gel)	 can	 be	 placed	
+with	 lower	 drug	 requirement,	 reduced	 chance	 of 	
+Table 6.3 MAC of commonly used inhalant anesthetics in cats.
+Inhalant MAC50
+Isoflurane 1.6%
+Sevoflurane 2.7%
+Desflurane 9.8%
+
+
+--- PDF 79 ---
+Feline Emergency and Critical Care Medicine
+ 61
+laryngospasm,	 and	 may	 provide	 enough	 of 	a	 seal	 to	
+mechanically	 ventilate.	 Disadvantage	 of 	 these	
+devices	 is	 that	 they	 can	 be	 easily	 dislodged	 with	
+changes	in	position.
+H)	 Breathing	circuits
+a)	 Rebreathing
+i)	 Circle	 system	 allows	 for	 rebreathing	 of 	exhaled	
+gases.	 Recommended	 for	 larger	 patients	 due	 to	
+increased	 resistance	 and	 work	 of 	breathing	 as	 a	
+result	 of 	a	 system	 of 	absorbent	 and	 unidirec-
+tional	 valves.	 This	 system	 removes	 carbon	 diox -
+ide	 by	 passing	 exhaled	 gas	 through	 absorbent	
+while	 recirculating	 some	 inhalant	 and	 fresh	
+oxygen	to	patient.
+ii)	 One- 	way	 valve	 system	 allows	 unidirectional	
+gas	 flow	 from	 expiratory	 limb	 through	 carbon	
+dioxide	 absorbent.	 Advantages	 of 	this	 system	
+are	 lower	 oxygen	 flow	 rate	 and	 inhalant	
+requirements	as	well	as	decrease	in	waste	gas.
+iii)	 Uptake	 phase	 flow	 rate:	 1–2	 l/min	 for	 15	 minutes.
+iv)	 Maintenance	 rate:	 approximately	 30	 ml/kg/
+min;	no	less	than	0.5	 l/min.
+b)	 Non-	 rebreathing
+i)	 Low-	 resistance	 breathing	 system	 recom-
+mended	for	patients	less	than	5	 kg	b.w.t.
+ii)	 High	 oxygen	 flow	 rates	 required	 with	 mini-
+mized	 dead	 space	 to	 move	 carbon	 dioxide	 away	
+from	 patient	 through	 expiratory	 limb	 of 	system.
+iii)	 Disadvantage	 of 	high	 flow	 rate	 may	 lead	 to	
+excessive	loss	of 	body	heat.
+iv)	 Minimum	 flow	 rate:	 >250	 ml/kg/min;	 no	 less	
+than	500	 ml/min.
+ Recommended Readings
+Boller,	E.	and	Boller,	M.	(2015).	Assessment	of 	fluid	balance	
+and	the	approach	to	fluid	therapy	in	the	perioperativce	
+patient.	Vet. Clin. Small Anim.	45:	895–915.
+Khan,	S.K.,	Hayes,	I.,	and	Buggy,	D.J.	(2013). 	
+Pharmacology	of 	anesthetic	agents	II:	inhalation 	
+anesthetic	agents.	Contin. Educ. Anaesth. Crit. Care Pain	
+106–111.
+Muir,	 W .W .,	Ueyama,	 Y.,	Noel-	 Morgan,	J.	et al.	(2017).	A	
+systematic	review	of 	the	quality	of 	IV 	fluid	therapy	in	
+veterinary	medicine.	Front. Vet. Sci.	4:	127.
+
+
+--- PDF 80 ---
+
+
+--- PDF 81 ---
+Feline Emergency and Critical Care Medicine, Second Edition. Edited by Kenneth J. Drobatz,  
+Erica Reineke, Merilee F. Costello, and William T. N. Culp.
+© 2023 John Wiley & Sons, Inc. Published 2023 by John Wiley & Sons, Inc.
+63
+A)	 Introduction	and	the	physiology	of 	pain
+a)	 The	 International	 Association	 for	 the	 Study	 of 	Pain 	
+(IASP)	 offers	 one	 of 	the	 most	 widely	 accepted	 defi-
+nitions	 of 	pain:	 “Pain	 is	 an	 unpleasant	 sensory	 or 	
+emotional	 experience	 associated	 with	 actual	 or 	
+potential	 tissue	 damage	 or	 described	 in	 terms	 of 	
+such	damage.”
+b)	 Pain	 is	 the	 emotional	 and	 conscious	 interpretation 	
+of 	nociception,	 which	 means	 that	 it	 is	 an	 individual 	
+experience.	 While	 it	 is	 difficult	 for	 veterinary 	
+patients	 to	 communicate	 the	 emotional	 experience 	
+of 	pain,	 it	 is	 generally	 considered	 that	 if 	a	 proce -
+dure	 or	 disease	 is	 considered	 to	 be	 painful	 to	 a	 per -
+son,	 it	 should	 be	 considered	 painful	 to	 a	 veterinary 	
+patient.
+c)	 Nociception	 is	 the	 detection	 of 	noxious	 stimuli	 by	
+the	 free	 nerve	 endings	 of 	nociceptors	 in	 the	 periph-
+ery.	 The	 process	 of 	 nociception	 is	 a	 four- 	step	
+process— 	each	 of 	these	 steps	 is	 a	 potential	 target	 for	
+analgesic	 agents	 and	 comprises	 the	 approach	 of 	
+multimodal	analgesia.
+i)	 Transduction	 is	 the	 production	 of 	an	 action	
+potential	by	the	nociceptors.
+ii)	 Transmission	 is	 the	 propagation	 of 	this	 action	
+potential	to	the	dorsal	horn	of 	the	spinal	cord.
+iii)	 Modulation	 occurs	 within	 the	 spinal	 cord	 where	
+it	 is	 either	 inhibited	 or	 amplified	 and	 projected	 to	
+the	brain.
+iv)	 Perception	 occurs	 in	 the	 brain	 where	 nociception	 is 	
+interpreted	and	becomes	a	conscious	experience.
+d)	 This	 simple	 process	 can	 be	 altered	 by	 the	 release	 of 	
+inflammatory	 mediators	 and	 due	 to	 the	 plasticity	 of 	
+the	 central	 nervous	 system	 through	 a	 process	 of 	
+sensitization.
+i)	 Peripheral	 sensitization	 occurs	 when	 a	 noxious 	
+stimulus	 is	 powerful	 enough	 to	 result	 in	 tissue	 dam-
+age.	 This	 damage	 results	 in	 tissue	 inflammation 	
+which	leads	to	a	milieu	of 	chemicals	to	be	released.
+1)	 Prostaglandins,	 histamine,	 serotonin,	 and	
+bradykinins	 are	 some	 of 	the	 chemicals	 that	
+make	 up	 the	 so- 	called	 “sensitizing	 soup”	 that	
+is	released	from	damaged	tissues.
+2)	 Ultimately	 these	 chemicals	 cause	 sensitiza-
+tion	 of 	the	 nociceptors	 by	 reducing	 the	 thresh-
+old	for	action	potential	generation.
+3)	 This	 augments	 any	 additional	 stimulation	 to	
+the	 site	 of 	damage	 and	 is	 termed	 peripheral	
+sensitization.
+–	This	 ultimately	 may	 lead	 to	 hyperalgesia	
+and	allodynia.
+Kelley M. Varner and Giacomo Gianotti
+7
+Analgesia in the Critically Ill Cat
+ 
+UNIQUE FEATURES
+ ● Pain is the emotional and conscious interpretation of nociception. Untreated pain can lead to a variety of behavioral, neural, 
+endocrine, immune, hematologic, and metabolic changes that lead to suffering and distress, as well as delayed wound 
+healing.
+ ● Assessment of pain in feline patients is particularly challenging due to their behavioral responses to stress and hospitalization. 
+Critically ill animals can be even more challenging, as many are weak or obtunded and may not have the ability to respond with 
+dramatic behavior.
+ ● Each institution should pick a pain scale that works for their hospital, providing training to the staff, and implement its use to 
+guide changes in analgesic protocols, doses, and dosing intervals.
+ ● The analgesic plan should include agents that target different sites along the pain pathway. The use of multiple agents allows for 
+dose reduction which is particularly important in cats due to their altered drug metabolism and excretion.
+
+
+--- PDF 82 ---
+Analgesia in the Critically Ill Cat
+64
+ii)	 Central	 sensitization	 occurs	 due	 to	 the	 plasticity	
+of 	the	 spinal	 cord.	 Upon	 receiving	 a	 stimulus	
+from	 the	 peripheral	 nervous	 system,	 excitatory	
+neurotransmitters,	 glutamate,	 and	 substance	 P	
+are	 released	 on	 the	 dorsal	 horn	 of 	the	 spinal	 cord.	
+N-	 methyl-	 D-	 aspartate	 (NMDA)	 and	 α-	amino-	 3-	
+hydroxy-	 5-	 methyl-	 4-	 isoxazolepropionic	 acid	
+(AMPA)	 receptors	 are	 stimulated,	 which	 leads	 to	
+the	 opening	 of 	ion	 channels	 and	 phosphoryla-
+tion	of 	regulatory	proteins.
+1)	 Repeated	 AMPA	 receptor	 activation	 leads	 to	
+the	 removal	 of 	magnesium	 ions	 from	 the	
+NMDA	 receptor	 allowing	 for	 amplification	 of 	
+responses	 and	 increased	 receptive	 field	 size	 of 	
+the	spinal	cord.
+e)	 The	 type	 of 	pain	 experienced	 is	 different	 based	 on	
+the	 site	 of 	nociception	 and	 the	 chronicity	 of 	the	
+timeline.	 It	 is	 important	 to	 identify	 the	 origin	 of 	the	
+process,	 as	 it	 will	 help	 guide	 the	 analgesic	 protocol,	
+as	 certain	 agents	 are	 associated	 with	 greater	 efficacy	
+in	 different	 conditions.	 For	 example,	 lidocaine	 is	
+considered	 a	 stronger	 analgesic	 for	 visceral	 pain	
+than	for	somatic	pain.
+i)	 Somatic	 pain:	 arises	 from	 bone,	 skin,	 or	 muscle.	
+This	 type	 of 	pain	 is	 typically	 well	 located	 and	
+described	in	terms	of 	being	sharp	pain.
+ii)	 Visceral	 pain:	 arises	 from	 distension,	 stretching,	
+or	 inflammation	 of 	the	 visceral	 organs.	 This	 type	
+of 	pain	 is	 poorly	 localized	 and	 described	 in	 terms	
+of 	being	dull	and	aching.
+iii)	 Acute	 pain:	 is	 traditionally	 associated	 with	 sur -
+gery,	 trauma,	 or	 disease.	 It	 is	 physiologic	 pain	
+that	 is	 protective	 of 	the	 animal.	 Ultimately,	 this	
+pain	 can	 evolve	 into	 inflammatory	 pain	 and	
+peripheral	sensitization.
+iv)	 Chronic	 pain:	 is	 the	 pain	 that	 persists	 beyond 	
+what	 is	 protective	 of 	the	 animal.	 Typically	 occurs 	
+for	 weeks,	 months,	 or	 even	 years	 beyond	 the	 reso -
+lution	 of 	the	 original	 trauma	 or	 associated	 with	 a 	
+chronic	 disease	 process	 such	 as	 osteoarthritis. 	
+This	 may	 progress	 to	 central	 sensitization	 and 	
+wind	up.
+f)	 Due	 to	 the	 plasticity	 and	 complex	 nature	 of 	the	 cen-
+tral	 and	 peripheral	 nervous	 system,	 pathologic	 pain	
+states	 may	 develop	 in	 cases	 where	 analgesia	 is	
+delayed	or	inadequate.
+i)	 Hyperalgesia:	 is	 an	 exaggerated	 response	 to	 a	
+noxious	 stimulus	 at	 the	 site	 of 	injury	 that	 may	
+extend	to	areas	outside	the	site	of 	injury.
+ii)	 Allodynia:	 is	 a	 process	 by	 which	 stimuli	 that	 are	
+typically	 considered	 non-	 painful	 result	 in	 the	
+perception	of 	pain.
+iii)	 Wind	 up:	 is	 a	 complex	 process,	 involved	 in	
+chronic	 pain,	 which	 increases	 the	 responsive -
+ness	of 	sensory	input	to	the	spinal	cord.
+iv)	 Neuropathic	 pain:	 is	 associated	 with	 damage	 to	
+components	 of 	either	 the	 peripheral	 or	 central	
+nervous	 system.	 Usually,	 this	 is	 characterized	 by	
+hyperalgesia	and	allodynia.
+g)	 Consequences	of 	pain	and	contributing	factors.
+i)	 When	 left	 untreated,	 pain	 can	 have	 several	 con-
+sequences	 that	 can	 lead	 to	 distress	 and	 unneces -
+sary	suffering.
+ii)	 Stress:	 is	 an	 animal’s	 biological	 response	 to	 fac-
+tors	that	disrupt	or	threaten	homeostasis.
+iii)	 Distress:	 a	 state	 produced	 when	 the	 biologic	 cost	
+of 	stress	 negatively	 affects	 biologic	 functions	 crit -
+ical	 to	 the	 animal’s	 well-	 being.	 This	 can	 cause	
+pain	 or	 suffering	 to	 become	 unbearable	 and	
+make	the	animal	miserable.
+iv)	 Suffering:	 the	 endurance	 of 	or	 submission	 to	
+physical	or	mental	stress,	pain,	or	loss.
+h)	 The	 stress	 response	 is	 an	 adaptive	 pattern	 of 	behav -
+ioral,	 neural,	 endocrine,	 immune,	 hematologic,	 and	
+metabolic	 changes	 directed	 toward	 the	 restoration	 of 	
+hemostasis.
+i)	 Pain	 induced	 by	 acute	 processes	 such	 as	 surgery	
+or	 trauma	 evokes	 the	 sympathetic	 nervous	 sys -
+tem,	 secretion	 of 	cortisol,	 sodium	 and	 water	
+retention,	 hypermetabolism,	 and	 alterations	 in	
+protein	and	carbohydrate	metabolism.
+ii)	 When	 stress	 is	 severe	 or	 allowed	 to	 go	 untreated,	
+it	 becomes	 maladaptive	 producing	 self- 	sustaining	
+neural	 and	 endocrine	 cascades	 that	 ultimately	
+disrupt	hemostasis.
+iii)	 Memory	 and	 current	 physical	 status	 play	 an	
+important	 role	 in	 the	 animal’s	 adaptive	 and	
+behavioral	responses.
+iv)	 Biological	components	of 	the	stress	response:
+1)	 Intense	 pain	 stimulation	 activates	 several	
+areas	 in	 the	 brain	 including	 the	 locus	 coer -
+uleus,	 limbic	 regions,	 and	 cerebral	 cortex	
+through	 the	 concentration	 of 	corticotropin-	
+releasing	factor.
+–	This	 leads	 to	 increased	 release	 of 	 the	
+adrenocorticotropic	 hormone	 (ACTH),	
+cortical	 norepinephrine,	 dopamine,	 and	
+5-	 hydroxytryptamine.
+2)	 Activation	 of 	the	 sympathetic	 nervous	 system	
+leads	 to	 increases	 in	 heart	 rate	 and	 blood	 pres -
+sure	 and	 ultimately	 increased	 myocardial	
+work	and	oxygen	demand.
+3)	 The	 neuroendocrine	 axis	 when	 stimulated	 by	
+corticotropin-	 releasing	 factor	 and	 vasoactive	
+
+
+--- PDF 83 ---
+Feline Emergency and Critical Care Medicine
+ 65
+intestinal	 peptide	 stimulates	 the	 pituitary	
+gland	 to	 release	 ACTH,	 melanocortin,	 prolac-
+tin,	 vasopressin,	 thyroid- 	stimulating	 hor -
+mone,	and	growth	hormone.
+–	This	 leads	 to	 increased	 catabolism,	 the	
+mobilization	 of 	 substrates	 to	 provide	
+energy	 for	 tissue	 repair,	 and	 salt	 and	 water	
+retention	 to	 maintain	 fluid	 volume	 and	
+cardiovascular	homeostasis.
+v)	 The	 immune	 system	 can	 be	 activated	 or	
+depressed	by	stress.
+1)	 Chronic	 pain	 can	 produce	 sustained	 increases	
+in	 catecholamines,	 cortisol,	 and	 glucagon,	
+which	 leads	 to	 suppression	 of 	the	 humoral	
+and	cellular	immune	responses.
+2)	 The	 release	 of 	endogenous	 opioids	 may	 also	
+play	a	role	in	immune	suppression.
+3)	 Local	 inflammatory	 responses	 to	 tissue	
+trauma	 lead	 to	 the	 production	 of 	cytokines.	
+IL-	 1	 and	 IL-	 6  induce	 the	 release	 of 	acute-	
+phase	reactants.
+4)	 The	 acute-	 phase	 response	 leads	 to	 the	 release	
+of 	 C-	 reactive	 proteins,	 fibrinogen,	 mac-
+roglobulins,	 and	 antiproteinases,	 which 	
+when	 produced	 in	 excess	 can	 contribute	 to 	
+the	 development	 of 	the	 severe	 inflammatory 	
+response	syndrome.
+B)	 Assessment	of 	pain
+a)	 Assessment	 of 	pain	 in	 feline	 patients	 is	 already	 par -
+ticularly	 challenging	 due	 to	 their	 behavioral	
+responses	 to	 stress	 and	 hospitalization.	 The	 critically	
+ill	 animals	 can	 be	 even	 more	 challenging,	 as	 many	
+are	 weak	 or	 obtunded	 and	 may	 not	 have	 the	 ability	
+to	respond	with	dramatic	behavior.
+i)	 It	 is	 important	 to	 remember	 that	 some	 of 	these	
+patients	 cannot	 move,	 stand,	 withdraw,	 or	 vocal-
+ize	 in	 response	 to	 stimulation	 such	 as	 incisional	
+palpation.
+b)	 It	 is	 important	 to	 evaluate	 the	 patient	 initially 	
+while	 they	 are	 undisturbed.	 This	 includes	 body 	
+position	 and	 engagement	 with	 their	 surroundings. 	
+Once	 this	 initial	 evaluation	 has	 been	 performed, 	
+then	 the	 cage	 should	 be	 approached,	 and	 the	 cat 	
+engaged.
+i)	 If 	the	 cat	 is	 sleeping	 in	 a	 curled-	 up	 position,	 they	
+should	 not	 be	 interrupted	 for	 pain	 scoring,	 as	 the	
+patient	 is	 already	 demonstrating	 they	 are	 com-
+fortable	enough	to	sleep	peacefully.
+c)	 There	 are	 several	 validated	 pain	 scores	 for	 use	 in	
+acute	 pain	 in	 cats.	 Each	 score	 has	 its	 benefits	 and	
+drawbacks.	 Likely,	 the	 most	 important	 thing	 is	 for	
+each	 institution	 to	 pick	 one	 pain	 scale	 and	 become	
+familiar	with	it	and	use	it	on	every	patient.
+d)	 Evaluation	of 	physiologic	parameters.
+i)	 Evaluating	 physiologic	 parameters	 as	 they	 relate	
+to	 pain	 is	 already	 in	 question	 and	 can	 be	 consid-
+erably	more	challenging	in	critically	ill	patients.
+ii)	 Often	 these	 patients	 suffer	 from	 fluid	 imbalances	
+and	 cardiovascular	 disease	 that	 alter	 the	 heart	
+rate	 making	 this	 unreliable.	 Additionally,	
+increases	 in	 heart	 rate	 associated	 with	 pain	 are	
+often	 present	 only	 in	 those	 patients	 who	 are	 also	
+showing	 obvious	 signs	 of 	distress,	 many	 criti-
+cally	ill	patients	do	not	have	this	ability.
+1)	 When	 the	 heart	 rate	 declines	 following	 admin-
+istration	 of 	an	 opioid,	 this	 is	 often	 perceived	 as 	
+resolution	or	at	least	some	ease	in	discomfort.
+2)	 However,	 opioids	 have	 activity	 on	 the	 sympa-
+thetic	 outflow,	 and	 often	 the	 reduction	 in	
+heart	 rate	 is	 secondary	 to	 these	 vagomimetic	
+effects.
+iii)	 Tachypnea	 is	 another	 commonly	 used	 marker	 for	
+discomfort.	 However,	 many	 critically	 ill	 patients	
+also	 have	 respiratory	 or	 cardiovascular	 condi-
+tions	that	may	contribute	to	tachypnea.
+iv)	 Blood	 pressure	 has	 been	 correlated	 with	 pain	 in	
+feline	 patients,	 but	 can	 be	 challenging	 to	 repeat -
+edly	perform.
+v)	 Increases	 in	 body	 temperature	 have	 also	 been	
+touted	 as	 an	 indicator	 of 	pain,	 but	 again	 many	
+critically	 ill	 patients	 have	 alterations	 in	 tempera-
+ture	 that	 are	 associated	 with	 their	 systemic	 con-
+ditions	 including	 inflammation	 and	 hypothermia	
+following	general	anesthesia.
+1)	 Cats	 are	 also	 known	 for	 experiencing	 hyper -
+thermia	after	the	administration	of 	opioids.
+e)	 Behavior	changes
+i)	 Cats	 evolved	 as	 solitary	 animals	 and	 as	 such	 have	
+not	 developed	 the	 ability	 for	 interspecies	 and	
+intraspecies	 social	 communication	 to	 the	 same	
+degree	as	dogs.
+ii)	 Behavior	 changes	 in	 cats	 have	 been	 reported	 to	
+include	 reduction	 of 	normal	 activity,	 appetite	
+loss,	 tendency	 to	 hide	 or	 evade	 interaction,	 exces -
+sive	licking	of 	the	affected	area,	etc.
+iii)	 There	 is	 a	 study	 about	 the	 “half-	 tucked-	 up”	 and	
+“crouching”	 positions	 that	 are	 easily	 recogniza-
+ble	in	painful	cats.
+1)	 These	 positions	 were	 not	 seen	 before	 treat -
+ment,	 occurred	 with	 the	 highest	 frequency	
+immediately	 following	 surgery,	 were	 seen	
+more	 frequently	 in	 patients	 who	 received	 no	
+postoperative	 analgesia,	 and	 seemed	 to	
+
+
+--- PDF 84 ---
+Analgesia in the Critically Ill Cat
+66
+decline	 in	 frequency	 following	 administration	
+of 	the	analgesia.
+f)	 Feline	acute	pain	scales
+i)	 Glasgow	CMPS-	 Feline
+1)	 Components
+–	Vocalization,	 posture	 and	 activity,	 atten-
+tion	 to	 wound,	 ear	 position,	 the	 shape	 of 	
+muzzle,	 response	 to	 interaction	 with	 the	
+observer,	 palpation	 of 	the	 painful	 area,	 and	
+qualitative	behavior.
+2)	 Observation	 of 	 the	 cat	 begins	 with	 them	
+undisturbed	and	is	followed	by	interaction.
+–	Each	 item	 is	 scored	 and	 then	 summed	 to	
+develop	the	score	of 	the	cat.
+–	Intervention	 occurs	 when	 the	 score	 is	
+greater	than	or	equal	to	5/20.
+3)	 The	 scoring	 system	 is	 easy	 to	 use	 and	 has	 been	
+validated	for	use	in	acute	pain	in	cats.
+ii)	 UNESP-	 Botucatu	MCPS
+1)	 Components
+–	Reaction	 to	 palpation	 of 	the	 flank,	 reaction	
+to	 palpation	 of 	the	 surgical	 wound,	 vocali-
+zation,	 posture,	 comfort,	 activity,	 attitude,	
+appetite,	and	blood	pressure.
+2)	 Evaluation	 starts	 by	 observing	 the	 undis -
+turbed	 cat	 and	 then	 the	 cat	 is	 approached	 for	
+the	evaluation	of 	the	remaining	items.
+–	Each	item	is	scored	from	0	to	3.	 The	sum	of 	
+all	these	scores	is	the	final	score	of 	that	cat.
+–	Intervention	 is	 recommended	 at	 a	 score 	
+equal	 to	 or	 greater	 than	 7/20	 unless	 bleed 	
+pressure	 is	 not	 included,	 and	 then	 it	 is	 6/20.
+3)	 The	 score	 was	 developed	 for	 use	 in	 cats	 with	
+postoperative	pain.
+4)	 Video-	 based	 training	 of 	the	 scale	 is	 availa-
+ble	online.
+iii)	 Feline	Grimace	Scale
+1)	 Components
+–	Ear	 position,	 orbital	 tightening,	 muzzle	 ten-
+sion,	whisker	position,	and	head	position.
+2)	 Each	 component	 is	 rated	 0–2,	 0  =  absent,	
+1  =  moderate	 appearance,	 2  =  obvious	
+appearance.
+–	The	 final	 score	 is	 the	 sum	 of 	scores	 divided	
+by	the	number	of 	scored	action	units.
+–	Intervention	 is	 recommended	 with	 a	 score	
+>0.39/1.0.
+3)	 This	 scale	 is	 easy	 and	 quick	 to	 use,	 and	 is	
+reported	 to	 have	 high	 discriminative	 ability,	
+good	 overall	 inter-	 rater	 and	 intra-	 rater	
+reliability.
+4)	 Training	is	available	with	the	original	article.
+iv)	 Colorado	 State	 University	 Feline	 Acute	 Pain	 Scale
+1)	 Components
+–	Assess	 psychologic	 and	 behavioral	 compo -
+nents	 including	 resting	 body	 position,	
+interaction	 with	 surroundings,	 vocaliza-
+tion,	 and	 responsiveness.	 It	 also	 assesses	
+responses	to	palpation	and	body	tension.
+2)	 A	 score	 equal	 to	 or	 greater	 than	 2/5	 requires	
+intervention.
+3)	 Found	 to	 have	 moderate	 to	 good	 inter-	 rater	
+reliability	 when	 used	 by	 veterinarians	 to	
+assess	 pain	 level	 or	 need	 to	 reassess	 the	 anal-
+gesic	plan.
+g)	 See	 Table	7.1	–	Acute	Pain	Scales	for	cats.
+C)	 The	approach	to	multimodal	analgesia
+a)	 The	 analgesic	 plan	 should	 include	 agents	 that	 target 	
+different	 sites	 along	 the	 pain	 pathway.	 The	 use	 of 	mul-
+tiple	 agents	 allows	 for	 dose	 reduction	 which	 is	 par -
+ticularly	 important	 in	 cats	 due	 to	 their	 altered	 drug 	
+metabolism	and	excretion	when	compared	to	dogs.
+i)	 This	 is	 likely	 of 	particular	 importance	 in	 patients	
+suffering	from	hepatic	and	renal	insufficiency.
+b)	 Most	 analgesic	 plans	 consist	 of 	two	 to	 four	 agents	
+that	act	on	separate	levels	of 	the	pain	pathway.
+i)	 The	 appropriate	 opioid	 is	 usually	 the	 foundation	
+of 	every	analgesic	protocol.
+1)	 While	 this	 is	 traditional,	 they	 are	 not	 always	
+required,	 particularly	 in	 situations	 where	 the	
+patient	 has	 been	 provided	 a	 locoregional	
+anesthetic	 technique	 and	 a	 nonsteroidal	 anti-	
+inflammatory	agent.
+ii)	 In	 any	 condition	 where	 inflammation	 is	 present, 	
+and	 the	 patient	 is	 a	 good	 candidate,	 a	 non- 	steroidal 	
+anti-	 inflammatory	 drugs	 (NSAID)	 is	 usually	 the 	
+second	component	of 	an	analgesic	plan.
+iii)	 Appropriate	 locoregional	 techniques	 including	
+epidurals	 and	 nerve	 blocks	 halt	 nociceptive	
+transmission	 and	 have	 been	 gaining	 popularity,	
+particularly	 as	 opioid	 availability	 has	 become	 so	
+variable.
+iv)	 Finally,	 an	 adjunctive	 agent	 can	 be	 added	
+depending	on	the	need	and	the	disease	process.
+1)	 These	 agents	 include	 alpha-	 2	 agonists,	 disso -
+ciative	anesthetics,	and	anticonvulsants.
+D)	 Systemic	options	for	analgesia
+a)	 Opioids
+i)	 Act	 at	 spinal	 and	 supraspinal	 sites	 leading	 to	 a 	
+reduction	 in	 cAMP	 formation,	 membrane	 hyper -
+polarization,	 inhibit	 voltage- 	sensitive	 Ca 2+ 	
+channels,	 and	 depress	 terminal	 release	 of 	neuro -
+transmitters	from	the	cell.
+
+
+--- PDF 85 ---
+Feline Emergency and Critical Care Medicine
+ 67
+ii)	 In	 cats,	 opioids	 evoke	 sympathetic	 stimulation	
+and	 responses	 can	 include	 mydriasis	 and	
+increases	in	blood	pressure	and	heart	rate.
+iii)	 Behavioral	 changes	 can	 be	 seen	 in	 cats	 when	
+administered	 opioids.	 Often	 these	 are	 signs	 of 	
+euphoria	 and	 include	 purring,	 kneading,	 and	
+rubbing	 against	 objects	 or	 caregivers.	 However,	
+signs	 of 	dysphoria	 can	 also	 be	 seen	 with	 cats	
+demonstrating	 signs	 of 	fear	 and	 anxiety	 includ-
+ing	vocalization.
+iv)	 Additionally,	 some	 of 	the	 pure	 mu	 agonists	 (mor -
+phine,	 hydromorphone,	 and	 oxymorphone)	 can	
+cause	 nausea,	 vomiting,	 and	 excessive	 salivation	
+in	 these	 patients.	 In	 humans,	 nausea	 is	 consid-
+ered	 to	 be	 highly	 uncomfortable	 and	 distressing,	
+and	 it	 is	 reasonable	 to	 assume	 this	 is	 also	 true	 of 	
+our	 feline	 patients.	 These	 agents	 should	 be	 used	
+in	 combination	 with	 an	 anti- 	emetic	 such	 as	
+maropitant.
+v)	 Morphine
+1)	 Pure	 mu	 agonist,	 this	 drug	 is	 the	 prototype	 to	
+which	 all	 other	 opioids	 are	 compared	 in	 terms	
+of 	potency.
+2)	 Most	 commonly	 administered	 via	 the	 epi-
+dural	or	spinal	route.
+3)	 Rapid	 IV 	administration	 is	 associated	 with	
+histamine	release	and	vomiting.
+vi)	 Methadone
+1)	 Pure	 mu	 agonist	 with	 NMDA	 receptor	 antag -
+onism	(like	ketamine).
+2)	 This	 agent	 is	 not	 associated	 with	 histamine	
+release.
+3)	 Not	 associated	 with	 nausea	 or	 vomiting,	 so	
+may	 be	 a	 benefit	 in	 patients	 suffering	 from	
+gastrointestinal	(GI)	disease.
+vii)	 Hydromorphone
+1)	 Pure	 mu	 agonist	 that	 is	 five	 to	 seven	 times	
+more	potent	than	morphine.
+Table 7.1 Acute pain scales for cats.
+Pain scale Components Observation Intervention score Training available
+Glasgow	
+CMPS-	 Feline
+Vocalization
+Posture	and	activity
+Attention	to	wound
+Ear	position
+Shape	of 	muzzle
+Interaction	with	observer
+Palpation	of 	painful	area
+Qualitative	behavior
+Begins	with	observing	the	
+cat	prior	to	interaction
+ 
+Then	the	observer	interacts	
+with	the	patient
+ 
+Each	item	is	scored	and	
+then	summed
+>5/20 No
+UNESP-	 Botucatu	
+MCPS
+Reaction	to	palpation	of 	
+the	flank	and	wound
+Vocalization
+Posture
+Activity
+Attitude
+Appetite
+Blood	pressure
+Evaluation	begins	with	the	
+cat	undisturbed
+ 
+Each	item	is	scored	0–3	and	
+then	summed
+>7/20
+ 
+If 	unable	to	obtain	
+blood	pressure	>6/20
+Video-	 based	training	is	
+available	online
+Feline	Grimace	
+Scale
+Ear	position
+Orbital	tightening
+Muzzle	tension
+Whisker	position
+Head	position
+Each	component	is	rated	
+0–2	and	then	summed.	 This	
+sum	is	then	divided	by	the	
+number	of 	scored	units
+>0.39/1 Training	is	available	with	
+the	original	article
+Colorado	State	
+University	Feline	
+Acute	Pain	Scale
+Resting	body	position
+Interaction	with	
+surroundings
+Vocalization
+Responsiveness	to	
+palpation
+Body	tension
+Scale	of 	1–5 >2/5 No
+ 
+However,	this	is	a	very	
+simple	scale	and	minimal	
+training	is	required
+
+
+--- PDF 86 ---
+Analgesia in the Critically Ill Cat
+68
+2)	 Very	 effective	 analgesic	 and	 has	 a	 relatively	
+long	duration	of 	action.
+3)	 Associated	 with	 significant	 nausea	 and	 vomit -
+ing	 following	 administration.	 This	 is	 more 	
+likely	 when	 administered	 via	 the	 intramuscular 	
+route	or	when	injected	rapidly	intravenously.
+–	Maropitant	 has	 been	 demonstrated	 to	
+reduce	 the	 incidence	 of 	vomiting	 in	 cats	
+that	 are	 pretreated	 before	 morphine	 and	
+dexmedetomidine	administration.
+–	Maropitant	 has	 been	 demonstrated	 to	
+reduce	 the	 incidence	 of 	vomiting	 in	 dogs	
+receiving	hydromorphone.
+4)	 Hydromorphone	 has	 been	 associated	 with 	
+hyperthermia	 in	 cats	 following	 its 	
+administration.
+viii)	 Oxymorphone
+1)	 Pure	 mu	 agonist,	 ten	 times	 more	 potent	 than	
+morphine.
+2)	 Similar	 to	 hydromorphone;	 anecdotal	 evidence 	
+would	 suggest	 that	 less	 vomiting	 is	 noted	 with 	
+this	agent	compared	to	hydromorphone.
+ix)	 Fentanyl
+1)	 Pure	mu	agonist.
+2)	 The	 relatively	 short	 duration	 of 	action	 makes	
+it	ideal	for	constant	rate	infusion	(CRI).
+3)	 Related	with	dysphoria	at	high	doses.
+x)	 Remifentanil
+1)	 Synthetic	pure	mu	agonist.
+2)	 Administered	as	a	CRI.
+–	Undergoes	 rapid	 plasma	 hydrolysis	 by 	
+plasma	 esterases,	 means	 a	 rapid	 offset	 of 	
+action	 after	 the	 termination	 of 	the	 infusion.
+ ● Good	 choice	 for	 animals	 with	 hepatic	
+dysfunction.
+ ● The	 appropriate	 analgesic	 plan	 must	 be	 in 	
+place	 before	 the	 termination	 of 	infusion, 	
+as	 even	 after	 hours	 of 	infusion,	 activity	 is 	
+terminated	in	approximately	5 minutes.
+3)	 Bolus	 injection	 results	 in	 profound	 bradycar -
+dia	and	should	be	avoided.
+4)	 Ideally,	 this	 is	 run	 through	 a	 catheter	 that	 is	
+not	 used	 for	 the	 administration	 of 	intrave -
+nous	 fluids	 or	 other	 medications	 to	 decrease	
+the	risk	of 	an	accidental	bolus.
+xi)	 Buprenorphine
+1)	 Partial	mu	agonist,	kappa	antagonist.
+2)	 Acceptable	 for	 the	 management	 of 	mild	 to	
+moderate	pain.
+3)	 Once	 administered	 binds	 tightly	 to	 mu- 	opioid	
+receptors	 and	 will	 outcompete	 pure	 mu	 ago -
+nists	that	are	administered.
+–	A	ceiling	effect	on	analgesia	is	observed.
+–	Should	 buprenorphine	 not	 provide	 enough	
+analgesia,	 additional	 agents	 will	 have	 to	 be	
+administered	 until	 buprenorphine	 activity	
+decreases	in	4–8	hours.
+4)	 Relatively	 good	 oral	 bioavailability	 when	
+administered	via	the	orotransmucosal	route.
+5)	 Euphoria	 is	 commonly	 observed	 after 	
+administration.
+6)	 Simbadol	 is	 a	 sustained-	 release	 option	 and	
+provides	up	to	24	 hours	of 	analgesia.
+xii)	 Butorphanol
+1)	 Kappa	agonist,	mu	antagonist.
+2)	 Limited	analgesic	efficacy.
+–	Suitable	 for	 sedation	 for	 nonpainful	
+procedures.
+3)	 It	 can	 be	 used	 to	 reverse	 dysphoria	 or	 overse -
+dation	caused	by	pure	mu- 	opioid	agonists.
+–	0.03	 mg/kg	 diluted	 to	 5	 ml	 in	 0.9%	 saline	
+and	slowly	titrated	until	signs	resolve.
+–	Repeated	 pain	 scoring	 is	 required	 follow -
+ing	 this	 to	 ensure	 appropriate	 analgesia	 is	
+maintained.
+xiii)	 Tramadol
+1)	 Available	in	oral	and	injectable	formulations.
+–	Most	 commonly	 used	 as	 an	 option	 for	 oral	
+administration.
+2)	 Weak	 opioid	 agonist	 and	 a	 serotonin	 and	 nor -
+epinephrine	reuptake	inhibitor.
+–	Risk	 of 	 developing	 serotonin	 syndrome	
+when	 administered	 with	 other	 serotonin	
+inhibitors,	 monoamine	 oxidase	 inhibitors,	
+and	tricyclic	antidepressants.
+3)	 The	 very	 bitter	 taste	 limits	 its	 utility,	 as	 cats	 may 	
+salivate	profusely	after	drug	administration.
+xiv)	 Naloxone
+1)	 Antagonizes	mu	and	kappa	opioid	receptors.
+2)	 Used	 for	 the	 reversal	 of 	pure	 mu	 opioids,	 but	
+can	also	be	used	to	antagonize	butorphanol.
+3)	 Can	 be	 administered	 as	 a	 bolus	 injection,	 or	
+diluted	in	0.9%	saline	and	titrated	to	effect.
+xv)	 See	 Table	7.2	–	Commonly	used	opioid	doses
+b)	 NSAIDs
+i)	 These	 agents	 are	 widely	 used	 for	 their	 anti-	
+inflammatory,	antipyretic,	and	analgesic	effects.
+ii)	 Associated	 with	 a	 large	 number	 of 	 potential 	
+adverse	 effects	 including	 gastrointestinal		 irritation, 	
+protein-	 losing	enteropathy,	and	renal	damage.
+1)	 Because	 of 	these	 effects,	 their	 utility	 in	 the	
+critically	ill	is	often	limited.
+2)	 Caution	 should	 be	 used	 when	 administering	
+these	 agents	 to	 patients	 with	 signs	 of 	hypov -
+olemia,	 hypotension,	 coagulopathies,	 and	
+renal	or	hepatic	dysfunction.
+
+
+--- PDF 87 ---
+Feline Emergency and Critical Care Medicine
+ 69
+3)	 Dehydration	 and	 hypovolemia	 should	 always	
+be	corrected	before	administration.
+4)	 Administration	 of 	 oral	 agents	 should	 be 	
+done	 with	 food,	 as	 gastrointestinal	 irritation 	
+is	common.
+iii)	 Monitoring
+1)	 While	 the	 risk	 of 	healthy	 cats	 developing	 renal 	
+injury	 following	 administration	 of 	appropri-
+ately	 dosed	 NSAIDs	 is	 low,	 it	 is	 recommended 	
+that	 baseline	 values	 of 	serum	 creatinine,	 blood 	
+urea	 nitrogen	 (BUN),	 and	 symmetric	 dimethy -
+larginine	 (SDMA)	 be	 obtained	 in	 combination 	
+with	a	urine- 	specific	gravity.
+iv)	 Meloxicam
+1)	 Cyclooxygenase-	 2	 (COX-	 2)	 preferential	 agent.
+2)	 Can	 be	 administered	 by	 subcutaneous	 injection 	
+once	for	treatment	of 	mild	to	moderate	pain.
+–	This	 can	 be	 followed	 by	 once- 	daily	 oral	
+dosing	for	4 days.
+3)	 Partially	 excreted	 through	 the	 fecal	 route,	 so	
+originally	 was	 thought	 to	 be	 preferred	 in	 cats	
+with	renal	dysfunction.
+v)	 Robenacoxib
+1)	 COX-	 2	selective	agent.
+2)	 It	 can	 be	 administered	 by	 subcutaneous	 injec-
+tion	 once	 followed	 by	 once- 	daily	 oral	
+administration.
+3)	 Good	 for	 the	 treatment	 of 	pain	 and	 inflamma-
+tion	 associated	 with	 musculoskeletal	 disorders.
+vi)	 Carprofen
+1)	 Can	 be	 administered	 by	 subcutaneous	 injec-
+tion	 once	 for	 the	 management	 of 	postsurgi-
+cal	pain.
+vii)	 Ketoprofen
+1)	 Can	 be	 used	 for	 relief 	of 	acute	 pain	 and	
+inflammation	 associated	 with	 musculoskele -
+tal	disorders.
+2)	 Can	 be	 administered	 by	 subcutaneous	 injec-
+tion	once	daily	for	up	to	3 days.
+3)	 It	can	be	administered	orally	for	up	to	5 days.
+viii)	 Acetylsalicylic	acid
+1)	 Not	approved	for	use	in	cats.
+2)	 Commonly	 used	 as	 an	 antithrombotic	 agent	
+to	 help	 prevent	 thromboembolism	 associated	
+with	cardiomyopathy.
+3)	 Administered	 orally	 every	 72	 hours	 with	 no	
+restriction	on	the	duration	of 	administration.
+c)	 Dissociative	anesthetics
+i)	 NMDA	 receptors	 are	 activated	 during	 excitatory	
+neurotransmission	 and	 when	 sustained	 nocicep -
+tion	 occurs,	 and	 they	 are	 involved	 in	 central	
+sensitization.
+1)	 NMDA	 receptor	 antagonists	 such	 as	 ketamine	
+may	 have	 utility	 in	 the	 management	 of 	
+chronic	pain	and	the	wind-	 up	phenomenon.
+2)	 While	 these	 agents	 may	 have	 utility	 as	 adjunc-
+tive	 agents,	 they	 should	 never	 be	 used	 as	 a	
+stand-	 alone	analgesic.
+ii)	 Ketamine
+1)	 NMDA	receptor	antagonist.
+2)	 Most	 commonly	 used	 as	 a	 CRI	 in	 patients	
+with	 pain	 that	 is	 refractory	 to	 treatment	 with	
+opioids,	NSAIDs,	and	alpha-	 2	agonists.
+3)	 Likely,	 most	 efficacious	 in	 conditions	 where	
+the	 patient	 is	 suffering	 from	 chronic	 pain	 and	
+wind-	 up.
+Table 7.2 Commonly used opioid doses.
+Drug Dose Route Interval Side effects/comments
+Morphine 0.1–0.5	 mg/kg
+0.1–0.2	 mg/kg/h
+0.1	 mg/kg
+IM,	SC
+IV
+Epidural
+4–6	 hours
+8–12	 hours
+Histamine	release
+Urine	retention
+Methadone 0.1–0.5	 mg/kg
+0.1–0.2	 mg/kg
+IM,	SC,	IV
+Epidural
+4–6	hours
+4	hours
+NMDA	antagonist	activity
+Minimal	nausea/vomiting
+Hydromorphone 0.05–0.1	 mg/kg IM,	SC,	IV 4–6	hours Hyperthermia
+Oxymorphone 0.05–0.2	 mg/kg IM,	SC,	IV 4–6	hours
+Fentanyl 3–5	 μg/kg
+2–10	 μg/kg/h
+IV 5–90	 minutes
+CRI
+Marked	bradycardia	can	be	seen	
+with	bolus	injection
+Remifentanil 2–10	 μg/kg/h IV CRI Bolus	administration	should
+be	avoided— 	severe	bradycardia
+Buprenorphine 0.01–0.02	 mg/kg IM,	SC,	IV ,	OTM 6–8	hours Long	time	interval	to	onset
+of 	action	(30–40	 minutes)
+Butorphanol 0.1–0.5	 mg/kg IM,	SC,	IV 2–4	hours Analgesic	potential	is	limited
+
+
+--- PDF 88 ---
+Analgesia in the Critically Ill Cat
+70
+iii)	 Amantadine
+1)	 It	 has	 a	 relatively	 low	 affinity	 to	 NMDA	 recep -
+tors,	 but	 has	 shown	 promise	 in	 the	 treatment	
+of 	neuropathic	pain	in	veterinary	species.
+2)	 Has	 been	 associated	 with	 reduced	 opioid	
+requirements	in	humans.
+d)	 Anticonvulsants
+i)	 Gabapentin
+1)	 Gabapentin	 is	 an	 analog	 of 	the	 inhibitory	
+neurotransmitter	 γ-	aminobutyric	 acid,	 but	
+does	not	exhibit	activity	on	GABA	receptors.
+2)	 Acts	 primarily	 by	 binding	 to	 voltage- 	gated	
+calcium	channels.
+3)	 It	 can	 be	 used	 for	 the	 management	 of 	acute	
+and	chronic	pain.
+–	It	 should	 not	 be	 used	 as	 a	 sole	 agent	 in	 the	
+management	of 	acute	postoperative	pain.
+–	A	 good	 oral	 alternative	 for	 the	 manage -
+ment	of 	chronic	pain.
+4)	 Has	 been	 shown	 to	 improve	 activity	 levels	 in	
+cats	suffering	from	osteoarthritis.
+5)	 The	 administration	 of 	this	 agent	 can	 be	 asso -
+ciated	with	sedation.
+e)	 Alpha-	 2	agonists
+i)	 Dexmedetomidine	and	medetomidine
+1)	 Commonly	 used	 for	 premedication	 and	 sedation.
+2)	 Provide	 excellent	 muscle	 relaxation	 and	 anal-
+gesia	 and	 is	 an	 excellent	 adjunct	 to	 an	 opioid	
+for	 the	 management	 of 	pain	 in	 feline	 patients.
+3)	 Nausea	 and	 vomiting	 are	 associated	 with	 bolus 	
+administration	of 	dexmedetomidine	in	cats.
+4)	 Reductions	 in	 heart	 rate	 and	 cardiac	 output	
+are	 associated	 with	 bolus	 injections	 and	 are	
+limited	when	administered	as	a	CRI.
+–	Have	 been	 shown	 to	 be	 beneficial	 in	 cats	
+suffering	 from	 obstructive	 hypertrophic	
+cardiomyopathy	 at	 maintaining	 myocar -
+dial	 perfusion	 and	 decreasing	 myocardial	
+oxygen	demand.
+ ● These	 benefits	 are	 not	 seen	 in	 cats	 suf-
+fering	from	restrictive	cardiomyopathy.
+5)	 Often	 many	 stressed	 patients	 benefit	 from	 the	
+sedation	 of 	 dexmedetomidine	 to	 improve	
+their	comfort	in	the	hospital	setting.
+ii)	 Atipamezole
+1)	 Reversal	 agent	 for	 dexmedetomidine	 and	
+medetomidine.
+2)	 It	 should	 be	 administered	 intramuscularly,	 as	
+intravenous	 administration	 can	 result	 in	 pro -
+found	and	refractory	hypotension.
+f)	 See	 Table	 7.3	 –	 Oral	 dosages	 for	 NSAIDs	 and	
+Adjunctive	agents.
+g)	 See	 Table	7.4	–	Doses	for	CRIs	of 	adjunctive	agents
+E)	 Locoregional	techniques
+a)	 Local	anesthetics
+i)	 Local	 anesthetics	 prevent	 nociceptive	 transmis -
+sion	 and	 are	 the	 only	 pharmacologic	 agents	
+available	 that	 terminate	 nociceptive	 signals	 at	
+the	source.
+ii)	 Local	 anesthetics	 may	 be	 administered	 by	 a	 vari-
+ety	of 	routes:
+1)	 Topical	 administration	 of 	lidocaine-	 prilocaine	
+(EMLA)	cream.
+2)	 Local	infiltration.
+3)	 Target	perineural	administration.
+4)	 Fascial	plane	blocks.
+5)	 Epidural	or	spinal	administration.
+Table 7.3 Oral dosages for NSAIDs and adjunctive agents.
+Drug Dose Route Interval Side effects/comments
+Tramadol 2–4	 mg/kg PO 6–12	 	 hours Avoid	use	with	selective	serotonin	reuptake	
+inhibitors	(SSRI)	and	monoamine	oxidase	inhibitors	
+(MAO)	inhibitors
+Gabapentin 10	 mg/kg PO 12	 	hours Can	cause	sedation
+Amantadine 2–5	 mg/kg PO 24	 	hours May	be	of 	benefit	with	neuropathic	pain
+Meloxicam 0.3	 mg/kg
+0.1	 mg/kg
+0.05	 mg/kg
+SC
+PO
+PO
+Once
+Once
+q24	 	 h
+May	be	followed	by	0.05	 mg/kg	PO	for	4 days
+ 
+After	oral	loading,	dose	may	be	continued	long	term
+Robenacoxib 1	 mg/kg
+2	 mg/kg
+PO
+SC
+q24	 	 h
+Once
+Up	to	6 days
+Once
+Carprofen 4	 mg/kg SC Once Once	only
+Ketoprofen 2	 mg/kg
+1	 mg/kg
+SC
+PO
+q24	 	 h
+q24	 	 h
+Up	to	3 days
+Up	to	5 days
+Acetylsalicylic	acid 1–25	 mg/kg PO q72	 	 h Indefinite	duration
+
+
+--- PDF 89 ---
+Feline Emergency and Critical Care Medicine
+ 71
+6)	 Intrapleural	 administration	 through	 chest	 tubes.
+7)	 Administration	 directly	 into	 the	 wound	 via	
+wound- 	soaker	catheters.
+8)	 Intravenous	administration	of 	lidocaine.
+iii)	 Ideally,	 patients	 undergoing	 anesthesia	 for	 sur -
+gery	 should	 have	 an	 appropriate	 locoregional	
+technique	 performed	 as	 part	 of 	a	 multimodal	
+analgesic	strategy.
+1)	 This	 may	 include	 ultrasound- 	guided	 blockade 	
+of 	the	 saphenous	 and	 sciatic	 nerves	 of 	the	 pel-
+vic	 limb	 or	 radial-	 ulnar-	 musculocutaneous	 and 	
+medial	(RUMM)	blocks	in	the	thoracic	limb.
+2)	 For	 abdominal	 procedures,	 transverse	 abdom-
+inal	 plane	 blocks	 provide	 desensitization	 of 	
+the	ventral	abdomen.
+3)	 Intercostal	 nerve	 blocks	 can	 provide	 analgesia	
+for	 patients	 undergoing	 lateral	 thoracotomy	
+procedures.
+4)	 Local	 infiltration	 can	 be	 performed	 at	 the	 site	
+of 	the	 surgical	 incision	 for	 the	 placement	 of 	
+chest	tubes	or	central	lines.
+5)	 Epidural	 administration	 of 	opioids	 and	 local	
+anesthetics	 can	 provide	 12–24	 hours	 of 	anal-
+gesia	 for	 patients	 undergoing	 procedures	 on	
+the	pelvic	limb,	abdomen,	and	thorax.
+–	The	 utilization	 of 	 an	 epidural	 catheter	
+allows	 for	 repeated	 administration	 of 	
+analgesics.
+6)	 Complete	 details	 on	 how	 to	 perform	 these	 tech-
+niques	 can	 be	 found	 in	 Barr	 and	 Gianotti	 (2019).
+iv)	 In	 situations	 where	 a	 locoregional	 block	 cannot	
+be	 performed,	 utilization	 of 	liposomal	 bupiv -
+acaine	can	greatly	benefit	critically	ill	patients.
+1)	 Liposomal	 bupivacaine	 can	 provide	 up	 to	
+72	 hours	of 	analgesia	at	the	incision	site.
+2)	 It	 is	 infiltrated	 at	 the	 incisional	 site	 in	 each	 tis -
+sue	layer	at	a	dose	of 	0.4	 ml/kg.
+3)	 At	 this	 time,	 it	 is	 not	 recommended	 to	 infil-
+trate	 this	 agent	 in	 wounds	 that	 are	 infected	 or	
+are	considered	contaminated.
+v)	 Lidocaine	 and	 bupivacaine	 are	 the	 two	 most	
+commonly	 utilized	 local	 anesthetics	 in	 veteri-
+nary	patients.
+1)	 Lidocaine	 has	 a	 quick	 onset	 of 	action,	 but	 a	
+short	duration	of 	action.
+–	Dose	1–4	 mg/kg.
+–	Intravenous	 lidocaine	 has	 shown	 promise	
+as	 an	 analgesic;	 however,	 due	 to	 reduced	
+metabolism,	 it	 is	 not	 recommended	 for	 CRI	
+in	 cats	 due	 to	 the	 potential	 for	 cardiovascu-
+lar	toxicity.
+2)	 Bupivacaine	 has	 a	 slower	 onset	 of 	action,	 but	
+a	longer	duration	of 	action.
+–	Dose	1–2	 mg/kg.
+–	Care	 should	 be	 taken	 to	 prevent	 inadvert -
+ent	 intravenous	 administration	 due	 to	 bupi-
+vacaine’s	profound	cardiovascular	toxicity.
+3)	 Dexmedetomidine	 may	 be	 added	 to	 local	
+anesthetics	 to	 prolong	 their	 duration	 of 	action.
+–	Dose:	1	μg/1	 ml	of 	local	anesthetic.
+b)	 Epidural	administration	of 	analgesics
+i)	 Typically,	 local	 anesthetics	 and/or	 opioids	 are	
+administered	 through	 the	 lumbosacral	 space;	
+however,	 in	 cats,	 the	 dural	 sac	 extends	 further	
+caudal	 than	 in	 the	 dog,	 and	 so	 there	 is	 increased	
+risk	 of 	dural	 sac	 puncture	 and	 administration	 of 	
+intrathecal	drugs.
+1)	 If 	cerebro- 	spinal	 fluid	 (CSF)	 is	 noted,	 then	 the	
+dose	 should	 be	 decreased	 to	 half 	of 	the	 epi-
+dural	dose	before	administration.
+ii)	 The	 sacrococcygeal	 space	 is	 easily	 accessed	 in	 the	
+cat	 and	 epidural	 administration	 of 	drugs	 from	
+this	 location	 is	 easily	 performed	 using	 a	 nerve	
+stimulator.
+iii)	 One	 publication	 has	 shown	 promise	 in	 providing	
+analgesia	 and	 facilitation	 of 	urinary	 catheteriza-
+tion	in	cats	with	urethral	obstructions.
+iv)	 Contraindications
+1)	 Local	infection.
+2)	 Sepsis.
+3)	 Bleeding	disorders.
+4)	 Hypovolemia/shock.
+v)	 Drugs
+1)	 All	 drugs	 administered	 through	 this	 route	
+should	 be	 preservative-	 free	 due	 to	 the	 risk	 of 	
+neural	toxicity	of 	the	preservatives.
+2)	 Local	 anesthetics	 can	 be	 administered	 at	 low	
+volumes	 for	 coverage	 of 	the	 pelvic	 limb.	 Caution 	
+should	 be	 used	 when	 the	 epidural	 is	 necessary 	
+for	 coverage	 of 	thoracic	 pain,	 as	 local	 anes -
+thetics	 can	 cause	 weakness	 of 	the	 respiratory 	
+muscles	necessitating	mechanical	ventilation.
+c)	 Wound- 	soaker	catheters
+i)	 Wound- 	soaker	 catheters	 can	 be	 placed	 at	 the	 time 	
+of 	surgery	 in	 sites	 of 	large	 wounds	 that	 are	 not 	
+easily	covered	by	other	locoregional	techniques.
+Table 7.4 Doses for CRIs of adjunctive agents.
+Drug Dose Route Interval
+Dexmedetomidine 0.25–1	μg/kg
+0.25–3	μg/kg/h
+IV
+IV
+Bolus	as	needed
+CRI
+Ketamine 0.3–0.6	 mg/kg
+0.1–0.6	 mg/kg/h
+IV
+IV
+Once
+CRI
+
+
+--- PDF 90 ---
+Analgesia in the Critically Ill Cat
+72
+Table 7.5 Local anesthetic doses for locoregional administration.
+Procedure Indications Drugs Dose
+Epidural Hindlimb,	perineal	surgery/trauma Morphine 0.1–0.15	 mg/kg
+Caudal Buprenorphine
+Bupivacaine
+0.004–0.012	 mg/kg
+0.5–1.0	 mg/kg
+Epidural
+High
+Sternotomy,	cranial	abdominal	surgery Morphine
+Buprenorphine
+0.1–0;	15	 mg/kg
+0.004–0.012	 mg/kg
+Interpleural Chest	trauma,	thoracotomy Bupivacaine 1.5	 mg/kg
+ii)	 These	 catheters	 are	 a	 potential	 source	 of 	infec-
+tion	 and	 should	 only	 be	 maintained	 for	 2–3 days	
+postoperatively.
+iii)	 Bolus	 administration	 of 	1	 mg/kg	 of 	bupivacaine	
+every	 8	 hours	 may	 be	 performed	 or	 a	 CRI	 of 	lido -
+caine	may	be	used.
+d)	 Intrapleural	administration
+i)	 Thoracic	 surgery	 can	 be	 very	 painful	 and	 patients	
+who	 undergo	 median	 sternotomies	 are	 some	 of 	
+the	 most	 challenging	 patients	 when	 it	 comes	 to	
+managing	their	comfort.
+ii)	 Those	 with	 indwelling	 chest	 tubes	 can	 benefit	
+from	 the	 administration	 of 	local	 anesthetics	 into	
+the	pleural	cavity.
+iii)	 Bupivacaine	 can	 be	 administered	 at	 a	 dose	
+of 1.5	 mg/kg	 through	 the	 chest	 tube	 followed	 by	
+2–5	 ml	of 	0.9%	saline	every	4–6	hours	as	needed.
+e)	 See	 Table	 7.5	 –	Local	 anesthetic	 doses	 for	 locore -
+gional	administration.
+F)	 Example	protocols
+a)	 Blocked	cat
+i)	 Buprenorphine	IV 	0.01–0.03	 mg/kg	q8h.
+ii)	 Sacrococcygeal	 epidural	 with	 0.5%	 bupivacaine	
+0.2	 ml/kg.
+iii)	 A	 dexmedetomidine	 CRI	 can	 be	 considered	 par -
+ticularly	 in	 those	 patients	 that	 are	 very	 stressed	
+and	 are	 at	 risk	 of 	pulling	 out	 their	 urinary	
+catheters.
+1)	 1	 μg/kg	 bolus	 IV 	 followed	 by	 CRI	 at	
+0.25–1.0	 μg/kg/h.
+iv)	 Maropitant—	 NK1	 receptor	 antagonist— 	decreases 	
+incidence	 of 	 vomiting	 associated	 with	 opioid 	
+administration	 and	 may	 play	 a	 role	 in	 providing 		
+visceral	analgesia.
+b)	 Postoperative	GI	foreign	body
+i)	 Opioid:	 may	 choose	 a	 bolus	 dose	 or	 CRI	 depend-
+ing	on	equipment/staffing.
+1)	 Methadone:	0.1–0.2	 mg/kg	IV 	q4–6h.
+2)	 Hydromorphone:	0.01–0.05	 mg/kg	IV 	q4–6h.
+3)	 Fentanyl	CRI:	0.1–0.3	 μg/kg/min.
+ii)	 Dexmedetomidine:	 loading	 dose	 1	 μg/kg	 IV ,	
+	followed	by	CRI	at	0.25–1	 μg/kg/h.
+1)	 One	 may	 consider	 doing	 a	 ketamine	 CRI	
+should	 the	 patient	 be	 a	 poor	 candidate	 for	
+dexmedetomidine.
+iii)	 Maropitant—	 NK1	 receptor	 antagonist—	
+decreases	 incidence	 of 	vomiting	 associated	 with	
+opioid	 administration	 and	 may	 play	 a	 role	 in	 pro -
+viding	visceral	analgesia.
+iv)	 Once	 eating,	 consider	 transitioning	 to	 tramadol	
+and	gabapentin	for	analgesia	at	home.
+c)	 Cat	with	chronic	osteoarthritis
+i)	 The	 long-	 term	 use	 of 	NSAIDs	 in	 cats	 is	 contro -
+versial;	 however,	 these	 are	 the	 only	 agents	 proven	
+to	 decrease	 pain	 scores	 in	 cats	 suffering	 from	
+chronic	osteoarthritis.
+1)	 Serial	 serum	 chemistries	 to	 assess	 changes	 in	
+renal	 values	 along	 with	 urinalysis	 are	 indi-
+cated	 in	 any	 cat	 that	 is	 maintained	 on	 NSAIDs	
+long	term.
+2)	 Titration	 to	 the	 lowest	 effective	 dose	 should	
+be	 the	 goal;	 many	 cats	 do	 well	 on	 every	 other	
+day	dosing	of 	NSAIDs.
+3)	 Maintaining	 hydration	 is	 of 	utmost	 impor -
+tance;	 encouraging	 drinking	 with	 fresh	 circu-
+lating	 water	 and	 the	 addition	 of 	wet	 food	 to	
+the	diet	should	be	considered.
+ii)	 Gabapentin	 has	 not	 been	 shown	 to	 decrease	 pain	
+scores,	 but	 has	 been	 shown	 to	 improve	 activity	
+scores.	 Gabapentin	 is	 primarily	 renally	 excreted,	
+and	 so	 lower	 doses	 should	 be	 considered	 in	 cats	
+with	renal	insufficiency.
+iii)	 Tramadol	 can	 also	 be	 considered	 in	 those	 that	
+are	 particularly	 painful;	 however,	 it	 has	 a	 very	
+bitter	taste	and	is	often	not	well	tolerated.
+
+
+--- PDF 91 ---
+Feline Emergency and Critical Care Medicine
+ 73
+Reference
+Barr,	C.	and	Gianotti,	G.	(2019).	Alternatives	to	opioid	
+analgesia	in	small	animal	anesthesia.	Vet. Clin. Small 
+Anim. Pract.	49	(6):	981–1156.
+Recommended Readings
+Cambridge,	A.,	 Tobias,	K.,	Newberry,	R.,	and	Sarkar,	
+D.	(2000).	Subjective	and	objective	measurements	of 	
+postoperative	pain	in	cats.	J. Am. Vet. Med. Assoc.	217	(5):	
+685–690.
+Gaynor,	J.	and	Muir,	 W .	(2002).	Handbook of Veterinary Pain 
+Management.	St.	Louis:	Mosby.
+Guedes,	A.,	Meadows,	J.,	Pypendop,	B.	et al.	(2018).	
+Assessment	of 	the	effects	of 	gabapentin	on	actiivty	levels	
+and	owner-	 perceived	mobility	impairment	and	quality	of 	
+life	in	osteoarthritic	geriatic	cats.	J. Am. Vet. Med. Assoc.	
+253	(5):	579–585.
+Gunn-	 Moore,	D.	(2010).	NSAIDs	and	cats -	 	it’s	been	a	long	
+journey.	J. Feline Med. Surg.	12	(7):	519–538.
+Hansen,	B.	(2005).	Analgesia	and	sedation	in	the	crtically	ill.	
+J. Vet. Emerg. Crit. Care	285–294.
+Hernandez- 	Avalos,	I.,	Mota-	 Rojas,	D.,	Mora-	 Medina,	P.	et al.	
+(2019).	Review	of 	different	methods	used	for	clinical	
+recognition	and	assessment	of 	pain	in	dogs	and	cats.	Int. 
+J. Vet. Sci. Med.	7	(1):	43–54.
+Martin-	 Flores,	M.,	Saki,	D.M.,	Learn,	M.	et al.	(2016).	Effects	
+of 	maropitant	in	cats	receiving	dexmedetomidine	and	
+morphine.	J. Am. Vet. Med. Assoc.	1257–1261.
+Posener,	L.P.,	Gleed,	R.,	Erb,	H.,	and	Ludders,	J.	(2007).	
+Post-	 anesthetic	hyperthermia	in	cats.	Vet. Anesth. Analg.	
+248	(11):	40–47.
+Shipley,	H.,	Guedes,	A.,	Graham,	L.	et al.	(2018).	Preliminary	
+apprasial	of 	the	reliability	and	validity	of 	the	Colorado	
+State	University	feline	acute	pain	scale.	Journal Feline Med. 
+Surg.	21	(4):	335–339.
+Steagall,	P.	(2020).	Analgesia	what	makes	cats	different/
+challenging	and	what	is	critical	for	cats.	Vet. Clin. North 
+Am. Small Anim. Pract.	50	(4):	749–767.
+Steagall,	P.	and	Monteiro,	B.	(2019).	Acute	pain	in	cats	recent	
+advances	in	clinical	assessment.	J. Feline Med. Surg.	21	
+(1):	25–34.
+Waran,	N.,	Best,	L.,	 Williams,	 V .	et al.	(2007).	A	preliminary	
+study	of 	behaviour-	 based	indicators	of 	pain	in	cats.	
+Anim. Welf.	16	(S):	105–108.
+
+
+--- PDF 92 ---
+
+
+--- PDF 93 ---
+75
+Feline Emergency and Critical Care Medicine, Second Edition. Edited by Kenneth J. Drobatz,  
+Erica Reineke, Merilee F. Costello, and William T. N. Culp.
+© 2023 John Wiley & Sons, Inc. Published 2023 by John Wiley & Sons, Inc.
+The goal of fluid therapy is to expand intravascular vol-
+ume, restore circulatory function, and ultimately deliver 
+oxygen to tissues.
+In the clinical setting, this translates to:
+A) Providing for normal ongoing losses (maintenance) 
+until the patient becomes self-  sufficient with oral intake.
+B) Replacing existing fluid deficits.
+C) Replacement of fluid losses due to ongoing disorders 
+such as vomiting, diarrhea, or urinary losses during the 
+illness and fluid therapy plan.
+Although in most situations the importance of fluid ther -
+apy is quite clear, there are different opinions regarding the 
+type of fluid, volume of fluid, and rate of fluid to be admin-
+istered. Fortunately, as long as the heart and kidneys are 
+working appropriately, normal homeostatic mechanisms 
+allow a reasonable margin of error in the estimation of the 
+fluid deficit and therapy required.
+A) Crystalloid solutions (Table 8.1)
+a) Isotonic crystalloid, electrolyte solutions are consid-
+ered the mainstay of fluid therapy in veterinary 
+medicine.
+b) Consist primarily of water with a sodium or glucose 
+base, plus the addition of other electrolytes and/or 
+buffers.
+c) Can be used as maintenance or replacement 
+solutions.
+d) Crystalloid solutions can be divided into specific cat -
+egories (isotonic, hypotonic, or hypertonic) based on 
+the sodium concentration and osmolality of the fluid:
+i) Isotonic crystalloids contain a sodium concen-
+tration or osmolality similar to that of the cells 
+in the body. This is the most common fluid type 
+used in veterinary medicine. Examples include 
+Normosol- R, 0.9% NaCl, Plasma- Lyte 148, and 
+lactated Ringer’s solution (LRS).
+ii) Hypotonic solutions contain a lower sodium 
+concentration or osmolality than the cells of 
+the body (0.45% NaCl, D 5 W).
+iii) Hypertonic solutions contain a higher concen-
+tration of sodium or osmolality than cells of the 
+body (i.e., 7.2–23% NaCl).
+e) Using isotonic crystalloids, only one- third of the vol-
+ume administered remains within the intravascular 
+space 1 hour after administration; therefore, larger 
+volumes need to be used as compared to other types 
+of fluid (Griffel and Kaufman 1992; Elgart 2004).
+f) Examples of situations when crystalloid fluid ther -
+apy is indicated include volume depletion second-
+ary to the losses associated with vomiting, diarrhea, 
+Fluid Therapy
+Garret Pachtinger
+8
+UNIQUE FEATURES
+ ● Compared to dogs, cats are more susceptible to fluid overload resulting in respiratory distress. Therefore, the patient 
+should be monitored closely when using crystalloids, colloids, or other fluid therapies (e.g., blood products).
+ ● Feline vascular volume (40–60 ml/kg) differs from canine vascular volume (90 ml/kg). As a result, fluid resuscitation 
+needs will differ between cats and dogs.
+ ● Physiologic responses in shock may be variable in the cat (i.e., while the physiologic response to decreased cardiac 
+output in most species is tachycardia, cats can have a normal or bradycardic response to shock).
+
+
+--- PDF 94 ---
+Fluid Therapy
+76
+third spacing, or diuresis (polyuria), as well as for 
+replacement of intravascular volume seen with 
+losses in shock and hemorrhage.
+g) Shock dose: 40–60 ml/kg in the cat. Most patients 
+do not require the entire shock dose, and it is advis -
+able to divide the total shock volume into two to 
+four aliquots, giving each over 20–30 minutes and 
+reassessing the patient between each increment to 
+determine its effectiveness.
+i) An example would be to give a 5- kg cat in shock 
+75–100 ml over approximately 30 minutes and 
+then reassess to determine effectiveness and 
+future plan.
+B) Colloid solutions
+a) When compared to crystalloids, colloids contain 
+larger molecular weight substances, remain in the 
+intravascular space longer, increase oncotic pres -
+sure, and increase vascular volume by retaining 
+fluid within the vascular space (Rizoli  2003; 
+Concannon et al. 1992).
+b) Colloid therapy is often used in conjunction with 
+crystalloid fluid therapy because colloids provide 
+intravascular volume, while crystalloids correct both 
+intravascular and extravascular deficits (Table 8.2).
+c) Use of colloids is generally considered when there is 
+a low colloid osmotic pressure (<15 mmHg), or a 
+low total protein (<3.5–4), or when edema develops 
+following administration of isotonic crystalloids.
+d) Colloids can be divided into two categories:  natural 
+and synthetic.
+i) Natural: albumin is the only naturally occur -
+ring colloid.
+1) At this time, no species-  specific albumin is 
+available for cats.
+2) Plasma contains approximately 25–30 g/l of 
+albumin. If a 5- kg cat has a serum albumin 
+of 1.5 g/dl, the cat would require approxi-
+mately 0.5 l of fresh frozen plasma (FFP) to 
+increase the albumin to 2.5 g/dl (calculated 
+using the following formula: albumin defi-
+cit = 10 × [desired Alb − patient Alb] × body 
+weight (kg) × 0.3).
+3) Although administration of plasma is the 
+optimal choice for albumin replacement, 
+the cost of plasma, its limited supply, and 
+the amount necessary to increase colloid 
+osmotic pressure make plasma an unrealis -
+tic choice for colloid fluid therapy.
+ii) Synthetic: there are three types of synthetic col-
+loids (gelatins, hydroxyethyl starches (HES), and 
+dextrans). The hydroxyethyl starches are the 
+most common synthetic colloid used in veteri-
+nary medicine. They can be further divided into 
+distinct categories based on the degree of substi-
+tution (of hydroxyl with hydroxyethyl groups) 
+and the organization of that substitution on vari-
+ous carbon positions, termed the C2:C6 ratio.
+1) Initial boluses of hetastarch or VetStarch 
+given at a dosage of 2–5 ml/kg given over 
+15–20 minutes can be used in the cat.
+2) Maintenance therapy at 0.5–2 ml/kg/h can 
+be used for oncotic support.
+e) Currently, synthetic colloid therapy is a controversial 
+topic in medicine. Recent human studies have ques -
+tioned the safety of synthetic colloids, particularly 
+when administered to critically ill patients (Jones 
+et al. 1997; Zarychanski et al. 2013). The controversy 
+stems from adverse effects, notably a potential 
+increased risk of acute kidney injury (AKI).
+f) With the concern for illness as a result of HES solu-
+tions, several veterinary studies have attempted to 
+investigate whether our patients may also be at the 
+risk. Two published studies have investigated 
+the  effects of synthetic colloids on canine renal 
+function. One retrospective study in dogs did not 
+show an increased risk of developing AKI with the 
+T able 8.1  Fluid categories.
+T ype of solution Examples
+Crystalloid
+Isotonic Normosol- R®, 0.9% NaCl, Plasma- Lyte 
+148®, lactated Ringer’s solution (LRS)
+Hypertonic 7.27–23% NaCl
+Hypotonic 0.45% NaCl, D 5 W
+Colloid
+Natural Albumin
+Synthetic Hetastarch, dextrans, gelatins
+Other Packed red blood cells, plasma, PPN
+T able 8.2  Shock doses of intravenous fluids.a
+Fluid type Dose
+Isotonic 
+crystalloid
+40–60 ml/kg; ¼ to ⅓ given over 20–30 minutes. 
+Reassess patient to determine need for 
+additional bolus or placement of fluid rate.
+Synthetic 
+colloid
+2–5 ml/kg given over 20–30 minutes. Reassess 
+patient to determine need for additional bolus 
+or placement of fluid rate.
+Hypertonic 
+saline 
+(7.2%)
+2–3 ml/kg given over 20–30 minutes. Reassess 
+patient to determine need for additional bolus 
+or placement of fluid rate.
+a  Doses are dependent on patient- type and fluid- type and may need 
+to be altered based on underlying conditions such as cardiac disease.
+
+
+--- PDF 95 ---
+Feline Emergency and Critical Care Medicine
+ 77
+use of HES (Sigrist et  al.  2017a,b). Another study 
+did show that dogs receiving HES (10% 250/0.5) 
+were at an increased risk of death and AKI com-
+pared to dogs that did not receive HES with similar 
+disease severity during the same time period (Hayes 
+et al. 2016).
+g) Two retrospective studies have also been published 
+evaluating the effect of HES on renal function in 
+cats, neither of which found an association with 
+evidence of increased renal impairment or mortal-
+ity (Sigrist et al. 2017a,b; Yozova et al. 2017).
+h) This author believes more information is needed, 
+not only in dogs, but also cats, before enough infor -
+mation is available to make an informed decision 
+about the use of synthetic colloids in veterinary 
+medicine.
+i) The main adverse effects of synthetic colloid admin-
+istration are coagulopathy and decreased coagula-
+bility. When dosages >20 ml/kg/24 h are used, 
+coagulopathic effects may become apparent. 
+Hetastarch has been reported to be more likely to 
+cause these changes as compared to VetStarch in 
+dogs (Bacek et  al.  2011). Little information exists 
+specifically reviewing these fluid types in cats as 
+related to coagulopathy.
+C) Hypertonic solutions (i.e., hypertonic saline)
+a) Provide rapid volume expansion with lesser volume 
+administration.
+b) Cause an increase in the osmotic gradient, which 
+“pulls water” from the interstitial space and intra-
+cellular space into the intravascular space, expand-
+ing intravascular volume.
+c) May be most efficacious in patients with acute 
+hypovolemic shock (and therefore normal intersti-
+tial hydration) and may also be useful in resuscita-
+tion of patients with head trauma.
+d) Since the initial volume expansion is followed by 
+redistribution, hypertonic saline should not be used 
+alone but followed with crystalloid fluid therapy.
+e) Due to the large sodium concentration and osmotic 
+pull of fluid from the interstitial and intracellular 
+spaces, hypertonic solutions are contraindicated in 
+dehydrated or hypernatremic patients.
+f) A bolus of 2–3 ml/kg over 15–20 minutes is recom-
+mended in cats.
+g) A recipe for administration of hypertonic saline 
+with a synthetic colloid is to dilute 23.4% NaCl with 
+6% hetastarch or VetStarch (volume NaCl and vol-
+ume colloid) to make a 7.5% solution of NaCl.
+D) Specific conditions requiring fluid therapy
+a) Shock (Table 8.3): a complex group of conditions that 
+result from inadequate oxygen delivery to tissues. 
+While numerous classification schemes have been 
+developed, clinically useful categories in feline emer -
+gency medicine include hypovolemic shock, cardio -
+genic shock, obstructive shock, and distributive 
+shock (sepsis/SIRS; see Chapter 3—  Shock).
+i) Hypovolemic shock: can be either absolute or 
+relative in nature.
+1) Causes of absolute hypovolemic shock: 
+hemorrhage, vomiting, diarrhea, and severe 
+polyuria without adequate polydipsia.
+2) Causes for relative hypovolemic shock: ana-
+phylaxis or the use of vasodilatory drugs and 
+an increased microvascular permeability.
+ii) Cardiogenic shock: caused by a reduced car -
+diac output and often associated with cardiac 
+disease. The end result of cardiogenic shock is 
+global hypoperfusion.
+iii) Distributive shock: most commonly associated 
+with SIRS, sepsis, or anaphylaxis triggered by a 
+dysfunction of the microcirculation that leads 
+to inappropriate, widespread vasodilatation 
+and results in relative hypovolemia.
+iv) Obstructive shock: results from a mechanical 
+interference with ventricular filling. Examples 
+include pericardial effusion leading to pericar -
+dial tamponade, caval syndrome of heartworm 
+disease, aortic thromboembolism, and intracar -
+diac neoplasia.
+1) From clinical experience, both hypovolemic 
+and distributive shock syndromes respond to 
+aggressive fluid therapy. Obstructive shock 
+responds to fluid therapy, but identification 
+and correction of the underlying cause will 
+more rapidly improve patient outcome. Due 
+to the underlying cardiac disease, fluid ther -
+apy is contraindicated in cardiogenic shock.
+T able 8.3  Shock categories and causes.
+Category Cause
+Hypovolemic 
+shock
+Loss of intravascular volume from 
+hemorrhage, vomiting, diarrhea, and severe 
+polyuria without adequate polydipsia
+Cardiogenic 
+shock
+Cardiac disease leading to a reduced cardiac 
+output
+Distributive 
+shock
+SIRS, sepsis, or anaphylaxis triggered by a 
+dysfunction of the microcirculation that leads 
+to inappropriate, widespread vasodilatation 
+and results in relative hypovolemia
+Obstructive 
+shock
+A mechanical interference with ventricular 
+filling from pericardial effusion leading to 
+tamponade, caval syndrome of heartworm 
+disease, aortic thromboembolism, and 
+intracardiac neoplasia
+
+
+--- PDF 96 ---
+Fluid Therapy
+78
+b) Dehydration (Table 8.4)
+i) Treatment involves administration of crystal-
+loid fluids to both correct the fluid deficit as 
+well as replace ongoing loss.
+ii) The fluid deficit is calculated based on the 
+patient’s body weight (kg) and the percentage 
+of dehydration (see Box 8.1).
+iii) Ongoing losses may be caused by diarrhea, 
+vomiting, polyuria (without sufficient polydip -
+sia), or other conditions that lead to an abnor -
+mal fluid loss.
+1) Losses such as these can be estimated by 
+weighing diapers. This can be performed by 
+subtracting the normal diaper weight from 
+the diaper with the fluid loss 
+(10 g = 0.01 kg = 10 ml). Urinary losses can 
+also be closely monitored by placement of 
+an indwelling, closed collection system uri-
+nary catheter.
+2) Measurement of body weight at least once 
+daily is essential to guide fluid therapy. In a 
+patient with a dynamic state, measuring 
+body weight multiple times per day can pro -
+vide a rapid assessment of fluid status. If the 
+patient is rapidly gaining weight, it is likely 
+their fluid intake exceeds output (e.g., uri-
+nary output). If they are rapidly losing 
+weight, this may indicate their outs (e.g., 
+urinary, gastrointestinal, and/or respiratory 
+losses) exceed their fluid intake.
+3) Other common assessments of fluid therapy 
+and hydration status include skin turgor, 
+packed cell volume (PCV), total  protein con-
+centration (TP), and urine-  specific grav -
+ity (USG).
+– A decrease in the interstitial compart -
+ment volume leads to decreased 
+skin turgor.
+– PCV , TP , and USG are expected to all 
+increase with a decreased fluid intake or 
+increase in losses resulting in a decrease 
+in the interstitial compartment volume as 
+well as a decrease in plasma volume 
+which may also result in other clinical 
+changes including tachycardia and alter -
+ations in peripheral pulses.
+– Additionally, USG can be measured to 
+assess for adequacy of diuresis in the 
+absence of the kidneys’ ability to concen-
+trate urine (e.g., renal failure, administra-
+tion of diuretics, etc.).
+c) Potassium supplementation (Table 8.5)
+i) Potassium is vital in the function of tissues 
+such as muscles and nerves.
+ii) Causes for hypokalemia include (but are not 
+limited to) the following:
+1) Anorexia.
+2) Diabetes mellitus.
+3) Administration of potassium- free or low- 
+potassium fluids.
+T able 8.4  Physical assessment of dehydration.
+Estimated % 
+dehydration Clinical signs
+<4 Not detectable
+4–5 Subtle loss of skin elasticity, “tacky” mucous 
+membranes
+6–8 Decreased skin turgor (when the skin is 
+tented there is a slight delay in return to 
+normal position), dry mucous membranes, 
+slight prolongation of capillary refill time, 
+eyes may be dull
+10–12 Prolonged capillary refill time (>2 seconds), 
+dry mucous membranes, sunken eyes, tented 
+skin does not return to normal position, 
+possible tachycardia, and weak pulses
+12–15 Pale mucous membranes, capillary refill time 
+>3 seconds, signs of shock, dementia, death 
+imminent
+Box 8.1  Fluid  Calculations
+Feline maintenance fluid administration: 50–60 ml/
+kg/24 hours
+Fluid deficit from dehydration (in ml) = % dehydra-
+tion × body weight (kg) × 1000 ml
+Ongoing losses per hour in ml: estimation of 
+loss/24 hours
+T able 8.5  Potassium supplementation chart.
+Serum potassium 
+concentration (mEq/l)
+mEq KCl to add 
+to 500 ml fluid
+Maximum infusion 
+rate (0.5 mEq/kg/h)
+<2.0 40 6 ml/kg/h
+2.1–2.5 30 8 ml/kg/h
+2.6–3.0 20 12 ml/kg/h
+3.1–3.5 14 18 ml/kg/h
+>3.5–<5 5 25 ml/kg/h
+Note: potassium doses should not exceed K- Max (0.5 mEq/kg/h) 
+unless clinically required and only when extremely close monitoring 
+is implemented.
+
+
+--- PDF 97 ---
+Feline Emergency and Critical Care Medicine
+ 79
+4)  Gastrointestinal fluid loss (vomiting or 
+diarrhea).
+5)  Renal disease/failure.
+6)  Hyperaldosteronism (Conn’s syndrome)—  a 
+rare disease that leads to loss of potassium via 
+the kidneys due to the activity of aldosterone 
+(see Chapter 32—Electrolyte Disorders & 
+Chapter 34—Pediatric Emergencies).
+7)  Iatrogenic causes such as the administration 
+of diuretics (e.g., furosemide).
+iii)  Signs of hypokalemia include weakness, 
+ ventroflexion of the neck, lethargy, mental 
+depression, arrhythmias, and death from res -
+piratory muscle paralysis.
+iv)  Potassium can be supplemented orally or added 
+to intravenous fluids.
+1)  Oral supplementation can be done by admin -
+istering potassium gluconate (Tumil-  K, 
+Daniels Pharmaceuticals) at a dose of 
+2  mEq/4.5  kg PO q12h.
+2)  If oral supplementation is not possible or 
+severe hypokalemia is present, intravenous 
+potassium administration should be 
+considered.
+3)  The amount of potassium to add to mainte -
+nance fluids should be based on measured 
+serum potassium (when giving boluses of 
+intravenous fluids, potassium should NOT 
+be supplemented due to the risk of rapid 
+hyperkalemia and cardiotoxicity, see 
+Table 8.5).
+4)  If oral or intravenous potassium adminis -
+tration is not possible, subcutaneous 
+administration with solutions containing 
+up to 30  mEq/l of KCl can be adminis -
+tered safely.
+5)  Potassium doses should not exceed K-  Max 
+(0.5  mEq/kg/h) unless clinically required. 
+If required, strict monitoring should 
+include heart rate, respiratory rate and 
+effort, electrocardiogram (ECG), blood 
+pressure, and mentation. Frequent evalu -
+ation of electrolytes (hourly to no less 
+than every 6 hours) should be performed 
+as well.
+d)  Bicarbonate supplementation
+i)  Usually reserved for a severe metabolic acidosis 
+and pH disturbance (pH <7.1–7.2; base deficit 
+>10; bicarbonate <14  mEq/l).
+ii)  Bicarbonate-  deficit equation (mEq of bicarbo -
+nate to administer):
+1)  0.3  ×  b.w. (kg)  ×  (24 – patient bicarbonate).
+2)  One-  fourth to one-  third of this deficit 
+should be given slowly over 2–4 hours.
+3)  Alternatively, 1–3  mEq/kg can be adminis -
+tered with 1  mEq/kg for mild acidosis and 
+3  mEq/kg for severe acidosis.
+4)  Blood gases should be taken after comple -
+tion of this aliquot to determine if addi -
+tional bicarbonate administration is 
+necessary (i.e., if the patient pH is still less 
+than 7.2 or clinical signs related to acidemia 
+such as decreased response to pressor 
+ therapy, etc.).
+5)  Bicarbonate administration is not 
+ recommended if blood gases are not available.
+6)  Bicarbonate is not recommended if there is 
+a respiratory dysfunction leading to an 
+already elevated CO 2 , as bicarbonate will be 
+broken down into H 2 O and CO 2 , further 
+exacerbating the existing respiratory com-
+promise and hypercapnia.
+7)  Complications of bicarbonate administra-
+tion include hypernatremia, hyperosmolal-
+ity, and additional electrolyte disturbances 
+(decrease in ionized calcium and potas -
+sium) due to its alkalinizing effects.
+e)  Maintenance fluid therapy (Box 8.1)
+i)  Defined as the volume needed per day for fluid 
+balance (i.e., the intake of fluids should be 
+equal to the loss of fluids).
+ii)  Daily fluid requirements (ml/kg/day) parallel 
+daily energy requirements (kcal/kg/day).
+iii)  Normal feline energy requirements are 
+50–60  kcal/kg/day. Therefore, a rough estimate 
+for fluid balance would be 50–60  ml/kg/day for 
+the maintenance fluid requirement (see 
+Box 8.2).
+iv)  Alternatively, an approximate dose for fluid 
+maintenance is 2–3  ml/kg/h.
+f)  Ongoing loss therapy
+i)  The amount lost through vomiting, diarrhea, 
+polyuria, and so on that should be measured/
+estimated and then added to the maintenance 
+and dehydration fluid calculations
+1)  Example: A 5-  kg patient is estimated to 
+be  vomiting approximately 10  ml every 
+4 hours.
+24 46 24hours hourse pisodes in hours/,
+61 06 0vomiting episodesm lm l.
+Therefore, the patient’s ongoing loss is estimated to be 
+60  ml over 24  hours.
+
+
+--- PDF 98 ---
+Fluid Therapy
+80
+g)  Fluid diuresis
+i)  The goals are to increase the glomerular filtra-
+tion rate, increase renal perfusion, and enhance 
+the renal excretory function.
+ii)  Specific disease states where fluid diuresis may 
+be considered include renal disease to eliminate 
+renal toxins and improve azotemia as well as in 
+cases of toxin ingestion to hasten the elimina -
+tion of toxins that are excreted by the kidneys.
+iii)  In these situations, crystalloid fluids are the flu-
+ids of choice.
+iv)  Fluid rates required to induce a sufficient diure -
+sis can be as high as two to four times a patient’s 
+maintenance requirements. Expected urine 
+output for adequate fluid diuresis is  2–6  ml/kg/h.
+v)  “Ins” and “outs” should be measured every 2–4 
+hours. A urinary catheter with a closed collec -
+tion system is recommended to allow accurate 
+monitoring and calculation of “outs.”
+vi)  During fluid diuresis, careful monitoring 
+should be made for signs of fluid overload such 
+as abnormal lung sounds (crackles), abnormal 
+heart sounds (murmur or gallop rhythm), gen-
+eralized edema, hypertension, or jugular 
+venous distension. As compared to dogs, cats 
+are less likely to develop chemosis with fluid 
+overload.
+E)  Constant rate infusion (CRI) formulas
+Formula 1:
+CRIdosem gk gh body weight kg
+bagvolumem l flu// iid ratem lh
+dose of drug mg toaddt obag
+/ .
+Example: Morphine CRI at 0.1  mg/kg/h for 10-  kg cat 
+with IV fluid rate of 20  ml/h:
+ 
+01 10 1000 20
+50 1
+./ //
+.
+mg kg hk gm lm lh
+mgadded toa lbag
+Formula 2 (for use if multiple CRI medications will 
+be needed at the same time):
+Fluids will run at 1  ml/kg/h
+ 
+CRIdosem gk gh bagvolumem l
+dosem gt oadd tobag
+//
+.  
+Additional maintenance fluids will need to be piggy -
+backed or placed through another catheter if additional 
+fluids are required, as the CRI rate for this formula will 
+only be 1  ml/kg/h.
+Formula 3:
+ 
+Dosage kg Wk gm gtoadd to ml
+base solutionat
+ar ate
+g // min 250
+  of ml h15 /.
+Formula 4:
+ RD WV M/. .16 67
+Abbreviation Key
+M  = milligrams of drug to add to the base solution.
+D  = dosage of drug in micrograms per kilogram per minute.
+Box 8.2  Sample  Feline Fluid Therapy Case
+Example: A 5-  kg cat with a 1-  day history of vomiting 
+and diarrhea. On physical examination, the cat is 5% 
+dehydrated (tacky mucous membranes, CRT 1.5 seconds, 
+very slight decrease in skin turgor). The cat is vomiting 
+10 ml every 4 hours. PCV 45, TS 7.4, Na 153, K 3.2, BUN 
+41, creatinine 1.8, glucose 140.
+Plan: use a balanced electrolyte solution and replace 
+the deficit over 12 hours.
+ 
+Dehydrationd ehydration bw kg
+ml of fluidneeded
+%
+.
+1000
+00 55 5 1000 250 ml
+ 
+Maintenanceh ours kcal kg day
+ml kg day
+m
+12 50 60
+50 60
+300
+//
+//
+lld ay
+ml hours
+mlin hours
+/
+/300 24
+150 12
+ 
+Ongoinglossesm li nh ours
+ml in hour
+10 4
+30 12 s
+ 
+Totalm lm lm l
+ml hours
+ml hour hours
+250 150 30
+4301 2
+35 81 2
+/
+./  
+Additives to the fluids:
+Potassium is added to the fluid bag (14 mEq/500 ml) 
+based on the KCl replacement chart.
+During the fluid therapy and continued hospitaliza -
+tion, monitoring will include physical examination 
+parameters (heart rate, pulse quality, respiratory rate, 
+respiratory effort, mentation, etc.), electrolytes, blood 
+pressure, mentation, and continued losses.
+
+
+--- PDF 99 ---
+Feline Emergency and Critical Care Medicine
+ 81
+W  = body weight in kilograms.
+V  = volume in milliliters of base solution.
+R  = fluid rate in milliliters per hour.
+16.67 = conversion factor.
+To determine the appropriate R  if dosage is adjusted, the 
+formula would be:
+ RD WV M/. .16 67
+References
+Bacek L.M.M, Martin L.G, Spangler E.A., and Macintire D.K 
+(2011). Determination of the In vitro Effects of Two Forms 
+of Hydroxyethyl Starch Solutions on Thromboelastography 
+and Coagulation Parameters in Healthy Dogs International 
+Veterinary Emergency and Critical Care Symposium
+Concannon, K.T., Haskins, S.C., and Feldman, B.F. (1992). 
+Hemostatic defects associated with two infusion rates of 
+dextran 70 in dogs. Am. J. Vet. Res.  53 (8): 1369–1375.
+Elgart, H.N. (2004). Assessment of fluids and electrolytes. 
+AACN Clin. Issues  15 (4): 607–621.
+Griffel, M.I. and Kaufman, B.S. (1992). Pharmacology of 
+colloids and crystalloids. Crit. Care Clin.  8: 235.
+Hayes, G., Benedicenti, L., and Mathews, K. (2016). 
+Retrospective cohort study on the incidence of acute 
+kidney injury and death following hydroxyethyl starch 
+(HES 10% 250/0.5/5:1) administration in dogs (2007–2010). 
+J. Vet. Emerg. Crit. Care (San Antonio)  26: 35–40.
+Jones, P.A., Tomasic, M., and Gentry, P.A. (1997). Oncotic, 
+hemodilutional, and hemostatic effects of isotonic saline 
+and hydroxyethyl starch solutions in clinically normal 
+ponies. Am. J. Vet. Res.  58: 541–548.
+Rizoli, S.B. (2003). Crystalloids and colloids in trauma 
+resuscitation: a brief overview of the current debate. 
+J. Trauma  54 (Suppl): S82–S88.
+Sigrist, N.E., Kalin, N., and Dreyfus, A. (2017a). Changes in 
+serum creatinine concentration and acute kidney injury 
+(AKI) grade in dogs treated with hydroxyethyl starch 
+130/0.4 from 2013 to 2015. J. Vet. Intern. Med.  31: 
+434–441.
+Sigrist, N.E., Kalin, N., and Dreyfus, A. (2017b). Effects of 
+hydroxyethyl starch 130/0.4 on serum creatinine 
+concentration and development of acute kidney injury in 
+nonazotemic cats. J. Vet. Intern. Med.  31: 1749–1756.
+Yozova, I.D., Howard, J., and Adamik, K.N. (2017). Effect of 
+tetrastarch (hydroxyethyl starch 130/0.4) on plasma 
+creatinine concentration in cats: a retrospective analysis 
+(2010–2015). J. Feline Med. Surg.  19: 1073–1079.
+Zarychanski, R., Abou-  Setta, A.M., Turgeon, A.F. et al. 
+(2013). Association of hydroxyethyl starch administration 
+with mortality and acute kidney injury in critically ill 
+patients requiring volume resuscitation: a systematic 
+review and meta-  analysis. JAMA  309: 678–688.
+Recommended Readings
+Brady, C.A. and Otto, C.M. (2001). Systemic inflammatory 
+response syndrome, sepsis, and multiple organ dysfunction. 
+Vet. Clin. North Am. Small Anim. Pract.  31: 1147.
+Brown, R. (1984). Potassium homeostasis and clinical 
+implications. Am. J. Med.  77: 3–10.
+Cote, E. (2001). Cardiogenic shock and cardiac arrest. Vet. 
+Clin. North Am. Small Anim. Pract.  31: 1129.
+Crystal, M.A. and Cotter, S.M. (1992). Acute hemorrhage: a 
+hematologic emergency in dogs. Compend. Contin. Educ. 
+Pract. Vet.  14: 1.
+Day, T.K. (2003). Current development and use of 
+hemoglobin-  based oxygen -  carrying (HBOC) solutions. 
+J. Vet. Emerg. Crit. Care  13 (2): 77–93.
+DiBartola, S.P. (2005). Fluid, Electrolyte and Acid Base 
+Disorders , 3e. WB Saunders.
+Gibson, G.R., Callan, M.B., Hoffman, V . et al. (2002). Use of a 
+hemoglobin-  based oxygen-  carrying solution in cats: 72 
+cases (1998–2002). J. Am. Vet. Assoc.  221 (1): 96–102.
+Glowaski, M.M., Moon-  Massat, P.F., Erb, H.N. et al. 
+(2003). Effects of oxypolygelatin and dextran 70 on 
+hemostatic variables in dogs. Vet. Anaesth. Analg.  30 
+(4): 202–210.
+Gutierrez, G., Reines, H.D., and Wulf-  Gutierrez, M.E. (2004). 
+Clinical review: hemorrhagic shock. Crit. Care  8 (5): 
+373–381. Epub 2004 Apr 2.
+Haldane, S., Graves, T.K., Bateman, S., and Lichtensteiger, 
+C.A. (2007). Profound hypokalemia causing respiratory 
+failure in a cat with hyperaldosteronism. J. Vet. Emerg. Crit. 
+Care  17 (2): 202–207.
+Johnson, A.L. and Criddle, L.M. (2004). Pass the salt: 
+indications for and implications of using hypertonic saline. 
+Crit. Care Nurse  24 (5): 36–38. 40–4, 46 passim.
+Kelly, N. and Rentko, V .T. (1998). Comparative 
+cardiovascular response by Oxyglobin versus packed red 
+blood cells in acute anemia. J. Vet. Emerg. Crit. Care  8 
+(3): 252.
+
+
+--- PDF 100 ---
+Fluid Therapy
+82
+Kirby, R. (1995). Septic shock. In: Current Veterinary Therapy 
+XII (ed. J.D. Bonagura). Philadelphia: W .B. Saunders.
+Kumar, A. and Parillo, J.E. (2001). Shock classification, 
+pathophysiology, and approach to management. In: 
+Critical Care Medicine: Principles of Diagnosis and 
+Management in the Adult, 2e (ed. J.E. Parillo and 
+R.P. Dellinger). Philadelphia: Mosby.
+Mendez, C.M., McClain, C.J., and Marsano, L.S. (2005). Albumin 
+in clinical practice. Nutr. Clin. Pract. 20 (3): 314–320.
+Moore, K.E. and Murtaugh, R.J. (2001). Pathophysiologic 
+characteristics of hypovolemic shock. Vet. Clin. North Am. 
+Small Anim. Pract. 31: 1175.
+Muir, W .W . (1990). Overview of shock. In: proceedings of the 
+14th annual Kal Kan Symposium Emergency/Critical Care, 
+7. Columbus, OH.
+Orton, E.C. and Muir, W .W . (1983). Hemodynamics during 
+experimental gastric dilitation and volvulus in dogs. Am. 
+J. Vet. Res. 44: 1512–1515.
+Rahilly, L. (2006). Hypoalbuminemia: pathophysiology and 
+treatment. Conference Proceedings, International Veterinary 
+Emergency and Critical Care Symposium.
+Rixen, D. and Siegel, J.H. (2005). Bench- to- bedside review: 
+oxygen debt and its metabolic correlates as quantifiers of 
+the severity of hemorrhagic and post- traumatic shock. Crit. 
+Care 9 (5): 441–453. Epub 2005 Apr 20.
+Velasco, I.T., Pontieri, V ., Rocha, E., and Silva, M. (1980). 
+Hypertonic NaCl and severe hemorrhagic shock. Am. 
+J. Physiol. 239: H664–H673.
+Vercueil, A., Grocott, M.P., and Mythen, M.G. (2005). 
+Physiology, pharmacology, and rationale for colloid 
+administration for the maintenance of effective 
+hemodynamic stability in critically ill patients. Transfus. 
+Med. Rev. 19 (2): 93–109.
+Walton, R.S. (1996). Polymerized hemoglobin versus 
+hydroxyethyl starch in an experimental model of feline 
+hemorrhagic shock. Proceedings IVECCS. San Antonio.
+Westphal, M., James, M.F., Kozek- Langenecker, S. et al. 
+(2009). Hydroxyethyl starches: different products-  different 
+effects. Anesthesiology 111: 187–202.
+Wingfield, W .E., Betts, C.W ., and Rawlings, C.A. (1976). 
+Pathophysiology associated with gastric dilatation-  volvulus 
+in the dog. JAAHA 12: 136–142.
+
+
+--- PDF 101 ---
+Feline Emergency and Critical Care Medicine, Second Edition. Edited by Kenneth J. Drobatz,  
+Erica Reineke, Merilee F. Costello, and William T. N. Culp.
+© 2023 John Wiley & Sons, Inc. Published 2023 by John Wiley & Sons, Inc.
+83
+A)	 Importance	of 	nutritional	support
+a)	 Loss	 or	 decrease	 in	 food	 intake	 is	 often	 the	 first	 sign	
+of 	illness	 in	 cats.	 An	 important	 consideration	 is	 that	
+almost	 all	 diseases	 induce	 dramatic	 changes	 in	
+energy	 and	 nutrient	 metabolism	 which	 put	 criti-
+cally	 ill	 patients	 at	 high	 risk	 for	 malnutrition	 and	 its	
+subsequent	 complications.	 Whereas	 healthy	 ani-
+mals	 primarily	 lose	 fat	 when	 fasted,	 sick	 or	 injured	
+animals	 catabolize	 lean	 body	 mass	 when	 they	 are	
+not	provided	with	sufficient	calories.
+b)	 Hospitalized	 cats	 are	 particularly	 stressed,	 which	
+contributes	 to	 decreased	 food	 intake.	 Anorexia	 in	
+cats	 can	 be	 particularly	 challenging	 to	 manage	 and	
+can	 have	 serious	 metabolic	 consequences	 if 	left	
+untreated.
+c)	 An	 important	 point	 to	 make	 is	 that	 successful	 man-
+agement	 of 	anorexia	 in	 cats	 is	 to	 reverse	 the	 primary	
+condition,	 rather	 than	 using	 appetite	 stimulants	 or	
+simply	 encouraging	 eating	 by	 offering	 “appetiz-
+ing”	food.
+d)	 The	 goals	 of 	nutritional	 support	 include	 correction	
+of 	nutritional	 deficiencies	 and	 imbalances	 and	 pro -
+vision	 of 	adequate	 energy	 substrates,	 protein,	 and	
+micronutrients.
+e)	 Prevention	 of 	further	 catabolism	 of 	lean	 body	 tissue	
+and	 reversal	 of 	metabolic	 derangements	 are	 other	
+important	goals	of 	nutritional	support.
+f)	 Because	 nutritional	 interventions	 are	 not	 without	
+risk,	 appropriate	 nutritional	 assessment	 can	 help	
+select	 which	 patients	 are	 most	 likely	 to	 benefit	 from	
+nutritional	 support	 and	 to	 help	 minimize	
+complications.
+B)	 Indications	for	nutritional	intervention
+a)	 Nutritional	 assessment	 identifies	 malnourished	
+patients	 that	 require	 urgent	 nutritional	 support	 as	
+well	 as	 those	 in	 which	 nutritional	 support	 is	 likely	
+to	be	necessary	to	prevent	malnutrition.
+b)	 Overt	 indicators	 of 	 malnutrition	 include	 recent	
+weight	 loss,	 poor	 hair	 coat	 quality,	 muscle	 wasting,	
+signs	 of 	inadequate	 wound	 healing,	 hypoalbumine -
+mia,	 and	 lymphopenia.	 However,	 these	 abnormali-
+ties	 are	 not	 specific	 to	 malnutrition	 and	 do	 not	
+occur	early	enough	in	the	process.
+c)	 Key	 factors	 to	 consider	 in	 the	 nutritional	 assess -
+ment	include	the	following:
+i)	 Anorexia	lasting	greater	than	3 days.
+ii)	 Serious	 underlying	 disease	 (e.g.,	 severe	 trauma,	
+sepsis,	peritonitis,	acute	pancreatitis,	burns).
+iii)	 Large	 protein	 losses	 (e.g.,	 draining	 wounds,	
+exudative	effusions)
+d)	 Patients	 with	 obvious	 protracted	 disease	 courses	 in	
+which	 the	 cat	 is	 likely	 to	 be	 hospitalized	 for	 over	
+5  days	 should	 be	 strongly	 considered	 to	 receive	
+nutritional	support.
+Daniel L. Chan
+9
+Nutritional Support for the Critically Ill Feline Patient
+UNIQUE FEATURES
+ ● A particular concern with hospitalized cats is the development of food aversion. For this reason, stressful means for nutritional 
+support such as force feeding or syringe feeding are not recommended.
+ ● The importance of appropriate nutritional support in critically ill cats is highlighted by the development of hepatic lipidosis, which 
+is usually secondary to another underlying condition and results from energy and protein deprivation. This is particularly true, but 
+not exclusively seen in obese cats.
+ ● Particular differences in the nutritional requirements of cats include a higher requirement for dietary protein (6 g of pro-
+tein/100 kcal of food consumed) and strict requirements for taurine and arginine, explaining why enteral formulas designed for 
+people are usually unsuitable for use in cats.
+
+
+--- PDF 102 ---
+Nutritional Support for the Critically Ill Feline Patient
+84
+e)	 Nutritional 	assessment 	also 	identifies 	factors 	that 	
+can 	affect 	the 	nutritional 	plan, 	such 	as 	electrolyte 	
+abnormalities, 	 hyperglycemia, 	 hypertriglyceri -
+demia, 	or 	comorbid 	illness 	such 	as 	significant 	
+hepatic, 	cardiac, 	or 	renal 	disease.
+f)	 Appropriate 	laboratory 	analysis 	(i.e., 	serum 	biochem -
+ical 	profile) 	should 	be 	performed 	in 	all 	patients 	in 	
+which 	nutritional 	support 	is 	being 	considered 	because 	
+abnormalities 	may 	influence 	the 	nutritional 	plan.
+g)	 Before 	 commencing 	 nutritional 	 support, 	 the 	
+patient 	should 	be 	rehydrated, 	adequately 	resusci -
+tated, 	that 	is, 	cardiovascularly 	stable, 	and 	have 	had 	
+significant 	electrolyte 	and 	acid–base 	abnormalities 	
+addressed.
+C)	 Determine 	the 	route 	of 	nutritional 	support
+a)	 If 	there 	are 	no 	signs 	of 	overt 	gastrointestinal 	dys -
+function, 	for 	example, 	protracted 	vomiting 	or 	diar -
+rhea 	that 	results 	in 	overt 	dehydration 	(>8%) 	or 	
+compromised 	 intravascular 	 volume 	 status, 	 the 	
+enteral 	route 	of 	delivery 	should 	be 	chosen.
+b)	 Enteral 	nutrition 	is 	the 	most 	practical, 	economi -
+cal, 	and 	physiologically 	sound 	approach 	of 	deliv -
+ering 	nutrients. 	Except 	for 	feeding 	tube 	problems, 	
+there 	 are 	 fewer 	 complications 	 associated 	 with 	
+enteral 	nutrition 	compared 	with 	parenteral 	nutri -
+tion 	(PN).
+c)	 Even 	when 	enteral 	nutrition 	does 	not 	completely 	
+meet all 	of 	the 	patient’s 	energy 	and 	nutrient 	needs, 	
+delivery 	of 	food 	via 	the 	gastrointestinal 	tract 	(as 	lit -
+tle 	as 	30% 	of 	resting 	energy 	requirements 	[RER]) 	is 	
+still 	beneficial 	in 	that 	it 	modulates 	gastrointestinal 	
+motility 	and 	immune 	function, 	and 	maintains 	the 	
+integrity 	of 	the 	intestinal 	barrier.
+d)	 For 	patients 	that 	cannot 	tolerate 	enteral 	feedings 	
+or 	in 	which 	there 	is 	concern 	for 	aspiration 	of 	food 	
+into 	the 	airways, 	for 	example, 	pharyngeal 	dysfunc -
+tion 	or 	dyspnea, 	the 	parenteral 	route 	should 	be 	
+considered.
+D)	 Enteral 	nutrition
+a)	 If 	the 	enteral 	route 	is 	chosen, 	the 	most 	appropriate 	
+type 	 of 	 feeding 	 tube 	 for 	 that 	 patient 	 must 	 be 	
+considered.
+b)	 Factors 	to 	consider 	in 	choosing 	a 	particular 	feeding 	
+tube 	include 	the 	anticipated 	duration 	of 	nutritional 	
+support, 	the 	need 	to 	circumvent 	certain 	segments 	of 	
+the 	gastrointestinal 	tract 	(e.g., 	because 	of 	esophagi-
+tis), 	the 	form 	of 	nutrition 	to 	be 	delivered 	(e.g., 	liquid 	
+diet 	vs. 	blenderized 	diet), 	suitability 	of 	the 	patient 	
+to 	withstand 	anesthesia, 	and 	clinician’s 	preference 	
+and 	experience.
+c)	 Feeding 	tube 	options
+i) 	Nasoesophageal/nasogastric 	tubes
+1)	 Technically, 	this 	is 	the 	simplest 	type 	of 	feed-
+ing 	tube 	to 	place 	(see 	Figures 9.1–9.6).
+Figure 9.1 Underweight cat ready to receive placement of 
+nasoesophageal/nasogastric tube.
+Figure 9.2 Instilling local anesthetic (e.g., proxymetacaine) 
+into nares. Note how the head is tilted straight up so that the 
+topical anesthetic will follow gravity into the nasal cavity.
+Figure 9.3 Initial placement of nasoesophageal/nasogastric 
+tube into nares. Note that initial placement should be directed 
+toward the ventromedial aspect of the nares.
+
+
+--- PDF 103 ---
+Feline Emergency and Critical Care Medicine
+ 85
+2)	 This 	is 	a 	good 	option 	if 	only 	a 	short 	(fewer 	
+than 	3 days) 	course 	of 	nutritional 	support 	is 	
+anticipated.
+3)	 Patients 	that 	are 	unstable 	for 	anesthesia 	can 	
+have 	these 	tubes 	placed 	with 	minimal 	seda-
+tion 	(if 	any 	is 	required) 	and 	topical 	anes -
+thetic 	instilled 	in 	nasal 	passages.
+4)	 Major 	limitations 	include 	using 	liquid 	diets 	
+only, 	patient 	discomfort, 	and 	requirement 	of 	
+Elizabethan 	collars 	or 	other 	measures 	to 	pre -
+vent 	dislodgement 	of 	tube.
+5)	 Most 	 nasoesophageal/nasogastric 	 feeding 	
+tubes 	in 	cats 	are 	either 	3.5 	Fr 	or 	5 	Fr 	in 	size.
+6)	 Correct 	placement 	within 	the 	esophagus/
+stomach 	should 	be 	checked 	by 	either 	radi -
+ography, 	 fluoroscopy, 	 or 	 end- 	tidal 	 CO 2 	
+measurement.
+–	Tubes 	placed 	within 	the 	esophagus 	should 	
+not 	yield 	appreciable 	CO 2 	(Figure 9.6).
+–	The 	tip 	of 	the 	feeding 	tube 	should 	lie 	in 	
+the 	distal 	third 	of 	the 	esophagus, 	but 	it 	
+could 	also 	be 	placed 	in 	the 	stomach.
+ii) 	Esophageal 	tubes
+1)	 These 	are 	probably 	the 	most 	versatile 	and 	
+useful 	feeding 	tubes 	for 	critically 	ill 	cats.
+2)	 These 	are 	relatively 	simple 	to 	place, 	require 	
+only 	short 	anesthesia 	(should 	not 	be 	placed 	
+with 	sedation 	alone), 	and 	allow 	use 	of 	blen-
+derized, 	calorically 	dense 	diets.
+3)	 Most 	cats 	tolerate 	esophageal 	tubes 	without 	
+need 	of 	Elizabethan 	collars 	and 	can 	eat 	volun -
+tarily 	with 	these 	tubes 	in 	place, 	compared 	with 	
+cats 	with 	nasoesophageal/nasogastric 	tubes, 	
+which 	may 	not 	have 	an 	interest 	in 	eating.
+4)	 A 	full 	description 	of 	the 	technique 	in 	placing 	
+these 	tubes 	can 	be 	found 	in 	the 	caption 	for 	
+Figure 9.7a–n.
+5)	 The 	 positioning 	 of 	 the 	 tube 	 should 	 be 	
+assessed 	 via 	 radiography, 	 fluoroscopy, 	 or 	
+end- 	tidal 	CO 2 	before 	use 	(see 	Figure  9.8). 	
+The 	distal 	tip 	should 	lie 	within 	the 	distal 	
+third 	of 	the 	esophagus 	or 	stomach.
+6)	 The 	most 	common 	sizes 	of 	esophageal 	feed-
+ing 	tubes 	for 	cats 	are 	12 	Fr 	and 	14 	Fr.
+–	Proper 	placement 	of 	an 	esophagostomy 	
+feeding 	tube 	requires 	the 	distal 	tip 	to 	be 	
+placed 	in 	the 	distal 	esophagus 	at 	the 	level 	
+no 	 farther 	 than 	 the 	 ninth 	 intercostal 	
+space. 	This 	may 	require 	premeasuring 	the 	
+tube. 	In 	some 	cases, 	the 	tip 	of 	the 	tube 	
+Figure 9.6 Attaching the end of the tube to the end- tidal CO2 
+monitor to evaluate for proper placement. CO2 should not be 
+detected if proper placement has occurred. If the tube is in the 
+trachea or airways, CO2 will be detected with respiration. Proper 
+placement could also be confirmed by thoracic radiography. The 
+tube should end in the distal third of the esophagus or within 
+the stomach.
+Figure 9.4 Nasoesophageal/nasogastric tube has been placed 
+the proper distance. Note how the exit of the tube is nearly flush 
+with the lateral aspect of the nares and then is directed up 
+toward the forehead between the eyes. The tube also could be 
+directed to the lateral side of the face, but whiskers should be 
+avoided, as this will more likely cause irritation to the cat.
+Figure 9.5 Tube is secured to skin using a butterfly tape and 
+sutured to the skin.
+
+
+--- PDF 104 ---
+Nutritional Support for the Critically Ill Feline Patient
+86
+may 	be 	placed 	into 	the 	stomach 	which 	
+can 	be 	used 	for 	gastric 	decompression. 	
+Rather 	than 	cutting 	the 	distal 	tip 	and 	cre -
+ating 	a 	sharp 	edge, 	the 	exit 	side 	hole 	may 	
+be 	elongated 	using 	a 	small 	blade.
+–	The 	patient 	should 	be 	anesthetized 	and 	
+preferably 	intubated. 	While 	in 	right 	lat -
+eral 	recumbency, 	the 	left 	side 	of 	the 	neck 	
+should 	be 	clipped 	and 	a 	routine 	surgical 	
+scrub 	is 	performed.
+–	A 	curved 	Rochester 	Carmalt 	is 	placed 	into 	
+the 	mouth 	and 	down 	the 	esophagus 	to 	the 	
+midcervical 	 region. 	 The 	 jugular 	 vein 	
+should 	be 	identified 	and 	avoided.
+–	The 	tip 	of 	the 	Carmalt 	is 	then 	pushed 	dor -
+sally, 	 pushing 	 the 	 esophagus 	 toward 	
+the 	skin.
+a
+b
+c
+ f
+d
+e
+f
+Figure 9.7 (a)–(n) Step- by- step technique for esophagostomy tube placement.
+
+
+--- PDF 105 ---
+Feline Emergency and Critical Care Medicine
+ 87
+–	The 	tip 	of 	the 	Carmalt 	is 	palpated 	over 	the 	
+skin 	to 	confirm 	its 	location, 	and 	an 	inci-
+sion 	is 	made 	through 	the 	skin 	onto 	the 	tip 	
+of 	the 	Carmalt 	in 	the 	esophagus. 	The 	
+mucosa 	 of 	 the 	 esophagus 	 is 	 relatively 	
+more 	difficult 	to 	incise 	than 	the 	skin.
+–	The 	tip 	of 	the 	instrument 	is 	then 	bluntly 	
+forced 	through 	the 	incision, 	which 	can 	be 	
+slightly 	enlarged 	with 	the 	blade 	to 	allow 	
+opening 	of 	the 	tips 	of 	the 	Carmalt 	and 	
+placement 	 of 	 the 	 esophagostomy 	 tube 	
+within 	the 	tips.
+–	The 	Carmalt 	is 	then 	clamped 	closed 	and 	
+pulled 	from 	the 	oral 	cavity.
+–	Disengage 	the 	tips 	of 	the 	Carmalt, 	curl 	the 	
+tip 	 of 	 the 	 esophagostomy 	 back 	 into 	
+the mouth, 	and 	feed 	it 	into 	esophagus. 	As the 	
+curled 	tube 	is 	pushed 	into 	the 	esophagus, 	
+g
+h
+i
+j
+k
+l
+Figure 9.7 (Continued)
+
+
+--- PDF 106 ---
+Nutritional Support for the Critically Ill Feline Patient
+88
+the 	proximal 	end 	is 	gently 	pulled 	simulta -
+neously. 	This 	will 	result 	in 	a 	subtle 	“flip” , 	as 	
+the 	tube 	is 	redirected 	within 	the 	esophagus. 	
+The 	tube 	should 	easily 	slide 	back 	and 	forth 	a 	
+few 	millimeters, 	confirming 	that 	the 	tube 	
+has 	straightened.
+–	Visually 	inspect 	the 	oropharynx 	to 	con-
+firm 	that 	the 	tube 	is 	no 	longer 	present 	
+within 	the 	oropharynx.
+–	The 	 incision 	 site 	 should 	 be 	 briefly 	
+rescrubbed 	before 	a 	purse- 	string 	suture 	is 	
+placed, 	 followed 	 by 	 a 	 “Chinese 	 finger 	
+trap,” 	further 	securing 	the 	tube 	in 	place.
+–	A 	light 	wrap 	is 	applied 	to 	the 	neck.
+7)	 There 	is 	no 	minimal 	amount 	of 	time 	the 	
+tubes 	need 	to 	stay 	in 	place, 	and 	they 	can 	be 	
+pulled 	at 	any 	time. 	Tubes 	can 	remain 	in 	
+place 	for 	months, 	if 	necessary.
+8)	 The 	most 	common 	problems 	with 	esopha-
+geal 	feeding 	tubes 	are 	tube 	occlusion 	and 	
+cellulitis 	at 	the 	skin 	incision 	site.
+iii) 	Pharyngostomy 	tubes.
+1)	 These 	are 	technically 	slightly 	more 	difficult 	
+tubes 	to 	place 	correctly, 	and 	associated 	com-
+plications 	are 	significant.
+2)	 Pharyngostomy 	 tubes 	 have 	 been 	 largely 	
+replaced 	by 	esophagostomy 	tubes 	and 	are 	
+not 	recommended.
+iv) 	Gastrostomy 	tubes
+1)	 Indications 	for 	placement 	of 	gastrostomy 	
+tubes 	 (both 	 percutaneous 	 endoscopically 	
+guided 	[PEG] 	or 	surgically 	placed).
+–	Need 	for 	long- 	term 	nutritional 	support 	
+(greater 	than 	4 weeks).
+–	Need 	to 	bypass 	the 	mouth, 	pharynx, 	or 	
+esophagus, 	for 	example, 	mandibular 	frac-
+tures 	or 	sites 	of 	radiation 	therapy.
+–	Patients 	undergoing 	endoscopic 	evaluation
+2)	 Placement 	of 	gastrostomy 	tubes 	(typically 	
+22–28 	Fr 	tubes) 	allows 	feeding 	of 	various 	
+blenderized 	canned 	diets, 	which 	may 	not 	be 	
+amenable 	for 	feeding 	via 	other 	smaller 	tubes.
+3)	 Placement 	of 	these 	tubes 	requires 	full 	anes -
+thesia 	and 	specialized 	equipment.
+v) 	Low- 	profile 	gastrostomy 	tubes
+1)	 These 	tubes 	are 	generally 	used 	to 	replace 	a 	
+long- 	standing 	gastrostomy 	tube 	with 	a 	more 	
+“cosmetic” 	tube 	when 	very 	long- 	term 	nutri-
+tional 	support 	is 	anticipated; 	for 	example, 	
+several 	months 	as 	in 	cases 	of 	patients 	under -
+going 	chemotherapy.
+2)	 The 	decision 	to 	use 	these 	tubes 	is 	based 	
+mainly 	on 	practical 	and 	cosmetic 	reasons 	
+rather 	than 	medical 	reasons.
+3)	 In 	cats, 	replacement 	of 	a 	standard 	gastros -
+tomy 	tube 	(in 	place 	for 	at 	least 	a 	month) 	
+m
+n
+Figure 9.7 (Continued)
+Figure 9.8 Correct placement of the esophagostomy tube 
+should be confirmed with either radiography or fluoroscopy.
+
+
+--- PDF 107 ---
+Feline Emergency and Critical Care Medicine
+ 89
+with 	a 	low- 	profile 	gastrostomy 	tube 	requires 	
+general 	anesthesia.
+vi) 	Jejunostomy 	or 	jejunal 	tubes
+1)	 Placement 	of 	jejunostomy 	tubes 	is 	indicated 	
+when 	 the 	 patient 	 necessitates 	 abdominal 	
+surgery 	and 	there 	is 	a 	need 	to 	bypass 	a 	cer -
+tain 	segment 	of 	the 	gastrointestinal 	tract.
+2)	 A 	significant 	amount 	of 	technical 	expertise 	
+is 	required 	to 	place 	these 	tubes.
+3)	 Major 	complications:
+–	Tube 	dislodgement 	and 	leakage 	around 	
+stoma 	site, 	which 	can 	prove 	fatal 	due 	to 	
+septic 	peritonitis.
+–	Diarrhea:
+ ● Generally 	related 	to 	the 	composition 	or 	
+osmolarity 	 of 	 the 	 diet, 	 rather 	 than 	
+being 	caused 	by 	the 	mode 	of 	feeding.
+4)	 Feeding 	via 	jejunostomy 	feeding 	tubes 	is 	
+best 	achieved 	using 	liquid 	diets 	designed 	for 	
+cats 	and 	administered 	as 	continuous 	infu-
+sions 	rather 	than 	bolus 	feeding.
+5)	 A 	newer 	technique 	involves 	placing 	a 	jejunal 	
+tube 	(J) 	through 	an 	existing 	percutaneous 	
+endoscopy- 	guided 	gastrosmomy 	tube 	(PEG), 	
+the 	so 	called 	“J- 	through- 	PEG” 	tube 	approach 	
+that 	circumvents 	the 	need 	for 	abdominal 	
+surgery 	or 	a 	jejunal 	incision.
+6)	 These 	tubes 	are 	considerably 	more 	difficult 	
+to 	place 	and 	increase 	total 	anesthesia 	time 	
+dramatically.
+7)	 J- 	through- 	PEG 	tubes 	are 	placed 	by 	thread-
+ing 	a 	feeding 	tube 	through 	a 	PEG 	tube; 	the 	
+distal 	tip 	is 	placed 	within 	the 	jejunum 	with 	
+the 	aid 	of 	endoscopy. 	The 	jejunal 	tube 	is 	
+grasped 	 with 	 a 	 biopsy 	 wire 	 and 	 pushed 	
+through 	the 	pylorus, 	and 	the 	procedure 	is 	
+repeated 	until 	approximately 	20 	cm 	of 	feed-
+ing 	tube 	is 	within 	the 	jejunum.
+E)	 Parenteral 	nutrition
+a)	 PN 	should 	only 	be 	considered 	for 	patients 	with 	
+overt 	 gastrointestinal 	 dysfunction 	 such 	 as 	 pro -
+tracted 	vomiting, 	severe 	ileus, 	or 	diarrhea.
+b)	 Inappetence 	is 	not 	sufficient 	justification 	for 	PN.
+c)	 PN 	is 	usually 	a 	mixture 	of 	an 	amino 	acid 	solution 	
+with 	lipids 	and 	dextrose. 	Vitamins, 	trace 	minerals, 	
+and 	certain 	medications 	can 	be 	safely 	added 	to 	PN.
+d)	 General 	considerations 	for 	using 	PN 	include 	the 	
+following:
+i) 	Careful 	selection 	of 	patients 	most 	likely 	to 	ben-
+efit 	from 	this 	form 	of 	support.
+ii) 	The 	ability 	to 	place 	appropriate 	catheters 	(dou-
+ble- 	 	or 	triple- 	lumen 	catheters).
+iii) 	The 	ability 	to 	safely 	compound 	and 	administer 	
+PN. 	Solutions 	are 	mixed 	aseptically, 	usually 	
+through 	intravenous 	filters, 	and 	administered 	
+continuously 	via 	infusion 	pumps.
+iv) 	Frequent 	 monitoring 	 for 	 possible 	 complica-
+tions 	is 	imperative.
+e)	 Measures 	to 	reduce 	complications 	associated 	with 	
+PN 	include 	careful 	patient 	selection 	and 	conserva-
+tive 	estimation 	of 	energy 	requirements.
+f)	 Peripheral 	parenteral 	nutrition 	(PPN; 	Table 9.1):
+i) 	This 	type 	of 	PN 	refers 	to 	the 	administration 	of 	
+nutrients 	intravenously 	that 	are 	suitable 	for 	
+peripheral 	administration, 	as 	these 	solutions 	
+have 	lower 	osmolality 	(<1000 	mOsm/l) 	than 	
+PN 	solutions 	which 	must 	be 	administered 	cen-
+trally 	(>1200 	mOsm/l).
+Table 9.1 Peripheral parenteral nutrition (PPN) calculations.
+1) 	Calculate 	resting 	energy 	requirement 	(RER)
+RER = 70 	× 	(current 	body 	weight 	in 	kg) 0.75 	
+RER = ___kcal/day
+2) 	Calculate 	the 	partial 	energy 	requirement 	(PER)
+Plan 	to 	supply 	70% 	of 	the 	animal’s 	RER 	with 	PPN:
+PER = RER 	× 	0.70 = ___kcal/day
+3) 	Proportion 	of 	nutrient 	requirements 	according 	to 	body 	
+weight:
+(Note: 	for 	animals 	 3 	kg, 	the 	formulation 	will 	exceed 	
+maintenance 	fluid 	requirements.)
+a) 	Cats 	3–5 	kg:
+PER 	× 	0.20 = ___kcal/day 	carbohydrate 	required
+PER 	× 	0.20 = ___kcal/day 	protein 	required
+PER 	× 	0.60 = ___kcal/day 	lipid 	required
+b) 	Cats 	6–10 	kg:
+PER 	× 	0.25 = ___kcal/day 	carbohydrate 	required
+PER 	× 	0.25 = ___kcal/day 	protein 	required
+PER 	× 	0.50 = ___kcal/day 	lipid 	required
+4) 	Volumes 	of 	nutrient 	solutions 	required:
+a) 	5% 	dextrose 	solution = 0.17 	kcal/ml
+___kcal 	carbohydrate 	required/day 	÷	0.17 	kcal/ml = ___ 	ml/
+day 	dextrose
+b) 	8.5% 	amino 	acid 	solution = 0.34 kcal/ml
+___kcal 	protein 	required/day 	÷	0.34 	kcal/ml = ___ 	ml/day 	
+amino 	acids
+c) 	20% 	lipid 	solution = 2 	kcal/ml
+___kcal 	lipid 	required/day 	÷	2 	kcal/ml = ___ 	ml/day 	lipid
+=___ 	total 	ml 	of 	PPN 	to 	be 	administered 	over 	24 	hours
+Note: 	This 	formulation 	provides 	approximately 	a 	maintenance 	fluid 	
+rate. 	Commonly 	used 	8.5% 	amino 	acid 	solutions 	(i.e., 	Travasol) 	with 	
+electrolytes 	contain 	potassium. 	The 	PPN 	solution 	made 	according 	to 	
+this 	worksheet 	will 	provide 	approximately 	maintenance 	levels 	of 	
+potassium. 	Rates 	of 	other 	IV 	fluids 	being 	concurrently 	administered 	
+should 	be 	adjusted 	accordingly.
+
+
+--- PDF 108 ---
+Nutritional Support for the Critically Ill Feline Patient
+90
+ii) 	PPN 	may 	be 	indicated 	in 	patients 	in 	which 	
+central 	parenteral 	nutrition 	(CPN) 	is 	not 	feasi -
+ble; 	for 	example, 	when 	a 	central 	catheter 	can -
+not 	be 	placed.
+iii) 	Because 	PPN 	is 	a 	“less 	concentrated” 	form 	of 	
+PN, 	it 	contains 	fewer 	calories 	and 	so 	only 	meets 	
+some 	of 	the 	caloric 	and 	nutrient 	requirements 	
+of 	patients.
+1)	 The 	decrease 	in 	the 	osmolarity 	of 	the 	solu -
+tion 	in 	PPN 	is 	achieved 	by 	the 	use 	of 	5% 	dex -
+trose 	as 	opposed 	to 	50% 	dextrose. 	Additionally, 	
+the 	targeted 	amount 	of 	calories 	is 	between 	65 	
+and 	80% 	of 	RER 	with 	PPN.
+iv) 	PPN 	is 	perhaps 	associated 	with 	fewer 	complica -
+tions 	as 	compared 	with 	CPN, 	and 	this 	may 	be 	
+related 	 to 	 the 	 differences 	 in 	 total 	 calories 	
+delivered, 	composition 	of 	solutions, 	or 	different 	
+patient 	populations.
+v) 	PPN 	can 	also 	be 	used 	to 	supplement 	cats 	that 	
+can 	only 	tolerate 	small 	amounts 	of 	enteral 	
+feeding.
+vi) 	As 	PPN 	is 	typically 	formulated 	with 	5% 	dex -
+trose, 	there 	is 	potential 	for 	fluid 	overload; 	the 	
+final 	volume 	of 	PPN 	should 	always 	be 	assessed 	
+for 	appropriateness 	for 	given 	patients.
+g)	 Central 	parenteral 	nutrition 	(Table 9.2)
+i) 	The 	indication 	for 	use 	of 	CPN 	in 	cats 	typically 	
+involves 	a 	case 	with 	overt 	and 	intractable 	gas -
+trointestinal 	dysfunction. 	These 	patients 	have 	
+severe 	vomiting, 	diarrhea, 	and/or 	malabsorp -
+tive 	conditions, 	and 	it 	is 	anticipated 	that 	enteral 	
+nutrition 	will 	not 	resume 	promptly.
+Table 9.2 Central parenteral nutrition (CPN) calculations.
+1) 	Calculate 	resting 	energy 	requirement 	(RER)
+RER = 70 	× 	(current 	body 	weight 	in 	kg) 0.75
+RER = ___kcal/day
+2) 	Protein 	requirements	 (g/100 	kcal)
+Standard	 6
+Reduced 	(hepatic/renal 	disease)	 3–4
+Increased 	(excessive 	protein 	losses)	 7–8
+(RER   100) 	× 	___ 	g/100 	kcal = ___ 	g 	protein 	required/day
+3) 	Volume 	of 	nutrient 	solutions 	required
+a) 	8.5% 	amino 	acid 	solution = 0.085 	g 	protein/ml
+___ 	g 	protein 	required/day   0.085 	g/ml = ___ 	ml/day 	of 	amino 	acids
+b) 	Nonprotein 	calories:
+The 	calories 	supplied 	by 	protein 	(4 	kcal/g) 	are 	subtracted 	from 	the 	RER 	to 	get 	total 	nonprotein 	calories 	needed.
+___g 	protein 	req./day 	× 	4 	kcal/g = ___ 	kcal 	provided 	by 	protein
+RER – 	kcal 	provided 	by 	protein = ___ 	total 	nonprotein 	kcal/day 	required
+c) 	Nonprotein 	calories 	are 	usually 	provided 	as 	a 	50:50 mixture 	of 	lipid 	and 	dextrose.
+20% 	lipid 	solution = 2 	kcal/ml
+To 	supply 	50% 	of 	nonprotein 	calories
+___ 	lipid 	kcal 	required   2 	kcal/ml = ___ 	ml 	of 	lipid
+50% 	of 	dextrose 	solution = 1.7 	kcal/ml
+To 	supply 	50% 	of 	nonprotein 	calories
+___ 	dextrose 	kcal 	required   1.7 	kcal/ml = ___ 	ml 	of 	dextrose
+4) 	Total 	daily 	requirements
+___ 	ml 	of 	8.5% 	amino 	acid 	solution
+___ 	ml 	of 	20% 	lipid
+___ 	ml 	of 	50% 	dextrose
+___ 	total 	ml 	of 	CPN 	solution 	to 	be 	administered 	over 	24 	hours
+Note: 	Using 	a 	common 	8.5% 	amino 	acid 	solution 	containing 	potassium 	(i.e., 	Travasol), 	CPN 	made 	according 	to 	this 	worksheet 	will 	provide 	
+potassium 	at 	higher 	than 	maintenance 	levels. 	CPN 	for 	animals 	that 	are 	hyperkalemic 	should 	be 	formulated 	using 	amino 	acid 	solutions 	without 	
+electrolytes. 	Rates 	of 	other 	IV 	fluids 	being 	concurrently 	administered 	should 	be 	adjusted 	accordingly.
+
+
+--- PDF 109 ---
+Feline Emergency and Critical Care Medicine
+ 91
+ii)	 Patients	 with	 overt	 malnutrition,	 for	 example,	
+greater	 than	 15%	 loss	 of 	body	 weight,	 may	 not	
+be	 adequately	 supported	 with	 PPN	 and	 may	 be	
+best	treated	with	CPN.
+iii)	 Due	 to	 higher	 osmolarity	 and	 increased	 risk	 of 	
+thrombophlebitis,	 CPN	 usually	 requires	 cen-
+tral	 venous	 administration,	 that	 is,	 jugular	
+catheters	 or	 femoral	 catheters	 threaded	 to	 the	
+caudal	vena	cava.
+iv)	 In	 patients	 where	 placement	 of 	such	 catheters	
+(e.g.,	 double-	 	 or	 triple-	 lumen	 catheters)	 is	 not	
+feasible,	PPN	may	be	the	only	option.
+F)	 Calculation	of 	caloric	requirements
+a)	 The	 patient’s	 RER	 is	 the	 number	 of 	calories	 required	
+for	 maintaining	 homeostasis	 while	 the	 animal	 rests	
+quietly.
+b)	 Estimation	 of 	energy	 requirements	 is	 calculated	 as	
+follows:
+i)	 RER = 70(body	weight	in	kg) 0.75
+c)	 Several	 factors	 impact	 the	 overall	 total	 energy	
+expenditure,	 including	 level	 of 	activity	 and	 the	
+effects	of 	disease	processes	on	metabolism.
+d)	 Clinically,	 energy	 expenditure	 is	 difficult	 to 	
+measure;	 therefore,	 estimation	 of 	energy	 require -
+ments	 is	 the	 standard	 for	 calculating	 nutritional 	
+support.
+i)	 Formerly,	 there	 was	 an	 emphasis	 on	 adjusting	
+energy	 expenditure	 by	 simply	 multiplying	 the	
+RER	 with	 an	 arbitrary,	 extrapolated	 illness	 fac-
+tor.	 More	 recently,	 this	 practice	 is	 purported	 to	
+increase	 rates	 of 	complications	 without	 improv -
+ing	 outcome.	 Therefore,	 recent	 recommenda-
+tions	 propose	 initial	 caloric	 targets	 to	 be	 simply	
+the	estimated	RER.
+e)	 One	 of 	the	 reasons	 for	 starting	 with	 RER	 is	 that 	
+the	 main	 purpose	 of 	nutritional	 support	 in	 criti-
+cally	 ill	 patients	 is	 to	 support	 energy	 and	 sub -
+strate	 requirements,	 not	 resulting	 in	 immediate 	
+weight	gain.
+f)	 Only	 after	 the	 patient	 is	 deemed	 to	 be	 recovering	
+and	 tolerating	 feedings	 well	 should	 caloric	 targets	
+be	 raised,	 usually	 by	 10–20%	 increments	 if 	there	 is	
+failure	to	gain	weight.
+G)	 Types	of 	diets
+a)	 The	choice	of 	an	appropriate	enteral	diet	to	be	used	
+for	tube	feeding	depends	on	several	factors:
+i)	 The	 underlying	 disease	 process	 and	 presence	 of 	
+comorbid	conditions.
+ii)	 The	size	and	type	of 	feeding	tube	placed.
+iii)	 Access	to	veterinary	specialized	diets.
+iv)	 Owner’s	 ability	 to	 obtain	 and	 administer	 pre -
+scribed	diet.
+b)	 Veterinary	liquid	diets
+i)	 There	 are	 only	 a	 few	 products	 commercially	
+available	that	are	suitable	for	cats.
+1)	 Human	 enteral	 formulas	 lack	 several	 key 	
+nutrients,	 such	 as	 arginine	 and	 taurine, 	
+which	 precludes	 recommending	 the	 use	 of 	
+such	products.
+ii)	 These	 diets	 are	 ideal	 for	 cats	 that	 have	 nasoe -
+sophageal	 and	 jejunal	 tubes	 in	 place,	 although	
+liquid	diets	can	be	used	with	any	feeding	tube.
+iii)	 In	 certain	 critically	 ill	 cats,	 a	 slow	 continuous 	
+infusion	 of 	liquid	 diets	 through	 nasoesophageal 	
+or	 esophagostomy	 tubes	 may	 be	 tolerated	 despite 	
+occasional	 vomiting.	 Infusion	 rates	 between 	
+0.5	 ml/kg/h	and	2	 ml/kg/h	are	recommended.
+iv)	 One	 of 	the	 major	 disadvantages	 of 	liquid	 diets	
+is	 the	 high	 fat	 and	 protein	 content,	 which	 may	
+not	 be	 appropriate	 for	 all	 patients	 (e.g.,	 cats	
+with	 steatorrhea	 or	 hepatic	 encephalopathy,	
+respectively).
+v)	 The	 caloric	 density	 of 	most	 liquid	 diets	 is	
+approximately	 1	 kcal/ml,	 which	 could	 translate	
+to	 large	 volumes	 of 	the	 diet	 being	 necessary	 to	
+meet	energy	requirements.
+c)	 Veterinary	canned	diets
+i)	 Placement	 of 	larger	 feeding	 tubes,	 for	 example, 	
+esophagostomy	 and	 gastrostomy	 tubes,	 allows 	
+feeding	 of 	more	 calorie- 	dense	 diets	 (some	 as 	
+high	 as	 2	 kcal/ml).	 This	 results	 in	 smaller	 vol-
+umes	 of 	food	 being	 administered	 at	 each	 feeding.
+ii)	 In	 addition	 to	 “critical	 care	 diets,”	 almost	 any	
+canned	 product	 can	 be	 prepared	 to	 make	 tube	
+feeding	 amenable.	 This	 usually	 requires	 blend-
+erizing	 a	 canned	 diet	 with	 a	 certain	 amount	 of 	
+water	 and	 sometimes	 straining	 the	 mixture	
+through	 a	 sieve	 before	 being	 able	 to	 feed	 via	
+feeding	tubes.
+iii)	 Examples	 of 	how	 common	 veterinary	 diets	 can	
+be	 modified	 to	 make	 them	 amenable	 for	 tube	
+feeding	are	listed	in	 Table 9.3.
+H)	 Role	of 	appetite	stimulants
+a)	 As	 appetite	 suppression	 is	 always	 a	 consequence	 of 	
+the	 underlying	 disease	 rather	 than	 the	 actual	 pri-
+mary	 problem,	 the	 use	 of 	appetite	 stimulants	 is	 sel-
+dom	 recommended	 in	 the	 initial	 treatment	 of 	
+critically	ill	cats.
+b)	 The	 use	 of 	appetite	 stimulants	 while	 cats	 are	 hospi-
+talized	 (e.g.,diazepam)	 is	 usually	 ineffective	 and	 not	
+recommended.
+c)	 The	 more	 appropriate	 use	 of 	appetite	 stimulants	 is	
+when	 the	 patient	 is	 recovering	 from	 the	 underlying	
+disease	and	has	been	discharged	from	the	hospital.
+
+
+--- PDF 110 ---
+Nutritional Support for the Critically Ill Feline Patient
+92
+d)	 A	 commonly	 used	 appetite	 stimulant	 in	 cats	 recov -
+ering	 from	 illnesses	 is	 mirtazapine	 administered	
+orally	 at	 3–4	 mg/cat	 q72h.	 This	 approach	 is	 not	
+appropriate	for	severely	ill	hospitalized	cats.
+e)	 The	 use	 of 	appetite	 stimulants	 is	 not	 without	 risks.	
+Reports	 of 	toxicity	 have	 been	 reported	 in	 cats	 receiv -
+ing	“therapeutic”	dosages.
+I)	 Monitoring	and	reassessment	of 	the	patient
+a)	 As	 with	 all	 interventions,	 it	 is	 important	 to	 empha-
+size	 the	 role	 of 	close	 monitoring	 of 	patients	 receiv -
+ing	nutritional	support.
+b)	 Feeding	 tubes	 and	 PN	 catheters	 must	 be	 monitored	
+for	 mechanical	 problems	 as	 well	 as	 infections	 at	
+entry	 site.	 Catheter	 and	 feeding	 tube	 sites	 should	 be	
+evaluated	 daily	 for	 signs	 of 	inflammation	 and/or	
+infection.
+c)	 Recommended	 monitoring	 for	 patients	 receiving	
+PN	 include	 frequent	 evaluation	 of 	heart	 rate,	 res -
+piratory	 rate,	 temperature,	 blood	 glucose,	 blood	
+urea	 nitrogen,	 and	 triglycerides.	 In	 particularly	
+debilitated	 cats,	 monitoring	 of 	magnesium,	 potas -
+sium,	and	phosphorus	is	also	recommended.
+i)	 Periodic	 nutritional	 reassessment	 can	 guide 	
+whether	 there	 should	 be	 an	 adjustment	 of 	nutri-
+tional	 support;	 for	 example,	 increase	 calories 	
+delivered	 by	 20%	 if 	there	 is	 persistent	 weight	 loss 	
+in	 the	 face	 of 	nutritional	 support	 or	 decrease	 or 	
+stop	delivery	of 	nutrition	if 	complications	arise.
+ Recommended Readings
+Chan,	D.L.	(2004).	Nutritional	requirements	of 	the	critically	
+ill	patient.	Clin. Tech. Small Anim. Pract.	19	(1):	1–5.
+Chan,	D.L.	and	Freeman,	L.M.	(2015).	Parenteral	nutrition	in	
+small	animals.	In:	Nutritional Management of Hospitalized 
+Small Animals	(ed.	D.L.	Chan),	100–116.	 West	Sussex:	
+Wiley	Blackwell.
+Chan,	D.L.	(2018).	Feeding	tube	complications.	In:	Textbook 
+of Small Animal Emergency Medicine	(ed.	K.	Drobatz,	
+E.A.	Rozanski,	K.	Hopper	and	D.	Silverstein),	578–581.	
+Wiley	Blackwell.
+Mazzaferro,	E.M.	(2001).	Esophagostomy	tubes:	don’t	
+underutilize	them!	J. Vet. Emerg. Crit. Care	11	(2):		
+153–156.
+Pyle,	S.C.,	Marks,	S.L.,	and	Kass,	P.H.	(2004).	Evaluation	of 	
+complications	and	prognostic	factors	associated	with	
+administration	of 	total	parenteral	nutrition	in	cats:	75	
+cases	(1994–2001).	J. Am. Vet. Med. Assoc.	255	(2):		
+242–250.
+Quimby,	J.M.	and	Lunn,	K.F.	(2013).	Mirtazapine	as	an	
+appetite	stimulant	and	anti- 	emetic	in	cats	with	chronic	
+kidney	disease:	a	masked	placebo- 	controlled	crossover	
+clinical	trial.	Vet. J.	197	(3):	651–655.
+Yu,	M.K.,	Freeman,	L.M.,	Heinze,	C.R.,	and	t	al.	(2013).	
+Comparison	of 	complications	in	dogs	with	nasoesophageal	
+versus	nasogastric	tubes.	J. Vet. Emerg. Crit. Care	23	(3):	
+300–304.
+Table 9.3 Enteral nutrition calculations for tube feeding.
+1)	 Calculate	resting	energy	requirement	(RER)
+RER = 70	 ×	(current	body	weight	in	kg) 0.75 	
+2)	 Product	selected:	__________
+Caloric	density	of 	diet:	_____	kcal/ml
+3)	 Total	volume	to	be	administered	per	day
+kcal	required/day = ___	ml/day
+kcal/ml	in	diet
+4)	 Administration	schedule
+½	of 	total	requirement	on	Day	1 = ___ml/day	(Day	1)
+Total	 requirement	 on	 Day	 2	 and	 beyond  =  ___ml/
+day	(Day	2)
+5)	 Feedings	per	day
+Divide	 total	 daily	 volume	 into	 4–6	 feedings	 (depending	
+on	patient	tolerance	for	feedings) = ___feedings/day
+6)	 Volume	per	feeding
+Divide	total	ml/day	by	the	number	of 	feedings	per	day
+=___ml/feeding	(Day	1)
+=___ml/feeding	(Day	2)
+7)	 Diet	options
+A)	 Nasoesophageal	and	jejunostomy	tubes
+i)	 Liquid	diets	only
+ii)	 Royal	 Canin	 Recovery	 Liquid	 Canine	 &	 Feline	
+(0.9	 kcal/ml)
+iii)	 Royal	Canin	Feline	Renal	Support	(0.9	 kcal/ml)
+N.B.	 Human	 liquid	 diets	 are	 unbalanced	 for	 cats	 and	
+should	not	be	used
+B)	 Esophagostomy	and	gastrostomy	tubes
+i)	 Hill’s	a/d	canned
+Supplies	 1.3	 kcal/ml	 straight	 from	 can,	 but	 needs	
+further	dilution
+1	can	+50	 ml	water = 1.0	 kcal/ml
+1	can	+25	 ml	water = 1.1	 kcal/ml
+
+
+--- PDF 111 ---
+93
+Feline Emergency and Critical Care Medicine, Second Edition. Edited by Kenneth J. Drobatz,  
+Erica Reineke, Merilee F. Costello, and William T. N. Culp.
+© 2023 John Wiley & Sons, Inc. Published 2023 by John Wiley & Sons, Inc.
+A)	 Respiratory	emergencies
+a)	 Triage
+i)	 Telephone	triage
+1)	 If 	the	 owner	 reports	 any	 concern	 for	 ability	
+to	 breathe,	 increased	 respiratory	 rate,	 or	
+effort,	 the	 cat	 should	 be	 brought	 in	 immedi-
+ately	for	assessment.
+2)	 Ensure	 that	 there	 is	 no	 closer	 appropriate	
+facility.
+ii)	 Waiting	room	triage
+1)	 Complaint	 of 	potential	 respiratory	 problems	
+warrants	 immediate	 attention	 and	 move -
+ment	of 	the	patient	to	the	treatment	area.
+2)	 Obtain	 brief 	 history,	 specifically	 asking	
+about	 signalment,	 rapidity	 of 	onset,	 cough,	
+history	 of 	heart	 disease,	 asthma,	 trauma,	 or	
+any	other	respiratory	problems.
+b)	 Initial	assessment	(Figure 10.1)
+i)	 Complete	 physical	 examination	 is	 often	 not	
+possible	 (or	 recommended)	 initially	 in	 cats	
+with	severe	respiratory	distress.
+ii)	 Clinical	 signs	 of 	 respiratory	 distress	 include	
+rapid,	 shallow,	 or	 noisy	 breathing.	 Open-	 mouth	
+breathing	 is	 occasionally	 present.	 Some	 cats	
+demonstrate	 orthopnea,	 preferring	 to	 sit	 only	
+in	 a	 sternal/hunched	 position.	 Cats	 will	 often	
+have	 widely	 dilated	 pupils	 and	 may	 have	
+excessive	 salivation.	 Cats	 with	 primary	 cardiac	
+or	 pulmonary	 disease	 may	 have	 only	 been	
+appreciated	 to	 be	 lethargic	 at	 home;	 however,	
+following	 a	 car	 trip,	 they	 may	 demonstrate	
+overt	 distress.	 Note	 that	 cats	 can	 have	 signifi-
+cant	 respiratory	 compromise	 primarily	 mani-
+fested	 only	 as	 increased	 respiratory	 rate	 until	
+stressed,	 at	 which	 time	 full	 clinical	 signs	 of 	res -
+piratory	distress	become	evident.
+iii)	 Assess	 whether	 the	 cat	 seems	 to	 be	 in	 immedi-
+ate,	 life-	 threatening	 respiratory	 failure.	 Note	
+cyanosis,	 gasping,	 and	 pulmonary	 edema	 (PE)	
+visible	 at	 nares,	 or	 rarely	 severe	 hypoventila-
+tion,	 recognized	 by	 intermittent	 apnea	 in		 lateral	
+recumbency.
+iv)	 If 	life-	 threatening	 state	 is	 assessed,	 cautiously	
+sedate	 (if 	necessary)	 and	 intubate.	 Use	 of 	an	
+opioid	 and	 a	 benzodiazepine	 is	 recommended,	
+such	 as	 butorphanol	 0.2	 mg/kg	 and	 diazepam	
+0.4	 mg/kg	 IV 	(medial	 saphenous	 vein	 often	 eas -
+iest).	 Propofol	 and	 alfaxalone	 alone	 are	 a	 poor	
+choice,	 due	 to	 their	 cardiovascular	 depressant	
+properties.	 Maintain	 on	 100%	 O 2 	with	 manual 	
+positive	 pressure	 ventilation.	 Be	 prepared	 to	
+suction	 any	 pulmonary	 edema.	 If 	 obvious	
+increased	 inspiratory	 effort,	 be	 prepared	 for	 a	
+tracheostomy	in	case	of 	laryngeal	mass.
+Elizabeth Rozanski
+10
+Respiratory Emergencies and Pleural Space Disease
+	
+UNIQUE FEATURES
+ ● Identification of the specific underlying cause will result in more effective therapy.
+ ● Increased respiratory rate and effort due to pleural effusion should improve rapidly following thoracocentesis.
+ ● Failure to improve after thoracocentesis or rapid return of respiratory distress should prompt concern for iatrogenic 
+pneumothorax.
+ ● The average cat thorax will contain 200–300 ml of effusion or air before respiratory distress will develop.
+ ● Heart failure is less common than often believed.
+ ● Pleural effusion can be seen with left- sided heart failure.
+
+
+--- PDF 112 ---
+Respiratory Emergencies and Pleural Space Disease
+94
+v)	 Allow	 the	 cat	 time	 (approximately	 10	 minutes)	
+to	 recover	 from	 the	 stress	 of 	transport	 in	 a	 low-	
+stress	 environment	 with	 oxygen	 supplementa-
+tion.	 Typically,	 an	 oxygen	 cage	 is	 used	 for	 this	
+purpose,	 although	 the	 cat	 should	 be	 closely	
+observed.	 Other	 options	 include	 an	 oxygen	
+hood	 or	 flow-	 by	 administration	 of 	oxygen	 with	
+a	 mask	 or	 oxygen	 line	 if 	the	 patient	 will	 tolerate	
+it	 with	 minimal	 stress	 and	 movement.	 Prepare	
+to	 intervene	 quickly	 (e.g.,	 intubate	 or consider	
+thoracocentesis	 if 	pleural	 space	 disease	 is	 sus -
+pected)	if 	respiratory	distress	worsens.
+vi)	 Observe	the	breathing	pattern	and	effort.
+vii)	 Proceed	 with	 physical	 exam.	 Assess	 for	 the	 fol-
+lowing	specifically:
+1)	 Increased	 respiratory	 rate	 and	 effort	 or, 	
+conversely,	 intermittent	 (or	 agonal) 	
+gasps. 	If 	agonal	 or	 intermittent	 apnea	 is 	
+present, 	begin	 cardiopulmonary	 resuscita-
+tion	(CPR).
+2)	 Evidence	 of 	 abdominal	 or	 paradoxical	
+breathing.
+3)	 Upper	 airway	 noise/stertor/stridor;	 recall	
+auscultation	 over	 trachea	 may	 help	 localize	
+noisy	breathing	to	upper	airway.
+4)	 Increased	or	decreased	lung	sounds.
+5)	 Crackles	 (fluid	 in	 alveoli,	 not	 specific	 for	
+heart	failure).
+6)	 Expiratory	wheezes.
+7)	 Compressibility	of 	cranial	thorax:
+–	 Decreased	 compressibility	 may	 indicate	
+a	cranial	mediastinal	mass.
+–	 Older	 cats	 can	 normally	 often	 have	 a	
+decreased	 compressibility	 and	 can	 con-
+fuse	this	diagnostic	clue.
+8)	 Subcutaneous	emphysema.
+9)	 Heart	murmurs.
+10)	 Gallop	 rhythms	 (may	 be	 best	 heard	 with	
+the	bell).
+11)	 Nasal	discharge.
+12)	 Cough	 (inducible	 with	 tracheal	
+compression?).
+13)	 Rectal	 temperature	 (typically	 low	 with	
+heart	failure).
+14)	 Assess	 degree	 of 	hypoxemia	 with	 pulse	 oxi-
+metry;	 this	 is	 often	 unrewarding	 in	 cats	
+with	 poor	 perfusion;	 prolonged	 efforts	 are	
+not	required.
+viii)	 Attempt	 to	 localize	 the	 disease	 to	 the	 upper	 air -
+way,	 lower	 airway,	 pulmonary	 parenchyma,	 or	
+pleural	space.
+1)	 Loud,	noisy	breathing—	 upper	airway.
+2)	 Prolonged	 expiration	 with	 crackles	 and	
+wheezes—	 lower	airway.
+–	 Cats	 with	 lower	 airway	 disease	 may	 also	
+have	 an	 abdominal	 push	 at	 the	 end	 of 	
+Cat with 
+respiratory
+distress?
+No Evaluate that problem
+Yes
+Loud sounds? 
+Yes
+Upper
+airway disease
+most likely
+No Dull sounds;
+abdominal effort?
+Yes
+Low temp?
+Murmur?
+Gallop?
+Yes
+Likely heart
+disease
+No Probably not heart.
+Airway or noncardio-
+genic disease Pleural space
+disease
+Yes
+No
+Increased lung
+sounds, crackles,
+wheezes?
+Figure 10.1 Flow chart.

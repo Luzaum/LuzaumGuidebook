@@ -1,0 +1,548 @@
+
+--- PDF 145 ---
+131
+Fig. 3.14. Secure the hood around the patient’s head with a length of gauze. Insert a length of flexible oxygen tubing 
+into the side of the hood and administer supplemental humidified oxygen at 50 to 100 mL/kg/min.
+
+--- PDF 146 ---
+132
+Veterinary Emergency and Critical Care Procedures
+TRANSORAL WASH
+Introduction
+A transoral wash may be performed whenever samples of the airway are required for bacterial or viral 
+culture, or to obtain cells for cytologic evaluation. Although bronchoalveolar lavage is considered to 
+be the gold standard for obtaining airway samples, it requires specialized equipment and a deep plane 
+of general anesthesia. Samples obtained from a transoral wash may be cultured for bacteria or viruses 
+and may be evaluated for neoplastic cells, bacteria, fungal infection, or parasitic organisms or ova.
+Supplies Needed
+Sterile endotracheal tube
+Sterile gloves
+Sterile 0.9% saline
+Sterile red rubber or rigid polypropylene catheter
+Port- a- Cul™ culture swabs
+Lavendar and red- topped vials
+Indications
+Obtain bacterial or viral cultures from airway
+Obtain cells for cytologic evaluation of airway
+Contraindications
+Condition in which light- plane general anesthesia is determined to be too dangerous in a very 
+unstable patient
+Limitations
+Samples obtained may be more reflective of large airways, and not reflective of what is deeper in 
+the lungs.
+
+--- PDF 147 ---
+133
+Fig. 3.15. Supplies needed for sample collection via transoral wash.
+Fig. 3.16. After induction of anesthesia, wear sterile gloves to pass a new, sterile endotracheal tube in as sterile a manner 
+as possible. Have flow- by oxygen supplementation and an Ambu- bag available. Be prepared to give supplemental breaths 
+to the patient in between airway washes.
+Helpful hint: Have all necessary supplies prepared and in place before placing the patient under anesthesia.
+
+--- PDF 148 ---
+134
+Fig. 3.18. Instill 5 to 10 mL of sterile 0.9% saline into the airways via the red rubber or polypropylene catheter, then 
+vigorously coupage the patient’s thorax.
+Fig. 3.17 . Pass a red rubber tube or rigid polypropylene catheter through the endotracheal tube into the patient’s airway.
+
+--- PDF 149 ---
+135
+Fig. 3.19. Following instillation of sterile saline into the trachea, have an assistant coupage the thorax bilaterally.
+Fig. 3.20. Withdraw the fluid from the polypropylene catheter. Note: Not all of the fluid instilled will be withdrawn from 
+the airways.
+
+--- PDF 150 ---
+136
+Fig. 3.21 . The sample collected can be submitted for fluid analysis, cytology, and bacterial/viral cultures as indicated.
+
+--- PDF 151 ---
+1373 Oxygen Supplementation and Respiratory Sampling Techniques
+SUGGESTED READING
+Finke MD. Transtracheal wash and bronchoalveolar lavage. Top Compan Anim Med 2013; 28(3):97– 102.
+Manning AM. Oxygen therapy and toxicity. Vet Clin North Amer Sm Anim 2002; 32(5):1005– 1020.
+Murphy ML, Hodgson DS, Bello NM. Accuracy of oxygen delivery through bubbler humidifiers and nasal 
+catheters. Vet Anaesth Analg 2020; 47(3):356– 367.
+Tong CW, Gonzalez AL. Respiratory emergencies. Vet Clin North Amer Sm Anim 2020; 50(6):1237– 1259.
+
+--- PDF 152 ---
+
+
+--- PDF 153 ---
+Veterinary Emergency and Critical Care Procedures, Third Edition. Timothy B. Hackett and Elisa M. Mazzaferro. 
+© 2025 John Wiley & Sons, Inc. Published 2025 by John Wiley & Sons, Inc.
+139
+CHAPTER 4
+INTRODUCTION
+Pericardial tamponade and even small amounts of fluid within the pericardial space can greatly 
+impede cardiac preload and, subsequently, cardiac output. The recognition of and rapid removal of 
+pericardial effusion can be life- saving in some patients.
+Supplies Needed
+Electric clippers and blades
+Antimicrobial scrub solution
+1- mL syringe with 25- gauge ¾- inch needle
+Number 11 scalpel blade
+14-  or 16- gauge long over- the- needle catheter
+30-  or 60- mL catheter- tip syringe
+Three- way stop- cock
+Intravenous extension tubing
+Bowl or graduated cylinder for sample collection
+Red- topped and EDTA tubes
+Electrocardiogram (ECG) monitor
+Indications
+Pericardial effusion impairing cardiac preload and cardiac output
+Diagnosis of inflammatory and neoplastic pericardial effusions
+Contraindications
+Coagulopathies secondary to Vitamin K antagonist rodenticide intoxication
+Pericardiocentesis
+
+--- PDF 154 ---
+140
+Fig. 4.1 . Electrical alternans is a characteristic ECG abnormality observed when the heart is floating and swinging within 
+the fluid in the pericardial sac, creating small, then larger ECG complexes. Low- amplitude ECG waveforms can also be 
+associated with pericardial effusion, although they can also be associated with severe obesity, hypothyroidism, 
+hypothermia, and hypovolemic shock.
+Figs. 4.2a–b. Ventrodorsal and lateral thoracic radiographs from a patient with pericardial effusion, demonstrating a 
+large globoid cardiac silhouette.
+(a)
+(b)
+
+
+--- PDF 155 ---
+141
+Fig. 4.3. Lateral thoracic silhouette from a dog with minimal pericardial effusion. Note the relatively normal- sized 
+cardiac silhouette, elevation of the heart from the sternum and enlarged caudal vena cava.
+Helpful hint: The cardiac silhouette may appear normally sized on the ventrodorsal, dorsoventral, or lateral 
+thoracic radiographs if the pericardial effusion is acute and has occurred quickly, without time for the pericardium 
+to stretch. The patient with acute pericardial effusion may demonstrate severe cardiovascular compromise without 
+radiographic signs of a globoid cardiac silhouette. The clue will be to evaluate the caudal vena cava, and if enlarged, 
+pericardial effusion should be suspected. The heart may appear elevated from the sternum due to lack of inflow of 
+blood into the right heart due to tamponade. One may suspect pneumothorax. If the patient is stable enough, 
+perform a ventrodorsal radiograph. Dogs with pericardial effusion will have pulmonary vessels to the edge of the 
+thorax and cranial to the diaphragm to the edges of the periphery; dogs with pneumothorax will not have pulmonary 
+vessels to the level of the periphery.
+Fig. 4.4. Supplies needed to perform a pericardiocentesis include antimicrobial scrub solution, a number 11 scalpel 
+blade, sterile gloves, 14-  or 16- gauge long over- the- needle catheter, 2% lidocaine, small syringe with 25- gauge needle, 
+IV extension tubing, three- way stop- cock, and 30-  or 60- mL syringe.
+
+--- PDF 156 ---
+142
+Fig. 4.5. Clip a large area of fur on the right lateral thoracic wall, caudal to the point of the elbow (fifth to seventh 
+intercostal space).
+Fig. 4.6. Aseptically scrub the clipped area with antimicrobial scrub.
+
+--- PDF 157 ---
+143
+Fig. 4.7 . Insert a bleb of 2% lidocaine dorsal to the sternum and just caudal to the point of the elbow or at the fifth to 
+seventh intercostal space.
+Fig. 4.8. Rescrub the clipped area and drape with sterile field towels. Make a small nick incision through the 
+anesthetized area of skin using a number 11 scalpel blade. Note: Attach the patient to an ECG monitor, if available, to 
+monitor for cardiac dysrhythmias while performing the pericardiocentesis.
+
+--- PDF 158 ---
+144
+Fig. 4.9. Wearing sterile gloves, insert the over- the- needle catheter through the nick incision and through the body wall 
+at the fifth to seventh intercostal space. Watch for dysrhythmias on the ECG monitor.
+Fig. 4.10. Watch for a flash of blood in the hub of the catheter.
+
+--- PDF 159 ---
+145
+Fig. 4.11 . Once a flash of blood is observed, push the catheter off of the stylette, and then remove the stylette.
+Fig. 4.12. Attach the hub of the catheter to the male end of the length of IV extension tubing, then withdraw fluid from 
+the pericardial sac.
+Helpful hint: Removal of even a small amount of fluid can drastically improve cardiac output by improving cardiac filling.
+
+--- PDF 160 ---
+146
+Fig. 4.13. Place a small amount of pericardial fluid in plain and EDTA- sample tubes for fluid analysis. Watch the plain 
+tube carefully for the presence of a clot. Clot formation may indicate an active bleed. Set aside some of the fluid for 
+culture, in the event that the fluid is due to bacterial or fungal pericarditis.
+Fig. 4.14. The pericardial catheter can be sutured in place with a finger- trap suture in cases where repeated 
+pericardiocentesis may be needed. Note: Over- the- wire pericardial catheters are available from some manufacturers.
+
+--- PDF 161 ---
+1474 Pericardiocentesis
+SUGGESTED READING
+Cook S, Cortellini S, Humm K. Retrospective evaluation of pericardial catheter placement in the management 
+of pericardial effusion in dogs (2007–2015): 18 cases. J Vet Emerg Crit Care 2019, 9:413–417.
+Hagley SP. Ch 18: Pericardiocentesis. In: Advanced Monitoring and Procedures for Small Animal Emergency 
+and Critical Care. Burkitt Creedon JM, Davis H, (eds). John Wiley and Sons, Hoboken, NJ 2023, 
+pp. 241–250.
+Humm KR, Keenaghan- Clark EA, Boag AK. Adverse events associated with pericardial effusion in the dog: 
+85 cases (1999–2006). J Vet Emerg Crit Care 2009, 19(4):352–356.
+MacDonald KA, Cagney O, Magne ML. Echocardiographic and clinicopathologic characterization of  
+pericardial effusion in dogs: 107 cases (1985–2006). J Am Vet Med Assoc 2009, 235(12):1456–1461.
+
+--- PDF 162 ---
+
+
+--- PDF 163 ---
+Veterinary Emergency and Critical Care Procedures, Third Edition. Timothy B. Hackett and Elisa M. Mazzaferro. 
+© 2025 John Wiley & Sons, Inc. Published 2025 by John Wiley & Sons, Inc.
+149
+CHAPTER 5
+INTRODUCTION
+Nutritional support of the critically ill patient is important to provide necessary proteins, carbohy-
+drates, and lipids for energy and repair processes in a variety of illnesses. The placement of an 
+enteral feeding tube for nutritional supplementation is preferred over parenteral nutrition and 
+should be considered in any patient that has a functional gastrointestinal tract. This chapter 
+describes the placement and maintenance of a variety of enteral feeding devices, including nasoe-
+sophageal, nasogastric, and esophagostomy tubes.
+NASOESOPHAGEAL AND NASOGASTRIC TUBES
+Introduction
+Nasoesophageal and nasogastric feeding tubes should be considered in any patient that requires 
+short- term enteral nutritional support when the patient either cannot or will not voluntarily eat and 
+has no esophageal disorder. Specialized veterinary liquid enteral diets are commercially available 
+for use with nasoenteral feeding. In addition to providing enteral nutrition, nasogastric tubes can 
+be used to suction air and fluid from the stomachs of patients with severe ileus.
+SUPPLIES NEEDED
+Needle holders
+Proparacaine or other topical drops or lubricant
+Lubricating gel
+Nonabsorbable suture (2–0 or 3–0)
+5-  to 10- Fr feeding tube or red rubber catheter
+Permanent marker
+Elizabethan collar
+Nutritional Support 
+and Orogastric Lavage
+
+--- PDF 164 ---
+150
+Veterinary Emergency and Critical Care Procedures
+Indications
+Short- term enteral nutrition in patients that are inappetent
+Suctioning of gas or fluid from stomach in patients with severe ileus
+Contraindications
+Epistaxis
+Esophageal disease/dysfunction
+Megaesophagus
+Esophageal foreign body or stricture
+Nasopharyngeal trauma
+Recumbent or unconscious patients
+Regurgitation
+Thrombocytopenia
+
+--- PDF 165 ---
+151
+Fig. 5.1 . Supplies needed for placement of a nasoenteral feeding tube include the enteral feeding tube or red rubber catheter, 
+topical anesthetic such as proparacaine, lubricating gel, nonabsorbable suture, permanent marker, and needle holders.
+Fig. 5.2. Tilt the patient’s head upward toward the ceiling and place several drops of topical anesthetic into the nostril.
+
+--- PDF 166 ---
+152
+Fig. 5.4. Mark the tube with a permanent marker at the measurement of the tip of the nose. Prefabricated tubes often 
+have preprinted centimeter measurements.
+Fig. 5.3. Measure the tube from the tip of the nose to the last rib for nasogastric placement. If you prefer to place a 
+nasoesophageal tube when gastric suctioning is not necessary, measure the tube from the tip of the nose to the 
+mid- thorax.
+
+--- PDF 167 ---
+153
+Fig. 5.5. Lubricate the tip of the with lubricating gel.
+Helpful hint: Hold the tube as close to the patient’s muzzle as possible, to prevent excessive movement and to 
+prevent the patient from sneezing the tube out during placement. Push the patient’s nose toward the ceiling when 
+passing the tube to extend the neck, and then direct the patient’s nose ventrally once the tube is at the point of the 
+pharynx. Watch for a swallowing motion as the patient should swallow the tube.
+Fig. 5.6. Insert the tip of the tube into the ventromedial portion of the patient’s nostril.
+
+--- PDF 168 ---
+154
+Fig. 5.7 . The tube is inserted to the correct location as premeasured then marked with permanent marker.
+Fig. 5.8. If the tube is located in the stomach correctly, aspiration of gastric contents can be used as an indicator of 
+correct placement.
+Helpful hint: Taking an abdominal radiograph is always a good idea, as some tubes can be inserted too far and may 
+not always allow for complete aspiration of air or fluid, depending on the location of the distal tube in the stomach 
+and patient position.
+
+--- PDF 169 ---
+155
+Fig. 5.9. Secure the tube with suture as close to the nostril as possible without causing an acute turn or kink that could 
+cause the tube to occlude.
+Fig. 5.10. Place a finger- trap suture around the tube to decrease tension on the suture.
+
+--- PDF 170 ---
+156
+Fig. 5.11 . Suture the tube to the side of the face, near the ramus of the mandible.
+Helpful hint: If the tube is bothersome to the patient and is causing sneezing, apply more topical anesthetic as 
+needed to minimize patient discomfort. Check the placement of the tube with a lateral thoracoabdominal radiograph. 
+Once correct tube placement has been confirmed, the tube can be used immediately. Always start a feeding by 
+instilling a small amount of sterile water. At any time if the patient coughs during instillation of water, repeat thoracic 
+radiograph(s) to make sure that the tube is not in the trachea. Upon tube removal, make sure that the tube is kinked 
+well, and then pull briskly, to prevent fluid from entering the trachea and lungs.
+Fig. 5.12. The tube is secured in place. An Elizabethan collar should be worn at all times to prevent the patient from 
+scratching and dislodging the tube.
+
+--- PDF 171 ---
+1575 Nutritional Support and Orogastric Lavage
+ESOPHAGOSTOMY TUBES
+Introduction
+Placement of an esophagostomy tube should be considered whenever a patient is inappetent 
+because it either will not or cannot voluntarily eat (i.e., severe maxillofacial trauma, oral or oro-
+pharyngeal neoplasia or mass effects, and inappetence). Esophagostomy tubes are simple to place, 
+require minimal equipment, and can be used immediately. An esophagostomy tube is contraindi-
+cated in patients that cannot protect their airway, have vomiting or regurgitating, or have functional 
+or mechanical esophageal disease such as megaesophagus, severe esophageal erosions, neoplasia, 
+or strictures.
+Supplies Needed
+Surgical Instruments
+Number 10 scalpel blade
+Scalpel handle
+Needle holders
+Mayo scissors
+Rochester carmalt (curved)
+Nonabsorbable suture (various sizes, depending on the size of the tube and patient)
+Permanent marker
+Red rubber catheter or other prefabricated esophagostomy tube
+Electric clipper and blades
+Antimicrobial scrub
+Christmas tree adapter
+Male adapter
+Bandage material or prefabricated esophagostomy tube collar
+Gauze 4 x 4 inch squares
+Cotton roll gauze
+Kling
+Elasticon® or VetrapTM
+Optional equipment: Esophagostomy tube insertion device
+Indications
+Inappetence
+Maxillofacial trauma
+Oropharyngeal neoplasia, mass lesions, surgery
+Severe dental disease
+Contraindications
+V omiting
+Regurgitation
+Esophageal stricture or foreign body
+Megaesophagus
+Conditions that make patient unable to protect its airway
+Severe cough
+Pneumonia
+
+--- PDF 172 ---
+158
+Helpful hint: Take care that the cut edges are smooth to prevent irritation to the esophagus.
+Fig. 5.13. Supplies needed for placement of an esophagostomy tube include a scalpel handle and scalpel blade (Number 
+15 or Number 11 preferred over Number 10 blade, to avoid making the entrance site into the skin too large), thumb 
+forceps, needle holder or straight needle with nonabsorbable suture, and the esophagostomy tube. In this photo, the Mila 
+esophagostomy tube is pictured along with the introducer. If a prefabricated tube or introducer is not available, a red 
+rubber catheter and a curved Carmalt can be used for placement. Depending on the size of the patient 14-  to 20- Fr red 
+rubber catheters can be used. If a red rubber catheter is used, cut the distal end of the tube on a diagonal proximal to the 
+holes in the tube to increase the diameter of the tube through which food is passed.
+Fig. 5.14. Anesthetize and intubate the patient. Place the patient in right lateral recumbency. Clip and the left lateral 
+neck from the ramus of the mandible caudally to the thoracic inlet and dorsally and ventrally to midline. Aseptically 
+scrub the clipped area. Measure the distal end of the tube from the mid- thorax to the tube entrance site in the left lateral 
+cervical region. Mark the tube at the point of insertion with a permanent marker. Prefabricated tubes sometimes have 
+measurements already printed on the tube.
+
+--- PDF 173 ---
+159
+Fig. 5.15. Drape the clipped area with sterile field towels and secure the towels with towel clamps. Gently pull the 
+tongue rostrally, then insert Rochester carmalt into the mouth down into the throat into the esophagus. As the patient is 
+intubated, the carmalt will automatically enter the esophagus. Direct the curved tips laterally to the skin at the level of the 
+mid- cervical region. You should be able to palpate the tips of the carmalt under the skin with your fingertips. Take care to 
+visualize the jugular vein and direct the tips of the Carmalt dorsal to the jugular vein. In this photo, the jugular vein can 
+be visualized ventral to the index finger, while the tip of the index finger is palpating the tips of the carmalt.
+Fig. 5.16. Open the tips of the carmalt and palpate. Using a number 11 scalpel blade, make a stab incision through the 
+skin and underlying fascia, into the esophagus through the open tips of the carmalt. Using the scalpel blade, make a nick 
+incision through the skin over the tips of the carmalt.
+
+--- PDF 174 ---
+160
+Fig. 5.17 . Close the tips of the carmalt, and then push the tips of the carmalt through the edges of the skin incision.
+Helpful hint: In some cases, it may be necessary to gently incise the esophagus over the tips of the carmalt. Make 
+sure to keep the tips of the carmalt in sight, so as to create only one hole in the esophagus.
+Fig. 5.18. Grasp the distal end of the esophagostomy tube and clamp it in the tips of the carmalt.
+Helpful hint: At this point, it is easy to also grasp the tissue in the mouth, oropharynx, or esophagus within the 
+hinges of the carmalt. If this occurs, it will not be easy to bring the tube forward rostrally. If you are having difficulty, 
+push the tube and carmalt caudally back through the skin incision, open the hinges of the carmalt, redirect the carmalt 
+slightly, and then repeat grasping the distal end of the esophagostomy tube procedure without the tissue closed within 
+the hinges of the carmalt.
+
+--- PDF 175 ---
+161
+Fig. 5.19. Pull the carmalt and esophagostomy tube rostrally out of the mouth. The proximal end of the esophagostomy 
+tube will be facing caudally at this point.
+Helpful hint: If you are not able to bring the tube rostrally through the oral cavity, make sure that the esophagostomy 
+tube or carmalt is not wrapped around the tie- gauze of the endotracheal tube.
+Fig. 5.20. Unclamp the distal end of the esophagostomy tube from the carmalt, and then turn and push the distal end of 
+the esophagostomy tube caudally back into the esophagus. Take care to avoid getting the tube stuck on the endotracheal 
+tube and the tie that secures the endotracheal tube in place.
+Helpful hint: Make sure that the patient is well- anesthetized before attempting this step to avoid biting your fingers 
+with stimulation in the mouth.
+
+--- PDF 176 ---
+162
+Fig. 5.21 . While pushing the distal end of the esophagostomy tube caudally into the esophagus, pull gently on the 
+proximal end of the tube to create some tension until you feel the tube “flip.”
+Fig. 5.22. The esophagostomy tube has “flipped” rostrally toward the front of the patient and is in position, where the 
+distal end of the tube is in the esophagus. At this point, gently twist the tube to make sure it is in the correct place.
+
+--- PDF 177 ---
+163
+Fig. 5.23. Place a holding suture or loose purse- string suture around the tube entrance site. Leave the ends of the 
+suture long.
+Fig. 5.24. Use the long suture ends to secure a finger- trap suture around the base of the tube, where it enters the skin to 
+further secure the tube in place.
+
+--- PDF 178 ---
+164
+Veterinary Emergency and Critical Care Procedures
+Fig. 5.27 . Prepare to insert the introducer into the mouth. Note the distal end of the introducer is curved, to be directed 
+laterally to the skin surface once it is inserted into the esophagus.
+PLACEMENT OF ESOPHAGOSTOMY TUBE USING INTRODUCER
+Fig. 5.26. Clip and aseptically scrub the left lateral cervical region as previously described. Insert the distal end of the 
+tube into the mouth and into the esophagus. The distal end of the esophagostomy tube should be inserted to the mid 
+thorax as measured.
+Fig. 5.25. Place the anesthetized patient in right lateral recumbency. Measure from the proposed tube entrance site to the 
+mid thorax.
+
+--- PDF 179 ---
+165
+Fig. 5.28. Push the introducer into the mouth to the level of the esophagus and tube entrance site. Carefully visualize 
+and avoid the jugular vein. Direct the distal end of the introducer laterally to the skin.
+Fig. 5.29. Palpate the end of the esophagostomy tube introducer under the skin. Make a small incision through the skin 
+over the tip of the introducer using a number 11 scalpel blade.
+Fig. 5.30. Push the end of the introducer through the skin.
+
+--- PDF 180 ---
+166
+Fig. 5.31 . Attach the proximal end of the esophagostomy tube to the distal end (noncurved) of the introducer.
+Fig. 5.32. Pull the introducer with the esophagostomy tube attached caudally and laterally, out through the skin incision.
+Fig. 5.33. The esophagostomy tube in place. Secure the esophagostomy tube with a purse- string and finger trap sutures 
+as previously described.
+
+--- PDF 181 ---
+1675 Nutritional Support and Orogastric Lavage
+OROGASTRIC LAVAGE
+Introduction
+Orogastric lavage is an important method for removal of ingesta from the stomach of animals that 
+have ingested toxic substances or excessive food, a condition known as “food bloat.” The tech-
+nique should be performed only in animals placed under general anesthesia with a cuffed endotra-
+cheal tube in place, and maintained on gas or intravenous anesthesia and oxygen. Orogastric lavage 
+should be considered whenever a patient is not able to vomit, or if induction of emesis is contrain-
+dicated in animals with neurologic abnormalities that cannot protect their airways.
+Supplies Needed
+Orogastric tube or 60- mL conical shaped syringe
+Two buckets or bowls, depending on large or small patient size
+Warm tap water
+Lavage pump
+Mouth gag
+1- inch white tape or permanent marker
+Indications
+Removal of toxins
+Removal of food from stomach
+Gastric decompression
+Contraindications
+Should not be performed in awake, nonintubated animals that cannot protect their airway
+Gastric perforation
+Removal of caustic substances
+
+--- PDF 182 ---
+168
+Fig. 5.34. Place the patient in sternal or lateral recumbency following induction of general anesthesia. Measure the 
+orogastric tube from the tip of the nose to the last rib.
+Fig. 5.35. Mark the tube with a piece of 1- inch white tape or permanent marker.
+
+--- PDF 183 ---
+169
+Fig. 5.36. Lubricate the tube with water soluble lubricant.
+Fig. 5.37 . Place a mouth gag into the mouth to keep the jaws open. Insert the lubricated tube through the mouth, into the 
+esophagus to the level of the last rib, into the stomach.
+
+--- PDF 184 ---
+170
+Fig. 5.38. Attach the proximal end of the orogastric tube to the lavage pump (or 60- mL conical tipped syringe filled with 
+tap water warmed to body temperature), and instill tap water into the stomach. Monitor the patient for respiratory distress 
+or excessive abdominal distension. Disconnect the proximal end of the orogastric tube from the lavage pump and allow 
+fluid and gastric contents to flow into a second collection bucket. Save specimens for lateral toxicologic analysis, if 
+necessary. If you are using a red rubber catheter in a small patient, aspirate on the empty 60- mL syringe to aspirate 
+gastric contents into the syringe, then empty into a bowl.
+Fig. 5.39. To remove the tube, kink the end of the tube as you are removing it from the patient’s stomach and esophagus, 
+to prevent residual fluid from leaking from the tube as it is removed.
+
+--- PDF 185 ---
+1715 Nutritional Support and Orogastric Lavage
+SUGGESTED READING
+Chan DL. Nutritional support of the critically ill small animal patient. Vet Clin North Amer Small Anim Pract 
+2020, 50(6):1411–1422.
+Fink L, Jennings M, Reiter AM. Esophagostomy feeding tube placement in the dog and cat. J Vet Dent 2014, 
+31(2):133–138.
+Nathanson O, McGonigle K, Michel K, Stefanovski D, Clarke D. Esophagostomy tube complications in dogs 
+and cats: retrospective review of 225 cases. 2019, J Vet Int Med 33(5):2014–2019.
+Smart L, Lau J. Specialized gastrointestinal techniques. In: Advanced Monitoring and Procedures for Small 
+Animal Emergency and Critical Care. Burkitt Creedon JM, Davis H, (eds). John Wiley and Sons, 
+Hoboken, NJ. 2023, pp. 523–527.
+Tan AWK. Assisted enteral feeding. In: Advanced Monitoring and Procedures for Small Animal Emergency and 
+Critical Care. Burkitt Creedon JM, Davis H, (eds). John Wiley and Sons, Hoboken, NJ 2023, pp. 567–583.
+
+--- PDF 186 ---
+
+
+--- PDF 187 ---
+173
+Veterinary Emergency and Critical Care Procedures, Third Edition. Timothy B. Hackett and Elisa M. Mazzaferro. 
+© 2025 John Wiley & Sons, Inc. Published 2025 by John Wiley & Sons, Inc.
+CHAPTER 6
+URINARY CATHETER PLACEMENT IN MALE AND FEMALE DOGS
+Introduction
+Placement of a urinary catheter often serves a dual purpose in critically ill small animal patients. 
+In nonambulatory animals, a urinary catheter attached to a closed collection system is invaluable 
+in maintaining cleanliness and preventing urine scald and decubital ulceration. Urine collection 
+and quantitation is often necessary when assessing hydration and perfusion parameters and renal 
+function. Finally, urethral catheterization and maintenance of an indwelling urinary catheter is 
+necessary in the treatment of urethral obstruction in cases of feline lower urinary tract disease and 
+urethral calculi. This chapter describes the placement of various types of urinary catheters in male 
+and female dogs and cats.
+Supplies Needed
+Electric clippers and blades
+Antimicrobial scrub solution
+Sterile gloves
+1- inch white tape
+20-  to 30- mL syringe
+Sterile 0.9% saline solution
+Sterile field towels
+Urine collection system/bag
+Sterile lubricating jelly
+Christmas tree adapter
+3–0 nonabsorbable suture
+Foley or red rubber catheter
+Urinary Catheter Placement, 
+Urohydropulsion, and Temporary 
+Antepubic Cystostomy Catheter 
+Placement
+
+--- PDF 188 ---
+174
+Veterinary Emergency and Critical Care Procedures
+Feline urinary catheter
+For female dogs:
+Vaginal speculum
+Sterile otoscope head
+Light source
+Indications
+Maintenance of patient cleanliness in nonambulatory patients
+Urine collection for urinalysis
+Urine output monitoring
+Treatment of urethral obstruction
+Urethral trauma
+Urethral prolapse
+Contraindications
+Not indicated in patients that are ambulatory and do not have urethral obstruction, or do not require 
+urine output monitoring.
+
+--- PDF 189 ---
+175
+Fig. 6.1 . Supplies needed for placement of a urinary catheter can differ in males and females. Required supplies include 
+electric clippers and blades, antimicrobial scrub solution, sterile gloves, sterile 0.9% saline solution, 20-  and 30- mL 
+syringes, 1- inch white tape, 3-  to 6- mL syringes, sterile needle holder, nonabsorbable suture, sterile field towels, urinary 
+catheter, sterile lubricating jelly, Christmas tree adapter, light source, and a closed urine collection system. For female 
+urinary catheter placement, a sterile vaginal speculum or sterile otoscope head and light source may come in handy.
+Helpful hint: Use care to not cause skin irritation.
+Fig. 6.2. Clip fur close to the tip of the prepuce.
+
+--- PDF 190 ---
+176
+Fig. 6.3. Retract the prepuce to expose the penis, and then scrub the tip of the prepuce and penis with antimicrobial 
+scrub solution.
+Fig. 6.4. For non- Foley catheters, measure the catheter from the tip of the penis to the urinary bladder. This is to ensure 
+that you do not insert the catheter too far into the urinary bladder, which could cause it to coil and create a knot making it 
+difficult or impossible to remove.
+Helpful hint: Use care to not contaminate the catheter by touching it to the patient’s fur.

@@ -11,6 +11,15 @@
     "officialSiteUrl": null,
     "leafletUrl": null,
     "imageUrl": null,
+    "priceReference": {
+      "amountBrl": 120.29,
+      "label": "R$ 120,29",
+      "presentation": "Cerenia 16 mg, 4 comprimidos",
+      "sourceName": "Amazon",
+      "sourceUrl": "https://www.amazon.com.br/Cerenia-Compr-Zoetis-para-C%C3%A3es/dp/B07NF24S3L",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Antiemético",
     "species": [
       "dog",
@@ -120,6 +129,7 @@
     "officialSiteUrl": null,
     "leafletUrl": null,
     "imageUrl": null,
+    "priceReference": null,
     "pharmacologicClass": "Leishmanicida",
     "species": [
       "dog"
@@ -207,6 +217,7 @@
     "officialSiteUrl": null,
     "leafletUrl": null,
     "imageUrl": null,
+    "priceReference": null,
     "pharmacologicClass": "Bloqueador de canal de cálcio",
     "species": [
       "dog",
@@ -330,6 +341,7 @@
     "officialSiteUrl": null,
     "leafletUrl": null,
     "imageUrl": null,
+    "priceReference": null,
     "pharmacologicClass": "Condroprotetor / nutracêutico articular",
     "species": [
       "dog",
@@ -854,6 +866,15 @@
     "officialSiteUrl": "https://www.zoetis.com.br/especies/animais-de-companhia/synulox-comprimidos-palataveis.aspx",
     "leafletUrl": "https://www.zoetis.com.br/global-assets/private/synulox-comprimidos-palataveis.pdf",
     "imageUrl": "https://www.zoetis.com.br/_locale-assets/img/animais-de-companhia/fotos-produtos/synulox-pack-zoetis.jpg",
+    "priceReference": {
+      "amountBrl": 103.4,
+      "label": "R$ 103,40",
+      "presentation": "Synulox 50 mg, 10 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/synulox-50mg-10-comprimidos-palataveis-pfizer-saude-animal-102887/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Aminopenicilina + inibidor de beta-lactamase",
     "species": [
       "dog",
@@ -969,6 +990,15 @@
     "officialSiteUrl": "https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/agemoxi-cl/",
     "leafletUrl": "https://agener.com.br/wp-content/uploads/2020/01/4019264-Agemoxi-CL.pdf",
     "imageUrl": "https://agener.com.br/wp-content/uploads/2020/01/agemoxi2.jpg",
+    "priceReference": {
+      "amountBrl": 23.29,
+      "label": "R$ 23,29",
+      "presentation": "Agemoxi CL 50 mg, 10 comprimidos",
+      "sourceName": "Drogasil",
+      "sourceUrl": "https://www.drogasil.com.br/agemoxi-cl-para-caes-e-gatos-com-10-comprimidos-50mg-1414275.html",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Aminopenicilina + inibidor de beta-lactamase",
     "species": [
       "dog",
@@ -1085,6 +1115,15 @@
     "officialSiteUrl": "https://www.vetoquinol.com.br/products/clavaseptinr-p",
     "leafletUrl": "https://www.vetoquinol.com.br/sites/brcountry/files/clavaseptin_p_bula.pdf",
     "imageUrl": "https://www.vetoquinol.com.br/sites/brcountry/files/styles/product_detail__photo_popup/public/2025-02/clavaseptin2024_embalagem_mockup_todas_juntas.png?itok=RjtlT6kL",
+    "priceReference": {
+      "amountBrl": 77.91,
+      "label": "R$ 77,91",
+      "presentation": "Clavaseptin P 62,5 mg, 10 comprimidos",
+      "sourceName": "Agrosolo",
+      "sourceUrl": "https://www.agrosolo.com.br/produto/antibiotico-clavaseptin-p-62-5-mg-vetoquinol-para-caes-e-gatos-blister-com-10-comprimidos-91935",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Aminopenicilina + inibidor de beta-lactamase",
     "species": [
       "dog",
@@ -1209,6 +1248,15 @@
     "officialSiteUrl": "https://www.ourofinopet.com/produtos/medicamentos/doxifin-tabs/",
     "leafletUrl": "https://consultaremedios.com.br/doxifin-tabs-ourofino-para-caes-e-gatos/bula",
     "imageUrl": "https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2023/20231026084158.png",
+    "priceReference": {
+      "amountBrl": 25.19,
+      "label": "R$ 25,19",
+      "presentation": "Doxifin Tabs 50 mg, 14 comprimidos",
+      "sourceName": "Drogarias Pacheco",
+      "sourceUrl": "https://www.drogariaspacheco.com.br/doxifin",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Tetraciclina bacteriostática",
     "species": [
       "dog",
@@ -1348,6 +1396,15 @@
     "officialSiteUrl": "https://syntec.com.br/produtos/doxitec-doxiciclina-syntec",
     "leafletUrl": "https://syntec.com.br/storage/produtos/bulas/bula-site-doxitec-v5pdf-630368764.pdf",
     "imageUrl": "https://syntec.com.br/storage/produtos/Doxitec-apresenta%C3%A7%C3%A3o-50100-e-200-15-14-55.webp",
+    "priceReference": {
+      "amountBrl": 39.59,
+      "label": "R$ 39,59",
+      "presentation": "Doxitec 50 mg, 16 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/antibiotico-doxitec-syntec-16-comprimidos/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Tetraciclina bacteriostática",
     "species": [
       "dog",
@@ -1485,6 +1542,15 @@
     "officialSiteUrl": "https://www.ourofinopet.com/produtos/medicamentos/trissulfin-sid/",
     "leafletUrl": "https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Trissulfin-SID-para-Caes-e-Gatos-Consulta-Remedios.pdf",
     "imageUrl": "https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2023/20231030115609.png",
+    "priceReference": {
+      "amountBrl": 65.97,
+      "label": "R$ 65,97",
+      "presentation": "Trissulfin SID 400 mg, 10 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/antimicrobiano-ouro-fino-trissulfin-sid-cart-com-10-comprimidos-3107847/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Sulfonamida potencializada",
     "species": [
       "dog",
@@ -1623,6 +1689,15 @@
     "officialSiteUrl": "https://www.bravet.com.br/sulfaprim-comprimidos",
     "leafletUrl": "https://www.bravet.com.br/files/product/leaflet/30/Sulfaprim%20Comprimidos%20-%20GG1%20%E2%80%93%20Fourvet.pdf",
     "imageUrl": "https://www.bravet.com.br/files/product/photo/30/SULFAPRIM_COMPRIMIDO_660_.png",
+    "priceReference": {
+      "amountBrl": 53.5,
+      "label": "R$ 53,50",
+      "presentation": "Sulfaprim Bravet, 10 comprimidos",
+      "sourceName": "Pett Farma",
+      "sourceUrl": "https://www.pettfarma.com.br/produto/sulfaprim-bravet-10-comprimidos-7174",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Sulfonamida + diaminopirimidina",
     "species": [
       "dog",
@@ -1729,6 +1804,15 @@
     "officialSiteUrl": "https://cepav.com.br/produtos/cefex/",
     "leafletUrl": "https://cepav.com.br/wp-content/uploads/2018/03/CEFEX-.pdf",
     "imageUrl": "https://cepav.com.br/wp-content/uploads/2021/02/Cefex-e1615838923677.png",
+    "priceReference": {
+      "amountBrl": 116.32,
+      "label": "R$ 116,32",
+      "presentation": "Cefex 500 mg, 10 drágeas",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/antimicrobiano-cepav-cefex-500-mg/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Cefalosporina de 1ª geração",
     "species": [
       "dog",
@@ -1853,6 +1937,15 @@
     "officialSiteUrl": "https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/ceftrat-100mg/",
     "leafletUrl": "https://www.uniaoquimica.com.br/wp-content/uploads/2023/01/4028415-BU-CEFTRAT-COM.pdf",
     "imageUrl": "https://agener.com.br/wp-content/uploads/2023/01/8463B_AGE22_Pack-3D_Ceftrat-100mg.png",
+    "priceReference": {
+      "amountBrl": 161.91,
+      "label": "R$ 161,91",
+      "presentation": "Ceftrat 100 mg, 12 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/antibacteriano-agener-uniao-ceftrat-para-caes-12-comprimidos/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Cefalosporina oral de 3ª geração",
     "species": [
       "dog"
@@ -1964,6 +2057,15 @@
     "officialSiteUrl": "https://www.zoetis.com.br/especies/animais-de-companhia/convenia.aspx",
     "leafletUrl": "https://www.zoetis.com.br/_locale-assets/arquivos/animais-de-companhia/bula-convenia.pdf",
     "imageUrl": "https://www.zoetis.com.br/_locale-assets/img/animais-de-companhia/fotos-produtos/convenia-zoetis.jpg",
+    "priceReference": {
+      "amountBrl": 1323.77,
+      "label": "R$ 1.323,77",
+      "presentation": "Convenia 10 mL",
+      "sourceName": "PetCamp",
+      "sourceUrl": "https://www.petcamp.com.br/convenia-10-ml-fr-x-1/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Cefalosporina de 3ª geração de longa ação",
     "species": [
       "dog",
@@ -2066,6 +2168,15 @@
     "officialSiteUrl": "https://vet.elanco.com/br/produtos/baytril",
     "leafletUrl": "https://products-info-public.s3-sa-east-1.amazonaws.com/bulas/bayer/81347298_V3_Leaflet_BAYTRIL%2BFLAVOUR%2B15%2BMG_Aprovado_bula-SAC.pdf",
     "imageUrl": "https://assets.elanco.com/0cec44ed-3eaa-0009-2029-666567e7e4de/a52962b3-7964-4ce3-82e2-bf89774ba3f5/Packshot_Baytril.png?auto=format&q=75&w=828",
+    "priceReference": {
+      "amountBrl": 32.9,
+      "label": "R$ 32,90",
+      "presentation": "Baytril Flavour 50 mg",
+      "sourceName": "Shopee",
+      "sourceUrl": "https://shopee.com.br/Baytril-Flavour-50-Mg-1Blx10Cpr-i.293152127.26234624056",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Fluoroquinolona",
     "species": [
       "dog",
@@ -2207,6 +2318,15 @@
     "officialSiteUrl": "https://www.ourofinopet.com/produtos/medicamentos/enrotrat-tabs/",
     "leafletUrl": "https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Enrotrat-Tabs-Uso-Veterinario-Paciente-Consulta-Remedios.pdf",
     "imageUrl": "https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2023/20231026085157_CtBZrJ2.png",
+    "priceReference": {
+      "amountBrl": 84.65,
+      "label": "R$ 84,65",
+      "presentation": "Enrotrat Tabs 100 mg, 10 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/enrotrat-tabs---10-x-100mg-3101476/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Fluoroquinolona",
     "species": [
       "dog",
@@ -2347,6 +2467,15 @@
     "officialSiteUrl": "https://www.vetoquinol.com.br/products/marbocylr-p",
     "leafletUrl": "https://consultaremedios.com.br/marbocyl-p-para-caes-e-gatos-vetoquinol/bula",
     "imageUrl": "https://www.vetoquinol.com.br/sites/brcountry/files/styles/product_detail__photo_popup/public/11.02.png?itok=vqWTTIdj",
+    "priceReference": {
+      "amountBrl": 96.64,
+      "label": "R$ 96,64",
+      "presentation": "Marbocyl P 5 mg, 10 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/antibiotico-vetoquinol-marbocy-p-5-mg-para-caes-e-gatos-de-2-a-9-kg/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Fluoroquinolona",
     "species": [
       "dog",
@@ -2486,6 +2615,15 @@
     "officialSiteUrl": "https://www.ceva.com.br/solucoes-e-inovacoes/animais-de-companhia/nossos-produtos-para-animais-de-companhia",
     "leafletUrl": "https://www.ceva.com.br/content/download/2852/file/Bula%20-%20Marbopet.pdf?version=1",
     "imageUrl": "https://www.ceva.com.br/var/site/storage/images/_aliases/large/7/7/0/7/57077-1-por-BR/e22ef171118e-Captura-de-tela-2026-04-13-172254.webp",
+    "priceReference": {
+      "amountBrl": 97.01,
+      "label": "R$ 97,01",
+      "presentation": "Marbopet 27,5 mg, 10 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/marbopet-comprimidos-275-mg-ceva-sante-animale-vetbrands-1021991/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Fluoroquinolona",
     "species": [
       "dog"
@@ -2597,6 +2735,15 @@
     "officialSiteUrl": "https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/clinbacter/",
     "leafletUrl": "https://agener.com.br/wp-content/uploads/2020/05/4020676-Clinbacter-1.pdf",
     "imageUrl": "https://agener.com.br/wp-content/uploads/2020/05/clinbacter_foto.png",
+    "priceReference": {
+      "amountBrl": 75.9,
+      "label": "R$ 75,90",
+      "presentation": "Clinbacter 75 mg, 14 comprimidos",
+      "sourceName": "AgroPet Mineiro",
+      "sourceUrl": "https://www.agropetmineiro.com.br/clinbacter-75-mg-x-14-cprv/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Lincosamida",
     "species": [
       "dog",
@@ -2726,6 +2873,15 @@
     "officialSiteUrl": "https://cepav.com.br/produtos/oralguard/",
     "leafletUrl": "https://cepav.com.br/wp-content/uploads/2018/03/ORALGUARD-50-MG-logonovo12_20180222_SGF_1127.pdf",
     "imageUrl": "https://cepav.com.br/wp-content/uploads/2021/02/Oralguard-e1615841063653.png",
+    "priceReference": {
+      "amountBrl": 52.11,
+      "label": "R$ 52,11",
+      "presentation": "Oralguard 50 mg, 14 comprimidos",
+      "sourceName": "Mercado Livre",
+      "sourceUrl": "https://lista.mercadolivre.com.br/oralguard",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Lincosamida",
     "species": [
       "dog",
@@ -2856,6 +3012,15 @@
     "officialSiteUrl": "https://www.boehringer-ingelheim.com/br/saude-animal/produtos/stomorgyl-1",
     "leafletUrl": "https://uploads.consultaremedios.com.br/drug_leaflet/Bula-Stomorgyl-Paciente-Consulta-Remedios.pdf",
     "imageUrl": "https://cdn.awsli.com.br/800x800/1999/1999267/produto/114740848/3dcc2181f7.jpg",
+    "priceReference": {
+      "amountBrl": 118.8,
+      "label": "R$ 118,80",
+      "presentation": "Stomorgyl 2, 20 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/stomorgyl-2-antibiotico-merial-102817/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Macrolídeo + nitroimidazol",
     "species": [
       "dog",
@@ -2981,6 +3146,15 @@
     "officialSiteUrl": "https://cepav.com.br/produtos/giardicid/",
     "leafletUrl": "https://cepav.com.br/wp-content/uploads/2017/07/GIARDICID.pdf",
     "imageUrl": "https://images.tcdn.com.br/img/img_prod/1087789/giardicid_suspensao_50ml_71_2_13642f5a6f1b02fa5d45a5edbdf77bbf.jpg",
+    "priceReference": {
+      "amountBrl": 118.6,
+      "label": "R$ 118,60",
+      "presentation": "Giardicid suspensão 50 mL",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/giardicid-50ml-suspensao-cepav-pharma-1019696/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Nitroimidazol + sulfonamida",
     "species": [
       "dog",
@@ -3107,6 +3281,15 @@
     "officialSiteUrl": "https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/doxitrat/",
     "leafletUrl": "https://agener.com.br/wp-content/uploads/2020/01/BU-DOXITRAT-80MG-E-200MG.pdf",
     "imageUrl": "https://agener.com.br/wp-content/uploads/2020/01/novo-doxi-1-3.jpg",
+    "priceReference": {
+      "amountBrl": 34.11,
+      "label": "R$ 34,11",
+      "presentation": "Doxitrat 80 mg, 12 comprimidos",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/doxitrat-80mg-caixa-com-12-comprimidos-agener-uniao-1017386/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Tetraciclina bacteriostática",
     "species": [
       "dog",
@@ -3243,6 +3426,15 @@
     "officialSiteUrl": "https://agener.com.br/produtos/pequenos-animais/antimicrobianos-pt/zelotril/",
     "leafletUrl": "https://agener.com.br/wp-content/uploads/2020/03/4007874-Zelotril-50-mg.pdf",
     "imageUrl": "https://agener.com.br/wp-content/uploads/2020/01/img_pet_antimicrobianos_zelotril.jpg",
+    "priceReference": {
+      "amountBrl": 26.8,
+      "label": "R$ 26,80",
+      "presentation": "Zelotril 50 mg, 12 comprimidos",
+      "sourceName": "Drogasil",
+      "sourceUrl": "https://www.drogasil.com.br/bactericida-zelotril-para-caes-e-gatos-12-comprimidos-50mg-1413941.html",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Fluoroquinolona",
     "species": [
       "dog",
@@ -3369,6 +3561,15 @@
     "officialSiteUrl": "https://syntec.com.br/produtos/tobrasyn-tobramicina-syntec",
     "leafletUrl": "https://syntec.com.br/storage/produtos/bulas/bula-site-tobrasyn-v5pdf-1506943621.pdf",
     "imageUrl": "https://syntec.com.br/storage/produtos/Tobrasyn-5-mL-15-53-26.webp",
+    "priceReference": {
+      "amountBrl": 45.49,
+      "label": "R$ 45,49",
+      "presentation": "Tobrasyn colírio 5 mL",
+      "sourceName": "Amazon",
+      "sourceUrl": "https://www.amazon.com.br/Col%C3%ADrio-Syntec-Tobrasyn-para-Gatos/dp/B07NH5M6KJ",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Aminoglicosídeo oftálmico",
     "species": [
       "dog",
@@ -3467,6 +3668,15 @@
     "officialSiteUrl": "https://www.ourofinopet.com/produtos/medicamentos/auritop/",
     "leafletUrl": "https://products-info-public.s3-sa-east-1.amazonaws.com/bulas/ouro-fino/AURITOP_BULA.pdf",
     "imageUrl": "https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2024/20240614085709_eVJhBYz.png",
+    "priceReference": {
+      "amountBrl": 62.24,
+      "label": "R$ 62,24",
+      "presentation": "Auritop 15 g",
+      "sourceName": "Petz",
+      "sourceUrl": "https://www.petz.com.br/produto/auritop-ourofino-gel-otologico-para-caes-e-gatos-15g-190178",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Otológico com quinolona tópica, antifúngico, corticoide e anestésico",
     "species": [
       "dog",
@@ -3574,6 +3784,15 @@
     "officialSiteUrl": "https://www.ourofinopet.com/produtos/medicamentos/aurigen/",
     "leafletUrl": "https://ourofino.com/wp-content/uploads/2024/07/BUL_50006472_0724_OF00_AURIGEN-VD-1.pdf",
     "imageUrl": "https://www.ourofinopet.com/media/uploads/produtos/apresentacao/2023/20231025164726.png",
+    "priceReference": {
+      "amountBrl": 56.95,
+      "label": "R$ 56,95",
+      "presentation": "Aurigen 15 g",
+      "sourceName": "Agrotela",
+      "sourceUrl": "https://agrotela.com.br/produto/aurigen-gel-ourofino-15g/",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Otológico com aminoglicosídeo, antifúngico e corticoide",
     "species": [
       "dog"
@@ -3667,6 +3886,15 @@
     "officialSiteUrl": "https://www.msd-saude-animal.com.br/produto/otomax/",
     "leafletUrl": "https://vetsmart.com.br/cg/produto/149/otomax",
     "imageUrl": "https://www.msd-saude-animal.com.br/wp-content/uploads/sites/55/2020/07/otomax-e1594207637831.png",
+    "priceReference": {
+      "amountBrl": 95.31,
+      "label": "R$ 95,31",
+      "presentation": "Otomax 12,5 g / 14 mL",
+      "sourceName": "Petlove",
+      "sourceUrl": "https://www.petlove.com.br/otomax-pomada-15-gramas-103283/p",
+      "checkedAt": "2026-06-24",
+      "notes": null
+    },
     "pharmacologicClass": "Otológico com aminoglicosídeo, antifúngico e corticoide",
     "species": [
       "dog"
@@ -3760,6 +3988,15 @@
     "officialSiteUrl": null,
     "leafletUrl": null,
     "imageUrl": null,
+    "priceReference": {
+      "amountBrl": 21.85,
+      "label": "R$ 21,85",
+      "presentation": "Pregabalina 75 mg, 30 cápsulas, genérico",
+      "sourceName": "Droga Raia",
+      "sourceUrl": "https://www.drogaraia.com.br/search?w=pregabalina",
+      "checkedAt": "2026-06-24",
+      "notes": "Preço de medicamento humano usado como referência comercial, não apresentação veterinária dedicada."
+    },
     "pharmacologicClass": "Anticonvulsivante e agente para dor neuropática",
     "species": [
       "dog",
