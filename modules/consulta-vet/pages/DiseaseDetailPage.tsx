@@ -6,7 +6,8 @@ import { ConsultaVetSurface } from '../components/layout/ConsultaVetSurface';
 import { DiseaseSectionFrame } from '../components/disease/DiseaseSectionFrame';
 import { DiseaseSectionRenderer } from '../components/disease/DiseaseSectionRenderer';
 import { DiseaseQuickSummaryPanel } from '../components/disease/DiseaseQuickSummaryPanel';
-import { CKDStagingCalculator } from '../components/disease/CKDStagingCalculator';
+import { IrisCkdClassificationTable } from '../components/disease/IrisCkdClassificationTable';
+import { IrisAkiClassificationTable } from '../components/disease/IrisAkiClassificationTable';
 import { QuickDecisionStrip } from '../components/disease/QuickDecisionStrip';
 import { FavoriteButton } from '../components/shared/FavoriteButton';
 import { ReferencesList } from '../components/shared/ReferencesList';
@@ -336,6 +337,25 @@ export function DiseaseDetailPage() {
         />
 
         <div className="space-y-4 pb-8 pt-4 md:space-y-7 md:pt-5">
+          {disease.slug === 'intermacao-caes-gatos' ? (
+            <div className="relative overflow-hidden rounded-[20px] border border-red-500/50 bg-gradient-to-r from-red-950/95 via-rose-950/90 to-red-950/95 p-4 text-white shadow-xl sm:p-5">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="mt-0.5 h-6 w-6 shrink-0 text-red-400 animate-pulse" />
+                <div className="space-y-1.5">
+                  <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-red-300">
+                    Alerta Crítico de Medicina Intensiva e Emergência
+                  </p>
+                  <p className="text-sm font-bold leading-snug text-white sm:text-base md:text-lg">
+                    INTERMAÇÃO NÃO TERMINA QUANDO A TEMPERATURA NORMALIZA: AKI, DIC, hepatopatia, ARDS, hipoglicemia e hemorragia gastrointestinal podem aparecer ou piorar nas horas seguintes.
+                  </p>
+                  <p className="text-xs leading-relaxed text-red-100/90 sm:text-sm">
+                    A normalização da temperatura corporal não encerra a emergência médica. O dano celular térmico, a isquemia esplâncnica com translocação endotóxica e a endoteliopatia com consumo hemostático atingem seu pico crítico entre 12 e 24 horas pós-insulto. Monitoramento hospitalar contínuo em UTI é indispensável por no mínimo 24 a 48 horas.
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
           <section id="quick-summary" className="scroll-mt-24">
             {(() => {
               const SUMMARY_THEMES: Record<string, { gradient: string; border: string; glow: string }> = {
@@ -414,6 +434,11 @@ export function DiseaseDetailPage() {
                   border: 'border-lime-500/30 dark:border-lime-400/20',
                   glow: 'bg-lime-500/12',
                 },
+                'urgencia-emergencia': {
+                  gradient: 'bg-gradient-to-br from-red-950 via-rose-950 to-slate-950',
+                  border: 'border-red-500/40 dark:border-red-400/30',
+                  glow: 'bg-red-500/20',
+                },
               };
 
               const displayCategory =
@@ -463,12 +488,27 @@ export function DiseaseDetailPage() {
             })()}
           </section>
 
-          <QuickDecisionStrip items={disease.quickDecisionStrip || []} />
+          <QuickDecisionStrip slug={disease.slug} items={disease.quickDecisionStrip || []} />
 
           {disease.slug === 'doenca-renal-cronica-caes-gatos' ||
           disease.id === 'disease-drc-caes-gatos' ||
-          disease.title.toLowerCase().includes('renal cr') ? (
-            <CKDStagingCalculator />
+          disease.title.toLowerCase().includes('renal cr') ||
+          disease.slug.includes('drc') ? (
+            <IrisCkdClassificationTable
+              defaultSpecies={disease.species.includes('cat') && !disease.species.includes('dog') ? 'cat' : 'dog'}
+            />
+          ) : null}
+
+          {disease.slug === 'lesao-renal-aguda-canina' ||
+          disease.slug === 'lesao-renal-aguda-felina' ||
+          disease.id.includes('lesao-renal-aguda') ||
+          disease.title.toLowerCase().includes('renal aguda') ||
+          disease.title.toLowerCase().includes('lra') ||
+          disease.title.toLowerCase().includes('ira') ||
+          disease.title.toLowerCase().includes('aki') ? (
+            <IrisAkiClassificationTable
+              defaultSpecies={disease.species.includes('dog') ? 'dog' : 'cat'}
+            />
           ) : null}
 
           <EditorialPanel title={UI_TEXT.clinicalDeepDive} lead={UI_TEXT.clinicalDeepDiveLead}>

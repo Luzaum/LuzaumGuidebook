@@ -1,0 +1,853 @@
+
+===== Plumb PDF 257 =====
+230    Ceftriaxone
+Ceftriaxone
+(sef-try-ax-ohn) Rocephin®
+Third-Generation Cephalosporin 
+Prescriber Highlights
+ ▶ Injectable antibiotic used to treat serious bacterial infections 
+ ▶ Achieves therapeutic concentrations in CNS; long half-life
+ ▶ Adverse effects include hypersensitivity reactions and injec-
+tion site reactions (eg, skin tightness, induration).
+ ▶ Administer ceftriaxone IV over 30 minutes (or longer). Pain on 
+IM injection is reduced when reconstituted with lidocaine.
+ ▶ In the United States, extra-label drug use of cephalospo-
+rins is restricted in food-producing animals.
+Uses/Indications
+Ceftriaxone is used to treat serious infections (particularly against 
+susceptible Enterobacteriaceae) that are not susceptible to other 
+agents or when aminoglycosides are not indicated because of their 
+potential toxicity. Its long half-life, good CNS penetration, and ac -
+tivity against Borrelia burgdorferi have also made ceftriaxone a po -
+tential choice for treating Lyme borreliosis and other infections in 
+animals. Although ceftriaxone has been reported for the treatment 
+of uncomplicated lower UTI, 1 its use is not recommended for this 
+purpose.2 In dogs, ceftriaxone’s lower protein binding and shorter 
+half-life (when compared with humans) give it no advantage over the 
+other parenteral third-generation cephalosporins. In horses, intra -
+peritoneal ceftriaxone successfully treated cases of septic peritonitis.3
+The World Health Organization (WHO) classifies third-gen -
+eration cephalosporins as Critically Important, Highest Priority 
+antimicrobials for human medicine. 4 The Office International des 
+Epizooties (OIE) has designated third-generation cephalosporins 
+as Veterinary Critically Important Antimicrobial (VCIA) agents in 
+avian, bovine, ovine, and swine species.5
+Pharmacology/Actions  
+Ceftriaxone is a third-generation injectable cephalosporin agent that 
+is bactericidal and displays time-dependent killing. Third-genera -
+tion cephalosporins retain the gram-positive activity of the first- and 
+second-generation agents, but have much expanded gram-negative 
+activity. This class of antibiotics is often chosen for their excellent 
+gram-negative coverage and significantly less toxic potential (as 
+compared with the aminoglycosides). As with the second-generation 
+cephalosporins, enough variability exists with individual bacterial 
+sensitivities that susceptibility testing is necessary. 
+Ceftriaxone is ineffective against methicillin-resistant staphy -
+lococci, enterococci, extended-spectrum beta-lactamase (ESBL)-  
+producing Enterobacterales, and AmpC-producing Enterobactera -
+les. It generally has excellent activity against gram-negative bacteria; 
+however, it is not a good choice for Serratia spp, Pseudomonas spp, 
+some Proteus spp, Citrobacter spp, and Enterobacter spp (“SPICE” 
+organisms).
+Pharmacokinetics
+In humans, ceftriaxone is not absorbed after oral administration and 
+must be given parenterally. It is widely distributed throughout the 
+body and highly bound (95%-98%) to plasma proteins. Ceftriaxone 
+crosses into the CNS; CSF concentrations are higher when meninges 
+are inflamed. Ceftriaxone is excreted by both renal and biliary mech-
+anisms; elimination half-lives are ≈6 to 11 hours.
+In dogs, ceftriaxone bioavailability after IM or SC administration 
+was equal after IV administration, but peak concentrations occur 
+much faster after IM (≈30 minutes) than SC (80 minutes) adminis -
+tration.6 Peak concentrations are higher with IM administration than 
+with SC, but total area under the curve is similar for both routes. 
+Elimination half-life is longer after SC administration (1.73 hours) 
+than after either IM (1.17 hours) or IV administration (0.88 hours). 
+The authors of the study concluded that once or twice daily IM or SC 
+injections of 50 mg/kg should be adequate to treat most susceptible 
+infections in dogs. 
+In a study of cats, ceftriaxone was well-absorbed when adminis -
+tered IM and SC. 7 Elimination half-life averaged between 1.5 and 2 
+hours. Protein binding was not determined. 
+One study compared healthy cows with endometritic cows.8 After 
+a single ceftriaxone IV dose, elimination half-life was about 1 hour 
+in healthy cows, clearance was 0.3 L/kg/hour, and volume of distri -
+bution was 0.5 L/kg. In endometritic cows, elimination half-life was 
+slightly longer at 1.56 hours, clearance was 0.56 L/kg/hour, and vol-
+ume of distribution was 1.55 L/kg. 
+Contraindications/Precautions/Warnings
+Cephalosporins are contraindicated in patients with a history of 
+hypersensitivity to them. Because there may be cross-reactivity, 
+cephalosporins should be used cautiously in patients that have a 
+documented hypersensitivity to other beta-lactam antibiotics (eg, 
+penicillins, cefamycins, carbapenems).
+Human patients that have significant renal insufficiency with con-
+comitant hepatic impairment may need dosage adjustments9; the rel-
+evance of this finding for veterinary patients is unclear. 
+Ceftriaxone can be easily confused with other cephalosporins. 
+Consider writing orders and prescriptions using tall man lettering: 
+cefTRIAXone.
+Adverse Effects
+Because use of ceftriaxone is limited in veterinary patients, an accu-
+rate adverse effect profile has not been determined. Pain at the injec-
+tion site has been reported.6,7 In dogs, very high dosages (100 mg/kg 
+per day) of ceftriaxone have caused sludge in the bile. 
+One case report describes 2 horses that were experimentally in -
+fected with Borrelia burgdorferi and experienced anaphylactoid re -
+actions (ie, nonimmunologic anaphylaxis) after receiving ceftriax -
+one treatment.10 Each horse was supposed to receive 25 mg/kg IV , 
+but both infusions were stopped early because of the reaction. Both 
+horses had previously received penicillin without any problems. It 
+is unclear whether the reactions were due to the drug itself, caused 
+by a reaction between the drug and the infection, or due to massive 
+die-off of the bacteria. 
+The following adverse effects have been reported in humans and 
+may or may not apply to veterinary patients: hematologic effects, in-
+cluding eosinophilia (6%), thrombocytosis (5%), leukopenia (2%), 
+and, more rarely, anemia, neutropenia, lymphopenia, and thrombo-
+cytopenia.9 Approximately 2% to 4% of humans get diarrhea. Hy -
+persensitivity reactions (usually a rash) have been noted. Increased 
+serum concentrations of liver enzymes, BUN, creatinine, and urine 
+casts have been described in ≈1% to 3% of patients. 
+Reproductive/Nursing Safety
+Cephalosporins cross the placenta. Teratogenic effects were not 
+demonstrated in studies in pregnant mice and rats that received up 
+to 20 times the label doses of ceftriaxone.9 Ceftriaxone is considered 
+compatible with human pregnancy.11
+Ceftriaxone enters maternal milk in low concentrations.12 Ceftri-
+axone is considered compatible with breastfeeding in humans.11
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+All beagles receiving ceftriaxone 300 mg/kg/day IV developed soft  
+or mucoid feces and diarrhea; emesis was common.13 As limited in-
+formation is available, overdoses should be monitored and treated 
+
+
+===== Plumb PDF 258 =====
+Ceftriaxone   231
+supportively based on clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are 
+theoretical in humans or animals receiving ceftriaxone and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Aminoglycosides and other Nephrotoxic Drugs (eg, 
+amphotericin B): Concurrent use of parenteral aminoglycosides 
+or other nephrotoxic drugs with cephalosporins is somewhat 
+controversial. Cephalosporins could cause additive nephrotox -
+icity when used with these drugs, but this interaction has only 
+been well-documented with cephaloridine (no longer marketed). 
+In vitro studies have demonstrated that cephalosporins can have 
+synergistic or additive activity against certain bacteria when used 
+with aminoglycosides.
+ ■ Calcium Salts, Intravenous (IV) : Concomitant use with 
+calcium-containing solutions has caused fatal calcium/ceftriax -
+one precipitates in lungs and kidneys of neonatal humans. Do 
+not mix with calcium or administer calcium-containing solutions 
+(eg, lactated Ringers, Hartmann’s solution) or products within 48 
+hours of ceftriaxone administration. There have been no reported 
+interactions between oral calcium products and ceftriaxone.
+Laboratory Considerations
+ ■ Because bacterial sensitivity to third-generation cephalosporin 
+antibiotics is unique, when Kirby-Bauer disk diffusion procedures 
+are employed for testing susceptibility, a specific ceftriaxone 30 µg 
+disk should be used. A cephalosporin-class disk containing ceph-
+alothin should not be used to test for ceftriaxone susceptibility.
+ ■ Except for cefotaxime, cephalosporins may cause false-positive 
+urine glucose determinations when cupric sulfate solution (Ben-
+edict’s solution, Fehling’s solution, Clinitest® ) is used. Tests that use 
+glucose oxidase (Tes-Tape®,  Clinistix® ) are not affected by cephalo-
+sporins.
+ ■ Ceftriaxone in high concentrations (50 µg/mL or greater) may 
+cause falsely elevated serum creatinine  levels when manual 
+methods of testing are used. Automated methods do not appear 
+to be affected.
+Dosages
+NOTE: In humans, it is recommended that IV infusions be ad -
+ministered over 30 minutes (60 minutes in neonates) at concen -
+trations between 10 – 40 mg/mL.9 
+DOGS:
+Susceptible infections (extra-label): 50 mg/kg IM or SC once or 
+twice daily,6 based on a pharmacokinetic study
+Borreliosis | Lyme disease | Borrelia burgdorferi infection (ex-
+tra-label): 25 mg/kg IV or SC once daily for 14 to 30 days14
+Infective endocarditis caused by Streptococcus canis (extra-la-
+bel): 20 mg/kg IV twice daily for 2 weeks, followed by long-term 
+treatment with oral antibiotics15
+CATS:
+Susceptible infections (extra-label): 25 mg/kg IM or SC every 12 
+hours7, based on a pharmacokinetic study
+Borreliosis | Lyme disease | Borrelia burgdorferi infection (ex-
+tra-label): 25 mg/kg IV or SC once daily for 14 to 30 days14
+HORSES:
+Susceptible infections (extra-label): 25 – 50 mg/kg every 12 
+hours IV or IM16
+Adjuvant treatment for septic peritonitis (extra-label): 25 mg/kg  
+diluted in 250 mL of warmed 0.9% sodium chloride and adminis-
+tered intraperitoneally once daily until resolution of clinical signs 
+and laboratory parameters.3 Used in combination with parenteral 
+antimicrobial therapy (eg, gentamicin) and supportive treatment. 
+The study authors recommend reserving intraperitoneal ceftriax-
+one for aggressive cases or cases that have failed to respond to 
+routine antibiotics.
+Monitoring
+ ■ Culture and susceptibility testing as indicated by clinical condi -
+tion
+ ■ Because cephalosporins usually have minimal toxicity associat -
+ed with their use, monitoring for efficacy is usually all that is re -
+quired.
+ ■ With long-term administration, consider periodic monitoring of 
+CBC, chemistry panel, and urinalysis.
+Client Information
+ ■ This drug must be injected; it does not work when given by mouth.
+ ■ This drug causes pain when administered in the muscle. If the 
+drug is given at home to small animals, it usually is administered 
+by injecting under the skin (subcutaneously).
+Chemistry/Synonyms
+A third-generation cephalosporin, ceftriaxone sodium occurs as a 
+white to yellowish-orange crystalline powder. It is soluble in water 
+(400 mg/mL at 25°C [77°F)). Potencies of commercial products are 
+expressed in terms of ceftriaxone. One gram of ceftriaxone sodium 
+contains 3.6 mEq of sodium.
+Ceftriaxone sodium may also be known as ceftriaxonum na -
+tricum, Ro-13-9904, or Ro-13-9904/000; many trade names are 
+ available.
+Storage/Stability
+The sterile powder for reconstitution should be stored between 20°C 
+to 25°C (68°F-77°F) and protected from light.
+After reconstituting with sterile water, 0.9% sodium chloride, or 
+D5W , ceftriaxone solutions (at concentrations of up to 100 mg/mL) 
+are stable for 2 days at room temperature and for 10 days when re -
+frigerated. Solutions of 250 mg/mL are stable for 24 hours at room 
+temperature and 3 days when refrigerated. At concentrations of  
+10 – 40 mg/mL, solutions frozen at -20°C (-4°F) are stable for 26 
+weeks. Reconstituted solutions do not need to be protected from 
+normal light; solution color may darken over time.
+Solutions reconstituted with 1% lidocaine to a concentration of 
+100 – 350 mg/mL are stable for 24 hours at room temperature and 3 
+days when refrigerated.
+Compatibility/Compounding Considerations
+When ceftriaxone is used IM in humans, it may be reconstituted 
+with lidocaine 1% (10 mg/mL, without epinephrine) to reduce pain 
+on administration.
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Ceftriaxone is compatible with dextrose 5% and sodium chloride 
+0.9%. The manufacturer does not recommend admixing any other 
+anti-infective drugs with ceftriaxone sodium, but amikacin and met-
+ronidazole are reported to be compatible.
+Do not mix with calcium or calcium-containing solutions (eg, 
+lactated Ringer’s) or administer simultaneously (Y-site) with cal -
+cium or calcium-containing products (see Drug Interactions) as a 
+
+
+===== Plumb PDF 259 =====
+232    Cefuroxime
+precipitate may form.
+Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+NOTE: Extra-label use of cephalosporins in food-producing animals 
+is restricted. Contact the Food Animal Residue Avoidance Databank 
+(FARAD) for guidance in determining withdrawal periods.
+HUMAN-LABELED PRODUCTS:
+Ceftriaxone Injection Powder for Solution: 250 mg, 500 mg, 1 g, 2 g, 
+10 g, and 100 g (as base) in vials, single-use  duplex containers, and 
+in bulk; generic; (Rx). Rocephin®  has been discontinued in the United 
+States.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Cefuroxime
+Cefuroxime Axetil
+Cefuroxime Sodium
+(sef-yoor-oks-eem) Ceftin®, Zinacef®
+Second-Generation Cephalosporin
+Prescriber Highlights
+ ▶ Oral and parenterally administered second-generation 
+cephalosporin that is more active against some gram-nega-
+tive bacteria than first-generation (eg, cephalexin, cefazolin) 
+cephalosporins
+ ▶ Potentially useful in small animals when a cephalosporin is de-
+sired but there is resistance to first-generation cephalosporins, 
+or when slightly enhanced gram-negative coverage is desired 
+for surgical prophylaxis
+ ▶ Limited clinical experience in veterinary medicine
+ ▶ Adverse effects most commonly seen in small animal species 
+are GI-related
+Uses/Indications
+Cefuroxime is a semi-synthetic second-generation cephalosporin 
+with enhanced activity against some gram-negative pathogens when 
+compared with the first-generation agents. Cefuroxime is available 
+in both oral and parenteral dosage forms. It may be useful in small 
+animal species when a cephalosporin is desired to treat bacterial in-
+fections that are resistant to first-generation cephalosporins, when 
+slightly enhanced gram-negative coverage is desired for surgical pro-
+phylaxis, or for the treatment of bacterial meningitis or other CNS 
+infections in which inflamed meninges will allow cefuroxime to 
+penetrate into the CNS. Little information is available regarding the 
+clinical use of cefuroxime in small animal species.
+The World Health Organization (WHO) has designated cefurox-
+ime as a Highly Important antimicrobial for human medicine. 1 The 
+Office International des Epizooties (OIE) has designated cefuroxime 
+as a Veterinary Highly Important Antimicrobial (VHIA) Agent in 
+bovine species.2
+Pharmacology/Actions
+Cefuroxime, like other cephalosporins, is a time-dependent bacteri-
+cidal antibiotic and acts by inhibiting cell wall synthesis. Its spectrum 
+of activity is similar to that of cephalexin, but it is more active against 
+gram-negative bacteria, including strains of Escherichia coli, Klebsiel-
+la pneumoniae, Salmonella spp, and Enterobacter spp. It is not effec-
+tive against methicillin-resistant Staphylococcus spp, Pseudomonas 
+spp, Serratia spp, or Enterococcus spp and it has little activity against 
+Bacteroides fragilis. It is also ineffective against extended-spectrum  
+beta-lactamase (ESBL)–producing bacteria. 
+Pharmacokinetics
+In dogs, cefuroxime is rapidly distributed after IV injection. The vol-
+ume of distribution is about 0.49 L/kg. The elimination half-life is 
+≈1.12 hours. When cefuroxime is given at 20 mg/kg IM, the elimina-
+tion half-life is 1.13 hours, bioavailability is ≈80%, and peak plasma 
+concentration is 23 µg/mL. When given at the same dose SC, the 
+elimination half-life is 1.04 hours, bioavailability is ≈77%, and peak 
+plasma concentration is 15.4 µg/mL. Clearance is 0.34 L/kg/hour for 
+both routes. The authors concluded that cefuroxime given at 20 mg/kg  
+IM or IV every 11 hours, or SC every 12 hours, would be effective for 
+bacteria with an MIC less than or equal to 1 µg/mL, but the interval 
+would need to be shortened to every 8 hours (IM or SC) for bacteria 
+with an MIC less than or equal to 4 µg/mL; however, further phar -
+macokinetic and pharmacodynamic studies as well as clinical trials 
+are needed.3
+In goats, after 40 mg/kg is administered, IM bioavailability is high 
+and protein binding is low. Volume of distribution is about 0.46 L/kg. 
+Elimination half-life is about 2.1 hours (IM).
+In humans, cefuroxime axetil is well absorbed after oral admin -
+istration and is rapidly hydrolyzed in the intestinal mucosa and cir -
+culation to the parent compound.4 Bioavailability ranges on average 
+from 37% (fasted) to 52% (with food). Peak serum concentrations 
+occur in about 2 to 3 hours after oral dosing. When the sodium salt 
+is administered IM, peak concentrations occur within 15 minutes to 
+1 hour. Cefuroxime is widely distributed after absorption, including 
+to the bone, aqueous humor, and joint fluid.4,5 Therapeutic levels can 
+be attained in the CSF if meninges are inflamed. Binding to human 
+plasma proteins ranges from 35 to 50%. Cefuroxime is primarily ex-
+creted unchanged in the urine; elimination half-life in patients with 
+normal renal function is between 1 to 2 hours.
+Contraindications/Precautions/Warnings
+No specific information is available for veterinary patients. In hu -
+mans, cefuroxime is contraindicated in patients that are hypersensi-
+tive to it or other cephalosporins. Dosage adjustment is recommend-
+ed in humans with severe renal impairment.
+Cefuroxime can be easily confused with other cephalosporins. 
+Consider writing orders and prescriptions using tall man lettering: 
+cefUROXime.
+Adverse Effects
+As use of cefuroxime in animals has been limited, a comprehensive 
+adverse effect profile has not been determined. A 6-month toxici -
+ty study of oral cefuroxime axetil given at dosages ranging from  
+100 mg/kg/day to 1600 mg/kg/day in beagles demonstrated little 
+adversity associated with cefuroxime. 6 At the highest dosing levels 
+(≈80 times the recommended dose), some vomiting and slight sup -
+pression of body weight gain were noted. Minor reductions in neu -
+trophils and red blood cells and prolonged prothrombin times were 
+also seen.
+When cefuroxime is used clinically in dogs, GI effects (eg, inappe-
+tence, vomiting, diarrhea) would be the most likely expected adverse 
+effects, but incidence rates are not known.
+The use of cephalosporins in patients documented to be hyper -
+sensitive to penicillin-class antibiotics is controversial. In humans, 
+it is estimated that up to 15% of patients that are hypersensitive to 
+penicillins will also be hypersensitive to cephalosporins7.
+Cefuroxime is generally well-tolerated in humans. Injection site 
+inflammation can occur when cefuroxime is used IV . GI effects 
+(eg, nausea, diarrhea) may occur, but are not frequently reported. 
+ Eosinophilia and hypersensitivity reactions (including anaphylaxis) 
+are possible. Neurologic effects (eg, hearing loss, seizures), pseudo -
+membranous colitis, serious dermatologic reactions (eg, toxic epi -
+dermal necrolysis [TEN], Stevens-Johnson syndrome), hematologic 
+
+
+===== Plumb PDF 260 =====
+Cefuroxime   233
+effects (eg, pancytopenia, thrombocytopenia), and interstitial ne -
+phritis have been reported rarely.
+Reproductive/Nursing Safety
+Studies performed in pregnant mice at dosages of up to 6400 mg/kg  
+and rabbits at 400 mg/kg demonstrated no adverse fetal effects. In 
+humans, cefuroxime is considered compatible with pregnancy.8 
+Cefuroxime enters maternal milk in low concentrations. Al -
+though cefuroxime is likely safe for nursing offspring, the potential 
+for adverse effects cannot be ruled out, particularly alterations to gut 
+flora with resultant diarrhea. In humans, cefuroxime is considered 
+compatible with breast feeding.8
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+Beagles receiving daily dosages of up to 1600 mg/kg/day orally toler-
+ated cefuroxime well (see Adverse Effects).6
+Cerebral irritation with seizures has been reported with large 
+overdoses in humans. Plasma concentrations of cefuroxime can be 
+reduced with hemodialysis or peritoneal dialysis.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are 
+theoretical in humans or animals receiving cefuroxime and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Aminoglycosides (eg, gentamicin): Potential for increased 
+risk of nephrotoxicity—monitor renal function; however, amino -
+glycosides and cephalosporins may have synergistic or additive 
+actions against some gram-negative bacteria (Enterobacteriace -
+ae).
+ ■ Antacids, Aluminum-, Calcium-, or Magnesium-Con -
+taining : Antacids may decrease serum levels of oral cefuroxime. 
+Separate doses by 1 to 2 hours.
+ ■ H2-Receptor Antagonists (eg, famotidine, ranitidine ): H 2 
+antagonists may significantly decrease the absorption of cefurox-
+ime. Concurrent use is not recommended.
+ ■ Nephrotoxic Drugs (eg, amphotericin B, furosemide): Con-
+current use with cephalosporins could potentially cause additive 
+nephrotoxicity, although this is somewhat controversial. Use to -
+gether cautiously and monitor renal function closely.
+ ■ Probenecid : Reduced renal excretion of cefuroxime. 
+ ■ Proton Pump Inhibitors (eg, omeprazole, pantoprazole ): 
+Cefuroxime absorption may be significantly decreased. Concur -
+rent use is not recommended.
+ ■ Sodium Bicarbonate : Cefuroxime absorption may be de -
+creased. Separate doses by 1 to 2 hours.
+ ■ Vitamin K Antagonists : Cephalosporins may enhance the an-
+ticoagulant effects of vitamin K antagonists (eg, warfarin).
+Laboratory Considerations
+ ■ Cefuroxime may cause false-positive urine glucose determina -
+tions when using the copper reduction method (Benedict’s solu-
+tion, Fehling’s solution, Clinitest® ); tests utilizing glucose oxidase 
+(Tes-Tape®,  Clinistix® ) are not affected by cephalosporins.
+ ■ In humans, particularly with azotemia, cephalosporins have 
+caused a false-positive direct Coombs test.
+Dosages
+DOGS/CATS:
+Susceptible infections (extra-label): 
+a) Oral: Anecdotally, 10 – 15 mg/kg IV every 8 to 12 hours 
+b) Parenteral: From a small PK study, 20 mg/kg SC every 12 
+hours for bacteria with MIC less than or equal to 1 µg/mL 
+OR 20 mg/kg IM or SC every 8 hours for bacteria with MIC 
+less than or equal to 4 µg/mL3
+Surgical prophylaxis (extra-label): 20 – 50 mg/kg IV slowly (over 
+at least 3 to 5 minutes) ≈30 minutes prior to surgery (often given 
+at induction) and every 1.5 to 3 hours during surgery
+GOATS:
+Susceptible infections for organisms with MIC less than or 
+equal to 1 µg/mL (extra-label): 40 mg/kg IM every 12 hours 
+based on a pharmacokinetic study9
+Monitoring
+ ■ Because cephalosporins usually have minimal toxicity associat -
+ed with their use, monitoring for efficacy is usually all that is re -
+quired.
+ ■ Patients with diminished renal function may require intensified 
+renal monitoring.
+ ■ Therapeutic drug monitoring is not routinely done with these 
+agents.
+Client Information
+ ■ Give this medicine with food.
+ ■ Do not crush tablets. This medicine has a bitter taste. Contact 
+your veterinarian if you have trouble medicating your animal.
+ ■ The most common side effects are diarrhea, vomiting, and loss of 
+appetite. Contact your veterinarian if your animal develops severe 
+vomiting/diarrhea or rash/itching.
+ ■ Be sure to give this medicine to your animal as long as your veter-
+inarian has prescribed, even if your animal seems better.
+ ■ Cephalosporin antibiotics have an odor that resembles cat urine, 
+but this is normal.
+Chemistry/Synonyms
+Cefuroxime axetil occurs as a white or almost white powder that is 
+insoluble in water and slightly soluble in dehydrated alcohol.
+Cefuroxime sodium occurs as a white or almost white hygroscop-
+ic powder that is freely soluble in water.
+Cefuroxime may also be known as CCI-15641, cefuroxim, cefu -
+roxima, cefuroximum, cefuroksiimi, or cefuroksimas; many interna-
+tionally registered trade names are available.
+Storage/Stability
+Cefuroxime axetil tablets should be stored in tight containers at 
+room temperature (15°C-30°C [59°F-86°F]); protect from excessive 
+moisture.
+The powder for suspension should be stored at 2°C to 30°C 
+[36°F-86°F]. Once reconstituted, it should be kept refrigerated (2°C 
+to 8°C [36°F-46°F]) and any unused suspension should be discarded 
+after 10 days.
+The powder for injection should be stored at room temperature 
+(15°C-30°C [59°F-86°F]) and protected from light. The powder 
+may darken, but this does not indicate any loss of potency. When 
+the powder is reconstituted with sterile water to a concentration of  
+90 mg/mL, the resulting solution is stable for 24 hours at room tem-
+perature; 48 hours, if refrigerated. The 7.5 g pharmacy bulk container 
+is stable for 7 days when reconstituted to 95 mg/mL and kept under 
+refrigeration. Any of these containers may be further diluted into a 
+compatible IV solution such as 5% dextrose, 0.9% sodium chloride, 
+or Ringer’s, and the resulting solution is stable for 24 hours at room 
+temperature or up to 7 days if refrigerated. The powder for injection 
+
+
+===== Plumb PDF 261 =====
+234    Cephalexin
+may be reconstituted at up to 90 mg/mL and then immediately fro -
+zen in a Viaflex mini-bag containing 50 to 100 mL of 0.9% sodium 
+chloride or 5% dextrose. This solution is stable for up to 6 months 
+when it is stored at -20°C (-4°F). Thaw at room temperature and do 
+not refreeze. Thawed solutions are stable for 24 hours at room tem-
+perature or 7 days under refrigeration.
+Compatibility/Compounding Considerations
+Compatibility is dependent upon factors such as pH, concentration, 
+temperature, and diluent used; consult specialized references or a 
+hospital pharmacist for more specific information.
+Cefuroxime is compatible with dextrose 5 and 10%, Ringer’s in-
+jection, lactated Ringer’s, and sodium chloride 0.9%. Drugs that are 
+reportedly compatible when mixed with cefuroxime for IV use in -
+clude clindamycin, furosemide, and metronidazole. Drugs that may 
+be given at a Y-site with a cefuroxime infusion running include mor-
+phine, hydromorphone, and propofol. Cefuroxime is incompatible 
+with aminoglycosides, ciprofloxacin, and ranitidine.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Cefuroxime Axetil Oral Tablets (film coated): 125 mg, 250 mg, and 
+500 mg; Ceftin®, generic; (Rx)
+Cefuroxime Axetil Oral Suspension: 25 mg/mL and 50 mg/mL  
+(125 mg/5 mL and 250 mg/5 mL; as base) when reconstituted in  
+50 mL and 100 mL; generic; (Rx)
+Cefuroxime Sodium for Injection: 750 mg, 1.5 g, 7.5 g, and 225 g (as 
+sodium); Zinacef®, generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Cephalexin
+(sef-a-lex-in) Rilexine®, Keflex®
+First-Generation Cephalosporin
+Prescriber Highlights
+ ▶ First-generation oral cephalosporin. Some countries may have 
+an injectable form.
+ ▶ May be administered with food (especially if GI upset occurs)
+ ▶ Most likely adverse effects are GI in nature; hypersensitivity 
+reactions are possible
+Uses/Indications
+Cephalexin is labeled for the treatment of secondary superficial bac-
+terial pyoderma in dogs caused by susceptible strains of Staphylo-
+coccus pseudintermedius. Cephalexin is also often used extra-label 
+for other bacterial skin infections such as deep pyoderma. Cepha -
+lexin has also been used clinically in cats, ferrets, reptiles, and birds, 
+particularly for susceptible staphylococcal infections. Cephalex -
+in is considered a first-tier drug for the treatment of bacterial skin 
+ infections.1,2 
+Cephalexin may not be effective in patients with history of lack of 
+response to other cephalosporins, multiple antibiotic use, and multi-
+drug resistance. Before using cephalexin in these cases, antimicrobi-
+al culture and susceptibility testing is recommended. Additionally, 
+topical antimicrobial therapy using antibacterial agents and biocides 
+with proven anti-staphylococcal efficacy should be considered prior 
+to systemic antibiotics, including cephalexin, for any surface or su -
+perficial pyoderma and wound infections, particularly those that are 
+mild or associated with localized lesions or due to methicillin-resis-
+tant infections, to help reduce antibiotic pressure and antimicrobial 
+resistance.3
+The World Health Organization (WHO) has designated cepha -
+lexin as a Highly Important antimicrobial for human medicine.4 The 
+Office International des Epizooties (OIE) has designated cephalexin 
+as a Veterinary Highly Important Antimicrobial (VHIA) Agent in 
+bovine, caprine, equine, ovine, and swine species.5
+Pharmacology/Actions
+Cephalexin is a first-generation cephalosporin that exhibits activ -
+ity against bacteria usually covered by this class. First-generation 
+cephalosporins generally possess excellent coverage against most 
+gram-positive pathogens (excluding enterococci); they are active in 
+vitro against streptococci and staphylococci. Because first-genera -
+tion cephalosporins have variable coverage against most gram-neg -
+ative pathogens, their usefulness for these bacteria is mainly for 
+treatment of lower UTIs because of the high drug concentrations 
+achieved in urine. With the exception of Bacteroides fragilis, most 
+anaerobes are susceptible to the first-generation agents. Resistance is 
+of increasing concern, particularly with methicillin-resistant staph -
+ylococci and extended-spectrum beta-lactamase (ESBL) producing 
+Enterobacteriaceae. 
+Cephalexin is inactive against Enterococcus spp, Pseudomonas spp, 
+Rickettsia spp, mycobacteria, Mycoplasma spp, fungi, and viruses.
+Cephalosporins are considered time-dependent and bactericidal 
+against susceptible bacteria, and they act by inhibiting mucopeptide 
+synthesis in the cell wall, which results in a defective barrier and an 
+osmotically unstable spheroplast. The exact mechanism for this ef -
+fect has not been definitively determined, but beta-lactam antibiotics 
+have been shown to bind to several enzymes (eg, carboxypeptidases, 
+transpeptidases, endopeptidases) in the bacterial cytoplasmic mem-
+brane that are involved in cell wall synthesis. The different affinities 
+that various beta-lactam antibiotics have for these enzymes (also 
+known as penicillin-binding proteins [PBPs]) help explain the dif -
+ferences in spectrums of activity of these drugs that are not explained 
+by the influence of beta-lactamases. Like other beta-lactam antibi -
+otics, cephalosporins are generally considered to be more effective 
+against actively growing bacteria. For bactericidal activity, cephalo -
+sporin levels should exceed bacterial MIC for at least 40% of the dose 
+interval for staphylococcal infections and ≈60% of the dose interval 
+for streptococcal infections.6  
+Pharmacokinetics
+In a study in dogs and cats, peak serum concentrations reached  
+18.6 µg/mL ≈1.8 hours after a mean oral dose of 12.7 mg/kg in dogs 
+and reached 18.7 μg/mL ≈2.6 hours after an oral dose of 22.9 mg/kg  
+in cats.7 Elimination half-lives ranged from 1 to 2 hours in both spe-
+cies. Bioavailability after oral administration is ≈90% in dogs and 
+≈60% in cats.8,9 A different study found that protein binding of ceph-
+alexin in dogs is low (21%) and elimination half-life in interstitial 
+fluid (protein unbound) is ≈3.2 hours, as compared with 4.7 hours 
+in total plasma.10 The FDA-approved tablets that were administered 
+at 22 mg/kg orally to fasted dogs yielded peak concentrations of  
+21.7 µg/mL 1.4 hours after administration; when the tablets were 
+given with food, a lower peak concentration (17 µg/mL) was reached 
+more quickly (1.2 hours). Elimination half-lives were 7.3 hours fast-
+ed and 8.8 hours given with food. The drug is renally eliminated.
+There may be temporal differences in pharmacokinetics depend-
+ing on the time of day the drug is administered. Six beagles given 
+cephalexin orally at 10:00 and 22:00 had significantly lower peak 
+concentrations (77%) after the 22:00 dose as compared with the 
+10:00 dose. In addition, the elimination half-life was ≈50% longer 
+with the evening dose as compared with the morning dose. Clinical 
+significance is not clear, as times above an MIC of 0.5 µg/mL were 
+not different.11
+In horses, oral cephalexin has low bioavailability (≈5%) and a 
+short plasma half-life (≈2 hours), and at dosages of 30 mg/kg PO 
+
+
+===== BSAVA PDF 84 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+68
+therapeutic response. Dose and dosing interval is determined by 
+infection site, severity and organism. In severe or acute conditions, 
+doses may be doubled or given at more frequent intervals.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid use in animals with hypersensitivity to 
+other beta-lactam antimicrobials (cross-hypersensitivity in <10% of 
+human patients).
+Adverse reactions: Vomiting and diarrhoea most common; 
+administration with food may reduce these reactions. Injection may 
+be painful.
+Drug interactions: May be an increased risk of nephrotoxicity if 
+cephalosporins are used with aminoglycosides, amphotericin or 
+loop diuretics (e.g. furosemide); monitor renal function. Do not mix 
+in the same syringe as aminoglycosides.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 15 mg/kg p.o. q8–12h; 10 mg/kg i.m., s.c. q24h.
+Cats: 15 mg/kg p.o. q8–12h; 10 mg/kg i.m., s.c. q24h.
+Increased doses (20–30mg/kg p.o. q8–12h) should be used for 
+superficial pyoderma and to treat severe, Gram-negative or 
+orthopaedic infections.
+Cefotaxime
+(Cefotaxime*) POM 
+Formulations: Injectable: 500 mg, 1 g, 2 g powders for 
+reconstitution.
+Action: It binds to proteins involved in bacterial cell wall synthesis, 
+thereby decreasing cell wall strength and rigidity, and affecting cell 
+division. Resistant to many bacterial beta-lactamases, particularly 
+those produced by Staphylococcus  spp. As other beta-lactam 
+antibacterials, works in a time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health 
+Organization and European Medicines Agency, emphasizing the need 
+for prudent use. Good activity against many Gram-negative 
+organisms, especially Enterobacteriaceae (not Pseudomonas) but 
+lower activity against many Gram-positive organisms than 1st and 2nd 
+generation cephalosporins. It is important to maintain tissue 
+concentrations above the MIC. Use should be reserved for: patients 
+with acute sepsis or serious infection where cultures are pending or 
+culture and sensitivity testing shows sensitivity; or where other 
+licensed preparations are not appropriate, and the animal is not a 
+good candidate for intensive aminoglycoside therapy (e.g. pre-
+existing renal dysfunction). Use with care in patients with renal disease 
+and consider increasing dose interval. There are few published studies 
+evaluating appropriate dosing rates and suggested dose rates are 
+largely extrapolated from human pharmacokinetic information.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 85 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+69
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: The reconstituted solution is stable for 24 
+hours when refrigerated.
+Contraindications: Patients hypersensitive to penicillins may also 
+be sensitive to cephalosporins (cross-hypersensitivity in <10% of 
+human patients); avoid use in animals with reported sensitivity to 
+other beta-lactam antimicrobials.
+Adverse reactions: May produce pain on injection. GI 
+disturbance and superinfection with resistant microorganisms is a 
+potential risk.
+Drug interactions: Bactericidal activity may be affected by 
+concomitant use of bacteriostatic agents (e.g. oxytetracycline, 
+erythromycin). The cephalosporins are synergistic with the 
+aminoglycosides, but should not be mixed in the same syringe. 
+May be increased risk of nephrotoxicity if cephalosporins are used 
+with amphotericin or loop diuretics (e.g. furosemide); monitor 
+renal function.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: Various doses have been suggested and vary. 40–50 
+mg/kg i.v., i.m., s.c. q8h. Some authors have suggested that lower 
+doses of 10–20 mg/kg q12h have good clinical efficacy in the dog. 
+References 
+Sumano H, Gutierrez L and Ocampo L (2004) Pharmacokinetics and clinical efficacy of 
+cefotaxime for the treatment of septicaemia in dogs. Acta Veterinaria Hungarica 52, 85–95
+Cefovecin
+(Convenia) POM-V 
+Formulations: Injectable: lyophilized powder which when 
+reconstituted contains 80 mg/ml cefovecin.
+Action: It binds to penicillin-binding proteins involved in bacterial 
+cell wall synthesis, decreasing cell wall strength and rigidity, and 
+affecting cell division. Resistant to some penicillinases produced by 
+Staphylococcus spp. but ineffective against meticillin-resistant 
+staphylococci. Works in a time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health Organization 
+and European Medicines Agency, emphasizing the need for prudent 
+use. Cefovecin should not be considered if a 14-day course of 
+antimicrobial would not ordinarily be required for the infection being 
+treated. Indicated for the prolonged treatment of skin, soft tissue and 
+urinary tract infections. Also used as part of the management of 
+severe periodontal disease. Good efficacy against Staphylococcus, 
+Streptococcus, Pasteurella multocida and Proteus, and anaerobes 
+such as Prevotella, Fusobacterium, Bacteroides and Clostridium. Not 
+active against Pseudomonas spp., Enterococcus spp., or Bordetella 
+
+
+===== BSAVA PDF 86 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+70
+bronchiseptica. Its high protein binding may prohibit reaching 
+effective serum levels to treat systemic Escherichia coli. Due to its 
+unique pharmacokinetic profile, cefovecin has an extremely long 
+half-life and only requires administration every 14 days.
+Safety and handling: Store in the refrigerator even prior to 
+reconstitution; use reconstituted drug within 28 days.
+Contraindications: Do not use in cats and dogs <8 weeks old. 
+Avoid use during lactation and in pregnant animals, as safety has not 
+been established.
+Adverse reactions: Appears to be relatively safe but has not been 
+assessed in renal disease. Reported adverse reactions include mild 
+GI disturbance and transient swelling at the injection site, as well as 
+type I, II and III hypersensitivity reactions.
+Drug interactions: Highly bound to plasma proteins, therefore it 
+would be prudent to exhibit caution when using in conjunction with 
+other highly protein-bound drugs such as furosemide and NSAIDs.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: 8 mg/kg s.c., equivalent to 1 ml/10 kg of reconstituted 
+drug subcutaneously. May be repeated after 14 days up to 3 times.
+Ceftazidime
+(Fortum*) POM 
+Formulations: Injectable: 500 mg, 1 g, 2 g, 3 g powders for 
+reconstitution.
+Action: It binds to proteins involved in bacterial cell wall synthesis, 
+thereby decreasing cell wall strength and rigidity, and affecting cell 
+division. Resistant to some bacterial beta-lactamases. It works in a 
+time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health 
+Organization and European Medicines Agency, emphasizing the 
+need for prudent use. Higher activity against many Gram-negative 
+organisms but lower activity against many Gram-positives when 
+compared with 1st and 2nd generation cephalosporins. Very good 
+activity against Pseudomonas  in humans. Use should be limited to 
+cases with a confirmed susceptibility and acute sepsis or serious 
+infections where licensed preparations are found to be 
+inappropriate. Limited information on clinical pharmacokinetics in 
+animal species and doses given below are empirical. Important to 
+maintain tissue concentrations above the MIC with regular doses.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Patients hypersensitive to penicillins may also 
+be sensitive to cephalosporins (cross-hypersensitivity in <10% of 
+human patients); avoid use in animals with reported sensitivity to 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

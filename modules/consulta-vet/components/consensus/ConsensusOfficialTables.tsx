@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { Info } from 'lucide-react';
 
@@ -618,7 +619,7 @@ function ClinicalTable({ table }: { table: ConsensusTable }) {
 
       <div className="overflow-hidden rounded-xl border border-border bg-background/70">
         <div className="overflow-x-auto">
-          <table
+          <ReadableTable
             className="w-full border-collapse text-left text-sm"
             style={{ minWidth: `${minWidth}px` }}
           >
@@ -665,7 +666,7 @@ function ClinicalTable({ table }: { table: ConsensusTable }) {
                 </tr>
               ))}
             </tbody>
-          </table>
+          </ReadableTable>
         </div>
       </div>
 

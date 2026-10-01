@@ -1,0 +1,250 @@
+SECTION X
+•
+Hematologic and Immunologic Disease
+866
+eBooks.Health.Elsevier.com
+vitamin K is essential for carboxylation of the glutamic acid 
+residues of these coagulation factors. Anticoagulant rodenti-
+cides antagonize vitamin K epoxide reductase, causing rapid 
+depletion of the vitamin K–dependent coagulation factors 
+(Figure 171.3).36 Factors II, VII, IX, and X have relatively short 
+half-lives (4, 6., 13.9, and 16.5 hours, respectively) and grad-
+ually decline over 36-7 hours following intoxication. Clinical 
+signs of bleeding are typically observed 3-5 days after inges-
+tion of anticoagulant rodenticide. Because factor VII has the 
+shortest half-life, PT will be prolonged within 36 to 7 hours 
+of ingestion, followed by prolongation of aPTT and ACT.37
+Proteins induced by vitamin K absence/antagonism (PIVKA) 
+levels will increase 1-4 hours after ingestion; these are not 
+specific for anticoagulant rodenticide intoxication.
+Vitamin K antagonism is treated with vitamin K1 supplemen-
+tation and supportive care (chs. 14, 138). PT typically normal-
+izes 14-36 hours aer starting vitamin K1 therapy. PT should be 
+rechecked 36-48 hours aer discontinuing vitamin K1 therapy to 
+ensure normalization of coagulation tests and sucient treatment 
+duration.37
+HEPATIC DISEASE
+The liver has a central role in hemostasis, being responsible for 
+synthesizing and clearing most pro- and anticoagulant factors 
+and regulators of fibrinolysis. Liver disease can alter coagula-
+tion factors, cause endothelial activation, and lead to vitamin 
+K deficiency. Most patients with liver insufficiency have a par-
+allel decline in pro- and anticoagulant proteins, resulting in a 
+relatively balanced hemostatic system invivo in initial disease 
+stages. Prolonged PT and aPTT, and decreased fibrinogen lev-
+els, are commonly detected in patients with liver disease, but 
+clinical bleeding is usually associated with only fulminant or 
+end-stage liver failure38 39; an exception is that gastrointestinal 
+(GI) ulceration can be observed in dogs with hepatic disease 
+and lead to GI blood loss in the absence of coagulopathy. Rou-
+tine coagulation profiles are likely inadequate in characteriz-
+ing hemostatic abnormalities in liver disease.
+Given the complex and multiple effects that liver dis-
+ease has on hemostasis, thrombosis and/or bleeding can be 
+consequences. Hepatic diseases are common underlying 
+conditions in dogs and cats diagnosed with portal vein throm-
+bosis, although other risk factors for thrombosis including 
+glucocorticoid therapy are present in many of these patients. 
+Dogs with hepatopathies have variable findings on visco-
+elastic testing (ch. 170). Dogs with chronic hepatopathies, 
+portosystemic shunts, and extrahepatic biliary duct obstruc-
+tion are generally normo- to hypercoagulable based on vis-
+coelastic testing. Advanced chronic hepatopathies can cause 
+hypocoagulability.40-4 Viscoelastic testing shows that most 
+dogs with acute hepatopathy are normo- or hypocoagulable.43
+Vitamin-K replete cats with cholestatic disease are typically 
+hyper- or normocoagulable, although hypocoagulability and 
+hyperfibrinolysis can be observed in cats with synthetic fail-
+ure.44 Changes in primary hemostasis are not well described 
+in liver disease, although thrombocytopenia and thrombocy-
+topathia have been reported in some liver diseases.
+DISSEMINATED INTRAVASCULAR COAGULATION
+DIC is a systemic activation of coagulation and impairment 
+of anticoagulants and endogenous fibrinolysis, leading to non-
+localized intravascular fibrin deposition, thrombosis, and 
+organ dysfunction. DIC is a consumptive coagulopathy that 
+can result from many systemic diseases including widespread 
+inflammation, sepsis, and neoplasia. Tissue factor is a primary 
+mediator of DIC. Proinflammatory cytokines and endotoxins 
+induce tissue factor expression and release. High concentra-
+tions of tissue factor can be found on circulating monocytes, 
+endothelial cells, neoplastic cells, microparticles, and other 
+sources.45 Once in circulation, tissue factor forms a complex 
+with activated factor VII, a potent stimulus for thrombin for-
+mation. Excess circulating thrombin cleaves fibrinogen, leav-
+ing behind multiple fibrin clots and leading to microvascular 
+and macrovascular thrombosis. Coagulation inhibitors are 
+consumed in DIC, further promoting coagulation. As clots 
+form, platelets become entrapped, resulting in thrombocytope-
+nia. Simultaneously, excess circulating thrombin results in the 
+conversion of plasminogen to plasmin, leading to fibrinolysis. 
+Fibrinolysis results in excess amounts of fibrinogen degrada-
+tion products, which have anticoagulant properties, possibly 
+contributing to hemorrhage. Excess plasmin also activates the 
+complement and kinin systems, leading to clinical signs such 
+as shock, hypotension, and increased vascular permeability.46
+Patients with DIC can display consequences of widespread 
+thrombosis of the microvasculature as well as increased bleed-
+ing tendencies, either sequentially or concurrently. During the 
+initial (non-overt, or compensated) stages of DIC, patients 
+are in a hypercoagulable phase. However, procoagulant fac-
+tors progressively become consumed, leading to a hypocoagu-
+lable (overt, or uncompensated) phase. Prolonged coagulation 
+times accompanied by clinical signs of bleeding might be 
+apparent in the hypocoagulable phase. Patients in acute ful-
+minant DIC present with bleeding; however, in more chronic 
+forms, patients may only show signs related to the underlying 
+disorder.
+Typical laboratory findings of DIC patients include throm-
+bocytopenia, prolongation of PT and aPTT, elevation of fibri-
+nolysis markers (D-dimers), hypofibrinogenemia, decreased 
+antithrombin, and signs of red blood cell fragmentation on the 
+blood smear (ch. 57). No single diagnostic test has high sensi-
+tivity or specificity for diagnosis of DIC. Diagnostic algorithms 
+combining multiple hemostatic parameters have been devel-
+oped in people and likely have utility in veterinary patients.47
+Viscoelastic testing can be used for distinguishing between the 
+various stages of DIC in dogs.
+e prognosis for DIC varies depending on the underlying 
+disorder but is considered poor regardless. Mortality appears to 
+O2
+H2O
+γ-glutamyl
+carboxylase
+Clotting factor
+precursors
+Reduced vitamin K
+Warfarin 
+Vitamin K–epoxide
+reductase
+Vitamin K epoxide
+Carboxylated
+clotting factors
+CO2
+Figure 171.3
+Vitamin K epoxidase cycle illustrating the carboxylation 
+of clotting factors and the site of warfarin inhibition.
+
+CHAPTER 171
+•
+Hyper- and Hypocoagulable States
+867
+eBooks.Health.Elsevier.com
+be higher in dogs with hypocoagulability and multiple hemostatic 
+laboratory abnormalities.47 48
+ACQUIRED ANTICOAGULANTS
+Coagulation inhibitors are antibodies (usually IgG) that bind 
+to and inhibit activity of coagulation factor or cause increased 
+coagulation factor clearance. Acquired anticoagulants are rare 
+in veterinary patients and can develop secondary to immune-
+mediated disease, multiple blood transfusions, stem cell trans-
+plantation, and neoplasia. Anti-phospholipid protein antibody 
+(i.e., lupus anticoagulant) inhibits the interaction between 
+coagulation proteins and cell membranes, causing prolonga-
+tion of coagulation times such as aPTT. Paradoxically, the 
+presence of anti-phospholipid protein antibodies is clinically 
+associated with thrombosis. Clinical signs related to acquired 
+anticoagulants may be absent or can include signs of hemor-
+rhage. Coagulation times (PT, aPTT) are abnormal depending 
+on which factor(s) is/are affected. A plasma mixing test can 
+be used to support a diagnosis of acquired anticoagulant, and 
+confirmatory testing with specific assays can be performed 
+(e.g., Bethesda assay for quantification of factor inhibitor).49
+GENERAL TREATMENT OF ACQUIRED 
+HYPOCOAGULABILITY
+Therapy to address the underlying disorder for hypocoagula-
+bility is recommended when possible. Vitamin K1 therapy is 
+recommended in anticoagulant rodenticide intoxication cases 
+(ch. 138), and in liver dysfunction causing coagulopathy. An 
+initial dose of .5 to 5 mg/kg SC or PO, followed 6-1 hours 
+later with maintenance therapy (.5 to 5 mg/kg PO, split into 
+-3 doses per day) can be given and long-term duration is 
+guided by PT rechecks. Cats with liver disease can be given 
+doses of 0.5 to 1.5 mg/kg SC every 1 hours. Intravenous vita-
+min K1 administration has been associated with anaphylaxis. 
+Vitamin K3 therapy is not recommended due to slower onset 
+of action and possible Heinz body formation.
+Plasma transfusions can temporarily replenish coagulation 
+factors (ch. 14). Coagulation times are not sensitive predic-
+tors for risk of hemorrhage, and viscoelastic testing might be 
+useful in determining if a patient would benefit from plasma 
+transfusion and at what dosage. Plasma is usually administered 
+as an initial dose of 10-0 mL/kg IV in dogs.50 Lower dos-
+ages (e.g., 6 mL/kg) are recommended in cats.51 Fresh frozen 
+plasma contains all coagulation factors and plasma proteins, 
+including the labile coagulation factors (V and VIII). Cryopre-
+cipitate primarily contains factors VIII, XIII, von Willebrand 
+factor, fibrinogen, and fibronectin, at approximately 50-80% 
+of the levels as fresh frozen plasma but in a smaller volume. 
+Cryoprecipitate-poor plasma has sufficient quantities of most 
+coagulation factors except for those contained in cryoprecipi-
+tate.5 Coagulation factor stability generally declines in plasma 
+products over prolonged storage. Factors V and VIII signifi-
+cantly diminish after 1 year of storage in human plasma prod-
+ucts, although stability in dogs likely exceeds this timeframe.53
+Either fresh frozen or stored plasma is suitable for replacement 
+of vitamin K-dependent factors, as well as for treatment of 
+most other factor deficiencies.
+erapeutic recommendations to address consequences of 
+DIC are controversial. Heparin therapy is commonly used in the 
+hypercoagulable phase of DIC, but optimal dosing protocols are 
+not known.54 Heparin is an indirect anticoagulant, exerting most 
+of its eect through potentiation of AT activity, which can be 
+diminished in states of DIC. Heparin therapy should be avoided 
+in veterinary patients with DIC and evidence of bleeding. Pro-
+phylactic plasma transfusion does not show a consistent benet 
+in humans with DIC, and thus plasma transfusions are usually 
+recommended only in veterinary DIC patients with clinical signs 
+of bleeding.55
+HEREDITARY HYPOCOAGULABLE STATES
+SCOTT SYNDROME
+While Scott syndrome is a defect of procoagulant activity on the 
+platelet surface, this disorder manifests as a coagulopathy because 
+the platelet surface cannot support plasma coagulation protein 
+activity.56 Further details can be found in ch. 175.
+HYPERFIBRINOLYSIS
+The fibrinolytic system regulates hemostasis and is acti-
+vated alongside coagulation. Hyperfibrinolysis prematurely 
+degrades fibrin clots, leading to hemorrhage. Hyperfibrinoly-
+sis can occur secondary to other disorders including trauma, 
+DIC, and liver disease. Delayed hemorrhage has been observed 
+in Greyhounds following trauma or surgery. While the dis-
+order is not fully characterized, it is suspected to be due to 
+hyperfibrinolysis.57
+The diagnosis of hyperfibrinolysis is challenging. Increased 
+levels of fibrin degradation products and D-dimers are sug-
+gestive of, but not specific for, hyperfibrinolysis. Increased 
+fibrinolysis can be detected by viscoelastic testing, but the 
+test appears to lack specificity and sensitivity. Peri-operative 
+treatment of Greyhounds with anti-fibrinolytic drugs (e.g., 
+aminocaproic acid 500 mg per 30 kg dog PO q8h, begin-
+ning postoperatively the evening of surgery) mitigates post-
+operative hemorrhage.58
+HEREDITARY FACTOR DEFICIENCIES
+Single or combined factor deficiencies produce variable clini-
+cal signs ranging from subclinical to severe bleeding tenden-
+cies. Depending on the factor(s) deficient, prolongation of PT 
+and/or aPTT is observed. Measurement of individual coagu-
+lation factor activity is required for a definitive diagnosis. 
+Genetic testing is also available for some inherited coagulation 
+disorders.
+Hemophilia A and B
+Hemophilia A and B are deficiencies in factors VIII and IX, 
+respectively. Hemophilia A is more common than hemo-
+philia B and both forms have been documented in dogs and 
+cats. Maine Coon cats are suspected to have an inherited defi-
+ciency in factor I and IX.59 Hemophilia A and B are autosomal 
+X-linked recessive traits; therefore, males are most commonly 
+affected. Various genetic mutations are responsible for hemo-
+philia A or B. In some cases, hemophilia within a pedigree can 
+be traced to the original index animal while other cases are 
+suspected to arise from de novo mutations.60 Lack of factor 
+VIII or IX inhibits formation of the tenase complex, hindering 
+downstream thrombin generation and blood clot formation. 
+Accordingly, hemorrhage is the principal clinical sign associ-
+ated with hemophilia A and B and it can manifest as prolonged 
+bleeding after trauma or surgery, subcutaneous or intramuscu-
+lar hematomas, mucosal bleeding (ch. 9), and lameness due to 
+hemarthrosis.
+Hemophilia A or B is suspected in patients with a bleed-
+ing diathesis (i.e., tendency to bleed) and prolonged aPTT 

@@ -1,0 +1,2797 @@
+
+--- ettinger PDF 324 ---
+265
+SECTION III
+Differential Diagnosis for 
+Clinicopathologic Abnormalities
+Anemia and Erythrocytosis
+Tracy Stokol
+A
+nemia is dened as reduced red blood 
+cell (RBC) mass and is recognized by 
+a packed cell volume (PCV), hema-
+tocrit (HCT), hemoglobin (HB) concentra-
+tion, or RBC count below the lower limit of 
+established reference intervals for that spe-
+cies. Conversely, erythrocytosis is dened 
+as increased RBC mass and is recognized by 
+values that are higher than the upper refer-
+ence limit for these tests. Although polycy-
+themia and erythrocytosis have been used interchangeably, they 
+are not identical. Polycythemia refers to increases in any cell in 
+blood (RBCs, leukocytes, platelets), whereas polycythemia vera 
+is a chronic myeloproliferative disease, specically chronic ery-
+throid leukemia (ch. 173). Erythrocytosis specically means an 
+absolute increase in RBCs (or a true increase in RBC mass) and 
+will be used herein. In veterinary medicine, we typically use the 
+PCV or HCT (the default applied herein) as the main indicator 
+of RBC mass, whereas HB concentration is standard in human 
+medicine. e reason for the discrepancy between disciplines is 
+unclear; however, it may be related to the higher likelihood of 
+postprandial lipemia in small animal patients, which can result 
+in false increases in HB concentration. It should be noted that 
+although PCV and HCT are used synonymously, they represent 
+2 dierent measurements. e PCV is a directly measured value 
+from a centrifuged microhematocrit tube whereas the HCT is a 
+calculated result from a hematology analyzer that uses mean cell 
+volume (MCV) and RBC count (HCT = MCV × RBC). us, the 
+HCT will be inuenced by artifactual or real changes in the MCV, 
+such as storage-associated RBC swelling,1 which are less likely 
+to aect the PCV. Internal studies done at the author’s institu-
+tion with the ADVIA 120 hematology analyzer showed that the 
+PCV is generally lower than the HCT, with a median dierence 
+(PCV− HCT) of −0.02 L/L (range, −0.06 to 0.03 L/L) and −0.03 
+L/L (range, −0.06 to 0 L/L) in clinic
+
+--- ettinger PDF 338 ---
+CHAPTER 59
+•
+rombocytopenia, rombocytosis
+279
+eBooks.Health.Elsevier.com
+Thrombocytopenia, Thrombocytosis
+Marjory B. Brooks
+Q
+uantitative defects of platelet number 
+are detected as increased or decreased 
+platelet count in the hemogram and 
+blood smear. A consistent diagnostic strategy 
+helps streamline dierentiation among the 
+many primary and secondary disease pro-
+cesses that inuence platelet number.
+PLATELET LIFE CYCLE
+Platelets are small anucleate cell fragments produced from bone 
+marrow megakaryocytes. Platelets circulate for approximately 
+5 to 9 days in dogs and cats. The cytokine thrombopoietin 
+(TPO) is the major regulator of megakaryocyte maturation; 
+however, additional growth factors act synergistically with 
+TPO.1 2 The liver is the primary site of TPO synthesis, which 
+upon release binds to a ligand (c-Mpl) expressed on mega-
+karyocytes and platelets. As platelet count falls, free TPO levels 
+increase to stimulate thrombopoiesis. Conversely, as platelet 
+count rises, free TPO falls and thrombopoiesis slows. Platelet 
+mass is further regulated through clearance of senescent plate-
+lets lacking sialic acid residues by engagement with hepato-
+cyte Ashwell-Morell receptors and subsequent increased TPO 
+production.3
+Platelets in circulation undergo transient splenic seques-
+tration. Approximately one third of total platelet mass is 
+compartmentalized within the spleen in healthy individu-
+als.2 Prothrombotic and inammatory stimuli induce platelet 
+activation and incorporation into a hemostatic plug or egress 
+into tissues from the microvasculature. Non-activated platelets 
+undergo gradual apoptotic death and subsequent clearance by 
+hepatic and splenic macrophages.4
+Disease processes that upset the balance of platelet produc-
+tion, activation, and clearance result in an increase or decrease 
+in platelet count. rombocytopenia is among the most common 
+acquired bleeding disorders in small animal practice, whereas 
+thrombocytosis is typically identied as a laboratory abnormality 
+without specic clinical signs.
+DIAGNOSIS OF THROMBOCYTOPENIA
+CLINICA
+
+--- ettinger PDF 726 ---
+CHAPTER 128
+•
+Sepsis and the Systemic Inammatory Response Syndrome
+667
+eBooks.Health.Elsevier.com
+Sepsis and the Systemic Inflammatory Response Syndrome
+Amy E. DeClue
+DEFINITIONS
+S
+epsis is derived from the Greek word 
+meaning “to make rotten” or “to 
+putrefy.” It is an infection-induced 
+innate antimicrobial response disorder 
+dened as bacteremia or as a concurrent 
+infection with evidence that the infection is 
+causing the systemic inammatory response 
+syndrome (i.e., SIRS). Immune system dys-
+regulation is the key pathologic process, not 
+just a pro-inammatory response and/or 
+widespread infection (ch. 227). Infection-
+induced innate antimicrobial response 
+disorders encompass a wide range of syn-
+dromes including SIRS, the compensatory 
+anti-inammatory 
+response 
+syndrome 
+(CARS), mixed antagonist response syn-
+drome (i.e., concurrent SIRS and CARS) 
+(MARS), the persistent inammation and 
+immune suppression catabolism syndrome 
+(PICS), and the multiple organ dysfunc-
+tion syndrome (MODS) (Table 128.1, Box 
+128.1).
+PATHOGENESIS
+TRIGGERS OF SEPSIS AND THE INNATE IMMUNE 
+SYSTEM (IIS)
+Triggers
+Sepsis is a complex, variable, prolonged host response triggered 
+by infection (ch. 183). Manifestations of sepsis vary by pathogen 
+(type, load, virulence, site of inoculation) and host (genetics, site 
+of infection, comorbidities). In dogs and cats, Gram-negative bac-
+terial infections are the most common cause of sepsis, with E. coli
+being the most common isolate (Figure 128.1).1-10 However, any 
+pathogen (e.g., fungus, parasite, virus, protozoan) could cause 
+sepsis. In dogs, sepsis most commonly originates from abdominal 
+and respiratory tract infections.1 2 In cats, abdominal and pleural 
+space infections are most common.6-11
+Innate Immune System (IIS)
+e IIS is predominately responsible for the initial manifestations of 
+sepsis, activated by danger-associated molecular patterns (DAMPs), 
+e.g., pathogen-associated molecular patterns (PAMPs; endotoxin 
+from Gram-negative bacteria; exotoxins, peptidoglycans and supe-
+rantigens from Gram-positive bacteria; and funga
+
+--- ettinger PDF 925 ---
+SECTION X
+•
+Hematologic and Immunologic Disease
+866
+eBooks.Health.Elsevier.com
+vitamin K is essential for carboxylation of the glutamic acid 
+residues of these coagulation factors. Anticoagulant rodenti-
+cides antagonize vitamin K epoxide reductase, causing rapid 
+depletion of the vitamin K–dependent coagulation factors 
+(Figure 171.3).36 Factors II, VII, IX, and X have relatively short 
+half-lives (4, 6., 13.9, and 16.5 hours, respectively) and grad-
+ually decline over 36-7 hours following intoxication. Clinical 
+signs of bleeding are typically observed 3-5 days after inges-
+tion of anticoagulant rodenticide. Because factor VII has the 
+shortest half-life, PT will be prolonged within 36 to 7 hours 
+of ingestion, followed by prolongation of aPTT and ACT.37
+Proteins induced by vitamin K absence/antagonism (PIVKA) 
+levels will increase 1-4 hours after ingestion; these are not 
+specific for anticoagulant rodenticide intoxication.
+Vitamin K antagonism is treated with vitamin K1 supplemen-
+tation and supportive care (chs. 14, 138). PT typically normal-
+izes 14-36 hours aer starting vitamin K1 therapy. PT should be 
+rechecked 36-48 hours aer discontinuing vitamin K1 therapy to 
+ensure normalization of coagulation tests and sucient treatment 
+duration.37
+HEPATIC DISEASE
+The liver has a central role in hemostasis, being responsible for 
+synthesizing and clearing most pro- and anticoagulant factors 
+and regulators of fibrinolysis. Liver disease can alter coagula-
+tion factors, cause endothelial activation, and lead to vitamin 
+K deficiency. Most patients with liver insufficiency have a par-
+allel decline in pro- and anticoagulant proteins, resulting in a 
+relatively balanced hemostatic system invivo in initial disease 
+stages. Prolonged PT and aPTT, and decreased fibrinogen lev-
+els, are commonly detected in patients with liver disease, but 
+clinical bleeding is usually associated with only fulminant or 
+end-stage liver failure38 39; an exception is that gastrointestinal 
+(GI) ulceration can be observed in dogs with hepatic disease 
+and lead to GI blood loss in
+
+--- ettinger PDF 942 ---
+CHAPTER 174
+•
+Immune-Mediated Hemolytic Anemia and Other Regenerative Anemias
+883
+eBooks.Health.Elsevier.com
+53. Côté E, Ettinger SJ. Long-term clinical management of right-to-le (“re-
+versed”) patent ductus arteriosus in 3 dogs. J Vet Intern Med. 2001;15(1):39-42.
+54. Meyer HP, Slappendel RJ, Greydanus-van der Putten SW. Polycythaemia 
+vera in a dog treated by repeated phlebotomies. Vet Q. 1993;15(3):108-111.
+55. Nett CS, Arnold P, Glaus TM. Leeching as initial treatment in a cat with 
+polycythaemia vera. J Small Anim Pract. 2001;42(11):554-556.
+56. Buote NJ. e use of medical leeches for venous congestion. A review and 
+case report. Vet Comp Orthop Traumatol. 2014;27(3):173-178.
+57. Yarbro JW. Mechanism of action of hydroxyurea. Semin Oncol. 1992;19(3 
+Suppl 9):1-10.
+58. Morton D, Reed L, Huang W, etal. Toxicity of hydroxyurea in rats and dogs. 
+Toxicol Pathol. 2015;43(4):498-512.
+59. Gonzales AJ, Bowman JW, Fici GJ, etal. Oclacitinib (APOQUEL((R))) is a 
+novel Janus kinase inhibitor with activity against cytokines involved in allergy. J 
+Vet Pharmacol er. 2014;37(4):317-324.
+60. Vasilatis DM, McGill JE, Gilor C. A novel bone marrow-sparing treatment 
+for primary erythrocytosis in a cat: onion powder. J Vet Intern Med. 2021.
+61. Turner E. Pentoxifylline as adjunct therapy to long-term clinical manage-
+ment of a right-to-le patent ductus arteriosus. Can Vet J. 2016;57(6):655-656.
+Immune-Mediated Hemolytic Anemia and 
+Other Regenerative Anemias
+Christiane Weingart | Barbara Kohn
+ANEMIAS DUE TO HEMOLYSIS
+PATHOPHYSIOLOGY
+H
+emolytic anemias are caused by 
+an accelerated erythrocyte (red 
+blood cell [RBC]) destruction 
+and decrease of the normal RBC life span 
+(dog: 100-10 days, cat: 70-75 days) due 
+to an intrinsic (e.g., erythroenzymopa-
+thy) or extrinsic (e.g., antibody formation 
+against the RBC membrane) defect. Hemo-
+lytic anemias are usually regenerative, 
+and extramedullary hematopoiesis in the 
+spleen and liver may occur. Hemolysis can 
+be extravascular or intravascular. Extra-
+vascular hemolysis is the predominant 
+form and refers to phagocytosis of RB
+
+--- ettinger PDF 964 ---
+CHAPTER 176
+•
+Nonneoplastic White Blood Cell Disorders and Pancytopenia
+905
+eBooks.Health.Elsevier.com
+to various underlying bone marrow disorders, including IMHA, 
+sepsis (ch. 18), hemic neoplasia infiltrating bone marrow 
+(ch. 3), and drugs/medications.
+MYELODYSPLASIA
+Primary Myelodysplastic Syndromes (MDS)
+True primary MDS are clonal (neoplastic) disorders arising from 
+mutations in hematopoietic stem and progenitor cells. Testing for 
+clonality to conrm primary MDS is not available for dogs and 
+cats, and the dierentiation between primary MDS and second-
+ary dysmyelopoiesis therefore can be dicult.6 A combination 
+of consistent history, clinical signs and accurate categorization 
+of hematopathologic abnormalities is needed for diagnosis.7
+Nonregenerative anemia is a necessary feature in primary MDS 
+of both dogs and cats (ch. 17). Feline retroviruses, particularly 
+FeLV, can cause MDS and dysmyelopoiesis (ch. 199); a clonal 
+origin to FeLV-associated myelodysplasia and acute myeloid 
+leukemia is proven.8 Primary MDS is rare in dogs and a clonal 
+origin has not been proven.9 Morphologic changes in blood or 
+bone marrow that suggest primary MDS instead of secondary 
+dysmyelopoiesis include higher numbers of immature precur-
+sors, dysplastic cells, and/or megaloblastic erythroid precursors 
+(Figure 176.1, G-J). Additionally, a history of drug/toxin expo-
+sure or concurrent disease may support secondary dysmyelopoi-
+esis instead of primary MDS. Primary MDS is similar to chronic 
+myeloid leukemia: both feature anemia or multiple cytopenias 
+and normal/hypercellular bone marrow. Marrow blast cells com-
+prise less than 0% of nucleated cells (a few veterinary references 
+cite a cuto of 30%30) in both disorders. A key dierence is the 
+lack of increased myeloid cells (predominantly mature) in circu-
+lation of patients with primary MDS.
+Modied versions of the French-American-British (FAB) 
+working group scheme for classication of MDS in human medi-
+cine are oen used in small animal medicine.7 e following is 
+one modied-FAB scheme for classication of 
+
+--- ettinger PDF 1062 ---
+1003
+ACRONYMS
+ALP alkaline phosphatase
+ALT alanine aminotransfer-
+ase
+CBC complete blood count
+CME canine monocytic 
+ehrlichiosis
+CNS central nervous sys-
+tem
+ELISA enzyme-linked 
+immunosorbent assay
+IFA indirect fluorescent 
+antibody
+IV intravenous
+PCR polymerase chain 
+reaction
+POC point-of-care
+PU/PD polyuria/polydipsia
+RMSF Rocky Mountain 
+spotted fever
+SFG spotted fever group
+SPD salmon poisoning 
+disease
+CHAPTER 193
+•
+Ehrlichiosis, Anaplasmosis, Rocky Mountain Spotted Fever
+eBooks.Health.Elsevier.com
+74. Gloor CI, Schweighauser A, Francey T, etal. Diagnostic value of two com-
+mercial chromatographic “patient-side” tests in the diagnosis of acute canine 
+leptospirosis. J Small Anim Pract. 2017;58:154-161.
+75. Branger C, Blanchard B, Fillonneau C, etal. Polymerase chain reaction 
+assay specic for pathogenic Leptospira based on the gene hap1 encoding the 
+hemolysis-associated protein-1. FEMS Microbiol Lett. 2005;243:437-445.
+76. Stoddard RA, Gee JE, Wilkins PP, etal. Detection of pathogenic Leptospira
+spp. through TaqMan polymerase chain reaction targeting the LipL32 gene. Diagn 
+Microbiol Infect Dis. 2009;64:247-255.
+77. Harkin KR, Roshto YM, Sullivan JT. Clinical application of a polymerase 
+chain reaction assay for diagnosis of leptospirosis in dogs. J Am Vet Med Assoc.
+2003;222:1224-1229.
+78. Weiss S, Menezes A, Woods K, etal. An extended multilocus sequence 
+typing (MLST) scheme for rapid direct typing of Leptospira from clinical samples. 
+2016; https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.
+0004996
+79. Salaün L, Mérien F, Gurianova S, etal. Application of multilocus variable-
+number tandem-repeat analysis for molecular typing of the agent of leptospirosis. 
+J Clin Microbiol. 2006;44:3954-3962.
+80. Bourhy P, Bremont S, Zinini F, etal. Comparison of real-time PCR assays 
+for detection of pathogenic Leptospira spp. in blood and identication of varia-
+tions in target sequences. J Clin Microbiol. 2011;49:2154-2160.
+81. Bolin CA. Finds fault with implications of PCR assay conclusions. J Am Vet 
+Med Assoc. 2003;223:178-179.
+82. Miden
+
+--- ettinger PDF 1071 ---
+SECTION XI
+•
+Infectious Disease
+1012
+eBooks.Health.Elsevier.com
+and dogs sampled in these studies have varied enormously, from 
+healthy to anemic patients or retrovirus-infected cats, and from 
+client-owned indoor only cats to outdoor feral cats or ghting 
+dogs. ese factors contribute to the variation in reported preva-
+lence as well as the dierent risk factors identied for infection. 
+Additionally, geographic variation in prevalence exists. Dier-
+ent polymerase chain reaction (PCR) methods, with likely dif-
+fering sensitivities and specicities, also likely contribute to the 
+variation.
+FELINE HEMOPLASMAS
+Ca. M. haemominutum’ is the most common species (Table 194.1); 
+with infection prevalences ranging from 4.4-46.7% (median 15.5%) 
+of cats. Reported prevalences for M. haemofelis range from 0.4-
+27.0% (median 5.1%) and for ‘Ca. M. turicensis’ from 0-26.0% 
+(median 1.9%). Variable numbers of cats infected with more than 
+one hemoplasma species were also reported in dierent studies. 
+Ca. M. turicensis’ infected cats are oen co-infected with another 
+hemoplasma species, particularly ‘Ca. M. haemominutum.’
+In many studies, feline hemoplasma (especially ‘Ca. M. hae-
+mominutum’) infections were more common in male, older, 
+non-pedigree cats with outdoor access. Some studies have shown 
+associations between hemoplasma infection and positive retrovi-
+ral status (particularly feline immunodeciency virus [FIV]) and 
+between hemoplasma infection and anemia or being unhealthy.
+CANINE HEMOPLASMAS
+Reported hemoplasma prevalences in dogs also vary widely in 
+dierent studies (Table 194.1); generally M. haemocanis is more 
+prevalent, ranging from 0-48.6% (median 6.9%) but occasionally 
+Ca. M. haematoparvum’ is more common, with 0-33.3% of dogs 
+infected (median 1.5%). Geographic variation is marked, possi-
+bly due to the presence of the proposed canine hemoplasma tick 
+vector Rhipicephalus sanguineus.18 19 Ticks are oen identied as 
+risk factors for canine hemoplasma infection. In contrast to cats, 
+age and sex are less commonly associated with infection. Fighting 
+do
+
+--- ettinger PDF 1089 ---
+eBooks.Health.Elsevier.com
+SECTION XI
+•
+Infectious Disease
+1030
+ACRONYMS
+ALP alkaline phosphatase
+CBC complete blood count
+CNS central nervous 
+system
+CSF cerebrospinal fluid
+DIC disseminated intravas-
+cular coagulation
+ELISA enzyme-linked 
+immunosorbent assay
+GI gastrointestinal
+IFA indirect fluorescent 
+antibody
+PCR polymerase chain 
+reaction
+PE physical examination
+Systemic Protozoal Diseases
+Jonathan David Dear
+P
+rotozoal pathogens that disseminate 
+widely in the bodies of cats and dogs 
+belong to the family Apicomplexa. 
+ese protozoa are intracellular parasites of 
+vertebrate hosts with cellular tropism vary-
+ing from blood cells (including erythrocytes 
+and leukocytes) as well as epithelial and con-
+nective tissues.
+BABESIA
+PATHOGENESIS
+e genus Babesia encompasses a group of 
+intracellular pathogens capable of infect-
+ing human, dog, cat, horse, and wild mam-
+malian erythrocytes. Like other apicomplexan parasites, Babesia
+spp. undergo a complex lifecycle with both sexual and asexual 
+reproductive phases. Sexual reproduction occurs in the denitive 
+host (generally Ixodidae ticks) and asexual reproduction occurs 
+in mammalian hosts. Inoculation of the parasite occurs primar-
+ily via tick bite: the parasite is injected by the tick into the host 
+interstitium. e parasite then migrates into the vascular space 
+where it invades erythrocytes and undergoes schizogony or 
+binary ssion to form clones. Babesia can also be transmitted via 
+blood transfusion and direct inoculation during ghting between 
+infected animals. Intravascular and extravascular hemolysis can 
+occur due to parasitemia. Clinical signs depend on the species 
+infecting the animal, the host immune response, and co-existing 
+diseases. Dogs infected but subclinical are common and may be a 
+reservoir of infection.
+LARGE BABESIA SPECIES
+Prior to availability of molecular methods, Babesia organisms in 
+dogs were classied by size and morphology, resulting in broad 
+categories of “large” and “small” Babesia species. e most com-
+mon large (2.4 × 5 micrometers) Babesia species belong to the 
+Babesia c
+
+--- ettinger PDF 1091 ---
+SECTION XI
+•
+Infectious Disease
+1032
+eBooks.Health.Elsevier.com
+DIAGNOSIS AND TREATMENT
+Diagnosis requires either organism identication using cytologic 
+examination or PCR. Serologic testing to detect antibodies is not 
+typically helpful due to its short incubation period.26 Approxi-
+mately 60% of cats treated with combination therapy of atovaquone 
+and azithromycin survived, compared to 26% of cats treated with 
+imidocarb dipropionate.27 Cats with cytauxzoonosis are oen criti-
+cally ill and require intensive care (IV uids [ch. 120], nutritional 
+support [ch. 164]) as well as antiprotozoal medications.
+LEISHMANIA
+DESCRIPTION
+More than 30 species of Leishmania cause disease in humans and 
+dogs across the Americas, Europe, Asia, and Africa. Leishmani-
+osis is an important disease of public health concern, particularly 
+in geographic areas where poor sanitation and inadequate vector 
+control result in pets serving as a reservoir for human infection.28
+Leishmaniosis is a reportable disease in the US. Treatment is 
+controversial as it is rarely curative and might be associated with 
+selection for antiprotozoal drug resistance.29 30
+PATHOGENESIS
+Most dogs diagnosed with visceral leishmaniosis in North 
+America were infected on another continent. Infected dogs are 
+introduced every year from endemic regions in Europe and Latin 
+America (ch. 9). Visceral disease has been described in US dogs 
+with no history of travel.31 ough there are competent sandy 
+vectors in North America, the prevalence of this disease is consid-
+erably lower in the US than in endemic regions.28 Transmission 
+by blood transfusion has been described.32
+Visceral and focal cutaneous leishmaniosis have been described 
+in dogs. In the Old World, Phlebotomus sand ies act as the vector; 
+in the New World, Lutzomyia sand ies act as primary vectors.29
+e regional distribution of disease depends on the regional dis-
+tribution of the specic vectors involved. Leishmania transitions 
+between two forms: the promastigote and the amastigote. Pro-
+mastigotes are infectious to dogs and humans while amastigot
+
+--- ettinger PDF 1097 ---
+CHAPTER 198
+•
+Feline Immunodeciency Virus Infection
+1037
+eBooks.Health.Elsevier.com
+Feline Immunodeficiency Virus Infection
+Julia Beatty | Paweł M. Bęczkowski
+OVERVIEW
+F
+eline immunodeciency virus (FIV) 
+infection is common among domestic 
+cats worldwide. Transmission occurs 
+primarily 
+during 
+aggressive 
+territorial 
+encounters. Infection with FIV is lifelong. 
+Although the immunological consequences 
+of FIV infection in cats mirror many of those 
+seen in human immunodeciency virus 
+(HIV)-infected humans, the clinical mani-
+festations of most FIV infections are mild 
+or absent. Cats that die from FIV-associated 
+diseases have no pathognomonic signs, 
+which makes assigning clinical relevance 
+to FIV infection in an individual cat chal-
+lenging. Diagnostic investigation of ill, FIV-
+infected cats with clinical signs frequently 
+reveals treatable problems. Screening diag-
+nostic tests detect circulating antibodies to 
+the virus. Depending on the circumstances, additional serologic 
+or molecular testing can assist in determining a cat’s true infec-
+tion status. Connement of uninfected cats is the most eective 
+way to prevent transmission. FIV presents no known zoonotic 
+risk.
+ETIOLOGY AND EPIDEMIOLOGY
+Feline immunodeciency virus (FIV), family Retroviridae, sub-
+family Orthoretrovirinae, genus Lentivirus, describes a large group 
+of closely related viruses that are endemic in domestic and wild 
+cats, as well as spotted hyenas.1 FIV of the domestic cat is classi-
+ed into distinct subtypes or clades (currently designated A to E) 
+based on sequence diversity (up to 26%) of the variable region of 
+the env gene. e true genetic diversity of FIV at the population 
+level is likely higher due to the frequent occurrence of recombina-
+tion.2 3 Virus diversity has implications for the design and inter-
+pretation of molecular diagnostic tests as well as the ecacy of 
+FIV vaccines (ch. 185).
+Antibodies to FIV are found in domestic cat populations 
+across the globe. Seroprevalence varies from <2.5% to >14%,4
+depending on the region and the population tested. Risk fac-
+tors
+
+--- ettinger PDF 1102 ---
+eBooks.Health.Elsevier.com
+SECTION XI
+•
+Infectious Disease
+1042
+Feline Leukemia Virus Infection
+Katrin Hartmann | Regina Hofmann-Lehmann
+DEFINITIONS AND PREVALENCE
+F
+eline leukemia virus (FeLV) is a ret-
+rovirus that aects domestic cats 
+worldwide. FeLV infection is associ-
+ated with a variety of illnesses, including 
+neoplasia, bone marrow suppression, and 
+immunodeciency. FeLV prevalence (usu-
+ally determined by FeLV antigenemia) 
+is reported between 2.3% to 3.3% in the 
+United States, 0% to 15.6% in Europe, 3.0% 
+to 28.4% in South America, and 0% to 24.5% in Asia and Austra-
+lia/New Zealand.1 e prevalence of FeLV infection is higher in 
+cats with specic risk factors (Table 199.1) and in sick cats, e.g., 
+up to 15% of certain diseases are associated with FeLV,2 includ-
+ing lymphoma,3 cutaneous abscesses, bite wounds,4 and chronic 
+gingivostomatitis.5 In a pan-European prevalence study using 
+FeLV RNA to assess cats for FeLV antigenemia in >6000 saliva 
+samples from 32 countries, the FeLV prevalence was 2.3%. ere 
+was a high variability among countries, with a very low preva-
+lence (0-1%) in the northern European countries Denmark, 
+Finland, Norway, Sweden, and the United Kingdom. In west-
+ern European countries (e Netherlands, Germany, Austria, 
+France, Belgium, and Luxemburg) the prevalence was 0-1.3%. 
+A higher prevalence of 4.5-8.8% was identied in southern 
+European countries that included Croatia, Italy, and Portugal.6
+Generally, prevalence has decreased for decades subsequent to 
+widespread test and removal or separation programs and com-
+mon use of FeLV vaccines;2 7 8 however, in many regions preva-
+lence is still high or has not decreased any further,9-11 thereby 
+demanding continuous awareness and vaccination of at-risk cats 
+(ch. 185).
+PATHOGENESIS
+VIRUS REPLICATION
+e genomic RNA of the retrovirus FeLV is reverse transcribed 
+into DNA within infected cells. e DNA copies are then inserted 
+into the host genome (provirus). us, division of infected cells 
+will result in daughter cells that also contain the provirus. e 
+viral genome encodes for
+
+--- ettinger PDF 1110 ---
+SECTION XI
+•
+Infectious Disease
+1050
+eBooks.Health.Elsevier.com
+68. Hofmann-Lehmann R, Levy LS, Willett BJ. Comparing the ecacy of FeLV 
+vaccines: comment on: Stuke, K. etal. Ecacy of an inactivated FeLV vaccine 
+compared to a recombinant FeLV vaccine in minimum age cats following virulent 
+FeLV challenge. Vaccine. 2014;32(22):2599-2603.
+69. Poulet H, ibault JC, Masias A. Immunosuppression in a comparative study 
+of feline leukemia virus vaccines. Clin Vaccine Immunol. 2015;22:1294-1295.
+70. Day MJ, Schoon HA, Magnol JP, etal. A kinetic study of histopathologi-
+cal changes in the subcutis of cats injected with non-adjuvanted and adjuvanted 
+multi-component vaccines. Vaccine. 2007;25:4073-4084.
+71. Srivastav A, Kass PH, McGill LD, etal. Comparative vaccine-specic and 
+other injectable-specic risks of injection-site sarcomas in cats. J Am Vet Med 
+Assoc. 2012;241:595-602.
+72. Hofmann-Lehmann R, Cattori V, Tandon R, etal. Vaccination against the 
+feline leukaemia virus: outcome and response categories and long-term follow-
+up. Vaccine. 2007;25:5531-5539.
+73. Jirjis FF, Davis T, Lane J, etal. Protection against feline leukemia virus 
+challenge for at least 2 years aer vaccination with an inactivated feline leukemia 
+virus vaccine. Vet er. 2010;11:E1-E6.
+74. Wilson S, Greenslade J, Saunders G, etal. Diculties in demonstrating long 
+term immunity in FeLV vaccinated cats due to increasing age-related resistance to 
+infection. BMC Vet Res. 2012;8:125.
+75. Bergmann M, Schwertler S, Speck S, etal. Antibody response to feline 
+panleukopenia virus vaccination in cats with asymptomatic retrovirus infections: 
+a pilot study. J Feline Med Surg. 2019;21:1094-1101.
+76. Hartmann K. Ecacy of antiviral chemotherapy for retrovirus-infected 
+cats: What does the current literature tell us? J Feline Med Surg. 2015;17:925-939.
+77. Hartmann K. How I treat feline retrovirus infections. NAVC Clinician’s Brief
+2012;5:79-84.
+78. Hartmann K. Management of feline retrovirus-infected cats. In: Bonagura JD, 
+Twedt DC, eds. Kirk’s Current Veterinary erapy XVI. Elsevier; 2015:1275-
+
+--- ettinger PDF 1310 ---
+SECTION XII
+•
+Respiratory Disease
+1158
+eBooks.Health.Elsevier.com
+Large Airway Diseases
+Cecile Clercx
+CHAPTER 215
+TRACHEAL DISEASES
+M
+ost tracheal disorders can involve 
+both intra- and extrathoracic seg-
+ments of the trachea. Noninfec-
+tious tracheal diseases are common and 
+include dorsal tracheal membrane accidity, 
+tracheal collapse, tracheal injury/laceration, 
+posttraumatic stenosis, foreign body, intra-
+tracheal tumor, and tracheal avulsion (cat).
+Tracheitis refers to an inammation of 
+the epithelial lining of the trachea, which can 
+be infectious or noninfectious. When dogs 
+develop tracheitis, it is oen a part of the 
+canine infectious respiratory disease com-
+plex (CIRDC; ch. 203). Tracheitis can also be 
+secondary to prolonged barking, or disease 
+of the oropharynx, esophagus, or even the 
+stomach (aerodigestive disorders; ch. 221) 
+(see Figure 215.4). In cats, tracheitis is most 
+oen associated with infectious feline respi-
+ratory disease (ch. 205). Tracheitis in cats 
+does not always induce a signicant cough, 
+as it does in dogs.
+Tracheal compromise can also result from 
+extratracheal diseases, such as extreme car-
+diac enlargement, mediastinal enlargement 
+(hematopoietic neoplasia [ch. 322], or mega-
+esophagus [ch. 259]), or space-occupying 
+masses, which can cause deviation of the tra-
+chea and possibly aect the shape or lumen 
+of the trachea (Figures 215.1, 215.2).
+TRACHEAL COLLAPSE (DOGS)
+Tracheal collapse, also referred to as collapsing trachea and canine 
+tracheal collapse syndrome, is a very common disorder encoun-
+tered in middle-aged to older toy or miniature breeds. e “goose 
+honk” sound of the cough is characteristic (Video 215.1).
+Etiology and Pathophysiology
+e cause of primary tracheal collapse syndrome is complex and 
+is best regarded as multifactorial.1 e traditionally considered 
+form of dynamic mechanical collapse can be caused by a combi-
+nation of progressive malacia of the tracheal cartilages and lax-
+ity of the trachealis muscle, resulting primarily in dorsoventral 
+collapse, possibly associated with malacic airways (or 
+
+--- ettinger PDF 1314 ---
+SECTION XII
+•
+Respiratory Disease
+1162
+eBooks.Health.Elsevier.com
+Surgical management may be necessary for more substantial 
+injury or for tumors, with anastomosis repair if necessary. 
+The prognosis can still be good even with substantial tracheal 
+injuries.24
+INFECTIOUS TRACHEITIS/TRACHEOBRONCHITIS
+Canine infectious respiratory disease complex (CIRDC), formerly 
+known as “kennel cough,” is commonly seen in young dogs, espe-
+cially in boarding kennels or aer time spent in animal shelters. 
+is contagious disease is described in detail in ch. 203.
+BRONCHIAL DISEASES
+BRONCHIAL DISEASES—PRIMARY
+Chronic Bronchitis in Dogs
+Definition, Overview Chronic bronchitis (CB) is an incur-
+able disease of insidious onset, characterized by chronic and per-
+sistent cough, and related to chronic inflammation of the airways 
+unassociated with any identified specific primary cause. It is a 
+syndrome more than a true diagnosis.27 Therefore, in dogs, it is 
+also called nonspecific/aspecific chronic bronchitis.
+CB in dogs is dened when 3 diagnostic criteria are fullled: 
+(1) ≥2 months of coughing; (2) evidence of mucus hypersecretion 
+and (3) exclusion of other chronic cardiopulmonary diseases (e.g., 
+congestive heart failure, chronic infectious bronchopneumonia, 
+pulmonary neoplasia, eosinophilic bronchopneumopathy [EBP]) 
+as the sole cause of cough. Such cardiorespiratory diseases (e.g., 
+congestive heart failure, airway collapse) may coexist and compli-
+cate the diagnosis and treatment of CB. In humans, the functional 
+sequela of CB is chronic airway obstruction, referred to as chronic 
+obstructive pulmonary disease (COPD), and subsequent emphy-
+sema. is mechanism appears to be less frequently observed in 
+dogs, although the diagnosis of COPD relies on documentation 
+of airow obstruction by pulmonary function tests that are not 
+widely available in veterinary medicine. Dogs with severe and 
+longstanding CB can exhibit either bronchiectasis (dilation and 
+destruction of the walls of the bronchi) or bronchomalacia (air-
+way collapse during expiration and cough) or both combined.
+
+--- ettinger PDF 1325 ---
+CHAPTER 216
+•
+Small Airway Diseases
+1173
+eBooks.Health.Elsevier.com
+149. Reinero CR, Decile KC, Byerly JR, etal. Eects of drug treatment on in-
+ammation and hyperreactivity of airways and on immune variables in cats with 
+experimentally induced asthma. Am J Vet Res. 2005;66:1121-1127.
+150. Leemans J, Kirschvink N, Bernaerts F, etal. Salmeterol or doxycycline 
+do not inhibit acute bronchospasm and airway inammation in cats with 
+experimentally-induced asthma. Vet J. 2012;192:49-56.
+151. Leemans J, Kirschvink N, Clercx C, etal. Eect of short-term oral and 
+inhaled corticosteroids on airway inammation and responsiveness in a feline 
+acute asthma model. Vet J. 2012;192:41-48.
+152. Cohn LA, DeClue AE, Cohen RL, etal. Eects of uticasone propionate dos-
+age in an experimental model of feline asthma. J Feline Med Surg. 2010;12:91-96.
+153. Reinero CR, Delgado C, Spinka C, etal. Enantiomer-specic eects of 
+albuterol on airway inammation in healthy and asthmatic cats. Int Arch Allergy 
+Immunol. 2009;150:43-50.
+154. García-Guasch L, Caro-Vadillo A, Manubens-Grau J, etal. Pulmonary 
+function in obese vs non-obese cats. J Feline Med Surg. 2015;17:494-499.
+155. Trzil JE, Masseau I, Webb TL, etal. Long-term evaluation of mesenchymal 
+stem cell therapy in a feline model of chronic allergic asthma. Clin Exp Allergy
+2014;44:1546-1557.
+Small Airway Diseases
+Carol Reinero
+OVERVIEW
+DEFINITION AND CLASSIFICATION
+S
+mall airway diseases, also called bronchiolar disorders, repre-
+sent specic diseases involving pathological changes of small 
+airways <2 mm in diameter lacking cartilage. ese unique 
+anatomic units are interposed between the upstream larger airways 
+(conducting airways) and the downstream pulmonary acini (gas-
+exchange units) and can serve as the primary targets for a variety of 
+dierent insults. In cats and dogs, there are no pathognomonic clini-
+cal signs or cytologic ndings (e.g., from lung ne-needle aspirates 
+or airway lavage) for bronchiolar disorders. Due to their small size, 
+small airways are not visible on thoracic radiographs or even com-
+puted
+
+--- ettinger PDF 1363 ---
+CHAPTER 220
+•
+Pleural Space Diseases
+1211
+eBooks.Health.Elsevier.com
+lymphoma), small lymphocytes, neutrophils, bacteria or fungi, 
+red blood cells, macrophages and/or mesothelial cells.6 In 
+longstanding eusions, mesothelial cells may assume bizarre 
+cytological appearances, which may make distinction from neo-
+plastic cells dicult.13
+Biochemical assessment of pleural effusion is useful in some 
+cases. In human medicine, Light’s criteria are widely applied 
+to pleural effusion, and have been described in cats.14 Light’s 
+criteria evaluate the ratio of effusion protein to serum protein, 
+as well as lactate dehydrogenase (LDH) concentrations. Exu-
+dates have higher ratios (>0.5) and higher concentrations of 
+LDH.7 In people, biochemical analysis of pleural effusion is 
+more commonly pursued than in dogs and cats. Biochemical 
+properties of pleural effusion include glucose, amylase, pH, 
+creatinine, cholesterol, triglycerides and variety of other sub-
+stances.15 16 In people, pleural fluid amylase has been used to 
+confirm esophageal perforation, but dogs and cats do not pro-
+duce salivary amylase.10 Biochemical analysis of pleural effu-
+sion in dogs and cats has been limited although recently there 
+has been increased interest.15 16 Glucose levels do not routinely 
+identify sepsis as they do in abdominal effusion. NT pro-BNP
+concentration in pleural effusion is high in cats with CHF.18
+High effusion triglyceride concentration can be used for iden-
+tifying an effusion as chylous. It may be that further studies 
+of biochemical properties of pleural effusion will add useful 
+information to individual case evaluation.
+Identification of Organisms
+Bacterial culture and sensitivity testing is warranted in cases with 
+suspected infection or with evidence of neutrophilic inamma-
+tion. Recurrent thoracocentesis could predispose a patient to iat-
+rogenic infections. Bacterial culture is most frequently used for 
+evaluating for aerobic organisms, although pyothorax is oen due 
+to mixed infections that include anaerobic organisms. Anaerobic 
+bacterial cultures may be hard t
+
+--- ettinger PDF 1364 ---
+SECTION XII
+•
+Respiratory Disease
+1212
+eBooks.Health.Elsevier.com
+are frequently responsible. Occasionally, pleural effusions are 
+identified secondarily to bacterial pneumonias (i.e., parap-
+neumonic effusions), but these are rare in contrast to people 
+and horses. Other less common infectious causes of effusion 
+include Bartonella (ch. 191), Mycobacterium (ch. 188), Toxo-
+plasma (ch. 197), and viral infections (ch. 205). PCR testing is 
+particularly useful in atypical infections.
+Therapy for pyothorax involves drainage (usually via chest 
+tube) and antibiotics based on culture and sensitivity, with 
+coverage for presumed anaerobic pathogens even if anaerobic 
+culture was not performed (ch. 140). Some animals, particu-
+larly dogs, may require surgical intervention for resection and 
+drainage of affected tissues.25,26 The prognosis for pyothorax 
+is frequently good if the pet does not present in a moribund 
+condition and comprehensive treatment can be provided. Pyo-
+thorax is one of the few effusions that can be cured.
+Hemothorax
+Hemothorax can result from bleeding disorders such as antico-
+agulant rodenticide intoxication (e.g., brodifacoum; ch. 138), 
+trauma, lung lobe torsion, or neoplasia.28 In hemothorax, the 
+packed cell volume of the effusion is >20%, or more than 50% 
+of the patient’s peripheral hematocrit. Clinical signs of hemo-
+thorax more commonly reflect hypovolemia than the presence 
+of pleural effusion. In dogs with anemia and pleural effusion, 
+it is prudent to check coagulation status prior to thoracocen-
+tesis in order to exclude coagulopathy although in recent years 
+the frequency of anticoagulant rodenticide intoxication has 
+decreased. Therapy of hemothorax depends on the underly-
+ing cause and may include blood transfusion (type depends 
+on presence of coagulopathy (plasma) and anemia (packed 
+red blood cells, whole blood)), vitamin K therapy, surgery or 
+rest (ch. 124). Autotransfusion may be considered except in 
+cases of malignancy. Rib tumors may result in hemothorax, 
+with resection required to control hemorrhage. Small-volume 
+traumati
+
+--- ettinger PDF 1400 ---
+SECTION XIII
+•
+Comorbidities
+1248
+eBooks.Health.Elsevier.com
+80. Dandrieux JR, Timm K, Roosje PJ, etal. Unusual systemic signs in a dog 
+with sterile neutrophilic-macrophagic lymphadenitis and nodular panniculitis. J 
+Am Anim Hosp Assoc. 2011;47:117-121.
+81. Tipold A, Schatzberg SJ. An update on steroid responsive meningitis-
+arteritis. J Small Anim Pract. 2010;51:150-154.
+82. Nafe LA, Leach SB. Treatment of feline asthma with ciclosporin in a 
+cat with diabetes mellitus and congestive heart failure. J Feline Med Surg
+2014;12:1073-1076.
+83. Windsor RC, Johnson LR. Canine chronic inammatory rhinitis. Clin Tech 
+Small Anim Pract. 2006;21:76-81.
+84. Segev G, Cowgill LD, Heiene R, etal. Consensus recommendations for im-
+munosuppressive treatment of dogs with glomerular disease based on established 
+pathology. J Vet Intern Med. 2013;27(Suppl 1):S44-S54.
+85. Leal RO, Gil S, Brito MT, etal. e use of oral recombinant feline interferon 
+omega in two cats with type II diabetes mellitus and concurrent feline chronic 
+gingivostomatitis syndrome. Irish Vet J. 2013;66:19.
+86. Higginbotham ML, McCaw DL, Roush JK, etal. Intermittent single-agent 
+doxorubicin for the treatment of canine B-cell lymphoma. J Am Anim Hosp Assoc
+2013;49:357-362.
+87. Musser ML, Quinn HT, Chretin JD. Low apparent risk of CCNU 
+(lomustine)-associated clinical hepatotoxicity in cats. J Feline Med Surg
+2012;14:871-875.
+Feline Triaditis
+Jonathan Andrew Lidbury
+INTRODUCTION
+F
+eline triaditis is the term used for 
+describing concurrent inammation of 
+the small intestine, pancreas, and liver.1-
+3 is syndrome is somewhat ill-dened but 
+it encompasses a range of intestinal, pancre-
+atic, and hepatobiliary diseases, including inammatory bowel 
+disease (IBD), pancreatitis, and cholangitis (Box 225.1). e clini-
+cal signs and laboratory ndings for the diseases comprising tria-
+ditis overlap and biopsy of all 3 organs is needed for a denitive 
+diagnosis. Some cats have involvement of 2 of these organs but not 
+the third (e.g., IBD with concurrent pancreatitis). Cats may also 
+present with disease of 1 or
+
+--- ettinger PDF 1440 ---
+SECTION XIV
+•
+Cardiovascular Disease
+1288
+eBooks.Health.Elsevier.com
+GENERATION OF THE NORMAL 
+ELECTROCARDIOGRAM
+K
+nowledge of the generation of the 
+normal electrocardiogram (ECG) is 
+essential before being able to com-
+prehend arrhythmogenesis. Coordinated 
+electrical activation of the heart depends 
+upon the interplay of a complex apparatus 
+of impulse formation, conduction, and dis-
+tribution to the contractile myocardium. 
+Impulse generation normally begins in the 
+sinoatrial node (SAN), the dominant cardiac 
+pacemaker, and propagates through the atria 
+to the atrioventricular node (AVN). Aer 
+more slowly conducting through the AVN, 
+the impulse rapidly propagates through the 
+His-Purkinje system (HPS) to the ventricu-
+lar myocardium, triggering coordinated 
+ventricular contraction.1 e various car-
+diac regions are distinguished electrically by 
+specic action potential (APo) morphology 
+and duration as a result of regionally distinct 
+collections of ionic currents. APos in vari-
+ous cardiomyocytes and the currents under-
+lying various phases of the APo in dierent 
+cardiac cells are shown in Figure 230.1
+As the primary pacemaker of the heart, 
+the SAN is no longer considered compact and 
+discrete, but is now known to be a more dif-
+fuse, elaborate, anatomically and electrophysi-
+ologically heterogenous cellular collection. It 
+is a crescent-shaped, subepicardial structure 
+located along the crista terminalis (CT) in the 
+right atrium (RA) with an extensive paranodal 
+area.2 SAN APos are distinctly dierent from 
+those of working atrial myocytes, exhibiting 
+diastolic (phase 4) depolarization, a relatively 
+depolarized diastolic membrane potential, and 
+a slow upstroke driven primarily by L-type cal-
+cium (Ca2+) current (ICa-L), rather than the fast 
+sodium (Na+) current (INa) responsible for the 
+upstroke in atrial and ventricular myocytes.3
+ere are two main hypotheses for the mecha-
+nism underlying SAN diastolic depolariza-
+tion, and it is likely the tight integration of the 
+two that forms the overall pacemaker clock.4 5
+e rst mechanism is the membra
+
+--- ettinger PDF 1500 ---
+SECTION XIV
+•
+Cardiovascular Disease
+1348
+eBooks.Health.Elsevier.com
+MYXOMATOUS MITRAL VALVE 
+DISEASE
+M
+yxomatous mitral valve disease 
+(MMVD) is a common adult-onset 
+valvular heart disease in dogs. e 
+disease is characterized by progressive degen-
+eration of the mitral valve, eventually leading to 
+mitral valve leakage, mitral regurgitation (MR), 
+and later to chronic dilatation of the le atrium 
+(LA) and le ventricle (LV). Aected dogs have 
+a variable progression and outcome: in some 
+dogs, the disease progresses to the point that 
+they develop signs of congestive heart failure 
+(CHF) and other complications, whereas oth-
+ers can compensate for the MR for years and 
+thereby remain clinically healthy.
+OCCURRENCE
+Approximately 10% of the total dog popu-
+lation develops cardiac disease,1 of which 
+MMVD accounts for more than 75% of the 
+cases. is makes the disease one of the most 
+common causes for morbidity and mortality 
+in dogs.2 e disease occurs in other species, 
+including humans, cats, horses, monkeys, 
+and pigs,3 but the prevalence of MMVD in 
+cats is low. e disease has been reported to 
+account for the vast majority of the cases of 
+CHF in dogs,4 a proportion even consider-
+ably higher in predisposed dog breeds.2 5 6
+MMVD is encountered in all dog breeds, but the preva-
+lence is highest in small to medium-sized dogs, such as Cavalier 
+King Charles Spaniel (CKCS), Dachshunds, Miniature Poodles, 
+and Yorkshire Terriers.2 5 7 8 e prevalence of MMVD in dogs 
+increases with age and is, at a given age, higher in males.2 4 5 9
+e disease has an unusually early onset in the CKCS breed and 
+closely related breeds: approximately 50% of CKCS dogs aged 6-7 
+years and nearly 100% of CKCS dogs aged >10 years have been 
+reported to be aected.5 10
+UNDERLYING CAUSES AND MECHANISMS
+Valve remodeling in MMVD has been well described, but the 
+underlying causes for its development and its progression remain 
+poorly understood. A combination of a sire and a dam that both 
+have an early onset of MMVD has previously been shown to pro-
+duce ospring that have, on average,
+
+--- ettinger PDF 1519 ---
+CHAPTER 233
+•
+Myocardial Diseases of Dogs
+1367
+eBooks.Health.Elsevier.com
+M
+yocardial diseases are those that 
+aect the heart muscle (cardiomy-
+ocytes and interstitium), distinct 
+from those primarily aecting the valves 
+(chs. 231 and 232), endocardium (ch. 231), 
+or pericardium (ch. 235). e most common 
+myocardial diseases in dogs are in the group 
+of cardiomyopathies, including dilated car-
+diomyopathy and arrhythmogenic right 
+ventricular cardiomyopathy. Hypertrophic 
+cardiomyopathy, while very common in cats 
+(ch. 234), is rare in dogs. Other canine myo-
+cardial diseases include myocarditis, myo-
+cardial infarction, muscular dystrophies, 
+and neoplasia (chs. 235 and 325).
+DILATED CARDIOMYOPATHY
+Dilated cardiomyopathy (DCM) is the sec-
+ond most common acquired heart disease in 
+dogs aer degenerative mitral valve disease. 
+DCM is classically characterized by le ven-
+tricular (LV) or biventricular systolic dys-
+function and dilatation (Figure 233.1) that 
+is not attributable to underlying disorders 
+that cause abnormal cardiac loading condi-
+tions such as volume overload states, shunts 
+or other congenital cardiac disease, valve dis-
+ease, primary tachyarrhythmias, or systemic 
+hypertension.1 e importance of the latter 
+is recognition that ventricular dilatation and 
+systolic dysfunction can represent a morpho-
+logic and functional response common to a 
+variety of potential insults, and the identi-
+cation of these features (phenotype) alone 
+does not automatically indicate a diagnosis of 
+DCM. Furthermore, while the classic pheno-
+type is a dilated and hypokinetic heart, DCM 
+can manifest as a spectrum of functional 
+and electrical abnormalities, which oen dier by breed, including 
+arrhythmic and intermediate phenotypes.1 2
+PREVALENCE, BREED AND AGE DISTRIBUTION
+e prevalence of DCM among the general canine population is 
+unknown. e reported prevalence in historical canine referral 
+populations has been 0.5-1% (1-2 cases per 200 patients exam-
+ined),3 but this may be inuenced by geographic dierences in 
+breeds and ages examined, degree of prospective 
+
+--- ettinger PDF 1532 ---
+SECTION XIV
+•
+Cardiovascular Disease
+1380
+eBooks.Health.Elsevier.com
+actually a congenital myocardial disease resulting from an arrest 
+in embryogenesis.7 8 11 It is characterized by prominent myo-
+cardial trabeculae and deep inter-trabecular recesses, occurring 
+as an isolated nding or in association with various congeni-
+tal heart diseases.7 8 11 Biventricular noncompaction has been 
+reported as an extremely rare pathological condition in the 
+cat.31 32
+CLINICAL AND MORPHOLOGIC CHARACTERISTICS
+HYPERTROPHIC CARDIOMYOPATHY
+HCM is characterized phenotypically by increased cardiac mass 
+due to a hypertrophied non-dilated LV in the absence of an 
+obvious cause of le ventricular hypertrophy (LVH), the most 
+common of which are systemic arterial hypertension and hyper-
+thyroidism (Table 234.1).1 3 33
+Left Ventricular Hypertrophic Patterns, Macroscopic/
+Microscopic Features
+As in people, feline HCM is characterized by marked phenotypic 
+variability, including mild to severe, diuse or segmental, con-
+centric LVH (Figures 234.3 and 234.4).33-36 In up to two-thirds 
+of cats with HCM, LVH is diuse, involving portions or all of 
+both the IVS and the LVFW, with hypertrophy of the le pap-
+illary muscles and a consequently reduced LV cavity (Video 
+234.3).33 36 Diuse LVH can be symmetric or asymmetric with 
+predominant thickening of the IVS or LVFW. In about one-third 
+of cases, LVH is conned to only one segment, e.g., usually the 
+basal IVS and less commonly the apex.33 36 In some cases, the 
+thickened basal IVS protrudes into the LVOT, resulting in mild 
+to severe LVOTO, thus dening OHCM forms (Video 234.4). 
+Marked combined LVH and papillary muscle hypertrophy can 
+result in systolic mid-ventricular cavity obstruction, associated 
+with the presence of endocardial contact plaques.2 37 Although 
+IVS
+Ao
+LA
+3
+2
+c
+c
+c
+A
+IVS
+LV
+B
+IVS
+1
+2
+C
+A
+A
+A
+A
+E
+E
+E
+E
+D
+IVS
+Ao
+LA
+2
+3
+E
+Figure 234.2
+Echocardiographic appearance of le ventricular false tendons. A-B, False tendons usually appear as thin echogenic linear structures 
+(arrows), more taut in diastole and more lax in systole
+
+--- ettinger PDF 1539 ---
+CHAPTER 234
+•
+Feline Myocardial Diseases
+1387
+eBooks.Health.Elsevier.com
+RESTRICTIVE CARDIOMYOPATHY
+Definition—Pathological Lesions
+Human RCM Human RCM is an uncommon heart muscle 
+disease primarily characterized by impaired ventricular filling due 
+to increased myocardial stiffness or reduced compliance of either or 
+both ventricles (mainly LV), with normal or near-normal systolic 
+function and wall thicknesses.7 91-94 The reduced ventricular com-
+pliance restricts ventricular filling (hence the term “restrictive”), 
+with secondary increased end-diastolic ventricular filling pressure. 
+This results in marked LA or biatrial enlargement. In the early stages, 
+global systolic function is normal, and then altered systolic function 
+is usually observed as the disease progresses.11 94 Human RCM rep-
+resents a heterogeneous group of heart disorders subdivided into 
+primary and secondary RCM.11 93 94 Causes of secondary RCM 
+include infiltrative diseases (e.g., amyloidosis, sarcoidosis, Gaucher 
+and Hurler diseases) and storage diseases (e.g., hemochromatosis, 
+glycogen storage disorders, and Fabry disease). Secondary RCM, 
+especially endomyocardial fibrosis, is also reported in the hypereo-
+sinophilic syndrome and as an iatrogenic complication (radiation, 
+drugs).91 94 Primary human RCM is characterized by patchy to 
+diffuse interstitial myocardial fibrosis with possible fibrosis of the 
+sinoatrial and AV nodes, resulting in AV blocks.91 Endomyocardial 
+fibrosis is a specific form of primary RCM, characterized by marked 
+endocardial fibrosis in addition to myocardial fibrosis.95 96 Similarly 
+to HCM, familial forms of primary RCM are reported, with most 
+identified genes encoding for sarcomere or Z-disk proteins, e.g., 
+cardiac troponin genes and MYH7 97-99 Interestingly, in addition 
+to these genetic similarities, “overlap” or “crossover” phenotypes of 
+RCM and HCM have been observed in families with mutations in 
+sarcomeric genes, suggesting that some RCM cases may be consid-
+ered as “minimally hypertrophic” HCM phenotypes.94
+Feline RCM Similar to human forms of prima
+
+--- ettinger PDF 1574 ---
+SECTION XIV
+•
+Cardiovascular Disease
+1422
+eBooks.Health.Elsevier.com
+PATHOPHYSIOLOGY OF 
+SYSTEMIC HYPERTENSION
+S
+ystemic hypertension (SH) is dened 
+as a pathologic elevation in systemic 
+arterial blood pressure (BP) usually 
+recognized with sustained elevations in 
+systolic blood pressure (SBP). e complex 
+neurohormonal interactions between the 
+kidneys, nervous system, vasculature, and 
+heart may lead to altered BP control (Figure 
+236.1).1 2 Guidelines for identication and 
+evaluation of SH have been devised based 
+on the probability of developing target-
+organ damage (TOD), and both monitor-
+ing and therapeutic guidelines have been 
+established.1-3 Feline studies have docu-
+mented a normal SBP range of 111-162 mm 
+Hg depending on measurement method.3
+Canine studies suggest a narrower range of 
+131-154 mm Hg.2 Methods for measuring 
+BP are described in ch. 91
+e prevalence of SH has been reported 
+as 19.5% for cats, and in dogs 0.5-13%.2 4
+Cats aged >9 years have signicantly higher 
+BP than cats aged 3-9 years, and risk of SH 
+also increases with age,5 whereas a slight 
+increase in BP (13 mm Hg/year) has been 
+reported in dogs.6 e association between 
+SH and age is likely multifactorial and unclear at this time. No 
+relationship exists between breed and BP in cats;5 however, certain 
+breed variations likely exist in dogs.
+TYPES OF HYPERTENSION
+SH can be divided into three broad categories: secondary hyper-
+tension, idiopathic hypertension and situational hypertension. 
+Secondary hypertension is induced by clinical disease or medi-
+cations and is most common. Idiopathic hypertension occurs in 
+absence of a readily identiable cause. Situational hypertension is 
+most oen caused by the “white coat” eect.
+Secondary Hypertension
+Obesity (ch. 150) There is either a small or no correlation 
+between obesity and SH in dogs. Furthermore, SH in obese dogs 
+is more likely related to endocrinopathies, renal disease or cardiac 
+disease. In cats, no studies correlate sex, breed, and body weight 
+with increased SH risk.2 3
+Renal Disease (ch. 301) The most common cause 
+
+--- ettinger PDF 1728 ---
+SECTION XV
+•
+Neurologic Disease
+1576
+eBooks.Health.Elsevier.com
+eventually dysphonia and dysphagia. Hypoventilation as a result 
+of respiratory muscle dysfunction results in hypoxemia in later/
+terminal stages of the disease.112
+DIAGNOSIS
+Several large breeds of dogs can be aected with DM but Ger-
+man Shepherd Dogs and Boxers are the most commonly aected 
+breeds; mixed-breed dogs have also been described with this 
+disease.113 Age of onset of neurologic signs is usually 5 years or 
+older with a mean age of 9 years in large dog breeds. e mean age 
+of aected Pembroke Welsh Corgis was 11.2 years in 1 study.104
+ere appears to be a female predominance (1.6:1) for the disease 
+in Corgis but not in other breeds.99
+The diagnosis is based primarily on the exclusion of other 
+myelopathies. Spinal imaging (myelogram, MRI, CT [ch. 112]) 
+is typically normal, but some dogs may have concurrent mild 
+disc protrusions. The clinician must then consider the dura-
+tion of clinical signs as well as the findings of the neurologi-
+cal examination to determine the significance of these lesions. 
+MRI is the imaging modality of choice to ensure that all other dif-
+ferentials are ruled out, including intramedullary lesions such as 
+neoplasms.114 Recent work has shown that dogs with DM under-
+going MRI diusion tensor imaging had signicant decreases in 
+fractional anisotropy (FA) within the regions of the spinal cord 
+that had high expected lesion load.115 Decreases in FA were most 
+signicant in dogs with severe forms of the disease and correlated 
+with neurological grade.
+Patients with DM typically have normal CSF results, or 
+increased protein levels with a normal cell count (ch. 109).104
+Phosphorylated neurolament heavy (pNF-H) concentration in 
+CSF is elevated in all stages of DM compared to old control dogs 
+and is now proposed as a promising sensitive biomarker for the 
+diagnosis of DM.116
+A DNA test based on the SOD1 mutation is commercially 
+available. Dogs that are homozygous for the mutation are at risk 
+for developing DM and will contribute one chromosome with the 
+mutan
+
+--- ettinger PDF 1762 ---
+SECTION XV
+•
+Neurologic Disease
+1610
+eBooks.Health.Elsevier.com
+segmental spinal reexes, and hypoventilation.20,22 Pelvic limb ataxia 
+may also be a prominent clinical sign in some cases. Cranial nerve 
+signs such as ptyalism, dysphagia, dysphonia, and facial paresis or 
+paralysis are frequently observed.16,21 Urine discoloration due to 
+hemoglobinuria or myoglobinuria (ch. 70) is seen in a substantial 
+proportion of dogs and less frequently in cats.24 is is helpful in diag-
+nosis, as it is not a feature of other diuse LMN diseases.22,24 Other 
+clinical signs may include vomiting, depression, hypotension, hypo-
+thermia, bleeding disorders, and ventricular arrhythmias.17,22,24,25 A 
+complete blood count (CBC) may reveal anemia with spherocytosis 
+and erythrocyte “burring.”26 e diagnosis of elapid snake envenom-
+ation is typically presumptive based on clinical signs and history.
+Treatment is mainly supportive. Placing a pressure bandage 
+at the site of envenomation can reduce lymphatic circulation of 
+venom.22 Fluid diuresis should be considered if pigmenturia is 
+present. Administration of snake-specic antivenin may be bene-
+cial in preventing or reducing the severity of clinical signs. Tiger 
+snake and Mexican coral snake antivenins are cross-protective 
+against North American coral snake venom.16,27,28 Most animals 
+will recover in 1-2 weeks with adequate supportive care.24,26,29
+POSTSYNAPTIC DISEASES OF THE 
+NEUROMUSCULAR JUNCTION
+TERMINOLOGY AND MYASTHENIA GRAVIS
+Historically, veterinary texts have discussed acquired and con-
+genital forms of myasthenia gravis (MG). However, the term 
+congenital MG has been recently discarded in favor of congeni-
+tal myasthenic syndrome (CMS), where MG is now reserved for 
+conditions of autoimmunity against the NMJ.30 is shi closely 
+follows the human classication of these diseases, where MG is 
+also used only in the context of autoimmunity.
+MYASTHENIA GRAVIS
+Pathophysiology
+MG is an yacquired autoimmune disorder characterized by autoanti-
+bodies produced against nicotinic AChR on the postsynaptic muscle 
+terminal.30-
+
+--- ettinger PDF 1763 ---
+1611
+CHAPTER 253
+•
+Neuromuscular Junction Disorders
+eBooks.Health.Elsevier.com
+signs such as worsened weakness, salivation, tremors, vomiting, 
+bradycardia, bronchoconstriction, and respiratory distress. In the 
+author’s experience, these signs are more common with neostig-
+mine than edrophonium.5 Animals should be monitored closely 
+aer administration of either drug, and atropine and equipment 
+to provide intubation and respiratory support should be available.
+Treatment and Outcome
+Long-term treatment for animals with MG consists of treatment 
+via AChE inhibitors, as well as immunosuppressive therapy to 
+reduce autoantibody production against the AChR. Anticholin-
+esterase drugs such as pyridostigmine bromide (oral) or neostig-
+mine (intramuscular) are the mainstays of supportive therapy and 
+they work by inhibiting AChE so that ACh remains within the 
+synaptic cle longer.5 ese medications must be carefully titrated 
+to eect, and neostigmine is generally used only in hospitalized 
+animals in acute crisis or with profound regurgitation. Both med-
+ications have a narrow therapeutic window, and signicant side-
+eects such as bradycardia, hypersalivation, vomiting, diarrhea, 
+muscle cramping, and weakness can occur. Clinical signs associ-
+ated with excessive anticholinergic drug administration may be 
+dicult to distinguish from those of uncontrolled MG and careful 
+monitoring is required at the time of therapy initiation.
+Immunosuppressive agents such as cyclosporine, mycopheno-
+late mofetil (MMF), and azathioprine (chs. 144 and 169) are fre-
+quently used in the treatment of MG to reduce levels of circulating 
+autoantibodies.44 45 Extrapolating from the human literature, MMF 
+was once considered the drug of choice for canine MG; however, 
+a recent study comparing dogs treated with MMF and pyridostig-
+mine to those treated with pyridostigmine alone showed no dier-
+ence in survival time or remission rate between groups.45
+Corticosteroids can also be eective in the treatment of MG, 
+but should be used with caution in animals with aspiration pneu-
+monia (ch. 227)
+
+--- ettinger PDF 1790 ---
+SECTION XVI
+•
+Gastrointestinal Disease
+1638
+eBooks.Health.Elsevier.com
+end of the procedure. e tongue can also be wrapped with a gauze 
+sponge soaked with a hypertonic solution prior to extubation.
+HYPO- AND HYPERTHERMIA
+Prevention of patient hypothermia is of particular importance when 
+water is used for cooling dental power instruments or for rinsing 
+debris from the mouth.4 Conversely, hyperthermia also is a con-
+cern, especially in cats when opiates like hydromorphone, with or 
+without gas anesthesia, ketamine, or a combination of these drugs 
+is/are being used.5 Cats with postoperative hyperthermia oen 
+respond favorably to intravenous uid administration, removal of 
+blankets in the cage, mechanical cooling methods such as a fan or 
+ice packs, and application of rubbing alcohol to the footpads.
+ORAL BLEEDING AND HEMOSTASIS
+Severe oral bleeding may be due to injury of larger blood vessels, 
+bleeding dyscrasias (e.g., von Willebrand disease [ch. 175]), lin-
+gual or palatal injury, oral inammation, so-tissue trauma, oral 
+neoplasia, and jaw fracture. Intravascular volume replacement is 
+accomplished with crystalloids, colloids, and/or blood products 
+(ch. 120).6 Diuse bleeding from the nasal mucosa (e.g., aer 
+maxillectomy or palate surgery) can be stopped by irrigation with 
+0.05-0.1 mL/kg (cats) or 0.1-0.2 mL/kg (dogs) of a mixture of 0.25 
+mL 1% phenylephrine and 50 mL 2% lidocaine,7 vessel ligation, 
+bone wax, brin sealants, and many others.
+ORAL INFLAMMATION
+PERIODONTAL DISEASE
+Gingivitis is inammation of the gingiva. Periodontitis is inam-
+mation of the gingiva, periodontal ligament, alveolar bone, and 
+cementum (Figure 258.1). Dental plaque causes periodontal dis-
+ease, but the host’s reaction to plaque bacteria and their toxins 
+also plays a role in tissue destruction (gingival recession, attach-
+ment loss, periodontal pocketing, alveolar bone resorption, tooth 
+mobility, and tooth loss). Aected teeth need to be scaled and 
+polished under anesthesia. In addition, various periodontal ther-
+apy and surgery options (including extraction) exist. 
+
+--- ettinger PDF 1898 ---
+SECTION XVI
+•
+Gastrointestinal Disease
+1746
+eBooks.Health.Elsevier.com
+should be performed and repeat treatment with ronidazole at 
+30 mg/kg PO q12h should be considered. If untreated, cats usu-
+ally recover within 5 months to 2 years. e time to obtain com-
+plete treatment response is longer in cats in multi-cat households 
+and in cats that had previously received various antibiotics. It is 
+important to note that the absence of clinical signs is not equiva-
+lent to the absence of the pathogen. In dogs, T. foetus plays no role 
+as a colonic infectious agent.54-61 153 194 200 201
+Giardiasis Dogs and cats with giardiasis may present with 
+mixed diarrhea but Giardia spp. are regarded as small intestine 
+parasites (ch. 262). The diagnosis and other aspects are discussed 
+in ch. 196. Importantly, infection should be treated only when 
+clinical signs are present, in which case fenbendazole and strict 
+environmental hygiene is the therapy of choice. In order not to 
+cause long-term, severe dysbiosis, metronidazole should not be 
+used initially, especially in young animals with giardiasis. Inter-
+estingly, case reports have shown eradication of Giardia in dogs 
+by fecal transplantation (ch. 106).202
+Balantidiasis Balantidium coli is primarily a parasite of pigs. 
+Dogs can become infected accidentally, leading to UC, when they 
+are in contact with pigs. Therapy with tetracyclines and metroni-
+dazole is used successfully in humans. Coinfection with T. vulpis
+is common and some animals respond well upon eradication of 
+T. vulpis.203
+Amoebiasis Entamoeba histolytica primarily infects humans 
+and leads to amoebic dysentery. Animals usually become infected 
+from diseased humans. Although E. histolytica is present in the 
+intestinal tract of healthy dogs and cats, there are case reports of 
+this organism causing severe colitis. The diagnosis can be made 
+by fecal smear. Metronidazole (30 mg/kg PO q12h for 3 weeks) is 
+the drug of choice for treatment. However, neurotoxicosis is well-
+documented at this high dosage (ch. 248).204-208
+Viruses
+Feline Infectious Peritonitis Feline 
+
+--- ettinger PDF 1901 ---
+CHAPTER 263
+•
+Diseases of the Large Intestine
+1749
+eBooks.Health.Elsevier.com
+Oral Laxatives The mode of action of laxatives is based on 
+stimulating fluid accumulation in the colon, thereby increasing 
+motility.
+Bulk-Forming Laxatives Fiber preparations usually con-
+sist of polysaccharides and psyllium that are poorly absorbed 
+(ch. 165). ey can either be a dietary ingredient or a supplement 
+(e.g., psyllium 1-4 teaspoons [5-20 mL] per meal or pumpkin 1-4 
+tablespoons [15-60 mL] per meal). ese are only eective if the 
+animal is well-hydrated and eating. In patients where megacolon 
+has already developed, ber supplements should be avoided, and 
+a low-residue diet should be fed instead to reduce the amount of 
+fecal material produced.
+Hyperosmotic Laxatives ese include indigestible poly-
+saccharides (e.g., lactose, lactulose), magnesium salts (e.g., mag-
+nesium citrate, magnesium hydroxide, magnesium sulfate), and 
+polyethylene glycols. Lactulose (0.5-2 mL/kg PO q8-12h) is the 
+most potent and frequently used laxative in this group.
+Stimulant Laxatives ese are characterized by their ability to 
+induce propulsive motility (e.g., bisacodyl, phenolphthalein, castor 
+A
+B
+Figure 263.10
+Lateral (A) and ventrodorsal (B) abdominal radiograph of a cat with megacolon due to pelvic stenosis secondary to a healed fracture 
+aer a road accident. Panel A shows extreme distension of the colon with feces. Panel B more clearly shows the asymmetry of the healed pelvic fracture 
+and the narrowed pelvic canal.
+TABLE 263.7
+Treatment of Dogs and Cats With Constipation Depending on Severity of Clinical Signs
+SEVERITY
+TYPICAL FEATURES
+TREATMENT
+Mild constipation
+•First episode of constipation
+•Absence of defecation for >2 days, but <4 days
+•Straining with defecation
+•Passing hard feces
+•Hardened feces in colon
+•Normal colonic size
+Dietary modification (fiber-rich diets or supple-
+mentation [e.g., psyllium 1-4 tsp/meal]) com-
+bined with 1 dose of dodecyl (sulfoacetate) 
+suppositories or microenemas (Microlax 5 
+mL tubes)
+Moderate or recurrent 
+constipation
+•Recurrent ep
+
+--- ettinger PDF 1912 ---
+SECTION XVI
+•
+Gastrointestinal Disease
+1760
+eBooks.Health.Elsevier.com
+Treatment
+Smaller patients and minor hernias can sometimes be managed 
+medically with stool soeners, enemas, and intermittent manual 
+extraction of feces. If UBR or other organ entrapment exists, man-
+ual decompression via emergency cystocentesis and immediate 
+surgery are mandatory. e primary goal of surgical repair always 
+involves reconstruction of the pelvic diaphragm. Traditional sur-
+gery refers to a herniorrhaphy, oen with an internal obturator 
+muscle transposition.55-57 Herniorrhaphy is usually sucient for 
+most uncomplicated PHs, but further steps to strengthen the pel-
+vic diaphragm might be necessary. Additional measures include 
+polypropylene mesh reinforcement,58 semitendinosus muscle ap 
+transposition,59 and/or biological membrane implantation.60 61
+Repositioning or pexy of entrapped organs might be necessary 
+prior to herniorrhaphy.53 Colopexy is not the recommended 
+repair of choice unless RP is also present.15 52 For intact males, 
+castration is recommended given that intact status is considered a 
+risk factor (e.g., increased relaxin, enlarged prostate compressing 
+pelvic wall).
+Prognosis
+e prognosis varies depending on whether underlying comor-
+bidities and organ entrapment are present. While some studies 
+have cited UBR to predict a worse prognosis (e.g., a 30% mortality 
+rate in a large study of 100 dogs41), a case series of 41 dogs with 
+PH found no increase in mortality between dogs with and with-
+out UBR.52 e most common short-term postoperative compli-
+cations include incisional infection, RP, and tenesmus, in order of 
+occurrence.41 62 Postoperative tenesmus is a risk factor for recur-
+rence with an internal obturator muscle transposition.55
+PERIANAL FISTULA/CANINE ANAL FURUNCULOSIS
+Perianal stulas (PAFs), which are synonymous with canine 
+anal furunculosis, are characterized by ulceration, draining 
+tracts, purulent discharge, and necrosis of perianal tissue (Figure 
+264.7). e disease is most similar to stulizing Crohn’s disease in 
+humans, although commun
+
+--- ettinger PDF 2027 ---
+1875
+eBooks.Health.Elsevier.com CHAPTER 279
+•
+Exocrine Pancreatic Insuciency and Rare Conditions of the Exocrine Pancreas
+EXOCRINE PANCREATIC 
+INSUFFICIENCY
+INTRODUCTION AND DEFINITIONS
+E
+xocrine pancreatic insuciency (EPI) 
+describes a syndrome that is charac-
+terized by the insucient synthesis 
+and secretion of digestive enzymes by the 
+exocrine pancreas. e most common cause 
+of EPI is an absolute lack of pancreatic acinar 
+cells that is due to destruction of acinar cells 
+secondary to chronic pancreatitis (both dogs 
+and cats) or depletion of acinar cells due to 
+pancreatic acinar atrophy (PAA; likely only 
+in dogs). In either case, pancreatic digestive 
+enzymes are lacking in patients with EPI. In rare cases, a single 
+enzyme may be lacking, but lack of a single enzyme, even if com-
+plete, may not lead to any clinical signs as digestion of most mac-
+ronutrients is characterized by redundancy and a great functional 
+reserve. However, isolated pancreatic lipase deciency has been 
+reported as a cause of clinical signs of EPI in humans and in 1 
+dog and was highly suspected in a few other dogs.1-3 Another 
+infrequent cause of EPI is an obstruction of the pancreatic duct by 
+either a tumor, surgical damage, or trauma, which can lead to lack 
+of digestive enzymes in the small intestinal lumen, despite nor-
+mal acinar production. Exocrine pancreatic aplasia or hypoplasia 
+could also lead to clinical signs of EPI. is could be suspected in 
+patients diagnosed with EPI at a very young age, but to date no 
+case has been described in the literature and the author of this 
+chapter has only encountered a single case in a kitten to date.
+PHYSIOLOGY
+e process of digestion of macronutrients is characterized 
+by redundancy and a large functional reserve. Redundancy is 
+achieved by each macronutrient being able to be digested by at 
+least two and sometimes even more independent processes. For 
+example, dietary fat can be broken down by pancreatic lipase 
+or pre-duodenal lipase, which in dogs and cats is gastric lipase. 
+While in healthy humans and dogs it has been estimat
+
+--- ettinger PDF 2053 ---
+CHAPTER 283
+•
+Primary Hyperparathyroidism
+1901
+eBooks.Health.Elsevier.com
+ACRONYMS
+[Ca] calcium concentration
+CaCrCR calcium to creati-
+nine clearance ratio
+CaSR calcium sensing 
+receptor
+CBC complete blood count
+CKD chronic kidney disease
+ELISA enzyme-linked 
+immunosorbent assay
+FHH familial hypocalciuric 
+hypercalcemia
+FIH feline idiopathic hyper-
+calcemia
+GI gastrointestinal
+HHM humoral hypercalce-
+mia of malignancy
+HRPT2 hyperparathyroid-
+ism 2 with jaw tumors
+iCa ionized calcium
+[iCa] ionized calcium con-
+centration
+IV intravenous
+MEN multiple endocrine 
+neoplasia
+PD polydipsia
+PHPT primary hyperpara-
+thyroidism
+PO4 phosphate
+PTH parathyroid hormone
+PTHrP parathyroid hor-
+mone–related protein
+PU polyuria
+SQ subcutaneous
+TCa total serum calcium
+[TCa] total serum calcium 
+concentration
+US ultrasonography
+CALCIUM HOMEOSTASIS IN DOGS 
+AND CATS
+CALCIUM FUNCTIONS
+C
+alcium (Ca), the most abundant ele-
+ment in the body due to its presence in 
+skeletal bone, is necessary for diverse 
+processes, such as transmitting many sig-
+nals received on cell surfaces to intracellular 
+locations, nerve conduction, neuromuscu-
+lar transmission, muscle contraction, blood 
+coagulation, hormone secretion and hepatic 
+glycogen metabolism. Adverse eects on 
+organ systems are noted when Ca homeosta-
+sis is disrupted. e skeleton acts as a Ca res-
+ervoir, used for correcting decreases in serum 
+Ca concentrations ([Ca]). Ca can be excreted 
+or absorbed in the kidneys and the small 
+intestine. e Ca sensing receptor (CaSR), 
+responsible for ensuring that circulating 
+[Ca] is maintained within a limited “normal” 
+range, is a G-protein present in parathyroid 
+glands, kidneys, cartilage and bone.1 Inter-
+actions between the CaSR and parathyroid 
+hormone (PTH), synthesized and secreted by 
+the parathyroid glands, can lead to direct or 
+indirect eects on skeletal bone, the gastroin-
+testinal (GI) tract, and kidneys.2
+CALCIUM MEASUREMENT AND ITS 
+SERUM REGULATION
+Ca, in common with other important elec-
+trolytes, is regulated to maintain narrow ref-
+erence intervals. Total serum [Ca] ([TCa]) is
+
+--- ettinger PDF 2072 ---
+SECTION XIX
+•
+Endocrine Disease
+1920
+eBooks.Health.Elsevier.com
+ACRONYMS
+CNS central nervous system
+cTSH canine-specific thy-
+roid stimulating hormone
+DLA dog leukocyte antigen
+DM diabetes mellitus
+ED equilibrium dialysis
+fT4 free thyroxine (T4)
+GFR glomerular filtration rate
+GH growth hormone
+GI gastrointestinal
+IGF-1 insulin-like growth 
+factor type 1
+IV intravenous
+LC-MS/MS liquid 
+chromatography-tandem 
+mass spectrometry
+NTI non-thyroidal illness
+PU/PD polyuria/polydipsia
+rhTSH human recombinant 
+thyroid stimulating hor-
+mone
+RIA radioimmunoassay
+SDMA symmetric dimethyl-
+arginine
+T3 triiodothyronine
+T3AA T3 autoantibodies
+T4 thyroxine
+T4AA T4 autoantibodies
+TCTU technetium thyroid 
+gland uptake
+TgAA thyroglobulin auto-
+antibody
+THRT thyroid hormone 
+replacement therapy
+TPO thyroid peroxidase
+TRH thyrotropin releasing 
+hormone
+TSH thyroid stimulating 
+hormone
+TT3 total triiodothyronine 
+(T3)
+TT4 total thyroxine (T4)
+US ultrasonography
+vWf:Ag von Willebrand 
+factor antigen
+Hypothyroidism in Dogs
+Carmel T. Mooney
+INTRODUCTION AND ANATOMY
+H
+ypothyroidism is the most com-
+mon thyroid disease and one of 
+the most common endocrine dis-
+orders in dogs. Its prevalence has been esti-
+mated between 0.2 and 0.8%.1-3 A survey on 
+insured dogs from Sweden, however, sug-
+gested a lower prevalence (0.07%) despite 
+including a large number of pedigree dogs 
+more likely to have hypothyroidism.4 5 Breed 
+predisposition can be signicant. A preva-
+lence as high as 15% has been recognised in 
+Swedish Giant Schnauzers and Hovawarts.6
+e thyroid gland of dogs has two sepa-
+rate lobes, one on either side of the trachea 
+(ch. 283, Figure 283.1). Each lobe is com-
+posed of microscopic follicles lined by a sin-
+gle layer of thyroid epithelium. e lumen of 
+each follicle contains “colloid,” a thyroglobu-
+lin storage material secreted by follicular 
+cells. yroglobulin is a large glycoprotein 
+containing iodotyrosines, precursors of thy-
+roid hormones.
+PHYSIOLOGY
+THYROID HORMONES
+e thyroid gland synthesizes and secretes 
+the hormones 3,5,3′,5′-L-tetraiodothyronine 
+(thyroxine [T4]) and 
+
+--- ettinger PDF 2087 ---
+CHAPTER 286
+•
+Feline Hypothyroidism
+1935
+eBooks.Health.Elsevier.com
+188. Daniel GB, Neelis DA. yroid scintigraphy in veterinary medicine. Semin 
+Nucl Med. 2014;44:24-34.
+189. Taeymans O, Peremans K, Saunders JH. yroid imaging in the dog: cur-
+rent status and future directions. J Vet Intern Med. 2007;21:673-684.
+190. Taeymans O, Daminet S, Duchateau L, etal. Pre- and post-treatment 
+ultrasonography in hypothyroid dogs. Vet Radiol Ultrasound. 2007;48:262-269.
+191. Reese S, Breyer U, Deeg C, etal. yroid sonography as an eective tool 
+to discriminate between euthyroid sick and hypothyroid dogs. J Vet Intern Med
+2005;19:491-498.
+192. Bromel C, Pollard RE, Kass PH, etal. Comparison of ultrasonographic 
+characteristics of the thyroid gland in healthy small-, medium-, and large-breed 
+dogs. Am J Vet Res. 2006;67:70-77.
+193. Taeymans O, Dennis R, Saunders JH. Magnetic resonance imaging of the 
+normal canine thyroid gland. Vet Radiol Ultrasound. 2008;49:238-242.
+194. Taeymans O, Schwarz T, Duchateau L, etal. Computed tomographic fea-
+tures of the normal canine thyroid gland. Vet Radiol Ultrasound. 2008;49:13-19.
+195. Diaz Espineira MM, Mol JA, Peeters ME, etal. Assessment of thyroid 
+function in dogs with low plasma thyroxine concentration. J Vet Intern Med
+2007;21:25-32.
+196. Shiel RE, Pinilla M, McAllister H, etal. Assessment of the value of quanti-
+tative thyroid scintigraphy for determination of thyroid function in dogs. J Small 
+Anim Pract. 2012;53:278-285.
+197. Pinilla M, Shiel RE, Brennan SF, etal. Quantitative thyroid scintigraphy 
+in greyhounds suspected of primary hypothyroidism. Vet Radiol Ultrasound
+2009;50:224-229.
+198. Seavers A, Vickery K, Page SW, etal. Dynamic thyroid testing, thyroid 
+histology and thyroxine replacement therapy in Basenji dogs. Aust Vet Pract
+2015;45:9.
+199. Cecere J, Purswell B, Panciera D. Levothyroxine supplementation in hypo-
+thyroid bitches during pregnancy. eriogenology. 2020;142:48-53.
+200. Lewis VA, Morrow CMK, Jacobsen JA, etal. A pivotal eld study to sup-
+port the registration of levothyroxine sodium tablets for ca
+
+--- ettinger PDF 2092 ---
+SECTION XIX
+•
+Endocrine Disease
+1940
+eBooks.Health.Elsevier.com
+ACRONYMS
+ACE-i angiotensin convert-
+ing enzyme inhibitors
+ARBs angiotensin receptor 
+blockers
+BCS body condition score
+BP blood pressure
+CBC complete blood count
+CKD chronic kidney dis-
+ease
+fT4 free thyroxine
+GI gastrointestinal
+GNAS Gαs subunit
+131I radioactive iodine
+IRIS International Renal 
+Interest Society
+MCS muscle condition 
+score
+PE physical examination
+PP polyphagia
+SHIM-RAD severe hyper-
+thyroidism, huge thyroid 
+masses, intrathoracic in 
+location, multifocal with 
+resistance to anti-thyroid 
+drugs
+T3 triiodothyronine
+T4 thyroxine
+TSH thyroid stimulating 
+hormone or thyrotropin
+TT4 total thyroxine
+UA urinalysis
+Hyperthyroidism in Cats
+Sylvie Daminet
+INTRODUCTION
+H
+yperthyroidism is the most com-
+mon 
+feline 
+endocrine 
+disease, 
+aecting about 10% of senior 
+cats, and one of the most common geriat-
+ric diseases of cats.1 Hyperthyroidism is a 
+progressive disease with disastrous conse-
+quences if untreated. Early diagnosis has 
+been facilitated by the inclusion of serum 
+total thyroxine concentrations (TT4) in rou-
+tine screening panels for older cats. Aected 
+thyroid nodules contain single or multiple 
+hyperplastic and/or adenomatous tumor 
+nodules resembling toxic nodular goiter seen 
+in humans (i.e., Plummer’s disease).2 Patho-
+logic changes are bilateral in about 70% of 
+aected cats and unilateral in about 25%.3
+Ectopic disease is the least common form, 
+occurring in around 4%. Although most cats 
+have an adenoma, carcinomas are diagnosed 
+in about 1-2%. Some benign thyroid tumors 
+may transform into malignant carcinomas if 
+untreated or aer chronic oral anti-thyroid 
+drugs.4 Histologic evaluation of feline thy-
+roid tumors is rarely available, and carcino-
+mas are indistinguishable from adenomas on 
+thyroid scintigraphy. A classication scheme 
+was developed for more aggressive tumors 
+that require a dierent therapeutic approach. 
+Some thyroid tumors cause severe hyperthy-
+roidism, may become huge thyroid masses, 
+some are intrathoracic in location or multifocal with resistance to
+
+--- ettinger PDF 2111 ---
+CHAPTER 289
+•
+Insulin-Secreting Tumors
+1959
+eBooks.Health.Elsevier.com
+ACRONYMS
+ATP adenosine triphos-
+phate
+CRI continuous rate infu-
+sion
+CT computed tomography
+CTA computed tomogra-
+phy angiography
+GH growth hormone
+IV intravenous
+US ultrasonography
+Insulin-Secreting Tumors
+Johan P. Schoeman
+INTRODUCTION
+I
+nsulinoma” is a neoplasm of pancreatic 
+beta cells that synthesizes and secretes 
+excessive quantities of insulin, oen 
+causing clinical signs of hypoglycemia. It is 
+an uncommon condition in dogs and rare 
+in cats. Insulinoma was rst described in the 
+dog in 1935 and in the cat in 1974.1 2 Subse-
+quently, approximately 360 canine cases have 
+been described as compared with merely 
+10 well-documented feline cases. Consequently, this chapter will 
+focus on canine insulinoma and conclude with a short section on 
+the comparative aspects of feline insulinoma.
+PATHOLOGY
+THE PRIMARY TUMOR
+Insulin-secreting pancreatic beta cells comprise approximately 
+70% of the cells of the islets of Langerhans which, in turn, com-
+prise only 1-2% of pancreatic volume. Most canine insulinomas 
+are malignant. In one report utilizing immunocytochemical stain-
+ing, 17 of 18 were carcinomas, 1 was an adenoma.3 About 80% 
+of insulinomas are solitary, located in either limb rather than the 
+body of the pancreas (Figure 289.1).4-6 Occasionally no discrete 
+nodule is seen or palpated during gross pancreatic examination 
+because some of these tumors are microscopic in size. In these, 
+histologic examination is required to locate the tumor within a 
+section of surgically removed pancreatic tissue or at necropsy.
+METASTASES
+e rate of detected metastatic lesions in dogs with insulinoma 
+ranges from 45-64%, higher in necropsy-based studies than those 
+using surgically-obtained samples.6-8 Clinical staging of pancre-
+atic tumors denes stage I as T1N0M0 (presence of a primary 
+Tumor and absence of regional lymph Node or distant Metas-
+tases), stage II as T1N1M0, and stage III as T1N1M1 or T1N0M1
+(ch. 316). A majority of dogs with an insulinoma have stage II 
+or III disease at diagnosis. e m
+
+--- ettinger PDF 2118 ---
+SECTION XIX
+•
+Endocrine Disease
+1966
+eBooks.Health.Elsevier.com
+ACRONYMS
+AcAc acetoacetate
+AKI acute kidney injury
+ALIVE Agreeing Language 
+in Veterinary 
+Endocrinology
+BG blood glucose
+CHF congestive heart fail-
+ure
+CKD chronic kidney dis-
+ease
+CRI constant rate infusion
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+ECF extracellular fluid
+FFA free fatty acid
+FGMS flash glucose moni-
+toring system
+HHS hyperosmolar hyper-
+glycemic state
+IM intramuscular(ly)
+IV intravascular
+KB ketone body
+PE physical examination
+PU/PD polyuria/polydipsia
+SQ subcutaneous(ly)
+UTI urinary tract infection
+D
+iabetic ketoacidosis (DKA) and 
+the “hyperosmolar hyperglycemic 
+state” (HHS) are two acute, severe, 
+potentially life-threatening complications of 
+uncontrolled diabetes mellitus (DM). eir 
+clinical signs overlap. Morbidity and mortal-
+ity are usually a consequence of the under-
+lying precipitating cause or the result of 
+complications derived from lack of therapy 
+or improper therapy and monitoring rather 
+than a result of hyperglycemia. Prompt diag-
+nosis, use of standardized treatment proto-
+cols respecting the unpredictable nature of 
+these conditions and responses to treatment, 
+and the ability to resolve or manage the 
+underlying cause, aect outcome.
+DEFINITIONS
+DKA is dened by the triad of hypergly-
+cemia (or previous diagnosis of DM), 
+metabolic acidosis, and ketonemia. e 
+term HHS has been recommended by the 
+American Diabetes Association for the syn-
+drome characterized by severe hyperglyce-
+mia, hyperosmolality, and dehydration in 
+the absence of signicant ketosis. Compared to previously used 
+nomenclatures (hyperosmolar coma, hyperosmolar non-ketotic 
+syndrome), this new title emphasizes that not all patients are 
+comatose and that mild degrees of ketosis and acidemia may 
+be present.1 2 Although there are important dierences in their 
+pathogenesis, both DKA and HHS result from a decrease in 
+the net eective action of circulating insulin, due to an abso-
+lute or relative insulin deciency complicated by increases in 
+circulating concentrations of counterregula
+
+--- ettinger PDF 2126 ---
+SECTION XIX
+•
+Endocrine Disease
+1974
+eBooks.Health.Elsevier.com
+ACRONYMS
+BG blood glucose
+BGC blood glucose curve
+CBC complete blood count
+CGMS continuous glucose 
+monitoring system
+CoA coenzyme A
+cPLI canine pancreatic 
+lipase immunoreactivity
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+FFAs free fatty acids
+FGMS flash glucose moni-
+toring system
+GAD65 glutamic acid 
+decarboxylase 65
+GH growth hormone
+HbA1c glycated hemoglo-
+bin
+IA-2 insulinoma antigen 2
+IG interstitial glucose
+MHC major histocompati-
+bility complex
+NIDDM non-insulin-
+dependent diabetes mel-
+litus
+NPH neutral protamine 
+Hagedorn
+PBGM portable blood glu-
+cose meter
+PD polydipsia
+PE physical examination
+Pg progesterone
+PP polyphagia
+PU polyuria
+PZI protamine zinc insulin
+RBC red blood cell
+SQ subcutaneous(ly)
+UA urinalysis
+US ultrasound
+INTRODUCTION
+D
+iabetes mellitus (DM) is a hetero-
+geneous group of diseases with 
+multiple etiologies characterized by 
+hyperglycemia resulting from inadequate 
+insulin secretion, inadequate insulin action, 
+or both.1 e prevalence of DM in dogs has 
+been estimated from about 0.3% in rst opin-
+ion practices to about 1% in referral institu-
+tion practices.2-5 e reported incidence 
+of DM in a population of 182,087 Swedish 
+insured dogs was about 13 cases per 10,000 
+(0.13%) dog-years at risk.6
+CLASSIFICATION AND ETIOLOGY
+“TYPES” OF DIABETES MELLITUS
+ere are two predominant forms of DM in 
+people, one involving a permanent and abso-
+lute loss of insulin and the other involving 
+insulin resistance that may not be permanent. 
+ese 2 conditions were referred to as “juvenile-
+onset” and “adult-onset” DM, respectively, then 
+updated to “insulin-dependent DM” (IDDM) 
+and “non-insulin-dependent DM” (NIDDM). 
+e terms type 1 and type 2 DM are now 
+employed, with about 10% of diabetic people 
+worldwide having type 1 disease and about 
+90% with type 2, a condition almost identical 
+to the previous NIDDM.7 Several classication 
+systems for canine DM have been proposed 
+based on the underlying cause of their beta-cell 
+dysfunction.8 9 More recently, the European 
+Society o
+
+--- ettinger PDF 2142 ---
+SECTION XIX
+•
+Endocrine Disease
+1990
+eBooks.Health.Elsevier.com
+ACRONYMS
+BG blood glucose
+CGM continuous glucose 
+monitoring
+CKD chronic kidney dis-
+ease
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+DM-HS diabetes mellitus 
+secondary to hyperso-
+matotropism
+ER extended-release
+GIP glucose-dependent 
+insulinotropic polypep-
+tide
+GLP-1 glucagon-like pep-
+tide-1
+GLP-1RA glucagon-like pep-
+tide-1 receptor agonist
+HS hypersomatotropism
+IGc interstitial glucose con-
+centration
+IGF-1 insulin-like growth 
+factor 1
+MC4R melanocortin-4 
+receptor
+NPH neutral protamine 
+Hagedorn
+PD polydipsia
+PU polyuria
+PZI protamine zinc insulin
+SC subcutaneous
+SGLT-2 sodium-glucose 
+cotransporter-2
+UTI urinary tract infection
+DEFINITION AND DIAGNOSIS
+D
+iabetes mellitus (DM) is a syndrome 
+characterized 
+by 
+hyperglycemia 
+due to defects in insulin secretion, 
+insulin sensitivity, or both.1 2 Regardless of 
+the pathogenic cause, relative or absolute 
+deciency in insulin action on target tissues 
+leads to myriad abnormalities in carbohy-
+drate, fat, and protein metabolism. e crite-
+ria for the diagnosis of DM in cats developed 
+by an international consensus committee are 
+provided in Box 292.1 3
+Prediabetes is a state of abnormally 
+increased blood glucose (BG) concentra-
+tions (either fasting or aer a glucose load) 
+that do not yet meet the criteria of DM. Pre-
+diabetes is a risk factor for development of 
+DM.4 Multiple studies have described cats 
+with abnormal BGs in various clinical and 
+experimental contexts5 6; however, no study 
+has shown that a dened state of abnormal 
+glucose in cats confers a risk for developing 
+DM.1 erefore, criteria for diagnosis of pre-
+diabetes in cats have not been established.
+ETIOLOGY AND CLASSIFICATION
+Multiple etiologies can lead to DM.1 Feline 
+DM is mostly considered analogous to type 2 
+DM in people, characterized by beta cell dys-
+function of unknown etiology, usually with 
+concurrent insulin resistance. is leads to 
+either permanent or temporary states of 
+exogenous insulin requirement.
+Recent studies suggest that up to 25% of diabetic cats 
+
+--- ettinger PDF 2156 ---
+SECTION XIX
+•
+Endocrine Disease
+2004
+eBooks.Health.Elsevier.com
+THE HISTORY OF 
+HYPERADRENOCORTICISM AND 
+DEFINITIONS
+T
+he most common manifestation of 
+hyperadrenocorticism (hypersecre-
+tion of adrenocortical hormones) 
+in dogs is hypercortisolism (HC). Chroni-
+cally increased circulating glucocorticoids 
+can be caused by long-term glucocorticoid 
+administration (iatrogenic) or it can be 
+naturally occurring, caused by excessive 
+endogenous cortisol production.1 e clini-
+cal condition associated with chronic corti-
+sol excess is oen referred to as Cushing’s 
+syndrome, aer the eminent neurosurgeon 
+Harvey Cushing. Cushing’s clinical descrip-
+tion of his patient Minnie G., published in 
+his monograph in 1912, incorporated all the 
+features that are now considered classic for 
+HC. He speculated that the disorder may be 
+related to the adrenal gland (hyperadrenal-
+ism). In his later survey, published in 1932, 
+he associated the condition with a basophil 
+adenoma of the pituitary gland. e descrip-
+tion of this fascinating discovery makes 
+Harvey Cushing one of the greatest gures 
+in endocrinology.2 In veterinary medicine 
+the rst mention of HC appeared in 1939, 
+when Verstraete and oonen reported the 
+rst 2 dogs with “pituitary disorders.”3
+Naturally occurring HC is usually 
+the result of inappropriate excess secre-
+tion of pituitary adrenocorticotropic hor-
+mone (ACTH) or due to autonomous 
+adrenal glucocorticoid secretion. ese 
+are classied as ACTH-dependent HC 
+and 
+ACTH-independent 
+HC, 
+respec-
+tively. 
+ACTH-dependent 
+HC 
+includes 
+pituitary-dependent HC (PDH; Cush-
+ing’s disease) and the ectopic ACTH syn-
+drome. ACTH-independent HC includes 
+functional adrenocortical tumors (ATs) 
+and primary ACTH-independent adreno-
+cortical hyperplasia, such as food-induced 
+HC. While PDH and functional ATs are 
+well-recognized, reports of primary ACTH-
+independent adrenocortical hyperplasia 
+and ectopic ACTH syndrome are limited to 
+individual case reports.4
+PHYSIOLOGY: HYPOTHALAMUS-PITUITARY-
+ADRENOCORTICAL AXIS (HPAA)
+HYPOTHALAMUS AND PITUITARY GLAND
+e hypothal
+
+--- ettinger PDF 2174 ---
+SECTION XIX
+•
+Endocrine Disease
+2022
+eBooks.Health.Elsevier.com
+INTRODUCTION
+F
+eline hyperadrenocorticism (fHAC; 
+Cushing’s syndrome; hypercortisolism) 
+is less common, has more worrisome 
+consequences, and poses greater challenges to 
+diagnose and treat than canine hyperadreno-
+corticism (cHAC). fHAC has a worse progno-
+sis than the condition in dogs. Unlike in dogs, 
+fHAC is commonly associated with diabetes 
+mellitus (DM), a skin hyperfragility syn-
+drome, and other conditions that can compli-
+cate management. Basic pathophysiology and 
+other aspects of fHAC are similar to cHAC 
+(ch. 293). is chapter focuses on the clinical 
+condition in cats caused by chronic exposure 
+to excess cortisol or other steroid hormones 
+with cortisol-like action. For example, cats 
+with progesterone-secreting adrenocortical 
+tumors, with or without aldosterone secre-
+tion, may have clinical signs similar to fHAC 
+(ch. 295).1-3 Importantly, insulin-resistant 
+DM in cats is more commonly associated 
+with hypersomatotropism (HS; feline acro-
+megaly) than with fHAC (ch. 280).
+PATHOPHYSIOLOGY
+Naturally occurring fHAC is a multi-systemic disorder resulting 
+from excessive production of cortisol by the adrenal cortices. 
+ere are single case reports and several case series of cats with 
+fHAC that together total only about 100 cases.4-25 Pituitary-
+dependent hyperadrenocorticism (PDH) aects about 85% of 
+cats with fHAC, most commonly caused by an autonomous 
+adrenocorticotropic hormone (ACTH)-secreting adenoma. 
+Adrenal-dependent hyperadrenocorticism (ADH) aects about 
+15% of cats with fHAC, usually caused by an autonomously 
+functioning adrenocortical adenoma or carcinoma.5 A small 
+number of cats have a pituitary tumor that secretes more than 1 
+hormone.19 26-29 Iatrogenic fHAC has been described aer glu-
+cocorticoid or progestogen administration,30-32 either of which 
+can severely suppress endogenous cortisol and cause adrenocor-
+tical atrophy.33
+CLINICAL SIGNS
+OVERVIEW
+Early reports of cats with fHAC described obvious clinical signs, 
+oen present for months before diagnosis. As su
+
+--- ettinger PDF 2188 ---
+SECTION XIX
+•
+Endocrine Disease
+2036
+eBooks.Health.Elsevier.com
+62. Syme HM, Scott-Moncrie JCR, Treadwell NG, etal. Hyperadrenocorticism 
+associated with excessive sex hormone production by an adrenocortical tumor in 
+two dogs. J Am Vet Med Assoc. 2001;219:1725-1728.
+63. Norman EJ, ompson H, Mooney CT. Dynamic adrenal function testing in 
+eight dogs with hyperadrenocorticism associated with adrenocortical neoplasia. 
+Vet Rec. 1999;144:551-554.
+64. Frank LA, Mullins R, Rohrbach BW. Variability of estradiol concentration 
+in normal dogs. Vet Dermatol. 2010;21:490-493.
+65. Chapman PS, Mooney CT, Ede J, etal. Evaluation of the basal and post-
+adrenocorticotrophic hormone serum concentrations of 17-hydroxyprogesterone 
+for the diagnosis of hyperadrenocorticism in dogs. Vet Rec. 2003;153:771-775.
+66. Behrend EN, Kemppainen RJ, Boozer AL, etal. Serum 17-alpha-
+hydroxyprogesterone and corticosterone concentrations in dogs with non-adrenal 
+neoplasia and dogs with suspected hyperadrenocorticism. J Am Vet Med Assoc
+2005;227:1762-1767.
+67. Monroe WE, Panciera DL, Zimmerman KL. Concentrations of noncortisol 
+adrenal steroids in response to ACTH in dogs with adrenal-dependent hyperadre-
+nocorticism, pituitary-dependent hyperadrenocorticism, and nonadrenal illness. 
+J Vet Intern Med. 2012;26:945-952.
+68. Hill KE, Scott-Moncrie JCR, Koshko M, etal. Secretion of sex hormones in 
+dogs with adrenal dysfunction. J Am Vet Med Assoc. 2005;226:556-561.
+Hypoadrenocorticism
+Rebecka S. Hess
+INTRODUCTION
+I
+n 1855, Dr. omas Addison published 
+a case series of 11 individuals, each 
+described as having a disease of the 
+supra-renal capsule (adrenal cortex).1 Hypo-
+adrenocorticism (HA) is, therefore, oen 
+referred to as “Addison’s disease.” e adrenal 
+cortex synthesizes and secretes glucocorti-
+coids and mineralocorticoids that are essen-
+tial for life. e cortex is divided into 3 layers: 
+the outermost zona glomerulosa, the widest 
+middle zona fasciculata, and the innermost 
+zona reticularis. Hypofunction or dysfunc-
+tion of the cortex, such as that seen in HA, 
+can be life threate
+
+--- ettinger PDF 2225 ---
+CHAPTER 300
+•
+Acute Kidney Injury
+2073
+eBooks.Health.Elsevier.com
+154. Ochoa VB, DiBartola SP, Chew DJ, etal. Perinephric pseudocysts in 
+the cat: a retrospective study and review of the literature. J Vet Intern Med
+1999;13(1):47-55.
+155. Valdes-Martinez A, Cianciolo R, Mai W. Association between renal 
+hypoechoic subcapsular thickening and lymphosarcoma in cats. Vet Radiol 
+Ultrasound. 2007;48(4):357-360.
+156. Mantis P, Lamb CR. Most dogs with medullary rim sign on ultrasonography 
+have no demonstrable renal dysfunction. Vet Radiol Ultrasound. 2000;41(2):
+164-166.
+157. Hart DV, Winter MD, Conway J, etal. Ultrasound appearance of the 
+outer medulla in dogs without renal dysfunction. Vet Radiol Ultrasound
+2013;54(6):652-658.
+158. Jakovljevic S, Rivers WJ, Chun R, etal. Results of renal ultrasonography 
+performed before and during administration of saline (0.9% NaCl) solution 
+to induce diuresis in dogs without evidence of renal disease. Am J Vet Res
+1999;60(4):405-409.
+159. Neuwirth L, Mahaey M, Crowell W, etal. Comparison of excretory 
+urography and ultrasonography for detection of experimentally induced 
+pyelonephritis in dogs. Am J Vet Res. 1993;54(5):660-669.
+160. Adin CA, Herrgesell EJ, Nyland TG, etal. Antegrade pyelography for 
+suspected ureteral obstruction in cats: 11 cases (1995-2001). J Am Vet Med Assoc
+2003;222(11):1576-1581.
+161. Etedali NM, Reetz JA, Foster JD. Complications and clinical utility of 
+ultrasonographically guided pyelocentesis and antegrade pyelography in cats and 
+dogs: 49 cases (2007-2015). J Am Vet Med Assoc. 2019;254(7):826-834.
+162. Lemieux C, Vachon C, Beauchamp G, etal. Minimal renal pelvis dilation in 
+cats diagnosed with benign ureteral obstruction by antegrade pyelography: a 
+retrospective study of 82 cases (2012–2018). J Feline Med Surg. 2021;23(10):892-899.
+163. Novellas R, Ruiz de Gopegui R, Espada Y. Assessment of renal vascular 
+resistance and blood pressure in dogs and cats with renal disease. Vet Rec
+2010;166(20):618-623.
+ACRONYMS
+4-MP 4-methylpyrazole
+ACE-I angiotensin converting 
+enzyme inhibitor
+ADH antidiureti
+
+--- ettinger PDF 2241 ---
+CHAPTER 301
+•
+Chronic Kidney Disease
+2089
+eBooks.Health.Elsevier.com
+ACRONYMS
+ACEi angiotensin 
+converting enzyme 
+inhibitor
+ADH antidiuretic hormone
+ARB angiotensin receptor 
+blocker
+BP blood pressure
+BUN blood urea nitrogen
+Ca calcium
+CI confidence interval
+CKD chronic kidney disease
+CKD-MBD chronic kidney 
+disease-mineral bone 
+disorders
+EPO erythropoietin
+ESA erythrocyte-
+stimulating agent
+FGF23 fibroblast growth 
+factor 23
+FIV feline immunodeficien-
+cy virus
+GFR glomerular filtration 
+rate
+GI gastrointestinal
+HIF hypoxia-inducible factor
+hyperCa hypercalcemia
+hyperK hyperkalemia
+hypoCa hypocalcemia
+hypoK hypokalemia
+iCa ionized calcium
+ICGN immune-complex 
+mediated glomerular 
+nephritis
+IRIS International Renal 
+Interest Society
+K potassium
+KCl potassium chloride
+Mg magnesium
+PCV packed cell volume
+PO4 phosphate
+PRCA pure red cell aplasia
+PTH parathyroid hormone
+RAAS renin-angiotensin-
+aldosterone system
+RBC red blood cell
+RSHP renal secondary 
+hyperparathyroidism
+tCa total calcium
+TOD target organ damage
+UPCR urine protein-to-
+creatinine ratio
+US ultrasound
+USG urine specific gravity
+UTI urinary tract infection
+Chronic Kidney Disease
+Jessica M. Quimby
+OVERVIEW OF CHRONIC KIDNEY 
+DISEASE (CKD)
+DEFINITIONS AND CO-EXISTING 
+CONDITIONS
+C
+hronic kidney disease (CKD) is 
+defined as structural and/or func-
+tional abnormalities of one or 
+both kidneys that have been continuously 
+present for ≥3 months. CKD is usually 
+irreversible and progressive, even with 
+treatment. It is common for prerenal or 
+postrenal azotemia, or for active kidney 
+diseases, e.g., “acute-on-chronic kidney 
+disease,” to co-exist with CKD. In con-
+trast to CKD, many complications are 
+reversible (e.g., pyelonephritis, ureteral 
+obstruction, dehydration, etc.). There-
+fore, appropriate diagnostic workup and 
+assessment of all contributing factors 
+is important (ch. 299). After correcting 
+reversible primary diseases and/or pre-
+renal or postrenal conditions, further 
+improvement in kidney function may 
+not occur because compensatory and 
+adaptive mechanisms designed to sus-
+tain kidney function
+
+--- ettinger PDF 2296 ---
+SECTION XXI
+•
+Lower Urinary Tract Disease
+2144
+eBooks.Health.Elsevier.com
+Lower Urinary Tract Infections
+Michael Wood
+CHAPTER 307
+ACRONYMS
+ASB asymptomatic 
+bacteriuria
+GAG glycosaminoglycan
+MUC mean urinary 
+concentration
+NSAIDs non-steroidal anti-
+inflammatory drugs
+PAC proanthocyanidin
+SCB subclinical bacteriuria
+UTI urinary tract infection
+INTRODUCTION
+U
+rinary tract infection (UTI) develop-
+ment is multifactorial, dependent on 
+the interplay between the virulence 
+of an organism and alterations in anatomic, 
+environmental, and immunological compe-
+tency of the host. Urinary bladders with nor-
+mal urinary defenses are inherently resistant 
+to colonization and cystitis.1 It is those blad-
+ders with compromised defenses that are at 
+increased risk for UTI development. Please refer to the 8th edition 
+of this textbook ch. 330 “Lower Urinary Tract Infections” for a 
+review of “Natural and Acquired Host Defenses” in Box 330-1.
+e most common microbes invading the urinary tract are 
+bacteria. Other organisms like fungi account for only ∼1% of dog 
+and cat bladder infections. Infecting bacteria typically originate 
+from the enteric ora and ascend through the distal urogeni-
+tal tract into the proximal urethra and urinary bladder.2 When 
+urinary tract colonization results in lower urinary tract (LUT) 
+inammation and clinical signs including caudal abdominal pain, 
+pollakiuria, stranguria, or dysuria, the term UTI or bacterial cys-
+titis is appropriate.3
+Spayed female dogs have twice the risk of UTI when compared 
+to male dogs.4 Gram negative bacteria comprise >60% of posi-
+tive cultures, with Escherichia coli being isolated from 45-55% of 
+bacteriuric dogs. Other Gram negative organisms including Pro-
+teus spp., Pseudomonas aeruginosa, and Klebsiella spp. and Gram 
+positive bacteria that include Staphylococcus spp., Streptococcus
+spp., and Enterococcus spp. are each cultured between 2-14% of 
+the time.5
+In cats, E. coli is also the most common cause of bacteriuria 
+(37.3%); however, Gram negative and Gram positive infections 
+each occur roughly half the time with G
+
+--- ettinger PDF 2316 ---
+SECTION XXI
+•
+Lower Urinary Tract Disease
+2164
+eBooks.Health.Elsevier.com
+25. Lekcharoensuk C, Osborne CA, Lulich JP, etal. Association between dietary 
+factors and calcium oxalate and magnesium ammonium phosphate urolithiasis in 
+cats. J Am Vet Med Assoc. 2001;219(9):1228-1237.
+26. Zuckerman JM, Assimos DG. Hypocitraturia: pathophysiology and medical 
+management. Rev Urol. 2009;11(3):134-144.
+27. Cao LC, Boevé ER, De Bruijn WC, etal. Glycosaminoglycans and 
+semisynthetic sulfated polysaccharides: an overview of their potential application 
+in treatment of patients with urolithiasis. Urology. 1997;50(2):173-183.
+28. Bungton CAT, Blaisdell JL, Binns SP, etal. Decreased urine 
+glycosaminoglycan excretion in cats with interstitial cystitis. J Urol
+1996;155(5):1801-1804.
+29. Lulich JP, Osborne CA, Lekcharoensuk C, etal. Eects of diet on urine 
+composition of cats with calcium oxalate urolithiasis. J Am Anim Hosp Assoc.
+2004;40(3):185-191.
+30. Palm CA, Westropp JL. Cats and calcium oxalate. Strategies for managing 
+lower and upper tract stone disease. J Feline Med Surg. 2011;13(9):651-660.
+31. Quéau Y, Bijsmans ES, Feugier A, etal. Increasing dietary sodium chloride 
+promotes urine dilution and decreases struvite and calcium oxalate relative 
+supersaturation in healthy dogs and cats. J Anim Physiol Anim Nutr (Berl)
+2020;104(5):1524-1530.
+32. Nolan BG, Labato MA. Calcium oxalate urolithiasis. In: Bonagura JD, Twedt 
+DC, eds. Kirk’s Current Veterinary erapy XV. 15th ed. Elsevier; 2014:897-901.
+33. Luckschander N, Iben C, Hosgood G, etal. Dietary NaCl does not aect 
+blood pressure in healthy cats. J Vet Intern Med. 2004;18(4):463-467.
+34. Passlack N, Kohn B, Doherr MG, etal. Inuence of protein concentration 
+and quality in a canned diet on urine composition, apparent nutrient digestibility 
+and energy supply in adult cats. BMC Vet Res. 2018;14(1):225.
+35. Capuano P, Radanovic T, Wagner CA, etal. Intestinal and renal adaptation 
+to a low-Pi diet of type II NaPi cotransporters in vitamin D receptor- and 
+1αOHase-decient mice. Am J Physiol Cell Physiol. 2005;2
+
+--- ettinger PDF 2323 ---
+CHAPTER 311
+•
+Feline Idiopathic/Interstitial Cystitis
+2171
+eBooks.Health.Elsevier.com
+ACRONYMS
+AAFP American 
+Association of Feline 
+Practitioners
+CBD cannabidiol
+cLUTS chronic lower 
+urinary tract signs
+CNS central nervous 
+system
+CTRS central threat 
+response system
+FIC feline idiopathic/
+interstitial cystitis
+IC interstitial cystitis
+LUTS lower urinary tract 
+signs
+MEMO multimodal 
+environmental 
+modification
+UTI urinary tract infection
+WAS water-avoidance 
+stress
+Feline Idiopathic/Interstitial Cystitis
+Tony Buffington | Mikel M. Delgado
+INTRODUCTION
+F
+eline 
+idiopathic/interstitial 
+cysti-
+tis (FIC) is the most common cause 
+of chronic lower urinary tract signs 
+(cLUTS), which includes variable combina-
+tions of straining, hematuria, pollakiuria, 
+and periuria, in domestic cats.1 Cats show-
+ing these signs have been referred to as hav-
+ing “feline idiopathic/interstitial cystitis” 
+only because of their similarities to humans 
+with interstitial cystitis (IC; now sometimes 
+referred to as bladder pain syndrome/inter-
+stitial cystitis). IC is characterized clinically 
+by dicult, painful, and frequent urinations 
+without a diagnosable cause, and oen a 
+variety of comorbid health problems.2
+FIC was once classied as a “feline lower 
+urinary tract disorder” (FLUTD)3 because 
+cats present with cLUTS. FIC does not seem 
+to originate in the bladder, however. Just 
+as jaundice can present as a dermatologic 
+or ophthalmic sign, it is neither a dermatologic nor ophthal-
+mic disorder. Research has identied genetic factors, epigenetic 
+eects, and environmental inuences associated with risk for 
+(F)IC, documented that comorbid disorders oen occur before 
+the onset of the lower urinary tract signs (LUTS), and demon-
+strated how much systemic involvement can be present in these 
+patients.1 One of us (CATB) has proposed the term “Pandora syn-
+drome” to describe the multiple health problems present in some 
+of these cats (as in people with chronic overlapping pain condi-
+tions), because it does not identify any specic cause or organ, 
+and tries to capture the dismay and 
+
+--- ettinger PDF 2345 ---
+CHAPTER 314
+•
+Prostatic Diseases
+2193
+eBooks.Health.Elsevier.com
+to neoplasia. Aseptic prostatitis is rare. Septic prostatitis, the most 
+common inammatory disease, can be acute or chronic, and may 
+be associated with prostatic abscesses (Figure 314.6).44 Multiple 
+organisms are usually demonstrated in dogs with septic pros-
+tatitis; infection by a single bacterium is uncommon.45 Aerobic 
+organisms are most common, e.g., Escherichia coli, Staphylococcus
+sp., Streptococcus sp., Proteus sp., Pseudomonas spp., Brucella canis, 
+Klebsiella sp. Infections are oen traced to bacteria ascending the 
+urethra. Local dissemination from urogenital organs or hematog-
+enous spread is possible.36 Conditions that reduce normal defence 
+mechanisms or that alter prostatic architecture (BPH, cysts, meta-
+plasia, neoplasia) can predispose to prostatic infection.1 5
+Quantitative cultures of prostatic uid may help in understand-
+ing a positive prostatic uid culture (ch. 104). Denitive diagno-
+sis of infection is made by growth >10,000 bacteria/mL.46 It has 
+been suggested that a 2-log dierence between prostatic and urine 
+colony-forming unit counts is consistent with bacterial prostati-
+tis.47 When semen collection or prostate massage is not possible, 
+US-guided FNA (ch. 85) of parenchyma, cysts, or abscesses usu-
+ally provides adequate material for cytologic analysis, culture, and 
+sensitivity (Figure 314.6). Value of a FNA must be weighed against 
+risk. One can drain a cystic or abscess cavity completely to reduce 
+risk of leakage into the abdomen. Cysts, especially those with urine, 
+can become infected secondary to prostatitis.
+ACUTE PROSTATITIS (AP)
+Common Signs, Physical Examination
+A presumptive diagnosis of AP should be based on the history, 
+signs (Box 314.2), PE, laboratory ndings, urine culture results, 
+and prostatic imaging. AP may be conrmed with prostatic cyto-
+logic examination of slides from aspirates, and bacterial culture 
+(ch. 104).45 Common clinical signs include fever, anorexia, leth-
+argy, vomiting, caudal abdominal pain, diculty rising, painful 
+sti gai
+
+--- ettinger PDF 2392 ---
+SECTION XXII
+•
+Cancer
+2240
+eBooks.Health.Elsevier.com
+ACRONYMS
+ALL acute lymphoblastic 
+leukemia
+AML acute myeloid 
+leukemia
+BM bone marrow
+CBC complete blood count
+CCNU lomustine
+CHOP cyclophosphamide 
+(C), doxorubicin 
+(hydroxydaunorubicin 
+[H]), vincristine (Oncovin 
+[O]), and prednisone (P)
+CLL chronic lymphocytic 
+leukemia
+CML chronic myeloid 
+leukemia
+CNS central nervous 
+system
+COP cyclophosphamide, 
+vincristine, prednisone
+CSF cerebrospinal fluid
+CT computed tomography
+DLBCL diffuse large B-cell 
+lymphoma
+EATCL enteropathy 
+associated T-cell 
+lymphoma
+FeLV feline leukemia virus
+FIV feline 
+immunodeficiency virus
+GI gastrointestinal
+Ig immunoglobulin
+LSA lymphoma 
+(lymphosarcoma)
+MHC major 
+histocompatibility 
+complex
+MI mitotic index
+MM multiple myeloma
+MRD myeloma-related 
+disorders
+MST median survival time
+PARR PCR for antigen 
+receptor rearrangement
+PCR polymerase chain 
+reaction
+PE physical examination
+PTCL peripheral T-cell 
+lymphoma
+PTHrP parathyroid 
+hormone-related peptide
+PU/PD polyuria/polydipsia
+Hematopoietic Tumors
+Dennis B. Bailey
+DEFINITIONS
+H
+ematopoietic tumors include lym-
+phoid tumors (lymphoma [LSA; his-
+torically, lymphosarcoma], lymphoid 
+leukemia, and myeloma-related disorders 
+[MRD]) and myeloid leukemias. Lymphomas 
+arise in lymphoid tissues outside of the bone 
+marrow (BM). In dogs, lymph nodes, liver, 
+and spleen are aected most commonly; in 
+cats the gastrointestinal (GI) tract is aected 
+most commonly. However, in both species, 
+LSA can involve almost any organ system, 
+including BM, peripheral blood, cranial 
+mediastinum, skin, nasal cavity, kidneys, and 
+central nervous system (CNS).
+Leukemias arise in the BM and occasion-
+ally the spleen. ey can be derived from 
+lymphoid or myeloid cells. Myeloid leuke-
+mias are usually neutrophilic or monocytic 
+in origin, but can be derived from other gran-
+ulocytes, erythrocytes, or megakaryocytes. 
+e word “leukemia” sometimes is used to 
+describe neoplastic hematopoietic cells cir-
+culating in the blood, but this is imprecise 
+and not recommended. Not all primary BM 
+cancers result i
+
+--- ettinger PDF 2402 ---
+SECTION XXII
+•
+Cancer
+2250
+eBooks.Health.Elsevier.com
+the importance of molecular diagnostics, e.g., ow cytometry and 
+cytochemistry on blood and/or BM when evaluating a pet with 
+acute leukemia.
+A diagnosis of acute leukemia is based on >20% blasts in 
+either the peripheral blood or BM; some older studies used >30% 
+blasts.106-109 Classically, acute leukemias can be distinguished 
+from LSA by being CD34+, but it is estimated that up to 25% of 
+canine acute leukemias are CD34
+21 101 106 Commercially avail-
+able ow cytometry tests have specic antibodies for lymphocytes 
+and for granulocytes/monocytes. However, about 20-25% of acute 
+leukemias cannot be denitively classied despite use of these 
+markers (so-called acute undierentiated leukemias).21 107 Addi-
+tional cytochemical or immunocytochemical stains are available 
+through some universities. PARR is not helpful because not all 
+lymphoid cancers test positive for a clonal rearrangement, and 
+>60% of dogs with AML test positive for clonal or biclonal rear-
+rangements.110 When lineage can be determined, about 50-55% of 
+acute leukemias in dogs are ALL, and 45-50% are AML.100 106-108
+In dogs with ALL, there is not a consistent predominance of B- or 
+T-cell.106-108 Both B- and T-cell ALL have been reported in cats, 
+but there are too few to make meaningful comparisons.111
+Clinical Signs
+Most dogs and cats with acute leukemia are clinically ill at time of 
+initial presentation. Anorexia and lethargy are common108 109 111; 
+other clinical signs include vomiting, diarrhea, weakness, and neu-
+rologic abnormalities. Mild lymphadenopathy is reported in over 
+half of dogs, but it is not reported in cats. Other PE ndings include 
+cranial abdominal organomegaly, fever, pallor, petechia, and epi-
+staxis. T-cell ALL can cause paraneoplastic hypercalcemia, causing 
+PU/PD. FeLV (ch. 199) is associated with acute leukemias in cats.3
+Diagnostics
+Greater than 90% of dogs and cats with acute leukemia have neo-
+plastic cells seen on peripheral blood smears (ch. 58). In some, 
+the number of neoplastic cells is small or they ar
+
+--- ettinger PDF 2453 ---
+CHAPTER 329
+•
+Mammary Gland Tumors
+2301
+eBooks.Health.Elsevier.com
+ACRONYMS
+bMGT benign mammary 
+gland tumor
+CBC complete blood count
+DFI disease-free interval
+IMGC inflammatory 
+mammary gland 
+carcinoma
+MGT mammary gland 
+tumor
+mMGT malignant 
+mammary gland tumor
+OHE ovariohysterectomy
+OS overall survival
+PE physical examination
+SLN sentinel lymph node
+UA urinalysis
+US ultrasound
+Mammary Gland Tumors
+Juan Borrego
+PREVALENCE AND RISK FACTORS
+M
+ammary gland tumors (MGTs) 
+are the most common tumor in 
+intact female dogs and the sec-
+ond to third most common tumor overall 
+in cats.1-3 e incidence varies geographi-
+cally, mostly due to dierent attitudes about 
+neutering. A common risk factor for both 
+species is advancing age. Dogs with malig-
+nant mammary gland tumors (mMGTs) 
+are older. mMGTs are rare in dogs <5 years 
+of age.4 In cats, the mean age at diagno-
+sis is 10-12 years. One recent study noted 
+a trend in higher rates of mMGTs versus 
+benign mammary gland tumors (bMGTs) 
+in dogs, similar to epidemiologic trends in 
+women.2
+Exposure to ovarian hormones during the rst 2 years of life is 
+a recognized risk factor for the development of MGTs, and ovar-
+iohysterectomy (OHE) greatly decreases risk of MGT in both spe-
+cies.5 6 Dogs spayed before their rst estrus have a risk of 0.5%; 
+aer the rst estrus, the risk increases to 8%; and aer a second 
+estrus, risk increases to 26%. Aer the third estrus cycle and/or 
+approximately 4 years of age, OHE provides only modest protec-
+tion. Some studies, however, show a decreased risk of developing 
+new tumors if OHE is performed at MGT removal. Addition-
+ally, histologic progression with increasing tumor size has been 
+reported in dogs with multiple tumors, suggesting a continuous 
+eect of hormones throughout the dog’s lifespan.7 Studies suggest 
+MGTs progress not only from benign to malignant, but also from 
+low to highly malignant.8 Neutering before the rst estrus in cats 
+provides 91% risk reduction; before the second estrus, an 86% risk 
+reduction; and before the third estrus, an 11% risk reduction. Aer 
+the 

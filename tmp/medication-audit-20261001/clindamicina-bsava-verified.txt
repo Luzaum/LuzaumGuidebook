@@ -1,0 +1,217 @@
+===== BSAVA PDF 107 / impressa 91 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+91
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Climbazole
+(CLX wipes, Douxo Pyo) general sale 
+Formulations: Topical 3% chlorhexidine + 0.5% climbazole + 
+phytosphingosine (Duoxo Pyo shampoo/mousse/pads); 
+chlorhexidine, Tris-EDTA, zinc gluconate, glycerine, climbazole, 
+benzyl alcohol, propylene glycol (CLX wipes).
+Action: Inhibits cytochrome P450-dependent synthesis of 
+ergosterol in fungal cells causing increased cell wall permeability 
+and allowing leakage of cellular contents.
+Use: Topical treatment of dermatophyte and Malassezia  skin 
+infections. Additional systemic antifungal treatment may be required 
+in generalized cases. For shampoo formulations 5–10 minutes 
+contact time is required.
+Safety and handling: Normal precautions should be observed.
+Contraindications: None known.
+Adverse reactions: None known.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: May be applied daily–weekly.
+References
+Cavana P, Petit JY, Perrot S et al . (2015) Efficacy of a 2% climbazole shampoo for 
+reducing Malassezia  population sizes on the skin of naturally infected dogs. Journal de 
+Mycologie Medicale  25, 268–273
+Clindamycin
+(Antirobe, Clinacin, Clindacyl, Clindaseptin, 
+Mycinor, Zodon) POM-V 
+Formulations: Oral: 25 mg, 75 mg, 88 mg, 150 mg, 264mg, 300 
+mg capsules and tablets; 25 mg/ml solution.
+Action: Time-dependent lincosamide antibiotic that binds to the 
+50S ribosomal subunit, inhibiting peptide bond formation.
+Use: Bone and joint infections associated with Gram-positive 
+bacteria; pyoderma; toxoplasmosis; and infections associated with 
+the oral cavity. It is also recommended as part of the treatment for 
+sepsis/bacteraemia and hospital-acquired pneumonia. Active against 
+Gram-positive cocci (including penicillin-resistant staphylococci), 
+many obligate anaerobes, mycoplasmas and protozoal infections 
+(Neospora caninum, Toxoplasma gondii). Attains high 
+concentrations in bone and bile. Being a weak base, it becomes 
+ion-trapped (and therefore concentrated) in fluids that are more 
+acidic than plasma, such as prostatic fluid, milk and intracellular 
+fluid. There is complete cross-resistance between lincomycin and 
+
+===== BSAVA PDF 108 / impressa 92 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+92
+clindamycin, and partial cross-resistance with erythromycin. Use 
+with care in individuals with hepatic or renal impairment.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Colitis, vomiting and diarrhoea are reported. 
+Although not a major problem in dogs and cats, discontinue drug if 
+diarrhoea develops. In cats may be associated with oesophagitis and 
+oesophageal stricture; therefore, consider following solid dosage 
+forms such as tablet administration with a small water or food bolus.
+Drug interactions: May enhance the effect of non-depolarizing 
+muscle relaxants, (e.g. tubocurarine) and may antagonize the effects 
+of neostigmine and pyridostigmine. Do not administer with 
+macrolide, chloramphenicol or other lincosamide antimicrobials as 
+these combinations are antagonistic.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs:   
+• 5.5 mg/kg p.o. q12h or 11 mg/kg q24h; in severe infection can 
+increase to 11 mg/kg q12h.
+• Toxoplasmosis/neosporosis: 25 mg/kg p.o. daily in divided 
+doses.
+Cats:
+• 5.5 mg/kg p.o. q12h or 11 mg/kg q24h.
+• Toxoplasmosis: 25 mg/kg p.o. daily in divided doses; increased 
+doses of 30–50 mg/kg p.o. daily have been recommended for 
+CNS involvement.
+References
+Beatty JA, Swift N, Foster DJ et al . (2006) Suspected clindamycin-associated 
+oesophageal injury in cats: five cases. Journal of Feline Medicine and Surgery 8 , 
+412–419
+Hu HZ, Jeffery ND, Donnelly J et al . (2016). What is your neurologic diagnosis? Journal 
+of the American Veterinary Medical Association 249 , 1007–1010
+Clofazimine
+(Clofazimine*) POM 
+Formulations: Oral: 100 mg capsule.
+Action: Not entirely clear but appears to be antimycobacterial and 
+has membrane disrupting properties.
+Use: Mycobacterial infections including feline leprosy. Limited 
+information available with most derived from human medicine. For 
+feline mycobacterial infection long-term treatment is required and 
+combination therapy is utilized, e.g. with clarithromycin and 
+doxycycline or fluoroquinolones. Monitor hepatic and renal function 
+during treatment. Use with caution in hepatic and renal impairment.
+Safety and handling: Normal precautions should be observed.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 109 / impressa 93 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+93
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Contraindications: No information available.
+Adverse reactions: In humans the major adverse effects are 
+nausea, diarrhoea, discoloration of skin, eyes and body fluids and 
+renal and hepatic impairment (monitor functions during therapy). 
+Photosensitization can also occur and treated animals should be 
+housed indoors.
+Drug interactions: No information available.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: 4–8 mg/kg p.o. q24h for 2–6 months. For the 
+management of mycobacterial infections, the drug is generally used 
+in combination therapy with other antimicrobials including 
+fluoroquinolones and clarithromycin. Refer to specialist texts.
+Clomipramine
+(Clomicalm) POM-V 
+Formulations: Oral: 5 mg, 20 mg, 80 mg tablets.
+Action: Both clomipramine and its primary metabolite 
+desmethylclomipramine are active in blocking serotonin and 
+noradrenaline reuptake in the brain, with resultant anxiolytic, 
+antidepressant and anticompulsive effects.
+Use:
+• Licensed for use in association with a behaviour modification 
+plan for the management of separation-related disorders in 
+dogs.
+• Also used in management of a wider range of anxiety-related 
+disorders in dogs and cats, including compulsive behaviours, 
+noise fears and urine spraying.
+• Has been reported in the treatment of cataplexy in the dog, with 
+resolution of signs after 3-months treatment.
+Care required before use in animals with a history of constipation, 
+epilepsy, glaucoma, urinary retention or arrhythmias. Can be used 
+with benzodiazepines.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Patients sensitive to tricyclic or serotonin 
+reuptake inhibitor antidepressants. Do not give with, or within 2 
+weeks of, monoamine oxidase inhibitors (e.g. selegiline). Not 
+recommended for use in male breeding animals, as testicular 
+hypoplasia may occur. 
+Adverse reactions: May cause sporadic vomiting, changes in 
+appetite or lethargy. Vomiting may be reduced by co-administration 
+with a small quantity of food. May cause urinary retention in cats. The 
+safety margin is quite low with toxic side effects observed at 2–3 mg/
+kg, although fatal does is >10 times the recommended dose.

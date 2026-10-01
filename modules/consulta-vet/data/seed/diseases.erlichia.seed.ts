@@ -385,7 +385,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     },
     morulaTvmdl: {
       kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/tvmdl-mórula-e-canis-esfregaco.jpg`,
+      src: `${ASSET_BASE}/tvmdl-morula-e-canis-esfregaco.jpg`,
       alt: 'Morula de Ehrlichia canis em monócito no esfregaco sanguineo de um cão',
       display: 'wide',
       caption:
@@ -393,7 +393,7 @@ export const erliquioseMonociticaCaninaRecord: DiseaseRecord = {
     },
     morulaDetalhada: {
       kind: 'clinicalFigure',
-      src: `${ASSET_BASE}/fig-26-1-mórula-e-ciclo-celular.jpg`,
+      src: `${ASSET_BASE}/fig-26-1-morula-e-ciclo-celular.jpg`,
       alt: 'Morula de Ehrlichia canis em monócito e em cultura DH82',
       display: 'wide',
       caption:

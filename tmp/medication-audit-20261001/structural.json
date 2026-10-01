@@ -1,0 +1,1154 @@
+{
+  "local": {
+    "acetilcisteina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "alopurinol": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Ajustes posológicos",
+        "Interações detalhadas"
+      ],
+      "issues": [
+        "doses[dose-allo-dog-urate-dissolution]: falta monitoring",
+        "doses[dose-allo-dog-urate-dissolution]: falta clinicalContext",
+        "doses[dose-allo-dog-urate-dissolution]: falta evidenceLevel",
+        "doses[dose-allo-dog-urate-prevention]: falta monitoring",
+        "doses[dose-allo-dog-urate-prevention]: falta clinicalContext",
+        "doses[dose-allo-dog-urate-prevention]: falta evidenceLevel",
+        "doses[dose-allo-dog-leishmania-combo]: falta monitoring",
+        "doses[dose-allo-dog-leishmania-combo]: falta clinicalContext",
+        "doses[dose-allo-dog-leishmania-combo]: falta evidenceLevel",
+        "doses[dose-allo-dog-leishmania-renal]: falta monitoring",
+        "doses[dose-allo-dog-leishmania-renal]: falta clinicalContext",
+        "doses[dose-allo-dog-leishmania-renal]: falta evidenceLevel",
+        "doses[dose-allo-cat-leishmania]: falta monitoring",
+        "doses[dose-allo-cat-leishmania]: falta clinicalContext",
+        "doses[dose-allo-cat-leishmania]: falta evidenceLevel",
+        "doses[dose-allo-cat-urate-historical]: falta monitoring",
+        "doses[dose-allo-cat-urate-historical]: falta clinicalContext",
+        "doses[dose-allo-cat-urate-historical]: falta evidenceLevel"
+      ]
+    },
+    "amantadina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações"
+      ],
+      "issues": []
+    },
+    "amitriptilina": {
+      "missing": [
+        "Indicações detalhadas",
+        "Ajustes posológicos",
+        "Interações detalhadas"
+      ],
+      "issues": [
+        "doses[dose-amit-dog-behavior]: falta monitoring",
+        "doses[dose-amit-dog-behavior]: falta clinicalContext",
+        "doses[dose-amit-dog-behavior]: falta evidenceLevel",
+        "doses[dose-amit-dog-neuropathic]: falta monitoring",
+        "doses[dose-amit-dog-neuropathic]: falta clinicalContext",
+        "doses[dose-amit-dog-neuropathic]: falta evidenceLevel",
+        "doses[dose-amit-dog-pruritus]: falta monitoring",
+        "doses[dose-amit-dog-pruritus]: falta clinicalContext",
+        "doses[dose-amit-dog-pruritus]: falta evidenceLevel",
+        "doses[dose-amit-cat-behavior]: falta monitoring",
+        "doses[dose-amit-cat-behavior]: falta clinicalContext",
+        "doses[dose-amit-cat-behavior]: falta evidenceLevel",
+        "doses[dose-amit-cat-fic-refractory]: falta monitoring",
+        "doses[dose-amit-cat-fic-refractory]: falta clinicalContext",
+        "doses[dose-amit-cat-fic-refractory]: falta evidenceLevel",
+        "doses[dose-amit-cat-fic-high-chew]: falta monitoring",
+        "doses[dose-amit-cat-fic-high-chew]: falta clinicalContext",
+        "doses[dose-amit-cat-fic-high-chew]: falta evidenceLevel",
+        "doses[dose-amit-cat-neuropathic]: falta monitoring",
+        "doses[dose-amit-cat-neuropathic]: falta clinicalContext",
+        "doses[dose-amit-cat-neuropathic]: falta evidenceLevel"
+      ]
+    },
+    "amoxicilina-clavulanato": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-amox-clav-standard-4-1]: falta evidenceLevel",
+        "doses[dose-amox-clav-pyoderma-deep]: falta evidenceLevel",
+        "doses[dose-amox-clav-uti-short]: falta evidenceLevel",
+        "doses[dose-amox-clav-feline-abscess]: falta evidenceLevel",
+        "doses[dose-amox-clav-dog-cistite]: falta monitoring",
+        "doses[dose-amox-clav-dog-cistite]: falta clinicalContext",
+        "doses[dose-amox-clav-dog-cistite]: falta evidenceLevel"
+      ]
+    },
+    "ampicilina-sulbactam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "História"
+      ],
+      "issues": []
+    },
+    "betanecol": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "buprenorfina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "capromorelina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-capromorelin-feline-ckd]: falta evidenceLevel",
+        "doses[dose-capromorelin-canine-appetite]: falta evidenceLevel",
+        "doses[dose-capromorelin-feline-extra-label]: falta evidenceLevel"
+      ]
+    },
+    "ceftriaxona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "ciclosporina": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-ciclo-dog-atopy]: falta monitoring",
+        "doses[dose-ciclo-dog-atopy]: falta clinicalContext",
+        "doses[dose-ciclo-dog-atopy]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-fass]: falta monitoring",
+        "doses[dose-ciclo-cat-fass]: falta clinicalContext",
+        "doses[dose-ciclo-cat-fass]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-perianal]: falta monitoring",
+        "doses[dose-ciclo-dog-perianal]: falta clinicalContext",
+        "doses[dose-ciclo-dog-perianal]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-imha]: falta monitoring",
+        "doses[dose-ciclo-dog-imha]: falta clinicalContext",
+        "doses[dose-ciclo-dog-imha]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-kcs]: falta monitoring",
+        "doses[dose-ciclo-dog-kcs]: falta clinicalContext",
+        "doses[dose-ciclo-dog-kcs]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-stomatitis]: falta monitoring",
+        "doses[dose-ciclo-cat-stomatitis]: falta clinicalContext",
+        "doses[dose-ciclo-cat-stomatitis]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-impa]: falta monitoring",
+        "doses[dose-ciclo-dog-impa]: falta clinicalContext",
+        "doses[dose-ciclo-dog-impa]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-keratitis]: falta monitoring",
+        "doses[dose-ciclo-cat-keratitis]: falta clinicalContext",
+        "doses[dose-ciclo-cat-keratitis]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-sebadenitis]: falta monitoring",
+        "doses[dose-ciclo-dog-sebadenitis]: falta clinicalContext",
+        "doses[dose-ciclo-dog-sebadenitis]: falta evidenceLevel"
+      ]
+    },
+    "ciproeptadina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Farmacocinética",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-cipro-cat-appetite-start]: falta monitoring",
+        "doses[dose-cipro-cat-appetite-start]: falta clinicalContext",
+        "doses[dose-cipro-cat-appetite-start]: falta evidenceLevel",
+        "doses[dose-cipro-cat-appetite-range]: falta monitoring",
+        "doses[dose-cipro-cat-appetite-range]: falta clinicalContext",
+        "doses[dose-cipro-cat-appetite-range]: falta evidenceLevel",
+        "doses[dose-cipro-dog-appetite]: falta monitoring",
+        "doses[dose-cipro-dog-appetite]: falta clinicalContext",
+        "doses[dose-cipro-dog-appetite]: falta evidenceLevel",
+        "doses[dose-cipro-dog-serotonin]: falta monitoring",
+        "doses[dose-cipro-dog-serotonin]: falta clinicalContext",
+        "doses[dose-cipro-dog-serotonin]: falta evidenceLevel",
+        "doses[dose-cipro-cat-serotonin]: falta monitoring",
+        "doses[dose-cipro-cat-serotonin]: falta clinicalContext",
+        "doses[dose-cipro-cat-serotonin]: falta evidenceLevel",
+        "doses[dose-cipro-cat-antihistamine]: falta monitoring",
+        "doses[dose-cipro-cat-antihistamine]: falta clinicalContext",
+        "doses[dose-cipro-cat-antihistamine]: falta evidenceLevel",
+        "doses[dose-cipro-dog-antihistamine]: falta monitoring",
+        "doses[dose-cipro-dog-antihistamine]: falta clinicalContext",
+        "doses[dose-cipro-dog-antihistamine]: falta evidenceLevel"
+      ]
+    },
+    "clindamicina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "clorambucil": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta monitoring",
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta evidenceLevel",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta monitoring",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta monitoring",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-metronomic]: falta monitoring",
+        "doses[dose-chlorambucil-dog-metronomic]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-metronomic]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta monitoring",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta monitoring",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-imd-general]: falta monitoring",
+        "doses[dose-chlorambucil-dog-imd-general]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-imd-general]: falta evidenceLevel",
+        "doses[dose-chlorambucil-cat-imd-general]: falta monitoring",
+        "doses[dose-chlorambucil-cat-imd-general]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-imd-general]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta duration",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta monitoring",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta evidenceLevel"
+      ]
+    },
+    "diazepam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "dipirona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "enrofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "gabapentina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-gaba-dog-neuropathic-start]: falta monitoring",
+        "doses[dose-gaba-dog-neuropathic-start]: falta clinicalContext",
+        "doses[dose-gaba-dog-neuropathic-start]: falta evidenceLevel",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta monitoring",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta clinicalContext",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta evidenceLevel",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta monitoring",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta clinicalContext",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta evidenceLevel",
+        "doses[dose-gaba-dog-storm-phobia]: falta monitoring",
+        "doses[dose-gaba-dog-storm-phobia]: falta clinicalContext",
+        "doses[dose-gaba-dog-storm-phobia]: falta evidenceLevel",
+        "doses[dose-gaba-dog-previsit]: falta monitoring",
+        "doses[dose-gaba-dog-previsit]: falta clinicalContext",
+        "doses[dose-gaba-dog-previsit]: falta evidenceLevel",
+        "doses[dose-gaba-cat-neuropathic]: falta monitoring",
+        "doses[dose-gaba-cat-neuropathic]: falta clinicalContext",
+        "doses[dose-gaba-cat-neuropathic]: falta evidenceLevel",
+        "doses[dose-gaba-cat-previsit-healthy]: falta monitoring",
+        "doses[dose-gaba-cat-previsit-healthy]: falta clinicalContext",
+        "doses[dose-gaba-cat-previsit-healthy]: falta evidenceLevel",
+        "doses[dose-gaba-cat-previsit-ckd]: falta monitoring",
+        "doses[dose-gaba-cat-previsit-ckd]: falta clinicalContext",
+        "doses[dose-gaba-cat-previsit-ckd]: falta evidenceLevel"
+      ]
+    },
+    "hidroxido-de-aluminio": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "levetiracetam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "marbofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "meloxicam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "metadona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-metadona-cao-analgesia-aguda]: falta monitoring",
+        "doses[dose-metadona-cao-analgesia-aguda]: falta clinicalContext",
+        "doses[dose-metadona-cao-cri]: falta monitoring",
+        "doses[dose-metadona-cao-cri]: falta clinicalContext",
+        "doses[dose-metadona-gato-analgesia-aguda]: falta monitoring",
+        "doses[dose-metadona-gato-analgesia-aguda]: falta clinicalContext",
+        "doses[dose-metadona-gato-otm]: falta monitoring",
+        "doses[dose-metadona-gato-otm]: falta clinicalContext",
+        "doses[dose-metadona-epidural]: falta monitoring",
+        "doses[dose-metadona-epidural]: falta clinicalContext"
+      ]
+    },
+    "micofenolato-mofetila": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações"
+      ],
+      "issues": []
+    },
+    "mirtazapina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Ajustes posológicos",
+        "Interações detalhadas"
+      ],
+      "issues": []
+    },
+    "fenobarbital": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-fenobarbital-dog-initial]: falta monitoring",
+        "doses[dose-fenobarbital-dog-initial]: falta clinicalContext",
+        "doses[dose-fenobarbital-cat-initial]: falta monitoring",
+        "doses[dose-fenobarbital-cat-initial]: falta clinicalContext",
+        "doses[dose-fenobarbital-convless-label]: falta monitoring",
+        "doses[dose-fenobarbital-convless-label]: falta clinicalContext",
+        "doses[dose-fenobarbital-loading-status]: falta monitoring",
+        "doses[dose-fenobarbital-loading-status]: falta clinicalContext",
+        "doses[dose-fenobarbital-sialadenosis]: falta monitoring",
+        "doses[dose-fenobarbital-sialadenosis]: falta clinicalContext"
+      ]
+    },
+    "pradofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "prednisolona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-pred-dog-anti]: falta monitoring",
+        "doses[dose-pred-dog-anti]: falta clinicalContext",
+        "doses[dose-pred-dog-anti]: falta evidenceLevel",
+        "doses[dose-pred-cat-anti]: falta monitoring",
+        "doses[dose-pred-cat-anti]: falta clinicalContext",
+        "doses[dose-pred-cat-anti]: falta evidenceLevel",
+        "doses[dose-pred-dog-imuno]: falta monitoring",
+        "doses[dose-pred-dog-imuno]: falta clinicalContext",
+        "doses[dose-pred-dog-imuno]: falta evidenceLevel",
+        "doses[dose-pred-cat-imuno]: falta monitoring",
+        "doses[dose-pred-cat-imuno]: falta clinicalContext",
+        "doses[dose-pred-cat-imuno]: falta evidenceLevel",
+        "doses[dose-pred-reposicao]: falta monitoring",
+        "doses[dose-pred-reposicao]: falta clinicalContext",
+        "doses[dose-pred-reposicao]: falta evidenceLevel",
+        "doses[dose-pred-cat-reposicao]: falta monitoring",
+        "doses[dose-pred-cat-reposicao]: falta clinicalContext",
+        "doses[dose-pred-cat-reposicao]: falta evidenceLevel",
+        "doses[dose-pred-dog-onc]: falta monitoring",
+        "doses[dose-pred-dog-onc]: falta clinicalContext",
+        "doses[dose-pred-dog-onc]: falta evidenceLevel"
+      ]
+    },
+    "pronefra": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "sucralfato": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-sucral-dog-under20-bsava]: falta monitoring",
+        "doses[dose-sucral-dog-under20-bsava]: falta clinicalContext",
+        "doses[dose-sucral-dog-under20-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-dog-over20-bsava]: falta monitoring",
+        "doses[dose-sucral-dog-over20-bsava]: falta clinicalContext",
+        "doses[dose-sucral-dog-over20-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-cat-general-bsava]: falta monitoring",
+        "doses[dose-sucral-cat-general-bsava]: falta clinicalContext",
+        "doses[dose-sucral-cat-general-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta monitoring",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta clinicalContext",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta evidenceLevel",
+        "doses[dose-sucral-cat-esophagitis-high]: falta monitoring",
+        "doses[dose-sucral-cat-esophagitis-high]: falta clinicalContext",
+        "doses[dose-sucral-cat-esophagitis-high]: falta evidenceLevel",
+        "doses[dose-sucral-both-oral-lesions]: falta monitoring",
+        "doses[dose-sucral-both-oral-lesions]: falta clinicalContext",
+        "doses[dose-sucral-both-oral-lesions]: falta evidenceLevel"
+      ]
+    },
+    "sulfametoxazol-trimetoprima": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-tmp-smx-dog-geral-grave]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta duration",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta monitoring",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta clinicalContext",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta evidenceLevel",
+        "doses[dose-tmp-smx-cat-uti-complicated]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta monitoring",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta clinicalContext",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta evidenceLevel",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta duration",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta monitoring",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta clinicalContext",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta evidenceLevel"
+      ]
+    },
+    "tramadol": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-tramadol-dog-periop]: falta monitoring",
+        "doses[dose-tramadol-dog-periop]: falta clinicalContext",
+        "doses[dose-tramadol-cat-periop]: falta monitoring",
+        "doses[dose-tramadol-cat-periop]: falta clinicalContext",
+        "doses[dose-tramadol-cat-oa]: falta monitoring",
+        "doses[dose-tramadol-cat-oa]: falta clinicalContext",
+        "doses[dose-tramadol-dog-multimodal]: falta monitoring",
+        "doses[dose-tramadol-dog-multimodal]: falta clinicalContext"
+      ]
+    }
+  },
+  "effective": {
+    "acetilcisteina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "alopurinol": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Farmacocinética",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-alopurinol-lvc]: falta duration",
+        "doses[dose-alopurinol-lvc]: falta monitoring",
+        "doses[dose-alopurinol-lvc]: falta clinicalContext",
+        "doses[dose-alopurinol-lvc]: falta evidenceLevel"
+      ]
+    },
+    "amantadina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações"
+      ],
+      "issues": []
+    },
+    "amitriptilina": {
+      "missing": [
+        "Indicações detalhadas",
+        "Ajustes posológicos",
+        "Interações detalhadas"
+      ],
+      "issues": [
+        "doses[dose-amit-dog-behavior]: falta monitoring",
+        "doses[dose-amit-dog-behavior]: falta clinicalContext",
+        "doses[dose-amit-dog-behavior]: falta evidenceLevel",
+        "doses[dose-amit-dog-neuropathic]: falta monitoring",
+        "doses[dose-amit-dog-neuropathic]: falta clinicalContext",
+        "doses[dose-amit-dog-neuropathic]: falta evidenceLevel",
+        "doses[dose-amit-dog-pruritus]: falta monitoring",
+        "doses[dose-amit-dog-pruritus]: falta clinicalContext",
+        "doses[dose-amit-dog-pruritus]: falta evidenceLevel",
+        "doses[dose-amit-cat-behavior]: falta monitoring",
+        "doses[dose-amit-cat-behavior]: falta clinicalContext",
+        "doses[dose-amit-cat-behavior]: falta evidenceLevel",
+        "doses[dose-amit-cat-fic-refractory]: falta monitoring",
+        "doses[dose-amit-cat-fic-refractory]: falta clinicalContext",
+        "doses[dose-amit-cat-fic-refractory]: falta evidenceLevel",
+        "doses[dose-amit-cat-fic-high-chew]: falta monitoring",
+        "doses[dose-amit-cat-fic-high-chew]: falta clinicalContext",
+        "doses[dose-amit-cat-fic-high-chew]: falta evidenceLevel",
+        "doses[dose-amit-cat-neuropathic]: falta monitoring",
+        "doses[dose-amit-cat-neuropathic]: falta clinicalContext",
+        "doses[dose-amit-cat-neuropathic]: falta evidenceLevel"
+      ]
+    },
+    "amoxicilina-clavulanato": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Farmacocinética",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-amox-clav-dog]: falta duration",
+        "doses[dose-amox-clav-dog]: falta monitoring",
+        "doses[dose-amox-clav-dog]: falta clinicalContext",
+        "doses[dose-amox-clav-dog]: falta evidenceLevel",
+        "doses[dose-amox-clav-cat]: falta duration",
+        "doses[dose-amox-clav-cat]: falta monitoring",
+        "doses[dose-amox-clav-cat]: falta clinicalContext",
+        "doses[dose-amox-clav-cat]: falta evidenceLevel"
+      ]
+    },
+    "ampicilina-sulbactam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "História"
+      ],
+      "issues": []
+    },
+    "betanecol": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "buprenorfina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "capromorelina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-capromorelin-feline-ckd]: falta evidenceLevel",
+        "doses[dose-capromorelin-canine-appetite]: falta evidenceLevel",
+        "doses[dose-capromorelin-feline-extra-label]: falta evidenceLevel"
+      ]
+    },
+    "ceftriaxona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "ciclosporina": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-ciclo-dog-atopy]: falta monitoring",
+        "doses[dose-ciclo-dog-atopy]: falta clinicalContext",
+        "doses[dose-ciclo-dog-atopy]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-fass]: falta monitoring",
+        "doses[dose-ciclo-cat-fass]: falta clinicalContext",
+        "doses[dose-ciclo-cat-fass]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-perianal]: falta monitoring",
+        "doses[dose-ciclo-dog-perianal]: falta clinicalContext",
+        "doses[dose-ciclo-dog-perianal]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-imha]: falta monitoring",
+        "doses[dose-ciclo-dog-imha]: falta clinicalContext",
+        "doses[dose-ciclo-dog-imha]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-kcs]: falta monitoring",
+        "doses[dose-ciclo-dog-kcs]: falta clinicalContext",
+        "doses[dose-ciclo-dog-kcs]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-stomatitis]: falta monitoring",
+        "doses[dose-ciclo-cat-stomatitis]: falta clinicalContext",
+        "doses[dose-ciclo-cat-stomatitis]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-impa]: falta monitoring",
+        "doses[dose-ciclo-dog-impa]: falta clinicalContext",
+        "doses[dose-ciclo-dog-impa]: falta evidenceLevel",
+        "doses[dose-ciclo-cat-keratitis]: falta monitoring",
+        "doses[dose-ciclo-cat-keratitis]: falta clinicalContext",
+        "doses[dose-ciclo-cat-keratitis]: falta evidenceLevel",
+        "doses[dose-ciclo-dog-sebadenitis]: falta monitoring",
+        "doses[dose-ciclo-dog-sebadenitis]: falta clinicalContext",
+        "doses[dose-ciclo-dog-sebadenitis]: falta evidenceLevel"
+      ]
+    },
+    "ciproeptadina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Farmacocinética",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-cipro-cat-appetite-start]: falta monitoring",
+        "doses[dose-cipro-cat-appetite-start]: falta clinicalContext",
+        "doses[dose-cipro-cat-appetite-start]: falta evidenceLevel",
+        "doses[dose-cipro-cat-appetite-range]: falta monitoring",
+        "doses[dose-cipro-cat-appetite-range]: falta clinicalContext",
+        "doses[dose-cipro-cat-appetite-range]: falta evidenceLevel",
+        "doses[dose-cipro-dog-appetite]: falta monitoring",
+        "doses[dose-cipro-dog-appetite]: falta clinicalContext",
+        "doses[dose-cipro-dog-appetite]: falta evidenceLevel",
+        "doses[dose-cipro-dog-serotonin]: falta monitoring",
+        "doses[dose-cipro-dog-serotonin]: falta clinicalContext",
+        "doses[dose-cipro-dog-serotonin]: falta evidenceLevel",
+        "doses[dose-cipro-cat-serotonin]: falta monitoring",
+        "doses[dose-cipro-cat-serotonin]: falta clinicalContext",
+        "doses[dose-cipro-cat-serotonin]: falta evidenceLevel",
+        "doses[dose-cipro-cat-antihistamine]: falta monitoring",
+        "doses[dose-cipro-cat-antihistamine]: falta clinicalContext",
+        "doses[dose-cipro-cat-antihistamine]: falta evidenceLevel",
+        "doses[dose-cipro-dog-antihistamine]: falta monitoring",
+        "doses[dose-cipro-dog-antihistamine]: falta clinicalContext",
+        "doses[dose-cipro-dog-antihistamine]: falta evidenceLevel"
+      ]
+    },
+    "clindamicina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "clorambucil": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta monitoring",
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-small-cell-lymphoma]: falta evidenceLevel",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta monitoring",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-small-cell-pulse]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta monitoring",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-ple-acvim2026]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-metronomic]: falta monitoring",
+        "doses[dose-chlorambucil-dog-metronomic]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-metronomic]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta monitoring",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-cll-bsava]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta monitoring",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-chop-substitute]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-imd-general]: falta monitoring",
+        "doses[dose-chlorambucil-dog-imd-general]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-imd-general]: falta evidenceLevel",
+        "doses[dose-chlorambucil-cat-imd-general]: falta monitoring",
+        "doses[dose-chlorambucil-cat-imd-general]: falta clinicalContext",
+        "doses[dose-chlorambucil-cat-imd-general]: falta evidenceLevel",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta duration",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta monitoring",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta clinicalContext",
+        "doses[dose-chlorambucil-dog-immunosuppression-plumbs]: falta evidenceLevel"
+      ]
+    },
+    "diazepam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "dipirona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "enrofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "gabapentina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-gaba-dog-neuropathic-start]: falta monitoring",
+        "doses[dose-gaba-dog-neuropathic-start]: falta clinicalContext",
+        "doses[dose-gaba-dog-neuropathic-start]: falta evidenceLevel",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta monitoring",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta clinicalContext",
+        "doses[dose-gaba-dog-neuropathic-maintenance]: falta evidenceLevel",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta monitoring",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta clinicalContext",
+        "doses[dose-gaba-dog-epilepsy-adj]: falta evidenceLevel",
+        "doses[dose-gaba-dog-storm-phobia]: falta monitoring",
+        "doses[dose-gaba-dog-storm-phobia]: falta clinicalContext",
+        "doses[dose-gaba-dog-storm-phobia]: falta evidenceLevel",
+        "doses[dose-gaba-dog-previsit]: falta monitoring",
+        "doses[dose-gaba-dog-previsit]: falta clinicalContext",
+        "doses[dose-gaba-dog-previsit]: falta evidenceLevel",
+        "doses[dose-gaba-cat-neuropathic]: falta monitoring",
+        "doses[dose-gaba-cat-neuropathic]: falta clinicalContext",
+        "doses[dose-gaba-cat-neuropathic]: falta evidenceLevel",
+        "doses[dose-gaba-cat-previsit-healthy]: falta monitoring",
+        "doses[dose-gaba-cat-previsit-healthy]: falta clinicalContext",
+        "doses[dose-gaba-cat-previsit-healthy]: falta evidenceLevel",
+        "doses[dose-gaba-cat-previsit-ckd]: falta monitoring",
+        "doses[dose-gaba-cat-previsit-ckd]: falta clinicalContext",
+        "doses[dose-gaba-cat-previsit-ckd]: falta evidenceLevel"
+      ]
+    },
+    "hidroxido-de-aluminio": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "levetiracetam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "marbofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "meloxicam": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor"
+      ],
+      "issues": []
+    },
+    "metadona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-metadona-cao-analgesia-aguda]: falta monitoring",
+        "doses[dose-metadona-cao-analgesia-aguda]: falta clinicalContext",
+        "doses[dose-metadona-cao-cri]: falta monitoring",
+        "doses[dose-metadona-cao-cri]: falta clinicalContext",
+        "doses[dose-metadona-gato-analgesia-aguda]: falta monitoring",
+        "doses[dose-metadona-gato-analgesia-aguda]: falta clinicalContext",
+        "doses[dose-metadona-gato-otm]: falta monitoring",
+        "doses[dose-metadona-gato-otm]: falta clinicalContext",
+        "doses[dose-metadona-epidural]: falta monitoring",
+        "doses[dose-metadona-epidural]: falta clinicalContext"
+      ]
+    },
+    "micofenolato-mofetila": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações"
+      ],
+      "issues": []
+    },
+    "mirtazapina": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Ajustes posológicos",
+        "Interações detalhadas"
+      ],
+      "issues": []
+    },
+    "fenobarbital": {
+      "missing": [
+        "Resumo rápido",
+        "Indicações detalhadas",
+        "Farmacocinética",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-fenobarbital-dog]: falta duration",
+        "doses[dose-fenobarbital-dog]: falta monitoring",
+        "doses[dose-fenobarbital-dog]: falta clinicalContext",
+        "doses[dose-fenobarbital-dog]: falta evidenceLevel",
+        "doses[dose-fenobarbital-cat]: falta duration",
+        "doses[dose-fenobarbital-cat]: falta monitoring",
+        "doses[dose-fenobarbital-cat]: falta clinicalContext",
+        "doses[dose-fenobarbital-cat]: falta evidenceLevel"
+      ]
+    },
+    "pradofloxacina": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "prednisolona": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-pred-dog-anti]: falta monitoring",
+        "doses[dose-pred-dog-anti]: falta clinicalContext",
+        "doses[dose-pred-dog-anti]: falta evidenceLevel",
+        "doses[dose-pred-cat-anti]: falta monitoring",
+        "doses[dose-pred-cat-anti]: falta clinicalContext",
+        "doses[dose-pred-cat-anti]: falta evidenceLevel",
+        "doses[dose-pred-dog-imuno]: falta monitoring",
+        "doses[dose-pred-dog-imuno]: falta clinicalContext",
+        "doses[dose-pred-dog-imuno]: falta evidenceLevel",
+        "doses[dose-pred-cat-imuno]: falta monitoring",
+        "doses[dose-pred-cat-imuno]: falta clinicalContext",
+        "doses[dose-pred-cat-imuno]: falta evidenceLevel",
+        "doses[dose-pred-reposicao]: falta monitoring",
+        "doses[dose-pred-reposicao]: falta clinicalContext",
+        "doses[dose-pred-reposicao]: falta evidenceLevel",
+        "doses[dose-pred-cat-reposicao]: falta monitoring",
+        "doses[dose-pred-cat-reposicao]: falta clinicalContext",
+        "doses[dose-pred-cat-reposicao]: falta evidenceLevel",
+        "doses[dose-pred-dog-onc]: falta monitoring",
+        "doses[dose-pred-dog-onc]: falta clinicalContext",
+        "doses[dose-pred-dog-onc]: falta evidenceLevel"
+      ]
+    },
+    "pronefra": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": []
+    },
+    "sucralfato": {
+      "missing": [
+        "Indicações detalhadas",
+        "Precauções detalhadas",
+        "Efeitos adversos detalhados",
+        "Ajustes posológicos",
+        "Interações detalhadas",
+        "Classificação detalhada",
+        "Técnica por via",
+        "Particularidades por espécie",
+        "Aspectos de prescrição",
+        "Modelo de receita",
+        "Tabela de peso",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-sucral-dog-under20-bsava]: falta monitoring",
+        "doses[dose-sucral-dog-under20-bsava]: falta clinicalContext",
+        "doses[dose-sucral-dog-under20-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-dog-over20-bsava]: falta monitoring",
+        "doses[dose-sucral-dog-over20-bsava]: falta clinicalContext",
+        "doses[dose-sucral-dog-over20-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-cat-general-bsava]: falta monitoring",
+        "doses[dose-sucral-cat-general-bsava]: falta clinicalContext",
+        "doses[dose-sucral-cat-general-bsava]: falta evidenceLevel",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta monitoring",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta clinicalContext",
+        "doses[dose-sucral-dog-esophagitis-slurry]: falta evidenceLevel",
+        "doses[dose-sucral-cat-esophagitis-high]: falta monitoring",
+        "doses[dose-sucral-cat-esophagitis-high]: falta clinicalContext",
+        "doses[dose-sucral-cat-esophagitis-high]: falta evidenceLevel",
+        "doses[dose-sucral-both-oral-lesions]: falta monitoring",
+        "doses[dose-sucral-both-oral-lesions]: falta clinicalContext",
+        "doses[dose-sucral-both-oral-lesions]: falta evidenceLevel"
+      ]
+    },
+    "sulfametoxazol-trimetoprima": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-tmp-smx-dog-geral-grave]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta duration",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta monitoring",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta clinicalContext",
+        "doses[dose-tmp-smx-dog-geral-grave]: falta evidenceLevel",
+        "doses[dose-tmp-smx-cat-uti-complicated]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta monitoring",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta clinicalContext",
+        "doses[dose-tmp-smx-cat-uti-complicated]: falta evidenceLevel",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: apresentação inexistente pres-tmp-smx-susp-br",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta duration",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta monitoring",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta clinicalContext",
+        "doses[dose-tmp-smx-dog-coccidia-over4]: falta evidenceLevel"
+      ]
+    },
+    "tramadol": {
+      "missing": [
+        "Monitoramento",
+        "Orientação ao tutor",
+        "Interações",
+        "História"
+      ],
+      "issues": [
+        "doses[dose-tramadol-dog-periop]: falta monitoring",
+        "doses[dose-tramadol-dog-periop]: falta clinicalContext",
+        "doses[dose-tramadol-cat-periop]: falta monitoring",
+        "doses[dose-tramadol-cat-periop]: falta clinicalContext",
+        "doses[dose-tramadol-cat-oa]: falta monitoring",
+        "doses[dose-tramadol-cat-oa]: falta clinicalContext",
+        "doses[dose-tramadol-dog-multimodal]: falta monitoring",
+        "doses[dose-tramadol-dog-multimodal]: falta clinicalContext"
+      ]
+    }
+  }
+}

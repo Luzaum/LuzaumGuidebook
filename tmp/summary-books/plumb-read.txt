@@ -1,0 +1,1205 @@
+
+--- plumb PDF 39 ---
+12      Acetylcysteine
+cosis. It is also used as a potential adjunctive treatment to prevent 
+enterolith formation in horses by reducing colonic pH.
+Pharmacology/Actions
+Acetic acid in the rumen lowers pH by shifting ammonia (NH3) to 
+ammonium ions (NH4
++) to reduce ammonia absorption; it may also 
+slow the hydrolysis of urea.
+Pharmacokinetics
+No information is noted.
+Contraindications/Precautions/Warnings
+Acetic acid should not be administered to ruminants until lactic aci-
+dosis (eg, grain overload, rumen acidosis) is ruled out.
+Do NOT use concentrated forms of acetic acid; use only vinegar 
+(3%-5% acetic acid).
+Adverse Effects
+Because of the unpleasant taste and potential for causing mucous 
+membrane irritation, it is generally recommended to administer ace-
+tic acid via stomach tube.
+Overdose/Acute Toxicity
+When acetic acid is used for appropriate indications, there is little 
+likelihood of serious toxicity occurring after minor overdoses. Be-
+cause of its potential corrosiveness, the greatest concern is when a 
+concentrated form of acetic acid is mistakenly used.
+Drug Interactions
+There are no documented drug interactions with oral acetic acid. 
+Because of its acidic qualities, acetic acid could theoretically affect 
+the pharmacokinetics of several drugs, which may have clinical sig-
+nificance in veterinary species. Unless otherwise noted, use together 
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+	■Aspirin: Acidified urine can decrease the excretion of salicylates.
+	■Azole Antifungals (eg, itraconazole, ketoconazole): Acetic 
+acid may increase absorption of azole antifungal agents.
+	■Iron: Acetic acid may increase iron absorption.
+	■Phenobarbital: Acidified urine can decrease the excretion of 
+phenobarbital.
+	■Quinidine: Acidified urine can decrease the excretion of quini-
+dine.
+Dosages
+CATTLE/RUMINANTS:
+Urea poisoning/nonprotein nitrogen-induced ammonia tox-
+icosis (extra-label): Using 5% acetic acid (ie, vinegar), infuse 
+4 – 10 L (for cattle) or 250 mL – 1 L (sheep/goa
+
+--- plumb PDF 71 ---
+44      Aluminum Hydroxide
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Altrenogest 0.22% (2.2 mg/mL) in oil solution in 150 mL and 
+1000 mL bottles; Regu-Mate®, generic (Rx). FDA-approved for use in 
+horses that are not intended for food. This medication is banned in 
+racing animals in some countries.
+Altrenogest 0.22% (2.2 mg/mL) in 1000 mL bottles; Matrix®, generic; 
+(OTC). FDA-approved for use in sexually mature gilts that have had 
+at least 1 estrous cycle. Gilts must not be slaughtered for human con-
+sumption for 21 days after the last treatment. The FDA prohibits the 
+extra-label use of this medication, including to enhance food and/or 
+fiber production in animals.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Aluminum Hydroxide
+(ah-loo-min-um hye-droks-ide)  Amphojel®
+Oral Antacid/Phosphate Binder
+Prescriber Highlights
+	
+▶Used to treat hyperphosphatemia in small animals and some-
+times as an antacid for gastric ulcers
+	
+▶Chronic use may lead to electrolyte abnormalities; possible 
+aluminum toxicity.
+	
+▶Many potential drug interactions
+	
+▶Bulk dried powder available from several sources
+Uses/Indications
+Orally administered aluminum hydroxide is used to reduce hyper-
+phosphatemia in patients with chronic kidney disease when dietary 
+phosphorus restriction fails to maintain serum phosphorus concen-
+trations in the normal range. Occasionally, it has been used as an oral 
+antacid in veterinary patients, although its short duration of action 
+for this purpose may make its use less practical. 
+Pharmacology/Actions
+Aluminum salts reduce the amount of phosphorus absorbed from 
+the intestine by physically binding to dietary phosphorus to form 
+insoluble aluminum phosphate, which is then excreted in the feces. 
+When used as an antacid, the hydroxyl ion interacts with hydrogen 
+ions in the stomach to increase gastric/abomasal pH.
+Contraindications/Precautions/Warnings
+Aluminum-containing antacids may inhibit gastric emptying; use 
+cautiously in patients with gastric outlet obstruction. Also, us
+
+--- plumb PDF 72 ---
+Amantadine      45
+is preferred, as it can be mixed with food and is tasteless. Dose 
+is divided and mixed with each meal. Start at low end of dosage 
+range and adjust upward every 4 to 6 weeks until desired serum 
+phosphorus is attained (see Monitoring). If a reduced-phosphorus 
+diet and higher dosages of aluminum hydroxide do not adequate-
+ly control serum phosphorus, consider adding a lanthanum- or 
+calcium-based (eg, calcium acetate, calcium carbonate) phosphate 
+binder to reduce the chances for aluminum toxicity.
+RABBITS/RODENTS/SMALL MAMMALS: 
+Hyperphosphatemia in chinchillas (extra-label): Aluminum hy-
+droxide gel: 1 mL/animal (NOT mL/kg) PO as needed
+Hyperphosphatemia in Guinea pigs (extra-label): 0.5 – 1 mL per 
+animal (NOT mL/kg) PO as needed5
+REPTILES: 
+Hyperphosphatemia (extra-label): 100 mg/kg PO every 12 to 24 
+hours6
+CATTLE:
+Antacid (extra-label): 15 – 60 mg/kg PO every 8 – 24 hours.7 Ef-
+ficacy in adult cattle is questionable since the drug becomes dilut-
+ed in the rumen and may not provide therapeutic benefit in the 
+abomasum.
+Abomasal ulcers in calves using a combination of aluminum 
+hydroxide and magnesium hydroxide (extra-label): 25 mL (each 
+mL contains aluminum hydroxide 0.1 g/mL and magnesium hy-
+droxide 0.09 g/mL) PO every 8 hours.8 NOTE: this study was done 
+in healthy calves; based on the results from this study, this dose is 
+expected to be beneficial for ill calves with abomasal ulcers. 
+HORSES:
+Adjunctive gastroduodenal ulcer therapy in foals (extra-label): 
+Aluminum/magnesium hydroxide suspension: 15 mL (total dose) 
+4 times a day9
+Monitoring
+	■After beginning therapy, check serum phosphorus (after a 12-
+hour fast) every 4 to 6 weeks until target phosphorous levels are 
+attained. Once phosphorous levels are stable, check phosphorous 
+levels at the time of renal chemistry rechecks (eg, every 12 weeks). 
+For chronic kidney disease (CKD), the International Renal Inter-
+est Society (IRIS) recommends a target phosphorous range for 
+dogs and cats at each stage:
+•	 Stage 2 CKD target phosphorous levels: greater than 2.7 and 
+less than 4.6 mg
+
+--- plumb PDF 97 ---
+70      Amoxicillin/Clavulanate
+a) 125 mg/kg PO every 12 hours. Mix oral solution to double 
+strength to a final concentration of 125 mg/mL21  
+b) 100 mg/kg IM, SC, PO every 8 hours22 
+FERRETS: 
+Helicobacter spp gastritis infections using triple therapy (extra- 
+label): 
+a)	Amoxicillin 20 mg/kg PO every 12 hours, with metronida-
+zole 20 mg/kg PO every 12 hours and bismuth subsalicylate 
+17.5 mg/kg PO every 8 hours for 21 days. Sucralfate 25 mg/kg 
+PO every 8 hours and famotidine 0.5 mg/kg PO every 24 hours 
+may also be used. Fluids and assisted feeding should be contin-
+ued while the primary cause of disease is investigated.23 
+b)	Amoxicillin 10 mg/kg, metronidazole 20 mg/kg, and bismuth 
+subsalicylate 17.5 mg/kg, all given PO 3 times daily for 3 to 4 
+weeks24
+c)	Amoxicillin 30 mg/kg, metronidazole 20 mg/kg, and bismuth 
+subsalicylate 17.5 mg/kg, all given PO 3 times daily for 3 to 4 
+weeks25
+RABBITS/RODENTS/SMALL MAMMALS:
+See Contraindications/Precautions/Warnings.
+Hedgehogs (extra-label): 15 mg/kg IM, SC, or PO every 12 hours26 
+REPTILES:
+Susceptible infections for all species (extra-label): 22 mg/kg PO 
+every 12 to 24 hours; not useful unless used in combination with 
+aminoglycosides.27
+Monitoring
+	■Efficacy: resolution of clinical signs
+	■Culture and susceptibility as indicated for clinical condition being 
+treated
+	■Urine culture may be considered after 5 to 7 days when treating 
+bacterial cystitis for longer periods of time.14  It is important to 
+note that positive cultures taken at this time should prompt ques-
+tioning the owner about compliance and further investigation as 
+to why the infection has not been eliminated (eg, underlying path- 
+ology [eg, cystic calculi, neoplasia]); a positive culture at this time 
+should not simply prompt a change in antibiotic choice. A nega-
+tive culture during this time frame does not necessarily guarantee 
+resolution of the infection.
+Client Information
+	■It is preferred that the oral suspension be refrigerated but this is 
+not absolutely necessary. Any unused oral suspension should be 
+discarded after 14 days.
+	■This m
+
+--- plumb PDF 109 ---
+82      Ampicillin/Sulbactam 
+Ampicillin/Sulbactam 
+(am-pi-sill-in; sul-bak-tam)  Unasyn®
+Potentiated Aminopenicillin
+Prescriber Highlights
+	
+▶Parenteral potentiated aminopenicillin that may be used to 
+treat infections for which amoxicillin/clavulanate would be 
+appropriate, but an injectable antibiotic is required
+	
+▶May be used for surgical prophylaxis 
+	
+▶Hypersensitivity reactions possible; contraindicated in patients 
+with documented severe hypersensitivity to penicillins
+	
+▶Usually administered SC, IM, or IV every 6 to 8 hours
+Uses/Indications
+The addition of sulbactam to ampicillin broadens ampicillin’s spec-
+trum through inhibition of some beta-lactamases. 
+Ampicillin/sulbactam may be indicated when parenteral therapy 
+is required for the treatment of aerobic or anaerobic gram-positive 
+and gram-negative infections. In dogs and cats, ampicillin/sulbac-
+tam may be considered when oral amoxicillin/clavulanate is not 
+viable (eg, patient NPO, in cases of critical illness [eg, sepsis, pneu-
+monia, other severe infections]), or for surgical prophylaxis. For 
+broad-spectrum uses, ampicillin/sulbactam is often combined with 
+another drug such as a fluoroquinolone or aminoglycoside to pro-
+vide enhanced gram-negative coverage.
+The World Health Organization (WHO) has designated ampicil-
+lin/sulbactam as a Critically Important, High Priority antimicrobial 
+in human medicine.1 The Office International des Epizooties (OIE) 
+has designated ampicillin/sulbactam as Veterinary Critically Im-
+portant Antimicrobial (VCIA) Agents in avian, bovine, and swine 
+species.2
+Pharmacology/Actions
+Ampicillin is a time-dependent bactericidal agent that acts via in-
+hibition of cell wall synthesis. Penicillins are bactericidal against 
+susceptible bacteria and act by inhibition of mucopeptide synthesis 
+in the cell wall, which results in a defective barrier and an osmoti-
+cally unstable spheroplast. The exact mechanism for this effect has 
+not been definitively determined, but beta-lactam antibiotics have 
+been shown to bind to several enzymes in the bacterial cytoplasmic 
+membrane th
+
+--- plumb PDF 157 ---
+130      Bethanechol
+Intra-articular administration (extra-label): Most dosage rec-
+ommendations range from 3 – 18 mg/joint (NOT mg/kg) in-
+tra-articularly. Repeat doses should be limited to the minimum 
+required to achieve soundness.
+Monitoring
+Monitoring of glucocorticoid therapy is dependent on its reason for 
+use, dosage, agent used, dosage schedule (daily versus alternate day 
+therapy), route of administration, duration of therapy, and the ani-
+mal’s age and condition. The following list may not be appropriate 
+or complete for all animals; use clinical assessment and judgment 
+should adverse effects be noted:
+	■Body weight, appetite, GI signs (eg, anorexia, vomiting, diarrhea)
+	■Signs of edema
+	■Serum electrolytes
+	■Total plasma protein, albumin
+	■Blood glucose
+	■Growth and development in young animals
+	■Adrenocorticotrophic hormone (ACTH) stimulation test, if con-
+cerned about iatrogenic hyperadrenocorticism
+Client Information
+	■Carefully follow the instructions for how to give this medicine to 
+your animal. Do not suddenly stop giving this medicine without 
+talking to your veterinarian.
+	■Do not give other medications (including over-the-counter 
+[OTC] medication) or nonsteroidal anti-inflammatory (NSAID) 
+medications while your pet is on this medication without talking 
+to your veterinarian first.
+	■There are many potential side effects that can be seen with these 
+drugs, including increased or decreased appetite, vomiting, ab-
+normal stool, and increased thirst and urination. Contact your 
+veterinarian if these effects become severe or worsen.
+	■While your animal is taking this medication, it is important to 
+return to your veterinarian for periodic examinations and blood 
+work. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+A synthetic glucocorticoid, betamethasone has been manufactured 
+as the base and as the dipropionate, acetate, and sodium phosphate 
+salts. The base is used for oral dosage forms. The sodium phosphate 
+and acetate salts are used in injectable preparations. The dipropio-
+nate salt is used in topical formulations.
+Beta
+
+--- plumb PDF 177 ---
+150      Buprenorphine
+HUMAN-LABELED PRODUCTS:
+Bupivacaine Liposome Injectable Suspension 1.3% (13.3 mg/mL) in 
+10 mL and 20 mL single-use vials; Exparel®; (Rx)6
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Buprenorphine
+(byoo-pre-nor-feen)  Buprenex®, Simbadol®, Zorbium®
+Opioid Partial Agonist
+Prescriber Highlights
+	
+▶Partial mu-opioid agonist used primarily as an injectable and 
+buccal (ie, oral transmucosal [OTM]) analgesic, especially in 
+cats
+	
+▶Often used as a component of short-term immobilization and 
+anesthetic drug combinations 
+	
+▶Buccal/OTM administration is well tolerated and can be effec-
+tive, but bioavailability is low by this route, as is standard  
+(0.3 mg/mL) buprenorphine administered SC.
+	
+▶Longer onset of action and longer duration of action as com-
+pared with most other opioids
+	
+▶Rarely, may cause respiratory depression
+	
+▶Because of tight buprenorphine receptor binding, standard 
+doses of naloxone may not completely reverse drug effects.
+	
+▶DEA Schedule III (C-III) controlled substance
+Uses/Indications
+Buprenorphine is most often used as an analgesic for mild to mod-
+erate pain or in preanesthetic drug combinations in small animals. 
+In most species, buprenorphine provides less analgesia than pure 
+mu-opioid agonists (eg, morphine, hydromorphone) and it is less se-
+dating than most other opioids (particularly butorphanol). For acute 
+pain control, buprenorphine may have the disadvantage of a longer 
+onset of action than other opioids.
+In dogs, an isoflurane MAC-sparing effect occurs at IV dosages of 
+0.01 mg/kg, 0.05 mg/kg, and 0.1 mg/kg1 but methadone (0.3 mg/kg) 
+provided more effective presurgical analgesia than buprenorphine 
+(0.02 mg/kg) in dogs sedated with acepromazine and medetomi-
+dine prior to undergoing ovariohysterectomy (OHE).2 Use of the 
+feline-labeled Simbadol® (0.02 mg/kg IM) prior to surgery in dogs 
+(pretreated with acepromazine and carprofen and undergoing ovari-
+ohysterectomy) provided similar postoperative analgesia as standard 
+buprenorphine (0.02 mg/kg IM) but more dogs in the standar
+
+--- plumb PDF 212 ---
+Carbimazole      185
+ly1,10 (≈10%), are often transient, and can typically be managed with a 
+dosage reduction.11 Eosinophilia, leukopenia, and/or lymphocytosis 
+may be noted in ≈5% of cats12; these hematologic effects are usually 
+also transient and generally do not require drug withdrawal unless 
+the blood dyscrasia is persistent or severe.1 
+Methimazole and carbimazole may also rarely cause self-induced 
+excoriations and hepatopathy, and potentially trigger immune-me-
+diated hemolytic anemia and immune-mediated thrombocytopenia 
+in cats1,9,13-15; these more serious effects generally require withdrawal 
+of the drug. In one study, increased antinuclear antibodies (ANA) 
+were noted in ≈22% of all cats receiving methimazole, and in ≈50% 
+of cats receiving methimazole for greater than 6 months, but none 
+of the cats had signs of a lupus-like syndrome.9 The occurrence of 
+ANA is dose dependent,16 and although elevated ANA have histor-
+ically been viewed as an indication for dose reduction, this may not 
+be necessary in the absence of clinical signs or other indications of 
+autoimmune disease.9 Rarely, cats treated with methimazole or car-
+bimazole have developed acquired myasthenia gravis that requires 
+drug withdrawal.17,18 One case report indicated that a cat developed 
+hypersensitivity vasculitis after receiving carbimazole.19
+Potentially, treatment with methimazole or carbimazole could 
+unmask underlying renal dysfunction in some cats.20 The hyperthy-
+roid state may increase GFR and, by treating the hyperthyroidism, 
+this effect is abolished.
+Reproductive/Nursing Safety
+Carbimazole has been associated with teratogenic and embryotoxic 
+effects in rats.1 Do not use carbimazole in pregnant animals as it may 
+also affect offspring thyroid development or function. 
+Methimazole enters milk and reaches concentrations higher than 
+those found in maternal serum.1 If treatment with carbimazole is 
+necessary for nursing queens, switch to milk replacer for nursing 
+animals.
+Overdose/Acute Toxicity 	
+Acute toxicity that may be seen with overdoses includes those effects 
+liste
+
+--- plumb PDF 257 ---
+230      Ceftriaxone
+Ceftriaxone
+(sef-try-ax-ohn)  Rocephin®
+Third-Generation Cephalosporin 
+Prescriber Highlights
+	
+▶Injectable antibiotic used to treat serious bacterial infections 
+	
+▶Achieves therapeutic concentrations in CNS; long half-life
+	
+▶Adverse effects include hypersensitivity reactions and injec-
+tion site reactions (eg, skin tightness, induration).
+	
+▶Administer ceftriaxone IV over 30 minutes (or longer). Pain on 
+IM injection is reduced when reconstituted with lidocaine.
+	
+▶In the United States, extra-label drug use of cephalospo-
+rins is restricted in food-producing animals.
+Uses/Indications
+Ceftriaxone is used to treat serious infections (particularly against 
+susceptible Enterobacteriaceae) that are not susceptible to other 
+agents or when aminoglycosides are not indicated because of their 
+potential toxicity. Its long half-life, good CNS penetration, and ac-
+tivity against Borrelia burgdorferi have also made ceftriaxone a po-
+tential choice for treating Lyme borreliosis and other infections in 
+animals. Although ceftriaxone has been reported for the treatment 
+of uncomplicated lower UTI,1 its use is not recommended for this 
+purpose.2 In dogs, ceftriaxone’s lower protein binding and shorter 
+half-life (when compared with humans) give it no advantage over the 
+other parenteral third-generation cephalosporins. In horses, intra-
+peritoneal ceftriaxone successfully treated cases of septic peritonitis.3
+The World Health Organization (WHO) classifies third-gen-
+eration cephalosporins as Critically Important, Highest Priority 
+antimicrobials for human medicine.4 The Office International des 
+Epizooties (OIE) has designated third-generation cephalosporins 
+as Veterinary Critically Important Antimicrobial (VCIA) agents in 
+avian, bovine, ovine, and swine species.5
+Pharmacology/Actions 	
+Ceftriaxone is a third-generation injectable cephalosporin agent that 
+is bactericidal and displays time-dependent killing. Third-genera-
+tion cephalosporins retain the gram-positive activity of the first- and 
+second-generation agents, but have much expanded gram-negativ
+
+--- plumb PDF 270 ---
+Chlorambucil      243
+potassium chloride 35 mg/mL gel/paste in 80 mL and 300 mL; D-Tox-
+Besc®, Activated Charcoal Gel with Electrolytes®; (OTC). Labeled for 
+use in small and large animal species
+Activated hardwood charcoal and thermally activated attapulgite 
+clay (concentrations not labeled) in an aqueous gel suspension in 8 fl 
+oz bottle, 60 mL tube, and 300 mL tube with easy dose syringe; UAA® 
+(Universal Animal Antidote) Gel; (OTC). Labeled for use in dogs and 
+cats and for grain overload in ruminants
+HUMAN-LABELED PRODUCTS:
+Activated charcoal oral powder: 15 g, 30 g, 40 g, 120 g, 240 g, and UD 
+30 g; generic; (OTC)
+Activated charcoal oral liquid/suspension with sorbitol: 25 g in 
+120 mL and 50 g in 240 mL; Actidose® with Sorbitol, generic; (OTC)
+Activated charcoal liquid/suspension without sorbitol: 208 mg/mL 
+to 12.5 g in 60 mL, 15 g in 72 mL, 25 g in 120 mL, and 50 g in 240 
+mL; Actidose-Aqua®, generic; (OTC)
+Activated charcoal oral granules: 25 g; EZ Char®; (OTC)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Chlorambucil
+(klor-am-byoo-sil)  Leukeran®
+Antineoplastic, Immunosuppressant 
+Prescriber Highlights
+	
+▶Nitrogen mustard derivative antineoplastic and immunosup-
+pressant in dogs, cats, and horses
+	
+▶Caution: Pre-existing bone marrow depression or infection
+	
+▶Adverse effects: Primarily myelosuppression and GI toxicity
+	
+▶Known teratogen; National Institute for Occupational Safety 
+and Health (NIOSH) hazardous drug; use appropriate precau-
+tions when handling.
+Uses/Indications
+Chlorambucil may be useful as part of multidrug protocols in a va-
+riety of neoplastic diseases, including lymphocytic leukemia, T-cell 
+lymphoma,1 GI lymphoma,2,3 multiple myeloma, lymphangiosarco-
+ma,4 mast cell tumor,5 cutaneous plasmacytosis, polycythemia vera, 
+macroglobulinemia, and ovarian adenocarcinoma. Chlorambucil 
+may also be used as a solo metronomic agent for some neoplasias 
+(eg, hemangiosarcoma, transitional cell carcinoma).6,7 It may also be 
+useful as adjunctive therapy for some immune-mediated conditions 
+(eg, inflammatory bowel d
+
+--- plumb PDF 309 ---
+282      Clindamycin 
+	■Dinoprost: Clenbuterol may antagonize the effects of dinoprost 
+(prostaglandin F2 alpha).23
+	■Oxytocin: Clenbuterol may antagonize the effects of oxyto-
+cin.23,31
+	■Sympathomimetic Amines, Other (eg, albuterol, phenyl-
+propanolamine): Concomitant administration with other sym-
+pathomimetic amines may enhance the adverse effects of clen-
+buterol.
+	■Theophylline/Aminophylline: May enhance the adverse ef-
+fects (eg, tachycardia, CNS stimulation) of clenbuterol
+	■Tricyclic antidepressants (eg, amitriptyline, clomip-
+ramine): May potentiate the vascular effects of clenbuterol
+	■Xylazine: Clenbuterol may antagonize the uterine contractility 
+effects of xylazine32; this effect likely applies to other alpha-2 ag-
+onists.
+Dosages
+HORSES: 
+Management of airway obstruction (label dosage; FDA-ap-
+proved): Initially, 0.8 μg/kg PO twice daily for 3 days; if no im-
+provement, dose can be increased to 1.6 μg/kg twice daily for 3 
+days; if no improvement, dose can be increased to 2.4 μg/kg twice 
+daily for 3 days; if no improvement, dose can be increased to 
+3.2 μg/kg twice daily for 3 days; if no improvement, therapy should 
+be discontinued. Recommended duration of therapy is 30 days, 
+then it should be withdrawn and therapy should be reevaluated. 
+If signs return, the above stepwise dosage schedule can be reiniti-
+ated.1 NOTE: One study of horses with SEA noted increased air-
+way reactivity and reduced bronchodilatory effects after 21 days 
+of administration of clenbuterol. Use clenbuterol no longer than 
+is needed for clinical benefit.6 
+Adjunctive treatment for dystocia emergencies (extra-label): 
+300 μg/500 kg (1102 lb) mare IV slowly (NOTE: Parenteral for-
+mulation not available commercially in the United States). The 
+drug’s fast onset of action when given IV allows the veterinarian 
+to decide quickly if uterine relaxation will correct the problem. 
+Clenbuterol is particularly useful when repelling the equine fe-
+tus to allow manipulation of the head and limbs. May be used in 
+combination with sedatives, analgesics, and tranquilizers. Xyla-
+zine or d
+
+--- plumb PDF 349 ---
+322      Cyclosporine (Systemic)
+Cyclosporine (Systemic)
+Ciclosporin, Cyclosporine A
+(sye-kloe-spor-een)  Atopica®, Cyclavance®, Neoral®, 
+­Sandimmune®
+Immunosuppressive
+See also Cyclosporine Ophthalmic
+Prescriber Highlights
+	
+▶FDA-approved products are available for dogs to control 
+­atopic dermatitis and for cats to control allergic dermatitis. 
+	
+▶Often used extra-label for treatment of immune-mediated 
+disorders in dogs and cats, and to prevent rejection of kidney 
+transplants in cats
+	
+▶GI adverse effects (eg, vomiting, soft stools) are common at 
+the start of treatment but typically resolve within a few weeks.
+	
+▶Use of microemulsion or “modified” formulations is highly rec-
+ommended. If using human-labeled products, Sandimmune® 
+is not bioequivalent to, and must not be interchanged with, 
+Atopica®, Cyclavance®, Neoral®, or Gengraf®. 
+	
+▶Counseling pet owners to ensure knowledge of the dispens-
+ing system is important when using solutions FDA-approved 
+for animals. 
+	
+▶For indications other than atopic dermatitis, consider ther-
+apeutic drug monitoring (pharmacokinetic and pharma-
+codynamic) to assess efficacy and minimize adverse effect 
+­potential.
+	
+▶Many potential drug interactions
+	
+▶The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cyclosporine as a hazardous drug; personal 
+protective equipment (PPE) should be used accordingly to 
+minimize the risk for exposure.
+Uses/Indications
+Cyclosporine is FDA-approved for use in dogs for the control of 
+atopic dermatitis. In cats, it is FDA-approved for the control of feline 
+allergic dermatitis as manifested by excoriations (including facial 
+and neck), miliary dermatitis, eosinophilic plaques, and self-induced 
+alopecia. Therapeutic effect for atopic dermatitis may not be seen 
+in the first few weeks of treatment, and the drug is unsuitable for 
+acute flares of atopic dermatitis.1 Concurrent treatment with corti-
+costeroids1,2 or oclacitinib3 can be considered during this interval to 
+control pruritus. 
+In dogs, extra-label indications include perianal fistulas (anal fu-
+runculosis)
+
+--- plumb PDF 409 ---
+382      Diazoxide
+	■Respiratory system: respiratory rate, ETCO2, and SpO2—mild re-
+spiratory depression can occur, with a more moderate impact if 
+other respiratory depressants (eg, opioids) are administered.
+	■Horses should be observed carefully for ataxia. 
+	■Clinical response to treatment
+Client Information 
+	■This medicine may cause sedation and/or disorientation, which 
+may impair the performance of working animals.
+	■When using this medicine for thunderstorm phobias or other 
+triggers (eg, separation anxiety), give the medicine to your animal 
+about an hour before the event or trigger.
+	■This medicine may be given with or without food. If your animal 
+vomits or acts sick after receiving the medication on an empty 
+stomach, give the medicine with food or small treats. Contact 
+your veterinarian if vomiting continues.
+	■Contact your veterinarian immediately if your animal develops 
+yellowing of the skin, gums, or whites of the eyes (jaundice).
+	■Sleepiness is the most common side effect. This medicine can 
+change your animal’s behavior (eg, hyperactivity, anxiety) in un-
+expected ways.
+	■This medicine may increase your animal’s appetite, especially in 
+cats.
+	■Contact your veterinarian immediately if your animal stops eat-
+ing or seems depressed.
+Chemistry/Synonyms
+Diazepam, a benzodiazepine, is a white-to-yellow, practically 
+odorless, crystalline powder with a melting point between 131°C 
+(267.8°F) and 135°C (275°F) and pKa of 3.4. Diazepam is tasteless 
+initially but develops a bitter aftertaste. One gram of diazepam is sol-
+uble in 333 mL of water or 25 mL of alcohol and is sparingly soluble 
+in propylene glycol. The pH of the commercially prepared injectable 
+solution is 6.2 to 6.9. It consists of a 5 mg/mL solution with 40% pro-
+pylene glycol, 10% ethanol, 5% sodium benzoate/benzoic acid buffer, 
+and 1.5% benzyl alcohol as a preservative.
+Diazepam may also be known as diazepamum, LA-III, NSC-
+77518, or Ro-5-2807; many trade names are available. 
+Storage/Stability 
+Store all diazepam products at room temperature (15°C to 30°C 
+[59°F-86°F]). Keep the inje
+
+--- plumb PDF 440 ---
+Dipyrone      413
+	■CNS Depressant Drugs (eg, anesthetic agents, barbiturates, 
+cannabidiol): Concurrent use may cause increased CNS or re-
+spiratory depression when used with opioid antidiarrheal agents.
+	■Digoxin: Concurrent use may result in increased serum digoxin 
+concentrations.
+	■Laxatives (eg, oral magnesium salts, polyethylene glycol 
+3350): Concurrent use may decrease efficacy of diphenoxylate. 
+	■Monoamine Oxidase Inhibitors (MAOIs; eg, amitraz, 
+linezolid, methylene blue, selegiline): Opioid antidiarrheal 
+agents are contraindicated in human patients receiving systemic 
+MAOIs for at least 14 days after receiving MAOIs because of an 
+increased risk of a hypertensive crisis.  
+	■Opioids (eg, buprenorphine, morphine, tramadol): Therapeu-
+tic duplication. Concurrent use may increase risk of CNS or respi-
+ratory depression and have additive anticholinergic effects.
+	■Phenothiazines (eg, acepromazine, chlorpromazine): Con-
+current use may increase risk of CNS depression and have addi-
+tive anticholinergic effects.
+	■Potassium Salts, Oral: Reduced GI motility may increase the 
+risk for GI irritation and ulceration caused by potassium salts. The 
+use of solid oral forms of potassium concurrently with drugs that 
+decrease GI motility is contraindicated in humans; consider use 
+of liquid/gel potassium formulations.  
+	■Prokinetic Agents (eg, cisapride, erythromycin, metoclopr-
+amide): Concurrent use may result in decreased efficacy of both 
+agents.
+	■Tricyclic Antidepressants (eg, amitriptyline, clomip-
+ramine): Concurrent use may increase risk of CNS depression 
+and have additive anticholinergic effects.
+Laboratory Considerations 
+	■Opioids may increase biliary tract pressure, resulting in increased 
+plasma amylase and lipase values up to 24 hours following their 
+administration. 
+Dosages
+DOGS:
+Antidiarrheal agent (extra-label): Dosage is based on the diphe-
+noxylate component: 
+a)	 0.05 – 0.1 mg/kg PO 3 to 4 times daily 7–9
+b)	 0.1 – 0.2 mg/kg PO every 12 hours 
+Antitussive agent (extra-label): 0.2 – 0.5 mg/kg PO every 8 to 12 
+hours2  
+CATS:
+Antidiarrheal age
+
+--- plumb PDF 477 ---
+450      Enrofloxacin
+target anti-Xa peak range of 0.5 to 1 IU/mL, extrapolated from hu-
+man literature, has been suggested for use in dogs and cats. The sug-
+gested thromboprophylactic range for horses is 0.1 – 0.2 IU/mL.15
+NOTE: To measure peak anti-Xa activity, sample at 2 hours post-
+dose for cats, 3 hours postdose for dogs, and 3 to 4 hours postdose 
+for horses.16 If an anti-Xa assay is not available, consider activated 
+clotting time, aPTT, thrombin generation, or viscoelastic tests to 
+monitor anticoagulant treatment.1,17
+Client Information 
+	■This medicine must be injected subcutaneously (under the skin). 
+Be sure you understand how to correctly give the injections. Sev-
+eral injections a day may be required, and treatment can be very 
+expensive. Administration of the injections may be painful for 
+your animal.
+	■Bleeding is not likely, but if it does occur, contact your veterinar-
+ian immediately.
+	■If your animal is very listless (lacking energy), appears to be hav-
+ing trouble breathing, trouble walking, or loses the use of its rear 
+legs, contact your veterinarian immediately, as it may mean blood 
+clots have formed.
+Chemistry/Synonyms
+A low molecular weight heparin (LMWH), enoxaparin sodium is 
+obtained by alkaline depolymerization of heparin derived from pork 
+intestinal mucosa. The average molecular weight is ≈4500 and rang-
+es from 3500 to 5500 (heparin sodium has a molecular weight of 
+≈12,000); 1 mg of enoxaparin is equivalent to 100 units of anti-factor 
+Xa.
+Enoxaparin sodium may also be known as Enoxaparinum natri-
+cum, PK-10169, RP-54563, Clexane®, Decipar®, Klexane®, Lovenox®, 
+Plaucina®, and Trombenox®.
+Storage/Stability 
+The commercially available injection should be stored at room 
+temperature (25°C [77°F]); excursions permitted to 15°C to 30°C 
+(59°F-86°F).
+One study showed that diluting the 100 mg/mL commercially 
+available solution with sterile water to 20 mg/mL resulted in a prod-
+uct that was stable for 4 weeks when stored in a glass vial or in plastic 
+syringes at room temperature or refrigerated.18
+Compatibility/Compounding Consider
+
+--- plumb PDF 773 ---
+746      Levetiracetam
+Levetiracetam
+(lee-ve-tye-ra-see-tam)  Keppra®
+Anticonvulsant
+Prescriber Highlights
+	
+▶Levetiracetam is a broad-spectrum anticonvulsant that can be 
+used as adjunct therapy for canine epilepsy or when pheno-
+barbital or bromides are not tolerated. Dogs may become 
+refractory to therapy over time.
+	
+▶In cats, levetiracetam may be used as a second-line drug when 
+phenobarbital alone does not control seizures but can also be 
+tried as sole therapy when phenobarbital is not tolerated.
+	
+▶Appears to be well tolerated; adverse effects may be transient 
+and can include sedation in dogs, and lethargy, decreased 
+appetite, and ataxia in cats
+	
+▶In dogs, phenobarbital may cause significant drug interactions 
+with levetiracetam.
+	
+▶Owner compliance with dosing frequency (every 8 hours) of 
+immediate-release tablets and oral solution may be problem-
+atic.
+	
+▶Do not confuse immediate-release and extended-release tab-
+lets; use caution when prescribing and dispensing.
+Uses/Indications
+Levetiracetam can be useful as adjunct therapy to phenobarbital and 
+bromides in patients with canine epilepsy. Convincing evidence for 
+efficacy of levetiracetam monotherapy is lacking.1–3 Levetiracetam 
+has been shown to be useful in the treatment of status epilepticus and 
+acute repetitive seizures (ie, cluster seizures) in dogs.4 It has been used 
+at home for oral pulse therapy to abort seizure activity,5 and SC admin-
+istration at home may be useful in dogs that develop status epilepticus 
+or acute repetitive seizures that do not always respond sufficiently to 
+benzodiazepine (via rectal and/or intranasal administration).4 A small 
+open-label study found that the addition of rectal levetiracetam to 
+standard treatment (rectal/IV diazepam and IV phenobarbital) sig-
+nificantly increased response rate for dogs with cluster seizures com-
+pared to the standard treatment alone.6 In addition, in a study, IV le-
+vetiracetam was used successfully to treat refractory seizures in a dog 
+that ingested a lethal dose of fluorouracil (5-FU).7 In one case report, 
+levetiracetam was suc
+
+--- plumb PDF 823 ---
+796      Marbofloxacin 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Marbofloxacin 
+(mar-boe-flox-a-sin)  Zeniquin®
+Fluoroquinolone Antibiotic
+Prescriber Highlights
+	
+▶Veterinary oral fluoroquinolone antibiotic effective against a 
+variety of bacterial pathogens
+	
+▶Contraindications include hypersensitivity to fluoroquinolo-
+nes, cats younger than 12 months, and immature dogs during 
+the rapid growth phase.
+	
+▶May produce erosions of cartilage in weight-bearing joints 
+and other signs of arthropathy in immature animals of various 
+species
+	
+▶Use with caution in patients with hepatic or renal insufficien-
+cy or dehydration, in those that are prone to seizures, and in 
+immature dogs and cats during the rapid growth phase.
+	
+▶Adverse effects include GI distress; marbofloxacin has not 
+been proven to cause ocular toxicity in cats or predispose to 
+Streptococcus canis necrotizing fasciitis.
+	
+▶Many drug interactions
+	
+▶Prohibited for extra-label use in food animals in the United 
+States
+Uses/Indications
+Marbofloxacin is labeled for treatment of susceptible bacterial in-
+fections in dogs and cats. It is recommended that marbofloxacin be 
+reserved for cases of bacterial cystitis with documented resistance to 
+first-line agents (eg, amoxicillin, amoxicillin/clavulanic acid); however, 
+it is a good first-line choice for pyelonephritis or prostatic infections.1 
+Fluoroquinolones are considered second-tier drugs for treatment of 
+bacterial folliculitis.2 In dogs, marbofloxacin appears to have some 
+efficacy for treating the clinical signs associated with canine leish-
+maniasis.3 Broad-spectrum antibacterial coverage can be achieved by 
+combining marbofloxacin with an antibiotic with gram-positive and 
+anaerobic activity (eg, clindamycin, ampicillin/amoxicillin).
+The World Health Organization (WHO) has designated fluoro-
+quinolones as Critically Important, Highest Priority antimicrobials 
+for human medicine.4 The Office International des Epizooties (OIE) 
+has designated second-generation quinolones as Veterinary Critical-
+ly Important Antimicro
+
+--- plumb PDF 852 ---
+Meloxicam      825
+selected joining date.15 Follow label instructions for breed-based 
+time of year to administer and guidance on separating ewes and 
+rams.
+GOATS:
+Stimulate testosterone secretion in bucks during nonbreed-
+ing season (extra-label): Following 2.5 months of long days, two 
+18 mg implants (36 mg total dose) administered SC near the base 
+of ears resulted in higher peak testosterone concentrations, which 
+occurred 2 months earlier than in the control group.29
+FERRETS:
+Adjunctive treatment of adrenal disease to help control clinical 
+signs (extra-label): 
+a)	 Oral formulations: Anecdotally, 0.5 – 1 mg/ferret (NOT 
+mg/kg) PO once daily 7 to 9 hours after sunrise17,30
+b)	 Implant dosages: 2.7 mg/ferret (NOT mg/kg [under 600 g 
+body weight]) or 5.4 mg/ferret (NOT mg/kg [over 600 g body 
+weight]) SC every 3 to 4 months
+MINK:
+Accelerate fur priming cycle (label dosage; FDA-approved): 
+2.7 mg/mink (NOT mg/kg) implanted SC21
+Monitoring
+	■Clinical efficacy (eg, depending on indication: hair regrowth, es-
+trus suppression, improvement in sleep/unwanted behaviors)
+	■Adverse effects (eg, sedation, lethargy, weight gain, sterile ab-
+scesses [implants only])
+Client Information
+	■For treatment of hair loss, efficacy of melatonin varies. A 4-month 
+trial is necessary to see if the treatment is beneficial.
+	■The oral medicine may be given with or without food.
+	■This medicine is usually well tolerated; sleepiness may occur.
+Chemistry/Synonyms
+Melatonin is a naturally occurring hormone produced in the pine-
+al gland. It occurs as a white to pale yellow, crystalline solid that is 
+slightly soluble in water and has a molecular weight of 232. It can be 
+derived from natural sources or by synthetic means.
+Melatonin may also be known as n-acetyl-5-methoxytryptamine, 
+MEL, MLT, or pineal hormone.
+Storage/Stability
+Unless otherwise labeled, store at room temperature in tight con-
+tainers.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Melatonin implant 2.7 mg; PrimeX®; (OTC). FDA-approved for use 
+in mink. NADA# 140-846. Although this product is still listed in 
+
+
+--- plumb PDF 869 ---
+842      Methadone
+curs as white to off-white crystals that are slightly soluble in alcohol 
+and freely soluble in water. It is a weak base—a 1% aqueous solution 
+of metformin HCl has a pKa of 6.68, and a metformin base has a pKa 
+of 12.4.
+Metformin HCl may also be known as dimethylbiguanide HCl 
+or metforimini hydrochloridium. There are many proprietary names 
+outside of the United States for this drug.
+Storage/Stability
+Store metformin HCl oral products (tablets, sustained-release tab-
+lets) protected from light at a controlled room temperature of 
+20°C to 25°C (68°F-77°F). Excursions permitted to 15°C to 30°C 
+(59°F-86°F). 
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Metformin HCl Oral Tablets: 500 mg, 850 mg, and 1000 mg; Gluco-
+phage®, generic; (Rx)
+Metformin HCl Extended-Release Oral Tablets: 500 mg, 750 mg, and 
+1000 mg; Glucophage XR®, Glumetza®, Fortamet®, generic; (Rx)
+Metformin HCl Oral Solution: 500 mg/5 mL (100 mg/mL) in 
+118 mL and 473 mL; Riomet®; (Rx)
+There are also fixed-dose oral tablet combination products available 
+containing metformin and glyburide or glipizide.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Methadone
+(meth-a-done)  Dolophine®, Methadose®
+Opioid Agonist
+Prescriber Highlights
+	
+▶Opioid mu-receptor agonist with NMDA blocking properties 
+used in dogs, cats, and horses
+	
+▶Can be used for sedation, as premedication before anesthesia, 
+and for analgesia 
+	
+▶Adverse effects include panting, vomiting, vocalization, defe-
+cation postinjection, bradycardia, and respiratory depression.
+	
+▶Many possible drug interactions
+	
+▶DEA Schedule II (C-II) controlled substance in the United States
+	
+▶Effects can be reversed with naloxone.
+Uses/Indications
+Methadone may be used as an opioid sedative, preanesthetic, or an-
+algesic agent. Methadone use as a premedication reduces MAC re-
+quirements.1 Methadone has demonstrated an analgesic effect after 
+epidural use in horses.2 Poor bioavailability pr
+
+--- plumb PDF 947 ---
+920      Mycophenolate
+Mycophenolate
+Mycophenolate Mofetil (MMF)
+(mye-koe-fen-oh-late)  Cellcept®
+Immunosuppressant
+Prescriber Highlights
+	
+▶Immunosuppressive drug that may be useful for treating dogs 
+with IMHA, IMTP, glomerulonephritis, myasthenia gravis, or 
+meningoencephalomyelitis of unknown etiology in dogs; po-
+tentially useful in cats, but there is little information available 
+on safety or efficacy.
+	
+▶Limited experience in veterinary medicine, especially in cats or 
+with long-term use
+	
+▶Adverse effects include GI signs (eg, diarrhea, vomiting, an-
+orexia) most commonly are dose-limiting and can be severe.
+	
+▶Can be administered PO or IV. Compounding into appropriate 
+oral dosage forms may be needed.
+	
+▶Teratogenic in humans
+	
+▶The National Institute for Occupational Safety and Health 
+(NIOSH) classifies mycophenolate as a hazardous drug; use 
+appropriate precautions when handling.
+Uses/Indications
+Although clinical experience using mycophenolate in veterinary 
+medicine has been limited and no large well-controlled studies were 
+located, mycophenolate appears useful in the treatment of a variety 
+of autoimmune diseases, including immune-mediated hemolytic 
+anemia (IMHA),1-4 immune-mediated thrombocytopenia (IMTP),5,6 
+myasthenia gravis,7,8 meningoencephalomyelitis,9,10 glomerulo-
+nephritis,11 and pemphigus foliaceous.12 Mycophenolate has been 
+suggested for use in treating inflammatory bowel disease in dogs; 
+however, the drug’s primary adverse effects in dogs are gastritis, di-
+arrhea, and intestinal inflammation. Mycophenolate is also used in 
+anti-rejection protocols for organ transplants in animals. Mycophe-
+nolate is often used as part of a combination immunosuppressive 
+therapy protocol in a patient, although it has also been used alone as 
+monotherapy. The drug was ineffective for the treatment of sudden 
+acquired retinal degeneration syndrome (SARDS) in dogs.13
+In humans, although this drug is used off-label for a variety of au-
+toimmune disease indications, it is labeled only for use in preventing 
+transplant rejection.
+Pharmacology/Actions 
+Myc
+
+--- plumb PDF 1033 ---
+1006      Phenobarbital
+may get sick if they eat horse feed mixed with this medicine.
+	■Decreased appetite is the most common side effect seen with this 
+medicine.
+	■Watch for unpredictable behavior and colic while your horse is 
+taking this medicine. Contact your veterinarian if you have any 
+concerns.
+	■Your veterinarian will need to monitor your horse while it is tak-
+ing this medicine. Do not miss these important follow-up visits. 
+Chemistry/Synonyms
+Pergolide is an ergot derivative that occurs as white to off-white pow-
+der and is slightly soluble in water, dehydrated alcohol, or chloro-
+form. It is very slightly soluble in acetone, practically insoluble in 
+ether, and sparingly soluble in methyl alcohol.
+Pergolide mesylate may also be known as LY-127809, pergolide 
+mesilate, pergolidi mesilas, Prascend®, Celance®, Nopar®, Parkotil®, 
+Parlide®, or Pharken®.
+Storage/Stability
+Store pergolide tablets in tight containers at room temperature (25°C 
+[77°F]); excursions permitted to 15°C to 30°C (59°F-86°F).
+Compatibility/Compounding Considerations
+FDA-approved products should be the first choice when prescribing 
+pergolide for pituitary pars intermedia dysfunction (PPID). Com-
+pounded products are available; however, because of concerns re-
+garding stability, the use of this product is questionable when the 
+approved product is accessible. 
+A 1 mg/mL oral suspension of pergolide mesylate was prepared 
+using bulk powder obtained from a commercial supplier. 20 mg of 
+pergolide mesylate was added to the plunger of a 35 mL Luer-lock 
+syringe containing 10 mL of Ora-Plus® suspending liquid. The 35 mL 
+syringe was connected to an empty 35 mL Luer-lock syringe using a 
+fluid-dispensing connector. Using the plunger of the original 35 mL 
+syringe, the suspension was mixed by depressing the plungers back 
+and forth for a total of 50 depressions (or until uniformly mixed). 
+10 mL of OraSweet® was added to the suspension and mixed in a 
+similar manner for a final suspension volume of 20 mL. The suspen-
+sion was found to be stable for 30 days when protected from light 
+and sto
+
+--- plumb PDF 1075 ---
+1048      Pradofloxacin
+flicts or is dependent on diluent or concentration factors with the 
+following drugs or solutions: fat emulsion 10%, amikacin sulfate, 
+dobutamine HCl, mannitol, methylprednisolone sodium succinate 
+(at Y-site), ondansetron, penicillin G sodium, promethazine HCl (at 
+Y-site), and sodium bicarbonate. 
+Potassium chloride for injection is reportedly physically incom-
+patible with the following solutions or drugs: amphotericin B, diaz-
+epam (at Y-site), and phenytoin sodium (at Y-site).
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: 
+Parenteral Products: There are several products for parenteral use 
+that contain potassium; refer to Appendix tables or individual pro-
+prietary veterinary products for additional information.
+Oral Products: These products are not found in the FDA Green 
+Book; approval status is uncertain.
+Potassium Gluconate Tablets: 2 mEq (468 mg); Tumil-K®, Renakare®, 
+generic; (Rx). Labeled for use in cats and dogs
+Potassium Gluconate Oral Powder: Each 0.65 g (¼ teaspoon) con-
+tains 2 mEq of potassium in 4 oz containers; Renakare®, Tumil-K®; 
+(Rx). Labeled for use in dogs and cats
+Potassium Gluconate Gel: Each 2.34 g (½ teaspoon) contains 2 mEq 
+of potassium in 5 oz tubes; Tumil-K® Gel, Renakare®; (Rx). Labeled 
+for use in dogs and cats
+HUMAN-LABELED PRODUCTS (NOT A COMPLETE LIST):
+Parenteral Products:
+Potassium Chloride for Injection Concentrate: 2 mEq/mL in sin-
+gle-dose and multi-dose vials and must be diluted before adminis-
+tering; generic; (Rx)
+Potassium Chloride for Injection, Highly Concentrated: 10 mEq and 
+20 mEq in 50 mL or 100 mL bags, and 40 mEq/100 mL bags; gener-
+ic; (Rx). Ready-to-use solution for fluid-restricted patients; requires 
+administration through a central line via calibrated infusion device.
+There are also premixed IV bags of saline and dextrose (both sep-
+arately and in various combinations) that contain potassium 
+10 mEq/L, 20 mEq/L, 30 mEq/L, or 40 mEq/L. 
+Potassium Acetate for Injection Concentrate: 2 mEq/mL and 
+4 mEq/mL and must be diluted before administering; (Rx)
+Potassium Phosph
+
+--- plumb PDF 1085 ---
+1058      PrednisoLONE/Prednisone/ PrednisoLONE Sodium Succinate
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+	■Angiotensin-Converting Enzyme Inhibitors (ACEIs; eg, 
+benazepril, enalapril): May increase risk for hypotension
+	■Amlodipine: May increase risk for hypotension
+	■Beta-Blocking Agents (eg, propranolol): May enhance the 
+postural hypotensive effects seen after the first dose of prazosin
+	■Clonidine: May decrease prazosin antihypertensive effects
+	■Pentoxifylline: May increase risk for hypotension
+	■Phosphodiesterase Inhibitors (eg, sildenafil): May increase 
+risk for hypotension
+	■Telmisartan: May increase risk for hypotension
+	■Vasopressors (eg, dopamine, norepinephrine): Prazosin may 
+reduce dopamine pressor effect.
+	■Verapamil: May cause synergistic hypotensive effects when 
+used concomitantly with prazosin
+Laboratory Considerations
+None noted
+Dosages
+DOGS:
+Decrease urethral resistance in idiopathic vesico-urethral re-
+flex dyssynergia (VURD; extra-label): 
+a)	0.5 mg/kg PO twice daily. If adverse effects develop, decrease 
+the dose by 50%. Moderate to good effect was noted in 60% of 
+the dogs treated.13 
+b)	Anecdotally, 1 mg/15 kg (33 lb) PO 2 to 3 times daily
+Dysuria in patients with prostatic carcinoma (extra-label): 
+From a case report, 0.1 – 0.4 mg/kg PO daily was helpful in man-
+aging dysuria associated with prostatic carcinoma.1
+Systemic hypertension (extra-label): 
+a)	Weight-based dosage: 0.5 – 2 mg/kg PO every 8 to 12 hours7
+b)	Dosage per dog: 0.5 – 2 mg/dog (NOT mg/kg) PO every 8 to 
+12 hours14,15
+Adjunctive treatment of heart failure (extra-label): 1 mg/dog 
+(NOT mg/kg) PO 3 times daily for dogs weighing less than 15 kg 
+(33 lb); 2 mg/dog (NOT mg/kg) 3 times daily PO for dogs weigh-
+ing more than 15 kg (33 lb)16,17
+CATS:
+Decreasing urethral resistance with functional urethral ob-
+struction (extra-label): Use is controversial, and efficacy has been 
+questioned.2,6 Several dosages have been suggested, but most 
+commonly 0.25 – 1 mg/cat (NOT mg/kg) PO every 12
+
+--- plumb PDF 1216 ---
+Sucralfate      1189
+Sucralfate
+(soo-kral-fate)  Carafate®
+GI-Mucosal Protectant
+Prescriber Highlights
+	
+▶Local-acting treatment for GI ulcers/esophagitis; may also 
+protect somewhat against GI ulceration
+	
+▶No contraindications have been identified; however, sucralfate 
+should be used with caution when decreased GI transit times 
+may be harmful.
+	
+▶Adverse effects are unlikely, although constipation is possible. 
+Vomiting has been reported in cats.
+	
+▶Tablets should be dissolved in water before administration. 
+Should be administered on an empty stomach, if possible
+	
+▶To avoid possible drug interactions (eg, drug binding, de-
+creased drug bioavailability), other medications should be 
+administered 2 hours before sucralfate is administered. 
+Uses/Indications
+Sucralfate has been used to treat oral, esophageal, gastric, and duode-
+nal ulcers and to prevent drug (eg, aspirin)-induced gastric erosions. 
+Despite sucralfate’s theoretical benefits and widespread use, research 
+has shown limited or no evidence to support the effectiveness of su-
+cralfate for these indications.1–3 A consensus panel has determined 
+that evidence supporting sucralfate use in small animal species for 
+the prevention or treatment of esophageal injury is weak4; howev-
+er, sucralfate in combination with omeprazole is recommended for 
+treating horses with equine glandular gastric disease.5
+Sucralfate has been used in humans with hyperphosphatemia 
+secondary to renal failure and could be useful for this indication in 
+animals; however, in a study, sucralfate did not significantly change 
+serum or urine phosphorus levels in healthy cats or normophospha-
+temic cats with CKD, and adverse effects (eg, vomiting, anorexia, 
+constipation, worsening azotemia) may interfere with treatment.6 
+Pharmacology/Actions
+Although the exact mechanism of action of sucralfate as an antiulcer 
+agent is unknown, the drug appears to have a local effect rather than 
+a systemic one. After oral administration, sucralfate may react with 
+hydrochloric acid in the stomach to form a paste-like complex that 
+preferentially bind
+
+--- plumb PDF 1220 ---
+Sulfa-/Trimethoprim      1193
+Sulfa-/Trimethoprim
+Sulfadiazine/Trimethoprim
+Sulfamethoxazole/Trimethoprim
+(sul-fa-dye-a-zeen; sul-fa-meth-ox-a-zole/trye-meth-ohe-prim)
+Bactrim®, EquiSul-SDT®, Uniprim®
+Potentiated Sulfonamide Antimicrobial
+NOTE: In the United States, 2 FDA-approved combinations of sulfon-
+amide with trimethoprim (ie, sulfa-/trimethoprim) are used clinically 
+in animals: sulfadiazine/trimethoprim for parenteral and oral use in 
+dogs, cats, and horses and sulfamethoxazole/trimethoprim for oral 
+use in humans. In Canada, sulfadoxine is also available in combina-
+tion with trimethoprim for veterinary use.
+Prescriber Highlights
+	
+▶Combination antimicrobial agent, often referred to as a po-
+tentiated sulfonamide, used to treat bacterial and protozoal 
+infections
+	
+▶Contraindications include hypersensitivity to sulfonamides 
+and severe renal or hepatic impairment.
+	
+▶Caution is advised in cases of diminished renal or hepatic 
+function, urinary obstruction, urolithiasis, and in dog breeds 
+predisposed to sulfonamide hypersensitivity (eg, Doberman 
+pinschers).
+	
+▶Adverse effects in dogs include keratoconjunctivitis sicca, 
+hypersensitivity (type 1 or type 3), acute neutrophilic hepatitis 
+with icterus, vomiting, anorexia, diarrhea, fever, hemolytic 
+anemia, urticaria, polyarthritis, facial swelling, polydipsia, 
+crystalluria, hematuria, polyuria, cholestasis, hypothyroidism, 
+anemia, agranulocytosis, and idiosyncratic hepatic necrosis.
+	
+▶Adverse effects in cats include anorexia, crystalluria, hematu-
+ria, leukopenia, and anemia.
+	
+▶Adverse effects in horses include diarrhea, hypersensitivity 
+reactions, and hematologic effects (eg, anemia, thrombocy-
+topenia, leukopenia) when administered orally and transient 
+pruritus after IV injection.
+	
+▶Local injection adverse effects (eg, warmth, edema, pain) are 
+possible.
+	
+▶Sulfa-/trimethoprim is potentially teratogenic; weigh the risks 
+versus the benefits before prescribing.
+	
+▶In the United States, extra-label use of sulfonamides is prohib-
+ited in lactating dairy cattle.
+Uses/Indications
+Although sulfadiazine/
+
+--- plumb PDF 1288 ---
+Tramadol      1261
+Monitoring
+	■Serum electrolytes, BUN, creatinine, glucose (if diabetic)
+	■Hydration status
+	■Blood pressure, if indicated
+	■Clinical signs of edema, patient weight, if indicated
+Client Information
+	■While taking this medicine, your animal will drink and urinate 
+more often than usual. Be sure your animal always has access to 
+freshwater. You may give this medicine with or without food. 
+	■While your animal is taking this medicine, your veterinarian will 
+need to monitor your animal closely. Do not miss these important 
+follow-up visits. 
+	■Contact your veterinarian immediately if you notice excessive 
+thirst, weakness, collapse (passing out), head tilt, lack of urina-
+tion, or a racing heartbeat.
+Chemistry/Synonyms
+Torsemide is a lipophilic anilinopyridine sulfonylurea loop diuretic 
+that occurs as white to off-white, crystalline powder. It is practically 
+insoluble in water and slightly soluble in alcohol.
+Torsemide may also be known as torasemide, AC-3525, AC 4464, 
+BM-02.015, JDL-464, and Demadex®. International trade names 
+include Isemid®, Torem®, and Unat®.
+Storage/Stability
+Store torsemide tablets below 40°C (104°F); preferably between 15°C 
+and 30°C (59°F and 86°F).
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE IN THE US.
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula-
+tions before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Torsemide Oral Tablets: 5 mg, 10 mg, 20 mg, and 100 mg; Demadex®, 
+generic; (Rx)
+Torsemide Injection: 10 mg/mL; generic; (Rx). NOTE: This product 
+has been discontinued.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Tramadol
+(tram-ah-doll)  Ultram®
+Opioid Agonist
+Prescriber Highlights
+	
+▶Synthetic mu-

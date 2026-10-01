@@ -8,6 +8,28 @@ export type SimplifiedMedicationDefinition = {
  * na monografia; este texto serve como porta de entrada para leitores não especialistas.
  */
 const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
+  alopurinol: {
+    whatItDoes:
+      'O alopurinol atua como uma chave que desliga a enzima xantina-oxidase, impedindo que o organismo transforme purinas em ácido úrico. Essa redução é utilizada para dissolver e prevenir cálculos urinários de urato em cães geneticamente predispostos, além de enganar o parasito da leishmaniose, que incorpora o remédio em seu material genético como se fosse uma purina verdadeira e para de se multiplicar.',
+    keyPoints: [
+      'O paradoxo da xantina: ao fechar a torneira do ácido úrico, o alopurinol acumula xantina, que é ainda menos solúvel e pode formar cálculos urinários se o animal não estiver em dieta com pouca purina e urina bem diluída.',
+      'Combinação fatal com azatioprina: o alopurinol impede a inativação da azatioprina e da 6-mercaptopurina, disparando toxicidade medular gravíssima e aplasia de medula óssea se a dose não for reduzida em 66% a 75%.',
+      'Ineficaz em shunts portossistêmicos não tratados: cálculos de urato decorrentes de desvios vasculares hepáticos exigem cirurgia ou correção hepática; o alopurinol isolado não trata a causa vascular nem a hiperamonemia.',
+      'Ajuste obrigatório na doença renal: o fármaco e seu metabólito ativo oxipurinol dependem da filtração renal para eliminação; em animais com disfunção renal, reduzir a dose inicial pela metade para evitar acúmulo tóxico.',
+      'Leishmaniose visceral canina: medicamento leishmaniostático prolongado (6 a 12 meses) que controla a carga parasitária mas não gera cura esterilizante; exige ultrassom e urinálise periódicos para monitorar xantinúria.',
+    ],
+  },
+  amantadina: {
+    whatItDoes:
+      'A amantadina atua como um modulador dos receptores NMDA na medula espinhal, diminuindo o ganho ou volume do amplificador do sistema nervoso central para aliviar a sensibilização da dor crônica, a hiperalgesia e a queimação neuropática.',
+    keyPoints: [
+      'Não é analgésico de alívio rápido para dor aguda; exige de 7 a 21 dias de uso contínuo para demonstrar benefício funcional.',
+      'Excelente adjuvante em cães com artrose que não melhoram apenas com anti-inflamatórios (AINEs), resgatando a mobilidade.',
+      'A dose de 14 mg/kg é fruto de um único relato de caso e não deve ser utilizada como dose rotineira pelo risco tóxico.',
+      'Eliminada quase inalterada pelos rins: exige extrema cautela, ajuste de dose e checagem de creatinina e SDMA na doença renal crônica.',
+      'Medicamento de controle especial no Brasil (Lista C1), exigindo Receita de Controle Especial branca em duas vias.',
+    ],
+  },
   betanecol: {
     whatItDoes:
       'O betanecol estimula diretamente os receptores muscarínicos da bexiga, promovendo a contração ativa do músculo detrusor para restabelecer o esvaziamento urinário em quadros de retenção por bexiga flácida ou atônica.',
@@ -96,8 +118,14 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
     keyPoints: ['Não é corticosteroide “sem efeitos sistêmicos”.', 'Doses variam muito conforme fonte — BSAVA, estudos e mg/m² não são intercambiáveis.', 'Formulação entérica não deve ser triturada sem orientação farmacotécnica.'],
   },
   clorambucil: {
-    whatItDoes: 'O clorambucil liga-se ao DNA das células em divisão, impedindo sua multiplicação. É um quimioterápico oral usado em linfomas indolentes e algumas doenças imunomediadas, com efeito que pode demorar semanas.',
-    keyPoints: ['Medicamento citotóxico — não triturar ou manipular em casa.', 'Protocolos em mg/m² não devem ser convertidos automaticamente para mg/kg.', 'Monitorar hemograma regularmente.'],
+    whatItDoes: 'O clorambucil é uma quimioterapia citotóxica oral da classe das mostardas nitrogenadas que grampeia e danifica o DNA das células em multiplicação, impedindo sua divisão e disparando sua morte. É utilizado principalmente em neoplasias linfóides indolentes (como o linfoma intestinal felino de pequenas células), em enteropatias com perda proteica graves em cães e em protocolos metronômicos contínuos.',
+    keyPoints: [
+      'Quimioterapia citotóxica verdadeira: os comprimidos de 2 mg nunca devem ser partidos, esmagados ou mastigados em casa.',
+      'Manuseio com luvas descartáveis pelo tutor; proibição absoluta de contato por gestantes e lactantes.',
+      'Atenção extrema ao cálculo de dose: mg/m² não pode ser confundido com mg/kg para não causar superdose fatal.',
+      'A medula óssea é o principal órgão limitante: o hemograma completo periódico é indispensável para detectar neutropenia e plaquetopenia.',
+      'Em gatos, realizar exames periódicos de urina para rastrear a Síndrome de Fanconi (glicose na urina com taxa de açúcar normal no sangue).',
+    ],
   },
   'desoxicorticosterona-pivalato': {
     whatItDoes: 'O DOCP repõe a aldosterona deficiente na doença de Addison, ajudando o rim a reter sódio e água e eliminar potássio em excesso. Não substitui o cortisol — cães com deficiência dupla precisam também de prednisona ou prednisolona.',
@@ -240,12 +268,83 @@ const DEFINITIONS: Record<string, SimplifiedMedicationDefinition> = {
     keyPoints: ['Cães: 1–2 mg/kg/dia; doses de 2–4 mg/kg aumentam efeitos adversos.', 'Não substitui terapia comportamental.', 'Contraindicada em cães com epilepsia (bula Reconcile).'],
   },
   amitriptilina: {
-    whatItDoes: 'A amitriptilina é um antidepressivo tricíclico que age em serotonina, noradrenalina e vários outros receptores — causa mais sedação e efeitos anticolinérgicos que a fluoxetina.',
-    keyPoints: ['Cistite idiopática aguda: ensaios negativos — não usar rotineiramente.', 'Transdérmica em gatos: absorção ruim vs oral.', 'Evitar combinação com selegilina ou fluoxetina.'],
+    whatItDoes:
+      'A amitriptilina é um antidepressivo tricíclico e neuromodulador que bloqueia a recaptação de serotonina e noradrenalina, reforçando as vias que inibem a dor na medula e modulando circuitos cerebrais de ansiedade crônica e estresse em cães e gatos.',
+    keyPoints: [
+      'Efeito comportamental lento: exige de 2 a 4 semanas de uso contínuo para remodelar receptores cerebrais; a sonolência inicial decorre de ação anti-histamínica e não de cura da ansiedade.',
+      'Proibição na crise aguda de FIC e retenção urinária: inibe a contração da bexiga e é ineficaz na crise curta; seu nicho é exclusivo na cistite idiopática felina crônica e refratária.',
+      'Receita de Controle Especial em 2 vias (Lista C1 da Portaria 344/98): medicamento controlado com validade de 30 dias da receita e modelo Versão 2 obrigatório.',
+      'Via transdérmica ineficaz em gatos: estudos comprovam absorção mínima no pavilhão auricular; deve ser administrada por via oral em cápsulas manipuladas sem abrir (sabor extremamente amargo).',
+      'Cardiotoxicidade em superdose: pode provocar arritmias graves e alargamento do QRS por bloqueio de sódio cardíaco; o bicarbonato de sódio IV atua como antídoto de resgate.',
+    ],
   },
-  amantadina: {
-    whatItDoes: 'A amantadina reduz a sensibilização central da dor ao bloquear parcialmente receptores N-metil-D-aspartato. Funciona como adjuvante antihiperalgésico, não como analgésico forte isolado.',
-    keyPoints: ['Osteoartrite canina refratária: 3–5 mg/kg/dia com anti-inflamatório.', 'Lombossacral: 3 mg/kg a cada 12 horas estudado em 2025.', 'Meia-vida ~5 h — debate uma vs duas vezes ao dia.'],
+  'micofenolato-mofetila': {
+    whatItDoes:
+      'O micofenolato de mofetila é um imunossupressor potente que inibe seletivamente a multiplicação dos linfócitos de defesa ao bloquear a fabricação própria de guanina, controlando doenças autoimunes graves em cães e gatos.',
+    keyPoints: [
+      'Não intercambiável mg por mg com o micofenolato sódico (Myfortic): o sal sódico provoca enterocolite e diarreia muito mais severa em pequenos animais.',
+      'A toxicidade gastrointestinal com diarreia aguda ou hemorrágica é o principal efeito limitante da dose; a colestiramina atua como antídoto ligante ao cortar a recirculação entero-hepática.',
+      'A evidência clínica recente de 2024 na anemia hemolítica imunomediada (IMHA) canina recomenda cautela, pois não demonstrou benefício superior frente a outras terapias convencionais.',
+      'Antibióticos de amplo espectro eliminam bactérias benéficas do intestino e reduzem a exposição sistêmica do fármaco em até 30% a 50%, arriscando descontrole da doença.',
+      'Fármaco perigoso segundo a NIOSH: possui risco teratogênico grave, exigindo luvas para manipulação, proibição de partir ou triturar comprimidos e receita simples no Brasil.',
+    ],
+  },
+  ciclosporina: {
+    whatItDoes:
+      'A ciclosporina funciona como um freio seletivo da comunicação dos linfócitos T ao inibir a calcineurina, impedindo a produção de interleucina-2 e controlando alergias crônicas da pele e doenças autoimunes sem destruir a medula óssea.',
+    keyPoints: [
+      'Formulação microemulsificada moderna (Cyclavance, Atopica, Sandimmun Neoral) é obrigatória; nunca trocar por formulação oleosa antiga pelo risco de colapso na absorção.',
+      'Efeito dermatológico lento: exige de 4 a 6 semanas de uso diário contínuo para demonstrar alívio significativo do prurido e cicatrização das lesões de pele.',
+      'Alerta crítico em gatos: a depressão da imunidade celular eleva o risco de toxoplasmose sistêmica fatal; proibir expressamente carne crua e hábitos de caça.',
+      'Interação farmacocinética marcante: o cetoconazol inibe sua degradação e pode ser usado intencionalmente para reduzir a dose e o custo, enquanto fenobarbital anula sua eficácia.',
+      'Prescrição em Receita Simples no Brasil; vômitos iniciais podem ser contornados com alimento leve e as cápsulas moles nunca devem ser cortadas ou abertas.',
+    ],
+  },
+  sucralfato: {
+    whatItDoes:
+      'O sucralfato atua como um curativo químico protetor sobre feridas e erosões no esôfago e estômago, cobrindo a mucosa lesionada para impedir o ataque do ácido, da pepsina e da bile sem alterar a produção de ácido.',
+    keyPoints: [
+      'Curativo tópico sem ação sistêmica: protege onde há lesão física exposta, mas não é um protetor gástrico universal para todo paciente com vômito ou gastrite inespecífica.',
+      'Na esofagite, usar em suspensão líquida ou slurry (comprimido disperso em água): comprimidos inteiros podem passar direto para as fezes sem banhar o esôfago.',
+      'Regra das 2 horas: potente ligante no intestino, capaz de cortar a absorção de doxiciclina em 80% e ciprofloxacino pela metade; dê outros remédios 2 horas antes.',
+      'Separar 4 horas da levotiroxina para não anular o controle da tireoide, e pelo menos 1 hora da dieta enteral em animais alimentados por sonda para evitar entupimento.',
+      'Contraindicado como quelante de fósforo em gatos com doença renal: ineficaz e causador de constipação, vômitos e descompensação clínica.',
+    ],
+  },
+  mirtazapina: {
+    whatItDoes:
+      'A mirtazapina atua como um potente estimulante do apetite e remédio contra enjoo, desligando os freios químicos que inibem a fome no cérebro e bloqueando os receptores de serotonina e histamina responsáveis pela náusea, vômito e recusa alimentar em cães e gatos debilitados.',
+    keyPoints: [
+      'Em gatos, menos é mais: iniciar sempre com 1,88 a 2 mg por gato a cada 48 horas (dia sim, dia não); doses antigas de 3,75 mg disparam miados incessantes e agitação sem aumentar o apetite.',
+      'Ajuste obrigatório na doença renal e hepática: a eliminação do remédio fica lenta nesses pacientes; manter o intervalo espaçado a cada 48 horas para evitar acúmulo tóxico.',
+      'Risco fatal com inibidores da MAO (selegilina, amitraz): intervalo mínimo obrigatório de 14 dias sem esses medicamentos antes de iniciar a mirtazapina sob risco de choque e convulsões por síndrome serotoninérgica.',
+      'Antídoto de resgate: a ciproeptadina anula o efeito da mirtazapina se usada junta, mas funciona como antídoto específico caso o animal apresente tremores ou intoxicação acidental.',
+      'Duplo controle no Brasil: formulação veterinária em comprimidos palatáveis (Mirtz 2 mg) segue a Portaria MAPA 837/2025 via SIPEAGRO, enquanto formulações humanas exigem Receita de Controle Especial Lista C1 em 2 vias branca.',
+    ],
+  },
+  gabapentina: {
+    whatItDoes:
+      'A gabapentina atua como um modulador dos sinais de dor e ansiedade no sistema nervoso central de cães e gatos, diminuindo a liberação de substâncias excitatórias no cérebro e na medula para aliviar dores neuropáticas crônicas, diminuir o estresse em consultas veterinárias e auxiliar no controle de crises epilépticas.',
+    keyPoints: [
+      'Ansiolítico pré-visita em gatos: uma dose administrada cerca de 90 a 120 minutos antes de colocar o felino na caixa de transporte reduz o medo, viabiliza o trajeto e permite uma consulta tranquila e sem traumas.',
+      'Ajuste obrigatório em gatos com doença renal crônica: como o rim elimina o remédio, gatos com insuficiência renal devem receber doses menores (cerca de 10 mg/kg) para não apresentarem sonolência excessiva e fraqueza nas pernas.',
+      'Alerta vermelho de intoxicação por xilitol em cães: soluções líquidas comerciais de humanos frequentemente contêm xilitol, que causa queda fatal de glicose e necrose no fígado do cão; use apenas cápsulas ou suspensões manipuladas veterinárias sem xilitol.',
+      'Meia-vida curta no cão (3 a 4 horas): para controle de dor crônica contínua, o cão precisa tomar o remédio a cada 8 horas (3 vezes ao dia), pois esquemas de apenas 2 vezes ao dia deixam o paciente desprotegido entre as doses.',
+      'Desmame gradual obrigatório: se o paciente usa o remédio continuamente há semanas, nunca interrompa o tratamento de repente, pois a parada brusca pode disparar crises convulsivas e piora intensa da dor.',
+      'Receita de controle especial: no Brasil, a gabapentina é substância controlada na Lista C1 da Portaria 344/98, exigindo Receita de Controle Especial em 2 vias branca.',
+    ],
+  },
+  ciproeptadina: {
+    whatItDoes:
+      'A ciproeptadina é um antialérgico clássico que também atua bloqueando a serotonina no cérebro, sendo utilizada na clínica veterinária para despertar o apetite em gatos inapetentes e como antídoto de emergência em casos de intoxicação por antidepressivos e outros remédios que causam a síndrome serotoninérgica.',
+    keyPoints: [
+      'Estimulante de apetite em gatos: ajuda a incentivar a alimentação voluntária em pacientes em recuperação, mas não cura a causa da doença e jamais deve adiar a colocação de sondas alimentares em animais muito fracos ou com risco de lipidose hepática.',
+      'Trate a dor e o enjoo primeiro: dar estimulante de apetite para um animal que ainda sente náusea ou dor faz com que ele pegue aversão permanente à comida.',
+      'Sonolência frequente: como atravessa facilmente para o cérebro, a sonolência é o efeito mais comum nos primeiros dias de uso.',
+      'Reação de agitação ou mania felina: alguns gatos podem ter uma reação contrária e apresentar miados estridentes, inquietude e agitação; se isso ocorrer, avise o veterinário para reduzir a dose ou suspender.',
+      'Nunca misturar com mirtazapina para abrir o apetite: os dois remédios anulam o efeito um do outro; a ciproeptadina só deve ser usada junto da mirtazapina se o objetivo for cortar os efeitos adversos ou intoxicação por mirtazapina.',
+      'Cuidado em problemas urinários e glaucoma: o remédio relaxa a bexiga e pode piorar a retenção de urina, além de elevar a pressão nos olhos.',
+    ],
   },
 };
 

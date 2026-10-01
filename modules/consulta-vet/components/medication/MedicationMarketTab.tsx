@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -344,7 +345,7 @@ export function MedicationMarketTab({
 
         {/* Tabela de correspondência prática por peso */}
         <div className="overflow-x-auto rounded-2xl border border-border">
-          <table className="w-full min-w-[720px] text-left text-xs border-collapse">
+          <ReadableTable className="w-full min-w-[720px] text-left text-xs border-collapse">
             <thead>
               <tr className="bg-muted/60 border-b border-border text-muted-foreground font-semibold">
                 {tableHeaders.map((header, idx) => (
@@ -381,7 +382,7 @@ export function MedicationMarketTab({
                 </tr>
               ))}
             </tbody>
-          </table>
+          </ReadableTable>
         </div>
       </section>
 

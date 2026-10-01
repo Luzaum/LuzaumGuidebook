@@ -1,0 +1,214 @@
+SECTION XI
+•
+Infectious Disease
+1050
+eBooks.Health.Elsevier.com
+68. Hofmann-Lehmann R, Levy LS, Willett BJ. Comparing the ecacy of FeLV 
+vaccines: comment on: Stuke, K. etal. Ecacy of an inactivated FeLV vaccine 
+compared to a recombinant FeLV vaccine in minimum age cats following virulent 
+FeLV challenge. Vaccine. 2014;32(22):2599-2603.
+69. Poulet H, ibault JC, Masias A. Immunosuppression in a comparative study 
+of feline leukemia virus vaccines. Clin Vaccine Immunol. 2015;22:1294-1295.
+70. Day MJ, Schoon HA, Magnol JP, etal. A kinetic study of histopathologi-
+cal changes in the subcutis of cats injected with non-adjuvanted and adjuvanted 
+multi-component vaccines. Vaccine. 2007;25:4073-4084.
+71. Srivastav A, Kass PH, McGill LD, etal. Comparative vaccine-specic and 
+other injectable-specic risks of injection-site sarcomas in cats. J Am Vet Med 
+Assoc. 2012;241:595-602.
+72. Hofmann-Lehmann R, Cattori V, Tandon R, etal. Vaccination against the 
+feline leukaemia virus: outcome and response categories and long-term follow-
+up. Vaccine. 2007;25:5531-5539.
+73. Jirjis FF, Davis T, Lane J, etal. Protection against feline leukemia virus 
+challenge for at least 2 years aer vaccination with an inactivated feline leukemia 
+virus vaccine. Vet er. 2010;11:E1-E6.
+74. Wilson S, Greenslade J, Saunders G, etal. Diculties in demonstrating long 
+term immunity in FeLV vaccinated cats due to increasing age-related resistance to 
+infection. BMC Vet Res. 2012;8:125.
+75. Bergmann M, Schwertler S, Speck S, etal. Antibody response to feline 
+panleukopenia virus vaccination in cats with asymptomatic retrovirus infections: 
+a pilot study. J Feline Med Surg. 2019;21:1094-1101.
+76. Hartmann K. Ecacy of antiviral chemotherapy for retrovirus-infected 
+cats: What does the current literature tell us? J Feline Med Surg. 2015;17:925-939.
+77. Hartmann K. How I treat feline retrovirus infections. NAVC Clinician’s Brief
+2012;5:79-84.
+78. Hartmann K. Management of feline retrovirus-infected cats. In: Bonagura JD, 
+Twedt DC, eds. Kirk’s Current Veterinary erapy XVI. Elsevier; 2015:1275-1283.
+ACRONYMS
+ACE2 angiotensin converting 
+enzyme 2
+ADE antibody-dependent 
+enhancement
+CCoV canine enteric coronavirus
+CD cluster of differentiation
+CIRD canine infectious respirato-
+ry disease complex
+CPV canine parvovirus
+CRCoV canine respiratory coro-
+navirus
+CSF cerebrospinal fluid
+GI gastrointestinal
+FCoV feline coronavirus
+FDA U.S. Food and Drug 
+Administration
+FECV feline enteric coronavirus
+FIP feline infectious peritonitis
+FIPV feline infectious peritonitis 
+virus
+FNA fine-needle aspirate
+IFN interferon
+IHC immunohistochemistry
+IL interleukin
+ORF open reading frame
+PCR polymerase chain reaction
+RT-PCR reverse transcriptase 
+polymerase chain reaction
+S spike
+SARS-CoV-2 severe acute respi-
+ratory syndrome coronavirus 2
+SNP single nucleotide polymor-
+phism
+TGEV transmissible gastroenteri-
+tis virus
+Th T helper (cell)
+Coronavirus Infection
+Beth N. Licitra | Gary R. Whittaker
+FELINE CORONAVIRUS
+FELINE ENTERIC CORONAVIRUS 
+(FECV) VERSUS FELINE INFEC-
+TIOUS PERITONITIS VIRUS (FIPV)
+The Dichotomy of Diseases 
+Caused by Feline Coronavirus 
+(FCoV)
+FCoV is a pathogen of wild and domes-
+tic cats and is endemic in multi-cat envi-
+ronments, e.g., catteries and shelters.1
+Most cats exposed to FCoV develop 
+mild or subclinical enteritis; however, a 
+small subset experiences progression to 
+a systemic and usually lethal immune-
+mediated disease known as feline infec-
+tious peritonitis (FIP). is dichotomy in 
+disease severity has resulted in classify-
+ing FCoV infections into one of two bio-
+types: FECV and FIPV. e term biotype
+refers to a virus infection associated with 
+a distinct clinical outcome: FECV is pro-
+posed to cause mild self-limiting enteritis 
+while FIPV causes systemic inamma-
+tion and death. e preponderance of 
+evidence suggests that FIPVs arise from 
+FECVs by mutations that occur sponta-
+neously within each aected cat and a 
+mix of host and viral factors that dictate 
+whether FIPVs will arise and what form 
+the disease will take.
+e emergence of FIP in cats was 
+documented in necropsy records from 
+Angell Memorial Animal Hospital 
+(Boston, MA, USA) from the late 1950s and was rst described in 
+1963.2 It appears to have emerged in the United States and spread 
+worldwide by the mid-1970s.3 e origins of FCoV are less clear, 
+but coronaviruses are well known for their ability to cross species 
+boundaries and FIPV emerged in approximately the same time 
+frame as its closest relatives: transmissible gastroenteritis virus 
+(TGEV) of swine (in the 1940s) and canine enteric coronavirus 
+(CCoV) of dogs (in the 1970s) (Figure 200.1).
+Serotypes of FCoV
+Two distinct serotypes of FCoV have been identied, separated by 
+the antigenic and genetic properties of their viral spike (S) protein 
+(Figure 200.2).4 5 S is a crucial mediator of infection responsible 
+for both receptor binding and membrane fusion. Feline coronavi-
+rus serotype 1 (FCoV-1) and feline coronavirus serotype 2 (FCoV-
+2) have evolutionarily distinct S proteins that, in many ways, make 
+them behave like dierent viruses.6 FCoV-1 is more prevalent 
+clinically, grows poorly in cell culture, and is less studied. FCoV-2 
+is easily propagated in cell culture but accounts for a smaller pro-
+portion of natural infections. Aminopeptidase N (APN) has been 
+identied as the receptor for FCoV-2 while FCoV-1 uses a dier-
+ent, unidentied receptor.7 FCoV-1 S contains a notable insertion 
+of a proteolytic cleavage site (S1/S2) that plays an important role 
+in infection. FCoV-2 viruses lack this insertion.8 Despite dier-
+ences, the clinical outcome of infection appears to be the same: 
+both FCoV-1 and FCoV-2 can result in FECV or FIPV in an 
+infected cat. Superinfection, or simultaneous infection with more 
+than one serotype, is possible but poorly documented.
+PATHOGENESIS AND CLINICAL SIGNS OF FECV
+FECV replicates within the intestinal epithelium. Most cats are 
+subclinically infected, but some have signs of fever, anorexia, and 
+mild diarrhea.9 10 FECV is ubiquitous among cats in multi-cat 
+environments such as catteries and shelters. Within 24 hours of 
+CHAPTER 200
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Video.
+
+CHAPTER 200
+•
+Coronavirus Infection
+1051
+eBooks.Health.Elsevier.com
+infection, FCoV can be detected in the tonsils and small intes-
+tine.11 It then spreads systemically.12 Monocyte-associated viremia 
+is common,13-15 with virus shed in the feces and transmitted by the 
+oronasal route. Primary infection can last several months. Some 
+cats clear the virus, but many continue to shed at low levels for 
+up to 2 years.4 16 Colonic columnar epithelial cells appear to serve 
+as a reservoir for persistent infection and shedding.12 Immunity 
+is not long-lasting and reinfection may occur.17 Despite the term 
+“enteric,” FECV can be detected in all major organs, including the 
+central nervous system, for up to 80 days post-infection with no 
+clinical signs.12 It is suspected that mesenteric lymph nodes and 
+tissue macrophages also serve as virus reservoirs. Like other coro-
+naviruses, FCoV can survive 1 to 2 days on surfaces. Anecdotally, 
+it has been reported to remain viable as long as 7 weeks in dried 
+feces. is nding is reported in previous reviews and textbooks 
+and is based on data collected in a laboratory setting; however, the 
+longevity of FCoV in natural environments is likely to be much 
+shorter. Like other enveloped viruses, FCoV is highly susceptible 
+to destruction by detergents, disinfectants, prolonged exposure to 
+UV light, or desiccation (ch. 186).
+PATHOGENESIS AND CLINICAL SIGNS OF FIPV
+Pathogenesis
+In approximately 5% of FCoV infections, the virus gains an abil-
+ity to replicate robustly within blood monocytes and tissue macro-
+phages, resulting in FIP—an immune-mediated disease associated 
+with activation of monocytes, macrophages, and endothelial cells. 
+Naturally occurring FIPVs are thought to arise independently and 
+to be largely non-transmissible; however, cats can be experimen-
+tally infected through oronasal exposure and, while transmission 
+data are limited, have been shown to shed virus in nasal secre-
+tions.18 FIP has a predilection for kittens and young cats, but ani-
+mals of any age can succumb. It may strike more than one animal in 
+a household and has been known to devastate shelters and catteries.
+Early Clinical Characteristics
+Early clinical signs are nonspecic (Video 6.4): fever, lethargy, 
+anorexia, and weight loss. Laboratory test results oen reveal 
+a nonregenerative anemia, neutrophilia with a le shi, and 
+lymphopenia due to cytokine mediated depletion of cluster of 
+CCoV-2
+CCoV-2 (pantropic)
+FCoV-2 “FECV”
+FCoV--2 “FIPV”
+TGEV
+FRECV
+FRSCV
+FCoV-1 “FECV”
+CCoV-1
+FCoV-1 “FIPV”
+Porcine deltaCoV
+Asian leopard cat CoV
+IBV
+SARS-CoV
+SARS-CoV-2
+ECoV
+CRCoV
+BCoV
+α
+δ
+γ
+β
+Figure 200.1
+Cartoon representation of a phylogenetic tree for selected coronavirus spike genes. Feline and canine coronaviruses referred to in this 
+chapter are shown in blue, with severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) in purple, along with other representative coronavi-
+ruses. One additional feline coronavirus from a wild Asian leopard cat is also shown. e coronavirus genus (alpha, beta, gamma, or delta) to which the 
+viruses belong is indicated. BCoV, Bovine coronavirus; CCoV-1, canine enteric coronavirus 1; CCoV-2, canine enteric coronavirus 2; CRCoV, canine 
+respiratory coronavirus; ECoV, equine coronavirus; FECV, feline enteric coronavirus; FIPV, feline infectious peritonitis virus; FRECV, ferret enteric 
+coronavirus; FRSCV, ferret systemic coronavirus; IBV, infectious bronchitis virus; TGEV, transmissible gastroenteritis virus.

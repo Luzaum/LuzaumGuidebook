@@ -1,0 +1,256 @@
+746      Levetiracetam
+Levetiracetam
+(lee-ve-tye-ra-see-tam)  Keppra®
+Anticonvulsant
+Prescriber Highlights
+	
+▶Levetiracetam is a broad-spectrum anticonvulsant that can be 
+used as adjunct therapy for canine epilepsy or when pheno-
+barbital or bromides are not tolerated. Dogs may become 
+refractory to therapy over time.
+	
+▶In cats, levetiracetam may be used as a second-line drug when 
+phenobarbital alone does not control seizures but can also be 
+tried as sole therapy when phenobarbital is not tolerated.
+	
+▶Appears to be well tolerated; adverse effects may be transient 
+and can include sedation in dogs, and lethargy, decreased 
+appetite, and ataxia in cats
+	
+▶In dogs, phenobarbital may cause significant drug interactions 
+with levetiracetam.
+	
+▶Owner compliance with dosing frequency (every 8 hours) of 
+immediate-release tablets and oral solution may be problem-
+atic.
+	
+▶Do not confuse immediate-release and extended-release tab-
+lets; use caution when prescribing and dispensing.
+Uses/Indications
+Levetiracetam can be useful as adjunct therapy to phenobarbital and 
+bromides in patients with canine epilepsy. Convincing evidence for 
+efficacy of levetiracetam monotherapy is lacking.1–3 Levetiracetam 
+has been shown to be useful in the treatment of status epilepticus and 
+acute repetitive seizures (ie, cluster seizures) in dogs.4 It has been used 
+at home for oral pulse therapy to abort seizure activity,5 and SC admin-
+istration at home may be useful in dogs that develop status epilepticus 
+or acute repetitive seizures that do not always respond sufficiently to 
+benzodiazepine (via rectal and/or intranasal administration).4 A small 
+open-label study found that the addition of rectal levetiracetam to 
+standard treatment (rectal/IV diazepam and IV phenobarbital) sig-
+nificantly increased response rate for dogs with cluster seizures com-
+pared to the standard treatment alone.6 In addition, in a study, IV le-
+vetiracetam was used successfully to treat refractory seizures in a dog 
+that ingested a lethal dose of fluorouracil (5-FU).7 In one case report, 
+levetiracetam was successfully used to manage a dog with paroxysmal 
+exertion-induced dyskinesia.8 Another study found levetiracetam to 
+be effective for reactive seizures that were thought to be due to exoge-
+nous toxicity.9 Levetiracetam may have reduced efficacy in dogs over 
+time (ie, “honeymoon effect”), and there have been reports that phe-
+nobarbital can significantly affect levetiracetam pharmacokinetics in 
+dogs.3,10 Lack of efficacy has also been noted when levetiracetam was 
+used as adjunct therapy in dogs with refractory epilepsy.11 
+Levetiracetam appears to be useful as add-on therapy in cats when 
+phenobarbital does not control seizures or as sole therapy in cats that 
+are unable to tolerate phenobarbital.12 Studies have shown levetirac-
+etam to be more effective than phenobarbital and well tolerated as a 
+monotherapy agent in cats with myoclonic seizures.13
+Pharmacokinetic data in horses suggest that levetiracetam may be 
+efficacious when given orally.14–16
+Pharmacology/Actions
+The exact mechanism of levetiracetam’s antiseizure activity is not 
+well understood. Levetiracetam appears to affect the release of neu-
+rotransmitters in the CNS by selective binding to the presynaptic 
+protein SV2A on synaptic vesicles, and it may selectively prevent 
+hypersynchronization of epileptiform burst-firing and propagation 
+of seizure activity.17 It does not affect normal neuronal excitability. 
+Pharmacokinetics
+In dogs, levetiracetam (immediate-release tablet or oral solution) is 
+rapidly and almost completely absorbed after oral administration. 
+Volume of distribution is 0.5 to 0.7 L/kg.18–20 Protein binding is min-
+imal, and ≈90% of a dose is renally eliminated.21 Peak concentration 
+(Cmax, ≈34 μg/mL; range, 9.2 to 60 μg/mL) occurs 0.6 to 2.2 hours 
+after a single dose of immediate-release tablets, and elimination 
+half-life (T½) is 2.2 to 4.4 hours.18,22,23 Concurrent phenobarbital re-
+duces Cmax and T½.24–26 Repeat oral doses do not appreciably alter 
+pharmacokinetic values.24,26 In a study, peak concentrations occurred 
+40 minutes after IM administration; the drug was completely ab-
+sorbed, and peak concentration was similar to IV administration.27 
+SC levetiracetam (60 mg/kg, undiluted) yielded drug concentrations 
+between 65 μg/mL and 114 μg/mL, 15 to 420 minutes after admin-
+istration.28 In fasted dogs given an extended-release tablet formula-
+tion at 30 mg/kg PO, maximum plasma drug concentration, time to 
+reach maximum plasma concentration, disappearance half-life, and 
+bioavailability were 27 μg/mL, 3.4 hours, 4.4 hours, and 100%, re-
+spectively. Pharmacokinetics were similar when dogs were fed, with 
+the exception of the time to reach maximum plasma concentration, 
+which was longer (6.6 hours), and bioavailability, which was greater 
+(126%).29 Data from different studies suggest that administering ex-
+tended-release tablets every 12 hours should maintain therapeutic 
+levels in dogs.22,23,29,30 In a study in dogs, when levetiracetam solution 
+for injection was administered rectally at 40 mg/kg, the maximum 
+serum concentration was 36 μg/mL and time to reach maximum se-
+rum concentration was 1.5 to 1.7 hours. Presence of feces may limit 
+absorption.31,32 Bioequivalence of generic extended-release tablets to 
+Keppra XR® has been demonstrated in dogs.22 
+In cats, oral bioavailability of immediate-release levetiracetam is 
+≈100%, and elimination half-life is ≈3 hours. The authors concluded 
+that 20 mg/kg administered IV or PO every 8 hours should be ade-
+quate in most cats.33 Similar pharmacokinetic values were reported 
+in cats concurrently receiving phenobarbital.12 In healthy cats receiv-
+ing a single 500 mg tablet dose of extended-release levetiracetam, 
+serum concentrations remained above 5 μg/mL for 21 hours, with 
+an average peak concentration of ≈90 μg/mL.34 CSF concentrations 
+appear to parallel serum concentrations, suggesting adequate CSF 
+concentrations are attained after oral administration in cats.35 With 
+daily administration of extended-release levetiracetam tablets for 7 
+days, median peak and trough serum concentrations were 92.3 μg/
+mL and 7 μg/mL, respectively. In a small pilot study, a compounded 
+liposomal levetiracetam cream was administered to the inner pinna 
+at 60 mg/kg every 8 hours for 6 days, which resulted in serum con-
+centrations above 5 µg/mL.36 
+In 1- to 10-day-old foals receiving levetiracetam (32 mg/kg PO 
+and IV as single doses), oral absorption was ≈100%. Peak concentra-
+tion (38.3 μg/mL) occurred after 0.9 hours, and elimination half-life 
+was 7.8 hours.15 In adult horses, terminal half-life and volume of dis-
+tribution at steady-state after IV administration of levetiracetam at 
+20 mg/kg were 6.22 hours and 630 mL/kg, respectively. When imme-
+diate-release and extended-release tablets were crushed and admin-
+istered orally at 30 mg/kg, maximum plasma concentration, terminal 
+half-life, bioavailability, clearance/bioavailability, and time to peak 
+concentration were 50.72 μg/mL and 53.58 μg/mL, 6.38 hours and 
+7.07 hours, 96% and 98%, 76.8 mL/kg/hour and 76.8 mL/kg/hour, 
+and 0.66 hours and 0.64 hours, respectively.14,37 No difference was 
+found between these formulations; however, the extended-release 
+tablets were crushed, which may have affected its pharmacokinetic 
+profile. The authors concluded that oral administration of 30 mg/kg 
+of either the regular or extended-release tablets in healthy adult 
+horses is likely to achieve therapeutic concentrations for at least 12 
+hours.14 In another study, generic immediate-release levetiracetam 
+tablets administered to healthy adult horses resulted in equivalent 
+
+Levetiracetam      747
+pharmacokinetic parameters as branded levetiracetam.38 Healthy 
+adult horses receiving levetiracetam 30 mg/kg PO every 12 hours 
+achieved trough levetiracetam CSF and serum concentrations of 
+33.7 μg/mL and 28.8 μg/mL, respectively, after 4 days.16
+In humans, levetiracetam is rapidly and nearly completely ab-
+sorbed after oral administration. Peak levels occur ≈60 minutes after 
+administration. The presence of food in the gut delays the rate but 
+not the extent of drug absorbed, and the drug can be administered 
+regardless of feeding status. Less than 10% of the drug is bound to 
+plasma proteins. Although not extensively metabolized, the drug’s 
+acetamide group is enzymatically hydrolyzed to the carboxylic acid 
+metabolite that is apparently not active. Hepatic CYP450 isoenzymes 
+are not involved. In humans, half-life is ≈7 hours and ≈66% of a 
+given dose is excreted unchanged via renal mechanisms, primarily 
+glomerular filtration and active tubular secretion. Clearance can be 
+significantly reduced in patients with impaired renal function.
+Contraindications/Precautions/Warnings
+Levetiracetam is contraindicated in patients that have previously ex-
+hibited hypersensitivity to it or any of its components. Respiratory 
+failure and cardiac arrest were reported in a dog with cluster seizures 
+that received an undiluted levetiracetam injection of 60 mg/kg IV.39 
+Levetiracetam should be used with caution in patients with re-
+nal impairment; changes in dose or frequency should be considered. 
+One small retrospective study found that dogs with chronic kidney 
+disease (CKD) had a higher incidence of adverse effects from leveti-
+racetam than dogs without CKD.40 In humans, renal elimination of 
+levetiracetam correlates with creatinine clearance; total clearance is 
+reduced by 40% in patients with mild renal impairment and up to 
+60% in patients with severe renal impairment.17,41
+Anecdotally, it has been reported that extended-release tablets 
+may not fully disintegrate in the canine GI tract. Some neurologists 
+have had experience with this situation and found that these patients 
+still had levetiracetam concentrations within the therapeutic range. 
+The presumption amongst many neurologists is that what is found 
+in the stool is the matrix of the pill and that the medication is still 
+being absorbed.42 
+Discontinuation should be done gradually to decrease risk for 
+withdrawal seizures.
+LevETIRAcetam should not be confused with levOCARNitine or 
+levOFLOXacin. Do not confuse immediate-release tablets with ex-
+tended-release tablets; use caution when prescribing or dispensing. 
+Immediate-release prescriptions can be written as “levetiracetam” or 
+“levetiracetam IR” (immediate-release). “Levetiracetam ER” or “Le-
+vetiracetam XR” refers to extended-release tablets.
+Adverse Effects
+Levetiracetam appears to be well tolerated in dogs and cats. The 
+most common adverse effects reported include sedation and ataxia 
+in dogs and reduced appetite, ataxia, hypersalivation, and lethargy 
+in cats. These effects may be transient. Changes in behavior and GI 
+effects (eg, vomiting) can occur.43 Transient head-lowering has been 
+observed in horses.14
+In a study, IM administration produced less muscle inflammation 
+in dogs than the saline control solution.27 In another study, SC ad-
+ministration of undiluted levetiracetam solution for injection was 
+well-tolerated, but the sample size was small (n = 4 healthy dogs).28
+A systematic review and meta-analysis of adverse effects of antie-
+pileptic drugs in dogs showed a strong level of evidence for levetirac-
+etam’s safety profile as monotherapy and adjunct therapy. Only type 
+I adverse effects (ie, dose-dependent, predictable) were reported and 
+these included vomiting and sedation, followed by ataxia and hyper-
+activity. Less common adverse effects included anorexia, polyphagia, 
+and polydipsia, followed by polyuria, diarrhea, aggression, disobedi-
+ence, and attention-seeking.44
+In humans, adverse effects include sedation, asthenia, anxiety, and 
+headache. Neuropsychiatric adverse effects (eg, aggression, agitation, 
+irritability, depression) have also been reported. It is recommended 
+to withdraw the drug slowly to prevent withdrawal seizures. 
+Reproductive/Nursing Safety
+In pregnant dogs or cats, levetiracetam should be used with caution. 
+At high dosages, levetiracetam has caused increased embryofetal 
+mortality in rabbits and rats. At doses equivalent to the maximum 
+human therapeutic dose, levetiracetam has caused minor skeletal ab-
+normalities and retarded offspring growth in rats.45 
+Levetiracetam is excreted into maternal milk, and its safety in 
+nursing offspring is unknown. Levetiracetam should be used with 
+caution in nursing patients. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Levetiracetam is a relatively safe agent. Dogs receiving 1200 mg/kg/
+day (≈20 times the therapeutic dose) developed only salivation and 
+vomiting.46 Other clinical signs seen with overdose in dogs include 
+lethargy, hyperthermia, and recumbency. Human patients receiving 
+6000 mg/kg during drug testing developed only drowsiness.45 Other 
+effects noted in human overdoses (doses not specified) after the drug 
+was released included depressed levels of consciousness, agitation, 
+aggression, and respiratory depression.
+Treatment is supportive based on clinical signs; levetiracetam can 
+be removed with hemodialysis. 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving levetiracetam and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but the potential risks 
+should be weighed and additional monitoring performed when ap-
+propriate.
+	■Carbamazepine: Concurrent use may result in signs of carba-
+mazepine toxicity (eg, nystagmus, ataxia, dizziness).
+	■CNS Depressants (eg, antihistamines, benzodiazepines, gab-
+apentin, opioids): May increase risk for CNS depression
+	■Methotrexate: May increase methotrexate concentrations and 
+risk for toxicity
+	■Phenobarbital: In dogs, ongoing (21 days in the study) phe-
+nobarbital use significantly increased levetiracetam clearance and 
+reduced half-life; levetiracetam dose adjustments (increases) may 
+be required.24,25 Pharmacokinetic values of levetiracetam appear 
+unchanged in cats concurrently receiving phenobarbital.12
+Laboratory Considerations
+	■No specific laboratory interactions or considerations were noted.
+Dosages
+DOGS:
+Refractory epilepsy (extra-label):
+a)	Using immediate-release tablets: 20 mg/kg PO every 8 hours,10 
+although recommendations up to 30 mg/kg PO every 8 hours 
+have been noted. Because of the drug’s safety, doses may be in-
+creased (every 1 to 2 weeks; up to 60 mg/kg PO every 8 hours) 
+further until efficacy is achieved, adverse effects become ap-

@@ -1,0 +1,215 @@
+===== BSAVA PDF 271 / impressa 255 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+255
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+although methadone will cause constriction of GI sphincters (such 
+as the pyloric sphincter) and may cause a reduction in GI motility 
+when given over a long period. Methadone crosses the placenta and 
+may exert sedative effects in neonates born to bitches treated prior 
+to parturition. Severe adverse effects can be treated with naloxone.
+Drug interactions: Other CNS depressants (e.g. anaesthetics, 
+antihistamines, barbiturates, phenothiazines, tranquillizers) may 
+cause increased CNS or respiratory depression when used 
+concurrently with narcotic analgesics.
+DOSES
+When used for sedation is generally given as part of a combination. 
+See Appendix for sedation protocols in cats and dogs.
+Dogs: Analgesia: 0.1–0.5 mg/kg i.m. or 0.1–0.3 mg/kg i.v. prn.
+Cats: Analgesia: 0.1–0.5 mg/kg i.m. or 0.1–0.3 mg/kg i.v. prn. Doses 
+in the range of 0.6 mg/kg are appropriate for oral transmucosal 
+administration in cats.
+References
+Ferreira TH, Rezende ML, Mama KR et al. (2011) Plasma concentrations and behavioural, 
+antinociceptive and physiological effects of methadone after intravenous or oral 
+transmucosal administration in cats. American Journal of Veterinary Research  72, 764–771
+Hunt JR, Attenburrow PM, Slingsby LS et al . (2013) Comparison of premedication with 
+buprenorphine or methadone with meloxicam for postoperative analgesia in dogs 
+undergoing orthopaedic surgery.  Journal of Small Animal Practice  54, 418–424
+Methenamine (Hexamine hippurate)
+(Hiprex*) POM 
+Formulations: Oral: 150 mg methenamine + 116 mg monosodium 
+phosphate tablet; 1 g methenamine hippurate (Hiprex) tablet.
+Action: Urinary antiseptic.
+Use:
+• Long-term control of recurrent urinary tract infections (UTIs).
+It is bacteriostatic and mainly indicated for prevention of recurrent 
+infection. It requires an acidic urine to be effective. Evidence for 
+efficacy currently lacking in animals.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Severe renal or hepatic impairment, 
+dehydration and metabolic acidosis.
+Adverse reactions: Methenamine may cause GI disturbances, 
+bladder irritation or a rash. Often poorly tolerated by cats.
+Drug interactions: Efficacy is reduced when drugs that alkalinize 
+urine (potassium citrate) are used concurrently.
+DOSES
+Dogs: Management of recurrent UTI:  1–3 tablets p.o. q24h 
+(methenamine/sodium acid phosphate) or 500 mg/dog p.o. q12h 
+(methenamine).
+
+===== BSAVA PDF 272 / impressa 256 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+256
+Cats: Management of recurrent UTI: 1 tablet p.o. q24h 
+(methenamine/sodium acid phosphate) or 250 mg/cat p.o. q12h 
+(methenamine). 
+References
+Olin SJ and Bartges JW (2015) Urinary tract infections. Veterinary Clinics of North 
+America: Small Animal Practice  45, 721–756
+Methimazole see Thiamazole
+Methionine
+(Methionine*) general sale 
+Formulations: Oral: 500 mg tablets.
+Action: Urinary acidifier.
+Use:
+• Treatment of struvite urolithiasis.
+There is an increased risk of acidosis if used with other urinary 
+acidifying treatments. Used to be recommended for paracetamol 
+poisoning, but alternative anti-oxidants now preferred (e.g. 
+acetylcysteine, S-adenosylmethionine).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Renal failure or severe hepatic disease. Young 
+age.
+Adverse reactions: Overdosage may lead to metabolic acidosis.
+Drug interactions: No information available.
+DOSES
+Dogs: Urine acidification: 100 mg/kg p.o. q12h. Adjust the dose 
+until urine pH is 6.5 or lower.
+Cats: Urine acidification: 200 mg/cat p.o. q8h. Adjust the dose until 
+urine pH is 6.5 or lower. 
+References
+Raditic DM (2015) Complementary and integrative therapies for lower urinary tract 
+diseases. Veterinary Clinics of North America: Small Animal Practice 45, 857–878
+Methocarbamol
+(Robaxin*) POM 
+Formulations: Oral: 500 mg, 750 mg tablets.
+Action: Carbamate derivative of guaifenesin that is a CNS 
+depressant with sedative and musculoskeletal relaxant properties. 
+The mechanism of action has not been fully established; it has no 
+direct action on the contractile mechanism of skeletal muscle, the 
+motor endplate or the nerve fibre.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 273 / impressa 257 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+257
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use:
+• Treatment of tetanus and some toxicities (e.g. pyrethroid, 
+strychnine).
+• General muscle relaxant for muscular spasms.
+The clearance of methocarbamol is significantly impaired in human 
+patients with renal and hepatic disease. There is very limited 
+literature on the use of methocarbamol in cats; case reports 
+describing the use of methocarbamol by intravenous bolus injection 
+and continuous rate infusion in dogs and cats have been published.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Salivation, emesis, lethargy, weakness and 
+ataxia.
+Drug interactions: As methocarbamol is a CNS depressant, 
+additive depression may occur when given with other CNS 
+depressant agents.
+DOSES
+Dogs, Cats: 20–45 mg/kg p.o. q8h. Very high doses may be 
+required for tetanus. It is recommended that the dose does not 
+exceed 330 mg/kg, although serious toxicity or death has not been 
+reported after overdoses. 
+References
+Draper WE, Bolfer L, Cottam E et al . (2013) Methocarbamol CRI for symptomatic 
+treatment of pyrethroid intoxication: a report of three cases. Journal of the American 
+Animal Hospital Association  49, 325–328
+Nielsen C and Pluhar GE (2005) Diagnosis and treatment of hindlimb muscle strain 
+injuries in 22 dogs. Veterinary and Comparative Orthopaedics and Traumatology 18 , 
+247–253
+Methoprene (S-Methoprene)
+(Acclaim spray, Broadline, Duoflect, Fiprotec, 
+Fleascreen Combo, Frontline Combo/Plus, R.I.P. 
+fleas, Staykill) POM-V, NFA-VPS, general sale 
+Formulations: Always in combination with other agents. Topical:  
+9% S-methoprene with fipronil in spot-on pipettes of various sizes 
+(e.g. Frontline Combo/Plus). A combination with eprinomectin, 
+fipronil and praziquantel (Broadline).  Environmental: S-methoprene 
+with permethrin (Acclaim) or tetramethrine + permethrin (R.I.P. 
+Fleas) household sprays.
+Action: Juvenile hormone analogue that inhibits larval development.
+Use:
+• Treatment and prevention of flea infestations ( Ctenocephalides 
+canis and C. felis).
+• Environmental sprays also have some efficacy against house 
+dust mites Dermatophagoides farinae and D. pteronyssinus.

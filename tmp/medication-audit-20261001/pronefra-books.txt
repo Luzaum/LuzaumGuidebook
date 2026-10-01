@@ -1,0 +1,834 @@
+
+===== Plumb PDF 205 =====
+178    Calcium, Oral (-Carbonate, -Gluconate, -Lactate) 
+In humans, nausea and constipation have been reported while 
+taking this drug.
+Reproductive/Nursing Safety
+In humans, calcium crosses the placenta and is excreted in milk; cal-
+cium salts are considered compatible with pregnancy and lactation.1
+Overdose/Acute Toxicity
+Potentially, acute overdoses could cause hypercalcemia in susceptible 
+animals. Patients should be monitored and treated based on clinical 
+signs. If overdose was massive and recent, consider using standard 
+protocols to empty the gut.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving oral calcium-containing 
+products and may be of significance in veterinary patients. Unless 
+otherwise noted, use together is not necessarily contraindicated, but 
+weigh the potential risks and perform additional monitoring when 
+appropriate.
+ ■ Aspirin : Concurrent use may result in decreased salicylate ef -
+fectiveness.
+ ■ Azole Antifungals  (eg, itraconazole, ketoconazole, but not 
+fluconazole): Concurrent use may result in decreased antifungal 
+exposure.
+ ■ Bisphosphonates, Oral (eg, alendronate): Concurrent oral 
+administration may reduce bisphosphonate absorption.
+ ■ Calcitriol : If administered with calcium carbonate, may lead 
+to hypercalcemia; if calcitriol is used concomitantly, intensified 
+monitoring for hypercalcemia is mandatory.
+ ■ Cefpodoxime : Concurrent use may result in decreased cefpo -
+doxime effectiveness.
+ ■ Corticosteroids  (eg, dexamethasone, prednis(ol)one): Cal-
+cium may reduce corticosteroid bioavailability. 
+ ■ Digoxin : Calcium carbonate is not recommended for use in hu-
+man patients that are on digoxin therapy as hypercalcemia may 
+cause serious arrhythmias.
+ ■ Fluoroquinolones (eg, enrofloxacin): Oral calcium-contain-
+ing products can reduce absorption of fluoroquinolones; if both 
+calcium carbonate and a fluoroquinolone are required, separate 
+doses by at least 2 hours.
+ ■ H2 Receptor Antagonists (eg, famotidine, ranitidine): Re-
+ducing stomach acid may lower the phosphorous binding capaci-
+ty of calcium carbonate.
+ ■ Levothyroxine : Oral calcium products may reduce levothy -
+roxine absorption if given at the same time. Separate doses by at 
+least 2 hours if possible.
+ ■ Loop Diuretics (eg, furosemide): Loop diuretics promote cal-
+cium excretion.2
+ ■ Mycophenolate : Oral calcium-containing products can re -
+duce absorption of mycophenolate. 
+ ■ Oral Phosphates : Concurrent use may result in decreased 
+phosphate absorption.
+ ■ Propranolol : Concurrent use may result in decreased pro -
+pranolol bioavailability.
+ ■ Proton Pump Inhibitors (eg, omeprazole): Reducing stom-
+ach acid may lower the phosphorous binding capacity of calcium 
+carbonate. Omeprazole reduces dietary calcium digestibility3; the 
+effect, if any, on calcium supplementation is unclear.
+ ■ Quinidine : Oral calcium-containing products can decrease qui-
+nidine excretion.
+ ■ Rifampin: Oral calcium-containing products can reduce absorp-
+tion of rifampin; if both calcium carbonate and rifampin are re -
+quired, separate doses by at least 2 hours.
+ ■ Sotalol : Oral calcium-containing products can reduce sotalol 
+absorption.
+ ■ Sucralfate : Concurrent use may result in decreased sucralfate 
+efficacy.
+ ■ Tetracyclines (eg, doxycycline, minocycline ): Oral calci -
+um-containing products can reduce absorption of tetracyclines; 
+if both calcium carbonate and a tetracycline are required, separate 
+doses by at least 2 hours.
+ ■ Thiazide Diuretics ( eg, chlorothiazide/hydrochlorothiazide): 
+Concurrent use may increase risk of hypercalcemia.
+ ■ Verapamil : Concurrent use may result in reversal of hypoten -
+sive effects.
+Laboratory Considerations
+When using to treat hypocalcemia:
+ ■ Hemolyzed blood samples or hyperlipidemia: Can cause falsely 
+elevate total calcium concentrations
+ ■ Heparinized blood collection tubes: Sodium or lithium heparin 
+may bind small amounts of ionized calcium. Heparinized samples 
+are acceptable provided that careful attention is paid to the con -
+centration of heparin in the final sample.
+ ■ Hyperbilirubinemia: Can cause falsely lower total calcium con -
+centrations
+ ■ Oxalate, citrate, ethylenediaminetetraacetic acid (EDTA) 
+blood collection tubes : These anticoagulants in blood sample 
+collection tubes can bind calcium and cause falsely low total cal -
+cium concentrations.
+Dosages
+DOGS/CATS:
+Hyperphosphatemia associated with chronic kidney disease 
+using a low-phosphorus diet  (extra-label): Calcium carbonate  
+30 – 60 mg/kg PO per day divided and given with food or just prior 
+to each meal.4,5 Doses up to 90 – 150 mg/kg/day PO may be need-
+ed.6 Therapy usually begins at the lower end of the recommended 
+dose range and is adjusted upward as needed every 4 to 6 weeks 
+until the serum phosphorus target is reached. Decrease dose if se-
+rum calcium exceeds normal limits. See Chemistry/Synonyms.
+Calcium supplement for chronic hypocalcemia: Dogs (total 
+dose/dog, NOT mg/kg): ≈1250 mg (toy breeds) – 10 g (giant 
+breeds) of calcium carbonate PO per day. This dosage is equiva -
+lent to 0.5 – 4 g/dog (NOT mg/kg) of elemental calcium PO per 
+day. Cats: 1250 mg – 2.5 g/cat (NOT mg/kg) (0.5 – 1 g/cat of ele-
+mental calcium) PO per day. See Chemistry/Synonyms.
+Monitoring
+The IRIS guidelines suggest monitoring serum phosphorus and cal-
+cium concentrations every 4 to 6 weeks initially, then, once stable, 
+at 12-week intervals. 4,5 However, some recommend more frequent 
+intervals (ie, initially every 10 to 14 days), particularly in patients at 
+higher risk for hypercalcemia.
+ ■ Serum phosphorus (after a 12 -hour fast): 2.7 – 4.6 mg/dL is the 
+goal for Stage 2 patients and is ideal for all stages. More realistic 
+goals for Stage 3 and 4 patients are less than 5 mg/dL and less than 
+6 mg/dL, respectively.
+ ■ Serum ionized (if possible) calcium: Directly measured serum 
+ionized calcium is a better indicator of calcium status than total 
+calcium but requires specific collection techniques and analyzers.7 
+The IRIS guidelines suggest a goal for total calcium of less than  
+12 mg/dL in cats.
+ ■ Calcium x phosphorus product less than 60 
+Client Information
+ ■ Give medication with meals, either just before the animal eats or 
+mixed into its food.
+
+
+===== Plumb PDF 206 =====
+Cannabidiol (CBD)   179
+ ■ Y our veterinarian may prescribe additional doses to be adminis-
+tered between meals if additional calcium is required; give only 
+with meals unless your veterinarian instructs you to do otherwise.
+ ■ Use of this medication requires ongoing laboratory monitoring.
+Chemistry/Synonyms
+Calcium carbonate occurs as a fine, white, odorless, microcrystal -
+line powder. It is practically insoluble in water, but water solubili -
+ty is increased by presence of carbon dioxide or ammonium salts. 
+Calcium carbonate dissolves with effervescence in hydrochloric acid. 
+It is insoluble in alcohol. Calcium carbonate may also be known as 
+calcii carbonas, E170, or precipitate chalk. A common oral dosage 
+form trade name is Tums®. One gram of calcium carbonate contains  
+400 mg of elemental calcium (40%).
+Calcium gluconate is a white or almost-white, crystalline or 
+granular powder. It is sparingly soluble in water and freely soluble 
+in boiling water. One gram of calcium gluconate contains 90 mg of 
+elemental calcium (9%).
+Calcium lactate is a white or almost-white, crystalline or granular 
+powder. It is soluble in water (freely soluble in boiling water) and 
+slightly soluble in alcohol. It may also be known as calcii lactas. One 
+gram of calcium lactate contains 130 mg of elemental calcium (13%).
+When using oral calcium supplements, adjust the dose to give an 
+equivalent amount of elemental calcium as provided by the chosen 
+calcium salt. For example, 1 g of calcium gluconate contains 90 mg 
+of elemental calcium, 1 g of calcium lactate contains 130 mg of el -
+emental calcium, and 1 g of calcium carbonate contains 400 mg of 
+elemental calcium.
+Storage/Stability
+The commercially available tablets, capsules, and gel caps should be 
+stored at room temperature (25°C [77°F]); excursions are permitted 
+at 15°C to 30°C (59°F-86°F).
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE.
+An oral nutritional supplement ( Epakitin®) (not FDA-approved) 
+contains calcium carbonate 10% (100 mg/g) and chitosan (8%).
+HUMAN-LABELED PRODUCTS:
+Calcium Carbonate: Many oral products are available, and all are 
+OTC. Dosage forms include chewable and regular tablets in strengths 
+ranging from 420 mg (168 mg calcium) to 1250 mg (500 mg calcium; 
+common sizes are 500 mg [200 mg calcium] and 750 mg [300 mg 
+calcium]), oral powders (1000 mg/packet [400 mg calcium]), sus -
+pensions (1250 mg/5 mL), and capsules (600 mg [240 mg calcium]); 
+generic.
+Calcium Gluconate: Generally available as 500 mg (45 mg calcium), 
+650 mg (58.5 mg calcium), and 1 g (90 mg calcium) oral tablets; all 
+are OTC.
+Calcium Lactate Tablets: 325 mg (42.3 mg calcium) and 650 mg  
+(84.5 mg calcium); generic; OTC
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Cannabidiol (CBD)
+(can-na-bi-dye-ole) Epidiolex®
+Cannabinoid
+NOTE: The information presented in this monograph is for products 
+containing only cannabidiol (CBD); extrapolation of this informa-
+tion to “full-spectrum” products will not accurately predict safety or 
+efficacy. 
+Prescriber Highlights
+ ▶ The use of cannabidiol (CBD) in animals has not been ap-
+proved by the FDA. State and local laws vary, and practitioners 
+should consult independent legal counsel to determine their 
+compliance obligations with respect to the veterinary use of 
+CBD.
+ ▶ Naturally occurring cannabinoid that has been used to treat 
+canine osteoarthritis and epilepsy 
+ ▶ In veterinary species, efficacy for specific conditions and opti-
+mal dosages are under investigation.
+ ▶ Contraindications include hypersensitivity to CBD.
+ ▶ Use with caution in patients with hepatic impairment; dosage 
+reduction may be needed
+ ▶ Withdraw gradually when discontinuing its use as an anticon-
+vulsant.
+ ▶ CBD appears to be well tolerated at dosages that have been 
+studied; hypersalivation, diarrhea, emesis, increased liver 
+enzymes, lethargy, and ataxia have been noted. 
+ ▶ Products that also contain tetrahydrocannabinol (THC) appear 
+more likely to cause adverse effects; choose products carefully, 
+as formulations may contain varying amounts of CBD as well 
+as other cannabinoids (eg, THC) or impurities. 
+Uses/Indications
+Cannabidiol (CBD) use in veterinary medicine is an area of active 
+investigation. CBD has shown benefit as an analgesic for canine os -
+teoarthritis1–3 and has reduced seizure frequency in dogs with epilep-
+sy.4 CBD controlled pruritic behavior in dogs with atopic dermatitis.5 
+One study found no difference between CBD and placebo for reliev-
+ing clinical signs associated with osteoarthritis in dogs. 6 Low-dose 
+CBD (1.4 mg/kg daily PO) lacked efficacy as an anxiolytic in dogs 
+with noise phobia.7
+Although most studies have focused on CBD, the products used 
+in many studies contained varying amounts of other cannabinoids. 
+The impact of these other cannabinoids on the safety and efficacy of 
+CBD products remains unclear. See Chemistry/Synonyms for fur -
+ther information. 
+Pharmacology/Actions
+Cannabidiol (CBD) is a lipophilic, nonintoxicating cannabinoid that 
+can bind to CB 2 cannabinoid receptors, which are primarily found 
+in the periphery (ie, immune system) and have little to no psycho -
+tropic effects. Activation of these receptors is thought to prevent in-
+flammatory cytokine release.8,9 CBD also interacts with many (over 
+65) noncannabinoid receptors,10 including the serotonin 1A recep -
+tor (5-HT1A), which may help alleviate anxiety, insomnia, pain, and 
+nausea; it also acts on the vanilloid receptor (TRPV1), which assists 
+in perception of pain, inflammation, and body temperature.11,12 The 
+anticonvulsant effect of CBD in humans is not thought to be due to a 
+direct effect on cannabinoid receptors.13 
+In contrast, tetrahydrocannabinol (THC) is a cannabinoid pri -
+marily targeting CB 1 receptors, which modulate calcium and po -
+tassium ion influx and appear to inhibit excitatory and inhibitory 
+neurotransmitter release.14 The CB 1 receptor is found primarily in 
+the CNS and is involved in cognitive function, emotion, movement, 
+
+
+===== Plumb PDF 207 =====
+180    Cannabidiol (CBD)
+and hunger. THC is considered intoxicating and is responsible for 
+the “high” associated with marijuana use in humans.8,15
+Alterations in the canine metabolome were observed after 3 weeks 
+of cannabidiol administration to healthy dogs; the physiologic rele -
+vance of this finding warrants further investigation.16
+Pharmacokinetics
+Assessment of cannabidiol (CBD) pharmacokinetics is complicated 
+by the lack of standardized CBD formulations. 
+Absorption of CBD after oral administration appears to be lim -
+ited by an extensive first-pass effect.14,17 In dogs, bioavailability after 
+transdermal application to the pinna was ≈9% relative to oral ad -
+ministration.18 CBD is widely distributed into tissues and is highly 
+lipophilic.8,19 Elimination half-life of CBD is ≈1 to 4 hours following 
+single doses,1,20,21 but is ≈14 to 25 hours following 28 days of CBD 
+administration.22 When CBD was administered IV , half-life varied 
+between 7 and 9 hours.23,24
+In cats that were given a single dose of a CBD fish oil formulation, 
+peak concentration of 43 ng/mL occurred 1 to 4 hours after admin -
+istration; AUC was 164 ng/hour/mL and half-life was 1.7 hours.21
+In horses, orally administered CBD (in oil) was readily absorbed, 
+with peak concentration occurring ≈3 to 5 hours after dosing. 25,26 
+Peak concentration following pelleted CBD occurred at ≈2.5 hours.27 
+Terminal half-life ranged from 8.5 to 15 hours following single or 
+repeated (4 to 6 weeks) administration.25–27
+In humans, peak CBD concentration is reached ≈2 to 2.5 hours af-
+ter administration.13 Administration with food increases absorption, 
+leading to a 4- to 5-fold increase of C max and a 3- to 4-fold increase 
+in AUC. The drug is widely distributed, and protein binding exceeds 
+94%. CBD is extensively metabolized, primarily in the liver but also 
+in the GI tract, by CYP2C19, CYP3A4, UGT1A7, UGT1A9, and 
+UGT2B7. At least one metabolite (7-OH-CBD) is active. Half-life is 
+≈60 hours, and elimination occurs via the feces. 
+Contraindications/Precautions/Warnings
+Cannabidiol (CBD) is contraindicated in patients that are hyper -
+sensitive to it or to other components of the formulation. Use CBD 
+with caution in patients with hepatic dysfunction; dosage reduction 
+is recommended in humans with hepatic impairment, and it is as -
+sumed that this applies to veterinary patients. 
+When it is used to control seizures, CBD should be discontinued 
+gradually, as rapid withdrawal can increase the risk for seizures.13
+Adverse Effects
+When cannabidiol (CBD) is administered at 4 mg/kg/day PO (the 
+dosage most commonly used in studies), it appears to be well tol -
+erated. Occasional GI effects 6,28 (eg, hypersalivation, diarrhea, em -
+esis) and lethargy may occur, but CBD is without apparent effect 
+on voluntary daily activity in dogs. 22,29 Decreased body weight was 
+noted in one study of healthy dogs, despite food intake being consid-
+ered adequate.22 Higher dosages and/or products that also contain 
+tetrahydrocannabinol (THC) appear more likely to cause adverse 
+CNS effects (eg, hyperesthesia, static ataxia) in dogs. 22,30 A case of 
+Stevens-Johnson syndrome has been documented in one dog after 
+receiving a CBD-containing product.31 Increases (2 times the upper 
+limit of normal) in ALP were noted in healthy dogs and were not 
+associated with adverse effects, and in one study increases in ALP 
+were more common at higher dosage (12 mg/kg/day) as compared 
+with lower dosages (1 – 4 mg/kg/day).28 
+Cats experienced low rates of lethargy and ataxia following ad -
+ministration of CBD-infused oil; emesis and hypersalivation also 
+occurred, but these effects appeared to be due to the medium-chain 
+triglyceride oil in the formulation.32 One cat was reported to have an 
+increased ALT (3 times the upper limit of normal).21
+Horses receiving CBD for up to one week showed no adverse GI 
+or behavioral effects, or changes in activity (step count). 25,27 In one 
+study in 12 horses receiving CBD for 6 weeks, 26 10 horses gained 
+weight (average 18.5 kg), and elevated liver enzymes were noted in 
+8 horses. Additionally, all horses experienced mild decreases in to -
+tal calcium, although ionized calcium remained within the reference 
+range. Hypocalcemia and elevated liver enzymes normalized within 
+10 days of discontinuing CBD.
+Reproductive/Nursing Safety
+Administration of cannabidiol (CBD) 150 – 250 mg/kg/day to preg-
+nant rats increased embryofetal mortality, decreased growth, delayed 
+sexual maturation, and caused small testes and reduced fertility in 
+male offspring.13 Administration of CBD to rabbits caused decreased 
+birth weights, and reproductive system changes. 
+CBD is excreted in human maternal milk following maternal 
+medical or recreational use of cannabis products, 33 and in mouse 
+milk following intraperitoneal injections of CBD.34 It is unknown if 
+CBD is excreted in maternal milk following oral administration.13
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Cannabidiol (CBD) products may contain more or less CBD than is 
+stated on the product label.35 They also may contain varying amounts 
+of tetrahydrocannabinol (THC), which may increase the risk for ad-
+verse effects or toxicity. Although the ASCPA has not seen an in -
+crease in calls from states that have legalized recreational marijuana, 
+animal clinics in Colorado have reported significant increases in 
+marijuana exposures.19,36 Because recreational use of marijuana re -
+mains illegal in many states, clients may be reluctant to discuss pos-
+sible exposures to marijuana or treatment with cannabis products, 
+including CBD. For that reason, some clients may need reassurance 
+when taking a history.
+Clinical signs of a CBD overdose can include hypersalivation, em-
+esis, lethargy, diarrhea, and ataxia.
+Treatment of a significant cannabinoid overdose may consist of 
+GI decontamination (inducing emesis, activated charcoal) for recent 
+ingestion or if a significant amount remains in the stomach, and sup-
+portive treatment (eg, IV fluids, antiemetics). Additionally, butorph-
+anol may be used for agitation and a benzodiazepine (eg, diazepam, 
+midazolam) may be administered to control seizures as indicated. 
+IV lipid emulsion may be useful. 8 Anecdotally, most overdoses of 
+cannabinoids do not require intervention; placing the animal in a 
+dark, quiet room can minimize stimulations while the animal is in -
+toxicated.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, it is strongly encouraged to consult with one 
+of the 24-hour poison control centers that specialize in providing 
+information specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+In humans, cannabidiol (CBD) is a substrate of CYP3A4 and CY -
+P2C19; therefore, it may affect concentrations of drugs metabolized 
+by CYP2C19 and CYP1A2. The following drug interactions either 
+have been reported or are theoretical in humans or animals receiv -
+ing CBD and may be of significance in veterinary patients. Unless 
+otherwise noted, use together is not necessarily contraindicated, but 
+weigh the potential risks and perform additional monitoring when 
+appropriate.
+ ■ Amiodarone:  Concurrent use may lead to increased CBD con -
+centration.13,37,38
+ ■ Azole Antifungals (eg, fluconazole, itraconazole, keto -
+conazole, voriconazole): Increased CBD concentration is possi -
+ble; there is possible additive hepatotoxicity risk.13,37,38
+
+
+===== Plumb PDF 208 =====
+Cannabidiol (CBD)   181
+ ■ Benzodiazepines : Concurrent use with CBD may lead to in -
+creased concentrations of certain benzodiazepines (eg, alprazol-
+am, diazepam; not midazolam).11,13 Concurrent use may increase 
+risk for sedation and respiratory depression.
+ ■ Central Nervous System (CNS) Depressants  (eg, ace -
+promazine, gabapentin, pregabalin, tramadol, trazodone ): 
+Concurrent use with other CNS depressants increases risk for 
+sedation.13,38
+ ■ Chloramphenicol:  Concurrent use may lead to increased 
+CBD concentration.13,37,38
+ ■ Cimetidine:  Concurrent use may lead to increased CBD con -
+centration.13,37,38
+ ■ Clopidogrel : CBD may decrease formation of clopidogrel 
+active metabolite. Clopidogrel may increase CBD concentra -
+tion.13,37,38
+ ■ Dexamethasone: Concurrent use may lead to decreased CBD 
+concentration.13,38,39
+ ■ Diltiazem:  Concurrent use may lead to increased CBD concen-
+tration.13,37,38
+ ■ Fenofibrate : Increased fenofibrate concentration may occur 
+when used concurrently with CBD.
+ ■ Fluoxetine:  Concurrent use may lead to increased CBD con -
+centration and risk for serotonin syndrome.13,37,38
+ ■ Glipizide : CBD may decrease glipizide metabolism, increasing 
+hypoglycemic effect.
+ ■ Hepatotoxic Drugs  (eg, lomustine, prednis(ol)one, sex-steroid 
+hormones [eg, estrogens, progestins]): Concurrent use with val-
+proate and clobazam increased serum liver transaminases. 13 It is 
+suggested to use CBD cautiously with other hepatotoxic drugs.
+ ■ Lidocaine : Increased lidocaine concentration is possible with 
+concurrent use.
+ ■ Loperamide : Increased loperamide concentration is possible 
+with concurrent use.
+ ■ Nonsteroidal Anti-Inflammatory Drugs (NSAIDs)  (eg, 
+carprofen, meloxicam): Concurrent use with CBD oil for 4 weeks 
+resulted in no apparent adverse effects or significant laboratory 
+value changes in dogs.1  
+ ■ Opioids (eg, fentanyl, methadone, morphine, tramadol ): In -
+creased risk for CNS depression
+ ■ Phenobarbital: A pharmacokinetic interaction was not ob -
+served in healthy dogs, but possible additive risk for CNS depres-
+sion or hepatotoxicity.40
+ ■ Propofol : CBD use may increase propofol concentration.
+ ■ Proton Pump Inhibitors  (eg, omeprazole, pantoprazole ): 
+Concurrent use may lead to increased CBD concentration.13,37,38
+ ■ Rifampin:  May decrease CBD concentration13,38,39
+ ■ Sildenafil : CBD may increase sildenafil concentrations.
+ ■ Theophylline/Aminophylline: CBD may increase theophyl-
+line concentration.
+ ■ Tricyclic Antidepressants  (TCAs; eg, amitriptyline, clo -
+mipramine): Concurrent use increased risk for cardiovascular 
+effects (hypotension, tachycardia).38
+ ■ W arfarin : CBD may prolong prothrombin times and increase 
+the risk for bleeding.
+Laboratory Considerations 
+ ■ Cannabidiol may cause a false-positive on cannabis screening  
+tests, particularly if the product administered was a full- or misla-
+beled broad-spectrum product. 
+Dosages
+NOTES: 
+1. Effective cannabidiol (CBD) dosages remain under investiga-
+tion and are yet to be fully determined. The dosages listed be-
+low represent recommendations from peer-reviewed studies 
+using products that contain only CBD and do not accurate -
+ly reflect dosage recommended for full-spectrum products. 
+Some clinicians recommend starting with lower dosages and 
+slowly escalating to the dosages presented below.
+2. In humans, dosage reductions of 50% and 80% are rec -
+ommended for patients with moderate and severe hepatic 
+impairment, respectively. 13 Until veterinary-specific infor -
+mation becomes available, it is suggested to reduce initial 
+dosages in veterinary patients with hepatic impairment.  
+3. Be sure to fully understand and comply with local, state, or 
+provincial regulations related to CBD. See Dosage Forms/
+Regulatory Status.
+DOGS:
+Osteoarthritis (extra-label): 2 mg/kg PO, OTM every 12 hours2
+Epilepsy (extra-label): 2.5 mg/kg PO every 12 hours in addition 
+to current therapy. The authors hypothesize that a higher dosage 
+may be more effective.4 
+Monitoring
+ ■ Clinical efficacy 
+ ■ Liver enzymes (ALP , ALT) and bilirubin at baseline; at 1, 3, and 
+6 months after initiating therapy and then as clinically indicated 
+during ongoing therapy13 
+ ■ Adverse effects (eg, vomiting, salivation, sedation, ataxia)
+Client Information
+ ■ Although there is limited information available, it appears canna-
+bidiol (CBD) is well tolerated by dogs and cats.
+ ■ Giving CBD with food will increase the amount of medicine that 
+is absorbed, but CBD can be given with or without food. It is im-
+portant to give CBD the same way each time. 
+ ■ If your animal vomits or acts sick after receiving the drug on an 
+empty stomach, try giving the next dose with food or a small treat. 
+If vomiting continues, contact your veterinarian.
+ ■ Information regarding the use of CBD in animals is continually 
+emerging and other side effects may be discovered. Contact your 
+veterinarian if you notice any unexplained side effects or abnor -
+mal behaviors in your animal.
+ ■ Do not give your animal a CBD product without first discussing it 
+with your veterinarian. Some products contain ingredients other 
+than CBD that could be harmful to your animal. 
+Chemistry/Synonyms
+Cannabidiol (CBD) is a cannabinoid derived from the Cannabis sa-
+tiva L plant that occurs as a white to pale yellow crystalline solid that 
+is soluble in oils and organic solvents and is insoluble in water. The 
+FDA-approved product ( Epidiolex®) contains sesame seed oil and 
+7.9% (w/v) dehydrated alcohol.13 
+Cannabidiol may also be known as CBD or Epidiolex®.
+Cannabis sativa L contains more than 100 cannabinoids, of which 
+CBD and tetrahydrocannabinol (THC) are the most well-known 
+but others may exert a pharmacologic effect. Hemp is distinguished 
+from marijuana by THC concentration: Although hemp and mari -
+juana can both be from the Cannabis sativa L plant, hemp contains 
+not more than 0.3% THC (dry weight), whereas marijuana contains 
+more than 0.3% THC. 41 That is, hemp and marijuana are varieties 
+or cultivars of the same plant but differ in THC concentration. CBD 
+may only be legally produced from hemp grown under the restric -
+tions established by the 2018 Farm Bill.41
+Storage/Stability
+The product FDA-approved for human use ( Epidiolex®) should 
+be stored upright at 20°C to 25°C (68°F-77°F), with permitted 
+excursions between 15°C to 30°C (59°F-86°F); keep the cap tightly 
+
+
+===== Plumb PDF 209 =====
+182    Capromorelin
+closed.13 Do not freeze. Use product within 12 weeks of opening. Un-
+less otherwise instructed by the manufacturer, store other cannabidi-
+ol (CBD) products at room temperature in tightly closed containers. 
+Compatibility/Compounding Considerations
+Many compounded formulations are available. It is recommended to 
+request a certificate of analysis that demonstrates product potency 
+and purity. A 3-fold difference in cannabidiol (CBD) concentration 
+was discovered between batches of commercially supplied CBD in 
+oil.26
+Dosage Forms/Regulatory Status
+Other than the product FDA-approved for human use ( Epidiolex®), 
+cannabidiol (CBD) products are compounded, and as such, product 
+quality (eg, potency, purity, stability) is not overseen or enforced by 
+the FDA. Considerations for selecting a product include:
+1. Choose a product made from hemp, not marijuana. Legal -
+ly, CBD oil products must be derived from hemp and must 
+contain less than 0.3% tetrahydrocannabinol (THC). Because 
+hemp contains minimal amounts of THC, using a product de-
+rived from hemp will limit the amount of THC present. Legally 
+grown hemp is no longer a controlled substance under federal 
+law, but it may be a controlled substance in individual states. 
+See Chemistry/Synonyms for further information.
+2. Request a certificate of analysis (COA). Reputable companies 
+will provide a COA of their products stating CBD, THC, or 
+other cannabinoid content. Some companies will also confirm 
+the absence of other harmful toxins (eg, pesticides, microbes, 
+residual solvents, heavy metals).
+3. Using CBD in animals has not been approved by the FDA. 
+State and local laws vary, and practitioners should consult in -
+dependent legal counsel to determine their compliance obliga-
+tions with respect to the veterinary use of CBD.
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated CBD as a class 2 substance. Use of this drug may not be 
+allowed in certain animal competitions. Check rules and regulations 
+before entering in a competition while this medication is being ad -
+ministered. Contact local racing authorities for further guidance. See 
+Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Cannabidiol Solution: 100 mg/mL in 60 mL or 100 mL bottles; Epid-
+iolex®; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Cannabidiol (CBD)
+Capromorelin
+(kap-roe-moe-rel-in) Elura®, Entyce®
+Appetite Stimulant
+Prescriber Highlights 
+ ▶ FDA-approved to stimulate appetite in dogs, and for manage-
+ment of weight loss in cats with chronic kidney disease
+ ▶ Ghrelin-receptor agonist that stimulates growth hormone 
+release and causes the feeling of hunger
+ ▶ Contraindications include hypersensitivity and acromegaly 
+(hypersomatotropism) in cats.
+ ▶ Use with caution in dogs and cats with hepatic dysfunction, in 
+dogs with renal insufficiency, and in cats with cardiac disease 
+or severe dehydration. Hyperglycemia has occurred in healthy 
+cats given labeled doses of capromorelin; use in diabetic pa-
+tients has not been evaluated and may not be appropriate.
+ ▶ Adverse effects include vomiting, hypersalivation, hiding 
+behavior (cats), diarrhea, and polydipsia; some cats have de-
+veloped hypotension and bradycardia after administration.  
+Uses/Indications 
+Capromorelin is labeled for the stimulation of appetite in dogs and 
+for the management of weight loss in cats with chronic kidney dis -
+ease (CKD). 
+In preapproval studies, dogs given capromorelin for 4 to 7 days 
+had an ≈60% increase in food consumption and ≈6% weight gain as 
+compared with the baseline.1 In a clinical field study, 68.6% of dogs 
+receiving capromorelin experienced increased appetite based on 
+owner observation as compared with 44.6% of dogs that received the 
+vehicle control. In the same study, 76% of dogs receiving capromo -
+relin gained weight (1.8% increase) as compared with 44.6% of dogs 
+that received the control (0.1% increase). 2 A post-approval study 
+demonstrated that healthy beagles treated with capromorelin had an 
+average 60% increase in food consumption compared to an 11% de-
+crease in placebo-treated dogs.3
+In cats with CKD, field studies demonstrated a 3.3% increase in 
+body weight after 2 weeks of treatment, and 5.2% increase after 8 
+weeks.4 In healthy laboratory cats receiving capromorelin, food con-
+sumption increased by 25% to 45% and body weight increased by 4% 
+to 6.6% as compared with an 11% food consumption increase and 
+1% decrease in body weight in cats receiving a placebo.5,6 In a safety 
+study, cats given capromorelin 6 mg/kg PO once daily for 91 days 
+had a nonsignificant increase in food consumption but significant 
+weight gain.6 Further studies are warranted to establish efficacy.
+Pharmacology/Actions 
+Capromorelin is a ghrelin-receptor agonist that stimulates growth 
+hormone (GH) release and causes release of insulin-like growth fac-
+tor 1 (IGF1). Serum GH and cortisol increased in healthy dogs given 
+capromorelin for 7 days, and levels returned to baseline 8 hours after 
+administration; the magnitude of GH and cortisol elevations were 
+diminished by days 4 and 7 as compared with day 1. Increased IGF1 
+levels were sustained throughout the 7-day study period.7 Sustained 
+elevation of IGF1 was also noted in cats.8 
+Ghrelin appears to regulate cardiac, gastric, and pancreatic func-
+tion and may result in anxiety. In mice, exogenous ghrelin acceler -
+ates gastric emptying and intestinal transit.9 At the spinal cord level, 
+capromorelin stimulates bladder emptying in mice 10 and colonic 
+motility in rats.11,12
+In addition to stimulating appetite and the effects described above 
+in rats, ghrelin and ghrelin-receptor agonists have been shown to 
+stimulate bone formation, increase muscle mass, and have anti-in -
+flammatory and immunomodulatory effects.13
+
+
+===== BSAVA PDF 91 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+75
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Koenigshof AM, Beal MW, Poppenga RH et al . (2015) Effect of sorbitol, single, and 
+multidose activated charcoal administration on carprofen absorption following 
+experimental overdose in dogs. Journal of Veterinary Emergency and Critical Care  25, 
+606–610
+Chitosan
+(Ipakitine) general sale 
+Formulations: Oral: powder containing 8% chitosan, 10% calcium 
+carbonate and 82% lactose.
+Action: Adsorbent for intestinal uraemic toxins, including phosphate.
+Use:
+• The combination product has been shown to reduce serum urea 
+and phosphate in chronic renal disease in cats.
+Phosphate-binding agents are usually only used if low phosphate diets 
+are unsuccessful. Monitor serum phosphate levels at 4–6 week 
+intervals and adjust dosage accordingly if trying to achieve target serum 
+concentrations. Monitor for hypercalcaemia. As formulation contains 
+lactose, use with care in diabetic and lactose-intolerant animals.
+Safety and handling: Normal precautions should be observed.
+Contraindications: None reported.
+Adverse reactions: Hypercalcaemia, possibly due to the calcium 
+carbonate component.
+Drug interactions: Increased risk of hypercalcaemia with 
+concurrent calcitriol administration.
+DOSES
+Dogs, Cats: Chronic kidney disease: 200 mg/kg p.o. q12h (mixed 
+with food).
+Chlorambucil
+(Leukeran*) POM
+Formulations: Oral: 2 mg tablet.
+Action: Alkylating agent that inhibits DNA synthesis and function 
+through cross-linking with cellular DNA. Cell cycle non-specific.
+Use:
+• Management of some malignancies including in some 
+metronomic chemotherapy protocols.
+• May be useful in the treatment of feline pemphigus foliaceus and 
+severe feline eosinophilic granuloma complex.
+• Management of  lymphoproliferative, myeloproliferative and 
+immune-mediated diseases including protein-losing 
+enteropathy.
+
+
+===== BSAVA PDF 92 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+76
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+Tablets should be stored in a closed, light-protected container under 
+refrigeration (2–8°C).
+Contraindications: Bone marrow suppression, factors 
+predisposing to infection.
+Adverse reactions: Anorexia, nausea, vomiting, leucopenia, 
+thrombocytopenia, anaemia (rarely), neurotoxicity (one case reported 
+in a cat), alopecia (rarely) and slow regrowth of clipped hair coat. 
+Chlorambucil was suspected to have caused seizures in one dog.
+Drug interactions: Drugs that stimulate hepatic cytochrome 
+P450 system increase cytotoxic effects. Prednisolone has a 
+synergistic effect in the management of lymphoid neoplasia.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs: Give with food:
+• Chronic lymphocytic leukaemia: 2–6 mg/m 2 p.o. q24h initially 
+until remission achieved, then at reduced dosage/frequency as 
+required to maintain remission; or 0.2 mg/kg q24h for 7 days 
+then 0.1 mg/kg q24h for maintenance; or 20 mg/m
+2 every 1–2 
+weeks. Often used with prednisolone 40 mg/m 2 p.o. q24h for 7 
+days then 20 mg/m2 q48h.
+• Lymphoma: 15–20 mg/m 2 p.o. q2wk with prednisolone; or 2–6 
+mg/m2 q24–48h. 1.4 mg/kg p.o. as single dose as substitute for 
+cyclophosphamide in CHOP-type protocols.
+• Pemphigus complex (in combination with corticosteroids): 
+0.1–0.2 mg/kg p.o. q24h initially until marked improvement of 
+clinical signs; then alternate-day dosing, often for several weeks.
+• Protein-losing enteropathy and other immune-mediated 
+diseases: 2–6 mg/m
+2 p.o. q24h until clinical remission, then 
+tapered to the minimum effective dose.
+• For metronomic chemotherapy: 4 mg/m2 p.o. q24h.
+Cats: Give with food:
+• Immune-mediated disease: cats >4 kg: 2 mg (total dose) p.o. 
+q48h for 2–4 weeks, then tapered to lowest effective dose; cats 
+<4 kg started at 2 mg (total dose) q72h.
+• Chronic lymphocytic leukaemia: 2 mg/m 2 p.o. q48h or 20 mg/
+m2 q14d, with or without prednisolone.
+• For low grade/small cell lymphoma: 20 mg/m2 p.o. once every 
+two weeks with prednisolone.
+• As a substitute for cyclophosphamide in the CHOP protocol: 
+1.4 mg/kg p.o. once.
+• Feline pemphigus foliaceus or severe feline eosinophilic 
+granuloma complex (in combination with corticosteroids): 
+0.1–0.2 mg/kg p.o. q24h until marked improvement of clinical 
+signs; then alternate-day dosing, often for several weeks. 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 93 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+77
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Dandrieux JRS, Noble PJM, Scase TJ et al . (2013) Comparison of a chlorambucil-
+prednisolone combination with an azathioprine-prednisolone combination for treatment 
+of chronic enteropathy with concurrent protein-losing enteropathy in dogs: 27 cases 
+(2007–2010). Journal of the American Veterinary Medical Association  242, 1705–1714
+Stein TJ, Pellin M, Steinberg H et al . (2010) Treatment of feline gastrointestinal small-cell 
+lymphoma with chlorambucil and glucocorticoids. Journal of the American Animal 
+Hospital Association  46, 413–417
+Chloramphenicol
+(Chloramphenicol*, Chlorogen*, Chloromycetin 
+Ophthalmic Ointment*, Chloromycetin 
+Redidrops*,  Kemicetine*, Minims*, Optrex*) POM 
+Formulations: Injectable: 1 g powder for reconstitution. Topical: 
+Ophthalmic 1% ointment; 0.5% solution. Oral: 250 mg capsules.
+Action: Time-dependent antimicrobial that acts by binding to the 
+50S ribosomal subunit of susceptible bacteria, preventing bacterial 
+protein synthesis.
+Use: Broad spectrum of activity against Gram-positive (e.g. 
+Streptococcus, Staphylococcus), Gram-negative (e.g. Brucella, 
+Salmonella, Haemophilus) and obligate anaerobic bacteria (e.g. 
+Clostridium, Bacteroides fragilis). Other sensitive organisms include 
+Chlamydia, Mycoplasma (unreliable in treatment of ocular 
+mycoplasmosis) and Rickettsia. Resistant organisms include 
+Nocardia and Mycobacterium. Acquired resistance may occur in 
+Enterobacteriaceae. High lipid solubility makes it suitable for the 
+treatment of intraocular infections. It will also access the CNS. 
+However, due to concerns of resistance development and human 
+toxicity, systemic use should be restricted to life-threatening 
+infections resistant to other antimicrobials (e.g. meticillin-resistant 
+staphylococci). Patients with hepatic or renal dysfunction may need 
+adjustment to the dose. Use with caution or avoid in nursing bitches 
+or queens as crosses into milk.
+Safety and handling: Humans exposed to chloramphenicol may 
+have an increased risk of developing a fatal aplastic anaemia. 
+Products should be handled with care; use impervious gloves and 
+avoid skin contact.
+Contraindications: No information available.
+Adverse reactions: Reversible dose-related reversible bone 
+marrow suppression can develop in all species. Unlike humans, the 
+development of irreversible aplastic anaemia in veterinary species 
+does not appear to be a significant problem. Owing to a reduced 
+capacity to metabolize chloramphenicol, the cat is more susceptible 
+to bone marrow suppression. Other adverse effects include nausea, 
+vomiting, diarrhoea and anaphylaxis.
+Drug interactions: Irreversible inhibition of hepatic cytochrome 
+P450-dependent enzymes increases plasma levels of pentobarbital, 

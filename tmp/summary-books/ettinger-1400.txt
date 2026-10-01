@@ -1,0 +1,234 @@
+SECTION XIII
+•
+Comorbidities
+1248
+eBooks.Health.Elsevier.com
+80. Dandrieux JR, Timm K, Roosje PJ, etal. Unusual systemic signs in a dog 
+with sterile neutrophilic-macrophagic lymphadenitis and nodular panniculitis. J 
+Am Anim Hosp Assoc. 2011;47:117-121.
+81. Tipold A, Schatzberg SJ. An update on steroid responsive meningitis-
+arteritis. J Small Anim Pract. 2010;51:150-154.
+82. Nafe LA, Leach SB. Treatment of feline asthma with ciclosporin in a 
+cat with diabetes mellitus and congestive heart failure. J Feline Med Surg
+2014;12:1073-1076.
+83. Windsor RC, Johnson LR. Canine chronic inammatory rhinitis. Clin Tech 
+Small Anim Pract. 2006;21:76-81.
+84. Segev G, Cowgill LD, Heiene R, etal. Consensus recommendations for im-
+munosuppressive treatment of dogs with glomerular disease based on established 
+pathology. J Vet Intern Med. 2013;27(Suppl 1):S44-S54.
+85. Leal RO, Gil S, Brito MT, etal. e use of oral recombinant feline interferon 
+omega in two cats with type II diabetes mellitus and concurrent feline chronic 
+gingivostomatitis syndrome. Irish Vet J. 2013;66:19.
+86. Higginbotham ML, McCaw DL, Roush JK, etal. Intermittent single-agent 
+doxorubicin for the treatment of canine B-cell lymphoma. J Am Anim Hosp Assoc
+2013;49:357-362.
+87. Musser ML, Quinn HT, Chretin JD. Low apparent risk of CCNU 
+(lomustine)-associated clinical hepatotoxicity in cats. J Feline Med Surg
+2012;14:871-875.
+Feline Triaditis
+Jonathan Andrew Lidbury
+INTRODUCTION
+F
+eline triaditis is the term used for 
+describing concurrent inammation of 
+the small intestine, pancreas, and liver.1-
+3 is syndrome is somewhat ill-dened but 
+it encompasses a range of intestinal, pancre-
+atic, and hepatobiliary diseases, including inammatory bowel 
+disease (IBD), pancreatitis, and cholangitis (Box 225.1). e clini-
+cal signs and laboratory ndings for the diseases comprising tria-
+ditis overlap and biopsy of all 3 organs is needed for a denitive 
+diagnosis. Some cats have involvement of 2 of these organs but not 
+the third (e.g., IBD with concurrent pancreatitis). Cats may also 
+present with disease of 1 organ dominating the clinical picture but 
+with histologically-conrmed inammation of other organs that 
+may or may not be clinically relevant.
+pREVALENCE
+e reported prevalence of triaditis varies greatly depending on 
+the population of cats studied.4-7 For example, in a retrospective 
+study of 54 cats with cholangitis, 26% had pancreatitis, 46% had 
+IBD, and 17% had triaditis.5 e authors found that interstitial 
+nephritis was a common comorbidity and suggested that feline 
+triaditis is part of a wider multisystemic process that they termed 
+“feline inammatory syndrome.” However, it should be noted that 
+interstitial nephritis is a common postmortem nding in cats. In 
+300 cats with suspected small bowel signs, IBD and gastrointestinal 
+(GI) small cell lymphoma were common but concurrent hepatic 
+or pancreatic lesions were not.6 In a prospective study, IBD with 
+cholangitis was noted to occur in 22% of 27 cats with GI signs, IBD 
+with pancreatitis in 4%, and triaditis in 30%. However, some com-
+bination of histopathological changes of 2 or more of these organs 
+was also found in 55% of 11 overtly healthy cats undergoing ovar-
+iohysterectomy. Interestingly, none of the cats in this control group 
+had inammation of all 3 organs.7 Some controversy exists as what 
+are the “normal” histological features of each of these organs.8 It 
+is possible that the misclassication of histological variations as 
+being “abnormal” may have increased the apparent prevalence of 
+triaditis in the veterinary literature. e only safe conclusion to 
+make is that cats can have combinations of intestinal disease, pan-
+creatic disease, and inammatory liver disease.
+ETIOpATHOGENESIS
+IBD is caused by a loss of mucosal immune tolerance due to a 
+combination of genetic and environmental (i.e., dietary or micro-
+bial) factors.9 is results in cellular inltrates in the intestine 
+that are usually lymphoplasmacytic in nature and architectural 
+changes such a villous stunting, villous fusion, or brosis (ch. 
+262).10
+While infectious agents, trauma, certain drugs, and possibly 
+autoimmune disease are occasionally recognized as causing pan-
+creatitis in cats, an underlying cause is not identied in most cases 
+(ch. 278).11 Enteric bacteria were visualized in the pancreata of 
+some of cats with pancreatitis.12 However, the clinical signicance 
+of this nding is unknown.
+Bacteria (most commonly Escherichia coli or other enteric 
+bacteria) can often be cultured from the bile of cats with neu-
+trophilic cholangitis and these patients usually respond to 
+antimicrobial therapy (ch. 272).13 The route by which these 
+enteric bacteria reach the liver is controversial. Traditionally, 
+it was thought that they ascended the biliary tract. However, 
+the location of bacteria in a more recent study suggested that 
+they are more likely to reach the liver by translocation across 
+the intestinal wall or via the portal circulation.14 Lymphocytic 
+cholangitis is caused by a loss of immune tolerance resulting 
+in the targeting of bile ducts by the adaptive immune response 
+(ch. 271).15 The mechanisms behind this have not been pre-
+cisely determined.
+CHAPTER 225
+ACRONYMS
+ALT alanine aminotransfer-
+ase
+GI gastrointestinal
+IBD inflammatory bowel 
+disease
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHApTER 225
+•
+Feline Triaditis
+1249
+eBooks.Health.Elsevier.com
+Several models that may explain the interplay between pan-
+creatitis, IBD, and cholangitis have been proposed.1 In one of 
+these, which could explain the development of acute pancreati-
+tis and neutrophilic cholangitis, enteritis leads to dysbiosis and 
+increased intestinal permeability. is results in hematogenous 
+seeding of bacteria to the liver and/or pancreas. e aforemen-
+tioned studies that demonstrated enteric bacteria in the livers14
+and pancreata12 of cats support this. Alternatively, increased 
+intra-abdominal pressure due to vomiting could cause reux 
+of duodenal contents into the pancreaticobiliary duct system, 
+allowing enteric bacteria to reach the liver and/or pancreas. In 
+another model, the development of acute pancreatitis is the ini-
+tial event. In turn, this leads to acute enteritis and/or cholangitis, 
+possibly due to the close anatomical relationship among these 
+3 organs. e enteritis then leads to bacterial translocation to 
+the pancreas and/or liver. In an experimentally-induced feline 
+acute pancreatitis model, seeding of the pancreas, liver, and gall-
+bladder with enterically translocated E. coli was shown to occur, 
+supporting this hypothesis.16-18 In a third model, which could 
+explain the development of chronic pancreatitis and lympho-
+cytic cholangitis, loss of immune tolerance originating in the 
+small intestine secondarily aected the liver and/or pancreas.1
+One potential mechanism is due to aberrant homing of T lym-
+phocytes from the small intestine, as has been shown to occur 
+in humans with primary sclerosing cholangitis.19 Alternatively, 
+microbiota-derived or host-derived molecules in the portal cir-
+culation may stimulate an immune response in the liver and/or 
+pancreas.20 IBD could also be associated with the development 
+of autoantibodies against hepatic and/or pancreatic proteins, 
+possibly due to molecular mimicry between host and microbial 
+proteins. Such autoantibodies have been described in humans 
+with autoimmune pancreatitis.21 22
+CLINICAL FINDINGS
+ere is a paucity of data on the clinical presentation of cats with 
+triaditis but it is likely that any age, breed, or sex of cat may be 
+aected. In a prospective study, cats with triaditis were signi-
+cantly older than those with IBD, cholangitis, or the combination 
+of IBD and cholangitis.7
+As triaditis is a syndrome that encompasses several disease 
+processes, it is not surprising that its clinical features are very 
+variable (Table 225.1). Common historical observations in cats 
+with triaditis include decreased appetite, lethargy, vomiting, diar-
+rhea, weight loss, and icterus.2 In a study of 8 cats with triaditis, 
+the most common clinical signs were vomiting (88%), anorexia 
+(63%), and polyphagia (37%).7
+Possible physical examination ndings include poor body 
+condition, thickened bowel loops, signs of abdominal pain asso-
+ciated with pancreatitis or cholangitis, abdominal distension due 
+to ascites, and icterus.2 3
+DIAGNOSIS
+LABORATORY TESTING
+Triaditis and its components cannot be diagnosed with laboratory 
+testing alone (Table 225.1). In 8 cats with triaditis, the most com-
+mon biochemical abnormalities nding was increased alanine 
+aminotransferase (ALT) activity while the most common hema-
+tological changes were anemia, neutrophilia, and lymphocytosis.7
+DIAGNOSTIC IMAGING
+Triaditis (and its components) cannot be denitely diagnosed 
+with abdominal imaging but ultrasound ndings may be sugges-
+tive (Table 225.1).23-26 e absence of ultrasound ndings does 
+not rule these conditions out.
+pERCUTANEOUS CHOLECYSTOCENTESIS
+Diagnostic percutaneous cholecystocentesis is performed using 
+ultrasound guidance in heavily sedated or anesthetized cats 
+(ch. 272).27 Cytologically conrmed septic suppurative inam-
+mation and bacterial growth are diagnostic for neutrophilic 
+cholangitis.28 e most commonly isolated bacteria are E. coli, 
+Enterococcus spp., and Streptococcus spp.29-32
+HISTOLOGIC ASSESSMENT
+A denitive diagnosis of triaditis requires histological documen-
+tation of inammation of the small intestine, pancreas, and liver. 
+is necessitates laparotomy or laparoscopic liver and pancreatic 
+biopsies followed by intestinal biopsy through a small abdominal 
+incision. Bleeding risk assessment should be performed prior to 
+liver biopsy and in icteric cats vitamin K (0.5-1.5 mg/kg SQ q12h 
+for 3 doses) is oen administered to reduce the risk of hemor-
+rhage.33 Pancreatitis is oen cited as a concern following pan-
+creatic biopsy, but studies have shown that this procedure can 
+be performed safely using careful technique.34 Samples of liver 
+and bile should be submitted for aerobic and anaerobic bacterial 
+culture.
+e histological features of IBD include morphological (archi-
+tectural) changes and inammatory inltrates (ch. 262). e 
+morphological changes are more meaningful and can include 
+villous stunting, epithelial injury, crypt distension, lacteal dila-
+tion, and mucosal brosis. e inammatory inltrates are most 
+commonly lymphoplasmacytic, but eosinophilic, neutrophilic, 
+or mixed inltrates can also occur.10 e clinical importance of 
+minimal or mild inammatory inltrates, especially when they 
+are lymphoplasmacytic, is questionable.8 10 Furthermore, it can be 
+dicult to distinguish severe lymphoplasmacytic enteritis from 
+GI small cell lymphoma.35
+Chronic pancreatitis, characterized by a monocytic inltrate 
+and varying degrees of brosis, is the form of pancreatitis that is 
+Possible Components of Feline Triaditis Syndrome
+Small Intestinal Disease (ch. )
+•
+Inflammatory bowel disease
+•
+Diet-responsive enteropathy
+•
+Small cell lymphoma
+•
+Cobalamin deficiency
+pancreatic Disease
+•
+Acute pancreatitis (ch. 7)
+•
+Chronic pancreatitis (ch. 7)
+•
+Exocrine pancreatic insufficiency (ch. 7)
+•
+Diabetes mellitus (ch. 292)
+Heatobiliary Disease
+•
+Neutrophilic cholangitis (ch. 272)
+•
+Lymphocytic cholangitis (ch. 271)
+•
+Cholecystitis (ch. 272)
+•
+Cholelithiasis/choledocholithiasis (ch. 273)
+•
+Feline hepatic lipidosis (ch. 274)
+BOX 225.1

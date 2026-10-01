@@ -1,0 +1,253 @@
+SECTION XVI
+•
+Gastrointestinal Disease
+1746
+eBooks.Health.Elsevier.com
+should be performed and repeat treatment with ronidazole at 
+30 mg/kg PO q12h should be considered. If untreated, cats usu-
+ally recover within 5 months to 2 years. e time to obtain com-
+plete treatment response is longer in cats in multi-cat households 
+and in cats that had previously received various antibiotics. It is 
+important to note that the absence of clinical signs is not equiva-
+lent to the absence of the pathogen. In dogs, T. foetus plays no role 
+as a colonic infectious agent.54-61 153 194 200 201
+Giardiasis Dogs and cats with giardiasis may present with 
+mixed diarrhea but Giardia spp. are regarded as small intestine 
+parasites (ch. 262). The diagnosis and other aspects are discussed 
+in ch. 196. Importantly, infection should be treated only when 
+clinical signs are present, in which case fenbendazole and strict 
+environmental hygiene is the therapy of choice. In order not to 
+cause long-term, severe dysbiosis, metronidazole should not be 
+used initially, especially in young animals with giardiasis. Inter-
+estingly, case reports have shown eradication of Giardia in dogs 
+by fecal transplantation (ch. 106).202
+Balantidiasis Balantidium coli is primarily a parasite of pigs. 
+Dogs can become infected accidentally, leading to UC, when they 
+are in contact with pigs. Therapy with tetracyclines and metroni-
+dazole is used successfully in humans. Coinfection with T. vulpis
+is common and some animals respond well upon eradication of 
+T. vulpis.203
+Amoebiasis Entamoeba histolytica primarily infects humans 
+and leads to amoebic dysentery. Animals usually become infected 
+from diseased humans. Although E. histolytica is present in the 
+intestinal tract of healthy dogs and cats, there are case reports of 
+this organism causing severe colitis. The diagnosis can be made 
+by fecal smear. Metronidazole (30 mg/kg PO q12h for 3 weeks) is 
+the drug of choice for treatment. However, neurotoxicosis is well-
+documented at this high dosage (ch. 248).204-208
+Viruses
+Feline Infectious Peritonitis Feline infectious peritonitis 
+(FIP) is caused by a mutated form of the enteric feline corona-
+virus and is usually a disease that affects multiple organ systems 
+(ch. 200). When manifesting in the intestinal tract, the colon may 
+also be affected. Affected animals show ultrasonographic bowel 
+wall thickening either diffusely or as focal nodules/masses. Asso-
+ciated lymph nodes may also be enlarged. The diagnosis is made 
+by IHC detection of the FIP virus in biopsy specimens. Recent 
+experimental studies showed remission of clinical, laboratory, 
+and ultrasonographical signs after administration of a nucleoside 
+analogue, GS-441524 (ch. 200).209-212
+NEOPLASIA
+Etiology
+Colonic neoplasms are uncommon in dogs and cats, but in dogs 
+the colon is the most common site for GI neoplasia. Aected dogs 
+typically are 7-11 years old, while cats have a median age of 12.5 
+years at presentation. Adenocarcinoma (Video 263.7) is the most 
+common (43% and 46% in dogs and cats, respectively) and lym-
+phoma is second (41% and 19% in dogs and cats, respectively; ch. 
+322).70 78 Less frequent are mast cell tumor (ch. 327), leiomyo-
+sarcoma or other stromal tumors (GI stromal tumor [GIST]; ch. 
+324) and plasmacytoma (ch. 322).213-216 Most tumors originate in 
+the descending colon or rectum, but leiomyosarcomas commonly 
+arise in the cecum.217 German Shepherds, West Highland White 
+Terriers, and Collies are overrepresented with adenocarcinomas. 
+Neoplasia with benign behavior (i.e., polyps [Video 263.8], ade-
+nomas [Video 263.5], leiomyomas) also do occur (Figure 263.9). 
+e Miniature Dachshund appears to be predisposed to adeno-
+matous colonic polyps. As in humans, adenomas and polyps can 
+rarely transform into adenocarcinomas in dogs.70 78 218
+In the cat, lymphoma occurs as the second most common 
+tumor type of the large intestinal tract (alimentary lymphoma; chs. 
+262, 322). Dependent on the type of therapy, response and median 
+survival time (MST) dier. Small cell lymphoma has the most 
+prolonged survival (MST, 18-30 months) and large granular lym-
+phoma the shortest (MST, 21 days).219-223 Alimentary lymphomas 
+are usually T-cell lymphomas and, unlike mediastinal lymphoma, 
+are not associated with feline leukemia virus infection. Rare case 
+reports of brosarcoma, ganglioneuroma, hemangiosarcoma, and 
+neurobrosarcoma, or indolent follicular lymphoma do occur.213
+Physical Examination
+Clinical signs of all these tumors include hematochezia, tenes-
+mus, possible bowel obstruction, and occasionally perforation. 
+Local neoplastic changes can lead to increased intestinal wall 
+permeability, translocation of intestinal bacteria, bacteremia, and 
+possibly sepsis. e dierential diagnoses always include other 
+structural changes such as intussusception, FIP in cats, granu-
+lomas, strictures, foreign bodies, hematomas, or fungal granulo-
+mas. A comprehensive workup should always be done early in the 
+disease course in older animals with fresh blood in their feces. 
+As leiomyosarcoma and leiomyoma do not inltrate the mucosa, 
+hematochezia is less common.214 215 224
+Paraneoplastic disorders include hypoglycemia due to 
+insulin-like substance secretion from GIST tumors (especially 
+leiomyoma, ch. 324) and hyperglobulinemia in patients with 
+plasmacytoma, due to monoclonal antibody production leading 
+to hyperviscosity syndrome (ch. 331). In patients with diuse ali-
+mentary lymphoma, there may be anorexia and vomiting. Leth-
+argy, signs of abdominal pain, and weight loss may also occur. If a 
+tumor ruptures spontaneously, acute onset of lethargy, fever, signs 
+of abdominal pain, vomiting, and even collapse may occur.
+Diagnosis
+Rectal masses can be palpated in about 70% of cases with colonic 
+neoplasia.225 In cats, a mass is identiable during abdominal pal-
+pation in about 50% of cases.226 Larger masses and associated 
+lymph node enlargement might be detected radiographically 
+(Figure 263.4). However, ultrasound is the most helpful tool for 
+Figure 263.9
+Endoscopic view of a papillary adenoma of the colon in 
+an 8-year-old Sheltie presented for evaluation of hematochezia. (Cour-
+tesy Peter Kook, Clinic for Small Animal Internal Medicine, Vetsuisse 
+Faculty, University of Zurich, Zurich, Switzerland.)
+
+CHAPTER 263
+•
+Diseases of the Large Intestine
+1747
+eBooks.Health.Elsevier.com
+visualizing neoplasia of the colon, oen revealing focal thickening 
+of the intestinal wall with complete loss of normal wall layering. In 
+cats, ultrasound is diagnostic in 85% of cases of malignant colonic 
+neoplasia.226 Fluid accumulation cranial to the obstruction may be 
+visible in large tumors. Regional lymphadenomegaly may be due to 
+metastatic inltration or translocation of intestinal bacteria through 
+the permeable intestinal wall (Video 263.3).70 In cats, care must be 
+taken when interpreting intestinal thickening ultrasonographically, 
+since chronic enteropathies may cause thickening of the cecal wall 
+and thus mimic neoplasia. In one study, benign typhlitis associated 
+with intestinal wall thickening was described histopathologically in 
+13/18 animals.227 In dogs, focal large intestinal wall thickening or a 
+mass eect is frequently seen with leiomyosarcomas.224
+Ultrasound-guided ne-needle aspiration of focal masses may 
+be helpful, but histopathologic evaluation of an endoscopic biopsy 
+is usually required for a denitive diagnosis (Videos 263.5, 263.7, 
+263.8). Focal changes, with a mass eect, mucosal bleeding, increased 
+mucosal friability, erosions, and ulcers can be present. Samples from 
+the tumor itself can sometimes reveal only tumor necrosis. It is cru-
+cial to collect multiple deep biopsy samples not only from altered 
+tissue, but also from adjacent healthy tissue, and the transition zone 
+between the two. Colonic perforation during colonoscopy is a rare 
+complication.80 Cross-sectional imaging (CT and MRI) can be valu-
+able in assessing lesion dimensions and detecting metastatic lesions.
+Treatment
+Treatment depends on the tumor type, the presence of metasta-
+ses, and tumor size. Tumor staging should include thoracic radio-
+graphs or CT and ne-needle aspiration of regional lymph nodes. 
+Obstructive tumors (e.g., adenocarcinoma, leiomyosarcoma) 
+must be completely excised with an endorectal pull-through exci-
+sion for distally located tumors or pelvic osteotomy for colorectal 
+adenocarcinomas. In cats with adenocarcinomas, local metasta-
+ses are oen widespread and subtotal colectomy is recommended 
+instead of local excision. Better survival rates are described when 
+surgery is combined with carboplatin chemotherapy. In patients 
+with large cell lymphoma, initial excision is controversial, but 1 
+study showed better survival rates with chemotherapy with prior 
+removal of the primary intestinal tumor. Various chemotherapeu-
+tic protocols have been described for lymphoma (ch. 322).223
+In some dogs with large intestinal neoplasia, upregulation 
+of cyclooxygenase-2 (COX-2) has been described and COX-2 
+inhibitors (piroxicam, meloxicam) have also been used in non-
+lymphoma colonic tumors.228-230 In patients with plasmacytoma, 
+excision with adjuvant chemotherapy (prednisolone, melphalan) 
+has been described (ch. 322).216 When removing polyps via colo-
+noscopy, recurrence should be expected if the stalk remains. An 
+attempt should be made to gently loosen the mucosa surrounding 
+the polyp with Allis forceps to be able to also remove the stalk. 
+Additional argon plasma coagulation can be applied.
+Prognosis
+e prognosis aer excision for polyps and leiomyomas is excel-
+lent but for most malignant colonic tumors it is guarded to poor. 
+Aer excision, dogs survive a median of 22 months and cats a 
+median of 15 months without adjuvant chemotherapy. For 
+patients with adenocarcinoma, the MST in dogs is 1.6 months and 
+cats that received subtotal colectomy survived longer than those 
+with only mass removal (138 versus 66 days).226 231 232
+CONSTIPATION
+Etiology and Pathophysiology
+Constipation is dened as the diculty with defecation leading 
+to 3 or fewer bowel movements per week. It is usually associated 
+with an increased mass of stool in the rectum and colon. Acute 
+constipation does not necessarily progress to chronic disease if 
+treated adequately and promptly because transient dilation of the 
+large intestine does not necessarily cause permanent loss of func-
+tion. Chronic constipation is dened as infrequent defecation for 
+at least 3 consecutive weeks. Obstipation is a more severe form of 
+constipation associated with permanent loss of colonic function 
+and it is not reversible even with medical treatment.
+Many dierent risk factors and secondary causes of consti-
+pation have been described and should be considered. First, an 
+obstruction (i.e., extramural, intramural, or intraluminal) should 
+be distinguished from nonobstructive causes (i.e., inammation or 
+neurogenic, metabolic, pharmacologic, environmental, or behav-
+ioral factors) (Table 263.6). In hospitalized animals, constipation 
+may occur as a multifactorial problem (e.g., decreased physical 
+activity plus colonic hypomotility due to the underlying disease 
+[e.g., pancreatitis] or treatment with opioids). Such secondary risk 
+factors should be addressed early to avoid long-term complications.
+In a retrospective study of cats with chronic constipation, 62% 
+had idiopathic disease. Extraluminal obstruction (e.g., pelvic canal 
+stenosis) was the second most common cause (23%). Neurologic 
+(6%) and specic breed-related changes (e.g., spinal cord lesion of the 
+Manx cat, 5%) were described less frequently. Few cases were caused 
+by neoplasia or were iatrogenic (e.g., colopexy). Hypo-/aganglionosis 
+was suspected in 2% of cats. In one young cat with feline megacolon, 
+aganglionosis was diagnosed histologically. e dierential diagnoses 
+for chronic feline constipation are listed in Table 263.6
+Megacolon is the end stage of colonic dysfunction and it pri-
+marily occurs in cats. ere are 2 pathogenic mechanisms at play: 
+dilation and hypertrophy. Dilation most frequently occurs as the 
+end stage of an idiopathic colonic motility disorder with permanent 
+loss of microscopic colonic structure and function. Drug treatment 
+may be attempted, but most cats require subtotal colectomy. Ani-
+mals with a hypertrophic megacolon secondary to obstruction may 
+respond to early intervention (e.g., osteotomy for obstructive bony 
+lesions). Hypertrophic megacolon will evolve into a dilated, irre-
+versible form if intervention is not undertaken promptly. Nonob-
+structive idiopathic feline megacolon may begin in the descending 
+TABLE 263.6
+Causes of Constipation/Obstipation
+TYPE
+CAUSE
+Obstructive
+Intraluminal
+Bone/hair/foreign body ingestion, neo-
+plasia, diverticulum, stricture, saccula-
+tion associated with perineal hernia
+Intramural
+Neoplasia, pythiosis/lagenidiosis, histo-
+plasmosis
+Extraluminal
+Pelvic fractures, neoplasia, prostatomegaly
+Non-obstructive
+Inflammation
+Colitis, proctitis, perianal fistula, anal sac 
+disease, perineal wounds
+Neuromuscular dysfunc-
+tion
+Lumbosacral disease, cauda equina syn-
+drome, sacral spinal cord deformities 
+(Manx cat), autonomous nerve disor-
+der (feline dysautonomia)
+Metabolic disorder
+Hypercalcemia, hypokalemia, dehydra-
+tion, hypothyroidism, obesity
+Pharmacological interfer-
+ence
+Opioids, anticholinergics, diuretics, bari-
+um sulfate, phenothiazines, sucralfate, 
+beta-agonists
+Environmental, behavior 
+problems
+Soiled/absent litterbox, inactivity, hospi-
+talization, weakness
+Modified from Washabau RJ. Dysmotility. In: Washabau RJ, Day MJ.Canine and 
+Feline Gastroenterology. Elsevier Health Sciences; 2012: 551.

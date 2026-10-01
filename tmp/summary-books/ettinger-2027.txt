@@ -1,0 +1,230 @@
+1875
+eBooks.Health.Elsevier.com CHAPTER 279
+•
+Exocrine Pancreatic Insuciency and Rare Conditions of the Exocrine Pancreas
+EXOCRINE PANCREATIC 
+INSUFFICIENCY
+INTRODUCTION AND DEFINITIONS
+E
+xocrine pancreatic insuciency (EPI) 
+describes a syndrome that is charac-
+terized by the insucient synthesis 
+and secretion of digestive enzymes by the 
+exocrine pancreas. e most common cause 
+of EPI is an absolute lack of pancreatic acinar 
+cells that is due to destruction of acinar cells 
+secondary to chronic pancreatitis (both dogs 
+and cats) or depletion of acinar cells due to 
+pancreatic acinar atrophy (PAA; likely only 
+in dogs). In either case, pancreatic digestive 
+enzymes are lacking in patients with EPI. In rare cases, a single 
+enzyme may be lacking, but lack of a single enzyme, even if com-
+plete, may not lead to any clinical signs as digestion of most mac-
+ronutrients is characterized by redundancy and a great functional 
+reserve. However, isolated pancreatic lipase deciency has been 
+reported as a cause of clinical signs of EPI in humans and in 1 
+dog and was highly suspected in a few other dogs.1-3 Another 
+infrequent cause of EPI is an obstruction of the pancreatic duct by 
+either a tumor, surgical damage, or trauma, which can lead to lack 
+of digestive enzymes in the small intestinal lumen, despite nor-
+mal acinar production. Exocrine pancreatic aplasia or hypoplasia 
+could also lead to clinical signs of EPI. is could be suspected in 
+patients diagnosed with EPI at a very young age, but to date no 
+case has been described in the literature and the author of this 
+chapter has only encountered a single case in a kitten to date.
+PHYSIOLOGY
+e process of digestion of macronutrients is characterized 
+by redundancy and a large functional reserve. Redundancy is 
+achieved by each macronutrient being able to be digested by at 
+least two and sometimes even more independent processes. For 
+example, dietary fat can be broken down by pancreatic lipase 
+or pre-duodenal lipase, which in dogs and cats is gastric lipase. 
+While in healthy humans and dogs it has been estimated that 
+approximately one-third of all dietary fat is digested by gastric 
+lipase, this value can vary among individuals.4 is degree of 
+redundancy translates into some animals not showing any clinical 
+signs of maldigestion even if one digestive pathway is insucient. 
+Also, digestion is characterized by a large functional reserve and 
+it has been estimated in humans that >90% of exocrine pancreatic 
+function has to be lost before clinical signs of maldigestion will 
+ensue.5 ese numbers are based on averages and there may be a 
+wide interindividual variability, but they do demonstrate the large 
+functional reserve of exocrine pancreatic function.
+e exocrine pancreas plays a central role in the digestion of 
+all macronutrients (Video 279.1). While acinar cells synthesize 
+and secrete some enzymes in their active forms, such as amylase, 
+lipase, RNase, and DNase, others are synthesized as an inactive 
+preform or zymogen, such as trypsinogen, chymotrypsinogen, 
+proelastase, prophospholipase, procarboxypeptidase, and others. 
+While trypsinogen is activated to trypsin in the small intestine by 
+enteropeptidase, the other zymogens are in turn being activated 
+by trypsin. However, the impact of pancreatic secretions on diges-
+tion reaches far beyond secretion of enzymes and zymogens. Aci-
+nar cells also synthesize and secrete colipase, which is necessary 
+to overcome the lipase-inhibiting properties of bile salts. Also, the 
+pancreatic duct system secretes large amounts of pancreatic juice, 
+which has buering capacity and thus is a crucial source of buf-
+fer for gastric acid; without it, the gastric acid would irreversibly 
+inhibit many of the digestive enzymes and destroy the intestinal 
+mucosa and microbiome.
+ETIOLOGY
+e most common cause of EPI in both dogs and cats is chronic 
+pancreatitis, which is suspected to be the cause of EPI in nearly 
+100% of cats and in approximately slightly more than 50% of dogs 
+with EPI. In dogs, the majority of the remainder of EPI cases are 
+caused by PAA, which is almost exclusively seen in German Shep-
+herd Dogs, Rough-Coated Collies, and Eurasians.6 7 In addition, 
+an increased risk for EPI has been described for Cavalier King 
+Charles Spaniels, Shar Peis, and West Highland White Terriers.8
+Interestingly, the age of onset is young adult for German Shepherd 
+Dogs, Rough-Coated Collies, and Shar Peis, while the age of onset 
+in other dog breeds is usually later in life. is suggests that Shar 
+Peis also may have PAA, but this has not been studied further as 
+of yet.8 9
+Several studies have suggested that PAA is inherited as an auto-
+somal recessive trait in German Shepherd Dogs and Eurasians.10-12
+However, the search for a denitive genetic marker for this dis-
+ease has been largely unsuccessful, even though scans of the entire 
+canine genome using a set of microsatellite markers and single 
+nucleotide polymorphisms revealed several regions that appear 
+to be associated with this condition.13 Interestingly, a test breed 
+of an aected male and an aected female German Shepherd Dog 
+only resulted in 2 of 6 of the ospring being aected through their 
+entire life, strongly suggesting against inheritance as a simple 
+autosomal recessive trait.14 us, this condition is likely polygenic 
+with the major histocompatibility complex on chromosome 12 
+Exocrine Pancreatic Insufficiency and Rare Conditions of the 
+Exocrine Pancreas
+Jörg M. Steiner
+CHAPTER 279
+ACRONYMS
+CCK cholecystokinin
+CT computed tomography
+DM diabetes mellitus
+EPI exocrine pancreatic 
+insufficiency
+GI gastrointestinal
+MMA methylmalonic acid
+PAA pancreatic acinar atro-
+phy
+PAC pancreatic adenocarci-
+noma
+PERT pancreatic enzyme 
+replacement therapy
+TLI trypsin-like immunore-
+activity
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 1 Video and 1 Client Information Sheet.
+
+SECTION XVIII
+•
+Pancreatic Disease
+1876
+eBooks.Health.Elsevier.com
+being of special interest.15 Another study has identied a DLA-
+DQB1 duplication as a risk allele.16
+Other, less common causes of EPI in dogs and cats are 
+obstruction of the pancreatic duct due to neoplasia, parasites, 
+or trauma, pancreatic hypoplasia, or isolated lipase deciency, 
+but all of these causes are exceptionally rare. Severe acute pan-
+creatitis with pancreatic necrosis has been described as causing 
+EPI in humans. e hypothesis that has been proposed is that 
+pancreatic necrosis leads to irreversible damage of acinar tissue, 
+but this has not yet been described in either dogs or cats.17 18
+Other proposed causes of EPI in people are type I or type II dia-
+betes mellitus (DM), inammatory bowel disease, celiac disease, 
+pediatric intestinal transplantation, human immunodeciency 
+virus infection, total gastrectomy, Sjögren’s syndrome, aging, 
+tobacco usage, critical illness, Zollinger-Ellison syndrome, or 
+somatostatin analog therapy, but the possible pathogenesis as 
+well as a true cause-and-eect relationship for most of these 
+proposed causes is unclear.19-21 Also, with the exception of DM 
+and inammatory bowel disease, none of these has been sus-
+pected as a cause of EPI in small animals. More importantly, 
+many, if not most, of these proposed causes may be a reection 
+of the poor positive predictive value of elastase 1, commonly 
+used as a diagnostic test for EPI in humans, rather than a true 
+association of EPI with these conditions.22 Finally, an associa-
+tion of these conditions and EPI does not equal causality. For 
+example, both EPI and DM could be a result of chronic pancre-
+atitis without one causing the other.
+PATHOGENESIS
+As mentioned above, digestive enzymes and zymogens 
+secreted by pancreatic acinar cells are crucial for the digestion 
+of all macronutrients. When pancreatic acinar cells are lack-
+ing, regardless of the cause, maldigestion ensues. Maldigestion 
+leads to undigested food components in the intestinal lumen, 
+which can lead to loose stools or diarrhea, and weight loss. 
+Maldigestion also leads to secondary intestinal dysbiosis (ch. 
+260), characterized by a decrease in diversity and changes in 
+abundances of various bacterial species.23 Interestingly, these 
+changes, while improving, did not completely normalize with 
+enzyme replacement therapy.23 Thus, modulation of the intes-
+tinal microbiome may be a therapeutic option for patients that 
+do not respond to pancreatic enzyme replacement therapy 
+(PERT) and cobalamin supplementation alone. Also, rare cases 
+of EPI have been described with dogs and cats showing neu-
+rologic signs. One cat was diagnosed with D-lactic acidosis, 
+which was hypothesized to be due to small intestinal dysbiosis 
+and which improved with PERT.24 Other patients have been 
+hypothesized to have neurological signs secondary to cobala-
+min deficiency.25
+However, it has been suspected that clinical signs are not only 
+due to maldigestion, but that EPI also leads to malabsorption. 
+is has been hypothesized to be due to a lack of trophic factors 
+normally secreted by the exocrine pancreas that help maintain a 
+normal gastrointestinal (GI) mucosa.
+e exocrine pancreas is the major source of intrinsic factor 
+in both dogs and cats (ch. 257).3 26 is is in sharp contrast to 
+humans, where intrinsic factor is mainly secreted by the gastric 
+mucosa. Since intrinsic factor is required for ileal cobalamin 
+absorption, EPI is frequently associated with cobalamin malab-
+sorption and hypocobalaminemia in dogs and cats. Indeed, in one 
+study, 82% of dogs with EPI had a decreased serum cobalamin 
+concentration, with 36% having marked hypocobalaminemia.27
+Similarly, a retrospective study of 119 cats with EPI documented 
+hypocobalaminemia in 77% of them.28
+As mentioned above the majority of both cats and dogs with 
+EPI are believed to develop the disease due to chronic pancreatic 
+inammation (chs. 277, 278). Since pancreatic damage due to 
+inammation does not spare the islets of Langerhans, DM can 
+develop concurrently. While some patients develop DM before 
+EPI, others develop them at the same time, and yet others develop 
+EPI before developing DM.29 is means that canine (ch. 291) or 
+feline (ch. 292) patients with DM should be screened for EPI if 
+they are losing weight and owners of patients with EPI should be 
+educated on the clinical signs of DM.
+CLINICAL PRESENTATION
+EPI can be subclinical and two large case series of German 
+Shepherd Dogs identied several dogs with severely decreased 
+serum trypsin-like immunoreactivity (TLI) concentrations that 
+did not have any clinical signs.11 30 Some of the dogs under-
+went exploratory laparotomy and pancreatic size was found 
+to be severely decreased.30 is is suspected to be due to the 
+redundancy of digestion of macronutrients mentioned above 
+but is clinically of no signicance as animals with subclinical 
+EPI do not need to be diagnosed or treated. e most common 
+clinical sign reported in both dogs and cats with EPI is weight 
+loss (Figures 279.1 and 279.2).28 31 Loose stools are also com-
+monly observed (Figure 279.2, C), but watery diarrhea is less 
+common.28 31 32 Oen times, patients have a poor hair coat and 
+dogs with EPI are commonly reported to have borborygmus and 
+increased atulence.28 32 Many dogs and cats with EPI will show 
+an increased appetite, while dogs may even show coprophagia 
+or pica.18 28 us, dogs that repeatedly ingest foreign bodies and 
+are thin should be investigated for possible EPI. In cats, a greasy 
+soiling of the hair coat in the perianal area can be observed, but 
+this is not a common nding.31 Some dogs and cats with EPI 
+have a decreased appetite that is believed to be due to concur-
+rent chronic inammatory enteropathy (ch. 262) and has been 
+reported as a negative prognostic factor in dogs.28 33
+DIAGNOSIS
+Measurement of serum TLI concentration is the diagnostic test 
+of choice for both dogs and cats suspected of having EPI. Serum 
+TLI concentration is measured by species-specic assays. e TLI 
+assay measures the concentration of cationic trypsinogen, cationic 
+Figure 279.1
+Dog with exocrine pancreatic insuciency (EPI). is 
+photograph shows a young adult male castrated Labrador Retriever 
+with EPI. Note the thin appearance of the dog and the large pile of light-
+colored stool. e owner reported that this dog defecated at least once 
+an hour.

@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { ExternalLink, Info } from 'lucide-react';
 
@@ -90,7 +91,7 @@ export function IrisCkdStagingTables() {
 
         <div className="overflow-hidden rounded-xl border border-border bg-background/70">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[820px] border-collapse text-center text-sm">
+            <ReadableTable className="w-full min-w-[820px] border-collapse text-center text-sm">
               <caption className="sr-only">
                 Estadiamento IRIS 2026 da doença renal crônica em cães e gatos
               </caption>
@@ -159,7 +160,7 @@ export function IrisCkdStagingTables() {
                   </tr>
                 ))}
               </tbody>
-            </table>
+            </ReadableTable>
           </div>
         </div>
       </section>
@@ -176,7 +177,7 @@ export function IrisCkdStagingTables() {
           </div>
           <div className="overflow-hidden rounded-xl border border-border bg-background/70">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[400px] border-collapse text-left text-sm">
+              <ReadableTable className="w-full min-w-[400px] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   Subestadiamento IRIS 2026 por proteinúria
                 </caption>
@@ -201,7 +202,7 @@ export function IrisCkdStagingTables() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </ReadableTable>
             </div>
           </div>
         </section>
@@ -217,7 +218,7 @@ export function IrisCkdStagingTables() {
           </div>
           <div className="overflow-hidden rounded-xl border border-border bg-background/70">
             <div className="overflow-x-auto">
-              <table className="w-full min-w-[430px] border-collapse text-left text-sm">
+              <ReadableTable className="w-full min-w-[430px] border-collapse text-left text-sm">
                 <caption className="sr-only">
                   Subestadiamento IRIS 2026 por pressão arterial sistólica
                 </caption>
@@ -239,7 +240,7 @@ export function IrisCkdStagingTables() {
                     </tr>
                   ))}
                 </tbody>
-              </table>
+              </ReadableTable>
             </div>
           </div>
         </section>

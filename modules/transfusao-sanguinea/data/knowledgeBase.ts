@@ -1,6 +1,7 @@
 export interface KnowledgeItem {
   title: string;
   content: string;
+  sources?: { label: string; url: string }[];
 }
 
 export const knowledgeBase: Record<string, KnowledgeItem> = {

@@ -1,0 +1,812 @@
+
+===== Plumb PDF 947 =====
+920    Mycophenolate
+Mycophenolate
+Mycophenolate Mofetil (MMF)
+(mye-koe-fen-oh-late) Cellcept®
+Immunosuppressant
+Prescriber Highlights
+ ▶ Immunosuppressive drug that may be useful for treating dogs 
+with IMHA, IMTP , glomerulonephritis, myasthenia gravis, or 
+meningoencephalomyelitis of unknown etiology in dogs; po-
+tentially useful in cats, but there is little information available 
+on safety or efficacy.
+ ▶ Limited experience in veterinary medicine, especially in cats or 
+with long-term use
+ ▶ Adverse effects include GI signs (eg, diarrhea, vomiting, an-
+orexia) most commonly are dose-limiting and can be severe.
+ ▶ Can be administered PO or IV. Compounding into appropriate 
+oral dosage forms may be needed.
+ ▶ Teratogenic in humans
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies mycophenolate as a hazardous drug; use 
+appropriate precautions when handling.
+Uses/Indications
+Although clinical experience using mycophenolate in veterinary 
+medicine has been limited and no large well-controlled studies were 
+located, mycophenolate appears useful in the treatment of a variety 
+of autoimmune diseases, including immune-mediated hemolytic 
+anemia (IMHA),1-4 immune-mediated thrombocytopenia (IMTP),5,6 
+myasthenia gravis, 7,8 meningoencephalomyelitis, 9,10 glomerulo -
+nephritis,11 and pemphigus foliaceous. 12 Mycophenolate has been 
+suggested for use in treating inflammatory bowel disease in dogs; 
+however, the drug’s primary adverse effects in dogs are gastritis, di-
+arrhea, and intestinal inflammation. Mycophenolate is also used in 
+anti-rejection protocols for organ transplants in animals. Mycophe-
+nolate is often used as part of a combination immunosuppressive 
+therapy protocol in a patient, although it has also been used alone as 
+monotherapy. The drug was ineffective for the treatment of sudden 
+acquired retinal degeneration syndrome (SARDS) in dogs.13
+In humans, although this drug is used off-label for a variety of au-
+toimmune disease indications, it is labeled only for use in preventing 
+transplant rejection.
+Pharmacology/Actions 
+Mycophenolate mofetil (MMF) is a prodrug that must be hydrolyzed 
+in vivo to mycophenolic acid (MPA) to be pharmacologically active. 
+Mycophenolic acid noncompetitively, but reversibly, inhibits inosine 
+monophosphate dehydrogenase (IMPDH). Two distinct forms of 
+IMPDH exist in the body, including type 1 found in most cells and 
+type 2 existing in activated lymphocytes. Mycophenolic acid has a 
+5-fold greater affinity for the type 2 IMPDH isoform. Inosine mo -
+nophosphate dehydrogenase is the rate-limiting enzyme in de novo 
+synthesis of guanosine nucleotides. As T cells and B cells are depen-
+dent on de novo synthesis of purines (eg, guanosine) and, unlike 
+other cells, cannot use salvage pathways, proliferative responses of 
+T cells and B cells are inhibited, and suppression of B cell antibody 
+formation occurs, thus inhibiting both cell-mediated and humoral 
+immune responses. These effects enable MPA to inhibit leukocyte 
+recruitment to inflammatory sites and allotransplant tissues.
+In a study in juvenile dachshunds, MMF administration did not 
+inhibit proliferating CD5+ T lymphocytes at any time point. 14 In 
+healthy cats, MMF administration resulted in little change in periph-
+eral blood mononuclear cell counts or CD4+/CD8+:T-cell ratios.15
+Pharmacokinetics
+Mycophenolate mofetil is absorbed after oral administration, but 
+limited bioavailability studies in dogs have shown both a wide inter-
+patient and interdose variation. A study performed in a single dog 
+showed bioavailabilities of 54%, 65%, and 87% after administration 
+of 10, 15, and 20 mg/kg of MMF , respectively.16 
+A study in dogs compared the pharmacokinetic parameters of my-
+cophenolic acid (MPA) with its pharmacodynamic effects on inosine 
+monophosphate dehydrogenase (IMPDH) activity in lymphocytes17; 
+volume of distribution at steady-state was ≈5 L/kg, but inter-patient 
+variability (±4.5) was wide. Elimination half-life for MPA was ≈8 
+hours (±4 hours). In a study performed in juvenile dachshunds re -
+ceiving 13 mg/kg PO, peak MPA concentration occurred within 1 
+hour of administration, and half-life was 5.5 minutes. 14 Mycophe-
+nolic acid is primarily excreted in the urine, both unchanged (≈5%) 
+and as the glucuronide metabolite (≈90%). In this study, the authors 
+concluded that the pharmacokinetic/pharmacodynamic profile of 
+MMF in dogs suggests that an every 8-hour dosing schedule would 
+be required for optimization of immunosuppressive efficacy. Howev-
+er, dosing every 8 hours can be clinically challenging because of the 
+severity of adverse effects, and thus has not entered common clinical 
+usage (see Adverse Effects). 
+In a study in healthy cats, administration of 20 mg/kg MMF IV 
+as a CRI over 2 hours resulted in all cats forming the active MPA 
+metabolite. Disposition of plasma MPA was highly variable and 
+unpredictable. The major metabolite was a glucoside product, and 
+a glucuronide product was found in only 3 of 6 cats. 18 An in vitro 
+study similarly demonstrated a relative deficiency of MPA glucuro -
+nidation in cats.19 
+In humans, oral bioavailability averages 94%; food reduces peak 
+MPA concentrations by 40%.20 After absorption, MMF is rapidly and 
+completely hydrolyzed to mycophenolic acid. Peak blood concentra-
+tions are seen ≈1 to 2 hours after oral administration. Mycophenolic 
+acid 97% protein (albumin) bound and undergoes extensive hepatic 
+metabolism, primarily via glucuronidation. Mycophenolic acid un -
+dergoes extensive enterohepatic recirculation, and reactivation to 
+MPA within the gut may result in a second peak blood concentra -
+tion 4 to 12 hours after administration. Elimination half-life of MPA 
+is ≈17 hours. Metabolites are eliminated primarily via the kidneys.
+Contraindications/Precautions/Warnings
+Do not use mycophenolate in patients with documented hypersensi-
+tivity reactions to mycophenolate. Patients with severe renal dysfunc-
+tion may require dosage adjustment. Because MMF can cause diar -
+rhea, use with caution in patients with inflammatory bowel disease. 
+IV mycophenolate must be administered over at least 2 hours; do 
+not give it as an IV bolus or via rapid IV infusion.
+In humans, the active metabolite, MPA, is primarily excreted as 
+the MPA-glucuronide metabolite. Mycophenolate should be used 
+with caution in cats because of deficient MPA glucuronidation in 
+this species.
+For humans, mycophenolate has a black box warning regarding 
+potential increased risk for lymphoma and serious infection associ -
+ated with its use. Severe neutropenia has occurred in human trans -
+plant patients receiving mycophenolate.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies mycophenolate as a group II hazardous drug 
+(non-antineoplastic agent representing an occupational hazard to 
+healthcare workers); personal protective equipment (PPE) should be 
+used accordingly to minimize the risk of exposure.21
+Do not confuse mycophenolate mofetil with mycophenolic acid. 
+A study comparing adverse effects in dogs with MMF capsules and 
+mycophenolate sodium (the sodium salt of mycophenolic acid) en -
+teric-coated tablets demonstrated significantly greater occurrences 
+
+
+===== Plumb PDF 948 =====
+Mycophenolate   921
+and severity of diarrhea, weight loss, and decreased activity in dogs 
+that received the sodium salt enteric-coated tablets.22
+Adverse Effects
+Because of limited experience with mycophenolate in veterinary pa-
+tients, the adverse effect profile is not well established. At usual doses 
+(10 mg/kg PO twice daily), mycophenolate is usually well tolerated 
+in dogs. Dose-dependent diarrhea appears to be the most common 
+adverse effect, but vomiting, anorexia, lethargy/reduced activity, 
+lymphopenia, papillomatosis, and increased rates of dermal infec -
+tions can be seen. In a study evaluating MMF in dogs for the treat -
+ment of IMHA at a dosage of 10 to 15 mg/kg PO every 8 hours, the 
+authors concluded that the level of GI toxicity observed could not 
+justify the use of MMF with this dosing regimen, despite the fact that 
+4 of 5 dogs achieved disease remission.1 Ulcerative colitis may devel-
+op.4 Mild hypersensitivity reactions after IV administration are pos-
+sible. Because of the drug’s immunosuppressive actions, increased 
+systemic infection and malignancy rates are possible, especially with 
+long-term use.
+Diarrhea was the most common adverse effect in healthy cats en-
+rolled in mycophenolate pharmacokinetic studies. Diarrhea was less 
+frequent after IV administration and appeared dose related with oral 
+use. Hyporexia was noted in 1 cat. Decreases in PCV and platelet 
+counts have been noted, but the reduced values remained within the 
+reference range.15,18,23 Hepatopathy and pancreatitis were reported in 
+one cat after receiving MMF for treatment of IMHA.24
+In humans, the most common adverse effects include constipa -
+tion, diarrhea, nausea, vomiting, and headache. Hypertension and 
+peripheral edema occur in ≈30% of patients. Leukopenia has been 
+reported in 25% to 45% of patients taking the medication. Other ef-
+fects that occur more rarely include GI bleeding, severe neutropenia, 
+cough, confusion, tremor, fatal neurologic disease, infection, and 
+malignant lymphoma (0.4% to 1%).
+Reproductive/Nursing Safety
+Mycophenolate should be avoided, if at all possible, during pregnan-
+cy. Mycophenolate is a known teratogen in humans, causing con -
+genital malformations and first trimester pregnancy loss. At doses 
+significantly lower than those used in humans, increased resorptions 
+and malformations were noted in rabbits and rats. 
+Mycophenolic acid is distributed in rat milk. It is unknown if my-
+cophenolate is safe to use during nursing and it should be considered 
+contraindicated.25 
+Overdose/Acute Toxicity
+In acute toxicity studies performed in mice and monkeys, no deaths 
+occurred in oral doses of mycophenolate up to 4000 mg/kg and 1000 
+mg/kg, respectively. In small animals, acute GI disturbances or neu-
+tropenia are possible. Treat supportively, if required. Cholestyramine 
+may increase mycophenolate excretion.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving mycophenolate and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Acyclovir and V alacyclovir : Increased serum concentra -
+tions of acyclovir and the phenolic glucuronide of mycophenolic 
+acid
+ ■ Aminoglycosides  (eg, amikacin, gentamicin): In rats, use to -
+gether induced greater nephrotoxicity.
+ ■ Antacids, Oral (Aluminum-, Calcium-, or Magne -
+sium-Containing) : Decreased absorption of mycophenolate; 
+separate dosing by at least 2 hours.
+ ■ Azathioprine : Increased risk for myelosuppression; concur -
+rent use is not recommended.
+ ■ Cholestyramine : May inhibit enterohepatic recycling of my -
+cophenolate, reducing serum concentrations
+ ■ Immunosuppressive Agents  (eg, corticosteroids [eg, dexa-
+methasone, predniso(lo)ne ], leflunomide): Additive immuno -
+suppressant effects could occur
+ ■ Iron  (oral) : Decreased absorption of mycophenolate; separate 
+dosing by at least 2 hours.
+ ■ Lanthanum Carbonate : May decrease mycophenolate plas -
+ma concentrations
+ ■ Probenecid : Potentially increased serum concentrations of my-
+cophenolic acid and the phenolic glucuronide of mycophenolic 
+acid
+ ■ Proton Pump Inhibitors (PPIs; eg, omeprazole, pantopra -
+zole): May reduce mycophenolate absorption, decreasing MPA 
+exposure (AUC)
+ ■ Salicylates (eg, aspirin, bismuth subsalicylate ): Potentially 
+increased concentrations of free mycophenolic acid
+ ■ Sevelamer : Decreased absorption of mycophenolate; adminis -
+ter MMF at least 2 hours prior to sevelamer.
+ ■ Telmisartan : May decrease mycophenolate exposure (AUC)
+ ■ V accines, Modified Live : Vaccines may be less effective; ad -
+minister vaccines prior to initiating mycophenolate therapy and 
+avoid concurrent use.
+The following drugs or drug classes may reduce MPA exposure by 
+inhibiting the enterohepatic recycling of the mycophenolate glucu -
+ronide metabolite:
+ ■ Cephalosporins (eg, cephalexin, cefpodoxime)
+ ■ Clindamycin  
+ ■ Cyclosporine : additive immunosuppressant effects also possi-
+ble
+ ■ Fluoroquinolones (eg, ciprofloxacin, enrofloxacin)
+ ■ Metronidazole
+ ■ Rifampin
+ ■ Penicillins (eg, amoxicillin/clavulanate)
+ ■ Sulfonamides, Potentiated (eg, sulfa-/trimethoprim)
+Laboratory Considerations
+ ■ No issues noted
+Dosages
+DOGS:
+Immune-mediated hemolytic anemia (extra-label): 8 – 12 mg/kg 
+PO or IV every 12 hours in combination with predniso(lo)ne  
+2 – 3 mg/kg/day PO (50 – 60 mg/m2/day [NOT  mg/kg/day] for 
+dogs greater than 25 kg)2,4    
+Immune-mediated thrombocytopenia (IMTP) (extra-label):  
+7 – 9 mg/kg PO every 12 hours in combination with pred-  
+niso(lo)ne (≈2 mg/kg/day)5,6  
+Meningoencephalomyelitis of unknown etiology (extra-label): 
+10 – 20 mg/kg PO or IV every 12 hours in conjunction with cor -
+ticosteroids.9,10 One study described administering MMF IV over 
+20 minutes using a syringe pump.10
+Adjunctive immunosuppressive treatment of glomerular dis -
+ease based on established pathology  (extra-label): The Interna-
+tional Renal Interest Society (IRIS) consensus statement recom -
+
+
+===== Plumb PDF 949 =====
+922    Mycophenolate
+mends mycophenolate alone or in combination with prednisolone 
+for peracute and/or rapidly progressive glomerular disease: my -
+cophenolate 10 mg/kg PO every 12 hours. For stable or slowly 
+progressive glomerular diseases, IRIS recommends mycopheno -
+late alone. In the absence of overt adverse effects, therapy should 
+continue for at least 8 weeks before altering or discontinuing the 
+drug. Therapy should be continued in dogs demonstrating a com-
+plete or partial response to initial treatment for a minimum of 12 
+to 16 weeks. Thereafter, consideration should be given to taper -
+ing the treatment to a dose/schedule that maintains the response 
+without worsening the proteinuria, azotemia, or clinical signs.11
+Myasthenia gravis (extra-label): 15 – 20 mg/kg diluted and given 
+IV over 2 to 4 hours every 24 hours until able to swallow, then 
+10 – 20 mg/kg PO every 12 hours.7 One retrospective study found 
+that when compared to using pyridostigmine alone, MMF with 
+pyridostigmine did not significantly affect remission rate, time to 
+remission, or survival time.8 
+Aplastic anemia (extra-label): From a case report in a single dog: 
+mycophenolate 10 mg/kg PO every 12 hours. The first effects (im-
+provements in hematocrit) were observed 2 weeks later, and com-
+plete remission of all blood cell counts were obtained in ≈3 weeks.26
+Immune-mediated skin disease  (extra-label): Dosages varied, 
+but 10 – 20 mg/kg PO twice daily was typical. Adverse GI ef -
+fects were noted with higher dosages. 12,27 In one study, dogs that 
+achieved remission still required glucocorticoids.12
+CATS:
+Adjunctive treatment of IMHA (extra-label): From a case report 
+of 2 cats: mycophenolate 10 mg/kg PO every 12 hours. 28 Use for 
+immune-mediated disorders in cats is not recommended by some 
+based on pharmacokinetic and pharmacodynamic data.15
+Monitoring
+ ■ Efficacy
+ ■ Baseline and periodic CBCs every 2 to 3 weeks for the first month, 
+then every 2 to 3 months during treatment.4
+ ■ Baseline and periodic serum chemistry profile, urinalysis, and 
+urine culture
+ ■ Signs associated with infection (eg, fever, malaise, inappetence)
+ ■ GI effects (eg, inappetence, vomiting, diarrhea)
+Client Information
+ ■ Preferably give on an empty stomach; if vomiting or lack of appe-
+tite occurs, try giving with food.
+ ■ Limited experience in veterinary medicine, especially in cats or 
+for long-term use
+ ■ Diarrhea, vomiting, and anorexia are the most likely adverse ef -
+fects and can be severe. If any of these signs persist or are severe, 
+contact your veterinarian.
+ ■ Because of concerns that this drug can suppress the immune sys-
+tem and cause birth defects, pregnant women should wear gloves 
+when handling this drug and avoid inhaling dust from capsules 
+or split or crushed tablets. The manufacturer recommends that 
+tablets or capsules not be crushed, split, or opened. 
+ ■ This medicine is considered to be a hazardous drug as defined 
+by the National Institute for Occupational Safety and Health 
+(NIOSH) because it may affect the reproductive ability of males 
+or females actively trying to conceive, women who are pregnant 
+or may become pregnant, and women who are breastfeeding. It 
+is recommended to wear gloves when administering this med -
+ication to your animal, and wash hands thoroughly afterwards. 
+If you have any concerns about the risks associated with expo -
+sure to this medicine, speak with your veterinarian or health care 
+ provider.
+Chemistry/Synonyms
+Mycophenolate mofetil occurs as a white or almost white, crystalline 
+powder. It is sparingly soluble in alcohol and practically insoluble in 
+water at neutral pH; aqueous solubility increases as pH decreases. 
+The pH of mycophenolate for injection after reconstitution is 2.2 to 
+4.1.
+Mycophenolic acid is derived from Penicillium stoloniferum.
+Mycophenolate mofetil may also be known as RS-61443 or MMF . 
+International trade names include CellCept®, Cellmune®, Imuxgen®, 
+Munotras®, Mycept®, Myfortic®, and Refrat®.
+Storage/Compatibility
+Mycophenolate mofetil tablets and capsules should be stored be-
+tween 20°C and 25°C (68°F-77°F) and protected from light.
+Mycophenolate mofetil powder for oral suspension should be stored 
+between 15°C and 30°C (59°F-86°F), preferably at 25°C (77°F). Once 
+reconstituted with 94 mL of water, the solution may be stored at 
+room temperature or in the refrigerator; do not freeze. The unused 
+drug should be discarded after 60 days. Refer to the product label of 
+generic formulations for specific reconstitution recommendations.
+The injectable product should be stored between 15°C and 30°C 
+(59°F-86°F); preferably at 25°C (77°F). Each vial should be recon -
+stituted with 14 mL of 5% dextrose injection; the final volume is  
+≈15 mL. Gently agitate to dissolve the powder. Mycophenolate in -
+jection should not be mixed or given with any other medication or 
+diluent. Administer mycophenolate within 6 hours of dilution. The 
+drug must be administered over at least 2 hours and is not to be given 
+as an IV bolus or via rapid IV infusion. For human use, the manu -
+facturer recommends further diluting with dextrose 5% to a concen-
+tration of 6 mg/mL for IV administration. Mycophenolate diluted in 
+dextrose 5% to a final concentration between 1 – 10 mg/mL in PVC 
+bags was stable for seven days when stored under refrigeration or at 
+room temperature.29
+Compatibility/Compounding Considerations
+The manufacturer states that mycophenolate injection should not 
+be mixed or given with any other medication or diluent. The drug 
+appears Y-site compatible with buprenorphine, butorphanol, calci-
+um chloride, dexmedetomidine, dobutamine, dopamine, hydromor-
+phone, magnesium sulfate, metoclopramide, metronidazole, ondan-
+setron, potassium chloride, and ranitidine. The drug appears Y-site 
+incompatible with amphotericin B, calcium gluconate, cefazolin, 
+dexamethasone sodium phosphate, furosemide, heparin, meropen -
+em, pantoprazole, phenobarbital, and sodium bicarbonate.
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; consult specialized references or a 
+hospital pharmacist for more specific information.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+HUMAN-LABELED PRODUCTS :
+Mycophenolate Mofetil Oral Capsules: 250 mg; CellCept®, generic; 
+(Rx)
+Mycophenolate Mofetil Oral Tablets: 500 mg; CellCept®, generic; (Rx)
+Mycophenolate Mofetil Powder for Oral Suspension: 200 mg/mL 
+(reconstituted) in 225 mL bottles; CellCept®; (Rx)
+Mycophenolate Mofetil Lyophilized Powder for Injection: 500 mg in 
+20 mL vials; CellCept®; (Rx)
+Mycophenolate is also available as the sodium salt of mycophenolic 
+acid in oral, delayed-release tablets; however, this dosage form can -
+not be used interchangeably with mycophenolate mofetils.22 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+
+
+===== Plumb PDF 950 =====
+Nalbuphine    923
+Nalbuphine 
+(nal-byoo-feen) Nubain®
+Opioid Partial Agonist
+See also Nalbuphine Ophthalmic
+Prescriber Highlights
+ ▶ Injectable opioid mixed agonist/antagonist used in combina-
+tion as a premedication prior to general anesthesia in small 
+animal species
+ ▶ May also be used for mild-to-moderate pain relief or to reverse 
+effects of full mu-opioid agonists without complete elimina-
+tion of analgesic effects
+ ▶ Has a relatively short duration of action in dogs and cats
+ ▶ Use cautiously in patients with hepatic or renal impairment, 
+bradyarrhythmias, or head trauma.
+ ▶ Limited information about its use in veterinary medicine, but 
+appears to be relatively safe and effective in small animal 
+species
+ ▶ Not a controlled substance in the United States
+Uses/Indications
+Nalbuphine may be used as premedication prior to general anesthe-
+sia. It could theoretically be used for analgesia, but it is only effective 
+for relief of mild-to-moderate pain and has a relatively short dura -
+tion of effect. Nalbuphine may be used to reverse the adverse effects 
+(eg, respiratory depression) of mu-agonists (eg, morphine) while re-
+taining some analgesic effects. 
+Nalbuphine has been used in dogs epidurally to decrease the 
+MAC of isoflurane and to provide postoperative analgesia for ovari-
+ohysterectomy.1 In calves undergoing surgical castration, nalbuphine 
+reduces some pain-related behaviors but does not eliminate physio-
+logical signs of distress.2 
+When compared with other mixed agonist/antagonists (eg, butor-
+phanol, buprenorphine), the potential benefit of nalbuphine is that 
+it is not a controlled substance in the United States; however, there 
+is considerably less clinical experience and published information 
+about its use in animals.
+Pharmacology/Actions
+Nalbuphine is a synthetic opioid-receptor agonist-antagonist of the 
+phenanthrene series. Nalbuphine binds to kappa-, mu-, and del -
+ta-opioid receptors. Its primary analgesic pharmacologic activity is 
+due to its agonist activity at kappa receptors. Nalbuphine can cause 
+respiratory depression, but above a certain dose (30 mg in adult hu-
+mans), further respiratory depression does not occur.3
+Nalbuphine does not increase plasma histamine in dogs.4
+Pharmacokinetics
+Nalbuphine has a similar pharmacokinetic profile as morphine. 5 
+Nalbuphine must be administered parenterally as it has very low oral 
+bioavailability secondary to GI mucosal metabolism and a high first-
+pass effect. In humans, the onset of action is usually within 3 min -
+utes after IV administration and 15 minutes after SC or IM doses. In 
+humans, plasma half-life is ≈5 hours. Analgesic effects usually last 
+from 3 to 6 hours after a dose. Analgesic duration of action in dogs 
+and cats has anecdotally been reported as significantly shorter than 
+in humans.
+In calves, after 0.4 mg/kg IV , half-life, volume of distribution, and 
+clearance were 0.68 hours, 6.8 L/kg, and 114 mL/minute/kg, respec-
+tively. Plasma concentrations were only detectable 3 hours after the 
+injection.2
+In Hispaniolan Amazon parrots, IM dosages of nalbuphine HCl 
+had complete bioavailability. After IV administration, the measured 
+volume of distribution was 2 L/kg and clearance was ≈70 mL per  
+minute/kg. Terminal half-life was ≈20 minutes for both IV and IM 
+doses.6 A follow-up study using a sustained-release IM form (nalbu-
+phine decanoate 37.5 mg/kg IM) showed a mean terminal half-life 
+of 20.4 hours. Plasma concentrations that could be associated with 
+antinociception (20 ng/mL) were maintained for 24 hours after in -
+jection.7
+Contraindications/Precautions/Warnings
+Nalbuphine is contraindicated in patients hypersensitive to it. Severe 
+pain should be treated with other analgesics (eg, mu-opioid ago -
+nists). Use nalbuphine cautiously in patients with hepatic or renal 
+impairment, bradyarrhythmias, or head trauma.
+When used alone, nalbuphine rarely causes clinically significant 
+respiratory depression, but it should be used with caution in patients 
+with impaired respiratory function or when used concomitantly with 
+other CNS- or respiratory-depressant agents; respiratory depression 
+can be severe in these patients—adequate monitoring is required. 
+Naloxone can reverse nalbuphine-induced respiratory depression.
+In humans, nalbuphine is contraindicated in patients with signif-
+icant respiratory depression, acute or severe asthma, and known or 
+suspected GI obstruction.3
+Nalbuphine can precipitate withdrawal signs in patients that are 
+physically dependent on opioid drugs. While the potential for abuse 
+of nalbuphine by humans is less than with other opioids (especially 
+mu-receptor agonist agents), there have been reports of diversion, 
+abuse, and dependence. Although there are no special recordkeeping 
+or storage requirements, veterinarians should be alert to this potential.
+Adverse Effects
+Respiratory depression is unlikely but can occur. Other adverse ef -
+fects that can be seen with nalbuphine include excitement (high dos-
+es), dysphoria, vomiting, and bradycardia.
+Reproductive/Nursing Safety
+Safe use of nalbuphine during pregnancy has not been established. 
+Very little drug is excreted into milk, and nalbuphine is consid -
+ered relatively safe in humans to use while nursing; however, off -
+spring exposed to nalbuphine should be monitored for excess seda -
+tion or respiratory depression.3
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Overdoses of nalbuphine are rarely serious, particularly when used 
+on an inpatient basis and with adequate monitoring when used with 
+other CNS and respiratory depressant drugs. Respiratory depression 
+can be reversed with naloxone. 3 In humans, single doses of nalbu -
+phine 72 mg SC administered to healthy subjects caused sedation, 
+sleepiness, and mild dysphoria. Oral ingestions are not serious as the 
+drug has low oral bioavailability.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving nalbuphine and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Cimetidine : Increased nalbuphine effects possible
+ ■ CNS or Respiratory Depressants : Additive CNS and/or re-
+spiratory depression can occur.
+
+
+===== Plumb PDF 951 =====
+924    Naloxone
+ ■ Mu-Opioid Agonists (eg, fentanyl, morphine): Administra-
+tion of nalbuphine with or following a mu agonist may result in a 
+reduced analgesic effect. 
+Laboratory Considerations
+ ■ Opioid screening tests. Nalbuphine may interfere with enzymatic 
+tests.
+Dosages
+DOGS/CATS:
+In combination as a preanesthetic adjunct  (extra-label):  
+0.2 – 0.4 mg/kg IV , IM, or SC in combination with other prean -
+esthetic agents (eg, midazolam, acepromazine, alpha-2 agonists)
+Sole agent for mild-to-moderate pain (extra-label): 0.25 – 1 mg/kg  
+IV , IM, or SC.8 Up to 2 mg/kg IV or IM has been suggested for 
+use in dogs. 
+CALVES: 
+Pain relief after surgical castration (extra-label): 0.4 mg/kg IV 
+reduced some pain-related behaviors but did not significantly 
+eliminate signs of distress in calves.2
+SMALL MAMMALS :
+Analgesic (extra-label):
+Rabbits, Ferrets: 0.5 – 1.5 mg/kg IV , IM every 4 hours
+Guinea Pigs: 1 – 4 mg/kg IM, SC every 3 hours
+Gerbils, Mice, Rats, Hamsters: 1 – 2 mg/kg IM, SC every 2 to 4 
+hours (dosages have been recommended up to 8 mg/kg IM)
+Monitoring
+ ■ Level of sedation and analgesia
+ ■ Respiratory depth and rate especially when used in combination 
+with other respiratory depressant drugs
+Client Information
+ ■ Nalbuphine is only used in an inpatient setting.
+Chemistry/Synonyms
+Nalbuphine HCl is a synthetic opioid agonist/antagonist in the 
+phenanthrene series and is structurally related to both naloxone 
+(opioid antagonist) and oxymorphone (opioid agonist). Nalbuphine 
+HCl is soluble in water and ethanol; insoluble in chloroform and 
+ether.
+The commercially available injection in 10 mL vials also contains 
+sodium citrate hydrous 0.94%, citric acid anhydrous 1.26%, methyl- 
+and propylparabens 0.2%, and hydrochloric acid to adjust pH to 3.5 
+to 3.7.
+Nalbuphine HCl may also be known as EN-2234A, Nubian (street 
+name), and Nubain®.
+Storage/Stability
+Store intact vials and ampules at 15°C to 30°C (59°F-86°F) and pro-
+tect from light.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Nalbuphine HCl injection has been found compatible with the 
+following IV solutions: dextrose 5% in sodium chloride 0.9%; dex -
+trose 10%; lactated Ringer’s solution (LRS); sodium chloride 0.9%.9
+At usual concentrations, nalbuphine has been found compatible 
+with the following drugs (partial listing) when mixed in syringes: 
+atropine sulfate, diphenhydramine, glycopyrrolate, hydroxyzine, li -
+docaine, midazolam, and ranitidine. Diazepam, ketorolac, and pen-
+tobarbital are incompatible. Propofol is compatible at a 1:1 ratio at 
+Y-site.9 There are anecdotal reports of syringe mixtures successfully 
+combining nalbuphine with acepromazine, dexmedetomidine, or 
+medetomidine, although published stability data were not located.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+HUMAN-LABELED PRODUCTS :
+Nalbuphine HCl Injectable Solution: 10 mg/mL and 20 mg/mL in  
+1 mL ampules and 10 mL multi-dose vials; generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Naloxone
+(nal-ox-one) Narcan®
+Antidote; Opioid Antagonist
+Prescriber Highlights
+ ▶ Most effective at reversing pure mu-opioid receptor agonists 
+(eg, fentanyl, morphine); less effective reversal agent for par-
+tial opioid agonists (eg, buprenorphine)
+ ▶ Use with caution in animals with pre-existing cardiac abnor-
+malities or patients that are opioid dependent. At reversal 
+dosages, can negate opioid analgesic effects.
+ ▶ Reversal effect may last for a shorter time than opioid effect; 
+monitor and re-dose as needed.
+Uses/Indications
+Naloxone is used almost exclusively for its opioid reversal effects, 
+but the drug has been investigated for treating other conditions (eg, 
+septic, hypovolemic, or cardiogenic shock). Frequent administration 
+of low-dose naloxone is advocated by some to reverse opioid effects 
+while minimizing consequences of opioid withdrawal. Some have 
+found low-dose naloxone useful in treating postanesthetic dyspho -
+ria associated with perioperative opioids,1 but this practice is some -
+what controversial due to the difficulty in distinguishing pain from 
+dysphoria in animal patients. Naloxone has been employed as a test 
+drug to see if endogenous opioid blockade will result in diminished 
+tail chasing or other self-mutilating behaviors.2 
+Pharmacology/Actions
+Naloxone is considered a pure opioid antagonist and has no analge-
+sic activity at usual dosages. The drug acts as a competitive antago -
+nist by binding to the mu, kappa, and delta opioid receptor sites, and 
+has its highest affinity for the mu receptor. It also has some GABA 
+antagonistic effects, which can elicit convulsions, although this is 
+usually not clinically relevant.
+Naloxone reverses the majority of effects associated with high-
+dose opioid administration (eg, respiratory and CNS depression). In 
+dogs, naloxone does not reverse the emetic or hypotensive actions of 
+apomorphine.3
+At higher doses, naloxone has other pharmacologic activity in -
+cluding effects on dopaminergic mechanisms (increases dopamine 
+levels) and GABA antagonism.
+Pharmacokinetics
+Naloxone is only minimally absorbed when given orally due to an 
+extensive first-pass metabolism. Much higher doses are required 
+if using this route of administration for any pharmacologic effect. 
+When given IV , naloxone has a rapid onset of action (usually 1 to 2 
+minutes). If given IM, the drug generally has an onset of action with-
+in 5 minutes of administration. The duration of action usually per -
+sists from 45 to 90 minutes but may have an effect for up to 3 hours.
+Naloxone is distributed rapidly throughout the body with high 
+concentrations found in the brain, kidneys, spleen, skeletal muscle, 
+lung, and heart. Naloxone is metabolized in the liver, principally 
+via glucuronidative conjugation, with metabolites excreted into the 
+urine. In humans, the serum half-life is ≈60 minutes, but ≈3 hours 
+in neonates.4
+
+
+===== BSAVA PDF 294 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+278
+Mycophenolate mofetil (MMF, 
+Mycophenolic acid)
+(CellCept* (MMF), Myfortic* (MPA)) POM
+Formulations: Oral: 250 mg capsule, 500 mg tablet, 1 g/5 ml 
+powder for oral suspension (MMF); 180 mg, 360 mg tablets. 
+Injectable: 500 mg powder for reconstitution and slow i.v. infusion 
+(mycophenolic acid).
+Action: Inhibits the enzyme that controls the rate of synthesis of 
+guanine monophosphate in the de novo pathway of purine 
+synthesis. This pathway is important in the proliferation of B and T 
+lymphocytes. This action is similar to azathioprine.
+Use:
+• Management of immune-mediated disease including immune-
+mediated haemolytic anaemia, immune-mediated polyarthritis, 
+immune-mediated skin disease, immune-mediated 
+thrombocytopenia and myasthenia gravis.
+The use of MPA has not been reported in veterinary medicine. 
+Clinical veterinary experience of this drug is limited; however, in 
+humans, mycophenolate is more lymphocyte-specific and less bone 
+marrow suppressive than azathioprine.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents.
+Contraindications: Bone marrow suppression, pre-existing 
+infections.
+Adverse reactions: Bone marrow suppression, nausea,  
+vomiting, diarrhoea and an increased incidence of infections 
+(pyoderma, Malassezia). In humans there is a risk for increased 
+lymphoma associated with its use. In humans, headache, 
+hypertension, peripheral oedema, confusion, coughs and  
+tremours are also reported.
+Drug interactions: Competes with other drugs that undergo 
+active renal tubular secretion resulting in increased concentration of 
+either drug. Concomitant administration of antacids (such as 
+omeprazole) may decrease absorption.
+DOSES
+See Appendix for immunosuppression protocols.
+Dogs:
+• Immune-mediated disease: 8–12 mg/kg (typically 10 mg/kg) 
+p.o., i.v. (give slowly over at least 2 hours) q12h (MMF), the dose 
+can be reduced or given q24h if adverse effects are observed.
+• Pemphigus: 7–13 mg/kg p.o. q8h (MMF).
+Cats: Immune-mediated haemolytic anaemia: 10 mg/kg p.o. q12h 
+based on limited experience. Other immunosuppressants may  
+be preferable.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 295 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+279
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Bacek LM and Macintire DK (2011) Treatment of immune-mediated hemolytic anemia 
+with mycophenolate mofetil in two cats. Journal of Veterinary Emergency and Critical 
+Care 21, 45–49
+Wang A, Smith JR and Creevy KE (2013) Treatment of canine idiopathic immune-
+mediated haemolytic anaemia with mycophenolate mofetil and glucocorticoids: 30 
+cases (2007 to 2011). Journal of Small Animal Practice  54, 399–404
+
+
+===== BSAVA PDF 296 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+280
+Naloxone
+(Naloxone*, Narcan*) POM 
+Formulations: Injectable: 0.02 mg/ml, 0.4 mg/ml solutions.
+Action: Competitive antagonist for opioid receptors, reversing the 
+effects of opioid agonists.
+Use:
+• Treatment of opioid overdose.
+• Also used to identify persistent activity of opioid drugs.
+Onset of action i.v. is very rapid, but duration is short (30–40 min). 
+Repeated doses or an infusion may be required to manage 
+overdose of longer acting opioids such as morphine and 
+methadone or high-dose fentanyl. Naloxone will also antagonize 
+the effects of endogenous opioids; therefore, it can cause 
+antanalgesic effects in opioid naïve subjects. Administration to 
+animals that could be in pain must therefore be considered 
+carefully. Low dose naloxone i.v. will cause a transient elevation of 
+unconsciousness when persistent opioid activity contributes to an 
+unexpectedly long recovery from anaesthesia.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Indiscriminate use in animals that have 
+undergone major surgery or trauma will expose the recipient to acute 
+severe discomfort. In such cases the effects of opioid overdose 
+(respiratory depression) should be managed by endotracheal 
+intubation and artificial ventilation. Naloxone should be reserved for 
+emergency situations when the effects of opioid overdose are severe.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 0.01–0.02 mg/kg i.v.; 0.04 mg/kg i.m., s.c., intratracheal. 
+Naloxone can be administered as a continuous rate infusion at 0.02 
+mg/kg/h i.v. if a longer duration of opioid antagonism is required.
+References
+Golder FJ, Wilson J, Larenza FP et al . (2010) Suspected acute meperidine toxicity in a 
+dog.  Veterinary Anaesthesia and Analgesia  37, 471–477
+Nandrolone
+(Laurabolin, Decadurabolin*) POM-V, POM 
+Formulations: Injectable: 25 mg/ml, 50 mg/ml (in oil).
+Action: Binds to testosterone receptors and stimulates protein 
+synthesis.
+Use:
+• In cases where excessive tissue breakdown or extensive repair 
+processes are taking place.
+• Management of aplastic anaemia.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

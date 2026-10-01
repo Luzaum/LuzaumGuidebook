@@ -1,0 +1,212 @@
+===== BSAVA PDF 29 / impressa 13 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+13
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+useful in companion animals, but may result in temporary sedation. 
+As imepitoin is now licensed for use in the treatment of fears in 
+dogs, if a benzodiazepine is indicated, it is preferable to use this. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: Hypersensitivity to benzodiazepines, 
+glaucoma, significant liver or kidney disease, although appears to be 
+less hepatotoxic than diazepam or clorazepate. Not recommended 
+in pregnant or lactating animals. There is concern over its use with 
+anxiously aggressive animals due to the potential for disinhibition. 
+Adverse reactions: Drowsiness and mild transient incoordination 
+may develop. A general concern with benzodiazepines concerns 
+disinhibition and the subsequent emergence of aggression. 
+Idiosyncratic hepatotoxicity associated with benzodiazepines 
+(largely diazepam, but not alprazolam) has been reported in the cat.
+Drug interactions: Caution is advised if used in association with 
+antifungals such as itraconazole, which inhibit its metabolism.
+DOSES
+Dogs: For anxiolysis an initial dose within the range of 0.01–0.1 mg/
+kg p.o. as needed up to 4 times a day is recommended; the dose can 
+be titrated up or down to the minimum effective dose, which may be 
+below this level. 
+Cats: For anxiolysis an initial dose in the range of 0.125–0.25 mg/kg 
+p.o. as needed up to twice a day is suggested, but doses as low as 
+0.25 mg/cat p.o. q8–12h and as high as 0.6 mg/kg p.o. have been 
+reported. After initial medication, the dose should be titrated down 
+to the minimum effective dose.
+References
+Crowell-Davis SL, Seibert LM, Sung W et al . (2003) Use of clomipramine, alprazolam, and 
+behavior modification for treatment of storm phobia in dogs. Journal of the American 
+Veterinary Medical Association  222, 746–748
+Dale AR, Walker JK, Farnworth MJ et al . (2010) A survey of owners’ perceptions of fear of 
+fireworks in a sample of dogs and cats in New Zealand. New Zealand Veterinary Journal 
+58, 286–291
+Aluminium antacids  
+(Aluminium hydroxide)
+(Alucap*. With alginate: Acidex*, Gastrocote*, 
+Gaviscon Advance*, Peptac*. With magnesium 
+salt: Asilone*, Maalox*, Mucogel*) P, GSL  
+Formulations: Oral: Aluminium hydroxide is available as a dried 
+gel. Other products are composite preparations containing a variety 
+of other compounds including magnesium oxide, hydroxide or 
+trisilicate, potassium bicarbonate, sodium carbonate and 
+bicarbonate, alginates and dimeticone. Aluminium hydroxide 
+content varies.
+
+===== BSAVA PDF 30 / impressa 14 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+14
+Action: Neutralizes gastric acid. May also bind bile acids and pepsin 
+and stimulate local prostaglandin (PGE-1) production. Also binds 
+inorganic phosphate in the GI tract, making it unavailable for 
+absorption.
+Use:
+• Management of gastritis and gastric ulceration. Frequent 
+administration is necessary to prevent rebound acid secretion.
+• In kidney disease, to lower serum phosphate levels in cats and 
+dogs with serum phosphate above recommended target 
+according to IRIS stage. Phosphate-binding agents are usually 
+only used if low-phosphate diets are unsuccessful. Monitor 
+serum phosphate levels at 14–28 day intervals and adjust dosage 
+accordingly if trying to normalize serum concentrations.
+Thoroughly mix the drug with food to disperse it and to increase its 
+palatability.
+Safety and handling: Normal precautions.
+Contraindications: No information available.
+Adverse reactions: Constipation may occur. This is an effect of 
+the aluminium compound and is counteracted by inclusion of a 
+magnesium salt. Hypophosphataemia can develop. Long-term use 
+(many years) of oral aluminium products in humans has been 
+associated with aluminium toxicity and possible neurotoxicity. This is 
+rarely a problem in veterinary medicine but is reported.
+Drug interactions: Do not administer allopurinol, digoxin, 
+fluoroquinolones, gabapentin, H2 antagonists, iron salts, 
+itraconazole, mycophenolate, tetracyclines, or thyroid hormones 
+orally within 2 hours of aluminium salts as their absorption may be 
+impaired.
+DOSES
+Dogs, Cats: All uses: Initially 10–30 mg/kg p.o. q6–8h (tablets) or 
+0.5–1.0 ml/kg (2–30 ml) p.o. q6–8h (gel) with or immediately after 
+meals. Dosages are empirical; none have been properly defined in 
+dogs or cats.
+References 
+Marks SL, Kook PH, Papich MG et al . (2018) ACVIM consensus statement: support for 
+rational administration of gastrointestinal protectants to dogs and cats. Journal of 
+Veterinary Internal Medicine  32, 1823–1840
+Aluminium hydroxide see Aluminium 
+antacids
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 31 / impressa 15 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+15
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Amantadine
+(Lysovir*, Symmetrel*) POM 
+Formulations: Oral: 100 mg capsule; 10 mg/ml syrup.
+Action: Provides analgesia through NMDA antagonist action which 
+may potentiate the effects of other analgesics.
+Use:
+• Adjunctive analgesic in animals that are unresponsive to opioids, 
+or that require chronic pain relief in a home environment (e.g. 
+osteoarthritis or cancer pain).
+• In dogs with osteoarthritis that were refractory to an NSAID 
+physical activity was improved, suggesting that amantadine 
+might be a useful adjunct in the clinical management of canine 
+osteoarthritic pain.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: In humans, minor GI and CNS effects have 
+been reported, although these have not been reported in animals. 
+Amantadine is renally excreted and is likely to accumulate in animals 
+with renal dysfunction and therefore should be used cautiously in 
+this patient population.
+Drug interactions: No information available.
+DOSES
+Dogs: 3.0–5.0 mg/kg p.o. q24h.
+Cats: 1.0–4.0 mg/kg p.o. q24h; start at the lowest dose and increase 
+slowly. This dose recommendation is anecdotal and is not based on 
+evidence from clinical research. 
+References
+Lascelles BD, Gaynor JS, Smith ES et al . (2008) Amantadine in a multimodal analgesic 
+regimen for alleviation of refractory osteoarthritis pain in dogs. Journal of Veterinary 
+Internal Medicine  22, 53–59
+Amethocaine see Tetracaine
+Amikacin
+(Amikacin*, Amikin*) POM 
+Formulations: Injectable: 50 mg/ml, 250 mg/ml solutions.
+Action: Aminoglycosides inhibit bacterial protein synthesis with a 
+concentration-dependent mechanism of killing, leading to a marked 
+post-antibiotic effect, allowing prolonged dosing intervals (which 
+may reduce toxicity).
+Use: Active against many Gram-negative bacteria, Staphylococcus  
+aureus and Nocardia spp., including some that may be resistant to 

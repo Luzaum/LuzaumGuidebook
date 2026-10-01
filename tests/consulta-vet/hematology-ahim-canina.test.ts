@@ -263,7 +263,7 @@ test('valida referencias completas com acervo e consensos vigentes', () => {
   }
 });
 
-test('assegura ausencia absoluta de asteriscos duplos (ZERO **)', () => {
+test('assegura ausencia absoluta de asteriscos duplos (ZERO marcadores duplos)', () => {
   const record = getRecord();
   const json = JSON.stringify(record);
   assert.doesNotMatch(json, /\*\*/, 'A ficha de AHIM nao deve conter asteriscos duplos em nenhum campo.');

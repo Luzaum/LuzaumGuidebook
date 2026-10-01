@@ -1,0 +1,140 @@
+CHAPTER 314
+•
+Prostatic Diseases
+2193
+eBooks.Health.Elsevier.com
+to neoplasia. Aseptic prostatitis is rare. Septic prostatitis, the most 
+common inammatory disease, can be acute or chronic, and may 
+be associated with prostatic abscesses (Figure 314.6).44 Multiple 
+organisms are usually demonstrated in dogs with septic pros-
+tatitis; infection by a single bacterium is uncommon.45 Aerobic 
+organisms are most common, e.g., Escherichia coli, Staphylococcus
+sp., Streptococcus sp., Proteus sp., Pseudomonas spp., Brucella canis, 
+Klebsiella sp. Infections are oen traced to bacteria ascending the 
+urethra. Local dissemination from urogenital organs or hematog-
+enous spread is possible.36 Conditions that reduce normal defence 
+mechanisms or that alter prostatic architecture (BPH, cysts, meta-
+plasia, neoplasia) can predispose to prostatic infection.1 5
+Quantitative cultures of prostatic uid may help in understand-
+ing a positive prostatic uid culture (ch. 104). Denitive diagno-
+sis of infection is made by growth >10,000 bacteria/mL.46 It has 
+been suggested that a 2-log dierence between prostatic and urine 
+colony-forming unit counts is consistent with bacterial prostati-
+tis.47 When semen collection or prostate massage is not possible, 
+US-guided FNA (ch. 85) of parenchyma, cysts, or abscesses usu-
+ally provides adequate material for cytologic analysis, culture, and 
+sensitivity (Figure 314.6). Value of a FNA must be weighed against 
+risk. One can drain a cystic or abscess cavity completely to reduce 
+risk of leakage into the abdomen. Cysts, especially those with urine, 
+can become infected secondary to prostatitis.
+ACUTE PROSTATITIS (AP)
+Common Signs, Physical Examination
+A presumptive diagnosis of AP should be based on the history, 
+signs (Box 314.2), PE, laboratory ndings, urine culture results, 
+and prostatic imaging. AP may be conrmed with prostatic cyto-
+logic examination of slides from aspirates, and bacterial culture 
+(ch. 104).45 Common clinical signs include fever, anorexia, leth-
+argy, vomiting, caudal abdominal pain, diculty rising, painful 
+sti gait, low sperm quality, poor libido, and subfertility. Some 
+dogs have signs of peritonitis or septic shock (ch. 128). Hema-
+tospermia, pyospermia, hematuria, pyuria, and/or a constant or 
+intermittent urethral discharge may be observed. Signs of prosta-
+titis may hide signs or evidence of other prostatic disorders. On 
+PE, the prostate can be rm, painful, normal or large in size and 
+shape, and can feel asymmetric with an irregular surface; uctu-
+ant areas may be palpated if there are cysts or abscesses.
+Test Results
+Neutrophilic leukocytosis with le shi, increased alkaline phos-
+phatase activity, hematuria, and bacteriuria are common. On US, 
+prostatic parenchyma and the surrounding tissues may appear 
+diusely or focally hypoechoic. Sublumbar lymphadenopathy can 
+be present. Focal hypoechoic lesions can develop into abscesses. 
+Evidence of BPH, mineralization, cysts, or abscesses can be 
+observed with US. Cytologic evaluation of prostatic samples (uid 
+or tissue) show neutrophilia, usually with degenerative changes 
+and sometimes with intracellular bacteria. If present, prostatic 
+cells may be normal or damaged (Figure 314.4).
+CHRONIC PROSTATITIS (CP)
+Presumptive diagnosis of CP should be based on the history, signs 
+(Box 314.2), and PE. Laboratory ndings are usually unremark-
+able; urinalysis may reveal pyuria, hematuria, and/or bacteriuria. 
+Cytologic evaluation of prostatic samples, culture and sensitivity 
+results can conrm a diagnosis (ch. 104). CP is oen subclinical. 
+Signs, when present, include mild lethargy, urethral discharge, 
+and poor semen quality. Many dogs with CP have recurrent uri-
+nary tract infections (ch. 307)1 and hypo/infertility. e prostate 
+is not usually painful; is usually rm, with an irregular surface; 
+and its size and shape can be normal or small. On US, focal or dif-
+fuse increases in prostatic echogenicity are oen observed, areas 
+of mineralization may be present, surrounding tissue appears 
+normal. Cytologic evaluation of prostatic samples (uid or tissue) 
+usually shows macrophages, plasma cells, lymphocytes,48 and few 
+prostatic cells. Presence of bacteria varies (Figure 314.4).
+PROSTATIC ABSCESSATION (PA)
+PA can occur as a primary condition, but more frequently as a 
+sequela to AP. PA has also been associated less frequently in dogs 
+with squamous prostatic metaplasia or neoplasia. PA can be sus-
+pected from the history, clinical signs (Box 314.2), and PE. Neu-
+trophilic leukocytosis is common with inammation, sepsis, and/
+or endotoxemia. PA can be conrmed with US, and prostatic 
+cytology (Figure 314.4), culture, and sensitivity results (ch. 104). 
+Clinical signs, similar to those of AP, may be complicated by tenes-
+mus and dysuria when large abscesses compress the colon and/or 
+Clinical Signs of Prostate Diseases
+Benign Prostatic Hyperplasia (BPH)
+Blood dripping from prepuce (due to increased prostatic vasculariza-
+tion) +++
+Hematospermia (st and rd fraction), hematuria ++
+Subfertility (no offspring or small litters) +
+With large prostate/large cysts:
+Tenesmus (with thin, tape-shaped feces), constipation, dyschezia ++
+Dysuria, urinary incontinence +
+Acute Prostatitis
+Fever, anorexia, lethargy, vomiting, caudal abdominal pain, diffi-
+culty rising, painful stiff gait, low sperm quality, poor libido, 
+subfertility +++
+Hematospermia, pyospermia, hematuria, pyuria, urethral discharge 
+++
+Dysuria, tenesmus, peritonitis/septic shock +
+Chronic Prostatitis
+Subclinical +++
+Recurrent urinary tract infection, low sperm quality, hypo/infertility 
+++
+Mild lethargy, urethral discharge +
+Prostatic Abscess
+Fever, anorexia, lethargy, vomiting, caudal abdominal pain, difficult 
+rising, painful stiff gait, low sperm quality, poor libido, subfertil-
+ity +++
+Hematospermia, pyospermia, hematuria, pyuria, urethral discharge, 
+dysuria and tenesmus (due to compression caused by abscess), 
+peritonitis/septic shock ++
+Squamous Metaplasia
+Feminization syndrome: nonpruritic symmetric alopecia, skin 
+hyperpigmentation, gynecomastia, penis sheath ptosis and ery-
+thema +++
+Prostatitis signs +++
+Attracting males ++
+Neoplasia
+No pathognomonic signs: lameness, painful prostate, stiff gait, cau-
+dal abdominal pain, paresis of the hind limbs, lethargy, weight 
+loss +++
+Symptoms of other prostatic disorders ++
+BOX 314.2
++++, Frequent; ++, possible; +, uncommon.
+
+SECTION XXI
+•
+Lower Urinary Tract Disease
+2194
+eBooks.Health.Elsevier.com
+A
+C
+D
+B
+E
+F
+G
+Figure 314.4
+Cytological images of: benign prostatic hyperplasia (ne needle aspiration [FNA], 200×) (A), retention cyst (FNA, 400×) (B), prostatic 
+abscess (FNA, 400×) (C), acute prostatitis (prostatic massage, 400×) (D), prostatic neoplasia, (FNA, 200×) (E), prostatic metaplasia (prostate, FNA, 
+400×). Both F and G are samples from dogs with prostatic metaplasia; F is from a FNA, 400× and G is from a preputial swab, 400×.

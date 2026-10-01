@@ -1,0 +1,250 @@
+Chlorambucil      243
+potassium chloride 35 mg/mL gel/paste in 80 mL and 300 mL; D-Tox-
+Besc®, Activated Charcoal Gel with Electrolytes®; (OTC). Labeled for 
+use in small and large animal species
+Activated hardwood charcoal and thermally activated attapulgite 
+clay (concentrations not labeled) in an aqueous gel suspension in 8 fl 
+oz bottle, 60 mL tube, and 300 mL tube with easy dose syringe; UAA® 
+(Universal Animal Antidote) Gel; (OTC). Labeled for use in dogs and 
+cats and for grain overload in ruminants
+HUMAN-LABELED PRODUCTS:
+Activated charcoal oral powder: 15 g, 30 g, 40 g, 120 g, 240 g, and UD 
+30 g; generic; (OTC)
+Activated charcoal oral liquid/suspension with sorbitol: 25 g in 
+120 mL and 50 g in 240 mL; Actidose® with Sorbitol, generic; (OTC)
+Activated charcoal liquid/suspension without sorbitol: 208 mg/mL 
+to 12.5 g in 60 mL, 15 g in 72 mL, 25 g in 120 mL, and 50 g in 240 
+mL; Actidose-Aqua®, generic; (OTC)
+Activated charcoal oral granules: 25 g; EZ Char®; (OTC)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Chlorambucil
+(klor-am-byoo-sil)  Leukeran®
+Antineoplastic, Immunosuppressant 
+Prescriber Highlights
+	
+▶Nitrogen mustard derivative antineoplastic and immunosup-
+pressant in dogs, cats, and horses
+	
+▶Caution: Pre-existing bone marrow depression or infection
+	
+▶Adverse effects: Primarily myelosuppression and GI toxicity
+	
+▶Known teratogen; National Institute for Occupational Safety 
+and Health (NIOSH) hazardous drug; use appropriate precau-
+tions when handling.
+Uses/Indications
+Chlorambucil may be useful as part of multidrug protocols in a va-
+riety of neoplastic diseases, including lymphocytic leukemia, T-cell 
+lymphoma,1 GI lymphoma,2,3 multiple myeloma, lymphangiosarco-
+ma,4 mast cell tumor,5 cutaneous plasmacytosis, polycythemia vera, 
+macroglobulinemia, and ovarian adenocarcinoma. Chlorambucil 
+may also be used as a solo metronomic agent for some neoplasias 
+(eg, hemangiosarcoma, transitional cell carcinoma).6,7 It may also be 
+useful as adjunctive therapy for some immune-mediated conditions 
+(eg, inflammatory bowel disease, nonerosive arthritis, immune- 
+mediated hemolytic anemia, immune-mediated skin disease).8,9
+Pharmacology/Actions
+Chlorambucil is an aromatic nitrogen mustard derivative and an al-
+kylating antineoplastic agent. Its chemical reactivity is nonspecific, 
+but the primary cytotoxic effect is due to alkylation of cancer cell 
+DNA strands resulting in cross-linking and cellular apoptosis. Im-
+munosuppressive effects may not be noted until 2 to 4 weeks after 
+starting the drug.
+Acquired resistance to chlorambucil has been reported and is 
+thought to be caused by several mechanisms.10 
+Pharmacokinetics
+Chlorambucil is rapidly and completely absorbed after oral ad-
+ministration, reaching Cmax in ≈1 hour. It is highly bound to plas-
+ma proteins. Although it is unknown if chlorambucil crosses the 
+blood–brain barrier, neurologic adverse effects have been reported. 
+Chlorambucil is extensively metabolized in the liver primarily to the 
+active metabolite phenylacetic acid mustard. Phenylacetic acid mus-
+tard is further metabolized to other metabolites that are excreted in 
+the urine. Terminal half-life is 1.5 hours in humans.
+Contraindications/Precautions/Warnings
+Chlorambucil is contraindicated in patients with a history of hyper-
+sensitivity to it or other alkylating agents. It should be used with cau-
+tion in patients with pre-existing bone marrow depression, patients 
+susceptible to bone marrow depression (including patients receiving 
+long-standing maximum-tolerated dose chemotherapy), or patients 
+that have an active systemic infection. Because chlorambucil is he-
+patically metabolized, use with caution in patients with hepatic im-
+pairment.
+Because chlorambucil is a chemotherapy agent with potential 
+to cause teratogenic effects, proper and safe handling methods are 
+recommended to reduce personal and occupational exposure.11 The 
+National Institute for Occupational Safety and Health (NIOSH) clas-
+sifies chlorambucil as a hazardous drug.12 
+Adverse Effects
+The most common major adverse effect associated with chlorambu-
+cil therapy is myelosuppression (eg, anemia, leukopenia, thrombo-
+cytopenia). Myelosuppression may occur gradually, with nadirs oc-
+curring within 7 to 14 days of the start of therapy. Recovery generally 
+takes from 7 to 14 days. Severe bone marrow depression, an uncom-
+mon adverse effect occurring more often with prolonged (months to 
+years) therapy, can result in pancytopenia that may require months 
+to years for recovery. GI toxicity (eg, vomiting, diarrhea) is more 
+common with higher (20 mg in humans) pulse doses. Hepatotoxici-
+ty was noted in 23% of dogs in one study.5 Alopecia and delayed re-
+growth of shaven hair have been reported in dogs; breeds with a con-
+tinuously growing hair coat (eg, poodles, terriers, Afghan hounds, 
+old English sheepdogs) are more likely to experience significant hair 
+loss. Lower-dose metronomic therapy (4 mg/m2 [NOT mg/kg] once 
+daily) in dogs is associated with a lower incidence of adverse effects. 
+One study that evaluated several metronomic dose schedules found 
+that dogs receiving 6 mg/m2 (NOT mg/kg) once daily and 8 mg/m2 
+(NOT mg/kg) once daily were at higher risk for adverse effects (GI 
+and hematologic) as compared with dogs that received 4 mg/m2 
+(NOT mg/kg) once daily. In addition, higher dosages of metronomic 
+chlorambucil did not improve tumor response.13
+One case report of neurotoxicity (eg, facial twitching, myoclonus, 
+agitation, seizures) in a cat has been reported.14 In addition, acquired 
+Fanconi syndrome has been reported in 4 cats receiving chloram-
+bucil and corticosteroids. Partial or complete resolution of Fanconi 
+syndrome was seen in 3 of 4 cats within 3 months of discontinuing 
+chlorambucil therapy.15 In another report, chlorambucil was sus-
+pected of causing seizures in a dog.16
+In humans, skin reactions that may progress to erythema multi-
+forme or toxic epidermal necrolysis have been reported rarely. Bron-
+chopulmonary dysplasia with pulmonary fibrosis, neurotoxicity, uric 
+acid nephropathy, and hepatotoxicity have also been reported. Sec-
+ondary malignancies may occur.
+Reproductive/Nursing Safety
+Chlorambucil has been documented to cause teratogenic effects in 
+laboratory animals. Use during pregnancy only when the benefits to 
+the dam outweigh the potential risks. In humans, chlorambucil has 
+caused prolonged or permanent azoospermia in men, amenorrhea 
+in women, and both reversible and irreversible infertility, particular-
+ly when given during pre-puberty and puberty. 
+It is unknown whether chlorambucil enters maternal milk. In 
+humans, it is recommended to discontinue nursing if the mother is 
+receiving the drug.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+
+244      Chlorambucil
+Overdose/Acute Toxicity
+The oral LD50 of chlorambucil in rats and mice is 76 mg/kg and 80 
+mg/kg, respectively. Experiences with acute overdoses in humans 
+have been limited, but doses of up to 5 mg/kg resulted in neuro-
+logic (seizures) toxicity and pancytopenia (nadirs at 1 to 6 weeks 
+postingestion). All patients recovered without long-term sequelae. 
+Supportive treatment and gut emptying protocols are recommend-
+ed following an overdose but beware of rapidly changing neurologic 
+status if inducing vomiting. CBC should be monitored for several 
+weeks following an overdose, and blood component therapy may be 
+necessary. Chlorambucil is not dialyzable.
+For patients that have experienced or are suspected to have ex-
+perienced an overdose, consultation with a 24-hour poison center 
+specializing in providing veterinary-specific information is recom-
+mended. For general information related to overdose and toxin ex-
+posures, as well as contact information for poison control centers, 
+refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving chlorambucil and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+	■Myelosuppressive Agents (eg, antineoplastics, immuno-
+suppressants, iron chelators): Concurrent use with other bone 
+marrow depressant medications may result in additive myelosup-
+pression; avoid combination when possible.
+	■Vaccines (live and inactivated): Chlorambucil may diminish 
+vaccine efficacy and enhance adverse effects of vaccines.
+Laboratory Considerations
+	■Chlorambucil may raise serum uric acid concentrations. Drugs 
+such as allopurinol may be required to control hyperuricemia in 
+some patients.
+Dosages
+NOTE: Because of the potential toxicity of this drug to patients, 
+veterinary personnel, and clients, and because chemotherapy indi-
+cations, treatment protocols, monitoring, and safety guidelines often 
+change, the following dosages should be used only as a general guide. 
+Consultation with a veterinary oncologist and referral to current vet-
+erinary oncology references17-21 are strongly recommended.
+WARNINGS: 
+1.	 Chlorambucil dosages are commonly based on surface area 
+(mg/m2). Do not confuse with citations that list dosages in 
+mg/kg. Commercial tablet size (2 mg) may make precise dos-
+ing difficult without compounding. 
+2.	 Tablets should not be crushed, split, or formulated into a 
+liquid, unless adequate environmental, personal, and occu-
+pational exposure can be safeguarded.
+ DOGS:
+Immunosuppressive agent (extra-label): Commonly dosed at 
+1.95 – 4.5 mg/m2 (NOT mg/kg) once daily. Dosages are generally 
+rounded to the nearest 2 mg. Following remission, chlorambucil 
+has been dosed every other day for maintenance.8 Use lowest dos-
+age that will control condition. Often used in conjunction with 
+prednisolone
+Inflammatory colorectal polyps (extra-label): Consider in dogs 
+with inflammatory colorectal polyps that do not respond well to 
+traditional therapies (based on a retrospective study of 6 dachs-
+hunds): average chlorambucil initial dose: 2 mg/m2 (NOT mg/kg) 
+PO once daily used in combination with EITHER prednisolone 
+0.47 mg/kg PO once daily OR firocoxib 6.2 mg/kg PO daily (aver-
+age). A positive response was seen in 5 of 6 dogs.22
+Antineoplastic agent (metronomic) (all are extra-label):
+a)	Chronic lymphocytic leukemia: 3 – 6 mg/m2 (NOT mg/kg) 
+PO every day for 1 to 2 weeks, then decrease to 3 – 6 mg/m2 
+(NOT mg/kg) PO every other day as determined by routine 
+hematologic screening and cancer response.23 Concurrently 
+with chlorambucil, prednis(ol)one can be used at a dosage of 
+1 mg/kg PO every day for 1 to 2 weeks, then 0.5 mg/kg PO 
+every other day thereafter.
+b)	Mast cell tumor: 4 – 6 mg/m2 (NOT mg/kg) PO every 48 
+hours for 8 weeks. Chlorambucil treatment followed 3 or 4 
+sessions of lomustine 60 – 90 mg/m2 (NOT mg/kg) every 21 
+days.5
+c)	Lymphoma and other lymphoreticular neoplasia OR as 
+a substitute for cyclophosphamide in the COP or CHOP 
+protocol if sterile hemorrhagic cystitis occurs: 1.4 mg/kg 
+PO once on the same schedule as cyclophosphamide, in sub-
+stitute of cyclophosphamide23
+d)	Metronomic chemotherapeutic agent (eg, hemangiosar-
+coma, transitional cell carcinoma) (extra-label): 4 mg/m2 
+(NOT mg/kg) PO once daily. For dogs weighing more than 
+8 kg (17.6 lb), the dose is rounded to the nearest 2 mg; for 
+dogs weighing less than or equal to 8 kg (17.6 lb), the dose is 
+compounded to 4 mg/m2 (NOT mg/kg).6,7 
+CATS:
+Immunosuppressive agent (extra-label): Chlorambucil is gener-
+ally considered a second-line immunosuppressant (after gluco-
+corticoids) in cats and often used in conjunction with prednis-
+olone. Anecdotal chlorambucil dosing recommendations vary 
+and the commercial tablet size (2 mg) may make precise dosing 
+difficult without compounding. For immune-mediated condi-
+tions, chlorambucil is commonly dosed initially at 0.1 – 0.2 mg/kg 
+(≈1.5 – 4 mg/m2 PO once daily). If using the entire 2 mg tablet, 
+chlorambucil is dosed in a practical manner every 48 hours for 
+cats weighing more than 4 kg (8.8 lb) and every 72 hours for cats 
+weighing less than 4 kg (8.8 lb). Once remission occurs, the dose 
+is reduced or the dosing interval (often every 3 to 4 days) is ex-
+tended to an interval that still controls the condition.
+Low-grade GI lymphoma; chronic lymphocytic leukemia (ex-
+tra-label): Several protocols using chlorambucil with predniso-
+lone have had a relatively high degree of efficacy, including:
+a)	 Chlorambucil 15 mg/m2 (NOT mg/kg) PO once daily for 
+4 days repeated every 3 weeks, and prednisolone initially at 
+3 mg/kg PO once daily24
+b)	 Chlorambucil 20 mg/m2 (NOT mg/kg) (rounded to nearest 
+2 mg) PO once every 2 weeks and prednisolone 2 mg/kg PO 
+once daily25
+c)	 Chlorambucil 2 mg/cat (NOT mg/m2 or mg/kg) PO every 2 to 
+3 days (48-72 hours) and prednisolone 5 – 10 mg PO every 12 
+to 24 hours26
+HORSES:
+Adjunctive therapy in treating lymphoma using the LAP pro-
+tocol (extra-label): Cytarabine 200 – 300 mg/m2 (NOT mg/kg) 
+SC or IM once every 1 to 2 weeks; chlorambucil 20 mg/m2 (NOT 
+mg/kg) PO every 2 weeks (alternating with cytarabine) and 
+prednisone 1.1 – 2.2 mg/kg PO every other day. If this protocol 
+is ineffective (no response seen in 2-4 weeks), add vincristine at 
+0.5 mg/m2 (NOT mg/kg) IV once weekly.27 
+FERRETS:
+Adjunctive therapy in treating lymphoma (extra-label): As part 
+of a multiagent protocol, 2 mg total dose (NOT mg/kg) PO in 
+weeks 11 and 20 of a 20-week protocol

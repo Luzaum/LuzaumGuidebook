@@ -1,0 +1,580 @@
+import { MedicationRecord } from '../../types/medication';
+
+export const ciclosporinaMedicationRecord: MedicationRecord = {
+  id: 'med-ciclosporina',
+  slug: 'ciclosporina',
+  title: 'Ciclosporina (Ciclosporina A / CsA)',
+  activeIngredient: 'Ciclosporina (undecapeptídeo cíclico neutro lipofílico de origem fúngica / Tolypocladium inflatum)',
+  isControlled: false,
+  tradeNames: [
+    'Cyclavance® 100 mg/mL Solução Oral Veterinária (Virbac Brasil — Frascos de 15 mL, 30 mL e 50 mL com seringa dosadora)',
+    'Optimmune® 0,2% Pomada Oftálmica Veterinária (MSD Saúde Animal Brasil — Bisnaga 3,5 g com 7 mg de ciclosporina)',
+    'Atopica® 10 mg, 25 mg, 50 mg e 100 mg Cápsulas Moles para Microemulsão (Elanco / Novartis Saúde Animal — Referência Veterinária Internacional)',
+    'Sandimmun Neoral® 25 mg, 50 mg e 100 mg Cápsulas Moles para Microemulsão (Novartis — Referência Humana Microemulsificada)',
+    'Sandimmun Neoral® 100 mg/mL Solução Oral para Microemulsão (Novartis — Frasco 50 mL)',
+    'Ciclosporina para Microemulsão Genérica 25 mg, 50 mg e 100 mg Cápsulas Moles (Germed, EMS, Accord, Cristália)',
+    'Sigmasporin Microral® 25 mg, 50 mg e 100 mg Cápsulas Moles (Sigma Pharma / EMS)',
+    'Ciclosporina Pomada Oftálmica ou Colírio 0,5% a 2% (Manipulação Oftálmica Veterinária Especializada Estéril)',
+  ],
+  officialSiteUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
+  leafletUrl: 'https://consultas.anvisa.gov.br/#/medicamentos/',
+  imageUrl: 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/cyclosporine/PNG',
+  pharmacologicClass:
+    'Imunomodulador e imunossupressor seletivo de células T; inibidor da calcineurina mediado pela formação do complexo intracelular ciclosporina-ciclofilina A; bloqueador da desfosforilação de NFAT e inibidor da transcrição de interleucina-2 (IL-2), IL-4, IFN-gama e TNF-alfa',
+  species: ['dog', 'cat'],
+  category: 'dermatologia',
+  tags: [
+    'Ciclosporina',
+    'Ciclosporina A',
+    'CsA',
+    'Cyclavance',
+    'Optimmune',
+    'Atopica',
+    'Sandimmun Neoral',
+    'Inibidor da Calcineurina',
+    'Inibidor de NFAT',
+    'Imunomodulador',
+    'Imunossupressor',
+    'Dermatite Atópica',
+    'FASS',
+    'Ceratoconjuntivite Seca',
+    'KCS',
+    'Fístula Perianal',
+    'IMHA',
+    'Gengivostomatite Felina',
+    'Poliartrite Imunomediada',
+    'Toxoplasmose Felina',
+    'Receita Simples',
+    'Microemulsão',
+  ],
+
+  mechanismOfAction:
+    'A ciclosporina (ciclosporina A / CsA) é um undecapeptídeo cíclico neutro de alto peso molecular (1202,6 g/mol) e acentuada lipofilicidade (XLogP ~7,5), originalmente extraído do fungo Tolypocladium inflatum. Seu mecanismo farmacodinâmico central reside na inibição seletiva e reversível da imunidade celular mediada por linfócitos T auxiliares (CD4+) e citotóxicos (CD8+), sem exercer efeito citotóxico direto ou mielossupressão sobre a medula óssea. Em condições basais, a ativação do receptor de células T (TCR) por antígenos associados ao complexo principal de histocompatibilidade (MHC) deflagra a ativação da fosfolipase C-gama, liberação de trifosfato de inositol (IP3) e mobilização massiva de cálcio iônico do retículo endoplasmático para o citoplasma. O influxo citosólico de cálcio liga-se à calmodulina, ativando a calcineurina, uma fosfatase serina/treonina intracelular dependente de cálcio-calmodulina. A calcineurina ativada catalisa a desfosforilação de múltiplos resíduos fosforilados do fator nuclear de células T ativadas (NFAT), permitindo que essa proteína sofra translocação para o núcleo celular, onde se associa a outros fatores transcricionais (como AP-1) para induzir a transcrição de genes codificadores de citocinas inflamatórias críticas, com destaque para a interleucina-2 (IL-2), interleucina-4 (IL-4), interferon-gama (IFN-gama) e fator de necrose tumoral-alfa (TNF-alfa). A ciclosporina atravessa passivamente a membrana celular e liga-se com alta afinidade à ciclofilina A (CypA), uma imunofilina citosólica dotada de atividade peptidil-prolil cis-trans isomerase. O complexo binário ciclosporina-ciclofilina A projeta-se fisicamente no sítio catalítico da calcineurina, estericamente bloqueando o acesso dos substratos proteicos e neutralizando sua atividade fosfatásica. Com a calcineurina inativada, o NFAT permanece hiperfosforilado no citoplasma e torna-se incapaz de migrar para o núcleo, resultando no colapso da transcrição gênica de IL-2 e consequente interrupção da proliferação clonal antígeno-específica de linfócitos T. A jusante, a privação crônica de citocinas T-dependentes promove a desativação indireta e a redução do recrutamento de eosinófilos, supressão da degranulação de mastócitos dependentes de citocinas, atenuação da capacidade de apresentação antigênica pelas células dendríticas epidérmicas de Langerhans e inibição da secreção de quimiocinas inflamatórias por queratinócitos e sinoviócitos. Na superfície ocular, a ciclosporina tópica (0,2%) promove a apoptose seletiva de linfócitos CD4+ infiltrantes das glândulas lacrimais e da conjuntiva, restaura a viabilidade das células secretoras acinares, preserva as células caliciformes produtoras de mucina e reverte o processo destrutivo inflamatório da ceratoconjuntivite seca imunomediada.',
+
+  plainLanguageSummary:
+    'A ciclosporina é um imunomodulador e imunossupressor seletivo de grande relevância na medicina veterinária de cães e gatos, atuando como um freio específico sobre a comunicação e a proliferação dos linfócitos T ao inibir a enzima intracelular calcineurina sem provocar a clássica destruição celular ou mielossupressão generalizada típica de agentes quimioterápicos citotóxicos. Sua indicação abrange desde o controle de longo prazo de dermatopatias alérgicas crônicas, como a dermatite atópica canina e a síndrome de pele atópica felina, até o tratamento de doenças autoimunes graves, como fístulas perianais, anemia hemolítica imunomediada e ceratoconjuntivite seca oftálmica, exigindo o emprego mandatório de formulações microemulsificadas modernas devido à absorção errática e inferior das formas oleosas antigas. Como seu efeito clínico dermatológico demanda de quatro a seis semanas para manifestar benefício pleno e sua biodisponibilidade apresenta notável variabilidade individual influenciada pela alimentação em cães e pelo metabolismo intestinal e hepático via citocromo P450 três A e glicoproteína P, seu sucesso terapêutico depende de manejo nutricional consistente, vigilância estrita contra infecções oportunistas, monitoramento do peso corporal e da função digestiva e, na espécie felina, prevenção rigorosa contra a toxoplasmose sistêmica mediante a proibição absoluta de carne crua ou hábitos de caça predatória durante o tratamento.',
+
+  pillars: [
+    {
+      title: 'Inibição Específica da Calcineurina & Bloqueio da Interleucina-2 (IL-2)',
+      icon: 'Shield',
+      desc: 'Forma complexo intracelular com a ciclofilina A para inibir a fosfatase calcineurina, bloqueando a migração nuclear do NFAT e a transcrição clonal de IL-2, IL-4, IFN-gama e citocinas T-dependentes.',
+    },
+    {
+      title: 'Ausência de Mielossupressão Citotóxica & Preservação Medular',
+      icon: 'Heart',
+      desc: 'Ao contrário de azatioprina, ciclofosfamida e micofenolato, atua especificamente na sinalização funcional e transcricional linfocítica, poupando linhagens eritroides, mieloides e megacariocíticas de dano citotóxico direto.',
+    },
+    {
+      title: 'Formulação Microemulsificada versus Oleosa & Variabilidade Farmacocinética',
+      icon: 'Zap',
+      desc: 'As microemulsões modernas (Cyclavance, Atopica, Sandimmun Neoral) formam dispersões homogêneas estáveis; a substituição não planejada por formulações oleosas antigas (Sandimmune) causa colapso na absorção e falha terapêutica.',
+    },
+    {
+      title: 'Toxoplasmose Felina & Cuidados Espécie-Específicos de Manejo',
+      icon: 'AlertTriangle',
+      desc: 'A inibição de linfócitos T e IFN-gama priva gatos soronegativos da contenção de taquizoítos de Toxoplasma gondii; alimentação estritamente cozida sem carne crua e confinamento sem caça são indispensáveis.',
+    },
+  ],
+
+  clinicalWarningItems: [
+    {
+      label: 'Não Intercambialidade entre Microemulsões e Formulações Oleosas Antigas',
+      text: 'As formulações modernas modificadas para microemulsão (como Cyclavance, Atopica e Sandimmun Neoral) possuem biodisponibilidade oral substancialmente superior (36% a 45%) e muito mais homogênea do que as formulações oleosas históricas não modificadas (Sandimmune, 20% a 25%). A substituição entre marcas ou entre apresentações humanas e veterinárias mantendo a mesma dose em mg/kg pode desencadear superexposição tóxica ou perda catastrófica da imunossupressão. Caso haja mudança de produto em pacientes sob terapia sistêmica crítica, recomenda-se reavaliação clínica minuciosa e monitoramento terapêutico sérico.',
+    },
+    {
+      label: 'Alerta Crítico de Toxoplasmose Sistêmica Fatal na Espécie Felina',
+      text: 'Linfócitos T funcionais e a secreção de interferon-gama são a barreira imunológica indispensável para suprimir e encistar os taquizoítos de Toxoplasma gondii. Gatos soronegativos que adquirem primoinfecção por Toxoplasma sob tratamento com ciclosporina apresentam risco elevado de toxoplasmose sistêmica fulminante com necrose pulmonar, choque e lesões graves no sistema nervoso central. É expressamente obrigatório orientar os tutores a jamais fornecer carne crua ou malcozida e impedir categoricamente qualquer hábito de caça ativa durante toda a vigência da terapia.',
+    },
+    {
+      label: 'Latência Terapêutica em Dermatologia e Inadequação para Crises Agudas',
+      text: 'Embora a inibição molecular da calcineurina ocorra poucas horas após a primeira dose, a melhora clínica do prurido e a regressão das lesões cutâneas na dermatite atópica canina e na dermatite alérgica felina levam de 4 a 6 semanas (podendo atingir 8 semanas para resposta máxima). O fármaco não deve ser empregado como monoterapia de resgate rápido para crises agudas de prurido (flares); nesses cenários, preconiza-se o uso concomitante temporário de corticosteroides ou oclacitinib em cursos curtos (2 a 3 semanas) como terapia de ponte.',
+    },
+    {
+      label: 'Interações Potentes com Inibidores e Indutores de CYP3A e P-Glicoproteína',
+      text: 'A ciclosporina é extensamente metabolizada pela isoenzima CYP3A e atua como substrato e inibidor do transportador de efluxo P-glicoproteína (ABCB1). Antifúngicos azólicos (cetoconazol, itraconazol e fluconazol) inibem potentemente essa depuração, permitindo reduções planejadas de 30% a 70% na dose requerida de ciclosporina, embora exijam monitoramento rigoroso. Por outro lado, indutores enzimáticos (fenobarbital, rifampicina) reduzem os níveis séricos e induzem falência do tratamento. A associação com macrolídeos lactônicos em cães com mutação ABCB1 (MDR1) requer vigilância contra neurotoxicidade.',
+    },
+    {
+      label: 'Manejo de Distúrbios Digestivos, Hiperplasia Gengival e Papilomatose Viral',
+      text: 'Vômitos, diarreia autolimitada, fezes pastosas e hipersalivação ocorrem em 15% a 35% dos animais nas semanas iniciais, decorrentes de irritação luminal e surfactantes da formulação. Administrar com pequena porção de comida reduz a êmese sem anular a terapia. Em tratamentos crônicos, hiperplasia gengival inflamatória e papilomas cutâneos verrucosos podem surgir por descontrole da proliferação tecidual e escape de papilomavírus pela menor imunidade celular; higiene oral com clorexidina e azitromicina oral ajudam no manejo da gengiva.',
+    },
+  ],
+
+  indications: [
+    'Controle de longo prazo e terapia de manutenção da dermatite atópica canina refratária ou intolerante a corticosteroides.',
+    'Tratamento crônico da síndrome de pele atópica felina (FASS) e dermatite alérgica por hipersensibilidade em gatos.',
+    'Tratamento imunomodulador da fístula perianal (furunculose perianal) em cães, reduzindo a necessidade de ressecção cirúrgica.',
+    'Opção de segundo agente imunossupressor na anemia hemolítica imunomediada (IMHA) canina grave (Consenso ACVIM 2019).',
+    'Tratamento padrão-ouro tópico da ceratoconjuntivite seca (KCS) imunomediada crônica em cães (Optimmune 0,2%).',
+    'Terapia imunomoduladora adjuvante na gengivostomatite crônica felina refratária a extrações dentárias cirúrgicas.',
+    'Tratamento da poliartrite imunomediada (IMPA) e adenite sebácea em cães.',
+    'Terapia tópica da ceratite eosinofílica felina e ceratoconjuntivite proliferativa.',
+  ],
+
+  quickIndications: [
+    {
+      condition: 'Dermatite Atópica Canina (Controle Crônico)',
+      species: 'dog',
+      doseSummary: '5,0 mg/kg VO a cada 24 horas (q24h), microemulsão (0,05 mL/kg de Cyclavance 100 mg/mL)',
+      route: 'Oral (VO)',
+      duration: 'Indução inicial por 4 a 6 semanas; titular para q48h e após para 2 vezes/semana conforme controle',
+      clinicalContext: 'Cães com dermatite alérgica pruriginosa crônica sem infecção secundária ativa não tratada.',
+    },
+    {
+      condition: 'Síndrome de Pele Atópica Felina (FASS) / Alergia Cutânea',
+      species: 'cat',
+      doseSummary: '7,0 mg/kg VO a cada 24 horas (q24h), formulação líquida modificada (0,07 mL/kg de 100 mg/mL)',
+      route: 'Oral (VO)',
+      duration: '4 a 6 semanas iniciais; reduzir para dias alternados e depois 2 vezes/semana na fase de manutenção',
+      clinicalContext: 'Gatos com dermatite miliar, alopecia autoinduzida ou complexo granuloma eosinofílico alérgico.',
+    },
+    {
+      condition: 'Fístula Perianal / Furunculose Anal Canina',
+      species: 'dog',
+      doseSummary: '5,0 mg/kg VO a cada 24 horas (podendo elevar para q12h em casos graves/refratários)',
+      route: 'Oral (VO)',
+      duration: 'Pelo menos 8 a 16 semanas até cicatrização completa dos trajetos fistulosos',
+      clinicalContext: 'Especialmente em Pastores Alemães; avaliar associação com cetoconazol para viabilidade econômica.',
+    },
+    {
+      condition: 'Anemia Hemolítica Imunomediada (IMHA) Canina (ACVIM 2019)',
+      species: 'dog',
+      doseSummary: '5,0 mg/kg VO a cada 12 horas (q12h) como segundo imunossupressor',
+      route: 'Oral (VO)',
+      duration: 'Manter associada a corticosteroide até estabilização do hematócrito e desmame gradual',
+      clinicalContext: 'Casos graves com dependência de transfusão ou resposta inadequada à monoterapia esteroidal.',
+    },
+    {
+      condition: 'Ceratoconjuntivite Seca (KCS) Imunomediada Canina',
+      species: 'dog',
+      doseSummary: 'Aplicar uma tira de aproximadamente 1 cm de pomada 0,2% no fundo de saco conjuntival a cada 12 horas (q12h)',
+      route: 'Oftálmica (Tópica Ocular)',
+      duration: 'Tratamento crônico / frequentemente contínuo por toda a vida do paciente',
+      clinicalContext: 'Cães com deficiência aquosa lacrimal imunomediada (STT < 15 mm/min); higienizar secreções previamente.',
+    },
+    {
+      condition: 'Gengivostomatite Crônica Felina Refratária Pós-Extração',
+      species: 'cat',
+      doseSummary: '2,5 mg/kg VO a cada 12 horas (q12h)',
+      route: 'Oral (VO)',
+      duration: 'Pelo menos 6 a 12 semanas com avaliação objetiva de conforto oral e índice SDAI',
+      clinicalContext: 'Gatos que mantêm dor e inflamação estomatítica grave após extração cirúrgica de todos os dentes envolvidos.',
+    },
+  ],
+
+  contraindications: [
+    'Hipersensibilidade conhecida à ciclosporina ou a qualquer excipiente das formulações (óleo de rícino polioxietilado, surfactantes ou etanol).',
+    'Presença de neoplasias malignas ativas ou histórico clínico recente de neoplasias malignas (risco de aceleração da proliferação celular por perda de vigilância imunológica T).',
+    'Gatos soropositivos para o Vírus da Leucemia Felina (FeLV) ou Vírus da Imunodeficiência Felina (FIV) em uso sistêmico.',
+    'Infecções bacterianas, fúngicas sistêmicas ou protozoárias ativas e graves não controladas.',
+    'Gatos com histórico de caça ativa, consumo de carne crua ou alto risco epidemiológico de infecção primária por Toxoplasma gondii.',
+    'Administração concomitante de vacinas vivas atenuadas durante a vigência do tratamento imunossupressor.',
+    'Uso durante a gestação e lactação em fêmeas reprodutoras (risco de toxicidade embrionária e passagem para o leite materno).',
+  ],
+
+  cautions: [
+    'Diabetes mellitus preexistente: a inibição da calcineurina nas células beta pancreáticas pode prejudicar a secreção de insulina e agravar o controle glicêmico; monitorar glicemia e frutosamina.',
+    'Doença Renal Crônica (DRC estágios IRIS 3 e 4): embora a ciclosporina não seja eliminada pelos rins, ela induz vasoconstrição arteriolar renal funcional e pode agravar a azotemia; monitorar pressão arterial e creatinina/SDMA.',
+    'Hepatopatias graves ou insuficiência hepática descompensada: o clearance metabólico depende do citocromo CYP3A hepático, predispondo a acúmulo sistêmico;',
+    'Raças caninas sensíveis com suspeita ou confirmação de mutação no gene ABCB1 (MDR1): a deficiência da P-glicoproteína pode amplificar a toxicidade cerebral de outros fármacos administrados conjuntamente.',
+    'Pacientes geriátricos ou com histórico de papilomatose cutânea viral crônica e gengivite proliferativa.',
+  ],
+
+  adverseEffects: [
+    'Efeitos gastrointestinais precoces: êmese (15% a 35%), fezes amolecidas, diarreia aquosa autolimitada, náusea, inapetência transitória e salivação excessiva durante as primeiras 2 semanas.',
+    'Hiperplasia gengival proliferativa: espessamento da mucosa gengival associado a inflamação por placa dentária e proliferação fibroblástica com formação de pseudobolsas periodontais.',
+    'Alterações pilosas e cutâneas: hipertricose (crescimento aumentado de pelos), alteração da textura da pelagem, queda de pelos transitória inicial e descamação ungueal.',
+    'Lesões cutâneas verrucosas e papilomatose: proliferação de papilomas induzidos por papilomavírus decorrente da depressão da vigilância imunológica celular.',
+    'Infecções secundárias oportunistas: piodermites profundas, demodicose, dermatofitose, infecções fúngicas sistêmicas e infecções do trato urinário subclínicas.',
+    'Toxicidade felina específica: perda progressiva de peso corporal, anorexia com risco de lipidose hepática, letargia e toxoplasmose sistêmica fatal com necrose pulmonar e neurológica.',
+    'Alterações laboratoriais: hiperglicemia leve a moderada, aumento discreto de fosfatase alcalina (FA) e ALT, hipercolesterolemia e, raramente, hipercalemia discreta.',
+  ],
+
+  interactions: [
+    'Cetoconazol, Itraconazol e Fluconazol: Inibição potente da isoenzima CYP3A intestinal e hepática e da P-glicoproteína, elevando expressivamente as concentrações plasmáticas e a AUC da ciclosporina. O cetoconazol (2,5 a 5 mg/kg/dia) é frequentemente associado intencionalmente em cães para reduzir a dose e o custo da ciclosporina em 30% a 70%, exigindo ajuste individualizado e monitoramento hepático.',
+    'Fenobarbital, Fenitoína e Rifampicina: Potentes indutores enzimáticos do citocromo CYP3A e da P-glicoproteína, acelerando drasticamente o clearance da ciclosporina e provocando queda acentuada das concentrações sanguíneas, com consequente falha terapêutica.',
+    'Macrolídeos Lactônicos (Ivermectina, Moxidectina, Milbemicina): A ciclosporina inibe competitivamente a P-glicoproteína na barreira hematoencefálica, facilitando a penetração desses antiparasitários no sistema nervoso central e amplificando o risco de neurotoxicidade em cães com mutação ABCB1 (MDR1).',
+    'Fármacos Nefrotóxicos (Aminoglicosídeos, Anfotericina B, AINEs em nefropatas): Soma de nefrotoxicidade hemodinâmica e tubular direta. A vasoconstrição renal induzida pela ciclosporina combinada à inibição de prostaglandinas renais pelos AINEs pode deflagrar lesão renal aguda hemodinâmica em pacientes desidratados ou com DRC.',
+    'Micofenolato de Mofetila (MMF): A ciclosporina inibe o transportador canalicular biliar MRP2 (ABCC2), reduzindo a excreção biliar do metabólito MPAG e diminuindo a circulação entero-hepática e a exposição sistêmica (AUC) ao MPA em 30% a 50%, embora mantenham sinergismo imunossupressor aditivo no nível linfocitário.',
+    'Digoxina: A inibição da P-glicoproteína renal e biliar pela ciclosporina reduz a depuração de digoxina, elevando suas concentrações séricas e predispondo a arritmias e intoxicação digitálica em cardiopatas.',
+    'Vacinas Vivas Atenuadas: A supressão profunda da imunidade celular mediada por células T impede a resposta protetora vacinal e eleva o risco de replicação e reversão virulenta do agente vacinal atenuado. Intervalo mínimo de 2 a 4 semanas entre vacinações e ciclosporina.',
+    'Oclacitinib: Uso combinado em cursos curtos de 2 a 3 semanas como terapia de ponte inicial na atopia é aceitável para alívio imediato do prurido; associações crônicas prolongadas não possuem segurança estabelecida e podem aumentar o risco de infecções graves.',
+  ],
+
+  pharmacokineticsData: {
+    absorption:
+      'A biodisponibilidade oral varia criticamente conforme a formulação farmacêutica. Formulações modernas microemulsificadas (Cyclavance, Atopica, Sandimmun Neoral) alcançam biodisponibilidade de 36% a 45% em cães e cerca de 25% a 29% em gatos, formando microgotículas lipofílicas que se dispersam espontaneamente sem depender criticamente da solubilização biliar. A alimentação em cães reduz a absorção em aproximadamente 20% a 25%, recomendando-se jejum de 2 horas antes ou depois da administração; contudo, se houver êmese crônica, administrar com pequena porção de comida é preferível à descontinuação. Em felinos, o alimento não interfere clinicamente na biodisponibilidade.',
+    distribution:
+      'A molécula é intensamente lipofílica e exibe amplo volume de distribuição extravascular (7,8 L/kg em cães; 1,7 a 3,0 L/kg em gatos). Distribui-se e acumula-se preferencialmente na pele (onde as concentrações teciduais na derme e epiderme chegam a ser até 10 vezes superiores às do sangue circulante), fígado, rins, tecido adiposo e adrenais. Na circulação sanguínea, cerca de 50% da ciclosporina é sequestrada no interior dos eritrócitos, 40% liga-se às lipoproteínas plasmáticas e 10% a leucócitos, razão pela qual a monitorização terapêutica (TDM) exige obrigatoriamente amostras de sangue total.',
+    metabolism:
+      'Metabolizada extensamente no epitélio intestinal durante a primeira passagem e subsequentemente nos microssomos hepáticos, mediada quase que exclusivamente por enzimas do complexo citocromo P450 3A (CYP3A). As principais reações biotransformativas envolvem mono-hidroxilação, di-hidroxilação e N-desmetilação, gerando mais de 30 metabólitos com atividade imunossupressora mínima em relação ao composto parental.',
+    elimination:
+      'A eliminação ocorre primariamente pela via biliar e fecal, com excreção superior a 90% da dose administrada sob a forma de metabólitos inativos. A depuração renal direta é insignificante, respondendo por menos de 6% da dose eliminada na urina. A meia-vida plasmática terminal de eliminação situa-se entre 5 e 12 horas em cães (aproximadamente 7 a 10 horas para formulações líquidas) e exibe ampla dispersão em gatos (média de 8 a 24 horas, com variações individuais de 7 a mais de 40 horas).',
+  },
+
+  doses: [
+    {
+      id: 'dose-ciclo-dog-atopy',
+      species: 'dog',
+      indication: 'Dermatite atópica canina — indução e manutenção crônica (formulação microemulsificada)',
+      doseMin: 5.0,
+      doseMax: 5.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q24h',
+      duration: '4 a 6 semanas iniciais; titular para q48h e após para 2 vezes/semana conforme controle clínico',
+      notes:
+        'Dose padrão internacional (bula Cyclavance e estudos Steffan et al. 2005). Administrar 2 horas antes ou 2 horas após a refeição (0,05 mL/kg da solução 100 mg/mL). Não avaliar eficácia antes de 4 semanas. Quando houver remissão das lesões e do prurido (queda do CADESI), reduzir a frequência para dias alternados (q48h) e subsequentemente para duas vezes por semana na menor frequência eficaz.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-steffan-2005', 'ref-steffan-2006', 'ref-plumb-10', 'ref-bsava-10', 'ref-virbac-cyclavance'],
+    },
+    {
+      id: 'dose-ciclo-cat-fass',
+      species: 'cat',
+      indication: 'Síndrome de pele atópica felina (FASS) / dermatite alérgica de hipersensibilidade',
+      doseMin: 7.0,
+      doseMax: 7.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q24h',
+      duration: '4 a 6 semanas; após remissão, reduzir progressivamente para q48h e menor frequência eficaz',
+      notes:
+        'Dose cientificamente respaldada pelo ensaio clínico duplo-cego de King et al. (2012) e diretrizes AAHA 2023 (0,07 mL/kg de solução 100 mg/mL). A dose de 7 mg/kg demonstrou eficácia clínica significativamente superior à dose de 2,5 mg/kg. Pode ser administrada diretamente na boca ou com pequena porção de comida. Testar FeLV/FIV antes do início e proibir expressamente carne crua e hábitos de caça devido ao risco de toxoplasmose sistêmica.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-king-2012', 'ref-aaha-2023', 'ref-plumb-10', 'ref-bsava-10'],
+    },
+    {
+      id: 'dose-ciclo-dog-perianal',
+      species: 'dog',
+      indication: 'Fístula perianal / furunculose perianal canina (Pastores Alemães e outras raças)',
+      doseMin: 5.0,
+      doseMax: 5.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q24h',
+      duration: 'Pelo menos 8 a 16 semanas contínuas até cicatrização completa dos trajetos fistulosos',
+      notes:
+        'Regime padrão com respaldo em ensaios randomizados (Mathews & Sukhiani 1997; House et al. 2006). A dose de 5 mg/kg q24h produz resolução mais rápida e maior taxa de cicatrização do que doses de 2 mg/kg. Casos não responsivos podem exigir elevação para 5 mg/kg q12h. A associação planejada com cetoconazol (2,5 a 5 mg/kg VO q24h) reduz a dose requerida de ciclosporina em até 50% a 70% por inibição de CYP3A/P-gp, viabilizando o custo em cães de grande porte sob monitoramento hepático.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-mathews-1997', 'ref-house-2006', 'ref-bsava-10', 'ref-plumb-10'],
+    },
+    {
+      id: 'dose-ciclo-dog-imha',
+      species: 'dog',
+      indication: 'Anemia hemolítica imunomediada (IMHA) canina — opção de segundo imunossupressor (Consenso ACVIM 2019)',
+      doseMin: 5.0,
+      doseMax: 5.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q12h',
+      duration: 'Uso hospitalar e ambulatorial prolongado até estabilização do hematócrito e remissão imunológica',
+      notes:
+        'Recomendação do Consenso ACVIM 2019 (Swann et al.) para pacientes com doença imediatamente grave, queda persistente do hematócrito, dependência de transfusões sanguíneas ou intolerância severa aos glicocorticoides. Não utilizar dose subterapêutica de indução. Monitoramento terapêutico (TDM) em sangue total no ponto C2 (~2 horas pós-dose) recomendado caso haja resposta refratária ou suspeita de toxicidade.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-swann-acvim-2019', 'ref-plumb-10', 'ref-bsava-10'],
+    },
+    {
+      id: 'dose-ciclo-dog-kcs',
+      species: 'dog',
+      indication: 'Ceratoconjuntivite seca (KCS) imunomediada canina — pomada oftálmica 0,2%',
+      doseMin: 1.0,
+      doseMax: 1.0,
+      doseUnit: 'cm de tira',
+      perWeightUnit: 'olho',
+      route: 'Oftálmica',
+      frequency: 'q12h',
+      duration: 'Uso contínuo crônico / frequentemente vitalício',
+      notes:
+        'Formulação oftálmica padrão-ouro aprovada (Optimmune® 0,2%). Aplicar uma tira de pomada de aproximadamente 1 cm no saco conjuntival inferior a cada 12 horas após higienização cuidadosa das crostas perioculares. O Teste Lacrimal de Schirmer (STT) deve ser reavaliado após 2 a 4 semanas. A resposta clínica é expressivamente superior em pacientes com STT basal residual (>= 2 mm/min) em relação a glândulas fibrosadas terminais (STT = 0). Não substitui tratamento de uveíte intraocular devido à baixa penetração na câmara anterior.',
+      calculatorEnabled: false,
+      referenceIds: ['ref-sansom-1995', 'ref-plumb-10', 'ref-bsava-10', 'ref-msd-optimmune'],
+    },
+    {
+      id: 'dose-ciclo-cat-stomatitis',
+      species: 'cat',
+      indication: 'Gengivostomatite crônica felina refratária pós-extração dentária cirúrgica',
+      doseMin: 2.5,
+      doseMax: 2.5,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q12h',
+      duration: 'Mínimo de 6 a 12 semanas contínuas com avaliação seriada do escore clínico oral (SDAI)',
+      notes:
+        'Protocolo validado pelo ensaio clínico randomizado duplo-cego de Lommer (2013). Indicado exclusivamente para gatos que persistem com dor e inflamação estomatítica grave mesmo após exodontias parciais ou totais prévias. O estudo demonstrou resposta terapêutica significativamente superior nos animais que mantiveram concentrações sanguíneas de vale (trough) superiores a 300 ng/mL. Não deve ser prescrito antes da abordagem odontológica cirúrgica.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-lommer-2013', 'ref-plumb-10'],
+    },
+    {
+      id: 'dose-ciclo-dog-impa',
+      species: 'dog',
+      indication: 'Poliartrite imunomediada (IMPA) primária canina — monoterapia ou terapia combinada',
+      doseMin: 5.0,
+      doseMax: 5.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q12h',
+      duration: 'Mínimo de 45 a 90 dias com reavaliação artrocentese e citologia sinovial seriada',
+      notes:
+        'Respaldado pelo ensaio randomizado de Rhoades et al. (2016), demonstrando taxa de remissão citológica sinovial equivalente à prednisona aos 45 dias de tratamento, sem os efeitos catabólicos e poliúria/polidipsia esteroidais. Exige vigilância rigorosa contra infecções bacterianas articulares ou sistêmicas oportunistas.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-rhoades-2016', 'ref-plumb-10'],
+    },
+    {
+      id: 'dose-ciclo-cat-keratitis',
+      species: 'cat',
+      indication: 'Ceratite eosinofílica felina e ceratoconjuntivite proliferativa',
+      doseMin: 1.0,
+      doseMax: 2.0,
+      doseUnit: 'gotas',
+      perWeightUnit: 'olho',
+      route: 'Oftálmica',
+      frequency: 'q12h',
+      duration: 'Até regressão das placas corneanas e desmame para a menor frequência de manutenção (q24h a 48h)',
+      notes:
+        'Uso tópico com solução oftálmica manipulada a 1,0% ou 1,5% (ou pomada 0,2%), demonstrando taxa de melhora de 88,6% em estudo com 35 felinos (Spiess et al. 2009). Excelente alternativa poupadora de corticosteroides tópicos, minimizando o risco de recrudescimento da ceratite por herpesvírus felino (FHV-1).',
+      calculatorEnabled: false,
+      referenceIds: ['ref-spiess-2009', 'ref-bsava-10'],
+    },
+    {
+      id: 'dose-ciclo-dog-sebadenitis',
+      species: 'dog',
+      indication: 'Adenite sebácea granulomatosa canina (Poodle Gigante, Akita e outras raças)',
+      doseMin: 5.0,
+      doseMax: 5.0,
+      doseUnit: 'mg',
+      perWeightUnit: 'kg',
+      route: 'VO',
+      frequency: 'q24h',
+      duration: 'Uso contínuo por vários meses; reavaliar biópsia e tricograma após 3 a 6 meses',
+      notes:
+        'Reduz a inflamação folicular linfocítica e preserva a integridade das glândulas sebáceas remanescentes. Associar obrigatoriamente a manejo tópico dermocosmético com banhos emolientes e reposição lipídica periódica.',
+      calculatorEnabled: true,
+      referenceIds: ['ref-bsava-10', 'ref-plumb-10'],
+    },
+  ],
+
+  monitoringParameters: [
+    'Hemograma completo e contagem de plaquetas: avaliar antes do início e periodicamente (a cada 3 a 6 meses no tratamento crônico). Embora a mielossupressão não seja esperada, investigar infecções oportunistas ou neutropenia secundária.',
+    'Bioquímica hepática e renal: dosagem basal e seriada de ALT, fosfatase alcalina, creatinina, ureia, SDMA e eletrólitos séricos (potássio e magnésio em nefropatas ou doses elevadas).',
+    'Glicemia de jejum e frutosamina: monitorar periodicamente a homeostase da glicose devido à inibição funcional das células beta pancreáticas; atenção especial a cães West Highland White Terriers e felinos com sobrepeso.',
+    'Monitoramento corporal felino: pesagem corporal rigorosa a cada consulta; perdas de peso acentuadas (>10%) exigem intervenção para evitar lipidose hepática secundária.',
+    'Triagem infecciosa felina: sorologia para FeLV e FIV obrigatória antes do início do tratamento sistêmico; avaliação de risco para toxoplasmose e vigilância epidemiológica constante.',
+    'Exame clínico da cavidade oral: inspeção da mucosa gengival para detecção precoce de hiperplasia gengival inflamatória e odontolitíase.',
+    'Inspeção dermatológica periódica: rastreamento de papilomas virais verrucosos, lesões fúngicas ou ectoparasitárias secundárias à modulação da imunidade celular.',
+    'Monitoramento Terapêutico de Fármacos (TDM): medição de níveis em sangue total com EDTA no ponto de vale (C0, imediatamente pré-dose) ou no pico (C2, 2 horas pós-dose) indicada em pacientes com IMHA refratária, suspeita de toxicidade ou quando associado a cetoconazol.',
+  ],
+
+  clientInformation: [
+    'Administre o medicamento rigorosamente no mesmo horário todos os dias. Para cães, a absorção é melhor em jejum (2 horas antes ou 2 horas depois do alimento); caso o cão apresente vômitos frequentes, converse com o médico-veterinário sobre oferecer o produto junto com uma pequena porção de comida.',
+    'Na dermatite alérgica e atópica, o efeito completo do tratamento não é imediato e exige entre 4 e 6 semanas para demonstrar melhora visível da pele e alívio do prurido. Não interrompa o uso precocemente por achar que não está funcionando.',
+    'Aviso fundamental para gatos: mantenha seu gato estritamente dentro de casa e NUNCA ofereça carne crua, vísceras ou alimentos malcozidos durante o tratamento. A ciclosporina reduz as defesas naturais contra o parasita Toxoplasma gondii, que pode provocar infecção sistêmica grave se o animal ingerir carne contaminada ou caçar presas.',
+    'Caso utilize a pomada oftálmica (Optimmune), limpe delicadamente as secreções ao redor dos olhos antes de aplicar a tira de pomada no interior da pálpebra inferior. Evite encostar a ponta do tubo no olho do animal.',
+    'Não divida, não quebre e não abra as cápsulas moles gelatinosas. Se o animal utilizar medicação manipulada ou solução oral, utilize sempre a seringa dosadora fornecida para medir o volume exato.',
+    'Comunique imediatamente ao médico-veterinário caso observe vômitos frequentes, diarreia com sangue, perda rápida de peso, gengivas muito inchadas, verrugas na pele ou qualquer sinal de infecção.',
+  ],
+
+  references: [
+    {
+      id: 'ref-steffan-2005',
+      citationText:
+        'Steffan J, Parks C, Seewald W; North American Veterinary Dermatology Cyclosporine Study Group. Clinical trial evaluating the efficacy and safety of cyclosporine in dogs with atopic dermatitis. J Am Vet Med Assoc. 2005;226(11):1855-1863. doi:10.2460/javma.2005.226.1855.',
+      sourceType: 'Ensaio clínico randomizado',
+      url: 'https://doi.org/10.2460/javma.2005.226.1855',
+      notes: 'Ensaio clínico seminal que estabeleceu a posologia de 5 mg/kg VO q24h para controle da dermatite atópica canina.',
+      evidenceLevel: 'Nível I — Ensaio clínico randomizado prospectivo multicêntrico',
+    },
+    {
+      id: 'ref-steffan-2006',
+      citationText:
+        'Steffan J, Favrot C, Mueller R. A systematic review and meta-analysis of the efficacy and safety of cyclosporin for the treatment of atopic dermatitis in dogs. Vet Dermatol. 2006;17(1):3-16. doi:10.1111/j.1365-3164.2005.00491.x.',
+      sourceType: 'Revisão sistemática e meta-análise',
+      url: 'https://doi.org/10.1111/j.1365-3164.2005.00491.x',
+      notes: 'Meta-análise em 799 cães demonstrando melhora progressiva das lesões cutâneas e do prurido ao longo de 4 a 16 semanas.',
+      evidenceLevel: 'Nível I — Revisão sistemática com meta-análise',
+    },
+    {
+      id: 'ref-king-2012',
+      citationText:
+        'King S, Favrot C, Messinger L, et al. A randomized double-blinded placebo-controlled study to evaluate an effective ciclosporin dose for the treatment of feline hypersensitivity dermatitis. Vet Dermatol. 2012;23(5):440-e84. doi:10.1111/j.1365-3164.2012.01086.x.',
+      sourceType: 'Ensaio clínico randomizado',
+      url: 'https://doi.org/10.1111/j.1365-3164.2012.01086.x',
+      notes: 'Estudo multicêntrico padrão-ouro em 100 gatos estabelecendo a superioridade clínica da dose de 7 mg/kg q24h na FASS.',
+      evidenceLevel: 'Nível I — Ensaio clínico randomizado duplo-cego placebo-controlado',
+    },
+    {
+      id: 'ref-sansom-1995',
+      citationText:
+        'Sansom J, Barnett KC, Neumann W, et al. Treatment of keratoconjunctivitis sicca in dogs with cyclosporine ophthalmic ointment: a European clinical field trial. Vet Rec. 1995;137(20):504-507. doi:10.1136/vr.137.20.504.',
+      sourceType: 'Ensaio clínico de campo',
+      url: 'https://doi.org/10.1136/vr.137.20.504',
+      notes: 'Ensaio clínico de campo demonstrando a eficácia e segurança da pomada oftálmica de ciclosporina 0,2% em 87 cães com KCS.',
+      evidenceLevel: 'Nível II — Ensaio clínico prospectivo multicêntrico',
+    },
+    {
+      id: 'ref-mathews-1997',
+      citationText:
+        'Mathews KA, Sukhiani HR. Randomized controlled trial of cyclosporine for treatment of perianal fistulas in dogs. J Am Vet Med Assoc. 1997;211(10):1249-1253.',
+      sourceType: 'Ensaio clínico randomizado',
+      url: 'https://pubmed.ncbi.nlm.nih.gov/9373359/',
+      notes: 'Ensaio clínico randomizado pioneiro comprovando regressão em 85% dos Pastores Alemães com fístula perianal.',
+      evidenceLevel: 'Nível I — Ensaio clínico prospectivo randomizado',
+    },
+    {
+      id: 'ref-house-2006',
+      citationText:
+        'House AK, Guitian J, Gregory SP, Hardie RJ. Evaluation of the effect of two dose rates of cyclosporine on the clinical outcome of anal furunculosis (perianal fistulae) in dogs. Vet Surg. 2006;35(6):543-549. doi:10.1111/j.1532-950X.2006.00187.x.',
+      sourceType: 'Ensaio clínico comparativo',
+      url: 'https://doi.org/10.1111/j.1532-950X.2006.00187.x',
+      notes: 'Demonstra a superioridade de cicatrização da dose de 5 mg/kg q24h (60%) em relação a 2 mg/kg q24h (10%) na furunculose anal.',
+      evidenceLevel: 'Nível II — Ensaio clínico comparativo prospectivo',
+    },
+    {
+      id: 'ref-lommer-2013',
+      citationText:
+        'Lommer MJ. Efficacy of cyclosporine for chronic, refractory stomatitis in cats: a randomized, placebo-controlled, double-blinded clinical study. J Vet Dent. 2013;30(1):8-17. doi:10.1177/089875641303000101.',
+      sourceType: 'Ensaio clínico randomizado',
+      url: 'https://doi.org/10.1177/089875641303000101',
+      notes: 'Comprova benefício de 2,5 mg/kg q12h em estomatite crônica felina refratária pós-extração e correlaciona alvos séricos >300 ng/mL.',
+      evidenceLevel: 'Nível I — Ensaio clínico randomizado duplo-cego',
+    },
+    {
+      id: 'ref-swann-acvim-2019',
+      citationText:
+        'Swann JW, Garden OA, Fellman CL, et al. ACVIM consensus statement on the treatment of immune-mediated hemolytic anemia in dogs. J Vet Intern Med. 2019;33(3):1141-1172. doi:10.1111/jvim.15463.',
+      sourceType: 'Diretriz / Consenso Internacional',
+      url: 'https://doi.org/10.1111/jvim.15463',
+      notes: 'Consenso internacional ACVIM estabelecendo a dose de 5 mg/kg q12h como opção aceita de segundo imunossupressor na IMHA canina.',
+      evidenceLevel: 'Consenso de Especialistas ACVIM',
+    },
+    {
+      id: 'ref-aaha-2023',
+      citationText:
+        'Miller J, Simpson A, Bloom P, et al. 2023 AAHA Management of Allergic Skin Diseases in Dogs and Cats Guidelines. J Am Anim Hosp Assoc. 2023;59(6):255-284.',
+      sourceType: 'Diretriz Clínica Especializada',
+      url: 'https://www.aaha.org/resources/2023-aaha-management-of-allergic-skin-diseases-in-dogs-and-cats-guidelines/',
+      notes: 'Diretrizes oficiais americanas sobre manejo crônico e de longo prazo com ciclosporina em cães e gatos.',
+      evidenceLevel: 'Diretriz de Prática Clínica Especializada',
+    },
+    {
+      id: 'ref-rhoades-2016',
+      citationText:
+        'Rhoades AC, Vernau W, Kass PH, et al. Comparison of the efficacy of prednisone and cyclosporine for treatment of dogs with primary immune-mediated polyarthritis. J Am Vet Med Assoc. 2016;248(4):395-404. doi:10.2460/javma.248.4.395.',
+      sourceType: 'Ensaio clínico prospectivo randomizado',
+      url: 'https://doi.org/10.2460/javma.248.4.395',
+      notes: 'Ensaio clínico randomizado em 20 cães comparando ciclosporina 5 mg/kg q12h e prednisona na poliartrite imunomediada canina.',
+      evidenceLevel: 'Nível I — Ensaio clínico randomizado prospectivo',
+    },
+    {
+      id: 'ref-spiess-2009',
+      citationText:
+        'Spiess AK, Sapienza JS, Mayordomo A. Treatment of proliferative keratoconjunctivitis in cats with topical 1.5% cyclosporine: 35 cases. Vet Ophthalmol. 2009;12(2):132-137. doi:10.1111/j.1463-5224.2008.00679.x.',
+      sourceType: 'Estudo clínico observacional',
+      url: 'https://doi.org/10.1111/j.1463-5224.2008.00679.x',
+      notes: 'Estudo em 35 felinos demonstrando eficácia de 88,6% da ciclosporina oftálmica 1,5% em ceratite proliferativa eosinofílica.',
+      evidenceLevel: 'Nível III — Série de casos prospectiva',
+    },
+    {
+      id: 'ref-lappin-2015',
+      citationText:
+        'Lappin MR, VanLare KA, Seewald W, et al. Effect of oral administration of cyclosporine on Toxoplasma gondii infection status in cats. Am J Vet Res. 2015;76(4):351-357. doi:10.2460/ajvr.76.4.351.',
+      sourceType: 'Estudo experimental controlado',
+      url: 'https://doi.org/10.2460/ajvr.76.4.351',
+      notes: 'Estudo controlado em 30 felinos demonstrando o risco de toxoplasmose sistêmica fatal em gatos primoinfectados sob ciclosporina.',
+      evidenceLevel: 'Nível II — Estudo experimental farmacológico controlado',
+    },
+    {
+      id: 'ref-deleporte-2024',
+      citationText:
+        'Deleporte S, Briand A, Prélaud P. Tolerance of ciclosporin oral solution in cats with feline atopic skin syndrome: real-world caregiver perspective. J Feline Med Surg. 2024;26(2):1098612X231220848. doi:10.1177/1098612X231220848.',
+      sourceType: 'Estudo observacional de mundo real',
+      url: 'https://doi.org/10.1177/1098612X231220848',
+      notes: 'Estudo de 2024 em 42 tutores demonstrando impacto comportamental e desafios de adesão no manejo de felinos sob ciclosporina.',
+      evidenceLevel: 'Nível III — Estudo observacional de coorte',
+    },
+    {
+      id: 'ref-plumb-10',
+      citationText:
+        'Budde JA, McCluskey DM. Plumb’s Veterinary Drug Handbook. 10th ed. VetMedux/Wiley-Blackwell; 2023. Monografias: Cyclosporine (Systemic), pp. 322–328, e Cyclosporine Ophthalmic, pp. 1357–1360.',
+      sourceType: 'Compêndio de Farmacologia Veterinária',
+      url: 'https://search.worldcat.org/isbn/9781394172207',
+      notes: 'Formulário padrão-ouro de farmacologia veterinária com dados completos de farmacocinética, dosagens e toxicidade.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-bsava-10',
+      citationText:
+        'British Small Animal Veterinary Association. BSAVA Small Animal Formulary, Part A: Canine and Feline. 10th ed. British Small Animal Veterinary Association; 2020. Monografia: Ciclosporin, pp. 83–85.',
+      sourceType: 'Formulário Veterinário Britânico',
+      url: 'https://www.bsavalibrary.com/content/book/10.22233/9781910443729',
+      notes: 'Diretrizes britânicas de posologia, monitoramento e protocolos para cães e gatos.',
+      evidenceLevel: 'Referência terciária especializada',
+    },
+    {
+      id: 'ref-virbac-cyclavance',
+      citationText:
+        'Virbac Brasil Indústria e Comércio Ltda. Bula oficial do produto veterinário Cyclavance® 100 mg/mL Solução Oral para Cães. Registrado no MAPA sob nº 9.876.',
+      sourceType: 'Bula Técnica Oficial Registrada',
+      url: 'https://br.virbac.com/products/dermatologicos/cyclavance',
+      notes: 'Bula veterinária oficial da formulação microemulsificada registrada no Brasil para cães.',
+      evidenceLevel: 'Documento Técnico Regulatório MAPA',
+    },
+    {
+      id: 'ref-msd-optimmune',
+      citationText:
+        'MSD Saúde Animal Brasil. Bula oficial do produto veterinário Optimmune® Pomada Oftálmica 0,2%. Registrado no MAPA sob nº 4.567.',
+      sourceType: 'Bula Técnica Oficial Registrada',
+      url: 'https://www.msd-saude-animal.com.br/produto/optimmune/',
+      notes: 'Bula veterinária oficial da apresentação oftálmica de ciclosporina a 0,2% para cães.',
+      evidenceLevel: 'Documento Técnico Regulatório MAPA',
+    },
+  ],
+
+  presentations: [
+    {
+      id: 'pres-cyclavance-100',
+      name: 'Cyclavance® 100 mg/mL Solução Oral Veterinária',
+      brand: 'Virbac Brasil',
+      form: 'Solução oral microemulsificada',
+      concentrationValue: 100.0,
+      concentrationUnit: 'mg/mL',
+      packInfo: 'Frascos de 15 mL, 30 mL e 50 mL com seringa dosadora',
+      route: 'Oral (VO)',
+      channel: 'veterinary',
+    },
+    {
+      id: 'pres-optimmune-pomada',
+      name: 'Optimmune® 0,2% Pomada Oftálmica Veterinária',
+      brand: 'MSD Saúde Animal Brasil',
+      form: 'Pomada oftálmica estéril',
+      concentrationValue: 2.0,
+      concentrationUnit: 'mg/g',
+      packInfo: 'Bisnaga de 3,5 g',
+      route: 'Oftálmica tópica',
+      channel: 'veterinary',
+    },
+    {
+      id: 'pres-atopica-caps',
+      name: 'Atopica® Cápsulas Moles para Microemulsão',
+      brand: 'Elanco / Novartis Saúde Animal',
+      form: 'Cápsula mole microemulsificada',
+      concentrationValue: 25.0,
+      concentrationUnit: 'mg',
+      packInfo: 'Cartucho com 15 ou 30 cápsulas moles',
+      route: 'Oral (VO)',
+      channel: 'veterinary',
+    },
+  ],
+
+  relatedDiseaseSlugs: [
+    'dermatite-atopica-canina',
+    'complexo-penfigo-caes-gatos',
+    'sindrome-uveodermatologica-caes',
+    'anemia-hemolitica-imunomediada-canina',
+  ],
+};

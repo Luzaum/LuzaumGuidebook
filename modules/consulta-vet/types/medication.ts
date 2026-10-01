@@ -240,6 +240,8 @@ export interface MedicationRecord extends ContentFlag {
   activeIngredient: string;
   /** Medicamento sujeito a controle especial no fluxo de prescrição. */
   isControlled?: boolean;
+  /** Aviso legal ou regulatório sobre controle especial (ex.: Lista C1, Portaria 344/98). */
+  controlNotice?: string;
   tradeNames: string[];
   officialSiteUrl?: string | null;
   leafletUrl?: string | null;
@@ -322,7 +324,7 @@ export interface MedicationRecord extends ContentFlag {
       totalDose: string;
       col1: string;
       col2: string;
-      col3: string;
+      col3?: string;
       col4?: string;
     }>;
     dropletCalibrator?: {
@@ -342,4 +344,10 @@ export interface MedicationRecord extends ContentFlag {
     label: string;
     text: string;
   }>;
+
+  /** Parâmetros de monitoramento laboratorial e clínico */
+  monitoringParameters?: string[];
+
+  /** Orientações claras ao tutor/proprietário do animal */
+  clientInformation?: string[];
 }

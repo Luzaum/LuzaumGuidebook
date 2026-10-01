@@ -1,0 +1,235 @@
+CHAPTER 289
+•
+Insulin-Secreting Tumors
+1959
+eBooks.Health.Elsevier.com
+ACRONYMS
+ATP adenosine triphos-
+phate
+CRI continuous rate infu-
+sion
+CT computed tomography
+CTA computed tomogra-
+phy angiography
+GH growth hormone
+IV intravenous
+US ultrasonography
+Insulin-Secreting Tumors
+Johan P. Schoeman
+INTRODUCTION
+I
+nsulinoma” is a neoplasm of pancreatic 
+beta cells that synthesizes and secretes 
+excessive quantities of insulin, oen 
+causing clinical signs of hypoglycemia. It is 
+an uncommon condition in dogs and rare 
+in cats. Insulinoma was rst described in the 
+dog in 1935 and in the cat in 1974.1 2 Subse-
+quently, approximately 360 canine cases have 
+been described as compared with merely 
+10 well-documented feline cases. Consequently, this chapter will 
+focus on canine insulinoma and conclude with a short section on 
+the comparative aspects of feline insulinoma.
+PATHOLOGY
+THE PRIMARY TUMOR
+Insulin-secreting pancreatic beta cells comprise approximately 
+70% of the cells of the islets of Langerhans which, in turn, com-
+prise only 1-2% of pancreatic volume. Most canine insulinomas 
+are malignant. In one report utilizing immunocytochemical stain-
+ing, 17 of 18 were carcinomas, 1 was an adenoma.3 About 80% 
+of insulinomas are solitary, located in either limb rather than the 
+body of the pancreas (Figure 289.1).4-6 Occasionally no discrete 
+nodule is seen or palpated during gross pancreatic examination 
+because some of these tumors are microscopic in size. In these, 
+histologic examination is required to locate the tumor within a 
+section of surgically removed pancreatic tissue or at necropsy.
+METASTASES
+e rate of detected metastatic lesions in dogs with insulinoma 
+ranges from 45-64%, higher in necropsy-based studies than those 
+using surgically-obtained samples.6-8 Clinical staging of pancre-
+atic tumors denes stage I as T1N0M0 (presence of a primary 
+Tumor and absence of regional lymph Node or distant Metas-
+tases), stage II as T1N1M0, and stage III as T1N1M1 or T1N0M1
+(ch. 316). A majority of dogs with an insulinoma have stage II 
+or III disease at diagnosis. e most common sites of metastases 
+are regional lymph nodes and liver, but they have an unlimited 
+distribution.9
+GROWTH HORMONE INVOLVEMENT
+e etiology of insulinoma is not known, but local growth hor-
+mone (GH) production, not associated with changes in circu-
+lating concentrations, has been documented in primary and 
+metastatic canine insulinoma. is GH is postulated to promote 
+islet cell proliferation via paracrine or autocrine mechanisms.10
+PATHOPHYSIOLOGY
+Neoplastic proliferation of pancreatic beta cells causes autono-
+mous and excessive secretion of insulin with resultant episodes 
+of hypoglycemia. e most important compensatory mechanisms 
+for hypoglycemia are inhibition of insulin secretion and concur-
+rent stimulation of counter-regulatory hormone secretion. Glu-
+cose is the primary regulator of insulin secretion. Glucose enters 
+beta cells and is metabolized to adenosine triphosphate (ATP), 
+which closes ATP-sensitive K+ channels. Closure of these chan-
+nels decreases K+ eux, causing build-up of K+ ions inside beta 
+cells, resulting in their depolarization and the opening of voltage-
+sensitive Ca2+ channels. e inow of Ca2+ through these opened 
+channels increases cytoplasmic Ca2+ which is the primary driver 
+for the fusion of insulin-containing vesicles with the cell mem-
+brane. Rupture of the external cell membrane allows insulin exo-
+cytosis into the extracellular environment and blood in equimolar 
+amounts to C-peptide (“connecting” peptide: the chain of amino 
+acids cleaved from within proinsulin’s single amino acid chain. 
+Cleavage of C-peptide from the chain simultaneously creates 
+insulin: 2 amino acid chains connected by 2 disulde bridges). In 
+healthy animals, insulin secretion is completely inhibited when 
+blood glucose is <80 mg/dL (<4.4 mmol/L). In contrast, insulin 
+secretion from neoplastic beta cells oen persists despite low blood 
+glucose concentrations. e biochemical hallmark of insulinoma is 
+a normal or increased blood insulin concentration despite concur-
+rently low blood glucose concentration. Interestingly, insulinomas 
+are notorious for their unpredictable but oen excess response to 
+CHAPTER 289
+“
+Insulinoma
+Pancreas
+Figure 289.1
+Solitary insulinoma surrounded by pancreatic tissue. 
+(Courtesy Dr. Lillian Aronson.)
+
+SECTION XIX
+•
+Endocrine Disease
+1960
+eBooks.Health.Elsevier.com
+feeding or glucose administration. e four counter-regulatory 
+hormones secreted in response to hypoglycemia are glucagon, 
+catecholamines, GH, and glucocorticoids. Glucagon and catechol-
+amines are most important in the short-term response to hypogly-
+cemia (ch. 298).
+CLINICAL FEATURES
+SIGNALMENT
+e mean age of dogs with insulinoma is 9 years, with a range 
+of 3 to 15 years. Although any breed of dog can develop insuli-
+noma, it appears most common in medium- to large-breed dogs. 
+Canine breed risk and sex predilection for insulinoma have not 
+been established.
+CLINICAL SIGNS
+Neuroglycopenia and Counter-Regulation
+Glucose is the most important source of energy for the brain. 
+Brain cell function is dependent on a continuous glucose supply 
+because the brain’s ability to store carbohydrate and utilize other 
+fuels is limited. Clinical signs of hypoglycemia usually result from 
+its eects on the central nervous system (neuroglycopenia), or to 
+hypoglycemia-induced counter-regulatory release of catechol-
+amines. Clinical signs attributable to neuroglycopenia include 
+mental dullness, disorientation (Video 61.1), weakness, ataxia 
+(staggering as if drunk; Video 61.2), visual disturbances (acting 
+blind), collapse and seizures (Video 61.3). Clinical signs related 
+to catecholamine release and its stimulation of the sympathetic 
+nervous system include nervousness and hunger.
+Severity of clinical signs is partly correlated to the blood glu-
+cose nadir. Severe hypoglycemia can ultimately result in coma 
+and death. However, clinical signs may also be related to the 
+duration and the rate at which hypoglycemia develops. Gradual 
+decreases in blood glucose concentration are less potent stimu-
+lators of catecholamine secretion. Insulin secretion from insu-
+linomas and resulting clinical signs are episodic. Secretion of 
+counter-regulatory hormones increase blood glucose concentra-
+tions and can transiently resolve neuroglycopenic signs. Similarly, 
+eating raises blood glucose and can resolve signs. However, while 
+feeding can transiently resolve signs of hypoglycemia, that same 
+feeding can in turn exacerbate a rebound in clinical signs by stim-
+ulating further insulin secretion. Moreover, fasting, exercise, or 
+excitement can worsen clinical signs by decreasing blood glucose 
+concentration or increasing sympathetic stimulation. e clini-
+cal signs of canine insulinoma are summarized in Table 289.1. 
+Although most dogs have more than one of these clinical signs, 
+some dogs have none. Some dogs may be overweight due to the 
+anabolic eects of insulin.
+Post-ictal Changes and Paraneoplastic Weakness
+Post-ictal changes may be apparent if there has been recent sei-
+zure activity. A peripheral polyneuropathy (ch. 252) character-
+ized by hind limb paresis or tetraparesis and decreased or absent 
+appendicular reexes has been described in 13 dogs with insuli-
+noma.9 11 12 e etiology of this insulinoma-associated peripheral 
+neuropathy has not been rmly established, yet it is most likely a 
+paraneoplastic immune-mediated disorder, unrelated to the met-
+abolic changes associated with insulinoma (ch. 331).11
+DIFFERENTIAL DIAGNOSES
+e dierential diagnoses for conrmed hypoglycemia (rul-
+ing out a spurious result or insulin administration to a diabetic 
+dog) may be classied into those caused by excess secretion of 
+insulin or insulin-like factors, those caused by decreased glucose 
+production, those caused by excess glucose consumption, and 
+those due to various drug-associated scenarios (ch. 61). Disorders 
+causing excess secretion of insulin or insulin-like factors include 
+insulinoma, extra-pancreatic tumors (i.e., hepatic tumors) or 
+beta cell hyperplasia (nesidioblastosis). Conditions associated 
+with decreased glucose production, aside from the hypoglyce-
+mia occasionally diagnosed in neonates and juvenile toy breeds, 
+include liver insuciency (ch. 266), hypoadrenocorticism (ch. 
+296), hypopituitarism, GH deciency (chs. 280, 281), and gly-
+cogen storage diseases (ch. 244). Fasting, malnutrition, or preg-
+nancy may cause hypoglycemia. Excess glucose consumption may 
+occur secondary to sepsis or extreme exercise (especially in hunt-
+ing dogs). Artefactual hypoglycemia may occur when blood cells 
+are not promptly separated from serum or in animals with severe 
+polycythemia or leukocytosis (Figure 289.2).
+DIAGNOSTIC EVALUATION
+MINIMUM DATABASE, SERUM GLUCOSE AND INSULIN 
+CONCENTRATIONS
+Complete blood count (CBC), serum chemistry screen and uri-
+nalysis are usually unremarkable in dogs with insulinoma, aside 
+from hypoglycemia.4 8 Mild hypokalemia and increased alkaline 
+phosphatase and/or alanine aminotransferase activities have been 
+documented in some.5 8 Clinical suspicion of insulinoma results 
+from the documentation of appropriate clinical signs, persistent 
+fasting hypoglycemia (blood glucose concentration <60 mg/dL 
+[<3.3 mmol/L]), and concurrent normo- or hyperinsulinemia 
+(serum insulin concentrations within or above reference inter-
+vals).13 Although hypoglycemia is observed on randomly obtained 
+blood from most dogs with insulinoma, especially if repeated, it is 
+important to note that blood glucose concentrations do uctuate, 
+explaining why some dogs are euglycemic when tested.8 14
+TABLE 289.1
+Clinical Signs of Insulinoma Reported in 198 Dogs 
+From Several Studies4-6,8,9,29
+CLINICAL SIGN
+NUMBER OF DOGS (%)
+Seizure
+95 (48)
+Collapse
+79 (40)
+Generalized weakness
+74 (37)
+Shaking/trembling/muscle 
+twitching (Video 42.3)
+40 (20)
+Ataxia
+40 (20)
+Exercise intolerance
+30 (15)
+Hind limb weakness
+28 (14)
+Disorientation/bizarre behavior/
+hysteria
+19 (10)
+Polyphagia
+16 (8)
+Polyuria and polydipsia
+16 (8)
+Stupor/lethargy
+12 (6)
+Focal facial seizures
+6 (3)
+Obesity or weight gain
+6 (3)
+Blindness
+5 (2.5)
+Anorexia
+5 (2.5)
+Diarrhea
+4 (2)
+Head tilt
+2 (1)
+Nervousness
+2 (1)

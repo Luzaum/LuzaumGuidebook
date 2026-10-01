@@ -1,0 +1,183 @@
+===== BSAVA PDF 294 / impressa 278 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+278
+Mycophenolate mofetil (MMF, 
+Mycophenolic acid)
+(CellCept* (MMF), Myfortic* (MPA)) POM
+Formulations: Oral: 250 mg capsule, 500 mg tablet, 1 g/5 ml 
+powder for oral suspension (MMF); 180 mg, 360 mg tablets. 
+Injectable: 500 mg powder for reconstitution and slow i.v. infusion 
+(mycophenolic acid).
+Action: Inhibits the enzyme that controls the rate of synthesis of 
+guanine monophosphate in the de novo pathway of purine 
+synthesis. This pathway is important in the proliferation of B and T 
+lymphocytes. This action is similar to azathioprine.
+Use:
+• Management of immune-mediated disease including immune-
+mediated haemolytic anaemia, immune-mediated polyarthritis, 
+immune-mediated skin disease, immune-mediated 
+thrombocytopenia and myasthenia gravis.
+The use of MPA has not been reported in veterinary medicine. 
+Clinical veterinary experience of this drug is limited; however, in 
+humans, mycophenolate is more lymphocyte-specific and less bone 
+marrow suppressive than azathioprine.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents.
+Contraindications: Bone marrow suppression, pre-existing 
+infections.
+Adverse reactions: Bone marrow suppression, nausea,  
+vomiting, diarrhoea and an increased incidence of infections 
+(pyoderma, Malassezia). In humans there is a risk for increased 
+lymphoma associated with its use. In humans, headache, 
+hypertension, peripheral oedema, confusion, coughs and  
+tremours are also reported.
+Drug interactions: Competes with other drugs that undergo 
+active renal tubular secretion resulting in increased concentration of 
+either drug. Concomitant administration of antacids (such as 
+omeprazole) may decrease absorption.
+DOSES
+See Appendix for immunosuppression protocols.
+Dogs:
+• Immune-mediated disease: 8–12 mg/kg (typically 10 mg/kg) 
+p.o., i.v. (give slowly over at least 2 hours) q12h (MMF), the dose 
+can be reduced or given q24h if adverse effects are observed.
+• Pemphigus: 7–13 mg/kg p.o. q8h (MMF).
+Cats: Immune-mediated haemolytic anaemia: 10 mg/kg p.o. q12h 
+based on limited experience. Other immunosuppressants may  
+be preferable.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 295 / impressa 279 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+279
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Bacek LM and Macintire DK (2011) Treatment of immune-mediated hemolytic anemia 
+with mycophenolate mofetil in two cats. Journal of Veterinary Emergency and Critical 
+Care 21, 45–49
+Wang A, Smith JR and Creevy KE (2013) Treatment of canine idiopathic immune-
+mediated haemolytic anaemia with mycophenolate mofetil and glucocorticoids: 30 
+cases (2007 to 2011). Journal of Small Animal Practice  54, 399–404
+
+===== BSAVA PDF 296 / impressa 280 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+280
+Naloxone
+(Naloxone*, Narcan*) POM 
+Formulations: Injectable: 0.02 mg/ml, 0.4 mg/ml solutions.
+Action: Competitive antagonist for opioid receptors, reversing the 
+effects of opioid agonists.
+Use:
+• Treatment of opioid overdose.
+• Also used to identify persistent activity of opioid drugs.
+Onset of action i.v. is very rapid, but duration is short (30–40 min). 
+Repeated doses or an infusion may be required to manage 
+overdose of longer acting opioids such as morphine and 
+methadone or high-dose fentanyl. Naloxone will also antagonize 
+the effects of endogenous opioids; therefore, it can cause 
+antanalgesic effects in opioid naïve subjects. Administration to 
+animals that could be in pain must therefore be considered 
+carefully. Low dose naloxone i.v. will cause a transient elevation of 
+unconsciousness when persistent opioid activity contributes to an 
+unexpectedly long recovery from anaesthesia.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Indiscriminate use in animals that have 
+undergone major surgery or trauma will expose the recipient to acute 
+severe discomfort. In such cases the effects of opioid overdose 
+(respiratory depression) should be managed by endotracheal 
+intubation and artificial ventilation. Naloxone should be reserved for 
+emergency situations when the effects of opioid overdose are severe.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 0.01–0.02 mg/kg i.v.; 0.04 mg/kg i.m., s.c., intratracheal. 
+Naloxone can be administered as a continuous rate infusion at 0.02 
+mg/kg/h i.v. if a longer duration of opioid antagonism is required.
+References
+Golder FJ, Wilson J, Larenza FP et al . (2010) Suspected acute meperidine toxicity in a 
+dog.  Veterinary Anaesthesia and Analgesia  37, 471–477
+Nandrolone
+(Laurabolin, Decadurabolin*) POM-V, POM 
+Formulations: Injectable: 25 mg/ml, 50 mg/ml (in oil).
+Action: Binds to testosterone receptors and stimulates protein 
+synthesis.
+Use:
+• In cases where excessive tissue breakdown or extensive repair 
+processes are taking place.
+• Management of aplastic anaemia.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

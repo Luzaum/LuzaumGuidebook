@@ -1,0 +1,223 @@
+===== BSAVA PDF 84 / impressa 68 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+68
+therapeutic response. Dose and dosing interval is determined by 
+infection site, severity and organism. In severe or acute conditions, 
+doses may be doubled or given at more frequent intervals.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid use in animals with hypersensitivity to 
+other beta-lactam antimicrobials (cross-hypersensitivity in <10% of 
+human patients).
+Adverse reactions: Vomiting and diarrhoea most common; 
+administration with food may reduce these reactions. Injection may 
+be painful.
+Drug interactions: May be an increased risk of nephrotoxicity if 
+cephalosporins are used with aminoglycosides, amphotericin or 
+loop diuretics (e.g. furosemide); monitor renal function. Do not mix 
+in the same syringe as aminoglycosides.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 15 mg/kg p.o. q8–12h; 10 mg/kg i.m., s.c. q24h.
+Cats: 15 mg/kg p.o. q8–12h; 10 mg/kg i.m., s.c. q24h.
+Increased doses (20–30mg/kg p.o. q8–12h) should be used for 
+superficial pyoderma and to treat severe, Gram-negative or 
+orthopaedic infections.
+Cefotaxime
+(Cefotaxime*) POM 
+Formulations: Injectable: 500 mg, 1 g, 2 g powders for 
+reconstitution.
+Action: It binds to proteins involved in bacterial cell wall synthesis, 
+thereby decreasing cell wall strength and rigidity, and affecting cell 
+division. Resistant to many bacterial beta-lactamases, particularly 
+those produced by Staphylococcus  spp. As other beta-lactam 
+antibacterials, works in a time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health 
+Organization and European Medicines Agency, emphasizing the need 
+for prudent use. Good activity against many Gram-negative 
+organisms, especially Enterobacteriaceae (not Pseudomonas) but 
+lower activity against many Gram-positive organisms than 1st and 2nd 
+generation cephalosporins. It is important to maintain tissue 
+concentrations above the MIC. Use should be reserved for: patients 
+with acute sepsis or serious infection where cultures are pending or 
+culture and sensitivity testing shows sensitivity; or where other 
+licensed preparations are not appropriate, and the animal is not a 
+good candidate for intensive aminoglycoside therapy (e.g. pre-
+existing renal dysfunction). Use with care in patients with renal disease 
+and consider increasing dose interval. There are few published studies 
+evaluating appropriate dosing rates and suggested dose rates are 
+largely extrapolated from human pharmacokinetic information.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 85 / impressa 69 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+69
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: The reconstituted solution is stable for 24 
+hours when refrigerated.
+Contraindications: Patients hypersensitive to penicillins may also 
+be sensitive to cephalosporins (cross-hypersensitivity in <10% of 
+human patients); avoid use in animals with reported sensitivity to 
+other beta-lactam antimicrobials.
+Adverse reactions: May produce pain on injection. GI 
+disturbance and superinfection with resistant microorganisms is a 
+potential risk.
+Drug interactions: Bactericidal activity may be affected by 
+concomitant use of bacteriostatic agents (e.g. oxytetracycline, 
+erythromycin). The cephalosporins are synergistic with the 
+aminoglycosides, but should not be mixed in the same syringe. 
+May be increased risk of nephrotoxicity if cephalosporins are used 
+with amphotericin or loop diuretics (e.g. furosemide); monitor 
+renal function.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: Various doses have been suggested and vary. 40–50 
+mg/kg i.v., i.m., s.c. q8h. Some authors have suggested that lower 
+doses of 10–20 mg/kg q12h have good clinical efficacy in the dog. 
+References 
+Sumano H, Gutierrez L and Ocampo L (2004) Pharmacokinetics and clinical efficacy of 
+cefotaxime for the treatment of septicaemia in dogs. Acta Veterinaria Hungarica 52, 85–95
+Cefovecin
+(Convenia) POM-V 
+Formulations: Injectable: lyophilized powder which when 
+reconstituted contains 80 mg/ml cefovecin.
+Action: It binds to penicillin-binding proteins involved in bacterial 
+cell wall synthesis, decreasing cell wall strength and rigidity, and 
+affecting cell division. Resistant to some penicillinases produced by 
+Staphylococcus spp. but ineffective against meticillin-resistant 
+staphylococci. Works in a time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health Organization 
+and European Medicines Agency, emphasizing the need for prudent 
+use. Cefovecin should not be considered if a 14-day course of 
+antimicrobial would not ordinarily be required for the infection being 
+treated. Indicated for the prolonged treatment of skin, soft tissue and 
+urinary tract infections. Also used as part of the management of 
+severe periodontal disease. Good efficacy against Staphylococcus, 
+Streptococcus, Pasteurella multocida and Proteus, and anaerobes 
+such as Prevotella, Fusobacterium, Bacteroides and Clostridium. Not 
+active against Pseudomonas spp., Enterococcus spp., or Bordetella 
+
+===== BSAVA PDF 86 / impressa 70 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+70
+bronchiseptica. Its high protein binding may prohibit reaching 
+effective serum levels to treat systemic Escherichia coli. Due to its 
+unique pharmacokinetic profile, cefovecin has an extremely long 
+half-life and only requires administration every 14 days.
+Safety and handling: Store in the refrigerator even prior to 
+reconstitution; use reconstituted drug within 28 days.
+Contraindications: Do not use in cats and dogs <8 weeks old. 
+Avoid use during lactation and in pregnant animals, as safety has not 
+been established.
+Adverse reactions: Appears to be relatively safe but has not been 
+assessed in renal disease. Reported adverse reactions include mild 
+GI disturbance and transient swelling at the injection site, as well as 
+type I, II and III hypersensitivity reactions.
+Drug interactions: Highly bound to plasma proteins, therefore it 
+would be prudent to exhibit caution when using in conjunction with 
+other highly protein-bound drugs such as furosemide and NSAIDs.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: 8 mg/kg s.c., equivalent to 1 ml/10 kg of reconstituted 
+drug subcutaneously. May be repeated after 14 days up to 3 times.
+Ceftazidime
+(Fortum*) POM 
+Formulations: Injectable: 500 mg, 1 g, 2 g, 3 g powders for 
+reconstitution.
+Action: It binds to proteins involved in bacterial cell wall synthesis, 
+thereby decreasing cell wall strength and rigidity, and affecting cell 
+division. Resistant to some bacterial beta-lactamases. It works in a 
+time-dependent fashion.
+Use: As a 3rd generation cephalosporin, it is classified as a highest 
+priority critically important antibiotic by the World Health 
+Organization and European Medicines Agency, emphasizing the 
+need for prudent use. Higher activity against many Gram-negative 
+organisms but lower activity against many Gram-positives when 
+compared with 1st and 2nd generation cephalosporins. Very good 
+activity against Pseudomonas  in humans. Use should be limited to 
+cases with a confirmed susceptibility and acute sepsis or serious 
+infections where licensed preparations are found to be 
+inappropriate. Limited information on clinical pharmacokinetics in 
+animal species and doses given below are empirical. Important to 
+maintain tissue concentrations above the MIC with regular doses.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Patients hypersensitive to penicillins may also 
+be sensitive to cephalosporins (cross-hypersensitivity in <10% of 
+human patients); avoid use in animals with reported sensitivity to 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

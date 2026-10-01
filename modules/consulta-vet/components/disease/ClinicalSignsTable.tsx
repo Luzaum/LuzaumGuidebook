@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
@@ -82,7 +83,7 @@ export function ClinicalSignsTable({ groups, visual }: { groups: EditorialSystem
   return (
     <div className="overflow-hidden border border-border/65 bg-background/35">
       <div className="hidden 2xl:block">
-        <table className="w-full table-fixed border-collapse text-left" aria-label="Sinais clínicos e explicação fisiopatológica">
+        <ReadableTable className="w-full table-fixed border-collapse text-left" aria-label="Sinais clínicos e explicação fisiopatológica">
           <caption className="sr-only">Sinais clínicos organizados por sistema, mecanismo e relevância clínica.</caption>
           <thead>
             <tr className={cn('border-b border-border/70', visual.headerTintClass)}>
@@ -133,7 +134,7 @@ export function ClinicalSignsTable({ groups, visual }: { groups: EditorialSystem
               );
             })}
           </tbody>
-        </table>
+        </ReadableTable>
       </div>
 
       <div className="divide-y divide-border/55 2xl:hidden">

@@ -1,0 +1,5 @@
+import json,re
+for book,terms in [('ettinger',r'babesi|urinary|perianal|adren|leish|ehrlich|trache|asthma|bronch|eosinophil|hemoplas|renal|hypertens|mitral|cardiomy|arrhyth|diabetes|thyroid|mammary|mastitis|myasth|leukemia|peritonitis|immunodeficiency|pancrea|giardi|coccidi|parathyroid|insulinoma|ketoaci|prostat|stomatitis|periodontal|atop|disc |disseminated|myelodys|lymphoma|megacolon|pyothorax|chylothorax|cystitis|thrombocyt|anemia|dyskines|platynos|triaditis|sepsis|micturition'),('plumb',r'^(Acetylcysteine|Amantadine|Amoxicillin|Ampicillin|Bethanechol|Buprenorphine|Capromorelin|Ceftriaxone|Cyclosporine|Clindamycin|Chlorambucil|Diazepam|Dipyrone|Enrofloxacin|Aluminum|Levetiracetam|Marbofloxacin|Meloxicam|Methadone|Mycophenolate|Phenobarbital|Pradofloxacin|Prednis|Sucralfate|Sulfa|Tramadol)')]:
+ print(book)
+ for level,title,page in json.load(open('tmp/summary-books/'+book+'-toc.json',encoding='utf8')):
+  if re.search(terms,title,re.I) and (book=='plumb' or level<=4):print(level,page,title)

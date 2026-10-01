@@ -1,0 +1,260 @@
+322      Cyclosporine (Systemic)
+Cyclosporine (Systemic)
+Ciclosporin, Cyclosporine A
+(sye-kloe-spor-een)  Atopica®, Cyclavance®, Neoral®, 
+­Sandimmune®
+Immunosuppressive
+See also Cyclosporine Ophthalmic
+Prescriber Highlights
+	
+▶FDA-approved products are available for dogs to control 
+­atopic dermatitis and for cats to control allergic dermatitis. 
+	
+▶Often used extra-label for treatment of immune-mediated 
+disorders in dogs and cats, and to prevent rejection of kidney 
+transplants in cats
+	
+▶GI adverse effects (eg, vomiting, soft stools) are common at 
+the start of treatment but typically resolve within a few weeks.
+	
+▶Use of microemulsion or “modified” formulations is highly rec-
+ommended. If using human-labeled products, Sandimmune® 
+is not bioequivalent to, and must not be interchanged with, 
+Atopica®, Cyclavance®, Neoral®, or Gengraf®. 
+	
+▶Counseling pet owners to ensure knowledge of the dispens-
+ing system is important when using solutions FDA-approved 
+for animals. 
+	
+▶For indications other than atopic dermatitis, consider ther-
+apeutic drug monitoring (pharmacokinetic and pharma-
+codynamic) to assess efficacy and minimize adverse effect 
+­potential.
+	
+▶Many potential drug interactions
+	
+▶The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cyclosporine as a hazardous drug; personal 
+protective equipment (PPE) should be used accordingly to 
+minimize the risk for exposure.
+Uses/Indications
+Cyclosporine is FDA-approved for use in dogs for the control of 
+atopic dermatitis. In cats, it is FDA-approved for the control of feline 
+allergic dermatitis as manifested by excoriations (including facial 
+and neck), miliary dermatitis, eosinophilic plaques, and self-induced 
+alopecia. Therapeutic effect for atopic dermatitis may not be seen 
+in the first few weeks of treatment, and the drug is unsuitable for 
+acute flares of atopic dermatitis.1 Concurrent treatment with corti-
+costeroids1,2 or oclacitinib3 can be considered during this interval to 
+control pruritus. 
+In dogs, extra-label indications include perianal fistulas (anal fu-
+runculosis),4–7 immune-mediated blood disorders (eg, IMHA),8 in-
+flammatory bowel disease,9 idiopathic chronic hepatitis, sebaceous 
+adenitis, sterile nodular panniculitis, sterile granuloma/pyogranu-
+loma complex, neutrophilic dermatosis resembling pyoderma gan-
+grenosum, eosinophilic dermatitis with edema (ie, Wells syndrome), 
+neutrophilic dermatitis (ie, Sweet syndrome), alopecia areata, vas-
+culitis, ulcerative dermatoses of the nasal philtrum, dermatomyo-
+sitis, contact allergy, chronic pedal furunculosis, metatarsal sinus 
+tracts, refractory cases of juvenile sterile granulomatous dermatitis 
+and lymphadenitis (ie, juvenile cellulitis), reactive histiocytic disor-
+ders, proliferative otitis externa, idiopathic keratinization disorders 
+(ie, primary seborrhea in springer spaniels, cairn terriers, and West 
+Highland white terriers and follicular hyperkeratosis in cocker span-
+iels), autoimmune diseases such as pemphigus foliaceus (controver-
+sial results), lupus erythematosus complex, meningoencephalitis of 
+unknown etiology (MUE),10 erythema multiforme, and uveoderma-
+tologic syndrome.11 Ketoconazole may be concurrently prescribed to 
+reduce cyclosporine dose requirements as a cost-saving measure (see 
+Drug Interactions).
+In cats, extra-label indications include feline urticaria pigmento-
+sa, chronic stomatitis,12 feline acquired alopecia (ie, pseudopelade), 
+pemphigus erythematosus and foliaceus,13 dirty face syndrome in 
+Persian cats,11 idiopathic pruritus, allograft transplant rejection,14 
+pure red cell aplasia,15 immune-mediated thrombocytopenia,16,17 and 
+inflammatory bowel disease.18 
+The microemulsion form, or “modified” version, of oral products 
+(ie, Atopica®, Cyclavance®, Neoral®) is highly recommended, as it is 
+better absorbed and provides more consistent peak and trough drug 
+concentrations.19 
+Pharmacology/Actions
+Cyclosporine, a calcineurin inhibitor, is an immunosuppressive 
+agent that focuses on cell-mediated immune responses, with some 
+humoral immunosuppressive action. Cyclosporine binds to T-cell 
+cyclophilin and blocks calcineurin-mediated T-cell activation. 
+T-helper lymphocytes are the primary target, but T-suppressor cells 
+are also affected. Cyclosporine can also inhibit cytokine produc-
+tion and release (including IL-2 and interferon-gamma in dogs20–22 
+and IL-3, IL-4, and tissue necrosis factor-alpha in humans), there-
+by affecting the function of eosinophils, mast cells, granulocytes, 
+and macrophages. It may also inhibit antigen-presenting functions 
+of the dermal immune system.23 It is not considered myelosuppres-
+sive. One study suggests that cyclosporine therapy does not affect 
+circulating lymphocyte CD4/CD8 ratio.24 Cyclosporine appears to 
+increase thromboxane production in dogs,25,26 and low-dose aspirin 
+inhibits this effect.27
+Pharmacokinetics
+Cyclosporine is a substrate for the P-glycoprotein (P-gp) efflux trans-
+porter, resulting in a wide range of bioavailability between patients. 
+NOTE: Neoral®, Gengraf®, Atopica®, and Cyclavance® are NOT bio-
+equivalent with Sandimmune®. In addition, the human microemul-
+sion product (ie, Neoral®) has not been proven to be as equally bio-
+available as Atopica® in dogs; however, a generic veterinary-modified 
+cyclosporine product (ie, Cyclavance®) has demonstrated bioequiva-
+lence with Atopica®.28 
+In dogs, the veterinary-labeled oral product (ie, cyclosporine 
+modified, Atopica®) is rapidly absorbed, and bioavailability is 45% 
+in fasted dogs. Food in the GI tract increases variability of bioavail-
+ability and reduces it by ≈20%.29 Protein binding is ≈90%,23 and vol-
+ume of distribution is 7.8 L/kg.30 Cyclosporine is distributed in high 
+concentrations into the liver, fat, and blood cells (granulocytes, 5% 
+to 12%; lymphocytes, 5% to 9%) and significantly accumulates in the 
+skin.23 It does not appreciably enter the CNS; this may be because it 
+is a P-glycoprotein efflux transporter substrate.29 The drug is primar-
+ily metabolized in the liver via the cytochrome P450 system (like-
+ly CYP3A), excreted into the bile, and eliminated in the feces. Less 
+than 1% of a dose is excreted unchanged into the urine. Elimination 
+half-life in dogs has been reported as ≈5 to 12 hours.31 Clearance 
+has been consistently found to be 3.66 to 7.1 mL/minute/kg.29 Dogs 
+with diabetes mellitus demonstrate increased clearance and reduced 
+elimination half-life.32 Pharmacokinetic parameters were not altered 
+when the veterinary-labeled cyclosporine capsules were stored fro-
+zen (-20°C [-4°F]) for 28 days.33
+In cats, oral cyclosporine (modified) bioavailability is ≈25% and is 
+highly variable, but drug absorption is not significantly altered when 
+administered with or without food.23,34 Additionally, the bioavailabil-
+ity of subcutaneous cyclosporine was reported to be very good in 
+cats.35 The drug does not appear to be absorbed transdermally.36 The 
+product label recommends administering on a consistent schedule 
+(ie, with or without food, time of day).37 Volume of distribution is 
+3.3 L/kg, time to maximum absorption (Tmax) is 1 to 2 hours, and 
+maximum concentration (Cmax) is 480 ng/mL.23,34 Hepatic and intes-
+tinal metabolism (eg, hydroxylation, demethylation) produce inac-
+
+Cyclosporine (Systemic)      323
+tive metabolites. Elimination half-life in cats is ≈24 hours but varies 
+considerably, with estimates as short as 6.8 hours to more than 40 
+hours in some healthy cats. Elimination occurs mainly in the feces.
+Contraindications/Precautions/Warnings
+Cyclosporine is contraindicated in patients that are hypersensitive 
+to it or any component (eg, polyoxyethylated castor oil) in the prod-
+ucts. It is contraindicated in animals with malignant disorders or a 
+history of malignant neoplasia and in cats infected with FeLV or FIV. 
+Safe use has not been established in dogs weighing less than 1.8 kg 
+(4 lb); in cats weighing less than 1.4 kg (3 lb); or in dogs or cats less 
+than 6 months of age.37,38
+This drug should be used with caution in animals with diabetes 
+mellitus or renal insufficiency, as it may cause elevated levels of se-
+rum glucose, creatinine, and/or urea nitrogen.37,38 Cats should test 
+negative for FeLV and FIV before being treated with this drug. Cats 
+on cyclosporine therapy appear to be at risk for developing systemic 
+toxoplasmosis.39 High cyclosporine blood concentrations (adminis-
+tered doses of 7.5 mg/kg/day orally) may be associated with a higher 
+risk for developing systemic toxoplasmosis.40 To avoid infection, cats 
+should be kept indoors, not eat raw meat, and not be allowed to hunt 
+during treatment.41 Ideally, toxoplasma titers should be evaluated 
+prior to starting cyclosporine in cats.42 Only use cyclosporine in ani-
+mals with active infection when the benefits outweigh the risks.23 Use 
+may increase susceptibility to opportunistic bacterial and fungal in-
+fections and development of neoplasia.43,44 Diminished immune re-
+sponse to vaccinations can occur. Killed vaccines are recommended 
+if vaccination is considered in dogs receiving cyclosporine therapy. 
+The drug’s impact on the immune response to modified live vaccines 
+is not known. 
+Cyclosporine is a P-gp substrate. Historically, reports have not 
+shown increased sensitivity to cyclosporine and dose reductions 
+in dogs with the multidrug resistance (MDR1) gene mutation (also 
+known as ABCB1-1delta) have not been recommended.45,46 Howev-
+er, there is a case report of one dog receiving a low dose of cyclo-
+sporine (3.3 mg/kg PO every 12 hours) who developed a secondary 
+infection. Subsequent pharmacodynamic testing revealed marked 
+immunosuppression and MDR1 testing showed that the dog was 
+heterozygous for the MDR1 gene mutation. The MDR1 mutation was 
+suspected to have contributed to the excessive immunosuppression 
+experienced in this patient.47 Careful use with clinical and therapeu-
+tic drug monitoring is recommended, especially when the patient is 
+not responding to therapy at recommended dosages, or when sec-
+ondary infections develop at dosages lower than expected to cause 
+significant immunosuppression.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cyclosporine as a hazardous drug (nonantineo-
+plastic agent representing an occupational hazard to healthcare 
+workers); personal protective equipment (PPE) should be used ac-
+cordingly to minimize the risk for exposure. 
+Do not confuse cycloSPORINE (ciclosporin) with cycloPHOS-
+phamide.49 In addition, do not write prescriptions for this drug 
+using the abbreviation SID. Many human-medicine pharmacists 
+are not aware of this abbreviation and could interpret it as another 
+abbreviation (eg, QID).
+NOTE: Neoral®, Gengraf®, Atopica, and Cyclavance® are NOT bio-
+equivalent with Sandimmune®.
+Adverse Effects
+In dogs, vomiting, anorexia, soft stools, and diarrhea50 are the most 
+commonly seen adverse effects. Dogs commonly vomit when start-
+ing therapy, but this generally abates with time. GI effects rarely 
+require discontinuation of the drug. Giving the drug with a small 
+amount of food or freezing capsules for 30 to 60 minutes before ad-
+ministration have been suggested to alleviate vomiting.33 
+Gingival hyperplasia, altered glucose metabolism/diabetes melli-
+tus,51 hypertrichosis, excessive shedding, psoriasiform lichenoid-like 
+dermatosis, and papillomatosis have been reported in dogs. Gingival 
+hyperplasia has been treated with oral and toothpaste forms of azi-
+thromycin with limited efficacy.52 Hepatotoxicity or thromboembol-
+ic events have been reported but are believed to be rare. One study 
+showed that low-dose aspirin inhibits cyclosporine-induced throm-
+boxane synthesis.27 One case series of 6 dogs describes the devel-
+opment of Burkholderia cepacia complex deep skin infections while 
+receiving oral cyclosporine.53 Bacteriuria and UTIs may occur.54
+In one appraisal study, the prevalence of bacterial infections in 
+828 dogs with atopic dermatitis receiving anti-allergic dosages of 
+oral cyclosporine was 11%, most commonly affecting the cutaneous 
+and urinary systems and not multiple systems.55 In 95 dogs receiving 
+higher dosages of cyclosporine for other diseases, the prevalence of 
+bacterial infection was 17%, occurring most often in the GI, urinary, 
+and respiratory systems. The prevalence of bacterial infections in 
+atopic dogs treated with cyclosporine appears to be low and occur 
+most often in the skin. However, when given for immunosuppres-
+sion, the prevalence of bacterial infections appears to be higher and 
+to affect 1 or more body systems.
+In cats, GI effects (including vomiting, diarrhea, hypersalivation, 
+decreased appetite, and anorexia) are often reported during the first 
+month of therapy.56,57 Resulting weight loss may lead to hepatic lip-
+idosis in this species (rare). Lethargy, malaise, behavior changes, 
+increased hair growth, acute bullous keratopathy,58 gingival hyper-
+plasia, and flares of latent viral infections have also been noted in 
+cats receiving cyclosporine. Hemolytic uremic syndrome has been 
+reported after renal transplant.59 Cats developing fatal systemic toxo-
+plasmosis while on cyclosporine therapy have been reported.39,41,60 
+Anaphylaxis is rare but possible. 
+Although nephrotoxicity and hepatotoxicity61 are potential con-
+cerns in dogs and cats, extremely high blood cyclosporine concen-
+trations (ie, greater than 3000 ng/mL) must be present before neph-
+rotoxicity is a significant problem.
+Because of the drug’s immunosuppressive effects, animals may be 
+more susceptible to opportunistic infections (eg, nocardiosis62, atyp-
+ical fungal infections63,64). Cyclosporine use may predispose dogs 
+and cats to development of neoplastic diseases; however, evidence 
+is lacking. In humans, this risk is increased with long-term use and 
+when administered in combination with other immunosuppressive 
+agents (eg, steroids).65 
+Because the drug has an unpleasant taste, it has been suggested 
+that oral solutions be placed in gelatin capsules or used with water or 
+taste-masking flavoring agents. In one study, Cyclavance® oral solu-
+tion was shown to be significantly more often accepted by dogs, im-
+proving dosing compliance, compared with Atopica® capsules, when 
+both were mixed with dry food (99.3% vs 27.1%, respectively).66  
+Reproductive/Nursing Safety
+Cyclosporine has been shown to be fetotoxic and embryotoxic in rats 
+and rabbits at doses 2 to 5 times the recommended dose.65 Reduced 
+fetal weight and growth, skeletal retardation, and premature birth 
+have occurred. The manufacturer does not recommend use in preg-
+nant or breeding dogs or cats. Use during pregnancy only when the 
+risks outweigh the benefits.
+Cyclosporine is distributed into maternal milk; the manufacturer 
+does not recommend use in lactating queens or bitches.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Oral LD50 in rabbits is greater than 320 mg/kg.65 Single oral doses of 
+33 mg/kg in dogs and 40 mg/kg in cats have resulted in no clinical 

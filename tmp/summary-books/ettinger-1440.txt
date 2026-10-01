@@ -1,0 +1,280 @@
+SECTION XIV
+•
+Cardiovascular Disease
+1288
+eBooks.Health.Elsevier.com
+GENERATION OF THE NORMAL 
+ELECTROCARDIOGRAM
+K
+nowledge of the generation of the 
+normal electrocardiogram (ECG) is 
+essential before being able to com-
+prehend arrhythmogenesis. Coordinated 
+electrical activation of the heart depends 
+upon the interplay of a complex apparatus 
+of impulse formation, conduction, and dis-
+tribution to the contractile myocardium. 
+Impulse generation normally begins in the 
+sinoatrial node (SAN), the dominant cardiac 
+pacemaker, and propagates through the atria 
+to the atrioventricular node (AVN). Aer 
+more slowly conducting through the AVN, 
+the impulse rapidly propagates through the 
+His-Purkinje system (HPS) to the ventricu-
+lar myocardium, triggering coordinated 
+ventricular contraction.1 e various car-
+diac regions are distinguished electrically by 
+specic action potential (APo) morphology 
+and duration as a result of regionally distinct 
+collections of ionic currents. APos in vari-
+ous cardiomyocytes and the currents under-
+lying various phases of the APo in dierent 
+cardiac cells are shown in Figure 230.1
+As the primary pacemaker of the heart, 
+the SAN is no longer considered compact and 
+discrete, but is now known to be a more dif-
+fuse, elaborate, anatomically and electrophysi-
+ologically heterogenous cellular collection. It 
+is a crescent-shaped, subepicardial structure 
+located along the crista terminalis (CT) in the 
+right atrium (RA) with an extensive paranodal 
+area.2 SAN APos are distinctly dierent from 
+those of working atrial myocytes, exhibiting 
+diastolic (phase 4) depolarization, a relatively 
+depolarized diastolic membrane potential, and 
+a slow upstroke driven primarily by L-type cal-
+cium (Ca2+) current (ICa-L), rather than the fast 
+sodium (Na+) current (INa) responsible for the 
+upstroke in atrial and ventricular myocytes.3
+ere are two main hypotheses for the mecha-
+nism underlying SAN diastolic depolariza-
+tion, and it is likely the tight integration of the 
+two that forms the overall pacemaker clock.4 5
+e rst mechanism is the membrane or voltage clock, referring 
+to time and voltage-dependent membrane ion channels underly-
+ing pacemaking activity. ese membrane channels include decay 
+of outward-rectifying potassium (K) currents (IKr and IKs) and the 
+activation of multiple inward currents, principally the funny current 
+(If; a mixed Na+ and K+ current), but also ICa-L and ICa-T 3 e cal-
+cium clock is the second hypothesis for mechanisms responsible for 
+SAN diastolic depolarization. Spontaneous, rhythmic Ca2+ release 
+from the sarcoplasmic reticulum via the ryanodine receptor in SAN 
+cells activates the Na+-Ca2+ exchange current (INa-Ca) in the forward 
+mode, generating a net inward current that causes late diastolic depo-
+larization to increase exponentially.3-5 SAN cells are heavily regulated 
+by autonomic inputs, which determine the rate of phase 4 depolariza-
+tion by phosphorylation-dependent gradation of the speed at which 
+the calcium clock cycles. is allows quick adaption of the heart rate 
+(HR) to the needs of the organism.2 Sinus arrhythmia, which is a nor-
+mal rhythm in the dog but typically only seen in the resting cat on 
+Holter monitoring at home, is complexly mediated by alterations in 
+parasympathetic tone on both SAN cells and the pathways leading 
+from the SAN to the atria (see below).6 7
+It is important to remember that the SAN is a long, banana-
+shaped structure located along the epicardial groove of the sulcus 
+terminalis, with cells at its cranial portion depolarizing at a higher 
+frequency (generating faster HRs) than slower depolarizing cells 
+at its tail.4 8 9 SAN cells are electrically insulated from surround-
+ing atrial myocytes, apart from a small number of preferential exit 
+pathways that allow transmission of SAN impulses to the atrial 
+myocardium. is electrical insulation is critical to protect SAN 
+cells from being hyperpolarized by the much larger atrial myo-
+cardial “sink,” while restricting impulse delivery to the branch-
+ing myobers of the sinoatrial conduction pathways. is slows 
+conduction from the SAN to allow sucient time to build up the 
+charge needed to depolarize the atria.9 10 e surface ECG is only 
+able to record electrical activity from large myocardial masses, 
+namely the atria and ventricles. SAN and AVN activities are not 
+recordable from the body surface. Figure 230.2 shows normal 
+sinus arrhythmia in a dog with intracardiac recordings in the 
+atria, AVN region, and right ventricle.
+Once the impulse leaves the SAN, it excites the atrial myocar-
+dium via 2-5 (in the dog) sinoatrial conduction pathways.9 Le 
+atrial (LA) activation preferentially occurs over Bachmann’s bun-
+dle, a bundle of parallel aligned myocardial bands that pass from 
+the cranial vena cava across the interatrial groove and to the LA 
+appendage.11 Atrial and ventricular APos are distinctly dierent, 
+which, coupled with the anatomy of the atria, can help explain 
+dierences in arrhythmias arising from these chambers and 
+their response to antiarrhythmic (AA) drugs. e atrial resting 
+Cardiac Arrhythmias
+Kathy Wright | Yanni Giatis
+CHAPTER 230
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 11 Videos.
+ACRONYMS
+AA antiarrhythmic
+AF atrial fibrillation
+AFL atrial flutter
+AIVR accelerated idioven-
+tricular rhythm
+ANS autonomic nervous 
+system
+AP accessory atrioventricu-
+lar pathway
+APo action potential
+ARVC arrhythmogenic 
+right ventricular cardio-
+myopathy
+AT atrial tachycardia
+AV atrioventricular
+AVB atrioventricular block
+AVN atrioventricular node
+AVNRT atrioventricular node 
+reentrant tachycardia
+Ca2+ calcium ion
+CHF congestive heart failure
+CL cycle length
+CRI constant rate infusion
+CT crista terminalis
+CTI cavotricuspid isthmus
+DCCV direct current cardio-
+version
+DCM dilated cardiomyopa-
+thy
+ECG electrocardiogram
+EP electrophysiologic
+EPS electrophysiologic 
+study
+FAT focal atrial tachycardia
+FJT focal junctional tachy-
+cardia
+HB His bundle
+HPS His-Purkinje system
+HR heart rate
+ICa-L L-type calcium current
+INa fast sodium current
+INE inferior nodal exten-
+sions
+IW Irish Wolfhound
+LA left atrial
+LBBB left bundle branch 
+block
+Continued
+
+CHAPTER 230
+•
+Cardiac Arrhythmias
+1289
+eBooks.Health.Elsevier.com
+membrane potential (RMP) is more depo-
+larized than the ventricular RMP due to a 
+5-6 fold decrease in the density of the inward 
+rectier K+ current (IK1) in atrial versus ven-
+tricular myocytes.12 IK1 is the major current 
+determining RMP. Maximal APo upstroke 
+velocity in atrial myocytes is less than that 
+of ventricular myocytes. Dierences in INa
+and the more depolarized RMP of atrial cells 
+account for this dierence.13 Delayed recti-
+er K+ currents contribute to repolarization 
+and dier in atrial and ventricular myocytes. 
+e ultrarapid delayed rectier K+ current 
+(IKur) is present only in atrial cells and is a 
+major contributor to atrial repolarization.14 In atrial myocytes, IKr
+and IKs have small densities and are unable to fully activate due 
+to the relatively negative membrane voltage in the plateau phase. 
+is is in contrast to the ventricles, in which IKr and IKs are the 
+major repolarizing currents. e atrial-selective nature of IKur
+makes it an attractive target for AA drug development for use in 
+atrial tachyarrhythmias.13 e net result of these ionic dierences 
+between atrial and ventricular myocytes results in a triangular-
+shaped atrial APo versus the spike-and-dome shape of the ven-
+tricular APo (Figure 230.1).15 Electrical heterogeneities exist in 
+dierent regions of the atria, including between the le and right 
+atria, due to dierences in densities and biophysical properties of 
+respective ionic currents in these regions. Excitation of the atrial 
+myocardium produces the P wave on the surface ECG, which 
+A
+Time (msec)
+Time (msec)
+Atrium
+AP
+(mV)
+INa
+ICa
+INCX
+Ito
+IKur
+IKr
+IKs
+IK1
+40
+1
+2
+3
+4
+1
+2
+3
+4
+-40
+-80
+200 A/F
+5 A/F
+1.5 A/F
+10 A/F
+1 A/F
+1 A/F
+1 A/F
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+500
+500
+0
+0
+0
+Ventricle
+Figure 230.1
+A, Atrial (le) and ventricular (right) myocyte action potentials with the currents underlying each phase of the action potential. Action 
+potential phases are labeled. Phase 0: Rapid upstroke representing membrane depolarization. Phase 1: Initial repolarization. Phase 2: Plateau phase. Phase 
+3: Late repolarization. Phase 4. Diastolic or resting membrane potential. Inward currents (blue) depolarize the membrane, while outward currents (red) 
+contribute to repolarization. e ventricular action potential has a more negative resting phase, longer duration, and higher voltage plateau phase.
+ACRONYMS—CONT’D
+LV left ventricular
+MRAT macroreentrant 
+atrial tachycardia
+NCT narrow complex 
+tachyarrhythmia
+OAVRT orthodromic atrio-
+ventricular reciprocating 
+tachycardia
+Na+ sodium ion
+PAS persistent atrial stand-
+still
+RA right atrium/right atrial
+RBBB right bundle branch 
+block
+RFCA radiofrequency cath-
+eter ablation
+RMP resting membrane 
+potential
+SAN sinoatrial node
+SND sinus nodal disease/
+dysfunction
+SSS sick sinus syndrome
+STach sinus tachycardia
+TCL tachycardia cycle 
+length
+TICM tachycardia-induced 
+cardiomyopathy
+VA ventricular arrhythmia
+VF ventricular fibrillation
+VPC ventricular premature 
+complex
+VPE ventricular preexcita-
+tion
+VT ventricular tachycardia
+WCT wide complex 
+tachyarrhythmia/tachy-
+cardia
+WPW Wolff-Parkinson-
+White syndrome
+Continued

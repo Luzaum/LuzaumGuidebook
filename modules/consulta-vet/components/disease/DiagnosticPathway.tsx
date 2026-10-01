@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { ChevronDown, Trophy } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
@@ -10,7 +11,7 @@ export function DiagnosticPathway({ steps, visual }: { steps: EditorialDiagnosti
   return (
     <div className="overflow-hidden border border-border/65 bg-background/35">
       <div className="hidden 2xl:block">
-        <table className="w-full table-fixed border-collapse text-left" aria-label="Sequência diagnóstica">
+        <ReadableTable className="w-full table-fixed border-collapse text-left" aria-label="Sequência diagnóstica">
           <caption className="sr-only">Exames e decisões organizados na ordem de investigação.</caption>
           <thead>
             <tr className={cn('border-b border-border/70', visual.headerTintClass)}>
@@ -47,7 +48,7 @@ export function DiagnosticPathway({ steps, visual }: { steps: EditorialDiagnosti
               </tr>
             ))}
           </tbody>
-        </table>
+        </ReadableTable>
       </div>
 
       <ol className="divide-y divide-border/55 2xl:hidden">

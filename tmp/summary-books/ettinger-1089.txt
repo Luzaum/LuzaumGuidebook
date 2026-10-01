@@ -1,0 +1,203 @@
+eBooks.Health.Elsevier.com
+SECTION XI
+•
+Infectious Disease
+1030
+ACRONYMS
+ALP alkaline phosphatase
+CBC complete blood count
+CNS central nervous 
+system
+CSF cerebrospinal fluid
+DIC disseminated intravas-
+cular coagulation
+ELISA enzyme-linked 
+immunosorbent assay
+GI gastrointestinal
+IFA indirect fluorescent 
+antibody
+PCR polymerase chain 
+reaction
+PE physical examination
+Systemic Protozoal Diseases
+Jonathan David Dear
+P
+rotozoal pathogens that disseminate 
+widely in the bodies of cats and dogs 
+belong to the family Apicomplexa. 
+ese protozoa are intracellular parasites of 
+vertebrate hosts with cellular tropism vary-
+ing from blood cells (including erythrocytes 
+and leukocytes) as well as epithelial and con-
+nective tissues.
+BABESIA
+PATHOGENESIS
+e genus Babesia encompasses a group of 
+intracellular pathogens capable of infect-
+ing human, dog, cat, horse, and wild mam-
+malian erythrocytes. Like other apicomplexan parasites, Babesia
+spp. undergo a complex lifecycle with both sexual and asexual 
+reproductive phases. Sexual reproduction occurs in the denitive 
+host (generally Ixodidae ticks) and asexual reproduction occurs 
+in mammalian hosts. Inoculation of the parasite occurs primar-
+ily via tick bite: the parasite is injected by the tick into the host 
+interstitium. e parasite then migrates into the vascular space 
+where it invades erythrocytes and undergoes schizogony or 
+binary ssion to form clones. Babesia can also be transmitted via 
+blood transfusion and direct inoculation during ghting between 
+infected animals. Intravascular and extravascular hemolysis can 
+occur due to parasitemia. Clinical signs depend on the species 
+infecting the animal, the host immune response, and co-existing 
+diseases. Dogs infected but subclinical are common and may be a 
+reservoir of infection.
+LARGE BABESIA SPECIES
+Prior to availability of molecular methods, Babesia organisms in 
+dogs were classied by size and morphology, resulting in broad 
+categories of “large” and “small” Babesia species. e most com-
+mon large (2.4 × 5 micrometers) Babesia species belong to the 
+Babesia canis species complex, previously recognized as 3 sub-
+species of B. canis, but now subdivided into their own species: B. 
+canis, Babesia vogeli, and Babesia rossi 1 Geographic distribution 
+of these species is constrained by their denitive host (i.e., tick 
+vectors). B. canis is found throughout Europe and into Asia (ch. 9); 
+it is transmitted by Dermacentor ticks. Babesia vogeli, identied 
+in the Americas, southern Europe, and Africa, is transmitted by 
+Rhipicephalus sanguineus ticks. is species causes the least dis-
+ease. e prevalence of B. canis infection in dogs in the US has 
+ranged from 4-60%, and is higher in adults, kenneled dogs, and 
+greyhounds. Babesia rossi is limited to sub-Saharan Africa and is 
+transmitted by Haemaphysalis leachi and Haemaphysalis elliptica
+ticks.
+SMALL BABESIA SPECIES
+e small (1-2.5 micrometers) species include Babesia gibsoni, 
+Babesia conradae, and Babesia vulpes. e epidemiology of small 
+Babesia species is less understood and their transmission oen 
+occurs via non-tick vectors. B. gibsoni was rst recognized in 
+Asia and is vectored by the Haemaphysalis tick. In the US, this 
+tick is rare; transmission is more likely via direct transmission 
+during dog ghts, vertical transmission, or blood transfusion. 
+Babesia were identied with polymerase chain reaction (PCR) 
+in up to 55% of kenneled dogs and pet Pit Bull Terriers in Ala-
+bama, but not identied in other breeds surveyed.2 B. conradae
+was initially called the “California isolate” and was misidenti-
+ed as B. gibsoni. It has been detected in dogs in California and 
+other southern US states and has been associated with coyote 
+ghting.3-5
+CLINICAL SIGNS
+Clinical signs of Babesia infection range from subclinical to ful-
+minant. Dogs with B. vogeli infection may have no signs of illness 
+unless immunosuppressed due to chemotherapy or splenectomy. 
+Dogs with B. canis, B. rossi, B. conradae, and B. gibsoni infection 
+typically are evaluated for illness caused by parasitemia.2 3 6 7
+ese dogs might have anemia and fever. Pallor and hypotensive 
+shock with tachycardia and tachypnea may be present on physical 
+examination (PE) in peracutely and acutely aected dogs. Icterus 
+and splenomegaly may be evident, and petechiae may occur in 
+animals with disseminated intravascular coagulation (DIC, ch. 
+171) or immune-mediated thrombocytopenia (ITP, ch. 175). In 
+severe B. rossi or B. canis infections, increased erythrocyte adher-
+ence may cause neurologic signs, rhabdomyolysis, and/or acute 
+kidney injury (AKI, ch. 300).6 Kidney damage may result from 
+immune-mediated glomerulonephritis (ch. 302) or hypoxia. Aer 
+recovery from acute infection, the immune system can fail to 
+eliminate infection and dogs can become chronic carriers.
+ROUTINE DIAGNOSTIC TESTING
+Most dogs infected with B. vogeli in the US are subclinical car-
+riers.8 B. gibsoni infection causes regenerative anemia, apparent 
+2-3 weeks aer infection, and the packed cell volume (PCV) may 
+normalize over a period of 2-3 months (ch. 57). Severe throm-
+bocytopenia can occur early in the disease and mild thrombocy-
+topenia can persist for months (chs. 59, 175).9 Neutropenia has 
+been reported in dogs infected with B. conradae (chs. 58, 176).3
+CHAPTER 197
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHAPTER 197
+•
+Systemic Protozoal Diseases
+1031
+eBooks.Health.Elsevier.com
+A Coombs’ test may be positive. Serum chemistry abnormali-
+ties include hypoalbuminemia and increased serum liver enzyme 
+activities.2 6 Hyperbilirubinemia is common in dogs infected with 
+B. canis, B. rossi, and B. gibsoni 6 9
+DEFINITIVE DIAGNOSIS
+Denitive diagnosis rests on visualization of the organism in 
+erythrocytes using cytologic examination aer staining with 
+Wright’s or Giemsa stains (Figure 197.1), or via molecular tech-
+niques. Genus-wide PCR assays and those specic for detection of 
+B. canis, B. conradae, B. gibsoni, B. vulpes, or B. vogeli are commer-
+cially available and are the most sensitive and specic methods for 
+diagnosing infection. Sequencing of DNA that is amplied using 
+genus-wide assays is required to identify infection with unnamed 
+Babesia species.10 11 Aer the initial episode of parasitemia, 
+organisms can be dicult or impossible to nd via cytology.9
+Dogs infected with B. conradae have recovered and had disease 
+recrudescence, with worse parasitemia. Serologic testing to detect 
+anti-Babesia antibodies uses indirect uorescent antibody (IFA) 
+or enzyme-linked immunosorbent assay (ELISA) testing. Recent 
+infection can be documented via rising antibody titers over 2-3 
+weeks. Current tests are designed to detect antibodies to B. vogeli
+and B. gibsoni, and because only limited cross reactivity occurs 
+among species, they are not reliable for detecting antibodies to 
+B. conradae
+TREATMENT
+Treatment with azithromycin (10 mg/kg PO q24h) and atova-
+quone (13.3 mg/kg PO q8h) for 10 days has led to remission in 
+dogs infected with B. conradae, B. gibsoni, or B. vulpes, though 
+relapses occur.4 12 13 Imidocarb (IM or SQ; 5-6.6 mg/kg, twice, 
+14 days apart, or 7.5 mg/kg, once) has been used to treat infec-
+tions with B. vogeli, B. canis, or B. rossi 14 15 Diminazene acetu-
+rate (3.5 mg/kg, IM, once) has also been used in treating dogs 
+with B. rossi infection, as well as dogs with relapsing B. gibsoni
+infection and suspected resistance to atovaquone (in combination 
+with clindamycin 25 mg/kg PO q12h).16 Even when treated, dogs 
+can remain persistently infected. erefore, anti-Babesia therapy 
+should be reserved for dogs with clinical disease, as treatment has 
+been associated with selection of antimicrobial-resistant strains.17
+Some dogs develop a state of premunition, becoming subclinical 
+carriers and unlikely to recrudesce without immunosuppression 
+(such as splenectomy or cancer chemotherapy).
+CYTAUXZOON
+DESCRIPTION, PATHOGENESIS
+Cytauxzoonosis is a tick-borne protozoan disease of domestic 
+cats, caused primarily by Cytauxzoon felis. In the US, it has been 
+reported from the southeast, mid-Atlantic and Midwest loca-
+tions.18 19 Disease usually occurs in outdoor cats between May 
+and September. In the US, Amblyomma americanum is the pri-
+mary tick vector.20 21 Reservoir hosts include the North American 
+bobcat, which appears to be subclinically infected, and potentially 
+domestic cats that recover following acute infection.22 23
+Cytauxzoon infection develops in two phases. During the 
+schizogonous phase in the mammalian host, the organism infects 
+mononuclear cells in the spleen, lung, liver, and lymph nodes. 
+ere, it replicates by binary ssion, forming large, distinct nucle-
+ated schizonts. Infected cells line vascular beds, causing vas-
+cular occlusion. e infected mononuclear cells then rupture, 
+releasing organisms into the blood or tissues. is phase usu-
+ally results in shock, DIC, and a rapidly fatal illness. e intra-
+erythrocytic phase occurs 1-3 days aer merozoites appear in 
+macrophages. is phase is associated with hemolytic anemia and 
+intra-erythrocytic piroplasms (chs. 57, 174). e prevalence of 
+the intra-erythrocytic phase has been reported in up to 78% of 
+free-ranging bobcats and between 6 and 28% of domestic cats in 
+endemic areas in the US.19 22
+CLINICAL SIGNS AND ROUTINE LABORATORY RESULTS
+Cytauxzoonosis is a peracute and rapidly fatal disease in most 
+infected domestic cats; ∼90% of untreated cats die following infec-
+tion. Prognostic factors associated with survival are unclear.24 25
+Clinical signs include anorexia and lethargy. On PE, cats are 
+typically febrile although some are hypothermic. Dehydration, 
+icterus, and/or pale mucous membranes are common. Aected 
+cats tend to be pancytopenic (ch. 176) with hyperbilirubinemia, 
+increased liver enzyme activities, and hypoalbuminemia; hyper-
+glycemia may be seen.18 Due to consumption of coagulation 
+factors, cats can be coagulopathic with signicantly prolonged 
+clotting times (ch. 170).
+A
+B
+Figure 197.1
+A, Blood smear from a dog diagnosed with Babesia conradae demonstrating the intraerythrocytic organism in characteristic signet 
+shape as well as red cell anisocytosis and polychromasia due to the resultant regenerative anemia. B, Blood smear from a dog with hepatozoonosis 
+showing several gamonts within granulocytes in peripheral circulation. (Images courtesy the UC Davis Clinical Pathology service (A) and Dr. Andrew 
+Burton (B).)

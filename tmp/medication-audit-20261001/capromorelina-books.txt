@@ -1,0 +1,829 @@
+
+===== Plumb PDF 209 =====
+182    Capromorelin
+closed.13 Do not freeze. Use product within 12 weeks of opening. Un-
+less otherwise instructed by the manufacturer, store other cannabidi-
+ol (CBD) products at room temperature in tightly closed containers. 
+Compatibility/Compounding Considerations
+Many compounded formulations are available. It is recommended to 
+request a certificate of analysis that demonstrates product potency 
+and purity. A 3-fold difference in cannabidiol (CBD) concentration 
+was discovered between batches of commercially supplied CBD in 
+oil.26
+Dosage Forms/Regulatory Status
+Other than the product FDA-approved for human use ( Epidiolex®), 
+cannabidiol (CBD) products are compounded, and as such, product 
+quality (eg, potency, purity, stability) is not overseen or enforced by 
+the FDA. Considerations for selecting a product include:
+1. Choose a product made from hemp, not marijuana. Legal -
+ly, CBD oil products must be derived from hemp and must 
+contain less than 0.3% tetrahydrocannabinol (THC). Because 
+hemp contains minimal amounts of THC, using a product de-
+rived from hemp will limit the amount of THC present. Legally 
+grown hemp is no longer a controlled substance under federal 
+law, but it may be a controlled substance in individual states. 
+See Chemistry/Synonyms for further information.
+2. Request a certificate of analysis (COA). Reputable companies 
+will provide a COA of their products stating CBD, THC, or 
+other cannabinoid content. Some companies will also confirm 
+the absence of other harmful toxins (eg, pesticides, microbes, 
+residual solvents, heavy metals).
+3. Using CBD in animals has not been approved by the FDA. 
+State and local laws vary, and practitioners should consult in -
+dependent legal counsel to determine their compliance obliga-
+tions with respect to the veterinary use of CBD.
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated CBD as a class 2 substance. Use of this drug may not be 
+allowed in certain animal competitions. Check rules and regulations 
+before entering in a competition while this medication is being ad -
+ministered. Contact local racing authorities for further guidance. See 
+Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Cannabidiol Solution: 100 mg/mL in 60 mL or 100 mL bottles; Epid-
+iolex®; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Cannabidiol (CBD)
+Capromorelin
+(kap-roe-moe-rel-in) Elura®, Entyce®
+Appetite Stimulant
+Prescriber Highlights 
+ ▶ FDA-approved to stimulate appetite in dogs, and for manage-
+ment of weight loss in cats with chronic kidney disease
+ ▶ Ghrelin-receptor agonist that stimulates growth hormone 
+release and causes the feeling of hunger
+ ▶ Contraindications include hypersensitivity and acromegaly 
+(hypersomatotropism) in cats.
+ ▶ Use with caution in dogs and cats with hepatic dysfunction, in 
+dogs with renal insufficiency, and in cats with cardiac disease 
+or severe dehydration. Hyperglycemia has occurred in healthy 
+cats given labeled doses of capromorelin; use in diabetic pa-
+tients has not been evaluated and may not be appropriate.
+ ▶ Adverse effects include vomiting, hypersalivation, hiding 
+behavior (cats), diarrhea, and polydipsia; some cats have de-
+veloped hypotension and bradycardia after administration.  
+Uses/Indications 
+Capromorelin is labeled for the stimulation of appetite in dogs and 
+for the management of weight loss in cats with chronic kidney dis -
+ease (CKD). 
+In preapproval studies, dogs given capromorelin for 4 to 7 days 
+had an ≈60% increase in food consumption and ≈6% weight gain as 
+compared with the baseline.1 In a clinical field study, 68.6% of dogs 
+receiving capromorelin experienced increased appetite based on 
+owner observation as compared with 44.6% of dogs that received the 
+vehicle control. In the same study, 76% of dogs receiving capromo -
+relin gained weight (1.8% increase) as compared with 44.6% of dogs 
+that received the control (0.1% increase). 2 A post-approval study 
+demonstrated that healthy beagles treated with capromorelin had an 
+average 60% increase in food consumption compared to an 11% de-
+crease in placebo-treated dogs.3
+In cats with CKD, field studies demonstrated a 3.3% increase in 
+body weight after 2 weeks of treatment, and 5.2% increase after 8 
+weeks.4 In healthy laboratory cats receiving capromorelin, food con-
+sumption increased by 25% to 45% and body weight increased by 4% 
+to 6.6% as compared with an 11% food consumption increase and 
+1% decrease in body weight in cats receiving a placebo.5,6 In a safety 
+study, cats given capromorelin 6 mg/kg PO once daily for 91 days 
+had a nonsignificant increase in food consumption but significant 
+weight gain.6 Further studies are warranted to establish efficacy.
+Pharmacology/Actions 
+Capromorelin is a ghrelin-receptor agonist that stimulates growth 
+hormone (GH) release and causes release of insulin-like growth fac-
+tor 1 (IGF1). Serum GH and cortisol increased in healthy dogs given 
+capromorelin for 7 days, and levels returned to baseline 8 hours after 
+administration; the magnitude of GH and cortisol elevations were 
+diminished by days 4 and 7 as compared with day 1. Increased IGF1 
+levels were sustained throughout the 7-day study period.7 Sustained 
+elevation of IGF1 was also noted in cats.8 
+Ghrelin appears to regulate cardiac, gastric, and pancreatic func-
+tion and may result in anxiety. In mice, exogenous ghrelin acceler -
+ates gastric emptying and intestinal transit.9 At the spinal cord level, 
+capromorelin stimulates bladder emptying in mice 10 and colonic 
+motility in rats.11,12
+In addition to stimulating appetite and the effects described above 
+in rats, ghrelin and ghrelin-receptor agonists have been shown to 
+stimulate bone formation, increase muscle mass, and have anti-in -
+flammatory and immunomodulatory effects.13
+
+
+===== Plumb PDF 210 =====
+Capromorelin   183
+Pharmacokinetics 
+In dogs, ≈44% of an oral dose is absorbed 14 and peak levels are 
+reached within 1 hour. Protein binding is ≈50%. Hepatic metabolism 
+is primarily via cytochrome P450 3A4 isozyme (CYP3A4) and CY -
+P3A5. Elimination half-life is ≈1.2 hours. Capromorelin (primarily 
+as metabolites) is excreted in urine (≈37%) and feces (≈62%) within 
+72 hours of oral administration. Capromorelin does not accumulate 
+with repeated administration.1,15
+In fasted healthy cats, capromorelin peak concentration is reached 
+within 0.25 to 1 hour after administration.4 Giving with food delays 
+time to peak concentration (0.5 to 4 hours) and reduces capromore-
+lin peak concentration by ≈50% and exposure (AUC) by ≈40% com-
+pared to fasted cats.4 Half-life in fasted cats is 1.1 hours.
+Contraindications/Precautions/Warnings 
+Capromorelin is contraindicated in patients hypersensitive to it or 
+its components. Avoid use in cats with acromegaly (hypersomato-  
+tropism). Caution should be used in dogs and cats with hepatic dys-
+function, in dogs with renal insufficiency, and in cats with cardiac 
+disease or severe dehydration. Although the manufacturer recom -
+mends using capromorelin with caution in dogs with renal insuffi -
+ciency, cats with CKD enrolled in a pilot study gained weight and 
+tolerated the drug. 16 Blood glucose may increase for several hours 
+after administration to cats4,17; capromorelin use in diabetic or predi-
+abetic cats has not been evaluated and may not be appropriate.
+Drug interactions are possible in dogs concurrently treated with 
+CYP3A4 and CYP3A5 inducers and inhibitors, but specific interac-
+tions have not been reported to date. See Drug Interactions.
+Adverse Effects 
+Adverse effects reported in dogs during clinical trials included di -
+arrhea, vomiting, polydipsia, hypersalivation, flatulence, nausea, ab-
+dominal discomfort, increased gut sounds, and lethargy. 15 Elevated 
+BUN and phosphorus have also been noted.
+In cats with CKD (median age 15 years and 67% with Stage 2 CKD) 
+receiving capromorelin 2 mg/kg/day, reported adverse effects includ-
+ed vomiting, hypersalivation, inappetence, hiding behavior, lethargy, 
+anemia, dehydration, progression of CKD stage, diarrhea, upper re-
+spiratory infection, UTI, and hyperglycemia. Emesis, increased saliva-
+tion, lip smacking, and head shaking reportedly  occurred immediately 
+after administration and resolved within a few minutes. 4,6,17 Clinical 
+signs of bradycardia and hypotension may occur after administration, 
+reaching peak effect after 1 hour, and resolving within 4 hours4; an-
+ecdotally, in some instances, hypotension may be profound enough 
+to require fluid resuscitation. Hypotension appears to decrease in 
+magnitude with repeated dosing. In healthy cats, insulin secretion and 
+glycemic control decreased during the first several days of treatment; 
+significance in diabetic patients has not been ascertained.17 
+Reproductive/Nursing Safety
+The manufacturer recommends capromorelin not be used in breed-
+ing, pregnant, or lactating bitches or queens, as safety studies have 
+not been performed for these animals.4,15
+Overdose/Acute Toxicity 
+In safety studies in dogs, capromorelin (7 mg/kg/day and  
+40 mg/kg/day) was associated with increased salivation, red and 
+swollen paws, increased liver weight, and hepatocellular vacuola -
+tion. In dogs receiving capromorelin at 17.5 times the label dose for 
+up to 12 months, the drug was generally well tolerated and result -
+ed in statistically insignificant decreased RBC count, hemoglobin, 
+and hematocrit as compared with a placebo. Dose-related increased 
+cholesterol and alkaline phosphatase were also noted.7 Increased PR 
+interval was noted on the ECG in dogs receiving either 7 mg/kg/day 
+or 40 mg/kg/day; however, no evidence of cardiac toxicity was noted 
+on physical examination or cardiac histopathology.1
+Cats receiving capromorelin (6 mg/kg/day PO) for 91 days tol -
+erated treatment well with no significant alterations in clinical pa -
+thology.8 One cat receiving capromorelin 10.5 mg/kg/day as part of a 
+safety study developed hyperglycemia and was euthanized after the 
+onset of diabetic ketoacidosis. 4 Cats receiving capromorelin (up to 
+60 mg/kg/day PO) for 14 days experienced a greater frequency of 
+emesis, hypersalivation, and lethargy as compared with the control 
+group.6 
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+No drug interactions with capromorelin have been reported. Capro-
+morelin is metabolized by CYP3A4 and CYP3A5 in dogs. In feline 
+field studies, capromorelin was used concurrently with parenteral 
+fluids, methimazole, amlodipine, antibiotics, laxatives, antiparasit -
+ics, and antiemetics. 18 The following drug interactions are theoret -
+ical in animals receiving capromorelin and may be of significance 
+in veterinary patients. Unless otherwise noted, use together is not 
+necessarily contraindicated, but the potential risks must be weighed, 
+and additional monitoring performed when appropriate.
+ ■ CYP3A4 Inhibitors  (eg, amiodarone, cimetidine, diltiazem, 
+erythromycin, itraconazole, ketoconazole ): May reduce capro -
+morelin metabolism in dogs
+ ■ CYP3A4 Inducers (eg, phenobarbital, rifampin): May in -
+crease capromorelin metabolism in dogs
+Laboratory Interactions 
+ ■ None noted
+Dosages 
+DOGS:
+Appetite stimulation (label dosage; FDA-approved): 3 mg/kg PO 
+once daily. NOTE: The effectiveness of capromorelin solution has 
+not been evaluated beyond 4 days of treatment.15 
+CATS:
+Management of weight loss in cats with chronic kidney disease 
+(label dosage; FDA-approved): 2 mg/kg PO once daily 30 minutes 
+before routine feeding.4 Readminister the dose if the cat receives 
+only a partial dose, or if the cat vomits within 15 minutes of ad -
+ministration.
+Appetite stimulation (extra-label): 1 – 3 mg/kg PO once daily for 
+up to 21 days5 
+Monitoring 
+ ■ Food and fluid intake
+ ■ Body weight
+ ■ Adverse effects (eg, vomiting, diarrhea, inappetence, lethargy)
+ ■ Additional monitoring as applicable to address underlying con -
+dition(s)
+Client Information
+ ■ Gently shake the bottle prior to withdrawing the appropriate 
+amount of solution using the provided syringe (dog product 
+only). Rinse syringe between treatment doses.
+ ■ Store medication out of reach of other pets and children.
+ ■ Drooling, vomiting, and head shaking may occur shortly after ad-
+ministration.
+ ■ Common side effects in dogs include vomiting and frequent uri -
+nation. In cats, vomiting, hypersalivation, lack of appetite, hiding 
+behavior, and lethargy have been noted.
+
+
+===== Plumb PDF 211 =====
+184    Carbimazole
+ ■ When giving this medicine to cats:
+a) Administer the dose 30 minutes prior to feeding. 
+b) Only readminister if a partial dose is received, or if your 
+cat vomits within 15 minutes. 
+Chemistry/Synonyms
+Capromorelin is a growth hormone secretagogue-receptor agonist. 
+The commercial oral solutions contain capromorelin tartrate. No 
+solubility data was located.
+Capromorelin is also known as AT-002, RQ-5, CP-424391, En-
+tyce®, and Elura®.
+Storage/Stability 
+Capromorelin should be stored at or below 30°C (86°F) and kept out 
+of reach of children and pets. 
+Compatibility/Compounding Considerations
+None noted
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: 
+Capromorelin Flavored Solution: 30 mg/mL in 10 mL, 15 mL, and 
+30 mL bottles; Entyce®; (Rx). FDA-approved for use in dogs. NADA 
+#141-457
+Capromorelin Flavored Solution: 20 mg/mL in 15 mL bottles; Elura®; 
+(Rx). FDA-approved for use in cats. NADA #141-536
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Carbimazole
+(kar-bi-ma-zole) Vidalta®
+Antithyroid
+Prescriber Highlights
+ ▶ Prodrug of methimazole; used for treatment of feline hyper-
+thyroidism
+ ▶ Contraindications include hypersensitivity to carbimazole or 
+methimazole and in cats with abnormal red or white blood cell 
+counts, thrombocytopenia, coagulopathies, severe liver dis-
+ease, diabetes mellitus, or with signs of autoimmune disease. 
+Use with caution in cats with existing renal or hepatic disease.
+ ▶ Most adverse effects occur within the first 3 months of treat-
+ment; vomiting, hyporexia, and lethargy are the most fre-
+quent. Eosinophilia, leukopenia, and lymphocytosis are usually 
+transient. Rare but serious effects include self-induced excoria-
+tions, bleeding, hepatopathy, thrombocytopenia, agranulocy-
+tosis, immune-mediated hemolytic anemia, immune-mediat-
+ed thrombocytopenia, and acquired myasthenia gravis.
+ ▶ Dosing requirements may change with time.
+ ▶ Typically administered PO; give with food. Do not crush or split 
+tablets.
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies methimazole (the active carbimazole metab-
+olite) as a hazardous drug; use appropriate precautions when 
+handling.
+Uses/Indications
+Carbimazole (a prodrug of methimazole) and methimazole are con-
+sidered by most clinicians to be the agents of choice for treatment 
+of feline hyperthyroidism and hyperthyroidism-associated clinical 
+signs in cats.1 
+Pharmacology/Actions 
+Carbimazole is converted almost entirely to methimazole in vivo. 
+Methimazole inhibits thyroid peroxidase and interferes with iodine 
+incorporation into tyrosyl residues of thyroglobulin, thereby inhib -
+iting thyroid hormone synthesis. It also inhibits iodinated tyrosyl 
+residues from coupling to form iodothyronine. Methimazole has no 
+effect on the release or activity of thyroid hormones already formed 
+or in general circulation. 
+Pharmacokinetics 
+Carbimazole is rapidly absorbed from the GI tract and rapidly and 
+nearly totally converted to methimazole. 1 Administering carbim -
+azole with food increases bioavailability. Because of differences in 
+molecular weight (carbimazole 5 mg vs methimazole 3 mg), to attain 
+an equivalent serum concentration, the dose of carbimazole for oral 
+administration must be ≈2 times that of methimazole.2
+In cats, the volume of distribution of methimazole is variable 
+(0.12 – 0.84 L/kg). Methimazole apparently concentrates in thyroid 
+tissue and biologic effects persist beyond measurable blood concen-
+trations. After oral dosing, plasma elimination half-life ranges from 
+2.3 to 10.2 hours. There is usually a 1- to 3-week lag time between start-
+ing the drug and significant reductions in serum T4. Timed-release for-
+mulations of carbimazole can extend methimazole (active metabolite) 
+half-life and allow once-daily dosing. Carbimazole may be amenable for 
+use transdermally with twice-daily dosing in cats to control hyperthy-
+roidism.
+In dogs, methimazole has a serum half-life of 8 to 9 hours.
+Contraindications/Precautions/Warnings
+Carbimazole is contraindicated in patients that are hypersensitive to 
+it or methimazole. It should not be used in patients with concurrent 
+systemic diseases (eg, severe primary liver disease, diabetes melli -
+tus1) or with hematologic abnormalities (eg, anemia, neutropenia, 
+lymphopenia, thrombocytopenia), coagulopathies, or autoimmune 
+disease.1,3 Use with caution in cats with preexisting hepatic disease.
+Because carbimazole is a prodrug and is converted into methima-
+zole, cats that have had prior severe reactions to methimazole should 
+not receive carbimazole.1
+Treatment of hyperthyroid cats with methimazole can unmask 
+underlying renal disease because lowering thyroid hormone levels 
+decreases glomerular filtration rates.4 As such, a cat’s renal parame-
+ters should be monitored closely during treatment (see Monitoring).5 
+In a study, a significant reduction in serum creatinine was noted after 
+restoration of euthyroidism in cats with iatrogenic hypothyroidism 
+caused by methimazole or carbimazole.6  
+The prevalence of moderate to severe thyroid disease (eg, large 
+thyroid tumors, multifocal disease, intrathoracic thyroid mass -
+es) increased with the duration of hyperthyroidism, despite ongo -
+ing methimazole use; the authors speculated that this finding may 
+indicate a progressive nature of feline hyperthyroidism that is not 
+stopped by maintaining euthyroidism with methimazole.7
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies methimazole (the active carbimazole metabolite) 
+as a hazardous drug representing an occupational hazard to health -
+care workers; wash hands after handling and use personal protective 
+equipment (PPE) accordingly to minimize the risk for exposure.8 
+Consider writing part of the drug’s name in uppercase letters 
+(tall man designations) on prescriptions/orders to reduce the risk 
+for errors. Do not confuse carbiMAZOLe with carbamazEPINE or 
+CARBOplatin. Additionally, do not write prescriptions for this drug 
+using the abbreviation SID. Many nonveterinary pharmacists are 
+unfamiliar with this abbreviation and could interpret it as another 
+abbreviation (eg, QID).
+Adverse Effects
+Most adverse effects associated with carbimazole or methimazole use 
+in cats occur within the first 3 months of therapy. 9 In cats receiving 
+carbimazole, vomiting, anorexia, and lethargy occur most frequent-
+
+
+===== Plumb PDF 212 =====
+Carbimazole   185
+ly1,10 (≈10%), are often transient, and can typically be managed with a 
+dosage reduction.11 Eosinophilia, leukopenia, and/or lymphocytosis 
+may be noted in ≈5% of cats 12; these hematologic effects are usually 
+also transient and generally do not require drug withdrawal unless 
+the blood dyscrasia is persistent or severe.1 
+Methimazole and carbimazole may also rarely cause self-induced 
+excoriations and hepatopathy, and potentially trigger immune-me -
+diated hemolytic anemia and immune-mediated thrombocytopenia 
+in cats1,9,13-15; these more serious effects generally require withdrawal 
+of the drug. In one study, increased antinuclear antibodies (ANA) 
+were noted in ≈22% of all cats receiving methimazole, and in ≈50% 
+of cats receiving methimazole for greater than 6 months, but none 
+of the cats had signs of a lupus-like syndrome. 9 The occurrence of 
+ANA is dose dependent, 16 and although elevated ANA have histor -
+ically been viewed as an indication for dose reduction, this may not 
+be necessary in the absence of clinical signs or other indications of 
+autoimmune disease.9 Rarely, cats treated with methimazole or car -
+bimazole have developed acquired myasthenia gravis that requires 
+drug withdrawal.17,18 One case report indicated that a cat developed 
+hypersensitivity vasculitis after receiving carbimazole.19
+Potentially, treatment with methimazole or carbimazole could 
+unmask underlying renal dysfunction in some cats.20 The hyperthy-
+roid state may increase GFR and, by treating the hyperthyroidism, 
+this effect is abolished.
+Reproductive/Nursing Safety
+Carbimazole has been associated with teratogenic and embryotoxic 
+effects in rats.1 Do not use carbimazole in pregnant animals as it may 
+also affect offspring thyroid development or function. 
+Methimazole enters milk and reaches concentrations higher than 
+those found in maternal serum. 1 If treatment with carbimazole is 
+necessary for nursing queens, switch to milk replacer for nursing 
+animals.
+Overdose/Acute Toxicity  
+Acute toxicity that may be seen with overdoses includes those effects 
+listed in Adverse Effects. Agranulocytosis, thrombocytopenia, auto-
+immune hemolytic anemia, GI bleeding (potentially with hemate -
+mesis), hepatitis, and nephritis are perhaps the most serious effects 
+that may be seen.1 Coat and skin abnormalities (erythema, alopecia) 
+can also occur. Treatment of overdose/toxicity consists of following 
+standard protocols for handling an oral ingestion (eg, empty stom -
+ach, administer charcoal if not contraindicated) and to treat sup -
+portively and based on clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving carbimazole or methimazole 
+and may be of significance in veterinary patients. Unless otherwise 
+noted, use together is not necessarily contraindicated, but veterinar-
+ians should weigh the potential risks and perform additional moni -
+toring when appropriate.
+ ■ Anticoagulants (eg, heparin, rivaroxaban ): Methimazole 
+may potentiate anticoagulant activity.
+ ■ Benzimidazole Antiparasitics (eg, albendazole, fenben-
+dazole, thiabendazole): Concurrent use with methimazole can 
+reduce hepatic oxidation of benzimidazoles and increase blood 
+levels of the parent drug or its metabolites.1,16,21-23 
+ ■ Beta-Adrenergic Antagonists (eg, atenolol, propranolol): 
+Beta-blocker dose may need to be decreased once the patient be -
+comes euthyroid.16 
+ ■ Chloramphenicol: Combination with carbimazole may in -
+crease the risk for myelosuppression
+ ■ Digoxin : Correction to euthyroidism reduces digoxin clear -
+ance,16 resulting in increased digoxin exposure and risk for tox -
+icity. A reduction in the digoxin dose may be needed when the 
+patient becomes euthyroid.
+ ■ Dipyrone: Combination with carbimazole may increase the risk 
+for myelosuppression.
+ ■ Iodine 131 : There was no difference in response to radioiodine 
+based on when methimazole was discontinued relative to I 131 ad-
+ministration.24 
+ ■ Phenobarbital : Concurrent use of phenobarbital may reduce 
+the clinical effectiveness of carbimazole.
+ ■ Prednis(ol)one: A reduction in predniso(lo)ne dose may be 
+needed when the patient becomes euthyroid.
+ ■ Theophylline : Theophylline dose may need to be reduced once 
+the patient becomes euthyroid.16 
+ ■ W arfarin : In humans with hyperthyroidism, the metabolism of 
+vitamin K clotting factors is increased, resulting in increased sen-
+sitivity to oral anticoagulants.25 By reducing the effects of hyper -
+thyroidism, methimazole may decrease clotting factor metabo -
+lism, thus reducing the effects of warfarin. However, patients that 
+are euthyroid on methimazole and receiving warfarin may de -
+velop hypoprothrombinemia if methimazole is stopped and they 
+become thyrotoxic again. Methimazole also has antivitamin K 
+activity, so anticoagulants may be potentiated by methimazole. 16 
+Recommendation: If methimazole and warfarin are used togeth -
+er, increased monitoring of anticoagulant effect is warranted.
+Laboratory Considerations
+ ■ Methimazole and carbimazole may affect serum fructosamine  
+levels in diabetic cats. Increased serum fructosamine after 6 weeks 
+of treatment has been reported. It has been recommended that 
+serum fructosamine not be used to initially diagnose or assess the 
+adequacy of diabetic control in cats with concurrent hyperthy -
+roidism until hyperthyroidism is controlled for at least 6 weeks.26
+ ■ Technetium-99m Pertechnetate : Carbimazole adminis -
+tration should be discontinued at least 2 weeks prior  to thyroid 
+scintigraphy, as it may interfere with accurate detection of ectopic 
+thyroid tissue.12,27,28
+Dosages
+CATS:
+Hyperthyroidism:
+a) Immediate-release tablets (extra-label): Most dosage recom -
+mendations are initially 5 mg/cat (NOT mg/kg) PO every 8 to 
+12 hours.10,12,15 Once a euthyroid state is established, the dosage 
+amount or frequency is slowly decreased to the lowest effective 
+dose. Most cats will require 2.5 – 5 mg/cat (NOT mg/kg) PO 
+every 12 hours, but some cats can be controlled on once-daily 
+dosing.12,29
+b) Sustained-release tablets (extra-label): 15 mg/cat (NOT mg/kg)  
+PO once daily at the same time each day. 1,30 10 mg/cat  
+(NOT mg/kg) PO once daily can be considered for cats with 
+moderate hyperthyroidism (TT4 between 50 and 100 nmol/L;  
+3.9 – 7.8 µg/dL). Adjust dosage within a range of 10 – 25 mg/cat/
+day (NOT mg/kg) in 5 mg increments depending on clinical 
+signs and TT4 (NOTE: Tablets cannot be split, so combinations of 
+10 mg and 15 mg tablets must be used). If cat requires doses less 
+than 10 mg/day, use alternate-day dosing (eg, 10 – 15 mg/cat  
+[NOT mg/kg] every other day), or consider different  treatment.
+
+
+===== Plumb PDF 213 =====
+186    Carboplatin
+Monitoring
+During the first 3 months of therapy (baseline and after every 3 and 
+6 weeks of treatment or dosage change)5,16:
+ ■ Physical examination to include body weight, body condition 
+score, heart rate, and fundic examination
+ ■ Blood pressure
+ ■ CBC (including platelet count)
+ ■ Serum chemistry profile
+ ■ Serum TT 4: Blood samples can be collected at any time (ie, do not 
+need to be collected at a prescribed time after methimazole treatment).
+ ■ Serum fT4: Note that this assay is not indicated as a sole monitor-
+ing parameter for hyperthyroidism.
+ ■ Serum TSH: May be useful to evaluate for iatrogenic hypothyroidism
+ ■ NOTE: Cats receiving higher dosages should be monitored more 
+frequently.
+After stabilization (at least 3 months of therapy)16:
+ ■ Body weight
+ ■ Blood pressure
+ ■ TT4 at 3- to 6-month intervals
+ ■ Other diagnostic tests as indicated by adverse effects
+Client Information
+ ■ Give this medicine with food. Do not crush or split tablets.
+ ■ For this medication to work, give it exactly as your veterinarian 
+prescribed.
+ ■ This medicine will decrease excessive thyroid hormones but does 
+not cure the condition. It may take several weeks before your cat 
+shows improvement.
+ ■ While your cat is taking this medicine, your cat will require close 
+monitoring with regular examinations by your veterinarian as 
+well as blood tests. Do not miss these important follow-up visits.
+ ■ Treatment is long term, often for the remainder of your cat’s life.  
+ ■ Most side effects (including vomiting, decreased appetite, or low 
+energy level occur in the first 3 months of therapy. If any of these 
+side effects are seen, stop giving this medicine to your cat and 
+contact your veterinarian before restarting this medicine.
+ ■ Serious side effects are rare. If your cat develops yellow skin, eyes, 
+or gums ( jaundice) or becomes intensely itchy, discontinue this 
+medicine and contact your veterinarian immediately.
+ ■ Wash your hands with soap and water after handling the medicine 
+(even if gloves are worn) or used litter. 
+ ■ Pregnant women or women who may become pregnant, nursing 
+mothers, or people with low thyroid hormones should avoid han-
+dling carbimazole. If this is not possible, wear disposable gloves 
+while handling this medication and cat litter or bodily fluids (ie, 
+feces, blood, saliva) of treated animals. Do not reuse gloves. Once 
+used, the gloves should be thrown away in the trash.
+ ■ This medication is considered to be a hazardous drug as defined by 
+the National Institute for Occupational Safety and Health (NIOSH). 
+Talk with your veterinarian or pharmacist about the use of personal 
+protective equipment when handling this medicine.
+Chemistry/Synonyms
+A thioimidazole-derivative antithyroid drug, carbimazole occurs 
+as a white to creamy white powder with a characteristic odor. It is 
+slightly soluble in water and soluble in alcohol.
+Carbimazole may also be known as carbimazolum, Basolest®, Cam-
+azol®, Carbimazole ®,  Carbazole®,  Carbistad®, Cazole ®, Neo Tomizol ®, 
+NeoMercazole®, Neo-Thyreostat ®, Thyrostat ®, Tyrazol ®, Vidalta ®, or 
+Neo-morphazole®.
+Storage/Stability
+Unless otherwise labeled, carbimazole tablets should be stored at 
+room temperature (not above 77°F [25°C]) in tightly closed contain-
+ers and protected from light.1 Do not remove desiccants from man-
+ufacturer’s bottle.
+Compatibility/Compounding Considerations
+No specific information was noted. Do not crush or break the pro -
+longed-release tablets.1
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE IN THE UNITED STATES
+In some countries: Carbimazole Oral Prolonged-Release Tablets:  
+10 mg and 15 mg; Vidalta®; (POM-V)
+HUMAN-LABELED PRODUCTS:
+There are no FDA-approved products in the United States; elsewhere 
+it may be available as: 
+Carbimazole Oral Tablets: 5 mg, 10 mg, 15 mg, and 20 mg. Many 
+trade names available outside the US; (POM) 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Carboplatin
+(kar-boe-pla-tin) Paraplatin®
+Antineoplastic
+Prescriber Highlights
+ ▶ Platinum antineoplastic agent used for a variety of carcino-
+mas and sarcomas. In general, less nephrotoxic and fewer GI 
+adverse effects as compared to cisplatin.
+ ▶ Unlike cisplatin, carboplatin may be used safely in cats.
+ ▶ Contraindicated in patients with a history of hypersensitivity 
+to carboplatin or other platinum agents, and with severe bone 
+marrow depression. Use with caution in patients with hepatic 
+or renal disease, or active infection.
+ ▶ Primary adverse effects include bone marrow suppression 
+(dose-limiting toxicity) and GI upset. Neutrophil nadir in dogs 
+typically occurs around day 14 or 21 after administration.
+ ▶ Embryotoxic, teratogenic
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies carboplatin as a hazardous drug; use appro-
+priate precautions when handling. 
+Uses/Indications
+Carboplatin is a broad-spectrum antineoplastic agent used to treat 
+a variety of neoplastic diseases, including carcinoma (squamous cell 
+carcinoma, ovarian carcinoma, pulmonary carcinoma, nasal carcino-
+ma, anal sac apocrine gland adenocarcinoma,1 colonic adenocarcino-
+ma, urinary tract carcinoma,2 hepatocellular carcinoma, and thyroid 
+adenocarcinoma), melanoma,3 and sarcoma (osteosarcoma4). 
+Unlike cisplatin, systemic carboplatin appears to be safe and 
+well-tolerated in cats.5,6
+Intracavitary carboplatin may be used to treat carcinomatosis 
+and other malignant effusions.7 Interventional radiology techniques 
+can be used to facilitate intra-arterial carboplatin administration for 
+the treatment of lower urinary tract carcinoma. 8 Carboplatin may 
+be considered for intralesional use in conditions such as equine sar-
+coids9 and to treat adenocarcinoma in birds. 10,11 Carboplatin beads 
+and poloxamer gel have also been used locally. They have been well 
+tolerated in different species (equines, canines, and felines), though 
+efficacy has not been thoroughly established.12–14
+Carboplatin is a radiation sensitizing agent. 15 Small studies have 
+shown the tolerability of carboplatin in combination with other che-
+motherapy agents, such as toceranib 16 or 5-fluorouracil 1716,17; how-
+ever, further studies are needed to determine the efficacy of these 
+combinations.
+
+
+===== BSAVA PDF 77 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+61
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+diseases and dermatological changes (pruritus, alopecia and 
+self-induced trauma) are reported but rare. Treatment of 
+hyperthyroidism can decrease glomerular filtration rate, thereby 
+increasing serum urea and creatinine values, and can occasionally 
+unmask occult renal failure.
+Drug interactions: Carbimazole should be discontinued before 
+iodine-131 treatment. Do not use with low iodine prescription diets.
+DOSES
+Dogs, Cats: Hyperthyroidism: starting dose 15 mg/animal p.o. 
+q24h unless total thyroxine concentrations are <100 nmol 
+(nanomoles)/l in which case starting dose is 10 mg p.o. q24h. Adjust 
+dose in 5 mg increments but do not break tablets.
+References
+Daminet S, Kooistra HS, Fracassi F et al . (2014) Best practice for the pharmacological 
+management of hyperthyroid cats with antithyroid drugs. Journal of Small Animal 
+Practice 55, 4–13
+Carbomer 980
+(Lubrithal, Ocry-gel, OptixCare, Viscotears*)  
+P, general sale 
+Formulations: Ophthalmic: 0.2% (10 g tube, single-use vial), 0.25% 
+(10 g tube) gel. This formulation is marketed specifically for small 
+animals. Other formulations are widely available for general sale.
+Action: Linear polymer (polyacrylic acid). Replaces the aqueous 
+and mucin layers of the trilaminar tear film (mucinomimetic).
+Use:
+• Tear replacement.
+• Management of quantitative (keratoconjunctivitis sicca (KCS) or 
+dry eye) and qualitative tear film disorders.
+It has longer corneal contact time than the aqueous tear substitutes 
+(e.g. polyvinyl alcohol).
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: It is tolerated well and ocular irritation is 
+unusual.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 1 drop per eye q4–6h.
+
+
+===== BSAVA PDF 78 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+62
+Carboplatin
+(Carboplatin*, Paraplatin*) POM 
+Formulations: Injectable: 10 mg/ml solution.
+Action: Binds to DNA to form intra- and interstrand cross-links and 
+DNA-protein cross-links, resulting in inhibition of DNA synthesis and 
+function.
+Use:
+• May be of use in a number of neoplastic diseases including anal 
+sac adenocarcinoma, squamous cell carcinoma, ovarian 
+carcinoma, mediastinal carcinoma, pleural adenocarcinoma, 
+nasal carcinoma and thyroid adenocarcinoma.
+• Improves survival times when used as an adjunct to amputation 
+in dogs with appendicular osteosarcoma.
+The drug is highly irritant and must be administered via a preplaced 
+i.v. catheter. Do not use needles or i.v. sets containing aluminium as 
+precipitation of the drug may occur. This drug is generally now 
+preferred over cisplatin due to reduced GI and renal toxicity. Use 
+with caution in patients with abnormal renal function, active 
+infections, hearing impairment or pre-existing hepatic disease.
+Safety and handling: Potent cytotoxic drug that should only be 
+prepared and administered by trained personnel. See Appendix and 
+specialist texts for further advice on chemotherapeutic agents.
+Contraindications: Contraindicated in patients with known 
+hypersensitivity to platinum containing compounds. Do not use in 
+patients with pre-existing bone marrow suppression.
+Adverse reactions: Include myelosuppression, nephrotoxicity, 
+ototoxicity, nausea, vomiting, electrolyte abnormalities, 
+neurotoxicity and anaphylactic reactions (including a delayed 
+cutaneous hypersensitivity). However, produces fewer adverse 
+reactions than cisplatin.
+Note that there may be delayed or unpredictable side effects in cats 
+(thought to be due to GFR changes in older cats).
+Drug interactions: Concomitant use of aminoglycosides or other 
+nephrotoxic agents may increase risk of nephrotoxicity. May 
+adversely affect the safety and efficacy of vaccinations. Potential to 
+act as a radiosensitizer for patients receiving concommitant 
+radiotherapy.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs: All uses: 300 mg/m2 i.v. q3–4wk injected into the side port of 
+a freely running i.v. infusion of 0.9% NaCl over a 10–15 min period.
+Intrapleural/intraperitoneal dose: 225–300 mg/m 2 diluted in 0.9% 
+NaCl or 5% dextrose water (in one text this is diluted to 10 mg/ml 
+then again in 1 ml per 4.5 kg body weight) over a 5–10 min period  
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 79 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+63
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+(it is advised to consult a veterinary oncology specialist before 
+administering via this route).
+Cats: All uses: 200 mg/m2 i.v. q3–4wk injected into the side port of 
+a freely running i.v. infusion of 0.9% NaCl over a 10–15 min period.
+Intrapleural/intraperitoneal dose: 200–240 mg/m
+2 diluted in 0.9% 
+NaCl or 5% dextrose water over a 5–10 min period (it is advised to 
+consult a veterinary oncology specialist before administering via  
+this route). 
+References
+Bailey DB, Rassnick KM, Erb HN et al . (2004) Effect of glomerular filtration rate on 
+clearance and myelotoxicity of carboplatin in cats with tumors. American Journal of 
+Veterinary Research  65, 1502–1507
+Skorupski KA, Uhl JM, Szivek A et al . (2016) Carboplatin versus  alternating carboplatin 
+and doxorubicin for the adjuvant treatment of canine appendicular osteosarcoma: a 
+randomized, phase III trial. Veterinary and Comparative Oncology  14, 81–87Carprofen
+(Canidryl, Carprodyl, Carprox Vet, Dolagis, 
+Rimadyl, Rimifin) POM-V 
+Formulations: Injectable: 50 mg/ml. Oral: 20 mg, 50 mg, 100 mg 
+tablets (in plain and palatable formulations).
+Action: Preferentially inhibits COX-2 enzyme, thereby limiting the 
+production of prostaglandins involved in inflammation. Other 
+non-COX-mediated mechanisms are suspected to contribute to the 
+anti-inflammatory effect but these have not yet been identified.
+Use:
+• Control of postoperative pain and inflammation following 
+surgery.
+• Reduction of chronic inflammation, e.g. degenerative joint 
+disease, osteoarthritis.
+In cats, carprofen is only licensed as a single perioperative dose for 
+the control of postoperative pain. Carprofen also has antipyretic 
+effects. All NSAIDs should be administered cautiously in the 
+perioperative period. Although carprofen preferentially inhibits 
+COX-2, it may still adversely affect renal perfusion during periods of 
+hypotension. If hypotension during anaesthesia is anticipated, delay 
+carprofen administration until the animal is fully recovered from 
+anaesthesia and normotensive. Liver disease will prolong the 
+metabolism of carprofen, leading to the potential for drug 
+accumulation and overdose with repeated dosing. Prolonged 
+long-term treatment should be under veterinary supervision. In cats, 
+due to the longer half-life and narrower therapeutic index, particular 
+care should be taken not to exceed the recommended dose and the 
+use of a 1 ml graduated syringe is recommended to measure the 
+dose accurately. Tablets are not authorized for use in cats.
+Safety and handling: Formulations that use palatable tablets can 
+be extremely palatable. Animals have been reported to eat tablets 
+spontaneously, resulting in overdose. Ensure that tablets are stored 

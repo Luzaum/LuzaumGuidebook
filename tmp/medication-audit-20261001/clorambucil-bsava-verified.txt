@@ -1,0 +1,224 @@
+===== BSAVA PDF 91 / impressa 75 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+75
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Koenigshof AM, Beal MW, Poppenga RH et al . (2015) Effect of sorbitol, single, and 
+multidose activated charcoal administration on carprofen absorption following 
+experimental overdose in dogs. Journal of Veterinary Emergency and Critical Care  25, 
+606–610
+Chitosan
+(Ipakitine) general sale 
+Formulations: Oral: powder containing 8% chitosan, 10% calcium 
+carbonate and 82% lactose.
+Action: Adsorbent for intestinal uraemic toxins, including phosphate.
+Use:
+• The combination product has been shown to reduce serum urea 
+and phosphate in chronic renal disease in cats.
+Phosphate-binding agents are usually only used if low phosphate diets 
+are unsuccessful. Monitor serum phosphate levels at 4–6 week 
+intervals and adjust dosage accordingly if trying to achieve target serum 
+concentrations. Monitor for hypercalcaemia. As formulation contains 
+lactose, use with care in diabetic and lactose-intolerant animals.
+Safety and handling: Normal precautions should be observed.
+Contraindications: None reported.
+Adverse reactions: Hypercalcaemia, possibly due to the calcium 
+carbonate component.
+Drug interactions: Increased risk of hypercalcaemia with 
+concurrent calcitriol administration.
+DOSES
+Dogs, Cats: Chronic kidney disease: 200 mg/kg p.o. q12h (mixed 
+with food).
+Chlorambucil
+(Leukeran*) POM
+Formulations: Oral: 2 mg tablet.
+Action: Alkylating agent that inhibits DNA synthesis and function 
+through cross-linking with cellular DNA. Cell cycle non-specific.
+Use:
+• Management of some malignancies including in some 
+metronomic chemotherapy protocols.
+• May be useful in the treatment of feline pemphigus foliaceus and 
+severe feline eosinophilic granuloma complex.
+• Management of  lymphoproliferative, myeloproliferative and 
+immune-mediated diseases including protein-losing 
+enteropathy.
+
+===== BSAVA PDF 92 / impressa 76 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+76
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+Tablets should be stored in a closed, light-protected container under 
+refrigeration (2–8°C).
+Contraindications: Bone marrow suppression, factors 
+predisposing to infection.
+Adverse reactions: Anorexia, nausea, vomiting, leucopenia, 
+thrombocytopenia, anaemia (rarely), neurotoxicity (one case reported 
+in a cat), alopecia (rarely) and slow regrowth of clipped hair coat. 
+Chlorambucil was suspected to have caused seizures in one dog.
+Drug interactions: Drugs that stimulate hepatic cytochrome 
+P450 system increase cytotoxic effects. Prednisolone has a 
+synergistic effect in the management of lymphoid neoplasia.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs: Give with food:
+• Chronic lymphocytic leukaemia: 2–6 mg/m 2 p.o. q24h initially 
+until remission achieved, then at reduced dosage/frequency as 
+required to maintain remission; or 0.2 mg/kg q24h for 7 days 
+then 0.1 mg/kg q24h for maintenance; or 20 mg/m
+2 every 1–2 
+weeks. Often used with prednisolone 40 mg/m 2 p.o. q24h for 7 
+days then 20 mg/m2 q48h.
+• Lymphoma: 15–20 mg/m 2 p.o. q2wk with prednisolone; or 2–6 
+mg/m2 q24–48h. 1.4 mg/kg p.o. as single dose as substitute for 
+cyclophosphamide in CHOP-type protocols.
+• Pemphigus complex (in combination with corticosteroids): 
+0.1–0.2 mg/kg p.o. q24h initially until marked improvement of 
+clinical signs; then alternate-day dosing, often for several weeks.
+• Protein-losing enteropathy and other immune-mediated 
+diseases: 2–6 mg/m
+2 p.o. q24h until clinical remission, then 
+tapered to the minimum effective dose.
+• For metronomic chemotherapy: 4 mg/m2 p.o. q24h.
+Cats: Give with food:
+• Immune-mediated disease: cats >4 kg: 2 mg (total dose) p.o. 
+q48h for 2–4 weeks, then tapered to lowest effective dose; cats 
+<4 kg started at 2 mg (total dose) q72h.
+• Chronic lymphocytic leukaemia: 2 mg/m 2 p.o. q48h or 20 mg/
+m2 q14d, with or without prednisolone.
+• For low grade/small cell lymphoma: 20 mg/m2 p.o. once every 
+two weeks with prednisolone.
+• As a substitute for cyclophosphamide in the CHOP protocol: 
+1.4 mg/kg p.o. once.
+• Feline pemphigus foliaceus or severe feline eosinophilic 
+granuloma complex (in combination with corticosteroids): 
+0.1–0.2 mg/kg p.o. q24h until marked improvement of clinical 
+signs; then alternate-day dosing, often for several weeks. 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 93 / impressa 77 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+77
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Dandrieux JRS, Noble PJM, Scase TJ et al . (2013) Comparison of a chlorambucil-
+prednisolone combination with an azathioprine-prednisolone combination for treatment 
+of chronic enteropathy with concurrent protein-losing enteropathy in dogs: 27 cases 
+(2007–2010). Journal of the American Veterinary Medical Association  242, 1705–1714
+Stein TJ, Pellin M, Steinberg H et al . (2010) Treatment of feline gastrointestinal small-cell 
+lymphoma with chlorambucil and glucocorticoids. Journal of the American Animal 
+Hospital Association  46, 413–417
+Chloramphenicol
+(Chloramphenicol*, Chlorogen*, Chloromycetin 
+Ophthalmic Ointment*, Chloromycetin 
+Redidrops*,  Kemicetine*, Minims*, Optrex*) POM 
+Formulations: Injectable: 1 g powder for reconstitution. Topical: 
+Ophthalmic 1% ointment; 0.5% solution. Oral: 250 mg capsules.
+Action: Time-dependent antimicrobial that acts by binding to the 
+50S ribosomal subunit of susceptible bacteria, preventing bacterial 
+protein synthesis.
+Use: Broad spectrum of activity against Gram-positive (e.g. 
+Streptococcus, Staphylococcus), Gram-negative (e.g. Brucella, 
+Salmonella, Haemophilus) and obligate anaerobic bacteria (e.g. 
+Clostridium, Bacteroides fragilis). Other sensitive organisms include 
+Chlamydia, Mycoplasma (unreliable in treatment of ocular 
+mycoplasmosis) and Rickettsia. Resistant organisms include 
+Nocardia and Mycobacterium. Acquired resistance may occur in 
+Enterobacteriaceae. High lipid solubility makes it suitable for the 
+treatment of intraocular infections. It will also access the CNS. 
+However, due to concerns of resistance development and human 
+toxicity, systemic use should be restricted to life-threatening 
+infections resistant to other antimicrobials (e.g. meticillin-resistant 
+staphylococci). Patients with hepatic or renal dysfunction may need 
+adjustment to the dose. Use with caution or avoid in nursing bitches 
+or queens as crosses into milk.
+Safety and handling: Humans exposed to chloramphenicol may 
+have an increased risk of developing a fatal aplastic anaemia. 
+Products should be handled with care; use impervious gloves and 
+avoid skin contact.
+Contraindications: No information available.
+Adverse reactions: Reversible dose-related reversible bone 
+marrow suppression can develop in all species. Unlike humans, the 
+development of irreversible aplastic anaemia in veterinary species 
+does not appear to be a significant problem. Owing to a reduced 
+capacity to metabolize chloramphenicol, the cat is more susceptible 
+to bone marrow suppression. Other adverse effects include nausea, 
+vomiting, diarrhoea and anaphylaxis.
+Drug interactions: Irreversible inhibition of hepatic cytochrome 
+P450-dependent enzymes increases plasma levels of pentobarbital, 

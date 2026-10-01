@@ -1,0 +1,190 @@
+CHAPTER 329
+•
+Mammary Gland Tumors
+2301
+eBooks.Health.Elsevier.com
+ACRONYMS
+bMGT benign mammary 
+gland tumor
+CBC complete blood count
+DFI disease-free interval
+IMGC inflammatory 
+mammary gland 
+carcinoma
+MGT mammary gland 
+tumor
+mMGT malignant 
+mammary gland tumor
+OHE ovariohysterectomy
+OS overall survival
+PE physical examination
+SLN sentinel lymph node
+UA urinalysis
+US ultrasound
+Mammary Gland Tumors
+Juan Borrego
+PREVALENCE AND RISK FACTORS
+M
+ammary gland tumors (MGTs) 
+are the most common tumor in 
+intact female dogs and the sec-
+ond to third most common tumor overall 
+in cats.1-3 e incidence varies geographi-
+cally, mostly due to dierent attitudes about 
+neutering. A common risk factor for both 
+species is advancing age. Dogs with malig-
+nant mammary gland tumors (mMGTs) 
+are older. mMGTs are rare in dogs <5 years 
+of age.4 In cats, the mean age at diagno-
+sis is 10-12 years. One recent study noted 
+a trend in higher rates of mMGTs versus 
+benign mammary gland tumors (bMGTs) 
+in dogs, similar to epidemiologic trends in 
+women.2
+Exposure to ovarian hormones during the rst 2 years of life is 
+a recognized risk factor for the development of MGTs, and ovar-
+iohysterectomy (OHE) greatly decreases risk of MGT in both spe-
+cies.5 6 Dogs spayed before their rst estrus have a risk of 0.5%; 
+aer the rst estrus, the risk increases to 8%; and aer a second 
+estrus, risk increases to 26%. Aer the third estrus cycle and/or 
+approximately 4 years of age, OHE provides only modest protec-
+tion. Some studies, however, show a decreased risk of developing 
+new tumors if OHE is performed at MGT removal. Addition-
+ally, histologic progression with increasing tumor size has been 
+reported in dogs with multiple tumors, suggesting a continuous 
+eect of hormones throughout the dog’s lifespan.7 Studies suggest 
+MGTs progress not only from benign to malignant, but also from 
+low to highly malignant.8 Neutering before the rst estrus in cats 
+provides 91% risk reduction; before the second estrus, an 86% risk 
+reduction; and before the third estrus, an 11% risk reduction. Aer 
+the age of 2 years, OHE provides no MGT protection.6 Exogenous 
+hormone exposure also increases risk of MGTs, more frequently 
+benign than malignant. Estrogen and progesterone receptors have 
+been identied in dog and cat MGTs; the less dierentiated the 
+canine tumor, the fewer hormone receptors expressed. Male dogs 
+and cats uncommonly develop MGTs, usually benign in dogs 
+(Figure 329.1) but both bMGTs and mMGTs in cats.9-11 Small 
+dog breeds may be overrepresented. Breeds reported to be at risk 
+include Siamese cats and Poodles, English Cocker Spaniels, Brit-
+tany Spaniels, English Setters, and German Shepherd Dogs. Breed 
+predispositions tend to vary by country.11 12 Obesity at a young 
+age and high-fat diets have been linked to an increased risk of 
+MGTs in dogs, and tumors in these dogs are associated with a 
+higher grade and younger age of onset.13
+STAGING
+Traditionally dogs with MGTs are staged according to the modied 
+World Health Organization (WHO) TNM system (T, size of tumor; 
+N, lymph node involvement; M, distant metastasis).11 is staging 
+system does not provide prognostic information regarding tumor 
+types or lympho-vascular invasion. Newer “bio-scoring” pathologic 
+staging systems have been proposed that more accurately predict 
+survival, although further studies are needed.14 15 Feline MGTs are 
+staged as are dog MGTs, using a modication of the original sys-
+tem. In the modied system, stages increase from I (<2 cm in size), 
+to II (2-3 cm), to III (>3 cm).11 Use of newer histopathologic staging 
+systems have sought to rene prognosis assessment.16-18
+PHYSICAL EXAMINATION (PE) AND DIFFERENTIAL 
+DIAGNOSES
+Dogs and cats may have single or multiple nodules within the 
+mammary gland chain (ch. 3). Solitary tumors are more common 
+in cats; multiple tumors are more common in dogs (>50%).4 17
+If more than 1 MGT is recognized on PE, each mass could be 
+dierent (bMGT vs mMGT); therefore, histopathologic assess-
+ment of each mass is recommended.19 bMGTs tend to be small, 
+well-circumscribed, and rm. e caudal mammary glands are 
+the most oen involved in dogs and in cats,4 8 20 although some 
+studies describe MGTs in all glands of cats (Figure 329.2).11 MGTs 
+may be freely movable or adherent to the skin or abdominal wall 
+(Video 329.1). ey may be ulcerated, inamed, edematous, or 
+have a discharge from the nipple. Inammatory mammary gland 
+carcinomas (IMGCs) are typically rapidly growing, painful, and 
+can occasionally cause edema of the extremities (Figure 329.3). 
+Dierentials for MGTs include other skin neoplasms, mastitis, 
+lobular hyperplasia, and broepithelial hyperplasia in cats.
+DIAGNOSTIC TESTING AND TREATMENT
+COMPLETE BLOOD COUNT (CBC), CHEMISTRY PROFILE, 
+URINALYSIS (UA), HISTOLOGIC FEATURES
+Evaluation of dogs and cats with a MGT should include a CBC, 
+serum biochemistry prole, and UA. ese results are used to 
+assess general health, check for concurrent conditions, and to 
+identify paraneoplastic conditions (ch. 331). Histologic examina-
+tion of the mass(es) via excisional biopsy is the gold standard for 
+diagnosing canine MGTs. Some studies have shown good cor-
+relation between cytologic and histologic ndings (ch. 85).11 21
+Histologic evaluation of tissue is needed to avoid underestimating 
+malignant potential.1 Cytologic evaluation of aspirates is helpful 
+CHAPTER 329
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 1 Video and 2 Client Information Sheets.
+
+SECTION XXII
+•
+Cancer
+2302
+eBooks.Health.Elsevier.com
+in ruling out dierentials, detecting locoregional lymph node 
+metastasis (Figure 329.4), and when dermal extension is sus-
+pected (aggressive MGTs or IMGCs) (Figure 329.5).
+METASTATIC DISEASE RECOGNITION
+Metastatic spread of mMGTs is usually via lymphatic vessels 
+to regional lymph nodes or hematogenously. e lungs are the 
+most frequent site of distant metastases.11 oracic radiographs 
+must be evaluated for metastases and/or lymph node histologic 
+assessment is required to denitively diagnose metastasis, which 
+worsens the prognosis. Detection of micrometastasis has not 
+consistently been associated with a worse outcome.22 Although 
+sentinel lymph node (SLN) mapping is standard in humans, it is 
+rarely performed in dogs or cats. A few studies have explored SLN 
+mapping using various tools, e.g., contrast-enhanced ultrasonog-
+raphy (US), computed tomographic (CT) or radiographic indirect 
+lymphography using contrast agents/iodized oil and intraopera-
+tive dyes. Knowledge of the lymphatic drainage of the neoplastic 
+mammary glands, which tends to vary and can even drain to con-
+tralateral nodes, is extremely important. Decisions will need to 
+be made during surgery in an attempt to achieve complete MGT 
+excision and for an accurate postoperative prognosis. e size and 
+shape of the lymph nodes are less reliable criteria.11 23 oracic 
+radiographs are important to evaluate for metastatic disease or 
+pleural eusion (common in cats). Abdominal US can be used for 
+staging by assessing locoregional (supercial inguinal and axillary 
+lymph nodes) or intra-abdominal nodes for metastatic lymph-
+adenopathy, especially when the MGT involves caudal glands. US 
+suspicion of metastasis should be conrmed by cytological analy-
+sis via ne needle capillary sampling (ch. 85). Mammary mass US 
+has been reported but correlations with histopathologic changes 
+and the diagnosis of malignancy has not been consistent.24
+HISTOLOGIC FEATURES OF MAMMARY GLAND 
+TUMORS (MGTs)
+Histologic Predictors of Biologic Behavior in Dogs
+e new classication of MGTs,25 replacing the Goldsmith 2011 
+system,26 is used worldwide for mMGTs.27 is system has given 
+pathologists a tool for accurate diagnosis and prognosis of canine 
+MGTs.28 29 In dogs, up to 60% of MGTs are benign,26 most oen 
+broadenomas (benign mixed tumors). e most common 
+malignancies in dogs are solid carcinomas and then tubular ade-
+nocarcinomas; only about 3-5% are sarcomas, and 1% are IMGCs. 
+Of the 50% mMGTs, 50% recur, metastasize, or develop aer the 
+rst surgical resection.2 30 Mortality related to canine invasive 
+mammary carcinoma is relatively high: over 40% of dogs and cats 
+with invasive MC die within a year of diagnosis.31 Ductal carci-
+nomas, carcinomas arising in mixed tumors, and complex carci-
+nomas had lower risks of lymphovascular invasion. In contrast, 
+carcinosarcoma (Video 329.1), invasive micropapillary carci-
+noma, anaplastic carcinoma, comedocarcinoma, solid carcinoma, 
+adenosquamous carcinoma, and lipid-rich carcinoma behave 
+aggressively.11 12 Poorly dierentiated tumors, sarcomas, and 
+inammatory carcinomas also have a worse prognosis. Despite 
+the relevance of molecular subtyping in human breast cancer, it is 
+not commonly performed in dogs or cats. Triple-negative tumors 
+account for approximately half of canine invasive MC (58.6%)31
+and show a signicantly shorter disease-free interval (DFI) and 
+overall survival (OS) in comparison to luminal A tumors.32
+Figure 329.1
+Multiple mammary adenomas in a male dog.
+Figure 329.2
+Large inguinal mammary gland tumor. Clinical pres-
+entation characteristics are prognostic, including the growth pattern, 
+xation and ulceration.
+Figure 329.3
+Twelve-year-old female Shepherd mix with an inam-
+matory mammary carcinoma. ese are generally rapidly growing and 
+painful tumors.

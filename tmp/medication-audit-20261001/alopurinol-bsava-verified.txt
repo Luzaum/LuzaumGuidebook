@@ -1,0 +1,219 @@
+===== BSAVA PDF 27 / impressa 11 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+11
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: A reduction in heart rate is likely whenever 
+alfentanil is given; atropine can be administered to counter 
+bradycardia if necessary. Respiratory depression leading to cessation 
+of spontaneous respiration is likely following administration. Do not 
+use unless facilities for positive pressure ventilation are available 
+(either manual or automatic). Rapid i.v. injection can cause a severe 
+bradycardia, even asystole.
+Drug interactions: Alfentanil reduces the dose requirements of 
+concurrently administered anaesthetics, including inhaled 
+anaesthetics, by at least 50%. In humans it is currently 
+recommended to avoid giving alfentanil to patients receiving 
+monoamine oxidase inhibitors due to the risk of serotonin toxicity.
+DOSES
+Dogs: 0.001–0.005 mg/kg i.v. as a single bolus or 0.001–0.0025 
+mg/kg/min continuous rate infusion.
+Cats: 0.001 mg/kg i.v. as a single bolus or 0.001 mg/kg/min 
+continuous rate infusion. 
+References
+Padilha ST, Steagall PVM, Monteiro BP et al . (2011) A clinical comparison of remifentanil 
+or alfentanil in propofol-anaethetised cats undergoing ovariohysterectomy. Journal of 
+Feline Medicine and Surgery 13 , 738–743
+Allopurinol
+(Zyloric*) POM 
+Formulations: Oral: 100 mg, 300 mg tablets.
+Action: Xanthine oxidase inhibition decreases formation of uric 
+acid by blocking the conversion of hypoxanthine to xanthine, and of 
+xanthine to uric acid.
+Use:
+• Treatment and prevention of recurrent uric acid uroliths and 
+hyperuricosuric calcium oxalate urolithiasis in dogs.
+• In combination with meglumine antimonite or miltefosine, to 
+treat leishmaniosis.
+Use with caution in patients with impaired renal function.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: May predispose to xanthine urolithiasis 
+especially if used for several months and not fed a purine  
+restricted diet.
+Drug interactions: In humans, allopurinol may enhance the 
+effects of azathioprine and theophylline.
+
+===== BSAVA PDF 28 / impressa 12 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+12
+DOSES
+Dogs: 
+• Uric acid urolithiasis:
+	■ Dissolution: 10 mg/kg p.o. q8h or 15 mg/kg p.o. q12h for up 
+to 4 weeks.
+	■ Prevention: 10–15 mg/kg p.o. q24h.
+• Leishmaniosis: 10 mg/kg p.o. q12h for at least 6–12 months  
+with meglumine antimonate for 1–2 months, or miltefosine  
+for 1 month (NB: this does not result in complete  
+parasitological cure). 
+Cats: Leishmaniosis: 10–20 mg/kg p.o. q12–24h has been shown to 
+be effective (although experience is limited in this species). 
+References
+Reguera RM, Moran M, Perez-Perteio Y et al . (2016) Current status on prevention and 
+treatment of canine leishmaniasis. Veterinary Parasitology  227, 98–114
+Alphaxalone see Alfaxalone
+Alprazolam
+(Alprazolam*, Xanax*) POM 
+Formulations: Oral: 0.25 mg, 0.5 mg, 1 mg, 2 mg tablets.
+Action: Increases GABA activity within the CNS, resulting in 
+anxiolysis and a range of cognitive effects including the inhibition of 
+memory.
+Use:
+• Treatment of anxiety and fear-related disorders in dogs and cats, 
+especially where there are signs of panic.
+• As an adjunct to clomipramine or specific serotonin reuptake 
+inhibitors for the management of phobic responses.
+• It can also be used for the management of urine spraying in cats 
+but a high relapse rate upon withdrawal should be expected.
+Best if used approximately 30 minutes before a fear-inducing event 
+although absorption characteristics have not been described for 
+cats or dogs. Its short half-life and rapid onset of action make it 
+useful for the management of acute episodes, with treatment given 
+as needed within the dosing limits described. However, dosing limits 
+and responses are very variable, with some animals showing no 
+measurable effect at the recommended doses. Its anterograde and 
+retrograde amnesic properties, especially on subjective memory, 
+mean it can be used before (<1 hour), during or immediately 
+following an aversive experience to minimize the emotional impact 
+of such exposure. This may be necessary during a long-term 
+behavioural therapy programme to avoid relapses due to exposure 
+to an intense fear-inducing stimulus during treatment. In 
+experimental circumstances, single higher range doses (>0.25 mg/
+kg) have been found to block memory significantly and may be 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 29 / impressa 13 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+13
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+useful in companion animals, but may result in temporary sedation. 
+As imepitoin is now licensed for use in the treatment of fears in 
+dogs, if a benzodiazepine is indicated, it is preferable to use this. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: Hypersensitivity to benzodiazepines, 
+glaucoma, significant liver or kidney disease, although appears to be 
+less hepatotoxic than diazepam or clorazepate. Not recommended 
+in pregnant or lactating animals. There is concern over its use with 
+anxiously aggressive animals due to the potential for disinhibition. 
+Adverse reactions: Drowsiness and mild transient incoordination 
+may develop. A general concern with benzodiazepines concerns 
+disinhibition and the subsequent emergence of aggression. 
+Idiosyncratic hepatotoxicity associated with benzodiazepines 
+(largely diazepam, but not alprazolam) has been reported in the cat.
+Drug interactions: Caution is advised if used in association with 
+antifungals such as itraconazole, which inhibit its metabolism.
+DOSES
+Dogs: For anxiolysis an initial dose within the range of 0.01–0.1 mg/
+kg p.o. as needed up to 4 times a day is recommended; the dose can 
+be titrated up or down to the minimum effective dose, which may be 
+below this level. 
+Cats: For anxiolysis an initial dose in the range of 0.125–0.25 mg/kg 
+p.o. as needed up to twice a day is suggested, but doses as low as 
+0.25 mg/cat p.o. q8–12h and as high as 0.6 mg/kg p.o. have been 
+reported. After initial medication, the dose should be titrated down 
+to the minimum effective dose.
+References
+Crowell-Davis SL, Seibert LM, Sung W et al . (2003) Use of clomipramine, alprazolam, and 
+behavior modification for treatment of storm phobia in dogs. Journal of the American 
+Veterinary Medical Association  222, 746–748
+Dale AR, Walker JK, Farnworth MJ et al . (2010) A survey of owners’ perceptions of fear of 
+fireworks in a sample of dogs and cats in New Zealand. New Zealand Veterinary Journal 
+58, 286–291
+Aluminium antacids  
+(Aluminium hydroxide)
+(Alucap*. With alginate: Acidex*, Gastrocote*, 
+Gaviscon Advance*, Peptac*. With magnesium 
+salt: Asilone*, Maalox*, Mucogel*) P, GSL  
+Formulations: Oral: Aluminium hydroxide is available as a dried 
+gel. Other products are composite preparations containing a variety 
+of other compounds including magnesium oxide, hydroxide or 
+trisilicate, potassium bicarbonate, sodium carbonate and 
+bicarbonate, alginates and dimeticone. Aluminium hydroxide 
+content varies.

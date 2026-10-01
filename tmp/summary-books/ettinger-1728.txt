@@ -1,0 +1,252 @@
+SECTION XV
+•
+Neurologic Disease
+1576
+eBooks.Health.Elsevier.com
+eventually dysphonia and dysphagia. Hypoventilation as a result 
+of respiratory muscle dysfunction results in hypoxemia in later/
+terminal stages of the disease.112
+DIAGNOSIS
+Several large breeds of dogs can be aected with DM but Ger-
+man Shepherd Dogs and Boxers are the most commonly aected 
+breeds; mixed-breed dogs have also been described with this 
+disease.113 Age of onset of neurologic signs is usually 5 years or 
+older with a mean age of 9 years in large dog breeds. e mean age 
+of aected Pembroke Welsh Corgis was 11.2 years in 1 study.104
+ere appears to be a female predominance (1.6:1) for the disease 
+in Corgis but not in other breeds.99
+The diagnosis is based primarily on the exclusion of other 
+myelopathies. Spinal imaging (myelogram, MRI, CT [ch. 112]) 
+is typically normal, but some dogs may have concurrent mild 
+disc protrusions. The clinician must then consider the dura-
+tion of clinical signs as well as the findings of the neurologi-
+cal examination to determine the significance of these lesions. 
+MRI is the imaging modality of choice to ensure that all other dif-
+ferentials are ruled out, including intramedullary lesions such as 
+neoplasms.114 Recent work has shown that dogs with DM under-
+going MRI diusion tensor imaging had signicant decreases in 
+fractional anisotropy (FA) within the regions of the spinal cord 
+that had high expected lesion load.115 Decreases in FA were most 
+signicant in dogs with severe forms of the disease and correlated 
+with neurological grade.
+Patients with DM typically have normal CSF results, or 
+increased protein levels with a normal cell count (ch. 109).104
+Phosphorylated neurolament heavy (pNF-H) concentration in 
+CSF is elevated in all stages of DM compared to old control dogs 
+and is now proposed as a promising sensitive biomarker for the 
+diagnosis of DM.116
+A DNA test based on the SOD1 mutation is commercially 
+available. Dogs that are homozygous for the mutation are at risk 
+for developing DM and will contribute one chromosome with the 
+mutant allele to all of their ospring. e heterozygotes are DM 
+carriers that are unlikely to develop clinical DM but could pass on 
+a chromosome with the mutant allele to half of their ospring.98
+Pembroke Welsh Corgis with DM have been demonstrated to 
+have signicantly higher plasma levels of the microRNA miR-
+26b, which correlates with disease progression. is has prompted 
+the suggestion that this may be a potential novel diagnostic bio-
+marker of DM.117
+Corticosteroids can be used for assisting in the dierential 
+diagnosis of this disease. ey will typically lead to improvement 
+in dogs with chronic compressive myelopathies (such as IVDD) 
+but will not benet dogs with DM. is strategy might be useful 
+to convince pet owners to pursue advanced  imaging.78
+TREATMENT AND PROGNOSIS
+No pharmacological therapy has been shown to alter the course 
+of DM. Vitamin supplementation, glucocorticoid administration, 
+aminocaproic acid, and N-acetylcysteine have all been used, but 
+none of these medications showed benecial eects.118 e only 
+treatment that has been shown to alter the long-term course of the 
+disease is physical therapy (ch. 256).119 In one retrospective study, 
+dogs with conrmed and suspected DM had controlled physical 
+therapy, including walking, passive range of motion of the pelvic 
+limbs, massage of pelvic limb and paraspinal muscles, and hydro-
+therapy. Dogs that were treated with a more intense physical 
+therapy regimen had a mean survival time of 255 days, compared 
+with dogs receiving a moderate regimen (130 days) or no physical 
+therapy (55 days).119 e long-term prognosis is poor, and most 
+dogs are euthanized due to severe pelvic limb dysfunction within 
+6-12 months. In the study of Pembroke Welsh Corgis, the average 
+time from diagnosis to death was 1.25 years.120
+INTERVERTEBRAL DISC DISEASE (IVDD)
+ETIOLOGY AND PATHOGENESIS
+e intervertebral discs are interposed in every intervertebral 
+space (except between C1 and C2), uniting the bodies of the 
+adjacent vertebrae.121,122 Each intervertebral disc consists of an 
+outer laminated brous ring (annulus brosus) and a central, 
+amorphous, gelatinous center (nucleus pulposus).123 e nucleus 
+pulposus is a highly hydrated gelatinous mesodermal remnant of 
+the notochord.122 Chondrodystrophic breeds show progressive 
+collagenation and calcication in the nucleus pulposus and inner 
+parts of the annulus brosus at an early age.122 e annulus bro-
+sus consists of bands of parallel bers that run obliquely from one 
+vertebral body to the next. ey provide a means for the trans-
+mission of stresses and strains that are required by all lateral and 
+upward movements.123
+Intervertebral disc degeneration or disease leads to extru-
+sion or protrusion (both termed herniation) of disc material 
+into the spinal canal, resulting in clinical signs due to spinal 
+cord compression and/or contusion.121,124 The component of 
+either compression and/or contusion varies with the specific 
+type of IVDD.
+e pathophysiologic mechanism of the resulting spinal 
+cord injury, which has been well described elsewhere,124 doesn’t 
+always explain the degree of associated neurological dysfunc-
+tion.125 IVDD has been traditionally classied as Hansen type I 
+and type II.126 Type I IVDD is herniation of the nucleus pulpo-
+sus through the annular bers and extrusion of nuclear material 
+into the spinal canal. It is typically associated with chondroid disc 
+degeneration but sometimes a hydrated nucleus pulposus extru-
+sion can be responsible for spinal cord dysfunction.127,128 e 
+disc extrudes through the dorsal annulus, causing ventral, ven-
+trolateral or circumferential compression of the spinal cord. Type 
+I IVDD typically aects chondrodystrophic breeds and has an 
+acute onset. However, large non-chondrodystrophic dog breeds 
+such as the Doberman Pinscher and Labrador Retriever may also 
+be aected,129 particularly when subsequent to trauma.130 Con-
+genital vertebral malformations result in early degeneration of 
+adjacent intervertebral discs,131 although clinical disc disease at 
+these sites may not be as common as elsewhere in the vertebral 
+column.132 Long backs, miniaturization and being overweight 
+also increase the risk of type I IVDD.133 Hansen type II IVDD is 
+annular protrusion caused by shiing of central nuclear material 
+and is commonly associated with late chondroid disc degenera-
+tion.96,134 e annulus brosus slowly protrudes into the vertebral 
+canal to cause spinal cord compression. e chronic compression 
+can lead to focal ischemic and other microvascular derangements 
+of the spinal cord. Type II IVDD usually occurs at the mobile 
+points of the vertebral column and is more common in older, 
+non-chondrodystrophic breeds of dog. It is not uncommon to 
+identify multiple aected disc spaces.
+In addition to these two classic forms, with the widespread use 
+of MRI, newer forms began to be recognized, such as acute non-
+compressive nucleus pulposus extrusion (ANNPE, also known 
+as “type III” missile discs, high-velocity low volume disc extru-
+sion), hydrated nucleus pulposus extrusion (HNPE—formerly, 
+intraspinal cyst or canine discal cyst), and intradural/intramedul-
+lary intervertebral disc extrusion (also known as traumatic disc 
+extrusion).135-140
+
+1577
+eBooks.Health.Elsevier.com
+CERVICAL DISC DISEASE
+Clinical Findings
+Most dogs with cervical disc disease, which accounts for 14-25% 
+of intervertebral disc disorders in dogs,141 142 have disc extrusion 
+rather than protrusion.143 Chondrodystrophoid and other small 
+breeds are at the greatest risk. Dachshunds, Toy Poodles and Bea-
+gles have been documented to account for the majority of cases144; 
+however, large-breed dogs such as Labrador Retrievers, Dalma-
+tians and Doberman Pinschers can be aected with cervical disc 
+extrusions, accounting for up to 24% of all cases.121 143 145 146 Most 
+aected dogs are 4-8 years old when they present with clinical 
+signs, with a mean age ranging from 6.3 years to 8.6 years; it is 
+extremely rare for dogs <2 years of age to be aected.109-113 Males 
+and females are evenly aected.144 When large-breed dogs have 
+acute or chronic cervical disc disease, the disease might be part 
+of CSM (see CSM, above). Most cases of cervical disc disease 
+in chondrodystrophoid dogs occur in the cranial cervical spine, 
+with 80% aecting C2-C4 spaces and 44-59% aecting C2-C3 
+alone141 142; however, most large-breed dogs are aected at the 
+C6-C7 intervertebral disc space and most protrusions versus 
+extrusions are more caudally located.143 147
+Approximately 45% of dogs with cervical disc extrusion 
+will have an acute onset of signs, with the other 55% experi-
+encing a slower onset of signs, whether the dogs are large non-
+chondrodystrophoid or small breeds.143 e predominant clinical 
+sign is evidence of cervical pain, which can be seen in up to 60% 
+of dogs with no neurological decits and nearly 90% of aected 
+dogs overall.143 148 Cervical pain, evident from the animal’s pos-
+ture or from palpation of the spine and muscles of the neck, can 
+be extreme, unremitting, and refractory to medication, which is 
+apparently less likely with the newer forms, such as HNPE and 
+ANNPE.128
+e classic presentation of ANNPE is an acute myelopathy, 
+typically associated with trauma or strenuous exercise, which is 
+oen severe, and strongly asymmetric in 90% of cases136 149 (an 
+important dierential for this presentation is brocartilaginous 
+embolic myelopathy; MRI is required for dierentiation; ch. 251). 
+In contrast, HNPE typically presents as a non-painful severe 
+cervical myelopathy (non-ambulatory tetraparesis is the most 
+common sign), usually with bilaterally symmetrical signs. It is 
+important to emphasize that HNPE happens most commonly in 
+the cervical region.
+Nerve “root signature” is another frequent nding with cervical 
+disc disease. It occurs in 22-50% of dogs, mostly with extrusions 
+or protrusions.142 148 Neurological decits may be restricted to one 
+thoracic limb or the animal may show hemiparesis, tetraparesis or 
+even tetraplegia with hypoventilation. Ambulatory tetraparesis is 
+seen in up to 42% of dogs and 11-22% exhibit non-ambulatory 
+tetraparesis.143 148 150 Tetraplegia is uncommon and has been 
+described in 2-7% of cases.143 Neurological decits are more com-
+mon with lesions at C4-C5 to C6-C7 inclusive, which may reect 
+the greater degree of space in the cranial vertebral canal compared 
+to more caudally.151 e reduction or loss of thoracic limb reexes 
+usually implies a C6-T2 spinal cord lesion; however, 36% of dogs 
+with reduced to absent thoracic limb reexes actually have a C1-
+C5 spinal cord lesion.146 Some large breed dogs with type II IVDD 
+can also show signs of a C6-8 myelopathy, with decreased exor 
+reexes and increased extensor tone.
+Diagnosis
+Survey radiographs can help to rule out discospondylitis, neopla-
+sia, and anatomic malformations, which may be considerations 
+given the clinical signs.152 Although radiographic signs such as 
+narrowing of the intervertebral disc space and dorsal displace-
+ment of mineralized disc material may be highly suggestive of 
+disc extrusion, myelography, CT or MRI is essential for a deni-
+tive diagnosis (ch. 112).152 e overall accuracy rate for correct 
+identication of the site(s) of disc extrusion with radiography is 
+35%.152 CSF analysis should be considered to rule out inamma-
+tory disease (ch. 109). Deviation of the ventral contrast column is 
+the most common myelographic nding of cervical disc disease; 
+oblique views can help with lateralized localizations.153 154 CT 
+performed aer myelography can provide more detailed informa-
+tion on the localization of the compressive lesion (Figure 250.6), 
+particularly for lateralized discs and intradural discs.138 155 MRI 
+is the best method for evaluation of the cervical spinal cord and 
+it provides a safe and non-invasive method for obtaining high-
+resolution images (Figure 250.6).156 157 is imaging modality can 
+provide detailed information on the structure of the interverte-
+bral discs and spinal cord and may help with prognosis.158 159 MRI 
+also allows diagnosis of the newer IVDD forms such as ANNPE 
+and HNPE.
+Treatment
+Strict cage rest for 3-4 weeks is the most important aspect of a 
+conservative approach to cervical disc extrusion. is can be fol-
+lowed by restricted and gradual incremental exercise over the 
+next month using a body harness rather than a collar and leash. 
+e protracted period of rest enables resolution of the inamma-
+tion and stabilization of the ruptured disc by brosis, preventing 
+further herniation.121 e use of anti-inammatory medications 
+such as corticosteroids or non-steroidal analgesics can be recom-
+mended for a few days to accompany the rest (ch. 143). Analgesic 
+medications may be necessary in some dogs in addition or in place 
+of the anti-inammatory medications (ch. 6). e use of acupunc-
+ture in dogs with cervical disc disease has been described and 
+was reported to be associated with an initial recovery in 69% of 
+cases.160 Muscle relaxants such as diazepam and methocarbamol 
+are useful adjunctive medications in dogs with neck pain related 
+to disc disease. Signs of nerve root involvement such as nerve 
+root signature, or foraminal herniation identied on advanced 
+imaging, may be treated with gabapentin (10-20 mg/kg PO q8h) 
+A
+B
+D
+C
+Figure 250.6
+Intervertebral disc disease. A, Sagittal reconstructed 
+computed tomography (CT) scan post-myelography of the cervical spi-
+nal cord of a dog with acute neck pain. e ventral contrast column is 
+thinned and dorsally deviated over the C3-C4 disc space (arrow) due 
+to a disc extrusion (type I disease). B, e transverse CT-myelographic 
+image at the level of the C3-C4 disc space conrms ventral cord com-
+pression. C, A sagittal T2-weighted magnetic resonance imaging (MRI) 
+of the cervical spinal cord of a dog with acute tetraparesis. Ventral cord 
+compression can be identied above the C4-C5 disc space due to a 
+hyperintense lesion (arrow). D, A transverse T2-weighted MRI at the 
+C4-C5 disc space conrms that the cord is ventrally compressed by a 
+hyperintense structure, which is compatible with acute hydrated nu-
+cleus pulposus extrusion.
+CHAPTER 250
+•
+Spinal Cord Diseases: Congenital (Developmental), Inammatory

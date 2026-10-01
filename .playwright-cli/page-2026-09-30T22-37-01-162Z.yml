@@ -1,0 +1,106 @@
+- generic [ref=e3]:
+  - navigation "Navegação estrutural" [ref=e4]:
+    - link "Início" [ref=e5] [cursor=pointer]:
+      - /url: /consulta-vet
+    - link "Referências clínicas" [ref=e8] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=e11]: Ultrassom
+  - generic [ref=e12]:
+    - link "Voltar aos mini-apps" [ref=e13] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=e20]:
+      - heading "Valores de ultrassom" [level=1] [ref=e21]
+      - paragraph [ref=e22]: Escolha uma estrutura e filtre espécie e fase de vida. As medidas trazem população, técnica e página do livro; médias não são limites de normalidade.
+  - main [ref=e23]:
+    - region [ref=e24]:
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - paragraph [ref=e27]: Navegação por órgão
+          - heading "Qual estrutura deseja consultar?" [level=2] [ref=e28]
+        - paragraph [ref=e29]: 20 áreas organizadas
+      - generic [ref=e30]:
+        - generic [ref=e31]: Pesquisar órgão
+        - searchbox "Pesquisar órgão" [ref=e33]
+        - status [ref=e34]: 20 estruturas encontradas
+      - generic [ref=e35]:
+        - button "Fígado Tamanho, margens e parênquima" [ref=e36] [cursor=pointer]:
+          - generic [ref=e38]: Fígado
+          - generic [ref=e39]: Tamanho, margens e parênquima
+        - button "Vesícula biliar Volume, parede e ducto biliar" [ref=e40] [cursor=pointer]:
+          - generic [ref=e42]: Vesícula biliar
+          - generic [ref=e43]: Volume, parede e ducto biliar
+        - button "Baço Altura felina e avaliação canina" [ref=e44] [cursor=pointer]:
+          - generic [ref=e46]: Baço
+          - generic [ref=e47]: Altura felina e avaliação canina
+        - button "Rins Comprimento, pelve e Doppler" [ref=e48] [cursor=pointer]:
+          - generic [ref=e50]: Rins
+          - generic [ref=e51]: Comprimento, pelve e Doppler
+        - button "Estômago Espessura total da parede" [ref=e52] [cursor=pointer]:
+          - generic [ref=e54]: Estômago
+          - generic [ref=e55]: Espessura total da parede
+        - button "Intestino delgado Duodeno, jejuno e íleo Filhote" [ref=e56] [cursor=pointer]:
+          - generic [ref=e58]: Intestino delgado
+          - generic [ref=e59]: Duodeno, jejuno e íleo
+          - generic [ref=e60]: Filhote
+        - button "Cólon Espessura da parede" [ref=e61] [cursor=pointer]:
+          - generic [ref=e63]: Cólon
+          - generic [ref=e64]: Espessura da parede
+        - button "Pâncreas Lobos e ducto pancreático" [ref=e65] [cursor=pointer]:
+          - generic [ref=e67]: Pâncreas
+          - generic [ref=e68]: Lobos e ducto pancreático
+        - button "Adrenais Espessura por porte e lado" [ref=e69] [cursor=pointer]:
+          - generic [ref=e71]: Adrenais
+          - generic [ref=e72]: Espessura por porte e lado
+        - button "Bexiga Parede conforme distensão" [ref=e73] [cursor=pointer]:
+          - generic [ref=e75]: Bexiga
+          - generic [ref=e76]: Parede conforme distensão
+        - button "Próstata Tamanho, idade e castração" [ref=e77] [cursor=pointer]:
+          - generic [ref=e79]: Próstata
+          - generic [ref=e80]: Tamanho, idade e castração
+        - button "Útero Cornos, corpo e cérvix" [ref=e81] [cursor=pointer]:
+          - generic [ref=e83]: Útero
+          - generic [ref=e84]: Cornos, corpo e cérvix
+        - button "Ovários Comprimento e folículos" [ref=e85] [cursor=pointer]:
+          - generic [ref=e87]: Ovários
+          - generic [ref=e88]: Comprimento e folículos
+        - button "Linfonodos Forma e linfonodos jejunais" [ref=e89] [cursor=pointer]:
+          - generic [ref=e91]: Linfonodos
+          - generic [ref=e92]: Forma e linfonodos jejunais
+        - button "Ureteres Visualização do lúmen" [ref=e93] [cursor=pointer]:
+          - generic [ref=e95]: Ureteres
+          - generic [ref=e96]: Visualização do lúmen
+        - button "Testículos Parênquima e mediastino" [ref=e97] [cursor=pointer]:
+          - generic [ref=e99]: Testículos
+          - generic [ref=e100]: Parênquima e mediastino
+        - button "Olhos Diâmetro do globo ocular" [ref=e101] [cursor=pointer]:
+          - generic [ref=e103]: Olhos
+          - generic [ref=e104]: Diâmetro do globo ocular
+        - button "Tireoide Dimensões dos lobos" [ref=e105] [cursor=pointer]:
+          - generic [ref=e107]: Tireoide
+          - generic [ref=e108]: Dimensões dos lobos
+        - button "Paratireoides Diâmetro glandular" [ref=e109] [cursor=pointer]:
+          - generic [ref=e111]: Paratireoides
+          - generic [ref=e112]: Diâmetro glandular
+        - button "Coração Ecocardiografia e peso" [ref=e113] [cursor=pointer]:
+          - generic [ref=e115]: Coração
+          - generic [ref=e116]: Ecocardiografia e peso
+    - paragraph [ref=e120]:
+      - text: O selo
+      - strong [ref=e121]: Filhote
+      - text: indica dado pediátrico publicado — atualmente restrito ao intestino delgado de Beagles de 7–12 semanas. Nos demais filtros pediátricos, o app informa a lacuna diretamente.
+  - region [ref=e122]:
+    - heading "Livros consultados" [level=2] [ref=e126]
+    - generic [ref=e127]:
+      - article [ref=e128]:
+        - paragraph [ref=e129]: Thrall’s Textbook of Veterinary Diagnostic Radiology
+        - paragraph [ref=e130]: 8ª edição · 2025 · Gabriela S. Seiler e Donald E. Thrall
+        - paragraph [ref=e131]: Capítulos 39–47; a página impressa e a página do PDF aparecem em cada linha.
+      - article [ref=e132]:
+        - paragraph [ref=e133]: BSAVA Manual of Canine and Feline Ultrasonography
+        - paragraph [ref=e134]: 1ª edição · 2011 · Frances Barr e Lorrie Gaschen (editoras)
+        - paragraph [ref=e135]: "Capítulos 6, 7, 10 e 17–19: coração, linfonodos, ureteres, testículos, olhos e glândulas cervicais; páginas indicadas em cada linha."
+      - article [ref=e136]:
+        - paragraph [ref=e137]: Point-of-Care Ultrasound Techniques for the Small Animal Practitioner
+        - paragraph [ref=e138]: 2ª edição · 2021 · Gregory R. Lisciandro (editor)
+        - paragraph [ref=e139]: Capítulo 9, avaliação focal do baço; páginas indicadas nas referências.
+    - generic [ref=e140]: Ferramenta de consulta rápida. Medidas isoladas não substituem exame completo, correlação clínica, laudo do imaginologista ou amostragem quando indicada.

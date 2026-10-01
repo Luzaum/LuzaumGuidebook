@@ -1,0 +1,103 @@
+- main [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - heading "Enrofloxacina" [level=1] [ref=f1e5]
+    - generic [ref=f1e7]:
+      - heading "Resumo Clínico Executivo" [level=2] [ref=f1e14]
+      - generic [ref=f1e15]:
+        - paragraph [ref=f1e16]: Em palavras simples
+        - generic [ref=f1e20]:
+          - paragraph [ref=f1e21]: É um antibiótico para infecções por bactérias sensíveis. Em gatos, a exposição excessiva pode lesionar a visão.
+          - group [ref=f1e22]:
+            - generic "Entenda como funciona" [ref=f1e23] [cursor=pointer]
+      - generic [ref=f1e24]:
+        - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f1e25]
+        - generic [ref=f1e26]:
+          - generic [ref=f1e27]:
+            - generic [ref=f1e28]: Bactericidia Concentração-Dependente
+            - generic [ref=f1e34]:
+              - paragraph [ref=f1e35]: A eficácia depende da concentração atingida; subdosagem pode favorecer resistência.
+              - group [ref=f1e36]:
+                - generic "Ver mecanismo completo" [ref=f1e37] [cursor=pointer]
+          - generic [ref=f1e38]:
+            - generic [ref=f1e39]: Penetração Tecidual Ampla e Intracelular
+            - generic [ref=f1e45]:
+              - paragraph [ref=f1e46]: Penetra em rins, próstata, pulmões e pele, conforme a indicação.
+              - group [ref=f1e47]:
+                - generic "Ver mecanismo completo" [ref=f1e48] [cursor=pointer]
+          - generic [ref=f1e49]:
+            - generic [ref=f1e50]: Espectro Gram-Negativo Potente com Lacunas Críticas
+            - generic [ref=f1e56]:
+              - paragraph [ref=f1e57]: Atua contra gram-negativos sensíveis, mas não cobre anaeróbios estritos e tem lacunas contra alguns gram-positivos.
+              - group [ref=f1e58]:
+                - generic "Ver mecanismo completo" [ref=f1e59] [cursor=pointer]
+          - generic [ref=f1e60]:
+            - generic [ref=f1e61]: Teto Posológico Felino Inegociável (5 mg/kg/dia)
+            - generic [ref=f1e67]:
+              - paragraph [ref=f1e68]: Respeitar a exposição em gatos é essencial para proteger a retina.
+              - group [ref=f1e69]:
+                - generic "Ver mecanismo completo" [ref=f1e70] [cursor=pointer]
+      - generic [ref=f1e71]:
+        - heading "Indicações de Uso Resumidas" [level=3] [ref=f1e72]
+        - generic [ref=f1e73]:
+          - paragraph [ref=f1e74]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - group [ref=f1e75]:
+            - generic "Ver indicações, doses e duração" [ref=f1e76] [cursor=pointer]
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]: Aviso Clínico Importante
+        - generic [ref=f1e82]:
+          - paragraph [ref=f1e83]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento. Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+          - group [ref=f1e84]:
+            - generic "Ver todos os cuidados e ressalvas" [ref=f1e85] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=f1e86]
+    - generic [ref=f1e87]:
+      - heading "Resumo rápido" [level=2] [ref=f1e88]
+      - generic [ref=f1e89]:
+        - generic [ref=f1e90]:
+          - button "Visão Geral" [ref=f1e91] [cursor=pointer]
+          - button "Plano diagnóstico" [ref=f1e96] [cursor=pointer]
+          - button "Plano de tratamento" [active] [ref=f1e100] [cursor=pointer]
+        - generic [ref=f1e218]:
+          - paragraph [ref=f1e219]: Fluxo Terapêutico Escalonado de UTI Canina (AAHA 2024 / IRIS 2026)
+          - list "Fluxo Terapêutico Escalonado de UTI Canina (AAHA 2024 / IRIS 2026)" [ref=f1e220]:
+            - listitem [ref=f1e221]:
+              - generic [ref=f1e222]: "1"
+              - generic [ref=f1e226]:
+                - generic [ref=f1e227]:
+                  - 'heading "Passo 1: Restauração da Euvolemia com Cristaloides Balanceados" [level=5] [ref=f1e228]'
+                  - generic [ref=f1e229]: Primeiras 2 a 6 horas
+                - paragraph [ref=f1e230]: Se o paciente estiver desidratado ou hipovolêmico, infundir cristaloides isotônicos balanceados (Ringer Lactato ou Plasma-Lyte 148). Em choque hipovolêmico, usar alíquotas de 10 a 20 mL/kg em 15-30 min com reavaliação contínua. Evitar salina a 0,9% de rotina para prevenir acidose hiperclorêmica.
+            - listitem [ref=f1e231]:
+              - generic [ref=f1e232]: "2"
+              - generic [ref=f1e236]:
+                - generic [ref=f1e237]:
+                  - 'heading "Passo 2: Transição Rígida para a Regra de \"Ins and Outs\"" [level=5] [ref=f1e238]'
+                  - generic [ref=f1e239]: Após atingir euvolemia
+                - paragraph [ref=f1e240]: Assim que a euvolemia for alcançada, cessar infusões empíricas. O aporte hídrico de manutenção deve corresponder estritamente ao débito urinário horário medido mais perdas insensíveis (20 mL/kg/dia em cães) mais perdas contemporâneas por vômito e diarreia.
+            - listitem [ref=f1e241]:
+              - generic [ref=f1e242]: "3"
+              - generic [ref=f1e246]:
+                - generic [ref=f1e247]:
+                  - 'heading "Passo 3: Manejo Emergencial da Hipercalemia Cardiotóxica" [level=5] [ref=f1e248]'
+                  - generic [ref=f1e249]: Imediato se K+ elevado
+                - paragraph [ref=f1e250]: "Se K+ > 6,5 mmol/L com alterações no ECG (ondas T altas, ausência de onda P, QRS alargado): administrar gluconato de cálcio 10% (0,5 a 1,0 mL/kg IV lento sob ECG), seguido de insulina regular (0,25 a 0,5 UI/kg IV) com 2 g de glicose por unidade de insulina e terbutalina."
+            - listitem [ref=f1e251]:
+              - generic [ref=f1e252]: "4"
+              - generic [ref=f1e256]:
+                - generic [ref=f1e257]:
+                  - 'heading "Passo 4: Antibioticoterapia Guiada para Leptospirose" [level=5] [ref=f1e258]'
+                  - generic [ref=f1e259]: Primeira hora após coleta
+                - paragraph [ref=f1e260]: Iniciar ampicilina sódica (20 a 30 mg/kg IV q6-8h) em cães anoréxicos ou com vômitos. Assim que o trato gastrointestinal tolerar, fazer transição para doxiciclina oral (5 mg/kg q12h por 14 dias ininterruptos) para erradicar a colonização dos túbulos renais e o estado de portador.
+            - listitem [ref=f1e261]:
+              - generic [ref=f1e262]: "5"
+              - generic [ref=f1e266]:
+                - generic [ref=f1e267]:
+                  - 'heading "Passo 5: Desafio Diurético Criterioso em Oligoanúria Euvolêmica" [level=5] [ref=f1e268]'
+                  - generic [ref=f1e269]: Após confirmação de euvolemia
+                - paragraph [ref=f1e270]: Se o paciente permanecer oligoanúrico (< 1 mL/kg/h) a despeito de comprovadamente euvolêmico, realizar desafio com furosemida (2 mg/kg IV em bólus; ou 0,5 a 1,0 mg/kg/h em CRI). Se não houver resposta em 2 a 4 horas, suspender a furosemida para evitar ototoxicidade e acúmulo.
+            - listitem [ref=f1e271]:
+              - generic [ref=f1e272]: "6"
+              - generic [ref=f1e275]:
+                - generic [ref=f1e276]:
+                  - 'heading "Passo 6: Terapias de Purificação Extracorpórea (IHD / CRRT / DP)" [level=5] [ref=f1e277]'
+                  - generic [ref=f1e278]: Primeiras 12 a 24 horas
+                - paragraph [ref=f1e279]: Acionar serviço de terapia renal substitutiva (hemodiálise intermitente, CRRT ou diálise peritoneal) sem demora diante de anúria persistente, hipercalemia refratária, acidose metabólica grave incontrolável ou sobrecarga de volume (>= 5-10% do peso).

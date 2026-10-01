@@ -1,0 +1,10 @@
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import '../index.css';
+import { MedicationQuickSummaryPanel } from '../modules/consulta-vet/components/medication/MedicationQuickSummaryPanel';
+import { DiseaseQuickSummaryPanel } from '../modules/consulta-vet/components/disease/DiseaseQuickSummaryPanel';
+import { medicationsSeed } from '../modules/consulta-vet/data/seed/medications.seed';
+import { diseasesSeed } from '../modules/consulta-vet/data/seed/diseases.seed';
+const m=medicationsSeed.find(x=>x.slug==='enrofloxacina')!;
+const d=diseasesSeed.find(x=>x.slug==='lesao-renal-aguda-canina')!;
+createRoot(document.getElementById('root')!).render(<main className="min-h-screen bg-slate-950 p-4 text-white"><div className="mx-auto max-w-5xl space-y-5"><h1 className="text-xl font-bold">Enrofloxacina</h1><MedicationQuickSummaryPanel medication={m}/><h1 className="text-xl font-bold">Lesão renal aguda canina</h1><section className="rounded-3xl bg-gradient-to-br from-amber-900 via-slate-950 to-slate-950 p-4 md:p-7"><h2 className="mb-4 text-lg font-bold">Resumo rápido</h2><DiseaseQuickSummaryPanel data={d.quickSummaryRich!} slug={d.slug} plainLanguage={d.plainLanguage}/></section></div></main>);

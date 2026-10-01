@@ -1,0 +1,97 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - heading "Enrofloxacina" [level=1] [ref=e5]
+    - generic [ref=e7]:
+      - heading "Resumo Clínico Executivo" [level=2] [ref=e14]
+      - generic [ref=e15]:
+        - paragraph [ref=e16]: Em palavras simples
+        - generic [ref=e20]:
+          - paragraph [ref=e21]: É um antibiótico para infecções por bactérias sensíveis. Em gatos, a exposição excessiva pode lesionar a visão.
+          - group [ref=e22]:
+            - generic "Entenda como funciona" [ref=e23] [cursor=pointer]
+      - generic [ref=e24]:
+        - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=e25]
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - generic [ref=e28]: Bactericidia Concentração-Dependente
+            - generic [ref=e34]:
+              - paragraph [ref=e35]: A exposição influencia sua ação bactericida.
+              - group [ref=e36]:
+                - generic "Ver mecanismo completo" [ref=e37] [cursor=pointer]
+          - generic [ref=e38]:
+            - generic [ref=e39]: Penetração Tecidual Ampla e Intracelular
+            - generic [ref=e45]:
+              - paragraph [ref=e46]: Alcança diferentes tecidos e compartimentos celulares.
+              - group [ref=e47]:
+                - generic "Ver mecanismo completo" [ref=e48] [cursor=pointer]
+          - generic [ref=e49]:
+            - generic [ref=e50]: Espectro Gram-Negativo Potente com Lacunas Críticas
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: As limitações de cobertura precisam ser consideradas.
+              - group [ref=e58]:
+                - generic "Ver mecanismo completo" [ref=e59] [cursor=pointer]
+          - generic [ref=e60]:
+            - generic [ref=e61]: Teto Posológico Felino Inegociável (5 mg/kg/dia)
+            - generic [ref=e67]:
+              - paragraph [ref=e68]: Respeitar a exposição em gatos é essencial para proteger a retina.
+              - group [ref=e69]:
+                - generic "Ver mecanismo completo" [ref=e70] [cursor=pointer]
+      - generic [ref=e71]:
+        - heading "Indicações de Uso Resumidas" [level=3] [ref=e72]
+        - generic [ref=e73]:
+          - paragraph [ref=e74]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - group [ref=e75]:
+            - generic "Ver indicações, doses e duração" [ref=e76] [cursor=pointer]
+      - generic [ref=e77]:
+        - generic [ref=e78]: Aviso Clínico Importante
+        - generic [ref=e82]:
+          - paragraph [ref=e83]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento. Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+          - group [ref=e84]:
+            - generic "Ver todos os cuidados e ressalvas" [ref=e85] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=e86]
+    - generic [ref=e87]:
+      - heading "Resumo rápido" [level=2] [ref=e88]
+      - generic [ref=e89]:
+        - generic [ref=e90]:
+          - button "Visão Geral" [ref=e91] [cursor=pointer]
+          - button "Plano diagnóstico" [ref=e96] [cursor=pointer]
+          - button "Plano de tratamento" [ref=e100] [cursor=pointer]
+        - generic [ref=e105]:
+          - generic [ref=e106]:
+            - heading "O que é isso em palavras simples?" [level=4] [ref=e107]
+            - generic [ref=e111]:
+              - paragraph [ref=e112]: Os rins deixam de funcionar bem de repente. O cão pode vomitar, ficar abatido e mudar a quantidade de urina. O tratamento procura a causa e controla as complicações.
+              - group [ref=e113]:
+                - generic "Entenda melhor" [ref=e114] [cursor=pointer]
+          - generic [ref=e115]:
+            - generic [ref=e117]:
+              - heading "Visão clínica" [level=4] [ref=e118]
+              - generic [ref=e119]:
+                - paragraph [ref=e120]: Deterioração rápida da função renal por causas como isquemia, toxinas ou infecção.
+                - group [ref=e121]:
+                  - generic "Ler explicação clínica" [ref=e122] [cursor=pointer]
+            - generic [ref=e123]:
+              - generic [ref=e124]:
+                - paragraph [ref=e125]: Fim da Diurese Forçada e Regra de Ins & Outs
+                - generic [ref=e127]:
+                  - paragraph [ref=e128]: Soro corrige a falta de líquido, mas o excesso pode piorar o quadro.
+                  - group [ref=e129]:
+                    - generic "Ver explicação completa" [ref=e130] [cursor=pointer]
+              - generic [ref=e131]:
+                - paragraph [ref=e132]: Cinética da Creatinina e Estadiamento IRIS 2026
+                - generic [ref=e134]:
+                  - paragraph [ref=e135]: A evolução da creatinina ajuda a detectar e classificar a lesão.
+                  - group [ref=e136]:
+                    - generic "Ver explicação completa" [ref=e137] [cursor=pointer]
+              - generic [ref=e138]:
+                - paragraph [ref=e139]: "Identificação Etiológica: Leptospirose e Toxinas"
+                - generic [ref=e141]:
+                  - paragraph [ref=e142]: Leptospirose e intoxicações estão entre as causas investigadas.
+                  - group [ref=e143]:
+                    - generic "Ver explicação completa" [ref=e144] [cursor=pointer]
+              - generic [ref=e145]:
+                - paragraph [ref=e146]: Controle da Hipercalemia e Suporte Dialítico Ágil
+                - generic [ref=e148]:
+                  - paragraph [ref=e149]: Potássio elevado e outras complicações podem exigir tratamento intensivo e diálise.
+                  - group [ref=e150]:
+                    - generic "Ver explicação completa" [ref=e151] [cursor=pointer]

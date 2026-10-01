@@ -1,17 +1,22 @@
+import { PROGRESSIVE_SUMMARY_PREVIEWS } from '../../data/progressiveSummaryPreviews';
+import { CONCISE_DISEASE_SUMMARIES } from '../../data/conciseClinicalSummaries';
+import { SummaryPreview } from '../shared/SummaryPreview';
 import React from 'react';
 import { Zap } from 'lucide-react';
 import { ClinicalAbbreviationText } from '../../utils/clinicalAbbreviationInline';
 
 interface QuickDecisionStripProps {
   items: string[];
+  slug?: string;
   className?: string;
 }
 
 /**
  * Faixa horizontal com frases curtas — só o essencial para decisão rápida.
  */
-export function QuickDecisionStrip({ items, className = '' }: QuickDecisionStripProps) {
-  const trimmed = items.map((s) => s.trim()).filter(Boolean).slice(0, 5);
+export function QuickDecisionStrip({ items, slug, className = '' }: QuickDecisionStripProps) {
+  const trimmed = items.map((s) => s.trim()).filter(Boolean);
+  const preview = slug ? (PROGRESSIVE_SUMMARY_PREVIEWS[slug]?.attention ?? CONCISE_DISEASE_SUMMARIES[slug]?.points.join(' ')) : undefined;
   if (!trimmed.length) return null;
 
   return (
@@ -25,6 +30,7 @@ export function QuickDecisionStrip({ items, className = '' }: QuickDecisionStrip
           <Zap className="h-4 w-4" aria-hidden />
           Decisão rápida
         </p>
+        <SummaryPreview preview={preview} dark={false}>
         <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-1 [scrollbar-width:thin]">
           {trimmed.map((text, index) => (
             <div
@@ -40,6 +46,7 @@ export function QuickDecisionStrip({ items, className = '' }: QuickDecisionStrip
             </div>
           ))}
         </div>
+        </SummaryPreview>
       </div>
     </section>
   );

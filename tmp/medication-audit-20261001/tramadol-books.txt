@@ -1,0 +1,828 @@
+
+===== Plumb PDF 1288 =====
+Tramadol   1261
+Monitoring
+ ■ Serum electrolytes, BUN, creatinine, glucose (if diabetic)
+ ■ Hydration status
+ ■ Blood pressure, if indicated
+ ■ Clinical signs of edema, patient weight, if indicated
+Client Information
+ ■ While taking this medicine, your animal will drink and urinate 
+more often than usual. Be sure your animal always has access to 
+freshwater. Y ou may give this medicine with or without food. 
+ ■ While your animal is taking this medicine, your veterinarian will 
+need to monitor your animal closely. Do not miss these important 
+follow-up visits. 
+ ■ Contact your veterinarian immediately if you notice excessive 
+thirst, weakness, collapse (passing out), head tilt, lack of urina -
+tion, or a racing heartbeat.
+Chemistry/Synonyms
+Torsemide is a lipophilic anilinopyridine sulfonylurea loop diuretic 
+that occurs as white to off-white, crystalline powder. It is practically 
+insoluble in water and slightly soluble in alcohol.
+Torsemide may also be known as torasemide, AC-3525, AC 4464, 
+BM-02.015, JDL-464, and Demadex®. International trade names 
+include Isemid®, Torem®, and Unat®.
+Storage/Stability
+Store torsemide tablets below 40°C (104°F); preferably between 15°C 
+and 30°C (59°F and 86°F).
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE IN THE US.
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS :
+Torsemide Oral Tablets: 5 mg, 10 mg, 20 mg, and 100 mg; Demadex®, 
+generic; (Rx)
+Torsemide Injection: 10 mg/mL; generic; (Rx). NOTE: This product 
+has been discontinued.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Tramadol
+(tram-ah-doll) Ultram®
+Opioid Agonist
+Prescriber Highlights
+ ▶ Synthetic mu-receptor partial opioid agonist that also inhibits 
+the reuptake of serotonin and norepinephrine
+ ▶ Appears useful as an analgesic in cats, but studies in dogs pro-
+vide conflicting evidence of analgesia; may take up to 2 weeks 
+for full analgesic activity in chronic pain states
+ ▶ It is contraindicated in patients hypersensitive to it and other 
+opioids, and in those with GI obstruction. Use with caution in 
+patients with a history of seizures or patients receiving other 
+CNS or respiratory depressants.
+ ▶ Appears well tolerated in dogs; sedation is the most likely 
+adverse effect.
+ ▶ Several potential clinically significant drug interactions exist; 
+avoid use with selective serotonin reuptake inhibitors (SSRIs; 
+eg, fluoxetine) or monoamine oxidase inhibitors (MAOIs; eg, 
+selegiline).
+ ▶ DEA Schedule IV (C-IV) controlled substance
+Uses/Indications
+Tramadol is used for adjunct treatment of postoperative or chronic 
+pain in many species. It is most useful when used in combination 
+with NSAIDs or other analgesic drugs (eg, amantadine, gabapentin, 
+alpha-2  agonists).1 Tramadol use as an analgesic was widely adopt -
+ed in veterinary medicine in part based on its low cost and previ -
+ous status as a noncontrolled drug; however, evidence of efficacy is 
+conflicting and studies demonstrating tramadol’s efficacy as a sole 
+analgesic2–5 are outweighed by studies that cite its limitations.1,6–11 A 
+meta-analysis that reviewed the efficacy of tramadol for postopera -
+tive pain management in dogs found that tramadol likely results in 
+a decreased need for rescue analgesia compared to no treatment or 
+placebo, but the certainty of the evidence was determined to be low.12 
+Studies of tramadol in dogs with osteoarthritis did not show benefits 
+compared to placebo.10,13 Anecdotally, tramadol has also been used 
+as an anti-tussive agent; however, evidence of efficacy is lacking.
+Tramadol’s efficacy as an analgesic in cats is more robust.14–19 
+In horses, tramadol administered as an epidural may also be use-
+ful as an analgesic, but no appropriate commercial dosage forms are 
+available in the United States; however, studies evaluating the an -
+tinociceptive effects in horses after IV administration have found 
+that IV tramadol is not an effective analgesic in horses when used 
+alone.20,21 Some studies have shown benefits when used in combi -
+nation therapy.21,22 In donkeys, tramadol used with lidocaine as an 
+epidural has a shorter onset and longer duration of action than when 
+lidocaine is used alone.23
+Tramadol administered systemically in sheep, camels, and came-
+lids has noticeable adverse effects and a lack of efficacy and should 
+not be used in those species.24–28
+Pharmacology/Actions
+Tramadol is a centrally acting partial opioid agonist with primar -
+ily mu-receptor activity. It also weakly inhibits the reuptake of se -
+rotonin and norepinephrine. Analgesic activity is due to the parent 
+compound and its active metabolite, M1 (O-desmethyltramadol 
+[ODT]). When compared with tramadol in laboratory animal stud-
+ies, M1 was 20 times more potent in binding to mu receptors and was 
+6 times more potent as an analgesic. 
+Naloxone only partially antagonizes the analgesic effects of trama-
+dol; other partial antagonists include yohimbine and ondansetron.
+
+
+===== Plumb PDF 1289 =====
+1262    Tramadol
+Pharmacokinetics
+Bioavailability is ≈65% after oral administration of immediate-re -
+lease tablets in dogs, but there is significant interpatient variabili -
+ty. Rectal bioavailability is ≈10%. The volume of distribution (V D), 
+total body clearance, and half-life are 3.8 L/kg, 55 mL/kg/minute, 
+and 1.7 hours, respectively.29 Tramadol is extensively metabolized via 
+several pathways to at least 20 metabolites. The active M1 metabolite 
+is formed by cytochrome P450 2D15 (CYP2D15) but is a minor me-
+tabolite in dogs.30,31 M1 has a half-life of ≈2 hours after oral tramadol 
+administration.29 Dogs appear to produce substantial quantities of 
+the inactive metabolite M2 via CYP2B11. M1 and M2 are further 
+metabolized to M5 (N,O-didesmethyltramadol) via CYP2C21 and 
+2D15.30,32 Pharmacokinetics of tramadol have been reported for 
+young and middle-aged dogs. After IV administration at 4 mg/kg, 
+the VD, elimination half-life, and total body clearance were 4.77 ± 
+1.07 L/kg, 1.91 ± 0.26 hours, and 29.9 ± 7.3 mL/kg/minute, respec -
+tively, in young dogs and 4.73 ± 1.43 L/kg, 2.39 ± 0.97 hours, and 
+23.7 ± 5.4 mL/kg/minute, respectively, in middle-aged dogs. Excre -
+tion was significantly prolonged in older animals. 33 In greyhounds, 
+tramadol’s half-life is slightly shorter (ie, 1.1 hours).34 
+After intranasal administration in dogs, tramadol was rapidly 
+absorbed into the systemic circulation, becoming detectable after 5 
+minutes and reaching maximum concentrations ≈40 minutes after 
+administration. Bioavailability was determined to range from 3.3% 
+to 20.6%. In general, plasma concentrations were low and variable. 
+Tramadol half-life was ≈1 hour. M1 was largely undetectable. Plas -
+ma concentrations were low, and because they did not correlate with 
+analgesic effect it was hypothesized that tramadol bypassed systemic 
+circulation and traveled directly to the CNS. 
+A study of 8 cats that received the immediate-release oral tablet 
+showed high interpatient variability in absorption (2 cats had inad -
+equate data and could not be analyzed). The main metabolite pro -
+duced in cats is the active M1 metabolite. The elimination half-life 
+for the parent compound was ≈2.25 to 3.5 hours and was 4.5 hours 
+for the M1 metabolite. 35 Another study in 6 cats demonstrated the 
+following approximate values: 60% oral bioavailability, 2 L/kg vol -
+ume of distribution at steady state (VSS), 12 mL/kg/minute clearance, 
+and 3.2 hours terminal half-life. The terminal half-life of M1 after 
+oral administration was ≈4.8 hours. After transdermal application of 
+a compounded tramadol gel, a dose of ≈2.8 mg/kg resulted in unde-
+tectable or very low plasma concentrations.36
+In adult horses, tramadol had relatively poor oral absorption (≈3% 
+to 10%)37,38 and an elimination half-life of ≈1.5 to 2.5 hours after IV 
+or IM administration and up to 10 hours when given orally.37–41 The 
+M1 active metabolite half-life was ≈4 hours. Oral doses of 10 mg/kg 
+yielded concentrations of tramadol and M1 that are believed to be 
+therapeutic, whereas lower doses (3 to 6 mg/kg) were inconsistent 
+and transient.41–44 M2 appears to be the main metabolite produced by 
+horses, with very low and variable M1 concentrations.37,45 In donkeys 
+given single IV doses of 2 mg/kg, the half-life of the parent com -
+pound was ≈1 hour, and the halflife of the M1 metabolite was ≈8.5 
+hours.46
+Tramadol has different pharmacokinetics in neonatal and weaned 
+foals. After oral administration, higher bioavailability (53% vs 20%), 
+shorter time to peak concentration (1 hour vs 1.25 hours), and peak 
+levels occurred with neonatal (2 weeks of age) vs weaned (4 months 
+of age) foals. The elimination half-life did not significantly differ (≈2 
+hours). The active metabolite (M1) remained above the reported 
+therapeutic concentration for humans for 3 hours in neonatal foals 
+and 8 hours in weaned foals.47 In another study, the elimination half-
+life was ≈1.5 hours in foals up to 6 weeks of age.48 
+In llamas administered 2 mg/kg IV , tramadol and M1 pharmaco-
+kinetics values (approximate means) were: VSS, 4 L/kg and 26.5 L/kg; 
+clearance, 1.7 L/kg/hour and 2.03 L/kg/hour; half-life, 2.1 hours and 
+10.4 hours. IM (2 mg/kg) bioavailability was high. 49 Data in camels 
+were similar to those in llamas. 24 In alpacas, oral bioavailability was 
+poor (6% to 19%). 28 After IV administration (3.4 to 4.4 mg/kg), V D 
+was 5.50 ± 2.66 L/kg, total body clearance was ≈4.6 L/kg/hour, and 
+half-life was ≈0.9 hours. The M1 metabolite was not detected.
+The elimination half-life of tramadol in sheep receiving IV trama-
+dol (4 and 6 mg/kg) was 0.6 hours and 1.2 hours for M1. 27 Bioavail-
+ability in goats given tramadol at 2 mg/kg IV and PO was 37%, and 
+the half-life was ≈1 hour (IV) and 2.7 hours (PO). The M1 half-life 
+was 2.9 hours after IV administration but was undetectable after oral 
+administration.50
+In red-tailed hawks given an oral dose of 11 mg/kg, plasma levels 
+of tramadol reached or exceeded concentrations associated with an-
+algesia in humans for at least 4 hours after administration. The elim-
+ination half-lives were 1.3 hours (tramadol) and 1.9 hours (M1). 51 
+Single IV doses given to Hispaniolan Amazon parrots resulted in 
+half-lives of 1.54 hours (tramadol) and 2.55 hours (M2). Oral bio -
+availability was ≈24%.52 
+Contraindications/Precautions/Warnings
+Tramadol is contraindicated in patients that are hypersensitive to it 
+or other opioids. The combination product containing acetamino -
+phen is contraindicated in cats. In humans, the drug is contraindicat-
+ed in patients with GI obstruction or paralytic ileus and in children 
+younger than 12 or undergoing tonsillectomy or adenoidectomy.
+Caution should be used when tramadol is given in conjunction 
+with other drugs that can cause CNS or respiratory depression. Be -
+cause tramadol has caused seizures in humans, it should be used 
+with caution in animals with pre-existing seizure disorders, at in -
+creased risk for seizures (eg, head trauma, CNS infections), or re -
+ceiving other drugs that may reduce the seizure threshold. Similar to 
+other opioidlike compounds, tramadol should be used with caution 
+in geriatric or severely debilitated animals and in those with severe 
+asthma. Animals with impaired renal or hepatic function may need 
+dosage adjustments.
+Although the risk for physical dependence is less than that of sev-
+eral other opioids, it has been reported in humans. The drug should 
+be withdrawn gradually in animals that receive it chronically. Hu -
+mans can potentially abuse tramadol, and significant diversion of 
+the drug reportedly occurs. Clinicians should be alert to pet owners 
+seeking tramadol.
+Extended-release tablets, which are not currently recommended 
+or used in veterinary patients, should not be broken, crushed, or 
+chewed because toxicity could occur.
+Care should be taken not to confuse traMADol with traZODone.
+Adverse Effects
+Tramadol appears to be well tolerated in dogs and appears to have 
+fewer adverse effects than methadone or morphine. 53 Tramadol has 
+the potential to cause a variety of adverse effects associated with its 
+pharmacologic actions, including CNS effects (eg, excessive seda -
+tion, agitation, anxiety, tremor, dizziness) or GI effects (inappetence, 
+vomiting, constipation, diarrhea). 
+Limited information is available on the adverse effects in cats. 
+Vomiting, sedation, mydriasis, dysphoria or euphoria, and constipa-
+tion have been reported. In a study, neurologic effects (eg, mydriasis, 
+dysphoria) were seen in 25% of cats, and the drug was observed to 
+be unpalatable to cats.54 Unpalatability may lead to dose avoidance.
+In horses, tramadol 5 mg/kg IV caused excitement 20; ataxia and 
+muscle spasms were more frequently seen in donkeys after 4 mg/kg 
+IV administration.46
+In humans receiving tramadol, ≈10% develop pruritus. Injectable 
+tramadol may cause respiratory and cardiac depression.
+Reproductive/Nursing Safety
+Laboratory animals have experienced embryotoxicity and fetotoxici-
+
+
+===== Plumb PDF 1290 =====
+Tramadol   1263
+ty at doses administered 0.6 to 3.6 times the maximum daily human 
+dose. Chronic tramadol administration in pregnant patients may re-
+sult in opioid withdrawal in the offspring. Tramadol was embryotox-
+ic and fetotoxic in laboratory animals when given at dosages 3 to 15 
+times the recommendation. 
+Humans receiving long-term opioid therapy have experienced hy-
+pogonadism, resulting in an impairment of reproductive functions.
+Tramadol and its active M1 metabolite enter maternal milk. This 
+drug is not recommended for use while nursing.
+Overdose/Acute Toxicity
+Acute oral overdoses can cause signs of CNS depression or serotonin 
+syndrome. Clinical signs associated with an overdose in dogs include 
+sedation/lethargy, vomiting, tachycardia, vocalizing, ataxia, agita -
+tion, or tremor. In cats, mydriasis, hypersalivation, lethargy, ataxia, 
+tachycardia, and vomiting have been reported. Signs of serotonin 
+syndrome due to overdose (80 mg/kg PO) have been described in 
+a cat.55 
+Treatment is primarily supportive (eg, maintaining respiration, 
+treating seizures with benzodiazepines or barbiturates). Naloxone 
+may NOT be useful in tramadol overdoses, as it may only partially 
+reverse some of the effects of the drug and may increase the risk for 
+seizures. Naloxone did not decrease the drug’s lethality in tramadol 
+overdoses given to mice. Cyproheptadine and phenothiazines can be 
+used to treat stimulatory signs. Tramadol and the M1 metabolite are 
+not removed by dialysis.56
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, it is strongly encouraged to consult with a 
+24hour poison consultation center that specializes in providing in -
+formation specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+Tramadol is metabolized by CYP2B, CYP2D, and CYP3A enzyme 
+families. The following drug interactions have either been reported 
+or are theoretical in humans or animals receiving tramadol and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Amantadine : Concomitant use with tramadol may increase the 
+risk for seizures because tramadol at high doses has caused sei -
+zures in humans56, and amantadine can lower the seizure thresh-
+old57; however, an increased risk for seizures with this drug com-
+bination appears unlikely in a clinical setting at recommended 
+dosages. Monitor for sedation or other neurologic adverse effects 
+if using this combination.
+ ■ Amiodarone : May increase tramadol concentrations and de -
+crease M1 (active metabolite) concentrations
+ ■ Anticholinergic Agents (eg, atropine, glycopyrrolate ): 
+Concurrent use may increase the risk for anticholinergic effects 
+(eg, constipation, urinary retention).
+ ■ Antidepressants, Miscellaneous  (eg, mirtazapine, trazo-
+done): Increased risk for serotonin syndrome
+ ■ Antihistamines (eg, diphenhydramine, hydroxyzine, pro -
+methazine): Increased risk for CNS depression
+ ■ Azole Antifungals  (eg, fluconazole, ketoconazole ): Fluco -
+nazole inhibits tramadol metabolism to the inactive M2 metab -
+olite without inhibiting the formation of the active M1 metabo -
+lite. In dogs that were receiving fluconazole and that were given 
+tramadol, tramadol and M1 concentrations increased by 31-fold 
+and 39-fold, respectively.58 Ketoconazole may increase tramadol 
+exposure and risk for toxicity.59
+ ■ Benzodiazepines (eg, alprazolam, diazepam): Increased risk 
+for respiratory depression
+ ■ Cimetidine : May increase tramadol exposure and risk for 
+ toxicity59
+ ■ CNS Depressants, Miscellaneous (eg, dexmedetomidine, 
+gabapentin, levetiracetam, methocarbamol ): Increased risk for 
+CNS depression
+ ■ Cyproheptadine : May decrease efficacy of tramadol
+ ■ Digoxin : In humans, tramadol has been rarely linked to digoxin 
+toxicity.
+ ■ Erythromycin : May increase tramadol exposure and risk for 
+toxicity
+ ■ Iohexol : Concurrent use may increase the risk for seizures.
+ ■ Ketamine : Increased risk for CNS and respiratory depression
+ ■ Metoclopramide : Increased risk for seizures
+ ■ Mitotane : May reduce tramadol levels and efficacy
+ ■ Monoamine Oxidase  Inhibitors  (MAOIs; eg, amitraz, sele-
+giline): Potential for serotonin syndrome; MAOI use within the 
+past 14 days or use together should be avoided.
+ ■ Ondansetron : In humans, use together may reduce the effec -
+tiveness of both drugs.
+ ■ Opioid Analgesics  (eg, buprenorphine, butorphanol, meth-
+adone): May increase the risk for seizures, serotonin syndrome, 
+and CNS and respiratory depression; methadone may inhibit tra-
+madol metabolism. 
+ ■ Phenobarbital : Increased risk for CNS depression. Tramadol 
+may lower the seizure threshold. Phenobarbital may decrease tra-
+madol levels.
+ ■ Quinidine : May increase tramadol concentrations and decrease 
+M1 (active metabolite) concentrations
+ ■ Rifampin : May reduce tramadol levels and efficacy
+ ■ S-Adenosyl Methionine (SAMe) : Theoretically, concurrent 
+use of SAMe with tramadol could cause additive serotonergic ef -
+fects.
+ ■ Sevoflurane : Pretreatment with tramadol reduced minimum 
+alveolar concentration (MAC) values by 22% to 30% in dogs 60,61 
+and 40% in cats.62
+ ■ Selective-Serotonin Reuptake Inhibitors  (SSRIs; eg, flu-
+oxetine, paroxetine, sertraline ): Can inhibit the metabolism of 
+tramadol to its active metabolites, thereby decreasing its efficacy 
+and increasing the risk for toxicity (serotonin syndrome, seizures)
+ ■ Terbinafine : May increase tramadol levels and reduce the for -
+mation of M1 metabolite due to CYP2D6 inhibition. In humans, 
+this effect may persist for weeks after discontinuing terbinafine.
+ ■ Tricyclic Antidepressants  (eg, amitriptyline, clomip -
+ramine): Increased risk for seizures and serotonin syndrome; 
+amitriptyline may inhibit tramadol metabolism.
+ ■ Yohimbine : May antagonize (partial) the pharmacologic effects 
+of tramadol
+ ■ W arfarin : In humans, increased prothrombin time in patients 
+taking tramadol has been reported (relatively rare).
+Laboratory Considerations
+ ■ No specific laboratory interactions or considerations were noted.
+Dosages
+DOGS:
+Analgesic (extra-label): 4 – 10 mg/kg PO every 8 hours; pharma-
+cokinetic data suggest administration every 6 hours may be nec -
+essary. Tramadol’s efficacy as a single agent appears questionable. 
+The long-term efficacy of tramadol may decrease with time.10
+CATS:
+Analgesic (extra-label): Most recommendations for administra -
+
+
+===== Plumb PDF 1291 =====
+1264    Tranexamic Acid
+tion in cats are 1 – 2 mg/kg PO every 12 hours. There is no clear 
+dosage for tramadol in cats based on prospective studies. Some 
+clinicians suggest that some cats may only need to be dosed every 
+24 hours; others suggest doses up to 4 mg/kg. Tramadol has an 
+unpleasant taste, and avoidance may be an issue. Neurologic and 
+opioid adverse effects can be seen, particularly in geriatric cats at 
+doses greater than 2 mg/kg.17 
+HORSES :
+Analgesic (extra-label): 
+a) Based on pharmacokinetic studies and treated patients:  
+10 mg/kg PO every 12 hours41–44
+b) Chronic laminitis pain:
+i. 5 – 10  mg/kg PO every 12 hours, 42,63 although the 5 mg/kg 
+dose did not reliably produce analgesia.42
+ii. Tramadol 5 mg/kg PO twice daily for 7 days—with ket -
+amine 0.6 mg/kg/hour IV CRI over 6 hours each day for the 
+first 3 days of treatment.63
+BIRDS:
+Analgesic (extra-label):
+a) Red-tailed hawks : From a pharmacokinetic study, authors 
+concluded that an oral dose of 15 mg/kg PO every 12 hours 
+would be a reasonable starting point; additional pharmacody-
+namic and repeat dose pharmacokinetic studies are needed.51
+b) Hispaniolan Amazon parrots : From pharmacokinetic and 
+antinociceptive studies, 30 mg/kg PO every 6 to 8 hours may 
+provide clinical analgesia. Further studies are needed to fully 
+evaluate the analgesic effects of tramadol in psittacines.52,64,65
+SMALL MAMMALS :
+Analgesic (extra-label): 
+a) Sugar gliders: 2 – 6 mg/kg PO every 12 hours66 
+b) Chinchillas, guinea pigs, rodents: 5 – 10 mg/kg PO every 12 
+hours67
+c) Companion pigs: 4 – 6 mg/kg PO every 12 hours68
+REPTILES :
+Analgesic (extra-label): 
+a) Red-eared slider turtles: 5 – 10 mg/kg PO69 
+b) Reptiles/chelonians: 5 – 10 mg/kg PO every 48 to 72 hours. 
+Good analgesic efficacy with relatively long duration when ad-
+ministered PO in chelonians; less respiratory depression than 
+other opioids70
+Monitoring
+ ■ Clinical efficacy
+ ■ Adverse effects
+Client Information
+ ■ Contact your veterinarian if you suspect your animal’s pain is not 
+controlled.
+ ■ This medicine may be given with or without food. Putting the 
+medicine in a small amount of canned food may hide its bitter 
+taste. If your animal vomits or acts sick after receiving this drug 
+on an empty stomach, give the medicine with food or a small 
+treat. If vomiting continues, contact your veterinarian.
+ ■ This medicine may cause changes in alertness or behavior. Use it 
+with caution in working or service dogs.
+ ■ The combination product with acetaminophen (Ultracet®) should 
+NOT be used in cats.
+ ■ Tramadol is a controlled substance in the United States. It is 
+against the law to give away or sell this medication and to use it 
+without a prescription.
+Chemistry/Synonyms
+Tramadol HCl, a  mu-receptor opioid agonist, occurs as a white 
+crystalline powder that is freely soluble in water or alcohol and very 
+slightly soluble in acetone. Tramadol is not derived from opium, nor 
+is it a semisynthetic opioid, but it is entirely synthetically produced.
+Tramadol HCl may also be known as CG-315, CG-315E, tramad-
+oli hydrochloridum, or U-26225A; many trade names are available.
+Storage/Stability
+Unless otherwise labeled, store tramadol tablets at a controlled room 
+temperature of 20°C to 25°C (68°F-77°F); excursions are permitted 
+between 15°C and 30°C (59°F-86°F). Dispense in tight, light-resistant 
+containers. Tramadol is a controlled substance and should be stored 
+in an area that is substantially constructed and securely locked, in 
+accordance with US Drug Enforcement Administration regulations.
+Compatibility/Compounding Considerations
+Tramadol suspensions, 5 mg/mL71 and 10 mg/mL,72 made by crush-
+ing tramadol tablets and suspending in appropriate vehicles, have 
+demonstrated potency and stability for up to 90 days when refriger-
+ated or stored at room temperature.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 2 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS :
+Tramadol HCl Oral Tablets (film-coated): 50 mg; Ultram®, generic; 
+(Rx); (C-IV)
+Tramadol HCl Extended-Release Tablets and Capsule: 100 mg,  
+200 mg, and 300 mg; Ultram ER®, Ryzolt®, generic [tablets], ConZ-
+ip® [capsules]; (Rx); (C-IV). NOTE: Dogs apparently do not absorb 
+these products as well as humans and potentially could overdose if 
+they chew on the tablets or capsules.
+Tramadol HCl Oral Solution: 5 mg/mL; Qdolo®; (Rx); (C-IV)
+Tramadol is also available in a fixed-dose combination of tramadol 
+HCl 37.5 mg and acetaminophen 325 mg tablets. United States trade 
+name is Ultracet®; (Rx); (C-IV). W ARNING: This combination prod-
+uct should not be used in cats.
+In several countries outside the United States, tramadol injection is 
+available commercially.
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Tranexamic Acid
+ (tran-ex-am-ik as-id) Cyklokapron®, Lysteda®
+Fibrinolysis Inhibitor 
+Prescriber Highlights 
+ ▶ Used to prevent or reduce bleeding in dogs and cats
+ ▶ Contraindications include hypersensitivity and in patients with 
+a history of, risk for, or active thromboembolic disease.
+ ▶ Causes dose-dependent vomiting; may be useful as an emetic
+ ▶ Thromboembolic events and visual disturbances have oc-
+curred in humans.
+ ▶ Inadvertent intrathecal administration is rapidly fatal.
+
+
+===== Plumb PDF 1292 =====
+Tranexamic Acid   1265
+Uses/Indications 
+Tranexamic acid is used to prevent and reduce postoperative bleed-
+ing and to stop traumatic bleeding in dogs and cats. It may be effec-
+tive in controlling hyperfibrinolysis associated with Angiostrongylus 
+vasorum infection.1 It has also been used as an emetic in dogs.2
+Pharmacology/Actions 
+Tranexamic acid reduces bleeding by inhibiting the breakdown of 
+fibrin. It reversibly binds to lysine binding sites on plasminogen to 
+prevent the binding of plasminogen to fibrin and thus prevents the 
+formation of plasmin. Inhibiting plasmin-mediated fibrin dissolu -
+tion stabilizes the blood clot matrix. In horses, tranexamic acid is 
+≈10 times more potent in vitro than aminocaproic acid; in dogs, it 
+is ≈4 times more potent. 3,4 The minimum plasma concentration of 
+tranexamic acid required to completely inhibit experimentally in -
+duced hyperfibrinolysis is ≈145 µg/mL in dogs 3 and ≈6 µg/mL in 
+horses.4
+Tranexamic acid is emetogenic in dogs, causing dose-dependent 
+vomiting within 2 to 3 minutes of administration. Dogs vomited only 
+once or twice, and the emetogenic effect persisted for 4 to 5 minutes.2 
+In a larger cohort of dogs, vomiting occurred in 85% of dogs receiv-
+ing tranexamic acid. The median time to onset of vomiting was ≈2 
+minutes, median duration of emesis was ≈2.5 minutes, and median 
+of 2 episodes of emesis.5 Emetogenic effects of tranexamic acid may 
+be mediated by NK1 receptors. 2 It can antagonize GABA and gly -
+cine receptors, and these actions may contribute to its proconvulsive 
+ effect.6 
+Pharmacokinetics 
+No veterinary pharmacokinetic information was located.
+In humans, tranexamic acid is ≈45% bioavailable after oral ad -
+ministration, with peak concentrations occurring at 3 hours. 7 Ab-
+sorption appears unaffected by food. It is widely distributed with a 
+volume of distribution of ≈0.4 L/kg. It passes into aqueous humor, 
+breast milk, and crosses the placenta. It does not bind to plasma 
+proteins. Tranexamic acid is not appreciably metabolized and is 
+excreted unchanged in the urine with a terminal elimination half-
+life of ≈2 hours after IV administration 8 and ≈11 hours after oral 
+ administration.8
+Contraindications/Precautions/Warnings 
+Tranexamic acid is contraindicated in patients that are hypersensi -
+tive to it and in patients with a history of, risk for, or active throm -
+boembolic disease. In humans, it is contraindicated in patients with 
+subarachnoid hemorrhage as cerebral edema has occurred. 7,8 Pa -
+tients with renal impairment require dosage reduction. 
+In humans, inadvertent intrathecal administration has resulted in 
+seizures and cardiac arrhythmias. 8 Thrombosis and thromboembo-
+lism have been reported with IV administration. Tranexamic acid 
+should be discontinued if ocular or vision disturbances occur. Pa -
+tients treated for upper urinary tract bleeding have developed uret -
+eral obstruction caused by clot formation.
+Adverse Effects 
+Vomiting can occur immediately or within minutes of IV adminis -
+tration, is dose dependent, and more likely with rapid IV bolus ad -
+ministration.2,9 Administration of maropitant IV 10 minutes before 
+treatment with tranexamic acid has been shown to prevent emesis.10 
+Tonic-clonic seizures have been reported in dogs.11,12
+In humans, nausea, vomiting, and diarrhea are dose related; mus-
+culoskeletal pain, thrombosis, and visual changes, including ocular 
+or retinal occlusion, have been reported. 7,8 Hypotension can occur 
+when administered IV too rapidly. Anaphylactic reactions have been 
+reported, and convulsions have been reported during surgery. 
+Reproductive/Nursing Safety
+Tranexamic acid crosses the placenta and reaches concentrations 
+approximating those found in maternal blood. 7,8 No impairment of 
+fertility or evidence of fetal harm was observed in studies with labo-
+ratory animals, including doses up to 4 times the maximum human 
+oral dose; however, safe use of tranexamic acid during pregnancy has 
+not been established. 
+Tranexamic acid is distributed into milk; use with caution in lac-
+tating patients or consider milk replacer.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity 
+GI distress, hypotension, myoclonus, and thromboembolic events 
+may occur. Retinal changes, including degeneration, have occurred 
+in dogs, cats, and rats that received 3 to 40 times the human dose for 
+6 days to 1 year.7,8 GI decontamination should not be necessary but 
+can be considered in patients that did not vomit. Provide supportive 
+and symptomatic treatment. 
+Inadvertent intrathecal administration can be rapidly fatal; con -
+tact an animal poison control center immediately. 
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving tranexamic acid and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Chlorpromazine : May increase risk for bleeding
+ ■ Estrogens : Increased risk for thrombotic events with combined 
+use
+ ■ Thrombolytics (eg, alteplase): Concomitant use may reduce 
+efficacy of both agents.
+Laboratory Considerations 
+ ■ None noted
+Dosages 
+DOGS:
+Adjunctive treatment of bleeding (extra-label): 10 mg/kg IV 
+over 2 minutes, followed by 10 mg/kg/hour IV CRI for 3 hours9 
+Control of hyperfibrinolysis associated with Angiostrongylus 
+vasorum infection (extra-label): 10 – 20 mg/kg IV over 15 to 20 
+minutes; repeat 6 to 8 hours later based on thromboelastography 
+(TEG) testing1
+Induce emesis (extra-label): In one study, 50 mg/kg IV bolus in-
+duced vomiting in all dogs (n = 10) without adverse effects; lower 
+doses (20 – 40 mg/kg IV) were not uniformly effective to induce 
+emesis.2
+CATS:
+Control of bleeding during surgical carcinoma and sarcoma 
+removal (extra-label): 15 mg/kg IV bolus given during anesthetic 
+induction reduced surgical blood loss and shortened the activated 
+clotting time (ACT) without altering prothrombin time (PT) or 
+activated prothrombin time (aPTT).13
+Monitoring 
+ ■ Thromboelastography (TEG analysis)
+ ■ Baseline and periodic CBC and platelets as indicated by clinical 
+condition
+
+
+===== BSAVA PDF 384 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+368
+Drug interactions: Concurrent use of SAMe with tramadol, 
+meperidine, pentazocine, MAOIs including selegiline, SSRIs such as 
+fluoxetine, or other antidepressants (e.g. clomipramine, 
+amitriptyline) could cause additive serotonergic effects. SAMe may 
+increase the clearance of drugs that undergo hepatic 
+glucuronidation, including paracetamol, diazepam and morphine.
+DOSES
+Dogs: All uses: At least 100 mg for every 10 kg p.o. q24h.
+Cats: All uses: 100 mg/cat p.o. q24h.
+Refer to individual products for dosing advice as regimens vary. 
+Suggested starting dose in absence of other information is 20 mg/
+kg p.o. q24h. Administer on an empty stomach at least 1 hour 
+before food.
+References
+Skorupski KA, Hammond GM, Irish AM et al . (2011) Prospective randomized clinical trial 
+assessing the efficacy of Denamarin for prevention of CCNU-induced hepatopathy in 
+tumor-bearing dogs.  Journal of Veterinary Internal Medicine  25, 838–845
+Vandeweerd JM, Cambier C and Gustin P (2013) Nutraceuticals for canine liver disease: 
+assessing the evidence. Veterinary Clinics of North America: Small Animal Practice 43 , 
+1171–1179
+Salbutamol
+(Ventolin*) POM
+Formulations: Inhalational: 100 μg per metered inhalation 
+(Evohaler).
+Action: Selective beta-2 stimulation causes smooth muscle 
+relaxation and bronchodilation.
+Use:
+• Treatment of bronchospasm in inflammatory airway disease and 
+irritation in cats and dogs.
+Experimental studies have shown chronic use in cats can exacerbate 
+airway inflammation, leading to recommendations that salbutamol 
+be reserved for acute/short-term management in this species.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: In humans, side effects of the beta-2 agonists 
+include headache, muscle cramps and palpitation. Other side effects 
+include tachycardia, arrhythmias, peripheral vasodilation, and 
+disturbances of sleep and behaviour. Shivering and agitation is 
+occasionally seen in dogs.
+Drug interactions: In humans, there is an increased risk of side 
+effects if salbutamol is used by patients also taking diuretics, digoxin, 
+theophylline or corticosteroids.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 385 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+369
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+DOSES
+Dogs: Bronchodilation: 100–300 μ g (micrograms)/dog q4–6h or as 
+needed for relief of bronchospasm.
+Cats: Bronchodilation: 100 μg (micrograms)/cat q4–6h or as 
+needed for relief of bronchospasm. 
+References
+Reinero CR (2009) Enantiomer-specific effects of albuterol on airway inflammation in 
+healthy and asthmatic cats. International Archives of Allergy and Immunology  150, 43–50
+Sarolaner
+(Simparica, Stronghold Plus) POM-V 
+Formulations: Oral: 5 mg, 10 mg, 20 mg, 40 mg, 80 mg, 120 mg 
+tablets. Spot-on solution for cats with selamectin: 3 sizes.
+Action: Sarolaner acts at ligand-gated chloride channels, in 
+particular those gated by the neurotransmitter gamma-aminobutyric 
+acid (GABA), thereby blocking pre- and post-synaptic transfer of 
+chloride ions across cell membranes.
+Use:
+• Treatment of fleas, ticks, ear mite infestations (Otodectes cynotis) 
+in dogs and cats, demodicosis (Demodex canis) and Sarcoptes 
+scabiei in dogs. Parasites need to start feeding on the host to 
+become exposed to sarolaner; therefore, the transmission of 
+infectious parasite-borne diseases cannot be excluded.
+• Treatment of biting lice infestations (Felicola subrostratus), adult 
+roundworms (Toxocara cati) and adult intestinal hookworms 
+(Ancylostoma tubaeforme ) (spot-on for cats).
+• Prevention of heartworm disease caused by  Dirofilaria immitis.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in dogs <8 weeks or <1.3 kg. Do 
+not use in cats <8 weeks old or <1.25 kg.
+Adverse reactions: Mild GI signs may occur. Mild pruritus at site 
+of application of spot-on product.
+Drug interactions: Sarolaner is highly bound to plasma proteins 
+and might compete with other highly bound drugs such as non-
+steroidal anti-inflammatory drugs (NSAIDs) and the cumarin 
+derivative warfarin. No interactions were observed when sarolaner 
+was co-administered with milbemycin oxime, moxidectin and 
+pyrantel pamoate.
+DOSES
+Dogs: 2–4 mg/kg. Administer every month.
+Cats: 6 mg/kg selamectin and 1 mg/kg sarolaner. Administer monthly. 
+References
+Crosaz O, Chapelle E, Cochet-Faivre N et al . (2016) Open field study on the efficacy of 
+oral fluralaner for long-term control of flea allergy dermatitis in client-owned dogs in 
+Ile-de-France region. Parasites and Vectors 9 , 174
+
+
+===== BSAVA PDF 386 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+370
+Secobarbital (Quinalbarbitone/
+Cinchocaine)
+(Somulose) POM-V CD SCHEDULE 2 
+Formulations: Injectable: 400 mg/ml secobarbital with 25 mg/ml 
+cinchocaine solution.
+Action: Rapidly and profoundly depresses the CNS, including the 
+respiratory centres. Cinchocaine has marked cardiotoxic effects at 
+high doses. When given in combination, the barbiturate produces 
+rapid loss of consciousness and cessation of respiration while the 
+cinchocaine depresses cardiac conduction, resulting in early cardiac 
+arrest. Since cardiac arrest is not dependent on development of 
+profound hypoxia, euthanasia with the secobarbital/cinchocaine 
+combination is generally not accompanied by the gasping that may 
+occur with other agents.
+Use:
+• For euthanasia of cats and dogs.
+Speed of injection is very important. An injection rate that is too 
+slow may induce normal collapse but prolong the period until death. 
+It is always advisable to have an alternative method of euthanasia 
+available. Perivascular administration of secobarbital may delay the 
+onset of effect and cause pain and result in excitement. Placement 
+of a venous catheter is therefore recommended and care should be 
+taken to ensure that the injection is correctly placed in the vein.
+Safety and handling: This is a potent drug which is rapidly and 
+highly toxic to humans. Extreme care should be taken to avoid 
+accidental self-administration. Use an i.v. catheter instead of a 
+needle whenever possible. Only administer in the presence of an 
+assistant/other individual. Wear suitable protective gloves when 
+handling. Wash off splashes from skin and eyes immediately. In the 
+event of accidental self-administration, by injection or skin 
+absorption, do not leave the person unattended, seek urgent 
+medical assistance advising the medical services of barbiturate and 
+local anaesthetic poisoning, and show the label advice to a doctor. 
+Maintain airways in the injured person and give symptomatic and 
+supportive treatment. Cinchocaine can cause hypersensitivity 
+following skin contact; this can lead to contact dermatitis, which can 
+become severe.
+Contraindications: Somulose must not be used for anaesthesia 
+as it is non-sterile and cardiotoxic.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: Euthanasia: 0.25 ml/kg i.v. over 10–15 seconds to 
+minimize premature cardiac arrest. 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

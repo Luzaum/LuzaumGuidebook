@@ -1,0 +1,267 @@
+CHAPTER 233
+•
+Myocardial Diseases of Dogs
+1367
+eBooks.Health.Elsevier.com
+M
+yocardial diseases are those that 
+aect the heart muscle (cardiomy-
+ocytes and interstitium), distinct 
+from those primarily aecting the valves 
+(chs. 231 and 232), endocardium (ch. 231), 
+or pericardium (ch. 235). e most common 
+myocardial diseases in dogs are in the group 
+of cardiomyopathies, including dilated car-
+diomyopathy and arrhythmogenic right 
+ventricular cardiomyopathy. Hypertrophic 
+cardiomyopathy, while very common in cats 
+(ch. 234), is rare in dogs. Other canine myo-
+cardial diseases include myocarditis, myo-
+cardial infarction, muscular dystrophies, 
+and neoplasia (chs. 235 and 325).
+DILATED CARDIOMYOPATHY
+Dilated cardiomyopathy (DCM) is the sec-
+ond most common acquired heart disease in 
+dogs aer degenerative mitral valve disease. 
+DCM is classically characterized by le ven-
+tricular (LV) or biventricular systolic dys-
+function and dilatation (Figure 233.1) that 
+is not attributable to underlying disorders 
+that cause abnormal cardiac loading condi-
+tions such as volume overload states, shunts 
+or other congenital cardiac disease, valve dis-
+ease, primary tachyarrhythmias, or systemic 
+hypertension.1 e importance of the latter 
+is recognition that ventricular dilatation and 
+systolic dysfunction can represent a morpho-
+logic and functional response common to a 
+variety of potential insults, and the identi-
+cation of these features (phenotype) alone 
+does not automatically indicate a diagnosis of 
+DCM. Furthermore, while the classic pheno-
+type is a dilated and hypokinetic heart, DCM 
+can manifest as a spectrum of functional 
+and electrical abnormalities, which oen dier by breed, including 
+arrhythmic and intermediate phenotypes.1 2
+PREVALENCE, BREED AND AGE DISTRIBUTION
+e prevalence of DCM among the general canine population is 
+unknown. e reported prevalence in historical canine referral 
+populations has been 0.5-1% (1-2 cases per 200 patients exam-
+ined),3 but this may be inuenced by geographic dierences in 
+breeds and ages examined, degree of prospective screening of 
+high-risk breeds, and true changes in epigenetic factors over time. 
+Large breeds are predominantly aected and highly predisposed 
+breeds include the Doberman Pinscher (DP), Great Dane, Irish 
+Wolound (IW), Newfoundland, Boxer, Saint Bernard, Labra-
+dor and Golden Retriever, while the Cocker Spaniel, Portuguese 
+Water Dog, and Toy Manchester Terrier are smaller aected 
+breeds.3-9 DCM is typically an adult-onset disease; however, juve-
+nile forms are reported including in the Portuguese Water Dog, 
+DP, and Toy Manchester Terrier.5 9 10
+More is known about breed-specic prevalence. Prevalence 
+estimates in the DP increase from 10% in 2- to 4-year-olds to 44% 
+in dogs over 6 years of age, around the median age of diagnosis.11
+ere are sex dierences in how the disease manifests in DPs, with 
+females having a higher incidence of an arrhythmic phenotype and 
+males having LV dilatation and systolic dysfunction at an earlier 
+age.11 Prevalence in the IW is up to 25% in large screening stud-
+ies, with earlier mean age of onset (4 years) and males more com-
+monly aected and at a younger age.12 Prevalence up to 36% has 
+been reported in the Great Dane13 and 10% in the Newfoundland.14
+ETIOLOGY
+DCM may have a genetic or non-genetic etiology, with the for-
+mer likely playing a role in many canine cases (Table 233.1).6 15
+e nature of genetic etiology is complex, with increasing recog-
+nition of interplay between genetic and non-genetic factors such 
+as lifestyle, diet, and environment (epigenetics), potential for 
+multiple gene involvement (oligogenic inheritance rather than 
+monogenic), and variability in both penetrance (probability of 
+manifesting the phenotype) and expression (wide spectrum of 
+phenotypes when expressed).6 15 Familial DCM accounts for 30% 
+or more of human DCM cases, with mutations in over 50 genes 
+identied to date. Most encode for sarcomeric or cytoskeletal pro-
+teins leading to altered cardiac protein structure and function.1
+By comparison, the proportion of canine DCM cases attributable 
+to inherited genetic mutations is unknown and specic genetic 
+mutations identied to date are few. Mutations in two genes 
+(pyruvate dehydrogenase kinase 4, a mitochondrial enzyme; and 
+titin, a sarcomeric protein) with autosomal dominant inheritance 
+are associated with DCM in the DP in North America.16 ese 
+mutations do not account for all cases in this breed, and another 
+unidentied locus is suggested to be associated with DCM in 
+European DP, highlighting the genetic heterogeneity that exists 
+even within a breed.17 A mutation in the phospholamban gene (a 
+protein regulating the calcium pump of the sarcoplasmic reticu-
+lum) was recently identied in a family of Welsh Springer Spaniels 
+with highly penetrant DCM causing sudden death.18
+Myocardial Diseases of Dogs
+M. Lynne O’Sullivan
+CHAPTER 233
+ACRONYMS
+AA antiarrhythmic
+ACEI angiotensin convert-
+ing enzyme inhibitors
+AF atrial fibrillation
+ARVC arrhythmogenic 
+right ventricular cardio-
+myopathy
+AV atrioventricular
+CHF congestive heart fail-
+ure
+cTnI cardiac troponin-I
+DCM dilated cardiomyopa-
+thy
+DLVOTO dynamic left ven-
+tricular outflow tract 
+obstruction
+DP Doberman Pinscher
+ECG electrocardiography
+HCM hypertrophic cardio-
+myopathy
+HR heart rate
+IW Irish Wolfhound
+LV left ventricular
+MRB mineralocorticoid 
+receptor blocker
+MRI magnetic resonance 
+imaging
+NT-proBNP N-terminal pro-
+B-type natriuretic pep-
+tide
+PVC premature ventricular 
+complex
+RAAS renin-angiotensin-
+aldosterone system
+RV right ventricular
+TICM tachycardia-induced 
+cardiomyopathy
+VA ventricular arrhythmias
+VT ventricular tachycardia
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 12 Videos.
+
+SECTION XIV
+•
+Cardiovascular Disease
+1368
+eBooks.Health.Elsevier.com
+Non-genetic causes of DCM include nutritional, drugs or toxins, 
+and chronic manifestation of myocarditis. An association between 
+taurine deciency and canine DCM has been described in American 
+and English Cocker Spaniels, Golden Retrievers, and sporadically in 
+other breeds.4 19-22 Taurine is a free amino acid with important roles 
+in bile acid conjugation, central nervous system development, and 
+cardiac contractility and osmoregulation, and deciency may occur 
+through insucient dietary intake or bioavailability of taurine or 
+its precursors, or abnormal utilization or excretion.23 Myocardial 
+L-carnitine deciency was described in a small family of Boxer dogs 
+with DCM; however, there is little other information linking cause 
+and eect in this or other breeds.24 Other speculated nutritional 
+causes of DCM include chronic consumption of low-protein diets, 
+limited and novel ingredient diets, and possibly some legume-rich 
+or grain-free diets (ch. 157).23 25 26 e most common drug toxi-
+cosis associated with development of a DCM phenotype in dogs is 
+doxorubicin (also see ch. 321).27 e incidence of cardiotoxicosis 
+appears to be similar to humans (<5% with the typical doses used 
+in veterinary medicine), though factors associated with increased 
+risk include higher cumulative dose, higher body weight, and breeds 
+already predisposed to DCM.28 Several causes of myocarditis are 
+known to cause a DCM phenotype in the chronic phase of infection 
+(see below). e above-mentioned non-genetic causes may account 
+for a low percentage of total DCM cases, but are worthy of consider-
+ation as contributing factors depending on clinical presentation and 
+geographic area because of potentially important dierences in treat-
+ment and prognosis.
+PHENOTYPES AND CLINICAL STAGES
+Dogs with DCM experience a preclinical phase (occult phase) during 
+which there is echocardiographic or electrocardiographic evidence of 
+disease but clinical signs are absent as perceived by the dog’s owner. 
+e duration of this phase may last months to years and importantly 
+may be modied by treatment.29-31 Both the phenotype expressed 
+and the duration of the preclinical phase may vary between breeds. 
+Some dogs manifest arrhythmias before echocardiographic changes: 
+ventricular arrhythmias (VA) in DPs11 32 and Great Danes,13 and 
+atrial brillation (AF) in IWs.33 34 Alternatively, ventricular dilatation 
+and systolic dysfunction may oen be recognized rst (Video 233.1). 
+Intermediate forms characterized by either ventricular dilatation or 
+systolic dysfunction in isolation may also be recognized and may rep-
+resent very early or developing forms of DCM (Video 233.2).2 14 Fur-
+thermore, there are subtle but recognized dierences among breeds 
+regarding ventricular geometry and function in DCM. DP with 
+DCM tend to have quite profound systolic dysfunction, while IWs 
+and some Newfoundlands may exhibit more ventricular dilatation 
+(le and right) and less severe systolic dysfunction.12 14 33
+e clinical phase of DCM is the result of progressive systolic dys-
+function, ventricular dilatation, and/or worsening arrhythmias pre-
+cipitating heart failure, syncope, and/or sudden death (Videos 233.3 
+and 233.4). Heart failure may manifest as backward failure—that is, 
+congestive heart failure (CHF) causing uid congestion in the lungs 
+(le-sided CHF) or cavitary spaces (right-sided CHF), and/or as for-
+ward heart failure, in which signs of poor cardiac output predomi-
+nate (ch. 229). Sudden death may be the rst clinical sign or may 
+occur aer the onset of CHF, and is more common in some breeds 
+than others. It is the rst clinical sign for 25-30% of DP with DCM.32
+CLINICAL PRESENTATION
+Dogs with preclinical DCM are identied through active cardiac 
+screening programs (high-risk breeds, breeding dogs) or follow-
+ing detection of a cardiac abnormality on physical examination 
+such as a heart murmur or arrhythmia. Many dogs in this phase 
+will have a normal physical examination.
+In most clinical settings, dogs are presented due to the onset of 
+clinical signs, with respiratory signs due to le-sided CHF includ-
+ing tachypnea, dyspnea, and cough being most common (ch. 
+37) (Video 233.5).7 8 Other signs include those associated with 
+forward heart failure like weakness, exercise intolerance, and 
+syncope, which may predominate in some cases (ch. 40).7 8 It is 
+common for Newfoundlands, IWs, and dogs with AF to present 
+with signs of right heart failure (tachypnea/dyspnea due to pleural 
+eusion and ascites).35-37 Nonspecic signs including weight loss 
+and hyporexia may also be noted. Physical examination (ch. 3) 
+may reveal a low intensity heart murmur (≤ grade 3/6) over the 
+mitral or tricuspid area (ch. 38) and weak femoral pulses (ch. 39). 
+1 cm
+Figure 233.1
+Cardiac gross pathologic specimen from a Boston Ter-
+rier with dilated cardiomyopathy, showing marked le and right ven-
+tricular dilatation. (Image courtesy Dr. Alfonso López, Atlantic Veteri-
+nary College.)
+TABLE 233.1
+Causes of Dilated Cardiomyopathy vs. Phenocopies 
+(Imposters)
+GENETIC
+NON-GENETIC
+Breed-specific genetic mutations 
+of cardiac proteins
+•Doberman Pinscher: titin and
+PDK
+•Welsh Springer Spaniel: phos-
+pholamban
+Idiopathic
+•Many cases deemed idiopath-
+ic may have an unrecognized 
+genetic etiology
+Potential modifying epigenetic 
+factors
+•Environment
+•Diet
+•Lifestyle
+Nutritional deficiencies
+•Taurine
+•Carnitine
+•Low-protein diets
+•Other limited ingredient diets
+Toxins
+•Doxorubicin and other che-
+motherapeutics
+•Monensin
+Myocarditis—chronic phase
+•Infectious
+•Inflammatory
+Phenocopies: Imposters for DCM Phenotype
+Tachycardia-induced cardiomyopathy (TICM)
+Acquired or congenital valvular disease
+Endocardial fibroelastosis
+Acquired or congenital extracardiac shunt/fistula
+Conditioned athlete
+Myocardial ischemia
+Other systemic disease resulting in systolic dysfunction (e.g., hypo-
+thyroidism, sepsis)

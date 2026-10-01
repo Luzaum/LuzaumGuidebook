@@ -142,4 +142,39 @@ export const infectologiaConsensosSeed: ConsensusSeed[] = [
     isDemonstrative: false,
     warningLabel: 'Vigente',
   },
+  {
+    id: 'con-acvim-leptospirose-caes-2023',
+    slug: 'acvim-leptospirose-caes-2023',
+    title: 'Consenso ACVIM sobre Leptospirose em Cães (Diagnóstico, Manejo e Prevenção)',
+    shortTitle: 'Leptospirose Canina — ACVIM',
+    sourceOrganization: 'ACVIM',
+    year: 2023,
+    species: 'dog',
+    category: 'infectologia',
+    tags: ['Leptospirose', 'ACVIM', 'Zoonose', 'LRA', 'LPHS', 'Doxiciclina', 'Ampicilina', 'MAT', 'PCR'],
+    pdfUrl: 'https://doi.org/10.1111/jvim.16903',
+    pdfFileName: 'acvim-leptospirose-caes-2023',
+    storagePath: 'external/acvim-leptospirose-caes-2023',
+    summary:
+      'Declaração de consenso do Colégio Americano de Medicina Veterinária Interna (ACVIM) sobre leptospirose em cães: epidemiologia global, apresentações clínicas com LRA e hemorragia pulmonar, diagnóstico por PCR e MAT combinados, antibioticoterapia em duas fases e biossegurança zoonótica rigorosa.',
+    keyPointsText:
+      '• Leptospirose é causa primordial de LRA e hepatopatia em cães no mundo todo.\n• Manifestações graves incluem a Síndrome da Hemorragia Pulmonar por Leptospirose (LPHS), com alta letalidade.\n• Diagnóstico ideal combina PCR precoce (sangue na 1ª semana, urina após 1ª semana) com sorologia MAT pareada com intervalo de 2 a 4 semanas.\n• Tratamento agudo parenteral: ampicilina (20-30 mg/kg IV q6-8h) ou penicilina G se houver vômitos; transição para doxiciclina (5 mg/kg VO/IV q12h por 14 dias) assim que tolerado para erradicar o estado de portador renal crônico.\n• Zoonose de alto risco: EPIs obrigatórios para a equipe veterinária e desinfecção de gaiolas.',
+    practicalApplicationText:
+      'Suspeita clínica em cão azotêmico/ictérico → colher sangue e urina para PCR e MAT antes de iniciar antibiótico → isolamento e EPIs → ampicilina IV se vômitos / doxiciclina oral se estável por 14 dias → suporte hemodinâmico e renal restritivo → monitorar LPHS com radiografia torácica.',
+    appNotesText:
+      'VIGENTE — Diretriz ACVIM de referência para leptospirose canina. Publicada em Journal of Veterinary Internal Medicine.',
+    references: [
+      {
+        id: 'ref-sykes-acvim-lepto-2023',
+        citationText:
+          'Sykes JE, Francey T, Schuller S, et al. 2023 ACVIM consensus statement on leptospirosis in dogs. J Vet Intern Med. 2023;37(6):1966-1982. doi:10.1111/jvim.16903.',
+        sourceType: 'Consenso Internacional ACVIM',
+        url: 'https://doi.org/10.1111/jvim.16903',
+        evidenceLevel: 'Consenso de especialistas',
+      },
+    ],
+    relatedDiseaseSlugs: ['lesao-renal-aguda-canina'],
+    isDemonstrative: false,
+    warningLabel: 'Vigente',
+  },
 ];

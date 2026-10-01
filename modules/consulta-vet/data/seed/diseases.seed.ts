@@ -1,4 +1,10 @@
 import { linfomaMediastinalRecord } from './diseases.linfoma-mediastinal.seed';
+import { intermacaoCaesGatosRecord } from './diseases.intermacao-caes-gatos.seed';
+import { polirradiculoneuriteCaesGatosRecord } from './diseases.polirradiculoneurite-caes-gatos.seed';
+import { tetanoCaesGatosRecord } from './diseases.tetano-caes-gatos.seed';
+import { bruceloseCaesGatosRecord } from './diseases.brucelose-caes-gatos.seed';
+import { megaesofagoCaesGatosRecord } from './diseases.megaesofago-caes-gatos.seed';
+import { paralisiaLaringeaCaesGatosRecord } from './diseases.paralisia-laringea-caes-gatos.seed';
 import { piotoraxRecord } from './diseases.piotorax.seed';
 import { quilotoraxRecord } from './diseases.quilotorax.seed';
 import { cistiteEnfisematosaCaesGatosSeed } from './diseases.cistite-enfisematosa-caes-gatos.seed';
@@ -6,6 +12,12 @@ import { discinesiaParoxisticaCaesGatosSeed } from './diseases.discinesia-paroxi
 import { platinosomoseFelinaSeed } from './diseases.platinosomose-felina.seed';
 import { triadeFelinaSeed } from './diseases.triade-felina.seed';
 import { anemiaHemoliticaImunomediadaCaninaRecord } from './diseases.ahim-canina.seed';
+import { sepseCaninaRecord } from './diseases.sepse-canina.seed';
+import { obstrucaoFuncionalFluxoUrinarioRecord } from './diseases.obstrucao-funcional-fluxo-urinario-caes.seed';
+import { sepseFelinaRecord } from './diseases.sepse-felina.seed';
+import { lesaoRenalAgudaFelinaRecord } from './diseases.lesao-renal-aguda-felina.seed';
+import { pielonefriteCaesGatosRecord } from './diseases.pielonefrite-caes-gatos.seed';
+import { lesaoRenalAgudaCaninaRecord } from './diseases.lesao-renal-aguda-canina.seed';
 import { trombocitopeniaCaesGatosSeed } from './diseases.trombocitopenia-caes-gatos.seed';
 import { anemiaCaesGatosSeed } from './diseases.anemia-caes-gatos.seed';
 import { leishmanioseCaesGatosSeed } from './diseases.leishmaniose-caes-gatos.seed';
@@ -135,4 +147,16 @@ export const diseasesSeed: DiseaseRecord[] = [
   platinosomoseFelinaSeed,
   triadeFelinaSeed,
   anemiaHemoliticaImunomediadaCaninaRecord,
+  sepseCaninaRecord,
+  obstrucaoFuncionalFluxoUrinarioRecord,
+  sepseFelinaRecord,
+  lesaoRenalAgudaFelinaRecord,
+  pielonefriteCaesGatosRecord,
+  lesaoRenalAgudaCaninaRecord,
+  intermacaoCaesGatosRecord,
+  polirradiculoneuriteCaesGatosRecord,
+  tetanoCaesGatosRecord,
+  bruceloseCaesGatosRecord,
+  megaesofagoCaesGatosRecord,
+  paralisiaLaringeaCaesGatosRecord,
 ].map(withPlainLanguage);

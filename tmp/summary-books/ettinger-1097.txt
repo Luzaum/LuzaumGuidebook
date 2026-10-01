@@ -1,0 +1,199 @@
+CHAPTER 198
+•
+Feline Immunodeciency Virus Infection
+1037
+eBooks.Health.Elsevier.com
+Feline Immunodeficiency Virus Infection
+Julia Beatty | Paweł M. Bęczkowski
+OVERVIEW
+F
+eline immunodeciency virus (FIV) 
+infection is common among domestic 
+cats worldwide. Transmission occurs 
+primarily 
+during 
+aggressive 
+territorial 
+encounters. Infection with FIV is lifelong. 
+Although the immunological consequences 
+of FIV infection in cats mirror many of those 
+seen in human immunodeciency virus 
+(HIV)-infected humans, the clinical mani-
+festations of most FIV infections are mild 
+or absent. Cats that die from FIV-associated 
+diseases have no pathognomonic signs, 
+which makes assigning clinical relevance 
+to FIV infection in an individual cat chal-
+lenging. Diagnostic investigation of ill, FIV-
+infected cats with clinical signs frequently 
+reveals treatable problems. Screening diag-
+nostic tests detect circulating antibodies to 
+the virus. Depending on the circumstances, additional serologic 
+or molecular testing can assist in determining a cat’s true infec-
+tion status. Connement of uninfected cats is the most eective 
+way to prevent transmission. FIV presents no known zoonotic 
+risk.
+ETIOLOGY AND EPIDEMIOLOGY
+Feline immunodeciency virus (FIV), family Retroviridae, sub-
+family Orthoretrovirinae, genus Lentivirus, describes a large group 
+of closely related viruses that are endemic in domestic and wild 
+cats, as well as spotted hyenas.1 FIV of the domestic cat is classi-
+ed into distinct subtypes or clades (currently designated A to E) 
+based on sequence diversity (up to 26%) of the variable region of 
+the env gene. e true genetic diversity of FIV at the population 
+level is likely higher due to the frequent occurrence of recombina-
+tion.2 3 Virus diversity has implications for the design and inter-
+pretation of molecular diagnostic tests as well as the ecacy of 
+FIV vaccines (ch. 185).
+Antibodies to FIV are found in domestic cat populations 
+across the globe. Seroprevalence varies from <2.5% to >14%,4
+depending on the region and the population tested. Risk fac-
+tors for FIV infection include age, sex, environment, breed, and 
+health status; adult, male, free-roaming, crossbred, and sick cats 
+are at increased risk.5 e average age of FIV-infected cats is 5 
+to 6 years.6 FIV is transmitted by direct inoculation of saliva or 
+blood during ghting.7 Other routes of transmission are of minor 
+epidemiological signicance. Horizontal transmission of FIV 
+between cats in stable households is rare, in sharp contrast to the 
+major feline retroviral pathogen, feline leukemia virus (FeLV) 
+(ch. 199), which spreads rapidly between housemates.6 Verti-
+cal or perinatal transmission of naturally acquired FIV is docu-
+mented infrequently, but primary infection of the queen during 
+pregnancy may increase risk of maternal transmission.8 Natural 
+sexual transmission of FIV is not documented, but the virus can 
+be recovered from semen.9
+In veterinary hospitals, no additional biosecurity precautions 
+over and above those for any feline patient are necessary for deal-
+ing with FIV-infected cats. Virus shed in secretions is rapidly 
+inactivated in dry conditions; routine cleaning and disinfection 
+procedures to prevent the spread of feline herpesvirus 1 (FHV-1) 
+(ch. 205), feline calicivirus (FCV) (ch. 205), and feline panleu-
+kopenia virus (FPV) (ch. 201) eectively eliminate any residual 
+risk of environmental contamination. Nosocomial transmission 
+of FIV infection is virtually impossible unless there is parenteral 
+inoculation of contaminated blood or saliva from an FIV-infected 
+cat. Cats used as blood donors must be free from FIV infection 
+since iatrogenic transmission by this route is inevitable.10 Cats 
+should not be housed in isolation facilities on the basis of FIV 
+status alone, since this places potentially immunosuppressed cats 
+at risk of exposure to other infectious diseases.
+FIV presents no known zoonotic risk. However, immuno-
+suppressed humans, e.g., transplant recipients, should minimize 
+contact with FIV-infected cats or observe meticulous hygiene 
+precautions to avoid possible exposure to shared opportunistic 
+pathogens
+PATHOGENESIS
+FIV infection can be broadly considered to progress in three 
+stages: a transient primary stage, a chronic subclinical stage, and 
+a terminal stage (Figure 198.1). In contrast to HIV, where with-
+out antiretroviral treatment patients progress through predict-
+able, well-characterized clinical stages to the terminal acquired 
+immunodeciency syndrome (AIDS) stage, the consequences of 
+FIV infection are less predictable.11 12 A majority of FIV-infected 
+cats remain free from signicant disease and have a normal life 
+expectancy.11
+CLINICAL SIGNS
+All FIV-infected cats are at risk of developing immune dysfunc-
+tion, which can manifest as immune deciency or immune-
+mediated disease. Healthy FIV-infected cats should be carefully 
+CHAPTER 198
+ACRONYMS
+ABCD European Advisory 
+Board on Cat Diseases
+AIDS acquired immunode-
+ficiency syndrome
+ELISA enzyme-linked 
+immunosorbent 
+assay
+FCV feline calicivirus
+FeLV feline leukemia virus
+FHV-1 feline herpesvirus 1
+FPV feline panleukopenia 
+virus
+FIV feline immunodeficien-
+cy virus
+HIV human immunodefi-
+ciency virus
+PCR polymerase chain 
+reaction
+POC point-of-care
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+VIRAL DISEASES
+
+SECTION XI
+•
+Infectious Disease
+1038
+eBooks.Health.Elsevier.com
+examined and even minor problems fully assessed. Immune 
+dysfunction can be seen clinically as atypical and refractory 
+bacterial, viral, or parasitic infections. Respiratory infections, 
+bacterial pyoderma, generalized demodicosis, mycobacterial 
+infection, disseminated cowpox, pulmonary cryptococcosis, and 
+lungworm infections are reported. Persistent cytopenias, partic-
+ularly neutropenia or lymphopenia, are described in advanced 
+FIV infection (chs. 172, 175, and 180).13 FIV infection has been 
+linked to feline chronic gingivostomatitis (FCGS), a painful and 
+debilitating condition that can severely impact quality of life 
+(Figure 198.2).14 Risk of lymphoma is increased in FIV-infected 
+cats by 5- to 6-fold.15 is increased risk is small in compari-
+son to the 60-fold increase in risk of lymphoma associated with 
+FeLV infection. FIV-associated lymphomas are typically high-
+grade, extranodal, B-cell tumors, similar to HIV-associated dif-
+fuse large B-cell lymphoma (Figure 198.3).
+Severe unexplained weight loss (ch. 18) can occur in the terminal 
+stage of FIV infection. is presentation resembles “wasting syn-
+drome,” an AIDS-dening condition in HIV infection, indicating 
+weight loss of 10% or more over 30 days with no identiable cause 
+other than HIV infection. FIV-associated neuropathology has been 
+studied extensively as an experimental model for neurodegenera-
+tive diseases in HIV infection.16 e incidence of neurological signs 
+accompanying natural FIV infection is unknown.
+DIAGNOSIS
+CATS THAT SHOULD BE TESTED
+FIV-infected cats should be identied to optimize individual 
+health care and to prevent new infections. Ideally, the current 
+retrovirus status of all cats should be known. Priorities for FIV-
+testing include free-roaming cats, ill cats, cats with ght wounds, 
+blood donors, adult cats being rehomed, kittens born to FIV-
+infected queens, and any cat prior to FIV vaccination.17
+TESTING OVERVIEW
+Determining the true FIV infection status of an individual cat 
+may involve repeat testing. Advising owners of this possibility at 
+the outset can be helpful for maintaining condence. Commercial 
+FIV tests detect either anti-FIV antibodies by immunoassays or 
+viral nucleic acid by polymerase chain reaction (PCR) (ch. 184). 
+Other serologic assays, including immunouorescent antibody 
+(IFA) assays and Western blotting, have limited availability, are 
+technically demanding, and are subject to interoperator inter-
+pretation variability. Western blotting appears to be less sensitive 
+than enzyme-linked immunosorbent assay (ELISA) in some lab-
+oratories.18 Virus isolation from peripheral blood mononuclear 
+cells is not commercially available.
+Serologic assays are the rst line for testing. Point-of-
+care (POC) tests, utilizing bidirectional-ow ELISA or lateral 
+ow immunochromatography technologies, and diagnostic 
+laboratory-based ELISA assays have high sensitivities and speci-
+cities for antibody detection.17 In cats over 6 months of age that 
+have not been vaccinated against FIV, anti-FIV antibodies are a 
+marker for FIV infection.
+Infection
+Acute stage
+(2–8 weeks)
+Chronic stage
+(several years)
+CTL
+Anti p24 antibodies
+CD4+ T cells
+PVL
+Terminal stage
+(several weeks)
+Death
+Figure 198.1
+Course of feline immunodeciency virus (FIV) infection. During the acute stage, plasma virus load increases. An adaptive immune response 
+suppresses viremia within approximately 8 weeks. e chronic stage follows, lasting for several years and is characterized by relatively low viral load, and pro-
+gressive decline of CD4+ T lymphocytes. In a minority of FIV-infected cats, an immunodeciency-like syndrome (terminal stage) develops, which can last 
+for several weeks and ends with euthanasia on humane grounds or death. CTL, Cytotoxic T lymphocytes; PVL, plasma viral load; p24, viral capsid protein.
+Figure 198.2
+Gingivostomatitis with marked involvement of the fau-
+ces. (Courtesy Matthew Oxford.)

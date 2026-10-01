@@ -1,0 +1,848 @@
+
+===== Plumb PDF 309 =====
+282    Clindamycin 
+ ■ Dinoprost : Clenbuterol may antagonize the effects of dinoprost 
+(prostaglandin F2 alpha).23
+ ■ Oxytocin : Clenbuterol may antagonize the effects of oxyto -
+cin.23,31
+ ■ Sympathomimetic Amines, Other  (eg, albuterol, phenyl-
+propanolamine): Concomitant administration with other sym -
+pathomimetic amines may enhance the adverse effects of clen -
+buterol.
+ ■ Theophylline/Aminophylline: May enhance the adverse ef-
+fects (eg, tachycardia, CNS stimulation) of clenbuterol
+ ■ Tricyclic antidepressants (eg, amitriptyline, clomip -
+ramine): May potentiate the vascular effects of clenbuterol
+ ■ Xylazine : Clenbuterol may antagonize the uterine contractility 
+effects of xylazine32; this effect likely applies to other alpha-2 ag -
+onists.
+Dosages
+HORSES: 
+Management of airway obstruction (label dosage; FDA-ap -
+proved): Initially, 0.8 μg/kg PO twice daily for 3 days; if no im -
+provement, dose can be increased to 1.6 μg/kg twice daily for 3 
+days; if no improvement, dose can be increased to 2.4 μg/kg twice 
+daily for 3 days; if no improvement, dose can be increased to  
+3.2 μg/kg twice daily for 3 days; if no improvement, therapy should 
+be discontinued. Recommended duration of therapy is 30 days, 
+then it should be withdrawn and therapy should be reevaluated. 
+If signs return, the above stepwise dosage schedule can be reiniti-
+ated.1 NOTE: One study of horses with SEA noted increased air -
+way reactivity and reduced bronchodilatory effects after 21 days 
+of administration of clenbuterol. Use clenbuterol no longer than 
+is needed for clinical benefit.6 
+Adjunctive treatment for dystocia emergencies  (extra-label): 
+300 μg/500 kg (1102 lb) mare IV slowly ( NOTE: Parenteral for-
+mulation not available commercially in the United States). The 
+drug’s fast onset of action when given IV allows the veterinarian 
+to decide quickly if uterine relaxation will correct the problem. 
+Clenbuterol is particularly useful when repelling the equine fe -
+tus to allow manipulation of the head and limbs. May be used in 
+combination with sedatives, analgesics, and tranquilizers. Xyla -
+zine or detomidine may inhibit the uterine relaxant effects of 
+ clenbuterol.33
+CATTLE:
+Uterine relaxant in cattle (extra-label): 300 μg/cow (NOT μg/kg) 
+slow IV once. May be used during embryo transfer or during the 
+final stages of pregnancy, including labor. NOTE: IV formulation 
+not available in the United States. Extra-label use of clenbuterol in 
+food-producing animals is prohibited by the FDA.23
+Monitoring
+ ■ Clinical efficacy
+ ■ Adverse effects
+Client Information
+ ■ This medicine is usually used in horses with asthma or airway 
+obstruction to relax muscles and improve breathing.
+ ■ Clenbuterol may be used to treat difficult delivery ( dystocia) 
+emergencies in mares.
+ ■ This medicine can be used to prevent labor and thus, it should be 
+used with caution in pregnant animals.
+ ■ Seek immediate medical attention if accidental ingestion occurs 
+in humans.
+ ■ Extra-label use in food animals in the United States is illegal. Use 
+may also be prohibited in show or racing horses. Check rules and 
+regulations before entering your animal in a competition while 
+this medication is being administered.
+Chemistry/Synonyms
+Clenbuterol HCl is a substituted phenylaminoethanol beta-2-adren-
+ergic agonist. It is very slightly soluble in water and has a molecular 
+weight of 313.65. The commercial syrup is a colorless solution.
+Clenbuterol HCl may also be known as NAB-365, clebuterolum, 
+Bronchopulmin®, Dilaterol®, Planipart®, Respipulmin®, Spiropent®, or 
+Ventipulmin®.
+Storage/Stability
+The commercially available syrup should be stored at or below 25°C 
+(77°F); avoid freezing. The manufacturer warns to replace the safety 
+cap on the bottle when not in use. 
+Clenbuterol injection should be stored below 25°C (77°F) and dis-
+carded 28 days after first use.
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Clenbuterol HCl Oral Syrup: 72.5 μg/mL in 100 mL and 330 mL bot-
+tles; Ventipulmin® Syrup; (Rx). NADA #140-973. Do not use in horses 
+intended for human consumption.
+Clenbuterol HCl for Injection: 0.03 mg/mL (30 μg/mL) in 10 mL 
+vials; Planipart® (POM-V , CD [Sch 4 pt 2])
+Extra-label clenbuterol use in food animals is prohibited by federal 
+United States law.
+Association of Racing Commissioners International (ARCI) Uni -
+form Classification Guidelines for Foreign Substances (UCGFS) 
+Class 3 Drug. Use of this drug may not be allowed in certain ani -
+mal competitions. Check rules and regulations before entering in a 
+competition while this medication is being administered. Contact 
+local racing authorities for further guidance. See Appendix for more 
+information.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Clindamycin 
+(klin-da-mye-sin) Antirobe®,  Cleocin®
+Lincosamide Antibiotic
+Prescriber Highlights
+ ▶ Used for broad-spectrum coverage against many anaerobes, 
+gram-positive aerobic cocci, and Toxoplasma spp
+ ▶ Contraindicated in hindgut fermenters (eg, horses, rodents, 
+ruminants, lagomorphs) and patients that are hypersensitive 
+to lincosamides
+ ▶ Use with caution in patients with liver or renal dysfunction; 
+dose reduction should be considered if the dysfunction is 
+severe.
+ ▶ Potential adverse effects include gastroenteritis, and esopha-
+geal injuries if dry pilled.
+Uses/Indications
+Labeled indications for clindamycin include treatment of skin infec-
+tions (eg, wounds, abscesses), dental infections, and osteomyelitis 
+(in dogs) caused by coagulase-positive staphylococci (ie, Staphy-
+lococcus aureus, Staphylococcus intermedius ), Streptococcus spp (in 
+cats), Bacteroides fragilis, Prevotella melaninogenicus, Fusobacterium 
+necrophorum, and Clostridium perfringens.1 
+
+
+===== Plumb PDF 310 =====
+Clindamycin    283
+Clindamycin is also used for a variety of protozoal infections, in-
+cluding toxoplasmosis, but high doses may be required to achieve 
+adequate CNS concentrations.
+The World Health Organization (WHO) has designated clinda -
+mycin as a Highly Important antimicrobial for human medicine. 2 
+The Office International des Epizooties  (OIE) has designated lin -
+cosamides as Veterinary Highly Important Antimicrobial (VHIA) 
+Agents in veterinary species.3
+Pharmacology/Actions
+Lincosamide antibiotics may act as bacteriostatic or bactericidal 
+agents, depending on the concentration of the drug at the infec -
+tion site and the susceptibility of the organism. Lincosamides act by 
+binding to the 50S ribosomal subunit of susceptible bacteria, there -
+by inhibiting peptide bond formation and protein synthesis of the 
+bacterial cell wall. The lincosamides—lincomycin and clindamy -
+cin—share mechanisms of action and have similar spectrums of ac -
+tivity, although lincomycin is usually less active against susceptible 
+organisms. Complete cross-resistance occurs between the 2 drugs, 
+and at least partial cross-resistance occurs between lincosamides and 
+erythromycin.
+Most aerobic gram-positive cocci are susceptible to lincosamides. 
+Clindamycin has excellent activity against staphylococci and strep -
+tococci. Other organisms that are generally susceptible include Cory-
+nebacterium diphtheriae, Nocardia asteroides, Erysipelothrix spp, and 
+Mycoplasma spp. Enterococci are inherently resistant. Acquired re -
+sistance is a potential problem, particularly among staphylococci. In-
+ducible resistance to clindamycin is common in methicillin-resistant 
+Staphylococcus aureus (MRSA) and occurs less commonly in other 
+methicillin-resistant staphylococci. 4–6 Methicillin-resistant staphy -
+lococci, particularly methicillin-resistant Staphylococcus pseudinter-
+medius, are usually resistant to clindamycin. This resistance cannot 
+be detected with routine testing and can lead to treatment failure. 
+Testing for inducible clindamycin resistance is important in any 
+Staphylococcus spp that have been reported as erythromycin-resis -
+tant or in cases in which erythromycin susceptibility has not been 
+reported; erythromycin-susceptible staphylococci will not be induc-
+ibly resistant.5,6 Streptococcal resistance is rare.
+Most anaerobic bacteria are susceptible to lincosamides. There is a 
+low prevalence of resistance in the Bacteroides fragilis group.
+Clindamycin has activity against a variety of protozoal organisms, 
+but it may be more suppressive than curative in the treatment of 
+Toxoplasma gondii infections. Clindamycin can have a delayed onset 
+of action (1 to 3 days), and drug concentrations may not be high 
+enough to achieve complete efficacy. Clindamycin is not effective 
+against the extracellular tachyzoites associated with these protozoal 
+infections.
+Pharmacokinetics
+In dogs, oral bioavailability is ≈73%, and the elimination half-life is 
+reportedly 5 hours after oral administration and 10 to 13 hours after 
+SC administration. The volume of distribution is ≈0.9 L/kg. Half-life 
+may be longer with higher dosages. One study in dogs found a mean 
+half-life of ≈4 hours after administration of 5.5 mg/kg PO every 12 
+hours as compared with 7 to 10 hours after administration of 11 mg/kg  
+PO every 24 hours; overall drug exposure (area under the curve 
+[AUC]0-24/MIC) was higher with the higher, once-daily dose.7
+In cats, clindamycin half-life after a dose of 11 mg/kg is ≈16 
+hours (capsules) and 8 hours (liquid). The volume of distribution is  
+≈1.6 L/kg to 3 L/kg. The highest concentrations are found in the 
+lungs, liver, spleen, jejunum, and colon.
+In humans, the drug is rapidly absorbed from the gut, and ≈90% 
+of the total dose is absorbed. Food decreases the rate of absorption 
+but not the extent. Peak serum concentrations are attained ≈45 to 
+60 minutes after oral administration. After IM administration, peak 
+concentrations are attained ≈1 to 3 hours postinjection.
+Clindamycin is distributed in most tissue and fluids. Therapeu -
+tic concentrations are achieved in bone, synovial fluid, bile, pleural 
+fluid, peritoneal fluid, skin, and myocardial tissue. Clindamycin also 
+penetrates well into abscesses, scar tissue, and WBCs. CNS concen -
+trations may only reach 40% of those found in serum if meninges are 
+inflamed and use for this indication in humans is not recommended. 
+Clindamycin does not penetrate the eye at concentrations required 
+to treat infections. Clindamycin is ≈93% bound to plasma proteins. 
+The drug crosses the placenta and can be distributed in milk at con-
+centrations equal to those in plasma.
+Clindamycin palmitate and clindamycin phosphate are inactive, 
+and hydrolysis in vivo to free (active) clindamycin usually occurs 
+rapidly. Clindamycin is partially metabolized in the liver to both ac-
+tive and inactive metabolites. The unchanged drug and metabolites 
+are excreted in the urine, feces, and bile; however, active drug con -
+centrations in urine are poor (low). Halflives can be prolonged in 
+patients with severe renal or hepatic dysfunction.
+Contraindications/Precautions/Warnings
+Clindamycin should never be administered undiluted as a bolus.8 A 
+calculated dose should be administered by IV intermittent infusion 
+over at least 10 to 60 minutes (see Dosages).
+Although there have been case reports of parenteral administra -
+tion of lincosamides to horses, cattle, and sheep, lincosamides are 
+contraindicated in hind-gut fermenters, such as horses, ruminants, 
+rabbits, hamsters, chinchillas, and guinea pigs, as serious GI effects, 
+including death, can occur. Clindamycin is also contraindicated in 
+patients with known hypersensitivity to it or lincomycin.
+Clindamycin has been implicated in causing esophagitis and, po-
+tentially, esophageal strictures in small animal species. 9 Dry pilling 
+should be avoided when administering this drug.
+Patients with severe renal and/or hepatic disease should receive 
+the drug with caution; the manufacturer suggests monitoring serum 
+clindamycin levels in dogs or cats receiving high-dose therapy.1
+In humans, it has been suggested to use the drug with caution in 
+patients with atopy or a history of GI disease, particularly colitis; the 
+significance of this suggestion for veterinary patients is not known.
+Clindamycin use is becoming more scrutinized and restricted in 
+humans due to the risk for severe Clostridium difficile infection and 
+Clostridium difficile–associated diarrhea (CDAD). Clindamycin in 
+5% dextrose injection therapy has been associated with severe colitis, 
+which may end up fatal. Though of lesser concern in dogs and cats, it 
+may need to be monitored.
+Adverse Effects
+Reported adverse effects after oral administration in dogs and cats 
+include gastroenteritis (eg, emesis, loose stool, infrequently bloody 
+diarrhea [dogs]). In a study of healthy cats, administration of a sym-
+biotic (prebiotic and probiotic mixture) 1 hour after administration 
+of oral clindamycin reduced antibiotic-associated GI signs.10 In rab-
+bits, cholestyramine reduced enterotoxemia caused by IV clindamy-
+cin administration.11
+There have been case reports of esophageal injuries (eg, esoph -
+agitis, strictures) in cats when solid dose forms were administered 
+without food or a water bolus. Cats may occasionally show signs of 
+hypersalivation or lip-smacking after oral administration. IM injec-
+tions reportedly cause pain at the injection site.
+In humans, eye pain and contact dermatitis have been reported.
+Reproductive/Nursing Safety
+Clindamycin crosses the placenta, and cord blood concentrations 
+are ≈46% of those found in maternal serum. Safe use in dogs and 
+cats during pregnancy has not been established, but the drug has not 
+been implicated in causing teratogenic effects. 
+Clindamycin is distributed in milk; nursing puppies or kittens of 
+
+
+===== Plumb PDF 311 =====
+284    Clindamycin 
+mothers receiving the drug may develop diarrhea; however, in hu -
+mans, the American Academy of Pediatrics considers clindamycin 
+compatible with breastfeeding. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+There is little information available regarding overdoses of this drug. 
+In dogs, oral dosages of up to 300 mg/kg/day for up to 1 year did 
+not result in toxicity. Dogs receiving 600 mg/kg/day for 6 months 
+developed anorexia, vomiting, and weight loss; erosive gastritis and 
+focal gallbladder necrosis were found on necropsy. Cats that received  
+110 mg/kg/day for 15 days or 55 mg/kg/day for 42 days displayed 
+little evidence of toxicity. 1 Hyporexia, vomiting, and/or diarrhea 
+occurred in healthy research cats that received oral clindamycin  
+≈35 mg/kg/day.12 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving clindamycin and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Aminoglycosides: Clindamycin has been reported to antago -
+nize the bactericidal activity of aminoglycosides in vitro.
+ ■ CYP3A Inducers (eg, phenobarbital, rifampin): In humans, 
+clindamycin is a substrate of CYP3A isoenzymes, and inducers 
+of this isoenzyme may reduce plasma clindamycin concentration 
+and decrease antimicrobial effectiveness.13 Veterinary significance 
+is uncertain.
+ ■ CYP3A Inhibitors (eg, clarithromycin, ketoconazole): In 
+humans, clindamycin is a substrate of CYP3A isoenzymes and 
+inhibitors of this isoenzyme may increase plasma clindamycin 
+concentration and risk for adverse effects. Veterinary significance 
+is uncertain.
+ ■ Cyclosporine : Clindamycin has been reported to reduce levels 
+in humans, but this apparently does not occur in dogs.
+ ■ Erythromycin : In vitro antagonism when used with clindamy-
+cin; concomitant use should likely be avoided.
+ ■ Neuromuscular Blocking Agents  (eg, atracurium, pancu-
+ronium): Clindamycin possesses intrinsic neuromuscular block-
+ing activity and should be used cautiously with other neuromus -
+cular blocking agents. 
+Laboratory Considerations
+ ■ Slight increases in serum liver enzymes  (AST, ALT, ALP) 
+can occur. Apparently, no clinical significance has been associated 
+with these increases.
+Dosages
+NOTE: Clindamycin should never be administered IV as an un -
+diluted bolus. The calculated dose should be administered by IV 
+intermittent infusion over at least 10 to 60 minutes at a maximum 
+rate of 30 mg/minute (do not exceed 1200 mg/hour). The final 
+concentration for administration should not exceed 18 mg/mL.
+DOGS:
+Skin infections (eg, wounds, abscesses) and dental infections  
+(label dosage; FDA-approved): 5.5 – 33 mg/kg PO every 12 hours 
+for a maximum of 28 days. 1 If no response after 3  to 4 days, the 
+drug should be discontinued.
+Osteomyelitis (label dosage; FDA-approved): 11 – 33 mg/kg PO 
+every 12 hours for a minimum of 28 days1
+Pyoderma, superficial  (extra-label): 5.5 – 10 mg/kg PO every 
+12 hours.14 Fair level of evidence for moderate to high efficacy. 15 
+Pharmacokinetic studies have suggested 11 mg/kg PO every 24 
+hours to be at least equal, if not more effective, than 5.5 mg/kg PO 
+every 12 hours.7,16
+Pyoderma, deep (extra-label): 11 mg/kg PO every 12 to 24 hours 
+for at least 1 week beyond clinical resolution
+Systemic infections (eg, sepsis) ; (extra-label): 10 mg/kg slow IV 
+infusion every 12 hours.17,18 NOTE: Broad-spectrum coverage re-
+quires an additional antibiotic (eg, aminoglycoside, fluoroquino-
+lone) for protection against gramnegative organisms.
+Surgical prophylaxis for gram-positive aerobes and anaerobic 
+coverage prior to dental procedure (extra-label): 11 – 22 mg/kg  
+PO every 12 to 24 hours for 5 days prior to dental cleaning19; how-
+ever, there is no evidence that this practice minimizes the risk 
+for bacterial translocation from the oral cavity during a dentistry 
+procedure.20
+Surgical prophylaxis for gram-positive aerobes and anaerobic 
+coverage when beta-lactam antibiotics are contraindicated (ex-
+tra-label): 
+a) 5 – 11 mg/kg PO 60 minutes preoperatively21 
+b) 10 mg/kg slow IV infusion to be completed 30 minutes be -
+fore incision21 
+Susceptible protozoal infections (extra-label): 
+a) Babesia gibsonii: 
+i. Begin therapy with diminazene aceturate 2 mg/kg SC ev -
+ery 48 hours for 3 doses. Once complete, begin (day 8 of a 
+treatment regimen) clindamycin 25 mg/kg PO twice daily 
+for 21 days. This treatment regimen was shown to reduce 
+infection relapse rates.22 
+ii. In cases of atovaquone resistance, clindamycin 30 mg/kg 
+PO every 12 hours with diminazene aceturate 3.5 mg/kg IM 
+once on the first day of treatment and imidocarb dipropri-
+onate 6 mg/kg SC once on the day after diminazene admin-
+istration; the average duration of treatment was 6 weeks.23
+iii. Alternative after atovaquone and azithromycin failed to 
+eliminate infection on PCR test: Clindamycin 25 mg/kg PO 
+twice daily in combination with metronidazole 15 mg/kg 
+PO twice daily and doxycycline 5 mg/kg PO once daily for 
+30 to 90 days24
+b) Hepatozoon canis: Clindamycin 10 mg/kg PO every 8 hours 
+in combination with sulfadiazine/trimethoprim 15 mg/kg 
+PO every 12 hours and pyrimethamine 0.25 mg/kg PO every 
+24 hours (or ponazuril 10 mg/kg PO every 12 hours) for 14 
+days.25
+c) Other protozoal (eg, Neospora spp,26 Toxoplasma spp) in -
+fections: Most recommendations for adjunctive treatment 
+are clindamycin 12.5 mg/kg PO every 12 hours for at least 2 
+weeks or longer. Additional drugs are often used (eg, sulfadi-
+azine/trimethoprim, pyrimethamine).
+CATS:
+Skin infections (eg, deep wounds, abscesses) and dental infec -
+tions (label dosage; FDA-approved): 11 – 33 mg/kg PO every 24 
+hours.1 In cases of acute infections, therapy should not continue 
+for more than 3 to 4 days if no clinical response is seen. The max-
+imum labeled treatment period is 14 days.
+Systemic infections (eg, sepsis) ; (extra-label): 10 mg/kg slow IV 
+
+
+===== Plumb PDF 312 =====
+Clindamycin    285
+infusion every 12 hours. 17,18 Up to 33 mg/kg PO every 12 hours 
+may be considered in refractory infections that are still suscep -
+tible to clindamycin. NOTE: Broad-spectrum coverage requires 
+an additional antibiotic (eg, aminoglycoside, fluoroquinolone) for 
+protection against gram-negative organisms.
+Surgical prophylaxis for gram-positive aerobes and anaerobic 
+coverage when beta-lactam antibiotics are contraindicated  (ex-
+tra-label): 
+a) 11 mg/kg PO 60 minutes preoperatively21 
+b)  10 mg/kg slow IV infusion to be completed 30 minutes be-
+fore incision27
+Toxoplasmosis (extra-label): 10 – 12 mg/kg slow IV infusion ev -
+ery 12 hours until able to tolerate oral administration for a total 
+of 4 weeks.28 Patients with uveitis should receive topical, oral, or 
+parenteral glucocorticoids to reduce the risk for secondary glau -
+coma and lens luxations.29
+BIRDS:
+Susceptible infections (extra-label):
+a) 25 mg/kg PO every 8 hours30
+b) For mild spore-forming enteric bacterial infections: 50 mg/
+kg PO every 12 hours for 5 to 10 days31
+FERRETS:
+Susceptible infections (extra-label): 5 – 10 mg/kg PO every 12 
+hours32
+REPTILES:
+Susceptible anaerobic infections (extra-label):
+a) 5 mg/kg PO every 24 hours33
+b) Respiratory infections (eg, anaerobes, mycoplasma): 5 mg/
+kg PO every 24 hours for 14 days34
+Monitoring
+ ■ Clinical efficacy
+ ■ Culture and susceptibility testing as warranted by clinical presen-
+tation
+ ■ Adverse effects, particularly vomiting and severe diarrhea
+ ■ Periodic CBC and liver and kidney chemistry profiles if therapy 
+persists for more than 30 days13
+Client Information
+ ■ This medicine is an antibiotic that is used to treat infections of 
+skin, wounds, and bone, but is also useful in the treatment of 
+toxoplasmosis.
+ ■ Give this medicine as directed by your veterinarian.
+ ■ Do not give this medicine to horses, cattle, sheep, goats, deer, 
+rabbits, mice, rats, hamsters, or guinea pigs, as it may cause fatal 
+diarrhea.
+ ■ This medicine may be given with or without food. Do not dry pill, 
+as doing so may cause throat burns. Give a small amount of food 
+or water (slightly over a teaspoonful) after pilling.
+ ■ This medicine has a very bitter taste and may require disguising in 
+food to get the animal to take it.
+ ■ Be sure to let your veterinarian know if your animal has any se -
+vere, prolonged, or bloody vomiting or diarrhea.
+Chemistry/Synonyms
+Clindamycin, a semisynthetic derivative of lincomycin, is available 
+as hydrochloride hydrate, phosphate ester, and palmitate hydrochlo-
+ride. The potency of all 3 salts is expressed as milligrams of clin -
+damycin. The hydrochloride occurs as a white to practically white 
+crystalline powder. The phosphate occurs as a white to off-white hy-
+groscopic crystalline powder. The palmitate HCl occurs as a white 
+to off-white amorphous powder. All may have a faint characteristic 
+odor and are freely soluble in water. With the phosphate, ≈400 mg 
+is soluble in 1 mL of water. Clindamycin has a pKa of 7.45. The com-
+mercially available injection has a pH of ≈6 (range, 5.5 to 7).
+Clindamycin HCl may also be known as chlorodeoxylincomy -
+cin hydrochloride, (7S)-chloro-7-deoxy-lincomycin hydrochloride, 
+clindamycini hydrochloridum, U-28508, or U-25179E; many trade 
+names are available.
+Storage/Stability
+Clindamycin capsules and the palmitate powder for oral solution 
+should be stored at controlled room temperature 20°C to 25°C (68°F 
+to 77°F). After reconstitution, do not refrigerate the palmitate oral 
+solution (human product), as thickening may occur. It is stable for 2 
+weeks at room temperature. The veterinary oral solution should be 
+stored at room temperature and has an extended shelf life.
+Store clindamycin phosphate injection at controlled room tem -
+perature. If refrigerated or frozen, crystals may form, which resolu -
+bilize on warming.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors, such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Clindamycin for injection is reportedly compatible for at least 24 
+hours in the following IV infusion solutions: dextrose 5%, dextrose 
+10%, dextrose combinations with Ringer’s solution, lactated Ringer’s, 
+and sodium chloride, sodium chloride 0.9%, Normosol R, Ringer’s 
+solution, and lactated Ringer’s solution.
+Clindamycin for injection is reportedly compatible with the fol -
+lowing drugs: amikacin sulfate, amphotericin B (cholesteryl, lipid 
+complex, and liposomal), aztreonam, buprenorphine, butorphanol, 
+calcium salts, cefazolin sodium, cefoperazone sodium, cefotaxime 
+sodium, ceftazidime sodium, cefuroxime sodium, dobutamine, 
+doxycycline, famotidine, furosemide, gentamicin sulfate, heparin 
+sodium, hydrocortisone sodium succinate, ketamine, lidocaine, 
+methylprednisolone sodium succinate, magnesium sulfate, meto -
+clopramide HCl, metronidazole, morphine sulfate, ondansetron, 
+penicillin G potassium/sodium, piperacillin/tazobactam sodium, 
+potassium chloride, sodium bicarbonate, tobramycin HCl (not in 
+syringes), verapamil HCl, and vitamin-B complex with C.
+Drugs that are reportedly incompatible with clindamycin include 
+aminophylline, amphotericin B (conventional colloid), ampicillin 
+sodium, ciprofloxacin, diazepam, midazolam, quinidine gluconate, 
+ranitidine HCl, pantoprazole, trimethoprim/sulfamethoxazole, and 
+ceftriaxone sodium. 
+In a study, clindamycin impregnated in calcium hemihydrate 
+beads failed to elute in a concentration above the MIC for common 
+infecting bacteria.35 
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Clindamycin HCl Oral Capsules: 25 mg, 75 mg, and 150 mg; An-
+tirobe® ; (Rx). NADA #120-161. FDA-approved for use in dogs
+Clindamycin HCl Oral Tablets: 25 mg, 75 mg, and 150 mg; Clintabs®;  
+(Rx). NADA #200-316. FDA-approved for use in dogs
+Clindamycin HCl Oral Solution: 25 mg/mL in 30 mL bottles; Antirobe® 
+Aquadrops, Clinsol®, generic; (Rx). NADA #135-940. FDA-approved 
+for use in dogs and cats
+HUMAN-LABELED PRODUCTS:
+Clindamycin HCl Oral Capsules: 75 mg, 150 mg, and 300 mg; Cleo-
+cin® , generic; (Rx)
+Clindamycin Palmitate HCl Granules for Oral Solution: 75 mg/5 mL 
+in 100 mL; Cleocin® Pediatric, generic; (Rx)
+
+
+===== Plumb PDF 313 =====
+286    Clodronate 
+Clindamycin Phosphate Solution Concentrate for Injection:  
+150 mg/mL in 2 mL, 4 mL, and 6 mL single-dose vials and 2 mL, 
+4 mL, and 6 mL ADD-Vantage® delivery vials; 150 mg, 300 mg,  
+600 mg, and 900 mg in 50 mL or 60 mL with 5% dextrose flexible 
+bags; Cleocin®, generic; (Rx)
+Also available in topical and vaginal preparations
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Clodronate 
+Clodronic Acid
+(kloe-dron-ayte) OSPHOS®
+Bisphosphonate
+Prescriber Highlights
+ ▶ Bisphosphonate approved for clinical signs associated with 
+navicular syndrome in horses
+ ▶ Contraindications include patients with known hypersensitive 
+to it or those with impaired renal function or a history of renal 
+disease.
+ ▶ Do not administer concurrently with NSAIDs (eg, phenylbuta-
+zone).
+ ▶ Adverse effects include abdominal pain (colic), discomfort, 
+and agitation.
+ ▶ Given IM; dose is divided into 3 equal injections. Single-use 
+vial; discard unused drug.
+ ▶ May be re-administered every 3 to 6 months if initially 
+ effective
+Uses/Indications
+In horses, clodronate is indicated for the control of clinical signs as-
+sociated with navicular syndrome. 1 Based on a pre-approval study, 
+75% of treated horses were deemed a treatment success, defined as 
+an improvement in lameness grade in the primarily affected limb 
+by at least 1 AAEP grade and no worsening of lameness grade in 
+the other forelimb on Day 56 after treatment. Clinical improvement 
+was most evident at 2 months posttreatment; approximately 65% of 
+horses that responded to initial treatment maintained their level of 
+improvement through the 6-month evaluation.
+A human-labeled (E.U.) IV form was used in a study to determine 
+the effects of clodronate (4 mg/kg in 150 mL 0.9% NaCl IV infusion 
+24 hours post vitamin D3 administration; administration rate not re-
+ported) on vitamin D3-induced hypercalcemia in dogs. The authors 
+concluded that clodronate may be useful within the first 24 hours 
+to treat vitamin D3-induced hypercalcemia in dogs, but that further 
+studies are necessary to define toxicity and appropriate dosing.2
+Liposome-encapsulated clodronate (LCP) is preferentially phago-
+cytosed by osteoclasts, macrophages, and dendritic cells, which then 
+undergo apoptosis. Therefore, LCP may be clinically useful for treat-
+ing certain autoimmune diseases. Research is ongoing to evaluate 
+LCP for the management of immune-mediated hemolytic anemia 
+and malignant histiocytosis in dogs.3
+Pharmacology/Actions
+Clodronate is a bisphosphonate that inhibits bone resorption by 
+binding to calcium phosphate crystals thereby inhibiting their for -
+mation and dissolution, and by directly inhibiting osteoclast cell 
+function. Clodronate’s mechanism of action for treating navicular 
+disease is not well understood. 
+Pharmacokinetics
+After IM injection in horses, clodronate disodium is rapidly ab -
+sorbed and cleared from the plasma. Plasma half-life of the parent 
+compound is relatively fast (≈2 to 3 hours). Like other bisphospho -
+nates, a percentage of bioavailable clodronate is taken up by bone 
+and then slowly excreted over a sustained period of time (months 
+to years). The actual residence time in equine bone has not been es-
+tablished. 
+Contraindications/Precautions/Warnings
+Clodronate is contraindicated in animals with a known hypersensi -
+tivity to clodronate or clodronic acid, in horses with impaired renal 
+function or with a history of renal disease, or in pregnant or lactating 
+mares.1 See Reproductive/Nursing Safety. Do not administer con -
+currently with NSAIDs (eg, phenylbutazone). See Drug Interactions.
+Use with caution in horses younger than 4 years of age as the drug 
+has not been evaluated in this age group.1 Since bisphosphonates can 
+affect bone, they may affect bone growth in young, growing horses.
+As a class, bisphosphonates are renally excreted and may be as -
+sociated with GI and renal toxicity. Use clodronate with caution in 
+patients receiving other potentially nephrotoxic drugs (eg, amino -
+glycosides).1 Animals should be well-hydrated prior to and after clo-
+dronate administration.
+Use with caution in horses with conditions affecting mineral or 
+electrolyte homeostasis (eg, hyperkalemic periodic paralysis, hypo -
+calcemia) as bisphosphonates can affect plasma concentrations of 
+electrolytes (eg, calcium, magnesium, and potassium) immediately 
+posttreatment, with effects lasting up to several hours.1
+Adverse Effects
+In pre-approval field studies, the following adverse reactions in hors-
+es were reported: Within 2 hours of injection: discomfort, agitation, 
+pawing, or signs of colic (reported together; incidence rate 9%); lip 
+licking (5.4%); yawning (4.5%); head shaking (2.7%); and injection 
+site swelling (1.8%). One horse (of 111) developed colic that required 
+treatment and another, hives, and pruritus. Other reported adverse 
+effects (partial listing) include renal failure, polydipsia, polyuria, an-
+orexia, lethargy, hypercalcemia, hyperkalemia, hyperactivity, recum-
+bency, and injection site reactions.1 
+Reduced bone turnover and remodeling may lead to increased 
+bone fragility, especially when given at high doses or with long-term 
+use.1
+Reproductive/Nursing Safety
+Bisphosphonates have been shown to cause fetal developmental ab-
+normalities in laboratory animals and uptake into fetal bone may 
+be greater than into maternal bone creating a possible risk for fetal 
+skeletal or other abnormalities.1 
+Although oral bioavailability is likely very low, bisphosphonates 
+may be excreted in milk and absorbed by nursing animals.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Five of 6 horses given single doses of 5 times the labeled dosage  
+(9 mg/kg) IM divided evenly into 5 separate injection sites showed 
+changes in attitude (eg, agitation, nervousness, pawing, circling, and 
+tail twitching) within 6 minutes of the dose. Four of 6 also showed 
+excessive yawning, flehmen, tongue rolling, head shaking, and head 
+bobbing. All horses developed mild to moderate muscle fascicula -
+tions between 2 and 30 minutes posttreatment. By 30 minutes post-
+treatment, 4 of 6 also developed signs of discomfort and possible 
+abdominal pain including full body stretching, repetitive lying down 
+and rising, and kicking at the abdomen. At approximately 1 hour post-
+treatment, 1 horse exhibited agitation and clinical signs of colic re -
+quiring medical therapy. This horse responded to medical therapy and 
+was clinically normal at 7 hours posttreatment. Three of 6 developed 
+
+
+===== BSAVA PDF 108 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+92
+clindamycin, and partial cross-resistance with erythromycin. Use 
+with care in individuals with hepatic or renal impairment.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Colitis, vomiting and diarrhoea are reported. 
+Although not a major problem in dogs and cats, discontinue drug if 
+diarrhoea develops. In cats may be associated with oesophagitis and 
+oesophageal stricture; therefore, consider following solid dosage 
+forms such as tablet administration with a small water or food bolus.
+Drug interactions: May enhance the effect of non-depolarizing 
+muscle relaxants, (e.g. tubocurarine) and may antagonize the effects 
+of neostigmine and pyridostigmine. Do not administer with 
+macrolide, chloramphenicol or other lincosamide antimicrobials as 
+these combinations are antagonistic.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs:   
+• 5.5 mg/kg p.o. q12h or 11 mg/kg q24h; in severe infection can 
+increase to 11 mg/kg q12h.
+• Toxoplasmosis/neosporosis: 25 mg/kg p.o. daily in divided 
+doses.
+Cats:
+• 5.5 mg/kg p.o. q12h or 11 mg/kg q24h.
+• Toxoplasmosis: 25 mg/kg p.o. daily in divided doses; increased 
+doses of 30–50 mg/kg p.o. daily have been recommended for 
+CNS involvement.
+References
+Beatty JA, Swift N, Foster DJ et al . (2006) Suspected clindamycin-associated 
+oesophageal injury in cats: five cases. Journal of Feline Medicine and Surgery 8 , 
+412–419
+Hu HZ, Jeffery ND, Donnelly J et al . (2016). What is your neurologic diagnosis? Journal 
+of the American Veterinary Medical Association 249 , 1007–1010
+Clofazimine
+(Clofazimine*) POM 
+Formulations: Oral: 100 mg capsule.
+Action: Not entirely clear but appears to be antimycobacterial and 
+has membrane disrupting properties.
+Use: Mycobacterial infections including feline leprosy. Limited 
+information available with most derived from human medicine. For 
+feline mycobacterial infection long-term treatment is required and 
+combination therapy is utilized, e.g. with clarithromycin and 
+doxycycline or fluoroquinolones. Monitor hepatic and renal function 
+during treatment. Use with caution in hepatic and renal impairment.
+Safety and handling: Normal precautions should be observed.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 109 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+93
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Contraindications: No information available.
+Adverse reactions: In humans the major adverse effects are 
+nausea, diarrhoea, discoloration of skin, eyes and body fluids and 
+renal and hepatic impairment (monitor functions during therapy). 
+Photosensitization can also occur and treated animals should be 
+housed indoors.
+Drug interactions: No information available.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: 4–8 mg/kg p.o. q24h for 2–6 months. For the 
+management of mycobacterial infections, the drug is generally used 
+in combination therapy with other antimicrobials including 
+fluoroquinolones and clarithromycin. Refer to specialist texts.
+Clomipramine
+(Clomicalm) POM-V 
+Formulations: Oral: 5 mg, 20 mg, 80 mg tablets.
+Action: Both clomipramine and its primary metabolite 
+desmethylclomipramine are active in blocking serotonin and 
+noradrenaline reuptake in the brain, with resultant anxiolytic, 
+antidepressant and anticompulsive effects.
+Use:
+• Licensed for use in association with a behaviour modification 
+plan for the management of separation-related disorders in 
+dogs.
+• Also used in management of a wider range of anxiety-related 
+disorders in dogs and cats, including compulsive behaviours, 
+noise fears and urine spraying.
+• Has been reported in the treatment of cataplexy in the dog, with 
+resolution of signs after 3-months treatment.
+Care required before use in animals with a history of constipation, 
+epilepsy, glaucoma, urinary retention or arrhythmias. Can be used 
+with benzodiazepines.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Patients sensitive to tricyclic or serotonin 
+reuptake inhibitor antidepressants. Do not give with, or within 2 
+weeks of, monoamine oxidase inhibitors (e.g. selegiline). Not 
+recommended for use in male breeding animals, as testicular 
+hypoplasia may occur. 
+Adverse reactions: May cause sporadic vomiting, changes in 
+appetite or lethargy. Vomiting may be reduced by co-administration 
+with a small quantity of food. May cause urinary retention in cats. The 
+safety margin is quite low with toxic side effects observed at 2–3 mg/
+kg, although fatal does is >10 times the recommended dose.
+
+
+===== BSAVA PDF 110 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+94
+Drug interactions: May potentiate the effects of anticholinergic 
+agents (e.g. atropine), other CNS active drugs (e.g. barbiturates, 
+benzodiazepines, general anaesthetics, neuroleptics), 
+sympathomimetics (e.g. adrenaline) and coumarin derivatives. 
+Simultaneous administration with cimetidine may lead to increased 
+plasma levels of clomipramine. Plasma levels of certain antiepileptic 
+drugs, e.g. phenytoin and carbamazepine, may be increased by 
+co-administration with clomipramine.
+Should not generally be used alongside other serotonergic agents 
+given risk of serotonin syndrome, although use alongside trazodone 
+may be considered in exceptional cases, so long as patient carefully 
+monitored for signs of serotonin syndrome. 
+DOSES
+Dogs: 1–2 mg/kg p.o. q12h.
+Cats: 0.25–1 mg/kg p.o. q24h.
+References 
+King JN, Simpson BS, Overall KL et al . (2000) Treatment of separation anxiety in dogs 
+with clomipramine: results from a prospective, randomized, double-blind, placebo-
+controlled, parallel-group, multicenter clinical trial. Applied Animal Behaviour Science 
+67, 255–275
+Pfeiffer E, Guy N and Cribb A (1999) Clomipramine-induced urinary retention in a cat. 
+The Canadian Veterinary Journal 40, 265
+Clonazepam
+(Klonopin*, Linotril*, Rivotril* and several others) 
+POM 
+Formulations: Oral: 500 mcg, 0.25 mg, 0.5 mg, 1.0 mg, 2 mg 
+tablets. 500 mcg/5 ml, 2 mg/5 ml oral solution.
+Action: Long-acting benzodiazepine with anticonvulsant, muscle 
+relaxant and anxiolytic properties. Enhances activity of gamma-
+aminobutyric acid (GABA), through binding at the benzodiazepine 
+site of the GABAA receptor. In addition, affects glutamate 
+decarboxylase activity.
+Use:
+• Management of muscular hypertonicity (episodic falling) in the 
+Cavalier King Charles Spaniel.
+• Anxiolytic for behaviour modification in both cats and dogs and 
+for hyperaesthesia in cats.
+• It has been used to treat epilepsy in cats but more suitable 
+medications are available, including phenobarbital, imepitoin 
+(although to date there have been no publications on its efficacy 
+in cats), levetiracetam and diazepam.
+Tolerance may develop following prolonged therapy, with reduction 
+in clinical effect. Care is required when withdrawing clonazepam 
+after prolonged therapy and the dose should be tapered off.
+Safety and handling: Normal precautions should be observed.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

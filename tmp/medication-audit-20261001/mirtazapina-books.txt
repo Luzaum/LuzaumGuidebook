@@ -1,0 +1,850 @@
+
+===== Plumb PDF 920 =====
+Mirtazapine   893
+Lyme borreliosis (extra-label): 10 mg/kg IV or PO once or twice 
+daily for 30 days12 
+CATS:
+Susceptible infections including respiratory tract infections  
+(extra-label): Based on a pharmacokinetic study and typical bacte-
+rial MIC, 8.8 mg/kg PO every 24 hours.23,37 Anecdotal dosing rec-
+ommendations range from 5 – 25 mg/kg PO twice daily, whereas 
+5 – 12.5 mg/kg PO twice daily is commonly noted.  Practically,  
+50 mg/cat (NOT mg/kg) PO every 24 hours is recommended. 
+HORSES : 
+Susceptible (MIC less than or equal to 0.25 μg/mL) nonocu -
+lar infections  (extra-label): Based on pharmacokinetic data,  
+4 mg/kg PO every 12 hours.25,40 Oral absorption is improved if hay 
+is withheld for 2 hours after administration.28
+Monitoring
+ ■ Clinical efficacy: resolving signs of infection; culture and suscep-
+tibility testing if indicated
+ ■ Adverse effects (eg, nausea, vomiting)
+Client Information
+ ■ Oral minocycline works best when given without food. If your an-
+imal vomits or acts sick after receiving the medicine on an empty 
+stomach, try giving the next dose with a small amount of food or 
+a treat. 
+ ■ Do not give as a dry pill. Give this medicine with a moist treat 
+or small amount of liquid to be sure it reaches the stomach. This 
+is especially important in cats as minocycline may cause ulcers 
+in the throat and esophagus if the pill gets stuck there before it 
+reaches the stomach. If your animal has trouble swallowing or eat-
+ing, contact your veterinarian immediately. 
+ ■ Do not give antacids, including sucralfate, oral iron, and antidiar-
+rheal medicine, within 2 hours before or after giving minocycline. 
+These other medications will reduce the effectiveness of this an -
+tibiotic.
+ ■ This drug may make your animal’s skin more sensitive to sunlight 
+and increase the risk for sunburn on hairless areas (eg, nose, ab -
+domen, around the eyelids and ears). Tell your veterinarian if you 
+notice any reddening/sunburn on the skin while your animal is 
+on this medication.
+ ■ For this medication to work, give it exactly as your veterinarian 
+has prescribed. Always check the prescription label to be sure you 
+are giving the drug correctly. Avoid missing doses and give the full 
+course of medication as directed by your veterinarian even if your 
+animal seems to be back to normal.
+ ■ Y our veterinarian will need to monitor your animal while it is tak-
+ing this medicine. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+Minocycline HCl is a semisynthetic tetracycline that occurs as a 
+yellow crystalline powder. It is soluble in water and slightly soluble 
+in alcohol. Commercial minocycline dosage forms contain minocy-
+cline hydrochloride.
+Minocycline may also be known as minocyclini hydrochloridum, 
+Arestin®, Minocin®, or Solodyn®; many other trade names are  available.
+Storage/Stability
+Store oral preparations at room temperature in tight containers. Do 
+not freeze oral suspensions. The injectable should be stored at room 
+temperature (20°C-25°C [68°F-77°F]) and protected from light, 
+moisture, and excessive heat. After reconstitution with sterile water 
+for injection, solutions with a concentration of 20 mg/mL are stable 
+for 4 hours at room temperature or for 24 hours if refrigerated.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Minocycline lyophilized powder for injection should be reconsti-
+tuted with 5 mL sterile water for injection and immediately further 
+diluted with sodium chloride injection USP , dextrose injection USP , 
+dextrose and sodium chloride injection USP , Ringer’s injection USP , 
+or lactated Ringer’s injection USP . Minocycline is incompatible with 
+most medications. If the same IV line is being used for sequential 
+drug administration, the line should be flushed with saline before 
+and after minocycline infusion. 
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+HUMAN-LABELED PRODUCTS :
+Minocycline HCl Oral Tablets: 50 mg, 75 mg, and 100 mg; generic; 
+(Rx)
+Minocycline Extended-Release Tablets: 45 mg, 55 mg, 65 mg, 80 mg, 
+90 mg, 105 mg, 115 mg, and 135 mg; Solodyn®, generic; (Rx)
+Minocycline HCl Oral Capsules: 50 mg, 75 mg, and 100 mg; generic; 
+(Rx)
+Minocycline HCl Pellet-Filled Oral Capsules: 50 mg and 100 mg; 
+Minocin®; (Rx)
+Minocycline HCl Powder for Injection: 100 mg in vials; Minocin®; 
+(Rx) 
+Minocycline HCl Powdered Microspheres, Extended-Release, Den-
+tal: 1 mg; Arestin®; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Mirtazapine
+(mir-taz-ah-peen) Remeron®, Mirataz®
+Tetracyclic Antidepressant; 5-HT3 Antagonist
+Prescriber Highlights
+ ▶ Transdermal formulation is labeled for management of weight 
+loss in cats. Also used in tablet form as an appetite stimulant 
+and antiemetic in dogs and cats with chronic kidney disease 
+(CKD). 
+ ▶ It can be used in conjunction with other antiemetics.
+ ▶ Primary adverse effect is sedation. In cats, vocalization and 
+increased affection can be noted. Serotonin syndrome is possi-
+ble; check for drug interactions when administering with other 
+medications. 
+ ▶ The lowest effective dose should be used to reduce sedative 
+properties. Doses should not exceed 30 mg/day in dogs when 
+using it for appetite stimulation.
+ ▶ Gloves should be worn when handling transdermal mirtazap-
+ine. Humans and other animals in the household should avoid 
+contact with the treated cat for at least 2 hours after transder-
+mal administration.
+Uses/Indications
+Transdermal mirtazapine is indicated in the management of weight 
+loss in cats1; the average weight gain in cats was 3.9% of body weight 
+after a 2-week course of therapy.2 Mirtazapine is an effective appetite 
+stimulant and has antiemetic activity in cats with CKD.3 Cats receiv-
+ing mirtazapine tablets ingested significantly more food as compared 
+with placebo. Food ingestion did not correlate with mirtazapine 
+dose, but high doses (ie, 3.75 mg/cat [NOT mg/kg]) of mirtazapine 
+were associated with noticeable behavior changes.4 In cats with stage 
+2 or 3 chronic kidney disease, administration of compounded trans-
+
+
+===== Plumb PDF 921 =====
+894    Mirtazapine
+dermal mirtazapine demonstrated an increased appetite and weight 
+gain; this formulation may benefit cats in countries where the com -
+mercial product is not available.5 
+In a study of healthy dogs, mirtazapine accelerated gastric emp -
+tying and colonic transit without having an effect on small intestine 
+transit.6 Mirtazapine can also be used for the treatment of chemo -
+therapy-induced nausea and vomiting.7 
+Pharmacology/Actions
+The antidepressant activity of mirtazapine appears to be mediated 
+by antagonism at central presynaptic alpha-2 receptors, which nor -
+mally act as a negative feedback mechanism, inhibiting further nor-
+epinephrine (NE) release. By blocking these receptors, mirtazapine 
+overcomes the negative feedback loop and causes a net increase in 
+NE. This mechanism may also contribute to the appetitestimulating 
+effects of the medication, as NE acts at other α receptors to increase 
+appetite. In addition, mirtazapine antagonizes several serotonin (5-
+HT) receptor subtypes. The drug is a potent inhibitor of the 5-HT 2, 
+5-HT3, and histamine (H1) receptors. Antagonism at 5-HT3 receptors 
+accounts for the antinausea and antiemetic effects of the drug, and 
+its action at H1 receptors produces prominent sedative effects. It is a 
+moderate peripheral α 1-adrenergic antagonist, a property that may 
+explain the occasional orthostatic hypotension associated with its 
+use; it is also a moderate antagonist of muscarinic receptors, which 
+may explain the relatively low incidence of anticholinergic effects. 
+Pharmacokinetics
+In a pilot study in healthy beagles, the mean clearance of mirtazapine 
+was 1193 mL/kg/hour and the mean half-life was 6.17 hours after 
+20 mg/dog PO. 8 
+After administration of oral mirtazapine at either 1.88 mg (low 
+dose [LD]) or 3.75 mg (high dose [HD]) in a study of healthy 
+cats, median elimination half-lives were 9.2 hours and 15.9 hours, 
+respectively. Mean clearance was 10.5 mL/kg/minute (LD) and  
+18 mL/kg/minute (HD). A single LD of mirtazapine was well toler -
+ated, and the half-life (9 hours) was compatible with 24-hour dose 
+intervals in healthy cats. Mirtazapine does not appear to have lin -
+ear kinetics in cats. 4 A study in cats with CKD ( n = 6) found that 
+the mean half-life was 15.2 hours and the mean oral clearance was  
+0.6 L/hour/kg. 9 The authors concluded that the results were com -
+patible with administration every 48 hours in cats with CKD. 9 Liver 
+disease delays time to peak concentration (4 hours vs 1 hour) and 
+prolongs elimination half-life (14 hours vs 7 hours) in cats.10
+Transdermal mirtazapine bioavailability in cats is ≈65%, and peak 
+drug concentration is reached ≈16 hours after administration of a 
+single dose and ≈2 hours after repeated administration. 11 Half-life 
+is 21 to 27 hours,11 although a shorter half-life (10 to 11 hours) may 
+reflect both topical and oral (ie, grooming) exposure. In healthy cats, 
+transdermal mirtazapine has been shown to reach a steady-state 
+within 14 days. Transdermal time to maximum concentration is 6 
+hours, with a peak plasma concentration (Cmax) of 32.1 ng/mL.
+After a single PO dose of mirtazapine 2 mg/kg (fasted or fed) 
+in horses, peak concentrations occurred at 2.2 hours (fasted) and 
+1.3  hours (fed) after administration. The mean residence time of 
+mirtazapine was 6 to 7 hours, and elimination half-life was ≈4 to 5 
+hours. The authors concluded that mirtazapine might be amenable 
+for long-term oral administration but obtaining additional infor -
+mation concerning safety and efficacy before it is used clinically is 
+critical.12
+Following oral administration in humans, mirtazapine is rapid -
+ly and completely absorbed, but oral bioavailability is ≈50%. C max is 
+reached within ≈2 hours after oral administration. Food has minimal 
+effects on both the rate and extent of absorption and does not require 
+dose adjustment. Plasma protein binding (PPB) for mirtazapine ap-
+pears to be ≈70% to 72% in mice, rats, and dogs, whereas in humans 
+and rabbits, it is ≈85%. Despite the interspecies differences in PPB, 
+no displacement interactions or dose adjustments for mirtazapine 
+are expected because of its large therapeutic window and nonspecif-
+ic, relatively low affinity for plasma proteins. Mirtazapine is metabo-
+lized via multiple pathways and varies by species. In all species tested 
+(ie, humans and laboratory animals), the drug is metabolized via the 
+following mechanisms: 8-hydroxylation followed by conjugation, 
+N-oxidation, and demethylation followed by conjugation. Humans 
+and guinea pigs also produce metabolites via N +-glucuronidation, 
+whereas mice are the only species that have been found to use de -
+methylation followed by CO 2 addition and conjugation and 13-hy -
+droxylation followed by conjugation as methods of mirtazapine 
+breakdown. These processes are conducted primarily by CYP2D6, 
+CYP1A2, and CYP3A4, but mirtazapine exerts minimal inhibition 
+on these cytochromes. Several metabolic pathways of mirtazapine 
+involve conjugation with glucuronide (glucuronidation). Because 
+cats have a limited capacity for glucuronidation, mirtazapine is 
+cleared less rapidly from the system; therefore, extended dosing in -
+tervals may be required.
+In humans, elimination occurs via urine (75%) and feces (15%). 
+Renal impairment may reduce elimination by 30% to 50% as com -
+pared with normal subjects, and hepatic impairment may reduce 
+clearance by up to 30%. The elimination half-life of mirtazapine 
+ranges from 20 to 40 hours across age and gender subgroups, so dose 
+increases should occur no more frequently than every 7 to 14 days. 
+Females (both human and animal) of all ages exhibit significantly 
+longer elimination half-lives than males (in humans, mean half-life 
+of 37 hours for females versus 26 hours for males).
+Contraindications/Precautions/Warnings
+Mirtazapine is contraindicated in patients hypersensitive to it and 
+in those that have received monoamine oxidase inhibitors (eg , sele-
+giline) in the past 14 days. Transdermal mirtazapine should not be 
+administered orally or in the eye.
+Mirtazapine has been associated with orthostatic hypotension in 
+humans and should, therefore, be used with caution in patients with 
+known cardiac disease or cerebrovascular disease that could be exac-
+erbated by hypotension. Patients with renal impairment, renal fail -
+ure, or hepatic disease may require lower doses of mirtazapine and 
+should be closely monitored while receiving mirtazapine. Mirtazap-
+ine has rarely been associated with hyponatremia in humans; caution 
+should be used in patients receiving a diuretic or other medication 
+that could decrease sodium levels. 
+In humans, abrupt discontinuation of mirtazapine after long-term 
+administration has resulted in withdrawal symptoms, (eg, nausea, 
+headache, malaise). In general, antidepressants may affect blood glu-
+cose concentrations because of their indirect effects on the endocrine 
+system; caution should be used in patients with diabetes mellitus.
+Mirtazapine exhibits very weak anticholinergic activity; conse -
+quently, vigilance should be used in patients that might be more sus-
+ceptible to these effects (eg, those with urinary retention; prostatic 
+hypertrophy; acute, untreated closed-angle glaucoma, or increased 
+intraocular pressure; GI obstruction or ileus). Effects of mirtazapine 
+may also be additive to anticholinergic medications.
+Extra care should be taken in active animals, as mirtazapine may 
+impair concentration and alertness. Although extremely rare, mir -
+tazapine has been associated with blood dyscrasias in humans and 
+should be used cautiously in patients with the pre-existing hemato -
+logic disease, especially leukopenia, neutropenia, and/or thrombo -
+cytopenia. Prolongation of the QT interval has been reported, and 
+risk may increase with other QT-prolonging drugs.
+Adverse Effects
+Mirtazapine appears to be well tolerated in both dogs and cats at the 
+appropriately prescribed dosages. In a study evaluating the adverse 
+
+
+===== Plumb PDF 922 =====
+Mirtazapine   895
+effects of mirtazapine in cats, the 10 most common adverse effects 
+seen (listed from most frequent to least frequent) were vocaliza -
+tion (56%), agitation (31%), vomiting (26.2%), abnormal gait/ataxia 
+(16.7%), restlessness (14.3%), tremors/trembling (14.3%), hypersali-
+vation (13%), tachypnea (11.9%), tachycardia (10.7%), and lethargy 
+(10.7%).13 Only 1 cat that received a dose of 1.88 mg/cat (NOT mg/kg) 
+dose had adverse effects, whereas 25 cats that received a dose of 3.75 
+mg/cat (NOT mg/kg) displayed adverse effects. Other adverse effects 
+reported during the study included anorexia, disorientation, dyspnea, 
+hypothermia, mouth breathing/panting, mydriasis, behavior changes, 
+depression/sedation, fasciculations, hyperactivity, hypertension, pac-
+ing, dysphoria, inappropriate elimination, polyphagia, circling, dis -
+comfort, hiding, inappetence, seizures, and weakness.13 Increases in 
+liver enzymes have been reported in some cats receiving mirtazapine. 
+Cats experienced more behavioral effects (vocalization, interactions) 
+with 3.75 mg doses as compared with 1.88 mg doses.
+Transdermal mirtazapine may cause application site reactions (eg, 
+erythema, crusting/scabbing, residue) in ≈10% of cats.
+Reproductive/Nursing Safety
+Reproductive studies in rats, rabbits, and dogs have shown no evi -
+dence of teratogenicity. Additional studies in hamsters, rabbits, and 
+rats have shown no evidence of fetal genetic mutation or reduction 
+in parental fertility, although there were increases in postimplanta -
+tion losses and pup deaths, as well as decreases in birth weight. 
+Mirtazapine is distributed in human breast milk and can be de -
+tected in the serum of breastfed infants; caution should be used in 
+nursing dams. 
+Overdose/Acute Toxicity
+Clinical signs associated with mirtazapine overdose include agita -
+tion, lethargy, vocalization, panting, and tremors; cats may also de -
+velop tachycardia and ataxia. 
+In humans, mirtazapine ingestion upwards of 10 times the ther -
+apeutic dose exhibits minimal toxicity, requiring no acute interven-
+tion and only 6 hours of observation. Similar effects were seen in 
+patients receiving up to 30 times the recommended dose. However, 
+serotonin syndrome is possible, and the package insert for mirtazap-
+ine recommends that activated charcoal be administered in addition 
+to other standard monitoring activities in an overdose situation.
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+Mirtazapine is a substrate for several hepatic cytochrome P450 iso -
+enzymes, including 2D6, 1A2, and 3A4. The following drug inter -
+actions have either been reported or are theoretical in humans or 
+animals receiving mirtazapine and may be of significance in veteri -
+nary patients. Unless otherwise noted, use together is not necessarily 
+contraindicated, but weigh the potential risks and perform addition-
+al monitoring when appropriate.
+ ■ Benzodiazepines  (eg, diazepam, midazolam): Concurrent use 
+has minimal effects on mirtazapine blood levels, but use together 
+may cause additive impairment of motor skills.
+ ■ Buprenorphine : Concurrent use with mirtazapine may in -
+crease the risk for serotonin syndrome.
+ ■ Butorphanol : Concurrent use with mirtazapine may increase 
+the risk for serotonin syndrome.
+ ■ Cimetidine : May increase mirtazapine exposure
+ ■ Clonidine : Concurrent use with mirtazapine may cause in -
+creases in blood pressure. 
+ ■ CNS Depressants (eg, acepromazine, antihistamines , gab-
+apentin): Concurrent use with mirtazapine may increase the risk 
+for sedation and CNS depression.
+ ■ Cyproheptadine : May negate the effects of mirtazapine
+ ■ Diuretics (eg, furosemide): May increase the risk for hypona -
+tremia
+ ■ Erythromycin : May increase mirtazapine exposure
+ ■ Ketoconazole : May increase mirtazapine exposure
+ ■ Monoamine Oxidase Inhibitors  (MAOIs; eg, amitraz, 
+linezolid, methylene blue, selegiline ): Increased risk for sero -
+tonin syndrome when used concurrently with mirtazapine. Con-
+current use or use within 14 days is contraindicated.
+ ■ Opioids (eg, morphine): May increase the risk for hyponatre -
+mia, sedation, and CNS depression 
+ ■ Serotonergic Agents, Miscellaneous  (eg, buspirone, 
+metoclopramide, ondansetron, trazodone ): Concurrent use 
+with mirtazapine increases the risk for serotonin syndrome.
+ ■ Selective Serotonin Reuptake Inhibitors (SSRIs; eg, flu-
+oxetine, fluvoxamine): Concurrent use with mirtazapine increas-
+es the risk for serotonin syndrome.
+ ■ Tricyclic Antidepressants  (eg, amitriptyline, clomip -
+ramine): Concurrent use with mirtazapine increases the risk for 
+serotonin syndrome.
+ ■ Tramadol : Increased risk for serotonin syndrome when used 
+concurrently with mirtazapine
+ ■ W arfarin : May prolong prothrombin time (PT) when used con-
+currently with mirtazapine
+Laboratory Considerations
+ ■ No specific concerns were noted.
+Dosages
+DOGS:
+Appetite stimulant and/or antiemetic  (extra-label): There is 
+little data on mirtazapine pharmacokinetics or efficacy in dogs. 
+Anecdotal dosages ranging from 3.75 – 30 mg/dog (depending on 
+dog size; NOT mg/kg) PO every 24 hours have been suggested. 
+Alternatively, 1.1 – 1.3 mg/kg PO every 24 hours. 14 Doses should 
+not exceed 30 mg/dog (NOT mg/kg) PO once daily.
+Chemotherapy-induced anorexia: 0.5 mg/kg PO every 24 hours7 
+CATS:
+Management of weight loss (label dosage; FDA-approved): Using 
+the transdermal formulation, apply 1.5-inch ribbon (≈2 mg/cat) to 
+the inner pinna of the cat’s ear every 24 hours for 14 days.1 The per-
+son applying medication should wear gloves. Alternate application 
+of ointment between the left and right inner pinnae of the ears.
+Appetite stimulant and/or antiemetic (extra-label): NOTE: 
+Higher initial doses are not more effective and have more adverse 
+effects.
+a) Healthy cats: 1.88 mg/cat (NOT mg/kg) PO every 24 hours.4 
+Practically, ¼ of a 7.5 mg tablet or ⅛ of a 15 mg tablet PO 
+every 24 hours
+b) Cats with chronic kidney or hepatic disease: 1.88 mg/cat 
+(NOT mg/kg) PO every 48 hours.3,10 Practically, ¼ of a 7.5 mg 
+tablet or ⅛ of a 15 mg tablet PO every 48 hours  
+Chemotherapy-induced anorexia: 0.5 mg/kg PO every 24 to 72 
+hours7 
+Monitoring
+ ■ Clinical efficacy measured by the following parameters: increased 
+appetite, decreased episodes of vomiting, and weight gain
+ ■ Liver enzymes in cats
+ ■ Adverse effects (eg, behavior, sedation) and signs of serotonin 
+
+
+===== Plumb PDF 923 =====
+896    Misoprostol
+syndrome (eg, sedation, GI signs, vocalization, agitation, tremors, 
+difficulty breathing, hyperactivity, hyperthermia)
+Client Information
+ ■ This medicine may be given with or without food. If your animal 
+vomits after receiving the medication on an empty stomach, give 
+it with food or a small treat. If vomiting continues, contact your 
+veterinarian.
+ ■ Mirtazapine is usually tolerated well in dogs. Contact your veter-
+inarian if your cat develops side effects as the dose may need to 
+be adjusted. Common side effects include vocalization, behavior 
+changes, and tremors/shaking. Report excessive drowsiness or 
+vocalization to your veterinarian.
+ ■ If your animal is receiving orally disintegrating tablets, make sure 
+your hands are dry before handling the tablet. Place the tablet un-
+der the animal’s tongue and hold the animal’s mouth closed for 
+several seconds to allow it to dissolve (should occur quickly). Af-
+ter the tablet has melted, offer the animal water.
+ ■ Y ou should wear gloves when handling the transdermal formula-
+tion and dispose of them afterward in the regular trash. Be sure 
+you understand how to give this medicine to your animal. Apply 
+the medicine to the inner side of the ear flap and not into the ear 
+canal. After applying the medication, wash your hands with soap 
+and water. Caregivers should avoid contact with the treated area 
+for 2 hours after administration, as the medicine can be absorbed 
+through the skin.
+Chemistry/Synonyms
+Mirtazapine, a member of the piperazinoazepine group of compounds, 
+is classified as an atypical tetracyclic antidepressant and is not chemi-
+cally related to other antidepressants. Mirtazapine occurs as a white to 
+creamy white crystalline powder that is slightly soluble in water.
+Mirtazapine may also be known as 6-azamianserin, Org-3770, 
+mepirzapine, and Remeron®; many trade names for international 
+products are available.
+Storage/Stability
+Store mirtazapine transdermal ointment at 25°C (77°F) and use it 
+within 30 days after opening.
+Store the coated tablets and orally disintegrating tablets between 
+20°C and 25°C (68°F and 77°F), with excursions permitted between 
+15°C and 30°C (59°F and 86°F). Protect from light and moisture. The 
+orally disintegrating tablets must be used immediately upon removal 
+from the tablet blister and cannot be stored. 
+Compatibility/Compounding Considerations
+Compounded preparation stability: Mirtazapine 10 mg/mL oral sus-
+pension can be compounded from commercially available tablets. 
+Triturate 10 mirtazapine 30 mg tablets with 15 mL of Ora-Plus® and 
+qs ad to 30 mL with Ora-Sweet®. The resulting suspension retains 
+90% potency for 90 days stored at both 5°C (41°F) and 25°C (77°F).  
+Compounded mirtazapine suspensions should be protected from 
+light and shaken well before use.15
+Mirtazapine powder compounded into a transdermal  Lipoderm® 
+gel at concentrations of 1.88 mg/0.1 mL and 3.75 mg/0.1 mL did 
+not reliably meet compendial standards for potency, as mirtazapine 
+concentration within the gel varied by greater than 10% of target 
+despite concerted efforts of the compounding staff. 5 Transdermal 
+mirtazapine gel prepared by commercial compounding pharma -
+cies have also demonstrated significant variation from the intended 
+product concentration.16 
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : 
+Mirtazapine Transdermal Ointment: 100 mg/tube in 5 g tube  
+(20 mg/1 g); Mirataz®, (Rx)
+HUMAN-LABELED PRODUCTS :
+Mirtazapine Oral Tablets: 7.5 mg, 15 mg, 30 mg, and 45 mg; Remer-
+on®, generic; (Rx)
+Mirtazapine Orally Disintegrating Tablets (ODT): 15 mg, 30 mg, and 
+45 mg; Remeron SolTab®, generic; (Rx). NOTE: Some generic ODTs 
+may contain xylitol (unknown quantity).
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Misoprostol
+(mye-soe-prost-ole) Cytotec®
+Prostaglandin Analogue 
+Prescriber Highlights
+ ▶ Prostaglandin E1 analogue for treatment or prevention of GI 
+lesions, especially those associated with aspirin therapy; may 
+also be useful for reproductive purposes. Appears ineffective 
+in prevention of glucocorticoid-induced lesions
+ ▶ Contraindications include pregnant animals (but has been 
+used in horses mid-gestation and intravaginally for cervical 
+ripening) and nursing dams (diarrhea in the nursing offspring).
+ ▶ Caution is advised in patients sensitive to prostaglandins or 
+prostaglandin analogues.
+ ▶ Adverse effects include GI distress (eg, diarrhea, abdominal 
+pain, vomiting, flatulence) and potentially uterine contractions 
+and vaginal bleeding in female dogs.
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies misoprostol as a hazardous drug; use appro-
+priate precautions when handling.
+Uses/Indications
+Misoprostol may be useful as primary or adjunctive therapy in pre-
+venting gastroduodenal ulceration in dogs, especially when caused 
+or aggravated by NSAIDs. 1 Although misoprostol can be used for 
+treatment of gastric ulcers, other drugs may be equally effective and 
+better tolerated; it does not appear to be effective in reduction of gas-
+tric ulceration secondary to glucocorticoid therapy. 2-6 Misoprostol 
+reduces basal gastric acid secretion in horses.7
+There is limited evidence of efficacy for misoprostol in the treat -
+ment of atopic dermatitis in dogs.8 
+Misoprostol’s effects on uterine contractility and cervical ripening 
+make it effective as an adjunct treatment for reproductive indications 
+(eg, abortifacient, pyometra) in multiple species. 
+Pharmacology/Actions
+Misoprostol is a synthetic prostaglandin E 1 analogue. It has 2 main 
+pharmacologic effects that make it a potentially useful agent in pre -
+vention of upper GI ulceration. It acts via direct action on parietal 
+cells to inhibit basal and nocturnal gastric acid secretion as well as 
+gastric acid secretions stimulated by food, pentagastrin, or hista -
+mine—pepsin secretion is decreased under basal conditions, but not 
+when stimulated by histamine. Misoprostol also has a cytoprotective 
+effect on gastric mucosa, likely by increasing production of gastric 
+mucosa and bicarbonate and increasing turnover and blood sup -
+ply of gastric mucosal cells. Misoprostol enhances mucosal defense 
+mechanisms and healing in response to acid-related injuries.
+Other pharmacologic effects include increased amplitude and 
+frequency of uterine contractions, cervical thinning and relaxation, 
+stimulation of uterine bleeding, and total or partial expulsion of 
+uterine contents in pregnant animals.
+Pharmacokinetics
+Approximately 88% of an oral dose of misoprostol is rapidly ab -
+sorbed from the GI tract in humans, but a significant amount is me-
+
+
+===== Plumb PDF 924 =====
+Misoprostol   897
+tabolized via the first-pass effect. The presence of food and antacids 
+will delay the absorption of the drug. Misoprostol is rapidly de-es -
+terified to misoprostol acid, which is the primary active metabolite. 
+Misoprostol and misoprostol acid are equal in their effects on gastric 
+mucosa.9 Plasma protein binding of both misoprostol and the acid 
+metabolite is between 81% and 89%.10
+Misoprostol acid is further biotransformed via oxidative mecha -
+nisms to pharmacologically inactive metabolites. These metabolites, 
+free acid, and small amounts of unchanged drug are principally ex -
+creted into the urine. In humans, the serum half-life of misoprostol 
+is ≈30 minutes and its duration of pharmacologic effects is ≈3 to 6 
+hours.
+Contraindications/Precautions/Warnings
+Misoprostol is contraindicated in patients hypersensitive to it and 
+during pregnancy. The misoprostol product label has a black-box 
+warning against administration in pregnant women due to risk for 
+abortion, premature birth, uterine rupture, or birth defects 11; this 
+drug should be used with caution in female veterinary patients with 
+reproductive potential that may become pregnant.
+Do not confuse miSOPROstol with miFEPRIStone.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies misoprostol as a hazardous drug; personal pro -
+tective equipment (PPE) should be used accordingly to minimize the 
+risk for exposure.12 
+Adverse Effects
+In humans, the most prevalent adverse effect seen with misoprostol 
+is GI distress, which usually manifests as diarrhea, abdominal pain, 
+vomiting, and flatulence.11 Adverse effects are often transient and re-
+solve over several days or may be minimized by dosage adjustment 
+or giving doses with food. Potentially, uterine contractions and vag-
+inal bleeding could occur in female dogs. See Contraindications/
+Precautions/Warnings and Reproductive/Nursing Safety.
+Reproductive/Nursing Safety
+Misoprostol may cause abortion, premature birth, uterine rupture, 
+or birth defects (eg, skull and limb defects, facial malformations) 
+and is contraindicated during pregnancy. However, in humans, it is 
+used intravaginally for cervical ripening to induce labor when spon-
+taneous labor and vaginal delivery is indicated. Misoprostol may im-
+pair fertility as pre- and postimplantation losses, and a significant 
+decrease in the number of live pups were noted when high doses 
+were given to male and female breeding rats.
+In horses, a study 13 in midgestational pregnant mares given 
+a 5-day course of oral misoprostol 5 µg/kg PO twice daily as a GI 
+mucosal cytoprotectant during colic found that pregnancy was not 
+disrupted and no adverse effects were noted. Cervical tone, ultraso -
+nographic characteristics of the uterus, cervix and conceptus, and 
+progesterone and estrone sulfate concentrations were similar before 
+misoprostol treatment. The authors concluded that additional in -
+vestigation of treatment at earlier and later stages of gestation, for 
+longer term treatment, and evaluating neonates for developmental 
+disturbances would add further information on safety of misoprostol 
+during gestation.
+Misoprostol acid is excreted in milk. Misoprostol is not recom -
+mended for lactating dams, as it could potentially cause significant 
+diarrhea in nursing offspring.
+Overdose/Acute Toxicity
+There is limited information available. Overdoses in laboratory ani-
+mals have produced diarrhea, GI lesions, emesis, tremors, focal car-
+diac, hepatic, or renal tubular necrosis, dyspnea, abdominal pain, 
+ sedation, tremors, fever, seizures, bradycardia, and hypotension.11 GI 
+distress (eg, vomiting, diarrhea, abdominal pain) is the most com -
+mon clinical sign seen in dogs.
+Overdoses should be treated seriously, and standard GI decontam-
+ination techniques should be employed when applicable. Resultant 
+toxicity should be treated supportively and based on clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving misoprostol and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Antacids, Magnesium-Containing : Magnesium-contain -
+ing antacids may aggravate misoprostol-induced diarrhea. If an 
+antacid is required, an aluminum-only antacid may be a better 
+choice. Antacids and food reduce the rate of misoprostol absorp-
+tion and may reduce the systemic availability, but these probably 
+do not affect therapeutic efficacy.
+ ■ Oxytocin : Misoprostol may enhance effects.
+ ■ Phenylbutazone : Concurrent use may result in neurosensory 
+effects (eg, dizziness, ataxia).
+Dosages
+DOGS:
+Prevention of aspirin-induced gastric injury (extra-label):  
+3 µg/kg PO every 8 to 12 hours. Efficacy appears similar with dos-
+ing intervals of every 8 hours and every 12 hours.14,15 
+Prevention of gastric injury caused by other NSAIDs (extra-label): 
+No controlled studies documenting safety and efficacy were lo -
+cated and no clear evidence currently is available that supports 
+any dosage in dogs.5 Anecdotal dosage recommendations usually 
+range from 2 – 5 µg/kg PO every 8 to 12 hours, although some 
+have suggested that longer times between doses may be effective 
+and that dosages above 3 µg/kg may be associated with more GI 
+adverse effects.
+Adjunctive therapy as an abortifacient (extra-label):
+a) Aglepristone 10 mg/kg SC every 24 hours on 2 consecutive 
+days and misoprostol 200 µg/bitch (NOT µg/kg) for bitches 
+weighing less than or equal to 20 kg (44 lb) or 400 µg/bitch 
+(NOT µg/kg) for bitches weighing more than 20 kg (44 lb) in-
+travaginally once daily until completion of abortion. In a study, 
+all bitches in the treatment group aborted within 6 days.16
+b) Misoprostol 1 – 3 µg/kg administered as a vaginal supposito -
+ry once daily to promote cervical dilation. This allows for a 
+reduced dinoprost (PGF2alpha) dose of 0.1 mg/kg SC every 
+8 hours for 2 days, then 0.2 mg/kg SC every 8 hours to effect. 
+Abortion usually occurs after 5 days.17
+Pyometra and metritis (extra-label): Give aglepristone 10 mg/kg  
+SC on days 1, 2, 8, 15, and 29. Give misoprostol 10 µg/kg PO 
+twice daily on days 3 through 12. Approximately 75% of cases 
+showed significant clinical improvement without developing the 
+adverse effects associated with the prostaglandins (PGF2alpha, 
+ cloprostenol).18
+Adjunctive therapy for atopic dermatitis  (extra-label): Target 
+dosage of 5 µg/kg PO 3 times daily. Modest improvement in clini-
+cal signs.19 NOTE: This is not recommended as a first-choice ther-
+apy, and efficacy is questionable.
+CATS:
+GI adverse effects associated with NSAID use  (extra-label): No 
+controlled studies documenting safety or efficacy in cats were 
+
+
+===== BSAVA PDF 286 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+270
+Mirtazapine
+(Zispin) POM 
+Formulations: Oral: 15 mg tablets, 15 mg/ml solution. Also 
+available as a transdermal formulation on a named patient basis.
+Action: Tricyclic antidepressant that acts on central alpha-2 
+receptors which leads to increased noradrenaline levels within the 
+brain. Also inhibits several types of serotonin receptors and 
+histamine (H1) receptors.
+Use:
+• Appetite stimulation in dogs and cats. Efficacy in cats with stable 
+chronic kidney disease has been demonstrated.
+• Antiemetic role in conjunction with other drugs, but authorized 
+preparations should be used.
+• Anecdotal use beginning to appear concerning its use in the 
+management of social fears in dogs. 
+Monitor animal carefully when using mirtazapine, particularly if there 
+is also cardiac, hepatic or renal disease. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in patients with pre-existing 
+haematological disease.
+Adverse reactions: Sedation is common and can be profound. 
+Can affect behaviour in many different ways, increased vocalization 
+and interaction with others. Has been associated with blood 
+dyscrasias in humans.
+Drug interactions: Several interactions known in humans, 
+principally involving other behaviour-modifying drugs.
+DOSES
+Dogs: 1.1–1.3 mg/kg p.o. q24h.
+Cats: 1.9 mg/cat p.o. q48h (can double dose if needed or increase 
+frequency to q24h but not both).
+Misoprostol
+(Cytotec*) POM
+Formulations: Oral: 200 μg tablet.
+Action: Cytoprotection of the gastric mucosa: it inhibits gastric 
+acid secretion and increases bicarbonate and mucus secretion, 
+epithelial cell turnover and mucosal blood flow. It prevents,  
+and promotes healing of, gastric and duodenal ulcers, particularly 
+those associated with the use of NSAIDs. Some reports suggest  
+it may not prevent gastric bleeding associated with high doses  
+of methylprednisolone. It may also be useful in the management of 
+canine atopy, although other treatments are likely safer.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 287 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+271
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use:
+• Protection against NSAID-induced gastric ulceration. In humans, 
+higher doses (20 μg (micrograms)/kg p.o. q6–12h) are used to 
+manage pre-existing NSAID-induced gastric ulceration, while 
+doses of 2–5 μ g/kg p.o. q6–8h are used prophylactically to 
+prevent ulceration.
+• Has been used in combination with aglepristone to induce 
+abortion in dogs and cats. 
+Give with food. Combinations with diclofenac are available for 
+humans, but are not suitable for small animals because of different 
+NSAID pharmacokinetics.
+Safety and handling: Women who are, or might be, pregnant 
+should avoid handling this drug.
+Contraindications: Do not use in pregnant animals.
+Adverse reactions: Diarrhoea, abdominal pain, nausea, vomiting 
+and abortion.
+Drug interactions: Use of misoprostol with gentamicin may 
+exacerbate renal dysfunction.
+DOSES
+Dogs:   
+• Protection against NSAID-induced gastric ulceration: 2–5 μ g 
+(micrograms)/kg p.o. q8–12h.
+• Atopic dermatitis: 3–6 μ g/kg p.o. q8h has been suggested.
+Cats: Protection against NSAID-induced gastric ulceration:  5 μg 
+(micrograms)/kg p.o. q8h.
+Mitotane (o,p'-DDD)
+(Lysodren*) POM
+Formulations: Oral: 500 mg tablet or capsule.
+Action: Necrosis of the adrenal cortex reducing the production of 
+adrenal cortical hormones.
+Use:
+• Management of pituitary-dependent hyperadrenocorticism 
+(HAC) in dogs. However, other medications are authorized for 
+this condition (see Trilostane).
+• Has been used in the management of adrenal-dependent HAC, 
+but with variable success.
+Mitotane is available from Europe for animals that have failed 
+trilostane therapy. It should be given with food high in fat/oil to 
+improve its absorption. Closely monitor for any decrease in 
+appetite (typically seen within 3–10 days of therapy); an ACTH 
+stimulation test should be performed to monitor treatment 
+efficacy. In diabetic animals the insulin dose should be reduced  
+by 30%. The addition of prednisolone is generally not 
+
+
+===== BSAVA PDF 288 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+272
+recommended. If switching from trilostane to mitotane, then 
+post-ACTH cortisol concentrations should be >200 nmol/l before 
+starting mitotane. Not recommended in cats as trilostane is more 
+likely to be effective.
+Safety and handling: Drug crosses skin and mucous membrane 
+barriers. Wear gloves when handling this drug and avoid inhalation 
+of dust.
+Contraindications: No information available.
+Adverse reactions: Anorexia, vomiting, diarrhoea and weakness, 
+generally associated with too rapid a drop in plasma cortisol levels. 
+They usually resolve with steroid supplementation. Acute-onset of 
+neurological signs may be seen 2–3 weeks after initiation of therapy, 
+possibly due to rapid growth of a pituitary tumour. Provide 
+supplemental glucocorticoids during periods of stress. 
+Approximately 5% of dogs require permanent glucocorticoid and 
+mineralocorticoid replacement therapy if given mitotane overdose.
+Drug interactions: Barbiturates and corticosteroids increase the 
+hepatic metabolism of mitotane. There may be enhanced CNS 
+depression with concurrent use of CNS depressants. Spironolactone 
+blocks the action of mitotane. Diabetic animals may have rapidly 
+changing insulin requirements during the early stages of therapy.
+DOSES
+Dogs: 30–50 mg/kg p.o. (with/after food) q24h to effect (generally 
+3–10 days) then 50 mg/kg p.o. q7–14 days in 2–3 divided doses as 
+required. Higher doses (50–150 mg/kg p.o. q24h) may become 
+necessary for adrenal carcinomas.
+Cats: Similar dose to dogs but efficacy in cats is very variable, with 
+many showing no response at non-toxic levels.
+Mitoxantrone
+(Novantrone*) POM 
+Formulations: Injectable: 2 mg/ml.
+Action: Antitumour antibiotic which inhibits topoisomerase II. It is 
+cell cycle non-specific, but most active during S phase.
+Use:
+• Treatment of canine and feline lymphoma, squamous cell 
+carcinoma (SCC), and transitional cell carcinoma.
+• Its use has also been described in renal adenocarcinoma, fibroid 
+sarcoma, anal gland adenocarcinoma, thyroid carcinoma, 
+prostate carcinoma, mammary gland adenocarcinoma, feline 
+injection site sarcoma, haemangiopericytoma and as a 
+radiosensitizer in cats with oral SCC.
+Renal excretion is minimal, so it is far safer to administer to cats with 
+renal insufficiency than doxorubicin, although ancedotally acute 
+renal failure in cats can occur following administration.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

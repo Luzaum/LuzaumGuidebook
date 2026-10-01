@@ -1,0 +1,251 @@
+Carbimazole      185
+ly1,10 (≈10%), are often transient, and can typically be managed with a 
+dosage reduction.11 Eosinophilia, leukopenia, and/or lymphocytosis 
+may be noted in ≈5% of cats12; these hematologic effects are usually 
+also transient and generally do not require drug withdrawal unless 
+the blood dyscrasia is persistent or severe.1 
+Methimazole and carbimazole may also rarely cause self-induced 
+excoriations and hepatopathy, and potentially trigger immune-me-
+diated hemolytic anemia and immune-mediated thrombocytopenia 
+in cats1,9,13-15; these more serious effects generally require withdrawal 
+of the drug. In one study, increased antinuclear antibodies (ANA) 
+were noted in ≈22% of all cats receiving methimazole, and in ≈50% 
+of cats receiving methimazole for greater than 6 months, but none 
+of the cats had signs of a lupus-like syndrome.9 The occurrence of 
+ANA is dose dependent,16 and although elevated ANA have histor-
+ically been viewed as an indication for dose reduction, this may not 
+be necessary in the absence of clinical signs or other indications of 
+autoimmune disease.9 Rarely, cats treated with methimazole or car-
+bimazole have developed acquired myasthenia gravis that requires 
+drug withdrawal.17,18 One case report indicated that a cat developed 
+hypersensitivity vasculitis after receiving carbimazole.19
+Potentially, treatment with methimazole or carbimazole could 
+unmask underlying renal dysfunction in some cats.20 The hyperthy-
+roid state may increase GFR and, by treating the hyperthyroidism, 
+this effect is abolished.
+Reproductive/Nursing Safety
+Carbimazole has been associated with teratogenic and embryotoxic 
+effects in rats.1 Do not use carbimazole in pregnant animals as it may 
+also affect offspring thyroid development or function. 
+Methimazole enters milk and reaches concentrations higher than 
+those found in maternal serum.1 If treatment with carbimazole is 
+necessary for nursing queens, switch to milk replacer for nursing 
+animals.
+Overdose/Acute Toxicity 	
+Acute toxicity that may be seen with overdoses includes those effects 
+listed in Adverse Effects. Agranulocytosis, thrombocytopenia, auto-
+immune hemolytic anemia, GI bleeding (potentially with hemate-
+mesis), hepatitis, and nephritis are perhaps the most serious effects 
+that may be seen.1 Coat and skin abnormalities (erythema, alopecia) 
+can also occur. Treatment of overdose/toxicity consists of following 
+standard protocols for handling an oral ingestion (eg, empty stom-
+ach, administer charcoal if not contraindicated) and to treat sup-
+portively and based on clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving carbimazole or methimazole 
+and may be of significance in veterinary patients. Unless otherwise 
+noted, use together is not necessarily contraindicated, but veterinar-
+ians should weigh the potential risks and perform additional moni-
+toring when appropriate.
+	■Anticoagulants (eg, heparin, rivaroxaban): Methimazole 
+may potentiate anticoagulant activity.
+	■Benzimidazole Antiparasitics (eg, albendazole, fenben-
+dazole, thiabendazole): Concurrent use with methimazole can 
+reduce hepatic oxidation of benzimidazoles and increase blood 
+levels of the parent drug or its metabolites.1,16,21-23 
+	■Beta-Adrenergic Antagonists (eg, atenolol, propranolol): 
+Beta-blocker dose may need to be decreased once the patient be-
+comes euthyroid.16 
+	■Chloramphenicol: Combination with carbimazole may in-
+crease the risk for myelosuppression
+	■Digoxin: Correction to euthyroidism reduces digoxin clear-
+ance,16 resulting in increased digoxin exposure and risk for tox-
+icity. A reduction in the digoxin dose may be needed when the 
+patient becomes euthyroid.
+	■Dipyrone: Combination with carbimazole may increase the risk 
+for myelosuppression.
+	■Iodine 131: There was no difference in response to radioiodine 
+based on when methimazole was discontinued relative to I131 ad-
+ministration.24 
+	■Phenobarbital: Concurrent use of phenobarbital may reduce 
+the clinical effectiveness of carbimazole.
+	■Prednis(ol)one: A reduction in predniso(lo)ne dose may be 
+needed when the patient becomes euthyroid.
+	■Theophylline: Theophylline dose may need to be reduced once 
+the patient becomes euthyroid.16 
+	■Warfarin: In humans with hyperthyroidism, the metabolism of 
+vitamin K clotting factors is increased, resulting in increased sen-
+sitivity to oral anticoagulants.25 By reducing the effects of hyper-
+thyroidism, methimazole may decrease clotting factor metabo-
+lism, thus reducing the effects of warfarin. However, patients that 
+are euthyroid on methimazole and receiving warfarin may de-
+velop hypoprothrombinemia if methimazole is stopped and they 
+become thyrotoxic again. Methimazole also has antivitamin K 
+activity, so anticoagulants may be potentiated by methimazole.16 
+Recommendation: If methimazole and warfarin are used togeth-
+er, increased monitoring of anticoagulant effect is warranted.
+Laboratory Considerations
+	■Methimazole and carbimazole may affect serum fructosamine 
+levels in diabetic cats. Increased serum fructosamine after 6 weeks 
+of treatment has been reported. It has been recommended that 
+serum fructosamine not be used to initially diagnose or assess the 
+adequacy of diabetic control in cats with concurrent hyperthy-
+roidism until hyperthyroidism is controlled for at least 6 weeks.26
+	■Technetium-99m Pertechnetate: Carbimazole adminis-
+tration should be discontinued at least 2 weeks prior to thyroid 
+scintigraphy, as it may interfere with accurate detection of ectopic 
+thyroid tissue.12,27,28
+Dosages
+CATS:
+Hyperthyroidism:
+a)	Immediate-release tablets (extra-label): Most dosage recom-
+mendations are initially 5 mg/cat (NOT mg/kg) PO every 8 to 
+12 hours.10,12,15 Once a euthyroid state is established, the dosage 
+amount or frequency is slowly decreased to the lowest effective 
+dose. Most cats will require 2.5 – 5 mg/cat (NOT mg/kg) PO 
+every 12 hours, but some cats can be controlled on once-daily 
+dosing.12,29
+b)	Sustained-release tablets (extra-label): 15 mg/cat (NOT mg/kg) 
+PO once daily at the same time each day.1,30 10 mg/cat 
+(NOT mg/kg) PO once daily can be considered for cats with 
+moderate hyperthyroidism (TT4 between 50 and 100 nmol/L; 
+3.9 – 7.8 µg/dL). Adjust dosage within a range of 10 – 25 mg/cat/
+day (NOT mg/kg) in 5 mg increments depending on clinical 
+signs and TT4 (NOTE: Tablets cannot be split, so combinations of 
+10 mg and 15 mg tablets must be used). If cat requires doses less 
+than 10 mg/day, use alternate-day dosing (eg, 10 – 15 mg/cat 
+[NOT mg/kg] every other day), or consider different ­treatment.
+
+186      Carboplatin
+Monitoring
+During the first 3 months of therapy (baseline and after every 3 and 
+6 weeks of treatment or dosage change)5,16:
+	■Physical examination to include body weight, body condition 
+score, heart rate, and fundic examination
+	■Blood pressure
+	■CBC (including platelet count)
+	■Serum chemistry profile
+	■Serum TT4: Blood samples can be collected at any time (ie, do not 
+need to be collected at a prescribed time after methimazole treatment).
+	■Serum fT4: Note that this assay is not indicated as a sole monitor-
+ing parameter for hyperthyroidism.
+	■Serum TSH: May be useful to evaluate for iatrogenic hypothyroidism
+	■NOTE: Cats receiving higher dosages should be monitored more 
+frequently.
+After stabilization (at least 3 months of therapy)16:
+	■Body weight
+	■Blood pressure
+	■TT4 at 3- to 6-month intervals
+	■Other diagnostic tests as indicated by adverse effects
+Client Information
+	■Give this medicine with food. Do not crush or split tablets.
+	■For this medication to work, give it exactly as your veterinarian 
+prescribed.
+	■This medicine will decrease excessive thyroid hormones but does 
+not cure the condition. It may take several weeks before your cat 
+shows improvement.
+	■While your cat is taking this medicine, your cat will require close 
+monitoring with regular examinations by your veterinarian as 
+well as blood tests. Do not miss these important follow-up visits.
+	■Treatment is long term, often for the remainder of your cat’s life.  
+	■Most side effects (including vomiting, decreased appetite, or low 
+energy level occur in the first 3 months of therapy. If any of these 
+side effects are seen, stop giving this medicine to your cat and 
+contact your veterinarian before restarting this medicine.
+	■Serious side effects are rare. If your cat develops yellow skin, eyes, 
+or gums (jaundice) or becomes intensely itchy, discontinue this 
+medicine and contact your veterinarian immediately.
+	■Wash your hands with soap and water after handling the medicine 
+(even if gloves are worn) or used litter. 
+	■Pregnant women or women who may become pregnant, nursing 
+mothers, or people with low thyroid hormones should avoid han-
+dling carbimazole. If this is not possible, wear disposable gloves 
+while handling this medication and cat litter or bodily fluids (ie, 
+feces, blood, saliva) of treated animals. Do not reuse gloves. Once 
+used, the gloves should be thrown away in the trash.
+	■This medication is considered to be a hazardous drug as defined by 
+the National Institute for Occupational Safety and Health (NIOSH). 
+Talk with your veterinarian or pharmacist about the use of personal 
+protective equipment when handling this medicine.
+Chemistry/Synonyms
+A thioimidazole-derivative antithyroid drug, carbimazole occurs 
+as a white to creamy white powder with a characteristic odor. It is 
+slightly soluble in water and soluble in alcohol.
+Carbimazole may also be known as carbimazolum, Basolest®, Cam-
+azol®, Carbimazole®, Carbazole®, Carbistad®, Cazole®, Neo Tomizol®, 
+NeoMercazole®, Neo-Thyreostat®, Thyrostat®, Tyrazol®, Vidalta®, or 
+Neo-morphazole®.
+Storage/Stability
+Unless otherwise labeled, carbimazole tablets should be stored at 
+room temperature (not above 77°F [25°C]) in tightly closed contain-
+ers and protected from light.1 Do not remove desiccants from man-
+ufacturer’s bottle.
+Compatibility/Compounding Considerations
+No specific information was noted. Do not crush or break the pro-
+longed-release tablets.1
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE IN THE UNITED STATES
+In some countries: Carbimazole Oral Prolonged-Release Tablets: 
+10 mg and 15 mg; Vidalta®; (POM-V)
+HUMAN-LABELED PRODUCTS:
+There are no FDA-approved products in the United States; elsewhere 
+it may be available as: 
+Carbimazole Oral Tablets: 5 mg, 10 mg, 15 mg, and 20 mg. Many 
+trade names available outside the US; (POM) 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Carboplatin
+(kar-boe-pla-tin)  Paraplatin®
+Antineoplastic
+Prescriber Highlights
+	
+▶Platinum antineoplastic agent used for a variety of carcino-
+mas and sarcomas. In general, less nephrotoxic and fewer GI 
+adverse effects as compared to cisplatin.
+	
+▶Unlike cisplatin, carboplatin may be used safely in cats.
+	
+▶Contraindicated in patients with a history of hypersensitivity 
+to carboplatin or other platinum agents, and with severe bone 
+marrow depression. Use with caution in patients with hepatic 
+or renal disease, or active infection.
+	
+▶Primary adverse effects include bone marrow suppression 
+(dose-limiting toxicity) and GI upset. Neutrophil nadir in dogs 
+typically occurs around day 14 or 21 after administration.
+	
+▶Embryotoxic, teratogenic
+	
+▶The National Institute for Occupational Safety and Health 
+(NIOSH) classifies carboplatin as a hazardous drug; use appro-
+priate precautions when handling. 
+Uses/Indications
+Carboplatin is a broad-spectrum antineoplastic agent used to treat 
+a variety of neoplastic diseases, including carcinoma (squamous cell 
+carcinoma, ovarian carcinoma, pulmonary carcinoma, nasal carcino-
+ma, anal sac apocrine gland adenocarcinoma,1 colonic adenocarcino-
+ma, urinary tract carcinoma,2 hepatocellular carcinoma, and thyroid 
+adenocarcinoma), melanoma,3 and sarcoma (osteosarcoma4). 
+Unlike cisplatin, systemic carboplatin appears to be safe and 
+well-tolerated in cats.5,6
+Intracavitary carboplatin may be used to treat carcinomatosis 
+and other malignant effusions.7 Interventional radiology techniques 
+can be used to facilitate intra-arterial carboplatin administration for 
+the treatment of lower urinary tract carcinoma.8 Carboplatin may 
+be considered for intralesional use in conditions such as equine sar-
+coids9 and to treat adenocarcinoma in birds.10,11 Carboplatin beads 
+and poloxamer gel have also been used locally. They have been well 
+tolerated in different species (equines, canines, and felines), though 
+efficacy has not been thoroughly established.12–14
+Carboplatin is a radiation sensitizing agent.15 Small studies have 
+shown the tolerability of carboplatin in combination with other che-
+motherapy agents, such as toceranib16 or 5-fluorouracil1716,17; how-
+ever, further studies are needed to determine the efficacy of these 
+combinations.

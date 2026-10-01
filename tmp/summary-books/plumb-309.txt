@@ -1,0 +1,252 @@
+282      Clindamycin 
+	■Dinoprost: Clenbuterol may antagonize the effects of dinoprost 
+(prostaglandin F2 alpha).23
+	■Oxytocin: Clenbuterol may antagonize the effects of oxyto-
+cin.23,31
+	■Sympathomimetic Amines, Other (eg, albuterol, phenyl-
+propanolamine): Concomitant administration with other sym-
+pathomimetic amines may enhance the adverse effects of clen-
+buterol.
+	■Theophylline/Aminophylline: May enhance the adverse ef-
+fects (eg, tachycardia, CNS stimulation) of clenbuterol
+	■Tricyclic antidepressants (eg, amitriptyline, clomip-
+ramine): May potentiate the vascular effects of clenbuterol
+	■Xylazine: Clenbuterol may antagonize the uterine contractility 
+effects of xylazine32; this effect likely applies to other alpha-2 ag-
+onists.
+Dosages
+HORSES: 
+Management of airway obstruction (label dosage; FDA-ap-
+proved): Initially, 0.8 μg/kg PO twice daily for 3 days; if no im-
+provement, dose can be increased to 1.6 μg/kg twice daily for 3 
+days; if no improvement, dose can be increased to 2.4 μg/kg twice 
+daily for 3 days; if no improvement, dose can be increased to 
+3.2 μg/kg twice daily for 3 days; if no improvement, therapy should 
+be discontinued. Recommended duration of therapy is 30 days, 
+then it should be withdrawn and therapy should be reevaluated. 
+If signs return, the above stepwise dosage schedule can be reiniti-
+ated.1 NOTE: One study of horses with SEA noted increased air-
+way reactivity and reduced bronchodilatory effects after 21 days 
+of administration of clenbuterol. Use clenbuterol no longer than 
+is needed for clinical benefit.6 
+Adjunctive treatment for dystocia emergencies (extra-label): 
+300 μg/500 kg (1102 lb) mare IV slowly (NOTE: Parenteral for-
+mulation not available commercially in the United States). The 
+drug’s fast onset of action when given IV allows the veterinarian 
+to decide quickly if uterine relaxation will correct the problem. 
+Clenbuterol is particularly useful when repelling the equine fe-
+tus to allow manipulation of the head and limbs. May be used in 
+combination with sedatives, analgesics, and tranquilizers. Xyla-
+zine or detomidine may inhibit the uterine relaxant effects of 
+­clenbuterol.33
+CATTLE:
+Uterine relaxant in cattle (extra-label): 300 μg/cow (NOT μg/kg) 
+slow IV once. May be used during embryo transfer or during the 
+final stages of pregnancy, including labor. NOTE: IV formulation 
+not available in the United States. Extra-label use of clenbuterol in 
+food-producing animals is prohibited by the FDA.23
+Monitoring
+	■Clinical efficacy
+	■Adverse effects
+Client Information
+	■This medicine is usually used in horses with asthma or airway 
+obstruction to relax muscles and improve breathing.
+	■Clenbuterol may be used to treat difficult delivery (dystocia) 
+emergencies in mares.
+	■This medicine can be used to prevent labor and thus, it should be 
+used with caution in pregnant animals.
+	■Seek immediate medical attention if accidental ingestion occurs 
+in humans.
+	■Extra-label use in food animals in the United States is illegal. Use 
+may also be prohibited in show or racing horses. Check rules and 
+regulations before entering your animal in a competition while 
+this medication is being administered.
+Chemistry/Synonyms
+Clenbuterol HCl is a substituted phenylaminoethanol beta-2-adren-
+ergic agonist. It is very slightly soluble in water and has a molecular 
+weight of 313.65. The commercial syrup is a colorless solution.
+Clenbuterol HCl may also be known as NAB-365, clebuterolum, 
+Bronchopulmin®, Dilaterol®, Planipart®, Respipulmin®, Spiropent®, or 
+Ventipulmin®.
+Storage/Stability
+The commercially available syrup should be stored at or below 25°C 
+(77°F); avoid freezing. The manufacturer warns to replace the safety 
+cap on the bottle when not in use. 
+Clenbuterol injection should be stored below 25°C (77°F) and dis-
+carded 28 days after first use.
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Clenbuterol HCl Oral Syrup: 72.5 μg/mL in 100 mL and 330 mL bot-
+tles; Ventipulmin® Syrup; (Rx). NADA #140-973. Do not use in horses 
+intended for human consumption.
+Clenbuterol HCl for Injection: 0.03 mg/mL (30 μg/mL) in 10 mL 
+vials; Planipart® (POM-V, CD [Sch 4 pt 2])
+Extra-label clenbuterol use in food animals is prohibited by federal 
+United States law.
+Association of Racing Commissioners International (ARCI) Uni-
+form Classification Guidelines for Foreign Substances (UCGFS) 
+Class 3 Drug. Use of this drug may not be allowed in certain ani-
+mal competitions. Check rules and regulations before entering in a 
+competition while this medication is being administered. Contact 
+local racing authorities for further guidance. See Appendix for more 
+information.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Clindamycin 
+(klin-da-mye-sin) 
+Antirobe®, Cleocin®
+Lincosamide Antibiotic
+Prescriber Highlights
+	
+▶Used for broad-spectrum coverage against many anaerobes, 
+gram-positive aerobic cocci, and Toxoplasma spp
+	
+▶Contraindicated in hindgut fermenters (eg, horses, rodents, 
+ruminants, lagomorphs) and patients that are hypersensitive 
+to lincosamides
+	
+▶Use with caution in patients with liver or renal dysfunction; 
+dose reduction should be considered if the dysfunction is 
+severe.
+	
+▶Potential adverse effects include gastroenteritis, and esopha-
+geal injuries if dry pilled.
+Uses/Indications
+Labeled indications for clindamycin include treatment of skin infec-
+tions (eg, wounds, abscesses), dental infections, and osteomyelitis 
+(in dogs) caused by coagulase-positive staphylococci (ie, Staphy-
+lococcus aureus, Staphylococcus intermedius), Streptococcus spp (in 
+cats), Bacteroides fragilis, Prevotella melaninogenicus, Fusobacterium 
+necrophorum, and Clostridium perfringens.1 
+
+Clindamycin       283
+Clindamycin is also used for a variety of protozoal infections, in-
+cluding toxoplasmosis, but high doses may be required to achieve 
+adequate CNS concentrations.
+The World Health Organization (WHO) has designated clinda-
+mycin as a Highly Important antimicrobial for human medicine.2 
+The Office International des Epizooties  (OIE) has designated lin-
+cosamides as Veterinary Highly Important Antimicrobial (VHIA) 
+Agents in veterinary species.3
+Pharmacology/Actions
+Lincosamide antibiotics may act as bacteriostatic or bactericidal 
+agents, depending on the concentration of the drug at the infec-
+tion site and the susceptibility of the organism. Lincosamides act by 
+binding to the 50S ribosomal subunit of susceptible bacteria, there-
+by inhibiting peptide bond formation and protein synthesis of the 
+bacterial cell wall. The lincosamides—lincomycin and clindamy-
+cin—share mechanisms of action and have similar spectrums of ac-
+tivity, although lincomycin is usually less active against susceptible 
+organisms. Complete cross-resistance occurs between the 2 drugs, 
+and at least partial cross-resistance occurs between lincosamides and 
+erythromycin.
+Most aerobic gram-positive cocci are susceptible to lincosamides. 
+Clindamycin has excellent activity against staphylococci and strep-
+tococci. Other organisms that are generally susceptible include Cory-
+nebacterium diphtheriae, Nocardia asteroides, Erysipelothrix spp, and 
+Mycoplasma spp. Enterococci are inherently resistant. Acquired re-
+sistance is a potential problem, particularly among staphylococci. In-
+ducible resistance to clindamycin is common in methicillin-resistant 
+Staphylococcus aureus (MRSA) and occurs less commonly in other 
+methicillin-resistant staphylococci.4–6 Methicillin-resistant staphy-
+lococci, particularly methicillin-resistant Staphylococcus pseudinter-
+medius, are usually resistant to clindamycin. This resistance cannot 
+be detected with routine testing and can lead to treatment failure. 
+Testing for inducible clindamycin resistance is important in any 
+Staphylococcus spp that have been reported as erythromycin-resis-
+tant or in cases in which erythromycin susceptibility has not been 
+reported; erythromycin-susceptible staphylococci will not be induc-
+ibly resistant.5,6 Streptococcal resistance is rare.
+Most anaerobic bacteria are susceptible to lincosamides. There is a 
+low prevalence of resistance in the Bacteroides fragilis group.
+Clindamycin has activity against a variety of protozoal organisms, 
+but it may be more suppressive than curative in the treatment of 
+Toxoplasma gondii infections. Clindamycin can have a delayed onset 
+of action (1 to 3 days), and drug concentrations may not be high 
+enough to achieve complete efficacy. Clindamycin is not effective 
+against the extracellular tachyzoites associated with these protozoal 
+infections.
+Pharmacokinetics
+In dogs, oral bioavailability is ≈73%, and the elimination half-life is 
+reportedly 5 hours after oral administration and 10 to 13 hours after 
+SC administration. The volume of distribution is ≈0.9 L/kg. Half-life 
+may be longer with higher dosages. One study in dogs found a mean 
+half-life of ≈4 hours after administration of 5.5 mg/kg PO every 12 
+hours as compared with 7 to 10 hours after administration of 11 mg/kg 
+PO every 24 hours; overall drug exposure (area under the curve 
+[AUC]0-24/MIC) was higher with the higher, once-daily dose.7
+In cats, clindamycin half-life after a dose of 11 mg/kg is ≈16 
+hours (capsules) and 8 hours (liquid). The volume of distribution is 
+≈1.6 L/kg to 3 L/kg. The highest concentrations are found in the 
+lungs, liver, spleen, jejunum, and colon.
+In humans, the drug is rapidly absorbed from the gut, and ≈90% 
+of the total dose is absorbed. Food decreases the rate of absorption 
+but not the extent. Peak serum concentrations are attained ≈45 to 
+60 minutes after oral administration. After IM administration, peak 
+concentrations are attained ≈1 to 3 hours postinjection.
+Clindamycin is distributed in most tissue and fluids. Therapeu-
+tic concentrations are achieved in bone, synovial fluid, bile, pleural 
+fluid, peritoneal fluid, skin, and myocardial tissue. Clindamycin also 
+penetrates well into abscesses, scar tissue, and WBCs. CNS concen-
+trations may only reach 40% of those found in serum if meninges are 
+inflamed and use for this indication in humans is not recommended. 
+Clindamycin does not penetrate the eye at concentrations required 
+to treat infections. Clindamycin is ≈93% bound to plasma proteins. 
+The drug crosses the placenta and can be distributed in milk at con-
+centrations equal to those in plasma.
+Clindamycin palmitate and clindamycin phosphate are inactive, 
+and hydrolysis in vivo to free (active) clindamycin usually occurs 
+rapidly. Clindamycin is partially metabolized in the liver to both ac-
+tive and inactive metabolites. The unchanged drug and metabolites 
+are excreted in the urine, feces, and bile; however, active drug con-
+centrations in urine are poor (low). Halflives can be prolonged in 
+patients with severe renal or hepatic dysfunction.
+Contraindications/Precautions/Warnings
+Clindamycin should never be administered undiluted as a bolus.8 A 
+calculated dose should be administered by IV intermittent infusion 
+over at least 10 to 60 minutes (see Dosages).
+Although there have been case reports of parenteral administra-
+tion of lincosamides to horses, cattle, and sheep, lincosamides are 
+contraindicated in hind-gut fermenters, such as horses, ruminants, 
+rabbits, hamsters, chinchillas, and guinea pigs, as serious GI effects, 
+including death, can occur. Clindamycin is also contraindicated in 
+patients with known hypersensitivity to it or lincomycin.
+Clindamycin has been implicated in causing esophagitis and, po-
+tentially, esophageal strictures in small animal species.9 Dry pilling 
+should be avoided when administering this drug.
+Patients with severe renal and/or hepatic disease should receive 
+the drug with caution; the manufacturer suggests monitoring serum 
+clindamycin levels in dogs or cats receiving high-dose therapy.1
+In humans, it has been suggested to use the drug with caution in 
+patients with atopy or a history of GI disease, particularly colitis; the 
+significance of this suggestion for veterinary patients is not known.
+Clindamycin use is becoming more scrutinized and restricted in 
+humans due to the risk for severe Clostridium difficile infection and 
+Clostridium difficile–associated diarrhea (CDAD). Clindamycin in 
+5% dextrose injection therapy has been associated with severe colitis, 
+which may end up fatal. Though of lesser concern in dogs and cats, it 
+may need to be monitored.
+Adverse Effects
+Reported adverse effects after oral administration in dogs and cats 
+include gastroenteritis (eg, emesis, loose stool, infrequently bloody 
+diarrhea [dogs]). In a study of healthy cats, administration of a sym-
+biotic (prebiotic and probiotic mixture) 1 hour after administration 
+of oral clindamycin reduced antibiotic-associated GI signs.10 In rab-
+bits, cholestyramine reduced enterotoxemia caused by IV clindamy-
+cin administration.11
+There have been case reports of esophageal injuries (eg, esoph-
+agitis, strictures) in cats when solid dose forms were administered 
+without food or a water bolus. Cats may occasionally show signs of 
+hypersalivation or lip-smacking after oral administration. IM injec-
+tions reportedly cause pain at the injection site.
+In humans, eye pain and contact dermatitis have been reported.
+Reproductive/Nursing Safety
+Clindamycin crosses the placenta, and cord blood concentrations 
+are ≈46% of those found in maternal serum. Safe use in dogs and 
+cats during pregnancy has not been established, but the drug has not 
+been implicated in causing teratogenic effects. 
+Clindamycin is distributed in milk; nursing puppies or kittens of 

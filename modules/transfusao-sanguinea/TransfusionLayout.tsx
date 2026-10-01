@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TransfusionSidebar } from './components/TransfusionSidebar';
+import { TransfusionIcon } from './components/TransfusionIcon';
 import { TransfusionMobileNav } from './components/TransfusionMobileNav';
 import { KnowledgeModal } from './components/KnowledgeModal';
 import { titleForTransfusionPage, type TransfusionPage } from './navConfig';
@@ -11,6 +12,7 @@ import PrepGuidePage from './pages/PrepGuidePage';
 import CrossmatchPage from './pages/CrossmatchPage';
 import ReactionsPage from './pages/ReactionsPage';
 import DrugsPage from './pages/DrugsPage';
+import ProductsPage from './pages/ProductsPage';
 
 export const TransfusionLayout: React.FC = () => {
   const navigate = useNavigate();
@@ -30,6 +32,8 @@ export const TransfusionLayout: React.FC = () => {
   // Renderização condicional de páginas
   const renderPageContent = () => {
     switch (activeTab) {
+      case 'products':
+        return <ProductsPage />;
       case 'prep':
         return <PrepGuidePage onOpenModal={setModalTerm} />;
       case 'crossmatch':
@@ -100,7 +104,7 @@ export const TransfusionLayout: React.FC = () => {
             </div>
             
             <div className="flex items-center gap-1 bg-red-500/10 text-red-500 border border-red-500/10 px-3 py-1.5 rounded-xl text-xs font-bold shadow-inner">
-              <span className="animate-pulse">🩸</span> Hemoterapia Veterinária
+              <TransfusionIcon name="products" className="h-7 w-7" /> Hemoterapia Veterinária
             </div>
           </div>
         </header>

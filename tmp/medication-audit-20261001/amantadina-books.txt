@@ -1,0 +1,852 @@
+
+===== Plumb PDF 73 =====
+46    Amantadine
+neuropathic1 or chronic pain,2 often in those in which opioids do not 
+provide adequate analgesia or who are intolerant of higher opioid 
+doses. It is generally considered ineffective when used alone 3; use 
+in combination with an NSAID, opioid, or gabapentin/pregabalin is 
+typical.1,4 Several weeks may be required to break a pain cycle. 5,6 It 
+has been suggested for use as an early intervention in the treatment 
+of pain associated with osteosarcomas.7
+Amantadine has also been investigated for treatment of equine-2 
+influenza virus in a horse8; however, because of expense, interpatient 
+variability in oral absorption and other pharmacokinetic parame -
+ters, and the potential for causing seizures after IV dosing, it is not 
+commonly used for treatment.
+In humans, amantadine is used for parkinsonian syndrome and 
+drug-induced extrapyramidal effects; its use for the treatment and 
+prophylaxis of influenza A is no longer recommended. 9 As in vet -
+erinary medicine, the effect of amantadine on NMDA receptors in 
+humans is of active interest, particularly its use as a coanalgesic with 
+opioids and in the reduction of opioid tolerance development.
+Pharmacology/Actions
+Like ketamine, dextromethorphan, and memantine, amantadine in-
+hibits the NMDA receptor by stabilizing it in the closed state.10 With-
+in the CNS, chronic pain can be maintained or exacerbated when 
+glutamate or aspartate bind to this receptor. It is believed that this 
+receptor is particularly important in allodynia (ie, sensation of pain 
+resulting from a normally non-noxious stimulus). Amantadine is ex-
+pected to produce analgesic effects when pain or CNS sensitization 
+is already present. Although there is limited evidence that amanta -
+dine alone provides analgesia,2 it is thought that it may help alleviate 
+chronic pain when used in combination with other analgesics (eg, 
+opioids, NSAIDs).3
+Amantadine’s antiviral activity is limited to strains of influenza A. 
+Although its complete mechanism of action is unknown, it inhibits 
+viral replication by interfering with influenza A virus M2 protein, 
+preventing release of viral RNA into the host cell, and possibly in -
+hibiting viral replication. Influenza A variants have demonstrated 
+resistance to amantadine’s antiviral action, and it is currently not 
+recommended for the treatment or prophylaxis of influenza A.9
+Amantadine’s antiparkinsonian activity is not well understood, 
+but it apparently increases dopamine concentrations in the brain. 
+The drug appears to have potentiating effects on dopaminergic neu-
+rotransmission in the CNS, is an NMDA antagonist, and has anti -
+cholinergic activity.
+Pharmacokinetics
+In dogs, oral bioavailability of amantadine is reportedly very high. 11 
+A study in nonfasted greyhounds showed an oral dose of 2.8 mg/kg 
+was well tolerated, and maximum concentration, time to maximum 
+concentration, and terminal half-life were 271 ng/mL, 1 to 4 hours, 
+and 4.9 hours respectively. This study also suggested that the “every 
+24-hour dose interval” should be re-evaluated.12 The drug is renally 
+eliminated.11
+In cats, bioavailability was very high after oral administration, and 
+peak levels occurred ≈2 hours after dosing. After IV administration, 
+the steady-state volume of distribution was ≈4.3 L/kg and clearance 
+(mean) was 8.2 mL/minute/kg. 13 Elimination half-life was 5.5 to 6 
+hours.
+In horses, amantadine had a very wide interpatient variability of 
+absorption after oral dosing (10 – 20 mg/kg); bioavailability ranged 
+from 40% to 60% and was not affected by feed.8 The elimination half-
+life in horses was ≈3.5 hours, and the steady-state volume of distri -
+bution was ≈5 L/kg.
+In Amazon parrots, the time to maximum concentration was ≈3 
+to 4 hours, and half-life was 21 to 23 hours.14
+In humans, amantadine was well absorbed after oral adminis -
+tration with peak plasma concentrations occurring ≈3 hours after 
+dosing.15 Volume of distribution was 3 to 8 L/kg, and protein bind -
+ing was ≈67%. Amantadine is primarily eliminated via renal mech -
+anisms. Oral clearance was ≈0.28 L/hour/kg and half-life was ≈16 
+hours. Clearance is reduced in patients with renal impairment, and 
+half-life may double.
+Contraindications/Precautions/Warnings
+In humans, amantadine is contraindicated in patients with known 
+hypersensitivity to it 15 or to rimantadine, and in those with end-
+stage renal disease. It should be used with caution in patients with 
+hepatic disease, renal disease (dosage adjustment may be required), 
+congestive heart failure, active psychoses, eczematoid dermatitis, sei-
+zure disorders, or untreated angle-closure glaucoma. The drug is no 
+longer recommended for the treatment or prevention of influenza A 
+in humans due to high levels of amantadine resistance among circu-
+lating influenza strains.9 In 2006, the FDA banned the use of aman -
+tadine and other influenza antivirals in chickens, turkeys, and ducks.
+The human liquid dosage form has an unpleasant taste.
+Do not confuse AMANTadine with RIMantadine, AMIOdarone, 
+or RANITidine.
+Adverse Effects
+Experience with amantadine in domestic animals is limited, and its 
+adverse effect profile is not well described. It has been reported that 
+dogs given amantadine occasionally develop agitation, flatulence, 
+loose stools, or diarrhea, particularly early in treatment. Experience 
+in cats is limited, and an adverse effect profile has yet to be fully elu-
+cidated, but some clinicians report that GI effects are more likely 
+than in dogs. 
+Reproductive/Nursing Safety
+In rats, amantadine 50 – 100 mg/kg/day PO (ie, ≈1.5 to 3 times 
+the maximum recommended human dose) throughout pregnancy 
+was embryotoxic and caused fetal malformations and reduced fe -
+tal weight. 15 Fertility was slightly impaired in rats that were given  
+32 mg/kg/day.
+Amantadine is excreted into maternal milk; its use is not recom -
+mended in nursing women.16 Veterinary significance is unclear.
+Because safety has not been established, this drug should only be 
+used when the maternal benefits outweigh the potential risks to off-
+spring.
+Overdose/Acute Toxicity
+The oral LD 50 in mice and rats is 700 to 800 mg/kg and 25 to  
+50 mg/kg in humans.17 The toxic amantadine dose reported for cats 
+is 30 mg/kg 18; behavioral effects may be noted at 15 mg/kg in dogs 
+and cats.
+Clinical signs associated with overdose in dogs include tremors, 
+anxiety, ataxia, hypersalivation, and/or vomiting.
+In humans, overdoses as low as 1 gram (total dose) have been as-
+sociated with fatalities. Cardiac dysfunction (eg, arrhythmias, hyper-
+tension, tachycardia), pulmonary edema, CNS toxicity (eg, tremors, 
+seizures, psychosis, agitation, coma), hyperthermia, renal dysfunc -
+tion, and respiratory distress syndrome have all been document -
+ed. There is no known specific antidote for amantadine overdose. 
+Treatment should consist of GI decontamination when appropriate, 
+intensive monitoring (including ECG), and supportive therapy. Hy-
+dration and urinary acidification, with or without diuresis, may in -
+crease renal amantadine excretion. The drug is poorly removed by 
+hemodialysis. Physostigmine has been suggested for cautious use in 
+treating CNS effects.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+
+
+===== Plumb PDF 74 =====
+Amikacin, Systemic   47
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with amantadine have either been 
+reported or are theoretical in humans or animals and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Anticholinergic Drugs (eg, atropine, glycopyrrolate, oxy-
+butynin): Amantadine may enhance anticholinergic effects. 
+ ■ Antihistamines (eg, diphenhydramine, hydroxyzine): Aman-
+tadine may enhance anticholinergic effects. 
+ ■ Carbonic Anhydrase Inhibitors (eg, acetazolamide): May 
+increase amantadine concentration
+ ■ CNS Stimulants  (eg, caffeine, methylphenidate, selegiline ): 
+Concomitant use with amantadine may increase the drug’s CNS 
+stimulatory effects.
+ ■ Glucagon: Amantadine’s anticholinergic effects may increase 
+GI adverse effects of glucagon.
+ ■ Phenothiazines (eg, acepromazine ): Amantadine may en -
+hance anticholinergic effects. 
+ ■ Quinidine, Quinine: Renal clearance of amantadine may be 
+reduced. 
+ ■ QT Prolonging Drugs (eg, amiodarone, cisapride, procain-
+amide, sotalol): May increase the risk for arrhythmias
+ ■ Sulfa-/Trimethoprim: May decrease the excretion of amanta-
+dine, yielding higher blood concentrations of amantadine
+ ■ Tramadol:  Concomitant use with amantadine may increase the 
+risk for seizures because tramadol at high doses has caused sei -
+zures in humans19 and amantadine can lower the seizure thresh -
+old15; however, an increased risk for seizures with this drug com-
+bination appears unlikely in a clinical setting at recommended 
+dosages. Monitor for sedation or other neurologic adverse effects 
+if using this combination.
+ ■ Triamterene:  May decrease the excretion of amantadine, yield-
+ing higher blood concentrations of amantadine
+ ■ Tricyclic Antidepressants (eg, amitriptyline, clomip -
+ramine): May enhance the anticholinergic effects of amantadine
+ ■ Urinary Acidifiers  (eg, methionine, ammonium chloride, 
+ascorbic acid): May increase the excretion of amantadine
+ ■ Urinary Alkalinizers (eg, sodium bicarbonate, potassium 
+citrate): May decrease the excretion of amantadine
+Laboratory Considerations
+ ■ No laboratory interactions identified
+Dosages
+DOGS/CATS:
+Adjunctive analgesia, including neuropathic pain and to pre -
+vent “wind-up” pain (extra-label): 3 – 5 mg/kg PO once daily. 1,4 
+Anecdotally, it is suggested to start at the lower end of the dos -
+ing range and increase slowly, if needed. Pharmacokinetic studies 
+suggest administration every 12 hours may be needed.3,12,13
+Monitoring
+ ■ Adverse effects (ie, GI effects, anxiety, restlessness, dry mouth)
+ ■ Efficacy
+Client Information
+ ■ Give this medicine as directed by your veterinarian. The benefits 
+of this medicine may take a week or more to be seen.
+ ■ Gastrointestinal effects (eg, loose stools, gas, diarrhea) or some 
+agitation may occur, particularly early in treatment. Contact your 
+veterinarian if these become serious or persist.
+ ■ Overdoses with this medication can be serious. Be sure to keep 
+this medicine out of reach of other pets and children.
+Chemistry/Synonyms
+An adamantane class antiviral agent with NMDA antagonist prop -
+erties, amantadine HCl occurs as a white to off-white, bitter crys -
+talline powder that is freely soluble in water and soluble in alcohol. 
+Commercial dosage forms contain amantadine HCl, and strength is 
+expressed and calculated as amantadine base. 1.24 mg amantadine 
+HCl contains 1 mg amantadine.
+Amantadine HCl may also be known as adamantanamine HCl, 
+Endantadine®, GOCOVRI®, Osmolex®, and Symmetrel®.
+Storage/Stability
+Tablets, capsules, and the oral solution should be stored in tight, 
+light-resistant containers at room temperature 20°C to 25°C 
+(68°F-77°F), with excursions permitted to 15°C to 30°C (59°F-86°F). 
+Avoid freezing the liquid.
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The International Federation for Equestrian Sports lists this drug as 
+a “prohibited substance – controlled medication. ”20 Use of this drug 
+may not be allowed in certain animal competitions. Check rules and 
+regulations before entering in a competition while this medication 
+is being administered. Contact local racing authorities for further 
+guidance.
+HUMAN-LABELED PRODUCTS:
+Amantadine HCl Oral Tablets and Capsules: 100 mg; generic; (Rx)
+Amantadine HCl Oral Solution/Syrup: 50 mg/5mL (10 mg/mL) in 
+480 mL; generic; (Rx). NOTE: It is reported that the oral liquid has a 
+bad taste and may not be accepted by veterinary patients.
+Amantadine HCl extended-release oral tablets and capsules ( Os-
+molex® ER, GOCOVRI®) are available. They are not directly equivalent 
+to immediate-release amantadine capsules and have not been studied 
+in veterinary patients.
+In 2006, the FDA banned the extra-label use of amantadine and oth-
+er influenza antivirals in chickens, turkeys, and ducks.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Amikacin, Systemic
+(am-i-kay-sin) Amikin®, Amiglyde-V®
+Aminoglycoside Antibiotic
+Prescriber Highlights
+ ▶ Parenteral aminoglycoside antibiotic that has good activity 
+against a variety of bacteria, predominantly gram-negative 
+aerobic bacilli and staphylococci; ineffective against anaerobic 
+bacteria
+ ▶ Adverse effects include nephrotoxicity, ototoxicity, and neuro-
+muscular blockade.
+ ▶ Cats may be more sensitive to toxic effects.
+ ▶ Risk factors for toxicity include pre-existing renal disease, age 
+(both neonatal and geriatric), fever, sepsis, and dehydration.
+Uses/Indications
+Although parenteral use of amikacin is only FDA approved in dogs, it is 
+often used in most species for treatment of serious gram-negative and 
+
+
+===== Plumb PDF 75 =====
+48    Amikacin, Systemic
+staphylococcal infections when the adverse effects of other amino -
+glycosides are a concern. Because aminoglycosides have an inherent 
+toxicity and should be administered parenterally, use should be lim-
+ited to treatment of serious infections with either a documented lack 
+of susceptibility to other, less toxic antibiotics or in cases in which 
+the clinical situation dictates immediate treatment of a presumed 
+gram-negative infection before culture and susceptibility results are 
+reported.
+It is widely accepted that aminoglycosides should be given once a 
+day in most patients (mammals). This dosing regimen yields high -
+er peak concentrations with resultant greater bacterial kill. Because 
+aminoglycosides exhibit a postantibiotic effect, surviving susceptible 
+bacteria generally do not replicate as rapidly, even when antibiotic 
+concentrations are below the MIC. Periods in which antibiotic con-
+centrations are low may also decrease the “adaptive resistance” (ie, 
+bacteria take up less drug in the presence of continuous exposure) 
+that can occur.
+Amikacin is also FDA-approved for intrauterine infusion in mares 
+and is used via intraarticular injection (extra-label) in foals to treat 
+gram-negative septic arthritis. In horses with septic arthritis, intra -
+venous regional limb perfusion (IVRLP) using amikacin is actively 
+being researched.1-3 
+Amikacin is also used topically for treatment of otitis externa in 
+dogs—often in combination with EDTA-Triz 4—and may be impreg -
+nated in materials (eg, PMMA beads, gels) for local treatment of in-
+fections, particularly implant-associated surgical site infections.
+The World Health Organization (WHO) has designated amika -
+cin as a Critically Important, High Priority antimicrobial for human 
+medicine.5
+Pharmacology/Actions
+Similar to other aminoglycoside antibiotics, amikacin acts on sus -
+ceptible bacteria by irreversibly binding to the 30S ribosomal sub -
+unit, thereby, inhibiting protein synthesis.6 Amikacin is considered a 
+bactericidal, concentration-dependent antibiotic. 
+Amikacin’s spectrum of activity includes coverage against many 
+aerobic gram-negative and some aerobic gram-positive bacteria, in-
+cluding Escherichia coli and most species of Klebsiella spp, Proteus 
+spp, Pseudomonas spp, Salmonella spp, Enterobacter spp, Serratia 
+spp, Shigella spp, Mycoplasma spp, and Staphylococcus spp. Several 
+strains of Pseudomonas aeruginosa, Proteus spp, and Serratia spp that 
+are resistant to gentamicin will be killed by amikacin. Amikacin is 
+ineffective against anaerobic bacteria, viruses, fungi, and protozoa.
+In an in vitro study with canine E coli isolates, amikacin demon-
+strated additive or synergistic antimicrobial activity when given in 
+combination with ceftazidime and amoxicillin/clavulanate but not in 
+combination with enrofloxacin or marbofloxacin.7 
+Antimicrobial activity of aminoglycosides is enhanced in an al -
+kaline environment but inhibited by the presence of pus or organic 
+debris.
+Pharmacokinetics
+Amikacin, like the other aminoglycosides, is not appreciably ab -
+sorbed after oral, dermal, or intrauterine administration or urinary 
+bladder irrigations but is absorbed when used in irrigations during 
+surgical procedures or in regional limb perfusion. Systemic absorp -
+tion of amikacin from impregnated beads is not described; plasma 
+amikacin concentration was undetectable 24 hours after SC place -
+ment of an amikacin-impregnated dextrose cross-linked gel 8 but is 
+minimal for gentamicin in PMMA beads on dogs 9 and in calcium 
+sulfate beads in goats. 10 With IM administration in dogs and cats, 
+peak concentrations occur after 30 to 60 minutes. SC injection re -
+sults in slightly delayed peak concentrations and more variability 
+than after IM injection. Bioavailability from extravascular injection 
+(IM or SC) is greater than 90%. 
+After absorption, aminoglycosides are distributed primarily in the 
+extracellular fluid and are found in ascitic, pleural, pericardial, peri-
+toneal, synovial, and abscess fluids; high levels are found in sputum, 
+bronchial secretions, and bile. Aminoglycosides are minimally pro -
+tein bound (ie, less than 20%) to plasma proteins.11 Aminoglycosides 
+do not readily cross the blood-brain barrier and do not penetrate 
+ocular tissue. CSF concentrations are unpredictable and range from 
+0% to 50% of those found in the serum. Therapeutic concentrations 
+are found in bone, heart, gallbladder, and lung tissues after parenter-
+al administration. Prostate concentrations have not been adequate -
+ly assessed in animals, but amikacin has been shown to be effective 
+for the treatment of chronic bacterial prostatitis in humans when 
+fluoroquinolones cannot be used.12 A maximum distal interphalan -
+geal joint synovial fluid concentration of 600 µg/mL was reached 
+15 minutes after intravenous regional limb perfusion (IVRLP) in 
+healthy adult horses; however, significant interpatient variability 
+was noted. A maximum serum amikacin concentration of 19 µg/mL 
+was reached 25 minutes after IVRLP .13 Aminoglycosides tend to ac-
+cumulate in certain tissues (eg, inner ear, kidneys), contributing to 
+the toxicity seen in those tissues. Volumes of distribution have been 
+reported to be 0.15 to 0.3 L/kg in adult cats and dogs, and 0.26 to  
+0.58 L/kg in horses. Volumes of distribution may be significantly 
+larger in neonates and juvenile animals due to their higher extra -
+cellular fluid fractions. Aminoglycosides cross the placenta; fetal 
+concentrations range from 15% to 50% of those found in maternal 
+serum.
+Elimination of aminoglycosides after parenteral administration 
+occurs almost entirely by glomerular filtration. The approximate 
+elimination half-life for amikacin has been reported to be 5 hours in 
+foals, 1.14 to 2.3 hours in adult horses, 2.2 to 2.7 hours in calves, 1 
+hour in cows, 1.5 hours in sheep, and 0.5 to 2 hours in dogs and cats. 
+Patients with decreased renal function can have a significantly pro -
+longed half-life. In humans with normal renal function, elimination 
+rates can be highly variable with aminoglycoside antibiotics.
+Contraindications/Precautions/Warnings
+Aminoglycosides are contraindicated in animals that are hypersen -
+sitive to them. Often, these drugs are the only effective agents in 
+treating severe gram-negative or multidrug resistant staphylococcal 
+infections; thus, there are no absolute contraindications to their use. 
+However, these drugs should be used with extreme caution in ani -
+mals with pre-existing renal disease; concomitant monitoring and 
+dosage interval adjustments should be used as needed. Other risk 
+factors for the development of toxicity include patient age (neonatal 
+and geriatric patients), fever, sepsis, and dehydration.
+Aminoglycosides can cause irreversible ototoxicity, so they 
+should be used with caution, especially in working and guide dogs, 
+and should be avoided when treating otitis if an intact tympanic 
+membrane cannot be confirmed. Amikacin is considered less oto -
+toxic than gentamicin or streptomycin.14
+Aminoglycosides should be used with caution in animals with 
+neuromuscular disorders (eg, myasthenia gravis) because of the 
+drug’s neuromuscular blocking activity.
+Sight hounds may require reduced dosages of aminoglycosides, as 
+they have significantly lower volumes of distribution.
+Aminoglycosides are eliminated primarily through renal mecha -
+nisms and should be used cautiously in neonatal or geriatric animals; 
+consider periodic therapeutic drug monitoring and serum chemistry 
+profiles with dosage adjustments as needed.
+Adverse Effects
+Aminoglycosides can be nephrotoxic and ototoxic. The nephrotoxic 
+(ie, tubular necrosis) mechanisms are not completely understood but 
+are probably related to interference with phospholipid metabolism 
+in the lysosomes of proximal renal tubular cells, resulting in leakage 
+
+
+===== Plumb PDF 76 =====
+Amikacin, Systemic   49
+of proteolytic enzymes into the cytoplasm. The risk for nephrotoxici-
+ty increases with prolonged therapy and is predominantly associated 
+with accumulation of amikacin within tubular cells, which is more 
+likely to occur with repeated lower doses as compared with higher 
+doses with prolonged (ie, every 24 hour) dosing intervals. Nephro -
+toxicity is usually manifested by nonoliguric renal failure, with in -
+creases in serum BUN and creatinine and decreases in urine specific 
+gravity and creatinine clearance. Proteinuria and abnormal urine 
+sediment (eg, casts, renal tubular cells, glycosuria) may be seen. 
+Nephrotoxicity is usually reversible after the drug is discontinued. 
+Although amikacin is less nephrotoxic than other aminoglycosides, 
+the incidence of nephrotoxicity is poorly described, and caution and 
+monitoring are required.
+Ototoxicity (ie, eighth cranial nerve toxicity) can manifest through 
+hearing loss and/or vestibular clinical signs (eg, nystagmus, head tilt) 
+and may be irreversible. Vestibular clinical signs are more frequent 
+with use of streptomycin, gentamicin, or tobramycin. Hearing loss is 
+more frequent with use of amikacin or neomycin. 15 However, hear-
+ing loss or vestibular clinical signs can occur with use of any of these 
+drugs. Cats are apparently more sensitive to the vestibular effects of 
+aminoglycosides.16
+Aminoglycosides can also cause neuromuscular blockade, facial 
+edema, pain and inflammation at the injection site, peripheral neu -
+ropathy, and hypersensitivity reactions. Rarely, GI clinical signs and 
+hematologic and hepatic effects have been reported.
+An in vitro study found that amikacin caused rapid, dose-depen-
+dent cytotoxicity in equine joint cells17; additional in vivo studies are 
+required to confirm these findings.
+Reproductive/Nursing Safety
+Aminoglycosides can cross the placenta and although rare, may cause 
+eighth cranial nerve toxicity or nephrotoxicity in fetuses. Nephro -
+toxicity has occurred in fetal rats. Because the drug should only be 
+used in serious infections, the benefits of therapy may exceed the 
+potential risks. There is no evidence that amikacin impairs fertility; 
+amikacin does not appear to affect sperm quality,18 however, the pre-
+servative in the intrauterine infusion may impair sperm viability.19
+Aminoglycosides are excreted in milk. Although it is possible that 
+amikacin ingested with milk could alter the GI microbiota and cause 
+diarrhea, low levels of amikacin in milk are unlikely to be of signif -
+icant concern. 
+Overdose/Acute Toxicity
+Two treatments have been recommended in case of inadvertent 
+overdose: 
+1) Hemodialysis, which is effective in reducing serum drug con -
+centrations but is not a viable option for most veterinary pa -
+tients. 
+2) Peritoneal dialysis, which also reduces serum drug concentra -
+tions but is much less effective. Amikacin is less affected by this 
+approach than are tobramycin or gentamicin, and it is assumed 
+that reduction in serum concentrations will also be minimized. 
+For patients that have experienced or are suspected to have expe -
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving amikacin and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Anesthetics, General (eg isoflurane, ketamine, propofol ): 
+Concomitant use with general anesthetics could potentiate neu -
+romuscular blockade.
+ ■ Cephalosporins : Concurrent use of aminoglycosides with 
+cephalosporins is somewhat controversial. Potentially, cephalo -
+sporins could cause additive nephrotoxicity when used with ami-
+noglycosides, but this interaction has only been well-documented 
+with cephaloridine and cephalothin (both of which are no longer 
+marketed). The potential synergistic effect 7 may outweigh these 
+unlikely risks; however, concurrent use of third- or fourth-gen -
+eration cephalosporins with amikacin, results in abundant and 
+typically unnecessary duplication of the gram-negative spectrum.
+ ■ Diuretics, Loop  (eg, furosemide, torsemide): Concurrent use 
+with loop diuretics may increase the nephrotoxic or ototoxic po -
+tential of aminoglycosides.
+ ■ Diuretics,  Osmotic  (eg, mannitol): Concurrent use with os -
+motic diuretics may increase the nephrotoxic or ototoxic poten -
+tial of the aminoglycosides.
+ ■ Magnesium, Systemic (eg, magnesium sulfate): Concomitant 
+use could increase the risk for neuromuscular blockade.
+ ■ Nephrotoxic drugs, Other  (eg, amphotericin B, cisplatin, 
+polymyxin B, vancomycin): Potential for increased risk for neph-
+rotoxicity
+ ■ Neuromuscular Blocking Agents (eg, atracurium, pancu-
+ronium): Concomitant use with neuromuscular blocking agents 
+could potentiate neuromuscular blockade.
+ ■ NSAIDs (eg, carprofen, firocoxib, flunixin, meloxicam, phen -
+ylbutazone, robenacoxib): Increased risk of nephrotoxicity
+ ■ Penicillins : May have synergistic effects against some bacteria7; 
+some potential for physical inactivation of aminoglycosides in vi-
+tro (do not mix together) and in vivo (patients in renal failure)
+Laboratory Considerations
+ ■ Amikacin serum concentrations may be falsely decreased if the 
+patient is also receiving beta-lactam antibiotics and the serum 
+is stored prior to analysis. It is recommended that if the assay is 
+delayed, samples be frozen and, if possible, drawn at times when 
+the beta-lactam antibiotic is at a trough.
+Dosages
+DOGS:
+Susceptible infections and empirical therapy (extra-label):  
+15 – 30 mg/kg IV , IM, SC once daily. Septic patients may be started 
+at 20 – 30 mg/kg IV once daily. NOTE: Dosage should be adjust-
+ed based on kidney function and serum amikacin concentrations 
+when possible. When renal function is significantly decreased (eg, 
+IRIS stage II or III) and less nephrotoxic drugs cannot be used, the 
+dose amount remains the same but the dosing interval should be 
+increased. See Monitoring.
+CATS:
+Susceptible infections and empirical therapy (extra-label):  
+10 – 15 mg/kg IV , IM, SC once daily. Septic patients may be start-
+ed at 20 mg/kg IV once daily. NOTE: Dosage should be adjusted 
+based on renal function and serum levels when possible. When 
+renal function is significantly decreased (eg, IRIS stage II or III) 
+and less nephrotoxic drugs cannot be used, the dose amount re -
+mains the same but the dosing interval should be increased. See 
+Monitoring.
+HORSES:
+Uterine infections (endometritis, metritis, pyometra) caused 
+by susceptible organisms  (label dosage; FDA approved): 2 g 
+mixed with 200 mL sterile normal saline (0.9% sodium chloride 
+for injection) and aseptically infused into the uterus daily for 3 
+consecutive days19
+
+
+===== Plumb PDF 77 =====
+50    Amikacin, Systemic
+Susceptible infections and empirical therapy (extra-label): 
+Adults: 10 mg/kg IV or IM once daily
+Neonatal foals: 20 – 25 mg/kg IV or IM once daily. It is strongly 
+recommended to individualize the dose based on therapeutic 
+drug monitoring.
+Treatment of septic joints (extra-label): Intra-articular adminis-
+tration: 125 – 250 mg/horse (NOT mg/kg) IA once daily20 
+Intravenous regional limb perfusion (IVRLP) administration 
+in standing adult horses (extra-label): 
+a) 2 g (diluted to 30 – 60 mL with sterile saline) via cephalic 
+vein, with 10 to 20 minute tourniquet time. 13,21,22 The addi-
+tion of penicillin G sodium at 10 million units has resulted 
+in variable retention time in the synovium.23,24
+b) 1 g (diluted to 30 – 120 mL with sterile saline), with 30 min-
+ute tourniquet time reached therapeutic concentration in 
+the thoracic limb distal phalangeal joint but not in the ra -
+diocarpal joint.25 
+NOTE: Despite the procedure’s name (ie, IVRLP), amikacin 
+is absorbed systemically and potentially reaches therapeutic 
+ concentrations.13
+NEW WORLD CAMELIDS:
+Susceptible infections and empirical therapy : 18 mg/kg IV or 
+IM every 24 hours (once daily)26
+BIRDS:
+Susceptible infections:
+a) 15 mg/kg IM or SC every 12 hours27
+b) Gram-negative infections resistant to gentamicin :  
+Dilute commercial solution and administer 15 – 20 mg/kg  
+(0.015 – 0.02 mg/g) IM once or twice daily.28
+c) Intravenous regional limb perfusion (IVRLP) adminis -
+tration in chickens: From a case report: Using the medial 
+metatarsal vein, 5.3 mg/kg IV with flunixin 1.3 mg/kg were 
+infused, with 15 minute tourniquet time.29
+d) Mycobacterial infections in psittacines : 15 mg/kg twice 
+daily (route not specified, assume IM)30
+REPTILES:
+Gram-negative respiratory disease : 3.5 mg/kg IM, SC, or via 
+lung catheter every 3 to 10 days for 30 days31 
+Snakes:
+a) 5 mg/kg IM (forebody) loading dose, then 2.5 mg/kg IM 
+every 72 hours for 7 to 9 treatments. Commonly used in 
+respiratory infections. Use a lower dose for Python curtus.32 
+b) Gopher snakes: In a study, 5 mg/kg IM loading dose, then  
+2.5 mg/kg IM every 72 hours. House snakes were at the high 
+end of their preferred optimum ambient temperature.33
+TURTLES/TORTOISES: 
+a) Bacterial shell diseases: 10 mg/kg (route not specified; as-
+sume IM) daily in water turtles and every other day in land 
+turtles and tortoises for 7 to 10 days. Used commonly with a 
+beta-lactam antibiotic. It is recommended to begin therapy 
+with 20 mL/kg fluid injection. Maintain hydration and mon-
+itor uric acid levels when possible.34
+b) Gopher tortoises : 5 mg/kg IM every 48 hours at 30°C 
+(86°F)35
+c) Crocodilians: 2.25 mg/kg IM every 72 to 96 hours36
+FERRETS:
+Susceptible infections (extra-label):
+a) 8 – 16 mg/kg IM or IV once daily37
+b) 8 – 16 mg/kg/day SC, IM, IV divided every 8 to 24 hours38
+RABBITS/RODENTS/SMALL MAMMALS:
+Rabbits (extra-label):
+a) 8 – 16 mg/kg SC, IM, or IV daily dose (may be divided and 
+given every 8-24 hours). Increased efficacy and decreased 
+toxicity are possible if given once daily. If given IV , dilute 
+product into 4 mL/kg of saline and administer over 20 min-
+utes.39
+b) 5 – 10 mg/kg SC, IM, or IV divided every 8 to 24 hours 
+Guinea pigs (extra-label): 10 – 15 mg/kg SC, IM, or IV divided 
+every 8 to 24 hours 
+Chinchillas (extra-label): 
+a) 10 – 15 mg/kg SC, IM, or IV divided every 8 to 24 hours 
+b) 2 – 5 mg/kg SC, IM every 8 to 12 hours40
+Hamsters, rats, mice (extra-label): 10 mg/kg SC or IM every 12 
+hours (twice daily) 
+Prairie dogs (extra-label): 5 mg/kg SC or IM every 12 hours 
+(twice daily)38 
+FISH:
+Susceptible infections: 5 mg/kg IM loading dose, then 2.5 mg/kg 
+every 72 hours for 5 treatments41
+Monitoring
+ ■ Efficacy (eg, culture, clinical signs, WBC count, and clinical signs 
+associated with infection). 
+Therapeutic drug monitoring would be ideal but is rarely 
+available. When available, collect plasma samples 30 minutes 
+after administration and immediately before the next dose 
+to measure peak and trough concentrations, respectively. 
+Target concentrations in veterinary patients have not been 
+well-established. In humans, peak levels of 20 – 25 µg/mL  
+(25 – 40 µg/mL for sepsis) have been recommended, whereas 
+in foals, a target peak of 40 µg/mL has been stated. 42 In hu -
+mans, trough levels of less than 8 µg/mL are recommended.
+ ■ Adverse effect monitoring is essential. Baseline serum renal 
+chemistry testing (eg, creatinine) and urinalysis (including specif-
+ic gravity and sediment evaluation) are recommended and should 
+be repeated every 3 to 5 days during therapy. NOTE: A decrease 
+in urine specific gravity is often the initial sign of impending 
+nephrotoxicity; casts in the urine can be transient and a lack of 
+casts does not rule out renal toxicity.
+ ■ Gross monitoring of vestibular or auditory toxicity is recom -
+mended.
+Client Information
+ ■ Y ou may give subcutaneous injections at home if you have re -
+ceived appropriate training, but routine monitoring of therapy for 
+efficacy and toxicity by a veterinarian is still required.
+ ■ Permanent hearing loss and severe damage to the kidneys can 
+occur with use of this medicine. Contact your veterinarian im -
+mediately if your animal develops a head tilt, hearing loss (ie, not 
+responding to noise), loss of balance, poor appetite, low energy 
+level, and/or vomiting.
+ ■ While taking this medicine, your animal will need to be closely 
+monitored by your veterinarian. Do not miss these important fol-
+low-up visits.
+ ■ Use in food producing animals is controversial. Be sure to talk 
+with your veterinarian about the long withdrawal periods associ-
+ated with this medicine.
+Chemistry/Synonyms
+Amikacin, a semisynthetic aminoglycoside derived from kanamy -
+cin, occurs as a white, crystalline powder that is sparingly soluble in 
+water. The sulfate salt is formed during the manufacturing process. 
+1.3 g of amikacin sulfate is equivalent to 1 g of amikacin. Amikacin 
+may also be expressed in terms of units. 50,600 units are equal to 
+50.9 mg of base. The commercial injection is a clear to straw-col -
+ored solution, and the pH is adjusted to 3.5 to 5.5 with sulfuric acid.
+
+
+===== BSAVA PDF 31 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+15
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Amantadine
+(Lysovir*, Symmetrel*) POM 
+Formulations: Oral: 100 mg capsule; 10 mg/ml syrup.
+Action: Provides analgesia through NMDA antagonist action which 
+may potentiate the effects of other analgesics.
+Use:
+• Adjunctive analgesic in animals that are unresponsive to opioids, 
+or that require chronic pain relief in a home environment (e.g. 
+osteoarthritis or cancer pain).
+• In dogs with osteoarthritis that were refractory to an NSAID 
+physical activity was improved, suggesting that amantadine 
+might be a useful adjunct in the clinical management of canine 
+osteoarthritic pain.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: In humans, minor GI and CNS effects have 
+been reported, although these have not been reported in animals. 
+Amantadine is renally excreted and is likely to accumulate in animals 
+with renal dysfunction and therefore should be used cautiously in 
+this patient population.
+Drug interactions: No information available.
+DOSES
+Dogs: 3.0–5.0 mg/kg p.o. q24h.
+Cats: 1.0–4.0 mg/kg p.o. q24h; start at the lowest dose and increase 
+slowly. This dose recommendation is anecdotal and is not based on 
+evidence from clinical research. 
+References
+Lascelles BD, Gaynor JS, Smith ES et al . (2008) Amantadine in a multimodal analgesic 
+regimen for alleviation of refractory osteoarthritis pain in dogs. Journal of Veterinary 
+Internal Medicine  22, 53–59
+Amethocaine see Tetracaine
+Amikacin
+(Amikacin*, Amikin*) POM 
+Formulations: Injectable: 50 mg/ml, 250 mg/ml solutions.
+Action: Aminoglycosides inhibit bacterial protein synthesis with a 
+concentration-dependent mechanism of killing, leading to a marked 
+post-antibiotic effect, allowing prolonged dosing intervals (which 
+may reduce toxicity).
+Use: Active against many Gram-negative bacteria, Staphylococcus  
+aureus and Nocardia spp., including some that may be resistant to 
+
+
+===== BSAVA PDF 32 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+16
+gentamicin. Streptococci and anaerobes are usually resistant. Its use 
+is only indicated after sensitivity testing has been performed and the 
+organism shown to be resistant to other aminoglycosides such as 
+gentamicin. Activity at low oxygen sites may be limited. Movement 
+across biological membranes may also be limited, hence systemic 
+levels require parenteral administration, and access to sites such as 
+the CNS and ocular fluids is very limited. Monitoring serum amikacin 
+levels should be considered to ensure therapeutic levels and 
+minimize toxicity, particularly in neonates, geriatric patients and 
+those with reduced renal function. Monitoring renal function is also 
+advisable during treatment of any animal. Intravenous doses should 
+be given slowly, generally over 30–60 minutes. Concurrent fluid 
+therapy is advised.
+Safety and handling: Normal precautions should be observed.
+Contraindications: If possible, avoid use in animals with reduced 
+renal function.
+Adverse reactions: Nephrotoxic and ototoxic.
+Drug interactions: Synergism may occur in vivo when 
+aminoglycosides are combined with beta-lactam antimicrobials. 
+Avoid the concurrent use of other nephrotoxic, ototoxic or neurotoxic 
+agents (e.g. amphotericin B, furosemide). Aminoglycosides may be 
+inactivated in vitro by beta-lactam antibiotics (e.g. penicillins, 
+cephalosporins) or heparin; do not give these drugs in the same 
+syringe. Can potentiate neuromuscular blockade so avoid use in 
+combination with neuromuscular blocking agents.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 15–30 mg/kg i.v, i.m., s.c. q24h. Due to a lower volume of 
+distribution in Greyhounds a lower dose of 12 mg/kg is 
+recommended in this breed and other sight hounds.
+Cats: 10–15 mg/kg i.v, i.m., s.c. q24h.
+Dogs, Cats: For both dogs and cats, higher doses are 
+recommended by some authors for managing sepsis, although there 
+is an increased risk of adverse effects with such high doses. Local 
+use may be considered, especially if the site of infection is easily 
+accessible for direct delivery of the drug and if the animal is showing 
+signs of nephrotoxicity. Amikacin has been used locally in joints and 
+the bladder as specific examples.
+Amiloride
+(Amiloride Hydrochloride*) POM 
+Formulations: Oral: 5 mg tablets; 1 mg/ml solution (Amilamont). 
+Also present in compound preparations with hydrochlorothiazide 
+(Moduret, Moduretic, Co-amilozide) and furosemide (Co-amilofruse, 
+Frumil, Frumil LS).
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 33 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+17
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Action: Potassium-sparing diuretic which inhibits sodium 
+absorption in the cells of the distal tubule and collecting duct 
+therefore leading to less available sodium for exchange with 
+potassium. This leads to a failure of the normal renal concentration 
+gradient and results in sodium loss and potassium retention. It is a 
+weak diuretic when used alone, so is almost always used in 
+combination with a thiazide or furosemide.
+Use:
+• Treatment of oedema or ascites due to liver or heart failure.
+Often added to more potent diuretics such as furosemide or weaker 
+diuretics such as hydrochlorothiazide in cases of refractory heart 
+failure achieving sequential nephron blockade. Doses have not been 
+widely reported in the veterinary literature. Monitor urea, creatinine, 
+electrolytes and blood pressure before and after dose adjustments.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Hypotension, hyperkalaemia, acidosis and 
+hyponatraemia may develop.
+Drug interactions: Avoid the concomitant administration of 
+potassium.
+DOSES
+Dogs, Cats: 0.1 mg/kg p.o. q12h is used in humans and has been 
+suggested for dogs and cats. In combination with 
+hydrochlorothiazide dose range will vary from 0.05–0.4 mg/kg p.o. 
+(dogs) to 0.1–0.4 mg/kg p.o. (cats). Start at low dose and titrate 
+upwards cautiously.
+Amino acid solutions
+(Duphalyte, Aminoplasmal*, Aminoven*, 
+Clinimix*, Glamin*, Hyperamine*, Intrafusin*, 
+Kabiven*, Kabiven Peripheral*, Nutriflex*) POM, 
+POM-V 
+Formulations: Injectable: synthetic crystalline l-amino acid 
+solutions for i.v. use only. Numerous human products are available, 
+varying in concentrations of amino acids. Most products also 
+contain electrolytes. Some products contain varying concentrations 
+of glucose.
+Action: Support protein anabolism, arrest protein and muscle 
+wasting, and maintain intermediary metabolism.
+Use:
+• Used parenterally in patients requiring nutritional support but 
+unable to receive enteral support, amino acid solutions supply 
+essential and non-essential amino acids for protein production.

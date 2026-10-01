@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { AlertTriangle, CheckCircle2, ClipboardList, FunctionSquare, Info, ListOrdered, Sparkles, Target } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
@@ -164,7 +165,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                 </p>
               ) : null}
               <div className="overflow-x-auto rounded-xl border border-border/70">
-                <table
+                <ReadableTable
                   className="min-w-full divide-y divide-border/70 text-left text-sm"
                   style={{ minWidth: `${Math.max(520, block.columns.length * 160)}px` }}
                 >
@@ -188,7 +189,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </ReadableTable>
               </div>
               {block.caption ? <p className="mt-3 text-xs leading-5 text-muted-foreground">{block.caption}</p> : null}
             </div>
@@ -204,7 +205,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                 </p>
               ) : null}
               <div className="overflow-x-auto rounded-xl border border-border/70">
-                <table
+                <ReadableTable
                   className="min-w-full divide-y divide-border/70 text-left text-sm"
                   style={{ minWidth: `${Math.max(560, (block.columns.length + 1) * 160)}px` }}
                 >
@@ -234,7 +235,7 @@ export function EmergencyGuideBlockRenderer({ blocks }: { blocks: EmergencyGuide
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </ReadableTable>
               </div>
             </div>
           );

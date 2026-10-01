@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { sanitizeHTML } from '../../../../utils/sanitize';
 
@@ -113,7 +114,7 @@ function StructuredTable({
   return (
     <div className="my-3 overflow-hidden rounded-xl border border-border bg-background/70">
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[560px] border-collapse text-left text-sm">
+        <ReadableTable className="w-full min-w-[560px] border-collapse text-left text-sm">
           <thead className="bg-muted/80 text-xs uppercase tracking-wide text-muted-foreground">
             <tr>
               <th scope="col" className="w-[28%] px-4 py-3 font-semibold">
@@ -136,7 +137,7 @@ function StructuredTable({
               </tr>
             ))}
           </tbody>
-        </table>
+        </ReadableTable>
       </div>
     </div>
   );

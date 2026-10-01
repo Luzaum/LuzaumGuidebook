@@ -1,0 +1,276 @@
+CHAPTER 301
+•
+Chronic Kidney Disease
+2089
+eBooks.Health.Elsevier.com
+ACRONYMS
+ACEi angiotensin 
+converting enzyme 
+inhibitor
+ADH antidiuretic hormone
+ARB angiotensin receptor 
+blocker
+BP blood pressure
+BUN blood urea nitrogen
+Ca calcium
+CI confidence interval
+CKD chronic kidney disease
+CKD-MBD chronic kidney 
+disease-mineral bone 
+disorders
+EPO erythropoietin
+ESA erythrocyte-
+stimulating agent
+FGF23 fibroblast growth 
+factor 23
+FIV feline immunodeficien-
+cy virus
+GFR glomerular filtration 
+rate
+GI gastrointestinal
+HIF hypoxia-inducible factor
+hyperCa hypercalcemia
+hyperK hyperkalemia
+hypoCa hypocalcemia
+hypoK hypokalemia
+iCa ionized calcium
+ICGN immune-complex 
+mediated glomerular 
+nephritis
+IRIS International Renal 
+Interest Society
+K potassium
+KCl potassium chloride
+Mg magnesium
+PCV packed cell volume
+PO4 phosphate
+PRCA pure red cell aplasia
+PTH parathyroid hormone
+RAAS renin-angiotensin-
+aldosterone system
+RBC red blood cell
+RSHP renal secondary 
+hyperparathyroidism
+tCa total calcium
+TOD target organ damage
+UPCR urine protein-to-
+creatinine ratio
+US ultrasound
+USG urine specific gravity
+UTI urinary tract infection
+Chronic Kidney Disease
+Jessica M. Quimby
+OVERVIEW OF CHRONIC KIDNEY 
+DISEASE (CKD)
+DEFINITIONS AND CO-EXISTING 
+CONDITIONS
+C
+hronic kidney disease (CKD) is 
+defined as structural and/or func-
+tional abnormalities of one or 
+both kidneys that have been continuously 
+present for ≥3 months. CKD is usually 
+irreversible and progressive, even with 
+treatment. It is common for prerenal or 
+postrenal azotemia, or for active kidney 
+diseases, e.g., “acute-on-chronic kidney 
+disease,” to co-exist with CKD. In con-
+trast to CKD, many complications are 
+reversible (e.g., pyelonephritis, ureteral 
+obstruction, dehydration, etc.). There-
+fore, appropriate diagnostic workup and 
+assessment of all contributing factors 
+is important (ch. 299). After correcting 
+reversible primary diseases and/or pre-
+renal or postrenal conditions, further 
+improvement in kidney function may 
+not occur because compensatory and 
+adaptive mechanisms designed to sus-
+tain kidney function have largely already 
+occurred, promoting progressive loss of 
+remaining nephrons and kidney function.
+PREVALENCE AND AFFECTED 
+POPULATIONS
+Recent prevalence estimates of CKD in pri-
+mary care practice range from 0.5-3.74% in 
+dogs and 1.2-3.6% in cats.1-3 Age strongly 
+inuences prevalence; CKD is oen consid-
+ered a disease of older animals, particularly 
+in cats. It was estimated that 15-30% of cats 
+>15 years old had evidence of CKD,4 but a 
+more recent study suggested a prevalence of 
+80%.5 In that study, the prevalence was sig-
+nicantly higher than previously reported 
+even in younger cats (37.5% 0-4.9 years; 
+40.9% 5-9.9 years; 42.1% 10-14.9 years). 
+In another study of cats >9 years of age, 
+30.5% of cats developed azotemia within 12 
+months.6 A “renal disorder” was the most 
+common cause of death in cats >5 years old 
+and the most common cause of death in 
+Swedish insured cats dying before the age 
+of 12; incidences increase with age.7 8 Dogs 
+from the United Kingdom ≥12 years of age had 5.5 times greater 
+risk of having CKD than dogs 7 to 12 years old.3
+CAUSES OF CKD
+A DIAGNOSIS USUALLY MADE LATE IN THE DISEASE 
+PROCESS
+CKD in dogs and cats is usually diagnosed late in the disease 
+course, not until azotemia is present. Typically, these kidneys are 
+small because lost nephrons are replaced by brosis and chronic 
+inammation. Surviving nephrons have undergone compensa-
+tory modications, and progression due to maladaptive processes 
+may have occurred. As these lesions are non-specic, they fail to 
+provide much insight into the etiologic origin of injury. us, the 
+initial inciting cause of CKD is not usually determined, and likely 
+may be attributable to a series of renal insults over the life of the 
+pet as opposed to one specic cause.
+DOGS
+Canine CKD may begin due to any of a variety of familial, con-
+genital, or acquired conditions. Juvenile nephropathy (renal 
+dysplasia) is most likely in young animals (ch. 305). Tubuloint-
+erstitial nephritis tends to be found in older dogs, similar to cats 
+(ch. 303). Glomerular disease appears to be signicantly more 
+common in dogs than cats, likely accounting for the majority of 
+CKD (ch. 302). e proportion of dogs with CKD attributable to 
+glomerular disease is not known since renal biopsy is necessary 
+for diagnosis and there is inherent bias in dogs selected for biopsy. 
+In a retrospective study of 501 dogs with proteinuria, immune-
+complex mediated glomerular nephritis (ICGN) accounted for 
+48.1% of dogs biopsied and amyloidosis for 15.2%. e remaining 
+dogs had non-ICGN conditions: 20.6% had focal segmental glo-
+merulosclerosis (FSGS), 9% had non-ICGN glomerulopathy, 4.8% 
+had non-ICGN nephropathy, and 2.4% had tubulointerstitial dis-
+ease.9 Glomerular diseases may result from infectious diseases, e.g., 
+borreliosis (ch. 187), ehrlichiosis (ch. 193), anaplasmosis (ch. 193), 
+babesiosis (ch. 197), and leishmaniasis (ch. 197).10
+CATS
+Features seen histologically in cats with CKD most commonly 
+include tubulointerstitial inammation, tubular atrophy, and bro-
+sis, with secondary glomerulosclerosis. ese features are oen 
+described as the nal common pathway aer any one of many 
+possible renal insults. Specic renal diagnoses were made in only 
+∼16% of postmortem tissues from cats with CKD at rst opinion 
+clinics.11 Various etiologies for tubulointerstitial nephritis have 
+been proposed, e.g., age, viral infection (feline immunodeciency 
+virus [FIV] [ch. 198], feline morbillivirus [ch. 206]), extrarenal dis-
+ease (hyperthyroidism [ch. 287], dental disease [ch. 258], systemic 
+hypertension [ch. 236], heart disease [ch. 234]), environmental 
+CHAPTER 301
+
+SECTION XX
+•
+Renal Disease
+2090
+eBooks.Health.Elsevier.com
+factors (stress, vaccines [ch. 185], diet [chs. 148, 149, 158]), ischemia, 
+hypoxemia, and others.12 13 e majority of cats with CKD never 
+have a denitive cause identied. eir disease likely results from a 
+combination of factors that varies among individuals.12
+e role that tubular lipid may have in causing disease appears 
+to be unique to cats.14 15 Once tubular damage and cell death 
+occurs, lipid released into the interstitium may serve as a nidus 
+of inammation and subsequent brosis. Since the incidence of 
+feline CKD substantially increases with age, this process merits 
+special consideration. Not only does this substantiate the theory 
+that multiple small injuries to the kidney over the lifetime of the 
+cat culminate in clinical disease, but the aged kidney has increased 
+susceptibility to injury; changes within the kidney such as senes-
+cence and loss of telomere length, which have been documented 
+in feline CKD, mean that recovery and repair aer injury are less 
+eective.16 17
+STAGING CKD
+OVERVIEW
+Once the diagnosis of CKD has been conrmed and the dog 
+or cat is stable, International Renal Interest Society (IRIS) stag-
+ing should be performed. is four-tier system in cats and dogs 
+is based on renal function (Table 301.1). e system further 
+subclassies pets according to the magnitude of their proteinuria 
+and/or arterial blood pressure (BP), facilitating application of 
+appropriate guidelines for developing management strategies and 
+establishing prognosis.3 18 19
+ASSIGNING IRIS CKD STAGE
+Staging CKD is based on serum creatinine concentrations 
+(Table 301.1), the most commonly used estimate of glomeru-
+lar ltration rate (GFR) in dogs, cats, and humans. Since cre-
+atinine has limited specicity and sensitivity, staging should be 
+based on a minimum of 2 results obtained several weeks apart 
+when the dog or cat is fasted and well hydrated. Clinical status 
+should be considered when interpreting creatinine, other labo-
+ratory tests, and when planning treatment strategies. Variability 
+in results from dierent laboratories, patient-specic charac-
+teristics (e.g., breed, age, sex, body condition and lean body 
+mass), and transient prerenal or postrenal events can inuence 
+the creatinine. Reduced muscle mass, a common manifestation 
+of advanced CKD (muscle condition score charts are found 
+inside the covers; ch. 151), may substantially reduce creatinine 
+concentrations relative to true GFR, particularly in cats. IRIS 
+therefore suggests that symmetric dimethylarginine values may 
+be used to modify IRIS CKD staging in dogs and cats where 
+body muscle mass is markedly reduced (www.iris-kidney.com).
+TABLE 301.1
+IRIS CKD Staging in Dogs and Cats
+A. IRIS CKD Stage
+STAGE
+DOGS
+CATS
+Stage I
+Creatinine
+<1.4 mg/dL (<125 mcmol/L)
+<1.6 mg/dL (<140 mcmol/L)
+SDMA
+<18 ng/dL
+<18 ng/dL
+Stage II
+Creatinine
+1.4-2.8 mg/dL (125-250 mcmol/L)
+1.6-2.8 mg/dL (140-250 mcmol/L)
+SDMA
+18-35 ng/dL
+18-25 ng/dL
+Stage III
+Creatinine
+2.9-5.0 mg/dL (251-440 mcmol/L)
+2.9-5.0 mg/dL (251-440 mcmol/L)
+SDMA
+36-54 ng/dL
+26-38 ng/dL
+Stage IV
+Creatinine
+>5.0 mg/dL (>440 mcmol/L)
+>5.0 mg/dL (>440 mcmol/L)
+SDMA
+>54 ng/dL
+>38 ng/dL
+B. Substaging by Proteinuria
+URINE PROTEIN-TO-CREATININE RATIO
+SUBSTAGE
+DOGS
+CATS
+Proteinuric (P)
+>0.5
+>0.4
+Borderline proteinuric (BP)
+0.2-0.5
+0.2-0.4
+Nonproteinuric (NP)
+<0.2
+<0.2
+C. Substaging by Blood Pressure
+BLOOD PRESSURE SUBSTAGE
+SYSTOLIC BLOOD PRESSURE (mm Hg)
+RISK OF TARGET ORGAN DAMAGE
+Normotensive
+<140
+Minimal
+Prehypertensive
+140 to 159
+Low
+Hypertensive
+160 to 179
+Moderate
+Severe hypertensive
+≥180
+High
+CKD, Chronic kidney disease; IRIS, International Renal Interest Society; SDMA, symmetric dimethylarginine.
+Data from http://www.iris-kidney.com/pdf/_IRIS_Staging_of_CKD_.pdf. © Copyright  International Renal Interest Society.

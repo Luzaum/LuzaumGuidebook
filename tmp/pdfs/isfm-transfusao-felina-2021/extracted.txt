@@ -1,0 +1,1614 @@
+===== PAGE 1 =====\nJournal of Feline Medicine and Surgery (2021) 23, 410–432
+SPECIAL ARticle
+2021 ISFM Consensus
+Guidelines on the Collection
+and Administration of Blood
+and Blood Products in Cats
+Samantha Taylor Practical relevance: Blood and blood products are increasingly available for
+BVetMed(Hons), CertSAM, practitioners to use in the management of haematological conditions, and can be
+DipECVIM-CA, MANZCVS,
+FRCVS lifesaving and therapeutically useful for patients with anaemia and/or coagulopathies.
+Panel Chair* It is important for feline healthcare that donors are selected appropriately, and
+International Society of Feline
+transfusions of blood or blood products are given to recipients that will benefit from
+Medicine, Tisbury, UK
+them. Complications can occur, but can be largely avoided with careful donor management
+Eva Spada
+DMV, PhD and recipient selection, understanding of blood type compatibility, and transfusion monitoring.
+Veterinary Transfusion Research Clinical challenges: Feline blood transfusion, while potentially a lifesaving procedure, can also be
+Laboratory (REVLab),
+detrimental to donor and recipient without precautions. Cats have naturally occurring alloantibodies to
+Department of Veterinary
+Medicine (DIMEVET), red cell antigens and severe reactions can occur with type-mismatched transfusions. Blood transfusions
+University of Milan, Italy can also transmit infectious agents to the recipient, so donor testing is essential. Finally, donors must be
+Mary Beth Callan in good health, and sedated as appropriate, with blood collected in a safe and sterile fashion to optimise
+VMD, DACVIM (SAIM)
+the benefit to recipients. Transfusion reactions are possible and can be mild to severe in nature.
+Department of Clinical Sciences
+and Advanced Medicine, Autologous blood transfusions and xenotransfusions may be considered in certain situations.
+School of Veterinary Medicine, Evidence base: These Guidelines have been created by a panel of authors convened by the International
+University of Pennsylvania, USA
+Society of Feline Medicine (ISFM), based on available literature. They are aimed at general practitioners to
+Rachel Korman
+provide a practical guide to blood typing, cross-matching, and blood collection and administration.
+BVSc, MANZCVS (Internal
+Medicine), FANZCVS
+(Feline Medicine) Keywords: Transfusion; plasma; xenotransfusion;
+Cat Specialist Services, transfusion reaction; blood type; cross-match Ethical considerations
+Underwood, Queensland,
+Australia ISFM have produced these Guidelines to improve
+Ellie Leister Introduction the clinical approach to blood product collection
+BVSc(Hons), FANZCVS and administration. However, therapy with blood
+(Emergency & Critical Care)
+products is not just a clinical procedure. There are
+Pet Intensive Care Unit, Although feline blood transfusions are
+Underwood, Queensland, important ethical considerations with respect to
+infrequently performed in primary care vet‑
+Aust ralia
+erinary practice, they can be lifesaving.1,2.
+both the harvesting of blood from the donor and
+Paulo Steagall the long-term benefit to the recipient. See the
+MV, MSc, PhD, Dipl ACVAA Availability of donors has limited the utility
+Appendix on page 432 for further discussion.
+Department of Clinical Sciences, of this technique, but with the growth of
+Faculty of Veterinary Medicine,
+blood banks providing access to feline blood,
+Université de Montréal,
+QC, Canada the procedure may become more routine. It is Feline blood types
+Remo Lobetti important that veterinary practitioners select
+BVSc, MMedVet, PhD, DECVIM appropriate recipients and donors (or stored Alloantigens
+Bryanston Veterinary Hospital,
+blood) and administer blood correctly and Blood types arise due to genetically deter‑
+Johannesburg, South Africa
+with monitoring to mitigate the risks. mined antigenic markers present on the sur‑
+Mayank Seth
+BSc(Hons), BVetMed(Hons), These Guidelines are written to provide face of red blood cells (RBCs). Blood type
+DACVIM, DipECVIM‑CA, information for practitioners on blood types antigens are alloantigens, as they exist in alter‑
+MRCVS
+and cross‑matching, indications for transfu‑ native (allelic) forms in different cats, and can
+Dick White Referrals,
+Six Mile Bottom, UK sion, donor management, recipient prepara‑ induce an immune response when RBCs of
+Séverine Tasker tion, blood/blood product administration, and one blood type are transferred to a cat with a
+BSc, BVSc(Hons), PhD, DSAM, monitoring and potential complications. different blood type.
+DipECVIM‑CA, FHEA, FRCVS
+One blood group system, the AB system,
+Bristol Veterinary School,
+University of Bristol, Langford, UK; has been extensively defined in cats. Within
+and Linnaeus Gr oup, Shirley, UK the AB blood group system there are three
+*Corresponding author: blood type phenotypes, namely type A, type B
+sam.taylor@icatcare.org
+and type AB:
+< Blood type A is common. N‑glycolyl ‑
+410 doi: 10.1177/1098612X211007071
+JFMS CLINICAL PRACTICE © iSFM and AAFP 2021\n\n===== PAGE 2 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Table 1 Blood types reported in different geographical locations in different breeds
+of cat in published studies
+Country/regional source Number of
+of data (reference) Breed cats Type A % Type B % Type AB %
+UK3 Non-pedigree 139 87.1 7.9 5.0
+British Shorthair 121 39.7 58.7 1.6
+Birman 24 62.5 29.2 8.3
+Blood type
+Persian 17 88.2 11.8 0
+prevalence
+Other pedigrees 45 77.8 6.7 15.5
+UK4 Non-pedigree 105 67.6 30.5 1.9
+varies
+Siamese 13 100.0 0 0
+geographically,
+Other pedigrees 38 76.3 21.1 2.6
+UK5 Bengal 100 100.0 0 0 with type A
+Denmark6 Non-pedigree 105 98.1 1.9 0
+being the most
+Persian 56 96.4 3.6 0
+British Shorthair 30 66.7 33.3 0 common
+Abyssinian 20 100 0 0
+worldwide.
+Other pedigrees 33 90.9 9.1 0
+Australia7 Non-pedigree 355 62.0 36.0 1.6
+Siamese 12 100.0 0 0
+Devon Rex 70 45.0 54.0 1.4
+British Shorthair 8 38.0 62.0 0
+New Zealand8 Non-pedigree 245 70.6 13.9 0.8
+France9 Non-pedigree 320 83.8 14.4 1.9
+Pedigree 37 89.2 10.8 0
+Central Italy10 Non-pedigree 483 89.8 7.0 3.1
+North Italy11 Non-pedigree 233 91.0 5.2 3.8
+South Italy11 Non-pedigree 215 77.2 12.1 10.7
+Italy12 Ragdoll 61 77.1 4.9 18.0
+neuraminic acid is the alloantigen on the alloantigens of another cat. Kittens develop
+RBC surface; Blood typing these antibodies at 6–8 weeks of age. In the
+< Blood type B is less common overall, but UK, for example, over 70% of type A cats
+is essential
+common in some pedigree breeds (eg, British have anti‑B alloantibodies,13 which are mostly
+Shorthair, Birman, Devon Rex). N‑acetyl ‑ to avoid present at low concentrations, while all type B
+neuraminic acid is the alloantigen on the cats have anti‑A alloantibodies, often present
+RBC surface; potentially at high concentrations. In a report from the
+< Blood type AB is rare. N‑glycolyl‑ USA, all type A cats had anti‑B alloantibod‑
+fatal
+neuraminic acid and N‑acetylneuraminic acid ies.14 Type AB cats never have alloantibodies
+are the alloantigens on the RBC surface. transfusion to either type A or type B antigens. The reac‑
+Blood type prevalence varies geographically tion between the blood type alloantigens and
+(see Table 1). Type A is the most common reactions. any existing alloantibodies is observed during
+worldwide and in some breeds 100% of cats cross‑matching of donor and recipient blood.
+are believed to be type A (eg, Siamese4). The Alloantibodies are responsible for potential‑
+prevalence of type B is much lower than type ly fatal blood transfusion reactions that can
+A but it has been reported to be as high as 36% arise even when cats undergo their first blood
+in non‑pedigree cats in Australia,7 and some transfusion, as they are already present in the
+breeds can contain high numbers of type B cats cat’s circulation, ready to destroy RBCs of a
+(especially the British Shorthair3,6). Type AB is
+much less common. Blood typing is essential
+to avoid potentially fatal transfusion reactions. Type-compatible blood
+Donor and recipient cats must always be blood typed before transfusion.
+Alloantibodies
+Type-compatible blood should be administered – ie, type A blood is given to
+In contrast to dogs, cats can possess naturally
+type A cats, type B blood to type B cats, and (if possible) type AB blood to
+occurring alloantibodies against the ‘foreign’
+type AB cats. For type AB cats, if type AB blood is not available, type A blood
+(non‑self) alloantigen that they are lacking.
+(or ideally just the type A RBCs following separation) may be given.
+These alloantibodies will recognise the
+411
+JFMS CLINICAL PRACTICE\n\n===== PAGE 3 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Blood typing (phenotyping)
+< Blood typing can be performed by submitting anticoagulated test also appears to be reliable.19 A more recent publication,
+blood to a commercial laboratory or by using an in-clinic test focusing on the Lab.Test A+B, found it to outperform the
+kit. RapidVet-H cards;20 the study also confirmed that the QuickTest
+< Different kits are available for in-clinic feline blood typing; A+B performed well on blood that had been stored in the fridge
+examples useful for general practitioners include RapidVet-H and at room temperature. A recent study confirmed that the
+cards (DMS Laboratories) based on agglutination (images [a] Lab.Test A+B was very reliable, performing as well as flow
+and [b] below)17, RapidVet-H immunochromatographic (IC) tests cytometry in the blood type phenotyping of a sample of 49 cats
+(DMS Laboratories) (image [c]) and the QuickTest A+B (Alvedia) (34 A, 13 B and two AB).21
+(images [d–i] on page 413),17 also based on IC methodology. In < The QuickTest A+B is a migration IC methodology test strip
+addition, the Lab.Test A+B (Alvedia) is similar to the QuickTest cartridge (images [d–i] on page 413) that uses monoclonal
+A+B but can be run on multiple (up to 20) samples and requires antibodies (further details not given) to differentiate the blood
+a microplate, pipette and test tube to be provided by the user. A antigens, whereas the RapidVet-H cards use a murine mono-
+gel tube in-clinic blood typing kit is also available (RapidVet-H clonal antibody as the anti-A reagent and a lectin from Triticum
+Gel; DMS Laboratories) that relies on agglutination; this method vulgaris (wheat germ) as the anti-B reagent. These different
+includes a step that requires use of a specific centrifuge. reagents may explain why the RapidVet-H cards incorrectly
+< One study found that the in-clinic QuickTest A+B performed describe blood type in some cases, with one study showing that
+slightly better than the RapidVet-H card test, and may be more the cards were found to sometimes mistype blood type AB cats
+reliable in cats with autoagglutination,18 but the RapidVet-H IC as type B and occasionally blood type A cats as type AB.20
+In-clinic blood typing test kits – RapidVet-H
+(a) RapidVet-H cards (DMS C D (c) RapidVet-H
+Laboratories) are in-clinic kits E immunochromatographic (IC) tests
+that use a murine monoclonal (DMS Laboratories) are another
+antibody as the anti-A reagent in-clinic feline blood typing kit; this
+in the type A well and a lectin two-part image shows a test result
+from Triticum vulgaris as the for a type B cat. The test is based
+anti-B reagent in the type B on sample migration along a
+well. The top well is an B membrane that contains bands
+autoagglutination saline loaded with monoclonal antibodies
+screen that does not contain for antigens A (type A) and B (type
+any anti-A or anti-B reagents B), and a control band (control).
+– this control well is to ensure One drop of feline EDTA patient
+the cat’s blood is not whole blood (A) is added to the
+agglutinating spontaneously, tube containing the diluent (B) and
+as this would result in a false is mixed well using one of the
+A
+type AB result being read. pipettes included in the kit (C).
+Any autoagglutination in the Using the other new pipette (D),
+control well would invalidate three drops of the diluted blood
+the test result. In this image and three drops of the included
+the cat being tested is blood buffer (E) are placed into the
+type A, as indicated by the central cartridge sample port (F).
+a agglutination in the type A c c A test result is defined by the
+well only appearance of a clearly visible red
+vertical indicator line filling at least
+(b) To perform the RapidVet-H card blood
+25% of one, or both, of the type A
+typing test to obtain a result as in image
+or B viewing ports within 10 mins
+[a], one drop of diluent (provided with the
+of starting the test, along with the
+kit) and one drop of well-mixed feline
+appearance of a horizontal line in
+EDTA patient whole blood is placed into F the control band; the latter
+each of the wells and mixed with a
+validates the test result. A timer
+wooden stirrer (also provided with the
+is useful for accurate timing
+kit), as shown, for 10 s per well. A new
+stirrer is used for each well. A further
+drop of diluent is then added to the type
+A well only and the card is lifted and
+gently rotated and rolled around to allow
+complete mixing before reading the
+results; results are read within 2 mins
+of having added the diluent and blood. Continued on page 413
+b
+A timer is useful for accurate timing
+different blood type phenotype. These allo ‑ Non-AB feline blood groups
+antibodies are also responsible for neonatal Evidence published in 200722 suggested that
+isoerythrolysis,15,16 a cause of neonatal death. other (non‑AB) blood group systems existed
+The severity of a blood transfusion reaction in cats because transfusion reactions have
+depends on the quantity (ie, higher titres or occurred in cats given AB‑matched blood
+concentrations are worse) and nature (eg, transfusions. The study from the USA report‑
+strongly agglutinating) of any alloantibodies ed the absence of a novel feline RBC antigen
+present in the recipient or donor. named Mik in three of 65 type A cats tested,
+412
+JFMS CLINICAL PRACTICE\n\n===== PAGE 4 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Blood typing (phenotyping)
+Continued from page 412
+< An automated method for blood typing is available (QuickVet < One study found that some feline leukaemia virus (FeLV)-
+Feline Blood Typing Test), for use with the QuickVet Analyzer infected anaemic cats were mistyped using multiple blood typing
+(Zoetis ApS). The QuickVet Diagnostic System consists of an methods.18
+analyser and single-use disposable test cartridges based on < Cats with less common blood types (type AB and type B)
+capillary-driven microfluidic technology. may be mistyped by commercially available in-clinic blood typ-
+< If a sample to be blood typed is from a cat with severe ing methods and any type AB and B results should ideally be
+anaemia (packed cell volume [PCV] <14%), the RBCs can be confirmed at an external laboratory by a method that uses anti-
+concentrated by centrifugation of the blood (2–3 mins, remove body testing or genetic screening. However, a ‘back typing’
+some of the plasma supernatant and resuspend the remaining technique for antibody screening can be used in-clinic to con-
+RBCs in the remaining plasma supernatant) before repeating the firm a type B: EDTA blood from the suspected type B cat is cen-
+test; this can be useful if insufficient RBCs reach the top of the trifuged for 2 mins; 30 µl of plasma is removed and mixed with
+test strip due to the low number present in a very anaemic 15 µl of EDTA blood collected from a known type A cat on a
+sample. In a similar way, if agglutination of the sample precludes glass microscope slide and observed for agglutination; if posi-
+movement of the RBCs along the strip, the RBCs can be washed tive, this confirms the B blood type, as the plasma of the type B
+in phosphate-buffered saline and the test repeated. cat contains alloantibodies that agglutinate the type A RBCs.
+In-clinic blood typing test kits – QuickTest A+B
+Buffer d e f
+Instruction manual
+Plastic
+well
+Plastic
+device
+with
+membrane
+dipstick Blood collector strip
+(f) The blood collector strip
+(e) After writing the name of is dipped into the blood tube
+(d) The QuickTest A+B (Alvedia) uses monoclonal antibodies on a migration the patient and the date on or rubbed directly on the
+paper strip to determine blood type. The kit comes with all the equipment the plastic device, three drop of blood. The extremity
+needed to test a sample of feline EDTA whole blood taken from the patient, drops of buffer are added of the blood collector strip
+but a timer is also useful to have available into the well must be completely red
+(h) The plastic device is separated into two parts by pulling out the
+g h membrane holder; the legs of the membrane holder are then inserted into
+the holes beside the well to allow the migration. The membrane holder
+should remain in this position until the blood suspension is soaked up
+by the membrane and the control line becomes clearly visible
+i
+(g) The extremity of the (i) The clear plastic part of the membrane holder is put back in place so the
+blood collector strip is result can be read
+dipped into the well
+and mixed gently for 7 s Images [d–i] courtesy of Alvedia
+in association with the presence of naturally found no evidence of anti‑Mik alloantibodies
+occurring anti‑Mik alloantibodies, which in the cats sampled, as no positive cross‑
+mediated a clinically significant transfusion matches between AB‑matched blood samples
+reaction despite the blood donor and recipient were found in transfusion‑naive cats.
+cat being AB‑matched.22 However, one study Other studies have, however, documented
+in UK cats,23 and another in German cats,24 the presence of positive cross‑matches between
+413
+JFMS CLINICAL PRACTICE\n\n===== PAGE 5 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+AB‑matched blood samples,21,25,26 suggesting Cross-matching
+the presence of non‑AB blood group systems, Cross‑matching can be performed in‑clinic or
+although the clinical significance of these is not at an external laboratory; the latter is ideal as
+always clear and tests for Mik and other RBC the test is complex and takes time but obvious‑
+antigens are not available commercially. In the ly this results in a delay in obtaining results.
+most recent study,27 type A cats In‑clinic cross‑matching kits are
+were evaluated for naturally available. Based on all existing
+When to cross-match
+occurring non‑AB alloantibodies studies, the clinical effectiveness
+In emergency situations cross-matching may not be
+by cross‑matching and at least and need for cross‑matching
+possible. However, it is strongly recommended that
+7% of the cats had incompatible before a first transfusion remains
+cross-matching is performed before a trans fusion
+cross‑matching, documenting the controversial. However, given that
+when the recipient has an unknown trans fusion
+presence of naturally occurring transfusion‑naive cats may have
+history or has had a previous transfusion reaction or
+alloantibodies. Five distinct RBC incompatible major cross‑matches,
+has received a transfusion 2 or more days earlier.
+antigens were hypothesised to be cross‑matching, as well as blood
+The 2-day timeline stipulated is because incompat-
+present outside of the AB blood typing, is recommended by some
+ibilities have been identified by major cross-match
+group system and one of these was before each transfusion where
+testing as early as 2 days after a first whole blood
+thought to correspond to the pre‑ possible in cats,27–29 although
+cross-match compatible transfusion.24
+viously described Mik antigen.27 others have acknowledged that
+t
+How to perform in-clinic cross-matching
+Cross-match methodology
+< Obtain 1 ml of anticoagulated blood (EDTA tube) and 1 ml of non-anticoagulated blood (plain tube) from
+each of the donor and recipient. Label the tubes.
+< Centrifuge (3000 rpm for 5 mins) and separate plasma and serum from RBCs in both tubes. Discard the
+plasma if not required for other diagnostic investigations. Store serum in a separate tube, and label. The reaction
+< Wash EDTA RBCs – add 2–3 ml of normal saline solution to the RBCs, mix gently, centrifuge (3400 rpm
+between the
+for 1 min) and remove the supernatant saline. Repeat twice.
+< After the third wash, decant the supernatant and resuspend the RBCs with saline to give a 4% RBC blood type
+suspension (0.2 ml RBCs with 4.8 ml saline).
+< Label four tubes and place the following into each: alloantigens
+and any
+Major cross-match One drop of recipient serum and one drop of donor RBC suspension
+Minor cross-match One drop of donor serum and one drop of recipient RBC suspension
+existing
+Recipient control One drop of recipient serum and one drop of recipient RBC suspension
+Donor control (optional) One drop of donor serum and one drop of donor RBC suspension alloantibodies
+is observed
+< Incubate the tubes for 15 mins at 37°C
+< Centrifuge the tubes for 15 s (3400 rpm) during
+< Read the tubes macroscopically and microscopically
+cross-matching
+Macroscopic cross- of donor and
+match reading
+recipient blood.
+In a compatible reaction
+there should be no
+clumping, haemolysis or
+agglutination present;
+when the tubes are gently
+rolled and rotated, red
+cells should be able to
+float off freely from the
+centrifuged ‘pellet’ of
+RBCs. The supernatant
+should be free of haemol-
+ysis (Figure 1). ++ ++++ RBCs float
+Agglutination – off freely
+both incompatible Compatible
+Figure 1 In-clinic cross-matching – macroscopic appearance. The tube on the right shows
+a compatible cross-match reaction where the red blood cells (RBCs) float off freely from the
+centrifuged ‘pellet’ of RBCs when the tube is rotated and rolled. The other two tubes show Continued on
+incompatible cross-match reactions with different grades of RBC agglutination (++ and ++++)
+page 415
+414
+JFMS CLINICAL PRACTICE\n\n===== PAGE 6 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+the strength of evidence for this is weak.30 A before feline blood transfusions was common‑
+recent Australian study, surveying primarily ly performed; cross‑matching alone by 26% of
+general veterinary practitioners, reported that respondents, blood typing alone by 27.6%, and
+compatibility testing, including cross‑matching, both by 34.1% of respondents.31
+t
+How to perform in-clinic cross-matching
+Continued from page 414
+Microscopic cross-match reading
+A drop of the RBC/serum mixture from the tubes is placed on a microscope slide, a cover slip is
+applied and the slide is viewed microscopically (within 1 min of placing the blood mixture on the slide).
+The RBCs should be visible as individual cells and not in clumps. Rouleaux formation, where RBCs
+stick together to resemble stacks of coins, can look macroscopically like agglutination but can be
+differentiated on microscopic examination (Figure 2). Rouleaux formation (Figure 2a) is not a clinical
+concern, while agglutination (Figure 2b) indicates an incompatible cross-match reaction.
+a b
+Figure 2 In-clinic cross-matching – microscopic appearance. (a) Microscopic appearance of rouleaux, in which the
+RBCs resemble stacks of coins; this is not of clinical concern and does not indicate a cross-match incompatibility.
+(b) Microscopic appearance of agglutination showing a disorganised mass of RBCs in clumps, indicating an
+incompatible cross-match reaction. Images courtesy of Nic Ilchyshyn, Dick White Referrals, Six Mile Bottom, UK
+NB. Others have modified the above protocol to use plasma rather than serum (as both can be used for
+cross-matching32), along with a 3–5% suspension of RBCs in phosphate-buffered saline (rather than saline),
+and by performing just the recipient control test and not the donor control.24 The study describing this
+modified method also reported that cross-matching could be carried out with as little as 250 µl (0.25 ml)
+of blood,24 which is encouraging as minimising the amount of blood taken from anaemic cats is important.
+Use of in-clinic cross-match kits
+In-clinic cross-match kits are available such as the RapidVet-H Major and Minor Cross-match kits (DMS
+Laboratories), which use serum, and the QuickTest XM EmMaTest or Lab.Test XM (both Alvedia), which use
+plasma. A feline Gel Test (Alvedia), which uses plasma, is also available for cross-matching, but this
+requires the mandatory use of a specific centrifuge. With all such kits, instructions should be carefully
+followed. Nonetheless, studies have yielded variable results with different methods, and it is difficult to
+compare results.27
+Emergency cross-matching
+If cross-matching is required in an emergency, the following method can be used, which omits the washing of RBCs described above:
+< EDTA-anticoagulated blood is collected from donor and < Minor cross-match: one drop of recipient RBCs is mixed with
+recipient, and then centrifuged to separate plasma and RBCs two drops of donor plasma on a glass slide and examined as
+< Major cross-match: two drops of recipient plasma and one described above
+drop of donor RBCs are placed on a glass microscope slide and < Controls should also be performed using recipient plasma
+the slide is examined macroscopically and microscopically for the and RBCs and, if possible, donor plasma and RBCs, and
+appearance of agglutination within 1 min, as described above. examined microscopically
+Agglutination must be differentiated microscopically from rouleaux < Note that drying out of blood on the slide can result in
+formation, as described above for routine cross-matching rouleaux formation but this takes >5 mins to occur
+415
+JFMS CLINICAL PRACTICE\n\n===== PAGE 7 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Selecting a donor Feline leukaemia virus/feline
+immunodeficiency virus
+Infectious disease screening Both FeLV and feline immunodeficiency
+Risks from transfusion include the trans‑ virus (FIV) can be transmitted by blood
+mission of infectious agents from donor transfusion and thus donor cats need to
+to recipient, which can be largely avoid‑ CAT CARER GUIDE be negative for these agents.40 Antigen
+ed through donor selection and screen‑ Information for owners of both donor and tests for FeLV are commonly available,
+recipient cats – discussing what to expect,
+ing. Such a process must inevitably vary such as ELISA or IC in‑clinic tests, but
+and questions and concerns – has been
+between countries/regions and prac‑ proviral DNA testing (by PCR) should
+produced by ISFM to accompany these
+tices, and will depend on locally endem‑ Guidelines. It is available to download be performed, if at all possible, as
+ic diseases, the practicalities of selecting as supplementary material transmission of FeLV infection through
+donors that do not carry them and the (see pages 428–429), and also at: transfusion of FeLV provirus positive, anti‑
+icatcare.org/advice/
+cost/availability of screening compared with gen negative blood (eg, PCR positive, ELISA
+cat-carer-guides.
+the risk of not having any available blood. negative) has been documented.41
+In addition to the considerations above, indi‑ Antibody tests for FIV are commonly avail‑
+vidual donor factors such as indoor/outdoor able as ELISA or IC in‑clinic tests, too, and cats
+status, ectoparasite control and time of last test‑ should be negative for FIV antibody before
+ing will influence the likelihood of infectious being used as donors. Although certain FIV
+agent presence. These factors will in turn deter‑ antibody tests may be able to differentiate
+mine which agents should be screened for, the true FIV infected cats from those cats that
+most appropriate methodology and also the have been vaccinated for FIV (in countries
+required frequency, which may be deemed to where FIV vaccination is, or has been, avail‑
+be annually, or at the time of every blood dona‑ able for use in cats), it is recommended that
+tion if there is a high risk of novel exposure or only FIV antibody negative cats are used as
+intermittent circulation of a pathogen.33,34 blood donors due to the potential for confu‑
+sion in interpretation of test results.42
+Core infectious agents to test donor cats for
+Haemotropic mycoplasmas Additional agents to consider testing donor
+The pathogenic epierythrocyte parasitic bacteri‑ cats for
+um Mycoplasma haemofelis can be transmitted by Anaplasma species
+blood products, although it appears to be inac‑ Anaplasma phagocytophilum can cause illness in
+tivated during storage of whole blood for cats, and can be transmitted by blood inocula‑
+1 week.35 Blood smear evaluation is insensitive tion and exist as a persistent infection.43,44 Donor
+for diagnosis and also lacks specificity, and thus cats with potential tick exposure (particularly
+the diagnostic test of choice for screening blood Ixodes ricinus) from endemic areas should ideal‑
+donors is PCR. PCR testing for ‘Candidatus ly be screened by serology and PCR, if available.
+Mycoplasma haemominutum’ (which may Seropositive, PCR negative cats may be used in
+survive for a week in stored blood35) and endemic regions if no other suitable donor can
+‘Candidatus Mycoplasma turicensis’ can also be be identified. Infection with Anaplasma platys
+considered; however, as these agents are of has been documented in cats,43 and so cats
+lower pathogenicity,36 donors may not be living in areas endemic for Rhipicephalus species
+excluded if positive for these organisms if the ticks should be screened for this agent by PCR.
+donor pool is very limited. Ideally, howe ver,
+cats should be negative for these agents, too. Cytauxzoon felis, Babesia felis, Ehrlichia canis,
+Leishmania infantum and Neorickettsia risticii
+Bartonella species These are all vector‑borne agents,43–49 and may
+Numerous Bartonella species can be present in be transmissible by blood products. Although
+the blood of cats and have been associated pre‑donation physical examination and blood
+with several clinical conditions.37 Bartonella smear examination should minimise transmis‑
+henselae has been shown to survive in stored sion risk, the optimal standard would be for
+blood.38 Donors should ideally be serology donor cats to be negative by PCR, if available,
+and PCR negative for Bartonella species for these agents if living in endemic areas.
+but seropositivity may be common in
+endemic areas and sensitive testing methods Other infectious agents
+are not always readily available. Seropositive Screening for coronavirus, Rickettsia felis and
+cats may have intermittent bacteraemia,39 Toxoplasma gondii is not recommended for
+but can be considered for donation if PCR donor cats. Transmission of these agents by
+negative. blood products has not been documented.
+Risks of transmission of infectious agents from donor to recipient
+can be largely avoided through careful donor selection and screening.
+416
+JFMS CLINICAL PRACTICE\n\n===== PAGE 8 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Donor characteristics t
+Ideal donor selection criteria
+Donors should be healthy, and between 1 and
+8 years old, with a lean body weight above < Between 1 and 8 years of age
+4.5 kg. They should be of calm temperament < Lean body weight above 4.5 kg
+and easy to handle to reduce sedation require‑ < Calm temperament
+ments. All applicable vaccinations and parasite < Up to date with relevant vaccination, worming and ectoparasite
+control should be current and donors should treatments
+ideally live indoors without recent introduc‑ < No current medications
+tion of other cats to the household, to reduce < Ideally living indoors
+their exposure to infections. No other recent < No history of having received a transfusion
+medications should have been given and they < Annual haematology and serum biochemistry screening within reference
+should never have received a transfusion nor intervals
+be currently pregnant. Cats that have previous‑ < FeLV antigen and FIV antibody testing negative (can be done in-clinic)
+ly had a litter may still be donors. and FeLV provirus PCR negative
+Annual health screening of potential blood < Haemotropic mycoplasma and Bartonella species PCR negative
+donors, including haematology and serum < Negative for vector-borne pathogens in endemic areas
+biochemistry profiles, is recommended. In
+addition, a complete history and physical
+examination, as well as determination of
+packed cell volume (PCV) or haemoglobin example, with anaemia due to haemolysis
+concentration, should be completed before rather than blood loss.
+each blood collection. The decision to administer an RBC product
+Occult cardiomyopathy is excluded with transfusion is frequently based on measure‑
+echocardiography screening by some clini‑ ment of the cat’s PCV, haematocrit or
+cians prior to allowing cats to join a donor haemoglobin concentration. However, a
+programme, given that up to 30% of cats with ‘transfusion trigger’ or threshold PCV below
+cardiac disease will not have a murmur.50 which an RBC transfusion is administered has
+However, others would omit echocardiogra‑ not been clearly defined in human or veteri‑
+phy and exclude cats with murmurs, gallop nary medicine, and accompanying clinical
+rhythms or arrythmias from donation, or signs are very important to consider in decid‑
+perform quantitative NT‑proBNP serum test‑ ing if a transfusion is required. In two studies
+ing, which has been shown to reliably dis‑ involving RBC transfusions in more than
+criminate normal cats from those with occult 265 cats, the pre‑transfusion PCV was 15%
+cardiomyopathy.51 (median value25) and 17% (mean value26),
+with a range of 5–40%. In some cats with
+Indications for blood transfusion When to consider peracute blood loss and hypovolaemia, RBC
+an RBC
+transfusions may be indicated even though
+transfusion
+Due to restrictions on storage of animal blood, their PCV is normal. These patients will pre‑
+The decision to
+most cats in the UK and Europe in need of a dictably develop a low PCV following fluid
+transfuse RBC
+blood transfusion will receive fresh whole resuscitation with asanguineous fluids.
+products is based
+blood (FWB), which contains all of the blood Ineffective erythropoiesis and blood loss are
+on several factors
+components: RBCs, platelets, coagulation fac‑ the most common general causes of anaemia
+in addition to PCV,
+tors and plasma proteins. However, in coun‑ reported in cats receiving RBC transfusions,
+including the onset
+tries where blood storage is available, feline with haemolysis noted less frequently in approx‑
+FWB donations are processed into packed red of anaemia (if acute imately 5–25% of cats.25,26,29 Underlying condi‑
+in nature, there may
+blood cells (pRBCs) and fresh‑frozen plasma tions frequently associated with development
+be more of a need
+(FFP) components. The use of these blood of non‑regenerative anaemia in cats, and the
+compared with
+components has many advantages including potential need for an RBC transfusion, include
+chronic-onset
+extending resources, allowing specific replace‑ chronic kidney disease, lymphoma, systemic
+anaemia), presence
+ment therapy, and potentially reducing the inflammatory disease, infectious diseases, bone
+number of transfusion reactions. of ongoing RBC losses marrow disorders52 and chronic unspecified
+and, most importantly, diseases.29 An often‑overlooked factor con‑
+RBC products the clinical signs of the tributing to development of anaemia in hospi‑
+patient. Tachycardia,
+RBC products, namely FWB and pRBCs, talised critically ill cats is repeated phlebotomy
+bradycardia, bounding
+increase the oxygen‑carrying capacity of the for blood sampling, with 74% of non‑anaemic
+peripheral pulses,
+blood and thereby improve oxygen delivery cats in one intensive care unit population going
+collapse, lethargy,
+to tissues. While FWB and pRBC transfusions on to develop anaemia during the hospitalisa‑
+can be used interchangeably in most anaemic panting and weakness tion period.53 In this study, cats that required a
+are all signs that
+cats, administration of pRBCs would be pRBC transfusion had significantly more daily
+should prompt
+preferable to FWB for those, for example, with blood samples taken (median 3 blood samples,
+consideration of an
+underlying cardiac disease to help avoid range 1–6) than cats that did not require a trans‑
+circulatory overload, as well as for those, for RBC transfusion. fusion (median 2 blood samples, range 1–4).53
+417
+JFMS CLINICAL PRACTICE\n\n===== PAGE 9 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Plasma products replacement of von Willebrand factor or factor
+Plasma separated from RBCs within 8 h of VIII or IX in cats with VMD, or haemophilia A
+blood collection is referred to as fresh plasma, or B, respectively, that are experiencing bleed‑
+but in countries where stored veterinary blood ing, though FWB would be an alternative if
+products are available, fresh plasma is more fresh plasma or FFP was not available or the
+often frozen after preparation and stored (at cat was also anaemic.
+–20° to –30°C) for up to 1 year; this type of The effect of plasma on colloid osmotic
+plasma is referred to as fresh‑frozen plasma pressure is less than that of synthetic colloids;
+(FFP). Fresh plasma and FFP contain haemo‑ therefore, plasma is less effective for volume
+static proteins (coagulation factors, von expansion.62
+Willebrand factor, anticoagulant proteins and
+fibrinolysins), albumin and immunoglobulins. Platelet products
+The main indication for use of fresh plasma Owing to technical challenges associated with
+or FFP is bleeding due to inherited or acquired preparing platelet‑rich plasma from a small
+coagulopathies, but use of these products has volume feline FWB unit, cats in need of a
+also been reported in cats with hypotension, platelet transfusion generally are administered
+liver disease, neoplasia and sepsis.54 Although FWB, although this will not provide adequate
+the benefit of prophylactic administration of platelets to correct thrombocytopenia.
+plasma to cats with a coagulopathy (but not There are few indications for platelet transfu‑
+showing clinical signs of bleeding) under‑ sions in cats, but they include uncontrolled or
+going an invasive procedure is unclear, it life‑threatening haemorrhage (eg, pulmonary
+was reported to be the main reason for FFP haemorrhage) with thrombocytopenia or
+transfusions in cats in another study.55 thrombopathia, and possibly massive transfu‑
+Anticoagulant rodenticide toxicity is uncom‑ sion (rare, but is when a high number of pRBCs
+mon in cats compared with dogs, but may have been given, which can cause a dilutional
+occur after consumption of poisoned prey, effect on the recipient’s clotting factors and
+and FFP as well as FWB may be included in platelets). While platelet disorders are uncom‑
+the treatment protocol.55–57 mon in cats, primary immune thrombocytope‑
+Hereditary haemostatic disorders are nia can lead to severe blood loss anaemia,
+diagnosed infrequently in cats. There are two which can be managed with FWB transfu‑
+case reports of type 3 von Willebrand sions.63 Cats with bleeding secondary to a
+disease (VWD)58,59 and sporadic reports of thrombopathia typically require administra‑
+haemophilia A and B55,60,61 causing bleeding in tion of functional platelets (for practical rea‑
+cats. Plasma would be appropriate to provide sons in the form of FWB) to control bleeding.64
+t
+Xenotransfusion
+Xenotransfusion is defined as the transfer of blood from one destruction of donor RBCs and a late haemolytic reaction, and
+species to another. Successful administration of whole blood or hence a shorter life span of the donor canine RBCs compared
+pRBCs from dogs to cats has been documented and can be with the life span of appropriately typed feline RBCs (30 days69).
+performed if absolutely necessary but only as a single, one-off Any subsequent repeat transfusion of canine blood to the cat
+transfusion.65,66 In some circumstances, canine blood may be would result in a severe transfusion reaction, anaphylaxis and
+more readily available than feline blood, and also in larger likely death.65 Reported short-term complications following xeno-
+volumes, leading to its occasional use.31 transfusion are similar to cat-to-cat transfusions (allotransfu-
+Potential indications for xenotransfusion include a previous sions), with minor febrile non-haemolytic transfusion reactions
+transfusion reaction to feline blood prod- seen in 12% of cases.68 A severe acute
+ucts, insufficient time to blood type the The benefits of anaphylactic transfusion reaction imme-
+recipient, unavailability of suitable feline diately upon administration of canine
+blood products in sufficient quantities, or xenotransfusion are whole blood to a transfusion-naive cat
+financial constraints. Xenotransfusion is has been observed by one of the Panel
+short-lived compared with
+mainly used for short-term stabilisation of authors (RK). Delayed haemolysis, often
+an anaemic cat, allowing time for investi- allotransfusion. manifesting as icterus, occurs in 64% of
+gations or to obtain compatible feline cats at a median of 2 days (range 1–6)
+blood, or time for endogenous erythro- after transfusion,68 meaning the benefits
+poiesis to correct the anaemia65–68 with or without appropriate of xenotransfusion are short-lived compared with allotransfusion.
+treatment. Typically, 25 ml of pRBCs or 30–50 ml of FWB is Pre-xenotransfusion cross-matching results do not appear to
+administered using the same administration rates (see later) as predict the development of transfusion reactions.67,68 In one
+feline blood, with the minimum volume needed to stabilise the study, the long-term outcome of cats given xenotransfusions
+patient being provided. appeared to be associated with their primary disease.68 Those
+Antibodies to donor canine RBCs are detected 4–7 days that recovered appeared to have no notable adverse effects that
+following transfusion of canine blood into cats,67 resulting in could be directly attributed to the xenotransfusion itself.
+418
+JFMS CLINICAL PRACTICE\n\n===== PAGE 10 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t Autologous blood transfusion The intravenous route of administration is
+often preferred due to the rapid onset of
+Autologous blood transfusion (autotransfusion) is the administration of a action and the use of lower doses of anaes‑
+patient’s own blood as a transfusion. This can be considered in patients with thetic agents when compared with the intra‑
+haemothorax or haemoperitoneum. Cross-matching or blood typing is not muscular and subcutaneous routes. Several
+required. Blood is collected in a sterile fashion using a 23 G butterfly needle studies have reported the feasibility of differ‑
+and 10 or 20 ml syringes. Administration of the collected blood is otherwise ent drug combinations, as well as effects on
+similar to standard donor–recipient transfusions. There is no clear evidence major blood analytes, in cat donors (see Table
+regarding whether anticoagulant should be added to the transfusion. Blood in 2). Overall, each protocol has its unique
+contact with the peritoneal surface is reported to become defibrinated within advantages and disadvantages. Ideally, the
+1 h and anticoagulant administration may be unnecessary or lead to hypocal- drug combination should have a short onset
+caemia. The use of an 18 µm blood filter is strongly recommended to remove with adequate depth and duration of action,
+microaggregates from the transfusion. and include a smooth and rapid anaesthetic
+A report of eight cats with haemoperitoneum receiving autologous transfu- recovery for the donor, with minimal cardio‑
+sion did not identify any adverse reactions.70 respiratory depression. The choice will be
+also dependent on drug availability and the
+familiarity of the veterinary care team with
+the protocol. Eye lubricant should be applied
+to all cats regularly (every 35–45 mins) to
+Chemical restraint of the donor avoid eye ulcers and lesions. Ideally, the cat
+for blood transfusion should resume its normal behaviour, and eat
+and drink, shortly after the end of sedation/
+It is possible to perform blood collection in anaesthesia.
+conscious cats with a skilled veterinary care Alpha‑2‑adrenergic receptor agonists
+team. Patients must be cooperative but, even (xylazine, medetomidine and dexmedetomi‑
+still, blood donation may be dine) are to be avoided for several reasons (see
+a negative experience for Table 2). Propofol produces significant car‑
+donors. Movement during diorespiratory depression and may lead to the
+donation and signs of anxiety formation of Heinz bodies, so is also best
+have been reported in avoided. Ketamine is often used as a compo‑
+conscious cats much more nent of drug protocols; however, it should
+often than in sedated cats.71 not be administered alone since muscle jerks,
+Additionally, stress produced hallucinogenic behaviour, hyperaesthesia
+by handling may affect the and emergence delirium (growling, biting,
+cellular and chemical com‑ scratching, lunging at the cage) have been
+position of the blood (eg, observed. Sevoflurane has been used for feline
+hyperglycaemia).72 Therefore, blood donation since induction of, and recov‑
+sedation or general anaesthe‑ ery from, anaesthesia is rapid and predictable,
+sia is now commonly used for but there are significant concerns regarding its
+feline donors. The choice of a use (see Table 2).
+short‑term (30 mins) protocol Monitoring of mucous membrane colour,
+for chemical restraint will temperature, pulse and respiratory rate of the
+avoid an uncomfortable donor cat should be performed throughout
+experience for the cat and the sedation/anaesthetic procedure and blood
+failed, repeated interventions collection. Pulse oximetry can be used as a
+that could produce injuries to Figure 3 Local anaesthetic cream can be applied non‑invasive method to determine the per‑
+the veterinary care team. It over the cephalic and jugular veins of the blood centage of arterial haemoglobin saturated
+donor, after clipping the hair, for desensitisation
+will also influence owner with oxygen (SpO ). The device can be placed
+of the skin before chemical restraint. A light 2
+satisfaction with the donor occluding bandage (cellophane is used here) over the plantar digit of a pelvic limb during
+experience.73 protects the area where the cream has been collection. Hypothermia is prevented by posi‑
+applied. Approximately 20-40 mins later an
+Chemical restraint for feline intravenous catheter is placed in the cephalic vein tioning the cat over a circulating warm water
+blood donors is no different for drug administration (low doses of ketamine blanket or other warming device (with appro‑
+and diazepam or midazolam, for example). The
+to any other anaesthetic pro‑ cat can be placed in its transport carrier or a cosy priate safety measures). Blood donation
+cedure in the sense that pre‑ cat kennel in a quiet room or ward during these implies controlled losses of up to 20% (40–60
+20-40 mins. The jugular vein site will be used for
+operative examination and blood withdrawal ml) of a cat’s blood volume over a short
+appropriate fasting (6 h) are
+mandatory. An anaesthetic plan, including
+monitoring and careful choice of dosage regi‑ A short-term protocol for chemical restraint
+mens, is required. The use of local anaesthetic
+creams (Figure 3) and pheromones may be will avoid an uncomfortable experience
+part of the overall management of the patient
+for the donor cat.
+to help reduce stress.
+419
+JFMS CLINICAL PRACTICE\n\n===== PAGE 11 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Table 2 Summary of different drug combinations that can be used in blood donors and their effect on
+major blood analytes
+Drugs Dose /dosage or inhalant
+(reference[s]) concentration in common usage Comments Changes in blood analytes reported
+Ketamine and 10 mg ketamine + 0.5 mg diazepam Protocol for short-term venepuncture Minimal decreases in plasma triglycerides
+diazepam74 per cat, both IV (5 mins). and albumin, and minimal increases in
+Short onset and duration of action with activated partial thromboplastin and
+excellent chemical restraint but may not prothrombin times, likely without clinical
+be enough to complete phlebotomy. Note relevance
+diazepam should not be administered IM
+Ketamine and 4–6 mg/kg ketamine + 0.4 mg/kg Mixed in the same syringe for IM injection. Decreases of around 24–25% in RBC
+midazolam75–77 midazolam, both IM or IV Prolonged anaesthetic effects, with ataxia count, Hb concentration and PCV after
+and recumbency for up to 4–6 h after higher doses of ketamine (10 mg/kg) and
+phlebotomy. Alternative protocols include midazolam (0.5 mg/kg) IV. Based on these
+the addition of butorphanol (0.3 mg/kg) or PCV changes, some donors may be
+buprenorphine (0.01 mg/kg) IM. falsely diagnosed with anaemia
+Hyperthermia may occur with ketamine-
+based protocols
+Dexmedetomidine 0.01 mg/kg dexmedetomidine + Ease of administration with short onset of Decreases in RBC count, Hb
+and 0.2 mg/kg butorphanol, both IM action and possibility of dexmedetomidine concentration and HCT value
+butorphanol73,75,78 reversal with atipamezole (0.1 mg/kg IM) (ie, sequestration of erythrocytes by the
+are benefits. Also good muscle relaxation. spleen induced by reduced sympathetic
+Adverse effects include emesis, bradycardia, activity)
+increased systemic vascular resistance and
+decreases in cardiac output. Peripheral
+vasoconstriction poses an additional
+challenge with respect to venous
+catheterisation and blood collection; several
+donations were aborted due to this. Higher
+doses of dexmedetomidine might be
+required in some cats. Overall, best avoided
+due to above-mentioned adverse effects
+Alfaxalone and 2 mg/kg alfaxalone + 0.2–0.4 mg/kg Minimal cardiorespiratory changes. No changes in complete blood count or
+butorphanol73,79,80 butorphanol, both IM Large volume of IM injection. Rapid recovery serum biochemical values in experimental
+from anaesthesia (just over 30 mins). cats after doses of 5 mg/kg and 15 mg/kg
+Additional sedation or gentle physical IV of alfaxalone
+restraint might be required in some cats;
+further administration of alfaxalone (0.1
+mg/kg IV) can be used but will prolong
+duration and recovery of anaesthesia.
+Twitching has been observed by one of
+the Panel authors (PS)
+Tiletamine and 2.5 mg/kg of each agent, both IM Short onset of action. RBC, WBC, platelet, neutrophil and
+zolazepam81 Hypothermia can be observed. Increases monocyte counts, HCT value and Hb
+in heart rate and blood pressure due to concentration decreased, and
+hypovolaemia and drug-induced lymphocyte, eosinophil and basophil
+sympathetic stimulation counts increased after blood collection
+(not statistically significant)
+Sevoflurane76 Mask or ‘box’ induction with Potentially stressful to the cat to be Not reported
+sevoflurane (4–5% for induction restrained for mask or box induction,
+followed by 2–3% for maintenance plus risk of environmental exposure of
+using 2 l/min of oxygen) the veterinary care team to the inhalant
+anaesthetic. Hence not recommended for
+collection of blood from donor cats. Higher
+prevalence of hypotension when compared
+with ketamine combinations
+RBC = red blood cell; HCT = haematocrit; Hb = haemoglobin; WBC = white blood cell; PCV = packed cell volume; IV = intravenous;
+IM = intramuscular
+period of time. As hypotension (systolic blood immediately after donation. Arterial partial
+pressure <80–90 mmHg, mean blood pressure pressure of oxygen can decrease during
+<60–70 mmHg, diastolic blood pressure <40 chemical restraint and oxygenation via a tight
+mmHg) is commonly observed with both facemask is recommended. Desaturation
+injectable and inhalant anaesthetic proto‑ (SpO <90%) indicates hypoxaemia and
+2
+cols,76,82 blood pressure monitoring is oxygen therapy must be administered, espe‑
+recommended due to the potential for cially with protocols using a combination of
+hypovolaemia and anaesthetic complications. opioid–dexmedetomidine–ketamine or alfax‑
+Depending on the donor protocol, balanced alone.83 Other measures may additionally be
+crystalloid solutions may be provided intra‑ required including drug reversal and termina‑
+venously or via the subcutaneous route tion of the procedure.
+420
+JFMS CLINICAL PRACTICE\n\n===== PAGE 12 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Feline blood collection: open system
+Equipment
+Key:
+A: Surgical spirit and B: swabs with chlorhexidine
+A to clean the jugular vein site for blood withdrawal
+C: A human standard blood collection bag from
+which the anticoagulant citrate–phosphate-dextrose
+(CPD) or citrate–phosphate–dextrose–adenine-1
+(CPDA-1) will be taken aseptically into the syringes
+C D: Six 10 ml collection syringes (alternatively others
+use three 20 ml syringes or one 60 ml syringe,
+although the latter can produce too much negative
+H pressure which may collapse the jugular vein during
+blood collection)
+E: 15 21 G 5/8" needles to aspirate anticoagulant
+I into each collection syringe and to use as caps for
+B
+the collection syringes before and after blood
+collection
+F: T-connector and three-way tap
+G G: Blood giving set with filter for administration
+of blood to the recipient cat (blood can alternatively
+be administered via a syringe driver with inline filter)
+H: 150 ml plain blood collection bag into which the
+collected blood in the syringes can be transferred
+E for administration to the recipient if needed
+F I: Artery forceps to seal the exit tube from the plain
+D blood collection bag to prevent contents exiting via
+this route once the collection bag is filled with blood
+Figure 4 Equipment prepared for feline blood collection using an open collection system from
+a blood donor and administration to the recipient
+< A pre-donation blood sample can be collected from an CPD or CPDA-1 per 7 ml of blood to be collected).
+intravenous catheter or peripheral vein for measurement of PCV < The donor is restrained in the position preferred by the phle-
+or haemoglobin via a haemoglobin monitor. Blood collection is botomist; for example, a sitting position with head raised (espe-
+performed only if PCV or haemoglobin is in the reference cially if not sedated). If sedated, the cat can be placed in sternal
+interval. recumbency with forelimbs over the edge of the table and the
+< Syringes (multiple 10 or 20 ml, or one 60 ml) are pre-filled head raised, or in lateral or dorsal recumbency with the neck
+with an appropriate volume of anticoagulant (1 ml of ACD-A, extended (Figure 5).
+a b
+Figure 5 Blood donor positioning for blood collection
+largely depends on the preference of the phlebotomist.
+(a) Here the sedated blood donor is in a sternal position.
+(b) This sedated donor has been placed in lateral
+recumbency with the neck extended. Blood pressure
+is being evaluated and monitored at the tail base, an
+intravenous catheter has been inserted in the cephalic vein
+and a whole blood sample has been collected (not shown)
+to check the donor’s packed cell volume (or haemoglobin
+concentration). The cat lies on a warming blanket and has
+a needle inserted to provide subcutaneous fluids after
+the donation. (c) Here the blood donor is in dorsal
+recumbency; the jugular vein site is being clipped ready
+for blood collection, with the jugular vein clearly visible.
+The venepuncture site is then prepared using an aseptic Continued on
+c technique. Image (a) courtesy of Sophie Adamantos; page 422
+image (c) reproduced, with permission, from Rudd84
+421
+JFMS CLINICAL PRACTICE\n\n===== PAGE 13 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Feline blood collection: open system
+Continued from page 421
+A more detailed step-by-step photographic guide to blood
+< The hair over the jugular vein is clipped (Figure 5c) and the collection is available in Rudd.84 A video showing open
+venepuncture site is prepared using an aseptic technique. blood collection is available as supplementary material
+< Pressure is applied at the thoracic inlet to raise the jugular vein, (see pages 428–429).
+and a butterfly catheter (19 or 21 G) is inserted into the jugular vein.
+< The phlebotomist keeps the butterfly needle within
+the jugular vein as still as possible while each syringe
+is filled in turn; meanwhile an assistant gently rocks
+the syringes to ensure mixing of blood and anticoagu-
+lant during collection. Some times occlusion of both
+jugular veins can accelerate blood collection if syringe
+filling flow has slowed down.
+< After collection, the butterfly needle is removed
+from the jugular vein, and pressure is applied to the
+venepuncture site to prevent haematoma formation.
+< If a blood clot is found in one syringe only, that
+syringe should be discarded if possible.
+Production of pRBCs and plasma
+While most cats in need of a transfusion in clinical
+practice receive FWB, the high erythrocyte sedimen-
+tation rate of feline blood allows for the separation of
+plasma and RBCs by simply placing blood-filled
+syringes upright for approximately 1 h at room tem-
+perature85 (Figure 6a). Plasma can then be expressed
+into a transfer pack and frozen within 8 h of collection,
+if not needed immediately (Figure 6b). Packed RBCs a b
+can be administered directly from the syringe
+or expressed into a transfer pack containing 10 ml Figure 6 (a) Appearance of a syringe 1 h after blood collection, having been kept in an
+upright position at room temperature; the plasma has separated from the RBCs and is
+of an additive solution, such as saline–adenine–
+at the top of syringe. (b) The plasma from three 20 ml syringes, handled as in (a), has
+glucose–mannitol (SAGM), and stored in a refrigera- been transferred to a 50 ml human transfer bag. The RBCs remain in the syringes used
+tor.86 This is useful when feline blood components are for blood collection, ready to be transferred into another transfer bag to which 10 ml
+of an RBC preservative solution (such as saline–adenine–glucose–mannitol [SAGM])
+not readily available from a commercial blood blank. is added to obtain a feline pRBC unit
+Practical blood collection Heparin is not recommended as an anticoagu‑
+lant for blood collected for transfusion.
+The anticoagulant–preservative solutions Blood collection systems are described as
+most often used for collection of blood for ‘open’ or ‘closed’. A closed system is one in
+transf usion purposes are ACD‑A (anti coagu‑ which the only exposure of the collection bag
+lant citrate–dextrose solution), CPD (citrate– or its contents to air prior to administration
+phosphate–dextrose) or CPDA‑1 (citrate– is when the needle is uncapped to perform
+phosphate–dextrose–adenine‑1). The volume venepuncture during collection. An open sys‑
+of anticoagulant used and the duration of time tem, as is frequently used in cats, is one in
+for which the blood product can be stored vary which there is one or more additional sites
+depending on the anticoagulant–preservative of potential bacterial contamination during
+solution and the collection method. ACD‑A, blood collection or processing, with examples
+CPD and CPDA‑1 typically are used in a ratio being the use of syringes or empty bags with
+of 1 ml anticoagulant to 7 ml of blood. Sodium added anticoagulant to collect blood (see box
+citrate (3.2% or 3.8%) alone (without RBC on pages 421–422). Blood products collected
+preservatives) may be used at a ratio of 1 ml in an open system should ideally be adminis‑
+anticoagulant to 9 ml of blood if the blood is to tered within 4 h, or within 24 h if stored in a
+be administered within 24 h of collection. refrigerator (1–6°C).
+Sedation not only reduces donor cat anxiety, but also potential movement
+and trauma to the jugular vein during donation.
+422
+JFMS CLINICAL PRACTICE\n\n===== PAGE 14 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+A commercially available feline closed blood units showed bacterial growth (Serratia
+collection system (see box below) has been marcescens) on day 35 but not day zero,87 high‑
+evaluated for storage of feline blood for 35 lighting the fact that bacterial contamination
+days. The investigators found that one of eight of a blood unit during collection is an issue
+t
+Feline blood collection: closed system
+Equipment
+Key:
+J A: Luer lock connection,
+with butterfly needle to
+the left
+B: Break-valve
+C: 10 ml syringe containing
+I CPDA anticoagulant
+solution; two thick black
+permanent marker lines
+have been drawn on it to
+divide it into approximately
+three sections of just over
+3 ml each
+D
+D: 20 ml collection syringe
+for aspiration of blood 1
+X 2
+E 3 from the donor
+E: Unidirectional valve
+C X F: Primary whole blood
+80 ml collection bag
+H
+G: Luer lock needle-free
+valve D
+1 H: Break-valve E
+I: Satellite 40 ml bag for
+decanting plasma later,
+A if required, assuming a
+specialised centrifuge
+B 2 is available (unlikely in
+F general practice) 3
+J: Luer lock needle-free
+valve
+K: Luer lock infusion
+G adapter F
+1, 2, 3: Clamps
+White and blue crosses
+show where tubes are
+K sealed following collection
+a – see text for further b
+details
+Figure 7 Closed blood collection system (TEC 724 Kit; Futurlab) licensed for use in cats and in small animals. This is a medical device for veterinary use
+for collection of known volumes of blood from cats (in three steps of 20 ml each, for example). It is possible to use the device with donor cats of any size
+by connecting it to a butterfly needle of an appropriate gauge. (a) Equipment set-up before use. (b) Section of the equipment during collection, showing
+the 20 ml syringe (D) containing donor blood
+A TEC 724 blood collection kit for cats (Futurlab) can be used 7 Draw the 20ml of blood into the ‘D’ syringe via aspiration – the
+for closed blood collection, as described elsewhere.87,88 blood comes into contact with, and will mix with, the anticoagu-
+A brief description of its use is provided below: lant previously placed in the system.
+1 Close clamp 3, leave clamps 1 and 2 open (see Figure 7a). 8 Once the ‘D’ syringe has been filled with blood mixed with anti-
+2 Push the plunger of the 10 ml syringe ‘C’ up to the first thick coagulant, open clamp 3 and push the plunger of syringe ‘D’ so
+black marker line to add around 3 ml of anticoagulant into the that the blood goes through the unidirectional valve ‘E’ into the
+system. (On the first occasion, before the first withdrawal of blood primary bag ‘F’ (see Figure 7b).
+from the donor, make sure the anticoagulant solution reaches the 9 Close clamp 3, open clamp 1 and then repeat steps 2, 3, 7 and 8.
+break-valve ‘B’ to prevent subsequent coagulation in the collection 10 Repeat step 9 until collection of blood is complete; the anti-
+line. This means around 3 ml of anticoagulant will be in the closed coagulant solution allows collection of up to 60 ml ± 10% of
+collection system to go into the blood collection syringe ‘D’ along- blood (primary bag capacity is 80 ml).
+side around 20 ml of blood aspirated from the donor; this maintains 11 When the blood collection is complete, close clamp 2 and
+the approximate correct 1:7 ratio of anticoagulant to blood.) remove the butterfly needle from the donor, applying pressure to
+3 Close clamp 1. the jugular vein.
+4 Remove the cap of the luer lock connection ‘A’ and connect it 12 Separate the equipment at the point indicated by the white
+to the butterfly needle of the desired gauge to collect blood from cross in Figure 7a by means of an electric or manual sealer. (A
+the donor cat. sealer is a tool used to close off the blood bag by occluding the
+5 Obtain donor jugular vein access with the butterfly needle, tube using heat or metal; used mainly in blood banks, but avail-
+ensuring it is correctly inserted and then held still. able for purchase [metallic clamps can be used if not available].)
+6 Break the break-valve ‘B’ (this ensures that the donor blood is This separates the blood-filled primary bag ‘F’ (and the satellite
+never in contact with the air, and that the system remains closed). bag of plasma ‘I’) from the syringes and rest of the kit.
+Continued on page 424
+423
+JFMS CLINICAL PRACTICE\n\n===== PAGE 15 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Feline blood collection: closed system
+Continued from page 423
+Infusion blood banking organisations – the closed collection kit
+To infuse the collected blood in ‘F’, connect the luer lock infusion shown on page 423 can also be used to divide the FWB
+adapter ‘K’ (provided with the kit) to the valve ‘G’ and remove the collected into one pRBC unit and one plasma unit. This is done
+butterfly cap from the other end to connect with an infusion set with by spinning the primary and satellite bags in a blood bank
+spike. If not given to the recipient immediately, the collected blood centrifuge, then breaking the break-valve ‘H’ and transferring
+can be stored at 4–6°C. It is possible to take samples from the bag plasma to the bag ‘I’, which is then sealed at the position of the
+by connecting a luer lock syringe to the needle-free valve ‘G’. blue cross in Figure 7a. Samples from the plasma bag can be
+taken by connecting a luer lock syringe to the needle-free valve
+Production of pRBCs and plasma ‘J’. The luer lock infusion adapter ‘K’ can be attached to
+Although unlikely to be carried out in general practice – as the valve ‘J’ and connected to an infusion set with spike for
+specialised blood bank centrifuges are usually only available in administration.
+regardless of whether an open or closed col‑
+Fluid therapy for feline blood donors
+lection system is used. Another closed feline
+Provision of fluid therapy prior to, during or after collection of blood from a
+blood collection system was recently evaluat‑
+donor varies between centres and clinicians. According to one of the Panel
+ed that permits blood collection by suction
+authors (MBC), no detrimental effects are reported by large donor pro-
+using a vacuum chamber; this accelerated the
+grammes when crystalloid fluids are not supplemented. Some authors provide
+process without being detrimental to the blood
+90 ml of lactated Ringer’s solution subcutaneously prior to collection of the
+donor or collected blood, therefore optimising
+collection.89 In addition, the study directly donation, and the same solution is administered intravenously at 10 ml/kg
+starting halfway through the donation.91 Others supplement with a balanced
+compared this closed system with an open sys‑
+crystalloid solution such as Hartmann’s or lactated Ringer’s solution, at 2–3
+tem for evidence of bacterial contamination of
+times the volume of blood collected, given immediately intravenously after the
+the units, and did not observe any difference
+between the two collection systems.89 In a sep‑ donation is completed.84
+arate study, blood units and blood products
+collected using open systems were stored suc‑
+cessfully for 35 days without microbial Blood products three non‑sedated cats after donation; panting,
+growth, although all blood banking was per‑ tachypnoea and collapse were each observed
+collected using
+formed by experienced staff and blood was in one cat, with all three donor cats determined
+collected with appropriate aseptic collection to be normotensive within minutes of the unto‑
+an open
+methods, processing and careful storage to ward event and recovering fully.71 Another
+prevent contamination,90 which may have con‑ system should large study of 3690 donations (81% performed
+tributed to this result. under sedation) from 1792 feline donors
+ideally be
+The jugular vein is the recommended revealed 1.14% suffered post‑donation reac‑
+venepuncture site in cats because of its size administered tions, of which 0.22% were acute (weakness,
+and accessibility. Strict aseptic technique min‑ pallor, tachypnoea and open‑mouth breathing)
+imises the risk of bacterial cont amination. In within 4 h, and 0.92% were delayed (haematomas and
+a retrospective observational study involving skin rashes, negative behavioural reactions at
+or within 24 h
+115 feline blood donations (70 non‑sedated home and gastrointestinal signs). All cats
+and 45 sedated donors), evidence of cardiovas‑ if stored in a recovered fully.92 Further study is required to
+cular or respiratory distress was noted in assess the complication rate in sedated and
+refrigerator. non‑sedated donors but, in most cats, sedation
+is preferred to reduce anxiety, and potential
+Donation volume and interval movement and trauma to the jugular vein,
+The amount of blood that may be collected safely during donation. Evaluation of donor temper‑
+from feline donors is approximately 20% of their ament should form part of the pre‑donation
+blood volume every 4 weeks. Total blood volume assessment and examination.
+in cats is approximately 50–60 ml/kg and, thus, a After blood collection and during recovery
+recommended volume limit is approximately from chemical restraint donors should con‑
+10–12 ml/kg for cats based on lean body weight.82 tinue to be monitored as discussed above
+For practical purposes, a routine feline blood col- (mucous membrane colour, temperature,
+lection is a total volume of approximately 40–60 pulse and respiratory rate, and systolic blood
+ml, including anticoagulant. Most volunteer donor pressure if indicated) and optionally provided
+schemes using client-owned pets as donors with subcutaneous or intravenous fluids. The
+extend the donation interval to every 8–12 weeks, cat may be discharged once vital parameters
+and at this frequency supplementation with iron is are in the normal range, it is able to ambulate
+not required unless a deficiency is detected. normally and ideally after food is eaten.
+424
+JFMS CLINICAL PRACTICE\n\n===== PAGE 16 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Practical blood administration Transfusion volume and rate
+The volume of blood product administered
+Blood products are usually given intra‑ to a patient can be calculated with various
+venously via a peripheral vein, but occasion‑ formulae, with the following formula
+ally via a central vein or via an intraosseous performing best in one study, although it
+route in small cats and kittens. A dedicated was noted that formulae frequently fail to
+intravenous line should be used. accurately predict recipient PCV post‑
+Blood products should not be administered transfusion.95
+with intravenous fluids supplemented with
+calcium or glucose (eg, Hartmann’s, lactated
+PCV % increase = volume of blood transfused (ml)/(2 × body weight [kg])
+Ringer’s). Calcium overwhelms the chelating
+ability of the citrate anticoagulant in stored
+blood and increases the risk of clot
+formation. Appropriate fluid choices would In practical terms, the administration vol‑
+be 0.9% saline or Plasmalyte (Baxter ume is rounded to the nearest unit (40–60 ml
+International). of whole blood) unless the recipient is very
+Blood products must be administered using small, in which case a half unit or 10 ml/kg
+an appropriate filter to reduce the numbers may be administered.
+of red cell aggregates and microthrombi The rate of administration of the transfusion
+entering the recipient’s circulation. Filters in is determined by the condition of the animal.
+standard fluid therapy Patients with severe clinical signs associated
+administration sets are with anaemia (eg, weakness, tachycardia,
+too small and blood will tachypnoea, hyperdynamic or weak pulses,
+clot if administered hypotension, dull mentation) may require
+through them. Use of a blood products faster (ie, as a bolus or over
+syringe and microaggre‑ 1–2 h). Alternatively, as cats with severe or
+gate filter system does chronic anaemia may have signs of left heart
+not appear to damage overload,96 transfusions may need to be given
+transfused RBCs.93 Use over a longer period (eg, 4–6 h) to reduce the
+of a standard blood risk of transfusion‑associated circulatory over‑
+administration set that load. However, recent work described a lack of
+includes a filter by gravi‑ transfusion‑associated circulatory overload in
+ty flow is possible, but anaemic cats and dogs receiving transfu‑
+control of the administra‑ sions,97 suggesting that such an adjustment
+tion rate is more difficult. may not be required routinely; it nonetheless
+Ideally, a syringe and remains a risk in patients with underlying
+syringe driver with an cardiac disease, for example, and so close
+inline microaggregate fil‑ monitoring is always indicated. If blood prod‑
+ter system (eg, Hemo‑ ucts are kept at room temperature for more
+Nate 18 µm filter; IMS) is than 4 h there is a greater risk of bacterial con‑
+best. In most centres, the tamination, which should also be considered
+filter is placed in the when calculating administration rates.
+administration line as
+close to the patient as
+possible (Figure 8). Some
+Rate of transfusion administration
+Panel authors will filter
+In patients not requiring rapid volume replace-
+the blood as it is aspirated
+ment, transfused blood should be administered at
+from the bag into a
+syringe, prior to administra‑ Figure 8 An inline 0.5 ml/kg/h for the first 15 mins, with the patient
+microaggregate filter (arrow) monitored constantly for signs of a transfusion
+tion to the patient. Either is an appropriate (Hemo-Nate 18 µm filter;
+reaction (see later) such as vocalisation, tachy -
+method for removing microthrombi from the IMS) has been placed in the
+administration line from the cardia, hypersalivation, vomiting, diarrhoea, facial
+FWB or pRBCs. unit of blood, as close to the
+swelling/urticaria, piloerection or tachypnoea/
+Infusion pumps have been theorised to patient as possible. A video
+showing blood collected respiratory distress. After this time, the rate may
+damage RBCs during administration but their via an open system being
+be increased to 1 ml/kg/h for 15 mins. If there is
+use allows precision around low rates of attached to a haemofilter
+in preparation for transfusion still no evidence of a transfusion reaction, the
+transfusion administration and they help to to a recipient is available administration rate is increased so that the total
+avoid inadvertent rapid delivery or volume as supplementary material
+(see pages 428–429) volume of the transfusion is administered within a
+overload. A recent study showed that the use
+4-h period, although some institute a period of
+of two linear peristaltic infusion pumps (NIKI
+20 mins at 2 ml/kg/h before increasing the rate
+V4 [Everest] and Infusomat FmS [B Braun])
+further. More rapid infusion after the initial period
+did not result in more haemolysis than
+may be needed in some cases.
+gravity alone.94
+425
+JFMS CLINICAL PRACTICE\n\n===== PAGE 17 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+These parameters are checked very frequent‑
+ly (initially every 5 mins) for the first 30–60
+mins (Figure 9). Depending on the clinical
+status of the patient, a multiparameter machine
+may be used to allow continuous monitoring of
+heart rate, electrocardiogram, SpO , blood
+2
+pressure and temperature throughout the
+transfusion. Assessment of vital parameter
+data trends (eg, gradual increase in heart rate,
+respiratory rate, temperature) is key to early
+identification of a transfusion reaction, and
+ensuring detailed records are kept throughout
+the transfusion is extremely important. An
+b example blood product administration sheet
+Figure 9 (a) Monitoring of the used for monitoring cats to help allow for early
+recipient is performed frequently detection of any problems is shown in the box
+(every 5 mins) during the first 30–60
+mins of a transfusion, as this is the below and available as supplementary materi‑
+most common time for a transfusion al (see pages 428–429).
+reaction to develop. (b) Later in the
+transfusion, monitoring frequency
+can be reduced based on the Transfusion reactions
+a cat’s response and vital parameter
+data trends
+Despite appropriate screening, transfusion
+reactions in cats remain unpredictable and can
+Monitoring the recipient vary in severity. As described in Table 4,
+Patients must be monitored very closely when‑ they can be defined as acute, acute‑to‑delayed
+ever receiving a blood transfusion, particularly or delayed. The most common transfusion
+within the first 30 mins of administration as this reactions seen in cats include febrile non‑
+is the most common time for a severe transfu‑ haemolytic transfusion reactions, allergic reac‑
+sion reaction to develop. A baseline check of tions and transfusion associated circulatory
+vital signs is performed before commencing the overload. Transfusion reactions may cause
+transfusion, including temperature, heart rate, immune‑mediated haemolysis, which can
+pulse quality, blood pressure, mucous mem‑ result in jaundice, pigmenturia and/or pyrexia,
+brane colour, respiratory rate/effort, oxygen mainly due to anti‑blood type reactions.
+saturation and patient mentation. Transfusion reactions can also cause non‑
+Blood product administration sheet
+(cid:40)(cid:39)(cid:38)(cid:37)(cid:36)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:34)(cid:35)(cid:34)(cid:35)(cid:35)(cid:36)
+(cid:25)(cid:24)(cid:23)(cid:22)(cid:21)(cid:23)(cid:26)(cid:20)(cid:23)(cid:19)(cid:18)(cid:20)(cid:17)(cid:26)(cid:22)(cid:16)(cid:15)(cid:26)(cid:16)(cid:18)(cid:14)(cid:23)(cid:21)(cid:26)(cid:22)(cid:16)(cid:17)(cid:26)(cid:13)(cid:12)(cid:20)(cid:14)(cid:11)(cid:23)(cid:20)(cid:26)(cid:19)(cid:11)(cid:23)(cid:19)(cid:10)(cid:21)(cid:26)(cid:18)(cid:16)(cid:26)(cid:14)(cid:11)(cid:23)(cid:26)(cid:9)(cid:22)(cid:14)(cid:8)(cid:23)(cid:16)(cid:14)(cid:7)(cid:21)(cid:26)(cid:21)(cid:11)(cid:23)(cid:23)(cid:14)(cid:6)(cid:26)
+(cid:33)(cid:37)(cid:32)(cid:31)(cid:30)(cid:38)(cid:36)(cid:35)(cid:35)(cid:35)(cid:36)(cid:36)(cid:29)(cid:31)(cid:36)(cid:36)(cid:36)(cid:36)(cid:28)(cid:37)(cid:38)(cid:36)(cid:35)(cid:35)(cid:35)(cid:35)(cid:36)(cid:36)(cid:36) Patients must
+(cid:27)(cid:26)(cid:25)(cid:25)(cid:24)(cid:36)(cid:38)(cid:23)(cid:22)(cid:37)(cid:36)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:36) (cid:11)(cid:10)(cid:9)(cid:8)(cid:7)(cid:6)(cid:9)(cid:5)(cid:4)(cid:9)(cid:8)(cid:3)(cid:2)(cid:7)(cid:1)(cid:5) (cid:5) (cid:51)(cid:34) (cid:8)(cid:4) (cid:42) (cid:16) (cid:52) (cid:21) (cid:35) (cid:26) (cid:47) (cid:18) (cid:54) (cid:13) (cid:53) (cid:26) (cid:52) (cid:22) (cid:54)(cid:33) (cid:26)(cid:14) (cid:33) (cid:20) (cid:54) (cid:22) (cid:42) (cid:16) (cid:52) (cid:21) (cid:48) (cid:13) (cid:32) (cid:12) (cid:37) (cid:21) (cid:44) (cid:8) (cid:54) (cid:18) (cid:46) (cid:16) (cid:42) (cid:26) (cid:39) (cid:20) (cid:39) (cid:23) (cid:47) (cid:22) (cid:44)(cid:52) (cid:19)(cid:14) (cid:54)(cid:31) (cid:8)(cid:18) (cid:48)(cid:45) (cid:16) (cid:40) (cid:54) (cid:46) (cid:53)(cid:52) (cid:52) (cid:51) (cid:37) (cid:50)(cid:49) (cid:47) (cid:48) (cid:42) (cid:47) (cid:30)(cid:41) (cid:54) (cid:54)(cid:51) (cid:46) (cid:34) (cid:45) (cid:42) (cid:44)(cid:47) (cid:52) (cid:43) (cid:35) (cid:53) (cid:47) (cid:42) (cid:54) (cid:41) (cid:53) (cid:54) (cid:52) (cid:44) (cid:54) (cid:47) (cid:29) (cid:40) (cid:33) (cid:39)(cid:50) (cid:54) (cid:47) (cid:42) (cid:40) (cid:52) (cid:40) (cid:48) (cid:52) (cid:32) (cid:47) (cid:37) (cid:40) (cid:44) (cid:40) (cid:54) (cid:41) (cid:44) (cid:54) (cid:34) (cid:38) (cid:45) (cid:37) (cid:39) (cid:36) (cid:34)(cid:36) (cid:53)(cid:39)(cid:53) (cid:41) (cid:52) (cid:54)(cid:51) (cid:35) (cid:34) (cid:41) (cid:42) (cid:54)(cid:40) (cid:52) (cid:42) (cid:35) (cid:50) (cid:47) (cid:53)(cid:38) (cid:54) (cid:42) (cid:53)(cid:52) (cid:39) (cid:54) (cid:53) (cid:28) (cid:37)(cid:52) (cid:27)(cid:41) (cid:41) (cid:54) (cid:54)
+(cid:40)(cid:25)(cid:21)(cid:25)(cid:20)(cid:36)(cid:20)(cid:37)(cid:19)(cid:37)(cid:20)(cid:37)(cid:21)(cid:18)(cid:37)(cid:36)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:34)(cid:36) (cid:26)(cid:47)(cid:42)(cid:25)(cid:54)(cid:46)(cid:49)(cid:50)(cid:40)(cid:47)(cid:40)(cid:41)(cid:54)(cid:38)(cid:37)(cid:51)(cid:42)(cid:50)(cid:53)(cid:40)(cid:42)(cid:39)(cid:53)(cid:37)(cid:52)(cid:41)(cid:54)(cid:48)(cid:53)(cid:42)(cid:44)(cid:44)(cid:34)(cid:37)(cid:47)(cid:42)(cid:41)(cid:54)(cid:49)(cid:44)(cid:39)(cid:53)(cid:51)(cid:42)(cid:44)(cid:53)(cid:42)(cid:24)(cid:54)(cid:54) be monitored
+(cid:17)(cid:20)(cid:25)(cid:16)(cid:16)(cid:15)(cid:14)(cid:39)(cid:38)(cid:18)(cid:30)(cid:37)(cid:24)(cid:13)(cid:36) (cid:12)(cid:36)(cid:11)(cid:36) (cid:10)(cid:36)(cid:11)(cid:36)
+(cid:23)(cid:22)(cid:54)(cid:42)(cid:52)(cid:45)(cid:54)(cid:44)(cid:47)(cid:42)(cid:51)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:53)(cid:40)(cid:54)(cid:40)(cid:47)(cid:47)(cid:52)(cid:41)(cid:54)(cid:39)(cid:34)(cid:47)(cid:54)(cid:14)(cid:20)(cid:22)(cid:16)(cid:21)(cid:13)(cid:12)(cid:21)(cid:8)(cid:18)(cid:16)(cid:26)(cid:21)(cid:11)(cid:18)(cid:12)(cid:24)(cid:17)(cid:26)(cid:3)(cid:23)(cid:26)(cid:21)(cid:14)(cid:18)(cid:9)(cid:9)(cid:23)(cid:17)(cid:26)(cid:8)(cid:2)(cid:2)(cid:23)(cid:17)(cid:8)(cid:22)(cid:14)(cid:23)(cid:24)(cid:15)(cid:41)(cid:54)(cid:42)(cid:52)(cid:48)(cid:54)(cid:39)(cid:34)(cid:47)(cid:54)(cid:54)
+(cid:27)(cid:26)(cid:25)(cid:25)(cid:24)(cid:36)(cid:22)(cid:20)(cid:25)(cid:24)(cid:9)(cid:18)(cid:38)(cid:36)
+(cid:26)(cid:25)(cid:24)(cid:23)(cid:22)(cid:25)(cid:21)(cid:20)(cid:19)(cid:18)(cid:17)(cid:25)(cid:22)(cid:20)(cid:16)(cid:25)(cid:17)(cid:17)(cid:15)(cid:14)(cid:36) (cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:36) (cid:8)(cid:21)(cid:32)(cid:38)(cid:36)(cid:16)(cid:32)(cid:7)(cid:37)(cid:36)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:35)(cid:36)(cid:14)(cid:26)(cid:36) (cid:1)(cid:23)(cid:14)(cid:26)(cid:19)(cid:18)(cid:16)(cid:14)(cid:22)(cid:19)(cid:14)(cid:23)(cid:17)(cid:24)(cid:54)(cid:21)(cid:34)(cid:47)(cid:54)(cid:38)(cid:37)(cid:50)(cid:49)(cid:36)(cid:47)(cid:54)(cid:53)(cid:52)(cid:22)(cid:49)(cid:40)(cid:47)(cid:48)(cid:41)(cid:54)(cid:42)(cid:52)(cid:48)(cid:54)(cid:44)(cid:42)(cid:39)(cid:47)(cid:54)(cid:37)(cid:22)(cid:54)(cid:53)(cid:52)(cid:22)(cid:49)(cid:40)(cid:53)(cid:37)(cid:52)(cid:54)(cid:53)(cid:40)(cid:54)(cid:44)(cid:47)(cid:51)(cid:37)(cid:44)(cid:48)(cid:47)(cid:48)(cid:54)(cid:31)(cid:48)(cid:37)(cid:54)(cid:52)(cid:37)(cid:39)(cid:54)(cid:48)(cid:53)(cid:40)(cid:51)(cid:42)(cid:44)(cid:48)(cid:54) very closely
+(cid:43) (cid:39)(cid:34)(cid:47)(cid:54)(cid:20)(cid:50)(cid:37)(cid:37)(cid:48)(cid:41)(cid:54)(cid:50)(cid:53)(cid:52)(cid:47)(cid:54)(cid:37)(cid:44)(cid:54)(cid:22)(cid:50)(cid:49)(cid:53)(cid:48)(cid:40)(cid:30)(cid:24)(cid:54)(cid:19)(cid:39)(cid:34)(cid:47)(cid:44)(cid:54)(cid:51)(cid:37)(cid:52)(cid:40)(cid:53)(cid:48)(cid:47)(cid:44)(cid:42)(cid:39)(cid:53)(cid:37)(cid:52)(cid:40)(cid:54)(cid:36)(cid:42)(cid:45)(cid:54)(cid:20)(cid:47)(cid:54)(cid:44)(cid:47)(cid:18)(cid:49)(cid:53)(cid:44)(cid:47)(cid:48)(cid:54)(cid:49)(cid:52)(cid:48)(cid:47)(cid:44)(cid:54)(cid:38)(cid:47)(cid:39)(cid:54)(cid:35)(cid:49)(cid:53)(cid:48)(cid:42)(cid:52)(cid:51)(cid:47)(cid:17)(cid:54)
+(cid:57)(cid:56)(cid:55)(cid:54)(cid:53)(cid:54)(cid:55)(cid:52)(cid:51)(cid:50)(cid:49)(cid:52)(cid:51)(cid:56)(cid:48)(cid:47)(cid:53)(cid:53)(cid:46)(cid:45)(cid:44)(cid:53)(cid:51)(cid:48)(cid:41)(cid:40)(cid:54)(cid:49)(cid:55)(cid:54)(cid:53)(cid:51)(cid:48)(cid:53)(cid:39)(cid:38)(cid:37)(cid:53)(cid:51)(cid:55)(cid:53)(cid:55)(cid:54)(cid:54)(cid:48)(cid:53)(cid:36)(cid:56)(cid:40)(cid:53)(cid:54)(cid:35)(cid:54)(cid:40)(cid:34)(cid:53)(cid:33)(cid:53)(cid:50)(cid:32)(cid:31)(cid:30)(cid:29)(cid:53)(cid:56)(cid:36)(cid:53)(cid:28)(cid:27)(cid:56)(cid:32)(cid:54)(cid:53)(cid:26)(cid:32)(cid:56)(cid:56)(cid:25)(cid:53)
+(cid:24)(cid:51)(cid:50)(cid:54)(cid:53) (cid:23)(cid:49)(cid:52)(cid:54)(cid:53) (cid:37)(cid:56)(cid:32)(cid:22)(cid:50)(cid:54)(cid:53)(cid:29)(cid:51)(cid:35)(cid:54)(cid:48)(cid:53)(cid:21)(cid:50)(cid:32)(cid:20)(cid:53) (cid:19)(cid:41)(cid:52)(cid:22)(cid:49)(cid:32)(cid:53)(cid:23)(cid:49)(cid:52)(cid:54)(cid:53) (cid:17)(cid:56)(cid:48)(cid:51)(cid:52)(cid:56)(cid:40)(cid:51)(cid:48)(cid:29)(cid:53)(cid:16)(cid:53)(cid:55)(cid:54)(cid:54)(cid:53) (cid:1)(cid:54)(cid:16)(cid:39)(cid:42)(cid:44)(cid:39)(cid:54)(cid:51)(cid:42)(cid:44)(cid:48)(cid:53)(cid:37)(cid:46)(cid:49)(cid:50)(cid:36)(cid:37)(cid:52)(cid:42)(cid:44)(cid:45)(cid:54)(cid:44)(cid:47)(cid:40)(cid:49)(cid:40)(cid:51)(cid:53)(cid:39)(cid:42)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:31)(cid:15)(cid:27)(cid:33)(cid:30)(cid:54)(cid:53)(cid:22)(cid:54)(cid:52)(cid:47)(cid:51)(cid:47)(cid:40)(cid:40)(cid:42)(cid:44)(cid:45)(cid:54)(cid:54) when receiving
+(cid:18)(cid:51)(cid:35)(cid:54)(cid:48)(cid:53) (cid:26)(cid:54)(cid:32)(cid:56)(cid:28)(cid:53) (cid:1)(cid:54)(cid:14)(cid:43)(cid:42)(cid:36)(cid:53)(cid:52)(cid:47)(cid:54)(cid:39)(cid:34)(cid:47)(cid:54)(cid:49)(cid:52)(cid:53)(cid:39)(cid:54)(cid:22)(cid:37)(cid:44)(cid:54)(cid:34)(cid:42)(cid:47)(cid:36)(cid:37)(cid:50)(cid:45)(cid:40)(cid:53)(cid:40)(cid:54)(cid:20)(cid:45)(cid:54)(cid:40)(cid:46)(cid:53)(cid:52)(cid:52)(cid:53)(cid:52)(cid:35)(cid:54)(cid:42)(cid:54)(cid:36)(cid:53)(cid:51)(cid:44)(cid:37)(cid:34)(cid:42)(cid:47)(cid:36)(cid:42)(cid:39)(cid:37)(cid:51)(cid:44)(cid:53)(cid:39)(cid:54)(cid:39)(cid:49)(cid:20)(cid:47)(cid:54)(cid:51)(cid:37)(cid:52)(cid:39)(cid:42)(cid:53)(cid:52)(cid:53)(cid:52)(cid:35)(cid:54)
+(cid:7) (cid:15) (cid:53) (cid:14) (cid:53) (cid:53) (cid:53) (cid:10) (cid:53) (cid:14) (cid:34)(cid:41) (cid:51) (cid:52) (cid:48) (cid:14) (cid:14) (cid:49) (cid:37) (cid:51) (cid:40) (cid:14) (cid:14) (cid:55) (cid:52) (cid:30) (cid:27) (cid:53) (cid:14) (cid:14) (cid:43) (cid:53) (cid:53) (cid:36)(cid:35) (cid:14) (cid:14) (cid:34) (cid:53) (cid:53) (cid:15)(cid:36)(cid:15)(cid:31) (cid:42) (cid:42) (cid:13) (cid:45) (cid:6) (cid:16) (cid:9) (cid:5) (cid:41) (cid:41) (cid:15) (cid:22) (cid:12) (cid:12) (cid:4) (cid:13) (cid:34) (cid:30) (cid:11) (cid:13) (cid:8) (cid:40) (cid:40) (cid:43) (cid:20) (cid:12) (cid:43) (cid:43) (cid:43) (cid:5) (cid:3) (cid:53) (cid:53) (cid:25) (cid:20) (cid:13) (cid:39) (cid:35) (cid:50) (cid:50) (cid:25) (cid:11) (cid:40) (cid:21) (cid:43) (cid:2) (cid:30) (cid:18) (cid:25) (cid:30) (cid:3) (cid:1) (cid:20) (cid:2) (cid:32) (cid:32) (cid:43) (cid:8) (cid:22) (cid:17) (cid:31) (cid:31) (cid:34) (cid:17) (cid:39) (cid:23) (cid:15) (cid:7) (cid:9) (cid:30) (cid:30) (cid:13) (cid:1) (cid:43) (cid:38) (cid:43) (cid:37) (cid:6) (cid:40) (cid:39) (cid:29) (cid:29) (cid:25) (cid:2) (cid:43) (cid:36) (cid:15) (cid:22) (cid:37) (cid:38) (cid:31) (cid:31) (cid:4) (cid:18) (cid:36) (cid:20) (cid:22) (cid:35) (cid:27) (cid:27) (cid:43) (cid:30) (cid:10) (cid:43) (cid:36) (cid:37) (cid:15) (cid:43) (cid:35) (cid:53) (cid:53) (cid:12) (cid:17) (cid:5) (cid:43) (cid:43) (cid:20) (cid:34) (cid:36) (cid:20) (cid:43) (cid:12) (cid:30) (cid:35) (cid:14) (cid:43) (cid:20) (cid:43) (cid:40) (cid:34) (cid:43) (cid:36) (cid:7) (cid:41) (cid:43) (cid:12)(cid:43)(cid:13) (cid:33) (cid:33) (cid:23) (cid:52) (cid:28) (cid:33) (cid:15) (cid:27) (cid:43) (cid:54) (cid:41) (cid:41) (cid:41) (cid:51) (cid:3) (cid:49) (cid:52) (cid:50) (cid:32) (cid:32) (cid:32) (cid:43) (cid:31) (cid:31) (cid:31) (cid:27) (cid:52) (cid:37) (cid:53) (cid:37) (cid:37) (cid:37) (cid:51) (cid:49) (cid:52) (cid:48) (cid:32) (cid:40) (cid:51) (cid:27) (cid:48) (cid:30) (cid:30) (cid:30) (cid:49) (cid:53)(cid:8) (cid:2) (cid:43) (cid:43) (cid:43) (cid:48) (cid:25) (cid:1) (cid:29) (cid:29) (cid:29) (cid:7) (cid:55) (cid:54) (cid:27) (cid:27) (cid:43) (cid:43) (cid:43) (cid:36) (cid:43) (cid:40) (cid:26) (cid:53) (cid:22) (cid:9) (cid:53) (cid:43) (cid:56) (cid:55) (cid:4) (cid:54) (cid:36) (cid:51) (cid:30) (cid:40) (cid:56) (cid:53) (cid:51) (cid:22) (cid:42) (cid:56) (cid:48) (cid:41) (cid:48) (cid:25) (cid:53) (cid:40) (cid:41) (cid:51) (cid:30) (cid:12) (cid:52) (cid:56) (cid:53) (cid:53) (cid:43) (cid:53) (cid:29) (cid:50) (cid:36)(cid:35) (cid:51)(cid:35) (cid:9) (cid:9) (cid:54) (cid:40) (cid:32) (cid:30) (cid:54) (cid:48) (cid:13) (cid:52) (cid:53)(cid:55) (cid:54) (cid:34) (cid:56) (cid:36) (cid:25) (cid:35) (cid:53) (cid:53) (cid:1)(cid:43)(cid:15)(cid:26)(cid:30)(cid:43)(cid:40) (cid:28) (cid:28) (cid:28) (cid:13)(cid:15) (cid:28) (cid:28) (cid:28) (cid:30) (cid:28) (cid:28) (cid:28) (cid:43)(cid:42)(cid:31) (cid:37) (cid:37) (cid:37) (cid:40) (cid:32) (cid:32) (cid:32) (cid:15) (cid:27) (cid:27) (cid:27) (cid:26) (cid:26) (cid:26) (cid:26) (cid:30) (cid:43) (cid:43) (cid:43) (cid:43) (cid:40)(cid:43) (cid:25) (cid:30) (cid:18) (cid:30) (cid:13) (cid:37) (cid:36)(cid:42) (cid:35) (cid:24) (cid:20) (cid:20) (cid:17) (cid:43) (cid:43) (cid:13) (cid:41) (cid:30) (cid:30) (cid:23) (cid:12) (cid:43) (cid:35) (cid:37) (cid:40) (cid:40) (cid:40) (cid:24) (cid:43) (cid:30) (cid:43) (cid:13) (cid:19) (cid:19) (cid:19) (cid:22) (cid:36) (cid:43) (cid:43) (cid:15) (cid:43) (cid:43) (cid:35) (cid:42) (cid:9) (cid:38) (cid:39) (cid:24) (cid:43) (cid:40) (cid:43) (cid:34) (cid:30) (cid:41) (cid:21) (cid:43) (cid:38) (cid:30) (cid:43) (cid:37) (cid:35) (cid:35) (cid:16) (cid:14) (cid:23) (cid:10) (cid:12) (cid:9) (cid:18) (cid:36) (cid:43) (cid:31) (cid:43) (cid:35) (cid:15) (cid:30) (cid:11) (cid:17) (cid:30) (cid:43) (cid:26) (cid:34) (cid:41) (cid:40) (cid:43) (cid:35) (cid:43) (cid:30) (cid:35) (cid:37) (cid:40) (cid:42) (cid:15) (cid:35) (cid:41) (cid:43) (cid:34) (cid:32) (cid:36) (cid:43) (cid:19) (cid:43) (cid:40) (cid:35) (cid:43) (cid:43) (cid:34)(cid:43) (cid:44) (cid:42) (cid:20) (cid:42) (cid:1) (cid:1) (cid:1) (cid:47) (cid:44) (cid:54) (cid:50) (cid:54) (cid:54) (cid:54) (cid:40) (cid:37) (cid:47) (cid:18) (cid:15) (cid:14) (cid:15) (cid:42) (cid:37) (cid:54) (cid:49) (cid:43) (cid:46) (cid:37) (cid:37) (cid:36) (cid:48) (cid:53) (cid:42) (cid:44) (cid:52) (cid:52) (cid:44) (cid:54) (cid:46) (cid:47) (cid:36) (cid:47) (cid:22) (cid:40) (cid:40) (cid:44) (cid:50) (cid:40) (cid:48) (cid:53) (cid:53) (cid:47) (cid:37) (cid:53) (cid:48) (cid:48) (cid:47) (cid:52) (cid:54) (cid:54) (cid:39) (cid:36) (cid:47) (cid:47) (cid:52) (cid:37) (cid:47) (cid:37) (cid:44) (cid:44) (cid:39) (cid:22) (cid:54) (cid:54) (cid:54) (cid:54) (cid:54) (cid:54) (cid:54) (cid:39) (cid:39) (cid:42) (cid:40) (cid:39) (cid:31) (cid:39) (cid:34) (cid:34) (cid:44) (cid:34) (cid:39) (cid:34) (cid:38) (cid:47) (cid:42) (cid:47) (cid:47) (cid:45) (cid:37) (cid:47) (cid:42) (cid:44) (cid:54) (cid:54) (cid:46) (cid:53) (cid:54) (cid:44) (cid:44) (cid:39) (cid:39) (cid:48) (cid:48) (cid:47) (cid:47) (cid:37) (cid:53) (cid:36) (cid:52) (cid:54) (cid:37) (cid:51) (cid:51) (cid:39) (cid:44) (cid:35) (cid:52) (cid:53) (cid:47) (cid:47) (cid:53) (cid:47) (cid:46) (cid:46) (cid:54) (cid:52) (cid:37) (cid:52) (cid:52) (cid:23) (cid:53) (cid:53) (cid:13) (cid:47) (cid:40) (cid:47) (cid:44) (cid:42) (cid:39) (cid:54) (cid:53) (cid:54) (cid:12) (cid:52) (cid:52) (cid:50) (cid:20) (cid:37) (cid:26) (cid:54) (cid:54) (cid:48) (cid:39) (cid:39) (cid:39) (cid:50) (cid:52) (cid:54) (cid:53) (cid:37) (cid:54) (cid:34) (cid:42) (cid:22) (cid:39) (cid:42) (cid:41) (cid:37) (cid:37) (cid:34) (cid:54) (cid:47) (cid:36) (cid:52) (cid:46) (cid:44) (cid:48) (cid:54) (cid:44) (cid:48) (cid:42) (cid:42) (cid:54) (cid:42) (cid:42) (cid:54) (cid:34) (cid:54) (cid:48) (cid:42) (cid:50) (cid:35) (cid:46) (cid:50) (cid:50) (cid:42) (cid:37) (cid:37) (cid:52) (cid:44) (cid:47) (cid:45) (cid:47) (cid:47) (cid:37) (cid:44) (cid:48) (cid:54) (cid:54) (cid:53) (cid:36) (cid:31) (cid:41) (cid:52) (cid:25) (cid:22) (cid:54) (cid:54) (cid:47) (cid:50) (cid:39) (cid:54) (cid:42) (cid:54) (cid:37) (cid:40) (cid:37) (cid:35) (cid:42) (cid:22) (cid:50) (cid:47) (cid:37) (cid:37) (cid:53) (cid:41) (cid:50) (cid:51) (cid:52) (cid:45) (cid:54) (cid:38) (cid:44) (cid:25) (cid:34) (cid:51) (cid:40) (cid:47) (cid:54) (cid:47) (cid:54) (cid:44) (cid:34) (cid:45) (cid:53) (cid:22) (cid:54) (cid:45) (cid:44) (cid:40) (cid:37) (cid:51) (cid:31) (cid:42) (cid:47) (cid:40) (cid:54) (cid:11) (cid:42) (cid:20) (cid:44) (cid:47) (cid:39) (cid:54) (cid:10) (cid:54) (cid:44) (cid:53) (cid:42) (cid:45) (cid:36) (cid:34) (cid:52) (cid:48) (cid:9) (cid:50) (cid:54) (cid:42) (cid:39) (cid:50) (cid:40) (cid:53) (cid:37) (cid:8) (cid:37) (cid:42) (cid:44) (cid:46) (cid:47) (cid:10) (cid:35) (cid:42) (cid:53) (cid:32) (cid:36) (cid:53) (cid:48) (cid:50) (cid:38) (cid:52) (cid:54) (cid:20) (cid:37) (cid:7) (cid:54) (cid:42) (cid:52) (cid:44) (cid:37) (cid:20) (cid:20) (cid:35) (cid:42) (cid:40) (cid:53) (cid:35) (cid:37) (cid:32) (cid:53) (cid:52) (cid:51) (cid:48) (cid:52) (cid:50) (cid:25) (cid:50) (cid:49) (cid:37) (cid:35) (cid:49) (cid:45) (cid:42) (cid:35) (cid:50) (cid:54) (cid:20) (cid:51) (cid:40) (cid:47) (cid:42) (cid:42) (cid:54) (cid:42) (cid:54) (cid:37) (cid:53) (cid:44) (cid:54) (cid:36) (cid:42) (cid:52) (cid:36) (cid:44) (cid:22) (cid:54) (cid:39) (cid:34) (cid:42) (cid:48) (cid:54) (cid:53) (cid:54) (cid:42) (cid:53) (cid:42) (cid:11) (cid:47) (cid:42) (cid:53) (cid:51) (cid:54) (cid:42) (cid:54) (cid:11) (cid:10) (cid:36) (cid:47) (cid:44) (cid:30) (cid:37) (cid:36) (cid:17) (cid:54) (cid:54) (cid:36) (cid:11) (cid:53) (cid:34) (cid:42) (cid:10) (cid:37) (cid:54) (cid:42) (cid:50)(cid:32) (cid:41) (cid:50) (cid:47) (cid:10) (cid:45) (cid:25) (cid:36) (cid:40) (cid:10) (cid:35) (cid:53) (cid:10) (cid:30) (cid:40) (cid:42) (cid:54) (cid:54) (cid:54) (cid:9) (cid:37) (cid:39) (cid:40) (cid:37) (cid:54) (cid:37) (cid:44) (cid:39) (cid:51) (cid:54) (cid:34) (cid:50) (cid:53) (cid:49) (cid:44) (cid:22) (cid:53) (cid:54) (cid:53) (cid:40) (cid:39) (cid:40) (cid:39) (cid:53) (cid:54) (cid:54) (cid:53) (cid:37) (cid:36) (cid:39) (cid:35) (cid:49) (cid:52) (cid:52) (cid:42) (cid:20) (cid:54) (cid:40) (cid:54) (cid:45) (cid:47) (cid:54) (cid:54) (cid:37) (cid:20) (cid:54)(cid:37) (cid:22) (cid:47) (cid:54) (cid:22) (cid:40) (cid:54) (cid:54) (cid:34)(cid:37)(cid:51)(cid:25)(cid:54) t p r a a a r n t b s ic f lo u u s o la i d o r l n y ,
+(cid:5)(cid:11)(cid:10)(cid:10)(cid:54)(cid:7)(cid:35)(cid:32)(cid:10)(cid:24)(cid:11)(cid:54)(cid:36)(cid:35)(cid:4)(cid:54)(cid:46)(cid:47)(cid:44)(cid:54)(cid:36)(cid:50)(cid:54)(cid:23)(cid:13)(cid:54)(cid:37)(cid:44)(cid:54)(cid:23)(cid:3)(cid:30)(cid:54)(cid:42)(cid:52)(cid:48)(cid:54)(cid:42)(cid:52)(cid:39)(cid:53)(cid:34)(cid:53)(cid:40)(cid:39)(cid:42)(cid:36)(cid:53)(cid:52)(cid:47)(cid:40)(cid:54)(cid:31)(cid:47)(cid:35)(cid:41)(cid:54)(cid:48)(cid:53)(cid:46)(cid:34)(cid:47)(cid:52)(cid:34)(cid:45)(cid:48)(cid:44)(cid:42)(cid:36)(cid:53)(cid:52)(cid:47)(cid:54)(cid:54)
+(cid:6) (cid:41)(cid:27) (cid:5)(cid:49) (cid:54) (cid:50) (cid:41)(cid:30) (cid:9) (cid:53) (cid:32)(cid:54)(cid:53) (cid:24)(cid:51)(cid:50)(cid:54)(cid:53)(cid:53)(cid:24)(cid:53)(cid:21)(cid:1)(cid:38)(cid:20)(cid:53) (cid:40) (cid:39) (cid:49) (cid:22) (cid:52) (cid:32) (cid:54) (cid:55) (cid:53) (cid:54) (cid:4) (cid:53) (cid:53) (cid:17) (cid:41)(cid:56) (cid:17) (cid:32)(cid:56)(cid:22) (cid:54)(cid:50) (cid:40)(cid:53)(cid:4) (cid:26) (cid:53) (cid:53) (cid:23) (cid:9)(cid:49) (cid:23) (cid:52) (cid:53)(cid:4) (cid:52)(cid:54) (cid:53) (cid:40)(cid:48)(cid:53) (cid:2) (cid:21)(cid:50) (cid:39)(cid:53) (cid:50)(cid:1)(cid:29)(cid:20)(cid:53) (cid:39) (cid:44) (cid:38) (cid:53) (cid:37)(cid:53) (cid:38)(cid:56)(cid:50)(cid:50)(cid:54)(cid:48)(cid:52)(cid:55)(cid:53) (cid:11)(cid:54)(cid:36)(cid:35)(cid:32)(cid:25)(cid:35)(cid:54)(cid:23)(cid:13)(cid:54)(cid:37)(cid:44)(cid:54)(cid:23)(cid:3)(cid:30)(cid:24)(cid:54) within the
+(cid:51)(cid:48)(cid:52)(cid:54)(cid:40)(cid:35)(cid:49)(cid:32)(cid:55)(cid:53) (cid:3)(cid:22)(cid:49)(cid:32)(cid:51)(cid:52)(cid:34)(cid:53)(cid:38)(cid:23)(cid:24)(cid:53) (cid:1)(cid:54)(cid:23)(cid:22)(cid:54)(cid:38)(cid:37)(cid:50)(cid:49)(cid:36)(cid:47)(cid:54)(cid:37)(cid:38)(cid:47)(cid:44)(cid:50)(cid:37)(cid:42)(cid:48)(cid:54)(cid:34)(cid:42)(cid:40)(cid:54)(cid:44)(cid:47)(cid:40)(cid:49)(cid:50)(cid:39)(cid:47)(cid:48)(cid:54)(cid:53)(cid:52)(cid:54)(cid:46)(cid:49)(cid:50)(cid:36)(cid:37)(cid:52)(cid:42)(cid:44)(cid:45)(cid:54)(cid:37)(cid:47)(cid:48)(cid:47)(cid:36)(cid:42)(cid:41)(cid:54)(cid:48)(cid:53)(cid:49)(cid:44)(cid:47)(cid:39)(cid:53)(cid:51)(cid:54)(cid:39)(cid:44)(cid:47)(cid:42)(cid:39)(cid:36)(cid:47)(cid:52)(cid:39)(cid:54)(cid:42)(cid:52)(cid:48)(cid:54)
+(cid:26)(cid:25)(cid:24)(cid:23)(cid:25)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:37)(cid:43)(cid:45)(cid:35)(cid:47)(cid:52)(cid:54)(cid:40)(cid:49)(cid:46)(cid:46)(cid:37)(cid:44)(cid:39)(cid:54)(cid:36)(cid:42)(cid:45)(cid:54)(cid:20)(cid:47)(cid:54)(cid:44)(cid:47)(cid:18)(cid:49)(cid:53)(cid:44)(cid:47)(cid:48)(cid:54)(cid:9)(cid:54)(cid:51)(cid:34)(cid:47)(cid:40)(cid:39)(cid:54)(cid:53)(cid:36)(cid:42)(cid:35)(cid:53)(cid:52)(cid:35)(cid:54)(cid:42)(cid:52)(cid:48)(cid:32)(cid:37)(cid:44)(cid:54)(cid:47)(cid:51)(cid:34)(cid:37)(cid:51)(cid:42)(cid:44)(cid:48)(cid:53)(cid:37)(cid:35)(cid:44)(cid:42)(cid:46)(cid:34)(cid:45)(cid:54)(cid:36)(cid:42)(cid:45)(cid:54)(cid:20)(cid:47)(cid:54)
+(cid:21)(cid:22)(cid:20)(cid:19)(cid:18)(cid:17)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:53)(cid:52)(cid:48)(cid:53)(cid:51)(cid:42)(cid:39)(cid:47)(cid:48)(cid:54) first 30 mins.
+(cid:16)
+(cid:16)
+(cid:15)
+(cid:21)
+(cid:22)
+(cid:22)
+(cid:20)
+(cid:20)
+(cid:19)
+(cid:19)
+(cid:18)
+(cid:18)
+(cid:17)
+(cid:17)
+(cid:22)
+(cid:22)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)
+(cid:1)(cid:54)(cid:15)(cid:49)(cid:50)(cid:39)(cid:49)(cid:44)(cid:47)(cid:54)(cid:31)(cid:37)(cid:44)(cid:41)(cid:54)(cid:47)(cid:35)(cid:41)(cid:54)(cid:27)(cid:15)(cid:33)(cid:30)(cid:54)(cid:37)(cid:22)(cid:54)(cid:42)(cid:54)(cid:40)(cid:42)(cid:36)(cid:46)(cid:50)(cid:47)(cid:54)(cid:37)(cid:22)(cid:54)(cid:39)(cid:34)(cid:47)(cid:54)(cid:48)(cid:37)(cid:52)(cid:37)(cid:44)(cid:54)(cid:49)(cid:52)(cid:53)(cid:39)(cid:54)(cid:36)(cid:42)(cid:45)(cid:54)(cid:20)(cid:47)(cid:54)(cid:44)(cid:47)(cid:18)(cid:49)(cid:53)(cid:44)(cid:47)(cid:48)(cid:54)(cid:53)(cid:22)(cid:54)(cid:53)(cid:52)(cid:22)(cid:47)(cid:51)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:54)
+(cid:14)(cid:15)(cid:22)(cid:20)(cid:19)(cid:18)(cid:17)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:37)(cid:44)(cid:54)(cid:51)(cid:37)(cid:52)(cid:39)(cid:42)(cid:36)(cid:53)(cid:52)(cid:42)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:53)(cid:40)(cid:54)(cid:40)(cid:49)(cid:40)(cid:46)(cid:47)(cid:51)(cid:39)(cid:47)(cid:48)(cid:41)(cid:54)(cid:20)(cid:49)(cid:39)(cid:54)(cid:20)(cid:42)(cid:51)(cid:39)(cid:47)(cid:44)(cid:53)(cid:42)(cid:50)(cid:54)(cid:51)(cid:37)(cid:52)(cid:39)(cid:42)(cid:36)(cid:53)(cid:52)(cid:42)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:53)(cid:40)(cid:54)(cid:49)(cid:52)(cid:50)(cid:53)(cid:25)(cid:47)(cid:50)(cid:45)(cid:54)(cid:53)(cid:52)(cid:54)(cid:22)(cid:44)(cid:47)(cid:40)(cid:34)(cid:54)(cid:54)
+(cid:14)(cid:21)(cid:22)(cid:20)(cid:19)(cid:18)(cid:17)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:26)(cid:47)(cid:50)(cid:50)(cid:2)(cid:34)(cid:42)(cid:52)(cid:48)(cid:50)(cid:47)(cid:48)(cid:54)(cid:20)(cid:50)(cid:37)(cid:37)(cid:48)(cid:54)
+(cid:13)(cid:15)(cid:22)(cid:20)(cid:19)(cid:18)(cid:17)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1)(cid:54)(cid:1)(cid:52)(cid:39)(cid:53)(cid:46)(cid:45)(cid:44)(cid:47)(cid:39)(cid:53)(cid:51)(cid:40)(cid:54)(cid:31)(cid:47)(cid:35)(cid:41)(cid:54)(cid:36)(cid:47)(cid:50)(cid:37)(cid:43)(cid:53)(cid:51)(cid:42)(cid:36)(cid:30)(cid:54)(cid:36)(cid:42)(cid:45)(cid:54)(cid:20)(cid:47)(cid:54)(cid:44)(cid:47)(cid:18)(cid:49)(cid:53)(cid:44)(cid:47)(cid:48)(cid:54)(cid:53)(cid:52)(cid:54)(cid:40)(cid:37)(cid:36)(cid:47)(cid:54)(cid:51)(cid:42)(cid:40)(cid:47)(cid:40)(cid:54)(cid:31)(cid:44)(cid:47)(cid:52)(cid:42)(cid:50)(cid:54)(cid:22)(cid:49)(cid:52)(cid:51)(cid:39)(cid:53)(cid:37)(cid:52)(cid:54)(cid:36)(cid:49)(cid:40)(cid:39)(cid:54)
+(cid:12)(cid:21)(cid:22)(cid:20)(cid:19)(cid:18)(cid:17)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:20)(cid:47)(cid:54)(cid:37)(cid:25)(cid:30)(cid:54)
+(cid:16)(cid:22)(cid:11)(cid:23)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1)
+(cid:10)(cid:9)(cid:25)(cid:19)(cid:8)(cid:18)(cid:24)(cid:7)(cid:22)(cid:13)(cid:15)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1)
+(cid:20) (cid:25)(cid:19)(cid:20) (cid:19)(cid:18) (cid:4) (cid:17) (cid:17) (cid:22)(cid:6) (cid:22)(cid:24) (cid:22)(cid:24) (cid:17)(cid:22) (cid:5)(cid:5)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) Key: CRT = capillary refill time; IVF = intravenous fluid;
+(cid:18)(cid:4)(cid:4)(cid:5)(cid:4)(cid:5)(cid:22) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) T = temperature; P = pulse rate; RR = respiratory rate;
+(cid:3)(cid:18)(cid:5)(cid:22)(cid:6)(cid:22)(cid:19)(cid:5)(cid:4)(cid:24)(cid:7)(cid:7)(cid:2)(cid:22)(cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) (cid:1) BP = blood pressure; MMemb = mucous membrane;
+(cid:1)(cid:19)(cid:25)(cid:11)(cid:19)(cid:18)(cid:22)(cid:12)(cid:22)(cid:11)(cid:22)
+(cid:36) PCV = packed cell volume
+This example blood product administration sheet is available
+(cid:6)(cid:25)(cid:38)(cid:39)(cid:26)(cid:36)(cid:5)(cid:25)(cid:26)(cid:9)(cid:14)(cid:37)(cid:36)(cid:31)(cid:32)(cid:5)(cid:37)(cid:21)(cid:36)(cid:4)(cid:14)(cid:26)(cid:3)(cid:36)(cid:36)(cid:36)(cid:36)(cid:36)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:36)
+as supplementary material (see pages 428–429) for practices
+(cid:1)(cid:21)(cid:23)(cid:36)(cid:38)(cid:20)(cid:39)(cid:21)(cid:16)(cid:19)(cid:9)(cid:16)(cid:32)(cid:25)(cid:21)(cid:36)(cid:20)(cid:37)(cid:39)(cid:18)(cid:38)(cid:32)(cid:25)(cid:21)(cid:16)(cid:13)(cid:36)(cid:36)(cid:36)(cid:36)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:2)(cid:36) to adapt for their own use
+426
+JFMS CLINICAL PRACTICE\n\n===== PAGE 18 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+Table 4 Association of Veterinary Hematology and Transfusion Medicine (AVHTM) Consensus Working Group
+definitions of transfusion reactions
+Transfusion reaction Definition
+Acute transfusion reactions
+Acute haemolytic Acute, non-infectious, immunological or non-immunological reaction that occurs secondarily to accelerated
+transfusion reaction destruction of transfused or recipient red blood cells (RBCs) and is characterised by acute haemolysis. AHTRs
+(AHTR) occur during or within 24 h of blood product administration. Causes of AHTRs can be divided into blood type
+incompatibilities and other causes of damage to transfused blood cells. Blood type incompatibilities are
+immunological acute haemolytic reactions (type II hypersensitivity reactions) due to major or minor incompatibilities
+between donor and recipient RBCs. A classic example would be in the case of a type A unit of blood given to a type
+B cat. Non-immunological causes of AHTRs may include thermal, osmotic, mechanical or chemical factors that
+damage transfused blood cells
+Allergic reaction Acute immunological reaction that is secondary to a type I hypersensitivity response to an antigen within a blood
+product. This reaction occurs during or within 4 h of transfusion. It is characterised by clinical signs varying from
+transient and self-limiting to life-threatening anaphylaxis. Feline type I hypersensitivity reactions are typically
+respiratory (due to upper respiratory tract oedema, bronchoconstriction and excessive mucus production),
+although gastrointestinal signs and severe pruritus can also occur
+Febrile non-haemolytic Acute non-immunological or immunological reaction characterised by a temperature >39°C (102.5°F) and an increase
+transfusion reaction in temperature of >1°C (1.8°F) from the pre-transfusion body temperature, during or within 4 h of a transfusion, where
+(FNHTR) external warming, underlying patient infection, AHTR, TRALI (see below) and TTI (see below) have been ruled out
+Transfusion associated Acute, non-immunological reaction that is secondary to an increase in blood volume mediated by blood transfusion,
+circulatory overload characterised by acute respiratory distress and hydrostatic pulmonary oedema. This reaction occurs during or within
+(TACO) 6 h of transfusion. It is associated with clinical, echocardiographic, radiographic or laboratory evidence of left atrial
+hypertension or volume overload. These patients typically have a positive response to diuretic therapy
+Transfusion associated Acute, immunological reaction that is secondary to antigen–antibody interactions in the lungs. TRALI is characterised
+lung injury (TRALI) by acute hypoxaemia with evidence of non-cardiogenic pulmonary oedema on thoracic radiographs, during or within
+6 h of allogenic blood transfusion. Patients diagnosed with TRALI have no prior lung injury, no evidence of left atrial
+hypertension and no temporal relationship to an alternative risk factor for acute respiratory distress syndrome (ARDS)
+Transfusion associated Acute transfusion reaction characterised by the development of acute respiratory distress during or within 24 h of
+dyspnoea (TAD) the end of a transfusion where TACO, TRALI, allergic reaction and underlying pulmonary disease have been ruled out
+Hypotensive transfusion Acute, non-immunological reaction that is secondary to the infusion of stimulators of vasodilation and hypotension.
+reaction It is characterised by the rapid onset of significant hypotension during or shortly after the completion of a transfusion,
+in the absence of other causes of hypotension, and improvement with cessation of the infusion. There is usually a
+decrease in systolic blood pressure of at least 30 mmHg from baseline
+Citrate toxicity Acute, non-immunological reaction that is secondary to the transfusion of a large volume of blood with citrate as the
+anticoagulant, and is characterised by a significant systemic hypocalcaemia within hours of initiating the transfusion
+Hyperammonaemia Acute, non-immunological reaction that is secondary to hyperammonaemia and characterised by signs of
+development of encephalopathy (neurological signs such as ataxia, head pressing, circling, seizures and vomiting),
+during or immediately after (minutes to a few hours) blood transfusion of stored blood or stored blood components.
+It is a potentially life-threatening reaction in patients with liver disease (liver failure, portosystemic shunt) or in
+premature neonates with an immature functioning liver, which are unable to metabolise and excrete ammonia properly
+Acute-to-delayed transfusion reactions
+Transfusion transmitted Acute or delayed, non-immunological reaction secondary to the transfusion of pathogen-contaminated blood or
+infection (TTI) blood components. TTI can occur hours to years after the transfusion due to the presence of the infectious agent in
+the blood/blood component unit collected from an infected donor, or from pathogen contamination of blood/blood
+component units during processing, storage or transfusion. Clinical signs are highly dependent on the pathogen
+transmitted and its pathogenicity for cats, and the clinical status of the recipient
+Transfusion-associated Acute to delayed, immunological reaction that is secondary to donor lymphocytes engrafting on and eventually
+graft vs host disease attacking host tissue. TAGVHD occurs 48 h to 6 weeks following transfusion and has a high mortality rate in human
+(TAGVHD) patients (>90%). The reaction is characterised by a skin rash, diarrhoea, fever, hepatic dysfunction and bone marrow
+hypoplasia. Liver and skin histopathology have a characteristic appearance. In humans, it is most common in
+immunocompromised individuals or when special circumstances cause transient immunosuppression
+Delayed transfusion reactions
+Delayed haemolytic Delayed, non-infectious, immunological or non-immunological reaction that occurs secondarily to lysis or accelerated
+transfusion reaction (DHTR) clearance of transfused RBCs. Delayed haemolytic transfusion reactions occur 24 h to 28 days after blood product
+administration. Immunological DHTRs are typically caused by a secondary immune response to the donor’s RBCs.
+Non-immunological DHTRs occur due to thermal, osmotic, mechanical or chemical factors that damage transfused
+blood cells, causing delayed haemolysis
+Delayed serological Delayed, immunological reaction that is secondary to the development of new, clinically significant antibodies against
+transfusion reaction (DSTR) the transfused product without evidence of haemolysis. DSTRs occur 24 h to 28 days after a transfusion24
+Post-transfusion purpura Delayed, immunological reaction that is secondary to alloimmunisation against platelet antigens. PTP is
+(PTP) characterised by thrombocytopenia arising 5–12 days following transfusion of any platelet-containing blood product
+Reproduced with permission from the AVHTM98
+427
+JFMS CLINICAL PRACTICE\n\n===== PAGE 19 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+a crystalloid solution (see box below).
+Monitoring of the patient (temperature, pulse
+rate, mucous membrane colour and systolic
+blood pressure) should be continued for evi‑
+dence of shock. Serum and urine should be
+assessed for haemolysis and haemoglobinuria
+with sample centrifugation to look for evi‑
+dence of haemolysis of the transfused red cells
+(eg, red discolouration of serum or urine).
+Figure 10 This cat
+demonstrates facial swelling, Cats may develop signs of volume overload
+which can occur as a following a transfusion. This is of particular
+transfusion reaction. However,
+more common reactions concern in patients with cardiac disease, normo‑
+include vocalisation, an volaemic to hypervolaemic anaemic patients
+increase in body temperature,
+vomiting and salivation (eg, immune‑mediated haemolytic anaemia),
+and chronically or severely anaemic patients,
+haemolytic sequelae, such as transient increas‑ although, as mentioned above, transfusion‑
+es in body temperature, facial pruritis, facial associated volume overload in chronic anaemia
+swelling (Figure 10), vomiting and salivation. may be less of a clinical concern.95 If patients
+Increased vocalisation or agitation can often be become tachypnoeic following a transfusion, or
+a preceding sign to a non‑haemolytic reaction. develop a serous nasal discharge or conjunctival
+In a study of 126 cats receiving blood transfu‑ oedema, thoracic radiography or thoracic ultra‑
+sions, non‑haemolytic reactions (7.9%) were sound should be performed to evaluate for pleu‑
+more common than haemolytic reactions ral effusion, pulmonary oedema and to measure
+(0.8%).99 In another study of 91 cats, a transfu‑ a left atrial:aorta ratio. If pleural effusion is pre‑
+sion reaction was noted in only 1.2% of the cats.57 sent, thoracocentesis is indicated. If pulmonary
+The risk of a transfusion reaction increases oedema is present, furosemide 1–2 mg/kg IV is
+with subsequent transfusions (typically from given every 2 h as required (based on respirato‑
+2 days after an initial transfusion).24 However, ry auscultation, respiratory rate and response),
+in 27 cats that received multiple blood trans‑ and oxygen therapy should also be instigated.
+fusions, transfusion reactions remained
+uncommon.100 Appropriate record‑keeping is Supplementary material
+nonetheless essential so that all treating
+veterinarians are aware that the patient has The following files are available online:
+received a blood transfusion. < Video showing blood collection from
+Should the patient develop mild signs of a a donor cat under sedation using an open
+transfusion reaction (eg, mild, 1–2°C increase ISFM welcome endorsement collection system.
+in temperature or one episode of vomiting) of these Guidelines by the < Video showing blood collected via an
+American Association of
+then the transfusion rate should be reduced. If open system being attached to a
+Feline Practitioners (AAFP).
+marked clinical signs develop the transfusion haemofilter in preparation for transfusion
+should be stopped and blood replaced with to a recipient.
+Severe transfusion reactions
+SUMMARY points
+In the event of a severe transfusion reaction, the
+transfusion should be discontinued, and the < Feline blood donation and transfusion can be performed safely and
+patient assessed. If there are signs of shock effectively in veterinary practice, but the decision to undertake these
+(hypotension, pallor, tachycardia/bradycardia) a procedures must be made carefully.
+crystalloid fluid bolus (10 ml/kg) and adrenaline < Donor and recipient cats should be blood typed, and ideally
+(10–20 µg/kg of a 1:10,000 solution [100 µg/0.1 cross-matched if possible, prior to transfusion to avoid severe
+mg] per ml IV or IM) should be administered and transfusion reactions.
+can be followed by a continuous rate infusion of
+< The decision to administer a transfusion is based on the potential
+adrenaline. Antihistamines (eg, diphenhydramine
+recipient’s clinical condition and cause of anaemia, rather than
+1 mg/kg IV or IM) and corticosteroids (eg, hydro-
+PCV alone.
+cortisone 2–4 mg/kg IV or IM or dexamethasone
+< Donors should be assessed for health, temperament and infectious
+0.05–0.1 mg/kg IM or IV) may also be considered,
+agents and, in most cases, sedated appropriately for blood collection.
+although evidence for use of corticosteroids in
+acute transfusion reactions is limited and patient < Blood can be collected using an open or closed system and
+contraindications and potential adverse effects recipients should be monitored for signs of a transfusion reaction.
+should be taken into account. The donor blood < If compatible feline RBCs are not available, xenotransfusion
+sample/unit should be assessed by checking a may be given only once, in certain situations,
+PCV for evidence of haemolysis and potentially allowing for short-term stabilisation of the recipient,
+submitting a sample for bacterial culture. but destruction of donated RBCs occurs after a short time.
+428
+JFMS CLINICAL PRACTICE\n\n===== PAGE 20 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+< Blood product administration sheet. 7 Malik R, Griffin dL, White Jd, et al. The prevalence of feline A/B
+< Cat Carer Guide: ‘Tranfusion of blood and blood blood types in the Sydney region. Aust Vet J 2005; 83: 38–44.
+products in cats: information for owners’. 8 Cattin RP. Distribution of blood types in a sample of 245
+New Zealand non-purebred cats. N Z Vet J 2016; 64: 154 –157.
+Acknowledgements
+9 Nectoux A, Guidetti M, Barthelemy A, et al. Assessment of risks
+of feline mismatched transfusion and neonatal isoerythrolysis
+ISFM are grateful to Andrea Harvey for highlighting some of the in the Lyon (France) area. JFMS Open Rep 2019; 5. doi:
+ethical and practical issues that drove the development of these 10.1177/2055116919863175.
+Guidelines, and also to Karen Hiestand for input into the drafting 10 di Tommaso M, Miglio A, Crisi PE, et al. Frequency of blood
+of the ‘Ethical considerations’ Appendix. types A, B and AB in a population of non-pedigree domestic
+cats from Central Italy. Animals (Basel) 2020; 10: 1937. doi:
+Conflict of interest
+10.3390/ani10101937.
+11 Spada E, Perego R, Baggiani L, et al. Prevalence of blood types
+Séverine Tasker has received financial support for infectious and alloantibodies of the AB blood group system in non-
+disease research from BSAVA PetSavers, Journal of Comparative pedigree cats from Northern (Lombardy) and Southern (Sicily)
+Pathology Educational Trust, Langford Trust, Langford Vets Italy. Animals (Basel) 2020; 10: 1129. doi: 10.3390/ani10071129.
+Clinical Research Fund, Morris Animal Foundation, 12 Proverbio d, Spada E, Perego R, et al. Assessment of blood types
+NERC/BBSRC/MRC, PetPlan Charitable Trust, South West of Ragdoll cats for transfusion purposes. Vet Clin Pathol 2013; 42:
+Biosciences DTP, Wellcome Trust and Zoetis Animal Health. 157–162.
+Paulo Steagall has provided consultancy services to Boehringer 13 Knottenbelt CM, day MJ, Cripps PJ, et al. Measurement of titres
+Ingelheim, Dechra Pharmaceuticals, Elanco, Procyon and Zoetis; of naturally occurring alloantibodies against feline blood group
+has acted as a key opinion leader to Boehringer Ingelheim, Dechra antigens in the UK. J Small Anim Pract 1999; 40: 365–370.
+Pharmaceuticals, Elanco, Vetoquinol and Zoetis; and has received 14 Bucheler J and Giger U. Alloantibodies against A and B blood
+speaker honoraria from Boehringer Ingelheim, Dechra types in cats. Vet Immunol Immunopathol 1993; 38: 283–295.
+Pharmaceuticals, Elanco and Zoetis. The other members of the 15 Axner E. A questionnaire on survival of kittens depending on the
+Panel have no conflicts of interest to declare. blood groups of the parents. J Feline Med Surg 2014; 16: 781–787.
+16 Cain GR and Suzuki Y. Presumptive neonatal isoerythrolysis in
+Funding
+cats. J Am Vet Med Assoc 1985; 187: 46–48.
+17 Rudd S. Feline blood types and blood typing methods. in:
+The authors received no financial support for the research, Harvey AM and Tasker S (eds). BSAVA manual of feline practice:
+authorship, and/or publication of this article. a foundation manual. Gloucester: British Small Animal Veterinary
+Association, 2013, pp 454–456.
+Ethical approval
+18 Seth M, Jackson KV and Giger U. Comparison of five blood-
+typing methods for the feline AB blood group system. Am J Vet
+This work did not involve the use of animals and, therefore, ethi‑ Res 2011; 72: 203–209.
+cal approval was not specifically required for publication in JFMS. 19 Hourani L, Weingart C and Kohn B. Evaluation of a novel feline
+AB blood typing device. J Feline Med Surg 2014; 16: 826–831.
+Informed consent
+20 Spada E, Proverbio d, Baggiani L, et al. Evaluation of an
+immunochromatographic test for feline AB system blood
+This work did not involve the use of animals (including cadavers) typing. J Vet Emerg Crit Care (San Antonio) 2016; 26: 137–141.
+and, therefore, informed consent was not required. For any ani‑ 21 Goy-Thollot i, Nectoux A, Guidetti M, et al. Detection of natural-
+mals or people individually identifiable within this publication, ly occurring alloantibody by an in-clinic antiglobulin-enhanced
+informed consent (verbal or written) for their use in the publica‑ and standard crossmatch gel column test in non-transfused
+tion was obtained from the people involved. domestic shorthair cats. J Vet Intern Med 2019; 33: 588–595.
+22 Weinstein NM, Blais MC, Harris K, et al. A newly recognized
+References
+blood group in domestic shorthair cats: the Mik red cell anti-
+gen. J Vet Intern Med 2007; 21: 287–292.
+1 Barfield d and Adamantos S. Feline blood transfusions: a pinker 23 Tasker S, Barker EN, day MJ, et al. Feline blood genotyping ver-
+shade of pale. J Feline Med Surg 2011; 13: 11–23. sus phenotyping, and detection of non-AB blood type incom-
+2 davidow B. Transfusion medicine in small animals. Vet Clin patibilities in UK cats. J Small Anim Pract 2014; 55: 185–189.
+North Am Small Anim Pract 2013; 43: 735–756. 24 Hourani L, Weingart C and Kohn B. Alloimmunisation in
+3 Knottenbelt CM, Addie dd, day MJ, et al. Determination of the transfused patients: serial cross-matching in a population of
+prevalence of feline blood types in the UK. J Small Anim Pract hospitalised cats. J Feline Med Surg 2017; 19: 1231–1237.
+1999; 40: 115–118. 25 McClosky ME, Cimino Brown d, Weinstein NM, et al. Prevalence
+4 Forcada Y, Guitian J and Gibson G. Frequencies of feline blood of naturally occurring non-AB blood type incompatibilities
+types at a referral hospital in the south east of England. J Small in cats and influence of crossmatch on transfusion outcomes.
+Anim Pract 2007; 48: 570–573. J Vet Intern Med 2018; 32: 1934–1942.
+5 Gunn-Moore dA, Simpson KE and day MJ. Blood types in 26 Sylvane B, Prittie J, Hohenhaus AE, et al. Effect of cross-match
+Bengal cats in the UK. J Feline Med Surg 2009; 11: 826–828. on volume after transfusion of packed red blood cells in trans-
+6 Jensen AL, olesen AB and Arnbjerg J. Distribution of feline fusion-naive anemic cats. J Vet Intern Med 2018; 32: 1077–1083.
+blood types detected in the Copenhagen area of Denmark. 27 Binvel M, Arsenault J, depre B, et al. Identification of 5 novel
+Acta Vet Scand 1994; 35: 121 –124. feline erythrocyte antigens based on the presence of naturally
+429
+JFMS CLINICAL PRACTICE\n\n===== PAGE 21 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+occurring alloantibodies. J Vet Intern Med 2021; 35: 234–244. 46 Nentwig A, Meli ML, Schrack J, et al. First report of Cytauxzoon
+28 Humm KR and Chan dL. Prospective evaluation of the utility of sp. infection in domestic cats in Switzerland: natural and
+cross-matching prior to first transfusion in cats: 101 cases. transfusion-transmitted infections. Parasit Vectors 2018; 11: 292.
+J Small Anim Pract 2020; 61: 285–291. doi: 10.1186/s13071-018-2728-5.
+29 Martinez-Sogues L, Blois SL, Manzanilla EG, et al. Exploration of 47 Hartmann K, et al; European Advisory Board on Cat diseases.
+risk factors for non-survival and for transfusion-associated Babesiosis. ABCd guidelines. http://www.abcdcatsvets.org/
+complications in cats receiving red cell transfusions: 450 cases babesiosis/ (updated August 2020, accessed February 13, 2021).
+(2009 to 2017). J Small Anim Pract 2020; 61: 177–184. 48 Pennisi MG, et al; European Advisory Board on Cat diseases.
+30 Safrany B and Adamantos S. Is a cross-match necessary before Cytauxzoonosis. http://www.abcdcatsvets.org/cytauxzoono-
+a cat’s first blood transfusion? Vet Evidence 2020; 5. doi: sis/ (updated January 2021, accessed February 13, 2021).
+10.18849/VE.V5i2.306. 49 Meinkoth JH and Kocan AA. Feline cytauxzoonosis. Vet Clin
+31 Poh d, Claus M, Smart L, et al. Transfusion practice in Australia: North Am Small Anim Pract 2005; 35: 89–101, vi.
+an internet-based survey. Aust Vet J 2021; doi: 10.1111/avj.13049. 50 Paige CF, Abbott JA, Elvinger F, et al. Prevalence of cardio -
+32 Vap LM, Harr KE, Arnold JE, et al. ASVCP quality assurance myopathy in apparently healthy cats. J Am Vet Med Assoc 2009;
+guidelines: control of preanalytical and analytical factors for 234: 1398–1403.
+hematology for mammalian and nonmammalian species, 51 Fox PR, Rush JE, Reynolds CA, et al. Multicenter evaluation of
+hemostasis, and crossmatching in veterinary laboratories. plasma N-terminal probrain natriuretic peptide (NT-pro BNP)
+Vet Clin Pathol 2012; 41: 8–17. as a biochemical screening test for asymptomatic (occult)
+33 Pennisi MG, et al; European Advisory Board on Cat diseases. cardiomyopathy in cats. J Vet Intern Med 2011; 25: 1010–1016.
+Blood transfusion in cats. ABCd guidelines. http://www.abcd- 52 Winzelberg olson S and Hohenhaus AE. Feline non-regenerative
+catsvets.org/blood-transfusion-in-cats/ (updated March 2020, anemia: diagnostic and treatment recommendations. J Feline
+accessed February 13, 2021). Med Surg 2019; 21: 615–631.
+34 Wardrop KJ, Birkenheuer A, Blais MC, et al. Update on canine 53 Balakrishnan A, drobatz KJ and Reineke EL. Development of
+and feline blood donor screening for blood-borne pathogens. anemia, phlebotomy practices, and blood transfusion require-
+J Vet Intern Med 2016; 30: 15–35. ments in 45 critically ill cats (2009–2011). J Vet Emerg Crit Care
+35 Gary AT, Richmond HL, Tasker S, et al. Survival of Mycoplasma 2016; 26: 406–411.
+haemofelis and ‘Candidatus Mycoplasma haemominutum’ in 54 Lane WG and Sinnott-Stutzman VB. Retrospective evaluation of
+blood of cats used for transfusions. J Feline Med Surg 2006; 8: fresh frozen plasma use in 121 cats: 2009–2016. J Vet Emerg Crit
+321–326. Care 2020; 30: 558–566.
+36 Barker EN. Update on feline hemoplasmosis. Vet Clin North Am 55 Mansi ET, Waldrop JE and davidow EB. Retrospective evalua-
+Small Anim Pract 2019; 49: 733–743. tion of the indications, safety and effects of fresh frozen plasma
+37 Alvarez-Fernandez A, Breitschwerdt EB and Solano-Gallego L. transfusions in 36 cats (2014–2018). J Feline Med Surg 2020; 22:
+Bartonella infections in cats and dogs including zoonotic 696–704.
+aspects. Parasit Vectors 2018; 11: 624. doi: 10.1186/s13071-018- 56 Kohn B, Weingart C and Giger U. Haemorrhage in seven cats
+3152-6. with suspected anticoagulant rodenticide intoxication. J Feline
+38 Bradbury CA, Green M, Brewer M, et al. Survival of Bartonella Med Surg 2003; 5: 295–304.
+henselae in the blood of cats used for transfusion [abstract]. 57 Weingart C, Giger U and Kohn B. Whole blood transfusions in
+J Vet Intern Med 2010; 24: 759. 91 cats: a clinical evaluation. J Feline Med Surg 2004; 6: 139–148.
+39 Kordick dL and Breitschwerdt EB. Relapsing bacteremia after 58 Bebar KN, Sinnott V and Brooks MB. Recurrent hemorrhage
+blood transmission of Bartonella henselae to cats. Am J Vet Res caused by type 3 von Willebrand disease in a domestic long-
+1997; 58: 492–497. haired cat. J Vet Emerg Crit Care 2014; 24: 326–331.
+40 Hartmann K. Clinical aspects of feline retroviruses: a review. 59 French TW, Fox LE, Randolph JF, et al. A bleeding disorder (von
+Viruses 2012; 4: 2684–2710. Willebrand’s disease) in a Himalayan cat. J Am Vet Med Assoc
+41 Nesina S, Helfer-Hungerbuehler AK, Riond B, et al. Retroviral 1987; 190: 437–439.
+DNA – the silent winner: blood transfusion containing latent 60 Maggio-Price L and dodds WJ. Factor IX deficiency (hemophilia
+feline leukemia provirus causes infection and disease in naive B) in a family of British shorthair cats. J Am Vet Med Assoc 1993;
+recipient cats. Retrovirology 2015; 12: 105. doi: 10.1186/s12977- 203: 1702–1704.
+015-0231-z. 61 Cotter SM, Brenner RM and dodds WJ. Hemophilia A in three
+42 Little S, Levy J, Hartmann K, et al. 2020 AAFP feline retrovirus test- unrelated cats. J Am Vet Med Assoc 1978; 172: 166–168.
+ing and management guidelines. J Feline Med Surg 2020; 22: 5–30. 62 Snow SJ, Ari Jutkowitz L and Brown AJ. Trends in plasma trans-
+43 Lappin MR, Tasker S and Roura X. Role of vector-borne fusion at a veterinary teaching hospital: 308 patients (1996–1998
+pathogens in the development of fever in cats: 2. Tick- and and 2006–2008). J Vet Emerg Crit Care 2010; 20: 441–445.
+sandfly-associated diseases. J Feline Med Surg 2020; 22: 41–48. 63 Wondratschek C, Weingart C and Kohn B. Primary immune-
+44 Pennisi MG, Hofmann-Lehmann R, Radford Ad, et al. mediated thrombocytopenia in cats. J Am Anim Hosp Assoc 2010;
+Anaplasma, Ehrlichia and Rickettsia species infections in cats: 46: 12–19.
+European guidelines from the ABCD on prevention and man- 64 Callan MB, Griot-Wenk ME, Hackner SG, et al. Persistent throm-
+agement. J Feline Med Surg 2017; 19: 542–548. bopathy causing bleeding in 2 domestic shorthaired cats. J Vet
+45 Lappin MR, Griffin B, Brunt J, et al. Prevalence of Bartonella Intern Med 2000; 14: 217–220.
+species, haemoplasma species, Ehrlichia species, Anaplasma 65 Bovens C and Gruffydd-Jones T. Xenotransfusion with canine
+phagocytophilum, and Neorickettsia risticii DNA in the blood blood in the feline species: review of the literature. J Feline Med
+of cats and their fleas in the United States. J Feline Med Surg 2006; Surg 2013; 15: 62–67.
+8: 85–90. 66 oron L, Bruchim Y, Klainbart S, et al. Ultrasound-guided
+430
+JFMS CLINICAL PRACTICE\n\n===== PAGE 22 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+intra- cardiac xenotransfusion of canine packed red blood cells dexmedetomidine in healthy cats. J Feline Med Surg 2018; 20:
+and epinephrine to the left ventricle of a severely anemic cat 973–979.
+during cardiopulmonary resuscitation. J Vet Emerg Crit Care 84 Rudd S. Blood transfusion. in: Harvey AM and Tasker S (eds).
+2017; 27: 218–223. BSAVA manual of feline practice: a foundation manual.
+67 Euler CC, Raj K, Mizukami K, et al. Xenotransfusion of anemic Gloucester: British Small Animal Veterinary Association, 2013,
+cats with blood compatibility issues: pre- and posttransfusion pp 456–460.
+laboratory diagnostic and crossmatching studies. Vet Clin Pathol 85 Mansell CL and Boller M. Blood component processing and
+2016; 45: 244–253. storage. I. in: Yagi K and Holowaychuk MK (eds). Manual of
+68 Le Gal A, Thomas EK and Humm KR. Xenotransfusion of canine veterinary transfusion medicine and blood banking. Ames, iA:
+blood to cats: a review of 49 cases and their outcome. J Small Wiley Blackwell, 2016, pp 237–255.
+Anim Pract 2020; 61: 156–162. doi: 10.1111/jsap.13096. 86 Spada E, Perego R, Baggiani L, et al. Evaluation of feline packed
+69 Marion RS and Smith JE. Survival of erythrocytes after autolo- red blood cell units obtained by blood sedimentation and
+gous and allogeneic transfusion in cats. J Am Vet Med Assoc 1983; stored for 42 days for transfusion purposes [abstract]. J Vet Intern
+183: 1437–1439. Med 2020; 34: 418.
+70 Cole LP and Humm K. Twelve autologous blood transfusions in 87 Crestani C, Stefani A, Carminato A, et al. In vitro assessment of
+eight cats with haemoperitoneum. J Feline Med Surg 2019; 21: quality of citrate-phosphate-dextrose-adenine-1 preserved
+481–487. feline blood collected by a commercial closed system. J Vet
+71 doolin KS, Chan dL, Adamantos S, et al. Retrospective evalua- Intern Med 2018; 32: 1051–1059.
+tion of unexpected events during collection of blood donations 88 FuturLab. The first closed system for blood collection and
+performed with and without sedation in cats (2010–2013). J Vet storage for cats. www.youtube.com/watch?v=fPFg8oGSwRk
+Emerg Crit Care 2017; 27: 555–560. (accessed February 6, 2021).
+72 Rand JS, Kinnaird E, Baglioni A, et al. Acute stress hyper- 89 Binvel M, Fairbrother JH, Levesque V, et al. Comparison of a
+glycemia in cats is associated with struggling and increased closed system and an open system for blood collection in feline
+concentrations of lactate and norepinephrine. J Vet Intern Med donors. J Feline Med Surg 2020; 22: 1121–1128.
+2002; 16: 123–132. 90 Spada E, Perego R, Baggiani L, et al. Hematological, biochemical
+73 Reader RC, Barton BA and Abelson AL. Comparison of two intra- and microbiological evaluation of feline whole blood units col-
+muscular sedation protocols on sedation, recovery and ease of lected using an open system and stored for 35 days. Vet J 2019;
+venipuncture for cats undergoing blood donation. J Feline Med 254: 105396.
+Surg 2019; 21: 95–102. 91 Spada E, Proverbio d, Baggiani L, et al. Change in haematologi-
+74 Reynolds BS, Geffre A, Bourges-Abella NH, et al. Effects of intra- cal and selected biochemical parameters measured in feline
+venous, low-dose ketamine-diazepam sedation on the results of blood donors and feline whole blood donated units. J Feline Med
+hematologic, plasma biochemical, and coagulation analyses in Surg 2017; 19: 375–381.
+cats. J Am Vet Med Assoc 2012; 240: 287–293. 92 Abreu TAM, oliveira AST, Ferreira RRF, et al. Feline blood dona-
+75 Troyer HL, Feeman WE, Gray TL, et al. Comparing chemical tion adverse reactions: classification and description of acute
+restraint and anesthetic protocols used for blood donation in cats: and delayed reactions in a donor population. J Feline Med Surg.
+one teaching hospital’s experience. Vet Med 2005; 100: 652–658. in press 2021.
+76 Killos MB, Graham LF and Lee J. Comparison of two anesthetic 93 Heikes BW and Ruaux CG. Effect of syringe and aggregate filter
+protocols for feline blood donation. Vet Anaesth Analg 2010; 37: administration on survival of transfused autologous fresh
+230–239. feline red blood cells. J Vet Emerg Crit Care 2014; 24: 162–167.
+77 dhumeaux MP, Snead EC, Epp TY, et al. Effects of a standardized 94 Blasi-Brugé C, Sanchez iM, Ferreira RRF, et al. Quantitative
+anesthetic protocol on hematologic variables in healthy cats. assessment of infusion pump-mediated haemolysis in feline
+J Feline Med Surg 2012; 14: 701–705. packed red blood cell transfusions. J Feline Med Surg. Epub
+78 Biermann K, Hungerbuhler S, Mischke R, et al. Sedative, ahead of print 15 March 2021. doi: 10.1177/1098612X21999990.
+cardiovascular, haematologic and biochemical effects of four 95 Reed N, Espadas i, Lalor SM, et al. Assessment of five formulae
+different drug combinations administered intramuscularly in to predict post-transfusion volume in cats. J Feline Med Surg
+cats. Vet Anaesth Analg 2012; 39: 137–150. 2014; 16: 651–656.
+79 Granfone MC, Walker JM and Smith LJ. Evaluation of an intra- 96 Wilson HE, Jasani S, Wagner TB, et al. Signs of left heart volume
+muscular butorphanol and alfaxalone protocol for feline blood overload in severely anaemic cats. J Feline Med Surg 2010; 12:
+donation: a pilot study. J Feline Med Surg 2018; 20: 793–798. 904–909.
+80 Muir W, Lerche P, Wiese A, et al. The cardiorespiratory and anes- 97 donaldson RE, Seo J, Fuentes VL, et al. Left heart dimensions
+thetic effects of clinical and supraclinical doses of alfaxalone in in anemic cats and dogs before and after blood transfusion.
+cats. Vet Anaesth Analg 2009; 36: 42–54. J Vet Intern Med 2021; 35: 43–50.
+81 Spada E, Proverbio d, Bagnagatti de Giorgi G, et al. Clinical and 98 davidow B, Blois S, Goy-Thollot i, et al. Association of
+haematological responses of feline blood donors anaesthetised Veterinary Hematology and Transfusion Medicine (AVHTM)
+with a tiletamine and zolazepam combination. J Feline Med Surg Transfusion Reaction Small Animal Consensus Statement
+2015; 17: 338–341. (TRACS). Part one: definitions and clinical signs. J Vet Emerg
+82 iazbik MC, Gomez ochoa P, Westendorf N, et al. Effects of blood Crit Care. in press 2021. doi: 10.1111/vec.13044.2021.
+collection for transfusion on arterial blood pressure, heart rate, 99 Klaser dA, Reine NJ and Hohenhaus AE. Red blood cell transfu-
+and PCV in cats. J Vet Intern Med 2007; 21: 1181–1184. sions in cats: 126 cases (1999). J Am Vet Med Assoc 2005; 226: 920–923.
+83 Cremer J and Ricco CH. Cardiovascular, respiratory and sedative 100Roux FA, deschamps JY, Blais MC, et al. Multiple red cell trans-
+effects of intramuscular alfaxalone, butorphanol and fusions in 27 cats (2003–2006): indications, complications and
+dexmedetomidine compared with ketamine, butorphanol and outcomes. J Feline Med Surg 2008; 10: 213–218.
+431
+JFMS CLINICAL PRACTICE\n\n===== PAGE 23 =====\nSPECIAL ARticle / 2021 ISFM guidelines on feline blood transfusion
+t
+Appendix: Ethical considerations
+There are important considerations around blood collection and transfusion, outside of the clinical procedure itself. Foremost,
+there is a need to balance the risk/benefit by carefully looking at both the donor and recipient in each case. Blood is a very
+precious resource harvested for the benefit of one cat, with no benefit for the donor. In practical terms, blood transfusions are
+not without risk to the donor, so there are many considerations and justifications needed prior to blood collection and blood
+product administration. Owners of donor cats must be well informed of the process and risks; for unowned cats, those respon-
+sible for their wellbeing must come to reasonable decisions for each individual.
+Legal implications to the donor cat’s owner: they need to be well informed of the
+The laws around blood collection and transfusion will vary inter- process and risks, courtesy of excellent communication (both
+nationally and readers are advised to familiarise themselves with verbal and written), so that they can truly provide informed
+local laws and also professional body guidelines in their region. consent. A Cat Carer Guide providing information for owners is
+available alongside these Guidelines as supplementary material
+Recipient suitability and at icatcare.org/advice/cat-carer-guides.
+Recipient cats may need the products to improve their health,
+but blood typing and, ideally, cross-matching are vital to ensure Source of donor cat: blood banking and commercial supply
+the treatment is not actually detrimental. Similarly, close moni- During the past few years there has been an increase in
+toring of cats receiving transfusions and prompt management of ‘blood banking’ and international transport of blood products.
+a transfusion reaction are important. Clinicians are expected to Cat blood and blood products can now be ordered with the click
+consider adverse effects of medications, and blood products of a mouse. This has the potential to divorce the clinician from
+are no different. Risk of reaction and expected longevity of the the process of blood collection but should not absolve them of
+transfusion should be examined. an ethical responsibility to the donor cats. While in this situation
+the clinician’s priority is the recipient cat under their care, knowl-
+Recipient prognosis edge of how the cats are sourced for blood banks (eg, owned or
+Blood/blood products are precious resources. The clinician, unowned cats) and an understanding of the level of care they
+therefore, has a responsibility to use the blood carefully, and not are given when blood is collected, plus examination of adverse
+on cases with a very poor prognosis that are unlikely to survive effect recording and reporting, is advised.
+or are likely to be imminently euthanased. Additionally, transfu-
+sion of blood products carries risks to the recipient, and so should The 3 ‘Rs’
+not be undertaken without evidence of a clear benefit to the When seeking ethics approval for a study using live animals,
+patient. In this situation alternative supportive medications should researchers must apply what are called the ‘3Rs’ (reduction,
+be considered while prognosis is examined and discussed. refinement, replacement). As applied to feline blood transfu-
+sions this would involve: reduction by
+Source of donor cat: in-clinic donors collecting blood only when needed,
+In many areas of the world, donors Is ‘donor’ the correct term? ensuring no wastage or inappropriate
+are cats owned by clinic staff, the ‘Donor’ may be the incorrect word to use in this use of blood products; refinement of
+recipient cat owner’s other cats or context, as it implies consent or a ‘gift’ that the the collection procedure to ensure
+cats volunteered after public appeals. cats are unable to decide to give themselves. wellbeing of the donor cat is
+Unowned cats may also be used as ‘Harvesting’ is a less comfortable term for blood prioritised; and replacement through
+donors in some areas. The clinician collection but it may be more accurate. The donor use of a synthetic blood product,
+has a duty of care to ensure the is put at risk, with sedation (in most cases), although none are currently available.
+health and wellbeing of both the venepuncture and removal of blood. This is a
+donor and recipient cat in this situa- relatively unique situation where a veterinary Staff experience
+tion. The includes ensuring blood intervention has no benefit for the cat, and Blood collection and administration
+collection will not have a negative therefore requires robust ethical consideration should not be approached without
+clinical impact, but also that stress and justification. training. A knowledge of blood type
+involved in the process does not have and compatibility is important, as is
+a negative welfare impact. The temper- practical training on, for example, effi-
+ament of donors should be assessed by experienced staff, and cient venepuncture to avoid trauma to the vessels. Staff should be
+cats suffering stress and anxiety in the clinic excluded as donors. able to recognise signs of a transfusion reaction and respond
+All clinics (accredited ISFM Cat Friendly Clinics included) should appropriately. Additionally, understanding and recognition of the
+have a process for minimising distress to donor cats and causes and manifestations of stress is vital to avoid any compro-
+optimising their health. Additionally, clinicians have a duty of care mise in donor and recipient welfare.
+In summary, when planning a feline blood or blood product transfusion there are multiple considerations, both clinical and
+non-clinical, that must be taken into account by the attending clinician. While potentially lifesaving, the procedure can have a
+negative effect on the donor and the recipient if performed incorrectly. It is the clinician’s responsibility to care appropriately for
+both parties, with health and wellbeing prioritised equally.
+432 Available online at jfms.com
+JFMS CLINICAL PRACTICE Article reuse guidelines: sagepub.co.uk/journals-permissions
+For reuse of images only, contact the corresponding author

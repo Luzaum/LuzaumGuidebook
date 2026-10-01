@@ -1,0 +1,263 @@
+CHAPTER 176
+•
+Nonneoplastic White Blood Cell Disorders and Pancytopenia
+905
+eBooks.Health.Elsevier.com
+to various underlying bone marrow disorders, including IMHA, 
+sepsis (ch. 18), hemic neoplasia infiltrating bone marrow 
+(ch. 3), and drugs/medications.
+MYELODYSPLASIA
+Primary Myelodysplastic Syndromes (MDS)
+True primary MDS are clonal (neoplastic) disorders arising from 
+mutations in hematopoietic stem and progenitor cells. Testing for 
+clonality to conrm primary MDS is not available for dogs and 
+cats, and the dierentiation between primary MDS and second-
+ary dysmyelopoiesis therefore can be dicult.6 A combination 
+of consistent history, clinical signs and accurate categorization 
+of hematopathologic abnormalities is needed for diagnosis.7
+Nonregenerative anemia is a necessary feature in primary MDS 
+of both dogs and cats (ch. 17). Feline retroviruses, particularly 
+FeLV, can cause MDS and dysmyelopoiesis (ch. 199); a clonal 
+origin to FeLV-associated myelodysplasia and acute myeloid 
+leukemia is proven.8 Primary MDS is rare in dogs and a clonal 
+origin has not been proven.9 Morphologic changes in blood or 
+bone marrow that suggest primary MDS instead of secondary 
+dysmyelopoiesis include higher numbers of immature precur-
+sors, dysplastic cells, and/or megaloblastic erythroid precursors 
+(Figure 176.1, G-J). Additionally, a history of drug/toxin expo-
+sure or concurrent disease may support secondary dysmyelopoi-
+esis instead of primary MDS. Primary MDS is similar to chronic 
+myeloid leukemia: both feature anemia or multiple cytopenias 
+and normal/hypercellular bone marrow. Marrow blast cells com-
+prise less than 0% of nucleated cells (a few veterinary references 
+cite a cuto of 30%30) in both disorders. A key dierence is the 
+lack of increased myeloid cells (predominantly mature) in circu-
+lation of patients with primary MDS.
+Modied versions of the French-American-British (FAB) 
+working group scheme for classication of MDS in human medi-
+cine are oen used in small animal medicine.7 e following is 
+one modied-FAB scheme for classication of primary MDS in 
+small animals.9 Note that the 016 revision to the World Health 
+Organization (WHO) classication of human myeloid neoplasms 
+includes reclassication of MDS subtypes,31 but published veteri-
+nary classication schemes do not currently reect this revision.
+MDS–Excess Blasts (MDS-EB) MDS-EB is likely the 
+most common MDS in dogs and is associated with more severe 
+clinical signs and a poor prognosis at presentation.3 Neutrope-
+nia, thrombocytopenia and nonregenerative anemia are associ-
+ated with MDS-EB. Increased myeloblasts (up to 0%; note that 
+>0% myeloblasts is considered diagnostic for acute myeloid 
+leukemia per WHO classification but >30% erythroblasts in mar-
+row is required to diagnose erythroid leukemia33) and dyspla-
+sia of all three cell lines are found in bone marrow. Dysplastic 
+changes include asynchronous maturation in all cell lines, hyper-
+segmented granulocytes, dispersed megakaryocyte nuclei, and 
+erythroid dysplasia as described below for MDS-refractory cyto-
+penia. The prognosis for dogs with MDS-EB is worse than that 
+for other forms of MDS.34 MDS-EB is reported in cats from 1 to 
+17 years old.35 Cats with MDS-EB comprise between 31-65% of 
+all cats with primary MDS if cats with secondary dysmyelopoiesis 
+are excluded.35 In one study, 6 of 13 cats with MDS-EB tested pos-
+itive for FeLV infection. Other studies found higher percentages 
+of FeLV-positivity; discrepant results may be due to decreasing 
+FeLV prevalence and/or differing prevalence between geographic 
+regions. As for dogs, the prognosis for cats with MDS-EB tends 
+to be worse and the risk of developing acute myeloid leukemia 
+higher than with other forms of feline MDS.
+MDS–Refractory Cytopenia (MDS-RC) MDS-RC tends 
+to occur in older dogs and it has an insidious onset of clinical 
+signs due to progressively worsening nonregenerative anemia. 
+Other cytopenias, including neutropenia, can occur but are 
+uncommon. Bone marrow may be hypercellular due to ery-
+throid hyperplasia, or normocellular. Erythroid dysplasia includ-
+ing nuclear:cytoplasmic asynchrony, binucleation, and nuclear 
+fragmentation is a characteristic finding.3 Rubriblasts may be 
+increased (up 30% of all nucleated bone marrow cells). Descrip-
+tions of MDS-RC in cats often include cytopenias and dysplastic 
+changes in multiple blood cell lineages; it is proposed that such 
+cases represent MDS-RCMD (see below) rather than MDS-RC in 
+this classification scheme.
+MDS–Refractory Cytopenia With Multilineage Dys-
+plasia (MDS-RCMD) MDS-RCMD is defined as dysplasia in 
+at least  cell lineages in bone marrow, similar to MDS-EB but 
+without a substantial increase in myeloblasts (<5% myeloblasts 
+for MDS-RCMD). MDS characterized by refractory anemia with 
+sideroblastic differentiation can be included in this category, as 
+dysplasia occurs in multiple lineages.9 In cats, experimental 
+infection with FeLV produced hematologic disease resembling 
+MDS-RCMD, with cytopenias and dysplasia in multiple cell 
+lines.36 Several cats with sideroblastic forms of MDS-RCMD are 
+Differential Diagnosis for Pancytopenia due to Bone 
+Marrow Disease
+Responsive (Hypercellular or Normocellular Marrow) = 
+Ineffective Hematopoiesis
+•
+Immune-mediated destruction of hemic precursors of multiple
+lineages
+•
+Dysplasia: Primary or secondary myelodysplastic syndrome or
+secondary dysmyelopoiesis
+•
+Medications: Cephalosporins,14 phenobarbital and primidone,6
+and vincristine (note that these drugs may cause pancytopenia 
+via dysplasia, immune-mediated destruction, and/or general
+bone marrow suppression (see below)
+•
+Ehrlichia canis infection
+Non-responsive (Hypocellular or Acellular Marrow) = 
+General Marrow Suppression
+•
+Infectious diseases: Viral (e.g., parvoviral), fungal, Cytauxzoon 
+felis, Ehrlichia canis
+•
+Toxins/medications/hormones: Increased estrogens (exoge
+nous estrogens, Sertoli cell tumors, or ovarian granulosa cell 
+tumors),15 16 azathioprine,17 griseofulvin,18 phenylbutazone,19
+cephalosporins,14 
+meclofenamic 
+acid,20 
+trimethoprim-
+sulfadiazine and fenbendazole,20 albendazole,21 quinidine,20
+chloramphenicol,22 captopril,23 and potentially phenobarbital 
+and/or primidone (some reports of toxicosis in dogs do not
+describe bone marrow alterations)
+•
+Chemotherapy drug administration or radiation therapy
+•
+Immune-mediated suppression or destruction of hematopoietic
+stem/progenitor cells
+•
+Neoplastic marrow infiltration or effacement: Leukemia, lym
+phoma, multiple myeloma, and histiocytic sarcoma are the 
+most common neoplastic processes causing pancytopenia (note 
+that histiocytic sarcoma is also suspected to cause bone marrow 
+suppression independent of marrow infiltration)
+•
+Non-neoplastic myelophthisis (replacement of hematopoietic
+tissue by abnormal cells/tissue): Osteopetrosis and myelofibro
+sis
+•
+Myelonecrosis
+BOX 176.1
+
+SECTION X
+•
+Hematologic and Immunologic Disease
+906
+eBooks.Health.Elsevier.com
+reported. Note that the updated WHO classification for MDS in 
+human patients combines all forms of MDS with ring sideroblasts 
+into a single category regardless of the presence or absence of 
+multilineage dysplasia, based on recent genetic information.31
+Secondary Myelodysplastic Syndromes
+Secondary MDS in humans are clonal disorders. Mutations are 
+induced by chemotherapeutic agents, toxin exposure, and/or 
+radiation therapy. Dysmegakaryopoiesis and myeloproliferative 
+disorders following radiation are reported in dogs, suggesting 
+these syndromes may occur in small animals as well.
+SECONDARY DYSMYELOPOIESIS
+e most common diseases associated with secondary dysmy-
+elopoiesis, a non-clonal disorder, in dogs are ITP (ch. 175) and 
+IMHA (ch. 174), pure red cell aplasia (ch. 174), and lymphoma 
+(ch. 3).9 Other causes include drugs/medications (e.g., che-
+motherapeutic agents, chloramphenicol, estrogens, and pheno-
+barbital37 [ch. 138]), endogenous overproduction of estrogens, 
+heavy metal toxicosis, iron deciency, adenocarcinoma, and 
+leishmaniasis (ch. 197). Diseases associated with secondary dys-
+myelopoiesis in cats include IMHA and ITP, pure red cell aplasia, 
+lymphoma, glomerulonephritis (ch. 30), feline infectious perito-
+nitis (ch. 00) and feline immunodeciency virus (FIV) infection 
+(ch. 198). Dysplasia can aect one or multiple blood cell lin-
+eages, oen depending on the underlying etiology. For example, 
+sideroblastic forms of disease are associated with inammatory 
+disorders and myelobrosis.9 Bone marrow cytology alone can 
+be insucient to distinguish primary MDS from secondary dys-
+myelopoiesis. Lower percentages of dysplastic cells and/or normal 
+blast cell percentages may suggest secondary dysmyelopoiesis, but 
+exceptions may include recovery from sepsis or toxic bone mar-
+row injury. Dierentiation of primary MDS vs. secondary dys-
+myelopoiesis may instead rely on history or clinical evidence to 
+support potential underlying cause(s) of dysmyelopoiesis.
+TREATMENT OF PANCYTOPENIC DISORDERS
+If possible, elimination or withdrawal of the underlying cause 
+(e.g., medications, infectious causes, neoplastic disorders) is indi-
+cated. Cytotoxic treatment agents for dogs and cats with MDS 
+or suspected immune-mediated pancytopenic disorders have 
+included cyclophosphamide, cytosine arabinoside, prednisone, 
+cyclosporine, daunorubicin, vincristine, hydroxycarbamide, 
+and cytarabine (chs. 169 and 17).38 Additional therapeu-
+tic options regardless of the underlying cause of pancytopenia 
+include transfusion if indicated (ch. 14), and stimulation of 
+blood cell production via exogenous growth factors (e.g., EPO, 
+granulocyte colony-stimulating factor [G-CSF]) and/or receptor 
+agonists.3 39 40
+PARANEOPLASTIC LEUKOCYTOSIS
+Neoplastic processes can cause a secondary, non-neoplastic 
+increase in production of specic mature leukocyte subtypes. 
+Paraneoplastic neutrophilia and eosinophilia are infrequently rec-
+ognized in small animals. Paraneoplastic leukocytosis resulting 
+in mature neutrophilia is most oen associated with carcinoma 
+(e.g., squamous cell,41 renal,4 or pulmonary43 carcinoma) or 
+rectal polyps.44 ese tumors can cause increased production of 
+G-CSF and/or granulocyte-macrophage colony-stimulating fac-
+tor.443 Note that tumors can cause substantial neutrophilia due 
+to inammation, and paraneoplastic leukocytosis is considered 
+an uncommon or rare cause of neoplasia-associated neutrophilia 
+by comparison. Paraneoplastic eosinophilia is most oen associ-
+ated with T-cell lymphoma45 and mast cell neoplasia.46 A possible 
+association with leiomyosarcoma is also reported (ch. 34).47 See 
+ch. 331 for additional information on paraneoplastic syndromes.
+INFECTIOUS DISEASES CAUSING CYTOPENIAS OR 
+OTHER LEUKOCYTE ABNORMALITIES
+PARVOVIRUS INFECTION
+Canine and feline parvoviral infections (ch. 01) cause bone mar-
+row injury and leukopenia. Neutropenia occurs in some but not 
+all cases of severe canine parvovirus infection; leukopenia has 
+been reported in less than half of infected dogs on presentation.48
+Neutropenic dogs may have marked evidence of le shi and/or 
+neutrophil toxic change in blood smears (Figure 176.1, C-F and 
+ch. 58); 9% of clinically ill dogs and 84% of cats with parvoviral 
+infection had acellular bone marrow on evaluation.49 Survival is 
+strongly predicted by a patient’s ability to maintain total leukocyte 
+counts >4500/mcL and lymphocyte counts >1000/mcL.50
+DISTEMPER AND PARAMYXOVIRUS INFECTION
+Canine distemper virus (ch. 04) infects numerous tissues and 
+cells, including lymphoid and other hematopoietic cells. Immu-
+nosuppression occurs early in infection due to viral-mediated lysis 
+of lymphocytes; grossly enlarged lymph nodes and thymic atro-
+phy develop. Secondary lymph node follicles are microscopically 
+absent. Lymphopenia can occur, and cytoplasmic (rarely nuclear) 
+viral inclusions may be seen in white blood cells in peripheral 
+blood smears (Figure 176.1, K) in early infection.51 Immunosup-
+pression can be prolonged in some dogs and may exacerbate viral 
+replication and spreading.
+FELINE LEUKEMIA VIRUS (FeLV) INFECTION
+Bone marrow suppression is a frequent clinical syndrome associ-
+ated with FeLV infection (ch. 199 and above section on Myelo-
+dysplastic Syndromes). Erythroid precursors are most commonly 
+aected, but suppression of hematopoiesis can occur in all cell 
+lineages. Neutropenia is reported in approximately 50% of cats 
+presenting with FeLV-related illness.5 Cyclic hematopoiesis has 
+also been reported in infected cats. Cats with myelodysplasia and 
+myelobrosis are frequently FeLV-positive. Myelophthisis due to 
+myelobrosis and/or other causes, particularly hemic neoplasia, 
+can contribute to decreased leukocyte production.
+FELINE IMMUNODEFICIENCY VIRUS (FIV) INFECTION
+Acute FIV infection (ch. 198) may trigger mild leukocyte abnor-
+malities. No dierences were found between FIV-infected and 
+non-infected cats in the occurrence of peripheral leukocyte abnor-
+malities in one study.53 In another, FIV infection increased the 
+odds ratio of neutropenia.54 Panlymphopenia can occur in acute 
+infection.55 Viral strain is an important factor: severe neutrope-
+nia with lymphocytosis of granular lymphocytes was seen dur-
+ing acute experimental infection with FIV-CPGammar.56 Chronic 
+infection is associated with decreased CD4+:CD8+ T-cell ratios 
+and development of secondary neoplastic and inammatory 
+disorders.55
+RICKETTSIAL INFECTIONS
+In dogs, the rickettsial agents most oen associated with leukocyte 
+abnormalities are Ehrlichia canis, Ehrlichia chaeensis, Ehrlichia 
+ewingii, Anaplasma phagocytophilum, Neorickettsia helminthoeca, 
+Neorickettsia risticii and Rickettsia rickettsii (ch. 193). Natural and/
+or experimental infections with E. canis, A. phagocytophilum or N. 
+risticii causing clinical signs are reported in cats. Acutely, E. canis

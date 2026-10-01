@@ -1,0 +1,243 @@
+CHAPTER 59
+•
+rombocytopenia, rombocytosis
+279
+eBooks.Health.Elsevier.com
+Thrombocytopenia, Thrombocytosis
+Marjory B. Brooks
+Q
+uantitative defects of platelet number 
+are detected as increased or decreased 
+platelet count in the hemogram and 
+blood smear. A consistent diagnostic strategy 
+helps streamline dierentiation among the 
+many primary and secondary disease pro-
+cesses that inuence platelet number.
+PLATELET LIFE CYCLE
+Platelets are small anucleate cell fragments produced from bone 
+marrow megakaryocytes. Platelets circulate for approximately 
+5 to 9 days in dogs and cats. The cytokine thrombopoietin 
+(TPO) is the major regulator of megakaryocyte maturation; 
+however, additional growth factors act synergistically with 
+TPO.1 2 The liver is the primary site of TPO synthesis, which 
+upon release binds to a ligand (c-Mpl) expressed on mega-
+karyocytes and platelets. As platelet count falls, free TPO levels 
+increase to stimulate thrombopoiesis. Conversely, as platelet 
+count rises, free TPO falls and thrombopoiesis slows. Platelet 
+mass is further regulated through clearance of senescent plate-
+lets lacking sialic acid residues by engagement with hepato-
+cyte Ashwell-Morell receptors and subsequent increased TPO 
+production.3
+Platelets in circulation undergo transient splenic seques-
+tration. Approximately one third of total platelet mass is 
+compartmentalized within the spleen in healthy individu-
+als.2 Prothrombotic and inammatory stimuli induce platelet 
+activation and incorporation into a hemostatic plug or egress 
+into tissues from the microvasculature. Non-activated platelets 
+undergo gradual apoptotic death and subsequent clearance by 
+hepatic and splenic macrophages.4
+Disease processes that upset the balance of platelet produc-
+tion, activation, and clearance result in an increase or decrease 
+in platelet count. rombocytopenia is among the most common 
+acquired bleeding disorders in small animal practice, whereas 
+thrombocytosis is typically identied as a laboratory abnormality 
+without specic clinical signs.
+DIAGNOSIS OF THROMBOCYTOPENIA
+CLINICAL SIGNS
+e characteristic signs of thrombocytopenia include petechiae, 
+ecchymoses, mucosal hemorrhage (e.g., epistaxis, hematemesis, 
+hematuria, melena; ch. 29) and prolonged bleeding aer injury 
+(chs. 29 and 124). Signs may overlap with those of acquired or 
+hereditary platelet dysfunction (ch. 175), coagulopathies (ch. 171), 
+von Willebrand disease (ch. 175), vasculopathies (ch. 181), or vas-
+cular injury. A platelet count is indicated to conrm thrombocyto-
+penia and guide subsequent testing. While risk of bleeding is not 
+strictly correlated with platelet count, thrombocytopenia is rarely 
+the sole cause of severe or spontaneous hemorrhage at counts 
+above 30,000/mcL. Hemorrhage may be exacerbated, however, by 
+concurrent coagulation disorders or vascular defects.
+DIAGNOSTIC TESTING
+Platelet Count and Blood Smear Examination
+Platelet number for healthy dogs and cats ranges from approxi-
+mately 200,000 to 500,000/mcL.1 2 5 Hematology analyzers also 
+measure mean platelet volume (MPV), an indicator of platelet 
+size that may be useful in characterizing and monitoring throm-
+bocytopenia. Species-specic reference intervals should be devel-
+oped for in-house methods or provided by each testing laboratory 
+(Table 59.1). rombocytopenia detected by manual or auto-
+mated count should prompt a careful blood smear examination.
+Blood smear examination conrms a low platelet number and 
+rules out spurious thrombocytopenia. Platelets are highly reactive 
+and subject to activation and clumping in the process of blood 
+collection or storage.6 ese artifacts are minimized by atrau-
+matic venipuncture, blood collection directly into anticoagulant, 
+limited storage time, and avoidance of cold temperatures. Aer 
+review of the smear edges to detect platelet margination, platelet 
+count is estimated from counting 10 oil immersion elds (100×) 
+on the blood lm monolayer as follows: platelet count (per mcL) 
+= average platelets/eld × 15,000.2
+CHAPTER 59
+ACRONYMS
+DIC disseminated intravas-
+cular coagulation
+ITP immune-mediated 
+thrombocytopenia
+MPV mean platelet volume
+TPO thrombopoietin
+TABLE 59.1
+Reference Intervals for Canine and Feline Platelet Count and Mean Platelet Volume*
+PLATELET COUNT (× 103 /mcL)
+MEAN PLATELET VOLUME (fL)
+Canine
+186 to 545
+8.4 to 14.1
+Feline
+195 to 624
+9.1 to 24.3
+*Advia  Hematology System (Siemens Healthcare).
+Values current , Clinical Pathology Laboratory, Cornell University, Ithaca, NY.
+
+SECTION III
+•
+Dierential Diagnosis for Clinicopathologic Abnormalities
+280
+eBooks.Health.Elsevier.com
+Ancillary Diagnostics
+Hemogram and blood smear review should be followed by thor-
+ough drug and travel history (ch. 9), physical examination (ch. 
+3) to include funduscopic examination (ch. 13), and evaluation 
+of spleen, liver, and lymph nodes. Subsequent work-up may 
+include bone marrow examination (ch. 84), serologic or direct 
+detection of pathogens (ch. 183), imaging with collection of 
+cytology or biopsy specimens, and coagulation testing (ch. 170; 
+Table 59.2).
+CLASSIFICATION OF THROMBOCYTOPENIA 
+(FIGURE 59.1)
+Patients with a variety of systemic diseases may develop transient, 
+mild to moderate thrombocytopenia (platelet count 100,000 to 
+150,000/mcL) that resolves as the patient recovers.7 8 In contrast, 
+persistent or progressive thrombocytopenia indicates ongoing 
+imbalance in platelet production or consumption, or more com-
+plex combined defects.
+Production Defects
+rombocytopenia combined with leukopenia and/or anemia is 
+oen an indicator of defective hematopoiesis caused by an under-
+lying bone marrow disorder.2 7 9 High MPV and thiazole orange-
+stained or “reticulated” platelets are characteristic of newly 
+released platelets; however, direct examination of the bone mar-
+row is the best means to evaluate thrombopoiesis.8-10
+•Inĕltrative disorders: bone marrow inĕltration by neoplas
+tic cells typically results in hematopoietic failure and systemic 
+signs resulting from thrombocytopenic hemorrhage. e clini-
+cal course, hemogram, and bone marrow examination are used 
+for classication of acute versus chronic leukemia and lymphoid 
+versus myeloid leukemia (ch. 322).2 9 11 Beyond cell morpholo-
+gy, immunophenotyping to dene cell surface markers provides 
+more detailed classication.5 10 Bone marrow exam may reveal 
+non-leukemic neoplastic inltrates, e.g., lymphoma, multiple 
+myeloma, mast cells, histiocytes, and metastatic carcinoma.9 12
+Clonal expansion of hematopoietic precursors (myelodysplasia) 
+also causes dysregulated cell maturation and cytopenias.12
+•Myelobrosis describes a non-cellular, brous matrix that re-
+places bone marrow stroma. Myelobrosis results from exces-
+sive proliferation of bone marrow broblasts in response to 
+injury. Inciting causes of myelobrosis include chronic drug 
+therapy, hemolytic anemia, bone marrow neoplasia, and pro-
+longed inammation.
+•Drug toxicosis: drug-induced thrombocytopenia may result
+from bone marrow suppression or immune-mediated destruc-
+tion (chs. 138, 175, 176).13 Drugs with stem cell toxic eects 
+cause pancytopenias, although signs of thrombocytopenia 
+may develop rst. rombocytopenia is a known side-eect 
+of many chemotherapeutic agents (ch. 321), and is a complica-
+tion of drugs such as estrogen, chloramphenicol, methimazole, 
+penicillin, procainamide, and sulfa antibiotics13 14 (Box 59.1).
+•Infectious thrombocytopenias: infectious agents may cause
+bone marrow suppression, peripheral platelet activation or se-
+questration, and immune-mediated destruction (ch. 183). e 
+prevalence of infectious thrombocytopenias is increasing due 
+to pet-friendly travel and international pet adoption (ch. 9), 
+suburbanization, and climate change–induced vector range ex-
+pansion15-17 (Box 59.2). In addition to thrombocytopenia, in-
+fectious agents oen cause systemic illness. Disease diagnosis is 
+based on these physical exam and laboratory abnormalities and 
+pathogen-detection (e.g., antigen assays, PCR amplication, 
+isolation and culture, direct visualization) and/or antibody as-
+says that measure host immune response to the infectious agent.
+•Endocrine disorders: estrogen is bone marrow suppressive in
+dogs and may cause severe thrombocytopenia or pancytope-
+nia.14 Functional ovarian granulosa cell tumors and Sertoli cell 
+tumors produce excess endogenous estrogen and are typically 
+diagnosed and treated through examination and surgical exci-
+sion (ch. 315). Although now uncommon, drug history may 
+reveal exogenous estrogen prescribed for pseudopregnancy, 
+mismating, incontinence, or prostatic hypertrophy. Hypothy-
+roidism is associated with general bone marrow depression; 
+however, clinically relevant thrombocytopenia is unlikely to 
+occur due to thyroid insuciency alone (ch. 285).
+•Hereditary thrombocytopenias (ch. 169): a large survey of 
+Greyhounds revealed a subclinical, mild reduction in platelet 
+count.18 A more severe hereditary macrothrombocytopenia of 
+Cavalier King Charles Spaniels is caused by aberrant platelet 
+microtubule assembly due to a point mutation in the beta1 tu-
+bulin gene.19 e same mutation has been identied in other, 
+unrelated breeds including Chihuahuas, Labrador Retriev-
+ers, and Shih Tzus. Homozygotes have high MPV and platelet 
+counts from 25,000 to 75,000/mcL. A second, distinct beta1 
+tubulin mutation was found in Norfolk and Cairn Terriers.20 A 
+beta1 tubulin structural variant unique to felids is also specu-
+lated to cause the relatively wide variation in platelet size and 
+count in domestic cats.21 In spite of low count, platelet mass is 
+preserved in macrothrombocytopenic defects and the traits do 
+not cause a bleeding tendency or require therapy.
+TABLE 59.2
+Diagnostic Tests for rombocytopenia and 
+rombocytosis
+TESTS
+SPECIFIC ASSESSMENTS
+Hemogram
+Platelet count, MPV, morphology, % reticu-
+lated platelets
+Abnormal cell morphology, cellular inclu-
+sions, infectious agents, neoplastic cells
+Bone marrow 
+cytology/biopsy 
+(ch. )
+Megakaryocyte maturation, iron stores, 
+infectious agents, lymphoid and myeloid 
+neoplasia, myelodysplasia, myelofibrosis
+Spleen/lymph node 
+cytology/biopsy 
+(ch. )
+Infectious agents, neoplastic cells, extra 
+medullary hematopoiesis, hemophago-
+cytosis
+Immunophenotyping
+Expression of cell surface and cell-type spe-
+cific markers on peripheral blood, bone 
+marrow, lymph node or splenic cells
+Imaging
+Hepatosplenomegaly, lymphadenopathy, 
+gastrointestinal and urinary tract integrity
+Serologic assays
+Detection of pathogen-associated antigens, 
+antibodies directed against pathogens, or 
+autoantibodies to nuclear antigens (ANA) 
+or platelet antigens
+Molecular assays
+PCR, microarray, sequencing for specific 
+pathogens
+Isolation and culture
+Pathogen detection
+Coagulation assays
+Coagulation screening tests (aPTT, PT) 
+fibrinogen, antithrombin, D-dimer
+Platelet-associated 
+antibody
+Detection of immunoglobulin (IgG, IgM) 
+bound to platelets
+Mutation detection
+Beta tubulin mutations in Cavalier Spaniels, 
+Norfolk and Cairn Terriers, other breeds
+aPTT, Activated partial thromboplastin time; PCR, polymerase chain reaction; PT,
+prothrombin time.

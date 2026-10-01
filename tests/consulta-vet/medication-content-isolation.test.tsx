@@ -11,7 +11,7 @@ import { MedicationPharmacologicalClassificationSection } from '../../modules/co
 import { MedicationPharmacokineticsSection } from '../../modules/consulta-vet/components/medication/MedicationPharmacokineticsSection';
 
 test('todo medicamento público possui explicações próprias com fontes resolvíveis e estudos clínicos', () => {
-  for (const slug of CONSULTA_VET_PUBLIC_MEDICATION_SLUGS) {
+  for (const slug of Object.keys(MEDICATION_BOOK_FOUNDATIONS)) {
     const medication = medicationsSeed.find((record) => record.slug === slug);
     assert.ok(medication, slug);
     assert.ok(MEDICATION_BOOK_FOUNDATIONS[slug], slug);

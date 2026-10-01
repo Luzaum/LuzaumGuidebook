@@ -1,0 +1,614 @@
+
+===== Plumb PDF 157 =====
+130    Bethanechol
+Intra-articular administration (extra-label): Most dosage rec -
+ommendations range from 3 – 18 mg/joint (NOT mg/kg) in -
+tra-articularly. Repeat doses should be limited to the minimum 
+required to achieve soundness.
+Monitoring
+Monitoring of glucocorticoid therapy is dependent on its reason for 
+use, dosage, agent used, dosage schedule (daily versus alternate day 
+therapy), route of administration, duration of therapy, and the ani -
+mal’s age and condition. The following list may not be appropriate 
+or complete for all animals; use clinical assessment and judgment 
+should adverse effects be noted:
+ ■ Body weight, appetite, GI signs (eg, anorexia, vomiting, diarrhea)
+ ■ Signs of edema
+ ■ Serum electrolytes
+ ■ Total plasma protein, albumin
+ ■ Blood glucose
+ ■ Growth and development in young animals
+ ■ Adrenocorticotrophic hormone (ACTH) stimulation test, if con -
+cerned about iatrogenic hyperadrenocorticism
+Client Information
+ ■ Carefully follow the instructions for how to give this medicine to 
+your animal. Do not suddenly stop giving this medicine without 
+talking to your veterinarian.
+ ■ Do not give other medications (including over-the-counter 
+[OTC] medication) or nonsteroidal anti-inflammatory (NSAID) 
+medications while your pet is on this medication without talking 
+to your veterinarian first.
+ ■ There are many potential side effects that can be seen with these 
+drugs, including increased or decreased appetite, vomiting, ab -
+normal stool, and increased thirst and urination. Contact your 
+veterinarian if these effects become severe or worsen.
+ ■ While your animal is taking this medication, it is important to 
+return to your veterinarian for periodic examinations and blood 
+work. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+A synthetic glucocorticoid, betamethasone has been manufactured 
+as the base and as the dipropionate, acetate, and sodium phosphate 
+salts. The base is used for oral dosage forms. The sodium phosphate 
+and acetate salts are used in injectable preparations. The dipropio -
+nate salt is used in topical formulations.
+Betamethasone occurs as an odorless, white to practically white 
+crystalline powder. It is insoluble in water and practically insoluble 
+in alcohol. The acetate salt occurs as a white or creamy-white odor -
+less powder. It is practically insoluble in water and soluble in alcohol. 
+The sodium phosphate salt occurs as an odorless, white to practically 
+white hygroscopic powder. It is freely soluble in water and slightly 
+soluble in alcohol.
+Betamethasone may also be known as flubenisolone, BetaVet®, or 
+Celestone®.
+Storage/Stability
+The combination injectable product should be stored between 20°C to 
+25°C (68°F-77°F) and protected from light. Shake well before using.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+If coadministration with a local anesthetic is desired, lidocaine 
+1% or 2% (without parabens or phenol) mixed with betamethasone 
+sodium phosphate/acetate injection has been suggested. 13 The lido-
+caine should be drawn into the syringe after the dose of betametha -
+sone is drawn up. Do not add lidocaine to the vial of betamethasone.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+The Association of Racing Commissioners International (ARCI) has 
+designated betamethasone as a class 4 substance. Use of this drug 
+may not be allowed in certain animal competitions. Check rules and 
+regulations before entering in a competition while this medication 
+is being administered. Contact local racing authorities for further 
+guidance. See Appendix for more information.
+Betamethasone Injectable suspension: 6 mg/mL as 3.15 mg beta -
+methasone sodium phosphate and 2.85 mg betamethasone acetate 
+in 5 mL single-dose vials; BetaVet®; (Rx). FDA-approved for use in 
+horses. Not for use in horses intended for human consumption
+Intra-articular injection: Betamethasone acetate 12 mg/mL (equiva-
+lent to 10.8 mg betamethasone) and 3.9 mg/mL betamethasone di -
+sodium phosphate (equivalent to 3 mg of betamethasone); Betavet 
+Soluspan Suspension®; (Rx). FDA-approved for use in horses. This 
+product is listed in the FDA Green Book is no longer marketed.
+Betamethasone valerate is also found in several otic and topical 
+products either as a single agent or in combination with gentamicin.
+HUMAN-LABELED PRODUCTS:
+Betamethasone Injection: betamethasone (as sodium phosphate)  
+3 mg/mL and betamethasone acetate 3 mg/mL suspension in 5 mL 
+multi-dose vials; Celestone Soluspan® , generic; (Rx)
+Various topical formulations are also available.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Beta
+Bethanechol
+(beh-than-e-kole) Urecholine® 
+Cholinergic
+Prescriber Highlights
+ ▶ Cholinergic agent used primarily to increase urinary bladder 
+contractility; bethanechol can also be used as a prokinetic 
+agent and for treatment of clinical signs associated with 
+dysautonomia. May be useful for adjunctive treatment of 
+equine gastric ulcer syndrome (EGUS)
+ ▶ Principal contraindications are GI or urinary tract obstructions 
+or when the integrity of the urinary bladder wall is of concern.
+ ▶ Adverse effects are related to cholinergic effects and include 
+salivation, lacrimation, urination, defecation, GI distress, eme-
+sis, and miosis (ie, SLUDGE-M).
+ ▶ Cholinergic crisis is possible when injecting bethanechol IV or 
+IM; atropine should be readily available.
+Uses/Indications
+Bethanechol can be used to stimulate urinary bladder contractions 
+in small animal species. This drug appears to be most effective in 
+the treatment of acute and partial detrusor atony secondary to acute 
+urinary bladder overdistension and partial neurogenic lesions and 
+when given in combination with other agents (eg, alpha-adrenergic 
+antagonists, benzodiazepines) to reduce urethral resistance. A pilot 
+study in healthy beagles showed no changes in urethral or urinary 
+bladder function after bethanechol treatment was given for 15 days.1 
+Bethanechol can be used as an esophageal prokinetic. This drug can 
+also be used as a general GI prokinetic agent, but other agents (eg, 
+metoclopramide, cisapride) are better tolerated.
+Bethanechol has been shown to increase abomasum and duode -
+num contractility in both healthy dairy cattle and cattle with left dis-
+placement of the abomasum (LDA) 2; however, bethanechol did not 
+
+
+===== Plumb PDF 158 =====
+Bethanechol   131
+alter the abomasal emptying rate in calves.3
+In horses, bethanechol has been suggested as an adjunctive proki-
+netic agent for treatment of equine gastric ulcer syndrome (EGUS) 
+and in cases with adynamic ileus and gastroduodenal reflux.4-6
+Pharmacology/Actions
+Bethanechol directly stimulates cholinergic receptors. Its effects are 
+principally muscarinic and has negligible nicotinic activity at rec -
+ommended dosages. This drug is more resistant to hydrolysis than 
+acetylcholine by cholinesterase and, therefore, has an increased du -
+ration of activity.
+Pharmacologic effects include increased esophageal peristalsis 
+and lower esophageal sphincter tone, increased tone and peristaltic 
+activity of the stomach and intestines, increased gastric and pancre-
+atic secretions, increased tone of the detrusor muscle of the urinary 
+bladder, and decreased bladder capacity. High parenteral dosages 
+can result in adverse effects related to cholinergic effects on other 
+systems (eg, increased bronchial secretions and constriction, mio -
+sis, lacrimation, salivation). When administered SC or PO, bethan -
+echol’s effects are predominantly seen in the GI and urinary tracts. 
+A ceiling effect (ie, decreased response despite higher dosages) can 
+be seen secondary to receptor desensitization and calcium depletion.
+Pharmacokinetics
+No information was located on the pharmacokinetics of this agent in 
+veterinary species. In humans, bethanechol is poorly absorbed from 
+the GI tract, and the onset of action is usually within 30 to 90 minutes 
+after oral administration. After SC administration, effects begin within 
+5 to 15 minutes and usually peak within 30 minutes. The duration of 
+action after oral administration may last up to 6 hours after large doses 
+and 2 hours after SC administration. SC administration yields a more 
+enhanced effect on urinary tract stimulation than oral administration.
+Bethanechol does not enter the CNS when administered at rec -
+ommended doses; other distribution aspects of the drug are not 
+known. The metabolic and excretory fate of bethanechol has not 
+been described.
+Contraindications/Precautions/Warnings
+Bethanechol is contraindicated in animals with a known hypersensi-
+tivity to the drug. Additional contraindications to bethanechol ther-
+apy include urinary outflow obstruction, when the integrity of the 
+urinary bladder wall is of concern (eg, after recent bladder surgery), 
+hyperthyroidism, peptic ulcer disease or when other inflammatory 
+GI lesions are present, recent GI surgery with resection and anas -
+tomosis, GI obstruction or peritonitis, hypersensitivity to the drug, 
+epilepsy, bronchoconstrictive disease (eg, asthma), hypotension, 
+severe bradycardia or vagotonia, and vasomotor instability. Bethan-
+echol should only be used in conjunction with another agent that 
+will sufficiently reduce outflow resistance (eg, diazepam, dantrolene 
+[striated muscle], phenoxybenzamine [smooth muscle]) when uri -
+nary outflow resistance is increased due to enhanced urethral tone 
+(not mechanical obstruction).
+Retrograde urinary reflux to the kidney may occur if bethanechol 
+fails to relax the urethral sphincter.
+Adverse Effects
+When administered orally to small animal species, adverse effects 
+are usually mild; vomiting, diarrhea, salivation, and anorexia are the 
+effects most likely to occur. Cardiovascular effects (eg, tachycardia, 
+arrhythmias, hypotension) and respiratory effects (eg, asthma, dys -
+pnea) are typically only seen after overdose or with high doses given 
+SC. Bethanechol may stimulate pancreatic stimulation of amylase 
+and lipase, and serum bilirubin and AST may be increased due to 
+retention caused by contraction of the sphincter of Oddi.
+In horses, salivation, lacrimation, and abdominal pain (colic) are 
+potential adverse effects.
+IV or IM use is not recommended; however, the IV route may be 
+necessary in an emergency situation. Severe cholinergic reactions are 
+likely if the drug is given IV . If injecting the drug (IV or IM), it is 
+recommended that atropine be immediately available.
+Reproductive/Nursing Safety
+No data were located regarding bethanechol use in pregnant ani -
+mals. It is unknown if bethanechol is distributed into milk. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Clinical signs of overdose are cholinergic in nature. Muscarinic ef -
+fects (eg, salivation, urination, defecation) are usually seen with PO 
+or SC administration. If given IM or IV , a cholinergic crisis can oc-
+cur; circulatory collapse, bloody diarrhea, shock, and cardiac arrest 
+are possible.
+Treatment for bethanechol toxicity is atropine (see Atropine). 
+Epinephrine may also be used to treat clinical signs of bronchospasm 
+(see Epinephrine).
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving bethanechol and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Anticholinergic Drugs  (eg, atropine, glycopyrrolate, prop-
+antheline): Can antagonize bethanechol’s effects
+ ■ Beta Adrenergic Antagonists : May increase the risk for ar-
+rhythmias and bronchospasm
+ ■ Cholinergic Drugs  (eg, neostigmine, physostigmine, pyr -
+idostigmine): Because of additional cholinergic effects, bethan -
+echol should generally not be used concomitantly with other cho-
+linergic drugs.
+ ■ Ganglionic Blocking Drugs  (eg, mecamylamine, tri -
+methaphan): Can produce severe GI and hypotensive effects
+ ■ Quinidine, Procainamide : Can antagonize the effects of 
+bethanechol
+Laboratory Considerations 
+ ■ None noted
+Dosages
+NOTE: The injectable product is no longer commercially available 
+in the United States.
+DOGS:
+Increase urinary bladder contractility caused by detrusor mus-
+cle atony or treatment for clinical signs related to dysautono -
+mia (extra-label): 2.5 mg – 25 mg/dog (NOT mg/kg) PO 3 times 
+daily. Some dogs may respond to twice-daily administration.
+GI prokinetic (extra-label): 5 – 15 mg/dog (NOT mg/kg) PO ev -
+ery 8 hours. May give up to 25 mg/dog (NOT mg/kg) every 8 
+hours. Improvement in esophageal motility in dogs with megae -
+sophagus is possible.7,8
+CATS:
+Increase urinary bladder contractility caused by detrusor mus-
+cle atony or treatment for clinical signs related to dysautono -
+
+
+===== Plumb PDF 159 =====
+132    Bisacodyl
+mia (extra-label): 1.25 mg (¼ of a 5 mg tablet) – 7.5 mg/cat (NOT 
+mg/kg) PO 3 times daily. Some cats may respond to twice daily 
+dosing.
+HORSES: 
+Increase urinary bladder contractility caused by detrusor mus-
+cle atony (extra-label): 0.025 – 0.075 mg/kg SC every 8 hours for 
+2 to 3 doses, then 0.25 – 0.75 mg/kg PO 2 to 4 times daily. If no 
+response after 5 days, discontinue therapy. NOTE: The PO dose is 
+10 times that of the SC dose.
+Adjunctive treatment for equine gastric ulcer syndrome 
+(EGUS) (extra-label): 0.025 – 0.03 mg/kg SC every 4 to 8 hours 
+until no reflux, then 0.3 – 0.4 mg/kg PO 3 to 4 times daily9-11
+CATTLE:
+Adjunctive treatment for cecal dilation/dislocation (CDD);  
+(extra-label): 0.07 mg/kg SC 3 times daily for 2 days, if clinical 
+signs are mild, defecation is present, and rectal examination does 
+not reveal torsion or retroflexion. If these criteria are not met 
+or no improvement is seen within 24 hours of medical therapy, 
+surgical therapy is recommended. NOTE: Compounded prepa -
+rations are required, as no products are commercially available.12
+Monitoring
+ ■ Clinical efficacy
+ ■ Urination frequency, urine volume, and urinary bladder palpa -
+tion
+ ■ Adverse effects including signs of colic
+Client Information
+ ■ This drug is prescribed to help animals urinate more easily. In 
+horses, it may be used to treat gastric ulcer syndrome.
+ ■ It is recommended that food be given with this medicine to re -
+duce nausea and/or vomiting.
+ ■ In dogs and cats, side effects include vomiting, diarrhea, lack of 
+appetite, and increased drooling. Contact your veterinarian if any 
+of these signs are severe, worsen, or continue to be a problem.
+ ■ In horses, side effects include watery eyes, drooling, and signs of 
+colic. Contact your veterinarian if any of these signs are severe, 
+worsen, or continue to be a problem.
+Chemistry/Synonyms
+Bethanechol, a synthetic cholinergic ester that is structurally and 
+pharmacologically related to acetylcholine, occurs as a slightly hy -
+groscopic white or colorless crystalline powder with a slight, amine-
+like or fishy odor. It exhibits polymorphism, with one form melting 
+at 211°C (411°F) and the other form at 219°C (426°F). The drug is 
+freely soluble in water and alcohol.
+Bethanechol chloride may also be known as carbamylmethylcho-
+line chloride, Duvoid®, Miotonachol®, Muscaran®, Myo Hermes®, Myo-
+choline®, Myotonine®, Ucholine®, Urecholine®, Urocarb® , or Urotonine®.
+Storage/Stability
+Bethanechol tablets should be stored in air-tight, light-resistant con-
+tainers at room temperature 20°C to 25°C (68°F-77°F).
+Compatibility/Compounding Considerations
+No specific information has been noted.
+Information on bethanechol oral suspension compounded from 
+commercially available tablets has been published. 13 Triturating 12 
+bethanechol 50 mg tablets with 60 mL of Ora-Plus® and qs ad to 
+120 mL with Ora-Sweet® (or Ora-Sweet® SF) yields a 5 mg/mL oral 
+suspension that retains more than 90% potency for 60 days stored 
+at both 5°C (41°F) and 25°C (77°F). Compounded preparations of 
+bethanechol should be protected from light.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) 
+has designated this drug as a class 4 substance. See the Appendix for 
+more information. Use of this drug may not be allowed in certain 
+animal competitions. Check rules and regulations before entering in 
+a competition while this medication is being administered. Contact 
+local racing authorities for further guidance.
+HUMAN-LABELED PRODUCTS:
+Bethanechol Chloride Oral Tablets: 5 mg, 10 mg, 25 mg, and 50 mg; 
+Urecholine® ,  generic; (Rx)
+An injectable product was formerly commercially available; a com -
+pounding pharmacy may be able to prepare a bethanechol injectable 
+form.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Bisacodyl
+(bis-a-koe-dill) Dulcolax® 
+Laxative
+Prescriber Highlights
+ ▶ Stimulant laxative used short-term in dogs and cats
+ ▶ Contraindicated in patients with GI obstruction
+ ▶ Adverse effects include GI cramping and diarrhea 
+ ▶ Do not administer with milk products or liquid antacids; tab-
+lets should not be crushed or split.
+Uses/Indications
+Bisacodyl oral and rectal products are used as stimulant laxatives in 
+dogs and cats. Efficacy is improved when patients are adequately hy-
+drated prior to administration.
+In preparation of dogs for colonoscopy, bisacodyl in combina -
+tion with sodium phosphate +/- warm water enema produced a 
+colon-cleansing effect which appeared to be less effective than that 
+achieved with a polyethylene glycol (PEG)-electrolyte solution.1
+Pharmacology/Actions
+A stimulant laxative, bisacodyl is thought to produce catharsis by 
+increasing peristalsis via direct stimulation on the intramural nerve 
+plexuses of intestinal smooth muscle. Bisacodyl has been shown to 
+increase fluid and ion accumulation in the colon thereby enhancing 
+catharsis.
+Pharmacokinetics
+Bisacodyl is minimally absorbed after either oral or rectal admin -
+istration. Intestinal or bacterial enzymes convert it to an active de -
+sacetyl metabolite, which is excreted in the feces. Onset of action is 
+generally 6 to 10 hours after oral administration and 15 minutes to 1 
+hour after rectal administration.
+Contraindications/Precautions/Warnings
+Bisacodyl is contraindicated in patients that are hypersensitive to it. 
+Stimulant laxatives are contraindicated in animals with GI obstruc -
+tion (not constipation), undiagnosed rectal bleeding, or when the 
+animal is at risk for intestinal perforation. Use with caution in pa -
+tients with infiltrative bowel disease, acute GI conditions, or dehy -
+dration. Review specific product labels carefully as some may con -
+tain other active ingredients (eg, docusate).
+Bisacodyl should only be used short-term, as long-term use can 
+damage myenteric neurons.
+Adverse Effects
+Bisacodyl has relatively few adverse effects when used occasionally; 
+abdominal discomfort (cramping), nausea, or diarrhea may be noted 
+after use.
+
+
+===== Plumb PDF 160 =====
+Bismuth Subsalicylate    133
+Reproductive/Nursing Safety
+Because there is minimal bisacodyl absorption following adminis -
+tration, the risk to the fetus or the nursing offspring is expected to 
+be limited.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+The reported LD 50 in a dog after oral administration is 15 g/kg. 2 
+Overdoses may result in severe cramping, diarrhea, vomiting and, 
+potentially, fluid and electrolyte imbalances. Animals should be 
+monitored and given replacement parenteral fluids and electrolytes 
+as necessary.
+For patients that have experienced or are suspected to have ex -
+perienced an overdose, consultation with a 24-hour poison control 
+center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are the-
+oretical in humans or animals receiving bisacodyl and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Antacids, Aluminum-, Calcium- or Magnesium-Containing/  
+Milk : Do not give antacids or milk within an hour of bisacodyl 
+tablets as it may cause premature disintegration of the enteric 
+coating resulting in a diminished therapeutic effect.
+ ■ Oral Medications : Stimulant laxatives may potentially de -
+crease GI transit time thereby affecting absorption of other oral 
+medications. Separate doses by 2 hours if possible.
+Dosages
+DOGS/CATS:
+Cathartic (extra-label): Anecdotally, one 5 mg tablet/cat or small 
+dog (NOT tablet/kg) PO once daily; one to three 5 mg tablets  
+(5 – 15 mg)/dog (NOT tablets/kg) PO once daily for medium to 
+large dogs. Do not break or crush tablets. 
+Client Information
+ ■ This medicine is a stimulant laxative used in dogs and cats.
+ ■ Do not crush, split, or allow your animal to chew tablets.
+ ■ Diarrhea, stomach pain, and cramping can occur.
+ ■ Do not give milk (dairy) products or liquid antacids within one 
+hour of giving the oral tablets as it can dissolve the protective 
+coating on the tablets.
+ ■ If you are giving other oral medicines to your animal, try to give 
+them two hours apart from the bisacodyl oral dose. Bisacodyl can 
+prevent other medicines from being absorbed properly.
+ ■ Bisacodyl should only be used on an occasional basis; long-term, 
+regular use can cause harm to the intestinal tract.
+Chemistry/Synonyms
+A diphenylmethane laxative, bisacodyl occurs as white to off-white 
+crystalline powder. It is practically insoluble in water and sparingly 
+soluble in alcohol.
+Bisacodyl may also be known as bisacodylum; many trade names 
+are available.
+Storage/Stability
+Bisacodyl suppositories, enemas, and enteric-coated tablets should 
+be stored at temperatures less than 25°C (77°F) and protected from 
+humidity.
+Compatibility/Compounding Considerations
+Do not crush tablets. The 10 mg suppositories can be cut lengthwise 
+to deliver a 5 mg rectal dose.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Bisacodyl Enteric-coated Oral Tablets: 5 mg; Dulcolax® , generic; 
+(OTC). NOTE: Some Dulcolax® products may contain other active 
+ingredients (eg, docusate); check product label carefully.
+Bisacodyl Rectal Suppositories: 10 mg: Dulcolax®, generic; (OTC) 
+Bisacodyl Rectal Enema: 10 mg/30 mL; (OTC)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Bismuth Subsalicylate
+BSS
+(biz-mith sub-sa-liss-ih-layt) Pepto-Bismol®
+Antidiarrheal; Gastroprotectant
+Prescriber Highlights
+ ▶ Used to treat diarrhea and as a component of triple/quadruple 
+therapy for treating Helicobacter GI infections
+ ▶ High doses may cause salicylism; use with caution in cats.
+ ▶ Constipation/impaction may occur.
+ ▶ May change feces color to gray-black or greenish-black
+ ▶ Bismuth is radiopaque and may interfere with GI radiographic 
+testing.
+ ▶ Refrigeration may improve palatability.
+ ▶ Possible teratogen
+Uses/Indications
+In veterinary medicine, bismuth subsalicylate products are used to 
+treat diarrhea, as a gastroprotectant, and as a component of triple or 
+quadruple therapy for treating Helicobacter GI infections. 
+In humans, bismuth subsalicylate is used to treat other GI symp-
+toms (indigestion, cramps, gas pains) and in the treatment and pro-
+phylaxis of traveler’s diarrhea.
+Pharmacology/Actions
+Bismuth subsalicylate is thought to possess gastroprotectant, an -
+ti-endotoxic, and weak antimicrobial properties in the GI tract. It is 
+believed that the parent compound is cleaved in the small intestine 
+into bismuth carbonate and salicylate. The protectant, anti-endotox-
+ic, and weak antimicrobial properties are thought to be derived from 
+the bismuth. The salicylate component has antiprostaglandin activity 
+that may contribute to its effectiveness and reduce clinical signs asso-
+ciated with secretory diarrheas.
+Pharmacokinetics
+No pharmacokinetic information specific to veterinary medicine has 
+been located. In humans, the amount of bismuth absorbed is negligi-
+ble, whereas the salicylate component is rapidly and completely ab -
+sorbed. Salicylates are highly bound to plasma proteins and are metab-
+olized in the liver to salicylic acid. Salicylic acid, conjugated salicylate 
+metabolites, and any absorbed bismuth are all excreted renally.
+Bismuth subsalicylate did not alter gastric pH in healthy adult 
+horses.1
+Contraindications/Precautions/Warnings
+Salicylate absorption may occur. Do not use in patients hypersen -
+sitive to aspirin or other salicylates. Use of this product in patients 
+
+
+===== Plumb PDF 161 =====
+134    Bismuth Subsalicylate
+with preexisting bleeding disorders or GI ulcers may exacerbate 
+underlying conditions. Because of the potential for adverse effects 
+caused by the salicylate component, this drug should be used cau -
+tiously, if at all, in cats. Antidiarrheal products are not a substitute for 
+adequate fluid and electrolyte therapy when required.
+Adverse Effects
+Bismuth subsalicylate may change stool color to a gray-black or green-
+ish-black; do not confuse with melena. One case report of a rhesus 
+macaque suggests that chronic use may cause renal  pigmentation.2
+In human infants and debilitated individuals, use of this product 
+may cause fecal impaction. 
+Reproductive/Nursing Safety
+Salicylates are possible teratogens and have been shown to delay par-
+turition; in humans, their use should be avoided during pregnan -
+cy, particularly during later stages. 3 Use with caution in pregnant 
+ animals.
+Salicylates are excreted into human breast milk, and salicylate 
+toxicity is possible.3 Use with caution in nursing dams.
+Overdose/Acute Toxicity
+Bismuth subsalicylate liquid/suspension contains ≈8.7 mg/mL salic-
+ylate. Two tablespoons (30 mL) are approximately equivalent to one 
+325 mg aspirin tablet. Products containing bismuth may cause neu-
+rotoxicity at high doses. Common clinical signs in dogs include di -
+arrhea, lethargy, vomiting, ataxia, weakness, and panting. Common 
+clinical signs in cats include diarrhea, lethargy, and inappetence. See 
+Aspirin for more information. 
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving bismuth subsalicylate and 
+may be of significance in veterinary patients. Unless otherwise not -
+ed, use together is not necessarily contraindicated, but weigh the po-
+tential risks and perform additional monitoring when appropriate.
+ ■ Aspirin : Because bismuth subsalicylate contains salicylate, con -
+comitant administration with aspirin may increase salicylate se -
+rum concentrations and increase risk for adverse effects (eg, GI 
+ulceration).
+ ■ Angiotensin Converting Enzyme Inhibitors (ACEIs; eg, 
+benazepril, enalapril): Salicylates may enhance the nephrotoxic 
+effects and reduce the effectiveness of ACE inhibitors. Monitor 
+appropriately.
+ ■ Anticoagulants (eg, heparin, rivaroxaban, warfarin ): May 
+increase bleeding risk
+ ■ Clopidogrel : May have additive antiplatelet effects
+ ■ Corticosteroids (eg, dexamethasone, prednis(ol)one): Cor-
+ticosteroids may increase the clearance of salicylates, decrease sa-
+licylate serum concentrations, and increase GI bleeding risk.
+ ■ Loop Diuretics (eg, furosemide): Salicylates may decrease the 
+diuretic effect of loop diuretics. The serum concentration of salic-
+ylates may be increased by loop diuretics.
+ ■ Methotrexate : Aspirin may displace methotrexate from plas-
+ma proteins, increasing the risk for methotrexate toxicity.
+ ■ NSAIDs (eg, carprofen, meloxicam, robenacoxib): Concomitant 
+administration with NSAIDs may increase the risk of  bleeding.
+ ■ Tetracycline Antibiotics (eg, doxycycline): Products con -
+taining bismuth can decrease the absorption of orally adminis -
+tered tetracycline products. If both agents are to be used, separate 
+drugs by at least 2 hours and administer tetracycline first. If nec -
+essary, tetracyclines may be given 6 hours after bismuth admin -
+istration.
+Laboratory Considerations
+ ■ At high doses, salicylates may cause false-positive results for uri-
+nary glucose if using the cupric sulfate method ( Clinitest® , Bene-
+dict’s solution) and false-negative results if using the glucose oxi-
+dase method (Clinistix® o r  Tes-Tape®) .
+ ■ Urinary ketones measured by the ferric chloride method (Ger -
+hardt) may be affected if salicylates are in the urine (reddish color 
+produced).
+ ■ Salicylates in the urine may interfere with 5-HIAA determina -
+tions by the fluorometric method.
+ ■ Falsely elevated vanillylmandelic acid (VMA) may be seen with 
+most methods used if salicylates are in the urine. Falsely lowered 
+VMA concentrations may be seen if using the Pisano method.
+ ■ Urinary excretion of xylose may be decreased if salicylates are 
+given concurrently.
+ ■ Falsely elevated serum uric acid concentrations may be measured 
+if using colorimetric methods.
+ ■ As bismuth is radiopaque, it may interfere with GI tract radiologic 
+examinations.
+Dosages
+NOTE: Liquid doses below refer to suspensions of bismuth subsalic-
+ylate that are 17.5 mg/mL (1.75%) (eg, veterinary suspensions, orig-
+inal Pepto-Bismol®  liquid) unless otherwise specified. Several over-
+the-counter products list dosages for dogs, cats, horses, cattle, and 
+swine; however, none of the products or labeling are FDA-approved.
+DOGS:
+Acute diarrhea or as a GI “coating agent” (extra-label): Liquid: 
+0.25 – 2 mL/kg (4.4 – 35 mg/kg) PO 3 to 4 times per day
+Helicobacter gastritis infections using triple therapy (extra- 
+label):
+a) Bismuth subsalicylate suspension (original Pepto-Bismol®)  
+0.22 mL/kg (3.85 mg/kg) PO every 4 to 6 hours in combination 
+with metronidazole 15.4 mg/kg and amoxicillin 11 mg/kg PO 
+every 8 hours for 3 weeks4
+b) Bismuth subsalicylate 262 mg tablets given based on body 
+weight (less than 5 kg (11 lb) = 0.25 tablet; 5 to 9.9 kg (11 to 
+21.8 lb)= 0.5 tablet; 10 to 24.9 kg (22 to 54.8 lb) = 1 tablet; 
+greater than 25 kg = 2 tablets) every 12 hours in combination 
+with metronidazole 10 mg/kg PO every 12 hours and amoxi -
+cillin 15 mg/kg every 12 hours for 2 weeks5
+c) Bismuth subsalicylate suspension 0.22 mL/kg (3.85 mg/kg) 
+PO every 6 to 8 hours in combination with metronidazole  
+11 – 15 mg/kg PO every 12 hours and amoxicillin 22 mg/kg 
+PO every 12 hours for 3 weeks6 
+CATS:
+Diarrhea (extra-label): 0.5 – 1 mL/kg (8.8 – 17.5 mg/kg) PO every 
+12 hours. Use cautiously in cats; recommend not treating for more 
+than 3 days7
+Helicobacter gastritis infections using triple therapy (extra-label): 
+Bismuth subsalicylate suspension (original Pepto-Bismol®) 0.22 
+mL/kg (3.85 mg/kg) PO every 4 to 8 hours in combination with 
+metronidazole 11 – 15.4 mg/kg PO every 8 to 12 hours and amox-
+icillin 11 – 22 mg/kg PO every 8 hours for 3 weeks4,6
+Helicobacter gastritis infections using quadruple therapy (extra- 
+label): Bismuth subsalicylate (262 mg tablets; Pepto-Bismol®)  
+¼ tablet/cat (total dose) PO twice daily, ± H 2 blocker (eg, fa -
+motidine) or omeprazole in combination with metronidazole  

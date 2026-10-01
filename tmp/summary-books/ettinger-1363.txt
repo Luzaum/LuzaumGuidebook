@@ -1,0 +1,235 @@
+CHAPTER 220
+•
+Pleural Space Diseases
+1211
+eBooks.Health.Elsevier.com
+lymphoma), small lymphocytes, neutrophils, bacteria or fungi, 
+red blood cells, macrophages and/or mesothelial cells.6 In 
+longstanding eusions, mesothelial cells may assume bizarre 
+cytological appearances, which may make distinction from neo-
+plastic cells dicult.13
+Biochemical assessment of pleural effusion is useful in some 
+cases. In human medicine, Light’s criteria are widely applied 
+to pleural effusion, and have been described in cats.14 Light’s 
+criteria evaluate the ratio of effusion protein to serum protein, 
+as well as lactate dehydrogenase (LDH) concentrations. Exu-
+dates have higher ratios (>0.5) and higher concentrations of 
+LDH.7 In people, biochemical analysis of pleural effusion is 
+more commonly pursued than in dogs and cats. Biochemical 
+properties of pleural effusion include glucose, amylase, pH, 
+creatinine, cholesterol, triglycerides and variety of other sub-
+stances.15 16 In people, pleural fluid amylase has been used to 
+confirm esophageal perforation, but dogs and cats do not pro-
+duce salivary amylase.10 Biochemical analysis of pleural effu-
+sion in dogs and cats has been limited although recently there 
+has been increased interest.15 16 Glucose levels do not routinely 
+identify sepsis as they do in abdominal effusion. NT pro-BNP
+concentration in pleural effusion is high in cats with CHF.18
+High effusion triglyceride concentration can be used for iden-
+tifying an effusion as chylous. It may be that further studies 
+of biochemical properties of pleural effusion will add useful 
+information to individual case evaluation.
+Identification of Organisms
+Bacterial culture and sensitivity testing is warranted in cases with 
+suspected infection or with evidence of neutrophilic inamma-
+tion. Recurrent thoracocentesis could predispose a patient to iat-
+rogenic infections. Bacterial culture is most frequently used for 
+evaluating for aerobic organisms, although pyothorax is oen due 
+to mixed infections that include anaerobic organisms. Anaerobic 
+bacterial cultures may be hard to perform, and limited sensitivity 
+data may be gained. In some cases, invitro culture may identify 
+only a more robust, easily cultured pathogen. More fastidious 
+organisms may require a special media and a dedicated micro-
+biological laboratory. Polymerase chain reaction (PCR) testing 
+is also very useful for identication of infectious organisms, and 
+may be pursued, especially for more atypical pleural space infec-
+tions (e.g., Bartonella [ch. 191]).19
+FURTHER DIAGNOSTIC TESTING
+Other diagnostic testing in patients with pleural eusion should 
+be guided by signalment, physical examination and results of uid 
+analysis. Routine laboratory testing, including a complete blood 
+count, serum biochemistry prole and urinalysis are advised to 
+look for systemic disease. yroid testing in cats (ch. 287) and 
+heartworm testing of dogs and cats (ch. 237) in endemic areas are 
+also recommended.20 21
+Thoracic radiographs after removal of the pleural effusion 
+are often useful to evaluate for mass lesions, diaphragmatic 
+hernia, or an enlarged cardiac silhouette. Echocardiography 
+(ch. 97) is essential to look for evidence of right-sided heart 
+disease (dogs, cats), left-sided heart disease (cats), or pericar-
+dial effusion. Thoracic ultrasound may be useful to evaluate 
+and biopsy mass lesions and to evaluate the integrity of the 
+diaphragm (ch. 222). CT is also helpful to investigate the 
+underlying cause of the effusion. Exploratory thoracotomy or 
+thoracoscopy may be used for more completely evaluating the 
+chest and obtaining biopsies.
+DIFFERENTIAL DIAGNOSIS OF PLEURAL EFFUSIONS
+In cats, pleural eusion is associated with heart disease (41%), 
+neoplasia (26%), pyothorax (15%), idiopathic chylothorax (6%), 
+trauma (4%), and feline infectious peritonitis (3%).22
+Low-protein transudates (formerly called pure transudates) 
+are the type of pleural eusion most oen noted in animals with 
+chronic protein-losing nephropathy (ch. 302) or enteropathy (ch. 
+262), other causes of hypoalbuminemia, or overzealous paren-
+teral uid administration. Macroscopically, the eusion looks 
+similar to water and microscopically it is relatively acellular. York-
+shire Terriers with lymphangiectasia appear particularly likely to 
+develop pleural eusions.
+High-protein transudates (formerly called modied transu-
+dates) are the most common type of pleural eusion observed in 
+dogs and cats. Common causes include CHF (ch. 229), pericardial 
+disease/cardiac tamponade (ch. 235), lung lobe torsion (ch. 217), 
+and neoplasia (e.g., ch. 322).
+Exudates can be caused by penetrating trauma, esophageal 
+rupture (ch. 259), ruptured abscess (ch. 217), or foreign body 
+(pyothorax), and feline infectious peritonitis (ch. 200).
+SELECT PLEURAL EFFUSIONS
+Pyothorax-
+Affected animals often have systemic signs of sepsis (e.g., 
+lethargy, fever [ch. 16], leukocytosis or leukopenia [ch. 58]). 
+Cytologic evaluation of infectious effusions may demonstrate 
+degenerative neutrophils, and possibly intra- and extracellular 
+pathogens. Infections may be aerobic or anaerobic. Anaerobic 
+infections may be particularly foul-smelling, although deliber-
+ate assessment of odor should be avoided due to zoonotic risk. 
+In cats, bite wounds were long considered to be the most fre-
+quent source of infection, but recent work has identified para-
+pneumonic extension (aspiration of organisms) from upper 
+respiratory tract infection as more common.27 In dogs, bite 
+wounds and penetrating foreign bodies (sticks/plant awns) 
+Figure 220.4
+oracocentesis from a cat with pyothorax, conrming 
+purulent material.
+
+SECTION XII
+•
+Respiratory Disease
+1212
+eBooks.Health.Elsevier.com
+are frequently responsible. Occasionally, pleural effusions are 
+identified secondarily to bacterial pneumonias (i.e., parap-
+neumonic effusions), but these are rare in contrast to people 
+and horses. Other less common infectious causes of effusion 
+include Bartonella (ch. 191), Mycobacterium (ch. 188), Toxo-
+plasma (ch. 197), and viral infections (ch. 205). PCR testing is 
+particularly useful in atypical infections.
+Therapy for pyothorax involves drainage (usually via chest 
+tube) and antibiotics based on culture and sensitivity, with 
+coverage for presumed anaerobic pathogens even if anaerobic 
+culture was not performed (ch. 140). Some animals, particu-
+larly dogs, may require surgical intervention for resection and 
+drainage of affected tissues.25,26 The prognosis for pyothorax 
+is frequently good if the pet does not present in a moribund 
+condition and comprehensive treatment can be provided. Pyo-
+thorax is one of the few effusions that can be cured.
+Hemothorax
+Hemothorax can result from bleeding disorders such as antico-
+agulant rodenticide intoxication (e.g., brodifacoum; ch. 138), 
+trauma, lung lobe torsion, or neoplasia.28 In hemothorax, the 
+packed cell volume of the effusion is >20%, or more than 50% 
+of the patient’s peripheral hematocrit. Clinical signs of hemo-
+thorax more commonly reflect hypovolemia than the presence 
+of pleural effusion. In dogs with anemia and pleural effusion, 
+it is prudent to check coagulation status prior to thoracocen-
+tesis in order to exclude coagulopathy although in recent years 
+the frequency of anticoagulant rodenticide intoxication has 
+decreased. Therapy of hemothorax depends on the underly-
+ing cause and may include blood transfusion (type depends 
+on presence of coagulopathy (plasma) and anemia (packed 
+red blood cells, whole blood)), vitamin K therapy, surgery or 
+rest (ch. 124). Autotransfusion may be considered except in 
+cases of malignancy. Rib tumors may result in hemothorax, 
+with resection required to control hemorrhage. Small-volume 
+traumatic or intoxication-induced hemothoraces that are not 
+affecting ventilation may be left alone to re-absorb.
+Chylothorax
+Cats (mean age 6.3 years; range, 0.5-14 years)29 and dogs 
+(mean age 4 years; range, 1.5-12 years)22 can develop chylous 
+pleural effusion, termed chylothorax. The most frequent pre-
+senting concern is rapid and/or labored breathing (78% of 
+cats,29 79% of dogs30); interestingly, 4/37 (11%) of cats in 1 
+series had cough as the only historical finding.29 15/37 affected 
+cats (41%) and 24/39 affected dogs (62%) have been described 
+as having muffled heart sounds on auscultation of the ventral 
+thorax.29,30 Both increased and decreased bronchovesicular 
+sounds have been reported, presumably depending on the 
+region of the thorax being ausculted.
+No clinicopathologic finding is specific for chylothorax. A 
+hypoadrenocorticism-like profile (hyponatremia, hyperkale-
+mia) has been documented in dogs with chylothorax.31 Radio-
+graphic findings have been described above (Figure 220.3), 
+and rounding of lung lobes to suggest chronic, fibrosing pleu-
+ritis is associated with chylothorax in cats.6,7
+Grossly, chylous eusion appears milky white or pinkish. It 
+has a high triglyceride content: mean in cats, 1464 mg/dL (16.5 
+mmol/L) (range, 303-4670 mg/dL [3.4-52.87 mmol/L], ver-
+sus mean 84 mg/dL (1.0 mmol/L) (range, 28-210 mg/dL [0.3-
+2.4 mmol/L]) in serum29 and median in dogs, 877 mg/dL (9.9 
+mmol/L) (range, 158-2750 mg/dL [1.8-31.1 mmol/L], versus 
+median 73 mg/dL (0.8 mmol/L) (range, 35-544 mg/dL [0.4-
+6.2 mmol/L]) in serum.22 e predominant cell type is small 
+lymphocytes. ese characteristics are the basis for the diagnosis 
+of chylothorax.
+There are many potential causes of chylothorax, with 
+idiopathic disease accounting for about 50% of cases. The 
+pathophysiologic mechanism involves extravasation of chyle 
+from the thoracic duct on its course from the cisterna chyli 
+in the abdomen to its insertion in the cranial vena cava in 
+the cranial thorax. Physical disruption of the thoracic duct 
+(spontaneous leakage or rupture, iatrogenic laceration), high 
+intraductal hydrostatic pressure (heartworm disease, other 
+disorders of the right heart, pericardial disease including 
+fibrosing/constrictive pericarditis induced by chylothorax 
+itself) or both, are implicated. Evaluation of a patient with 
+chylous effusion includes a careful search for an underlying 
+cause, such as cardiac disease, cranial vena cava thrombus 
+or mass (ch. 239), lung lobe torsion (ch. 217), heartworm 
+disease (ch. 237), or neoplasia, notably cranial mediastinal 
+masses (ch. 322); these are implicated in a minority of cases 
+of chylothorax, but finding them offers the possibility of 
+addressing the inciting cause. Postoperative chylothorax has 
+been described.32 Idiopathic effusion is associated with dila-
+tion of the lymphatics (lymphangiectasia), but the mecha-
+nism of this remains elusive.
+If a specific cause is found, therapy may be directed against 
+that. In idiopathic effusion, medical treatment (e.g., low fat 
+diet, rutin, octreotide) is seldom effective and surgical inter-
+vention is often preferred. The various surgical techniques for 
+palliating chylous effusion have been reviewed.33,34 No therapy 
+is universally successful, and cure rates hover around 50-70%. 
+Missed ducts during thoracic duct ligation, and the existence 
+of collaterals that become patent after thoracic duct ligation 
+are possible explanations for persistence of chylothorax post-
+operatively.35 In a study of 15 cats with chylothorax, the median 
+survival time after thoracic duct ligation plus subphrenic peri-
+cardectomy was 774 days (range, 3-2844 days).36 In dogs, 50% 
+of chylothorax patients that undergo thoracoscopic thoracic 
+duct ligation and pericardectomy are alive at a median of 43 
+months post-operatively.22 The best surgical outcome appears 
+to be associated with a meticulous and experienced surgeon.22
+Without surgery, palliation can be provided with periodic tho-
+racocenteses, with the interval between centeses varying from 
+one to many weeks depending on rate of reaccumulation of 
+effusion and respiratory comfort.
+Mesothelioma
+Mesothelioma, a neoplasm arising directly from mesothelial cells, 
+aects the pleura (79%), pericardium (64%), and peritoneum 
+(7%) in dogs.37 It is rare in cats.38 e cause of mesothelioma is 
+unknown; exposure to asbestos has been signicantly associated 
+with intrathoracic mesothelioma in dogs.39,40 Transformation 
+over time from idiopathic benign inammation to mesothelioma 
+has been documented in dogs.41 Chronic body cavity eusions 
+that accumulate slowly (oen, over periods of weeks to months 
+initially) are common.37,41
+Macroscopically, aected pleura shows varying degrees of 
+thickening. Cytologic examination is rarely diagnostic, although 
+a block preparation technique involving immunohistochemistry 
+has been described.42 e diagnosis requires histologic analysis 
+of a pleural biopsy sample,43 typically obtained via thoracotomy 
+or thoracoscopy.
+Treatment has been administered systemically and via intra-
+cavitary (IC) infusion using an indwelling subcutaneous pleu-
+ral port.37 Reported protocols in dogs include 5-fluorouracil 
+150-200 mg/m2 IC q 2 weeks or weekly × 4 weeks then q 2 
+weeks until either progressive disease occurs or effusion does 
+not recur37 or carboplatin 250-300 mg/m2 IV or IC q 3 weeks 

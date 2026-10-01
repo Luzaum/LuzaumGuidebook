@@ -1,0 +1,272 @@
+{
+  "acetilcisteina": {
+    "plumbName": "Acetylcysteine",
+    "plumbPdf": 39,
+    "bsavaName": "Acetylcysteine",
+    "bsavaPdf": 19,
+    "bsavaCandidates": [
+      19,
+      97
+    ]
+  },
+  "alopurinol": {
+    "plumbName": "Allopurinol",
+    "plumbPdf": 64,
+    "bsavaName": "Allopurinol",
+    "bsavaPdf": 415,
+    "bsavaCandidates": [
+      415
+    ]
+  },
+  "amantadina": {
+    "plumbName": "Amantadine",
+    "plumbPdf": 73,
+    "bsavaName": "Amantadine",
+    "bsavaPdf": 31,
+    "bsavaCandidates": [
+      31
+    ]
+  },
+  "amitriptilina": {
+    "plumbName": "Amitriptyline",
+    "plumbPdf": 86,
+    "bsavaName": "Amitriptyline",
+    "bsavaPdf": 104,
+    "bsavaCandidates": [
+      104,
+      430
+    ]
+  },
+  "amoxicilina-clavulanato": {
+    "plumbName": "Amoxicillin/Clavulanate",
+    "plumbPdf": 97,
+    "bsavaName": "Co-amoxiclav",
+    "bsavaPdf": 493,
+    "bsavaCandidates": [
+      493
+    ]
+  },
+  "ampicilina-sulbactam": {
+    "plumbName": "Ampicillin/Sulbactam",
+    "plumbPdf": 109,
+    "bsavaName": "Ampicillin (e aminopenicilinas associadas)",
+    "bsavaPdf": 43,
+    "bsavaCandidates": []
+  },
+  "betanecol": {
+    "plumbName": "Bethanechol",
+    "plumbPdf": 157,
+    "bsavaName": "Bethanechol",
+    "bsavaPdf": null,
+    "bsavaCandidates": []
+  },
+  "buprenorfina": {
+    "plumbName": "Buprenorphine",
+    "plumbPdf": 177,
+    "bsavaName": "Buprenorphine",
+    "bsavaPdf": 69,
+    "bsavaCandidates": []
+  },
+  "capromorelina": {
+    "plumbName": "Capromorelin",
+    "plumbPdf": 209,
+    "bsavaName": "Capromorelin",
+    "bsavaPdf": 77,
+    "bsavaCandidates": []
+  },
+  "ceftriaxona": {
+    "plumbName": "Ceftriaxone",
+    "plumbPdf": 257,
+    "bsavaName": "Cephalosporins (Cefalosporinas parenterais)",
+    "bsavaPdf": 84,
+    "bsavaCandidates": []
+  },
+  "ciclosporina": {
+    "plumbName": "Cyclosporine",
+    "plumbPdf": 349,
+    "bsavaName": "Ciclosporin",
+    "bsavaPdf": 99,
+    "bsavaCandidates": [
+      99,
+      258,
+      260,
+      486
+    ]
+  },
+  "ciproeptadina": {
+    "plumbName": "Cyproheptadine",
+    "plumbPdf": 354,
+    "bsavaName": "Cyproheptadine",
+    "bsavaPdf": 119,
+    "bsavaCandidates": []
+  },
+  "clindamicina": {
+    "plumbName": "Clindamycin",
+    "plumbPdf": 309,
+    "bsavaName": "Clindamycin",
+    "bsavaPdf": 108,
+    "bsavaCandidates": [
+      108
+    ]
+  },
+  "clorambucil": {
+    "plumbName": "Chlorambucil",
+    "plumbPdf": 270,
+    "bsavaName": "Chlorambucil",
+    "bsavaPdf": 93,
+    "bsavaCandidates": [
+      93,
+      494
+    ]
+  },
+  "diazepam": {
+    "plumbName": "Diazepam",
+    "plumbPdf": 406,
+    "bsavaName": "Diazepam",
+    "bsavaPdf": null,
+    "bsavaCandidates": []
+  },
+  "dipirona": {
+    "plumbName": "Dipyrone (Metamizole)",
+    "plumbPdf": 440,
+    "bsavaName": "Metamizole",
+    "bsavaPdf": 268,
+    "bsavaCandidates": []
+  },
+  "enrofloxacina": {
+    "plumbName": "Enrofloxacin",
+    "plumbPdf": 477,
+    "bsavaName": "Enrofloxacin",
+    "bsavaPdf": 163,
+    "bsavaCandidates": [
+      163
+    ]
+  },
+  "gabapentina": {
+    "plumbName": "Gabapentin",
+    "plumbPdf": 595,
+    "bsavaName": "Gabapentin",
+    "bsavaPdf": 195,
+    "bsavaCandidates": [
+      195
+    ]
+  },
+  "hidroxido-de-aluminio": {
+    "plumbName": "Aluminum Hydroxide",
+    "plumbPdf": 71,
+    "bsavaName": "Aluminium antacids (and intestinal phosphate binders)",
+    "bsavaPdf": 29,
+    "bsavaCandidates": []
+  },
+  "levetiracetam": {
+    "plumbName": "Levetiracetam",
+    "plumbPdf": 773,
+    "bsavaName": "Levetiracetam",
+    "bsavaPdf": 243,
+    "bsavaCandidates": [
+      243
+    ]
+  },
+  "marbofloxacina": {
+    "plumbName": "Marbofloxacin",
+    "plumbPdf": 823,
+    "bsavaName": "Marbofloxacin",
+    "bsavaPdf": 258,
+    "bsavaCandidates": []
+  },
+  "meloxicam": {
+    "plumbName": "Meloxicam",
+    "plumbPdf": 852,
+    "bsavaName": "Meloxicam",
+    "bsavaPdf": 266,
+    "bsavaCandidates": []
+  },
+  "metadona": {
+    "plumbName": "Methadone",
+    "plumbPdf": 869,
+    "bsavaName": "Methadone",
+    "bsavaPdf": 271,
+    "bsavaCandidates": [
+      271
+    ]
+  },
+  "micofenolato-mofetila": {
+    "plumbName": "Mycophenolate",
+    "plumbPdf": 947,
+    "bsavaName": "Mycophenolate",
+    "bsavaPdf": 294,
+    "bsavaCandidates": [
+      294,
+      295
+    ]
+  },
+  "mirtazapina": {
+    "plumbName": "Mirtazapine",
+    "plumbPdf": 920,
+    "bsavaName": "Mirtazapine",
+    "bsavaPdf": 286,
+    "bsavaCandidates": [
+      286
+    ]
+  },
+  "fenobarbital": {
+    "plumbName": "Phenobarbital",
+    "plumbPdf": 1033,
+    "bsavaName": "Phenobarbital",
+    "bsavaPdf": 51,
+    "bsavaCandidates": [
+      51,
+      94,
+      331,
+      415
+    ]
+  },
+  "pradofloxacina": {
+    "plumbName": "Pradofloxacin",
+    "plumbPdf": 1075,
+    "bsavaName": "Pradofloxacin",
+    "bsavaPdf": 351,
+    "bsavaCandidates": []
+  },
+  "prednisolona": {
+    "plumbName": "PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate",
+    "plumbPdf": 1085,
+    "bsavaName": "Prednisolone",
+    "bsavaPdf": 93,
+    "bsavaCandidates": [
+      93,
+      169,
+      479
+    ]
+  },
+  "pronefra": {
+    "plumbName": "Calcium, Oral / Chitosan (Intestinal Phosphate Binders)",
+    "plumbPdf": 205,
+    "bsavaName": "Chitosan / Calcium Carbonate",
+    "bsavaPdf": 91,
+    "bsavaCandidates": []
+  },
+  "sucralfato": {
+    "plumbName": "Sucralfate",
+    "plumbPdf": 1216,
+    "bsavaName": "Sucralfate",
+    "bsavaPdf": 403,
+    "bsavaCandidates": []
+  },
+  "sulfametoxazol-trimetoprima": {
+    "plumbName": "Sulfa-/Trimethoprim",
+    "plumbPdf": 1220,
+    "bsavaName": "Trimethoprim/Sulphonamide",
+    "bsavaPdf": 434,
+    "bsavaCandidates": []
+  },
+  "tramadol": {
+    "plumbName": "Tramadol",
+    "plumbPdf": 1288,
+    "bsavaName": "Tramadol",
+    "bsavaPdf": 384,
+    "bsavaCandidates": [
+      384
+    ]
+  }
+}

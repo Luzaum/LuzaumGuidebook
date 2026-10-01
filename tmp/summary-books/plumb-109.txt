@@ -1,0 +1,251 @@
+82      Ampicillin/Sulbactam 
+Ampicillin/Sulbactam 
+(am-pi-sill-in; sul-bak-tam)  Unasyn®
+Potentiated Aminopenicillin
+Prescriber Highlights
+	
+▶Parenteral potentiated aminopenicillin that may be used to 
+treat infections for which amoxicillin/clavulanate would be 
+appropriate, but an injectable antibiotic is required
+	
+▶May be used for surgical prophylaxis 
+	
+▶Hypersensitivity reactions possible; contraindicated in patients 
+with documented severe hypersensitivity to penicillins
+	
+▶Usually administered SC, IM, or IV every 6 to 8 hours
+Uses/Indications
+The addition of sulbactam to ampicillin broadens ampicillin’s spec-
+trum through inhibition of some beta-lactamases. 
+Ampicillin/sulbactam may be indicated when parenteral therapy 
+is required for the treatment of aerobic or anaerobic gram-positive 
+and gram-negative infections. In dogs and cats, ampicillin/sulbac-
+tam may be considered when oral amoxicillin/clavulanate is not 
+viable (eg, patient NPO, in cases of critical illness [eg, sepsis, pneu-
+monia, other severe infections]), or for surgical prophylaxis. For 
+broad-spectrum uses, ampicillin/sulbactam is often combined with 
+another drug such as a fluoroquinolone or aminoglycoside to pro-
+vide enhanced gram-negative coverage.
+The World Health Organization (WHO) has designated ampicil-
+lin/sulbactam as a Critically Important, High Priority antimicrobial 
+in human medicine.1 The Office International des Epizooties (OIE) 
+has designated ampicillin/sulbactam as Veterinary Critically Im-
+portant Antimicrobial (VCIA) Agents in avian, bovine, and swine 
+species.2
+Pharmacology/Actions
+Ampicillin is a time-dependent bactericidal agent that acts via in-
+hibition of cell wall synthesis. Penicillins are bactericidal against 
+susceptible bacteria and act by inhibition of mucopeptide synthesis 
+in the cell wall, which results in a defective barrier and an osmoti-
+cally unstable spheroplast. The exact mechanism for this effect has 
+not been definitively determined, but beta-lactam antibiotics have 
+been shown to bind to several enzymes in the bacterial cytoplasmic 
+membrane that are involved with cell wall synthesis (eg, carboxypep-
+tidases, transpeptidases, endopeptidases). Various beta-lactam anti-
+biotics have different affinities for these enzymes (ie, penicillin-bind-
+ing proteins), which helps explain the differences in spectrums of 
+activity not explained by the influence of beta-lactamases. Like other 
+beta-lactam antibiotics, penicillins are generally considered to be 
+more effective against actively growing bacteria.
+Sulbactam has some intrinsic antibacterial activity against some 
+bacteria (eg, Neisseria spp, Moraxella spp, Bacteroides spp); however, 
+for most bacteria, sulbactam alone does not achieve levels sufficient 
+to act as an antibacterial agent. Sulbactam binding to certain pen-
+icillin-binding proteins may explain its activity and, when used in 
+combination with ampicillin, synergistic effects may result. On an 
+mg-for-mg basis, clavulanic acid is a more potent beta-lactamase in-
+hibitor than sulbactam, but sulbactam offers reduced likelihood of 
+inducing chromosomal beta-lactamases, greater tissue penetration, 
+and stability.
+When sulbactam is combined with ampicillin, ampicillin’s spec-
+trum of activity is extended to bacteria (eg, Escherichia coli, Pasteurella 
+spp, Staphylococcus spp, Klebsiella spp, Proteus spp) that produce 
+beta-lactamases of Richmond-Sykes types II through VI that would 
+otherwise render ampicillin ineffective. Sulbactam binds to be-
+ta-lactamases, thereby protecting the beta-lactam ring of ampicillin 
+from hydrolysis. The efficacy of sulbactam involves how well it binds 
+the specific beta-lactamase and the relative levels of sulbactam and 
+beta-lactamase. In cases in which there is a high bacterial biobur-
+den or bacteria are producing large amounts of beta-lactamase, 
+efficacy may be limited. Other aerobic bacteria that may be sus-
+ceptible to ampicillin/sulbactam include Streptococcus spp, Listeria 
+monocytogenes, Bacillus anthracis, Salmonella spp, Pasteurella spp, 
+and Acinetobacter  spp. Anaerobic bacterial infections caused by 
+Clostridium spp, Bacteroides spp, Fusobacterium spp, Peptostrepto-
+coccus spp, and Propionibacterium spp may also be susceptible to 
+ampicillin/sulbactam.3–5 Similar to amoxicillin/clavulanic acid, am-
+picillin/sulbactam can be used in the treatment of bacterial respi-
+ratory tract infections, although ampicillin/sulbactam is ineffective 
+against Mycoplasma spp and resistance in Bordetella spp is an in-
+creasing problem in some regions. In general, ampicillin/sulbactam 
+is excellent for beta-lactamase–producing gram-positive aerobic 
+and anaerobic bacteria, but less effective for beta-lactamase–pro-
+ducing gram-negative bacteria. 
+Methicillin-resistant staphylococci are resistant to ampicillin/sul-
+bactam. Ampicillin/sulbactam is usually ineffective against AmpC 
+(type I) cephalosporinases, and efficacy against extended-spectrum 
+beta-lactamase–producing bacteria is variable and often unpredict-
+able. There is little—if any—synergistic activity against organisms 
+already susceptible to ampicillin. 
+Pharmacokinetics
+See Ampicillin for pharmacokinetic information. 
+Because sulbactam sodium is not appreciably absorbed from the 
+GI tract, this medication must be given parenterally. A covalently 
+linked double ester form of ampicillin/sulbactam (ie, sultamicillin) is 
+orally absorbed, but this combination is not commercially available 
+in the US. When sulbactam is administered parenterally (ie, IV, IM), 
+its pharmacokinetic profile closely mirrors that of ampicillin’s phar-
+macokinetic profile in most species studied. In a study of calves, plas-
+ma concentrations of sulbactam during the elimination phase were 
+consistently higher than those of ampicillin, leading the study au-
+thors to propose using a higher ratio (greater than 2:1 ampicillin/
+sulbactam) if the combination is used in calves.6
+A regional IV limb perfusion (RIVLP; 45-minute duration) with 
+ampicillin/sulbactam (1.5 g; ratio, 2:1; total volume, 4 mL) admin-
+istered in the dorsal common digital vein of the right rear limb of 
+healthy, adult nonlactating cattle resulted in peak ampicillin serum 
+concentrations of ≈5 mg/mL in the perfused limb and 2 mg/mL 
+in the synovial fluid of the metatarsophalangeal joint 1 hour after 
+RIVLP. Ampicillin concentration in synovial fluid remained above 
+8 μg/mL for 19 hours. Maximum systemic ampicillin concentration 
+was 2.5 μg/mL 5.4 hours after RIVLP. Sulbactam pharmacokinetics 
+followed trends similar to ampicillin.7
+Contraindications/Precautions/Warnings
+Penicillins are contraindicated in patients with a history of severe 
+hypersensitivity (anaphylaxis) to them. Because cross-reactivity can 
+occur, penicillins should be used cautiously in patients documented 
+as being hypersensitive to other beta-lactam antibiotics (eg, cephalo-
+sporins, cephamycins, carbapenems).
+Ampicillin/sulbactam is contraindicated in humans with a his-
+tory of ampicillin/sulbactam-associated cholestatic jaundice or he-
+patic dysfunction; veterinary significance is unknown. In humans, 
+ampicillin has been shown to lower seizure threshold and should be 
+used with caution with any drug that also lowers seizure threshold8; 
+significance in veterinary patients is not known.
+Increased plasma ampicillin drug concentrations, AUC, and in-
+creased elimination half-life have been documented in azotemic dogs.9 
+Dosage adjustment (ie, reduced dosing frequency) may be needed. 
+
+Ampicillin/Sulbactam       83
+Penicillins, cephalosporins, and macrolides should not be admin-
+istered to rabbits, guinea pigs, chinchillas, or hamsters, as serious 
+enteritis and clostridial enterotoxemia may occur.
+Adverse Effects
+IM injections may be painful, as pH of the solution is high. IV in-
+jections may cause thrombophlebitis and phlebitis. Although hy-
+persensitivity reactions to penicillins occur infrequently in animals, 
+they can be severe (anaphylaxis), particularly after IV ­administration.
+Hepatotoxicity (ie, cholestatic hepatitis, cholestasis) has been re-
+ported in some humans receiving ampicillin/sulbactam. Toxicity is 
+usually reversible with discontinuation of therapy, but deaths have 
+been reported. Veterinary significance is unknown. 
+High doses or increased CNS penetration of penicillins have been 
+associated with neurotoxicity (eg, ataxia in dogs).10 Although peni-
+cillins are not considered to be hepatotoxic, elevated liver enzymes 
+have been reported in some dogs. Other effects reported in dogs in-
+clude tachypnea, dyspnea, edema, and tachycardia. GI disturbances 
+are possible, and Clostridium difficile-associated diarrhea (CDAD) 
+has been reported in humans.
+Reproductive/Nursing Safety
+Both ampicillin and sulbactam have been shown to cross the pla-
+centa. Ampicillin/sulbactam should be used only when the potential 
+benefits outweigh the risks. 
+Both ampicillin and sulbactam are distributed into human breast 
+milk in low concentrations but are considered to be compatible with 
+breastfeeding. Nursing offspring should be monitored for GI distur-
+bances.
+Overdose/Acute Toxicity
+Neurologic effects (eg, ataxia) have rarely been reported, and risk 
+increases with higher doses or conditions that can lead to increased 
+CNS penetration (eg, meningitis); should these signs develop, the 
+risks for continued use should be weighed with those associated 
+with dose reduction or use of a different antibiotic. In humans, par-
+ticularly those with renal disease, high doses of parenteral penicillins 
+have induced CNS effects.
+For patients that have experienced or are suspected to have ex-
+perienced an overdose, consultation with a 24-hour poison control 
+center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with ampicillin/sulbactam either 
+have been reported or are theoretical in humans or animals and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but the potential risks 
+should be weighed and additional monitoring performed when ap-
+propriate.
+	■Allopurinol: In humans, concurrent use has been implicated 
+in increased occurrences of skin rashes; veterinary significance of 
+this interaction is unknown. 
+	■Aminoglycosides (eg, amikacin, gentamicin): Beta-lactam 
+antibiotics can inactivate aminoglycosides in vitro (and in vivo in 
+patients with chronic kidney disease).
+	■Bacteriostatic Antimicrobials (eg, chloramphenicol, 
+erythromycin and other macrolides, tetracyclines, sulfon-
+amides): Because there has been evidence of in vitro antagonism 
+between beta-lactam antibiotics and bacteriostatic antibiotics, use 
+together generally has not been recommended, but actual clinical 
+importance is not clear and is currently in doubt.
+	■Dichlorphenamide: Concurrent use may increase risk for 
+­hypokalemia.
+	■Methotrexate (MTX): Ampicillin may decrease the renal ex-
+cretion of MTX, causing increased MTX concentrations and po-
+tential toxic effects.
+	■Mycophenolate: Concurrent use may reduce concentrations 
+or effects of mycophenolate.
+	■Probenecid: Can reduce the renal tubular secretion of both 
+ampicillin and sulbactam, thereby maintaining higher systemic 
+concentrations for a longer period. This potentially beneficial in-
+teraction requires further investigation before dosing recommen-
+dations can be made for veterinary patients.
+	■Warfarin: Concurrent use may decrease vitamin K production 
+and increase risk for bleeding.
+Laboratory Considerations
+	■Ampicillin may cause false-positive urine glucose determina-
+tions when using cupric sulfate solution (Benedict’s solution, 
+Clinitest®). Tests using glucose oxidase (Test-Tape®, Clinistix®) are 
+not affected by ampicillin.
+	■Because penicillins and other beta-lactams can inactivate amino- 
+glycosides in vitro and in vivo in patients in renal failure or when 
+penicillins are used in larger doses, serum concentrations of ami-
+noglycosides may be falsely decreased, particularly when the se-
+rum is stored prior to analysis. It is recommended that samples 
+should be drawn at times when the beta-lactam antibiotic is at a 
+trough level, and if the assay cannot be run right away, samples 
+should be frozen immediately.
+Dosages
+DOGS/CATS:
+NOTE: Dosages are listed for combined amounts of ampicillin/
+sulbactam.
+Empiric antibiotic therapy in critically ill animals (extra-label): 
+22 – 30 mg/kg IV every 6 to 8 hours; used in combination with 
+a parenteral drug with gram-negative activity (eg, aminoglyco-
+side, fluoroquinolone)
+Infections susceptible to amoxicillin/clavulanate in patients 
+unable to receive oral doses (extra-label): 22 mg/kg SC, IV, or 
+IM every 8 hours
+Surgical prophylaxis (extra-label): 22 mg/kg IV ≈1 hour prior 
+to incision; redosing can be performed intraoperatively every 2 
+hours if needed based on duration of surgery.
+Monitoring
+	■Because penicillins usually have minimal toxicity associated with 
+their use, monitoring for efficacy is usually all that is required un-
+less toxic signs develop.
+	■Periodic liver panel (eg, liver enzymes, bilirubin) in patients with 
+pre-existing hepatic dysfunction 
+	■Serum concentrations and therapeutic drug monitoring are not 
+routinely performed.
+Client Information
+	■Because of the dosing intervals required, this drug is best admin-
+istered to inpatients only.
+Chemistry/Synonyms
+Commercial drug formulations contain sodium salts of both ampi-
+cillin and sulbactam in a 2:1 ratio (eg, ampicillin, 250 mg; sulbactam, 
+125 mg). Ampicillin sodium/sulbactam sodium for injection occurs 
+as a white to off-white powder that is freely soluble in water or other 
+aqueous solutions. The reconstituted solution is yellow to pale yellow 
+and has a pH of 8 to 10. 
+Ampicillin/sulbactam may also be known as Ampibactan®, Baci-
+mex®, Begalin-P®, Bethacil®, Comabactan®, Galotam®, Loricin®, Sulam®, 
+Sulperazon®, Synergistin®, Unacid®, Unacim®, Unasyn®, or Unasyna®.

@@ -1,0 +1,226 @@
+===== BSAVA PDF 163 / impressa 147 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+147
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Enrofloxacin
+(Baytril, Enrocare, Enrotron, Enrox, Enroxil, 
+Fenoflox, Floxabactin, Powerflox, Quinoflox, 
+Xeden, Zobuxa) POM-V 
+Formulations: Injectable: 25 mg/ml, 50 mg/ml. Oral: 15 mg, 50 
+mg, 100 mg, 150 mg, 200 mg, 250 mg tablets; 25 mg/ml solution.
+Action: Enrofloxacin is a concentration-dependent antimicrobial 
+which inhibits bacterial DNA gyrase. Pulse dosing regimens may be 
+effective, particularly against Gram-negative bacteria.
+Use: Ideally fluoroquinolone use should be reserved for infections 
+where culture and sensitivity testing predicts a clinical response 
+and where lower tier antimicrobials would not be effective. Active 
+against Mycoplasma  and many Gram-positive and Gram-negative 
+organisms, including Pasteurella , Staphylococcus , Pseudomonas 
+aeruginosa , Klebsiella , Escherichia coli , Mycobacterium , Proteus 
+and Salmonella . Relatively ineffective against obligate anaerobes. 
+Fluoroquinolones are highly lipophilic drugs that attain high 
+concentrations within cells in many tissues and are particularly 
+effective in the management of soft tissue, urogenital (including 
+prostatic) and skin infections. For the treatment of non-tubercular 
+mycobacterial disease, enrofloxacin can be combined with 
+clarithromycin and rifampin. Administration by i.v. route is not 
+authorized but has been used in cases of severe sepsis. If this  
+route is used, dilute to 10 times the volume in 0.9% sodium 
+chloride and administer slowly as the carrier contains potassium 
+(ideally 35–45 minutes).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Fluoroquinolones are relatively 
+contraindicated in growing dogs, as cartilage abnormalities have 
+been reported in young dogs (but not cats). Enrofloxacin is not 
+authorized in cats <8 weeks of age; dogs <1 year of age; large-breed 
+dogs <18 months of age.
+Adverse reactions: In cats, irreversible retinal blindness has 
+occurred at dosing rates higher than those currently recommended, 
+although at least one case reported in the literature was being dosed 
+within the 5 mg/kg q24h rate. Enrofloxacin should be used with 
+caution in epileptic animals until further information is available, as 
+in humans they potentiate CNS adverse effects when administered 
+concurrently with NSAIDs. Careful dosing in cats is facilitated by 
+accurate body weight and use of a 1 ml syringe, and doses higher 
+than 5 mg/kg/day are not recommended in cats.
+Drug interactions: Absorbents and antacids containing cations 
+(Mg2+, Al3+) may bind fluoroquinolones, preventing their absorption 
+from the GI tract. Their absorption may also be inhibited by 
+sucralfate and zinc salts; separate dosing by at least 2 hours. 
+Fluoroquinolones increase plasma theophylline concentrations. 
+
+===== BSAVA PDF 164 / impressa 148 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+148
+Cimetidine may reduce the clearance of fluoroquinolones and so 
+should be used with caution with these drugs. Some 
+fluoroquinolones may decrease the metabolism and increase 
+nephrotoxicity of ciclosporin and tacrolimus in humans and 
+therefore concurrent use in animals is best avoided until more 
+research has been performed. May increase the action of orally 
+administered anticoagulants.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 5 mg/kg s.c. q24h. Higher doses (10 mg/kg q24h) should be 
+considered for certain sites, including prostatitis. Even higher doses 
+may be necessary for certain isolates of Pseudomonas aeruginosa . 
+Contact the manufacturer to discuss individual cases.
+Cats: 5 mg/kg s.c. q24h; 2.5 mg/kg p.o. q12h or 5 mg/kg p.o. q24h.
+References
+Cummings KJ, Aprea VA and Altier C (2015) Antimicrobial resistance trends among 
+canine Escherichia coli isolates obtained from clinical samples in the northeastern USA, 
+2004–2011. Canadian Veterinary Journal  56, 393–398
+Federico S, Carrano R, Capone D et al . (2006) Pharmacokinetic interaction between 
+levofloxacin and ciclosporin or tacrolimus in kidney transplant recipients: ciclosporin, 
+tacrolimus and levofloxacin in renal transplantation. Clinical Pharmacokinetics 45, 169–175
+Ford MM, Dubielzig RR, Giuliano EA et al . (2007) Ocular and systemic manifestations 
+after oral administration of a high dose of enrofloxacin in cats. American Journal of 
+Veterinary Research  68, 190–202
+Ephedrine
+(Enurace, Ephedrine hydrochloride*) POM-V, POM 
+Formulations: 10 mg, 15 mg, 30 mg, 50 mg tablets; 3 mg/ml, 30 
+mg/ml solutions for injection; 0.5% and 1% nasal drops.
+Action: Non-catecholamine sympathomimetic stimulates  
+alpha- and beta-adrenergic receptors directly, and indirectly 
+through endogenous release of noradrenaline. Also causes 
+contraction of internal urethral sphincter muscles and relaxation  
+of bladder muscles. Compared with more powerful 
+sympathomimetics, e.g. oxymetazoline and xylometazoline,  
+there is less of a rebound effect.
+Use:
+• Treatment of hypotension during anaesthesia. As well as 
+constricting peripheral vessels, it has a positive inotropic effect 
+and accelerates heart rate, therefore assisting in bradycardia. 
+Effects tend to wane after 2–3 doses have been administered, 
+due to exhaustion of endogenous noradrenaline stores. 
+• Also used orally in the treatment of urinary incontinence. Can be 
+used in conjunction with phenylpropanolamine. Polyuria should 
+be excluded before treatment is given for urinary incontinence, 
+as many conditions that cause polyuria would be exacerbated  
+by ephedrine.
+• Proposed for treatment of nasal congestion (and may be of 
+some benefit in cat ‘flu’).
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 165 / impressa 149 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+149
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use with caution in dogs and cats with cardiovascular disease, partial 
+urethral obstruction, hypertension, diabetes mellitus, 
+hyperadrenocorticism, hyperthyroidism or other metabolic disorders.
+Safety and handling: Pregnant women should take particular 
+care to wear gloves for administration.
+Contraindications: Do not use in pregnant or lactating patients 
+or those with glaucoma.
+Adverse reactions: Even at recommended therapeutic doses may 
+cause more generalized sympathetic stimulation (panting, mydriasis, 
+CNS stimulation) and cardiovascular effects (tachycardia, atrial 
+fibrillation and vasoconstriction). May also cause reduction of the 
+motility and tone of the intestinal wall.
+Drug interactions: Synergistic with other sympathomimetics. 
+Volatile anaesthetics will enhance the sensitivity of the myocardium 
+to the effects of ephedrine. Concomitant use with cardiac 
+glycosides (digoxin) and tricyclic antidepressants (amitriptyline) can 
+cause arrhythmias. Will enhance effects of theophylline and may 
+cause hypertension when given with MAO inhibitors (e.g. selegeline).
+DOSES
+Dogs: 
+• Hypotension: 0.05–0.2 mg/kg i.v.; repeat as necessary; duration 
+of effect is short (5–15 min). Effects tend to wane after 2–3 
+doses have been administered.
+• Urinary incontinence: 1 mg/kg p.o. q12h. Dose should be 
+adjusted according to effect but there is a maximum dose of 2.5 
+mg/kg p.o. q12h.
+• Nasal congestion: No dose determined. Suggest start at 1 drop 
+of 0.5% solution intranasally q12h. If giving orally, suggest 0.5 
+mg/kg p.o. q12h.
+Cats:   
+• Hypotension: 0.05–0.1 mg/kg i.v.; repeat as necessary; duration 
+of effect is short (5–15 min). Effects tend to wane after 2–3 
+doses have been administered.
+• Nasal congestion: 1 drop of 0.5% solution intranasally q12h. Oral 
+formulations not convenient for administration to most cats.
+Epinephrine see Adrenaline
+Epirubicin (4’-Epi-doxorubicin)
+(Epirubicin*, Pharmorubicin*) POM 
+Formulations: Injectable: 10 mg, 20 mg, 50 mg powder for 
+reconstitution; 2 mg/ml solution.
+Action: Epirubicin is a semisynthetic stereoisomer of doxorubicin. 
+Intracellularly its metabolism results in production of cytotoxic free 
+radicals. It also binds irreversibly to DNA, thereby preventing 

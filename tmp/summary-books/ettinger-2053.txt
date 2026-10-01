@@ -1,0 +1,242 @@
+CHAPTER 283
+•
+Primary Hyperparathyroidism
+1901
+eBooks.Health.Elsevier.com
+ACRONYMS
+[Ca] calcium concentration
+CaCrCR calcium to creati-
+nine clearance ratio
+CaSR calcium sensing 
+receptor
+CBC complete blood count
+CKD chronic kidney disease
+ELISA enzyme-linked 
+immunosorbent assay
+FHH familial hypocalciuric 
+hypercalcemia
+FIH feline idiopathic hyper-
+calcemia
+GI gastrointestinal
+HHM humoral hypercalce-
+mia of malignancy
+HRPT2 hyperparathyroid-
+ism 2 with jaw tumors
+iCa ionized calcium
+[iCa] ionized calcium con-
+centration
+IV intravenous
+MEN multiple endocrine 
+neoplasia
+PD polydipsia
+PHPT primary hyperpara-
+thyroidism
+PO4 phosphate
+PTH parathyroid hormone
+PTHrP parathyroid hor-
+mone–related protein
+PU polyuria
+SQ subcutaneous
+TCa total serum calcium
+[TCa] total serum calcium 
+concentration
+US ultrasonography
+CALCIUM HOMEOSTASIS IN DOGS 
+AND CATS
+CALCIUM FUNCTIONS
+C
+alcium (Ca), the most abundant ele-
+ment in the body due to its presence in 
+skeletal bone, is necessary for diverse 
+processes, such as transmitting many sig-
+nals received on cell surfaces to intracellular 
+locations, nerve conduction, neuromuscu-
+lar transmission, muscle contraction, blood 
+coagulation, hormone secretion and hepatic 
+glycogen metabolism. Adverse eects on 
+organ systems are noted when Ca homeosta-
+sis is disrupted. e skeleton acts as a Ca res-
+ervoir, used for correcting decreases in serum 
+Ca concentrations ([Ca]). Ca can be excreted 
+or absorbed in the kidneys and the small 
+intestine. e Ca sensing receptor (CaSR), 
+responsible for ensuring that circulating 
+[Ca] is maintained within a limited “normal” 
+range, is a G-protein present in parathyroid 
+glands, kidneys, cartilage and bone.1 Inter-
+actions between the CaSR and parathyroid 
+hormone (PTH), synthesized and secreted by 
+the parathyroid glands, can lead to direct or 
+indirect eects on skeletal bone, the gastroin-
+testinal (GI) tract, and kidneys.2
+CALCIUM MEASUREMENT AND ITS 
+SERUM REGULATION
+Ca, in common with other important elec-
+trolytes, is regulated to maintain narrow ref-
+erence intervals. Total serum [Ca] ([TCa]) is 
+usually about 2.3-2.8 mmol/L (9.2-11.2 mg/
+dL) in dogs and 2.1-2.5 mmol/L (8.4-10.0 mg/dL) in cats. Refer-
+ence intervals vary between laboratories. When concerned about 
+Ca, it is recommended that both TCa and ionized Ca concentra-
+tions ([iCa]), the biologically active form of the electrolyte, be 
+assessed (ch. 69). About 50% of the [TCa] is iCa, about 40% is 
+protein-bound (albumin plus a small amount of globulin), and 
+<10% is complexed with anions, such as bicarbonate or citrate. 
+Spectrophotometric methods are used to measure TCa in serum 
+or heparinized plasma. Blood anticoagulated with EDTA or 
+oxalate cannot be used because they chelate Ca. Hemolysis and 
+lipemia can falsely increase measured [TCa]. Hypoproteinemia 
+lowers measured [TCa] but does not aect measured [iCa]. Clini-
+cally, the [iCa], measured with an ion-specic electrode, is most 
+important. However, the proportion of iCa in a sample can be 
+altered by sample handling. When samples are stored, red cell 
+metabolism increases lactic acid concentrations, pH decreases, 
+and the iCa fraction increases. Conversely, when samples are 
+exposed to air, CO2 is lost, the pH rises, and the iCa fraction 
+decreases.
+CONTROL OF SERUM CALCIUM CONCENTRATION [Ca]
+Overview
+Circulating [Ca] is under control of 4 important hormones: 
+PTH, PTH-related protein (PTHrP), vitamin D (calcitriol, 
+1,25-[OH]2-cholecalciferol), and calcitonin. e CaSR senses 
+extracellular [Ca]. Hypercalcemia activates the CaSR, reducing 
+PTH synthesis and secretion. Hypocalcemia inactivates CaSR, 
+increases PTH secretion, enhances PTH gene expression, and 
+promotes parathyroid gland cellular proliferation. Ca homeosta-
+sis is disrupted when CaSR activity is abnormal or when patho-
+logical processes interfere.
+Parathyroid Hormone (PTH): Description, Function, 
+Assays
+PTH is an 84 amino acid polypeptide hormone synthesized and 
+secreted by the parathyroid glands. Dogs and cats have 4 para-
+thyroid glands (2 pairs). One pair is either embedded within or 
+closely associated with each thyroid lobe (Figure 283.1). Cranial, 
+“external,” glands are usually situated outside the thyroid capsule 
+and caudal, “internal,” glands are usually located within thy-
+roid tissue. Parathyroid glands consist of cords or nests of cells 
+around capillaries (Figure 283.2). Parathyroid chief cells continu-
+ously synthesize PTH, which increases both TCa and iCa and 
+decreases serum phosphate (PO4) concentrations either directly 
+or indirectly via activity in 3 major target organs: bone, kidney, 
+or GI tract (Figure 283.3). PTH is metabolized quickly. Secretory 
+granules within chief cells contain intact active hormone, includ-
+ing the 34-amino-acid, biologically active N-terminus and the 
+carboxy-terminus portions required for PTH activity.2-4 When 
+the serum [Ca] is low, the secretory granule rate of degradation is 
+reduced. Conversely, when serum [Ca] is increased, the degrada-
+tion rate is enhanced. ere is an inverse sigmoidal relationship 
+between Ca and PTH; the set-point of Ca homeostasis is the [Ca] 
+that suppresses PTH secretion 50%. PTH cannot be suppressed 
+completely and low level production is continuous, so the set-
+point is midway between this low-level production and maximum 
+PTH production. An altered Ca set-point characterizes many 
+hypercalcemic conditions, resulting in a drive to generate a higher 
+[Ca] through the synthesis and release of PTH. Increased concen-
+trations of vitamin D slow PTH gene transcription and reduce the 
+rate of synthesis of the hormone. High PO4 concentrations slow 
+PTH breakdown and increase hormone secretion.
+Primary Hyperparathyroidism
+Barbara Justine Skelly
+CHAPTER 283
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Video.
+
+SECTION XIX
+•
+Endocrine Disease
+1902
+eBooks.Health.Elsevier.com
+PTH and its fragments cleaved from the prohormone circulate. 
+Biologically active intact PTH (amino acids 1-84) must be measured 
+for reliable assessment of parathyroid function.5 6 Assays developed 
+for PTH are sensitive and specic. Older PTH assays used anti-
+bodies directed at both the C-terminal (amino acids 39-84) and 
+N-terminal (amino acids 12-24, or 26-32). However, such assays also 
+measured some of the fragments cleaved between amino acids 1-12. 
+Current (usually enzyme-linked immunosorbent assay [ELISA]) 
+assays use antibody combinations that only measure intact hor-
+mone.7 A canine-specic ELISA, which has also been validated for 
+cats, is available. Some laboratories have validated human-specic 
+PTH testing kits for use in the dog and cat.8 9 Since assay availabil-
+ity changes, new methods should be validated for the species being 
+tested. EDTA plasma samples are preferred for assaying PTH. Since 
+PTH is labile, samples should be immediately separated and frozen 
+until assayed. e laboratory should provide handling information, 
+and many also provide freezer packs for sample submission. e 
+reference interval for PTH is approximately 20-65 pg/mL (2.1-6.9 
+pmol/L) in the dog and <25 pg/mL (<2.7 pmol/L) in the cat but may 
+dier depending on the laboratory and assay system used.
+Parathyroid Hormone–Related Protein (PTHrP): 
+Description, Function, Assays
+PTHrP is integral to Ca homeostasis in the fetus but aer birth, 
+it becomes virtually undetectable in healthy animals. Increases 
+in PTHrP are the cause of humoral hypercalcemia of malignancy 
+(HHM).10 PTHrP has the same physiologic eects as PTH, increas-
+ing TCa and iCa while decreasing PO4. Measuring PTHrP is 
+important when evaluating hypercalcemic dogs and cats, since a 
+neoplasia-related cause is always a possibility (ch. 69). Normal or 
+low PTHrP concentrations do not denitively exclude the possibility 
+of a neoplastic process, whereas increases are usually associated with 
+a malignant cancer (ch. 331). PTHrP can be reliably measured using 
+2-site immunoradiometric assay (IRMA) or N-terminal radioim-
+munoassays (RIAs). Several circulating forms of PTHrP, in addition 
+to the intact 1-141 amino acid hormone, have biological activity. 
+ese include an N-terminal 1-36 amino acid fragment and a 1-86 
+amino acid N-terminal-and-midregion fragment. Roles of these 
+dierent forms are not completely understood. Like most proteins, 
+PTHrP is not stable, is measured preferentially in EDTA plasma, 
+and samples should be handled as described for PTH. e reference 
+interval for PTHrP is generally <0.5 pmol/L in both dogs and cats.
+Vitamin D (Calcitriol, ,-[OH]-Cholecalciferol)
+Dietary cholecalciferol, hydroxylated once in an unregulated pro-
+cess by the liver to produce 25-OH-cholecalciferol (25-OH vitamin 
+D, calcidiol), produces a reservoir pool of inactive vitamin D ready 
+for activation to 1,25-(OH)2-vitamin D, calcitriol. is step, which 
+occurs in the kidneys, is regulated: its synthesis is stimulated by 
+PTH via alpha-1-hydroxylase and suppressed by increases in PO4. 
+25-OH-cholecalciferol can also be catabolized by 24-hydroxylation, 
+then excreted. Vitamin D (25 and 1,25-[OH]2 D) can be measured 
+in cats and dogs by veterinary specialist laboratories.
+Calcitonin
+Calcitonin, a peptide synthesized by thyroid gland C cells, reduces 
+serum [Ca] and aids in limiting postprandial hypercalcemia. ough 
+calcitonin can counteract the eects of PTH, its role is relatively 
+minor. Following total thyroid and parathyroidectomy, the clini-
+cal consequence is hypocalcemia due to hypoparathyroidism, not 
+hypercalcemia due to calcitonin deciency. Similarly, when there is 
+neoplasia of the C cells (medullary thyroid carcinoma) and excessive 
+production of calcitonin, Ca homeostasis is not disrupted. In people, 
+release of calcitonin by Ca-stimulated CaSR activity is unlikely to 
+contribute to Ca homeostasis. Calcitonin is not usually assessed in 
+patients with Ca disorders, and no assays are commercially available.
+How Do These Hormones Act Together to Maintain 
+Calcium Homeostasis?
+PTH is the primary regulator of Ca homeostasis, increasing 
+serum [Ca] by increasing the number of osteoclasts on bone 
+Larynx
+Trachea
+Left external
+parathyroid gland
+Left internal
+parathyroid gland
+Right lobe
+of thyroid
+Common
+carotid artery
+Vagosympathetic
+trunk
+Isthmus of thyroid
+(not always present)
+B
+A
+Figure 283.1
+A, Schematic representation of the anatomical posi-
+tion of the parathyroid glands. B, Macroscopic pathological specimen 
+showing dissection of the ventral cervical region from a cat with an en-
+larged parathyroid gland (solid arrow). e contralateral thyroid gland 
+is normal, showing no visible parathyroid gland (broken arrow). (Photo 
+courtesy Fernando Constantino-Casas.)
+Figure 283.2
+Histological appearance of the parathyroid glands from 
+a healthy dog showing cords or nests of cells around capillaries. He-
+matoxylin and eosin, bar = 50 micrometers. (Photo courtesy Fernando 
+Constantino-Casas.)

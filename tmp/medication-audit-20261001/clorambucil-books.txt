@@ -1,0 +1,856 @@
+
+===== Plumb PDF 270 =====
+Chlorambucil   243
+potassium chloride 35 mg/mL gel/paste in 80 mL and 300 mL; D-Tox-
+Besc®,  Activated Charcoal Gel with Electrolytes®; (OTC). Labeled for 
+use in small and large animal species
+Activated hardwood charcoal and thermally activated attapulgite 
+clay (concentrations not labeled) in an aqueous gel suspension in 8 fl 
+oz bottle, 60 mL tube, and 300 mL tube with easy dose syringe; UAA® 
+(Universal Animal Antidote) Gel; (OTC). Labeled for use in dogs and 
+cats and for grain overload in ruminants
+HUMAN-LABELED PRODUCTS:
+Activated charcoal oral powder: 15 g, 30 g, 40 g, 120 g, 240 g, and UD 
+30 g; generic; (OTC)
+Activated charcoal oral liquid/suspension with sorbitol: 25 g in  
+120 mL and 50 g in 240 mL; Actidose® with Sorbitol, generic; (OTC)
+Activated charcoal liquid/suspension without sorbitol: 208 mg/mL 
+to 12.5 g in 60 mL, 15 g in 72 mL, 25 g in 120 mL, and 50 g in 240 
+mL; Actidose-Aqua®, generic; (OTC)
+Activated charcoal oral granules: 25 g; EZ Char®; (OTC)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Chlorambucil
+(klor-am-byoo-sil) Leukeran®
+Antineoplastic, Immunosuppressant 
+Prescriber Highlights
+ ▶ Nitrogen mustard derivative antineoplastic and immunosup-
+pressant in dogs, cats, and horses
+ ▶ Caution: Pre-existing bone marrow depression or infection
+ ▶ Adverse effects: Primarily myelosuppression and GI toxicity
+ ▶ Known teratogen; National Institute for Occupational Safety 
+and Health (NIOSH) hazardous drug; use appropriate precau-
+tions when handling.
+Uses/Indications
+Chlorambucil may be useful as part of multidrug protocols in a va -
+riety of neoplastic diseases, including lymphocytic leukemia, T-cell 
+lymphoma,1 GI lymphoma,2,3 multiple myeloma, lymphangiosarco-
+ma,4 mast cell tumor,5 cutaneous plasmacytosis, polycythemia vera, 
+macroglobulinemia, and ovarian adenocarcinoma. Chlorambucil 
+may also be used as a solo metronomic agent for some neoplasias 
+(eg, hemangiosarcoma, transitional cell carcinoma).6,7 It may also be 
+useful as adjunctive therapy for some immune-mediated conditions 
+(eg, inflammatory bowel disease, nonerosive arthritis, immune-  
+mediated hemolytic anemia, immune-mediated skin disease).8,9
+Pharmacology/Actions
+Chlorambucil is an aromatic nitrogen mustard derivative and an al-
+kylating antineoplastic agent. Its chemical reactivity is nonspecific, 
+but the primary cytotoxic effect is due to alkylation of cancer cell 
+DNA strands resulting in cross-linking and cellular apoptosis. Im -
+munosuppressive effects may not be noted until 2 to 4 weeks after 
+starting the drug.
+Acquired resistance to chlorambucil has been reported and is 
+thought to be caused by several mechanisms.10 
+Pharmacokinetics
+Chlorambucil is rapidly and completely absorbed after oral ad -
+ministration, reaching C max in ≈1 hour. It is highly bound to plas -
+ma proteins. Although it is unknown if chlorambucil crosses the 
+blood–brain barrier, neurologic adverse effects have been reported. 
+Chlorambucil is extensively metabolized in the liver primarily to the 
+active metabolite phenylacetic acid mustard. Phenylacetic acid mus-
+tard is further metabolized to other metabolites that are excreted in 
+the urine. Terminal half-life is 1.5 hours in humans.
+Contraindications/Precautions/Warnings
+Chlorambucil is contraindicated in patients with a history of hyper-
+sensitivity to it or other alkylating agents. It should be used with cau-
+tion in patients with pre-existing bone marrow depression, patients 
+susceptible to bone marrow depression (including patients receiving 
+long-standing maximum-tolerated dose chemotherapy), or patients 
+that have an active systemic infection. Because chlorambucil is he -
+patically metabolized, use with caution in patients with hepatic im -
+pairment.
+Because chlorambucil is a chemotherapy agent with potential 
+to cause teratogenic effects, proper and safe handling methods are 
+recommended to reduce personal and occupational exposure.11 The 
+National Institute for Occupational Safety and Health (NIOSH) clas-
+sifies chlorambucil as a hazardous drug.12 
+Adverse Effects
+The most common major adverse effect associated with chlorambu-
+cil therapy is myelosuppression (eg, anemia, leukopenia, thrombo -
+cytopenia). Myelosuppression may occur gradually, with nadirs oc -
+curring within 7 to 14 days of the start of therapy. Recovery generally 
+takes from 7 to 14 days. Severe bone marrow depression, an uncom-
+mon adverse effect occurring more often with prolonged (months to 
+years) therapy, can result in pancytopenia that may require months 
+to years for recovery. GI toxicity (eg, vomiting, diarrhea) is more 
+common with higher (20 mg in humans) pulse doses. Hepatotoxici-
+ty was noted in 23% of dogs in one study.5 Alopecia and delayed re-
+growth of shaven hair have been reported in dogs; breeds with a con-
+tinuously growing hair coat (eg, poodles, terriers, Afghan hounds, 
+old English sheepdogs) are more likely to experience significant hair 
+loss. Lower-dose metronomic therapy (4 mg/m2 [NOT mg/kg] once 
+daily) in dogs is associated with a lower incidence of adverse effects. 
+One study that evaluated several metronomic dose schedules found 
+that dogs receiving 6 mg/m 2 (NOT mg/kg) once daily and 8 mg/m 2  
+(NOT mg/kg) once daily were at higher risk for adverse effects (GI 
+and hematologic) as compared with dogs that received 4 mg/m 2 
+(NOT mg/kg) once daily. In addition, higher dosages of metronomic 
+chlorambucil did not improve tumor response.13
+One case report of neurotoxicity (eg, facial twitching, myoclonus, 
+agitation, seizures) in a cat has been reported.14 In addition, acquired 
+Fanconi syndrome has been reported in 4 cats receiving chloram -
+bucil and corticosteroids. Partial or complete resolution of Fanconi 
+syndrome was seen in 3 of 4 cats within 3 months of discontinuing 
+chlorambucil therapy.15 In another report, chlorambucil was sus -
+pected of causing seizures in a dog.16
+In humans, skin reactions that may progress to erythema multi -
+forme or toxic epidermal necrolysis have been reported rarely. Bron-
+chopulmonary dysplasia with pulmonary fibrosis, neurotoxicity, uric 
+acid nephropathy, and hepatotoxicity have also been reported. Sec -
+ondary malignancies may occur.
+Reproductive/Nursing Safety
+Chlorambucil has been documented to cause teratogenic effects in 
+laboratory animals. Use during pregnancy only when the benefits to 
+the dam outweigh the potential risks. In humans, chlorambucil has 
+caused prolonged or permanent azoospermia in men, amenorrhea 
+in women, and both reversible and irreversible infertility, particular-
+ly when given during pre-puberty and puberty. 
+It is unknown whether chlorambucil enters maternal milk. In 
+humans, it is recommended to discontinue nursing if the mother is 
+receiving the drug.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+
+
+===== Plumb PDF 271 =====
+244    Chlorambucil
+Overdose/Acute Toxicity
+The oral LD50 of chlorambucil in rats and mice is 76 mg/kg and 80 
+mg/kg, respectively. Experiences with acute overdoses in humans 
+have been limited, but doses of up to 5 mg/kg resulted in neuro -
+logic (seizures) toxicity and pancytopenia (nadirs at 1  to 6 weeks 
+postingestion). All patients recovered without long-term sequelae. 
+Supportive treatment and gut emptying protocols are recommend -
+ed following an overdose but beware of rapidly changing neurologic 
+status if inducing vomiting. CBC should be monitored for several 
+weeks following an overdose, and blood component therapy may be 
+necessary. Chlorambucil is not dialyzable.
+For patients that have experienced or are suspected to have ex -
+perienced an overdose, consultation with a 24-hour poison center 
+specializing in providing veterinary-specific information is recom -
+mended. For general information related to overdose and toxin ex -
+posures, as well as contact information for poison control centers, 
+refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving chlorambucil and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Myelosuppressive Agents  (eg, antineoplastics, immuno-
+suppressants, iron chelators): Concurrent use with other bone 
+marrow depressant medications may result in additive myelosup-
+pression; avoid combination when possible.
+ ■ V accines (live and inactivated ): Chlorambucil may diminish 
+vaccine efficacy and enhance adverse effects of vaccines.
+Laboratory Considerations
+ ■ Chlorambucil may raise serum uric acid  concentrations. Drugs 
+such as allopurinol may be required to control hyperuricemia in 
+some patients.
+Dosages
+NOTE: Because of the potential toxicity of this drug to patients, 
+veterinary personnel, and clients, and because chemotherapy indi-
+cations, treatment protocols, monitoring, and safety guidelines often 
+change, the following dosages should be used only as a general guide. 
+Consultation with a veterinary oncologist and referral to current vet-
+erinary oncology references17-21 are strongly recommended.
+W ARNINGS: 
+1. Chlorambucil dosages are commonly based on surface area 
+(mg/m2). Do not confuse with citations that list dosages in 
+mg/kg. Commercial tablet size (2 mg) may make precise dos-
+ing difficult without compounding. 
+2. Tablets should not be crushed, split, or formulated into a 
+liquid, unless adequate environmental, personal, and occu -
+pational exposure can be safeguarded.
+ DOGS:
+Immunosuppressive agent  (extra-label): Commonly dosed at 
+1.95 – 4.5 mg/m2 (NOT mg/kg) once daily. Dosages are generally 
+rounded to the nearest 2 mg. Following remission, chlorambucil 
+has been dosed every other day for maintenance.8 Use lowest dos-
+age that will control condition. Often used in conjunction with 
+prednisolone
+Inflammatory colorectal polyps (extra-label): Consider in dogs 
+with inflammatory colorectal polyps that do not respond well to 
+traditional therapies (based on a retrospective study of 6 dachs -
+hunds): average chlorambucil initial dose: 2 mg/m2 (NOT mg/kg) 
+PO once daily used in combination with EITHER prednisolone 
+0.47 mg/kg PO once daily OR firocoxib 6.2 mg/kg PO daily (aver-
+age). A positive response was seen in 5 of 6 dogs.22
+Antineoplastic agent (metronomic) (all are extra-label):
+a) Chronic lymphocytic leukemia: 3 – 6 mg/m2 (NOT mg/kg) 
+PO every day for 1 to 2 weeks, then decrease to 3 – 6 mg/m 2 
+(NOT mg/kg) PO every other day as determined by routine 
+hematologic screening and cancer response. 23 Concurrently 
+with chlorambucil, prednis(ol)one can be used at a dosage of 
+1 mg/kg PO every day for 1 to 2 weeks, then 0.5 mg/kg PO 
+every other day thereafter.
+b) Mast cell tumor : 4 – 6 mg/m 2 (NOT mg/kg) PO every 48 
+hours for 8 weeks. Chlorambucil treatment followed 3 or 4 
+sessions of lomustine 60 – 90 mg/m 2 (NOT mg/kg) every 21 
+days.5
+c) Lymphoma and other lymphoreticular neoplasia  OR as 
+a substitute for cyclophosphamide in the COP or CHOP 
+protocol if sterile hemorrhagic cystitis occurs : 1.4 mg/kg 
+PO once on the same schedule as cyclophosphamide, in sub-
+stitute of cyclophosphamide23
+d) Metronomic chemotherapeutic agent (eg, hemangiosar -
+coma, transitional cell carcinoma)  (extra-label): 4 mg/m 2 
+(NOT mg/kg) PO once daily. For dogs weighing more than 
+8 kg (17.6 lb), the dose is rounded to the nearest 2 mg; for 
+dogs weighing less than or equal to 8 kg (17.6 lb), the dose is 
+compounded to 4 mg/m2 (NOT mg/kg).6,7 
+CATS:
+Immunosuppressive agent (extra-label): Chlorambucil is gener-
+ally considered a second-line immunosuppressant (after gluco -
+corticoids) in cats and often used in conjunction with prednis -
+olone. Anecdotal chlorambucil dosing recommendations vary 
+and the commercial tablet size (2 mg) may make precise dosing 
+difficult without compounding. For immune-mediated condi -
+tions, chlorambucil is commonly dosed initially at 0.1 – 0.2 mg/kg  
+(≈1.5 – 4 mg/m 2 PO once daily). If using the entire 2 mg tablet, 
+chlorambucil is dosed in a practical manner every 48 hours for 
+cats weighing more than 4 kg (8.8 lb) and every 72 hours for cats 
+weighing less than 4 kg (8.8 lb). Once remission occurs, the dose 
+is reduced or the dosing interval (often every 3 to 4 days) is ex -
+tended to an interval that still controls the condition.
+Low-grade GI lymphoma ; chronic lymphocytic leukemia (ex-
+tra-label): Several protocols using chlorambucil with predniso -
+lone have had a relatively high degree of efficacy, including:
+a) Chlorambucil 15 mg/m 2 (NOT mg/kg) PO once daily for  
+4 days repeated every 3 weeks, and prednisolone initially at  
+3 mg/kg PO once daily24
+b) Chlorambucil 20 mg/m 2 (NOT mg/kg) (rounded to nearest 
+2 mg) PO once every 2 weeks and prednisolone 2 mg/kg PO 
+once daily25
+c) Chlorambucil 2 mg/cat (NOT mg/m2 or mg/kg) PO every 2 to 
+3 days (48-72 hours) and prednisolone 5 – 10 mg PO every 12 
+to 24 hours26
+HORSES:
+Adjunctive therapy in treating lymphoma using the LAP pro -
+tocol (extra-label): Cytarabine 200 – 300 mg/m 2 (NOT mg/kg)  
+SC or IM once every 1 to 2 weeks; chlorambucil 20 mg/m2 (NOT 
+mg/kg) PO every 2 weeks (alternating with cytarabine) and 
+prednisone 1.1 – 2.2 mg/kg PO every other day. If this protocol 
+is ineffective (no response seen in 2 -4 weeks), add vincristine at  
+0.5 mg/m2 (NOT mg/kg) IV once weekly.27 
+FERRETS:
+Adjunctive therapy in treating lymphoma (extra-label): As part 
+of a multiagent protocol, 2 mg total dose (NOT mg/kg) PO in 
+weeks 11 and 20 of a 20-week protocol
+
+
+===== Plumb PDF 272 =====
+Chloramphenicol   245
+Monitoring
+ ■ Efficacy
+ ■ Baseline CBC, serum chemistry profile, urinalysis
+ ■ Frequency of hematologic monitoring depends on protocol em -
+ployed. Consultation with a veterinary oncologist is recommend-
+ed. Recommendation for patients receiving continuous dosing 
+without breaks is CBC 1 month after starting treatment, then 
+CBC/serum chemistry profile every 2 to 3 months thereafter or 
+earlier if patient is presented for unexpected changes in behaviors 
+(eg, weight loss, fever, reduced activity, and/or appetite). For pa -
+tients receiving bolus dosing with hiatus between treatment, CBC 
+is recommended 1 week after each treatment. If neutrophils are 
+less than 2500/µL or platelets less than 75,000/µL, stop chloram -
+bucil until patient has recovered, and reduce dose by 10% to 20% 
+or increase dosing interval. Other references recommend CBCs 
+at 0, 1, 2, 4, 8, and 12 weeks and then every 3 to 6 months 28 or, in 
+cats, CBCs at 2 to 3 weeks after starting therapy and every 3 to 6 
+months thereafter.29
+ ■ For sexually intact patients, verify pregnancy status prior to ad -
+ministration.
+Client Information
+ ■ Bone marrow depression can occur. The greatest effects on bone 
+marrow usually occur within a few weeks after treatment. Y our 
+veterinarian will do blood tests to watch for bone marrow depres-
+sion, but if you see bleeding, bruising, or fever (indicating an in -
+fection), or if your animal tires easily, contact your veterinarian 
+right away.
+ ■ Chlorambucil may be toxic to the gastrointestinal tract and cause 
+vomiting and gastrointestinal upset. Chlorambucil may cause 
+changes in blood cell counts, which may cause increased risk 
+for bleeding, bruising, infection, lethargy, bloody diarrhea, and 
+shortness of breath. Contact your veterinarian immediately if you 
+notice these or any other atypical signs. Contact your veterinarian 
+immediately if you notice abnormal bleeding, bruising, depres -
+sion, infection, shortness of breath, or bloody diarrhea.
+ ■ It is important to follow your veterinarian’s orders in administer-
+ing this medication as prescribed to help minimize the risk for 
+side effects.
+ ■ Routine bloodwork is recommended to monitor for changes in 
+blood cell counts and liver and kidney laboratory values while the 
+animal is on this medication. Do not miss these important fol -
+low-up visits.
+ ■ Handle this drug with caution. Wear gloves when administering 
+medication or cleaning up your animal’s waste. Those who are 
+pregnant, attempting to conceive, or nursing should not adminis-
+ter the drug or clean up the animal’s waste. 
+ ■ Hair loss and delayed regrowth of shaven hair have been reported 
+in dogs; breeds with a continuously growing hair coat (eg, poodles, 
+terriers, Afghan hounds, old English sheepdogs) are more likely to 
+experience significant hair loss.
+ ■ This medication is considered to be a hazardous drug as defined 
+by the National Institute for Occupational Safety and Health 
+(NIOSH). Talk with your veterinarian or pharmacist about the 
+use of personal protective equipment when handling this medi -
+cine.
+Chemistry/Synonyms
+Chlorambucil is a nitrogen mustard derivative antineoplastic agent. 
+It occurs as an off-white, slightly granular powder. It is soluble in 
+diethyl ether or acetone but is considered insoluble in water with a 
+pKa of 5.75.
+Chlorambucil may also be known as CB-1348, NSC-3088, WR-
+139013, chlorambucilum, chloraminophene, chlorbutinum, Chlora-
+minophene®,  Leukeran® , or Linfolysin®.
+Storage/Stability
+Chlorambucil tablets should be stored in light-resistant, well-closed 
+containers under refrigeration (2˚C -8˚C [36˚F-46˚F]). Tablets can 
+be stored at a maximum of 30°C (86°F) for up to 1 week.
+Compatibility/Compounding Considerations
+Compounding chlorambucil should only be undertaken in facil -
+ities where adequate environmental and personnel exposure can 
+be safeguarded. 
+Compounded preparation stability: For chlorambucil 2 mg/mL 
+oral suspension, crush 60 2 mg oral tablets completely and suspend 
+in 30 mL of methylcellulose 1%. Dilute with a sufficient amount of 
+syrup for a final total volume of 60 mL. A 2 mg/mL oral suspension 
+retains 90% potency for 7 days at 5°C (41°F).
+Suspensions of chlorambucil stored at room temperature rapidly 
+decompose with losses greater than 15% in 1 day. Chlorambucil is 
+rapidly hydrolyzed independently of pH, but minimal hydrolysis oc-
+curs at pH 2. Refrigeration slows hydrolysis.
+Compounded chlorambucil capsules demonstrated variable po -
+tency (71% to 104% of labeled strength), and stability and potency 
+should be considered when prescribing compounded oral chemo -
+therapy.30
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS: 
+Chlorambucil Oral Tablets (film-coated): 2 mg; Leukeran® ; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Chloramphenicol
+(klor-am-fen-i-kole) Chloromycetin® ,    Victeon®
+Antibacterial
+Prescriber Highlights
+ ▶ Broad-spectrum antibiotic with good tissue penetration, 
+including in the eye, CNS, and prostate
+ ▶ Use in food animals is prohibited by the FDA.
+ ▶ Use should be avoided or pursued with extreme caution in an-
+imals with preexisting hematologic disorders or hepatic failure 
+as well as in animals that are pregnant, or that are neonates. 
+Doses may need to be reduced in animals with hepatic or 
+renal insufficiency.
+ ▶ Lower dosages are used in cats, for which there is a greater risk 
+for complications, particularly with long-term use (ie, longer 
+than 14 days).
+ ▶ GI adverse effects are possible; there is also the potential 
+for myelosuppression, especially with high-dose, long-term 
+treatment.
+ ▶ National Institute for Occupational Safety and Health (NIOSH) 
+Hazardous Drug; use appropriate precautions when handling 
+Uses/Indications
+Because of potential adverse effects in animals and human exposure 
+concerns, chloramphenicol should only be used when other anti -
+microbial agents are not viable options. Chloramphenicol is used 
+in small animal species and horses for the treatment of a variety of 
+bacterial infections, particularly those caused by streptococci, staph-
+ylococci, and anaerobes. In dogs, chloramphenicol is indicated for 
+the treatment of bacterial pneumonia, canine respiratory disease 
+complex, as well as ocular infections, otitis media, and UTIs caused 
+by susceptible bacteria. This antibiotic is also potentially useful for 
+
+
+===== Plumb PDF 273 =====
+246    Chloramphenicol
+the treatment of methicillin-resistant staphylococcal infections and 
+bacterial prostatitis caused by susceptible bacteria. In cats, it is used 
+for the treatment of haemobartonellosis, chlamydiosis, ocular infec-
+tions, and UTIs. Chloramphenicol appears relatively safe to use in 
+hindgut-fermenting species (eg, rabbits, guinea pigs, horses). 
+The World Health Organization (WHO) has designated chloram-
+phenicol as a Highly Important antimicrobial for human medicine.1 
+Pharmacology/Actions
+Chloramphenicol usually acts as a time-dependent, bacteriostat -
+ic antibiotic, but it can be bactericidal at higher concentrations or 
+against some susceptible organisms. Chloramphenicol acts by bind-
+ing to the 50S ribosomal subunit of susceptible bacteria, thereby 
+preventing bacterial protein synthesis. Erythromycin, clindamycin, 
+lincomycin, and tylosin also bind to the same bacterial ribosomal 
+subunit, but unlike these other antibiotics, chloramphenicol appears 
+to also have an affinity for mitochondrial ribosomes of rapidly pro -
+liferating mammalian cells (eg, bone marrow) that may result in re-
+versible bone marrow suppression.
+Chloramphenicol has a wide spectrum of activity against many 
+aerobic and anaerobic gram-positive and gram-negative organisms. 
+Gram-positive aerobic organisms that are generally susceptible to 
+chloramphenicol include many streptococci and staphylococci. 
+Some strains of methicillin-resistant staphylococci are susceptible. 
+Chloramphenicol is also effective against some gram-negative aer -
+obes, including Neisseria spp, Brucella spp, Salmonella spp, Proteus 
+spp, Shigella spp, and Haemophilus spp. Many anaerobic bacteria (eg, 
+Clostridium spp, Bacteroides spp [including B fragilis], Fusobacteri-
+um spp, Veillonella spp) are susceptible to chloramphenicol. Chlor -
+amphenicol also has activity against Nocardia spp, Chlamydia spp, 
+Mycoplasma spp, and Rickettsia spp. This antibiotic is ineffective for 
+the treatment of viral, fungal, or parasitic infections
+Antimicrobial resistance appears to be mediated by enzymatic 
+acetylation and inactivation by chloramphenicol acetyltransferases, 
+efflux pumps, or altered ribosomal binding sites.2–4 
+At present, the Clinical and Laboratory Standards Institute (CLSI) 
+has established a susceptibility breakpoint for most human bacteri -
+al pathogens at an MIC target of 8 µg/mL. Some studies show that 
+equine plasma concentrations did not reach the recommended MIC 
+target.5–7
+Pharmacokinetics
+Chloramphenicol is rapidly absorbed after oral administration; peak 
+serum concentrations occur ≈30 minutes after administration. The 
+compounded oral suspension produces significantly lower peak se -
+rum concentrations when administered to horses 5 and fasted cats. 
+The palmitate and sodium succinate salts are hydrolyzed to the base 
+in the GI tract and liver.
+Chloramphenicol is widely distributed throughout the body, and al-
+though the highest concentrations are found in the liver and kidney, the 
+drug attains therapeutic concentrations for some pathogens in most tis-
+sues and fluids, including the aqueous and vitreous humor and synovial 
+fluid. CSF concentrations may be up to 50% of those in the serum when 
+meninges are uninflamed and higher when meninges are inflamed. 
+There may be a 4- to 6-hour lag time before CSF peak concentrations oc-
+cur. Chloramphenicol concentrations in the prostate are ≈50% of those 
+in the serum. Because only a small amount of the drug is excreted un-
+changed in the urine in dogs, chloramphenicol is not a good option for 
+treatment of lower UTIs. The volume of distribution of chloramphen-
+icol has been reported as 1.6 – 1.8 L/kg in dogs, 2.4 L/kg in cats, and 
+1.41 L/kg in horses. Chloramphenicol is ≈30% to 60% bound to plasma 
+proteins. A recent study in horses indicated that plasma chloramphen-
+icol concentrations after oral administration of chloramphenicol base  
+(50 mg/kg) were lower than previously reported, resulting in a recom-
+mendation to evaluate the MIC of the causative bacterium before using 
+this drug.7
+The elimination half-life has been reported as 1.1 to 5 hours (av -
+erage, ≈2.4 hours) in dogs, less than 1 hour in foals and ponies, and 4 
+to 8 hours in cats. The elimination half-life in birds is highly variable 
+across species, ranging from 26 minutes in pigeons to nearly 5 hours 
+in bald eagles and peafowl.8
+In most species, chloramphenicol undergoes hepatic metabolism 
+primarily via glucuronidative mechanisms. Parent drug (≈10%) and 
+metabolites (≈90%) are predominantly renally eliminated (ie, only 
+≈5% to 15% of the drug is excreted unchanged in the urine). Cats 
+have less ability to glucuronidate drugs, so ≈25% of a dose is excreted 
+unchanged in the urine.
+Contraindications/Precautions/Warnings
+The FDA prohibits use of chloramphenicol in food animals.
+Chloramphenicol is contraindicated in those hypersensitive to it. 
+Because of the potential for hematopoietic toxicity, chloramphenicol 
+should be used with extreme caution, if at all, in animals with pre -
+existing hematologic abnormalities, especially preexisting anemia. 
+Chloramphenicol should be used with caution in animals with im -
+paired hepatic or renal function, as drug accumulation can occur; 
+dosage adjustments may be needed in these patients. Chloramphen-
+icol should only be used in animals in hepatic failure when no other 
+effective antibiotics are available and then only with prolonged treat-
+ment intervals. Consideration should be given to monitoring WBC 
+and RBC counts in animals in which long-term use (greater than 14 
+days) is anticipated. See also Reproductive/Nursing Safety. 
+Use with caution in cats. Dosages for dogs and cats are significant-
+ly different.
+Chloramphenicol should be used with caution in neonatal ani -
+mals, particularly in young kittens. In human neonates, circulatory 
+collapse (ie, Gray syndrome) has occurred with chloramphenicol 
+use.9 This syndrome is probably caused by toxic drug accumulation 
+secondary to an inability to conjugate the drug or excrete the conju-
+gate effectively.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies chloramphenicol as a hazardous drug; personal 
+protective equipment (PPE) should be used accordingly to minimize 
+the risk for exposure.10 
+Do not confuse chloramphenicol with chlorambucil, chlorpheni-
+ramine, or chlorpromazine.
+Adverse Effects
+Although chloramphenicol toxicity in humans has been greatly dis-
+cussed in the literature, it is generally considered to have a low order 
+of toxicity in adult companion animals when administered appro -
+priately. A retrospective review found that in 51 dogs treated with 
+chloramphenicol at recommended doses (≈50 mg/kg) for methicil -
+lin-resistant Staphylococcus pseudintermedius (MRSP) pyoderma, 
+53% developed adverse effects that included GI signs (47%), lethargy 
+(14%), shaking (8%), and increased liver enzymes (6%). 11 Anemia, 
+panting, and aggression were reported in individual dogs. GI signs 
+and rear limb weakness were noted in another retrospective review.12 
+Peripheral neuropathy (ie, rear limb weakness) anecdotally appears 
+to be more common in large-breed dogs, which may be more like -
+ly due to ease of recognition of this clinical sign versus a truly in -
+creased incidence. As there is no evidence that peripheral neuropa -
+thy is dose-related, treatment of large-breed dogs at the lower end of 
+the dose range should be weighed against consequences of treatment 
+failure.
+Development of aplastic anemia (reported in humans) does not 
+appear to be a significant problem for veterinary patients9; however, 
+a dose-related bone marrow suppression (reversible) has been seen 
+in all species, primarily with long-term therapy. Early signs of bone 
+marrow toxicity can include vacuolation of many of the early cells 
+
+
+===== Plumb PDF 274 =====
+Chloramphenicol   247
+of the myeloid and erythroid series, as well as lymphocytopenia and 
+neutropenia. Thrombocytopenia associated with chloramphenicol 
+use in cats has been reported.
+Other possible adverse effects include anorexia, vomiting, diar -
+rhea, and depression. Chloramphenicol in guinea pigs can have a 
+negative effect on the cardiovascular system, as seen by ECG changes 
+(eg, shortened P waves, P-R interval, QRS complex).13 
+Cats tend to be more sensitive to developing adverse effects to 
+chloramphenicol than dogs, but this is likely because the drug’s half-
+life is longer in cats due to poor glucuronidation capacity. Cats given 
+higher-than-label feline dosages for prolonged periods (eg, 50 mg/
+kg every 12 hours for 2 to 3 weeks) may experience a high incidence 
+of adverse effects, including bone marrow hypoplasia, and should be 
+closely monitored.
+Reproductive/Nursing Safety
+Chloramphenicol should not be administered to dogs maintained 
+for breeding purposes, as significant disorders in gonad morphol -
+ogy and function have been noted under experimental conditions.14 
+Chloramphenicol readily crosses the placenta to achieve concen -
+trations at 75% of maternal blood. The drug may decrease protein 
+synthesis in the fetus, particularly in the bone marrow. It should be 
+given with extreme caution during pregnancy and only when the 
+maternal benefits of therapy clearly outweigh the risks to the fetus.
+Because chloramphenicol is found in milk in humans at 50% of 
+serum concentrations, the drug should be given with extreme cau -
+tion to nursing animals, particularly within the first week of giving 
+birth. Use of an alternative antimicrobial is recommended during 
+nursing.15
+Overdose/Acute Toxicity
+Dosages of 200 mg/kg/day for up to 4 months were tolerated by 
+dogs,14 but cats show toxicity at 60 mg/kg daily within 14 days.16
+Because of the potential for serious bone marrow toxicity, large 
+overdoses of oral chloramphenicol should be handled by GI decon -
+tamination using standard protocols followed by supportive care 
+based on clinical presentation. For more information on chloram -
+phenicol toxicity, see Adverse Effects.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+Chloramphenicol is a cytochrome P450 CYP2B11 inhibitor in dogs 
+and may possibly inhibit other CYP isoenzymes in dogs and other 
+species. The following drug interactions have either been reported or 
+are theoretical in humans or animals receiving chloramphenicol and 
+may be of significance in veterinary patients. ( NOTE: Cats may be 
+particularly susceptible to chloramphenicol’s effects on the hepatic 
+metabolism of other drugs.)
+ ■ Acetaminophen : Concurrent use of chloramphenicol and acet-
+aminophen resulted in increased serum concentrations of chlor -
+amphenicol in one human study, but subsequent studies have 
+contradicted that result. There are no veterinary data for this in -
+teraction.
+ ■ Aminoglycosides (eg, amikacin, gentamicin, streptomycin): 
+May cause antibacterial antagonism; clinical significance, if any, 
+is not clear
+ ■ Anti-Anemia Drugs  (eg, epoetin, folic acid, iron, vitamin 
+B12): Chloramphenicol may delay hematopoietic response.
+ ■ Aspirin and Other Salicylates (eg, bismuth subsalicylate): 
+Chloramphenicol may delay hepatic metabolism of the salicylate 
+and therefore potentiate toxicity.
+ ■ Beta-Lactam Antibiotics  (eg, cephalosporins, penicillins): 
+May cause antibacterial antagonism; clinical significance, if any, 
+is not clear
+ ■ Cimetidine : May reduce the metabolism of chloramphenicol, 
+increasing the risk for toxicity
+ ■ Cyclophosphamide:  Chloramphenicol may reduce formation 
+of the active cyclophosphamide metabolite and reduce cyclophos-
+phamide efficacy. Additive myelosuppression may occur.
+ ■ Cyclosporine : May increase the risk for cyclosporine toxicity
+ ■ Dipyrone:  May increase the risk for myelosuppression
+ ■ Glipizide: Chloramphenicol may decrease sulfonylurea metab-
+olism and increase the risk for hypoglycemia.
+ ■ Ketamine : Chloramphenicol may prolong effects. Chloram -
+phenicol did not prolong anesthesia in dogs receiving xylazine/
+ketamine in a study.17
+ ■ Lev amisole: Fatalities have been reported after concomitant le-
+vamisole and chloramphenicol administration; avoid using these 
+agents together.
+ ■ Lidocaine : Chloramphenicol may delay hepatic metabolism.
+ ■ Methadone : Chloramphenicol inhibits hepatic metabolism and 
+increases methadone effects.18
+ ■ Midazolam : Chloramphenicol may prolong effects.
+ ■ Myelosuppressive Drugs  (eg, azathioprine, interferons, 
+methimazole, toceranib): May cause additive bone marrow de -
+pression
+ ■ Opioids : Chloramphenicol can significantly inhibit metabolism 
+and prolong opioid effects.
+ ■ Pentobarbital : Chloramphenicol has been demonstrated to pro-
+long the duration of pentobarbital anesthesia by 120% in dogs and 
+260% in cats,19,20 but there was no prolonged duration in guinea pigs.21
+ ■ Phenobarbital/Primidone : Chloramphenicol may inhib -
+it phenobarbital metabolism, and phenobarbital may decrease 
+chloramphenicol concentrations. Interaction does not apply to 
+chloramphenicol ophthalmic ointment.22,23
+ ■ Propofol : Chloramphenicol may prolong anesthesia.
+ ■ Rifampin : May decrease serum chloramphenicol concentrations
+ ■ Voriconazole : Chloramphenicol may increase voriconazole 
+concentration.
+Laboratory Considerations
+ ■ False positive glucosuria (glycosuria) has been reported, but the 
+incidence is unknown.
+Dosages
+NOTE: Because of potential adverse effects in animals and human 
+exposure concerns, chloramphenicol should only be used when 
+other antimicrobial agents are not viable options.
+DOGS:
+Susceptible GI, pulmonary, and urinary  bacterial infections  
+(label dosage; FDA-approved): 55 mg/kg PO every 6 hours14 
+Susceptible infections (extra-label): 
+a) 25 – 50 mg/kg PO every 6 to 8 hours, continuing for 3 to 
+5 days after the animal has become free of clinical signs or 
+afebrile24
+b) 40 – 50 mg/kg PO, IV , SC, IM every 8 hours.25,26 Dosages up 
+to 60 mg/kg PO every 8 hours may be necessary for some 
+infections. IV doses should be administered over at least 1 
+minute.
+CATS:
+Susceptible infections  (extra-label): 12.5 – 20 mg/kg every 12 
+hours PO, IV , IM, or SC.25 Practically, it is often administered at 
+
+
+===== BSAVA PDF 93 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+77
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Dandrieux JRS, Noble PJM, Scase TJ et al . (2013) Comparison of a chlorambucil-
+prednisolone combination with an azathioprine-prednisolone combination for treatment 
+of chronic enteropathy with concurrent protein-losing enteropathy in dogs: 27 cases 
+(2007–2010). Journal of the American Veterinary Medical Association  242, 1705–1714
+Stein TJ, Pellin M, Steinberg H et al . (2010) Treatment of feline gastrointestinal small-cell 
+lymphoma with chlorambucil and glucocorticoids. Journal of the American Animal 
+Hospital Association  46, 413–417
+Chloramphenicol
+(Chloramphenicol*, Chlorogen*, Chloromycetin 
+Ophthalmic Ointment*, Chloromycetin 
+Redidrops*,  Kemicetine*, Minims*, Optrex*) POM 
+Formulations: Injectable: 1 g powder for reconstitution. Topical: 
+Ophthalmic 1% ointment; 0.5% solution. Oral: 250 mg capsules.
+Action: Time-dependent antimicrobial that acts by binding to the 
+50S ribosomal subunit of susceptible bacteria, preventing bacterial 
+protein synthesis.
+Use: Broad spectrum of activity against Gram-positive (e.g. 
+Streptococcus, Staphylococcus), Gram-negative (e.g. Brucella, 
+Salmonella, Haemophilus) and obligate anaerobic bacteria (e.g. 
+Clostridium, Bacteroides fragilis). Other sensitive organisms include 
+Chlamydia, Mycoplasma (unreliable in treatment of ocular 
+mycoplasmosis) and Rickettsia. Resistant organisms include 
+Nocardia and Mycobacterium. Acquired resistance may occur in 
+Enterobacteriaceae. High lipid solubility makes it suitable for the 
+treatment of intraocular infections. It will also access the CNS. 
+However, due to concerns of resistance development and human 
+toxicity, systemic use should be restricted to life-threatening 
+infections resistant to other antimicrobials (e.g. meticillin-resistant 
+staphylococci). Patients with hepatic or renal dysfunction may need 
+adjustment to the dose. Use with caution or avoid in nursing bitches 
+or queens as crosses into milk.
+Safety and handling: Humans exposed to chloramphenicol may 
+have an increased risk of developing a fatal aplastic anaemia. 
+Products should be handled with care; use impervious gloves and 
+avoid skin contact.
+Contraindications: No information available.
+Adverse reactions: Reversible dose-related reversible bone 
+marrow suppression can develop in all species. Unlike humans, the 
+development of irreversible aplastic anaemia in veterinary species 
+does not appear to be a significant problem. Owing to a reduced 
+capacity to metabolize chloramphenicol, the cat is more susceptible 
+to bone marrow suppression. Other adverse effects include nausea, 
+vomiting, diarrhoea and anaphylaxis.
+Drug interactions: Irreversible inhibition of hepatic cytochrome 
+P450-dependent enzymes increases plasma levels of pentobarbital, 
+
+
+===== BSAVA PDF 94 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+78
+phenobarbital, propofol and oral hypoglycaemic agents. Recovery 
+requires synthesis of new liver enzymes and can take up to 3 weeks. 
+Rifampin accelerates the metabolism of chloramphenicol, thus 
+decreasing serum levels. Chloramphenicol may inhibit activity of 
+aminoglycosides and beta-lactams. May also competitively inhibit 
+macrolide or lincosamide antimicrobials.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs:   
+• Ophthalmic: 1 drop q4–8h; ointment q8–12h.
+• Systemic: 40–50 mg/kg i.v., i.m., s.c., p.o. q8h.
+• CNS infections: 10–15 mg/kg p.o. q4–6h is recommended in 
+some texts.
+Cats:
+• Ophthalmic: 1 drop q4–8h; ointment q8–12h.
+• Systemic: 10–20 mg/kg slow i.v., i.m., s.c., p.o. q12h.
+Chlorhexidine
+(Adaxio, Antisept, Clorexyderm shampoo, spray, 
+gel, CLX wipes, Douxo Pyo, Ermidra foam, 
+Hibiscrub, Iryplus eye wipes, Malaseb, Microbex, 
+Otodine, Stomidine F, Corsodyl*, Savlon*, 
+TrizChlor*) POM-V, GSL, general sale 
+Formulations: Topical shampoo: 2% chlorhexidine + 2% 
+miconazole (Malaseb); 31.2 mg/ml chlorhexidine (Microbex); 11.26 
+mg/ml chlorhexidine + 17.37 mg/ml miconazole (Adaxio); 3% 
+chlorhexidine + 0.5% climbazole + phytosphingosine (Duoxo Pyo 
+shampoo/mousse/pads); 4% chlorhexidine (Clorexyderm 4% 
+shampoo, spray, Ermidra foam); Cleansing solution: sodium acetate, 
+chlorhexidine digluconate, acetic acid (antisept spray); Spot gel: 
+chlorhexidine 4%, Triz-EDTA, polyvinylpyrrolidone, lanolin, glycerine 
+(clorexyderm spot gel); 1.5% chlorhexidine + cetrimide (Savlon); 
+Surgical scrub solution: 4% chlorhexidine + isopropyl alcohol 
+(Hibiscrub); Mouthwash: 0.12% chlorhexidine (Chlorohex); Topical 
+skin cleaner: chlorhexidine, Tris-EDTA, zinc gluconate, glycerine, 
+climbazole, benzyl alcohol, propylene glycol (CLX wipes); Ear/
+wound cleaner: 0.15% chlorhexidine + EDTA (TrizChlor); Ear cleaner: 
+chlorhexidine, Tris-EDTA, lactic acid (Otodine); Toothpaste: 0.07% 
+chlorhexidine, Tris-EDTA (Stomidine F).
+Action: Chemical antiseptic that disrupts bacterial cell membrane.
+Use:
+• Topical treatment of bacterial, dermatophyte and Malassezia  skin 
+infections in dogs as a shampoo (Adaxio, Douxo, Malaseb, 
+Microbex). Concurrent systemic antibacterial therapy may be 
+required when treating bacterial skin infections. Leave in contact 
+with the skin for 5–10 minutes prior to washing off.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 95 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+79
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+• Local infection can be treated with mousse spray, gel or wipes 
+(Douxo, CLX, Antisept, Clorexyderm).
+• Ear flush for cleansing; Tris-EDTA and chlorhexidine have 
+synergistic antimicrobial action. Chlorhexidine as a single agent 
+is not consistently effective as a treatment for dermatophytosis.
+• Washing surgical instruments, routine antisepsis for surgical 
+operations (Savlon, Hibiscrub) and dental hygiene (Corsodyl).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not instil into ears where the integrity of 
+the tympanum is unknown. Do not use on eyes.
+Adverse reactions: Ototoxic. May irritate mucous membranes.
+Drug interactions: Not known.
+DOSES
+Dogs, Cats: Antispetic: topical agents may be used daily to weekly.
+References
+Banovic F, Bozic F and Lemo N (2013) In vitro comparison of the effectiveness of 
+polihexanide and chlorhexidine against canine isolates of Staphylococcus  
+pseudintermedius , Pseudomonas  aeruginosa  and Malassezia pachydermatis . Veterinary 
+Dermatology  24, 409–413
+Clark SM, Loeffler A and Bond R (2015) Susceptibility in vitro of canine methicillin-
+resistant and suceptiblestaphylococcal isolates to fusidic acid, chlorhexidine and 
+miconazole: opportunities for topical therapy of canine superficial pyoderma. The 
+Journal of Antimicrobial Chemotherapy  70, 2048–2052Chlorphenamine  
+(Chlorpheniramine)
+(Piriton*) POM, GSL 
+Formulations: Injectable: 10 mg/ml solution. Oral: 4 mg tablet, 
+0.4 mg/ml syrup.
+Action: Binds to H1 histamine receptors to prevent histamine 
+binding.
+Use:
+• Management of allergic disease.
+• Prevention and early treatment of anaphylaxis.
+• Commonly used as premedication before transfusions and 
+certain chemotherapeutic agents.
+Specific doses for dogs and cats have not been determined by 
+pharmacokinetic studies. Use with caution in cases with urinary 
+retention, angle-closure glaucoma and pyloroduodenal obstruction.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: May cause mild sedation. May reduce seizure 
+threshold.
+Drug interactions: No information available.

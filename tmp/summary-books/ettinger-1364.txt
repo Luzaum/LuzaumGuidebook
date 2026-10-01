@@ -1,0 +1,259 @@
+SECTION XII
+•
+Respiratory Disease
+1212
+eBooks.Health.Elsevier.com
+are frequently responsible. Occasionally, pleural effusions are 
+identified secondarily to bacterial pneumonias (i.e., parap-
+neumonic effusions), but these are rare in contrast to people 
+and horses. Other less common infectious causes of effusion 
+include Bartonella (ch. 191), Mycobacterium (ch. 188), Toxo-
+plasma (ch. 197), and viral infections (ch. 205). PCR testing is 
+particularly useful in atypical infections.
+Therapy for pyothorax involves drainage (usually via chest 
+tube) and antibiotics based on culture and sensitivity, with 
+coverage for presumed anaerobic pathogens even if anaerobic 
+culture was not performed (ch. 140). Some animals, particu-
+larly dogs, may require surgical intervention for resection and 
+drainage of affected tissues.25,26 The prognosis for pyothorax 
+is frequently good if the pet does not present in a moribund 
+condition and comprehensive treatment can be provided. Pyo-
+thorax is one of the few effusions that can be cured.
+Hemothorax
+Hemothorax can result from bleeding disorders such as antico-
+agulant rodenticide intoxication (e.g., brodifacoum; ch. 138), 
+trauma, lung lobe torsion, or neoplasia.28 In hemothorax, the 
+packed cell volume of the effusion is >20%, or more than 50% 
+of the patient’s peripheral hematocrit. Clinical signs of hemo-
+thorax more commonly reflect hypovolemia than the presence 
+of pleural effusion. In dogs with anemia and pleural effusion, 
+it is prudent to check coagulation status prior to thoracocen-
+tesis in order to exclude coagulopathy although in recent years 
+the frequency of anticoagulant rodenticide intoxication has 
+decreased. Therapy of hemothorax depends on the underly-
+ing cause and may include blood transfusion (type depends 
+on presence of coagulopathy (plasma) and anemia (packed 
+red blood cells, whole blood)), vitamin K therapy, surgery or 
+rest (ch. 124). Autotransfusion may be considered except in 
+cases of malignancy. Rib tumors may result in hemothorax, 
+with resection required to control hemorrhage. Small-volume 
+traumatic or intoxication-induced hemothoraces that are not 
+affecting ventilation may be left alone to re-absorb.
+Chylothorax
+Cats (mean age 6.3 years; range, 0.5-14 years)29 and dogs 
+(mean age 4 years; range, 1.5-12 years)22 can develop chylous 
+pleural effusion, termed chylothorax. The most frequent pre-
+senting concern is rapid and/or labored breathing (78% of 
+cats,29 79% of dogs30); interestingly, 4/37 (11%) of cats in 1 
+series had cough as the only historical finding.29 15/37 affected 
+cats (41%) and 24/39 affected dogs (62%) have been described 
+as having muffled heart sounds on auscultation of the ventral 
+thorax.29,30 Both increased and decreased bronchovesicular 
+sounds have been reported, presumably depending on the 
+region of the thorax being ausculted.
+No clinicopathologic finding is specific for chylothorax. A 
+hypoadrenocorticism-like profile (hyponatremia, hyperkale-
+mia) has been documented in dogs with chylothorax.31 Radio-
+graphic findings have been described above (Figure 220.3), 
+and rounding of lung lobes to suggest chronic, fibrosing pleu-
+ritis is associated with chylothorax in cats.6,7
+Grossly, chylous eusion appears milky white or pinkish. It 
+has a high triglyceride content: mean in cats, 1464 mg/dL (16.5 
+mmol/L) (range, 303-4670 mg/dL [3.4-52.87 mmol/L], ver-
+sus mean 84 mg/dL (1.0 mmol/L) (range, 28-210 mg/dL [0.3-
+2.4 mmol/L]) in serum29 and median in dogs, 877 mg/dL (9.9 
+mmol/L) (range, 158-2750 mg/dL [1.8-31.1 mmol/L], versus 
+median 73 mg/dL (0.8 mmol/L) (range, 35-544 mg/dL [0.4-
+6.2 mmol/L]) in serum.22 e predominant cell type is small 
+lymphocytes. ese characteristics are the basis for the diagnosis 
+of chylothorax.
+There are many potential causes of chylothorax, with 
+idiopathic disease accounting for about 50% of cases. The 
+pathophysiologic mechanism involves extravasation of chyle 
+from the thoracic duct on its course from the cisterna chyli 
+in the abdomen to its insertion in the cranial vena cava in 
+the cranial thorax. Physical disruption of the thoracic duct 
+(spontaneous leakage or rupture, iatrogenic laceration), high 
+intraductal hydrostatic pressure (heartworm disease, other 
+disorders of the right heart, pericardial disease including 
+fibrosing/constrictive pericarditis induced by chylothorax 
+itself) or both, are implicated. Evaluation of a patient with 
+chylous effusion includes a careful search for an underlying 
+cause, such as cardiac disease, cranial vena cava thrombus 
+or mass (ch. 239), lung lobe torsion (ch. 217), heartworm 
+disease (ch. 237), or neoplasia, notably cranial mediastinal 
+masses (ch. 322); these are implicated in a minority of cases 
+of chylothorax, but finding them offers the possibility of 
+addressing the inciting cause. Postoperative chylothorax has 
+been described.32 Idiopathic effusion is associated with dila-
+tion of the lymphatics (lymphangiectasia), but the mecha-
+nism of this remains elusive.
+If a specific cause is found, therapy may be directed against 
+that. In idiopathic effusion, medical treatment (e.g., low fat 
+diet, rutin, octreotide) is seldom effective and surgical inter-
+vention is often preferred. The various surgical techniques for 
+palliating chylous effusion have been reviewed.33,34 No therapy 
+is universally successful, and cure rates hover around 50-70%. 
+Missed ducts during thoracic duct ligation, and the existence 
+of collaterals that become patent after thoracic duct ligation 
+are possible explanations for persistence of chylothorax post-
+operatively.35 In a study of 15 cats with chylothorax, the median 
+survival time after thoracic duct ligation plus subphrenic peri-
+cardectomy was 774 days (range, 3-2844 days).36 In dogs, 50% 
+of chylothorax patients that undergo thoracoscopic thoracic 
+duct ligation and pericardectomy are alive at a median of 43 
+months post-operatively.22 The best surgical outcome appears 
+to be associated with a meticulous and experienced surgeon.22
+Without surgery, palliation can be provided with periodic tho-
+racocenteses, with the interval between centeses varying from 
+one to many weeks depending on rate of reaccumulation of 
+effusion and respiratory comfort.
+Mesothelioma
+Mesothelioma, a neoplasm arising directly from mesothelial cells, 
+aects the pleura (79%), pericardium (64%), and peritoneum 
+(7%) in dogs.37 It is rare in cats.38 e cause of mesothelioma is 
+unknown; exposure to asbestos has been signicantly associated 
+with intrathoracic mesothelioma in dogs.39,40 Transformation 
+over time from idiopathic benign inammation to mesothelioma 
+has been documented in dogs.41 Chronic body cavity eusions 
+that accumulate slowly (oen, over periods of weeks to months 
+initially) are common.37,41
+Macroscopically, aected pleura shows varying degrees of 
+thickening. Cytologic examination is rarely diagnostic, although 
+a block preparation technique involving immunohistochemistry 
+has been described.42 e diagnosis requires histologic analysis 
+of a pleural biopsy sample,43 typically obtained via thoracotomy 
+or thoracoscopy.
+Treatment has been administered systemically and via intra-
+cavitary (IC) infusion using an indwelling subcutaneous pleu-
+ral port.37 Reported protocols in dogs include 5-fluorouracil 
+150-200 mg/m2 IC q 2 weeks or weekly × 4 weeks then q 2 
+weeks until either progressive disease occurs or effusion does 
+not recur37 or carboplatin 250-300 mg/m2 IV or IC q 3 weeks 
+
+CHAPTER 220
+•
+Pleural Space Diseases
+1213
+eBooks.Health.Elsevier.com
+× 6 doses or until disease progression occurs.37 In a feline case 
+report of suspected pleural mesothelioma, IC carboplatin (180 
+mg/m2) administered twice, 6 weeks apart, reduced the fre-
+quency of thoracocentesis and led to a survival of 4 months.44
+e prognosis for dogs and cats with mesothelioma is guarded 
+in the short term, and poor long-term. In 1 study of 34 dogs with 
+mesothelioma, the median survival time was 195 days (95% CI 
+53-324) and the 1-year survival rate was 22%.37
+Idiopathic and Miscellaneous Effusions
+In some dogs and cats, despite a concerted effort, no spe-
+cific cause is identified for the pleural effusion. Pancreatitis, 
+immune-mediated diseases, chronic diaphragmatic hernia, 
+pulmonary thromboembolism and recent abdominal or tho-
+racic surgeries have been associated with pleural effusion.45-
+47 If none of these is present, analysis of effusion triglyceride 
+concentration is indicated, to identify effusions that are bio-
+chemically chylous without being visibly opaque. If this is 
+negative, treatment is directed at ameliorating clinical signs, 
+often through periodic thoracocentesis. Implantation of pleu-
+ral ports has been successful in some dogs.48 49 A search for 
+atypical infections is warranted before therapy for suspected 
+immune-mediated disease with immunosuppressive agents 
+(ch. 144).
+CHRONIC EFFUSIONS
+Chronic pleural eusions may occur secondary to a wide variety 
+of diseases, but are most commonly seen with idiopathic eu-
+sions, chylothorax, CHF, and mesothelioma. Survival times with 
+chronic eusions depends on the underlying disease, as well 
+as the patient and pet owner characteristics. Some dogs with 
+chronic eusions may be managed for months to years with 
+intermittent thoracocentesis, particularly if their quality of life 
+is otherwise good, there is limited formation of adhesions, and 
+the owner has emotional and nancial resources for chronic dis-
+ease management. Importantly, animals with chronic eusions 
+are much more likely to develop a pneumothorax following tho-
+racocentesis and may develop infected uid, even with aseptic 
+technique.
+Pneumothorax is also a common iatrogenic complication of 
+thoracocentesis in animals with chronic pleural eusion resulting 
+in thickening of the pleura and possibly trapped lung. is may be 
+a devastating complication as the pleura is unlikely to heal spon-
+taneously. Pleural ports may be placed to permit thoracocentesis 
+without the risk of inadvertent laceration of the pleura.48 In larger 
+dogs, the size (20 g) of the Huber needle may result in long times 
+required to drain the chest. Additionally, iatrogenic infections 
+may occur, particularly if drained by lay individuals that have not 
+been properly trained.
+PNEUMOTHORAX
+Pneumothorax is dened as free air in the pleural space.50 It can 
+be characterized as traumatic, spontaneous, or iatrogenic, as well 
+as open or closed. A tension pneumothorax is a pneumothorax 
+severe enough to aect cardiac output and if not promptly evacu-
+ated will result in the death of the patient. A tension pneumo-
+thorax can result from any type of pneumothorax, although it is 
+almost always closed.
+TRAUMATIC
+Traumatic pneumothorax results from injury to the thorax; it 
+is divided into open where there is an open wound connecting 
+the chest cavity and the outside air (Video 220.4), and closed
+where air leak is from damaged lung parenchyma. Trauma is 
+thought to be the most common cause of pneumothorax in 
+small animals. Traumatic wounds can be blunt (e.g., hit by 
+car) or penetrating (e.g., bite wounds). The type and extent of 
+treatment of traumatic pneumothorax is selected based on the 
+severity of the clinical signs.
+As animals with pneumothorax often also have pulmonary 
+contusions (ch. 217) or rib fractures (ch. 222), it is occasion-
+ally hard to determine the contribution of pneumothorax to 
+respiratory distress. Confirmation of traumatic pneumotho-
+rax may be made through diagnostic thoracocentesis, thoracic 
+radiographs, or ultrasonography. A negative diagnostic thora-
+cocentesis may be truly negative, or may reflect an inadequate 
+length of needle/catheter or pocketing of the air. Point of care 
+ultrasound is popular as a diagnostic test for pneumothorax 
+(ch. 73). Loss of the “glide sign” (Video 220.5) is a hallmark 
+finding of pneumothorax, although generally on ultrasound, 
+accurate determination of pneumothorax is more challeng-
+ing than effusions.51 Treatment of traumatic pneumothorax 
+depends on the severity of the pneumothorax and the mecha-
+nism of the development of pneumothorax (blunt versus pen-
+etrating trauma). Most blunt traumatic pneumothoraces will 
+heal rapidly (1-4 days) with supportive care and rarely require 
+surgery to control air leak. Traumatized lung lobes will rapidly 
+heal if the underlying parenchyma and pleura are normal due 
+to the high tissue thromboplastin content of lung tissue. The 
+prognosis for a blunt traumatic pneumothorax is good with 
+the majority of cases requiring only a short hospital stay. It is 
+important to evaluate the patient fully for other wounds, as 
+injuries such as vertebral fractures may be present and these 
+can impact decision-making as much as, or more than, the 
+pneumothorax.
+Penetrating wounds often require surgery, as bite wounds 
+may bring fur and debris into the chest cavity. Specifically, 
+in bite wounds, the clinician should recall that the site of the 
+skin puncture wound may be far removed (several centime-
+ters) from the site of penetration into the thorax. Occasionally, 
+dogs and cats with thoracic trauma have a flail chest, which 
+is defined as the presence of two or more fractures in 3 or 
+more adjacent ribs. A flail segment is physiologically impor-
+tant because it moves paradoxically during ventilation and 
+is invariably associated with a severe underlying pulmonary 
+contusion. Historical references suggest that surgical stabili-
+zation of the rib fractures is warranted, but more recent evi-
+dence suggests that this is not necessary, and analgesia and 
+time are sufficient. If the thorax of a patient with flail chest 
+is being explored for treatment of other injuries anyway (e.g., 
+bite wounds), rib fractures can be surgically stabilized. Flail 
+chest should be distinguished from intercostal muscle tears 
+(Video 220.6); both involve paradoxical inward movement of 
+segments of thoracic wall on inspiration, but with intercostal 
+tears, rib fractures are absent.
+SPONTANEOUS PNEUMOTHORAX IS A 
+PNEUMOTHORAX WITHOUT ASSOCIATED TRAUMA52
+Spontaneous pneumothorax is termed primary if there is no 
+underlying lung disease, and secondary if it is due to recognizable 
+lung disease. Spontaneous pneumothorax is more common in 
+dogs, where pneumothorax is due to the rupture of blebs or bulla, 
+than it is in cats. Northern dog breeds such as Huskies are over-
+represented, and more recently the overrepresentation of Golden 
+Retrievers has been reported.52 Clinical signs include restlessness, 
+respiratory distress, and tachypnea. It is important to distinguish 

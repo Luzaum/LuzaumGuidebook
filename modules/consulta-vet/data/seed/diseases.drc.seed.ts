@@ -1,6 +1,6 @@
 import type { DiseaseRecord } from '../../types/disease';
 
-/**
+/*
  * Doença renal crônica — cães e gatos (estadiamento e recomendações alinhados à IRIS 2023).
  */
 export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
@@ -348,6 +348,27 @@ export const doencaRenalCronicaCaesGatosRecord: DiseaseRecord = {
           'Pode considerar-se em estádios avançados com fósforo controlado e vigilância laboratorial.',
           'IRIS 2023 não recomenda rotineiramente por falta de benefício convincente.',
         ],
+      ],
+    },
+    drcTabelaEstadiamentoIrisCkd: {
+      kind: 'clinicalTable',
+      caption: 'Tabela de Estadiamento IRIS de Doença Renal Crônica (Creatinina e SDMA)',
+      headers: ['Estágio IRIS', 'Creatinina Cão (mg/dL)', 'Creatinina Gato (mg/dL)', 'SDMA Cão (µg/dL)', 'SDMA Gato (µg/dL)', 'Gravidade Clínica'],
+      rows: [
+        ['Estágio 1', '< 1,4 (< 125 µmol/L)', '< 1,6 (< 140 µmol/L)', '< 18', '< 18', 'Não azotêmico; lesão renal presente, isostenúria ou proteinúria'],
+        ['Estágio 2', '1,4 a 2,8 (125–250 µmol/L)', '1,6 a 2,8 (140–250 µmol/L)', '18 a 35', '18 a 25', 'Azotemia leve; sinais clínicos discretos ou ausentes'],
+        ['Estágio 3', '2,9 a 5,0 (251–440 µmol/L)', '2,9 a 5,0 (251–440 µmol/L)', '36 a 54', '26 a 38', 'Azotemia moderada; uremia evidente, desregulação de fósforo e eletrólitos'],
+        ['Estágio 4', '> 5,0 (> 440 µmol/L)', '> 5,0 (> 440 µmol/L)', '> 54', '> 38', 'Azotemia grave; crise urêmica, risco vital iminente'],
+      ],
+    },
+    drcTabelaSubestadiamentoIrisProteinuria: {
+      kind: 'clinicalTable',
+      caption: 'Tabela de Subestadiamento IRIS por Proteinúria (RPCU)',
+      headers: ['Subestádio', 'Cão (RPCU)', 'Gato (RPCU)', 'Interpretação e Conduta'],
+      rows: [
+        ['Não proteinúrico (NP)', '< 0,2', '< 0,2', 'Nível fisiológico normal; monitorar em reavaliações'],
+        ['Proteinúria limítrofe (PL)', '0,2 a 0,5', '0,2 a 0,4', 'Zona cinzenta; reavaliar em 1 a 2 meses'],
+        ['Proteinúrico (P)', '> 0,5', '> 0,4', 'Proteinúria patológica persistente; instituir IECA ou BRA'],
       ],
     },
     drcPressaoSubstadiamento:

@@ -1,0 +1,197 @@
+SECTION XIV
+•
+Cardiovascular Disease
+1348
+eBooks.Health.Elsevier.com
+MYXOMATOUS MITRAL VALVE 
+DISEASE
+M
+yxomatous mitral valve disease 
+(MMVD) is a common adult-onset 
+valvular heart disease in dogs. e 
+disease is characterized by progressive degen-
+eration of the mitral valve, eventually leading to 
+mitral valve leakage, mitral regurgitation (MR), 
+and later to chronic dilatation of the le atrium 
+(LA) and le ventricle (LV). Aected dogs have 
+a variable progression and outcome: in some 
+dogs, the disease progresses to the point that 
+they develop signs of congestive heart failure 
+(CHF) and other complications, whereas oth-
+ers can compensate for the MR for years and 
+thereby remain clinically healthy.
+OCCURRENCE
+Approximately 10% of the total dog popu-
+lation develops cardiac disease,1 of which 
+MMVD accounts for more than 75% of the 
+cases. is makes the disease one of the most 
+common causes for morbidity and mortality 
+in dogs.2 e disease occurs in other species, 
+including humans, cats, horses, monkeys, 
+and pigs,3 but the prevalence of MMVD in 
+cats is low. e disease has been reported to 
+account for the vast majority of the cases of 
+CHF in dogs,4 a proportion even consider-
+ably higher in predisposed dog breeds.2 5 6
+MMVD is encountered in all dog breeds, but the preva-
+lence is highest in small to medium-sized dogs, such as Cavalier 
+King Charles Spaniel (CKCS), Dachshunds, Miniature Poodles, 
+and Yorkshire Terriers.2 5 7 8 e prevalence of MMVD in dogs 
+increases with age and is, at a given age, higher in males.2 4 5 9
+e disease has an unusually early onset in the CKCS breed and 
+closely related breeds: approximately 50% of CKCS dogs aged 6-7 
+years and nearly 100% of CKCS dogs aged >10 years have been 
+reported to be aected.5 10
+UNDERLYING CAUSES AND MECHANISMS
+Valve remodeling in MMVD has been well described, but the 
+underlying causes for its development and its progression remain 
+poorly understood. A combination of a sire and a dam that both 
+have an early onset of MMVD has previously been shown to pro-
+duce ospring that have, on average, an early onset of MMVD 
+(and CHF), whereas a combination of dogs with late onset will 
+give ospring that manifest the disease at an old age or never 
+do.11 12 According to the currently leading scientic hypothesis, 
+supported by pedigree analyses and reports of familial trans-
+mission in both dogs and humans,11-13 MMVD is inherited as a 
+polygenic trait. However, the genetic architecture of the disease 
+is hitherto inadequately explored. Two regions (on CFA13 and 
+14) have been associated with early onset MMVD in the CKCS 
+breed,14 but these regions are unlikely to solely explain the excep-
+tionally high prevalence of MMVD in this breed. Recently, muta-
+tional variants near a gene (NEBL), which is exclusively expressed 
+in the heart and encodes a protein that is important for stabiliz-
+ing and strengthening muscle bres,15 were identied in dogs of 
+the CKCS breed. Two of the variants could also be linked to early 
+disease onset in the Dachshund breed.16 Disease associated alleles 
+were, furthermore, shown to be associated with reduced NEBL
+expression in the papillary muscles of MMVD aected dogs. Con-
+sidering the pivotal role of the papillary muscle in maintaining 
+mitral valve geometry and integrity (see Pathophysiology, below), 
+these results could indicate that papillary muscle weakening 
+could be a signicant component of the development of MMVD.
+Damage to the lining of the endothelial cells covering the valve 
+surface17 might play an important role in the progression of MMVD. 
+Endothelial cells are known to communicate extensively with suben-
+dothelial cells (e.g., valvular interstitial cells [VICs]), and endothelial-
+damage–induced release of vasoactive substances might lead to a 
+transformation of subendothelial VICs from a predominantly bro-
+blast phenotype into more active myobroblast and smooth muscle 
+cell phenotypes.18 19 Transformation of VICs has also been suggested 
+to be initiated by serotonin (5-HT),19 20 and altered 5HT signal-
+ing might be causatively linked to MMVD: experimental animals 
+exposed to exogenous serotonin administration are at risk of devel-
+oping similar valve lesions as those seen in MMVD-aected valves. 
+Furthermore, serum concentrations of 5-HT have been shown to be 
+higher in dogs of the CKCS breed,20 21 and higher concentrations 
+have been shown in mitral valve and myocardial tissue from dogs 
+with MMVD relative to healthy dogs.22 Expression of 5-HT receptors 
+and extracellular matrix signaling molecules has also been shown to 
+be altered in diseased mitral leaets.19 23
+PATHOLOGY
+Myxomatous degeneration begins in the area of apposition of 
+the leaets and is usually most pronounced in sections where 
+chordae tendineae insert.4 9 17 24 25 With progression, the lesions 
+spread into other parts of the leaets (Figure 232.1, A and B). e 
+mitral valve leaets, which are normally thin, translucent, and 
+so, become thickened due to the degeneration, and typical path-
+ological ndings vary from mild nodular thickening of the mitral 
+valve leaets to severe thickening and billowing. Both in normal 
+and in MMVD dogs, the anterior mitral leaet has been described 
+Valvular Heart Diseases of Adult Dogs and Cats
+Ingrid Ljungvall | Jens Häggström
+CHAPTER 232
+ACRONYMS
+ACVIM American College 
+of Veterinary Internal 
+Medicine
+AR aortic regurgitation
+CHF congestive heart fail-
+ure
+CKCS Cavalier King Charles 
+Spaniel
+EROA effective regurgitant 
+orifice area
+IE infective endocarditis
+LA left atrium
+LV left ventricle
+MMVD myxomatous mitral 
+valve disease
+MR mitral regurgitation
+NT-proBNP N-terminal pro-
+B-type natriuretic pep-
+tide
+PCR polymerase chain 
+reaction
+PDA patent ductus arterio-
+sus
+PH pulmonary hyperten-
+sion
+RA right atrial
+RV right ventricle
+VC vena contracta
+VICs valvular interstitial 
+cells
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 22 Videos, 6 Audio Clips, and 1 Client Information Sheet.
+
+CHAPTER 232
+•
+Valvular Heart Diseases of Adult Dogs and Cats
+1349
+eBooks.Health.Elsevier.com
+as having a greater length and area compared to the posterior 
+leaet,26 27 which is presumably the reason MMVD lesions may 
+appear more prominent on the anterior leaet.27
+e chordae tendineae are also commonly aected by myxo-
+matous degeneration, which leads to lengthening and eventually 
+rupture in some dogs.7 9 24 25
+Histopathological ndings of the aected mitral valve include 
+weakening and disturbance in the organization of the connec-
+tive tissue (Figure 232.1, C). e spongiosa component becomes 
+unusually prominent and the collagen bers in the brosa layer 
+are disorganized.18 28 Increased amounts of mucopolysaccha-
+rides and glycosaminoglycans are commonly seen within aected 
+valves.24 28 29 Furthermore, pleomorphism and a damaged lining 
+of the endothelial cells covering the valve surface can be observed. 
+Regional loss of endothelial cells can lead to exposure of the 
+underlying basement membranes or subendothelial matrix.25
+Dogs with early stage MMVD have a normal heart size, 
+whereas dilatation of the LA and eccentric hypertrophy of the 
+LV (see Pathophysiology, below) develop with disease progres-
+sion. Histopathological ndings in the walls of the heart cham-
+bers include changes in the composition and structure of both the 
+myocytes and the extracellular matrix (ECM). Myocardial bro-
+sis and intramyocardial arteriosclerosis, especially in the papil-
+lary muscles, have been described in dogs with advanced stages 
+of MMVD.30 Atrial endocardial lesions (brosis) opposite the 
+mitral orice (i.e., “jet lesions”) might be observed in the LA. e 
+LA also becomes gradually more thin-walled and more vulner-
+able with increasing LA dilatation, and rupture of the atrial wall, 
+such as endomyocardial splits, ruptured pectinate muscles in the 
+atrial appendage, acquired atrial septal defect, and atrial tear and 
+hemopericardium may be detected in dogs with severe MMVD 
+(see below, and Figure 232.2, A-D).4 31
+PATHOPHYSIOLOGY (CH. 228)
+Mitral Valve Function, Mitral Regurgitation, and Remod-
+eling of the Left Heart Chambers
+e mitral valve annulus is normally characterized as “saddle-
+shaped” (hyperbolic paraboloid), and this geometry confers a 
+mechanical advantage for maintaining valve competence by pro-
+viding optimal leaet stress.32 33 Dogs with MMVD present a 
+more circular and less saddle-shaped mitral valve, with reduced 
+tenting height and area compared to healthy dogs.27 is change 
+of the normal mitral valve geometry leads to increased mechani-
+cal stress imposed on valvular structures and could, thereby, 
+initiate MMVD.19 27 Interestingly, the mitral valve in clinically 
+healthy CKCS dogs has been shown to be signicantly atter (e.g., 
+reduced leaet tenting) compared to healthy dogs from other 
+LA
+LV
+A
+B
+C
+Figure 232.1
+ickened and contracted mitral valve leaets in a postmortem specimen of a dog that had severe myxomatous mitral valve disease 
+(MMVD) viewed from the lateral (A), and atrial (B) sides with le atrium (LA) and ventricle (LV) opened. C, Histology sections of a mitral valve 
+leaet from a dog with mild (upper), and severe MMVD (lower) showing marked deposition of acid-staining glycosaminoglycans (blue color in a 
+periodic acid-Schi reaction/alcian blue staining) in the spongiosa and brosa layers of the leaet. (C, Courtesy Lisbeth Höjer Olsen, University of 
+Copenhagen, Denmark.)

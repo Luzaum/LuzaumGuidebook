@@ -1,0 +1,249 @@
+12      Acetylcysteine
+cosis. It is also used as a potential adjunctive treatment to prevent 
+enterolith formation in horses by reducing colonic pH.
+Pharmacology/Actions
+Acetic acid in the rumen lowers pH by shifting ammonia (NH3) to 
+ammonium ions (NH4
++) to reduce ammonia absorption; it may also 
+slow the hydrolysis of urea.
+Pharmacokinetics
+No information is noted.
+Contraindications/Precautions/Warnings
+Acetic acid should not be administered to ruminants until lactic aci-
+dosis (eg, grain overload, rumen acidosis) is ruled out.
+Do NOT use concentrated forms of acetic acid; use only vinegar 
+(3%-5% acetic acid).
+Adverse Effects
+Because of the unpleasant taste and potential for causing mucous 
+membrane irritation, it is generally recommended to administer ace-
+tic acid via stomach tube.
+Overdose/Acute Toxicity
+When acetic acid is used for appropriate indications, there is little 
+likelihood of serious toxicity occurring after minor overdoses. Be-
+cause of its potential corrosiveness, the greatest concern is when a 
+concentrated form of acetic acid is mistakenly used.
+Drug Interactions
+There are no documented drug interactions with oral acetic acid. 
+Because of its acidic qualities, acetic acid could theoretically affect 
+the pharmacokinetics of several drugs, which may have clinical sig-
+nificance in veterinary species. Unless otherwise noted, use together 
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+	■Aspirin: Acidified urine can decrease the excretion of salicylates.
+	■Azole Antifungals (eg, itraconazole, ketoconazole): Acetic 
+acid may increase absorption of azole antifungal agents.
+	■Iron: Acetic acid may increase iron absorption.
+	■Phenobarbital: Acidified urine can decrease the excretion of 
+phenobarbital.
+	■Quinidine: Acidified urine can decrease the excretion of quini-
+dine.
+Dosages
+CATTLE/RUMINANTS:
+Urea poisoning/nonprotein nitrogen-induced ammonia tox-
+icosis (extra-label): Using 5% acetic acid (ie, vinegar), infuse 
+4 – 10 L (for cattle) or 250 mL – 1 L (sheep/goats) into the rumen.1 
+Follow with cold water (up to 30 L in cattle; 2 – 8 L in sheep/goats) 
+to reduce rumen temperature and reduce formation of urea. Re-
+peat treatment as required if clinical signs reoccur.
+HORSES:
+Adjunctive treatment for enterolith prevention (extra-­
+label): Using 5% acetic acid (ie, vinegar), add 250 mL/450 kg 
+(250 mL/990 lb) body weight to food once daily.
+Chemistry/Synonyms
+Glacial acetic acid is C2H4O2. Acetic acid has a distinctive odor and a 
+sharp acid taste. It is miscible with water, alcohol, or glycerin. Much 
+confusion can occur with the percentages of C2H4O2 contained in 
+various acetic acid solutions. Acetic Acid USP is defined as having a 
+concentration of 36% to 37% C2H4O2. Diluted Acetic Acid NF con-
+tains 5.7% to 6.3% w/v of C2H4O2. Solutions containing ≈3% to 5% 
+w/v of C2H4O2 are commonly known as vinegar. Be certain of the 
+concentration of the product you are using and your dilutions.
+Acetic acid may also be known as E260, eisessig (glacial acetic 
+acid), essigsäure, etanoico, or ethanoic acid.
+Storage/Stability
+Acetic acid solutions should be stored in airtight containers.
+Compatibility/Compounding Considerations
+If diluting more concentrated forms of acetic acid to concentrations 
+equivalent to vinegar (3% to 5%), use safety precautions to protect 
+eyes and skin. It is strongly recommended to have someone check 
+your calculations to prevent potentially serious consequences.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS: NONE
+No systemic products are commercially available. Acetic acid (in 
+various concentrations) may be purchased from chemical supply 
+houses. Distilled white vinegar is available in gallon sizes from gro-
+cery stores or mass merchandisers.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Acetylcysteine
+N-Acetylcysteine
+NAC, ACC
+(assah-teel-sis-tay-een)  Mucomyst®
+Antidote; Mucolytic
+Prescriber Highlights
+	
+▶Used primarily as a treatment for acetaminophen toxicity or 
+other hepatotoxic conditions in which glutathione synthesis is 
+inhibited or oxidative stress occurs
+	
+▶When using as an antidote, if possible, give first dose IV; oral 
+doses should be given on an empty stomach and via gastric 
+tube.
+	
+▶Has also been used as an inhaled solution for its mucolytic 
+effect and, anecdotally, orally for treating degenerative my-
+elopathy
+	
+▶Administration via nebulization has caused hypersensitivity 
+and bronchospasm. 
+	
+▶Dilute prior to IV administration; use a 0.2 micron in-line filter if 
+administering inhalation solution IV
+Uses/Indications
+Acetylcysteine (N-acetylcysteine, NAC) is used in veterinary medi-
+cine as both a mucolytic agent in the pulmonary tree and as a treat-
+ment for acetaminophen, xylitol, or phenol toxicity in small animals. 
+It potentially could be useful in the adjunctive treatment of sulfon-
+amide hypersensitivity, sago palm hepatotoxicity, mushroom hepa-
+totoxicity, doxorubicin-induced hepatotoxicity, cadmium toxicity, or 
+phenazopyridine toxicity.1-4 Acetylcysteine may also be used topical-
+ly in the eye to halt the melting effect of collagenases and proteinases 
+on the cornea (see Acetylcysteine Ophthalmic).
+Acetylcysteine has been used anecdotally with aminocaproic acid 
+to treat degenerative myelopathy in dogs, but efficacy data are lack-
+ing. 
+In horses with strangles (ie, Streptococcus equi subsp equi infec-
+tion), acetylcysteine instilled into the guttural pouch has been used 
+to help break up chondroids and avoid the need for surgical remov-
+al.5 Acetylcysteine enemas have been used in neonatal foals to break 
+up meconium refractory to repeated enemas. In mares in estrus, 
+intrauterine acetylcysteine instillation could potentially be useful as 
+an adjunctive treatment of endometritis, as acetylcysteine appears 
+to have anti-inflammatory effects on equine endometrial cells and 
+improves pregnancy rates.6,7
+
+Acetylcysteine      13
+Pharmacology/Actions
+When administered into the pulmonary tree, acetylcysteine reduc-
+es the viscosity of both purulent and nonpurulent secretions and 
+expedites the removal of these secretions via coughing, suction, or 
+postural drainage. The free sulfhydryl group on the drug is believed 
+to reduce disulfide linkages in mucoproteins; this effect is most pro-
+nounced at a pH from 7 to 9. The drug has no effect on living tissue 
+or fibrin.
+In the management of toxicity, acetylcysteine acts as a thiol donor, 
+stimulating glutathione synthesis, and is a free radical scavenger. It 
+also improves hepatic blood flow through increased production of 
+nitric oxide. In acetaminophen hepatotoxicity, glutathione stores are 
+maintained allowing elimination via nontoxic metabolites.
+When administered to sick dogs (n = 30) during the first 48 hours 
+of hospitalization, acetylcysteine stabilized erythrocyte glutathione 
+concentrations, but when compared with the placebo group, illness 
+severity scores and survival rates were unchanged.8
+Pharmacokinetics
+When given orally, some acetylcysteine is absorbed from the GI 
+tract. Oral bioavailability in healthy cats has been reported as ≈20%.9 
+When administered via nebulization or intratracheally into the pul-
+monary tract, most of the drug is involved in the sulfhydryl-disulfide 
+reaction and the remainder is absorbed. Absorbed drug is converted 
+(deacetylated) into cysteine in the liver and then further metabo-
+lized. Elimination half-life in cats is ≈0.8 hours (IV) and ≈1.3 hours 
+(PO). The authors postulated that oral doses of 100 mg/kg may be ef-
+fective in cats when treating chronic diseases, but additional studies 
+are required to confirm safety and efficacy.9
+Contraindications/Precautions/Warnings
+Acetylcysteine is contraindicated (for pulmonary indications) in 
+animals hypersensitive to it. Use as an antidote has no contraindi-
+cations.
+Acetylcysteine administration via inhalation (nebulization) may 
+cause bronchospasm, and this drug should be used very cautious-
+ly, if at all, in animals with bronchospastic conditions (eg, asthma, 
+bronchitis). 
+Oral or IV administration requires dilution to a 5% (50 mg/mL) 
+solution. Although acetylcysteine is not labeled for injection, this 
+route is used anecdotally; a 0.2 micron in-line filter must be used 
+when giving IV. The taste and smell of the solution is unpleasant (sul-
+furous), and taste-masking agents (eg, colas, juices) have been used 
+in humans. Because oral dosing of these drugs may be difficult in 
+animals, gastric tubes may be necessary.
+Adverse Effects
+When given orally for acetaminophen toxicity, acetylcysteine can 
+cause GI effects (eg, nausea, vomiting) and rarely, urticaria. 
+IV administration appears to be well-tolerated in veterinary pa-
+tients. IV boluses in humans have caused changes in blood pressure 
+(ie, hyper- or hypotension), GI effects, erythema and flushing 30 to 
+60 minutes after infusion, and hypersensitivity reactions (eg, in hu-
+mans, rash, hypotension, wheezing).
+Adverse effects reported when acetylcysteine is administered 
+into the pulmonary tract include hypersensitivity, stomatitis, chest 
+tightness, bronchoconstriction, and bronchial or tracheal irritation. 
+A sticky residue may be noted on the face following nebulization 
+with a mask. A study in cats with experimentally induced asthma 
+demonstrated that endotracheal nebulization with acetylcysteine in-
+creased airway resistance and caused other adverse effects in some 
+cats, including increased airway secretions, cough, and unilateral 
+strabismus.10
+Reproductive/Nursing Safety
+Acetylcysteine crosses the placenta. Reproduction studies in rabbits 
+and rats have not demonstrated any evidence of teratogenic or em-
+bryotoxic effects when used in doses up to 3 times normal. Studies in 
+laboratory animals have not demonstrated impaired fertility.
+It is unknown whether acetylcysteine enters milk. Because safety 
+has not been established, this drug should only be used when the 
+maternal benefits outweigh the potential fetal risks. 
+Overdose/Acute Toxicity
+The LD50 of acetylcysteine in dogs is 1 g/kg (PO) and 700 mg/kg (IV). 
+It is believed that acetylcysteine is quite safe (with the exception of 
+the adverse effects listed above) in most overdose situations.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+	■Activated Charcoal: The use of activated charcoal as a gut 
+adsorbent of acetaminophen is controversial, as charcoal may also 
+adsorb orally-administered acetylcysteine.  
+	■Nitroglycerin: May enhance hypotension when given IV con-
+comitantly with acetylcysteine
+Dosages
+DOGS/CATS:
+Maintain or restore glutathione levels for the adjunctive treat-
+ment of hepatotoxicity associated with oxidative damage (ex-
+tra-label): Initial dose 140 – 180 mg/kg IV (dilute to 5% and give 
+via slow IV using a 0.2 micron filter over 15 to 20 minutes) or 
+280 mg/kg PO (via gastric tube), followed by 70 mg/kg PO or IV 
+every 6 hours for a minimum of 7 treatments.2,11-13 Large overdos-
+es may require up to 17 doses. IV administration is preferred in 
+serious intoxications or in animals with uncontrolled vomiting.
+Canine degenerative myelopathy (extra-label): 25 mg/kg PO 
+every 8 hours for 2 weeks, then every 8 hours every other day. 
+The 20% solution should be diluted to 5% with chicken broth 
+or suitable diluent. Used in conjunction with aminocaproic acid 
+at a dosage of 500 mg per dog (NOT mg/kg) PO every 8 hours 
+indefinitely. Adjunctive treatments may include prednisone 
+(0.25 – 0.5 mg/kg PO daily for 10 days, then every other day), Vi-
+tamin C (1000 mg PO every 12 hours), and Vitamin E (1000 units 
+PO every 12 hours). NOTE: No treatment has been shown to be 
+effective in published trials.14
+Adjunctive treatment of hepatic lipidosis (extra-label): Iden-
+tify underlying cause of anorexia and provide a protein replete 
+feline diet, give acetylcysteine at 140 mg/kg IV over 20 minutes, 
+then 70 mg/kg IV every 12 hours; dilute 10% acetylcysteine with 
+saline 1:4 and administer IV using a 0.2 micron filter.15 See also 
+­Carnitine.
+HORSES:
+To help break up chondroids in the guttural pouch (extra- 
+label): Instill 20% solution.5
+In neonatal foals to break up meconium refractory to repeated 
+enemas (extra-label): 8 g in 20 g sodium bicarbonate in 200 mL 
+water (pH of 7.6), give as enema as needed to effect16 or with foal 
+in lateral recumbency, insert a 30 Fr Foley catheter with a 30-
+cc bulb for a retention enema. Using gravity flow, slowly infuse 
+100 – 200 mL of 4% acetylcysteine solution and retain for 30 to 
+45 minutes. IV fluids and pain medication should be considered. 
+Monitor for possible bladder distention.17 
+Monitoring
+	■When used for inhalational therapy (ie, nebulization), monitor 

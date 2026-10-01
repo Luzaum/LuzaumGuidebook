@@ -1,0 +1,246 @@
+CHAPTER 263
+•
+Diseases of the Large Intestine
+1749
+eBooks.Health.Elsevier.com
+Oral Laxatives The mode of action of laxatives is based on 
+stimulating fluid accumulation in the colon, thereby increasing 
+motility.
+Bulk-Forming Laxatives Fiber preparations usually con-
+sist of polysaccharides and psyllium that are poorly absorbed 
+(ch. 165). ey can either be a dietary ingredient or a supplement 
+(e.g., psyllium 1-4 teaspoons [5-20 mL] per meal or pumpkin 1-4 
+tablespoons [15-60 mL] per meal). ese are only eective if the 
+animal is well-hydrated and eating. In patients where megacolon 
+has already developed, ber supplements should be avoided, and 
+a low-residue diet should be fed instead to reduce the amount of 
+fecal material produced.
+Hyperosmotic Laxatives ese include indigestible poly-
+saccharides (e.g., lactose, lactulose), magnesium salts (e.g., mag-
+nesium citrate, magnesium hydroxide, magnesium sulfate), and 
+polyethylene glycols. Lactulose (0.5-2 mL/kg PO q8-12h) is the 
+most potent and frequently used laxative in this group.
+Stimulant Laxatives ese are characterized by their ability to 
+induce propulsive motility (e.g., bisacodyl, phenolphthalein, castor 
+A
+B
+Figure 263.10
+Lateral (A) and ventrodorsal (B) abdominal radiograph of a cat with megacolon due to pelvic stenosis secondary to a healed fracture 
+aer a road accident. Panel A shows extreme distension of the colon with feces. Panel B more clearly shows the asymmetry of the healed pelvic fracture 
+and the narrowed pelvic canal.
+TABLE 263.7
+Treatment of Dogs and Cats With Constipation Depending on Severity of Clinical Signs
+SEVERITY
+TYPICAL FEATURES
+TREATMENT
+Mild constipation
+•First episode of constipation
+•Absence of defecation for >2 days, but <4 days
+•Straining with defecation
+•Passing hard feces
+•Hardened feces in colon
+•Normal colonic size
+Dietary modification (fiber-rich diets or supple-
+mentation [e.g., psyllium 1-4 tsp/meal]) com-
+bined with 1 dose of dodecyl (sulfoacetate) 
+suppositories or microenemas (Microlax 5 
+mL tubes)
+Moderate or recurrent 
+constipation
+•Recurrent episodes of constipation (not always present)
+•Absence of defecation for >2 days
+•Straining without defecation (not always present)
+•Hardened feces in colon
+•Moderately enlarged colon
+•Increased fecal density
+Macroenema (10 mL/kg isotonic saline mixed 
+with 5-10 mL lactulose and 5-10 mL mineral 
+oil) and manual extraction of feces, dietary 
+modification (fiber-rich diets or supplementa-
+tion [e.g., psyllium 1-4 tsp/meal {5-20 mL/
+meal}]), lactulose (0.5-2 mg/kg PO q8-12h), 
+prucalopride (0.01-0.2 mg/kg PO q12h)
+Severe obstipation or megacolon 
+without obstructive pelvic 
+stenosis
+•Recurrent episodes of constipation refractory to medical
+treatment
+•Absence of defecation for >2 days
+•Straining without defecation (not always present)
+•Hardened feces in colon
+•Significantly enlarged colon
+Medical treatment can be attempted (see mod-
+erate constipation), if no improvement con-
+sider surgery (colectomy)
+Severe chronic obstipation or 
+megacolon with pelvic stenosis
+•Maximal diameter of the colon/L5 length ratio >1.5 (cats)
+•Maximal diameter of the colon/L7 length ratio >1.5 (dogs)
+•Increased radiographic fecal density
+<months: consider pelvic osteotomy
+≥6 months: colectomy
+L5, Fifth lumbar vertebra on lateral radiograph; L7, seventh lumbar vertebra on lateral radiograph; PO, per os; tsp, teaspoon (5 mL).
+
+SECTION XVI
+•
+Gastrointestinal Disease
+1750
+eBooks.Health.Elsevier.com
+oil). Bisacodyl (5 mg per cat PO q24h) is the most eective laxative 
+in the cat. It acts via nitric oxide-mediated epithelial cell electrolyte 
+secretion and myenteric neuronal depolarization. Since there is evi-
+dence that continuous daily administration of bisacodyl irrevers-
+ibly damages the myenteric plexus, it should only be used for short 
+periods.
+Lubricating Laxatives ese facilitate defecation and inter-
+fere with the absorption of water from the colon. Mineral oil is the 
+most commonly used lubricating laxative. As aspiration can easily 
+occur during oral administration, these substances should only 
+be used in compliant and fully mentally responsive animals.240-242
+Prokinetic Agents Prokinetics may help improve colonic 
+motility in mild recurrent or first time moderate to severe constipa-
+tion. However, in the presence of definitive megacolon, no signifi-
+cant clinical improvement can be expected from the administration 
+of prokinetics.
+ese agents stimulate motility throughout the GI tract and 
+have relatively few adverse eects. e most commonly used 
+preparations contain serotonergic 5-HT4 agonists. Prucalopride 
+(0.01-0.2 mg/kg PO q12h) is currently recommended for use in 
+these patients.
+Misoprostol is a prostaglandin E1 analog that is used as a gas-
+troprotective agent to prevent nonsteroidal anti-inammatory 
+drug-induced gastric ulceration. However, faster GI transit time 
+and diarrhea have been described as adverse eects. Misoprostol is 
+an eective anti-constipation agent in humans, and it may be use-
+ful in animals with refractory constipation. Invitro studies in dogs 
+and cats also show a benecial eect on intestinal smooth muscle. 
+While ranitidine, an H2 receptor antagonist, has shown a prokinetic 
+eect in invitro studies, this eect has not been conrmed invivo
+and this class of drugs should not be used for constipation.238,243-247
+Surgery In cats with megacolon, medical therapy is usually 
+unsuccessful, and colectomy appears to be the only reasonable treat-
+ment. The prognosis for cats that survive the postoperative period 
+after colectomy is good, especially if the ileocecal valve is preserved. 
+However, self-limiting diarrhea can be expected for a few weeks after 
+surgery.237,248-250
+REFERENCES
+1. Grien WO Jr, Richardson JD, Medley ES. Prevention of small bowel con-
+tamination by ileocecal valve. South Med J. 1971;64:1056-1058.
+2. Kararli TT. Comparison of the gastrointestinal anatomy, physiology, and 
+biochemistry of humans and commonly used laboratory animals. Biopharm Drug 
+Dispos. 1995;16:351-380.
+3. Spinato MT, Barker IK, Houston DM. A morphometric study of the canine 
+colon: comparison of control dogs and cases of colonic disease. Can J Vet Res. 
+1990;54:477-486.
+4. Zahner M, Wille K. Vascular system in the large intestine of the dog (Canis 
+lupus f. familiaris). Anat Histol Embryol. 1996;25:101-108.
+5. Goldsmid SE, Bellenger CR, Hopwood PR, etal. Colorectal blood supply in 
+dogs. Am J Vet Res. 1993;54:1948-1953.
+6. Sterns EE, Vaughan GE. e lymphatics of the dog colon. A study of the 
+lymph drainage patterns by indirect lymphography in the dog under normal and 
+abnormal conditions. Cancer. 1970;26:218-231.
+7. Arrieta MC, Madsen K, Doyle J, etal. Reducing small intestinal permeability 
+attenuates colitis in the IL10 gene-decient mouse. Gut. 2009;58:41-48.
+8. Ewaschuk JB, Diaz H, Meddings L, etal. Secreted bioactive factors from 
+Bidobacterium infantis enhance epithelial cell barrier function. Am J Physiol 
+Gastrointest Liver Physiol. 2008;295:G1025-G1034.
+9. Peranzi G, Lehy T. Endocrine cell populations in the colon and rectum of cat, 
+dog, and monkey: ne structure, immunocytochemistry, and distribution. Anat 
+Rec. 1984;210:87-100.
+10. Morita H, Mochiki E, Takahashi N, etal. Eects of 5-HT2B, 5-HT3 and 
+5-HT4 receptor antagonists on gastrointestinal motor activity in dogs. World J 
+Gastroenterol. 2013;19:6604-6612.
+11. Prins NH, Briejer MR, Schuurkes JA. Characterization of the contrac-
+tion to 5-HT in the canine colon longitudinal muscle. Br J Pharmacol. 
+1997;120:714-720.
+12. Marsilio S, Kleinschmidt S, Harder J, etal. Numbers and distribution of im-
+mune cells in the tunica mucosa of the small and large intestine of full-thickness 
+biopsies from healthy pet cats. Anat Histol Embryol. 2011;40:61-67.
+13. Christensen J, Rick GA, Lowe LS. Distributions of interstitial cells of Cajal in 
+stomach and colon of cat, dog, ferret, opossum, rat, guinea pig and rabbit. J Auton 
+Nerv Syst. 1992;37:47-56.
+14. Farrugia G. Interstitial cells of Cajal in health and disease. Neurogastroen-
+terol Motil. 2008;20:54-63.
+15. Guilford WG. e enteric nervous system: function, dysfunction, and 
+pharmacological manipulation. Semin Vet Med Surg Small Anim. 1990;5:46-56.
+16. Baum B, Meneses F, Kleinschmidt S, etal. Age-related histomorphologic 
+changes in the canine gastrointestinal tract: a histologic and immunohistologic 
+study. World J Gastroenterol. 2007;13:152-157.
+17. Sturgess C, Caneld P, Gruydd-Jones T, etal. A gross and microscopi-
+cal morphometric evaluation of feline large intestinal anatomy. J Comp Pathol. 
+2001;124:255-264.
+18. Billich CO, Levitan R. Eects of sodium concentration and osmolality 
+on water and electrolyte absorption from the intact human colon. J Clin Invest. 
+1969;48:1336-1347.
+19. Smith PL, McCabe RD. Mechanism and regulation of transcellular potas-
+sium transport by the colon. Am J Physiol. 1984;247:G445-G456.
+20. Barrett JS, Gearry RB, Muir JG, etal. Dietary poorly absorbed, short-chain 
+carbohydrates increase delivery of water and fermentable substrates to the proxi-
+mal colon. Aliment Pharmacol er. 2010;31:874-882.
+21. Dinning P, Wiklendt L, Gibbins I, etal. Low‐resolution colonic manometry 
+leads to a gross misinterpretation of the frequency and polarity of propagating 
+sequences: initial results from ber‐optic high‐resolution manometry studies. 
+Neurogastroenterol Motil. 2013;25:e640-e649.
+22. Mabbott NA, Donaldson DS, Ohno H, etal. Microfold (M) cells: important 
+immunosurveillance posts in the intestinal epithelium. Mucosal Immunol. 
+2013;6:666-677.
+23. Moreno PS, Wagner J, Manseld CS, etal. Characterisation of the canine 
+faecal virome in healthy dogs and dogs with acute diarrhoea using shotgun 
+metagenomics. PloS One. 2017;12:e0178433.
+24. Suchodolski JS. Diagnosis and interpretation of intestinal dysbiosis in dogs 
+and cats. Vet J. 2016;215:30-37.
+25. Suchodolski JS, Camacho J, Steiner JM. Analysis of bacterial diversity in 
+the canine duodenum, jejunum, ileum, and colon by comparative 16S rRNA gene 
+analysis. FEMS Microbiol Ecol. 2008;66:567-578.
+26. Woo PC, Lau SK, Teng JL, etal. en and now: use of 16S rDNA gene 
+sequencing for bacterial identication and discovery of novel bacteria in clinical 
+microbiology laboratories. Clin Microbiol Infect. 2008;14:908-934.
+27. Bresciani F, Minamoto Y, Suchodolski JS, etal. Eect of an extruded animal 
+protein‐free diet on fecal microbiota of dogs with food‐responsive enteropathy. J 
+Vet Intern Med. 2018;32:1903-1910.
+28. Werner M, Suchodolski JS, Lidbury JA, etal. Diagnostic value of fecal 
+cultures in dogs with chronic diarrhea. J Vet Intern Med. 2021;35:199-208.
+29. Wetterwik KJ, Trowald-Wigh G, Fernstrom LL, etal. Clostridium dicile in 
+faeces from healthy dogs and dogs with diarrhea. Acta Vet Scand. 2013;55:23.
+30. Garcia-Mazcorro JF, Suchodolski JS, Jones KR, etal. Eect of the proton 
+pump inhibitor omeprazole on the gastrointestinal bacterial microbiota of healthy 
+dogs. FEMS Microbiol Ecol. 2012;80:624-636.
+31. Jones SM, Gaier A, Enomoto H, etal. e eect of combined carprofen and 
+omeprazole administration on gastrointestinal permeability and inammation in 
+dogs. J Vet Intern Med. 2020;34:1886-1893.
+32. Manchester AC, Webb CB, Blake AB, etal. Long‐term impact of tylosin 
+on fecal microbiota and fecal bile acids of healthy dogs. J Vet Intern Med. 
+2019;33:2605-2617.
+33. Pilla R, Gaschen FP, Barr JW, etal. Eects of metronidazole on the fecal micro-
+biome and metabolome in healthy dogs. J Vet Intern Med. 2020;34:1853-1866.
+34. AlShawaqfeh M, Wajid B, Minamoto Y, etal. A dysbiosis index to assess mi-
+crobial changes in fecal samples of dogs with chronic inammatory enteropathy. 
+FEMS Microbiol Ecol. 2017;93.
+35. Werner M, Suchodolski JS, Straubinger RK, etal. Eect of amoxicillin‐cla-
+vulanic acid on clinical scores, intestinal microbiome, and amoxicillin‐resistant 
+Escherichia coli in dogs with uncomplicated acute diarrhea. J Vet Intern Med. 
+2020;34:1166-1176.
+36. Cerquetella M, Rossi G, Suchodolski J, etal. Proposal for rational antibacte-
+rial use in the diagnosis and treatment of dogs with chronic diarrhoea. J Small 
+Anim Pract. 2020;61:211-215.
+37. Minamoto Y, Minamoto T, Isaiah A, etal. Fecal short-chain fatty acid 
+concentrations and dysbiosis in dogs with chronic enteropathy. J Vet Intern Med. 
+2019;33:1608-1618.
+38. Rivera-Chávez F, Zhang LF, Faber F, etal. Depletion of butyrate-producing 
+Clostridia from the gut microbiota drives an aerobic luminal expansion of Salmo-
+nella. Cell Host Microbe. 2016;19:443-454.
+39. Schauf S, de la Fuente G, Newbold CJ, etal. Eect of dietary fat to starch 
+content on fecal microbiota composition and activity in dogs. J Anim Sci. 
+2018;96:3684-3698.
+40. waites DT, Bastereld L, McCleave PM, etal. Gamma‐aminobutyric acid 
+(GABA) transport across human intestinal epithelial (Caco‐2) cell monolayers. 
+Br J Pharmacol. 2000;129:457-464.
+41. Toresson L, Steiner JM, Suchodolski JS. Cholestyramine treatment in two dogs 
+with presumptive bile acid diarrhoea: a case report. Canine Med Genet. 2021;8:1.
+42. Alexander C, Guard BC, Suchodolski JS, etal. Cholestyramine decreases 
+apparent total tract macronutrient digestibility and alters fecal characteristics and 
+metabolites of healthy adult dogs. J Anim Sci. 2019;97:1020-1026.
+43. Churcher RK, Watson AD. Canine histiocytic ulcerative colitis. Aust Vet J. 
+1997;75:710-713.
+44. Rallis TS, Tontis D, Adamama-Moraitou KK, etal. Protothecal colitis in a 
+German Shepherd dog. Aust Vet J. 2002;80:406-408.

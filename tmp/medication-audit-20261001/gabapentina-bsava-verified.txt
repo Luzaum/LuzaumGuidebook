@@ -1,0 +1,220 @@
+===== BSAVA PDF 195 / impressa 179 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+179
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Gabapentin (Gabapentinum)
+(Neurontin*) POM CD Schedule 3
+Formulations: Oral: 100 mg, 300 mg, 400 mg capsules; 600 mg, 
+800 mg film-coated tablets; 50 mg/ml solution.
+Action: The precise mechanism of action of gabapentin is unknown 
+but it appears to bind to a specific modulating protein of the voltage-
+gated calcium channels resulting in a decreased release of excitatory 
+neurotransmitters. Gabapentin is structurally related to gamma-
+aminobutyric acid (GABA) and does increase levels of GABA in the 
+CNS but does not appear to alter GABA binding, uptake or release. 
+The mode of action of the analgesic effect may be due to down-
+regulation of excitatory neurotransmitter in the dorsal horn of the 
+spinal cord or its inhibitory effect on dorsal horn NMDA receptors.
+Use:
+• Adjunctive therapy in the treatment of seizures refractory to 
+treatment with conventional therapy although the supporting 
+evidence in dogs is weak.
+• Treatment of chronic pain states, such as neuropathic pain and 
+possibly postoperative pain.
+• Recent studies have shown it to be effective in improving quality 
+of life in dogs with syringomyelia and effective in reducing the 
+amount of opioid required in dogs postoperatively.
+Recent studies have shown it to be effective in improving quality of life 
+in dogs with syringomyelia and effective in reducing the amount of 
+opioid required in dogs postoperatively. After multiple dosing, peak 
+plasma concentrations of gabapentin are usually achieved within 2 
+hours of a dose, and steady state achieved within 1–2 days. It is 
+partially metabolized by the liver before renal excretion and has an 
+elimination half-life of 3–4 hours. Abrupt discontinuation of the drug 
+has precipitated seizures in humans; therefore, tapered withdrawal is 
+recommended. Monitoring of serum levels in dogs and in human 
+patients does not appear useful. Use with caution in patients with 
+renal impairment, behavioural abnormalities or severe hepatic disease.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid oral solutions containing xylitol which 
+may be toxic to dogs at higher doses.
+Adverse reactions: The most commonly reported adverse effect 
+in dogs is mild sedation and ataxia. False-positive readings have 
+been reported with some urinary protein tests in human patients 
+taking gabapentin. Hepatic toxicity has been reported as a rare side 
+effect in human patients.
+Drug interactions: The absorption of gabapentin from the GI 
+tract is reduced by antacids containing aluminium with magnesium; 
+it is recommended that gabapentin is taken at least 2 hours after the 
+administration of such an antacid. Cimetidine has been reported to 
+reduce the renal clearance of gabapentin but the product 
+information does not consider this to be of clinical importance.
+
+===== BSAVA PDF 196 / impressa 180 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+180
+DOSES
+Dogs: 10–20 mg/kg p.o. q6–8h (starting dose; incremental dose 
+increases are recommended).
+Cats: 5–10 mg/kg p.o. q8–12h (starting dose; incremental dose 
+increases are recommended).
+References
+Kukanich B (2013) Outpatient oral analgesics in dogs and cats beyond nonsteroidal 
+antiinflammatory drugs: an evidence-based approach. Veterinary Clinics of North 
+America: Small Animal Practice  43, 1109–1125
+Muñana KR (2013) Management of refractory epilepsy. Top Companion Animal Medicine   
+28, 67–71
+Ganciclovir
+(Virgan*) POM 
+Formulations: Topical: 0.15% eye gel in 5 g tube.
+Action: Inhibits viral replication (viral DNA polymerase); depends 
+on viral thymidine kinase for phosphorylation.
+Use:
+• Management of ocular feline herpesvirus-1 (FHV-1) infections.
+In vitro studies show that ganciclovir is at least 10 times more 
+effective against FHV-1 than aciclovir. Anecdotal reports of its topical 
+use are promising, but neither the safety nor the pharmacokinetics 
+has been reported in cats. Cannot eradicate latent viral infection. In 
+refractory and severe cases of FHV-1 ulceration, combined therapy, 
+including topical or systemic antiviral medication can be used.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Ocular irritation may occur and the frequency 
+of application should be reduced if this develops. Treatment should 
+not be continued for >3 weeks.
+Drug interactions: No information available.
+DOSES
+Dogs: No information available.
+Cats: Apply small amount to affected eye q4–6h (maximum 3 weeks). 
+References
+Thomasy SM and Maggs DJ (2016) A review of antiviral drugs and other compounds with 
+activity against feline herpesvirus type 1. Veterinary Ophthalmology  19(S1), 119–130
+Gelatine (Oxypolygelatine, Polygeline)
+(Gelofusine, Haemaccel) POM-V 
+Formulations: Injectable: 4% solution of succinylated gelatine in 
+0.7% sodium chloride (Gelofusine); 35 g/dl degraded urea-linked 
+gelatine with NaCl, KCl, CaCl 2 (Haemaccel).
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 197 / impressa 181 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+181
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Action: Promotes retention of fluid within the vascular system 
+through the exertion of oncotic pressure.
+Use:
+• The expansion and maintenance of blood volume in various 
+forms of shock, including hypovolaemic and haemorrhagic shock.
+The main difference between gelatine-based solutions and other 
+synthetic colloids is that they have lower molecular weights (and 
+hence are excreted rapidly), appear to have few antigenic or 
+anticoagulative effects. The plasma half-life of most gelatines is 
+approximately 8 hours (oxypolygelatine 2–4 hours), so that the 
+duration of plasma expansion is much shorter than with 
+hydroxyethyl starch. There appears to be little effect on 
+coagulation or blood loss following gelatine administration. Use 
+with caution in animals with congestive heart failure or renal 
+insufficiency as will increase risk of circulatory overload.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Anaphylactoid reactions to gelatine solutions 
+are rare; it is uncertain whether these reactions represent a specific 
+immune response. In human medicine there are concerns over  
+the safety of these solutions when used in patients with kidney 
+disease.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: Plasma volume expander: 10–20 ml/kg i.v. bolus. In 
+normal circumstances do not exceed replacement of >25% of 
+circulating blood volume with gelatines in a 24-hour period. 
+References
+Glowaski MM, Moon-Passat PF, Erb HN et al . (2003) Effects of oxypolygelatin and dextran 
+70 on hemostatic variables in dogs. Veterinary Anaesthesia and Analgesia 30 , 202–210
+Gemcitabine
+(Gemzar*) POM
+Formulations: Injectable: Lyophilized powder for reconstitution 
+before use. 200 mg (in 10 ml vials) and 1 g (in 50 ml vials).
+Action: Metabolites of the drug inhibit the enzyme ribonucleotide 
+reductase and compete with endogenous nucleotides for 
+incorporation into DNA strands, thereby inhibiting DNA synthesis. 
+Acts primarily in S phase.
+Use:
+• Used in dogs with bladder urothelial carcinoma, lymphoma and 
+various carcinomas. 
+• Described for use in cats with exocrine pancreatic carcinoma. 
+• May also be useful as a radiosensitizer for some tumours.  

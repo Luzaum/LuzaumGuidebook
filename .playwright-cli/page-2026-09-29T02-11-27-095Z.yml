@@ -1,0 +1,73 @@
+- generic [ref=e3]:
+  - complementary "Navegação da hemoterapia" [ref=e5]:
+    - generic [ref=e6]:
+      - button "Início — Transfusão" [ref=e7] [cursor=pointer]:
+        - generic [ref=e9]:
+          - generic [ref=e10]: Hemoterapia
+          - generic [ref=e11]: Módulo de Transfusão
+      - button "Recolher menu lateral" [ref=e12] [cursor=pointer]
+    - navigation [ref=e16]:
+      - generic [ref=e17]:
+        - paragraph [ref=e18]: Navegação
+        - button "Calculadora" [ref=e19] [cursor=pointer]
+        - button "Hemocomponentes" [ref=e24] [cursor=pointer]
+        - button "Preparo e Guias" [ref=e29] [cursor=pointer]
+        - button "Prova Cruzada" [ref=e34] [cursor=pointer]
+        - button "Reações" [ref=e39] [cursor=pointer]
+        - button "Fármacos" [ref=e44] [cursor=pointer]:
+          - generic [ref=e47]:
+            - generic [ref=e48]: Fármacos
+            - generic [ref=e49]: "6"
+    - button "Voltar ao Hub" [ref=e51] [cursor=pointer]
+  - main [ref=e55]:
+    - generic [ref=e56]:
+      - generic [ref=e57]:
+        - generic [ref=e58]:
+          - heading "Hemocomponentes e albumina" [level=2] [ref=e59]
+          - paragraph [ref=e60]: Selecione o produto. Aprofunde nos botões de ajuda.
+        - group "Espécie" [ref=e61]:
+          - button "Cão" [pressed] [ref=e62] [cursor=pointer]
+          - button "Gato" [ref=e63] [cursor=pointer]
+      - generic [ref=e64]:
+        - navigation "Categorias de hemocomponentes" [ref=e65]:
+          - generic [ref=e66]:
+            - paragraph [ref=e67]: Categorias
+            - button "Hemácias e sangue total" [ref=e69] [cursor=pointer]
+            - generic [ref=e74]:
+              - button "Plasma e derivados" [expanded] [ref=e75] [cursor=pointer]
+              - generic [ref=e80]:
+                - button "Plasma fresco" [ref=e81] [cursor=pointer]
+                - button "Plasma fresco congelado" [pressed] [ref=e84] [cursor=pointer]
+                - button "Plasma congelado" [ref=e89] [cursor=pointer]
+                - button "Crioprecipitado" [ref=e92] [cursor=pointer]
+                - button "Plasma pobre em crioprecipitado" [ref=e95] [cursor=pointer]
+            - button "Plaquetas" [ref=e99] [cursor=pointer]
+            - button "Albumina" [ref=e105] [cursor=pointer]
+        - article [ref=e110]:
+          - generic [ref=e113]:
+            - paragraph [ref=e114]: Plasma e derivados · Cão · PFC
+            - heading "Plasma fresco congelado" [level=3] [ref=e115]
+          - group "Seções do produto" [ref=e116]:
+            - button "Protocolo" [pressed] [ref=e117] [cursor=pointer]
+            - button "Monitorização" [ref=e118] [cursor=pointer]
+            - button "Referências" [ref=e119] [cursor=pointer]
+          - generic [ref=e120]:
+            - generic [ref=e121]:
+              - heading [level=4] [ref=e122]:
+                - text: Indicação e função
+                - button "Saiba mais sobre mechanism" [ref=e123] [cursor=pointer]
+              - paragraph [ref=e127]: Reposição de múltiplos fatores na coagulopatia com sangramento, ou antes de procedimento invasivo com risco hemorrágico relevante; contém fatores lábeis.
+            - paragraph [ref=e128]: "Limite clínico: Não corrige anemia ou trombocitopenia. Volumes usuais têm efeito pequeno sobre albumina."
+            - generic [ref=e129]:
+              - generic [ref=e130]:
+                - heading [level=4] [ref=e131]:
+                  - text: Seleção e compatibilidade
+                  - button "Saiba mais sobre compatibility" [ref=e132] [cursor=pointer]
+                - paragraph [ref=e136]: Confirmar data e método de processamento; em gatos, usar plasma AB compatível. Avaliar deficiência específica para considerar crioprecipitado.
+              - generic [ref=e137]:
+                - heading [level=4] [ref=e138]:
+                  - text: Preparo e administração
+                  - button "Saiba mais sobre preparation" [ref=e139] [cursor=pointer]
+                - paragraph [ref=e143]: Descongelar conforme hemobanco, sem calor excessivo; não recongelar ou prolongar o uso fora do prazo local.
+            - group [ref=e144]:
+              - generic "Volume de plasma · 6–12 mL/kg" [ref=e145] [cursor=pointer]

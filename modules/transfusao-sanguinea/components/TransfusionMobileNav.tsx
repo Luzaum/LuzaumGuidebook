@@ -1,5 +1,6 @@
 import React from 'react';
 import { Menu } from 'lucide-react';
+import { TransfusionIcon } from './TransfusionIcon';
 import { titleForTransfusionPage, type TransfusionPage } from '../navConfig';
 
 interface TransfusionMobileNavProps {
@@ -13,7 +14,7 @@ export const TransfusionMobileNav: React.FC<TransfusionMobileNavProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-30 flex md:hidden items-center justify-between px-4 py-3 bg-card border-b border-border/80 text-foreground shadow-sm">
-      <div className="flex items-center gap-3">
+      <div className="flex min-w-0 items-center gap-3">
         <button
           type="button"
           onClick={onOpenMobileMenu}
@@ -29,7 +30,7 @@ export const TransfusionMobileNav: React.FC<TransfusionMobileNavProps> = ({
 
       <div className="flex items-center">
         <span className="h-8 w-8 rounded-lg flex items-center justify-center bg-red-500/10 text-base font-bold select-none">
-          🩸
+          <TransfusionIcon name={activeKey} className="h-8 w-8" />
         </span>
       </div>
     </header>

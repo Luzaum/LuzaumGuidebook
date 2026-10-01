@@ -1,0 +1,228 @@
+CHAPTER 234
+•
+Feline Myocardial Diseases
+1387
+eBooks.Health.Elsevier.com
+RESTRICTIVE CARDIOMYOPATHY
+Definition—Pathological Lesions
+Human RCM Human RCM is an uncommon heart muscle 
+disease primarily characterized by impaired ventricular filling due 
+to increased myocardial stiffness or reduced compliance of either or 
+both ventricles (mainly LV), with normal or near-normal systolic 
+function and wall thicknesses.7 91-94 The reduced ventricular com-
+pliance restricts ventricular filling (hence the term “restrictive”), 
+with secondary increased end-diastolic ventricular filling pressure. 
+This results in marked LA or biatrial enlargement. In the early stages, 
+global systolic function is normal, and then altered systolic function 
+is usually observed as the disease progresses.11 94 Human RCM rep-
+resents a heterogeneous group of heart disorders subdivided into 
+primary and secondary RCM.11 93 94 Causes of secondary RCM 
+include infiltrative diseases (e.g., amyloidosis, sarcoidosis, Gaucher 
+and Hurler diseases) and storage diseases (e.g., hemochromatosis, 
+glycogen storage disorders, and Fabry disease). Secondary RCM, 
+especially endomyocardial fibrosis, is also reported in the hypereo-
+sinophilic syndrome and as an iatrogenic complication (radiation, 
+drugs).91 94 Primary human RCM is characterized by patchy to 
+diffuse interstitial myocardial fibrosis with possible fibrosis of the 
+sinoatrial and AV nodes, resulting in AV blocks.91 Endomyocardial 
+fibrosis is a specific form of primary RCM, characterized by marked 
+endocardial fibrosis in addition to myocardial fibrosis.95 96 Similarly 
+to HCM, familial forms of primary RCM are reported, with most 
+identified genes encoding for sarcomere or Z-disk proteins, e.g., 
+cardiac troponin genes and MYH7 97-99 Interestingly, in addition 
+to these genetic similarities, “overlap” or “crossover” phenotypes of 
+RCM and HCM have been observed in families with mutations in 
+sarcomeric genes, suggesting that some RCM cases may be consid-
+ered as “minimally hypertrophic” HCM phenotypes.94
+Feline RCM Similar to human forms of primary RCM, 
+“myocardial RCM” and “endomyocardial fibrosis RCM” have 
+been identified in the cat.1 16 17 100-104 There is a greater frequency 
+in cats than what is reported in humans, as RCM is currently the 
+second most common feline primary cardiomyopathy (Figure 
+234.9).22 In one study of 92 cats with RCM, the most common 
+form was myocardial RCM by far (90% of cases).101 At the time 
+of this writing, no causal mutations for either feline RCM forms 
+have been identified. Nevertheless and interestingly, histopatho-
+logical features of feline HCM (e.g., myocyte disarray, abnormal 
+intramural coronary arterioles, patchy replacement scarring) are 
+found in most cats with RCM, thus suggesting that feline RCM 
+could be the phenotypic expression of sarcomere mutations.17 The 
+hallmark feature of feline endomyocardial fibrosis is a prominent 
+endomyocardial scar commonly appearing as a distinct “tubular” 
+lesion bridging the IVS and LVFW that may result in mid- to api-
+cal intracavitary stenosis (Figure 234.9, B; Video 234.12).16 The 
+less common form, feline endomyocardial fibrosis, is character-
+ized by diffuse endomyocardial scar resulting in reduction or 
+obliteration of the LV cavity (Figure 234.9, A).16 In both endo-
+myocardial forms, endocardial thickening may also involve atrial 
+chambers, the RV (rarely), or both, in association with myocardial 
+interstitial fibrosis, various degrees of myocyte hypertrophy and 
+necrosis, intramural coronary arteriosclerosis and inflammatory 
+infiltrates.16 Such inflammatory infiltrates are also described in 
+the feline “myocardial RCM” form, suggesting a possible role of 
+viral infection and/or immune-mediated lesions.105 In one report, 
+interstitial pneumonia was found in >25% of cats with RCM; 
+the authors questioned whether the same agent or process could 
+affect both the heart and lungs.100 More recently, some investiga-
+tors have suggested that Bartonella spp. may play a primary role 
+or act as a cofactor in the pathogenesis of endomyocarditis-LV 
+endocardial fibrosis.106
+Epidemiology—Clinical Presentation at Diagnosis
+In a report of 35 cats with RCM, the mean age at diagnosis was 
+10 ± 4 years with a wide range (1.5-17.1).17 Similarly, in another 
+study of 92 cats with RCM, the median age at diagnosis was 8.6 
+years (interquartile range = 4.1-12.4), with males (49%) and 
+females (51%) equally represented.101 Conversely, most aected 
+cats were males (59-71%) in other reports.17 103 104 Cats of vari-
+ous breeds can develop RCM (e.g., Burmese, Siamese, Persian, 
+Birman, Maine Coon, Norwegian Forest Cat), with a predomi-
+nance of DSH cats (67-71%), but no familial link has been repor-
+ted.17 103 104
+Almost all cats with RCM show clinical signs at the time of diag-
+nosis, predominantly related to CHF.17 21 22 101 104 In the report on 
+35 cats with RCM, 91% presented with CHF, 6% with lethargy and 
+3% with syncope and transient paresis.17 Similarly, in the study of 
+92 cats with RCM, 70% had at least 1 clinical sign related to RCM 
+at the time of diagnosis.101 e most common sign was dyspnea 
+related to CHF (89%), either alone (82%) or associated with syn-
+cope (2%), ascites (14%) or bilateral hind limb paralysis as a result 
+of ATE (2%). e remaining cats with clinical signs related to 
+RCM had ascites (5%) or bilateral hind limb paralysis caused by 
+ATE (6%).101 Cardiac auscultation was abnormal in 81% of 92 cats 
+in that study, with 1-3 abnormalities for each. e most common 
+abnormality was a le apical systolic heart murmur (77%), followed 
+by gallop sound (31%) and arrhythmias (23%).101
+Electrocardiographic Findings
+Various arrhythmias are associated with feline RCM, pre-
+dominantly including ventricular premature beats or tachycar-
+dia (7-29%), supraventricular premature beats or tachycardia 
+(4-23%), and third-degree AV block (5%).17 101 Atrial brillation 
+is reported less commonly (1-3%).17 101
+Clinical Course and Prognosis
+e prognosis for RCM in humans is poor, with most patients 
+requiring cardiac transplantation.107 Feline RCM is similarly associ-
+ated with a poor prognosis, with most animals dying from cardiac-
+related causes (60-86%).17 21 22 101 104 For example, in one report, 
+64% of cats with RCM died from cardiac-related causes, with 16% 
+occurring within the rst 24 hours aer the diagnosis was made.101
+Most of these cats (92%) died or were euthanized because of refrac-
+tory CHF (89%) or ATE (3%), while 8% died suddenly. Exclud-
+ing cats that died <24 hours aer diagnosis, the median survival 
+time from diagnosis to all-cause death and cardiac death was 436 
+days (range, 2-3710 days) and 667 days (2-3710), respectively (Fig-
+ure 234.9, F).101 Severe LAE (i.e., end-diastolic LA to aortic ratio 
+[LA:Ao] ≥2; Video 234.13) was signicantly associated with shorter 
+time to cardiac death, independently of age, biatrial enlargement 
+and arrhythmias.101 In another report, only respiratory distress 
+showed a statistically signicant eect on survival, with a median 
+survival time of just 64 days (95% condence interval = 8-120) for 
+cats with respiratory distress vs. 466 days (95% condence interval 
+= 0-1208) for those without respiratory distress.104
+DILATED CARDIOMYOPATHY
+Definition—Prevalence
+DCM, a primary cardiomyopathy characterized by a dilated LV 
+with systolic dysfunction (Figure 234.10),3 8 94 was previously rec-
+ognized as the second most common feline heart disease.1 How-
+ever, in 1987 Pion etal. demonstrated that most cases of feline 
+DCM were actually not “primary,” but instead related to taurine 
+deciency (Video 234.14), and could be reversible and prevent-
+able with oral supplementation of taurine.108 109 Since then, com-
+mercial cat foods have been supplemented with taurine. Other 
+causes of DCM phenotypes such as sustained tachycardia are 
+
+SECTION XIV
+•
+Cardiovascular Disease
+1388
+eBooks.Health.Elsevier.com
+B
+C
+D
+E
+LV1
+LV
+LV1
+LV2
+LV2
+LVFW
+LVFW
+IVS
+IVS
+LA
+LA
+LV
+Aur
+LA
+LA
+Ao
+Ao
+Ao
+STDI
+ATDI
+ETDI
+Cat with RCM
+Normal cat
+Normal cat
+E
+E
+E
+E
+A
+A
+A
+A
+V
+IVRT
+Sa
+Sa
+Ea
+Ea
+Aa
+Aa
+Cat with RCM
+V
+A
+100%
+90%
+80%
+70%
+60%
+50%
+40%
+30%
+20%
+10%
+0%
+Percentage of surviving cats
+Time from diagnosis (days)
+0
+500
+1000
+1500
+2000
+2500
+3000
+3500
+Cardiac death
+F
+Figure 234.9
+Representative ndings in cats with restrictive cardiomyopathy. A, Histologic evaluation of a le ventricular (LV) cross-sectional specimen from a cat 
+with endomyocardial brosis that died suddenly. ere is a thick, circumferential LV endocardial scar (white arrows) and a mural thrombus (black arrow). Hematoxylin-
+eosin-saron stain. B, Echocardiographic images from a cat with endomyocardial brosis. Le: a large heterogeneous bridging scar (arrow) connects the interventricular 
+septum (IVS) and the le ventricular free wall (LVFW), dividing the LV cavity into apical (LV1) and basal (LV2) parts. ere is secondary le atrial (LA) dilation com-
+pared to the aorta (Ao). Middle: zoomed view of the bridging scar (arrow) with focal hyperechoic areas consistent with brosis. Right: marked auricular (Aur) and LA 
+enlargement (end-diastolic LA:Ao ratio = 2.2; reference interval, 0.5-1.2).88 C, Echocardiographic features of restrictive cardiomyopathy (RCM) in a cat. Top: smoke-like 
+spontaneous echocontrast (arrow) indicative of blood stasis in the severely enlarged le atrium. Bottom: compared to a normal cat (right), a cat with RCM (le) has a 
+typical restrictive lling pattern: ↑ E:A (>2)74 from both ↑ LA pressure and ↓ ventricular compliance with secondary ↑ LV diastolic pressure. Decreased LA function may also 
+contribute to the small A wave amplitude. e E-wave deceleration time (30 ms) in the cat with RCM is short (30 ms; 92 ms for the normal cat; reference interval, 54-192 
+ms),17 due to rapid equalization of LA and LV pressures aer early diastolic lling. D, Radial diastolic dysfunction in a cat with RCM using two-dimensional color tissue 
+Doppler imaging (TDI) (right parasternal short axis view). e subendocardial (yellow) and subepicardial (green) radial velocity proles recorded with color TDI show 
+low diastolic waves, especially in the subendocardium (ETDI wave, 2.6 cm/s; reference interval, 5.7 ± 1.5 cm/s [3.5-10.8]).88 E, Pulsed-wave TDI recording, lateral mitral 
+valve (MV) annulus, in a cat with RCM (le). Markedly ↓ diastolic velocities (Ea and Aa, cm/s), reecting ↓ velocities of longitudinal diastolic motion: peak annular velocity 
+during early diastole (Ea) = 5 cm/s (versus 9.8 cm/s for the normal cat; reference interval, >6 cm/s).74 Additionally, in the cat with RCM, the peak MV E wave velocity was 
+1.66 m/s, producing an E:Ea = 33 (6.6 in the normal cat; reference interval, <12).74 By combining peak MV E wave velocity (mainly determined by LV lling pressure and 
+relaxation) with Ea (mainly depends on relaxation) the E:Ea ratio is an index reecting LV lling pressure (as the eect of relaxation on E is minimized).74 F, Kaplan-Meier 
+curve illustrating survival time in 69 cats with RCM (myocardial form), excluding cats that died <24 hours aer diagnosis. Median (range) survival time from diagnosis 
+was 667 (2-3710) days. Considering all-cause death, median survival time was 436 days. Circles denote censored observations.101 Aa, Sa, Peak annular velocities during 
+late diastole and systole, respectively; ATDI, peak myocardial velocity during late diastole; ETDI, peak myocardial velocity during early diastole; STDI, peak myocardial veloc-
+ity during systole. (A, Courtesy Prof. Jean-Jacques Fontaine, Pathology Department, National Veterinary School of Alfort, France.)

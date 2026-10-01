@@ -1,0 +1,252 @@
+230      Ceftriaxone
+Ceftriaxone
+(sef-try-ax-ohn)  Rocephin®
+Third-Generation Cephalosporin 
+Prescriber Highlights
+	
+▶Injectable antibiotic used to treat serious bacterial infections 
+	
+▶Achieves therapeutic concentrations in CNS; long half-life
+	
+▶Adverse effects include hypersensitivity reactions and injec-
+tion site reactions (eg, skin tightness, induration).
+	
+▶Administer ceftriaxone IV over 30 minutes (or longer). Pain on 
+IM injection is reduced when reconstituted with lidocaine.
+	
+▶In the United States, extra-label drug use of cephalospo-
+rins is restricted in food-producing animals.
+Uses/Indications
+Ceftriaxone is used to treat serious infections (particularly against 
+susceptible Enterobacteriaceae) that are not susceptible to other 
+agents or when aminoglycosides are not indicated because of their 
+potential toxicity. Its long half-life, good CNS penetration, and ac-
+tivity against Borrelia burgdorferi have also made ceftriaxone a po-
+tential choice for treating Lyme borreliosis and other infections in 
+animals. Although ceftriaxone has been reported for the treatment 
+of uncomplicated lower UTI,1 its use is not recommended for this 
+purpose.2 In dogs, ceftriaxone’s lower protein binding and shorter 
+half-life (when compared with humans) give it no advantage over the 
+other parenteral third-generation cephalosporins. In horses, intra-
+peritoneal ceftriaxone successfully treated cases of septic peritonitis.3
+The World Health Organization (WHO) classifies third-gen-
+eration cephalosporins as Critically Important, Highest Priority 
+antimicrobials for human medicine.4 The Office International des 
+Epizooties (OIE) has designated third-generation cephalosporins 
+as Veterinary Critically Important Antimicrobial (VCIA) agents in 
+avian, bovine, ovine, and swine species.5
+Pharmacology/Actions 	
+Ceftriaxone is a third-generation injectable cephalosporin agent that 
+is bactericidal and displays time-dependent killing. Third-genera-
+tion cephalosporins retain the gram-positive activity of the first- and 
+second-generation agents, but have much expanded gram-negative 
+activity. This class of antibiotics is often chosen for their excellent 
+gram-negative coverage and significantly less toxic potential (as 
+compared with the aminoglycosides). As with the second-generation 
+cephalosporins, enough variability exists with individual bacterial 
+sensitivities that susceptibility testing is necessary. 
+Ceftriaxone is ineffective against methicillin-resistant staphy-
+lococci, enterococci, extended-spectrum beta-lactamase (ESBL)- 
+producing Enterobacterales, and AmpC-producing Enterobactera-
+les. It generally has excellent activity against gram-negative bacteria; 
+however, it is not a good choice for Serratia spp, Pseudomonas spp, 
+some Proteus spp, Citrobacter spp, and Enterobacter spp (“SPICE” 
+organisms).
+Pharmacokinetics
+In humans, ceftriaxone is not absorbed after oral administration and 
+must be given parenterally. It is widely distributed throughout the 
+body and highly bound (95%-98%) to plasma proteins. Ceftriaxone 
+crosses into the CNS; CSF concentrations are higher when meninges 
+are inflamed. Ceftriaxone is excreted by both renal and biliary mech-
+anisms; elimination half-lives are ≈6 to 11 hours.
+In dogs, ceftriaxone bioavailability after IM or SC administration 
+was equal after IV administration, but peak concentrations occur 
+much faster after IM (≈30 minutes) than SC (80 minutes) adminis-
+tration.6 Peak concentrations are higher with IM administration than 
+with SC, but total area under the curve is similar for both routes. 
+Elimination half-life is longer after SC administration (1.73 hours) 
+than after either IM (1.17 hours) or IV administration (0.88 hours). 
+The authors of the study concluded that once or twice daily IM or SC 
+injections of 50 mg/kg should be adequate to treat most susceptible 
+infections in dogs. 
+In a study of cats, ceftriaxone was well-absorbed when adminis-
+tered IM and SC.7 Elimination half-life averaged between 1.5 and 2 
+hours. Protein binding was not determined. 
+One study compared healthy cows with endometritic cows.8 After 
+a single ceftriaxone IV dose, elimination half-life was about 1 hour 
+in healthy cows, clearance was 0.3 L/kg/hour, and volume of distri-
+bution was 0.5 L/kg. In endometritic cows, elimination half-life was 
+slightly longer at 1.56 hours, clearance was 0.56 L/kg/hour, and vol-
+ume of distribution was 1.55 L/kg. 
+Contraindications/Precautions/Warnings
+Cephalosporins are contraindicated in patients with a history of 
+hypersensitivity to them. Because there may be cross-reactivity, 
+cephalosporins should be used cautiously in patients that have a 
+documented hypersensitivity to other beta-lactam antibiotics (eg, 
+penicillins, cefamycins, carbapenems).
+Human patients that have significant renal insufficiency with con-
+comitant hepatic impairment may need dosage adjustments9; the rel-
+evance of this finding for veterinary patients is unclear. 
+Ceftriaxone can be easily confused with other cephalosporins. 
+Consider writing orders and prescriptions using tall man lettering: 
+cefTRIAXone.
+Adverse Effects
+Because use of ceftriaxone is limited in veterinary patients, an accu-
+rate adverse effect profile has not been determined. Pain at the injec-
+tion site has been reported.6,7 In dogs, very high dosages (100 mg/kg 
+per day) of ceftriaxone have caused sludge in the bile. 
+One case report describes 2 horses that were experimentally in-
+fected with Borrelia burgdorferi and experienced anaphylactoid re-
+actions (ie, nonimmunologic anaphylaxis) after receiving ceftriax-
+one treatment.10 Each horse was supposed to receive 25 mg/kg IV, 
+but both infusions were stopped early because of the reaction. Both 
+horses had previously received penicillin without any problems. It 
+is unclear whether the reactions were due to the drug itself, caused 
+by a reaction between the drug and the infection, or due to massive 
+die-off of the bacteria. 
+The following adverse effects have been reported in humans and 
+may or may not apply to veterinary patients: hematologic effects, in-
+cluding eosinophilia (6%), thrombocytosis (5%), leukopenia (2%), 
+and, more rarely, anemia, neutropenia, lymphopenia, and thrombo-
+cytopenia.9 Approximately 2% to 4% of humans get diarrhea. Hy-
+persensitivity reactions (usually a rash) have been noted. Increased 
+serum concentrations of liver enzymes, BUN, creatinine, and urine 
+casts have been described in ≈1% to 3% of patients. 
+Reproductive/Nursing Safety
+Cephalosporins cross the placenta. Teratogenic effects were not 
+demonstrated in studies in pregnant mice and rats that received up 
+to 20 times the label doses of ceftriaxone.9 Ceftriaxone is considered 
+compatible with human pregnancy.11
+Ceftriaxone enters maternal milk in low concentrations.12 Ceftri-
+axone is considered compatible with breastfeeding in humans.11
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+All beagles receiving ceftriaxone 300 mg/kg/day IV developed soft 
+or mucoid feces and diarrhea; emesis was common.13 As limited in-
+formation is available, overdoses should be monitored and treated 
+
+Ceftriaxone      231
+supportively based on clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are 
+theoretical in humans or animals receiving ceftriaxone and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+	■Aminoglycosides and other Nephrotoxic Drugs (eg, 
+amphotericin B): Concurrent use of parenteral aminoglycosides 
+or other nephrotoxic drugs with cephalosporins is somewhat 
+controversial. Cephalosporins could cause additive nephrotox-
+icity when used with these drugs, but this interaction has only 
+been well-documented with cephaloridine (no longer marketed). 
+In vitro studies have demonstrated that cephalosporins can have 
+synergistic or additive activity against certain bacteria when used 
+with aminoglycosides.
+	■Calcium Salts, Intravenous (IV): Concomitant use with 
+calcium-containing solutions has caused fatal calcium/ceftriax-
+one precipitates in lungs and kidneys of neonatal humans. Do 
+not mix with calcium or administer calcium-containing solutions 
+(eg, lactated Ringers, Hartmann’s solution) or products within 48 
+hours of ceftriaxone administration. There have been no reported 
+interactions between oral calcium products and ceftriaxone.
+Laboratory Considerations
+	■Because bacterial sensitivity to third-generation cephalosporin 
+antibiotics is unique, when Kirby-Bauer disk diffusion procedures 
+are employed for testing susceptibility, a specific ceftriaxone 30 µg 
+disk should be used. A cephalosporin-class disk containing ceph-
+alothin should not be used to test for ceftriaxone susceptibility.
+	■Except for cefotaxime, cephalosporins may cause false-positive 
+urine glucose determinations when cupric sulfate solution (Ben-
+edict’s solution, Fehling’s solution, Clinitest®) is used. Tests that use 
+glucose oxidase (Tes-Tape®, Clinistix®) are not affected by cephalo-
+sporins.
+	■Ceftriaxone in high concentrations (50 µg/mL or greater) may 
+cause falsely elevated serum creatinine levels when manual 
+methods of testing are used. Automated methods do not appear 
+to be affected.
+Dosages
+NOTE: In humans, it is recommended that IV infusions be ad-
+ministered over 30 minutes (60 minutes in neonates) at concen-
+trations between 10 – 40 mg/mL.9 
+DOGS:
+Susceptible infections (extra-label): 50 mg/kg IM or SC once or 
+twice daily,6 based on a pharmacokinetic study
+Borreliosis | Lyme disease | Borrelia burgdorferi infection (ex-
+tra-label): 25 mg/kg IV or SC once daily for 14 to 30 days14
+Infective endocarditis caused by Streptococcus canis (extra-la-
+bel): 20 mg/kg IV twice daily for 2 weeks, followed by long-term 
+treatment with oral antibiotics15
+CATS:
+Susceptible infections (extra-label): 25 mg/kg IM or SC every 12 
+hours7, based on a pharmacokinetic study
+Borreliosis | Lyme disease | Borrelia burgdorferi infection (ex-
+tra-label): 25 mg/kg IV or SC once daily for 14 to 30 days14
+HORSES:
+Susceptible infections (extra-label): 25 – 50 mg/kg every 12 
+hours IV or IM16
+Adjuvant treatment for septic peritonitis (extra-label): 25 mg/kg 
+diluted in 250 mL of warmed 0.9% sodium chloride and adminis-
+tered intraperitoneally once daily until resolution of clinical signs 
+and laboratory parameters.3 Used in combination with parenteral 
+antimicrobial therapy (eg, gentamicin) and supportive treatment. 
+The study authors recommend reserving intraperitoneal ceftriax-
+one for aggressive cases or cases that have failed to respond to 
+routine antibiotics.
+Monitoring
+	■Culture and susceptibility testing as indicated by clinical condi-
+tion
+	■Because cephalosporins usually have minimal toxicity associat-
+ed with their use, monitoring for efficacy is usually all that is re-
+quired.
+	■With long-term administration, consider periodic monitoring of 
+CBC, chemistry panel, and urinalysis.
+Client Information
+	■This drug must be injected; it does not work when given by mouth.
+	■This drug causes pain when administered in the muscle. If the 
+drug is given at home to small animals, it usually is administered 
+by injecting under the skin (subcutaneously).
+Chemistry/Synonyms
+A third-generation cephalosporin, ceftriaxone sodium occurs as a 
+white to yellowish-orange crystalline powder. It is soluble in water 
+(400 mg/mL at 25°C [77°F)). Potencies of commercial products are 
+expressed in terms of ceftriaxone. One gram of ceftriaxone sodium 
+contains 3.6 mEq of sodium.
+Ceftriaxone sodium may also be known as ceftriaxonum na-
+tricum, Ro-13-9904, or Ro-13-9904/000; many trade names are 
+­available.
+Storage/Stability
+The sterile powder for reconstitution should be stored between 20°C 
+to 25°C (68°F-77°F) and protected from light.
+After reconstituting with sterile water, 0.9% sodium chloride, or 
+D5W, ceftriaxone solutions (at concentrations of up to 100 mg/mL) 
+are stable for 2 days at room temperature and for 10 days when re-
+frigerated. Solutions of 250 mg/mL are stable for 24 hours at room 
+temperature and 3 days when refrigerated. At concentrations of 
+10 – 40 mg/mL, solutions frozen at -20°C (-4°F) are stable for 26 
+weeks. Reconstituted solutions do not need to be protected from 
+normal light; solution color may darken over time.
+Solutions reconstituted with 1% lidocaine to a concentration of 
+100 – 350 mg/mL are stable for 24 hours at room temperature and 3 
+days when refrigerated.
+Compatibility/Compounding Considerations
+When ceftriaxone is used IM in humans, it may be reconstituted 
+with lidocaine 1% (10 mg/mL, without epinephrine) to reduce pain 
+on administration.
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Ceftriaxone is compatible with dextrose 5% and sodium chloride 
+0.9%. The manufacturer does not recommend admixing any other 
+anti-infective drugs with ceftriaxone sodium, but amikacin and met-
+ronidazole are reported to be compatible.
+Do not mix with calcium or calcium-containing solutions (eg, 
+lactated Ringer’s) or administer simultaneously (Y-site) with cal-
+cium or calcium-containing products (see Drug Interactions) as a 

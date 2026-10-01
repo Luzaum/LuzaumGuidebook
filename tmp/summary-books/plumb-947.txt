@@ -1,0 +1,253 @@
+920      Mycophenolate
+Mycophenolate
+Mycophenolate Mofetil (MMF)
+(mye-koe-fen-oh-late)  Cellcept®
+Immunosuppressant
+Prescriber Highlights
+	
+▶Immunosuppressive drug that may be useful for treating dogs 
+with IMHA, IMTP, glomerulonephritis, myasthenia gravis, or 
+meningoencephalomyelitis of unknown etiology in dogs; po-
+tentially useful in cats, but there is little information available 
+on safety or efficacy.
+	
+▶Limited experience in veterinary medicine, especially in cats or 
+with long-term use
+	
+▶Adverse effects include GI signs (eg, diarrhea, vomiting, an-
+orexia) most commonly are dose-limiting and can be severe.
+	
+▶Can be administered PO or IV. Compounding into appropriate 
+oral dosage forms may be needed.
+	
+▶Teratogenic in humans
+	
+▶The National Institute for Occupational Safety and Health 
+(NIOSH) classifies mycophenolate as a hazardous drug; use 
+appropriate precautions when handling.
+Uses/Indications
+Although clinical experience using mycophenolate in veterinary 
+medicine has been limited and no large well-controlled studies were 
+located, mycophenolate appears useful in the treatment of a variety 
+of autoimmune diseases, including immune-mediated hemolytic 
+anemia (IMHA),1-4 immune-mediated thrombocytopenia (IMTP),5,6 
+myasthenia gravis,7,8 meningoencephalomyelitis,9,10 glomerulo-
+nephritis,11 and pemphigus foliaceous.12 Mycophenolate has been 
+suggested for use in treating inflammatory bowel disease in dogs; 
+however, the drug’s primary adverse effects in dogs are gastritis, di-
+arrhea, and intestinal inflammation. Mycophenolate is also used in 
+anti-rejection protocols for organ transplants in animals. Mycophe-
+nolate is often used as part of a combination immunosuppressive 
+therapy protocol in a patient, although it has also been used alone as 
+monotherapy. The drug was ineffective for the treatment of sudden 
+acquired retinal degeneration syndrome (SARDS) in dogs.13
+In humans, although this drug is used off-label for a variety of au-
+toimmune disease indications, it is labeled only for use in preventing 
+transplant rejection.
+Pharmacology/Actions 
+Mycophenolate mofetil (MMF) is a prodrug that must be hydrolyzed 
+in vivo to mycophenolic acid (MPA) to be pharmacologically active. 
+Mycophenolic acid noncompetitively, but reversibly, inhibits inosine 
+monophosphate dehydrogenase (IMPDH). Two distinct forms of 
+IMPDH exist in the body, including type 1 found in most cells and 
+type 2 existing in activated lymphocytes. Mycophenolic acid has a 
+5-fold greater affinity for the type 2 IMPDH isoform. Inosine mo-
+nophosphate dehydrogenase is the rate-limiting enzyme in de novo 
+synthesis of guanosine nucleotides. As T cells and B cells are depen-
+dent on de novo synthesis of purines (eg, guanosine) and, unlike 
+other cells, cannot use salvage pathways, proliferative responses of 
+T cells and B cells are inhibited, and suppression of B cell antibody 
+formation occurs, thus inhibiting both cell-mediated and humoral 
+immune responses. These effects enable MPA to inhibit leukocyte 
+recruitment to inflammatory sites and allotransplant tissues.
+In a study in juvenile dachshunds, MMF administration did not 
+inhibit proliferating CD5+ T lymphocytes at any time point.14 In 
+healthy cats, MMF administration resulted in little change in periph-
+eral blood mononuclear cell counts or CD4+/CD8+:T-cell ratios.15
+Pharmacokinetics
+Mycophenolate mofetil is absorbed after oral administration, but 
+limited bioavailability studies in dogs have shown both a wide inter-
+patient and interdose variation. A study performed in a single dog 
+showed bioavailabilities of 54%, 65%, and 87% after administration 
+of 10, 15, and 20 mg/kg of MMF, respectively.16 
+A study in dogs compared the pharmacokinetic parameters of my-
+cophenolic acid (MPA) with its pharmacodynamic effects on inosine 
+monophosphate dehydrogenase (IMPDH) activity in lymphocytes17; 
+volume of distribution at steady-state was ≈5 L/kg, but inter-patient 
+variability (±4.5) was wide. Elimination half-life for MPA was ≈8 
+hours (±4 hours). In a study performed in juvenile dachshunds re-
+ceiving 13 mg/kg PO, peak MPA concentration occurred within 1 
+hour of administration, and half-life was 5.5 minutes.14 Mycophe-
+nolic acid is primarily excreted in the urine, both unchanged (≈5%) 
+and as the glucuronide metabolite (≈90%). In this study, the authors 
+concluded that the pharmacokinetic/pharmacodynamic profile of 
+MMF in dogs suggests that an every 8-hour dosing schedule would 
+be required for optimization of immunosuppressive efficacy. Howev-
+er, dosing every 8 hours can be clinically challenging because of the 
+severity of adverse effects, and thus has not entered common clinical 
+usage (see Adverse Effects). 
+In a study in healthy cats, administration of 20 mg/kg MMF IV 
+as a CRI over 2 hours resulted in all cats forming the active MPA 
+metabolite. Disposition of plasma MPA was highly variable and 
+unpredictable. The major metabolite was a glucoside product, and 
+a glucuronide product was found in only 3 of 6 cats.18 An in vitro 
+study similarly demonstrated a relative deficiency of MPA glucuro-
+nidation in cats.19 
+In humans, oral bioavailability averages 94%; food reduces peak 
+MPA concentrations by 40%.20 After absorption, MMF is rapidly and 
+completely hydrolyzed to mycophenolic acid. Peak blood concentra-
+tions are seen ≈1 to 2 hours after oral administration. Mycophenolic 
+acid 97% protein (albumin) bound and undergoes extensive hepatic 
+metabolism, primarily via glucuronidation. Mycophenolic acid un-
+dergoes extensive enterohepatic recirculation, and reactivation to 
+MPA within the gut may result in a second peak blood concentra-
+tion 4 to 12 hours after administration. Elimination half-life of MPA 
+is ≈17 hours. Metabolites are eliminated primarily via the kidneys.
+Contraindications/Precautions/Warnings
+Do not use mycophenolate in patients with documented hypersensi-
+tivity reactions to mycophenolate. Patients with severe renal dysfunc-
+tion may require dosage adjustment. Because MMF can cause diar-
+rhea, use with caution in patients with inflammatory bowel disease. 
+IV mycophenolate must be administered over at least 2 hours; do 
+not give it as an IV bolus or via rapid IV infusion.
+In humans, the active metabolite, MPA, is primarily excreted as 
+the MPA-glucuronide metabolite. Mycophenolate should be used 
+with caution in cats because of deficient MPA glucuronidation in 
+this species.
+For humans, mycophenolate has a black box warning regarding 
+potential increased risk for lymphoma and serious infection associ-
+ated with its use. Severe neutropenia has occurred in human trans-
+plant patients receiving mycophenolate.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies mycophenolate as a group II hazardous drug 
+(non-antineoplastic agent representing an occupational hazard to 
+healthcare workers); personal protective equipment (PPE) should be 
+used accordingly to minimize the risk of exposure.21
+Do not confuse mycophenolate mofetil with mycophenolic acid. 
+A study comparing adverse effects in dogs with MMF capsules and 
+mycophenolate sodium (the sodium salt of mycophenolic acid) en-
+teric-coated tablets demonstrated significantly greater occurrences 
+
+Mycophenolate      921
+and severity of diarrhea, weight loss, and decreased activity in dogs 
+that received the sodium salt enteric-coated tablets.22
+Adverse Effects
+Because of limited experience with mycophenolate in veterinary pa-
+tients, the adverse effect profile is not well established. At usual doses 
+(10 mg/kg PO twice daily), mycophenolate is usually well tolerated 
+in dogs. Dose-dependent diarrhea appears to be the most common 
+adverse effect, but vomiting, anorexia, lethargy/reduced activity, 
+lymphopenia, papillomatosis, and increased rates of dermal infec-
+tions can be seen. In a study evaluating MMF in dogs for the treat-
+ment of IMHA at a dosage of 10 to 15 mg/kg PO every 8 hours, the 
+authors concluded that the level of GI toxicity observed could not 
+justify the use of MMF with this dosing regimen, despite the fact that 
+4 of 5 dogs achieved disease remission.1 Ulcerative colitis may devel-
+op.4 Mild hypersensitivity reactions after IV administration are pos-
+sible. Because of the drug’s immunosuppressive actions, increased 
+systemic infection and malignancy rates are possible, especially with 
+long-term use.
+Diarrhea was the most common adverse effect in healthy cats en-
+rolled in mycophenolate pharmacokinetic studies. Diarrhea was less 
+frequent after IV administration and appeared dose related with oral 
+use. Hyporexia was noted in 1 cat. Decreases in PCV and platelet 
+counts have been noted, but the reduced values remained within the 
+reference range.15,18,23 Hepatopathy and pancreatitis were reported in 
+one cat after receiving MMF for treatment of IMHA.24
+In humans, the most common adverse effects include constipa-
+tion, diarrhea, nausea, vomiting, and headache. Hypertension and 
+peripheral edema occur in ≈30% of patients. Leukopenia has been 
+reported in 25% to 45% of patients taking the medication. Other ef-
+fects that occur more rarely include GI bleeding, severe neutropenia, 
+cough, confusion, tremor, fatal neurologic disease, infection, and 
+malignant lymphoma (0.4% to 1%).
+Reproductive/Nursing Safety
+Mycophenolate should be avoided, if at all possible, during pregnan-
+cy. Mycophenolate is a known teratogen in humans, causing con-
+genital malformations and first trimester pregnancy loss. At doses 
+significantly lower than those used in humans, increased resorptions 
+and malformations were noted in rabbits and rats. 
+Mycophenolic acid is distributed in rat milk. It is unknown if my-
+cophenolate is safe to use during nursing and it should be considered 
+contraindicated.25 
+Overdose/Acute Toxicity
+In acute toxicity studies performed in mice and monkeys, no deaths 
+occurred in oral doses of mycophenolate up to 4000 mg/kg and 1000 
+mg/kg, respectively. In small animals, acute GI disturbances or neu-
+tropenia are possible. Treat supportively, if required. Cholestyramine 
+may increase mycophenolate excretion.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving mycophenolate and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+	■Acyclovir and Valacyclovir: Increased serum concentra-
+tions of acyclovir and the phenolic glucuronide of mycophenolic 
+acid
+	■Aminoglycosides (eg, amikacin, gentamicin): In rats, use to-
+gether induced greater nephrotoxicity.
+	■Antacids, Oral (Aluminum-, Calcium-, or Magne-
+sium-Containing): Decreased absorption of mycophenolate; 
+separate dosing by at least 2 hours.
+	■Azathioprine: Increased risk for myelosuppression; concur-
+rent use is not recommended.
+	■Cholestyramine: May inhibit enterohepatic recycling of my-
+cophenolate, reducing serum concentrations
+	■Immunosuppressive Agents (eg, corticosteroids [eg, dexa-
+methasone, predniso(lo)ne], leflunomide): Additive immuno-
+suppressant effects could occur
+	■Iron (oral): Decreased absorption of mycophenolate; separate 
+dosing by at least 2 hours.
+	■Lanthanum Carbonate: May decrease mycophenolate plas-
+ma concentrations
+	■Probenecid: Potentially increased serum concentrations of my-
+cophenolic acid and the phenolic glucuronide of mycophenolic 
+acid
+	■Proton Pump Inhibitors (PPIs; eg, omeprazole, pantopra-
+zole): May reduce mycophenolate absorption, decreasing MPA 
+exposure (AUC)
+	■Salicylates (eg, aspirin, bismuth subsalicylate): Potentially 
+increased concentrations of free mycophenolic acid
+	■Sevelamer: Decreased absorption of mycophenolate; adminis-
+ter MMF at least 2 hours prior to sevelamer.
+	■Telmisartan: May decrease mycophenolate exposure (AUC)
+	■Vaccines, Modified Live: Vaccines may be less effective; ad-
+minister vaccines prior to initiating mycophenolate therapy and 
+avoid concurrent use.
+The following drugs or drug classes may reduce MPA exposure by 
+inhibiting the enterohepatic recycling of the mycophenolate glucu-
+ronide metabolite:
+	■Cephalosporins (eg, cephalexin, cefpodoxime)
+	■Clindamycin 
+	■Cyclosporine: additive immunosuppressant effects also possi-
+ble
+	■Fluoroquinolones (eg, ciprofloxacin, enrofloxacin)
+	■Metronidazole
+	■Rifampin
+	■Penicillins (eg, amoxicillin/clavulanate)
+	■Sulfonamides, Potentiated (eg, sulfa-/trimethoprim)
+Laboratory Considerations
+	■No issues noted
+Dosages
+DOGS:
+Immune-mediated hemolytic anemia (extra-label): 8 – 12 mg/kg 
+PO or IV every 12 hours in combination with predniso(lo)ne 
+2 – 3 mg/kg/day PO (50 – 60 mg/m2/day [NOT mg/kg/day] for 
+dogs greater than 25 kg)2,4    
+Immune-mediated thrombocytopenia (IMTP) (extra-label): 
+7 – 9 mg/kg PO every 12 hours in combination with pred- 
+niso(lo)ne (≈2 mg/kg/day)5,6  
+Meningoencephalomyelitis of unknown etiology (extra-label): 
+10 – 20 mg/kg PO or IV every 12 hours in conjunction with cor-
+ticosteroids.9,10 One study described administering MMF IV over 
+20 minutes using a syringe pump.10
+Adjunctive immunosuppressive treatment of glomerular dis-
+ease based on established pathology (extra-label): The Interna-
+tional Renal Interest Society (IRIS) consensus statement recom-

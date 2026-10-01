@@ -1,0 +1,879 @@
+
+===== Plumb PDF 823 =====
+796    Marbofloxacin 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Marbofloxacin 
+(mar-boe-flox-a-sin) Zeniquin®
+Fluoroquinolone Antibiotic
+Prescriber Highlights
+ ▶ Veterinary oral fluoroquinolone antibiotic effective against a 
+variety of bacterial pathogens
+ ▶ Contraindications include hypersensitivity to fluoroquinolo-
+nes, cats younger than 12 months, and immature dogs during 
+the rapid growth phase.
+ ▶ May produce erosions of cartilage in weight-bearing joints 
+and other signs of arthropathy in immature animals of various 
+species
+ ▶ Use with caution in patients with hepatic or renal insufficien-
+cy or dehydration, in those that are prone to seizures, and in 
+immature dogs and cats during the rapid growth phase.
+ ▶ Adverse effects include GI distress; marbofloxacin has not 
+been proven to cause ocular toxicity in cats or predispose to 
+Streptococcus canis necrotizing fasciitis.
+ ▶ Many drug interactions
+ ▶ Prohibited for extra-label use in food animals in the United 
+States
+Uses/Indications
+Marbofloxacin is labeled for treatment of susceptible bacterial in -
+fections in dogs and cats. It is recommended that marbofloxacin be 
+reserved for cases of bacterial cystitis with documented resistance to 
+first-line agents (eg, amoxicillin, amoxicillin/clavulanic acid); however, 
+it is a good first-line choice for pyelonephritis or prostatic infections.1 
+Fluoroquinolones are considered second-tier drugs for treatment of 
+bacterial folliculitis.2 In dogs, marbofloxacin appears to have some 
+efficacy for treating the clinical signs associated with canine leish -
+maniasis.3 Broad-spectrum antibacterial coverage can be achieved by 
+combining marbofloxacin with an antibiotic with gram-positive and 
+anaerobic activity (eg, clindamycin, ampicillin/amoxicillin).
+The World Health Organization (WHO) has designated fluoro -
+quinolones as Critically Important, Highest Priority antimicrobials 
+for human medicine.4 The Office International des Epizooties (OIE) 
+has designated second-generation quinolones as Veterinary Critical-
+ly Important Antimicrobial (VCIA) Agents in avian, bovine, equine, 
+lagomorph, and swine species.5
+Pharmacology/Actions
+Marbofloxacin is a third-generation, concentration-dependent, bac-
+tericidal fluoroquinolone. It acts by inhibiting bacterial DNA-gyrase 
+(type-II topoisomerase), thus preventing DNA supercoiling and 
+DNA synthesis, with susceptible bacteria cell death occurring within 
+20 to 30 minutes of exposure. Like other fluoroquinolones, marbo -
+floxacin has demonstrated a significant postantibiotic effect for both 
+gram-negative and gram-positive bacteria and is active in both sta -
+tionary and growth phases of bacterial replication. Clinical efficacy 
+is associated with achieving a peak marbofloxacin concentration 10 
+times greater than bacterial MIC.6,7
+Marbofloxacin has a similar spectrum of activity as the other vet-
+erinary commercially available fluoroquinolones, although marbo -
+floxacin is considered more active against Pseudomonas aeruginosa 
+as compared with enrofloxacin.8 Fluoroquinolone agents have good 
+activity against many gram-negative bacilli and cocci, including 
+most species and strains of Pseudomonas aeruginosa, Klebsiella spp, 
+Escherichia coli, Enterobacter spp, Campylobacter spp, Shigella spp, 
+Salmonella spp, Aeromonas spp, Haemophilus spp, Pasteurella spp, 
+Proteus spp, Yersinia spp, Serratia spp, and Vibrio spp. Other organ-
+isms that are generally susceptible include Brucella spp, Chlamydia 
+trachomatis, Staphylococcus spp (including penicillinase-producing 
+and methicillin-resistant strains), Mycoplasma spp, and some Myco-
+bacterium spp. Bordetella bronchiseptica was susceptible, and a sig -
+nificant postantibiotic effect was demonstrated ex vivo.9
+Fluoroquinolones have variable activity against most streptococci 
+and are not usually recommended to treat these infections. Marbo -
+floxacin is ineffective in treating anaerobic infections. Fluoroquino-
+lones are ineffective against viral, protozoal, or fungal infections.
+Resistance can occur by mutation, particularly with Pseudomonas 
+aeruginosa, Klebsiella pneumoniae, Acinetobacter spp, Staphylococcus 
+spp, and enterococci, but plasmid-mediated resistance is thought to 
+occur only rarely.
+Marbofloxacin’s leishmanicidal activity is via the TNF-alpha and 
+nitric oxide synthase pathways.3
+Pharmacokinetics
+In dogs, marbofloxacin is rapidly absorbed after oral administration 
+and has a bioavailability of 94%. 10 Mean peak plasma concentra -
+tions in dogs given 2.75 mg/kg or 5.5 mg/kg PO were 2 µg/mL and  
+4.2 µg/mL, respectively. Peak concentrations occur in ≈1.5 hours. 
+Protein binding is low, and the apparent volume of distribution is 
+1.2 to 1.9 L/kg. Marbofloxacin is widely distributed in canine tissues, 
+and relatively high concentrations can be found in prostatic fluid. 
+Elimination half-life averages 9 to 12 hours.11,12 The drug is eliminat-
+ed unchanged in the urine (40%) and bile/feces. 11 Only ≈15% of a 
+dose is metabolized in the liver. Mild to moderate renal impairment 
+does not significantly alter dose requirements in dogs.13
+In cats, absorption after oral administration is nearly complete 
+and peak serum concentrations occur ≈1 to 2 hours post-adminis -
+tration.10,14 Mean peak plasma concentrations in cats given 5.5 mg/kg  
+PO were 4.8 µg/mL. Terminal elimination half-life is ≈13 hours, with 
+≈70% of a dose excreted in the urine mostly as unchanged drug.
+In rabbits, 5 mg/kg PO every 24 hours produced a peak plasma 
+concentration of 1.7 µg/mL 24 hours after the first administration 
+and 2.6 µg/mL after the tenth daily dose. Elimination half-life was 4 
+to 8 hours.15
+Contraindications/Precautions/Warnings
+Marbofloxacin is contraindicated in patients hypersensitive to it or 
+other fluoroquinolones. Fluoroquinolones may cause cartilage ero -
+sions in weight-bearing joints in immature animals; dogs appear to 
+be more susceptible to this effect.10 To avoid cartilage damage, mar-
+bofloxacin is contraindicated in immature dogs during the rapid 
+growth phase (small- and medium-breed dogs up to 8 months of 
+age, large breeds to 12 months of age, and giant breeds to 18 months 
+of age). It is also contraindicated in cats younger than 12 months. 
+Marbofloxacin can (rarely) cause CNS stimulation and should be 
+used with caution in patients with seizure disorders. Patients with 
+severe renal or hepatic impairment may require dosage adjustments 
+(eg, increased dosing interval) to prevent drug accumulation. 
+Fluoroquinolones may cause photosensitization, and prolonged 
+exposure of bare skin (eg, nose) or thinly haired skin to direct sun -
+light should be avoided.10
+The FDA has prohibited the extra-label use of this drug in 
+food-producing animals.
+Adverse Effects
+With the exception of potential cartilage abnormalities in young an-
+imals (see Contraindications/Precautions/Warnings), the adverse 
+effect profile of marbofloxacin is usually limited to GI distress (eg, 
+vomiting, anorexia, diarrhea) and decreased activity.
+Other fluoroquinolones have, in rare incidences, caused elevated 
+hepatic enzymes, ataxia, seizures, depression, lethargy, and nervous-
+
+
+===== Plumb PDF 824 =====
+Marbofloxacin    797
+ness in dogs. Hypersensitivity reactions or crystalluria could occur.
+Although unlikely to occur, the FDA ’s Adverse Drug Reaction da-
+tabase has received some reports of blindness associated with mar -
+bofloxacin. Unlike enrofloxacin, causal effect of ocular toxicity has 
+not yet been proven with marbofloxacin, but higher dosages should 
+be used carefully.
+Induction of Streptococcus canis necrotizing fasciitis, which can be 
+seen with enrofloxacin, does not appear to be a problem with mar -
+bofloxacin.
+Reproductive/Nursing Safety
+The safety of marbofloxacin in pregnant or lactating animals or 
+those used for breeding purposes has not been demonstrated.10 Flu-
+oroquinolones should be used cautiously in pregnant animals due to 
+their adverse effects on cartilage.
+In cattle, marbofloxacin distributes into milk, attaining milk con-
+centration similar to that of plasma.16
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+It is unlikely that an acute overdose of marbofloxacin would result 
+in signs more serious than either anorexia or vomiting, but the ad -
+verse effects noted previously could occur. Dogs receiving 55 mg/kg  
+per day PO for 12 days have developed anorexia, vomiting, dehydra-
+tion, tremors, red skin, facial swelling, lethargy, and weight loss.10 All 
+large-breed, 3- to 4-month-old puppies given 11 mg/kg/day devel -
+oped marked lameness due to articular cartilage lesions. Increased 
+salivation, vomiting, and redness of the pinnae occurred in cats giv-
+en 27.5 – 55 mg/kg/day. 10 Macroscopic and microscopic cartilage 
+changes were noted but without accompanying lameness.
+Acute bilateral blindness occurred in a dog following an acciden-
+tal overdose of 35 mg/kg/day for 3 days.17
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving marbofloxacin or related flu-
+oroquinolones and may be of significance in veterinary patients. Un-
+less otherwise noted, use together is not necessarily contraindicated, 
+but the potential risks should be weighed and additional monitoring 
+performed when appropriate.
+ ■ Aluminum-, Calcium-, and Magnesium-Containing Oral 
+Products : May bind to marbofloxacin and prevent its absorp -
+tion; separate doses of by at least 2 hours.
+ ■ Antibiotics, Other  (eg, aminoglycosides, third-generation 
+cephalosporins, penicillins—extended-spectrum ): Synergism 
+may occur but is not predictable against some bacteria (particu -
+larly Pseudomonas aeruginosa) with these compounds. Although 
+marbofloxacin has minimal activity against anaerobes, in vitro 
+synergy has been reported when it was used with clindamycin 
+against strains of Peptostreptococcus spp, Lactobacillus spp, and 
+Bacteroides fragilis. 
+ ■ Corticosteroids (eg, dexamethasone, prednis(ol)one ): Con-
+comitant use with fluoroquinolones may increase the risk for ten-
+donitis and tendon rupture.
+ ■ Cyclosporine (systemic): Fluoroquinolones may exacerbate 
+the nephrotoxicity and reduce the metabolism of cyclosporine 
+when used systemically.
+ ■ Nonsteroidal Anti-Inflammatory Drugs  ( NSAIDs, 
+eg, flunixin): Flunixin has been shown in dogs to increase the 
+AUC and elimination half-life of enrofloxacin, and enrofloxacin 
+increases the AUC and elimination half-life of flunixin; it is un -
+known if marbofloxacin also causes this effect, if other NSAIDs 
+interact with marbofloxacin, or if this interaction applies to other 
+species.
+ ■ Iron  ( oral): May decrease marbofloxacin absorption; doses 
+should be separated by at least 2 hours after marbofloxacin.
+ ■ Methotrexate (MTX) : May increase MTX concentrations and 
+risk for MTX toxicity
+ ■ Nitrofurantoin : May antagonize the antimicrobial activity of 
+the fluoroquinolones; concomitant use is not recommended
+ ■ Probenecid : May block tubular secretion of ciprofloxacin; may 
+increase the blood concentration and half-life of marbofloxacin
+ ■ QT-Prolonging Agents  (eg, cisapride, sotalol, quinidine, 
+erythromycin, ondansetron): In humans, fluoroquinolones may 
+enhance the QT-prolonging effect of other drugs.
+ ■ Sucralfate : May inhibit absorption of marbofloxacin; adminis-
+tration of these drugs should be separated by at least 2 hours after 
+marbofloxacin.
+ ■ Theophylline, Aminophylline : Marbofloxacin may increase 
+theophylline blood concentrations; this interaction is more likely 
+to occur with enrofloxacin than with marbofloxacin.18
+ ■ Urine Acidifiers (eg, ammonium chloride , methionine): 
+Low urinary pH could have an inhibitory effect on the activity of 
+marbofloxacin.
+ ■ W arfarin : Potential for increased warfarin effects; monitor pro-
+thrombin time (PT)
+ ■ Zinc  ( oral): May decrease marbofloxacin absorption; doses 
+should be separated by at least 2 hours after marbofloxacin.
+Laboratory Considerations
+ ■ In some humans, fluoroquinolones have caused increases in liver 
+enzymes, BUN, and creatinine and decreases in hematocrit. The 
+clinical relevance of these mild changes in veterinary medicine is 
+not known.
+Dosages
+DOGS:
+Skin and soft tissue infections: 
+• Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once dai -
+ly.10 Give for 2 to 3 days beyond cessation of clinical signs to a 
+maximum duration of 30 days. 
+• Extra-label dosage: 5.5 mg/kg PO once daily19 
+UTIs:
+• Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once daily 
+for at least 10 days to a maximum duration of 30 days. NOTE: 
+A shorter treatment duration (ie, 3 to 5 days) is adequate for 
+most cases of bacterial cystitis.1
+• Extra-label dosage for sporadic bacterial cystitis: 2.75 – 5.5 mg/kg 
+PO once daily for 3 to 5 days.1 NOTE: When treating Pseudo-
+monas spp infections, most clinicians recommend using the 
+higher end of the dose range.
+Leishmaniasis (extra-label): 2 mg/kg PO once daily for 28 days. 
+At the one-year follow-up, marbofloxacin has shown some effica-
+cy in 70% of treated dogs. At 3 months, there was a 61% decrease 
+in the sum of clinical scores. Though clinically improved, dogs 
+remained parasitologically positive.3,20,21
+CATS:
+Skin and soft tissue infections: 
+• Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once dai -
+ly.10 Give for 2 to 3 days beyond cessation of clinical signs to a 
+
+
+===== Plumb PDF 825 =====
+798    Marbofloxacin 
+maximum duration of 30 days. 
+• Extra-label dosage: 5.5 mg/kg PO once daily19
+UTIs:
+• Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once daily 
+for at least 10 days to a maximum duration of 30 days. NOTE: 
+a shorter treatment duration (ie, 3 to 5 days) is adequate for 
+most cases of bacterial cystitis.1
+• Extra-label dosage for sporadic bacterial cystitis: 2.75 – 5.5 mg/kg 
+PO once daily for 3 to 5 days.1 NOTE: When treating Pseudomonas 
+spp infections, most clinicians recommend using the higher end of 
+the dose range.
+First-line treatment of feline mycobacterial infections (extra- 
+label): If decision is made to treat localized cutaneous nontuber -
+culous mycobacteria (NTM) infections; 2 mg/kg PO once daily in 
+combination with rifampin and either azithromycin or clarithro-
+mycin for the initial 2 months, then continue with a combination 
+of rifampin with either marbofloxacin or a macrolide for at least 4 
+months, with treatment continuing for at least 3 months beyond 
+resolution of lesions and clinical signs.22 Marbofloxacin is not ef-
+fective against M avium complex (MAC) infection.
+Hemotropic mycoplasma infections  (extra-label): 2.75 mg/kg 
+PO once daily for 14 to 28 days. Treatment up to 8 weeks with a 
+goal to achieve a negative PCR has been suggested.23,24 One proto-
+col uses doxycycline 5 mg/kg PO twice daily for 28 days, and cats 
+that remained PCR-positive or became positive again were treated 
+with marbofloxacin 2 mg/kg PO once daily for 14 days.25
+BIRDS:
+Macaws (extra-label): From a single-dose pharmacokinetic study, 
+2.5 mg/kg PO every 24 hours may be considered.26
+Mallard ducks  (extra-label): 2 – 2.5 mg/kg PO or IV every 24 
+hours.27,28 NOTE: Parenteral formulation is not available in the 
+United States.
+RABBITS :
+Susceptible infections (extra-label): 5 mg/kg PO every 24 hours. 
+2 mg/kg IV , IM, or SC every 24 hours.15,28,29 NOTE: Parenteral for-
+mulation is not available in the United States.
+REPTILES :
+Ball pythons (Python regius) (extra-label): 10 mg/kg PO at least 
+every 48 hours. Dosage is based on a pharmacokinetic study; 
+further studies are required to determine effective dosages and 
+ toxicity.30
+Monitoring
+ ■ Fluoroquinolone use should be based on culture and susceptibil-
+ity results.
+ ■ Clinical efficacy
+ ■ Adverse effects
+Client Information
+ ■ Give this medicine to your animal as prescribed by your veter -
+inarian. Do not stop the treatment even if your animal appears 
+well.
+ ■ This medicine is best given without food on an empty stomach, 
+but if your animal vomits or acts sick after receiving it, give it with 
+food or small treat (no dairy products, antacids, or iron supple -
+ments). If vomiting continues, contact your veterinarian.
+ ■ Be sure to tell your veterinarian what medications (including vi -
+tamins, supplements, herbal therapies, and treats) you are giving 
+your animal, including the amount and schedule of each. This 
+medicine should not be given at the same time as some medi -
+cations (eg, sucralfate) or vitamins that contain calcium, iron, 
+or aluminum, as these can interfere with how well the medicine 
+works.
+ ■ This medicine may cause bone and joint abnormalities if used in 
+young animals or animals that are pregnant or nursing. 
+ ■ The most common side effects are vomiting, nausea, or soft stool/
+diarrhea. 
+ ■ For animals with thin hair coats, there may be a risk for sun sensi-
+tivity within a few hours of receiving fluoroquinolones.
+ ■ Y our veterinarian will need to monitor your animal while it is tak-
+ing this medicine. Do not miss important follow-up visits.
+Chemistry/Synonyms
+Marbofloxacin is a synthetic fluoroquinolone antibiotic that occurs 
+as a light yellow, crystalline powder. It is soluble in water, but solubil-
+ity decreases as pH increases. 
+Marbofloxacin may also be known as Ro 9-1168, Aristos®, Boflox®, 
+Efex®, Forcyl®, Kelacyl®, Marbocyl®, Marbocare®, Marbonor®, Marbo-
+quin®, Marbox®, Marfloquin®, Quiflor®, or Zeniquin®.
+Storage/Stability
+Marbofloxacin tablets should be stored below 30°C (86°F).
+Compatibility/Compounding Considerations
+A marbofloxacin 20 mg/mL oral suspension was prepared by grind-
+ing twenty 100 mg tablets in a mortar with a pestle. The ground tab-
+lets were passed through a sieve to separate the powder from the 
+tablet coating and returned to the mortar. The powder was wet with a 
+small amount of glycerin. Equal amounts of OraPlus® and OraSweet® 
+were added to form a smooth paste, and the liquid was transferred 
+to an amber prescription liquid bottle and brought to 100 mL final 
+volume with additional vehicle. Stability studies supported a beyond-
+use date (BUD) of 60 days when stored at controlled room tempera-
+ture. The suspension should be shaken well prior to measuring a 
+dose. NOTE: Use of OraBlend® resulted in a gritty suspension and 
+a shorter BUD; OraPlus® and OraSweet® should be used separately.31
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS :
+Marbofloxacin Oral Tablets: 25 mg, 50 mg, 100 mg, and 200 mg; 
+ Zeniquin®, Marboquin®; (Rx). FDA-approved for use in dogs and cats. 
+Extra-label use of fluoroquinolones is illegal in food animals in the 
+United States.
+HUMAN-LABELED PRODUCTS : NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Marbofloxacin 
+
+
+===== Plumb PDF 826 =====
+Maropitant   799
+Maropitant
+(ma-rahp-it-ent) Cerenia®
+Neurokinin-1 (NK-1) Receptor Antagonist, Antiemetic
+Prescriber Highlights
+ ▶ FDA-approved in dogs for the treatment of acute vomiting 
+(SC injection), and for the prevention of acute vomiting (SC 
+injection, oral tablets) and the prevention of vomiting due to 
+motion sickness (tablets)
+ ▶ The SC injection is also FDA-approved for the treatment of 
+vomiting in cats.
+ ▶ In animals that are actively vomiting, the injectable formula-
+tion is preferred to ensure the full dose is received.
+ ▶ Because maropitant acts at the emetic center, it is effective 
+for the treatment of emesis mediated via either peripheral or 
+central mechanisms. 
+ ▶ SC injections may cause pain and swelling at the injection site. 
+Refrigerating the injection may reduce pain.
+ ▶ The PO dose is higher than the SC dose in dogs because of the 
+decreased bioavailability of the oral tablet.
+ ▶ Not for use in patients with suspected toxin ingestion
+Uses/Indications
+Maropitant tablets are indicated for the prevention of acute vomiting 
+in dogs 2 months and older and vomiting due to motion sickness in 
+dogs 4 months and older.1 
+Maropitant injectable solution is indicated for the prevention and 
+treatment of acute vomiting in dogs 2 months and older and for the 
+prevention of vomiting caused by emetogenic medication and che -
+motherapeutic agents in dogs 4 months and older. 2 Maropitant in-
+jectable solution also is approved for treatment of vomiting in cats 4 
+months or older.2
+Maropitant has been effective for controlling vomiting secondary 
+to a variety of stimuli, including xylazine (cats), hydromorphone 
+(dogs),3–6 morphine (dogs), 7–9 morphine with dexmedetomidine 
+(cats),10,11 cisplatin (dogs), 12–14 copper sulfate, apomorphine (dogs), 
+brimonidine ophthalmic solution (cats),15 tranexamic acid (dogs), 16 
+and parvovirus. 17–19 Maropitant demonstrated modest efficacy for 
+controlling chemotherapy-induced nausea and ondansetron ap -
+peared to have a better effect.14 In dogs hospitalized with parvoviral 
+enteritis, maropitant was equally as effective as ondansetron in con-
+trolling clinical signs.20 Maropitant reduced both nausea and vomit-
+ing when administered 2 hours before preoperative administration 
+of hydromorphone, acepromazine, and glycopyrrolate 21; however, 
+preoperative maropitant does not appear to reduce perioperative 
+gastroesophageal reflux.22,23
+Maropitant appears to enhance the antinociceptive effect of other 
+analgesic in dogs and cats 19,24–27 and has demonstrated a minimum 
+alveolar concentration (MAC)-sparing effect (≈15% to 25% reduc -
+tion) in dogs and cats maintained on inhalant anesthesia.19,24,28–30 
+Maropitant failed to improve clinical signs, airway hyperrespon -
+siveness, or eosinophilia in experimental models of acute and chron-
+ic feline asthma.31,32
+A 4-week treatment with oral maropitant seemed to be an effec -
+tive, well-tolerated therapeutic option to control pruritus in cats with 
+feline atopic skin condition.33 
+Pharmacology/Actions
+Maropitant is a neurokinin-1 (NK-1) receptor antagonist that acts 
+in the CNS by inhibiting the binding of substance P , which is the 
+key neurotransmitter involved in vomiting. Maropitant can suppress 
+both peripheral and centrally mediated emesis. Maropitant has been 
+shown to reduce the MAC requirements of sevoflurane and to reduce 
+visceral pain in dogs, as NK-1 receptors are stimulated by substance 
+P.28,30 Maropitant does not affect gastric emptying times or intestinal 
+transit times, but it can decrease small intestine contraction pressure 
+patterns.34 Maropitant has been shown to possess anti-inflammatory 
+activity in a mouse model of pancreatitis.35
+Pharmacokinetics
+In dogs, maropitant is rapidly absorbed after PO and SC adminis -
+tration. Peak plasma concentrations (C max) are reached in less than 
+1 hour following 1 mg/kg SC administration and less than 2 hours 
+following 2 or 8 mg/kg PO administration; Cmax after IV administra-
+tion is ≈3 times higher than the same dose given SC (297 ng/mL vs 
+103 ng/mL, respectively) and is ≈4 times higher than 2 mg/kg PO  
+(81 ng/mL). After PO administration, bioavailability is 24%  
+(2 mg/kg) and 37% (8 mg/kg), which suggests first-pass metabolism 
+becomes saturated at the higher dose. Feeding status does not affect 
+bioavailability. Bioavailability is 91% following SC administration of 
+1 mg/kg. An accumulation ratio of 1.5 occurs after use of maropitant 
+every 24 hours for 5 consecutive days at 1 mg/kg SC or 2 mg/kg PO. 
+Accumulation ratio is 2.18 after 2 consecutive days at 8 mg/kg PO 
+daily. Accumulation ratios after 2 mg/kg and 8 mg/kg PO once daily 
+for 14 days were 2.46 and 4.81 based on AUC, respectively, and 2.03 
+and 2.77 based on C max.36 However, no accumulation was demon -
+strated after administration of 2 mg/kg/day for 28 days.37
+Maropitant is eliminated primarily by the liver. Hepatic metabo-
+lism of maropitant involves 2 cytochrome P450 enzymes: CYP2D15 
+(low capacity, high affinity) and CYP3A12 (high capacity, low affini-
+ty). The nonlinear kinetics at oral doses of 2 – 16 mg/kg may be due to 
+saturation of the low-capacity enzyme and increased involvement of 
+CYP3A12 at higher doses. Twenty-one metabolites have been iden-
+tified and the major pharmacologically active metabolite is a prod -
+uct of hydroxylation. Plasma protein binding of maropitant is high 
+(99.5%). Large interpatient PK variations have been observed. In 
+dogs, the half-life is 8.8 hours (range: 6.07 to 17.7 hours) for 1 mg/kg  
+SC, 6.9 hours for 1 mg/kg IV , and 4.03 hours (range: 2.58 to 7.09 
+hours) for 2 mg/kg PO. Urinary recovery of maropitant and its major 
+metabolite is minimal (less than 1%). 
+In cats, bioavailability is ≈50% (PO) and 91% (SC). Protein plas -
+ma binding is high (99%). Maropitant displays linear kinetics when 
+administered SC within the 0.25 – 3 mg/kg dose range. Terminal 
+elimination half-life in cats is ≈15 hours. Feline isoforms of CYP1A 
+and CYP3A enzymes are involved in the hepatic biotransformation 
+of maropitant in cats. Less than 1% of a dose is excreted unchanged 
+in urine or feces.38,39
+There appears to be an age-related effect on pharmacokinetics, as 
+puppies (10 weeks of age) and kittens (16 weeks of age) appear to 
+have a faster clearance of maropitant than adults.2
+Contraindications/Precautions/Warnings
+Maropitant is most effective in preventing vomiting associated with 
+chemotherapy if it is administered before the chemotherapeutic 
+agent.1,2 Safe use has not been evaluated in dogs or cats that have 
+GI obstructions or ingested toxins. If vomiting persists despite treat-
+ment, reevaluation is needed to determine the cause.
+Maropitant can cause prolongation of the QT interval because of 
+cardiac potassium channel blockade. Safe use of maropitant has not 
+been reported in patients with underlying cardiac disease when ad -
+ministered in combination with cardiac antiarrhythmic drugs.40
+Caution is advised in patients with hepatic dysfunction, as maro-
+pitant is hepatically metabolized; the dose may need to be reduced by 
+50% if used in these patients.
+Caution is also advised when administering the higher dose of 
+maropitant to prevent vomiting due to motion sickness in puppies 
+younger than 11 weeks. A higher frequency and greater severity of 
+histologic evidence of bone marrow hypoplasia was seen in puppies 
+treated with the higher dose of maropitant as compared with control 
+
+
+===== Plumb PDF 827 =====
+800    Maropitant
+puppies. In puppies 16 weeks or older, bone marrow hypocellularity 
+was not observed.1,2
+In humans, topical exposure may elicit allergic skin reactions 
+in some individuals. In the event of accidental skin exposure, skin 
+should be washed with soap and water. In the event of accidental 
+eye exposure, eyes should be flushed with water for 15 minutes and 
+medical attention should be sought.1,2
+Adverse Effects
+Maropitant appears to be well tolerated in dogs and cats. Allergic 
+reactions are possible but rare and typically resolve with supportive 
+treatment within 48 hours after the drug is discontinued.
+In dogs given the higher oral dose required for prevention of 
+motion sickness, the 2 most common adverse effects are pretravel 
+vomiting and hypersalivation. Swelling or pain at the injection site 
+has been reported following SC administration of this drug. A study 
+found that dogs had less pain at the injection site when the injection 
+was refrigerated and immediately injected,41 and a formulation pre-
+served with benzyl alcohol was less painful than the metacresol-con-
+taining product that is currently available in the US.42 Other adverse 
+effects include depression and lethargy, anorexia, diarrhea, anaphy-
+laxis/anaphylactoid reactions (including swelling of the head and 
+face), ataxia, tremors, fever, dyspnea, collapse/loss of consciousness, 
+sedation, and convulsions.1,2
+In healthy dogs, IV maropitant further decreased arterial blood 
+pressure caused by isoflurane anesthesia, and clinically significant 
+hypotension occurred in dogs premedicated with acepromazine.43
+In cats, adverse effects include depression and lethargy, anorexia, 
+injection site pain, hypersalivation, dyspnea, ataxia, fever, recum -
+bency, vomiting, panting, convulsion, and muscle tremors.2
+Reproductive/Nursing Safety
+Safe use of maropitant in dogs or cats used for breeding or in preg -
+nant or lactating bitches or queens has not been evaluated.1,2 Because 
+safety has not been established in animals, this drug should only be 
+used when the maternal benefits outweigh the potential risks to off-
+spring. 
+Overdose/Acute Toxicity
+Single-dose toxicity was studied in mice and rats after PO and IV 
+administration.44 No adverse effects were reported after PO admin -
+istration of up to 30 mg/kg (mice) and 100 mg/kg (rats) and after IV 
+administration of 6.5 mg/kg (mice) and 2.5 mg/kg (rats). Clinical 
+signs of overdose in mice and rats included decreased activity, irreg-
+ular or labored respiration, ataxia, and tremors. Excretion of reddish 
+urine was observed in some mice and rats following IV administra -
+tion.
+In dogs, no serious adverse effects were noted when oral doses 
+up to 24 mg/kg (3 times the highest recommended dose) were ad -
+ministered 3 times longer than the proposed maximum duration of 
+treatment.
+Oral toxicokinetic studies with the primary metabolite were con-
+ducted in mice, rats, rabbits, and dogs; it was demonstrated that the 
+metabolite was well tolerated.44
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+During field safety and efficacy studies, a number of medications 
+were used concomitantly with maropitant. The most common con-
+comitant medication was metronidazole. Other commonly used 
+concomitant medications included dextrose/Ringer’s solution IV , 
+sodium chloride IV , amoxicillin, ampicillin, cefazolin, cephalexin, 
+enrofloxacin, sulfamethoxazole/trimethoprim, famotidine, sucral -
+fate, cimetidine, dexamethasone, ivermectin, ivermectin/pyrantel, 
+pyrantel, lufenuron/milbemycin, milbemycin, moxidectin, vitamin 
+B, and vaccines. No problems were observed with any of these drugs 
+when used in conjunction with maropitant.
+Drug interactions with maropitant have not been thoroughly in -
+vestigated. Maropitant may be susceptible to interactions because it 
+is biotransformed in the liver by CYP3A12 and CYP2D15 in dogs 
+and by CYP1A- and CYP3A-related enzymes in cats and is highly 
+bound to plasma proteins. The following drug interactions are the -
+oretical in animals receiving maropitant and may be of significance 
+in veterinary patients. Unless otherwise noted, use together is not 
+necessarily contraindicated, but the potential risks must be weighed 
+and additional monitoring performed when appropriate.
+ ■ Calcium Channel Blockers (eg, amlodipine, diltiazem, ve-
+rapamil): The UK label states maropitant Should not be used con-
+comitantly with Ca-channel antagonists as maropitant has affinity 
+to Ca-channels.45
+ ■ CYP3A Inhibitors (eg, amiodarone, diltiazem, cimetidine, 
+erythromycin, ketoconazole, itraconazole ): May reduce maro -
+pitant metabolism
+ ■ CYP2D Inhibitors (eg, cimetidine, fluoxetine, terbinafine ): 
+May reduce maropitant metabolism
+ ■ Highly Protein Bound Drugs  ( eg, valproic acid, oral an -
+ticoagulants [rivaroxaban, warfarin], NSAIDs, salicylates, 
+sulfonamides, sulfonylurea antidiabetic agents): Because maro-
+pitant is highly bound to plasma proteins (99.5%), it could theo -
+retically displace other highly bound drugs, causing a transient 
+increase in serum concentrations of each drug. These interactions 
+are unlikely to be of clinical concern because free drug concen -
+trations will equilibrate through increased clearance. Monitor for 
+adverse effects of each drug when using this combination.
+ ■ QT Prolonging Agents  (eg, cisapride, domperidone, quini-
+dine, sotalol): Concurrent use may increase risk for QT prolon -
+gation and should be avoided.
+Laboratory Considerations
+ ■ No specific concerns have been noted.
+Dosages
+NOTE: Refrigerating the injectable product may reduce the pain 
+response associated with SC administration.
+DOGS:
+Label dosages (FDA-approved)1,2: 
+Indication Dosage  
+form
+Minimum  
+age for use Dosage Duration  
+of therapy
+Prevention  
+and treatment  
+of acute 
+ vomiting
+Injec-
+tion
+2 months 1 mg/kg SC  
+once daily
+Up to 5  
+consecutive  
+days
+Prevention  
+and treatment  
+of acute 
+ vomiting
+Injec-
+tion
+4 months 1 mg/kg SC or 
+IV (over 1 to 2 
+minutes) once 
+daily
+Up to 5  
+consecutive  
+days
+Prevention  
+of vomiting 
+caused by  
+emetogenic  
+medications or 
+chemothera- 
+peutic agents
+Injec-
+tion
+4 months 1 mg/kg SC  
+or IV (over 1  
+to 2 minutes) 
+once, 45 to 60 
+minutes prior 
+to emetogenic 
+medications  
+or chemothera-
+peutic agents
+Single  
+injection
+
+
+===== BSAVA PDF 258 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+242
+potassium-depleting diuretics should be used with care in 
+conjunction with beta-blockers. Nephrotoxicity has been described 
+with concurrent use of mannitol and ciclosporin in human patients. 
+Mannitol may result in temporary impairment of the blood–brain 
+barrier for up to 30 minutes after administration of high doses. 
+Mannitol should never be added to whole blood for transfusion or 
+given through the same set by which the blood is being infused. Do 
+not add KCl or NaCl to concentrated mannitol solutions (20% or 
+25%) as a precipitate may form.
+DOSES
+Dogs, Cats:   
+• Raised intracranial pressure: 0.25–2 g/kg i.v. infusion of 15–20% 
+solution. There is some evidence that higher doses have greater 
+clinical effect, but lower doses allow for repeated boluses. 
+Doses of 0.25–1.0 g/kg are recommended. The dose is given 
+over 20–30 min. The dose may be repeated once or twice after 
+4–8 hours as long as hydration and electrolyte levels are 
+monitored.
+• Acute glaucoma (if refractory to topical treatments): 0.5–2 g/kg 
+i.v. infusion over 30 min. Withholding water for the first few 
+hours after administering is recommended. May repeat 2–4 
+times over next 48 hours; monitor for dehydration.
+• Early oliguric or anuric renal failure (as an alternative to using 
+furosemide): 0.25–0.5 g/kg i.v. infusion over 5–10 min. If 
+successful can repeat in 4 hours. Rehydrate the patient prior to 
+the use of mannitol.
+References
+DiFazio J and Fletcher DJ (2013) Updates in the management of the small animal patient 
+with neurologic trauma. Veterinary Clinics of North America: Small Animal Practice 43 , 
+915–940
+Sankar T, Assina R, Karis JP et al . (2008) Neurosurgical implications of mannitol 
+accumulation within a meningioma and its peritumoral region demonstrated by magnetic 
+resonance spectroscopy: case report. Journal of Neurosurgery  108, 1010–1013
+Marbofloxacin
+(Actimarbo, Aurizon, Efex, Marbocare, Marbocyl, 
+Marbodex, Marbotab, Marboxidin, Marfloquin, 
+NorOtic, Quiflor, Softiflox, Ubiflox) POM-V 
+Formulations: Injectable: 200 mg powder for reconstitution 
+giving 10 mg/ml when reconstituted. Oral: 5 mg, 20 mg, 80 mg 
+tablets. Topical: compound preparation containing 3 mg/ml of 
+marbofloxacin along with clotrimazole and dexamethasone  
+(aural use).
+Action: Broad-spectrum antibiotic inhibiting bacterial DNA gyrase 
+via a concentration-dependent mechanism particularly against 
+Gram-negative bacteria, meaning that pulse-dosing regimens may 
+be effective. Low urinary pH may reduce the activity.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 259 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+243
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use: Fluoroquinolone use should be reserved for infections where 
+culture and sensitivity testing predicts a clinical response and where 
+first- and second-line antimicrobials would not be effective. Active 
+against mycoplasmas and many Gram-positive and particularly 
+Gram-negative organisms, including Pasteurella, Staphylococcus, 
+Pseudomonas aeruginosa, Klebsiella, Escherichia coli, Proteus and 
+Salmonella. Fluoroquinolones are effective against beta-lactamase-
+producing bacteria. Marbofloxacin is relatively ineffective in treating 
+obligate anaerobic infections. Fluoroquinolones are highly lipophilic 
+drugs that attain high concentrations within cells in many tissues and 
+are particularly effective in the management of soft tissue, urogenital 
+(including pyelonephritis and prostatitis) and skin infections. May 
+allow clearance of Mycoplasma haemofelis in cats persistently 
+infected after doxycycline treatment. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: The 20 mg and 80 mg tablets should not be 
+administered to cats.
+Adverse reactions: Some animals show GI signs (nausea, 
+vomiting). Use with caution in epileptics until further information is 
+available, as fluoroquinolones potentiate CNS adverse effects when 
+administered concurrently with NSAIDs in humans. Enrofloxacin, 
+particularly at high doses, has caused retinal blindness in cats; 
+although not reported with marbofloxacin, caution should be 
+exercised before using dose rates above those recommended by the 
+manufacturer for cats. Cartilage abnormalities have been reported 
+following the use of other fluoroquinolones in growing animals. 
+Such abnormalities have not been specifically reported following the 
+use of marbofloxacin, but the drug is not authorized for use in dogs 
+<12 months of age and cats <16 weeks. In giant-breeds should not 
+be administered to animals <18 months.
+Drug interactions: Absorbents and antacids containing cations 
+(Mg2+, Al3+) may bind fluoroquinolones, preventing their absorption 
+from the GI tract. Their absorption may also be inhibited by 
+sucralfate and zinc salts; separate dosing by at least 2 hours. 
+Fluoroquinolones increase plasma theophylline concentrations. 
+Cimetidine may reduce the clearance of fluoroquinolones and so 
+should be used with caution with these drugs. Some 
+fluoroquinolones may decrease the metabolism and increase 
+nephrotoxicity of ciclosporin and tacrolimus in humans and 
+therefore concurrent use in animals is best avoided until more 
+research has been performed. May increase the action of orally 
+administered anticoagulants.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: Oral and parenteral: 2 mg/kg i.v., s.c., p.o. q24h. Higher doses 
+should be considered for certain sites, including in prostatitis, and 
+for certain isolates of Pseudomonas aeruginosa . Topical: 10 drops 
+per ear once daily.
+Cats: 2 mg/kg i.v., s.c., p.o. q24h. 
+
+
+===== BSAVA PDF 260 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+244
+References
+Federico S, Carrano R, Capone D et al . (2006) Pharmacokinetic interaction between 
+levofloxacin and ciclosporin or tacrolimus in kidney transplant recipients: ciclosporin, 
+tacrolimus and levofloxacin in renal transplantation. Clinical Pharmacokinetics 45, 
+169–175
+Hirt RA, Teinfalt M, Dederichs D et al . (2003) The effect of orally administered 
+marbofloxacin on the pharmacokinetics of theophylline. Journal of Veterinary Medicine: 
+A Physiology, Pathology and Clinical Medicine 50 , 246–250
+Maropitant
+(Cerenia, Prevomax, Vetemex) POM-V 
+Formulations: Injectable: 10 mg/ml solution. Oral: 16 mg, 24 mg, 
+60 mg, 160 mg tablets.
+Action: Inhibits vomiting reflex by blocking NK-1 receptors in 
+medullary vomiting centre. Highly protein bound, with a long 
+duration of activity (24 hours). Maropitant is not known to have any 
+prokinetic effect.
+Use:
+• Treatment and prevention of vomiting in dogs, including that 
+caused by chemotherapy and motion sickness (although not all 
+preparations are specifically licensed for these purposes).
+• Maropitant is well tolerated and has potent antiemetic activity in 
+cats.
+In cases of frequent vomiting, treatment by injection is 
+recommended. Treatment by injection and/or tablets can be given 
+for up to 5 days. In some individual dogs, repeat treatment at a lower 
+dose may be adequate. For motion sickness, treatment for up to 2 
+days can be given. If longer periods of treatment are required, the 
+recommended interval between the last dose of one course and the 
+first dose of a subsequent course is 72 hours. It should be used in 
+combination with investigation into the cause of vomiting and with 
+other supportive measures and specific treatments. Tablets best 
+given with food; avoid prolonged fasting before administration.
+Safety and handling: Normal precautions should be observed. 
+Do not attempt to remove the tablet by pushing through the blister 
+packing as this will damage the tablet.
+Contraindications: No specific contraindications but it would be 
+sensible not to use maropitant where GI obstruction or perforation 
+could be present or for longer than 48 hours without a definitive 
+diagnosis. Metabolized by the liver so use with caution in patients 
+with hepatic disease.
+Adverse reactions: Transient pain reaction during injection is 
+reported as a very common occurrence especially in cats, but no 
+significant lasting adverse reactions. Very high doses in cats may 
+cause haemolysis. Pain on injection can be reduced by injecting the 
+product at refrigerated temperatures.
+Drug interactions: No compatibility studies exist, and therefore 
+the injection should not be mixed with any other agent. Should not 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

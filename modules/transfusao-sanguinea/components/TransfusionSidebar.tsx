@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { PanelLeftClose, PanelLeftOpen, ArrowLeft, X } from 'lucide-react';
 import { cn } from '../../../lib/utils';
 import { TRANSFUSION_NAV_ITEMS, type TransfusionPage } from '../navConfig';
+import { TransfusionIcon } from './TransfusionIcon';
 
 const STORAGE_KEY = 'transfusion-sidebar-collapsed';
 
@@ -64,7 +65,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
           )}
           aria-label="Início — Transfusão"
         >
-          <span className="h-9 w-9 shrink-0 rounded-lg flex items-center justify-center bg-red-500/10 text-xl shadow-inner select-none font-bold">🩸</span>
+          <TransfusionIcon name="products" />
           {(!collapsed || isMobile) && (
             <div className="min-w-0 leading-tight">
               <span className="block truncate text-sm font-bold text-foreground">Hemoterapia</span>
@@ -127,6 +128,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
                 )}
                 title={(collapsed && !isMobile) ? item.label : undefined}
                 aria-current={isActive ? 'page' : undefined}
+                aria-label={item.label}
               >
                 <span
                   className={cn(
@@ -136,7 +138,7 @@ export const TransfusionSidebar: React.FC<TransfusionSidebarProps> = ({
                       : 'border-border bg-card text-muted-foreground group-hover:text-foreground'
                   )}
                 >
-                  <Icon className="h-4.5 w-4.5 stroke-[2]" />
+                  <TransfusionIcon name={item.page} fallback={Icon} className="h-8 w-8" />
                 </span>
                 {(!collapsed || isMobile) && (
                   <span className="flex min-w-0 flex-1 items-center gap-2">

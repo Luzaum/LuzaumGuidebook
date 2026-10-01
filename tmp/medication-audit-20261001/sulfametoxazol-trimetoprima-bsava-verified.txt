@@ -1,0 +1,216 @@
+===== BSAVA PDF 434 / impressa 418 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+418
+DOSES
+Dogs: Hyperadrenocorticism: 2 mg/kg p.o. q24h or 1 mg/kg p.o. 
+q12h.
+Cats: Hyperadrenocorticism: 10–30 mg/cat p.o. q12–24h. 
+References
+Lemetayer J and Blois S (2018) Update on the use of trilostane in dogs. The Canadian 
+Veterinary Journal  59, 397–407
+Macfarlane L, Parkin T and Ramsey I (2016) Pre-trilostane and three-hour post-trilostane 
+cortisol to monitor trilostane therapy in dogs. Veterinary Record 179 , 597
+Sanders K, Kooistra HS and Galac S (2018) Treating canine Cushing’s syndrome: current 
+options and future prospects. The Veterinary Journal  241, 42–51
+Trimethoprim/Sulphonamide 
+(Potentiated sulphonamides)
+(Duphatrim, Norodine, Trimacare, Trimedoxine, 
+Septrin*) POM-V, POM
+Formulations: Trimethoprim and sulphonamide are formulated in 
+a ratio of 1:5. Injectable: trimethoprim 40 mg/ml and sulfadiazine 
+200 mg/ml (240 mg/ml total) solution. Oral: trimethoprim and 
+sulfadiazine in a variety of tablet sizes designated by the amount of 
+trimethoprim, e.g. 20 mg, 80 mg. Each 5 ml of paediatric suspension 
+contains 200 mg sulfamethoxazole and 40 mg trimethoprim = 48 
+mg/ml suspension. Tablets contain 80 mg trimethoprim and 400 mg 
+sulfamethoxazole. If availabililty of veterinary fomulations is limited, 
+POM products may be used on a named patient basis.
+Action: Trimethoprim and sulphonamides block sequential steps in 
+the synthesis of tetrahydrofolate, a cofactor required for the 
+synthesis of many molecules, including nucleic acids. The two-step 
+mechanism ensures that bacterial resistance develops more slowly 
+than to either agent alone. Time-dependent mechanism of action.
+Use: Many organisms are susceptible, including Nocardia , Brucella, 
+Gram-negative bacilli, some Gram-positive organisms 
+(Streptococcus), plus Pneumocystis carinii , Toxoplasma gondii and 
+other coccidians. Pseudomonas  and Leptospira are usually resistant. 
+Trimethoprim/sulphonamide is useful in the management of urinary, 
+respiratory tract and prostatic infections, but ineffective in the 
+presence of necrotic tissue. Trimethoprim alone may be used for 
+urinary, prostatic, systemic salmonellosis and respiratory tract 
+infections. Fewer adverse effects are seen with trimethoprim alone. 
+Trimethoprim is a weak base which becomes ion-trapped in fluids 
+that are more acidic than plasma (e.g. prostatic fluid and milk). 
+Ensure patients receiving sulphonamides are well hydrated and are 
+not receiving urinary acidifying agents.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid use in animals with keratoconjunctivitis 
+sicca (KCS) or previous history of adverse reaction to sulphonamides 
+such as KCS or polyarthritis.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 435 / impressa 419 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+419
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Adverse reactions: Drowsiness, anorexia, leucopenia, anaemia 
+and hypersalivation may be seen in cats. Hepatic necrosis, vomiting, 
+immune-mediated thrombocytopenia and an immune-mediated 
+polyarthritis may be seen in dogs. Dobermanns seem to be more 
+susceptible to the development of immune-mediated systemic 
+adverse effects. Acute hypersensitivity reactions are possible with 
+sulphonamide products and may manifest as a type III 
+hypersensitivity reaction. Sulphonamides may reversibly suppress 
+thyroid function. KCS has been reported in dogs treated with 
+sulfapyridine and other sulphonamides. Monitor tear production 
+particularly during long-term use and in breeds susceptible to 
+keratoconjunctivitis sicca.
+Drug interactions: Antacids may decrease the bioavailability of 
+sulphonamides if administered concomitantly. Urinary acidifying 
+agents will increase the tendency for sulphonamide crystals to form 
+within the urinary tract. Concomitant use of drugs containing 
+procaine may inhibit the action of sulphonamides since procaine is a 
+precursor for para-amino benzoic acid.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Doses (mg) of total product (trimethoprim + sulphonamide).
+Dogs, Cats: 15–30 mg/kg p.o. q12h. 30 mg/kg s.c. q24h. 
+References
+Frank LA, Hnilica KA, May ER et al . (2005) Effects of sulfamethoxazole-trimethoprim on 
+thyroid function in dogs. American Journal of Veterinary Research  66, 256–259
+Weese JS, Blondeau J, Boothe D et al . (2019). International Society for Companion 
+Animal Infectious Diseases (ISCAID) guidelines for the diagnosis and management of 
+bacterial urinary tract infections in dogs and cats. The Veterinary Journal  247, 8–25
+Yaemsiri S and Sykes J (2018) Successful treatment of disseminated nocardiosis caused 
+by nocardia veterana in a dog. Journal of Veterinary Internal Medicine  32, 418–422
+Tropicamide
+(Mydriacyl*, Tropicamide*) POM 
+Formulations: Ophthalmic: 0.5%, 1% solution (single-use vials), 1% 
+(5 ml bottle).
+Action: Inhibits acetylcholine at the iris sphincter and ciliary body 
+muscles, causing mydriasis (pupil dilation) and cycloplegia (paralysis 
+of the ciliary muscle).
+Use: Synthetic, short-acting anticholinergic used for mydriasis and 
+cycloplegia. It is the mydriatic of choice for intraocular examination 
+due to its rapid onset (20–30 minutes) and short duration of action 
+(2–12 hours in dogs, 4–9 hours in cats). Tropicamide is more 
+effective as a mydriatic than as a cycloplegic and is therefore less 
+effective than atropine in relieving ciliary body muscle spasm 
+associated with uveitis. Use with care in patients with lens luxation.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid in glaucoma.
+
+===== BSAVA PDF 436 / impressa 420 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+420
+Adverse reactions: May cause salivation in cats, but less marked 
+than with atropine.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 1 drop per eye, repeat after 20–30 min if necessary.
+Tylosin
+(Bilosin, Tylan, Tyluvet) POM-V 
+Formulations: Injectable: 200 mg/ml solutions (Bilosin, Tylan, 
+Tyluvet). Oral: 100 g/bottle soluble powder (Tylan).
+Action: A time-dependent macrolide antibiotic that binds to the 
+50S ribosomal subunit, suppressing bacterial protein synthesis.
+Use: Tylosin has good activity against mycoplasmas and has the 
+same antibacterial spectrum of activity as erythromycin but is 
+generally less active against bacteria. Although rarely indicated in 
+small animal medicine, it has been used for the treatment of 
+antibiotic-responsive diarrhoea in dogs and for cryptosporidiosis. 
+Administration is predominantly by the oral route in dogs and cats.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: GI disturbances. The activity of tylosin is 
+enhanced in an alkaline pH. Tylosin can cause pain at the site of 
+injection.
+Drug interactions: Not well documented in small animals. It does 
+not appear to inhibit the same hepatic enzymes as erythromycin.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: Various doses: 7–15 mg/kg p.o. q12–24h. In colitis, higher 
+doses recommended 12–20 mg/kg q8h with food gradually 
+increasing the dosing interval to q24h.
+Cats: 7–15 mg/kg p.o. q12–24h. 
+References
+Westermarck E, Frias R and Skrzypczak T (2005) Effect of diet and tylosin on chronic 
+diarrhoea in Beagles. Journal of Veterinary Internal Medicine  19, 822–827
+Westermarck E, Skrzypczak T, Harmoinen J et al . (2005) Tylosin-responsive chronic 
+diarrhoea in dogs. Journal of Veterinary Internal Medicine 19, 177–186
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

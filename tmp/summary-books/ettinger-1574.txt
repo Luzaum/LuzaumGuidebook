@@ -1,0 +1,230 @@
+SECTION XIV
+•
+Cardiovascular Disease
+1422
+eBooks.Health.Elsevier.com
+PATHOPHYSIOLOGY OF 
+SYSTEMIC HYPERTENSION
+S
+ystemic hypertension (SH) is dened 
+as a pathologic elevation in systemic 
+arterial blood pressure (BP) usually 
+recognized with sustained elevations in 
+systolic blood pressure (SBP). e complex 
+neurohormonal interactions between the 
+kidneys, nervous system, vasculature, and 
+heart may lead to altered BP control (Figure 
+236.1).1 2 Guidelines for identication and 
+evaluation of SH have been devised based 
+on the probability of developing target-
+organ damage (TOD), and both monitor-
+ing and therapeutic guidelines have been 
+established.1-3 Feline studies have docu-
+mented a normal SBP range of 111-162 mm 
+Hg depending on measurement method.3
+Canine studies suggest a narrower range of 
+131-154 mm Hg.2 Methods for measuring 
+BP are described in ch. 91
+e prevalence of SH has been reported 
+as 19.5% for cats, and in dogs 0.5-13%.2 4
+Cats aged >9 years have signicantly higher 
+BP than cats aged 3-9 years, and risk of SH 
+also increases with age,5 whereas a slight 
+increase in BP (13 mm Hg/year) has been 
+reported in dogs.6 e association between 
+SH and age is likely multifactorial and unclear at this time. No 
+relationship exists between breed and BP in cats;5 however, certain 
+breed variations likely exist in dogs.
+TYPES OF HYPERTENSION
+SH can be divided into three broad categories: secondary hyper-
+tension, idiopathic hypertension and situational hypertension. 
+Secondary hypertension is induced by clinical disease or medi-
+cations and is most common. Idiopathic hypertension occurs in 
+absence of a readily identiable cause. Situational hypertension is 
+most oen caused by the “white coat” eect.
+Secondary Hypertension
+Obesity (ch. 150) There is either a small or no correlation 
+between obesity and SH in dogs. Furthermore, SH in obese dogs 
+is more likely related to endocrinopathies, renal disease or cardiac 
+disease. In cats, no studies correlate sex, breed, and body weight 
+with increased SH risk.2 3
+Renal Disease (ch. 301) The most common cause of SH in 
+dogs and cats is renal disease. Impaired renal function is noted 
+in 60-100% of cats presenting with SH and TOD.7-9 Whereas 
+cats with chronic kidney disease (CKD) have a prevalence of 
+SH between 20-65%, the severity of CKD does not correlate 
+with magnitude of BP elevation or prevalence.2 10 The patho-
+physiologic mechanism is multifactorial and involves systemic 
+renin-angiotensin-aldosterone system (RAAS) activation (Figure 
+236.2), local (tissue-specific) RAAS activation, impaired sodium 
+(Na+) excretion, increased intravascular volume, sympathetic 
+stimulation, structural arterial changes, endothelial dysfunction, 
+reduced nitric oxide (NO)-mediated vasodilation, increased vas-
+cular endothelin production, and reactive oxygen species gen-
+eration/oxidative stress (Figure 236.1).3 10 Excessive angiotensin 
+II (ATII) and aldosterone (ALDO) are directly nephrotoxic and 
+likely contribute to fibrotic remodeling of glomeruli.11
+ATII is also locally produced in the renal parenchyma. is 
+intrarenal RAAS likely contributes to and maintains SH, pro-
+motes glomerular hypertension, worsens proteinuria, and leads to 
+oxidative damage and renal brosis.7 11 Systemic RAAS concen-
+tration may not reect intrarenal RAAS. No consistent associa-
+tion between plasma ALDO or renin concentrations, and SH and 
+feline CKD, have been observed.3 10 However, ALDO concentra-
+tions are higher in cats with CKD, indicating that elevated ALDO 
+concentrations may contribute to SH. is may be independent 
+of RAAS, as SH did not respond to treatment with angiotensin-
+converting enzyme inhibitors (ACEIs) and plasma renin activ-
+ity was found to be low to normal in cats.12 Increased vascular 
+tone may explain the response to treatment with calcium chan-
+nel blockers (CCBs) in cats with SH.3 erefore, systemic RAAS 
+activation may less be responsible for SH in feline CKD patients.
+Proteinuria is an independent variable that is signicantly 
+associated with survival in cats with CKD and with all causes of 
+SH.8 Both glomerular and tubular protein loss likely stimulate the 
+production of inammatory mediators and cytokines, leading to 
+glomerular hypertension, glomerular sclerosis, and renal brosis.10
+Glomerular disease, independent of cause, has been associated with 
+the development of SH from sodium retention as well as excessive 
+RAAS and sympathetic activity.1 SH is more common in dogs with 
+glomerular disease (ch. 302) and leishmaniasis (ch. 197) than in 
+dogs with other forms of CKD.9 SH may also increase intraglo-
+merular hypertension and independently contribute to proteinuria.
+SH is common in acute kidney injury (AKI; ch. 300) and 
+with the use of erythropoiesis-stimulating agents.13 14 Cats 
+with AKI have a prevalence of SH of almost 59%, and it is not 
+related to grade of AKI or serum creatinine concentration.15
+SH is present in 75% of dogs with AKI, 56% of them severe 
+(SBP >180 mm Hg). No association is known to exist among 
+Systemic Hypertension
+Serge Chalhoub | Douglas Palma
+CHAPTER 236
+ACRONYMS
+ACEI angiotensin-
+converting enzyme 
+inhibitor
+ACVIM American College 
+of Veterinary Internal 
+Medicine
+AKI acute kidney injury
+ALDO aldosterone
+ARBs angiotensin-receptor 
+blockers
+ATII angiotensin II
+BP blood pressure
+CKD chronic kidney disease
+CO cardiac output
+CRI constant rate infusion
+DM diabetes mellitus
+HAC hyperadrenocorticism
+LVH left ventricular concen-
+tric hypertrophy
+NO nitric oxide
+RAAS renin-angiotensin-
+aldosterone system
+SBP systolic blood pressure
+SH systemic hypertension
+SVR systemic vascular 
+resistance
+TOD target-organ damage
+VD vascular dementia
+This chapter is enhanced with the following electronic assets on Elsevier eBooks+: 1 Video and 1 Client Information Sheet.
+
+CHAPTER 236
+•
+Systemic Hypertension
+1423
+eBooks.Health.Elsevier.com
+Sympathetic
+nervous
+system
+Kidneys
+Sodium
+retention
+Vascular
+smooth
+muscle
+Vessels
+Endothelium
+Increased
+preload
+HR
+SV
+CO
+PVR
+Increased arterial pressure
+×
+×
+Increased RAAS,
+local and
+systemic
+Increased
+aldosterone
+Endothelin,
+TXA,
+decreased
+NO
+Figure 236.1
+Possible mechanisms for the development of systemic hypertension (SH). Kidney disease is likely the most common cause of SH in cats and 
+dogs. Increased sympathetic nervous system activation, vascular smooth muscle dysfunction, and endothelial disease are other known mechanisms. 
+CO, Cardiac output; HR, heart rate; NO, nitric oxide; PVR, peripheral vascular resistance; RAS, renin angiotensin aldosterone system; SV, stroke vol-
+ume; TXA, thromboxane. (Modied from Syme H. Hypertension in small animal kidney disease. Vet Clin North Am Small Anim Pract. 2011;41:63-89.)
+AT1
+• Vasoconstrictor
+• Increased PVR
+• Increased Na reabsorption
+  in proximal tubule
+• Increased aldosterone and
+  increased Na collecting ducts
+• Increased vascular growth
+  factors
+• Atherogenesis
+• Increased ADH, thirst, CO
+• Decreased GFR
+• Cardiac hypertrophy
+• Fibrosis
+• Reactive oxygen species
+• Inflammation cytokines
+• Vasodilation
+• Natriuresis
+• Anti-growth
+  factors
+• Anti-fibrosis
+• Tissue
+   regeneration
+ANG-2
+AT2
+Figure 236.2
+Main mechanisms of action of angiotensin-2 (ANG-2). 
+ADH, Antidiuretic hormone; AT1, angiotensin II type-1 receptor; AT2,
+angiotensin II type-2 receptor; CO, cardiac output; GFR, glomerular ltra-
+tion rate; Na, sodium; PVR, peripheral vascular resistance.
+AKI grade, SH, and survival to discharge.16 Iatrogenic volume 
+overload in patients with reduced urine output is a major con-
+tributor to SH.
+Hyperadrenocorticism (ch. 293) SH is reported in 
+59-86% of all dogs with hyperadrenocorticism (HAC); dogs 
+with unilateral adrenal tumors have a higher prevalence.17
+Severe SH can be found in 46% of cases, and thrombocytosis 
+may be 100% specific and 61% sensitive in identifying these 
+dogs.18 Increased intrinsic mineralocorticoid activity, activation 
+of RAAS, and glucocorticoid-induced suppression of vasodila-
+tory mechanisms (i.e., NO) have been suggested in people. No 
+clear evidence of decreased NO or increased ALDO concentra-
+tions exists in dogs. Glucocorticoids may also contribute to SH 
+by increasing cardiac output (CO), total peripheral resistance 
+and renal blood flow. Furthermore, development of glomerular 
+dysfunction or glomerulosclerosis and proteinuria may contrib-
+ute in some patients.19 Many dogs remain hypertensive even 
+after the diagnosis and treatment of HAC, and some become 
+hypertensive after treatment; therefore, it is important to mea-
+sure BP at every recheck visit.17,20
+Adrenal Tumors/Hyperplasia (chs. 295 and 298) Over 
+90% of cats with primary hyperaldosteronism have SH (i.e., SBP 
+>180 mm Hg), with SH resolving in all cats when BP is measured 
+following adrenalectomy.7,17 SH does not appear to be negatively 
+associated with survival. This is rarely seen in dogs.21
+Pheochromocytomas reported in dogs and cats can result in 
+increased catecholamine secretion and excessive alpha- and beta-
+adrenergic stimulation. is may cause sustained or paroxysmal 
+SH. At least half of these dogs will present SH at some point.17

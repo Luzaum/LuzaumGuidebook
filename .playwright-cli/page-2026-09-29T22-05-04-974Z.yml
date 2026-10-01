@@ -1,0 +1,156 @@
+- main [ref=f3e3]:
+  - generic [ref=f3e4]:
+    - heading "Enrofloxacina" [level=1] [ref=f3e5]
+    - generic [ref=f3e7]:
+      - heading "Resumo rápido" [level=2] [ref=f3e8]
+      - generic [ref=f3e12]:
+        - paragraph [ref=f3e13]: Fluoroquinolona bactericida para infecções por agentes sensíveis.
+        - list [ref=f3e14]:
+          - listitem [ref=f3e15]:
+            - generic [aria-hidden] [ref=f3e16]: •
+            - generic [ref=f3e17]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - listitem [ref=f3e18]:
+            - generic [aria-hidden] [ref=f3e19]: •
+            - generic [ref=f3e20]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento.
+          - listitem [ref=f3e21]:
+            - generic [aria-hidden] [ref=f3e22]: •
+            - generic [ref=f3e23]: Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+        - group [ref=f3e24]:
+          - generic "Fonte do resumo" [ref=f3e25] [cursor=pointer]
+          - paragraph [ref=f3e61]: Plumb’s Veterinary Drug Handbook, 10ª ed. — PDF 477–483.
+          - paragraph [ref=f3e62]: Paginação do arquivo PDF do acervo.
+      - group [ref=f3e26]:
+        - generic "Ver indicações, cuidados e explicações complementares" [active] [ref=f3e27] [cursor=pointer]
+        - generic [ref=f3e65]:
+          - heading "Visão geral complementar" [level=2] [ref=f3e72]
+          - generic [ref=f3e73]:
+            - paragraph [ref=f3e74]: Visão Geral em Linguagem Direta & Fisiologia
+            - paragraph [ref=f3e77]: A enrofloxacina é um antibiótico bactericida de referência na medicina veterinária, pertencente à classe das fluoroquinolonas e amplamente utilizado no combate a infecções bacterianas graves por microrganismos Gram-negativos e bactérias intracelulares em cães e gatos. Possui excelente capacidade de penetração tecidual, alcançando altas concentrações em rins, próstata, pulmões e pele. Trata-se de um antimicrobiano de ação concentração-dependente, cuja eficácia é otimizada pela administração em dose única diária (a cada 24 horas). Em gatos, seu uso exige respeito rigoroso ao teto máximo de 5 mg/kg por dia para prevenir degeneração retiniana irreversível, sendo também contraindicada em filhotes de cães em fase de crescimento ativo pelo risco de lesão nas cartilagens articulares.
+          - generic [ref=f3e78]:
+            - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f3e79]
+            - generic [ref=f3e80]:
+              - generic [ref=f3e81]:
+                - generic [ref=f3e82]: Bactericidia Concentração-Dependente
+                - paragraph [ref=f3e87]: A eficácia antimicrobiana e a erradicação bacteriana relacionam-se diretamente à magnitude do pico plasmático (Cmax/MIC) e à exposição total (AUC24/MIC), favorecendo posologias de dose diária única (q24h). Subdosar seleciona resistência.
+              - generic [ref=f3e88]:
+                - generic [ref=f3e89]: Penetração Tecidual Ampla e Intracelular
+                - paragraph [ref=f3e94]: Alta lipofilia, comportamento zwitteriônico e baixo peso molecular permitem excelente difusão para parênquima renal, tecido prostático através de barreiras biológicas, líquido epitelial pulmonar, macrófagos e pele.
+              - generic [ref=f3e95]:
+                - generic [ref=f3e96]: Espectro Gram-Negativo Potente com Lacunas Críticas
+                - paragraph [ref=f3e101]: Altamente eficaz contra Enterobacterales e Pseudomonas suscetíveis. Não possui cobertura contra bactérias anaeróbias estritas e apresenta ação ineficaz contra Enterococcus spp. e muitos Streptococcus spp.
+              - generic [ref=f3e102]:
+                - generic [ref=f3e103]: Teto Posológico Felino Inegociável (5 mg/kg/dia)
+                - paragraph [ref=f3e108]: Particularidades moleculares no transportador ABCG2 da barreira hematorretiniana felina reduzem o efluxo de enrofloxacina, levando a acúmulo foto-reativo na retina, estresse oxidativo e degeneração retiniana irreversível com cegueira.
+          - generic [ref=f3e109]:
+            - heading "Indicações de Uso Resumidas" [level=3] [ref=f3e110]
+            - generic [ref=f3e111]:
+              - generic [ref=f3e112]:
+                - generic [ref=f3e113]:
+                  - generic [ref=f3e114]:
+                    - heading "Pielonefrite Bacteriana Canina (ISCAID)" [level=4] [ref=f3e115]
+                    - generic [ref=f3e116]: Cães
+                  - paragraph [ref=f3e118]: Opção de primeira linha em cães com envolvimento de parênquima renal por enterobactérias, ajustando após antibiograma.
+                - generic [ref=f3e119]:
+                  - generic [ref=f3e128]:
+                    - generic [ref=f3e129]: Dose de Ataque / Manutenção
+                    - text: 10 a 20 mg/kg VO a cada 24 horas (q24h)
+                  - generic [ref=f3e130]:
+                    - generic [ref=f3e131]:
+                      - generic [ref=f3e132]: Via
+                      - text: Oral
+                    - generic [ref=f3e133]:
+                      - generic [ref=f3e134]: Duração
+                      - text: 10 a 14 dias
+              - generic [ref=f3e135]:
+                - generic [ref=f3e136]:
+                  - generic [ref=f3e137]:
+                    - heading "Prostatite Bacteriana Canina Aguda e Crônica" [level=4] [ref=f3e138]
+                    - generic [ref=f3e139]: Cães
+                  - paragraph [ref=f3e141]: Ultrapassa a barreira hemato-prostática em virtude de sua lipofilia e pKa, mantendo níveis bactericidas no parênquima.
+                - generic [ref=f3e142]:
+                  - generic [ref=f3e151]:
+                    - generic [ref=f3e152]: Dose de Ataque / Manutenção
+                    - text: 10 a 20 mg/kg VO a cada 24 horas (q24h)
+                  - generic [ref=f3e153]:
+                    - generic [ref=f3e154]:
+                      - generic [ref=f3e155]: Via
+                      - text: Oral
+                    - generic [ref=f3e156]:
+                      - generic [ref=f3e157]: Duração
+                      - text: 4 a 6 semanas
+              - generic [ref=f3e158]:
+                - generic [ref=f3e159]:
+                  - generic [ref=f3e160]:
+                    - heading "Pneumonia Bacteriana Grave por Gram-Negativos" [level=4] [ref=f3e161]
+                    - generic [ref=f3e162]:
+                      - generic [ref=f3e163]: Cães
+                      - generic [ref=f3e164]: Gatos
+                  - paragraph [ref=f3e165]: Associar com beta-lactâmico ou clindamicina para garantir espectro sobre anaeróbios e Gram-positivos.
+                - generic [ref=f3e166]:
+                  - generic [ref=f3e175]:
+                    - generic [ref=f3e176]: Dose de Ataque / Manutenção
+                    - text: "Cão: 5 a 20 mg/kg q24h | Gato: máximo 5 mg/kg q24h"
+                  - generic [ref=f3e177]:
+                    - generic [ref=f3e178]:
+                      - generic [ref=f3e179]: Via
+                      - text: Oral ou Injetável
+                    - generic [ref=f3e180]:
+                      - generic [ref=f3e181]: Duração
+                      - text: 7 a 14 dias
+              - generic [ref=f3e182]:
+                - generic [ref=f3e183]:
+                  - generic [ref=f3e184]:
+                    - heading "Colite Granulomatosa / Histiocítica em Cães" [level=4] [ref=f3e185]
+                    - generic [ref=f3e186]: Cães
+                  - paragraph [ref=f3e188]: Específico para cepas invasivas intramucosas de E. coli em cães Boxer e Bulldog Francês com remissão histológica.
+                - generic [ref=f3e189]:
+                  - generic [ref=f3e198]:
+                    - generic [ref=f3e199]: Dose de Ataque / Manutenção
+                    - text: 10 mg/kg VO a cada 24 horas (q24h)
+                  - generic [ref=f3e200]:
+                    - generic [ref=f3e201]:
+                      - generic [ref=f3e202]: Via
+                      - text: Oral
+                    - generic [ref=f3e203]:
+                      - generic [ref=f3e204]: Duração
+                      - text: 8 semanas
+          - generic [ref=f3e205]:
+            - generic [ref=f3e206]: Aviso Clínico Importante
+            - generic [ref=f3e210]:
+              - generic [ref=f3e211]:
+                - generic [ref=f3e212]: "1"
+                - paragraph [ref=f3e213]:
+                  - strong [ref=f3e214]: "Teto Absoluto em Gatos (Máximo 5 mg/kg/dia):"
+                  - text: Em felinos, NUNCA ultrapassar 5 mg/kg em 24 horas. Mutações funcionais no transportador ABCG2 na retina felina causam acúmulo da droga e degeneração fotorreceptora tóxica aguda com midríase e cegueira permanente. Se notar dilatação pupilar mantida, suspenda imediatamente.
+              - generic [ref=f3e215]:
+                - generic [ref=f3e216]: "2"
+                - paragraph [ref=f3e217]:
+                  - strong [ref=f3e218]: "Contraindicação em Cães em Crescimento:"
+                  - text: Não prescrever para cães jovens durante a fase de crescimento rápido (até 8 meses em portes pequenos/médios, até 12 meses em portes grandes e até 18 meses em raças gigantes), devido à formação de vesículas e erosões articulares irreversíveis na cartilagem de suporte.
+              - generic [ref=f3e219]:
+                - generic [ref=f3e220]: "3"
+                - paragraph [ref=f3e221]:
+                  - strong [ref=f3e222]: "Ação Concentração-Dependente e Interações:"
+                  - text: A eficácia clínica depende do pico sérico em relação à MIC (Cmax/MIC). Administrar a dose total a cada 24 horas. Manter separação estrita de pelo menos 2 horas de antiácidos, quelantes de fósforo, cálcio, ferro e sucralfato, que inativam a absorção por quelação intraluminal.
+    - heading "Lesão renal aguda canina" [level=1] [ref=f3e28]
+    - generic [ref=f3e29]:
+      - heading "Resumo rápido" [level=2] [ref=f3e30]
+      - generic [ref=f3e31]:
+        - generic [ref=f3e32]:
+          - button "Visão Geral" [ref=f3e33] [cursor=pointer]
+          - button "Plano diagnóstico" [ref=f3e38] [cursor=pointer]
+          - button "Plano de tratamento" [ref=f3e42] [cursor=pointer]
+        - generic [ref=f3e47]:
+          - paragraph [ref=f3e48]: Deterioração rápida da função renal por causas como isquemia, toxinas ou infecção.
+          - list [ref=f3e49]:
+            - listitem [ref=f3e50]:
+              - generic [aria-hidden] [ref=f3e51]: •
+              - generic [ref=f3e52]: Vômitos, prostração e mudança na diurese podem ocorrer; identificar exposição e doenças associadas.
+            - listitem [ref=f3e53]:
+              - generic [aria-hidden] [ref=f3e54]: •
+              - generic [ref=f3e55]: Investigar causa, eletrólitos, urina e imagem e acompanhar a evolução da função renal.
+            - listitem [ref=f3e56]:
+              - generic [aria-hidden] [ref=f3e57]: •
+              - generic [ref=f3e58]: Restaurar perfusão sem provocar sobrecarga; complicações refratárias podem exigir diálise.
+          - group [ref=f3e59]:
+            - generic "Fonte do resumo" [ref=f3e60] [cursor=pointer]

@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React from 'react';
 import { cn } from '../../../../lib/utils';
 import type { EditorialClinicalTable } from '../../types/common';
@@ -35,12 +36,12 @@ export function EditorialClinicalTableBlock({
   const tableMinWidth =
     table.headers.length <= 2
       ? '100%'
-      : `${Math.min(80, 18 + table.headers.length * 8)}rem`;
+      : `${table.headers.length * 14}rem`;
 
   return (
     <div
       className={cn(
-        'max-w-full overflow-x-auto overscroll-x-contain rounded-xl border border-border/55 bg-card/30 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
+        'cv-editorial-table min-w-0 max-w-full overflow-hidden rounded-xl border border-border/55 bg-card/30 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06]',
         className
       )}
     >
@@ -49,17 +50,30 @@ export function EditorialClinicalTableBlock({
           {renderTableText(table.caption)}
         </p>
       ) : null}
-      <table
+      <div className="cv-table-cards">
+        {table.rows.map((row, index) => (
+          <dl key={index} className="space-y-4 border-b border-border/55 p-4 last:border-b-0 even:bg-muted/20">
+            {row.map((cell, column) => (
+              <div key={column}>
+                <dt className="text-xs font-semibold text-muted-foreground">{renderTableText(table.headers[column] || `Coluna ${column + 1}`)}</dt>
+                <dd className={cn('mt-1 text-sm leading-6 text-foreground', column === 0 && 'font-semibold')}>{renderTableText(cell)}</dd>
+              </div>
+            ))}
+          </dl>
+        ))}
+      </div>
+      <ReadableTable
+        aria-label={table.caption || 'Tabela clínica'}
         className="w-full border-collapse text-left text-[13px] leading-snug md:text-[14px] md:leading-relaxed"
         style={{ minWidth: tableMinWidth }}
       >
         <thead>
           <tr className={cn('border-b border-border/80', headerTintClass)}>
-            {table.headers.map((h) => (
+            {table.headers.map((h, headerIndex) => (
               <th
-                key={h}
+                key={`${h}-${headerIndex}`}
                 scope="col"
-                className="break-words px-3 py-3 text-[11px] font-bold uppercase tracking-[0.1em] text-muted-foreground [overflow-wrap:anywhere] first:pl-4 last:pr-4 md:px-4 md:tracking-[0.12em]"
+                className="break-words px-3 py-3 text-[11px] font-bold tracking-normal text-muted-foreground [overflow-wrap:anywhere] first:pl-4 last:pr-4 md:px-4 "
               >
                 {renderTableText(h)}
               </th>
@@ -89,7 +103,7 @@ export function EditorialClinicalTableBlock({
             </tr>
           ))}
         </tbody>
-      </table>
+      </ReadableTable>
     </div>
   );
 }

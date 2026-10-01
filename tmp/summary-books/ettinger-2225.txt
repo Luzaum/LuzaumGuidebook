@@ -1,0 +1,281 @@
+CHAPTER 300
+•
+Acute Kidney Injury
+2073
+eBooks.Health.Elsevier.com
+154. Ochoa VB, DiBartola SP, Chew DJ, etal. Perinephric pseudocysts in 
+the cat: a retrospective study and review of the literature. J Vet Intern Med
+1999;13(1):47-55.
+155. Valdes-Martinez A, Cianciolo R, Mai W. Association between renal 
+hypoechoic subcapsular thickening and lymphosarcoma in cats. Vet Radiol 
+Ultrasound. 2007;48(4):357-360.
+156. Mantis P, Lamb CR. Most dogs with medullary rim sign on ultrasonography 
+have no demonstrable renal dysfunction. Vet Radiol Ultrasound. 2000;41(2):
+164-166.
+157. Hart DV, Winter MD, Conway J, etal. Ultrasound appearance of the 
+outer medulla in dogs without renal dysfunction. Vet Radiol Ultrasound
+2013;54(6):652-658.
+158. Jakovljevic S, Rivers WJ, Chun R, etal. Results of renal ultrasonography 
+performed before and during administration of saline (0.9% NaCl) solution 
+to induce diuresis in dogs without evidence of renal disease. Am J Vet Res
+1999;60(4):405-409.
+159. Neuwirth L, Mahaey M, Crowell W, etal. Comparison of excretory 
+urography and ultrasonography for detection of experimentally induced 
+pyelonephritis in dogs. Am J Vet Res. 1993;54(5):660-669.
+160. Adin CA, Herrgesell EJ, Nyland TG, etal. Antegrade pyelography for 
+suspected ureteral obstruction in cats: 11 cases (1995-2001). J Am Vet Med Assoc
+2003;222(11):1576-1581.
+161. Etedali NM, Reetz JA, Foster JD. Complications and clinical utility of 
+ultrasonographically guided pyelocentesis and antegrade pyelography in cats and 
+dogs: 49 cases (2007-2015). J Am Vet Med Assoc. 2019;254(7):826-834.
+162. Lemieux C, Vachon C, Beauchamp G, etal. Minimal renal pelvis dilation in 
+cats diagnosed with benign ureteral obstruction by antegrade pyelography: a 
+retrospective study of 82 cases (2012–2018). J Feline Med Surg. 2021;23(10):892-899.
+163. Novellas R, Ruiz de Gopegui R, Espada Y. Assessment of renal vascular 
+resistance and blood pressure in dogs and cats with renal disease. Vet Rec
+2010;166(20):618-623.
+ACRONYMS
+4-MP 4-methylpyrazole
+ACE-I angiotensin converting 
+enzyme inhibitor
+ADH antidiuretic hormone
+AKD acute kidney disease
+AKI acute kidney injury
+BUN blood urea nitrogen
+Ca calcium
+caAKI contrast-associated 
+acute kidney injury
+CBC complete blood count
+CKD chronic kidney disease
+Cl chloride
+CRl constant rate infusion
+DDS dialysis disequilibrium 
+syndrome
+ECG electrocardiographic/
+electrocardiogram
+FeNa fractional excretion 
+of sodium
+GFR glomerular filtration rate
+GI gastrointestinal
+HES hydroxyethyl starch
+hyperK hyperkalemia
+hypoK hypokalemia
+iCa ionized calcium
+IRIS International Renal 
+Interest Society
+IV intravenous(ly)
+K potassium
+Na sodium
+NSAIDs nonsteroidal 
+anti-inflammatory drugs
+Acute Kidney Injury
+JD Foster
+DEFINITIONS, PHASES, AND 
+CATEGORIZING ACUTE KIDNEY 
+INJURY (AKI)
+DEFINITIONS AND THE 4 PHASES
+T
+he term “acute renal failure” has been 
+replaced with “acute kidney injury” 
+(AKI) to better describe the impor-
+tance of mild-to-moderate damage that does 
+not result in overt kidney failure, as well as 
+emphasizing the maintenance and recovery 
+phases of kidney injury. ere are 4 phases 
+of intrinsic AKI: induction, extension, main-
+tenance, and recovery.1 e induction phase 
+begins with an ischemic or nephrotoxic 
+insult and continues until a change in renal 
+function occurs, such as decreased urine 
+output (UOP) or glomerular ltration rate 
+(GFR). e duration of this phase is variable, 
+depending on the nature and severity of the 
+insult. During this stage early intervention 
+may prevent progression; however, clinical 
+signs are oen not apparent, which makes 
+recognition of AKI dicult. During the 
+extension phase the kidney is further injured 
+via alterations in renal perfusion, contin-
+ued hypoxia, secondary inammation, and 
+ongoing epithelial and endothelial injury. 
+e maintenance phase occurs aer a critical 
+amount of damage has been established. e 
+resulting decreased GFR and renal hypo-
+perfusion manifest as azotemia and clini-
+cal signs of uremia. Elimination of inciting 
+factors at this phase will not decrease existing damage nor expedite 
+the rate of recovery. e recovery phase is the period where renal 
+tissue undergoes regeneration and repair with varying restoration 
+of renal function.
+GRADING AKI
+e International Renal Interest Society (IRIS) has provided a cat-
+egorization scheme for both chronic kidney disease (CKD) and 
+AKI (Table 300.1). Each grade can be sub-graded by UOP (non-
+oligoanuric vs. oligoanuric) and the need for renal replacement ther-
+apy. e trend of increasing serum creatinine in a hospitalized dog or 
+cat should increase concern for active kidney injury, even if the patient 
+is not azotemic. Monitoring serum creatinine is recommended for 
+hospitalized dogs and cats. Dogs with IRIS Grade I AKI have a higher 
+in-hospital mortality (58%) than those without AKI (16%).1 2 Recog-
+nition of non-azotemic AKI should allow earlier intervention with the 
+potential to minimize the magnitude of developing AKI.
+STRUCTURE-FUNCTION CATEGORIZATION OF AKI
+AKI is a clinical syndrome of varying severity initiated by a mul-
+titude of causes that can be accompanied by rapid decline in GFR 
+and renal function. Injury may occur to the nephron, however, 
+while GFR is preserved. Many injuries are reversible (at least 
+partially); however, the recovery phase of AKI may take days to 
+months. Traditionally, AKI is divided into categories based on the 
+underlying etiology:
+1. Prerenal (hemodynamic) AKI: renal hypoperfusion; the renal 
+parenchyma is not damaged.
+2. Intrinsic Renal AKI: ischemia or a nephrotoxin damages the 
+renal parenchyma.
+3. Postrenal or Obstructive AKI: acute obstruction of the urinary 
+tract.
+CHAPTER 300
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 3 Videos.
+Continued
+
+SECTION XX
+•
+Renal Disease
+2074
+eBooks.Health.Elsevier.com
+TABLE 300.1
+International Renal Interest Society (IRIS) Acute Kidney Injury (AKI) Grading
+AKI GRADE
+SERUM CREATININE
+CLINICAL FEATURES
+Grade I
+<1.6 mg/dL (<140 mcmol/L)
+Non-azotemic AKI
+•Historical, clinical, laboratory, or imaging evidence of AKI
+•Progressive non-azotemic increase in serum creatinine ≥. mg/dL (≥. mcmol/L) within  
+hours
+•≥-hour duration of oligoanuria
+Grade II
+1.7-2.5 mg/dL (141-220 mcmol/L)
+Mild AKI
+•Documented AKI with static or progressive azotemia
+•Progressive increase in serum creatinine ≥. mg/dL (≥. mcmol/L) within  hours
+•≥-hour duration of oligoanuria
+Grade III
+2.6-5.0 mg/dL (221-439 mcmol/L)
+Moderate to severe AKI
+Grade IV
+5.1-10 mg/dL (440-880 mcmol/L)
+Severe AKI
+Grade V
+>10.0 mg/dL (>880 mcmol/L)
+Severe AKI
+TABLE 300.2
+Summary of Renal Biomarkers
+LOCATION
+BIOMARKER
+Estimate of Glomerular Filtration
+Serum creatinine
+Blood urea nitrogen (BUN)
+Serum symmetric dimethylargi-
+nine (SDMA)
+Serum cystatin C
+Increased Glomerular 
+Permeability
+Urine protein
+Urine albumin
+Urine immunoglobulin (Ig) A, G, 
+M
+Urine C-reactive protein (CRP)
+Proximal Tubular Injury
+Retinol-binding protein (RBP)
+Alpha-1 and beta-2 microglobu-
+lins
+N-acetyl-beta-D-glucosaminidase 
+(NAG)
+Gamma-glutamyl transpeptidase 
+(GGT)
+Kidney injury molecule-1 (KIM-1)
+Urine cystatin C
+Serum inosine
+Distal Tubular Injury
+Interleukin-18
+Generalized Nephron Injury
+Neutrophil gelatinase-associated 
+lipocalin (NGAL)
+Clusterin
+KIDNEY INJURY CATEGORIZED BY 
+BIOMARKERS
+The prerenal/renal/postrenal categoriza-
+tion of AKI can be incomplete, since inju-
+ries develop on a continuum. Prolonged 
+prerenal and postrenal AKI can progress 
+to intrinsic AKI. Since the term “prer-
+enal” is often assumed to mean “hypo-
+volemia,” inappropriate IV fluid therapy 
+may ensue. Development of kidney-
+specific biomarkers has helped create a 
+new categorization of AKI.3 4 Biomarkers 
+such as creatinine, blood urea nitrogen 
+(BUN), 
+symmetric 
+dimethylarginine 
+(SDMA), and serum cystatin C (CC) 
+provide information on GFR (ch. 62).4 5
+Serum creatinine does not rise immedi-
+ately following renal injury; it may take 72 hours after renal 
+injury for increases to be detected and another 2-3 days are 
+required for increases to reach equilibrium.6 Other biomarkers 
+(Table 300.2; ch. 299, Table 299.1) provide evidence of injury 
+and dysfunction of various parts of the nephron. Fractional 
+excretion of sodium (FeNa; ch. 299) represents the percent of 
+sodium (Na) reabsorbed by the tubules, which should be 99% 
+(FeNa <1% is normal). Tubular injury often reduces the abil-
+ity to reabsorb Na, increasing the FeNa. Dogs surviving AKI 
+had improvement in GFR and lowering FeNa throughout hos-
+pitalization, whereas the non-survivors had no improvement 
+in GFR and increases in FeNa.7 Increased availability of vali-
+dated kidney-specific biomarker assays facilitates an updated 
+categorization of AKI, using both functional and structural 
+assessments (Table 300.3).8 This structure/function relation-
+ship allows for the assessment and monitoring of broader kid-
+ney status. Renal injuries may be identified even when GFR is 
+preserved. Structural changes can be assessed with decreases 
+in GFR.
+REPEAT VS SUSTAINED AKI
+Following an episode of AKI, dogs and cats may continue to 
+have active kidney injury due to the inciting cause. Ischemia and 
+inammatory changes may perpetuate or exacerbate injury. If 
+such injury is not stopped, renal recovery may not occur, which 
+could progress to CKD (ch. 301). Other pets may recover from 
+1 AKI episode, only to have a second distinct AKI event shortly 
+aer. It is challenging to dierentiate sustained kidney injury 
+with partial recovery from multiple episodes of AKI within a 
+short timeframe. In humans, a minimum of 48 hours of sustained 
+improvement is needed between AKI events to characterize 
+them as separate episodes.9 Patients with partial improvement 
+in kidney function for <48 hours before subsequent worsening 
+should be evaluated for a second injury, but continued kidney 
+dysfunction from the initial cause of AKI is possible. Owners of 
+pets with repeated episodes of AKI should be asked to provide 
+a detailed review of medications to identify any with potential 
+for nephrotoxicity (chs. 135 and 139). Medication review may 
+reveal failure to account for decreased kidney function when 
+determining doses. Evaluating each pet for hypoperfusion or 
+PCR polymerase chain 
+reaction
+PE physical examination
+PU polyuria
+PU/PD polyuria/polydip-
+sia
+RAAS renin-angiotensin-
+aldosterone system
+SDMA symmetric dimeth-
+ylarginine
+SQ subcutaneous(ly)
+SUB subcutaneous ureter-
+al bypass
+UA urinalysis
+UOP urine output
+US ultrasound
+USG urine specific gravity
+ACRONYMS—CONT’D

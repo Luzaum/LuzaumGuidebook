@@ -1,0 +1,262 @@
+CHAPTER 311
+•
+Feline Idiopathic/Interstitial Cystitis
+2171
+eBooks.Health.Elsevier.com
+ACRONYMS
+AAFP American 
+Association of Feline 
+Practitioners
+CBD cannabidiol
+cLUTS chronic lower 
+urinary tract signs
+CNS central nervous 
+system
+CTRS central threat 
+response system
+FIC feline idiopathic/
+interstitial cystitis
+IC interstitial cystitis
+LUTS lower urinary tract 
+signs
+MEMO multimodal 
+environmental 
+modification
+UTI urinary tract infection
+WAS water-avoidance 
+stress
+Feline Idiopathic/Interstitial Cystitis
+Tony Buffington | Mikel M. Delgado
+INTRODUCTION
+F
+eline 
+idiopathic/interstitial 
+cysti-
+tis (FIC) is the most common cause 
+of chronic lower urinary tract signs 
+(cLUTS), which includes variable combina-
+tions of straining, hematuria, pollakiuria, 
+and periuria, in domestic cats.1 Cats show-
+ing these signs have been referred to as hav-
+ing “feline idiopathic/interstitial cystitis” 
+only because of their similarities to humans 
+with interstitial cystitis (IC; now sometimes 
+referred to as bladder pain syndrome/inter-
+stitial cystitis). IC is characterized clinically 
+by dicult, painful, and frequent urinations 
+without a diagnosable cause, and oen a 
+variety of comorbid health problems.2
+FIC was once classied as a “feline lower 
+urinary tract disorder” (FLUTD)3 because 
+cats present with cLUTS. FIC does not seem 
+to originate in the bladder, however. Just 
+as jaundice can present as a dermatologic 
+or ophthalmic sign, it is neither a dermatologic nor ophthal-
+mic disorder. Research has identied genetic factors, epigenetic 
+eects, and environmental inuences associated with risk for 
+(F)IC, documented that comorbid disorders oen occur before 
+the onset of the lower urinary tract signs (LUTS), and demon-
+strated how much systemic involvement can be present in these 
+patients.1 One of us (CATB) has proposed the term “Pandora syn-
+drome” to describe the multiple health problems present in some 
+of these cats (as in people with chronic overlapping pain condi-
+tions), because it does not identify any specic cause or organ, 
+and tries to capture the dismay and dispute associated with the 
+identication of so many problems outside the organ of interest of 
+any particular subspecialty.4
+Regardless of the name eventually applied to this syndrome, 
+we urge clinicians and investigators to look beyond the bladder 
+when obtaining a history, performing physical examinations, and 
+considering pertinent diagnostics and treatments to manage the 
+clinical signs of their patients. To avoid confusion, we will refer 
+to this syndrome here as FIC, because it is the term used in most 
+published studies.
+We currently perceive FIC to describe abnormalities result-
+ing from persistent activation of the central threat response sys-
+tem (CTRS).1 Persistent activation of the CTRS can occur when 
+chronic perception of threat exceeds the cat’s perception of con-
+trol. is mobilizes persistent activity in variable combinations 
+of the nervous (sensory, autonomic, and motor), endocrine, and 
+immune systems, which can eventually also aect the cat’s behav-
+ior, as well as bladder, skin, gastrointestinal tract, and other organ 
+function.5
+e variability among individual cats’ responses to chronic 
+perception of threat may result from familial dierences in 
+organ-specic vulnerability, and to the intensity of exposure to 
+threatening events that can durably sensitize the CTRS to the 
+environment. Suciently harsh events can sensitize the CTRS 
+at any time of life, but such events oen occur early in life, even 
+before birth, when the CTRS is most plastic and vulnerable to 
+the events via stress hormone signals communicated to the fetus 
+through the placenta by its mother.6 Our current understand-
+ing of FIC is informed by knowledge gained from studies of cats 
+and people with the naturally occurring disorder, and of induced 
+models in rodents.
+ETIOPATHOGENESIS OF FIC
+RECENT STUDIES—CATS
+A review of the pathophysiology and management of cats with 
+cLUTS was published in 2019.1 More recently, Kaul etal.,7
+reported on the recurrence rate and long-term course of 101 
+cats that were presented for evaluation of cLUTS from 2010 to 
+2013 based on telephone interviews using a questionnaire with 
+cat owners. ey reported that 52 cats were diagnosed with FIC, 
+21 with urolithiasis, and 13 with bacterial urinary tract infection 
+(UTI); no denitive diagnosis was made for 15 cats. Of the 86 cats 
+with a known diagnosis, the recurrence rate, dened as recurrence 
+of clinical signs following a disease-free interval of at least 10 days 
+aer the previous episode, was 58%. No signicant dierence in 
+recurrence rate was identied between the 3 groups (FIC, uroli-
+thiasis, or bacterial UTI). Twenty-one cats (42%) had 1 relapse, 
+12 (24%) had 2 relapses, 10 (20%) had 3, and 7 cats (14%) had 4 
+to 8 relapses within a median observation period of 38 months 
+(range 0.5-138 months). Fourteen cats (28%) suered from dier-
+ent causes of LUTS during dierent episodes. e mortality due 
+to LUTS among all 101 cats was 5%.
+Fourteen of the 50 cats (28%) with recurring LUTS episodes 
+were diagnosed with dierent etiologies at dierent episodes; 
+the most common combination of diagnoses in these cats was 
+FIC and urolithiasis. Although limited by recall bias and a lack 
+of statistical power, the study demonstrated that recurrent epi-
+sodes of LUTS in aected cats can occur commonly, and cannot 
+be assumed to result from the same etiology. It is worth recalling 
+that Osborne etal., listed some 30 possible causes of LUTS, from 
+anatomical anomalies to toxins, nearly 40 years ago.3
+RECENT STUDIES—HUMANS AND OTHER ANIMALS
+Humans
+IC in people recently has been classied as a “chronic overlap-
+ping pain condition” by the National Institutes of Health,8 as 
+“nociplastic”9 and “chronic primary pain”10 by the International 
+Association for the Study of Pain, and as “centralized pain” by 
+the Multi-Disciplinary Approach to the Study of Chronic Pelvic 
+Pain.11 All of these terms describe pain primarily originating 
+from the patient’s central nervous system (CNS).11 is change 
+from a “nociceptive” to a “nociplastic” perspective resulted from 
+a paradigm shi in understanding of chronic pain, which is now 
+CHAPTER 311
+
+SECTION XXI
+•
+Lower Urinary Tract Disease
+2172
+eBooks.Health.Elsevier.com
+conceptualized as resulting from variable combinations of noci-
+plastic, neuropathic, nociceptive, and mixed sensory input con-
+veying danger (in the presence or absence of tissue damage) to 
+the CNS.12
+CNSs receive constant input from external “envirosensors” 
+(auditory, gustatory, olfactory, somatosensory, and visual) and from 
+internal sensors throughout the body.13 Brodal14 recently suggested 
+the term homeoceptor rather than nociceptor to describe small sen-
+sory bers based on their response patterns to a variety of environ-
+mental stimuli, and because nociceptive activity is neither necessary 
+nor sucient to evoke pain (although it is required to protect the 
+body from injury15). Moreover, no innate properties of nociceptive 
+bers endow them, and only them, with the capacity to evoke pain.16
+Aer variable excitatory and inhibitory processing in the spi-
+nal cord,16 information from the periphery is transmitted to the 
+brain. Very early in life,17 animals begin to integrate these inputs 
+with their contexts to manage subsequent interactions with the 
+world. is integration permits the animal to develop some form 
+of anticipation of sensory input. e resulting system has been 
+described as “predictive processing (or coding)”18 and “interac-
+tivist.”19 Regardless of the process, sensory information reaching 
+the brain is integrated into a “decision” that forms the basis for 
+subsequent action, whether or not it is consciously perceived. 
+At its most basic, the CNS “decides” whether to continue with 
+the present course of interaction with the world, or to change 
+course. Depending on the salience of the message for the indi-
+vidual’s action and motivation, threatening messages can change 
+the course of behavior to withdrawal and avoidance.20
+Acutely dangerous, threatening situations can activate ight, 
+ght, or freeze reactions, which can suppress the pain of injuries 
+in the service of survival.21 22 In contrast, persistent exposure, 
+particularly to toxic levels of threat, can exacerbate rather than 
+suppress chronic pain symptoms.23 If the animal “learns” that 
+withdrawal and avoidance occur most eciently in the presence 
+of signals from a particular source in the body, pain may be per-
+ceived to arise from this source even when the threat is external 
+to the body.4 us, pain is a decision a brain makes to protect 
+animals from threat, whatever the source.23
+Other Animals
+FIC in cats has limitations as a model of IC in humans.24 Acquir-
+ing aected cats depends on both veterinarian and owner cooper-
+ation, and such cats are more expensive to maintain in laboratory 
+animal facilities than are rodents, are outbred, and lack many of 
+the molecular research tools available for rodents. For these rea-
+sons, stress models of IC recently have been developed in rodents, 
+including water avoidance25 and early life stressors,26 to investi-
+gate eects of environmental threats on visceral function, noci-
+ception, anxiety, and depression.27
+Water-avoidance stress (WAS) has been used for investigating 
+mechanisms of visceral pain associated with IC in adult rats.28-
+30 Briey, WAS is induced by placing rats predisposed to anxiety 
+on pedestals in the center of tanks lled with water at room tem-
+perature for an hour a day for 10 consecutive days. is stressor 
+induces some of the same histopathologic and clinical features 
+of (F)IC, including urothelial disruption, angiogenesis, mast cell 
+inltration, and increased urinary frequency, but not in the fre-
+quency of non-voiding contractions during cystometry under 
+anesthesia. Lower hind paw withdrawal thresholds and increased 
+withdrawal responses to suprapubic stimulation, which persisted 
+for more than a month, also have been reported.29
+Adverse early life experiences appear to be more common in 
+people31 and cats32 with (F)IC than in healthy controls. Adverse 
+early life experience models, including maternal separation33
+and limited nest materials,33 34 recently have been used for inves-
+tigating eects of environmental threats on visceral function, 
+nociception, anxiety, and depression. Aer reviewing the eects 
+of exposure of healthy neonatal rodents to various stressors on 
+chronic visceral pain, Greenwood-Van Meerveld and Johnson33
+concluded that chronic stress early in life can result in gene × envi-
+ronment interactions. Such interactions can induce epigenetically 
+mediated changes in neuronal circuitry, leading to neuroplasticity 
+and increased expression of pro-nociceptive neurotransmitters in 
+the CNS of aected individuals. is mechanism also has been 
+described for sensitization of the CTRS in patients with (F)IC.6
+MANIFESTATIONS/SIGNS OF FIC IN THE HOME 
+ENVIRONMENT
+As mentioned, FIC typically presents with a variety of LUTS, 
+including dysuria, stranguria, pollakiuria, hematuria and peri-
+uria.35 Cat owners may not be familiar with the signs of painful 
+urination or their cats’ normal urinary habits (e.g., frequency of uri-
+nation, amount of urine typically produced by cats). Some owners 
+may mistake FIC for spraying or marking behavior (ch. 11). Ques-
+tions about the frequency, location, positioning of urination (e.g., 
+vertical versus horizontal surface) can help rule out urine (spray) 
+marking.36 Owners are oen motivated to present the cat for medi-
+cal assessment when they observe blood in the urine or when the 
+cat starts urinating outside the litter box. Other signs associated 
+with stress, such as overgrooming (especially of the caudal ventral 
+abdomen and inner thighs), hiding, and biting or scratching, may 
+be overlooked.37 Because of FIC’s intermittent nature, with signs 
+that wax and wane, owners may mistakenly believe that the prob-
+lem has resolved, until another episode of FIC occurs, oen trig-
+gered by stressful situations in the environment.36
+DIAGNOSIS1
+We take several factors into consideration, including the num-
+ber of episodes the cat has had, the severity of the cat’s clinical 
+signs (including comorbidities), and the nancial resources of 
+the owner.1 No sensitive, specic, and clinically available test 
+currently exists to diagnose FIC, so the diagnosis rests on signal-
+ment; history, including inclusion of cat and known environmen-
+tal risk factors; exclusion of other (common) causes of LUTS; and 
+response to therapy (Figure 311.1).
+RESPONSE TO MEMO
+Most middle-aged cats with cLUTS are eventually diagnosed with 
+FIC,38,39 so we oen begin by oering multimodal environmental 
+modication (MEMO)40 for FIC and monitoring the cat’s response. 
+We watch carefully for a positive response to support the diagno-
+sis of FIC, particularly if the owner has nancial constraints and 
+declines additional diagnostic testing (e.g., urinalysis, imaging).
+ABDOMINAL RADIOGRAPHS
+If the cat does not improve, or if clinical signs return within days 
+to weeks despite implementation of appropriate MEMO, we rec-
+ommend abdominal radiography because the next most common 
+dierential in cats with cLUTS is urinary stone disease (ch. 309). 
+Abdominal radiographs that include the entire urinary system 
+from the cranial pole of the right kidney to beyond the end of the 
+distal urethra help detect radiopaque stones; approximately 20% 
+of cats with LUTS have bladder stones.7
+URINALYSIS AND URINE CULTURE
+A urinalysis (ch. 70) and bacterial culture and sensitivity of urine 
+should be evaluated at least once in cats with cLUTS if possible, 

@@ -1,3 +1,6 @@
+import { PROGRESSIVE_SUMMARY_PREVIEWS } from '../../data/progressiveSummaryPreviews';
+import { CONCISE_MEDICATION_SUMMARIES } from '../../data/conciseClinicalSummaries';
+import { SummaryPreview } from '../shared/SummaryPreview';
 import React, { useMemo } from 'react';
 import {
   Clock,
@@ -116,6 +119,8 @@ export function MedicationQuickSummaryPanel({
   }, [medication]);
 
   const highlights = medication.quickSummaryHighlights ?? [];
+  const preview = PROGRESSIVE_SUMMARY_PREVIEWS[medication.slug];
+  const clinicalPreview = CONCISE_MEDICATION_SUMMARIES[medication.slug];
 
   return (
     <section
@@ -139,9 +144,10 @@ export function MedicationQuickSummaryPanel({
         <div className="rounded-xl border border-white/15 bg-white/10 p-4 backdrop-blur-md md:rounded-2xl md:p-6">
           <p className="text-xs font-bold uppercase tracking-wider text-amber-200 flex items-center gap-2 mb-3">
             <Info className="h-4 w-4" />
-            Visão Geral em Linguagem Direta & Fisiologia
+            Em palavras simples
           </p>
-          <p className="text-sm font-medium leading-6 text-white/95 md:text-lg md:leading-relaxed">
+          <div className="text-sm font-medium leading-6 text-white/95">
+            <SummaryPreview preview={preview?.simple}>
             <HighlightedText
               text={
                 medication.plainLanguageSummary ||
@@ -149,7 +155,8 @@ export function MedicationQuickSummaryPanel({
               }
               highlights={highlights}
             />
-          </p>
+            </SummaryPreview>
+          </div>
         </div>
 
         {/* 4 Pilares de Ação Farmacológica */}
@@ -169,7 +176,7 @@ export function MedicationQuickSummaryPanel({
                     <Icon className="h-4 w-4 shrink-0" />
                     <span className="text-xs font-bold uppercase tracking-wide">{pillar.title}</span>
                   </div>
-                  <p className="text-xs leading-relaxed text-slate-300">{pillar.desc}</p>
+                  <div className="text-xs leading-relaxed text-slate-300"><SummaryPreview preview={preview?.pillars[pillar.title]}><p>{pillar.desc}</p></SummaryPreview></div>
                 </div>
               );
             })}
@@ -182,6 +189,7 @@ export function MedicationQuickSummaryPanel({
             Indicações de Uso Resumidas
           </h3>
 
+          <SummaryPreview preview={preview?.indications ?? clinicalPreview?.points[0]}>
           <div className="grid gap-4 sm:grid-cols-2">
             {quickIndications.map((item, idx) => {
               const isDog = item.species === 'dog' || item.species === 'both';
@@ -257,6 +265,7 @@ export function MedicationQuickSummaryPanel({
               );
             })}
           </div>
+          </SummaryPreview>
         </div>
 
         {/* Banner de Segurança: Aviso Clínico Importante - dinâmico por medicamento */}
@@ -269,6 +278,7 @@ export function MedicationQuickSummaryPanel({
               </span>
             </div>
 
+            <SummaryPreview preview={preview?.attention ?? (clinicalPreview ? clinicalPreview.points.slice(1).join(" ") : undefined)}>
             <div className="space-y-2.5 text-xs sm:text-sm pl-1">
               {medication.clinicalWarningItems.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5">
@@ -281,6 +291,7 @@ export function MedicationQuickSummaryPanel({
                 </div>
               ))}
             </div>
+            </SummaryPreview>
           </div>
         )}
       </div>

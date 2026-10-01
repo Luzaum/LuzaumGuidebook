@@ -1,0 +1,43 @@
+- generic [ref=e4]:
+  - button "Voltar para Vetius" [ref=e5] [cursor=pointer]
+  - generic [ref=e6]:
+    - generic [ref=e7]:
+      - img "Dog portrait with warm light" [ref=e8]
+      - button "Foto anterior" [ref=e10] [cursor=pointer]
+      - button "Proxima foto" [ref=e13] [cursor=pointer]
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - heading "Acesso seguro em qualquer plantão" [level=2] [ref=e18]
+          - paragraph [ref=e19]: Seus dados clínicos ficam protegidos e sincronizados na nuvem.
+        - generic [ref=e20]:
+          - button "Ir para foto 1" [ref=e21] [cursor=pointer]
+          - button "Ir para foto 2" [ref=e23] [cursor=pointer]
+          - button "Ir para foto 3" [ref=e25] [cursor=pointer]
+          - button "Ir para foto 4" [ref=e27] [cursor=pointer]
+          - button "Ir para foto 5" [ref=e29] [cursor=pointer]
+          - button "Ir para foto 6" [ref=e31] [cursor=pointer]
+          - button "Ir para foto 7" [ref=e33] [cursor=pointer]
+          - button "Ir para foto 8" [ref=e35] [cursor=pointer]
+          - button "Ir para foto 9" [ref=e37] [cursor=pointer]
+          - button "Ir para foto 10" [ref=e39] [cursor=pointer]
+    - generic [ref=e42]:
+      - generic [ref=e43]:
+        - heading "Bem-vindo de volta" [level=1] [ref=e44]
+        - paragraph [ref=e45]: Entre para continuar seu trabalho clínico com segurança.
+      - button "Entrar com Google" [ref=e47] [cursor=pointer]
+      - generic [ref=e53]: ou
+      - generic [ref=e58]:
+        - generic [ref=e59]:
+          - generic [ref=e60]: Usuário ou e-mail *
+          - textbox "Usuário ou e-mail *" [ref=e61]:
+            - /placeholder: "ex.: usuário ou nome@gmail.com"
+        - generic [ref=e62]:
+          - generic [ref=e63]: Senha *
+          - generic [ref=e64]:
+            - textbox "Senha *" [ref=e65]:
+              - /placeholder: Digite sua senha
+            - button "Mostrar senha" [ref=e66] [cursor=pointer]
+        - button "Entrar" [ref=e70] [cursor=pointer]
+      - generic [ref=e73]:
+        - button "Esqueceu sua senha?" [ref=e74] [cursor=pointer]
+        - button "Não tem conta? Criar conta" [ref=e75] [cursor=pointer]

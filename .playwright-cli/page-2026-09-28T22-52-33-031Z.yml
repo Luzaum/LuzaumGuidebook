@@ -1,0 +1,163 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - heading [level=3] [ref=e8]
+        - paragraph [ref=e13]: Cada produto tem uma função. Escolha a espécie e o objetivo do suporte; depois consulte a indicação, as limitações e o preparo da unidade.
+        - list "Como usar o guia" [ref=e14]:
+          - listitem [ref=e15]:
+            - generic [ref=e16]: "1"
+            - text: Defina o objetivo
+          - listitem [ref=e17]:
+            - generic [ref=e18]: "2"
+            - text: Escolha o produto
+          - listitem [ref=e19]:
+            - generic [ref=e20]: "3"
+            - text: Revise o uso prático
+        - paragraph [ref=e21]: Os botões de interrogação explicam os termos e o raciocínio. Toque ou clique para abrir a ajuda.
+      - figure "Visão geral em cães · Guia de preparo" [ref=e22]:
+        - button "Ampliar princípios da transfusão em cães" [ref=e23] [cursor=pointer]:
+          - img "Princípios da transfusão em cães" [ref=e24]
+          - generic [ref=e25]: Ampliar
+    - region [ref=e30]:
+      - generic [ref=e31]:
+        - heading "1. Espécie e objetivo do suporte" [level=3] [ref=e32]
+        - group "Espécie" [ref=e33]:
+          - button "🐕 Cão" [pressed] [ref=e34] [cursor=pointer]
+          - button "🐈 Gato" [ref=e35] [cursor=pointer]
+      - generic [ref=e36]:
+        - text: O que você precisa repor?
+        - button "Saiba mais sobre Objetivo terapêutico" [ref=e37] [cursor=pointer]
+      - group "Objetivo terapêutico" [ref=e41]:
+        - button "Todos os produtos Explorar o catálogo" [pressed] [ref=e42] [cursor=pointer]:
+          - generic [ref=e43]: Todos os produtos
+          - generic [ref=e44]: Explorar o catálogo
+        - button "Oxigenação Produtos com hemácias" [ref=e45] [cursor=pointer]:
+          - generic [ref=e46]: Oxigenação
+          - generic [ref=e47]: Produtos com hemácias
+        - button "Coagulação Reposição de fatores" [ref=e48] [cursor=pointer]:
+          - generic [ref=e49]: Coagulação
+          - generic [ref=e50]: Reposição de fatores
+        - button "Plaquetas Suporte plaquetário" [ref=e51] [cursor=pointer]:
+          - generic [ref=e52]: Plaquetas
+          - generic [ref=e53]: Suporte plaquetário
+        - button "Suporte oncótico Proteínas e albumina" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: Suporte oncótico
+          - generic [ref=e56]: Proteínas e albumina
+    - generic [ref=e57]:
+      - navigation "Produtos disponíveis" [ref=e58]:
+        - heading "2. Escolha o produto" [level=3] [ref=e59]
+        - generic [ref=e60]:
+          - generic [ref=e64]: Buscar hemocomponente
+          - textbox "Buscar hemocomponente" [ref=e65]:
+            - /placeholder: Nome ou indicação
+        - status [ref=e66]: 13 produtos para cães
+        - generic [ref=e67]:
+          - button "Sangue total fresco STF" [ref=e68] [cursor=pointer]:
+            - generic [ref=e69]:
+              - generic [ref=e70]: Sangue total fresco
+              - generic [ref=e71]: STF
+          - button "Sangue total armazenado STA" [ref=e72] [cursor=pointer]:
+            - generic [ref=e73]:
+              - generic [ref=e74]: Sangue total armazenado
+              - generic [ref=e75]: STA
+          - button "Concentrado de hemácias CH" [ref=e76] [cursor=pointer]:
+            - generic [ref=e77]:
+              - generic [ref=e78]: Concentrado de hemácias
+              - generic [ref=e79]: CH
+          - button "Plasma fresco PF" [ref=e80] [cursor=pointer]:
+            - generic [ref=e81]:
+              - generic [ref=e82]: Plasma fresco
+              - generic [ref=e83]: PF
+          - button "Plasma fresco congelado PFC" [pressed] [ref=e84] [cursor=pointer]:
+            - generic [ref=e85]:
+              - generic [ref=e86]: Plasma fresco congelado
+              - generic [ref=e87]: PFC
+          - button "Plasma congelado PC" [ref=e90] [cursor=pointer]:
+            - generic [ref=e91]:
+              - generic [ref=e92]: Plasma congelado
+              - generic [ref=e93]: PC
+          - button "Crioprecipitado CRIO" [ref=e94] [cursor=pointer]:
+            - generic [ref=e95]:
+              - generic [ref=e96]: Crioprecipitado
+              - generic [ref=e97]: CRIO
+          - button "Plasma pobre em crioprecipitado PPC" [ref=e98] [cursor=pointer]:
+            - generic [ref=e99]:
+              - generic [ref=e100]: Plasma pobre em crioprecipitado
+              - generic [ref=e101]: PPC
+          - button "Plasma rico em plaquetas PRP" [ref=e102] [cursor=pointer]:
+            - generic [ref=e103]:
+              - generic [ref=e104]: Plasma rico em plaquetas
+              - generic [ref=e105]: PRP
+          - button "Concentrado de plaquetas CP" [ref=e106] [cursor=pointer]:
+            - generic [ref=e107]:
+              - generic [ref=e108]: Concentrado de plaquetas
+              - generic [ref=e109]: CP
+          - button "Plaquetas criopreservadas ou liofilizadas CP especial" [ref=e110] [cursor=pointer]:
+            - generic [ref=e111]:
+              - generic [ref=e112]: Plaquetas criopreservadas ou liofilizadas
+              - generic [ref=e113]: CP especial
+          - button "Albumina canina concentrada AC" [ref=e114] [cursor=pointer]:
+            - generic [ref=e115]:
+              - generic [ref=e116]: Albumina canina concentrada
+              - generic [ref=e117]: AC
+          - button "Albumina humana AH" [ref=e118] [cursor=pointer]:
+            - generic [ref=e119]:
+              - generic [ref=e120]: Albumina humana
+              - generic [ref=e121]: AH
+      - article [ref=e122]:
+        - generic [ref=e123]:
+          - paragraph [ref=e124]: 3. Uso prático · Cão
+          - heading "Plasma fresco congelado" [level=3] [ref=e125]
+          - paragraph [ref=e126]: PFC · Coagulação
+        - generic [ref=e127]:
+          - generic [ref=e128]:
+            - heading "Quando considerar" [level=4] [ref=e129]
+            - paragraph [ref=e133]: Reposição de múltiplos fatores na coagulopatia com sangramento, ou antes de procedimento invasivo com risco hemorrágico relevante; contém fatores lábeis.
+          - generic [ref=e134]:
+            - heading "Limites deste produto" [level=4] [ref=e135]
+            - paragraph [ref=e138]: Não corrige anemia ou trombocitopenia. Volumes usuais têm efeito pequeno sobre albumina.
+          - generic [ref=e139]:
+            - generic [ref=e140]:
+              - generic [ref=e141]: "1"
+              - generic [ref=e142]:
+                - heading [level=4] [ref=e143]:
+                  - text: Antes de solicitar
+                  - button "Saiba mais sobre Compatibilidade do produto" [ref=e144] [cursor=pointer]
+                - paragraph [ref=e148]: Confirmar data e método de processamento; em gatos, usar plasma AB compatível. Avaliar deficiência específica para considerar crioprecipitado.
+            - generic [ref=e149]:
+              - generic [ref=e150]: "2"
+              - generic [ref=e151]:
+                - heading [level=4] [ref=e152]:
+                  - text: Preparo e administração
+                  - button "Saiba mais sobre Preparo do produto" [ref=e153] [cursor=pointer]
+                - paragraph [ref=e157]: Descongelar conforme hemobanco, sem calor excessivo; não recongelar ou prolongar o uso fora do prazo local.
+            - generic [ref=e158]:
+              - generic [ref=e159]: "3"
+              - generic [ref=e160]:
+                - heading [level=4] [ref=e161]:
+                  - text: Como acompanhar a resposta
+                  - button "Saiba mais sobre Avaliação da resposta" [ref=e162] [cursor=pointer]
+                - paragraph [ref=e166]: Sangramento, testes de coagulação, perfusão e sinais de reação/sobrecarga.
+          - generic [ref=e167]:
+            - heading [level=4] [ref=e168]:
+              - text: Estimativa de volume
+              - button "Saiba mais sobre Faixa de volume" [ref=e169] [cursor=pointer]
+            - paragraph [ref=e173]:
+              - text: "Faixa inicial publicada:"
+              - strong [ref=e174]: 6–12 mL/kg
+            - paragraph [ref=e175]: Faixa inicial Cornell e tabela felina do livro; reavaliar efeito antes de repetir.
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - text: Peso do receptor (kg)
+                - textbox "Peso do receptor (kg)" [ref=e178]:
+                  - /placeholder: "Ex.: 12,5"
+              - status [ref=e179]:
+                - paragraph [ref=e180]: Volume total estimado
+                - paragraph [ref=e181]: Informe o peso
+            - paragraph [ref=e182]: Peso × faixa em mL/kg. Este resultado não define a velocidade de infusão; reavalie a resposta antes de repetir.
+          - paragraph [ref=e186]: Antes da infusão, confirme identidade, compatibilidade, rótulo, validade, acesso e filtro. Registre os parâmetros iniciais e prepare o monitoramento e a conduta em caso de reação.
+          - group [ref=e187]:
+            - generic "Evidência e referências deste produto" [ref=e188] [cursor=pointer]
+    - group [ref=e189]:
+      - generic "Notas de leitura e biblioteca de referência" [ref=e190] [cursor=pointer]

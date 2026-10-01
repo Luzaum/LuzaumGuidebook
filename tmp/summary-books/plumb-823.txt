@@ -1,0 +1,255 @@
+796      Marbofloxacin 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Marbofloxacin 
+(mar-boe-flox-a-sin)  Zeniquin®
+Fluoroquinolone Antibiotic
+Prescriber Highlights
+	
+▶Veterinary oral fluoroquinolone antibiotic effective against a 
+variety of bacterial pathogens
+	
+▶Contraindications include hypersensitivity to fluoroquinolo-
+nes, cats younger than 12 months, and immature dogs during 
+the rapid growth phase.
+	
+▶May produce erosions of cartilage in weight-bearing joints 
+and other signs of arthropathy in immature animals of various 
+species
+	
+▶Use with caution in patients with hepatic or renal insufficien-
+cy or dehydration, in those that are prone to seizures, and in 
+immature dogs and cats during the rapid growth phase.
+	
+▶Adverse effects include GI distress; marbofloxacin has not 
+been proven to cause ocular toxicity in cats or predispose to 
+Streptococcus canis necrotizing fasciitis.
+	
+▶Many drug interactions
+	
+▶Prohibited for extra-label use in food animals in the United 
+States
+Uses/Indications
+Marbofloxacin is labeled for treatment of susceptible bacterial in-
+fections in dogs and cats. It is recommended that marbofloxacin be 
+reserved for cases of bacterial cystitis with documented resistance to 
+first-line agents (eg, amoxicillin, amoxicillin/clavulanic acid); however, 
+it is a good first-line choice for pyelonephritis or prostatic infections.1 
+Fluoroquinolones are considered second-tier drugs for treatment of 
+bacterial folliculitis.2 In dogs, marbofloxacin appears to have some 
+efficacy for treating the clinical signs associated with canine leish-
+maniasis.3 Broad-spectrum antibacterial coverage can be achieved by 
+combining marbofloxacin with an antibiotic with gram-positive and 
+anaerobic activity (eg, clindamycin, ampicillin/amoxicillin).
+The World Health Organization (WHO) has designated fluoro-
+quinolones as Critically Important, Highest Priority antimicrobials 
+for human medicine.4 The Office International des Epizooties (OIE) 
+has designated second-generation quinolones as Veterinary Critical-
+ly Important Antimicrobial (VCIA) Agents in avian, bovine, equine, 
+lagomorph, and swine species.5
+Pharmacology/Actions
+Marbofloxacin is a third-generation, concentration-dependent, bac-
+tericidal fluoroquinolone. It acts by inhibiting bacterial DNA-gyrase 
+(type-II topoisomerase), thus preventing DNA supercoiling and 
+DNA synthesis, with susceptible bacteria cell death occurring within 
+20 to 30 minutes of exposure. Like other fluoroquinolones, marbo-
+floxacin has demonstrated a significant postantibiotic effect for both 
+gram-negative and gram-positive bacteria and is active in both sta-
+tionary and growth phases of bacterial replication. Clinical efficacy 
+is associated with achieving a peak marbofloxacin concentration 10 
+times greater than bacterial MIC.6,7
+Marbofloxacin has a similar spectrum of activity as the other vet-
+erinary commercially available fluoroquinolones, although marbo-
+floxacin is considered more active against Pseudomonas aeruginosa 
+as compared with enrofloxacin.8 Fluoroquinolone agents have good 
+activity against many gram-negative bacilli and cocci, including 
+most species and strains of Pseudomonas aeruginosa, Klebsiella spp, 
+Escherichia coli, Enterobacter spp, Campylobacter spp, Shigella spp, 
+Salmonella spp, Aeromonas spp, Haemophilus spp, Pasteurella spp, 
+Proteus spp, Yersinia spp, Serratia spp, and Vibrio spp. Other organ-
+isms that are generally susceptible include Brucella spp, Chlamydia 
+trachomatis, Staphylococcus spp (including penicillinase-producing 
+and methicillin-resistant strains), Mycoplasma spp, and some Myco-
+bacterium spp. Bordetella bronchiseptica was susceptible, and a sig-
+nificant postantibiotic effect was demonstrated ex vivo.9
+Fluoroquinolones have variable activity against most streptococci 
+and are not usually recommended to treat these infections. Marbo-
+floxacin is ineffective in treating anaerobic infections. Fluoroquino-
+lones are ineffective against viral, protozoal, or fungal infections.
+Resistance can occur by mutation, particularly with Pseudomonas 
+aeruginosa, Klebsiella pneumoniae, Acinetobacter spp, Staphylococcus 
+spp, and enterococci, but plasmid-mediated resistance is thought to 
+occur only rarely.
+Marbofloxacin’s leishmanicidal activity is via the TNF-alpha and 
+nitric oxide synthase pathways.3
+Pharmacokinetics
+In dogs, marbofloxacin is rapidly absorbed after oral administration 
+and has a bioavailability of 94%.10 Mean peak plasma concentra-
+tions in dogs given 2.75 mg/kg or 5.5 mg/kg PO were 2 µg/mL and 
+4.2 µg/mL, respectively. Peak concentrations occur in ≈1.5 hours. 
+Protein binding is low, and the apparent volume of distribution is 
+1.2 to 1.9 L/kg. Marbofloxacin is widely distributed in canine tissues, 
+and relatively high concentrations can be found in prostatic fluid. 
+Elimination half-life averages 9 to 12 hours.11,12 The drug is eliminat-
+ed unchanged in the urine (40%) and bile/feces.11 Only ≈15% of a 
+dose is metabolized in the liver. Mild to moderate renal impairment 
+does not significantly alter dose requirements in dogs.13
+In cats, absorption after oral administration is nearly complete 
+and peak serum concentrations occur ≈1 to 2 hours post-adminis-
+tration.10,14 Mean peak plasma concentrations in cats given 5.5 mg/kg 
+PO were 4.8 µg/mL. Terminal elimination half-life is ≈13 hours, with 
+≈70% of a dose excreted in the urine mostly as unchanged drug.
+In rabbits, 5 mg/kg PO every 24 hours produced a peak plasma 
+concentration of 1.7 µg/mL 24 hours after the first administration 
+and 2.6 µg/mL after the tenth daily dose. Elimination half-life was 4 
+to 8 hours.15
+Contraindications/Precautions/Warnings
+Marbofloxacin is contraindicated in patients hypersensitive to it or 
+other fluoroquinolones. Fluoroquinolones may cause cartilage ero-
+sions in weight-bearing joints in immature animals; dogs appear to 
+be more susceptible to this effect.10 To avoid cartilage damage, mar-
+bofloxacin is contraindicated in immature dogs during the rapid 
+growth phase (small- and medium-breed dogs up to 8 months of 
+age, large breeds to 12 months of age, and giant breeds to 18 months 
+of age). It is also contraindicated in cats younger than 12 months. 
+Marbofloxacin can (rarely) cause CNS stimulation and should be 
+used with caution in patients with seizure disorders. Patients with 
+severe renal or hepatic impairment may require dosage adjustments 
+(eg, increased dosing interval) to prevent drug accumulation. 
+Fluoroquinolones may cause photosensitization, and prolonged 
+exposure of bare skin (eg, nose) or thinly haired skin to direct sun-
+light should be avoided.10
+The FDA has prohibited the extra-label use of this drug in 
+food-producing animals.
+Adverse Effects
+With the exception of potential cartilage abnormalities in young an-
+imals (see Contraindications/Precautions/Warnings), the adverse 
+effect profile of marbofloxacin is usually limited to GI distress (eg, 
+vomiting, anorexia, diarrhea) and decreased activity.
+Other fluoroquinolones have, in rare incidences, caused elevated 
+hepatic enzymes, ataxia, seizures, depression, lethargy, and nervous-
+
+Marbofloxacin       797
+ness in dogs. Hypersensitivity reactions or crystalluria could occur.
+Although unlikely to occur, the FDA’s Adverse Drug Reaction da-
+tabase has received some reports of blindness associated with mar-
+bofloxacin. Unlike enrofloxacin, causal effect of ocular toxicity has 
+not yet been proven with marbofloxacin, but higher dosages should 
+be used carefully.
+Induction of Streptococcus canis necrotizing fasciitis, which can be 
+seen with enrofloxacin, does not appear to be a problem with mar-
+bofloxacin.
+Reproductive/Nursing Safety
+The safety of marbofloxacin in pregnant or lactating animals or 
+those used for breeding purposes has not been demonstrated.10 Flu-
+oroquinolones should be used cautiously in pregnant animals due to 
+their adverse effects on cartilage.
+In cattle, marbofloxacin distributes into milk, attaining milk con-
+centration similar to that of plasma.16
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+It is unlikely that an acute overdose of marbofloxacin would result 
+in signs more serious than either anorexia or vomiting, but the ad-
+verse effects noted previously could occur. Dogs receiving 55 mg/kg 
+per day PO for 12 days have developed anorexia, vomiting, dehydra-
+tion, tremors, red skin, facial swelling, lethargy, and weight loss.10 All 
+large-breed, 3- to 4-month-old puppies given 11 mg/kg/day devel-
+oped marked lameness due to articular cartilage lesions. Increased 
+salivation, vomiting, and redness of the pinnae occurred in cats giv-
+en 27.5 – 55 mg/kg/day.10 Macroscopic and microscopic cartilage 
+changes were noted but without accompanying lameness.
+Acute bilateral blindness occurred in a dog following an acciden-
+tal overdose of 35 mg/kg/day for 3 days.17
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving marbofloxacin or related flu-
+oroquinolones and may be of significance in veterinary patients. Un-
+less otherwise noted, use together is not necessarily contraindicated, 
+but the potential risks should be weighed and additional monitoring 
+performed when appropriate.
+	■Aluminum-, Calcium-, and Magnesium-Containing Oral 
+Products: May bind to marbofloxacin and prevent its absorp-
+tion; separate doses of by at least 2 hours.
+	■Antibiotics, Other (eg, aminoglycosides, third-generation 
+cephalosporins, penicillins—extended-spectrum): Synergism 
+may occur but is not predictable against some bacteria (particu-
+larly Pseudomonas aeruginosa) with these compounds. Although 
+marbofloxacin has minimal activity against anaerobes, in vitro 
+synergy has been reported when it was used with clindamycin 
+against strains of Peptostreptococcus spp, Lactobacillus spp, and 
+Bacteroides fragilis. 
+	■Corticosteroids (eg, dexamethasone, prednis(ol)one): Con-
+comitant use with fluoroquinolones may increase the risk for ten-
+donitis and tendon rupture.
+	■Cyclosporine (systemic): Fluoroquinolones may exacerbate 
+the nephrotoxicity and reduce the metabolism of cyclosporine 
+when used systemically.
+	■Nonsteroidal Anti-Inflammatory Drugs (NSAIDs, 
+eg, flunixin): Flunixin has been shown in dogs to increase the 
+AUC and elimination half-life of enrofloxacin, and enrofloxacin 
+increases the AUC and elimination half-life of flunixin; it is un-
+known if marbofloxacin also causes this effect, if other NSAIDs 
+interact with marbofloxacin, or if this interaction applies to other 
+species.
+	■Iron (oral): May decrease marbofloxacin absorption; doses 
+should be separated by at least 2 hours after marbofloxacin.
+	■Methotrexate (MTX): May increase MTX concentrations and 
+risk for MTX toxicity
+	■Nitrofurantoin: May antagonize the antimicrobial activity of 
+the fluoroquinolones; concomitant use is not recommended
+	■Probenecid: May block tubular secretion of ciprofloxacin; may 
+increase the blood concentration and half-life of marbofloxacin
+	■QT-Prolonging Agents (eg, cisapride, sotalol, quinidine, 
+erythromycin, ondansetron): In humans, fluoroquinolones may 
+enhance the QT-prolonging effect of other drugs.
+	■Sucralfate: May inhibit absorption of marbofloxacin; adminis-
+tration of these drugs should be separated by at least 2 hours after 
+marbofloxacin.
+	■Theophylline, Aminophylline: Marbofloxacin may increase 
+theophylline blood concentrations; this interaction is more likely 
+to occur with enrofloxacin than with marbofloxacin.18
+	■Urine Acidifiers (eg, ammonium chloride, methionine): 
+Low urinary pH could have an inhibitory effect on the activity of 
+marbofloxacin.
+	■Warfarin: Potential for increased warfarin effects; monitor pro-
+thrombin time (PT)
+	■Zinc (oral): May decrease marbofloxacin absorption; doses 
+should be separated by at least 2 hours after marbofloxacin.
+Laboratory Considerations
+	■In some humans, fluoroquinolones have caused increases in liver 
+enzymes, BUN, and creatinine and decreases in hematocrit. The 
+clinical relevance of these mild changes in veterinary medicine is 
+not known.
+Dosages
+DOGS:
+Skin and soft tissue infections: 
+•	 Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once dai-
+ly.10 Give for 2 to 3 days beyond cessation of clinical signs to a 
+maximum duration of 30 days. 
+•	 Extra-label dosage: 5.5 mg/kg PO once daily19 
+UTIs:
+•	 Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once daily 
+for at least 10 days to a maximum duration of 30 days. NOTE: 
+A shorter treatment duration (ie, 3 to 5 days) is adequate for 
+most cases of bacterial cystitis.1
+•	 Extra-label dosage for sporadic bacterial cystitis: 2.75 – 5.5 mg/kg 
+PO once daily for 3 to 5 days.1 NOTE: When treating Pseudo-
+monas spp infections, most clinicians recommend using the 
+higher end of the dose range.
+Leishmaniasis (extra-label): 2 mg/kg PO once daily for 28 days. 
+At the one-year follow-up, marbofloxacin has shown some effica-
+cy in 70% of treated dogs. At 3 months, there was a 61% decrease 
+in the sum of clinical scores. Though clinically improved, dogs 
+remained parasitologically positive.3,20,21
+CATS:
+Skin and soft tissue infections: 
+•	 Label dosage; FDA-approved: 2.75 – 5.5 mg/kg PO once dai-
+ly.10 Give for 2 to 3 days beyond cessation of clinical signs to a 

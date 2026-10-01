@@ -1,0 +1,189 @@
+===== BSAVA PDF 119 / impressa 103 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+103
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+and chloramphenicol reduce cyclophosphamide efficacy. If 
+administered with doxorubicin there is an increased risk of 
+cardiotoxicity. Insulin requirements are altered by concurrent 
+cyclophosphamide.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs:
+• Lymphoid neoplasia: generally 50 mg/m2 p.o. q48h or 3–4 
+consecutive days/week; or 200–250 mg/m 2 p.o or i.v. q3wk.
+• Metronomic chemotherapy: 10–15 mg/m 2 p.o. q24h.
+• Multiple myeloma in patients refractory to melphalan: 1 mg/kg 
+p.o. q24h.
+• Macroglobulinaemia in patients refractory to chlorambucil:  
+1 mg/kg p.o. q24h.
+Cats:
+• Lymphoid neoplasia: as for dogs, except 200–300 mg/m 2 in 
+‘high dose’ COP regimes.
+References
+Elmslie RE, Glowe P and Dow SW (2008) Metronomic therapy with cyclophosphamide 
+and piroxicam effectively delays tumor recurrence in Dogs with Incompletely Resected 
+Soft Tissue Sarcomas. Journal of Veterinary Internal Medicine  22, 1373–1379
+Teske E, van Straten G, van Noort R et al. (2002) Chemotherapy with cyclophosphamide, 
+vincristine and prednisolone (COP) in cats with malignant lymphoma: new results with an 
+old protocol. Journal of Veterinary Internal Medicine 16, 179–186
+Cyclosporin(e) see Ciclosporin  
+Cyproheptadine
+(Periactin*) POM 
+Formulations: Oral: 4 mg tablet.
+Action: Binds to and blocks the activation of H1 histamine and 
+serotonin receptors.
+Use:
+• Management of allergic disease.
+• Appetite stimulation.
+• Also used in cats with aortic thromboembolism as serotonin, 
+along with other mediators, is involved in collateral 
+vasoconstriction. Maintenance of this collateral supply is 
+important in recovery.
+Use with caution in cases with urinary retention, angle-closure 
+glaucoma and pyloroduodenal obstruction. Specific doses for dogs 
+and cats have not been determined by pharmokinetic studies and 
+clinical effectiveness has not been established.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+
+===== BSAVA PDF 120 / impressa 104 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+104
+Adverse reactions: May cause mild sedation, polyphagia, weight 
+gain. May reduce seizure threshold.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 0.1–0.5 mg/kg p.o. q8–12h.
+Cytarabine (Cytosine arabinoside, Ara-C)
+(Cytarabine*, Cytosar-U*) POM 
+Formulations: Injectable: 100 mg, 500 mg powders for 
+reconstitution.
+Action: The active nucleotide metabolite ara-CTP is incorporated 
+into DNA and inhibits pyrimidine and DNA synthesis. Cytarabine is 
+therefore S-phase-specific.
+Use:
+• Management of lymphoproliferative and myeloproliferative 
+disorders. For dogs diagnosed with lymphoma with bone 
+marrow involvement, addition of cytarabine into a VCAA 
+combination protocol may improve survival time.
+• Cytarabine is widely used for the treatment of 
+meningoencephalitis of unknown origin (MUO, previosuly GME) 
+and other suspected immune-mediated encephalitides in the 
+dog. There is currently no general agreement on the best 
+treatment protocol, but combination therapy of prednisolone 
+and cytarabine is widely reported.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+After reconstitution, store at room temperature and discard after 48 
+hours or if a slight haze develops.
+Contraindications: Do not use if there is evidence of bone 
+marrow suppression or substantial hepatic impairment.
+Adverse reactions: Vomiting, diarrhoea, leucopenia. As it is a 
+myelosuppressant, careful haematological monitoring is required. 
+Conjunctivitis, oral ulceration, neurotoxicity, hepatotoxicity and fever 
+have also been seen. Calcinosis cutis has been reported at the site of 
+injection in three dogs.
+Drug interactions: Oral absorption of digoxin is decreased. 
+Activity of gentamicin may be antagonized. Simultaneous 
+administration of methotrexate increases the effect of cytarabine.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs, Cats:
+• Lymphoproliferative neoplastic disease: 100–150 mg/m 2 given 
+i.v. or s.c. over 2–5 days (as part of a VCAA-based protocol), or 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 121 / impressa 105 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+105
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+100 mg/m2 by continuous i.v. infusion over 24–96h, or 20 mg/
+m2 intrathecally q1–5d. Or 200 mg/m 2 given i.v. (over 4 hours) or 
+s.c. once every two weeks as part of the DMAC protocol. 
+• MUO/GME: 50 mg/m2 s.c. q12h for 4 doses. Repeat at 3, 7, 11, 
+16, 21, 27 and 33 weeks (if clinical benefit seen), then stop. CRI 
+(100 mg/m2 CRI over 24h) at the same intervals.
+References
+Marconato L, Bonfanti U, Stefanello D et al . (2008) Cytosine arabinoside in addition to 
+VCAA-based protocols for the treatment of canine lymphoma with bone marrow 
+involvement: does it make the difference? Veterinary Comparative Oncology 6 , 80–89
+Zarfoss M, Schatzberg S, Venator K et al . (2006) Combined cytosine arabinoside and 
+prednisone therapy for meningoencephalitis of unknown aetiology in 10 dogs. Journal 
+of Small Animal Practice 47 , 588–595

@@ -14,9 +14,16 @@ export type UltrasoundOrganId =
   | 'bladder'
   | 'prostate'
   | 'uterus'
-  | 'ovaries';
+  | 'ovaries'
+  | 'lymph-nodes'
+  | 'ureters'
+  | 'testes'
+  | 'eyes'
+  | 'thyroid'
+  | 'parathyroids'
+  | 'heart';
 
-export type UltrasoundSourceId = 'thrall-8e' | 'bsava-ultrasonography-1e';
+export type UltrasoundSourceId = 'thrall-8e' | 'bsava-ultrasonography-1e' | 'pocus-2e';
 
 export type UltrasoundReferenceValue = {
   id: string;
@@ -33,6 +40,16 @@ export type UltrasoundReferenceValue = {
   caution?: string;
 };
 
+export type UltrasoundQualitativeFinding = {
+  id: string;
+  species: UltrasoundSpecies;
+  lifeStage: UltrasoundLifeStage;
+  label: string;
+  finding: string;
+  sourceId: UltrasoundSourceId;
+  sourcePage: string;
+};
+
 type EvidenceGapKey = `${UltrasoundSpecies}:${UltrasoundLifeStage}`;
 
 export type UltrasoundOrgan = {
@@ -40,6 +57,7 @@ export type UltrasoundOrgan = {
   name: string;
   description: string;
   values: UltrasoundReferenceValue[];
+  qualitativeFindings?: UltrasoundQualitativeFinding[];
   evidenceGaps?: Partial<Record<EvidenceGapKey, string>>;
   cautions: string[];
 };
@@ -69,7 +87,15 @@ export const ULTRASOUND_SOURCES: Record<
     edition: '1ª edição',
     year: 2011,
     authors: 'Frances Barr e Lorrie Gaschen (editoras)',
-    scope: 'Capítulo 13, glândulas adrenais, p. 149 (PDF p. 161).',
+    scope: 'Capítulo 1 (física da imagem) e capítulos 6–19 (órgãos): medidas, padrões de alterações e diferenciais. Página impressa e página do PDF indicadas nas referências.',
+  },
+  'pocus-2e': {
+    shortTitle: 'Point-of-Care Ultrasound, 2ª ed.',
+    title: 'Point-of-Care Ultrasound Techniques for the Small Animal Practitioner',
+    edition: '2ª edição',
+    year: 2021,
+    authors: 'Gregory R. Lisciandro (editor)',
+    scope: 'Capítulo 9, avaliação focal do baço; páginas indicadas nas referências.',
   },
 };
 
@@ -82,6 +108,12 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     name: 'Fígado',
     description: 'Tamanho, margens e parênquima',
     values: [],
+    qualitativeFindings: (['dog', 'cat'] as const).map((species): UltrasoundQualitativeFinding => ({
+      id: `${species}-liver-parenchyma`, species, lifeStage: 'adult',
+      label: 'Parênquima e vasos normais',
+      finding: 'Parênquima uniforme, em geral mais escuro e de textura mais grosseira que o baço. Veias porta têm paredes ecogênicas; veias hepáticas não mostram a mesma parede.',
+      sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 8, p. 87 (PDF p. 99)',
+    })),
     evidenceGaps: {
       'dog:adult':
         'O tamanho hepático ao ultrassom é uma avaliação subjetiva, dependente da conformação, dos órgãos adjacentes e da experiência do operador; o capítulo não estabelece um corte linear universal.',
@@ -192,7 +224,7 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
   {
     id: 'spleen',
     name: 'Baço',
-    description: 'Altura e limites objetivos',
+    description: 'Altura felina e avaliação canina',
     values: [
       {
         id: 'cat-spleen-height-study-1',
@@ -206,6 +238,7 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
         technique: 'Medir a altura no plano transversal no terço proximal.',
         sourceId: 'thrall-8e',
         sourcePage: 'Cap. 40, p. 827 (PDF p. 1035)',
+        caution: 'Intervalo de um estudo específico; não fundir com a segunda amostra nem com a regra POCUS.',
       },
       {
         id: 'cat-spleen-height-study-2',
@@ -219,6 +252,47 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
         technique: 'Medida transversal comparável à altura esplênica.',
         sourceId: 'thrall-8e',
         sourcePage: 'Cap. 40, p. 827 (PDF p. 1035)',
+        caution: 'Segundo estudo independente; interpretar separadamente do primeiro.',
+      },
+      {
+        id: 'cat-spleen-pocus-thickness',
+        species: 'cat',
+        lifeStage: 'adult',
+        measurement: 'Espessura esplênica — regra prática POCUS',
+        population: 'Avaliação focal; método próprio do livro POCUS',
+        weightBand: 'Sem estratificação de peso',
+        value: '< 10',
+        unit: 'mm',
+        technique: 'Medir a espessura no plano transversal; interpretar junto à forma e ao parênquima.',
+        sourceId: 'pocus-2e',
+        sourcePage: 'Cap. 9, pp. 175 e 177 (PDF pp. 198 e 200)',
+        caution: 'Regra prática do exame focal; não fundir com os dois intervalos de altura do Thrall.',
+      },
+    ],
+    qualitativeFindings: [
+      {
+        id: 'dog-spleen-normal-parenchyma', species: 'dog', lifeStage: 'adult',
+        label: 'Aspecto habitual',
+        finding: 'Parênquima homogêneo e finamente granular, com cápsula fina e ecogênica. Em muitos cães o baço é mais ecogênico que o fígado; a relação pode variar.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 9, p. 102 (PDF p. 114)',
+      },
+      {
+        id: 'dog-spleen-enlargement-clues', species: 'dog', lifeStage: 'adult',
+        label: 'Sinais de aumento acentuado',
+        finding: 'A cauda pode dobrar-se e aparecer medial ao rim esquerdo ou alcançar uma bexiga pequena a média. São pistas de aumento, não medidas de corte.',
+        sourceId: 'pocus-2e', sourcePage: 'Cap. 9, p. 177 (PDF p. 200)',
+      },
+      {
+        id: 'dog-spleen-assessment', species: 'dog', lifeStage: 'adult',
+        label: 'O que registrar no exame',
+        finding: 'Percorrer cabeça, corpo e cauda; descrever tamanho subjetivo, ecotextura, nódulos ou massas e vasos esplênicos.',
+        sourceId: 'pocus-2e', sourcePage: 'Cap. 9, pp. 174–176 (PDF pp. 197–199)',
+      },
+      {
+        id: 'cat-spleen-fold', species: 'cat', lifeStage: 'adult',
+        label: 'Forma do baço',
+        finding: 'Um baço dobrado é sinal de esplenomegalia no exame focal e pede investigação adicional.',
+        sourceId: 'pocus-2e', sourcePage: 'Cap. 9, pp. 175 e 177 (PDF pp. 198 e 200)',
       },
     ],
     evidenceGaps: {
@@ -228,8 +302,7 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
       'cat:young': NO_PEDIATRIC_REFERENCE,
     },
     cautions: [
-      'Os dois intervalos felinos vêm de estudos distintos e devem permanecer identificados, sem fundi-los em um único corte.',
-      'Tamanho normal não exclui doença esplênica e nódulos incidentais podem ser benignos.',
+      'Sedação e anestesia podem aumentar o baço canino; aspecto e tamanho normais não excluem doença esplênica.',
     ],
   },
   {
@@ -386,11 +459,10 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     description: 'Duodeno, jejuno e íleo',
     values: [
       ...[
-        ['≤ 20 kg', '≤ 5,1', '≤ 4,1'],
-        ['20–29,9 kg', '≤ 5,3', '≤ 4,4'],
-        ['> 30 kg', '≤ 6,0', '≤ 4,7'],
-      ].flatMap(([weightBand, duodenum, jejunum], index): UltrasoundReferenceValue[] => [
-        {
+        ['≤ 20 kg', '≤ 5,1'],
+        ['20–29,9 kg', '≤ 5,3'],
+        ['> 30 kg', '≤ 6,0'],
+      ].map(([weightBand, duodenum], index): UltrasoundReferenceValue => ({
           id: `dog-adult-duodenum-${index}`,
           species: 'dog',
           lifeStage: 'adult',
@@ -402,8 +474,12 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
           technique: 'Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.',
           sourceId: 'thrall-8e',
           sourcePage: 'Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)',
-        },
-        {
+      })),
+      ...[
+        ['≤ 20 kg', '≤ 4,1'],
+        ['20–39,9 kg', '≤ 4,4'],
+        ['≥ 40 kg', '≤ 4,7'],
+      ].map(([weightBand, jejunum], index): UltrasoundReferenceValue => ({
           id: `dog-adult-jejunum-${index}`,
           species: 'dog',
           lifeStage: 'adult',
@@ -413,10 +489,9 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
           value: jejunum,
           unit: 'mm',
           technique: 'Mucosa a serosa, em segmento longitudinal para reduzir obliquidade.',
-          sourceId: 'thrall-8e',
-          sourcePage: 'Cap. 46, Tabela 46.2, p. 961 (PDF p. 1209)',
-        },
-      ]),
+          sourceId: 'bsava-ultrasonography-1e',
+          sourcePage: 'Cap. 11, p. 132 (PDF p. 144)',
+      })),
       {
         id: 'dog-puppy-duodenum',
         species: 'dog',
@@ -710,6 +785,26 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     name: 'Próstata',
     description: 'Tamanho, idade e castração',
     values: [],
+    qualitativeFindings: [
+      {
+        id: 'dog-prostate-normal', species: 'dog', lifeStage: 'adult',
+        label: 'Aspecto normal',
+        finding: 'Glândula ovoide no eixo sagital e bilobada no transversal, envolvendo a uretra proximal. O parênquima normal é homogêneo e finamente pontilhado.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 15, p. 166 (PDF p. 178)',
+      },
+      {
+        id: 'dog-prostate-age-status', species: 'dog', lifeStage: 'adult',
+        label: 'Idade e castração',
+        finding: 'O tamanho aumenta com a idade e diminui após castração. Em cães jovens ou castrados, a próstata costuma ser menor e hipoecogênica; em machos inteiros mais velhos, costuma ser mais ecogênica.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 15, p. 166 (PDF p. 178)',
+      },
+      {
+        id: 'cat-prostate-normal', species: 'cat', lifeStage: 'adult',
+        label: 'Anatomia felina',
+        finding: 'A próstata felina é bilobada e recobre a uretra apenas pelas faces dorsal e lateral, em posição mais caudal que a canina.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 15, p. 167 (PDF p. 179)',
+      },
+    ],
     evidenceGaps: {
       'dog:adult':
         'O tamanho prostático absoluto varia com idade, porte e estado reprodutivo. O capítulo não oferece um único corte ultrassonográfico normal aplicável a todos os cães.',
@@ -786,6 +881,17 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     description: 'Comprimento e folículos',
     values: [
       {
+        id: 'dog-ovary-three-axes',
+        species: 'dog', lifeStage: 'adult',
+        measurement: 'Dimensões ovarianas aproximadas — C × L × A',
+        population: 'Cadelas; descrição geral do capítulo',
+        weightBand: 'Sem estratificação de peso',
+        value: '1,5 × 0,7 × 0,5', unit: 'cm (aprox.)',
+        technique: 'Medir os eixos do ovário identificado caudal e ventral ao rim ipsilateral.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 17, p. 177 (PDF p. 189)',
+        caution: 'Dimensões descritivas aproximadas; ciclo estral e porte modificam o tamanho.',
+      },
+      {
         id: 'dog-ovary-anestrus',
         species: 'dog',
         lifeStage: 'adult',
@@ -844,6 +950,195 @@ export const ULTRASOUND_ORGANS: UltrasoundOrgan[] = [
     },
     cautions: ['Forma, tamanho, folículos e corpos lúteos mudam ao longo do ciclo; registre a fase reprodutiva.'],
   },
+  {
+    id: 'lymph-nodes',
+    name: 'Linfonodos',
+    description: 'Forma e linfonodos jejunais',
+    values: [
+      {
+        id: 'dog-node-short-long-ratio', species: 'dog', lifeStage: 'adult',
+        measurement: 'Eixo curto / eixo longo', population: 'Linfonodos abdominais normais',
+        weightBand: 'Sem estratificação de peso', value: '< 0,5', unit: 'razão',
+        technique: 'Medir os eixos no maior plano do linfonodo; avaliar também contorno, hilo e vascularização.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 7, p. 75 (PDF p. 87)',
+        caution: 'Forma isolada não exclui doença ou reatividade.',
+      },
+      {
+        id: 'dog-jejunal-node-height-median', species: 'dog', lifeStage: 'adult',
+        measurement: 'Altura máxima do linfonodo jejunal — mediana', population: 'Estudo citado por Agthe et al.; ampla variação',
+        weightBand: 'Correlaciona-se com peso e idade', value: '3,9', unit: 'mm (mediana)',
+        technique: 'Identificar junto aos vasos mesentéricos; medir o eixo curto.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 7, p. 75 (PDF p. 87)',
+        caution: 'Mediana da amostra, não limite superior de normalidade.',
+      },
+      {
+        id: 'dog-jejunal-node-width-median', species: 'dog', lifeStage: 'adult',
+        measurement: 'Largura máxima do linfonodo jejunal — mediana', population: 'Estudo citado por Agthe et al.; ampla variação',
+        weightBand: 'Correlaciona-se com peso e idade', value: '7,5', unit: 'mm (mediana)',
+        technique: 'Identificar junto aos vasos mesentéricos; comparar os dois lados.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 7, p. 75 (PDF p. 87)',
+        caution: 'Mediana da amostra, não limite superior de normalidade.',
+      },
+    ],
+    qualitativeFindings: [
+      {
+        id: 'cat-abdominal-nodes', species: 'cat', lifeStage: 'adult',
+        label: 'Aspecto e localização',
+        finding: 'Linfonodos normais têm contorno liso, formato oval ou fusiforme e ecotextura uniforme. Os cólicos, próximos à junção ileocólica, são mais facilmente vistos em gatos.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 7, pp. 75–76 (PDF pp. 87–88)',
+      },
+    ],
+    evidenceGaps: {
+      'cat:adult': 'O capítulo descreve os linfonodos felinos, mas não fornece um intervalo dimensional geral para eles.',
+      'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE,
+    },
+    cautions: ['Nos cães, as dimensões dos linfonodos jejunais aumentam com peso e idade; não use as medianas como pontos de corte.'],
+  },
+  {
+    id: 'ureters',
+    name: 'Ureteres',
+    description: 'Visualização do lúmen',
+    values: [],
+    qualitativeFindings: (['dog', 'cat'] as const).map((species): UltrasoundQualitativeFinding => ({
+      id: `${species}-ureter-appearance`, species, lifeStage: 'adult',
+      label: 'Visualização normal',
+      finding: 'Com equipamento de alta resolução e condições favoráveis, o ureter pode mostrar paredes finas ecogênicas e peristalse com pequenos bolos de urina; em muitos exames o lúmen não se distingue.',
+      sourceId: 'thrall-8e', sourcePage: 'Cap. 41, p. 839 (PDF p. 1047)',
+    })),
+    evidenceGaps: {
+      'dog:adult': 'O ureter normal pode ser visível apenas com transdutor de alta resolução e condições ideais; os capítulos não fornecem um diâmetro universal seguro.',
+      'cat:adult': 'O ureter normal pode ser visível apenas com transdutor de alta resolução e condições ideais; os capítulos não fornecem um diâmetro universal seguro.',
+      'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE,
+    },
+    cautions: [
+      'Um pequeno bolo de urina pode aparecer durante a peristalse; correlacione qualquer dilatação com pelve renal e bexiga.',
+      'Fonte descritiva: Thrall, 8ª ed., Cap. 41, p. 839 (PDF p. 1047); BSAVA, Cap. 10, p. 114 (PDF p. 126).',
+    ],
+  },
+  {
+    id: 'testes',
+    name: 'Testículos',
+    description: 'Parênquima e mediastino',
+    values: [],
+    qualitativeFindings: (['dog', 'cat'] as const).map((species): UltrasoundQualitativeFinding => ({
+      id: `${species}-testis-normal`, species, lifeStage: 'adult',
+      label: 'Arquitetura normal',
+      finding: 'Mediastino central ecogênico, linear no plano sagital, parênquima de ecogenicidade média e túnica fina ecogênica. O epidídimo envolve a face dorsal; sua cauda é mais hipoecogênica.',
+      sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 17, p. 179 (PDF p. 191)',
+    })),
+    evidenceGaps: {
+      'dog:adult': 'O capítulo consultado descreve o aspecto normal, mas não publica intervalo de tamanho ajustado a peso, raça ou idade.',
+      'cat:adult': 'O capítulo consultado descreve o aspecto normal, mas não publica intervalo de tamanho ajustado a peso, raça ou idade.',
+      'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE,
+    },
+    cautions: [
+      'Compare os dois testículos, a ecotextura, o mediastino ecogênico central e o fluxo ao Doppler.',
+      'Fonte descritiva: BSAVA Ultrasonography, Cap. 17, p. 179 (PDF p. 191).',
+    ],
+  },
+  {
+    id: 'eyes',
+    name: 'Olhos',
+    description: 'Diâmetro do globo ocular',
+    values: (['dog', 'cat'] as const).map((species): UltrasoundReferenceValue => ({
+      id: `${species}-eye-diameter`, species, lifeStage: 'adult',
+      measurement: 'Diâmetro do globo ocular', population: 'Varia conforme a raça',
+      weightBand: 'Sem estratificação de peso', value: '18–23', unit: 'mm',
+      technique: 'Medir o globo em plano que passe pelo seu maior diâmetro, sem comprimir o olho.',
+      sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 18, p. 184 (PDF p. 196)',
+      caution: 'Faixa descritiva para cães e gatos; não constitui intervalo específico de cada raça.',
+    })),
+    evidenceGaps: { 'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE },
+    cautions: ['O livro assinala dependência da raça; compare com o olho contralateral e o contexto clínico.'],
+  },
+  {
+    id: 'thyroid',
+    name: 'Tireoide',
+    description: 'Dimensões dos lobos',
+    values: [
+      {
+        id: 'dog-beagle-thyroid', species: 'dog', lifeStage: 'adult',
+        measurement: 'Lobo tireoidiano — C × L × A', population: 'Beagles; tamanho médio observado',
+        weightBand: 'Raça específica; porte influencia', value: '2,5 × 0,5 × 0,6', unit: 'cm (médias)',
+        technique: 'Medir os três eixos do lobo; manter pressão mínima do transdutor.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 19, p. 194 (PDF p. 206)',
+        caution: 'Média de Beagles, não intervalo normal de todas as raças.',
+      },
+      {
+        id: 'cat-thyroid', species: 'cat', lifeStage: 'adult',
+        measurement: 'Lobo tireoidiano — C × L × A', population: 'Gatos; tamanho aproximado',
+        weightBand: 'Sem estratificação de peso', value: '2,0 × 0,2 × 0,3', unit: 'cm (aprox.)',
+        technique: 'Medir os três eixos do lobo em planos ortogonais.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 19, p. 194 (PDF p. 206)',
+        caution: 'Valor aproximado, não intervalo de referência.',
+      },
+    ],
+    evidenceGaps: { 'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE },
+    cautions: ['O tamanho acompanha o porte; avalie também simetria, ecogenicidade e contorno.'],
+  },
+  {
+    id: 'parathyroids',
+    name: 'Paratireoides',
+    description: 'Diâmetro glandular',
+    values: (['dog', 'cat'] as const).map((species): UltrasoundReferenceValue => ({
+      id: `${species}-parathyroid-size`, species, lifeStage: 'adult',
+      measurement: 'Tamanho da glândula', population: 'Glândulas visíveis ao ultrassom',
+      weightBand: 'Sem estratificação de peso', value: '2–3', unit: 'mm',
+      technique: 'Localizar junto à tireoide e diferenciar de vasos com Doppler colorido.',
+      sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 19, p. 194 (PDF p. 206)',
+      caution: 'Número e posição variam; o achado é descritivo, não limite diagnóstico.',
+    })),
+    evidenceGaps: { 'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE },
+    cautions: ['Glândulas internas podem confundir-se com pequenos cistos tireoidianos.'],
+  },
+  {
+    id: 'heart',
+    name: 'Coração',
+    description: 'Ecocardiografia e peso',
+    values: [
+      ...[
+        ['Diâmetro interno do VE — diástole', '1,53 × peso^0,294'],
+        ['Diâmetro interno do VE — sístole', '0,95 × peso^0,315'],
+        ['Septo interventricular — diástole', '0,41 × peso^0,241'],
+        ['Septo interventricular — sístole', '0,58 × peso^0,240'],
+        ['Parede livre do VE — diástole', '0,42 × peso^0,232'],
+        ['Parede livre do VE — sístole', '0,64 × peso^0,222'],
+      ].map(([measurement, value], index): UltrasoundReferenceValue => ({
+        id: `dog-heart-allometry-${index}`, species: 'dog', lifeStage: 'adult', measurement,
+        population: 'Cães normais; média prevista por alometria', weightBand: 'Peso em kg na fórmula',
+        value, unit: 'cm (média)',
+        technique: 'Modo M ou 2D, eixo curto paraesternal direito ao nível das cordas tendíneas.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 6, p. 43 (PDF p. 55)',
+        caution: 'Equação de média prevista, não limite de normalidade; raça e técnica influenciam.',
+      })),
+      {
+        id: 'dog-heart-la-ao', species: 'dog', lifeStage: 'adult',
+        measurement: 'Átrio esquerdo / aorta', population: 'Cães normais; eixo curto paraesternal direito',
+        weightBand: 'Razão independente do peso', value: '1,3–1,5', unit: 'razão',
+        technique: 'Medir no primeiro quadro após o fechamento da valva aórtica.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 6, p. 46 (PDF p. 58)',
+        caution: 'O livro informa que geralmente não supera 1,6; método e população importam.',
+      },
+      {
+        id: 'dog-heart-fs', species: 'dog', lifeStage: 'adult',
+        measurement: 'Fração de encurtamento', population: 'Cães normais no laboratório do autor',
+        weightBand: 'Raças grandes podem ter 22–25%', value: '25–45', unit: '%',
+        technique: '(Diâmetro diastólico − sistólico) ÷ diastólico × 100.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 6, p. 44 (PDF p. 56)',
+        caution: 'Depende de pré-carga, pós-carga e contratilidade; não é medida isolada de função.',
+      },
+      {
+        id: 'cat-heart-fs', species: 'cat', lifeStage: 'adult',
+        measurement: 'Fração de encurtamento — valor aproximado', population: 'Gatos normais; descrição do autor',
+        weightBand: 'Sem estratificação de peso', value: '≈ 40', unit: '%',
+        technique: '(Diâmetro diastólico − sistólico) ÷ diastólico × 100.',
+        sourceId: 'bsava-ultrasonography-1e', sourcePage: 'Cap. 6, p. 44 (PDF p. 56)',
+        caution: 'Valor aproximado, não intervalo de referência felino.',
+      },
+    ],
+    evidenceGaps: { 'dog:young': NO_PEDIATRIC_REFERENCE, 'cat:young': NO_PEDIATRIC_REFERENCE },
+    cautions: ['As equações caninas estimam médias e não limites. Faça avaliação ecocardiográfica completa com raça, idade, técnica e quadro clínico.'],
+  },
 ];
 
 export function getUltrasoundOrgan(organId: UltrasoundOrganId): UltrasoundOrgan {
@@ -866,10 +1161,33 @@ export function getUltrasoundReferenceValues(
   );
 }
 
+export function getUltrasoundQualitativeFindings(
+  organId: UltrasoundOrganId,
+  species: UltrasoundSpecies,
+  lifeStage: UltrasoundLifeStage
+): UltrasoundQualitativeFinding[] {
+  return getUltrasoundOrgan(organId).qualitativeFindings?.filter(
+    (finding) => finding.species === species && finding.lifeStage === lifeStage
+  ) ?? [];
+}
+
 export function getUltrasoundEvidenceGap(
   organId: UltrasoundOrganId,
   species: UltrasoundSpecies,
   lifeStage: UltrasoundLifeStage
 ): string | undefined {
   return getUltrasoundOrgan(organId).evidenceGaps?.[`${species}:${lifeStage}`];
+}
+
+const DOG_HEART_ALLOMETRY: ReadonlyArray<readonly [number, number]> = [
+  [1.53, 0.294], [0.95, 0.315], [0.41, 0.241],
+  [0.58, 0.240], [0.42, 0.232], [0.64, 0.222],
+];
+
+/** Média prevista em cm; a equação publicada não define limites de normalidade. */
+export function getDogHeartPredictedMean(referenceId: string, weightKg: number): number | undefined {
+  const match = /^dog-heart-allometry-([0-5])$/.exec(referenceId);
+  if (!match || !Number.isFinite(weightKg) || weightKg <= 0) return undefined;
+  const [coefficient, exponent] = DOG_HEART_ALLOMETRY[Number(match[1])];
+  return coefficient * weightKg ** exponent;
 }

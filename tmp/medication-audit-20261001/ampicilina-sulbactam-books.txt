@@ -1,0 +1,850 @@
+
+===== Plumb PDF 109 =====
+82    Ampicillin/Sulbactam 
+Ampicillin/Sulbactam 
+(am-pi-sill-in; sul-bak-tam) Unasyn®
+Potentiated Aminopenicillin
+Prescriber Highlights
+ ▶ Parenteral potentiated aminopenicillin that may be used to 
+treat infections for which amoxicillin/clavulanate would be 
+appropriate, but an injectable antibiotic is required
+ ▶ May be used for surgical prophylaxis 
+ ▶ Hypersensitivity reactions possible; contraindicated in patients 
+with documented severe hypersensitivity to penicillins
+ ▶ Usually administered SC, IM, or IV every 6 to 8 hours
+Uses/Indications
+The addition of sulbactam to ampicillin broadens ampicillin’s spec-
+trum through inhibition of some beta-lactamases. 
+Ampicillin/sulbactam may be indicated when parenteral therapy 
+is required for the treatment of aerobic or anaerobic gram-positive 
+and gram-negative infections. In dogs and cats, ampicillin/sulbac -
+tam may be considered when oral amoxicillin/clavulanate is not 
+viable (eg, patient NPO, in cases of critical illness [eg, sepsis, pneu -
+monia, other severe infections]), or for surgical prophylaxis.  For 
+broad-spectrum uses, ampicillin/sulbactam is often combined with 
+another drug such as a fluoroquinolone or aminoglycoside to pro -
+vide enhanced gram-negative coverage.
+The World Health Organization (WHO) has designated ampicil-
+lin/sulbactam as a Critically Important, High Priority antimicrobial 
+in human medicine.1 The Office International des Epizooties (OIE) 
+has designated ampicillin/sulbactam as Veterinary Critically Im -
+portant Antimicrobial (VCIA) Agents in avian, bovine, and swine 
+species.2
+Pharmacology/Actions
+Ampicillin is a time-dependent bactericidal agent that acts via in -
+hibition of cell wall synthesis. Penicillins are bactericidal against 
+susceptible bacteria and act by inhibition of mucopeptide synthesis 
+in the cell wall, which results in a defective barrier and an osmoti -
+cally unstable spheroplast. The exact mechanism for this effect has 
+not been definitively determined, but beta-lactam antibiotics have 
+been shown to bind to several enzymes in the bacterial cytoplasmic 
+membrane that are involved with cell wall synthesis (eg, carboxypep-
+tidases, transpeptidases, endopeptidases). Various beta-lactam anti-
+biotics have different affinities for these enzymes (ie, penicillin-bind-
+ing proteins), which helps explain the differences in spectrums of 
+activity not explained by the influence of beta-lactamases. Like other 
+beta-lactam antibiotics, penicillins are generally considered to be 
+more effective against actively growing bacteria.
+Sulbactam has some intrinsic antibacterial activity against some 
+bacteria (eg, Neisseria spp, Moraxella spp, Bacteroides spp); however, 
+for most bacteria, sulbactam alone does not achieve levels sufficient 
+to act as an antibacterial agent. Sulbactam binding to certain pen -
+icillin-binding proteins may explain its activity and, when used in 
+combination with ampicillin, synergistic effects may result. On an 
+mg-for-mg basis, clavulanic acid is a more potent beta-lactamase in-
+hibitor than sulbactam, but sulbactam offers reduced likelihood of 
+inducing chromosomal beta-lactamases, greater tissue penetration, 
+and stability.
+When sulbactam is combined with ampicillin, ampicillin’s spec-
+trum of activity is extended to bacteria (eg, Escherichia coli, Pasteurella 
+spp, Staphylococcus spp, Klebsiella spp, Proteus spp) that produce 
+beta-lactamases of Richmond-Sykes types II through VI that would 
+otherwise render ampicillin ineffective. Sulbactam binds to be -
+ta-lactamases, thereby protecting the beta-lactam ring of ampicillin 
+from hydrolysis. The efficacy of sulbactam involves how well it binds 
+the specific beta-lactamase and the relative levels of sulbactam and 
+beta-lactamase. In cases in which there is a high bacterial biobur -
+den or bacteria are producing large amounts of beta-lactamase, 
+efficacy may be limited. Other aerobic bacteria that may be sus -
+ceptible to ampicillin/sulbactam include Streptococcus  spp, Listeria 
+monocytogenes, Bacillus anthracis, Salmonella  spp, Pasteurella  spp, 
+and Acinetobacter  spp. Anaerobic bacterial infections caused by 
+Clostridium  spp, Bacteroides  spp, Fusobacterium  spp, Peptostrepto-
+coccus  spp,  and  Propionibacterium spp may also be susceptible to 
+ampicillin/sulbactam.3–5 Similar to amoxicillin/clavulanic acid, am -
+picillin/sulbactam can be used in the treatment of bacterial respi -
+ratory tract infections, although ampicillin/sulbactam is ineffective 
+against Mycoplasma spp and resistance in Bordetella spp is an in -
+creasing problem in some regions. In general, ampicillin/sulbactam 
+is excellent for beta-lactamase–producing gram-positive aerobic 
+and anaerobic bacteria, but less effective for beta-lactamase–pro -
+ducing gram-negative bacteria. 
+Methicillin-resistant staphylococci are resistant to ampicillin/sul-
+bactam. Ampicillin/sulbactam is usually ineffective against AmpC 
+(type I) cephalosporinases, and efficacy against extended-spectrum 
+beta-lactamase–producing bacteria is variable and often unpredict -
+able. There is little—if any—synergistic activity against organisms 
+already susceptible to ampicillin. 
+Pharmacokinetics
+See Ampicillin for pharmacokinetic information. 
+Because sulbactam sodium is not appreciably absorbed from the 
+GI tract, this medication must be given parenterally. A covalently 
+linked double ester form of ampicillin/sulbactam (ie, sultamicillin) is 
+orally absorbed, but this combination is not commercially available 
+in the US. When sulbactam is administered parenterally (ie, IV , IM), 
+its pharmacokinetic profile closely mirrors that of ampicillin’s phar-
+macokinetic profile in most species studied. In a study of calves, plas-
+ma concentrations of sulbactam during the elimination phase were 
+consistently higher than those of ampicillin, leading the study  au -
+thors to propose using a higher ratio (greater than 2:1 ampicillin/
+sulbactam) if the combination is used in calves.6
+A regional IV limb perfusion (RIVLP; 45-minute duration) with 
+ampicillin/sulbactam (1.5 g; ratio, 2:1; total volume, 4 mL) admin -
+istered in the dorsal common digital vein of the right rear limb of 
+healthy, adult nonlactating cattle resulted in peak ampicillin serum 
+concentrations of ≈5 mg/mL in the perfused limb and 2 mg/mL 
+in the synovial fluid of the metatarsophalangeal joint 1 hour after 
+RIVLP . Ampicillin concentration in synovial fluid remained above 
+8 μg/mL for 19 hours. Maximum systemic ampicillin concentration 
+was 2.5 μg/mL 5.4 hours after RIVLP . Sulbactam pharmacokinetics 
+followed trends similar to ampicillin.7
+Contraindications/Precautions/Warnings
+Penicillins are contraindicated in patients with a history of severe 
+hypersensitivity (anaphylaxis) to them. Because cross-reactivity can 
+occur, penicillins should be used cautiously in patients documented 
+as being hypersensitive to other beta-lactam antibiotics (eg, cephalo-
+sporins, cephamycins, carbapenems).
+Ampicillin/sulbactam is contraindicated in humans with a his -
+tory of ampicillin/sulbactam-associated cholestatic jaundice or he -
+patic dysfunction; veterinary significance is unknown. In humans, 
+ampicillin has been shown to lower seizure threshold and should be 
+used with caution with any drug that also lowers seizure threshold8; 
+significance in veterinary patients is not known.
+Increased plasma ampicillin drug concentrations, AUC, and in -
+creased elimination half-life have been documented in azotemic dogs.9 
+Dosage adjustment (ie, reduced dosing frequency) may be needed. 
+
+
+===== Plumb PDF 110 =====
+Ampicillin/Sulbactam    83
+Penicillins, cephalosporins, and macrolides should not be admin-
+istered to rabbits, guinea pigs, chinchillas, or hamsters, as serious 
+enteritis and clostridial enterotoxemia may occur.
+Adverse Effects
+IM injections may be painful, as pH of the solution is high. IV in -
+jections may cause thrombophlebitis and phlebitis. Although hy -
+persensitivity reactions to penicillins occur infrequently in animals, 
+they can be severe (anaphylaxis), particularly after IV  administration.
+Hepatotoxicity (ie, cholestatic hepatitis, cholestasis) has been re -
+ported in some humans receiving ampicillin/sulbactam. Toxicity is 
+usually reversible with discontinuation of therapy, but deaths have 
+been reported. Veterinary significance is unknown. 
+High doses or increased CNS penetration of penicillins have been 
+associated with neurotoxicity (eg, ataxia in dogs). 10 Although peni -
+cillins are not considered to be hepatotoxic, elevated liver enzymes 
+have been reported in some dogs. Other effects reported in dogs in-
+clude tachypnea, dyspnea, edema, and tachycardia. GI disturbances 
+are possible, and Clostridium difficile-associated diarrhea (CDAD) 
+has been reported in humans.
+Reproductive/Nursing Safety
+Both ampicillin and sulbactam have been shown to cross the pla -
+centa. Ampicillin/sulbactam should be used only when the potential 
+benefits outweigh the risks. 
+Both ampicillin and sulbactam are distributed into human breast 
+milk in low concentrations but are considered to be compatible with 
+breastfeeding. Nursing offspring should be monitored for GI distur-
+bances.
+Overdose/Acute Toxicity
+Neurologic  effects (eg, ataxia) have rarely been reported, and risk 
+increases with higher doses or conditions that can lead to increased 
+CNS penetration (eg, meningitis); should these signs develop, the 
+risks for continued use should be weighed with those associated 
+with dose reduction or use of a different antibiotic. In humans, par -
+ticularly those with renal disease, high doses of parenteral penicillins 
+have induced CNS effects.
+For patients that have experienced or are suspected to have ex -
+perienced an overdose, consultation with a 24-hour poison control 
+center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with ampicillin/sulbactam either 
+have been reported or are theoretical in humans or animals and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but the potential risks 
+should be weighed and additional monitoring performed when ap -
+propriate.
+ ■ Allopurinol : In humans, concurrent use has been implicated 
+in increased occurrences of skin rashes; veterinary significance of 
+this interaction is unknown. 
+ ■ Aminoglycosides  (eg, amikacin, gentamicin ): Beta-lactam 
+antibiotics can inactivate aminoglycosides in vitro (and in vivo in 
+patients with chronic kidney disease).
+ ■ Bacteriostatic Antimicrobials  (eg, chloramphenicol, 
+erythromycin and other macrolides, tetracyclines, sulfon -
+amides): Because there has been evidence of in vitro antagonism 
+between beta-lactam antibiotics and bacteriostatic antibiotics, use 
+together generally has not been recommended, but actual clinical 
+importance is not clear and is currently in doubt.
+ ■ Dichlorphenamide : Concurrent use may increase risk for 
+ hypokalemia.
+ ■ Methotrexate (MTX) : Ampicillin may decrease the renal ex -
+cretion of MTX, causing increased MTX concentrations and po -
+tential toxic effects.
+ ■ Mycophenolate : Concurrent use may reduce concentrations 
+or effects of mycophenolate.
+ ■ Probenecid : Can reduce the renal tubular secretion of both 
+ampicillin and sulbactam, thereby maintaining higher systemic 
+concentrations for a longer period. This potentially beneficial in -
+teraction requires further investigation before dosing recommen-
+dations can be made for veterinary patients.
+ ■ W arfarin:  Concurrent use may decrease vitamin K production 
+and increase risk for bleeding.
+Laboratory Considerations
+ ■ Ampicillin may cause false-positive urine glucose determina -
+tions when using cupric sulfate solution (Benedict’s solution, 
+Clinitest®). Tests using glucose oxidase ( Test-Tape®, Clinistix®) are 
+not affected by ampicillin.
+ ■ Because penicillins and other beta-lactams can inactivate amino- 
+glycosides in vitro and in vivo in patients in renal failure or when 
+penicillins are used in larger doses, serum concentrations of ami-
+noglycosides may be falsely decreased, particularly when the se -
+rum is stored prior to analysis. It is recommended that samples 
+should be drawn at times when the beta-lactam antibiotic is at a 
+trough level, and if the assay cannot be run right away, samples 
+should be frozen immediately.
+Dosages
+DOGS/CATS:
+NOTE: Dosages are listed for combined amounts of ampicillin/
+sulbactam.
+Empiric antibiotic therapy in critically ill animals (extra-label): 
+22 – 30 mg/kg IV every 6 to 8 hours; used in combination with 
+a  parenteral  drug with gram-negative activity (eg, aminoglyco -
+side, fluoroquinolone)
+Infections susceptible to amoxicillin/clavulanate in patients 
+unable to receive oral doses (extra-label): 22 mg/kg SC, IV , or 
+IM every 8 hours
+Surgical prophylaxis (extra-label): 22 mg/kg IV ≈1 hour prior 
+to incision; redosing can be performed intraoperatively every 2 
+hours if needed based on duration of surgery.
+Monitoring
+ ■ Because penicillins usually have minimal toxicity associated with 
+their use, monitoring for efficacy is usually all that is required un-
+less toxic signs develop.
+ ■ Periodic liver panel (eg, liver enzymes, bilirubin) in patients with 
+pre-existing hepatic dysfunction 
+ ■ Serum concentrations and therapeutic drug monitoring are not 
+routinely performed.
+Client Information
+ ■ Because of the dosing intervals required, this drug is best admin-
+istered to inpatients only.
+Chemistry/Synonyms
+Commercial drug formulations contain sodium salts of both ampi -
+cillin and sulbactam in a 2:1 ratio (eg, ampicillin, 250 mg; sulbactam, 
+125 mg). Ampicillin sodium/sulbactam sodium for injection occurs 
+as a white to off-white powder that is freely soluble in water or other 
+aqueous solutions. The reconstituted solution is yellow to pale yellow 
+and has a pH of 8 to 10. 
+Ampicillin/sulbactam may also be known as Ampibactan®, Baci-
+mex®, Begalin-P®, Bethacil®, Comabactan®, Galotam®, Loricin®, Sulam®, 
+Sulperazon®, Synergistin®, Unacid®, Unacim®, Unasyn®, or Unasyna®.
+
+
+===== Plumb PDF 111 =====
+84    Amprolium
+Storage/Stability
+Ampicillin/sulbactam powder should be stored at temperatures at or 
+below 30°C (86°F). 
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Diluents for reconstituting the powder for IV use reported to 
+be compatible with ampicillin/sulbactam include sterile water for 
+injection and 0.9% sodium chloride. If the powder is reconstituted 
+to a concentration of 30 mg/mL (combined concentration), the re -
+sultant solution is stable for 72 hours at 4°C (39.2°F) or 8 hours at 
+room temperature. After reconstitution and before administration, 
+the solution can either be given slowly IV over 5 to 20 minutes or be 
+further diluted into a 50- or 100-mL bag of 0.9% sodium chloride 
+and administered IV over 15 to 30 minutes. 
+When ampicillin/sulbactam is reconstituted for IM use, ster -
+ile water for injection or 0.5% or 2% lidocaine HCl for injection 
+may be used as a diluent; 3.2 mL of diluent should be added to the  
+1.5 g vial and 6.4 mL of diluent to the 3 g vial. After reconstitution, 
+the solution should be administered within 1 hour. 
+Ampicillin/sulbactam injection is compatible with vancomycin 
+when mixed at concentrations of 50/25 mg/mL of ampicillin/sulbac-
+tam and 20 mg/mL or less of vancomycin. Ampicillin/sulbactam is 
+Y-site compatible with aminocaproic acid, asparaginase, azithromy-
+cin, carboplatin, cisplatin, cytarabine, dexmedetomidine hydrochlo-
+ride, doxorubicin hydrochloride (liposomal), fat emulsions, gemcit-
+abine hydrochloride, hydromorphone hydrochloride, methadone 
+hydrochloride, metronidazole, pamidronate disodium, pantopra -
+zole sodium, sodium acetate, vinblastine sulfate, vincristine sulfate, 
+voriconazole, and zoledronic acid.
+Ampicillin/sulbactam injection has variable or uncertain Y-site 
+compatibility with amikacin sulfate, aminophylline, ascorbic acid 
+(vitamin C), atracurium besylate, atropine sulfate, buprenorphine 
+hydrochloride, butorphanol tartrate, calcium chloride, calcium glu-
+conate, cefazolin sodium, cefotetan disodium, cefotaxime, ceftazi -
+dime, ceftriaxone sodium, cefuroxime, chloramphenicol sodium 
+succinate, clindamycin phosphate, cyclosporine, dexamethasone so-
+dium succinate, dextrose 5% in water, digoxin, diltiazem hydrochlo-
+ride, diphenhydramine hydrochloride, dopamine hydrochloride, 
+epinephrine hydrochloride, erythromycin lactobionate, esmolol 
+hydrochloride, famotidine, fentanyl citrate, fluconazole, furosemide, 
+gentamicin sulfate, glycopyrrolate, heparin sodium, insulin (reg -
+ular), lactated Ringer’s solution (LRS), lidocaine hydrochloride, 
+magnesium sulfate, mannitol, metoclopramide, morphine sulfate, 
+multiple vitamins injections, naloxone hydrochloride, nitroglycerin, 
+nitroprusside sodium, norepinephrine bitartrate, oxytocin, penicil -
+lin G potassium, penicillin G sodium, pentobarbital sodium, pheno-
+barbital sodium, polymyxin B sulfate, potassium chloride, procain -
+amide hydrochloride, ranitidine hydrochloride, sodium bicarbonate, 
+thiamine hydrochloride (vitamin B1), and vasopressin.
+Administration of ampicillin diluted in LRS has been shown to 
+decrease  ampicillin concentrations by ≈30%; therefore, coadmin -
+istration with LRS (ie, through the same fluid line) should be per -
+formed with caution.11
+Ampicillin/sulbactam is Y-site incompatible with amiodarone 
+hydrochloride, amphotericin B conventional, amphotericin B lipo -
+somal, ciprofloxacin, diazepam, dobutamine hydrochloride, doxo -
+rubicin hydrochloride, doxycycline hyclate, hydralazine hydrochlo-
+ride, hydrocortisone sodium succinate, hydroxyzine hydrochloride, 
+lorazepam, mechlorethamine hydrochloride, methylprednisolone 
+sodium succinate, midazolam hydrochloride, mitoxantrone hydro -
+chloride, mycophenolate mofetil hydrochloride, ondansetron hy -
+drochloride, phenytoin sodium, quinidine gluconate, trimethoprim/
+sulfamethoxazole, tranexamic acid, and vinorelbine tartrate. 
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Ampicillin Sodium/Sulbactam Sodium Powder (injection): 1.5 g 
+(ampicillin sodium 1 g; sulbactam sodium 0.5 g) and 3 g (ampicillin 
+sodium 2 g; sulbactam sodium 1 g) in vials; 15 g (ampicillin sodium 
+10 g; sulbactam sodium 5 g) in bulk; Unasyn® , generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Amprolium
+(am-proe-lee-um) AmproMed®, Corid® 
+Anticoccidial 
+Prescriber Highlights
+ ▶ Thiamine analogue coccidiostat
+ ▶ Prolonged high doses may cause thiamine deficiency; length 
+of treatment usually does not exceed 14 days
+ ▶ Occasionally may cause GI or neurologic effects
+ ▶ May be unpalatable
+Uses/Indications
+Amprolium is FDA-approved for the treatment and prevention of 
+Eimeria bovis and Eimeria zurnii in calves, and for the treatment of 
+coccidiosis in poultry.
+Although there are no FDA-approved products in the US for 
+dogs, swine, sheep, or goats, amprolium has also been used in these 
+species for the control of coccidiosis.
+Pharmacology/Actions
+By mimicking the structure of thiamine, amprolium competitively 
+inhibits thiamine utilization by the parasite preferentially; amproli -
+um has this same effect in the host but to a far less extent.1  
+Amprolium is a coccidiostat. It has good activity against Eimeria 
+tenella and Eimeria acervulina in poultry and can be used as a thera-
+peutic agent against these organisms. Amprolium only has marginal 
+activity or weak activity against Eimeria maxima, Eimeria mivati, 
+Eimeria necatrix, and Eimeria brunetti; it is often used in combina -
+tion with other agents (eg, ethopabate) to improve control against 
+these organisms.
+Amprolium acts primarily upon the first-generation trophozoites 
+and schizonts in enterocytes, preventing differentiation of the mero-
+zoites; it also suppresses the sexual stages and sporulation of the 
+ oocysts.
+Pharmacokinetics
+Chickens receiving amprolium 20 mg/kg PO demonstrated the fol -
+lowing pharmacokinetic values: maximum blood concentrations at 4 
+hours; volume of distribution, 0.5 L/kg; clearance, 1.98 mL/kg/min.2
+Contraindications/Precautions/Warnings
+Amprolium is not recommended to be used for more than 12 days 
+in puppies.
+The undiluted liquid is reportedly unpalatable. Excessive dietary 
+thiamine can reduce or reverse the anticoccidial activity of the drug.
+Adverse Effects
+In dogs, neurologic disturbances (eg, “stargazing” , opisthotonos, cen-
+tral blindness, circling, ataxia), depression, anorexia, and diarrhea 
+have been reported but are rare and likely dose related. See Over-
+dose/Acute Toxicity for treatment recommendations. 
+
+
+===== Plumb PDF 112 =====
+Amprolium   85
+High dosages or long-term use of amprolium may induce neuro-
+logic signs because of thiamine deficiency (eg, polioencephalomala-
+cia [PEM], cerebrocortical necrosis). Parenteral thiamine (vitamin 
+B1) can be used for treatment.
+Overdose/Acute Toxicity
+Amprolium has induced polioencephalomalacia (PEM) in sheep 
+when administered at 880 mg/kg (16 times the normal dose) for 3 to 
+6 weeks3 and at 1000 mg/kg for 3 to 5 weeks. Erythrocyte production 
+has also been shown to cease in lambs receiving these high dosages. 
+Overdoses of amprolium can produce neurologic signs (eg, “star-
+gazing” , opisthotonos, central blindness, circling, ataxia). Treatment 
+should consist of stopping amprolium therapy and administering 
+parenteral thiamine. See Thiamine for more information.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretic in animals receiving amprolium and may be of significance in 
+veterinary patients:
+ ■ Thiamine : Exogenously administered thiamine in high doses 
+may reverse or reduce the efficacy of amprolium.
+Dosages
+DOGS:
+Coccidiosis (extra-label):
+a. Using the 20% powder *4: a) Small dogs less than 10 kg  
+[22 lb] anticipated adult weight): 60 – 100 mg/dog (NOT mg/kg)  
+placed in a gelatin capsule and given PO once daily for 7 to 12 
+days. Large pups (greater than 10 kg [22 lb] anticipated adult 
+weight): 110 – 200 mg/dog (NOT mg/kg) placed in a gelatin 
+capsule and given PO once daily for 7 to 12 days. b) In food, 
+for pups or bitches: 250 – 300 mg/dog (NOT mg/kg) using 
+the 20% powder on food once daily for 7 to 12 days. * NOTE: 
+Using the 20% powder, a 100 mg dose will equate to 500 mg 
+powder; a 200 mg dose = 1 g powder; a 250 - 300 mg dose =  
+1.25 g - 1.5 g powder.
+b. In water: a) 30 mL of the 9.6% solution in 3.8 liters (1 gal -
+lon) of water (no other water provided) for 7 to 10 days4 OR b)  
+1.5 tablespoonsful (22.5 mL) of the 9.6% solution in 3.8 liters 
+(1 gallon) of water to be used as the sole drinking water source; 
+treatment not to exceed 10 days.5 Monitor water consumption 
+both for treatment and hydration assurance. Rarely, some dogs 
+may not drink the amprolium water because of its bitter taste. 
+In situations where dogs are cohabitants, it is necessary to 
+place enough treated water for all to have access.
+c. Combination therapy: Amprolium 150 mg/kg in combination 
+with sulfadimethoxine 25 mg/kg PO every 24 hours for 14 days6
+CATS:
+Coccidiosis (extra-label):
+1.  Using the 20% powder:  60 – 100 mg/cat (NOT mg/kg) PO 
+once daily for 7 days6
+2.  In water:  1.5 teaspoonful (7.5 mL) of the 9.6% solution in  
+3.8 liters (1 gallon) of water per day for 10 days5
+3.  Combination therapy:  Amprolium 150 mg/kg in combina -
+tion with sulfadimethoxine 25 mg/kg PO every 24 hours for 14 
+days7
+CATTLE:
+As an aid in the treatment and prevention of coccidiosis caused 
+by Eimeria bovis  and  Eimeria zuernii  in calves (label dosage; 
+FDA-approved)): See product labels for additional information.
+1. 5-day treatment protocol: 10 mg/kg daily PO for 5 days 
+2. 21-day prevention protocol: 5 mg/kg daily PO for 21 days. Can 
+be administered either as an oral drench or mixed into the sole 
+source of fresh drinking water. 8,9 
+SHEEP/GOATS:
+Coccidiosis (extra-label):
+1. Lambs: 55 mg/kg daily PO for 19 days10
+2. Goat kids: 50 mg/kg daily PO for 5 days will effectively reduce 
+the fecal shedding of Eimeria spp oocysts without inducing 
+neurologic disease.11
+CAMELIDS (NEW-WORLD):
+Eimeria macusaniensis  (extra-label): Using a 1.5% solution,  
+10 mg/kg PO once daily for 10 to 15 days; supplement with thia -
+mine 10 mg/kg SC every 5 days during treatment.12
+SWINE:
+Coccidiosis treatment (extra-label): 25 – 65 mg/kg PO once or 
+twice daily for 3 to 4 days10
+AVIAN:
+1. Treatment of coccidiosis in growing chickens, turkeys, and 
+laying hens (label dosage; FDA-approved): Administer 0.012% 
+solution in the sole source of drinking water for 3 to 5 days, 
+then as 0.006% solution for an additional 1 to 2 weeks.13 Severe 
+outbreaks may require higher initial dosages; see product la -
+bels for additional information.
+2. Coccidiosis in pet birds (extra-label): 
+a. 15 – 30 mg/kg/day PO for 1 to 5 days; repeat 5 days later14 
+b. In water: Using the 9.6% solution, 1 – 2.5 mL per liter of wa-
+ter for 5 days or longer.14,15 Cages should be steam cleaned 
+to prevent reinfection. Supplement diet with B vitamins. 
+Toucans and mynahs are resistant to some strains.
+FERRETS:
+Coccidiosis (extra-label): 19 mg/kg once daily16
+RABBITS/RODENTS/SMALL MAMMALS:
+Coccidiosis (extra-label):
+1. Rabbits: Using 9.6% solution, 1 mL/7 kg (15 lb) (≈0.15 mL/kg) 
+PO once daily for 5 days. Diluted in drinking water: 0.5 mL of 
+9.6% solution/500 mL for 10 days17
+2. Gerbils, Mice, Rats, Hamsters : 10 – 20 mg/kg divided and 
+given SC or IM every 8 to 24 hours
+3. Chinchillas: 10 – 15 mg/kg per day divided and given SC, IM, 
+or IV every 8 to 24 hours18
+Monitoring
+ ■ Clinical efficacy
+ ■ Hydration, body weight
+ ■ If using in high dosages (extra-label), watch for neurologic signs 
+(eg, “stargazing, ” opisthotonos, central blindness, circling, ataxia).
+Chemistry/Synonyms
+Amprolium hydrochloride, a structural analogue of thiamine (vita -
+min B1), occurs as a white or almost white, odorless or nearly odor -
+less powder. One gram is soluble in 2 mL of water and is slightly 
+soluble in alcohol.
+Amprolium may also be known as amprocidi, Amprol®, Am-
+promed®, Corid®, Coxoid®, or Coxiprol®.
+Storage/Stability
+Unless otherwise instructed by the manufacturer, store amprolium 
+products at room temperature 15°C to 30°C (59°F-86°F).
+Compatibility/Compounding Considerations
+No specific information is noted.
+
+
+===== Plumb PDF 113 =====
+86    Antivenom, Latrodectus mactans
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Amprolium Oral Solution: 9.6% (96 mg/mL) in 473 mL and 1 gal -
+lon bottles; Corid®, generic; (OTC). FDA-approved for use in calves 
+(not veal calves). Slaughter withdrawal (when used as labeled) = 24 
+hours. A withdrawal period has not been established for prerumi -
+nating calves.
+Amprolium Oral Solution: 9.6% (96 mg/mL) in 473 mL and 1 gallon 
+bottles; Amprol®, generic; (OTC). FDA-approved for use in growing 
+chickens, turkeys, and laying hens. Withdrawal information is not 
+included on the FDA label.
+Amprolium Soluble Powder: 20% (200 mg/g) in 283.5 g pouches  
+Corid®; (OTC). FDA-approved for use in calves (not veal calves). 
+NADA #033-165. Slaughter withdrawal (when used as labeled) = 24 
+hours. A withdrawal period has not been established for prerumi -
+nating calves. 
+Amprolium Soluble Powder: 20% (200 mg/g) in 283.5 g pouch -
+es Amprol® 128; generic; (OTC).  FDA-approved for use in growing 
+chickens, turkeys, and laying hens; withdrawal information is not 
+included on the FDA label. 
+There are also available medicated feeds (amprolium alone) and 
+combination products (medicated feeds, feed additives) containing 
+amprolium with other therapeutic agents. These products may be la-
+beled for use in calves, chickens, and/or turkeys.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Antivenom, Latrodectus mactans
+Antivenom, Black Widow Spider 
+(an-tie-ven-nin lah-tro-dec-tus mack-tans) Antivenom, Antidote
+Antivenin and antivenom are synonymous terms and are used inter-
+changeably throughout the monograph to avoid confusion between 
+the currently preferred term (antivenom) and the term used on the 
+product label (antivenin). NOTE: Veterinary poison control centers 
+can offer current, detailed treatment recommendations (consulta-
+tion fees may apply). See Important Contact Information.
+Prescriber Highlights
+ ▶ Neutralizes the venom of black widow spiders. Early antiven-
+om administration (within 4 to 6 hours of envenomation) is 
+associated with greater efficacy, but later administration can 
+still be effective.
+ ▶ May cause hypersensitivity reactions (acute and delayed)
+ ▶ Product may be difficult for veterinarians to obtain in a timely 
+manner in emergent situations; consider keeping this product 
+on hand in areas where envenomation occurs more common-
+ly.
+ ▶ It is recommended to contact a veterinary poison control 
+center for current treatment recommendations and assistance 
+in locating and acquiring antivenom.
+Uses/Indications
+Black widow spider antivenom is used to treat envenomation by La-
+trodectus mactans (black widow spider). Cats, horses, and camels are 
+considered to be extremely sensitive to the alpha-latrotoxin in the 
+spider venom, whereas dogs are considered more resistant.1,2 Clinical 
+signs associated with envenomation occur within 8 hours of the spi-
+der bite and are primarily neuromuscular (eg, severe pain, seizures, 
+muscle spasms [especially in the chest wall, abdomen, and other 
+large muscle mass areas], which may progress to flaccid paralysis in 
+cats) and cardiovascular (eg, hypertension, tachycardia, cardiovas -
+cular collapse); secondary respiratory compromise may result from 
+muscular rigidity and lead to death if not treated. Within 24 hours, 
+affected animals may lose up to 20% of their body weight. Cats may 
+also develop hypersalivation and GI signs (eg, vomiting, diarrhea 3); 
+death is very common in this species.1 
+Pharmacology/Actions
+Antivenoms act by binding to venom toxins and thereby neutralizing 
+venom-induced effects in patients via passive immunization of im -
+munoglobulins obtained from horses that are hyperimmunized with 
+the venom of Latrodectus mactans. 
+The use of antivenom early in the course of therapy is emphasized. 
+Improvement in clinical signs may occur as early as 30 minutes after ad-
+ministration,1,2 and complete recovery may be seen within 6 to 8 hours.2
+Pharmacokinetics
+No pharmacokinetic information was located.
+Contraindications/Precautions/Warnings
+Because there is a risk for anaphylaxis secondary to the equine immu-
+noglobulins contained in this product, many clinicians recommend per-
+forming sensitivity testing before administration; however, antivenom 
+sensitivity testing is frequently unreliable, with false-positive and -nega-
+tive results.4 Delayed serum sickness may occur several days to a couple 
+weeks following antivenom administration. Antivenom dilution with 
+and administration in IV fluids should be undertaken with extreme cau-
+tion because of the risk of hypertension resulting from envenomation.
+Adverse Effects
+Anaphylaxis secondary to the product’s equine serum origin may oc-
+cur; the incidence is rare in humans (less than 0.6%).1 Although rare, 
+there is the possibility of life-threatening hypersensitivity reactions; 
+appropriate resuscitative drugs (eg, epinephrine) and equipment 
+should be readily available. The FDA-approved product contains a 
+small vial of normal equine serum to perform intradermal hypersen-
+sitivity testing. Alternatively, a 1:10 dilution of the antivenom admin-
+istered intracutaneously at a dose of 0.02 – 0.03 mL has been suggested 
+as a test for hypersensitivity. Wheal formation and erythema indicate 
+a positive reaction and are generally seen within 30 minutes of admin-
+istration. A negative response does not ensure that anaphylaxis will be 
+avoided during treatment; slow IV administration is usually sufficient 
+to identify animals that will react to the product. A pretreatment dose 
+of diphenhydramine is often recommended before administering an-
+tivenom, primarily to sedate the patient and, theoretically, to reduce 
+any possible allergic reactions to the antivenom. 
+Epinephrine (0.01 mg/kg IM and repeated at 15- to 20-minute 
+intervals until the patient is stable) has been recommended if ear -
+ly signs of anaphylaxis occur (clinical signs vary by species and in -
+clude vomiting/diarrhea [dogs], dyspnea [cats/ruminants], nausea, 
+pruritus, pyrexia, and hyperemia of the inner pinnae). Stopping the 
+infusion, administering histamine H 1- and H 2-receptor antagonists 
+(eg, diphenhydramine and famotidine, respectively), and restarting 
+the infusion 5 minutes later at a slower rate may allow the dose to 
+be administered without further problems.5 In severe envenomation, 
+patients exhibiting allergic reactions to antivenom can still receive it; 
+administration of antivenom as a slow IV infusion with concomitant 
+diphenhydramine (and possibly epinephrine) has been suggested.
+Muscle cramps have also been reported in humans following an-
+tivenom administration. 
+Reproductive/Nursing Safety
+The safe use of black widow spider antivenom during pregnancy or 
+lactation has not been established; however, it has been used success-
+fully in human pregnancies.6-8 
+
+
+===== BSAVA PDF 43 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+27
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+cause subcutaneous abscesses. Intralesional injections may also 
+be performed in this condition at a dose of 1 mg/kg q7d in 
+combination with oral itraconazole.
+• Irrigation of bladder: Conventional amphotericin: 30–50 mg in 
+50–100 ml of sterile water infused at a rate of 5–10 ml/kg into 
+the bladder lumen daily for 5–15 days.
+• Systemic mycoses: Lipid formulations (general guidelines):  
+1 mg/kg q48h to cumulative dose of 12 mg/kg. Higher doses are 
+tolerated (e.g. 1–2.5 mg/kg i.v. q48h for 4 weeks/to cumulative 
+dose of 24–30 mg/kg). Reconstitute to 5 mg/ml with sterile 
+water, then dilute required volume to 1 mg/ml with 5% dextrose 
+water. 
+• Leishmaniosis (lipid formulations):  1–2.5 mg/kg i.v. twice weekly 
+for 8 injections. Increase dose rate gradually. A total cumulative 
+dose of at least 10 mg/kg is required but treatment may be 
+continued long term depending on clinical response. Use in this 
+context is discouraged to avoid resistance developing to therapy 
+for humans. 
+Cats: 
+• Systemic mycoses: Conventional amphotericin: 0.1–0.25 i.v. 
+q48h. For details on administration, see doses for dogs.
+• Cryptococcosis (conventional amphotericin, subcutaneous 
+alternative): Conventional amphotericin: 0.5–0.8 mg/kg added 
+to 400–500 ml of 0.45% saline/2.5% dextrose. This total volume 
+is then administered s.c. 2–3 times a week to a cumulative level 
+of 10–15 mg/kg. Do not inject solutions more concentrated 
+than 20 mg/l as they will cause subcutaneous abscesses. 
+Intralesional injections may also be performed in this condition 
+at a dose of 1 mg/kg q7d in combination with oral itraconazole.
+• Systemic mycoses: Lipid formulations (general guidelines):  
+1 mg/kg q48h to cumulative dose of 12 mg/kg. Higher doses are 
+tolerated (e.g. 1–2.5 mg/kg i.v. q48h for 4 weeks/to cumulative 
+dose of 24–30 mg/kg). 
+References
+Foy DS and Trepanier LA (2010) Antifungal treatment of small animal veterinary patients. 
+Veterinary Clinics of North America: Small Animal Practice 40 , 1171–1188
+Pennisi MG, Hartmann K, Lloret A et al . (2013) Cryptococcosis in cats: ABCD guidelines 
+on prevention and management. Journal of Feline Medicine and Surgery 15 , 611–618 
+Ampicillin
+(Amfipen, Ampicare) POM-V 
+Formulations: Injectable: Ampicillin sodium 250 mg, 500 mg 
+powders for reconstitution (human licensed product only);  
+100 mg/ml long-acting preparation. Oral: 250 mg capsule.
+Action: Binds to penicillin-binding proteins involved in bacterial cell 
+wall synthesis, thereby decreasing cell wall strength and rigidity, 
+affecting cell division, growth and septum formation. It acts in a 
+time-dependent fashion.
+
+
+===== BSAVA PDF 44 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+28
+Use: Active against many Gram-positive and Gram-negative aerobic 
+organisms and obligate anaerobes, but not against those that 
+produce penicillinases (beta-lactamases), e.g. Escherichia coli , 
+Staphylococcus aureus. The difficult Gram-negative organisms such 
+as Pseudomonas aeruginosa and Klebsiella are usually resistant. 
+Ampicillin is excreted well in bile and urine. Maintaining levels above 
+the MIC is critical for efficacy and thereby prolonged dosage 
+intervals or missed doses can compromise therapeutic response. 
+Dose and dosing interval is determined by infection site, severity and 
+organism. Oral bioavailability is reduced in the presence of food.
+Safety and handling: After reconstitution the sodium salt will 
+retain adequate potency for up to 8 hours if refrigerated, but use 
+within 2 hours if kept at room temperature.
+Contraindications: Avoid the use of oral antibiotic agents in 
+critically ill patients, as absorption from the GI tract may be 
+unreliable. Do not use in animals with hypersensitivity to penicillins.
+Adverse reactions: Nausea, diarrhoea and skin rashes are the 
+commonest adverse effects.
+Drug interactions: Avoid the concurrent use of ampicillin with 
+bacteriostatic antibiotics (e.g. tetracycline, erythromycin, 
+chloramphenicol). Do not mix in the same syringe as 
+aminoglycosides. A synergistic effect is seen when beta-lactam and 
+aminoglycoside antimicrobials are used concurrently.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs:  
+• Routine infections: 10–20 mg/kg i.v., i.m., s.c., p.o. q6–8h.
+• CNS or serious bacterial infections: up to 40 mg/kg i.v. q6h has 
+been recommended.
+Cats: 10–20 mg/kg i.v., i.m., s.c., p.o. q6–8h.
+Amprolium
+(Harkers Pigeon Coccidiosis Treatment ) AVM-GSL 
+Formulations: Oral: 3.84% solution for dilution in water.
+Action: Thiamine analogue that disrupts protozoal metabolism.
+Use:
+• Treatment of coccidiosis in dogs and cats.
+Limit duration of therapy to 2 weeks.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use for more than 2 weeks to 
+minimize risk of thiamine deficiency in the host animal.
+Adverse reactions: Anorexia, diarrhoea and depression in dogs. 
+Prolonged high doses can cause thiamine deficiency and may result 
+in neurological signs.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 45 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+29
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Drug interactions: Exogenously administered thiamine may 
+reduce efficacy.
+DOSES
+Dogs: For coccidiosis various doses are suggested. 200–300 mg/
+dog p.o. q24h for 7–12 days. Small puppies reduce to 60-100 mg/
+dog p.o. q24h, larger puppies use 200 mg/dog p.o. q24h.
+Cats: 60–100 mg/cat p.o. q24h for 7 days or 110–220 mg/kg on 
+food q24h for 7–12 days.
+Antivenom (European Adder)
+POM
+Formulations: Injectable: 10 ml vial for injection (100mg/ml).
+Action: Immunoglobulin raised against venom inhibits toxic effects.
+Use:
+• Used in the management of snake bites by the European Adder 
+(Viper).
+Current approved suppliers can be found on the VMD website and a 
+special dispensation from the VMD can enable supply, purchase and 
+use prior to STC approval in urgent cases (contact the VMD). Before 
+submitting an application, contact the relevant manufacturer to 
+ensure they are able to supply the quantity of product you wish to 
+import. Urgent provision may also be possible via the VPIS ToxBox 
+service. The value of antivenom decreases with time following the bite 
+(benefits to local swelling are limited to administration within 24 hours 
+post-bite; however, benefits towards systemic signs, when present, 
+continue even with administration >24 hours post-bite). There are no 
+published studies conclusively supporting improved recovery time in 
+small animals. This antivenom is unlikely to work for other snake bites 
+and specialist help should be urgently sought for such bites.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Anaphylactic reactions may develop. Milder 
+reactions reported include facial swelling unrelated to snake bite, 
+profound panting, unproductive cough.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: Adder bite envenomation:  10 ml per animal slow i.v. 
+(regardless of size). Consider giving 0.5 ml i.v. first and then wait 20 
+min to test for anaphylaxis.
+References
+Hodgson L and Brambilla G (2017) Dogs with a European adder bite, does the use of 
+antivenom with supportive treatment compared to supportive treatment alone improve 
+time to recovery?  Veterinary Evidence  2, 1–11
+Lund HS, Kristiansen V, Eggertsdóttir AV et al . (2013) Adverse reactions to equine-derived 
+F(ab’)2 -antivenin in 54 dogs envenomated by Vipera berus berus . Journal of Veterinary 
+Emergency and Critical Care 23 , 532–53

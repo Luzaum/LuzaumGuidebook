@@ -5,6 +5,7 @@ import { sepseAhimConsensosSeed } from './consensos.sepse-ahim.seed';
 import { neurologiaConsensosSeed } from './consensos.neurologia.seed';
 import { dermatologiaConsensosSeed } from './consensos.dermatologia.seed';
 import { infectologiaConsensosSeed } from './consensos.infectologia.seed';
+import { hematologiaConsensosSeed } from './consensos.hematologia.seed';
 
 const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
   'icatcare-dtuif-felina-2025': {
@@ -42,6 +43,7 @@ const localClinicalDetailsBySlug: Record<string, Record<string, string>> = {
 }
 
 export const consensosSeed: Array<Record<string, any>> = [
+  ...hematologiaConsensosSeed,
   ...sepseAhimConsensosSeed,
   ...cardiologiaConsensosSeed,
   ...endocrinologiaConsensosSeed,

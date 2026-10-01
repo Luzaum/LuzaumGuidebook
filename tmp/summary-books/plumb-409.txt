@@ -1,0 +1,250 @@
+382      Diazoxide
+	■Respiratory system: respiratory rate, ETCO2, and SpO2—mild re-
+spiratory depression can occur, with a more moderate impact if 
+other respiratory depressants (eg, opioids) are administered.
+	■Horses should be observed carefully for ataxia. 
+	■Clinical response to treatment
+Client Information 
+	■This medicine may cause sedation and/or disorientation, which 
+may impair the performance of working animals.
+	■When using this medicine for thunderstorm phobias or other 
+triggers (eg, separation anxiety), give the medicine to your animal 
+about an hour before the event or trigger.
+	■This medicine may be given with or without food. If your animal 
+vomits or acts sick after receiving the medication on an empty 
+stomach, give the medicine with food or small treats. Contact 
+your veterinarian if vomiting continues.
+	■Contact your veterinarian immediately if your animal develops 
+yellowing of the skin, gums, or whites of the eyes (jaundice).
+	■Sleepiness is the most common side effect. This medicine can 
+change your animal’s behavior (eg, hyperactivity, anxiety) in un-
+expected ways.
+	■This medicine may increase your animal’s appetite, especially in 
+cats.
+	■Contact your veterinarian immediately if your animal stops eat-
+ing or seems depressed.
+Chemistry/Synonyms
+Diazepam, a benzodiazepine, is a white-to-yellow, practically 
+odorless, crystalline powder with a melting point between 131°C 
+(267.8°F) and 135°C (275°F) and pKa of 3.4. Diazepam is tasteless 
+initially but develops a bitter aftertaste. One gram of diazepam is sol-
+uble in 333 mL of water or 25 mL of alcohol and is sparingly soluble 
+in propylene glycol. The pH of the commercially prepared injectable 
+solution is 6.2 to 6.9. It consists of a 5 mg/mL solution with 40% pro-
+pylene glycol, 10% ethanol, 5% sodium benzoate/benzoic acid buffer, 
+and 1.5% benzyl alcohol as a preservative.
+Diazepam may also be known as diazepamum, LA-III, NSC-
+77518, or Ro-5-2807; many trade names are available. 
+Storage/Stability 
+Store all diazepam products at room temperature (15°C to 30°C 
+[59°F-86°F]). Keep the injection from freezing temperatures and 
+protect from light. Store the oral forms (eg, tablets, capsules) in tight-
+ly closed containers and protect them from light. 
+Because diazepam may adsorb to plastic, it should not be stored 
+in plastic syringes but can be drawn up in syringes if intended to be 
+administered within 4 hours. The drug may also significantly adsorb 
+to IV solution plastic (eg, PVC) bags and infusion tubing. This ad-
+sorption appears to be dependent on several factors (eg, tempera-
+ture, drug concentration, flow rates, line length). 
+Consider the following to minimize the adsorption of diazepam. 
+Use glass or polyolefin containers; if you use PVC bags, select the 
+lowest possible surface:volume ratio and minimize the storage time. 
+The use of non-PVC administration sets will reduce loss. If you use 
+PVC tubing, it should be the shortest possible length with a small 
+diameter, and the set should not contain a burette chamber. More 
+rapid flow rates (consistent with safe clinical use) will also reduce the 
+loss of diazepam.64
+Compatibility/Compounding Considerations 
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+The manufacturers of injectable diazepam do not recommend the 
+drug be mixed with any other medication or IV diluent, and diluting 
+for infusion cannot be recommended. Although some studies have 
+shown that dilution in some IV solutions at low concentrations may 
+not exhibit visible precipitates, microcrystal formation could not be 
+ruled out. Because there is continued interest in IV infusions of di-
+azepam, some studies indicate that diazepam injection may be com-
+patible with various drugs and IV fluids (eg, diluted to a concentra-
+tion of 5 mg/50 mL to 5 mg/100 mL with 0.9% sodium chloride, 5% 
+dextrose, Ringer’s, or lactated Ringer’s injection).
+Mixing ketamine with diazepam in the same syringe or IV bag has 
+been suggested but is not recommended, as precipitation may occur. 
+Although there are many anecdotal reports of mixing ketamine with 
+diazepam in the same syringe just prior to injection, there does not 
+appear to be any published information documenting the stability of 
+the drugs after mixing. Use should be avoided if a visible precipitate 
+forms.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE IN THE UNITED STATES 
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 2 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula-
+tions before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+The International Federation for Equestrian Sports (FEI) lists this 
+drug as a prohibited substance–controlled substance. 
+HUMAN-LABELED PRODUCTS: 
+Diazepam Injection: 5 mg/mL in 2 mL Carpuject® cartridges; gener-
+ic; (Rx, C-IV) 
+Diazepam Oral Tablets: 2 mg, 5 mg, and 10 mg; Valium®, generic; 
+(Rx, C-IV)
+Diazepam Oral Solution: 1 mg/mL in 500 mL, and 5 mg and 10 mg 
+patient cups; generic; (Rx, C-IV); Concentrated oral solution: 
+5 mg/mL in 30 mL with dropper; Diazepam Intensol®; (Rx, C-IV)
+Diazepam Rectal Gel: 2.5 mg, 10 mg, and 20 mg; Diastat®, generic; 
+(Rx, C-IV)
+References
+For the complete list of references, see wiley.com/go/budde/plumb  
+Diazoxide
+(di-az-ok-side)  Proglycem®
+Direct Vasodilator/Hyperglycemic 
+Prescriber Highlights 
+	
+▶Orally administered drug used in the management of insulino-
+mas in small animal species
+	
+▶Contraindications include functional hypoglycemia or 
+hypoglycemia secondary to insulin overdose (diabetics) and 
+hypersensitivity to thiazide diuretics.
+	
+▶Use with caution in patients with congestive heart failure or 
+renal insufficiency
+	
+▶Most common adverse effects include anorexia, vomiting, 
+and/or diarrhea (may be reduced by giving with food).
+	
+▶Availability and expense may be problematic. May need to be 
+compounded
+	
+▶Bitter taste may make administration difficult.
+Uses/Indications 
+Oral diazoxide has been used for the treatment of hypoglycemia sec-
+ondary to hyperinsulin secretion (eg, insulinoma) in patients refrac-
+tory to glucocorticoid and dietary therapy.
+
+Diazoxide      383
+Pharmacology/Actions 
+Although related structurally to the thiazide diuretics, diazoxide 
+does not possess any appreciable diuretic activity. By directly causing 
+a vasodilatory effect on the smooth muscle in peripheral arterioles, 
+diazoxide reduces peripheral resistance and blood pressure. 
+Diazoxide exhibits hyperglycemic activity by directly inhibiting 
+pancreatic insulin secretion, stimulating hepatic gluconeogenesis 
+and glycogenolysis, and stimulating the beta-adrenergic system to 
+cause epinephrine release and inhibit tissue use of glucose. Diazox-
+ide’s inhibition of insulin release may be a result of the drug’s ability 
+to decrease the intracellular release of ionized calcium, thus prevent-
+ing release of insulin from beta cell insulin granules. Diazoxide does 
+not apparently affect the synthesis of insulin, nor does it possess any 
+antineoplastic activity. 
+Pharmacokinetics 
+The serum half-life of diazoxide has been reported to be ≈5 hours 
+in dogs; other pharmacokinetic parameters in dogs appear to be un-
+available. In humans, serum diazoxide levels (dosed at 10 mg/kg PO) 
+peaked at ≈12 hours after dosing with capsules. It is unknown what 
+blood levels are required to obtain hyperglycemic effects. Highest 
+concentrations of diazoxide are found in the kidneys with high levels 
+also found in the liver and adrenal glands. Approximately 90% of 
+the drug is bound to plasma proteins and it crosses the placenta and 
+into the CNS. It is not known if diazoxide is distributed into milk. 
+Diazoxide is partially metabolized in the liver and is excreted as both 
+metabolites and unchanged drug by the kidneys. Serum half-life of 
+the drug is prolonged in patients with renal impairment.
+Contraindications/Precautions/Warnings 
+Diazoxide should not be used in patients with functional hypogly-
+cemia or for treating hypoglycemia secondary to insulin overdose in 
+diabetic patients. Unless the potential advantages outweigh the risks, 
+do not use in patients hypersensitive to thiazide diuretics.
+Because diazoxide can cause sodium and water retention, use 
+cautiously, and consider dose reductions in patients with congestive 
+heart failure or renal insufficiency.
+Do not confuse diaZOXide with DIAZepam or diltiazem.
+Adverse Effects 
+When used to treat insulinomas in dogs, the most common adverse 
+effects include hypersalivation, anorexia, vomiting, and/or diarrhea. 
+Other effects that may be seen include tachycardia, hematologic ab-
+normalities (eg, agranulocytosis, aplastic anemia, thrombocytope-
+nia), pancreatitis, diabetes mellitus, cataracts, and sodium and water 
+retention.
+Administering the drug with meals or temporarily reducing the 
+dosage may alleviate the GI side effects. Because diazoxide is metab-
+olized in the liver, adverse effects may be more readily noted in dogs 
+with concurrent hepatic disease.
+Adverse effects reported in ferrets include inappetence, vomiting, 
+diarrhea, malaise, and myelosuppression.
+Reproductive/Nursing Safety 
+Diazoxide crosses the placenta.1 Fetal islet cell degeneration has been 
+demonstrated in animals. In addition, fetal resorption has been ob-
+served in rats, and fetal skeletal and cardiac malformations or terato-
+genicity have been observed in rabbits. Diazoxide may cause cessa-
+tion of uterine contractions when administered during labor.
+It is unknown if diazoxide enters milk. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity 
+Oral doses of up to 500 mg/kg have been tolerated in dogs.1 The oral 
+LD50 is over 5000 mg/kg in rats and 219 mg/kg in guinea pigs. An 
+acute overdose may result in severe hyperglycemia and ketoacidosis. 
+Treatment should include insulin (see specific Insulin monographs), 
+fluids, and electrolytes. Intensive and prolonged monitoring is rec-
+ommended.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving diazoxide and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+	■Alpha-Adrenergic Agents (eg, phenoxybenzamine): May 
+decrease the effectiveness of diazoxide by increasing glucose levels
+	■Glucocorticoids (eg, dexamethasone, prednis(ol)one): If 
+used in combination with diazoxide, may enhance hyperglycemic 
+effects
+	■Hypotensive Agents, Other (eg, amlodipine, hydralazine, 
+prazosin, telmisartan): Diazoxide may enhance the hypotensive 
+actions of other hypotensive agents. 
+	■Phenothiazines (eg, acepromazine, chlorpromazine): May 
+enhance the hyperglycemic effects of diazoxide
+	■Thiazide diuretics: May potentiate the hyperglycemic effects 
+of oral diazoxide.1 Some clinicians have recommended using hy-
+drochlorothiazide in combination with diazoxide, if diazoxide 
+alone is ineffective to increase blood glucose levels. Caution: hy-
+potension may occur.
+Laboratory Considerations 
+	■Diazoxide will cause a false negative insulin response to the glu-
+cagon-stimulation test.
+	■Diazoxide may displace bilirubin from plasma proteins.
+Dosages
+DOGS:
+Adjunctive treatment of hypoglycemia secondary to insulin-­
+secreting islet cell or non-islet cell tumors (extra-label): Ini-
+tially 5 mg/kg PO twice daily.2 May gradually increase to effect 
+up to a maximum dosage of 30 mg/kg PO twice daily. If diazox-
+ide alone is ineffective, may consider using hydrochlorothiazide 
+(1 – 2 mg/kg PO every 12 hours) in combination with diazoxide. 
+FERRETS:
+Hypoglycemia secondary to insulin-secreting islet cell tumors 
+(extra-label): After surgical resection of pancreatic nodules or 
+partial pancreatectomy: Prednisone 0.5 – 2 mg/kg PO every 12 
+hours will usually control mild to moderate clinical signs. Begin 
+at lowest dose and gradually increase as needed. Add diazoxide 
+when clinical signs cannot be controlled with prednisone alone. 
+Begin diazoxide 5 – 10 mg/kg PO every 12 hours. Prednisone 
+dosage may need to be lowered at the same time. If the initial dos-
+age does not control clinical signs, the dosage can be gradually 
+increased to a maximum of 30 mg/kg PO every 12 hours.
+SMALL MAMMALS:
+Guinea pigs; Hypoglycemia secondary to insulin-secreting is-
+let cell tumors (extra-label): Based on a single case report: Initial-
+ly, 5 mg/kg PO every 12 hours. Based on the blood glucose curve, 
+dosage was gradually increased to 25 mg/kg PO every 12 hours.
+Monitoring
+	■Blood (serum) glucose. The goal of therapy is to identify a dosage 

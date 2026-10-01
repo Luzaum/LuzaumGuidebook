@@ -1,0 +1,258 @@
+150      Buprenorphine
+HUMAN-LABELED PRODUCTS:
+Bupivacaine Liposome Injectable Suspension 1.3% (13.3 mg/mL) in 
+10 mL and 20 mL single-use vials; Exparel®; (Rx)6
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Buprenorphine
+(byoo-pre-nor-feen)  Buprenex®, Simbadol®, Zorbium®
+Opioid Partial Agonist
+Prescriber Highlights
+	
+▶Partial mu-opioid agonist used primarily as an injectable and 
+buccal (ie, oral transmucosal [OTM]) analgesic, especially in 
+cats
+	
+▶Often used as a component of short-term immobilization and 
+anesthetic drug combinations 
+	
+▶Buccal/OTM administration is well tolerated and can be effec-
+tive, but bioavailability is low by this route, as is standard  
+(0.3 mg/mL) buprenorphine administered SC.
+	
+▶Longer onset of action and longer duration of action as com-
+pared with most other opioids
+	
+▶Rarely, may cause respiratory depression
+	
+▶Because of tight buprenorphine receptor binding, standard 
+doses of naloxone may not completely reverse drug effects.
+	
+▶DEA Schedule III (C-III) controlled substance
+Uses/Indications
+Buprenorphine is most often used as an analgesic for mild to mod-
+erate pain or in preanesthetic drug combinations in small animals. 
+In most species, buprenorphine provides less analgesia than pure 
+mu-opioid agonists (eg, morphine, hydromorphone) and it is less se-
+dating than most other opioids (particularly butorphanol). For acute 
+pain control, buprenorphine may have the disadvantage of a longer 
+onset of action than other opioids.
+In dogs, an isoflurane MAC-sparing effect occurs at IV dosages of 
+0.01 mg/kg, 0.05 mg/kg, and 0.1 mg/kg1 but methadone (0.3 mg/kg) 
+provided more effective presurgical analgesia than buprenorphine 
+(0.02 mg/kg) in dogs sedated with acepromazine and medetomi-
+dine prior to undergoing ovariohysterectomy (OHE).2 Use of the 
+feline-labeled Simbadol® (0.02 mg/kg IM) prior to surgery in dogs 
+(pretreated with acepromazine and carprofen and undergoing ovari-
+ohysterectomy) provided similar postoperative analgesia as standard 
+buprenorphine (0.02 mg/kg IM) but more dogs in the standard bu-
+prenorphine group (3/12) required postoperative rescue analgesia 
+(vs 0/12 for Simbadol®).3 Oral transmucosal (OTM) administration 
+can provide effective analgesia (0.02 and 0.12 mg/kg were studied)4 
+but bioavailability is low and variable with this route.5 When used 
+epidurally in combination with bupivacaine for stifle arthroplasty, 
+buprenorphine produced sufficient analgesia for up to 24 hours.6 Bu-
+prenorphine/bupivacaine combination for infraorbital nerve block 
+had an isoflurane-sparing effect and extended the duration of anal-
+gesia to 48 to 96 hours.7
+In cats, one product (Simbadol®) is a high-concentration (1.8 mg/ 
+mL), long-duration (72 hour) form of buprenorphine that is FDA- 
+approved for SC administration for the control of postoperative pain 
+associated with surgical procedures. A transdermal buprenorphine 
+solution is FDA-approved for the control of postoperative pain. It is 
+applied by veterinary staff in the clinic or hospital 1 to 2 hours prior 
+to surgical procedures and provides analgesia for 4 days.8 
+In one study, when combined with medetomidine (0.002 mg/kg), 
+standard concentration buprenorphine (0.3 mg/mL; 0.002 mg/kg) 
+given IM provided equivalent analgesia to that provided by butorph-
+anol (0.4 mg/kg) or methadone (0.5 mg/kg).9 Combined with dex-
+medetomidine (0.001 mg/kg), butorphanol (0.4 mg/kg) provided 
+better sedation and less vomiting than buprenorphine (0.02 mg/kg) 
+when administered IM to cats.10 With standard buprenorphine, 
+buccal/OTM administration can be a practical, effective method for 
+controlling postoperative pain. However, IV or IM administration 
+of buprenorphine provides better postoperative (OHE) analgesia as 
+compared with SC or buccal/OTM administration, and the cats re-
+ceiving buprenorphine by the OTM route experienced a high prev-
+alence of treatment failure.11 Multidose injectable formulations may 
+be less palatable to cats when given by the OTM route than the pre-
+servative-free formulation.12 Combining opioids such as buprenor-
+phine with short-term NSAIDs for postoperative pain control pro-
+vides better analgesia than buprenorphine alone.13 
+In the UK and Australia, there are licensed buprenorphine prod-
+ucts that are labeled for postoperative analgesia in dogs, cats, and 
+horses and potentiation of the sedative effects of centrally acting 
+agents in dogs and horses.
+Pharmacology/Actions
+Buprenorphine has partial agonist activity at the mu receptor and is 
+a kappa-receptor antagonist. Buprenorphine is considered 30 times 
+more potent than morphine and exhibits many of the same actions as 
+the pure opioid agonists. It produces a dose-related analgesia; how-
+ever, at higher doses, analgesic effects may plateau. Buprenorphine 
+has a high affinity for, and slow dissociation from, mu receptors in 
+the CNS, which may explain its relatively long duration of action. 
+In dogs, sedative effects are generally seen after 15 minutes, but an-
+algesia may not develop fully until 30 minutes postadministration. 
+Analgesia is unlikely to persist for 12 hours unless pain is mild. A 6- 
+to 8-hour duration of analgesic effect is often reported but analgesia 
+may be as short as 4 hours, with high variability between cats.13 Mul-
+timodal analgesia with frequent pain assessment is recommended. 
+The high-concentration, long duration buprenorphine product lasts 
+72 hours when given SC to cats.
+The cardiovascular effects of buprenorphine may cause a decrease 
+in both blood pressure and cardiac rate. Rarely, human patients may 
+exhibit increases in blood pressure and cardiac rate. Respiratory de-
+pression is a possibility and decreased respiratory rates have been 
+noted in horses treated with buprenorphine. GI effects appear to be 
+minimal in cats treated with buprenorphine.
+Pharmacokinetics
+In cats, buprenorphine is rapidly and completely absorbed when 
+given IM.14 Peak concentrations after SC injection can vary widely; 
+blood concentrations are low and do not appear to correlate with an-
+algesic effect. Buprenorphine has a volume of distribution at steady-
+state (VDss) of ≈3 to 8 L/kg and a clearance of ≈8 to 20 mL/kg per 
+minute. Elimination half-life is ≈6 to 7 hours. When administered 
+by the buccal/OTM route, bioavailability is low and highly variable 
+(≈20% to 30%).13,15 The human transdermal patch buprenorphine 
+(Transtec®; UK) applied to cats has demonstrated widely variable 
+blood concentrations and, without a loading dose, does not appear 
+to provide adequate analgesia. Individual variability in response to 
+buprenorphine administration by all administration routes, espe-
+cially SC and OTM, has been reported. Some cats may not receive 
+sufficient analgesia from buprenorphine.13 
+In dogs, oral bioavailability is very low (5%), but buprenorphine 
+administered via the buccal/OTM route is ≈35% to 50% absorbed.5 
+Elimination half-life ranges from 4 to 9 hours,16 and wide interpa-
+tient variability exists. In a small pilot study, application of topical 
+buprenorphine patches showed that plasma concentrations in-
+creased during the first 36 hours, then remained between 0.7 and 
+1 ng/mL during the study period.17 In greyhounds, when buprenor-
+phine was administered IV, the volume of distribution, plasma clear-
+
+Buprenorphine      151
+ance, and terminal half-life were 3.54 L/kg, 10.3 mL/minute/kg, and 
+3.96 hours, respectively.18 A pharmacokinetic study in 6 mongrel 
+dogs resulted in a volume of distribution, plasma clearance, and ter-
+minal half-life of 4.68 L/kg, 23.3 mL/minute/kg, and 3.97 hours,19 
+respectively, when buprenorphine was administered IV, and a termi-
+nal half-life of 12.74 hours when the extended-release injection was 
+administered SC.20
+In horses, the onset of action is ≈15 minutes after IV dosing. 
+Buprenorphine is variably absorbed after IM administration and 
+bioavailability is ≈50% to 80%.21 Volume of distribution is ≈2.5 to 
+3 L/kg.22,23 The peak effect occurs within 30 to 45 minutes and the du-
+ration of action may last up to 8 hours. Elimination half-life after an 
+IV or IM dose is ≈3.5 to 6 hours.22,23 Because acepromazine exhibits 
+a similar onset and duration of action, many equine clinicians favor 
+using acepromazine in combination with buprenorphine. One study 
+found plasma buprenorphine concentrations between 0.34 and 
+2.45 ng/mL after IV administration of 10 μg/kg.24 In foals younger 
+than 21 days of age, buprenorphine 0.01 – 0.02 mg/kg IV had a VDss 
+of 6.5 L/kg; clearance was 56 mL/kg/minute, and elimination half-life 
+was ≈2 hours.25 The same dosage administered sublingually was only 
+25% bioavailable, and plasma concentration reached the presumed 
+therapeutic concentration briefly in only one foal; however, physio-
+logic changes did occur, indicating absorption of the drug. The ther-
+apeutic concentration could be lower in foals than in other species.
+Elimination half-life was 1 to 2.7 hours after IV and SC adminis-
+tration in alpacas, and SC bioavailability was 64%.26
+The distribution of the drug has not been well studied. Data from 
+work done in rats reflect that buprenorphine concentrates in the liv-
+er but is also found in the brain, GI tract, and placenta. It is highly 
+bound (96%) to plasma proteins (not albumin).
+In most species, buprenorphine is metabolized in the intestinal 
+wall and liver27,28 by N-dealkylation likely via CYP3A4 (forming nor-
+buprenorphine, which is active). Buprenorphine and norbuprenor-
+phine also undergo glucuronidation; metabolites are then eliminat-
+ed by biliary excretion into the feces (≈70%) and urinary excretion 
+(≈27%).
+Contraindications/Precautions/Warnings
+The drug is contraindicated in patients with a known hypersensitiv-
+ity to it or other opioids.
+Because of the potential for decreased clearance with subsequent 
+exaggerated/prolonged effects, all opioids should be used with cau-
+tion in patients that have hypothyroidism, impaired hepatic func-
+tion, or adrenocortical insufficiency (Addison’s disease), and in pe-
+diatric, geriatric, or severely debilitated patients.
+Rarely, patients may develop respiratory depression from bu-
+prenorphine; therefore, it should be used cautiously in patients with 
+compromised pulmonary function. Like other opioids, buprenor-
+phine must be used with caution in patients with head trauma, in-
+creased CSF pressure, or other CNS dysfunction (eg, coma), as any 
+degree of respiratory depression could result in excessive partial 
+pressure of arterial carbon dioxide with a subsequent increase in in-
+tracranial pressure.
+Patients with severe hepatic dysfunction may eliminate the drug 
+more slowly than normal patients. Buprenorphine may increase bile 
+duct pressure and should be used cautiously in patients with biliary 
+tract disease29; however, this appears to not have any clinical impact. 
+As with all opioids, buprenorphine should also be used with caution 
+in horses that show signs of diminished GI tract motility.
+Opioid analgesics are contraindicated in patients stung by scor-
+pions (eg, Centruroides spp), as these drugs may potentiate venom 
+effects.30
+Mild sedation can occur in both dogs and cats, making buprenor-
+phine an important component of a preanesthetic protocol; howev-
+er, excitement can occur in horses and, less commonly, in cats, as is 
+true of other opioids. Mild postoperative hyperthermia can occur in 
+cats.28
+Because buprenorphine can cause excitement in horses, when it 
+is used as a preoperative analgesic, an IV sedative should be admin-
+istered prior to, or in conjunction with, the buprenorphine injec-
+tion.22,23
+The standard formulation of buprenorphine by the SC route is not 
+recommended due to poor absorption. Buprenorphine should not 
+be administered via the intrathecal or peridural routes. 
+The transdermal solution requires ≈30 minutes to dry, and once 
+dried the risk for human buprenorphine exposure following contact 
+of the administration site is limited. Clinic staff should use personal 
+protective equipment (impermeable gloves, eye protection, labora-
+tory coat) when preparing or administering any of the concentrated 
+buprenorphine products.8
+Adverse Effects
+Although rare, respiratory depression appears to be the major ad-
+verse effect. Other adverse effects (eg, sedation, nausea, vomiting, 
+bradycardia, excitement [primarily cats and horses]) may be noted 
+but generally occur less frequently as compared with other opioids. 
+In dogs, as with other opioids, salivation, bradycardia, hypother-
+mia, agitation, dehydration, and miosis have been reported. Tachy-
+cardia, vomiting, and high blood pressure rarely occur. Injection site 
+reactions and skin lesions have been noted with the non-FDA-ap-
+proved extended-release injectable formulation and are most likely 
+due to a reaction to the vehicle.31 SC administration of high-concen-
+tration buprenorphine to dogs resulted in varying degrees of seda-
+tion, reduced appetite, panting, whining, and hyperptyalism.20  
+In cats, as with other opioids, mydriasis and behavioral effects (eg, 
+excessive purring, pacing, rubbing, hiding) can be seen. Vomiting, 
+salivation, anorexia, and hyperthermia occur rarely; however, hyper-
+thermia was observed in ≈28% of cats on the day after surgery; con-
+stipation and mydriasis also were noted.32 Vomiting occurred in 55% 
+of cats receiving buprenorphine/dexmedetomidine combination 
+with only 5% vomiting in cats receiving dexmedetomidine/butorph-
+anol.10 In a study, high doses of standard buprenorphine (0.24, 0.72, 
+and 1.2 mg/kg/day SC) for 9 consecutive days were well tolerated in 
+young cats. Adverse effects included hyperactivity, tachycardia, diffi-
+culty in handling, disorientation, agitation, and mydriasis.33 
+In horses, buprenorphine may cause ataxia, excitement, and dimin-
+ished gut sounds, but colic has not been a major concern. All horses 
+(n = 4) developed constipation after receiving a single SC or IM dose 
+of an experimental sustained-release buprenorphine formulation.34 
+Administration with a sedative (eg, acepromazine, detomidine) may 
+help decrease excitement and cardiac and respiratory rates.
+In rabbits, SC buprenorphine reduced food and water intake, GI 
+transit, and fecal output.35,36 
+The primary adverse effect seen in humans is sedation, with an 
+incidence of ≈66%.29 Buprenorphine may cause urine retention or 
+difficulty voiding, particularly with high IV doses or epidural ad-
+ministration.
+Reproductive/Nursing Safety
+Safe use of veterinary buprenorphine formulations in breeding, preg-
+nant, or lactating animals has not been established. The drug crosses 
+the placenta. Although no controlled studies have been performed 
+in domestic animals or humans, the drug has exhibited no evidence 
+of teratogenicity or causing impaired fertility in laboratory animals. 
+Early fetal death and postimplantation loss have been noted in rats.27 
+The Vetergesic® 0.3 mg/mL solution for injection for dogs and cats 
+label (Canada) states that the drug is contraindicated preoperatively 
+for cesarean section due to concerns for respiratory depression in 
+offspring.27

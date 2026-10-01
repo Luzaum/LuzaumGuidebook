@@ -1,0 +1,103 @@
+- main [ref=f1e3]:
+  - generic [ref=f1e4]:
+    - heading "Enrofloxacina" [level=1] [ref=f1e5]
+    - generic [ref=f1e7]:
+      - heading "Resumo Clínico Executivo" [level=2] [ref=f1e14]
+      - generic [ref=f1e15]:
+        - paragraph [ref=f1e16]: Em palavras simples
+        - generic [ref=f1e20]:
+          - paragraph [ref=f1e21]: É um antibiótico para infecções por bactérias sensíveis. Em gatos, a exposição excessiva pode lesionar a visão.
+          - group [ref=f1e22]:
+            - generic "Entenda como funciona" [ref=f1e23] [cursor=pointer]
+      - generic [ref=f1e24]:
+        - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f1e25]
+        - generic [ref=f1e26]:
+          - generic [ref=f1e27]:
+            - generic [ref=f1e28]: Bactericidia Concentração-Dependente
+            - generic [ref=f1e34]:
+              - paragraph [ref=f1e35]: A eficácia depende da concentração atingida; subdosagem pode favorecer resistência.
+              - group [ref=f1e36]:
+                - generic "Ver mecanismo completo" [ref=f1e37] [cursor=pointer]
+          - generic [ref=f1e38]:
+            - generic [ref=f1e39]: Penetração Tecidual Ampla e Intracelular
+            - generic [ref=f1e45]:
+              - paragraph [ref=f1e46]: Penetra em rins, próstata, pulmões e pele, conforme a indicação.
+              - group [ref=f1e47]:
+                - generic "Ver mecanismo completo" [ref=f1e48] [cursor=pointer]
+          - generic [ref=f1e49]:
+            - generic [ref=f1e50]: Espectro Gram-Negativo Potente com Lacunas Críticas
+            - generic [ref=f1e56]:
+              - paragraph [ref=f1e57]: Atua contra gram-negativos sensíveis, mas não cobre anaeróbios estritos e tem lacunas contra alguns gram-positivos.
+              - group [ref=f1e58]:
+                - generic "Ver mecanismo completo" [ref=f1e59] [cursor=pointer]
+          - generic [ref=f1e60]:
+            - generic [ref=f1e61]: Teto Posológico Felino Inegociável (5 mg/kg/dia)
+            - generic [ref=f1e67]:
+              - paragraph [ref=f1e68]: Respeitar a exposição em gatos é essencial para proteger a retina.
+              - group [ref=f1e69]:
+                - generic "Ver mecanismo completo" [ref=f1e70] [cursor=pointer]
+      - generic [ref=f1e71]:
+        - heading "Indicações de Uso Resumidas" [level=3] [ref=f1e72]
+        - generic [ref=f1e73]:
+          - paragraph [ref=f1e74]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - group [ref=f1e75]:
+            - generic "Ver indicações, doses e duração" [ref=f1e76] [cursor=pointer]
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]: Aviso Clínico Importante
+        - generic [ref=f1e82]:
+          - paragraph [ref=f1e83]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento. Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+          - group [ref=f1e84]:
+            - generic "Ver todos os cuidados e ressalvas" [ref=f1e85] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=f1e86]
+    - generic [ref=f1e87]:
+      - heading "Resumo rápido" [level=2] [ref=f1e88]
+      - generic [ref=f1e89]:
+        - generic [ref=f1e90]:
+          - button "Visão Geral" [ref=f1e91] [cursor=pointer]
+          - button "Plano diagnóstico" [active] [ref=f1e96] [cursor=pointer]
+          - button "Plano de tratamento" [ref=f1e100] [cursor=pointer]
+        - generic [ref=f1e155]:
+          - paragraph [ref=f1e156]: Fluxo Diagnóstico Sequencial na LRA Canina (Consenso IRIS 2026)
+          - list "Fluxo Diagnóstico Sequencial na LRA Canina (Consenso IRIS 2026)" [ref=f1e157]:
+            - listitem [ref=f1e158]:
+              - generic [ref=f1e159]: "1"
+              - generic [ref=f1e163]:
+                - generic [ref=f1e164]:
+                  - 'heading "Passo 1: Triagem de Volemia, Perfusão e Biomarcadores de Urgência" [level=5] [ref=f1e165]'
+                  - generic [ref=f1e166]: Primeiros 15 a 30 minutos
+                - paragraph [ref=f1e167]: Avaliar estado hemodinâmico, tempo de preenchimento capilar, pulsos e peso corporal basal. Coletar sangue para creatinina sérica, ureia, potássio, sódio, cloro, fósforo, hemograma completo e hemogasometria.
+            - listitem [ref=f1e168]:
+              - generic [ref=f1e169]: "2"
+              - generic [ref=f1e173]:
+                - generic [ref=f1e174]:
+                  - 'heading "Passo 2: Urinálise Completa Pré-Fluido e Densidade Urinária" [level=5] [ref=f1e175]'
+                  - generic [ref=f1e176]: Imediato (pré-fluido)
+                - paragraph [ref=f1e177]: Colher amostra de urina estéril por cistocentese ou cateterismo antes de fluidos vigorosos. Avaliar densidade por refratometria (isostenúria 1.008-1.012 indica perda de capacidade de concentração), glicosúria normoglicêmica e sedimento com pesquisa de cilindros granulares e cristais.
+            - listitem [ref=f1e178]:
+              - generic [ref=f1e179]: "3"
+              - generic [ref=f1e183]:
+                - generic [ref=f1e184]:
+                  - 'heading "Passo 3: POCUS Abdominal e Trato Urinário Completo" [level=5] [ref=f1e185]'
+                  - generic [ref=f1e186]: Primeira hora
+                - paragraph [ref=f1e187]: "Ultrassonografia renal e urinária focada: excluir causas pós-renais obstrutivas (urolitíase, dilatação de pelve > 2 mm, ruptura vesical/uroabdome). Avaliar ecogenicidade cortical, sinal do halo medular e tamanho renal (nefromegalia simétrica é típica de LRA)."
+            - listitem [ref=f1e188]:
+              - generic [ref=f1e189]: "4"
+              - generic [ref=f1e193]:
+                - generic [ref=f1e194]:
+                  - 'heading "Passo 4: Investigação Etiológica Específica de Leptospirose" [level=5] [ref=f1e195]'
+                  - generic [ref=f1e196]: Primeira hora de atendimento
+                - paragraph [ref=f1e197]: Em todo cão com LRA de causa não estabelecida, coletar sangue total com EDTA e urina para PCR de Leptospira interrogans antes do antibiótico, e soro para teste de aglutinação microscópica (MAT). Instituir biossegurança de zoonose imediatamente.
+            - listitem [ref=f1e198]:
+              - generic [ref=f1e199]: "5"
+              - generic [ref=f1e203]:
+                - generic [ref=f1e204]:
+                  - 'heading "Passo 5: Triagem Específica de Nefrotoxinas e AINEs" [level=5] [ref=f1e205]'
+                  - generic [ref=f1e206]: Admissão
+                - paragraph [ref=f1e207]: Anamnese minuciosa pesquisando ingestão de uvas frescas, uvas passas, anticongelante automotivo (etilenoglicol), lírios em residências com gatos, AINEs de uso humano ou veterinário, e picada de serpente botrópica/crotálica.
+            - listitem [ref=f1e208]:
+              - generic [ref=f1e209]: "6"
+              - generic [ref=f1e212]:
+                - generic [ref=f1e213]:
+                  - 'heading "Passo 6: Sondagem Uretral Fechada e Mensuração Horária do Débito" [level=5] [ref=f1e214]'
+                  - generic [ref=f1e215]: Primeiras 2 a 4 horas
+                - paragraph [ref=f1e216]: Em pacientes com suspeita de oligúria, instalar sistema fechado de cateterismo vesical com bolsa coletora estéril e mensuração horária de urina. Classificar em Não-Oligúrico (>= 1,0 mL/kg/h) versus Oligoanúrico (< 1,0 mL/kg/h).

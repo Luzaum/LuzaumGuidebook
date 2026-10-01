@@ -1,0 +1,1350 @@
+[
+  {
+    "slug": "babesiose-canina",
+    "strip": [
+      "Anemia regenerativa rápida + trombocitopenia grave + febre + esplenomegalia = suspeita clínica máxima de babesiose.",
+      "Diferenciação mandatória do parasita: babesias grandes (B. vogeli/canis) usam Imidocarb; babesias pequenas (B. gibsoni) exigem Atovaquona + Azitromicina (o imidocarb isolado FALHA em B. gibsoni).",
+      "Colheita de sangue capilar de ponta de orelha (punção periférica com agulha 25G) aumenta sensivelmente a chance de visualizar os merozoítos piriformes pareados.",
+      "PCR de sangue total em EDTA é o padrão-ouro confirmatório e deve ser colhido idealmente ANTES da primeira dose de antiparasitário.",
+      "Atropina (0,02 a 0,04 mg/kg SC) deve ser administrada 15 a 30 minutos antes do imidocarb para prevenir sialorreia, vômitos, cólicas e bradicardia colinérgica.",
+      "Atovaquona DEVE ser administrada obrigatoriamente junto a uma refeição rica em gordura para elevar sua biodisponibilidade em até 300%.",
+      "Monitorar creatinina, ureia, urinálise e lactato seriados: a hemoglobinúria e a hipóxia renal deflagram Lesão Renal Aguda tubular isquêmica/pigmentar.",
+      "Indicar transfusão de concentrado de hemácias se hematócrito (PCV) <15-18% associado a sinais de hipóxia tecidual (taquicardia, pulso fraco, letargia, lactato >3,0 mmol/L).",
+      "Corticoterapia imunossupressora (prednisona 2 mg/kg/dia) é restrita a casos com AHIM secundária comprovadamente autoaglutinante e hiperaguda, devendo ser desmamada rapidamente para evitar persistência parasitária.",
+      "Babesia gibsoni apresenta transmissão direta por mordeduras e brigas: triar rigorosamente cães da raça American Pit Bull Terrier e American Staffordshire Terrier."
+    ],
+    "pillars": [
+      "Pilar 1: Duplo Mecanismo de Hemólise e Trombocitopenia",
+      "Pilar 2: Estratificação Morfológica e Terapêutica Guiada por Espécie",
+      "Pilar 3: Monitoramento de Órgãos-Alvo e Complicações Sistêmicas"
+    ]
+  },
+  {
+    "slug": "doencas-trato-urinario-inferior-felino-dtuif",
+    "strip": [
+      "Macho estrangúrico + bexiga grande/firme = tratar como obstrução uretral até exclusão.",
+      "DTUIF não é diagnóstico final; sempre buscar a causa subjacente.",
+      "FIC é diagnóstico de exclusão e exige analgesia + manejo ambiental multimodal.",
+      "ITU é incomum em adulto saudável; cultura pesa mais que \"urina feia\" isolada.",
+      "Após desobstrução, prevenir recidiva exige água, dieta, analgesia e redução de ameaça ambiental."
+    ],
+    "pillars": [
+      "Nome correto",
+      "Emergência",
+      "Longo prazo"
+    ]
+  },
+  {
+    "slug": "fistula-perianal-furunculose-anal",
+    "strip": [
+      "Pastor Alemão adulto com dor perianal intensa, lambedura constante, odor fétido e tratos fistulosos = suspeição clínica máxima de furunculose anal.",
+      "Não confunda furunculose anal com simples saculite ou abscesso de saco anal: a furunculose é uma doença imunomediada sistêmica de pele e submucosa, e antibióticos isolados NUNCA promovem cura.",
+      "O exame físico retal exige compaixão e sedação: a dor perianal pode ser intolerável; realize tricotomia higiênica suave, limpeza com clorexidina diluída e toque retal sob sedação para palpar sacos anais e descartar estenose ou neoplasia retal.",
+      "A imunossupressão médica com Ciclosporina oral (5 mg/kg VO q12-24h) é a espinha dorsal de primeira linha indiscutível do tratamento.",
+      "O protocolo poupador Ciclosporina + Cetoconazol reduz os custos do tratamento em até 60-70% em cães de grande porte por inibição do citocromo CYP3A4 hepático.",
+      "Tacrolimo tópico a 0,1% em pomada é excelente para lesões leves a moderadas, adjuvante à ciclosporina oral e padrão-ouro para manutenção pós-remissão.",
+      "Instituir dieta de eliminação com proteína hidrolisada ou nova proteína: até 30% a 50% dos cães com furunculose perianal possuem hipersensibilidade alimentar ou colite inflamatória concomitante.",
+      "Cirurgia (saculectomia ou fistulectomia) JAMAIS deve ser realizada como primeira opção: reserva-se estritamente para tratos sinusais residuais focais após meses de imunomodulação ou estenose anal mecânica cicatricial severa.",
+      "Amolecedores fecais (lactulose ou psyllium) associados a analgésicos neuropáticos (gabapentina e tramadol) são imperativos para cessar o ciclo de retenção fecal e dor à evacuação.",
+      "A remissão completa pode levar de 8 a 16 semanas: a interrupção prematura da imunomodulação resulta em recidiva em mais de 50% dos cães; o desmame deve ser lento e gradual."
+    ],
+    "pillars": [
+      "Pilar 1: Etiopatogenia Imunomediada e Genética",
+      "Pilar 2: Diagnóstico Clínico e Diferenciação Cuidadosa",
+      "Pilar 3: Terapia Médica Multimodal e Dieta Hidrolisada"
+    ]
+  },
+  {
+    "slug": "sindrome-cushing-caes",
+    "strip": [
+      "Fosfatase alcalina (ALP) elevada ≠ Cushing — não triar só por enzima hepática (Bugbee et al., 2023; Niessen et al., 2025).",
+      "Solicitar teste endócrino apenas com ≥2 sinais clínicos compatíveis (AAHA/Behrend, 2022).",
+      "Cão estável espontâneo: LDDST 0,01 mg/kg IV é triagem preferencial (Behrend, VIN 2022; Bugbee et al., 2023).",
+      "Suspeita de iatrogênia ou comorbidade grave: ACTHST é o padrão-ouro para corticoide exógeno (Behrend, VIN 2022).",
+      "UCCR: excelente para EXCLUIR, não para CONFIRMAR — urina domiciliar 2 dias após consulta (Behrend, VIN 2022).",
+      "Cortisol basal NÃO é exame de triagem — baixa sensibilidade e especificidade (Bugbee et al., 2023).",
+      "~35% dos PDH NÃO suprimem no LDDST (escape) — ausência de supressão não confirma ADH isoladamente (Behrend, VIN 2022).",
+      "ACTHST falso-negativo até ~41% em ADH — não descarta hiperadrenocorticismo espontâneo (Bugbee et al., 2023).",
+      "Washout glicocorticoide 2–4 semanas antes de testar espontâneo quando iatrogênia é possível (Behrend, VIN 2022).",
+      "eACTH: plasma resfriado, centrifugar e congelar imediatamente — ACTH baixo favorece ADH (Bugbee et al., 2023).",
+      "Tamanho da massa adrenal ≠ malignidade — carcinoma pode ser pequeno; adenoma pode ser grande (van Bokhorst et al., 2023).",
+      "Trilostano: 1 mg/kg q12h OU 2 mg/kg q24h COM alimento — sinais clínicos guiam ajuste, não número isolado (Bugbee et al., 2023; Plumb's, 10ª ed.).",
+      "NÃO aumentar trilostano automaticamente aos 14 dias se clínica já melhorou (BSAVA trilostane guidance; Macfarlane et al.).",
+      "ACTHST monitoramento: 1 mcg/kg IV, cortisol 3–5 h pós-pílula — NÃO é teste diagnóstico inicial (Bugbee et al., 2023).",
+      "Cortisol pré-pílula é auxiliar, não universal — não substitui clínica + ACTHST seriado (Macfarlane et al.).",
+      "Red flags para suspender trilostano: anorexia, vômito, letargia, diarreia, colapso — risco de hipoadrenocorticismo iatrogênico (Plumb's, 10ª ed.).",
+      "Mitotano é alternativa especializada, NÃO primeira linha de rotina (Bugbee et al., 2023).",
+      "Selegilina e cetoconazol NÃO são tratamento de rotina atual (Bugbee et al., 2023)."
+    ],
+    "pillars": [
+      "Classificação ALIVE",
+      "Triagem inteligente",
+      "Tratamento guiado por clínica"
+    ]
+  },
+  {
+    "slug": "sindrome-cushing-gatos",
+    "strip": [
+      "Suspeitar de Cushing felino sempre que houver: gato diabético de difícil controle (requerendo >1,5-2,0 U/kg de insulina) associado a emaciação e adelgaçamento cutâneo acentuado.",
+      "A Síndrome da Fragilidade Cutânea (pele com consistência de papel de seda que se rasga ao toque suave) é o sinal dermatológico mais patognomônico; calcinosis cutis NÃO ocorre em felinos.",
+      "A Fosfatase Alcalina (FA) frequentemente é NORMAL em gatos com Cushing: a espécie felina não produz a isoforma esteróide induzível por glicocorticoides clássica do cão.",
+      "A densidade urinária (USG) em felinos cushingóides frequentemente é >1,020: a hipostenúria marcante típica do cão é incomum no gato.",
+      "LDDST Felino EXIGE dose de 0,1 mg/kg de Dexametasona IV: o uso inadvertido da dose canina (0,01 mg/kg) gera 100% de falsos-positivos por não suprimir o eixo hipotálamo-hipófise felino normal.",
+      "O Teste de Estimulação por ACTH é um teste de TRIAGEM RUIM no gato (sensibilidade de apenas 33-60%): utilize o LDDST para diagnóstico e reserve o ACTH para monitoramento de trilostano.",
+      "Cosintropina na dose de 125 mcg/gato (dose fixa por felino, NUNCA por mg/kg) para o teste de ACTH.",
+      "Trilostano em gatos DEVE ser prescrito a cada 12 horas (q12h), iniciando em aproximadamente 1,0 mg/kg VO q12h (média de 1,3 a 1,9 mg/kg na coorte Miceli 2022); a administração q24h é ineficaz pelo metabolismo acelerado na espécie.",
+      "PERIGO DE HIPOGLICEMIA FATAL: ao controlar o hipercortisolismo com trilostano, a resistência à insulina desaparece subitamente; reduza a dose de insulina em 30-50% e monitore a glicemia capilar de perto.",
+      "Manipulação extremamente gentil (\"touchless handling\"): NUNCA use fita adesiva sobre a pele, contenção pelo dorso do pescoço (scruffing) ou tricotomia com lâmina rente, que provocam lacerações extensas que exigem sutura.",
+      "Investigar macroadenoma hipofisário por Tomografia ou Ressonância se surgirem sinais neurológicos centrais (estupor, marcha em círculos, pressão da cabeça contra anteparos).",
+      "Mortalidade e prognóstico: sobrevida mediana de 10 a 14 meses; infecções bacterianas oportunistas recorrentes, lacerações cutâneas graves e descompensação de diabetes mellitus concomitante (presente em ~80% dos casos, coorte Miceli et al. 2022) representam os fatores prognósticos determinantes."
+    ],
+    "pillars": [
+      "Pilar 1: Tríade Fisiopatológica Felina",
+      "Pilar 2: Particularidades do Diagnóstico Laboratorial",
+      "Pilar 3: Manejo com Trilostano e Dessensibilização à Insulina"
+    ]
+  },
+  {
+    "slug": "leishmaniose-visceral-canina",
+    "strip": [
+      "Área endêmica ou viagem + perda de peso, dermatopatia, linfonodomegalia ou proteinúria = investigar LCan.",
+      "Citologia com amastigotas em medula, linfonodo ou pele lesada é confirmação direta; PCR útil e quantitativa ajuda seguimento.",
+      "Sorologia positiva ≠ sempre doença ativa: cruzar com parasitológico/molecular e quadro clínico-laboratorial.",
+      "Estadiamento I–VI (Brasileish/LeishVet adaptado) define leishmanicida, leishmaniostático e imunomodulação.",
+      "Prevenção: produtos com efeito repelente/inseticida contra flebotomíneos; evitar atividade no crepúsculo/noite."
+    ],
+    "pillars": [
+      "Vetor e risco",
+      "Confirmar antes de rotular",
+      "Renal e IRIS"
+    ]
+  },
+  {
+    "slug": "erliquiose-monocitica-canina",
+    "strip": [
+      "Cão + carrapatos + trombocitopenia = erliquiose sempre entra alto na lista.",
+      "Sorologia positiva sozinha indica exposicao; não prova doença ativa sem contexto.",
+      "PCR positiva antes de antibiótico confirma infecção; PCR negativa não exclui fases crônicas/subclínicas.",
+      "Doxiciclina por 28 dias e o eixo terapêutico preferencial.",
+      "Pancitopenia crônica, Pastor Alemao e falta de resposta em 48-72 h pioram o cenario."
+    ],
+    "pillars": [
+      "O que mais entrega",
+      "Onde a prova e a clínica confundem",
+      "Quando preocupar mais"
+    ]
+  },
+  {
+    "slug": "colapso-traqueal-canino",
+    "strip": [
+      "Dispneia, cianose, exaustão ventilatória ou síncope: priorizar oxigenoterapia hands-off, controle de temperatura e sedação suave antes de qualquer exame.",
+      "Radiografia negativa não encerra a investigação diagnóstica; fluoroscopia dinâmica e traqueobroncoscopia esclarecem casos falso-negativos.",
+      "Tratar o fenótipo clínico do paciente e suas comorbidades ativas — não indicar intervenções invasivas com base apenas no percentual anatômico da imagem.",
+      "Controle de peso, uso exclusivo de peitoral e eliminação de irritantes aéreos compõem a base inegociável do tratamento conservador.",
+      "Stent intraluminal ou prótese extraluminal: considerar em centro de referência quando há falência ventilatória refratária ao tratamento médico."
+    ],
+    "pillars": [
+      "Defina o fenótipo clínico",
+      "Empregue imagem funcional dinâmica",
+      "Atenue a sobrecarga ventilatória"
+    ]
+  },
+  {
+    "slug": "asma-felina",
+    "strip": [
+      "Gato jovem a adulto, sobretudo Siamês/oriental, com tosse crônica ou sibilos expiratórios: pense asma felina.",
+      "Crise respiratória aguda é emergência — manuseio mínimo, oxigênio e broncodilatador antes de qualquer exame estressante.",
+      "Sempre excluir dirofilariose (HARD) e parasitos pulmonares antes de rotular como \"asma idiopática\".",
+      "Radiografia com padrão broncointersticial (\"donuts e trilhos de trem\") e hiperinsuflação apoia, mas não fecha diagnóstico isoladamente.",
+      "Lavado broncoalveolar com eosinofilia é o achado mais específico quando é seguro coletar.",
+      "Corticoide é a base do tratamento; inalatório reduz efeitos sistêmicos na manutenção crônica.",
+      "Broncodilatador é resgate/adjuvante — nunca substitui o anti-inflamatório de base.",
+      "Reduzir poeira de areia sanitária, fumaça e aerossóis diminui frequência e gravidade das crises."
+    ],
+    "pillars": [
+      "Mecanismo",
+      "População",
+      "Conduta imediata"
+    ]
+  },
+  {
+    "slug": "bronquite-cronica-caes-gatos",
+    "strip": [
+      "Tosse quase diária por mais de dois meses sem causa identificável = definição operacional de bronquite crônica.",
+      "É diagnóstico de exclusão — descarte colapso traqueal, cardiopatia, parasitos, neoplasia e infecção antes de rotular.",
+      "Padrão inflamatório predominante é neutrofílico não-séptico, diferente do eosinofílico da asma felina.",
+      "Radiografia com padrão brônquico é sugestiva, não diagnóstica isoladamente.",
+      "Broncoscopia + lavado broncoalveolar definem citologia e permitem cultura para excluir infecção oculta.",
+      "Corticoide inalatório é preferido para controle crônico, reduzindo efeitos sistêmicos.",
+      "Antibiótico só com evidência de infecção — cultura positiva isolada não basta para justificar uso.",
+      "Broncomalácia associada muda o prognóstico e a resposta a broncodilatador e antitussígeno."
+    ],
+    "pillars": [
+      "Definição operacional",
+      "Citologia",
+      "Conduta prática"
+    ]
+  },
+  {
+    "slug": "granuloma-eosinofilico-felino",
+    "strip": [
+      "EGC é padrão de reação cutânea eosinofílica, não diagnóstico etiológico final — sempre procure a causa de base.",
+      "Três apresentações clássicas: úlcera indolente (lábio), placa eosinofílica e granuloma linear/eosinofílico.",
+      "Controle de pulgas rigoroso é obrigatório em todo caso, mesmo sem prova direta de pulicose.",
+      "Investigar hipersensibilidade alimentar e atopia quando o controle de pulgas isolado não resolve.",
+      "Citologia (eosinófilos ± mastócitos) apoia o diagnóstico; biópsia é reservada a casos atípicos ou refratários.",
+      "Corticoide controla a crise; ciclosporina é opção eficaz para manutenção crônica ou refratariedade.",
+      "Granuloma oral/faríngeo pode comprometer via aérea — atenção redobrada em gatos com estridor ou disfagia."
+    ],
+    "pillars": [
+      "Definição",
+      "Causa mais comum",
+      "Conduta imediata"
+    ]
+  },
+  {
+    "slug": "micoplasmoses-hemotropicas",
+    "strip": [
+      "Gato febril (>40°C) + anemia regenerativa acentuada + mucosas pálidas ou ictéricas = forte suspeição de Mycoplasma haemofelis.",
+      "Cão com hemólise aguda pós-esplenectomia ou imunossuprimido = suspeitar de Mycoplasma haemocanis; cão com baço intacto raramente desenvolve doença clínica severa isolada.",
+      "A parasitemia é fortemente cíclica e as bactérias desprendem-se das hemácias em poucas horas no tubo com EDTA: esfregaço sanguíneo negativo NÃO descarta hemoplasmose.",
+      "qPCR (PCR em tempo real) em sangue total é o padrão-ouro de diagnóstico, diferenciação de espécies e monitoramento de carga bacteriana.",
+      "NUNCA administrar doxiciclina em comprimido \"seco\" em felinos: risco crítico de retenção esofágica, esofagite química transmural e estenose esofágica cicatricial irreversível; administrar sempre com >= 5-10 mL de água ou alimento pastoso.",
+      "Testar FeLV e FIV em todo gato diagnosticado com hemoplasmose: a coinfecção por FeLV suprime a eritropoiese, piora drasticamente o prognóstico e impede regeneração medular.",
+      "Evitar o uso rotineiro de enrofloxacina em gatos: doses superiores a 5 mg/kg/dia causam toxicidade retiniana aguda irreversível com degeneração de fotorreceptores e cegueira midriática bilateral permanente; preferir Pradofloxacina.",
+      "Não tratar portadores assintomáticos PCR-positivos de rotina: a antibioticoterapia convencional não garante esterilização parasitológica e a maioria dos gatos convive em equilíbrio imunológico com o agente.",
+      "Transfusão de concentrado de hemácias ou sangue total fresco é prioritária se hematócrito <12-15% ou em vigência de hipóxia clínica descompensada.",
+      "Triagem por PCR em doadores de sangue caninos e felinos é indispensável para evitar transmissão iatrogênica transfusional."
+    ],
+    "pillars": [
+      "Pilar 1: Patogenicidade Diferenciada entre Espécies",
+      "Pilar 2: Diagnóstico Molecular vs Limitações da Citologia",
+      "Pilar 3: Terapêutica Racional e Biossegurança Esofágica"
+    ]
+  },
+  {
+    "slug": "doenca-renal-cronica-caes-gatos",
+    "strip": [
+      "PU/PD crônica, perda de peso, azotemia persistente e incapacidade de concentrar urina: pense em DRC.",
+      "Não estadiar pela IRIS um paciente desidratado, instável ou com suspeita forte de componente agudo.",
+      "Em gatos: doença mais comum e muitas vezes mais lenta; atenção a hipocalemia, hipertensão e perda de massa muscular.",
+      "Em cães: pese proteinúria glomerular e necessidade de renoproteção antiproteinúrica quando relevante.",
+      "Dieta renal e controle do fósforo são pilares nas duas espécies; amlodipina costuma ser espinha dorsal anti-hipertensiva no gato."
+    ],
+    "pillars": [
+      "Definição prática",
+      "Gato vs cão",
+      "Conduta base"
+    ]
+  },
+  {
+    "slug": "hipertensao-arterial-sistemica-caes-gatos",
+    "strip": [
+      "Cegueira súbita ou hemorragia intraocular em gato idoso: trate como urgência oftálmica e meça PA — horas contam.",
+      "Nunca diagnostique HAS com uma única leitura em animal tenso, com dor ou sem manguito adequado.",
+      "Em gato com DRC IRIS: a PA sistólica define subestádio (normo / borderline / hipertenso / grave) e muda metas terapêuticas.",
+      "Amlodipino é espinha dorsal em muitos gatos; IECA/BRA associam-se por lógica SRAA e proteinúria — vigiar creatinina e K⁺.",
+      "Antes de “idiopático felino”, exclua hipertireoidismo (T4/TSH), DRC e medicações (corticoides, mineralocorticoides)."
+    ],
+    "pillars": [
+      "Por que medir mal equivale a tratar mal",
+      "Gato vs cão (lógica clínica)",
+      "Integração IRIS"
+    ]
+  },
+  {
+    "slug": "doenca-valvar-mitral-degenerativa-caes",
+    "strip": [
+      "Sopro sistólico esquerdo em cão pequeno idoso: DMVD até prova em contrário — a intensidade do sopro não substitui o eco.",
+      "Estadiar ACVIM antes de medicar: B1 observa; B2 discute pimobendan; C/D tratam congestão.",
+      "B2 não é um número isolado: sopro ≥3/6 + LA/Ao ≥1,6 + LVIDDN ≥1,7 + VHS ajustado — integrar o conjunto (Keene et al., 2019).",
+      "Tosse isolada com frequência respiratória de sono normal não autoriza diurético — pode ser compressão brônquica ou doença respiratória.",
+      "Frequência respiratória durante o sono é o melhor “alarme” do tutor: subida persistente pede reavaliação.",
+      "ICC descompensada: oxigênio e diurético primeiro; pimobendan; IECA só com euvolemia relativa e creatinina de referência.",
+      "Pimobendan: preferir comprimido/cápsula veterinária; jejum ~1 h; não equivaler manipulado líquido miligrama a miligrama.",
+      "Fibrilação atrial rápida piora congestão mesmo com o mesmo grau de regurgitação — controlar frequência.",
+      "Creatinina em ascenso com IECA + diurético: revisar dose, hidratação e timing — rim sob estresse é cenário frequente."
+    ],
+    "pillars": [
+      "Por que o sopro engana",
+      "Estádios A–D decidem a conduta",
+      "Três eixos na prática"
+    ]
+  },
+  {
+    "slug": "cardiomiopatia-hipertrofica-caes-gatos",
+    "strip": [
+      "Sopro não confirma CMH e sua ausência não a exclui; galope ou arritmia aumentam a suspeita.",
+      "Ecocardiografia é o exame de referência; pressão arterial e T4 total ajudam a excluir hipertrofia secundária.",
+      "Átrio esquerdo aumentado, contraste espontâneo ou trombo intracardíaco elevam o risco de tromboembolismo.",
+      "Dispneia felina: minimizar estresse, fornecer oxigênio, usar ultrassonografia à beira do leito e tratar a congestão antes de exames demorados.",
+      "Atenolol não é tratamento automático para toda CMH; priorizar obstrução dinâmica relevante ou taquiarritmia.",
+      "Sirolimo de liberação retardada: apenas CMH subclínica selecionada; não extrapolar para insuficiência cardíaca, diabetes ou hepatopatia."
+    ],
+    "pillars": [
+      "Fenótipo, não causa única",
+      "Risco guiado pelo átrio",
+      "Tratamento por estágio"
+    ]
+  },
+  {
+    "slug": "cardiomiopatia-dilatada-caes-gatos",
+    "strip": [
+      "Raça de risco pode ter CMD silenciosa: ecocardiograma e Holter detectam doença antes da insuficiência cardíaca.",
+      "Ecocardiografia confirma dilatação e disfunção; radiografia confirma congestão, não a etiologia.",
+      "Pimobendan tem evidência pré-clínica em Dobermann e benefício na CMD com insuficiência cardíaca.",
+      "Taquiarritmia pode ser causa, consequência ou ambas; controlar frequência pode reverter parte do fenótipo.",
+      "Investigue dieta, taurina e carnitina sem assumir que toda CMD é “nutricional”.",
+      "Dispneia, hipotensão ou arritmia sustentada exigem estabilização hospitalar."
+    ],
+    "pillars": [
+      "Fenótipo com várias causas",
+      "Fase oculta importa",
+      "Congestão e perfusão"
+    ]
+  },
+  {
+    "slug": "arritmias-cardiacas-caes-gatos",
+    "strip": [
+      "Antes de antiarrítmico: estabilidade hemodinâmica, pulso, PA, consciência e se a arritmia explica os sinais — síncope, choque ou edema pulmonar exigem abordagem imediata. (4)(5)",
+      "Classifique o ritmo: rápido ou lento; QRS estreito ou largo; regular ou irregular; relação P–QRS — isso direciona mecanismo e conduta. (1)(2)",
+      "Procure causa reversível (K⁺, Mg²⁺, Ca²⁺, hipóxia, anemia, dor, drogas, doença sistêmica) antes de escalar antiarrítmico. (4)(9)",
+      "VPC isolado em paciente assintomático com função preservada frequentemente não precisa de supressão farmacológica — tratar substrato e repercussão, não só o traçado. (1)",
+      "FA canina: meta preferencial de frequência cardíaca média de Holter ≤125 bpm quando tolerado — ECG de consultório não substitui monitorização de 24 h. (10)",
+      "Adenosina não deve aparecer como primeira escolha padrão para SVT canina com base em extrapolação da medicina humana — Nelson & Couto relata ineficácia em cães. (1)",
+      "Bradiarritmia sintomática estrutural (SSS, BAV avançado): atropina pode servir de teste/ponte, mas marcapasso permanente é tratamento definitivo na maioria dos casos. (1)(4)(5)",
+      "ECG de poucos minutos não exclui arritmia intermitente — Holter ou monitor de eventos em síncope, colapso ou suspeita alta com ECG normal. (5)(14)",
+      "VF e VT sem pulso são ritmos de parada — seguir RECOVER 2024, não o algoritmo ambulatorial de VT com pulso. (25)",
+      "Antiarrítmicos são pró-arrítmicos: bradicardia, bloqueio AV, depressão inotrópica e prolongamento de QT são riscos reais — monitorizar ECG, PA e eletrólitos. (1)(6)(7)"
+    ],
+    "pillars": [
+      "Arritmia não significa automaticamente doença cardíaca primária",
+      "ECG curto pode perder a doença",
+      "A repercussão hemodinâmica é decisiva",
+      "Antiarrítmicos também podem causar arritmias"
+    ]
+  },
+  {
+    "slug": "cardiomiopatia-restritiva-felina",
+    "strip": [
+      "Átrio esquerdo maciçamente dilatado (AE/Ao > 1,8 a 2,2) com espessura parietal do VE normal (<5,5 a 6,0 mm) = forte presunção de Cardiomiopatia Restritiva (ACVIM 2020).",
+      "Fração de encurtamento normal NÃO significa coração normal: a fração de ejeção afere geometria e diâmetro, mas o ventrículo rígido acomoda volume diastólico mínimo, operando sob altíssima pressão.",
+      "Gato em estresse respiratório agudo com abafamento de bulhas cardíacas ventrais: realizar TFAST à beira do leito e toracocentese aliviadora bilateral IMEDIATA antes de qualquer radiografia forçada.",
+      "Na espécie felina, a efusão pleural cardiogênica é tão ou mais prevalente que o edema pulmonar na ICC decorrente de CMR, pela drenagem linfática e venosa pleural compartilhada.",
+      "Tromboprofilaxia mandatória em todo felino com aumento atrial moderado a grave: Clopidogrel (18,75 mg/gato VO q24h) é significativamente superior à aspirina (ensaio FAT CAT); associar Rivaroxabana (0,5 a 1,0 mg/kg VO q24h) em casos de contraste espontâneo (\"fumaça\") ou trombo visível.",
+      "Pimobendan (0,625 a 1,25 mg/gato VO q12h) é seguro e benéfico na CMR descompensada: ao contrário da CMH, a CMR raramente desenvolve obstrução dinâmica da via de saída do VE (SAM), beneficiando-se do inotropismo e da vasodilatação.",
+      "Fluidoterapia intravenosa convencional é POTENCIALMENTE FATAL em gatos com CMR: volumes discretos de cristaloides podem precipitar edema pulmonar agudo e efusão pleural fulminante em minutos.",
+      "Paraparesia aguda rígida, frialdade de membros pélvicos, ausência de pulso femoral e dor excruciante = Tromboembolismo Arterial Felino (FATE) por desprendimento de trombo atrial; analgesia imediata com opioides puros (metadona ou fentanil) é imperativa.",
+      "Monitoramento domiciliar da Frequência Respiratória em Sono profundo (FRR < 30 mpm) é a ferramenta de maior sensibilidade para prevenir descompensações congestivas graves.",
+      "Diferenciar CMR de pericardite constritiva e de CMH em estágio terminal \"burned-out\" através do Doppler transmitral e tecidual seriado."
+    ],
+    "pillars": [
+      "Pilar 1: Duas Formas Anatomopatológicas (Fox 2004)",
+      "Pilar 2: Fisiologia Restritiva e Paradoxo Sistólico",
+      "Pilar 3: Manejo Emergencial da Congestão e Trombose"
+    ]
+  },
+  {
+    "slug": "hipoadrenocorticismo-addison",
+    "strip": [
+      "Cão jovem a meia-idade com vômitos e diarreia intermitentes, letargia profunda, bradicardia injustificada e choque hipovolêmico: pense em Addison.",
+      "Relação Sódio:Potássio (Na:K) abaixo de 27 (e principalmente <24) é uma forte pista laboratorial em animais azotêmicos.",
+      "Não use prednisolona antes de realizar o teste com ACTH; use Dexametasona na emergência, pois ela não cruza com os ensaios de cortisol.",
+      "Cortisol basal > 2,0 µg/dL praticamente descarta a doença; valores menores exigem confirmação com o teste de estimulação com ACTH.",
+      "DOCP (injetável a cada 25 dias) substitui com segurança a aldosterona, mas necessita de Prednisona/Prednisolona oral diária como suporte de glicocorticoide."
+    ],
+    "pillars": [
+      "Mecanismo primário",
+      "Tríade de emergência",
+      "Desafio diagnóstico"
+    ]
+  },
+  {
+    "slug": "diabetes-mellitus-canina",
+    "strip": [
+      "Tríade Diagnóstica: Sinais clínicos (PU/PD, perda de peso, polifagia) + Hiperglicemia persistente + Glicosúria (1,4,5).",
+      "Insulinoterapia Vitalícia: O cão com DM clínica apresenta perda β-celular e praticamente sempre requer insulina exógena contínua (1,4,5).",
+      "Insulina Inicial Preferida: Insulina lente suína 0,25 UI/kg SC q12h pelo PCI — ECC 5 = peso atual; ECC 6–9 = peso ÷ 1,10 a 1,40 (Behrend et al., 2018).",
+      "Cadelas Inteiras em Diestro: OVARIOHISTERECTOMIA imediata é parte do tratamento para interromper progesterona e GH mamário (1,4,5).",
+      "Monitorar Catarata: 50% dos cães desenvolvem catarata até 170 dias e 80% até 470 dias pós-diagnóstico; atenção a uveíte lente-induzida (15).",
+      "Toujeo U300 em Cães: Iniciar em 0,5 U/kg SC q24h; usar a caneta própria e NUNCA aspirar de caneta U300 com seringa U100 (8).",
+      "Degludeca U100 em Cães: Alternativa basal com mediana inicial de 0,6 U/kg q24h em estudo prospectivo (9).",
+      "Resistência Insulínica Definição AAHA: Resposta inadequada a doses >1,5 U/kg por aplicação (4).",
+      "Anorexia no Diabético: Emergência clínica! Investigar pancreatite, DKA, pielonefrite, piometra e uremia imediatamente (1,14,16).",
+      "Peso Ideal p/ Insulina: ECC 5 = peso atual; ECC 6–9 → PCI = peso ÷ 1,10 a 1,40; dose = PCI × UI/kg (Behrend et al., 2018)."
+    ],
+    "pillars": [
+      "Fisiopatologia & Catabolismo",
+      "Conduta Terapêutica Inicial",
+      "Prevenção & Diestro"
+    ]
+  },
+  {
+    "slug": "diabetes-mellitus-felina",
+    "strip": [
+      "Hiperglicemia de Estresse Alerta: Não diagnosticar DM felino por uma única glicemia isolada na clínica; exige comprovação sustentada (2,3,6).",
+      "Tríade Diagnóstica: Sinais clínicos (PU/PD, PP, sarcopenia) + Hiperglicemia sustentada + Glicosúria persistente (1–3).",
+      "Remissão Diabética AAHA 2026: Euglicemia mantida por >4 semanas sem insulina/SGLT2. ~25% em 2-3 meses, maioria nos primeiros 6 meses (2).",
+      "Insulinas Preferidas AAHA 2026: Glargina U100 ou PZI (ProZinc U40), ambas iniciadas com 1 U/GATO SC q12h (2). NPH não é recomendada (2).",
+      "Via SGLT2 (Bexacat / Senvelgo): APENAS em gato recém-diagnosticado, metabolicamente estável, comendo, hidratado e sem cetose (2,10,11).",
+      "Risco de eDKA (DKA Euglicêmica): SGLT2 induz glicosúria e normaliza glicemia mesmo com cetose/acidose grave (2,10,11).",
+      "Vigilância do BHB (AAHA 2026): BHB >2,4 mmol/L ou cetonúria → suspender SGLT2 e iniciar insulina + dextrose hospitalar (2).",
+      "Curvas Hospitalares Banidas: AAHA 2026 desaconselha curva glicêmica hospitalar de rotina em gatos devido ao estresse (2). Usar monitor contínuo de glicose ou ALIVE DCS (1,3).",
+      "Neuropatia Plantígrada: Polineuropatia distal por hiperglicemia crônica com apoio dos tarsos no solo; controle metabólico é a chave (3).",
+      "Alimentação Felina AAHA 2026: Dieta rica em proteínas (>40-45% EM) e pobre em carboidratos (<12-15% EM), preferencialmente úmida (2)."
+    ],
+    "pillars": [
+      "Remissão & Glicotoxicidade",
+      "Insulinoterapia vs SGLT2",
+      "Monitoramento Sem Estresse"
+    ]
+  },
+  {
+    "slug": "hipertireoidismo-felino",
+    "strip": [
+      "Gato idoso emagrecendo com apetite voraz + taquicardia (>220 bpm) + nódulo tireoidiano palpável = suspeita máxima; palpação cuidadosa em \"pinça\" do sulco jugular identifica o nódulo em >80-85% dos casos.",
+      "T4 total sérico elevado em laboratório de referência confirma o diagnóstico na grande maioria dos pacientes com sinais clínicos compatíveis.",
+      "T4 total normal NÃO exclui hipertireoidismo: ~5-10% têm doença inicial, flutuações hormonais ou supressão transitória por doença não tireoidiana grave (síndrome do eutireoideo doente).",
+      "T4 livre elevada (fT4 elevada) isolada NÃO confirma a doença: apresenta falso-positivo em até 12% dos gatos eutetireoideos doentes; deve SEMPRE ser interpretada em conjunto com T4 total e TSH (Brassard et al., 2026).",
+      "TSH felino suprimido (<0,03 ng/mL) reforça hipertireoidismo; TSH normal ou alto exclui quase categoricamente a doença não tratada.",
+      "O hipertireoidismo mascara a Doença Renal Crônica: a hiperfiltração glomerular e a perda de massa muscular reduzem a creatinina; nunca tolerar ou manter gato hipertireoideo com medo de elevar creatinina, o objetivo primordial é sempre restaurar o eutireoidismo (Geddes & Aguiar, 2022).",
+      "NUNCA deixe o gato intencionalmente hipertireoideo com medo de elevar a creatinina: o hipertireoidismo não tratado perpetua lesão glomerular, proteinúria, hipertensão e necrose miocárdica.",
+      "Aferir a Pressão Arterial Sistólica (PAS) por Doppler antes e 2 a 4 semanas após atingir o eutireoidismo: 25-30% são hipertensos no diagnóstico e outros desenvolvem hipertensão de novo pós-tratamento.",
+      "Metimazol NÃO cura e NÃO impede o crescimento do tumor tireoidiano: a dose inicial deve ser calculada por gato (1,25 a 2,5 mg/gato q12-24h), NUNCA por mg/kg.",
+      "Radioiodoterapia (I-131) é a terapia curativa definitiva de eleição (>95% de sucesso); o cálculo da dose deve ser individualizado com base no tamanho nodular e captação cintilográfica, e não em dose fixa universal.",
+      "Dieta y/d exige exclusividade nutricional absoluta (100% dos alimentos e petiscos); não destrói o tumor e é contraindicada em animais com DRC azotêmica avançada IRIS 3-4.",
+      "Em caso de apatia extrema, anorexia e prostração (\"hipertireoidismo apático\", 5-10%), investigar imediatamente insuficiência cardíaca congestiva descompensada ou sepse/DRC avançada associada."
+    ],
+    "pillars": [
+      "Pilar 1: Diagnóstico Laboratorial Estruturado e Armadilhas",
+      "Pilar 2: Inter-relação Nefrorrenal (DRC Mascarada)",
+      "Pilar 3: Cardiomiopatia Tireotóxica e Risco Vascular",
+      "Pilar 4: Escolha Terapêutica Racional (Curativa vs Manutenção)"
+    ]
+  },
+  {
+    "slug": "hipotireoidismo-adquirido-caes-gatos",
+    "strip": [
+      "TT4 baixo ≠ diagnóstico de hipotireoidismo — NTIS e fármacos reduzem T4 em eutireoideos (Bugbee et al., 2023; Nelson & Couto, 6ª ed.).",
+      "Paciente sistêmico doente: trate a causa da NTIS antes de rotular hipotireoidismo ou iniciar levotiroxina.",
+      "fT4 por diálise (fT4ED) + cTSH elevado + clínica forte aumentam muito a probabilidade (Dixon & Mooney, 1999).",
+      "20–40% dos cães hipotireóideos podem apresentar cTSH dentro do intervalo de referência (Bugbee et al., 2023).",
+      "TgAA positivo indica tireoidite autoimune — NÃO mede função; eutireoideo TgAA+ não recebe levotiroxina automaticamente (Nelson & Couto, 6ª ed.).",
+      "Cão: levotiroxina 0,02 mg/kg PO q12h; obeso — dose pelo peso magro ideal (Bugbee et al., 2023; Plumb's, 10ª ed.).",
+      "Monitorar cão ~4 semanas após início/ajuste; colher TT4 4–6 h após a dose (Plumb's, 10ª ed.).",
+      "Gato: 0,05–0,10 mg/GATO q24h — NÃO mg/kg; meta T4 ~1,0–2,5 µg/dL (Bugbee et al., 2023; Rothrock, VIN 2025).",
+      "Hipotireoidismo felino espontâneo é raro — investigar iatrogenia pós-hipertireoidismo (metimazol, I-131, cirurgia).",
+      "Pós-I-131: reavaliar função renal e T4 — hipotireoidismo pode unmask DRC (Cox et al., 2025; Geddes & Aguiar, 2022).",
+      "Associação hipotireoidismo–CMD é controversa — Beier et al. (2015) não confirmaram causalidade direta.",
+      "SDMA pode antecipar azotemia em hipotireoidismo canino — interpretar com creatinina (Di Paola et al., 2021).",
+      "Sinais GI (vômito, diarreia) podem ser manifestação atípica — considerar painel tireoidiano (Gori et al., 2023).",
+      "Coma mixedematoso: emergência — aquecimento, ventilação, glicose, sódio; levotiroxina IV titulada (Drobatz & DiBartola, 2019; Plumb's, 10ª ed.)."
+    ],
+    "pillars": [
+      "Deficiência hormonal primária",
+      "NTIS não é hipotireoidismo",
+      "Painel probabilístico"
+    ]
+  },
+  {
+    "slug": "hipotireoidismo-congenito-caes-gatos",
+    "strip": [
+      "Filhote que não cresce no ritmo da ninhada + cabeça larga desproporcional + fontanela aberta + letargia extrema = suspeição máxima de hipotireoidismo congênito; na maior coorte multicêntrica (cohort de 35,3 animais avaliada por Golinelli et al. 2022; Van Poucke et al., 2022; Abitbol et al. 2026), o reconhecimento precoce da forma goitrosa ou disgenética salvou o desenvolvimento neurológico.",
+      "Diferenciação fenotípica imediata: a forma goitrosa exibe aumento volumétrico cervical palpável (bócio) e TSH alto (disormonogênese - mutações TPO/TG); a forma não goitrosa decorre de aplasia/hipoplasia da glândula (disgenesia).",
+      "Diferenciar nanismo tireoidiano (desproporcional, membros curtos, cabeça grande, mente embotada) de nanismo hipofisário (proporcionado, cabeça e membros harmônicos, esqueleto em miniatura por deficiência de GH).",
+      "Achado radiográfico patognomônico: disgenesia epifisária com múltiplos focos de ossificação pontilhados e fragmentados (\"epífises pontilhadas\"), vértebras hemiplágicas e atraso no fechamento das fises de crescimento.",
+      "JANELA DE OPORTUNIDADE NEUROLÓGICA CRÍTICA: o início da levotiroxina antes de 12 semanas de vida é determinante para prevenir retardo mental permanente e surdez irreversível (Golinelli et al. 2022).",
+      "NUNCA aguarde resultados de testes genéticos moleculares para iniciar o tratamento: confirmada a deficiência de T4 com clínica compatível, inicie levotiroxina imediatamente.",
+      "Dose pediátrica canina: Levotiroxina 0,02 a 0,04 mg/kg (20 a 40 mcg/kg) VO a cada 12 horas (metabolismo pediátrico muito mais acelerado que o do adulto).",
+      "Dose felina: Levotiroxina 0,05 a 0,10 mg/GATO (dose fixa por animal) VO a cada 24 horas, ajustada mensalmente pelo peso crescente.",
+      "Monitorar T4 total sérico de pico (4 a 6 horas pós-dose) a cada 3 a 4 semanas durante a fase de crescimento rápido, mantendo o nível no terço superior do intervalo de referência normal (3,0 a 4,5 mcg/dL).",
+      "Atraso dentário característico: retenção persistente de dentes decíduos com falha na erupção da dentição permanente até que a levotiroxina seja instituída.",
+      "Orientar o tutor que o termo histórico \"cretinismo\" descreve essa condição, mas deve ser substituído pela terminologia científica \"hipotireoidismo congênito infantil\"."
+    ],
+    "pillars": [
+      "Pilar 1: Etiopatogenia — Disgenesia vs Disormonogênese",
+      "Pilar 2: Esqueleto e Sistema Nervoso — Efeitos da Falência Hormonal",
+      "Pilar 3: Diagnóstico e Reposição Pediátrica com Levotiroxina"
+    ]
+  },
+  {
+    "slug": "tumores-mamarios-caes-gatos",
+    "strip": [
+      "Mapeie e meça todas as glândulas: nódulos simultâneos podem ter histologias diferentes.",
+      "Histopatologia de cada massa é o padrão ouro; citologia isolada não gradua carcinoma.",
+      "Estadiar tórax e linfonodos antes de operar lesão suspeita de malignidade.",
+      "Carcinoma inflamatório: não é caso de mastectomia curativa; priorizar biópsia e paliativo.",
+      "Em gatas, trate massa mamária como maligna até prova histológica em contrário.",
+      "Não repita números históricos de proteção da castração como certeza: a evidência é heterogênea."
+    ],
+    "pillars": [
+      "Cão e gato não são iguais",
+      "Padrão ouro é tecido",
+      "Linfonodo é parte do tumor"
+    ]
+  },
+  {
+    "slug": "mastite-caes-gatos",
+    "strip": [
+      "Glândula túrgida, quente, hiperêmica e dolorosa com leite purulento/achocolatado = mastite séptica: colher leite assepticamente para citologia e cultura antes do antibiótico.",
+      "Febre, hipotermia, taquicardia, hipotensão, petéquias ou pele mamária violácea/crepitante = mastite gangrenosa e sepse: choque séptico iminente, requer internação e UTI.",
+      "Citologia láctea é a chave imediata: neutrófilos degenerados com bactérias intracelulares confirmam infecção; cultura positiva isolada sem citologia inflamatória pode ser microbiota comensal.",
+      "Antibioticoterapia segura na lactação: amoxicilina com clavulanato (13,75–20 mg/kg PO q12h) ou cefalexina (20–30 mg/kg PO q8–12h); evitar fluoroquinolonas (artropatia) e tetraciclinas (esmalte).",
+      "Avaliação neonatal contínua: filhotes inquietos, chorosos, com abdômen distendido e perda ponderal sofrem de Síndrome do Leite Tóxico ou inanição; afastar da glândula afetada e suplementar.",
+      "Ablactação farmacológica com cabergolina (5 mcg/kg PO q24h por 5–7 dias) indicada se mastite grave multifocal, choque séptico materno, gangrena ou perda da ninhada."
+    ],
+    "pillars": [
+      "Diagnóstico Citológico Imediato",
+      "Esvaziamento e Termoterapia",
+      "Segurança Farmacológica Materno-Fetal",
+      "Manejo Neonatal Intensivo"
+    ]
+  },
+  {
+    "slug": "miastenia-gravis-caes-gatos",
+    "strip": [
+      "Fraqueza fatigável + megaesôfago/disfagia/disfonia → pense em junctionopatia.",
+      "Exame neurológico pode ser normal após repouso — reprovocação com exercício controlado.",
+      "Radiografe tórax: megaesôfago, pneumonia aspirativa e massa mediastinal cranial.",
+      "AChR-Ab confirma MG adquirida; negativo não exclui — repita ou amplie investigação.",
+      "Piridostigmina: cães 0,2–2 mg/kg VO q8–12h; gatos 0,25 mg/kg VO q8–12h — titular.",
+      "Piora de fraqueza em uso de anticolinesterásico ≠ dose baixa automática — exclua crise colinérgica.",
+      "Pneumonia aspirativa determina mortalidade em cães — trate antes de imunossuprimir.",
+      "Todo gato com MG: investigar mediastino cranial; timoma/massa é frequente.",
+      "MG adquirida ≠ síndrome miastênica congênita — não imunossuprimir CMS rotineiramente.",
+      "Repetir AChR-Ab a cada 2–3 meses para distinguir remissão clínica de imunológica."
+    ],
+    "pillars": [
+      "Classificação moderna",
+      "Três apresentações",
+      "Conduta imediata"
+    ]
+  },
+  {
+    "slug": "sindromes-miastenicas-congenitas-caes-gatos",
+    "strip": [
+      "Filhote entre 6 e 12 semanas com fraqueza muscular fatigável pós-exercício + recuperação com repouso = suspeita clínica maior de CMS.",
+      "CMS NÃO é Miastenia Gravis de filhote: os autoanticorpos anti-AChR são NEGATIVOS porque a doença decorre de defeito genético estrutural de montagem da placa motora.",
+      "Corticosteroides e imunossupressores (prednisona, azatioprina, ciclosporina) são FORMALMENTE CONTRAINDICADOS: não tratam a causa genética e causam miopatia e imunossupressão grave.",
+      "Diferenciação molecular crucial: mutações no gene CHRNE (pós-sinápticas em Jack Russells e Fox Terriers) respondem à Piridostigmina; mutações no gene COLQ (sinápticas em Labradores, Sphynx e Devon Rex) PIORAM com piridostigmina (risco de crise colinérgica por acúmulo de ACh).",
+      "O brometo de piridostigmina (0,5 a 1,5 mg/kg VO q8-12h) deve ser iniciado com teste terapêutico hospitalar monitorado e atropina imediatamente disponível.",
+      "3,4-Diaminopiridina (3,4-DAP / Amifampridina, 0,2 a 0,5 mg/kg VO q8-12h) é o fármaco de escolha para defeitos pré-sinápticos de liberação quântica de acetilcolina.",
+      "Algumas linhagens de Teckel Miniatura (Dachshund) apresentam melhora e remissão clínica espontânea parcial da fraqueza muscular por volta dos 6 meses de vida por maturação compensatória de receptores.",
+      "Megaesôfago e pneumonia por aspiração são o principal risco de óbito precoce em linhagens com acometimento esofágico; alimentar em cadeira de Bailey verticalizada.",
+      "Medicamentos bloqueadores neuromusculares são ESTRITAMENTE PROIBIDOS: aminoglicosídeos (gentamicina, amicacina), fluoroquinolonas, ampicilina, clindamicina, anestésicos locais e acepromazina deflagram paralisia respiratória aguda.",
+      "Aconselhamento genético: identificar reprodutores e irmãos portadores heterozigotos por teste de DNA e eliminá-los permanentemente de programas de criação."
+    ],
+    "pillars": [
+      "Pilar 1: Três Compartimentos da Junção Neuromuscular",
+      "Pilar 2: Diagnóstico Diferencial com Miastenia Gravis Adquirida",
+      "Pilar 3: Terapêutica Racional por Subtipo Molecular"
+    ]
+  },
+  {
+    "slug": "leucemia-viral-felina",
+    "strip": [
+      "Teste p27 positivo isolado ≠ infecção progressiva — confirmar e repetir ≥6 semanas.",
+      "PCR proviral positivo + p27 negativo = infecção regressiva provável — não tratar como contagioso habitual.",
+      "Não indicar eutanásia só pelo resultado positivo; não iniciar antiviral de rotina em assintomático.",
+      "Hemograma, esfregaço, bioquímica e urinálise na investigação inicial — tratar a doença, não o teste.",
+      "Separar gato progressivo de suscetíveis; indoor, castração e vacinação baseada em risco nos demais.",
+      "Filhotes e gatos jovens são mais susceptíveis à infecção progressiva — testar antes de vacinar.",
+      "Anemia: sempre classificar regenerativa versus não regenerativa antes de atribuir ao FeLV.",
+      "Antivirais (AZT, raltegravir, RetroMAD1): evidência insuficiente para uso rotineiro (Westman et al., 2024).",
+      "Monitorar clinicamente e laboratorialmente ≥ a cada 6 meses em infectados.",
+      "Doador de sangue: p27 isolado não basta — incluir PCR proviral na triagem (ABCD 2025)."
+    ],
+    "pillars": [
+      "Quatro desfechos",
+      "Diagnóstico",
+      "Tratamento"
+    ]
+  },
+  {
+    "slug": "peritonite-infecciosa-felina",
+    "strip": [
+      "Reação em cadeia da polimerase (PCR) para coronavírus felino (FCoV) em fezes ou sangue detecta coronavírus, não confirma peritonite infecciosa felina (PIF) — interpretar com cautela.",
+      "Se houver efusão: coletar líquido antes de exames de sangue isolados.",
+      "Teste de Rivalta negativo tem alto valor preditivo negativo (VPN), mas positivo tem valor preditivo positivo (VPP) moderado — integrar idade, relação albumina:globulina (A:G) e PCR na efusão (Fischer et al., 2012).",
+      "Sensibilidade ≠ valor preditivo positivo (VPP): teste muito específico ainda pode gerar falso positivo se a suspeita pré-teste for baixa (Thayer et al., 2022).",
+      "GS-441524 VO 15 mg/kg q24h é primeira linha na peritonite infecciosa felina (PIF) efusiva/não neurológica (Tasker et al., ABCD 2026).",
+      "PIF ocular ou neurológica: 20 mg/kg q24h ou 10 mg/kg q12h — barreira hematoencefálica/ocular exige dose maior.",
+      "42 dias pode bastar se resposta clínica e laboratorial excelente — não é stop automático em todo caso (Zuzzi-Krebitz et al., 2024).",
+      "Prednisolona não é tratamento primário; corticoide adjuvante só em indicações selecionadas (Tasker et al., ABCD 2026).",
+      "Pesar a cada 1–2 semanas e recalcular dose — subdosagem por ganho de peso favorece recidiva.",
+      "Remdesivir reservado a gatos que não toleram VO; molnupiravir como resgate em falha documentada.",
+      "Ultrassom abdominal orienta efusão e lesões amostráveis — linfonodos, fígado, intestino (Müller et al., 2023).",
+      "Produtos não regulados variam em concentração real — preferir fontes legalmente prescritas quando disponíveis (Kent et al., 2024)."
+    ],
+    "pillars": [
+      "Fenótipos",
+      "Diagnóstico tijolo a tijolo",
+      "Tratamento GS"
+    ]
+  },
+  {
+    "slug": "imunodeficiencia-felina-fiv",
+    "strip": [
+      "POSITIVO FIV ≠ eutanásia — qualidade de vida e doença associada guiam a conduta.",
+      "Teste POC detecta anticorpos anti-FIV, não vírus — PCR negativo não exclui infecção estabelecida.",
+      "Mordida profunda = principal via de transmissão natural entre gatos adultos.",
+      "Negativo pós-exposição recente → repetir teste ≥60 dias antes de considerar não infectado.",
+      "PCR negativo NÃO exclui FIV — latência proviral e carga baixa limitam sensibilidade.",
+      "AZT 5–10 mg/kg q12h VO + hemograma semanal no 1º mês — mielossupressão é efeito adverso principal.",
+      "Convivência pacífica entre FIV+ e FIV−: risco de transmissão baixo se não houver brigas (Litster, 2014).",
+      "Vacina FeLV não protege contra FIV — vacina FIV disponível apenas regionalmente, não é core no Brasil.",
+      "Filhote positivo pode ser anticorpo materno até ~6 meses — confirmar após desmame.",
+      "Investigar doença associada (anemia, infecções, neoplasia) — não tratar só o teste.",
+      "Consulta clínica e hemograma ≥ a cada 6 meses em gatos FIV+ confirmados.",
+      "Doador de sangue: teste de anticorpos negativo obrigatório — FIV+ não doa."
+    ],
+    "pillars": [
+      "Transmissão",
+      "Interpretação do teste",
+      "Tratamento e manejo"
+    ]
+  },
+  {
+    "slug": "insuficiencia-pancreatica-exocrina-caes-gatos",
+    "strip": [
+      "Suspeitar insuficiência pancreática exócrina (IPE) em cão com perda de peso + polifagia + fezes volumosas/malformadas — triagem inicial com hemograma, bioquímica e imunorreatividade tipo tripsina (TLI).",
+      "Gatos podem não ter polifagia: perda de peso + diarreia/anorexia/lethargia bastam para incluir IPE no diferencial (Xenoulis et al., 2016).",
+      "Imunorreatividade tipo tripsina canina (cTLI) ≤5,5 µg/L ou imunorreatividade tipo tripsina felina (fTLI) ≤8 µg/L confirma IPE — usar laboratório com imunoensaio validado por espécie (Texas A&M GI Lab, 2024; Steiner, Merck 2025).",
+      "Cutoff de cTLI ≤2,5 µg/L está desatualizado após shift de ensaio Siemens — não usar referência antiga (Texas A&M GI Lab, março 2024).",
+      "Terapia de reposição enzimática pancreática (PERT) em TODA refeição — misturar enzima à comida; pré-incubação não é necessária (Steiner, Merck 2025). Dose inicial: ~1 colher de chá/10 kg (cães) ou ~1 colher de chá/gato.",
+      "Medir cobalamina no diagnóstico; suplementar cobalamina (B12) sempre que baixa — hipocobalaminemia piora prognóstico e resposta (Soetart et al., 2019; Xenoulis et al., 2016).",
+      "Cobalamina (B12) oral é eficaz — não restringir a via parenteral (Chang et al., 2022 em cães; Chang et al., 2024 em gatos).",
+      "Dieta hipolipídica universal NÃO é obrigatória — preferir dieta de baixo resíduo com teor moderado de gordura conforme tolerância (Cridge et al., 2024).",
+      "Antibióticos de rotina NÃO são indicados — tilosina só após otimização de PERT + cobalamina + dieta em casos refratários (Cridge et al., 2024).",
+      "Lipase pancreática canina/felina (cPLI/fPLI) avaliam pancreatite, não IPE — não substituem TLI para diagnóstico de insuficiência exócrina.",
+      "Elastase fecal canina tem sensibilidade/especificidade inferiores ao TLI — não usar como teste primário (Cridge et al., 2024).",
+      "PCR/fezes e coproparasitológico não diagnosticam IPE — úteis para comorbidades, não para TLI."
+    ],
+    "pillars": [
+      "Diagnóstico por imunorreatividade tipo tripsina (TLI)",
+      "Tratamento PERT + cobalamina",
+      "Cão × Gato"
+    ]
+  },
+  {
+    "slug": "giardiase-caes-gatos",
+    "strip": [
+      "Positivo em fezes ≠ causa única da diarreia — integrar clínica, coproparasitológico ampliado e comorbidades antes de rotular “só Giardia”. (3)(4)(6)",
+      "Flutuação em sulfato de zinco (ZnSO₄ 33% + água destilada) permanece método de referência coproparasitológico — técnica e concentração importam. (3)(10)",
+      "Solicitar ≥3 amostras fecais em dias alternados (idealmente 5–7 dias) — excreção cística é intermitente; amostra única subestima sensibilidade. (3)(4)(10)",
+      "Fenbendazol 50 mg/kg VO q24h por 5 dias consecutivos — primeira linha em cães e gatos (ESCCAP GL6; CAPC). (3)(4)(8)",
+      "Metronidazol 25 mg/kg q12h por 5–7 dias é alternativa, não primeira linha; eficácia variável e resistência descrita — reservar quando fenbendazol indisponível/contraindicado. (3)(7)(11)",
+      "Não prescrever albendazol, tinidazol ou “vermífugo genérico” como tratamento padrão — esquemas não consensuais e risco de efeitos adversos. (3)(4)(7)",
+      "ELISA coproantígeno e PCR aumentam detecção, mas positividade não define cura nem indica tratamento isolado em assintomático de baixo risco. (3)(4)(10)",
+      "Higiene ambiental: remover fezes diariamente, desinfetar superfícies (hipoclorito diluído), lavar camas, banhar animal no último dia do tratamento — essencial para evitar reinfecção. (3)(4)(14)",
+      "Gato com diarreia crônica jovem: diferenciar Giardia de *Tritrichomonas foetus* (PCR fecal, não flutuação ZnSO₄) — condutas distintas. (3)(9)(12)",
+      "Zoonose: risco humano existe, mas baixo na prática doméstica com higiene — orientar lavar mãos, evitar contato fecal, grupos imunossuprimidos. (3)(14)",
+      "Não tratar automaticamente contactantes assintomáticos — avaliar risco (criatório, abrigo, filhotes); tratar sintomáticos e reforçar ambiente. (3)(4)",
+      "Falha terapêutica: confirmar adesão, repetir coproscopia/ELISA após ≥7–14 dias, revisar ambiente e considerar segunda linha — antes de rotular resistência. (3)(11)"
+    ],
+    "pillars": [
+      "Positivo não é sinônimo de culpado",
+      "Diagnóstico = amostragem + método",
+      "Fenbendazol como primeira linha",
+      "Ambiente manda na reinfecção"
+    ]
+  },
+  {
+    "slug": "coccidiose-caes-gatos",
+    "strip": [
+      "Cistoisosporose ≠ coccidioidomicose — *Cystoisospora* é protozoário intestinal; *Coccidioides* é fungo pulmonar/sistêmico sem relação coproparasitológica. (5)(7)",
+      "Positivo em fezes ≠ causa única da diarreia — integrar clínica, idade, ambiente e comorbidades (Giardia, helmintos, parvovírus, IBD) antes de fechar conduta. (3)(4)(14)",
+      "Filhote/abrigo com diarreia + oocistos: tratar triazina adequada + controle ambiental simultâneo — não só antiparasitário oral isolado. (3)(4)(9)",
+      "Ponazuril 50 mg/kg VO q24h × 3 dias — esquema preferencial documentado (Litster 2014; ESCCAP GL6); não substituir por dose única 20 mg/kg como equivalente. (3)(9)",
+      "Dose única ponazuril 50 mg/kg ou 20 mg/kg tem eficácia inferior ao esquema de 3 dias — reservar para contextos específicos, não como padrão. (9)",
+      "Toltrazuril: dose varia por fonte (≈10–20 mg/kg VO; produtos combinados) — calcular mg/kg real, não “ml genérico” de bula. (3)(8)(11)",
+      "Diclazuril: alerta de divergência bibliográfica — 2,5–5 mg/kg (algumas monografias) vs 25 mg/kg (extrapolações) — confirmar apresentação antes de prescrever. (8)(3)",
+      "Sulfadimetoxina 50 mg/kg q24h VO por 5–10 dias é alternativa clássica, especialmente quando triazinas indisponíveis — monitorar hidratação e apetite. (5)(10)",
+      "Oocistos de *Eimeria* (aves) em fezes caninas/felinas = parasitismo espúrio por ingestão de fezes de aves — não tratar como coccidiose do hospedeiro. (7)(15)",
+      "Espécies hospedeiro-específicas: cães (*C. canis*, complexo *C. ohioensis*); gatos (*C. felis*, *C. rivolta*) — não cruzam entre espécies. (4)(7)",
+      "PCR/float negativo não exclui infecção recente ou baixa carga — repetir amostras seriadas se alta suspeita clínica. (12)(15)",
+      "Reavaliar fezes 7–14 dias pós-tratamento se diarreia persiste; melhora clínica precede negativação laboratorial. (3)(9)(14)",
+      "Não tratar contactantes assintomáticos adultos indiscriminadamente — foco em filhotes sintomáticos, surtos e desinfecção ambiental. (3)(4)",
+      "Diarreia hemorrágica/febre em filhote: expandir diferencial (parvovírus, coronavírus, salmonela) — coccídio isolado raramente explica quadro grave isolado. (5)(10)(14)"
+    ],
+    "pillars": [
+      "Nome certo, doença certa",
+      "Positivo não fecha etiologia",
+      "Ponazuril — 3 dias, não dose única",
+      "Ambiente esporula o problema"
+    ]
+  },
+  {
+    "slug": "hiperparatireoidismo-caes-gatos",
+    "strip": [
+      "Primeira pergunta: PTH autônomo (PHPT) ou compensatório (CKD-MBD / NSHP)? — o tratamento é oposto. (6)(7)",
+      "iCa confirma hipercalcemia biologicamente relevante — **não usar cálcio corrigido por albumina** para decidir PHPT. (6)(8)(11)",
+      "Hipercalcêmico com PTH “normal”: ainda pode ser PHPT — valor deveria estar suprimido; “normal” ≠ excluído. (6)(20)",
+      "CKD + PTH ↑ = CKD-MBD esperado — **não rotular tumor paratireoidiano** sem iCa elevado e padrão autônomo. (8)(9)(10)",
+      "Fósforo sérico normal **não exclui** CKD-MBD precoce — FGF23 e PTH podem subir antes da hiperfosfatemia. (8)(9)(10)",
+      "PHPT canino: ~71% podem ter exame físico normal — hipercalcemia incidental é apresentação típica. (6)(20)",
+      "PHPT felino: massa cervical palpável é relativamente comum (~38–57%) — palpar tireoide/paratireoides em gato idoso hipercalcêmico. (14)(20)",
+      "Furosemida na hipercalcemia: **somente após euvolemia** — 2–4 mg/kg IV/SC/VO q8–24h titulado; nunca em desidratado. (7)(11)",
+      "Pamidronato reserva para hipercalcemia grave/refratária — cão 0,65–2 mg/kg IV em 2–4 h; gato 1–2 mg/kg IV em ~4 h; nefrotoxicidade. (7)(11)",
+      "Não iniciar prednisona/dexametasona às cegas antes de investigar lymphoma quando é diferencial real — prejudica citologia. (6)(7)",
+      "Ultrassom cervical localiza massa (~90–95% em mãos experientes), mas **não substitui histopatologia** adenoma vs carcinoma. (6)(15)",
+      "Principal risco pós-paratireoidectomia: **hipocalcemia** — Ca normal na manhã seguinte não elimina queda tardia (3–6 dias). (6)(12)",
+      "PTH pré-operatório ≥75 pg/mL: sensibilidade ~96,6% para hipocalcemia pós-op, mas especificidade baixa (~42%) — não regra absoluta. (12)",
+      "Calcitriol **não é rotina** no CKD-MBD moderno — especialmente gatos; IRIS 2026 prioriza fósforo/dieta/quelante. (8)(10)",
+      "NSHP: Ca sérico pode estar normal enquanto esqueleto está osteopênico — PTH preserva iCa removendo Ca do osso. (7)(17)(18)",
+      "NSHP: corrigir **dieta completa balanceada** — suplementar cálcio isolado em receita caseira mal formulada não resolve. (17)(21)"
+    ],
+    "pillars": [
+      "PHPT — secreção autônoma",
+      "CKD-MBD — compensação renal",
+      "NSHP — dieta desequilibrada",
+      "Interpretação relacional PTH × iCa"
+    ]
+  },
+  {
+    "slug": "insulinoma-caes-gatos",
+    "strip": [
+      "Hipoglicemia + insulina normal/elevada na mesma amostra → insulinoma altamente provável — não usar só razão insulina:glicose. (2)(11)(14)",
+      "Glicemia normal no consultório **não exclui** — sinais episódicos; considerar jejum supervisionado ou amostra durante crise. (1)(9)(11)",
+      "Primeira medida na crise neurológica: estabilizar glicemia **antes** de exames demorados — mas coletar insulina se possível durante hipoglicemia. (5)(7)(22)",
+      "Evitar bolus grandes de dextrose 50% em suspeita de insulinoma — pode estimular mais secreção e rebound; preferir 0,5 g/kg diluído ou CRI 2,5–5% com monitorização. (5)(7)(22)",
+      "Glucagon refratário: bolus 50 ng/kg por via intravenosa, depois infusão contínua 5–40 ng/kg/min titulada — glicemia seriada. (4)(5)(7)(22)",
+      "Jejum prolongado antes de cirurgia é perigoso — alimento úmido até 6 h; dextrose IV intraoperatória; manipulação tumoral pode causar hipoglicemia rebote. (4)(13)(25)",
+      "TC contrastada multiphase/dual-phase é modalidade preferencial de estadiamento — US sozinho perde metástases linfonodais. (8)(18)(19)(24)(25)",
+      "Insulina sérica “normal” com glicemia <60 mg/dL (<3,3 mmol/L) é **fisiologicamente anormal** — deveria estar suprimida. (2)(11)(14)",
+      "Não usar concentração absoluta de insulina como marcador de metástase ou prognóstico — Petrelli et al. (2023) não encontraram utilidade clínica para estadiamento. (14)",
+      "Estágio I–II cirúrgico: sobrevida mediana substancialmente maior que estágio III ou manejo exclusivamente médico. (9)(11)(12)(15)",
+      "Pós-operatório: hipoglicemia persistente = células residuais/metástase (prognóstico reservado); hiperglicemia pode ser transitória ou diabetes permanente (~19%). (13)(12)",
+      "Pancreatite pós-ressecção até ~10% — monitorar vômito, dor, lipase; complicação relevante em gatos. (13)(16)",
+      "Prednisona/prednisolona 0,25 mg/kg por via oral a cada 12 horas = dose inicial preferencial quando cirurgia não é opção; faixa de emergência 0,25–0,5 mg/kg q12h. (1)(2)(5)(6)",
+      "Diazóxido 5 mg/kg PO q12h titulando até 30 mg/kg — salivar, vômito, retenção hídrica; combinar com HCTZ se refratário. (7)(23)",
+      "Estreptozotocina 500 mg/m² IV q3 sem com diurese salina agressiva — **somente** cão, recorrente/metastático, histologia confirmada, centro oncologia. (7)(20)(21)",
+      "Toceranibe 2,4–2,75 mg/kg PO q48h — terapia alvo em metastático/recorrente; evidência retrospectiva promissora, não substitui cirurgia quando ressecável. (7)(15)(18)",
+      "Felino: evidência limitada — cirurgia é principal opção curativa descrita; não extrapolar protocolos caninos sem ressalva. (16)(17)(23)",
+      "Diferenciais obrigatórios: hipoadrenocorticismo, sepse, hepatopatia, shunt, neoplasia extrapancreática paraneoplásica, overdose insulina, xilitol (cães). (2)(5)(6)"
+    ],
+    "pillars": [
+      "Fisiopatologia — excesso de insulina",
+      "Diagnóstico relacional glicose × insulina",
+      "Estadiamento e imagem",
+      "Tratamento escalonado"
+    ]
+  },
+  {
+    "slug": "cetoacidose-diabetica-caes-gatos",
+    "strip": [
+      "🚨 REGRA DE OURO ALIVE 2026: BHB elevado NÃO confirma DKA isoladamente — DKA exige a tríade DM + Cetonemia/Cetonúria + Acidose Metabólica (pH <7,35, HCO₃⁻ reduzido). (3)(4)(5)",
+      "🐶 Cutoffs BHB Canino: Normal <0,32 mmol/L | Alerta/Triagem ≥2,3 mmol/L (100% sensibilidade Di Tommaso) | DKA Provável ≥3,5 mmol/L (LR+ 13,16) e ≥3,8 mmol/L | Específico ≥4,3 mmol/L (100% esp). (17)(18)(19)",
+      "🐱 Cutoffs BHB Felino: Normal 0–0,1 mmol/L | Discreta >0,1–<1,0 mmol/L | Zona de Alerta 1,0–2,4 mmol/L | Triagem DKA/eDKA >2,4 mmol/L (100% sensibilidade, 87% especificidade Weingart). (3)(4)(20)(21)",
+      "🐱 Critérios DKA Felina (iCatCare 2025): Glicose >250 mg/dL (>14 mmol/L), BHB >2,4 mmol/L, pH <7,35, HCO₃⁻ <15 mmol/L (ou cetonúria >15 mg/dL). (4)",
+      "⚠️ eDKA Felina & iSGLT2: Glicemia <250 mg/dL NÃO exclui DKA em gatos (especialmente sob bexagliflozina/velagliflozina); havendo BHB >2,4 e acidose, suspender SGLT2 e tratar com insulina + dextrose. (3)(4)(5)",
+      "💊 Monitorização SGLT2 Felino (AAHA 2026): Checar BHB nos dias 2–3, 7 e 14. BHB <1,0 é tranquilizador; 1,0–2,4 reavaliar em 2–3 dias; >2,4 migrar para insulina / investigar DKA-eDKA. (3)",
+      "🧪 BHB Sanguíneo (POC) >>> Fita Urinária: Nitroprussiato mede acetoacetato e NÃO detecta BHB (relação habitual no gato ~3:1). Fita urinária pode parecer piorar enquanto o paciente melhora (BHB → acetoacetato). (17)(18)(19)",
+      "⚠️ BHB Não é Específico de DM: Cetonemia ocorre em lipidose hepática felina (BHB até 2,78 mmol/L), inanição prolongada e balanço energético negativo. (8)",
+      "Fluidoterapia em Primeiro Lugar: Expandir volemia e restaurar perfusão com cristaloide isotônico antes de iniciar a insulinização; calcular Na⁺ corrigido. (6)(7)(10)",
+      "Potássio é Prioridade Vital: Suplementar KCl antes da insulina conforme AAHA 2024 (máx 0,5 mEq/kg/h); NUNCA dar insulina se K⁺ <3,0 mEq/L sem reposição prévia. (6)(7)(11)",
+      "Insulina Gradual Após 2–4 h: Iniciar insulina regular (CRI ou IM) ou glargina em gatos após perfusão restaurada e K⁺ seguro; meta de queda ~50 mg/dL/h. (7)(8)(10)(12)(22)",
+      "Associação Insulina + Dextrose: Adicionar Dextrose 2,5–5% ao fluido assim que a glicemia for ≤250 mg/dL para manter a supressão de cetonas sem causar hipoglicemia. (7)(8)(10)(12)",
+      "Bicarbonato de Sódio NÃO é Rotina: Reservar HCO₃⁻ estritamente para acidemia profunda e refratária (pH <7,0 ou HCO₃⁻ <8 mEq/L) com instabilidade hemodinâmica. (7)(8)(9)(10)",
+      "Investigação Ativa do Fator Precipitante: Buscar e tratar pancreatite (~70% cães, ~90% gatos), ITU, piometra, pneumonia e endocrinopatias com urocultura e imagem. (1)(2)(7)(10)",
+      "Nutrição Enteral Precoce no Gato: Iniciar alimentação logo que vômitos cessem para prevenir lipidose hepática secundária. (3)(4)(22)(23)",
+      "Critérios de Resolução da CAD: BHB <1,0–1,5 mmol/L, pH >7,35, HCO₃⁻ normalizado e ingestão alimentar voluntária restabelecida. (3)(12)(22)"
+    ],
+    "pillars": [
+      "1. Regra de Ouro & Definições (ALIVE 2026)",
+      "2. Pontos de Corte BHB por Espécie",
+      "3. eDKA Felina & Inibidores de SGLT2",
+      "4. BHB Sanguíneo POC vs Fita Urinária"
+    ]
+  },
+  {
+    "slug": "prostatite-caes-gatos",
+    "strip": [
+      "Todo cão macho inteiro com bacteriúria ou cistite bacteriana merece avaliação prostática — especialmente se a ITU recorre (Weese et al., 2019).",
+      "Prostatite aguda: NÃO massagear a próstata — risco de bacteremia e sepse (Kutzler, Merck 2025).",
+      "Urocultura negativa NÃO exclui prostatite — concordância urina × próstata foi de apenas 50% (Lea et al., 2022).",
+      "Escolher antimicrobiano pelo antibiograma urinário sem considerar penetração prostática favorece recidiva na forma crônica (Weese et al., 2019; Nelson & Couto, 2020).",
+      "Prostatite crônica + hiperplasia prostática benigna (BPH): tratar infecção E BPH — castração é fundamental no cão sem interesse reprodutivo (Weese et al., 2019; Kutzler, Merck 2025).",
+      "Enrofloxacina 10 mg/kg VO q24h é dose prática principal; Merck 2025 descreve 5 mg/kg q12h (mesma dose diária total) (Nelson & Couto, 2020; Allerton, BSAVA Formulary 2020).",
+      "NÃO usar ciprofloxacina como substituto da enrofloxacina no cão — biodisponibilidade imprevisível e penetração prostática inferior (Weese et al., 2019).",
+      "Duração: ≥4 semanas na aguda (ISCAID); 4–6 semanas na crônica (ISCAID), podendo chegar a 8–12 semanas se persistência ou abscesso (Kutzler, Merck 2025).",
+      "Abscesso prostático: avaliar drenagem percutânea ou cirúrgica + controle de foco — antimicrobiano isolado pode falhar (Weese et al., 2019; Lea et al., 2022).",
+      "Esterase prostática específica canina (CPSE) elevada indica doença prostática, não confirma prostatite nem distingue BPH de neoplasia (Melandri & Alonge, 2021).",
+      "Gato com próstata aumentada: prostatite é rara — priorizar neoplasia e abscesso no diferencial (Palmieri et al., 2022; Bloomfield et al., 2026).",
+      "Investigar Brucella canis em reprodutor, canil ou prostatite crônica refratária — zoonose ocupacional (Weese et al., 2019)."
+    ],
+    "pillars": [
+      "Aguda × crônica",
+      "Diagnóstico",
+      "Tratamento"
+    ]
+  },
+  {
+    "slug": "gengivoestomatite-cronica-felina",
+    "strip": [
+      "GECF não é gengivite — a inflamação ultrapassa a margem gengival e atinge mucosa alveolar, bucal e caudal (Lobprise et al., 2025; Soltero-Rivera et al., 2023).",
+      "Estomatite caudal (mucosite ulcerada/proliferativa caudal) é o achado mais característico (Lobprise et al., 2025; Soltero-Rivera et al., 2023).",
+      "Tratamento de 1ª linha: extração dentária ampla (PME/FME) + radiografia intraoral + analgesia (Lobprise et al., 2025; Jennings et al., 2015).",
+      "Ciclosporina (2,5 mg/kg q12h) é opção de 2ª linha para refratários pós-extração com suporte em RCT (Lommer, 2013).",
+      "Radiografias intraorais de boca inteira são OBRIGATÓRIAS para identificar raízes retidas e perda óssea (Lobprise et al., 2025).",
+      "Antibiótico NÃO é tratamento da GECF — melhora transitória possível, recidiva ao suspender; não substitui odontologia (Lobprise et al., 2025).",
+      "Corticosteroide de depósito (triamcinolona/depo-medrol) é refugio temporário com alta taxa de refratariedade secundária e efeitos adversos — não usar como 1ª linha (Soltero-Rivera et al., 2023).",
+      "Calicivírus felino (FCV) positivo por PCR ≠ diagnóstico de GECF — associação epidemiológica, não etiologia única (Soltero-Rivera et al., 2023).",
+      "Biopsiar lesões focais, assimétricas, endurecidas ou proliferativas — GECF e carcinoma de células escamosas (SCC) podem coexistir (Tsugawa et al., 2025).",
+      "Laser CO2 e células-tronco mesenquimais (MSC) são terapias adjuvantes/avançadas em centros especializados para refratários (Arzi et al., 2016)."
+    ],
+    "pillars": [
+      "Diagnóstico odontológico",
+      "PME × FME",
+      "Refratários"
+    ]
+  },
+  {
+    "slug": "doenca-periodontal-caes",
+    "strip": [
+      "Gengivite é inflamação reversível sem perda óssea/inserção; periodontite implica perda estrutural irreversível do periodonto.",
+      "A doença é impulsionada por disbiose do biofilme e destruição tecidual mediada pelo próprio hospedeiro (neutrófilos, MMPs, Th1/Th17, RANKL/OPG).",
+      "Tártaro visível não mede gravidade: dente limpo na coroa pode ocultar perda óssea subgengival grave; dente com muito cálculo pode ter periodonto preservado.",
+      "Exame acordado é apenas triagem (apenas 41,57% de concordância com o padrão ouro); estadiamento exige anestesia geral, intubação, sondagem 6 pontos/dente e radiografias de boca inteira.",
+      "Limpeza dentária sem anestesia é clinicamente inadequada pois impede sondagem subgengival, radiografia, analgesia e proteção das vias aéreas.",
+      "Profundidade normal do sulco periodontal no cão é de 0 a 3 mm; avaliar sempre juntamente com a recessão gengival para calcular a perda total de inserção (CAL).",
+      "Estadiamento AVDC por dente: PD0 (normal), PD1 (gengivite), PD2 (<25% perda / F1), PD3 (25–50% perda / F2), PD4 (>50% perda / F3).",
+      "Antibiótico NÃO é tratamento primário da doença periodontal: não remove biofilme nem restaura inserção; reservado a infecções profundas, osteomielite ou imunossupressão.",
+      "Cães de pequeno porte (toy/miniature) têm risco substancialmente maior (até 5× maior em cães <6,5 kg) e alto risco de fratura mandibular patológica nos molares/caninos.",
+      "A escovação dentária diária é o padrão-ouro de home care mecânico; produtos VOHC são auxiliares e não substituem debridamento profissional."
+    ],
+    "pillars": [
+      "Modelo da Disbiose",
+      "Triagem vs Estadiamento",
+      "Stewardship Antimicrobiano"
+    ]
+  },
+  {
+    "slug": "doenca-periodontal-gatos",
+    "strip": [
+      "A profundidade fisiológica do sulco periodontal no gato é de 0 a 1 mm (0,5 a 1 mm na prática clínica); sondagem ≥1 mm com sangramento ou recessão aponta patologia.",
+      "Gatos mascaram ativamente a dor oral: comer normalmente não exclui doença periodontal avançada ou lesões dolorosas.",
+      "NÃO CONFUNDIR: Periodontite (origem no biofilme/sulco) ≠ Tooth Resorption (destruição odontoclástica) ≠ FCGS (mucosite ulcerosa caudal/linfoplasmocitária).",
+      "Exame visual no gato acordado é apenas triagem; radiografias intraorais de boca inteira revelam lesões ocultas em 42% dos dentes felinos aparentemente normais.",
+      "Gengivite severa em gatos jovens deve levantar suspeita de doença periodontal de início precoce (Early-Onset Periodontitis), que exige radiografias aos 6 meses.",
+      "Dente ausente ao exame visual exige radiografia obrigatória para descartar raízes retidas (presentes em até 92,8% dos gatos pós-extração sem RX) ou reabsorções.",
+      "Antibiótico não substitui debridamento subgengival mecânico ou extrações e não deve ser prescrito rotineiramente por halitose isolada ou gengivite.",
+      "Estadiamento AVDC por dente: PD0 (normal), PD1 (gengivite), PD2 (<25% perda / F1), PD3 (25–50% perda / F2), PD4 (>50% perda / F3).",
+      "A associação entre periodontite e doença renal crônica (DRC) em gatos é observacional e dose-dependente, sem prova de causalidade direta.",
+      "Escovação diária é o método mecânico ideal de home care quando tolerada; dietas e produtos VOHC para gatos são alternativas adjuvantes."
+    ],
+    "pillars": [
+      "Tríade de Diferenciação Felina",
+      "Dor Felina Silenciosa",
+      "Raízes Retidas e RX Obrigatório"
+    ]
+  },
+  {
+    "slug": "dermatite-atopica-canina",
+    "strip": [
+      "Diagnóstico de Exclusão: Não existe exame de sangue que comprove atopia. IDT e IgE sérica servem para formular ASIT, não para diagnosticar (1,2).",
+      "Alertas de Exacerbação: Piora súbita exige citologia cutânea/auricular e pente de pulga; infecções secundárias por Staph e Malassezia são os maiores vilões (1,3,6,7).",
+      "Antipruriginoso Não Trata Infecção: Controlar IL-31/JAK alivia o prurido, mas a piodermite ou malasseziose exige tratamento específico em paralelo (1,3,6,7).",
+      "Ciclosporina e ASIT Não São Resgate: A ciclosporina exige 4 a 6 semanas e a ASIT de 6 a 12 meses para demonstrar eficácia máxima (1,3,14,15).",
+      "Critérios de Favrot: Início <3 anos, cão indoor, prurido responsivo a esteroides, lesão inicial ausente, patas anteriores e orelhas afetadas (1,4).",
+      "Oclacitinib (Apoquel®): 0,4–0,6 mg/kg PO q12h por até 14 dias → q24h em cães ≥12 meses. Início de ação em poucas horas (8,9).",
+      "Ilunocitinib (Zenrelia®): 0,6–0,8 mg/kg PO q24h (≥12m). Alerta vacinal FDA: suspender 28d a 3 meses antes da vacinação e não vacinar durante o uso (11,12).",
+      "Atinvicitinib (Numelvi®): 0,8–1,2 mg/kg PO q24h COM ALIMENTO em cães ≥6 meses (aprovação FDA 2026) (13).",
+      "Lokivetmab (Cytopoint®): Anticorpo monoclonal anti-IL-31 canino ≥2 mg/kg SC q4–8 sem (10). Início em 1–3 dias (10). NUNCA USAR EM GATOS (10).",
+      "ISCAID 2025 Piodermite: Citologia prévia obrigatória. Terapia tópica (clorexidina/miconazol) é primeira escolha para piodermite superficial (6,7)."
+    ],
+    "pillars": [
+      "Barreira & Disbiose",
+      "Eixo IL-31 & Vias JAK",
+      "Manejo Estruturado de Crises"
+    ]
+  },
+  {
+    "slug": "sindrome-cutanea-atopica-felina",
+    "strip": [
+      "Nomenclatura Oficial ICADA: Denominada Síndrome Cutânea Atópica Felina (FASS), parte da Síndrome Atópica Felina (FAS) (1,16,17).",
+      "Os 4 Padrões Reacionais: 1) Alopecia autoinduzida; 2) Dermatite miliar; 3) Complexo granuloma eosinofílico; 4) Escoriações de cabeça/pescoço (1,17).",
+      "Padrão Não É Diagnóstico: NENHUM padrão confirma FASS isoladamente. DAPP, alimento, Demodex gatoi e dermatofitose geram lesões idênticas (1,17).",
+      "Auto-lambeção Escondida: O gato coça e arranca pelos à noite e escondido. Ausência de relato de coceira pelo tutor não exclui prurido (1,17).",
+      "Diagnóstico Por Exclusão: Excluir pulgas, ectoparasitas (D. gatoi/Notoedres), infecções fúngicas/bacterianas e alergia alimentar (dieta + desafio) (1,17).",
+      "Crise Aguda Felina: Prednisolona oral 1 mg/kg q12–24h (1). Usar PREDNISOLONA em vez de prednisona devido à conversão hepática felina reduzida (1).",
+      "Manutenção Preferida: Ciclosporina modificada (Atopica® Gatos) 7 mg/kg PO q24h por ≥4–6 semanas → desmame para q48h e 2×/semana (~75% dos gatos) (19).",
+      "PROIBIDO EM GATOS: Lokivetmab (Cytopoint®) é anticorpo caninizado para IL-31 canina — NUNCA APLICAR EM FELINOS (10).",
+      "Oclacitinib no Gato (Fora da Bula): Evidência limitada (Mueller 2021). ~1 mg/kg PO q12–24h em refratários. Atenção a risco de toxoplasmose (18,20).",
+      "Cuidado Imunossupressor: Testar FeLV/FIV e evitar carne crua/caça (risco de toxoplasmose sistêmica durante uso de ciclosporina) (19)."
+    ],
+    "pillars": [
+      "Os 4 Padrões Reacionais Felinos",
+      "Imunoterapia & Terapia Sistêmica",
+      "Vigilância Imunológica"
+    ]
+  },
+  {
+    "slug": "doenca-do-disco-intervertebral-caes",
+    "strip": [
+      "🚨 EMERGÊNCIA NEUROLÓGICA: Piora rápida, perda de deambulação, paraplegia, tetraplegia, hipoventilação ou perda de nocicepção profunda exigem avaliação neurológica e imagem imediata (2,4,5,6).",
+      "NOCICEPÇÃO PROFUNDA ≠ REFLEXO DE RETIRADA: A puxada do membro é um arco reflexo espinhal segmentar. Percepção consciente de dor exige resposta comportamental (virar a cabeça, vocalizar) (5).",
+      "REGRA DOS 24/48 HORAS É MITO: O Consenso ACVIM 2022 reafirma que a ausência de dor profunda por mais de 48h não elimina a indicação nem a chance de recuperação cirúrgica (2,3).",
+      "GENÉTICA 12-FGF4RG (CDDY): A degeneração precoce discal é fortemente ligada ao retrogene FGF4 no cromossomo 12 (CDDY); a mutação no cromossomo 18 isolada não causa a doença discal (1,7,8).",
+      "ACVIM 2022 — CORTICOIDES NÃO SÃO NEUROPROETORES: Uso rotineiro de corticoides como neuroprotetor não é recomendado e eleva o risco de complicações gastrointestinais (2,3,16).",
+      "PROIBIDO COMBINAR AINE + CORTICOIDE: A associação aumenta severamente o risco de úlceração e perfuração gastrointestinal (2,14,15).",
+      "RADIOGRAFIA SIMPLES NÃO BASTA: O RX simples não avalia a medula nem mede a compressão medular (acurácia 51–61%); não serve para planejar cirurgia isoladamente (2,5).",
+      "RESSONÂNCIA MAGNÉTICA É O PADRÃO OURO: Sensibilidade >98,5% para extrusão discal toracolombar (TL-IVDE) e superior na diferenciação de ANNPE, HNPE, tumores e mielite (2,3).",
+      "ALERTA DE MIELOMALÁCIA PROGRESSIVA: Ocorre em 11–17,5% dos cães paraplégicos graves sem dor profunda. Sinalizada por subida do reflexo cutâneo do tronco, flacidez e perda anal (1,2,4,6).",
+      "SCHIFF-SHERRINGTON NÃO É LESÃO CERVICAL: Extensão rígida dos membros torácicos decorre da perda de inibição de border cells lombares por lesão T3-L3 grave; não dita prognóstico isoladamente (1,5)."
+    ],
+    "pillars": [
+      "Genética & Hansen Tipo I vs II",
+      "Graduação Neurológica & Prognóstico",
+      "Consenso ACVIM 2022 & Terapias"
+    ]
+  },
+  {
+    "slug": "doenca-do-disco-intervertebral-gatos",
+    "strip": [
+      "⚠️ NÃO EXTRAPOLAR O CONSENSO CANINO ACVIM 2022: O consenso foi formulado especificamente para cães com TL-IVDE. A literatura felina baseia-se em estudos retrospectivos com populações reduzidas (1F,2,9,10).",
+      "EVIDÊNCIA FELINA LIMITADA: A DDIV em gatos é menos frequente (0,02% a 0,12%). A presença de protrusão em imagem de gato idoso é frequentemente achado incidental (1F,4,10).",
+      "DESPERTA RESPEITO DE NEUROLOCALIZAÇÃO: Gatos mascaram dor e déficits leves. Relutância em saltar, cauda baixa e constipação costumam sinalizar doença lombossacra (4,10).",
+      "MIMETIZADORES FELINOS PRIORITÁRIOS: Antes de indicar cirurgia discal, excluir Linfoma Espinhal, Peritonite Infecciosa Felina (PIF), Meningomielite bacteriana/protozoária e Embolia Fibrocartilaginosa (FCE) por RM (1F,4).",
+      "FAIXA ETÁRIA TÍPICA: Hansen I afeta gatos de meia-idade (média 9 anos; variação 1,5–17 anos); lesões lombossacras afetam felinos ainda mais idosos (~12 anos) (4,10).",
+      "ANNPE FELINA: Extrusão hiperaguda não compressiva durante salto/exercício. Pouca dor pós-inicial, déficit assimétrico e sem compressão residual na RM. Tratar com suporte e fisioterapia (11).",
+      "GABAPENTINA FELINA: Dose inicial 5–10 mg/kg PO q8–12h (14,15). Como a depuração é predominantemente renal, atentar para sedação excessiva em felinos com Doença Renal Crônica (DRC) (14,15).",
+      "AINES EM GATOS: Utilizar exclusivamente produtos com indicação e registro felino local (ex: meloxicam em dose única ou robenacoxib), sob rigorosa checagem de hidratação e função renal (14,15).",
+      "DESCOMPRESSÃO CIRÚRGICA FELINA: Hemilaminectomia para lesões toracolombares/lombares ou Ventral Slot para lesões cervicais. Estudos de 2022 apontam prognóstico favorável quando a dor profunda é preservada (9,19).",
+      "BEXIGA NEUROGÊNICA FELINA: Avaliar tono e palpar a bexiga. Evitar manipulação brusca devido ao risco de rotura vesical sob grande tensão (1F,4)."
+    ],
+    "pillars": [
+      "Epidemiologia & Biomecânica Felina",
+      "Diagnósticos Diferenciais Críticos",
+      "Farmacologia & Prognóstico"
+    ]
+  },
+  {
+    "slug": "coagulacao-intravascular-disseminada-caes-gatos",
+    "strip": [
+      "CID é sempre secundária: diagnosticar e eliminar o gatilho sistêmico subjacente é a única terapia verdadeiramente curativa.",
+      "Fenótipo paradoxal: o paciente está primariamente trombosando a microcirculação e, devido ao consumo de substratos, pode sangrar.",
+      "Ausência de sangramento NÃO descarta CID: na sepse com PAI-1 alto a fibrinólise é suprimida e predomina microtrombose com MODS.",
+      "PT e aPTT normais não excluem fase precoce: o coagulograma comum avalia plasma estático e não detecta geração endotelial de trombina.",
+      "Fibrinogênio é reagente de fase aguda: concentrações \"normais\" em pacientes sépticos ou inflamados mascaram consumo ativo massivo.",
+      "D-dímero elevado comprova clivagem de fibrina estabilizada, mas não confirma CID isoladamente (baixa especificidade; VPP felino de apenas 33%).",
+      "Gatos raramente apresentam CID hemorrágica clássica: suspeite em neoplasias (linfoma), hepatopatias/lipidose, PIF e sepse (Estrin et al., 2006).",
+      "Transfusão fenotípica: FFP (10–15 mL/kg em cães; 6–10 mL/kg em gatos) repõe fatores e antitrombina; plasma não \"joga lenha na fogueira\".",
+      "Heparina depende de antitrombina (AT): ineficaz se AT estiver exaurida; contraindicada na CID hemorrágica manifesta e nunca pré-incubada com plasma."
+    ],
+    "pillars": [
+      "Condição estritamente secundária",
+      "Bifurcação fenotípica fibrinolítica",
+      "Painel de 6 marcadores seriados",
+      "Conduta fenotípica sem dogmas"
+    ]
+  },
+  {
+    "slug": "sindrome-mielodisplasica-caes-gatos",
+    "strip": [
+      "Paradoxo central da MDS: medula óssea normo a hipercelular contrastando com bicitopenia ou pancitopenia no sangue periférico.",
+      "Ver displasia citológica NÃO confirma MDS: a dismielopoiese secundária a fármacos, sepse ou causas imunomediadas é duas vezes mais frequente.",
+      "Ausência de blasts no hemograma NÃO exclui a doença: 76% dos cães com MDS comprovada não apresentam blastos circulantes no sangue.",
+      "Fronteira taxonômica de 20%: a proporção de blastos medulares inferior a 20% separa a MDS da leucemia mieloide aguda (AML) na medicina moderna.",
+      "Gatos citopênicos: testagem sorológica e por PCR para FeLV é mandatória (associação histórica em mais de 80% das séries felinas).",
+      "Aspirado e core biopsy em conjunto: o aspirado detalha morfologia e contagem de blasts; a biópsia define celularidade real e descarta mielofibrose.",
+      "Transfusão guiada por clínica: indicar concentrado de hemácias pela hipóxia celular, taquicardia e lactato (>2,5 mmol/L), não apenas pelo hematócrito.",
+      "Neutropenia associada a febre é emergência crítica: barreira mucosa rompida exige antibioticoterapia bactericida intravenosa imediata.",
+      "Prognóstico canino contemporâneo: cães com MDS têm sobrevida mediana de 384 dias (Meredith et al., 2025), contra meros 6 dias observados na AML."
+    ],
+    "pillars": [
+      "Paradoxo de produção ineficaz",
+      "Dismielopoiese secundária vs MDS",
+      "Fronteira prática de 20% de blasts",
+      "Suporte clínico e quimioterapia seletiva"
+    ]
+  },
+  {
+    "slug": "linfoma-cutaneo-caes-gatos",
+    "strip": [
+      "Heterogeneidade biológica: linfoma cutâneo não é uma doença única; epiteliotropismo e linhagem T versus B mudam o tratamento.",
+      "Prurido não exclui neoplasia: quebra de barreira cutânea e piodermite secundária causam prurido intenso e resposta enganosa ao corticoide.",
+      "Dermatite de interface citotóxica: a variante de Smith et al. (2026) mimetiza perfeitamente eritema multiforme e lúpus eritematoso.",
+      "Padrão ouro é biópsia representativa: coletar pelo menos 3 lesões primárias com punch de 6 a 8 mm, evitando apenas o centro necrótico.",
+      "Suspender corticoide antes da biópsia: idealmente interromper por 2 a 3 semanas para não mascarar a celularidade neoplásica por apoptose.",
+      "Imuno-histoquímica combinada: 97% dos eCTCL caninos são CD3+; atentar que até 54% dos clones T caninos exibem reatividade cruzada para CD20.",
+      "PARR não é atalho diagnóstico: clonalidade reforça suspeita mas ocorre em inflamações intensas; policlonalidade não exclui linfoma.",
+      "Localização guia sobrevida: doença cutânea difusa tem sobrevida mediana de 130 dias vs 491 dias em formas mucocutâneas (Chan et al., 2018).",
+      "CCNU é a base sistêmica canina: taxa de resposta de 83% com mediana de 94 dias; exige monitoramento de ALT e neutropenia a cada ciclo.",
+      "Particularidades felinas: atentar para linfoma tarsal, lesões associadas a sítios de injeção e diferenciação de linfocitose cutânea indolente."
+    ],
+    "pillars": [
+      "Epiteliotrópico vs Não Epiteliotrópico",
+      "Variante Citotóxica de Interface (2026)",
+      "PARR e Limites da Clonabilidade",
+      "Conduta Terapêutica Estratificada"
+    ]
+  },
+  {
+    "slug": "megacolon-caes-gatos",
+    "strip": [
+      "Diferenciação conceitual: constipação é reversível, obstipação exige intervenção e megacólon envolve dilatação com perda motora irreversível.",
+      "Gato vs Cão: no gato o megacólon idiopático é comum e primário; no cão a dilatação é quase sempre secundária e tratável sem cirurgia.",
+      "Bexiga antes de cólon: em felinos machos com esforço na caixa, palpar a vesícula urinária imediatamente para afastar obstrução uretral.",
+      "MCD/L5 radiográfico: em gatos, razão >1,48 apoia forte suspeita de megacólon (Se 77%, Sp 85%), mas não define isoladamente colectomia.",
+      "Proibição absoluta de fosfato: enemas contendo fosfato de sódio em gatos causam hiperfosfatemia fulminante, hipocalcemia e óbito.",
+      "Primeiro hidrate, depois empurre: enemas e laxantes sem reposição hidroeletrolítica agravam desidratação e lesão renal aguda.",
+      "PEG 3350 titulado: laxante osmótico seguro para manutenção (~1,5 a 3 g/dia em pó VO) e desimpactação hospitalar por sonda (6–10 mL/kg/h).",
+      "Cisaprida com critério: agonista 5-HT4 colônico de escolha (2,5–5 mg/gato BID), mas contraindicado na vigência de obstrução fecal sólida mecânica.",
+      "Mito da fibra alimentar: fibra insolúvel piora o paciente em atonia colônica; megacólon hipomotil avançado exige dieta de baixo resíduo.",
+      "Colectomia subtotal planejada: indicada para obstipação refratária recorrente; preservação da junção ileocecocólica previne fezes líquidas crônicas."
+    ],
+    "pillars": [
+      "Espécies e Comportamento Biológico",
+      "Métrica Radiográfica MCD/L5",
+      "Eixo Farmacológico Racional",
+      "Paradoxo da Fibra na Atonia"
+    ]
+  },
+  {
+    "slug": "linfoma-mediastinal-caes-gatos",
+    "strip": [
+      "Emergência respiratória: oxigenioterapia e toracocentese imediata com mínimo estresse antes de qualquer radiografia forçada.",
+      "Quimiossensibilidade vs Cirurgia: linfoma mediastinal é doença sistêmica tratada com quimioterapia; toracotomia ressectiva primária é contraindicada.",
+      "Cuidado com corticoide prévio: prednisona ou dexametasona antes da punção induz citólise rápida, mascara o diagnóstico e seleciona clones resistentes por glicoproteína P.",
+      "Cão com massa cranial: 95,6% são de células T e 69,1% cursam com hipercalcemia de malignidade sintomática com PU/PD (Machado et al., 2026).",
+      "Gato e FeLV: infecção retroviral continua fator etiológico clássico, mas coortes contemporâneas mostram alta proporção de gatos FeLV-negativos (Fabrizio et al., 2014).",
+      "Armadilha CD4+CD8+ no Gato: 67% dos linfomas felinos expressam dupla positividade; não use a regra canina de timoma para felinos (Bernardi et al., 2020).",
+      "Síndrome da veia cava cranial: compressão vascular venosa torácica gera edema em cabeça, pescoço e membros torácicos (síndrome precaval).",
+      "Lise tumoral aguda: massas volumosas altamente quimiossensíveis exigem pré-hidratação vigorosa e controle rigoroso de K, P e Ca nas primeiras 48h.",
+      "Protocolo de indução: CHOP (Madison-Wisconsin) continua padrão de referência; protocolos com lomustina (LOP/LOPP) são alternativas em T-cell com atenção à hepatotoxicidade.",
+      "Profundidade da resposta felina: gatos que atingem remissão completa apresentam mediana de sobrevida de 980 dias vs apenas 42 dias na remissão parcial (Fabrizio et al., 2014)."
+    ],
+    "pillars": [
+      "Biologia Celular e a Grande Encruzilhada: Linfoma vs Timoma",
+      "Fisiopatogenia Mecânica, Efusão Pleural e Síndrome Precaval",
+      "Eixo Paraneoplásico: Hipercalcemia de Malignidade e PTHrP",
+      "Pilares Farmacológicos: Quimioterapia Multiagente e Segurança"
+    ]
+  },
+  {
+    "slug": "piotorax-caes-gatos",
+    "strip": [
+      "Toracocentese antes de radiografia: Em paciente com dispneia restritiva grave e sons abafados ventralmente, o decúbito e estresse da radiografia podem desencadear parada cardiorrespiratória por colapso ventilatório. Drene primeiro, estabilize e radiografe depois.",
+      "Piotórax é infecção de espaço fechado: O antibiótico sistêmico não penetra eficazmente em lojas de pus espesso, fibrina e tecido necrótico. O controle mecânico de foco com drenagem ampla é tão vital quanto o antimicrobiano.",
+      "Bactéria intracelular em neutrófilo degenerado é o marco confirmatório: Presença inquestionável de fagocitose ativa in vivo. Bactéria extracelular isolada pode ser contaminação; contudo, ausência de bactéria visível NÃO descarta piotórax (Johnson 2023; Sim 2021).",
+      "Cultura negativa NÃO exclui piotórax: Antibioticoterapia prévia, anaeróbios estritos suscetíveis ao oxigênio ambiente ou patógenos fastidiosos (Actinomyces, Nocardia) geram altas taxas de falso-negativo. Mantenha cobertura empírica de 4 quadrantes.",
+      "Gatos são polimicrobianos e anaeróbios: Ao contrário do antigo mito idiopático, Johnson et al. (2023) demonstraram trauma penetrante em ~76% e 73% de isolados anaeróbios (Fusobacterium, Prevotella, Bacteroides, Clostridium). Fluoroquinolona isolada é conduta errônea.",
+      "Cães exigem busca ativa de corpo estranho vegetal migratório: Espiguetas e gramíneas transmitem infecção pleural e piogranulomas. Se houver falha de resposta, derrame loculado ou pneumotórax associado, TC contrastada de urgência e intervenção cirúrgica são prioritárias (Eiras-Diaz 2021).",
+      "Dreno torácico 6 F wire-guided é seguro e altamente eficaz em felinos: Heier et al. (2022) comprovaram taxa de complicação de apenas 4% e sobrevida de 94% em 1 ano com dreno fino bem conduzido, desmistificando a obrigatoriedade de drenos calibrosos traumáticos.",
+      "Lavagem pleural com cristalóide isotônico aquecido (10 a 20 mL/kg): Deve-se recuperar obrigatoriamente ≥ 75% do volume infundido. Não adicione antibióticos intrapleurais (contraindicado pela ISCAID) nem heparina rotineira.",
+      "Enrofloxacina em gatos tem teto estrito de 5 mg/kg/dia: Doses elevadas (≥ 15-20 mg/kg) causam degeneração retiniana aguda difusa e cegueira irreversível mediada por acúmulo retiniano em felinos.",
+      "Duração da antibioticoterapia exige 3 a 6 semanas e transição oral planejada: Desescalonar para amoxicilina com clavulanato após controle de foco e resolução citológica, monitorando estritamente para prevenir recidivas crônicas."
+    ],
+    "pillars": [
+      "Fisiopatologia de Espaço Fechado e Restrição Pleural",
+      "Emergência na Admissão: Toracocentese Pré-Radiográfica",
+      "Controle Mecânico de Foco (Source Control) e Lavagem Pleural",
+      "Antimicrobianoterapia Racional de Quatro Quadrantes e Suporte Séptico"
+    ]
+  },
+  {
+    "slug": "quilotorax-caes-gatos",
+    "strip": [
+      "Toracocentese antes da radiografia: Em gato com padrão respiratório restritivo e sons abafados ventralmente, o estresse da contenção para raio-X pode desencadear parada cardiorrespiratória imediata. Drene primeiro, estabilize e investigue depois.",
+      "Líquido branco-leitoso NÃO fecha diagnóstico de quilotórax: Derrames purulentos ou neoplásicos podem parecer leitosos, e gatos em jejum prolongado podem apresentar quilo translúcido. Confirme comparando TG pleural e sérico.",
+      "Triglicerídeos pleurais maiores que no soro (TGpleural > TGsérico) é a regra diagnóstica definitiva: A relação colesterol:triglicerídeo < 1 falha em gatos, apresentando até 50% de falsos positivos em derrames não quilosos (Waddle & Giger).",
+      "Ecocardiograma é obrigatório em todo gato com quilotórax: Severac et al. (2026) demonstraram causa cardíaca em 57% dos gatos com quilotórax (LA:Ao mediano 2,4 vs < 1,4), quebrando o dogma de que a maioria é idiopática.",
+      "Linfoma mediastinal é o grande diferencial oncológico: Withrow relata efusão pleural em ~50% dos linfomas mediastinais felinos, frequentemente quiloso por compressão do ducto torácico e veia cava cranial.",
+      "Furosemida NÃO seca quilo: Diuréticos são indicados apenas se houver insuficiência cardíaca congestiva comprovada com aumento de pressões de enchimento; não substituem a descompressão mecânica do tórax.",
+      "Drenagens repetidas causam hiponatremia, hipercalemia e caquexia: A perda crônica de quilo esgota proteínas, linfócitos e eletrólitos; monitore peso, albumina e Na+/K+ seriadamente em pacientes sob drenagens frequentes.",
+      "Cuidado com a pleurite fibrosante restritiva: A inflamação crônica pelo quilo deposita fibrina e fibrose visceral que aprisiona o pulmão em casca inexpansível; suspeite se a dispneia persistir após drenagem total e pulmões permanecerem arredondados.",
+      "Rutina tem evidência científica muito fraca: Dose clássica de 50 a 100 mg/kg VO TID apoia-se em série de apenas 4 gatos sem grupo controle (Thompson 1999); não atrase intervenções etiológicas ou cirúrgicas confiando na rutina.",
+      "Cirurgia precoce supera a espera cega de 3 meses: A revisão de Reeves et al. (2020) não sustenta terapia clínica prolongada; encaminhe para ligadura do ducto torácico (TDL) precocemente antes que ocorra pleurite fibrosante irreversível."
+    ],
+    "pillars": [
+      "Quebra de Paradigma Etiológico em Felinos",
+      "Emergência na Admissão: Regra Hands-Off e Descompressão",
+      "Diagnóstico Bioquímico Padrão Ouro",
+      "Cirurgia Precoce e Prevenção de Pleurite Fibrosante"
+    ]
+  },
+  {
+    "slug": "cistite-enfisematosa-caes-gatos",
+    "strip": [
+      "Confirmar a presença real de gás por imagem antes de instrumentar a via uretral para evitar falsos diagnósticos induzidos por cateterismo iatrogênico.",
+      "Nunca presumir que cistite enfisematosa ocorre exclusivamente em diabéticos: estase urinária, bexiga neurogênica, cistólitos e imunossupressão respondem por parcela expressiva.",
+      "Escherichia coli é o patógeno isolado em aproximadamente 68% dos pacientes caninos e felinos descritos na literatura.",
+      "A ultrassonografia vesical revela interface hiperecogênica irregular com sombra acústica suja e reverberação distal (ring-down / comet-tail artifact).",
+      "Gás intraluminal isolado sem gás intramural é compatível com CE infecciosa (representando cerca de 23% dos casos), mas exige exclusão rigorosa de cateterismo e fístulas.",
+      "Breakpoint urinário em urocultura pode enganar na infecção profunda da parede: amoxicilina com clavulanato requer cautela em lesões transmurais com invasão tecidual bacteriana.",
+      "Fluoroquinolonas não devem ser prescritas de forma empírica e automática sem indicação de acometimento tecidual profundo ou teste de sensibilidade formal.",
+      "Em gatos, dose cumulativa de enrofloxacina não deve ultrapassar 5 mg/kg/dia devido ao risco documentado de degeneração retiniana irreversível e cegueira aguda.",
+      "Investigar obrigatoriamente extensão extravesical e acometimento renal superior (pielonefrite enfisematosa) em pacientes com dor lombar, febre ou azotemia.",
+      "O desfecho clínico favorável atinge cerca de 79% dos casos tratados clinicamente, desde que o ambiente propício e a doença de base sejam rigorosamente controlados."
+    ],
+    "pillars": [
+      "Microbiologia e Fermentação",
+      "Ambiente do Hospedeiro e Estase",
+      "Diagnóstico por Imagem e Triagem",
+      "Terapia Direcionada e Controle de Base"
+    ]
+  },
+  {
+    "slug": "trombocitopenia-caes-gatos",
+    "strip": [
+      "Regra número 1 inviolável: antes de qualquer conduta terapêutica agressiva, confirme a contagem real avaliando o esfregaço sanguíneo para descartar pseudotrombocitopenia por grumos em EDTA (presente em até 71% dos gatos).",
+      "Não confunda macroplaquetopenia assintomática racial de Cavalier King Charles Spaniels (mutação no gene TUBB1) com doença: esses cães têm plaquetas gigantes funcionais, massa plaquetária total normal e nunca devem receber imunossupressão.",
+      "Separe imediatamente trombocitopenia isolada de citopenias múltiplas: plaquetopenia isolada aponta fortemente para ITP ou consumo inicial; bicitopenia ou pancitopenia exige investigação prioritária de medula óssea.",
+      "Diferenciação mandatória entre ITP e CID: na ITP isolada, os tempos de coagulação (PT e aPTT) e fibrinogênio são rigorosamente normais; tempos prolongados associados a D-dímeros elevados e esquizócitos indicam consumo microvascular por coagulopatia de consumo.",
+      "Intensidade numérica orienta prioridade: contagens <20.000 a 30.000/uL elevam exponencialmente o risco de hemorragia espontânea primária; contagens entre 50.000 e 100.000/uL raramente sangram de forma espontânea sem trauma ou coagulopatia associada.",
+      "Hemorragia gastrointestinal (melena) e elevação de nitrogênio ureico sanguíneo (BUN/ureia) desproporcional à creatinina são os marcadores clínicos mais fortes de mortalidade hospitalar em cães com ITP (O'Marra et al., 2011).",
+      "Protocolo contemporâneo ACVIM para ITP canina hemorrágica: iniciar prednisona a 2 mg/kg/dia VO associada a vincristina 0,02 mg/kg IV dose única lenta, acelerando a subida de plaquetas de 5 para 2,5 a 3 dias.",
+      "Vincristina não é recomendada de rotina para ITP felina, e a azatioprina é FORMALMENTE CONTRAINDICADA EM GATOS pelo risco de aplasia medular fulminante fatal.",
+      "Plasma fresco congelado (PFC) NÃO trata trombocitopenia isolada; transfusão de concentrado de plaquetas é estritamente indicada para hemorragia ativa com risco de morte (SNC, pulmão ou choque hemorrágico grave).",
+      "Manejo de enfermagem hands-off rigoroso: proibir venopunção jugular, evitar injeções intramusculares e cistocentese, adotar repouso absoluto em gaiola estofada e realizar compressão prolongada (>5 minutos) em sítios venosos periféricos."
+    ],
+    "pillars": [
+      "Fisiopatologia e Mecanismos Centrais",
+      "Reconhecimento Clínico e Escore DOGiBAT",
+      "Terapêutica Racional e Evidências ACVIM"
+    ]
+  },
+  {
+    "slug": "anemia-caes-gatos",
+    "strip": [
+      "Regra de ouro inicial: anemia não é uma doença primária, mas sim uma síndrome funcional que exige a identificação precisa de seu mecanismo etiopatogênico subjacente.",
+      "A equação fundamental do DO2 (DO2 = Débito Cardíaco x CaO2) dita que o oxigênio suplementar apenas satura a hemoglobina existente; ele não corrige o déficit de transporte de O2 em anemias graves descompensadas.",
+      "Hemorragia aguda grave pode cursar com hematócrito inicial normal: a proporção entre plasma e eritrócitos perdidos é idêntica e a contração esplênica canina mascara a queda real até a ocorrência de fluidoterapia ou influxo intersticial.",
+      "Nunca transfundir apenas um número: animais com anemia crônica desenvolvem compensações cardiovasculares e desvio da curva de dissociação da hemoglobina, tolerando hematócritos de 10% a 12%, enquanto pacientes agudos com HCT de 20% podem entrar em choque hipóxico fatal.",
+      "A contagem absoluta de reticulócitos é o indicador padrão ouro da resposta medular: índices eritrocitários (MCV aumentado e MCHC diminuído) possuem apenas 9,8% de sensibilidade para detectar regeneração em cães (estudo de 2024).",
+      "Atraso fisiológico na regeneração: a medula óssea necessita de 48 a 96 horas para liberar reticulócitos na circulação; hemorragias ou hemólises agudas com menos de 2 a 4 dias de evolução apresentam-se obrigatoriamente como pré-regenerativas.",
+      "Peculiaridade felina dos reticulócitos: quantifique estritamente os reticulócitos agregados (>50.000/uL) para avaliar regeneração ativa; reticulócitos punctates refletem memória eritropoiética de semanas anteriores.",
+      "Ferro não trata anemia genérica: a administração de ferro é restrita e específica para deficiência comprovada de ferro; na anemia de inflamação, o ferro corporal é abundante, porém sequestrado pela hepcidina.",
+      "O diagnóstico de IMHA jamais se apoia em teste isolado: o consenso ACVIM 2019 exige a convergência de pelo menos dois marcadores de mecanismo imunomediado com pelo menos um marcador de hemólise ativa.",
+      "Compatibilidade transfusional felina inviolável: gatos possuem aloanticorpos naturais pré-formados potentes; a transfusão de sangue tipo A em um gato receptor tipo B resulta em hemólise intravascular fulminante e óbito imediato mesmo com volumes de 1 mL.",
+      "Diretrizes IRIS 2026 para DRC: limiar para considerar intervenção na anemia renal estabelecido em HCT <30% em cães e <25% em gatos, com validação pioneira de darbepoetina e do HIF-PHI molidustat (estudo RCT de 2026)."
+    ],
+    "pillars": [
+      "Pilar 1: Fisiologia do DO2 e Gravidade Hemodinâmica",
+      "Pilar 2: Eixo Medular e Cinética de Regeneração",
+      "Pilar 3: As Três Vias Etiopatogênicas Fundamentais",
+      "Pilar 4: Hemoterapia e Conduta Farmacológica Racional"
+    ]
+  },
+  {
+    "slug": "leishmaniose-caes-gatos",
+    "strip": [
+      "Mudança conceitual do CLWG 2026: infecção não é igual a doença ativa; nunca tratar apenas com base em sorologia positiva isolada sem evidência de doença atribuível.",
+      "Classificação CLWG 2026: Classe A (soropositivo não infectado, não tratar); Classe B (infectado subclínico, não tratar); Classe C (doente, tratar); Classe D (gravemente doente com lesão orgânica, tratar e suporte intensivo).",
+      "O rim é o órgão prognosticamente mais crítico: a deposição de imunocomplexos causa glomerulonefrite com proteinúria glomerular antes da elevação da creatinina; quantificar o UPC é obrigatório.",
+      "Biomarcadores renais precoces: estudo recente (Peris-Grau et al. 2026) valida uNGAL e uGGT urinários como preditores precoces de dano tubular na leishmaniose canina.",
+      "Diagnóstico confirmatório padrão ouro: demonstração citológica direta de amastigotas intracelulares em macrófagos de linfonodos, medula óssea ou lesões cutâneas.",
+      "Divergência terapêutica WAVD 2025 x CLWG 2026: CLWG prioriza Antimoniato + Alopurinol como primeira escolha e coloca Miltefosina como alternativa; WAVD 2025 considera ambos equivalentes.",
+      "Legislação brasileira estrita: Portaria Interministerial proíbe o uso de medicamentos humanos (antimoniato humano e anfotericina B) em cães; a Miltefosina veterinária registrada (Milteforan) é a droga leishmanicida oficial no Brasil.",
+      "Manejo do Alopurinol: fármaco leishmaniostático indispensável (10 mg/kg BID), porém causador de xantinúria e urólitos radiotransparentes de xantina; exige sedimento urinário e ultrassom seriados e transição para dieta hipopurínica.",
+      "Corticoides na leishmaniose: contraindicados para uso empírico cego por risco de reativação parasitária, mas indicados em dose anti-inflamatória em emergências imunomediadas fulminantes (uveíte grave, GN membranoproliferativa aguda) sempre sob cobertura leishmanicida.",
+      "Leishmaniose felina (ABCD 2026): apresentação atípica dominada por nódulos cutâneos/úlceras e uveíte granulomatosa com hifema; exige rastreio mandatório de FIV e FeLV.",
+      "ALERTA MÁXIMO TOXICOLÓGICO EM GATOS: Permetrina e piretroides concentrados são FATAIS para felinos; prevenção em gatos deve usar apenas compostos autorizados como coleira de flumetrina.",
+      "Nenhum tratamento leishmanicida garante esterilização parasitológica total: o paciente atinge cura clínica e redução drástica da carga parasitária, mas necessita de monitorização clínica, laboratorial e sorológica semestral vitalícia."
+    ],
+    "pillars": [
+      "Pilar 1: Mudança Conceitual CLWG 2026 — Infecção versus Doença Ativa",
+      "Pilar 2: Imunopatogenia e o Rim como Órgão Sentinela",
+      "Pilar 3: Diagnóstico Integrado e Padrão Ouro Citológico",
+      "Pilar 4: Terapêutica Racional, Legislação e Manejo da Xantinúria"
+    ]
+  },
+  {
+    "slug": "cistite-idiopatica-felina",
+    "strip": [
+      "CIF é um diagnóstico de exclusão: não existe teste diagnóstico positivo patognomônico; o diagnóstico exige afastar metidicamente urolitíase, infecções e neoplasias.",
+      "A bexiga é o órgão de choque, não a causa primária: trata-se de uma síndrome sistêmica mediada pela ativação desregulada do sistema central de resposta à ameaça (CTRS).",
+      "Macho com estrangúria é emergência de obstrução uretral (UO) até prova em contrário: palpar a bexiga imediatamente para diferenciar crise não obstrutiva de emergência urológica obstrutiva.",
+      "Infecção bacteriana do trato urinário (ITU) é raríssima (<1% a 3%) em gatos jovens a meia-idade sem comorbidades: antibiótico empírico para urina com sangue é erro crasso de conduta.",
+      "Cristalúria não é sinônimo de urolitíase: cristais de estruvita ocorrem frequentemente como achado incidental fisiológico em urina felina altamente concentrada.",
+      "Hematúria e piúria assépticas são comuns na CIF: a presença de hemácias e leucócitos no sedimento reflete inflamação neurogênica e não prova infecção bacteriana.",
+      "MEMO é a intervenção de maior nível de evidência (estudo clássico de Buffington et al. 2006): caixas sanitárias N+1, separação espacial de recursos e previsibilidade reduzem crises em até 75%.",
+      "A crise aguda não obstrutiva é autolimitante na maioria dos gatos em 2 a 7 dias: melhora rápida após prescrição de qualquer droga não prova eficácia farmacológica da substância.",
+      "Suplementos de GAGs, glucosamina e pentosan polissulfato falharam em demonstrar benefício clínico superior ao placebo em revisões sistemáticas e ensaios clínicos controlados.",
+      "Amitriptilina aguda é ineficaz e pode piorar recorrência precoce (Kruger et al. 2003); seu uso restringe-se como terceira linha a casos crônicos refratários ao MEMO sob desmame lento.",
+      "Prazosina não previne reobstrução em ensaio prospectivo duplo-cego randomizado (Reineke et al. 2017): o consenso iCatCare 2025 não mais recomenda seu uso rotineiro pós-desobstrução.",
+      "Analgesia é imperativa no alívio do sofrimento ético: buprenorfina transmucosa ou gabapentina devem ser instituídas para dor aguda, sem promessa de prevenção de recorrências futuras."
+    ],
+    "pillars": [
+      "Pilar 1: Modelo Fisiopatológico Bidirecional (Top-Down e Bottom-Up)",
+      "Pilar 2: Diagnóstico Rigoroso por Exclusão e Triagem Imediata de Obstrução",
+      "Pilar 3: Modificação Ambiental Multimodal (MEMO) e Recursos Espaciais",
+      "Pilar 4: Racionalização Farmacológica e Fim de Condutas Empíricas"
+    ]
+  },
+  {
+    "slug": "discinesia-paroxistica-caes-gatos",
+    "strip": [
+      "Consciência preservada não exclui crise epiléptica focal motora; a avaliação propedêutica detalhada por vídeo é mandatória.",
+      "Nunca inicie anticonvulsivantes empíricos para discinesia paroxística típica sem antes documentar descargas epileptiformes ou refratariedade aos manejos de base.",
+      "A resposta positiva a levetiracetam ou fenobarbital não prova epilepsia, pois fármacos neuromoduladores atuam sobre múltiplos circuitos motores e sinápticos.",
+      "Exija e analise o vídeo doméstico do episódio em velocidade normal e lenta antes de firmar hipótese diagnóstica no plantão.",
+      "Rastreie cálcio total e ionizado, glicemia e eletrólitos de emergência; hipocalcemia é causa reativa reversível de espasmos distônicos.",
+      "Em felinos adultos ou idosos com episódios discinéticos, dose obrigatoriamente o T4 total; a correção do hipertireoidismo cura a discinesia (Espinosa et al., 2026).",
+      "A discinesia felina não é restrita ao Sphynx; gatos sem raça definida, Bengal e Ragdoll apresentam distonia migratória e marcha em câmera lenta (Liatis et al., 2026).",
+      "Border Terriers com distonia e tremores devem ser submetidos à exclusão estrita de glúten por 3 a 6 meses; petiscos casuais anulam o teste.",
+      "Acetazolamida é formalmente contraindicada em gatos pelo formulário BSAVA (\"Cats: do not use\") devido à suscetibilidade a acidose e hipocalemia severas.",
+      "Durante o episódio paroxístico, proíba contenção física forçada; oriente o tutor a proteger o ambiente contra traumas e registrar o evento em vídeo."
+    ],
+    "pillars": [
+      "Fisiopatologia do Gating Extrapiramidal",
+      "Semiologia e Vídeo como Padrão Ouro",
+      "Painel Etiológico e Particularidades de Raça",
+      "Neurofarmacologia e Terapia Direcionada"
+    ]
+  },
+  {
+    "slug": "platinosomose-felina",
+    "strip": [
+      "A platinosomose é primariamente uma doença dos ductos biliares e da vesícula; o comprometimento de hepatócitos é secundário à colestase mecânica crônica.",
+      "Não pergunte apenas se o gato come lagartixa: tatuzinhos-de-jardim (isópodes terrestres) são hospedeiros intermediários comprovados e transmitem a doença em quintais.",
+      "Exame coproparasitológico simples negativo NÃO descarta platinosomose: a estase e obstrução biliar impedem a chegada dos ovos ao duodeno.",
+      "Solicite especificamente dupla centrifugação em solução de Sheather de alta densidade (SG 1,28) e colete amostras fecais seriadas em dias alternados.",
+      "A concentração de ovos na bile é até 30 vezes maior que nas fezes; a colecistocentese guiada por ultrassom é uma ferramenta de alta acurácia nos casos inconclusivos.",
+      "Avalie coagulograma (PT, aPTT) e integridade da parede vesicular antes de realizar colecistocentese: obstrução total e friabilidade da parede contraindicam a punção.",
+      "Fosfatase alcalina (ALP) normal ou pouco elevada NÃO exclui colestase importante no gato devido à baixa produção basal e meia-vida ultracurta da enzima na espécie.",
+      "A dose convencional de praziquantel para tênias (5 mg/kg) é ineficaz para erradicar Platynosomum nos ductos biliares; use doses elevadas sob supervisão clínica.",
+      "Melhora clínica e negativação fecal após tratamento não comprovam cura parasitológica: vermes vivos podem persistir na luz ductal profunda (Lathroum et al., 2018).",
+      "Nunca estimule a contração biliar com ácido ursodesoxicólico em felinos com obstrução mecânica extra-hepática completa comprovada sem descompressão prévia."
+    ],
+    "pillars": [
+      "Ciclo Biológico e Vias de Infecção Atualizadas",
+      "Fisiopatologia dos Ductos Biliares e Colestase",
+      "Desafios Diagnósticos Propedêuticos: Fezes vs Bile",
+      "Terapêutica Antiparasitária e Suporte Crítico"
+    ]
+  },
+  {
+    "slug": "triade-felina",
+    "strip": [
+      "Tríade felina é um complexo inflamatório digestivo multiorgânico: trate o fenótipo clínico dominante e não prescreva corticoide de forma cega.",
+      "Em cerca de 80% dos gatos, o ducto pancreático e o colédoco unem-se antes da papila duodenal maior; êmese e refluxo afetam os dois órgãos simultaneamente.",
+      "A microbiota duodenal felina normal é abundante (10^8 UFC/mL); colangite neutrofílica quase sempre envolve enterobactérias ascendentes (Center et al., 2022).",
+      "Pancreatite felina isolada é predominantemente estéril; antibióticos são formais na colangite neutrofílica, mas desnecessários na pancreatite estéril.",
+      "Veto absoluto ao jejum prolongado: a privação alimentar por > 24-48 horas induz lipidose hepática fatal no gato com tríade; institua sonda enteral precocemente.",
+      "O fator intrínseco felino é produzido 100% no pâncreas; pancreatite e ileíte provocam hipocobalaminemia severa que exige reposição sistemática.",
+      "Ultrassom normal NÃO descarta pancreatite: a sensibilidade do US na pancreatite felina varia de 11% a 67%; o Spec fPL >= 5,4 ug/L possui Se e Sp de ~79%.",
+      "Na terceira perna intestinal, o Consenso ACVIM 2023 alerta: LPE e linfoma de baixo grau (LGITL) são indistinguíveis sem biópsia transmural, IHC e PARR.",
+      "Metoclopramida NÃO é contraindicada na pancreatite felina (Consenso ACVIM 2021); atua com segurança como procinético para gastroparesia e íleo paralítico.",
+      "Se houver colangite neutrofílica bacteriana, a introdução de imunossupressores antes do controle infeccioso pode desencadear choque séptico fulminante."
+    ],
+    "pillars": [
+      "Anatomia Confluente e Microbiologia Duodenal",
+      "Os 4 Modelos Fisiopatológicos Integrados",
+      "A Terceira Perna: LPE vs Linfoma de Baixo Grau (LGITL)",
+      "Farmacoterapia Fenotípica e Nutrição Enteral Precoce"
+    ]
+  },
+  {
+    "slug": "anemia-hemolitica-imunomediada-canina",
+    "strip": [
+      "A tríade diagnóstica do ACVIM 2019 exige: anemia confirmada + pelo menos 2 marcadores de destruição imune (esferócitos, SAT 1:4, DAT/Coombs) + pelo menos 1 sinal de hemólise ativa.",
+      "A trombose venosa (especialmente TEP) é a causa de morte número um nas primeiras duas semanas; tromboprofilaxia com anticoagulantes (ex.: rivaroxabana) é obrigatória desde o diagnóstico.",
+      "O ensaio clínico RCT de Agnoli et al. (2024) comprovou que associar segundo imunossupressor de rotina não melhora o desfecho inicial; reserve o 2º agente para refratariedade ou risco elevado.",
+      "Nunca transfundir apenas com base em um corte numérico de hematócrito; a indicação hemoterápica deve ser guiada por sinais clínicos de hipóxia celular (taquicardia, letargia profunda, hiperlactatemia).",
+      "Realize o teste de aglutinação salina (SAT) na proporção correta de 1 gota de sangue para 4 gotas de salina; a proporção 1:1 produz falso-positivos frequentes por rouleaux."
+    ],
+    "pillars": [
+      "Tríade Diagnóstica Consensual (ACVIM 2019)",
+      "Doença Tromboinflamatória e Hipofibrinólise",
+      "Imunossupressão Racional e Individualizada"
+    ]
+  },
+  {
+    "slug": "sepse-canina",
+    "strip": [
+      "Sepse não é apenas infecção grave: o Consenso 2026 exige a presença de nova disfunção orgânica.",
+      "SIRS não é obrigatório para sepse: ausência de febre ou leucocitose não afasta o diagnóstico.",
+      "Choque séptico não exige MAP fixa: define-se por instabilidade cardiovascular e hipoperfusão pós-fluidos.",
+      "Fluidos em alíquotas de 15 a 20 mL/kg (AAHA 2024): sobrecarga de volume causa edema tecidual e morte.",
+      "Source control precoce: nenhum antimicrobiano cura peritonite séptica sem intervenção cirúrgica."
+    ],
+    "pillars": [
+      "A Grande Mudança Conceitual de 2026",
+      "Definição Atualizada de Choque Séptico",
+      "Fisiopatologia Celular e Tromboinflamação",
+      "Ressuscitação e Terapia Vasoativa Racional"
+    ]
+  },
+  {
+    "slug": "obstrucao-funcional-fluxo-urinario-caes",
+    "strip": [
+      "Padrão miccional patognomônico: jato inicial normal que afunila, fragmenta em spurts e termina em esforço com bexiga cheia.",
+      "Volume residual pós-miccional: PVRV > 3,0 mL/kg indica retenção patológica segundo o Consenso ACVIM 2024 (normal 0,2–1,0 mL/kg).",
+      "Diagnóstico de exclusão: excluir urólito, neoplasia e estenose; cateter passar NÃO exclui lesão mecânica parcial.",
+      "Tratamento de 1ª linha: Tamsulosina 0,4–0,8 mg/cão PO q24h ou Prazosina ± Diazepam 30 min pré-micção para tônus estriado.",
+      "Veto absoluto ao Betanecol precoce: proscrito enquanto a uretra mantiver resistência elevada; risco de ruptura vesical e refluxo."
+    ],
+    "pillars": [
+      "Virada Terminológica do Consenso ACVIM 2024",
+      "Assinatura Miccional e PVRV > 3 mL/kg",
+      "Diagnóstico de Exclusão Anatômica e Neurológica",
+      "Farmacoterapia Direcionada e Proteção do Detrusor"
+    ]
+  },
+  {
+    "slug": "sepse-felina",
+    "strip": [
+      "Gatos sépticos não precisam parecer inflamados: o fenótipo frio/hipodinâmico é o mais frequente.",
+      "SIRS não tem valor diagnóstico nem prognóstico em gatos (Troìa 2019; Consenso 2026).",
+      "Nunca use doses de choque caninas: faça alíquotas conservadoras de 5 a 10 mL/kg (AAHA 2024).",
+      "Aqueça ativamente o paciente: a hipotermia perpetua bradicardia e vasoplegia refratária.",
+      "Source control precoce salva vidas: drene o piotórax e opere a peritonite sem protelar."
+    ],
+    "pillars": [
+      "Superação do Paradigma Infecção + SIRS",
+      "O Fenótipo Frio / Hipodinâmico",
+      "Baixa Tolerância Volêmica (AAHA 2024)",
+      "Norepinefrina e Source Control Precoce"
+    ]
+  },
+  {
+    "slug": "lesao-renal-aguda-felina",
+    "strip": [
+      "Lavar o rim é um mito perigoso: fluidos corrigem hipovolemia, mas não recuperam néfrons necrosados e causam sobrecarga hídrica letal.",
+      "Na euvolemia, entrada iguala saída (In = Out): se o gato não urina (oligoanúria), corte drasticamente a fluidoterapia intravenosa.",
+      "Creatinina com aumento de 0,3 mg/dL em 48h é LRA ativa (Consenso IRIS 2026), mesmo com valor absoluto dentro da normalidade.",
+      "Monitore hipercalemia e ECG imediatamente: ondas T pontiagudas, ausência de P e bradicardia exigem gluconato de cálcio e insulina.",
+      "Lírios são uma emergência toxicológica felina fulminante: qualquer contato com Lilium exige descontaminação e internação imediata."
+    ],
+    "pillars": [
+      "Fim do Mito de \"Lavar o Rim\" (AAHA 2024 / IRIS)",
+      "Cinética da Creatinina e Estadiamento IRIS 2026",
+      "Débito Urinário Horário e Regra In = Out",
+      "Terapias Extracorpóreas e Intervenção Ágil"
+    ]
+  },
+  {
+    "slug": "pielonefrite-caes-gatos",
+    "strip": [
+      "Urocultura vesical positiva sozinha NÃO define pielonefrite: exige inflamação sistêmica e dano renal.",
+      "Não espere febre e dor lombar: 38% dos cães e a maioria dos gatos têm apresentações frustras e silenciosas.",
+      "Em gato com ureter obstruído, cultura da bexiga negativa NÃO exclui pielonefrite pélvica (57% de falsos-negativos).",
+      "Exija breakpoint plasmático/sérico no antibiograma: o alvo é o parênquima renal; nitrofurantoína é proibida.",
+      "Pielonefrose e urólitos obstrutivos exigem descompressão cirúrgica urgente (SUB/stent): antibiótico sozinho falha."
+    ],
+    "pillars": [
+      "Nova Terminologia Consensual (Delphi 2026)",
+      "Apresentação Clínica Frustra e Falso-Negativo em Gatos",
+      "Mandamento Farmacológico: Breakpoints Plasmáticos",
+      "Pielonefrose e Descompressão de Urgência (Source Control)"
+    ]
+  },
+  {
+    "slug": "lesao-renal-aguda-canina",
+    "strip": [
+      "Aumento de creatinina sérica >= 0,3 mg/dL em 48h comprova LRA ativa pelo Consenso IRIS 2026, mesmo dentro do intervalo normal.",
+      "Abolir a diurese forçada (\"lavar o rim\"): restaurar euvolemia e igualar estritamente entradas e saídas (Ins and Outs: débito + 20 mL/kg/dia).",
+      "Sobrecarga hídrica (>= 5-10% de ganho de peso) eleva a mortalidade em cães por edema pulmonar e colapso microvascular renal sob a cápsula inelástica.",
+      "Suspeitar ativamente de leptospirose em todo cão com LRA: isolamento com EPIs, coletar sangue/urina para PCR e MAT, e iniciar ampicilina/doxiciclina.",
+      "Hipercalemia > 6,5 mmol/L é emergência com risco de parada: gluconato de cálcio 10% (0,5-1 mL/kg IV lento) sob ECG antes de qualquer manobra."
+    ],
+    "pillars": [
+      "Fim da Diurese Forçada e Regra de Ins & Outs",
+      "Cinética da Creatinina e Estadiamento IRIS 2026",
+      "Identificação Etiológica: Leptospirose e Toxinas",
+      "Controle da Hipercalemia e Suporte Dialítico Ágil"
+    ]
+  }
+]

@@ -1,0 +1,276 @@
+SECTION XIX
+•
+Endocrine Disease
+1990
+eBooks.Health.Elsevier.com
+ACRONYMS
+BG blood glucose
+CGM continuous glucose 
+monitoring
+CKD chronic kidney dis-
+ease
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+DM-HS diabetes mellitus 
+secondary to hyperso-
+matotropism
+ER extended-release
+GIP glucose-dependent 
+insulinotropic polypep-
+tide
+GLP-1 glucagon-like pep-
+tide-1
+GLP-1RA glucagon-like pep-
+tide-1 receptor agonist
+HS hypersomatotropism
+IGc interstitial glucose con-
+centration
+IGF-1 insulin-like growth 
+factor 1
+MC4R melanocortin-4 
+receptor
+NPH neutral protamine 
+Hagedorn
+PD polydipsia
+PU polyuria
+PZI protamine zinc insulin
+SC subcutaneous
+SGLT-2 sodium-glucose 
+cotransporter-2
+UTI urinary tract infection
+DEFINITION AND DIAGNOSIS
+D
+iabetes mellitus (DM) is a syndrome 
+characterized 
+by 
+hyperglycemia 
+due to defects in insulin secretion, 
+insulin sensitivity, or both.1 2 Regardless of 
+the pathogenic cause, relative or absolute 
+deciency in insulin action on target tissues 
+leads to myriad abnormalities in carbohy-
+drate, fat, and protein metabolism. e crite-
+ria for the diagnosis of DM in cats developed 
+by an international consensus committee are 
+provided in Box 292.1 3
+Prediabetes is a state of abnormally 
+increased blood glucose (BG) concentra-
+tions (either fasting or aer a glucose load) 
+that do not yet meet the criteria of DM. Pre-
+diabetes is a risk factor for development of 
+DM.4 Multiple studies have described cats 
+with abnormal BGs in various clinical and 
+experimental contexts5 6; however, no study 
+has shown that a dened state of abnormal 
+glucose in cats confers a risk for developing 
+DM.1 erefore, criteria for diagnosis of pre-
+diabetes in cats have not been established.
+ETIOLOGY AND CLASSIFICATION
+Multiple etiologies can lead to DM.1 Feline 
+DM is mostly considered analogous to type 2 
+DM in people, characterized by beta cell dys-
+function of unknown etiology, usually with 
+concurrent insulin resistance. is leads to 
+either permanent or temporary states of 
+exogenous insulin requirement.
+Recent studies suggest that up to 25% of diabetic cats suer 
+from DM secondary to hypersomatotropism (DM-HS; ch. 280).7
+However, most studies on etiology, pathophysiology, and epide-
+miology of feline DM were published before HS was commonly 
+recognized. us, most cats with DM-HS were probably misdiag-
+nosed as having uncomplicated type 2 DM.
+Other types of diabetes resulting from processes that cause 
+beta cell dysfunction or loss occur in a minority of aected cats. 
+Pancreatitis can destroy beta cells (chs. 276, 278). Histopatho-
+logic evidence of beta cell deciency associated with lymphocytic 
+inltration (consistent with type 1 DM) has been described rarely. 
+With the exception of the serum insulin-like growth factor 1 (IGF-
+1) assay for identication of DM-HS, there is no ante mortem test 
+to classify the other etiologic types of feline DM. From a clini-
+cal perspective, virtually all cats with DM are handled similarly. 
+Importantly, many cats that survive an episode of diabetic keto-
+acidosis (DKA, ch. 280) can later achieve diabetic remission.8
+EPIDEMIOLOGY
+e prevalence of DM in cats ranges from 0.5-2% depending on the 
+population studied.9-11 Numbers are steadily increasing due to the 
+increasing frequency of predisposing factors, e.g., obesity and phys-
+ical inactivity.12-14 is is similar to human type 2 DM. Importantly, 
+DM in cats is generally diagnosed later in the disease process than 
+in people, in whom diagnosis of DM is based on fasting hypergly-
+cemia >126 mg/dL (>7 mmol/L).10 In contrast, the diagnosis in cats 
+Diabetes Mellitus in Cats
+Chen Gilor | Linda Fleeman
+CHAPTER 292
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Video.
+ALIVE* Criteria for Diagnosis of Diabetes Mellitus in 
+Cats
+The potential for stress hyperglycemia warrants caution in interpre-
+tation of hyperglycemia of any magnitude in cats. Diabetes mellitus 
+in cats is diagnosed:
+1. In a patient with a random (fasted or unfasted) blood glucose 
+concentration ≥270 mg/dL (≥15 mmol/L) with classic clinical 
+signs of hyperglycemia (with no other plausible cause) or 
+hyperglycemic crisis AND at least one of the following criteria:
+
+•increased glycated proteins
+
+•glucosuria on more than one occasion on a naturally voided
+sample acquired in a home environment at least  days after 
+any stressful events.
+In some cases clinical signs may not have been reported by the 
+owner.
+2. In a patient with random (fasted or unfasted) blood glucose 
+concentration >125 mg/dL to ≤270 mg/dL (>7 mmol/L to ≤15 
+mmol/L) and at least two of the following:
+
+•classic clinical signs of hyperglycemia (with no other plausi
+ble cause) or hyperglycemic crisis
+
+•increased glycated proteins
+
+•glucosuria on more than one occasion on a naturally voided
+sample acquired in a home environment at least  days after 
+any stressful events.
+Applying the above ALIVE criteria permits the possible existence 
+of a subpopulation of cats where diabetes mellitus or stress hyper-
+glycemia cannot be confidently confirmed or excluded; if concerns 
+over presence of diabetes mellitus persist, periodic re-evaluation is 
+warranted.
+BOX 292.1
+*Project ALIVE (Agreeing Language In Veterinary Endocrinology) was founded by 
+the European Society of Veterinary Endocrinology in  and endorsed by the 
+Society for Comparative Endocrinology in . It focuses on creating agreement 
+over the definition of common terminology in veterinary endocrinology.
+From Project ALIVE. European Society of Veterinary Endocrinology. Accessed 
+February , . https://www.esve.org/alive/search.aspx
+
+CHAPTER 292
+•
+Diabetes Mellitus in Cats
+1991
+eBooks.Health.Elsevier.com
+is oen delayed until BGs exceed the renal threshold (>270 mg/dL, 
+>15 mmol/L)15 16 and clinical signs (polyuria/polydipsia/polyphagia 
+[PU/PD/PP], weight loss) are evident.17 18 is delay in diagnosis 
+may explain why most cats are insulin-dependent at diagnosis and 
+why diet changes and oral hypoglycemic drugs are not typically suf-
+cient to control DM early aer diagnosis.18
+DM is most common in Domestic Long- and Shorthair cats. 
+Most pure-breed cats are underrepresented.12 19 However, in the 
+UK, Australia, and New Zealand, Burmese cats are over-represe
+nted.11 19-21 DM appears to be an autosomal, partially penetrant, 
+dominant trait in Burmese cats with about 4 times higher fre-
+quency than other breeds.20 21 Genome-wide association studies 
+have identied polymorphisms in genes related to beta cell func-
+tion and lipid metabolism.22 23 Other susceptible breeds include 
+Tonkinese and Norwegian Forest in the UK, and Maine Coon, 
+Russian Blue, and Siamese in the USA.19 20 24
+Increasing age is a risk factor; most cats are diagnosed at 
+>8 years of age with peak incidence at 10-13 years.9 10 12 Neu-
+tered male cats are at greater risk than neutered females, even 
+when controlled for body weight.9 12 Other risk factors include 
+indoor connement and little physical activity.25 Obesity (ch. 
+150), increasingly prevalent in pet cats, causes insulin resistance, 
+interferes with glycemic control, and confers a high risk of DM 
+in cats.9 12-14 26-29 In the USA, it has been estimated that 25-35% 
+of pet cats are overweight or obese.13 27 30 Environmental factors 
+(e.g., living indoors, diet) predispose cats to obesity.27 30 e risk 
+of obesity is highest among middle-aged, neutered male cats, the 
+same group that is at increased risk of DM.27 30
+FEATURES OF TYPE 2 DM IN CATS
+Type 2 DM is a diagnosis of exclusion in cats—one to be consid-
+ered only aer ruling out HS. e etiology of feline type 2 DM 
+is unknown but likely similar to type 2 DM in people.1 Similari-
+ties include risk factors, clinical presentation, epidemiology, and 
+association with amyloid deposition in the islets of Langerhans.1
+Periods when exogenous insulin is not required are common 
+and genetic predisposition has been demonstrated in both cats 
+and people.31 Type 2 DM is a progressive disease that can have 
+a prolonged preclinical period. It is characterized by the com-
+bination of impaired insulin secretion and insulin resistance. 
+Impaired secretion results in insulin deciency, which is usually 
+relative (rather than absolute) to the overall increased insulin 
+requirement resulting from insulin resistance. Although obesity 
+itself causes some degree of insulin resistance, it is not the cause 
+of type 2 DM. Instead, obesity leads to a compensatory increase 
+in insulin secretion. Obese diabetic individuals have impaired 
+beta cell function whereas obese non-diabetics do not (ch. 150).
+e melanocortin-4 receptor (MC4R), expressed in the hypo-
+thalamus, mediates satiety when there is positive energy bal-
+ance.31 It is also expressed in intestinal L cells and mediates the 
+secretion of the incretin hormone glucagon-like peptide-1 (GLP-
+1).32 In human obesity and DM, MC4R is a major susceptibility 
+gene. Polymorphism in the MC4R gene was demonstrated in 
+obese diabetic cats but not in obese non-diabetic cats.31 us, 
+cats with this gene polymorphism may be predisposed to reduced 
+incretin eect when obese, and so be more likely to develop DM.
+FACTORS ASSOCIATED WITH DM REMISSION
+REMISSION IS NOT A “CURE”
+ere is no known cure for type 2 DM and remission of DM in 
+cats is dened as a state of euglycemia with no insulin therapy 
+for at least 4 weeks when insulin was previously administered.33
+Achieving remission does not imply that the underlying disease 
+has been cured but that endogenous insulin secretion is meeting 
+or exceeding requirements. Cats in remission usually continue to 
+display impaired glucose tolerance.34 Remission is a temporary 
+state (although it might last for years) and, therefore, eorts to 
+maintain it and treat any underlying disease should be consid-
+ered. One possible exception is DM remission in cats treated for 
+HS. In these cats, surgical removal of the growth-hormone secret-
+ing tumor might be curative. Because it is by denition tempo-
+rary, some question whether remission should be a treatment goal 
+in all cats with DM. at also raises the question of which cats are 
+more likely to achieve remission. Answers to these questions are 
+not available, but remission is associated with longer survival in 
+some studies.35 Here we discuss the available evidence and patho-
+physiologic background.
+PHYSIOLOGY OF REMISSION
+Overview
+For a cat with type 2 DM to achieve remission, beta cell capac-
+ity to synthesize and secrete insulin must meet or exceed insu-
+lin requirements. Insulin requirements decrease with decreased 
+insulin resistance and decreased carbohydrate load. Insulin resis-
+tance can be reduced with weight loss, resolution of inammatory 
+conditions, pharmacological intervention (insulin sensitizers, 
+discontinuing glucocorticoids and any drug that causes insulin 
+resistance), and resolution of stress. Carbohydrate load can be 
+decreased by reducing dietary carbohydrates or reducing carbo-
+hydrate digestion (e.g., with acarbose), by suppressing hepatic 
+glucose output with pharmacological interventions (e.g., metfor-
+min, glucagon receptor antagonists), or by enhancing glucosuria, 
+e.g., sodium-glucose cotransporter-2 (SGLT-2) inhibitors.
+While the cause of underlying beta cell dysfunctions that 
+lead to type 2 DM is unknown, some metabolic derangements 
+that cause further beta cell dysfunction are somewhat reversible. 
+Reversing metabolic derangements such as glucotoxicity, lipotox-
+icity, and impaired incretin eect can lead to substantial improve-
+ment in beta cell function that could make the dierence between 
+whether or not remission is achieved.
+Glucotoxicity and Lipotoxicity of Beta Cells
+Longstanding hyperglycemia and hyperlipidemia are both toxic 
+to beta cells, causing dysfunction and eventually beta cell death. 
+Glucotoxicity causing beta cell dysfunction occurred within 48 
+hours of IV glucose infusion in healthy cats.36 Aer 10 days of 
+hyperglycemia, beta cell dysfunction and markedly reduced cell 
+numbers persisted for some time aer discontinuation of glucose 
+infusion. Hyperlipidemia does not have as dramatic an eect 
+although it did seem to aect the cats’ ability to regulate BG.36 e 
+eect of lipotoxicity on feline beta cells may have been underesti-
+mated since mostly unsaturated fatty acids were infused. In other 
+species, saturated fatty acids are more injurious than unsaturated 
+fatty acids.37
+Glucolipotoxicity and the Incretin Effect
+Glucolipotoxicity can cause beta cell dysfunction by interrupting 
+the incretin eect.38 Incretin hormones (glucose-dependent insu-
+linotropic polypeptide [GIP]; GLP-1) are secreted from the intes-
+tine in response to glucose and other nutrients in the gut lumen 
+(but not in the blood).39 In a glucose-dependent manner, incre-
+tins stimulate synthesis and secretion of insulin and inhibit gluca-
+gon secretion. Incretin hormones also prevent beta cell apoptosis 
+in response to injurious toxins (such as glucocorticoid drugs) and 
+enhance beta cell dierentiation and proliferation.40,41 Incretin 
+hormones are responsible for about 75% of postprandial insulin 
+secretion in healthy people and abnormalities in incretin hor-
+mone secretion or action lead to substantial beta cell dysfunction.
+In people with type 2 DM, GIP secretion is normal or increased 
+but beta cells become resistant to its eects. is resistance can be 

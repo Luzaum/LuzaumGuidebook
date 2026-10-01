@@ -1,0 +1,97 @@
+- main [ref=f3e3]:
+  - generic [ref=f3e4]:
+    - heading "Enrofloxacina" [level=1] [ref=f3e5]
+    - generic [ref=f3e7]:
+      - heading "Resumo Clínico Executivo" [level=2] [ref=f3e14]
+      - generic [ref=f3e15]:
+        - paragraph [ref=f3e16]: Em palavras simples
+        - generic [ref=f3e20]:
+          - paragraph [ref=f3e21]: É um antibiótico para infecções por bactérias sensíveis. Em gatos, a exposição excessiva pode lesionar a visão.
+          - group [ref=f3e22]:
+            - generic "Entenda como funciona" [ref=f3e23] [cursor=pointer]
+      - generic [ref=f3e24]:
+        - heading "Pilares Terapêuticos Essenciais" [level=3] [ref=f3e25]
+        - generic [ref=f3e26]:
+          - generic [ref=f3e27]:
+            - generic [ref=f3e28]: Bactericidia Concentração-Dependente
+            - generic [ref=f3e34]:
+              - paragraph [ref=f3e35]: A eficácia depende da concentração atingida; subdosagem pode favorecer resistência.
+              - group [ref=f3e36]:
+                - generic "Ver mecanismo completo" [ref=f3e37] [cursor=pointer]
+          - generic [ref=f3e38]:
+            - generic [ref=f3e39]: Penetração Tecidual Ampla e Intracelular
+            - generic [ref=f3e45]:
+              - paragraph [ref=f3e46]: Penetra em rins, próstata, pulmões e pele, conforme a indicação.
+              - group [ref=f3e47]:
+                - generic "Ver mecanismo completo" [ref=f3e48] [cursor=pointer]
+          - generic [ref=f3e49]:
+            - generic [ref=f3e50]: Espectro Gram-Negativo Potente com Lacunas Críticas
+            - generic [ref=f3e56]:
+              - paragraph [ref=f3e57]: Atua contra gram-negativos sensíveis, mas não cobre anaeróbios estritos e tem lacunas contra alguns gram-positivos.
+              - group [ref=f3e58]:
+                - generic "Ver mecanismo completo" [ref=f3e59] [cursor=pointer]
+          - generic [ref=f3e60]:
+            - generic [ref=f3e61]: Teto Posológico Felino Inegociável (5 mg/kg/dia)
+            - generic [ref=f3e67]:
+              - paragraph [ref=f3e68]: Respeitar a exposição em gatos é essencial para proteger a retina.
+              - group [ref=f3e69]:
+                - generic "Ver mecanismo completo" [ref=f3e70] [cursor=pointer]
+      - generic [ref=f3e71]:
+        - heading "Indicações de Uso Resumidas" [level=3] [ref=f3e72]
+        - generic [ref=f3e73]:
+          - paragraph [ref=f3e74]: Infecções selecionadas por bactérias sensíveis, incluindo focos urinários e prostáticos. A escolha deve considerar cultura, local da infecção e alternativas.
+          - group [ref=f3e75]:
+            - generic "Ver indicações, doses e duração" [ref=f3e76] [cursor=pointer]
+      - generic [ref=f3e77]:
+        - generic [ref=f3e78]: Aviso Clínico Importante
+        - generic [ref=f3e82]:
+          - paragraph [ref=f3e83]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento. Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+          - group [ref=f3e84]:
+            - generic "Ver todos os cuidados e ressalvas" [ref=f3e85] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=f3e86]
+    - generic [ref=f3e87]:
+      - heading "Resumo rápido" [level=2] [ref=f3e88]
+      - generic [ref=f3e89]:
+        - generic [ref=f3e90]:
+          - button "Visão Geral" [ref=f3e91] [cursor=pointer]
+          - button "Plano diagnóstico" [ref=f3e96] [cursor=pointer]
+          - button "Plano de tratamento" [ref=f3e100] [cursor=pointer]
+        - generic [ref=f3e105]:
+          - generic [ref=f3e106]:
+            - heading "O que é isso em palavras simples?" [level=4] [ref=f3e107]
+            - generic [ref=f3e111]:
+              - paragraph [ref=f3e112]: Os rins deixam de funcionar bem de repente. O cão pode vomitar, ficar abatido e mudar a quantidade de urina. O tratamento procura a causa e controla as complicações.
+              - group [ref=f3e113]:
+                - generic "Entenda melhor" [ref=f3e114] [cursor=pointer]
+          - generic [ref=f3e115]:
+            - generic [ref=f3e117]:
+              - heading "Visão clínica" [level=4] [ref=f3e118]
+              - generic [ref=f3e119]:
+                - paragraph [ref=f3e120]: Deterioração rápida da função renal por causas como isquemia, toxinas ou infecção.
+                - group [ref=f3e121]:
+                  - generic "Ler explicação clínica" [ref=f3e122] [cursor=pointer]
+            - generic [ref=f3e123]:
+              - generic [ref=f3e124]:
+                - paragraph [ref=f3e125]: Fim da Diurese Forçada e Regra de Ins & Outs
+                - generic [ref=f3e127]:
+                  - paragraph [ref=f3e128]: Soro corrige a falta de líquido, mas o excesso pode piorar o quadro.
+                  - group [ref=f3e129]:
+                    - generic "Ver explicação completa" [ref=f3e130] [cursor=pointer]
+              - generic [ref=f3e131]:
+                - paragraph [ref=f3e132]: Cinética da Creatinina e Estadiamento IRIS 2026
+                - generic [ref=f3e134]:
+                  - paragraph [ref=f3e135]: A evolução da creatinina ajuda a detectar e classificar a lesão.
+                  - group [ref=f3e136]:
+                    - generic "Ver explicação completa" [ref=f3e137] [cursor=pointer]
+              - generic [ref=f3e138]:
+                - paragraph [ref=f3e139]: "Identificação Etiológica: Leptospirose e Toxinas"
+                - generic [ref=f3e141]:
+                  - paragraph [ref=f3e142]: Leptospirose e intoxicações estão entre as causas investigadas.
+                  - group [ref=f3e143]:
+                    - generic "Ver explicação completa" [ref=f3e144] [cursor=pointer]
+              - generic [ref=f3e145]:
+                - paragraph [ref=f3e146]: Controle da Hipercalemia e Suporte Dialítico Ágil
+                - generic [ref=f3e148]:
+                  - paragraph [ref=f3e149]: Potássio elevado e outras complicações podem exigir tratamento intensivo e diálise.
+                  - group [ref=f3e150]:
+                    - generic "Ver explicação completa" [ref=f3e151] [cursor=pointer]

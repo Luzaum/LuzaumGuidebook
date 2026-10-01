@@ -1,0 +1,818 @@
+
+===== Plumb PDF 1075 =====
+1048    Pradofloxacin
+flicts or is dependent on diluent or concentration factors with the 
+following drugs or solutions: fat emulsion 10%, amikacin sulfate, 
+dobutamine HCl, mannitol, methylprednisolone sodium succinate 
+(at Y-site), ondansetron, penicillin G sodium, promethazine HCl (at 
+Y-site), and sodium bicarbonate. 
+Potassium chloride for injection is reportedly physically  incom-
+patible with the following solutions or drugs: amphotericin B, diaz-
+epam (at Y-site), and phenytoin sodium (at Y-site).
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : 
+Parenteral Products: There are several products for parenteral use 
+that contain potassium; refer to Appendix tables or individual pro -
+prietary veterinary products for additional information.
+Oral Products: These products are not found in the FDA Green 
+Book; approval status is uncertain.
+Potassium Gluconate Tablets: 2 mEq (468 mg); Tumil-K®, Renakare®, 
+generic; (Rx). Labeled for use in cats and dogs
+Potassium Gluconate Oral Powder: Each 0.65 g (¼ teaspoon) con -
+tains 2 mEq of potassium in 4 oz containers; Renakare®, Tumil-K®; 
+(Rx). Labeled for use in dogs and cats
+Potassium Gluconate Gel: Each 2.34 g (½ teaspoon) contains 2 mEq 
+of potassium in 5 oz tubes; Tumil-K® Gel, Renakare®; (Rx). Labeled 
+for use in dogs and cats
+HUMAN-LABELED PRODUCTS (NOT A COMPLETE LIST) :
+Parenteral Products:
+Potassium Chloride for Injection Concentrate: 2 mEq/mL in sin -
+gle-dose and multi-dose vials and must be diluted before adminis -
+tering; generic; (Rx)
+Potassium Chloride for Injection, Highly Concentrated: 10 mEq and 
+20 mEq in 50 mL or 100 mL bags, and 40 mEq/100 mL bags; gener -
+ic; (Rx). Ready-to-use solution for fluid-restricted patients; requires 
+administration through a central line via calibrated infusion device.
+There are also premixed IV bags of saline and dextrose (both sep -
+arately and in various combinations) that contain potassium  
+10 mEq/L, 20 mEq/L, 30 mEq/L, or 40 mEq/L. 
+Potassium Acetate for Injection Concentrate: 2 mEq/mL and  
+4 mEq/mL and must be diluted before administering; (Rx)
+Potassium Phosphate for Injection (see Phosphate, Intravenous) is 
+also available. 
+Oral Products: There are many human-labeled potassium salts for 
+oral use available in several dosage forms; refer to human drug ref -
+erences for more information on these products. Tablets, controlled/
+sustained release tablets and capsules, effervescent tablets, liquids, 
+and powder in varying strengths available; (OTC, Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Pradofloxacin
+(pra-doe-flox-a-sin) Veraflox®
+Fluoroquinolone Antibiotic 
+Prescriber Highlights
+ ▶ FDA-approved for use in cats; approved for dogs in some 
+countries
+ ▶ Enhanced aerobic gram-positive activity and activity against 
+anaerobes; its gram-negative activity is similar to other fluoro-
+quinolones. 
+ ▶ Contraindications include hypersensitivity to fluoroquino-
+lones; do not administer to pregnant or lactating animals, 
+or kittens less than 12 weeks of age, as safety has not been 
+determined.
+ ▶ May produce erosions of cartilage of weight-bearing joints 
+and other signs of arthropathy in immature animals of various 
+species
+ ▶ Use with caution in patients with renal insufficiency, pre-exist-
+ing CNS disorders (eg, epilepsy), or underlying conditions that 
+predispose to arrhythmias (eg, electrolyte imbalances, cardiac 
+disease); use with caution in immunocompromised cats (ie, 
+infected with feline leukemia and/or feline immunodeficiency 
+virus), as safety has not been determined. 
+ ▶ Adverse effects may include GI distress, photosensitivity, mye-
+losuppression, and arrhythmias (dogs only).
+ ▶ Many potential drug interactions
+ ▶ FDA prohibits extra-label use in food animals. Should not be 
+used in humans
+Uses/Indications
+In cats, pradofloxacin oral suspension is FDA-approved for the 
+treatment of skin infections (wounds and abscesses) caused by sus -
+ceptible strains of Pasteurella multocida, Streptococcus canis, Staphy-
+lococcus aureus, Staphylococcus felis, and Staphylococcus pseudinter-
+medius. Pradofloxacin has also been used clinically in cats for the 
+treatment of bacterial UTIs, Bartonella spp,1 Mycoplasma haemofelis 
+upper respiratory infections, and in combination with other antimy-
+cobacterial drugs for feline leprosy syndromes. One study showed 
+pradofloxacin to be equivalent to amoxicillin for treatment of bacte-
+rial upper respiratory infections.2
+Pradofloxacin is not FDA-approved for use in dogs (see Contra-
+indications/Precautions/Warnings). In other countries, pradoflox -
+acin is labeled for the treatment of wound infections, superficial 
+and deep pyoderma caused by susceptible strains of the S pseudin-
+termedius group (including S pseudintermedius); acute UTIs caused 
+by susceptible strains of Escherichia coli and the S pseudintermedius 
+group (including S pseudintermedius); and as adjunctive treatment 
+to mechanical or surgical periodontal therapy in the treatment of 
+severe infections of the gingiva and periodontal tissues caused by 
+susceptible strains of anaerobic organisms (eg,  Porphyromonas spp 
+and Prevotella spp). 
+The World Health Organization (WHO) has designated fluoro -
+quinolones as Critically Important (Highest Priority) antimicrobials 
+for human medicine.3 The Office International des Epizooties (OIE) 
+has designated fluoroquinolones as Veterinary Critically Important 
+Antimicrobial (VCIA) Agents for veterinary species.4
+Pharmacology/Actions
+Pradofloxacin is a broad-spectrum third-generation bactericidal flu-
+oroquinolone antibiotic. The bactericidal activity of pradofloxacin is 
+concentration dependent, so its antibacterial activity is dependent 
+on high peak concentrations. Its antibacterial action is via inhibition 
+of DNA gyrase and topoisomerase IV , thereby preventing DNA su-
+percoiling and DNA synthesis.
+
+
+===== Plumb PDF 1076 =====
+Pradofloxacin   1049
+Pradofloxacin is unique among veterinary fluoroquinolones 
+in that it has enhanced aerobic gram-positive activity and activity 
+against anaerobes; its gram-negative activity is similar to other flu -
+oroquinolones. This spectrum of activity is similar to the human 
+fluoroquinolone, moxifloxacin. Pradofloxacin, compared with other 
+veterinary fluoroquinolones, also has enhanced activity against My-
+coplasma spp. It is the only antibiotic shown to date that can elimi -
+nate Mycoplasma haemofelis from the blood of experimentally inoc-
+ulated cats.5 Methicillin-resistant staphylococci (MRSP) isolates are 
+usually resistant to all fluoroquinolones, including pradofloxacin. 6 
+Proposed ALCS breakpoints during the FDA approval process of less 
+than 1 µg/mL were considered susceptible and breakpoints greater 
+than 2 µg/mL were considered resistant.
+Pradofloxacin has weak activity against streptococci and entero -
+cocci and is not recommended in the treatment of these infections. 
+Unlike enrofloxacin, pradofloxacin does not cause retinal toxicity 
+in cats.7 It has also not been linked to Streptococcus canis-associated 
+necrotizing fasciitis.
+Pharmacokinetics
+In dogs, after oral administration, pradofloxacin is rapidly absorbed 
+with peak plasma concentrations occurring ≈2 hours after a dose. 8 
+Bioavailability is reported to be high and not affected by tablet size or 
+the dose administered. Repeated doses do not impact pharmacoki -
+netics. Volume of distribution is more than 2 L/kg, and only ≈35% of 
+the drug is bound to plasma proteins. Peak drug concentrations are 
+slightly higher in serum than in interstitial fluid but persist at con -
+centrations higher than in plasma for most of the 24-hour dosing pe-
+riod. Pradofloxacin at 3 mg/kg PO resulted in 5 times as high PK-PD 
+values in leukocytes compared with plasma, with the lowest values 
+in CSF , synovial fluid, and aqueous humor.9 Highest tissue concen -
+trations were found in cartilage, liver, and kidneys and measured 1 
+to 1.5 hours after a dose. Clearance was 0.24 L/hour/kg, and plasma 
+elimination half-life was ≈8 hours. Pradofloxacin is primarily metab-
+olized via glucuronidation and sulfation; ≈40% of a dose is excreted 
+in the urine. Approximately 85% of a dose is excreted into the urine 
+within 24 hours—40% is excreted unchanged and the rest is excreted 
+primarily as glucuronide metabolites.10–13
+In cats, pradofloxacin is rapidly absorbed with peak plasma con -
+centrations occurring within 1 to 2 hours. 8,14 Oral bioavailability is 
+≈60% with oral suspension and ≈70% with oral tablets. Repeat dos -
+es do not significantly alter the pharmacokinetics. A 5 mg/kg PO 
+dose produced a peak concentration of 2.1 μg /mL when given to 
+fasted cats; administration with food reduces peak concentrations 
+by 50% and total absorption by ≈25%. Volume of distribution is rel-
+atively high, and only ≈30% of the drug is bound to plasma pro -
+teins. Like in dogs, glucuronidation is the major metabolic pathway 
+for cats; 70% of a dose is excreted into the urine within 24 hours, 
+but only ≈10% of it is excreted as unchanged drug. Clearance is  
+0.27 L/hour/kg, and terminal plasma elimination half-life has been 
+variably reported from 3 to 8 hours. 11,12,15 Clinical efficacy is asso -
+ciated with achieving a peak pradofloxacin concentration 10 times 
+greater than bacterial MIC.16,17
+Contraindications/Precautions/Warnings
+Pradofloxacin is contraindicated in animals that are hypersensitive 
+to it or other quinolones. It should not be used in kittens younger 
+than 12 weeks of age 18 (younger than 6 weeks on United Kingdom 
+label14), as safety has not been evaluated. Pradofloxacin has been 
+shown to produce erosions of cartilage of weight-bearing joints and 
+other signs of arthropathy in immature animals of various species.18  
+Pradofloxacin should not be used in dogs and cats with pre-existing 
+articular cartilage lesions. 8,14 Additionally, pradofloxacin adminis -
+tration to healthy cats for longer than 7 days resulted in reversible 
+leukopenia, neutropenia, and lymphopenia.18 
+Although pradofloxacin is approved for use in dogs in other 
+countries (eg, United Kingdom, Europe), it is not FDA-approved in 
+the United States due to myelosuppression (thrombocytopenia and 
+leukopenia) observed in canine safety studies at daily oral pradoflox-
+acin doses of 27 mg/kg (6 times the maximum recommended dose) 
+and above, but not at lower, recommended doses.12,18 Additional con-
+traindications for dogs include use in dogs less than 12 months of age 
+(most breeds), in giant breeds less than 18 months old due to effects 
+on articular cartilage, and with CNS disorders (eg, epilepsy).19
+Use with caution in animals with impaired renal function or se -
+verely impaired hepatic function. It should also be used with caution 
+in dogs predisposed to arrhythmias and in cats with pre-existing 
+CNS disorders18 (eg, epilepsy, a contraindication on the United King-
+dom label8,14). The safety of pradofloxacin in immune-compromised 
+cats (eg, cats infected with feline leukemia virus and/or feline immu-
+nodeficiency virus) has not been evaluated.18
+Fluoroquinolones may cause photosensitization, and prolonged 
+exposure of bare (eg, nose) or thinly haired skin to direct sunlight 
+should be avoided.
+The artificial beef flavor used in the tablets originates from irradi-
+ated (to inactivate any viruses or micro-organisms) pig livers. Dogs 
+that are hypersensitive to pork products could potentially react to 
+these proteins.
+Extra-label use of fluoroquinolones is prohibited in food animals.
+Adverse Effects
+In dogs and cats, pradofloxacin at recommended dosages appears 
+to be well tolerated with diarrhea/loose stools occasionally reported. 
+Articular cartilage abnormalities have been noted in young, rapid -
+ly growing animals given fluoroquinolones (see Contraindications/
+Precautions/Warnings).8,14,18
+Myelosuppression (thrombocytopenia, neutropenia, lymphope -
+nia) is possible in dogs and cats (when used for longer than 7 days).18 
+Therapy should be discontinued if this occurs. See Contraindica-
+tions/Precautions/Warnings
+In dogs, QT interval can be increased and pradofloxacin poten -
+tially could have proarrhythmic effects, especially in patients with 
+coexisting risk factors (eg, hypothyroidism, bradycardia, electrolyte 
+disturbances, heart failure, or liver or kidney disease).20
+Reproductive/Nursing Safety
+Pradofloxacin is labeled as contraindicated for use during pregnancy 
+or lactation.8,14 The drug does not pose additional risk when used in 
+breeding animals.8
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Pradofloxacin appears to be quite safe in acute overdose situations, 
+with vomiting and diarrhea possible. The approximate LD 50 after a 
+single intraperitoneal application in rats was more than 50 mg/kg, 
+and single oral doses of 100 mg/kg were tolerated well in young cats, 
+and in dogs; however, in one dog there was temporary overloading 
+of renal excretory capacity.12
+Acute overdoses should be managed supportively. Consider per-
+forming baseline white blood cell counts in dogs with overdoses.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are 
+
+
+===== Plumb PDF 1077 =====
+1050   Pradofloxacin
+theoretical in humans or animals receiving pradofloxacin or other 
+fluoroquinolones and may be of significance in veterinary patients. 
+Unless otherwise noted, use together is not necessarily contraindi -
+cated, but weigh the potential risks and perform additional monitor-
+ing when appropriate.
+ ■ Antacids, Aluminum-, Calcium- or Magnesium-  
+Containing : May bind to pradofloxacin and prevent its absorp-
+tion; separate doses of these products by at least 2 hours.
+ ■ Cimetidine : Cimetidine has been shown to interfere with the 
+metabolism of quinolones and should be used with care when 
+used concurrently.18
+ ■ Corticosteroids (eg, dexamethasone, prednisone): May en-
+hance the toxic effect of quinolones, specifically the risk for ten -
+donitis and tendon rupture
+ ■ Cyclosporine : Fluoroquinolones may exacerbate the nephro -
+toxicity and reduce the metabolism of cyclosporine. Concurrent 
+use of pradofloxacin with oral cyclosporine should be avoided.18
+ ■ Dairy Products : May bind to pradofloxacin and prevent its 
+absorption; do not administer pradofloxacin with dairy products. 
+ ■ Digoxin : Concurrent use of pradofloxacin with digoxin should 
+be avoided, as it may increase the oral bioavailability of digoxin.
+ ■ NonSteroidal Anti-Inflammatory Drugs  ( NSAIDs; 
+eg, flunixin): Flunixin has been shown in dogs to increase the 
+AUC and elimination half-life of enrofloxacin, and enrofloxacin 
+increases the AUC and elimination half-life of flunixin; it is un -
+known if pradofloxacin also causes this effect or if other NSAIDs 
+interact with pradofloxacin in dogs. Fluoroquinolones should not 
+be used in combination with NSAIDs in animals with a history 
+of seizures due to potential pharmacodynamic interactions in the 
+CNS.8,14
+ ■ Glyburide : Severe hypoglycemia is possible with concurrent 
+use of glyburide with pradofloxacin. 
+ ■ Iron, Zinc  (oral): Decreased pradofloxacin absorption; separate 
+doses by at least 2 hours.
+ ■ Lanthanum : May decrease pradofloxacin absorption
+ ■ Methotrexate : When used concurrently with pradofloxacin, 
+increased methotrexate levels possible with resultant toxicity
+ ■ Nitrofurantoin : May antagonize the antimicrobial activity 
+of fluoroquinolones, and concomitant use of nitrofurantoin with 
+pradofloxacin is not recommended.
+ ■ Probenecid : Blocks tubular secretion of ciprofloxacin and may 
+also increase the blood level and half-life of pradofloxacin
+ ■ QT-Prolonging Agents ( eg, cisapride, sotalol, quinidine, 
+erythromycin, ondansetron): May enhance the QT-prolonging 
+effect of pradofloxacin
+ ■ Sevelamer : May decrease pradofloxacin absorption
+ ■ Sucralfate : May inhibit absorption of pradofloxacin; separate 
+doses of these drugs by at least 2 hours.
+ ■ Theophylline : Pradofloxacin may increase theophylline blood 
+concentration. The United States label states, The dosage of the -
+ophylline should be reduced when used concurrently with quino-
+lones.18 The United Kingdom labels state, The combination of 
+fluoroquinolones with theophylline could increase the plasma 
+levels of theophylline by altering its metabolism and thus should 
+be avoided.8,14
+Laboratory Considerations
+No specific concerns noted.
+Dosages
+DOGS:
+Wound infections, superficial and deep pyoderma caused by 
+susceptible strains of the Staphylococcus pseudintermedius  
+group (including S pseudintermedius ); acute UTIs caused by 
+susceptible strains of Escherichia coli  and the Staphylococcus 
+pseudintermedius group (including S pseudintermedius); and 
+as adjunctive treatment to mechanical or surgical periodontal 
+therapy in the treatment of severe infections of the gingiva and 
+periodontal tissues caused by susceptible strains of anaerobic 
+organisms (extra-label):
+3 – 4.5 mg/kg PO once daily.8 As with other fluoroquinolones, the 
+upper end of the dosing range may be preferable. The duration of 
+the treatment depends on the nature and severity of the infection 
+and on the response to treatment.
+CATS:
+Skin infections (wounds and abscesses) caused by susceptible 
+strains of Pasteurella multocida, Streptococcus canis, Staph -
+ylococcus aureus, Staphylococcus felis, and Staphylococcus 
+pseudintermedius (label dosage; FDA-approved): 7.5 mg/kg  
+(3.4 mg/lb) PO once daily for 7 consecutive days. If acceptable re-
+sponse to treatment is not observed, or if no improvement is seen 
+within 3 to 4 days, then the diagnosis should be re-evaluated and 
+appropriate alternative therapy considered.18
+Bartonellosis (extra-label): 5 – 10 mg/kg PO once or twice daily 
+for 28 to 42 days. 1,21 (NOTE: larger, once-daily dosages of fluo -
+roquinolones are preferred over twice-daily administration.) 
+Elimination of infection often requires use of more than one class 
+of antibiotic. For cats that are reasonably stable (eg, when treat -
+ing  Bartonella spp-linked polyarthritis),  one recommendation 
+is to start with one antibiotic (eg, doxycycline 5 mg/kg PO every 
+12 hours), then add the second antibiotic  (eg, pradofloxacin)  5 
+to  7 days later. Initiation of both antibiotics simultaneously has 
+been associated with a Jarisch-Herxheimer-like reaction,  which 
+can be confused with an adverse drug reaction.1,21 
+Mycoplasma haemofelis (extra-label): 5 – 10 mg/kg PO once dai-
+ly for 14 days5
+Acute infections of the upper respiratory tract caused by 
+susceptible strains of  Pasteurella  multocida , E coli,   and 
+the Staphylococcus intermedius  group (including  S pseud -
+intermedius ) (extra-label): Oral suspension, 5 – 7.5 mg/kg PO 
+once daily 14; oral tablets, 3 – 4.5 mg/kg PO once daily. 8 The 
+duration of the treatment depends on the nature and severity 
+of the infection and on the response to treatment. For most 
+infections the following treatment courses will be sufficient: 
+wound infections and abscesses, 7 days; acute infections of the 
+upper respiratory tract, 5 days.
+BIRDS:
+Infections caused by susceptible strains of Staphylococcus spp 
+and Streptococcus spp species (extra-label): 15 mg/kg PO every 
+24 hours22
+Monitoring
+ ■ Clinical efficacy, including culture and susceptibility when indi -
+cated
+ ■ Consider performing baseline and periodic white blood cell 
+counts. Discontinue therapy if an unexplained drop in leukocyte, 
+neutrophil, and/or lymphocyte counts is noted.18
+Client Information
+ ■ This medicine is an antibiotic used to treat bacterial infections. 
+Be sure to give your animal this medicine exactly as prescribed by 
+your veterinarian.
+ ■ If using the liquid form, shake the container well before measur -
+ing each dose. Use the syringe provided to ensure accurate dosing. 
+Rinse syringe between doses.
+ ■ This medicine is best given without food on an empty stomach, 
+
+
+===== Plumb PDF 1078 =====
+Pralidoxime (2-PAM)   1051
+but if your animal vomits or acts sick afterwards, give it with food 
+or a small treat (no dairy products, antacids, or anything contain-
+ing iron). If vomiting continues, contact your veterinarian. 
+ ■ Be sure to finish the entire course of treatment even if your animal 
+appears to feel better. 
+ ■ Pradofloxacin may stunt bone growth or cause joint abnormalities 
+if used in young animals, or during pregnancy or while nursing.
+ ■ The most common side effects are vomiting, nausea (acting sick), 
+or diarrhea. 
+ ■ For animals with thin hair coats, there may be a risk of sun sen -
+sitivity within a few hours after receiving this type of antibiotic.
+ ■ Y our veterinarian will need to monitor your animal while it is tak-
+ing this medicine. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+Pradofloxacin (CAS Registry 0195532-12-8; ATCvet: QJ01MA97, 
+QJ01MA) is an 8-cyano fluoroquinolone antibiotic structurally sim-
+ilar to moxifloxacin. It occurs as a brownish, light yellow to yellow, 
+fine crystalline powder. Pradofloxacin has 4 enantiomeric forms, but 
+secondary to its high antimicrobial potency, the S,S-isomer is used in 
+the pharmaceutical products.
+The oral suspension contains 2 mg/mL sorbic acid (E200) as a 
+preservative.
+Pradofloxacin may also be known as UNII-6O0T5E048I. Its trade 
+name is Veraflox®.
+Storage/Stability
+The oral suspension should be stored below 30°C (86°F) in the orig-
+inal container and kept tightly closed; after opening, it is stable for 
+60 days18 (3 months on United Kingdom label19). Oral tablets require 
+no special storage conditions, but once the container is opened, they 
+should be protected from light and moisture.
+Compatibility/Compounding Considerations
+No information has been located.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS :
+Pradofloxacin Oral Suspension: 25 mg/mL in 15 mL and 30 mL bot-
+tles; Veraflox®; (Rx). Approved for use in cats. NADA 141-344#
+Pradofloxacin Oral Tablets: 15 mg, 60 mg, and 120 mg. Approved in 
+United Kingdom and Europe for cats (15 mg only) and dogs (15 mg, 
+60 mg, 120 mg); POM-V; Veraflox®; (Rx)
+HUMAN-LABELED PRODUCTS : NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Pralidoxime (2-PAM)
+(pra-li-dox-eem) Protopam Chloride®
+Antidote; Cholinesterase Reactivator
+Prescriber Highlights
+ ▶ Cholinesterase reactivator used for adjunctive treatment of 
+organophosphate poisoning
+ ▶ Contraindications include hypersensitivity; generally not rec-
+ommended for carbamate poisoning.
+ ▶ Use with caution in animals with renal impairment and pa-
+tients receiving anticholinesterase agents for the treatment of 
+myasthenia gravis.
+ ▶ Adverse effects appear to be uncommon; rapid IV injection 
+may cause tachycardia, muscle rigidity, transient neuromuscu-
+lar blockade, or laryngospasm.
+ ▶ Most effective if given within 24 hours of exposure
+ ▶ Available dosage forms and significant cost may be a limiting 
+factor.
+Uses/Indications
+Pralidoxime is used in the treatment of organophosphate poisoning, 
+in conjunction with atropine and supportive therapy. 
+Pralidoxime must generally be given within 24 hours of exposure 
+to be effective, but some benefits may occur, particularly in large ex-
+posures, if given within 36 to 48 hours.
+Pralidoxime has been shown to have vasoconstrictive properties. 
+When pralidoxime is administered during CPR in pig models, it has 
+been shown to increase coronary perfusion pressure leading to high-
+er rates of restoration of spontaneous circulation1–3; however, clinical 
+significance is not yet determined.
+Pharmacology/Actions
+Pralidoxime reactivates cholinesterase that has been inactivated by 
+phosphorylation secondary to certain organophosphates. Via nucle-
+ophilic attack, the drug removes and binds the offending phosphoryl 
+group attached to the enzyme, which is then excreted. Pralidoxime 
+may have protective effects on cholinesterase and may directly de -
+toxify some organophosphates. It has greater activity at nicotinic 
+sites. Its effects occur primarily at the neuromuscular junction of 
+respiratory and skeletal muscle. Because it acts in the periphery, at -
+ropine is needed to block the effect of accumulated acetylcholine in 
+the respiratory center.
+Pharmacokinetics
+Pralidoxime is only marginally absorbed after oral dosing, and oral 
+dosage forms are no longer available in the United States. It is rapidly 
+distributed, primarily throughout the extracellular fluid. Because of 
+its quaternary ammonium structure, it has limited CNS penetration.
+Pralidoxime is thought to be metabolized by the liver and rapid -
+ly excreted as both metabolite(s) and unchanged drug in the urine. 
+Elimination half-life in humans is ≈75 minutes. The half-life in ru -
+minants is ≈2 to 5 hours.4
+Contraindications/Precautions/Warnings
+Pralidoxime is contraindicated in patients that are hypersensitive to 
+it. Pralidoxime is generally not recommended for use in instances 
+of carbamate poisoning because cholinesterase inhibition by carba -
+mates is rapidly reversible, but there is some controversy regarding 
+this issue. One case report has demonstrated efficacy in a dog with 
+carbamate toxicity using a lower, more frequent dosing regimen.5 
+Pralidoxime should be used with caution in patients receiving an-
+ticholinesterase agents for the treatment of myasthenia gravis, as it 
+may precipitate a myasthenic crisis. It should also be used cautiously 
+and at a reduced dose in patients with renal impairment. Temporary 
+
+
+===== Plumb PDF 1079 =====
+1052   Pralidoxime (2-PAM)
+worsening of cholinergic signs can occur if pralidoxime is adminis -
+tered IV too rapidly.
+Adverse Effects
+At usual doses, pralidoxime generally is safe and free of significant 
+adverse effects. Transient increases in liver enzymes and creatine 
+phosphokinase may occur. Rapid IV injection may cause tachy -
+cardia, muscle rigidity, transient neuromuscular blockade, and 
+ laryngospasm.
+In humans, pain at injection site has been reported after IM ad -
+ministration. 
+Reproductive/Nursing Safety
+It is not known whether this drug causes fetal harm or is excreted in 
+maternal milk.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+The acute LD50 of pralidoxime in dogs is 190 mg/kg. Signs of over -
+dose may include dizziness, nausea, or increased heart rate; however, 
+it may be difficult to distinguish these signs from effects of the poi -
+soning being treated. 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving pralidoxime and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Atropine : Effects of atropine occur more rapidly with concom-
+itant use.
+ ■ Barbiturates : Anticholinesterases can potentiate the action of 
+barbiturates; use with caution.
+ ■ Benzodiazepines (eg, diazepam, midazolam ): Respiratory 
+depressants should be avoided in patients with organophosphate 
+toxicity. 
+ ■ Cimetidine : Use should be avoided in patients with organo -
+phosphate toxicity.
+ ■ Reserpine : Use should be avoided in patients with organophos-
+phate toxicity 
+ ■ Opioids (eg, morphine): Respiratory depressants should be 
+avoided in patients with organophosphate toxicity.
+ ■ Succinylcholine : Use should be avoided in patients with or -
+ganophosphate toxicity.
+ ■ Theophylline : Use should be avoided in patients with organo-
+phosphate toxicity.
+Dosages
+NOTES: 
+1) Usually used in conjunction with Atropine; refer to that mono-
+graph and/or the references below for more information.
+2) Treatment may vary depending on patient factors such as type 
+of poisoning, amount ingested, and time since ingestion.
+DOGS/CATS:
+Organophosphate poisoning (extra-label):  
+a) 25 mg/kg IM; repeat in 1 hour if muscle weakness has not been 
+resolved
+b) Cats: 20 – 25 mg/kg IM every 12 hours6
+c) Initial dose of 20 mg/kg IV , IM, or SC. IV administration is 
+preferred; dilute in saline and administer over at least 5 min -
+utes (see Compatibility/Compounding Considerations  be -
+low). Subsequent doses of 20 mg/kg IM, SC, or IV (slowly) ev-
+ery 6 to 12 hours can be administered until nicotinic signs (eg, 
+tachycardia, hypertension, muscle fasciculations, respiratory 
+depression) are present. Discontinue after 3 to 4 treatments if 
+no response or if nicotinic signs are aggravated. 
+i. Alternatively, 50 mg/kg/day IV CRI may be used7 
+ii. Kittens:  50 mg/kg initial dose followed by a 20 mg/kg dose 
+the next day in a kitten8
+iii. Dogs: 66 mg/kg given IV over 12 hours in a dog9 
+HORSES :
+Organophosphate poisoning (extra-label): 20 mg/kg (may re -
+quire up to 35 mg/kg) IV and repeat every 4 to 6 hours10
+RUMINANTS :
+Organophosphate poisoning in cattle  (extra-label): 30 mg/kg 
+IM every 8 hours11
+CAMELIDS :
+Organophosphate poisoning (extra-label): 20 mg/kg (route not 
+specified)12
+BIRDS:
+Organophosphate poisoning (extra-label): 
+a) 10 – 20 mg/kg every 8 to 12 hours (route not specified) with 
+atropine 0.2 – 0.5 mg/kg IM every 3 to 4 hours. 13 Use lower 
+dose when given with atropine14
+b) 10 – 100 mg/kg IM every 24 to 48 hours or repeat once in 6 
+hours15
+Monitoring
+ ■ Pralidoxime therapy is monitored via improvement in the clinical 
+signs associated with organophosphate poisoning (eg, salivation, 
+lacrimation, urination, defecation/diaphoresis, gastrointestinal 
+upset, emesis [SLUDGE]). For more information, refer to one of 
+the references outlined in the dosage section.
+Client Information
+ ■ This agent should only be used with close professional  supervision.
+Chemistry/Synonyms
+A quaternary ammonium oxime cholinesterase reactivator, prali -
+doxime chloride occurs as a white to pale yellow, crystalline powder 
+with a pKa of 7.8 to 8. It is freely soluble in water. The commercially 
+available injection has a pH of 3.5 to 4.5 after reconstitution.
+Pralidoxime chloride may also be known as 2-Formyl-1-meth -
+ylpyridinium chloride oxime, 2-PAM, 2-PAM chloride, 2-PAMCl, 
+2-pyridine aldoxime methochloride and Protopam®.
+Storage/Stability
+Unless otherwise instructed by the manufacturer, pralidoxime chlo-
+ride powder for injection should be stored at room temperature, with 
+excursions permitted to 15° to 30°C (59°F-86°F). After reconstitut -
+ing with sterile water (preservative-free) for injection, the solution 
+should be used immediately. Do not use sterile water with preserva-
+tives to reconstitute the powder for injection.
+Compatibility/Compounding Considerations
+Reconstitute with 20 mL of sterile water for injection to yield  
+50 mg/mL. For IV infusion, a concentration of 10 – 20 mg/mL in 
+sodium chloride 0.9% is recommended. For IM injection when IV 
+administration is not feasible, reconstitute each vial with 3.3 mL 
+of sterile water for injection (with no preservatives added) to yield  
+300 mg/mL.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+
+
+===== BSAVA PDF 351 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+335
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+DOSES
+Dogs:  
+• Correction of hypokalaemia: intravenous doses must be titrated 
+for each patient; dilute concentrated solutions prior to use 
+(normally to 20–60 mmol/l). Rate of i.v. infusion should not 
+exceed 0.5 mmol/kg/h, especially when concentration in 
+replacement fluid is >60 mmol/l. Use of fluid pumps is 
+recommended.
+• Oral: replacement dose needs to be titrated to effect to 
+maintain mid-range normal values in each individual patient. 
+Starting doses are 2 mEq per 4.5 kg in food q12h or 2.2 mEq per 
+100 kcal required energy intake.
+Cats:  
+• Correction of hypokalaemia: intravenous doses as for dogs.
+• Oral: replacement dose needs to be titrated to effect to 
+maintain mid-range normal values in each individual patient. 
+Starting doses are 2.2 mEq per 4.5 kg in food q12h or 2–6 mEq/
+cat/day p.o. in divided doses q8–12h.
+Potentiated sulphonamides see 
+Trimethoprim/Sulphonamide 
+Pradofloxacin
+(Veraflox) POM-V 
+Formulations: Oral: 15 mg, 60 mg, 120 mg tablets; 25 mg/ml 
+solution.
+Action: Broad-spectrum, concentration-dependent antibiotic that 
+inhibits DNA gyrase and topoisomerase IV, blocking bacterial 
+replication.
+Use: Fluoroquinolone use should be reserved for infections where 
+culture and sensitivity testing predicts a clinical response and where 
+first- and second-line antimicrobials would not be effective. Active 
+against many Gram-negative and Gram-positive organisms. Much 
+improved activity versus  anaerobes compared with earlier 
+generation fluoroquinolones. Like other members of the class, 
+pradofloxacin has exceptional lipid solubility, attaining high 
+concentrations especially in the urogenital tract including the 
+prostate gland. Specific indications include superficial and deep 
+pyodermas and wound infections associated with susceptible 
+organisms such as Staphylococcus pseudintermedius , urinary tract 
+infections associated with susceptible organisms such as 
+Escherichia coli  and S. pseudintermedius , severe periodontal 
+disease associated with anaerobes such as Porphyromonas  spp. 
+and Prevotella spp. and acute severe upper respiratory tract 
+infections associated with organisms such as  E. coli, 
+Staphylococcus spp. and Pasteurella multocida .
+
+
+===== BSAVA PDF 352 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+336
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in pregnant or lactating animals. 
+Do not use in dogs <12 months of age (<18 months for giant-breeds) 
+or cats <6 weeks of age due to potential adverse effects on 
+cartilage. Do not use in animals with persistent cartilage lesions. Do 
+not use in dogs or cats with neurological disease especially epilepsy.
+Adverse reactions: Most common is mild GI upset.
+Drug interactions: Absorbents and antacids containing cations 
+(Mg2+, Al3+) may bind fluoroquinolones, preventing their absorption 
+from the GI tract. Their absorption may also be inhibited by 
+sucralfate and zinc salts; separate dosing by at least 2 hours. 
+Fluoroquinolones increase plasma theophylline concentrations. 
+Cimetidine may reduce the clearance of fluoroquinolones and so 
+should be used with caution with these drugs. Some 
+fluoroquinolones may decrease the metabolism and increase 
+nephrotoxicity of ciclosporin and tacrolimus in humans and 
+therefore concurrent use in animals is best avoided until more 
+research has been performed. May increase the action of orally 
+administered anticoagulants.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 3–5 mg/kg p.o. q24h.
+Cats: 3–5 mg/kg p.o. q24h (tablet), 5.0 mg/kg p.o. q24h (suspension). 
+References
+Boothe DM, Bush KM, Boothe HW et al . (2018). Pharmacokinetics and 
+pharmacodynamics of oral pradofloxacin administration in dogs. American Journal of 
+Veterinary Research  79, 1268–1276
+Federico S, Carrano R, Capone D et al . (2006) Pharmacokinetic interaction between 
+levofloxacin and ciclosporin or tacrolimus in kidney transplant recipients: ciclosporin, 
+tacrolimus and levofloxacin in renal transplantation. Clinical Pharmacokinetics 45, 169–175
+Sykes JE and Blondeau JM (2014) Pradofloxacin: a novel veterinary fluoroquinolone for 
+treatment of bacterial infections in cats. Veterinary Journal 201, 207–214Pralidoxime
+(Pralidoxime*) POM 
+Formulations: Powder for reconstitution: 1 g vial which produces 
+50 mg/ml solution.
+Action: Reactivates the cholinesterase enzyme damaged by 
+organophosphate (OP) and allows the destruction of accumulated 
+acetylcholine at the synapse to be resumed. In addition, pralidoxime 
+detoxifies certain OPs by direct chemical inactivation and retards the 
+‘ageing’ of phosphorylated cholinesterase to a non-reactive form.
+Use:
+• Management of OP toxicity.
+Most effective if given within 24 hours. Pralidoxime does not 
+appreciably enter the CNS, thus CNS toxicity is not reversed. If given 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 353 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+337
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+within 24 hours of exposure, treatment is usually only required for 
+24–36 hours. Respiratory support may be necessary. Treatment of 
+OP toxicity should also include atropine. Use at a reduced dose with 
+renal failure.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use for poisoning due to carbamate 
+or OP compounds without anticholinesterase activity.
+Adverse reactions: Nausea, tachycardia, hyperventilation, and 
+muscular weakness are reported in humans.
+Drug interactions: Aminophylline, morphine, phenothiazines or 
+theophylline should be avoided in these patients.
+DOSES
+Dogs, Cats: Organophosphate toxicity: dilute to a 20 mg/ml 
+solution and administer 20–50 mg/kg slowly i.v. (over 2 min at least 
+– 500 mg/min max.) i.m., s.c. Repeat after 1 hour if still severe signs, 
+then q8–12h.
+References
+Bahri LE (2002) Pralidoxime. Compendium on Continuing Education for the Practising 
+Veterinarian  24, 884–886
+Praziquantel
+(Anthelmin, Broadline Spot-on, Cazitel, Cestem, 
+Dolpac, Droncit, Droncit Spot-on, Dronspot 
+Spot-on, Drontal, Endoguard, Milbactor, 
+Milbemax, Milprazon, Milpro, Prazitel, Profender 
+Spot-on, Veloxa, WORMclear, Various other 
+authorized proprietary preparations) POM-V, 
+NFA-VPS, AVM-GSL 
+Formulations: Oral: 10 mg, 20 mg, 25 mg, 30 mg, 40 mg, 50 mg, 
+125 mg, 144 mg, 150 mg, 175 mg tablets. Topical: 20 mg, 25 mg,  
+30 mg, 60 mg, 75 mg, 96 mg in spot-on pipettes.
+Action: Cestocide that increases cell membrane permeability of 
+susceptible worms, resulting in loss of intracellular calcium and 
+paralysis. This allows the parasites to be phagocytosed or digested.
+Use:
+• Treatment of Dipylidium caninum, Taenia, Echinococcus 
+granulosus and Mesocestoides  in dogs and cats.
+As it kills all intestinal forms of Echinococcus, it is the preferred drug in 
+most Echinococcus control programmes. The PETS travel scheme 
+requires animals to be treated with praziquantel prior to entry into the 
+UK. The inclusion of pyrantel and febantel in some preparations 
+increases the spectrum of efficacy. Drontal plus can be used from  

@@ -248,3 +248,42 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Shared table viewport: content scrolls locally, captions stay in place. */
+.consulta-vet-theme .cv-table-frame { min-width: 0; max-width: 100%; }
+.consulta-vet-theme .cv-table-scroll {
+  max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain;
+  scrollbar-width: auto; scrollbar-color: hsl(var(--primary) / .5) hsl(var(--muted));
+}
+.consulta-vet-theme .cv-table-scroll:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: -2px; }
+.consulta-vet-theme .cv-table-hint { margin: 0; padding: .65rem 1rem; font-size: .75rem; line-height: 1.5; color: hsl(var(--muted-foreground)); background: hsl(var(--muted)); }
+.consulta-vet-theme .cv-table-scroll > table { width: 100%; table-layout: auto; }
+.consulta-vet-theme .cv-table-scroll :is(th, td) {
+  min-width: 10rem; overflow-wrap: normal; word-break: normal; hyphens: none;
+  white-space: normal; vertical-align: top; line-height: 1.65;
+}
+.consulta-vet-theme .cv-table-scroll thead th { letter-spacing: .015em; }
+/* Allow flex/grid descendants to shrink to their local scroll viewport. */
+.consulta-vet-theme .consulta-vet-main-scroll :where(section, article, .grid > *, .flex > *) { min-width: 0; }
+.consulta-vet-theme .cv-clinical-figure { min-width: 0; }
+.consulta-vet-theme .cv-clinical-figure img { height: auto; max-height: 42rem; object-fit: contain; }
+.consulta-vet-theme .cv-figure-compact img { max-height: 22rem; }
+.consulta-vet-theme .cv-figure-full img { max-height: none; }
+.consulta-vet-theme .cv-figure-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 28rem), 1fr)); gap: 1.5rem; align-items: start; }
+.consulta-vet-theme .cv-figure-span { grid-column: 1 / -1; }
+@media print {
+  .consulta-vet-theme .cv-table-hint { display: none; }
+  .consulta-vet-theme .cv-table-scroll { overflow: visible; }
+  .consulta-vet-theme .cv-table-scroll > table { min-width: 0 !important; }
+  .consulta-vet-theme .cv-table-scroll :is(th, td) { min-width: 0; font-size: 9pt; }
+}
+.consulta-vet-theme .cv-editorial-table { container-type: inline-size; }
+.consulta-vet-theme .cv-table-cards { display: none; }
+@container (max-width: 36rem) {
+  .consulta-vet-theme .cv-editorial-table > .cv-table-frame { display: none; }
+  .consulta-vet-theme .cv-table-cards { display: block; }
+}
+@media print {
+  .consulta-vet-theme .cv-table-cards { display: none !important; }
+  .consulta-vet-theme .cv-editorial-table > .cv-table-frame { display: block !important; }
+}

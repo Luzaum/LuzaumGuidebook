@@ -1,0 +1,335 @@
+SECTION XIX
+•
+Endocrine Disease
+2004
+eBooks.Health.Elsevier.com
+THE HISTORY OF 
+HYPERADRENOCORTICISM AND 
+DEFINITIONS
+T
+he most common manifestation of 
+hyperadrenocorticism (hypersecre-
+tion of adrenocortical hormones) 
+in dogs is hypercortisolism (HC). Chroni-
+cally increased circulating glucocorticoids 
+can be caused by long-term glucocorticoid 
+administration (iatrogenic) or it can be 
+naturally occurring, caused by excessive 
+endogenous cortisol production.1 e clini-
+cal condition associated with chronic corti-
+sol excess is oen referred to as Cushing’s 
+syndrome, aer the eminent neurosurgeon 
+Harvey Cushing. Cushing’s clinical descrip-
+tion of his patient Minnie G., published in 
+his monograph in 1912, incorporated all the 
+features that are now considered classic for 
+HC. He speculated that the disorder may be 
+related to the adrenal gland (hyperadrenal-
+ism). In his later survey, published in 1932, 
+he associated the condition with a basophil 
+adenoma of the pituitary gland. e descrip-
+tion of this fascinating discovery makes 
+Harvey Cushing one of the greatest gures 
+in endocrinology.2 In veterinary medicine 
+the rst mention of HC appeared in 1939, 
+when Verstraete and oonen reported the 
+rst 2 dogs with “pituitary disorders.”3
+Naturally occurring HC is usually 
+the result of inappropriate excess secre-
+tion of pituitary adrenocorticotropic hor-
+mone (ACTH) or due to autonomous 
+adrenal glucocorticoid secretion. ese 
+are classied as ACTH-dependent HC 
+and 
+ACTH-independent 
+HC, 
+respec-
+tively. 
+ACTH-dependent 
+HC 
+includes 
+pituitary-dependent HC (PDH; Cush-
+ing’s disease) and the ectopic ACTH syn-
+drome. ACTH-independent HC includes 
+functional adrenocortical tumors (ATs) 
+and primary ACTH-independent adreno-
+cortical hyperplasia, such as food-induced 
+HC. While PDH and functional ATs are 
+well-recognized, reports of primary ACTH-
+independent adrenocortical hyperplasia 
+and ectopic ACTH syndrome are limited to 
+individual case reports.4
+PHYSIOLOGY: HYPOTHALAMUS-PITUITARY-
+ADRENOCORTICAL AXIS (HPAA)
+HYPOTHALAMUS AND PITUITARY GLAND
+e hypothalamus is a part of the diencephalon located dorsal 
+to the pituitary gland and ventral to the thalamus (ch. 241). e 
+hypothalamus is intimately related to the pituitary gland through 
+a portal vascular system and an anatomic link, as the pituitary is 
+attached to the ventral part of the hypothalamus (median emi-
+nence) via part of the neurohypophysis, the infundibular stalk.5
+In dogs, the pituitary gland is divided into 3 functional units: the 
+anterior lobe, the neurohypophysis or posterior lobe, and between 
+them, the pars intermedia. e mature anterior lobe is populated 
+by at least 5 distinct endocrine cell types distinguished by the 
+tropic (stimulating) hormone each synthesizes: somatotrophs: 
+growth hormone (GH); lactotrophs: prolactin; thyrotrophs: 
+thyroid stimulating hormone (TSH); corticotrophs: the precur-
+sor molecule pro-opiomelanocortin (POMC), which is broken 
+down to ACTH and related peptides; and gonadotrophs: lutein-
+izing hormone (LH) and follicle-stimulating hormone (FSH). e 
+pars intermedia contains 2 distinct cell types that can synthesize 
+POMC: predominant “A” cells are similar to corticotrophs and the 
+less common “B” cells in which ACTH is cleaved into alpha-mela-
+nocyte stimulating hormone (alpha-MSH) and corticotropin-like 
+intermediate-lobe peptide (ACTH18-39 or CLIP).5
+Secretion of ACTH from the anterior lobe is regulated by the 
+hypothalamus and central nervous system via neurotransmit-
+ters that release corticotropin-releasing hormone (CRH) and 
+vasopressin (VP). CRH is released from small neurons in the 
+paraventricular nucleus in response to neural signaling. VP is 
+primarily released from CRH-containing neurons and is distinct 
+from the VP involved in water homeostasis. When CRH and VP 
+are released, the ACTH precursor, POMC, is secreted from the 
+anterior lobe.6 e POMC is cleaved to produce ACTH. e pars 
+intermedia is poorly vascularized and is predominantly inner-
+vated by dopaminergic nerve bers from the hypothalamus.7 e 
+POMC-producing cells of the pars intermedia are resistant to 
+glucocorticoid suppression due to an absence of glucocorticoid 
+receptors.
+ADRENAL CORTEX
+e adrenal cortex consists of three functional and morphologi-
+cal layers: the outermost zona glomerulosa (zG), the middle zona 
+fasciculata (zF) and the inner zona reticularis (zR). e zG is 
+responsible for the production of the mineralocorticoid aldoste-
+rone, regulated by plasma concentrations of potassium (K) and 
+angiotensin-II. Acute increases in circulating ACTH also induce 
+aldosterone secretion. e zF and zR function together as a unit 
+Hyperadrenocorticism (Cushing’s Syndrome) in Dogs
+Sara Galac
+CHAPTER 293
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 8 Videos and 1 Client Information Sheet.
+ACRONYMS
+ACTH adrenocorticotropic 
+hormone
+ACTHst ACTH stimulation test
+ALP alkaline phosphatase
+AT adrenocortical tumor
+BG blood glucose
+BP blood pressure
+BUN blood urea nitrogen
+Ca calcium
+cAMP cyclic adenosine 
+monophosphate
+CBC complete blood count
+CDI central diabetes insipidus
+C-EUS contrast-enhanced 
+ultrasonography
+CI confidence interval
+[cortisol] cortisol 
+concentrations
+cPLI canine pancreatic lipase 
+immunoreactivity
+CRH corticotropin-releasing 
+hormone
+CT computed tomography
+CYP11B1 11-beta-hydroxylase
+CYP17A1 17-alpha-
+hydroxylase
+DA dopamine
+DHEA dehydroepian-
+drosterone
+DM diabetes mellitus
+DRD2 dopamine receptor 
+subtype 2
+eACTH endogenous ACTH
+FSH follicle-stimulating 
+hormone
+GI gastrointestinal
+GIP gastric-inhibitory 
+polypeptide
+GNAS G-protein alpha 
+subunit
+HC hypercortisolism
+HDDST high-dose 
+dexamethasone 
+suppression test
+Hp haptoglobin
+HPAA hypothalamus-
+pituitary-adrenocortical axis
+K potassium
+LDDST low-dose dexa-
+methasone suppression test
+Continued
+
+CHAPTER 293
+•
+Hyperadrenocorticism (Cushing’s Syndrome) in Dogs
+2005
+eBooks.Health.Elsevier.com
+and are the sole source of glucocorticoids, 
+strictly regulated by the HPAA. e zR also 
+produces androgens, e.g., dehydroepian-
+drosterone (DHEA) and androstenedione.4
+Adrenal steroidogenesis is initiated 
+by ACTH, which binds to the G-protein 
+alpha subunit (GNAS)-coupled melano-
+cortin 2 receptor (MC2R), assisted by the 
+melanocortin 2 receptor accessory protein 
+(MRAP), and activates the cyclic adenos-
+ine monophosphate (cAMP) and protein 
+kinase A (PKA) pathways. Cholesterol is 
+the precursor molecule for all adrenocor-
+tical hormones and its availability is the 
+limiting step for adrenal steroidogenesis. 
+Cholesterol is converted to adrenocortical 
+hormones in several steps, each catalyzed 
+by enzymes (Figure 293.1).
+Each zone in the adrenal cortex 
+expresses a dierent set of steroidogenic 
+enzymes. Dog steroidogenesis is unique 
+with 
+only 
+one 
+11-beta-hydroxylase 
+enzyme (CYP11B1). Canine adrenals lack 
+aldosterone-synthetase (CYP11B2), a spe-
+cic enzyme involved in the last step in 
+aldosterone synthesis in humans and many 
+other species. is implies that in dogs the 
+expression of the 17-alpha-hydroxylase 
+enzyme (CYP17A1) in the zF is crucial for 
+cortisol synthesis, while lack of CYP17A1 
+in the zG restricts steroidogenesis to 
+mineralocorticoid production.8 Activa-
+tion of several transcription factors and 
+steroidogenic enzymes in adrenocortical 
+cells increase cortisol production, which 
+in turn exerts negative feedback suppress-
+ing hypothalamic CRH and VP while also 
+suppressing ACTH secretion from the 
+anterior lobe. Adrenal cortisol secretion has no eect on ACTH 
+secretion from pars intermedia. ACTH and cortisol secretion are 
+pulsatile and there is no circadian rhythm.9
+PATHOGENESIS
+ACTH-DEPENDENT HYPERADRENOCORTICISM
+Pituitary-Dependent Hypercortisolism (PDH)
+PDH, diagnosed in 80-85% of dogs with HC, is the most common 
+naturally occurring form. PDH is caused by a functional, auton-
+omous, ACTH-secreting, pituitary tumor that causes bilateral 
+adrenocortical hyperplasia and chronic excessive secretion of glu-
+cocorticoids (Figure 293.2).1 Pituitary tumors may arise from the 
+anterior lobe or the pars intermedia. Tumors in the pars interme-
+dia tend to grow larger and are resistant to dexamethasone sup-
+pression. Endocrine testing is oen not discriminative, as large 
+tumors from the anterior lobe may also be dexamethasone-resis-
+tant.9 Most of these pituitary tumors are histologically classied 
+as adenoma (well delineated from adjacent parenchyma). Inva-
+sive adenomas (exhibiting local invasion of brain parenchyma or 
+adjacent structures), carcinomas (with distant metastasis), and 
+pituitary hyperplasia have also been described.10
+Not much is known about the genetic background of canine 
+HC. An activating mutation in the corticotropin releasing hor-
+mone receptor gene (CRHR1) was detected in just 1 Poodle from a 
+series of 50 dogs, failing to support the theory that ACTH-secreting 
+adenomas develop aer chronic increases in positive feedback sig-
+nals by constitutively activated CRH receptors.11 e research on 
+oncogenesis of canine pituitary tumors has predominantly focused 
+on candidate genes involved in pituitary tumorigenesis in humans. 
+e high prevalence of HC in dogs and similarities in clinical 
+presentation make the dog a suitable animal model for study-
+ing Cushing’s disease in humans, but more molecular studies are 
+needed. e gain-of-function of the Ubiquitin Specic Peptide 8 
+gene (USP8) is a main driver behind the formation of corticotroph 
+adenomas in humans. is peptide was not identied in dogs.12
+Mutation of a T-box transcription factor (Tpit), obligate for the 
+expression of POMC in humans and dogs, is not present in canine 
+pituitary tumors.13 14
+Ectopic ACTH Syndrome
+Various tumor types, from well-dierentiated and indolent car-
+cinoids to highly aggressive small-cell carcinomas, can secrete 
+ACTH which, in turn, leads to HC. Dogs with resistance to dexa-
+methasone, negative pituitary imaging, severely elevated endog-
+enous ACTH (eACTH) concentrations, severe hypokalemia, 
+and obvious clinical signs are candidates for the diagnosis of 
+ectopic ACTH syndrome. A neuroendocrine tumor originating 
+in the pancreas has been described as source of ectopic ACTH 
+in dogs (Figure 293.2).15 16 Ectopic ACTH syndrome is rare and 
+likely underdiagnosed in dogs. Ectopic ACTH-secreting tumors 
+are usually small, dicult to visualize, and only identied aer 
+extensive diagnostic imaging. Furthermore, treatment targeting 
+the adrenal glands will resolve clinical signs of HC regardless 
+of the ACTH source. Although typically slow-growing, most 
+ectopic ACTH secreting tumors are malignant. e prognosis 
+is unpredictable.
+ACTH-INDEPENDENT HYPERADRENOCORTICISM
+Autonomous Cortisol-Secreting ATs
+Such tumors occur in about 15-20% of dogs with naturally occur-
+ring HC, causing “adrenal-dependent” HC (AHC). Excessive 
+production of cortisol by the AT negatively feeds back on the 
+hypothalamus and pituitary gland, suppressing CRH and ACTH 
+secretion. is causes atrophy of cortisol-secreting cells within 
+the contralateral adrenal gland and the non-neoplastic cortisol-
+secreting cells of the aected adrenal gland (Figure 293.2).1 One 
+of the mechanisms behind ACTH-independent cortisol secretion 
+is an activating mutation in the G-protein alpha-subunit gene 
+(GNAS), described in about one-third of investigated cases.17
+An activating GNAS mutation constitutively induces the PKA
+pathway, which can lead to continuous and uncontrolled cor-
+tisol production, can stimulate proliferative activity, and may 
+be responsible for AT growth. is mutation is present in both 
+benign and malignant ATs.
+e histological criteria for dierentiating adrenocortical 
+adenomas from carcinomas include tumor size, peripheral bro-
+sis, capsular invasion, a trabecular growth pattern, hemorrhage, 
+necrosis, single-cell necrosis, hematopoiesis, brin thrombi, 
+cytoplasmic vacuolation, and the Ki67 proliferation index.18 In 
+the largest case series of functional ATs, most were carcinomas 
+(63% and 75%).18 19 e dierentiation, however, is challenging 
+and the most reliable criterion of AT malignancy remains metas-
+tases. Histopathological parameters can also serve as prognostic 
+indicators aer adrenalectomy. ree parameters were signi-
+cantly associated with survival: the percentage cells with clear/
+vacuolated cytoplasm, the presence of necrosis, and the Ki67 
+proliferation index. Together, they comprise the Utrecht score, 
+an easy-to-use histopathological scoring system that can help to 
+assess post-surgery prognosis (Figure 293.3) 20
+LH luteinizing hormone
+MC2R melanocortin 2 receptor
+MRI magnetic resonance 
+imaging
+Na sodium
+P/B value ratio of pituitary 
+height vs the area of the 
+brain
+PDH pituitary-dependent 
+hypercortisolism
+PE physical examination
+PKA protein kinase A
+PO4 phosphate
+POMC pro-opiomelanocortin
+PP polyphagia
+PT pulmonary 
+thromboembolism
+PU polyuria
+PU/PD polyuria, polydipsia
+SOAT1 sterol-O-acyl-
+transferase 1
+SST somatostatin
+SSTR2 somatostatin receptor 
+subtype 2
+SSTR5 somatostatin receptor 
+subtype 5
+TSH thyroid stimulating 
+hormone
+TT4 total thyroxine
+UCCR urine cortisol to 
+creatinine ratio
+US ultrasonography
+USG urine specific gravity
+UTI urinary tract infection
+VP vasopressin
+zF zona fasciculata
+zG zona glomerulosa
+zR zona reticularis
+ACRONYMS—CONT’D

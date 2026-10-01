@@ -1,0 +1,214 @@
+265
+SECTION III
+Differential Diagnosis for 
+Clinicopathologic Abnormalities
+Anemia and Erythrocytosis
+Tracy Stokol
+A
+nemia is dened as reduced red blood 
+cell (RBC) mass and is recognized by 
+a packed cell volume (PCV), hema-
+tocrit (HCT), hemoglobin (HB) concentra-
+tion, or RBC count below the lower limit of 
+established reference intervals for that spe-
+cies. Conversely, erythrocytosis is dened 
+as increased RBC mass and is recognized by 
+values that are higher than the upper refer-
+ence limit for these tests. Although polycy-
+themia and erythrocytosis have been used interchangeably, they 
+are not identical. Polycythemia refers to increases in any cell in 
+blood (RBCs, leukocytes, platelets), whereas polycythemia vera 
+is a chronic myeloproliferative disease, specically chronic ery-
+throid leukemia (ch. 173). Erythrocytosis specically means an 
+absolute increase in RBCs (or a true increase in RBC mass) and 
+will be used herein. In veterinary medicine, we typically use the 
+PCV or HCT (the default applied herein) as the main indicator 
+of RBC mass, whereas HB concentration is standard in human 
+medicine. e reason for the discrepancy between disciplines is 
+unclear; however, it may be related to the higher likelihood of 
+postprandial lipemia in small animal patients, which can result 
+in false increases in HB concentration. It should be noted that 
+although PCV and HCT are used synonymously, they represent 
+2 dierent measurements. e PCV is a directly measured value 
+from a centrifuged microhematocrit tube whereas the HCT is a 
+calculated result from a hematology analyzer that uses mean cell 
+volume (MCV) and RBC count (HCT = MCV × RBC). us, the 
+HCT will be inuenced by artifactual or real changes in the MCV, 
+such as storage-associated RBC swelling,1 which are less likely 
+to aect the PCV. Internal studies done at the author’s institu-
+tion with the ADVIA 120 hematology analyzer showed that the 
+PCV is generally lower than the HCT, with a median dierence 
+(PCV− HCT) of −0.02 L/L (range, −0.06 to 0.03 L/L) and −0.03 
+L/L (range, −0.06 to 0 L/L) in clinically healthy dogs (n = 64) and 
+cats (n = 69), respectively.
+e rst step in interpretation of HCT results is to decide 
+whether the result is abnormal for that individual animal and 
+due to a disease process versus an expected physiologic change, 
+i.e., results should be interpreted in context of patient signalment 
+(breed, age, sex, reproductive status). e use of reference inter-
+vals can be misleading because they are usually established from 
+presumably healthy adult animals of various breeds and will be 
+insensitive to breed- and age-specic changes.2-6 For instance, 
+a HCT of 0.45 L/L (45%) is within established reference inter-
+vals for most laboratories, but would be compatible with anemia 
+in Greyhounds, which typically have higher HCTs than other 
+breeds.3 Reference intervals can be broad and may be insensitive 
+to changes in an individual animal that are beyond analytic or 
+biologic variation. us, the author considers it worthwhile to 
+obtain baseline hemogram (complete blood count [CBC]) and 
+clinical chemistry results when a dog or cat has reached adult-
+hood (around 12 months of age in small or medium dog breeds 
+and cats and 2 years of age in large dog breeds), so that individual-
+specic abnormalities can be identied using a reference change 
+value or critical dierence approach.7 Reference change values 
+have been established for hematologic measurands in dogs and 
+cats.8 9 However, these values are dependent on the cohort of ani-
+mals (lower variation is expected with laboratory-bred animals), 
+instrument, and analytical method used in the study. Ultimately, 
+clinicians use their own judgment to determine if the degree of 
+change from an established baseline is excessive for an individual 
+animal. Once anemia or erythrocytosis has been conclusively 
+identied, a systemic approach can be used to determine the 
+pathophysiologic mechanism(s) and, hopefully, the underlying 
+cause for the abnormalities.
+CHAPTER 57
+ACRONYMS
+CBC complete blood count
+HCT hematocrit
+HB hemoglobin
+IMHA immune-mediated 
+hemolytic anemia
+MCV mean cell volume
+PCV packed cell volume
+RBC red blood cell
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Video.
+
+SECTION III
+•
+Dierential Diagnosis for Clinicopathologic Abnormalities
+266
+eBooks.Health.Elsevier.com
+ANEMIA
+Anemia is the most common hematologic abnormality encoun-
+tered in veterinary clinical practice. It can be the cause of disease 
+(e.g., immune-mediated hemolytic anemia [IMHA]) or a marker 
+of underlying disease (e.g., cancer, chronic kidney disease). ere 
+are three main pathophysiologic mechanisms for anemia: hemor-
+rhage (loss), hemolysis (decreased lifespan), and decreased produc-
+tion. Distinguishing between these mechanisms is important for 
+identifying the underlying disease or cause of anemia (Box 57.1) 
+and is best accomplished using a combination of signalment, his-
+torical information, clinical signs, imaging ndings, and clinical 
+pathologic results. Anemia can be multifactorial in origin, which 
+can complicate discovery of the underlying cause. ere are always 
+going to be those challenging and potentially frustrating cases, 
+where the mechanism and cause of the anemia remain ambiguous.
+MECHANISMS OF ANEMIA
+If an anemia is “adequately” regenerative (see approach below), 
+the underlying mechanism is hemorrhage or hemolysis. Dis-
+tinguishing between these 2 mechanisms relies on identifying a 
+source of hemorrhage or a cause for hemolysis on a blood smear 
+examination (Figures 57.1 and 57.2; Box 57.1). In some cases, the 
+anemia may be due to a combination of hemorrhage and hemoly-
+sis, with one process being the main cause.
+Hemorrhage
+is can be internal (into a body cavity) or external (“lost” from 
+the body, e.g., from gastrointestinal hemorrhage). A low total 
+protein concentration (especially the combination of low albu-
+min and globulins) would support the conclusion that an ane-
+mia is due to hemorrhage, but it is not specic for hemorrhage. 
+A normal total protein concentration also does not rule out 
+hemorrhage, since peracute hemorrhage, internal bleeding, or 
+chronic intermittent external blood loss may not decrease total 
+protein concentrations. If external hemorrhage is chronic and 
+occult, iron deciency can ensue once iron stores are depleted. 
+Iron deciency should be suspected if hypochromic RBCs are 
+seen on a blood smear (Figure 57.2) and a CBC shows micro-
+cytic hypochromic RBC indices. Iron concentrations and per-
+centage saturation of transferrin are usually quite low in serum 
+or plasma with iron deciency anemia, but can also be decreased 
+with inammatory disease.10 Newer diagnostic tests for HB 
+content in reticulocytes (e.g., reticulocyte hemoglobin content 
+[CHr]; ch. 172) can help support a diagnosis of iron deciency 
+anemia in dogs but these results are not usually provided as part 
+of a routine CBC and are not specic for iron deciency, being 
+abnormal in dogs with inammatory disease, portosystemic 
+shunts, or breed-associated microcytosis.10 11
+Hemolysis (ch. )
+A hemolytic anemia is due to premature phagocytosis of RBCs by 
+macrophages in the spleen, liver, and bone marrow, called extra-
+vascular hemolysis (because it is occurring “outside” vessels in tis-
+sues). Extravascular hemolysis is occurring in all cases of hemolytic 
+anemia. However, with certain causes, there may be a concurrent 
+intravascular component, where the RBC membrane physically 
+ruptures within the circulation, liberating free HB. It is important 
+to identify which animals with a hemolytic anemia are suering 
+from concurrent intravascular hemolysis, because this helps nar-
+row down the dierential diagnosis (Box 57.1) and has negative 
+prognostic implications. Intravascular hemolysis is characterized 
+by hemoglobinemia and hemoglobinuria. Ghost RBCs and relevant 
+RBC changes (e.g., Heinz bodies reecting oxidant injury; Figure 
+57.2) or infectious organisms (e.g., Babesia canis) may be seen on 
+blood smears, but should not be relied upon for distinguishing 
+intravascular from extravascular hemolysis. Ghost RBCs are not 
+specic for intravascular hemolysis, being more commonly seen 
+with any cause of invitro or artifactual hemolysis (e.g., lysis of cells 
+in stored blood) or as a consequence of blood smear preparation. 
+A hemolytic anemia is usually secondary to RBC abnormalities, 
+such as membrane-bound immunoglobulins or complement in 
+IMHA, although abnormally activated or neoplastic macrophages 
+in histiocytic disorders can inappropriately remove normal RBCs 
+(ch. 328).12 Hemolytic anemia is typically associated with a normal 
+or high total protein concentration and can result in bilirubinemia, 
+especially due to unconjugated (indirect) bilirubin. However, cho-
+lestasis with increases in conjugated (direct) bilirubin may occur 
+and the latter may even dominate in dogs with IMHA and sick ano-
+rectic cats (presumably due to bile sludging). Liver enzyme activi-
+ties may be increased from hypoxic injury but can be normal. Iron 
+concentrations and percentage saturation of transferrin are con-
+sistently increased in the plasma or serum of dogs and cats with 
+hemolytic anemia, and siderocytes (RBCs with faint iron inclu-
+sions; Figure 57.2) may be seen on a blood smear. None of these 
+results is specic for hemolytic anemia and should be considered 
+as supportive, not conrmatory, results. e lack of these ndings 
+does not rule out hemolysis either.
+Decreased Production (ch. )
+If the anemia is not acute and is non-regenerative or “inade-
+quately” regenerative, this indicates a problem with RBC produc-
+tion in the bone marrow, of which there are many causes (Box 
+57.1). Clues as to the mechanism of a non-regenerative anemia 
+can be gleaned from the severity of the anemia, RBC indices, and 
+other hematologic ndings, particularly concurrent cytopenias 
+(specically, neutropenia and thrombocytopenia) and abnormal 
+(neoplastic) cells in blood smears (Figure 57.3). A mild to moder-
+ate normocytic normochromic anemia is the most common form 
+of non-regenerative anemia and is usually due to extramedul-
+lary disease, particularly anemia of inammatory disease (used 
+to be called anemia of chronic disease) and cancer-associated 
+anemia (which is multifactorial, but does involve inammatory 
+cytokines).13,14 Suppressed RBC production in the bone mar-
+row from concurrent disease or inammation can dampen the 
+regenerative response to a primarily hemorrhagic or hemolytic 
+anemia so that it becomes less regenerative than expected or even 
+“inadequately” regenerative. e most common causes of a severe 
+non-regenerative anemia, without other cytopenias, are immune-
+mediated conditions in dogs and immune-mediated conditions 
+and feline leukemia virus infection in cats (ch. 199).13,14 Feline 
+leukemia virus-associated hematologic disorders are infrequent 
+since the advent of vaccination.
+A MECHANISTIC APPROACH TO ANEMIA
+A stepwise approach can be used for distinguishing between 
+mechanisms of anemia and is based on asking these 4 questions 
+(Box 57.2):
+1. How acute is the anemia? is is important for assessing 
+whether an anemia is regenerative or not (question 2, below). 
+e bone marrow takes approximately 3-5 days to mount a 
+regenerative response. An anemia of acute onset may appear 
+“non-regenerative” if the bone marrow has had insucient 
+time to respond (termed pre-regenerative). Clinical signs and 
+history can help with determining duration of anemia, but 
+anemia frequently manifests with vague clinical signs that 
+may be missed by the owner. Unless there has been a known 
+traumatic event, a regenerative response should be manifest by 
+the time of presentation in most patients. e expected mar-
+row response will also depend on the degree of anemia and 

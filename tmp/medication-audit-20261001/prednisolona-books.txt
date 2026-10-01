@@ -1,0 +1,851 @@
+
+===== Plumb PDF 1085 =====
+1058    PrednisoLONE/Prednisone/ PrednisoLONE Sodium Succinate
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+ ■ Angiotensin-Converting Enzyme Inhibitors (ACEIs; eg, 
+benazepril, enalapril): May increase risk for hypotension
+ ■ Amlodipine : May increase risk for hypotension
+ ■ Beta-Blocking Agents  (eg, propranolol): May enhance the 
+postural hypotensive effects seen after the first dose of prazosin
+ ■ Clonidine : May decrease prazosin antihypertensive effects
+ ■ Pentoxifylline : May increase risk for hypotension
+ ■ Phosphodiesterase Inhibitors ( eg, sildenafil): May increase 
+risk for hypotension
+ ■ Telmisartan : May increase risk for hypotension
+ ■ V asopressors ( eg, dopamine, norepinephrine ): Prazosin may 
+reduce dopamine pressor effect.
+ ■ Verapamil : May cause synergistic hypotensive effects when 
+used concomitantly with prazosin
+Laboratory Considerations
+None noted
+Dosages
+DOGS:
+Decrease urethral resistance in idiopathic vesico-urethral re -
+flex dyssynergia (VURD; extra-label): 
+a) 0.5 mg/kg PO twice daily. If adverse effects develop, decrease 
+the dose by 50%. Moderate to good effect was noted in 60% of 
+the dogs treated.13 
+b) Anecdotally, 1 mg/15 kg (33 lb) PO 2 to 3 times daily
+Dysuria in patients with prostatic carcinoma  (extra-label): 
+From a case report, 0.1 – 0.4 mg/kg PO daily was helpful in man-
+aging dysuria associated with prostatic carcinoma.1
+Systemic hypertension (extra-label): 
+a) Weight-based dosage: 0.5 – 2 mg/kg PO every 8 to 12 hours7
+b) Dosage per dog: 0.5 – 2 mg/dog (NOT mg/kg) PO every 8 to 
+12 hours14,15
+Adjunctive treatment of heart failure  (extra-label): 1 mg/dog 
+(NOT mg/kg) PO 3 times daily for dogs weighing less than 15 kg 
+(33 lb); 2 mg/dog (NOT mg/kg) 3 times daily PO for dogs weigh -
+ing more than 15 kg (33 lb)16,17
+CATS:
+Decreasing urethral resistance with functional urethral ob -
+struction (extra-label): Use is controversial, and efficacy has been 
+questioned.2,6 Several dosages have been suggested, but most 
+commonly 0.25 – 1 mg/cat (NOT mg/kg) PO every 12 hours for 
+1 to 2 weeks4–6
+Hypertension (extra-label): 0.25 – 0.5 mg/cat (NOT mg/kg) PO 
+once daily7
+Monitoring
+ ■ Clinical efficacy
+ ■ Baseline and periodic blood pressure
+ ■ Mucous membrane color, capillary refill time (CRT), pulse 
+ oximetry
+Client Information
+ ■ This medicine may be given with or without food. If your animal 
+vomits, stops eating, or acts sick after getting prazosin on an emp-
+ty stomach, give the medicine with food or a small treat to see if 
+this helps. If vomiting continues, contact your veterinarian.
+ ■ The most common side effect with this medicine is lethargy 
+(tiredness/lack of energy).
+Chemistry/Synonyms
+Prazosin HCl, a quinazoline-derivative postsynaptic alpha-1-adren-
+ergic blocker, occurs as a white to tan powder. It is slightly soluble 
+in water and very slightly soluble in alcohol. Dosage forms contain 
+prazosin HCl, but potency and dosage are expressed (and calculated) 
+as prazosin base.
+Prazosin may also be known as CP-12299-1, furazosin hydrochlo-
+ride, prazosini hydrochloridum; many trade names are available.
+Storage/Stability
+Prazosin capsules should be stored in well-closed containers and 
+protected from light and moisture at room temperature (20°C-25°C 
+[68°F-77°F]).
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS :
+Prazosin Capsules: 1 mg, 2 mg, and 5 mg (as base); Minipress®, 
+generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+PrednisoLONE/Prednisone/ 
+PrednisoLONE Sodium Succinate
+(pred-niss-oh-lone; pred-ni-zone)
+Glucocorticoid
+For more information, see  Glucocorticoid Agents, General Infor -
+mation and Trimeprazine/Prednisolone
+NOTE: Prednisone and prednisoLONE are distinct drugs. This 
+monograph uses TALL man letters to differentiate prednisoLONE 
+from prednisone. They are often considered bioequivalent as most 
+species rapidly convert prednisone to its active form, prednisolone, in 
+the liver; however, horses, cats, and animals that have severe hepatic 
+failure may not efficiently absorb or convert prednisone to prednis-
+oLONE. PrednisoLONE or an alternative glucocorticoid should be 
+used for these animals when possible. 
+Prescriber Highlights
+ ▶ Used to treat many conditions in a variety of species.  
+ ▶ Prednisone’s anti-inflammatory activity is 4 times more po-
+tent than hydrocortisone and it has some mineralocorticoid 
+ activity.
+ ▶ Contraindications (relative) include systemic fungal infections. 
+Increased risk of GI ulceration when used concurrently with 
+NSAIDS or aspirin.     
+ ▶ Caution is advised for use in animals with an active bacterial 
+infection, corneal ulcer, hyperadrenocorticism, diabetes melli-
+tus, osteoporosis, chronic psychotic reactions, predisposition 
+to thrombophlebitis, hypertension, congestive heart failure, 
+and renal insufficiency.
+ ▶ Goal of therapy should be to use the lowest dose possible 
+for the least amount of time to treat and control patient’s 
+ condition.
+ ▶ PrednisoLONE is recommended for use in cats and horses 
+because of the poor bioavailability of prednisone.
+ ▶ Primary adverse effects are related to iatrogenic hyperadreno-
+corticism with sustained use.
+ ▶ Many potential drug and laboratory interactions
+
+
+===== Plumb PDF 1086 =====
+PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate    1059
+Uses/Indications
+Although glucocorticoids have been used to treat many conditions 
+in humans and animals, prednisoLONE and prednisone have 4 pri-
+mary uses with accompanying dosage ranges: 1) replacement or 
+supplementation (eg, relative adrenal insufficiency associated with 
+septic shock) for glucocorticoid deficiency secondary to hypoadre -
+nocorticism, 2) anti-inflammatory agent, 3) immunosuppression, 
+and 4) antineoplastic agent. 
+Glucocorticoids are used in the treatment of endocrine condi -
+tions (eg, adrenal insufficiency), autoimmune and immune-medi -
+ated diseases (eg, rheumatoid arthritis, systemic lupus, masticatory 
+myositis), severe allergic conditions, anaphylaxis, envenomation, re-
+spiratory diseases (eg, asthma), dermatologic diseases (eg, pemphi -
+gus, allergic dermatoses), hematologic disorders (eg, thrombocyto -
+penia, autoimmune hemolytic anemia), neoplasias, nervous system 
+disorders (eg, increased CSF pressure), GI diseases (eg, ulcerative 
+colitis exacerbations, inflammatory bowel disease), renal diseases 
+(eg, nephrotic syndrome), and induction of fetal maturation. Some 
+glucocorticoids are used topically on the eye and skin or are injected 
+intra-articularly or intralesionally. This list is not exhaustive. High-
+dose use is not supported for hemorrhagic or hypovolemic shock, 
+head trauma, spinal cord trauma,1 or sepsis.
+In general, when administering glucocorticoids, the following 
+principles should be followed:
+ ■ A specific diagnosis is ideally obtained before glucocorticoids are 
+administered as they can mask disease.
+ ■ A course of treatment should be determined prior to treatment.
+ ■ A therapeutic endpoint should be determined prior to treatment.
+ ■ The least potent glucocorticoid should be used at the lowest dose 
+for a minimal amount of time.
+ ■ It is important to understand when glucocorticoid use is inappro-
+priate (eg, acute infection, diabetes).2
+Pharmacology/Actions
+PrednisoLONE and prednisone are intermediate-acting corticoste -
+roids with biologic half-lives of 12 to 36 hours. Glucocorticoids have 
+effects on almost every cell type and system in mammals. 
+Cardiovascular system : Glucocorticoids can reduce capillary per -
+meability and enhance vasoconstriction. A clinically insignificant 
+positive inotropic effect can occur after glucocorticoid administra -
+tion. This drug’s vasoconstrictive properties and increased blood 
+volume can result in increased blood pressure.
+Cells: Glucocorticoids can inhibit fibroblast proliferation, macro -
+phage response to migration inhibiting factor, sensitization of lym -
+phocytes, and the cellular response to mediators of inflammation; 
+they can also stabilize lysosomal membranes.
+CNS/autonomic nervous system : Glucocorticoids can lower the 
+seizure threshold, alter mood and behavior, diminish response to 
+pyrogens, stimulate appetite, and maintain alpha rhythm. Glucocor-
+ticoids are necessary for normal adrenergic receptor sensitivity.
+Endocrine system: When an animal is not stressed, glucocorticoids 
+suppress the release of corticotropin (adrenocorticotropic hormone 
+[ACTH]) from the anterior pituitary, which reduces or prevents the 
+release of endogenous corticosteroids. Stress factors (eg, renal dis -
+ease, liver disease, diabetes) may occasionally nullify the suppress -
+ing aspects of exogenously administered steroids. The release of 
+thyroid-stimulating hormone (TSH), follicle-stimulating hormone 
+(FSH), prolactin, and luteinizing hormone may be reduced when 
+glucocorticoids are administered at pharmacologic doses. Conver -
+sion of thyroxine (T 4) to triiodothyronine (T 3) may be reduced by 
+glucocorticoids, and plasma levels of parathyroid hormone may be 
+increased. Glucocorticoids may inhibit osteoblast function. Vaso -
+pressin (antidiuretic hormone [ADH]) activity is reduced at the re -
+nal tubules and diuresis may occur. Glucocorticoids inhibit insulin 
+binding to insulin-receptors and the post-receptor effects of insulin.
+Fluid and electrolyte balance : Glucocorticoids can increase renal 
+potassium and calcium excretion, sodium and chloride reabsorp -
+tion, and extracellular fluid volume. Hypokalemia and/or hypocal -
+cemia rarely occur. Diuresis may develop following glucocorticoid 
+administration.
+GI tract and hepatic system: Glucocorticoids increase the secretion 
+of gastric acid, pepsin, and trypsin. They alter the structure of mucin 
+and decrease mucosal cell proliferation. Iron salts and calcium ab -
+sorption are decreased, whereas fat absorption is increased. Hepatic 
+changes can include increased fat and glycogen deposits in hepato -
+cytes and increased serum levels of ALT and gamma-glutamyl tran-
+speptidase (GGT). Significant increases can be seen in serum ALP 
+levels. Glucocorticoids can cause minor increases in bromosulfoph-
+thalein (BSP) retention time.
+Hematopoietic system: Glucocorticoids can increase the number of 
+circulating platelets, neutrophils, and RBCs, but platelet aggregation 
+is inhibited. Decreased amounts of lymphocytes (peripheral), mono-
+cytes, and eosinophils are seen because glucocorticoids can seques -
+ter these cells into the lungs and spleen and can prompt decreased re-
+lease from bone marrow; removal of old RBCs becomes diminished. 
+Glucocorticoids can cause involution of lymphoid tissue.
+Immune system (also see Cells and Hematopoietic system): Gluco-
+corticoids can decrease circulating levels of T-lymphocytes; inhibit 
+lymphokines; inhibit neutrophil, macrophage, and monocyte mi -
+gration; reduce production of interferon; and inhibit phagocytosis, 
+chemotaxis, antigen processing, and intracellular killing. Specific ac-
+quired immunity is affected less than nonspecific immune respons -
+es. Glucocorticoids can also antagonize the complement cascade and 
+mask the clinical signs of infection. Mast cells are decreased in num-
+ber and histamine synthesis is suppressed. Many of these effects only 
+occur at high doses and species have different responses.
+Metabolic effects: Glucocorticoids stimulate gluconeogenesis. Lipo-
+genesis is enhanced in certain areas of the body (eg, abdomen), and 
+adipose tissue can be redistributed away from the extremities to the 
+trunk. Fatty acids are mobilized from tissues and their oxidation is 
+increased. Plasma levels of triglycerides, cholesterol, and glycerol are 
+increased. Protein is mobilized from most areas of the body (not the 
+liver).
+Musculoskeletal: Glucocorticoids may cause muscular weakness, 
+atrophy, and osteoporosis. Bone growth can be inhibited via growth 
+hormone and somatomedin inhibition, increased calcium excretion, 
+and inhibition of vitamin D activation. Resorption of bone can be 
+enhanced. Fibrocartilage growth is also inhibited.
+Ophthalmic: Prolonged corticosteroid use (both systemic or topi -
+cally to the eye) can cause increased intraocular pressure and glau -
+coma, cataracts, and exophthalmos.
+Skin: Thinning of dermal tissue and skin atrophy can be seen with 
+glucocorticoid therapy. Hair follicles can become distended and al -
+opecia may occur.
+Pharmacokinetics
+Prednisone is a prodrug and requires hepatic bioactivation.
+In cats, prednisoLONE has a higher bioavailability when adminis-
+tered orally as compared with prednisone.3 Reported bioavailabilities 
+(of active prednisoLONE) are 100% and 21%, respectively. Although 
+it is not clear if this is due to decreased GI absorption or decreased 
+hepatic conversion of prednisone to prednisoLONE, oral predniso -
+LONE is the superior choice in cats. 3,4 In a study, overconditioned 
+cats had significantly higher plasma prednisoLONE concentrations 
+(2 times) as compared with normal-conditioned cats.5
+
+
+===== Plumb PDF 1087 =====
+1060   PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate 
+In horses, oral prednisone has been shown to have poor oral bio-
+availability and minimal conversion to prednisoLONE, and there -
+fore prednisoLONE is recommended over prednisone in horses.6 
+In humans, prednisoLONE is hepatically conjugated and metabo-
+lites are primarily excreted in the urine. Plasma half-life is not mean-
+ingful from a therapy standpoint when evaluating systemic corti -
+costeroids. PrednisoLONE and prednisone are intermediate-acting 
+corticosteroids with biologic half-lives of 12 to 36 hours in humans.
+Contraindications/Precautions/Warnings
+Systemic use of glucocorticoids is considered contraindicated in 
+systemic fungal infections (unless it is being used as replacement 
+therapy for Addison’s disease), when administered IM in animals 
+with idiopathic thrombocytopenia and in those hypersensitive to a 
+particular compound. Sustained-released injectable glucocorticoids 
+are considered contraindicated for chronic corticosteroid therapy for 
+systemic diseases. 
+The veterinary injectable product label states: C ontraindicated 
+in animals with tuberculosis, Cushingoid syndrome, and peptic ul -
+cer. Existence of congestive heart failure, diabetes, chronic nephritis, 
+and osteoporosis are relative contraindications. In the presence of in -
+fection, appropriate antibacterial agents should also be administered 
+and should be continued for at least 3 days after discontinuance of the 
+glucocorticoid and disappearance of all signs of infection. Do not use 
+in viral infections.7 
+Caution is advised when using predis(ol)one in animals with con-
+comitant renal disease, as they may be at increased risk for adverse 
+GI effects. Animals with hepatic dysfunction may have impaired 
+ability to metabolize prednisone to prednisoLONE.
+Systemic glucocorticoids can suppress adrenal function. Ani -
+mals that have received these drugs chronically should be tapered 
+off slowly, as endogenous ACTH release and corticosteroid function 
+may return slowly. Additional glucocorticoids should be adminis -
+tered if the animal undergoes a stressor (eg, surgery, trauma, illness) 
+during the tapering process or until normal adrenal and pituitary 
+functions resume.
+Animals, particularly cats, at risk for diabetes mellitus should be 
+administered glucocorticoids with caution because of the potent hy-
+perglycemic effects of these agents. Patients with cardiovascular dis-
+ease should be monitored closely, as glucocorticoids can cause fluid 
+retention, which may cause the patient’s condition to decompensate. 
+Glucocorticoids are immunosuppressive at higher doses (greater 
+than or equal to 2 mg/kg/day) and may increase the risk for infec -
+tion. In humans, long-term glucocorticoids may increase intraocular 
+pressure and may increase the risk for cataracts and/or osteoporosis. 
+Do not confuse prednisoLONE with predniSONE, particularly in 
+cats and horses.
+Adverse Effects
+Adverse effects are generally associated with long-term administration 
+of these drugs, especially if the drugs are administered at high doses 
+or not on an alternate-day regimen. Effects typically manifest as clin-
+ical signs of hyperadrenocorticism. Glucocorticoids can delay growth 
+when administered to young, growing animals. A listing of potential 
+effects are outlined in Glucocorticoid Agents, General Information.
+In dogs, polydipsia (PD), polyphagia (PP), and polyuria (PU) may 
+occur during short-term burst therapy and on days when the drug 
+is administered during alternate-day maintenance therapy. Adverse 
+effects in dogs can include dull/dry coat, weight gain, panting, vom-
+iting, diarrhea, elevated liver enzymes, GI ulceration (especially with 
+high parenteral or oral doses); hypercoagulability; hyperlipidemia, 
+activation or worsening of diabetes mellitus, muscle wasting, and/
+or behavior changes (eg, depression, lethargy, aggression). Gluco -
+corticoids have been known to delay growth in young animals. Dis-
+continuation of the drug may be necessary; changing to an alternate 
+steroid may also alleviate adverse effects. Adverse effects associated 
+with anti-inflammatory therapy are relatively uncommon, with the 
+exception of PU, PD, and PP . Adverse effects associated with im -
+munosuppressive dosages are more common and potentially more 
+severe. In healthy dogs, immunosuppressive dosages of prednis(ol)
+one 2 – 4 mg/kg/day PO for 1 to 3 weeks did not enhance platelet 
+function or coagulation 8 or produce clinical or histologic evidence 
+of pancreatitis. 9 PrednisoLONE reduced gallbladder emptying in 
+healthy beagles.10 Bone mineral density, as assessed by quantitative 
+CT, was reduced ≈15% from baseline after a 9-week tapered pred -
+nisoLONE dose, which recovered to near baseline 30 months after 
+prednisoLONE was discontinued.11
+Cats generally require higher doses than dogs for clinical effects 
+but typically develop fewer adverse effects. Glucocorticoids appear 
+to have a greater hyperglycemic effect in cats than other species. Oc-
+casionally, PU, PD, and PP with weight gain, diarrhea, and/or de -
+pression will be present. Long-term, high-dose therapy can lead to 
+Cushingoid effects. Systemic steroid administration may increase the 
+chance for development of acute bullous keratopathy.12
+Reproductive/Nursing Safety
+Corticosteroid therapy may induce parturition in large animal spe -
+cies during the latter stages of pregnancy. The veterinary label states: 
+Clinical and experimental data have demonstrated that corticosteroids 
+administered orally or by injection to animals may induce the first stage 
+or parturition is used during the last trimester of pregnancy and may 
+precipitate premature parturition followed by dystocia, fetal death, 
+retained placenta, and metritis. Additionally, corticosteroids admin -
+istered to dogs, rabbits, and rodents during pregnancy have resulted in 
+cleft palate in offspring. Corticosteroids administered to dogs during 
+pregnancy have also resulted in other congenital anomalies, including 
+deformed forelegs, phocomelia, and anasarca.  Multiple midline de -
+fects were noted in a litter of golden retriever puppies with gestation 
+exposure to doxycycline and prednisone.13 In humans, maternal glu-
+cocorticoid use may lead to hypoadrenalism in newborns.12
+Caution is advised when using in nursing dams; glucocorticoids 
+unbound to plasma proteins can enter milk. High doses or prolonged 
+administration to nursing dams may potentially inhibit growth, in -
+terfere with endogenous corticosteroid production, or cause other 
+unwanted effects in nursing offspring. In humans, several studies 
+suggest that amounts excreted in milk are negligible when the pred-
+nisone or prednisoLONE dose given to the mother is less than or 
+equal to 20 mg/day or when the methylprednisoLONE dose is less 
+than or equal to 8 mg/day. Larger doses given for short periods may 
+not harm the infant.
+Overdose/Acute Toxicity
+Overdoses of glucocorticoids used alone are unlikely to cause harm-
+ful effects, but GI effects that are sometimes severe can be seen in 
+dogs. Supportive treatment may be required if clinical signs occur. 
+Other clinical signs associated with an overdose in dogs include 
+polyuria and polydipsia. 
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving oral prednisoLONE/
+prednisone and may be of significance in veterinary patients. Unless 
+otherwise noted, use together is not necessarily contraindicated, but 
+the potential risks must be weighed and additional monitoring per -
+formed when appropriate.
+
+
+===== Plumb PDF 1088 =====
+PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate    1061
+ ■ Amphotericin B : May cause hypokalemia when administered 
+concomitantly with glucocorticoids
+ ■ Anticholinesterase Agents  (eg, neostigmine, pyridostig -
+mine): In animals with myasthenia gravis, concomitant glucocor-
+ticoid use with these agents may lead to profound muscle weakness. 
+If possible, anticholinesterase medication should be discontinued 
+at least 24 hours before corticosteroid  administration. 
+ ■ Aspirin  (salicylates): Glucocorticoids may reduce salicylate 
+blood levels. Combination may increase the risk for GI ulcers or 
+erosions. In dogs, prednisone given with ultra-low–dose aspirin 
+(0.5 mg/kg/day is often used in the treatment of immune-medi -
+ated hemolytic anemia (IMHA) does not increase the severity of 
+GI lesions as compared with prednisone alone but may increase 
+incidence of diarrhea.14
+ ■ Barbiturates : May increase the metabolism of glucocorticoids
+ ■ Cholestyramine : May reduce prednis(ol)one absorption
+ ■ Cyclophosphamide : Glucocorticoids may also inhibit the he -
+patic metabolism of cyclophosphamide; dosage adjustments may 
+be required.
+ ■ Cyclosporine : Concomitant administration with glucocorti -
+coids may increase the blood levels of each by mutually inhibiting 
+the hepatic metabolism of the other; clinical significance of this 
+interaction is not clear.
+ ■ Digoxin : Secondary to hypokalemia, increased risk for arrhyth-
+mias
+ ■ Diuretics, Potassium-Depleting  (eg, furosemide, thia -
+zides): May cause hypokalemia when administered concomitant-
+ly with glucocorticoids
+ ■ Ephedrine : May increase metabolism of glucocorticoids
+ ■ Estrogens : Effects of hydrocortisone, and possibly other glu -
+cocorticoids, may be potentiated by concomitant administration 
+with estrogens.
+ ■ Fluoroquinolones : Concurrent use may increase risk for ten-
+dinitis and tendon rupture.
+ ■ Insulin : Insulin requirements may increase in animals receiving 
+glucocorticoids.
+ ■ Ketoconazole : May decrease the metabolism of glucocorti -
+coids
+ ■ Macrolide Antibiotics  (eg, clarithromycin, erythromycin): 
+May decrease the metabolism of glucocorticoids 
+ ■ Mitotane : May alter the metabolism of steroids; higher than 
+usual doses of steroids may be necessary to treat mitotane-in -
+duced adrenal insufficiency.
+ ■ Mycophenolate : PrednisoLONE increased the in vitro un -
+bound (active) fraction of mycophenolic acid in dogs but not in 
+cats.15
+ ■ Nonsteroidal Anti-Inflammatory Drugs  ( NSAIDs; eg, 
+carprofen, meloxicam, phenylbutazone, robenacoxib): Admin-
+istration of other ulcerogenic drugs with glucocorticoids may in-
+crease risk for GI ulceration.
+ ■ Phenobarbital, Primidone : May increase the metabolism of 
+glucocorticoids
+ ■ Rifampin : May increase the metabolism of glucocorticoids
+ ■ V accines : Animals receiving corticosteroids at immunosuppres-
+sive dosages should generally not receive live attenuated-virus 
+vaccines, as virus replication may be augmented; a diminished 
+immune response may occur after vaccine, toxoid, or bacterin ad-
+ministration in animals receiving glucocorticoids.
+ ■ W arfarin : Glucocorticoids may affect clotting times; monitor -
+ing is advised.
+Laboratory Considerations
+ ■ Glucocorticoids may increase serum cholesterol and urine glu -
+cose levels.
+ ■ Glucocorticoids may decrease serum potassium.
+ ■ In cats, increases in ALP are not attributable to glucocorticoid 
+administration due to lack of a steroid-induced ALP isoenzyme.
+ ■ Glucocorticoids can suppress the release of TSH and reduce T 3 
+and T 4 values. Thyroid gland atrophy has been reported after 
+chronic glucocorticoid administration. Uptake of I 131 by the thy -
+roid may be decreased by glucocorticoids.
+ ■ Reactions to allergen intradermal skin tests may be suppressed 
+by glucocorticoids.16,17 A 2-week (14-day) withdrawal time before 
+intradermal skin testing is recommended for dogs and cats18,19; no 
+withdrawal time is required before serum IgE testing to identify 
+sensitizing allergens in cats.19
+ ■ False-negative results of the nitroblue tetrazolium test for system-
+ic bacterial infections may be induced by glucocorticoids.
+ ■ High-dose prednisone increases serum cystatin C in dogs.20
+ ■ Bovine urinary prednisoLONE:cortisol ratio of greater than or 
+equal to 0.26 may discriminate between endogenous and exoge -
+nous prednisoLONE.21
+Dosages
+NOTE: Currently, there are no injectable prednisone/predniso -
+LONE products available for use in animals in the United States. 
+Unless cited by a veterinary-approved product, all dosages should 
+be considered extra-label. 
+DOGS/CATS:
+NOTES: 
+1. PrednisoLONE should be used in place of prednisone in cats 
+whenever possible, as cats do not absorb or convert prednisone 
+to prednisoLONE as well as dogs.3
+2. If given daily, therapy for longer than 1 to 2 weeks will suppress 
+the hypothalamic-pituitary-adrenal (HPA) axis and recovery 
+will take longer than 1 week. Therefore, if corticosteroids are 
+used for longer than a few days, dosage must be tapered off  
+using alternate-day therapy. Many glucocorticoid responsive 
+diseases can be managed with chronic alternate-day therapy. 
+If possible, it is suggested to avoid giving doses greater than 
+1 mg/kg (prednisoLONE equivalent) every other day; larger 
+doses saturate a dog’s ability to fully metabolize the last dose 
+before the next dose is given and can negate the benefits of 
+alternate-day therapy. However, to induce remission of clinical 
+signs or manage their recurrence initially requires daily thera-
+py at an appropriate dose to control clinical signs, then taper -
+ing the drug to reach a minimum daily dose that will control 
+clinical signs, followed by alternate-day therapy to manage the 
+disease. Animals vary greatly in their response to the thera -
+peutic and adverse effects of glucocorticoids, and there may be 
+qualitative differences between the effects of different gluco -
+corticoids in the same animal.22
+Anti-inflammatory agent: 
+Dogs: 0.5 – 1 mg/kg PO once daily; not to exceed 40 mg/dog 
+(NOT mg/kg) in large breed dogs.23 Dose can be given once daily, 
+or the total dose can be divided and given twice daily.4,24
+Cats: prednisoLONE 1 – 2 mg/kg PO once daily4,24
+Immunosuppressive agent:
+Dogs: Initial dose of 2 – 4 mg/kg PO once daily.4,24 50 – 60 mg/m2 
+once daily for dogs over 25 kg (55 lb) can be considered an initial 
+dosage to provide immunosuppression and minimize adverse ef-
+
+
+===== Plumb PDF 1089 =====
+1062   PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate 
+fects in larger dogs.25  Many suggest beginning with 2 mg/kg PO 
+once daily and dividing the total dose and giving it twice daily. 
+Administration of a dose at the upper end of the range may not 
+provide additional immune suppression but may cause more pro-
+nounced adverse effects. Many internists believe that the predni-
+sone total daily dose should not exceed 60 – 80 mg, regardless of a 
+dog’s weight.23 A sample prednisone immunosuppressive protocol 
+for dogs is (dosages should be tailored to the ongoing require -
+ments of the individual animal): 2.2 mg/kg daily (daily dose not to 
+exceed 60 – 80 total) for 3 weeks, then 1 mg/kg daily for 3 weeks, 
+then 0.5 mg/kg daily for 3 weeks, then 0.5 mg/kg every other day, 
+provided disease remission is maintained.
+Cats: Initial dose of prednisolone 2 – 8 mg/kg PO once daily.4,24,26 
+Many start with 4 mg/kg PO daily then dividing the total dose and 
+giving it twice daily.4 
+Antineoplastic/cytotoxic agent : When prednis(ol)one is used 
+as an antineoplastic agent, alone or in a multidrug chemother -
+apy protocol, the following dosages should be used only as a 
+general guide. Consultations with a veterinary oncologist and 
+referral to current veterinary oncology references are strongly 
+ recommended.
+Dogs: 2 mg/kg PO daily. Omission of prednisone from the 
+L-CHOP protocol did not improve progression-free survival in 
+dogs with peripheral nodal lymphoma.27 
+Cats: PrednisoLONE should be used. Cats are relatively steroid 
+resistant and require higher doses than dogs. Doses can typically 
+be safely doubled as compared with dogs. See above note for ad -
+ditional information.22 NOTE: When used with other cytotoxic 
+agents in chemotherapy protocols, prednisoLONE doses may be 
+reduced. 
+Adjunctive treatment for hypoadrenocorticism:
+Acute treatment using prednisoLONE sodium succinate :  
+1 – 2 mg/kg IV after second blood draw for cortisol measurement 
+(ACTH stimulation test).28 Injectable glucocorticoid therapy (eg, 
+prednisoLONE sodium succinate 0.5 mg/kg IV every 6 hours) 
+should be continued until the animal can be safely switched to 
+oral glucocorticoid therapy.29 Alternatively, injectable dexameth-
+asone sodium phosphate can be used in the acute management of 
+hypoadrenocorticism.  
+Oral glucocorticoid replacement (ongoing, with a mineralocor-
+ticoid): Oral glucocorticoid therapy can begin after a confirmed 
+diagnosis of hypoadrenocorticism has been made and parenter -
+al therapy has achieved a positive clinical response. Prednisone 
+can be given initially at 0.1 – 0.22 mg/kg PO once daily, then ta -
+pered to the lowest dose to control clinical signs. 28 An increase 
+in dose is often needed in times of stress (eg, surgery, illness). 
+It is common for dogs to require no more than 0.1 mg/kg once 
+per day of prednis(ol)one and less may be sufficient to prevent 
+recurrence of signs of glucocorticoid insufficiency. When using 
+fludrocortisone for mineralocorticoid replacement therapy, up to 
+50% of dogs will not require any additional prednisone, as there is 
+enough glucocorticoid activity in fludrocortisone for those dogs. 
+One study reported 11 out of 13 dogs receiving fludrocortisone  
+0.022 mg/kg PO daily required a mean prednisoLONE dosage of 
+0.06 mg/kg daily and suggested that most dogs receiving fludro -
+cortisone may benefit from the addition of a small prednisoLONE 
+dose.30 All dogs receiving desoxycorticosterone pivalate (DOCP) 
+will also require prednis(ol)one, as it only has mineralocorticoid 
+activity.4 In one study, dogs receiving DOCP initially received 
+prednisoLONE 0.22 mg/kg PO daily, but it was possible to reduce 
+the dosage to 0.13 mg/kg PO daily.31
+HORSES : 
+NOTE: Prednisone does not appear to be absorbed well after oral 
+administration; prednisoLONE or another oral steroid should be 
+used.
+Glucocorticoid effects (label dosage; FDA-approved): predniso-
+LONE sodium succinate 50 – 100 mg/horse (NOT mg/kg) as an 
+initial dose, IV or IM over a period of 30 seconds to 1 minute. 
+Dose may be repeated in inflammatory, allergic, or other stress 
+conditions at intervals of 12, 24, or 48 hours based on the size 
+of the animal, the severity of the condition, and the response to 
+treatment.7
+Adjunctive therapy of severe equine asthma (SEA):
+a) Short-term treatment with environmental control : In the 
+study, dexamethasone sodium phosphate was given 0.1 mg/kg 
+IM once daily for 4 days, 0.075 mg/kg IM once daily for 4 days, 
+and 0.05 mg/kg IM for 4 days or oral prednisoLONE was given 
+1 mg/kg PO for 4 days, 0.75 mg/kg for 4 days, and 0.5 mg/kg 
+PO for 4 days. Except for bronchoalveolar lavage cytology, PO 
+prednisoLONE was as effective as IM dexamethasone.32
+b) In horses under continuous antigen exposure, dexamethasone 
+was given 0.05 mg/kg PO once daily for 7 days or predniso -
+LONE was given 2 mg/kg PO once daily for 7 days. Although 
+both were effective, dexamethasone was more so.33
+Pruritus: Topical therapy is preferred, but for more severe cas -
+es, oral prednisoLONE can be considered. Induction dose of  
+2 mg/kg PO once daily for 3 to 10 days. Dose can be tapered to  
+0.5 mg/kg PO every 48 hours once pruritus is controlled.34
+Adjunctive therapy of neoplasia responsive to glucocorticoid 
+therapy: Typical dose is prednisoLONE 1 mg/kg PO every other 
+day.35
+CATTLE:
+Glucocorticoid activity : PrednisoLONE sodium succinate  
+0.2 – 1 mg/kg IV or IM36
+NEW WORLD CAMELIDS : 
+Steroid-responsive pruritic dermatoses secondary to allergic 
+origins: 0.5 – 1 mg/kg PO initially; can be gradually reduced to 
+lowest effective dose given every 48 hours.37
+BIRDS:
+Anti-inflammatory: 0.2 mg/30 g (1 oz) body weight, or one 5-mg 
+tablet can be dissolved in 2.5 mL of water and 2 drops adminis -
+tered orally, twice daily. Administration schedule should be ta -
+pered if using long-term.38
+Shock: PrednisoLONE sodium succinate (10 mg/mL)  
+0.1 – 0.2 mL/100 g (3.5 oz) body weight repeated every 15 minutes 
+to effect. Dose may be decreased by half in large birds.38
+RABBITS/RODENTS/SMALL MAMMALS :
+Rabbits: Rarely indicated. As an anti-inflammatory agent:  
+0.5 – 2 mg/kg PO
+Mice, rats, gerbils, hamsters, guinea pigs, chinchillas :  
+0.5 – 2.2 mg/kg IM or SC
+REPTILES :
+Shock in most species : PrednisoLONE sodium succinate  
+5 – 10 mg/kg IV39,40
+Monitoring
+Monitoring of glucocorticoid therapy is dependent on reason for 
+use, dosage, agent used (amount of mineralocorticoid activity), dose 
+schedule (daily vs alternate-day therapy), duration of therapy, and 
+the animal’s age and condition. The following list may not be appro-
+priate or complete for all animals; clinical assessment and judgment 
+should be used if adverse effects are noted.
+
+
+===== BSAVA PDF 93 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+77
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+References
+Dandrieux JRS, Noble PJM, Scase TJ et al . (2013) Comparison of a chlorambucil-
+prednisolone combination with an azathioprine-prednisolone combination for treatment 
+of chronic enteropathy with concurrent protein-losing enteropathy in dogs: 27 cases 
+(2007–2010). Journal of the American Veterinary Medical Association  242, 1705–1714
+Stein TJ, Pellin M, Steinberg H et al . (2010) Treatment of feline gastrointestinal small-cell 
+lymphoma with chlorambucil and glucocorticoids. Journal of the American Animal 
+Hospital Association  46, 413–417
+Chloramphenicol
+(Chloramphenicol*, Chlorogen*, Chloromycetin 
+Ophthalmic Ointment*, Chloromycetin 
+Redidrops*,  Kemicetine*, Minims*, Optrex*) POM 
+Formulations: Injectable: 1 g powder for reconstitution. Topical: 
+Ophthalmic 1% ointment; 0.5% solution. Oral: 250 mg capsules.
+Action: Time-dependent antimicrobial that acts by binding to the 
+50S ribosomal subunit of susceptible bacteria, preventing bacterial 
+protein synthesis.
+Use: Broad spectrum of activity against Gram-positive (e.g. 
+Streptococcus, Staphylococcus), Gram-negative (e.g. Brucella, 
+Salmonella, Haemophilus) and obligate anaerobic bacteria (e.g. 
+Clostridium, Bacteroides fragilis). Other sensitive organisms include 
+Chlamydia, Mycoplasma (unreliable in treatment of ocular 
+mycoplasmosis) and Rickettsia. Resistant organisms include 
+Nocardia and Mycobacterium. Acquired resistance may occur in 
+Enterobacteriaceae. High lipid solubility makes it suitable for the 
+treatment of intraocular infections. It will also access the CNS. 
+However, due to concerns of resistance development and human 
+toxicity, systemic use should be restricted to life-threatening 
+infections resistant to other antimicrobials (e.g. meticillin-resistant 
+staphylococci). Patients with hepatic or renal dysfunction may need 
+adjustment to the dose. Use with caution or avoid in nursing bitches 
+or queens as crosses into milk.
+Safety and handling: Humans exposed to chloramphenicol may 
+have an increased risk of developing a fatal aplastic anaemia. 
+Products should be handled with care; use impervious gloves and 
+avoid skin contact.
+Contraindications: No information available.
+Adverse reactions: Reversible dose-related reversible bone 
+marrow suppression can develop in all species. Unlike humans, the 
+development of irreversible aplastic anaemia in veterinary species 
+does not appear to be a significant problem. Owing to a reduced 
+capacity to metabolize chloramphenicol, the cat is more susceptible 
+to bone marrow suppression. Other adverse effects include nausea, 
+vomiting, diarrhoea and anaphylaxis.
+Drug interactions: Irreversible inhibition of hepatic cytochrome 
+P450-dependent enzymes increases plasma levels of pentobarbital, 
+
+
+===== BSAVA PDF 94 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+78
+phenobarbital, propofol and oral hypoglycaemic agents. Recovery 
+requires synthesis of new liver enzymes and can take up to 3 weeks. 
+Rifampin accelerates the metabolism of chloramphenicol, thus 
+decreasing serum levels. Chloramphenicol may inhibit activity of 
+aminoglycosides and beta-lactams. May also competitively inhibit 
+macrolide or lincosamide antimicrobials.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs:   
+• Ophthalmic: 1 drop q4–8h; ointment q8–12h.
+• Systemic: 40–50 mg/kg i.v., i.m., s.c., p.o. q8h.
+• CNS infections: 10–15 mg/kg p.o. q4–6h is recommended in 
+some texts.
+Cats:
+• Ophthalmic: 1 drop q4–8h; ointment q8–12h.
+• Systemic: 10–20 mg/kg slow i.v., i.m., s.c., p.o. q12h.
+Chlorhexidine
+(Adaxio, Antisept, Clorexyderm shampoo, spray, 
+gel, CLX wipes, Douxo Pyo, Ermidra foam, 
+Hibiscrub, Iryplus eye wipes, Malaseb, Microbex, 
+Otodine, Stomidine F, Corsodyl*, Savlon*, 
+TrizChlor*) POM-V, GSL, general sale 
+Formulations: Topical shampoo: 2% chlorhexidine + 2% 
+miconazole (Malaseb); 31.2 mg/ml chlorhexidine (Microbex); 11.26 
+mg/ml chlorhexidine + 17.37 mg/ml miconazole (Adaxio); 3% 
+chlorhexidine + 0.5% climbazole + phytosphingosine (Duoxo Pyo 
+shampoo/mousse/pads); 4% chlorhexidine (Clorexyderm 4% 
+shampoo, spray, Ermidra foam); Cleansing solution: sodium acetate, 
+chlorhexidine digluconate, acetic acid (antisept spray); Spot gel: 
+chlorhexidine 4%, Triz-EDTA, polyvinylpyrrolidone, lanolin, glycerine 
+(clorexyderm spot gel); 1.5% chlorhexidine + cetrimide (Savlon); 
+Surgical scrub solution: 4% chlorhexidine + isopropyl alcohol 
+(Hibiscrub); Mouthwash: 0.12% chlorhexidine (Chlorohex); Topical 
+skin cleaner: chlorhexidine, Tris-EDTA, zinc gluconate, glycerine, 
+climbazole, benzyl alcohol, propylene glycol (CLX wipes); Ear/
+wound cleaner: 0.15% chlorhexidine + EDTA (TrizChlor); Ear cleaner: 
+chlorhexidine, Tris-EDTA, lactic acid (Otodine); Toothpaste: 0.07% 
+chlorhexidine, Tris-EDTA (Stomidine F).
+Action: Chemical antiseptic that disrupts bacterial cell membrane.
+Use:
+• Topical treatment of bacterial, dermatophyte and Malassezia  skin 
+infections in dogs as a shampoo (Adaxio, Douxo, Malaseb, 
+Microbex). Concurrent systemic antibacterial therapy may be 
+required when treating bacterial skin infections. Leave in contact 
+with the skin for 5–10 minutes prior to washing off.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 95 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+79
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+• Local infection can be treated with mousse spray, gel or wipes 
+(Douxo, CLX, Antisept, Clorexyderm).
+• Ear flush for cleansing; Tris-EDTA and chlorhexidine have 
+synergistic antimicrobial action. Chlorhexidine as a single agent 
+is not consistently effective as a treatment for dermatophytosis.
+• Washing surgical instruments, routine antisepsis for surgical 
+operations (Savlon, Hibiscrub) and dental hygiene (Corsodyl).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not instil into ears where the integrity of 
+the tympanum is unknown. Do not use on eyes.
+Adverse reactions: Ototoxic. May irritate mucous membranes.
+Drug interactions: Not known.
+DOSES
+Dogs, Cats: Antispetic: topical agents may be used daily to weekly.
+References
+Banovic F, Bozic F and Lemo N (2013) In vitro comparison of the effectiveness of 
+polihexanide and chlorhexidine against canine isolates of Staphylococcus  
+pseudintermedius , Pseudomonas  aeruginosa  and Malassezia pachydermatis . Veterinary 
+Dermatology  24, 409–413
+Clark SM, Loeffler A and Bond R (2015) Susceptibility in vitro of canine methicillin-
+resistant and suceptiblestaphylococcal isolates to fusidic acid, chlorhexidine and 
+miconazole: opportunities for topical therapy of canine superficial pyoderma. The 
+Journal of Antimicrobial Chemotherapy  70, 2048–2052Chlorphenamine  
+(Chlorpheniramine)
+(Piriton*) POM, GSL 
+Formulations: Injectable: 10 mg/ml solution. Oral: 4 mg tablet, 
+0.4 mg/ml syrup.
+Action: Binds to H1 histamine receptors to prevent histamine 
+binding.
+Use:
+• Management of allergic disease.
+• Prevention and early treatment of anaphylaxis.
+• Commonly used as premedication before transfusions and 
+certain chemotherapeutic agents.
+Specific doses for dogs and cats have not been determined by 
+pharmacokinetic studies. Use with caution in cases with urinary 
+retention, angle-closure glaucoma and pyloroduodenal obstruction.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: May cause mild sedation. May reduce seizure 
+threshold.
+Drug interactions: No information available.

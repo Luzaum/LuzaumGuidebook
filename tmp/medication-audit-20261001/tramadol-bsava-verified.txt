@@ -1,0 +1,227 @@
+===== BSAVA PDF 426 / impressa 410 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+410
+tamponade. Other adverse effects reported in humans include 
+ototoxicity, blurred vision, GI disturbances, leucopenia, anaemia, 
+weakness and dermatological reactions.
+Drug interactions: No information available.
+DOSES
+Dogs: 0.1 to 0.6 mg/kg p.o. q24h. Anecdotally, doses are calculated 
+and then divided into q12h intervals. Most dogs will be stabilized at 
+less than or equal to 0.3 mg/kg p.o. q24h. Dose should be titrated 
+up/down in 0.1 mg/kg p.o. increments.
+Cats: Replace furosemide p.o. with torasemide p.o. at a daily dose 
+that is 1/20th of the total daily furosemide dose divided q12–24h. 
+References
+Oyama MA, Peddle GD, Reynolds CA et al . (2011) Use of the loop diuretic torsemide in 
+three dogs with advanced heart failure. Journal of Veterinary Cardiology  13, 287–292
+Peddle GD, Singletary GE, Reynolds CA et al . (2012) Effect of torsemide and furosemide 
+on clinical, laboratory, radiographic and quality of life variables in dogs with heart failure 
+secondary to mitral valve disease. Journal of Veterinary Cardiology  14, 253–259
+Tramadol
+(Tralieve, Tramadol ER*, Ultracet*, Ultram*, 
+Zamadol*) POM-V, POM CD Schedule 3 
+Formulations: Oral: 50 mg tablets; 100 mg, 200 mg, 300 mg 
+immediate-release tablets; 20 mg, 80 mg chewable tablets for dogs; 
+sustained-release tablets are also available in various tablet sizes; 
+smaller tablet sizes (10 mg, 25 mg) are available from some veterinary 
+wholesalers; 5 mg/ml oral liquid. Injectable: 50 mg/ml solution.
+Action: Some metabolites of tramadol are agonists at all opioid 
+receptors, particularly mu receptors. The parent compound also 
+inhibits the reuptake of noradrenaline and 5-HT, and stimulates 
+pre-synaptic 5-HT release, which provides an alternative pathway 
+for analgesia involving the descending inhibitory pathways within 
+the spinal cord. In people, good and poor metabolizers of tramadol 
+are described, with good metabolizers developing more opioid-like 
+effects following drug administration and improved analgesia. 
+Whether similar individual differences in metabolism of tramadol 
+occur in cats and dogs is currently unknown.
+Use:
+• Chewable tablets are authorized for use in dogs for the 
+management of mild acute and chronic soft tissue and 
+musculoskeletal pain.
+• Perioperatively, injectable tramadol is used instead of opioids to 
+provide analgesia for acute pain.
+• Injectable tramadol has also been administered epidurally in 
+dogs but does not appear to confer advantages over systemic 
+administration.
+There is an increasing body of literature describing pharmacokinetics 
+(PK) and pharmacodynamics (PD) in dogs and cats, although the 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 427 / impressa 411 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+411
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+recommended dose range is currently largely empirical due to a lack 
+of combined PK/PD studies. The PK of sustained-release tramadol 
+tablets have been investigated in dogs; plasma concentrations of 
+tramadol and metabolites were low after administration suggesting 
+that once a day dosing of sustained-release tramadol tablets is 
+unsuitable to provide analgesia in dogs. One study has shown 
+tramadol 2 mg/kg to provide equivalent analgesia to morphine 0.2 
+mg/kg i.v. after ovariohysterectomy in dogs, and there are a number 
+of studies that show tramadol 2 mg/kg to be efficacious for the 
+management of acute pain in cats and dogs with dosing 3–4 times 
+daily. Tramadol has similar actions to morphine but causes less 
+respiratory depression, sedation and GI side effects. It is attractive as 
+an adjunct to manage chronic pain because it can be given orally; 
+however, a larger body of evidence to support dose 
+recommendations is needed. Cats seem to be more susceptible to 
+the dysphoric effects of tramadol, although both dogs and cats can 
+develop nausea and behavioural changes or sedation following 
+repeated dosing. The oral preparations are unpalatable to cats  
+and therefore difficult to administer, even when reformulated in 
+gelatin capsules.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Sedation can occur after administration of 
+high doses to dogs. Dysphoria is more likely in cats. Contraindicated 
+in humans with epilepsy. Owners should be informed that there may 
+be a slightly increased risk of seizures in treated animals.
+Drug interactions: Tramadol can be given in combination with 
+other classes of analgesic drugs such as NSAIDs, amantadine and 
+gabapentin. It has the potential to interact with drugs that inhibit 
+central 5-HT and noradrenaline reuptake, such as tricyclic 
+antidepressants (e.g. amitriptyline), monoamine oxidase inhibitors 
+(e.g. selegiline), selective serotonin reuptake inhibitors and some 
+opioids (e.g. fentanyl, pethidine and buprenorphine), causing 
+serotonin syndrome that can result in seizures and death. Should 
+signs of serotonin syndrome develop (manifest in mild form as 
+hyperthermia, elevated blood pressure and CNS disturbances such 
+as hypervigilance and excitation) these must be managed 
+symptomatically and contributing drug treatments stopped.
+DOSES
+Dogs: 2–5 mg/kg p.o. q8h, 2 mg/kg i.v.
+Cats: 2–4 mg/kg p.o. q8h, 1–2 mg/kg i.v., s.c. 
+References
+Giorgi M, Saccomanni G, Lebkowska-Wieruszewska B et al . (2009) Pharmacokinetic 
+evaluation of tramadol and its major metabolites after single oral sustained tablet 
+administration in the dog: a pilot study. Veterinary Journal 180, 253–255
+Kukanich B and Papich MG (2004) Pharmacokinetics of tramadol and the metabolite 
+O-desmethyltramadol in dogs. Journal of Veterinary Pharmacology and Therapeutics 
+27, 239–246
+
+===== BSAVA PDF 428 / impressa 412 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+412
+Tranexamic acid
+(Cyklokapron*) POM
+Formulations: Injectable: 500 mg/5 ml solution for injection 
+ampoules. Oral: 500 mg tablets.
+Action: Tranexamic acid is a synthetic lysine analogue that 
+reversibly binds to the lysine binding sites of plasminogen. This 
+prevents the action of plasmin on fibrin, thereby delaying fibrin 
+dissolution and reduces bleeding. The interruption of fibrinolysis 
+may be beneficial in patients with hyperfibrinolytic conditions and 
+some forms of coagulopathy.
+Use:
+• To treat bleeding tendencies, particularly if hyperfibrinolysis is 
+believed to be a major contributor to the bleeding. 
+• The use of tranexamic acid has been suggested as an adjunct 
+treatment in dogs with angiostrongylosis, splenic 
+haemangiosarcoma and trauma.
+Safety and handling: No special handling requirements.
+Contraindications: Animals with a history or at increased risk of 
+thrombosis (e.g. thromboembolism) should not be treated with 
+tranexamic acid. Disorders involving renal parenchyma resulting in 
+haematuria are a contraindication to tranexamic acid use in humans; 
+use in this setting should be considered carefully. 
+Adverse reactions: The most common adverse reactions 
+reported in dogs are nausea, vomiting and diarrhoea and these 
+clinical signs appear to be dose-dependent. In dogs and cats, retinal 
+changes have been reported with prolonged treatment at higher 
+doses. Hypersensitivities, dizziness, visual disturbances and 
+thromboses have been reported in humans. 
+Drug interactions: No studies of interactions between 
+tranexamic acid and other drugs have been conducted. Potential 
+drug-drug interactions leading to myocardial infarction could occur 
+with coadministration with hormonal contraceptives, 
+hydrochlorothiazide, desmopressin, sulbactam-ampicillin, ranitidine 
+or nitroglycerin.
+DOSES
+Dogs: 15–20 mg/kg p.o. q8h; 10 mg/kg i.v. q8h slow i.v. infusion.
+Cats: Use not reported in cats. 
+References
+Fletcher DJ, Rozanski EA, Brainard BM et al. (2016) Assessment of the relationships among 
+coagulopathy, hyperfibrinolysis, plasma lactate, and protein C in dogs with spontaneous 
+hemoperitoneum. Journal Veterinary Emergency and Critical Care  26, 41–51
+Kelmer E, Segev G, Papashvilli V et al . (2015) Effects of intravenous administration of 
+tranexamic acid on haematological, hemostatic, and thromboelastographic analytes in 
+healthy adult dogs. Journal Veterinary Emergency and Critical Care  25, 495–501
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

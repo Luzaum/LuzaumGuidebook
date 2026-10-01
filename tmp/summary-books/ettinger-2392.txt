@@ -1,0 +1,280 @@
+SECTION XXII
+•
+Cancer
+2240
+eBooks.Health.Elsevier.com
+ACRONYMS
+ALL acute lymphoblastic 
+leukemia
+AML acute myeloid 
+leukemia
+BM bone marrow
+CBC complete blood count
+CCNU lomustine
+CHOP cyclophosphamide 
+(C), doxorubicin 
+(hydroxydaunorubicin 
+[H]), vincristine (Oncovin 
+[O]), and prednisone (P)
+CLL chronic lymphocytic 
+leukemia
+CML chronic myeloid 
+leukemia
+CNS central nervous 
+system
+COP cyclophosphamide, 
+vincristine, prednisone
+CSF cerebrospinal fluid
+CT computed tomography
+DLBCL diffuse large B-cell 
+lymphoma
+EATCL enteropathy 
+associated T-cell 
+lymphoma
+FeLV feline leukemia virus
+FIV feline 
+immunodeficiency virus
+GI gastrointestinal
+Ig immunoglobulin
+LSA lymphoma 
+(lymphosarcoma)
+MHC major 
+histocompatibility 
+complex
+MI mitotic index
+MM multiple myeloma
+MRD myeloma-related 
+disorders
+MST median survival time
+PARR PCR for antigen 
+receptor rearrangement
+PCR polymerase chain 
+reaction
+PE physical examination
+PTCL peripheral T-cell 
+lymphoma
+PTHrP parathyroid 
+hormone-related peptide
+PU/PD polyuria/polydipsia
+Hematopoietic Tumors
+Dennis B. Bailey
+DEFINITIONS
+H
+ematopoietic tumors include lym-
+phoid tumors (lymphoma [LSA; his-
+torically, lymphosarcoma], lymphoid 
+leukemia, and myeloma-related disorders 
+[MRD]) and myeloid leukemias. Lymphomas 
+arise in lymphoid tissues outside of the bone 
+marrow (BM). In dogs, lymph nodes, liver, 
+and spleen are aected most commonly; in 
+cats the gastrointestinal (GI) tract is aected 
+most commonly. However, in both species, 
+LSA can involve almost any organ system, 
+including BM, peripheral blood, cranial 
+mediastinum, skin, nasal cavity, kidneys, and 
+central nervous system (CNS).
+Leukemias arise in the BM and occasion-
+ally the spleen. ey can be derived from 
+lymphoid or myeloid cells. Myeloid leuke-
+mias are usually neutrophilic or monocytic 
+in origin, but can be derived from other gran-
+ulocytes, erythrocytes, or megakaryocytes. 
+e word “leukemia” sometimes is used to 
+describe neoplastic hematopoietic cells cir-
+culating in the blood, but this is imprecise 
+and not recommended. Not all primary BM 
+cancers result in tumor cells circulating in 
+peripheral blood (so-called aleukemic leu-
+kemias). Additionally, LSA can be associated 
+with neoplastic cells found in circulation due 
+to secondary inltration of the BM or occa-
+sionally due to inltration of extramedullary 
+hematopoietic organs such as the spleen. 
+MRD includes multiple myeloma (MM) and 
+several other clinical syndromes all derived 
+from plasma cells or immunoglobulin (Ig)-
+producing B-lymphocyte precursor cells.
+LYMPHOMA
+PREVALENCE
+LSA is one of the most common cancers in 
+dogs and cats.1 Cancer epidemiology studies 
+in veterinary oncology are not as accurate and 
+thorough as those in human oncology and 
+many studies are outdated, particularly those 
+in cats published before feline leukemia virus 
+(FeLV) assays and vaccines became available 
+(ch. 199).2 Reported prevalence rates range 
+from 13-114 per 100,000 dogs at risk, and 
+44-200 per 100,000 cats at risk.1 e num-
+ber of dogs and cats diagnosed with LSA is 
+increasing, but it is uncertain if this is a true increase or an increase 
+in diagnostic capabilities and willingness of families to pursue diag-
+nostic evaluation and therapy.1 2
+ETIOLOGY (CHS. 198 AND 199)
+In most dogs and cats diagnosed with LSA, an underlying cause 
+is not identied. No infectious etiologies have been identied in 
+aected dogs. In cats, FeLV is strongly associated with large-cell 
+LSA (usually T-cell) as well as lymphoid and myeloid leukemias,3 4
+caused primarily by insertional mutagenesis where integrated 
+proviruses activate proto-oncogenes, such as c-myc 5 Cats with 
+progressive FeLV infection are 60 times more likely to develop 
+LSA compared to noninfected cats.3 Prior to FeLV testing and 
+elimination programs and widespread vaccination, 70% of cats 
+diagnosed with LSA were FeLV blood antigen positive. e most 
+common FeLV-associated LSA is mediastinal, followed by multi-
+centric and spinal, and occasionally renal or ocular. More current 
+studies report progressive FeLV infection in cats with LSA with a 
+prevalence of 0 to 21%.4 Regressive FeLV infections also can be 
+associated with LSA. Cats from FeLV cluster households have a 
+40-fold higher rate of developing FeLV-antigen negative LSA than 
+cats in the general population.4 Additionally, proviral DNA has 
+been detected in neoplastic T-lymphocytes and B-lymphocytes of 
+FeLV antigen-negative cats.6 7
+Cats infected with feline immunodeciency virus (FIV) are about 
+5 times as likely to develop LSA or lymphoid leukemia compared 
+with FIV-negative cats.3 FIV also has been linked to myeloprolifera-
+tive disorders. Unlike FeLV, FIV is not directly oncogenic; immuno-
+suppressive eects of the virus impede normal immunosurveillance 
+and elimination of neoplastic cells.3 FIV-associated LSA is usually 
+B-cell in origin and typically arises in extranodal sites. Other causes 
+of chronic immunosuppression also have been linked to LSA: ∼10% 
+of cats on immunosuppressive drugs aer renal transplantation 
+(usually cyclosporine; ch. 301) develop mid- to high-grade diuse 
+large B-cell LSA.8 Non-cutaneous LSA has been reported in dogs 
+given oclacitinib (Apoquel, Zoetis), although the prevalence was not 
+signicantly higher than the control population.9
+Exposure to tobacco smoke increases the risk of LSA in dogs 
+and cats.10 11 Herbicides, especially 2,4-dichlorophenoxyacetic 
+acid (2,4-D), have been implicated in canine LSA in some, but not 
+all studies.1 Other reported risk factors reported in dogs include 
+living in an industrial area, exposure to paints or solvents, and 
+exposure to strong magnetic elds.1
+HISTOPATHOLOGIC CLASSIFICATIONS AND THEIR 
+FREQUENCY
+Definitions
+ere are several dierent forms of LSA that vary in clinical 
+presentation, response to therapy, and prognosis. Histopatho-
+logic evaluations of tissues with immunophenotyping (deter-
+mining whether the tumor is of B- or T-cell lineage) remains 
+CHAPTER 322
+Continued
+
+CHAPTER 322
+•
+Hematopoietic Tumors
+2241
+eBooks.Health.Elsevier.com
+the standard for diagnosing and subclassify-
+ing LSA, although cytologic evaluation of 
+smears with or without immunocytochemi-
+cal staining, ow cytometry or polymerase 
+chain reaction (PCR) for antigen receptor 
+rearrangement (PARR) can be used (see 
+Diagnostic Evaluation below). Inappropriate 
+use of terminology has confused classifying 
+LSA. “Lymphoblast” is oen used indiscrimi-
+nately to describe any large lymphoid cell, but 
+should be reserved for precursor or stem cells. 
+Lymphoblastic LSA and acute lymphoblastic leukemia (ALL) are 
+relatively uncommon, and are most reliably identied by being 
+CD34+ on ow cytometry.12 13
+Dogs
+e most common forms of LSA in dogs are diuse large B-cell 
+lymphoma (DLBCL, ∼50% of cases) and peripheral T-cell lym-
+phoma (PTCL, ∼15% of cases).12 14 While derived from mature 
+(peripheral) lymphoid cells, both are characterized by large lym-
+phoid cells eacing lymph nodes and/or other aected tissues. 
+LSA grade is typically determined by mitotic index (MI), not cell 
+size or LSA subtype.14 erefore, DLBCL and PTCL can be clas-
+sied as low- (MI 0-5/400× eld), intermediate- (MI 6-10/400× 
+eld), or high-grade (MI >10/400× eld). Other common forms 
+of LSA in dogs include T-zone lymphoma (TZL, ∼10-15% of 
+cases) and marginal zone lymphoma (5-15% of cases).
+Cats
+In cats, GI LSA is most common (ch. 262), with 3 distinct condi-
+tions recognized.15 Mucosal T-cell LSA (enteropathy associated 
+T-cell lymphoma [EATCL], type II) is characterized by small-
+to intermediate-sized lymphocytes inltrating small intestinal 
+lamina propria with or without epitheliotropism. Lesions can 
+be patchy or diuse. Transmural T-cell LSA (EATCL, type I) is 
+characterized by large lymphocytes, oen with eosinophilic gran-
+ules typical of large granular lymphocytes (LGLs). Tumor cells 
+eace the mucosal lamina propria, oen exhibiting epitheliotro-
+pism, and heavily inltrate the submucosa. Lesions are focal or 
+multifocal within the small intestine. DLBCL is characterized 
+by transmural inltrates of large lymphocytes that rarely exhibit 
+epitheliotropism. Lesions commonly involve the stomach (ch. 
+261), jejunum (ch. 262), and ileocecocolic junction (chs. 262, 
+263). DLCBL also accounts for most feline nasal LSA (ch. 213) 
+and up to 33% of mediastinal LSA (ch. 222).12 About 10% of all 
+feline LSAs are T-cell rich B-cell lymphoma (TCRBCL, formerly 
+Hodgkin’s-like LSA).12 16 As the name implies, this form of LSA 
+is characterized by small to intermediate-sized non-neoplastic 
+T-cells admixed with neoplastic large B-cells. T-cells predominate 
+initially, but B-cells gradually increase in proportion. Cats with 
+TCRBCL usually have 1 or more enlarged mandibular or cervical 
+lymph nodes.
+CLINICAL SIGNS IN DOGS
+Peripheral Lymph Node Lymphoma
+Most dogs with DLCBL and PTCL have generalized lymphade-
+nopathy (Figure 322.1). Severity of lymphadenopathy varies 
+greatly and can be asymmetric. Concurrent liver and or/spleen 
+involvement is common. Occasionally other anatomic sites will be 
+aected as well, including but not limited to the BM or periph-
+eral blood. LSA can aect any breed at any age. Many dogs have 
+no clinical signs aside from peripheral lymphadenopathy with 
+or without cranial abdominal organomegaly. As the cancer pro-
+gresses, common clinical signs include inappetence, lethargy, 
+vomiting, and diarrhea. Mandibular lymphadenopathy rarely 
+causes dysphagia or dyspnea, but notably, if severe mandibular 
+lymphadenopathy impairs lymphatic drainage, pitting edema and 
+associated clinical signs result (ch. 239). Enlarged tonsils can cause 
+respiratory stertor and/or dysphagia. Other clinical signs depend 
+on the organ system(s) aected. Signicant liver inltration can 
+lead to hepatic failure. BM myelophthisis can lead to anemia and 
+weakness, thrombocytopenia and coagulopathy, and/or neutrope-
+nia and sepsis (chs. 128, 176). Respiratory signs can result from 
+tracheobronchial lymphadenopathy, pulmonary inltration, cra-
+nial mediastinal mass, or pleural eusion. Almost any other organ 
+system can become inltrated. Also, T-cell LSA can be associated 
+with paraneoplastic hypercalcemia, which can cause polyuria/
+polydipsia (PU/PD), renal failure, anorexia, vomiting, and occa-
+sionally muscle twitching (chs. 69, 283, and 331).
+About 75% of canine peripheral lymph node LSA are B-cell in 
+origin (DLBCL being the most common subtype), and 25% are 
+T-cell in origin (PTCL).14 ere are signicant breed dierences.17
+e Basset Hound, Cocker Spaniel, Border Collie, and Doberman 
+Pinscher have higher prevalences of B-cell LSA. In contrast, the 
+Boxer, Shih Tzu, Cavalier King Charles Spaniel, and Airedale are 
+among the breeds with the highest prevalences of T-cell LSA.
+Indolent T-Zone Lymphoma (TZL)
+Most dogs with TZL have mild peripheral lymphadenopathy that 
+can be solitary, regional, or generalized,18-20 and is oen stable 
+to slowly progressive over months. >50% of aected dogs have 
+concurrent peripheral blood lymphocytosis and are clinically 
+healthy, although concurrent demodicosis has been reported. 
+Paraneoplastic hypercalcemia is rare. Golden Retrievers account 
+for ∼40% of cases, and Shih Tzus about 8%. About 15% of dogs 
+with TZL have peripheral blood lymphocytosis and no concur-
+rent lymphadenopathy, indicating overlap between TZL and some 
+chronic lymphocytic leukemias (CLLs).20 21 ∼30% of Golden 
+Retrievers >10 years old with no evidence of lymphoproliferative 
+disease have CD45 T-zone cells identied in their blood using 
+ow cytometry, referred to as T-zone like cells of undetermined 
+signicance.22
+Figure 322.1
+Generalized lymphadenopathy in a dog with large cell 
+lymphoma. Calipers are measuring the right supercial cervical lymph 
+node.
+QoL quality of life
+RT radiation therapy
+TCR T-cell receptor
+TCRBCL T-cell rich B-cell 
+lymphoma
+TZL T-zone lymphoma
+UA urinalysis
+US ultrasound
+WHO World Health 
+Organization
+ACRONYMS—CONT’D

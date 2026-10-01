@@ -1,0 +1,243 @@
+CHAPTER 216
+•
+Small Airway Diseases
+1173
+eBooks.Health.Elsevier.com
+149. Reinero CR, Decile KC, Byerly JR, etal. Eects of drug treatment on in-
+ammation and hyperreactivity of airways and on immune variables in cats with 
+experimentally induced asthma. Am J Vet Res. 2005;66:1121-1127.
+150. Leemans J, Kirschvink N, Bernaerts F, etal. Salmeterol or doxycycline 
+do not inhibit acute bronchospasm and airway inammation in cats with 
+experimentally-induced asthma. Vet J. 2012;192:49-56.
+151. Leemans J, Kirschvink N, Clercx C, etal. Eect of short-term oral and 
+inhaled corticosteroids on airway inammation and responsiveness in a feline 
+acute asthma model. Vet J. 2012;192:41-48.
+152. Cohn LA, DeClue AE, Cohen RL, etal. Eects of uticasone propionate dos-
+age in an experimental model of feline asthma. J Feline Med Surg. 2010;12:91-96.
+153. Reinero CR, Delgado C, Spinka C, etal. Enantiomer-specic eects of 
+albuterol on airway inammation in healthy and asthmatic cats. Int Arch Allergy 
+Immunol. 2009;150:43-50.
+154. García-Guasch L, Caro-Vadillo A, Manubens-Grau J, etal. Pulmonary 
+function in obese vs non-obese cats. J Feline Med Surg. 2015;17:494-499.
+155. Trzil JE, Masseau I, Webb TL, etal. Long-term evaluation of mesenchymal 
+stem cell therapy in a feline model of chronic allergic asthma. Clin Exp Allergy
+2014;44:1546-1557.
+Small Airway Diseases
+Carol Reinero
+OVERVIEW
+DEFINITION AND CLASSIFICATION
+S
+mall airway diseases, also called bronchiolar disorders, repre-
+sent specic diseases involving pathological changes of small 
+airways <2 mm in diameter lacking cartilage. ese unique 
+anatomic units are interposed between the upstream larger airways 
+(conducting airways) and the downstream pulmonary acini (gas-
+exchange units) and can serve as the primary targets for a variety of 
+dierent insults. In cats and dogs, there are no pathognomonic clini-
+cal signs or cytologic ndings (e.g., from lung ne-needle aspirates 
+or airway lavage) for bronchiolar disorders. Due to their small size, 
+small airways are not visible on thoracic radiographs or even com-
+puted tomographic (CT) scans of healthy individuals. While diseased 
+bronchioles can be appreciated on CT scans and while pathologists 
+can microscopically visualize disease involvement of the small air-
+ways, historically there has been a lack of crosstalk between veteri-
+nary clinicians, radiologists and pathologists. Collectively, all these 
+factors have contributed to a lack of recognition of small airway dis-
+eases as distinct clinical entities.
+Recently, a classication scheme was proposed for bronchiolar 
+disorders in cats with the caveat that as understanding of small air-
+way diseases improved that further renement of the scheme would 
+be needed.1 e proposed classication split small airway disorders 
+into three categories: (1) primary bronchiolar disorders, (2) second-
+ary bronchiolar disorders from extension of large airway disease, and 
+(3) secondary bronchiolar disorders as a component of interstitial 
+lung diseases (ILDs).1 is classication was modeled aer a human 
+scheme2 with the intent to group historical ndings, clinical features, 
+CT ndings, and histopathologic ndings into discrete syndromes 
+that may have similar etiologies, clinical courses, and treatments.
+Unlike in cats, there has been no proposed classication for 
+bronchiolar disorders in dogs, with only sporadic case reports 
+and small case series suggesting that pet dogs also develop lesions 
+associated with their small airways.3-7 Experimentally, bron-
+chiolar disease could also be induced in dogs although the clini-
+cal syndromes resulting from these exposures were classied as 
+parenchymal disease (pneumonia and interstitial lung disease).8 9
+ETIOLOGY
+Inciting causes of bronchiolar disorders in people vary and include 
+environmental exposures, infection, drugs, chronic aspiration, 
+neoplasia, or immune-mediated disease. Dogs and cats share the 
+environment with humans and are susceptible to many of the same 
+triggers, including particulate matter in air pollution. Dogs in pol-
+luted outdoor environments have been reported to sustain injury to 
+their bronchioles.10 Mineral dust airway disease from inhaled inor-
+ganic dusts has been described in a cat.1 Exposure to various envi-
+ronmental chemicals, gases, smoke and other inhaled particulates 
+as a cause for bronchiolar disorders still needs investigation in vet-
+erinary medicine and underscores the need for a thorough history 
+from owners about potential exposures. e role of some of the other 
+aforementioned causes in inducing small airway disease in cats has 
+been reviewed recently1 and many if not all of these are likely to aect 
+canine small airways.
+PATHOPHYSIOLOGY
+Bronchiolar disease can lead to an obstructive or a restrictive pheno-
+type. ese disorders can be acute or chronic in nature. Inammatory 
+(infectious or noninfectious), brotic and neoplastic processes can 
+lead to small airway disorders when bronchioles <2 mm in diameter 
+are aected. Fibrosis is considered a sequel to injury and inamma-
+tion such that in the end stage of disease, the underlying inam-
+matory response may be missed. If histologic evaluation is used for 
+characterizing the microscopic features of the lesions, it is critical to 
+examine multiple areas of the lung to assess for early lesions, patchy 
+lesions, and subtle lesions. e extent of disease (i.e., number of small 
+airways involved, severity of airway occlusion or luminal narrow-
+ing, and involvement of upstream large airways or downstream gas 
+exchange units) contributes to the type and severity of clinical signs.
+CLINICAL PRESENTATION
+It is important to understand that there is/are no pathognomonic 
+clinical sign(s) in dogs or cats with small airway disease. Bron-
+chiolar disorders must thus remain on the dierential list for 
+many respiratory signs. As we are still learning more about these 
+syndromes, it will be critical to thoroughly investigate potential 
+underlying exposures in the environment by taking a comprehen-
+sive history and to combine that with ndings on physical exami-
+nation, and ultimately a more sophisticated set of diagnostics.
+HISTORY
+Historical questions (ch. 2) should start with an understanding of the 
+environment of the dog or cat. Does the cat live outdoors, indoors, 
+or both? Is the setting rural, suburban, or urban and what is known 
+CHAPTER 216
+ACRONYM
+CT computed tomography
+
+SECTION XII
+•
+Respiratory Disease
+1174
+eBooks.Health.Elsevier.com
+about environmental air quality in those regions? Is there exposure 
+to smoke (cigarette, incense, replace, wood-burning stove, wildre 
+smoke) or vapor (e.g., e-cigarettes, which may emit nicotine, form-
+aldehyde, acetone, heavy metals, and volatile organic compounds)? 
+Is there use of plug-in or canned air fresheners or other fragrances 
+or essential oils? Is there a possibility the house might have radon 
+or mold? Has there been recent construction or renovations in the 
+home, including use of paint or solvents? Which cleaning products 
+are used? Is there exposure to pesticides, herbicides, or heavy metals? 
+For cats, what type of cat litter is used? It will take further study in 
+large numbers of dogs and cats to determine if any of these are direct 
+triggers of small airway inammation, brosis, or both. Knowledge 
+of exposures also plays a role in treatment to promote a healthy respi-
+ratory tract whether or not environmental substances directly or 
+indirectly promote inammation and tissue injury.
+Along with environmental exposures, it would be helpful to ques-
+tion owners about any other systemic signs of illness that might point 
+toward an underlying infectious, immune-mediated, or neoplastic 
+disorder. Other respiratory clinical signs, including an association 
+with drinking or eating (that could indicate the potential for repeti-
+tive macro- or micro-aspiration; ch. 221) should be identied. Own-
+ers should be asked about administration of any drugs (prescribed 
+or over-the-counter), nutraceuticals, homeopathic remedies, and any 
+other alternative medical therapies. Finally, owners should be ques-
+tioned about the onset of signs (subacute, acute, or insidious) and if 
+disease is static or progressive over time.
+PHYSICAL EXAMINATION (CH. 3)
+In the author’s experience, dogs and cats with bronchiolar 
+disease have been described to have a range of clinical signs 
+including cough (ch. 34), wheeze, tachypnea, increased expira-
+tory eort, mixed inspiratory/expiratory eort (ch. 37), exer-
+cise intolerance, syncope (ch. 40), and cyanosis (ch. 27), and 
+the presence of these should be recorded. ere should be an 
+attempt to elicit cough with gentle tracheal pressure (Videos 
+3.11, 34.5). Evidence of systemic signs of illness, such as poor 
+body condition or documented unintentional weight loss (ch. 
+18), and fever (ch. 16), should be noted, and a fundic examina-
+tion should be performed (ch. 13). Careful attention should be 
+paid to cardiopulmonary auscultation (ch. 3). Cardiac murmurs 
+(ch. 38) or arrhythmias (ch. 230) may suggest comorbid car-
+diac disease. Wheezes, crackles and increased bronchovesicular 
+sounds may be heard (ch. 212).
+DIFFERENTIAL DIAGNOSIS
+e most common disease mimics depend on whether the disease 
+process is localized to the small airways alone, or if it involves 
+the large airways, pulmonary acini, or all three anatomic regions. 
+Many of the disorders isolated to the small airways (especially 
+constrictive/obliterative bronchiolitis) present as an obstructive 
+airway disorder, including patients having increased expiratory 
+eort and air trapping noted on radiography. In cats, asthma 
+would be the top dierential. If large and small airways are 
+involved in tandem, cough frequently predominates as the main 
+clinical sign (ch. 34) and any cause of cough (i.e., respiratory, car-
+diac, aerodigestive) should be considered as a dierential until 
+a more comprehensive diagnostic evaluation can be performed. 
+If small airways and the parenchyma are aected, or if the large 
+and small airways and the parenchyma are aected, the disease 
+may present as a restrictive lung disease. Top dierentials would 
+include infection, neoplasia and interstitial lung diseases. ese 
+are only a few general guidelines for determining likely dieren-
+tials, but it is important to remember that the small airway dis-
+orders are very diverse, and our understanding of them is still in 
+its infancy.
+DIAGNOSTIC EVALUATION
+In general, the diagnostic evaluation of a dog or cat with respira-
+tory signs should start with localizing disease to the likely anatomic 
+regions of the respiratory tract (ch. 212). e clinical signs associ-
+ated with small airway disease resemble those causing intrathoracic 
+airway and parenchymal disease. While thoracic radiographs are 
+oen the initial diagnostic test to be performed, they are incapable 
+of detecting bronchiolar disease. is may be one reason why cats 
+“diagnosed” with asthma or chronic bronchitis frequently have unre-
+markable thoracic radiographs: these cats may instead have primary 
+bronchiolar disease. oracic radiographic lung patterns may sug-
+gest the predominant region of disease with a bronchial pattern 
+reecting large airway disease and interstitial and alveolar patterns 
+reecting pulmonary parenchymal disease. Regardless of lung pat-
+tern, and even with unremarkable thoracic radiographs, small airway 
+disease must always remain a dierential diagnosis.
+Ancillary diagnostics including complete blood count, infec-
+tious disease testing, pulse oximetry or arterial blood gas (as sole 
+diagnostics or in tandem with a 6-minute walk test in dogs), lung 
+ultrasound, respiratory uoroscopy, and videouoroscopic swal-
+low study (Videos 221.1, 259.2, 259.3) can be considered prior to 
+diagnostics requiring anesthesia (ch. 212). Additionally, screen-
+ing other regions of the body for infectious disease involvement 
+or a primary neoplasm can be performed.
+e author strongly advocates anesthetized CT scans in lieu of 
+awake or sedated CT scans as the latter are usually compromised by 
+motion artifact, variable ination and poor detail of CT lung patterns 
+required to better identify and characterize small airway disease. e 
+most optimal thoracic CT study would employ ventilator-assisted 
+paired inspiratory and expiratory breath-holds to help detect evi-
+dence of dynamic changes.11 Patients with small airway disease can 
+have direct and indirect CT signs. Direct CT signs of bronchiolar 
+disease include tree-in-bud pattern (nodular opacities connected to 
+branching linear opacities), bronchiolectasis (dilation; Figure 216.1) 
+and peribronchiolar ground-glass opacity or consolidation.1 Indi-
+rect CT signs of bronchiolar disease include mosaic attenuation sec-
+ondary to air trapping (requiring paired inspiratory and expiratory 
+breath-hold series) or, rarely, mosaic perfusion.1 Aside from provid-
+ing evidence of small airway disease, thoracic CTs can demonstrate 
+abnormalities associated with the upstream larger airways and the 
+downstream pulmonary parenchyma. If other regions of the respira-
+tory tract demonstrate abnormalities, it might indicate either a sec-
+ondary bronchiolar disorder or the presence of unrelated comorbid 
+disease.
+oracic CT studies are one of two tests to denitively diagnose 
+small airway disease, but additional diagnostics are required to deter-
+mine the underlying cause. Cytologic evaluation of airway lavage (ch. 
+93) or pulmonary ne-needle aspiration are most helpful when iden-
+tifying the presence of infectious organisms or neoplastic cells; oth-
+erwise, cytologic evidence of inammation is non-specic and can be 
+appreciated with many types of large airway, small airway and paren-
+chymal disease. e other diagnostic test to denitively diagnose 
+small airway disease is histopathologic evaluation of a tissue sample. 
+Lack of routine antemortem lung biopsies has hampered our recog-
+nition and understanding of small airway disorders. Histopathologic 
+evaluation has the potential to most fully characterize the type, extent 
+and severity of lesions, but expertise in respiratory pathology is likely 
+to be required until these are more commonly understood disorders.
+TREATMENT
+Currently, there is insucient knowledge of bronchiolar disorders 
+to know how to best treat these diseases. In general, treatment can 
+be divided into three categories: (1) strategies to promote respiratory 
+health, (2) addressing comorbid respiratory and cardiovascular con-
+ditions and (3) specic therapy to target the primary disease process.

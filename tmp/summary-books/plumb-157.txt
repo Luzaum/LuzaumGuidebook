@@ -1,0 +1,248 @@
+130      Bethanechol
+Intra-articular administration (extra-label): Most dosage rec-
+ommendations range from 3 – 18 mg/joint (NOT mg/kg) in-
+tra-articularly. Repeat doses should be limited to the minimum 
+required to achieve soundness.
+Monitoring
+Monitoring of glucocorticoid therapy is dependent on its reason for 
+use, dosage, agent used, dosage schedule (daily versus alternate day 
+therapy), route of administration, duration of therapy, and the ani-
+mal’s age and condition. The following list may not be appropriate 
+or complete for all animals; use clinical assessment and judgment 
+should adverse effects be noted:
+	■Body weight, appetite, GI signs (eg, anorexia, vomiting, diarrhea)
+	■Signs of edema
+	■Serum electrolytes
+	■Total plasma protein, albumin
+	■Blood glucose
+	■Growth and development in young animals
+	■Adrenocorticotrophic hormone (ACTH) stimulation test, if con-
+cerned about iatrogenic hyperadrenocorticism
+Client Information
+	■Carefully follow the instructions for how to give this medicine to 
+your animal. Do not suddenly stop giving this medicine without 
+talking to your veterinarian.
+	■Do not give other medications (including over-the-counter 
+[OTC] medication) or nonsteroidal anti-inflammatory (NSAID) 
+medications while your pet is on this medication without talking 
+to your veterinarian first.
+	■There are many potential side effects that can be seen with these 
+drugs, including increased or decreased appetite, vomiting, ab-
+normal stool, and increased thirst and urination. Contact your 
+veterinarian if these effects become severe or worsen.
+	■While your animal is taking this medication, it is important to 
+return to your veterinarian for periodic examinations and blood 
+work. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+A synthetic glucocorticoid, betamethasone has been manufactured 
+as the base and as the dipropionate, acetate, and sodium phosphate 
+salts. The base is used for oral dosage forms. The sodium phosphate 
+and acetate salts are used in injectable preparations. The dipropio-
+nate salt is used in topical formulations.
+Betamethasone occurs as an odorless, white to practically white 
+crystalline powder. It is insoluble in water and practically insoluble 
+in alcohol. The acetate salt occurs as a white or creamy-white odor-
+less powder. It is practically insoluble in water and soluble in alcohol. 
+The sodium phosphate salt occurs as an odorless, white to practically 
+white hygroscopic powder. It is freely soluble in water and slightly 
+soluble in alcohol.
+Betamethasone may also be known as flubenisolone, BetaVet®, or 
+Celestone®.
+Storage/Stability
+The combination injectable product should be stored between 20°C to 
+25°C (68°F-77°F) and protected from light. Shake well before using.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+If coadministration with a local anesthetic is desired, lidocaine 
+1% or 2% (without parabens or phenol) mixed with betamethasone 
+sodium phosphate/acetate injection has been suggested.13 The lido-
+caine should be drawn into the syringe after the dose of betametha-
+sone is drawn up. Do not add lidocaine to the vial of betamethasone.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+The Association of Racing Commissioners International (ARCI) has 
+designated betamethasone as a class 4 substance. Use of this drug 
+may not be allowed in certain animal competitions. Check rules and 
+regulations before entering in a competition while this medication 
+is being administered. Contact local racing authorities for further 
+guidance. See Appendix for more information.
+Betamethasone Injectable suspension: 6 mg/mL as 3.15 mg beta-
+methasone sodium phosphate and 2.85 mg betamethasone acetate 
+in 5 mL single-dose vials; BetaVet®; (Rx). FDA-approved for use in 
+horses. Not for use in horses intended for human consumption
+Intra-articular injection: Betamethasone acetate 12 mg/mL (equiva-
+lent to 10.8 mg betamethasone) and 3.9 mg/mL betamethasone di-
+sodium phosphate (equivalent to 3 mg of betamethasone); Betavet 
+Soluspan Suspension®; (Rx). FDA-approved for use in horses. This 
+product is listed in the FDA Green Book is no longer marketed.
+Betamethasone valerate is also found in several otic and topical 
+products either as a single agent or in combination with gentamicin.
+HUMAN-LABELED PRODUCTS:
+Betamethasone Injection: betamethasone (as sodium phosphate) 
+3 mg/mL and betamethasone acetate 3 mg/mL suspension in 5 mL 
+multi-dose vials; Celestone Soluspan®, generic; (Rx)
+Various topical formulations are also available.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Beta
+Bethanechol
+(beh-than-e-kole)  Urecholine® 
+Cholinergic
+Prescriber Highlights
+	
+▶Cholinergic agent used primarily to increase urinary bladder 
+contractility; bethanechol can also be used as a prokinetic 
+agent and for treatment of clinical signs associated with 
+dysautonomia. May be useful for adjunctive treatment of 
+equine gastric ulcer syndrome (EGUS)
+	
+▶Principal contraindications are GI or urinary tract obstructions 
+or when the integrity of the urinary bladder wall is of concern.
+	
+▶Adverse effects are related to cholinergic effects and include 
+salivation, lacrimation, urination, defecation, GI distress, eme-
+sis, and miosis (ie, SLUDGE-M).
+	
+▶Cholinergic crisis is possible when injecting bethanechol IV or 
+IM; atropine should be readily available.
+Uses/Indications
+Bethanechol can be used to stimulate urinary bladder contractions 
+in small animal species. This drug appears to be most effective in 
+the treatment of acute and partial detrusor atony secondary to acute 
+urinary bladder overdistension and partial neurogenic lesions and 
+when given in combination with other agents (eg, alpha-adrenergic 
+antagonists, benzodiazepines) to reduce urethral resistance. A pilot 
+study in healthy beagles showed no changes in urethral or urinary 
+bladder function after bethanechol treatment was given for 15 days.1 
+Bethanechol can be used as an esophageal prokinetic. This drug can 
+also be used as a general GI prokinetic agent, but other agents (eg, 
+metoclopramide, cisapride) are better tolerated.
+Bethanechol has been shown to increase abomasum and duode-
+num contractility in both healthy dairy cattle and cattle with left dis-
+placement of the abomasum (LDA)2; however, bethanechol did not 
+
+Bethanechol      131
+alter the abomasal emptying rate in calves.3
+In horses, bethanechol has been suggested as an adjunctive proki-
+netic agent for treatment of equine gastric ulcer syndrome (EGUS) 
+and in cases with adynamic ileus and gastroduodenal reflux.4-6
+Pharmacology/Actions
+Bethanechol directly stimulates cholinergic receptors. Its effects are 
+principally muscarinic and has negligible nicotinic activity at rec-
+ommended dosages. This drug is more resistant to hydrolysis than 
+acetylcholine by cholinesterase and, therefore, has an increased du-
+ration of activity.
+Pharmacologic effects include increased esophageal peristalsis 
+and lower esophageal sphincter tone, increased tone and peristaltic 
+activity of the stomach and intestines, increased gastric and pancre-
+atic secretions, increased tone of the detrusor muscle of the urinary 
+bladder, and decreased bladder capacity. High parenteral dosages 
+can result in adverse effects related to cholinergic effects on other 
+systems (eg, increased bronchial secretions and constriction, mio-
+sis, lacrimation, salivation). When administered SC or PO, bethan-
+echol’s effects are predominantly seen in the GI and urinary tracts. 
+A ceiling effect (ie, decreased response despite higher dosages) can 
+be seen secondary to receptor desensitization and calcium depletion.
+Pharmacokinetics
+No information was located on the pharmacokinetics of this agent in 
+veterinary species. In humans, bethanechol is poorly absorbed from 
+the GI tract, and the onset of action is usually within 30 to 90 minutes 
+after oral administration. After SC administration, effects begin within 
+5 to 15 minutes and usually peak within 30 minutes. The duration of 
+action after oral administration may last up to 6 hours after large doses 
+and 2 hours after SC administration. SC administration yields a more 
+enhanced effect on urinary tract stimulation than oral administration.
+Bethanechol does not enter the CNS when administered at rec-
+ommended doses; other distribution aspects of the drug are not 
+known. The metabolic and excretory fate of bethanechol has not 
+been described.
+Contraindications/Precautions/Warnings
+Bethanechol is contraindicated in animals with a known hypersensi-
+tivity to the drug. Additional contraindications to bethanechol ther-
+apy include urinary outflow obstruction, when the integrity of the 
+urinary bladder wall is of concern (eg, after recent bladder surgery), 
+hyperthyroidism, peptic ulcer disease or when other inflammatory 
+GI lesions are present, recent GI surgery with resection and anas-
+tomosis, GI obstruction or peritonitis, hypersensitivity to the drug, 
+epilepsy, bronchoconstrictive disease (eg, asthma), hypotension, 
+severe bradycardia or vagotonia, and vasomotor instability. Bethan-
+echol should only be used in conjunction with another agent that 
+will sufficiently reduce outflow resistance (eg, diazepam, dantrolene 
+[striated muscle], phenoxybenzamine [smooth muscle]) when uri-
+nary outflow resistance is increased due to enhanced urethral tone 
+(not mechanical obstruction).
+Retrograde urinary reflux to the kidney may occur if bethanechol 
+fails to relax the urethral sphincter.
+Adverse Effects
+When administered orally to small animal species, adverse effects 
+are usually mild; vomiting, diarrhea, salivation, and anorexia are the 
+effects most likely to occur. Cardiovascular effects (eg, tachycardia, 
+arrhythmias, hypotension) and respiratory effects (eg, asthma, dys-
+pnea) are typically only seen after overdose or with high doses given 
+SC. Bethanechol may stimulate pancreatic stimulation of amylase 
+and lipase, and serum bilirubin and AST may be increased due to 
+retention caused by contraction of the sphincter of Oddi.
+In horses, salivation, lacrimation, and abdominal pain (colic) are 
+potential adverse effects.
+IV or IM use is not recommended; however, the IV route may be 
+necessary in an emergency situation. Severe cholinergic reactions are 
+likely if the drug is given IV. If injecting the drug (IV or IM), it is 
+recommended that atropine be immediately available.
+Reproductive/Nursing Safety
+No data were located regarding bethanechol use in pregnant ani-
+mals. It is unknown if bethanechol is distributed into milk. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Clinical signs of overdose are cholinergic in nature. Muscarinic ef-
+fects (eg, salivation, urination, defecation) are usually seen with PO 
+or SC administration. If given IM or IV, a cholinergic crisis can oc-
+cur; circulatory collapse, bloody diarrhea, shock, and cardiac arrest 
+are possible.
+Treatment for bethanechol toxicity is atropine (see Atropine). 
+Epinephrine may also be used to treat clinical signs of bronchospasm 
+(see Epinephrine).
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving bethanechol and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+	■Anticholinergic Drugs (eg, atropine, glycopyrrolate, prop-
+antheline): Can antagonize bethanechol’s effects
+	■Beta Adrenergic Antagonists: May increase the risk for ar-
+rhythmias and bronchospasm
+	■Cholinergic Drugs (eg, neostigmine, physostigmine, pyr-
+idostigmine): Because of additional cholinergic effects, bethan-
+echol should generally not be used concomitantly with other cho-
+linergic drugs.
+	■Ganglionic Blocking Drugs (eg, mecamylamine, tri-
+methaphan): Can produce severe GI and hypotensive effects
+	■Quinidine, Procainamide: Can antagonize the effects of 
+bethanechol
+Laboratory Considerations 
+	■None noted
+Dosages
+NOTE: The injectable product is no longer commercially available 
+in the United States.
+DOGS:
+Increase urinary bladder contractility caused by detrusor mus-
+cle atony or treatment for clinical signs related to dysautono-
+mia (extra-label): 2.5 mg – 25 mg/dog (NOT mg/kg) PO 3 times 
+daily. Some dogs may respond to twice-daily administration.
+GI prokinetic (extra-label): 5 – 15 mg/dog (NOT mg/kg) PO ev-
+ery 8 hours. May give up to 25 mg/dog (NOT mg/kg) every 8 
+hours. Improvement in esophageal motility in dogs with megae-
+sophagus is possible.7,8
+CATS:
+Increase urinary bladder contractility caused by detrusor mus-
+cle atony or treatment for clinical signs related to dysautono-

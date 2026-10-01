@@ -1,0 +1,843 @@
+
+===== Plumb PDF 39 =====
+12    Acetylcysteine
+cosis. It is also used as a potential adjunctive treatment to prevent 
+enterolith formation in horses by reducing colonic pH.
+Pharmacology/Actions
+Acetic acid in the rumen lowers pH by shifting ammonia (NH 3) to 
+ammonium ions (NH4
++) to reduce ammonia absorption; it may also 
+slow the hydrolysis of urea.
+Pharmacokinetics
+No information is noted.
+Contraindications/Precautions/Warnings
+Acetic acid should not be administered to ruminants until lactic aci-
+dosis (eg, grain overload, rumen acidosis) is ruled out.
+Do NOT use concentrated forms of acetic acid; use only vinegar 
+(3%-5% acetic acid).
+Adverse Effects
+Because of the unpleasant taste and potential for causing mucous 
+membrane irritation, it is generally recommended to administer ace-
+tic acid via stomach tube.
+Overdose/Acute Toxicity
+When acetic acid is used for appropriate indications, there is little 
+likelihood of serious toxicity occurring after minor overdoses. Be -
+cause of its potential corrosiveness, the greatest concern is when a 
+concentrated form of acetic acid is mistakenly used.
+Drug Interactions
+There are no documented drug interactions with oral acetic acid. 
+Because of its acidic qualities, acetic acid could theoretically affect 
+the pharmacokinetics of several drugs, which may have clinical sig -
+nificance in veterinary species. Unless otherwise noted, use together 
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+ ■ Aspirin : Acidified urine can decrease the excretion of salicylates.
+ ■ Azole Antifungals (eg, itraconazole, ketoconazole): Acetic 
+acid may increase absorption of azole antifungal agents.
+ ■ Iron : Acetic acid may increase iron absorption.
+ ■ Phenobarbital : Acidified urine can decrease the excretion of 
+phenobarbital.
+ ■ Quinidine : Acidified urine can decrease the excretion of quini -
+dine.
+Dosages
+CATTLE/RUMINANTS:
+Urea poisoning/nonprotein nitrogen-induced ammonia tox -
+icosis (extra-label): Using 5% acetic acid (ie, vinegar), infuse  
+4 – 10 L (for cattle) or 250 mL – 1 L (sheep/goats) into the rumen.1 
+Follow with cold water (up to 30 L in cattle; 2 – 8 L in sheep/goats) 
+to reduce rumen temperature and reduce formation of urea. Re -
+peat treatment as required if clinical signs reoccur.
+HORSES:
+Adjunctive treatment for enterolith prevention  (extra-  
+label): Using 5% acetic acid (ie, vinegar), add 250 mL/450 kg  
+(250 mL/990 lb) body weight to food once daily.
+Chemistry/Synonyms
+Glacial acetic acid is C2H4O2. Acetic acid has a distinctive odor and a 
+sharp acid taste. It is miscible with water, alcohol, or glycerin. Much 
+confusion can occur with the percentages of C 2H4O2 contained in 
+various acetic acid solutions. Acetic Acid USP is defined as having a 
+concentration of 36% to 37% C 2H4O2. Diluted Acetic Acid NF con -
+tains 5.7% to 6.3% w/v of C 2H4O2. Solutions containing ≈3% to 5% 
+w/v of C 2H4O2 are commonly known as vinegar. Be certain of the 
+concentration of the product you are using and your dilutions.
+Acetic acid may also be known as E260, eisessig (glacial acetic 
+acid), essigsäure, etanoico, or ethanoic acid.
+Storage/Stability
+Acetic acid solutions should be stored in airtight containers.
+Compatibility/Compounding Considerations
+If diluting more concentrated forms of acetic acid to concentrations 
+equivalent to vinegar (3% to 5%), use safety precautions to protect 
+eyes and skin. It is strongly recommended to have someone check 
+your calculations to prevent potentially serious consequences.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS: NONE
+No systemic products are commercially available. Acetic acid (in 
+various concentrations) may be purchased from chemical supply 
+houses. Distilled white vinegar is available in gallon sizes from gro -
+cery stores or mass merchandisers.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Acetylcysteine
+N-Acetylcysteine
+NAC, ACC
+(assah-teel-sis-tay-een) Mucomyst®
+Antidote; Mucolytic
+Prescriber Highlights
+ ▶ Used primarily as a treatment for acetaminophen toxicity or 
+other hepatotoxic conditions in which glutathione synthesis is 
+inhibited or oxidative stress occurs
+ ▶ When using as an antidote, if possible, give first dose IV; oral 
+doses should be given on an empty stomach and via gastric 
+tube.
+ ▶ Has also been used as an inhaled solution for its mucolytic 
+effect and, anecdotally, orally for treating degenerative my-
+elopathy
+ ▶ Administration via nebulization has caused hypersensitivity 
+and bronchospasm. 
+ ▶ Dilute prior to IV administration; use a 0.2 micron in-line filter if 
+administering inhalation solution IV
+Uses/Indications
+Acetylcysteine (N-acetylcysteine, NAC) is used in veterinary medi -
+cine as both a mucolytic agent in the pulmonary tree and as a treat -
+ment for acetaminophen, xylitol, or phenol toxicity in small animals. 
+It potentially could be useful in the adjunctive treatment of sulfon -
+amide hypersensitivity, sago palm hepatotoxicity, mushroom hepa -
+totoxicity, doxorubicin-induced hepatotoxicity, cadmium toxicity, or 
+phenazopyridine toxicity.1-4 Acetylcysteine may also be used topical-
+ly in the eye to halt the melting effect of collagenases and proteinases 
+on the cornea (see Acetylcysteine Ophthalmic).
+Acetylcysteine has been used anecdotally with aminocaproic acid 
+to treat degenerative myelopathy in dogs, but efficacy data are lack -
+ing. 
+In horses with strangles (ie, Streptococcus equi subsp equi infec-
+tion), acetylcysteine instilled into the guttural pouch has been used 
+to help break up chondroids and avoid the need for surgical remov-
+al.5 Acetylcysteine enemas have been used in neonatal foals to break 
+up meconium refractory to repeated enemas. In mares in estrus, 
+intrauterine acetylcysteine instillation could potentially be useful as 
+an adjunctive treatment of endometritis, as acetylcysteine appears 
+to have anti-inflammatory effects on equine endometrial cells and 
+improves pregnancy rates.6,7
+
+
+===== Plumb PDF 40 =====
+Acetylcysteine   13
+Pharmacology/Actions
+When administered into the pulmonary tree, acetylcysteine reduc -
+es the viscosity of both purulent and nonpurulent secretions and 
+expedites the removal of these secretions via coughing, suction, or 
+postural drainage. The free sulfhydryl group on the drug is believed 
+to reduce disulfide linkages in mucoproteins; this effect is most pro-
+nounced at a pH from 7 to 9. The drug has no effect on living tissue 
+or fibrin.
+In the management of toxicity, acetylcysteine acts as a thiol donor, 
+stimulating glutathione synthesis, and is a free radical scavenger. It 
+also improves hepatic blood flow through increased production of 
+nitric oxide. In acetaminophen hepatotoxicity, glutathione stores are 
+maintained allowing elimination via nontoxic metabolites.
+When administered to sick dogs (n = 30) during the first 48 hours 
+of hospitalization, acetylcysteine stabilized erythrocyte glutathione 
+concentrations, but when compared with the placebo group, illness 
+severity scores and survival rates were unchanged.8
+Pharmacokinetics
+When given orally, some acetylcysteine is absorbed from the GI 
+tract. Oral bioavailability in healthy cats has been reported as ≈20%.9 
+When administered via nebulization or intratracheally into the pul-
+monary tract, most of the drug is involved in the sulfhydryl-disulfide 
+reaction and the remainder is absorbed. Absorbed drug is converted 
+(deacetylated) into cysteine in the liver and then further metabo -
+lized. Elimination half-life in cats is ≈0.8 hours (IV) and ≈1.3 hours 
+(PO). The authors postulated that oral doses of 100 mg/kg may be ef-
+fective in cats when treating chronic diseases, but additional studies 
+are required to confirm safety and efficacy.9
+Contraindications/Precautions/Warnings
+Acetylcysteine is contraindicated (for pulmonary indications) in 
+animals hypersensitive to it. Use as an antidote has no contraindi -
+cations.
+Acetylcysteine administration via inhalation (nebulization) may 
+cause bronchospasm, and this drug should be used very cautious -
+ly, if at all, in animals with bronchospastic conditions (eg, asthma, 
+bronchitis). 
+Oral or IV administration requires dilution to a 5% (50 mg/mL) 
+solution. Although acetylcysteine is not labeled for injection, this 
+route is used anecdotally; a 0.2 micron in-line filter must be used 
+when giving IV . The taste and smell of the solution is unpleasant (sul-
+furous), and taste-masking agents (eg, colas, juices) have been used 
+in humans. Because oral dosing of these drugs may be difficult in 
+animals, gastric tubes may be necessary.
+Adverse Effects
+When given orally for acetaminophen toxicity, acetylcysteine can 
+cause GI effects (eg, nausea, vomiting) and rarely, urticaria. 
+IV administration appears to be well-tolerated in veterinary pa -
+tients. IV boluses in humans have caused changes in blood pressure 
+(ie, hyper- or hypotension), GI effects, erythema and flushing 30 to 
+60 minutes after infusion, and hypersensitivity reactions (eg, in hu -
+mans, rash, hypotension, wheezing).
+Adverse effects reported when acetylcysteine is administered 
+into the pulmonary tract include hypersensitivity, stomatitis, chest 
+tightness, bronchoconstriction, and bronchial or tracheal irritation. 
+A sticky residue may be noted on the face following nebulization 
+with a mask. A study in cats with experimentally induced asthma 
+demonstrated that endotracheal nebulization with acetylcysteine in-
+creased airway resistance and caused other adverse effects in some 
+cats, including increased airway secretions, cough, and unilateral 
+strabismus.10
+Reproductive/Nursing Safety
+Acetylcysteine crosses the placenta. Reproduction studies in rabbits 
+and rats have not demonstrated any evidence of teratogenic or em -
+bryotoxic effects when used in doses up to 3 times normal. Studies in 
+laboratory animals have not demonstrated impaired fertility.
+It is unknown whether acetylcysteine enters milk. Because safety 
+has not been established, this drug should only be used when the 
+maternal benefits outweigh the potential fetal risks. 
+Overdose/Acute Toxicity
+The LD50 of acetylcysteine in dogs is 1 g/kg (PO) and 700 mg/kg (IV). 
+It is believed that acetylcysteine is quite safe (with the exception of 
+the adverse effects listed above) in most overdose situations.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+ ■ Activ ated Charcoal : The use of activated charcoal as a gut 
+adsorbent of acetaminophen is controversial, as charcoal may also 
+adsorb orally-administered acetylcysteine.  
+ ■ Nitroglycerin : May enhance hypotension when given IV con-
+comitantly with acetylcysteine
+Dosages
+DOGS/CATS:
+Maintain or restore glutathione levels for the adjunctive treat-
+ment of hepatotoxicity associated with oxidative damage (ex-
+tra-label): Initial dose 140 – 180 mg/kg IV (dilute to 5% and give 
+via slow IV using a 0.2 micron filter over 15 to 20 minutes) or  
+280 mg/kg PO (via gastric tube), followed by 70 mg/kg PO or IV 
+every 6 hours for a minimum of 7 treatments.2,11-13 Large overdos-
+es may require up to 17 doses. IV administration is preferred in 
+serious intoxications or in animals with uncontrolled vomiting.
+Canine degenerative myelopathy (extra-label): 25 mg/kg PO 
+every 8 hours for 2 weeks, then every 8 hours every other day. 
+The 20% solution should be diluted to 5% with chicken broth 
+or suitable diluent. Used in conjunction with aminocaproic acid 
+at a dosage of 500 mg per dog (NOT mg/kg) PO every 8 hours 
+indefinitely. Adjunctive treatments may include prednisone  
+(0.25 – 0.5 mg/kg PO daily for 10 days, then every other day), Vi-
+tamin C (1000 mg PO every 12 hours), and Vitamin E (1000 units 
+PO every 12 hours). NOTE: No treatment has been shown to be 
+effective in published trials.14
+Adjunctive treatment of hepatic lipidosis  (extra-label): Iden -
+tify underlying cause of anorexia and provide a protein replete 
+feline diet, give acetylcysteine at 140 mg/kg IV over 20 minutes, 
+then 70 mg/kg IV every 12 hours; dilute 10% acetylcysteine with 
+saline 1:4 and administer IV using a 0.2 micron filter. 15 See also 
+ Carnitine.
+HORSES:
+To help break up chondroids in the guttural pouch  (extra-  
+label): Instill 20% solution.5
+In neonatal foals to break up meconium refractory to repeated 
+enemas (extra-label): 8 g in 20 g sodium bicarbonate in 200 mL 
+water (pH of 7.6), give as enema as needed to effect16 or with foal 
+in lateral recumbency, insert a 30 Fr Foley catheter with a 30-
+cc bulb for a retention enema. Using gravity flow, slowly infuse  
+100 – 200 mL of 4% acetylcysteine solution and retain for 30 to 
+45 minutes. IV fluids and pain medication should be considered. 
+Monitor for possible bladder distention.17 
+Monitoring
+ ■ When used for inhalational therapy (ie, nebulization), monitor 
+
+
+===== Plumb PDF 41 =====
+14   Acyclovir
+for bronchoconstriction (eg, coughing, wheezing, dyspnea)
+ ■ When used for applicable toxicities, monitoring will depend on 
+inciting cause. Some examples include:
+• CBC with methemoglobin value when applicable (eg, acet -
+aminophen toxicity)
+• Serum chemistry profile with electrolytes
+• Hydration status
+Client Information
+ ■ This agent should be used only in a clinically supervised setting.
+Chemistry/Synonyms
+The N-acetyl derivative of L-cysteine, acetylcysteine occurs as a 
+white, crystalline powder with a slight acetic odor. It is freely soluble 
+in water or alcohol.
+Acetylcysteine may also be known as N-acetylcysteine or N-ace-
+tyl-L-cysteine, NAC, 5052 acetylcysteinum, NSC-111180, Acetad-
+ote®, Mucomyst®, Cetylev®, or ACC®.
+Storage/Stability
+When unopened, vials of acetylcysteine should be stored at room 
+temperature, 15°C to 30°C (59°F-86°F). The product labeled for IV 
+use states that it should be used within 24 hours of first use, and 
+that unused portions should be discarded. However, when stored 
+at room temperature (under fluorescent lighting) or under refrig -
+eration, 20% injection repackaged in 3 mL oral syringes (600 mg/  
+3 mL; for oral use) is physically and chemically stable for 6 months.18 
+Unopened vials of acetylcysteine solution for inhalation should be 
+stored at 20°C to 25°C (68°F-77°F) with excursions permitted to 
+15°C to 30°C (59°F-86°F). Opened vials should be kept refrigerated 
+and used within 96 hours.
+The color of acetylcysteine solutions may turn from essentially 
+colorless to a slight pink or purple once the vial is opened or the 
+stopper is punctured, but color change does not affect quality or con-
+centration.
+Compatibility/Compounding Considerations
+Acetylcysteine injection (20%) is hyperosmolar and must be diluted 
+before IV administration. It is compatible with dextrose 5% (D5W), 
+sodium chloride 0.45% injection (half-normal saline), and water 
+for injection. Acetylcysteine is incompatible with oxidizing agents; 
+solutions can become discolored and liberate hydrogen sulfide when 
+exposed to rubber, copper, and iron, and during autoclaving. It does 
+not react to aluminum, stainless steel, glass, or plastic. If the solution 
+becomes light purple in color, potency is not appreciably affected, 
+but it is best to use nonreactive materials when giving the drug via 
+nebulization. Acetylcysteine solutions are incompatible with am -
+photericin B, ampicillin sodium, erythromycin lactobionate, tetra -
+cycline, oxytetracycline, iodized oil, hydrogen peroxide, and trypsin.
+In veterinary medicine, acetylcysteine 20% is usually diluted with 
+a compatible solution (see above) to a concentration of 5% (final 
+concentration of 50 mg/mL). This concentration can be obtained by 
+adding 1 part injection (20%) to 3 parts of diluent. 
+One study reports anacetylcysteine 1.25% solution (12.5 mg/mL) 
+that was created using 0.05 mL of acetylcysteine 20% solution and 
+0.75 mL of Ciprodex® (ciprofloxacin 0.3% and dexamethasone 0.1%). 
+This study found the solution to be stable for 15 days when refriger-
+ated at 4°C (39°F).19
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Acetylcysteine Injection: 20% (200 mg/mL) in 30 mL single-dose vi-
+als, preservative free; Acetadote® , generic; (Rx). Contains EDTA
+Acetylcysteine Oral Capsules: 500 mg and 600 mg; (Rx and OTC). 
+May be labeled as a nutritional product
+Acetylcysteine Inhalation or Oral Solution: 10% and 20% (as sodi -
+um) in 4 mL, 10 mL, and 30 mL vials; generic; (Rx) NOTE: If using 
+this product for dilution and then intravenous dosing, it is preferable 
+to use a 0.2 micron in-line filter. Contains EDTA
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Acyclovir
+Acycloguanosine, ACV
+(ay-sye-kloe-vir) Zovirax®
+Antiviral, Nucleoside 
+Prescriber Highlights
+ ▶ Used primarily in birds for psittacid alphaherpesvirus-1 (PsHV-1; 
+Pacheco’s Disease)
+ ▶ May be nephrotoxic when given rapidly IV and cause tissue 
+necrosis in birds when given IM
+ ▶ Do not use in cats because of the risk for myelosuppression 
+and significant renal and hepatic toxicity.
+ ▶ Oral use may cause GI distress.
+ ▶ Adjust dosage in patients with renal insufficiency.
+Uses/Indications
+Acyclovir may be useful in the treatment of herpes infections in a 
+variety of avian species. Specifically, this drug may be effective in the 
+treatment of psittacid alphaherpesvirus-1 (PsHV-1; formerly known 
+as Pacheco’s Disease) when administered early in the course of dis-
+ease (ie, before clinical signs occur). 
+In horses, acyclovir was investigated as a treatment for equine 
+herpesvirus type 5 (EHV-5)1,2 and equine herpesvirus type 1 (EHV-
+1) myeloencephalopathy,3 but clinical efficacy was not proven. Bio -
+availability of oral acyclovir is poor, 4,5 but IV acyclovir may be an 
+option in neonatal foals. Valacyclovir has better bioavailability and 
+has demonstrated clinical efficacy.6-8 
+Despite mild efficacy against feline herpesvirus type 1 (FHV-1), 
+acyclovir should not be used in cats due to a high potential for tox -
+icity and low bioavailability. Other, less toxic, antiviral agents in the 
+same class (eg, famciclovir) can be considered for this indication.
+Acyclovir has been used as adjunctive treatment for canine her -
+pesvirus in puppies.9 Acyclovir may be of benefit in the prophylactic 
+treatment of canine parvovirus in dogs.10
+Pharmacology/Actions
+Acyclovir is a purine (guanine) analogue with antiviral activity 
+against a variety of viruses, including herpes simplex (types I and 
+II), cytomegalovirus, Epstein–Barr, and varicella-zoster. It is prefer-
+entially converted by viral thymidine kinase into the active triphos -
+phate form, which is incorporated into viral DNA where it inhibits 
+viral DNA replication.
+Pharmacokinetics
+After a single IV or IM acyclovir dose in Quaker parakeets, elimi -
+nation half-life was ≈40 minutes, and IM bioavailability was 90%.11
+Bioavailability in horses after oral administration is low (ie, less 
+than 4%).4-6 Oral doses of up to 20 mg/kg may not yield sufficient 
+concentrations to treat equine herpes virus, but some accumulation 
+may occur with prolonged oral administration. Elimination half-
+lives in dogs12 and cats13 is ≈3 hours. In horses, the elimination half-
+life is ≈2 hours for total plasma concentration of acyclovir and ≈12 
+hours for unbound (free) plasma concentration of acyclovir.6
+In dogs, acyclovir bioavailability varies according to the dose. At 
+doses of 20 mg/kg and below, bioavailability is ≈80% but declines 
+
+
+===== Plumb PDF 42 =====
+Acyclovir   15
+to ≈50% at 50 mg/kg. Sustained-release tablets (not commercially 
+available in the United States) have better bioavailability than stan -
+dard tablets.12
+In humans, acyclovir is poorly absorbed after oral administration 
+(ie, ≈20%), and absorption is not significantly affected by the pres -
+ence of food. Acyclovir is widely distributed throughout body tissues 
+and fluids, including the brain, semen, and CSF . It has low protein 
+binding and crosses the placenta. Acyclovir is primarily metabolized 
+in the liver and has a half-life of ≈3 hours in humans. 
+Contraindications/Precautions/Warnings
+Acyclovir is contraindicated in patients hypersensitive to it or relat-
+ed antiviral drugs. Use with caution in patients with dehydration, 
+pre-existing renal or hepatic impairment, hypoxia, neurologic defi -
+cits, or electrolyte abnormalities. Dosage reduction is recommended 
+in humans with significant renal impairment.
+Acyclovir for injection has a pH of ≈11 and should be admin -
+istered by slow IV infusion (1 hour for humans) after dilution to a 
+drug concentration less than or equal to 7 mg/mL.
+Do not use in cats because of the risk for myelosuppression, he -
+patic necrosis, and renal tubular necrosis.14
+Adverse Effects
+With parenteral therapy, potential adverse effects include thrombo-
+phlebitis, acute renal failure, and encephalopathic changes (rare). IV 
+administration of acyclovir over 15 minutes in a horse resulted in 
+tremors, sweating, and colic.5
+GI disturbances may occur with either oral or parenteral therapy.
+Reproductive/Nursing Safety
+Acyclovir crosses the placenta, but rodent studies have not demon -
+strated any teratogenic effects.15 
+Acyclovir crosses into maternal milk, but associated adverse ef -
+fects have not been noted. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Acute oral overdose is unlikely to cause significant toxicity. GI signs 
+(eg, vomiting, diarrhea) and lethargy predominate with overdoses 
+less than 150 mg/kg. Acute kidney injury is possible with higher 
+dosages; consider GI decontamination with acyclovir overdoses of 
+150  mg/kg or higher. 16 Crystalluria and increased renal values oc -
+curred with acyclovir 188.7 mg/kg in a dog. 
+Acyclovir is removed by hemodialysis but not by peritoneal dial-
+ysis. Precipitation of the drug in renal tubules and acute renal failure 
+have been noted in humans.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with acyclovir have either been re -
+ported or are theoretical in humans or animals and may be of signif-
+icance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Aminophylline/Theophylline : Concurrent use may in -
+crease theophylline concentrations. Monitor theophylline con -
+centrations.
+ ■ Meperidine : Concurrent use may increase concentrations of 
+meperidine and normeperidine, increasing the risk for lethargy, 
+agitation, and seizures. Avoid combination
+ ■ Mycophenolate:  Concurrent oral administration may increase 
+concentrations of both acyclovir and mycophenolate. Greatest 
+risk may be in patients with impaired renal function. Use this 
+combination cautiously. Monitor mycophenolate concentrations 
+and signs of toxicity from both medications.
+ ■ Nephrotoxic Medications  (eg, aminoglycosides [eg, amik-
+acin, gentamicin], amphotericin B, cyclosporine ): Concurrent 
+administration of IV acyclovir with nephrotoxic medications may 
+increase the potential for nephrotoxicity. Amphotericin B may 
+potentiate the antiviral effects of acyclovir, but it also increases 
+the chances for development of nephrotoxicity. 
+ ■ Probenecid : Concurrent use may increase acyclovir exposure 
+by inhibiting renal clearance. 
+ ■ Zidovudine : Concurrent use with zidovudine may cause addi -
+tional CNS depression. 
+Dosages
+BIRDS:
+Treatment and prophylaxis of psittacid alphaherpesvirus -1 
+(PsHV-1, Pacheco’s Disease; extra-label): 
+Treatment: 80 mg/kg PO (oral gavage) or IM (once; can cause tis-
+sue necrosis) every 8 hours for 7 to 14 days 
+Prophylaxis: After an initial dose of 25 mg/kg IM, acyclovir may 
+be added to drinking water at 1 mg/mL or to food at 400 mg/quart 
+of seed for at least 7 days.
+Herpesvirus:
+1. 80 mg/kg PO (oral gavage) every 8 hours17
+2. 240 mg/kg applied to feed17
+3. Quaker parakeets: 80 mg/kg PO every 8 hours for 7 days11,18
+4. Raptors: 330 mg/kg PO every 12 hours19,20
+HORSES:
+Equine herpes infections  (extra-label):  10 mg/kg IV (over 1 
+hour) every 12 hours4,5,21
+DOGS:
+Adjunctive treatment of neonatal canine herpesvirus infection 
+(extra-label): 10 mg/kg PO every 6 hours for 5 days9
+Prophylaxis for canine parvovirus (CPV) infections in puppies 
+(extra-label): In a small, experimentally induced CPV-2 infection 
+study, acyclovir 20 mg/kg IV every 8 hours for 5 days prevented 
+clinical signs and virus replication.10
+Monitoring
+ ■ Renal function tests (BUN, serum creatinine) with prolonged or 
+IV therapy
+Client Information
+ ■ Side effects are usually limited to gastrointestinal problems (eg, 
+diarrhea, vomiting, lack of appetite).
+ ■ For birds, acyclovir is usually given in water or mixed with seed 
+or peanut butter.
+ ■ Y our animal will need ongoing laboratory tests while taking this 
+medication. Do not miss these important follow-up visits.
+Chemistry/Synonyms
+Acyclovir, an antiviral agent, occurs as a white, crystalline powder; 
+1.3 mg is soluble in 1 mL of water. Acyclovir sodium has a solu -
+bility greater than 100 mg/mL in water; however, at a pH of 7.4 
+at 37°C (98.6°F), it is practically all unionized with a solubility of 
+only 2.5 mg/mL in water. Each gram of acyclovir sodium contains 
+4.2 mEq of sodium.
+Acyclovir may be known as ACV , aciclovirum, acycloguanosine, 
+acyclovir, BW-248U, Acic®, Aciclobene®, Aciclotyrol®, Acivir®, Acyrax®, 
+Cicloviral®, Geavir®, Herpotern®, Isavir®, Nycovir®, Supraviran®, Viclo-
+vir®, Virherpes®, Viroxy®,  Xorox®, or Zovirax®.
+
+
+===== Plumb PDF 43 =====
+16    Afoxolaner
+Storage/Stability
+Acyclovir capsules and tablets should be stored in tight, light-re -
+sistant containers at room temperature (15°C-25°C [59°F-77°F]). 
+Acyclovir suspension and sodium sterile powder should be stored 
+at room temperature (20°C-25°C [68°F-77°F]); do not refrigerate. 
+Reconstituted solution should be used within 12 hours. Unused por-
+tions of acyclovir injection should be discarded.
+Compatibility/Compounding Considerations
+When reconstituting acyclovir sodium, do not use bacteriostatic 
+water with parabens, as precipitation may occur. The manufacturer 
+does not recommend using bacteriostatic water for injection with 
+benzyl alcohol because of the potential toxicity in neonates. After 
+further dilution to a concentration less than or equal to 7 mg/mL 
+with a standard electrolyte or dextrose solution, the resulting solu -
+tion is stable at 25°C (77°F) for 24 hours. 
+Acyclovir is reportedly incompatible with biologic or colloidal 
+products (eg, blood products or protein-containing solutions), do -
+pamine, dobutamine, foscarnet, meperidine, and morphine. Many 
+other drugs have been shown to be compatible in specific situations. 
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; consult specialized references or a 
+hospital pharmacist for more specific information.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Acyclovir Oral Tablets: 400 mg and 800 mg; Zovirax® ,   generic; (Rx)
+Acyclovir Oral Capsules: 200 mg; Zovirax® , generic; (Rx)
+Acyclovir Oral Suspension: 40 mg/mL in 473 mL bottles; Zovirax®,  
+generic; (Rx)
+Acyclovir Injection (for IV infusion only): 50 mg/mL (as sodium) 
+in 10 mL vials or as 500 mg lyophilized powder for reconstitution; 
+generic; (Rx)
+Acyclovir Buccal Tablets: 50 mg; Sitavig®; (Rx). Tablet remains in 
+contact with oral mucosa for ≈14 hours; veterinary use is doubtful.
+Topical 5% creams and ointments are also available.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Afoxolaner
+(ah-fox-ah-lan-er) NexGard®
+Isoxazoline Ectoparasiticide
+Prescriber Highlights
+ ▶ Chewable oral tablet for use in dogs and puppies 8 weeks of 
+age and older and weighing at least 1.8 kg (4 lb)
+ ▶ Labeled for monthly treatment and prevention of flea infes-
+tations and for monthly treatment and control of American 
+dog tick, black-legged tick, lone star tick, and brown dog tick 
+infestations
+ ▶ Indicated for the prevention of Borrelia burgdorferi infections 
+as a direct result of killing Ixodes scapularis vector ticks before 
+disease transmission occurs
+ ▶ Used for extra-label treatment of generalized demodicosis and 
+Sarcoptes scabiei var canis 
+ ▶ Appears to be well-tolerated when administered at the label 
+dosage 
+ ▶ FDA has warned that drugs in the isoxazoline class have the 
+potential to cause neurologic adverse effects (eg, muscle trem-
+ors, ataxia, seizures) in dogs and cats.
+Uses/Indications
+Afoxolaner chewable tablets are approved by the FDA for monthly 
+treatment and prevention of flea infestations ( Ctenocephalides felis) 
+and for the monthly treatment and control of American dog tick 
+(Dermacentor variabilis, also called wood tick), black-legged tick 
+(Ixodes scapularis, also called deer tick), lone star tick ( Amblyomma 
+americanum), and brown dog tick (Rhipicephalus sanguineus) infes-
+tations in dogs and puppies 8 weeks of age and older with a body 
+weight of 1.8 kg (4 lb) or greater. The drug is also indicated for the 
+prevention of Borrelia burgdorferi infections via killing Ixodes scapu-
+laris vector ticks before disease transmission occurs. 
+Afoxolaner has demonstrated efficacy in dogs for the treatment of 
+generalized demodicosis,1–3 sarcoptic mange, 4,5 cutaneous myiasis, 6 
+bedbugs,7 and ear mite ( Otodectes cynotis) infestations,8,9 as well as 
+against sand fly (Phlebotomus perniciosus; vector for canine leishma-
+niosis) and dog flea (Ctenocephalides canis) infestations.10–13 Afoxol-
+aner has also been shown to be effective in the treatment of other tick 
+infestations (eg, Dermacentor reticulatus, Haemaphysalis longicornis, 
+Ixodes hexagonus, Ixodes holocyclus, Ixodes ricinus) in dogs.12,13
+Afoxolaner’s effectiveness with flea control has been shown to be 
+effective in preventing infestations by Dipylidium caninum (flea tape-
+worm).13 Under experimental conditions, an afoxolaner and milbe -
+mycin combination product (not available in the US) also effectively 
+reduced flea exposure and thus reduced infections by Dipylidium 
+caninum in dogs. 14 Monthly administration of the combination 
+product was 100% effective against canine thelaziosis (Thelazia calli-
+paeda) in a European field study.15
+Afoxolaner was successfully used to treat otodectic mange in nat-
+urally infested cats, eradicating mites within 48 hours of treatment 
+and maintaining efficacy for 65 days.16 The drug controlled flea pop-
+ulations in cats under experimental conditions.17
+Afoxolaner has demonstrated efficacy against Sarcoptes scabiei in 
+pigs18,19 and Goniodes Pavonis in peacocks and pheasants.20
+Pharmacology/Actions
+Afoxolaner is in the isoxazoline family of insecticides and acaracides. 
+In the parasite CNS, isoxazolines block pre- and postsynaptic trans-
+fer of chloride ions across cell membranes by inhibiting gamma-am-
+inobutyric acid (GABA)-mediated ligand-gated chloride channels. 
+Prolonged neuronal hyperexcitation results in paralysis and death of 
+susceptible insects and ticks. The difference between GABA receptor 
+sensitivities of insects/acarines as compared with mammals is be -
+lieved to be the reason for differential toxicity. Insects and acarines 
+must feed on dogs to ingest afoxolaner. Onset of action against fleas 
+is within 4 hours of administration, with 99% effectiveness at 8 hours 
+(ie, before fleas can lay eggs). Against ticks, the onset of action is 
+within 48 hours, and may be as fast as 8 to 12 hours after infestation 
+for some tick species. 21,22 Afoxolaner kills adult fleas and ticks only 
+after they have bitten and fed.
+Pharmacokinetics
+In dogs, afoxolaner is reported to be rapidly absorbed, with a bio -
+availability of ≈75% and peak concentrations occurring between 2 
+to 6 hours. Food does not impair absorption. Protein binding is very 
+high (more than 99%). Elimination is via biliary excretion of free 
+afoxolaner and renal excretion of hepatically biotransformed metab-
+olites. Terminal elimination half-life is ≈15 days.
+Contraindications/Precautions/Warnings
+There are no contraindications when afoxolaner is used as directed on 
+the product label. The drug is labeled for use in puppies 8 weeks of age 
+and older and weighing more than 1.8 kg (4 lb). Use with caution in 
+dogs with a history of seizures or epilepsy. Drugs in the isoxazoline 
+class have the potential to cause neurologic adverse effects, including 
+muscle tremors, ataxia, and seizures.23 These effects have been noted in 
+patients with and without a history of neurologic disorders.
+Acetylcysteine
+
+
+===== BSAVA PDF 19 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+3
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Acetylcysteine
+(Ilube*, Parvolex*) POM
+Formulations: Injectable: 200 mg/ml solution. Topical: 5% 
+ophthalmic solution in combination with 0.35% hypromellose 
+ophthalmic drops in 10 ml bottle.
+Action: Decreases the viscosity of bronchial secretions, maintains 
+glutathione levels in the liver and has some anticollagenase activity.
+Use: Reduces the extent of liver injury in cases of paracetamol 
+poisoning and other forms of liver toxicity involving oxidative 
+damage or impaired glutathione synthesis (e.g. xylitol poisoning).
+• Has been used in non-specific acute hepatopathies of suspected 
+toxic origin.
+• Can also be used as a mucolytic in respiratory disease.
+• Acetylcysteine may be useful in the treatment of 
+keratoconjunctivitis sicca (KCS) (dry eye), or in ‘melting’ corneal 
+ulcers although there is limited in vivo  work to confirm this.
+Oral solution should be diluted to a 5% solution and given via a 
+stomach tube as it tastes unpleasant. In the eye it may be used in 
+conjunction with hypromellose.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Acetylcysteine has caused hypersensitivity 
+and bronchospasm when used in the pulmonary tree (use with care 
+in bronchospastic respiratory disease, e.g. feline asthma). When 
+given orally for paracetamol poisoning it may cause GI effects 
+(nausea, vomiting) and, rarely, urticaria.
+Drug interactions: In cases of paracetamol poisoning, the 
+concurrent administration of activated charcoal is controversial as it 
+may also reduce acetylcysteine absorption.
+DOSES
+Dogs, Cats:
+• Mucolytic: either nebulize 50 mg as a 2% (dilute with saline) 
+solution over 30–60 min or instil directly into the trachea  
+1–2 ml of a 20% solution.
+• Paracetamol poisoning:  (after inducing emesis if appropriate, 
+i.e. presented within 2 hours of ingestion) give 140–280 mg/kg 
+diluted to a 5% solution using 5% dextrose by slow i.v. infusion 
+over 15–20 min, followed by further slow infusions of 70 mg/kg 
+(similarly diluted) every 6 hours for at least 7 doses, depending 
+on dose of paracetamol consumed (seek advice from a poisons 
+information service). The intravenous solution can be 
+administered orally but should be diluted to improve palatability; 
+however, i.v. administration is preferred for serious intoxications 
+as bioavailability is reduced with oral administration in cats.
+• KCS: 1 drop of the ophthalmic solution topically to the eye 
+q6–8h. Rarely used now for this indication.
+
+
+===== BSAVA PDF 20 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+4
+• Melting corneal ulcers: 1 drop of the ophthalmic solution q1–4h 
+in the affected eye for 24–48 hours. Topical autologous serum 
+is more effective for the treatment of a melting corneal ulcer 
+and is preferred. 
+References
+Dunayer EK (2006) New Findings on the effects of xylitol ingestion in dogs. Veterinary 
+Medicine 101, 791–796
+Richardson JA (2000) Management of acetaminophen and ibuprofen toxicoses in dogs 
+and cats. Journal of Veterinary Emergency and Critical Care  10, 285–291
+Acetylsalicyclic acid see Aspirin
+Aciclovir
+(Zovirax*) POM
+Formulations: Ophthalmic: 3% ointment in 4.5 g tubes. 
+Action: Inhibits viral replication (viral DNA polymerase); depends 
+on viral thymidine kinase for phosphorylation.
+Use:
+• Management of ocular feline herpesvirus-1 (FHV-1) infections.
+The clinical efficacy of aciclovir is questionable but frequent 
+application (0.5% ointment 5 times daily) may achieve corneal 
+concentrations. Aciclovir is virostatic and is unable to eradicate 
+latent viral infection. Consider ganciclovir and famciclovir before 
+aciclovir. In refractory and severe cases of FHV-1 ulceration, 
+combined therapy including antiviral medication can be used.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available for the ophthalmic 
+preparation. Systemic aciclovir is toxic in cats.
+Adverse reactions: Ocular irritation may occur and the frequency 
+of application should be reduced if this develops. Treatment should 
+not be continued for >3 weeks.
+Drug interactions: No information available.
+DOSES
+Dogs: Not applicable.
+Cats: Apply a small amount to affected eye 5 times daily for a 
+maximum of 3 weeks.
+References
+Thomasy SM and Maggs DJ (2016) A review of antiviral drugs and other compounds with 
+activity against feline herpesvirus type 1. Veterinary Ophthalmology  19, 119–130
+ACP see Acepromazine
+ACTH see Tetracosactide
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 21 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+5
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Actinomycin-D see Dactinomycin
+Activated charcoal see Charcoal
+ADH see Desmopressin
+Adrenaline (Epinephrine)
+(Adrenaline*, Epinephrine*) POM 
+Formulations: Injectable: Range of concentrations for injection: 
+0.1–10 mg/ml, equivalent to 1:10,000 to 1:100.
+Action: Adrenaline exerts its effects via alpha-1, -2 and beta-1 and 
+-2 adrenoreceptors.
+Use:
+• Cardiac resuscitation, status asthmaticus and to offset the effects 
+of histamine release in severe anaphylactoid reactions.
+• The ophthalmic preparation is used in open-angle glaucoma. 
+The effects of adrenaline vary according to dose. Infusions of low 
+doses mainly result in beta-adrenergic effects (increases in cardiac 
+output, myocardial oxygen consumption, and a reduced threshold for 
+arrhythmias with peripheral vasodilation and a fall in diastolic blood 
+pressure). At high doses alpha-1 effects predominate, causing a rise in 
+systemic vascular resistance, diverting blood to the central organs; 
+however, this may improve cardiac output and blood flow. Adrenaline 
+is not a substitute for fluid replacement therapy. Respiratory effects 
+include bronchodilation and an increase in pulmonary vascular 
+resistance. Renal blood flow is moderately decreased. The duration of 
+action of adrenaline is short (2–5 min). Beware of using in animals 
+with diabetes mellitus (monitor blood glucose concentration), 
+hypertension or hyperthyroidism. Use with caution in hypovolaemic 
+animals. Overdosage can be fatal so check dose, particularly in small 
+patients. Intracardiac injection is not recommended.
+Safety and handling: Do not confuse adrenaline vials of different 
+concentrations. Adrenaline is sensitive to light and air: do not use if it 
+is pink, brown or contains a precipitate. It is unstable in 5% dextrose.
+Contraindications: The use of human adrenaline pen injections 
+is not recommended for the treatment of suspected anaphylaxis. 
+The doses in such pens are usually too small to be effective in most 
+normal animals and by the time the dog has collapsed would be 
+unlikely to have any effect on outcome. If such pen injections are 
+administered by owners, then, in common with medical practice, 
+patients must be carefully monitored for at least 6 hours. Do not 
+administer adrenaline directly into the myocardium because of the 
+risk of arrhythmias.
+Adverse reactions: Increases myocardial oxygen demand and 
+produces arrhythmias including ventricular fibrillation. These may be 
+ameliorated by administering oxygen and slowing the heart rate with 
+beta-2 antagonists. Other adverse effects include tachycardia, 

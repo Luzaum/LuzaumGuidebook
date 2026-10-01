@@ -1,0 +1,835 @@
+
+===== Plumb PDF 71 =====
+44   Aluminum Hydroxide
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Altrenogest 0.22% (2.2 mg/mL) in oil solution in 150 mL and  
+1000 mL bottles; Regu-Mate®, generic (Rx). FDA-approved for use in 
+horses that are not intended for food. This medication is banned in 
+racing animals in some countries.
+Altrenogest 0.22% (2.2 mg/mL) in 1000 mL bottles; Matrix®, generic; 
+(OTC). FDA-approved for use in sexually mature gilts that have had 
+at least 1 estrous cycle. Gilts must not be slaughtered for human con-
+sumption for 21 days after the last treatment. The FDA prohibits the 
+extra-label use of this medication, including to enhance food and/or 
+fiber production in animals.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Aluminum Hydroxide
+(ah-loo-min-um hye-droks-ide) Amphojel®
+Oral Antacid/Phosphate Binder
+Prescriber Highlights
+ ▶ Used to treat hyperphosphatemia in small animals and some-
+times as an antacid for gastric ulcers
+ ▶ Chronic use may lead to electrolyte abnormalities; possible 
+aluminum toxicity.
+ ▶ Many potential drug interactions
+ ▶ Bulk dried powder available from several sources
+Uses/Indications
+Orally administered aluminum hydroxide is used to reduce hyper -
+phosphatemia in patients with chronic kidney disease when dietary 
+phosphorus restriction fails to maintain serum phosphorus concen-
+trations in the normal range. Occasionally, it has been used as an oral 
+antacid in veterinary patients, although its short duration of action 
+for this purpose may make its use less practical. 
+Pharmacology/Actions
+Aluminum salts reduce the amount of phosphorus absorbed from 
+the intestine by physically binding to dietary phosphorus to form 
+insoluble aluminum phosphate, which is then excreted in the feces. 
+When used as an antacid, the hydroxyl ion interacts with hydrogen 
+ions in the stomach to increase gastric/abomasal pH.
+Contraindications/Precautions/Warnings
+Aluminum-containing antacids may inhibit gastric emptying; use 
+cautiously in patients with gastric outlet obstruction. Also, use with 
+caution in patients prone to developing constipation. Aluminum 
+may accumulate in patients with renal failure.
+Adverse Effects
+In small animals, the most likely adverse effect of aluminum hydrox-
+ide is constipation. Hypophosphatemia can develop if the patient is 
+receiving a low phosphate diet and chronically receives aluminum 
+antacids.
+Potentially, aluminum toxicity could occur with prolonged use. 
+Although previously believed unlikely to occur in small animals, 
+at least 2 dogs with renal failure have developed aluminum toxici -
+ty after receiving aluminum-containing phosphate binders. 1 Osteo-
+malacia related to hypophosphatemia or aluminum accumulation 
+is also possible with chronic use. Aluminum-containing and calci -
+um-containing phosphate binders may be used in combination to 
+reduce the dose of each and reduce the risk for aluminum toxicity 
+or  hypercalcemia.
+Reproductive/Nursing Safety
+Use during pregnancy and lactation has not been studied; however, it 
+is considered generally safe since oral absorption of this drug is poor.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdosage/Acute Toxicity
+Acute toxicity is unlikely with an oral overdose. If necessary, GI ef -
+fects (eg, constipation) and electrolyte imbalances that may occur 
+with acute or chronic overdose should be treated based on clinical 
+presentation.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, it is strongly encouraged to consult with one of 
+the 24-hour poison consultation centers that specialize in providing 
+information specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with aluminum hydroxide have ei -
+ther been reported or are theoretical in humans or animals and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Diazepam : Concurrent aluminum may increase diazepam 
+ absorption.
+ ■ Quinidine:  Increased gastric pH caused by aluminum hydrox -
+ide can potentially increase the absorption of basic drugs such as 
+quinidine; separate from aluminum hydroxide by at least 2 hours.
+ ■ Vitamin D Analogues (eg, calcitriol, ergocalciferol): May in-
+crease aluminum absorption. Avoid combination.
+Aluminum hydroxide can decrease the amount absorbed (orally) or 
+the pharmacologic effect of the drugs listed below; separate oral dos-
+es of aluminum hydroxide and these drugs by at least 2 hours to help 
+reduce the potential for this interaction.
+ ■ Allopurinol
+ ■ Aspirin
+ ■ Azole Antifungals (eg, itraconazole, ketoconazole)
+ ■ Cefpodoxime
+ ■ Corticosteroids (eg, dexamethasone, prednis(ol)one)
+ ■ Digoxin
+ ■ Ethambutol
+ ■ Fexofenadine
+ ■ Fluoroquinolones (eg, enrofloxacin, marbofloxacin)
+ ■ Gabapentin
+ ■ H2 Antagonists (eg, famotidine, ranitidine)
+ ■ Iron Salts (eg, ferrous sulfate)
+ ■ Isoniazid (INH)
+ ■ Mycophenolate
+ ■ Penicillamine
+ ■ Phenothiazines (eg, acepromazine, chlorpromazine)
+ ■ Phenytoin
+ ■ Sotalol
+ ■ Tetracyclines (eg, doxycycline, minocycline)
+ ■ Thyroid Hormones
+Doses
+NOTE: All dosages are extra-label.
+DOGS/CATS:
+Hyperphosphatemia secondary to chronic kidney disease 
+(extra-label): 30 – 100 mg/kg per day as adjunct to reduced di -
+etary phosphorus. 2-4 Aluminum hydroxide gel powder (USP) 
+
+
+===== Plumb PDF 72 =====
+Amantadine   45
+is preferred, as it can be mixed with food and is tasteless. Dose 
+is divided and mixed with each meal. Start at low end of dosage 
+range and adjust upward every 4 to 6 weeks until desired serum 
+phosphorus is attained (see Monitoring). If a reduced-phosphorus 
+diet and higher dosages of aluminum hydroxide do not adequate-
+ly control serum phosphorus, consider adding a lanthanum- or 
+calcium-based (eg, calcium acetate, calcium carbonate) phosphate 
+binder to reduce the chances for aluminum toxicity.
+RABBITS/RODENTS/SMALL MAMMALS: 
+Hyperphosphatemia in chinchillas (extra-label): Aluminum hy-
+droxide gel: 1 mL/animal (NOT mL/kg) PO as needed
+Hyperphosphatemia in Guinea pigs (extra-label): 0.5 – 1 mL per 
+animal (NOT mL/kg) PO as needed5
+REPTILES: 
+Hyperphosphatemia (extra-label): 100 mg/kg PO every 12 to 24 
+hours6
+CATTLE:
+Antacid (extra-label): 15 – 60 mg/kg PO every 8 – 24 hours. 7 Ef-
+ficacy in adult cattle is questionable since the drug becomes dilut-
+ed in the rumen and may not provide therapeutic benefit in the 
+abomasum.
+Abomasal ulcers in calves using a combination of aluminum 
+hydroxide and magnesium hydroxide (extra-label): 25 mL (each 
+mL contains aluminum hydroxide 0.1 g/mL and magnesium hy -
+droxide 0.09 g/mL) PO every 8 hours.8 NOTE: this study was done 
+in healthy calves; based on the results from this study, this dose is 
+expected to be beneficial for ill calves with abomasal ulcers. 
+HORSES:
+Adjunctive gastroduodenal ulcer therapy in foals (extra-label): 
+Aluminum/magnesium hydroxide suspension: 15 mL (total dose) 
+4 times a day9
+Monitoring
+ ■ After beginning therapy, check serum phosphorus (after a 12-
+hour fast) every 4 to 6 weeks until target phosphorous levels are 
+attained. Once phosphorous levels are stable, check phosphorous 
+levels at the time of renal chemistry rechecks (eg, every 12 weeks). 
+For chronic kidney disease (CKD), the International Renal Inter-
+est Society (IRIS) recommends a target phosphorous range for 
+dogs and cats at each stage:
+• Stage 2 CKD target phosphorous levels: greater than 2.7 and 
+less than 4.6 mg/dL (0.9 – less than 1.5 mmol/L)
+• Stage 3 CKD target phosphorous levels: greater than 2.7 and 
+less than 5.0 mg/dL (0.9 – less than 1.6 mmol/L)
+• Stage 4 CKD target phosphorous levels: greater than 2.7 and 
+less than 6.0 mg/dL (0.9 – less than 1.9 mmol/L)
+ ■ To monitor for aluminum toxicity, watch for development of neu-
+romuscular effects, progressive decreases in mean cell volume 
+(MCV), and microcytosis.
+Client Information
+ ■ Oral aluminum hydroxide products are available without pre -
+scription (OTC) but should be used under the supervision of your 
+veterinarian.
+ ■ Bulk powder or compounded capsules are easier to administer 
+than liquids or suspensions. Shake the suspension thoroughly 
+prior to administration.
+ ■ Must be given either just before feeding or mixed in food to be 
+effective.
+ ■ Can cause constipation or decreased appetite 
+ ■ Report to your veterinarian any unusual signs, such as weakness, 
+difficulty walking, or stumbling.
+Chemistry/Synonyms
+Dried Aluminum Hydroxide Gel (CAS Registry: 21645-51-2) occurs 
+as a white, odorless, tasteless, amorphous powder. It is insoluble in 
+water or alcohol. The USP 36 standard allows varying amounts of 
+basic aluminum carbonate and bicarbonate, but it must contain no 
+less than 76.5% of Al(OH)3.
+Aluminum hydroxide may also be known as aluminium hydrox-
+ide.
+Storage/Stability
+Store powder forms in airtight containers. Liquid formulations 
+should not be allowed to freeze.
+Compatibility/Compounding Considerations
+Because aluminum hydroxide powder USP can vary in the concen -
+tration of aluminum hydroxide (must be 76.5% or greater) and pow-
+ders can vary in density, volume measurements can only approxi -
+mate actual weight. However, ¼ teaspoonful (1.25 mL) of the dried 
+USP powder has been reported to contain ≈300 mg of aluminum 
+hydroxide.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Aluminum Hydroxide Concentrated Gel Suspension/Liquid (NOTE: 
+These products are usually flavored (mint) and not well accepted by 
+dogs or cats): 320 mg/5 mL in 473 mL; UD 15 mL and 30 mL; ge -
+neric; (OTC)
+Aluminum Hydroxide Gel, Dried Powder, USP; bulk powder is avail-
+able from a variety of sources including many compounding phar -
+macies. See: http://goo.gl/1lYJk for additional source information.
+NOTE: There are also many products available that have aluminum 
+hydroxide and a magnesium or calcium salt (eg, Maalox®) that are 
+used as antacids. All oral aluminum and magnesium hydroxide 
+preparations are OTC.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Amantadine
+(a-man-ta-deen) Symmetrel® 
+Antiviral; NMDA Antagonist
+Prescriber Highlights
+ ▶ Limited published efficacy or safety data, although clinical 
+experience suggests it is useful in adjunctive treatment for 
+chronic pain in small animal species
+ ▶ Historically dosed every 24 hours; however, based on pharma-
+cokinetic data, the same dose given every 12 hours may be 
+more effective
+ ▶ Dogs may exhibit agitation and GI effects, especially early in 
+treatment.
+ ▶ Large interpatient variations of pharmacokinetics in horses 
+limit its therapeutic usefulness.
+ ▶ Overdoses are potentially very serious; it may need to be com-
+pounded to accurately dose small animals.
+ ▶ Extra-label use is prohibited by the FDA in chickens, turkeys, 
+and ducks.
+Uses/Indications
+Although amantadine may have efficacy and clinical usefulness 
+against some veterinary viral diseases, presently the greatest interest 
+for its use in small animal species is in the adjunctive treatment of 
+
+
+===== Plumb PDF 73 =====
+46    Amantadine
+neuropathic1 or chronic pain,2 often in those in which opioids do not 
+provide adequate analgesia or who are intolerant of higher opioid 
+doses. It is generally considered ineffective when used alone 3; use 
+in combination with an NSAID, opioid, or gabapentin/pregabalin is 
+typical.1,4 Several weeks may be required to break a pain cycle. 5,6 It 
+has been suggested for use as an early intervention in the treatment 
+of pain associated with osteosarcomas.7
+Amantadine has also been investigated for treatment of equine-2 
+influenza virus in a horse8; however, because of expense, interpatient 
+variability in oral absorption and other pharmacokinetic parame -
+ters, and the potential for causing seizures after IV dosing, it is not 
+commonly used for treatment.
+In humans, amantadine is used for parkinsonian syndrome and 
+drug-induced extrapyramidal effects; its use for the treatment and 
+prophylaxis of influenza A is no longer recommended. 9 As in vet -
+erinary medicine, the effect of amantadine on NMDA receptors in 
+humans is of active interest, particularly its use as a coanalgesic with 
+opioids and in the reduction of opioid tolerance development.
+Pharmacology/Actions
+Like ketamine, dextromethorphan, and memantine, amantadine in-
+hibits the NMDA receptor by stabilizing it in the closed state.10 With-
+in the CNS, chronic pain can be maintained or exacerbated when 
+glutamate or aspartate bind to this receptor. It is believed that this 
+receptor is particularly important in allodynia (ie, sensation of pain 
+resulting from a normally non-noxious stimulus). Amantadine is ex-
+pected to produce analgesic effects when pain or CNS sensitization 
+is already present. Although there is limited evidence that amanta -
+dine alone provides analgesia,2 it is thought that it may help alleviate 
+chronic pain when used in combination with other analgesics (eg, 
+opioids, NSAIDs).3
+Amantadine’s antiviral activity is limited to strains of influenza A. 
+Although its complete mechanism of action is unknown, it inhibits 
+viral replication by interfering with influenza A virus M2 protein, 
+preventing release of viral RNA into the host cell, and possibly in -
+hibiting viral replication. Influenza A variants have demonstrated 
+resistance to amantadine’s antiviral action, and it is currently not 
+recommended for the treatment or prophylaxis of influenza A.9
+Amantadine’s antiparkinsonian activity is not well understood, 
+but it apparently increases dopamine concentrations in the brain. 
+The drug appears to have potentiating effects on dopaminergic neu-
+rotransmission in the CNS, is an NMDA antagonist, and has anti -
+cholinergic activity.
+Pharmacokinetics
+In dogs, oral bioavailability of amantadine is reportedly very high. 11 
+A study in nonfasted greyhounds showed an oral dose of 2.8 mg/kg 
+was well tolerated, and maximum concentration, time to maximum 
+concentration, and terminal half-life were 271 ng/mL, 1 to 4 hours, 
+and 4.9 hours respectively. This study also suggested that the “every 
+24-hour dose interval” should be re-evaluated.12 The drug is renally 
+eliminated.11
+In cats, bioavailability was very high after oral administration, and 
+peak levels occurred ≈2 hours after dosing. After IV administration, 
+the steady-state volume of distribution was ≈4.3 L/kg and clearance 
+(mean) was 8.2 mL/minute/kg. 13 Elimination half-life was 5.5 to 6 
+hours.
+In horses, amantadine had a very wide interpatient variability of 
+absorption after oral dosing (10 – 20 mg/kg); bioavailability ranged 
+from 40% to 60% and was not affected by feed.8 The elimination half-
+life in horses was ≈3.5 hours, and the steady-state volume of distri -
+bution was ≈5 L/kg.
+In Amazon parrots, the time to maximum concentration was ≈3 
+to 4 hours, and half-life was 21 to 23 hours.14
+In humans, amantadine was well absorbed after oral adminis -
+tration with peak plasma concentrations occurring ≈3 hours after 
+dosing.15 Volume of distribution was 3 to 8 L/kg, and protein bind -
+ing was ≈67%. Amantadine is primarily eliminated via renal mech -
+anisms. Oral clearance was ≈0.28 L/hour/kg and half-life was ≈16 
+hours. Clearance is reduced in patients with renal impairment, and 
+half-life may double.
+Contraindications/Precautions/Warnings
+In humans, amantadine is contraindicated in patients with known 
+hypersensitivity to it 15 or to rimantadine, and in those with end-
+stage renal disease. It should be used with caution in patients with 
+hepatic disease, renal disease (dosage adjustment may be required), 
+congestive heart failure, active psychoses, eczematoid dermatitis, sei-
+zure disorders, or untreated angle-closure glaucoma. The drug is no 
+longer recommended for the treatment or prevention of influenza A 
+in humans due to high levels of amantadine resistance among circu-
+lating influenza strains.9 In 2006, the FDA banned the use of aman -
+tadine and other influenza antivirals in chickens, turkeys, and ducks.
+The human liquid dosage form has an unpleasant taste.
+Do not confuse AMANTadine with RIMantadine, AMIOdarone, 
+or RANITidine.
+Adverse Effects
+Experience with amantadine in domestic animals is limited, and its 
+adverse effect profile is not well described. It has been reported that 
+dogs given amantadine occasionally develop agitation, flatulence, 
+loose stools, or diarrhea, particularly early in treatment. Experience 
+in cats is limited, and an adverse effect profile has yet to be fully elu-
+cidated, but some clinicians report that GI effects are more likely 
+than in dogs. 
+Reproductive/Nursing Safety
+In rats, amantadine 50 – 100 mg/kg/day PO (ie, ≈1.5 to 3 times 
+the maximum recommended human dose) throughout pregnancy 
+was embryotoxic and caused fetal malformations and reduced fe -
+tal weight. 15 Fertility was slightly impaired in rats that were given  
+32 mg/kg/day.
+Amantadine is excreted into maternal milk; its use is not recom -
+mended in nursing women.16 Veterinary significance is unclear.
+Because safety has not been established, this drug should only be 
+used when the maternal benefits outweigh the potential risks to off-
+spring.
+Overdose/Acute Toxicity
+The oral LD 50 in mice and rats is 700 to 800 mg/kg and 25 to  
+50 mg/kg in humans.17 The toxic amantadine dose reported for cats 
+is 30 mg/kg 18; behavioral effects may be noted at 15 mg/kg in dogs 
+and cats.
+Clinical signs associated with overdose in dogs include tremors, 
+anxiety, ataxia, hypersalivation, and/or vomiting.
+In humans, overdoses as low as 1 gram (total dose) have been as-
+sociated with fatalities. Cardiac dysfunction (eg, arrhythmias, hyper-
+tension, tachycardia), pulmonary edema, CNS toxicity (eg, tremors, 
+seizures, psychosis, agitation, coma), hyperthermia, renal dysfunc -
+tion, and respiratory distress syndrome have all been document -
+ed. There is no known specific antidote for amantadine overdose. 
+Treatment should consist of GI decontamination when appropriate, 
+intensive monitoring (including ECG), and supportive therapy. Hy-
+dration and urinary acidification, with or without diuresis, may in -
+crease renal amantadine excretion. The drug is poorly removed by 
+hemodialysis. Physostigmine has been suggested for cautious use in 
+treating CNS effects.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+
+
+===== Plumb PDF 74 =====
+Amikacin, Systemic   47
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with amantadine have either been 
+reported or are theoretical in humans or animals and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Anticholinergic Drugs (eg, atropine, glycopyrrolate, oxy-
+butynin): Amantadine may enhance anticholinergic effects. 
+ ■ Antihistamines (eg, diphenhydramine, hydroxyzine): Aman-
+tadine may enhance anticholinergic effects. 
+ ■ Carbonic Anhydrase Inhibitors (eg, acetazolamide): May 
+increase amantadine concentration
+ ■ CNS Stimulants  (eg, caffeine, methylphenidate, selegiline ): 
+Concomitant use with amantadine may increase the drug’s CNS 
+stimulatory effects.
+ ■ Glucagon: Amantadine’s anticholinergic effects may increase 
+GI adverse effects of glucagon.
+ ■ Phenothiazines (eg, acepromazine ): Amantadine may en -
+hance anticholinergic effects. 
+ ■ Quinidine, Quinine: Renal clearance of amantadine may be 
+reduced. 
+ ■ QT Prolonging Drugs (eg, amiodarone, cisapride, procain-
+amide, sotalol): May increase the risk for arrhythmias
+ ■ Sulfa-/Trimethoprim: May decrease the excretion of amanta-
+dine, yielding higher blood concentrations of amantadine
+ ■ Tramadol:  Concomitant use with amantadine may increase the 
+risk for seizures because tramadol at high doses has caused sei -
+zures in humans19 and amantadine can lower the seizure thresh -
+old15; however, an increased risk for seizures with this drug com-
+bination appears unlikely in a clinical setting at recommended 
+dosages. Monitor for sedation or other neurologic adverse effects 
+if using this combination.
+ ■ Triamterene:  May decrease the excretion of amantadine, yield-
+ing higher blood concentrations of amantadine
+ ■ Tricyclic Antidepressants (eg, amitriptyline, clomip -
+ramine): May enhance the anticholinergic effects of amantadine
+ ■ Urinary Acidifiers  (eg, methionine, ammonium chloride, 
+ascorbic acid): May increase the excretion of amantadine
+ ■ Urinary Alkalinizers (eg, sodium bicarbonate, potassium 
+citrate): May decrease the excretion of amantadine
+Laboratory Considerations
+ ■ No laboratory interactions identified
+Dosages
+DOGS/CATS:
+Adjunctive analgesia, including neuropathic pain and to pre -
+vent “wind-up” pain (extra-label): 3 – 5 mg/kg PO once daily. 1,4 
+Anecdotally, it is suggested to start at the lower end of the dos -
+ing range and increase slowly, if needed. Pharmacokinetic studies 
+suggest administration every 12 hours may be needed.3,12,13
+Monitoring
+ ■ Adverse effects (ie, GI effects, anxiety, restlessness, dry mouth)
+ ■ Efficacy
+Client Information
+ ■ Give this medicine as directed by your veterinarian. The benefits 
+of this medicine may take a week or more to be seen.
+ ■ Gastrointestinal effects (eg, loose stools, gas, diarrhea) or some 
+agitation may occur, particularly early in treatment. Contact your 
+veterinarian if these become serious or persist.
+ ■ Overdoses with this medication can be serious. Be sure to keep 
+this medicine out of reach of other pets and children.
+Chemistry/Synonyms
+An adamantane class antiviral agent with NMDA antagonist prop -
+erties, amantadine HCl occurs as a white to off-white, bitter crys -
+talline powder that is freely soluble in water and soluble in alcohol. 
+Commercial dosage forms contain amantadine HCl, and strength is 
+expressed and calculated as amantadine base. 1.24 mg amantadine 
+HCl contains 1 mg amantadine.
+Amantadine HCl may also be known as adamantanamine HCl, 
+Endantadine®, GOCOVRI®, Osmolex®, and Symmetrel®.
+Storage/Stability
+Tablets, capsules, and the oral solution should be stored in tight, 
+light-resistant containers at room temperature 20°C to 25°C 
+(68°F-77°F), with excursions permitted to 15°C to 30°C (59°F-86°F). 
+Avoid freezing the liquid.
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The International Federation for Equestrian Sports lists this drug as 
+a “prohibited substance – controlled medication. ”20 Use of this drug 
+may not be allowed in certain animal competitions. Check rules and 
+regulations before entering in a competition while this medication 
+is being administered. Contact local racing authorities for further 
+guidance.
+HUMAN-LABELED PRODUCTS:
+Amantadine HCl Oral Tablets and Capsules: 100 mg; generic; (Rx)
+Amantadine HCl Oral Solution/Syrup: 50 mg/5mL (10 mg/mL) in 
+480 mL; generic; (Rx). NOTE: It is reported that the oral liquid has a 
+bad taste and may not be accepted by veterinary patients.
+Amantadine HCl extended-release oral tablets and capsules ( Os-
+molex® ER, GOCOVRI®) are available. They are not directly equivalent 
+to immediate-release amantadine capsules and have not been studied 
+in veterinary patients.
+In 2006, the FDA banned the extra-label use of amantadine and oth-
+er influenza antivirals in chickens, turkeys, and ducks.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Amikacin, Systemic
+(am-i-kay-sin) Amikin®, Amiglyde-V®
+Aminoglycoside Antibiotic
+Prescriber Highlights
+ ▶ Parenteral aminoglycoside antibiotic that has good activity 
+against a variety of bacteria, predominantly gram-negative 
+aerobic bacilli and staphylococci; ineffective against anaerobic 
+bacteria
+ ▶ Adverse effects include nephrotoxicity, ototoxicity, and neuro-
+muscular blockade.
+ ▶ Cats may be more sensitive to toxic effects.
+ ▶ Risk factors for toxicity include pre-existing renal disease, age 
+(both neonatal and geriatric), fever, sepsis, and dehydration.
+Uses/Indications
+Although parenteral use of amikacin is only FDA approved in dogs, it is 
+often used in most species for treatment of serious gram-negative and 
+
+
+===== Plumb PDF 75 =====
+48    Amikacin, Systemic
+staphylococcal infections when the adverse effects of other amino -
+glycosides are a concern. Because aminoglycosides have an inherent 
+toxicity and should be administered parenterally, use should be lim-
+ited to treatment of serious infections with either a documented lack 
+of susceptibility to other, less toxic antibiotics or in cases in which 
+the clinical situation dictates immediate treatment of a presumed 
+gram-negative infection before culture and susceptibility results are 
+reported.
+It is widely accepted that aminoglycosides should be given once a 
+day in most patients (mammals). This dosing regimen yields high -
+er peak concentrations with resultant greater bacterial kill. Because 
+aminoglycosides exhibit a postantibiotic effect, surviving susceptible 
+bacteria generally do not replicate as rapidly, even when antibiotic 
+concentrations are below the MIC. Periods in which antibiotic con-
+centrations are low may also decrease the “adaptive resistance” (ie, 
+bacteria take up less drug in the presence of continuous exposure) 
+that can occur.
+Amikacin is also FDA-approved for intrauterine infusion in mares 
+and is used via intraarticular injection (extra-label) in foals to treat 
+gram-negative septic arthritis. In horses with septic arthritis, intra -
+venous regional limb perfusion (IVRLP) using amikacin is actively 
+being researched.1-3 
+Amikacin is also used topically for treatment of otitis externa in 
+dogs—often in combination with EDTA-Triz 4—and may be impreg -
+nated in materials (eg, PMMA beads, gels) for local treatment of in-
+fections, particularly implant-associated surgical site infections.
+The World Health Organization (WHO) has designated amika -
+cin as a Critically Important, High Priority antimicrobial for human 
+medicine.5
+Pharmacology/Actions
+Similar to other aminoglycoside antibiotics, amikacin acts on sus -
+ceptible bacteria by irreversibly binding to the 30S ribosomal sub -
+unit, thereby, inhibiting protein synthesis.6 Amikacin is considered a 
+bactericidal, concentration-dependent antibiotic. 
+Amikacin’s spectrum of activity includes coverage against many 
+aerobic gram-negative and some aerobic gram-positive bacteria, in-
+cluding Escherichia coli and most species of Klebsiella spp, Proteus 
+spp, Pseudomonas spp, Salmonella spp, Enterobacter spp, Serratia 
+spp, Shigella spp, Mycoplasma spp, and Staphylococcus spp. Several 
+strains of Pseudomonas aeruginosa, Proteus spp, and Serratia spp that 
+are resistant to gentamicin will be killed by amikacin. Amikacin is 
+ineffective against anaerobic bacteria, viruses, fungi, and protozoa.
+In an in vitro study with canine E coli isolates, amikacin demon-
+strated additive or synergistic antimicrobial activity when given in 
+combination with ceftazidime and amoxicillin/clavulanate but not in 
+combination with enrofloxacin or marbofloxacin.7 
+Antimicrobial activity of aminoglycosides is enhanced in an al -
+kaline environment but inhibited by the presence of pus or organic 
+debris.
+Pharmacokinetics
+Amikacin, like the other aminoglycosides, is not appreciably ab -
+sorbed after oral, dermal, or intrauterine administration or urinary 
+bladder irrigations but is absorbed when used in irrigations during 
+surgical procedures or in regional limb perfusion. Systemic absorp -
+tion of amikacin from impregnated beads is not described; plasma 
+amikacin concentration was undetectable 24 hours after SC place -
+ment of an amikacin-impregnated dextrose cross-linked gel 8 but is 
+minimal for gentamicin in PMMA beads on dogs 9 and in calcium 
+sulfate beads in goats. 10 With IM administration in dogs and cats, 
+peak concentrations occur after 30 to 60 minutes. SC injection re -
+sults in slightly delayed peak concentrations and more variability 
+than after IM injection. Bioavailability from extravascular injection 
+(IM or SC) is greater than 90%. 
+After absorption, aminoglycosides are distributed primarily in the 
+extracellular fluid and are found in ascitic, pleural, pericardial, peri-
+toneal, synovial, and abscess fluids; high levels are found in sputum, 
+bronchial secretions, and bile. Aminoglycosides are minimally pro -
+tein bound (ie, less than 20%) to plasma proteins.11 Aminoglycosides 
+do not readily cross the blood-brain barrier and do not penetrate 
+ocular tissue. CSF concentrations are unpredictable and range from 
+0% to 50% of those found in the serum. Therapeutic concentrations 
+are found in bone, heart, gallbladder, and lung tissues after parenter-
+al administration. Prostate concentrations have not been adequate -
+ly assessed in animals, but amikacin has been shown to be effective 
+for the treatment of chronic bacterial prostatitis in humans when 
+fluoroquinolones cannot be used.12 A maximum distal interphalan -
+geal joint synovial fluid concentration of 600 µg/mL was reached 
+15 minutes after intravenous regional limb perfusion (IVRLP) in 
+healthy adult horses; however, significant interpatient variability 
+was noted. A maximum serum amikacin concentration of 19 µg/mL 
+was reached 25 minutes after IVRLP .13 Aminoglycosides tend to ac-
+cumulate in certain tissues (eg, inner ear, kidneys), contributing to 
+the toxicity seen in those tissues. Volumes of distribution have been 
+reported to be 0.15 to 0.3 L/kg in adult cats and dogs, and 0.26 to  
+0.58 L/kg in horses. Volumes of distribution may be significantly 
+larger in neonates and juvenile animals due to their higher extra -
+cellular fluid fractions. Aminoglycosides cross the placenta; fetal 
+concentrations range from 15% to 50% of those found in maternal 
+serum.
+Elimination of aminoglycosides after parenteral administration 
+occurs almost entirely by glomerular filtration. The approximate 
+elimination half-life for amikacin has been reported to be 5 hours in 
+foals, 1.14 to 2.3 hours in adult horses, 2.2 to 2.7 hours in calves, 1 
+hour in cows, 1.5 hours in sheep, and 0.5 to 2 hours in dogs and cats. 
+Patients with decreased renal function can have a significantly pro -
+longed half-life. In humans with normal renal function, elimination 
+rates can be highly variable with aminoglycoside antibiotics.
+Contraindications/Precautions/Warnings
+Aminoglycosides are contraindicated in animals that are hypersen -
+sitive to them. Often, these drugs are the only effective agents in 
+treating severe gram-negative or multidrug resistant staphylococcal 
+infections; thus, there are no absolute contraindications to their use. 
+However, these drugs should be used with extreme caution in ani -
+mals with pre-existing renal disease; concomitant monitoring and 
+dosage interval adjustments should be used as needed. Other risk 
+factors for the development of toxicity include patient age (neonatal 
+and geriatric patients), fever, sepsis, and dehydration.
+Aminoglycosides can cause irreversible ototoxicity, so they 
+should be used with caution, especially in working and guide dogs, 
+and should be avoided when treating otitis if an intact tympanic 
+membrane cannot be confirmed. Amikacin is considered less oto -
+toxic than gentamicin or streptomycin.14
+Aminoglycosides should be used with caution in animals with 
+neuromuscular disorders (eg, myasthenia gravis) because of the 
+drug’s neuromuscular blocking activity.
+Sight hounds may require reduced dosages of aminoglycosides, as 
+they have significantly lower volumes of distribution.
+Aminoglycosides are eliminated primarily through renal mecha -
+nisms and should be used cautiously in neonatal or geriatric animals; 
+consider periodic therapeutic drug monitoring and serum chemistry 
+profiles with dosage adjustments as needed.
+Adverse Effects
+Aminoglycosides can be nephrotoxic and ototoxic. The nephrotoxic 
+(ie, tubular necrosis) mechanisms are not completely understood but 
+are probably related to interference with phospholipid metabolism 
+in the lysosomes of proximal renal tubular cells, resulting in leakage 
+
+
+===== BSAVA PDF 29 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+13
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+useful in companion animals, but may result in temporary sedation. 
+As imepitoin is now licensed for use in the treatment of fears in 
+dogs, if a benzodiazepine is indicated, it is preferable to use this. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: Hypersensitivity to benzodiazepines, 
+glaucoma, significant liver or kidney disease, although appears to be 
+less hepatotoxic than diazepam or clorazepate. Not recommended 
+in pregnant or lactating animals. There is concern over its use with 
+anxiously aggressive animals due to the potential for disinhibition. 
+Adverse reactions: Drowsiness and mild transient incoordination 
+may develop. A general concern with benzodiazepines concerns 
+disinhibition and the subsequent emergence of aggression. 
+Idiosyncratic hepatotoxicity associated with benzodiazepines 
+(largely diazepam, but not alprazolam) has been reported in the cat.
+Drug interactions: Caution is advised if used in association with 
+antifungals such as itraconazole, which inhibit its metabolism.
+DOSES
+Dogs: For anxiolysis an initial dose within the range of 0.01–0.1 mg/
+kg p.o. as needed up to 4 times a day is recommended; the dose can 
+be titrated up or down to the minimum effective dose, which may be 
+below this level. 
+Cats: For anxiolysis an initial dose in the range of 0.125–0.25 mg/kg 
+p.o. as needed up to twice a day is suggested, but doses as low as 
+0.25 mg/cat p.o. q8–12h and as high as 0.6 mg/kg p.o. have been 
+reported. After initial medication, the dose should be titrated down 
+to the minimum effective dose.
+References
+Crowell-Davis SL, Seibert LM, Sung W et al . (2003) Use of clomipramine, alprazolam, and 
+behavior modification for treatment of storm phobia in dogs. Journal of the American 
+Veterinary Medical Association  222, 746–748
+Dale AR, Walker JK, Farnworth MJ et al . (2010) A survey of owners’ perceptions of fear of 
+fireworks in a sample of dogs and cats in New Zealand. New Zealand Veterinary Journal 
+58, 286–291
+Aluminium antacids  
+(Aluminium hydroxide)
+(Alucap*. With alginate: Acidex*, Gastrocote*, 
+Gaviscon Advance*, Peptac*. With magnesium 
+salt: Asilone*, Maalox*, Mucogel*) P, GSL  
+Formulations: Oral: Aluminium hydroxide is available as a dried 
+gel. Other products are composite preparations containing a variety 
+of other compounds including magnesium oxide, hydroxide or 
+trisilicate, potassium bicarbonate, sodium carbonate and 
+bicarbonate, alginates and dimeticone. Aluminium hydroxide 
+content varies.
+
+
+===== BSAVA PDF 30 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+14
+Action: Neutralizes gastric acid. May also bind bile acids and pepsin 
+and stimulate local prostaglandin (PGE-1) production. Also binds 
+inorganic phosphate in the GI tract, making it unavailable for 
+absorption.
+Use:
+• Management of gastritis and gastric ulceration. Frequent 
+administration is necessary to prevent rebound acid secretion.
+• In kidney disease, to lower serum phosphate levels in cats and 
+dogs with serum phosphate above recommended target 
+according to IRIS stage. Phosphate-binding agents are usually 
+only used if low-phosphate diets are unsuccessful. Monitor 
+serum phosphate levels at 14–28 day intervals and adjust dosage 
+accordingly if trying to normalize serum concentrations.
+Thoroughly mix the drug with food to disperse it and to increase its 
+palatability.
+Safety and handling: Normal precautions.
+Contraindications: No information available.
+Adverse reactions: Constipation may occur. This is an effect of 
+the aluminium compound and is counteracted by inclusion of a 
+magnesium salt. Hypophosphataemia can develop. Long-term use 
+(many years) of oral aluminium products in humans has been 
+associated with aluminium toxicity and possible neurotoxicity. This is 
+rarely a problem in veterinary medicine but is reported.
+Drug interactions: Do not administer allopurinol, digoxin, 
+fluoroquinolones, gabapentin, H2 antagonists, iron salts, 
+itraconazole, mycophenolate, tetracyclines, or thyroid hormones 
+orally within 2 hours of aluminium salts as their absorption may be 
+impaired.
+DOSES
+Dogs, Cats: All uses: Initially 10–30 mg/kg p.o. q6–8h (tablets) or 
+0.5–1.0 ml/kg (2–30 ml) p.o. q6–8h (gel) with or immediately after 
+meals. Dosages are empirical; none have been properly defined in 
+dogs or cats.
+References 
+Marks SL, Kook PH, Papich MG et al . (2018) ACVIM consensus statement: support for 
+rational administration of gastrointestinal protectants to dogs and cats. Journal of 
+Veterinary Internal Medicine  32, 1823–1840
+Aluminium hydroxide see Aluminium 
+antacids
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 31 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+15
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Amantadine
+(Lysovir*, Symmetrel*) POM 
+Formulations: Oral: 100 mg capsule; 10 mg/ml syrup.
+Action: Provides analgesia through NMDA antagonist action which 
+may potentiate the effects of other analgesics.
+Use:
+• Adjunctive analgesic in animals that are unresponsive to opioids, 
+or that require chronic pain relief in a home environment (e.g. 
+osteoarthritis or cancer pain).
+• In dogs with osteoarthritis that were refractory to an NSAID 
+physical activity was improved, suggesting that amantadine 
+might be a useful adjunct in the clinical management of canine 
+osteoarthritic pain.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: In humans, minor GI and CNS effects have 
+been reported, although these have not been reported in animals. 
+Amantadine is renally excreted and is likely to accumulate in animals 
+with renal dysfunction and therefore should be used cautiously in 
+this patient population.
+Drug interactions: No information available.
+DOSES
+Dogs: 3.0–5.0 mg/kg p.o. q24h.
+Cats: 1.0–4.0 mg/kg p.o. q24h; start at the lowest dose and increase 
+slowly. This dose recommendation is anecdotal and is not based on 
+evidence from clinical research. 
+References
+Lascelles BD, Gaynor JS, Smith ES et al . (2008) Amantadine in a multimodal analgesic 
+regimen for alleviation of refractory osteoarthritis pain in dogs. Journal of Veterinary 
+Internal Medicine  22, 53–59
+Amethocaine see Tetracaine
+Amikacin
+(Amikacin*, Amikin*) POM 
+Formulations: Injectable: 50 mg/ml, 250 mg/ml solutions.
+Action: Aminoglycosides inhibit bacterial protein synthesis with a 
+concentration-dependent mechanism of killing, leading to a marked 
+post-antibiotic effect, allowing prolonged dosing intervals (which 
+may reduce toxicity).
+Use: Active against many Gram-negative bacteria, Staphylococcus  
+aureus and Nocardia spp., including some that may be resistant to 

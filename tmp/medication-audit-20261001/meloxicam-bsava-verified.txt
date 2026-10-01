@@ -1,0 +1,223 @@
+===== BSAVA PDF 266 / impressa 250 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+250
+Melatonin
+(Circadin) POM 
+Formulations: Oral: 2 mg and 3 mg tablets. Melatonin is also 
+available in many over-the-counter formulations of various sizes and 
+often with other drugs added.
+Action: Hormone which is involved in the neuroendocrine control 
+of seasonal hair loss, although the exact mechanism is not known.
+Use:
+• Treatment of hair cycling disorders in dogs; in particular, the 
+treatment of alopecia X and seasonal flank alopecia.
+A 4–6 week trial is recommended, if no growth is noted then 
+treatment should be discontinued. For seasonal flank alopecia, 
+treatment may have to be repeated the following year. The effect of 
+melatonin on hair regrowth in dogs with non-pruritic alopecia of 
+unknown aetiology is variable and every effort should be made to 
+identify the underlying disorder before starting this therapy. Oral 
+bioavailability of melatonin in dogs is unknown.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+Dogs: Hair cycling disorders: 3–6 mg p.o. q8h.
+Cats: No information available.
+References
+Frank LA, Hnilica KA and Oliver JW (2006) Adrenal steroid hormone concentrations in 
+dogs with hair cycle arrest (Alopecia X) before and during treatment with melatonin and 
+mitotane. Veterinary Dermatology  1, 278–284
+Meloxicam
+(Inflacam, Loxicom, Meloxidyl, Meloxivet, 
+Metacam, Rheumocam) POM-V 
+Formulations: Oral: 0.5 mg/ml suspension for cats, 1.5 mg/ml 
+oral suspension for dogs; 1.0 mg, 2.5 mg tablets for dogs.  Injectable: 
+2 mg/ml solution for cats, 5 mg/ml solution.
+Action: Preferentially inhibits COX-2 enzyme thereby limiting the 
+production of prostaglandins involved in inflammation.
+Use:
+• Alleviation of inflammation and pain in both acute and chronic 
+musculoskeletal disorders and the reduction of postoperative pain 
+and inflammation following orthopaedic and soft tissue surgery.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 267 / impressa 251 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+251
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+All NSAIDs should be administered cautiously in the perioperative 
+period as they may adversely affect renal perfusion during periods of 
+hypotension. If hypotension during anaesthesia is anticipated, delay 
+meloxicam administration until the animal is fully recovered from 
+anaesthesia and normotensive. Liver disease will prolong the 
+metabolism of meloxicam leading to the potential for drug 
+accumulation and overdose with repeated dosing. The oral dose 
+(standard liquid preparation) may be administered directly into the 
+mouth or mixed with food. In the cat, due to the longer half-life and 
+narrower therapeutic index of NSAIDs, particular care should be 
+taken to ensure the accuracy of dosing and not to exceed the 
+recommended dose. Administration to animals with renal disease 
+must be carefully evaluated.
+Safety and handling: After first opening a bottle of liquid oral 
+suspension use contents within 6 months. Shake the bottle of the 
+oral suspension well before dosing. The shelf-life of a broached 
+bottle of injectable solution is 28 days.
+Contraindications: Do not give to dehydrated, hypovolaemic or 
+hypotensive patients or those with GI disease or blood clotting 
+problems. Administration of meloxicam to animals with renal disease 
+must be carefully evaluated and is not advisable in the perioperative 
+period. Do not give to pregnant animals or animals <6 weeks of age.
+Adverse reactions: GI signs may occur in all animals after NSAID 
+administration. Stop therapy if this persists beyond 1–2 days. Some 
+animals develop signs with one NSAID and not another. A 3–5-day 
+wash-out period should be allowed before starting another NSAID 
+after cessation of therapy. Stop therapy immediately if GI bleeding is 
+suspected. There is a small risk that NSAIDs may precipitate cardiac 
+failure in humans and this risk in animals is not known.
+Drug interactions: Do not administer concurrently or within 24 
+hours of other NSAIDs and glucocorticoids. Do not administer with 
+other potentially nephrotoxic agents, e.g. aminoglycosides.
+DOSES
+Dogs: Initial dose is 0.2 mg/kg s.c., p.o.; if given as a single 
+preoperative injection effects last for 24 hours. Can be followed by a 
+maintenance dose of 0.1 mg/kg p.o q24h.
+Cats:   
+• Initial injectable dose is 0.2 mg/kg s.c.; if given as a single 
+preoperative injection effects last for 24 hours. To continue 
+treatment for up to 5 days, may be followed 24 hours later by 
+the oral suspension for cats at a dosage of 0.05 mg/kg p.o.
+• Postoperative pain/inflammation:  single injection of 0.3 mg/kg 
+s.c. has been shown to be safe and efficacious. It is not 
+recommended to follow this with oral meloxicam 24 hours later.
+• Chronic pain: initial oral dose is 0.1 mg/kg p.o. q24h, which can 
+be followed by a maintenance dose of 0.05 mg/kg p.o q24h. 
+Treatment should be discontinued after 14 days if no clinical 
+improvement is apparent. 
+
+===== BSAVA PDF 268 / impressa 252 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+252
+References
+Aragon CL, Hofmeister EH and Budsberg SC (2007) Systematic review of clinical trials of 
+treatments for osteoarthritis in dogs. Journal of the American Veterinary Medical 
+Association  230, 514–521
+Leece EA, Brearley JC and Harding EF (2005) Comparison of carprofen and meloxicam 
+for 72 h following ovariohysterectomy in dogs. Veterinary Anaesthesia and Analgesia 32 , 
+184–192
+Melphalan
+(Alkeran*) POM
+Formulations: Oral: 2 mg tablet. Injection: 50 mg powder in vial 
+plus diluent.
+Action: Forms inter- and intrastrand cross-links with DNA, resulting 
+in inhibition of DNA synthesis and function.
+Use:
+• Treatment of multiple myeloma.
+• May also be used as a substitute for cyclophosphamide in the 
+treatment of canine lymphoma and in some rescue protocols for 
+lymphoma.
+• Treatment of some solid tumours (e.g. ovarian carcinoma, 
+osteosarcoma, pulmonary and mammary neoplasia).
+Take care in dosing small dogs using their body surface area as there 
+is a risk of overdose due to the tablet sizes (tablets should not be 
+split). Give tablets on an empty stomach.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+Tablets should be stored in a closed, light-protected container under 
+refrigeration (2–8°C).
+Contraindications: Bone marrow suppression, concurrent 
+infection and impaired renal function.
+Adverse reactions: Myelosuppression is dose-limiting toxicity 
+with leucopenia, thrombocytopenia; effect may be prolonged and 
+cumulative. GI adverse reactions include anorexia, nausea and 
+vomiting. Pulmonary infiltrates or fibrosis can also occur. Oral 
+ulceration is seen in humans.
+Drug interactions: Cimetidine decreases the oral bioavailability 
+of melphalan. Steroids enhance the antitumour effects of 
+melphalan. In humans ciclosporin enhances the risk of renal toxicity.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs: 
+• Myeloma: 2 mg/m2 p.o. q24h for 1–2 weeks then reduce to 2–4 
+mg/m2 p.o. q48h. Or 0.1 mg/kg p.o. q24h for 10 days then 0.05 
+mg/kg p.o. q24–48h thereafter. Or 7 mg/m 2/day (rounded to the 
+nearest whole 2 mg tablet) for 5 consecutive days every 21 days. 
+Often used with prednisolone, see specialist texts for regimes. 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

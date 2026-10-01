@@ -1,3 +1,6 @@
+import { PROGRESSIVE_SUMMARY_PREVIEWS } from '../../data/progressiveSummaryPreviews';
+import { CONCISE_DISEASE_SUMMARIES } from '../../data/conciseClinicalSummaries';
+import { SummaryPreview } from '../shared/SummaryPreview';
 import React, { useMemo, useState } from 'react';
 import { HelpCircle, Activity, Heart, ShieldAlert } from 'lucide-react';
 import { DiseaseQuickSummaryRich } from '../../types/disease';
@@ -77,6 +80,8 @@ export function DiseaseQuickSummaryPanel({
 }) {
   const [activeTab, setActiveTab] = useState<'overview' | 'diagnosis' | 'treatment'>('overview');
   const simpleDef = plainLanguage ?? getSimplifiedDiseaseDefinition(slug);
+  const preview = PROGRESSIVE_SUMMARY_PREVIEWS[slug];
+  const clinicalPreview = CONCISE_DISEASE_SUMMARIES[slug];
 
   const tabs = [
     { id: 'overview', label: 'Visão Geral', icon: HelpCircle },
@@ -119,6 +124,7 @@ export function DiseaseQuickSummaryPanel({
                   <ShieldAlert className="h-4 w-4 shrink-0" />
                   O que é isso em palavras simples?
                 </h4>
+                <div className="mt-3 text-sm leading-6"><SummaryPreview preview={preview?.simple}>
                 <p className="mt-2.5 text-sm font-semibold leading-6 text-white/95 md:text-lg md:leading-relaxed">
                   {simpleDef.whatIsIt}
                 </p>
@@ -130,15 +136,19 @@ export function DiseaseQuickSummaryPanel({
                     </div>
                   ))}
                 </div>
+                </SummaryPreview></div>
               </div>
             )}
 
             {/* Texto de liderança clínica e pilares */}
             <div className="space-y-6">
               <div className="max-w-[108ch]">
-                <p className="text-base leading-relaxed text-white/90 drop-shadow-sm md:text-lg md:leading-8">
-                  <HighlightedText text={data.lead} highlights={data.leadHighlights} />
-                </p>
+                <div className="text-sm leading-6 text-white/90">
+                  <h4 className="mb-2 text-xs font-bold uppercase tracking-wider text-amber-200">Visão clínica</h4>
+                  <SummaryPreview preview={preview?.clinical ?? clinicalPreview?.definition}>
+                    <p><HighlightedText text={data.lead} highlights={data.leadHighlights} /></p>
+                  </SummaryPreview>
+                </div>
               </div>
 
               {data.pillars && data.pillars.length > 0 && (
@@ -149,9 +159,11 @@ export function DiseaseQuickSummaryPanel({
                       className="rounded-xl border border-white/15 bg-white/5 p-4 shadow-xs backdrop-blur-md md:rounded-2xl md:p-5"
                     >
                       <p className="text-[10px] font-bold uppercase tracking-wider text-white/60">{p.title}</p>
-                      <p className="mt-2 text-sm leading-relaxed text-white/95">
-                        <HighlightedText text={p.body} highlights={p.highlights} />
-                      </p>
+                      <div className="mt-2 text-sm leading-relaxed text-white/95">
+                        <SummaryPreview preview={preview?.pillars[p.title]}>
+                          <p><HighlightedText text={p.body} highlights={p.highlights} /></p>
+                        </SummaryPreview>
+                      </div>
                     </div>
                   ))}
                 </div>

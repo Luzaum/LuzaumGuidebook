@@ -1,6 +1,6 @@
 import { MedicationRecord } from '../../types/medication';
 
-/** Selegilina, fluoxetina, amitriptilina e amantadina — literatura até agosto/2026. */
+/ Selegilina, fluoxetina e amantadina (amitriptilina migrada para medications.amitriptilina.seed.ts). */
 export const neurologyBehaviorMedicationsSeed: MedicationRecord[] = [
   {
     id: 'med-selegilina',
@@ -155,14 +155,14 @@ export const neurologyBehaviorMedicationsSeed: MedicationRecord[] = [
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — FDA pivotal (199 cães)',
         body:
-          'Estudo regulatório comparou placebo, 0,2 mg/kg e 1 mg/kg por quatro semanas; 1 mg/kg apresentou melhora em múltiplos domínios (atividade, sono, treinamento sanitário). FDA concluiu faixa terapêutica **0,5–1 mg/kg uma vez ao dia**. → Na prática: não usar 0,2 mg/kg como dose clínica alvo.',
+          'Estudo regulatório comparou placebo, 0,2 mg/kg e 1 mg/kg por quatro semanas; 1 mg/kg apresentou melhora em múltiplos domínios (atividade, sono, treinamento sanitário). FDA concluiu faixa terapêutica 0,5–1 mg/kg uma vez ao dia. → Na prática: não usar 0,2 mg/kg como dose clínica alvo.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Campbell et al. (2001)',
         body:
-          '641 cães com sinais compatíveis com disfunção cognitiva receberam **0,5–1 mg/kg uma vez ao dia por 60 dias**; **77,2%** apresentaram melhora global. Estudo aberto/não comparativo — parte da melhora pode refletir viés. → Na prática: reavaliar objetivamente após 4–8 semanas.',
+          '641 cães com sinais compatíveis com disfunção cognitiva receberam 0,5–1 mg/kg uma vez ao dia por 60 dias; 77,2% apresentaram melhora global. Estudo aberto/não comparativo — parte da melhora pode refletir viés. → Na prática: reavaliar objetivamente após 4–8 semanas.',
       },
       {
         kind: 'clinicalCallout',
@@ -365,28 +365,28 @@ export const neurologyBehaviorMedicationsSeed: MedicationRecord[] = [
         variant: 'caution',
         title: '🚨 Fluoxetina + modificação comportamental',
         body:
-          'Estudo regulatório sem programa estruturado de modificação comportamental **não** mostrou benefício clínico convincente. Para ansiedade de separação, prescrever sempre com plano comportamental documentado.',
+          'Estudo regulatório sem programa estruturado de modificação comportamental não mostrou benefício clínico convincente. Para ansiedade de separação, prescrever sempre com plano comportamental documentado.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Ansiedade de separação (229 cães)',
         body:
-          'RCT multicêntrico: **1–2 mg/kg uma vez ao dia por 56 dias** + modificação comportamental — melhora significativa em severidade global, destruição, vocalização e inquietação vs controle.',
+          'RCT multicêntrico: 1–2 mg/kg uma vez ao dia por 56 dias + modificação comportamental — melhora significativa em severidade global, destruição, vocalização e inquietação vs controle.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Pryor et al. (2001) gatos',
         body:
-          'Ensaio controlado duplo-cego: fluoxetina reduziu marcação urinária vs placebo; resposta nas primeiras semanas. Dose publicada ~**1 mg/kg a cada 24 horas**.',
+          'Ensaio controlado duplo-cego: fluoxetina reduziu marcação urinária vs placebo; resposta nas primeiras semanas. Dose publicada ~1 mg/kg a cada 24 horas.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'caution',
         title: '🚨 Síndrome serotoninérgica e interações',
         body:
-          'Não combinar com selegilina. Após fluoxetina: **6 semanas** antes de selegilina ou tricíclico. Contraindicada em cães com epilepsia/histórico convulsivo (bula).',
+          'Não combinar com selegilina. Após fluoxetina: 6 semanas antes de selegilina ou tricíclico. Contraindicada em cães com epilepsia/histórico convulsivo (bula).',
       },
       {
         kind: 'clinicalTable',
@@ -411,226 +411,6 @@ export const neurologyBehaviorMedicationsSeed: MedicationRecord[] = [
       { id: 'ref-hart-fluoxetina-marking-2005', citationText: 'Hart BL et al. Long-term fluoxetine or clomipramine for urine marking. JAVMA. 2005.', sourceType: 'Estudo clínico', url: 'https://pubmed.ncbi.nlm.nih.gov/15702686/', evidenceLevel: 'Moderada' },
       { id: 'ref-vin-fluoxetina-cat', citationText: 'VIN — fluoxetina felina 0,5–1 mg/kg/dia.', sourceType: 'VIN', url: 'https://www.vin.com/apputil/content/defaultadv1.aspx?id=3860724&pid=11242', evidenceLevel: 'Moderada' },
       { id: 'ref-vin-fluoxetina-compulsive', citationText: 'VIN — compulsividade felina 0,5 mg/kg/dia.', sourceType: 'VIN', url: 'https://www.vin.com/apputil/content/defaultadv1.aspx?catId=18043&id=3843671&ind=29&objTypeID=17&pId=8708', evidenceLevel: 'Baixa' },
-    ],
-    isPublished: true,
-    source: 'seed',
-  },
-  {
-    id: 'med-amitriptilina',
-    slug: 'amitriptilina',
-    title: 'Amitriptilina',
-    activeIngredient: 'Cloridrato de amitriptilina',
-    tradeNames: ['Tryptanol® e genéricos humanos (comprimidos)'],
-    imageUrl: 'https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/amitriptyline/PNG',
-    pharmacologicClass:
-      'Antidepressivo tricíclico; inibição de recaptação de serotonina e noradrenalina; efeitos antimuscarínicos, anti-histamínicos e alfa-bloqueadores',
-    species: ['dog', 'cat'],
-    category: 'neurologia',
-    tags: ['Tricíclico', 'Comportamento', 'Dor neuropática', 'Cistite idiopática', 'FLUTD'],
-    plainLanguageSummary:
-      'Antidepressivo tricíclico com múltiplos alvos — menos seletivo que fluoxetina. Evidência contraditória na cistite idiopática felina aguda (ensaios negativos); possível papel em casos crônicos refratários selecionados. Biodisponibilidade oral canina pode ser surpreendentemente baixa (Norkus 2015).',
-    mechanismOfAction:
-      'Inibe transportadores de serotonina e noradrenalina → aumento sináptico; antagonismo muscarínico (boca seca, retenção urinária, taquicardia); antagonismo H1 (sedação); antagonismo alfa-1 (hipotensão); em doses altas bloqueio de canais de sódio cardíacos.',
-    indications: [
-      'Transtornos comportamentais e dor neuropática — extrabula; iniciar conservadoramente.',
-      'Cistite idiopática felina crônica refratária — evidência aberta limitada (Chew 1998); NÃO crise aguda.',
-    ],
-    contraindications: [
-      'Crise aguda de doença do trato urinário inferior felino — ensaios controlados negativos.',
-      'Uso concomitante com selegilina ou inibidores seletivos da recaptação de serotonina.',
-      'Glaucoma, retenção urinária, arritmias, epilepsia não controlada.',
-    ],
-    cautions: [
-      '🔴 Não apresentar como tratamento rotineiro da crise aguda de cistite idiopática felina.',
-      '🚨 Formulação transdérmica: absorção ruim em gatos (Mealey 2004) — não equivalente à oral.',
-      'Anticolinérgico importante — cautela cardíaca e urinária.',
-      'Após selegilina: mínimo 14 dias antes de tricíclico.',
-    ],
-    adverseEffects: [
-      'Sedação, ganho de peso, boca seca, constipação, retenção urinária, taquicardia, alterações de condução cardíaca em intoxicação.',
-    ],
-    interactions: [
-      'Fluoxetina, selegilina — síndrome serotoninérgica.',
-      'Anticolinérgicos, antiarrítmicos — efeitos aditivos.',
-    ],
-    routes: ['por via oral'],
-    presentations: [
-      {
-        id: 'pres-amitriptilina-10',
-        label: 'Amitriptilina 10 mg (humano)',
-        form: 'Comprimido',
-        concentrationValue: 10,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'human_pharmacy',
-      },
-      {
-        id: 'pres-amitriptilina-25',
-        label: 'Amitriptilina 25 mg (humano)',
-        form: 'Comprimido',
-        concentrationValue: 25,
-        concentrationUnit: 'mg/comprimido',
-        channel: 'human_pharmacy',
-      },
-    ],
-    doses: [
-      {
-        id: 'dose-amit-dog-conservative',
-        species: 'dog',
-        indication: 'Comportamento/dor — faixa conservadora inicial (VIN/literatura)',
-        doseMin: 0.5,
-        doseMax: 2,
-        doseUnit: 'mg',
-        perWeightUnit: 'kg',
-        route: 'por via oral',
-        frequency: 'a cada 12–24 horas',
-        clinicalContext: 'extralabel',
-        evidenceLevel: '🟡 Uso clínico publicado — titular individualmente',
-        referenceIds: ['ref-vin-amitriptilina'],
-        calculatorEnabled: true,
-        presentationId: 'pres-amitriptilina-10',
-      },
-      {
-        id: 'dose-amit-dog-behavior-high',
-        species: 'dog',
-        indication: 'Comportamento — faixas publicadas maiores (1–3 mg/kg)',
-        doseMin: 1,
-        doseMax: 3,
-        doseUnit: 'mg',
-        perWeightUnit: 'kg',
-        route: 'por via oral',
-        frequency: 'uma ou duas vezes ao dia',
-        clinicalContext: 'literatura_comportamental',
-        evidenceLevel: '🟡 Referências comportamentais — não dose inicial automática',
-        referenceIds: ['ref-vin-amitriptilina'],
-        calculatorEnabled: true,
-        presentationId: 'pres-amitriptilina-10',
-      },
-      {
-        id: 'dose-amit-dog-pk-4',
-        species: 'dog',
-        indication: 'Estudo farmacocinético Norkus 2015 — 🟠 NÃO prescrição clínica',
-        doseMin: 4,
-        doseMax: 4,
-        doseUnit: 'mg',
-        perWeightUnit: 'kg',
-        route: 'por via oral',
-        frequency: 'dose única (estudo crossover)',
-        clinicalContext: 'farmacocinetica_experimental',
-        evidenceLevel: '🟠 PK — biodisponibilidade oral baixa em Greyhounds; não significa usar 4–8 mg/kg clinicamente',
-        referenceIds: ['ref-norkus-amitriptilina-2015'],
-        calculatorEnabled: false,
-      },
-      {
-        id: 'dose-amit-cat-behavior',
-        species: 'cat',
-        indication: 'Comportamento/dor — faixa usual',
-        doseMin: 0.5,
-        doseMax: 1,
-        doseUnit: 'mg',
-        perWeightUnit: 'kg',
-        route: 'por via oral',
-        frequency: 'uma vez ao dia',
-        clinicalContext: 'extralabel',
-        evidenceLevel: '🟡 Uso clínico publicado',
-        referenceIds: ['ref-vin-amitriptilina'],
-        calculatorEnabled: true,
-        presentationId: 'pres-amitriptilina-10',
-      },
-      {
-        id: 'dose-amit-cat-fixed',
-        species: 'cat',
-        indication: 'Doses fixas por gato (comportamento/urinário histórico)',
-        doseMin: 2.5,
-        doseMax: 10,
-        doseUnit: 'mg',
-        perWeightUnit: 'gato',
-        route: 'por via oral',
-        frequency: 'uma vez ao dia',
-        clinicalContext: 'dose_fixa',
-        evidenceLevel: '🟡 Literatura histórica — individualizar',
-        notes: 'Equivalente aproximado a 0,5–1 mg/kg em gatos médios; confirmar por peso.',
-        calculatorEnabled: false,
-        presentationId: 'pres-amitriptilina-10',
-      },
-      {
-        id: 'dose-amit-cat-fic-chronic',
-        species: 'cat',
-        indication: 'Cistite idiopática grave recorrente refratária — Chew 1998',
-        doseMin: 10,
-        doseMax: 10,
-        doseUnit: 'mg',
-        perWeightUnit: 'gato',
-        route: 'por via oral',
-        frequency: 'uma vez ao dia (à noite)',
-        duration: 'Até 12 meses no estudo — casos selecionados',
-        clinicalContext: 'estudo_aberto_refratario',
-        evidenceLevel: '🟡 Série aberta — 9/15 sucesso global; sem placebo',
-        diseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],
-        referenceIds: ['ref-chew-amitriptilina-fic-1998'],
-        calculatorEnabled: false,
-        presentationId: 'pres-amitriptilina-10',
-      },
-      {
-        id: 'dose-amit-cat-fic-acute-blocked',
-        species: 'cat',
-        indication: 'Crise aguda de cistite idiopática — 🔴 NÃO RECOMENDADO',
-        doseMin: 10,
-        doseMax: 10,
-        doseUnit: 'mg',
-        perWeightUnit: 'gato',
-        route: 'por via oral',
-        frequency: '7 dias (estudos negativos)',
-        clinicalContext: 'historica_desencorajada',
-        evidenceLevel: '🔴 Kruger 2003 e Kraijer 2003 — sem benefício vs controle',
-        notes: 'Não acelerou resolução de polaciúria/hematúria aguda.',
-        diseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif'],
-        referenceIds: ['ref-kruger-amit-fic-2003', 'ref-kraijer-amit-fic-2003'],
-        calculatorEnabled: false,
-      },
-    ],
-    clinicalStructuredBlocks: [
-      {
-        kind: 'clinicalCallout',
-        variant: 'caution',
-        title: '🔴 Cistite idiopática aguda — ensaios negativos',
-        body:
-          'Kruger et al. (2003) e Kraijer et al. (2003): amitriptilina de curto prazo **não** acelerou resolução de sinais na crise aguda. Chew (1998) — possível utilidade apenas em casos **graves, recorrentes e refratários** com terapia prolongada (10 mg/gato/noite).',
-      },
-      {
-        kind: 'clinicalCallout',
-        variant: 'info',
-        title: '🧪 EVIDÊNCIA PUBLICADA — Chew et al. (1998)',
-        body:
-          '15 gatos refratários: **10 mg/gato a cada 24 horas à noite** até 12 meses; 9/15 sucesso global nos primeiros 6 meses. Limitações: sem placebo, efeitos adversos (sonolência, ganho de peso). → Na prática: reservar após MEMO, analgesia e manejo ambiental.',
-      },
-      {
-        kind: 'clinicalCallout',
-        variant: 'caution',
-        title: '🟠 Farmacocinética Norkus (2015)',
-        body:
-          'Greyhounds: **4 mg/kg oral** — biodisponibilidade surpreendentemente baixa. **Não** interpretar como “dose clínica correta”; estudo é PK, não eficácia.',
-      },
-      {
-        kind: 'clinicalCallout',
-        variant: 'caution',
-        title: '🚨 Transdérmica em gatos',
-        body:
-          'Mealey et al. (2004): absorção transdérmica **ruim** vs oral. Não considerar manipulação transdérmica equivalente.',
-      },
-    ],
-    clinicalNotesRichText:
-      '<p><strong>Perfil:</strong> menos seletivo que fluoxetina; sedação e efeitos anticolinérgicos frequentes.</p>' +
-      '<p><strong>FLUTD:</strong> priorizar MEMO, analgesia, ambiente — amitriptilina não é primeira linha.</p>' +
-      '<hr/><p><em>Literatura revisada até: agosto de 2026.</em></p>',
-    adminNotesText: 'vin_reference_pending: true. literatureReview: agosto/2026.',
-    relatedDiseaseSlugs: ['doencas-trato-urinario-inferior-felino-dtuif', 'doenca-do-disco-intervertebral-caes'],
-    references: [
-      { id: 'ref-chew-amitriptilina-fic-1998', citationText: 'Chew DJ et al. Amitriptyline for severe recurrent idiopathic cystitis in cats. JAVMA. 1998;213:1282–1286.', sourceType: 'Série de casos', url: 'https://pubmed.ncbi.nlm.nih.gov/9810383/', evidenceLevel: 'Moderada limitada' },
-      { id: 'ref-kruger-amit-fic-2003', citationText: 'Kruger JM et al. Short-term amitriptyline in acute feline LUTD — negative RCT. JAVMA. 2003.', sourceType: 'RCT negativo', url: 'https://pubmed.ncbi.nlm.nih.gov/12675297/', evidenceLevel: 'Alta para conclusão negativa' },
-      { id: 'ref-kraijer-amit-fic-2003', citationText: 'Kraijer M et al. Seven-day amitriptyline ineffective in acute feline LUTD. 2003.', sourceType: 'RCT negativo', url: 'https://pubmed.ncbi.nlm.nih.gov/12765630/', evidenceLevel: 'Alta para conclusão negativa' },
-      { id: 'ref-norkus-amitriptilina-2015', citationText: 'Norkus C et al. PK of amitriptyline in Greyhound dogs. 2015.', sourceType: 'PK', url: 'https://pubmed.ncbi.nlm.nih.gov/25683584/', evidenceLevel: 'PK experimental' },
-      { id: 'ref-mealey-amit-transdermal-2004', citationText: 'Mealey KL et al. Transdermal amitriptyline absorption poor in cats. 2004.', sourceType: 'PK', url: 'https://pubmed.ncbi.nlm.nih.gov/14765730/', evidenceLevel: 'Alta' },
-      { id: 'ref-vin-amitriptilina', citationText: 'VIN — amitriptilina doses comportamentais e dor espinal.', sourceType: 'VIN', url: 'https://www.vin.com/apputil/content/defaultadv1.aspx?id=7259327&pid=14365', evidenceLevel: 'Moderada' },
     ],
     isPublished: true,
     source: 'seed',
@@ -792,21 +572,21 @@ export const neurologyBehaviorMedicationsSeed: MedicationRecord[] = [
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Lascelles et al. (2008)',
         body:
-          'Cães com osteoartrite e resposta inadequada ao meloxicam: **amantadina 3–5 mg/kg a cada 24 horas por 21 dias** + meloxicam → melhora funcional superior ao anti-inflamatório isolado. → Na prática: adjuvante, não monoterapia.',
+          'Cães com osteoartrite e resposta inadequada ao meloxicam: amantadina 3–5 mg/kg a cada 24 horas por 21 dias + meloxicam → melhora funcional superior ao anti-inflamatório isolado. → Na prática: adjuvante, não monoterapia.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Caterino et al. (2025)',
         body:
-          'Estenose lombossacral: **3 mg/kg a cada 12 horas** ou **3 mg/kg a cada 24 horas + meloxicam** por 21 dias — melhora de força de reação ao solo. → Na prática: indicação específica; não generalizar para toda dor crônica.',
+          'Estenose lombossacral: 3 mg/kg a cada 12 horas ou 3 mg/kg a cada 24 horas + meloxicam por 21 dias — melhora de força de reação ao solo. → Na prática: indicação específica; não generalizar para toda dor crônica.',
       },
       {
         kind: 'clinicalCallout',
         variant: 'info',
         title: '🧪 EVIDÊNCIA PUBLICADA — Shipley et al. (2021) gatos',
         body:
-          '**5 mg/kg a cada 24 horas por 3 semanas** — tutores reportaram melhora; medidas objetivas de atividade inconsistentes. Não escrever “comprovadamente aumenta atividade felina”.',
+          '5 mg/kg a cada 24 horas por 3 semanas — tutores reportaram melhora; medidas objetivas de atividade inconsistentes. Não escrever “comprovadamente aumenta atividade felina”.',
       },
       {
         kind: 'clinicalTable',

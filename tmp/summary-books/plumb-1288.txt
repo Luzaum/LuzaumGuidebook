@@ -1,0 +1,238 @@
+Tramadol      1261
+Monitoring
+	■Serum electrolytes, BUN, creatinine, glucose (if diabetic)
+	■Hydration status
+	■Blood pressure, if indicated
+	■Clinical signs of edema, patient weight, if indicated
+Client Information
+	■While taking this medicine, your animal will drink and urinate 
+more often than usual. Be sure your animal always has access to 
+freshwater. You may give this medicine with or without food. 
+	■While your animal is taking this medicine, your veterinarian will 
+need to monitor your animal closely. Do not miss these important 
+follow-up visits. 
+	■Contact your veterinarian immediately if you notice excessive 
+thirst, weakness, collapse (passing out), head tilt, lack of urina-
+tion, or a racing heartbeat.
+Chemistry/Synonyms
+Torsemide is a lipophilic anilinopyridine sulfonylurea loop diuretic 
+that occurs as white to off-white, crystalline powder. It is practically 
+insoluble in water and slightly soluble in alcohol.
+Torsemide may also be known as torasemide, AC-3525, AC 4464, 
+BM-02.015, JDL-464, and Demadex®. International trade names 
+include Isemid®, Torem®, and Unat®.
+Storage/Stability
+Store torsemide tablets below 40°C (104°F); preferably between 15°C 
+and 30°C (59°F and 86°F).
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE IN THE US.
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula-
+tions before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Torsemide Oral Tablets: 5 mg, 10 mg, 20 mg, and 100 mg; Demadex®, 
+generic; (Rx)
+Torsemide Injection: 10 mg/mL; generic; (Rx). NOTE: This product 
+has been discontinued.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Tramadol
+(tram-ah-doll)  Ultram®
+Opioid Agonist
+Prescriber Highlights
+	
+▶Synthetic mu-receptor partial opioid agonist that also inhibits 
+the reuptake of serotonin and norepinephrine
+	
+▶Appears useful as an analgesic in cats, but studies in dogs pro-
+vide conflicting evidence of analgesia; may take up to 2 weeks 
+for full analgesic activity in chronic pain states
+	
+▶It is contraindicated in patients hypersensitive to it and other 
+opioids, and in those with GI obstruction. Use with caution in 
+patients with a history of seizures or patients receiving other 
+CNS or respiratory depressants.
+	
+▶Appears well tolerated in dogs; sedation is the most likely 
+adverse effect.
+	
+▶Several potential clinically significant drug interactions exist; 
+avoid use with selective serotonin reuptake inhibitors (SSRIs; 
+eg, fluoxetine) or monoamine oxidase inhibitors (MAOIs; eg, 
+selegiline).
+	
+▶DEA Schedule IV (C-IV) controlled substance
+Uses/Indications
+Tramadol is used for adjunct treatment of postoperative or chronic 
+pain in many species. It is most useful when used in combination 
+with NSAIDs or other analgesic drugs (eg, amantadine, gabapentin, 
+alpha-2  agonists).1 Tramadol use as an analgesic was widely adopt-
+ed in veterinary medicine in part based on its low cost and previ-
+ous status as a noncontrolled drug; however, evidence of efficacy is 
+conflicting and studies demonstrating tramadol’s efficacy as a sole 
+analgesic2–5 are outweighed by studies that cite its limitations.1,6–11 A 
+meta-analysis that reviewed the efficacy of tramadol for postopera-
+tive pain management in dogs found that tramadol likely results in 
+a decreased need for rescue analgesia compared to no treatment or 
+placebo, but the certainty of the evidence was determined to be low.12 
+Studies of tramadol in dogs with osteoarthritis did not show benefits 
+compared to placebo.10,13 Anecdotally, tramadol has also been used 
+as an anti-tussive agent; however, evidence of efficacy is lacking.
+Tramadol’s efficacy as an analgesic in cats is more robust.14–19 
+In horses, tramadol administered as an epidural may also be use-
+ful as an analgesic, but no appropriate commercial dosage forms are 
+available in the United States; however, studies evaluating the an-
+tinociceptive effects in horses after IV administration have found 
+that IV tramadol is not an effective analgesic in horses when used 
+alone.20,21 Some studies have shown benefits when used in combi-
+nation therapy.21,22 In donkeys, tramadol used with lidocaine as an 
+epidural has a shorter onset and longer duration of action than when 
+lidocaine is used alone.23
+Tramadol administered systemically in sheep, camels, and came-
+lids has noticeable adverse effects and a lack of efficacy and should 
+not be used in those species.24–28
+Pharmacology/Actions
+Tramadol is a centrally acting partial opioid agonist with primar-
+ily mu-receptor activity. It also weakly inhibits the reuptake of se-
+rotonin and norepinephrine. Analgesic activity is due to the parent 
+compound and its active metabolite, M1 (O-desmethyltramadol 
+[ODT]). When compared with tramadol in laboratory animal stud-
+ies, M1 was 20 times more potent in binding to mu receptors and was 
+6 times more potent as an analgesic. 
+Naloxone only partially antagonizes the analgesic effects of trama-
+dol; other partial antagonists include yohimbine and ondansetron.
+
+1262      Tramadol
+Pharmacokinetics
+Bioavailability is ≈65% after oral administration of immediate-re-
+lease tablets in dogs, but there is significant interpatient variabili-
+ty. Rectal bioavailability is ≈10%. The volume of distribution (VD), 
+total body clearance, and half-life are 3.8 L/kg, 55 mL/kg/minute, 
+and 1.7 hours, respectively.29 Tramadol is extensively metabolized via 
+several pathways to at least 20 metabolites. The active M1 metabolite 
+is formed by cytochrome P450 2D15 (CYP2D15) but is a minor me-
+tabolite in dogs.30,31 M1 has a half-life of ≈2 hours after oral tramadol 
+administration.29 Dogs appear to produce substantial quantities of 
+the inactive metabolite M2 via CYP2B11. M1 and M2 are further 
+metabolized to M5 (N,O-didesmethyltramadol) via CYP2C21 and 
+2D15.30,32 Pharmacokinetics of tramadol have been reported for 
+young and middle-aged dogs. After IV administration at 4 mg/kg, 
+the VD, elimination half-life, and total body clearance were 4.77 ± 
+1.07 L/kg, 1.91 ± 0.26 hours, and 29.9 ± 7.3 mL/kg/minute, respec-
+tively, in young dogs and 4.73 ± 1.43 L/kg, 2.39 ± 0.97 hours, and 
+23.7 ± 5.4 mL/kg/minute, respectively, in middle-aged dogs. Excre-
+tion was significantly prolonged in older animals.33 In greyhounds, 
+tramadol’s half-life is slightly shorter (ie, 1.1 hours).34 
+After intranasal administration in dogs, tramadol was rapidly 
+absorbed into the systemic circulation, becoming detectable after 5 
+minutes and reaching maximum concentrations ≈40 minutes after 
+administration. Bioavailability was determined to range from 3.3% 
+to 20.6%. In general, plasma concentrations were low and variable. 
+Tramadol half-life was ≈1 hour. M1 was largely undetectable. Plas-
+ma concentrations were low, and because they did not correlate with 
+analgesic effect it was hypothesized that tramadol bypassed systemic 
+circulation and traveled directly to the CNS. 
+A study of 8 cats that received the immediate-release oral tablet 
+showed high interpatient variability in absorption (2 cats had inad-
+equate data and could not be analyzed). The main metabolite pro-
+duced in cats is the active M1 metabolite. The elimination half-life 
+for the parent compound was ≈2.25 to 3.5 hours and was 4.5 hours 
+for the M1 metabolite.35 Another study in 6 cats demonstrated the 
+following approximate values: 60% oral bioavailability, 2 L/kg vol-
+ume of distribution at steady state (VSS), 12 mL/kg/minute clearance, 
+and 3.2 hours terminal half-life. The terminal half-life of M1 after 
+oral administration was ≈4.8 hours. After transdermal application of 
+a compounded tramadol gel, a dose of ≈2.8 mg/kg resulted in unde-
+tectable or very low plasma concentrations.36
+In adult horses, tramadol had relatively poor oral absorption (≈3% 
+to 10%)37,38 and an elimination half-life of ≈1.5 to 2.5 hours after IV 
+or IM administration and up to 10 hours when given orally.37–41 The 
+M1 active metabolite half-life was ≈4 hours. Oral doses of 10 mg/kg 
+yielded concentrations of tramadol and M1 that are believed to be 
+therapeutic, whereas lower doses (3 to 6 mg/kg) were inconsistent 
+and transient.41–44 M2 appears to be the main metabolite produced by 
+horses, with very low and variable M1 concentrations.37,45 In donkeys 
+given single IV doses of 2 mg/kg, the half-life of the parent com-
+pound was ≈1 hour, and the halflife of the M1 metabolite was ≈8.5 
+hours.46
+Tramadol has different pharmacokinetics in neonatal and weaned 
+foals. After oral administration, higher bioavailability (53% vs 20%), 
+shorter time to peak concentration (1 hour vs 1.25 hours), and peak 
+levels occurred with neonatal (2 weeks of age) vs weaned (4 months 
+of age) foals. The elimination half-life did not significantly differ (≈2 
+hours). The active metabolite (M1) remained above the reported 
+therapeutic concentration for humans for 3 hours in neonatal foals 
+and 8 hours in weaned foals.47 In another study, the elimination half-
+life was ≈1.5 hours in foals up to 6 weeks of age.48 
+In llamas administered 2 mg/kg IV, tramadol and M1 pharmaco-
+kinetics values (approximate means) were: VSS, 4 L/kg and 26.5 L/kg; 
+clearance, 1.7 L/kg/hour and 2.03 L/kg/hour; half-life, 2.1 hours and 
+10.4 hours. IM (2 mg/kg) bioavailability was high.49 Data in camels 
+were similar to those in llamas.24 In alpacas, oral bioavailability was 
+poor (6% to 19%).28 After IV administration (3.4 to 4.4 mg/kg), VD 
+was 5.50 ± 2.66 L/kg, total body clearance was ≈4.6 L/kg/hour, and 
+half-life was ≈0.9 hours. The M1 metabolite was not detected.
+The elimination half-life of tramadol in sheep receiving IV trama-
+dol (4 and 6 mg/kg) was 0.6 hours and 1.2 hours for M1.27 Bioavail-
+ability in goats given tramadol at 2 mg/kg IV and PO was 37%, and 
+the half-life was ≈1 hour (IV) and 2.7 hours (PO). The M1 half-life 
+was 2.9 hours after IV administration but was undetectable after oral 
+administration.50
+In red-tailed hawks given an oral dose of 11 mg/kg, plasma levels 
+of tramadol reached or exceeded concentrations associated with an-
+algesia in humans for at least 4 hours after administration. The elim-
+ination half-lives were 1.3 hours (tramadol) and 1.9 hours (M1).51 
+Single IV doses given to Hispaniolan Amazon parrots resulted in 
+half-lives of 1.54 hours (tramadol) and 2.55 hours (M2). Oral bio-
+availability was ≈24%.52 
+Contraindications/Precautions/Warnings
+Tramadol is contraindicated in patients that are hypersensitive to it 
+or other opioids. The combination product containing acetamino-
+phen is contraindicated in cats. In humans, the drug is contraindicat-
+ed in patients with GI obstruction or paralytic ileus and in children 
+younger than 12 or undergoing tonsillectomy or adenoidectomy.
+Caution should be used when tramadol is given in conjunction 
+with other drugs that can cause CNS or respiratory depression. Be-
+cause tramadol has caused seizures in humans, it should be used 
+with caution in animals with pre-existing seizure disorders, at in-
+creased risk for seizures (eg, head trauma, CNS infections), or re-
+ceiving other drugs that may reduce the seizure threshold. Similar to 
+other opioidlike compounds, tramadol should be used with caution 
+in geriatric or severely debilitated animals and in those with severe 
+asthma. Animals with impaired renal or hepatic function may need 
+dosage adjustments.
+Although the risk for physical dependence is less than that of sev-
+eral other opioids, it has been reported in humans. The drug should 
+be withdrawn gradually in animals that receive it chronically. Hu-
+mans can potentially abuse tramadol, and significant diversion of 
+the drug reportedly occurs. Clinicians should be alert to pet owners 
+seeking tramadol.
+Extended-release tablets, which are not currently recommended 
+or used in veterinary patients, should not be broken, crushed, or 
+chewed because toxicity could occur.
+Care should be taken not to confuse traMADol with traZODone.
+Adverse Effects
+Tramadol appears to be well tolerated in dogs and appears to have 
+fewer adverse effects than methadone or morphine.53 Tramadol has 
+the potential to cause a variety of adverse effects associated with its 
+pharmacologic actions, including CNS effects (eg, excessive seda-
+tion, agitation, anxiety, tremor, dizziness) or GI effects (inappetence, 
+vomiting, constipation, diarrhea). 
+Limited information is available on the adverse effects in cats. 
+Vomiting, sedation, mydriasis, dysphoria or euphoria, and constipa-
+tion have been reported. In a study, neurologic effects (eg, mydriasis, 
+dysphoria) were seen in 25% of cats, and the drug was observed to 
+be unpalatable to cats.54 Unpalatability may lead to dose avoidance.
+In horses, tramadol 5 mg/kg IV caused excitement20; ataxia and 
+muscle spasms were more frequently seen in donkeys after 4 mg/kg 
+IV administration.46
+In humans receiving tramadol, ≈10% develop pruritus. Injectable 
+tramadol may cause respiratory and cardiac depression.
+Reproductive/Nursing Safety
+Laboratory animals have experienced embryotoxicity and fetotoxici-

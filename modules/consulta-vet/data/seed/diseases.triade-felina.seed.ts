@@ -74,7 +74,19 @@ export const triadeFelinaSeed: DiseaseRecord = {
   ],
 
   quickSummary:
-    'A tríade felina (ou triadite felina) é uma síndrome inflamatória multiorgânica caracterizada pelo acometimento concomitante ou sequencial do pâncreas (pancreatite aguda ou crônica), do sistema hepatobiliar (colangite neutrofílica supurativa ou linfocítica) e do intestino delgado (enteropatia crônica inflamatória / enterite linfoplasmocitária ou linfoma alimentar de células T de baixo grau). Conforme destacado na revisão contemporânea de Cridge (2026), o termo traduz um complexo inflamatório digestivo compartilhado decorrente de vulnerabilidades biológicas e anatômicas da espécie felina, e não necessariamente uma doença causal única unidirecional. Em aproximadamente 80% dos gatos, o ducto pancreático principal funde-se ao ducto colédoco antes de desembocar na papila duodenal maior em um canal comum, facilitando o refluxo duodenopancreatobiliar de bile, enzimas ativadas e translocação de enterobactérias, cuja densidade duodenal no gato normal é de 100 a 1.000 vezes superior à canina. O diagnóstico apoia-se na integração multimodal de marcadores específicos (Spec fPL / fPLI com corte >= 5,4 ug/L, exibindo sensibilidade e especificidade de ~79%), perfil hepatobiliar sérico (GGT, ALT, bilirrubinas), dosagem de cobalamina sérica (fator intrínseco produzido exclusivamente pelo pâncreas felino), ultrassonografia abdominal especializada e, no cenário crônico refratário, biópsias de espessura total com imunofenotipagem e PARR para diferenciar enterite linfoplasmocitária de linfoma intestinal de baixo grau (Consenso ACVIM 2023). A terapêutica contemporânea rompe com o mito perigoso do uso cego de corticoides: felinos com colangite neutrofílica bacteriana ativa demandam antibioticoterapia direcionada por 4 a 8 semanas e contraindicam formalmente imunossupressão precoce, enquanto fenótipos linfocíticos requerem prednisolona e imunomodulação. O suporte nutricional enteral precoce (veto absoluto a jejum prolongado para prevenção de lipidose hepática), analgesia multimodal com buprenorfina, antieméticos e suplementação contínua de cobalamina constituem os pilares inegociáveis de sobrevida.',
+    'Definição e complexo inflamatório compartilhado:\n' +
+    '- Conceito fundamental:\n' +
+    '  - Síndrome inflamatória multiorgânica caracterizada pelo acometimento concomitante ou sequencial do pâncreas (pancreatite aguda ou crônica), do sistema hepatobiliar (colangite neutrofílica supurativa ou linfocítica) e do intestino delgado (enteropatia crônica inflamatória / enterite linfoplasmocitária ou linfoma alimentar de células T de baixo grau).\n' +
+    '  - Revisão contemporânea de Cridge (2026): o termo traduz um complexo inflamatório digestivo compartilhado decorrente de vulnerabilidades biológicas e anatômicas da espécie felina, e não necessariamente uma doença causal única unidirecional.\n' +
+    '- Bases anatômicas e microbiológicas da suscetibilidade felina:\n' +
+    '  - Confluência ductal pré-papilar (80% dos gatos): o ducto pancreático principal funde-se ao ducto colédoco antes de desembocar na papila duodenal maior em um canal comum, facilitando o refluxo duodenopancreatobiliar de bile, enzimas ativadas e enterobactérias.\n' +
+    '  - Carga bacteriana duodenal abundante: densidade normal de 10^8 UFC/mL (100 a 1.000 vezes superior à canina).\n' +
+    '- Pilares diagnósticos integrados e Consensos ACVIM:\n' +
+    '  - Biomarcadores específicos: Spec fPL / fPLI com corte >= 5,4 ug/L (sensibilidade e especificidade de ~79%), perfil hepatobiliar sérico (GGT, ALT, bilirrubinas) e dosagem de cobalamina sérica (fator intrínseco produzido exclusivamente pelo pâncreas felino).\n' +
+    '  - Diagnóstico diferencial avançado (Consenso ACVIM 2023): biópsias cirúrgicas de espessura total com imunofenotipagem e PARR para diferenciar enterite linfoplasmocitária (LPE) de linfoma intestinal de baixo grau (LGITL).\n' +
+    '- Diretrizes terapêuticas orientadas por fenótipo clínico:\n' +
+    '  - Veto formal ao corticoide cego inicial: felinos com colangite neutrofílica bacteriana demandam antibioticoterapia direcionada por 4 a 8 semanas e contraindicam formalmente imunossupressão precoce.\n' +
+    '  - Suporte intensivo e profilaxia de lipidose hepática: suporte nutricional enteral precoce (veto absoluto a jejum prolongado), analgesia multimodal com buprenorfina, antieméticos e suplementação contínua de cobalamina.',
 
   quickDecisionStrip: [
     'Tríade felina é um complexo inflamatório digestivo multiorgânico: trate o fenótipo clínico dominante e não prescreva corticoide de forma cega.',
@@ -197,10 +209,32 @@ export const triadeFelinaSeed: DiseaseRecord = {
 
   etiology: {
     conceitoTriadeComoComplexoMultiorganico:
-      'A tríade felina (feline triaditis) define a ocorrência simultânea ou sequencial de processos inflamatórios nos três pilares anatômicos do aparelho digestivo cranial do gato: o pâncreas (pancreatite), as vias biliares e parênquima hepático (colangite / colangioepatite) e o intestino delgado (enteropatia crônica inflamatória). Conforme sustentado na revisão contemporânea de Cridge (2026, Journal of Feline Medicine and Surgery), a tríade não representa uma entidade patológica única dotada de uma etiologia monoespecífica invariável, mas sim uma síndrome multiorgânica expressando uma suscetibilidade compartilhada da espécie felina. Estudos de prevalência em necropsias e biópsias multiorgânicas revelam que entre 30% a 56% dos gatos diagnosticados com pancreatite apresentam colangite concorrente, e até 80% a 93% dos gatos com colangite supurativa exibem lesões inflamatórias em pâncreas e intestino (Center et al., 2022). Em vez de uma causação mecânica linear obrigatória, a visão acadêmica atual compreende a tríade como um complexo inflamatório digestivo felino, no qual insultos bacterianos, imunomediados, dietéticos ou vasculares propagam-se por tecidos intimamente integrados.',
+      'Definição conceitual e natureza multiorgânica da tríade:\n' +
+      '- Três pilares anatômicos do aparelho digestivo cranial felino:\n' +
+      '  - Pâncreas: pancreatite aguda ou crônica.\n' +
+      '  - Vias biliares e fígado: colangite neutrofílica supurativa ou linfocítica / colangioepatite.\n' +
+      '  - Intestino delgado: enteropatia crônica inflamatória (enterite linfoplasmocitária) ou neoplasia linfoproliferativa (LGITL).\n' +
+      '- Mudança de paradigma na literatura contemporânea (Cridge, 2026 - JFMS):\n' +
+      '  - A tríade não representa uma entidade patológica única dotada de etiologia monoespecífica invariável, mas sim uma síndrome multiorgânica expressando uma suscetibilidade compartilhada da espécie felina.\n' +
+      '  - Complexo inflamatório digestivo no qual insultos bacterianos, imunomediados, dietéticos ou vasculares propagam-se por tecidos intimamente integrados.\n' +
+      '- Prevalência histopatológica de sobreposição (Center et al., 2022):\n' +
+      '  - Entre 30% a 56% dos gatos com pancreatite apresentam colangite concorrente em necropsias e biópsias multiorgânicas.\n' +
+      '  - Até 80% a 93% dos gatos com colangite supurativa confirmada exibem lesões inflamatórias simultâneas no pâncreas e intestino.',
 
     anatomiaDuctalComparadaEConfluencia:
-      'A singular vulnerabilidade da espécie felina ao desenvolvimento da tríade assenta-se em disparidades anatômicas e microbiológicas marcantes quando contrastada com a espécie canina e humana. Em aproximadamente 80% dos gatos domésticos, o ducto pancreático principal (ducto de Wirsung) funde-se intimamente ao ducto colédoco terminal antes de transpor a parede duodenal, desembocando conjuntamente em um óstio comum na papila duodenal maior (papilla duodeni major). O ducto pancreático acessório (ducto de Santorini), que constitui a via de drenagem primária em cães, encontra-se completamente ausente ou não funcional em cerca de 80% da população felina. Essa confluência ductal pré-papilar gera um canal condutor compartilhado onde qualquer obstáculo mecânico (como espessamento inflamatório, tampões de muco, debris celulares ou espasmo esfincteriano) promove estase retrógrada concomitante na árvore biliar e na rede ductal pancreática. Somado a esse fator anatômico, o ecossistema microbiológico do intestino delgado felino normal abriga uma concentração fisiológica colossal de bactérias viáveis (cerca de 10^8 UFC/mL no lúmen duodenal), densidade de 100 a 1.000 vezes superior à observada em cães saudáveis (10^5 a 10^6 UFC/mL). Durante episódios de náusea, vômito crônico ou hipermotilidade retrógrada, a pressão intraluminal duodenal supera a resistência do esfíncter da papila, permitindo o refluxo maciço de conteúdo entérico repleto de bactérias e sais biliares desconjugados para o interior do pâncreas e vias biliares.',
+      'Anatomia ductal comparada e ecossistema microbiológico duodenal:\n' +
+      '- Confluência ductal pré-papilar em canal comum:\n' +
+      '  - Em aproximadamente 80% dos gatos domésticos, o ducto pancreático principal (ducto de Wirsung) funde-se intimamente ao ducto colédoco terminal antes de transpor a parede duodenal.\n' +
+      '  - Desembocam conjuntamente em um óstio comum na papila duodenal maior (papilla duodeni major).\n' +
+      '- Ausência de ducto pancreático acessório funcional:\n' +
+      '  - O ducto acessório (ducto de Santorini), via primária de drenagem na espécie canina, encontra-se ausente ou não funcional em cerca de 80% da população felina.\n' +
+      '  - Qualquer obstáculo mecânico (edema, tampões de muco, debris ou espasmo do esfíncter) promove estase retrógrada simultânea na árvore biliar e ductos pancreáticos.\n' +
+      '- Carga bacteriana fisiológica duodenal felina colossal:\n' +
+      '  - O lúmen duodenal abriga cerca de 10^8 UFC/mL de bactérias viáveis (flora mista aeróbia e anaeróbia).\n' +
+      '  - Essa densidade é de 100 a 1.000 vezes superior à observada em cães sadios (10^5 a 10^6 UFC/mL).\n' +
+      '- Mecânica do refluxo sob dismotilidade e êmese:\n' +
+      '  - Durante episódios de náusea crônica ou vômitos recorrentes, o aumento sustentado da pressão intraluminal duodenal supera a resistência esfincteriana.\n' +
+      '  - Permite o refluxo maciço retrógrado de bactérias luminais e bile desconjugada para o interior do parênquima pancreático e vias biliares.',
 
     tabelaModelosFisiopatologicosComparados: {
       kind: 'clinicalTable',
@@ -241,13 +275,33 @@ export const triadeFelinaSeed: DiseaseRecord = {
 
   epidemiology: {
     distribuicaoEpidemiologicaEPrevalencia:
-      'A tríade felina é universalmente reconhecida como uma das síndromes digestivas mais prevalentes na clínica de pequenos animais, acometendo felinos domésticos globalmente sem predileção geográfica estrita. Em centros de referência terciários, a prevalência histopatológica de lesões inflamatórias simultâneas no pâncreas e fígado varia de 30% a 56%, elevando-se para até 80% a 93% quando avaliados gatos com colangite neutrofílica supurativa confirmada (Center et al., 2022). Em estudos prospectivos com ultrassonografia de alta resolução associada a marcadores séricos (Spec fPL e cobalamina), aproximadamente metade dos felinos apresentados com queixas crônicas de vômitos ou perda de peso apresentam o complexo da tríade em graus variáveis de atividade subclínica ou manifesta.',
+      'Distribuição epidemiológica e prevalência em centros de referência:\n' +
+      '- Distribuição cosmopolita:\n' +
+      '  - Afecção digestiva de ocorrência mundial na rotina de pequenos animais, sem predileção geográfica regional.\n' +
+      '- Taxas de sobreposição em coortes especializadas (Center et al., 2022):\n' +
+      '  - Prevalência histopatológica de lesões inflamatórias concomitantes no pâncreas e fígado entre 30% e 56%.\n' +
+      '  - Em felinos com colangite neutrofílica supurativa confirmada, a coexistência com pancreatite atinge 80% a 93%.\n' +
+      '- Prevalência na rotina ambulatorial:\n' +
+      '  - Aproximadamente 50% dos felinos atendidos com queixas crônicas de vômitos, hiporexia ou perda de peso apresentam o complexo da tríade em graus variáveis de atividade.',
 
     predisposicaoPorIdadeESexo:
-      'A síndrome acomete predominantemente gatos adultos de meia-idade a idosos, com mediana diagnóstica situada entre 7 e 12 anos. Não há predisposição sexual comprovada: machos e fêmeas (castrados ou inteiros) são afetados em proporções equivalentes. Embora gatos domésticos de pelo curto (DSH) e de pelo longo (DLH) representem a vasta maioria dos casos em termos absolutos pela sua representatividade demográfica, certas raças puras (como Siamês e outras raças orientais) exibem suscetibilidade documentada a formas linfocíticas proliferativas e colangite crônica, sugerindo determinantes genéticos subjacentes na regulação imune mucosal.',
+      'Predisposição por faixa etária, sexo e fatores raciais:\n' +
+      '- Faixa etária predominante:\n' +
+      '  - Acomete principalmente gatos adultos de meia-idade a idosos, com mediana diagnóstica situada entre 7 e 12 anos.\n' +
+      '- Ausência de dimorfismo sexual:\n' +
+      '  - Machos e fêmeas (castrados ou inteiros) são acometidos em frequências estatisticamente equivalentes.\n' +
+      '- Particularidades raciais e predisposição genética:\n' +
+      '  - Gatos domésticos de pelo curto (DSH) e pelo longo (DLH) representam a maior parte dos atendimentos em números absolutos.\n' +
+      '  - Raças puras orientais (como Siamês) exibem suscetibilidade documentada a formas linfocíticas proliferativas e colangite crônica, sugerindo determinantes genéticos na regulação imune mucosal.',
 
     concorrenciaPancreatiteColangiteEnteropatia:
-      'A sobreposição de acometimento multiorgânico foi extensamente documentada na coorte multicêntrica de Center et al. (2022) envolvendo 168 felinos com colangite supurativa: 93% dos gatos apresentavam pancreatite concorrente, 88% exibiam enteropatia crônica inflamatória (IBD) e 42% apresentavam colelitíase associada. Esses dados consolidam a realidade de que a colangite isolada ou a pancreatite estritamente isolada constituem exceções na espécie felina, devendo o clínico conduzir a investigação sempre sob a premissa de um complexo digestivo tripartite integrado.',
+      'Concorrência multiorgânica na coorte seminal de Center et al. (2022):\n' +
+      '- Dados da coorte multicêntrica (168 gatos com colangite supurativa):\n' +
+      '  - 93% dos pacientes apresentavam pancreatite concorrente confirmada.\n' +
+      '  - 88% exibiam enteropatia crônica inflamatória (IBD/LPE) associada.\n' +
+      '  - 42% apresentavam colelitíase concomitante.\n' +
+      '- REGRA DE OURO clínica:\n' +
+      '  - A colangite isolada ou a pancreatite isolada constituem exceções raras na espécie felina; toda investigação clínica deve considerar ativamente a tríade multiorgânica integrada.',
   },
 
   pathogenesisTransmission: {
@@ -261,21 +315,60 @@ export const triadeFelinaSeed: DiseaseRecord = {
       'Esgotamento da síntese de fator intrínseco e hipocobalaminemia: A destruição acinar pancreática associada à lesão mucosa ileal bloqueia a absorção de vitamina B12, perpetuando o ciclo enteropático.',
     ],
     viasDePropagacaoECanalComum:
-      'A patogênese da tríade felina é estritamente endógena e multiorgânica, não configurando afecção contagiosa inter-animais. As vias de propagação ocorrem por contiguidade anatômica via canal ductal comum pré-papilar, refluxo mecânico sob gradiente pressórico duodenal e tráfego linfocítico compartilhado (homing com integrina alfa4beta7 e MAdCAM-1) ao longo do eixo mucosa digestiva-fígado-pâncreas.',
+      'Vias de propagação e patogênese endógena multiorgânica:\n' +
+      '- Caráter endógeno não contagioso:\n' +
+      '  - A tríade felina é um complexo inflamatório endógeno resultante de fatores anatômicos, microbiológicos e imunológicos individuais.\n' +
+      '- Três rotas principais de propagação tecidual:\n' +
+      '  - Contiguidade anatômica e refluxo mecânico: confluência ductal pré-papilar em canal comum sob aumento da pressão intraluminal duodenal.\n' +
+      '  - Efeito vizinho transperitoneal: extravasamento de enzimas ativadas e citocinas pancreáticas inflamando o colédoco distal e duodeno adjacente.\n' +
+      '  - Tráfego linfocítico imune compartilhado: homing celular mediado por integrina alfa4beta7 e receptor CCR9 ligando-se a MAdCAM-1 no endotélio do eixo entero-hepato-pancreático.',
   },
 
   pathophysiology: {
     modeloRefluxoAscendenteBacteriano:
-      'O modelo de refluxo ascendente representa a via etiopatogênica mais solidamente documentada na colangite neutrofílica supurativa felina. A densidade bacteriana do duodeno proximal no gato saudável é biologicamente expressiva, albergando flora mista aeróbia e anaeróbia facultativa. Em situações de dismotilidade gastrointestinal, enterite inflamatória crônica ou vômitos recorrentes, o aumento sustentado da pressão hidrostática no lúmen duodenal vence a barreira de fechamento esfincteriano da papila duodenal maior. Em felinos dotados de ducto comum (80%), a bile e as bactérias carreadas do duodeno ascendem simultaneamente pelo ducto colédoco e pelo ducto pancreático. No trabalho retrospectivo seminal de Center et al. (2022) envolvendo 168 gatos com colangite supurativa, 69% dos pacientes submetidos à análise biliar apresentaram culturas microbiológicas positivas, com predomínio absoluto de Escherichia coli, Enterococcus faecalis, Streptococcus spp., Bacteroides e Clostridium spp. Notavelmente, 93% desses felinos apresentavam pancreatite concorrente confirmada e 88% exibiam enteropatia inflamatória crônica (IBD), chancelando a indissociabilidade do refluxo ascendente como motor infeccioso primário.',
+      'Modelo 1 — Refluxo retrógrado e ascensão bacteriana duodenal:\n' +
+      '- Carga bacteriana e falha da barreira esfincteriana:\n' +
+      '  - A microbiota do duodeno felino hígido é abundante (~10^8 UFC/mL), com flora mista aeróbia e anaeróbia.\n' +
+      '  - Episódios de vômitos crônicos ou dismotilidade geram gradiente pressórico retrógrado que vence a barreira esfincteriana da papila duodenal maior.\n' +
+      '- Ascensão simultânea no canal comum (80% dos gatos):\n' +
+      '  - Bile e enterobactérias translocam-se concomitantemente pelo ducto colédoco e pelo ducto de Wirsung.\n' +
+      '- Evidências microbiológicas seminais (Center et al., 2022):\n' +
+      '  - Em 168 felinos com colangite supurativa, 69% apresentaram culturas biliares positivas.\n' +
+      '  - Principais patógenos isolados: Escherichia coli, Enterococcus faecalis, Streptococcus spp., Bacteroides e Clostridium spp.\n' +
+      '  - 93% dos pacientes apresentavam pancreatite concorrente confirmada e 88% exibiam enteropatia inflamatória crônica (IBD).',
 
     modeloEfeitoVizinhoEPancreatitePrimaria:
-      'Diferentemente do modelo ascendente, a via da pancreatite primária deflagra a tríade a partir do epicentro acinar pancreático. A fusão patológica anormal de grânulos de zimogênio com lisossomos contendo catepsina B no interior do ácino pancreático desencadeia a clivagem precoce intra-acinar do tripsinogênio em tripsina ativa, sobrecarregando os inibidores endógenos (como o PSTI/SPINK1). A cascata autocatalítica subsequente ativa elastase, fosfolipase A2 e carboxipeptidases, resultando em autodigestão celular, necrose gordurosa periacinar e liberação explosiva de mediadores inflamatórios sistêmicos (TNF-alfa, IL-1beta, IL-6 e PAF). Como o pâncreas felino localiza-se em íntimo contato anatômico com o duodeno descendente e o trajeto extra-hepático do ducto colédoco, o extravasamento peripancreático dessas enzimas proteolíticas e citocinas induz vasculite local severa, saponificação da gordura mesentérica e edema transmural periduodenal e periductal. O ducto colédoco é mecanicamente comprimido em seu segmento terminal por edema e fibrose peripancreática, gerando obstrução biliar extra-hepática secundária, colestase e colangite mecânica reativa.',
+      'Modelo 2 — Pancreatite primária e extensão por efeito vizinho:\n' +
+      '- Gatilho acinar e autodigestão celular:\n' +
+      '  - Fusão anormal de grânulos de zimogênio com lisossomos ricos em catepsina B cliva o tripsinogênio precocemente em tripsina ativa dentro dos ácinos.\n' +
+      '  - A cascata autocatalítica ativa elastase, fosfolipase A2 e carboxipeptidases, sobrepujando os inibidores endógenos (PSTI/SPINK1).\n' +
+      '- Liberação tempestuosa de mediadores inflamatórios:\n' +
+      '  - Produção local e sistêmica de TNF-alfa, IL-1beta, IL-6 e PAF gerando necrose e saponificação peripancreática.\n' +
+      '- Repercussões periduodenais e colestáticas contíguas:\n' +
+      '  - Como o pâncreas felino repousa em íntima contiguidade com o duodeno descendente e colédoco extra-hepático, a peritonite enzimática focal induz vasculite e edema transmural.\n' +
+      '  - O ducto colédoco é mecanicamente comprimido em seu segmento terminal por edema e fibrose peripancreática, gerando obstrução biliar extra-hepática secundária, colestase e colangite mecânica reativa.',
 
     modeloImunomediadoEHomingLinfocitario:
-      'Nos quadros crônicos caracterizados por colangite linfocítica e enterite linfoplasmocitária (LPE), a patogenia transcende a agressão bacteriana direta e repousa sobre uma quebra persistente da homeostase imunológica mucosal. Linfócitos T naive sensibilizados nas placas de Peyer intestinais contra antígenos luminais da microbiota desequilibrada (disbiose) adquirem moléculas de adesão de superfície específicas, predominantemente a integrina alfa4beta7 e o receptor de quimiocina CCR9. Essas células T de memória circulantes reconhecem constitutivamente a molécula de adesão celular de endereçamento mucosal 1 (MAdCAM-1) expressa tanto no endotélio vascular dos vilos intestinais quanto nos capilares dos tratos portais hepáticos e parênquima pancreático. Esse tráfego celular desregulado (homing linfocitário compartilhado) promove o recrutamento contínuo de clones de linfócitos T auxiliares (Th1 e Th17) e citotóxicos (CD3+), desencadeando inflamação linfocitária crônica imuno-orquestrada concomitante nas mucosas do intestino, colângios e ductos pancreáticos.',
+      'Modelo 3 — Homing linfocitário imunomediado e desregulação de mucosas:\n' +
+      '- Quebra de tolerância imune na barreira entérica:\n' +
+      '  - Linfócitos T naive sensibilizados nas placas de Peyer intestinais contra antígenos luminais da microbiota desbiótica.\n' +
+      '- Moléculas de tráfego celular específico:\n' +
+      '  - Expressão de integrina alfa4beta7 e receptor de quimiocina CCR9 em linfócitos T de memória circulantes.\n' +
+      '  - Reconhecimento constitutivo da molécula de adesão MAdCAM-1 no endotélio dos vilos intestinais, tratos portais hepáticos e rede microvascular pancreática.\n' +
+      '- Inflamação imuno-orquestrada tripartite:\n' +
+      '  - Recrutamento compartilhado de clones de linfócitos T auxiliares (Th1 e Th17) e citotóxicos (CD3+).\n' +
+      '  - Estabelecimento crônico de colangite linfocítica, enterite linfoplasmocitária (LPE) e pancreatite intersticial linfocítica com resposta sustentada a corticosteroides.',
 
     terceiraPernaEnteropatiaLpeVsLgitl:
-      'A consolidação da terceira perna da tríade felina foi substancialmente redefinida com a publicação do Consenso ACVIM sobre Enteropatia Crônica Felina (Marsilio et al., 2023, JVIM). O conceito reducionista e simplista de "doença inflamatória intestinal" (IBD) foi formalmente substituído pela categorização de enteropatias crônicas (feline chronic enteropathy - CE), estabelecendo o desafio crítico da diferenciação entre a enterite linfoplasmocitária benigna (LPE) e a principal neoplasia gastrointestinal felina: o linfoma alimentar de células T de baixo grau (low-grade intestinal T-cell lymphoma - LGITL, ou linfoma de pequenas células). No paciente felino com tríade, a apresentação clínica (vômitos crônicos, perda de peso, hiporexia e diarreia), os achados laboratoriais (hipocobalaminemia, aumento de enzimas hepáticas e fPLI) e a ultrassonografia (espessamento difuso de alças intestinais) exibem uma zona de sobreposição diagnóstica extrema entre LPE e LGITL. O Consenso ACVIM 2023 estabelece que biópsias endoscópicas superficiais de mucosa são insuficientes e frequentemente falham em capturar o linfoma, preconizando biópsias cirúrgicas transmurais de espessura total aliadas a painéis de imuno-histoquímica (CD3 para células T e CD20 para células B) e ensaios moleculares de clonalidade (PARR - PCR for Antigen Receptor Rearrangement) para identificação de populações clonais neoplásicas monoclonais de rearranjo do gene TCR-gamma.',
+      'Terceira perna — Enteropatia crônica felina: LPE versus LGITL (Consenso ACVIM 2023):\n' +
+      '- Superação do conceito simplista de IBD:\n' +
+      '  - O Consenso ACVIM (Marsilio et al., 2023) estabeleceu a classificação moderna de enteropatia crônica felina (CE), destacando a indistinguibilidade clínica inicial entre a enterite linfoplasmocitária (LPE) e o linfoma alimentar de células T de baixo grau (LGITL / pequenas células).\n' +
+      '- Ampla sobreposição de manifestações clínicas e laboratoriais:\n' +
+      '  - Vômitos crônicos, perda ponderal, hiporexia, diarreia, hipocobalaminemia severa e aumento de enzimas hepáticas e Spec fPL ocorrem identicamente em ambas as entidades.\n' +
+      '- Insuficiência das biópsias superficiais endoscópicas:\n' +
+      '  - Biópsias endoscópicas de mucosa frequentemente falham em capturar o linfoma restrito à lâmina própria profunda e camada muscular.\n' +
+      '- Padrão-ouro propedêutico recomendado:\n' +
+      '  - Biópsias cirúrgicas transmurais de espessura total aliadas a painéis de imuno-histoquímica (CD3 para células T e CD20 para células B) e ensaios moleculares de clonalidade por PARR (rearranjo clonal do gene TCR-gamma).',
 
     tabelaDiferenciacaoLpeVsLgitl: {
       kind: 'clinicalTable',
@@ -322,10 +415,27 @@ export const triadeFelinaSeed: DiseaseRecord = {
     },
 
     fisiologiaPancreaticaCobalaminaIF:
-      'A compreensão da fisiologia da vitamina B12 (cobalamina) no gato representa um marco na medicina felina. Em cães e seres humanos, o fator intrínseco (glicoproteína carreadora essencial para a absorção ileal de cobalamina mediada por receptores cubam) é sintetizado conjuntamente pelas células parietais da mucosa gástrica e pelos ácinos pancreáticos. No felino doméstico, a totalidade absoluta do fator intrínseco é sintetizada e secretada exclusivamente pelas células acinares exócrinas do pâncreas. Portanto, qualquer processo inflamatório que comprometa a massa acinar pancreática (pancreatite aguda necrosante ou pancreatite crônica com fibrose acinar residual) debela prontamente a secreção de fator intrínseco. Paralelamente, como a absorção do complexo cobalamina-fator intrínseco ocorre de forma estrita no íleo terminal, a enteropatia crônica associada lesa os enterócitos ileais e diminui a expressão dos receptores de cubilina. O resultado dessa dupla falência (produção pancreática deficiente + má absorção ileal) é uma hipocobalaminemia severa, precoce e refratária em quase todos os gatos acometidos pela tríade felina, perpetuando atrofia de vilosidades intestinais, disfunção mitocondrial e anorexia metabólica.',
+      'Fisiologia da cobalamina (vitamina B12) e síntese exclusiva de fator intrínseco:\n' +
+      '- Particularidade biológica exclusiva da espécie felina:\n' +
+      '  - Diferente de cães e seres humanos (que produzem fator intrínseco no estômago e pâncreas), no gato 100% do fator intrínseco é produzido exclusivamente pelas células acinares exócrinas do pâncreas.\n' +
+      '- Dupla falência no complexo da tríade:\n' +
+      '  - Destruição acinar (pancreatite aguda ou crônica) debela prontamente a secreção de fator intrínseco carreador.\n' +
+      '  - A enteropatia crônica associada lesa os enterócitos ileais e diminui a expressão dos receptores de cubilina/cubam.\n' +
+      '- Consequências clínicas da hipocobalaminemia (< 150-290 ng/L):\n' +
+      '  - Atrofia e aplainamento de vilosidades intestinais, disfunção enzimática mitocondrial, falha na regeneração da mucosa entérica e anorexia metabólica refratária.',
 
     acuraciaDiagnosticaSpecFplConsenso:
-      'O diagnóstico da pancreatite na espécie felina permaneceu obscurecido por décadas em decorrência da absoluta ineficácia da mensuração de amilase e lipase convencionais, enzimas que não possuem sensibilidade nem especificidade para o pâncreas do gato. O Consenso ACVIM de Pancreatite Felina (Forman et al., 2021) e o estudo contemporâneo de validação clínica de Forman et al. (2024, JVDI) consolidaram a imunorreatividade da lipase pancreática felina (fPLI, comercialmente mensurada como Spec fPL) como o teste não invasivo de escolha. Em gatos com pancreatite confirmada por histopatologia, o ponto de corte >= 5,4 ug/L exibe sensibilidade de 79,4%, especificidade de 79,7%, valor preditivo positivo de 69,0% e valor preditivo negativo de 87,0%. Para a zona cinzenta (valores entre 3,5 e 5,3 ug/L), recomenda-se a repetição em 48 a 72 horas e correlação com a ultrassonografia. No entanto, o clínico deve atentar para as limitações ultrassonográficas: a sensibilidade do ultrassom para detectar pancreatite felina varia entre modestos 11% a 67% na literatura mundial, o que significa que um exame ultrassonográfico absolutamente normal NÃO descarta pancreatite no paciente com suspeita clínica e Spec fPL alterado. Por fim, o Consenso ACVIM 2021 enfatiza uma verdade clínica angular: a pancreatite felina é primariamente uma inflamação asséptica e estéril; a prescrição empírica rotineira de antimicrobianos para pancreatite isolada sem colangite neutrofílica documentada é incorreta e contraria as diretrizes internacionais.',
+      'Acurácia diagnóstica do Spec fPL e limitações ultrassonográficas (Consenso ACVIM 2021/2024):\n' +
+      '- Ineficácia de amilase e lipase convencionais:\n' +
+      '  - Amilase e lipase séricas totais não possuem nenhuma sensibilidade nem especificidade para o pâncreas felino.\n' +
+      '- Performance diagnóstica da lipase pancreática felina específica (Spec fPL / fPLI):\n' +
+      '  - Ponto de corte >= 5,4 ug/L (Forman et al., 2021 e 2024): sensibilidade de 79,4%, especificidade de 79,7%, PPV de 69,0% e NPV de 87,0%.\n' +
+      '  - Zona cinzenta (3,5 a 5,3 ug/L): requer monitoramento e repetição seriada em 48 a 72 horas com correlação ultrassonográfica.\n' +
+      '- Limitações da sensibilidade ultrassonográfica:\n' +
+      '  - A sensibilidade do ultrassom na pancreatite felina varia entre modestos 11% e 67%.\n' +
+      '  - REGRA DE OURO: um exame ultrassonográfico absolutamente normal NÃO descarta pancreatite no paciente com suspeita clínica e Spec fPL alterado.\n' +
+      '- Caráter estéril da pancreatite felina primária:\n' +
+      '  - O Consenso ACVIM 2021 enfatiza que a pancreatite felina é primariamente uma inflamação asséptica e estéril; a prescrição empírica rotineira de antimicrobianos para pancreatite isolada sem colangite neutrofílica documentada é incorreta e contraria as diretrizes internacionais.',
   },
 
   clinicalSignsPathophysiology: [
@@ -524,7 +634,15 @@ export const triadeFelinaSeed: DiseaseRecord = {
 
   treatment: {
     paradigmaTerapeuticoFenotipoDominante:
-      'O tratamento contemporâneo da tríade felina exige uma mudança de paradigma essencial: a rejeição formal do dogma reducionista "tríade = corticoide imediato". Como a tríade congrega componentes patológicos com demandas farmacológicas antagônicas (por exemplo, a colangite bacteriana neutrofílica requer antibioticoterapia bactericida e contraindica imunossupressão, enquanto a colangite linfocítica e a LPE dependem de glicocorticoides), o plano terapêutico deve ser obrigatoriamente individualizado e direcionado pelo fenótipo clínico dominante no momento da admissão. Prescrever corticosteroides em doses imunossupressoras para um gato com infecção bacteriana ativa na árvore biliar induz sepse fulminante e choque distributivo fatal. Dessa forma, a primeira etapa do médico veterinário consiste em identificar se o quadro apresenta sinais infecciosos supurativos (febre, neutrofilia tóxica, bile bacteriana) ou se é dominado por inflamação crônica imunomediada (colangite linfocítica, LPE ou LGITL), estabilizando as disfunções agudas antes de introduzir agentes imunomoduladores.',
+      'Mudança de paradigma — Tratamento direcionado pelo fenótipo clínico dominante:\n' +
+      '- Rejeição formal do dogma reducionista:\n' +
+      '  - VETO FORMAL ao axioma "tríade felina = corticoide imediato".\n' +
+      '  - A tríade congrega componentes patológicos com demandas farmacológicas antagônicas: colangite neutrofílica bacteriana exige antibioticoterapia e contraindica imunossupressão; colangite linfocítica e LPE dependem de glicocorticoides.\n' +
+      '- Risco crítico da imunossupressão precoce inadequada:\n' +
+      '  - Prescrever corticosteroides em doses imunossupressoras para um gato com infecção bacteriana ativa na árvore biliar induz sepse fulminante e choque distributivo fatal.\n' +
+      '- Etapas sequenciais da decisão clínica:\n' +
+      '  - Passo 1: Determinar se o quadro apresenta sinais infecciosos supurativos (febre, neutrofilia tóxica com desvio à esquerda, bile purulenta) ou inflamação crônica imunomediada (linfocítica, LPE ou LGITL).\n' +
+      '  - Passo 2: Estabilizar disfunções agudas (desidratação, dor, choque, êmese) antes de qualquer agente imunomodulador.',
 
     tabelaAbordagemFarmacoterapeuticaFenotipica: {
       kind: 'clinicalTable',
@@ -570,25 +688,88 @@ export const triadeFelinaSeed: DiseaseRecord = {
     },
 
     terapiaAntimicrobianaRacionalColangite:
-      'A escolha racional de antimicrobianos na tríade felina fundamenta-se estritamente na microbiologia comprovada da colangite neutrofílica. O estudo seminal de Center et al. (2022) em 168 felinos demonstrou que 69% dos casos abrigavam infecção bacteriana ativa, predominantemente enterobactérias coliformes (Escherichia coli), cocos Gram-positivos (Enterococcus faecalis e Streptococcus spp.) e anaeróbios obrigatórios (Bacteroides spp. e Clostridium spp.). Por essa razão, a antibioticoterapia empírica inicial de largo espectro deve contemplar boa penetração tecidual hepatobiliar e atividade bactericida contra Gram-positivos, Gram-negativos e anaeróbios. O protocolo clássico de primeira escolha compreende amoxicilina com clavulanato de potássio (12,5 a 20 mg/kg VO ou SC a cada 12 horas), que pode ser associada a uma fluoroquinolona de segurança comprovada em felinos (marbofloxacina na dose de 2 mg/kg VO a cada 24 horas, evitando-se expressamente o uso de enrofloxacina em doses superiores a 5 mg/kg pelo risco iminente de retinopatia e cegueira irreversível). Alternativamente, o metronidazol (10 a 15 mg/kg VO ou IV a cada 12 horas) confere excelente cobertura para anaeróbios estritos. A duração do tratamento antimicrobiano na colangite neutrofílica bacteriana deve ser estendida: recomenda-se um curso clínico mínimo de 4 a 8 semanas, sob reavaliações ultrassonográficas e laboratoriais, visto que suspensões precoces induzem recidiva supurativa bacteriana fulminante. Reitera-se: a pancreatite felina isolada é estéril e não justifica uso de antibióticos.',
+      'Terapia antimicrobiana racional na colangite neutrofílica:\n' +
+      '- Microbiologia de referência (Center et al., 2022):\n' +
+      '  - Em 168 felinos avaliados, 69% apresentavam infecção bacteriana ativa na bile.\n' +
+      '  - Isolados frequentes: Escherichia coli, Enterococcus faecalis, Streptococcus spp., Bacteroides spp. e Clostridium spp.\n' +
+      '- Protocolo empírico inicial de primeira escolha:\n' +
+      '  - Amoxicilina com clavulanato de potássio: 12,5 a 20 mg/kg VO ou SC a cada 12 horas.\n' +
+      '  - Associação com fluoroquinolona: marbofloxacina na dose de 2 mg/kg VO a cada 24 horas.\n' +
+      '  - ALERTA FARMACOLÓGICO: evitar expressamente enrofloxacina em doses > 5 mg/kg pelo risco iminente de retinopatia e cegueira irreversível no gato.\n' +
+      '  - Alternativa para anaeróbios estritos: metronidazol na dose de 10 a 15 mg/kg VO ou IV a cada 12 horas.\n' +
+      '- Duração do tratamento e monitoramento:\n' +
+      '  - Curso clínico prolongado: mínimo de 4 a 8 semanas com reavaliações ultrassonográficas e laboratoriais seriadas.\n' +
+      '- REGRA DE OURO terapêutica:\n' +
+      '  - A pancreatite felina primária isolada é asséptica e estéril; o uso de antibióticos sem colangite neutrofílica documentada é contraindicado.',
 
     imunossupressaoSeguraColangiteLinfociticaELPE:
-      'Nos pacientes com fenótipo imunomediado comprovado (colangite linfocítica, enterite linfoplasmocitária ou após a eliminação microbiológica documentada da infecção bacteriana), a imunossupressão constitui o esteio curativo. A prednisolona oral é o fármaco de primeira linha na dose inicial de 1 a 2 mg/kg a cada 24 horas (ou dividida em duas tomadas de 1 mg/kg q12h). Em felinos, deve-se prescrever obrigatoriamente a prednisolona ativa e não a prednisona, pois a conversão hepática de prednisona em prednisolona na espécie é errática e incompleta. A dose de ataque é sustentada até a remissão clínica e bioquímica (normalização de enzimas hepáticas e remissão de vômitos e diarreia, tipicamente em 2 a 4 semanas), procedendo-se a um desmame gradual e programado de 25% a 50% da dose a cada 2 a 3 semanas ao longo de 2 a 4 meses, buscando a menor dose em dias alternados capaz de sustentar a remissão. Se o paciente apresentar comorbidades que contraindiquem esteroides sistêmicos em altas doses (como diabetes mellitus concomitante ou cardiomiopatia hipertrófica subclínica), a budesonida (1 mg/gato VO a cada 24 horas) representa excelente alternativa para a perna intestinal, atuando topicamente na mucosa com extenso metabolismo de primeira passagem hepática (~90%). Nos casos de linfoma intestinal de células T de baixo grau (LGITL), a prednisolona deve ser invariavelmente associada ao quimioterápico alquilante oral clorambucil (2 mg/gato VO a cada 48 horas em gatos > 3 kg, ou 20 mg/m2 VO a cada 14 dias), protocolo validado com sobrevida mediana superior a 2 anos e excelente tolerabilidade clínica.',
+      'Imunossupressão segura na colangite linfocítica, LPE e LGITL:\n' +
+      '- Indicações para introdução de imunomodulação:\n' +
+      '  - Pacientes com colangite linfocítica, enterite linfoplasmocitária (LPE) ou após eliminação bacteriana documentada.\n' +
+      '- Protocolo padrão com prednisolona:\n' +
+      '  - Prednisolona ativa: dose de ataque de 1 a 2 mg/kg VO a cada 24 horas (ou 1 mg/kg q12h).\n' +
+      '  - ALERTA FARMACOLÓGICO: prescrever obrigatoriamente prednisolona ativa e não prednisona, cuja conversão hepática no felino é errática.\n' +
+      '  - Desmame gradual: redução de 25% a 50% da dose a cada 2 a 3 semanas ao longo de 2 a 4 meses até a menor dose em dias alternados.\n' +
+      '- Alternativa tópica entérica:\n' +
+      '  - Budesonida (1 mg/gato VO a cada 24 horas): opção preferencial na presença de comorbidades (diabetes mellitus, cardiomiopatia) com extenso metabolismo de primeira passagem hepática (~90%).\n' +
+      '- Protocolo oncológico validado para LGITL:\n' +
+      '  - Prednisolona (1 a 2 mg/kg VO q24h) associada obrigatoriamente a clorambucil (2 mg/gato VO q48h ou 20 mg/m2 a cada 14 dias), proporcionando sobrevida mediana > 2 anos.',
 
     nutricaoEnteralPrecoceEVetoAoJejum:
-      'A abordagem nutricional na tríade felina enterra definitivamente o antigo preceito da medicina canina de "colocar o pâncreas em repouso por jejum absoluto". Em felinos, o jejum calórico prolongado desencadeia a mobilização maciça de triglicerídeos periféricos do tecido adiposo para o fígado, induzindo lipidose hepática secundária (hepatic lipidosis) em questão de poucos dias, condição com taxa de letalidade superior a 50%. A nutrição enteral precoce mantém a integridade da barreira mucosal gastrointestinal, previne atrofia vilositária e bloqueia a translocação de enterobactérias luminais para a circulação portal. A alimentação deve ser introduzida nas primeiras 24 horas de internamento, tão logo o choque e a desidratação sejam corrigidos. Se o paciente persistir em anorexia ou hiporexia (< 50% da necessidade energética de repouso - RER = 70 x peso corporal^0,75) por mais de 24 a 48 horas, o médico veterinário não deve hesitar na instalação de uma sonda de alimentação enteral (sonda nasoesofágica para suporte a curto prazo de 3 a 5 dias no hospital, ou sonda de esofagostomia para suporte prolongado ambulatorial de semanas a meses). A dieta deve ser hiperdigestível, com teores moderados a elevados de proteína e proteína hidrolisada ou monoproteica nova para modular a hipersensibilidade entérica. Ressalta-se que a restrição severa de lipídios ("dietas low-fat") preconizada em cães NÃO encontra suporte científico em felinos com pancreatite, devendo ser priorizada a densidade calórica e a palatabilidade.',
+      'Nutrição enteral precoce e veto absoluto ao jejum pancreático:\n' +
+      '- VETO FORMAL ao jejum pancreático em gatos:\n' +
+      '  - O antigo preceito de repouso alimentar absoluto canino é proscrito na espécie felina.\n' +
+      '  - Privação alimentar > 24 a 48 horas deflagra lipidose hepática secundária grave por mobilização maciça de ácidos graxos livres, cursando com letalidade > 50%.\n' +
+      '- Janela de intervenção nutricional ativa:\n' +
+      '  - Iniciar alimentação nas primeiras 24 horas após correção da desidratação e choque.\n' +
+      '  - Se a ingestão voluntária for < 50% da RER (70 x peso corporal^0,75) por 24-48 horas: instalação imperativa de sonda enteral.\n' +
+      '- Modalidades de sondas enterais:\n' +
+      '  - Sonda nasoesofágica: suporte hospitalar imediato de curto prazo (3 a 5 dias).\n' +
+      '  - Sonda de esofagostomia: suporte prolongado domiciliar (semanas a meses) para manejo ambulatorial.\n' +
+      '- Perfil nutricional da dieta:\n' +
+      '  - Dietas úmidas hiperdigestíveis, com teor proteico moderado a elevado (proteína hidrolisada ou monoproteica nova).\n' +
+      '  - Dietas ultra-low-fat não possuem justificativa científica na pancreatite felina; priorizar densidade calórica e palatabilidade.',
 
     reavaliacaoDaMetoclopramidaEProcineticos:
-      'O manejo da náusea e dismotilidade exige precisão farmacológica. Durante anos circulou na medicina felina o mito infundado de que a metoclopramida seria contraindicada na pancreatite por suposto agravamento do fluxo sanguíneo microvascular. O Consenso ACVIM de Pancreatite Felina (Forman et al., 2021) desmistificou expressamente essa assertiva, confirmando que a metoclopramida pode ser utilizada com total segurança como agente procinético gastroduodenal na dose de 0,2 a 0,5 mg/kg SC ou VO a cada 8 horas (ou em infusão contínua CRI de 1 a 2 mg/kg/dia), sendo de grande valia no combate ao íleo paralítico peripancreático e à gastroparesia reflexa, desde que descartada obstrução mecânica luminal total. No entanto, para o controle central e periférico do vômito e da náusea marcante, o citrato de maropitant (1 mg/kg SC, IV ou VO a cada 24 horas) permanece como o antiemético de primeira linha indispensável, exercendo antagonismo potente nos receptores neurocinina 1 (NK-1) tanto na CRTZ e centro emético quanto nas fibras sensoriais viscerais periféricas, propiciando adicionalmente efeito analgésico visceral coadjuvante. Em casos de náusea refratária com ptialismo e recusa alimentar, preconiza-se a associação sinérgica com a ondansetrona (antagonista serotoninérgico 5-HT3 na dose de 0,5 a 1,0 mg/kg IV ou VO a cada 8 a 12 horas).',
+      'Manejo da náusea, vômito e desmistificação da metoclopramida:\n' +
+      '- Desmistificando a metoclopramida (Consenso ACVIM 2021):\n' +
+      '  - O suposto agravamento da perfusão microvascular foi categoricamente refutado.\n' +
+      '  - Posologia procinética segura: 0,2 a 0,5 mg/kg SC/VO a cada 8 horas (ou infusão contínua CRI de 1 a 2 mg/kg/dia) para combate a íleo paralítico e gastroparesia, desde que descartada obstrução mecânica luminal.\n' +
+      '- Antiemético padrão-ouro de primeira linha:\n' +
+      '  - Citrato de maropitant: 1 mg/kg SC, IV ou VO a cada 24 horas.\n' +
+      '  - Mecanismo: antagonismo neurocinina 1 (NK-1) central e periférico, conferindo controle de náusea e analgesia visceral coadjuvante.\n' +
+      '- Terapia combinada em náusea refratária:\n' +
+      '  - Ondansetrona: antagonista 5-HT3 na dose de 0,5 a 1,0 mg/kg IV ou VO a cada 8 a 12 horas, eficaz no alívio de ptialismo e recusa alimentar.',
 
     fluidoterapiaAnalgesiaMultimodalOpioide:
-      'A restauração hemodinâmica rápida com fluidoterapia balanceada é o pilar vital mais crítico na fase de acolhimento emergencial da tríade. A isquemia e hipoperfusão do leito esplâncnico aceleram a necrose tecidual pancreática e a translocação bacteriana intestinal. Recomendam-se soluções cristaloides balanceadas isotônicas (Ringer com Lactato ou Plasmalyte) tituladas para restaurar parâmetros dinâmicos de perfusão (tempo de preenchimento capilar, cor de mucosas, frequência cardíaca, lactato sérico e pressão arterial média > 60-70 mmHg). O monitoramento do ionograma é imperativo: a suplementação parenteral de cloreto de potássio (KCl) deve ser calculada e administrada no fluido intravenoso sem ultrapassar 0,5 mEq/kg/hora, corrigindo a hipocalemia que agrava o íleo paralítico e a fraqueza muscular. A analgesia multimodal é obrigatória e inegociável em todo gato com tríade felina, uma vez que a dor visceral é intensa e desencadeia anorexia e estresse metabólico catabólico. A buprenorfina (agonista mu parcial / antagonista kappa na dose de 0,01 a 0,03 mg/kg por via transmucosa oral/sublingual, SC ou IV a cada 6 a 8 horas) é o fármaco analgésico de eleição pela excelente absorção transmucosa felina, estabilidade hemodinâmica e ausência de sedação profunda. Em pacientes com dor excruciante ou descompensação aguda grave, a metadona (agonista mu puro com atividade antagonista NMDA na dose de 0,1 a 0,2 mg/kg SC, IM ou IV a cada 4 a 6 horas) proporciona alívio analgésico superior. Para a dor crônica neuropática ambulatorial, a gabapentina (5 a 10 mg/kg VO a cada 8 a 12 horas) é útil.',
+      'Fluidoterapia balanceada e analgesia multimodal:\n' +
+      '- Metas da fluidoterapia de ressuscitação e manutenção:\n' +
+      '  - Soluções cristaloides balanceadas (Ringer com Lactato ou Plasmalyte) tituladas para restaurar perfusão microvascular esplâncnica e prevenir necrose acinar.\n' +
+      '  - Suplementação sistemática de KCl intravenoso conforme ionograma, sem exceder 0,5 mEq/kg/hora para evitar arritmias.\n' +
+      '- Analgesia multimodal obrigatória:\n' +
+      '  - Buprenorfina (primeira linha): 0,01 a 0,03 mg/kg via transmucosa oral/sublingual, SC ou IV a cada 6 a 8 horas (excelente absorção transmucosa felina sem sedação excessiva).\n' +
+      '  - Metadona (dor intensa ou descompensação aguda): 0,1 a 0,2 mg/kg SC, IM ou IV a cada 4 a 6 horas (agonista mu puro com antagonismo NMDA).\n' +
+      '  - Gabapentina (dor crônica visceral): 5 a 10 mg/kg VO a cada 8 a 12 horas em pacientes ambulatoriais.',
 
     suplementacaoCobalaminaOralVsParenteral:
-      'A reposição de cobalamina (vitamina B12) constitui uma exigência biológica primária na tríade felina, fundamentada na carência exclusiva de fator intrínseco e na má absorção ileal concomitante. Níveis deprimidos de cobalamina promovem atrofia de enterócitos, desaceleram o reparo tecidual pancreático, perpetuam a anorexia e inibem o metabolismo da metionina. Historicamente, preconizava-se a reposição puramente parenteral injetável. O protocolo clássico de cianocobalamina parenteral estabelece: 250 microgramas por gato por via subcutânea (SC) uma vez por semana durante 6 semanas consecutivas, seguida de 250 ug a cada 14 dias por mais 6 semanas, e uma dose de reavaliação 30 dias após. Contudo, os estudos prospectivos seminais de Toresson et al. (2016 e 2018, JFMS) transformaram a prática clínica ao provar que a suplementação oral diária de cianocobalamina na dose de 250 ug/gato a cada 24 horas junto ao alimento é perfeitamente equivalente e tão eficaz quanto a via subcutânea em felinos com enteropatia e pancreatite crônica. A absorção oral de doses suprafisiológicas ocorre por transporte transcelular passivo não mediado por fator intrínseco, conferindo imensa comodidade ao tutor e reduzindo o estresse de injeções frequentes.',
+      'Suplementação de cobalamina (vitamina B12) — Oral versus parenteral:\n' +
+      '- Justificativa metabólica inegociável:\n' +
+      '  - A produção exclusiva de fator intrínseco no pâncreas felino e a má absorção ileal concomitante provocam esgotamento precoce de vitamina B12.\n' +
+      '- Protocolo parenteral clássico:\n' +
+      '  - Cianocobalamina: 250 ug por gato via subcutânea (SC) semanalmente por 6 semanas, seguido de 250 ug a cada 14 dias por 6 semanas.\n' +
+      '- Protocolo oral validado (Toresson et al., 2016 e 2018 - JFMS):\n' +
+      '  - Cianocobalamina oral: 250 ug por gato VO a cada 24 horas junto ao alimento.\n' +
+      '  - A absorção passiva suprafisiológica independe de fator intrínseco e atinge níveis séricos e eficácia perfeitamente equivalentes à via injetável, com conforto cat-friendly superior.',
 
     terapiaAdjuvanteAcidoUrsodesoxicolicoSAMe:
-      'A hepatoproteção e a modulação da dinâmica biliar desempenham papel adjuvante crucial na estabilização dos colângios e hepatócitos. O ácido ursodesoxicólico (UDCA, Ursacol) na dose de 10 a 15 mg/kg VO a cada 24 horas (ou fracionado em 5 a 7,5 mg/kg q12h), administrado preferencialmente junto ao alimento, atua como colerético hidrofílico, reduz a litogenicidade e viscosidade da bile, inibe a apoptose de colangiócitos, desloca ácidos biliares hidrofóbicos hepatotóxicos e exerce efeito imunomodulador anti-inflamatório sobre o epitélio biliar. Alerta imperativo: o UDCA é FORMALMENTE CONTRAINDICADO na presença de obstrução mecânica extra-hepática completa comprovada da árvore biliar antes de sua descompressão, sob risco de hiperpressão e ruptura vesicular. Como agentes citoprotetores e antioxidantes hepáticos, prescreve-se a S-adenosilmetionina (SAMe na dose de 200 mg/gato VO a cada 24 horas com estômago vazio, administrada com 2 a 3 mL de água para evitar retenção esofágica) associada à silibina/silimarina, restaurando os estoques de glutationa intracelular dos hepatócitos espoliados pela inflamação crônica.',
+      'Terapia adjuvante — Modulação biliar e hepatoproteção celular:\n' +
+      '- Ácido ursodesoxicólico (UDCA):\n' +
+      '  - Posologia: 10 a 15 mg/kg VO a cada 24 horas (ou 5 a 7,5 mg/kg q12h) junto ao alimento.\n' +
+      '  - Efeitos: colerético hidrofílico, redução da viscosidade biliar, inibição de apoptose de colangiócitos e proteção do epitélio biliar.\n' +
+      '  - CONTRAINDICAÇÃO FORMAL: proibido em obstrução mecânica extra-hepática total comprovada antes de descompressão cirúrgica, sob risco de ruptura de vesícula biliar.\n' +
+      '- Antioxidantes e hepatoprotetores celulares:\n' +
+      '  - S-adenosilmetionina (SAMe): 200 mg por gato VO a cada 24 horas em jejum (com 2 a 3 mL de água para prevenir retenção esofágica).\n' +
+      '  - Silibina / silimarina: restauração dos estoques de glutationa intracelular nos hepatócitos espoliados pela inflamação crônica.',
 
     protocoloPlantaoTriadePassoAPasso: [
       'Passo 1: Acolhimento cat-friendly imediato; avaliação de choque, perfusão (mucosas, TPC), desidratação, dor epigástrica e pesagem corporal rigorosa.',
@@ -619,28 +800,88 @@ export const triadeFelinaSeed: DiseaseRecord = {
 
   complications: {
     lipidoseHepaticaSecundariaAnorexia:
-      'A complicação metabólica aguda mais letal na tríade felina. O estado de hiporexia sustentada ou anorexia absoluta por período superior a 24 a 48 horas promove a quebra acelerada de triglicerídeos periféricos com liberação maciça de ácidos graxos livres na circulação portal. Os hepatócitos felinos, já espoliados pela colangite e pancreatite, são incapazes de processar a beta-oxidação mitocondrial e sintetizar VLDL de exportação em velocidade compatível, acumulando gotículas lipídicas intracelulares que comprimem os canalículos biliares e culminam em insuficiência hepática aguda grave e encefalopatia.',
+      'Lipidose hepática secundária à anorexia:\n' +
+      '- Mecanismo patogênico metabólico:\n' +
+      '  - Complicação metabólica aguda mais frequente e letal. A hiporexia ou anorexia absoluta por > 24 a 48 horas induz lipólise periférica acelerada e influxo maciço de ácidos graxos livres ao fígado.\n' +
+      '- Falência de exportação celular:\n' +
+      '  - Hepatócitos inflamados não conseguem realizar a beta-oxidação mitocondrial e sintetizar VLDL de exportação na mesma taxa de influxo.\n' +
+      '- Desfecho clínico grave:\n' +
+      '  - Acúmulo maciço de vacúolos lipídicos intracioplasmáticos que comprimem canalículos biliares, gerando insuficiência hepática aguda, icterícia fulminante e encefalopatia.',
+
     obstrucaoBiliarExtrahepaticaEColangiteSeptica:
-      'O espessamento inflamatório exuberante do ducto colédoco distal, agravado por edema peripancreático contíguo, tampões biliares hiperviscosos ou colelitíase, obstrui a passagem na papila duodenal maior. A estase biliar sob pressão extrema acarreta colangite supurativa ascendente fulminante, hidropisia vesicular sob tensão e risco de microperfuração ou ruptura transmural com peritonite biliar química e séptica de alta taxa de mortalidade.',
+      'Obstrução biliar extra-hepática (EHBO) e colangite séptica:\n' +
+      '- Mecanismos de oclusão mecânica:\n' +
+      '  - Edema parietal inflamatório grave do colédoco distal, efeito vizinho peripancreático, tampões biliares hiperviscosos ou colelitíase ocluindo a papila duodenal maior.\n' +
+      '- Consequências da hipertensão biliar:\n' +
+      '  - Estase retrógrada sob alta pressão, colangite bacteriana ascendente purulenta e hidropisia vesicular sob tensão.\n' +
+      '- Risco de ruptura e peritonite:\n' +
+      '  - Risco iminente de necrose transmural, microperfuração da vesícula ou ductos com peritonite biliar química e séptica de alta taxa de mortalidade.',
+
     cetoacidoseDiabeticaPancreatiteInduzida:
-      'A necrose acinar grave e a inflamação intersticial crônica disseminam-se para as ilhotas de Langerhans pancreáticas, lesando irreversivelmente a massa de células beta produtoras de insulina. A liberação maciça de hormônios contrarreguladores (glucagon, cortisol e catecolaminas) aliada à deficiência de insulina dispara a lipólise desenfreada e a cetogênese hepática, convertendo a pancreatite em diabetes mellitus de difícil regulação ou descompensação em cetoacidose diabética (CAD).',
+      'Diabetes mellitus secundário e cetoacidose diabética (CAD):\n' +
+      '- Extensão insular pancreática:\n' +
+      '  - A destruição acinar severa e a fibrose intersticial crônica atingem as ilhotas de Langerhans, acarretando perda irreversível de células beta produtoras de insulina.\n' +
+      '- Descompensação metabólica aguda:\n' +
+      '  - Deficiência de insulina aliada à liberação de hormônios contrarreguladores (cortisol, glucagon, catecolaminas) deflagra lipólise periférica desenfreada e cetogênese hepática acelerada.\n' +
+      '- Quadro clínico resultante:\n' +
+      '  - Diabetes de regulação complexa frequentemente evoluindo para cetoacidose diabética (CAD) com acidose metabólica grave.',
+
     hipocobalaminemiaGraveEAnemiaRefrataria:
-      'A carência de síntese de fator intrínseco pelas células acinares associada à má absorção mucosa nos enterócitos ileais inflamados induz esgotamento rápido das reservas hepáticas de cobalamina. Essa deficiência mitocondrial sistêmica perpetua atrofia de vilosidades intestinais, disfunção da hematopoiese com anemia normocítica hiporregenerativa, neuropatia periférica e falha no ganho de peso corporal mesmo sob suporte nutricional adequado.',
+      'Hipocobalaminemia severa e anemia não regenerativa:\n' +
+      '- Mecanismo do esgotamento vitamínico:\n' +
+      '  - Ausência de síntese de fator intrínseco pelas células acinares exócrinas combinada à lesão enterocítica ileal na enteropatia crônica associada.\n' +
+      '- Consequências sistêmicas:\n' +
+      '  - Esgotamento das reservas hepáticas de cobalamina gerando atrofia contínua de vilosidades intestinais e bloqueio da maturação medular.\n' +
+      '- Repercussões clínicas:\n' +
+      '  - Anemia normocítica normocrômica hiporregenerativa refratária, neuropatia periférica e falha no ganho de peso mesmo sob dieta calórica adequada.',
+
     trombosePortalECoagulopatiaConsuntiva:
-      'A tempestade inflamatória gerada pela liberação de elastase pancreática, fator de necrose tumoral e endotoxinas bacterianas na veia mesentérica e porta lesa o endotélio vascular hepático. Essa disfunção hemostática predispõe à trombose da veia porta ou ativação intravascular da coagulação com consumo desenfreado de fatores hemostáticos e plaquetas, culminando em coagulação intravascular disseminada (CID) e diátese hemorrágica terminal.',
+      'Trombose da veia porta e coagulopatia consuntiva (CID):\n' +
+      '- Agressão endotelial sistêmica:\n' +
+      '  - Tempestade inflamatória portal decorrente de enzimas proteolíticas (elastase), TNF-alfa e endotoxinas bacterianas na veia mesentérica e porta.\n' +
+      '- Formação de trombos vasculares:\n' +
+      '  - Lesão endotelial direta e estase vascular favorecendo trombose venosa esplâncnica ou da veia porta.\n' +
+      '- Coagulopatia intravascular disseminada:\n' +
+      '  - Consumo desenfreado de fatores de coagulação e plaquetas, culminando em CID com hemorragias espontâneas, petéquias e óbito distributivo.',
   },
 
   prevention: {
     manejoNutricionalContinuoHipoalergenico:
-      'Manutenção contínua de manejo alimentar exclusivo baseado em dietas comerciais terapêuticas com proteína amplamente hidrolisada ou fontes monoproteicas novas de altíssima digestibilidade, mitigando a apresentação de antígenos alimentares, prevenindo a estimulação do homing linfocitário mucosal e reduzindo episódios de dismotilidade ou refluxo duodenal.',
+      'Manejo nutricional contínuo hipoalergênico:\n' +
+      '- Pilares da dieta especializada:\n' +
+      '  - Alimentação exclusiva baseada em dietas comerciais terapêuticas com proteína amplamente hidrolisada ou fontes monoproteicas novas de altíssima digestibilidade.\n' +
+      '- Benefícios fisiológicos:\n' +
+      '  - Mitiga a apresentação de antígenos alimentares na lâmina própria intestinal, reduz a estimulação do homing linfocitário mucosal e previne episódios de dismotilidade ou refluxo duodenal.',
+
     suplementacaoProlongadaCobalamina:
-      'Administração contínua e sistemática de cianocobalamina oral (250 ug/gato VO q24h) ou injeções subcutâneas periódicas em qualquer felino com histórico de pancreatite ou enteropatia crônica, mantendo os níveis séricos acima da faixa mediana de referência para garantir a integridade da mucosa ileal e a função metabólica mitocondrial.',
+      'Suplementação contínua de cobalamina (vitamina B12):\n' +
+      '- Protocolo profilático de manutenção:\n' +
+      '  - Administração contínua de cianocobalamina oral (250 ug/gato VO q24h) ou injeções subcutâneas periódicas em pacientes com histórico de tríade ou enteropatia crônica.\n' +
+      '- Alvo biológico:\n' +
+      '  - Manutenção dos níveis séricos na faixa superior de referência para preservar a integridade da barreira ileal e sustentar a função mitocondrial metabólica.',
+
     evitacaoDeJejumPrecoceIntervencaoEnteral:
-      'Instituição imediata de protocolos preventivos de nutrição assistida (orientação aos tutores e clínicos) para que nenhum paciente felino com histórico de tríade ou pancreatite permaneça em privação alimentar por período superior a 24 horas, procedendo à introdução rápida de agentes orexígenos (mirtazapina transdérmica) ou sondas de alimentação.',
+      'Veto ao jejum e protocolo profilático de suporte enteral precoce:\n' +
+      '- REGRA VITAL aos tutores e equipe clínica:\n' +
+      '  - Nenhum felino com histórico de tríade, pancreatite ou colangite pode permanecer em jejum alimentar superior a 24 horas.\n' +
+      '- Intervenção precoce:\n' +
+      '  - Introdução imediata de orexígenos (mirtazapina transdérmica) ou colocação de sonda enteral (nasoesofágica ou de esofagostomia) aos primeiros sinais de hiporexia.',
+
     rastreamentoSeriadoUltrassomFplBilirrubina:
-      'Monitoramento ambulatorial preventivo a cada 3 a 6 meses compreendendo perfil enzimático hepatobiliar serado (ALT, GGT, bilirrubinas), dosagem quantitativa de Spec fPL e ultrassonografia abdominal de alta resolução para detecção subclínica de colangiectasias, espessamentos intestinais ou recidivas inflamatórias antes de descompensações agudas.',
+      'Rastreamento laboratorial e ultrassonográfico periódico:\n' +
+      '- Frequência recomendada:\n' +
+      '  - Avaliação preventiva ambulatorial seriada a cada 3 a 6 meses.\n' +
+      '- Painel de monitoramento preventivo:\n' +
+      '  - Perfil enzimático hepatobiliar (ALT, GGT, bilirrubinas total e frações), dosagem quantitativa de Spec fPL e ultrassonografia abdominal de alta resolução.\n' +
+      '- Objetivo clínico:\n' +
+      '  - Detecção precoce de recidivas subclínicas, ectasias ductais ou espessamentos parietais antes de descompensações clínicas agudas.',
+
     mitigacaoEstresseManejoCatFriendly:
-      'Adoção de práticas ambientais cat-friendly e redução multimodal do estresse no ambiente domiciliar (múltiplos recursos hídricos, bandejas sanitárias dimensionadas, difusores de feromônios sintéticos e locais de repouso elevados), uma vez que o estresse neuroendócrino afeta a barreira mucosal intestinal e o peristaltismo reflexo no gato.',
+      'Manejo ambiental cat-friendly e controle do estresse:\n' +
+      '- Práticas ambientais recomendadas:\n' +
+      '  - Recursos hídricos múltiplos (fontes de água corrente), bandejas sanitárias amplas e limpas, difusores de feromônios faciais sintéticos (Feliway) e nichos de repouso elevados.\n' +
+      '- Justificativa neuroendócrina:\n' +
+      '  - O estresse crônico desregula o eixo hipotálamo-hipófise-adrenal, compromete a permeabilidade da mucosa entérica e altera a motilidade gastroduodenal reflexa no gato.',
   },
 
   references: [

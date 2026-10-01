@@ -1,0 +1,853 @@
+
+===== Plumb PDF 477 =====
+450   Enrofloxacin
+target anti-Xa peak range of 0.5 to 1 IU/mL, extrapolated from hu-
+man literature, has been suggested for use in dogs and cats. The sug-
+gested thromboprophylactic range for horses is 0.1 – 0.2 IU/mL.15
+NOTE: To measure peak anti-Xa activity, sample at 2 hours post-
+dose for cats, 3 hours postdose for dogs, and 3 to 4 hours postdose 
+for horses.16 If an anti-Xa assay is not available, consider activated 
+clotting time, aPTT, thrombin generation, or viscoelastic tests to 
+monitor anticoagulant treatment.1,17
+Client Information 
+ ■ This medicine must be injected subcutaneously (under the skin). 
+Be sure you understand how to correctly give the injections. Sev-
+eral injections a day may be required, and treatment can be very 
+expensive. Administration of the injections may be painful for 
+your animal.
+ ■ Bleeding is not likely, but if it does occur, contact your veterinar-
+ian immediately.
+ ■ If your animal is very listless (lacking energy), appears to be hav-
+ing trouble breathing, trouble walking, or loses the use of its rear 
+legs, contact your veterinarian immediately, as it may mean blood 
+clots have formed.
+Chemistry/Synonyms
+A low molecular weight heparin (LMWH), enoxaparin sodium is 
+obtained by alkaline depolymerization of heparin derived from pork 
+intestinal mucosa. The average molecular weight is ≈4500 and rang-
+es from 3500 to 5500 (heparin sodium has a molecular weight of 
+≈12,000); 1 mg of enoxaparin is equivalent to 100 units of anti-factor 
+Xa.
+Enoxaparin sodium may also be known as Enoxaparinum natri -
+cum, PK-10169, RP-54563, Clexane®, Decipar®, Klexane®, Lovenox®, 
+Plaucina®, and Trombenox®.
+Storage/Stability 
+The commercially available injection should be stored at room 
+temperature (25°C [77°F]); excursions permitted to 15°C  to 30°C 
+(59°F-86°F).
+One study showed that diluting the 100 mg/mL commercially 
+available solution with sterile water to 20 mg/mL resulted in a prod-
+uct that was stable for 4 weeks when stored in a glass vial or in plastic 
+syringes at room temperature or refrigerated.18
+Compatibility/Compounding Considerations 
+Do not mix or coadminister enoxaparin with other medications.4
+Dosage Forms/Regulatory Status 
+VETERINARY-LABELED PRODUCTS : NONE 
+HUMAN-LABELED PRODUCTS : 
+Enoxaparin Sodium for Injection: 30 mg/0.3 mL, 40 mg/0.4 mL, 
+60 mg/0.6 mL, 80 mg/0.8 mL, 100 mg/1 mL, 120 mg/0.8 mL, and 
+150 mg/1 mL preservative-free in single-dose prefilled syringes;  
+300 mg/3 mL containing 15 mg/mL benzyl alcohol in 3 mL multi -
+dose vials; Lovenox®, generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+ 
+Enrofloxacin
+(en-roe-flox-a-sin) Baytril®, Zobuxa®
+Fluoroquinolone Antibiotic
+Prescriber Highlights 
+ ▶ Effective against a variety of pathogens except for anaerobes 
+ ▶ In dogs, oral bioavailability is greater and more predictable 
+than with ciprofloxacin.
+ ▶ When possible, use should be avoided in young, growing 
+animals because of the potential negative impact on cartilage 
+development. 
+ ▶ Caution is advised in patients with hepatic or renal insufficien-
+cy or dehydration. 
+ ▶ Higher doses (greater than 5 mg/kg/day) not recommended in 
+cats; may cause blindness
+ ▶ Adverse effects include GI distress, CNS stimulation, crystal-
+luria, or hypersensitivity. 
+ ▶ Oral administration to dogs and cats ideally should be on an 
+empty stomach (unless vomiting occurs).
+ ▶ Many potential drug interactions
+ ▶ FDA prohibits extra-label use in food animals.
+Uses/Indications 
+Enrofloxacin is FDA-approved for use in dogs (by oral 1 and IM 2 
+routes) and cats (oral2 only) for the management of bacterial infec -
+tions susceptible to enrofloxacin. Because of the feline dose restric -
+tion (5 mg/kg/day) and because better options are usually available 
+for cats, enrofloxacin is generally used in this species to treat only the 
+most susceptible bacterial infections or if an injectable fluoroquino-
+lone is needed and where enrofloxacin is the only injectable option.
+Enrofloxacin is FDA-approved for use in beef and nonlactating 
+dairy cattle for the treatment and control of bovine respiratory dis -
+ease (BRD).3 It is conditionally approved for the treatment of clinical 
+anaplasmosis associated with Anaplasma marginale in replacement 
+dairy heifers under 20 months of age, in all classes of beef cattle ex -
+cept beef calves less than 2 months of age, and in beef bulls of any age 
+that are intended for breeding. 4 Enrofloxacin is also FDA-approved 
+for use in pigs for the treatment and control of swine respiratory dis-
+ease (SRD) and as second-line therapy for the control of colibacillo-
+sis in groups or pens of weaned pigs.3
+The World Health Organization (WHO) has designated fluoro -
+quinolones as Critically Important, Highest Priority antimicrobials 
+for human medicine.5 The Office International des Epizooties (OIE) 
+has designated enrofloxacin as a Veterinary Critically Important An-
+timicrobial (VCIA) Agent in veterinary species.6
+Pharmacology/Actions 
+Enrofloxacin has broad-spectrum coverage. Enrofloxacin has good 
+activity against many gram-negative bacilli and cocci, including most 
+species and strains of Pseudomonas aeruginosa, Klebsiella spp, Esch-
+erichia coli, Enterobacter spp, Campylobacter spp, Shigella spp, Sal-
+monella spp, Aeromonas spp, Haemophilus spp, Proteus spp, Yersinia 
+spp, Serratia spp, and Vibrio spp. Other organisms that are generally 
+susceptible include Brucella spp, Chlamydia trachomatis, staphylo-
+cocci (including penicillinase-producing and methicillin-resistant 
+strains), Mycoplasma spp, and some Mycobacterium spp (but not the 
+etiologic agent for Johne’s disease). 
+Fluoroquinolones have variable activity against most streptococci 
+and are not usually recommended for use in these infections. En -
+rofloxacin is contraindicated with Streptococcus canis infections (or 
+when it has not been ruled out) because of the potential for drug-in-
+duced necrotizing fasciitis. 7 This adverse effect does not appear to 
+be a problem with other fluoroquinolones. Enrofloxacin has weak 
+activity against enterococci and is not recommended in the treat -
+
+
+===== Plumb PDF 478 =====
+Enrofloxacin   451
+ment of enterococcal infections. Enrofloxacin is generally ineffective 
+in treating anaerobic infections.
+Development of bacterial resistance is an ongoing concern with 
+many different bacteria, particularly staphylococci, Enterobacterales 
+(eg, E coli), and Pseudomonas spp. Resistance occurs by mutation, 
+particularly with P aeruginosa, Klebsiella pneumoniae, Acinetobacter 
+spp, and enterococci, but plasmid-mediated resistance is not thought 
+to commonly occur. E coli resistance was demonstrated in enrofloxa-
+cin-treated weaner pigs as well as untreated pigs housed with treated 
+animals.8
+The bactericidal activity of enrofloxacin is concentration-depen -
+dent (antibacterial activity improves with high peak concentrations), 
+and susceptible bacteria cell death occurs within 20 to 30 minutes of 
+exposure. Enrofloxacin’s mechanism of action is believed to be in -
+hibition of bacterial DNA gyrase (a type II topoisomerase), thereby 
+preventing DNA supercoiling and DNA synthesis.
+Enrofloxacin has demonstrated a significant postantibiotic effect 
+for both gram-negative and gram-positive bacteria and is active in 
+stationary and growth phases of bacterial replication. In vitro kill 
+assays for enrofloxacin and its active metabolite, ciprofloxacin, have 
+demonstrated an additive response (effect equal to the combined ac-
+tion of each of the drugs used separately) in dog and cat isolates of 
+E coli, Staphylococcus pseudintermedius, and P aeruginosa.9 Methicil-
+lin-resistant S pseudintermedius present within biofilm have higher 
+MICs, indicating reduced susceptibility to enrofloxacin.10
+In vitro synergic antibacterial effects were not observed when en-
+rofloxacin was combined with amikacin.11
+Pharmacokinetics 
+Enrofloxacin is well absorbed after oral administration in most spe-
+cies. In dogs, enrofloxacin’s bioavailability (≈80%) is approximately 
+twice that of ciprofloxacin after oral administration. Oral bioavail -
+ability in horses is between 60% and 80%. 12,13 Fifty percent of peak 
+plasma concentration (Cmax) is reportedly attained within 15 minutes 
+of administration and Cmax occurs within 1 hour of administration. 
+In sheep, oral enrofloxacin bioavailability is ≈90% or higher 14 and 
+83% after IM administration.15 Presence of food in the stomach gen-
+erally delays the rate but not the extent of absorption; however, foods 
+with increased divalent or trivalent cation concentrations (eg, milk) 
+can reduce bioavailability. Enrofloxacin is rapidly absorbed after IM 
+administration in dogs (peak concentrations in ≈30 minutes).2
+Enrofloxacin is widely distributed throughout the body. Volume 
+of distribution in dogs is ≈3 to 4 L/kg. Only ≈27% is bound to canine 
+plasma proteins. Highest concentrations are found in the bile, kid -
+ney, liver, lungs, and reproductive system (including prostatic fluid 
+and tissue). Enrofloxacin reportedly concentrates in macrophages. 
+Therapeutic concentrations are also attained in bone, synovial fluid, 
+skin, muscle, aqueous humor, and pleural fluid. Low concentrations 
+are found in the CSF; concentrations may only reach 6% to 10% of 
+those found in serum. In hospitalized horses, volume of distribution 
+was ≈1.25 L/kg. After mechanical disruption of the blood–aqueous 
+humor barrier in horses, enrofloxacin (7.5 mg/kg IV) produced con-
+centrations in the aqueous humor sufficient to treat Leptospira pomo-
+na.16 Enrofloxacin concentration in bronchoalveolar fluid of calves 
+was higher than plasma 1 hour and 2 hours after SC injection.17 After 
+SC administration to steers, enrofloxacin penetrated GI tissue better 
+than ciprofloxacin.18 The volume of distribution was 1.5 to 2.3 L/kg 
+in sheep15 and ≈1.5 L/kg in cattle. 
+Enrofloxacin is eliminated via renal and hepatic mechanisms. Ap-
+proximately 15% to 50% of the drug is eliminated unchanged into 
+the urine by tubular secretion and glomerular filtration. Enroflox -
+acin is metabolized to various metabolites, most of which are less 
+active than the parent compounds. Approximately 10% to 40% of 
+circulating enrofloxacin is metabolized to ciprofloxacin in most spe-
+cies, including, dogs, cats, adult horses, cattle, turtles, snakes, and 
+humans. Foals, pigs, and some lizards convert little, if any, enroflox-
+acin to ciprofloxacin. Enrofloxacin metabolites are eliminated in the 
+urine and feces. Because of the dual elimination routes (renal and 
+hepatic), dogs with moderately impaired renal function may have 
+slightly prolonged half-lives and higher serum concentrations but 
+may not require any dosage adjustment. Approximate elimination 
+half-lives in various species are in dogs, 2 to 5 hours19,20; cats, 6 hours; 
+calves, 9 hours18; sheep and goats, 1.5 to 4.5 hours15,21; horses, 5 to 10 
+hours12,22; turtles, 18 hours; and alligators, 55 hours. After SC admin-
+istration to calves, fecal enrofloxacin and ciprofloxacin concentra -
+tions were ≈ 115 and ≈50 times higher than their respective plasma 
+concentrations.
+Contraindications/Precautions/Warnings 
+Enrofloxacin is labeled as contraindicated in patients that are hyper-
+sensitive to it as well as in small- and medium-breed dogs aged 2 to 
+8 months. Bubble-like changes in articular cartilage have been noted 
+when the drug was given at 2  to 5 times the recommended dosage 
+for 30 days, although clinical signs have only been seen at 5 times 
+the recommended dosage. To avoid cartilage damage, treatment for 
+large- and giant-breed dogs may need to wait until 12 and 18 months 
+of age, respectively. Enrofloxacin at concentrations greater than 1 
+mg/mL was toxic to equine chondrocytes.23 Enrofloxacin is not rec-
+ommended in cats with impaired renal function or at doses above 5 
+mg/kg/day due to increased risk for retinal degeneration.24
+Because ciprofloxacin has occasionally been reported to cause 
+crystalluria in humans, animals should not be allowed to become 
+dehydrated during fluoroquinolone therapy. Enrofloxacin may cause 
+CNS stimulation and should be used with caution in patients with 
+seizure disorders. Patients with severe renal or hepatic impairment 
+may require dosage interval adjustments to prevent drug accumu -
+lation. 
+Use of the canine injectable products in cats or dogs via non-FDA–
+approved parenteral routes (eg, IV , SC) is controversial and may re-
+sult in significant adverse effects. Because of the high pH (≈11) of the 
+solution, SC administration in any species may cause pain and tissue 
+damage. Rapid or undiluted IV administration to dogs increases risk 
+for cardiac arrhythmias, hypotension, vomiting, and mast cell de -
+granulation (ie, release of histamine and other inflammatory media-
+tors). See Compatibility/Compounding Considerations.
+Dilution and extra-label use of the large animal product  
+(100 mg/mL; 10%) in small animal species via any route is strongly 
+ discouraged. 
+Enrofloxacin should not be used in foals, as they appear to be 
+highly susceptible to the fluoroquinolone’s arthropathic effects. Al-
+though there has been much discussion regarding the potential for 
+cartilage abnormalities or other arthropathies in horses, objective 
+data are lacking. In horses, IV administration should be slow as atax-
+ia and other neurologic effects may occur when given rapidly. Intra-
+uterine infusion and IM injections are not recommended in horses, 
+as localized tissue reactions (eg, endometrial ulceration, necrosis, 
+fibrosis, inflammation, hemorrhage) can occur.25 
+Extra-label use of fluoroquinolones is prohibited in food animals.
+Enrofloxacin and ciprofloxacin cannot be considered equivalent 
+due to pharmacokinetic differences (see Pharmacokinetics).
+Enrofloxacin should not be used in humans; it may cause halluci-
+nations, vivid dreams, and/or headaches.
+Adverse Effects 
+When enrofloxacin is used as labeled, its adverse effect profile is usu-
+ally limited to GI distress (eg, vomiting, diarrhea, anorexia). In dogs, 
+rare incidences of elevated hepatic enzymes, ataxia, seizures, depres-
+sion, lethargy, and nervousness have also been reported1,2; dogs may 
+vomit after IV administration. Hypersensitivity reactions or crystal-
+
+
+===== Plumb PDF 479 =====
+452   Enrofloxacin
+luria could occur.
+In cats, ocular toxicity has been reported, characterized by mydri-
+asis, retinal degeneration, and blindness.24,26 These effects were gen-
+erally seen at higher dosage ranges and have necessitated a maxi -
+mum dosage of 5 mg/kg/day in cats. Mydriasis may be an indication 
+of impending or existing retinal changes. Retinal toxicity in cats 
+appears to be caused by amino acid changes in the ABCG2 trans -
+porter in the blood–retina barrier, which allows photoreactive fluo -
+roquinolones to accumulate in the feline retina.27 Other rare adverse 
+effects seen in cats can include vomiting, anorexia, elevated hepatic 
+enzymes, diarrhea, ataxia, seizures, depression/lethargy, vocaliza -
+tion, and  aggression.
+Articular cartilage abnormalities have been noted in young, rap -
+idly growing animals given fluoroquinolones (see Contraindica-
+tions/Precautions/Warnings).1,2,4 
+Fluoroquinolones may cause photosensitization and prolonged 
+exposure of bare skin (eg, nose) to direct sunlight should be avoided.
+Enrofloxacin 100 mg/mL injection can be irritating to the mouth 
+when given orally to horses. This effect may be alleviated by coat -
+ing the liquid with molasses or preparing a gel (see Compatibility/
+Compounding Considerations) and rinsing the horse’s mouth with 
+water after administration. The prevalence of antibiotic-associated 
+diarrhea due to enrofloxacin use in horses is ≈5%.28 
+In humans, fluoroquinolones may alter cardiac conduction and 
+cause prolongation of the QT interval, especially in those with a his-
+tory of QT interval prolongation, electrolyte disorders, cardiac dis -
+ease, or are taking other QT interval prolonging medications.
+Reproductive/Nursing Safety 
+The safety of enrofloxacin use in pregnant dogs has been inves -
+tigated; breeding, pregnant, and lactating dogs receiving up to  
+15 mg/kg/day have demonstrated no treatment-related adverse ef -
+fects.1,2 However, because of the risk for cartilage abnormalities in 
+young animals, fluoroquinolones are not generally recommended 
+for use during pregnancy unless the benefits of therapy clearly out -
+weigh the risks. Limited studies in male dogs at various dosages have 
+indicated no effects on male breeding performance. 
+Safety in breeding, pregnant, or lactating cats has not been 
+ established.1
+Enrofloxacin administration to mares during pregnancy resulted 
+in detectable concentrations of enrofloxacin and ciprofloxacin in fe-
+tal fluids and cartilage.29 Fetal abnormalities were not detected after 
+enrofloxacin administration to pregnant mares for 2 weeks during 
+early pregnancy (gestation days 46 to 60). 30 Enrofloxacin adminis -
+tration during late pregnancy did not result in clinical lameness or 
+cartilage lesions in the foals 31; however, the small sample sizes (6 or 
+7 horses per treatment arm) of these studies cannot be taken as an 
+indication of no risk to the fetus.
+The effects of enrofloxacin on cattle and swine reproductive per-
+formance, pregnancy, and lactation have not been adequately de -
+termined. Enrofloxacin and its metabolite ciprofloxacin are actively 
+secreted into bovine milk.32
+No teratogenic effects were observed in rabbits given a dose of  
+25 mg/kg or rats given a dose of 50 mg/kg.3 
+Overdose/Acute Toxicity 
+The oral LD 50 for enrofloxacin in laboratory rats was greater than 
+5000 mg/kg. Dogs receiving 50 mg/kg/day for at least 14 days de -
+veloped only vomiting and anorexia, but signs associated with an 
+overdosage of 125 mg/kg/day for 11 days (in decreasing frequency) 
+included vomiting, anorexia, depression, difficult locomotion, and 
+death.1,2 
+In cats, an overdose can be serious (eg, blindness, seizures); a dose 
+of 20 mg/kg or more can cause retinopathy and blindness, 1 which 
+can be irreversible. Enrofloxacin 20 or 50 mg/kg/day for 3 weeks re-
+sulted in salivation, vomiting, and depression.1
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+In pigs, enrofloxacin induced expression and activity of CYP1A2 
+and inhibited CYP2E1 and CYP3A4.33 In hepatic microsomes from 
+healthy beagles, enrofloxacin and ciprofloxacin inhibited CYP1A 
+activity, but clinically relevant drug interactions were more likely 
+with ciprofloxacin than with enrofloxacin.34 The following drug in -
+teractions have either been reported or are theoretical in humans or 
+animals receiving ciprofloxacin or enrofloxacin and may be of signif-
+icance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but the potential risks must be 
+weighed, and additional monitoring performed when appropriate.
+ ■ Aluminum-, Calcium-, and Magnesium-Containing 
+Oral Products : May bind to enrofloxacin and prevent its oral 
+absorption; doses of these products should be separated from en-
+rofloxacin by at least 2 hours.
+ ■ Antibiotics, other  (eg, aminoglycosides, third-generation 
+cephalosporins [eg, cefpodoxime, ceftiofur ], doxycycline, ex -
+tended-spectrum penicillins ): Synergism may occur against 
+some bacteria (particularly Pseudomonas aeruginosa), but this is 
+unpredictable.35 Although enrofloxacin and ciprofloxacin have 
+minimal activity against anaerobes, in vitro synergy has been 
+reported when these drugs are used with clindamycin against 
+strains of Peptostreptococcus spp, Lactobacillus spp, and Bacteroi-
+des fragilis.
+ ■ Blood Glucose Lowering Agents (eg, insulins, sulfony-
+lureas [eg, glipizide, glyburide]): Fluoroquinolones may en -
+hance the hypoglycemic effect of blood glucose lowering agents. 
+ ■ Corticosteroids (eg, dexamethasone, prednis(ol)one): Con-
+comitant use with fluoroquinolones may increase risk for tendon-
+itis and tendon rupture.
+ ■ Cyclosporine, Systemic : Fluoroquinolones may exacerbate 
+nephrotoxicity and reduce the metabolism of cyclosporine.
+ ■ Doxorubicin : Enrofloxacin may increase doxorubicin expo -
+sure.
+ ■ Flunixin : In dogs, flunixin has been shown to increase the area 
+under the curve (AUC) and elimination half-life of enrofloxacin, 
+and enrofloxacin increases the AUC and elimination half-life of 
+flunixin; it is unknown whether other NSAIDs interact with en -
+rofloxacin in dogs.
+ ■ Iron, Zinc  (oral): Concomitant administration may decrease 
+fluoroquinolone absorption; doses should be separated by at least 
+2 hours.
+ ■ Levothyroxine : Ciprofloxacin may decrease levothyroxine ef-
+ficacy.
+ ■ Mycophenolate Mofetil : Ciprofloxacin may decrease myco-
+phenolic acid exposure.
+ ■ Methotrexate (MTX) : Concomitant administration may in -
+crease MTX concentrations and increase risk for toxicity.
+ ■ Nitrofurantoin : May antagonize the antimicrobial activity of 
+fluoroquinolones; concomitant use of these drugs is not recom -
+mended.
+ ■ Probenecid : May block renal tubular secretion of ciprofloxacin 
+and may increase ciprofloxacin serum concentration and elimina-
+tion half-life; monitor for increased enrofloxacin adverse effects 
+(nausea, diarrhea)
+
+
+===== Plumb PDF 480 =====
+Enrofloxacin   453
+ ■ QT Interv al Prolongation Drugs  (eg, azithromycin, chlor-
+promazine, cisapride, fluconazole, fluoxetine, ketoconazole, 
+methadone, ondansetron, quinidine, sotalol ): Combination 
+with ciprofloxacin may increase risk for QT prolongation; con -
+current use of cisapride and ciprofloxacin is contraindicated in 
+humans. These interactions may also apply to enrofloxacin.
+ ■ Sildenafil : Concomitant use with ciprofloxacin may increase 
+sildenafil serum concentrations and adverse effects. 
+ ■ Sucralfate : In dogs, sucralfate can affect absorption of cipro -
+floxacin but does not appear to affect enrofloxacin absorption.36
+ ■ Theophylline, Aminophylline : Enrofloxacin may increase 
+theophylline blood concentrations; in dogs, theophylline concen-
+trations may be increased by ≈30% to 50%.37
+ ■ Tilmicosin : May decrease enrofloxacin metabolism38
+ ■ W arfarin : Concomitant use may increase anticoagulant effects 
+of warfarin. 
+Laboratory Considerations 
+ ■ Enrofloxacin may cause false positive urine glucose determina-
+tions when cupric sulfate solution (Benedict’s solution, Clinitest®) 
+is used. Tests using glucose oxidase (Tes-Tape®, Clinistix®) are not 
+affected by enrofloxacin.
+ ■ In some humans, fluoroquinolones caused increases in liver en-
+zymes, BUN, and serum creatinine and decreases in hematocrit. 
+The clinical relevance of these changes in veterinary patients is 
+unknown.
+Dosages
+DOGS:
+Susceptible infections (label dosage; FDA-approved): 
+Oral tablets: 5 – 20 mg/kg PO once daily for at least 2 to 3 days 
+beyond resolution of clinical signs.1 Selection of a dose from this 
+range is based on clinical experience, severity of infection, suscep-
+tibility of the pathogen. If no improvement is seen within 5 days, 
+diagnosis should be reevaluated. Maximum duration of therapy 
+is 30 days. 
+Injectable solution 2.27% (22.7 mg/mL) : 2.5 mg/kg IM once, 
+followed by oral enrofloxacin therapy2 
+Susceptible infections (extra-label): Using the 2.27%  
+(22.7 mg/mL) injection, 10 – 20 mg/kg every 24 hours IM, SC 
+(must be diluted), or slow IV based on the susceptibility, site, 
+and severity of the infection. See Compatibility/Compounding 
+ Considerations. 
+Lower UTIs (extra-label):
+a) 10 – 20 mg/kg PO every 24 hours. Use of this drug should be 
+reserved for cystitis cases caused by bacteria resistant to other 
+antibiotics (eg, amoxicillin). Enrofloxacin has limited efficacy 
+against Enterococcus spp.39
+b) Sporadic bacterial cystitis: 18 – 20 mg/kg PO every 24 hours 
+for 3 days was shown to be as effective as a 14-day treatment 
+with amoxicillin plus clavulanate.40
+Pyelonephritis (extra-label): 20 mg/kg PO every 24 hours; good 
+first-line choice for treatment of pyelonephritis39
+Enteric infections (extra-label): 
+a) Enrofloxacin-sensitive E coli in dogs with granulomatous 
+colitis (extra-label): 10 mg/kg PO every 24 hours for 8 weeks41
+b) Campylobacteriosis: 10 mg/kg PO every 24 hours. Resistance 
+can develop during treatment.42 
+Bacterial skin infections (extra-label): 5 – 20 mg/kg PO every 24 
+hours.43 Administration of this drug at the high end of the dose 
+range may be required for treatment of Pseudomonas spp infec -
+tions. Most clinicians consider enrofloxacin to be a second-line 
+drug for the treatment of deep pyoderma in dogs; use is only rec-
+ommended if culture and susceptibility results indicate first-line 
+drugs will not be effective.
+CATS:
+Susceptible infections  (label dosage; FDA-approved): 5 mg/kg 
+PO every 24 hours or divided and given every 12 hours; contin -
+ue for at least 2 or 3 days beyond cessation of clinical signs to a 
+maximum of 30 days.1 NOTE: Because enrofloxacin is a concen-
+tration-dependent antibiotic, once-daily administration is recom-
+mended. For serious infections that require a higher dose, consid-
+er using a different fluoroquinolone (eg, pradofloxacin).
+Susceptible infections (extra-label): 5 mg/kg (or less) every 
+24 hours IM or IV using the canine injectable product (2.27%,  
+22.7 mg/mL). For IV administration, see Compatibility/Com-
+pounding Considerations.
+HORSES : 
+Susceptible infections (extra-label):
+a) 5 – 7.5 mg/kg PO or IV every 24 hours. 44 Respiratory infec -
+tions should be treated with the high end of the dose range.45
+b) 7.5 mg/kg PO as a compounded gel every 24 hours. See Com-
+patibility/Compounding Considerations. Horses should have 
+feed withheld for 11 to 14 hours before and 1 to 2 hours after 
+administration. The horse’s mouth should be rinsed with water 
+after administration to reduce the risk for oral ulceration.46
+CATTLE:
+Single day treatment of bovine respiratory disease (BRD) as -
+sociated with Mannheimia haemolytica, Pasteurella multocida, 
+Histophilus somni, and Mycoplasma bovis in beef and nonlac -
+tating dairy cattle (label dosage; FDA-approved): 7.5 – 12.5 mg/kg  
+SC once.3
+Multiple day treatment of BRD associated with M haemolytica, 
+P multocida, H somni, and M bovis in beef and nonlactating 
+dairy cattle (label dosage; FDA-approved): 2.5 – 5 mg/kg SC ev -
+ery 24 hours for 3 days; additional daily treatments may be given 
+to animals that have shown improvement but not complete re -
+covery.3
+Control of BRD in beef and nonlactating dairy cattle at high 
+risk for developing BRD associated with M haemolytica, P 
+multocida, H somni, and M bovis (label dosage; FDA-approved):  
+7.5 – 12.5 mg/kg SC once3
+Clinical anaplasmosis associated with Anaplasma marginale in 
+replacement dairy heifers under 20 months of age, all classes 
+of beef cattle except beef calves less than 2 months of age, and 
+beef bulls (of any age) intended for breeding (label dosage; con-
+ditionally approved by FDA): 12.5 mg/kg SC once; do not admin-
+ister more than 20 mL per injection site.4
+NEW WORLD CAMELIDS :
+Susceptible infections in alpacas  (extra-label): 5 mg/kg SC or  
+10 mg/kg PO every 24 hours47
+SWINE: 
+Treatment and control of swine respiratory disease (SRD) as -
+sociated with Actinobacillus pleuropneumoniae, P multocida , 
+Haemophilus parasuis, Streptococcus suis, Bordetella bronchi -
+septica, and Mycoplasma hyopneumoniae and control of coli -
+bacillosis in groups or pens of weaned pigs where colibacil -
+losis associated with E coli has been diagnosed (label-dosage; 
+FDA-approved): 7.5 mg/kg IM or SC (behind the ear) once; do 
+not administer more than 5 mL per injection site.3
+BIRDS:
+NOTE: Compounding the liver-flavored tablets with grape syrup 
+
+
+===== Plumb PDF 481 =====
+454   Enrofloxacin
+(Syrpalta®) may improve acceptance when enrofloxacin is admin-
+istered PO.48
+Susceptible gram-negative infections in Psittacines (extra-label):
+a) Stable, immune-competent birds: 20 mg/kg PO every 24 hours 
+b) Debilitated, immune-competent birds: 15 – 20 mg/kg SC in 
+fluid pocket every 24 hours 
+c) Debilitated, immunocompromised birds: 15 – 20 mg/kg SC in 
+fluid pocket every 12 hours 
+FERRETS :
+Susceptible infections (extra-label): 10 – 20 mg/kg PO, IM, or SC 
+every 24 hours.49 NOTE: If parenteral administration is required, 
+it is recommended to dilute the solution to avoid injection site 
+tissue necrosis.
+RABBITS, RODENTS, & SMALL MAMMALS :
+NOTE: All dosages are extra-label.
+Rabbits: 
+a) For Pasteurella spp upper respiratory infection: 15 – 20 mg/kg 
+PO every 12 hours for a minimum of 14 days in mild cases and 
+up to several months for chronic infections; first dose may be 
+given SC. Subsequent doses should NOT be given SC, as severe 
+tissue reactions can occur.50
+b) 5 mg/kg PO, SC, IM, or IV every 12 hours for 14 days. En -
+rofloxacin is the drug of choice for treatment of Pasteurella 
+spp infections. Dilution is suggested if administering SC, as 
+skin may slough. Injectable product should not be given PO 
+because it is unpalatable. 51 See Compatibility/Compounding 
+Considerations.
+Hedgehogs: 5 – 10 mg/kg PO or SC every 12 hours52
+Chinchillas: 5 – 10 mg/kg PO or IM every 12 hours53
+Chinchillas, gerbils, guinea pigs, hamsters, mice, rats :  
+5 – 10 mg/kg PO or IM every 12 hours or 5 – 20 mg/kg PO or SC 
+every 24 hours. 50 – 200 mg/L for 14 days in drinking water. Not 
+for use in young animals54 
+Rats: Chronic respiratory disease: 10 – 25 mg/kg PO every 12 
+hours55
+REPTILES :
+Susceptible respiratory infections for most species (extra-label): 
+5 mg/kg IM every 5 days for 25 days
+Chronic respiratory infections (extra-label):
+a) Tortoises: 15 mg/kg IM every 72 hours for 5 to 7 treatments56 
+b) Bearded dragons: 10 mg/kg IM once blood concentrations are 
+high enough to kill susceptible bacteria57  
+Monitoring 
+ ■ Clinical efficacy
+ ■ Adverse effects
+ ■ In cats, mydriasis and/or retinal changes may indicate retinal tox-
+icity.
+Client Information 
+ ■ Enrofloxacin is best given on an empty stomach without food; 
+however, if your animal vomits or acts sick, give with food or a 
+small treat (no dairy products, antacids, or anything containing 
+iron). If vomiting continues, contact your veterinarian.
+ ■ Do not crush film-coated tablets, as the drug is bitter, which may 
+cause difficulty when getting your animal to take it. 
+ ■ Do not give this medicine at the same time with other drugs or 
+vitamins that contain certain minerals (eg, calcium, iron, magne-
+sium, aluminum, zinc), as these products can reduce the amount 
+of drug absorbed.
+ ■ This medicine may cause joint abnormalities if used in young, 
+pregnant, or nursing animals.
+ ■ Most common side effects are vomiting, nausea, or diarrhea. 
+ ■ Do not exceed prescribed dose in cats, as blindness can result. If 
+your cat develops large pupils, contact your veterinarian imme -
+diately.
+Chemistry/Synonyms
+Enrofloxacin, a fluoroquinolone antibiotic, occurs as a pale-yellow 
+crystalline powder. It is slightly soluble in water, but solubility is 
+pH-dependent and altering the pH of the commercially available in-
+jections can cause precipitation. Enrofloxacin is related structurally 
+to the human FDA-approved drug ciprofloxacin (enrofloxacin has 
+an additional ethyl group on the piperazinyl ring).
+Enrofloxacin may also be known as enrofloksasiini, enrofloxa -
+cine, enrofloxacino, enrofloxacinum, Bay-Vp-2674, Baytril®, Baytril® 
+100, Baytril® 100-CA1, Enroflox®, Enroflox®-100, Enroquin®, Enrosite®, 
+or Zobuxa®.
+Storage/Stability 
+Unless otherwise directed by the manufacturer, enrofloxacin tablets 
+should be stored in tight containers at temperatures less than 25°C 
+(77°F); excursions to 30°C (86°F) may be permitted for some products. 
+The canine FDA-approved injectable solution (2.27%) for IM 
+injection should be stored protected from light at or below 25°C 
+(77°F)2; do not freeze. Discard unused product 90 days from first vial 
+puncture or after puncturing vial a maximum of 20 times.
+The FDA-approved injectable solution (10%) for cattle and swine 
+should be stored protected from sunlight at 20°C to 30°C (68°F-86°F), 
+with excursions permitted to 40°C (104°F).3,4 It should not be refrig-
+erated or frozen. If exposed to cold temperatures, precipitation may 
+occur; to redissolve, warm the solution, then shake the vial. Discard 
+unused solution 30 days after first vial puncture, or after vial is punc-
+tured a maximum of 30 times with a needle or 4 times with a dosage 
+delivery device. 
+Compatibility/Compounding Considerations 
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Enrofloxacin 100 mg/mL injection may be diluted with sterile 
+water for injection prior to IM or SC administration; use diluted 
+solution within 24 hours of mixing. 3 Injectable enrofloxacin (both  
+22.7 mg/mL and 100 mg/mL) has been demonstrated to be physical-
+ly incompatible with 1:1 dilution with 0.9% sodium chloride, lac -
+tated Ringer’s solution (LRS), Plasma-Lyte® A, hydroxyethyl starch 
+(HES) 6%, and potentially any drugs that have been reconstituted 
+or diluted with those solutions (eg, ampicillin/sulbactam). 58 It must 
+NOT be mixed with or come into contact with any IV solution con-
+taining calcium or magnesium (eg, Normosol®-R, Plasma-Lyte®-R, 
+-A, or -56); morbidity and mortality secondary to microprecipitants 
+lodging in patients’ lungs have been reported. 
+Because physical incompatibilities may not be readily apparent to 
+the naked eye or may develop 15 to 60 minutes after admixture or 
+dilution (ie, during an infusion), it has been recommended to ad -
+minister enrofloxacin injection only via labeled routes. If IV route 
+must be used and suitable alternatives to enrofloxacin are not avail-
+able, consider administration of undiluted enrofloxacin through a 
+separate line.
+For horses, an oral gel formulated from the bovine injectable 
+product has been described46: 100 mL of the 100 mg/mL bovine in -
+jection (Baytril®100) is used. Stevia (0.35 g) is mixed with ≈15 mL 
+of liquid enrofloxacin until dissolved. Apple flavoring (0.6 mL) is 
+added until dissolved. Sodium carboxymethylcellulose (2 g) should 
+be sprinkled over the mixture and stirred until incorporated, with 
+immediate gradual addition of the remaining enrofloxacin (85 mL)  
+
+
+===== BSAVA PDF 163 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+147
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Enrofloxacin
+(Baytril, Enrocare, Enrotron, Enrox, Enroxil, 
+Fenoflox, Floxabactin, Powerflox, Quinoflox, 
+Xeden, Zobuxa) POM-V 
+Formulations: Injectable: 25 mg/ml, 50 mg/ml. Oral: 15 mg, 50 
+mg, 100 mg, 150 mg, 200 mg, 250 mg tablets; 25 mg/ml solution.
+Action: Enrofloxacin is a concentration-dependent antimicrobial 
+which inhibits bacterial DNA gyrase. Pulse dosing regimens may be 
+effective, particularly against Gram-negative bacteria.
+Use: Ideally fluoroquinolone use should be reserved for infections 
+where culture and sensitivity testing predicts a clinical response 
+and where lower tier antimicrobials would not be effective. Active 
+against Mycoplasma  and many Gram-positive and Gram-negative 
+organisms, including Pasteurella , Staphylococcus , Pseudomonas 
+aeruginosa , Klebsiella , Escherichia coli , Mycobacterium , Proteus 
+and Salmonella . Relatively ineffective against obligate anaerobes. 
+Fluoroquinolones are highly lipophilic drugs that attain high 
+concentrations within cells in many tissues and are particularly 
+effective in the management of soft tissue, urogenital (including 
+prostatic) and skin infections. For the treatment of non-tubercular 
+mycobacterial disease, enrofloxacin can be combined with 
+clarithromycin and rifampin. Administration by i.v. route is not 
+authorized but has been used in cases of severe sepsis. If this  
+route is used, dilute to 10 times the volume in 0.9% sodium 
+chloride and administer slowly as the carrier contains potassium 
+(ideally 35–45 minutes).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Fluoroquinolones are relatively 
+contraindicated in growing dogs, as cartilage abnormalities have 
+been reported in young dogs (but not cats). Enrofloxacin is not 
+authorized in cats <8 weeks of age; dogs <1 year of age; large-breed 
+dogs <18 months of age.
+Adverse reactions: In cats, irreversible retinal blindness has 
+occurred at dosing rates higher than those currently recommended, 
+although at least one case reported in the literature was being dosed 
+within the 5 mg/kg q24h rate. Enrofloxacin should be used with 
+caution in epileptic animals until further information is available, as 
+in humans they potentiate CNS adverse effects when administered 
+concurrently with NSAIDs. Careful dosing in cats is facilitated by 
+accurate body weight and use of a 1 ml syringe, and doses higher 
+than 5 mg/kg/day are not recommended in cats.
+Drug interactions: Absorbents and antacids containing cations 
+(Mg2+, Al3+) may bind fluoroquinolones, preventing their absorption 
+from the GI tract. Their absorption may also be inhibited by 
+sucralfate and zinc salts; separate dosing by at least 2 hours. 
+Fluoroquinolones increase plasma theophylline concentrations. 
+
+
+===== BSAVA PDF 164 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+148
+Cimetidine may reduce the clearance of fluoroquinolones and so 
+should be used with caution with these drugs. Some 
+fluoroquinolones may decrease the metabolism and increase 
+nephrotoxicity of ciclosporin and tacrolimus in humans and 
+therefore concurrent use in animals is best avoided until more 
+research has been performed. May increase the action of orally 
+administered anticoagulants.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 5 mg/kg s.c. q24h. Higher doses (10 mg/kg q24h) should be 
+considered for certain sites, including prostatitis. Even higher doses 
+may be necessary for certain isolates of Pseudomonas aeruginosa . 
+Contact the manufacturer to discuss individual cases.
+Cats: 5 mg/kg s.c. q24h; 2.5 mg/kg p.o. q12h or 5 mg/kg p.o. q24h.
+References
+Cummings KJ, Aprea VA and Altier C (2015) Antimicrobial resistance trends among 
+canine Escherichia coli isolates obtained from clinical samples in the northeastern USA, 
+2004–2011. Canadian Veterinary Journal  56, 393–398
+Federico S, Carrano R, Capone D et al . (2006) Pharmacokinetic interaction between 
+levofloxacin and ciclosporin or tacrolimus in kidney transplant recipients: ciclosporin, 
+tacrolimus and levofloxacin in renal transplantation. Clinical Pharmacokinetics 45, 169–175
+Ford MM, Dubielzig RR, Giuliano EA et al . (2007) Ocular and systemic manifestations 
+after oral administration of a high dose of enrofloxacin in cats. American Journal of 
+Veterinary Research  68, 190–202
+Ephedrine
+(Enurace, Ephedrine hydrochloride*) POM-V, POM 
+Formulations: 10 mg, 15 mg, 30 mg, 50 mg tablets; 3 mg/ml, 30 
+mg/ml solutions for injection; 0.5% and 1% nasal drops.
+Action: Non-catecholamine sympathomimetic stimulates  
+alpha- and beta-adrenergic receptors directly, and indirectly 
+through endogenous release of noradrenaline. Also causes 
+contraction of internal urethral sphincter muscles and relaxation  
+of bladder muscles. Compared with more powerful 
+sympathomimetics, e.g. oxymetazoline and xylometazoline,  
+there is less of a rebound effect.
+Use:
+• Treatment of hypotension during anaesthesia. As well as 
+constricting peripheral vessels, it has a positive inotropic effect 
+and accelerates heart rate, therefore assisting in bradycardia. 
+Effects tend to wane after 2–3 doses have been administered, 
+due to exhaustion of endogenous noradrenaline stores. 
+• Also used orally in the treatment of urinary incontinence. Can be 
+used in conjunction with phenylpropanolamine. Polyuria should 
+be excluded before treatment is given for urinary incontinence, 
+as many conditions that cause polyuria would be exacerbated  
+by ephedrine.
+• Proposed for treatment of nasal congestion (and may be of 
+some benefit in cat ‘flu’).
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 165 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+149
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use with caution in dogs and cats with cardiovascular disease, partial 
+urethral obstruction, hypertension, diabetes mellitus, 
+hyperadrenocorticism, hyperthyroidism or other metabolic disorders.
+Safety and handling: Pregnant women should take particular 
+care to wear gloves for administration.
+Contraindications: Do not use in pregnant or lactating patients 
+or those with glaucoma.
+Adverse reactions: Even at recommended therapeutic doses may 
+cause more generalized sympathetic stimulation (panting, mydriasis, 
+CNS stimulation) and cardiovascular effects (tachycardia, atrial 
+fibrillation and vasoconstriction). May also cause reduction of the 
+motility and tone of the intestinal wall.
+Drug interactions: Synergistic with other sympathomimetics. 
+Volatile anaesthetics will enhance the sensitivity of the myocardium 
+to the effects of ephedrine. Concomitant use with cardiac 
+glycosides (digoxin) and tricyclic antidepressants (amitriptyline) can 
+cause arrhythmias. Will enhance effects of theophylline and may 
+cause hypertension when given with MAO inhibitors (e.g. selegeline).
+DOSES
+Dogs: 
+• Hypotension: 0.05–0.2 mg/kg i.v.; repeat as necessary; duration 
+of effect is short (5–15 min). Effects tend to wane after 2–3 
+doses have been administered.
+• Urinary incontinence: 1 mg/kg p.o. q12h. Dose should be 
+adjusted according to effect but there is a maximum dose of 2.5 
+mg/kg p.o. q12h.
+• Nasal congestion: No dose determined. Suggest start at 1 drop 
+of 0.5% solution intranasally q12h. If giving orally, suggest 0.5 
+mg/kg p.o. q12h.
+Cats:   
+• Hypotension: 0.05–0.1 mg/kg i.v.; repeat as necessary; duration 
+of effect is short (5–15 min). Effects tend to wane after 2–3 
+doses have been administered.
+• Nasal congestion: 1 drop of 0.5% solution intranasally q12h. Oral 
+formulations not convenient for administration to most cats.
+Epinephrine see Adrenaline
+Epirubicin (4’-Epi-doxorubicin)
+(Epirubicin*, Pharmorubicin*) POM 
+Formulations: Injectable: 10 mg, 20 mg, 50 mg powder for 
+reconstitution; 2 mg/ml solution.
+Action: Epirubicin is a semisynthetic stereoisomer of doxorubicin. 
+Intracellularly its metabolism results in production of cytotoxic free 
+radicals. It also binds irreversibly to DNA, thereby preventing 

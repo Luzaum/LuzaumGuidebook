@@ -1,0 +1,221 @@
+===== BSAVA PDF 114 / impressa 98 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+98
+Cloxacillin
+(Opticlox, Orbenin) POM-V 
+Formulations: Ophthalmic: Cloxacillin benzathine ester 16.7% 
+suspension.
+Action: Beta-lactamase-resistant penicillin which works in a 
+time-dependent fashion. Binds to penicillin-binding proteins involved 
+in cell wall synthesis, thereby decreasing bacterial cell wall strength 
+and rigidity, and affecting cell division, growth and septum formation.
+Use: Narrow-spectrum antimicrobial. Less active than penicillin G 
+or V against Streptococcus. Specifically indicated for ocular 
+infections with beta-lactamase-producing Staphylococcus.
+Safety and handling: May cause a reaction in penicillin-sensitive 
+individuals. Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: Apply 1/10 of a tube (0.3 g) q24h.
+Co-amoxiclav (Amoxicillin/
+Clavulanate,Amoxycillin/Clavulanic acid)
+(Clavabactin, Clavaseptin, Clavucill, Clavudale, 
+Combimox, Kesium, Nisinject, Noroclav, 
+Synuclav, Synulox, Twinox, Augmentin*) POM-V, 
+POM 
+Formulations: Injectable: 175 mg/ml suspension (140 mg 
+amoxicillin, 35 mg clavulanate); 600 mg powder (500 mg 
+amoxicillin, 100 mg clavulanate); 1.2 g powder (1 g amoxicillin, 200 
+mg clavulanate) for reconstitution (Augmentin). Oral: 40/10 mg, 
+50/12.5 mg, 200/50 mg, 250/62.5 mg, 400/100 mg, 500/125 mg 
+tablets each containing amoxicillin and clavulanate in a ratio of 4:1. 
+Palatable drops which when reconstituted with water provide 40 mg 
+amoxicillin and 10 mg clavulanic acid per ml. Note variation in 
+labelling of products. The preparation size may be labelled in 
+relation to amoxicillin quantity only or the combined amoxicillin/
+clavulanic acid quantity.
+Action: Amoxicillin binds to penicillin-binding proteins involved in 
+bacterial cell wall synthesis, thereby decreasing cell wall strength 
+and rigidity, affecting cell division, growth and septum formation. 
+The addition of the beta-lactamase inhibitor clavulanate increases 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 115 / impressa 99 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+99
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+the antimicrobial spectrum against those organisms that produce 
+beta-lactamase, such as Staphylococcus  and Escherichia coli. 
+Time-dependent action.
+Use: Active against Gram-positive and Gram-negative aerobic 
+organisms and many obligate anaerobes. Beta-lactamase-producing 
+Escherichia coli and Staphylococcus are susceptible, but difficult 
+Gram-negative organisms such as Pseudomonas  aeruginosa and 
+Klebsiella are often resistant. Dose and dosing interval will be 
+determined by infection site, severity and organism. May be an 
+appropriate choice for surgical prophylaxis, please refer to separate 
+surgical prophylaxis guidelines but also see the adverse reactions 
+comment below.
+Safety and handling: Tablets are wrapped in foil moisture-resistant 
+packaging; do not remove until to be administered. Refrigerate oral 
+suspension after reconstitution and discard after 10 days. The i.v. 
+solution should be used immediately after reconsititution. 
+Contraindications: Avoid oral antibiotic agents in critically ill 
+patients, as absorption from the GI tract may be unreliable; such 
+patients may require i.v. formulation. Avoid use in animals which 
+have displayed hypersensitivity reactions to other antimicrobials 
+within the beta-lactam family (which includes cephalosporins).
+Adverse reactions: Nausea, diarrhoea and skin rashes are the 
+commonest adverse effects. There are reports of adverse reactions 
+associated with the soluble intravenous preparations, particularly 
+under general anaesthesia during use as surgical prophylaxis. This 
+has included signs of allergic oedema, allergic pruritis, development 
+of urticaria and hypotension. Some centres have opted to use 
+alternative preparations such as the 2nd generation cephalosporin 
+cefuroxime, and this may be associated with fewer adverse reactions.
+Drug interactions: Avoid the concurrent use of amoxicillin with 
+bacteriostatic antibiotics (e.g. tetracycline, erythromycin). Do not 
+mix in the same syringe as aminoglycosides. Synergism may occur 
+between the beta-lactam and aminoglycoside antimicrobials in vivo .
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs, Cats: 
+• Parenteral:
+	■ 8.75–25 mg/kg (combined) i.v. q8h, i.m, s.c. q24h (some 
+susceptible infections require doses higher than the 
+authorized dose or increased administration frequency, 
+doses up to 25 mg/kg i.v. q8h are used to treat serious 
+infections in humans).
+	■ For surgical prophylaxis: 22–25 mg/kg i.v. 30 min prior to 
+surgery and then repeated q1.5–2h during surgery.
+• Oral: 12.5–25 mg/kg (combined) p.o. q8–12h.
+References
+Gosling MJ and Martinez-Taboada F (2018) Adverse reactions to two intravenous 
+antibiotics (Augmentin and Zinacef) used for surgical prophylaxis in dogs. Veterinary 
+Record 182 , 80
+
+===== BSAVA PDF 116 / impressa 100 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+100
+Codeine
+(Pardale-V, Codeine*) POM-V, POM 
+Formulations: Oral: 3 mg/5 ml paediatric linctus; 3 mg/ml linctus; 
+5 mg/ml syrup; 15 mg, 30 mg, 60 mg tablets.
+Action: Opioid analgesic.
+Use:
+• Cough suppression.
+• Analgesia.
+• Treatment of diarrhoea.
+Pardale-V is a veterinary formulation with 400 mg paracetamol + 9 
+mg codeine. However, to deliver the dose of codeine listed below 
+would result in a very high dose of paracetamol and therefore 
+Pardale-V tablets cannot be recommended as a source of codeine 
+for general usage.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Renal insufficiency, hypoadrenocorticism, 
+increased intracranial pressure, hypothyroidism. Care with severe 
+respiratory compromise. Never administer Pardale-V to cats.
+Adverse reactions: Sedation, ataxia, respiratory depression and 
+constipation. May cause CNS stimulation in cats.
+Drug interactions: No information available.
+DOSES
+Dogs: 
+• Antitussive: 1–2 mg/kg p.o. q6–12h. Do not use Pardale-V for 
+codeine at this dose rate. 
+• Analgesia: 1–2 mg/kg p.o. q6–12h. Do not use Pardale-V for 
+codeine at this dose rate.
+Cats: Analgesia: 0.5–2 mg/kg p.o. q6–8h. Do not use formulation 
+with paracetamol.
+References
+Kukanich B (2010) Pharmacokinetics of acetaminophen, codeine, and the codeine 
+metabolites morphine and codeine-6-glucuronide in healthy Greyhound dogs. Journal 
+of Veterinary Pharmacology and Therapeutics  33, 15–21
+Colchicine
+(Colchicine*) POM 
+Formulations: Oral: 0.5 mg tablets.
+Action: Colchicine inhibits collagen synthesis, may enhance 
+collagenase activity and blocks the synthesis and secretion of serum 
+amyloid A.
+Use:
+• Management of fibrosis in liver diseases, and renal amyloidosis 
+(including that caused by ‘Shar pei fever’). Prophylactic use in 
+Shar pei fever cannot be recommended at this time.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

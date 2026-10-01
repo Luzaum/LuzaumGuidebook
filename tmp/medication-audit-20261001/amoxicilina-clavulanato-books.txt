@@ -1,0 +1,910 @@
+
+===== Plumb PDF 97 =====
+70    Amoxicillin/Clavulanate
+a) 125 mg/kg PO every 12 hours. Mix oral solution to double 
+strength to a final concentration of 125 mg/mL21  
+b) 100 mg/kg IM, SC, PO every 8 hours22 
+FERRETS: 
+Helicobacter spp gastritis infections using triple therapy (extra- 
+label): 
+a) Amoxicillin 20 mg/kg PO every 12 hours, with metronida -
+zole 20 mg/kg PO every 12 hours and bismuth subsalicylate  
+17.5 mg/kg PO every 8 hours for 21 days. Sucralfate 25 mg/kg  
+PO every 8 hours and famotidine 0.5 mg/kg PO every 24 hours 
+may also be used. Fluids and assisted feeding should be contin-
+ued while the primary cause of disease is investigated.23 
+b) Amoxicillin 10 mg/kg, metronidazole 20 mg/kg, and bismuth 
+subsalicylate 17.5 mg/kg, all given PO 3 times daily for 3 to 4 
+weeks24
+c) Amoxicillin 30 mg/kg, metronidazole 20 mg/kg, and bismuth 
+subsalicylate 17.5 mg/kg, all given PO 3 times daily for 3 to 4 
+weeks25
+RABBITS/RODENTS/SMALL MAMMALS:
+See Contraindications/Precautions/Warnings.
+Hedgehogs (extra-label): 15 mg/kg IM, SC, or PO every 12 hours26 
+REPTILES:
+Susceptible infections for all species (extra-label): 22 mg/kg PO 
+every 12 to 24 hours; not useful unless used in combination with 
+aminoglycosides.27
+Monitoring
+ ■ Efficacy: resolution of clinical signs
+ ■ Culture and susceptibility as indicated for clinical condition being 
+treated
+ ■ Urine culture may be considered after 5 to 7 days when treating 
+bacterial cystitis for longer periods of time. 14  It is important to 
+note that positive cultures taken at this time should prompt ques-
+tioning the owner about compliance and further investigation as 
+to why the infection has not been eliminated (eg, underlying path- 
+ology [eg, cystic calculi, neoplasia]); a positive culture at this time 
+should not simply prompt a change in antibiotic choice. A nega -
+tive culture during this time frame does not necessarily guarantee 
+resolution of the infection.
+Client Information
+ ■ It is preferred that the oral suspension be refrigerated but this is 
+not absolutely necessary. Any unused oral suspension should be 
+discarded after 14 days.
+ ■ This medicine can be given with or without food, but gastrointes-
+tinal side effects (eg, poor appetite, nausea, vomiting) might be 
+prevented if this medicine is given with food.
+ ■ The most common side effects are diarrhea, vomiting, and loss of 
+appetite.
+ ■ It is important to give this medication exactly as prescribed and to 
+complete the full course of treatment, even if your animal seems 
+better. Missing doses or stopping treatment early may result in 
+treatment failure.
+ ■ Amoxicillin should not be given to rabbits, guinea pigs, chinchil-
+las, hamsters, rodents, or other “pocket pets” , as life-threatening 
+diarrhea may occur. 
+Chemistry/Synonyms
+Commercially available dosage forms contain amoxicillin trihydrate, 
+which occurs as a practically odorless, white, crystalline powder that 
+is sparingly soluble in water. Amoxicillin differs structurally from am-
+picillin only by having an additional hydroxyl group on the phenyl 
+ring.
+Amoxicillin may also be known as amoxycillin, p-hydroxyampi -
+cillin, or BRL 2333; many trade names are available.
+Storage/Stability
+Amoxicillin capsules, tablets, and powder for oral suspension should 
+be stored at room temperature (15°C-30°C [59°F-86°F]) in tight 
+containers. After reconstitution, the oral suspension can be stored 
+at room temperature or refrigerated (refrigeration preferred); any 
+unused product should be discarded after 14 days. Intramammary 
+syringes should be stored at or below 24°C (75°F).
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Amoxicillin Oral Tablets: 50 mg, 100 mg, 150 mg, 200 mg, and  
+400 mg; Amoxi-Tabs®,  Bimox®; generic; (Rx). FDA-approved for use 
+in dogs and cats.
+Amoxicillin Powder for Oral Suspension: 50 mg/mL (after reconsti-
+tution) in 15 mL or 30 mL bottles; Amoxi-Drops®,  Bimox®, generic; 
+(Rx). FDA-approved for use in dogs and cats.
+Amoxicillin Intramammary Infusion: 62.5 mg in 10 mL syringes; 
+Amoxi-Mast®; (Rx). FDA-approved to treat subclinical infectious 
+mastitis in lactating cows. NADA 55-100. (Rx). Withdrawal times: 
+milk— 60 hours after last treatment; slaughter—12 days
+HUMAN-LABELED PRODUCTS:
+Amoxicillin Oral Tablets (chewable): 125 mg, 200 mg, 250 mg, and 
+400 mg; Amoxil® , generic; (Rx)
+Amoxicillin Oral Tablets: 500 mg and 875 mg; Amoxil® , generic; (Rx)
+Amoxicillin Oral Capsules: 250 mg and 500 mg; Amoxil® , generic; 
+(Rx)
+Amoxicillin Powder for Oral Suspension: 125 mg/5 mL (25 mg/mL) 
+in 80 mL, 100 mL, and 150 mL; 200 mg/5 mL (40 mg/mL) in 50 mL, 
+75 mL, and 100 mL; 250 mg/5 mL (50 mg/mL) in 80 mL, 100 mL,  
+and 150 mL; 400 mg/5 mL (80 mg/mL) in 50 mL, 75 mL, and  
+100 mL; Amoxil®,  Trimox® ,  generic; (Rx)
+Amoxicillin Oral Extended-Release Tablets: 775 mg in 30s and UD 
+10s; Moxatag®; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Amoxicillin/Clavulanate
+Amoxicillin/Clavulanic Acid
+(a-mox-i-sill-in clav-yue-lan-ate) Clavamox® , Augmentin®
+Potentiated Aminopenicillin
+Prescriber Highlights
+ ▶ Bactericidal aminopenicillin with beta-lactamase inhibitor that 
+expands its spectrum, increasing susceptibility of bacteria that 
+are resistant to amoxicillin via beta-lactamase production.
+ ▶ Most common adverse effects are GI-related; hypersensitivity 
+and other adverse effects may occur but are rare.
+ ▶ As compared with veterinary-labeled products, human-labeled 
+products contain different ratios of amoxicillin:clavulanate and 
+product strengths are expressed in terms of amoxicillin (only), 
+whereas veterinary products are expressed as the sum of both 
+compounds.
+Uses/Indications
+Amoxicillin/clavulanate potassium tablets and oral suspension prod-
+
+
+===== Plumb PDF 98 =====
+Amoxicillin/Clavulanate   71
+ucts are used in dogs and cats for the treatment of urinary tract, skin 
+(eg, wounds, pyoderma), canine periodontal disease, and soft tissue 
+(eg, abscesses) infections caused by susceptible organisms, particu -
+larly gram-positive bacteria and anaerobes. It is also indicated for 
+respiratory tract infections, although it is ineffective against Myco-
+plasma spp, and resistance to Bordetella spp is an increasing problem 
+in some regions. 
+The World Health Organization has designated amoxicillin/
+clavulanate as a Critically Important antimicrobial for human med-
+icine.1  The Office International des Epizooties (OIE) has designated 
+amoxicillin/clavulanate as a Veterinary Critically Important Antimi-
+crobial (VCIA) Agent in avian, bovine, caprine, equine, ovine, and 
+swine species.2 
+Pharmacology/Actions
+Amoxicillin is a time-dependent, bactericidal agent that acts by in -
+hibiting cell wall synthesis. Amoxicillin generally shares the same 
+spectrum of activity and uses as ampicillin but is better absorbed 
+orally (in nonruminants) and attains higher serum levels. Separate 
+serum and urinary clinical breakpoints are available.
+Penicillins are bactericidal against susceptible bacteria and act by 
+inhibiting mucopeptide synthesis in the cell wall, which results in a 
+defective barrier and an osmotically unstable spheroplast. The exact 
+mechanism for this effect has not been definitively determined, but 
+beta-lactam antibiotics have been shown to bind to several enzymes 
+(eg, carboxypeptidases, transpeptidases, endopeptidases) within 
+the bacterial cytoplasmic membrane that are involved with cell wall 
+synthesis. The different affinities that various beta-lactam antibiotics 
+have for these enzymes (also known as penicillin-binding proteins 
+[PBPs]) help explain the differences in the drugs’ spectrums of ac -
+tivity that are not explained by the influence of beta-lactamases. Like 
+other beta-lactam antibiotics, penicillins are generally considered to 
+be more effective against actively growing bacteria.
+Aminopenicillins (ie, broad-spectrum or ampicillin penicillins) 
+have increased activity against many strains of gram-negative aerobes 
+not covered by either the natural penicillins or penicillinase-resistant 
+penicillins, including some strains of Escherichia coli, Klebsiella spp, 
+and Haemophilus spp. Like the natural penicillins, aminopenicillins 
+are susceptible to inactivation by beta-lactamase–producing bacte -
+ria (eg, Staphylococcus spp, E coli). Although not as active as natural 
+penicillins, aminopenicillins have activity against many anaerobic 
+bacteria, including clostridial organisms. Organisms that are gener-
+ally not susceptible include Pseudomonas aeruginosa, Serratia spp, 
+indole-positive Proteus spp (Proteus mirabilis is susceptible), Entero-
+bacter spp, Citrobacter spp, and Acinetobacter spp. Aminopenicillins 
+are ineffective against methicillin-resistant staphylococci and are in-
+active against mycobacteria, Mycoplasma spp, Rickettsia spp, fungi, 
+protozoa, and viruses. 
+Clavulanic acid has only weak antibacterial activity when used 
+alone and is only available in fixed-dose oral combinations with 
+amoxicillin. Clavulanic acid acts by competitively and irrevers -
+ibly binding to beta-lactamases (including types II, III, IV , and V) 
+and penicillinases produced by staphylococci. Staphylococci that 
+are resistant to penicillinase-resistant penicillins (eg, oxacillin) are 
+considered resistant to amoxicillin/potassium clavulanate, despite 
+susceptibility testing that may indicate otherwise. Amoxicillin with 
+potassium clavulanate is usually ineffective against type I cephalo -
+sporinases. Members of the family Enterobacteriaceae, particularly 
+Pseudomonas aeruginosa , often produce these plasmid-mediated 
+cephalosporinases. When clavulanic acid is combined with amox -
+icillin, there is little, if any, synergistic activity against organisms 
+already susceptible to amoxicillin, but amoxicillin-resistant strains 
+(due to beta-lactamase inactivation) may be covered.
+When Kirby-Bauer susceptibility testing is performed, the Aug-
+mentin®  disk (human-product trade name) is often used. Because the 
+amoxicillin:clavulanic acid ratio of 2:1 in the susceptibility tests may 
+not correspond to in vivo drug levels, susceptibility testing may not 
+always accurately predict efficacy for this combination. A urinary 
+tract-specific breakpoint in dogs and cats for amoxicillin/clavulanate 
+is reported as less than 8/4 μg/mL because of the greater drug levels 
+that are achieved in urine. This breakpoint should only be used for 
+cystitis—not pyelonephritis, for which serum breakpoints should be 
+applied.
+Pharmacokinetics
+Amoxicillin trihydrate is stable in the presence of gastric acid. Af -
+ter oral administration, amoxicillin bioavailability is highly variable 
+between species. Food will decrease the rate but not the extent of 
+oral absorption, and many clinicians suggest giving the drug with food, 
+particularly if there is concomitant GI distress.  In dogs, amoxicillin 
+bioavailability was 64% to 77% following oral administration. 3  In 
+cats, one study found the bioavailability to be ≈77%. 4 Amoxicillin 
+serum levels will generally be 1.5 to 3 times greater than those of 
+ampicillin after equivalent oral doses. In dogs following oral admin-
+istration, maximum plasma concentrations of 11 to 21 µg/mL were 
+reached after ≈1.38 to 2 hours. 3,5  In cats following a 10 mg/kg oral 
+dose, maximum plasma concentrations of 5.89 µg/mL were reached 
+in 1.69 hours.4 
+After absorption, the volume of distribution for amoxicillin is 
+≈0.28 to 0.71 L/kg in dogs3 and 0.86 L/kg in cats.4 The drug is widely 
+distributed to most body tissues and fluids. When meninges are in -
+flamed, amoxicillin will cross into the CSF in concentrations ranging 
+from 10% to 60% of those found in serum. Very low levels of the 
+drug are found in the aqueous humor, and low levels are found in 
+tears, sweat, and saliva. Protein binding in dogs is ≈13%.
+Amoxicillin is eliminated primarily unchanged via renal mecha -
+nisms, principally by tubular secretion; however, some of the drug 
+is metabolized by hydrolysis to penicilloic acids (inactive) and then 
+excreted in the urine. Elimination half-lives of amoxicillin have been 
+reported to be 0.91 to 1.52 hours in dogs 6 and ≈1.25 hours in cats. 4 
+Clearance in cats is reportedly 0.45 L/hour/kg.
+There is no evidence to suggest that the addition of clavulanic acid 
+significantly alters amoxicillin pharmacokinetics.6 As a time-dependent 
+antimicrobial, duration of time above the MIC is critical, so frequent 
+dosing is necessary.
+Clavulanate potassium is stable in the presence of gastric acid and 
+is readily absorbed. In dogs following oral administration, maximum 
+plasma concentrations of 2.06 to 2.3 µg/mL were reached after 0.95 
+to 1.05 hours.5 In cats following oral administration, bioavailability 
+of clavulanic acid was ≈98%, with maximum plasma concentrations 
+of 1.41 µg/mL reached in 1.03 hours.4 
+Clavulanic acid has an apparent volume of distribution of  
+0.32 L/kg in dogs and 0.93 L/kg in cats.4 It is distributed (with amox-
+icillin) into the lungs, pleural fluid, and peritoneal fluid. Low con -
+centrations of both drugs are found in the saliva, sputum, and CSF 
+(uninflamed meninges). Higher concentrations in the CSF are ex -
+pected when meninges are inflamed, 7 but it is questionable wheth -
+er therapeutic concentrations are attainable. Clavulanic acid is 13% 
+bound to proteins in dog serum. 
+Clavulanic acid is apparently extensively metabolized in dogs and 
+rats, primarily to 1-amino-4-hydroxybutan-2-one. It is unknown 
+whether this compound possesses any beta-lactamase–inhibiting 
+activity. The drug is also excreted unchanged in the urine via glom-  
+erular filtration. In dogs, 34% to 52% of a dose is excreted in the 
+urine as unchanged drug and metabolites, 25% to 27% is eliminated 
+in the feces, and 17% into respired air. Urine levels of active drug are 
+considered high but may be only ≈20% of those of amoxicillin. In 
+cats with azotemic chronic kidney disease given amoxicillin\clavu -
+lanic acid, amoxicillin concentration was significantly lower in the 
+
+
+===== Plumb PDF 99 =====
+72    Amoxicillin/Clavulanate
+urine and somewhat higher in serum when compared to cats with -
+out kidney disease.8 
+Elimination half-lives of clavulanic acid are reported to be 0.71 
+to 0.83 hours in dogs 5 and 0.71 hours in cats. 4 Clearance in cats is 
+reportedly 0.92 L/hour/kg.4 
+Contraindications/Precautions/Warnings
+Penicillins are contraindicated in patients with a history of hyper -
+sensitivity to them. Penicillins should be used cautiously in patients 
+with documented hypersensitivity to other beta-lactam antibiot -
+ics (eg, cephalosporins, cefamycins, carbapenems) as there may be 
+cross-reactivity.
+Systemic antibiotics should not be administered orally in patients 
+with septicemia, shock, or other grave illnesses, as absorption of the 
+medication from the GI tract may be significantly delayed or dimin-
+ished. Parental routes should be used for these cases.
+Oral beta-lactam antibiotics and macrolides should not be ad -
+ministered to rabbits, guinea pigs, chinchillas, or hamsters, as seri -
+ous enteritis and clostridial enterotoxemia may occur.
+Adverse Effects
+Adverse effects with the penicillins are usually not serious and have 
+a relatively low frequency of occurrence.
+Hypersensitivity reactions unrelated to dose can occur with these 
+agents and can manifest as rashes (including severe cutaneous reac-
+tions), fever, eosinophilia, neutropenia, agranulocytosis, thrombo -
+cytopenia, leukopenia, anemia, lymphadenopathy, or anaphylaxis.
+When penicillins are given orally, they may cause GI effects (eg, 
+anorexia, vomiting, diarrhea). Because the penicillins may alter GI 
+microbiota, antibiotic-associated diarrhea can occur and can allow 
+for the proliferation of resistant bacteria in the colon (ie, superinfec-
+tions). Probiotic use reduced GI abnormalities and diarrhea in labo-
+ratory cats that received amoxicillin/clavulanate.9 
+Cats diagnosed with chronic kidney disease (CKD) that were azo-
+temic were more likely to experience multiple adverse effects when 
+compared to CKD cats without azotemia.8
+Neurotoxicity (eg, ataxia in dogs) has been associated with high 
+doses or prolonged use of penicillins. Although the penicillins are 
+not considered hepatotoxic, elevated liver enzymes have been re -
+ported with their use. Other effects reported in dogs include tachy -
+pnea, dyspnea, edema, and tachycardia.
+Reproductive/Nursing Safety
+Penicillins have been shown to cross the placenta. Safe use during 
+pregnancy has not been firmly established, but it is not believed to 
+be teratogenic. 
+Amoxicillin and clavulanic acid are found in milk in low con -
+centrations. Because safety has not been established in animals, this 
+drug should only be used when the maternal benefits outweigh the 
+potential risks to offspring.
+Overdosage/Acute Toxicity
+Acute oral penicillin overdoses are unlikely to cause significant prob-
+lems other than GI distress, but other effects are possible (see Ad-
+verse Effects). In humans, very high doses of parenteral penicillins, 
+especially in patients with renal disease, have induced CNS effects.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with amoxicillin/clavulanate have 
+either been reported or are theoretical in humans or animals and 
+may be of significance in veterinary patients. Unless otherwise not -
+ed, use together is not necessarily contraindicated, but the potential 
+risks should be weighed and additional monitoring should be per -
+formed when appropriate.
+ ■ Aminoglycosides  (eg, gentamicin): beta-lactams can inacti -
+vate aminoglycosides in vitro (and in vivo in patients with chronic 
+kidney disease).
+ ■ Bacteriostatic Antimicrobials  (eg, chloramphenicol, 
+erythromycin, minocycline and other macrolides, tetracyclines, 
+sulfonamides): Because there is evidence of in vitro antagonism 
+between beta-lactam antibiotics and bacteriostatic antibiotics, use 
+together generally has not been recommended in the past; howev-
+er, the clinical significance of this is unclear.
+ ■ Leflunomide : Prior, concurrent, or subsequent use of amoxicil-
+lin/clavulanate with leflunomide without observing washout may 
+increase the risk for hepatotoxicity.
+ ■ Methotrexate (MTX) : Amoxicillin may decrease the renal 
+excretion of MTX, causing increased MTX concentrations and 
+potential MTX toxic effects.
+ ■ Mycophenolate : May decrease concentrations of mycopheno-
+late by decreasing concentrations of mycophenolate’s active me-
+tabolite
+ ■ Probenecid : Competitively blocks the tubular secretion of most 
+penicillins, thereby increasing serum concentrations and serum 
+half-lives
+ ■ W arfarin : Concurrent use of amoxicillin/clavulanate may in -
+crease the risk for warfarin-induced bleeding.
+Laboratory Considerations
+ ■ Amoxicillin may cause false positive urine glucose determina -
+tions when cupric sulfate solution (Benedict’s Solution, Clinitest®)  
+is used. Tests using glucose oxidase ( Tes-Tape®, Clinistix® ) are not 
+affected by amoxicillin.
+ ■ Because penicillins and other beta-lactam antibiotics can inacti -
+vate aminoglycosides in vitro (and in vivo in patients in renal 
+failure), serum concentrations of aminoglycosides may be falsely 
+decreased if the patient is also receiving beta-lactam antibiotics, 
+particularly when the serum is stored prior to analysis. It is rec -
+ommended that if there is a delay in running the assay, samples 
+should be frozen and, if possible, drawn at times when the be -
+ta-lactam antibiotic is at a trough.
+Dosages
+NOTE: All dosages listed are for combined quantities of both 
+drugs (unless otherwise noted).
+DOGS:
+Skin and soft tissue infections such as wounds, abscesses, cellu-
+litis, superficial and deep pyoderma due to susceptible strains 
+of the following organisms: beta-lactamase–producing Staphy-
+lococcus aureus, non-beta-lactamase–producing Staphylococcus 
+aureus, Staphylococcus spp, Streptococcus spp, and Escherichia 
+coli. Periodontal infections due to susceptible strains of both 
+aerobic and anaerobic bacteria (label dosage; FDA-approved): 
+13.75 mg/kg PO twice daily. 10 Skin and soft tissue infections such 
+as abscesses, cellulitis, wounds, superficial/juvenile pyoderma, 
+and periodontal infections should be treated for 5 to 7 days or for 
+48 hours after all signs have subsided. If no response is seen after 
+5 days of treatment, therapy should be discontinued and the case 
+reevaluated. Deep pyoderma may require treatment for 21 days; 
+the maximum duration of treatment should not exceed 30 days.
+Sporadic bacterial cystitis (extra-label): 12.5 – 25 mg/kg PO every 
+8 to 12 hours for 3 to 5 days is an acceptable option but is not 
+recommended as empirical therapy (ie, without or before culture 
+and susceptibility testing); amoxicillin (without clavulanic acid) 
+achieves high concentrations in the urine and is preferred for em-
+
+
+===== Plumb PDF 100 =====
+Amoxicillin/Clavulanate   73
+pirical therapy.11 
+Pyoderma (extra-label): 
+a) Superficial pyoderma: 12.5 – 25 mg/kg PO twice daily12 for 
+21 to 28 days up to a maximum of 90 days 13; fair evidence 
+available to support moderate to high efficacy13 
+b) Deep pyoderma: 12.5 – 25 mg/kg PO twice daily for at least 
+28 days, up to a maximum of 90 days 13; good level of evi -
+dence for high efficacy13 
+Endocarditis (chronic therapy) secondary to a susceptible 
+strain of Staphylococcus spp (extra-label): 20 mg/kg PO 3 times 
+daily for 6 to 8 weeks14 
+Canine infectious respiratory disease complex when a bacte -
+rial component is involved (extra-label): 11 mg/kg PO every 12 
+hours (twice daily) as a first-line treatment option for bacterial 
+upper respiratory tract infection not suspected to be caused by 
+Mycoplasma spp15 
+CATS:
+Skin and soft tissue infections such as wounds, abscesses, and 
+cellulitis/dermatitis due to susceptible strains of the following 
+organisms: beta-lactamase–producing Staphylococcus aureus , 
+nonbeta-lactamase–producing Staphylococcus aureus , Staph-
+ylococcus spp, Streptococcus spp, E coli, Pasteurella multocida, 
+and Pasteurella spp. UTIs due to susceptible strains of E coli. 
+(label dosage; FDA-approved): 62.5 mg/cat (NOT mg/kg) PO 
+twice daily.10 Skin and soft tissue infections such as abscesses and 
+cellulitis/dermatitis should be treated for 5 to 7 days or 48 hours 
+after all signs have subsided, not to exceed 30 days. If no response 
+is seen after 3 days of treatment, therapy should be discontinued 
+and the case re-evaluated. UTIs may require treatment for 10 to 
+14 days or longer. The maximum duration of treatment should 
+not exceed 30 days. Therapy may be initiated prior to obtaining 
+results from bacteriological and susceptibility studies. A culture 
+should be obtained prior to treatment to determine susceptibility 
+of the organisms to this drug. Following determination of suscep-
+tibility results and clinical response to medication, therapy may 
+be reevaluated. 
+Sporadic bacterial cystitis (extra-label): 12.5 – 25 mg/kg PO ev -
+ery 8 to 12 hours for 3 to 5 days is an acceptable option but is not 
+recommended as empirical therapy (ie, without or before culture 
+and susceptibility testing); amoxicillin (without clavulanic acid) 
+achieves high concentrations in the urine and is preferred for em-
+pirical therapy.11 
+Upper respiratory tract disease (URTD) with a bacterial com -
+ponent (extra-label): 12.5 mg/kg PO every 12 hours15,16 
+BIRDS:
+Susceptible infections (extra-label): 50 – 100 mg/kg PO every 6 
+to 8 hours17 
+FERRETS: 
+Susceptible infections (extra-label): 10 – 20 mg/kg PO every 8 
+to 12 hours18,19 
+Monitoring
+ ■ Efficacy: resolution of clinical signs
+ ■ Culture and susceptibility as indicated for clinical condition being 
+treated.
+ ■ Urine culture may be considered after 5 to 7 days when treating 
+bacterial cystitis for longer periods of time. 11 It is important to 
+note that positive cultures taken at this time should prompt ques-
+tioning the owner about compliance and further investigation as 
+to why the infection has not been eliminated (eg, underlying path- 
+ology [eg, cystic calculi, neoplasia]); a positive culture at this time 
+should not simply prompt a change in antibiotic choice. A nega -
+tive culture during this time frame does not necessarily guarantee 
+resolution of the infection.
+Client Information
+ ■ The oral suspension should preferably be refrigerated; any unused 
+oral suspension should be discarded after 10 days.
+ ■ This medicine can be given with or without food, but gastroin -
+testinal side effects might be prevented if this medicine is given 
+with food.
+ ■ The most common side effects are diarrhea, vomiting, and loss of 
+appetite
+ ■ It is important to give this medication exactly as prescribed and 
+to complete the full course of therapy, even if your animal seems 
+better. Missing doses or stopping treatment early may result in 
+treatment failure.
+ ■ Do NOT give this drug to rabbits, guinea pigs, chinchillas, ham -
+sters, rodents, or other “pocket pets, ” as life-threatening diarrhea 
+may occur.
+Chemistry/Synonyms
+Commercially available dosage forms contain amoxicillin trihydrate, 
+which occurs as a practically odorless, white, crystalline powder that 
+is sparingly soluble in water. Amoxicillin differs structurally from 
+ampicillin only by having an additional hydroxyl group on the phe-
+nyl ring.
+Clavulanate potassium is a beta-lactamase inhibitor; it occurs as 
+an off-white crystalline powder, has a pKa of 2.7 (as the acid), and is 
+very soluble in water and slightly soluble in alcohol at room tempera-
+tures. Although available in commercially available preparations as 
+the potassium salt, potency is expressed in terms of clavulanic acid.
+Amoxicillin may also be known as amoxycillin, p-hydroxyam -
+picillin, or BRL 2333; many trade names are available. Clavulanate 
+potassium may also be known as clavulanic acid, BRL-14151K, or 
+kalii clavulanas.
+Storage/Stability
+Clavulanate products should be stored at temperatures below 25°C 
+(77°F), and some tablet formulations specify storage at 20°C to 25°C 
+(68°F-77°F). Potassium clavulanate is very susceptible to moisture 
+and should be protected from excessive humidity.
+After reconstitution, oral suspensions are stable for 10 days when 
+refrigerated. Unused portions should be discarded after that time. At 
+room temperature, suspensions labeled for human use are reportedly 
+stable for 48 hours. The veterinary oral suspension requires refrig -
+eration and is reconstituted by adding 14 mL of water and shaking 
+vigorously.
+Compatibility/Compounding Considerations
+No specific information is noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Oral Tablets and Chewable Tablets (4:1 amoxicillin:clavulanic 
+acid ratio):
+62.5 mg: Amoxicillin 50 mg/12.5 mg clavulanic acid (as the potassi-
+um salt); 125 mg: Amoxicillin 100 mg/25 mg clavulanic acid (as the 
+potassium salt); 250 mg: Amoxicillin 200 mg/50 mg clavulanic acid 
+(as the potassium salt); 375 mg: Amoxicillin 300 mg/75 mg clavulan-
+ic acid (as the potassium salt); Clavamox® Tablets, Clavamox® Chew-
+able, generic; (Rx). FDA-approved for use in dogs and cats.
+Powder for Oral Suspension:
+Amoxicillin 50 mg/12.5 mg clavulanic acid (as the potassium salt) 
+per mL in 15 mL dropper bottles; Clavamox® Drops, generic; (Rx). 
+FDA-approved for use in dogs and cats.
+HUMAN-LABELED PRODUCTS:
+NOTE: Human-labeled amoxicillin/clavulanate products have vary-
+
+
+===== Plumb PDF 101 =====
+74    Amphotericin B
+ing ratios of amoxicillin:clavulanate ranging from 2:1 to 7:1. Addi -
+tionally, human products are generally expressed in potency only as 
+the amoxicillin component (eg, Augmentin® 875 contains 875 mg of 
+amoxicillin and 125 mg of clavulanic acid), whereas the veterinary 
+products are expressed as the total of both drugs. 
+Amoxicillin (as trihydrate)/Clavulanic Acid (as potassium salt) 
+Tablets: Amoxicillin 250 mg/125 mg clavulanic acid; Amoxicillin  
+500 mg/125 mg clavulanic acid; Amoxicillin 875 mg/125 mg clavu -
+lanic acid; Augmentin® , generic (Rx)
+Chewable Tablets: Amoxicillin 125 mg/31.25 mg clavulanic acid; 
+Amoxicillin 200 mg/28.5 mg clavulanic acid; 250 mg/62.5 mg clavu-
+lanic acid and 400 mg/57 mg clavulanic acid; Augmentin® , generic; 
+(Rx)
+Powder for Oral Suspension—Amoxicillin/Clavulanic Acid (as po -
+tassium salt) after reconstitution: Amoxicillin 125 mg/31.25 mg 
+clavulanic acid per 5 mL in 75 mL, 100 mL, and 150 mL; Amoxicil -
+lin 200 mg/28.5 mg clavulanic acid per 5 mL in 50 mL, 75 mL, and  
+100 mL; Amoxicillin 250 mg/62.5 mg clavulanic acid per 5 mL in  
+75 mL, 100 mL, and 150 mL; Amoxicillin 400 mg/57 mg clavulanic 
+acid per 5 mL in 50 mL, 75 mL, and 100 mL; 600 mg/42.9 mg clavu-
+lanic acid per 5 mL in 75 mL, 100 mL, 125 mL, and 200 mL; Augmen-
+tin® a n d  Augmentin ES-600®, Amoclan®, generic; (Rx)
+Amoxicillin 1000 mg/62.5 mg clavulanic acid oral extended-release 
+tablet; Augmentin XR®, generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Amphotericin B
+(am-foe-ter-i-sin bee) Abelcet® ,  AmBisome®, Fungizone®
+Antifungal
+Prescriber Highlights
+ ▶ Systemic antifungal used for serious mycotic infections 
+ ▶ Must be parenterally administered (IV or SC infusion) for sys-
+temic infections
+ ▶ Three different forms available on US market: conventional, 
+formulated with sodium deoxycholate (generic); lipid complex 
+(Abelcet®); and liposomal (AmBisome®). Each form has different 
+reconstitution instructions, dilution, stability, storage, and dos-
+age recommendations; thus, they are not interchangeable.
+ ▶ Nephrotoxicity is the biggest concern, particularly with the 
+deoxycholate form; newer products (lipid complex and liposo-
+mal) are less nephrotoxic and penetrate into tissues better but 
+are more expensive.
+ ▶ Renal function monitoring is essential.
+ ▶ Many potential drug interactions
+Uses/Indications
+Amphotericin B has activity against most systemic fungal pathogens 
+in numerous animal species, but because the potential exists for se -
+vere toxicity, its use should generally be limited to severe, life-threat-
+ening infections, progressive disease unresponsive to other antifun-
+gals, or in cases in which antifungal susceptibility warrants its use.
+The liposomal form of amphotericin B can also be used to treat 
+leishmaniasis and, although this form can be clinically effective, 
+relapses inevitably occur. Additionally, concerns about the devel -
+opment of amphotericin B-resistant Leishmania strains in human 
+leishmaniasis has prompted the World Health Organization (WHO) 
+to discourage the use of amphotericin B in the treatment of dogs 
+with leishmaniasis.1,2 
+Pharmacology/Actions
+Amphotericin B is generally fungistatic, but it can be fungicid -
+al against some organisms depending on drug concentration. This 
+drug acts by binding to sterols (primarily ergosterol) in the fungal 
+cell membrane and altering the permeability of the membrane, al -
+lowing intracellular potassium and other cellular constituents to leak 
+out. Because bacteria and rickettsial organisms do not contain ste -
+rols, amphotericin B has no activity against them. Mammalian cell 
+membranes also contain sterols (primarily cholesterol) and the drug’s 
+toxicity may be a result of a similar mechanism of action, although 
+amphotericin B binds less strongly to cholesterol than  ergosterol.
+Amphotericin B has in vitro  activity against a variety of fungal or -
+ganisms, including Blastomyces spp, Aspergillus spp, Paracoccidioi-
+des spp, Coccidioides spp, Histoplasma spp, Cryptococcus spp, Mucor 
+spp, and Sporothrix spp. Although absolute resistance to amphoteri-
+cin B is rare, some strains of Aspergillus spp and Sporothrix spp have 
+high minimum inhibitory concentration (MIC) values. Additionally, 
+amphotericin B has in vivo  activity against some protozoa species, 
+including Leishmania spp and Naegleria spp. Leishmania spp have 
+ergostane-based sterols in their cell membranes, which may explain 
+amphotericin B’s efficacy for treating this organism.
+Pharmacokinetics
+In humans, amphotericin B is poorly absorbed from the GI tract and 
+must be administered parenterally to achieve sufficient concentra -
+tions to treat systemic fungal infections. After IV injection, the drug 
+reportedly penetrates well into most tissues except for the pancre -
+as, muscle, bone, aqueous humor, or pleural, pericardial, synovial, 
+and peritoneal fluids. The drug enters the pleural cavity and joints 
+when inflamed. CSF concentrations are ≈3% of those found in the 
+serum. Approximately 90% to 95% of amphotericin in the vascular 
+compartment is bound to serum proteins. 3 The newer lipid forms 
+of amphotericin B have higher penetration into the lungs, liver, and 
+spleen than the conventional form. The lipid complex formulation 
+reaches higher peak plasma concentrations and has a larger volume 
+of distribution (131 L/kg) as compared with conventional formula -
+tions (5 L/kg).4
+The metabolic pathways of amphotericin B are not known, but 
+amphotericin B exhibits biphasic elimination. In humans, an initial 
+serum half-life of ≈24 hours and a longer terminal half-life of ≈15 
+days have been described for the conventional formulation. 3 Seven 
+weeks after treatment has stopped, amphotericin B can still be de -
+tected in the urine. Approximately 2% to 5% of the drug is recovered 
+in the urine in unchanged (biologically active) form.
+Contraindications/Precautions/Warnings
+Amphotericin B is contraindicated in patients that are hypersensi -
+tive to it.3 Only use amphotericin B to treat severe, life-threatening 
+infections, progressive disease unresponsive to other antifungals, or 
+in cases in which it is indicated by antifungal susceptibility results.
+Because of the serious nature of the diseases treated with systemic 
+amphotericin B, it is not absolutely contraindicated in patients with 
+renal disease, but it should be used cautiously with adequate mon -
+itoring and only when safer options (eg, fluconazole, itraconazole) 
+have failed. 
+Do not confuse amphotericin B formulations. Each amphoteri -
+cin B formulation (ie, deoxycholate [conventional], lipid complex, 
+or liposomal) has different reconstitution instructions, dilution, sta-
+bility, storage, and dosage recommendations; thus, they are not in -
+terchangeable. Because of the toxicity of this drug, dose calculations 
+and solution preparation procedures should be double-checked.
+Adverse Effects
+Amphotericin B is known for its nephrotoxic effects; most mamma-
+lian patients will show some degree of renal toxicity after receiving 
+
+
+===== BSAVA PDF 493 =====
+Index: therapeutic class
+477
+APPENDIX I: GENERAL INFORMATIONAPPENDIX II: PROTOCOLSINDEX: GENERIC AND TRADE NAMESINDEX: THERAPEUTIC CLASS
+Beta-lactams
+Amoxicillin  24
+Ampicillin  27
+Cloxacillin  98
+Co-amoxiclav  98
+Penicillin G  309
+Piperacillin  327
+Ticarcillin  402
+Cephalosporins
+Cefalexin  67
+Cefotaxime  68
+Cefovecin  69
+Ceftazidime  70
+Ceftiofur  71
+Cefuroxime  72
+Fluoroquinolones
+Ciprofloxacin  86
+Enrofloxacin  147
+Marbofloxacin  242
+Ofloxacin  290  
+Orbifloxacin  293
+Pradofloxacin  335
+Lincosamides
+Clindamycin  91
+Lincomycin  230
+Macrolides
+Azithromycin  40
+Clarithromycin  89
+Erythromycin  152  
+Tylosin  420
+Nitrofurans
+Nitrofurantoin  285
+Nitroimidazoles
+Metronidazole  262  
+Sulphonamides
+Silver sulfadiazine  376
+ Trimethoprim/sulphonamide  
+   418
+Tetracyclines
+Doxycycline  140
+Minocycline  269
+Oxytetracycline  296
+Others
+Chloramphenicol  72
+Clofazimine  92
+Florfenicol  166
+Fusidic  acid  178
+Mupirocin  277
+Polymyxin  B  330
+Rifampin  359
+Trimethoprim  418
+Antifungals
+Amphotericin  B  25
+Climbazole  91
+Clotrimazole  97
+Enilconazole  146
+Fluconazole  167
+Flucytosine  168
+Itraconazole  214  
+Ketoconazole  219
+Miconazole  265
+Nystatin  287
+Silver sulfadiazine  376
+Terbinafine  393
+Antiprotozoals
+Allopurinol  11  
+Amprolium  28
+Imidocarb dipropionate  204
+Meglumine antimonate  249
+Metronidazole  262  
+Miltefosine  268
+Pentamidine isethionate  309
+Pyrimethamine  353
+Ronidazole  363
+Sodium stibogluconate  382
+Toltrazuril  407
+Anthelmintics
+Dichlorophen  122
+Emodepside  144
+Febantel  158
+Fenbendazole  159
+Oxantel  295
+Piperazine  328
+Praziquantel  337
+Pyrantel  351
+Anti-infectives continued
+
+
+===== BSAVA PDF 494 =====
+Index: therapeutic class
+478
+APPENDIX I: GENERAL INFORMATIONAPPENDIX II: PROTOCOLSINDEX: GENERIC AND TRADE NAMES INDEX: THERAPEUTIC CLASS
+Anti-neoplastic
+Behaviour modifiers
+Blood and immune system
+Alkylating agents
+Chlorambucil  75  
+Cyclophosphamide  102  
+Dacarbazine  106
+Melphalan  252  
+Temozolomide  392
+Anthracycline glycosides
+Doxorubicin  138
+Epirubicin  149
+Antimetabolites
+Cytarabine  104
+Gemcitabine  181
+Hydroxycarbamide  198  
+Platinum analogues
+Carboplatin  62
+(see also Safety and handling of 
+chemotherapeutic agents and 
+Chemotherapy protocols in the 
+Appendix)
+Vinca alkaloids
+Vinblastine  424
+Vincristine  425
+Antineoplastic NSAIDs
+Piroxicam  324  
+Tyrosine kinase inhibitors
+Masitinib mesylate  245
+Toceranib  405
+Others
+Asparaginase (l-Asparaginase, 
+Crisantaspase)  31
+Bleomycin  47
+Dactinomycin  106
+Dexrazoxane  118
+Fluorouracil  170
+Lomustine  235
+Methotrexate  258  
+Mitoxantrone  272
+Rabacfosadine  356
+Alprazolam  12  
+Amitriptyline  22  
+a-Casozepine  66
+Cat appeasing pheromone  66
+Clomipramine  93
+Diphenhydramine  129
+Dog appeasing pheromone  133
+Doxepin  138
+Feline facial fraction  F3  158
+Fluoxetine  171  
+Lorazepam  237  
+Mirtazapine  270  
+Propentofylline  346
+Selegiline  371
+l-Theanine  397
+Serotonergic
+Imipramine  205
+Paroxetine  305
+Sertraline  372  
+Trazodone  413  
+Anticoagulants
+Aspirin  32  
+Clopidogrel  96  
+Heparin (low molecular weight)  
+191
+Heparin (unfractionated)  192
+Colony-stimulating growth 
+factors
+Darbepoetin  180  
+Erythropoietin  153  
+Filgrastim  162
+Lenograstim  226
+Lithium carbonate  233
+Immunostimulants
+Interferon omega  210
+Immunosuppressives
+Azathioprine  38  
+Ciclosporin  81
+Immunoglobulins  206
+Leflunomide  225
+Mycophenolate mofetil  278  
+Tacrolimus  390
+
+
+===== BSAVA PDF 495 =====
+Index: therapeutic class
+479
+APPENDIX I: GENERAL INFORMATIONAPPENDIX II: PROTOCOLSINDEX: GENERIC AND TRADE NAMESINDEX: THERAPEUTIC CLASS
+Cardiovascular
+Alpha-blockers
+Phenoxybenzamine  317  
+Beta-blockers
+Atenolol  34  
+Carvedilol  64
+Propranolol  348  
+Antiarrhythmics
+Amiodarone  20  
+Digoxin  123  
+Esmolol  154  
+Mexiletine  264  
+Sotalol  383  
+Verapamil  423
+Antihypertensives
+Amlodipine  23  
+Antiplatelet aggregators
+Aspirin  32  
+Clopidogrel  96  
+Diuretics
+Amiloride  16
+Furosemide  176
+Hydrochlorothiazide  195
+Spironolactone  385
+Torasemide  409
+Positive inotropes
+Dobutamine  131
+Dopamine  135
+Pimobendan  326
+Vasoconstrictors
+Ephedrine  148
+Vasodilators
+Benazepril  42
+Diltiazem  125
+Enalapril  145
+Glyceryl trinitrate  186
+Hydralazine  194
+Imidapril  203
+Prazosin  338  
+Ramipril  356
+Sildenafil  375  
+Telmisartan  391
+Others
+Dexrazoxane  118
+Dermatological
+Cleansers and sebolytics
+Chlorhexidine  78
+Sodium hypochlorite  381
+Antihistamines
+Cetirizine  73
+Chlorphenamine  79  
+Clemastine  90
+Cyproheptadine  103  
+Diphenhydramine  129
+Hydroxyzine  199
+Loratadine  236
+Promethazine  344
+Anti-inflammatory topical 
+steroids
+Hydrocortisone aceponate  197
+Anti-inflammatory – others
+Lokivetmab  234
+Nicotinamide  289
+Oclacitinib  289
+Sodium cromoglicate  381
+Ecto- and endoparasiticides
+Eprinomectin  151
+Indoxacarb  207
+Ivermectin  216
+Milbemycin  267
+Selamectin  371
+Spinosad  384
+Ectoparasiticides
+Afoxolaner  6
+Amitraz  21
+Deltamethrin  110
+Dinetofuran  128
+Fipronil  164
+Flumethrin see Imidacloprid  202
+Fluralaner  172
+Imidacloprid  202
+Lotilaner  238
+Lufenuron  238
+Moxidectin  276
+Nitenpyram  285
+Permethrin  312
+Pyriprole  354
+Sarolaner  369
+Environmental ectoparasiticides
+Methoprene  257
+Pyriproxyfen  355
+Hormonal replacements
+See Endocrine
+Immunosuppressives
+Ciclosporin  81
+Vasodilator
+Pentoxifylline  311  

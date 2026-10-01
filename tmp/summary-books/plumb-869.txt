@@ -1,0 +1,254 @@
+842      Methadone
+curs as white to off-white crystals that are slightly soluble in alcohol 
+and freely soluble in water. It is a weak base—a 1% aqueous solution 
+of metformin HCl has a pKa of 6.68, and a metformin base has a pKa 
+of 12.4.
+Metformin HCl may also be known as dimethylbiguanide HCl 
+or metforimini hydrochloridium. There are many proprietary names 
+outside of the United States for this drug.
+Storage/Stability
+Store metformin HCl oral products (tablets, sustained-release tab-
+lets) protected from light at a controlled room temperature of 
+20°C to 25°C (68°F-77°F). Excursions permitted to 15°C to 30°C 
+(59°F-86°F). 
+Compatibility/Compounding Considerations
+No specific information was noted.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Metformin HCl Oral Tablets: 500 mg, 850 mg, and 1000 mg; Gluco-
+phage®, generic; (Rx)
+Metformin HCl Extended-Release Oral Tablets: 500 mg, 750 mg, and 
+1000 mg; Glucophage XR®, Glumetza®, Fortamet®, generic; (Rx)
+Metformin HCl Oral Solution: 500 mg/5 mL (100 mg/mL) in 
+118 mL and 473 mL; Riomet®; (Rx)
+There are also fixed-dose oral tablet combination products available 
+containing metformin and glyburide or glipizide.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Methadone
+(meth-a-done)  Dolophine®, Methadose®
+Opioid Agonist
+Prescriber Highlights
+	
+▶Opioid mu-receptor agonist with NMDA blocking properties 
+used in dogs, cats, and horses
+	
+▶Can be used for sedation, as premedication before anesthesia, 
+and for analgesia 
+	
+▶Adverse effects include panting, vomiting, vocalization, defe-
+cation postinjection, bradycardia, and respiratory depression.
+	
+▶Many possible drug interactions
+	
+▶DEA Schedule II (C-II) controlled substance in the United States
+	
+▶Effects can be reversed with naloxone.
+Uses/Indications
+Methadone may be used as an opioid sedative, preanesthetic, or an-
+algesic agent. Methadone use as a premedication reduces MAC re-
+quirements.1 Methadone has demonstrated an analgesic effect after 
+epidural use in horses.2 Poor bioavailability precludes oral adminis-
+tration in dogs.3 
+Pharmacology/Actions
+In small animal species, methadone acts similarly to morphine with 
+regard to its degree of analgesia and duration of action. Methadone is 
+a synthetic mu-receptor agonist that is supplied as a racemic mixture; 
+the L-isomer is up to 50 times more potent as a µ-agonist than the 
+D-isomer. Agonism of the mu-opioid receptor (a g-protein coupled 
+receptor) on both pre- and postsynaptic neurons results in decreased 
+transmission and modulation of pain. Presynaptically, binding of the 
+mu-opioid receptor results in closure of calcium ion channels and 
+reduction of neurotransmitter release. Postsynaptically, agonism will 
+open potassium channels, resulting in hyperpolarization and inhi-
+bition of postsynaptic neurons.4 Both methadone isomers are non-
+competitive inhibitors of NMDA (N-methyl-D-aspartate) receptors5 
+and can reduce reuptake of norepinephrine,6 which may also con-
+tribute to its analgesic effects, especially in patients tolerant to other 
+opioids7,8; however, the therapeutic application of this is unknown. 
+Methadone’s depression of the medullary respiratory center re-
+sults in respiratory depression, and stimulation at the vagal center 
+can cause bradycardia. Methadone is more lipid-soluble than mor-
+phine and is therefore more potent due to having more favorable 
+pharmacokinetics. IV administration of methadone has potential for 
+histamine release, but studies have shown no resulting hemodynam-
+ic instability9; histamine release following administration of metha-
+done by other routes is unknown but possible.
+Pharmacokinetics
+In dogs, methadone has poor oral bioavailability due to extensive 
+first-pass metabolism.3,10 Coadministration of multiple CYP450 in-
+hibitors (eg, ketoconazole, fluconazole, fluoxetine, trimethoprim, 
+chloramphenicol) presumably affects different isoenzymes in dogs 
+and has been shown to significantly increase oral absorption, area 
+under the curve (AUC), and plasma concentrations of methadone.3,11 
+Methadone absorption after oral transmucosal administration is 
+slower and reduced as compared with methadone given IM.12 SC ad-
+ministration has a bioavailability of ≈80%, with peak concentrations 
+occurring ≈1 hour after administration. Bioavailability is ≈90% after 
+IM administration,6 with peak concentrations occurring within 5 to 
+15 minutes. VdSS is ≈5 to 6 L/kg, and protein binding is 60% to 90%.6 
+Terminal elimination half-life after IV administration is ≈1.75 to 4 
+hours; clearance is ≈25 to 50 mL/kg/minute.13,14 After SC and IM ad-
+ministration, half-life is ≈11 hours and ≈1 to 2 hours, respectively; 
+however, there is wide interpatient variation.6,14
+In cats, bioavailability of buccal (ie, oral transmucosal [OTM]) 
+methadone is 44%.15 After administration of methadone 0.3 mg/kg 
+IV or 0.6 mg/kg via OTM administration, peak concentrations oc-
+curred at 10 minutes (IV) and 2 hours (OTM).16 A 0.6 mg/kg IM 
+dose provides 4 hours of analgesia and reaches plasma concentration 
+between 40 to 124 ng/mL. Tmax and clearance were 20 minutes and 
+9.1 mL/kg/minute, respectively.17
+In horses, methadone given PO appears to be well absorbed, but 
+bioavailability is ≈3 times lower when administered intragastrically. 
+P-glycoprotein may play a role in the poor intestinal absorption of 
+methadone in vivo. Elimination half-life is ≈1 to 2 hours, and clear-
+ance is 5 to 8 mL/kg/minute.18,19
+In goats, methadone has a high bioavailability and volume of distri-
+bution (7 L/kg) after SC administration, with a half-life of ≈3.6 hours. 
+IV administration resulted in a terminal half-life of ≈1.5 hours.20 Elim-
+ination half-life after IM administration was ≈1.4 hours.21 
+In humans, methadone is well absorbed from the GI tract via PO 
+administration and after parenteral injection (SC or IM). Methadone 
+is widely distributed and extensively bound to plasma proteins (60% 
+to 90%, principally alpha1-acid glycoprotein). Methadone is metab-
+olized in the liver to inactive metabolites primarily by the CYPP450, 
+CYP3A, and CYP2B6 isoenzymes, but other isoenzymes also play 
+metabolic roles. Methadone’s half-life in humans is widely variable 
+(15 to 60 hours). Elimination half-lives of methadone may be ex-
+tended if giving multiple doses.
+Contraindications/Precautions/Warnings
+Methadone is contraindicated in animals hypersensitive to narcotic 
+analgesics and in animals with any condition associated with respira-
+tory depression, acute respiratory dysfunction, advanced respiratory 
+failure, and severe hepatic or renal dysfunction, as well as during 
+parturition.6,22,23
+
+Methadone      843
+Use methadone with extreme caution in patients with head inju-
+ries, increased intracranial pressure, or acute abdominal conditions 
+(eg, colic), as it may obscure the diagnosis or clinical course of these 
+conditions.
+Use opioids with caution in patients with hypothyroidism and 
+hypoadrenocorticism (ie, Addison’s disease), as well as geriatric and 
+severely debilitated patients. Neonatal, debilitated, and geriatric pa-
+tients or patients with severe hepatic disease may be more suscepti-
+ble to the effects of methadone, may require lower doses, and should 
+be monitored closely. Greyhounds may require higher doses than 
+other breeds.24
+Methadone can cause bradycardia and therefore should be used 
+cautiously in patients with pre-existing bradyarrhythmia. Hypoten-
+sion may occur and result in decreased cardiac output and blood 
+pressure.
+Because vomiting may occur, methadone as a preanesthetic in 
+animals with suspected gastric dilatation-volvulus or intestinal ob-
+struction is usually not recommended.
+Opioid analgesics are contraindicated in patients stung by scorpi-
+ons (eg, Centruroides spp) as it may potentiate venom effects.25
+Some dosage forms may contain benzylalcohol as a preservative. 
+In human newborns, benzylalcohol and derivatives can potentially 
+displace bilirubin from protein binding sites; caution in human ne-
+onates is advised. There is an FDA black-box warning regarding the 
+risk for misuse and abuse, respiratory depression, QT prolongation, 
+neonatal withdrawal syndrome, accidental ingestion, and addiction 
+treatment when prescribing methadone for humans. QT intervals 
+may be prolonged in patients taking methadone, which can result in 
+life-threatening arrhythmia. Use caution in patients with prolonged 
+QT intervals or those receiving medications that can further prolong 
+QT intervals. See Drug Interactions.
+Extreme care should be taken when administering methadone; 
+spillage onto the skin can result in respiratory depression. If metha-
+done comes in contact with skin, wash the area thoroughly and seek 
+medical advice.
+Adverse Effects
+In dogs, adverse effects can include panting,26 whining/vocaliza-
+tion,14 dysphoria, sedation, anorexia,27 emesis, urination and/or 
+defecation (shortly after injection), constipation or paralytic ileus, 
+reduced body temperature,3 bradycardia, and respiratory depression 
+or apnea. Systemic vascular resistance may increase.28,29 Adverse 
+effects appear to be dose-related.1,30 Methadone tends to cause less 
+sedation or vomiting than morphine.31 Methadone has a greater car-
+diodepressant effect than morphine.32
+In cats, methadone appears to cause less excitation (eg, lip licking, 
+salivation, tremors, urination, vocalization) and vomiting than some 
+other mu-agonists, but these effects can occur. Pupil dilation persists 
+after analgesia in cats.6 Hyperalgesia has also been reported in cats. 
+In horses, methadone 0.1 mg/kg IV or greater has caused pro-
+nounced CNS excitement. Gut sounds may be diminished.33 Mean 
+arterial pressure may be increased when administered in combina-
+tion with detomidine.34
+In sheep, methadone 0.5 mg/kg IV may result in drooling, brux-
+ism, mydriasis, nystagmus, vocalization, and tremors. Rumination 
+was inhibited in goats receiving SC methadone.20
+Reproductive/Nursing Safety
+Effects on the hypothalamic–pituitary–gonadal axis may cause tes-
+ticular regression, decreased testosterone concentrations, and re-
+duced sexual activity in males. Administration to animals from the 
+time of organogenesis through lactation has resulted in increased 
+neonate mortality, decreased litter size, neural tube defects, and life-
+long behavior alterations.35 
+In humans, methadone is relatively safe to use at low doses for 
+short periods during the first 2 trimesters of pregnancy; methadone 
+administered late in term has caused significant respiratory depres-
+sion and increased stillbirths. 
+Epidural administration results in lower umbilical cord meth-
+adone concentration than IV methadone.36 Some veterinary-ap-
+proved product labels outside of the United States state that metha-
+done is contraindicated for use in animals during parturition.23  
+Methadone has been found in breast milk and there are subse-
+quently low plasma concentrations in nursing human infants.
+Although methadone enters maternal milk, it is considered com-
+patible with breastfeeding in women.37
+Overdose/Acute Toxicity
+Overdose may produce profound respiratory and/or CNS depression 
+in most species. Newborn animals may be more susceptible to these 
+effects than adults. In dogs, a lethal dose of 50% (LD50) is reported 
+to be 29 mg/kg.38 A dose of 4 mg/kg can be fatal in cats.6 Other toxic 
+effects can include cardiovascular collapse, hypothermia, and skele-
+tal muscle hypotonia. Seizures may occur at very high doses (ie, 10 
+times the therapeutic dose).22,23 
+Naloxone, an opioid antagonist, is the agent of choice in treating 
+respiratory depression. Naloxone may need to be readministered in 
+cases of larger overdoses. Patients given naloxone must be observed 
+closely because naloxone’s effects may diminish before subtoxic con-
+centrations of methadone are reached. Mechanical respiratory sup-
+port should be considered in cases of severe respiratory depression. 
+Dialysis, charcoal hemoperfusion, and forced diuresis do not appear 
+to be beneficial in treating methadone overdose.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving methadone and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate. In hu-
+mans, the FDA-approved product has a black-box warning regard-
+ing the risk for fatal respiratory depression when methadone is ad-
+ministered with other CYP inhibitors. 
+	■Alpha2-Receptor Agonists (eg, detomidine, dexmedeto-
+midine, xylazine): Although methadone combinations with al-
+pha2-receptoragonists are generally safe and effective,39 severe 
+hypoxemia was seen in dogs breathing room air in one study us-
+ing methadone/medetomidine combination.40 Detomidine may 
+reduce methadone clearance in horses41
+	■Antiarrhythmics, Class I and III (eg, amiodarone, lido-
+caine, procainamide, quinidine): Use with methadone may in-
+crease the risk for arrhythmia, including QT prolongation.
+	■Anticholinergic Agents (eg, atropine, clomipramine, di-
+phenhydramine, hyoscyamine, procainamide): Medications 
+with anticholinergic properties may increase the risk for urinary 
+retention and constipation when combined with opioids.
+	■Azole Antifungals (eg, fluconazole, itraconazole, keto-
+conazole): May increase methadone plasma concentrations. 
+Methadone is contraindicated with ketoconazole in humans. 
+In dogs, ketoconazole did not appreciably increase methadone 
+absorption following oral administration in one study10 but ap-
+peared to increase oral methadone absorption, peak methadone 
+concentration, and total drug exposure (AUC) in another study.3 
+Fluconazole appears to increase oral methadone absorption, peak 

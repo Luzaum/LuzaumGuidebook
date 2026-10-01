@@ -1,0 +1,207 @@
+SECTION XVI
+•
+Gastrointestinal Disease
+1760
+eBooks.Health.Elsevier.com
+Treatment
+Smaller patients and minor hernias can sometimes be managed 
+medically with stool soeners, enemas, and intermittent manual 
+extraction of feces. If UBR or other organ entrapment exists, man-
+ual decompression via emergency cystocentesis and immediate 
+surgery are mandatory. e primary goal of surgical repair always 
+involves reconstruction of the pelvic diaphragm. Traditional sur-
+gery refers to a herniorrhaphy, oen with an internal obturator 
+muscle transposition.55-57 Herniorrhaphy is usually sucient for 
+most uncomplicated PHs, but further steps to strengthen the pel-
+vic diaphragm might be necessary. Additional measures include 
+polypropylene mesh reinforcement,58 semitendinosus muscle ap 
+transposition,59 and/or biological membrane implantation.60 61
+Repositioning or pexy of entrapped organs might be necessary 
+prior to herniorrhaphy.53 Colopexy is not the recommended 
+repair of choice unless RP is also present.15 52 For intact males, 
+castration is recommended given that intact status is considered a 
+risk factor (e.g., increased relaxin, enlarged prostate compressing 
+pelvic wall).
+Prognosis
+e prognosis varies depending on whether underlying comor-
+bidities and organ entrapment are present. While some studies 
+have cited UBR to predict a worse prognosis (e.g., a 30% mortality 
+rate in a large study of 100 dogs41), a case series of 41 dogs with 
+PH found no increase in mortality between dogs with and with-
+out UBR.52 e most common short-term postoperative compli-
+cations include incisional infection, RP, and tenesmus, in order of 
+occurrence.41 62 Postoperative tenesmus is a risk factor for recur-
+rence with an internal obturator muscle transposition.55
+PERIANAL FISTULA/CANINE ANAL FURUNCULOSIS
+Perianal stulas (PAFs), which are synonymous with canine 
+anal furunculosis, are characterized by ulceration, draining 
+tracts, purulent discharge, and necrosis of perianal tissue (Figure 
+264.7). e disease is most similar to stulizing Crohn’s disease in 
+humans, although communication between draining tracts and 
+the rectal lumen is rarely seen in dogs. Severe cases might develop 
+rectoanal stenosis, structuring, or PH. GSDs are overrepresented, 
+comprising up to 85% of some PAF populations.63 A genetic com-
+ponent is suspected to be part of the underlying pathophysiologic 
+mechanism in this breed.64-66 Other recognized breeds include 
+the Australian Shepherd, Beagle, Border Collie, Bouvier des Flan-
+dres, English Bulldog, Irish Setter, and Labrador Retriever.67-69
+Pathogenesis
+Factors that might play a role in the development of PAF in 
+GSDs include canine major histocompatibility complex (MHC) 
+immune response genes, pro-inammatory cytokines, and cer-
+tain matrix metalloproteinases (MMPs).64 70 71 A study looking 
+at 107 GSDs with PAF in the United Kingdom versus healthy 
+breed-matched controls found that dog leukocyte antigen (DLA)-
+DRB1*00101 was positively associated with the presence of PAF.64
+Homozygous dogs also tend to develop PAF at a younger age (< 8 
+years).64 65 Further evidence for a genetic basis in GSDs is the pos-
+itive association of ADAMTS16 and CTNND2 gene regions with 
+the presence of PAF, determined from a large genome-wide asso-
+ciation study.66 Importantly, the CTNND2 gene has been linked to 
+Crohn’s disease and ulcerative colitis in people. mRNA expression 
+of pro-inammatory cytokines (i.e., interleukins 1-beta, 2, 6, and 
+Figure 264.6
+Urinary bladder retroexion and entrapment pictured 
+intraoperatively in a dog with a perineal hernia. (Courtesy Dr. Whitney 
+DeGroot, Veterinary Emergency Clinic, Toronto, Ontario, Canada.)
+A
+B
+Figure 264.7
+Perianal stulae in 2 dierent German Shepherd Dogs. 
+e tracts can form a trajectory that is either parallel (A) or perpen-
+dicular (B) to the anal canal, as well as develop erythema (A) and/or 
+purulent discharge (B). (Courtesy Dr. Alison Diesel, Texas A&M Uni-
+versity, College Station, TX, and Dr. Linda Frank, University of Tennes-
+see, Knoxville, TN.)
+
+CHAPTER 264
+•
+Rectoanal Diseases
+1761
+eBooks.Health.Elsevier.com
+8, and tumor necrosis factor [TNF]-alpha)70 and MMPs-9 and 
+1371 is increased in the tissue of PAF dogs compared to healthy 
+controls. e MMPs are produced by macrophages, and might 
+signify type 1 helper T-cell dysfunction as an important contrib-
+uting factor. While these ndings suggest that pro-inammatory 
+cytokines contribute to PAF development, the anti-inammatory 
+IL-10 has also been identied as increased,70 making it challeng-
+ing to decipher whether the altered cytokines contribute to or are 
+a result of PAF. It has been determined that TNF-alpha is likely 
+elevated due to a linkage disequilibrium with an abnormal DLA-
+DRB1*0010165 due to the close proximity of the 2 genes in the 
+MHC. ese associations point towards a dysregulation in T-cell 
+immunity, especially considering that biopsies from dogs with 
+PAF have shown increased aggregates of CD3+ lymphocytes63
+and type 1 T helper cell mRNA expression.70
+Other conditions that might contribute to PAF development 
+include a high moisture environment from low tail carriage, pre-
+existing bacterial infection, an increased density of perianal apo-
+crine glands,72 and potentially cutaneous adverse food reactions 
+(CAFRs, ch. 166).73 74 A recent study investigating the intestinal 
+microbiota of dogs with PAF identied some clinically aected 
+dogs as dysbiotic (i.e., increased abundances of Bacteroides vulga-
+tus and Escherichia coli and decreased abundances of Megamonas
+sp. and Prevotella copri), while others had a normal microbiota.75
+Diagnosis
+Middle-aged, adult dogs (mean age: 4-7 years)76 most commonly 
+develop PAF. Presenting clinical signs oen include excessive 
+grooming, tenesmus (ch. 51), hematochezia (ch. 50), purulent 
+discharge from beneath the tail (Figure 264.7, B) and in some 
+cases, fecal incontinence. Because there is an established associa-
+tion between PAF and colitis,77 dogs might also present with signs 
+indicative of LI disease (ch. 263). Dierential diagnoses should 
+include ulcerated perianal tumors (e.g., adenomas, adenocarci-
+nomas), abscesses, FBs or, less commonly, mucocutaneous lupus 
+erythematous (MCLE; ch. 178).78 PAFs and MCLE can usually be 
+dierentiated based on dierences in lesion distribution. With 
+MCLE, lesions usually appear slightly merged together rather 
+than divided into distinct “tracts” as seen with PAF.78
+Visual inspection of the perianal region is oen sucient to 
+denitively diagnose PAF, especially in predisposed breeds. Care-
+ful assessment of the anal sacs, digital rectal examination, and 
+expression of the anal sacs should be performed. Sedation is oen 
+necessary to accomplish these tasks due to extreme discomfort of 
+that region. Further imaging such as stulograms might be neces-
+sary for select cases in order to assess for rectocutaneous stulas 
+(i.e., communication with the rectal lumen). Biopsies are oen 
+unnecessary, but can be performed if concurrent colonic disease 
+is suspected or if PE alone does not dierentiate PAF from MCLE.
+Treatment
+PAFs pose a therapeutic challenge, as remission cannot be achieved 
+in all cases. e goals of treatment, which should be emphasized to 
+owners, are to slow disease progression and ideally induce clinical 
+remission. Medical management is standard, and surgery should 
+only be pursued if comorbidities (e.g., abscessation) exist at the 
+time of diagnosis or if 6 weeks of medical therapy fails to induce 
+remission.67 e cornerstone of medical management is immuno-
+suppression, including calcineurin inhibitors (i.e., cyclosporine A 
+[CsA], tacrolimus), steroids, and nonsteroidal immunosuppressive 
+agents (e.g., azathioprine, mycophenolate mofetil [ch. 144]). Cal-
+cineurin inhibitors are preferred as they specically inhibit T-cell-
+mediated immunity. A randomized, controlled trial comparing 
+single agent CsA with placebo in 20 GSDs found that all dogs in the 
+CsA group (n=10) showed improvement in lesions aer 4 weeks of 
+therapy, with 85% achieving remission by 16 weeks.69 None of the 
+control group dogs achieved remission. e dosage and formu-
+lation of CsA are also important to consider. While various dos-
+ages and dosing frequencies (i.e., once79,80 or twice81 daily) have 
+successfully induced remission,69,79,81 higher dosages are associ-
+ated with an improved chance of success.80 Ketoconazole (KZ) is 
+commonly used in conjunction with CsA to reduce the dosage of 
+CsA (chs. 139, 141). is helps reduce the cost of treatment as well 
+as potential side-eects associated with CsA. Controlled studies 
+assessing the ecacy of combination CsA-KZ have documented 
+65-100% of dogs achieving remission 3-16 weeks into therapy.82-84
+All dogs have maintained remission throughout the duration of 
+the trial. A dosage range of 2-4 mg/kg/day CsA combined with 
+5-10 mg/kg/day KZ is a currently acceptable starting regime,67
+with recommendations to escalate the dosage if no improvement 
+is seen in the rst 4-5 weeks.80 Once there has been substantial 
+clinical improvement, the dosage of CsA should be slowly tapered 
+(e.g., ∼25% reduction every 4-8 weeks), if appropriate based on 
+clinical status. Microemulsied or modied formulations are pre-
+ferred due to increased bioavailability (ch. 169). e CsA should 
+be administered on an empty stomach (i.e., ≥2 hours before and 
+aer a meal) to maximize absorption. Controlled studies evaluat-
+ing topical tacrolimus are lacking. In one published study, 50% of 
+dogs treated with tacrolimus twice daily achieved clinical remis-
+sion.85 Topical tacrolimus is reportedly irritating to tissues,67 and 
+therefore might be more suitable for smaller lesions.
+While prednisone is preferable to no therapy, the remission 
+rates are not as favorable as with CsA (only ∼33% in 1 study77
+using prednisone in conjunction with a novel protein diet), and 
+long-term side eects can aect quality of life, especially consid-
+ering many aected dogs are large-breed dogs. Remission rates 
+with azathioprine treatment of PAF are variable,86,87 and one 
+report investigating MMF showed no response.88
+A new therapy, which has been successful for people with s-
+tulizing Crohn’s disease, is local mesenchymal stem cell (MSC) 
+therapy. One veterinary study documented improvement in a 
+small group (n=6) of dogs with PAF given local human embry-
+onic MSC into their stula sites.89 ese dogs had failed at least 
+6 months of standard CsA therapy, and all showed resolution 
+of their draining tracts 3 months post-injection. e dogs were 
+followed for 6 months, and 2/6 dogs had recurrence of PAF by 
+the end of the monitoring period. us, while MSC treatment 
+appears promising, further studies are necessary before it can be 
+recommended for routine management of PAF.
+Given the concern that cutaneous adverse food reaction might 
+be a factor in development of PAF, many clinicians recommend a 
+strict novel or hydrolyzed protein diet as part of medical manage-
+ment (chs. 160, 166).67 It is unknown how many dogs might be 
+well-controlled with long-term dietary therapy alone, given the 
+lack of controlled studies. Additional therapies such as stool so-
+eners and analgesics might be necessary in some dogs. Decisions 
+regarding starting these should be made on a case-by-case basis.
+Prognosis
+e prognosis is variable based on whether or not remission 
+can be achieved. Dogs with concurrent PHs or draining tracts 
+communicating with the anal canal have been shown to have a 
+worse prognosis in regards to both recurrence and postoperative 
+complications.90
+DISEASES OF THE ANAL SACS
+ANAL SAC IMPACTION, SACCULITIS, AND 
+ABSCESSATION
+Non-neoplastic anal sac disease (ASD) refers to impaction, inam-
+mation, or infection of the anal sacs. e incidence and prevalence 

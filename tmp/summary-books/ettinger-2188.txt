@@ -1,0 +1,265 @@
+SECTION XIX
+•
+Endocrine Disease
+2036
+eBooks.Health.Elsevier.com
+62. Syme HM, Scott-Moncrie JCR, Treadwell NG, etal. Hyperadrenocorticism 
+associated with excessive sex hormone production by an adrenocortical tumor in 
+two dogs. J Am Vet Med Assoc. 2001;219:1725-1728.
+63. Norman EJ, ompson H, Mooney CT. Dynamic adrenal function testing in 
+eight dogs with hyperadrenocorticism associated with adrenocortical neoplasia. 
+Vet Rec. 1999;144:551-554.
+64. Frank LA, Mullins R, Rohrbach BW. Variability of estradiol concentration 
+in normal dogs. Vet Dermatol. 2010;21:490-493.
+65. Chapman PS, Mooney CT, Ede J, etal. Evaluation of the basal and post-
+adrenocorticotrophic hormone serum concentrations of 17-hydroxyprogesterone 
+for the diagnosis of hyperadrenocorticism in dogs. Vet Rec. 2003;153:771-775.
+66. Behrend EN, Kemppainen RJ, Boozer AL, etal. Serum 17-alpha-
+hydroxyprogesterone and corticosterone concentrations in dogs with non-adrenal 
+neoplasia and dogs with suspected hyperadrenocorticism. J Am Vet Med Assoc
+2005;227:1762-1767.
+67. Monroe WE, Panciera DL, Zimmerman KL. Concentrations of noncortisol 
+adrenal steroids in response to ACTH in dogs with adrenal-dependent hyperadre-
+nocorticism, pituitary-dependent hyperadrenocorticism, and nonadrenal illness. 
+J Vet Intern Med. 2012;26:945-952.
+68. Hill KE, Scott-Moncrie JCR, Koshko M, etal. Secretion of sex hormones in 
+dogs with adrenal dysfunction. J Am Vet Med Assoc. 2005;226:556-561.
+Hypoadrenocorticism
+Rebecka S. Hess
+INTRODUCTION
+I
+n 1855, Dr. omas Addison published 
+a case series of 11 individuals, each 
+described as having a disease of the 
+supra-renal capsule (adrenal cortex).1 Hypo-
+adrenocorticism (HA) is, therefore, oen 
+referred to as “Addison’s disease.” e adrenal 
+cortex synthesizes and secretes glucocorti-
+coids and mineralocorticoids that are essen-
+tial for life. e cortex is divided into 3 layers: 
+the outermost zona glomerulosa, the widest 
+middle zona fasciculata, and the innermost 
+zona reticularis. Hypofunction or dysfunc-
+tion of the cortex, such as that seen in HA, 
+can be life threatening. Since HA is common 
+in dogs and rare in cats, the discussion that 
+follows pertains to dogs and is followed by a 
+short discussion of the condition in cats.
+PATHOPHYSIOLOGY
+AUTO-ANTIBODIES AGAINST 
+STEROIDOGENIC ENZYME: 
+21-HYDROXYLASE
+Glucocorticoids are secreted from all 3 layers 
+of the adrenal cortex. e mineralocorticoid 
+aldosterone is synthesized and secreted from the zona glomeru-
+losa, the only cortical layer which contains the enzyme aldoste-
+rone synthase (adrenal physiology is discussed in ch. 293; see 
+Figure 293.1). In humans, HA is a rare autoimmune disorder. Most 
+people with HA have antibodies against the steroidogenic enzyme 
+21-hydroxylase, present in all 3 cortical layers but its lowest con-
+centrations are in the zona glomerulosa.2 Antibodies directed at the 
+21-hydroxylase enzyme are believed to cause autoimmune destruc-
+tion of the adrenal cortex.3 Although 21-hydroxylase antibodies 
+have not been identied in dogs with HA, P450 enzyme antibod-
+ies, more common in females than males, have been documented 
+in 24% of dogs with HA vs 1% in non-HA dogs.4 A longitudinal 
+study demonstrated these antibodies do not persist over time in 
+most dogs with HA.5 Lymphoplasmacytic adrenalitis characterized 
+by CD4+ T-cell inammation has also been documented in some 
+dogs with HA, further supporting this being an immune-mediated 
+disease in most aected dogs.6
+GENETIC PREDISPOSITION TO POLYGENIC IMMUNE-
+MEDIATED HYPOADRENOCORTICISM
+e specic dog breeds at increased risk of developing HA pro-
+vide strong evidence of the etiology having a genetic component. 
+Familial HA has been reported in Leonberger and Pomeranian 
+dogs while Great Danes, Standard Poodles, and Bearded Collies 
+are also at increased risk.7-10 A genome-wide association study 
+of HA in Bearded Collies revealed their mode of inheritance is 
+polygenic, consisting of a single nucleotide polymorphism on 
+canine chromosome 18 plus 3 other smaller eect loci.10 e 
+mode of inheritance of HA in Standard Poodles is also likely to be 
+polygenic.11 Several genetic studies have linked HA to immune 
+function genes. e cytotoxic T-lymphocyte-associated protein 
+4, a T-cell regulator, has been associated with HA in 3 other 
+predisposed breeds: Portuguese Water Dogs, Cocker Spaniels, 
+and Springer Spaniels.12 13 Another important immune func-
+tion gene, the major histocompatibility complex, is associated 
+with HA in numerous breeds and is sex specific in Standard 
+Poodles.13-18 However, the methodologies employed in some 
+studies identifying an association between HA and the major 
+histocompatibility complex have come under question and 
+further studies are needed.19 Allelic variation in the immune 
+function gene, PTPN22 is also linked to HA in Cocker Span-
+iels.20 Neutered dogs appear to be at increased risk.21 Impor-
+tantly, it is not clear if any genetic differences are functionally 
+responsible for formation of anti-adrenal autoantibodies that 
+destroy the adrenal cortex.
+CHAPTER 296
+ACRONYMS
+ACTH adrenocorticotropic 
+hormone
+ACTHst ACTH stimulation 
+test
+BG blood glucose
+CBC complete blood count
+CRH corticotropin-releasing 
+hormone
+DOCP desoxycorticoste-
+rone pivalate
+ECG electrocardiogram
+GI gastrointestinal
+HA hypoadrenocorticism
+hyperK hyperkalemia
+hypoNa hyponatremia
+IV intravenous(ly)
+K potassium
+[K] potassium concentra-
+tion
+Na sodium
+[Na] sodium concentration
+PE physical examination
+PU polyuria
+PU/PD polyuria/polydipsia
+RAAS renin-angiotensin-
+aldosterone system
+SQ subcutaneous(ly)
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHAPTER 296
+•
+Hypoadrenocorticism
+2037
+eBooks.Health.Elsevier.com
+CLASSIFICATION
+PRIMARY HYPOADRENOCORTICISM
+Naturally occurring primary failure of the adrenal cortex is the 
+most common form of HA, classically characterized by decreases 
+in both glucocorticoids and mineralocorticoids. “Atypical pri-
+mary HA” describes a syndrome in which glucocorticoid secre-
+tion is absent but serum sodium concentration ([Na]) and 
+potassium concentration ([K]) are normal.22 23 Some dogs ini-
+tially diagnosed as having atypical primary HA develop hypo-
+natremia (hypoNa) and hyperkalemia (hyperK) with time.7 22-24
+Others maintain normal electrolyte concentrations for years.22-24
+Interestingly, some dogs with documented depletion of glucocor-
+ticoids and normal [Na] and [K] have low aldosterone concen-
+trations, suggesting that maintaining normal [Na] and [K] may 
+not be completely dependent on aldosterone, that serum electro-
+lyte concentrations may not be indicative of “active” hormone at 
+receptors levels, or that the assays employed have limitations.24 If 
+HA in dogs develops secondary to anti-21-hydroxylase antibod-
+ies, it is possible that destruction of the zona glomerulosa, the 
+layer in which aldosterone is produced, could lag behind because 
+the concentration of 21-hydroxylase in this layer is lower than in 
+the other 2 cortical layers.
+Primary HA, whether typical or atypical, develops as a result 
+of adrenal cortex atrophy or destruction (Figure 296.1). Rarely, 
+primary HA results from a destructive inltrative disease, such 
+as neoplasia, the most common cause of this rare presentation. 
+Tuberculosis, fungal diseases, other granulomatous or infectious 
+diseases, hemorrhage, and infarcts are possible causes of HA, but 
+are not well documented in dogs.25-30 Transient ketoconazole- and 
+phenobarbital-induced HA have been reported as has a rare HA 
+dog with aldosterone depletion preceding glucocorticoid deple-
+tion.31-34 Primary transient or permanent iatrogenic HA can be 
+caused by administration of o,p′-DDD (mitotane) or trilostane 
+(ch. 293). Isolated hypoaldosteronism (without glucocorticoid 
+deciency) has been reported but is extremely rare.
+SECONDARY HYPOADRENOCORTICISM
+Secondary HA is rare and involves pituitary or hypothalamic failure 
+secondary to neoplastic inltration, inammation, infection, infarct, 
+or trauma, which can lead to impaired secretion of pituitary adre-
+nocorticotropic hormone (ACTH) or hypothalamic corticotropin-
+releasing hormone (CRH).35-38 Neurologic clinical signs and other 
+hormonal decits in these dogs are inconsistent. Enigmatic idio-
+pathic secondary HA has been reported in dogs without neuro-
+logic signs, with long-term survival when given only glucocorticoid 
+supplementation. Since the renin-angiotensin-aldosterone system 
+(RAAS) is independent of pituitary or hypothalamic control, these 
+uncommon diseases involve only glucocorticoid deciency and nor-
+mal [Na] and [K]. Unlike atypical primary HA with normal [Na] 
+and [K], in secondary HA ACTH concentrations are low (Figure 
+296.1). Iatrogenic secondary HA is expected aer hypophysectomy 
+or abrupt withdrawal of long-term steroid administration and is not 
+usually a diagnostic challenge.39 Exogenous steroids suppress ACTH 
+secretion (Figure 296.1) and time is required for atrophied cells to 
+regain function aer abrupt stoppage, explaining recommendations 
+for always tapering glucocorticoid therapy.
+SIGNALMENT, HISTORY, SIGNS, PHYSICAL 
+EXAMINATION (PE)
+AGE
+HA is a disease of young to middle-aged dogs; median age at diag-
+nosis is 3-4 years. But dogs as young as 2 months and as old as 12 
+years have been diagnosed (Table 296.1). Females are at increased 
+risk.7 40 41 HA can develop in any breed but specic genetic breed 
+predispositions are recognized, as previously discussed.41 42 e 
+overall incidence of HA is 2.3 cases per 10,000 dog years at risk.41
+HISTORY AND CLINICAL SIGNS
+Clinical signs can be mild, vague, wax and wane over time, or 
+seem to develop in mere hours into a life-threatening crisis. 
+Figure 296.1
+e pituitary-adrenal axis in 
+normal dogs (A); in dogs with loss of adreno-
+cortical function and excess adrenocortico-
+tropic hormone (ACTH) secretion due to a 
+lack of negative feedback (the most common 
+form of hypoadrenocorticism) (B); in dogs 
+with failure to secrete ACTH and secondary 
+atrophy of the adrenal cortex, specically the 
+zona fasciculata and zona reticularis (C); and 
+in dogs that are chronically overtreated with 
+exogenous glucocorticoids, causing insucien-
+cy in pituitary ACTH secretion and secondary 
+atrophy of the adrenal cortex (D). A, Adrenal; 
+CRH, corticotropin-releasing hormone; P, pitu-
+itary. Solid lines represent “normal” hormone 
+concentrations; bold solid lines represent in-
+creased concentrations; dashed lines represent 
+decreased concentrations. (From Feldman EC, 
+Nelson RW, Reusch CE, etal. Canine and Feline 
+Endocrinology and Reproduction. 4th ed. Saun-
+ders; 2015.)
+Hypothalamus
+CRH
+P
+A
+A
+ACTH
+Cortisol
+(negative
+feedback)
+Hypothalamus
+CRH?
+P
+A
+A
+ACTH
+increased
+Cortisol
+decreased
+Hypothalamus
+CRH?
+P
+A
+A
+ACTH
+decreased
+Cortisol
+decreased
+A
+B
+C
+D
+Hypothalamus
+CRH?
+P
+A
+A
+ACTH
+decreased
+Chronic
+iatrogenic
+corticosteroids
+suddenly
+stopped

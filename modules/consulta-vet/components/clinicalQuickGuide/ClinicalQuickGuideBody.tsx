@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React, { useState } from 'react';
 import { ClinicalGuideInline } from './ClinicalGuideInline';
 import { ZoomIn } from 'lucide-react';
@@ -132,7 +133,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                     {block.caption}
                   </p>
                 ) : null}
-                <table className="w-full min-w-[520px] border-collapse text-left text-sm">
+                <ReadableTable className="w-full min-w-[520px] border-collapse text-left text-sm">
                   <thead>
                     <tr className="border-b border-border/80 bg-muted/40">
                       {block.headers.map((h) => (
@@ -153,7 +154,7 @@ export function ClinicalQuickGuideBody({ blocks, youtubeVideoId, youtubeTitle, r
                       </tr>
                     ))}
                   </tbody>
-                </table>
+                </ReadableTable>
               </div>
             );
           case 'steps':

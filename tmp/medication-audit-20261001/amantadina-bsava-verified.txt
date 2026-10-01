@@ -1,0 +1,215 @@
+===== BSAVA PDF 31 / impressa 15 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+15
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Amantadine
+(Lysovir*, Symmetrel*) POM 
+Formulations: Oral: 100 mg capsule; 10 mg/ml syrup.
+Action: Provides analgesia through NMDA antagonist action which 
+may potentiate the effects of other analgesics.
+Use:
+• Adjunctive analgesic in animals that are unresponsive to opioids, 
+or that require chronic pain relief in a home environment (e.g. 
+osteoarthritis or cancer pain).
+• In dogs with osteoarthritis that were refractory to an NSAID 
+physical activity was improved, suggesting that amantadine 
+might be a useful adjunct in the clinical management of canine 
+osteoarthritic pain.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: In humans, minor GI and CNS effects have 
+been reported, although these have not been reported in animals. 
+Amantadine is renally excreted and is likely to accumulate in animals 
+with renal dysfunction and therefore should be used cautiously in 
+this patient population.
+Drug interactions: No information available.
+DOSES
+Dogs: 3.0–5.0 mg/kg p.o. q24h.
+Cats: 1.0–4.0 mg/kg p.o. q24h; start at the lowest dose and increase 
+slowly. This dose recommendation is anecdotal and is not based on 
+evidence from clinical research. 
+References
+Lascelles BD, Gaynor JS, Smith ES et al . (2008) Amantadine in a multimodal analgesic 
+regimen for alleviation of refractory osteoarthritis pain in dogs. Journal of Veterinary 
+Internal Medicine  22, 53–59
+Amethocaine see Tetracaine
+Amikacin
+(Amikacin*, Amikin*) POM 
+Formulations: Injectable: 50 mg/ml, 250 mg/ml solutions.
+Action: Aminoglycosides inhibit bacterial protein synthesis with a 
+concentration-dependent mechanism of killing, leading to a marked 
+post-antibiotic effect, allowing prolonged dosing intervals (which 
+may reduce toxicity).
+Use: Active against many Gram-negative bacteria, Staphylococcus  
+aureus and Nocardia spp., including some that may be resistant to 
+
+===== BSAVA PDF 32 / impressa 16 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+16
+gentamicin. Streptococci and anaerobes are usually resistant. Its use 
+is only indicated after sensitivity testing has been performed and the 
+organism shown to be resistant to other aminoglycosides such as 
+gentamicin. Activity at low oxygen sites may be limited. Movement 
+across biological membranes may also be limited, hence systemic 
+levels require parenteral administration, and access to sites such as 
+the CNS and ocular fluids is very limited. Monitoring serum amikacin 
+levels should be considered to ensure therapeutic levels and 
+minimize toxicity, particularly in neonates, geriatric patients and 
+those with reduced renal function. Monitoring renal function is also 
+advisable during treatment of any animal. Intravenous doses should 
+be given slowly, generally over 30–60 minutes. Concurrent fluid 
+therapy is advised.
+Safety and handling: Normal precautions should be observed.
+Contraindications: If possible, avoid use in animals with reduced 
+renal function.
+Adverse reactions: Nephrotoxic and ototoxic.
+Drug interactions: Synergism may occur in vivo when 
+aminoglycosides are combined with beta-lactam antimicrobials. 
+Avoid the concurrent use of other nephrotoxic, ototoxic or neurotoxic 
+agents (e.g. amphotericin B, furosemide). Aminoglycosides may be 
+inactivated in vitro by beta-lactam antibiotics (e.g. penicillins, 
+cephalosporins) or heparin; do not give these drugs in the same 
+syringe. Can potentiate neuromuscular blockade so avoid use in 
+combination with neuromuscular blocking agents.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 15–30 mg/kg i.v, i.m., s.c. q24h. Due to a lower volume of 
+distribution in Greyhounds a lower dose of 12 mg/kg is 
+recommended in this breed and other sight hounds.
+Cats: 10–15 mg/kg i.v, i.m., s.c. q24h.
+Dogs, Cats: For both dogs and cats, higher doses are 
+recommended by some authors for managing sepsis, although there 
+is an increased risk of adverse effects with such high doses. Local 
+use may be considered, especially if the site of infection is easily 
+accessible for direct delivery of the drug and if the animal is showing 
+signs of nephrotoxicity. Amikacin has been used locally in joints and 
+the bladder as specific examples.
+Amiloride
+(Amiloride Hydrochloride*) POM 
+Formulations: Oral: 5 mg tablets; 1 mg/ml solution (Amilamont). 
+Also present in compound preparations with hydrochlorothiazide 
+(Moduret, Moduretic, Co-amilozide) and furosemide (Co-amilofruse, 
+Frumil, Frumil LS).
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 33 / impressa 17 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+17
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Action: Potassium-sparing diuretic which inhibits sodium 
+absorption in the cells of the distal tubule and collecting duct 
+therefore leading to less available sodium for exchange with 
+potassium. This leads to a failure of the normal renal concentration 
+gradient and results in sodium loss and potassium retention. It is a 
+weak diuretic when used alone, so is almost always used in 
+combination with a thiazide or furosemide.
+Use:
+• Treatment of oedema or ascites due to liver or heart failure.
+Often added to more potent diuretics such as furosemide or weaker 
+diuretics such as hydrochlorothiazide in cases of refractory heart 
+failure achieving sequential nephron blockade. Doses have not been 
+widely reported in the veterinary literature. Monitor urea, creatinine, 
+electrolytes and blood pressure before and after dose adjustments.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Hypotension, hyperkalaemia, acidosis and 
+hyponatraemia may develop.
+Drug interactions: Avoid the concomitant administration of 
+potassium.
+DOSES
+Dogs, Cats: 0.1 mg/kg p.o. q12h is used in humans and has been 
+suggested for dogs and cats. In combination with 
+hydrochlorothiazide dose range will vary from 0.05–0.4 mg/kg p.o. 
+(dogs) to 0.1–0.4 mg/kg p.o. (cats). Start at low dose and titrate 
+upwards cautiously.
+Amino acid solutions
+(Duphalyte, Aminoplasmal*, Aminoven*, 
+Clinimix*, Glamin*, Hyperamine*, Intrafusin*, 
+Kabiven*, Kabiven Peripheral*, Nutriflex*) POM, 
+POM-V 
+Formulations: Injectable: synthetic crystalline l-amino acid 
+solutions for i.v. use only. Numerous human products are available, 
+varying in concentrations of amino acids. Most products also 
+contain electrolytes. Some products contain varying concentrations 
+of glucose.
+Action: Support protein anabolism, arrest protein and muscle 
+wasting, and maintain intermediary metabolism.
+Use:
+• Used parenterally in patients requiring nutritional support but 
+unable to receive enteral support, amino acid solutions supply 
+essential and non-essential amino acids for protein production.

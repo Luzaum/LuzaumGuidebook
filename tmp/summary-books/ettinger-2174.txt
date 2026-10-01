@@ -1,0 +1,246 @@
+SECTION XIX
+•
+Endocrine Disease
+2022
+eBooks.Health.Elsevier.com
+INTRODUCTION
+F
+eline hyperadrenocorticism (fHAC; 
+Cushing’s syndrome; hypercortisolism) 
+is less common, has more worrisome 
+consequences, and poses greater challenges to 
+diagnose and treat than canine hyperadreno-
+corticism (cHAC). fHAC has a worse progno-
+sis than the condition in dogs. Unlike in dogs, 
+fHAC is commonly associated with diabetes 
+mellitus (DM), a skin hyperfragility syn-
+drome, and other conditions that can compli-
+cate management. Basic pathophysiology and 
+other aspects of fHAC are similar to cHAC 
+(ch. 293). is chapter focuses on the clinical 
+condition in cats caused by chronic exposure 
+to excess cortisol or other steroid hormones 
+with cortisol-like action. For example, cats 
+with progesterone-secreting adrenocortical 
+tumors, with or without aldosterone secre-
+tion, may have clinical signs similar to fHAC 
+(ch. 295).1-3 Importantly, insulin-resistant 
+DM in cats is more commonly associated 
+with hypersomatotropism (HS; feline acro-
+megaly) than with fHAC (ch. 280).
+PATHOPHYSIOLOGY
+Naturally occurring fHAC is a multi-systemic disorder resulting 
+from excessive production of cortisol by the adrenal cortices. 
+ere are single case reports and several case series of cats with 
+fHAC that together total only about 100 cases.4-25 Pituitary-
+dependent hyperadrenocorticism (PDH) aects about 85% of 
+cats with fHAC, most commonly caused by an autonomous 
+adrenocorticotropic hormone (ACTH)-secreting adenoma. 
+Adrenal-dependent hyperadrenocorticism (ADH) aects about 
+15% of cats with fHAC, usually caused by an autonomously 
+functioning adrenocortical adenoma or carcinoma.5 A small 
+number of cats have a pituitary tumor that secretes more than 1 
+hormone.19 26-29 Iatrogenic fHAC has been described aer glu-
+cocorticoid or progestogen administration,30-32 either of which 
+can severely suppress endogenous cortisol and cause adrenocor-
+tical atrophy.33
+CLINICAL SIGNS
+OVERVIEW
+Early reports of cats with fHAC described obvious clinical signs, 
+oen present for months before diagnosis. As subtleties and 
+variations in signs and associated biochemical disorders are bet-
+ter appreciated, fHAC is being diagnosed in cats with fewer clini-
+cal signs (Table 294.1).6 Early diagnosis and treatment may avoid 
+development of severe clinical signs or DM.34
+AGE, BREED, SEX
+fHAC is most common in middle-aged to older cats (median age 
+in the various studies was 9.5 to 13 years; range from 3 to 15 years) 
+with no apparent sex or breed predilection.
+PHYSICAL CHANGES
+Skin
+Cutaneous manifestations of fHAC include truncal and abdominal 
+alopecia, but far less frequently than in cHAC. An unkempt hair coat 
+and cornication defects/seborrhea are common. eir thin skin is 
+prone to tears, bruising, and secondary infection (Figure 294.1). e 
+hyperfragile skin is particularly distressing to owners and unwary cli-
+nicians. Cats with fHAC should always be handled with great care. 
+Calcinosis cutis has not been reported in naturally occurring nor iat-
+rogenic fHAC. Recurrent sebaceous cysts have also been seen.
+Other Physical Examination Findings
+Cats with fHAC oen have a pendulous abdomen, muscle wast-
+ing, hepatomegaly, and weight gain. A minority lose weight. Some 
+have soened tongue barbs or tongue ulcers.
+METABOLIC ALTERATIONS
+Diabetes Mellitus (DM)
+Polyuria, polydipsia (PU/PD) and polyphagia (PP) are the most 
+common metabolic signs of fHAC but are almost always second-
+ary to DM with its consequent glycosuria and osmotic diuresis 
+(ch. 292) or to chronic kidney disease (CKD) with its consequent 
+Feline Hyperadrenocorticism
+Ian K. Ramsey | Michael E. Herrtage
+CHAPTER 294
+ACRONYMS
+ACTH adrenocorticotropic 
+hormone
+ACTHst ACTH stimulation 
+test
+ADH adrenal-dependent 
+hyperadrenocorticism
+ALP alkaline phosphatase
+BUN blood urea nitrogen
+cHAC canine hyperadreno-
+corticism
+CKD chronic kidney disease
+CT computed tomography
+DM diabetes mellitus
+DST dexamethasone 
+screening test
+fHAC feline hyperadreno-
+corticism
+HAC hyperadrenocorticism
+MRI magnetic resonance 
+imaging
+PDH pituitary-dependent 
+hyperadrenocorticism
+PU/PD polyuria, polydipsia
+UCCR urine 
+corticoid:creatinine
+US ultrasonography
+USG urine specific gravity
+TABLE 294.1
+Approximate Frequency of Clinical Findings in 
+Feline Hyperadrenocorticism
+FINDING
+FREQUENCY
+Concurrent diabetes mellitus
+79%
+Polyuria/polydipsia
+79%
+Polyphagia
+60%
+Abdominal distension
+54%
+Alopecia/failure to regrow hair
+43%
+Skin hyperfragility/spontaneous tearing
+40%
+Weight loss/muscle atrophy
+31%
+Weakness/lethargy
+29%
+Weight gain/obesity
+23%
+Poor coat (dry, seborrhea, etc.)
+15%
+From data provided in  published series of cases with a combined total of  
+cats.-,- Note that  of these series (a total of  cases) were selected by treat-
+ment modality; however, there was no apparent difference in the presenting 
+signs. See e-Table . for further information.
+
+CHAPTER 294
+•
+Feline Hyperadrenocorticism
+2023
+eBooks.Health.Elsevier.com
+inability to concentrate urine (ch. 301). Most cats with fHAC 
+have insulin resistant DM; in 1 case series, 27 of 30.11 Several 
+other series have indicated that a majority, but not all, cats with 
+hyperadrenocorticism (HAC) have concurrent DM.7 10 Insulin 
+resistance is reected in large daily insulin doses oen required 
+(∼2 units/kg) to control their hyperglycemia and glycosuria.4 7
+However, clinicians should not exclude the possibility of HAC in 
+a well-controlled diabetic on a typical dose of insulin. PU/PD is 
+not common in fHAC in the absence of DM or CKD.
+Chronic Kidney Disease (CKD, ch. )
+PU/PD in fHAC can also be associated with CKD, a rare con-
+comitant condition in cHAC. ere is no evidence of a direct 
+correlation between the two nor that presence of one makes the 
+other more dicult to manage.11 Most cats with fHAC and a urine 
+specic gravity (USG) <1.020 have CKD.
+Infection
+Many cats with HAC develop infections, sometimes with unusual 
+organisms, that are frequently dicult to resolve.4 9 11 17 is appar-
+ent predisposition to infection suggests that cats with fHAC are 
+either quite immunosuppressed or their fragile skin, DM, and other 
+concurrent conditions increase susceptibility to severe infection.
+Pancreatitis (ch. )
+Cats with fHAC have been described as having pancreatitis, but 
+fHAC is a severe anti-inammatory condition, making this an 
+unlikely pairing of conditions. Feline pancreatic lipase immuno-
+reactivity (fPLI) may not be reliable in cats with fHAC.11 35
+Systemic Hypertension (ch. ), Blindness (ch. )
+About 20% of cats with fHAC are hypertensive, a lower prevalence 
+than in cHAC.11 36 Acute blindness due to bilateral retinal detach-
+ment was reported in a hypertensive cat with HAC.23
+GENERAL LABORATORY TESTING AND 
+DIAGNOSTIC IMAGING
+SERUM BIOCHEMISTRY PROFILE, COMPLETE BLOOD 
+COUNT (CBC), URINALYSIS (UA)
+Hyperglycemia, seen in about 80% of cats with fHAC, is com-
+mon. Most but not all of these cats have overt DM (Table 
+294.2; Figure 294.2). About 50% of cats with fHAC have hyper-
+cholesterolemia, probably related to poorly controlled DM 
+and increased lipolysis (ch. 63). In 1 review, >50% of cats with 
+fHAC had increases in blood urea nitrogen (BUN) and >25% 
+had increases in both BUN and creatinine concentrations, 
+consistent with CKD (ch. 62).37 Cats lack a steroid-induced 
+isoenzyme of alkaline phosphatase (ALP) and only ∼30% of 
+cats with fHAC have even mild increases in ALP and/or ala-
+nine aminotransferase (ALT) activity, likely secondary to DM 
+(ch. 65). e “stress leukogram” (lymphopenia, eosinopenia and 
+neutrophilia) is not common in cats with fHAC (ch. 58). Cats with 
+fHAC that do not have DM or CKD usually have USG >1.020. In 
+comparison to dogs with HAC, cats tend to have more dramatic 
+physical changes and less dramatic clinicopathological changes.
+DIAGNOSTIC IMAGING
+Overview
+Diagnostic imaging allows identication of pituitary and adrenal 
+size (large or small) and can provide evidence of masses, local 
+vessel or organ invasion, or metastases, aiding in choosing indi-
+vidualized treatment strategies. Seeing a mass does not indicate 
+function. Images should be interpreted in the context of clinical 
+signs and endocrine test results.
+Radiography
+Radiographic examination of the thorax and abdomen is advisable 
+in all cats suspected or proven to have fHAC. Survey radiographs 
+of the thorax and abdomen uncommonly reveal an adrenal mass 
+(Figure 294.3, A), but also may identify concurrent abnormalities 
+A
+B
+Figure 294.1
+A and B, A 9-year-old neutered female Domestic Short-
+hair cat with pituitary-dependent hyperadrenocorticism causing fragile 
+skin that can easily tear.
+TABLE 294.2
+Approximate Frequency of Clinicopathological 
+Findings in Feline Hyperadrenocorticism
+FINDING
+FREQUENCY
+Biochemical
+Hyperglycemia
+>43 of 47 (>91%)
+Hypercholesterolemia
+>16 of 31 (>51%)
+Increased ALT
+16 of 45 (35%)
+Increased ALP
+11 of 46 (24%)
+Urinalysis
+Glucosuria
+>41 of 47 (>87%)
+USG less than 1.030
+10 of 28 (36%)
+Proteinuria
+23 of 29 (79%)
+Hematological
+Anemia
+16 of 44 (36%)
+Neutrophilia
+21 of 39 (54%)
+Lymphopenia
+26 of 45 (58%)
+Undetectable eosinophils
+7 of 11 (63%)
+From data provided in  published series of unselected cases with a combined 
+total of  cases.,,,
+ALP, Alkaline phosphatase; ALT, alanine aminotransferase; USG, urine specific gravity.

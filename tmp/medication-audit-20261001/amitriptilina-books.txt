@@ -1,0 +1,847 @@
+
+===== Plumb PDF 86 =====
+Amitriptyline   59
+Uses/Indications 
+Amitriptyline is a tricyclic antidepressant (TCA) that has been used 
+for the treatment of behavior conditions (eg, separation anxiety, gen-
+eralized anxiety) and pruritus 1 in dogs, as well as to treat excessive 
+grooming, spraying, pica, and anxiety in cats. Clomipramine is an 
+FDA-approved TCA for use in dogs and is therefore often chosen 
+over amitriptyline in cases where a TCA is needed for the treatment 
+of behavior-modifying indications. A retrospective study also sug -
+gests clomipramine is more effective than amitriptyline.2 One study 
+demonstrated that amitriptyline was not effective in the treatment of 
+aggressive dogs that were concomitantly undergoing behavior modi-
+fication; however, the dose may have been inadequate.3
+Amitriptyline may be useful for adjunctive treatment of chron -
+ic neuropathic pain in dogs 4 and cats. Although studies have ques -
+tioned the drug’s use for adjunctive treatment of lower urinary tract 
+disease in cats,5,6 amitriptyline appears to still be anecdotally used for 
+analgesic and/or urethral antispasmodic effects.
+Amitriptyline appears effective in reducing feather plucking in 
+birds.7,8 
+Pharmacology/Actions 
+Amitriptyline (and its active metabolite, nortriptyline) is a tricyclic 
+antidepressant (TCA) with a complicated pharmacologic profile that 
+includes blockage of serotonin and norepinephrine reuptake pumps 
+(thereby increasing neurotransmitter concentrations), sedation, and 
+central and peripheral anticholinergic activity. Other pharmacologic 
+effects include alpha-1 adrenergic antagonism, stabilizing mast cells 
+via H1 receptor antagonism, and antagonism of glutamate receptors 
+and sodium channels. TCAs act similar to phenothiazines in altering 
+avoidance behaviors in animals.
+Amitriptyline potentiated the minimum alveolar concentration 
+(MAC)-sparing effects of remifentanil in rats.9 
+Pharmacokinetics 
+Amitriptyline is rapidly absorbed from both the GI tract and paren-
+teral injection sites, but transdermal (PLO gel-based) absorption in 
+cats is poor.10 Absolute bioavailability is low, with one study noting 
+only 6% bioavailability after a single oral dose (4 mg/kg) was admin-
+istered to greyhounds. 11 Absorption appears to be increased when 
+amitriptyline is administered with food.12 Low oral bioavailability in 
+dogs may reflect both incomplete absorption and first-pass metabo-
+lism to inactive metabolites. Further investigation is necessary.11 
+Peak concentrations occur 1 to 2 hours after oral administration 
+in dogs11–13 and cats10 and within 2 to 12 hours in other species.  Am-
+itriptyline is highly bound to plasma proteins and enters the CNS. 
+The drug is metabolized in the liver to several metabolites, including 
+nortriptyline, which is active. In a study of 12 crossbreed dogs, the 
+elimination half-life of amitriptyline and nortriptyline was 4.5 hours 
+and 12.3 hours, respectively. 13 In greyhounds, the mean terminal 
+half-life was 4 to 10 hours, and the terminal half-life of nortriptyline 
+was 6.2 to 9.6 hours.11  Because tricyclic antidepressants (TCAs) are 
+metabolized through glucuronidation, cats may be more sensitive to 
+TCAs than dogs.14
+Amitriptyline has been administered intrathecally and epidurally 
+in sheep; the concentration-time profiles were highly variable, with a 
+bioavailability of 55% and 1.3%, respectively.15 
+One study in birds saw significantly varied absorption and elimi-
+nation constants. Elimination half-life varied from 1.6 to 91.2 hours.16 
+Contraindications/Precautions/Warnings 
+Amitriptyline is contraindicated in patients that are hypersensitive 
+to it or other tricyclic antidepressants (TCAs). Concomitant use 
+with monoamine oxidase inhibitors is contraindicated in humans. 
+Use amitriptyline with extreme caution in animals with seizure dis -
+orders, as tricyclic agents may reduce seizure thresholds. In cats, 
+at standard doses, epileptiform pathology was noted on EEG, and 
+sustained discharges and generalized seizures occurred at higher  
+(20 – 25 mg/kg IV) doses. 17 Use amitriptyline with caution in an -
+imals with thyroid disorders, urinary retention, hepatic disorders, 
+renal disorders, KCS, glaucoma, cardiac rhythm disorders, diabetes, 
+or adrenal tumors. Although amitriptyline may prolong the QTc in-
+terval in humans, ECG abnormalities did not occur in healthy dogs 
+with behavioral conditions treated with standard doses of amitrip -
+tyline.18,19  
+Because data are lacking about the impact of amitriptyline on the 
+QT interval in animals, this drug should be used with caution in 
+patients that have pre-existing cardiac disease.
+Amitriptyline should not be given on an as-needed basis; it needs 
+to be given continuously and may require several weeks to see a pos-
+itive response. If discontinuing amitriptyline, the dose should be 
+slowly tapered over 2 to 3 weeks to minimize the risks for signs of 
+withdrawal.
+Adverse Effects 
+The most predominant adverse effects seen with tricyclic antidepres-
+sants (TCAs) are related to sedation and anticholinergic (eg, consti-
+pation, urinary retention) properties. Occasionally, dogs exhibit hy-
+perexcitability and, rarely, develop seizures; however, adverse effects 
+can affect various systems, including cardiac (eg, dysrhythmias), 
+hematologic (eg, bone marrow suppression), GI (eg, vomiting, diar-
+rhea), and endocrine (eg, hyperglycemia, hyponatremia). After oral 
+administration, vomiting may be more likely in fasted dogs.12 
+Adverse effects seen in cats include sedation, hypersalivation, uri-
+nary retention, anorexia, thrombocytopenia, neutropenia, unkempt 
+hair coat, vomiting/nausea, ataxia, disorientation, and cardiac con -
+ductivity disturbances.5,20 
+Reduced reverse triiodothyronine (rT3), total thyroxine (tT4), 
+and free T4 (fT4) concentrations may occur in dogs and cats.21,22 
+Dystonia and akathisia were described in a macaw that was given 
+a single dose of amitriptyline.23 
+Reproductive/Nursing Safety 
+In humans, amitriptyline crosses the placenta, and isolated reports 
+of limb reduction abnormalities in fetuses have been noted. Amitrip-
+tyline enters maternal milk in levels similar to or greater than those 
+found in maternal serum. In humans, amitriptyline is considered a 
+drug for which the effect on nursing infants is unknown but may be 
+of concern.24 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh potential 
+risks.
+Overdose/Acute Toxicity 
+Overdose with tricyclic antidepressants (TCAs) can cause life-threat-
+ening conditions (eg, arrhythmias, cardiorespiratory collapse). Un -
+der experimental conditions, dogs receiving amitriptyline by IV in -
+fusion developed cardiotoxicity after an average cumulative dose of  
+36 mg/kg, and convulsions occurred in 42% of dogs.25  Other common 
+clinical signs in dogs and cats include lethargy, ataxia, and vomiting. 
+IV fat emulsion therapy (Intralipid®) is thought to trap amitriptyline 
+in plasma during overdose and lower brain concentration; however, 
+severe hypotension occurred in 10% of pigs, 26 and amitriptyline 
+mortality rates were not affected in rats.27
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+
+
+===== Plumb PDF 87 =====
+60    Amitriptyline
+Drug Interactions 
+In humans, amitriptyline is a substrate of CYP3A4, 2C9, and 2D6. 
+The following drug interactions with amitriptyline either have been 
+reported or are theoretical in humans or animals and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Acetazolamide/Dichlorphenamide : Concurrent use may 
+increase amitriptyline concentrations by alkalinizing urine.
+ ■ Alpha-2 Adrenergic Agonists  (eg, clonidine, detomidine, 
+dexmedetomidine, medetomidine ): Concurrent use may in -
+crease the risk for CNS and respiratory depression, hypertension, 
+and bradycardia. Tricyclic antidepressants (TCAs) may interfere 
+with the antihypertensive effects of alpha-2 agonists. Use cau -
+tiously in combination.
+ ■ Amantadine : Concurrent use may increase the risk for urinary 
+retention, constipation, ileus, hyperthermia, heat stroke, anticho-
+linergic intoxication syndrome, and QT interval prolongation. 
+Use cautiously in combination.
+ ■ Ammonium Chloride : Concurrent use may decrease tricyclic 
+antidepressant concentrations by acidifying urine.
+ ■ Anesthetic Agents  (eg, isoflurane, ketamine): Concurrent 
+use may increase the risk for hypotension, CNS depression, QT 
+interval prolongation, torsade de pointes, and death.
+ ■ Anthracyclines  (eg, doxorubicin): Concurrent use may cause 
+additive effects on the QT interval.
+ ■ Anticholinergic Agents  (eg, atropine, doxepin, glycopyr-
+rolate, meclizine, oxybutynin): Concurrent use may increase the 
+risk for constipation, ileus, urinary retention, CNS depression, 
+and anticholinergic intoxication syndrome.
+ ■ Antihistamines  (eg, cetirizine, chlorpheniramine, diphen-
+hydramine, hydroxyzine): Concurrent use may increase the risk 
+for constipation, ileus, urinary retention, CNS depression, and 
+anticholinergic intoxication syndrome.
+ ■ Antihypertensive Agents : Concurrent use may result in ad-
+ditive hypotension and orthostasis.
+ ■ Apomorphine : Concurrent use may increase the risk for QT in-
+terval prolongation, torsade de pointes, and death.
+ ■ Azole Antifungals  (eg, itraconazole, ketoconazole): Con -
+current use increases the risk for CNS toxicity, constipation, ileus, 
+urinary retention, and QT interval prolongation.
+ ■ Barbiturates  (eg, thiopental): Concurrent use may cause ad -
+ditive respiratory depression. Amitriptyline concentrations may 
+decrease.
+ ■ Benzodiazepines  (eg, diazepam, midazolam): Concurrent use 
+may increase the risk for CNS and/or respiratory depression. An-
+ticholinergic effects may be additive.
+ ■ Beta-2 Adrenergic Agonists  (eg, albuterol, clenbuterol): 
+Concurrent use may increase the risk for arrhythmias, hyperten-
+sion, hyperpyrexia, flattening of the T-wave, and QT interval pro-
+longation. Use cautiously in combination.
+ ■ Bethanechol : Amitriptyline may antagonize the cholinergic 
+effects of bethanechol. Avoid combination.
+ ■ Bromocriptine : Amitriptyline may enhance the CNS depres -
+sion and respiratory depression effects of bromocriptine. Concur-
+rent use may increase the risk for serotonin syndrome.
+ ■ Buspirone : Concurrent use may increase the risk for CNS de -
+pression and serotonin syndrome. Avoid combination.
+ ■ Cannabidiol : Concurrent use may increase the risk for CNS 
+depression.
+ ■ Carbamazepine : Concurrent use may decrease concentrations 
+of amitriptyline by induction of CYP450 enzymes, and carba -
+mazepine concentrations may be increased by an undetermined 
+mechanism. Amitriptyline may decrease anticonvulsant effects of 
+carbamazepine.
+ ■ Cimetidine : May inhibit amitriptyline hepatic metabolism and 
+increase the risk for toxicity
+ ■ Cyproheptadine : Concurrent use may decrease efficacy of am-
+itriptyline by decreasing serotonin concentrations, may increase 
+the risk for CNS depression, and anticholinergic effects may be 
+additive.
+ ■ Desmopressin : Concurrent use may increase the risk for water 
+intoxication and/or hyponatremia, which can progress to seizure, 
+coma, respiratory depression, and death. Electrolytes and renal 
+function should be monitored.
+ ■ Diazoxide : Concurrent use may increase the risk for hypoten -
+sion and orthostasis, with greatest risk during initial treatment or 
+dose escalation.
+ ■ Diltiazem : May increase amitriptyline concentrations
+ ■ Dobutamine/Dopamine : Concurrent use may increase the risk 
+for hypertension, tremors, and cardiac dysrhythmias. Avoid con-
+current use except in emergency cases.
+ ■ Domperidone : Concurrent use may increase the risk for QT in-
+terval prolongation, cardiac arrhythmias, torsade de pointes, and 
+death. Efficacy of domperidone may be decreased. Avoid combi-
+nation.
+ ■ Erythromycin : Concurrent use may increase the risk for QT 
+interval prolongation and cardiac arrhythmias.
+ ■ Estrogens : May decrease effect and increase toxicity of amitrip-
+tyline; mechanism and clinical significance are not established.
+ ■ Fluconazole : Concurrent use may increase the risk for QT in-
+terval prolongation.
+ ■ Flumazenil : Flumazenil use in animals suspected of TCA over-
+dose may increase the risk for seizures and arrhythmias.25 
+ ■ Fluoroquinolones  (eg, ciprofloxacin, enrofloxacin): Con -
+current use may increase the risk for QT interval prolongation, 
+torsade de pointes, and death.
+ ■ Hydroxychloroquine : Concurrent use may increase the risk 
+for QT interval prolongation.
+ ■ Ifosfamide : Concurrent use may increase neurotoxicity of ifos-
+famide.
+ ■ Iohexol : Concurrent use may increase the risk for seizures asso-
+ciated with intrathecal administration of iohexol.
+ ■ Leuprolide : Concurrent use may increase the risk for QT inter-
+val prolongation, torsade de pointes, and death.
+ ■ Levetiracetam : Concurrent use may increase the risk for CNS 
+and respiratory depression.
+ ■ Lithium : Concurrent use may increase the risk for neurotoxicity, 
+including serotonin syndrome.
+ ■ Macrolides  (eg, azithromycin, clarithromycin): Concurrent 
+use may increase the risk for QT interval prolongation, torsade de 
+pointes, and death.
+ ■ Methylphenidate : Concurrent use may increase concentra -
+tions of amitriptyline and increase the risk for hypertension, car-
+diac effects, and CNS stimulation, including increased risk for 
+serotonin syndrome.
+ ■ Metoclopramide : Amitriptyline may reduce the prokinetic ef-
+fect of metoclopramide. Combination may also result in additive se-
+dation or CNS depression.
+ ■ Metronidazole : Concurrent use may increase the risk for QT 
+interval prolongation, cardiac arrhythmias, and torsade de pointes.
+ ■ Mirtazapine : Concurrent use may increase the risk for con -
+stipation, urinary retention, CNS depression, and serotonin syn -
+drome.
+
+
+===== Plumb PDF 88 =====
+Amitriptyline   61
+ ■ Mitotane : Mitotane may induce CYP3A4 and reduce amitripty-
+line exposure and effectiveness.
+ ■ Monoamine Oxidase Inhibitors  (eg, amitraz, furazolidone, 
+linezolid, methylene blue , procarbazine, selegiline): There is a 
+potential risk for life-threatening serotonin syndrome. Concur -
+rent use is contraindicated. A 14-day washout period between the 
+2 drugs should be observed.
+ ■ Muscle Relaxants  (eg, baclofen, dantrolene, methocarba-
+mol): Concurrent use may increase the risk for CNS and respi -
+ratory depression. Loss of muscle tone and memory has been re -
+ported with baclofen use in humans.
+ ■ Nitroglycerin : Concurrent use may increase the risk for hypo-
+tension and orthostasis. Amitriptyline may reduce topical nitro -
+glycerin absorption.
+ ■ Nitroprusside : Concurrent use may increase the risk for hypo-
+tension and orthostasis.
+ ■ Nonsteroidal Anti-Inflammatory Drugs  (NSAIDS; eg, car-
+profen, meloxicam, robenacoxib): Concurrent use may increase the 
+risk for bleeding. Use cautiously, especially in animals with other risk 
+factors
+ ■ Octreotide : Concurrent use may increase the risk for serotonin 
+syndrome, QT interval prolongation, and torsade de pointes. 
+Avoid combination.
+ ■ Opioids  (eg, buprenorphine, butorphanol , fentanyl , metha -
+done, morphine): Concurrent use may increase the risk for con-
+stipation, urinary retention, CNS depression, respiratory depres-
+sion, and serotonin syndrome.
+ ■ Pergolide : Concurrent use may increase the risk for CNS de -
+pression.
+ ■ Phenothiazines  (eg, acepromazine, chlorpromazine): Con -
+current use may increase concentrations of either drug, increas -
+ing the risk for CNS depression, hypotension, prolongation of the 
+QT interval, constipation, ileus, urinary retention, and anticholin-
+ergic intoxication syndrome.
+ ■ Phenoxybenzamine:  Concurrent use may increase the risk for 
+hypotension and orthostasis.
+ ■ Physostigmine:  Amitriptyline may negate the clinical effects of 
+physostigmine
+ ■ Potassium Chloride : Concurrent use of oral, solid dosage 
+forms of potassium chloride may increase the risk for upper GI 
+injury. Combination is contraindicated.
+ ■ Pregabalin : Concurrent use may increase the risk for CNS de-
+pression.
+ ■ Primidone/Phenobarbital:  Concurrent use may antagonize 
+the anticonvulsant effects of primidone. Primidone may decrease 
+amitriptyline concentration by inducing hepatic metabolism. CNS 
+and respiratory depressant effects may be additive.
+ ■ Qt Prolonging Agents  (eg, cisapride, procainamide, quini-
+dine, sotalol): Concurrent use may increase the risk for QT in -
+terval prolongation, cardiac arrhythmias, torsade de pointes, and 
+death. May potentiate anticholinergic effects of some agents (eg, 
+quinidine). Avoid concurrent use.
+ ■ Rifampin : Concurrent use may decrease amitriptyline concen -
+trations by inducing hepatic metabolism.
+ ■ Selective Serotonin Reuptake Inhibitors  (SSRIs; eg, flu-
+oxetine, paroxetine, sertraline): Concurrent use may increase 
+amitriptyline concentrations and increase the risk for serotonin 
+syndrome. NOTE: SSRIs and TCAs (eg, amitriptyline) are of -
+ten used together in veterinary behavior medicine, but enhanced 
+monitoring for adverse effects is suggested.
+ ■ Serotonin Receptor Antagonists  (eg, dolasetron, ondan-
+setron): Concurrent use may increase the risk for serotonin syn -
+drome, QT interval prolongation, and torsade de pointes.
+ ■ Sulfamethoxazole/Trimethoprim:  Concurrent use may 
+increase the risk for QT interval prolongation, torsade de pointes, 
+and death.
+ ■ Sulfonylureas  (eg, glimepiride, glipizide, glyburide): Con -
+current use may increase hypoglycemia effects by an undeter -
+mined mechanism.
+ ■ Sympathomimetic Agents  (eg, phenylpropanolamine): Con-
+current use may increase the risk for hypertension, arrhythmias, 
+tachycardia, and fever.
+ ■ Tamsulosin: Concurrent use may increase the risk for hypoten-
+sion and orthostasis.
+ ■ Terbinafine : Concurrent use may increase amitriptyline con -
+centrations. Interaction may persist for weeks following discontin-
+uation of terbinafine. Avoid combination.
+ ■ Thyroid Agents  (eg, levothyroxine): Concurrent use may po-
+tentiate effects of both drugs and may increase the risk for tachy-
+cardia, hypothyroidism, and thyrotoxicosis.
+ ■ Tramadol : Increased risk for serotonin syndrome; veterinary 
+clinical significance is not known, but one source states that TCAs 
+should not be administered concurrently with tramadol.27,28 
+ ■ Trazodone : Concurrent use may increase the risk for constipa-
+tion, ileus, urinary retention, CNS depression, serotonin syndrome, 
+and anticholinergic intoxication syndrome. Avoid combination.
+ ■ V asopressors  (eg, ephedrine, epinephrine, norepinephrine, 
+vasopressin): Concurrent use may increase the risk for hyperten-
+sion, tremors, QT prolongation, cardiac dysrhythmias, and death. 
+Avoid concurrent use except in emergency cases.
+ ■ W arfarin : Concurrent use may increase or decrease anticoagu-
+lant effects of warfarin.
+ ■ Yohimbine : Concurrent use may enhance the pressor effects of 
+yohimbine by inhibiting reuptake of norepinephrine. Avoid com-
+bination.
+ ■ Zonisamide : Concurrent use may increase the risk for CNS de-
+pression and drowsiness
+Laboratory Considerations 
+ ■ Metyrapone: The response to metyrapone may be decreased by 
+amitriptyline.
+ ■ Blood glucose: Tricyclics may alter (ie, increase or decrease) 
+blood glucose levels.
+Dosages
+NOTE: Several weeks of therapy may be needed to see maximal 
+effects. If discontinuing, taper the drug off slowly over 2 to 3 
+weeks, although more rapid taper can be undertaken when signif-
+icant TCA toxicity is present.
+DOGS:
+Adjunctive treatment (with behavior modification and anxi -
+olytics if required) of anxiety disorders (extra-label): Initially, 
+1 – 2 mg/kg PO every 12 hours for 2 to 4 weeks. May gradually 
+increase dose by 1 mg/kg as tolerated to a maximum of 4 mg/kg 
+PO twice daily
+Adjunctive treatment of pruritus (after other more convention-
+al therapies have failed) (extra-label): 1 – 2.2 mg/kg PO every 12 
+hours; ≈33% of dogs responded1,29  
+Adjunctive treatment of chronic (especially neuropathic) 
+pain (extra-label): 1 – 2 mg/kg PO every 12 hours. 4  Doses up to  
+3 – 4 mg/kg PO every 12 hours may be tried. 25 If discontinuing, 
+taper the drug slowly over 2 to 3 weeks.
+CATS:
+Clinical signs related to idiopathic cystitis (extra-label):  
+2.5 – 12.5 mg/cat (NOT mg/kg) PO once daily at night or  
+
+
+===== Plumb PDF 89 =====
+62    Amlodipine
+0.5 – 1 mg/kg PO once daily at night.20,30 Neither 5 mg/cat5 (NOT 
+mg/kg) nor 10 mg/cat 6 (NOT mg/kg) once daily for 7 days re -
+duced short-term lower urinary tract disease signs (eg, hematu -
+ria, pollakiuria).
+Adjunctive treatment of behavior disorders amenable to tricy-
+clics (anxiety, fear, adjunct in self-harm behaviors) (extra-label): 
+0.5 – 1.5 mg/kg PO every 24 hours. 31 Start at the lower end of the 
+dosing range and gradually increase as tolerated. If discontinuing, 
+gradually taper off the dosage.
+Adjunctive treatment of pruritus (after other more conventional 
+therapies have failed) (extra-label): 2.5 – 12.5 mg/cat (NOT mg/kg) 
+PO once daily or 2.5 – 7.5 mg/cat (NOT mg/kg) twice daily. 32 To  
+minimize adverse effects, start at the low end of the dosing range 
+(2.5 mg/cat [NOT mg/kg] once daily) and gradually increase as tol-
+erated. The drug may need to be compounded to give an accurate 
+dose and to improve palatability (fish or cod liver oil).
+Adjunctive treatment of chronic pain, including neuropathic 
+(extra-label): 2.5 – 12.5 mg/cat (NOT mg/kg) PO once daily or 
+1 – 4 mg/kg PO every 12 to 24 hours33 
+BIRDS:
+Adjunctive treatment of feather plucking (extra-label):  
+1 – 2 mg/kg PO every 12 to 24 hours.7 Anecdotal reports indicate 
+some usefulness. Barring adverse effects, a more prolonged course 
+of therapy may be necessary to determine efficacy. 34 A pharma -
+cokinetic study suggested doses up to 9 mg/kg may be necessary, 
+although adverse effects are possible in some birds.16 
+Monitoring 
+ ■ Clinical efficacy
+ ■ Adverse effects
+ ■ Baseline CBC, serum chemistry profile, urinalysis, and baseline 
+thyroid testing 21,35 (eg, tT4, thyroid panel) prior to therapy, 1 
+month after initial therapy, and yearly thereafter
+ ■ Baseline ECG is recommended prior to therapy. Tricyclics can 
+widen QRS complexes, prolong PR intervals, and invert or flatten 
+T-waves on ECG; significance in animals is not fully understood.
+Client Information 
+ ■ This medication should be given with food.
+ ■ It can take several days to weeks to determine if the drug is effec-
+tive.
+ ■ Consult your veterinarian before discontinuing this medication; 
+do not stop suddenly.
+ ■ The most common side effects are drowsiness (sleepiness), dry 
+mouth, and constipation; be sure your animal has access to water.
+ ■ Contact your veterinarian immediately if you see serious (rare) 
+side effects like abnormal bleeding, fever, seizures, and/or very 
+fast or irregular heart rate.
+ ■ Overdoses can be very serious; keep this medicine out of reach of 
+animals and children.
+ ■ Tell your veterinarian if your animal has worn a flea and tick collar 
+containing amitraz in the past 2 weeks.
+Chemistry/Synonyms
+Amitriptyline HCl, a tricyclic dibenzocycloheptene-derivative anti -
+depressant, occurs as a white or practically white, odorless or prac -
+tically odorless crystalline powder that is freely soluble in water or 
+alcohol. It has a bitter, burning taste and a pKa of  9.4.
+Pharmaceutical dosage forms contain amitriptyline hydrochlo -
+ride and express potency as amitriptyline base.
+Amitriptyline may also be known as amitriptylini hydrochlo -
+ridum; many trade names are available.
+Storage/Stability 
+Amitriptyline tablets should be stored at room temperature.
+Compatibility/Compounding Considerations 
+No specific information is noted. Transdermal (PLO-gel based) ab -
+sorption is poor in cats.10 
+Dosage Forms/Regulatory Status 
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 2 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See the Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Amitriptyline HCl Tablets: 10 mg, 25 mg, 50 mg, 75 mg, 100 mg, and 
+150 mg; generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Amlodipine
+(am-loe-di-peen) Norvasc®, Amodip®
+Calcium-Channel Blocker
+Prescriber Highlights
+ ▶ Dihydropyridine calcium-channel blocker often used for treat-
+ment of systemic arterial hypertension
+ ▶ Caution should be used in patients with heart disease and 
+hepatic dysfunction
+ ▶ Potential to cause anorexia and hypotension in cats, especially 
+early in therapy
+ ▶ Gingival hyperplasia has been reported as a long-term adverse 
+effect in dogs; may occur rarely in cats.
+Uses/Indications
+Oral amlodipine is used to treat systemic hypertension in dogs and 
+cats and is considered the drug of choice for managing hyperten -
+sion.1–3 Hypertension in small animals is typically secondary to other 
+diseases (eg, acute or chronic kidney disease, hyperthyroidism, hy -
+peradrenocorticism) and is most often seen in middle-aged or geri -
+atric cats and dogs. 
+Systemic activation of the renin-angiotensin-aldosterone system 
+(RAAS) does not appear to be a major contributor of hypertension in cats 
+with chronic kidney disease.1 Cats are often presented with acute clinical 
+signs (eg, blindness, seizures, collapse, disorientation, paresis/paralysis). 
+Dogs and cats are considered hypertensive if repeated systolic blood 
+pressure measurements exceed 160 mm Hg or if a single elevated blood 
+pressure measurement is present in the setting of target organ damage 
+(eg, eyes, heart, brain, kidneys). Antihypertensive therapy may improve 
+ophthalmic lesions and restore vision in a minority of patients with 
+blindness secondary to hypertension.4 Amlodipine has been shown to 
+significantly increase plasma renin activity in cats that are azotemic and 
+hypertensive, which is a similar response to that seen in human studies.5 
+Target systolic blood pressure values of less than 140 to 150 mm Hg1,2 
+are recommended to minimize target organ damage from hypertension. 
+Amlodipine has not been shown to reduce mortality in hypertensive 
+cats.2,5,6 In one study evaluating hypertensive cats treated with amlodipine  
+0.125 – 0.5 mg/kg for 28 days, the mean decrease in systolic blood pres-
+sure was 28 mm Hg,7 but even larger blood pressure reduction (49 mm 
+Hg) has been reported.6 
+In dogs, amlodipine therapy is typically initiated after a RAAS in-
+hibitor (eg, ACE-inhibitor, angiotensin-receptor blocker) because of 
+
+
+===== Plumb PDF 90 =====
+Amlodipine   63
+the high prevalence of chronic kidney disease in hypertensive dogs.2 In 
+one study of hypertensive dogs, secondary to acute kidney injury, am-
+lodipine therapy at a median dose of 0.38 mg/kg/day was associated 
+with a decrease in systolic blood pressure of 24 mm Hg and correction 
+of severe systemic hypertension in 10 of 11 dogs within 24 hours.8 In 
+a retrospective review of dogs with severe hypertension, dogs treated 
+with amlodipine for 1 week had a reduction in blood pressure of 18 
+mm Hg, as compared with 29 mm Hg when treated with telmisartan 
+and 46 mm Hg when treated with a combination of amlodipine and 
+telmisartan.9 In a small case series (n = 5 dogs), dogs with an average 
+pretreatment systolic arterial blood pressure (SBP) of 215 mm Hg had 
+their SBP reduced to 180 mm Hg when treated with a combination of 
+amlodipine and benazepril, but SBP was reduced to 142 mm Hg when 
+treatment was changed to amlodipine and telmisartan.10 
+Pharmacology/Actions
+Amlodipine is a dihydropyridine L-type calcium-channel blocker, 
+which inhibits voltage-gated calcium channels in cardiac and vas -
+cular smooth muscle. Amlodipine has a higher affinity for L-type 
+calcium channels and some affinity for T-type calcium channels. In 
+the kidney, L-type calcium channels are found primarily in afferent 
+(prerenal) arterioles. Amlodipine has a greater effect on vascular 
+smooth muscle, where it acts as a peripheral arteriolar vasodilator 
+and reduces afterload. Amlodipine slightly depresses impulse forma-
+tion (automaticity) and conduction velocity in cardiac muscle. Am-
+lodipine has mild diuretic activity after an initial dose in dogs. 11,12 
+Amlodipine has been shown to activate the RAAS when used alone 
+in healthy dogs at higher dosages (0.57 mg/kg twice daily). 13 Use of 
+amlodipine with an ACE inhibitor partially blocks this effect.13,14
+In client-owned cats with systemic hypertension treated with am-
+lodipine as the sole antihypertensive agent (in combination with a 
+phosphate-restricted diet if azotemic), a significant decline in UPC 
+(urine protein:creatinine) was found in cats treated with amlodipine.15
+Pharmacokinetics
+In cats, amlodipine volume of distribution is ≈10 L/kg. In vitro protein 
+binding in cat plasma is 97%. In healthy cats, plasma concentrations 
+approach steady-state by 2 weeks at 0.125 mg/kg/day. Total plasma 
+clearance is estimated to be 2.3 mL/minute/kg. Amlodipine is exten-
+sively metabolized by the liver, and elimination half-life is 53 hours.16 
+In cats, effects on systemic blood pressure are usually seen within 4 
+hours of administration and may persist for an additional ≈30 hours.17
+In dogs, amlodipine bioavailability is 88% after oral administration, 
+with peak concentration occurring at 4 to 6 hours. Amlodipine is widely 
+distributed (volume of distribution, 25 L/kg) and extensively metabol- 
+ized. Reported elimination half-life ranges from 7 to 30 hours.18,19
+In humans, amlodipine’s bioavailability does not appear to be al-
+tered by the presence of food in the gut. The drug is slowly but almost 
+completely absorbed after oral administration and is reported to be 
+absorbed after rectal administration. In humans, peak plasma concen-
+trations occur between 6 and 9 hours after administration and effects 
+on blood pressure are correspondingly delayed. Amlodipine has high 
+plasma protein-binding characteristics (≈93%). However, drug inter-
+actions associated with potential displacement from these sites have 
+not been elucidated. Amlodipine is slowly but extensively metabolized 
+to inactive compounds in the liver. Terminal plasma half-life is ≈35 
+hours in healthy humans but is prolonged in the elderly and in those 
+patients with hypertension or hepatic dysfunction. 
+Contraindications/Precautions/Warnings
+Amlodipine is contraindicated in patients hypersensitive to it, in shock, 
+with documented hypotension, with severe aortic stenosis (due to an 
+inability to increase stroke volume in response to peripheral vasodila-
+tion), or with severe hepatic failure. It should also be used cautiously 
+in patients that are at risk for developing hypotension or patients with 
+hepatic disease. Amlodipine use for pulmonary hypertension in dogs 
+is not recommended, as systemic hypotension can occur without sub-
+stantive improvements in pulmonary arterial pressures.20
+There is concern that using amlodipine alone for treating hyper -
+tension with renal disease may expose glomeruli to higher pressures 
+secondary to efferent arteriolar constriction, which is caused by lo -
+calized increases in renin-angiotensin-aldosterone (RAAS) activity, 
+allowing progressive damage to glomeruli. It is postulated that using 
+an ACE inhibitor with amlodipine may help prevent this occurrence.21 
+The concurrent use of ACE inhibitors with amlodipine in animals with 
+chronic kidney disease and hypertension is routine, though evidence 
+supporting this approach is lacking. Notably, treatment of hyperten-
+sion in cats with amlodipine as a sole antihypertensive agent appeared 
+to limit proteinuria, which led to improved survival.15
+Adverse Effects
+In a placebo-controlled study in hypertensive cats, the adverse effect 
+profile for amlodipine-treated cats (eg, emesis, inappetence, diarrhea, 
+lethargy, dehydration) was similar to placebo.7 Hypotension and bra-
+dycardia are possible; however, because of amlodipine’s relatively slow 
+onset of action, these effects are usually absent in cats. Cats may infre-
+quently develop azotemia, hypokalemia, reflex tachycardia, and weight 
+loss. Gingival hyperplasia is also possible but occurs only rarely.16 
+Dogs may also experience inappetence, lethargy, and hypoten -
+sion. Reversible gingival hyperplasia has been reported when am -
+lodipine has been administered long term in dogs; incidence in the 
+retrospective study was 8.5%. 22 Diffuse peripheral edema has been 
+reported in dogs and this may or may not respond to medical treat-
+ment and discontinuation of amlodipine.23
+Headache and peripheral edema are common side effects in hu -
+mans taking amlodipine.
+Reproductive/Nursing Safety
+The UK-approved feline tablet product label states the safety of am-
+lodipine has not been established during pregnancy or lactation in cats. 
+Although no evidence of impaired fertility was noted in rats given  
+8 times the maximum human daily dose, amlodipine has been shown 
+to be fetotoxic (ie, intrauterine death rates increased five-fold) in lab-
+oratory animals (eg, rats, rabbits) at very high doses. 24 No evidence 
+of teratogenicity or mutagenicity was observed in laboratory animal 
+studies. Amlodipine can prolong labor in rats. 
+Amlodipine enters maternal milk in small amounts.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity
+Limited experience with other calcium-channel blockers in humans 
+has shown that an overdose of amlodipine may result in profound 
+hypotension and reflex tachycardia.24 From 2009 to 2013, 578 dogs 
+and 140 cats with single agent exposures to amlodipine were report-
+ed to the ASPCA Animal Poison Control Center; 19% of dogs and 
+22% of cats showed clinical signs (see Table). 
+DOGS CATS
+Total number reported 578 140
+Number showing  
+ clinical signs
+108 (19%) 31 (22%)
+Hypotension 32% 23%
+Tachycardia 39% 23%
+Hypertension 13% 23%
+Lethargy 26% 13%
+Vomiting 18% not reported
+
+
+===== BSAVA PDF 104 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+88
+amiodarone, chloramphenicol). Drugs such as amiodarone, 
+procainamide, sotalol, and tricyclic antidepressants (e.g. 
+amitriptyline) may increase the QT interval and this risk may be 
+increased by concurrent use of cisapride. Use with caution in 
+animals with hepatic or renal dysfunction; may require reduced 
+dosing due to decreased metabolism or clearance.
+DOSES
+Dogs: All uses: 0.1–0.5 mg/kg p.o. q8–12h; some recommend 
+giving 30 minutes before feeding. Some sources state that gradually 
+increasing doses up to 1 mg/kg p.o. q8h may be required (if 
+tolerated).
+Cats: All uses: Various doses have been suggested including 
+2.5–5.0 mg per cat p.o. 2–3 times daily and 0.5 mg/kg 2–3 times 
+daily. Dosages may be titrated upwards, if tolerated, to as high as  
+7.5 mg per cat p.o. 3 times daily in large cats.
+References
+Burger DM, Wiestner T, Hubler M et al . (2006) Effect of anticholinergics (atropine, 
+glycopyrrolate) and prokinetics (metoclopramide, cisapride) on gastric motility in 
+Beagles and Labrador Retrievers. Journal of Veterinary Medicine Series A: Physiology 
+Pathology and Clinical Medicine  53, 97–107
+Kempf J, Lewis F, Reusch CE et al . (2014) High-resolution manometric evaluation of the 
+effects of cisapride and metoclopramide hydrochloride administered orally on lower 
+esophageal sphincter pressure in awake dogs. American Journal of Veterinary Research  
+75, 361–366
+Cisatracurium
+(Nimbex*) POM 
+Formulations: Injectable: 2 mg/ml, 10 mg/ml solutions.
+Action: Inhibits actions of acetylcholine at neuromuscular junction 
+by binding competitively to the nicotinic acetylcholine receptor on 
+the post-junctional membrane.
+Use:
+• Provision of neuromuscular blockade during anaesthesia.
+• To improve surgical access through muscle relaxation, to 
+facilitate positive pressure ventilation or for intraocular surgery.
+Cisatracurium is one of the isomers that comprise atracurium; it is 
+3–5 times more potent than atracurium in dogs. This means that 
+the plasma concentration of the epileptogenic by-product 
+laudanosine is lower and there is less histamine release. Monitoring 
+(using a nerve stimulator) and reversal of the neuromuscular 
+blockade is recommended to ensure complete recovery before the 
+end of anaesthesia. Hypothermia, acidosis and hypokalaemia will 
+prolong the duration of action of neuromuscular blockade. There 
+are no published clinical studies describing the use of cisatracurium 
+in cats; limited experimental studies suggest that cisatracurium has 
+similar characteristics in cats to those described for dogs.
+Safety and handling: Store in refrigerator.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 105 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+89
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Contraindications: Do not administer unless the animal is 
+adequately anaesthetized and facilities to provide positive pressure 
+ventilation are available.
+Adverse reactions: Can precipitate the release of histamine after 
+rapid i.v. administration, resulting in bronchospasm and hypotension. 
+Diluting the drug in normal saline and giving the drug slowly i.v. 
+minimizes these effects.
+Drug interactions: Neuromuscular blockade is more prolonged 
+when given in combination with volatile anaesthetics, 
+aminoglycosides, clindamycin and lincomycin.
+DOSES
+Dogs: 0.05–0.1 mg/kg i.v. followed by additional doses of 0.03 mg/
+kg as required (based on monitoring of neuromuscular blockade).
+Cats: No information available.
+References
+Adams WA, Senior JM, Jones RS et al . (2006) cis-Atracurium in dogs with and without 
+porto-systemic shunts. Veterinary Anaesthesia and Analgesia  33, 17–23
+Clarithromycin
+(Klaricid*) POM 
+Formulations: Oral: 250 mg, 500 mg tablets; 125 mg/5 ml 
+suspension; 250 mg/5 ml suspension; 250 mg granules sachet (to be 
+dissolved in water). Injectable: 500 mg vial for reconstitution.
+Action: Derived from erythromycin and with greater activity. 
+Time-dependent macrolide antibacterial that binds to the 50S 
+ribosome, inhibiting peptide bond and therefore protein formation.
+Use: Alternative to penicillin in penicillin-allergic humans as it has a 
+similar, although not identical, antibacterial spectrum. Active 
+against Gram-positive cocci (some Staphylococcus  spp. resistant), 
+Gram-positive bacilli, some Gram-negative bacilli (e.g. Pasteurella ) 
+and some spirochaetes (e.g. Helicobacter ). Some strains of 
+Actinomyces, Nocardia, Chlamydia and Rickettsia also inhibited. 
+Most strains of Enterobacteriaceae ( Pseudomonas , Escherichia coli, 
+Klebsiella) are resistant. Highly lipid-soluble and useful against 
+intracellular pathogens. Particularly useful in management of 
+respiratory tract infections, mild to moderate skin and soft tissue 
+infections, and non-tubercular mycobacterial infections. For the 
+latter, used in combination with enrofloxacin and rifampin. Activity 
+is enhanced in an alkaline pH; administer on an empty stomach. 
+There is limited information regarding use in animals. Use with 
+caution in animals with hepatic dysfunction. Reduce dose in 
+animals with renal impairment.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+
+
+===== BSAVA PDF 106 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+90
+Adverse reactions: In humans, similar adverse effects to those of 
+erythromycin are seen, i.e. vomiting, cholestatic hepatitis, stomatitis 
+and glossitis.
+Drug interactions: May increase serum levels of several drugs, 
+including methylprednisolone, theophylline, omeprazole and 
+itraconazole. The absorption of digoxin may be enhanced.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: 4–12 mg/kg i.v. infusion, p.o. q12h. Doses of 15–25 mg/kg 
+p.o. total daily dose divided q8–12h are recommended in the 
+treatment of leproid granuloma syndrome combined with rifampin 
+10–15 mg/kg p.o. q24h. These doses are empirical and are based on 
+only a few reports.
+Cats: 5–10 mg/kg i.v. infusion, p.o. q12h or 62.5 mg/cat p.o. These 
+doses are empirical and are based on only a few reports. A variety of 
+combination protocols have been used in the treatment of feline 
+leprosy syndrome, e.g. combination of clarithromycin with a 
+fluoroquinolone and either rifampin or clofazamine.
+Clemastine (Meclastin)
+(Tavegil*) GSL 
+Formulations: Oral: 1 mg tablet.
+Action: Binds to H1 histamine receptors and prevents histamine 
+from binding.
+Use:
+• Management of allergic disease.
+Specific doses for cats have not been determined by pharmokinetic 
+studies and in dogs therapeutic levels are not usually achieved by 
+oral administration. Use with caution in cases with urinary retention, 
+angle-closure glaucoma and pyloroduodenal obstruction.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: May cause sedation or hyperexcitability in 
+high doses. May reduce seizure threshold.
+Drug interactions: No information available.
+DOSES
+Dogs: 0.05–0.1 mg/kg p.o. q12h.
+Cats: 0.1 mg/kg p.o. q12h.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

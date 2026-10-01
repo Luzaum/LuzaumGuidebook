@@ -1,0 +1,268 @@
+SECTION XIX
+•
+Endocrine Disease
+1940
+eBooks.Health.Elsevier.com
+ACRONYMS
+ACE-i angiotensin convert-
+ing enzyme inhibitors
+ARBs angiotensin receptor 
+blockers
+BCS body condition score
+BP blood pressure
+CBC complete blood count
+CKD chronic kidney dis-
+ease
+fT4 free thyroxine
+GI gastrointestinal
+GNAS Gαs subunit
+131I radioactive iodine
+IRIS International Renal 
+Interest Society
+MCS muscle condition 
+score
+PE physical examination
+PP polyphagia
+SHIM-RAD severe hyper-
+thyroidism, huge thyroid 
+masses, intrathoracic in 
+location, multifocal with 
+resistance to anti-thyroid 
+drugs
+T3 triiodothyronine
+T4 thyroxine
+TSH thyroid stimulating 
+hormone or thyrotropin
+TT4 total thyroxine
+UA urinalysis
+Hyperthyroidism in Cats
+Sylvie Daminet
+INTRODUCTION
+H
+yperthyroidism is the most com-
+mon 
+feline 
+endocrine 
+disease, 
+aecting about 10% of senior 
+cats, and one of the most common geriat-
+ric diseases of cats.1 Hyperthyroidism is a 
+progressive disease with disastrous conse-
+quences if untreated. Early diagnosis has 
+been facilitated by the inclusion of serum 
+total thyroxine concentrations (TT4) in rou-
+tine screening panels for older cats. Aected 
+thyroid nodules contain single or multiple 
+hyperplastic and/or adenomatous tumor 
+nodules resembling toxic nodular goiter seen 
+in humans (i.e., Plummer’s disease).2 Patho-
+logic changes are bilateral in about 70% of 
+aected cats and unilateral in about 25%.3
+Ectopic disease is the least common form, 
+occurring in around 4%. Although most cats 
+have an adenoma, carcinomas are diagnosed 
+in about 1-2%. Some benign thyroid tumors 
+may transform into malignant carcinomas if 
+untreated or aer chronic oral anti-thyroid 
+drugs.4 Histologic evaluation of feline thy-
+roid tumors is rarely available, and carcino-
+mas are indistinguishable from adenomas on 
+thyroid scintigraphy. A classication scheme 
+was developed for more aggressive tumors 
+that require a dierent therapeutic approach. 
+Some thyroid tumors cause severe hyperthy-
+roidism, may become huge thyroid masses, 
+some are intrathoracic in location or multifocal with resistance to 
+anti-thyroid drugs (SHIM-RAD tumors).4 ese are usually best 
+managed with high dosages of radioactive iodine (131I).
+PATHOGENESIS
+Evidence of an immune-mediated cause as observed in humans 
+with autoantibodies activating thyroid stimulating hormone 
+(TSH) receptors (i.e., Graves’ disease) has not been identied 
+in cats.5 6 Although the etiology is unclear, diet (i.e., iodine or 
+selenium deciency) or chronic exposure to thyroid-disrupting 
+compounds (i.e., bisphenol A, polybrominated diphenyl ethers 
+[PBDEs]) in food, water, and the environment may contribute 
+to the pathogenesis of feline hyperthyroidism.7-9 In some hyper-
+thyroid humans, activating mutations mostly in the TSH recep-
+tor gene and less commonly in the adenylate cyclase stimulation 
+protein Gαs subunit (GNAS) have been identied.10 In cats, recent 
+work has identied Met-452-r and GNAS mutations.11 12
+CLINICAL FEATURES
+HISTORY
+Most hyperthyroid cats are ≥9 years of age with a mean of about 13. 
+Occasionally, the disease is diagnosed in younger cats.13-15 Common 
+clinical signs (Table 287.1) include weight loss, polyphagia (PP), gas-
+trointestinal (GI) signs (especially vomiting), hyperactivity, polyuria/
+polydipsia (PU/PD), panting (Video 287.1), poor grooming, and 
+behavioral changes. Despite their age, some hyperthyroid cats become 
+hyperactive and/or aggressive. Due to increased awareness and rou-
+tine screening, the diagnosis of hyperthyroidism is oen made in cats 
+with subtle (or absent) clinical signs. Occasionally hyperthyroid cats 
+are hypo- or anorexic and lethargic, which is sometimes referred to as 
+“apathetic” hyperthyroidism. Most of these “apathetic” cats, however, 
+have hyperthyroidism and a concomitant disease.
+PHYSICAL EXAMINATION (PE)
+Body Weight, Body and Muscle Condition Scores (BCS 
+and MCS), Thyroid Palpation
+A palpable thyroid nodule(s) and muscle wasting are the most 
+common ndings on PE. e weight loss typical of hyperthy-
+roidism decreases skin elasticity, causing some hyperthyroid cats 
+to appear dehydrated when they are not. Good thyroid palpation 
+technique (Video 287.2) is important. Losses in weight, BCS, or 
+MCS (see textbook’s inside covers) in middle-aged and senior cats 
+are key clues for early detection of hyperthyroidism. yroid lobes 
+are not palpable in healthy cats. One or more thyroid nodules are 
+palpable in most hyperthyroid cats.16 yroid palpation is sensitive 
+but not specic for hyperthyroidism since small thyroid nodules 
+can occasionally be palpated in euthyroid cats and some “nodules” 
+are not thyroid.17 A scoring system has been described.18-20 Hyper-
+thyroid cats tend to have larger goiters (large thyroids) than those 
+without the disease. In general, goiter sizes are tending to be smaller 
+nowadays than in the past, reecting earlier diagnosis.21 Presence 
+of no palpable thyroid nodule in hyperthyroid cats has been seen 
+with ectopic thyroid masses, identied anywhere from under the 
+tongue to being intrathoracic and as low as the base of the heart.
+Cardiac and Blood Pressure (BP) Abnormalities
+yroid hormones directly have positive inotropic and chro-
+notropic eects and indirectly cause peripheral vasodilation.22
+Hyperthyroid-induced tachycardia, heart murmurs (29%), and/
+or arrhythmias are common.16 Myocardial changes (ch. 234) are 
+CHAPTER 287
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 3 Videos and 1 Client Information Sheet.
+
+CHAPTER 287
+•
+Hyperthyroidism in Cats
+1941
+eBooks.Health.Elsevier.com
+common and oen reversible with adequate therapy for hyper-
+thyroidism (Video 287.3). e prevalence of cardiac abnormali-
+ties increases with severity of hyperthyroidism.23 About 10-30% 
+of hyperthyroid cats have secondary hypertension (ch. 236).24
+In some, systemic hypertension develops following success-
+ful treatment of hyperthyroidism, regardless of the treatment 
+modality.25 Hence, BPs (ch. 91) and fundic examinations (ch. 
+13) should be monitored before, during, and aer treatment of 
+hyperthyroidism.
+ROUTINE LABORATORY FINDINGS
+Overview
+A variety of hematologic, biochemical, and urinary changes 
+have been observed in hyperthyroid cats. While many of these 
+changes are nonspecic and mild, assessing these parameters is 
+important. Test results may be consistent with hyperthyroidism 
+(e.g., increased liver enzyme activities in an older cat), they may 
+aid in identifying other explanations for some signs (e.g., PP due 
+to diabetes mellitus), or they can help assess for any concurrent 
+disorders (e.g., chronic kidney disease [CKD]) that could aect 
+prognosis and choice of therapy (Table 287.2).
+Complete Blood Count (CBC)
+Mild erythrocytosis in a non-dehydrated cat should alert the clini-
+cian to consider hyperthyroidism. e erythrocytosis likely follows 
+direct thyroid hormone stimulation of the bone marrow and/or 
+erythropoietin synthesis stimulated by increased oxygen consump-
+tion. Anemia is not typical and should alert the clinician of the pos-
+sible presence of concurrent disease.
+Serum Biochemistries
+More than 80% of hyperthyroid cats have increased alanine 
+aminotransferase activities and >50% have increased alkaline 
+phosphatase activities.13 26 e cause for these increases are mul-
+tifactorial and presumably related to metabolic hepatic stress, 
+passive congestion, and a direct eect of thyroid hormone excess. 
+Increased liver enzyme activities in an older cat should prompt 
+investigation for hyperthyroidism. In an untreated hyperthyroid 
+cat with expected clinical signs (e.g., PP, weight loss), mild to 
+moderately increased liver enzyme activities can be assumed 
+to be secondary to the hyperthyroidism. However, in presence 
+of hypo- or anorexia, icterus, or disproportionate increases in 
+hepatic enzyme activities, concurrent liver disease is possible. 
+Liver enzyme activities rapidly return to normal once perma-
+nent euthyroidism is restored, but oral anti-thyroid drugs may 
+cause increases in liver enzyme activities. Lower concentrations 
+of fructosamine and insulin-like growth factor 1 (IGF-1) are 
+expected in hyperthyroid cats,27 28 which can complicate diag-
+nosing acromegaly and/or monitoring of diabetes mellitus (chs. 
+280 and 292). A tendency for hyperthyroid cats to have hyper-
+coagulability has been reported, although its clinical relevance 
+remains unknown.29
+Urinalysis (UA)
+ere are no UA ndings specic for hyperthyroidism. Isosthe-
+nuria and mild proteinuria are common.30 In contrast to earlier 
+reports, the prevalence of subclinical bacteriuria (∼5%) is low.31 32
+Urine culture is not routinely recommended unless clinical signs 
+of urinary tract disease are present and subclinical bacteriuria is 
+not an indication for therapy.33
+CONFIRMING THE DIAGNOSIS
+HORMONE TESTING
+Total Thyroxine (TT)
+A randomly obtained serum TT4 concentration is the most 
+common rst-line screening test for hyperthyroidism. Assays 
+are readily available, inexpensive, and results are similar across 
+laboratories. Results are abnormally increased in 90-95% of 
+hyperthyroid cats on a single randomly obtained blood sample, 
+with the balance having TT4 results in the middle-to-high end 
+of the reference interval. e occasional “normal” TT4 value 
+in these cats is probably due to TT4 values that uctuate from 
+high-normal to high. e presence of non-thyroidal illness may 
+decrease TT4 results. Reference interval or borderline results 
+are more common in cats with mild disease.34 35 e clinical 
+severity of hyperthyroidism correlates with the magnitude of 
+TT4 increase. Hence, very high values are expected in severely 
+hyperthyroid cats. If normal TT4 results are obtained from a cat 
+strongly suspected to have hyperthyroidism, the TT4 should be 
+repeated aer several days to weeks. Alternatively, measuring 
+free T4 (fT4) and/or thyrotropin (TSH) as well as obtaining thy-
+roid scintigraphy should be considered. Basal serum total tri-
+iodothyronine (T3) results are not oen useful because of the 
+overlap in results among normal cats, hyperthyroid cats, and 
+cats with non-thyroidal illness.34
+Free Thyroxine (fT)
+Measurement of serum fT4 can be of value in diagnosing hyper-
+thyroidism, if the indications and pitfalls are understood. Overall, 
+fT4 is abnormal in about 98% of hyperthyroid cats, which is bet-
+ter sensitivity than the TT4. Interestingly, in mild hyperthyroid-
+ism, 85-95% of cats have an abnormal fT4 versus “only” 60-80% 
+with an abnormal TT4 35 is particular setting, namely a clinical 
+suspicion of hyperthyroidism and a TT4 within reference interval 
+(upper half of the reference interval), is when the fT4 has most 
+value. Important limitations prevent using the fT4 in cats as the 
+rst-line screening test for hyperthyroidism. Increases in fT4 are 
+not specic for hyperthyroidism. False positives are obtained 
+from 10-30% of euthyroid cats without evidence of concurrent 
+TABLE 287.1
+Common Clinical Findings From History and 
+Physical Examination in 462 Hyperthyroid Cats (% 
+are shown)
+Historical Findings
+Weight loss
+92
+Polyphagia (increased appetite)
+55
+Vomiting
+47
+Hyperactivity
+41
+Polyuria/polydipsia
+33
+Diarrhea
+21
+Decreased activity
+13
+Heat intolerance
+13
+Findings on Physical Examination
+Palpable thyroid nodule
+98
+Muscle wasting
+77
+Dental disease
+45
+Thin body condition
+35
+Tachycardia
+31
+Heart murmur
+29
+Modified from Peterson ME, Castellano CA, Rishniw M. Evaluation of body weight, 
+body condition, and muscle condition in cats with hyperthyroidism. J Vet Intern 
+Med. ;:-.

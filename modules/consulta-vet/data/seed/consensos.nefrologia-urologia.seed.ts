@@ -323,4 +323,82 @@ export const nefrologiaUrologiaConsensosSeed: RenalUrinaryConsensusSeed[] = [
     isDemonstrative: false,
     warningLabel: 'Histórico',
   },
+  {
+    id: 'con-acvim-incontinencia-foo-caes-2024',
+    slug: 'acvim-incontinencia-foo-caes-2024',
+    title: 'Diagnóstico e manejo da incontinência urinária e distúrbios de esvaziamento em cães',
+    shortTitle: 'Incontinência urinária e FOO — ACVIM 2024',
+    sourceOrganization: 'ACVIM',
+    year: 2024,
+    species: 'dog',
+    category: 'nefrologia-urologia',
+    tags: ['FOO', 'Obstrução funcional', 'Incontinência', 'PVRV', 'Tamsulosina', 'Prazosina', 'Diazepam'],
+    pdfUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC10937496/',
+    pdfFileName: 'acvim-incontinencia-foo-caes-2024',
+    storagePath: 'external/acvim-incontinencia-foo-caes-2024',
+    summary:
+      'Consenso ACVIM 2024 que atualiza terminologia e conduta nos distúrbios de esvaziamento caninos, preconizando o termo Obstrução Funcional do Fluxo Urinário (FOO) em substituição a dissinergia reflexa, padronizando limiares de volume residual pós-miccional (PVRV) e estabelecendo a abordagem terapêutica farmacológica e descompressiva.',
+    articleSummaryRichText:
+      '<p>O consenso ACVIM de 2024 redefine a abordagem dos distúrbios miccionais caninos. Em cães sem lesão neurológica central definida, abandona-se o termo histórico dissinergia reflexa ou dissinergia detrusor-uretral em favor de Obstrução Funcional do Fluxo Urinário (FOO). O documento estabelece a mensuração do volume residual pós-miccional (PVRV > 3 mL/kg indicativo de retenção patológica), a necessidade mandatória de excluir obstrução mecânica (por cistouretrografia ou cistoscopia) e orienta o bloqueio alfa-1 adrenérgico (tamsulosina ou prazosina) associado a relaxantes de músculo estriado (diazepam) quando pertinente, vetando o uso precoce de betanecol antes da redução efetiva da resistência de saída.</p>',
+    keyPointsText:
+      '• FOO (Functional Outflow Obstruction) substitui dissinergia reflexa na ausência de lesão identificável do SNC.\n• PVRV normal: 0,2–1,0 mL/kg; zona intermediária: 1,0–3,0 mL/kg; retenção anormal: > 3,0 mL/kg.\n• Padrão miccional típico: início com fluxo aceitável seguido de afunilamento, interrupções (spurts) e esforço prolongado com bexiga residual cheia.\n• Diagnóstico de exclusão: obrigatoriedade de afastar urólitos, neoplasias e estenoses (a passagem do cateter não exclui estenose parcial).\n• Tratamento de 1ª linha: alfa-1 antagonista (tamsulosina 0,4–0,8 mg/cão PO q24h ou prazosina) ± relaxante do esfíncter estriado (diazepam 0,04–0,8 mg/kg/dia dividido q8–12h).\n• Betanecol é estritamente contraindicado enquanto a uretra permanecer hipertônica ou obstruída.\n• Descompressão vesical (cateterização intermitente ou tubo de cistostomia) é crucial para evitar atonia irreversível do detrusor.',
+    practicalApplicationText:
+      'No ConsultaVet, utilizar esta ficha como guia de referência máxima para cães com strangúria sem cálculo uretral: 1) solicitar vídeo da micção ao tutor para avaliar o jato; 2) medir PVRV por ultrassom até 10 min pós-micção; 3) palpar uretra e próstata e realizar exame neurológico completo; 4) excluir lesão mecânica com cistouretrografia retrógrada ou cistoscopia; 5) iniciar tamsulosina ou prazosina; 6) associar diazepam se houver componente estriado; 7) descomprimir a bexiga para proteger o detrusor de superdistensão.',
+    appNotesText:
+      `STATUS: VIGENTE — consenso internacional de referência para incontinência e distúrbios de esvaziamento em cães.\n\n${CONSENSUS_DISCLAIMER}`,
+    references: [
+      {
+        id: 'ref-acvim-incontinence-2024',
+        citationText:
+          'Kendall A, et al. ACVIM consensus statement on diagnosis and management of urinary incontinence in dogs. J Vet Intern Med. 2024;38:878–903. doi:10.1111/jvim.16975.',
+        sourceType: 'Consenso ACVIM',
+        url: 'https://doi.org/10.1111/jvim.16975',
+        notes: 'Documento fundamental para definição de FOO, mensuração de PVRV e condutas farmacológicas.',
+        evidenceLevel: 'Consenso de especialistas',
+      },
+    ],
+    relatedDiseaseSlugs: ['obstrucao-funcional-fluxo-urinario-caes'],
+    relatedMedicationSlugs: ['betanecol', 'diazepam'],
+    isDemonstrative: false,
+    warningLabel: 'Vigente',
+  },
+  {
+    id: 'con-weese-terminologia-infeccoes-urinarias-2026',
+    slug: 'weese-terminologia-infeccoes-urinarias-2026',
+    title: 'Terminologia e critérios diagnósticos padronizados para doenças infecciosas do trato urinário em cães e gatos',
+    shortTitle: 'Terminologia ITU — Consenso Delphi 2026',
+    sourceOrganization: 'Consenso Internacional Delphi (Weese et al.) / JSAP',
+    year: 2026,
+    species: 'both',
+    category: 'nefrologia-urologia',
+    tags: ['Pielonefrite', 'Cistite', 'Bacteriúria subclínica', 'Pielonefrose', 'Urosepse', 'Consenso 2026', 'Weese 2026'],
+    pdfUrl: 'https://onlinelibrary.wiley.com/doi/10.1111/jsap.70127',
+    pdfFileName: 'weese-terminologia-infeccoes-urinarias-2026',
+    storagePath: 'external/weese-terminologia-infeccoes-urinarias-2026',
+    summary:
+      'Consenso internacional Delphi publicado em 2026 (Weese et al.) para padronizar definições e categorias diagnósticas das doenças infecciosas urinárias de cães e gatos, formalizando critérios para pielonefrite confirmada, presumida, cultura-negativa, pielonefrose e urosepse.',
+    articleSummaryRichText:
+      '<p>Desenvolvido através de metodologia Delphi por painel internacional de especialistas, este consenso padronizou 29 termos diagnósticos para o trato urinário canino e felino. Define pielonefrite como a infecção que acomete simultaneamente pelve e parênquima renal, superando a interpretação simplista de cultura urinária isolada. Estabelece a pielonefrite presumida (cultura vesical positiva + inflamação sistêmica + envolvimento renal) e confirmada (cultura de pielocentese ou histopatologia), define pielonefrose bacteriana como urgência descompressiva e classifica a urosepse conforme disfunção orgânica.</p>',
+    keyPointsText:
+      'CRITÉRIOS E NOMENCLATURA 2026\n- Pielonefrite = infecção simultânea da pelve e do parênquima renal; cultura vesical positiva sozinha NÃO fecha diagnóstico.\n- Pielonefrite confirmada: cultura positiva de urina da pelve renal (pielocentese), biópsia ou histopatologia compatível.\n- Pielonefrite presumida: cultura vesical positiva + inflamação sistêmica inexplicada (febre, leucocitose/desvio, SAA em gatos, CRP em cães) + evidência de envolvimento renal (azotemia, dor, imagem).\n- Pielonefrite cultura-negativa: condição estritamente rara, aplicável apenas com forte conjunto de evidências e justificativa clínica (como uso prévio de antibiótico).\n- Pielonefrose bacteriana: pus retido na pelve sob comprometimento do fluxo urinário; requer descompressão de urgência (source control).\n- Urosepse: sepse cuja origem anatômica primária é o trato urinário.\n- Pielonefrite recorrente: qualquer reaparecimento após cura clínica exige busca ativa de fatores predisponentes.',
+    practicalApplicationText:
+      'Na rotina clínica: 1) não diagnosticar pielonefrite com base apenas em urocultura ou pieloectasia isoladas; 2) pesquisar ativamente inflamação sistêmica (solicitar SAA em felinos ou CRP em caninos) e envolvimento renal; 3) em gatos com dilatação piélica e ureterólito, lembrar que 57% têm cultura vesical negativa por bloqueio da descida bacteriana; 4) tratar com base em breakpoints plasmáticos/séricos (e não urinários) por 10 a 14 dias conforme ISCAID 2019; 5) desobstruir prontamente rins com pielonefrose por colocação de SUB ou stent ureteral.',
+    appNotesText:
+      `STATUS: VIGENTE — consenso internacional de terminologia diagnóstica para infecções urinárias de pequenos animais.\n\n${CONSENSUS_DISCLAIMER}`,
+    references: [
+      {
+        id: 'ref-weese-delphi-2026',
+        citationText:
+          'Weese JS, et al. International Delphi consensus statement on terminology and definitions for infectious diseases of the urinary tract in dogs and cats. Journal of Small Animal Practice. 2026;67(4):215–230. doi:10.1111/jsap.70127.',
+        sourceType: 'Consenso Delphi Internacional',
+        url: 'https://doi.org/10.1111/jsap.70127',
+        notes: 'Padronização internacional das definições diagnósticas de pielonefrite, cistite, bacteriúria subclínica, pielonefrose e urosepse.',
+        evidenceLevel: 'Consenso internacional de especialistas',
+      },
+    ],
+    relatedDiseaseSlugs: ['pielonefrite-caes-gatos'],
+    relatedMedicationSlugs: ['enrofloxacina', 'marbofloxacina', 'pradofloxacina', 'amoxicilina-clavulanato'],
+    isDemonstrative: false,
+    warningLabel: 'Vigente',
+  },
 ];

@@ -1,0 +1,217 @@
+===== BSAVA PDF 286 / impressa 270 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+270
+Mirtazapine
+(Zispin) POM 
+Formulations: Oral: 15 mg tablets, 15 mg/ml solution. Also 
+available as a transdermal formulation on a named patient basis.
+Action: Tricyclic antidepressant that acts on central alpha-2 
+receptors which leads to increased noradrenaline levels within the 
+brain. Also inhibits several types of serotonin receptors and 
+histamine (H1) receptors.
+Use:
+• Appetite stimulation in dogs and cats. Efficacy in cats with stable 
+chronic kidney disease has been demonstrated.
+• Antiemetic role in conjunction with other drugs, but authorized 
+preparations should be used.
+• Anecdotal use beginning to appear concerning its use in the 
+management of social fears in dogs. 
+Monitor animal carefully when using mirtazapine, particularly if there 
+is also cardiac, hepatic or renal disease. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in patients with pre-existing 
+haematological disease.
+Adverse reactions: Sedation is common and can be profound. 
+Can affect behaviour in many different ways, increased vocalization 
+and interaction with others. Has been associated with blood 
+dyscrasias in humans.
+Drug interactions: Several interactions known in humans, 
+principally involving other behaviour-modifying drugs.
+DOSES
+Dogs: 1.1–1.3 mg/kg p.o. q24h.
+Cats: 1.9 mg/cat p.o. q48h (can double dose if needed or increase 
+frequency to q24h but not both).
+Misoprostol
+(Cytotec*) POM
+Formulations: Oral: 200 μg tablet.
+Action: Cytoprotection of the gastric mucosa: it inhibits gastric 
+acid secretion and increases bicarbonate and mucus secretion, 
+epithelial cell turnover and mucosal blood flow. It prevents,  
+and promotes healing of, gastric and duodenal ulcers, particularly 
+those associated with the use of NSAIDs. Some reports suggest  
+it may not prevent gastric bleeding associated with high doses  
+of methylprednisolone. It may also be useful in the management of 
+canine atopy, although other treatments are likely safer.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 287 / impressa 271 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+271
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use:
+• Protection against NSAID-induced gastric ulceration. In humans, 
+higher doses (20 μg (micrograms)/kg p.o. q6–12h) are used to 
+manage pre-existing NSAID-induced gastric ulceration, while 
+doses of 2–5 μ g/kg p.o. q6–8h are used prophylactically to 
+prevent ulceration.
+• Has been used in combination with aglepristone to induce 
+abortion in dogs and cats. 
+Give with food. Combinations with diclofenac are available for 
+humans, but are not suitable for small animals because of different 
+NSAID pharmacokinetics.
+Safety and handling: Women who are, or might be, pregnant 
+should avoid handling this drug.
+Contraindications: Do not use in pregnant animals.
+Adverse reactions: Diarrhoea, abdominal pain, nausea, vomiting 
+and abortion.
+Drug interactions: Use of misoprostol with gentamicin may 
+exacerbate renal dysfunction.
+DOSES
+Dogs:   
+• Protection against NSAID-induced gastric ulceration: 2–5 μ g 
+(micrograms)/kg p.o. q8–12h.
+• Atopic dermatitis: 3–6 μ g/kg p.o. q8h has been suggested.
+Cats: Protection against NSAID-induced gastric ulceration:  5 μg 
+(micrograms)/kg p.o. q8h.
+Mitotane (o,p'-DDD)
+(Lysodren*) POM
+Formulations: Oral: 500 mg tablet or capsule.
+Action: Necrosis of the adrenal cortex reducing the production of 
+adrenal cortical hormones.
+Use:
+• Management of pituitary-dependent hyperadrenocorticism 
+(HAC) in dogs. However, other medications are authorized for 
+this condition (see Trilostane).
+• Has been used in the management of adrenal-dependent HAC, 
+but with variable success.
+Mitotane is available from Europe for animals that have failed 
+trilostane therapy. It should be given with food high in fat/oil to 
+improve its absorption. Closely monitor for any decrease in 
+appetite (typically seen within 3–10 days of therapy); an ACTH 
+stimulation test should be performed to monitor treatment 
+efficacy. In diabetic animals the insulin dose should be reduced  
+by 30%. The addition of prednisolone is generally not 
+
+===== BSAVA PDF 288 / impressa 272 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+272
+recommended. If switching from trilostane to mitotane, then 
+post-ACTH cortisol concentrations should be >200 nmol/l before 
+starting mitotane. Not recommended in cats as trilostane is more 
+likely to be effective.
+Safety and handling: Drug crosses skin and mucous membrane 
+barriers. Wear gloves when handling this drug and avoid inhalation 
+of dust.
+Contraindications: No information available.
+Adverse reactions: Anorexia, vomiting, diarrhoea and weakness, 
+generally associated with too rapid a drop in plasma cortisol levels. 
+They usually resolve with steroid supplementation. Acute-onset of 
+neurological signs may be seen 2–3 weeks after initiation of therapy, 
+possibly due to rapid growth of a pituitary tumour. Provide 
+supplemental glucocorticoids during periods of stress. 
+Approximately 5% of dogs require permanent glucocorticoid and 
+mineralocorticoid replacement therapy if given mitotane overdose.
+Drug interactions: Barbiturates and corticosteroids increase the 
+hepatic metabolism of mitotane. There may be enhanced CNS 
+depression with concurrent use of CNS depressants. Spironolactone 
+blocks the action of mitotane. Diabetic animals may have rapidly 
+changing insulin requirements during the early stages of therapy.
+DOSES
+Dogs: 30–50 mg/kg p.o. (with/after food) q24h to effect (generally 
+3–10 days) then 50 mg/kg p.o. q7–14 days in 2–3 divided doses as 
+required. Higher doses (50–150 mg/kg p.o. q24h) may become 
+necessary for adrenal carcinomas.
+Cats: Similar dose to dogs but efficacy in cats is very variable, with 
+many showing no response at non-toxic levels.
+Mitoxantrone
+(Novantrone*) POM 
+Formulations: Injectable: 2 mg/ml.
+Action: Antitumour antibiotic which inhibits topoisomerase II. It is 
+cell cycle non-specific, but most active during S phase.
+Use:
+• Treatment of canine and feline lymphoma, squamous cell 
+carcinoma (SCC), and transitional cell carcinoma.
+• Its use has also been described in renal adenocarcinoma, fibroid 
+sarcoma, anal gland adenocarcinoma, thyroid carcinoma, 
+prostate carcinoma, mammary gland adenocarcinoma, feline 
+injection site sarcoma, haemangiopericytoma and as a 
+radiosensitizer in cats with oral SCC.
+Renal excretion is minimal, so it is far safer to administer to cats with 
+renal insufficiency than doxorubicin, although ancedotally acute 
+renal failure in cats can occur following administration.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

@@ -1,3 +1,4 @@
+import { ReadableTable } from '../shared/ReadableTable';
 import React, { useMemo, useState } from 'react';
 import { Search, ArrowUpDown, Check } from 'lucide-react';
 import { cn } from '../../../../lib/utils';
@@ -101,7 +102,7 @@ export function OncologyBsaTable({
       {/* Tabela de Conversão */}
       <div className="overflow-hidden rounded-2xl border border-border/80 bg-card shadow-sm">
         <div className="max-h-[520px] overflow-auto">
-          <table className="w-full min-w-[520px] border-collapse text-left text-xs">
+          <ReadableTable className="w-full min-w-[520px] border-collapse text-left text-xs">
             <thead className="sticky top-0 z-10 border-b border-border/80 bg-muted/90 backdrop-blur-md">
               <tr>
                 <th className="px-4 py-3 font-bold text-foreground">Peso Corporal (kg)</th>
@@ -169,7 +170,7 @@ export function OncologyBsaTable({
                 );
               })}
             </tbody>
-          </table>
+          </ReadableTable>
         </div>
       </div>
 

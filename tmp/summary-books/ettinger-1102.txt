@@ -1,0 +1,247 @@
+eBooks.Health.Elsevier.com
+SECTION XI
+•
+Infectious Disease
+1042
+Feline Leukemia Virus Infection
+Katrin Hartmann | Regina Hofmann-Lehmann
+DEFINITIONS AND PREVALENCE
+F
+eline leukemia virus (FeLV) is a ret-
+rovirus that aects domestic cats 
+worldwide. FeLV infection is associ-
+ated with a variety of illnesses, including 
+neoplasia, bone marrow suppression, and 
+immunodeciency. FeLV prevalence (usu-
+ally determined by FeLV antigenemia) 
+is reported between 2.3% to 3.3% in the 
+United States, 0% to 15.6% in Europe, 3.0% 
+to 28.4% in South America, and 0% to 24.5% in Asia and Austra-
+lia/New Zealand.1 e prevalence of FeLV infection is higher in 
+cats with specic risk factors (Table 199.1) and in sick cats, e.g., 
+up to 15% of certain diseases are associated with FeLV,2 includ-
+ing lymphoma,3 cutaneous abscesses, bite wounds,4 and chronic 
+gingivostomatitis.5 In a pan-European prevalence study using 
+FeLV RNA to assess cats for FeLV antigenemia in >6000 saliva 
+samples from 32 countries, the FeLV prevalence was 2.3%. ere 
+was a high variability among countries, with a very low preva-
+lence (0-1%) in the northern European countries Denmark, 
+Finland, Norway, Sweden, and the United Kingdom. In west-
+ern European countries (e Netherlands, Germany, Austria, 
+France, Belgium, and Luxemburg) the prevalence was 0-1.3%. 
+A higher prevalence of 4.5-8.8% was identied in southern 
+European countries that included Croatia, Italy, and Portugal.6
+Generally, prevalence has decreased for decades subsequent to 
+widespread test and removal or separation programs and com-
+mon use of FeLV vaccines;2 7 8 however, in many regions preva-
+lence is still high or has not decreased any further,9-11 thereby 
+demanding continuous awareness and vaccination of at-risk cats 
+(ch. 185).
+PATHOGENESIS
+VIRUS REPLICATION
+e genomic RNA of the retrovirus FeLV is reverse transcribed 
+into DNA within infected cells. e DNA copies are then inserted 
+into the host genome (provirus). us, division of infected cells 
+will result in daughter cells that also contain the provirus. e 
+viral genome encodes for the major proteins: group-specic anti-
+gens (gag), reverse transcriptase (pol), and envelope (env). One 
+of the gag proteins, p27, is abundant in the plasma of persistently 
+infected cats and is the basis for diagnostic point-of-care tests 
+(PoCTs) (ch. 184). e env protein denes the virus subgroup 
+with dierent pathogenicity (i.e., FeLV-A, -B, -C) and is impor-
+tant for inducing immunity.1
+OUTCOMES OF INFECTION
+“Balance of Power”
+ere are 4 potential outcomes of FeLV infection that depend on 
+the balance of power between the virus and the cat’s immune sys-
+tem: progressive (least favorable for the cat), regressive, abortive 
+(most favorable for the cat), and the probably rarely occurring 
+focal (atypical) infection (Box 199.1).12-16 Outcomes are deter-
+mined by certain risk factors (Table 199.1). Although the majority 
+of cats follows one of the 4 outcomes within a few months of infec-
+tion, varying and discrepant FeLV test results can be observed 
+during this early phase of infection. is is a time during which 
+the interplay between the cat’s immune system and the virus is at 
+its peak and the host-virus balance has not yet been denitively 
+set.14 16
+Even later aer infection, the host-virus balance is not xed 
+(Box 199.1) and the advantage can swing to either cat or virus 
+and, in turn, change the course of FeLV infection. Examples are 
+cats that have been positive for soluble p27 antigen for a long 
+period of time (which would be classied as progressive infec-
+tion) and then suddenly become antigen-negative.17 On the other 
+hand, in some regressively infected cats, FeLV infection might be 
+reactivated any time aer infection, although this occurs more 
+frequently during early infection.18 ese observations demon-
+strate that FeLV infection outcome is not xed, and the course 
+of infection is determined by balance of power between immune 
+system and virus, not only during initial infection, but life-long in 
+some cats (Box 199.1).
+Early Infection
+Aer mucosal or cutaneous exposure to FeLV, the virus replicates 
+in local lymphoid tissues. From there, infected cells carry the virus 
+to other target tissues, such as thymus, spleen, and lymph nodes. 
+About 3 weeks aer infection, bone marrow cells can become 
+infected (mainly in progressively infected cats that lack sucient 
+immunity against FeLV), producing infected neutrophils and 
+platelets that circulate in the blood and carry the virus to salivary 
+glands and mucosal glandular epithelium, the sites that will even-
+tually secrete most of FeLV responsible for horizontal transmis-
+sion. FeLV genetic material is usually detectable within 1 week 
+(viral RNA) to 2 weeks (proviral DNA) of infection. In most cats, 
+antigenemia (presence of viral proteins in the blood) correlates 
+with viremia (presence of infectious virus that can be cultured 
+from the blood), although some cats have discordant ndings.19 20
+Four Potential Outcomes
+Infected cats can either remain viremic and antigenemic (pro-
+gressive infection) or remain in or revert to an aviremic state 
+CHAPTER 199
+ACRONYMS
+FeLV feline leukemia virus
+FIV feline immunodeficien-
+cy virus
+PCR polymerase chain 
+reaction
+PoCT point-of-care test
+RT-PCR reverse transcrip-
+tase polymerase chain 
+reaction
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHAPTER 199
+•
+Feline Leukemia Virus Infection
+1043
+eBooks.Health.Elsevier.com
+(regressive infection with or without transient viremia) in which 
+neither antigen nor culturable virus is detected but in which FeLV 
+proviral DNA can still be identied.12 21 Regressive and progres-
+sive infections can thus be distinguished by repeated testing for 
+soluble p27 antigen in peripheral blood (Figure 199.1).22 ey 
+also can be distinguished by their provirus load later (a few weeks 
+to months) in the course of infection.12 18 21 However, during early 
+infection, cats undergoing progressive or regressive infections 
+have similar proviral and viral RNA loads.23 Moreover, soluble 
+p27 antigen loads can indicate likelihood of infection outcome a 
+few weeks aer infection.21 24 Antigen loads were also suggested 
+as a prognostic marker. Among progressively infected cats, appar-
+ently healthy cats had lower soluble p27 antigen loads than did 
+cats with FeLV-associated diseases18 and in shelter cats tested at 
+intake, high antigen as well as high provirus loads were associated 
+with shorter survival.25 Cats with abortive infection are negative 
+in all direct virus detection methods (such as tests for soluble p27 
+antigen and proviral DNA) and anti-FeLV antibodies are the only 
+sign of abortive infection.12 13
+Progressive Infection e percentage of cats that will develop 
+progressive FeLV infection varies, and it is most oen determined 
+by risk factors (Table 199.1) and infection pressure. ere is about 
+a 3% chance of progressive infection aer a single contact with a 
+FeLV-shedding cat and a 30% chance when a cat lives with a shed-
+ding cat for several weeks.26 e virus has the upper hand in cats 
+with progressive infection (Box 199.1). ese cats continuously shed 
+virus, frequently succumb to FeLV-associated diseases within a few 
+years, and have a decreased life expectancy.8 27-29 In a long-term 
+follow-up study on experimentally FeLV-infected cats, progressively 
+infected cats lived an average (median) of 3.1 years (range from 0.6 
+to 6.5 years).18 Cats with progressive infection have ineective FeLV-
+specic immunity, allowing extensive virus replication in the bone 
+marrow, spread to many tissues, and shedding of the virus.18 21 30
+Regressive Infection In regressive infection, an eective 
+immune response can keep the virus in check so that no, or only 
+very limited, viral replication takes place prior to or at the time of 
+bone marrow infection (Box 199.1). Between 1% and 11% of cats 
+were found to be regressively infected. In these cats, soluble p27 
+antigen is sometimes detectable in peripheral blood within 2 to 3 
+weeks aer virus exposure but the antigen becomes undetectable 2 
+to 8 weeks later or, in rare cases, even aer many months.14 21 31 32
+Cats with regressive infection have persistent integration of FeLV 
+DNA in their genome. Complete clearance of FeLV provirus has 
+not been detected in cats with regressive infection, even up to 12 
+years aer exposure.18 However, FeLV provirus levels can fall under 
+the detection limit of molecular assays. Regressively infected cats 
+only rarely develop FeLV-associated diseases such as lymphoma 
+or bone marrow disorders.33-36 In these cats, the provirus itself can 
+disturb cellular mechanisms (leading to bone marrow suppression) 
+or act as an oncogenic substance causing tumor development with-
+out necessity of replicating virus. Even though viral shedding does 
+not occur, it is possible for cats with regressive infection to trans-
+mit FeLV following blood and tissue donation since proviral DNA 
+can be infectious.37 e regressive state can convert to a progressive 
+state, called “reactivation” (Box 199.1). is is more likely to occur 
+soon aer exposure to FeLV, but also has been described in cats that 
+were antigen-negative for many years.38
+Abortive Infection Abortively infected cats have ecient 
+immunity against FeLV and neither provirus integration nor viral 
+replication occurs (Box 199.1). It is unclear how common abor-
+tive infection occurs naturally, but its frequency might be under 
+estimated.14 31
+Focal Infection In cats with focal (i.e., atypical) infection, 
+the immune system keeps FeLV in check and virus replication is 
+sequestered in tissues e.g., spleen, lymph nodes, small intestine, 
+mammary glands (Box 199.1). Soluble p27 antigen can be released 
+at times into the peripheral blood, but no infected cells are detect-
+able. is can result in discordant or alternating test results and 
+diagnostic diculties. Cats with focal FeLV infection are probably 
+rare and not a major epidemiological concern, but this infection 
+outcome can lead to confusing FeLV test results.14 16 39
+TABLE 199.1
+Risk Factors Influencing Prevalence of Progressive 
+Feline Leukemia Virus (FeLV) Infection and Courses 
+of FeLV Infection
+A) Risk Factors Influencing Prevalence of FeLV Infection
+Signalment
+•Sex: male cats
+•Reproductive status: intact cats
+•Age: adult cats
+Health status
+•Presence of clinical signs (e.g., bite
+wounds, abscesses, secondary infections, 
+lymphoma, anemia, neuropathies, 
+reproductive disorders, fading kitten 
+syndrome)
+Behavior
+•Aggressive (e.g., cat fights, bites) or social
+behavior (e.g., grooming, sharing food 
+bowls)
+Vaccination status
+•Lack of FeLV vaccination
+Lifestyle
+•Outdoor access
+•Direct cat contact
+Housing conditions
+•Multi-cat household
+Background
+•Cats in households with FeLV infection
+•Stray cats (especially cats from regions
+without trap-neuter-return program)
+•Cats from shelters (especially from shel-
+ters with inadequate testing programs 
+and hygiene strategies)
+•Cats from animal hoarders
+•Cats with inadequate nutrition, sanitation,
+medical care
+Origin
+•Cats from countries with higher prevalence
+•Cats from areas of a low purchasing
+power parity per capita and income
+B) Risk Factors Influencing Courses of FeLV Infection
+Signalment
+•Young age at time of infection
+Immune system
+•Insufficient virus-specific humoral and
+cell-mediated immunity
+•Absence of anti-FeLV antibodies
+•Lack of FeLV vaccination
+Infectious pressure
+•High FeLV viral load in the environment
+•Long-term contact with FeLV-shedding
+cats (multi-cat households with FeLV)
+Virus virulence
+•Emergence of FeLV subgroups within the
+cat (e.g., FeLV-B, FeLV-C)
+•Mutations in the FeLV genome or integra-
+tion of the FeLV genome near proto-
+oncogenes, both leading to activation of 
+proto-oncogenes
+Modified from Hartmann K, Hofmann-Lehmann R. What’s new in feline leukemia 
+virus infection. Vet Clin North Am Small Anim Pract. ;:-.

@@ -37,7 +37,19 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
 
   plainLanguage: DISEASE_PLAIN_LANGUAGE['anemia-caes-gatos'],
 
-  quickSummary: 'A anemia é uma das síndromes clínicas mais prevalentes e desafiadoras na rotina médica e de terapia intensiva de cães e gatos. Definida como a redução da massa de eritrócitos circulantes abaixo dos valores fisiológicos de referência para a espécie e raça, sua gravidade clínica não é determinada apenas pela magnitude numérica do hematócrito (HCT/VG), mas fundamentalmente pela velocidade de instalação da hipóxia tecidual e pela equação de oferta tecidual de oxigênio (DO2 = Débito Cardíaco x Conteúdo Arterial de O2). A abordagem clínica contemporânea repudia o tratamento empírico e organiza-se estritamente em torno da contagem absoluta de reticulócitos e da revisão microscópica do esfregaço sanguíneo, categorizando a síndrome em três mecanismos fisiopatológicos primários: perda sanguínea (hemorragia aguda ou crônica), destruição acelerada (hemólise extravascular ou intravascular imunomediada, oxidativa, infecciosa ou microangiopática) e produção diminuída ou ineficaz (anemia de inflamação mediada por hepcidina, anemia associada à doença renal crônica por deficiência de eritropoietina, deficiência absoluta de ferro ou aplasias/displasias medulares primárias). A tomada de decisão hemoterápica baseia-se em parâmetros clínicos e hemodinâmicos integrados de hipóxia celular e não em gatilhos numéricos universais isolados, respeitando a compatibilidade transfusional por tipagem DEA 1 e crossmatch em cães e a tipagem obrigatória do sistema AB felino e compatibilidade estrita, além das atualizações consensuais da IRIS 2026 para agentes estimuladores da eritropoiese e inibidores de prolil-hidroxilase do HIF (HIF-PHI).',
+  quickSummary:
+    'Síntese clínica e fisiopatológica da anemia em pequenos animais:\n' +
+    '- Definição e oferta tecidual de oxigênio (DO2):\n' +
+    '  - Síndrome decorrente da redução da massa de eritrócitos circulantes abaixo dos limites fisiológicos.\n' +
+    '  - A gravidade clínica é ditada pela velocidade de instalação da hipóxia e pela equação de entrega de oxigênio: DO2 = Débito Cardíaco x Conteúdo Arterial de O2 (CaO2).\n' +
+    '- Tríade fisiopatológica primária:\n' +
+    '  - 1. Perda sanguínea: hemorragias agudas ou crônicas cavitárias, digestivas ou externas.\n' +
+    '  - 2. Destruição acelerada: hemólise extravascular ou intravascular (imunomediada/IMHA, oxidativa, infecciosa ou microangiopática/CID).\n' +
+    '  - 3. Produção diminuída ou ineficaz: anemia de inflamação mediada por hepcidina, nefropatia crônica (DRC), ferropenia absoluta ou aplasia medular.\n' +
+    '- Padrão-ouro diagnóstico e terapêutico:\n' +
+    '  - Contagem absoluta de reticulócitos e análise morfológica do esfregaço sanguíneo em objetiva de imersão.\n' +
+    '  - Hemoterapia orientada por biomarcadores clínicos de hipóxia tecidual, com tipagem DEA 1 canina e tipagem estrita do sistema AB felino.\n' +
+    '  - Atualizações consensuais IRIS 2026 com agentes estimuladores da eritropoiese (ESA) e inibidores de prolil-hidroxilase do HIF (HIF-PHI, molidustat).',
 
   quickDecisionStrip: [
     'Regra de ouro inicial: anemia não é uma doença primária, mas sim uma síndrome funcional que exige a identificação precisa de seu mecanismo etiopatogênico subjacente.',
@@ -54,7 +66,12 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
   ],
 
   quickSummaryRich: {
-    lead: 'A anemia é a síndrome clínica decorrente da redução da massa de eritrócitos circulantes, comprometendo diretamente o conteúdo arterial de oxigênio (CaO2) e a oferta tecidual de O2 (DO2). Sua investigação clínica exige raciocínio fisiopatológico sequencial entre perda, destruição e produção ineficaz guiado pela contagem absoluta de reticulócitos.',
+    lead:
+      'Definição e conduta na síndrome anêmica:\n' +
+      '- Conceito fisiopatológico:\n' +
+      '  - Redução da massa de eritrócitos circulantes, comprometendo o conteúdo arterial (CaO2) e a oferta tecidual de oxigênio (DO2).\n' +
+      '- Raciocínio etiopatogênico sequencial:\n' +
+      '  - Investigação diferencial entre perda sanguínea, destruição hemolítica e produção ineficaz guiada pela contagem absoluta de reticulócitos.',
     leadHighlights: [
       'Massa de eritrócitos circulantes',
       'DO2 = Débito Cardíaco x CaO2',
@@ -66,22 +83,50 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
     pillars: [
       {
         title: 'Pilar 1: Fisiologia do DO2 e Gravidade Hemodinâmica',
-        body: 'A gravidade clínica é ditada pela velocidade de queda da hemoglobina e pela reserva cardiovascular. A equação DO2 = DC x [(1,34 x Hb x SaO2) + (0,003 x PaO2)] demonstra que o oxigênio dissolvido é desprezível (0,3 mL/dL), tornando a reposição de eritrócitos a única intervenção capaz de restaurar a capacidade carreadora em anemias descompensadas.',
+        body:
+          'Fisiologia do transporte e oferta de oxigênio:\n' +
+          '- Cinética do DO2:\n' +
+          '  - A gravidade clínica é ditada pela velocidade de queda da hemoglobina e pela reserva cardiovascular basal.\n' +
+          '- Equação fundamental:\n' +
+          '  - DO2 = DC x [(1,34 x Hb x SaO2) + (0,003 x PaO2)].\n' +
+          '- Limitação física:\n' +
+          '  - O oxigênio dissolvido é desprezível (0,3 mL/dL), tornando a reposição celular via hemotransfusão a intervenção primária na hipóxia descompensada.',
         highlights: ['DO2 = DC x CaO2', 'Oxigênio dissolvido é desprezível (0,3 mL/dL)', 'Anemia aguda vs crônica compensada']
       },
       {
         title: 'Pilar 2: Eixo Medular e Cinética de Regeneração',
-        body: 'A contagem absoluta de reticulócitos (ARC = RBC x % reticulócitos) define se a medula responde adequadamente à hipóxia renal mediada por eritropoietina. A resposta regenerativa demanda de 48 a 96 horas para manifestar-se no sangue periférico. Em gatos, deve-se distinguir obrigatoriamente os reticulócitos agregados (regeneração ativa) dos punctates (maturação pretérita).',
+        body:
+          'Avaliação funcional da medula óssea:\n' +
+          '- Contagem absoluta de reticulócitos (ARC):\n' +
+          '  - Define se a medula responde adequadamente à hipóxia tecidual e ao estímulo da eritropoietina (ARC = RBC x % reticulócitos).\n' +
+          '- Janela de latência biológica:\n' +
+          '  - A resposta regenerativa demanda de 48 a 96 horas para atingir o sangue periférico.\n' +
+          '- Critério na espécie felina:\n' +
+          '  - Distinção obrigatória dos reticulócitos agregados (regeneração ativa) dos reticulócitos punctates.',
         highlights: ['Contagem absoluta de reticulócitos (ARC)', 'Janela de retardo medular (48 a 96 h)', 'Gatos: agregados vs punctates']
       },
       {
         title: 'Pilar 3: As Três Vias Etiopatogênicas Fundamentais',
-        body: 'Todo caso clínico enquadra-se em: (1) Perda hemorrágica externa, intracavitária ou oculta no trato digestivo; (2) Destruição acelerada hemolítica extravascular ou intravascular (imunomediada, infecciosa, oxidativa ou microangiopática); ou (3) Produção diminuída/ineficaz (anemia de inflamação mediada por hepcidina, DRC, ferropenia ou infiltração medular).',
+        body:
+          'Três vias etiopatogênicas fundamentais:\n' +
+          '- 1. Perda sanguínea (hemorragia):\n' +
+          '  - Hemorragias externas, cavitárias ou perdas digestivas ocultas.\n' +
+          '- 2. Destruição acelerada (hemólise):\n' +
+          '  - Hemólise imune (IMHA), toxicose oxidativa, infecções ou microangiopatia mecânica (CID).\n' +
+          '- 3. Produção diminuída ou ineficaz:\n' +
+          '  - Anemia de inflamação mediada por hepcidina, DRC, ferropenia ou lesão medular primária.',
         highlights: ['Hemorragia (externa, cavitária, oculta)', 'Hemólise (imunomediada, oxidativa, infecciosa)', 'Produção ineficaz (hepcidina, DRC, medula)']
       },
       {
         title: 'Pilar 4: Hemoterapia e Conduta Farmacológica Racional',
-        body: 'A indicação transfusional apoia-se em biomarcadores de hipóxia tecidual (lactato, deficit de base, sinais vitais) e não em valores fixos de HCT. Respeitam-se a tipagem DEA 1 e crossmatch canino, a tipagem estrita do sistema AB felino e a contraindicação de anti-histamínicos pré-transfusionais rotineiros (TRACS 2021). A terapêutica etiológica incorpora imunossupressores na IMHA, reposição criteriosa de ferro e darbepoetina/molidustat na DRC.',
+        body:
+          'Diretrizes de hemoterapia e farmacologia clínica:\n' +
+          '- Gatilhos transfusionais objetivos:\n' +
+          '  - Decisão apoiada em sinais clínicos e biomarcadores de hipóxia tecidual (lactato, deficit de base), nunca em corte numérico isolado de HCT.\n' +
+          '- Segurança imunológica:\n' +
+          '  - Tipagem DEA 1 e prova cruzada em cães; tipagem estrita do sistema AB em gatos; veto a anti-histamínicos pré-transfusionais rotineiros (TRACS 2021).\n' +
+          '- Farmacologia específica:\n' +
+          '  - Imunossupressão na IMHA, reposição criteriosa de ferro e agentes estimuladores (darbepoetina/molidustat) na DRC.',
         highlights: ['Gatilho clínico individualizado', 'Tipagem sanguínea e compatibilidade', 'Farmacologia etiológica específica']
       }
     ],
@@ -101,17 +146,32 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Etapa 3: Contagem Absoluta de Reticulócitos e Esfregaço Microscópico',
           timing: '1 a 2 horas',
-          detail: 'Classificação definitiva em regenerativa vs não regenerativa pela contagem absoluta de reticulócitos (ARC). Exame minucioso do esfregaço em objetiva de imersão (100x) pesquisando esferócitos, policromasia, corpos de Heinz, esquizócitos, rouleaux e hemoparasitas.'
+          detail:
+            'Avaliação da resposta medular:\n' +
+            '- Classificação definitiva:\n' +
+            '  - Regenerativa vs não regenerativa pela contagem absoluta de reticulócitos (ARC).\n' +
+            '- Microscopia em objetiva de imersão (100x):\n' +
+            '  - Pesquisa ativa de esferócitos, policromasia, corpos de Heinz, esquizócitos, rouleaux e hemoparasitas.'
         },
         {
           label: 'Etapa 4: Mapeamento de Foco Hemorrágico e Hemólise',
           timing: '2 a 4 horas',
-          detail: 'Se regenerativa: AFAST/TFAST seriado para detectar hemoabdome ou hemotórax; pesquisa de hemorragia gastrointestinal oculta (melena, fezes); avaliação de icterícia, bilirrubina, hemoglobinúria e teste de aglutinação em salina (SAT 4:1 ou 49:1) e Coombs (DAT).'
+          detail:
+            'Rastreio de perdas ativas e destruição acelerada:\n' +
+            '- Investigação em anemia regenerativa:\n' +
+            '  - AFAST/TFAST seriado para hemoabdome ou hemotórax; triagem de melena e perdas ocultas.\n' +
+            '- Confirmação de hemólise:\n' +
+            '  - Avaliação de icterícia, bilirrubina, hemoglobinúria e testes imunomediados (SAT 4:1 ou 49:1 e Coombs/DAT).'
         },
         {
           label: 'Etapa 5: Investigação de Falha de Produção Extramedular e Intramedular',
           timing: 'Conforme estabilização clínica',
-          detail: 'Se não regenerativa persistente: perfil renal completo (creatinina, ureia, SDMA, urinálise), perfil de ferro (ferro sérico, TIBC, ferritina), sorologias e PCR para agentes infecciosos (Mycoplasma haemofelis, FeLV/FIV, Babesia, Ehrlichia). Indicação de aspirado e biópsia de medula óssea em caso de citopenias múltiplas ou ausência de causa extramedular.'
+          detail:
+            'Propedêutica da anemia não regenerativa persistente:\n' +
+            '- Triagem sistêmica extramedular:\n' +
+            '  - Perfil renal (creatinina, ureia, SDMA, urinálise), perfil de ferro (ferro, TIBC, ferritina), sorologias e PCR infecciosos.\n' +
+            '- Avaliação medular invasiva:\n' +
+            '  - Aspirado e biópsia de medula óssea se citopenias múltiplas ou ausência de causas extramedulares.'
         }
       ]
     },
@@ -126,17 +186,34 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
         {
           label: 'Fase 2: Suporte Hemoterápico Individualizado e Tipagem',
           timing: 'Conforme necessidade clínica',
-          detail: 'Indicação de concentrado de hemácias (pRBC 6 a 10 mL/kg) ou sangue total fresco (12 a 20 mL/kg) em pacientes com taquicardia persistente, acidose lática, taquipneia ou colapso. Realização mandatória de tipagem DEA 1 e crossmatch em cães transfundidos há mais de 4 dias e tipagem estrita do sistema AB em felinos.'
+          detail:
+            'Indicação e seleção de hemocomponentes:\n' +
+            '- Gatilhos clínicos:\n' +
+            '  - Concentrado de hemácias (pRBC 6 a 10 mL/kg) ou sangue total (12 a 20 mL/kg) em acidose lática, taquicardia persistente ou colapso.\n' +
+            '- Segurança transfusional:\n' +
+            '  - Tipagem DEA 1 e crossmatch em cães transfundidos há mais de 4 dias; tipagem estrita AB prévia em gatos.'
         },
         {
           label: 'Fase 3: Terapia Farmacológica Etiológica Direcionada',
           timing: 'Início após confirmação diagnóstica',
-          detail: 'IMHA: prednisona (2 mg/kg/dia) associada a segundo imunossupressor e tromboprofilaxia. Anemia renal: darbepoetina (0,5 a 1 ug/kg SC semanal) ou molidustat oral (5 mg/kg q24h em gatos) segundo IRIS 2026. Deficiência ferropriva: sulfato ferroso oral ou ferro dextrano injetável.'
+          detail:
+            'Protocolos etiológicos direcionados:\n' +
+            '- Anemia imunomediada (IMHA):\n' +
+            '  - Prednisona (2 mg/kg/dia) com segundo agente e tromboprofilaxia mandatória.\n' +
+            '- Anemia renal (DRC):\n' +
+            '  - Darbepoetina ou molidustat oral conforme diretrizes IRIS 2026.\n' +
+            '- Deficiência ferropriva:\n' +
+            '  - Sulfato ferroso oral ou ferro dextrano parenteral se carência comprovada.'
         },
         {
           label: 'Fase 4: Profilaxia e Manejo de Complicações Hospitalares',
           timing: 'Durante toda a internação',
-          detail: 'Monitoramento rigoroso de reações transfusionais agudas (febris, hemolíticas, TACO, TRALI). Mitigação ativa da anemia iatrogênica por flebotomia na UTI mediante o uso de microtubos pediátricos e limitação do volume colhido a menos de 3% da volemia corporal.'
+          detail:
+            'Prevenção de complicações em terapia intensiva:\n' +
+            '- Vigilância de reações agudas:\n' +
+            '  - Monitoramento contínuo para reações febris, hemolíticas, sobrecarga volêmica (TACO) e lesão pulmonar (TRALI).\n' +
+            '- Mitigação da anemia iatrogênica por flebotomia:\n' +
+            '  - Uso sistemático de microtubos pediátricos e limite de coleta a menos de 3% da volemia corporal.'
         },
         {
           label: 'Fase 5: Monitoramento Seriado da Resposta e Desmame',
@@ -148,15 +225,60 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
   },
 
   etiology: {
-    definicaoConceitualERedutoresMassaEritrocitaria: 'A anemia é definida fisiopatologicamente como a redução da massa eritrocitária corporal total abaixo dos limites homeostáticos esperados para a espécie, idade e raça do paciente. Na prática diagnóstica rotineira, a massa eritrocitária total não é quantificada por métodos diretos de diluição isotópica de eritrócitos marcados; utiliza-se, em substituição, o hematócrito automatizado (HCT), o volume globular por microcentrifugação (PCV/VG), a concentração de hemoglobina sérica (Hb) e a contagem total de eritrócitos (RBC). Embora fortemente correlacionados, esses parâmetros são grandezas dependentes da concentração volêmica e sofrem interferência direta do volume plasmático circulante (Nelson & Couto, 6a ed., Cap. 82; Ettinger, 9a ed.).',
+    definicaoConceitualERedutoresMassaEritrocitaria:
+      'Definição conceitual e quantificação da massa eritrocitária:\n' +
+      '- Conceito fisiopatológico central:\n' +
+      '  - Redução da massa eritrocitária corporal total abaixo dos limites homeostáticos basais para a espécie, idade e raça do paciente.\n' +
+      '- Métodos indiretos e grandezas de concentração:\n' +
+      '  - Na rotina, a massa total não é aferida por diluição isotópica; avalia-se o hematócrito automatizado (HCT), o volume globular por microcentrifugação (PCV/VG), a hemoglobina sérica (Hb) e a contagem total de eritrócitos (RBC).\n' +
+      '- Interferência da volemia plasmática (Nelson & Couto, 6ª ed.; Ettinger, 9ª ed.):\n' +
+      '  - Esses marcadores refletem grandezas de concentração e sofrem interferência direta do volume hídrico intravascular circulante.',
 
-    anemiaAbsolutaVsAnemiaDilucional: 'A distinção entre anemia absoluta (verdadeira) e anemia relativa (dilucional) é basilar na medicina de emergência e terapia intensiva. Na anemia absoluta, ocorre contração efetiva do número absoluto de eritrócitos no organismo em virtude de hemorragia, destruição hemolítica ou deficiência de produção na medula óssea. Na anemia dilucional, a massa eritrocitária total permanece rigorosamente inalterada, porém o hematócrito e a concentração de hemoglobina caem artificialmente pela expansão do volume do compartimento intravascular decorrente de fluidoterapia com cristaloides excessivos, retenção patológica de água e sódio na insuficiência cardíaca congestiva, síndrome nefrótica ou hipoalbuminemia grave. Inversamente, a desidratação e o choque hipovolêmico inicial produzem hemoconcentração, mascarando uma perda eritrocitária expressiva pré-existente e gerando valores falsamente normais de hematócrito.',
+    anemiaAbsolutaVsAnemiaDilucional:
+      'Diferenciação crítica entre anemia absoluta e anemia dilucional:\n' +
+      '- Anemia absoluta (verdadeira):\n' +
+      '  - Contração real e efetiva do número total de eritrócitos circulantes por hemorragia, destruição hemolítica acelerada ou falência de síntese medular.\n' +
+      '- Anemia relativa (dilucional):\n' +
+      '  - A massa eritrocitária total permanece inalterada, mas o hematócrito e a hemoglobina caem por expansão do compartimento intravascular.\n' +
+      '  - Decorre de fluidoterapia com cristaloides em excesso, retenção hidrossalina na insuficiência cardíaca congestiva, síndrome nefrótica ou hipoalbuminemia severa.\n' +
+      '- Efeito mascarador da hemoconcentração:\n' +
+      '  - Desidratação e choque hipovolêmico inicial concentram o sangue, camuflando perdas eritrocitárias graves sob valores temporariamente normais de hematócrito.',
 
-    fisiologiaDoTransporteOxigenioDO2ECaO2: 'A lesão celular irreversível e o óbito induzidos pela anemia decorrem da falência da oferta tecidual de oxigênio (DO2). O DO2 expressa o volume absoluto de oxigênio entregue à microcirculação tecidual por minuto e resulta do produto entre o Débito Cardíaco (DC) e o Conteúdo Arterial de Oxigênio (CaO2): DO2 = DC x CaO2. Por sua vez, a equação de CaO2 estabelece: CaO2 = (1,34 x Hb x SaO2) + (0,003 x PaO2). Como 1 grama de hemoglobina totalmente saturada carreia aproximadamente 1,34 mL de O2 e a constante de solubilidade plasmática do oxigênio é de apenas 0,003 mL/dL/mmHg, em um animal hígido com Hb de 15 g/dL e PaO2 de 100 mmHg, 19,7 mL/dL de O2 trafegam ligados à hemoglobina e somente 0,3 mL/dL encontram-se dissolvidos fisicamente no plasma (Manual of Small Animal Emergency and Critical Care Medicine, 2a ed., Cap. 7).',
+    fisiologiaDoTransporteOxigenioDO2ECaO2:
+      'Fisiologia do transporte e oferta tecidual de oxigênio (DO2 e CaO2):\n' +
+      '- Equação de oferta tecidual de oxigênio:\n' +
+      '  - DO2 = DC x CaO2 (Volume de O2 entregue aos leitos capilares por minuto = Débito Cardíaco multiplicado pelo Conteúdo Arterial de Oxigênio).\n' +
+      '- Equação do conteúdo arterial de oxigênio:\n' +
+      '  - CaO2 = (1,34 x Hb x SaO2) + (0,003 x PaO2).\n' +
+      '- Fração ligada à hemoglobina versus fração dissolvida:\n' +
+      '  - Cada grama de hemoglobina carreadora liga aproximadamente 1,34 mL de O2.\n' +
+      '  - A constante de solubilidade plasmática do oxigênio é irrisória (0,003 mL/dL/mmHg).\n' +
+      '  - Em animal hígido (Hb 15 g/dL e PaO2 100 mmHg): 19,7 mL/dL trafegam carreados pela hemoglobina e apenas 0,3 mL/dL dissolvidos no plasma.',
 
-    oxigenioterapiaVsTransfusaoMassaEritrocitaria: 'A mecânica do transporte gasoso elucida um dos conceitos mais desvirtuados da terapia intensiva: a suplementação de oxigênio a 100% não reverte a hipóxia anêmica crítica. Em um paciente gravemente anêmico com Hb de 4 g/dL e SaO2 de 98% em ar ambiente, a elevação da PaO2 de 100 para 500 mmHg mediante oxigênio a 100% sob máscara acrescenta apenas 1,2 mL/dL de oxigênio dissolvido no plasma [(500 - 100) x 0,003], gerando um ganho marginal insuficiente para suprir a demanda celular. Portanto, embora o oxigênio suplementar garanta a saturação plena da fração remanescente de hemoglobina e deva ser prontamente instituído na estabilização inicial, a restauração da capacidade de transporte e do DO2 só é atingida concretamente pela reposição de eritrócitos funcionais por meio de hemotransfusão.',
+    oxigenioterapiaVsTransfusaoMassaEritrocitaria:
+      'Oxigenioterapia versus reposição da massa eritrocitária na terapia intensiva:\n' +
+      '- Limitação física da oxigenioterapia a 100%:\n' +
+      '  - Em paciente crítico com Hb de 4 g/dL e SaO2 de 98%, elevar a PaO2 de 100 para 500 mmHg sob máscara a 100% acrescenta míseros 1,2 mL/dL de O2 dissolvido no plasma [(500 - 100) x 0,003].\n' +
+      '- Ganho marginal versus demanda metabólica:\n' +
+      '  - Esse pequeno incremento é incapaz de satisfazer o consumo metabólico celular dos órgãos vitais.\n' +
+      '- Papel clínico integrado da intervenção:\n' +
+      '  - O oxigênio inalatório garante saturação plena da hemoglobina residual remanescente e deve ser iniciado prontamente.\n' +
+      '  - Contudo, a restauração genuína da capacidade de transporte e da oferta DO2 exige reposição de eritrócitos funcionais via hemotransfusão.',
 
-    cineticaAdaptativaAnemiaAgudaVsCronica: 'A tolerância hemodinâmica e a sobrevida do paciente dependem tanto da velocidade de instalação quanto da amplitude absoluta da queda do hematócrito. Na anemia aguda fulminante (ex.: ruptura de hemangiossarcoma esplênico ou hemorragia arterial traumática), a perda simultânea de massa de eritrócitos e volume intravascular em intervalo de minutos a poucas horas acarreta queda concomitante de pré-carga, volume sistólico e CaO2, culminando em colapso circulatório, acidose lática e óbito mesmo com hematócrito residual de 20%. Em contraste, na anemia crônica de progressão lenta ao longo de semanas ou meses (ex.: perda digestiva microscópica por parasitismo crônico, neoplasia ulcerada ou insuficiência renal crônica), o organismo implementa mecanismos compensatórios eficientes: aumento progressivo do débito cardíaco por taquicardia e hipertrofia excêntrica miocárdica fisiológica, síntese intraeritrocitária de 2,3-difosfoglicerato (2,3-DPG) que desloca a curva de dissociação da hemoglobina para a direita facilitando a liberação de oxigênio tecidual, vasodilatação periférica e redistribuição do fluxo sanguíneo para órgãos nobres (SNC e miocárdio). Graças a essa plasticidade, cães e especialmente gatos com anemia crônica compensada podem comparecer ao consultório clinicamente alertas, alertas e mantendo locomoção estável mesmo com valores de hematócrito tão baixos quanto 8% a 12% (Nelson & Couto, 6a ed.; Feline Emergency and Critical Care Medicine, 2a ed.).',
+    cineticaAdaptativaAnemiaAgudaVsCronica:
+      'Cinética adaptativa e tolerância clínica: anemia aguda versus crônica:\n' +
+      '- Anemia aguda fulminante:\n' +
+      '  - Ocorre em minutos a poucas horas (ruptura de hemangiossarcoma esplênico, trauma vascular maciço).\n' +
+      '  - Queda abrupta simultânea de pré-carga, volume sistólico e CaO2.\n' +
+      '  - Culmina em colapso circulatório, hiperlactatemia severa e choque hipóxico mesmo com hematócrito em 20%.\n' +
+      '- Anemia crônica insidiosa:\n' +
+      '  - Desenvolve-se ao longo de semanas ou meses (perda digestiva oculta, parasitismo, nefropatia crônica).\n' +
+      '- Mecanismos fisiológicos compensatórios ativados:\n' +
+      '  - 1. Aumento do débito cardíaco por taquicardia e hipertrofia excêntrica miocárdica fisiológica.\n' +
+      '  - 2. Síntese eritrocitária de 2,3-difosfoglicerato (2,3-DPG), desviando a curva de dissociação da hemoglobina para a direita e facilitando a entrega tecidual de O2.\n' +
+      '  - 3. Vasodilatação microvascular periférica e redistribuição de fluxo para SNC e miocárdio.\n' +
+      '- Plasticidade clínica surpreendente:\n' +
+      '  - Cães e gatos compensados mantêm locomoção e alerta estáveis com hematócritos extremos de 8% a 12% (Nelson & Couto; Feline ECC).',
 
     tabelaComparativaTresMecanismosFisiopatologicos: {
       kind: 'clinicalTable',
@@ -225,17 +347,60 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       ]
     },
 
-    metabolismoDoFerroHepcidinaEAnemiaDeInflamacao: 'A homeostase do ferro constitui o divisor de águas entre a anemia ferropriva absoluta e a anemia de inflamação (AID, historicamente rotulada como anemia de doença crônica). O hormônio hepático hepcidina atua como o modulador mestre negativo da cinética do ferro. Sob estímulo de citocinas pró-inflamatórias (destacadamente a interleucina-6 / IL-6), o fígado eleva a síntese e a secreção plasmática de hepcidina. A hepcidina liga-se ao canal exportador de ferro ferroportina presente na membrana basolateral dos enterócitos duodenais e na superfície dos macrófagos do sistema mononuclear fagocitário, induzindo sua internalização e degradação lisossômica. Consequentemente, o ferro dietético não é absorvido e o ferro reciclado da destruição eritrocitária permanece retido no interior dos macrófagos, inacessível aos precursores eritroides na medula óssea (deficiência funcional de ferro com estoques corporais normais ou elevados). Adicionalmente, as citocinas inflamatórias reduzem diretamente a proliferação dos eritroblastos e atenuam a sensibilidade medular à eritropoietina, resultando no clássico padrão normocítico normocrômico não regenerativo da AID (Feline Emergency and Critical Care Medicine, 2a ed., Cap. 29; Nelson & Couto, 6a ed.).'
+    metabolismoDoFerroHepcidinaEAnemiaDeInflamacao:
+      'Homeostase do ferro, eixo da hepcidina e anemia de inflamação (AID):\n' +
+      '- O papel central da hepcidina hepática:\n' +
+      '  - Hormônio produzido pelo fígado sob estímulo direto de citocinas pró-inflamatórias (principalmente interleucina-6 / IL-6).\n' +
+      '  - Atua como o modulador mestre negativo do trânsito sistêmico de ferro.\n' +
+      '- Bloqueio da ferroportina e aprisionamento tecidual:\n' +
+      '  - A hepcidina liga-se ao canal exportador ferroportina nos enterócitos duodenais e macrófagos espleno-hepáticos, induzindo sua internalização e degradação lisossômica.\n' +
+      '  - Bloqueio da absorção entérica de ferro e retenção do ferro reciclado no interior dos macrófagos.\n' +
+      '- Deficiência funcional de ferro versus carência absoluta:\n' +
+      '  - Os estoques corporais totais de ferro são normais ou abundantes, porém biologicamente inacessíveis aos precursores eritroides medulares.\n' +
+      '- Supressão eritroide direta (Nelson & Couto; Feline ECC):\n' +
+      '  - Citocinas inflamatórias inibem a divisão dos eritroblastos e atenuam a resposta medular à EPO, produzindo o padrão clássico normocítico normocrômico não regenerativo.'
   },
 
   epidemiology: {
-    prevalenciaHospitalarEEstudoDeLynch: 'A anemia é uma das comorbidades secundárias mais frequentes em pacientes hospitalizados. No estudo pivotal multicêntrico conduzido por Lynch et al. avaliando 851 cães e gatos em unidades de terapia intensiva veterinária, 32% dos pacientes já se encontravam anêmicos no momento da admissão hospitalar, enquanto impressionantes 56% desenvolveram anemia adquirida durante o período de internação. A queda mediana do hematócrito durante a permanência hospitalar foi de 42% para 34% em cães e de 31% para 26% em gatos, demonstrando o impacto cumulativo da doença de base, da supressão inflamatória e da iatrogenia médica.',
+    prevalenciaHospitalarEEstudoDeLynch:
+      'Prevalência epidemiológica hospitalar e evidência de Lynch et al.:\n' +
+      '- Coorte multicêntrica pivotal em UTI (851 cães e gatos):\n' +
+      '  - 32% dos pacientes já se encontravam anêmicos no momento da admissão hospitalar.\n' +
+      '  - 56% dos pacientes desenvolveram anemia adquirida durante o período de internação.\n' +
+      '- Cinética da queda mediana do hematócrito intra-hospitalar:\n' +
+      '  - Cães: redução mediana de 42% na admissão para 34% durante a internação.\n' +
+      '  - Gatos: redução mediana de 31% na admissão para 26% durante a internação.\n' +
+      '- Impacto etiológico cumulativo:\n' +
+      '  - Reflete a somatória da agressão da doença primária, supressão inflamatória da medula e perdas iatrogênicas.',
 
-    anemiaIatrogenicaPorFlebotomiaEmUTI: 'A flebotomia diagnóstica hospitalar seriada representa um dos principais fatores de risco iatrogênicos evitáveis em cães e felinos internados. Estudos clínicos contemporâneos quantificaram que a perda cumulativa de sangue através de coletas laboratoriais repetidas excedendo 3% do volume sanguíneo circulante estimado correlaciona-se com elevação expressiva do risco de desenvolvimento de anemia moderada a grave. Essa perda torna-se exponencialmente crítica em gatos e cães de pequeno porte; em um felino de 2,5 kg cujo volume sanguíneo corporal total é de aproximadamente 150 a 160 mL, a colheita repetida de tubos pediátricos de 3 mL consome parcelas alarmantes da massa eritrocitária, exigindo protocolos institucionais de microcoleta em tubos capilares e agrupamento sistemático de exames.',
+    anemiaIatrogenicaPorFlebotomiaEmUTI:
+      'Flebotomia diagnóstica e anemia iatrogênica em terapia intensiva:\n' +
+      '- Fator de risco iatrogênico crítico e evitável:\n' +
+      '  - Coletas sanguíneas repetidas para exames laboratoriais seriados representam uma das maiores causas de queda do hematócrito em UTI.\n' +
+      '- Limiar crítico de perda volêmica acumulada:\n' +
+      '  - Perda cumulativa de sangue superior a 3% da volemia corporal total correlaciona-se com risco acentuado de anemia moderada a grave.\n' +
+      '- Vulnerabilidade extrema em felinos e cães toy:\n' +
+      '  - Em felino de 2,5 kg (volume sanguíneo total de aproximadamente 150 a 160 mL), tubos de 3 mL repetidos consomem parcelas críticas da massa eritrocitária.\n' +
+      '- Diretriz institucional de segurança:\n' +
+      '  - Protocolo de microcoletas em tubos pediátricos de 0,5 a 1,0 mL e agrupamento de exames.',
 
-    particularidadesRaciaisCaninasSighthounds: 'A interpretação diagnóstica dos intervalos de referência hematológicos exige a consideração estrita de variações raciais fisiológicas. Cães das raças Greyhound, Whippet, Saluki e outros galgos (sighthounds) apresentam valores fisiológicos de hematócrito, hemoglobina e contagem de eritrócitos significativamente superiores aos de cães de outras raças, exibindo comumente HCT basal hígido entre 55% e 65%. Em um Greyhound, um hematócrito de 38% a 40%, embora considerado aparentemente "normal" em tabelas de referência genéricas de laboratórios, representa na realidade uma anemia relativa ou absoluta de moderada a grave que requer investigação clínica criteriosa.',
+    particularidadesRaciaisCaninasSighthounds:
+      'Particularidades fisiológicas em galgos e raças Sighthounds:\n' +
+      '- Intervalos de referência fisiológicos elevados:\n' +
+      '  - Cães Greyhound, Whippet, Saluki e afins possuem massa eritrocitária basal marcadamente superior às outras raças.\n' +
+      '  - Hematócrito basal hígido situa-se habitualmente entre 55% e 65% (hemoglobina e contagem de hemácias correspondentemente elevadas).\n' +
+      '- ARMADILHA DIAGNÓSTICA DE PLANTÃO:\n' +
+      '  - Em um Greyhound, um hematócrito de 38% a 40%, embora pareça "normal" em intervalos genéricos de laboratório, configura anemia relativa ou absoluta de moderada a grave.\n' +
+      '  - Exige investigação imediata de perdas ou patologias de base.',
 
-    comorbidadesSistemicasAssociadas: 'A anemia associa-se a elevadas taxas de morbimortalidade em comorbidades sistêmicas clássicas: na doença renal crônica (DRC), sua prevalência aumenta progressivamente do estágio IRIS 2 ao estágio 4, acometendo a vasta maioria dos felinos urêmicos em fase terminal; em neoplasias malignas caninas como o hemangiossarcoma esplênico, a anemia resulta da tríade sinérgica de hemorragia aguda intra-abdominal, coagulopatia de consumo microangiopática e retenção de ferro por inflamação crônica; nas endocrinopatias como hipotireoidismo e hipoadrenocorticismo, anemias normocíticas normocrômicas não regenerativas discretas refletem a redução do metabolismo basal e da estimulação eritropoiética medular.'
+    comorbidadesSistemicasAssociadas:
+      'Comorbidades sistêmicas de alta morbimortalidade associadas à anemia:\n' +
+      '- Doença Renal Crônica (DRC):\n' +
+      '  - Prevalência crescente do estágio IRIS 2 ao estágio 4, acometendo a vasta maioria dos felinos em fase terminal por déficit de EPO.\n' +
+      '- Neoplasias malignas caninas (ex.: hemangiossarcoma esplênico):\n' +
+      '  - Tríade destrutiva: hemorragia aguda intracavitária, microangiopatia mecânica de consumo (CID) e aprisionamento de ferro por inflamação crônica.\n' +
+      '- Endocrinopatias metabólicas (hipotireoidismo e hipoadrenocorticismo):\n' +
+      '  - Anemia normocítica normocrômica não regenerativa discreta por diminuição do metabolismo celular basal e supressão da eritropoiese.'
   },
 
   pathogenesisTransmission: {
@@ -248,13 +413,41 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       '6. Resposta medular: após uma latência biológica de 48 a 96 horas, ocorre hiperplasia da linhagem eritroide na medula óssea e liberação massiva de reticulócitos no sangue periférico (anemia regenerativa).',
       '7. Se a capacidade compensatória for suplantada ou se a eritropoiese for deficiente: instalação de glicólise anaeróbia celular, hiperlactatemia, acidose metabólica, falência de bombas iônicas transmembrana, disfunção celular e síndrome de disfunção de múltiplos órgãos (MODS).'
     ],
-    transmissao: 'A anemia em pequenos animais é uma manifestação sindrômica secundária, de etiologia multifatorial e caráter não transmissível por contato direto. Todavia, frações expressivas de anemias infecciosas decorrem da inoculação vetorial por artrópodes transmissores hematófagos, destacando-se carrapatos (Rhipicephalus sanguineus transmitindo Babesia vogeli, Babesia gibsoni, Ehrlichia canis e Anaplasma platys), pulgas (Ctenocephalides felis transmitindo Mycoplasma haemofelis, Candidatus Mycoplasma haemominutum e Bartonella henselae em felinos) e flebotomíneos (Lutzomyia longipalpis transmitindo Leishmania infantum), além da transmissão iatrogênica por transfusão sanguínea incompatível ou contaminação transplacentária/neonatal.'
+    transmissao:
+      'Etiologia vetorial e vias de transmissão de anemias infecciosas:\n' +
+      '- Caráter sindrômico geral:\n' +
+      '  - A anemia em pequenos animais é manifestação secundária multifatorial e não transmissível por contato direto casual.\n' +
+      '- Transmissão vetorial por artrópodes hematófagos:\n' +
+      '  - Carrapatos (Rhipicephalus sanguineus): transmitem Babesia vogeli, Babesia gibsoni, Ehrlichia canis e Anaplasma platys.\n' +
+      '  - Pulgas (Ctenocephalides felis): vetores de Mycoplasma haemofelis, Candidatus M. haemominutum e Bartonella henselae em gatos.\n' +
+      '  - Flebotomíneos (Lutzomyia longipalpis): transmissão de Leishmania infantum com glomerulonefrite e supressão medular.\n' +
+      '- Outras vias de inoculação:\n' +
+      '  - Transmissão iatrogênica por transfusão de sangue contaminado e transmissão transplacentária vertical ou neonatal.'
   },
 
   pathophysiology: {
-    mecanismosMicrovascularesEDanoHipoxico: 'No nível celular, a redução da oferta de oxigênio interrompe a cadeia de transporte de elétrons mitocondrial, deprimindo a fosforilação oxidativa e forçando a conversão metabólica do piruvato em lactato pela via da lactato desidrogenase. A depleção de trifosfato de adenosina (ATP) inativa a bomba de sódio e potássio (Na+/K+-ATPase), acarretando acúmulo de sódio intracelular, edema de organelas, perda da seletividade de membrana e influxo citoplasmático maciço de cálcio, deflagrando ativação de proteases intracelulares e morte celular apoptótica ou necrótica.',
+    mecanismosMicrovascularesEDanoHipoxico:
+      'Dano hipóxico celular e falência energética microvascular:\n' +
+      '- Parada da cadeia respiratória mitocondrial:\n' +
+      '  - A redução na oferta de oxigênio (DO2) deprime a fosforilação oxidativa mitocondrial nas células parenquimatosas.\n' +
+      '  - Desvio forçado do metabolismo de piruvato para lactato via lactato desidrogenase, gerando acidose lática metabólica e hiperlactatemia.\n' +
+      '- Falência da bomba de sódio-potássio (Na+/K+-ATPase):\n' +
+      '  - Depleção de ATP inativa as bombas iônicas transmembrana, gerando influxo de sódio e água com edema intracelular e lise mitocondrial.\n' +
+      '- Influxo citosólico maciço de cálcio:\n' +
+      '  - Ativação descontrolada de proteases e fosfolipases intracelulares, culminando em morte celular necrótica ou apoptótica difusa.',
 
-    marcadoresEritrocitariosMorfologicosNoEsfregaco: 'A citologia microscópica de sangue periférico fornece evidências etiopatogênicas imediatas e insubstituíveis pelo hemograma automatizado: (1) Policromasia reflete eritrócitos jovens anucleados com RNA residual corados em azul-acinzentado, indicando reticulocitose; (2) Esferócitos são eritrócitos caninos que perderam membrana e palidez central após fagocitose parcial por macrófagos esplênicos opsonizados por anticorpos na IMHA; (3) Corpos de Heinz decorrem da precipitação oxidativa de cadeias de hemoglobina na face interna da membrana celular; (4) Esquizócitos representam fragmentos mecânicos de eritrócitos cortados por filamentos de fibrina em redes microvasculares alteradas (microangiopatia, CID e hemangiossarcoma); (5) Acantócitos e codócitos indicam desequilíbrios nos teores de colesterol e fosfolipídios na membrana eritrocitária, frequentemente ligados a hepatopatias e hemangiossarcoma esplênico.',
+    marcadoresEritrocitariosMorfologicosNoEsfregaco:
+      'Marcadores morfológicos eritrocitários no esfregaço de sangue periférico:\n' +
+      '- 1. Policromasia:\n' +
+      '  - Eritrócitos jovens anucleados com RNA residual corados em azul-acinzentado, indicando reticulocitose medular ativa.\n' +
+      '- 2. Esferócitos caninos:\n' +
+      '  - Hemácias pequenas, densas e sem palidez central decorrentes de fagocitose macrofágica parcial na IMHA.\n' +
+      '- 3. Corpos de Heinz:\n' +
+      '  - Precipitados redondos refráteis de hemoglobina oxidada na membrana, característicos de toxicose oxidativa (cebola, paracetamol, alho).\n' +
+      '- 4. Esquizócitos:\n' +
+      '  - Fragmentos mecânicos cortados por filamentos de fibrina na microvasculatura (CID, hemangiossarcoma, vasculite).\n' +
+      '- 5. Acantócitos e codócitos (células em alvo):\n' +
+      '  - Alterações da relação colesterol/fosfolipídios de membrana, observados em hepatopatias e hemangiossarcoma esplênico.',
 
     figurasClinicasIntegradas: 'As imagens a seguir ilustram as lesões morfológicas microscópicas e a avaliação medular indispensáveis para a elucidação do mecanismo da anemia em cães e gatos.'
   },
@@ -264,35 +457,60 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       id: 'fig-anemia-01',
       title: 'Esfregaço Sanguíneo com Coloração Supravital de Novo Azul de Metileno (Reticulócitos)',
       url: '/consulta-vet/anemia/esfregaco-reticulocitos-novo-azul-metileno.jpg',
-      legend: 'Fotomicrorganografia de esfregaço de sangue periférico corado supravitalmente com Novo Azul de Metileno (NBM), evidenciando eritrócitos jovens contendo precipitados reticulares azul-escuros de RNA ribossômico (reticulócitos agregados). A identificação e quantificação absoluta de reticulócitos constituem o padrão ouro para determinar a capacidade regenerativa da medula óssea diante da anemia (Ajay Kumar Chaurasiya, CC BY-SA 4.0).',
+      legend:
+        'Esfregaço de sangue periférico com coloração supravital de Novo Azul de Metileno (NBM):\n' +
+        '- Identificação de reticulócitos agregados:\n' +
+        '  - Evidencia eritrócitos jovens contendo precipitados reticulares azul-escuros de RNA ribossômico.\n' +
+        '- Padrão-ouro medular:\n' +
+        '  - A contagem absoluta de reticulócitos constitui o padrão-ouro funcional para avaliar a regeneração medular na anemia (Ajay Kumar Chaurasiya, CC BY-SA 4.0).',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-anemia-02',
       title: 'Lesão Oxidativa Eritrocitária em Felino: Corpos de Heinz Conspícuos',
       url: '/consulta-vet/anemia/esfregaco-corpos-de-heinz-felino.jpg',
-      legend: 'Esfregaço sanguíneo de paciente felino demonstrando corpos de Heinz proeminentes aderidos à face interna da membrana eritrocitária, caracterizados como projeções refráteis globulares resultantes da desnaturação oxidativa da hemoglobina felina, altamente rica em radicais sulfidrila livres (Ailuromancy, Domínio Público).',
+      legend:
+        'Lesão oxidativa eritrocitária e corpos de Heinz em felino:\n' +
+        '- Fisiopatologia da oxidação da hemoglobina felina:\n' +
+        '  - Projeções refráteis globulares aderidas à membrana resultantes da desnaturação oxidativa da hemoglobina rica em sulfidrilas.\n' +
+        '- Etiologias frequentes:\n' +
+        '  - Exposição a paracetamol, cebola, alho, propilenoglicol e cetoacidose diabética (Ailuromancy, Domínio Público).',
       source: 'Wikimedia Commons (Public Domain)'
     },
     {
       id: 'fig-anemia-03',
       title: 'Anemia Ferropriva Absoluta: Microcitose e Hipocromia Marcada com Anulócitos',
       url: '/consulta-vet/anemia/esfregaco-anemia-ferropriva-microcitose-hipocromia.jpg',
-      legend: 'Esfregaço sanguíneo evidenciando padrão clássico de anemia por deficiência crônica de ferro (anemia ferropriva), caracterizado por eritrócitos acentuadamente microcíticos, alargamento proeminente da zona de palidez central e anel periférico adelgaçado de hemoglobina (anulócitos), secundário à depleção de estoques de ferro por perda digestiva crônica (Ed Uthman, MD, CC BY 2.0).',
+      legend:
+        'Anemia ferropriva absoluta crônica em sangue periférico:\n' +
+        '- Alterações morfológicas clássicas:\n' +
+        '  - Eritrócitos acentuadamente microcíticos e hipocrômicos com ampla palidez central e anel delgado de hemoglobina (anulócitos).\n' +
+        '- Mecanismo etiológico:\n' +
+        '  - Depleção severa dos estoques de ferro decorrente de perda sanguínea crônica contínua digestiva ou parasitária (Ed Uthman, MD, CC BY 2.0).',
       source: 'Flickr / Wikimedia Commons (CC BY 2.0)'
     },
     {
       id: 'fig-anemia-04',
       title: 'Anemia Hemolítica Imunomediada (IMHA): Esferócitos e Policromasia Marcada',
       url: '/consulta-vet/anemia/esfregaco-esferocitos-anemia-hemolitica-imunomediada.jpg',
-      legend: 'Esfregaço de sangue periférico corado com Wright-Giemsa ilustrando anemia hemolítica imunomediada (IMHA), destacando-se numerosos esferócitos (células esféricas, densas, sem palidez central e de diâmetro reduzido decorrentes de fagocitose macrofágica parcial) circundados por eritrócitos policromáticos volumosos indicando regeneração ativa vigorosa (Spicy, CC BY-SA 4.0).',
+      legend:
+        'Anemia Hemolítica Imunomediada (IMHA) em cão:\n' +
+        '- Achados citológicos cardinais:\n' +
+        '  - Coexistência de numerosos esferócitos (células esféricas sem palidez central) e intensa policromasia regenerativa.\n' +
+        '- Mecanismo imunopatológico:\n' +
+        '  - Fagocitose parcial da membrana eritrocitária por macrófagos esplênicos opsonizada por IgG/complemento (Spicy, CC BY-SA 4.0).',
       source: 'Wikimedia Commons (CC BY-SA 4.0)'
     },
     {
       id: 'fig-anemia-05',
       title: 'Citologia de Medula Óssea: Proliferação e Maturação da Linhagem Eritroide',
       url: '/consulta-vet/anemia/medula-ossea-citologia-linhagem-eritroide.png',
-      legend: 'Aspirado de medula óssea corado com May Grünwald-Giemsa demonstrando hiperplasia da linhagem eritroide com seus precursores em diferentes estágios de maturação (rubriblastos, prorrubrícitos, rubrícitos e metarrubrícitos), permitindo o diagnóstico diferencial de anemias não regenerativas primárias, aplasia pura de células vermelhas (PRCA) e síndromes mielodisplásicas (Yukari Sakurai et al., CC BY 4.0).',
+      legend:
+        'Citologia aspirativa de medula óssea na avaliação eritroide:\n' +
+        '- Cinética de proliferação e maturação:\n' +
+        '  - Hiperplasia da linhagem eritroide com precursores em diferentes estágios (rubriblastos, prorrubrícitos, rubrícitos e metarrubrícitos).\n' +
+        '- Aplicação no diagnóstico diferencial:\n' +
+        '  - Distinção de aplasia pura de células vermelhas (PRCA), síndromes mielodisplásicas e mielofibrose (Yukari Sakurai et al., CC BY 4.0).',
       source: 'Wikimedia Commons / SciELO (CC BY 4.0)'
     }
   ],
@@ -303,22 +521,52 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       findings: [
         {
           finding: 'Taquicardia compensatória persistente',
-          mechanism: 'A hipóxia tecidual periférica deflagra estímulo adrenérgico reflexo imediato mediado por barorreceptores e quimiorreceptores, elevando a frequência cardíaca para maximizar o débito cardíaco compensatório e preservar a oferta tecidual de oxigênio (DO2 = DC x CaO2).',
-          clinicalMeaning: 'Achado precoce mandatório de monitoramento; em anemias agudas ou críticas, a taquicardia severa eleva o consumo miocárdico de oxigênio e prenuncia falência cardiovascular.',
+          mechanism:
+            'Ativação adrenérgica reflexa e preservação da oferta tecidual:\n' +
+            '- Estímulo por hipóxia tecidual:\n' +
+            '  - A hipóxia tecidual periférica deflagra estímulo adrenérgico reflexo imediato mediado por barorreceptores e quimiorreceptores.\n' +
+            '- Manutenção da oferta de oxigênio:\n' +
+            '  - Elevação da frequência cardíaca para maximizar o débito cardíaco compensatório e preservar o DO2 (DO2 = DC x CaO2).',
+          clinicalMeaning:
+            'Significado clínico e monitoramento:\n' +
+            '- Marcador precoce:\n' +
+            '  - Achado mandatório de monitoramento contínuo no paciente anêmico.\n' +
+            '- Risco de falência:\n' +
+            '  - Em anemias agudas ou críticas, a taquicardia severa eleva o consumo miocárdico de oxigênio e prenuncia colapso cardiovascular.',
           priority: 'emergency',
           context: ['adrenérgica', 'compensação', 'monitoramento']
         },
         {
           finding: 'Sopro sistólico funcional de ejeção apical esquerdo (grau I a III/VI)',
-          mechanism: 'A redução acentuada da concentração de eritrócitos acarreta diminuição da viscosidade sanguínea e aumento da velocidade do fluxo linear e turbilhonamento através dos tratos de saída e valvas atrioventriculares, gerando vibração hemodinâmica audível na ausculta.',
-          clinicalMeaning: 'Sopro puramente fisiológico secundário à anemia (sopro hemic); desaparece completamente após a restauração do hematócrito e não deve ser confundido com cardiopatia estrutural primária.',
+          mechanism:
+            'Hemodinâmica e turbilhonamento por viscosidade reduzida:\n' +
+            '- Queda da viscosidade sanguínea:\n' +
+            '  - A redução acentuada da concentração de eritrócitos diminui a viscosidade plasmática.\n' +
+            '- Turbilhonamento valvar:\n' +
+            '  - Aumento da velocidade linear do fluxo e turbilhonamento através dos tratos de saída e valvas atrioventriculares, gerando vibração acústica audível.',
+          clinicalMeaning:
+            'Interpretação semiológica:\n' +
+            '- Natureza hemic:\n' +
+            '  - Sopro puramente fisiológico secundário à anemia (sopro hemic funcional).\n' +
+            '- Reversibilidade:\n' +
+            '  - Desaparece completamente após restauração do hematócrito; não deve ser confundido com cardiopatia estrutural primária.',
           priority: 'common',
           context: ['ausculta', 'viscosidade', 'turbilhonamento']
         },
         {
           finding: 'Pulso arterial periférico hipercinético (pulso martelo d água)',
-          mechanism: 'Resulta da vasodilatação periférica compensatória que diminui a resistência vascular periférica e a pressão diastólica, associada à ejeção sistólica ventricular rápida impulsionada por catecolaminas, gerando ampla pressão de pulso diferencial.',
-          clinicalMeaning: 'Indicador de estado circulatório hiperdinâmico compensado; sua transição para pulso filiforme indica exaustão hemodinâmica ou choque hipovolêmico descompensado.',
+          mechanism:
+            'Dinâmica circulatória do pulso hipercinético:\n' +
+            '- Vasodilatação periférica compensatória:\n' +
+            '  - Queda da resistência vascular periférica e da pressão diastólica.\n' +
+            '- Ejeção sistólica rápida:\n' +
+            '  - Ejeção ventricular veloz impulsionada por catecolaminas, gerando ampla pressão de pulso diferencial.',
+          clinicalMeaning:
+            'Interpretação e evolução clínica:\n' +
+            '- Estado hiperdinâmico compensado:\n' +
+            '  - Indicador de resposta circulatória compensatória ativa.\n' +
+            '- Sinal de exaustão:\n' +
+            '  - A transição para pulso filiforme indica esgotamento hemodinâmico ou colapso hipovolêmico descompensado.',
           priority: 'common',
           context: ['hemodinâmica', 'exame físico']
         }
@@ -329,15 +577,33 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       findings: [
         {
           finding: 'Taquipneia compensatória e respiração superficial',
-          mechanism: 'A redução do CaO2 e a instalação de acidose lática hipóxica tecidual estimulam quimiorreceptores carotídeos e aórticos centrais, elevando o drive respiratório para maximizar a troca alveolar de oxigênio e compensar a acidose metabólica por alcalose respiratória.',
-          clinicalMeaning: 'Sinal cardinal de estresse respiratório de origem não pulmonar (taquipneia anêmica); deve ser imediatamente protegido com oxigenioterapia e mínimo estresse de contenção física.',
+          mechanism:
+            'Estímulo quimiorreceptor e drive respiratório:\n' +
+            '- Ativação de quimiorreceptores:\n' +
+            '  - A redução do CaO2 e a instalação de acidose lática hipóxica tecidual estimulam quimiorreceptores carotídeos e aórticos centrais.\n' +
+            '- Compensação ventilatória:\n' +
+            '  - Elevação do drive ventilatório para maximizar a troca alveolar de O2 e compensar a acidose metabólica por alcalose respiratória.',
+          clinicalMeaning:
+            'Conduta clínica e proteção:\n' +
+            '- Taquipneia anêmica:\n' +
+            '  - Sinal cardinal de estresse respiratório de origem não pulmonar.\n' +
+            '- REGRA DE MANEJO:\n' +
+            '  - Instalação imediata de oxigenioterapia e veto a estresse de contenção física.',
           priority: 'emergency',
           context: ['compensação', 'drive respiratório']
         },
         {
           finding: 'Dispneia verdadeira e postura ortopneica',
-          mechanism: 'Esgotamento da capacidade de entrega de oxigênio tecidual com hipóxia celular crítica do centro respiratório e musculatura diafragmática, frequentemente agravado por tromboembolismo pulmonar concomitante na IMHA ou efusão pleural em hemotórax.',
-          clinicalMeaning: 'Emergência absoluta com risco iminente de óbito; demanda protocolo hands-off estrito e preparação de hemocomponente.',
+          mechanism:
+            'Falência ventilatória e hipóxia central:\n' +
+            '- Esgotamento da entrega de oxigênio:\n' +
+            '  - Hipóxia celular crítica do centro respiratório e musculatura diafragmática fadigada.\n' +
+            '- Agravantes concomitantes:\n' +
+            '  - Tromboembolismo pulmonar concomitante na IMHA ou efusão pleural em hemotórax.',
+          clinicalMeaning:
+            'Alerta de emergência máxima:\n' +
+            '- Risco iminente de óbito:\n' +
+            '  - Demanda protocolo hands-off estrito e preparação imediata de hemocomponente.',
           priority: 'emergency',
           context: ['descompensação', 'risco de vida']
         }
@@ -348,29 +614,65 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       findings: [
         {
           finding: 'Palidez marcante de mucosas (oral, conjuntival e vulvar/prepucial)',
-          mechanism: 'Redução absoluta da concentração de hemoglobina oxigenada nos capilares teciduais superficiais, intensificada pela vasoconstrição arteriolar periférica simpática que desvia o sangue da pele e mucosas para órgãos nobres.',
-          clinicalMeaning: 'A palidez não é sinônimo exclusivo de anemia: choque hipotensivo e vasoconstrição periférica extrema também causam mucosas brancas; a confirmação imediata com PCV/microcentrifugação é obrigatória.',
+          mechanism:
+            'Perfusão superficial e concentração de hemoglobina:\n' +
+            '- Redução de hemoglobina oxigenada:\n' +
+            '  - Redução absoluta do pigmento carreador nos capilares teciduais superficiais.\n' +
+            '- Vasoconstrição simpática:\n' +
+            '  - Vasoconstrição arteriolar periférica desviando o fluxo sanguíneo da pele e mucosas para órgãos nobres vitais.',
+          clinicalMeaning:
+            'Diagnóstico diferencial à beira do leito:\n' +
+            '- ARMADILHA DIAGNÓSTICA:\n' +
+            '  - A palidez não é sinônimo exclusivo de anemia: choque hipotensivo e vasoconstrição extrema também clareiam mucosas.\n' +
+            '- Confirmação imediata:\n' +
+            '  - Confirmação laboratorial imediata com microcentrifugação (PCV/VG) é mandatória.',
           priority: 'common',
           context: ['semiologia', 'mucosas']
         },
         {
           finding: 'Fraqueza muscular severa, letargia e intolerância ao exercício',
-          mechanism: 'Queda crítica na oferta de oxigênio à musculatura esquelética (DO2 muscular deprimido), impedindo a respiração celular mitocondrial e forçando o esgotamento precoce de reservas energéticas de glicogênio com acidose lática local.',
-          clinicalMeaning: 'Correlaciona-se diretamente com a gravidade funcional do paciente; animais prostrados que não sustentam estação possuem indicação imediata de suporte hemoterápico.',
+          mechanism:
+            'Depleção bioenergética miocelular:\n' +
+            '- Depressão da oferta muscular de oxigênio:\n' +
+            '  - Queda crítica do DO2 muscular impedindo a fosforilação oxidativa mitocondrial.\n' +
+            '- Glicólise anaeróbia forçada:\n' +
+            '  - Esgotamento precoce de reservas energéticas de glicogênio com acidose lática local.',
+          clinicalMeaning:
+            'Gravidade funcional e suporte:\n' +
+            '- Correlação funcional:\n' +
+            '  - Correlaciona-se diretamente com o déficit funcional do paciente.\n' +
+            '- Indicação transfusional:\n' +
+            '  - Animais prostrados incapazes de sustentar estação possuem indicação formal de suporte hemoterápico.',
           priority: 'emergency',
           context: ['muscular', 'metabolismo']
         },
         {
           finding: 'Síncope ou colapso agudo pós-esforço',
-          mechanism: 'Incapacidade miocárdica de elevar o débito cardíaco durante pequenos esforços para suprir a demanda de oxigênio metabólico do tecido cerebral (hipóxia cerebral transitória isquêmica).',
-          clinicalMeaning: 'Sinal de alarme de anemia crítica descompensada; requer internação em terapia intensiva e proibição de estresse mecânico.',
+          mechanism:
+            'Hipóxia cerebral transitória isquêmica:\n' +
+            '- Limitação do débito cardíaco:\n' +
+            '  - Incapacidade miocárdica de elevar o DC durante pequenos esforços para suprir a demanda cerebral.\n' +
+            '- Isquemia cortical súbita:\n' +
+            '  - Hipoperfusão tecidual encefálica com perda transitória de consciência postural.',
+          clinicalMeaning:
+            'Alarme de descompensação crítica:\n' +
+            '- Alerta hemodinâmico:\n' +
+            '  - Sinal de alarme de anemia crítica descompensada.\n' +
+            '- Manejo intensivo:\n' +
+            '  - Requer internação em UTI e proibição absoluta de estresse mecânico ou físico.',
           priority: 'emergency',
           context: ['neurológico', 'descompensação']
         },
         {
           finding: 'Pica (apetite depravado por terra, reboco ou pedras)',
-          mechanism: 'Disfunção neuroquímica no centro hipotalâmico do apetite associada à depleção profunda e prolongada de ferro nos tecidos neurais.',
-          clinicalMeaning: 'Comportamento fortemente sugestivo de anemia ferropriva absoluta crônica por perda sanguínea contínua oculta.',
+          mechanism:
+            'Disfunção neuroquímica hipotalâmica:\n' +
+            '- Depleção neuronal de ferro:\n' +
+            '  - Carência crônica profunda de ferro afetando enzimas neuronais e receptores no centro hipotalâmico do apetite.',
+          clinicalMeaning:
+            'Indício de perda sanguínea crônica:\n' +
+            '- Comportamento patognomônico:\n' +
+            '  - Comportamento fortemente sugestivo de anemia ferropriva absoluta crônica por perda digestiva contínua oculta.',
           priority: 'common',
           context: ['comportamento', 'ferropenia']
         }
@@ -381,15 +683,29 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       findings: [
         {
           finding: 'Melena (fezes pastosas enegrecidas como borra de café)',
-          mechanism: 'Digestão e degradação enzimática de grandes volumes de hemoglobina pelas bactérias e proteases ao longo do trânsito no estômago e intestino delgado superior.',
-          clinicalMeaning: 'Evidência inequívoca de perda hemorrágica gastrointestinal crônica ou aguda superior; uma das causas mais comuns de anemia ferropriva refratária.',
+          mechanism:
+            'Degradação digestiva de hemoglobina intraluminal:\n' +
+            '- Ação enzimática e bacteriana:\n' +
+            '  - Digestão e degradação enzimática de hemoglobina pelas bactérias e proteases ao longo do estômago e intestino delgado superior.',
+          clinicalMeaning:
+            'Evidência de sangramento digestivo:\n' +
+            '- Localização da perda:\n' +
+            '  - Evidência inequívoca de perda hemorrágica gastrointestinal crônica ou aguda superior.\n' +
+            '- Causa de ferropenia:\n' +
+            '  - Uma das causas mais comuns de anemia ferropriva absoluta refratária.',
           priority: 'emergency',
           context: ['sangramento oculto', 'ferropenia']
         },
         {
           finding: 'Hematêmese e hematoquezia ativa',
-          mechanism: 'Sangramento intraluminal profuso no trato gastrointestinal por úlcera gastroduodenal severa, neoplasia intestinal ulcerada ou coagulopatia sistêmica.',
-          clinicalMeaning: 'Perda hemorrágica ativa visível exigindo ressuscitação volêmica imediata, transfusão e terapia antiúlcera agressiva.',
+          mechanism:
+            'Extravasamento intraluminal profuso:\n' +
+            '- Lesão vascular mucosa e transmural:\n' +
+            '  - Sangramento intraluminal no trato digestivo por úlcera gastroduodenal severa, neoplasia ulcerada ou coagulopatia sistêmica.',
+          clinicalMeaning:
+            'Emergência hemorrágica ativa:\n' +
+            '- Perda volêmica aguda visível:\n' +
+            '  - Exige ressuscitação volêmica imediata, transfusão de hemocomponentes e terapia antiúlcera agressiva.',
           priority: 'emergency',
           context: ['hemorragia digestiva']
         }
@@ -400,22 +716,48 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       findings: [
         {
           finding: 'Icterícia escleral, mucosa e cutânea com urina alaranjada',
-          mechanism: 'Degradação acelerada do heme eritrocitário por macrófagos do sistema mononuclear fagocitário, gerando bilirrubina não conjugada em taxas que excedem a capacidade de captação e conjugação hepática.',
-          clinicalMeaning: 'Forte indicador de anemia hemolítica (destruição acelerada), embora deva ser diferenciada de hepatopatias primárias e obstruções biliares pós-hepáticas.',
+          mechanism:
+            'Degradação acelerada do heme e saturação hepática:\n' +
+            '- Fagocitose macrofágica acelerada:\n' +
+            '  - Destruição de eritrócitos pelo sistema mononuclear fagocitário gerando bilirrubina não conjugada em excesso.\n' +
+            '- Saturação da conjugação:\n' +
+            '  - A produção de bilirrubina excede a capacidade hepática de captação e conjugação.',
+          clinicalMeaning:
+            'Identificação de processo hemolítico:\n' +
+            '- Destruição acelerada:\n' +
+            '  - Forte indicador de anemia hemolítica ativa.\n' +
+            '- Diagnóstico diferencial:\n' +
+            '  - Deve ser diferenciada de hepatopatias primárias e obstruções biliares pós-hepáticas.',
           priority: 'common',
           context: ['hemólise', 'bilirrubina']
         },
         {
           finding: 'Hemoglobinúria (urina vermelho-escura ou cor de refrigerante de cola persistente pós-centrifugação)',
-          mechanism: 'Hemólise intravascular com ruptura de eritrócitos no leito vascular, saturação completa da haptoglobina plasmática e filtração glomerular de dímeros de hemoglobina livre.',
-          clinicalMeaning: 'Diferencia a hemólise intravascular (emergência gravíssima) da extravascular; risco iminente de necrose tubular aguda (NTA) por toxicidade do pigmento heme.',
+          mechanism:
+            'Lise intravascular e filtração glomerular:\n' +
+            '- Ruptura intravascular:\n' +
+            '  - Hemólise com lise direta no leito vascular esgotando a haptoglobina plasmática circulante.\n' +
+            '- Filtração glomerular do heme:\n' +
+            '  - Dímeros livres de hemoglobina atravessam o glomérulo e tingem a urina.',
+          clinicalMeaning:
+            'Diferenciação e risco nefrovisceral:\n' +
+            '- Caráter intravascular:\n' +
+            '  - Diferencia a hemólise intravascular (emergência gravíssima) da extravascular pura.\n' +
+            '- ALERTA NEFROTOXICIDADE:\n' +
+            '  - Risco iminente de necrose tubular aguda (NTA) por precipitação do pigmento heme.',
           priority: 'emergency',
           context: ['hemólise intravascular', 'nefrotoxicidade']
         },
         {
           finding: 'Petéquias, equimoses e sangramentos de superfícies mucosas',
-          mechanism: 'Coexistência de defeito de hemostasia primária (trombocitopenia grave ou vasculite), comumente observada na Síndrome de Evans (IMHA associada à ITP) ou na Coagulação Intravascular Disseminada (CID).',
-          clinicalMeaning: 'Alerta vermelho para bicitopenia imunomediada ou coagulopatia de consumo fulminante.',
+          mechanism:
+            'Coexistência de falha na hemostasia primária:\n' +
+            '- Trombocitopenia ou vasculite grave:\n' +
+            '  - Destruição de plaquetas associada na Síndrome de Evans (IMHA + ITP) ou consumo difuso na Coagulação Intravascular Disseminada (CID).',
+          clinicalMeaning:
+            'Alerta de bicitopenia crítica:\n' +
+            '- Sinal de alarme:\n' +
+            '  - Alerta vermelho para bicitopenia imunomediada ou coagulopatia de consumo fulminante.',
           priority: 'emergency',
           context: ['coagulopatia', 'síndrome de evans', 'cid']
         }
@@ -428,105 +770,381 @@ export const anemiaCaesGatosSeed: DiseaseRecord = {
       stepNumber: 1,
       title: 'Confirmação da Redução Real da Massa Eritrocitária e Triagem Hemodinâmica Imediata',
       purpose: 'Determinar a presença, magnitude real e velocidade de instalação da anemia, diferenciando anemia verdadeira de hemodiluição ou hemoconcentração mascaradora.',
-      description: 'Mensuração imediata no ponto de atendimento do hematócrito por microcentrifugação (PCV/VG) e leitura da Proteína Plasmática Total (TP) em refratômetro óptico calibrado. Inspeção visual da coluna plasmática quanto a hemólise (avermelhada), icterícia (amarelo-ouro escuro) ou lipemia (esbranquiçada). Monitoramento hemodinâmico de frequência cardíaca, qualidade de pulso, pressão arterial sistólica por Doppler e dosagem de lactato sérico.',
-      interpretation: 'PCV <37% em cães ou <30% em gatos confirma anemia laboratorial. A interpretação conjunta de PCV e TP é a regra mais informativa da triagem: (1) PCV baixo associado a TP baixa indica fortemente hemorragia aguda ou crônica; (2) PCV baixo associado a TP normal ou alta sugere hemólise acelerada ou falência medular primária; (3) PCV normal associado a TP baixa em paciente em choque por trauma indica hemorragia aguda mascarada antes da redistribuição volêmica; (4) PCV baixo associado a TP muito baixa após fluidoterapia maciça indica hemodiluição iatrogênica.',
-      limitations: 'A contração esplênica induzida por dor ou catecolaminas em cães pode elevar o hematócrito em até 10 a 15 pontos percentuais transitoriamente. Amostras hemolisadas por punção traumática falseiam a leitura refratométrica da proteína plasmática.',
+      description:
+        'Roteiro propedêutico imediato no ponto de atendimento:\n' +
+        '- Mensuração imediata de PCV e TP:\n' +
+        '  - Determinação do hematócrito por microcentrifugação (PCV/VG) e leitura da Proteína Plasmática Total (TP) em refratômetro óptico calibrado.\n' +
+        '- Inspeção visual da coluna plasmática:\n' +
+        '  - Avaliação de hemólise (avermelhada), icterícia (amarelo-ouro escuro) ou lipemia (esbranquiçada).\n' +
+        '- Monitoramento hemodinâmico objetivo:\n' +
+        '  - Frequência cardíaca, qualidade de pulso periférico, pressão arterial sistólica por Doppler e dosagem de lactato sérico.',
+      interpretation:
+        'Padrões de correlação entre hematócrito (PCV) e proteína plasmática (TP):\n' +
+        '- Confirmação laboratorial de anemia:\n' +
+        '  - PCV < 37% na espécie canina ou < 30% na espécie felina.\n' +
+        '- Quatro perfis de interpretação combinada PCV / TP:\n' +
+        '  - 1. PCV baixo com TP baixa: indica fortemente hemorragia aguda ou crônica ativa com perda simultânea de células e plasma.\n' +
+        '  - 2. PCV baixo com TP normal ou alta: sugere destruição hemolítica acelerada ou falência de síntese medular primária.\n' +
+        '  - 3. PCV normal com TP baixa: alerta para hemorragia aguda precoce pós-trauma antes da redistribuição volêmica compensatória.\n' +
+        '  - 4. PCV baixo com TP muito baixa: aponta para hemodiluição iatrogênica pós-fluidoterapia maciça desproporcional.',
+      limitations:
+        'Fatores de interferência pré-analítica:\n' +
+        '- Contração esplênica canina:\n' +
+        '  - Dor ou catecolaminas podem elevar o hematócrito em 10 a 15 pontos percentuais transitoriamente.\n' +
+        '- Artefatos de punção:\n' +
+        '  - Amostras hemolisadas por punção traumática falseiam a leitura refratométrica da proteína plasmática.',
       isGoldStandard: false
     },
     {
       stepNumber: 2,
       title: 'Contagem Absoluta de Reticulócitos e Revisão Microscópica do Esfregaço de Sangue Periférico',
       purpose: 'Determinar com precisão diagnóstica se a medula óssea responde ativamente à hipóxia (classificação regenerativa vs não regenerativa) e desvendar o mecanismo etiológico pelas alterações morfológicas eritrocitárias.',
-      description: 'Confecção de esfregaço de sangue periférico fresco sem anticoagulante ou em EDTA bem homogeneizado, corado por panótico rápido / Wright-Giemsa para avaliação morfológica, e coloração supravital com Novo Azul de Metileno (NBM) para quantificação de reticulócitos. Cálculo da Contagem Absoluta de Reticulócitos: ARC (/uL) = RBC (milhões/uL) x % reticulócitos x 10.000. Em gatos, quantificação isolada dos reticulócitos agregados.',
-      interpretation: 'PADRÃO OURO PARA REGENERAÇÃO MEDULAR. Em cães: ARC >100.000 a 110.000/uL confirma regeneração ativa; ARC >200.000 a 300.000/uL indica regeneração intensa; ARC <60.000/uL indica resposta não regenerativa. Em gatos: contagem de reticulócitos agregados >50.000 a 60.000/uL confirma regeneração ativa recente. No esfregaço: esferócitos conspícuos em cães apontam fortemente para IMHA; corpos de Heinz em felinos confirmam toxicose oxidativa; esquizócitos comprovam microangiopatia mecânica (CID/hemangiossarcoma); anulócitos microcíticos e hipocrômicos confirmam deficiência crônica de ferro. IMPORTANTE: índices automatizados de MCV elevado e MCHC reduzido têm apenas 9,8% de sensibilidade para detectar regeneração (estudo prospectivo de 2024).',
-      limitations: 'Hemorragias ou hemólises instaladas há menos de 48 a 96 horas apresentam contagem de reticulócitos baixa por atraso biológico da eritropoiese (fase pré-regenerativa). Em gatos, a inclusão inadvertida de reticulócitos punctates simula falsa resposta regenerativa aguda.',
+      description:
+        'Confecção e processamento laboratorial do esfregaço:\n' +
+        '- Esfregaço de sangue periférico fresco:\n' +
+        '  - Amostra sem anticoagulante ou em EDTA bem homogeneizado corada por Wright-Giemsa para avaliação citomorfológica.\n' +
+        '- Coloração supravital com Novo Azul de Metileno (NBM):\n' +
+        '  - Quantificação precisa de reticulócitos e cálculo da Contagem Absoluta de Reticulócitos (ARC):\n' +
+        '  - ARC (/uL) = RBC (milhões/uL) x % reticulócitos x 10.000.\n' +
+        '- Peculiaridade na espécie felina:\n' +
+        '  - Quantificação isolada e obrigatória dos reticulócitos agregados.',
+      interpretation:
+        'PADRÃO OURO PARA AVALIAÇÃO DA REGENERAÇÃO MEDULAR:\n' +
+        '- Limiares diagnósticos na espécie canina:\n' +
+        '  - ARC > 100.000 a 110.000/uL: confirma regeneração ativa.\n' +
+        '  - ARC > 200.000 a 300.000/uL: indica regeneração medular intensa.\n' +
+        '  - ARC < 60.000/uL: resposta não regenerativa evidente.\n' +
+        '- Limiares diagnósticos na espécie felina:\n' +
+        '  - Reticulócitos agregados > 50.000 a 60.000/uL: regeneração ativa em tempo real.\n' +
+        '- Achados morfológicos no esfregaço:\n' +
+        '  - Esferócitos conspícuos em cães: apontam fortemente para IMHA.\n' +
+        '  - Corpos de Heinz em felinos: confirmam toxicose oxidativa.\n' +
+        '  - Esquizócitos: comprovam microangiopatia mecânica de consumo (CID, hemangiossarcoma).\n' +
+        '  - Anulócitos microcíticos e hipocrômicos: confirmam deficiência crônica de ferro.\n' +
+        '- ARMADILHA DOS ÍNDICES AUTOMATIZADOS (Estudo prospectivo 2024):\n' +
+        '  - MCV elevado e MCHC reduzido possuem sensibilidade de apenas 9,8% para detectar regeneração; a contagem de reticulócitos é insubstituível.',
+      limitations:
+        'Janela fisiológica e armadilhas de contagem:\n' +
+        '- Retardo na resposta medular (fase pré-regenerativa):\n' +
+        '  - Hemorragias ou hemólises há menos de 48 a 96 horas apresentam contagem baixa de reticulócitos por atraso da proliferação celular.\n' +
+        '- Confusão de reticulócitos em gatos:\n' +
+        '  - A inclusão inadvertida de reticulócitos punctates simula falsa regeneração aguda imediata.',
       isGoldStandard: true
     },
     {
       stepNumber: 3,
       title: 'Perfil Bioquímico Sérico Abrangente, Avaliação Renal e Urinálise com Exame de Sedimento',
       purpose: 'Avaliar o envolvimento de disfunções orgânicas primárias como gatilho da anemia (doença renal, hepatopatias) e rastrear repercussões metabólicas da hemólise.',
-      description: 'Dosagem de creatinina, ureia, SDMA, eletrólitos (sódio, potássio, cloreto e fósforo), albumina, globulinas, enzimas hepatobiliares (ALT, FA, GGT) e bilirrubina total e frações. Urinálise completa colhida preferencialmente antes de fluidoterapia, com centrifugação para diferenciar pigmentúria.',
-      interpretation: 'Azotemia com creatinina, ureia e SDMA elevados associada a densidade urinária inadequadas (<1.030 em cães, <1.035 em gatos) e anemia normocítica normocrômica não regenerativa caracteriza anemia da doença renal crônica (DRC). Hiperbilirrubinemia não conjugada e conjugada com bilirrubinúria aponta para hemólise acelerada. Urina avermelhada cujo sobrenadante permanece vermelho pós-centrifugação confirma hemoglobinúria ou mioglobinúria; se o sobrenadante clareia e forma botão eritrocitário no fundo, confirma hematúria (perda hemorrágica urinária).',
-      limitations: 'Pacientes desidratados apresentam azotemia pré-renal que simula falência renal aguda sobreposta à anemia. A hiperbilirrubinemia na sepse pode refletir colestase funcional intra-hepática associada à inflamação e não hemólise ativa pura.',
+      description:
+        'Painel bioquímico e urinário completo pré-fluidoterapia:\n' +
+        '- Função renal e perfil eletrolítico:\n' +
+        '  - Dosagem de creatinina, ureia, SDMA, eletrólitos (sódio, potássio, cloreto e fósforo) e frações proteicas (albumina e globulinas).\n' +
+        '- Perfil hepatobiliar e pigmentos:\n' +
+        '  - Enzimas hepáticas (ALT, FA, GGT) e bilirrubina total e frações.\n' +
+        '- Urinálise física, química e de sedimento:\n' +
+        '  - Coleta preferencial prévia à hidratação, com centrifugação mandatória para caracterização de pigmentúria.',
+      interpretation:
+        'Raciocínio diagnóstico integrado no painel metabólico:\n' +
+        '- Padrão da nefropatia crônica (DRC):\n' +
+        '  - Azotemia renal (creatinina, ureia e SDMA elevados) com densidade inadequada (<1.030 em cães, <1.035 em gatos) e anemia normocítica normocrômica não regenerativa.\n' +
+        '- Padrão hemolítico acelerado:\n' +
+        '  - Hiperbilirrubinemia não conjugada e conjugada associada a bilirrubinúria precoce.\n' +
+        '- Diferenciação de pigmentúria por centrifugação urinária:\n' +
+        '  - Sobrenadante vermelho persistente pós-centrifugação: confirma hemoglobinúria ou mioglobinúria.\n' +
+        '  - Sobrenadante límpido com botão sedimentado de eritrócitos: confirma hematúria (hemorragia urinária).',
+      limitations:
+        'Armadilhas diagnósticas na interpretação bioquímica:\n' +
+        '- Azotemia pré-renal de desidratação:\n' +
+        '  - Hipovolemia e choque elevam escórias nitrogenadas simulando lesão renal primária.\n' +
+        '- Colestase funcional inflamatória:\n' +
+        '  - Em sepse grave, a hiperbilirrubinemia pode refletir colestase induzida por citocinas e não hemólise pura.',
       isGoldStandard: false
     },
     {
       stepNumber: 4,
       title: 'Perfil Cinético do Metabolismo do Ferro e Marcadores Reticulocitários Avançados',
       purpose: 'Diferenciar com precisão a deficiência absoluta de ferro (anemia ferropriva por sangramento crônico) da deficiência funcional de ferro (anemia de inflamação / AID).',
-      description: 'Painel com ferro sérico, Capacidade Total de Ligação do Ferro (TIBC), Saturação de Transferrina (TSAT = [Ferro sérico / TIBC] x 100), Ferritina sérica e dosagem de conteúdo de hemoglobina do reticulócito (CHr ou Ret-He) em analisadores hematológicos ópticos validados.',
-      interpretation: 'Na Deficiência Absoluta de Ferro: ferro sérico baixo (<60 ug/dL), TIBC normal ou elevado, TSAT marcadamente diminuída (<15 a 20%), ferritina sérica baixa e CHr/Ret-He reduzido. Na Anemia de Inflamação (AID / bloqueio por hepcidina): ferro sérico baixo, TIBC diminuído ou normal-baixo, TSAT discretamente reduzida ou normal, ferritina sérica normal ou elevada (reagente de fase aguda) e ferro medular presente em macrófagos. Meta-análise de 2025 (Ahmadi-Hamedani et al.) demonstrou excelente utilidade de CHr/Ret-He na detecção precoce de restrição de ferro, embora alerte para heterogeneidade alta (>90%) entre equipamentos, recomendando calibração pelo analisador local.',
-      limitations: 'A ferritina comporta-se como proteína de fase aguda positiva; inflamações sistêmicas, neoplasias e hepatopatias concomitantes podem mascarar uma deficiência absoluta de ferro concomitante elevando artificialmente os níveis de ferritina.',
+      description:
+        'Painel completo do metabolismo férrico e reticulocitário:\n' +
+        '- Mensuração de biomarcadores séricos:\n' +
+        '  - Ferro sérico, Capacidade Total de Ligação do Ferro (TIBC), Saturação de Transferrina (TSAT = [Ferro sérico / TIBC] x 100) e Ferritina sérica.\n' +
+        '- Biomarcadores ópticos reticulocitários avançados:\n' +
+        '  - Conteúdo de hemoglobina dos reticulócitos (CHr ou Ret-He) em analisadores hematológicos validados.',
+      interpretation:
+        'Diferenciação crítica entre deficiência absoluta e funcional de ferro:\n' +
+        '- Perfil 1: Deficiência Absoluta de Ferro (anemia ferropriva crônica):\n' +
+        '  - Ferro sérico baixo (< 60 ug/dL), TIBC normal ou elevado, TSAT marcadamente reduzida (< 15% a 20%), ferritina baixa e CHr/Ret-He suprimido.\n' +
+        '- Perfil 2: Anemia de Inflamação / AID (bloqueio funcional por hepcidina):\n' +
+        '  - Ferro sérico baixo, TIBC diminuído ou normal-baixo, TSAT discretamente reduzida ou normal, ferritina normal ou elevada e macrófagos medulares repletos de hemossiderina.\n' +
+        '- EVIDÊNCIA CLÍNICA (Meta-análise Ahmadi-Hamedani et al. 2025):\n' +
+        '  - O CHr/Ret-He possui altíssima acurácia para detecção precoce de restrição férrica medular, devendo-se utilizar os intervalos específicos do equipamento laboratorial utilizado.',
+      limitations:
+        'Interferência inflamatória nos marcadores:\n' +
+        '- Comportamento da ferritina como reagente de fase aguda:\n' +
+        '  - Inflamações sistêmicas, neoplasias e hepatopatias elevam os níveis séricos de ferritina, mascarando uma deficiência absoluta concomitante de ferro.',
       isGoldStandard: false
     },
     {
       stepNumber: 5,
       title: 'Triagem Imunológica e Painel Diagnóstico de Doenças Infecciosas / Vetoriais',
       purpose: 'Confirmar a mediação imunológica na hemólise conforme critérios estritos do consenso ACVIM 2019 e identificar agentes infecciosos causadores ou disparadores.',
-      description: 'Realização imediata de teste de aglutinação em salina (SAT) em lâmina com diluição estrita de 4 partes de salina para 1 parte de sangue (4:1) ou tubo (49:1), com lavagem eritrocitária prévia se houver dúvida com rouleaux. Teste de Antiglobulina Direto (DAT / Teste de Coombs) a 4 °C e 37 °C. Painel molecular (PCR em tempo real) para hemoparasitas e vetores: Mycoplasma haemofelis, Candidatus M. haemominutum e Candidatus M. turicensis em gatos; Babesia vogeli, Babesia gibsoni, Ehrlichia canis e Anaplasma platys em cães; sorologia FeLV/FIV em gatos.',
-      interpretation: 'CONSENSO ACVIM 2019: o diagnóstico definitivo de IMHA requer pelo menos dois marcadores de destruição imunomediada (SAT persistente, Coombs positivo ou esferocitose acentuada em cães) associados a pelo menos um marcador evidente de hemólise (hiperbilirrubinemia, hemoglobinemia, hemoglobinúria ou ghost cells). Em gatos, a pesquisa molecular de Mycoplasma haemofelis é imperativa, pois a parasitemia no esfregaço é cíclica e possui baixa sensibilidade diagnóstica.',
-      limitations: 'O teste de aglutinação em salina em diluição 1:1 produz alta taxa de falsos positivos por rouleaux. O teste de Coombs tem sensibilidade entre 61% e 82%; um resultado negativo não descarta IMHA na presença de outros critérios convergentes.',
+      description:
+        'Protocolo de testes imunológicos e moleculares integrados:\n' +
+        '- Teste de aglutinação em salina (SAT):\n' +
+        '  - Execução imediata em lâmina na proporção estrita de 4 partes de salina para 1 parte de sangue (4:1) ou em tubo (49:1), com lavagem prévia em salina para dispersar rouleaux.\n' +
+        '- Teste de Antiglobulina Direto (DAT / Coombs):\n' +
+        '  - Realizado sob temperaturas de 4 °C e 37 °C para anticorpos aglutinantes térmicos e a frio.\n' +
+        '- Painel molecular (PCR em tempo real) e sorológico:\n' +
+        '  - Pesquisa de Mycoplasma haemofelis, Candidatus M. haemominutum e sorologia FeLV/FIV em felinos.\n' +
+        '  - Pesquisa de Babesia vogeli, Babesia gibsoni, Ehrlichia canis e Anaplasma platys em cães.',
+      interpretation:
+        'CRITÉRIOS DIAGNÓSTICOS DO CONSENSO ACVIM 2019 PARA IMHA:\n' +
+        '- Regra diagnóstica definitiva:\n' +
+        '  - Presença convergente de pelo menos dois marcadores de mecanismo imunomediado (SAT persistente, Coombs positivo ou esferocitose acentuada em cães).\n' +
+        '  - Associada a pelo menos um marcador inequívoco de hemólise ativa (hiperbilirrubinemia, hemoglobinemia, hemoglobinúria ou ghost cells).\n' +
+        '- Imperativo molecular felino:\n' +
+        '  - A pesquisa por PCR de Mycoplasma haemofelis é mandatória, visto que a parasitemia observável em esfregaço é efêmera e cíclica.',
+      limitations:
+        'Limitações analíticas dos testes:\n' +
+        '- Falsos positivos no SAT por diluição inadequada:\n' +
+        '  - Proporções 1:1 não quebram o fenômeno de rouleaux gerando falso diagnóstico de autoaglutinação.\n' +
+        '- Sensibilidade imperfeita do teste de Coombs:\n' +
+        '  - Sensibilidade de 61% a 82%; resultado negativo não descarta IMHA se os outros critérios estiverem presentes.',
       isGoldStandard: false
     },
     {
       stepNumber: 6,
       title: 'Mapeamento Imaginológico Sistêmico (Ultrassonografia Point-of-Care e Radiografia)',
       purpose: 'Rastrear focos ocultos de hemorragia interna, neoplasias primárias com sangramento intracavitário e causas secundárias de hemólise ou inflamação crônica.',
-      description: 'Protocolo ultrassonográfico point-of-care imediato (AFAST e TFAST) com pesquisa de fluido livre no abdome (bolsa hepatorrenal, esplenorrenal, cistocólica e linha média) e hemofórax/efusão pericárdica. Se houver fluido livre, paracentese guiada imediata com dosagem de PCV do líquido comparado ao PCV periférico. Radiografias torácicas em 3 projeções e ultrassonografia abdominal detalhada para avaliação de baço, fígado, linfonodos e trato gastrointestinal.',
-      interpretation: 'Líquido livre cavitário com PCV igual ou superior ao PCV sanguíneo periférico confirma hemoabdome ou hemotórax. Em cães idosos, a identificação de massa esplênica cavitária heterogênea associada a hemoabdome e anemia regenerativa com esquizócitos aponta fortemente para hemangiossarcoma esplênico roto.',
-      limitations: 'Pequenos volumes de sangramento retroperitoneal ou perdas gastrointestinais luminais mucosas precoces podem não ser visibilizados no ultrassom point-of-care inicial, exigindo exames seriados.',
+      description:
+        'Rastreamento ultrassonográfico point-of-care e imaginologia global:\n' +
+        '- Protocolo POCUS imediato (AFAST e TFAST):\n' +
+        '  - Busca de líquido livre cavitário nas quatro estações abdominais (bolsa hepatorrenal, esplenorrenal, cistocólica e linha média umbilical) e pesquisa de efusão pleural e pericárdica.\n' +
+        '- Paracentese diagnóstica orientada:\n' +
+        '  - Em presença de efusão livre, punção guiada imediata com mensuração do hematócrito (PCV) do líquido comparado ao PCV sanguíneo periférico.\n' +
+        '- Mapeamento radiográfico e ultrassonográfico completo:\n' +
+        '  - Radiografia de tórax em 3 projeções (pesquisa de metástases e hemotórax) e ultrassonografia abdominal completa de parênquimas (baço, fígado, linfonodos e trato gastrointestinal).',
+      interpretation:
+        'Caracterização de focos hemorrágicos e neoplásicos:\n' +
+        '- Confirmação de hemoabdome / hemotórax:\n' +
+        '  - Hematócrito do líquido cavitário igual ou superior ao hematócrito sistêmico periférico.\n' +
+        '- Quadro patognomônico de hemangiossarcoma roto:\n' +
+        '  - Cão idoso com massa esplênica heterogênea cavitária, hemoabdome agudo e esfregaço demonstrando anemia regenerativa com esquizócitos e acantócitos.',
+      limitations:
+        'Sensibilidade temporal das imagens:\n' +
+        '- Sangramentos incipientes ou retroperitoneais:\n' +
+        '  - Perdas hemorrágicas de pequeno volume ou lesões de mucosa gastrointestinal podem passar despercebidas no AFAST inicial, exigindo reavaliação seriada.',
       isGoldStandard: false
     },
     {
       stepNumber: 7,
       title: 'Avaliação Citológica e Histopatológica de Medula Óssea (Aspirado e Core Biopsy)',
       purpose: 'Investigar a falência primária da hematopoiese em anemias não regenerativas persistentes inexplicadas por causas extramedulares, citopenias múltiplas ou suspeita de malignidade hematológica.',
-      description: 'Procedimento estéril sob sedação e anestesia local: punção aspirativa com agulha de Rosenthal ou Illinois na crista ilíaca, tuberosidade isquiática ou cabeça proximal do úmero para avaliação citológica (relação M:E e morfologia de maturação), combinada a biópsia por agulha trepina de Jamshidi para histopatologia em formol (avaliação de celularidade arquitetural, fibrose e mieloftise).',
-      interpretation: 'Relação mieloide:eritroide (M:E) marcadamente elevada com ausência de precursores eritroides confirma Aplasia Pura de Células Vermelhas (PRCA). Hipocelularidade global com substituição gordurosa do estroma confirma Aplasia Medular (pancitopenia aplástica). Presença de displasia citológica em mais de 10% de uma ou mais linhagens com blastos medulares <20% caracteriza Síndrome Mielodisplásica (MDS). Aspiração seca ("dry tap") exige core biopsy e frequentemente revela mielofibrose avançada.',
-      limitations: 'Procedimento invasivo que exige contenção química e estabilização prévia do paciente; contraindicado em coagulopatias severas descompensadas antes de correção hemostática prévia.',
+      description:
+        'Protocolo invasivo estéril de amostragem medular:\n' +
+        '- Punção aspirativa com agulha de Rosenthal ou Illinois:\n' +
+        '  - Realizada sob sedação e bloqueio anestésico local na crista ilíaca, tuberosidade isquiática ou cabeça proximal do úmero para citologia (relação mieloide:eritroide e índice de maturação).\n' +
+        '- Biópsia por agulha trepina de Jamshidi (Core Biopsy):\n' +
+        '  - Coleta simultânea de cilindro ósseo fixado em formol para exame histopatológico da arquitetura celular, celularidade global, deposição de colágeno (mielofibrose) e mieloftise.',
+      interpretation:
+        'Diagnóstico diferencial nas anemias não regenerativas centrais:\n' +
+        '- Aplasia Pura de Células Vermelhas (PRCA):\n' +
+        '  - Relação mieloide:eritroide (M:E) severamente elevada com bloqueio ou ausência completa de precursores eritroides.\n' +
+        '- Aplasia Medular Global (pancitopenia aplástica):\n' +
+        '  - Hipocelularidade profunda de todas as linhagens hematopoieticas com substituição por tecido adiposo.\n' +
+        '- Síndrome Mielodisplásica (MDS):\n' +
+        '  - Displasia citomorfológica marcante em mais de 10% de uma ou mais linhagens com contagem de mieloblastos < 20%.\n' +
+        '- Mielofibrose avançada:\n' +
+        '  - Suspeitada na aspiração seca ("dry tap") e confirmada pela proliferação reticulínica/colágena na histopatologia.',
+      limitations:
+        'Riscos procedimentais e pré-requisitos:\n' +
+        '- Invasividade e exigência anestésica:\n' +
+        '  - Procedimento contraindicado em coagulopatias severas descompensadas antes de correção transfusional ou suporte hemostático prévio.',
       isGoldStandard: false
     }
   ],
 
   treatment: {
-    metaPrimaria: 'O objetivo imediato do manejo clínico da anemia grave não é a normalização cosmética do hematócrito numérico, mas sim a rápida estabilização da oferta tecidual de oxigênio (DO2) para cessar a hipóxia celular, prevenir a falência de múltiplos órgãos (MODS) e manter a estabilidade hemodinâmica enquanto o mecanismo etiológico é ativamente investigado e tratado.',
+    metaPrimaria:
+      'Meta primária da abordagem terapêutica na anemia crítica:\n' +
+      '- Foco fisiológico versus numérico:\n' +
+      '  - O alvo não é a normalização cosmética do hematócrito numérico laboratorial, mas sim a estabilização rápida da oferta de oxigênio tecidual (DO2).\n' +
+      '- Prevenção de falência orgânica (MODS):\n' +
+      '  - Interromper a hipóxia celular antes da instalação de glicólise anaeróbia crônica e acidose lática.\n' +
+      '- Preservação hemodinâmica e investigação:\n' +
+      '  - Manter estabilidade cardiovascular e perfusão enquanto o mecanismo etiopatogênico causal é elucidado e tratado especificamente.',
 
-    oxigenioterapiaERessuscitacaoInicial: 'Todo paciente anêmico apresentando taquicardia desproporcional, taquipneia, fraqueza severa ou lactato sérico elevado deve receber oxigênio suplementar em fluxo livre, gaiola de oxigênio enriquecida (FiO2 de 30% a 40%) ou cateter nasal duplo. A fluidoterapia de ressuscitação com cristaloides balanceados (ex.: Ringer com Lactato ou Plasma-Lyte 148) deve ser reservada com estrito critério para pacientes com hemorragia hipovolêmica associada, em alíquotas conservadoras de 10 a 20 mL/kg em cães e 5 a 10 mL/kg em gatos ao longo de 15 a 20 minutos, evitando a hemodiluição excessiva em anemias normovolêmicas crônicas compensadas, o que precipitaria edema pulmonar agudo ou piora do transporte de oxigênio.',
+    oxigenioterapiaERessuscitacaoInicial:
+      'Oxigenioterapia inicial e ressuscitação volêmica prudente:\n' +
+      '- Suporte ventilatório e enriquecimento de oxigênio:\n' +
+      '  - Fornecer oxigênio suplementar em fluxo livre, máscara, cateter nasal duplo ou incubadora com FiO2 de 30% a 40% em pacientes com taquicardia desproporcional, taquipneia anêmica ou hiperlactatemia.\n' +
+      '- Fluidoterapia em alíquotas conservadoras:\n' +
+      '  - Indicada estritamente em hemorragias hipovolêmicas ativas com cristaloides balanceados (Ringer com Lactato ou Plasma-Lyte 148).\n' +
+      '  - Bolus titulados de 10 a 20 mL/kg em cães e 5 a 10 mL/kg em gatos ao longo de 15 a 20 minutos.\n' +
+      '- ALERTA EM ANEMIAS NORMOVOLÊMICAS (IMHA, DRC):\n' +
+      '  - Veto à fluidoterapia vigorosa em anemias crônicas normovolêmicas.\n' +
+      '  - Evita hemodiluição iatrogênica adicional e precipitação de edema pulmonar cardiogênico ou TACO.',
 
-    hemoterapiaEIndicacoesTransfusionais: 'A decisão de transfundir deve ser rigorosamente individualizada com base na constelação clínica de inadequada entrega de oxigênio e não em gatilhos numéricos universais (consenso ISFM 2021). Os principais gatilhos clínicos de indicação hemoterápica incluem: letargia profunda ou colapso estático, taquicardia severa refratária, taquipneia anêmica sem causa primária respiratória, hiperlactatemia persistente (>2,5 a 3,0 mmol/L), hipotensão arterial, sangramento ativo contínuo incontrolável ou necessidade iminente de cirurgia emergencial. O Concentrado de Hemácias (pRBC) é o hemocomponente de escolha primária na vasta maioria dos pacientes com anemia normovolêmica (IMHA, DRC, aplasia medular), pois maximiza o CaO2 fornecendo eritrócitos concentrados (hematócrito da bolsa entre 60% e 80%) com mínima sobrecarga de volume. O Sangue Total Fresco é preferido na hemorragia aguda maciça com perda concomitante de volemia, proteínas plasmáticas e plaquetas (Feline Emergency and Critical Care Medicine, 2a ed., Cap. 29).',
+    hemoterapiaEIndicacoesTransfusionais:
+      'Gatilhos clínicos transfusionais e seleção de hemocomponentes (ISFM 2021):\n' +
+      '- Rejeição de gatilhos puramente numéricos de hematócrito:\n' +
+      '  - A decisão transfusional é individualizada com base em sinais objetivos de hipóxia tecidual e descompensação celular, não em corte numérico arbitrário isolado.\n' +
+      '- Gatilhos clínicos cardinais para indicação transfusional imediata:\n' +
+      '  - 1. Letargia profunda, prostração sem sustentação de estação ou colapso estático.\n' +
+      '  - 2. Taquicardia persistente refratária e pulso periférico filiforme.\n' +
+      '  - 3. Taquipneia e esforço respiratório anêmico sem doença primária pulmonar.\n' +
+      '  - 4. Hiperlactatemia persistente (>2,5 a 3,0 mmol/L) e deficit de base acentuado.\n' +
+      '  - 5. Sangramento ativo contínuo profuso ou necessidade cirúrgica emergencial inadiável.\n' +
+      '- Seleção criteriosa do hemocomponente ideal:\n' +
+      '  - Concentrado de Hemácias (pRBC): padrão-ouro para anemias normovolêmicas (IMHA, DRC, aplasia medular), maximizando CaO2 (hematócrito da bolsa 60% a 80%) com mínima sobrecarga volêmica.\n' +
+      '  - Sangue Total Fresco: indicado primordialmente em hemorragias maciças com perda simultânea de eritrócitos, volume plasmático e plaquetas.',
 
-    calculoDeVolumeEAdministracaoHemoderivados: 'O volume transfusional deve ser calculado pela fórmula padrão: Volume (mL) = Peso corporal (kg) x Volume sanguíneo (mL/kg) x [(PCV alvo - PCV do paciente) / PCV da bolsa]. O volume sanguíneo corporal estimado é de 80 a 90 mL/kg em cães e de 60 a 70 mL/kg em felinos. Na rotina prática, utiliza-se a regra geral empiricamente validada: 1 mL/kg de concentrado de hemácias (pRBC) eleva o hematócrito do receptor em aproximadamente 1 ponto percentual, enquanto 2 mL/kg de sangue total elevam aproximadamente 1 ponto percentual. Doses empíricas de partida habituais situam-se em 6 a 10 mL/kg para pRBC e 12 a 20 mL/kg para sangue total. Toda transfusão deve ser administrada por equipo próprio estéril provido de filtro microagregado de 170 a 260 micrômetros, iniciando-se a velocidade muito lenta (0,25 a 0,5 mL/kg/hora) durante os primeiros 15 a 30 minutos sob monitoramento estrito de sinais vitais, sendo o volume restante infundido em um período total não superior a 4 horas para prevenir contaminação bacteriana.',
+    calculoDeVolumeEAdministracaoHemoderivados:
+      'Cálculo de dosagem e protocolo de infusão de hemoderivados:\n' +
+      '- Fórmula padrão de cálculo transfusional:\n' +
+      '  - Volume a infundir (mL) = Peso (kg) x Volemia (mL/kg) x [(PCV alvo - PCV atual) / PCV da bolsa].\n' +
+      '  - Volemia estimada: 80 a 90 mL/kg em cães e 60 a 70 mL/kg em gatos.\n' +
+      '- Regra prática de cabeceira:\n' +
+      '  - 1 mL/kg de concentrado de hemácias (pRBC) eleva o PCV em ~1 ponto percentual (dose empírica: 6 a 10 mL/kg).\n' +
+      '  - 2 mL/kg de sangue total elevam o PCV em ~1 ponto percentual (dose empírica: 12 a 20 mL/kg).\n' +
+      '- Protocolo de administração e segurança do equipo:\n' +
+      '  - Equipo estéril com filtro microagregado de 170 a 260 micrômetros.\n' +
+      '  - Velocidade inicial ultra-lenta: 0,25 a 0,5 mL/kg/hora nos primeiros 15 a 30 minutos com aferição rigorosa de parâmetros vitais.\n' +
+      '  - Concluir a infusão em tempo máximo de 4 horas para evitar proliferação bacteriana intra-bolsa.',
 
-    compatibilidadeTransfusionalCaninaEFelina: 'Em cães, a tipagem para o antígeno eritrocitário DEA 1 é mandatória; cães DEA 1 negativos devem receber exclusivamente sangue DEA 1 negativo para evitar aloimunização. Em cães virgens de transfusão (transfusion-naïve), o teste de compatibilidade maior (major crossmatch) pode ser dispensado em extrema emergência; contudo, se o paciente recebeu qualquer transfusão prévia há mais de 4 dias, o major crossmatch torna-se formalmente obrigatório pelo surgimento de aloanticorpos circulantes (consenso AVHTM TRACS 2021). Em felinos, o rigor de compatibilidade é absoluto: gatos possuem aloanticorpos naturais pré-formados potentes desde o desmame; indivíduos tipo B possuem anticorpos anti-A de alta titulação e afinidade, de modo que a transfusão inadvertida de míseros 1 mL de sangue tipo A desencadeia reação hemolítica intravascular fulminante, choque anafilactoide e óbito em minutos. Portanto, a tipagem sanguínea do sistema AB (com cartões imunocromatográficos de ponto de atendimento) e o crossmatch são formalmente obrigatórios em todo gato antes de qualquer infusão de hemocomponente.',
+    compatibilidadeTransfusionalCaninaEFelina:
+      'Compatibilidade e testes imunoematológicos caninos e felinos:\n' +
+      '- Diretrizes na espécie canina (Sistema DEA):\n' +
+      '  - Tipagem mandatória para DEA 1; receptores DEA 1 negativos devem receber exclusivamente concentrado DEA 1 negativo.\n' +
+      '  - Cães virgens de transfusão (transfusion-naïve) podem prescindir de prova cruzada maior (major crossmatch) apenas em emergência extrema.\n' +
+      '  - Regra dos 4 dias (consenso AVHTM TRACS 2021): se o paciente recebeu qualquer transfusão prévia há mais de 4 dias, o major crossmatch torna-se formalmente obrigatório pelo surgimento de aloanticorpos circulantes.\n' +
+      '- Rigor absoluto na espécie felina (Sistema AB):\n' +
+      '  - Presença de aloanticorpos naturais pré-formados desde o desmame; gatos tipo B possuem títulos altíssimos de anticorpos anti-A.\n' +
+      '  - Transfusão de 1 mL de sangue tipo A em um gato tipo B deflagra reação hemolítica intravascular fulminante e óbito imediato.\n' +
+      '  - Tipagem sanguínea AB e prova cruzada são pré-requisitos invioláveis em felinos.',
 
-    rejeicaoDePreMedicacaoAntiHistaminicaRotineira: 'Uma prática histórica enraizada na rotina veterinária é a administração rotineira de difenidramina, prometazina ou corticosteroides minutos antes da transfusão como suposta profilaxia de reações alérgicas. O consenso internacional AVHTM TRACS 2021 avaliou extensamente os dados clínicos e contraindicou formalmente a pré-medicação sistemática: ensaios clínicos controlados não demonstram redução na incidência de reações transfusionais imunomediadas, enquanto os anti-histamínicos mascaram sinais clínicos precoces de alarme (taquicardia, febre inicial e eritema), atrasando o reconhecimento e a interrupção imediata da transfusão.',
+    rejeicaoDePreMedicacaoAntiHistaminicaRotineira:
+      'Rejeição da pré-medicação anti-histamínica rotineira (Consenso AVHTM TRACS 2021):\n' +
+      '- Prática histórica desmistificada:\n' +
+      '  - O uso empírico de difenidramina, prometazina ou corticosteroides imediatamente antes da hemotransfusão é contraindicado formalmente.\n' +
+      '- Ausência de eficácia profilática demonstrada:\n' +
+      '  - Ensaios clínicos controlados provaram que anti-histamínicos não diminuem a incidência de reações transfusionais alérgicas ou febris.\n' +
+      '- Efeito deletério de mascaramento clínico:\n' +
+      '  - A pré-medicação amortece os sinais precoces de alarme (taquicardia, febre inicial, prurido e eritema), atrasando o reconhecimento crítico de reações hemolíticas agudas ou contaminações bacterianas graves.',
 
-    terapiaFarmacologicaEtiologicaEspecifica: 'O tratamento farmacológico definitivo deve ser rigorosamente direcionado ao mecanismo causal comprovado: (1) Na Anemia Hemolítica Imunomediada (IMHA): corticoterapia imunossupressora imediata com prednisona oral a 2 mg/kg/dia (ou prednisolona em gatos e cães com disfunção hepática, ou dexametasona 0,2 a 0,3 mg/kg IV na impossibilidade de via oral) associada a segundo imunossupressor (micofenolato de mofetila 10 mg/kg VO BID em cães, ou ciclosporina 5 a 10 mg/kg/dia VO em cães e gatos) e tromboprofilaxia mandatória com anticoagulante (rivaroxabana 1 a 2 mg/kg VO q24h ou heparina de baixo peso molecular) conforme consenso ACVIM Swann et al. 2019; (2) Na Anemia da Doença Renal Crônica (DRC): conforme diretrizes atualizadas IRIS 2026, avalia-se terapia hormonal estimuladora com darbepoetina alfa em doses iniciais de indução de 0,5 a 0,8 ug/kg SC uma vez por semana em cães e 1,0 ug/kg SC semanal em gatos, expandindo o intervalo para cada 2 a 3 semanas após a estabilização do hematócrito alvo (25-30% em gatos e 30-35% em cães), ou alternativamente a nova classe de inibidores da prolil-hidroxilase do HIF (HIF-PHI) com o molidustat oral a 5 mg/kg VO q24h em gatos, com base no estudo clínico randomizado e controlado multicêntrico de Schmidt et al. 2026; (3) Na Anemia Ferropriva Absoluta: correção definitiva do foco hemorrágico associada à reposição de ferro com sulfato ferroso por via oral (cães: 100 a 600 mg do sal total VO q24h fracionado com alimento; atentar que cada 325 mg do sal contém aproximadamente 65 mg de ferro elementar) ou ferro dextrano injetável (10 a 20 mg/kg IM dose única em cães; 50 mg total IM a cada 3 a 4 semanas em gatos) segundo Plumb s 10a ed. e BSAVA Formulary 10a ed.',
+    terapiaFarmacologicaEtiologicaEspecifica:
+      'Protocolos farmacológicos direcionados por mecanismo etiológico:\n' +
+      '- 1. Anemia Hemolítica Imunomediada (IMHA — Consenso ACVIM Swann et al. 2019):\n' +
+      '  - Corticoterapia imunossupressora: prednisona oral a 2 mg/kg/dia (ou prednisolona em gatos e cães hepatopatas; dexametasona 0,2 a 0,3 mg/kg IV na via parenteral).\n' +
+      '  - Segundo agente imunossupressor: micofenolato de mofetila (10 mg/kg VO BID em cães) ou ciclosporina (5 a 10 mg/kg/dia VO em cães e gatos).\n' +
+      '  - Tromboprofilaxia mandatória: rivaroxabana (1 a 2 mg/kg VO q24h) ou heparina de baixo peso molecular.\n' +
+      '- 2. Anemia da Doença Renal Crônica (DRC — Diretrizes IRIS 2026):\n' +
+      '  - Darbepoetina alfa: indução com 0,5 a 0,8 ug/kg SC semanal em cães e 1,0 ug/kg SC semanal em gatos; manutenção a cada 2 a 3 semanas com alvo HCT de 25-30% em gatos e 30-35% em cães.\n' +
+      '  - Inibidores da prolil-hidroxilase do HIF (HIF-PHI): molidustat oral a 5 mg/kg VO q24h em gatos (Schmidt et al. 2026).\n' +
+      '- 3. Anemia Ferropriva Absoluta por sangramento crônico:\n' +
+      '  - Resolução primária do foco hemorrágico.\n' +
+      '  - Sulfato ferroso oral: cães 100 a 600 mg do sal total VO q24h fracionado com alimento (325 mg do sal correspondem a ~65 mg de ferro elementar).\n' +
+      '  - Ferro dextrano injetável: 10 a 20 mg/kg IM dose única em cães; 50 mg totais IM a cada 3 a 4 semanas em gatos (Plumb 10ª ed.; BSAVA Formulary).',
 
-    reacoesTransfusionaisEManejoDeEmergencia: 'Diante de qualquer alteração clínica aguda durante ou logo após a infusão de hemocomponentes (taquipneia súbita, febre com elevação térmica >1 °C, tremores, angioedema, vômito, salivação ou colapso), o protocolo de emergência manda: (1) Interromper imediatamente a infusão do hemocomponente; (2) Manter o acesso venoso permeável infundindo solução salina isotônica a 0,9%; (3) Avaliar via aérea, padrão respiratório e estabilidade hemodinâmica; (4) Conferir prontamente a rotulagem da bolsa e a identidade do paciente; (5) Diferenciar reações alérgicas simples (urticária tratada com anti-histamínico e retomada lenta) de reações hemolíticas agudas ou contaminação bacteriana séptica (choque, hemoglobinemia, coagulopatia exigindo suporte intensivo); (6) Diferenciar Sobrecarga Circulatória Associada à Transfusão (TACO, tratada com diurético furosemida e interrupção volêmica) de Lesão Pulmonar Aguda Associada à Transfusão (TRALI, tratada com suporte ventilatório e sem resposta a diuréticos) de acordo com os critérios padronizados TRACS 2021.'
+    reacoesTransfusionaisEManejoDeEmergencia:
+      'Protocolo de intervenção em reações transfusionais agudas (TRACS 2021):\n' +
+      '- Sinais de alerta durante ou logo após a transfusão:\n' +
+      '  - Taquipneia súbita, febre (elevação térmica >1 °C), tremores musculares, angioedema, vômito agudo ou colapso circulatório.\n' +
+      '- Passos de intervenção imediata de plantão:\n' +
+      '- 1. Interrupção imediata:\n' +
+      '  - Fechar o equipo de transfusão instantaneamente mantendo o acesso vascular permeável com salina estéril a 0,9%.\n' +
+      '- 2. Suporte cardiorrespiratório e checagem:\n' +
+      '  - Avaliar vias aéreas, perfusão e checar a rotulagem da bolsa em relação ao prontuário do paciente.\n' +
+      '- 3. Diferenciação clínica e conduta estratificada:\n' +
+      '  - Reações alérgicas simples (eritema/urticária): tratar com anti-histamínico e retomar infusão sob velocidade reduzida.\n' +
+      '  - Hemólise aguda ou sepse bacteriana: choque, hemoglobinemia e CID; suporte intensivo e ressuscitação imediata.\n' +
+      '  - Sobrecarga circulatória (TACO): hipertensão e edema pulmonar; suspender volume e administrar furosemida IV.\n' +
+      '  - Lesão pulmonar aguda (TRALI): hipoxemia não cardiogênica; suporte ventilatório e refratariedade a diuréticos.'
   },
 
   complications: {
-    hipoxiaCelularEInsuficienciaMultiplosOrgaos: 'A persistência de hematócritos criticamente baixos e débito cardíaco inadequado culmina em hipóxia tecidual generalizada, necrose tubular aguda renal por isquemia cortical, necrose centrolobular hepática, translocação bacteriana entérica por perda da barreira mucosa e Síndrome de Disfunção de Múltiplos Órgãos (MODS) irreversível.',
+    hipoxiaCelularEInsuficienciaMultiplosOrgaos:
+      'Falência orgânica múltipla secundária à hipóxia isquêmica (MODS):\n' +
+      '- Consequências da persistência de HCT crítico:\n' +
+      '  - Queda irreversível na oferta celular de oxigênio com depleção de fosfatos de alta energia (ATP).\n' +
+      '- Lesões isquêmicas de órgãos-alvo:\n' +
+      '  - Necrose tubular aguda (NTA) renal por isquemia do córtex e medula externa.\n' +
+      '  - Necrose centrolobular hepática hipóxica e disfunção biliar.\n' +
+      '  - Quebra da barreira mucosal gastrointestinal com translocação bacteriana entérica maciça, deflagrando sepse e síndrome de disfunção de múltiplos órgãos (MODS).',
 
-    sobrecargaCirculatoriaEEdemaPulmonarTACO: 'A infusão rápida ou em volume excessivo de hemocomponentes, especialmente sangue total ou plasma em animais normovolêmicos com cardiopatia subclínica ou insuficiência renal crônica oligoanúrica, desencadeia Sobrecarga Circulatória Associada à Transfusão (TACO), com hipertensão capilar pulmonar hidrostática, edema pulmonar cardiogênico agudo e insuficiência respiratória fatal.',
+    sobrecargaCirculatoriaEEdemaPulmonarTACO:
+      'Sobrecarga Circulatória Associada à Transfusão (TACO):\n' +
+      '- Fisiopatologia do edema cardiogênico agudo:\n' +
+      '  - Infusão excessiva ou excessivamente rápida de hemocomponentes (especialmente sangue total ou plasma).\n' +
+      '- Pacientes de alto risco:\n' +
+      '  - Animais com cardiopatia oculta subclínica, insuficiência renal crônica oligoanúrica ou normovolemia prévia estrita.\n' +
+      '- Desfecho clínico:\n' +
+      '  - Elevação abrupta da pressão venosa e capilar pulmonar, culminando em edema alveolar fulminante e óbito por insuficiência respiratória hipoxêmica.',
 
-    tromboembolismoPulmonarNaIMHA: 'Pacientes com anemia hemolítica imunomediada apresentam estado de hipercoagulabilidade patológica extrema induzido pela ativação plaquetária, micropartículas eritrocitárias pró-coagulantes e liberação de fator tecidual; o tromboembolismo pulmonar (TEP) é a principal causa de mortalidade hospitalar em cães com IMHA ativa, justificando tromboprofilaxia mandatória em todo paciente desde a admissão.',
+    tromboembolismoPulmonarNaIMHA:
+      'Tromboembolismo pulmonar na Anemia Hemolítica Imunomediada (IMHA):\n' +
+      '- Estado de hipercoagulabilidade patológica extrema:\n' +
+      '  - Deflagrado pela ativação plaquetária contínua, micropartículas eritrocitárias pró-coagulantes e liberação descontrolada de fator tecidual.\n' +
+      '- Principal causa de mortalidade hospitalar:\n' +
+      '  - O tromboembolismo pulmonar (TEP) é o desfecho fatal predominante em cães internados com IMHA ativa.\n' +
+      '- Mandato profilático:\n' +
+      '  - Justifica a instituição formal de tromboprofilaxia com anticoagulantes (rivaroxabana ou heparina) imediatamente na admissão.',
 
-    sobrecargaCorporalEToxicidadePorFerro: 'A administração inadvertida e indiscriminada de ferro oral ou injetável em pacientes com anemia de inflamação ou nefropatias sem carência absoluta de ferro satura a transferrina plasmática e induz depósito tecidual citotóxico de hemossiderina (hemossiderose) em fígado, pâncreas e miocárdio, deflagrando fibrose tecidual progressiva.'
+    sobrecargaCorporalEToxicidadePorFerro:
+      'Hemossiderose e toxicidade tecidual por sobrecarga de ferro:\n' +
+      '- Iatrogenia farmacológica por uso indiscriminado:\n' +
+      '  - Administração de ferro oral ou injetável em pacientes com anemia de inflamação ou nefropatias sem deficiência ferropriva absoluta comprovada.\n' +
+      '- Danos parenquimatosos celulares:\n' +
+      '  - Saturação da capacidade da transferrina plasmática e depósito citotóxico de ferro livre e hemossiderina em macrófagos e parênquimas.\n' +
+      '  - Estresse oxidativo por reações de Fenton com fibrose progressiva em fígado, miocárdio e pâncreas.'
   },
 
   prevention: {
-    mitigacaoDeFlebotomiaIatrogenicaEmUTI: 'Adoção estrita de microtubos pediátricos de 0,5 a 1,0 mL para exames laboratoriais na internação, consolidação de coletas sanguíneas em horários unificados, eliminação de exames laboratoriais repetitivos que não alteram a conduta clínica imediata e registro formal em prontuário do volume cumulativo colhido em pacientes abaixo de 5 kg.',
+    mitigacaoDeFlebotomiaIatrogenicaEmUTI:
+      'Prevenção de anemia iatrogênica por flebotomias em terapia intensiva:\n' +
+      '- Microcoletas sistemáticas:\n' +
+      '  - Utilização estrita de microtubos pediátricos de 0,5 a 1,0 mL para exames laboratoriais na UTI.\n' +
+      '- Racionalização diagnóstica:\n' +
+      '  - Consolidação e agrupamento de coletas sanguíneas em horários pré-definidos.\n' +
+      '  - Eliminação de exames repetitivos que não impliquem mudança na conduta clínica imediata.\n' +
+      '- Controle rigoroso do volume acumulado:\n' +
+      '  - Registro formal em prontuário do volume colhido em pacientes abaixo de 5 kg para não ultrapassar 3% da volemia corporal total.',
 
-    rastreamentoParasitarioEQuimioprofilaxiaVetorial: 'Controle contínuo e ininterrupto de ectoparasitas (pulgas e carrapatos) mediante o uso regular de isoxazolinas, coleiras inseticidas e repelentes tópicos, prevenindo a transmissão de Mycoplasma haemofelis em gatos e Babesia/Ehrlichia em cães, além do controle de perdas digestivas por Ancylostoma e Uncinaria com anti-helmínticos periódicos.',
+    rastreamentoParasitarioEQuimioprofilaxiaVetorial:
+      'Controle integrado de ectoparasitas e quimioprofilaxia vetorial:\n' +
+      '- Bloqueio contínuo de artrópodes transmissores:\n' +
+      '  - Uso sistemático de isoxazolinas orais, coleiras inseticidas e repelentes tópicos contra carrapatos e pulgas.\n' +
+      '- Prevenção de infecções hemotrópicas:\n' +
+      '  - Interrupção da transmissão de Mycoplasma haemofelis em gatos e Babesia/Ehrlichia em cães.\n' +
+      '- Desparasitação entérica periódica:\n' +
+      '  - Controle de nematódeos hematófagos intestinais (Ancylostoma e Uncinaria) para prevenir perdas digestivas crônicas e ferropenia.',
 
-    manejoProtetorNaPrescricaoDeAntiInflamatorios: 'Proibição formal da associação concomitante de dois anti-inflamatórios não esteroidais (AINEs) ou de AINE associado a corticosteroides em cães e gatos, prescrevendo sempre gastroprotetores e monitorando clinicamente as fezes quanto a sinais precoces de perda hemorrágica oculta (melena).',
+    manejoProtetorNaPrescricaoDeAntiInflamatorios:
+      'Segurança farmacológica na prescrição de anti-inflamatórios e corticoides:\n' +
+      '- Veto formal a associações deletérias:\n' +
+      '  - Proibição da prescrição concomitante de dois AINEs distintos ou de AINE associado a corticosteroides em cães e gatos.\n' +
+      '- Proteção da barreira mucosal gástrica:\n' +
+      '  - Utilização de gastroprotetores criteriosos quando indicado.\n' +
+      '- Vigilância domiciliar ativa:\n' +
+      '  - Orientar os tutores a monitorar as fezes para detecção precoce de perdas hemorrágicas ocultas (fezes pastosas escurecidas/melena).',
 
-    monitoramentoRenalEIntervencaoPrecoceIRIS: 'Acompanhamento hematológico periódico a cada 3 a 6 meses em cães e gatos portadores de Doença Renal Crônica a partir do estágio IRIS 2, viabilizando a detecção precoce da hipoeritropoietinemia e a instituição oportuna de terapias eritropoiéticas antes da descompensação hipóxica terminal.',
+    monitoramentoRenalEIntervencaoPrecoceIRIS:
+      'Monitoramento hematológico precoce na Doença Renal Crônica (IRIS):\n' +
+      '- Vigilância seriada em pacientes renais:\n' +
+      '  - Acompanhamento periódico do hematócrito a cada 3 a 6 meses a partir do estágio IRIS 2.\n' +
+      '- Intervenção precoce contra a hipoeritropoietinemia:\n' +
+      '  - Detecção oportuna de queda progressiva da massa eritrocitária antes da instalação de choque hipóxico crônico.\n' +
+      '- Diretrizes consensuais IRIS 2026:\n' +
+      '  - Aplicação de agentes estimuladores da eritropoiese (ESA) e inibidores de HIF-PHI antes da descompensação terminal.',
 
-    cadastroETipagemPreviaDeDoadoresInstitucionais: 'Manutenção de banco de sangue institucional de cães doadores tipados como DEA 1 negativos e gatos tipados com sistema AB, devidamente triados contra retroviroses, hemoplasmas e patógenos vetoriais, garantindo disponibilidade imediata de hemocomponentes seguros e compatíveis na emergência.'
+    cadastroETipagemPreviaDeDoadoresInstitucionais:
+      'Manutenção de banco de sangue e doadores tipados institucionais:\n' +
+      '- Cadastro prévio de doadores caninos:\n' +
+      '  - Animais previamente tipados como DEA 1 negativos para garantir disponibilidade imediata na emergência.\n' +
+      '- Triagem e banco de sangue felino:\n' +
+      '  - Gatos doadores tipados pelo sistema AB e rastreados contra retroviroses (FeLV/FIV) e hemoplasmas.\n' +
+      '- Segurança transfusional de urgência:\n' +
+      '  - Disponibilidade de hemocomponentes testados que permitam transfusões rápidas e imunologicamente compatíveis.'
   },
 
   references: [

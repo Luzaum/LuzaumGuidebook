@@ -1,0 +1,241 @@
+CHAPTER 174
+•
+Immune-Mediated Hemolytic Anemia and Other Regenerative Anemias
+883
+eBooks.Health.Elsevier.com
+53. Côté E, Ettinger SJ. Long-term clinical management of right-to-le (“re-
+versed”) patent ductus arteriosus in 3 dogs. J Vet Intern Med. 2001;15(1):39-42.
+54. Meyer HP, Slappendel RJ, Greydanus-van der Putten SW. Polycythaemia 
+vera in a dog treated by repeated phlebotomies. Vet Q. 1993;15(3):108-111.
+55. Nett CS, Arnold P, Glaus TM. Leeching as initial treatment in a cat with 
+polycythaemia vera. J Small Anim Pract. 2001;42(11):554-556.
+56. Buote NJ. e use of medical leeches for venous congestion. A review and 
+case report. Vet Comp Orthop Traumatol. 2014;27(3):173-178.
+57. Yarbro JW. Mechanism of action of hydroxyurea. Semin Oncol. 1992;19(3 
+Suppl 9):1-10.
+58. Morton D, Reed L, Huang W, etal. Toxicity of hydroxyurea in rats and dogs. 
+Toxicol Pathol. 2015;43(4):498-512.
+59. Gonzales AJ, Bowman JW, Fici GJ, etal. Oclacitinib (APOQUEL((R))) is a 
+novel Janus kinase inhibitor with activity against cytokines involved in allergy. J 
+Vet Pharmacol er. 2014;37(4):317-324.
+60. Vasilatis DM, McGill JE, Gilor C. A novel bone marrow-sparing treatment 
+for primary erythrocytosis in a cat: onion powder. J Vet Intern Med. 2021.
+61. Turner E. Pentoxifylline as adjunct therapy to long-term clinical manage-
+ment of a right-to-le patent ductus arteriosus. Can Vet J. 2016;57(6):655-656.
+Immune-Mediated Hemolytic Anemia and 
+Other Regenerative Anemias
+Christiane Weingart | Barbara Kohn
+ANEMIAS DUE TO HEMOLYSIS
+PATHOPHYSIOLOGY
+H
+emolytic anemias are caused by 
+an accelerated erythrocyte (red 
+blood cell [RBC]) destruction 
+and decrease of the normal RBC life span 
+(dog: 100-10 days, cat: 70-75 days) due 
+to an intrinsic (e.g., erythroenzymopa-
+thy) or extrinsic (e.g., antibody formation 
+against the RBC membrane) defect. Hemo-
+lytic anemias are usually regenerative, 
+and extramedullary hematopoiesis in the 
+spleen and liver may occur. Hemolysis can 
+be extravascular or intravascular. Extra-
+vascular hemolysis is the predominant 
+form and refers to phagocytosis of RBCs by 
+the mononuclear phagocytic system of the 
+spleen, liver, and bone marrow. Damaged 
+(as well as physiologically senescent) RBCs 
+are rst sequestered, then phagocytosed, 
+and nally degraded. Hemoglobin (Hb) 
+is degraded to bilirubin, iron, and amino 
+acids. Depending on the extent of hemoly-
+sis, hyperbilirubinemia and bilirubinuria 
+may result, although serum bilirubin 
+may be normal in the case of slow chronic 
+hemolytic anemia (especially in cats). Less 
+commonly, RBCs are lysed in the blood 
+vessels (intravascular hemolysis) as a result 
+of membrane damage or cellular fragmen-
+tation (resulting in hemoglobinemia and 
+hemoglobinuria). Renal damage caused 
+by Hb is very rare in small animals.1 e 
+pathophysiological classification of hemolytic anemias is pre-
+sented in Table 174.1
+Clinical Presentation
+Clinical signs depend on the severity and rate of hemolysis, com-
+plications, and the underlying disease. Mild and chronic cases 
+show no or only mild, nonspecic signs. Severe hemolytic anemias 
+are associated with sudden weakness, collapse, and signs of shock. 
+In addition to the typical signs of anemia, icterus (with plasma 
+bilirubin concentration >1.5- mg/dL [>6-34 micromol/L]) and 
+pigmenturia (hemoglobinuria or/and bilirubinuria), fever, hep-
+ato- and splenomegaly, and tachypnea may be present.
+Laboratory Findings
+Usually, hemolytic anemias are regenerative (polychromasia, 
+reticulocytosis [dog >60,000/mcL, cat >40,000/mcL], increased 
+numbers of nucleated RBCs, macrocytosis), although they may be 
+nonregenerative during the acute phase, i.e., approximately the rst 
+3 days. Cats have  types of reticulocytes: punctate (-10 granules) 
+and aggregated reticulocytes. e aggregated reticulocytes corre-
+spond to canine reticulocytes (ch. 57). Aggregated reticulocytes 
+become punctate reticulocytes aer about 1 hours, and the latter 
+circulate over a period of -3 weeks and therefore do not allow 
+any assessment regarding the current activity of erythropoiesis.
+Punctate reticulocytes can also be found in healthy non-anemic 
+cats. Aggregated reticulocytes represent polychromatophilic 
+RBCs on blood smears. Hyperbilirubinemia may be present in all 
+forms of hemolysis; hepatopathy or internal hemorrhage should 
+be considered as dierential diagnoses. Plasma protein concentra-
+tions are usually normal or elevated. e osmotic fragility of the 
+RBCs is generally increased, regardless of the cause.3-6
+IMMUNE-MEDIATED HEMOLYTIC ANEMIA (IMHA)
+IMHA is the most common form of hemolytic anemia. In IMHA, 
+antibodies to the patient’s own RBCs shorten RBC life span. 
+e antibodies result from immune dysregulation or cross-
+reactivity and can be directed against normal (non-associative, 
+primary, or cryptogenic IMHA, autoimmune hemolytic ane-
+mia) or altered RBC membranes (associative [secondary] IMHA 
+CHAPTER 174
+ACRONYMS
+ANA antinuclear antibody
+aPTT activated partial 
+thromboplastin time
+ATP adenosine triphosphate
+CRP C-reactive protein
+DAT direct antiglobulin test
+DIC disseminated intravas-
+cular coagulation
+DPG diphosphoglycerate
+GI gastrointestinal
+Hb hemoglobin
+Hct hematocrit
+IMHA immune-mediated 
+hemolytic anemia
+IV intravenous
+LMWH low molecular 
+weight heparin
+MCV mean corpuscular 
+volume
+Met-Hb methemoglobin
+MMF mycophenolate mofetil
+NI neonatal isoerythrolysis
+NSAID nonsteroidal anti-
+inflammatory drug
+OF osmotic fragility
+PCV packed cell volume
+PFK phosphofructokinase
+PK pyruvate kinase
+PT prothrombin time
+RBC red blood cell
+SAT saline agglutination test
+SLE systemic lupus erythe-
+matosus
+WBC white blood cell
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 3 Videos and 1 Client Information Sheet.
+
+SECTION X
+•
+Hematologic and Immunologic Disease
+884
+eBooks.Health.Elsevier.com
+TABLE 174.1
+Documented Causes of Hemolytic Anemia in Dogs and Cats
+CAUSES
+SPECIES
+Immune-Mediated
+Non-associative (primary)7 10-20
+D > C
+Associative (secondary)11 12 18
+Infectious agents dog: 11 12 22 23
+Babesia gibsonia, B. canisb, B. vogelib , Anaplasma phagocytophilumb, A. platysb, Ehrlichia canisc, 
+Bartonella vinsoniic, Leishmania infantumc, Dirofilaria immitisc
+D
+Infectious agents cat: 12 24
+Babesia felisb, Mycoplasma haemofelisa, Candidatus Mycoplasma haemominutumb, Candidatus
+Mycoplasma turicensisc, FeLV/ FIVb/c, feline coronavirus (FIP)c, Leishmania infantumc
+C
+Neoplasia: 12 25
+Lymphoma/leukemia (Dc, Cb), leiomyosarcomaND (D)
+D, C
+Drugs: 12 26
+Cefazedonea, sulfonamidea, phenobarbitalb, propylthiouracila
+D, C
+Snake evenomation ND 27
+D
+Inflammatory diseases: 12
+Pancreatitis (Cb, Dc), cholangiohepatitisb(C) , prostatitisND(D), abscessND(D, C), discospondylitisND (D, 
+C), pyometraND(D), pyelonephritisND (D, C)c
+D, C
+Vaccinec 28
+D
+Pregnancy ND 29,30
+D, C
+Alloantibodies
+Neonatal isoerythrolysis (C, D)58,59
+Blood type incompatibility (C, D)
+C > D
+Infectious diseases
+Babesiosis (D, C), cytauxzoonosis (C), hemoplasmosis (C, D), leptospirosis (D), dirofilariasis (D, C), 
+FeLV/FIV infection (C), FIP (C), sepsis (D, C)24
+D, C
+Hereditary
+Erythroenzymopathies
+Pyruvate kinase deficiency-
+Phosphofructokinase deficiency,
+Cytochrome b reductase deficiency
+Porphyria
+C > D
+D
+C, D
+C, D
+Membrane abnormalities
+Increased osmotic fragility,,
+Spectrin deficiency
+Stomatocytosis
+Spherocytosis
+C
+D
+D
+D
+Heinz body anemia/
+eccentrocytes
+Acetaminophen (C, D), phenazopyridine (C), repeated use of propofol (C), vitamin K overdosage (D),
+methylene blue (C, D), benzocaine (C, D), phenylhydrazine (D), onions (C, D), garlic (D), broccoli 
+(D), propylene glycol (C), naphthalene (D), skunk musk (D), diabetes mellitus (C), hyperthyroidism 
+(C), lymphoma (C), hepatic lipidosis (C)72-74
+C > D
+Toxins
+Snake venom (D), bee sting (D), zinc (D), copper (D)27,75,76
+D, C
+Traumatic
+RBC fragmentation, osmotic lysis
+Splenic torsion (D), disseminated intravascular coagulopathy (D, C), dirofilariasis (D, C), heatstroke 
+skin burns (D, C), hemolytic uremic syndrome (D), water intoxication/drowning (D, C)79-81
+D, C
+Metabolic
+Hypophosphatemia (diabetes mellitus, refeeding syndrome)82
+D, C
+aHigh evidence; bintermediate evidence; clow evidence for triggering a secondary (associative) immune-mediated hemolytic anemia; ND, no data about evidence level
+available.
+C, Cat; D, dog; FeLV, feline leukemia virus; FIP, feline infectious peritonitis; FIV, feline immunodeficiency virus; RBC, red blood cell.
+with comorbidities). Non-associative IMHA occurs in dogs of 
+all ages (median age 5-7 years), but is more common in certain 
+breeds, e.g., Cocker Spaniels, Irish Setters, Dachshunds, Poodles, 
+Springer Spaniels, Bearded Collies, Old English Sheepdogs, and is 
+somewhat more common in female dogs.7-19 A sex or breed pre-
+disposition has not been reported in cats; in one study, 1 of 19 
+cats were <3 years of age.0 Non-associative IMHA is diagnosed 
+by excluding possible underlying causes (diagnosis of exclusion). 
+Genetic factors (breed) and triggers (estrus, stress) may play a 
+role.1 In associative IMHA, a stimulus for antibody production 
+or a comorbidity is present. Possible causes of secondary IMHA 
+are listed in Table 174.1.11,1,18,-30 IMHA can also occur in the 
+context of systemic lupus erythematosus (SLE) (ch. 179). In about 
+one-third of dogs, IMHA is accompanied by immune-mediated 
+thrombocytopenia (ITP) (so-called Evans’ syndrome; ch. 175).11
+Pathophysiology
+e following mechanisms can be involved in the immune-
+mediated destruction of RBCs: a) autoagglutinins (IgM or IgG 
+in high levels; agglutinate RBCs in 0.9% saline), b) hemolysins 
+(IgM, IgG), and c) so-called incomplete warm antibodies (IgG, 
+less frequently IgM, complement), which agglutinate only aer 

@@ -1,0 +1,203 @@
+===== BSAVA PDF 403 / impressa 387 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+387
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in cases of intestinal obstruction 
+or where enterotomy or enterectomy is to be performed.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+Dogs: All uses: 1.5 g p.o. q24h (dogs <5 kg); 3 g p.o. q12–24h (5–15 
+kg); 4 g p.o. q12–24h (>15 kg). Sprinkle over feed or place on tongue.
+Cats: All uses: Kittens: 1 capsule q24h. Adults: 1 capsule q12h.
+Succinylcholine see Suxamethonium
+Sucralfate
+(Antepsin*, Antepsin suspension*, Carafate*) 
+POM 
+Formulations: Oral: 1 g tablet; 0.2 g/ml suspension.
+Action: In an acidic medium an aluminium ion detaches from the 
+compound, leaving a very polar, relatively non-absorbable ion. This 
+ion then binds to proteinaceous exudates in the upper GI tract, 
+forming a chemical diffusion barrier over ulcer sites, preventing 
+further erosion from acid, pepsin and bile salts. However, its major 
+action appears to relate to stimulation of mucosal defences and 
+repair mechanisms (stimulation of bicarbonate and PGE production 
+and binding of epidermal growth factor). These effects are seen at 
+neutral pH.
+Use:
+• Treatment of oesophageal, gastric and duodenal ulceration.
+• The efficacy of sucralfate as a phosphate binder in renal failure is 
+uncertain.
+Can be used alongside an H2 receptor antagonist or proton-pump 
+inhibitor but should be given separately.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Perforated ulcer.
+Adverse reactions: Minimal; constipation is the main problem in 
+humans. Bezoar formation and hypophosphataemia are also 
+reported in humans.
+Drug interactions: Sucralfate may decrease the bioavailability of 
+H2 antagonists, phenytoin and tetracyclines. It may be a wise 
+precaution to administer sucralfate at least 2 hours before or after 
+these drugs. Sucralfate interferes significantly with the absorption of 
+fluoroquinolones and digoxin.
+
+===== BSAVA PDF 404 / impressa 388 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+388
+DOSES
+Dogs: All uses: 500 mg/dog p.o. q6–8h (dogs up to 20 kg); 1–2 g/
+dog p.o. q6–8h (>20 kg).
+Cats: All uses: 250 mg/cat p.o. q8–12h. 
+References
+Bazelle J, Threlfall A and Whitley N (2018) Gastroprotectants in small animal veterinary 
+practice – a review of the evidence. Part 1: cyto-protective drugs. Journal of Small 
+Animal Practice  59, 587–602
+Marks SL, Kook PH, Papich MG et al . (2018) ACVIM consensus statement: support for 
+rational administration of gastrointestinal protectants to dogs and cats. Journal of 
+Veterinary Internal Medicine  32, 1823–1840
+Sulfasalazine
+(Salazopyrin*, Sulphasalazine*) POM 
+Formulations: Oral: 500 mg tablet; 250 mg/5 ml oral suspension.
+Action: Sulfasalazine is a prodrug: a diazo bond binding 
+sulfapyridine to 5-ASA is cleaved by colonic bacteria to release free 
+5-ASA, which acts locally in high concentrations in the colon as an 
+anti-inflammatory.
+Use: Used in the management of colitis. There is a significant risk of 
+keratoconjunctivitis sicca and periodic Schirmer tear tests should be 
+performed.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Dobermanns appear to be sensitive to 
+adverse effects associated with sulfapyridine.
+Adverse reactions: Uncommon but include keratoconjunctivitis 
+sicca (KCS), vomiting, allergic dermatitis and cholestatic jaundice. 
+Owners should be made aware of the seriousness of KCS and what 
+signs to monitor. The cause of the KCS is not clear. Historically 
+sulfapyridine has been blamed. Olsalazine has been recommended 
+as the incidence of KCS is less with its use, although not completely 
+abolished. It is possible that 5-ASA may sometimes be responsible.
+Drug interactions: The absorption of digoxin may be inhibited by 
+sulfasalazine, and the measurement of serum folate concentration 
+may be affected. Sulfasalazine may cause a reduction in serum 
+thyroxine concentrations.
+DOSES
+Dogs: All uses: 15–30 mg/kg p.o. q8–12h, maximum 6 g/day.
+Cats: All uses: 10–20 mg/kg p.o. q8–12h.
+Sulphonamide see Trimethoprim/
+sulphonamide 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 405 / impressa 389 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+389
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Suxamethonium (Succinylcholine)
+(Suxamethonium*) POM 
+Formulations: Injectable: 50 mg/ml solution.
+Action: Competitively binds to the nicotinic acetylcholine receptor. 
+The persistent depolarization prevents the transmission of further 
+action potentials, resulting in muscle relaxation.
+Use:
+• Used to facilitate intubation in cats.
+There are no indications for suxamethonium in dogs. Suxamethonium 
+has a very rapid onset of action (5–15 seconds) and short duration of 
+action (3–5 minutes). However, use of neuromuscular blockade to 
+facilitate intubation is rarely required in small animals and 
+suxamethonium has been largely replaced by non-depolarizing drugs. 
+Use with caution in patients with hepatic disease.
+Safety and handling: Store in refrigerator.
+Contraindications: Do not administer unless the animal is 
+adequately anaesthetized and facilities to provide positive pressure 
+ventilation are available. Do not use in animals exposed to 
+organophosphate compounds.
+Adverse reactions: Can cause arrhythmias (sinus bradycardia, 
+ventricular arrhythmias) via stimulation of muscarinic receptors in 
+the sinus node. A small rise in potassium concentration is expected 
+after suxamethonium; patients with burns and neuromuscular 
+disorders are at severe risk of hyperkalaemia.
+Drug interactions: The actions of suxamethonium may be 
+enhanced by beta-adrenergic blockers (e.g. propranolol), 
+furosemide, isoflurane, lidocaine, magnesium salts and 
+phenothiazines. Diazepam may reduce the duration of action of 
+suxamethonium. Neostigmine and pyridostigmine should not be 
+administered with suxamethonium as they inhibit 
+pseudocholinesterases, thereby enhancing suxamethonium’s effect.
+DOSES
+Dogs: Do not use.
+Cats: 1.0 mg/kg i.v. A total dose of 3.5 mg is satisfactory in cats  
+>3.5 kg.

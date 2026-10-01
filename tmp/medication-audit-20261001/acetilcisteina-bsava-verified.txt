@@ -1,0 +1,218 @@
+===== BSAVA PDF 19 / impressa 3 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+3
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Acetylcysteine
+(Ilube*, Parvolex*) POM
+Formulations: Injectable: 200 mg/ml solution. Topical: 5% 
+ophthalmic solution in combination with 0.35% hypromellose 
+ophthalmic drops in 10 ml bottle.
+Action: Decreases the viscosity of bronchial secretions, maintains 
+glutathione levels in the liver and has some anticollagenase activity.
+Use: Reduces the extent of liver injury in cases of paracetamol 
+poisoning and other forms of liver toxicity involving oxidative 
+damage or impaired glutathione synthesis (e.g. xylitol poisoning).
+• Has been used in non-specific acute hepatopathies of suspected 
+toxic origin.
+• Can also be used as a mucolytic in respiratory disease.
+• Acetylcysteine may be useful in the treatment of 
+keratoconjunctivitis sicca (KCS) (dry eye), or in ‘melting’ corneal 
+ulcers although there is limited in vivo  work to confirm this.
+Oral solution should be diluted to a 5% solution and given via a 
+stomach tube as it tastes unpleasant. In the eye it may be used in 
+conjunction with hypromellose.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Acetylcysteine has caused hypersensitivity 
+and bronchospasm when used in the pulmonary tree (use with care 
+in bronchospastic respiratory disease, e.g. feline asthma). When 
+given orally for paracetamol poisoning it may cause GI effects 
+(nausea, vomiting) and, rarely, urticaria.
+Drug interactions: In cases of paracetamol poisoning, the 
+concurrent administration of activated charcoal is controversial as it 
+may also reduce acetylcysteine absorption.
+DOSES
+Dogs, Cats:
+• Mucolytic: either nebulize 50 mg as a 2% (dilute with saline) 
+solution over 30–60 min or instil directly into the trachea  
+1–2 ml of a 20% solution.
+• Paracetamol poisoning:  (after inducing emesis if appropriate, 
+i.e. presented within 2 hours of ingestion) give 140–280 mg/kg 
+diluted to a 5% solution using 5% dextrose by slow i.v. infusion 
+over 15–20 min, followed by further slow infusions of 70 mg/kg 
+(similarly diluted) every 6 hours for at least 7 doses, depending 
+on dose of paracetamol consumed (seek advice from a poisons 
+information service). The intravenous solution can be 
+administered orally but should be diluted to improve palatability; 
+however, i.v. administration is preferred for serious intoxications 
+as bioavailability is reduced with oral administration in cats.
+• KCS: 1 drop of the ophthalmic solution topically to the eye 
+q6–8h. Rarely used now for this indication.
+
+===== BSAVA PDF 20 / impressa 4 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+4
+• Melting corneal ulcers: 1 drop of the ophthalmic solution q1–4h 
+in the affected eye for 24–48 hours. Topical autologous serum 
+is more effective for the treatment of a melting corneal ulcer 
+and is preferred. 
+References
+Dunayer EK (2006) New Findings on the effects of xylitol ingestion in dogs. Veterinary 
+Medicine 101, 791–796
+Richardson JA (2000) Management of acetaminophen and ibuprofen toxicoses in dogs 
+and cats. Journal of Veterinary Emergency and Critical Care  10, 285–291
+Acetylsalicyclic acid see Aspirin
+Aciclovir
+(Zovirax*) POM
+Formulations: Ophthalmic: 3% ointment in 4.5 g tubes. 
+Action: Inhibits viral replication (viral DNA polymerase); depends 
+on viral thymidine kinase for phosphorylation.
+Use:
+• Management of ocular feline herpesvirus-1 (FHV-1) infections.
+The clinical efficacy of aciclovir is questionable but frequent 
+application (0.5% ointment 5 times daily) may achieve corneal 
+concentrations. Aciclovir is virostatic and is unable to eradicate 
+latent viral infection. Consider ganciclovir and famciclovir before 
+aciclovir. In refractory and severe cases of FHV-1 ulceration, 
+combined therapy including antiviral medication can be used.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available for the ophthalmic 
+preparation. Systemic aciclovir is toxic in cats.
+Adverse reactions: Ocular irritation may occur and the frequency 
+of application should be reduced if this develops. Treatment should 
+not be continued for >3 weeks.
+Drug interactions: No information available.
+DOSES
+Dogs: Not applicable.
+Cats: Apply a small amount to affected eye 5 times daily for a 
+maximum of 3 weeks.
+References
+Thomasy SM and Maggs DJ (2016) A review of antiviral drugs and other compounds with 
+activity against feline herpesvirus type 1. Veterinary Ophthalmology  19, 119–130
+ACP see Acepromazine
+ACTH see Tetracosactide
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 21 / impressa 5 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+5
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Actinomycin-D see Dactinomycin
+Activated charcoal see Charcoal
+ADH see Desmopressin
+Adrenaline (Epinephrine)
+(Adrenaline*, Epinephrine*) POM 
+Formulations: Injectable: Range of concentrations for injection: 
+0.1–10 mg/ml, equivalent to 1:10,000 to 1:100.
+Action: Adrenaline exerts its effects via alpha-1, -2 and beta-1 and 
+-2 adrenoreceptors.
+Use:
+• Cardiac resuscitation, status asthmaticus and to offset the effects 
+of histamine release in severe anaphylactoid reactions.
+• The ophthalmic preparation is used in open-angle glaucoma. 
+The effects of adrenaline vary according to dose. Infusions of low 
+doses mainly result in beta-adrenergic effects (increases in cardiac 
+output, myocardial oxygen consumption, and a reduced threshold for 
+arrhythmias with peripheral vasodilation and a fall in diastolic blood 
+pressure). At high doses alpha-1 effects predominate, causing a rise in 
+systemic vascular resistance, diverting blood to the central organs; 
+however, this may improve cardiac output and blood flow. Adrenaline 
+is not a substitute for fluid replacement therapy. Respiratory effects 
+include bronchodilation and an increase in pulmonary vascular 
+resistance. Renal blood flow is moderately decreased. The duration of 
+action of adrenaline is short (2–5 min). Beware of using in animals 
+with diabetes mellitus (monitor blood glucose concentration), 
+hypertension or hyperthyroidism. Use with caution in hypovolaemic 
+animals. Overdosage can be fatal so check dose, particularly in small 
+patients. Intracardiac injection is not recommended.
+Safety and handling: Do not confuse adrenaline vials of different 
+concentrations. Adrenaline is sensitive to light and air: do not use if it 
+is pink, brown or contains a precipitate. It is unstable in 5% dextrose.
+Contraindications: The use of human adrenaline pen injections 
+is not recommended for the treatment of suspected anaphylaxis. 
+The doses in such pens are usually too small to be effective in most 
+normal animals and by the time the dog has collapsed would be 
+unlikely to have any effect on outcome. If such pen injections are 
+administered by owners, then, in common with medical practice, 
+patients must be carefully monitored for at least 6 hours. Do not 
+administer adrenaline directly into the myocardium because of the 
+risk of arrhythmias.
+Adverse reactions: Increases myocardial oxygen demand and 
+produces arrhythmias including ventricular fibrillation. These may be 
+ameliorated by administering oxygen and slowing the heart rate with 
+beta-2 antagonists. Other adverse effects include tachycardia, 

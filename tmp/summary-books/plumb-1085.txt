@@ -1,0 +1,252 @@
+1058      PrednisoLONE/Prednisone/ PrednisoLONE Sodium Succinate
+is not necessarily contraindicated, but the potential risks should be 
+weighed and additional monitoring performed when appropriate.
+	■Angiotensin-Converting Enzyme Inhibitors (ACEIs; eg, 
+benazepril, enalapril): May increase risk for hypotension
+	■Amlodipine: May increase risk for hypotension
+	■Beta-Blocking Agents (eg, propranolol): May enhance the 
+postural hypotensive effects seen after the first dose of prazosin
+	■Clonidine: May decrease prazosin antihypertensive effects
+	■Pentoxifylline: May increase risk for hypotension
+	■Phosphodiesterase Inhibitors (eg, sildenafil): May increase 
+risk for hypotension
+	■Telmisartan: May increase risk for hypotension
+	■Vasopressors (eg, dopamine, norepinephrine): Prazosin may 
+reduce dopamine pressor effect.
+	■Verapamil: May cause synergistic hypotensive effects when 
+used concomitantly with prazosin
+Laboratory Considerations
+None noted
+Dosages
+DOGS:
+Decrease urethral resistance in idiopathic vesico-urethral re-
+flex dyssynergia (VURD; extra-label): 
+a)	0.5 mg/kg PO twice daily. If adverse effects develop, decrease 
+the dose by 50%. Moderate to good effect was noted in 60% of 
+the dogs treated.13 
+b)	Anecdotally, 1 mg/15 kg (33 lb) PO 2 to 3 times daily
+Dysuria in patients with prostatic carcinoma (extra-label): 
+From a case report, 0.1 – 0.4 mg/kg PO daily was helpful in man-
+aging dysuria associated with prostatic carcinoma.1
+Systemic hypertension (extra-label): 
+a)	Weight-based dosage: 0.5 – 2 mg/kg PO every 8 to 12 hours7
+b)	Dosage per dog: 0.5 – 2 mg/dog (NOT mg/kg) PO every 8 to 
+12 hours14,15
+Adjunctive treatment of heart failure (extra-label): 1 mg/dog 
+(NOT mg/kg) PO 3 times daily for dogs weighing less than 15 kg 
+(33 lb); 2 mg/dog (NOT mg/kg) 3 times daily PO for dogs weigh-
+ing more than 15 kg (33 lb)16,17
+CATS:
+Decreasing urethral resistance with functional urethral ob-
+struction (extra-label): Use is controversial, and efficacy has been 
+questioned.2,6 Several dosages have been suggested, but most 
+commonly 0.25 – 1 mg/cat (NOT mg/kg) PO every 12 hours for 
+1 to 2 weeks4–6
+Hypertension (extra-label): 0.25 – 0.5 mg/cat (NOT mg/kg) PO 
+once daily7
+Monitoring
+	■Clinical efficacy
+	■Baseline and periodic blood pressure
+	■Mucous membrane color, capillary refill time (CRT), pulse 
+­oximetry
+Client Information
+	■This medicine may be given with or without food. If your animal 
+vomits, stops eating, or acts sick after getting prazosin on an emp-
+ty stomach, give the medicine with food or a small treat to see if 
+this helps. If vomiting continues, contact your veterinarian.
+	■The most common side effect with this medicine is lethargy 
+(tiredness/lack of energy).
+Chemistry/Synonyms
+Prazosin HCl, a quinazoline-derivative postsynaptic alpha-1-adren-
+ergic blocker, occurs as a white to tan powder. It is slightly soluble 
+in water and very slightly soluble in alcohol. Dosage forms contain 
+prazosin HCl, but potency and dosage are expressed (and calculated) 
+as prazosin base.
+Prazosin may also be known as CP-12299-1, furazosin hydrochlo-
+ride, prazosini hydrochloridum; many trade names are available.
+Storage/Stability
+Prazosin capsules should be stored in well-closed containers and 
+protected from light and moisture at room temperature (20°C-25°C 
+[68°F-77°F]).
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula-
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+HUMAN-LABELED PRODUCTS:
+Prazosin Capsules: 1 mg, 2 mg, and 5 mg (as base); Minipress®, 
+generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+PrednisoLONE/Prednisone/ 
+PrednisoLONE Sodium Succinate
+(pred-niss-oh-lone; pred-ni-zone)
+Glucocorticoid
+For more information, see Glucocorticoid Agents, General Infor-
+mation and Trimeprazine/Prednisolone
+NOTE: Prednisone and prednisoLONE are distinct drugs. This 
+monograph uses TALL man letters to differentiate prednisoLONE 
+from prednisone. They are often considered bioequivalent as most 
+species rapidly convert prednisone to its active form, prednisolone, in 
+the liver; however, horses, cats, and animals that have severe hepatic 
+failure may not efficiently absorb or convert prednisone to prednis-
+oLONE. PrednisoLONE or an alternative glucocorticoid should be 
+used for these animals when possible. 
+Prescriber Highlights
+	
+▶Used to treat many conditions in a variety of species.  
+	
+▶Prednisone’s anti-inflammatory activity is 4 times more po-
+tent than hydrocortisone and it has some mineralocorticoid 
+­activity.
+	
+▶Contraindications (relative) include systemic fungal infections. 
+Increased risk of GI ulceration when used concurrently with 
+NSAIDS or aspirin.     
+	
+▶Caution is advised for use in animals with an active bacterial 
+infection, corneal ulcer, hyperadrenocorticism, diabetes melli-
+tus, osteoporosis, chronic psychotic reactions, predisposition 
+to thrombophlebitis, hypertension, congestive heart failure, 
+and renal insufficiency.
+	
+▶Goal of therapy should be to use the lowest dose possible 
+for the least amount of time to treat and control patient’s 
+­condition.
+	
+▶PrednisoLONE is recommended for use in cats and horses 
+because of the poor bioavailability of prednisone.
+	
+▶Primary adverse effects are related to iatrogenic hyperadreno-
+corticism with sustained use.
+	
+▶Many potential drug and laboratory interactions
+
+PrednisoLONE/Prednisone/PrednisoLONE Sodium Succinate       1059
+Uses/Indications
+Although glucocorticoids have been used to treat many conditions 
+in humans and animals, prednisoLONE and prednisone have 4 pri-
+mary uses with accompanying dosage ranges: 1) replacement or 
+supplementation (eg, relative adrenal insufficiency associated with 
+septic shock) for glucocorticoid deficiency secondary to hypoadre-
+nocorticism, 2) anti-inflammatory agent, 3) immunosuppression, 
+and 4) antineoplastic agent. 
+Glucocorticoids are used in the treatment of endocrine condi-
+tions (eg, adrenal insufficiency), autoimmune and immune-medi-
+ated diseases (eg, rheumatoid arthritis, systemic lupus, masticatory 
+myositis), severe allergic conditions, anaphylaxis, envenomation, re-
+spiratory diseases (eg, asthma), dermatologic diseases (eg, pemphi-
+gus, allergic dermatoses), hematologic disorders (eg, thrombocyto-
+penia, autoimmune hemolytic anemia), neoplasias, nervous system 
+disorders (eg, increased CSF pressure), GI diseases (eg, ulcerative 
+colitis exacerbations, inflammatory bowel disease), renal diseases 
+(eg, nephrotic syndrome), and induction of fetal maturation. Some 
+glucocorticoids are used topically on the eye and skin or are injected 
+intra-articularly or intralesionally. This list is not exhaustive. High-
+dose use is not supported for hemorrhagic or hypovolemic shock, 
+head trauma, spinal cord trauma,1 or sepsis.
+In general, when administering glucocorticoids, the following 
+principles should be followed:
+	■A specific diagnosis is ideally obtained before glucocorticoids are 
+administered as they can mask disease.
+	■A course of treatment should be determined prior to treatment.
+	■A therapeutic endpoint should be determined prior to treatment.
+	■The least potent glucocorticoid should be used at the lowest dose 
+for a minimal amount of time.
+	■It is important to understand when glucocorticoid use is inappro-
+priate (eg, acute infection, diabetes).2
+Pharmacology/Actions
+PrednisoLONE and prednisone are intermediate-acting corticoste-
+roids with biologic half-lives of 12 to 36 hours. Glucocorticoids have 
+effects on almost every cell type and system in mammals. 
+Cardiovascular system: Glucocorticoids can reduce capillary per-
+meability and enhance vasoconstriction. A clinically insignificant 
+positive inotropic effect can occur after glucocorticoid administra-
+tion. This drug’s vasoconstrictive properties and increased blood 
+volume can result in increased blood pressure.
+Cells: Glucocorticoids can inhibit fibroblast proliferation, macro-
+phage response to migration inhibiting factor, sensitization of lym-
+phocytes, and the cellular response to mediators of inflammation; 
+they can also stabilize lysosomal membranes.
+CNS/autonomic nervous system: Glucocorticoids can lower the 
+seizure threshold, alter mood and behavior, diminish response to 
+pyrogens, stimulate appetite, and maintain alpha rhythm. Glucocor-
+ticoids are necessary for normal adrenergic receptor sensitivity.
+Endocrine system: When an animal is not stressed, glucocorticoids 
+suppress the release of corticotropin (adrenocorticotropic hormone 
+[ACTH]) from the anterior pituitary, which reduces or prevents the 
+release of endogenous corticosteroids. Stress factors (eg, renal dis-
+ease, liver disease, diabetes) may occasionally nullify the suppress-
+ing aspects of exogenously administered steroids. The release of 
+thyroid-stimulating hormone (TSH), follicle-stimulating hormone 
+(FSH), prolactin, and luteinizing hormone may be reduced when 
+glucocorticoids are administered at pharmacologic doses. Conver-
+sion of thyroxine (T4) to triiodothyronine (T3) may be reduced by 
+glucocorticoids, and plasma levels of parathyroid hormone may be 
+increased. Glucocorticoids may inhibit osteoblast function. Vaso-
+pressin (antidiuretic hormone [ADH]) activity is reduced at the re-
+nal tubules and diuresis may occur. Glucocorticoids inhibit insulin 
+binding to insulin-receptors and the post-receptor effects of insulin.
+Fluid and electrolyte balance: Glucocorticoids can increase renal 
+potassium and calcium excretion, sodium and chloride reabsorp-
+tion, and extracellular fluid volume. Hypokalemia and/or hypocal-
+cemia rarely occur. Diuresis may develop following glucocorticoid 
+administration.
+GI tract and hepatic system: Glucocorticoids increase the secretion 
+of gastric acid, pepsin, and trypsin. They alter the structure of mucin 
+and decrease mucosal cell proliferation. Iron salts and calcium ab-
+sorption are decreased, whereas fat absorption is increased. Hepatic 
+changes can include increased fat and glycogen deposits in hepato-
+cytes and increased serum levels of ALT and gamma-glutamyl tran-
+speptidase (GGT). Significant increases can be seen in serum ALP 
+levels. Glucocorticoids can cause minor increases in bromosulfoph-
+thalein (BSP) retention time.
+Hematopoietic system: Glucocorticoids can increase the number of 
+circulating platelets, neutrophils, and RBCs, but platelet aggregation 
+is inhibited. Decreased amounts of lymphocytes (peripheral), mono-
+cytes, and eosinophils are seen because glucocorticoids can seques-
+ter these cells into the lungs and spleen and can prompt decreased re-
+lease from bone marrow; removal of old RBCs becomes diminished. 
+Glucocorticoids can cause involution of lymphoid tissue.
+Immune system (also see Cells and Hematopoietic system): Gluco-
+corticoids can decrease circulating levels of T-lymphocytes; inhibit 
+lymphokines; inhibit neutrophil, macrophage, and monocyte mi-
+gration; reduce production of interferon; and inhibit phagocytosis, 
+chemotaxis, antigen processing, and intracellular killing. Specific ac-
+quired immunity is affected less than nonspecific immune respons-
+es. Glucocorticoids can also antagonize the complement cascade and 
+mask the clinical signs of infection. Mast cells are decreased in num-
+ber and histamine synthesis is suppressed. Many of these effects only 
+occur at high doses and species have different responses.
+Metabolic effects: Glucocorticoids stimulate gluconeogenesis. Lipo-
+genesis is enhanced in certain areas of the body (eg, abdomen), and 
+adipose tissue can be redistributed away from the extremities to the 
+trunk. Fatty acids are mobilized from tissues and their oxidation is 
+increased. Plasma levels of triglycerides, cholesterol, and glycerol are 
+increased. Protein is mobilized from most areas of the body (not the 
+liver).
+Musculoskeletal: Glucocorticoids may cause muscular weakness, 
+atrophy, and osteoporosis. Bone growth can be inhibited via growth 
+hormone and somatomedin inhibition, increased calcium excretion, 
+and inhibition of vitamin D activation. Resorption of bone can be 
+enhanced. Fibrocartilage growth is also inhibited.
+Ophthalmic: Prolonged corticosteroid use (both systemic or topi-
+cally to the eye) can cause increased intraocular pressure and glau-
+coma, cataracts, and exophthalmos.
+Skin: Thinning of dermal tissue and skin atrophy can be seen with 
+glucocorticoid therapy. Hair follicles can become distended and al-
+opecia may occur.
+Pharmacokinetics
+Prednisone is a prodrug and requires hepatic bioactivation.
+In cats, prednisoLONE has a higher bioavailability when adminis-
+tered orally as compared with prednisone.3 Reported bioavailabilities 
+(of active prednisoLONE) are 100% and 21%, respectively. Although 
+it is not clear if this is due to decreased GI absorption or decreased 
+hepatic conversion of prednisone to prednisoLONE, oral predniso-
+LONE is the superior choice in cats.3,4 In a study, overconditioned 
+cats had significantly higher plasma prednisoLONE concentrations 
+(2 times) as compared with normal-conditioned cats.5

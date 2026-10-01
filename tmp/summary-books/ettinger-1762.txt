@@ -1,0 +1,270 @@
+SECTION XV
+•
+Neurologic Disease
+1610
+eBooks.Health.Elsevier.com
+segmental spinal reexes, and hypoventilation.20,22 Pelvic limb ataxia 
+may also be a prominent clinical sign in some cases. Cranial nerve 
+signs such as ptyalism, dysphagia, dysphonia, and facial paresis or 
+paralysis are frequently observed.16,21 Urine discoloration due to 
+hemoglobinuria or myoglobinuria (ch. 70) is seen in a substantial 
+proportion of dogs and less frequently in cats.24 is is helpful in diag-
+nosis, as it is not a feature of other diuse LMN diseases.22,24 Other 
+clinical signs may include vomiting, depression, hypotension, hypo-
+thermia, bleeding disorders, and ventricular arrhythmias.17,22,24,25 A 
+complete blood count (CBC) may reveal anemia with spherocytosis 
+and erythrocyte “burring.”26 e diagnosis of elapid snake envenom-
+ation is typically presumptive based on clinical signs and history.
+Treatment is mainly supportive. Placing a pressure bandage 
+at the site of envenomation can reduce lymphatic circulation of 
+venom.22 Fluid diuresis should be considered if pigmenturia is 
+present. Administration of snake-specic antivenin may be bene-
+cial in preventing or reducing the severity of clinical signs. Tiger 
+snake and Mexican coral snake antivenins are cross-protective 
+against North American coral snake venom.16,27,28 Most animals 
+will recover in 1-2 weeks with adequate supportive care.24,26,29
+POSTSYNAPTIC DISEASES OF THE 
+NEUROMUSCULAR JUNCTION
+TERMINOLOGY AND MYASTHENIA GRAVIS
+Historically, veterinary texts have discussed acquired and con-
+genital forms of myasthenia gravis (MG). However, the term 
+congenital MG has been recently discarded in favor of congeni-
+tal myasthenic syndrome (CMS), where MG is now reserved for 
+conditions of autoimmunity against the NMJ.30 is shi closely 
+follows the human classication of these diseases, where MG is 
+also used only in the context of autoimmunity.
+MYASTHENIA GRAVIS
+Pathophysiology
+MG is an yacquired autoimmune disorder characterized by autoanti-
+bodies produced against nicotinic AChR on the postsynaptic muscle 
+terminal.30-32 ese autoantibodies lead to destruction of the AChR, 
+reduced numbers of functional receptors, and diminished ability of 
+the muscle to respond to ACh, resulting in skeletal muscle weakness 
+that is oen exacerbated by activity. ere is a bimodal age distribu-
+tion for MG and dogs are usually aected at <4 years of age or >9 
+years of age.34 Overrepresented dog breeds include the Akita, Ger-
+man Shorthaired Pointer, Chihuahua, German Shepherd Dog, and 
+Golden Retriever.32,35 Familial predispositions for MG have been 
+identied in the Newfoundland and Great Dane breeds.36,37 In cats, 
+Abyssinian and Somali breeds are overrepresented.38,39
+Forms of Myasthenia Gravis
+Generalized, focal and severe fulminant forms of the disease 
+exist.40 e generalized form, characterized by diuse appendicu-
+lar muscle weakness, is most common. Patients with generalized 
+MG oen have a normal neurologic examination at rest. Dur-
+ing a bout of activity-induced weakness, they will demonstrate a 
+choppy, stilted gait that is rst noted in the pelvic limbs. If encour-
+aged to continue activity, thoracic limb involvement becomes 
+apparent. Some animals demonstrate a fatigable palpebral reex, 
+although this is not a reliable nding. Segmental spinal reexes 
+are typically normal. Signs of pharyngeal or laryngeal dysfunc-
+tion such as ptyalism (due to diculty swallowing, ch. 46), and 
+dysphonia are variably present. Megaesophagus is present in 84% 
+of dogs with generalized MG and in 40% of cats with the condi-
+tion.32,38 Ventroexion of the neck due to cervical muscle weak-
+ness occurs in both species but is more common in cats.41
+Clinical Presentation
+Animals with fulminant MG present with a rapid onset of severe 
+diuse weakness that does not improve with rest. ese patients 
+progress quickly to nonambulatory tetraparesis and lateral 
+recumbency.5 Spinal reexes (ch. 241) may be diminished.5 Fre-
+quent regurgitation associated with megaesophagus (ch. 259) is 
+typical, and the development of aspiration pneumonia (ch. 217) is 
+common. Additional signs may include respiratory muscle weak-
+ness, and urinary retention (ch. 310). e presence of thymoma 
+has been associated with the development of this severe form of 
+the disease in both dogs and cats.30,32,38,42
+Focal MG presents as weakness of an isolated muscle group or 
+groups, most commonly the ocular, facial, esophageal, pharyn-
+geal, or laryngeal muscles. Generalized appendicular weakness is 
+not observed. Presenting complaints are referable to the muscle 
+groups involved and oen include regurgitation, dysphagia, dys-
+phonia, or strabismus.30,32,40
+Several comorbid conditions have been associated with the devel-
+opment of MG in veterinary patients, including thymoma or other 
+neoplastic processes (ch. 331), hypothyroidism (chs. 285 and 286), 
+hypoadrenocorticism (ch. 296), polymyositis, and masticatory myo-
+sitis (ch. 258).32 e prevalence of concurrent thymoma is 3.4% in 
+dogs and as high as 52% in cats.32,39 In hyperthyroid cats (ch. 287), 
+an association between MG and initiation of methimazole treatment 
+has also been reported in a small cohort of animals, where the condi-
+tion resolved once the medication was discontinued.38
+Diagnosis
+A CBC may be normal in animals with MG, or may show evi-
+dence of inammation when concurrent aspiration pneumonia is 
+present. A serum biochemistry prole is helpful to exclude meta-
+bolic causes of neuromuscular weakness. oracic radiography or 
+computed tomography is useful to evaluate for thymoma or other 
+neoplasms, and to screen for aspiration pneumonia. Abdominal 
+ultrasound can assist in ruling out paraneoplastic causes.
+e gold standard for diagnosis of generalized MG in dogs 
+and cats is demonstration of anti-AChR autoantibodies in serum: 
+measurement of species-specic anti-AChR autoantibodies will 
+detect approximately 98% of canine cases.43 Positive antibody 
+titers are also reported in a smaller percentage of dogs with focal 
+MG. Antibody levels are highly variable between patients and 
+do not correlate with clinical severity; however, within patients, 
+a decrease in antibodies correlates with improvement in clinical 
+signs and can be followed to assess remission of disease. Anti-
+body titers may be falsely negative early in disease or if cortico-
+steroids are administered prior to measurement.30 Retesting in 
+1-2 months is suggested when either scenario is suspected.30 A 
+small number of patients may have true seronegative MG reec-
+tive of autoantibodies directed against other NMJ proteins. In 
+these cases, response to anticholinesterase therapy and electrodi-
+agnostic repetitive nerve stimulation testing (ch. 111) can support 
+a diagnosis.30
+Administration of the short-acting anticholinesterase drug 
+edrophonium has been used historically as a diagnostic tool to 
+assess improvements in muscle strength, gait, or the ability to 
+swallow.34 is drug is no longer available in some countries and 
+neostigmine may be used in its place. Either drug inhibits acetyl-
+cholinesterase (AChE), allowing ACh accumulation in the NMJ, 
+thereby improving neuromuscular transmission. Animals with 
+MG will oen show improvement shortly aer receiving these 
+drugs. e eect lasts for several minutes (edrophonium) to sev-
+eral hours (neostigmine), followed by a return of signs. Improve-
+ment is not completely specic to MG, as some animals with other 
+causes of neuromuscular weakness can show improvement and 
+not all animals with MG will improve.5,40 Precipitation of a cho-
+linergic crisis is possible by overstimulation of AChR, leading to 
+
+1611
+CHAPTER 253
+•
+Neuromuscular Junction Disorders
+eBooks.Health.Elsevier.com
+signs such as worsened weakness, salivation, tremors, vomiting, 
+bradycardia, bronchoconstriction, and respiratory distress. In the 
+author’s experience, these signs are more common with neostig-
+mine than edrophonium.5 Animals should be monitored closely 
+aer administration of either drug, and atropine and equipment 
+to provide intubation and respiratory support should be available.
+Treatment and Outcome
+Long-term treatment for animals with MG consists of treatment 
+via AChE inhibitors, as well as immunosuppressive therapy to 
+reduce autoantibody production against the AChR. Anticholin-
+esterase drugs such as pyridostigmine bromide (oral) or neostig-
+mine (intramuscular) are the mainstays of supportive therapy and 
+they work by inhibiting AChE so that ACh remains within the 
+synaptic cle longer.5 ese medications must be carefully titrated 
+to eect, and neostigmine is generally used only in hospitalized 
+animals in acute crisis or with profound regurgitation. Both med-
+ications have a narrow therapeutic window, and signicant side-
+eects such as bradycardia, hypersalivation, vomiting, diarrhea, 
+muscle cramping, and weakness can occur. Clinical signs associ-
+ated with excessive anticholinergic drug administration may be 
+dicult to distinguish from those of uncontrolled MG and careful 
+monitoring is required at the time of therapy initiation.
+Immunosuppressive agents such as cyclosporine, mycopheno-
+late mofetil (MMF), and azathioprine (chs. 144 and 169) are fre-
+quently used in the treatment of MG to reduce levels of circulating 
+autoantibodies.44 45 Extrapolating from the human literature, MMF 
+was once considered the drug of choice for canine MG; however, 
+a recent study comparing dogs treated with MMF and pyridostig-
+mine to those treated with pyridostigmine alone showed no dier-
+ence in survival time or remission rate between groups.45
+Corticosteroids can also be eective in the treatment of MG, 
+but should be used with caution in animals with aspiration pneu-
+monia (ch. 227).5 Corticosteroids may potentiate muscle weak-
+ness and exacerbate clinical signs in some patients, and a gradual 
+increase in corticosteroid dose is recommended to help avoid this 
+complication. Other strategies for immunomodulation may also 
+be employed in patients with MG, including therapeutic plasma 
+exchange and intravenous administration of immune globulin 
+(IVIG).46 47 Neither technique has been thoroughly evaluated 
+for MG in a controlled veterinary study, although their utility 
+is supported by small case series and ecacy in other immune-
+mediated diseases. A long-term spontaneous remission rate as 
+high as 88% has been reported for dogs with MG; spontaneous 
+remission is not a characteristic of feline MG.32 39
+CONGENITAL MYASTHENIC SYNDROME
+CMS has been reported in a number of pure and mixed-breed dogs, 
+and cats.30 A deciency of the AChR is assumed in most breeds and 
+has been documented in Jack Russell Terriers, Springer Spaniels, and 
+Miniature Dachshunds.30 48 49 Abnormalities in ACh synthesis or 
+in AChE function have also been reported. CMS oen aects mul-
+tiple animals in the same litter and clinical signs are usually apparent 
+beginning around 6-9 weeks of age. Generalized limb and cervical 
+muscle weakness that worsen with activity are common. Megaesoph-
+agus is variably present. An autosomal recessive-mode of inheritance 
+has been demonstrated in Smooth Fox Terriers, Jack Russell Terriers, 
+and Gammel Dansk Honsehund (GDH) dogs.50 51
+Measurement of AChR autoantibodies is not useful in diagnosis 
+of CMS. A denitive diagnosis is made in some cases by quanti-
+cation of AChR in a muscle biopsy. Treatment with pyridostigmine 
+oen results in improvement; however, long-term response to anti-
+cholinesterase therapy is variable and many reports describe death or 
+euthanasia of aected animals due to diculty in controlling clinical 
+signs. Exceptions to this are CMS in Miniature Dachshunds, where 
+signs spontaneously resolved by 6 months of age, and GDHs, which 
+tend to remain stable with mild clinical signs.48 51
+OTHER
+Although not a disease of the NMJ, exercise-induced collapse (EIC) 
+of Labrador Retrievers causes fatigue and accid para- or tetraparesis 
+during or aer strenuous activity. Examination ndings are normal 
+at rest. Ataxia, pelvic limb weakness, and collapse develop in asso-
+ciation with intense or prolonged eld training, hunting, or vigorous 
+play (Video 253.1). Clinical signs may progress to involve the thoracic 
+limbs. Recovery occurs with rest, and most dogs are clinically normal 
+within 30 minutes; however, severe episodes can result in death.52-54
+e condition is heritable in Labradors, associated with an 
+autosomal recessively inherited mutation (Arg256Leu) in the gene 
+encoding for the protein dynamin 1 (DNM1). DNM1 is expressed 
+at synaptic terminal membranes within the CNS and is important 
+in the recycling of synaptic vesicles during high frequency neuro-
+logical stimulation.52 55 A collapse phenotype is also recognized 
+in Labradors and other breeds in the absence of homozygosity for 
+the DNM-1 mutation.55
+Dogs with DNM1-associated EIC (d-EIC) typically experi-
+ence their rst episode of collapse before 2 years of age.54 Loss 
+of the patellar reex is common during an episode, and dogs 
+maintain normal mental status.54 56 Hyperthermia and elevated 
+plasma lactate oen develop during an episode, but are not dis-
+tinct from what is observed in normal exercising dogs.56 Serum 
+lactate/pyruvate ratios are normal in dogs with EIC both at rest 
+and during exercise, and muscle biopsies are unremarkable.56 A 
+genetic test for the Arg256Leu DNM1 mutation is now commer-
+cially available to assist in diagnosis. While there is no cure for 
+EIC, aected dogs have an excellent prognosis if they refrain from 
+intense physical activity known to trigger episodes.56
+REFERENCES
+1. Malik R, Farrow BR. Tick paralysis in North America and Australia. Vet Clin 
+North Am Small Anim Pract. 1991;21:157-171.
+2. Padula AM, Leister EM, Webster RA. Tick paralysis in dogs and cats in 
+Australia: treatment and prevention deliverables from 100 years of research. Aust 
+Vet J. 2020;98:53-59.
+3. Schull DN, Litster AL, Atwell RB. Tick toxicity in cats caused by Ixodes species 
+in Australia: a review of published literature. J Feline Med Surg. 2007;9:487-493.
+4. Kocan AA. Tick paralysis. J Am Vet Med Assoc. 1988;192:1498-1500.
+5. Añor S. Acute lower motor neuron tetraparesis. Vet Clin North Am Small 
+Anim Pract. 2014;44:1201-1222.
+6. Ilkiw JE, Turner DM, Howlett CR. Infestation in the dog by the paralysis tick 
+Ixodes holocyclus. 1. clinical and histological ndings. Aust Vet J. 1987;64:137-139.
+7. Atwell RB, Campbell FE, Evans EA. Prospective survey of tick paralysis in 
+dogs. Aust Vet J. 2001;79:412-418.
+8. Barsanti JA, Walser M, Hatheway CL, etal. Type C botulism in American 
+Foxhounds. J Am Vet Med Assoc. 1978;172:809-813.
+9. Farrow BR, Murrell WG, Revington ML, etal. Type C botulism in young 
+dogs. Aust Vet J. 1983;60:374-377.
+10. van Nes JJ, van der Most van Spijk D. Electrophysiological evidence of 
+peripheral nerve dysfunction in six dogs with botulism type C. Res Vet Sci
+1986;40:372-376.
+11. Bruchim Y, Steinman A, Markovitz M, etal. Toxicological, bacteriological 
+and serological diagnosis of botulism in a dog. Vet Rec. 2006;158:768-769.
+12. Elad D, Yas-Natan E, Aroch I, etal. Natural Clostridium botulinum type C 
+toxicosis in a group of cats. J Clin Microbiol. 2004;42:5406-5408.
+13. Humeau Y, Doussau F, Grant NJ, etal. How botulinum and tetanus neuro-
+toxins block neurotransmitter release. Biochimie. 2000;82:427-446.
+14. Nemath E, Sterczer A, Mathe A, etal. Clinical case of botulism in three 
+dogs. Magy Allatorv Lapja. 2003;125:608-616.
+15. Coleman ES. Clostridial neurotoxins: tetanus and botulism. Compend 
+Contin Educ Pract Vet. 1998;20:1089.
+16. Pérez ML, Fox K, Schaer M. A retrospective evaluation of coral snake 
+envenomation in dogs and cats: 20 cases (1996-2011). J Vet Emerg Crit Care (San 
+Antonio). 2012;22:682-689.
+17. Ong HM, Witham A, Kelers K, etal. Presumed secondary immune-
+mediated haemolytic anaemia following elapid snake envenomation and its 
+treatment in four dogs. Aust Vet J. 2015;93:319-326.
+18. Padula AM, Leister E. Eastern brown snake (Pseudonaja textilis) envenom-
+ation in dogs and cats: clinical signs, coagulation changes, brown snake venom 

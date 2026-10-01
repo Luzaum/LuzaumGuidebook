@@ -1,0 +1,250 @@
+Amantadine      45
+is preferred, as it can be mixed with food and is tasteless. Dose 
+is divided and mixed with each meal. Start at low end of dosage 
+range and adjust upward every 4 to 6 weeks until desired serum 
+phosphorus is attained (see Monitoring). If a reduced-phosphorus 
+diet and higher dosages of aluminum hydroxide do not adequate-
+ly control serum phosphorus, consider adding a lanthanum- or 
+calcium-based (eg, calcium acetate, calcium carbonate) phosphate 
+binder to reduce the chances for aluminum toxicity.
+RABBITS/RODENTS/SMALL MAMMALS: 
+Hyperphosphatemia in chinchillas (extra-label): Aluminum hy-
+droxide gel: 1 mL/animal (NOT mL/kg) PO as needed
+Hyperphosphatemia in Guinea pigs (extra-label): 0.5 – 1 mL per 
+animal (NOT mL/kg) PO as needed5
+REPTILES: 
+Hyperphosphatemia (extra-label): 100 mg/kg PO every 12 to 24 
+hours6
+CATTLE:
+Antacid (extra-label): 15 – 60 mg/kg PO every 8 – 24 hours.7 Ef-
+ficacy in adult cattle is questionable since the drug becomes dilut-
+ed in the rumen and may not provide therapeutic benefit in the 
+abomasum.
+Abomasal ulcers in calves using a combination of aluminum 
+hydroxide and magnesium hydroxide (extra-label): 25 mL (each 
+mL contains aluminum hydroxide 0.1 g/mL and magnesium hy-
+droxide 0.09 g/mL) PO every 8 hours.8 NOTE: this study was done 
+in healthy calves; based on the results from this study, this dose is 
+expected to be beneficial for ill calves with abomasal ulcers. 
+HORSES:
+Adjunctive gastroduodenal ulcer therapy in foals (extra-label): 
+Aluminum/magnesium hydroxide suspension: 15 mL (total dose) 
+4 times a day9
+Monitoring
+	■After beginning therapy, check serum phosphorus (after a 12-
+hour fast) every 4 to 6 weeks until target phosphorous levels are 
+attained. Once phosphorous levels are stable, check phosphorous 
+levels at the time of renal chemistry rechecks (eg, every 12 weeks). 
+For chronic kidney disease (CKD), the International Renal Inter-
+est Society (IRIS) recommends a target phosphorous range for 
+dogs and cats at each stage:
+•	 Stage 2 CKD target phosphorous levels: greater than 2.7 and 
+less than 4.6 mg/dL (0.9 – less than 1.5 mmol/L)
+•	 Stage 3 CKD target phosphorous levels: greater than 2.7 and 
+less than 5.0 mg/dL (0.9 – less than 1.6 mmol/L)
+•	 Stage 4 CKD target phosphorous levels: greater than 2.7 and 
+less than 6.0 mg/dL (0.9 – less than 1.9 mmol/L)
+	■To monitor for aluminum toxicity, watch for development of neu-
+romuscular effects, progressive decreases in mean cell volume 
+(MCV), and microcytosis.
+Client Information
+	■Oral aluminum hydroxide products are available without pre-
+scription (OTC) but should be used under the supervision of your 
+veterinarian.
+	■Bulk powder or compounded capsules are easier to administer 
+than liquids or suspensions. Shake the suspension thoroughly 
+prior to administration.
+	■Must be given either just before feeding or mixed in food to be 
+effective.
+	■Can cause constipation or decreased appetite 
+	■Report to your veterinarian any unusual signs, such as weakness, 
+difficulty walking, or stumbling.
+Chemistry/Synonyms
+Dried Aluminum Hydroxide Gel (CAS Registry: 21645-51-2) occurs 
+as a white, odorless, tasteless, amorphous powder. It is insoluble in 
+water or alcohol. The USP 36 standard allows varying amounts of 
+basic aluminum carbonate and bicarbonate, but it must contain no 
+less than 76.5% of Al(OH)3.
+Aluminum hydroxide may also be known as aluminium hydrox-
+ide.
+Storage/Stability
+Store powder forms in airtight containers. Liquid formulations 
+should not be allowed to freeze.
+Compatibility/Compounding Considerations
+Because aluminum hydroxide powder USP can vary in the concen-
+tration of aluminum hydroxide (must be 76.5% or greater) and pow-
+ders can vary in density, volume measurements can only approxi-
+mate actual weight. However, ¼ teaspoonful (1.25 mL) of the dried 
+USP powder has been reported to contain ≈300 mg of aluminum 
+hydroxide.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Aluminum Hydroxide Concentrated Gel Suspension/Liquid (NOTE: 
+These products are usually flavored (mint) and not well accepted by 
+dogs or cats): 320 mg/5 mL in 473 mL; UD 15 mL and 30 mL; ge-
+neric; (OTC)
+Aluminum Hydroxide Gel, Dried Powder, USP; bulk powder is avail-
+able from a variety of sources including many compounding phar-
+macies. See: http://goo.gl/1lYJk for additional source information.
+NOTE: There are also many products available that have aluminum 
+hydroxide and a magnesium or calcium salt (eg, Maalox®) that are 
+used as antacids. All oral aluminum and magnesium hydroxide 
+preparations are OTC.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Amantadine
+(a-man-ta-deen)  Symmetrel® 
+Antiviral; NMDA Antagonist
+Prescriber Highlights
+	
+▶Limited published efficacy or safety data, although clinical 
+experience suggests it is useful in adjunctive treatment for 
+chronic pain in small animal species
+	
+▶Historically dosed every 24 hours; however, based on pharma-
+cokinetic data, the same dose given every 12 hours may be 
+more effective
+	
+▶Dogs may exhibit agitation and GI effects, especially early in 
+treatment.
+	
+▶Large interpatient variations of pharmacokinetics in horses 
+limit its therapeutic usefulness.
+	
+▶Overdoses are potentially very serious; it may need to be com-
+pounded to accurately dose small animals.
+	
+▶Extra-label use is prohibited by the FDA in chickens, turkeys, 
+and ducks.
+Uses/Indications
+Although amantadine may have efficacy and clinical usefulness 
+against some veterinary viral diseases, presently the greatest interest 
+for its use in small animal species is in the adjunctive treatment of 
+
+46      Amantadine
+neuropathic1 or chronic pain,2 often in those in which opioids do not 
+provide adequate analgesia or who are intolerant of higher opioid 
+doses. It is generally considered ineffective when used alone3; use 
+in combination with an NSAID, opioid, or gabapentin/pregabalin is 
+typical.1,4 Several weeks may be required to break a pain cycle.5,6 It 
+has been suggested for use as an early intervention in the treatment 
+of pain associated with osteosarcomas.7
+Amantadine has also been investigated for treatment of equine-2 
+influenza virus in a horse8; however, because of expense, interpatient 
+variability in oral absorption and other pharmacokinetic parame-
+ters, and the potential for causing seizures after IV dosing, it is not 
+commonly used for treatment.
+In humans, amantadine is used for parkinsonian syndrome and 
+drug-induced extrapyramidal effects; its use for the treatment and 
+prophylaxis of influenza A is no longer recommended.9 As in vet-
+erinary medicine, the effect of amantadine on NMDA receptors in 
+humans is of active interest, particularly its use as a coanalgesic with 
+opioids and in the reduction of opioid tolerance development.
+Pharmacology/Actions
+Like ketamine, dextromethorphan, and memantine, amantadine in-
+hibits the NMDA receptor by stabilizing it in the closed state.10 With-
+in the CNS, chronic pain can be maintained or exacerbated when 
+glutamate or aspartate bind to this receptor. It is believed that this 
+receptor is particularly important in allodynia (ie, sensation of pain 
+resulting from a normally non-noxious stimulus). Amantadine is ex-
+pected to produce analgesic effects when pain or CNS sensitization 
+is already present. Although there is limited evidence that amanta-
+dine alone provides analgesia,2 it is thought that it may help alleviate 
+chronic pain when used in combination with other analgesics (eg, 
+opioids, NSAIDs).3
+Amantadine’s antiviral activity is limited to strains of influenza A. 
+Although its complete mechanism of action is unknown, it inhibits 
+viral replication by interfering with influenza A virus M2 protein, 
+preventing release of viral RNA into the host cell, and possibly in-
+hibiting viral replication. Influenza A variants have demonstrated 
+resistance to amantadine’s antiviral action, and it is currently not 
+recommended for the treatment or prophylaxis of influenza A.9
+Amantadine’s antiparkinsonian activity is not well understood, 
+but it apparently increases dopamine concentrations in the brain. 
+The drug appears to have potentiating effects on dopaminergic neu-
+rotransmission in the CNS, is an NMDA antagonist, and has anti-
+cholinergic activity.
+Pharmacokinetics
+In dogs, oral bioavailability of amantadine is reportedly very high.11 
+A study in nonfasted greyhounds showed an oral dose of 2.8 mg/kg 
+was well tolerated, and maximum concentration, time to maximum 
+concentration, and terminal half-life were 271 ng/mL, 1 to 4 hours, 
+and 4.9 hours respectively. This study also suggested that the “every 
+24-hour dose interval” should be re-evaluated.12 The drug is renally 
+eliminated.11
+In cats, bioavailability was very high after oral administration, and 
+peak levels occurred ≈2 hours after dosing. After IV administration, 
+the steady-state volume of distribution was ≈4.3 L/kg and clearance 
+(mean) was 8.2 mL/minute/kg.13 Elimination half-life was 5.5 to 6 
+hours.
+In horses, amantadine had a very wide interpatient variability of 
+absorption after oral dosing (10 – 20 mg/kg); bioavailability ranged 
+from 40% to 60% and was not affected by feed.8 The elimination half-
+life in horses was ≈3.5 hours, and the steady-state volume of distri-
+bution was ≈5 L/kg.
+In Amazon parrots, the time to maximum concentration was ≈3 
+to 4 hours, and half-life was 21 to 23 hours.14
+In humans, amantadine was well absorbed after oral adminis-
+tration with peak plasma concentrations occurring ≈3 hours after 
+dosing.15 Volume of distribution was 3 to 8 L/kg, and protein bind-
+ing was ≈67%. Amantadine is primarily eliminated via renal mech-
+anisms. Oral clearance was ≈0.28 L/hour/kg and half-life was ≈16 
+hours. Clearance is reduced in patients with renal impairment, and 
+half-life may double.
+Contraindications/Precautions/Warnings
+In humans, amantadine is contraindicated in patients with known 
+hypersensitivity to it15 or to rimantadine, and in those with end-
+stage renal disease. It should be used with caution in patients with 
+hepatic disease, renal disease (dosage adjustment may be required), 
+congestive heart failure, active psychoses, eczematoid dermatitis, sei-
+zure disorders, or untreated angle-closure glaucoma. The drug is no 
+longer recommended for the treatment or prevention of influenza A 
+in humans due to high levels of amantadine resistance among circu-
+lating influenza strains.9 In 2006, the FDA banned the use of aman-
+tadine and other influenza antivirals in chickens, turkeys, and ducks.
+The human liquid dosage form has an unpleasant taste.
+Do not confuse AMANTadine with RIMantadine, AMIOdarone, 
+or RANITidine.
+Adverse Effects
+Experience with amantadine in domestic animals is limited, and its 
+adverse effect profile is not well described. It has been reported that 
+dogs given amantadine occasionally develop agitation, flatulence, 
+loose stools, or diarrhea, particularly early in treatment. Experience 
+in cats is limited, and an adverse effect profile has yet to be fully elu-
+cidated, but some clinicians report that GI effects are more likely 
+than in dogs. 
+Reproductive/Nursing Safety
+In rats, amantadine 50 – 100 mg/kg/day PO (ie, ≈1.5 to 3 times 
+the maximum recommended human dose) throughout pregnancy 
+was embryotoxic and caused fetal malformations and reduced fe-
+tal weight.15 Fertility was slightly impaired in rats that were given 
+32 mg/kg/day.
+Amantadine is excreted into maternal milk; its use is not recom-
+mended in nursing women.16 Veterinary significance is unclear.
+Because safety has not been established, this drug should only be 
+used when the maternal benefits outweigh the potential risks to off-
+spring.
+Overdose/Acute Toxicity
+The oral LD50 in mice and rats is 700 to 800 mg/kg and 25 to 
+50 mg/kg in humans.17 The toxic amantadine dose reported for cats 
+is 30 mg/kg18; behavioral effects may be noted at 15 mg/kg in dogs 
+and cats.
+Clinical signs associated with overdose in dogs include tremors, 
+anxiety, ataxia, hypersalivation, and/or vomiting.
+In humans, overdoses as low as 1 gram (total dose) have been as-
+sociated with fatalities. Cardiac dysfunction (eg, arrhythmias, hyper-
+tension, tachycardia), pulmonary edema, CNS toxicity (eg, tremors, 
+seizures, psychosis, agitation, coma), hyperthermia, renal dysfunc-
+tion, and respiratory distress syndrome have all been document-
+ed. There is no known specific antidote for amantadine overdose. 
+Treatment should consist of GI decontamination when appropriate, 
+intensive monitoring (including ECG), and supportive therapy. Hy-
+dration and urinary acidification, with or without diuresis, may in-
+crease renal amantadine excretion. The drug is poorly removed by 
+hemodialysis. Physostigmine has been suggested for cautious use in 
+treating CNS effects.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 

@@ -1,0 +1,231 @@
+===== BSAVA PDF 134 / impressa 118 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+118
+Dexrazoxane
+(Cardioxane*, Zinecard*) POM 
+Formulations: Intravenous: 500 mg vials which when correctly 
+reconstituted produce a 20 mg/ml solution for infusion.
+Action: Prevents the formation of anthracycline-iron complex free 
+radicals thought to be the cause of anthracycline induced 
+cardiotoxicity and extravasation reactions.
+Use: Used to manage complications associated with the use of 
+anthracycline chemotherapeutics.
+Safety and handling: Wear gloves when handling.
+Contraindications: Unknown.
+Adverse reactions: Myelosuppression is documented in humans; 
+it may also decrease the clinical efficacy of anthracycline anti-
+neoplastic agents.
+Drug interactions: Unknown.
+DOSES
+Dogs:
+• Extravasation injury: terminate doxorubicin infusion and 
+administer 1000 mg/m2 i.v. into a separate infusion (ideally within 
+6 hours). Repeat on day 2 (1000 mg/m2 i.v.) and day 3 (500 mg/
+m2 i.v.). Lower doses have also been shown to be effective 
+(250–500 mg/m 2 i.v.).
+• Prevention of doxorubicin cardiotoxicity: 10 minutes prior to 
+doxorubicin 10 times the administered milligram dose of 
+doxorubicin i.v. over 5–10 minutes.
+Cats: Unknown.
+References
+FitzPatrick WM, Dervisis NG and Kitchell BE (2010) Safety of concurrent administration of 
+dexrazoxane and doxorubicin in the canine cancer patient. Veterinary and Comparative 
+Oncology  8, 273–282
+Venable RO, Saba CF, Endicott MM et al . (2012) Dexrazoxane treatment of doxorubicin 
+extravasation injury in four dogs. Journal of the American Veterinary Medical Association  
+240, 304–307
+Dextrose see Glucose  
+Diazepam
+(Diazedor, Diazemuls*, Diazepam Rectubes*, 
+Stesolid*, Valium* and several others) POM-V, 
+POM 
+Formulations: Injectable: 5 mg/ml emulsion (2 ml ampoules, 
+Diazemuls). Oral: 2 mg, 5 mg, 10 mg tablets; 2 mg/5 ml solution. 
+Rectal: 2 mg/ml (1.25, 2.5 ml tubes), 4 mg/ml (2.5 ml tubes) 
+solutions; 10 mg suppositories.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 135 / impressa 119 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+119
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Action: Enhances activity of the major inhibitory central nervous 
+system neurotransmitter, gamma-aminobutyric acid (GABA), 
+through binding to the benzodiazepine site of the GABA A receptor.
+Use:
+• Anticonvulsant: diazepam is the drug of choice for the short-
+term emergency control of severe epileptic seizures and status 
+epilepticus in dogs and cats.
+• Anxiolytic: used in behavioural medicine for anxiety and fear-
+related disorders in dogs and cats, especially where there are 
+signs of panic.
+• Skeletal muscle relaxant (e.g. urethral muscle spasm and tetanus).
+• Used in cats as an appetite stimulant.
+The anti-seizure effect in the dog is only maintained for around 20 
+minutes and should always be used as part of a balanced emergency 
+seizure protocol; not effective as maintenance anti-seizure 
+medication in the dog due to its short half-life. In cats the half-life is 
+longer and it may be effective as a maintenance medication. 
+Diazepam is indicated in dogs with marked spinal pain due to muscle 
+spasm, in combination with conventional analgesics. It may also be 
+used in combination with ketamine to offset muscle hypertonicity 
+associated with ketamine, and with opioids and/or acepromazine for 
+pre-anaesthetic medication in the critically ill. It provides very poor 
+sedation or even excitation when used alone in healthy animals. Its 
+amnesic properties mean it can be used during or immediately 
+following an aversive experience to minimize the impact of such 
+exposure. Best if used approximately 30 minutes before a fear-
+inducing event. Higher range doses are required for amnesic activity. 
+Although it has been used for the management of urine spraying in 
+cats, a high relapse rate upon withdrawal should be expected. 
+Diazepam has a high lipid solubility, which facilitates its oral 
+absorption and rapid central effects. Liver disease will prolong 
+duration of action. In the short term, repeated doses of diazepam or 
+a constant rate infusion will lead to drug accumulation and 
+prolonged recovery in both species but particularly in cats in which 
+it may also cause liver injury. Flumazenil (a benzodiazepine 
+antagonist) will reverse the effects of diazepam. The development of 
+dependence to benzodiazepines may occur after regular use, even 
+with therapy of only a few weeks, and the dose should be gradually 
+reduced in these cases if the benzodiazepine is being withdrawn. 
+Chronic dosing leads to a shortened half-life due to activation of the 
+hepatic microsomal enzyme system and tolerance to the drug may 
+develop in dogs.
+Safety and handling: Substantial adsorption of diazepam may 
+occur on to some plastics and this may cause a problem when 
+administering diazepam by continuous i.v. infusion. The use of 
+diazepam in PVC infusion bags should be avoided; giving sets should 
+be kept as short as possible and should not contain a cellulose 
+propionate volume-control chamber. If diazepam is given by 
+continuous i.v. infusion the compatible materials include glass, 
+polyolefin, polypropylene and polyethylene.
+
+===== BSAVA PDF 136 / impressa 120 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+120
+Contraindications: Benzodiazepines should be avoided in 
+patients with CNS depression, respiratory depression, severe muscle 
+weakness or hepatic impairment (as may worsen hepatic 
+encephalopathy). They are also contraindicated in the long-term 
+treatment of canine and feline behavioural disorders due to the risks 
+of disinhibition and interference with memory and learning.
+Adverse reactions: Sedation, muscle weakness and ataxia are 
+common. Rapid i.v. injection or oral overdose may cause marked 
+paradoxical excitation (including aggression) and elicit signs of pain 
+in normal dogs; i.v. injections should be made slowly (over at least  
+1 min for each 5 mg). Intramuscular injection is painful and results in 
+erratic drug absorption. Rectal administration is effective for 
+emergency control of seizures if i.v. access is not possible, but the 
+time to onset is delayed to 5–10 min. The duration of action may be 
+prolonged after repeated doses in rapid succession, in older animals, 
+those with liver dysfunction, and those receiving beta-1 antagonists. 
+Fulminant hepatic necrosis in cats has been associated with 
+repeated oral administration. The propylene glycol formulation of 
+injectable diazepam can cause thrombophlebitis, therefore the 
+emulsion formulation is preferred for i.v. injection.
+Drug interactions: Do not dilute or mix with other agents. Due to 
+extensive metabolism by the hepatic microsomal enzyme system, 
+interactions with other drugs metabolized in this way are common. 
+Cimetidine and omeprazole inhibit metabolism of diazepam and 
+may prolong clearance. Concurrent use of phenobarbital may lead 
+to a decrease in the half-life of diazepam. An enhanced sedative 
+effect may be seen if antihistamines or opioid analgesics are 
+administered with diazepam, and diazepam will reduce the dose 
+requirement of other anaesthetic agents. When given with diazepam 
+the effects of digoxin may be increased. Diazepam may be used in 
+combination with tricyclic antidepressant therapy for the 
+management of more severe behavioural responses.
+DOSES
+When used for sedation is generally given as part of a combination. 
+See Appendix for sedation protocols in cats and dogs.
+Dogs:   
+• Anxiolytic: 0.5–2.0 mg/kg p.o as required.
+• Sedation and premedication: 0.2–0.5 mg/kg i.v., i.m.
+• Skeletal muscle relaxation: 2–10 mg/dog p.o. q8–12h.
+• Emergency management of seizures, including status epilepticus: 
+bolus dose of 0.5–1 mg/kg i.v. or intrarectally (if venous access is 
+not available). Time to onset of clinical effect is 2–3 min for i.v. use; 
+therefore, repeat every 10 min if no clinical effect, up to 3 times. 
+Additional doses may be administered if appropriate supportive 
+care facilities are available (for support of respiration). Constant rate 
+i.v. infusion for control of status epilepticus or cluster seizures: 
+initial rate 0.5–2 mg/kg/h, titrated to effect.
+Cats:
+• Anxiolytic: 0.2–0.4 mg/kg p.o. q8h.
+• Appetite stimulant: 0.1–0.2 mg/kg i.v. once.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

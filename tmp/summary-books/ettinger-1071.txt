@@ -1,0 +1,229 @@
+SECTION XI
+•
+Infectious Disease
+1012
+eBooks.Health.Elsevier.com
+and dogs sampled in these studies have varied enormously, from 
+healthy to anemic patients or retrovirus-infected cats, and from 
+client-owned indoor only cats to outdoor feral cats or ghting 
+dogs. ese factors contribute to the variation in reported preva-
+lence as well as the dierent risk factors identied for infection. 
+Additionally, geographic variation in prevalence exists. Dier-
+ent polymerase chain reaction (PCR) methods, with likely dif-
+fering sensitivities and specicities, also likely contribute to the 
+variation.
+FELINE HEMOPLASMAS
+Ca. M. haemominutum’ is the most common species (Table 194.1); 
+with infection prevalences ranging from 4.4-46.7% (median 15.5%) 
+of cats. Reported prevalences for M. haemofelis range from 0.4-
+27.0% (median 5.1%) and for ‘Ca. M. turicensis’ from 0-26.0% 
+(median 1.9%). Variable numbers of cats infected with more than 
+one hemoplasma species were also reported in dierent studies. 
+Ca. M. turicensis’ infected cats are oen co-infected with another 
+hemoplasma species, particularly ‘Ca. M. haemominutum.’
+In many studies, feline hemoplasma (especially ‘Ca. M. hae-
+mominutum’) infections were more common in male, older, 
+non-pedigree cats with outdoor access. Some studies have shown 
+associations between hemoplasma infection and positive retrovi-
+ral status (particularly feline immunodeciency virus [FIV]) and 
+between hemoplasma infection and anemia or being unhealthy.
+CANINE HEMOPLASMAS
+Reported hemoplasma prevalences in dogs also vary widely in 
+dierent studies (Table 194.1); generally M. haemocanis is more 
+prevalent, ranging from 0-48.6% (median 6.9%) but occasionally 
+Ca. M. haematoparvum’ is more common, with 0-33.3% of dogs 
+infected (median 1.5%). Geographic variation is marked, possi-
+bly due to the presence of the proposed canine hemoplasma tick 
+vector Rhipicephalus sanguineus.18 19 Ticks are oen identied as 
+risk factors for canine hemoplasma infection. In contrast to cats, 
+age and sex are less commonly associated with infection. Fighting 
+dogs have been associated with hemoplasma infection. Associa-
+tions may exist between canine hemoplasma infections and vec-
+tor borne infections,20 particularly Babesia spp. (notably Babesia 
+vulpes and Babesia gibsoni; ch. 197).21-23
+PATHOGENESIS OF INFECTION
+FELINE HEMOPLASMAS
+M. haemofelis is the most pathogenic hemoplasma species in cats. 
+Untreated cats that die from M. haemofelis infection need not be 
+immunocompromised or splenectomized.
+Acute infection oen results in severe hemolytic anemia (usually 
+extravascular), but some have only mild anemia (chs. 57, 174). In 
+experimental studies, clinical signs typically occur around 2-34 
+days aer infection, with anemia lasting from 18-30 days. Onset 
+of anemia is usually followed by a signicant regenerative response 
+with reticulocytosis. Chronic infection is not usually associated 
+Figure 194.1
+Scanning electron photomicrography showing Myco-
+plasma haemofelis as a rounded organism within an indentation on the 
+surface of erythrocytes in an infected cat (×1000).
+TABLE 194.1
+Feline and Canine Hemoplasma Species, Their Prevalences (Evaluated Using PCR in Global Studies) and Their 
+Pathogenicity
+SPECIES NAME
+USUAL HOST
+REPORTED PREVALENCE 
+RANGE (MEDIAN)
+PATHOGENICITY
+Mycoplasma haemofelis
+Cat
+0.4-27.0% (5.1%)
+Acute infection often results in hemolytic anemia. Can be 
+associated with IMHA.
+‘Candidatus Mycoplasma haemo-
+minutum’
+Cat
+4.4-46.7% (15.5%)
+Acute infection can induce a drop in erythrocyte parameters but 
+not usually severe enough to cause anemia unless the cat 
+has concurrent disease or is immunocompromised, e.g., ret-
+rovirus infection. ‘Ca. M. haemominutum’, and sometimes  
+‘Ca. M. turicensis’, may occasionally cause IMHA.
+‘Candidatus Mycoplasma turicensis’
+Cat
+0-26.0% (1.9%)
+Mycoplasma haemocanis
+Dog
+0-48.6% (6.85%)
+Infection can result in hemolytic anemia primarily in splenect-
+omised dogs. Little evidence as a cause of IMHA.
+‘Candidatus Mycoplasma haematopar-
+vum’
+Dog
+0-33.3% (1.5%)
+Anemia not usually reported unless the dog has concurrent 
+disease or is immunocompromised, e.g., chemotherapy.
+IMHA, Immune-mediated hemolytic anemia.
+Some species have the status Candidatus, which is the name used for newly described organisms for which genetic sequence data are available but which cannot be 
+phenotypically characterised to meet the needs of the International Code of Nomenclature of Bacteria due to the inability to grow them invitro. The species Mycoplasma 
+haemofelis and Mycoplasma haemocanis do not have the Candidatus status, even though they cannot yet be grown invitro, because they represent the renamed previ-
+ously existing Haemobartonella felis and Haemobartonella canis species, respectively. Bacterial nomenclature forbids the ‘demotion’ of any bacterial species, including 
+during renaming.
+
+CHAPTER 194
+•
+Hemotropic Mycoplasmas
+1013
+eBooks.Health.Elsevier.com
+with signicant anemia. Experimental studies have demonstrated 
+that the numbers of M. haemofelis blood organisms can uctuate 
+in brief time periods, especially in the rst few weeks of infection. 
+Antigenic variation, to evade host immune systems, may explain 
+these uctuations:24 a large portion (62%) of the M. haemofelis
+genome encodes a set of uncharacterized hypothetical proteins 
+arranged in series of paralogous repeats which could mediate dif-
+fering expression of hemoplasma surface proteins over time. Young 
+cats may be more susceptible to severe clinical disease from M. hae-
+mofelis infection. As discussed, not all studies demonstrate associa-
+tion between anemia and M. haemofelis infection, maybe because 
+these studies oen include chronically M. haemofelis-infected cats 
+without clinical signs.
+Persistent autoagglutination or positive Coombs’ test results, 
+indicating presence of erythrocyte-bound antibodies, have been 
+seen in anemic cats with acute M. haemofelis infection.25 However, 
+antibodies appeared only aer anemia had developed, suggesting 
+that erythrocyte-bound antibodies may be due to hemoplasma-
+induced hemolysis rather than initiating it. Further, antibodies 
+disappear with antibiotic and supportive treatment, without need 
+for glucocorticoid treatment.25 Nevertheless, M. haemofelis infec-
+tion remains an important potential cause of immune-mediated 
+hemolytic anemia (IMHA) in cats (ch. 174).26 Osmotic fragility 
+and reduced erythrocyte lifespan have also been reported with M. 
+haemofelis infection.
+Although acute ‘Ca. M. haemominutum’ infection is asso-
+ciated with decreases in erythrocytes,25 anemia is not com-
+mon except in cats with concurrent diseases or infections, e.g., 
+lymphoma or feline leukemia virus (FeLV) infection.27 28 e 
+pathogenicity of this organism does not appear to be increased 
+in splenectomized cats.29 ‘Ca. M. haemominutum’ infection has 
+been associated with development of myeloproliferative diseases 
+in cats with experimental FeLV infection.28 Since anemia has been 
+reported in association with ‘Ca. M. haemominutum’ infection 
+without concurrent disease or infection,30 infection alone may 
+cause anemia in cats.
+Ca. M. turicensis’ infection has caused anemia31 or mild 
+erythrocyte parameter decreases in some experimental studies.25
+Anemia is uncommon. Immunosuppression or concurrent dis-
+eases may be involved in the pathogenesis.32 Determining the 
+pathogenicity of ‘Ca. M. turicensis’ in naturally infected cats 
+has been dicult in epidemiological studies as cats are oen co-
+infected with other hemoplasma species.
+CANINE HEMOPLASMAS
+Studies regarding the pathogenicity of canine hemoplasmas are 
+sparse. Hemoplasma infection only causes hemolytic anemia 
+in splenectomized or immunocompromised dogs.33-36 Latent 
+M. haemocanis infections can be reactivated following splenec-
+tomy. Some infected dogs have evidence of erythrocyte-bound 
+antibodies with positive Coombs’ tests.37 Nevertheless, little 
+evidence exists for canine hemoplasmas being a major cause 
+of IMHA.26
+OVERALL PATHOGENESIS
+e pathogenicity of dierent hemoplasma species varies. Not all 
+studies show an association between infection and anemia. M. 
+haemofelis and M. haemocanis (splenectomized dogs), are most 
+likely to be associated with clinical signs during acute infection, 
+whereas ‘Ca. M. haemominutum,’ ‘Ca. M. turicensis’ and ‘Ca. M. 
+haematoparvum’ are not generally associated with clinical signs 
+unless concurrent disease or immunosuppression is present. 
+Health status and transmission route of infection may determine 
+the outcome of hemoplasma infection with any species.
+CARRIER STATUS
+Long-term feline hemoplasma carrier state, without clinical signs, can 
+occur, particularly with ‘Ca. M. haemominutum.’38 39 Many M. hae-
+mofelis–infected cats and some with ‘Ca. M. turicensis’ naturally clear 
+infection from peripheral blood within a few months of acute infec-
+tion. However, general statements regarding long-term carrier status 
+cannot be made since great variation exists. Variations likely reect 
+dierent host-organism interactions and dierent hemoplasma spe-
+cies. Carrier cats oen have subclinical infections and, uncommonly, 
+reactivation of infection and clinical disease can occur.30 Little work 
+has been done regarding the time course of carrier status with canine 
+hemoplasmas, but subclinical carrier dogs infected with ‘Ca. M. hae-
+matoparvum’ and M. haemocanis are thought to exist.19
+TRANSMISSION
+e natural route of transmission of hemoplasma infection to cats 
+and dogs has not yet been determined. Dierent routes may pre-
+dominate for dierent hemoplasma species.
+Canine and feline hemoplasma DNA has been found in eas, 
+ticks, and mosquitoes. However, the DNA found in potential vec-
+tors could just reect their hematophagous activity on infected 
+hosts. e cat ea, Ctenocephalides felis, has been implicated in 
+transmission of feline hemoplasma, but only transient M. hae-
+mofelis infection without clinical signs has been reported in cats 
+experimentally infected via the hematophagous activity of eas.40
+Transmission of M. haemocanis by the brown dog tick, Rhipiceph-
+alus sanguineus, has been suggested but remains unconrmed.20 41
+e association between hemoplasma infection and male sex 
+and/or retrovirus status (particularly FIV) seen in some stud-
+ies could suggest that cat ghts are involved in transmission of 
+infection. Studies suggest subcutaneous inoculation of ‘Ca. M. 
+turicensis’-containing blood resulted in infection, whereas the 
+same inoculation method using ‘Ca. M. turicensis’-containing 
+saliva did not.42 is suggests that hemoplasma transmission by 
+social contact (e.g., saliva via mutual grooming) is less likely than 
+via aggressive interaction (e.g., blood transmission during a cat 
+bite incident), as inferred with rodent hemoplasmas.43 Further, 
+high prevalence of hemoplasma infection has been reported in 
+ghting dogs, supporting blood as a transmission route.44 45 Ver-
+tical transmission has been strongly suggested for M. haemocanis
+but has not been denitively shown for feline hemoplasmas.46
+Blood transfusion is another route of transmission. Blood donors 
+should be screened for hemoplasma (ch. 124).
+CLINICAL SIGNS AND LABORATORY ABNORMALITIES
+In pathogenic infections, common clinical signs of hemoplasmo-
+sis are lethargy (ch. 10), pallor (Video 194.1; ch. 25) and weak-
+ness (ch. 23). Inappetence, dehydration, weight loss (ch. 18) and 
+intermittent fever (ch. 16) are also reported. Splenomegaly may 
+be evident with feline hemoplasmosis (ch. 182). is is not com-
+mon in dogs with clinical hemoplasmosis because most clinically 
+aected animals have been previously splenectomized (e.g., for 
+tumor removal). Animals with severe anemia may have tachycar-
+dia, tachypnea (ch. 37), weak or bounding femoral pulses (ch. 39), 
+and cardiac murmurs (ch. 38). Icterus is rare, despite the severe 
+anemia. Moribund cats may be hypothermic.
+Pathogenic hemoplasma infection typically causes a regen-
+erative macrocytic hypochromic anemia (ch. 57), although pro-
+nounced reticulocytosis is not always evident. Normoblasts may 
+be present. Positive Coombs’ test results, particularly with cold 
+agglutinins, and persistent autoagglutination have been reported 
+in acute hemoplasmosis (ch. 174). Hyperproteinemia and hyper-
+bilirubinemia are occasionally seen. Hypoxic liver damage may 

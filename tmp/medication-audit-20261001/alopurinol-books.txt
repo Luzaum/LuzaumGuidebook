@@ -1,0 +1,839 @@
+
+===== Plumb PDF 64 =====
+Allopurinol   37
+Alfentanil may also be known as alfentanyl, Alfenta®, Alfast®, Fa-
+naxal®, Fentalim®, Limifen®, or Rapifen®.
+Storage/Stability
+Alfentanil injection should be stored protected from light at con -
+trolled room temperature (20°C-25°C; 68°F-77°F).
+Alfentanil is a DEA schedule II controlled substance that should 
+be stored in an area that is substantially constructed and securely 
+locked. Follow applicable local, state, and federal rules regarding dis-
+posal of unused or wasted controlled drugs.
+Compatibility/Compounding Considerations
+In concentrations up to 80 µg/mL, alfentanil injection has been 
+shown to be compatible with sodium chloride 0.9%, dextrose 5%, 
+dextrose 5% in sodium chloride 0.9%, and lactated Ringer’s solution.9
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE.
+The Association of Racing Commissioners International (ARCI) 
+has designated this drug as a class 1 substance. See the Appendix for 
+more information. Use of this drug may not be allowed in certain 
+animal competitions. Check rules and regulations before entering in 
+a competition while this medication is being administered. Contact 
+local racing authorities for further guidance.
+HUMAN-LABELED PRODUCTS:
+Alfentanil HCl for injection: 500 µg (as base)/mL in 2 mL, 5 mL, 
+10 mL, and 20 mL ampules; preservative-free; Alfenta®, generic; (Rx, 
+C-II)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Allopurinol
+(al-oh-pyoor-i-nol) Zyloprim®
+Xanthine Oxidase Inhibitor; Purine Analogue
+Prescriber Highlights
+ ▶ Used to reduce uric acid in dogs, cats, reptiles, and birds; ad-
+junctive treatment for leishmaniasis in dogs and cats
+ ▶ Use with caution in patients with renal or hepatic dysfunction.
+ ▶ Contraindicated in red-tailed hawks and should be used with 
+caution, if at all, in other raptors
+ ▶ A low purine diet is recommended with long-term treatment.
+ ▶ Most common adverse effects are GI-related, but hypersensi-
+tivity reactions, increased liver enzymes, or renal events (eg, 
+mineralization, uroliths) can occur.
+ ▶ Many potential drug interactions
+Uses/Indications
+The primary veterinary uses for allopurinol are for the treatment and 
+prevention of recurrent uric acid and hyperuricosuric calcium oxa -
+late uroliths in dogs, particularly Dalmatians. It has also been used to 
+treat gout in pet birds and reptiles.1
+Allopurinol has been used as an alternative treatment for canine 
+and feline leishmaniasis. Although it appears to have moderate clini-
+cal efficacy, treatment duration is several months and does not result 
+in a full cure.2
+There are also minimal data to support its use to treat trypanoso-
+miasis infections.3 
+Pharmacology/Actions
+Allopurinol and its metabolite, oxypurinol, inhibit the enzyme xan-
+thine oxidase, which is responsible for the conversion of oxypurines 
+(eg, hypoxanthine, xanthine) to uric acid. Allopurinol does not in -
+crease the renal excretion of uric acid, nor does it possess any an -
+ti-inflammatory or analgesic activity.
+Allopurinol inhibits Leishmania spp activity by limiting available 
+purines in the host that are required for protozoal survival. Allopu -
+rinol is taken up by the protozoa and metabolized into a toxic com -
+pound (4-amino-pyrazole-pyrimidine), which incorporates into the 
+parasite’s RNA, causing death.4,5
+Allopurinol, by inhibiting xanthine oxidase, can inhibit the for -
+mation of superoxide anion radicals and provide protection against 
+hemorrhagic shock and myocardial ischemia in laboratory condi -
+tions. However, the clinical use of the drug in cardiovascular diseases 
+requires further study.6
+Pharmacokinetics
+In dogs, oral bioavailability was similar to that in humans (≈90%) with 
+a serum half-life of ≈2 and 4 hours for allopurinol and oxypurinol, 
+respectively. Food does not appear to alter absorption. Absorption is 
+non-linear with oral and intravenous administration and therefore 
+high doses are not recommended. 7 In Dalmatians, absorption rates 
+were variable between subjects, with peak levels occurring within 1 to 
+3 hours after oral dosing. Elimination half-life is ≈2.7 hours.8 The drug 
+exhibits good systemic absorption, but CNS penetration is limited.
+In horses, oral bioavailability of allopurinol is ≈15% and the drug 
+is rapidly converted to oxypurinol. 9 Elimination half-life is ≈5 to 6 
+minutes for allopurinol and ≈1.1 hours for oxypurinol.
+Neither allopurinol nor oxypurinol are bound to plasma proteins, 
+but both drugs are excreted into milk.
+Contraindications/Precautions/Warnings
+Allopurinol is contraindicated in patients with previous hypersen -
+sitivity reactions and should be used with caution in patients with 
+hepatic or renal dysfunction. Dosage reductions and increased mon-
+itoring are warranted in these cases.
+Allopurinol does not appear to be effective in dissolving urate 
+uroliths in dogs with portovascular anomalies.10,11
+This drug is not recommended for use in red-tailed hawks. Dos -
+ages of 50 mg/kg PO once daily caused clinical signs of vomiting 
+and hyperuricemia with renal dysfunction. Dosages of 25 mg/kg PO 
+once daily were safe but not effective in reducing plasma uric acid.12 
+Use with caution in other raptors.
+Adverse Effects
+Adverse effects in dogs are uncommon with allopurinol when fed 
+low purine diets. Xanthine coatings have formed around ammoni -
+um urate uroliths in dogs consuming purines. Xanthinuria has been 
+noted in dogs receiving allopurinol for the treatment of leishmani -
+asis.13,14 Renal mineralization and urolithiasis were also noted in 6% 
+of dogs.14 Prolonged allopurinol at doses greater than 30 mg/kg/day 
+may result in xanthine urolithiasis. 10 Consider a low purine diet if 
+allopurinol is required for chronic therapy.15 Adverse GI effects may 
+include nausea, vomiting, anorexia, or diarrhea.  
+In humans, the most common adverse effects include rash, diar -
+rhea, nausea, acute gout attacks, and ALT/AST elevations. Other less 
+common adverse effects include bone marrow suppression, severe 
+dermatologic reactions, hepatitis, and vasculitis. Humans with renal 
+dysfunction are at risk for further decreases in renal function and 
+other severe adverse effects unless dosages are reduced. 
+Reproductive/Nursing Safety
+Although the safe use of allopurinol during pregnancy has not been 
+established, dosages up to 20 times normal in rats and rabbits have 
+not demonstrated decreases in fertility or evidence of fetal harm. In-
+traperitoneal administration to pregnant mice was associated with 
+increased fetal death and malformations. 
+
+
+===== Plumb PDF 65 =====
+38    Allopurinol
+Allopurinol and oxypurinol are excreted into milk; use caution 
+when allopurinol is administered to a nursing dam.
+Overdose/Acute Toxicity
+One source lists the allopurinol oral LD 50 in mice as 78 mg/kg, 16-18 
+whereas other sources list 500 – 700 mg/kg. Clinical signs associated 
+with overdose can include vomiting (seen in dogs at doses of more 
+than 44 mg/kg) and trembling. There is no known antidote for allo-
+purinol, but it is dialyzable.
+For patients that have experienced or are suspected to have ex -
+perienced an overdose, it is strongly encouraged to consult with a 
+24-hour poison consultation center that specialize in providing in -
+formation specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with allopurinol have either been 
+reported or are theoretical in humans or animals and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Aluminum Hydroxide : May decrease absorption of allopuri -
+nol
+ ■ Angiotensin-Converting Enzyme Inhibitors  (ACEIs; 
+eg, benazepril, enalapril): In humans, this combination may in-
+crease risk for hypersensitivity reactions to allopurinol. The veter-
+inary significance of this interaction is unknown.
+ ■ Aminopenicillins (eg, amoxicillin,  ampicillin): In humans, 
+this combination may increase risk for hypersensitivity reactions 
+to allopurinol. The veterinary significance of this interaction is 
+unknown.
+ ■ Azathioprine or Mercaptopurine : Allopurinol may in -
+crease the serum concentration of mercaptopurine (azathioprine’s 
+active metabolite) and promote formation of active thioguanine 
+nucleotides. Consider therapy modification or reduce the dose of 
+immunosuppressive agent by 25% to 33% initially.
+ ■ Cyclophosphamide : Increased risk for bone marrow suppres-
+sion
+ ■ Cyclosporine : Increased cyclosporine concentration may oc -
+cur.
+ ■ Diuretics (eg, chlorothiazide, furosemide, hydrochlorothia-
+zide): May increase serum concentration of allopurinol
+ ■ Theophylline/Aminophylline : Allopurinol may decrease 
+metabolism, thereby increasing their serum levels.
+ ■ Uricosuric Agents  (eg, probenecid, sulfinpyrazone ): May 
+increase the renal excretion of oxypurinol and thereby reduce 
+xanthine oxidase inhibition; in treatment of hyperuricemia, the 
+additive effects on blood uric acid may be beneficial.
+ ■ Urinary Acidifiers  (eg, ammonium chloride, methionine ): 
+May reduce the solubility of uric acid in the urine and induce uro-
+lithiasis
+Dosages
+DOGS:
+Dissolution of urate uroliths  (extra-label): 15 mg/kg PO every 
+12 hours for up to 4 weeks.11 Use in conjunction with low-purine, 
+alkalinizing, diuretic diets. 
+Prevention of urate uroliths (extra-label): 5 – 7 mg/kg PO every 
+12 to 24 hours.11 NOTE: Prolonged high doses of allopurinol may 
+result in xanthine uroliths; use in conjunction with increased wa-
+ter intake and low-purine, alkalinizing, diuretic diets to reduce 
+recurrences and lessen need to use intermittent higher dose dis -
+solution protocols.
+Leishmaniasis (extra-label): Improved efficacy when used in 
+combination with an antimonial drug 
+a) Allopurinol 10 – 15 mg/kg PO twice daily for 6 to 12 months 
+plus meglumine antimoniate (N-methylglucamine antimo -
+niate) 75 – 100 mg/kg SC once daily for 1 to 2 months.19
+b) Alternatively, allopurinol 10 – 15 mg/kg PO twice daily for 
+6 to 12 months plus miltefosine 2 mg/kg PO once daily for 
+4 weeks20,21
+c) As monotherapy, dosages range from 5 – 20 mg/kg PO every 
+12 hours for 2 to 24 months. 4 NOTE: Initiate allopurinol at  
+5 mg/kg PO twice daily in dogs with renal dysfunction.
+CATS:
+Leishmaniasis (extra-label): 10 – 20 mg/kg PO every 12 or 24 
+hours long-term22
+ BIRDS:
+Gout (extra-label): 
+ a)  Highly variable dosages (300 – 830 mg/L) for drinking water 
+administration have been reported.23
+ b)  In budgies and cockatiels : Crush one 100 mg tablet into  
+10 mL of water. Add 20 drops of this solution to 30 mL (1 oz) 
+of drinking water.24
+ c)  In parakeets : As above for budgies and cockatiels or give  
+1 drop 4 times daily.25 
+REPTILES:
+Gout in lizards or iguanas (extra-label): 20 – 25 mg/kg PO once 
+daily.1 Reported dosages in reptiles range from 10 to 50 mg/kg.23 
+Monitoring
+ ■ Hydration status
+ ■ Baseline and periodic CBC and serum chemistry profile
+ ■ Baseline and periodic urinalysis (including pH) to check if urine 
+pH is greater than or equal to 7
+ ■ Periodic urinary tract imaging (eg, ultrasound) to monitor for re-
+currence of calculi
+ ■ In dogs with leishmaniasis, monitor clinical response, reduction 
+in UPPC,26-28 saliva IgG2 and IgA antibodies,29 and normalization 
+of acute-phase proteins (eg, C-reactive protein, haptoglobin, fer -
+ritin, paraoxanase).30
+Laboratory Considerations
+ ■ None
+Client Information
+ ■ May be given with food if vomiting occurs
+ ■ Always provide access to fresh clean water while your animal is 
+taking this medicine.
+ ■ When this drug is used long-term in dogs, low-purine diets are 
+recommended.
+ ■ Contact your veterinarian immediately if you observe a rash, un-
+usual tiredness, or yellowing of the whites of the eyes.
+ ■ If using in drinking water for birds or reptiles, make a fresh solu-
+tion every day.
+Chemistry/Synonyms
+A xanthine oxidase inhibitor, allopurinol occurs as a tasteless, fluffy 
+white to off-white powder with a slight odor. Its melting point is 
+more than 350°C (662°F) and it has a pKa of 9.4. Oxypurinol, its ac-
+tive metabolite, has a pKa of 7.7. Allopurinol is very slightly soluble 
+in water and alcohol and insoluble in diethyl ether.
+Allopurinol may also be known as allopurinolum, BW-56-158, 
+HPP , or NSC-1390; many trade names are available.
+Storage/Stability
+Allopurinol tablets should be stored between 20°C to 25°C (68°F to 
+77°F) in tightly closed containers and protected from light.31
+
+
+===== Plumb PDF 66 =====
+Alprazolam   39
+Compatibility/Compounding Considerations
+Compounded preparation stability: An extemporaneous suspen -
+sion for oral use can be prepared from the commercially available 
+tablets. Triturate eight 300 mg tablets of allopurinol with 60 mL of 
+Ora-Plus® and qs ad to 120 mL with Ora-Sweet® (or Ora-Sweet® SF). 
+This formulation yields a 20 mg/mL suspension that retains more 
+than 95% potency for at least 60 days stored at both 5°C (41°F) and 
+25°C (77°F). Compounded preparations of allopurinol should be 
+protected from light.32
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The FEI (International Federation for Equestrian Sports) lists this 
+drug as a “prohibited substance - banned. ”33
+HUMAN-LABELED PRODUCTS:
+Allopurinol Oral Tablets: 100 and 300 mg; Zyloprim®  generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Alprazolam
+(al-prah-zoe-lam) Xanax®
+Benzodiazepine
+Prescriber Highlights
+ ▶ Oral benzodiazepine that may be useful for adjunctive behav-
+ioral treatment in dogs and cats
+ ▶ Contraindicated in aggressive animals (controversial) and 
+animals with benzodiazepine hypersensitivity
+ ▶ Use with caution in patients with hepatic or renal disease
+ ▶ Adverse effects include sedation, unintended negative be-
+havior changes, and paradoxical responses. Physical depen-
+dence is a possibility. May impede training or performance of 
+working animals
+ ▶ Many drug interactions are possible.
+ ▶ DEA Schedule IV (C-IV) controlled substance
+Uses/Indications
+Alprazolam may be useful for adjunctive therapy in anxious and/
+or aggressive dogs or in dogs that demonstrate panic reactions and 
+for managing anxiety while a long-term drug (eg, selective serotonin 
+reuptake inhibitor [SSRI], other serotonin-enhancing drug) reach -
+es therapeutic concentrations. 1,2 When alprazolam is used to treat 
+anxiety related to a triggering event (eg, storm, fireworks), it is most 
+effective when administered 30 to 60 minutes prior to the event. Al-
+prazolam may be useful in cats for adjunctive treatment of anxiety 
+disorders and inappropriate elimination, and, unlike oral diazepam, 
+alprazolam has not been implicated in causing liver failure in cats. 
+A case report described the successful use of alprazolam to facilitate 
+bonding in a mare that was aggressive when her foal attempted to 
+nurse.3
+At low doses, alprazolam may have less of an effect on motor 
+function than diazepam.
+Pharmacology/Actions
+Alprazolam exhibits similar pharmacologic actions as other benzo -
+diazepines; subcortical levels (primarily limbic, thalamic, and hy -
+pothalamic) of the CNS are depressed, which produces anxiolytic, 
+sedative, skeletal muscle relaxant, and anticonvulsant effects. The 
+exact mechanism of action is unknown, but postulated mechanisms 
+include antagonism of serotonin, increased release of and/or facilita-
+tion of gamma-aminobutyric acid (GABA) activity, and diminished 
+release or turnover of acetylcholine in the CNS.
+Benzodiazepine-specific receptors have been located in the mam-
+malian brain, kidney, liver, lungs, and heart. In all species studied, 
+receptors are lacking in the white matter.
+Pharmacokinetics
+The pharmacokinetics of alprazolam have not been described for 
+dogs or cats. 
+In adult horses, alprazolam was detected in serum 30 minutes af-
+ter administration of a single oral dose (0.04 mg/kg), and peak plas-
+ma levels occurred in a median of 3 hours. Elimination half-life was 
+≈16 hours.4
+In humans, alprazolam is well absorbed with peak plasma con -
+centrations occurring in 1 to 2 hours. Alprazolam is widely distribut-
+ed throughout the body and readily crosses the blood-brain barrier; 
+it is 80% bound to plasma proteins. It is metabolized in the liver pri-
+marily by cytochrome P450 3A4 (CYP3A4) to at least 2 metabolites, 
+including alpha-hydroxy-alprazolam, which is pharmacologically 
+active.5 Elimination half-lives range from 6 to 27 hours; half-life is 
+extended in cases of hepatic disfunction and obesity. Alprazolam is 
+primarily excreted in the urine as unchanged drug and metabolites. 
+Contraindications/Precautions/Warnings
+Alprazolam is contraindicated in patients with known hypersensi -
+tivity to the drug. Some clinicians also believe that benzodiazepines 
+are contraindicated in aggressive dogs, as anxiety may restrain the 
+animal from aggressive tendencies; however, this remains contro -
+versial.6 Some clinicians recommend administering alprazolam for 
+the first time at the clinic with the owner present to monitor for ad-
+verse effects (eg, excessive sedation) or for a paradoxical reaction (ie, 
+worsening of clinical signs [eg, CNS excitement, including increased 
+excitability, aggression, and anxiety]) to the drug. If unacceptable se-
+dation occurs, the dosage can be lowered. If a paradoxical response 
+occurs, alprazolam may not be an acceptable treatment for that ani-
+mal; however, it has been suggested that higher dosages may alleviate 
+the paradoxical reaction.6 Caution is advised in debilitated or geriat-
+ric patients and patients with hepatic or renal disease or narrow-an-
+gle glaucoma. Benzodiazepines may impair the abilities of working 
+animals.
+Chronic use of alprazolam may induce physical dependence,7 and 
+if the drug is to be discontinued, the dosage must be gradually de -
+creased (tapered) over several weeks.
+Alprazolam, like other benzodiazepines, has the potential for 
+drug abuse and drug diversion in humans; caution is advised when 
+prescribing this drug.
+Adverse Effects
+Benzodiazepines can cause sedation, increased appetite, and transient 
+ataxia. Animals may rarely exhibit a paradoxical response following 
+administration. See Contraindications/Precautions/ Warnings.
+There have been sporadic reports of cats developing idiosyncratic 
+hepatic failure after receiving oral, but not injectable, diazepam (not 
+dose-dependent) for several days.8  See Diazepam for more informa-
+tion related to hepatic changes that may occur. Although this adverse 
+effect has not been reported for alprazolam, oral benzodiazepines 
+should be used with caution in cats. See Monitoring. 
+Benzodiazepines have an amnestic effect which may impede the 
+ability of the animal to learn and may delay training.5,6
+Reproductive/Nursing Safety
+Diazepam and other benzodiazepines have been implicated in caus-
+ing congenital abnormalities in humans when they are administered 
+during the first trimester of pregnancy. Infants born to mothers that 
+received large doses of benzodiazepines shortly before delivery have 
+been reported to suffer from apnea, impaired metabolic response to 
+cold stress, difficulty in feeding, hyperbilirubinemia, and hypotonia.5 
+Withdrawal symptoms have occurred in infants whose mothers took 
+
+
+===== Plumb PDF 67 =====
+40   Alprazolam
+benzodiazepines chronically during pregnancy. The veterinary sig -
+nificance of these effects is unclear, but the use of these agents during 
+the first trimester of pregnancy should only occur when the benefits 
+clearly outweigh the risks associated with their use. 
+Alprazolam enters human breast milk. Case reports have noted 
+drowsiness, depression, and withdrawal symptoms in infants ex -
+posed to alprazolam while breastfeeding.5 In humans, alprazolam is 
+not recommended while breastfeeding.9 
+Because safety of alprazolam has not been established in animals, 
+this drug should only be used when the maternal benefits outweigh 
+the potential risks to offspring.
+Overdose/Acute Toxicity
+Overdoses of alprazolam are generally limited to CNS signs. CNS 
+depression can be seen, and the severity is generally dose-dependent. 
+Hypotension, respiratory depression, and cardiac arrest have been 
+reported in humans but apparently are rare. The acute LD 50 in rats 
+for alprazolam is greater than 330 mg/kg.10 Life-threatening signs in 
+small animals are rare. Some animals may be presented with a para-
+doxical-type reaction (eg, disorientation, vocalization, agitation). At 
+times, those signs may be followed by CNS depression.
+Common clinical signs seen in dogs with alprazolam overdose 
+include ataxia, hyperactivity/agitation, lethargy/sedation, and vom -
+iting; in cats, the common clinical signs include ataxia, vocalization, 
+agitation, polyphagia, and lethargy.
+Massive overdoses can lead to CNS and respiratory depression or 
+hypotension. Gastric decontamination can be considered. The de -
+cision to give activated charcoal should be weighed carefully, as, in 
+some cases, there is a risk for aspiration pneumonia in an obtunded 
+patient, which may outweigh the benefit. Use of analeptic agents (eg, 
+caffeine, doxapram) is generally not recommended. Flumazenil can 
+be used to reverse respiratory depression or severe CNS depression. 
+The half-life of flumazenil is short, and the animal may require mul-
+tiple doses of the drug. See Flumazenil. 
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with alprazolam have either been 
+reported or are theoretical in humans or animals and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use togeth-
+er is not necessarily contraindicated, but the potential risk must be 
+weighed and additional monitoring performed when appropriate.
+ ■ Amiodarone : Concurrent use may increase bioavailability and 
+pharmacologic effects of benzodiazepines. Sedation levels should 
+be monitored, and benzodiazepine doses adjusted accordingly.
+ ■ Antacids, Aluminum-, Calcium- and Magnesium-Con -
+taining : May slow the rate but not the extent of oral absorption; 
+administering antacids 2 hours apart from alprazolam may help 
+avoid this potential interaction
+ ■ Antihypertensive Agents (eg, amlodipine, enalapril, tel -
+misartan): May increase risk for hypotension and orthostasis. 
+Blood pressure monitoring is needed.
+ ■ Azole Antifungals (eg, fluconazole, itraconazole, keto -
+conazole): Metabolism of alprazolam may be decreased, and ex -
+cessive sedation may occur. This combination is contraindicated 
+in humans. 
+ ■ Carbonic Anhydrase Inhibitors (CAIs) (eg, acetazol-
+amide, methazolamide): Benzodiazepines may interfere with the 
+beneficial effects of CAIs by inhibiting respiratory responses to 
+hypoxia; combination should be avoided.
+ ■ CNS Depressant Agents  (eg, anesthetic agents, antihista -
+mines (first generation), barbiturates, cannabidiol, narcotics ): 
+Combination may increase the risk for CNS and/or respiratory 
+depression. Sedation levels should be monitored and doses ad -
+justed accordingly.
+ ■ Digoxin : Serum digoxin concentrations may be increased; mon-
+itor serum digoxin concentrations and for clinical signs associ -
+ated with digoxin toxicity (eg, arrhythmias, vomiting, diarrhea, 
+inappetence).
+ ■ Fluoxetine, Fluvoxamine : Metabolism of alprazolam may be 
+decreased and cause excessive sedation.
+ ■ Hepatic Enzyme Inducers (eg, dexamethasone, mitotane): 
+Concurrent use may decrease benzodiazepine concentrations. 
+Clinical response should be monitored and doses adjusted ac -
+cordingly.
+ ■ Hepatic Enzyme Inhibitors  (eg, cimetidine, diltiazem, 
+grapefruit juice, isoniazid ): Metabolism of alprazolam may be 
+decreased and cause excessive sedation.
+ ■ Ifosfamide: Concurrent use may increase the risk for ifosfa -
+mide-induced neurotoxic effects. Careful monitoring of the level 
+of sedation is recommended, and both drugs should be discontin-
+ued if signs of encephalopathy occur.
+ ■ Macrolide Antibiotics  (eg, clarithromycin, erythromycin): 
+Metabolism of alprazolam may be decreased, and excessive seda-
+tion may occur.
+ ■ Macrocyclic Lactones  (eg, ivermectin, milbemycin oxime): 
+Benzodiazepine effects may be potentiated by concurrent macro-
+cyclic lactone use.
+ ■ Maropitant: Concurrent benzodiazepine administration with 
+the human drug aprepitant may increase benzodiazepine expo -
+sure via inhibition of CYP3A4. Interaction may apply to maro -
+pitant.
+ ■ Non-Depolarizing Neuromuscular Blockers (eg, atra-
+curium, pancuronium): Concurrent use may potentiate, atten -
+uate, or have no effect. Respiratory status should be monitored.
+ ■ Opioids (eg, buprenorphine, hydromorphone, tramadol): May 
+increase the risk for cardiorespiratory and CNS depression 
+ ■ Phenobarbital: Concurrent use of phenobarbital and benzo -
+diazepines may increase the risk for respiratory depression.
+ ■ Propofol:  May increase the risk for cardiorespiratory depres -
+sion
+ ■ Rifampin:  May induce hepatic microsomal enzymes and de -
+crease the pharmacologic effects of benzodiazepines
+ ■ Theophylline/Aminophylline: Concurrent use may de -
+crease the levels and effectiveness of benzodiazepines. Withdraw-
+ing theophylline from a stable patient may increase the risk for 
+benzodiazepine toxicity. Sedation levels should be monitored and 
+doses adjusted accordingly.
+ ■ Tricyclic Antidepressants  (eg , amitriptyline, clomip -
+ramine, imipramine): Alprazolam may increase concentrations 
+of these drugs; clinical significance is not known, and clomip -
+ramine and alprazolam have been used together anecdotally to 
+manage phobias (eg, thunderstorm phobia). However, concurrent 
+use may increase the risk for CNS and/or respiratory depression. 
+Anticholinergic effects may be additive.
+ ■ Yohimbine: Limited data indicate that yohimbine may decrease 
+therapeutic effects of anxiolytic drugs.
+Laboratory Considerations
+ ■ Benzodiazepines may decrease the thyroidal uptake of I123 or I131.
+
+
+===== Plumb PDF 68 =====
+Altrenogest   41
+Dosages
+DOGS:
+Adjunctive treatment of canine anxiety disorders or phobias  
+(extra-label): 0.02 – 0.1 mg/kg (usually 0.02 – 0.05 mg/kg initial -
+ly) PO every 6 to 12 hours as needed. If used for acute phobias 
+(eg, fireworks, thunderstorms), the drug should be given 30 to 60 
+minutes before the expected trigger.
+CATS:
+Adjunctive treatment of feline anxiety disorders, phobias, or 
+house soiling/marking (extra-label): 0.125 – 0.25 mg/cat (NOT 
+mg/kg) PO every 8 to 24 hours. If used for phobias, the drug 
+should be given 30 to 60 minutes before the expected trigger.
+Adjunctive treatment of highly aroused felines before 
+transport to a veterinary visit (extra-label): 0.5 – 1 mg/cat  
+(NOT mg/kg) 1 hour prior to leaving for veterinary visit11
+HORSES:
+Facilitating mare-foal bonding (extra-label): One case study re-
+ported 0.035 mg/kg PO every 8 to 12 hours for facilitating healthy 
+mare–foal bonding and behavior in an aggressive mare.3 
+Monitoring
+ ■ Efficacy
+ ■ Adverse effects
+ ■ Monitoring hepatic enzymes should be considered, particularly 
+with chronic therapy.
+Client Information
+ ■ Alprazolam is often used to help treat or prevent fears and anxiety 
+in dogs and cats.
+ ■ When alprazolam is used for thunderstorm phobias or other trig-
+gers (eg, separation anxiety) that upset your animal, try to give 
+your animal the drug about 30 to 60 minutes before the triggering 
+event.
+ ■ This medicine may be given with or without food. If your animal 
+vomits or acts sick after receiving the drug on an empty stomach, 
+try giving the next dose with food or a small treat. If vomiting 
+continues, contact your veterinarian.
+ ■ Contact your veterinarian immediately if you see yellowing of the 
+whites of the eyes of your animal or if your animal’s gums have a 
+yellowish tint.
+ ■ Sleepiness is the most common side effect, but sometimes the 
+drug can change behavior or work in the opposite way (ie, cause 
+hyperactive behavior) from what is expected.
+ ■ This drug may increase appetite, especially in cats.
+ ■ Alprazolam is classified as a schedule IV (C-IV) controlled drug 
+by the federal Drug Enforcement Agency (DEA). Use of this med-
+ication in animals or humans other than those for whom it is pre-
+scribed is illegal.
+Chemistry/Synonyms
+Alprazolam is a benzodiazepine. It occurs as a white to off-white 
+crystalline powder and is soluble in alcohol and insoluble in water.
+Alprazolam may also be known as D65 MT, U 31889, or alprazol-
+amum; many trade names are available internationally.
+Storage/Stability
+Alprazolam tablets should be stored at room temperature in tight, 
+light-resistant containers. The orally disintegrating tablets should be 
+stored at room temperature and protected from moisture. The oral solu-
+tion should be stored at room temperature, protected from light, and 
+discarded 90 days after opening. Alprazolam is a DEA Schedule IV (C-
+IV) controlled substance that should be stored in an area that is substan-
+tially constructed and securely locked. Follow applicable local, state, and 
+federal rules regarding disposal of unused or wasted controlled drugs.
+Compatibility/Compounding Considerations
+Compounded preparation stability: An alprazolam oral suspen -
+sion compounded from commercially available tablets has been 
+published.12 Triturating sixty (60) alprazolam 2 mg tablets with  
+60 mL of Ora-Plus® and qs ad to 120 mL with Ora-Sweet® (or Ora-Sweet® 
+SF) yields a 1 mg/mL oral suspension that retains more than 90% poten-
+cy for 60 days when stored at 5°C (41°F) and 25°C (77°F). Compounded 
+preparations of alprazolam should be protected from light.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 2 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information. 
+HUMAN-LABELED PRODUCTS:
+Alprazolam Oral Tablets: 0.25 mg, 0.5 mg, 1 mg, and 2 mg; Xanax®,  
+generic; (Rx; C-IV)
+Alprazolam Extended-release Oral Tablets: 0.5 mg, 1 mg, 2 mg, and 
+3 mg; Xanax XR®, generic; (Rx; C-IV)
+Alprazolam Orally Disintegrating Tablets: 0.25 mg, 0.5 mg, 1 mg, 
+and 2 mg; Niravam®, generic; (Rx; C-IV)
+Alprazolam Oral Solution: 1 mg/mL in 30 mL; Alprazolam Intensol®; 
+(Rx; C-IV)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Altrenogest
+(al-tre-noe-jest) Regu-Mate®, Matrix®
+Oral Progestin
+Prescriber Highlights
+ ▶ Used in mares to suppress estrus or maintain pregnancy in 
+those that are progestin deficient
+ ▶ Used in swine to synchronize estrus
+ ▶ Contraindicated in mares or gilts with previous or current 
+uterine inflammation
+ ▶ May be used in dogs for luteal deficiency or to prevent prema-
+ture delivery
+ ▶ Readily absorbed by the skin; wear protective gloves (not 
+latex) when handling
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies progestins as hazardous drugs; use appropri-
+ate precautions when handling.
+Uses/Indications
+Altrenogest is FDA-approved for use in mares to suppress estrus and al-
+low a more predictable occurrence of estrus following withdrawal of the 
+drug.1 It is used clinically to establish normal estrous cycles at the end 
+of the transitional period from anestrus to the normal breeding season, 
+to facilitate management of prolonged estrus conditions, or to facilitate 
+scheduled breeding; it also helps maintain high-risk pregnancies (eg, 
+placentitis, history of early embryonic loss, embryo transfer recipients). 
+Mares with considerable follicular activity (mares with 1 or more folli-
+cles that are 20 mm or greater in size) are more likely to respond to al-
+trenogest than are mares with inactive ovaries and small follicles.1 Mares 
+that have been in estrus for 10 days or more and have active ovaries are 
+also considered excellent candidates for progestin treatment.
+
+
+===== BSAVA PDF 415 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+399
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+fluoroquinolones and allopurinol. Phenobarbital may decrease the 
+serum concentration of theophylline. Theophylline may decrease 
+the effects of pancuronium. Theophylline and beta-adrenergic 
+blockers (e.g. propranolol) may antagonize each other’s effects. 
+Theophylline administration with halothane may cause an increased 
+incidence of cardiac dysrhythmias and with ketamine an increased 
+incidence of seizures.
+DOSES
+Dogs: Bronchodilation: 20 mg/kg p.o. q24h or 10 mg/kg p.o. q12h 
+which may be increased to 15 mg/kg p.o. q12h if no side effects on 
+lower dose (NB: manufacturer only recommends q24h dosing). 
+Some texts indicate q12h dosing of the sustained-release 
+preparation is required to maintain therapeutic serum levels.
+Cats: Bronchodilation: 15–19 mg/kg p.o. q24h (sustained-release 
+preparation). 
+References
+Bach JF, Kukanich B, Papich MG et al . (2004) Evaluation of the bioavailability and 
+pharmacokinetics of two extended-release theophylline formulations in dogs. Journal 
+of the American Veterinary Medical Association 224 , 1113–1119
+Guenther-Yenke CL, McKiernan BC, Papich MG et al . (2007) Pharmacokinetics of an 
+extended-release theophylline product in cats. Journal of the American Veterinary 
+Medical Association  231, 900–906
+Thiamazole (Methimazole)
+(Felimazole, Thiafeline, Thyronorm) POM-V 
+Formulations: Oral: 1.25 mg, 2.5 mg, 5 mg tablets. Oral: 5 mg/ml 
+solution. Also available as a transdermal formulation on a named 
+patient basis.
+Action: Interferes with the synthesis of thyroid hormones by 
+inhibiting peroxidase-catalysed reactions (blocks oxidation of 
+iodide), the iodination of tyrosyl residues of thyroglobulin, and the 
+coupling of mono- or di-iodotyrosines to form T3 and T4. Has no 
+effect on iodine uptake, peripheral de-iodination of T4 to T3 or 
+release of stored hormone.
+Use: Control of thyroid hormone levels in cats with 
+hyperthyroidism. 2 to 3 weeks of treatment are generally needed to 
+establish euthyroidism. Monitor therapy on the basis of serum 
+thyroxine concentrations (4–6 hours after dosing) and adjust dose 
+accordingly for long-term medical management. Assess 
+haematology, biochemistry and serum total T4 after 3, 6, 10 and 20 
+weeks and thereafter every 3 months, adjusting dosage as 
+necessary. Transdermal thiamazole gels are also used in 
+hyperthyroid cats, particularly in fractious cats or in those that 
+develop GI side effects from the oral formulations. However, this 
+route is not as reliable as oral medication or as safe for humans who 
+apply the gel.
+
+
+===== BSAVA PDF 416 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+400
+Safety and handling: Oral: normal precautions should be 
+observed. Transdermal formulation: wear gloves when administering 
+or handling the product. Do not touch area of application for at least 
+a couple of hours. Thiamazole is a human teratogen and crosses the 
+placenta concentrating in the fetal thyroid gland.
+Contraindications: Do not use in pregnant or lactating queens.
+Adverse reactions: Vomiting and inappetence/anorexia may be 
+seen but are often transient. Jaundice, cytopenias, immune-mediated 
+diseases (including myasthenia gravis) and dermatological changes 
+(pruritus, alopecia and self-induced trauma) are reported, but rare; 
+withdrawal of treatment may be necessary. Treatment of hyper-
+thyroidism can decrease glomerular filtration rate, thereby raising 
+serum urea and creatinine values, and can occasionally unmask 
+occult renal failure. Animals that have an adverse reaction to carbi-
+mazole are likely also to have an adverse reaction to thiamazole.
+Drug interactions: Phenobarbital may reduce clinical efficacy. 
+Benzimidazole drugs reduce hepatic oxidation and may lead to 
+increased circulating drug concentrations. Thiamazole should be 
+discontinued before iodine-131 treatment. Do not use with low-
+iodine prescription diets.
+DOSES
+Dogs: Hyperthyroidism: 2.5–5 mg/dog p.o. q12h depending on size.
+Cats: Hyperthyroidism: 2.5 mg/cat p.o. q12h. Apply transdermal gel 
+to pinna. 
+References
+Daminet S, Kooistra HS, Fracassi F et al . (2014) Best practice for the pharmacological 
+management of hyperthyroid cats with antithyroid drugs. Journal of Small Animal 
+Practice 55, 4–13
+Thiamine see Vitamin B1
+Thyroid stimulating hormone 
+(Thyrotropin alfa, TSH)
+(Thyrogen*) POM 
+Formulations: Injectable: 1.1 mg vial; after reconstitution with  
+1.2 ml sterile water the TSH concentration is 0.9 mg/ml.
+Action: Binds to specific receptors on thyroid follicular cell 
+membranes and in so doing stimulates the proteolytic degradation 
+of thyroglobulin and the release of thyroxine (T4) and smaller 
+quantities of tri-iodothyronine (T3).
+Use: Stimulation of thyroid hormone production in the diagnosis of 
+canine hypothyroidism (not suitable for evaluation of thyroid 
+function in patients receiving levothyroxine). The diagnostic value in 
+cats has not been fully assessed.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 417 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+401
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: Normal precautions should be observed.
+Contraindications: Repeated administration is not advisable.
+Adverse reactions: Chemical grade TSH may be associated with 
+anaphylactic responses; do not use.
+Drug interactions: Anabolic or androgenic steroids, carbimazole, 
+barbiturates, corticosteroids, diazepam, heparin, mitotane (o, p'-DDD), 
+phenylbutazone, phenytoin and salicylates may all decrease serum T4 
+levels. Fluorouracil, insulin, oestrogens, propranolol and 
+prostaglandins may cause T4 levels to be increased. All these drugs 
+will make the TSH stimulation test hard to interpret.
+DOSES
+Dogs: TSH stimulation test: 50–150 μ g (micrograms)/dog. Higher 
+doses offer increased discriminatory power in dogs with 
+comorbidities or those receiving thyroid-suppressing drugs.
+Cats: TSH stimulation test: 25 μg (micrograms)/cat.
+References
+Campos M, van Hoek I, Peremans K et al . (2012) Recombinant human thyrotropin in 
+veterinary medicine: current use and future perspectives. Journal of Veterinary Internal 
+Medicine  26, 853–862
+l-Thyroxine (T4, Levothyroxine)
+(Leventa, Soloxine, Thyforon) POM-V 
+Formulations: Oral: 0.1 mg, 0.2 mg, 0.3 mg, 0.5 mg, 0.8 mg 
+tablets; 1 mg/ml solution.
+Action: Binds to specific intracellular receptors and alters gene 
+expression.
+Use: Treatment of hypothyroidism. Cases with pre-existing cardiac 
+disorders require lower doses initially.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Uncorrected adrenal insufficiency.
+Adverse reactions: Clinical signs of overdosage include 
+tachycardia, excitability, nervousness and excessive panting. Can 
+unmask Addison’s disease in patients with autoimmune 
+polyglandular syndrome.
+Drug interactions: The actions of catecholamines and 
+sympathomimetics are enhanced by thyroxine. Diabetic patients 
+receiving thyroid hormones may have altered insulin requirements; 
+monitor carefully during the initiation of therapy. Oestrogens may 
+increase thyroid requirements by increasing thyroxine-binding 
+globulin. The therapeutic effect of ciclosporin, digoxin and digitoxin 
+may be reduced by thyroid hormones. Tachycardia and 
+hypertension may develop when ketamine is given to patients 
+receiving thyroid hormones. In addition, many drugs may affect 
+thyroid function tests and therefore monitoring of therapy.

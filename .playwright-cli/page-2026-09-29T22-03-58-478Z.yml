@@ -1,0 +1,45 @@
+- main [ref=f3e3]:
+  - generic [ref=f3e4]:
+    - heading "Enrofloxacina" [level=1] [ref=f3e5]
+    - generic [ref=f3e7]:
+      - heading "Resumo rápido" [level=2] [ref=f3e8]
+      - generic [ref=f3e12]:
+        - paragraph [ref=f3e13]: Fluoroquinolona bactericida para infecções por agentes sensíveis.
+        - list [ref=f3e14]:
+          - listitem [ref=f3e15]:
+            - generic [aria-hidden] [ref=f3e16]: •
+            - generic [ref=f3e17]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - listitem [ref=f3e18]:
+            - generic [aria-hidden] [ref=f3e19]: •
+            - generic [ref=f3e20]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento.
+          - listitem [ref=f3e21]:
+            - generic [aria-hidden] [ref=f3e22]: •
+            - generic [ref=f3e23]: Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+        - group [ref=f3e24]:
+          - generic "Fonte do resumo" [active] [ref=f3e25] [cursor=pointer]
+          - paragraph [ref=f3e61]: Plumb’s Veterinary Drug Handbook, 10ª ed. — PDF 477–483.
+          - paragraph [ref=f3e62]: Paginação do arquivo PDF do acervo.
+      - group [ref=f3e26]:
+        - generic "Ver indicações, cuidados e explicações complementares" [ref=f3e27] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=f3e28]
+    - generic [ref=f3e29]:
+      - heading "Resumo rápido" [level=2] [ref=f3e30]
+      - generic [ref=f3e31]:
+        - generic [ref=f3e32]:
+          - button "Visão Geral" [ref=f3e33] [cursor=pointer]
+          - button "Plano diagnóstico" [ref=f3e38] [cursor=pointer]
+          - button "Plano de tratamento" [ref=f3e42] [cursor=pointer]
+        - generic [ref=f3e47]:
+          - paragraph [ref=f3e48]: Deterioração rápida da função renal por causas como isquemia, toxinas ou infecção.
+          - list [ref=f3e49]:
+            - listitem [ref=f3e50]:
+              - generic [aria-hidden] [ref=f3e51]: •
+              - generic [ref=f3e52]: Vômitos, prostração e mudança na diurese podem ocorrer; identificar exposição e doenças associadas.
+            - listitem [ref=f3e53]:
+              - generic [aria-hidden] [ref=f3e54]: •
+              - generic [ref=f3e55]: Investigar causa, eletrólitos, urina e imagem e acompanhar a evolução da função renal.
+            - listitem [ref=f3e56]:
+              - generic [aria-hidden] [ref=f3e57]: •
+              - generic [ref=f3e58]: Restaurar perfusão sem provocar sobrecarga; complicações refratárias podem exigir diálise.
+          - group [ref=f3e59]:
+            - generic "Fonte do resumo" [ref=f3e60] [cursor=pointer]

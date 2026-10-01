@@ -1,0 +1,235 @@
+SECTION XIX
+•
+Endocrine Disease
+1966
+eBooks.Health.Elsevier.com
+ACRONYMS
+AcAc acetoacetate
+AKI acute kidney injury
+ALIVE Agreeing Language 
+in Veterinary 
+Endocrinology
+BG blood glucose
+CHF congestive heart fail-
+ure
+CKD chronic kidney dis-
+ease
+CRI constant rate infusion
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+ECF extracellular fluid
+FFA free fatty acid
+FGMS flash glucose moni-
+toring system
+HHS hyperosmolar hyper-
+glycemic state
+IM intramuscular(ly)
+IV intravascular
+KB ketone body
+PE physical examination
+PU/PD polyuria/polydipsia
+SQ subcutaneous(ly)
+UTI urinary tract infection
+D
+iabetic ketoacidosis (DKA) and 
+the “hyperosmolar hyperglycemic 
+state” (HHS) are two acute, severe, 
+potentially life-threatening complications of 
+uncontrolled diabetes mellitus (DM). eir 
+clinical signs overlap. Morbidity and mortal-
+ity are usually a consequence of the under-
+lying precipitating cause or the result of 
+complications derived from lack of therapy 
+or improper therapy and monitoring rather 
+than a result of hyperglycemia. Prompt diag-
+nosis, use of standardized treatment proto-
+cols respecting the unpredictable nature of 
+these conditions and responses to treatment, 
+and the ability to resolve or manage the 
+underlying cause, aect outcome.
+DEFINITIONS
+DKA is dened by the triad of hypergly-
+cemia (or previous diagnosis of DM), 
+metabolic acidosis, and ketonemia. e 
+term HHS has been recommended by the 
+American Diabetes Association for the syn-
+drome characterized by severe hyperglyce-
+mia, hyperosmolality, and dehydration in 
+the absence of signicant ketosis. Compared to previously used 
+nomenclatures (hyperosmolar coma, hyperosmolar non-ketotic 
+syndrome), this new title emphasizes that not all patients are 
+comatose and that mild degrees of ketosis and acidemia may 
+be present.1 2 Although there are important dierences in their 
+pathogenesis, both DKA and HHS result from a decrease in 
+the net eective action of circulating insulin, due to an abso-
+lute or relative insulin deciency complicated by increases in 
+circulating concentrations of counterregulatory stress hor-
+mones: glucagon, catecholamines, cortisol, and growth hormone 
+(Figure 290.1).3-5
+PATHOPHYSIOLOGY OF DIABETIC KETOACIDOSIS
+A STATE OF STARVATION
+Insulin, a peptide hormone produced by beta cells within the pan-
+creatic islets, allows blood glucose (BG) to be transported from the 
+blood into cells throughout the body, fueling metabolic processes. 
+Insulin deciency dramatically reduces glucose availability for cells 
+and creates a physiologic state of “starvation.” Without glucose, 
+the body must utilize its alternative energy source: ketone bodies 
+(KBs). ese include beta-hydroxybutyrate (BHB), acetoacetate 
+(AcAc), and acetone. KBs are molecules deriving from oxidation 
+of nonesteried or free fatty acids (FFAs) by hepatic mitochondria. 
+eir synthesis is regulated by the amount of FFAs mobilized from 
+adipose tissue and the shi in hepatic metabolism from fat syn-
+thesis to fat oxidation and ketogenesis.6 7 Since insulin is a potent 
+inhibitor of lipolysis and FFA oxidation,8 its deciency “permits” 
+increased activity of hormone sensitive lipase in adipocytes that 
+increases the availability of FFAs for ketogenesis (Figure 290.1).
+CONSEQUENCES OF KETONE EXCESSES
+In short-term starvation, KBs provide an energy source for cells 
+that can be lifesaving until food becomes available. In DM, hyper-
+ketonemia (and hyperglycemia) becomes deleterious, leading to 
+acidemia, water loss, electrolyte depletion, and hypotension; a 
+self-sustaining vicious circle responsible for the clinical manifesta-
+tions of DKA. During hepatic ketogenesis, the number of hydro-
+gen ions equivalent to the number of KBs synthesized are released 
+into the bloodstream. When the concentration of hydrogen ions 
+overwhelms the body’s buering system, metabolic acidosis devel-
+ops, causing nausea, vomiting, inappetence. When plasma BG and 
+KB concentrations exceed the renal tubular threshold for complete 
+reabsorption, they spill into urine and induce an osmotic diuresis. 
+erefore, the anionic charge on the KBs obligates the excretion 
+of positively charged ions (e.g., sodium [Na], potassium [K], cal-
+cium [Ca], and magnesium [Mg]) to maintain electrical neutrality 
+(chs. 67-69). Chloride (Cl) and phosphorus (PO4) are also lost. 
+is process invariably predisposes to electrolyte and water deple-
+tion, exacerbated by vomiting, diarrhea, and the inability to drink 
+and retain water as the metabolic acidosis worsens.
+COUNTER-REGULATORY HORMONE EXCESS
+Insulin deciency is not the sole physiologic cause for develop-
+ment of DKA. Some pets with DKA are insulin-treated diabet-
+ics with serum insulin concentrations within reference ranges 
+when DKA develops, although inappropriately low for the sever-
+ity of hyperglycemia.9 Some pets newly diagnosed with DM and 
+DKA have “some” endogenous insulin. ese pets have a “rela-
+tive” insulin deciency. ey are likely to have a small number 
+of functioning beta cells. Insulin resistance (impaired sensitivity 
+to insulin) is caused and worsened by increases in circulating 
+glucose-counterregulatory hormones: glucagon, catecholamines, 
+cortisol, and growth hormone.10 11 ese hormones are produced 
+as a defense mechanism in a wide variety of diseases or stress-
+ful conditions (e.g., starvation, pancreatitis, infection). However, 
+their activity as insulin antagonists has the eect of worsening 
+the hyperglycemia and ketonemia in DM (ch. 224). Concur-
+rent diseases can trigger or coexist with DKA and can contribute 
+clinical issues that alter both prognosis and treatment strate-
+gies; therefore, their recognition and treatment is essential for 
+Diabetic Ketoacidosis and the Hyperosmolar Hyperglycemic State
+Eleonora Malerba
+CHAPTER 290
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHAPTER 290
+•
+Diabetic Ketoacidosis and the Hyperosmolar Hyperglycemic State
+1967
+eBooks.Health.Elsevier.com
+achieving therapeutic success. Absolute or relative insulin de-
+ciency together with excess glucose counter-regulatory hormones 
+also stimulate hepatic glycogenolysis and protein catabolism 
+providing substrate for gluconeogenesis.12 Increased glucose and 
+KB production together with their reduced peripheral utilization 
+lead to accumulations of both in the blood. Most of the glucose 
+in severely hyperglycemic pets with DM is derived from the liver, 
+not from diet.
+PATHOPHYSIOLOGY OF HYPEROSMOLAR 
+HYPERGLYCEMIC STATE
+e pathogenesis of HHS and DKA are similar. e lack of keto-
+sis is usually explained by these patients having a small amount of 
+insulin to inhibit lipolysis but not enough insulin to prevent hyper-
+glycemia.13 Hyperglycemia is due to increased gluconeogenesis, 
+accelerated glycogenolysis, and inadequate use of BG by peripheral 
+tissues (Figure 290.1). Hyperglycemia together with hypernatremia 
+can severely increase plasma osmolality, resulting in an osmotic 
+gradient that draws water out of cerebral cells and contributes to 
+progressive alterations in consciousness. Rapid correction of dehy-
+dration can cause water to ow into cerebral cells leading to cere-
+bral edema. Glomerular ltration is initially increased in HHS, and 
+the resulting glucosuria and osmotic diuresis prevent development 
+of severe hyperglycemia. As plasma volume contracts, glomerular 
+ltration is impaired, limiting renal glucose excretion and contrib-
+uting to worsening hyperglycemia. e higher circulating ratio of 
+insulin/glucagon in patients with HHS, compared to patients with 
+DKA, is consistent with little to no KB synthesis.14 Reduced renal 
+function, impaired renal glucose excretion, and low or undetectable 
+concentrations of KBs slow development of overt clinical signs. is 
+prolongs the course of the disease and may explain why hypergly-
+cemia is generally more severe in HHS than in DKA. Concomitant 
+diseases, especially those that most compromise the ability to main-
+tain adequate water intake (e.g., kidney failure, congestive heart 
+failure [CHF], pancreatitis, pulmonary disease, infection), contrib-
+ute to progressive deterioration and negatively aect prognosis.
+SIGNALMENT, HISTORY AND PHYSICAL 
+EXAMINATION
+DKA and HHS occur most frequently in dogs and cats with undi-
+agnosed DM, but either condition can occur in insulin-treated 
+DM pets. e latter group may have issues related to the insulin 
+treatment regimen (inadequate dosage, errors in the administra-
+tion or storage procedure) and/or development of another dis-
+order causing insulin resistance (e.g., infectious, inammatory, 
+hormonal, cancers). e signalment of pets with DKA and HHS is 
+similar to that of pets with uncomplicated DM: middle-aged and 
+older dogs and cats without breed predisposition, most common 
+in female dogs and male cats. e history for pets with DKA can 
+range from the classic polyuria/polydipsia (PU/PD), polyphagia 
+and weight loss (sometimes unnoticed or considered insignicant 
+by the owner), to the more worrisome systemic signs of severe 
+lethargy, anorexia, and vomiting. Severity of signs correlate with 
+degree of metabolic acidosis, hyperosmolality, dehydration, and 
+the concurrent disorder. Physical examination (PE; ch. 3) is used 
+to assess mental status, strength, hydration, cardiac function, and 
+respiratory status. Sometimes slow deep breathing (i.e., Kussmaul 
+respiration) with a strong odor of acetone on the breath is noted.
+Counterregulatory hormones
+Absolute insulin deficiency
++
+Diabetic ketoacidosis
+Hormone sensitive lipase
+ (uninhibited release)
+Gluconeogenic enzymes
+Gluconeogenesis
+Glycogenolysis
+Glucose utilization
+Osmotic diuresis
+Electrolyte abnormalities
+Dehydration
+Hyperglycemia
+Ketogenesis
+Acidosis
+FFA to liver
+Counterregulatory hormones
+Relative insulin deficiency
++
+Hyperosmolar hyperglycemic state
+Gluconeogenic enzymes
+Hormone sensitive lipase
+ (inhibited release)
+Gluconeogenesis
+Glycogenolysis
+Glucose utilization
+Osmotic diuresis
+Electrolyte abnormalities
+Dehydration
+Absent or minimal
+ketogenesis
+Hyperglycemia
+ (extreme)
+Hyperosmolarity
+Figure 290.1
+Pathogenesis of diabetic ketoacidosis (DKA) and hyperosmolar hyperglycemic state (HHS). Both DKA and HHS result from an insulin 
+deciency together with an increase in glucose counterregulatory hormones (i.e., glucagon, catecholamines, cortisol, and growth hormone). In HHS, 
+the presence of a small amount of insulin is able to inhibit the activity of hormone sensitive lipase in adipocytes, thus decreasing the availability of 
+free fatty acids (FFAs) for ketogenesis and preventing metabolic acidosis and systemic clinical manifestations. Hyperglycemia and hyperosmolarity 
+progressively worsen as a result of increased gluconeogenesis, accelerated glycogenolysis, and inadequate utilization of blood glucose by peripheral 
+tissues. On the contrary, in DKA, the absolute insulin deciency does not allow the inhibition of hormone sensitive lipase and FFAs are mobilized 
+by the adipocytes, reach the liver and are used for ketogenesis. e synthesis of ketone bodies is associated with the release of hydrogen ions in the 
+bloodstream, resulting in metabolic acidosis and associated systemic clinical signs. (Adapted from French EK, Donihi AC, Korytkowski MT. Diabetic 
+ketoacidosis and hyperosmolar hyperglycemic syndrome: review of acute decompensated diabetes in adult patients. BMJ. 2019;365:1114.)

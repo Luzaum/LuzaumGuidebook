@@ -1,0 +1,842 @@
+
+===== Plumb PDF 852 =====
+Meloxicam   825
+selected joining date.15 Follow label instructions for breed-based 
+time of year to administer and guidance on separating ewes and 
+rams.
+GOATS:
+Stimulate testosterone secretion in bucks during nonbreed -
+ing season (extra-label): Following 2.5 months of long days, two  
+18 mg implants (36 mg total dose) administered SC near the base 
+of ears resulted in higher peak testosterone concentrations, which 
+occurred 2 months earlier than in the control group.29
+FERRETS :
+Adjunctive treatment of adrenal disease to help control clinical 
+signs (extra-label): 
+a) Oral formulations: Anecdotally, 0.5 – 1 mg/ferret (NOT  
+mg/kg) PO once daily 7 to 9 hours after sunrise17,30
+b) Implant dosages: 2.7 mg/ferret (NOT mg/kg [under 600 g 
+body weight]) or 5.4 mg/ferret (NOT mg/kg [over 600 g body 
+weight]) SC every 3 to 4 months
+MINK:
+Accelerate fur priming cycle (label dosage; FDA-approved):  
+2.7 mg/mink (NOT mg/kg) implanted SC21
+Monitoring
+ ■ Clinical efficacy (eg, depending on indication: hair regrowth, es -
+trus suppression, improvement in sleep/unwanted behaviors)
+ ■ Adverse effects (eg, sedation, lethargy, weight gain, sterile ab -
+scesses [implants only])
+Client Information
+ ■ For treatment of hair loss, efficacy of melatonin varies. A 4-month 
+trial is necessary to see if the treatment is beneficial.
+ ■ The oral medicine may be given with or without food.
+ ■ This medicine is usually well tolerated; sleepiness may occur.
+Chemistry/Synonyms
+Melatonin is a naturally occurring hormone produced in the pine -
+al gland. It occurs as a white to pale yellow, crystalline solid that is 
+slightly soluble in water and has a molecular weight of 232. It can be 
+derived from natural sources or by synthetic means.
+Melatonin may also be known as n-acetyl-5-methoxytryptamine, 
+MEL, MLT, or pineal hormone.
+Storage/Stability
+Unless otherwise labeled, store at room temperature in tight con -
+tainers.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS :
+Melatonin implant 2.7 mg; PrimeX®; (OTC). FDA-approved for use 
+in mink. NADA# 140-846. Although this product is still listed in 
+FDA ’s Green Book of approved animal drugs, marketing status is 
+uncertain.
+The following products are marketed for ferret and dog use. Their 
+FDA approval status is not known, and they are not listed in FDA ’s 
+Green Book of approved animal drugs. 
+Melatonin Implant 2.7 mg and 5.4 mg; Ferretonin®; (OTC); marketed 
+for ferrets
+Melatonin Implant 8 mg, 12 mg, 18 mg, and 24 mg; Dermatonin®; 
+(OTC); marketed for dogs, cats, sheep, goats, skunk, cattle, and 
+ horses. 
+An 18 mg implant for sustained SC release is available in a variety of 
+countries. One trade name is Regulin®. It is labeled for use in sheep 
+(UK and AUS/NZ) and goats (AUS/NZ) to improve early breeding 
+and ovulation rates.
+HUMAN-LABELED PRODUCTS :
+Melatonin Capsules, Tablets, Chewable Tablets, Disintegrating Oral 
+Tablets, Gummies, Extended-Release Tablets, Sublingual Tablets:  
+0.2 – 20 mg, although 1 – 10 mg are most common; (OTC). Because 
+melatonin is considered a “nutraceutical, ” there is no official labeling 
+or central quality control systems for it in the US. Purchase from 
+reputable sources.
+Melatonin Oral Solution: 0.25 mg/mL, 0.33 mg/mL, and 1 mg/mL; 
+generic; (OTC)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Meloxicam
+(mel-ox-i-kam) Metacam®
+Nonsteroidal Anti-Inflammatory Drug (NSAID)
+Prescriber Highlights
+ ▶ COX-2–preferential NSAID used in many species
+ ▶ Long-term use in cats is controversial. 
+ ▶ Available as both injectable and oral products
+ ▶ Primary adverse effects are GI- and renal-related, but idiosyn-
+cratic hepatotoxicity has occurred in dogs (rare).
+Uses/Indications
+Meloxicam is FDA-approved for the treatment of pain, inflamma -
+tion, and osteoarthritis in dogs.1,2 Short-term use (eg, single-dose in-
+jectable, administered before surgery) of meloxicam is also FDA-ap-
+proved in the United States in cats to control postoperative pain and 
+inflammation associated with orthopedic surgery, ovariohysterecto-
+my, and castration.3 Meloxicam is licensed in several countries for 
+long-term use (at lower doses) in cats. 
+Oral meloxicam may be a cost-effective agent for use during pain-
+ful procedures such as castration or dehorning in calves 4; however, 
+meloxicam administration in calves prior to transportation did not 
+affect movement or feeding or drinking behaviors5 and did not miti-
+gate leukocyte function or inflammatory markers.6
+Metronomic cyclophosphamide and meloxicam successfully 
+managed oral squamous cell carcinoma in a horse.7
+Pharmacology/Actions
+Like other NSAIDs, meloxicam exhibits analgesic, anti-inflammato-
+ry, and antipyretic activity, most likely through its inhibition of cy -
+clooxygenase (COX) and prostaglandin synthesis. Meloxicam is con-
+sidered COX-2 preferential (not COX-2 specific) because at higher 
+doses, its COX-2 specificity is diminished.
+Pharmacokinetics
+In dogs, meloxicam is almost completely absorbed after PO and SC 
+administration. The oral transmucosal spray product (not current -
+ly marketed in the United States) is bioequivalent to the canine-ap -
+proved oral suspension. 8 Peak blood concentrations occur ≈4 to 8 
+hours after oral administration and 2.5 hours after SC administra -
+tion.1,3,9,10 The volume of distribution in dogs is 0.3 L/kg and ≈97% is 
+bound to plasma proteins. Meloxicam is extensively biotransformed 
+to several different metabolites in the liver; none of these appear to 
+have pharmacologic activity. The majority of these metabolites (and 
+unchanged drug) are eliminated in the feces. A significant amount 
+of enterohepatic recirculation occurs. Elimination half-life is spe -
+cies-specific. The elimination half-life in dogs averages 24 hours 
+(range, 12 to 36 hours).
+In cats, SC injection is nearly completely absorbed. Peak con -
+centrations occur ≈1.5 hours after injection. Meloxicam is relatively 
+highly bound to feline plasma proteins (97%), and volume of distri-
+bution is ≈0.27 L/kg. After a single dose, total systemic clearance is 
+
+
+===== Plumb PDF 853 =====
+826    Meloxicam
+≈130 mL/hour/kg, and elimination half-life is ≈15 hours. The major 
+pathway for biotransformation is oxidation, and the major elimina-
+tion route is fecal.
+In horses, oral meloxicam tablets appear to be well absorbed, 
+regardless of feeding status. 11 Elimination half-life in horses given  
+0.6 mg/kg IV toward the end of laparotomy for colic syndrome was 
+6.9 hours12 and 5 hours in horses given 0.6 mg/kg PO once daily for 
+14 days.13 Absorption was similar in foals younger than 6 weeks of 
+age, but elimination half-life was 2.5 hours.14
+In ruminant calves (≈3 months of age), meloxicam 1 mg/kg PO 
+was well absorbed and had an elimination half-life of ≈24 hours. 4 
+Half-life was 25.7 hours in 4- to 6-month-old beef calves given  
+0.5 mg/kg PO every 24 hours for 4 days, and meloxicam tissue 
+concentrations were below the concentration of quantification 
+15 days after treatment. 15 In 6-month-old Holstein steers given  
+1 mg/kg PO, the terminal half-life was 16.7 hours, and mean res -
+idence time (MRT) was 34 hours. 16 In adult cows given a single  
+1 mg/kg PO dose, elimination half-life was 10 to 13 hours. 15,17 MRT 
+was 30.3 hours in postpartum cows as compared with 22.3 hours in 
+mid-lactation cows. Meloxicam was detected in the milk of postpar-
+tum cows up to 144 hours after administration, as compared with 96 
+hours in mid-lactation cows, and the authors suggest that a 96-hour 
+milk withdrawal period may be insufficient in postpartum cows to 
+avoid a violative residue.18
+In lactating goats, meloxicam 0.5 mg/kg IM was completely ab -
+sorbed, and elimination half-life was 10.8 hours. 19 Administration 
+once every 24 hours was predicted to provide an analgesic plasma 
+concentration. Meloxicam was quantifiable in milk up to 48 hours 
+after IM administration. 
+Elimination half-life was 15.4 hours in healthy sheep given  
+0.5 mg/kg IV or 1 mg/kg PO; oral bioavailability was 72%, and time 
+to peak concentration was 19 hours.20
+Meloxicam was well absorbed (bioavailability, ≈90%) in mature 
+swine given 0.5 mg/kg IV and PO, and elimination half-life was ≈6 
+hours.21
+In African gray parrots given 1 mg/kg IV , IM, and PO as a sin -
+gle dose, peak drug concentrations were reached 30 minutes and 13 
+hours after IM and PO administration, respectively. Bioavailability 
+was 78% (IM) and 38% (PO) as compared with IV administration. 
+Elimination half-life with IV administration was 31 hours.22 Plasma 
+accumulation ratios of 2 (IM) and 2.4 (PO) were noted with meloxi-
+cam dosages of 1 mg/kg PO or IM every 24 hours for 7 (IM) or 12 
+(PO) days.23 In Hispaniolan parrots, peak meloxicam concentration 
+occurred at 15 minutes, with 100% bioavailability after IM admin -
+istration, while peak concentrations occurred 6 hours after oral ad -
+ministration with 50% to 75% bioavailability. Elimination half-life 
+was ≈15 hours regardless of the route of administration.24
+In healthy white leghorn hens, a single dose of meloxicam 1 mg/kg  
+PO produced peak concentrations after 2 hours, and the plasma 
+elimination half-life was 2.8 hours. Meloxicam was not detected after 
+4 days in egg whites and after 8 days in egg yolks.25
+Contraindications/Precautions/Warnings
+Meloxicam is contraindicated in animals that are hypersensitive to 
+it. The European and United Kingdom labels state that safe use has 
+not been evaluated in dogs younger than 6 weeks of age9,10; the Unit-
+ed States FDA label states that safe use has not been established in 
+dogs younger than 6 months of age.1 The drug should not be used or 
+should be used with extreme caution in dogs with active GI ulcer -
+ation or bleeding or in dogs receiving glucocorticoids. 10,26 To avoid 
+accidental overdosing, dogs weighing less than 4.5 kg (10 lb) should 
+have meloxicam doses carefully measured and applied on food only, 
+never directly into the mouth.2
+Meloxicam, like all NSAIDs, should be used with caution in ani -
+mals with impaired hepatic, cardiac, or renal function and animals 
+with hemorrhagic disorders. Hypotension, high doses, hypovolemia, 
+sodium depletion, and inhalant anesthesia all appear to increase risk 
+for NSAID renal toxicity.27
+Concurrent use with other anti-inflammatory drugs may result 
+in additional or increased adverse effects; therefore, a treatment-free 
+period from all other anti-inflammatories should be observed for 
+at least 24 hours before beginning treatment with meloxicam. The 
+treatment-free period, however, should take into account the phar -
+macokinetic properties of the products used previously. Use meloxi-
+cam under strict veterinary monitoring in animals with a risk for 
+GI ulcers, or if the animal previously displayed intolerance to other 
+NSAIDs.  
+The manufacturer warns that additional doses of meloxicam or 
+other NSAIDs are contraindicated in cats, as no safe dose for re -
+peated NSAID administration has been established, and the United 
+States product labels contain a boxed warning stating that repeated 
+use of meloxicam in cats has been associated with acute renal failure 
+and death.3 Safe use in cats younger than 4 months of age has not 
+been established. Preoperative use in cats undergoing major surgery, 
+in which hypotensive episodes are possible, may result in a higher 
+risk for renal damage.
+The human label states that no dose adjustment is necessary in 
+patients with mild to moderate hepatic or renal impairment. 
+The veterinary oral suspension comes with a dosing syringe that is 
+marked in pounds. If providing dosing directions in mL, make sure 
+to supply an appropriately marked dosing syringe.
+Adverse Effects
+Experience in Europe and Canada has demonstrated a relatively 
+safe adverse effect profile for meloxicam at labeled doses in healthy 
+dogs.26 GI distress is the most commonly reported adverse effect, 
+and in United States field trials, vomiting, soft stools, diarrhea, and 
+inappetence were the most common adverse effects. Renal toxicity 
+appears to be quite low in animals with normal renal blood flow. 
+Adverse effects reported postapproval have included GI effects (eg, 
+vomiting, anorexia, diarrhea, melena, ulceration), elevated liver en -
+zymes/hepatotoxicity, pruritus, azotemia, elevated creatinine, and 
+renal failure. When NSAIDs are used long term in dogs, gastropro -
+tectant drugs (eg, proton pump inhibitors [PPIs], H2 blockers, miso-
+prostol) have been used in an attempt to prevent or limit GI adverse 
+effects, but the benefits of these drugs have not been proven.28 
+Like other COX-2 NSAIDs, meloxicam may have effects on plate-
+let function, although no effect was demonstrated in healthy dogs 
+in a small study.29 A case report of a dog developing vasculitis with 
+ulcers, vesicles, and erosions has been published. 30 In cats, single 
+doses of meloxicam appear relatively safe. In field trials, some cats 
+developed elevated BUN, posttreatment anemia, and residual pain 
+at the injection site (rare). In other studies, meloxicam has caused 
+GI effects (eg, vomiting, diarrhea, inappetence), behavior changes, 
+and lethargy. Repeated use of meloxicam in cats is controversial, as 
+repeated doses have been associated with renal failure and death. The 
+FDA warns against repeated doses in cats; however, low-dose long-
+term use is licensed in some countries, and guidelines for long-term 
+NSAID use in cats suggest the benefits of treatment often outweigh 
+the risks.31
+Acute dosing studies in dogs have not demonstrated any hepatic 
+toxicity.1,3 Administration to piglets for ≈2 months demonstrated no 
+adverse effects on trabecular bone or growth plates.32 
+Meloxicam is relatively safe in other species (eg, horses, cattle, 
+camelids, swine, rabbits, small ruminants) when used at recom -
+mended doses.
+Reproductive/Nursing Safety
+Safe use has not been established in dogs or cats used for breeding 
+
+
+===== Plumb PDF 854 =====
+Meloxicam   827
+or in pregnant or lactating animals. Meloxicam had a positive effect 
+on pregnancy rates after embryo transfer in heifers. 33,34 Meloxicam 
+reduced deslorelin-induced ovulation and induced intrafollicular 
+hemorrhage and luteinization of anovulatory follicles in mares.35
+Most NSAIDs are excreted in milk. Because safety has not been 
+established, this drug should only be used when the maternal bene -
+fits outweigh the potential fetal risks. 
+Overdose/Acute Toxicity
+GI effects (eg, vomiting, diarrhea) and renomegaly with minimal 
+degeneration and necrosis were noted in dogs given 3 and 5 times 
+the label dosage during 6-week safety studies. Overdoses should be 
+treated supportively based on clinical signs. Therapeutic plasma ex-
+change was successful in the overdose management of one dog.36
+For patients that have experienced or are suspected to have experi-
+enced an overdose, consultation with a 24-hour poison consultation 
+center that specializes in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+In humans, meloxicam is a CYP2C9 substrate. The following drug 
+interactions have either been reported or are theoretical in humans 
+or animals receiving meloxicam and may be of significance in veteri-
+nary patients. Unless otherwise noted, use together is not necessarily 
+contraindicated, but weigh the potential risks and perform addition-
+al monitoring when appropriate.
+ ■ Angiotensin Converting Enzyme Inhibitors  (ACEIs; eg, 
+benazepril, enalapril): NSAIDs can reduce effects on blood pres-
+sure.
+ ■ Amiodarone : May increase meloxicam concentrations
+ ■ Amlodipine : Some NSAIDs can reduce effects on blood pres -
+sure.
+ ■ Anesthetics, Inhalant (eg, isoflurane, sevoflurane ): May 
+increase risk for renal hypotension and NSAID renal toxicity
+ ■ Angiotensin-II Receptor Blockers  ( ARBs; eg, telmisar-
+tan): Some NSAIDs can reduce effects on blood pressure.
+ ■ Anticoagulants  (eg, heparins, rivaroxaban, warfarin ): In -
+creased chance for bleeding
+ ■ Bisphosphonates (eg, alendronate): May increase risk for GI 
+ulceration
+ ■ Clopidogrel : Increased chance for bleeding
+ ■ Corticosteroids  (eg, dexamethasone, prednis(ol)one): May 
+increase risk for GI toxicity (eg, ulceration, bleeding, vomiting, 
+diarrhea); avoid use with NSAIDs
+ ■ Cyclosporine (systemic): Concurrent use may result in in -
+creased risk for cyclosporine nephrotoxicity. 
+ ■ Digoxin : NSAIDs may increase serum concentrations.
+ ■ Diuretics (eg, furosemide, hydrochlorothiazide): Concurrent 
+use may result in reduced diuretic efficacy and possible nephro -
+toxicity.
+ ■ Fluconazole : Administration has increased plasma concen -
+trations of celecoxib in humans and could also affect meloxicam 
+concentrations in dogs.
+ ■ Fluoroquinolones (eg, enrofloxacin, marbofloxacin ): 
+Meloxicam may increase fluoroquinolone concentrations, in -
+creasing risk for CNS toxicity.
+ ■ Leflunomide : May increase meloxicam exposure; risk for le -
+flunomide hepatotoxicity may be increased
+ ■ Methotrexate : Concomitant NSAID use with methotrexate 
+may increase risk for myelosuppression, nephropathy, hepatotox-
+icity, and GI toxicity; use together with extreme caution.
+ ■ Nephrotoxic Drugs  (eg, aminoglycosides, amphotericin B, 
+furosemide): May enhance risk for nephrotoxicity
+ ■ NSAIDs ( eg, carprofen): May increase risk for GI toxicity (eg, 
+ulceration, bleeding, vomiting, diarrhea)
+ ■ Pentoxifylline : May increase risk for bleeding
+ ■ Salicylates (eg, aspirin, bismuth subsalicylate ): Concurrent 
+use may increase risk for GI toxicity and bleeding.
+ ■ Selective Serotonin Reuptake Inhibitors (SSRIs; eg, 
+fluoxetine): Concurrent use may result in an increased risk for 
+bleeding.
+ ■ Sulfonamides (eg, sulfamethoxazole): May inhibit meloxicam 
+metabolism, increasing meloxicam exposure and risk for toxicity 
+ ■ Tricyclic Antidepressants (eg, amitriptyline, clomip -
+ramine): Concurrent use may increase risk for bleeding.
+Dosages
+When doses are listed in drops, use with caution; drug concentra -
+tion per drop may be different in products marketed in different 
+ countries.
+DOGS:
+Control of pain and inflammation associated with osteoarthri-
+tis (label dosage; FDA-approved): 0.2 mg/kg PO, IV , or SC on the 
+first day of treatment; subsequent doses of 0.1 mg/kg PO every 
+24 hours.1–3 For dogs weighing less than 4.5 kg (10 lb), admin -
+ister drops on food only, never directly into the mouth; for dogs 
+weighing more than 4.5 kg (10 lb), drops can be placed in food or 
+directly into the mouth. Consult product labels for additional oral 
+dosing instructions for dogs weighing less than 2.3 kg (5 lb).2 Use 
+the lowest effective dose for the shortest duration consistent with 
+individual response. 
+CATS:
+Control of postoperative pain and inflammation associated 
+with orthopedic surgery, ovariohysterectomy, and castration  
+(label dosage; FDA-approved): 0.3 mg/kg SC once; should not be 
+followed by additional doses of meloxicam or other NSAIDs.3
+NOTE: The following dosages for cats are extra-label in the Unit-
+ed States, and in 2010, the drug sponsor and the FDA issued the 
+following: WARNING: Repeated use of meloxicam in cats has been 
+associated with acute renal failure and death. Do not administer 
+additional doses of injectable or oral meloxicam to cats.1 See Con-
+traindications/Precautions/Warnings. However, the ISFM and 
+AAFP Consensus Guidelines: Long-Term Use of NSAIDs in Cats 
+include the following statements: 
+It is only recently that NSAIDs have become licensed for long-term 
+use in cats in some countries. The panel believe that these drugs 
+have a major role to play in the management of chronic pain in cats, 
+but at present only limited feline-specific data are available. To date 
+published studies of the medium- to long-term use of the COX-1 
+sparing drug meloxicam in older cats and cats with chronic kidney 
+disease provide encouraging data that these drugs can be used safe-
+ly and should be used to relieve pain when needed. While further 
+data are needed and would undoubtedly lead to refinement of the 
+guidelines presented here, the panel hope that these recommenda -
+tions will encourage rational and safe long-term use of NSAIDs in 
+cats, thereby improving patients’ quality of life in the face of painful 
+disease conditions.31
+Prevention of mild to moderate postoperative pain and inflam-
+mation following surgical procedures: 0.2 mg/kg SC once before 
+surgery. To continue treatment for up to 5 days, the initial dose 
+may be followed 24 hours later by administration of oral suspen-
+sion at 0.05 mg/kg PO every 24 hours for a total of up to 4 oral 
+doses. For cats not receiving additional oral doses, a single injec -
+
+
+===== Plumb PDF 855 =====
+828    Meloxicam
+tion of meloxicam 0.3 mg/kg SC has also been shown to be safe 
+and effective.37
+Alleviation of pain and inflammation associated with acute or 
+chronic musculoskeletal disorders: On the first day of treatment, 
+0.1 – 0.2 mg/kg PO once for acute disorders or 0.1 mg/kg PO 
+once for chronic disorders.38–40 Thereafter, maintenance treatment 
+should be 0.05 mg/kg PO every 24 hours. A clinical response is 
+normally seen within 7 days. Treatment should be discontinued 
+after 14 days if no clinical improvement is apparent.38,41 Many cats 
+may experience pain relief at even lower doses given every 2 to 3 
+days. Titrating to the lowest effective dose may help avoid adverse 
+effects.42,43
+HORSES :
+Inflammation and pain associated with musculoskeletal disor-
+ders or colic pain (extra-label): 
+a) IV: 0.6 mg/kg IV once; oral dose may be given after 24 hours. 
+b) Oral: 0.6 mg/kg PO either mixed with food or given directly 
+in the mouth every 24 hours, for up to 14 days. When admin-
+istering this product with food, add to a small quantity of feed 
+to be fed before providing full meal.44,45
+Pain and inflammation (extra-label): 
+a) Foals: In a pharmacokinetic study in healthy foals, the authors 
+concluded 0.6 mg/kg PO every 12 hours would likely be thera-
+peutic in foals younger than 7 weeks of age.14
+b) Adults: 0.6 mg/kg PO every 24 hours was effective in a lipo -
+polysaccharide-induced synovitis model of pain.46
+CATTLE:
+Acute respiratory infection with appropriate antibiotic therapy 
+to reduce clinical signs in cattle; diarrhea, in combination with 
+oral rehydration therapy, to reduce clinical signs in calves older 
+than 1 week of age and young nonlactating cattle; as adjunctive 
+therapy in the treatment of acute mastitis, in combination with 
+antibiotic therapy (extra-label): 0.5 mg/kg SC, IV , or IM once47 
+Analgesia for surgical pain (extra-label): 
+a) Oral: 0.5 – 1 mg/kg PO every 24 to 48 hours. 48 Single doses 
+appear effective for dehorning.16 
+b) Buccal: 0.5 mg/kg buccal meloxicam gel reduced pain and 
+inflammation related to castration 49 and dehorning 50 in un -
+weaned beef calves. 
+Lameness (extra-label): 0.5 mg/kg PO once daily for 4 days alone 
+or in combination with gabapentin (15 mg/kg PO once daily) was 
+effective in experimentally induced lameness in 4- to 6-month-
+old beef calves.51
+SMALL RUMINANTS :
+Pain and inflammation (extra-label): 
+a) Sheep: 0.5 mg/kg IV every 12 hours. 2 mg/kg PO on first day 
+and then 1 mg/kg PO every 24 hours. A single 1 mg/kg SC in-
+jection provided analgesia in an experimental pain model.52,53 
+b) Goats: 0.5 mg/kg IV every 8 hours; 0.5 mg/kg IM or PO every 
+24 hours.54 1 mg/kg of buccal meloxicam was shown to be ef -
+fective when given to lambs immediately before marking 55 or 
+surgical mulesing and hot-knife tail docking.56
+CAMELIDS :
+Pain and inflammation (extra-label): 0.5 mg/kg IV; 1 mg/kg PO 
+every third day54
+ SWINE:
+Noninfectious locomotor disorders to reduce the clinical signs 
+of lameness and inflammation; for adjunctive therapy in the 
+treatment of puerperal septicemia and toxemia (mastitis-me -
+tritis-agalactia syndrome) with appropriate antibiotic therapy  
+(extra-label): 0.4 mg/kg IM once. If required, a second adminis -
+tration of meloxicam can be given after 24 hours.
+BIRDS:
+Analgesic (extra-label): 0.5 mg/kg IM once is also commonly 
+used in birds and may be the safest of the NSAID analgesics for 
+avian species. Because the adverse effects of all analgesics have not 
+been studied in birds, these drugs should be used carefully in avi-
+an patients.57 Another source states, Injectable forms of meloxicam 
+and carprofen will cause myositis/muscle necrosis and therefore oral 
+formulations are recommended . . . however oral bioavailability of 
+NSAIDs varies greatly between avian species. Therefore, it is critical 
+to monitor response to dosage and frequency of NSAID treatment 
+for each avian patient.58  
+FERRETS :
+Anti-inflammatory/analgesic for postsurgical pain (extra-label): 
+0.2 mg/kg PO or SC once59,60
+SMALL MAMMALS :
+Pain and inflammation (extra-label): 
+a) Rabbits: Pharmacokinetic studies in healthy rabbits receiving 
+1 mg/kg PO every 24 hours for 5 to 29 days concluded that 
+meloxicam at this dose and treatment duration may be safe 
+and effective.61,62 
+b) Rats: 1 mg/kg PO or SC every 12 to 24 hours63
+c) Guinea pigs: 
+i. 0.2 mg/kg PO as a single presurgical dose, followed by  
+0.1 mg/kg PO every 24 hours for postoperative days 2 and 
+3. Dose may be titrated up to 0.5 mg/kg in individual cases; 
+do not exceed 0.6 mg/kg per dose.38 
+ii. 0.1 – 0.3 mg/kg PO or SC every 24 hours has also been 
+ recommended.63 
+REPTILES : 
+Pain and inflammation  (extra-label): 0.2 mg/kg PO every 
+24 hours for 5 days. Subsequent administration should be  
+0.2 mg/kg every 48 hours. A study in ball pythons failed to demon-
+strate analgesic effects when meloxicam was used at 0.3 mg/kg.64
+Monitoring
+ ■ Clinical efficacy
+ ■ Adverse effects, especially GI effects in dogs
+ ■ Baseline and periodic serum renal and hepatic chemistry pan -
+els when used chronically. One recommendation is to perform 
+baseline renal and hepatic panels; repeat within the first 2 weeks 
+and periodically thereafter.27 When liver enzymes are elevated and 
+concern for liver function is present, liver function tests (eg, se -
+rum bile acids) should be performed.65
+Client Information
+ ■ If using the oral liquid, shake the bottle well before using, and 
+carefully measure the dose. Do not confuse the markings on the 
+syringe (provided by the manufacturer). Give with food. For dogs 
+weighing less than 4.5 kg (10 lb), it is safest to carefully measure 
+the amount of medicine to give and apply it directly to a small 
+amount of food. Do not give this medicine directly in the mouth.
+ ■ Most animals tolerate meloxicam well, but ulcers or serious kid -
+ney and liver problems can develop (rare), especially in cats. Con-
+tact your veterinarian if your animal develops side effects such as 
+eating less than normal, vomiting, changes in bowel movements, 
+changes in behavior or activity (ie, more or less active than nor -
+mal), weakness (eg, stumbling, clumsiness), seizures (ie, convul -
+sions), aggression (ie, threatening behavior/actions), changes in 
+drinking habits (ie, frequency, amount consumed), changes in 
+urination habits (ie, frequency, color, or smell), and/or yellowing 
+of gums, skin, or whites of the eyes (ie, jaundice). 
+
+
+===== Plumb PDF 856 =====
+Melphalan   829
+ ■ Store this medicine well out of reach of animals and children, es-
+pecially the honey-flavored oral liquid.
+ ■ Periodic laboratory tests to check for liver and kidney side effects 
+are required. 
+Chemistry/Synonyms
+Meloxicam is a COX-2–preferential NSAID that occurs as a pale-yel-
+low powder. It is in the oxicam class, related to piroxicam.
+Meloxicam may also be known as UH-AC-62 and/or UH-AC-
+62XX; many trade names are available, including Alloxate®, Infla-
+cam®, Loxicom®, M-eloxyn®, Meloxadin®, Meloxidolor®, Meloxidyl®, 
+Meloximed®, Metacam®, Ostilox® Recocam®, Rheumocam®, and Zeler-
+is®.
+Storage/Stability
+Unless otherwise labeled, store the injection and oral liquid at con -
+trolled room temperature (20°C to 25°C [68°F-77°F]), with excur -
+sions permitted between 15°C to 30°C (59°F-86°F) for the oral sus -
+pension. The oral suspension labeled for use in the United Kingdom 
+has a 6-month shelf life after the immediate package is first opened.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS :
+Meloxicam Oral Suspension: 0.5 mg/mL (0.02 mg/drop) and  
+1.5 mg/mL (0.05 mg/drop) in a honey-flavored base: 10 mL,  
+32 mL, 100 mL, and 180 mL dropper bottles with measuring syringe 
+(marked in 5-lb body weight increments); Metacam®, generic; (Rx). 
+FDA-approved for use in dogs. NADA# 141-213
+Meloxicam 5 mg/mL for Injection: 10 mL vial; Metacam®, generic; 
+(Rx). FDA-approved for use in dogs and cats. NADA# 141-219
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+Suggested withdrawal periods for extra-label use; always consult 
+with local regulatory agencies prior to prescribing:
+Horses: meat/offal, 5 days44,45
+Cattle: Conservative 21- to 30-day meat withdrawal and 5-day milk 
+withdrawal times have been recommended. 66,67 United Kingdom 
+withdrawal periods: 15-day meat withdrawal; milk: 120 hours47
+Swine: meat/offal, 5 days45
+Sheep and goats : 15-day meat withdrawal time has been 
+ recommended.67
+HUMAN-LABELED PRODUCTS :
+Meloxicam Tablets: 7.5 mg and 15 mg; Mobic®, generic; (Rx)
+Meloxicam Capsules: 5 mg and 10 mg; Vivlodex®; (Rx)
+Meloxicam Oral Suspension: 7.5 mg/5 mL in 100 mL bottle; Mobic®, 
+generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Meloxicam
+Melphalan
+(mel-fa-lan) Alkeran®, Evomela®
+Antineoplastic
+Prescriber Highlights
+ ▶ Alkylating antineoplastic agent primarily used for multiple 
+myeloma, resistant leukemia or lymphoma, and various other 
+neoplasms
+ ▶ Use with caution in patients with anemia, leukopenia, 
+thrombocytopenia, previous chemotherapy or radiotherapy, 
+impaired hepatic or renal function, or in those for whom im-
+munosuppression may be dangerous (eg, infection).
+ ▶ Adverse effects include chronic bone marrow suppression 
+(eg, anemia, thrombocytopenia, leukopenia), GI effects (eg, 
+anorexia, vomiting, diarrhea), and pulmonary infiltrates or 
+fibrosis.
+ ▶ Potentially teratogenic and fetotoxic
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies melphalan as a hazardous drug; use appro-
+priate precautions when handling it.
+Uses/Indications
+Melphalan may be useful in the treatment of a variety of neoplas -
+tic diseases, including lymphoreticular neoplasms particularly of 
+plasma cell neoplasms, osteosarcoma, and mammary or pulmonary 
+neoplasms. When combined with prednisone, it is considered the 
+drug of choice for treating multiple myeloma. Melphalan can be used 
+for treating primary (essential) thrombocythemia in dogs or cats. It 
+has been used with some success in a variety of rescue protocols, 
+including dexamethasone, melphalan, dactinomycin, and cytarabine 
+(DMAC) for relapsed multicentric lymphoma in dogs and cats, 1–4 
+and mechlorethamine, vincristine, melphalan, and prednisolone 
+(MOMP) for relapsed canine lymphoma 5 and resistant feline lym -
+phoma.6 Melphalan has been used successfully in combination with 
+prednisone for canine cutaneous plasmacytosis.7
+Pharmacology/Actions
+Melphalan is a bifunctional alkylating agent and interferes with RNA 
+transcription and DNA replication, thereby disrupting nucleic acid 
+function. Because it is bifunctional, it has effects on both dividing 
+and resting cells. Melphalan does not require activation by the liver 
+(unlike cyclophosphamide).
+Pharmacokinetics
+Melphalan absorption is variable and often incomplete. It is dis -
+tributed throughout the body water, but it is unknown whether it 
+crosses the placenta, blood–brain barrier, or enters maternal milk. 
+Melphalan is eliminated principally by hydrolysis. In humans, pro -
+tein binding varies from 50% to 92%, and terminal half-lives are ≈75 
+minutes following IV administration.
+Contraindications/Precautions/Warnings
+Melphalan should not be used in patients with a history of hyper -
+sensitivity and should be used with caution in the following condi -
+tions: anemia, bone marrow depression, current infection, impaired 
+hepatic or renal function, tumor cell infiltration of bone marrow, or 
+patients that have received previous chemotherapy or radiotherapy. 
+Severe bone marrow suppression resulting in infection or bleeding 
+can occur in humans. Melphalan is considered an irritant, and care 
+should be taken to avoid extravasation.
+In humans with impaired renal function receiving IV melphalan, 
+a 50% dose reduction is suggested.8 
+The National Institute for Occupational Safety and Health (NIOSH) 
+classifies melphalan as a hazardous drug; personal protective equipment 
+(PPE) should be used accordingly to minimize the risk for exposure. 
+
+
+===== BSAVA PDF 266 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+250
+Melatonin
+(Circadin) POM 
+Formulations: Oral: 2 mg and 3 mg tablets. Melatonin is also 
+available in many over-the-counter formulations of various sizes and 
+often with other drugs added.
+Action: Hormone which is involved in the neuroendocrine control 
+of seasonal hair loss, although the exact mechanism is not known.
+Use:
+• Treatment of hair cycling disorders in dogs; in particular, the 
+treatment of alopecia X and seasonal flank alopecia.
+A 4–6 week trial is recommended, if no growth is noted then 
+treatment should be discontinued. For seasonal flank alopecia, 
+treatment may have to be repeated the following year. The effect of 
+melatonin on hair regrowth in dogs with non-pruritic alopecia of 
+unknown aetiology is variable and every effort should be made to 
+identify the underlying disorder before starting this therapy. Oral 
+bioavailability of melatonin in dogs is unknown.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+Dogs: Hair cycling disorders: 3–6 mg p.o. q8h.
+Cats: No information available.
+References
+Frank LA, Hnilica KA and Oliver JW (2006) Adrenal steroid hormone concentrations in 
+dogs with hair cycle arrest (Alopecia X) before and during treatment with melatonin and 
+mitotane. Veterinary Dermatology  1, 278–284
+Meloxicam
+(Inflacam, Loxicom, Meloxidyl, Meloxivet, 
+Metacam, Rheumocam) POM-V 
+Formulations: Oral: 0.5 mg/ml suspension for cats, 1.5 mg/ml 
+oral suspension for dogs; 1.0 mg, 2.5 mg tablets for dogs.  Injectable: 
+2 mg/ml solution for cats, 5 mg/ml solution.
+Action: Preferentially inhibits COX-2 enzyme thereby limiting the 
+production of prostaglandins involved in inflammation.
+Use:
+• Alleviation of inflammation and pain in both acute and chronic 
+musculoskeletal disorders and the reduction of postoperative pain 
+and inflammation following orthopaedic and soft tissue surgery.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 267 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+251
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+All NSAIDs should be administered cautiously in the perioperative 
+period as they may adversely affect renal perfusion during periods of 
+hypotension. If hypotension during anaesthesia is anticipated, delay 
+meloxicam administration until the animal is fully recovered from 
+anaesthesia and normotensive. Liver disease will prolong the 
+metabolism of meloxicam leading to the potential for drug 
+accumulation and overdose with repeated dosing. The oral dose 
+(standard liquid preparation) may be administered directly into the 
+mouth or mixed with food. In the cat, due to the longer half-life and 
+narrower therapeutic index of NSAIDs, particular care should be 
+taken to ensure the accuracy of dosing and not to exceed the 
+recommended dose. Administration to animals with renal disease 
+must be carefully evaluated.
+Safety and handling: After first opening a bottle of liquid oral 
+suspension use contents within 6 months. Shake the bottle of the 
+oral suspension well before dosing. The shelf-life of a broached 
+bottle of injectable solution is 28 days.
+Contraindications: Do not give to dehydrated, hypovolaemic or 
+hypotensive patients or those with GI disease or blood clotting 
+problems. Administration of meloxicam to animals with renal disease 
+must be carefully evaluated and is not advisable in the perioperative 
+period. Do not give to pregnant animals or animals <6 weeks of age.
+Adverse reactions: GI signs may occur in all animals after NSAID 
+administration. Stop therapy if this persists beyond 1–2 days. Some 
+animals develop signs with one NSAID and not another. A 3–5-day 
+wash-out period should be allowed before starting another NSAID 
+after cessation of therapy. Stop therapy immediately if GI bleeding is 
+suspected. There is a small risk that NSAIDs may precipitate cardiac 
+failure in humans and this risk in animals is not known.
+Drug interactions: Do not administer concurrently or within 24 
+hours of other NSAIDs and glucocorticoids. Do not administer with 
+other potentially nephrotoxic agents, e.g. aminoglycosides.
+DOSES
+Dogs: Initial dose is 0.2 mg/kg s.c., p.o.; if given as a single 
+preoperative injection effects last for 24 hours. Can be followed by a 
+maintenance dose of 0.1 mg/kg p.o q24h.
+Cats:   
+• Initial injectable dose is 0.2 mg/kg s.c.; if given as a single 
+preoperative injection effects last for 24 hours. To continue 
+treatment for up to 5 days, may be followed 24 hours later by 
+the oral suspension for cats at a dosage of 0.05 mg/kg p.o.
+• Postoperative pain/inflammation:  single injection of 0.3 mg/kg 
+s.c. has been shown to be safe and efficacious. It is not 
+recommended to follow this with oral meloxicam 24 hours later.
+• Chronic pain: initial oral dose is 0.1 mg/kg p.o. q24h, which can 
+be followed by a maintenance dose of 0.05 mg/kg p.o q24h. 
+Treatment should be discontinued after 14 days if no clinical 
+improvement is apparent. 
+
+
+===== BSAVA PDF 268 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+252
+References
+Aragon CL, Hofmeister EH and Budsberg SC (2007) Systematic review of clinical trials of 
+treatments for osteoarthritis in dogs. Journal of the American Veterinary Medical 
+Association  230, 514–521
+Leece EA, Brearley JC and Harding EF (2005) Comparison of carprofen and meloxicam 
+for 72 h following ovariohysterectomy in dogs. Veterinary Anaesthesia and Analgesia 32 , 
+184–192
+Melphalan
+(Alkeran*) POM
+Formulations: Oral: 2 mg tablet. Injection: 50 mg powder in vial 
+plus diluent.
+Action: Forms inter- and intrastrand cross-links with DNA, resulting 
+in inhibition of DNA synthesis and function.
+Use:
+• Treatment of multiple myeloma.
+• May also be used as a substitute for cyclophosphamide in the 
+treatment of canine lymphoma and in some rescue protocols for 
+lymphoma.
+• Treatment of some solid tumours (e.g. ovarian carcinoma, 
+osteosarcoma, pulmonary and mammary neoplasia).
+Take care in dosing small dogs using their body surface area as there 
+is a risk of overdose due to the tablet sizes (tablets should not be 
+split). Give tablets on an empty stomach.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+Tablets should be stored in a closed, light-protected container under 
+refrigeration (2–8°C).
+Contraindications: Bone marrow suppression, concurrent 
+infection and impaired renal function.
+Adverse reactions: Myelosuppression is dose-limiting toxicity 
+with leucopenia, thrombocytopenia; effect may be prolonged and 
+cumulative. GI adverse reactions include anorexia, nausea and 
+vomiting. Pulmonary infiltrates or fibrosis can also occur. Oral 
+ulceration is seen in humans.
+Drug interactions: Cimetidine decreases the oral bioavailability 
+of melphalan. Steroids enhance the antitumour effects of 
+melphalan. In humans ciclosporin enhances the risk of renal toxicity.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs: 
+• Myeloma: 2 mg/m2 p.o. q24h for 1–2 weeks then reduce to 2–4 
+mg/m2 p.o. q48h. Or 0.1 mg/kg p.o. q24h for 10 days then 0.05 
+mg/kg p.o. q24–48h thereafter. Or 7 mg/m 2/day (rounded to the 
+nearest whole 2 mg tablet) for 5 consecutive days every 21 days. 
+Often used with prednisolone, see specialist texts for regimes. 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

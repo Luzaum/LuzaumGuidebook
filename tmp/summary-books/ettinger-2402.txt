@@ -1,0 +1,258 @@
+SECTION XXII
+•
+Cancer
+2250
+eBooks.Health.Elsevier.com
+the importance of molecular diagnostics, e.g., ow cytometry and 
+cytochemistry on blood and/or BM when evaluating a pet with 
+acute leukemia.
+A diagnosis of acute leukemia is based on >20% blasts in 
+either the peripheral blood or BM; some older studies used >30% 
+blasts.106-109 Classically, acute leukemias can be distinguished 
+from LSA by being CD34+, but it is estimated that up to 25% of 
+canine acute leukemias are CD34
+21 101 106 Commercially avail-
+able ow cytometry tests have specic antibodies for lymphocytes 
+and for granulocytes/monocytes. However, about 20-25% of acute 
+leukemias cannot be denitively classied despite use of these 
+markers (so-called acute undierentiated leukemias).21 107 Addi-
+tional cytochemical or immunocytochemical stains are available 
+through some universities. PARR is not helpful because not all 
+lymphoid cancers test positive for a clonal rearrangement, and 
+>60% of dogs with AML test positive for clonal or biclonal rear-
+rangements.110 When lineage can be determined, about 50-55% of 
+acute leukemias in dogs are ALL, and 45-50% are AML.100 106-108
+In dogs with ALL, there is not a consistent predominance of B- or 
+T-cell.106-108 Both B- and T-cell ALL have been reported in cats, 
+but there are too few to make meaningful comparisons.111
+Clinical Signs
+Most dogs and cats with acute leukemia are clinically ill at time of 
+initial presentation. Anorexia and lethargy are common108 109 111; 
+other clinical signs include vomiting, diarrhea, weakness, and neu-
+rologic abnormalities. Mild lymphadenopathy is reported in over 
+half of dogs, but it is not reported in cats. Other PE ndings include 
+cranial abdominal organomegaly, fever, pallor, petechia, and epi-
+staxis. T-cell ALL can cause paraneoplastic hypercalcemia, causing 
+PU/PD. FeLV (ch. 199) is associated with acute leukemias in cats.3
+Diagnostics
+Greater than 90% of dogs and cats with acute leukemia have neo-
+plastic cells seen on peripheral blood smears (ch. 58). In some, 
+the number of neoplastic cells is small or they are not detectable 
+at all.106-109 111 Total white blood cell counts can be increased due 
+to neoplastic cells, normal, or even low in a pet with few neo-
+plastic circulating cells and concurrent neutropenia. Anemia 
+and thrombocytopenia are common (chs. 57 and 59). Many have 
+cytopenias in multiple cell lines due to neoplastic cells displacing 
+normal hematopoietic cells, termed myelophthisis. e percent-
+age of neoplastic cells circulating in the peripheral blood does not 
+correlate with the severity of concurrent cytopenias, emphasizing 
+the importance of BM cytology not only to assist with diagnosis 
+but also to assess normal hematopoietic function.106
+Treatment, Support, and Prognosis
+Treating acute leukemias is challenging. Most dogs and cats are 
+clinically ill and myelosuppressive drugs must be given to pets that 
+are already cytopenic and have impaired hematopoiesis. Severe 
+anemia, thrombocytopenia, and neutropenia are common. Even 
+with intensive supportive care, e.g., blood transfusions and broad-
+spectrum antibiotics, clients must be prepared for life-threatening 
+treatment-associated adverse events (ch. 321).
+When choosing a more intensive treatment approach, ALL is 
+commonly treated with L-CHOP, which consists of the CHOP 
+protocol with the addition of L-asparaginase. e inclusion of 
+L-asparaginase at induction is strongly advised because it is does 
+not further impair normal hematopoietic function. Even with 
+the most intensive treatment approach, the prognosis is grave. 
+Reported MSTs in dogs and cats are <3 months and survival >6 
+months is rare.105 107 108 111 ere are no established chemotherapy 
+protocols for AML. erapies used include L-asparaginase, CHOP, 
+and cytosine arabinoside.109 MSTs for dogs treated with aggressive 
+chemotherapy was <2 months, comparable to using only predni-
+sone. None of these aicted pets lived beyond 6 months.
+MYELOPROLIFERATIVE NEOPLASMS, MYELODYSPLASTIC 
+SYNDROME
+Definitions and Diagnosis
+Myeloproliferative neoplasms, previously termed chronic myelo-
+proliferative disorders, are characterized by excessive production 
+of dierentiated BM cells, resulting in accumulation of erythro-
+cytes (primary erythrocytosis, also called polycythemia vera; ch. 
+173), granulocytes and/or monocytes (chronic myeloid leukemias 
+[CMLs]), or platelets (essential thrombocythemia). Because these 
+cells are morphologically similar to their non-neoplastic counter-
+parts, diagnosis centers around ruling out physiologic or paraneo-
+plastic etiologies for the increases in blood cell counts (chs. 57-59).
+Treatment and Prognosis
+Primary erythrocytosis is reviewed in ch. 173. A subset of dogs 
+with CML have the same breakpoint cluster region-ABL (BCR-
+ABL) chromosomal translocation (“Raleigh chromosome”) as the 
+“Philadelphia chromosome” translocation associated with CML 
+in people.112 Use of the tyrosine kinase inhibitor toceranib (Pal-
+ladia, Zoetis) has been successful in a dog with CML. Additional 
+studies are warranted. Historically, hydroxyurea (20-25 mg/kg 
+PO q12h) has been used to treat CML in dogs1 and continued 
+until the leukocyte is <15,000-20,000/mcL. e dose can then be 
+reduced (10-15 mg/kg PO q24h or to 50 mg/kg PO once every 2 
+or 3 weeks). Essential thrombocythemia is rare in dogs and cats. 
+ere is no established therapy in dogs or cats and in people it 
+is controversial whether to implement therapy in asymptomatic 
+patients.1
+Myelodysplastic syndromes (ch. 176) are uncommon in dogs 
+and cats. Patients have cytopenias involving multiple cell lines: 
+neutropenia with or without le shi, nonregenerative anemia, 
+and/or thrombocytopenia. Other blood abnormalities can include 
+macrocytic erythrocytes and metarubricytosis. e BM is usually 
+normocellular to hypercellular with dysplastic changes in multiple 
+cell lines. ere usually are increased blast cells, but they constitute 
+<20% of all nucleated cells (a blast percentage >20% is diagnostic 
+for AML). Myelodysplasia is sometimes referred to as preleukemia 
+because in some it will progress to AML. ere is no standard ther-
+apy for myelodysplasia. Darbepoetin alfa, retinoic acid analogs, 1,25 
+dihydroxyvitamin D3, interferon-alpha, 6-thioguanine, and cyto-
+sine arabinoside can induce dierentiation of hematopoietic cells.1
+MYELOMA-RELATED DISORDERS (MRD)
+DEFINITIONS
+MRD arise from neoplastic transformation of plasma cells or Ig-
+secreting B-cell precursors,113 and include a variety of clinical 
+syndromes. Multiple myeloma (MM), the most common MRD, 
+is the systemic proliferation of malignant plasma cells arising as a 
+clone of a single cell with multifocal or diuse involvement of the 
+BM.114,115 ese cells most commonly produce IgG or IgA immu-
+noglobulins. Production of IgM immunoglobulins is less common 
+and is called IgM macroglobulinemia (Waldenström’s macroglobu-
+linemia) because IgM normally exists as a high molecular weight 
+pentamer, and this larger size increases risk of serum hyperviscos-
+ity.54,116 Plasma cell tumors involving the BM can be seen as a soli-
+tary osseous plasmacytoma, although most eventually progress to 
+MM.117 Plasma cell tumors also can arise outside of BM, either in 
+the skin (cutaneous extramedullary plasmacytoma, ch. 323) or vis-
+ceral organs (non-cutaneous extramedullary plasmacytoma). Cats 
+with MRD can have BM involvement, multicentric abdominal 
+organ involvement (most commonly liver and/or spleen), or both, 
+blurring distinction between MM and non-cutaneous plasmacy-
+toma.113,118,119 Lastly, MRD also includes Ig-secreting lymphoma
+and leukemias (including plasma cell leukemia).
+
+CHAPTER 322
+•
+Hematopoietic Tumors
+2251
+eBooks.Health.Elsevier.com
+MULTIPLE MYELOMA (MM)
+Prevalence
+MM accounts for <10% of all hematopoietic tumors in dogs.114
+In cats, the relatively rare MM and multicentric noncutaneous 
+extramedullary plasmacytomas together account for <2% of all 
+hematopoietic tumors,1 119 with no FeLV or FIV association.
+Pathophysiology
+Because MM arises from a single clone of plasma cells or their pre-
+cursors, the neoplastic cells typically synthesize an overabundance of 
+1 Ig component, referred to as the M component, which can repre-
+sent an entire Ig molecule of any class, or a molecular portion, such 
+as light or heavy chains (ch. 60).55 Biclonal gammopathies also have 
+been reported in both dogs and cats.113 115 119 Nonsecretory MM with 
+no M component is rare but has been reported in dogs.120
+Clinical Signs
+In some dogs and cats, diagnosis is incidental, identifying hyperglob-
+ulinemia on routine serum biochemistries. Clinical signs vary widely, 
+as they result from tumor inltration of various organ systems, from 
+complications of excess M-component, and/or other paraneoplastic 
+syndromes, e.g., hypercalcemia.113-115 119 e most common signs in 
+dogs and cats are lethargy, weakness, and decreased appetite. Tumor 
+cells inltrating BM can cause anemia, thrombocytopenia, and less 
+commonly neutropenia. Bone lesions, classically discrete osteolytic 
+painful lesions, occasionally with concurrent pathologic fractures, 
+occur most commonly in bones engaged in active hematopoiesis: 
+vertebrae, ribs, pelvis, and long bones. Vertebral lesions also can 
+secondarily compress the spinal cord and cause neurologic decits 
+(Figure 322.7). Paraneoplastic hypercalcemia (ch. 331), thought to 
+arise more commonly due to bone lysis than via PTHrP,114 121 can 
+cause PU/PD, and renal failure (ch. 69).
+M components can interfere with coagulation primarily by coat-
+ing platelets, inhibiting platelet aggregation to damaged endothelial 
+surfaces, and release of platelet factor 3 (chs. 171, 175).54 55 116 e 
+resulting functional thrombopathy commonly causes epistaxis or 
+petechia. Intact Ig molecules are usually released by plasma cells, 
+but occasionally there is an imbalance in heavy and light chain pro-
+duction. Excess free light chains excreted in the urine, called Bence 
+Jones proteins (ch. 70), can cause renal tubular casts, interstitial 
+nephritis and possibly renal failure.54 55 116 Despite having a high 
+serum globulin level, normal Ig levels can be severely depressed, 
+placing patients at risk for secondary infections.116
+Hyperviscosity syndrome refers to a constellation of clinical 
+signs caused by an increase in blood viscosity. e clinical signs of 
+hyperviscosity result from sludging of blood in small vessels, inef-
+fective delivery of oxygen and nutrients, and coagulation abnor-
+malities. Reported neurologic abnormalities include stuporous 
+mentation, ataxia, and seizures.54 116 122 123 Ocular abnormalities 
+include enlarged and tortuous retinal vessels, retinal hemorrhages, 
+and retinal detachment, oen resulting in acute-onset blindness 
+(ch. 13).116 122 124 Bleeding diathesis, hypertrophic cardiomyopathy, 
+and congestive heart failure also can occur.55 116 122 125
+Diagnostic Evaluation
+MM is diagnosed by identifying ≥2 of the following criteria: BM 
+plasmacytosis (>20%), serum monoclonal gammopathy, osteo-
+lytic lesions, and/or Bence-Jones proteinuria.115 e author 
+depends on BM plasmacytosis and at least 1 other criterion. e 
+diagnostic criteria may be modied in cats because BM involve-
+ment is not as consistent; thus, it includes plasma cell morphology 
+and visceral organ involvement.113 118 119 Identifying a monoclo-
+nal gammopathy alone is not sucient to diagnose MM. B-cell 
+LSA, B-cell CLL, and some chronic infectious diseases (e.g., 
+ehrlichiosis, leishmaniasis, feline infectious peritonitis) can also 
+cause monoclonal gammopathies. A benign monoclonal gam-
+mopathy not associated with osteolysis, BM inltration, or Bence-
+Jones proteinuria, has rarely been reported in dogs.126
+Any animal suspected of a plasma cell tumor should be 
+assessed with CBC, platelet count, serum biochemistry prole, 
+and UA. Serum electrophoresis discriminates proteins into dis-
+tinct groups based on electrical charge and size. A tall, narrow 
+peak, due to a predominance of same-size globulins, is consistent 
+with a monoclonal gammopathy (ch. 60). Spikes are usually in the 
+gamma region of the electrophoretogram (hence the term gam-
+mopathy), but occasionally it can be seen in the beta-2 region.55
+Routine electrophoresis cannot determine Ig class; immunoxa-
+tion is required if this information is needed.127 Urine electro-
+phoresis is needed to detect Bence Jones proteins.128 In pets with 
+bleeding disorders, platelet count, buccal mucosal bleeding time 
+(ch. 79), prothrombin time (PT) and partial thromboplastin time 
+(PTT) should be evaluated (ch. 170).
+oracic radiographs are recommended, with careful inspec-
+tion of all bony structures. Additional radiographs may be indi-
+cated by skeletal pain or other clinical signs. While whole-body CT 
+is not routinely indicated, it is more sensitive than radiography for 
+identifying bone lysis and can be useful to direct biopsy procedures 
+when standard BM sites are inconclusive. CT is helpful for conrm-
+ing focal disease in dogs thought to have solitary osseous plasmacy-
+toma. Abdominal US is recommended, especially in cats because of 
+the high prevalence of abdominal visceral involvement. Denitive 
+diagnosis usually requires BM aspirate or core biopsy. Because MM 
+can be multifocal, occasionally sampling multiple sites might be 
+needed to identify BM plasmacytosis. US-guided ne needle aspi-
+ration of abnormal abdominal organs is also recommended in cats 
+since BM involvement is not as consistent (ch. 84).
+Treatment
+e initial treatment of choice is a combination of melphalan and 
+prednisone in dogs. Two dierent melphalan protocols have been 
+evaluated: 0.1 mg/kg PO q24h for 10 days and then 0.05 mg/kg 
+PO q24h indenitely, or 7 mg/m2 PO q24h for 5 days repeated 
+every 3 weeks.114 115 With both melphalan dosing protocols, pred-
+nisone is given for 10 days (0.5 mg/kg PO q24h) and then 0.5 mg/
+kg PO q48h for 60 days. A single dose of cyclophosphamide (200-
+250 mg/m2 IV or PO) is sometimes given at the start of therapy 
+in dogs with more severe clinical signs in the hopes of inducing a 
+remission more quickly.1 114
+In cats with MRD, melphalan has been used but is not routinely 
+recommended due to idiosyncratic severe and refractory myelo-
+suppression.113 129 130 Cyclophosphamide (200 mg/m2 IV of PO 
+q2-3wk, or 25 mg/cat PO twice a week) has been used in place of 
+melphalan with a comparable prognosis1 130 Prednisolone (1 mg/kg 
+PO q24h × 14 days, then 1 mg/kg PO every other day indenitely). 
+COP protocols have been used,113 and are preferred by the author.
+*
+*
+*
+Figure 322.7
+Midline sagittal T1-weighted magnetic resonance im-
+age post gadolinium contrast administration in a dog with multiple 
+myeloma. Brightly contrast-enhancing lesions are identied through-
+out the lumbar vertebrae, most notably in the vertebral bodies of L1, L3, 
+and L4 (arrows), and the dorsal laminae of L1, L2, and L3 (asterisks).

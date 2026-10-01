@@ -1,0 +1,241 @@
+SECTION XXI
+•
+Lower Urinary Tract Disease
+2144
+eBooks.Health.Elsevier.com
+Lower Urinary Tract Infections
+Michael Wood
+CHAPTER 307
+ACRONYMS
+ASB asymptomatic 
+bacteriuria
+GAG glycosaminoglycan
+MUC mean urinary 
+concentration
+NSAIDs non-steroidal anti-
+inflammatory drugs
+PAC proanthocyanidin
+SCB subclinical bacteriuria
+UTI urinary tract infection
+INTRODUCTION
+U
+rinary tract infection (UTI) develop-
+ment is multifactorial, dependent on 
+the interplay between the virulence 
+of an organism and alterations in anatomic, 
+environmental, and immunological compe-
+tency of the host. Urinary bladders with nor-
+mal urinary defenses are inherently resistant 
+to colonization and cystitis.1 It is those blad-
+ders with compromised defenses that are at 
+increased risk for UTI development. Please refer to the 8th edition 
+of this textbook ch. 330 “Lower Urinary Tract Infections” for a 
+review of “Natural and Acquired Host Defenses” in Box 330-1.
+e most common microbes invading the urinary tract are 
+bacteria. Other organisms like fungi account for only ∼1% of dog 
+and cat bladder infections. Infecting bacteria typically originate 
+from the enteric ora and ascend through the distal urogeni-
+tal tract into the proximal urethra and urinary bladder.2 When 
+urinary tract colonization results in lower urinary tract (LUT) 
+inammation and clinical signs including caudal abdominal pain, 
+pollakiuria, stranguria, or dysuria, the term UTI or bacterial cys-
+titis is appropriate.3
+Spayed female dogs have twice the risk of UTI when compared 
+to male dogs.4 Gram negative bacteria comprise >60% of posi-
+tive cultures, with Escherichia coli being isolated from 45-55% of 
+bacteriuric dogs. Other Gram negative organisms including Pro-
+teus spp., Pseudomonas aeruginosa, and Klebsiella spp. and Gram 
+positive bacteria that include Staphylococcus spp., Streptococcus
+spp., and Enterococcus spp. are each cultured between 2-14% of 
+the time.5
+In cats, E. coli is also the most common cause of bacteriuria 
+(37.3%); however, Gram negative and Gram positive infections 
+each occur roughly half the time with Gram positive Enterococcus 
+faecalis present in 27% of culture-positive urine samples.6 Overall, 
+the incidence of bacteriuria is much lower in cats than in dogs and 
+a sex predilection is variably reported.5 6
+BACTERIURIA: CONTAMINATION, SUBCLINICAL 
+BACTERIURIA, AND INFECTION
+Quantitative aerobic culture is the gold standard for identifying 
+bacteriuria. However, the lower urinary tract is not a sterile envi-
+ronment, and the microbiological documentation of bacteriuria 
+is not equivalent to diagnosing a UTI. Potentially benign expla-
+nations for detecting bacteriuria include technical errors, sample 
+contamination, and subclinical bacteriuria (ch. 70).
+Bacteriuria secondary to urine specimen contamination 
+occurs when the urine contacts non-sterile surfaces prior to 
+analysis or culture. Aseptic cystocentesis-collected urine is rec-
+ommended to obtain the most reliable sample for identifying true 
+bacteriuria; however, voided and catheter-collected urine samples 
+are acceptable when quantitative bacterial colony counts are pro-
+vided. Using >100,000 colony-forming units/mL as a diagnostic 
+cut-o, voided urine samples have a 94% sensitivity and specic-
+ity for non-contaminant bacteriuria (chs. 98, 184).7
+Another form of benign bacteriuria is asymptomatic bacteri-
+uria (ASB). In human medicine, this term is used for describing 
+persistent bacterial urinary tract colonization that is not produc-
+ing symptoms or clinical signs. In veterinary patients, dierentiat-
+ing non-clinical colonization from UTI is dicult because subtle 
+clinical signs are dicult to detect; hence, the term subclinical 
+bacteriuria (SCB) may be more appropriate.3
+In people, the treatment of ASB is not recommended in many 
+circumstances. Eradication of ASB does not prevent future uri-
+nary bladder re-colonization8 and the presence of ASB strains 
+is hypothesized to convey a degree of protection against urinary 
+tract colonization with more virulent bacteria.9 In veterinary 
+medicine, a similar approach has been recommended for the 
+management of SCB despite a lack of evidence demonstrating a 
+protective benet.
+e decision of whether to treat a patient that has SCB is com-
+plex and it requires the veterinarian to assess patient and bacterial 
+characteristics. For example, caution must be aorded when man-
+aging dogs and cats with co-morbidities that may mask clinical 
+signs. Polyuric patients or immunosuppressed patients that are 
+unable to mount an appropriate inammatory response require 
+special consideration as they may appear subclinical despite a 
+uropathogenic infection.
+When deciding whether to treat bacteriuria, it is as important 
+to consider bacterial characteristics as to assess co-morbidities. 
+Bacteria contain genomic islands encoding tness factors, which 
+promote commensalism and/or virulence factors that injure 
+host tissues. ese tness and virulence genes have tremendous 
+plasticity, which allows an organism to alter gene expression to 
+adapt to a changing environment.10 is means that clinically 
+nonpathogenic strains may contain unexpressed virulence genes 
+and the current bacterial phenotype is not necessarily predictive 
+of future pathogenicity as the urinary environment changes.11
+At this time bacterial genome sequencing to detect virulence 
+genes is not a widely available clinical diagnostic in veterinary 
+medicine. Instead, patients with untreated SCB are managed via 
+vigilant observation of the patient, and monitoring for subtle 
+changes in clinical signs and urine composition, including 
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 1 Video and 1 Client Information Sheet.
+
+CHAPTER 307
+•
+Lower Urinary Tract Infections
+2145
+eBooks.Health.Elsevier.com
+increases in urine concentrations of blood, protein, and inam-
+matory cells.
+URINARY TRACT INFECTION: DIAGNOSIS
+A denitive diagnosis of UTI requires concurrent evidence of 
+bacteriuria and cystitis. Aerobic urine culture alone will not dis-
+tinguish between SCB and UTI. Interpreting urinalysis, urine 
+sediment examination (ch. 70), clinical signs, and urine culture 
+results (ch. 184) together is essential, paying particular attention 
+to external factors that may alter results.
+When interpreting aerobic urine culture results, the inuence of 
+urine collection and storage methods must be considered (ch. 98). 
+Time to processing, storage temperature, and storage media all 
+may alter bacterial detection. At room temperature, bacteria may 
+begin to proliferate or die within 1 hour.12 Urine samples pro-
+cessed 2-24 hours aer collection should be refrigerated at 4°C 
+in a sterile preservative-free tube. If urine culture submission is 
+contingent on pending diagnostic test results, storing urine in a 
+preservative, reducing media vial, or Amies transport media can 
+extend the time that bacteria will be viable for up to 72 hours.13
+e growth of most uropathogens on culture media is appar-
+ent within 18-24 hours of incubation, with 24-72 hours required 
+to obtain results. Some organisms such as Corynebacterium spp. 
+and Mycoplasma spp. can take 4 to 7 days. To improve the e-
+ciency of diagnosing UTI, in recent years, several point-of-care 
+bacteriuria screening tools have become available, with additional 
+molecular-based diagnostic tests imminent. Two of these diag-
+nostics tests include a point of care rapid immunoassay (RapidBac 
+Vet, Silver Lake Research Corp, Monrovia, CA) and a catalase-
+based point-of-care urine test (Accutest Uriscreen, Jant Phar-
+maceuticals Co, Encino, CA). e immunoassay has a reported 
+sensitivity and specicity of 97.4% and 98.8%, respectively, when 
+screening cystocentesis-collected samples14; a sensitivity of 89% 
+is reported with voided samples.15 e catalase-based test is lim-
+ited in its ability to detect catalase-negative bacteria and also cross 
+reacts with white blood cells and epithelial cells, reducing its sen-
+sitivity and specicity on samples obtained by cystocentesis to 
+89% and 71%, respectively.16
+URINARY TRACT INFECTION: TREATMENT
+e standard therapy for UTIs is antimicrobials. erapeutic 
+plans vary depending on previous UTI history, concurrent dis-
+eases, neutering status, sex, and species. Broadly, treatment strate-
+gies for UTI fall into 2 categories, depending on whether bacterial 
+cystitis is sporadic or recurrent.
+SPORADIC BACTERIAL CYSTITIS
+Sporadic bacterial cystitis is dened as a clinical bladder infec-
+tion occurring <3 times in a 12-month period, regardless of the 
+patient’s species, sex, neuter status or co-morbidities. e recently 
+adopted term sporadic bacterial cystitis focuses on the inam-
+mation caused by the bacteria and the infrequent nature of the 
+episodes rather than the presence or absence of a complicating 
+risk factor for infection or treatment.3 e treatment recommen-
+dations for sporadic cystitis can be applied to all dogs (male and 
+female) and cats provided that bacteriuria is detected in the cat 
+and a normal prostate is present in the male dog. If these condi-
+tions are not met, then additional diagnostic tests and treatment 
+plans may be necessary. Please refer to ch. 311 “Feline Idiopathic/
+Interstitial Cystitis” and ch. 314 “Prostatic Diseases” for more 
+information.
+Sporadic bacterial cystitis is associated with lower urinary 
+tract signs including dysuria, pollakiuria, and stranguria (ch. 54). 
+In dogs with limited previous antibiotic therapy, empiric antibi-
+otic prescriptions are justied; however, urine culture and sen-
+sitivity is recommended, especially in cats. When choosing an 
+antibiotic for an infection of unknown bacterial susceptibility, 
+selection should be made with consideration of local community 
+resistance patterns, attainable urine antibiotic concentrations, 
+risk of adverse events, and cost. Veterinarians are encouraged 
+to monitor antimicrobial resistance patterns within their clinic 
+to help further with selecting an antibiotic with a spectrum and 
+ecacy against the suspected agent (chs. 7, 186). First-line anti-
+biotics should have a local resistance rate for sporadic bacterial 
+cystitis cases of ∼10%. Suggested rst-line antibiotics to consider 
+include amoxicillin, cephalexin, or trimethoprim-sulfonamide.3
+In some cases, the colonizing bacteria are found to be resis-
+tant to the chosen antibiotic when antimicrobial susceptibility 
+results become available but clinically the patient has improved. 
+In such instances, the antibiotic course should be completed as 
+prescribed, with a follow-up urinalysis and culture performed 
+3-5 days aer the conclusion of therapy to ensure eradication of 
+infection. Alternatively, if the colonizing bacteria are resistant to 
+the chosen antibiotic and clinical signs remain, then the original 
+antibiotic should be discontinued and an appropriate antibiotic 
+begun.
+e current recommended treatment duration for sporadic 
+bacterial cystitis in veterinary medicine is 3-5 days.3 is recom-
+mendation stems from studies demonstrating that trimethoprim-
+sulfamethoxazole or high-dose enrooxacin for 3 days yielded 
+similar cure rates when compared to 10 days of cephalexin or 
+14 days of amoxicillin-clavulanic acid.17,18 Advantages of short 
+duration therapy include reduced patient side-eects, improved 
+adherence/compliance, reduced cost, and decreased antibiotic 
+resistance while maintaining clinical ecacy.17,19 Despite these 
+studies, the use of second line antibiotics such as uoroquino-
+lones and cefovecin is not recommended for sporadic bacterial 
+cystitis treatment when rst line antibiotics are options. When the 
+treatment course of sporadic bacterial cystitis is complete, addi-
+tional monitoring, diagnostic testing, or preventative therapies 
+are usually not required.
+In recent years there have been some proponents of using 
+nonsteroidal anti-inammatory drugs (NSAIDs) for managing 
+sporadic cystitis.3 e basis behind NSAID therapy is that the 
+drugs may limit lower urinary tract signs while the body’s innate 
+defenses and immune system clear the infection, thus limiting 
+antibiotic use. In people, NSAID therapy is not currently the stan-
+dard of care, with recent studies suggesting that NSAID therapy is 
+inferior to antibiotics and may be associated with increased occur-
+rence of pyelonephritis.20,21 In veterinary medicine, there are no 
+studies that assess NSAID therapy to manage UTI and given the 
+challenges veterinarians have identifying patients with pyelone-
+phritis,22 UTI treatment with NSAIDs as a sole therapy is not rec-
+ommended by this author. However, in an otherwise healthy dog 
+with recurrent infections, NSAIDs may be benecial to reduce 
+clinical signs while awaiting culture and sensitivity results.3
+RECURRENT BACTERIAL CYSTITIS
+Recurrent bacterial cystitis or recurrent UTI is said to be present 
+when a dog or cat has 3 or more documented clinical infections 
+within 12 months. Recurrent infections indicate that an under-
+lying anatomic, functional, or metabolic abnormality or comor-
+bidity is present, either preventing the clearance of an infection 
+(persistence and relapse) or allowing for reinfection.
+Persistence
+Persistent infections occur when appropriate antimicrobial 
+therapy fails to sterilize the urine. Provided that the prescribed 

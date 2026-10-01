@@ -1,0 +1,246 @@
+44      Aluminum Hydroxide
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Altrenogest 0.22% (2.2 mg/mL) in oil solution in 150 mL and 
+1000 mL bottles; Regu-Mate®, generic (Rx). FDA-approved for use in 
+horses that are not intended for food. This medication is banned in 
+racing animals in some countries.
+Altrenogest 0.22% (2.2 mg/mL) in 1000 mL bottles; Matrix®, generic; 
+(OTC). FDA-approved for use in sexually mature gilts that have had 
+at least 1 estrous cycle. Gilts must not be slaughtered for human con-
+sumption for 21 days after the last treatment. The FDA prohibits the 
+extra-label use of this medication, including to enhance food and/or 
+fiber production in animals.
+HUMAN-LABELED PRODUCTS: NONE
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Aluminum Hydroxide
+(ah-loo-min-um hye-droks-ide)  Amphojel®
+Oral Antacid/Phosphate Binder
+Prescriber Highlights
+	
+▶Used to treat hyperphosphatemia in small animals and some-
+times as an antacid for gastric ulcers
+	
+▶Chronic use may lead to electrolyte abnormalities; possible 
+aluminum toxicity.
+	
+▶Many potential drug interactions
+	
+▶Bulk dried powder available from several sources
+Uses/Indications
+Orally administered aluminum hydroxide is used to reduce hyper-
+phosphatemia in patients with chronic kidney disease when dietary 
+phosphorus restriction fails to maintain serum phosphorus concen-
+trations in the normal range. Occasionally, it has been used as an oral 
+antacid in veterinary patients, although its short duration of action 
+for this purpose may make its use less practical. 
+Pharmacology/Actions
+Aluminum salts reduce the amount of phosphorus absorbed from 
+the intestine by physically binding to dietary phosphorus to form 
+insoluble aluminum phosphate, which is then excreted in the feces. 
+When used as an antacid, the hydroxyl ion interacts with hydrogen 
+ions in the stomach to increase gastric/abomasal pH.
+Contraindications/Precautions/Warnings
+Aluminum-containing antacids may inhibit gastric emptying; use 
+cautiously in patients with gastric outlet obstruction. Also, use with 
+caution in patients prone to developing constipation. Aluminum 
+may accumulate in patients with renal failure.
+Adverse Effects
+In small animals, the most likely adverse effect of aluminum hydrox-
+ide is constipation. Hypophosphatemia can develop if the patient is 
+receiving a low phosphate diet and chronically receives aluminum 
+antacids.
+Potentially, aluminum toxicity could occur with prolonged use. 
+Although previously believed unlikely to occur in small animals, 
+at least 2 dogs with renal failure have developed aluminum toxici-
+ty after receiving aluminum-containing phosphate binders.1 Osteo-
+malacia related to hypophosphatemia or aluminum accumulation 
+is also possible with chronic use. Aluminum-containing and calci-
+um-containing phosphate binders may be used in combination to 
+reduce the dose of each and reduce the risk for aluminum toxicity 
+or ­hypercalcemia.
+Reproductive/Nursing Safety
+Use during pregnancy and lactation has not been studied; however, it 
+is considered generally safe since oral absorption of this drug is poor.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdosage/Acute Toxicity
+Acute toxicity is unlikely with an oral overdose. If necessary, GI ef-
+fects (eg, constipation) and electrolyte imbalances that may occur 
+with acute or chronic overdose should be treated based on clinical 
+presentation.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, it is strongly encouraged to consult with one of 
+the 24-hour poison consultation centers that specialize in providing 
+information specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+The following drug interactions with aluminum hydroxide have ei-
+ther been reported or are theoretical in humans or animals and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+	■Diazepam: Concurrent aluminum may increase diazepam 
+­absorption.
+	■Quinidine: Increased gastric pH caused by aluminum hydrox-
+ide can potentially increase the absorption of basic drugs such as 
+quinidine; separate from aluminum hydroxide by at least 2 hours.
+	■Vitamin D Analogues (eg, calcitriol, ergocalciferol): May in-
+crease aluminum absorption. Avoid combination.
+Aluminum hydroxide can decrease the amount absorbed (orally) or 
+the pharmacologic effect of the drugs listed below; separate oral dos-
+es of aluminum hydroxide and these drugs by at least 2 hours to help 
+reduce the potential for this interaction.
+	■Allopurinol
+	■Aspirin
+	■Azole Antifungals (eg, itraconazole, ketoconazole)
+	■Cefpodoxime
+	■Corticosteroids (eg, dexamethasone, prednis(ol)one)
+	■Digoxin
+	■Ethambutol
+	■Fexofenadine
+	■Fluoroquinolones (eg, enrofloxacin, marbofloxacin)
+	■Gabapentin
+	■H2 Antagonists (eg, famotidine, ranitidine)
+	■Iron Salts (eg, ferrous sulfate)
+	■Isoniazid (INH)
+	■Mycophenolate
+	■Penicillamine
+	■Phenothiazines (eg, acepromazine, chlorpromazine)
+	■Phenytoin
+	■Sotalol
+	■Tetracyclines (eg, doxycycline, minocycline)
+	■Thyroid Hormones
+Doses
+NOTE: All dosages are extra-label.
+DOGS/CATS:
+Hyperphosphatemia secondary to chronic kidney disease 
+(extra-label): 30 – 100 mg/kg per day as adjunct to reduced di-
+etary phosphorus.2-4 Aluminum hydroxide gel powder (USP) 
+
+Amantadine      45
+is preferred, as it can be mixed with food and is tasteless. Dose 
+is divided and mixed with each meal. Start at low end of dosage 
+range and adjust upward every 4 to 6 weeks until desired serum 
+phosphorus is attained (see Monitoring). If a reduced-phosphorus 
+diet and higher dosages of aluminum hydroxide do not adequate-
+ly control serum phosphorus, consider adding a lanthanum- or 
+calcium-based (eg, calcium acetate, calcium carbonate) phosphate 
+binder to reduce the chances for aluminum toxicity.
+RABBITS/RODENTS/SMALL MAMMALS: 
+Hyperphosphatemia in chinchillas (extra-label): Aluminum hy-
+droxide gel: 1 mL/animal (NOT mL/kg) PO as needed
+Hyperphosphatemia in Guinea pigs (extra-label): 0.5 – 1 mL per 
+animal (NOT mL/kg) PO as needed5
+REPTILES: 
+Hyperphosphatemia (extra-label): 100 mg/kg PO every 12 to 24 
+hours6
+CATTLE:
+Antacid (extra-label): 15 – 60 mg/kg PO every 8 – 24 hours.7 Ef-
+ficacy in adult cattle is questionable since the drug becomes dilut-
+ed in the rumen and may not provide therapeutic benefit in the 
+abomasum.
+Abomasal ulcers in calves using a combination of aluminum 
+hydroxide and magnesium hydroxide (extra-label): 25 mL (each 
+mL contains aluminum hydroxide 0.1 g/mL and magnesium hy-
+droxide 0.09 g/mL) PO every 8 hours.8 NOTE: this study was done 
+in healthy calves; based on the results from this study, this dose is 
+expected to be beneficial for ill calves with abomasal ulcers. 
+HORSES:
+Adjunctive gastroduodenal ulcer therapy in foals (extra-label): 
+Aluminum/magnesium hydroxide suspension: 15 mL (total dose) 
+4 times a day9
+Monitoring
+	■After beginning therapy, check serum phosphorus (after a 12-
+hour fast) every 4 to 6 weeks until target phosphorous levels are 
+attained. Once phosphorous levels are stable, check phosphorous 
+levels at the time of renal chemistry rechecks (eg, every 12 weeks). 
+For chronic kidney disease (CKD), the International Renal Inter-
+est Society (IRIS) recommends a target phosphorous range for 
+dogs and cats at each stage:
+•	 Stage 2 CKD target phosphorous levels: greater than 2.7 and 
+less than 4.6 mg/dL (0.9 – less than 1.5 mmol/L)
+•	 Stage 3 CKD target phosphorous levels: greater than 2.7 and 
+less than 5.0 mg/dL (0.9 – less than 1.6 mmol/L)
+•	 Stage 4 CKD target phosphorous levels: greater than 2.7 and 
+less than 6.0 mg/dL (0.9 – less than 1.9 mmol/L)
+	■To monitor for aluminum toxicity, watch for development of neu-
+romuscular effects, progressive decreases in mean cell volume 
+(MCV), and microcytosis.
+Client Information
+	■Oral aluminum hydroxide products are available without pre-
+scription (OTC) but should be used under the supervision of your 
+veterinarian.
+	■Bulk powder or compounded capsules are easier to administer 
+than liquids or suspensions. Shake the suspension thoroughly 
+prior to administration.
+	■Must be given either just before feeding or mixed in food to be 
+effective.
+	■Can cause constipation or decreased appetite 
+	■Report to your veterinarian any unusual signs, such as weakness, 
+difficulty walking, or stumbling.
+Chemistry/Synonyms
+Dried Aluminum Hydroxide Gel (CAS Registry: 21645-51-2) occurs 
+as a white, odorless, tasteless, amorphous powder. It is insoluble in 
+water or alcohol. The USP 36 standard allows varying amounts of 
+basic aluminum carbonate and bicarbonate, but it must contain no 
+less than 76.5% of Al(OH)3.
+Aluminum hydroxide may also be known as aluminium hydrox-
+ide.
+Storage/Stability
+Store powder forms in airtight containers. Liquid formulations 
+should not be allowed to freeze.
+Compatibility/Compounding Considerations
+Because aluminum hydroxide powder USP can vary in the concen-
+tration of aluminum hydroxide (must be 76.5% or greater) and pow-
+ders can vary in density, volume measurements can only approxi-
+mate actual weight. However, ¼ teaspoonful (1.25 mL) of the dried 
+USP powder has been reported to contain ≈300 mg of aluminum 
+hydroxide.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Aluminum Hydroxide Concentrated Gel Suspension/Liquid (NOTE: 
+These products are usually flavored (mint) and not well accepted by 
+dogs or cats): 320 mg/5 mL in 473 mL; UD 15 mL and 30 mL; ge-
+neric; (OTC)
+Aluminum Hydroxide Gel, Dried Powder, USP; bulk powder is avail-
+able from a variety of sources including many compounding phar-
+macies. See: http://goo.gl/1lYJk for additional source information.
+NOTE: There are also many products available that have aluminum 
+hydroxide and a magnesium or calcium salt (eg, Maalox®) that are 
+used as antacids. All oral aluminum and magnesium hydroxide 
+preparations are OTC.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Amantadine
+(a-man-ta-deen)  Symmetrel® 
+Antiviral; NMDA Antagonist
+Prescriber Highlights
+	
+▶Limited published efficacy or safety data, although clinical 
+experience suggests it is useful in adjunctive treatment for 
+chronic pain in small animal species
+	
+▶Historically dosed every 24 hours; however, based on pharma-
+cokinetic data, the same dose given every 12 hours may be 
+more effective
+	
+▶Dogs may exhibit agitation and GI effects, especially early in 
+treatment.
+	
+▶Large interpatient variations of pharmacokinetics in horses 
+limit its therapeutic usefulness.
+	
+▶Overdoses are potentially very serious; it may need to be com-
+pounded to accurately dose small animals.
+	
+▶Extra-label use is prohibited by the FDA in chickens, turkeys, 
+and ducks.
+Uses/Indications
+Although amantadine may have efficacy and clinical usefulness 
+against some veterinary viral diseases, presently the greatest interest 
+for its use in small animal species is in the adjunctive treatment of 

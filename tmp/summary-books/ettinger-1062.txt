@@ -1,0 +1,282 @@
+1003
+ACRONYMS
+ALP alkaline phosphatase
+ALT alanine aminotransfer-
+ase
+CBC complete blood count
+CME canine monocytic 
+ehrlichiosis
+CNS central nervous sys-
+tem
+ELISA enzyme-linked 
+immunosorbent assay
+IFA indirect fluorescent 
+antibody
+IV intravenous
+PCR polymerase chain 
+reaction
+POC point-of-care
+PU/PD polyuria/polydipsia
+RMSF Rocky Mountain 
+spotted fever
+SFG spotted fever group
+SPD salmon poisoning 
+disease
+CHAPTER 193
+•
+Ehrlichiosis, Anaplasmosis, Rocky Mountain Spotted Fever
+eBooks.Health.Elsevier.com
+74. Gloor CI, Schweighauser A, Francey T, etal. Diagnostic value of two com-
+mercial chromatographic “patient-side” tests in the diagnosis of acute canine 
+leptospirosis. J Small Anim Pract. 2017;58:154-161.
+75. Branger C, Blanchard B, Fillonneau C, etal. Polymerase chain reaction 
+assay specic for pathogenic Leptospira based on the gene hap1 encoding the 
+hemolysis-associated protein-1. FEMS Microbiol Lett. 2005;243:437-445.
+76. Stoddard RA, Gee JE, Wilkins PP, etal. Detection of pathogenic Leptospira
+spp. through TaqMan polymerase chain reaction targeting the LipL32 gene. Diagn 
+Microbiol Infect Dis. 2009;64:247-255.
+77. Harkin KR, Roshto YM, Sullivan JT. Clinical application of a polymerase 
+chain reaction assay for diagnosis of leptospirosis in dogs. J Am Vet Med Assoc.
+2003;222:1224-1229.
+78. Weiss S, Menezes A, Woods K, etal. An extended multilocus sequence 
+typing (MLST) scheme for rapid direct typing of Leptospira from clinical samples. 
+2016; https://journals.plos.org/plosntds/article?id=10.1371/journal.pntd.
+0004996
+79. Salaün L, Mérien F, Gurianova S, etal. Application of multilocus variable-
+number tandem-repeat analysis for molecular typing of the agent of leptospirosis. 
+J Clin Microbiol. 2006;44:3954-3962.
+80. Bourhy P, Bremont S, Zinini F, etal. Comparison of real-time PCR assays 
+for detection of pathogenic Leptospira spp. in blood and identication of varia-
+tions in target sequences. J Clin Microbiol. 2011;49:2154-2160.
+81. Bolin CA. Finds fault with implications of PCR assay conclusions. J Am Vet 
+Med Assoc. 2003;223:178-179.
+82. Midence JN, Leutenegger CM, Chandler AM, etal. Eects of recent Lepto-
+spira vaccination on whole blood real-time PCR testing in healthy client-owned 
+dogs. J Vet Intern Med. 2012;26:149-152.
+83. Murray CK, Ellis MW, Hospenthal DR. Susceptibility of Leptospira serovars 
+to antimalarial agents. Am J Trop Med Hyg. 2004;71:685-686.
+84. Truccolo J, Charavay F, Merien F, etal. Quantitative PCR assay to evaluate 
+ampicillin, ooxacin, and doxycycline for treatment of experimental leptospirosis. 
+Antimicrob Agents Chemother. 2002;46:848-853.
+85. Alexander AD, Rule PL. Penicillins, cephalosporins, and tetracyclines in 
+treatment of hamsters with fatal leptospirosis. Antimicrob Agents Chemother.
+1986;30:835-839.
+86. Moon JE, Rivard RG, Grith ME, etal. Eect of timing and duration of 
+azithromycin therapy of leptospirosis in a hamster model. J Antimicrob Che-
+mother. 2007;59:148-151.
+87. Moon JE, Ellis MW, Grith ME, etal. Ecacy of macrolides and telithro-
+mycin against leptospirosis in a hamster model. Antimicrob Agents Chemother.
+2006;50:1989-1992.
+88. Shenoy VV, Nagar VS, Chowdhury AA, etal. Pulmonary leptospirosis: an 
+excellent response to bolus methylprednisolone. Postgr Med J. 2006;82:602-606.
+89. Niwattayakul K, Kaewtasi S, Chueasuwanchai S, etal. An open randomized 
+controlled trial of desmopressin and pulse dexamethasone as adjunct therapy in 
+patients with pulmonary involvement associated with severe leptospirosis. Clin 
+Microbiol Infect. 2010;16:1207-1212.
+90. Chen YS, Cheng SL, Wang HC, etal. Successful treatment of pulmonary 
+hemorrhage associated with leptospirosis and scrub typhus coinfection by early 
+plasma exchange. J Formos Med Assoc. 2007;106:s1-s6.
+91. Kis A, Francey TIS. Long-term outcome of dogs with acute kidney injury. 
+In: Proceedings of the ACVIM Forum, 2012. New Orleans, USA; 2012.
+92. Jull DJ, Heath KR. e evaluation of a combined L. canicola and L. ictero-
+haemorrhagiae vaccine on hamsters and dogs. J Small Anim Pract. 1960;1:245-258.
+93. Francey T, Schweighauser A, Reber A, etal. Evaluation of changes in the 
+epidemiology of leptospirosis in dogs aer introduction of a quadrivalent antilep-
+tospiral vaccine in a highly endemic area. J Vet Intern Med. 2020;34:2405-2417.
+94. Brockmann S, Piechotowski I, Bock-Hensley O, et al. Outbreak of leptospi-
+rosis among triathlon participants in Germany. BMC Infect Dis. 2006;2010(10):91.
+95. Monahan AM, Miller IS, Nally JE. Leptospirosis: risks during recreational 
+activities. J Appl Microbiol. 2009;107:707-716.
+96. Barkin RM, Glosser JW. Leptospirosis—an epidemic in children. Am J 
+Epidemiol. 1973;98:184-191.
+97. Feigin RD, Anderson DC. Human leptospirosis. CRC Crit Rev Clin Lab Sci.
+1975;5:413-467.
+98. Barmettler R, Schweighauser A, Bigler S, etal. Assessment of exposure to 
+Leptospira serovars in veterinary sta and dog owners in contact with infected 
+dogs. J Am Vet Med Assoc. 2011;238:183-188.
+Ehrlichiosis, Anaplasmosis, Rocky Mountain Spotted Fever, 
+and Neorickettsiosis
+Jane E. Sykes | Barbara Qurollo
+OVERVIEW: THE 
+ANAPLASMATACEAE AND 
+RICKETTSIACEAE FAMILIES
+T
+he primary causes of canine ehrlichio-
+sis are the intracellular Gram-negative 
+bacteria Ehrlichia canis, Ehrlichia ewin-
+gii, and Ehrlichia chaeensis, belonging to the 
+family Anaplasmataceae. Other bacteria within 
+this family are Anaplasma platys and Ana-
+plasma phagocytophilum, which cause canine 
+thrombocytic and granulocytic anaplasmosis, 
+respectively, and Neorickettsia helminthoeca,
+the agent of salmon poisoning disease (SPD). 
+Rickettsia rickettsii, the cause of Rocky Moun-
+tain spotted fever (RMSF), and other spotted 
+fever group (SFG) rickettsiae belong to the 
+family Rickettsiaceae. e families Rickettsia-
+ceae and Anaplasmataceae are related through 
+the order Rickettsiales (Table 193.1).
+ese organisms are transmitted to dogs 
+and cats by arthropod or trematode vec-
+tors (Table 193.2), are maintained in nature 
+through infection of wildlife reservoir hosts, and can be transmitted 
+by blood transfusion. eir geographic distribution is restricted 
+to that of their vectors and intermediate hosts. Several of these 
+pathogens cause human disease. Dogs, therefore, serve as potential 
+sentinels for human infection and precautions should be taken to 
+prevent transmission while handling engorged ticks, blood, and tis-
+sue from dogs with suspected infections. Because of shared arthro-
+pod vectors and/or concurrent exposure to multiple vector ticks, 
+coinfections with more than one of these pathogens (as well as 
+other vector-borne pathogens) can occur and may complicate the 
+clinical picture. Severity of clinical signs depends on the size of the 
+inoculum, host immunity, and pathogen strain virulence.
+EHRLICHIOSIS
+EHRLICHIA CANIS
+Etiology and Epidemiology
+Ehrlichia canis causes canine monocytic ehrlichiosis (CME), a disease 
+of dogs exposed to ticks worldwide. e organism infects circulating 
+monocytes and, within its cytoplasm, forms morulae (Latin for “mul-
+berry”; a cluster of bacteria). Ehrlichia canis is transmitted by Rhipi-
+cephalus sanguineus ticks. Infection has been reported in dogs from 
+Asia, Africa, Europe, and the Americas (ch. 9). In the United States 
+(USA), it is diagnosed most frequently in southern states. However, 
+CHAPTER 193
+
+SECTION XI
+•
+Infectious Disease
+1004
+eBooks.Health.Elsevier.com
+dogs with chronic subclinical infections can be transported to nonen-
+demic regions before developing the condition. Ticks acquire infec-
+tion by feeding as larvae or nymphs on infected dogs. Jackals, foxes, 
+and possibly coyotes may also act as reservoir hosts. e organism is 
+transmitted transstadially but not transovarially within the tick. No 
+age, breed, or sex predilection for CME has been clearly documented.
+Clinical Signs
+Acute Phase The course of CME is divided into acute and 
+chronic phases, although discrete phases are not always clinically 
+distinguishable. Transmission can occur within hours of tick attach-
+ment and acute signs of disease occur 8 to 20 days later. Common 
+vague signs include lethargy (ch. 10), fever (ch. 16), inappetence 
+(ch. 17), and weight loss (ch. 18). Replication of the organism in 
+reticuloendothelial tissues is associated with generalized lymphad-
+enomegaly and splenomegaly (ch. 182). Ocular and nasal discharge 
+(ch. 35), peripheral edema (ch. 30), and less commonly, petechial 
+and ecchymotic hemorrhages (ch. 29) are observed. Neurologic 
+signs, likely caused by meningeal inflammation or hemorrhage, 
+include twitching, ataxia, seizures, vestibular signs, hyperesthesia, 
+and cranial nerve deficits (ch. 242). Thrombocytopenia (ch. 59) 
+and sometimes mild leukopenia (ch. 58) and anemia (ch. 57) occur 
+1 to 4 weeks after infection (ch. 176). Transient proteinuria, which 
+resolves within 6 weeks of infection, has been reported.1 2 Dogs may 
+recover from the acute phase after 2 to 4 weeks without treatment.
+Subclinical Phase Aer the acute phase, some dogs remain 
+subclinically infected for months to years. ey may have mild 
+persistent thrombocytopenia. Organisms may sequester within 
+the spleen and evade host immune systems through antigenic 
+variation.3
+Chronic Phase “Chronic ehrlichiosis” ranges in severity 
+from mild to life-threatening, with signs that include leth-
+argy, inappetence, bleeding tendencies, pallor, fever, weight 
+loss, lymphadenomegaly, splenomegaly, anterior uveitis (ch. 
+13), retinal hemorrhage, retinal detachment, polyuria/poly-
+dipsia (PU/PD, ch. 53), and edema (Figure 193.1). Bleeding 
+tendencies are the result of thrombocytopenia and platelet 
+dysfunction.4 Cutaneous and mucosal petechial or ecchymotic 
+hemorrhages, epistaxis, melena, hematochezia, hematuria, 
+and prolonged bleeding from venipuncture sites have been 
+reported (ch. 171). Polymyositis may develop, with muscle 
+atrophy and tetraparesis (ch. 23).5 Secondary opportunistic 
+infections, including viral papillomatosis, protozoal infections, 
+and bacteriuria, also occur, although mechanisms of immune 
+suppression and persistence of E. canis have not yet been elu-
+cidated (Figure 193.2).6
+Pancytopenia on a complete blood count (CBC) caused by 
+hypoplasia of all bone marrow cells typifies the severe chronic 
+form of ehrlichiosis (ch. 176). Thrombocytopenia and nonre-
+generative anemia are common. Moderate to marked granular 
+lymphocytosis (≤17,000/mcL) and bone marrow plasmacytosis 
+may occur. Some dogs have a monoclonal gammopathy, similar 
+to that seen with lymphocytic leukemia or multiple myeloma 
+(ch. 60). Dogs with well-differentiated lymphocytosis or an 
+otherwise unexplained monoclonal gammopathy should be 
+tested for E. canis infection.7 Serum chemistry abnormalities 
+include hypoalbuminemia, hyperglobulinemia, and increased 
+serum alanine aminotransferase (ALT) and alkaline phos-
+phatase (ALP) activities. The hyperglobulinemia is usually a 
+polyclonal gammopathy. A protein-losing nephropathy may 
+develop as a result of an immune-complex glomerulonephritis, 
+possibly associated with azotemia (ch. 302). Dogs with central 
+nervous system (CNS) involvement may have increased cere-
+brospinal fluid (CSF) protein concentrations and cell counts8
+(ch. 109).
+TABLE 193.2
+Important Ticks Involved in Transmission of Members of the Order Rickettsiales
+TICK SPECIES
+COMMON NAME
+VECTORED AGENTS
+GEOGRAPHIC DISTRIBUTION (CH. 9)
+Rhipicephalus sanguineus
+Brown dog tick
+Ehrlichia canis
+Anaplasma platys?
+Rickettsia rickettsii
+Worldwide, primarily between latitudes 35° south 
+and 50° north
+Amblyomma americanum
+Lone star tick
+Ehrlichia chaffeensis
+Ehrlichia ewingii
+West-central Texas, north to Iowa, and eastward in 
+a broad belt spanning the southeastern United 
+States; Atlantic coast up to Maine
+Ixodes scapularis
+Black-legged tick, deer tick
+Anaplasma phagocytophilum
+Northeastern, north central, and southeastern 
+United States
+Ixodes pacificus
+Western black-legged tick
+Anaplasma phagocytophilum
+West coast of the United States
+Ixodes persulcatus
+Taiga tick
+Anaplasma phagocytophilum
+Eastern Europe and Asia
+Ixodes ricinus
+Castor bean tick
+Anaplasma phagocytophilum
+Europe, including the United Kingdom
+Dermacentor variabilis
+American dog tick
+Rickettsia rickettsii
+East of the Rocky Mountain states as far north as 
+Massachusetts and Nova Scotia, west coast of 
+the United States to southwestern Oregon
+Dermacentor andersoni
+Rocky Mountain wood tick
+Rickettsia rickettsii
+Rocky Mountain states of the United States, pri-
+marily Montana, Idaho, and Oregon
+TABLE 193.1
+Members of the Order Rickettsiales That Are 
+Established Pathogens in Dogs and Cats
+FAMILY
+GENUS
+SPECIES
+Anaplasmataceae
+Ehrlichia
+E. canis
+E. chaffeensis
+E. ewingii
+Anaplasma
+A. phagocytophilum
+A. platys
+Neorickettsia
+N. helminthoeca
+Rickettsiaceae
+Rickettsia
+R. rickettsii

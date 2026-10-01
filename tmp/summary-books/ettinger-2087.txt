@@ -1,0 +1,248 @@
+CHAPTER 286
+•
+Feline Hypothyroidism
+1935
+eBooks.Health.Elsevier.com
+188. Daniel GB, Neelis DA. yroid scintigraphy in veterinary medicine. Semin 
+Nucl Med. 2014;44:24-34.
+189. Taeymans O, Peremans K, Saunders JH. yroid imaging in the dog: cur-
+rent status and future directions. J Vet Intern Med. 2007;21:673-684.
+190. Taeymans O, Daminet S, Duchateau L, etal. Pre- and post-treatment 
+ultrasonography in hypothyroid dogs. Vet Radiol Ultrasound. 2007;48:262-269.
+191. Reese S, Breyer U, Deeg C, etal. yroid sonography as an eective tool 
+to discriminate between euthyroid sick and hypothyroid dogs. J Vet Intern Med
+2005;19:491-498.
+192. Bromel C, Pollard RE, Kass PH, etal. Comparison of ultrasonographic 
+characteristics of the thyroid gland in healthy small-, medium-, and large-breed 
+dogs. Am J Vet Res. 2006;67:70-77.
+193. Taeymans O, Dennis R, Saunders JH. Magnetic resonance imaging of the 
+normal canine thyroid gland. Vet Radiol Ultrasound. 2008;49:238-242.
+194. Taeymans O, Schwarz T, Duchateau L, etal. Computed tomographic fea-
+tures of the normal canine thyroid gland. Vet Radiol Ultrasound. 2008;49:13-19.
+195. Diaz Espineira MM, Mol JA, Peeters ME, etal. Assessment of thyroid 
+function in dogs with low plasma thyroxine concentration. J Vet Intern Med
+2007;21:25-32.
+196. Shiel RE, Pinilla M, McAllister H, etal. Assessment of the value of quanti-
+tative thyroid scintigraphy for determination of thyroid function in dogs. J Small 
+Anim Pract. 2012;53:278-285.
+197. Pinilla M, Shiel RE, Brennan SF, etal. Quantitative thyroid scintigraphy 
+in greyhounds suspected of primary hypothyroidism. Vet Radiol Ultrasound
+2009;50:224-229.
+198. Seavers A, Vickery K, Page SW, etal. Dynamic thyroid testing, thyroid 
+histology and thyroxine replacement therapy in Basenji dogs. Aust Vet Pract
+2015;45:9.
+199. Cecere J, Purswell B, Panciera D. Levothyroxine supplementation in hypo-
+thyroid bitches during pregnancy. eriogenology. 2020;142:48-53.
+200. Lewis VA, Morrow CMK, Jacobsen JA, etal. A pivotal eld study to sup-
+port the registration of levothyroxine sodium tablets for canine hypothyroidism. J 
+Am Anim Hosp Assoc. 2018;54:201-208.
+201. Bergmann M, Freisl M, Hartmann K, etal. Antibody response to canine 
+parvovirus vaccination in dogs with hyperadrenocorticism treated with trilo-
+stane. Vaccines (Basel). 2020;8:547.
+202. Dixon RM, Reid SW, Mooney CT. Treatment and therapeutic monitoring 
+of canine hypothyroidism. J Small Anim Pract. 2002;43:334-340.
+203. Tvarijonaviciute A, Jaillardon L, Ceron JJ, etal. Eects of thyroxin therapy 
+on dierent analytes related to obesity and inammation in dogs with hypothy-
+roidism. Vet J. 2013;196:71-75.
+204. Hare JE, Morrow CMK, Caldwell J, etal. Safety of orally administered, 
+USP-compliant levothyroxine sodium tablets in dogs. J Vet Pharmacol er
+2018;41:254-265.
+205. O’Neill SH, Frank LA, Reynolds LM. Eect of an anti-inammatory dose 
+of prednisone on thyroid hormone monitoring in hypothyroid dogs. Vet Derma-
+tol. 2011;22:202-205.
+206. Lavergne SN, Fosset FT, Kennedy P, etal. Potential cutaneous hypersensi-
+tivity reaction to an inactive ingredient of thyroid hormone supplements in a dog. 
+Vet Dermatol. 2016;27:53-e16.
+ACRONYMS
+CKD chronic kidney disease
+fT4 free T4
+LT4Na levothyroxine sodi-
+um
+NTIS non-thyroidal illness 
+syndrome
+TSH thyrotropin (thyroid-
+stimulating hormone)
+TT4 total thyroxine
+T3 triiodothyronine
+Feline Hypothyroidism
+J. Catharine Scott-Moncrieff
+N
+aturally 
+occurring 
+hypothyroid-
+ism in cats is a rare clinical entity. 
+A small number of cats with con-
+genital or adult onset hypothyroidism have 
+been reported in the veterinary literature.1-9
+In contrast, iatrogenic hypothyroidism fol-
+lowing treatment for hyperthyroidism is 
+common.11-15 e most common cause of a 
+low serum total thyroxine (TT4) concentra-
+tion in cats is non-thyroidal illness syndrome 
+(NTIS).
+ETIOLOGY
+ADULT-ONSET HYPOTHYROIDISM
+While only 4 case reports and one case series of 7 cats with 
+primary adult-onset hypothyroidism have been published, the 
+disorder is likely more common. Reported causes included 
+lymphocytic thyroiditis, diuse follicular hyperplasia, and 
+idiopathic.6-10 Diuse follicular hyperplasia causing goiter was 
+documented in 2 cats and suspected in a further 5 based on scin-
+tigraphic ndings.10 e underlying cause of follicular hyper-
+plasia in cats with adult onset hypothyroidism is unknown. 
+Exposure to goitrogens or imbalances in dietary iodine have 
+not been documented. Adult cats with a mild form of congenital 
+hypothyroidism (dyshormonogenesis) is a more likely explana-
+tion, but is not proven. Secondary hypothyroidism was reported 
+in an 18-month-old cat with stunted growth and a history of 
+head trauma at 8 weeks of age.3
+CONGENITAL HYPOTHYROIDISM
+Overview
+Congenital primary hypothyroidism is recognized more fre-
+quently than the adult-onset condition in cats. Cats with congeni-
+tal hypothyroidism are likely under-recognized because screening 
+for hypothyroidism is not routine in kittens and some likely die 
+without a diagnosis. Causes of congenital hypothyroidism include 
+thyroid dyshormonogenesis, thyroid hypoplasia or aplasia, thy-
+rotropin (TSH [thyroid-stimulation hormone]) resistance, and 
+thyroiditis.1 2 4 16 17
+Dyshormonogenesis
+Dyshormonogenesis is the most common form of congenital 
+hypothyroidism in cats and is a condition caused by inborn errors 
+that interfere with synthesis of thyroid hormone, e.g., thyroid 
+peroxidase deciency and iodide transport defects. Severity of 
+clinical signs varies and their onset may be delayed because some 
+defects are incomplete. Dyshormonogenesis is usually associated 
+with the development of goiter (enlarged thyroid) secondary to 
+sustained TSH stimulation. Both functional transduction of sig-
+nal via the TSH receptor and a block in the synthesis of thyroid 
+hormones must be present. A specic mutation was not identi-
+ed in the reported cats. Two kittens with congenital hypothy-
+roidism due to defective organication of iodide were diagnosed 
+CHAPTER 286
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 1 Video and 1 Client Information Sheet.
+
+SECTION XIX
+•
+Endocrine Disease
+1936
+eBooks.Health.Elsevier.com
+based on in vivo discharge of accumulated labeled iodide by per-
+chlorate.1 e defect was complete in 1 cat and partial in another. 
+No membrane-bound peroxidase activity could be demonstrated 
+in the cat with the partial deciency and it was suspected that 
+“loose enzyme anchoring” decreased peroxidase availability and 
+decreased capacity for organic binding of trapped iodide. An 
+inherited autosomal recessive defect in iodine organication was 
+suspected in a family of Abyssinian cats with congenital hypo-
+thyroidism and goiter.2 Congenital hypothyroidism with goiter 
+due to thyroid peroxidase deciency was reported in a family of 
+Domestic Shorthair cats, also thought to have an inherited auto-
+somal recessive trait.18 yroid dyshormongenesis was suspected 
+in a series of 6 cats with congenital goitrous hypothyroidism from 
+a single veterinary hospital in Chile.5
+Thyroid Gland Agenesis or Hypoplasia
+Defects in development causing thyroid gland agenesis or hypo-
+plasia (dysmorphogenesis) have been described. e molecular 
+genetic defect has not been established. In other species, defects 
+in genes encoding thyroid transcription factors 1 and 2, the TSH 
+receptor, and signal transduction pathways downstream of the 
+TSH receptor have been described.4
+TSH Resistance
+TSH resistance was the proposed cause of inherited primary 
+hypothyroidism in a colony of Japanese cats, none of which had a 
+goiter.16 e defect was inherited as an autosomal recessive trait.
+Thyroiditis
+A colony of cats had severe signs of hypothyroidism and thyroid-
+itis that developed at 40 to 60 days of age.17 e severity of thy-
+roiditis was decreased by early treatment with thyroid hormone.
+Iodine Deficiency
+Rarely, iodine deciency has been reported to cause hypothyroid-
+ism in kittens fed a strict all-meat diet.
+IATROGENIC HYPOTHYROIDISM
+Iatrogenic hypothyroidism is most oen the result of treating 
+hyperthyroidism and is the most common cause of the condi-
+tion in cats (ch. 287). Iatrogenic hypothyroidism has also been 
+reported following stereotactic radiation therapy for acromeg-
+aly.19 Iatrogenic hypothyroidism may follow radioactive iodine 
+treatment, bilateral thyroidectomy, or administration of anti-
+thyroid drugs (ch. 287). Depending on the mode of treatment, 
+plasma TT4 may decline to subnormal concentrations within 
+hours (surgery), days (anti-thyroid drugs), or weeks-to-months 
+(radioactive iodine). e prevalence of iatrogenic hypothyroid-
+ism following radioactive iodine treatment ranges from 3 to 79%, 
+a wide range that likely reects dierences in criteria used for 
+diagnosing iatrogenic hypothyroidism and use of dierent radio-
+active iodine dose protocols.20 21
+Diagnosis of iatrogenic hypothyroidism relies on clinical signs 
+(see below) in conjunction with low total TT4 (overt hypothyroid-
+ism). It is now recognized that some cats with iatrogenic hypothy-
+roidism do not have overt clinical signs and may have serum TT4
+concentrations within the low end of the reference range (sub-
+clinical hypothyroidism).13 15 e clinical consequences of sub-
+clinical hypothyroidism are unclear but azotemia in some cats 
+resolves with thyroid hormone supplementation.
+In two recent studies of cats treated with 2 to 6 mCi of radioac-
+tive iodine, the reported prevalence of overt hypothyroidism aer 6 
+months ranged from 1 to 40% and prevalence of subclinical hypo-
+thyroidism ranged from 13 to 46%.13 14 e prevalence of overt and 
+subclinical hypothyroidism was lower in cats treated with lower 
+dosages of radioactive iodine. Iatrogenic hypothyroidism may also 
+occur in cats treated with anti-thyroid drugs. In a study of 80 non-
+azotemic hyperthyroid cats treated with methimazole for 6 months, 
+35% became hypothyroid, as dened by a TT4 below the reference 
+range and a serum TSH concentration above the reference range.12
+Cats that became hypothyroid following therapy for hyperthy-
+roidism were more likely to become azotemic than those that 
+became euthyroid. Cats that became both hypothyroid and azo-
+temic had shorter survival times than the euthyroid azotemic cats. 
+Azotemia was presumed to be due to a decrease in glomerular l-
+tration rate in cats with underlying chronic kidney disease (CKD, 
+ch. 301) and concurrent hypothyroidism. Prolonged iatrogenic 
+hypothyroidism should be avoided, especially in cats with known 
+concurrent CKD. In 125 methimazole-treated hyperthyroid cats, 
+about 20% had decreased free T4 (fT4) and/or TT4 and increased 
+TSH concentrations, consistent with iatrogenic hypothyroid-
+ism.22 Hypothyroidism is not expected aer unilateral thyroidec-
+tomy, but approximately 50% of cats become hypothyroid aer 
+bilateral thyroidectomy.23
+CLINICAL SIGNS
+ADULT-ONSET HYPOTHYROIDISM
+Clinical signs of adult onset feline hypothyroidism vary in sever-
+ity and include lethargy, inappetence, mental dullness, derma-
+tologic abnormalities, obesity, polyuria, and polydipsia (Figure 
+286.1; Video 286.1). In a report of 7 adult cats with spontaneous 
+hypothyroidism, only 2 were evaluated for hair loss, lethargy or 
+obesity, 3 had no signs but had abnormal results on annual thy-
+roid testing, and 2 had a palpable goiter. e goiters ranged in 
+size from 2.5 to 8 times the upper reference of thyroid volume.10
+Dermatologic signs are quite variable (ch. 12). Aected cats may 
+develop a dull, dry, unkempt hair coat with matting, increased 
+shedding, dandru, and seborrhea. Easily epilated and poor hair 
+regrowth may lead to alopecia aecting the pinnae, pressure 
+points, and the dorsal and lateral tail base region.6 7 Asymmetric 
+or bilaterally symmetric alopecia involving the lateral neck, tho-
+rax, and abdomen also occur. Myxedema of the face, causing a 
+“puy” appearance, was reported in 1 cat with naturally acquired 
+adult-onset hypothyroidism.6 Bradycardia and mild hypothermia 
+may be additional ndings on physical examination.
+CONGENITAL HYPOTHYROIDISM
+Kittens with congenital hypothyroidism typically appear normal 
+at birth but their slow growth usually becomes evident by 6 to 
+8 weeks of age. Disproportionate dwarsm develops over the 
+ensuing months, with aected kittens developing large heads, 
+short wide necks, short body and short thick limbs. Facial dys-
+morphism results in a broad head and at face (Figure 286.2). 
+Additional ndings include palpable bilateral goiter, obesity, 
+lethargy, mental dullness, constipation, hypothermia, brady-
+cardia, retention of deciduous teeth and/or delayed eruption 
+of adult teeth.1 2 4 eir hair coats consist mainly of the under-
+coat with primary guard hairs scattered thinly. Two littermate 
+kittens with hypothyroidism had concurrent seizure disorders 
+but whether the seizures were related to hypothyroidism was 
+unclear.4 Radiographic abnormalities include delayed epiphy-
+seal ossication, epiphyseal dysgenesis, shortened vertebral 
+bodies, and constipation. An adult cat with suspected con-
+genital primary hypothyroidism had bilateral femoral capital 
+physeal fractures.24 In a case series of 6 cats with congenital goi-
+trous hypothyroidism, the age at diagnosis ranged from 4 to 19 

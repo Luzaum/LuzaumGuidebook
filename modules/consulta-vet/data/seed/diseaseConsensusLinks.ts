@@ -55,6 +55,59 @@ export const DISEASE_CONSENSUS_LINKS: Record<string, string[]> = {
     'acvim-ahim-tratamento-canino-2019',
     'curative-risco-trombotico-2022',
   ],
+  'sepse-canina': [
+    'veccs-sepse-definicao-caes-gatos-2026',
+    'veccs-choque-septico-prognostico-2026',
+    'curative-risco-trombotico-2022',
+  ],
+  'obstrucao-funcional-fluxo-urinario-caes': [
+    'acvim-incontinencia-foo-caes-2024',
+  ],
+  'sepse-felina': [
+    'veccs-sepse-definicao-caes-gatos-2026',
+    'veccs-choque-septico-prognostico-2026',
+    'curative-risco-trombotico-2022',
+  ],
+  'lesao-renal-aguda-felina': [
+    'iris-lra-2026',
+    'isfm-drc-felina-2016',
+    'iscaid-itu-caes-gatos-2019',
+    'consenso-cardiorrenal-2015',
+  ],
+  'pielonefrite-caes-gatos': [
+    'weese-terminologia-infeccoes-urinarias-2026',
+    'iscaid-itu-caes-gatos-2019',
+    'iris-lra-2026',
+    'acvim-urolitiase-caes-gatos-2016',
+  ],
+  'lesao-renal-aguda-canina': [
+    'iris-lra-2026',
+    'acvim-leptospirose-caes-2023',
+    'iscaid-itu-caes-gatos-2019',
+    'consenso-cardiorrenal-2015',
+    'acvim-urolitiase-caes-gatos-2016',
+  ],
+  'intermacao-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+    'aaha-fluidoterapia-caes-gatos-2024',
+    'iris-lra-2026',
+    'curative-risco-trombotico-2022',
+  ],
+  'polirradiculoneurite-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+  ],
+  'tetano-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+  ],
+  'brucelose-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+  ],
+  'megaesofago-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+  ],
+  'paralisia-laringea-caes-gatos': [
+    'recover-primeiros-socorros-2026',
+  ],
 };
 
 export function mergeConsensusSlugsForDisease(slug: string, existing: string[] = []): string[] {

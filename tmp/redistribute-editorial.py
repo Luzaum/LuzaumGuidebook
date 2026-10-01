@@ -1,0 +1,23 @@
+from pathlib import Path
+p=Path('modules/consulta-vet/pages/EditorialDiseasesPage.tsx');s=p.read_text(encoding='utf8');s="import { redistributeDiseaseClinicalContent } from '../utils/diseaseReadingSections';\nimport { CONCISE_DISEASE_SUMMARIES } from '../data/conciseClinicalSummaries';\n"+s
+s=s.replace('function mapDiseaseToForm(record: DiseaseRecord): DiseaseFormState {\n  return {', 'function mapDiseaseToForm(original: DiseaseRecord): DiseaseFormState {\n  const record = redistributeDiseaseClinicalContent(original);\n  const summary = CONCISE_DISEASE_SUMMARIES[record.slug];\n  return {')
+s=s.replace('    quickSummary: record.quickSummary,', "    quickSummary: summary ? [summary.definition, ...summary.points].join(' ') : record.quickSummary,")
+s=s.replace('Organize o conteúdo em nove blocos clínicos e uma faixa de decisão rápida com até cinco frases.', 'Organize o conteúdo em nove blocos clínicos. O resumo deve ter uma definição e até três pontos essenciais, com no máximo 110 palavras; distribua as condutas nas seções correspondentes.')
+start=s.index('            <section className="space-y-4">\n              <h3 className="text-base font-semibold text-foreground">Decisão rápida</h3>')
+end=s.index('            </section>',start)+len('            </section>')
+s=s[:start]+s[end:]
+s=s.replace('<EditorialField label="Resumo rápido">','<EditorialField label="Resumo rápido" hint="Até 110 palavras: definição e três pontos essenciais. Doses, fluxos e explicações extensas pertencem ao conteúdo clínico.">')
+p.write_text(s,encoding='utf8')
+p=Path('modules/consulta-vet/utils/diseaseSchemaMap.ts');s=p.read_text(encoding='utf8');s=s.replace('    if (unique.length >= 5) break;','')
+# Read all legacy notes before redistribution; no longer discard information after the fifth item.
+s=s.replace('    ...normalizeStringArray(row.when_to_suspect),','    ...normalizeStringArray(row.when_to_suspect),\n    ...normalizeStringArray(row.initial_conduct),\n    ...normalizeStringArray(row.high_yield_tests),\n    ...normalizeStringArray(row.do_not_forget),\n    ...normalizeStringArray(row.red_flags),\n    ...normalizeStringArray(row.common_mistakes),\n    ...normalizeStringArray(row.clinical_pearls),\n    ...normalizeStringArray(row.dog_vs_cat_differences),')
+p.write_text(s,encoding='utf8')
+p=Path('modules/consulta-vet/services/import/diseaseImport.service.ts');s=p.read_text(encoding='utf8');s="import { redistributeDiseaseClinicalContent } from '../../utils/diseaseReadingSections';\n"+s
+s=s.replace('quickDecisionStripRaw.slice(0, 5)', 'quickDecisionStripRaw').replace('.filter(Boolean)\n                  .slice(0, 5)', '.filter(Boolean)')
+s=s.replace('            data: mapped,','            data: redistributeDiseaseClinicalContent(mapped),')
+p.write_text(s,encoding='utf8')
+p=Path('modules/consulta-vet/types/disease.ts');s=p.read_text(encoding='utf8').replace('/** Até 5 frases curtas — faixa horizontal de decisão rápida na ficha. */','/** Campo legado: redistribuído nas seções clínicas, sem faixa própria na ficha. */').replace('/** Versão rica do resumo (fluxogramas, grifos, faixas de dose). Se ausente, usa só `quickSummary`. */','/** Conteúdo legado: fluxos vão para diagnóstico/tratamento; explicações para os capítulos clínicos. */');p.write_text(s,encoding='utf8')
+p=Path('modules/consulta-vet/utils/editorialSubsectionLabels.ts');s=p.read_text(encoding='utf8');marker='  tabelaDecisaoClinicaRapida:';s=s.replace(marker,"  orientacoesClinicas: 'Orientações clínicas',\n  comparacaoClinica: 'Comparação clínica',\n  comparacaoDeMecanismos: 'Comparação de mecanismos',\n"+marker);s=s.replace("tabelaDecisaoClinicaRapida: 'Decisão clínica rápida'", "tabelaDecisaoClinicaRapida: 'Comparação clínica'");p.write_text(s,encoding='utf8')
+p=Path('modules/consulta-vet/docs/DISEASE_IMPORT_PATTERN.md');s=p.read_text(encoding='utf8');s=s.replace('- `quickSummary` — parágrafo técnico denso com citações `(Autor, ano)`\n- `quickDecisionStrip` — 5–10 frases curtas de decisão\n- `quickSummaryRich` — `lead`, `leadHighlights`, `pillars`, `diagnosticFlow`, `treatmentFlow`','- `quickSummary` — definição breve e até três pontos essenciais, no máximo 110 palavras.\n- Cadastrar a síntese com fonte em `data/conciseClinicalSummaries.ts`.\n- `quickDecisionStrip: []` — campo legado; não criar cartões de decisão rápida.\n- Explicações, alertas e doses pertencem às seções temáticas. Fluxos diagnósticos e terapêuticos são apresentados nos respectivos capítulos, fora do resumo.')
+s=s.replace('- quickDecisionStrip.length >= 5','- síntese curta em CONCISE_DISEASE_SUMMARIES, com fonte e até 110 palavras\n- quickDecisionStrip vazio em novos cadastros')
+p.write_text(s,encoding='utf8')

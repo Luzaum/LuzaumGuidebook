@@ -1,0 +1,242 @@
+SECTION XII
+•
+Respiratory Disease
+1158
+eBooks.Health.Elsevier.com
+Large Airway Diseases
+Cecile Clercx
+CHAPTER 215
+TRACHEAL DISEASES
+M
+ost tracheal disorders can involve 
+both intra- and extrathoracic seg-
+ments of the trachea. Noninfec-
+tious tracheal diseases are common and 
+include dorsal tracheal membrane accidity, 
+tracheal collapse, tracheal injury/laceration, 
+posttraumatic stenosis, foreign body, intra-
+tracheal tumor, and tracheal avulsion (cat).
+Tracheitis refers to an inammation of 
+the epithelial lining of the trachea, which can 
+be infectious or noninfectious. When dogs 
+develop tracheitis, it is oen a part of the 
+canine infectious respiratory disease com-
+plex (CIRDC; ch. 203). Tracheitis can also be 
+secondary to prolonged barking, or disease 
+of the oropharynx, esophagus, or even the 
+stomach (aerodigestive disorders; ch. 221) 
+(see Figure 215.4). In cats, tracheitis is most 
+oen associated with infectious feline respi-
+ratory disease (ch. 205). Tracheitis in cats 
+does not always induce a signicant cough, 
+as it does in dogs.
+Tracheal compromise can also result from 
+extratracheal diseases, such as extreme car-
+diac enlargement, mediastinal enlargement 
+(hematopoietic neoplasia [ch. 322], or mega-
+esophagus [ch. 259]), or space-occupying 
+masses, which can cause deviation of the tra-
+chea and possibly aect the shape or lumen 
+of the trachea (Figures 215.1, 215.2).
+TRACHEAL COLLAPSE (DOGS)
+Tracheal collapse, also referred to as collapsing trachea and canine 
+tracheal collapse syndrome, is a very common disorder encoun-
+tered in middle-aged to older toy or miniature breeds. e “goose 
+honk” sound of the cough is characteristic (Video 215.1).
+Etiology and Pathophysiology
+e cause of primary tracheal collapse syndrome is complex and 
+is best regarded as multifactorial.1 e traditionally considered 
+form of dynamic mechanical collapse can be caused by a combi-
+nation of progressive malacia of the tracheal cartilages and lax-
+ity of the trachealis muscle, resulting primarily in dorsoventral 
+collapse, possibly associated with malacic airways (or bronchial 
+collapse). In a dierent form, dorsoventral narrowing gives the 
+trachea a W-shaped cross-section due to malformation of the tra-
+cheal rings. is is referred to as tracheal malformation. It is a 
+more static form of narrowing of the tracheal lumen that is dis-
+tinct from, or occurs in addition to, dynamic narrowing caused by 
+invagination of the trachealis muscle during respiration.
+In the traditional form, clinical disease occurs when 2 fac-
+tors exist concurrently: a primary cartilage abnormality that 
+results in intrinsic weakness of the tracheal rings, and second-
+ary factors capable of initiating progression to the point of caus-
+ing clinical signs. Soening of cartilage rings seems to be due 
+to a reduction of glycosaminoglycan and chondroitin sulfate 
+content, which leads to a decreased ability to maintain func-
+tional rigidity, further leading to a weakness and attening of 
+the tracheal rings.2 3 Potential triggering factors include obe-
+sity, cardiomegaly, inhalation of irritants and allergens, peri-
+odontal disease, respiratory infections, and recent endotracheal 
+intubation.4 e dynamic changes of tracheal collapse may be 
+conned to either the cervical or the thoracic region of the tra-
+chea, or both can be aected; frequently, the changes are more 
+pronounced at the cervicothoracic junction. Dorsoventral at-
+tening of the tracheal cartilaginous rings causes a stretch of the 
+dorsal tracheal membrane, which becomes inamed and pen-
+dulous. us, it can prolapse into the tracheal lumen as soon 
+as extraluminal pressure exceeds intraluminal pressure, further 
+reducing the diameter of the tracheal lumen.5 Inside the thorax, 
+during inspiration, the redundant dorsal membrane is aspirated 
+by/subjected to negative intrathoracic pressure during inspira-
+tion and may excessively enlarge the tracheal lumen, as seen on 
+lateral radiographs (Figure 215.3). e syndrome is perpetuated 
+by the cycle of chronic inammation of the tracheal mucosa, 
+which exacerbates—and in turn, is exacerbated by—the cough. 
+In dogs with tracheal collapse, concurrent bronchomalacia is 
+frequently encountered and does not appear to be related to air-
+way inammation.6 Pulmonary hypertension (PH) can develop 
+in dogs with tracheal collapse and bronchomalacia (ch. 218).7-9
+Clinical Presentation
+Primary tracheal collapse is commonly seen in middle-aged to 
+older miniature, toy, and small breed dogs. Overrepresented 
+breeds include the Yorkshire Terrier, Pomeranian, Pug, Poodle, 
+Maltese, and Chihuahua.5 9
+Clinical signs include chronic cough in all cases (ch. 34), mild 
+to severe panting, exercise intolerance, and varying degree of respi-
+ratory distress (ch. 37) as well as a varying degree of cyanosis in 
+advanced cases (ch. 27). A prolonged clinical history is common.
+e cough is harsh, oen followed by a terminal retch; it is 
+oen described as “honking/goose honk”10 and is precipitated 
+by activity, excitement, tracheal pressure (such as that caused by 
+pulling on a leash) or drinking. is characteristic cough can be 
+elicited easily by palpation of the trachea. Collapse of the cervi-
+cal trachea can sometimes be appreciated as a attening of the 
+tracheal rings on cervical palpation. In some cases, a cough is not 
+ACRONYMS
+AHR airway hyperrespon-
+siveness
+BALF bronchoalveolar 
+lavage fluid
+BWBP barometric whole-
+body plethysmography
+CB chronic bronchitis
+CIRDC canine infectious respi-
+ratory disease complex
+COPD chronic obstructive 
+pulmonary disease
+CT computed tomography
+EB eosinophilic bronchitis
+EBP eosinophilic broncho-
+pneumopathy
+EG eosinophilic granuloma
+ELD eosinophilic lung disease
+FLAD feline lower airway 
+disease
+GERD gastroesophageal 
+reflux disease
+GI gastrointestinal
+IST inhaled steroid therapy
+NK-1 neurokinin-1
+NT-proBNP N-terminal pro-
+B-type natriuretic peptide
+PCD primary ciliary dyski-
+nesia
+PCR polymerase chain 
+reaction
+PH pulmonary hypertension
+TBFVL tidal breathing flow 
+volume loops
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 17 Videos.
+
+CHAPTER 215
+•
+Large Airway Diseases
+1159
+eBooks.Health.Elsevier.com
+audible as such and owners only report inspiratory-expiratory 
+stertor, sometimes described as a pig-grunt- or -growl-like sound 
+(Video 215.2). In severe cases, the cough or stertor almost never 
+stops, leading to muscular fatigue and exhaustion of the animal. 
+In rare cases, excitement can lead to cyanosis because of complete 
+obstruction, vagally mediated syncope, or PH,7 8 especially when 
+concomitant bronchomalacia is present.
+During thoracic auscultation, crackles on both inspiration and 
+expiration can be appreciated in dogs with small airway collapse, 
+and/or concurrent bronchitis. A thorough cardiac auscultation 
+is recommended (ch. 38), since a heart murmur associated with 
+mitral regurgitation can be heard (ch. 232); indeed, concurrent 
+myxomatous/degenerative mitral valve disease is a common nd-
+ing in the same population aected by tracheal collapse; i.e. older, 
+small-breed dogs. However, the role of cardiomegaly and speci-
+cally le atrial enlargement in airway collapse by airway compres-
+sion remains unclear, with evidence of airway inammation as the 
+likely cause of cough in dogs that had both le atrial enlargement 
+and airway collapse in one study.11 Hepatomegaly is common in 
+dogs with tracheal collapse and could be a reection of obesity, 
+although hepatic dysfunction has been reported in dogs with tra-
+cheal collapse.12 Bronchial collapse/bronchomalacia is common 
+in dogs with tracheal collapse.13
+Diagnosis
+e diagnosis of tracheal collapse is strongly suspected based on 
+signalment, history of cough, and physical examination ndings.5
+Additional diagnostic evaluation (radiography, uoroscopy [ch. 
+212], tracheal ultrasound,14 echocardiography [ch. 97], bron-
+choscopy [ch. 93] and pulmonary function testing15) can be used 
+for conrming the extent and severity of the tracheal collapse, 
+and the presence of concomitant or complicating diseases such 
+as bronchomalacia, PH, cardiomegaly, or lower airway diseases. 
+Imaging is required to obtain adequate measurements prior to 
+placement of any tracheal stent (ch. 114).
+Radiographic examination of animals with collapsed trachea 
+can use both still and motion studies. e most useful radio-
+graphic examinations include lateral projections over the thoracic 
+inlet, and a tangential (craniocaudal) projection of the thoracic 
+inlet (in this skyline projection, the collapsed trachea is seen as 
+an oval, “C” or crescent shape). Because of the relationship of col-
+lapse to the respiratory cycle, uoroscopic investigation may be 
+more sensitive than radiographs (ch. 212).9
+On lateral radiographs, a redundant dorsal tracheal mem-
+brane that invaginates into the tracheal lumen can be seen 
+as a soft-tissue opacity along the dorsal aspect of the caudal 
+cervical tracheal lumen. This radiographic appearance can be 
+seen in both small- and large-breed dogs as a consequence of 
+coughing, and must be differentiated from a superimposed 
+esophagus. Therefore, lateral radiographs made during both 
+the maximal inspiratory and maximal expiratory phases of the 
+respiratory cycle are needed to demonstrate dynamic collapse. 
+Indeed, collapse of the cervical tracheal segment occurs in 
+inspiration because of the decreased pressure within the tra-
+chea whereas the thoracic portion tends to collapse during the 
+expiration phase as a consequence of increased intrathoracic 
+pressure. These dynamic changes are best viewed in real time 
+using image-intensified fluoroscopy (Video 215.3). Radiogra-
+phy and fluoroscopy are complementary imaging techniques; 
+confirming the presence or absence of tracheal or bronchial 
+collapse can require multiple imaging modalities as well as 
+bronchoscopy.16 Cervical lung lobe herniation (CLLH), or 
+protrusion of lung parenchyma beyond the musculoskeletal 
+entrance of the thorax, is a frequent concurrent finding identi-
+fied by fluoroscopy (ch. 212; Video 212.2).17-19
+Although rarely needed to conrm the diagnosis, trache-
+oscopy can reveal a decreased dorsoventral diameter due to 
+attening of the cartilaginous rings with a pendulous dorsal 
+membrane, potentially leading to complete obstruction of the 
+tracheal lumen (Figure 215.4). Tracheobronchoscopy (Videos 
+215.4 and 215.5; ch. 93) is advised in all cases since it is very 
+helpful in determining the degree of severity of the tracheal and 
+especially bronchial collapse, as well as in assessing concomi-
+tant airway disease including secondary infection. ose nd-
+ings should be properly addressed and taken into account for 
+prognostic purposes before stent placement can be considered, 
+although the presence of mainstem bronchial collapse at the 
+time of stent placement might lack signicant association with 
+outcome.20
+Management
+In animals with marked respiratory diculty, oxygen supplemen-
+tation can be delivered (ch. 123), and sedation and antitussive 
+agents are needed. Butorphanol (0.05-0.2 mg/kg q4-6h) and/or 
+acepromazine (0.01-0.1 mg/kg) can be injected SC, and pred-
+nisolone sodium succinate (15-30 mg/kg slow IV bolus) can be 
+administered to decrease acute inammation.
+Long-term treatment may involve multimodal medical 
+therapy or mechanical stenting. Medical therapy is the corner-
+stone of treatment for collapsing trachea-associated coughing 
+(Video 215.1). Severely-aected dogs with clinical signs caused 
+Figure 215.1
+Lateral thoracic radiograph of a middle-aged mixed-
+breed dog showing the presence of a large mediastinal mass, causing 
+marked ventral deviation of the trachea.
+Figure 215.2
+Endoscopy of the trachea in a dog with severe respirato-
+ry distress and cyanosis. Note the extreme reduction and altered shape 
+of the tracheal lumen, caused by a huge mediastinal mass.

@@ -1,0 +1,269 @@
+SECTION XIX
+•
+Endocrine Disease
+1974
+eBooks.Health.Elsevier.com
+ACRONYMS
+BG blood glucose
+BGC blood glucose curve
+CBC complete blood count
+CGMS continuous glucose 
+monitoring system
+CoA coenzyme A
+cPLI canine pancreatic 
+lipase immunoreactivity
+DKA diabetic ketoacidosis
+DM diabetes mellitus
+FFAs free fatty acids
+FGMS flash glucose moni-
+toring system
+GAD65 glutamic acid 
+decarboxylase 65
+GH growth hormone
+HbA1c glycated hemoglo-
+bin
+IA-2 insulinoma antigen 2
+IG interstitial glucose
+MHC major histocompati-
+bility complex
+NIDDM non-insulin-
+dependent diabetes mel-
+litus
+NPH neutral protamine 
+Hagedorn
+PBGM portable blood glu-
+cose meter
+PD polydipsia
+PE physical examination
+Pg progesterone
+PP polyphagia
+PU polyuria
+PZI protamine zinc insulin
+RBC red blood cell
+SQ subcutaneous(ly)
+UA urinalysis
+US ultrasound
+INTRODUCTION
+D
+iabetes mellitus (DM) is a hetero-
+geneous group of diseases with 
+multiple etiologies characterized by 
+hyperglycemia resulting from inadequate 
+insulin secretion, inadequate insulin action, 
+or both.1 e prevalence of DM in dogs has 
+been estimated from about 0.3% in rst opin-
+ion practices to about 1% in referral institu-
+tion practices.2-5 e reported incidence 
+of DM in a population of 182,087 Swedish 
+insured dogs was about 13 cases per 10,000 
+(0.13%) dog-years at risk.6
+CLASSIFICATION AND ETIOLOGY
+“TYPES” OF DIABETES MELLITUS
+ere are two predominant forms of DM in 
+people, one involving a permanent and abso-
+lute loss of insulin and the other involving 
+insulin resistance that may not be permanent. 
+ese 2 conditions were referred to as “juvenile-
+onset” and “adult-onset” DM, respectively, then 
+updated to “insulin-dependent DM” (IDDM) 
+and “non-insulin-dependent DM” (NIDDM). 
+e terms type 1 and type 2 DM are now 
+employed, with about 10% of diabetic people 
+worldwide having type 1 disease and about 
+90% with type 2, a condition almost identical 
+to the previous NIDDM.7 Several classication 
+systems for canine DM have been proposed 
+based on the underlying cause of their beta-cell 
+dysfunction.8 9 More recently, the European 
+Society of Veterinary Endocrinology’s project 
+(Agreeing Language in Veterinary Endocrinol-
+ogy) proposed a common terminology (Box 
+291.1).1 e most common form of DM in dogs 
+resembles type 1 DM in people. It is characterized by permanent hypo-
+insulinemia, no increase in endogenous serum insulin or C-peptide 
+concentrations following administration of an insulin secretagogue 
+(e.g., glucose, glucagon, amino acids), and an absolute need for exog-
+enous insulin to control glycemia, avoid diabetic ketoacidosis (DKA, 
+ch. 290), and survive.10 With rare exceptions, all diabetic dogs require 
+exogenous insulin therapy to manage their hyperglycemia.
+HISTOLOGY AND POSSIBLE PRIMARY CAUSES
+Common histologic observations in pancreatic tissue from 
+dogs with DM include reduced size and number of pancreatic 
+islets and reduced number of beta cells within islets. Beta-cell 
+vacuolization, enlargement, and degeneration are common.11 12
+The cause of pancreatic beta-cell dysfunction or destruction 
+in dogs has not been established. Genetic predisposition to 
+DM is recognized and based on familial associations, pedigree 
+analyses of Keeshonden and several other breeds, and genomic 
+studies to identify susceptibility and protective major histo-
+compatibility complex (MHC) haplotypes.2 13-15 A number of 
+genes linked to susceptibility to DM in people are also asso-
+ciated with increased risk in dogs.14-16 Canine DM has been 
+associated with MHC class II genes (dog leukocyte antigen; 
+DLA).17 Similar haplotypes and genotypes have been identi-
+fied in the most susceptible breeds.
+e American Diabetes Association has recommended sub-
+categorizing human type 1 DM (T1DM) into types 1A (immune-
+mediated) and 1B (idiopathic severe insulin deciency).18 Type 
+1A DM is characterized by lymphocytic inltration of the islets, 
+known as “insulitis,” and by the presence of serum autoantibod-
+ies to pancreatic components (e.g., insulin, intracellular glutamic 
+Diabetes Mellitus in Dogs
+Federico Fracassi
+CHAPTER 291
+This chapter is enhanced with the following electronic assets onElsevier eBooks+: 8 Videos and 1 Client Information Sheet.
+Classification of Canine Diabetes Mellitus1
+I. Insulin Deficient DM (IDD) (Beta-Cell-Related Disorders)
+a. Reduced insulin secretion due to beta-cell destruction
+Beta-cell loss associated with exocrine pancreatic disease
+Immune-mediated
+Toxic (e.g., diazoxide)
+Infection
+Idiopathic
+b. Reduced insulin secretion due to beta-cell death (apoptosis)
+Glucotoxicity
+Lipotoxicity
+Idiopathic
+c. Reduced insulin secretion due to beta-cell aplasia/atrophy/
+hypoplasia
+d. Production of defective insulin
+II. Insulin Resistant DM (IRD) (Target-Organ Disorder)
+a. Endocrine influence
+Growth hormone (endogenous/exogenous)
+Steroids (glucocorticoids/progestogens/other)
+Catecholamines
+Thyroid hormones
+b. Obesity
+c. Drugs
+Thiazide diuretics
+Beta-adrenergic agonists
+d. Inflammatory mediators
+e. Disorders of receptor and intracellular signaling
+BOX 291.1
+
+CHAPTER 291
+•
+Diabetes Mellitus in Dogs
+1975
+eBooks.Health.Elsevier.com
+acid decarboxylase 65 [GAD65] or insulinoma antigen 2 [IA-2]) 
+prior to the development of hyperglycemia.19 ere is evidence 
+that a small percentage of diabetic dogs have an immune-
+mediated component contributing to the beta cell loss, leading to 
+insulin deciency. However, studies are conicting, and pancre-
+atic lymphocytic inltration is rare in diabetic dogs.11 20-22 Also, 
+circulating serum antibodies to beta-cell autoantigens, such as 
+GAD65, IA-2 and insulin, were only rarely identied in aected 
+dogs at diagnosis.11 21 23 us, autoimmunity may not be a con-
+tributory factor in most dogs. A few dogs with juvenile-onset 
+DM (i.e., onset <1 year of age) have been reported, with higher 
+prevalence in some breeds, e.g., Labrador Retrievers.24 25 Most 
+reports describe various pancreatic histopathologic abnormali-
+ties in diabetic dogs, but no clear etiology. Congenital hypoplasia 
+of islet beta cells has been described in Keeshond puppies and 
+other breeds.26-28
+EXOCRINE PANCREATIC DISEASE
+DM may occur secondary to disease of the exocrine pancreas 
+or any process that diusely injures the pancreas, most notably 
+pancreatitis (chs. 276, 277), a recognized cause of human dia-
+betes.29 e incidence of histologically identiable, oen severe 
+pancreatitis in diabetic dogs ranges from 30-40%. It is a likely 
+contributor to the development of DM and DKA (ch. 290).30-32
+Any inammatory process involving exocrine pancreatic tissue 
+could negatively impact beta-cell viability because beta cells are 
+particularly sensitive to the action of proapoptotic mediators, 
+such as tumor necrosis factor alpha.33-35
+INSULIN-RESISTANT DM
+Progesterone
+Insulin-resistant DM can follow the antagonistic eects of the 
+progesterone (Pg)-dominated phase of diestrus or pregnancy 
+(see Females in Diestrus, below). Following estrus, all normal 
+bitches (pregnant or not) enter the luteal, PG-dominated phase 
+(diestrus) of their ovarian cycle. Diestrus lasts 60 to 90 days, every 
+6 to 12 months. Pg stimulates growth hormone (GH) secretion 
+from mammary tissue and both hormones antagonize insulin 
+action.36 Older females are frequently diagnosed with DM while 
+in diestrus (whether or not pregnant), when serum Pg and GH 
+concentrations are increased.37-39 Treatment with ovariohysterec-
+tomy removes the source of Pg and, in turn, the stimulus for GH 
+secretion. If an adequate population of functional beta cells is still 
+present in the pancreas, hyperglycemia may resolve without insu-
+lin treatment. Failure to quickly correct insulin resistance oen 
+results in progressive loss of beta cells and a greater likelihood of 
+permanent insulin dependency.38
+Glucocorticoids
+Glucocorticoids cause insulin resistance and decrease insulin secre-
+tion directly by reducing the incretin eect and by direct cytotoxic 
+eects (ch. 293).40-43 DM had been documented in about 10% of 
+dogs with hypercortisolism.44 45 In 1 study, 38% of dogs with hyper-
+cortisolism had moderate hyperglycemia.46 Sustained hyperglyce-
+mia has been shown to damage canine islets and lead to DM.47 It 
+is possible that hypercortisolism merely exposes pre-existing pan-
+creatic damage that has otherwise remained subclinical, which can 
+explain the progression of DM in some but not all dogs.
+Obesity
+Despite the increasing prevalence of obesity in dogs, there is no evi-
+dence that insulin resistance unmasks beta-cell dysfunction result-
+ing in type 2 DM as in people and cats (chs. 20, 150). Obese dogs 
+show evidence of insulin resistance but compensate appropriately 
+through increased insulin secretion.48
+“HONEYMOON PERIOD”
+A “honeymoon period” occurs in some dogs with newly diagnosed 
+DM, characterized by excellent glycemic control in response to 
+small doses of insulin (<0.2 U/kg/injection), presumably due to 
+residual beta-cell function. Glycemic control in these dogs usually 
+becomes more dicult (the honeymoon ends), requiring increas-
+ing insulin doses within months of beginning treatment, as the 
+residual functioning beta cells die and fail to be replaced.49
+PATHOPHYSIOLOGY
+DM is the result of a relative or absolute insulin deciency. Insu-
+lin deciency causes decreased tissue utilization of glucose, amino 
+acids, and fatty acids, accelerated hepatic glycogenolysis and gluco-
+neogenesis, and accumulation of glucose in the circulation, caus-
+ing hyperglycemia.50 Intestinal glucose absorption and glucose 
+entry into erythrocytes, kidney or brain is not aected. As renal 
+tubular capacity for glucose reabsorption is exceeded, usually when 
+blood glucose (BG) concentrations are >180 to 220 mg/dL (>10-
+12.2 mmol/L), glycosuria occurs. Glucose-induced osmotic diure-
+sis causes polyuria (PU), water loss, and activation of the thirst 
+mechanism leading to polydipsia (PD). e negative calorie bal-
+ance resulting from an inability to utilize glucose, loss of calories in 
+urine, and tissue catabolism leads to polyphagia (PP).
+e physiological consequences of DM are similar to those of 
+starvation. Protein metabolism shis from synthesis to proteolysis 
+and available amino acids increase hepatic gluconeogenesis. ese 
+are short-term protective mechanisms. But, in DM, enhanced glu-
+cose synthesis exacerbates hyperglycemia, creates negative nitrogen 
+balance, decreases muscle mass, and eventually leads to cachexia (ch. 
+151).51 e continuing lack of insulin prevents glucose from entering 
+cells, accelerates lipid catabolism, mobilizes triglycerides, and causes 
+increased levels of plasma free fatty acids (FFAs). FFAs are transported 
+to the liver where they undergo beta-oxidation to acetyl coenzyme A 
+(CoA), which may exceed the need for adenosine triphosphate pro-
+duction via oxidation in the Krebs cycle. Excess acetyl CoA is metabo-
+lized into ketones. In starvation, ketones are an acceptable short-term 
+source for energy but aer prolonged starvation or in DM, excessive 
+production of ketones can lead to ketosis and, in DM, DKA. Increased 
+hepatic concentration of FFAs also increases hepatic synthesis of both 
+triglycerides and very low density lipoproteins (VLDLs), causing 
+hyperlipidemia (chs. 63, 156) and hepatic lipidosis (ch. 274).
+SIGNALMENT
+DM is most commonly diagnosed in middle-aged and older 
+dogs, 5 to 12 years of age.1-6 Rarely, DM is diagnosed in a juve-
+nile dog.26-28 Peak prevalence is 7 to 10 years; most studies place 
+females at a greater risk.2-6 Regional dierences in breed popu-
+larity or variation in neutering practices may inuence sex pre-
+dispositions within a population, although associations identied 
+between neutering and diagnosis of DM also vary. Genetic predis-
+position for or against the development of DM in dogs has been 
+suggested (Table 291.1), e.g., Boxer dogs are seldom reported 
+in epidemiologic studies on DM. Genetic dierences within the 
+same breed due to dierent blood-lines also impact predisposi-
+tions, e.g., Swedish and Norwegian Elkhounds, Australian Terri-
+ers, and Samoyeds have the highest incidence of DM in Sweden 
+while English Setter dogs are overrepresented in Italy.6,52
+ANAMNESIS
+Dogs with DM almost always have the classical clinical signs of 
+PU/PD/PP and weight loss. PU/PD are constant in diabetic dogs. 
+PP may be diminished by a concurrent condition that decreases 
+appetite (e.g., pancreatitis, ketosis, DKA; chs. 277 and 290). 

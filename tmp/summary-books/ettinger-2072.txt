@@ -1,0 +1,269 @@
+SECTION XIX
+•
+Endocrine Disease
+1920
+eBooks.Health.Elsevier.com
+ACRONYMS
+CNS central nervous system
+cTSH canine-specific thy-
+roid stimulating hormone
+DLA dog leukocyte antigen
+DM diabetes mellitus
+ED equilibrium dialysis
+fT4 free thyroxine (T4)
+GFR glomerular filtration rate
+GH growth hormone
+GI gastrointestinal
+IGF-1 insulin-like growth 
+factor type 1
+IV intravenous
+LC-MS/MS liquid 
+chromatography-tandem 
+mass spectrometry
+NTI non-thyroidal illness
+PU/PD polyuria/polydipsia
+rhTSH human recombinant 
+thyroid stimulating hor-
+mone
+RIA radioimmunoassay
+SDMA symmetric dimethyl-
+arginine
+T3 triiodothyronine
+T3AA T3 autoantibodies
+T4 thyroxine
+T4AA T4 autoantibodies
+TCTU technetium thyroid 
+gland uptake
+TgAA thyroglobulin auto-
+antibody
+THRT thyroid hormone 
+replacement therapy
+TPO thyroid peroxidase
+TRH thyrotropin releasing 
+hormone
+TSH thyroid stimulating 
+hormone
+TT3 total triiodothyronine 
+(T3)
+TT4 total thyroxine (T4)
+US ultrasonography
+vWf:Ag von Willebrand 
+factor antigen
+Hypothyroidism in Dogs
+Carmel T. Mooney
+INTRODUCTION AND ANATOMY
+H
+ypothyroidism is the most com-
+mon thyroid disease and one of 
+the most common endocrine dis-
+orders in dogs. Its prevalence has been esti-
+mated between 0.2 and 0.8%.1-3 A survey on 
+insured dogs from Sweden, however, sug-
+gested a lower prevalence (0.07%) despite 
+including a large number of pedigree dogs 
+more likely to have hypothyroidism.4 5 Breed 
+predisposition can be signicant. A preva-
+lence as high as 15% has been recognised in 
+Swedish Giant Schnauzers and Hovawarts.6
+e thyroid gland of dogs has two sepa-
+rate lobes, one on either side of the trachea 
+(ch. 283, Figure 283.1). Each lobe is com-
+posed of microscopic follicles lined by a sin-
+gle layer of thyroid epithelium. e lumen of 
+each follicle contains “colloid,” a thyroglobu-
+lin storage material secreted by follicular 
+cells. yroglobulin is a large glycoprotein 
+containing iodotyrosines, precursors of thy-
+roid hormones.
+PHYSIOLOGY
+THYROID HORMONES
+e thyroid gland synthesizes and secretes 
+the hormones 3,5,3′,5′-L-tetraiodothyronine 
+(thyroxine [T4]) and 3,5,3′-L-triiodothyronine 
+(triiodothyronine [T3]) (Figure 285.1). Sev-
+eral steps in thyroid hormone synthesis are 
+catalysed by thyroid peroxidase (TPO). y-
+roid hormones are highly protein-bound in 
+the circulation. Approximately 60% of T4
+and T3 are bound to thyroxine binding glob-
+ulin, 17% to transthyretin, 12% to albumin, 
+and 11% to various lipoprotein fractions. 
+Since binding anities are lower in dogs 
+than in people, total concentrations in dogs 
+are lower, free fractions higher (estimated 
+at approximately 0.1-0.3% for T4 and 1% 
+for T3), and serum half-lives shorter (10-16 
+hours for T4 and 5-6 hours for T3). Only the free fraction is meta-
+bolically active. e protein-bound moiety serves as a passive res-
+ervoir to buer hormone delivery to tissues. T3 is approximately 
+3-5 times more potent than T4. Up to 60% of T3 is produced not by 
+the thyroid gland but by peripheral outer ring mono-deiodination 
+of T4, a step that may be autoregulated. Inner ring deiodination 
+results in the formation of metabolically inactive reverse T3 (rT3). 
+yroid hormones aect most body tissues by interacting with 
+specic nuclear receptors to modify the expression of a diverse 
+array of genes. yroid hormones inuence multiple metabolic 
+processes from regulation of mitochondrial oxygen demand to 
+control of protein synthesis.
+REGULATION OF THYROID HORMONE SYNTHESIS AND 
+FUNCTION
+yroid hormone production is controlled by the hypothalamus 
+and pituitary (Figure 285.2). e hypothalamus secretes thyrotro-
+pin releasing hormone (TRH) that acts on the anterior pituitary to 
+promote synthesis and secretion of thyroid stimulating hormone 
+(thyrotropin; TSH). TSH promotes thyroid gland iodide trapping, 
+synthesis, and release of thyroid hormones. e secreted circulat-
+ing free T4 and T3 provides negative feedback to the hypothala-
+mus and anterior pituitary, decreasing TRH and TSH synthesis 
+and release and, subsequently, thyroid hormone production.
+yroid hormones have numerous functions. eir major 
+inuence is on metabolic rate, growth, development of the neuro-
+logical system, and tissue turnover. ey have positive inotropic 
+and chronotropic eects on the heart, are necessary for lipid syn-
+thesis and metabolism, and can stimulate erythropoiesis. When 
+decient, the spectrum of possible abnormalities is extensive.
+PATHOGENESIS OF HYPOTHYROIDISM
+OVERVIEW
+Clinical signs of hypothyroidism are the result of decreased 
+T4 and T3 production due to an abnormality in any part of the 
+hypothalamic-pituitary-thyroid axis. Hypothyroidism is cat-
+egorized by lesion location. Primary hypothyroidism implies an 
+abnormality with the thyroid gland, secondary disease involves 
+the pituitary gland and tertiary disease implies abnormalities 
+with the hypothalamus. Distinguishing between secondary and 
+tertiary disease is not always possible and the term central hypo-
+thyroidism may be used to describe either. Hypothyroidism can 
+also be described as congenital or acquired.
+CONGENITAL HYPOTHYROIDISM
+Congenital is less common than acquired hypothyroidism.7 It 
+results from thyroid hypoplasia or aplasia, dysgenesis or dyshor-
+monogenesis. Congenital hypothyroidism may be more prevalent 
+than currently recognized because some die at birth or shortly 
+thereaer without a denitive diagnosis. Central hypothyroid-
+ism (resulting from TSH or TRH deciency) has been reported 
+CHAPTER 285
+This chapter is enhanced with the following electronic asset onElsevier eBooks+: 1 Client Information Sheet.
+
+CHAPTER 285
+•
+Hypothyroidism in Dogs
+1921
+eBooks.Health.Elsevier.com
+sporadically and in one family of Giant Schnauzers and related 
+Miniature Schnauzers.8 TSH deciency is also a feature of pitu-
+itary dwarsm, although signs of hypothyroidism are variably 
+present and may be delayed. ere are a few reports suggestive 
+of thyroid dysgenesis. Congenital hypothyroidism with goiter 
+as a result of dyshormonogenesis and TPO deciency has been 
+reported sporadically and as an autosomal recessive disorder in 
+French Bulldogs, Spanish Water Dogs and, Tentereld, Toy Fox 
+and Rat Terriers; breed-specic genetic tests are commercially 
+available.9-11 Congenital hypothyroidism with goiter has also been 
+anecdotally reported in Papillons7 and in Shih Tzus caused by a 
+mutation in the sodium iodide symporter.12 Congenital hypothy-
+roidism may develop in pups born to dams fed an iodine-decient 
+diet, dams given a variety of drugs or alternatively because of 
+iodine deciency or excess in early life.
+ACQUIRED HYPOTHYROIDISM
+Central
+Central disease is rare, accounting for <5% of hypothyroid dogs. Pitu-
+itary neoplasia and surgical hypophysectomy account for most. Sec-
+ondary hypothyroidism arising from trauma (ch. 246), nontraumatic 
+intracranial hemorrhage (ch. 243), and adenohypophysitis has been 
+described.13-15 Tertiary hypothyroidism is extremely rare. Secondary 
+hypothyroidism is an uncommon feature of glucocorticoid excess 
+that is reversible. Central hypothyroidism results in atrophic degen-
+eration of the thyroid gland, characterized by follicles distended with 
+colloid and attening of the follicular epithelium, changes readily dis-
+tinguishable from primary thyroid abnormalities.
+Primary
+Acquired primary thyroid disease accounts for most of the diag-
+noses of hypothyroidism in dogs. Histologically, lymphocytic 
+Basolateral membrane
+TSH
+NIS
+D2
+D1
+PLC
+AC
+DAG
+IP3
+cAMP
+T4
+T3
+TPO
+NADP+
+NADPH
+Hydrolysis
+DUOX2
+DUOX2A
+Ca2+
+H2O2
+PDS
+MIT
+DIT
+DEHAL1
+TSHR
+Apical membrane
+Capillary
+Colloid
++
++
+Tg
+H 2O2
+Tg
+Iodinated
+Tg
+Iodinated
+I
+2 Na+
+1 I
+I
+Na+
+Na/K-ATPase
+2 K+
+K+
+3 Na+
+Na+
+I
+I
+I
+?
+Figure 285.1
+Synthesis of thyroid hormones. Schematic illustration of a thyroid follicular cell showing the key aspects of thyroid iodine transport and 
+thyroid hormone synthesis. AC, Adenyl cyclase; ATPase, adenosine triphosphatase; cAMP, cyclic adenosine monophosphate; D1, thyroidal deiodinase 
+type 1; D2, thyroidal deiodinase type 2; DAG, diacylglycerol; DEHAL1, iodotyrosine dehalogenase 1 (1YD); DIT, diiodotyrosine; DUOX, dual oxidase; 
+IP3, inositol triphosphate; MIT, monoiodotyrosine; NADP, oxidized form of nicotinamide adenosine dinucleotide phosphate; NADPH, reduced nicoti-
+namide adenosine dinucleotide phosphate; NIS, sodium-iodide symporter; PDS, pendrin (SLC26A4); PLC, phospholipase C; T3 triiodothyronine; T4
+thyroxine; Tg, thyroglobulin; TPO, thyroid peroxidase; TSH, thyroid stimulating hormone (thyrotropin); TSHR, thyrotropin receptor. (From Salvatore, 
+D, Davies TF, Schlumberger M-J, etal. yroid physiology and diagnostic evaluation of patients with thyroid disorders. In: Melmed S, Polonsky KS, 
+Larsen PR, etal, eds. Williams Textbook of Endocrinology. 12th ed. Elsevier Saunders; 2011:327-361.)
+Hypothalamus
+TRH
+TSH
+Pituitary
+Thyroid glands
+T4
+T3
+Blood
+
+
+
+
+Figure 285.2
+Regulation of thyroid hormone concentrations. y-
+roid hormone concentrations are controlled by the hypothalamic-
+pituitary-thyroid axis, which operates as a negative feedback loop. 
+yrotropin (TSH) causes synthesis and release of T4 and lesser 
+amounts of T3 from the thyroid gland. Intracellular T3, derived from 
+deiodination of T4 within the pituitary gland, causes decreased TSH 
+synthesis and secretion and is the main determinant of TSH concen-
+tration. yrotropin-releasing hormone (TRH), secreted by the hypo-
+thalamus, modulates TSH release from the pituitary gland. Increased 
+thyroid hormone concentrations are also believed to decrease TRH 
+synthesis and secretion. Hormones that inhibit TSH secretion include 
+dopamine, somatostatin, serotonin, and glucocorticoids. TRH, pros-
+taglandins, and alpha-adrenergic agonists increase TSH secretion. 
+(From Scott-Moncrie CR. Hypothyroidism. In: Ettinger SJ, Feldman 
+EC, eds. Textbook of Veterinary Internal Medicine. 7th ed. Elsevier; 
+2010:1751-1761.)

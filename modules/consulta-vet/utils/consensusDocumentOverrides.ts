@@ -25,6 +25,10 @@ function bundledConsensusPdf(
 }
 
 const BUNDLED_CONSENSUS_DOCUMENTS: Record<string, ConsensusDocumentOverride> = {
+  'isfm-transfusao-felina-2021': bundledConsensusPdf('isfm-transfusao-felina-2021.pdf', {
+    description:
+      'Diretrizes ISFM 2021 para coleta e administração de sangue e hemocomponentes em gatos.',
+  }),
   'icatcare-dtuif-felina-2025': bundledConsensusPdf('icatcare-dtuif-felina-2025.pdf', {
     description:
       'Consenso iCatCare 2025 para diagnóstico e manejo das doenças do trato urinário inferior em gatos.',

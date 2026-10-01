@@ -1,0 +1,845 @@
+
+===== Plumb PDF 1220 =====
+Sulfa-/Trimethoprim   1193
+Sulfa-/Trimethoprim
+Sulfadiazine/Trimethoprim
+Sulfamethoxazole/Trimethoprim
+(sul-fa-dye-a-zeen; sul-fa-meth-ox-a-zole/trye-meth-ohe-prim)
+Bactrim®, EquiSul-SDT®, Uniprim®
+Potentiated Sulfonamide Antimicrobial
+NOTE: In the United States, 2 FDA-approved combinations of sulfon-
+amide with trimethoprim (ie, sulfa-/trimethoprim) are used clinically 
+in animals: sulfadiazine/trimethoprim for parenteral and oral use in 
+dogs, cats, and horses and sulfamethoxazole/trimethoprim for oral 
+use in humans. In Canada, sulfadoxine is also available in combina -
+tion with trimethoprim for veterinary use.
+Prescriber Highlights
+ ▶ Combination antimicrobial agent, often referred to as a po-
+tentiated sulfonamide, used to treat bacterial and protozoal 
+infections
+ ▶ Contraindications include hypersensitivity to sulfonamides 
+and severe renal or hepatic impairment.
+ ▶ Caution is advised in cases of diminished renal or hepatic 
+function, urinary obstruction, urolithiasis, and in dog breeds 
+predisposed to sulfonamide hypersensitivity (eg, Doberman 
+pinschers).
+ ▶ Adverse effects in dogs include keratoconjunctivitis sicca, 
+hypersensitivity (type 1 or type 3), acute neutrophilic hepatitis 
+with icterus, vomiting, anorexia, diarrhea, fever, hemolytic 
+anemia, urticaria, polyarthritis, facial swelling, polydipsia, 
+crystalluria, hematuria, polyuria, cholestasis, hypothyroidism, 
+anemia, agranulocytosis, and idiosyncratic hepatic necrosis.
+ ▶ Adverse effects in cats include anorexia, crystalluria, hematu-
+ria, leukopenia, and anemia.
+ ▶ Adverse effects in horses include diarrhea, hypersensitivity 
+reactions, and hematologic effects (eg, anemia, thrombocy-
+topenia, leukopenia) when administered orally and transient 
+pruritus after IV injection.
+ ▶ Local injection adverse effects (eg, warmth, edema, pain) are 
+possible.
+ ▶ Sulfa-/trimethoprim is potentially teratogenic; weigh the risks 
+versus the benefits before prescribing.
+ ▶ In the United States, extra-label use of sulfonamides is prohib-
+ited in lactating dairy cattle.
+Uses/Indications
+Although sulfadiazine/trimethoprim is only FDA-approved for use 
+in dogs and horses, this drug is used to treat infections caused by 
+susceptible bacteria and parasitic organisms in various species. 
+Sulfadiazine/trimethoprim is commonly used in horses because it 
+is 1 of a limited number of safe oral options. Although use in dogs is 
+more limited because of concerns about adverse effects and availabil-
+ity of other antimicrobial options, this antibiotic is a potential choice 
+for treatment of various infections (eg, cystitis, prostatitis) and is also 
+sometimes used for treatment of atypical pathogens (eg, Nocardia 
+spp). Prophylactic use of sulfadiazine/trimethoprim reduced mor -
+bidity in dogs receiving doxorubicin.1
+The World Health Organization (WHO) has designated sulfa -
+methoxazole/trimethoprim as a Highly Important antimicrobial for 
+human medicine.2 The Office International des Epizooties (OIE) An-
+timicrobial Classification has designated sulfadiazine/trimethoprim 
+as a Veterinary Critically Important antimicrobial.3
+Pharmacology/Actions
+Sulfonamides are bacteriostatic agents while trimethoprim is bac -
+tericidal; both agents are time-dependent antibiotics. When used in 
+combination, the resulting potentiated sulfonamides are bactericid-
+al. Potentiated sulfonamides sequentially inhibit enzymes in the folic 
+acid pathway, inhibiting bacterial thymidine synthesis. Sulfonamides 
+compete with para-aminobenzoic acid (PABA) to reduce bacterial 
+dihydrofolic acid (DFA) formation, and trimethoprim blocks the 
+conversion of DFA to tetrahydrofolic acid by preferentially inhibiting 
+bacterial dihydrofolate reductase. Infected tissue and cellular debris 
+can inhibit the activity of sulfa-/trimethoprim by secreting PABA 
+and thymidine. The effects of sulfa-/trimethoprim on the equine GI 
+microbiome appear to be reversible.4
+The in vitro optimal ratio for most susceptible bacteria is ≈1:20 
+(trimethoprim:sulfonamide), but synergistic activity can reportedly 
+occur with ratios of 1:1 to 1:40. The serum concentration of the tri -
+methoprim component is considered more important than the sul -
+fonamide concentration. 
+Potentiated sulfonamides have a fairly broad spectrum of activi -
+ty. Generally susceptible gram-positive bacteria include most strep -
+tococci and staphylococci and Nocardia spp. Many gram-negative 
+organisms of the Enterobacteriaceae family are inherently suscep -
+tible to potentiated sulfonamides but acquired resistance can occur. 
+Sulfa-/trimethoprim is ineffective against Pseudomonas aeruginosa; 
+some protozoa (ie, Pneumocystis jiroveci, Coccidia spp, Neospora spp, 
+Toxoplasma spp) are also inhibited. Potentiated sulfonamides appear 
+to have little activity against most atypical bacteria and anaerobes; 
+methicillin-resistant staphylococci are usually resistant. Enterococcus 
+spp infections may appear to be susceptible to sulfonamide-contain-
+ing antibiotics in vitro; however, they are intrinsically resistant, so 
+sulfa-/trimethoprim should not be used for these bacteria.
+Resistance development is thought to occur more slowly to the 
+combination of drugs than to either drug alone. In gram-negative 
+organisms, sulfamethoxazole resistance is usually plasmid mediat -
+ed, although a point mutation for dihydropteroate synthase also may 
+confer resistance.  
+Pharmacokinetics
+Sulfa-/trimethoprim is relatively well absorbed after oral adminis -
+tration, with peak concentrations occurring ≈1 to 4 hours after ad -
+ministration; however, the drug is absorbed more slowly after SC 
+absorption. Oral bioavailability in fed horses after a single dose of 
+30 mg/kg paste was 74% for sulfadiazine and 46% for trimethoprim.5 
+Bioavailability was ≈84% in male goats.6 Food has no apparent effect 
+on the absorption of sulfadiazine, but trimethoprim absorption is 
+decreased.
+In calves 1 day and 1 week of age, trimethoprim and sulfadia -
+zine were absorbed after oral administration, although serum tri -
+methoprim concentration was diminished in the 1-week-old calves. 
+In calves 6 weeks of age, peak sulfadiazine concentration was only 
+60% as compared with calves 1 day of age, and trimethoprim was 
+undetectable.7 In a separate study, sulfadiazine half-life was 8.5 to 10 
+hours in calves 6 weeks of age and ≈8 to 13 hours in calves 12 weeks 
+of age.8 In ruminants older than 8 weeks of age, trimethoprim is ap-
+parently trapped in the ruminoreticulum after oral administration 
+and undergoes some degradation that limits its usefulness.
+Sulfa-/trimethoprim is well distributed in the body; however, in 
+horses, concentrations are lower in the pulmonary epithelial lining 
+fluid than in plasma. 5 Both sulfadiazine and trimethoprim attain 
+therapeutic concentrations in the equine endometrium. 9 In dogs, 
+therapeutic concentrations of both agents are reached in the skin. 10 
+In patients with inflamed meninges, the drugs enter the CSF in con-
+centrations ≈50% of those found in the serum. Sulfa-/trimethoprim 
+
+
+===== Plumb PDF 1221 =====
+1194    Sulfa-/Trimethoprim
+is relatively well distributed into the prostate, and both drugs con -
+centrate in the urine. The volume of distribution for trimethoprim is 
+1.49 L/kg in dogs; 0.59 to 1.51 L/kg in horses; and 2.7 L/kg in don -
+keys.11 The volume of distribution for sulfadiazine is 1.02 L/kg in 
+dogs and 0.6 L/kg in donkeys. 11 Sulfadiazine and trimethoprim are 
+20% and 35% bound to equine plasma proteins.12
+Sulfa-/trimethoprim is both renally excreted unchanged via glo -
+merular filtration and tubular secretion and metabolized by the liver. 
+Sulfonamides are primarily acetylated (not in dogs) and conjugated 
+with glucuronic acid, and trimethoprim is metabolized to oxide and 
+hydroxylated metabolites. Trimethoprim may be more extensively 
+metabolized in the liver of adult ruminants than in other species. The 
+serum elimination half-life for trimethoprim is 2.5 hours in dogs, ≈2 
+to 3 hours in horses, 10.9 hours in goats,6 and 1.5 hours in cattle. The 
+serum elimination half-life for sulfadiazine is 9.84 hours in dogs, ≈4 
+to 8 hours in horses, and 2.5 hours in cattle. Sulfadiazine and tri -
+methoprim clearances in donkeys were 1.7 and 4.4 mL/minute/kg,  
+respectively.11 Although trimethoprim is rapidly eliminated from the 
+serum, the drug may persist for a longer period of time in tissue.
+Because of the number of variables involved, it is extremely dif -
+ficult to apply pharmacokinetic values in making dosage recom -
+mendations with these combinations. Each drug (ie, trimethoprim, 
+sulfonamide) has different pharmacokinetic parameters (eg, absorp-
+tion, distribution, elimination) in each species. Because different 
+organisms have different MIC values and the optimal ratio of tri -
+methoprim to sulfonamides differs from organism to organism, this 
+problem is exacerbated.
+Considerable controversy exists regarding the frequency of ad -
+ministration of these combinations. Sulfadiazine/trimethoprim is 
+labeled for once daily administration in dogs and horses, but many 
+clinicians believe that sulfa-/trimethoprim is more efficacious if giv-
+en twice daily, regardless of the sulfonamide used.
+Contraindications/Precautions/Warnings
+The veterinary manufacturer states that sulfadiazine/trimethoprim 
+should not be used in dogs or horses with marked liver parenchymal 
+damage, impaired hepatic function, blood dyscrasias, or a history 
+of sulfonamide or trimethoprim sensitivity. Sulfadiazine/trimetho -
+prim is not for use in horses (or FDA-approved for other animals) 
+intended for food. Sulfonamides are not considered contraindicated 
+in patients allergic to thiazide diuretics or sulfonylurea agents.13
+Doberman pinschers, Samoyeds, and miniature schnauzers ap -
+pear to be more susceptible to sulfonamide-induced polysystemic 
+immune complex disease14; use sulfa-/trimethoprim with caution in 
+these breeds.
+Sulfa-/trimethoprim should be used with caution in patients with 
+pre-existing hepatic or renal disease or folate deficiency. In animals 
+with moderate to severe renal dysfunction, consider dosage reduc -
+tion; avoid products containing sulfadiazine.
+Sulfadiazine has potential for crystallization in the urine, so use 
+should be avoided in dogs with uroliths, at increased risk for devel -
+oping uroliths, with highly concentrated urine (from dehydration), 
+or with acidic urine.
+Horses receiving sulfadiazine/trimethoprim that are under con -
+ditions of stress may develop potentially fatal acute diarrhea. 15 Dis-
+continue antimicrobial therapy if acute diarrhea or persistent changes 
+in fecal consistency are observed and initiate appropriate treatment. 
+Sulfadiazine/trimethoprim should not be administered to horses with 
+drug-induced cardiac arrhythmias (eg, anesthetic and sedative agents) 
+and it should not be given IV concurrently or with previous adminis-
+tration of CNS depressants (eg, anesthetic agents, phenothiazines).16
+In humans, sulfamethoxazole/trimethoprim is contraindicated in 
+patients younger than 2 months of age, with known hypersensitivity 
+to either drug component, with marked hepatic or renal impairment, 
+and with megaloblastic anemia due to folate deficiency.
+Adverse Effects
+Adverse effects noted in dogs include keratoconjunctivitis sic -
+ca (KCS; which may be irreversible), acute neutrophilic hepatitis 
+with icterus, vomiting, anorexia, diarrhea, fever, hemolytic anemia, 
+urticaria, polyarthritis, facial swelling, polydipsia, polyuria, and 
+cholestasis. Potentiated sulfonamides may cause clinical hypothy -
+roidism in dogs, particularly with extended therapy. Acute hyper -
+sensitivity reactions manifesting as type I (ie, anaphylaxis) or type 
+III (ie, formation of antigen:antibody complexes) reactions can be 
+seen. Hypersensitivity reactions appear to be more common in large-
+breed dogs. Doberman pinschers, Samoyeds, and miniature schnau-
+zers may be more susceptible to hypersensitivity reactions than other 
+breeds.14 Other hematologic effects (eg, anemia, agranulocytosis) are 
+possible but are rare, although the incidence may increase with pro-
+longed use of high doses.17 Sulfa-/trimethoprim has rarely caused an 
+idiosyncratic, moderate to massive hepatic necrosis in dogs. 18 Use 
+of sulfa-/trimethoprim may increase the risk for developing acute 
+pancreatitis,14 but cause and effect have not been definitively shown.
+Adverse effects noted in cats may include anorexia, leukopenia, 
+and anemia.
+In horses, transient pruritus has been noted after IV injection. 
+Oral therapy has resulted in dose-related diarrhea, but incidence is 
+relatively low. Previous administration of potentiated sulfonamides 
+has been implicated in increasing the mortality rate associated with 
+severe diarrhea. If the 48% injectable product is administered IM or 
+SC, or if it extravasates after IV administration, swelling, pain, and 
+minor tissue damage may result. Hypersensitivity reactions, neuro -
+logic effects (eg, gait alterations, behavior changes), cutaneous vas -
+culitis, and hematologic effects (eg, anemia, thrombocytopenia, leu-
+kopenia) may also be seen.19 In experimental models, trimethoprim 
+inhibited equine voltage-gated K+ channel K(v)11.1, suggesting that 
+trimethoprim could induce repolarization disorders in horses 20,21; 
+validation with in vivo studies are needed. Neurologic adverse ef -
+fects (agitation, erratic behavior, hypermetric gait) have been noted 
+in horses being treated with typical doses of sulfa-/trimethoprim; all 
+adverse effects resolved with discontinuation of the drug.22
+Sulfonamides (and their metabolites) can precipitate in the urine, 
+particularly when given at high dosages for prolonged periods. Acid-
+ic or highly concentrated urine may also contribute to increased risk 
+for crystalluria, hematuria, and renal tubule obstruction.
+Regurgitation may occur in birds.
+Sulfamethoxazole/trimethoprim can markedly reduce tear pro -
+duction in rabbits,23 but sulfadiazine/trimethoprim had no effect in 
+horses.24
+Reproductive/Nursing Safety
+Trimethoprim and sulfonamides cross the placenta. Safety of sulfa-/
+trimethoprim has not been clearly established in pregnant animals. 
+Reports of teratogenicity (eg, cleft palate, fetal loss) have been re -
+ported in rats and rabbits. Studies in male animals have not demon-
+strated reduced reproductive performance. First trimester exposure 
+in humans has been associated with increased risk for congenital 
+malformations. 
+Trimethoprim and sulfonamides are distributed into milk. Use 
+sulfa-/trimethoprim products in nursing animals with caution. 
+Sulfonamides are distributed into maternal milk, but in humans 
+are considered compatible with breastfeeding in healthy, full-term 
+infants.25,26 Premature infants and infants with hyperbilirubinemia 
+may be at risk for adverse effects.
+Overdose/Acute Toxicity
+Manifestations of an acute overdose can include clinical signs of GI 
+distress (eg, nausea, vomiting, diarrhea), CNS toxicity (eg, depres -
+sion,), facial swelling, bone marrow depression, and increased se -
+rum aminotransferase (ie, ALT, AST) activity. Oral overdoses can be 
+
+
+===== Plumb PDF 1222 =====
+Sulfa-/Trimethoprim   1195
+treated by emptying the stomach (following typical protocols) and 
+initiating supportive therapy based on clinical signs. Acidification 
+of the urine may increase the renal elimination of trimethoprim but 
+could also cause sulfonamide crystalluria, particularly with sulfadi -
+azine-containing products. CBC and other laboratory parameters 
+should be monitored as necessary. Severe bone marrow suppression 
+associated with chronic overdoses can be treated with folinic acid 
+(leucovorin). Peritoneal dialysis is not effective in removing tri -
+methoprim or sulfonamides from circulation.
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+In humans, trimethoprim may be a substrate of p-glycoprotein, 
+sulfamethoxazole is a substrate of the CYP2C family, and both tri -
+methoprim and sulfamethoxazole may inhibit CYP2C enzymes. The 
+following drug interactions have either been reported or are theoret-
+ical in humans or animals receiving sulfa-/trimethoprim and may 
+be of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Amantadine : A human patient developed toxic delirium while 
+receiving amantadine in conjunction with sulfamethoxazole/tri -
+methoprim.27
+ ■ Amiodarone : May reduce sulfonamide metabolism and in -
+crease the risk for adverse effects.
+ ■ Anesthetic Agents : Concurrent IV administration is contra -
+indicated. Ester-type local anesthetics (eg, procaine, tetracaine) 
+may locally inhibit sulfonamide effects.28,29
+ ■ Angiotensin II-Receptor Blockers  ( ARBs; eg, telmisar-
+tan): May increase the risk for hyperkalemia when used with po-
+tassium-sparing drugs
+ ■ Angiotensin-Converting Enzyme Inhibitors  (ACEIs; eg, 
+benazepril, enalapril ): May increase the risk for hyperkalemia 
+when used with potassium-sparing drugs
+ ■ Antacids : Concurrent administration may decrease sulfon -
+amide bioavailability.
+ ■ Azathioprine, Mercaptopurine : Increased risk for myelo -
+suppression
+ ■ Cyclosporine : Sulfa-/trimethoprim may increase the risk for 
+nephrotoxicity.
+ ■ Detomidine : Concurrent use has resulted in fatal arrhythmias 
+in horses.21 
+ ■ Digoxin : Sulfa-/trimethoprim may increase digoxin  concentration.
+ ■ Diuretics, Thiazide : May increase the risk for thrombocyto -
+penia
+ ■ Hypoglycemic Agents, Oral  (eg, glipizide, metformin ): 
+Sulfa-/trimethoprim may potentiate hypoglycemic effects.
+ ■ Leucovorin : May reduce therapeutic effect of sulfa-/trimetho -
+prim
+ ■ Methenamine : May form an insoluble precipitate in the urine
+ ■ Methotrexate (MTX): Sulfa-/trimethoprim may displace 
+from plasma proteins and increase the risk for toxic effects; it can 
+also interfere with MTX assays (competitive protein binding tech-
+nique, but not when measured by radioimmunoassay).
+ ■ Phenothiazines (eg, acepromazine, promethazine): Concur-
+rent administration is contraindicated. 
+ ■ Potassium Supplements : Increased risk for hyperkalemia
+ ■ Procainamide : Sulfa-/trimethoprim may increase the concen -
+tration of procainamide and its active metabolite.
+ ■ Pyrimethamine : May increase the risk for megaloblastic ane -
+mia and myelosuppression
+ ■ Rifampin : May reduce serum concentrations of trimethoprim 
+and sulfonamide
+ ■ Spironolactone : May increase the risk for hyperkalemia when 
+used with potassium-sparing drugs
+ ■ Tricyclic Antidepressants (TCAs; eg, amitriptyline, clo -
+mipramine): Sulfa-/trimethoprim may decrease efficacy.
+ ■ W arfarin : Sulfa-/trimethoprim may prolong prothrombin time 
+and INR.
+Laboratory Considerations
+ ■ When using the Jaffe alkaline picrate reaction assay for creatinine 
+determination, sulfa-/trimethoprim may cause an overestimation 
+of ≈10%.
+ ■ Sulfonamides may give false-positive results for urine glucose de-
+terminations when using the Benedict’s method.
+Dosages
+NOTE: There is significant controversy regarding the frequency 
+of administration of these drugs. See Pharmacokinetics for more 
+information. Unless otherwise noted, doses are for combined sul-
+fa-/trimethoprim. See Monitoring if treatment is expected to be 
+longer than 7 days.
+DOGS:
+For systemic antibacterial action against sensitive organisms, 
+either alone or as an adjunct to surgery or debridement with 
+associated infection; treatment of acute urinary tract infections, 
+acute bacterial complications of distemper, acute respiratory 
+tract infections, acute alimentary tract infections, wound infec-
+tions, and abscesses (label dosage; FDA-approved): 30 mg/kg PO 
+once daily. Alternatively, especially in severe infections, the initial 
+dose may be followed by 15 mg/kg every 12 hours.30  
+Superficial bacterial folliculitis (extra-label): 15 – 30 mg/kg PO 
+twice daily.31 Potentiated sulfonamides (ie, sulfa-/trimethoprim, 
+sulfadimethoxine/ormetoprim) are first-tier drugs only if region-
+al susceptibility of Staphylococcus pseudintermedius is known.
+Bacterial cystitis  (extra-label): Potentiated sulfonamides (ie,  
+sulfa-/trimethoprim, sulfadimethoxine/ormetoprim) are first-tier 
+drugs only if regional pathogen susceptibility patterns are 
+known.32 
+a) Uncomplicated UTI: 15 mg/kg PO every 12 hours. Treatment 
+may be as short as 3 days.32,33 
+b) Complicated UTI: 15 – 30 mg/kg PO every 12 hours32
+Parasitic diseases (extra-label):
+Coccidiosis: 
+a) Body weight less than 4 kg (8.8 lb): 15 – 30 mg/kg PO every 12 
+to 24 hours34
+b) Body weight greater than 4 kg (8.8 lb): 30 – 60 mg/kg PO every 
+24 hours34
+Neosporosis: Sulfadiazine/trimethoprim 15 – 20 mg/kg PO every 
+12 hours for 4 weeks in combination with pyrimethamine 1 mg/kg  
+PO once daily for 4 weeks. If observable clinical improvement is 
+slow, treatment should be extended beyond the recommended 4 
+weeks until 2 weeks after clinical signs have plateaued. All litter -
+mates of affected puppies should be treated regardless of clinical 
+signs. Alternative treatment is clindamycin 12.5 – 25 mg/kg PO or 
+IM every 12 hours for 4 weeks. 35 NOTE: There is no approved or 
+curative treatment for canine neosporosis. Arrestment of clinical 
+disease is best achieved when treatment is initiated before the oc-
+currence of contracture or paralysis.
+
+
+===== Plumb PDF 1223 =====
+1196    Sulfa-/Trimethoprim
+Toxoplasmosis: Sulfa-/trimethoprim 15 mg/kg PO every 12 hours 
+for 4 weeks can be used. Supportive care should be provided as 
+needed.35 There is no approved treatment for toxoplasmosis in dogs.
+Pneumocystosis (Pneumocystis jiroveci): 15 mg/kg PO every 8 
+hours for 3 weeks or 30 mg/kg PO every 12 hours for 3 weeks 
+American canine hepatozoonosis ( Hepatozoon americanum): 
+Triple-combination therapy (TCP) consists of sulfadiazine/tri -
+methoprim 15 mg/kg PO every 12 hours for 14 days, clindamy -
+cin 10 mg/kg PO every 8 hours for 14 days, and pyrimethamine  
+0.25 mg/kg PO every 24 hours for 14 days or ponazuril  
+10 mg/kg PO every 12 hours for 14 days. Prolonged therapy con-
+sists of decoquinate 10 – 20 mg/kg mixed in food twice daily; treat-
+ment is continued for 2 years. If relapse occurs, either ponazuril 
+or TCP should be administered again for 14 days, followed by 
+long-term decoquinate therapy.36 NOTE: No treatment is effec -
+tive in eliminating H americanum in infected dogs. Treatment can 
+increase survival time, improve quality of life, and decrease the 
+number and severity of clinical relapses. Supportive care can en -
+sure hydration, and NSAIDs can assist with pain control.
+CATS:
+Bacterial cystitis (extra-label): Potentiated sulfonamides (ie, sulfa-/
+trimethoprim, sulfadimethoxine/ormetoprim) are first-tier drugs 
+only if regional pathogen susceptibility patterns are known.32 
+a) Uncomplicated UTI: 15 mg/kg PO every 12 hours. Treatment 
+may be as short as 3 days.32,33 
+b) Complicated UTI: 15 – 30 mg/kg PO every 12 hours.32 
+Parasitic diseases (extra-label):
+Coccidiosis: 15 – 30 mg/kg PO every 12 to 24 hours34
+Toxoplasmosis: 15 mg/kg PO every 12 hours for 4 weeks can be 
+used. Supportive care should be provided as needed.35
+HORSES :
+Control of bacterial infections of horses during treatment of 
+acute strangles, respiratory tract infections, acute urogeni -
+tal infections, wound infections, and abscesses  (label dosage; 
+FDA-approved): 
+a) Powder and paste formulations: 75 mg/kg PO once daily; ad-
+minister in a small amount of feed. Continue treatment for 2 
+to 3 days after clinical signs have subsided. Usual treatment 
+course is 5 to 7 days.37,38
+b) IV injection formulation: 21.3 mg/kg IV once daily38
+Lower respiratory tract infections by susceptible strains of Strep-
+tococcus equi subsp zooepidemicus (label dosage; FDA-approved): 
+24 mg/kg (combined active ingredients) PO twice daily for 10 days15 
+Respiratory infections (extra-label): 30 mg/kg PO or IV twice 
+daily.5 NOTE: Potentiated sulfonamides for treatment of low -
+er airway infections in horses should be restricted to treatment 
+against highly susceptible pathogens.
+Pneumocystis jiroveci (formerly P carinii) in foals (extra-label): 
+30 mg/kg PO every 12 hours
+Dermatologic infections (extra-label): 15 – 30 mg/kg PO every 
+12 hours, often in conjunction with topical antibacterial sham -
+poo. Treatment for 3 weeks may be necessary.39
+BIRDS:
+Susceptible infections (extra-label):
+a) Respiratory and enteric infections in psittacines  using the 
+24% (240 mg/mL) injectable suspension: 0.22 mL/kg IM once 
+to twice daily
+b) Respiratory and enteric infections in hand-fed baby psittac-
+ines: Using the sulfamethoxazole/trimethoprim oral suspen -
+sion 240 mg/5 mL (48 mg/mL): 0.22 mL/30 g 2 to 3 times daily 
+for 5 to 7 days
+c) Coccidiosis in toucans and mynahs : Using the sulfame -
+thoxazole/trimethoprim oral suspension 240 mg/5 mL  
+(48 mg/mL): 2.2 mL/kg once daily for 5 days; may be added 
+to feed.
+d) Canaries, finches, and mynah birds : Sulfadiazine/trimetho-
+prim 100 mg/kg PO twice daily is recommended for treatment 
+of avian coccidian parasitic diseases. 40 NOTE: Atoxoplasma 
+spp treatment is difficult.
+e) GI protozoal infections in pigeons: 25 – 50 mg/kg PO twice 
+daily for 10 to 14 days41
+FERRETS :
+Susceptible infections (extra-label):
+a) 30 mg/kg PO twice daily
+b) Coccidiosis: 30 mg/kg PO once daily for 14 days
+RABBITS, RODENTS, SMALL MAMMALS :
+Susceptible infections (extra-label):
+a) Rabbits: 
+ i. 15 – 30 mg/kg PO every 12 to 24 hours; 30 – 48 mg/kg SC 
+every 12 hours. Sulfadiazine has a very short half-life (ie, ≈1 
+hour) in rabbits.42 
+ ii. GI protozoal infections: 25 – 30 mg/kg PO twice daily for 
+10 to 14 days41
+b) Chinchillas, Gerbils, Guinea Pigs, Hamsters, Mice, Rats :  
+15 – 30 mg/kg PO every 12 hours
+c) Chinchillas, Hedgehogs: 30 mg/kg PO or SC every 12 hours43
+REPTILES :
+Susceptible infections (extra-label):
+a) Most species: 30 mg/kg IM (upper part of body) once daily for 
+2 treatments, then every other day for 5 to 12 treatments; may 
+be useful for enteric infections.44
+b) All species : 30 mg/kg IM, first 2 doses should be 24 hours 
+apart, then every other day45
+c) 15 – 25 mg/kg/day IM for 7 to 14 days46
+d) GI protozoal infections in bearded dragons : 15 – 20 mg/kg 
+PO once daily for 7 to 14 days; may consider giving dose every 
+other day after the second dose.41 
+Monitoring
+ ■ Clinical efficacy
+ ■ Adverse effects
+ ■ Renal function (creatinine, BUN) and potassium
+ ■ If prolonged therapy (ie, greater than 7 days) is anticipated, the 
+following is recommended: 
+ ■ Baseline and periodic CBC and hepatic profile 
+ ■ In dogs, baseline Schirmer tear testing, with periodic re-evaluation 
+(eg, in 5 days, then every 2-3 weeks) and owner monitoring for oc-
+ular discharge
+ ■ Thyroid function tests should also be considered (baseline and 
+ongoing) in dogs
+Client Information
+ ■ Shake the oral suspension well before using. It does not need to 
+be refrigerated.
+ ■ Give to horses on an empty stomach.
+ ■ Animals must be allowed free access to water and not become 
+dehydrated while receiving this medication.
+ ■ If the animal’s eyes are dry, develop a discharge, or become irritat-
+ed, contact your veterinarian.
+ ■ In horses, discontinue treatment and contact your veterinarian 
+immediately if there are changes in stool consistency or diarrhea. 
+Chemistry/Synonyms
+Trimethoprim occurs as odorless, bitter-tasting, white to cream-col-
+
+
+===== Plumb PDF 1224 =====
+Sulfadimethoxine   1197
+ored crystals or crystalline powder. It is very slightly soluble in water 
+and slightly soluble in alcohol.
+Sulfadiazine occurs as an odorless or nearly odorless, white to 
+slightly yellow powder. It is practically insoluble in water and spar -
+ingly soluble in alcohol.
+Sulfamethoxazole occurs as a practically odorless and tasteless, 
+white to off-white, crystalline powder. Approximately 0.29 mg is sol-
+uble in 1 mL of water, and 20 mg is soluble in 1 mL of alcohol.
+In combination, sulfadiazine and trimethoprim may be known 
+as co-trimazine, sulfadiazine/trimethoprim, trimethoprim/sulfadia-
+zine, SDZ-TMP , TMP-SDZ, and various trade names.
+In combination, sulfamethoxazole and trimethoprim may be 
+known as co-trimoxazole, sulfamethoxazole/trimethoprim, tri -
+methoprim/sulfamethoxazole, SMX-TMP , TMP-SMX, and various 
+trade names.
+Storage/Stability
+Unless otherwise instructed by the manufacturer, sulfa-/trimetho -
+prim products should be stored at room temperature of 20°C to 25°C 
+(68°F-77°F) in tight containers and protected from freezing. Shake 
+suspensions well before use.
+Compatibility/Compounding Considerations
+No specific information noted
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS :
+Trimethoprim/Sulfadiazine Oral Suspension: Each gram contains 
+67 mg trimethoprim and 333 mg sulfadiazine (proprietary formula-
+tion) in 135 mL, 280 mL, 560 mL, and 900 mL bottles; Equisul-SDT®; 
+(Rx). FDA-approved for use in horses not intended for food. NADA# 
+141-360
+Trimethoprim/Sulfadiazine Powder: Each gram contains 67 mg tri-
+methoprim and 333 mg sulfadiazine; Uniprim® Powder in 37.5 g and 
+1125 g packets; 200 g, 400 g, and 1200 g jars; 2000 g pails; and 12 kg 
+box; (Rx). FDA-approved for use in horses not intended for food. 
+NADA# 200-033
+Trimethoprim/Sulfadiazine Oral Paste: Each gram contains 67 mg 
+trimethoprim and 333 mg sulfadiazine. Available in 37.5 g (total 
+weight) syringes; Tribrissen® 400 Oral Paste; (Rx). FDA-approved for 
+use in horses not intended for food. NOTE: Not currently marketed 
+in the United States; approved products are available in other coun-
+tries.
+Trimethoprim/Sulfadiazine Sterile Injection: 48% in 100 mL vials: 
+Di-Biotic® 48% , Tribrissen® 48% Injection; (Rx). FDA-approved for 
+use in horses not intended for food. NOTE: Not currently marketed 
+in the United States; approved products are available in other coun-
+tries under different trade names. A 24% solution may also be avail-
+able.
+In Canada, trimethoprim and sulfadoxine are available for use in cat-
+tle and swine ( Trimidox®; Borgal®). Slaughter withdrawal = 10 days; 
+milk withdrawal = 96 hours. (In the United States, extra-label use of 
+sulfonamides is prohibited in lactating dairy cattle.)
+In the United Kingdom, trimethoprim and sulfamethoxazole oral 
+drops ( Sulfatrim®) are available for use in rabbits, pigeons, and 
+bearded dragons.
+HUMAN-LABELED PRODUCTS :
+Trimethoprim Tablets: 100 mg; generic; (Rx). A 50 mg/5 mL oral 
+solution (trimethoprim HCl, Primsol®) is also available.
+Trimethoprim and Sulfamethoxazole (Co-Trimoxazole; TMP-SMZ) 
+Oral Tablets: 80 mg trimethoprim and 400 mg sulfamethoxazole; 
+Double Strength Tablets: 160 mg trimethoprim and 800 mg sulfame-
+thoxazole; Bactrim® and Bactrim® DS; generic; (Rx)
+Trimethoprim 8 mg/mL and Sulfamethoxazole 40 mg/mL (labeled as 
+40 mg/5 mL and 200 mg/5mL) oral suspension; Sulfatrim®; generic; 
+(Rx)
+Trimethoprim and Sulfamethoxazole Injection: 80 mg sulfamethox-
+azole, 16 mg trimethoprim per mL in 5 mL single-use vials, 10 mL, 
+or 30 mL multiple-dose vials; generic; (Rx). Contains benzyl alcohol, 
+propylene glycol (40%); pH ≈10. NOTE: Refer to product label for 
+administration guidelines.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Sulfadimethoxine
+(sul-fa-dye-meth-ox-een) Albon®
+Sulfonamide Antimicrobial
+See also Sulfadimethoxine/Ormetoprim
+Prescriber Highlights
+ ▶ Used to treat bacterial and protozoal infections
+ ▶ Contraindications include hypersensitivity to sulfonamides 
+and severe renal or hepatic impairment. 
+ ▶ Use with caution in breeds that are prone to sulfonamide hy-
+persensitivity (ie, Doberman pinschers, Samoyeds, miniature 
+schnauzers). 
+ ▶ Adverse effects include the possibility of the drug precipitat-
+ing in the urine (particularly with high doses administered for 
+prolonged periods, acidic urine, or highly concentrated urine). 
+In dogs, keratoconjunctivitis sicca, hypersensitivity reactions 
+(eg, rashes, fever, bone marrow suppression, dermatitis, non-
+septic polyarthritis), focal retinitis, and vomiting are possible. 
+Diminished renal or hepatic function or urinary obstruction 
+may occur.
+ ▶ Potentially teratogenic; potential risks versus benefits should 
+be considered.
+ ▶ In the United States, extra-label use of sulfonamides is prohib-
+ited in lactating dairy cattle.
+Uses/Indications
+Sulfadimethoxine injection and tablets are FDA-approved for use in 
+dogs and cats for respiratory, genitourinary, enteric, and soft tissue 
+infections caused by susceptible organisms. Efficacy is greater when 
+treatment is initiated early in the course of disease. Sulfadimethoxine 
+is also used to treat coccidial infections in small animals.
+In horses, sulfadimethoxine injection is FDA-approved for the 
+treatment of respiratory infections caused by Streptococcus equi.
+In cattle, sulfadimethoxine is FDA-approved for treatment of 
+shipping fever complex, calf diphtheria, bacterial pneumonia, and 
+foot rot caused by susceptible organisms.
+In poultry, sulfadimethoxine is added to drinking water to treat 
+coccidiosis, fowl cholera, and infectious coryza.
+Although sulfadimethoxine is not used in human medicine, the 
+World Health Organization (WHO) has designated sulfonamides as 
+highly important antimicrobials for human medicine. 1 The Office 
+International des Epizooties (OIE) has designated sulfonamides as 
+Veterinary Critically Important Antimicrobial (VCIA) Agents for 
+veterinary species.2
+Pharmacology/Actions
+Sulfonamides are time-dependent, bacteriostatic agents when used 
+alone, but are considered bactericidal when used in combination with 
+dihydrofolate reductase inhibitors (eg, ormetoprim, trimethoprim). 
+They are thought to prevent bacterial replication by competing with 
+
+
+===== BSAVA PDF 434 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+418
+DOSES
+Dogs: Hyperadrenocorticism: 2 mg/kg p.o. q24h or 1 mg/kg p.o. 
+q12h.
+Cats: Hyperadrenocorticism: 10–30 mg/cat p.o. q12–24h. 
+References
+Lemetayer J and Blois S (2018) Update on the use of trilostane in dogs. The Canadian 
+Veterinary Journal  59, 397–407
+Macfarlane L, Parkin T and Ramsey I (2016) Pre-trilostane and three-hour post-trilostane 
+cortisol to monitor trilostane therapy in dogs. Veterinary Record 179 , 597
+Sanders K, Kooistra HS and Galac S (2018) Treating canine Cushing’s syndrome: current 
+options and future prospects. The Veterinary Journal  241, 42–51
+Trimethoprim/Sulphonamide 
+(Potentiated sulphonamides)
+(Duphatrim, Norodine, Trimacare, Trimedoxine, 
+Septrin*) POM-V, POM
+Formulations: Trimethoprim and sulphonamide are formulated in 
+a ratio of 1:5. Injectable: trimethoprim 40 mg/ml and sulfadiazine 
+200 mg/ml (240 mg/ml total) solution. Oral: trimethoprim and 
+sulfadiazine in a variety of tablet sizes designated by the amount of 
+trimethoprim, e.g. 20 mg, 80 mg. Each 5 ml of paediatric suspension 
+contains 200 mg sulfamethoxazole and 40 mg trimethoprim = 48 
+mg/ml suspension. Tablets contain 80 mg trimethoprim and 400 mg 
+sulfamethoxazole. If availabililty of veterinary fomulations is limited, 
+POM products may be used on a named patient basis.
+Action: Trimethoprim and sulphonamides block sequential steps in 
+the synthesis of tetrahydrofolate, a cofactor required for the 
+synthesis of many molecules, including nucleic acids. The two-step 
+mechanism ensures that bacterial resistance develops more slowly 
+than to either agent alone. Time-dependent mechanism of action.
+Use: Many organisms are susceptible, including Nocardia , Brucella, 
+Gram-negative bacilli, some Gram-positive organisms 
+(Streptococcus), plus Pneumocystis carinii , Toxoplasma gondii and 
+other coccidians. Pseudomonas  and Leptospira are usually resistant. 
+Trimethoprim/sulphonamide is useful in the management of urinary, 
+respiratory tract and prostatic infections, but ineffective in the 
+presence of necrotic tissue. Trimethoprim alone may be used for 
+urinary, prostatic, systemic salmonellosis and respiratory tract 
+infections. Fewer adverse effects are seen with trimethoprim alone. 
+Trimethoprim is a weak base which becomes ion-trapped in fluids 
+that are more acidic than plasma (e.g. prostatic fluid and milk). 
+Ensure patients receiving sulphonamides are well hydrated and are 
+not receiving urinary acidifying agents.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid use in animals with keratoconjunctivitis 
+sicca (KCS) or previous history of adverse reaction to sulphonamides 
+such as KCS or polyarthritis.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 435 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+419
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Adverse reactions: Drowsiness, anorexia, leucopenia, anaemia 
+and hypersalivation may be seen in cats. Hepatic necrosis, vomiting, 
+immune-mediated thrombocytopenia and an immune-mediated 
+polyarthritis may be seen in dogs. Dobermanns seem to be more 
+susceptible to the development of immune-mediated systemic 
+adverse effects. Acute hypersensitivity reactions are possible with 
+sulphonamide products and may manifest as a type III 
+hypersensitivity reaction. Sulphonamides may reversibly suppress 
+thyroid function. KCS has been reported in dogs treated with 
+sulfapyridine and other sulphonamides. Monitor tear production 
+particularly during long-term use and in breeds susceptible to 
+keratoconjunctivitis sicca.
+Drug interactions: Antacids may decrease the bioavailability of 
+sulphonamides if administered concomitantly. Urinary acidifying 
+agents will increase the tendency for sulphonamide crystals to form 
+within the urinary tract. Concomitant use of drugs containing 
+procaine may inhibit the action of sulphonamides since procaine is a 
+precursor for para-amino benzoic acid.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Doses (mg) of total product (trimethoprim + sulphonamide).
+Dogs, Cats: 15–30 mg/kg p.o. q12h. 30 mg/kg s.c. q24h. 
+References
+Frank LA, Hnilica KA, May ER et al . (2005) Effects of sulfamethoxazole-trimethoprim on 
+thyroid function in dogs. American Journal of Veterinary Research  66, 256–259
+Weese JS, Blondeau J, Boothe D et al . (2019). International Society for Companion 
+Animal Infectious Diseases (ISCAID) guidelines for the diagnosis and management of 
+bacterial urinary tract infections in dogs and cats. The Veterinary Journal  247, 8–25
+Yaemsiri S and Sykes J (2018) Successful treatment of disseminated nocardiosis caused 
+by nocardia veterana in a dog. Journal of Veterinary Internal Medicine  32, 418–422
+Tropicamide
+(Mydriacyl*, Tropicamide*) POM 
+Formulations: Ophthalmic: 0.5%, 1% solution (single-use vials), 1% 
+(5 ml bottle).
+Action: Inhibits acetylcholine at the iris sphincter and ciliary body 
+muscles, causing mydriasis (pupil dilation) and cycloplegia (paralysis 
+of the ciliary muscle).
+Use: Synthetic, short-acting anticholinergic used for mydriasis and 
+cycloplegia. It is the mydriatic of choice for intraocular examination 
+due to its rapid onset (20–30 minutes) and short duration of action 
+(2–12 hours in dogs, 4–9 hours in cats). Tropicamide is more 
+effective as a mydriatic than as a cycloplegic and is therefore less 
+effective than atropine in relieving ciliary body muscle spasm 
+associated with uveitis. Use with care in patients with lens luxation.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid in glaucoma.
+
+
+===== BSAVA PDF 436 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+420
+Adverse reactions: May cause salivation in cats, but less marked 
+than with atropine.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 1 drop per eye, repeat after 20–30 min if necessary.
+Tylosin
+(Bilosin, Tylan, Tyluvet) POM-V 
+Formulations: Injectable: 200 mg/ml solutions (Bilosin, Tylan, 
+Tyluvet). Oral: 100 g/bottle soluble powder (Tylan).
+Action: A time-dependent macrolide antibiotic that binds to the 
+50S ribosomal subunit, suppressing bacterial protein synthesis.
+Use: Tylosin has good activity against mycoplasmas and has the 
+same antibacterial spectrum of activity as erythromycin but is 
+generally less active against bacteria. Although rarely indicated in 
+small animal medicine, it has been used for the treatment of 
+antibiotic-responsive diarrhoea in dogs and for cryptosporidiosis. 
+Administration is predominantly by the oral route in dogs and cats.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: GI disturbances. The activity of tylosin is 
+enhanced in an alkaline pH. Tylosin can cause pain at the site of 
+injection.
+Drug interactions: Not well documented in small animals. It does 
+not appear to inhibit the same hepatic enzymes as erythromycin.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: Various doses: 7–15 mg/kg p.o. q12–24h. In colitis, higher 
+doses recommended 12–20 mg/kg q8h with food gradually 
+increasing the dosing interval to q24h.
+Cats: 7–15 mg/kg p.o. q12–24h. 
+References
+Westermarck E, Frias R and Skrzypczak T (2005) Effect of diet and tylosin on chronic 
+diarrhoea in Beagles. Journal of Veterinary Internal Medicine  19, 822–827
+Westermarck E, Skrzypczak T, Harmoinen J et al . (2005) Tylosin-responsive chronic 
+diarrhoea in dogs. Journal of Veterinary Internal Medicine 19, 177–186
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

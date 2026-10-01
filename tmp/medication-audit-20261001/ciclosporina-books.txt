@@ -1,0 +1,861 @@
+
+===== Plumb PDF 349 =====
+322    Cyclosporine (Systemic)
+Cyclosporine (Systemic)
+Ciclosporin, Cyclosporine A
+(sye-kloe-spor-een) Atopica®, Cyclavance®, Neoral®, 
+ Sandimmune®
+Immunosuppressive
+See also Cyclosporine Ophthalmic
+Prescriber Highlights
+ ▶ FDA-approved products are available for dogs to control 
+ atopic dermatitis and for cats to control allergic dermatitis. 
+ ▶ Often used extra-label for treatment of immune-mediated 
+disorders in dogs and cats, and to prevent rejection of kidney 
+transplants in cats
+ ▶ GI adverse effects (eg, vomiting, soft stools) are common at 
+the start of treatment but typically resolve within a few weeks.
+ ▶ Use of microemulsion or “modified” formulations is highly rec-
+ommended. If using human-labeled products, Sandimmune® 
+is not bioequivalent to, and must not be interchanged with, 
+Atopica®, Cyclavance®, Neoral®, or Gengraf®. 
+ ▶ Counseling pet owners to ensure knowledge of the dispens-
+ing system is important when using solutions FDA-approved 
+for animals. 
+ ▶ For indications other than atopic dermatitis, consider ther-
+apeutic drug monitoring (pharmacokinetic and pharma-
+codynamic) to assess efficacy and minimize adverse effect 
+ potential.
+ ▶ Many potential drug interactions
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cyclosporine as a hazardous drug; personal 
+protective equipment (PPE) should be used accordingly to 
+minimize the risk for exposure.
+Uses/Indications
+Cyclosporine is FDA-approved for use in dogs for the control of 
+atopic dermatitis. In cats, it is FDA-approved for the control of feline 
+allergic dermatitis as manifested by excoriations (including facial 
+and neck), miliary dermatitis, eosinophilic plaques, and self-induced 
+alopecia. Therapeutic effect for atopic dermatitis may not be seen 
+in the first few weeks of treatment, and the drug is unsuitable for 
+acute flares of atopic dermatitis. 1 Concurrent treatment with corti -
+costeroids1,2 or oclacitinib3 can be considered during this interval to 
+control pruritus. 
+In dogs, extra-label indications include perianal fistulas (anal fu -
+runculosis),4–7 immune-mediated blood disorders (eg, IMHA), 8 in-
+flammatory bowel disease, 9 idiopathic chronic hepatitis, sebaceous 
+adenitis, sterile nodular panniculitis, sterile granuloma/pyogranu -
+loma complex, neutrophilic dermatosis resembling pyoderma gan -
+grenosum, eosinophilic dermatitis with edema (ie, Wells syndrome), 
+neutrophilic dermatitis (ie, Sweet syndrome), alopecia areata, vas -
+culitis, ulcerative dermatoses of the nasal philtrum, dermatomyo -
+sitis, contact allergy, chronic pedal furunculosis, metatarsal sinus 
+tracts, refractory cases of juvenile sterile granulomatous dermatitis 
+and lymphadenitis (ie, juvenile cellulitis), reactive histiocytic disor -
+ders, proliferative otitis externa, idiopathic keratinization disorders 
+(ie, primary seborrhea in springer spaniels, cairn terriers, and West 
+Highland white terriers and follicular hyperkeratosis in cocker span-
+iels), autoimmune diseases such as pemphigus foliaceus (controver-
+sial results), lupus erythematosus complex, meningoencephalitis of 
+unknown etiology (MUE),10 erythema multiforme, and uveoderma-
+tologic syndrome.11 Ketoconazole may be concurrently prescribed to 
+reduce cyclosporine dose requirements as a cost-saving measure (see 
+Drug Interactions).
+In cats, extra-label indications include feline urticaria pigmento -
+sa, chronic stomatitis,12 feline acquired alopecia (ie, pseudopelade), 
+pemphigus erythematosus and foliaceus, 13 dirty face syndrome in 
+Persian cats, 11 idiopathic pruritus, allograft transplant rejection, 14 
+pure red cell aplasia,15 immune-mediated thrombocytopenia,16,17 and 
+inflammatory bowel disease.18 
+The microemulsion form, or “modified” version, of oral products 
+(ie, Atopica®, Cyclavance®, Neoral®) is highly recommended, as it is 
+better absorbed and provides more consistent peak and trough drug 
+concentrations.19 
+Pharmacology/Actions
+Cyclosporine, a calcineurin inhibitor, is an immunosuppressive 
+agent that focuses on cell-mediated immune responses, with some 
+humoral immunosuppressive action. Cyclosporine binds to T-cell 
+cyclophilin and blocks calcineurin-mediated T-cell activation. 
+T-helper lymphocytes are the primary target, but T-suppressor cells 
+are also affected. Cyclosporine can also inhibit cytokine produc -
+tion and release (including IL-2 and interferon-gamma in dogs 20–22 
+and IL-3, IL-4, and tissue necrosis factor-alpha in humans), there -
+by affecting the function of eosinophils, mast cells, granulocytes, 
+and macrophages. It may also inhibit antigen-presenting functions 
+of the dermal immune system. 23 It is not considered myelosuppres-
+sive. One study suggests that cyclosporine therapy does not affect 
+circulating lymphocyte CD4/CD8 ratio. 24 Cyclosporine appears to 
+increase thromboxane production in dogs,25,26 and low-dose aspirin 
+inhibits this effect.27
+Pharmacokinetics
+Cyclosporine is a substrate for the P-glycoprotein (P-gp) efflux trans-
+porter, resulting in a wide range of bioavailability between patients. 
+NOTE: Neoral®, Gengraf®, Atopica®, and Cyclavance® are NOT bio-
+equivalent with Sandimmune®. In addition, the human microemul -
+sion product (ie, Neoral®) has not been proven to be as equally bio -
+available as Atopica® in dogs; however, a generic veterinary-modified 
+cyclosporine product (ie, Cyclavance®) has demonstrated bioequiva-
+lence with Atopica®.28 
+In dogs, the veterinary-labeled oral product (ie, cyclosporine 
+modified, Atopica®) is rapidly absorbed, and bioavailability is 45% 
+in fasted dogs. Food in the GI tract increases variability of bioavail -
+ability and reduces it by ≈20%.29 Protein binding is ≈90%,23 and vol-
+ume of distribution is 7.8 L/kg.30 Cyclosporine is distributed in high 
+concentrations into the liver, fat, and blood cells (granulocytes, 5% 
+to 12%; lymphocytes, 5% to 9%) and significantly accumulates in the 
+skin.23 It does not appreciably enter the CNS; this may be because it 
+is a P-glycoprotein efflux transporter substrate.29 The drug is primar-
+ily metabolized in the liver via the cytochrome P450 system (like -
+ly CYP3A), excreted into the bile, and eliminated in the feces. Less 
+than 1% of a dose is excreted unchanged into the urine. Elimination 
+half-life in dogs has been reported as ≈5 to 12 hours. 31 Clearance 
+has been consistently found to be 3.66 to 7.1 mL/minute/kg. 29 Dogs 
+with diabetes mellitus demonstrate increased clearance and reduced 
+elimination half-life.32 Pharmacokinetic parameters were not altered 
+when the veterinary-labeled cyclosporine capsules were stored fro -
+zen (-20°C [-4°F]) for 28 days.33
+In cats, oral cyclosporine (modified) bioavailability is ≈25% and is 
+highly variable, but drug absorption is not significantly altered when 
+administered with or without food.23,34 Additionally, the bioavailabil-
+ity of subcutaneous cyclosporine was reported to be very good in 
+cats.35 The drug does not appear to be absorbed transdermally.36 The 
+product label recommends administering on a consistent schedule 
+(ie, with or without food, time of day). 37 Volume of distribution is 
+3.3 L/kg, time to maximum absorption (T max) is 1 to 2 hours, and 
+maximum concentration (Cmax) is 480 ng/mL.23,34 Hepatic and intes-
+tinal metabolism (eg, hydroxylation, demethylation) produce inac -
+
+
+===== Plumb PDF 350 =====
+Cyclosporine (Systemic)   323
+tive metabolites. Elimination half-life in cats is ≈24 hours but varies 
+considerably, with estimates as short as 6.8 hours to more than 40 
+hours in some healthy cats. Elimination occurs mainly in the feces.
+Contraindications/Precautions/Warnings
+Cyclosporine is contraindicated in patients that are hypersensitive 
+to it or any component (eg, polyoxyethylated castor oil) in the prod-
+ucts. It is contraindicated in animals with malignant disorders or a 
+history of malignant neoplasia and in cats infected with FeLV or FIV . 
+Safe use has not been established in dogs weighing less than 1.8 kg 
+(4 lb); in cats weighing less than 1.4 kg (3 lb); or in dogs or cats less 
+than 6 months of age.37,38
+This drug should be used with caution in animals with diabetes 
+mellitus or renal insufficiency, as it may cause elevated levels of se -
+rum glucose, creatinine, and/or urea nitrogen. 37,38 Cats should test 
+negative for FeLV and FIV before being treated with this drug. Cats 
+on cyclosporine therapy appear to be at risk for developing systemic 
+toxoplasmosis.39 High cyclosporine blood concentrations (adminis -
+tered doses of 7.5 mg/kg/day orally) may be associated with a higher 
+risk for developing systemic toxoplasmosis.40 To avoid infection, cats 
+should be kept indoors, not eat raw meat, and not be allowed to hunt 
+during treatment. 41 Ideally, toxoplasma titers should be evaluated 
+prior to starting cyclosporine in cats.42 Only use cyclosporine in ani-
+mals with active infection when the benefits outweigh the risks.23 Use 
+may increase susceptibility to opportunistic bacterial and fungal in-
+fections and development of neoplasia.43,44 Diminished immune re -
+sponse to vaccinations can occur. Killed vaccines are recommended 
+if vaccination is considered in dogs receiving cyclosporine therapy. 
+The drug’s impact on the immune response to modified live vaccines 
+is not known. 
+Cyclosporine is a P-gp substrate. Historically, reports have not 
+shown increased sensitivity to cyclosporine and dose reductions 
+in dogs with the multidrug resistance ( MDR1) gene mutation (also 
+known as  ABCB1-1delta) have not been recommended.45,46 Howev-
+er, there is a case report of one dog receiving a low dose of cyclo -
+sporine (3.3 mg/kg PO every 12 hours) who developed a secondary 
+infection. Subsequent pharmacodynamic testing revealed marked 
+immunosuppression and MDR1 testing showed that the dog was 
+heterozygous for the MDR1 gene mutation. The MDR1 mutation was 
+suspected to have contributed to the excessive immunosuppression 
+experienced in this patient.47 Careful use with clinical and therapeu-
+tic drug monitoring is recommended, especially when the patient is 
+not responding to therapy at recommended dosages, or when sec -
+ondary infections develop at dosages lower than expected to cause 
+significant immunosuppression.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cyclosporine as a hazardous drug (nonantineo -
+plastic agent representing an occupational hazard to healthcare 
+workers); personal protective equipment (PPE) should be used ac -
+cordingly to minimize the risk for exposure. 
+Do not confuse cycloSPORINE (ciclosporin) with cycloPHOS -
+phamide.49 In addition, do not write prescriptions for this drug 
+using the abbreviation SID . Many human-medicine pharmacists 
+are not aware of this abbreviation and could interpret it as another 
+abbreviation (eg, QID).
+NOTE: Neoral®, Gengraf®, Atopica, and Cyclavance® are NOT bio-
+equivalent with Sandimmune®.
+Adverse Effects
+In dogs, vomiting, anorexia, soft stools, and diarrhea 50 are the most 
+commonly seen adverse effects. Dogs commonly vomit when start -
+ing therapy, but this generally abates with time. GI effects rarely 
+require discontinuation of the drug. Giving the drug with a small 
+amount of food or freezing capsules for 30 to 60 minutes before ad-
+ministration have been suggested to alleviate vomiting.33 
+Gingival hyperplasia, altered glucose metabolism/diabetes melli -
+tus,51 hypertrichosis, excessive shedding, psoriasiform lichenoid-like 
+dermatosis, and papillomatosis have been reported in dogs. Gingival 
+hyperplasia has been treated with oral and toothpaste forms of azi -
+thromycin with limited efficacy.52 Hepatotoxicity or thromboembol-
+ic events have been reported but are believed to be rare. One study 
+showed that low-dose aspirin inhibits cyclosporine-induced throm-
+boxane synthesis.27 One case series of 6 dogs describes the devel -
+opment of Burkholderia cepacia complex deep skin infections while 
+receiving oral cyclosporine.53 Bacteriuria and UTIs may occur.54
+In one appraisal study, the prevalence of bacterial infections in 
+828 dogs with atopic dermatitis receiving anti-allergic dosages of 
+oral cyclosporine was 11%, most commonly affecting the cutaneous 
+and urinary systems and not multiple systems.55 In 95 dogs receiving 
+higher dosages of cyclosporine for other diseases, the prevalence of 
+bacterial infection was 17%, occurring most often in the GI, urinary, 
+and respiratory systems. The prevalence of bacterial infections in 
+atopic dogs treated with cyclosporine appears to be low and occur 
+most often in the skin. However, when given for immunosuppres -
+sion, the prevalence of bacterial infections appears to be higher and 
+to affect 1 or more body systems.
+In cats, GI effects (including vomiting, diarrhea, hypersalivation, 
+decreased appetite, and anorexia) are often reported during the first 
+month of therapy.56,57 Resulting weight loss may lead to hepatic lip -
+idosis in this species (rare). Lethargy, malaise, behavior changes, 
+increased hair growth, acute bullous keratopathy, 58 gingival hyper -
+plasia, and flares of latent viral infections have also been noted in 
+cats receiving cyclosporine. Hemolytic uremic syndrome has been 
+reported after renal transplant.59 Cats developing fatal systemic toxo-
+plasmosis while on cyclosporine therapy have been reported. 39,41,60 
+Anaphylaxis is rare but possible. 
+Although nephrotoxicity and hepatotoxicity 61 are potential con -
+cerns in dogs and cats, extremely high blood cyclosporine concen -
+trations (ie, greater than 3000 ng/mL) must be present before neph-
+rotoxicity is a significant problem.
+Because of the drug’s immunosuppressive effects, animals may be 
+more susceptible to opportunistic infections (eg, nocardiosis62, atyp-
+ical fungal infections 63,64). Cyclosporine use may predispose dogs 
+and cats to development of neoplastic diseases; however, evidence 
+is lacking. In humans, this risk is increased with long-term use and 
+when administered in combination with other immunosuppressive 
+agents (eg, steroids).65 
+Because the drug has an unpleasant taste, it has been suggested 
+that oral solutions be placed in gelatin capsules or used with water or 
+taste-masking flavoring agents. In one study, Cyclavance® oral solu-
+tion was shown to be significantly more often accepted by dogs, im-
+proving dosing compliance, compared with Atopica® capsules, when 
+both were mixed with dry food (99.3% vs 27.1%, respectively).66  
+Reproductive/Nursing Safety
+Cyclosporine has been shown to be fetotoxic and embryotoxic in rats 
+and rabbits at doses 2 to 5 times the recommended dose. 65 Reduced 
+fetal weight and growth, skeletal retardation, and premature birth 
+have occurred. The manufacturer does not recommend use in preg-
+nant or breeding dogs or cats. Use during pregnancy only when the 
+risks outweigh the benefits.
+Cyclosporine is distributed into maternal milk; the manufacturer 
+does not recommend use in lactating queens or bitches.
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Oral LD50 in rabbits is greater than 320 mg/kg.65 Single oral doses of 
+33 mg/kg in dogs and 40 mg/kg in cats have resulted in no clinical 
+
+
+===== Plumb PDF 351 =====
+324    Cyclosporine (Systemic)
+signs. Acute overdoses may cause adverse GI effects as well as tran -
+sient renal or hepatotoxicity. Acute kidney injury requiring hemodi-
+alysis and increased liver enzymes was reported in a dog that acci -
+dentally received a single 33 mg/kg IV dose. 61 Clinical signs in cats 
+given 40 mg/kg for up to 6 months were extensions of adverse effects. 
+Overdoses may be treated with gastric decontamination (induction 
+of emesis is apparently effective in humans if done within 2 hours of 
+ingestion); treat supportively and according to clinical signs.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving cyclosporine and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate. Cyclo -
+sporine is a CYP450 and P-glycoprotein substrate and its metabo -
+lism can be affected by inhibitors, inducers, and other substrates. 
+The following drugs may increase cyclosporine blood levels and 
+the risk for cyclosporine toxicity:
+ ■ Acetazolamide
+ ■ Allopurinol
+ ■ Amiodarone
+ ■ Amphotericin B Liposome/Lipid complex
+ ■ Angiotensin Receptor Blockers  (ARBs; eg, telmisartan, 
+ valsartan) 
+ ■ Azole Antifungals  (eg, fluconazole, itraconazole, keto -
+conazole): Ketoconazole significantly increases cyclosporine 
+blood concentration in dogs 67,68; fluconazole has demonstrated 
+variable effects. 69,70 Itraconazole appears to affect cyclosporine 
+pharmacokinetics in cats71 but not in dogs. Many clinicians con -
+currently use ketoconazole in dogs to reduce the dose and resul -
+tant cost of cyclosporine treatment, particularly for large dogs. 
+Only use a combination of ketoconazole and cyclosporine with 
+caution and understand that monitoring of cyclosporine levels 
+may be required. Of note, one study found an increase in cyclospo-
+rine concentrations up to 75% following a dose of  ketoconazole. 
+ ■ Bromocriptine
+ ■ Calcium Channel Blockers  (eg, amlodipine, diltiazem, ve-
+rapamil)
+ ■ Carvedilol
+ ■ Ceftriaxone
+ ■ Chloramphenicol 
+ ■ Cimetidine:  May delay absorption but was not found to signifi-
+cantly alter maximum concentrations (Cmax)72 
+ ■ Cisapride
+ ■ Clonidine 
+ ■ Colchicine: Colchicine levels may also increase. This combina-
+tion is contraindicated in human patients with renal impairment.
+ ■ Corticosteroids : Methylprednisolone does not appear to af -
+fect cyclosporine levels in dogs. 
+ ■ Danazol
+ ■ Digoxin
+ ■ Estrogens
+ ■ Fatty Acids (Essential/Omega ): Fatty acid supplementation 
+may provide a cyclosporine-sparing effect.73
+ ■ Fluoroquinolones  (eg, ciprofloxacin, enrofloxacin, marbo -
+floxacin, orbifloxacin, pradofloxacin)
+ ■ Fluvoxamine
+ ■ Glipizide, Glyburide
+ ■ Grapefruit Juice, Grapefruit Juice Powder 74
+ ■ Imipenem
+ ■ Macrolide Antibiotics  (eg, azithromycin, clarithromycin,75,76 
+erythromycin)
+ ■ Medroxyprogesterone
+ ■ Metoclopramide: A study in dogs demonstrated  that meto-
+clopramide did not significantly alter cyclosporine pharmacoki -
+netics.74
+ ■ Metronidazole
+ ■ Omeprazole
+ ■ Sertraline
+The following drugs may decrease the blood levels of cyclosporine:
+ ■ Azathioprine
+ ■ Carbamazepine
+ ■ Clindamycin: Clindamycin may decrease cyclosporine bio -
+availability; however, this interaction does not appear to occur in 
+dogs.
+ ■ Cyclophosphamide
+ ■ Famotidine
+ ■ Griseofulvin
+ ■ Mitotane
+ ■ Octreotide
+ ■ Phenobarbital 77
+ ■ Rifampin
+ ■ St. John’s Wort: This interaction appears to be of significance 
+in dogs.78
+ ■ Sulfadiazine/Sulfamethoxazole
+ ■ Sulfasalazine
+ ■ Terbinafine
+ ■ Trimethoprim : May also increase the risk for nephrotoxicity
+ ■ W arfarin : May also reduce efficacy of warfarin
+Additional interactions:
+ ■ ACE Inhibitors  (eg, benazepril, enalapril ): There have been 
+case reports in humans in which renal function declined.
+ ■ Alprazolam: Concurrent use may decrease alprazolam bio -
+availability and pharmacodynamics effects.
+ ■ Darbepoetin: May cause additive increases in blood pressure. 
+Additionally, may alter cyclosporine blood concentrations, as cy-
+closporine is bound by red blood cells 
+ ■ Digoxin : Cyclosporine may increase digoxin levels with possible 
+toxicity.
+ ■ Doxorubicin : Cyclosporine can increase doxorubicin and 
+doxorubicinol (active metabolite) levels.
+ ■ Fentanyl : Concurrent use may increase the risk for fentanyl 
+toxicity.
+ ■ Furosemide : Concurrent use may increase the risk for gouty ar-
+thritis in humans.
+ ■ Hydrochlorothiazide : Concurrent use may increase the risk 
+for hyperuricemia.
+ ■ Immunosuppressive Agents (eg, azathioprine, corticoste -
+roids): May increase the risk for infection or malignancy
+ ■ Ivermectin:  Cyclosporine may inhibit P-gp (MDR1) transport-
+er and increase ivermectin concentrations.23,34
+ ■ Leflunomide:  Increased risk for leflunomide-induced adverse 
+hematologic effects
+ ■ Melphalan : Increased risk for renal injury
+ ■ Methotrexate (MTX) : Cyclosporine may increase MTX con-
+centrations.
+
+
+===== Plumb PDF 352 =====
+Cyclosporine (Systemic)   325
+ ■ Midazolam : Concurrent use may decrease midazolam clear -
+ance and increase midazolam plasma concentrations.
+ ■ Morphine : Combination may increase morphine exposure.
+ ■ Mycophenolate : Concurrent use may reduce levels of myco -
+phenolate.
+ ■ Nephrotoxic Drugs, Other  (eg, acyclovir, aminoglycosides, 
+amphotericin B, colchicine, NSAIDs, trimethoprim, vancomy-
+cin): Possible additive nephrotoxicity; avoid combination
+ ■ Oclacitinib:  Although concurrent administration of oclaci -
+tinib and cyclosporine appears safe when administered for up to 
+3 weeks,3 the combination of cyclosporine and oclacitinib is rel -
+atively contraindicated for long-term use, especially in cases in 
+which infection is present, because of the theoretical increased 
+risk for immunosuppression.1
+ ■ Omeprazole: Concurrent use may result in altered cyclospo -
+rine concentrations.
+ ■ Potassium Supplements:  Increased risk for hyperkalemia
+ ■ Spironolactone  and other Potassium-Sparing Diuretics 
+(eg, triamterene): Increased risk for hyperkalemia
+ ■ V accinations : Vaccine response may be delayed or reduced in 
+patients receiving cyclosporine79; avoid use of modified live vac -
+cines.
+ ■ Vincristine : Concurrent use may increase vincristine plasma 
+concentrations.
+Laboratory considerations
+ ■ Intradermal allergy testing (IDT): Drug withdrawal may be rec-
+ommended for at least 4 weeks prior to intradermal testing if cyc-
+losporine has been administered for longer than 30 days.80
+Dosages
+NOTE: Dosages are for cyclosporine (modified), Atopica®, Cycla-
+vance®, Neoral®, or equivalent; these dosages are not interchange-
+able with Sandimmune® (or equivalent) dosages.
+DOGS:
+Control of atopic dermatitis:
+a) Label dosage; FDA-approved: 5 mg/kg (3.3 – 6.7 mg/kg) PO 
+once daily for 30 days in dogs weighing at least 1.8 kg (3.9 lb). 
+Following this initial treatment period, dose may be tapered 
+to every other day, then twice per week until a minimum 
+frequency that will maintain the desired therapeutic effect is 
+reached. Give at least 1 hour before, or 2 hours after, meals. 38 
+It may take 4 to 6 weeks to observe the full benefits. To reduce 
+the incidence of vomiting in dogs when starting therapy, some 
+clinicians will start at a low dose, give with food, and gradu -
+ally increase oral doses over the first week or so. In one small 
+study81, 12 of 21 dogs (57%) were able to be maintained on 
+every-other-day or twice-weekly cyclosporine administration.
+b) Concurrent administration with ketoconazole (extra-label): 
+In larger dogs, cyclosporine 2.5 – 3 mg/kg PO once daily with 
+ketoconazole 2.5 – 5 mg/kg PO once daily is effective and 
+may reduce cost. 68 Ideally, cyclosporine should be given on 
+an empty stomach, but if it causes GI upset, giving with food 
+may help. One study found similar cyclosporine levels in dogs 
+treated with either cyclosporine (alone) 5 mg/kg PO once daily 
+or cyclosporine 2.5 mg/kg PO once daily with ketoconazole  
+2.5 mg/kg PO once daily.67 After control of pruritus is achieved, 
+the cyclosporine dose can gradually be reduced to the lowest 
+effective dose (eg, daily, then switch to giving every second 
+or third day). For less than daily administration (eg, every 48 
+hours), give ketoconazole only on the days cyclosporine is ad-
+ministered.
+Perianal fistulas (Anal furunculosis) (extra-label): Many dosag-
+es have been found to be effective. When used alone, cyclosporine  
+4 – 7.5 mg/kg PO twice daily. Alternatively, cyclosporine 1 – 4 mg/kg  
+PO twice daily with ketoconazole 5 mg/kg PO once daily. After 
+condition is controlled, increase the administration interval to the 
+lowest frequency that controls clinical signs.4–7
+Immune-mediated hemolytic anemia (extra-label): 5 mg/kg PO 
+every 12 hours as adjunctive treatment to corticosteroids8 
+Sebaceous adenitis,82 sterile nodular panniculitis, neutrophil -
+ic dermatoses resembling pyoderma gangrenosum, alopecia 
+areata, chronic pedal furunculosis, metatarsal sinus tracts, cu-
+taneous histiocytosis, dermatomyositis, proliferative chronic 
+otitis, idiopathic keratinization disorders (extra-label): 5 mg/kg 
+PO once daily. After condition is controlled, increase the adminis-
+tration interval to the lowest frequency that controls clinical signs.
+Pemphigus foliaceus, refractory cases  (extra-label): Variable 
+results have been reported. Higher doses such as cyclosporine  
+15 mg/kg PO once daily or cyclosporine 5 – 10 mg/kg PO once 
+daily combined with ketoconazole 5 – 10 mg/kg PO once daily 
+may be helpful.83
+Discoid lupus erythematosus, vesicular cutaneous lupus ery -
+thematosus (extra-label): 5 mg/kg PO once daily
+Exfoliative cutaneous lupus erythematosus  (extra-label): Cyc -
+losporine 2.5 – 10 mg/kg PO once daily with or without keto -
+conazole 5 – 7 mg/kg PO once daily
+Steroid-refractory inflammatory bowel disease (extra-label): 
+Cyclosporine 5 mg/kg PO once daily demonstrated an improve -
+ment in clinical signs in 12 out of 14 dogs.9 Some clinicians advo-
+cate for giving cyclosporine as a divided dose given twice daily for 
+treatment of inflammatory bowel disease.
+Idiopathic chronic hepatitis (extra-label): Median dose is 8 mg/kg  
+PO daily, with a range of 2.5 – 12.7 mg/kg/day. Median time to 
+biochemical remission (ie, ALT, less than 1.1 times the upper limit 
+of normal) was 2.5 months. Concurrent hepatoprotectant treat -
+ment was not associated with increased likelihood of remission.84
+Juvenile sterile granulomatous dermatitis and lymphadenitis 
+(juvenile cellulitis), refractory cases  (extra-label): 10 mg/kg PO 
+once daily
+Immunosuppressant for renal transplant  (extra-label): Empir -
+ical dosages generally range from 3 – 6 mg/kg PO twice daily or 
+5 – 7.5 mg/kg once daily. Ketoconazole or grapefruit juice powder 
+have been used to lower cyclosporine dose requirements. To re -
+duce transplant rejection, 10 – 15 mg/kg PO twice daily85,86 is gen-
+erally used and therapeutic drug monitoring (blood cyclosporine 
+concentrations) or pharmacodynamic monitoring can be used to 
+assess adequacy of therapy. 
+Meningoencephalitis of unknown etiology/origin (MUE/
+MUO; extra-label): 3 – 15 mg/kg PO every 12 hours. 87 A reason-
+able starting dosage is 5 mg/kg PO every 12 hours.10
+Primary immune-mediated polyarthritis (IMP A)  (extra  
+label): Cyclosporine 5 mg/kg PO every 12 hours with carprofen  
+2.2 mg/kg PO every 12 hours for 7 days for analgesia was shown 
+in one study to be an effective alternative to prednisone.88
+Myasthenia gravis: 4 mg/kg PO every 12 hours demonstrated im-
+proved clinical signs of 2 dogs in a case report 
+CATS:
+Allergic dermatitis as manifested by excoriations (including 
+facial and neck), miliary dermatitis, eosinophilic plaques, and 
+self-induced alopecia  (label dosage; FDA-approved): Initially, 
+7 mg/kg PO once daily for a minimum of 4 to 6 weeks or until 
+resolution of clinical signs. Following this initial daily treatment 
+period, the dosage may be tapered by decreasing administration 
+
+
+===== Plumb PDF 353 =====
+326    Cyclosporine (Systemic)
+to every other day or twice weekly to maintain the desired ther -
+apeutic effect. The lowest effective dosing frequency should be 
+used. Administer directly on a small amount of food or orally just 
+after feeding. When possible, administer on a consistent schedule 
+with regard to meals and time of day. If a dose is missed, the next 
+dose should be administered (without doubling) as soon as pos -
+sible, but administration should be no more frequent than once 
+daily.37 NOTE: In studies,89,90 ≈75% of cats receiving daily cyclo -
+sporine were able to undergo dose reduction. Of those cats, ≈60% 
+were able to be maintained on twice-weekly administration and 
+15% were maintained on every-other-day administration for the 
+8-week study period.
+Allergic dermatitis (extra-label): 2.5 – 5.0 mg/kg SC once daily to 
+every other day seemed to be an effective alternative therapy for 
+cats that cannot be treated orally.35
+Pemphigus complex (extra-label): 5 mg/kg PO every 24 hours 
+either alone or in combination with a glucocorticoid13
+Sebaceous adenitis, idiopathic granulomatous folliculitis and 
+furunculosis (extra-label): 5 mg/kg PO once daily91 
+Immunosuppressant (usually as part of an immunosuppres -
+sive protocol) (extra-label): 3 – 4 mg/kg PO every 12 hours or  
+5 – 7 mg/kg PO once daily. To reduce transplant rejection, 
+twice-daily administration with prednisolone 0.125 – 0.25 mg/kg 
+PO every 12 hours is generally used; therapeutic drug monitoring 
+is recommended. See Monitoring.
+Alternative to glucocorticoid therapy for feline asthma  (ex -
+tra-label): 4 mg/kg PO every 12 hours was reported in one case as 
+effective for treatment of feline asthma.92
+Chronic stomatitis (extra-label): 2.5 mg/kg PO twice daily12
+Pure red cell aplasia (extra-label): 5 – 10 mg/kg/day PO, although 
+a dosage up to 20 mg/kg/day was noted15 
+Thrombocytopenia purpura (extra-label): 5 mg/kg PO every 12 
+hours with prednisone 2 mg/kg PO every 12 hours, from a case 
+report17
+Monitoring
+ ■ Therapeutic efficacy
+ ■ Adverse effects
+ ■ Consider therapeutic drug monitoring (pharmacokinetic and 
+pharmacodynamic) to assess effectiveness of therapy, particularly 
+when response is poor or when adverse effects occur. Therapeutic 
+drug monitoring can also be considered when changing brands or 
+manufacturers, especially if response to therapy changes in the in-
+dividual patient. Cyclosporine blood concentrations are not typi-
+cally monitored when treating atopic dermatitis93 or inflammato-
+ry bowel disease9 because the blood concentrations were found to 
+not correlate with clinical efficacy, but this may be warranted in 
+some cases.50 
+a) Pharmacokinetic monitoring (or measurement of blood con -
+centrations) should ideally occur no sooner than 60 hours af -
+ter starting therapy and whole blood (not plasma) should be 
+tested, as cyclosporine concentrates in blood cells. 19 When 
+monitoring blood drug concentrations, therapeutic trough 
+whole-blood concentrations (12 hours after last dose) have 
+been suggested to be between 300 and 500 ng/mL for trans -
+plantation and life-threatening disease but may not reliably 
+predict clinical response for immunosuppression. 94 Because 
+different methodologies may yield different results and differ-
+ent conditions are managed with a range of cyclosporine blood 
+concentrations, it is recommended to contact a laboratory for 
+current recommendations. 
+b) Pharmacodynamic monitoring can also be used in dogs re -
+ceiving cyclosporine therapy to provide information on dos -
+ing for individual animals. This test is offered to clinicians as 
+a PCR-based assay, with samples being submitted after 1 week 
+of starting or changing therapy.95,96 When using pharmacody-
+namic monitoring in dogs, a single peak sample (2 hours post-
+administration) is recommended for dogs receiving twice-dai-
+ly administration, whereas both peak and trough (just before 
+the next dose) samples are recommended in dogs receiving 
+once daily therapy.
+ ■ Baseline CBC; repeat as clinically relevant (eg, signs of infection)
+ ■ Baseline serum chemistry profile, then monthly to every 3 to 6 
+months has been suggested for most conditions. For treatment 
+of IMHA in dogs, recommendations are to evaluate relevant bio-
+chemical variables every 2 to 3 months owing to the risk for hep-
+atotoxicity in a small proportion of dogs.8 
+ ■ Urinalysis and urine culture should also be monitored due to po-
+tential risks for UTIs.54
+ ■ Blood glucose in diabetic patients
+ ■ Body weight: Persistent, progressive weight loss that resulted in 
+hepatic lipidosis was reported during field studies in 2 out of 205 
+cats. 
+Client Information
+ ■ For this medication to work, give it exactly as your veterinarian 
+has prescribed. It is a good idea to always check the prescription 
+label to be sure you are giving the medicine correctly.
+ ■ Preferably, dogs should receive the medicine on an empty stom -
+ach (at least 1 hour before or 2 hours after a meal). If the dog 
+vomits after receiving the drug, try giving the medication frozen 
+or with a small amount of food. Freezing capsules for 30 to 60 
+minutes before administration can also be tried.
+ ■ Cats can be given the medication with or without food; make sure 
+to give it the same way each day. If giving with food, first mix the 
+medication into a small portion of food to ensure the entire dose 
+is consumed, then offer the remaining food.
+ ■ For many conditions, if a dose is missed, the next dose should be 
+given as soon as possible and then the usual schedule should be 
+restarted. For serious conditions (eg, kidney transplant), contact 
+your veterinarian if a dose is missed.
+ ■ Vomiting, decreased appetite, soft stools, and diarrhea are the 
+most common side effects. These signs usually get better on their 
+own, but if they worsen or continue, contact your veterinarian. 
+ ■ Capsules should be stored in their original container until admin-
+istration. 
+ ■ Capsules should not be broken or opened. 
+ ■ If using the oral liquid, do not rinse or clean the syringe between 
+doses.
+ ■ It is recommended that you wear gloves when giving capsules or 
+oral solutions to your animal. Wash your hands thoroughly after 
+handling.
+ ■ Depending on the condition being treated, it may take up to 4 to 6 
+weeks to see an improvement in your animal’s condition.
+ ■ Watch for signs of infection (eg, low energy level, poor appetite) 
+and/or persistent, progressive weight loss; if seen, contact your 
+veterinarian immediately.
+ ■ If your animal is taking cyclosporine for immunosuppression, 
+your veterinarian may need to perform blood tests to evaluate 
+how well this medicine is working. Do not miss these important 
+follow-up visits.
+ ■ This medication is considered to be a hazardous drug as defined 
+by the National Institute for Occupational Safety and Health 
+(NIOSH). Talk with your veterinarian or pharmacist about the use 
+of personal protective equipment when handling this  medicine.
+
+
+===== BSAVA PDF 99 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+83
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+increased risk of nephrotoxicity if ciclosporin is administered with 
+aminoglycosides, NSAIDs, quinolones, or trimethoprim/
+sulphonamides; concomitant use of ciclosporin not 
+recommended. Increased risk of hyperkalaemia if used with ACE 
+inhibitors. As a substrate and inhibitor of the MDR 1 P-glycoprotein 
+transporter, co-administration of ciclosporin with P-glycoprotein 
+substrates such as macrocyclic lactones (e.g. ivermectin and 
+milbemycin) could decrease the efflux of such drugs from blood–
+brain barrier cells, potentially resulting in signs of CNS toxicity.
+DOSES
+See Appendix for immunosuppression protocols.
+Dogs:
+• Ocular disease: apply approximately 0.5 cm of ointment to the 
+affected eye q12h. It may take 2–4 weeks for improvement to 
+occur (occasionally up to 12 weeks). Maintenance treatment 
+should be continued with application q12h; in cases of excessive 
+tear production, application can be reduced to q24h but only 
+with caution and long-term, regular monitoring of tear 
+production.
+• Atopic dermatitis: 5 mg/kg p.o. q24h until signs controlled.
+• Perianal fistula, sebaceous adenitis: 5 mg/kg p.o. q24h – may 
+be increased in non-responsive cases to q12h.
+• Immune-mediated disease:  5 mg/kg p.o. q12h. A proportion of 
+dogs may require higher doses and pharmacodynamic 
+monitoring is therefore advisable.
+Cats:
+• Atopic dermatitis: 7 mg/kg p.o. q24h until signs controlled.
+• Immune-mediated disease: dosing strategies are not well 
+defined but typically 3–5 mg/kg p.o. q12h or 5–7 mg/kg p.o. q24h.
+References
+Nuttall T, Reece D and Roberts E (2014) Life-long diseases need life-long treatment: 
+long-term safety of ciclosporin in canine atopic dermatitis. Veterinary Record 174(S2), 3–12
+Swann JW, Garden OA, Fellman CL et al . (2019) ACVIM consensus statement on the 
+treatment of immune-mediated hemolytic anemia in dogs. Journal of Veterinary 
+Internal Medicine  29, 513–518Cimetidine
+(Zitac, Cimetidine*, Tagamet*) POM-V, POM 
+Formulations: Injectable: 100 mg/ml solution in 2 ml ampoule. 
+Oral: 100 mg, 200 mg tablets, 40 mg/ml syrup.
+Action: Histamine (H2) receptor antagonist, reducing histamine-
+induced gastric acid secretion. Rapidly absorbed with high 
+bioavailability; undergoes hepatic metabolism and renal excretion. 
+Plasma half-life is about 2 hours. It is not an antiemetic. Has weak 
+anti-androgenic effects.
+Use:
+• Management of idiopathic, uraemic or drug-related erosive 
+gastritis, gastric and duodenal ulcers, oesophagitis, and 
+
+
+===== BSAVA PDF 100 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+84
+hypersecretory conditions secondary to gastrinoma, mast cell 
+neoplasia or short bowel syndrome. Efficacy against NSAID-
+induced ulcers is controversial.
+Rebound gastric acid secretion may be seen on cessation of 
+cimetidine, so therapy should be tapered. Concomitant treatment 
+with sucralfate may be helpful. If used i.v., should be administered 
+over 30 minutes to prevent cardiac arrhythmias and hypotension. 
+Dosage should be reduced for animals with renal impairment.  
+Less effective at reducing gastric acidity than more modern H2 
+blockers and proton pump inhibitors. Cimetidine has minimal 
+prokinetic effects.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+Adverse reactions: Rare, although hepatotoxicity and 
+nephrotoxicity have been reported in humans. Adverse reactions 
+are generally minor even at high doses, but thrombocytopenia has 
+been reported in dogs. Transient and self-resolving slight swelling 
+of mammary glands may be observed in female dogs. In humans, 
+cimetidine has also been associated with headache and  
+decreased libido.
+Drug interactions: Retards oxidative hepatic drug metabolism 
+by binding to the microsomal cytochrome P450. May increase 
+plasma levels of beta-blockers (e.g. propranolol), calcium-channel 
+blockers (e.g. verapamil), diazepam, lidocaine, metronidazole, 
+pethidine and theophylline. When used with other agents that 
+cause leucopenia may exacerbate the problem. Sucralfate may 
+decrease bioavailability: although there is little evidence to suggest 
+this is of clinical importance, it may be a wise precaution to 
+administer sucralfate at least 2 hours before cimetidine. Stagger 
+oral doses by 2 hours when used with other antacids, digoxin, 
+itraconazole or maropitant.
+DOSES
+Dog: All uses: 5 mg/kg p.o., i.v., i.m. q8h.
+Cats: All uses: 2.5–5 mg/kg p.o., i.v., i.m. q12h.
+References
+Marks SL, Kook PH, Papich MG et al . (2018) ACVIM consensus statement: support for 
+rational administration of gastrointestinal protectants to dogs and cats. Journal of 
+Veterinary Internal Medicine  32, 1823–1840
+Cimicoxib
+(Cimalgex) POM-V 
+Formulations: Oral: 8 mg, 30 mg, 80 mg chewable tablets.
+Action: Selectively inhibits COX-2 enzyme, thereby limiting the 
+production of prostaglandins involved in inflammation.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 101 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+85
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use:
+• For the treatment of pain and inflammation associated with 
+osteoarthritis and the management of perioperative pain due to 
+orthopaedic or soft tissue surgery in dogs.
+For perioperative use, one dose 2 hours before surgery, followed by 
+3–7 days of treatment, is indicated. All NSAIDs should be 
+administered cautiously in the perioperative period. Although 
+cimicoxib preferentially inhibits COX-2, it may still adversely affect 
+renal perfusion during periods of hypotension. If hypotension during 
+anaesthesia is anticipated, delay cimicoxib administration until the 
+animal is fully recovered from anaesthesia and normotensive. Liver 
+disease will prolong the metabolism of cimicoxib, leading to the 
+potential for drug accumulation and overdose with repeated dosing. 
+For the relief of pain and inflammation associated with osteoarthritis, 
+an initial treatment period of 6 months is indicated; this can be 
+extended depending on clinical need for analgesic treatment.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not give to dogs <10 weeks of age; the 
+safety of cimicoxib has not been determined in dogs <6 months of 
+age, therefore, monitor dogs in this age group carefully for signs of 
+NSAID-related adverse effects. Do not give to dehydrated, 
+hypovolaemic or hypotensive patients, or those with GI disease or 
+blood clotting problems. Administration to patients with concurrent 
+renal or hepatic disease may carry additional risk, careful 
+monitoring of patients is required if cimicoxib is administered to 
+these patient groups. Do not give to pregnant or lactating bitches. 
+Do not administer concurrently or within 24 hours of other NSAIDs 
+and glucocorticoids.
+Adverse reactions: GI signs are commonly reported but most 
+cases are mild and recover without treatment. Stop therapy if signs 
+persist beyond 1–2 days. Some animals develop signs with one NSAID 
+and not another. A 3–5 day wash-out period should be allowed before 
+starting therapy with another NSAID. Stop therapy immediately if GI 
+bleeding is suspected. There is a small risk that NSAIDs may precipitate 
+cardiac failure in humans and this risk in animals is unknown.
+Drug interactions: No information available.
+DOSES
+Dogs: 2 mg/kg p.o. q24h administered with or without food.
+Cats: Not authorized for cats.
+Cinchophen
+(PLT tablets) POM-V 
+Formulations: Oral: 200 mg tablets in combination with 
+prednisolone 1 mg.
+Action: Anti-inflammatory agent via non-steroidal action.

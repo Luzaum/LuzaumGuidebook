@@ -1,0 +1,637 @@
+
+===== Plumb PDF 406 =====
+Diazepam   379
+dosing. As compared with PO administration, diazepam is slowly and 
+incompletely absorbed following IM administration. The rectal bio-
+availability of diazepam (parent drug) in dogs is less than 10%, 6 but 
+bioavailability increases to 50% to 80% when considering diazepam 
+plus its metabolites (eg, desmethyldiazepam, oxazepam).6,7 Bioavail-
+ability is ≈80% when diazepam is administered intranasally to dogs.8
+Diazepam is highly lipid-soluble and is widely distributed 
+throughout the body. It readily crosses the blood–brain barrier and 
+is highly bound to plasma proteins. In horses, 87% of the drug is 
+bound to plasma proteins when the diazepam serum concentration 
+was 75 ng/mL.9 In humans, this value has been reported to be 98% 
+to 99%.
+Diazepam is metabolized in the liver to several metabolites, in -
+cluding desmethyldiazepam (nordiazepam), temazepam, and oxaze-
+pam, which are pharmacologically active. Diazepam metabolites are 
+conjugated with glucuronide and eliminated primarily in urine in 
+most species. 10 In horses, CYP3A is largely responsible for temaz -
+epam formation.11 In 4-day-old foals, the diazepam half-life, clear -
+ance, and volume of distribution were significantly lower as com -
+pared with 21-day-old foals. 12 Because of the active metabolites, 
+serum values of diazepam are not useful in predicting efficacy. 
+Serum Half-Lives (Approximated) for Diazepam and Metabolites  
+in Dogs, Cats, and Horses
+Metabolite Dogs10,13,14 
+(hours)
+Cats10 
+(hours)
+Horses15 
+(hours)
+Humans 
+(hours)
+Diazepam 1-3.2 3.5-5.5 7-13 20-50
+Nordiazepam 2-10 21.3 12 30-200
+Temazepam 3 4.5 No data 
+found
+10-20
+Oxazepam 3-6 No data 
+found
+18-28 3-21
+Contraindications/Precautions/Warnings 
+Diazepam should not be used in patients that are hypersensitive to 
+it or that have severe hepatic disease.16 Fulminant hepatic failure has 
+occurred in cats receiving oral diazepam, 17 and PO administration 
+is best avoided in cats. Diazepam should be used cautiously, if at all, 
+in aggressive patients and, if used, it should always be paired with 
+another sedative drug (eg, alpha-2 agonist). Some clinicians believe 
+that benzodiazepines are contraindicated in aggressive dogs, as anx-
+iety may restrain the animal from aggressive tendencies; however, 
+this remains controversial.18 Diazepam may impair the performance 
+of working animals.
+Caution is advised when using in animals that have hepatic or 
+renal disease, that are comatose or in shock, that have respiratory 
+depression, or that are debilitated, obese, or geriatric. Although un -
+common, cardiovascular or respiratory support may be necessary if 
+diazepam is being administered IV . 
+Rapid injection of diazepam IV in small-sized animals or neo -
+nates may cause hypotension or cardiotoxicity secondary to propyl-
+ene glycol in the formulation. Slow IV injection is recommended, 
+particularly when using a small vein for access or in small-sized ani-
+mals, because diazepam may cause significant phlebitis. Intracarotid 
+artery injections must be avoided.
+Other than in debilitated patients, diazepam used as a premedi -
+cant is unlikely to provide sedation and may cause paradoxical ex -
+citement, especially in young healthy patients. Thus, if used as a pre-
+medicant, diazepam should always be combined with an opioid or a 
+true sedative. Diazepam is more commonly used during induction.
+Long-term use of diazepam may induce physical dependence, 
+and if the drug is to be discontinued, the dose must be gradually 
+decreased (tapered) over several weeks.19
+As compared with dosages for humans, diazepam dosages for 
+dogs are very high; human pharmacists may be unaware that these 
+are appropriate.
+Using diazepam to control adverse effects related to toxicities 
+should be approached with caution to avoid exacerbating clinical 
+signs. It is recommended not to use diazepam for seizure control in 
+cats exposed to chlorpyrifos because organophosphate toxicity may 
+be potentiated.16 Animals with toxicity from ingesting amphetamines 
+or human sleep aids, such as zolpidem ( Ambien®) or eszopiclone 
+(Lunesta®), should not receive diazepam or other benzodiazepines to 
+treat paradoxical CNS stimulation, as these drugs also increase GABA 
+activity; IV phenothiazines (eg, acepromazine, chlorpromazine) or 
+phenobarbital are recommended instead.
+Do not confuse diazePAM with dilTIAZem or diaZOXide.
+Adverse Effects 
+Rapid IV administration of diazepam can potentially cause hypoten-
+sion; IV administration should be done slowly (5 mg/minute), and 
+the IV catheter should be flushed with fluids after administration to 
+help prevent phlebitis. IM injection may cause pain at the injection 
+site.
+Adverse effects reported in dogs include sedation, increased appe-
+tite, agitation, ataxia, and aggression. In addition, dogs may exhibit 
+a contradictory response (eg, in ≈30% of dogs, CNS excitement was 
+described as increased activity or agitation) following administra -
+tion of diazepam; doses greater than or equal to 0.8 mg/kg are more 
+likely to cause this effect. 20 Because sedation and tranquilization in 
+dogs can be variable, diazepam may not be an ideal sedating agent, 
+particularly when used alone. Diazepam used alone or in combina -
+tion with ketamine increases intraocular pressure in dogs.21,22
+Cats may exhibit changes in behavior (eg, irritability, depression, 
+aberrant demeanor) after receiving diazepam. Anesthetic recovery 
+from diazepam/ketamine was more active and unsettled as com -
+pared with alfaxalone as a sole agent.23 There have been sporadic re-
+ports of cats developing idiosyncratic hepatic failure after receiving 
+oral (but not injectable) diazepam (not dose-dependent) for several 
+days.17 Clinical signs (eg, anorexia, lethargy, increased ALT/AST, hy-
+perbilirubinemia) occurred 5 to 11 days after beginning oral therapy, 
+and 10 out of 11 patients died or were euthanized within 15 days. 
+Slow biotransformation and inhibition of the efflux of bile, resulting 
+in accumulation of bile acids in the hepatocytes, might contribute to 
+the liver injury observed in cats that received repeated doses of oral 
+diazepam.10 
+In horses, diazepam may cause muscle fasciculations, weakness, 
+and ataxia at doses sufficient to cause sedation. Doses greater than 
+0.2 mg/kg may induce recumbency as a result of muscle relaxant 
+properties and general CNS depressant effects. Diazepam is not rec-
+ommended as a sole agent for sedation in this species.
+Adverse effects can be reversed with flumazenil. See Flumazenil.
+Reproductive/Nursing Safety 
+In humans, diazepam has been implicated in causing congenital 
+abnormalities when it is administered during the first trimester of 
+pregnancy. Infants born to mothers who were given large doses of 
+benzodiazepines shortly before delivery have been reported to suffer 
+from apnea, impaired metabolic response to cold stress, difficulty in 
+feeding, hyperbilirubinemia, and hypotonia. Withdrawal symptoms 
+have occurred in infants whose mothers took benzodiazepines long-
+term during pregnancy. The veterinary significance of these effects is 
+unclear, but these agents should only be used during the first trimes-
+ter of pregnancy when the benefits clearly outweigh the risks associ-
+ated with their use. 
+Benzodiazepines and their metabolites are distributed into milk 
+
+
+===== Plumb PDF 407 =====
+380    Diazepam
+and may cause CNS effects in nursing neonates. In humans, diaze -
+pam use is not recommended while breastfeeding.24
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity 
+When diazepam is administered alone, overdose effects are gen -
+erally limited to significant CNS depression (eg, confusion, coma, 
+decreased reflexes). In rare circumstances, hypotension, respiratory 
+depression, and cardiac arrest have been reported in human patients.
+Treatment of acute toxicity consists of standard protocols for re -
+moving and/or binding the drug in the gut if diazepam is adminis -
+tered orally; provide supportive systemic therapies as needed. Use of 
+analeptic agents (ie, CNS stimulants such as caffeine) is generally not 
+recommended. Flumazenil may be considered for adjunctive treat -
+ment of benzodiazepine overdose.
+Successful treatment of a cat with hepatic necrosis included the 
+use of lactulose, metronidazole, vitamin K, N-acetylcysteine, and 
+Sadenosylmethionine, along with supportive care.25
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving diazepam and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Amiodarone : Concurrent use may increase the bioavailability 
+and pharmacologic effects of benzodiazepines; monitoring and 
+adjustment of benzodiazepine dose are needed.
+ ■ Antacids, Aluminum-, Calcium- And Magnesium-Con -
+taining : May slow the rate, but not the extent, of oral absorption; 
+administration 2 hours apart may avoid this potential interaction.
+ ■ Antidepressants  (eg, amitriptyline, clomipramine, mir-
+tazapine): Concurrent use increases the risk for CNS and/or re -
+spiratory depression.
+ ■ Antihypertensive Agents  (eg, amlodipine, atenolol, enal-
+april): Concurrent use may increase the risk for hypotension and 
+orthostasis. Blood pressure monitoring is necessary.
+ ■ Azole Antifungals  (eg, itraconazole, ketoconazole 11): Me-
+tabolism of diazepam may be decreased, and excessive sedation 
+may occur. 
+ ■ Carbonic Anhydrase Inhibitors  (eg, acetazolamide, 
+methazolamide): Benzodiazepines may interfere with the bene -
+ficial effects of carbonic anhydrase inhibitors by inhibiting respi-
+ratory responses to hypoxia; this combination should be avoided.
+ ■ CNS Depressant Agents  (eg, barbiturates, opioids, anes -
+thetics): Combination may increase the risk for CNS and/or re -
+spiratory depression; monitoring and adjustment of dosages are 
+needed. 
+ ■ Digoxin : Serum levels may be increased; monitoring of serum 
+digoxin levels and clinical signs of toxicity is needed.
+ ■ Fluoxetine, Fluvoxamine : Increased benzodiazepine levels 
+are possible.
+ ■ Hepatic Enzyme Inducers  (eg, glucocorticoids, mitotane, ri-
+fampin, phenobarbital26): Concurrent use may decrease benzo -
+diazepine levels; monitoring of clinical response and adjustment 
+of doses are necessary.
+ ■ Hepatic Enzyme Inhibitors  (eg, cimetidine, isoniazid ): 
+ Metabolism of diazepam may be decreased, and excessive seda -
+tion may occur.
+ ■ Ifosfamide : Concurrent use may increase the risk for ifosfa -
+mide-induced neurotoxic effects. Careful monitoring is needed, 
+and discontinuation of both drugs may be necessary if signs of 
+encephalopathy occur.
+ ■ Macrolide Antibiotics  (eg, clarithromycin, erythromycin): 
+Metabolism of diazepam may be decreased, and excessive seda -
+tion may occur. 
+ ■ Macrocyclic Lactones  (eg, ivermectin, milbemycin oxime): 
+Benzodiazepine effects may be potentiated by concurrent macro-
+cyclic lactone use.
+ ■ Melatonin : Increased risk for CNS depression and prolonged 
+diazepam effects
+ ■ Non-Depolarizing Neuromuscular Blockers  (eg, atra-
+curium, pancuronium): Concurrent use may potentiate, attenu-
+ate, or have no effect; monitoring of respiratory status is necessary.
+ ■ Propranolol : May slow diazepam metabolism 
+ ■ Theophylline, Aminophylline : Concurrent use may de -
+crease the concentrations and effectiveness of benzodiazepines. 
+Withdrawing theophylline from a stable patient may increase the 
+risk for benzodiazepine toxicity; monitoring for adverse effects is 
+needed, and dosages must be adjusted accordingly.
+ ■ Yohimbine : Limited data indicate that yohimbine may decrease 
+the therapeutic effects of anxiolytic drugs.
+Laboratory Considerations
+ ■ Patients receiving diazepam may show false-negative urine glu-
+cose results if Diastix® or Clinistix® tests are used. 
+ ■ Secondary to propylene glycol in IV diazepam, patients may show 
+a false-positive ethylene glycol test. 
+ ■ Benzodiazepines may decrease the thyroidal uptake of I123 or I131.
+Dosages
+DOGS:
+Cluster seizures or status epilepticus (extra-label): 
+Rectal: Using diazepam parenteral solution, diazepam  
+0.5 – 2 mg/kg rectally27,28; if the patient is receiving phenobarbital, 
+diazepam 2 mg/kg rectally can be used.26 Administer at the onset 
+of a seizure and up to 3 times in a 24-hour period.28 If the client is 
+administering, they should stay with the dog for 1 hour after ad -
+ministration. Because diazepam is inactivated by light and adheres 
+to plastic, it is best to dispense the drug in the original glass vial 
+and instruct the client to draw the required amount into a syringe 
+when needed. A rubber catheter or teat cannula is then placed 
+on the syringe for rectal administration. A study found that com-
+pounded 2 mg rectal suppositories did not achieve plasma levels 
+of diazepam/nordiazepam sufficient for emergency treatment of 
+seizures in dogs.14 NOTE: Intranasal midazolam appears superior 
+to rectal diazepam for controlling status epilepticus.4 
+Intranasal: Based on a pharmacokinetic study, diazepam may 
+also be given intranasally (at home or in the clinic) at 0.5 mg/kg. 
+Dogs on chronic phenobarbital therapy may require higher doses 
+(1 – 2 mg/kg).29 
+IV (bolus): Diazepam 0.5 – 1 mg/kg IV; may be repeated every 10 
+minutes up to 3 times16
+IV (CRI) : Diazepam 0.1 – 2 mg/kg/hour IV CRI. Caution is ad -
+vised, as diazepam can crystallize in solution and adsorb to PVC 
+tubing. (See Compatibility/Compounding Considerations  and 
+Storage/Stability)
+Functional urethral obstruction/urethral sphincter hypertonus 
+(extra-label): Diazepam 2 – 10 mg/dog (NOT mg/kg) PO every 
+8 hours30
+
+
+===== Plumb PDF 408 =====
+Diazepam   381
+Short-term management of skeletal muscle spasms (extra-label): 
+Diazepam 0.5 – 2 mg/kg IV31
+Psychotherapeutic agent (extra-label): 
+a) Situational anxiety: Diazepam 0.5 – 2 mg/kg PO PRN; prefer-
+ably 30 minutes to 1 hour in advance of the anticipated event.32 
+NOTE: As compared with humans, diazepam dosages for dogs 
+are very high; human pharmacists may be unaware that these 
+are appropriate.
+b) In combination with fluoxetine and behavior modification 
+therapy for anxiety-related disorders : Diazepam 0.3 mg/kg 
+PO once daily for 4 weeks; it should be initiated at the same 
+time as fluoxetine 1 mg/kg PO once daily.33
+Adjunctive treatment of metronidazole toxicity (extra-label): 
+0.43 mg/kg IV as an initial bolus, followed by 0.43 mg/kg PO ev -
+ery 8 hours for 3 days34
+Strychnine poisoning (extra-label): Diazepam 1 mg/kg IV slow-
+ly, followed by 1 mg/kg IM35
+Anesthetic premedication in combination with other sedatives 
+(extra-label): Diazepam 0.1 – 0.5 mg/kg IV . Combination with 
+opioids or alpha-2 agonists is highly recommended to decrease 
+drug dosages, minimize paradoxical excitation, and achieve a 
+more profound, predictable level of sedation and muscle relax -
+ation.36 A slightly higher dose of diazepam 0.2 – 0.6 mg/kg IV is 
+approved for products available in other countries.31,37 Diazepam 
+is more commonly used as part of induction rather than as a pre-
+medicant.
+In combination with an induction agent for anesthesia  (extra- 
+label): Diazepam 0.1 – 0.3 mg/kg IV . Can be combined with ket-
+amine to counteract the muscle rigidity caused by ketamine and 
+reduce the dose of ketamine. Diazepam is also used with propo -
+fol or alfaxalone to reduce the amount of these induction agents, 
+which decreases dose-dependent cardiovascular and respiratory 
+depression caused by many induction drugs.38–42
+CATS:
+NOTE: Because of concerns associated with oral diazepam and rare 
+idiosyncratic hepatic failure in cats, oral use in cats is not recom -
+mended; safer alternatives are available.
+Anesthetic premedication in combination with other sedatives 
+(extra-label): Diazepam 0.1 – 0.3 mg/kg IV . Combination with 
+opioids or alpha-2 agonists is highly recommended to decrease 
+drug dosages, minimize paradoxical excitation, and achieve a 
+more profound, predictable level of sedation and muscle re -
+laxation. A slightly higher dose of diazepam (0.2 – 0.6 mg/kg  
+IV) is approved in a UK product. 16,31 Diazepam 0.5 mg/cat  
+(NOT mg/kg) in combination with ketamine 10 mg/cat (NOT 
+mg/kg) given IV was deemed effective and safe to assist physical 
+restraint for blood sampling.43 Diazepam is more commonly used 
+as part of induction rather than as a premedicant.
+In combination with an induction agent for anesthesia (ex-
+tra-label): Diazepam 0.1 – 0.3 mg/kg IV . Can be combined with 
+ketamine to counteract the muscle rigidity caused by ketamine 
+and reduce the dose of ketamine. Diazepam is also used with 
+propofol or alfaxalone to reduce the amount of these induction 
+agents, which decreases dose-dependent cardiovascular and re -
+spiratory depression caused by many induction drugs.38–42
+EQUINE : 
+Anticonvulsant in foals  (extra-label): 0.1 – 0.4 mg/kg slow IV 
+and repeated as necessary17
+Field anesthesia (extra-label):
+a) The following protocol was used for field castration in po -
+nies with good results: After premedication with detomidine  
+20 μg/kg IV and phenylbutazone 4.4 mg/kg IV , anesthesia was 
+induced with diazepam 0.06 mg/kg combined with ketamine 
+2.2 mg/kg IV . Midazolam can be substituted for diazepam at 
+the same dosage.44 
+b) Preanesthetic: Diazepam 0.13 mg/kg IM 20 minutes prior to 
+xylazine and ketamine37
+c) Total IV anesthesia in mules: Following sedation with xylazine 
+1.3 mg/kg IV , induce anesthesia with diazepam 0.03 mg/kg 
+and ketamine 2.2 mg/kg IV , lateral recumbency and normal 
+gait occurred at 1.8 and 32.8 minutes, respectively; duration of 
+anesthesia was 15.3 minutes.45
+d) Tranquilization in donkeys: Diazepam 0.1 mg/kg with ace -
+promazine 0.1 mg/kg IV decreased the latency period and en-
+hanced tranquilization compared with acepromazine alone.46
+SHEEP/GOATS:
+Sedation/tranquilization (extra-label): Diazepam 0.2 – 0.5 mg/kg 
+IV or 0.5 – 1 mg/kg IM. 47 Lower doses (ie, 0.1 – 0.2 mg/kg IV)  
+of diazepam have also been recommended.48,49
+Anesthesia (extra-label): 
+a) Diazepam 0.15 – 0.5 mg/kg IV in combination with ketamine 
+5 – 10 mg/kg IV is one of the most common anesthetic proto-
+cols.47,50–54
+b) Diazepam 0.4 mg/kg IM in combination with ketamine  
+22 mg/kg IM 55; however, this combination provided longer 
+time to onset and inadequate anesthetic depth during the most 
+painful portion of the surgery when compared to IM ketamine 
+combined with xylazine.
+NEW WORLD CAMELIDS :
+Field anesthesia in alpacas  (extra-label): Diazepam 0.2 mg/kg 
+with ketamine 4 mg/kg IV56 
+BIRDS:
+Adjunctive therapy of pain control (with analgesics);  (extra- 
+label): Diazepam 0.5 – 2 mg/kg IV or IM57
+Sedation/induction (extra-label): 
+a) Diazepam 0.5 – 2 mg/kg IV or IM. Dosage applies to small 
+pet birds and medium-sized parrots. Adjustments need to be 
+made for large-sized parrots or wild species, such as raptors.58
+b) Diazepam 0.5 mg/kg IM with ketamine 10 mg/kg IM as pre -
+medication reduced induction time and sevoflurane require -
+ments in parrots.59
+c) Intranasal sedation with diazepam 13.6 mg/kg produced adequate 
+sedation in budgerigars; midazolam had a faster onset (1.3 vs 2.8 
+minutes, respectively) but shorter duration (71 vs 165 minutes).60
+FERRETS :
+Premedication/sedation (extra-label): 
+Diazepam 0.5 mg/kg IM or IV (IV preferred)
+Diazepam 0.2 mg/kg (IV assumed) if using in combination with 
+ketamine 2 – 5 mg/kg58
+RABBITS/RODENTS/SMALL MAMMALS  (extra-label): 
+Rabbits: Sedation: Diazepam 0.5 – 2 mg/kg IV , IM, or intrana -
+sally61,62 (IV preferred; intranasal may cause tissue irritation 
+– midazolam is preferred for this route). Anesthesia: Diazepam  
+0.5 – 1 mg/kg in combination with ketamine 20 – 35 mg/kg IM 
+or IV58
+Hedgehogs: Long anesthesia: Diazepam 0.5 – 2 mg/kg in combi -
+nation with ketamine 5 – 20 mg/kg IM58
+Hamsters, gerbils, mice, rats: Diazepam 3 – 5 mg/kg IM
+Guinea pigs: Diazepam 0.5 – 3 mg/kg IM63
+Monitoring 
+ ■ CNS: signs of sedation or paradoxical excitement
+ ■ Cardiovascular system: blood pressure—can cause hypotension if 
+administered rapidly IV
+
+
+===== Plumb PDF 409 =====
+382    Diazoxide
+ ■ Respiratory system: respiratory rate, ETCO2, and SpO2—mild re -
+spiratory depression can occur, with a more moderate impact if 
+other respiratory depressants (eg, opioids) are administered.
+ ■ Horses should be observed carefully for ataxia. 
+ ■ Clinical response to treatment
+Client Information 
+ ■ This medicine may cause sedation and/or disorientation, which 
+may impair the performance of working animals.
+ ■ When using this medicine for thunderstorm phobias or other 
+triggers (eg, separation anxiety), give the medicine to your animal 
+about an hour before the event or trigger.
+ ■ This medicine may be given with or without food. If your animal 
+vomits or acts sick after receiving the medication on an empty 
+stomach, give the medicine with food or small treats. Contact 
+your veterinarian if vomiting continues.
+ ■ Contact your veterinarian immediately if your animal develops 
+yellowing of the skin, gums, or whites of the eyes (jaundice).
+ ■ Sleepiness is the most common side effect. This medicine can 
+change your animal’s behavior (eg, hyperactivity, anxiety) in un-
+expected ways.
+ ■ This medicine may increase your animal’s appetite, especially in 
+cats.
+ ■ Contact your veterinarian immediately if your animal stops eat -
+ing or seems depressed.
+Chemistry/Synonyms
+Diazepam, a benzodiazepine, is a white-to-yellow, practically 
+odorless, crystalline powder with a melting point between 131°C 
+(267.8°F) and 135°C (275°F) and pK a of 3.4. Diazepam is tasteless 
+initially but develops a bitter aftertaste. One gram of diazepam is sol-
+uble in 333 mL of water or 25 mL of alcohol and is sparingly soluble 
+in propylene glycol. The pH of the commercially prepared injectable 
+solution is 6.2 to 6.9. It consists of a 5 mg/mL solution with 40% pro-
+pylene glycol, 10% ethanol, 5% sodium benzoate/benzoic acid buffer, 
+and 1.5% benzyl alcohol as a preservative.
+Diazepam may also be known as diazepamum, LA-III, NSC-
+77518, or Ro-5-2807; many trade names are available. 
+Storage/Stability 
+Store all diazepam products at room temperature (15°C  to 30°C 
+[59°F-86°F]). Keep the injection from freezing temperatures and 
+protect from light. Store the oral forms (eg, tablets, capsules) in tight-
+ly closed containers and protect them from light. 
+Because diazepam may adsorb to plastic, it should not be stored 
+in plastic syringes but can be drawn up in syringes if intended to be 
+administered within 4 hours. The drug may also significantly adsorb 
+to IV solution plastic (eg, PVC) bags and infusion tubing. This ad -
+sorption appears to be dependent on several factors (eg, tempera -
+ture, drug concentration, flow rates, line length). 
+Consider the following to minimize the adsorption of diazepam. 
+Use glass or polyolefin containers; if you use PVC bags, select the 
+lowest possible surface:volume ratio and minimize the storage time. 
+The use of non-PVC administration sets will reduce loss. If you use 
+PVC tubing, it should be the shortest possible length with a small 
+diameter, and the set should not contain a burette chamber. More 
+rapid flow rates (consistent with safe clinical use) will also reduce the 
+loss of diazepam. 64
+Compatibility/Compounding Considerations 
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; specialized references or a hospital 
+pharmacist should be consulted for more specific information.
+The manufacturers of injectable diazepam do not recommend the 
+drug be mixed with any other medication or IV diluent, and diluting 
+for infusion cannot be recommended. Although some studies have 
+shown that dilution in some IV solutions at low concentrations may 
+not exhibit visible precipitates, microcrystal formation could not be 
+ruled out. Because there is continued interest in IV infusions of di -
+azepam, some studies indicate that diazepam injection may be com-
+patible with various drugs and IV fluids (eg, diluted to a concentra-
+tion of 5 mg/50 mL to 5 mg/100 mL with 0.9% sodium chloride, 5% 
+dextrose, Ringer’s, or lactated Ringer’s injection).
+Mixing ketamine with diazepam in the same syringe or IV bag has 
+been suggested but is not recommended, as precipitation may occur. 
+Although there are many anecdotal reports of mixing ketamine with 
+diazepam in the same syringe just prior to injection, there does not 
+appear to be any published information documenting the stability of 
+the drugs after mixing. Use should be avoided if a visible precipitate 
+forms.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE IN THE UNITED STATES  
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 2 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See Appendix for more information.
+The International Federation for Equestrian Sports (FEI) lists this 
+drug as a prohibited substance–controlled substance. 
+HUMAN-LABELED PRODUCTS : 
+Diazepam Injection: 5 mg/mL in 2 mL Carpuject® cartridges; gener-
+ic; (Rx, C-IV) 
+Diazepam Oral Tablets: 2 mg, 5 mg, and 10 mg; Valium®, generic; 
+(Rx, C-IV)
+Diazepam Oral Solution: 1 mg/mL in 500 mL, and 5 mg and 10 mg  
+patient cups; generic; (Rx, C-IV); Concentrated oral solution:  
+5 mg/mL in 30 mL with dropper; Diazepam Intensol®; (Rx, C-IV)
+Diazepam Rectal Gel: 2.5 mg, 10 mg, and 20 mg; Diastat®, generic; 
+(Rx, C-IV)
+References
+For the complete list of references, see wiley.com/go/budde/plumb  
+Diazoxide
+(di-az-ok-side) Proglycem®
+Direct Vasodilator/Hyperglycemic 
+Prescriber Highlights 
+ ▶ Orally administered drug used in the management of insulino-
+mas in small animal species
+ ▶ Contraindications include functional hypoglycemia or 
+hypoglycemia secondary to insulin overdose (diabetics) and 
+hypersensitivity to thiazide diuretics.
+ ▶ Use with caution in patients with congestive heart failure or 
+renal insufficiency
+ ▶ Most common adverse effects include anorexia, vomiting, 
+and/or diarrhea (may be reduced by giving with food).
+ ▶ Availability and expense may be problematic. May need to be 
+compounded
+ ▶ Bitter taste may make administration difficult.
+Uses/Indications 
+Oral diazoxide has been used for the treatment of hypoglycemia sec-
+ondary to hyperinsulin secretion (eg, insulinoma) in patients refrac-
+tory to glucocorticoid and dietary therapy.
+
+
+===== Plumb PDF 410 =====
+Diazoxide   383
+Pharmacology/Actions 
+Although related structurally to the thiazide diuretics, diazoxide 
+does not possess any appreciable diuretic activity. By directly causing 
+a vasodilatory effect on the smooth muscle in peripheral arterioles, 
+diazoxide reduces peripheral resistance and blood pressure. 
+Diazoxide exhibits hyperglycemic activity by directly inhibiting 
+pancreatic insulin secretion, stimulating hepatic gluconeogenesis 
+and glycogenolysis, and stimulating the beta-adrenergic system to 
+cause epinephrine release and inhibit tissue use of glucose. Diazox -
+ide’s inhibition of insulin release may be a result of the drug’s ability 
+to decrease the intracellular release of ionized calcium, thus prevent-
+ing release of insulin from beta cell insulin granules. Diazoxide does 
+not apparently affect the synthesis of insulin, nor does it possess any 
+antineoplastic activity. 
+Pharmacokinetics 
+The serum half-life of diazoxide has been reported to be ≈5 hours 
+in dogs; other pharmacokinetic parameters in dogs appear to be un-
+available. In humans, serum diazoxide levels (dosed at 10 mg/kg PO) 
+peaked at ≈12 hours after dosing with capsules. It is unknown what 
+blood levels are required to obtain hyperglycemic effects. Highest 
+concentrations of diazoxide are found in the kidneys with high levels 
+also found in the liver and adrenal glands. Approximately 90% of 
+the drug is bound to plasma proteins and it crosses the placenta and 
+into the CNS. It is not known if diazoxide is distributed into milk. 
+Diazoxide is partially metabolized in the liver and is excreted as both 
+metabolites and unchanged drug by the kidneys. Serum half-life of 
+the drug is prolonged in patients with renal impairment.
+Contraindications/Precautions/Warnings 
+Diazoxide should not be used in patients with functional hypogly -
+cemia or for treating hypoglycemia secondary to insulin overdose in 
+diabetic patients. Unless the potential advantages outweigh the risks, 
+do not use in patients hypersensitive to thiazide diuretics.
+Because diazoxide can cause sodium and water retention, use 
+cautiously, and consider dose reductions in patients with congestive 
+heart failure or renal insufficiency.
+Do not confuse diaZOXide with DIAZepam or diltiazem.
+Adverse Effects 
+When used to treat insulinomas in dogs, the most common adverse 
+effects include hypersalivation, anorexia, vomiting, and/or diarrhea. 
+Other effects that may be seen include tachycardia, hematologic ab-
+normalities (eg, agranulocytosis, aplastic anemia, thrombocytope -
+nia), pancreatitis, diabetes mellitus, cataracts, and sodium and water 
+retention.
+Administering the drug with meals or temporarily reducing the 
+dosage may alleviate the GI side effects. Because diazoxide is metab-
+olized in the liver, adverse effects may be more readily noted in dogs 
+with concurrent hepatic disease.
+Adverse effects reported in ferrets include inappetence, vomiting, 
+diarrhea, malaise, and myelosuppression.
+Reproductive/Nursing Safety 
+Diazoxide crosses the placenta.1 Fetal islet cell degeneration has been 
+demonstrated in animals. In addition, fetal resorption has been ob -
+served in rats, and fetal skeletal and cardiac malformations or terato-
+genicity have been observed in rabbits. Diazoxide may cause cessa -
+tion of uterine contractions when administered during labor.
+It is unknown if diazoxide enters milk. 
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring. 
+Overdose/Acute Toxicity 
+Oral doses of up to 500 mg/kg have been tolerated in dogs.1 The oral 
+LD50 is over 5000 mg/kg in rats and 219 mg/kg in guinea pigs. An 
+acute overdose may result in severe hyperglycemia and ketoacidosis. 
+Treatment should include insulin (see specific Insulin monographs), 
+fluids, and electrolytes. Intensive and prolonged monitoring is rec -
+ommended.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions 
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving diazoxide and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Alpha-Adrenergic Agents  (eg, phenoxybenzamine): May 
+decrease the effectiveness of diazoxide by increasing glucose levels
+ ■ Glucocorticoids (eg, dexamethasone, prednis(ol)one ): If 
+used in combination with diazoxide, may enhance hyperglycemic 
+effects
+ ■ Hypotensive Agents, Other  (eg, amlodipine, hydralazine, 
+prazosin, telmisartan): Diazoxide may enhance the hypotensive 
+actions of other hypotensive agents. 
+ ■ Phenothiazines  (eg, acepromazine, chlorpromazine): May 
+enhance the hyperglycemic effects of diazoxide
+ ■ Thiazide diuretics : May potentiate the hyperglycemic effects 
+of oral diazoxide.1 Some clinicians have recommended using hy-
+drochlorothiazide in combination with diazoxide, if diazoxide 
+alone is ineffective to increase blood glucose levels. Caution: hy -
+potension may occur.
+Laboratory Considerations 
+ ■ Diazoxide will cause a false negative insulin response to the glu-
+cagon-stimulation test.
+ ■ Diazoxide may displace bilirubin from plasma proteins.
+Dosages
+DOGS:
+Adjunctive treatment of hypoglycemia secondary to insulin-  
+secreting islet cell or non-islet cell tumors  (extra-label): Ini -
+tially 5 mg/kg PO twice daily. 2 May gradually increase to effect 
+up to a maximum dosage of 30 mg/kg PO twice daily. If diazox -
+ide alone is ineffective, may consider using hydrochlorothiazide  
+(1 – 2 mg/kg PO every 12 hours) in combination with diazoxide. 
+FERRETS :
+Hypoglycemia secondary to insulin-secreting islet cell tumors  
+(extra-label): After surgical resection of pancreatic nodules or 
+partial pancreatectomy: Prednisone 0.5 – 2 mg/kg PO every 12 
+hours will usually control mild to moderate clinical signs. Begin 
+at lowest dose and gradually increase as needed. Add diazoxide 
+when clinical signs cannot be controlled with prednisone alone. 
+Begin diazoxide 5 – 10 mg/kg PO every 12 hours. Prednisone 
+dosage may need to be lowered at the same time. If the initial dos-
+age does not control clinical signs, the dosage can be gradually 
+increased to a maximum of 30 mg/kg PO every 12 hours.
+SMALL MAMMALS :
+Guinea pigs; Hypoglycemia secondary to insulin-secreting is -
+let cell tumors (extra-label): Based on a single case report: Initial-
+ly, 5 mg/kg PO every 12 hours. Based on the blood glucose curve, 
+dosage was gradually increased to 25 mg/kg PO every 12 hours.
+Monitoring
+ ■ Blood (serum) glucose. The goal of therapy is to identify a dosage 

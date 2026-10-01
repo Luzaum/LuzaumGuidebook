@@ -1,0 +1,218 @@
+SECTION XII
+•
+Respiratory Disease
+1162
+eBooks.Health.Elsevier.com
+Surgical management may be necessary for more substantial 
+injury or for tumors, with anastomosis repair if necessary. 
+The prognosis can still be good even with substantial tracheal 
+injuries.24
+INFECTIOUS TRACHEITIS/TRACHEOBRONCHITIS
+Canine infectious respiratory disease complex (CIRDC), formerly 
+known as “kennel cough,” is commonly seen in young dogs, espe-
+cially in boarding kennels or aer time spent in animal shelters. 
+is contagious disease is described in detail in ch. 203.
+BRONCHIAL DISEASES
+BRONCHIAL DISEASES—PRIMARY
+Chronic Bronchitis in Dogs
+Definition, Overview Chronic bronchitis (CB) is an incur-
+able disease of insidious onset, characterized by chronic and per-
+sistent cough, and related to chronic inflammation of the airways 
+unassociated with any identified specific primary cause. It is a 
+syndrome more than a true diagnosis.27 Therefore, in dogs, it is 
+also called nonspecific/aspecific chronic bronchitis.
+CB in dogs is dened when 3 diagnostic criteria are fullled: 
+(1) ≥2 months of coughing; (2) evidence of mucus hypersecretion 
+and (3) exclusion of other chronic cardiopulmonary diseases (e.g., 
+congestive heart failure, chronic infectious bronchopneumonia, 
+pulmonary neoplasia, eosinophilic bronchopneumopathy [EBP]) 
+as the sole cause of cough. Such cardiorespiratory diseases (e.g., 
+congestive heart failure, airway collapse) may coexist and compli-
+cate the diagnosis and treatment of CB. In humans, the functional 
+sequela of CB is chronic airway obstruction, referred to as chronic 
+obstructive pulmonary disease (COPD), and subsequent emphy-
+sema. is mechanism appears to be less frequently observed in 
+dogs, although the diagnosis of COPD relies on documentation 
+of airow obstruction by pulmonary function tests that are not 
+widely available in veterinary medicine. Dogs with severe and 
+longstanding CB can exhibit either bronchiectasis (dilation and 
+destruction of the walls of the bronchi) or bronchomalacia (air-
+way collapse during expiration and cough) or both combined.
+Etiology, Epidemiology, and Risk Factors By definition, 
+primary causes of CB are poorly understood. The major difficulty 
+is that the disease is detectable only in its advanced stages, since 
+it has an insidious onset and protracted pathogenesis. Therefore, 
+the diagnostic work up is based on exclusion of possible spe-
+cific causes, which can be frustrating for both the clinician and 
+the owner. Clinicopathological findings are variable and incon-
+clusive. Nonspecific CB is mostly diagnosed in middle-aged to 
+old smaller breeds of dogs, but it can also occur in larger breeds. 
+Many dogs with CB are overweight and have periodontitis and 
+dental tartar, which could be potential risk factors.
+In humans, the most important risk factors include smoke 
+exposure, atmospheric pollution, and infection. e same fac-
+tors could impact development of CB in dogs. Moreover, in 
+dogs, chronic/previous infection with CIRDC pathogens (e.g., 
+Bordetella bronchiseptica) or canine distemper virus, with para-
+sites leading to eosinophilic CB, or presence of other diseases 
+like tracheal collapse or chronic cardiac disease, are all potential 
+causes leading to development of CB. Exposure to environmental 
+tobacco has not been conrmed as a risk factor.28
+In people, gastroesophageal reux disease (GERD) is generally 
+considered among the most common etiologies of chronic cough. 
+Indeed, cough management guidelines published by numerous 
+respiratory societies worldwide recommend evaluation and treat-
+ment of GERD as an integral component of the diagnostic/thera-
+peutic algorithm for the management of chronic cough. Silent 
+aspiration occurs in over half of healthy humans during sleep 
+without clinical consequence29 so it is reasonable to suspect that 
+healthy dogs could have silent aspiration without clinical respira-
+tory disease (ch. 221).30 31 Indeed, GERD has been shown to be 
+common in healthy dogs in a study using nuclear scintigraphy 
+to document reux32 while GERD and microaspiration of gastric 
+juice reux aspiration have been documented in specic breeds 
+(such as healthy West Highland White Terriers) using detection 
+of bile acids in bronchoalveolar lavage uid (BALF).31 Aerodiges-
+tive disorders causing cough in dogs are probably underdiagnosed 
+due to poor clinical recognition and diagnostic limitations.33
+Figure 215.5
+Tracheal rupture following endotracheal intubations in 
+a cat, endoscopic view. e rupture has been repaired with suture.
+Figure 215.6
+Foreign body obstructing a cat’s trachea, endoscopic 
+view. e stone was dislodged and withdrawn using an endoscopic for-
+ceps.
+
+CHAPTER 215
+•
+Large Airway Diseases
+1163
+eBooks.Health.Elsevier.com
+Videouoroscopic swallow studies (VFSS) and detection of 
+bile acids in the BALF have been used for conrming the contri-
+bution of GERD and microaspiration/occult aerodigestive disor-
+ders in dogs presenting for cough without gastrointestinal (GI) 
+signs,33,34 including cases of CB.35 Another nding supporting 
+the occurrence of repetitive microaspiration is the heterogeneity 
+and alterations of the lung microbiota in dogs with CB, believed 
+to result from increased colonization of the lower airways during 
+compromised airway function.35
+Pathophysiology CB results in inflammatory changes within 
+the bronchial mucosa, including increased mucus production. 
+Bronchial wall thickening and possible progressive bronchomala-
+cia contribute to airflow obstruction and further worsen inflam-
+mation, which induces cough; the cough, in turn, triggers further 
+inflammation.
+Clinical Presentation Middle-aged to older dogs of smaller 
+breeds are more often affected. The disease is more common in 
+obese and overweight animals (ch. 150) and the presence of den-
+tal tartar is frequently recognized. A persistent, sonorous cough 
+often followed by a terminal retch, and without any identified 
+cause, is generally the chief (and often only) client concern.
+Diagnosis Chronic cough related to specific causes should 
+be ruled out, specifically including tracheal collapse, lung fibrosis 
+(ch. 217), EBP, parasitic lung diseases (ch. 217), airway or lung 
+tumors (ch. 217), and mitral valve disease (ch. 232). Diagnostic 
+tests are performed to rule out other causes of chronic cough. 
+Results of a complete blood count are usually normal. If detected, 
+peripheral eosinophilia points instead towards pulmonary eosin-
+ophilia or parasite infection. Other laboratory testing that should 
+be considered includes heartworm antigen testing (ch. 237), fecal 
+analysis for both eggs and lungworm larva (ch. 80), and evalua-
+tion of N-terminal pro-B-type natriuretic peptide (NT-proBNP) 
+as a biomarker for left atrial enlargement/congestive heart failure 
+(ch. 229) or PH (ch. 218). Elevated NT-proBNP concentrations 
+should prompt further evaluation by echocardiography (chs. 
+73, 97).36 Thoracic radiographs show bronchial wall thickening 
+or a generalized increase in airway-oriented interstitial opacity 
+or both. Thoracic radiographs are also useful to exclude other 
+conditions that cause cough, such as congestive heart failure, 
+lung masses, or interstitial lung disease. Fluoroscopy is useful for 
+evaluating the airways for collapse (ch. 212). Ultrasound is not 
+particularly useful in bronchitis.37
+Computed tomography (CT), which is widely used in people 
+with airway diseases, is growing in popularity for identication of 
+canine bronchial disease. CT scanning usually requires brief gen-
+eral anesthesia, so is commonly combined with evaluation of laryn-
+geal function (ch. 214), bronchoscopy (ch. 93), and collection of 
+airway cytologic samples in dogs suspected of having CB.38,39
+Bronchoscopic ndings are variable but can include irregular 
+mucosal surfaces with a loss of the normally glistening appear-
+ance, a granular and roughened aspect, and sometimes signs of 
+partial bronchial collapse. However, similar signicant ndings 
+have been reported in aging healthy dogs, together with some 
+degree of bronchiectasis,40 and therefore such ndings must be 
+interpretated with caution. e presence of excessive thickened 
+and sticky mucus in the airways is also consistent with CB.
+Cytologic evaluation of BALF typically reveals excessive 
+mucus with possible hyperplasia of epithelial cells, and increased 
+numbers of neutrophils, goblet cells, and macrophages.41 Anal-
+ysis of bronchial brushings might be a more sensitive indica-
+tor of airway inammation than cytologic examination of BAL, 
+showing greater percentages of leukocytes and neutrophils.41 As 
+with peripheral eosinophilia, airway eosinophilic inammation 
+suggests EBP or parasitic infection (e.g., heartworm disease, Angi-
+ostrongylus or Crenosoma infection).42-45
+Echocardiography (ch. 97) helps to diagnose mitral valve dis-
+ease that might be concurrent with CB or might be an alternative 
+explanation for cough. It can also detect evidence of PH, which 
+can occur secondary to chronic tracheobronchial disease.
+As mentioned, VFSS allows identication of dogs with occult 
+aerodigestive disorders.34
+Management and Monitoring The bronchial alterations 
+are not readily reversible, if at all. Therefore, treatment won’t cure 
+the disease but ideally will prevent or slow disease progression. 
+Therapy is based on an assessment of the nature and severity of 
+the individual animal’s problems, and relies on client education. 
+Treatment goals for dogs with CB include avoiding exacerbating 
+factors, reducing inflammation, limiting cough, and improving 
+stamina.
+Any environmental pollutants should be eliminated. Owners 
+should be advised not to smoke indoors and to limit exposure of 
+dogs to airborne irritants, including perfumes.
+Control of body weight is very important. Obesity (ch. 150) 
+should be treated comprehensively because it markedly worsens 
+cough and limits activity. Furthermore, obesity impairs lung func-
+tion and increases airway hyperresponsiveness (AHR).46,47 Weight 
+loss induces a signicant improvement of cardiopulmonary func-
+tion.47 In fact, weight loss alone can cause major improvement in 
+clinical signs without any additional drug. A harness should be 
+used in place of a collar, and episodes of excessive barking should 
+be curtailed with appropriate behavioral modication.
+Control of infection and dental hygiene are advocated (ch. 
+258) since bacteria from dental tartar may be inhaled into the 
+lower airways, especially during panting.
+Glucocorticoids are the mainstay of treatment of CB because 
+they reduce mucus hypersecretion and mucosal bronchial wall 
+thickening as well as reducing airway inammation, which 
+reduces cough. Glucocorticoids can be administered orally or via 
+inhalation. Prednisone is the most commonly used glucocorti-
+coid and is administered at 0.5-1 mg/kg PO q24h initially and 
+then tapered to the lowest eective dosage that controls clinical 
+signs. Alternate-day therapy is preferred to allow normalization of 
+the hypothalamic-pituitary axis and to limit clinical signs associ-
+ated with use of exogenous glucocorticoids.
+Inhaled glucocorticoids have been used widely in people and 
+are used with growing frequency in dogs with CB, since avoidance 
+of systemic steroid eects can improve quality of life. One study 
+demonstrated the benets of therapy with uticasone, delivered 
+via a spacer chamber and face mask designed especially for dogs 
+(e.g., AeroDawg; ch. 90).48 Bronchodilators (beta-2 agonists, the-
+ophylline) are frequently used, although their eectiveness in the 
+treatment of CB has not been well-investigated.
+Antibiotics are warranted in dogs with an acute exacerbation 
+of CB and a reasonable suspicion of infection. Doxycycline and 
+macrolides (azithromycin) are good choices for dogs with CB 
+because these drugs have anti-inammatory properties as well as 
+antimicrobial eects.27 Fluoroquinolones also have good tissue 
+penetration but concurrent administration of uoroquinolones 
+with theophylline can result in theophylline toxicosis.49
+When coughing is exhausting to dog and owner despite 
+anti-inammatory therapy, cough suppressants can be helpful. 
+Over-the-counter cough suppressants are rarely eective in dogs, 
+whereas narcotic cough suppressants are most eective. In some 
+countries, oral preparations containing opioids have become less 
+and less easily available. In countries where no oral preparation 
+of butorphanol can be prescribed, a couple of drops of injectable 
+solution deposited on the tongue can be eective but neither the 
+necessary dosage, nor the dosage-eect relationship, have been 

@@ -1,0 +1,249 @@
+Sucralfate      1189
+Sucralfate
+(soo-kral-fate)  Carafate®
+GI-Mucosal Protectant
+Prescriber Highlights
+	
+▶Local-acting treatment for GI ulcers/esophagitis; may also 
+protect somewhat against GI ulceration
+	
+▶No contraindications have been identified; however, sucralfate 
+should be used with caution when decreased GI transit times 
+may be harmful.
+	
+▶Adverse effects are unlikely, although constipation is possible. 
+Vomiting has been reported in cats.
+	
+▶Tablets should be dissolved in water before administration. 
+Should be administered on an empty stomach, if possible
+	
+▶To avoid possible drug interactions (eg, drug binding, de-
+creased drug bioavailability), other medications should be 
+administered 2 hours before sucralfate is administered. 
+Uses/Indications
+Sucralfate has been used to treat oral, esophageal, gastric, and duode-
+nal ulcers and to prevent drug (eg, aspirin)-induced gastric erosions. 
+Despite sucralfate’s theoretical benefits and widespread use, research 
+has shown limited or no evidence to support the effectiveness of su-
+cralfate for these indications.1–3 A consensus panel has determined 
+that evidence supporting sucralfate use in small animal species for 
+the prevention or treatment of esophageal injury is weak4; howev-
+er, sucralfate in combination with omeprazole is recommended for 
+treating horses with equine glandular gastric disease.5
+Sucralfate has been used in humans with hyperphosphatemia 
+secondary to renal failure and could be useful for this indication in 
+animals; however, in a study, sucralfate did not significantly change 
+serum or urine phosphorus levels in healthy cats or normophospha-
+temic cats with CKD, and adverse effects (eg, vomiting, anorexia, 
+constipation, worsening azotemia) may interfere with treatment.6 
+Pharmacology/Actions
+Although the exact mechanism of action of sucralfate as an antiulcer 
+agent is unknown, the drug appears to have a local effect rather than 
+a systemic one. After oral administration, sucralfate may react with 
+hydrochloric acid in the stomach to form a paste-like complex that 
+preferentially binds to the proteinaceous exudates that are generally 
+found at ulcer sites (eg, albumin, fibrinogen). This insoluble com-
+plex may form a barrier at the site and protect the ulcer from further 
+damage caused by pepsin, acid, or bile. Sucralfate can bind bile acids 
+and reduce pepsin activity. As an aluminum salt, sucralfate can bind 
+to GI phosphorus.
+Sucralfate may have some cytoprotective effects, possibly by stim-
+ulation of prostaglandins E2 and I2. It also has some antacid activity, 
+although this may not be of clinical importance. Sucralfate may also 
+bind to intact GI mucosa to form a protective layer. 
+Sucralfate does not significantly affect gastric acid output or tryp-
+sin or pancreatic amylase activity. It may slightly decrease the rate of 
+gastric emptying but will not alter peristalsis.
+Pharmacokinetics
+By reacting with hydrochloric acid in the gut, most of the drug is 
+converted to sucrose sulfate, which is excreted in the feces within 
+48 hours.7 The duration of action (binding to ulcer site) may persist 
+up to 6 hours after oral administration. A negligible amount of an 
+oral dose is absorbed into the systemic circulation and excreted in 
+the urine unchanged within 48 hours.8
+Dissolving tablets in water before administration to dogs and cats 
+is recommended to increase the dispersion of the drug, as tablet frac-
+tions have been observed in dog feces.9
+Contraindications/Precautions/Warnings
+Sucralfate is contraindicated in patients with known hypersensitivity 
+to it. Because it may cause constipation, it should be used with cau-
+tion in animals in which decreased GI transit times might be dele-
+terious. Hyperglycemia has been reported rarely in diabetic humans 
+receiving sucralfate suspension. Small amounts of aluminum may be 
+absorbed following oral administration and may accumulate in pa-
+tients with renal failure. 
+Concurrent use of sucralfate with proton pump inhibitors (eg, 
+omeprazole) or histamine-H2 receptor antagonists (eg, ranitidine) 
+does not enhance the treatment of gastroduodenal injury in small 
+animal species.4
+Adverse Effects
+Adverse effects are uncommon with sucralfate therapy. Constipation 
+is the most prominent adverse effect reported in humans (2%) and 
+dogs receiving the drug. Vomiting has been reported in cats. Sucral-
+fate can have an unpalatable taste, and patient acceptance may be a 
+problem.
+Sucralfate administration to cats with CKD resulted in clinical 
+decompensation (vomiting, anorexia, constipation, worsening azo-
+temia) in 3 of the 5 studied cats.6
+Reproductive/Nursing Safety
+In rats, sucralfate doses up to 38 times those used in humans have 
+not been shown to cause impaired fertility, and doses up to 50 times 
+normal used in humans have not been shown to cause signs of tera-
+togenicity.7 
+Sucralfate is most likely not excreted in breast milk because of 
+minimal systemic absorption.
+Overdose/Acute Toxicity
+Overdoses are unlikely to cause significant problems. Laboratory an-
+imals receiving up to 12 g/kg PO have demonstrated no incidence of 
+mortality.7 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving sucralfate and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+	■Antacids, Aluminum Containing: Additive absorption of 
+aluminum may occur, particularly in patients with renal insuf-
+ficiency.
+Sucralfate may impair the oral absorption of the following medica-
+tions; administration should be separated by at least 2 hours to min-
+imize this effect (with other medication being administered before 
+sucralfate)4:
+	■Alendronate: Other oral bisphosphonates should be assumed 
+to have the same effects.
+	■Antacids, Aluminum Containing: Can decrease sucralfate 
+effectiveness; administration should be separated by 30 minutes. 
+Additive absorption of aluminum may occur, particularly in pa-
+tients with renal insufficiency.
+	■Antacids, Calcium/Magnesium Containing: Can decrease 
+sucralfate effectiveness; administration should be separated by 30 
+minutes.
+	■Ciprofloxacin: Other oral fluoroquinolones, except enrofloxa-
+cin, should be assumed to be affected.9,10 
+
+1190      Sufentanil
+	■Diclofenac
+	■Digoxin
+	■Feeding, Enteral: Administration should be separated by an 
+hour.
+	■Ferrous Sulfate
+	■Furosemide
+	■Ketoconazole
+	■Lanthanum
+	■Levothyroxine: Administration should be separated by 4 
+hours.
+	■Macrolide Antibiotics (eg, azithromycin, clarithromycin, 
+erythromycin)
+	■Penicillamine
+	■Tetracyclines (eg, doxycycline, minocycline, tetracycline)11,12
+	■Theophylline
+	■Vitamins, Fat Soluble
+	■Warfarin
+Dosages
+DOGS/CATS:
+GI-mucosal protectant for conditions such as esophagitis, gas-
+tric or duodenal ulcers, and uremic gastritis (extra-label): Em-
+pirically administered at ¼ to ½ of a 1 g tablet (250 – 500 mg)/ani-
+mal (NOT g/kg) for toy-breed dogs and cats and 1 g/animal (NOT 
+g/kg) PO 2 to 4 times daily for large-sized dogs. When using tablet 
+formulations, it is recommended to crush the tablet then suspend 
+it in a small amount of water prior to administration.
+FERRETS:
+GI-mucosal protectant (extra-label): 
+a)	75 mg/kg PO every 4 to 6 hours; should be administered 10 
+minutes prior to feeding13
+b)	25 – 125 mg/kg PO every 8 to 12 hours14
+HORSES:
+GI-mucosal protectant (extra-label): 
+a)	 Gastric glandular disease: Sucralfate 12 – 20 mg/kg PO twice 
+daily in combination with omeprazole 4 mg/kg PO once dai-
+ly.5,15,16
+b)	 Prevention of stress-induced ulcers (used with acid-sup-
+pressive drugs) in foals: 
+i.	10 – 20 mg/kg PO every 6 to 8 hours17
+ii.	20 – 40 mg/kg PO every 6 hours18
+iii.	2 – 4 g/foal (NOT g/kg) PO every 6 hours18
+c)	 Right dorsal colitis | colonic ulcers: 22 mg/kg PO every 6 to 8 
+hours19,20 
+REPTILES:
+GI irritation in most species (extra-label): 500 – 1000 mg/kg PO 
+every 6 to 8 hours21
+BIRDS:
+Upper GI mucosal hemorrhage (extra-label): 50 – 100 mg/kg PO 
+every 12 hours22
+Monitoring
+	■Clinical efficacy (dependent on the reason for use); may be moni-
+tored by a decrease in clinical signs, endoscopic examination, and 
+fecal occult blood testing
+Client Information
+	■This medicine is best given on an empty stomach and not at the 
+same time as other medications. If you are giving your animal any 
+other medication, be sure to give the other medications 2 hours 
+before you give the sucralfate. 
+	■Sucralfate be given several times a day to be most effective.
+	■Shake liquids well before using. If using tablets, it is best to dis-
+solve the tablets in lukewarm water just before giving them.
+	■This medicine is usually tolerated well. Some animals may devel-
+op constipation. Some cats may vomit after receiving this medi-
+cine. Contact your veterinarian if you have concerns about your 
+animal taking this medicine.
+Chemistry/Synonyms
+Sucralfate, a basic aluminum complex of sucrose sulfate, can occur 
+as a white, amorphous powder. It is practically insoluble in alcohol 
+or water. Each 1 g sucralfate tablet contains ≈207 mg of aluminum.
+Sucralfate is structurally related to heparin but does not possess 
+any appreciable anticoagulant activity. It is also structurally related to 
+sucrose but is not utilized as sugar by the body.
+Sucralfate is also known as basic aluminum sucrose sulfate and 
+Carafate®, Sulcrate®, and Cytogard®.
+Storage/Stability
+Store sucralfate tablets in tight containers at room temperature 
+(15°C-30°C [59°F-86°F]). Store sucralfate suspension at controlled 
+room temperature (20°C-25°C [68°F-77°F]); do not freeze.
+Compatibility/Compounding Considerations
+A sucralfate 200 mg/mL suspension can be extemporaneously pre-
+pared. For a volume of 100 mL, twenty (20) sucralfate 1 g tablets 
+should be crushed, and a sufficient quantity of distilled water added 
+to bring the volume to 100 mL. Suspending agents (eg, acacia, trag-
+acanth) should not be used, as they can bind to sucralfate and make 
+it inactive. “Shake well” and “refrigerate” should be labeled on the 
+compounded solution. When refrigerated, it is stable for 14 days.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+HUMAN-LABELED PRODUCTS:
+Sucralfate Tablets: 1 g; Carafate®, generic; (Rx)
+Sucralfate Suspension: 1 g/10 mL in 10 mL unit-dose cups and 
+415 mL bottles; Carafate®, generic; (Rx)
+Formulations are available as oral mucosal coating agents and regu-
+lated by the FDA as medical devices.
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Sufentanil
+(soo-fen-ta-nil)  Sufenta®
+Opioid Agonist
+Prescriber Highlights
+	
+▶Injectable opioid that is 5 to 7 times more potent than 
+fentanyl. May be useful for adjunctive anesthesia or epidural 
+analgesia
+	
+▶Dose-related respiratory and CNS depression most likely 
+adverse effects
+	
+▶DEA Schedule II (C-II) controlled substance
+Uses/Indications
+Sufentanil is an opioid analgesic that may be useful as an anesthesia 
+adjunct or as an epidural analgesic. In humans, it has been used as 
+the primary anesthetic in intubated patients with assisted ventilation 
+and as a postoperative analgesic.
+Pharmacology/Actions
+Sufentanil is a potent mu opioid with the expected sedative, anal-
+gesic, and anesthetic properties. When comparing analgesic poten-
+cies when injecting IM, 0.01 to 0.04 mg of sufentanil is equivalent to 

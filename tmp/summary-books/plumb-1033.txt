@@ -1,0 +1,253 @@
+1006      Phenobarbital
+may get sick if they eat horse feed mixed with this medicine.
+	■Decreased appetite is the most common side effect seen with this 
+medicine.
+	■Watch for unpredictable behavior and colic while your horse is 
+taking this medicine. Contact your veterinarian if you have any 
+concerns.
+	■Your veterinarian will need to monitor your horse while it is tak-
+ing this medicine. Do not miss these important follow-up visits. 
+Chemistry/Synonyms
+Pergolide is an ergot derivative that occurs as white to off-white pow-
+der and is slightly soluble in water, dehydrated alcohol, or chloro-
+form. It is very slightly soluble in acetone, practically insoluble in 
+ether, and sparingly soluble in methyl alcohol.
+Pergolide mesylate may also be known as LY-127809, pergolide 
+mesilate, pergolidi mesilas, Prascend®, Celance®, Nopar®, Parkotil®, 
+Parlide®, or Pharken®.
+Storage/Stability
+Store pergolide tablets in tight containers at room temperature (25°C 
+[77°F]); excursions permitted to 15°C to 30°C (59°F-86°F).
+Compatibility/Compounding Considerations
+FDA-approved products should be the first choice when prescribing 
+pergolide for pituitary pars intermedia dysfunction (PPID). Com-
+pounded products are available; however, because of concerns re-
+garding stability, the use of this product is questionable when the 
+approved product is accessible. 
+A 1 mg/mL oral suspension of pergolide mesylate was prepared 
+using bulk powder obtained from a commercial supplier. 20 mg of 
+pergolide mesylate was added to the plunger of a 35 mL Luer-lock 
+syringe containing 10 mL of Ora-Plus® suspending liquid. The 35 mL 
+syringe was connected to an empty 35 mL Luer-lock syringe using a 
+fluid-dispensing connector. Using the plunger of the original 35 mL 
+syringe, the suspension was mixed by depressing the plungers back 
+and forth for a total of 50 depressions (or until uniformly mixed). 
+10 mL of OraSweet® was added to the suspension and mixed in a 
+similar manner for a final suspension volume of 20 mL. The suspen-
+sion was found to be stable for 30 days when protected from light 
+and stored under refrigeration (2°C-8°C [36°F-46°F]). Formulations 
+that have undergone a color change should be considered unstable 
+and discarded. NOTE: The use of a mortar and pestle to prepare this 
+suspension is not recommended, as it has resulted in a loss of sus-
+pending vehicle that caused a 20% increase in final concentration. 
+Proper precautions to prevent eye and skin irritation from exposure 
+to free powder should be taken.8
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: 
+Pergolide Mesylate Tablets: 1 mg; Prascend®; (Rx) FDA-approved for 
+use in horses. NADA# 141-331. Do not use this product in horses 
+intended for human consumption.
+HUMAN-LABELED PRODUCTS: NONE
+Because of an increased potential for heart valve damage associat-
+ed with pergolide use in humans, all dosage forms were withdrawn 
+from the United States market in the spring of 2007. 
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+Phenobarbital
+Phenobarbitone
+ (fee-noe-bar-bi-tal) 
+Barbiturate
+Prescriber Highlights
+	
+▶Used primarily as an antiseizure medication
+	
+▶Contraindicated in patients with known hypersensitivity, 
+severe liver disease, severe respiratory distress, or nephritis 
+(with large doses). Phenobarbital should be used with caution 
+in patients with hypovolemia, anemia, borderline hypoadrenal 
+function, or severe cardiac or respiratory disease.
+	
+▶Cats are more sensitive to respiratory depression when receiv-
+ing phenobarbital at high doses.
+	
+▶Adverse effects in dogs include anxiety/agitation or lethargy 
+(when treatment is initiated); profound depression is possible 
+even at low doses. Sedation, ataxia, polyuria/polydipsia, and 
+polyphagia can be seen at moderate to high serum phenobar-
+bital concentrations. An increase in liver enzymes (ALP more 
+so than ALT) is common; however, overt hepatotoxicity is not. 
+Anemia, thrombocytopenia, and neutropenia are rarely seen.
+	
+▶Adverse effects in cats include ataxia, lethargy, facial pruri-
+tus, polyphagia with weight gain, and polyuria/polydipsia. 
+Immunemediated reactions and bone marrow hypoplasia are 
+rare. Hepatotoxicity has not been reported in cats.
+	
+▶Should be given slowly when administered IV; should not 
+be administered SC or perivascularly, as it can cause severe 
+irritation
+	
+▶Drug and drug–laboratory test interactions are possible.
+	
+▶When therapy is discontinued, phenobarbital doses should be 
+tapered over several weeks (see Dosages).
+	
+▶DEA Schedule IV (C-IV) controlled substance
+Uses/Indications
+Based on its efficacy, relative safety, and reasonable dose frequency 
+(every 12 hours), phenobarbital is considered a first-line treatment 
+for epilepsy in dogs and cats.1,2 Phenobarbital has a slower onset of 
+action than benzodiazepines, which should be used first to manage 
+status epilepticus. Phenobarbital is generally used for long-term 
+control to prevent seizure recurrence in dogs, cats, and horses. In a 
+study, more dogs receiving phenobarbital were seizure-free as com-
+pared with those receiving potassium bromide (85% vs 52%); phe-
+nobarbital reduced seizure duration more than potassium bromide.3 
+Phenobarbital may also be useful in controlling excessive drool-
+ing (ie, sialadenosis) in horses4 and dogs.5–9 Phenobarbital improves 
+clinical signs in dogs with orthostatic tremor; however, most re-
+sponses were partial rather than complete.10
+In cattle, it has been suggested that the microsomal–enzyme-stim-
+ulating properties of phenobarbital increase the detoxification pro-
+cess of organochlorine (ie, chlorinated hydrocarbon) insecticide 
+poisoning.
+Phenobarbital has also been used in the treatment and preven-
+tion of neonatal hyperbilirubinemia in human infants. It is unknown 
+if phenobarbital effectively treats hyperbilirubinemia in veterinary 
+patients.
+Pharmacology/Actions	
+Although barbiturates are nonselective CNS depressants, they can 
+invoke all levels of CNS mood alteration, from paradoxical excite-
+ment to deep coma and death. The exact mechanisms of the CNS 
+effects caused by barbiturates are unknown. Barbiturates have been 
+shown to inhibit the release of acetylcholine, norepinephrine, and 
+glutamate; they also have effects on gamma-aminobutyric acid 
+
+Phenobarbital      1007
+(GABA). At high anesthetic doses, barbiturates have been demon-
+strated to inhibit the uptake of calcium at nerve endings. The seizure 
+threshold is raised, and the spread of seizures is limited. In humans, 
+selective anticonvulsant activity of phenobarbital is independent of 
+the degree of sedation produced.
+The degree of CNS depression produced is dependent on the 
+dose, route of administration, the pharmacokinetics of the drug, and 
+species treated. In addition, patient age, physical condition, and/or 
+concurrent use of other drugs can alter drug effects. Barbiturates 
+may depress the sensory cortex, lessen motor activity, and produce 
+sedation at low doses. In humans, barbiturates have been shown to 
+reduce the rapid eye movement (REM) stage of sleep. Barbiturates 
+have no true intrinsic analgesic activity.
+In most species, barbiturates can cause dose-dependent respira-
+tory depression and, in some species, can cause slight respiratory 
+stimulation. At sedative/hypnotic doses, respiratory depression is 
+similar to that during normal physiologic sleep. As doses increase, 
+the medullary respiratory center is progressively depressed, with re-
+sultant decreases in rate, depth, and volume. Respiratory arrest can 
+occur at doses 4 times lower than those that can cause cardiac arrest. 
+Barbiturates must be used very cautiously in cats, as cats are particu-
+larly sensitive to their respiratory depressant effects.
+Barbiturates can cause reduced tone and motility of the intestinal, 
+uterine, ureteral, and bladder musculature, likely secondary to their 
+central depressant action. Barbiturates can reduce the sensitivity of 
+the motor endplate to acetylcholine, thereby slightly relaxing the 
+skeletal muscle. 
+Liver function is not directly affected when barbiturates are used 
+short-term, but hepatic microsomal enzyme induction is well doc-
+umented with extended barbiturate administration,11–14 particularly 
+with phenobarbital, and may persist for up to 4 weeks after discon-
+tinuation.11 Although barbiturates reduce oxygen consumption in all 
+tissue, no change in metabolic rate is measurable when barbiturates 
+are administered at sedative doses; however, basal metabolic rates 
+may be reduced with resultant decreases in body temperature when 
+barbiturates are administered at anesthetic doses.
+Pharmacokinetics
+Phenobarbital is slowly absorbed from the GI tract. Bioavailability 
+ranges from 70% to 90% in humans and ≈90% in dogs.15,16 Absorp-
+tion is practically complete in cats17 and adult horses.18 Peak concen-
+trations occur 4 to 8 hours after oral administration in dogs19 and 8 
+to 12 hours in humans. One study in cats showed that phenobarbi-
+tal compounded in PLO gel and applied transdermally to the pinna 
+twice daily achieved steady-state serum concentrations within the 
+therapeutic range in some cats; more individual variation was seen 
+when Lipoderm ActiveMax® was used instead of PLO.20
+Phenobarbital is widely distributed throughout the body, but be-
+cause of its lower lipid solubility, it does not distribute as rapidly into 
+the CNS as compared with most other barbiturates. In humans, peak 
+drug concentration in the CNS may be delayed up to 15 minutes after 
+IV administration. In humans, the amount of phenobarbital bound 
+to plasma proteins has been reported to be 40% to 60%. The report-
+ed apparent volumes of distribution are ≈0.8 to 1 L/kg in horses,21,22 
+≈0.86 L/kg in foals, ≈0.7 L/kg in cats,23 and ≈0.75 L/kg in dogs.24
+The drug is metabolized in the liver primarily by hydroxylated 
+oxidation to p-hydroxyphenobarbital; sulfate and glucuronide con-
+jugates are also formed. In humans, elimination half-life ranges 
+from 2 to 6 days compared to 12 to 125 hours (average of ≈2 days) 
+in dogs.16,19,24 Elimination half-life in dogs fed protein- or fat-re-
+stricted diets appears to be shorter (26 and 24 hours, respectively).25 
+Because of phenobarbital’s ability to induce the hepatic enzymes 
+used to metabolize itself and other drugs, elimination half-life may 
+decrease with time, along with concomitant reductions in serum 
+concentrations. The half-life of phenobarbital may be less than 24 
+hours in some dogs that may require 3 times daily administration 
+for maximal control.26 An elimination half-life of 34 to 43 hours has 
+been reported in cats.23 Elimination half-life in horses is considerably 
+shorter, with reported values of ≈13 hours in foals and 10 to 12 hours 
+in adult horses with chronic administration.21,22 Approximately 25% 
+of a dose is excreted unchanged by the kidney; alkalinizing urine 
+and/or substantially increasing urine flow increases phenobarbital 
+excretion rates. The remaining 75% of a dose is renally excreted as 
+metabolites. Anuric or oliguric patients may accumulate the unmet-
+abolized drug; dose adjustments may be required.
+In dogs, changes in diet, body weight, and body composition may 
+alter the pharmacokinetics of phenobarbital and necessitate dosage 
+adjustment.
+In goats given phenobarbital 10 mg/kg IV and PO, bioavailability 
+was ≈25%, and half-life was ≈4 hours for both routes.27
+Contraindications/Precautions/Warnings
+Barbiturates are contraindicated in patients that have severe liver 
+disease, severe respiratory distress, or those that have demonstrat-
+ed previous hypersensitivity reactions to these drugs.28 Large doses 
+are contraindicated in patients with nephritis.29 Barbiturates should 
+be used cautiously in patients with hypovolemia, anemia, border-
+line hypoadrenal function, and/or cardiac or respiratory disease. 
+Dose reductions may be necessary in patients with significant renal 
+­impairment.
+The drug should be given slowly (not more than 1 – 2 mg/kg per 
+minute) when administered IV; IV administration that is too rapid 
+can cause respiratory depression. Commercially available injectable 
+preparations are very alkaline and must not be administered SC, in-
+traarterially, or perivascularly, as significant pain, tissue irritation, 
+and possible necrosis can result.29 Extreme care should be taken to 
+avoid extravasation. Applications of moist heat and local infiltration 
+of 0.5% procaine solution have been recommended to treat extrava-
+sation reactions.
+In humans, IM injection is limited to a total volume of 5 mL and 
+injected into a large muscle to avoid tissue irritation.29
+PHENobarbital should not be confused with PENTobarbital.
+Adverse Effects
+Dogs may exhibit increased clinical signs of anxiety/agitation or 
+lethargy when therapy is initiated. These effects are generally transi-
+tory in nature. Occasionally, dogs will exhibit profound depression at 
+lower doses (and plasma concentrations). Decreased physical activ-
+ity levels have been observed in dogs receiving phenobarbital-con-
+taining antiepileptic drug combinations.30
+Polydipsia, polyuria, and polyphagia are also commonly observed; 
+these signs usually begin 2 to 3 weeks after initiating phenobarbital 
+therapy. Sedation and/or ataxia often become significant concerns 
+as serum phenobarbital concentrations reach the higher ends of the 
+therapeutic range. Anemia, thrombocytopenia, and/or neutropenia 
+occur rarely and are reversible if detected early.31–33 Increased tri-
+glycerides34 and pancreatic lipase activity35,36 have been reported in 
+dogs. 
+Increases in liver enzymes with phenobarbital in dogs are well de-
+scribed37–39 and are not necessarily indicative of liver dysfunction but 
+should raise concern if serum ALT or ALP is more than 4 to 5 times 
+the upper limit of normal or if any elevation in gamma-glutamyl-
+transferase (GGT) is noted. Of note, in a study, serum ALP was high-
+er in dogs receiving phenobarbital and fed protein- or fat-restricted 
+diets as compared with dogs receiving a maintenance diet.25 Pheno-
+barbital should generally be discontinued if any increases in serum 
+bilirubin, total serum bile acids, or hypoalbuminemia are detected. If 
+phenobarbital needs to be discontinued yet antiepileptic medication 
+is required, alternative antiepileptic therapy (eg, potassium bromide, 

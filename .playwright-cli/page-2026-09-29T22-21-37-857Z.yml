@@ -1,0 +1,36 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - heading "Enrofloxacina" [level=1] [ref=e5]
+    - generic [ref=e7]:
+      - heading "Resumo rápido" [level=2] [ref=e8]
+      - generic [ref=e12]:
+        - paragraph [ref=e13]: Fluoroquinolona bactericida para infecções por agentes sensíveis.
+        - list [ref=e14]:
+          - listitem [ref=e15]:
+            - generic [aria-hidden] [ref=e16]: •
+            - generic [ref=e17]: Reservar para situações em que a indicação e, quando possível, a cultura sustentem seu uso.
+          - listitem [ref=e18]:
+            - generic [aria-hidden] [ref=e19]: •
+            - generic [ref=e20]: Pode causar toxicidade retiniana em gatos e lesão de cartilagem em animais em crescimento.
+          - listitem [ref=e21]:
+            - generic [aria-hidden] [ref=e22]: •
+            - generic [ref=e23]: Conferir espécie e exposição total; monitorar alterações visuais, neurológicas e gastrointestinais.
+        - group [ref=e24]:
+          - generic "Fonte do resumo" [ref=e25] [cursor=pointer]
+    - heading "Lesão renal aguda canina" [level=1] [ref=e26]
+    - generic [ref=e27]:
+      - heading "Resumo rápido" [level=2] [ref=e28]
+      - generic [ref=e29]:
+        - paragraph [ref=e30]: Deterioração rápida da função renal por causas como isquemia, toxinas ou infecção.
+        - list [ref=e31]:
+          - listitem [ref=e32]:
+            - generic [aria-hidden] [ref=e33]: •
+            - generic [ref=e34]: Vômitos, prostração e mudança na diurese podem ocorrer; identificar exposição e doenças associadas.
+          - listitem [ref=e35]:
+            - generic [aria-hidden] [ref=e36]: •
+            - generic [ref=e37]: Investigar causa, eletrólitos, urina e imagem e acompanhar a evolução da função renal.
+          - listitem [ref=e38]:
+            - generic [aria-hidden] [ref=e39]: •
+            - generic [ref=e40]: Restaurar perfusão sem provocar sobrecarga; complicações refratárias podem exigir diálise.
+        - group [ref=e41]:
+          - generic "Fonte do resumo" [ref=e42] [cursor=pointer]

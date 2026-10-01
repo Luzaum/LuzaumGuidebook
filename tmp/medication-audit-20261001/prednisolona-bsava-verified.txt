@@ -1,0 +1,229 @@
+===== BSAVA PDF 355 / impressa 339 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+339
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+DOSES
+Dogs:
+• To decrease urethral resistance in idiopathic vesico-urethral 
+reflex dyssynergia: 1 mg/15 kg body weight p.o. q12h.
+• For adjunctive treatment for heart failure: 1 mg/dog p.o. q8–12h 
+(dogs up to 15 kg); 2 mg/dog p.o. q8–12h (dogs >15 kg). Monitor 
+efficacy by measuring blood pressure and clinical response.
+Cats: 0.25–1 mg/cat p.o. q8–12h given initially for 5–7 days then 
+wean off if possible. 
+References
+Fischer JR, Lane IF and Cribb AE (2003) Urethral pressure profile and hemodynamic 
+effects of phenoxybenzamine and prazosin in non-sedated male Beagle dogs. Canadian 
+Journal of Veterinary Research  67, 30–38Prednisolone
+(PLT, Prednicare, Prednidale, Pred-forte*) POM-V
+Formulations: Ophthalmic: prednisolone acetate 0.5%, 1% 
+suspensions in 5 ml, 10 ml bottles (Pred-forte). Topical: prednisolone 
+is a component of many topical dermatological, otic and ophthalmic 
+preparations. Injectable: prednisolone sodium succinate 10 mg/ml 
+solution; 7.5 mg/ml suspension plus 2.5 mg/ml dexamethasone. 
+Oral: 1 mg, 5 mg, 25 mg tablets. PLT is a compound preparation 
+containing cinchophen.
+Action: Binds to specific cytoplasmic receptors which then enter 
+the nucleus and alter the transcription of DNA, leading to alterations 
+in cellular metabolism which result in anti-inflammatory, 
+immunosuppressive and antifibrotic effects. Also has glucocorticoid 
+activity and acts in dogs as an ADH antagonist.
+Use: Management of:
+• Chronic allergic/inflammatory conditions (e.g. atopy, 
+inflammatory bowel disease)
+• Immune-mediated conditions
+• Hypoadrenocorticism
+• Lymphoproliferative and other neoplasms
+• In combination with cinchophen (PLT) it is used in the 
+management of osteoarthritis ( see Cinchophen).
+Prednisolone has approximately 4 times the anti-inflammatory 
+potency and half the relative mineralocorticoid potency of 
+hydrocortisone. It, like methylprednisolone, is considered to have an 
+intermediate duration of activity and is suitable for alternate-day use. 
+Animals on chronic therapy should be tapered off their steroids 
+when discontinuing the drug. There are no studies comparing 
+protocols for tapering immunosuppressive or anti-inflammatory 
+therapy; it is appropriate to adjust the therapy according to 
+laboratory or clinical parameters. For example, cases with immune-
+mediated haemolytic anaemia should have their therapy adjusted 
+following monitoring of their haematocrit. There is no evidence that 
+
+===== BSAVA PDF 356 / impressa 340 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+340
+long-term low doses of glucocorticoids do, or do not, prevent 
+relapse of immune-mediated conditions. Impaired wound healing 
+and delayed recovery from infections may be seen. The use of 
+steroids in most cases of shock and spinal cord injury is of no benefit 
+and may be detrimental.
+Safety and handling: Shake suspension before use.
+Contraindications: Do not use in pregnant animals. Systemic 
+corticosteroids are generally contraindicated in patients with renal 
+disease and diabetes mellitus. Topical corticosteroids are 
+contraindicated in ulcerative keratitis.
+Adverse reactions: Prolonged use of glucocorticoids suppresses 
+the hypothalamic–pituitary axis (HPA), causing adrenal atrophy, and 
+may cause significant proteinuria and glomerular changes in the 
+dog. Catabolic effects of glucocorticoids leads to weight loss and 
+muscle atrophy. Iatrogenic hyperadrenocorticism may develop with 
+chronic use. Vomiting, diarrhoea and GI ulceration may develop; the 
+latter may be more severe when corticosteroids are used in animals 
+with neurological injury. Hyperglycaemia and decreased serum T4 
+values may be seen in patients receiving prednisolone.
+Drug interactions: There is an increased risk of GI ulceration if 
+used concurrently with NSAIDs. Hypokalaemia may develop if 
+acetazolamide, amphotericin B or potassium-depleting diuretics 
+(e.g. furosemide, thiazides) are administered concurrently with 
+corticosteroids. Glucocorticoids may antagonize the effect of 
+insulin. The metabolism of corticosteroids may be enhanced  
+by phenytoin or phenobarbital and decreased by antifungals  
+(e.g. itraconazole).
+DOSES
+See Appendix for chemotherapy and immunosuppression 
+protocols.
+Dogs:   
+• Ophthalmic: dosage frequency and duration of therapy is 
+dependent upon type of lesion and response to therapy. Usually 
+1 drop in affected eye(s) q4–24h tapering in response to therapy.
+• Hypoadrenocorticism: starting dose 0.2 mg/kg with 
+desoxycortone pivalate (DOCP), 0.1 mg/kg with fludrocortisone. 
+The dose of prednisolone may be reduced considerably in most 
+cases once the animal is stable. In cases on fludrocortisone it 
+may be discontinued but in cases on DOCP it should be 
+continued albeit at a low dose.
+• Allergy: 0.5–1 mg/kg p.o. q12h initially, tapering to lowest q48h 
+dose.
+• Anti-inflammatory: 0.5 mg/kg p.o. q12–24h; taper to 0.25–0.5 
+mg/kg q48h.
+• Immunosuppression: 1–2 mg/kg p.o. q24h, tapering slowly to 
+0.5 mg/kg q48h (for many conditions this will take 6 months).
+• Lymphoma: see Appendix .
+Cats:   
+• Ophthalmic, hypoadrenocorticism, allergy:  doses as for dogs.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 357 / impressa 341 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+341
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+• Anti-inflammatory: 0.5–1 mg/kg p.o. q12–24h; taper to 0.5 mg/
+kg q48h.
+• Immunosuppression: 1–2 mg/kg p.o. q12–24h, tapering slowly to 
+0.5–1 mg/kg q48h (for many conditions this will take 6 months).
+• Lymphoma: see Appendix.
+Pregabalin
+(Alzain*, Axalid*,Lyrica*) POM CD SCHEDULE 3
+Formulations: Oral: 25 mg, 50 mg, 75 mg, 100 mg, 150 mg,  
+200 mg, 225 mg, 300 mg capsules; 20 mg/ml solution.
+Action: Similar mechanism of action to gabapentin, binding to 
+voltage-dependent calcium channels in the CNS reducing calcium 
+influx and release of excitatory neurotransmitters such as glutamate 
+and substance P. It also increases neuronal GABA levels. Pregabalin is 
+more potent than gabapentin (3–10 times) owing to a greater affinity 
+for the binding site and generally has a longer duration of action.
+Use:
+• Adjunctive therapy in the treatment of epileptic seizures 
+refractory to conventional treatment.
+• Treatment of neuropathic pain.
+Pregabalin seems to be well absorbed after oral administration in 
+dogs and can reach serum levels shown to be effective in humans 
+with neuropathic pain. In cats the longer half-life suggests that a 
+dosing schedule of every 12 hours may be appropriate, which is an 
+advantage compared with gabapentin. Use with care in patients with 
+renal impairment as the majority is excreted by the kidneys.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Avoid use in pregnant animals as toxicity has 
+been demonstrated in experimental studies. Do not discontinue 
+abruptly.
+Adverse reactions: Many dogs develop sedation or ataxia, 
+although not usually severe enough to warrant cessation of the 
+therapy. Mild increases in hepatic enzyme activities may also occur 
+following prolonged therapy.
+Drug interactions: No information available.
+DOSES
+Dogs:   
+• For refractory epilepsy: 3–4 mg/kg p.o. q8h, starting at 2 mg/kg 
+and gradually increasing.
+• For neuropathic pain: 4 mg/kg p.o. q12h (limited evidence).
+Cats: 1–2 mg/kg p.o. q12h (limited anecdotal evidence).
+References
+Kukanich B (2013) Outpatient oral analgesics in dogs and cats beyond non-steroidal 
+anti-inflammatory drugs: an evidence-based approach. Veterinary Clinics of North 
+America: Small Animal Practice  43, 1109–1125
+Muñana KR (2013) Management of refractory epilepsy. Topics in Companion Animal 
+Medicine 28, 67–71

@@ -1,0 +1,816 @@
+
+===== Plumb PDF 354 =====
+Cyproheptadine   327
+ ■ Cats receiving cyclosporine should be kept indoors and not al -
+lowed to hunt or eat raw meat due to the risk for developing an 
+infection called toxoplasmosis. 
+Chemistry/Synonyms
+Cyclosporine (ie, cyclosporin A, ciclosporin, cyclosporin) is a nat -
+urally produced immunosuppressant agent. It is a nonpolar, cyclic, 
+polypeptide antibiotic that consists of 11 amino acids and it occurs 
+as a white, fine crystalline powder. It is relatively insoluble in water 
+but generally soluble in organic solvents and oils. Molecular weight 
+is 1202.61.
+Because of the difficulties surrounding absorption, many different 
+formulations have been approved over the years. Initial formulations 
+included a vegetable-oil base (ie, Sandimmune®), but marked differ-
+ences in bioavailability led to the approval of a human microemul -
+sion formulation (ie, Neoral®) and a veterinary product (ie, Atopica®) 
+with better bioavailability as compared with the parent product. 31 
+Because of the wide differences in formulation, and therefore phar -
+macokinetics, it is recommended that only the veterinary product 
+(ie, Atopica®) be used for veterinary patients.
+Cyclosporine is commercially available in several dosage forms, 
+including oral solutions, capsules, and a concentrate for injection. 
+To increase oral absorption, a microemulsion-forming preparation 
+(ie, Neoral®) is also available as capsules and an oral liquid. The vet -
+erinary products (ie, Atopica® and Cyclavance®) are microemulsion 
+products equivalent to Neoral®. All oral formulations contain ethanol 
+≈10% to 13% and the injection contains ≈33% ethanol.
+Cyclosporine may also be known as ciclosporin, 27-400, ciclospo-
+rinum, cyclosporine A, OL-27-400, Atopica®, Cyclavance®, Gengraf®, 
+Neoral®, Sandimmune®, or Sigmasporin®.
+Storage/Stability
+The veterinary capsules (ie, Atopica®) should be stored and dispensed 
+in the original unit-dose container at controlled room temperature 
+(15°C-25°C [59°F-77°F]). One study reported that capsules are sta -
+ble in the freezer for 28 days. 33 The veterinary oral solutions are la -
+beled to only be dispensed in the original container and stored at 
+controlled room temperature between 15°C to 30°C (59°F-86°F); do 
+not refrigerate. After the container is opened, use contents within 
+2 months to 12 weeks. Refer to specific product labels for further 
+information.
+The human oral liquid and capsules for emulsion (ie, Neoral®, 
+Gengraf®) should be stored in their original containers at 20°C to 
+25°C (68°F-77°F). Temperatures below 20°C (68°F) may cause the 
+solution to gel or flocculate. Rewarming to 25°C (77°F) can reverse 
+this process without harm.
+The oral liquid and oral capsules (ie, Sandimmune®) should be 
+stored in their original containers at temperatures less than 30°C 
+(86°F); protect from freezing and do not refrigerate. After opening 
+the oral liquid, use within 2 months.
+Compatibility/Compounding Considerations
+Compatibility is dependent on factors such as pH, concentration, 
+temperature, and diluent used; consult specialized references or a 
+hospital pharmacist for more specific information.
+Cyclosporine for injection is compatible with lactated Ringer’s, 
+sodium chloride 0.9%, and dextrose 5% IV solutions. It is reportedly 
+Y-site compatible with amikacin, atropine, buprenorphine, butor -
+phanol, calcium salts, cefazolin, dexamethasone sodium succinate, 
+dexmedetomidine, diphenhydramine, dobutamine, dopamine, dox-
+ycycline, epinephrine, erythromycin, famotidine, fentanyl, fluco -
+nazole, furosemide, heparin, lidocaine, methadone, methylpredniso-
+lone sodium succinate, metoclopramide, metronidazole, morphine, 
+penicillin G, piperacillin/tazobactam, potassium salts, propofol, so -
+dium bicarbonate, vasopressin, and zoledronic acid. 
+It is Y-site incompatible with amphotericin B (lipid-based), am-
+picillin, cyanocobalamin, diazepam, insulin (regular), ketamine, 
+magnesium sulfate, phenobarbital, sulfamethoxazole/trimethoprim, 
+and voriconazole.
+Human preparations of cyclosporine solutions may adhere to 
+plastic and therefore should not be mixed in a plastic cup or with 
+plastic utensils.65 
+Because there are approved oral dosage forms for both dogs and 
+cats, routine compounding for use in these species is discouraged. A 
+study97 found some compounded cyclosporine solutions deviated by 
+more than 10% from the labeled concentration.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS:
+Cyclosporine (Modified) Capsules: 10 mg, 25 mg, 50 mg, and 100 mg;  
+Atopica®; (Rx). FDA-approved for use in dogs. NADA #141-218
+Cyclosporine (Modified) Oral Solution: 100 mg/mL in 5 mL, 15 mL, 
+30 mL, and 50 mL vials; Cyclavance®; (Rx). FDA-approved for use in 
+dogs. ANADA #200-689
+Cyclosporine (Modified) Oral Solution: 100 mg/mL in 5 mL and  
+17 mL bottles; Atopica® for Cats; (Rx). FDA-approved for use in cats. 
+NADA #141-329 
+HUMAN-LABELED PRODUCTS:
+Cyclosporine Modified (Microemulsion) Oral Capsules (Soft-gela -
+tin): 25 and 100 mg; Neoral®, Gengraf®, generic; (Rx). These prod -
+ucts may be bioequivalent with, and Neoral® contains the same 
+formulation as, the veterinary-approved product (ie, Atopica®).
+Cyclosporine Modified Oral Solution (Microemulsion):  
+100 mg/mL in 50 mL bottles; Neoral®, generic; (Rx). This product 
+may be bioequivalent with, and contains the same formulation as, 
+the veterinary-approved product (ie, Atopica® for Cats).
+Cyclosporine Oral Solution: 100 mg/mL in 50 mL bottles with sy -
+ringe; Sandimmune®; (Rx). This product is not bioequivalent with the 
+veterinary-approved product (ie, Atopica® for Cats).
+Cyclosporine Oral Capsules (Soft gelatin): 25 and 100 mg; Sandim-
+mune®; generic; (Rx). These products are not bioequivalent with vet-
+erinary-approved products (ie, Atopica®).
+Cyclosporine Concentrated Solution for Injection: 50 mg/mL in  
+5 mL single-use amps; Sandimmune®, generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Cyproheptadine
+(sip-roe-hep-ta-deen) Periactin®
+First-Generation Antihistamine
+Prescriber Highlights
+ ▶ Serotonin antagonist antihistamine that can be useful in the 
+management of serotonin-syndrome in small animals and 
+has been used as an appetite stimulant in cats. Limited or no 
+efficacy as an antipruritic/antihistamine in dogs and cats or for 
+asthma in cats
+ ▶ In horses, used for photic head shaking and treatment of pitu-
+itary pars intermedia dysfunction (PPID).
+ ▶ Use with caution in animals with urinary or GI obstruction, 
+severe CHF, or angle-closure glaucoma
+ ▶ Adverse effects include CNS depression (cats may demon-
+strate paradoxical hyperexcitability) and anticholinergic 
+effects.
+
+
+===== Plumb PDF 355 =====
+328    Cyproheptadine
+Uses/Indications
+Cyproheptadine may be useful in cats as an appetite stimulant,1,2 but 
+it is not recommended in the management of hepatic lipidosis. 3,4 It 
+may be useful for urine spraying in male cats. 5 Cyproheptadine use 
+in cats as monotherapy for eosinophilic airway inflammation 6 and 
+asthma7 is not effective.
+Cyproheptadine is indicated for the treatment of histamine-me -
+diated pruritic and allergic skin conditions, including urticaria and 
+insect-bite hypersensitivity in dogs and cats; however, its efficacy for 
+pruritic and allergic diseases is questionable in dogs. In one dou -
+ble-blind, placebo-controlled study, there was no improvement of 
+pruritus in 16 of 16 allergic dogs that were treated with cyprohepta-
+dine 0.1 mg/kg PO every 24 hours.8  Guidelines for atopic dermatitis 
+treatment in dogs indicate that antihistamines have modest efficacy 
+in controlling pruritus associated with atopic dermatitis; for optimal 
+efficacy, cyproheptadine should be given continuously (ie, daily) as 
+preventive therapy. Cyproheptadine is of limited benefit in the man-
+agement of acute flares.9 
+Historically the drug has been used as adjunctive therapy for 
+ canine hyperadrenocorticism. However, one study demonstrated 
+lack of efficacy of cyproheptadine in dogs treated for pituitary de -
+pendent hyperadrenocorticism, 10 and more effective medications 
+(eg, trilostane, mitotane) are now available.
+Cyproheptadine may be useful as adjunctive treatment in dogs11,12 
+or cats13 with serotonin syndrome or to reduce dysphoria (vocaliza-
+tion, disorientation) associated with baclofen, carisoprodol, selective 
+serotonin reuptake inhibitors (SSRIs), or tricyclic antidepressants 
+(TCAs).
+In horses, cyproheptadine has been used for treating photic head-
+shaking14 and as adjunctive therapy for pituitary pars intermedia 
+dysfunction (PPID) when sole therapy with pergolide fails to control 
+signs. 15
+Pharmacology/Actions
+Similar to other H1-receptor antihistamines, cyproheptadine acts by 
+competing with histamine for H1-receptor sites on effector cells. An-
+tihistamines do not block histamine release but can antagonize its ef-
+fects. Cyproheptadine also possesses potent antiserotonin activity, in 
+addition to anticholinergic and calcium channel blocking actions.16
+Pharmacokinetics
+Available data are limited. Cyproheptadine is well absorbed after 
+oral administration; however, its distribution characteristics are not 
+well-described. Cyproheptadine may be almost completely metab -
+olized in the liver, and the metabolites are excreted in the urine; in 
+humans, elimination is reduced in chronic kidney disease. 17 Elimi-
+nation half-life in cats averages about 13 hours, 18 but there is wide 
+interanimal variability.
+Contraindications/Precautions/Warnings
+Cyproheptadine is contraindicated in patients hypersensitive to it. 
+In humans, the manufacturer states the drug is contraindicated in 
+newborn or premature infants, and should be used with caution 
+in patients with prostatic hypertrophy, hyperthyroidism, bladder 
+neck obstruction, severe cardiac disease, hypertension, epilepsy, an-
+gle-closure glaucoma or increased intraocular pressure, or pylorodu-
+odenal obstruction.17
+Cyproheptadine increased seizure severity, reduced seizure 
+threshold, and decreased anticonvulsant efficacy in animal models 
+of convulsions.19
+Adverse Effects
+The most likely adverse effects seen with cyproheptadine use in vet-
+erinary patients are related to its CNS depressant (eg, sedation) and 
+anticholinergic effects (eg, dry mucous membranes, decreased GI 
+motility, hyperthermia, tachycardia, urine retention).
+Polyphagia may be an unwanted effect in dogs 8 and cats 20 when 
+this drug is used for indications other than as an appetite stimulant. 
+A paradoxical agitated state can develop in cats, which resolves with 
+dose reduction or drug discontinuation. 
+Reproductive/Nursing Safety
+Cyproheptadine has been tested in pregnant lab animals in doses up 
+to 32 times higher than the labeled dose without evidence of harm 
+to fetuses. Nevertheless, because safety has not been established in 
+other species, its use during pregnancy should be weighed carefully.
+It is not known whether cyproheptadine is distributed into milk. 
+In humans, the drug is contraindicated in nursing mothers because 
+of potential for toxicity in newborns and infants.17 Because safety has 
+not been established in animals, this drug should only be used when 
+the maternal benefits outweigh the potential risks to offspring.
+Overdose/Acute Toxicity
+The oral LD50 in the rat is 295 mg/kg orally. 17 There are no specif -
+ic antidotes available. Treat significant overdoses using standard GI 
+decontamination protocols when appropriate and supportive ther -
+apy when required. The adverse effects seen with overdoses are an 
+extension of the drug’s adverse effects, principally CNS depression 
+(although CNS stimulation may be seen), anticholinergic effects (eg, 
+dry mucous membranes, tachycardia, urinary retention, hyperther -
+mia) and possibly hypotension. Physostigmine may be considered 
+for serious CNS anticholinergic effects; benzodiazepines may be 
+used to treat seizures, if necessary.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta -
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving cyproheptadine and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Anticholinergic Agents  (eg, amantadine, atropine, glyco-
+pyrrolate, oxybutynin): May have additive anticholinergic effects
+ ■ Cholinergic Agonists  (eg, pilocarpine): Decreased efficacy 
+of cyproheptadine
+ ■ CNS Depressant Agents (eg, acepromazine, anesthetic 
+agents [inhalant, injectable], cannabidiol, diazepam, gabapen-
+tin, methocarbamol, phenobarbital): May increase CNS depres-
+sion
+ ■ Monoamine Oxidase Inhibitors (MAOIs; eg, amitraz, sele-
+giline): Prolonged and intensified anticholinergic effects. Combi-
+nation is considered contraindicated in humans.
+ ■ Mirtazapine:  Concurrent cyproheptadine and mirtazapine use 
+should be avoided due to antagonistic mechanisms of action.2
+ ■ Opioids (eg, buprenorphine, morphine): May increase anticho-
+linergic and/or CNS depressant effects
+ ■ Selective Serotonin Reuptake Inhibitor s (eg, fluoxetine, 
+paroxetine, sertraline): Cyproheptadine may decrease efficacy.
+ ■ Tricyclic Antidepressants  (TCAs; eg, clomipramine, ami-
+triptyline): Cyproheptadine may decrease TCA efficacy.
+ ■ Tramadol : Cyproheptadine may decrease tramadol efficacy.
+Laboratory Considerations
+ ■ It is recommended that antihistamines be discontinued at least 7 
+days prior to intradermal allergy testing (IDT).21
+ ■ Cyproheptadine may increase amylase and prolactin serum levels 
+
+
+===== Plumb PDF 356 =====
+Cytarabine   329
+when administered with thyrotropin-releasing hormone.
+ ■ Cyproheptadine can decrease TSH secretion.
+ ■ Cyproheptadine may cause a false-positive tricyclic antidepres-
+sant screen.
+Dosages
+DOGS:
+Appetite stimulant (extra-label): 0.2 mg/kg PO every 12 hours; 
+may be dosed less frequently if inappetence is mild.
+Adjunctive treatment of dysphoria associated with serotonin 
+syndrome and toxicoses (eg, SSRIs, TCAs,  amphetamines, ba-
+clofen; extra-label): 1.1 mg/kg PO; doses may be repeated every 1 
+to 6 hours as needed until signs have resolved. 11,12 In cases where 
+PO dosing is not possible (eg, severe vomiting), crush tablets, mix 
+with saline, and administer rectally.22
+Antihistamine (extra-label): 0.5 – 2 mg/kg PO every 12 hours; 
+there is little evidence that higher dosages improve efficacy.
+CATS:
+Appetite stimulant (extra-label): 1 – 4 mg/cat (NOT mg/kg) PO 
+every 12 to 24 hours; alternatively, 0.2 – 1 mg/kg PO every 12 
+hours.1,2 Most cats require twice-daily dosing and it may take 3 
+days to see effect. Before starting treatment, adequate antiemetic 
+and/or analgesic therapy is necessary. Taper drug when discontin-
+uing to prevent rebound anorexia.
+Antihistamine (extra-label): 2 – 4 mg/cat (NOT mg/kg) PO ev -
+ery 12 hours.20 Efficacy was noted within 3 to 10 days of initiating 
+therapy. 
+Adjunctive treatment of serotonin syndrome  (extra-label):  
+2 – 4 mg/cat (NOT mg/kg) PO; additional doses may be repeated 
+every 4 to 6 hours as needed until clinical signs related to sero -
+tonin syndrome have resolved. In cases where PO dosing is not 
+possible (eg, severe vomiting), crush tablets, mix with saline, and 
+administer rectally.22
+HORSES:
+Photic head shaking  (extra-label): 0.3 – 0.6 mg/kg PO every 12 
+hours14
+Adjunctive therapy for refractory pituitary pars intermedia 
+dysfunction (PPID ) (extra-label): Cyproheptadine 0.25 mg/kg 
+PO once to twice daily given concurrently with pergolide15,23; may 
+require 4 to 8 weeks to determine efficacy. See Pergolide.
+Monitoring
+ ■ Appetite
+ ■ Body weight
+ ■ Adverse effects (eg, CNS depression, anticholinergic effects [eg, 
+dry mucous membranes, tachycardia, urine retention])
+Client Information
+ ■ Cyproheptadine is an antihistamine that can also be used as an 
+appetite stimulant or as a treatment for certain toxicities.
+ ■ Antihistamines should be used on a regular, ongoing basis in ani-
+mals that respond to them. They work better if used before expo-
+sure to an allergen (eg, pollens). 
+ ■ May be given with or without food. If your animal vomits or acts 
+sick after receiving the drug on an empty stomach, try giving the 
+next dose with food or a small treat. If vomiting continues, con -
+tact your veterinarian. 
+ ■ May cause drowsiness (sleepiness); this effect may lessen with time. 
+ ■ Cats can become overly excited when receiving this medication.
+Chemistry/Synonyms
+An antihistamine that also possesses serotonin antagonist proper -
+ties, cyproheptadine HCl occurs as a white to slightly yellow crystal-
+line powder. Approximately 3.64 mg are soluble in 1 mL of water and 
+28.6 mg in 1 mL of methanol.
+Cyproheptadine HCl may also be known as cyproheptadini hy -
+drochloridum, Ciplactin®, Cyheptine®, Cyprogin®, Cyprono®, Cypro-
+sian®, Klarivitina®, Nuran®, Periactine®, Periactinol®, Periatin®, Peri-
+tol®, Polytab®, Practin®, Preptin®, Supersan®, or Trimetabol®.
+Storage/Stability
+Store cyproheptadine HCl tablets and oral solution at room tempera-
+ture 20° to 25°C (68°F-77°F). Avoid freezing oral syrup (solution).
+Compatibility/Compounding Considerations
+No specific information noted
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: NONE
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 3 substance. See  Appendix for more 
+information. Use of this drug may not be allowed in certain animal 
+competitions. Check rules and regulations before entering in a com-
+petition while this medication is being administered. Contact local 
+racing authorities for further guidance.
+HUMAN-LABELED PRODUCTS
+Cyproheptadine HCl Oral Tablets: 4 mg; generic; (Rx)
+Cyproheptadine HCl Oral Syrup: 2 mg/5 mL (0.4 mg/mL) in  
+473 mL; generic; (Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Cytarabine
+Cytosine Arabinoside
+(sye-tare-a-bean) Cytosar-U®
+Antineoplastic
+Prescriber Highlights
+ ▶ Parenteral immunosuppressant/antineoplastic used in dogs 
+and cats for lymphoreticular neoplasms and leukemias and 
+meningoencephalomyelitis of unknown origin.
+ ▶ Contraindications include patients with a hypersensitivity to 
+this drug.
+ ▶ Adverse effects primarily include GI effects and myelosuppres-
+sion; increased ALT may occur.
+ ▶ Adequate monitoring is essential.
+ ▶ Potential embryotoxic and teratogenic effects 
+ ▶ The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cytarabine as a hazardous drug; use appro-
+priate precautions when handling.
+Uses/Indications
+Cytarabine is used primarily in small animals as adjunctive treat -
+ment for lymphoreticular neoplasms (eg, lymphoma), myeloprolif -
+erative disease (ie, leukemias), and CNS lymphoma. Its use as a sin-
+gle agent in canine lymphoma demonstrated poor efficacy.1 Data for 
+use as a single agent or as part of multiagent protocol in cats for the 
+treatment of lymphoma or leukemia are limited. Other studies have 
+shown that rescue protocols containing cytarabine for the treatment 
+of canine lymphoma are effective.2-6 
+Cytarabine can be used in combination with glucocorticoids for 
+treating meningoencephalomyelitis of unknown origin in dogs 7-10 
+and cats.11 
+Cytarabine has also been used in horses to treat lymphomas, but 
+data are limited to individual case reports.12,13
+
+
+===== Plumb PDF 357 =====
+330    Cytarabine
+Pharmacology/Actions
+Cytarabine is converted intracellularly into aracytidine triphosphate, 
+which competes with deoxycytidine triphosphate to inhibit DNA 
+polymerase, resulting in inhibition of DNA synthesis. Cytarabine is 
+specific to the S phase of the cell cycle (DNA synthesis) and blocks 
+cell progress from the G1 phase to the S phase. Incorporation of cy-
+tarabine into DNA is responsible for both drug activity and toxicity.
+Acquired resistance to cytarabine has been reported and is 
+thought to be due to several mechanisms. 
+Pharmacokinetics
+Cytarabine has very poor systemic availability after oral adminis -
+tration but can be administered IV , SC, and intrathecally. Doses of 
+600 mg/m2 IV as a bolus or as an IV CRI over 12 hours cross the 
+blood–brain barrier in healthy beagles. 14 In dogs given cytarabine 
+50 mg/m2 SC injections or 25 mg/m 2 per hour IV CRI for 8 hours, 
+the volume of distribution was 0.67 L/kg. Elimination half-lives were 
+similar (1.35 hours SC; 1.15 hours CRI), as were peak concentra -
+tions. Rate of absorption after SC was very rapid, with peak levels 
+occurring less than 1 hour after the dose was administered. It is im-
+portant to note that SC administration did not achieve steady-state 
+concentrations, as cytarabine was rapidly absorbed and eliminated 
+quickly (t½= 1.35 hours). This study also suggests a CRI may pro -
+duce prolonged exposure of cytarabine at cytotoxic levels in plasma, 
+but it is not known if this correlates with differences in efficacy or 
+toxicity.15 Similar pharmacokinetic parameters (Vd = 0.9 L/kg, t ½ = 
+1.1 hours) in dogs given 50 mg/m2 SC injection were noted in a sep-
+arate study,9 and cytarabine concentration remained above 1 µg/mL 
+for 2 hours after administration. Overall drug exposure was similar, 
+but cytarabine concentrations were significantly higher for a longer 
+duration (as compared with 50 mg/m2 SC every 12 hours for 4 doses) 
+with dosing regimens of 100 mg/m2 SC every 12 hours for 2 doses or 
+200 mg/m2 SC as a single dose.8 
+In humans, cytarabine is widely distributed throughout the body. 
+CSF levels can reach ≈40% of the levels found in plasma. Elimination 
+half-life in the CSF is significantly longer than that of serum. Circulat-
+ing cytarabine is rapidly metabolized by the enzyme cytidine deam-
+inase principally in the liver to the inactive metabolite ara-U (uracil 
+arabinoside). About 80% of the dose is excreted in the urine within 24 
+hours as both ara-U (≈90%) and unchanged cytarabine (≈10%).
+The drug apparently crosses the placenta, but it is unknown if it 
+enters milk.
+Contraindications/Precautions/Warnings
+Cytarabine can cause severe toxicity, depending on the dose and rate 
+of administration. It should only be used where adequate monitoring 
+and support can be administered. Cytarabine is contraindicated in 
+patients with previous hypersensitivity reactions and should be used 
+with caution in patients with pre-existing bone marrow depression, 
+hepatic or renal dysfunction, or infection. In humans, acute pancre-
+atitis and sudden respiratory distress syndrome have been reported. 
+Some commercially available products contain benzyl alcohol.
+The National Institute for Occupational Safety and Health 
+(NIOSH) classifies cytarabine as a hazardous drug; personal protec-
+tive equipment (PPE) should be used accordingly to minimize the 
+risk for exposure.16 
+Adverse Effects
+In dogs, the most common adverse effects following IV CRI are 
+GI (65%) and hematologic toxicities, with neutropenia (35%) and 
+thrombocytopenia (12%) being the most common. 1,17 Myelosup -
+pressive effects (eg, anemia, neutropenia, thrombocytopenia) are 
+more pronounced with IV versus SC administration. Lower doses 
+in dogs (eg, for inflammatory brain disease) had minimal adverse 
+effects (ie, mild to moderate anemia in less than 1% of patients). 18 
+Humans experience biphasic leukocyte nadir, first from days 7 to 9 
+and again at days 15 to 24, with a brief rise in cell count between the 
+nadirs. Platelet decreases begin around day 5, with nadir occurring 
+at ≈days 12 to 15.
+GI disturbances include anorexia, nausea, vomiting, diarrhea, 
+and oral ulceration. Neurotoxicity, hepatotoxicity, lethargy, and fever 
+may also occur with cytarabine therapy. Increased ALT was noted in 
+15% of dogs in a study.17
+Alopecia and delayed regrowth of shaven hair have been reported 
+in dogs; breeds with a continuously growing hair coat (eg, poodles, 
+terriers, Afghan hounds, old English sheepdogs) are more likely to 
+experience significant hair loss.
+Three cases (n = 138) of calcinosis cutis at cytarabine SC injection 
+sites were reported in dogs receiving concurrent prednisolone for 
+treatment of meningoencephalomyelitis of unknown etiology.19 
+In addition, there was 1 case report of suspected drug-induced 
+infiltrative lung disease following a 24-hour cytarabine infusion.20
+Reproductive/Nursing Safety
+Cytarabine is teratogenic in laboratory animals, particularly when 
+administered during the first trimester. Fetal harm has been de -
+scribed following cytarabine administration to pregnant women.  
+Although it is unknown if cytarabine enters maternal milk, the 
+potential mutagenicity and carcinogenicity of the drug warrants us-
+ing extreme caution in allowing the dam to continue nursing while 
+receiving cytarabine. 
+Because safety has not been established in animals, this drug should 
+only be used when the maternal benefits outweigh the potential 
+risks to offspring.
+Overdose/Acute Toxicity
+The toxicity of cytarabine is dependent on dose and rate of adminis-
+tration. The intravenous LD50 in dogs is 172 mg/kg and greater than 
+7000 mg/kg in mice.21 Treatment is supportive, as there is no known 
+antidote, but the drug is dialyzable.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, it is strongly encouraged to consult with one of 
+the 24-hour poison consultation centers that specialize in providing 
+information specific for veterinary patients. For general information 
+related to overdose and toxin exposures, as well as contact informa-
+tion for poison control centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are 
+theoretical in humans or animals receiving cytarabine and may be 
+of significance in veterinary patients. Unless otherwise noted, use 
+together is not necessarily contraindicated, but weigh the potential 
+risks and perform additional monitoring when appropriate.
+ ■ Flucytosine (5-FC): Cytarabine may antagonize the anti-infec-
+tive activity of flucytosine.
+ ■ Myelosuppressive Agents  (eg, antineoplastics, immuno-
+suppressants, iron chelators): Concurrent use with other bone 
+marrow depressant medication may result in additive myelosup-
+pression, avoid combination when possible.
+ ■ V accines (live and inactivated ): May diminish vaccine efficacy 
+and enhance adverse effects of live vaccines
+Dosages
+NOTE: The following dosages should be used only as a gener -
+al guide because of the potential toxicity of this drug to patients, 
+veterinary staff, and clients and because chemotherapy indica -
+tions, treatment protocols, monitoring and safety guidelines often 
+change. 
+ Consultation with a veterinary oncologist and referral to current 
+veterinary oncology references22-26 are strongly  recommended.
+DOGS:
+Antineoplastic agent (extra-label): 
+
+
+===== Plumb PDF 358 =====
+Cytarabine   331
+Intravenous: 
+a) 300 mg/m2 (NOT mg/kg) as a continuous IV infusion (deliv -
+ered over 4 to 72  hours) once weekly or as part of the day 1 
+DMAC multi-agent chemotherapy protocol17,27,28
+b) 600 mg/m 2 (NOT mg/kg) as a continuous IV infusion  
+(300 mg/m2 given daily over 48 hours)1
+c) 300 – 600  mg/m2 (NOT mg/kg), as a continuous IV infusion 
+(delivered over 5-8 hours) starting on day 1 with an injection 
+of carboplatin chemotherapy, on day 7, and/or day 14 of the 
+treatment cycle3
+d) 750 mg/m 2 (NOT mg/kg) as a continuous IV infusion  
+(150 mg/m2 given daily for 5 consecutive days, in addition to 
+GMCSF , EPO, and ondansetron injections) as part of a VCAA-
+based multi-agent chemotherapy protocol4
+Subcutaneous: (See Pharmacokinetics regarding SC administra-
+tion concerns.)
+a) Two doses of 100 mg/m2 (NOT mg/kg) SC given 2 hours apart 
+(total dose, 200 mg/m2) as part of the DMAC multi-agent che-
+motherapy protocol2
+b) 300 mg/m2 (NOT mg/kg) SC as a single dose as part of DMAC 
+multi-agent chemotherapy protocol27,28
+c) 300 – 600 mg/m2 (NOT mg/kg) SC split into 3 to 4 daily doses 
+over 3 to 4 days, starting on day 1 along with carboplatin che -
+motherapy3
+d) 150 mg/m2 (NOT mg/kg) SC every 12 hours for 48 hours was 
+used in a patient with large granular lymphocyte T-cell lym -
+phoma as part of a multi-agent chemotherapy protocol with 
+L-asparaginase, CCNU, and vincristine.29 
+e) 33 mg/m2 (NOT mg/kg) SC every 8 hours for 5 days along with 
+bleomycin6
+Inflammatory brain disease (eg, meningoencephalomyelitis of 
+unknown etiology; extra-label): In combination with glucocorti -
+coid therapy:
+Subcutaneous: (see Pharmacokinetics for SC administration)  
+50 mg/m2 (NOT mg/kg) SC every 12 hours for 48 hours, repeat 
+every 3 weeks7,8,18,30-32
+Intravenous: 
+a) 100 mg/m2 (NOT mg/kg) as a continuous IV infusion given 
+over 24 hours33,34
+b) 200 mg/m2 (NOT mg/kg) as a continuous IV infusion given 
+over 8 to 24 hours35 or over 48 hours36 
+CATS:
+Antineoplastic agent (extra-label): There are limited data available 
+to support dosing in cats, but cytarabine has been dosed as below:
+Subcutaneous: (See Pharmacokinetics regarding SC administra-
+tion concerns.)
+a) 10 mg/m2 (NOT mg/kg) SC every 12 hours for 2 to 4 days37 
+b) 50 mg/m2 (NOT mg/kg) SC every 12 hours for 48 hours as part 
+of multi-agent chemotherapy protocol38 
+c) 300 mg/m 2 (NOT mg/kg) SC has also been used as part of 
+DMAC chemotherapy rescue protocol for feline lymphoma.5
+Intravenous: 100 mg/m2 (NOT mg/kg) IV along with other che -
+motherapeutic agents39 
+Inflammatory brain disease (eg, meningoencephalomyelitis of 
+unknown etiology; extra-label): 
+Subcutaneous: (See Pharmacokinetics regarding SC administration 
+concerns.) 50 mg/m2 (NOT mg/kg) SC every 12 hours for 48 hours11
+HORSES:
+Antineoplastic agent  (extra-label): Consultation with a veteri -
+nary oncologist is encouraged before use; usual doses in horses 
+are 200 – 300 mg/m 2 (usually 1 – 1.5 g/horse per dose) SC or IM 
+every 1 to 2 weeks.12,40
+Monitoring
+ ■ Adverse effects (eg, inappetence, lethargy, drooling [oral ulcer -
+ations], vomiting, diarrhea, fever)
+ ■ CBC with platelets (baseline, nadir, prior to subsequent treat -
+ments)
+ ■ Liver and renal function (baseline and periodic)
+Client Information
+ ■ Cytarabine is a chemotherapy (ie, cancer) drug. The drug and its 
+byproducts can be hazardous to other animals and people that 
+come in contact with it. On the day your animal gets the drug and 
+then for a few days afterward, all bodily waste (eg, urine, feces, 
+litter), blood, and vomit should only be handled while wearing 
+disposable gloves. Seal the waste in a plastic bag, and then place 
+both the bag and gloves in the regular trash.
+ ■ GI toxicity (eg, ulceration, diarrhea, vomiting) can occur. If diar-
+rhea is severe or continues, contact your veterinarian.
+ ■ Bone marrow depression can occur. The greatest effects on bone 
+marrow usually occur within a few weeks after treatment. Y our 
+veterinarian will do blood tests to watch for this, but if you see 
+bleeding, bruising, fever (indicating an infection), or if your ani -
+mal becomes very tired easily, contact your veterinarian right away.
+ ■ It is important to immediately report any signs associated with 
+toxicity (eg, abnormal bleeding, bruising, urination, depression, 
+infection, shortness of breath).
+ ■ Hair loss and delayed regrowth of shaven hair have been reported 
+in dogs; breeds with a continuously growing hair coat (eg, poodles, 
+terriers, Afghan hounds, old English sheepdogs) are more likely 
+to experience significant hair loss.
+ ■ This medication is considered to be a hazardous drug as defined 
+by the National Institute for Occupational Safety and Health 
+(NIOSH). Talk with your veterinarian or pharmacist about the use 
+of personal protective equipment when handling this  medicine.
+Chemistry/Synonyms
+Cytarabine, a synthetic pyrimidine nucleoside antimetabolite, oc -
+curs as an odorless, white to off-white crystalline powder with a pKa 
+of 4.35. It is freely soluble in water and slightly soluble in alcohol.
+Cytarabine may also be known as 1-beta- d-arabinofuranosylcy-
+tosine, arabinosylcytosine, ara-C, cytarabine liposome, cytarabinum, 
+cytosine arabinoside, liposomal cytarabine, NSC-63878, U-19920, 
+U-19920A, WR-28453, ARA-cell®, Alexan®, Arabine ®, Aracytin ®, 
+Aracytine®, Citab ®, Citagenin®, Citaloxan®, Cylocide, Cytarbel ®, Cy -
+tarine®, Cytosar-U®, DepoCyt ®, DepoCyte ®, Erpalfa ®, Ifarab®, Larac -
+it®, Medsara®, Novutrax®, Serotabir®, Starasid®, Tabine®, Tarabine®, o r  
+ Udicil®.
+Storage/Stability
+Cytarabine sterile powder for injection should be stored protected 
+from light at 20°C to 25°C (68°F-77°F); store intact vials of solution 
+at 15°C to 30°C (59°F-86°F). After reconstitution with bacteriostatic 
+water for injection, solutions are stable for 48 hours at room tem -
+perature, although the manufacturer recommends administration as 
+soon as possible after preparation.
+Compatibility/Compounding Considerations
+Compatible with 5% dextrose in water, 5% dextrose in sodium chlo-
+ride (0.2%, 0.9%), 5% dextrose in lactated Ringer’s, 10% dextrose in 
+0.9% sodium chloride, lactated Ringer’s, normal saline, Ringer’s, and 
+sodium lactate 1/6 M. Cytarabine is incompatible with the following 
+for y-site administration: allopurinol, amiodarone, amphotericin B, 
+daptomycin, diazepam, lansoprazole, and phenytoin. Incompatible 
+with the following in admixtures and syringes: fluorouracil, heparin, 
+regular insulin, oxacillin, and penicillin G potassium.
+Compatibility is dependent on factors such as pH, concentration, 
+
+
+===== BSAVA PDF 119 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+103
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+and chloramphenicol reduce cyclophosphamide efficacy. If 
+administered with doxorubicin there is an increased risk of 
+cardiotoxicity. Insulin requirements are altered by concurrent 
+cyclophosphamide.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs:
+• Lymphoid neoplasia: generally 50 mg/m2 p.o. q48h or 3–4 
+consecutive days/week; or 200–250 mg/m 2 p.o or i.v. q3wk.
+• Metronomic chemotherapy: 10–15 mg/m 2 p.o. q24h.
+• Multiple myeloma in patients refractory to melphalan: 1 mg/kg 
+p.o. q24h.
+• Macroglobulinaemia in patients refractory to chlorambucil:  
+1 mg/kg p.o. q24h.
+Cats:
+• Lymphoid neoplasia: as for dogs, except 200–300 mg/m 2 in 
+‘high dose’ COP regimes.
+References
+Elmslie RE, Glowe P and Dow SW (2008) Metronomic therapy with cyclophosphamide 
+and piroxicam effectively delays tumor recurrence in Dogs with Incompletely Resected 
+Soft Tissue Sarcomas. Journal of Veterinary Internal Medicine  22, 1373–1379
+Teske E, van Straten G, van Noort R et al. (2002) Chemotherapy with cyclophosphamide, 
+vincristine and prednisolone (COP) in cats with malignant lymphoma: new results with an 
+old protocol. Journal of Veterinary Internal Medicine 16, 179–186
+Cyclosporin(e) see Ciclosporin  
+Cyproheptadine
+(Periactin*) POM 
+Formulations: Oral: 4 mg tablet.
+Action: Binds to and blocks the activation of H1 histamine and 
+serotonin receptors.
+Use:
+• Management of allergic disease.
+• Appetite stimulation.
+• Also used in cats with aortic thromboembolism as serotonin, 
+along with other mediators, is involved in collateral 
+vasoconstriction. Maintenance of this collateral supply is 
+important in recovery.
+Use with caution in cases with urinary retention, angle-closure 
+glaucoma and pyloroduodenal obstruction. Specific doses for dogs 
+and cats have not been determined by pharmokinetic studies and 
+clinical effectiveness has not been established.
+Safety and handling: Normal precautions should be observed.
+Contraindications: No information available.
+
+
+===== BSAVA PDF 120 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+104
+Adverse reactions: May cause mild sedation, polyphagia, weight 
+gain. May reduce seizure threshold.
+Drug interactions: No information available.
+DOSES
+Dogs, Cats: 0.1–0.5 mg/kg p.o. q8–12h.
+Cytarabine (Cytosine arabinoside, Ara-C)
+(Cytarabine*, Cytosar-U*) POM 
+Formulations: Injectable: 100 mg, 500 mg powders for 
+reconstitution.
+Action: The active nucleotide metabolite ara-CTP is incorporated 
+into DNA and inhibits pyrimidine and DNA synthesis. Cytarabine is 
+therefore S-phase-specific.
+Use:
+• Management of lymphoproliferative and myeloproliferative 
+disorders. For dogs diagnosed with lymphoma with bone 
+marrow involvement, addition of cytarabine into a VCAA 
+combination protocol may improve survival time.
+• Cytarabine is widely used for the treatment of 
+meningoencephalitis of unknown origin (MUO, previosuly GME) 
+and other suspected immune-mediated encephalitides in the 
+dog. There is currently no general agreement on the best 
+treatment protocol, but combination therapy of prednisolone 
+and cytarabine is widely reported.
+Safety and handling: Cytotoxic drug; see Appendix and 
+specialist texts for further advice on chemotherapeutic agents. 
+After reconstitution, store at room temperature and discard after 48 
+hours or if a slight haze develops.
+Contraindications: Do not use if there is evidence of bone 
+marrow suppression or substantial hepatic impairment.
+Adverse reactions: Vomiting, diarrhoea, leucopenia. As it is a 
+myelosuppressant, careful haematological monitoring is required. 
+Conjunctivitis, oral ulceration, neurotoxicity, hepatotoxicity and fever 
+have also been seen. Calcinosis cutis has been reported at the site of 
+injection in three dogs.
+Drug interactions: Oral absorption of digoxin is decreased. 
+Activity of gentamicin may be antagonized. Simultaneous 
+administration of methotrexate increases the effect of cytarabine.
+DOSES
+See Appendix for chemotherapy protocols and conversion of body 
+weight to body surface area.
+Dogs, Cats:
+• Lymphoproliferative neoplastic disease: 100–150 mg/m 2 given 
+i.v. or s.c. over 2–5 days (as part of a VCAA-based protocol), or 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 121 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+105
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+100 mg/m2 by continuous i.v. infusion over 24–96h, or 20 mg/
+m2 intrathecally q1–5d. Or 200 mg/m 2 given i.v. (over 4 hours) or 
+s.c. once every two weeks as part of the DMAC protocol. 
+• MUO/GME: 50 mg/m2 s.c. q12h for 4 doses. Repeat at 3, 7, 11, 
+16, 21, 27 and 33 weeks (if clinical benefit seen), then stop. CRI 
+(100 mg/m2 CRI over 24h) at the same intervals.
+References
+Marconato L, Bonfanti U, Stefanello D et al . (2008) Cytosine arabinoside in addition to 
+VCAA-based protocols for the treatment of canine lymphoma with bone marrow 
+involvement: does it make the difference? Veterinary Comparative Oncology 6 , 80–89
+Zarfoss M, Schatzberg S, Venator K et al . (2006) Combined cytosine arabinoside and 
+prednisone therapy for meningoencephalitis of unknown aetiology in 10 dogs. Journal 
+of Small Animal Practice 47 , 588–595

@@ -1,0 +1,136 @@
+- generic [ref=f1e3]:
+  - navigation "Navegação estrutural" [ref=f1e4]:
+    - link "Início" [ref=f1e5] [cursor=pointer]:
+      - /url: /consulta-vet
+    - link "Referências clínicas" [ref=f1e8] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=f1e11]: Ultrassom
+    - generic [ref=f1e14]: Fígado
+  - generic [ref=f1e15]:
+    - link "Voltar aos mini-apps" [ref=f1e16] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=f1e23]:
+      - 'heading "Ultrassom: medidas e interpretação" [level=1] [ref=f1e24]'
+      - paragraph [ref=f1e25]: Consulte medidas e entenda os termos dos laudos, seus mecanismos e diferenciais. Escolha uma estrutura e a espécie; as medidas também permitem filtrar a fase de vida.
+  - main [ref=f1e26]:
+    - generic [ref=f1e28]:
+      - generic [ref=f1e29]:
+        - button "Voltar à lista de órgãos" [ref=f1e30] [cursor=pointer]
+        - generic [ref=f1e33]:
+          - paragraph [ref=f1e34]: Órgão selecionado
+          - heading "Fígado" [level=2] [ref=f1e35]
+          - paragraph [ref=f1e36]: Tamanho, margens e parênquima
+          - link "Interpretar alterações do laudo ↓" [ref=f1e37] [cursor=pointer]:
+            - /url: "#interpretar-laudo"
+      - generic [ref=f1e38]:
+        - group "Espécie" [ref=f1e39]:
+          - generic [ref=f1e41]:
+            - button "Cão" [pressed] [ref=f1e42] [cursor=pointer]
+            - button "Gato" [ref=f1e47] [cursor=pointer]
+        - group "Fase de vida" [ref=f1e51]:
+          - generic [ref=f1e53]:
+            - button "Adulto" [pressed] [ref=f1e54] [cursor=pointer]
+            - button "Filhote" [ref=f1e57] [cursor=pointer]
+    - region "Referências descritivas do livro" [ref=f1e61]:
+      - generic [ref=f1e62]: Referências descritivas
+      - article [ref=f1e66]:
+        - heading "Parênquima e vasos normais" [level=3] [ref=f1e67]
+        - paragraph [ref=f1e68]: Parênquima uniforme, em geral mais escuro e de textura mais grosseira que o baço. Veias porta têm paredes ecogênicas; veias hepáticas não mostram a mesma parede.
+    - generic [ref=f1e74]:
+      - heading "Sem limite numérico universal publicado" [level=3] [ref=f1e75]
+      - paragraph [ref=f1e76]: O tamanho hepático ao ultrassom é uma avaliação subjetiva, dependente da conformação, dos órgãos adjacentes e da experiência do operador; o capítulo não estabelece um corte linear universal.
+    - region "Interpretar alterações do laudo" [ref=f1e77]:
+      - generic [ref=f1e78]:
+        - generic [ref=f1e79]:
+          - heading "Entenda a alteração do laudo" [level=3] [ref=f1e80]
+          - paragraph [ref=f1e81]: Selecione um achado para entender sua aparência, como ele se forma e quais causas investigar. Nos diferenciais, abra o mecanismo para aprofundar.
+        - figure [ref=f1e82]:
+          - generic [ref=f1e83]:
+            - link "Ampliar imagem ultrassonográfica" [ref=f1e84] [cursor=pointer]:
+              - /url: /assets/consulta-vet/ultrasound-clinical/liver.jpg
+              - img "Cão — fígado remodelado. Fígado reduzido, brilhante e com contorno irregular, cercado por líquido escuro. Observe o conjunto; brilho isolado não confirma cirrose." [ref=f1e85]
+            - generic [ref=f1e86]:
+              - paragraph [ref=f1e87]: Imagem ultrassonográfica · Cão — fígado remodelado
+              - paragraph [ref=f1e88]: Fígado reduzido, brilhante e com contorno irregular, cercado por líquido escuro. Observe o conjunto; brilho isolado não confirma cirrose.
+              - paragraph [ref=f1e89]: Clique na imagem para ampliar. Créditos em Referências.
+        - generic [ref=f1e90]:
+          - generic [ref=f1e91]: Pesquisar alteração ou diferencial neste órgão
+          - searchbox "Pesquisar alteração ou diferencial neste órgão" [ref=f1e93]
+        - group [ref=f1e94]:
+          - generic "Como o ultrassom forma a imagem" [ref=f1e95] [cursor=pointer]
+      - generic [ref=f1e96]:
+        - group [ref=f1e97]:
+          - generic "Ecotextura grosseira / aspecto grosseiro / granular Os ecos parecem mais grossos; isso não significa automaticamente fibrose." [ref=f1e98] [cursor=pointer]:
+            - text: Ecotextura grosseira / aspecto grosseiro / granular
+            - generic [ref=f1e99]: Os ecos parecem mais grossos; isso não significa automaticamente fibrose.
+        - group [ref=f1e100]:
+          - generic "Hiperecogênico / fígado brilhante O parênquima retorna mais ecos que a referência usada." [ref=f1e101] [cursor=pointer]:
+            - text: Hiperecogênico / fígado brilhante
+            - generic [ref=f1e102]: O parênquima retorna mais ecos que a referência usada.
+        - group [ref=f1e103]:
+          - generic "Hipoecogênico / paredes portais proeminentes Fígado mais escuro; as paredes portais contrastam mais." [ref=f1e104] [cursor=pointer]:
+            - text: Hipoecogênico / paredes portais proeminentes
+            - generic [ref=f1e105]: Fígado mais escuro; as paredes portais contrastam mais.
+        - group [ref=f1e106]:
+          - generic "Heterogêneo / padrão misto / mosaico Há regiões com brilho ou textura diferentes." [ref=f1e107] [cursor=pointer]:
+            - text: Heterogêneo / padrão misto / mosaico
+            - generic [ref=f1e108]: Há regiões com brilho ou textura diferentes.
+        - group [ref=f1e109]:
+          - generic "Hepatomegalia / margens arredondadas Aumento subjetivo do volume ou arredondamento das extremidades." [ref=f1e110] [cursor=pointer]:
+            - text: Hepatomegalia / margens arredondadas
+            - generic [ref=f1e111]: Aumento subjetivo do volume ou arredondamento das extremidades.
+        - group [ref=f1e112]:
+          - generic "Micro-hepatia / margens irregulares / nódulos regenerativos Fígado pequeno ou remodelado." [ref=f1e113] [cursor=pointer]:
+            - text: Micro-hepatia / margens irregulares / nódulos regenerativos
+            - generic [ref=f1e114]: Fígado pequeno ou remodelado.
+        - group [ref=f1e115]:
+          - generic "Nódulo / massa / lesão em alvo Lesão focal, às vezes com centro brilhante e periferia escura." [ref=f1e116] [cursor=pointer]:
+            - text: Nódulo / massa / lesão em alvo
+            - generic [ref=f1e117]: Lesão focal, às vezes com centro brilhante e periferia escura.
+        - group [ref=f1e118]:
+          - generic "Cisto / lesão cavitária / abscesso Uma cavidade pode ter líquido simples ou conteúdo complexo." [ref=f1e119] [cursor=pointer]:
+            - text: Cisto / lesão cavitária / abscesso
+            - generic [ref=f1e120]: Uma cavidade pode ter líquido simples ou conteúdo complexo.
+        - group [ref=f1e121]:
+          - generic "Veias hepáticas / cava dilatadas A drenagem venosa está distendida." [ref=f1e122] [cursor=pointer]:
+            - text: Veias hepáticas / cava dilatadas
+            - generic [ref=f1e123]: A drenagem venosa está distendida.
+        - group [ref=f1e124]:
+          - generic "Lobo aumentado, escuro e sem fluxo / suspeita de torção Possível comprometimento vascular de um lobo. Avalie a urgência no contexto clínico" [ref=f1e125] [cursor=pointer]:
+            - text: Lobo aumentado, escuro e sem fluxo / suspeita de torção
+            - generic [ref=f1e126]: Possível comprometimento vascular de um lobo.
+            - generic [ref=f1e127]: Avalie a urgência no contexto clínico
+        - group [ref=f1e128]:
+          - generic "Fígado aparentemente normal com exames alterados Um fígado com aspecto habitual ainda pode estar doente." [ref=f1e129] [cursor=pointer]:
+            - text: Fígado aparentemente normal com exames alterados
+            - generic [ref=f1e130]: Um fígado com aspecto habitual ainda pode estar doente.
+        - group [ref=f1e131]:
+          - generic "Vasos colaterais múltiplos / desvios adquiridos O sangue encontrou rotas alternativas por aumento da resistência portal." [ref=f1e132] [cursor=pointer]:
+            - text: Vasos colaterais múltiplos / desvios adquiridos
+            - generic [ref=f1e133]: O sangue encontrou rotas alternativas por aumento da resistência portal.
+        - group [ref=f1e134]:
+          - generic "Fluxo portal arterializado / comunicação arterioportal Sangue arterial entra na circulação portal." [ref=f1e135] [cursor=pointer]:
+            - text: Fluxo portal arterializado / comunicação arterioportal
+            - generic [ref=f1e136]: Sangue arterial entra na circulação portal.
+      - paragraph [ref=f1e137]: A aparência orienta hipóteses; sinais, exames e evolução definem sua relevância para o paciente. Os achados podem ocorrer em diferentes idades; o filtro de fase de vida se aplica às medidas acima.
+    - generic [ref=f1e138]:
+      - generic [ref=f1e139]:
+        - generic [ref=f1e140]: Pontos de interpretação
+        - list [ref=f1e143]:
+          - listitem [ref=f1e144]:
+            - generic [ref=f1e146]: Avalie margens, ecotextura, vascularização e relação com órgãos adjacentes; uma medida isolada não define hepatomegalia.
+      - generic [ref=f1e147]:
+        - generic [ref=f1e148]: Regra da tabela
+        - paragraph [ref=f1e155]: Peso ou porte só aparece como estrato quando o livro sustenta essa separação. “Todos os pesos” significa ausência de estratificação publicada, não equivalência perfeita entre pacientes.
+  - region [ref=f1e156]:
+    - heading "Referências" [level=2] [ref=f1e160]
+    - generic [ref=f1e161]:
+      - article [ref=f1e162]:
+        - paragraph [ref=f1e163]: Thrall’s Textbook of Veterinary Diagnostic Radiology
+      - article [ref=f1e164]:
+        - paragraph [ref=f1e165]: BSAVA Manual of Canine and Feline Ultrasonography
+      - article [ref=f1e166]:
+        - paragraph [ref=f1e167]: Point-of-Care Ultrasound Techniques for the Small Animal Practitioner
+    - group [ref=f1e168]:
+      - generic "Créditos das imagens de acesso aberto" [ref=f1e169] [cursor=pointer]
+    - generic [ref=f1e170]: Ferramenta de consulta rápida. Medidas isoladas não substituem exame completo, correlação clínica, laudo do imaginologista ou amostragem quando indicada.

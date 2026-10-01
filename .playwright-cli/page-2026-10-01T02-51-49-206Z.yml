@@ -1,0 +1,170 @@
+- generic [ref=e3]:
+  - navigation "Navegação estrutural" [ref=e4]:
+    - link "Início" [ref=e5] [cursor=pointer]:
+      - /url: /consulta-vet
+    - link "Referências clínicas" [ref=e8] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=e11]: Ultrassom
+    - generic [ref=e14]: Fígado
+  - generic [ref=e15]:
+    - link "Voltar aos mini-apps" [ref=e16] [cursor=pointer]:
+      - /url: /consulta-vet/referencias-rapidas
+    - generic [ref=e23]:
+      - 'heading "Ultrassom: medidas e interpretação" [level=1] [ref=e24]'
+      - paragraph [ref=e25]: Consulte medidas e entenda os termos dos laudos, seus mecanismos e diferenciais. Escolha uma estrutura e a espécie; as medidas também permitem filtrar a fase de vida.
+  - main [ref=e26]:
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - button "Voltar à lista de órgãos" [ref=e30] [cursor=pointer]
+        - generic [ref=e33]:
+          - paragraph [ref=e34]: Órgão selecionado
+          - heading "Fígado" [level=2] [ref=e35]
+          - paragraph [ref=e36]: Tamanho, margens e parênquima
+          - link "Interpretar alterações do laudo ↓" [ref=e37] [cursor=pointer]:
+            - /url: "#interpretar-laudo"
+      - generic [ref=e38]:
+        - group "Espécie" [ref=e39]:
+          - generic [ref=e41]:
+            - button "Cão" [pressed] [ref=e42] [cursor=pointer]
+            - button "Gato" [ref=e47] [cursor=pointer]
+        - group "Fase de vida" [ref=e51]:
+          - generic [ref=e53]:
+            - button "Adulto" [pressed] [ref=e54] [cursor=pointer]
+            - button "Filhote" [ref=e57] [cursor=pointer]
+    - region "Referências descritivas do livro" [ref=e61]:
+      - generic [ref=e62]: Referências descritivas
+      - article [ref=e66]:
+        - heading "Parênquima e vasos normais" [level=3] [ref=e67]
+        - paragraph [ref=e68]: Parênquima uniforme, em geral mais escuro e de textura mais grosseira que o baço. Veias porta têm paredes ecogênicas; veias hepáticas não mostram a mesma parede.
+        - paragraph [ref=e69]: BSAVA Ultrasonography, 1ª ed. · Cap. 8, p. 87 (PDF p. 99)
+    - generic [ref=e75]:
+      - heading "Sem limite numérico universal publicado" [level=3] [ref=e76]
+      - paragraph [ref=e77]: O tamanho hepático ao ultrassom é uma avaliação subjetiva, dependente da conformação, dos órgãos adjacentes e da experiência do operador; o capítulo não estabelece um corte linear universal.
+    - region "Interpretar alterações do laudo" [ref=e78]:
+      - generic [ref=e79]:
+        - generic [ref=e80]:
+          - heading "O que pensar ao ler o laudo?" [level=3] [ref=e81]
+          - paragraph [ref=e82]: Comece pelo significado do termo e avance para o mecanismo, os diferenciais e a investigação clínica.
+        - generic [ref=e83]: Pesquisar uma alteração neste órgão
+        - searchbox "Pesquisar uma alteração neste órgão" [ref=e85]
+        - status [ref=e86]: 10 de 10 padrões para cães. Catálogo dos padrões descritos nos capítulos consultados; não abrange todas as doenças possíveis. Idade, ciclo reprodutivo, raça e contexto aparecem quando ajudam a interpretar. O filtro de fase de vida acima se aplica às medidas, não torna estes padrões específicos de filhotes.
+        - group [ref=e87]:
+          - generic "Como o ultrassom forma estes achados" [ref=e88] [cursor=pointer]
+      - region "Alterações, mecanismos e diferenciais ultrassonográficos" [ref=e90]:
+        - table "Alterações, mecanismos e diferenciais ultrassonográficos" [ref=e91]:
+          - rowgroup [ref=e92]:
+            - row [ref=e93]:
+              - columnheader "Termo no laudo e significado" [ref=e94]
+              - columnheader "Mecanismo ultrassonográfico provável" [ref=e95]
+              - columnheader "Principais diferenciais" [ref=e96]
+              - columnheader "O que o clínico deve considerar" [ref=e97]
+          - rowgroup [ref=e98]:
+            - row [ref=e99]:
+              - rowheader [ref=e100]:
+                - strong [ref=e101]: Ecotextura grosseira / aspecto grosseiro / granular
+                - paragraph [ref=e102]: Os ecos parecem mais grossos; isso não significa automaticamente fibrose.
+                - paragraph [ref=e103]: BSAVA Ultrasonography, 1ª ed. · p. 3–6; 86–92 · PDF 15–18; 98–104
+              - cell "A textura resulta da dispersão nas interfaces do tecido. Remodelamento pode mudar esse padrão, mas frequência, resolução e ajustes também mudam a granulação aparente." [ref=e104]
+              - cell "Hepatopatia crônica, fibrose, alterações nodulares ou infiltrativas; variação técnica e textura normal mais grosseira que a do baço." [ref=e105]
+              - cell "Ver homogeneidade, margens, tamanho, nódulos e vasos. Correlacionar enzimas, função hepática e evolução; o termo isolado não define causa nem gravidade." [ref=e106]
+            - row [ref=e107]:
+              - rowheader [ref=e108]:
+                - strong [ref=e109]: Hiperecogênico / fígado brilhante
+                - paragraph [ref=e110]: O parênquima retorna mais ecos que a referência usada.
+                - paragraph [ref=e111]: BSAVA Ultrasonography, 1ª ed. · p. 86–90 · PDF 98–102
+              - cell "Mudanças na composição e nas interfaces, como gordura ou remodelamento fibroso, aumentam a dispersão; pode haver maior atenuação em profundidade." [ref=e112]
+              - cell "Lipidose, hepatopatia vacuolar/esteroidal, fibrose, cirrose e infiltração neoplásica." [ref=e113]
+              - cell "Comparar órgãos à mesma profundidade e com os mesmos ajustes. Rever nutrição, medicamentos e exames; brilho não distingue lipidose de outras hepatopatias." [ref=e114]
+            - row [ref=e115]:
+              - rowheader [ref=e116]:
+                - strong [ref=e117]: Hipoecogênico / paredes portais proeminentes
+                - paragraph [ref=e118]: Fígado mais escuro; as paredes portais contrastam mais.
+                - paragraph [ref=e119]: BSAVA Ultrasonography, 1ª ed. · p. 88–89 · PDF 100–101
+              - cell "Edema ou alterações celulares podem reduzir os ecos do parênquima, tornando as interfaces portais relativamente mais visíveis." [ref=e120]
+              - cell "Hepatite aguda, colangio-hepatite, congestão, infiltração por linfoma e outras neoplasias." [ref=e121]
+              - cell "Relacionar sinais agudos, enzimas, bilirrubina e calibre das veias. Paredes portais destacadas sozinhas não comprovam inflamação." [ref=e122]
+            - row [ref=e123]:
+              - rowheader [ref=e124]:
+                - strong [ref=e125]: Heterogêneo / padrão misto / mosaico
+                - paragraph [ref=e126]: Há regiões com brilho ou textura diferentes.
+                - paragraph [ref=e127]: BSAVA Ultrasonography, 1ª ed. · p. 88–92 · PDF 100–104
+              - cell "Áreas com composição distinta dispersam ou atenuam o feixe de modos diferentes; não é sinônimo de textura grosseira." [ref=e128]
+              - cell "Inflamação crônica, alterações vacuolares com hiperplasia nodular, necrose, infiltração e neoplasia." [ref=e129]
+              - cell "Separar padrão difuso de lesões focais, avaliar margens e vasos e decidir se amostragem mudará a conduta." [ref=e130]
+            - row [ref=e131]:
+              - rowheader [ref=e132]:
+                - strong [ref=e133]: Hepatomegalia / margens arredondadas
+                - paragraph [ref=e134]: Aumento subjetivo do volume ou arredondamento das extremidades.
+                - paragraph [ref=e135]: BSAVA Ultrasonography, 1ª ed. · p. 86–90 · PDF 98–102
+              - cell "Expansão celular, infiltração, edema ou sangue aumentam o volume; gordura falciforme pode simular aumento." [ref=e136]
+              - cell "Congestão, hepatopatia vacuolar, lipidose, inflamação, amiloidose e neoplasia." [ref=e137]
+              - cell "Considerar conformação e janela de exame. Associar textura, veias, sinais endócrinos e laboratoriais; não diagnosticar apenas pelo tamanho." [ref=e138]
+            - row [ref=e139]:
+              - rowheader [ref=e140]:
+                - strong [ref=e141]: Micro-hepatia / margens irregulares / nódulos regenerativos
+                - paragraph [ref=e142]: Fígado pequeno ou remodelado.
+                - paragraph [ref=e143]: BSAVA Ultrasonography, 1ª ed. · p. 88–90; 96–98 · PDF 100–102; 108–110
+              - cell "Perda de parênquima e retração fibrosa reduzem o volume; regeneração cria interfaces e contornos irregulares." [ref=e144]
+              - cell "Cirrose/fibrose crônica; desvio portossistêmico também pode produzir fígado pequeno." [ref=e145]
+              - cell "Investigar função hepática, fluxo portal, vasos anômalos e sinais de hipertensão portal; separar doença vascular de remodelamento crônico." [ref=e146]
+            - row [ref=e147]:
+              - rowheader [ref=e148]:
+                - strong [ref=e149]: Nódulo / massa / lesão em alvo
+                - paragraph [ref=e150]: Lesão focal, às vezes com centro brilhante e periferia escura.
+                - paragraph [ref=e151]: BSAVA Ultrasonography, 1ª ed. · p. 90–92 · PDF 102–104
+              - cell "Composição distinta entre centro e periferia, necrose ou tecido viável criam contrastes; o padrão não determina o tipo celular." [ref=e152]
+              - cell "Hiperplasia nodular, neoplasia primária/metástase, granuloma e alterações regenerativas." [ref=e153]
+              - cell "Considerar idade, multiplicidade, crescimento e outros órgãos. Alvo aumenta a suspeita em certos contextos, mas também ocorre em lesões benignas." [ref=e154]
+            - row [ref=e155]:
+              - rowheader [ref=e156]:
+                - strong [ref=e157]: Cisto / lesão cavitária / abscesso
+                - paragraph [ref=e158]: Uma cavidade pode ter líquido simples ou conteúdo complexo.
+                - paragraph [ref=e159]: BSAVA Ultrasonography, 1ª ed. · p. 91–92 · PDF 103–104
+              - cell "Líquido simples gera poucos ecos e reforço posterior; debris, septos e gás produzem ecos internos ou reverberação." [ref=e160]
+              - cell "Cisto hepático/biliar, tumor cístico, hematoma, abscesso e necrose tumoral." [ref=e161]
+              - cell "Parede fina e conteúdo anecoico favorecem cisto simples. Febre, parede irregular, gordura reativa ou gás exigem investigação de infecção; imagem não prova esterilidade." [ref=e162]
+            - row [ref=e163]:
+              - rowheader [ref=e164]:
+                - strong [ref=e165]: Veias hepáticas / cava dilatadas
+                - paragraph [ref=e166]: A drenagem venosa está distendida.
+                - paragraph [ref=e167]: BSAVA Ultrasonography, 1ª ed. · p. 96 · PDF 108
+              - cell "Aumento da pressão venosa dilata vasos e pode provocar congestão e edema hepático." [ref=e168]
+              - cell "Insuficiência cardíaca direita, doença pericárdica, massa atrial ou obstrução/invasão da cava." [ref=e169]
+              - cell "Relacionar ecocardiograma, respiração, ascite e Doppler; calibre depende também da ventilação e da pressão abdominal." [ref=e170]
+            - row [ref=e171]:
+              - rowheader "Lobo aumentado, escuro e sem fluxo / suspeita de torção Possível comprometimento vascular de um lobo. Atenção à urgência clínica BSAVA Ultrasonography, 1ª ed. · p. 90; 92 · PDF 102; 104" [ref=e172]:
+                - strong [ref=e173]: Lobo aumentado, escuro e sem fluxo / suspeita de torção
+                - paragraph [ref=e174]: Possível comprometimento vascular de um lobo.
+                - generic [ref=e175]: Atenção à urgência clínica
+                - paragraph [ref=e176]: BSAVA Ultrasonography, 1ª ed. · p. 90; 92 · PDF 102; 104
+              - cell "Obstrução venosa e isquemia causam edema e menor ecogenicidade; o Doppler pode não detectar perfusão." [ref=e177]
+              - cell "Torção lobar, trombose e necrose; ausência de sinal também pode ser técnica." [ref=e178]
+              - cell "Dor aguda e líquido livre tornam o achado prioritário. Confirmar perfusão com ajustes adequados e avaliação especializada urgente." [ref=e179]
+      - paragraph [ref=e183]: Síntese dos capítulos por órgão do BSAVA, relacionada aos princípios físicos do capítulo 1 (p. 1–9; PDF 13–21). Os mecanismos são correlações físico-patológicas plausíveis, não confirmação histológica. Diferenciais são possibilidades, sem ordem de probabilidade individual; o conjunto do exame e os dados clínicos orientam a investigação.
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - generic [ref=e186]: Pontos de interpretação
+        - list [ref=e189]:
+          - listitem [ref=e190]:
+            - generic [ref=e192]: Avalie margens, ecotextura, vascularização e relação com órgãos adjacentes; uma medida isolada não define hepatomegalia.
+          - listitem [ref=e193]:
+            - generic [ref=e195]: "Fonte descritiva: Thrall, 8ª ed., Cap. 40, p. 812 (PDF p. 1019)."
+      - generic [ref=e196]:
+        - generic [ref=e197]: Regra da tabela
+        - paragraph [ref=e204]: Peso ou porte só aparece como estrato quando o livro sustenta essa separação. “Todos os pesos” significa ausência de estratificação publicada, não equivalência perfeita entre pacientes.
+  - region [ref=e205]:
+    - heading "Livros consultados" [level=2] [ref=e209]
+    - generic [ref=e210]:
+      - article [ref=e211]:
+        - paragraph [ref=e212]: Thrall’s Textbook of Veterinary Diagnostic Radiology
+        - paragraph [ref=e213]: 8ª edição · 2025 · Gabriela S. Seiler e Donald E. Thrall
+        - paragraph [ref=e214]: Capítulos 39–47; a página impressa e a página do PDF aparecem em cada linha.
+      - article [ref=e215]:
+        - paragraph [ref=e216]: BSAVA Manual of Canine and Feline Ultrasonography
+        - paragraph [ref=e217]: 1ª edição · 2011 · Frances Barr e Lorrie Gaschen (editoras)
+        - paragraph [ref=e218]: "Capítulo 1 (física da imagem) e capítulos 6–19 (órgãos): medidas, padrões de alterações e diferenciais. Página impressa e página do PDF indicadas nas referências."
+      - article [ref=e219]:
+        - paragraph [ref=e220]: Point-of-Care Ultrasound Techniques for the Small Animal Practitioner
+        - paragraph [ref=e221]: 2ª edição · 2021 · Gregory R. Lisciandro (editor)
+        - paragraph [ref=e222]: Capítulo 9, avaliação focal do baço; páginas indicadas nas referências.
+    - generic [ref=e223]: Ferramenta de consulta rápida. Medidas isoladas não substituem exame completo, correlação clínica, laudo do imaginologista ou amostragem quando indicada.

@@ -142,13 +142,51 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
   },
 
   etiology: {
-    definicaoModernaESequenciaPatogenica: 'A cistite enfisematosa (CE) é uma forma incomum de doença infecciosa e inflamatória da bexiga na qual ocorre produção ou acúmulo de gás na parede vesical, no lúmen vesical ou em ambos, decorrente da proliferação de microrganismos produtores de gás. A patogênese desenrola-se em uma sequência biológica estrita: uropatógeno -> colonização e invasão da bexiga -> metabolismo de substratos fermentáveis -> síntese de gás hidrogênio (H2) e dióxido de carbono (CO2) -> acúmulo de gás intraluminal e/ou intramural -> inflamação transmural e isquemia da parede vesical. Historicamente, exigia-se a presença obrigatória de gás mural para a definição diagnóstica. Contudo, a scoping review de Weese & Weese (2026), avaliando 109 animais na literatura mundial, demonstrou uma distribuição heterogênea do gás: 37% dos pacientes apresentavam gás restrito à parede vesical, 23% apresentavam gás exclusivamente no lúmen vesical e 38% apresentavam envolvimento simultâneo de parede e lúmen. Portanto, o conceito contemporâneo define a CE como gás vesical patológico associado a processo infeccioso ativo, não excluindo pacientes com acometimento puramente intraluminal quando causas iatrogênicas forem descartadas (Nelson & Couto, 6a ed., Cap. 42, pp. 704-711; BSAVA Manual of Canine and Feline Nephrology and Urology, 3a ed., Cap. 29, pp. 336-337).',
+    definicaoModernaESequenciaPatogenica: `A cistite enfisematosa (CE) é uma forma incomum de doença infecciosa e inflamatória da bexiga com acúmulo patológico de gás na parede vesical, no lúmen vesical ou em ambos, decorrente da proliferação de microrganismos produtores de gás.
 
-    diferenciacaoConceitualPneumaturiaVsCistiteEnfisematosa: 'É indispensável diferenciar a cistite enfisematosa da simples pneumatúria. Pneumatúria traduz meramente a passagem de gás através da uretra durante a micção. Esse fenômeno pode ocorrer após instrumentação uretral, sondagem traumática, cistocentese prévia, cistoscopia, intervenções cirúrgicas do trato urogenital, introdução inadvertida de ar atmosférico durante lavagens ou fístulas anatômicas entre a bexiga e o trato gastrointestinal (fístula enterovesical, colovesical ou retovesical). Por sua vez, a cistite enfisematosa implica infecção ativa da bexiga por patógenos produtores de gás in situ. Consequentemente, uma imagem radiográfica ou ultrassonográfica realizada imediatamente após sondagem uretral que evidencie uma bolha de gás intraluminal não autoriza, isoladamente, o diagnóstico de CE. Regra de ouro prática no pronto-socorro: em pacientes hemodinamicamente estáveis sob suspeita de CE, realizar radiografia e ultrassonografia abdominal antes de qualquer instrumentação uretral para não criar um fator de confusão diagnóstico iatrogênico irreversível (Fumeo et al., 2019; Lippi et al., 2019).',
+Sequência patogênica biológica:
+- Colonização e adesão: Uropatógeno coloniza e invade o urotélio vesical.
+- Metabolismo ativo: Fermentação bacteriana de substratos disponíveis (glicose ou proteínas teciduais).
+- Gênese de gás: Síntese e liberação de gás hidrogênio (H2) e dióxido de carbono (CO2).
+- Acúmulo estrutural: Formação de gás intraluminal e/ou intramural dissecante.
+- Dano tecidual: Inflamação transmural, compressão capilar e isquemia parietal vesical.
 
-    fisiologiaDefesasVesicaisNormais: 'A bexiga urinária hígida não funciona como um mero reservatório inerte de urina, mas dispõe de cinco linhas biológicas ativas de defesa que impedem a colonização bacteriana ascendente (Nelson & Couto, 6a ed., Cap. 42): (1) Fluxo urinário unidirecional e esvaziamento mecânico completo: a micção periódica promove o washout contínuo de bactérias antes que estas estabeleçam adesão firme; (2) Integridade da barreira urotelial e camada superficial de glicosaminoglicanos (GAGs): proteoglicanos sulfatados e a proteína de Tamm-Horsfall impedem a fixação de fímbrias bacterianas às células em guarda-chuva uroteliais; (3) Fatores humorais e imunoglobulinas da mucosa: secreção local de IgA secretora e peptídeos antimicrobianos uroteliais; (4) Propriedades físico-químicas da urina: elevada osmolaridade, altas concentrações de ureia e ácidos orgânicos geram ambiente bacteriostático desfavorável para microrganismos não adaptados; (5) Zona de alta pressão e barreiras mecânicas da uretra proximal: tônus esfincteriano e muco uretral que retardam a ascensão bacteriana a partir da microbiota perineal. A quebra de uma ou mais dessas barreiras por estase urinária, bexiga neurogênica, urolitíase, endocrinopatias ou imunossupressão constitui o alicerce permissivo para a instalação da CE.',
+Distribuição anatômica do gás (scoping review de Weese & Weese 2026 em 109 animais):
+- Gás intramural isolado: 37% dos pacientes.
+- Gás exclusivamente intraluminal: 23% dos pacientes.
+- Acometimento misto (parede e lúmen): 38% dos pacientes.
 
-    substratosFermentaveisGlicoseVsProteinas: 'O diabetes mellitus descompensado constitui o facilitador metabólico clássico da CE. Quando a glicemia ultrapassa o limiar de reabsorção tubular renal (aproximadamente 180 mg/dL em cães e 250 a 280 mg/dL em gatos), ocorre glicosúria maciça, fornecendo substrato glicídico abundante para a fermentação bacteriana acelerada. Simultaneamente, o estado hiperglicêmico crônico compromete a quimiotaxia, diapedese e fagocitose neutrofílica, atenuando a imunidade inata local. No entanto, a glicosúria não é um requisito obrigatório: Nelson & Couto (6a ed.) e Weese & Weese (2026) ressaltam que na ausência total de glicose, bactérias como Escherichia coli e Clostridium spp. possuem maquinaria enzimática para metabolizar proteínas teciduais, mucinas e albumina da parede vesical inflamada. A fermentação proteica bacteriana libera dióxido de carbono e gás hidrogênio por vias anaeróbias ácidas mistas. Portanto, é incorreto memorizar que cistite enfisematosa é exclusiva de diabéticos: pacientes normoglicêmicos com estase, bexiga neurogênica ou infecção crônica apresentam exatamente a mesma cascata fisiopatológica.',
+Conceito contemporâneo:
+- O diagnóstico define-se pela presença de gás patológico associado a processo infeccioso ativo in situ.
+- Não se restringe apenas a lesões parietais, englobando também acometimento puramente luminal após exclusão de causas iatrogênicas (Nelson & Couto, 6a ed., Cap. 42, pp. 704-711; BSAVA Manual of Canine and Feline Nephrology and Urology, 3a ed., Cap. 29, pp. 336-337).`,
+
+    diferenciacaoConceitualPneumaturiaVsCistiteEnfisematosa: `Diferenciação conceitual essencial: Cistite Enfisematosa vs. Pneumatúria Isolada:
+- Pneumatúria isolada: Passagem de ar ou gás pela uretra durante a micção. Ocorre frequentemente após cateterismo prévio, cistocentese, cistoscopia, intervenções cirúrgicas, lavagens vesicais ou fístulas enterovesicais, colovesicais e retovesicais.
+- Cistite enfisematosa verdadeira: Infecção bacteriana ativa com síntese contínua de gás in situ por patógenos fermentadores.
+- Relevância diagnóstica: A visualização de bolha gasosa intraluminal logo após sondagem uretral não autoriza, isoladamente, o diagnóstico de CE.
+
+REGRA DE OURO: Em pacientes hemodinamicamente estáveis sob suspeita de CE, realizar radiografia e ultrassonografia abdominal antes de qualquer instrumentação uretral para não criar fator de confusão diagnóstico iatrogênico irreversível (Fumeo et al., 2019; Lippi et al., 2019).`,
+
+    fisiologiaDefesasVesicaisNormais: `A bexiga urinária hígida não funciona como mero reservatório inerte, dispondo de cinco linhas biológicas ativas de defesa contra colonização bacteriana ascendente (Nelson & Couto, 6a ed., Cap. 42):
+- Fluxo urinário unidirecional e esvaziamento mecânico completo: A micção periódica promove o washout contínuo de bactérias antes de adesão firme.
+- Barreira urotelial e camada superficial de glicosaminoglicanos (GAGs): Proteoglicanos sulfatados e a proteína de Tamm-Horsfall impedem a fixação de fímbrias bacterianas às células em guarda-chuva.
+- Fatores humorais e imunoglobulinas da mucosa: Secreção local ativa de IgA secretora e peptídeos antimicrobianos uroteliais.
+- Propriedades físico-químicas desfavoráveis da urina: Alta osmolaridade, elevadas concentrações de ureia e ácidos orgânicos criam ambiente bacteriostático adverso.
+- Zona de alta pressão e barreiras mecânicas da uretra: Tônus esfincteriano e muco uretral proximal que retardam a ascensão de microbiota perineal.
+
+ATENÇÃO CLÍNICA: A quebra de uma ou mais dessas barreiras por estase urinária, bexiga neurogênica, urolitíase, endocrinopatias ou imunossupressão constitui o alicerce permissivo para a instalação da CE.`,
+
+    substratosFermentaveisGlicoseVsProteinas: `Substratos metabólicos para produção gasosa bacteriana:
+
+Papel do Diabetes Mellitus:
+- Quando a glicemia supera o limiar de reabsorção tubular renal (~180 mg/dL em cães; ~250–280 mg/dL em gatos), surge glicosúria maciça, fornecendo substrato glicídico abundante para fermentação bacteriana acelerada.
+- O estado hiperglicêmico crônico compromete concomitantemente a quimiotaxia, diapedese e fagocitose neutrofílica, atenuando a imunidade inata local.
+
+Fermentação em Pacientes Não Diabéticos:
+- A glicosúria não é requisito obrigatório: Nelson & Couto (6a ed.) e Weese & Weese (2026) ressaltam que na ausência total de glicose, bactérias como Escherichia coli e Clostridium spp. possuem maquinaria enzimática para metabolizar proteínas teciduais, mucinas e albumina da parede vesical inflamada.
+- A fermentação proteica bacteriana libera dióxido de carbono e gás hidrogênio por vias anaeróbias ácidas mistas.
+
+MITO: Presumir que cistite enfisematosa é exclusiva de pacientes diabéticos: Animais normoglicêmicos com estase, bexiga neurogênica ou infecção crônica apresentam exatamente a mesma cascata fisiopatológica.`,
 
     tabelaComparativaCaesVsGatos: {
       kind: 'clinicalTable',
@@ -175,19 +213,37 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
       ]
     },
 
-    fatoresPredisponentesMetabolicosEEstruturais: 'A instalação da cistite enfisematosa exige a quebra simultânea de uma ou mais barreiras naturais de defesa vesical. A estase urinária secundária a bexiga neurogênica (por discopatias intervertebrais, síndrome da cauda equina, neuropatia diabética ou disautonomia) elimina a depuração mecânica por washout, permitindo que coliformes ascendentes atinjam altas concentrações luminais. A presença de cistólitos, divertículos vesicais ou cistite polipoide lesa mecanicamente a camada protetora de GAGs uroteliais, expondo a lâmina própria à penetração bacteriana. Por sua vez, a imunossupressão sistêmica — induzida por hiperadrenocorticismo espontâneo, corticoterapia imunossupressora crônica, quimioterapia ou neoplasias — reduz o influxo neutrofílico e a opsonização imune, facilitando a invasão transmural profunda e a disseminação de microrganismos produtores de gás.'
+    fatoresPredisponentesMetabolicosEEstruturais: `A instalação da cistite enfisematosa exige a quebra simultânea de uma ou mais barreiras naturais de defesa vesical:
+- Estase urinária e bexiga neurogênica: Discopatias intervertebrais, cauda equina, neuropatia diabética ou disautonomia eliminam o washout mecânico, permitindo que coliformes atinjam altas concentrações.
+- Lesão mecânica e perda de GAGs: Cistólitos, divertículos ou cistite polipoide lesam a camada urotelial protetora, expondo a lâmina própria à penetração microbiana.
+- Imunossupressão sistêmica: Hiperadrenocorticismo espontâneo, corticoterapia crônica, quimioterapia ou neoplasias atenuam o influxo neutrofílico e a opsonização imune, favorecendo a invasão transmural profunda e a disseminação de microrganismos produtores de gás.`
   },
 
   epidemiology: {
-    distribuicaoPorEspecieESexo: 'A cistite enfisematosa exibe marcante predomínio na espécie canina na literatura publicada. A scoping review de Weese & Weese (2026) identificou 109 casos documentados, dos quais 101 eram cães (93%) e apenas 8 eram gatos (7,1%). Em cães, observa-se maior representação de fêmeas, o que reflete a maior suscetibilidade anatômica geral do sexo feminino a infecções bacterianas ascendentes devido à uretra mais curta e próxima à região perianal. Em gatos, a raridade da doença e o reduzido número de publicações sugerem subdiagnóstico, mas também refletem a baixa prevalência intrínseca de cistite bacteriana em felinos jovens com urina fisiologicamente hiperconcentrada.',
+    distribuicaoPorEspecieESexo: `Distribuição por espécie e predisposição sexual na literatura:
+- Em Cães: Marcante predomínio na espécie canina (93% dos casos; 101/109 animais na scoping review de Weese & Weese 2026). Observa-se maior representação em fêmeas, refletindo uretra mais curta e próxima à região perianal.
+- Em Gatos: Acometimento raro (7,1%; 8/109 casos descritos), associado a comorbidades urológicas crônicas ou metabólicas; a urina fisiologicamente hiperconcentrada de felinos atua como barreira bacteriostática parcial.`,
 
-    idadeEFaixaEtaria: 'A doença afeta predominantemente animais adultos maduros a idosos. Na revisão de Weese & Weese (2026), a mediana de idade dos pacientes com dados disponíveis foi de 8,5 anos. Merkel et al. (2017) relataram mediana de 9 anos em 27 cães, e Lippi et al. (2019) encontraram média similar de 9,2 anos, refletindo a faixa etária em que comorbidades crônicas como diabetes mellitus, hiperadrenocorticismo, discopatias e disfunções miccionais neurogênicas tornam-se prevalentes na rotina veterinária.',
+    idadeEFaixaEtaria: `Faixa etária e perfil epidemiológico:
+- Animais adultos maduros a idosos: Mediana de 8,5 anos na revisão de Weese & Weese (2026).
+- Dados de coortes de referência: Mediana de 9,0 anos em 27 cães por Merkel et al. (2017) e média de 9,2 anos em 38 animais por Lippi et al. (2019).
+- Relevância clínica: Coincide diretamente com a faixa etária de maior prevalência de diabetes mellitus, hiperadrenocorticismo, discopatias espinhais e retenção urinária crônica.`,
 
-    comorbidadesAssociadas: 'As comorbidades subjacentes estão presentes na quase totalidade dos pacientes. Na série de Merkel et al. (2017), 26 de 27 cães (96%) apresentavam comorbidades identificáveis: diabetes mellitus em 33%, afecções neurológicas espinhais com disfunção miccional em 26% e endocrinopatia adrenal em 19%. No estudo de Lippi et al. (2019) com 38 animais, infecção urinária crônica prévia foi documentada em 65,8%, imunossupressão em 26,3%, cistólitos em 23,7%, bexiga neurogênica em 18,4% e diabetes mellitus em apenas 10,5%, comprovando a heterogeneidade dos fatores de risco.',
+    comorbidadesAssociadas: `Comorbidades documentadas em séries clínicas de referência:
+- Coorte de Merkel et al. (2017; n = 27): Comorbidades em 96% dos cães (diabetes mellitus em 33%, afecções neurológicas espinhais com disfunção miccional em 26% e endocrinopatia adrenal em 19%).
+- Coorte de Lippi et al. (2019; n = 38): Infecção urinária crônica prévia em 65,8%, imunossupressão em 26,3%, cistólitos em 23,7%, bexiga neurogênica em 18,4% e diabetes mellitus em apenas 10,5%.`,
 
-    desmistificacaoMitosHistoricos: 'O principal mito histórico na rotina veterinária é o axioma de que a cistite enfisematosa seria uma doença patognomônica e exclusiva de pacientes diabéticos. Dados contemporâneos refutam categoricamente essa premissa: entre 67% e 89,5% dos pacientes em coortes recentes não possuíam diabetes mellitus. A estase urinária e a invasão tecidual por bactérias fermentadoras de proteínas são plenamente capazes de deflagrar a enfermidade na ausência de glicosúria. Assim, a regra clínica fundamental é: o diabetes é um facilitador metabólico relevante, mas estase urinária, infecção crônica, urolitíase e imunossupressão produzem exatamente o mesmo fenótipo clínico.',
+    desmistificacaoMitosHistoricos: `Desmistificação do axioma clássico de exclusividade diabética:
+- MITO: A cistite enfisematosa é patognomônica e exclusiva de pacientes diabéticos: Entre 67% e 89,5% dos pacientes em coortes recentes não possuíam diabetes mellitus.
+- Mecanismo independente: A estase urinária e a fermentação de proteínas teciduais por coliformes são plenamente capazes de deflagrar a enfermidade na ausência de glicosúria.
 
-    dadosPrognosticosWeese2026: 'A scoping review de Weese & Weese (2026) reuniu informações sobre desfecho clínico em 58 animais: 46 de 58 (79%) apresentaram recuperação clínica completa após a terapia inicial; 1 de 58 (1,7%) recuperou-se após um episódio de recidiva; e 11 de 58 (19%) evoluíram para óbito ou eutanásia. Esses 19% não devem ser interpretados como taxa de mortalidade específica da CE, pois decorrem de viés de publicação de casos graves e de comorbidades terminais não controladas. O prognóstico é favorável na maioria dos animais quando o tratamento antimicrobiano adequado e a correção do fator predisponente são instituídos tempestivamente.'
+REGRA DE OURO: O diabetes é um facilitador metabólico relevante, mas estase urinária, infecção crônica, urolitíase e imunossupressão produzem exatamente o mesmo fenótipo clínico.`,
+
+    dadosPrognosticosWeese2026: `Desfecho clínico e sobrevida (Scoping review de Weese & Weese 2026; n = 58):
+- Recuperação clínica completa: 79% dos pacientes (46/58) apresentaram recuperação completa após a terapia inicial orientada.
+- Recuperação após recidiva tratada: 1,7% dos casos (1/58).
+- Óbito ou eutanásia: 19% dos animais (11/58), taxa que reflete viés de publicação de casos graves e descompensação de comorbidades terminais não controladas.
+- Prognóstico geral: Eminentemente favorável na maioria dos pacientes quando a antibioticoterapia direcionada e o controle do fator predisponente são instituídos precocemente.`
   },
 
   pathogenesisTransmission: {
@@ -203,11 +259,20 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
   },
 
   pathophysiology: {
-    mecanismosFermentacaoProducaoGas: 'A produção de gás na cistite enfisematosa é um evento bioquímico direto desencadeado por microrganismos fermentadores. Escherichia coli e outras enterobactérias possuem vias metabólicas anaeróbias facultativas que realizam fermentação ácida mista de carboidratos quando expostas a ambientes hipóxicos intraluminais ou intramurais. A glicose é convertida em ácido láctico, ácido acético, ácido fórmico, etanol, CO2 e H2. A enzima formato hidrogênio liase cliva o ácido fórmico em dióxido de carbono e gás hidrogênio. Em animais não diabéticos, a fermentação de aminoácidos sulfurados e albumina urotelial por coliformes ou Clostridium spp. libera gases similares e metabólitos intermediários, mantendo a gênese gasosa tecidual.',
+    mecanismosFermentacaoProducaoGas: `Mecanismos bioquímicos da fermentação e síntese gasosa:
+- Fermentação ácida mista anaeróbia: Escherichia coli e outras enterobactérias possuem vias metabólicas que, sob hipóxia luminal ou tecidual, convertem glicose em ácido láctico, ácido acético, ácido fórmico, etanol, CO2 e H2.
+- Ação da formato hidrogênio liase: Complexo enzimático bacteriano que cliva o ácido fórmico diretamente em dióxido de carbono e gás hidrogênio sob tensão expansiva.
+- Fermentação proteica tecidual: Em pacientes normoglicêmicos, a clivagem bacteriana de aminoácidos sulfurados e albumina da mucosa vesical lesada por coliformes ou Clostridium spp. libera gases equivalentes e sustenta a pneumatogênese tecidual.`,
 
-    dissecacaoMuralEComprometimentoVascular: 'Conforme o gás é gerado no interior do tecido vesical, ele disseca a lâmina própria e a camada muscular lisa do detrusor. O confinamento do gás na parede sob tensão mecânica provoca compressão capilar extrínseca, microtromboses vasculares e isquemia mural secundária. Essa isquemia local prejudica a chegada de neutrófilos, imunoglobulinas e antimicrobianos séricos ao nicho infeccioso, estabelecendo um ciclo vicioso de necrose tecidual e proliferação bacteriana desimpedida. Em casos graves, a necrose transmural desvitaliza a parede vesical, elevando o risco de deiscência e ruptura vesical espontânea.',
+    dissecacaoMuralEComprometimentoVascular: `Dissecção tecidual parietal e isquemia microvascular:
+- Dissecção anatômica: O gás gerado sob pressão disseca ativamente os planos da lâmina própria e da túnica muscular lisa do detrusor, formando vesículas intramurais coalescentes.
+- Isquemia capilar compressiva: O confinamento gasoso sob tensão mecânica exerce compressão capilar extrínseca, promovendo microtrombose vascular e isquemia parietal secundária.
+- Ciclo vicioso de necrose tecidual: A isquemia local prejudica o afluxo de neutrófilos, imunoglobulinas e antimicrobianos séricos ao nicho infeccioso, acelerando necrose transmural e risco de deiscência ou ruptura vesical espontânea.`,
 
-    disseminacaoExtravesicalEPielonefriteAscendente: 'A fáscia que envolve a bexiga urinária é contígua aos planos fasciais do retroperitônio e do assoalho pélvico. A dissecção gasosa sob alta pressão pode ultrapassar a serosa vesical íntegra e migrar dorsalmente para o espaço retroperitoneal, preenchendo as fossas isquiorretais e mimetizando pneumoperitônio ou perfuração de víscera oca (como demonstrado tomograficamente por Lee et al. 2023). Além da disseminação local, a incompetência das junções ureterovesicais secundária à distorção anatômica parietal permite a ascensão de coliformes e gás pelos ureteres, instalando focos de pielonefrite enfisematosa na pelve e parênquima renal, complicação de altíssima gravidade clínica.'
+    disseminacaoExtravesicalEPielonefriteAscendente: `Disseminação tecidual extravesical e vias ascendentes:
+- Disseminação contígua retroperitoneal: A fáscia perivesical comunica-se com o retroperitônio e assoalho pélvico; o gás sob alta pressão ultrapassa a serosa íntegra e preenche fossas isquiorretais, simulando pneumoperitônio ou ruptura de víscera oca (Lee et al. 2023).
+- Incompetência ureterovesical: A distorção parietal e o edema da junção ureterovesical favorecem o refluxo vesicoureteral de urina infectada e bolhas gasosas em direção aos rins.
+- Pielonefrite enfisematosa: Colonização supurativa e gás intraparenquimatoso renal bilateral, complicação de altíssima letalidade com lesão renal aguda e choque urosséptico.`
   },
 
   clinicalSignsPathophysiology: [
@@ -358,7 +423,12 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
   treatment: {
     metaPrimaria: 'Restabelecer a perfusão hemodinâmica do paciente, garantir fluxo urinário desobstruído com alívio do desconforto, iniciar antibioticoterapia bactericida direcionada com penetração tecidual na parede vesical e eliminar rigorosamente a fonte metabólica ou mecânica que propiciou a fermentação bacteriana.',
 
-    principioInvasaoTecidualEBreakpoints: 'A cistite enfisematosa não deve ser manejada como uma bacteriúria simples ou cistite esporádica superficial: trata-se de afecção transmural grave com invasão bacteriana profunda da parede, microtrombose vascular e potencial isquemia tecidual. Conforme alerta enfático do guideline ISCAID (2019) e de Plumb\'s (10a ed.), a amoxicilina com clavulanato possui breakpoints laboratoriais urinários permissivos baseados exclusivamente na sua enorme concentração intraluminal na urina. Esses breakpoints urinários não se aplicam a infecções invasivas da parede vesical, nas quais concentrações teciduais e séricas são os verdadeiros determinantes de eficácia. Portanto, não se deve presumir eficácia clínica de amoxicilina/clavulanato contra cepas de E. coli em CE apenas porque o laudo laboratorial reportou sensibilidade usando critérios de cistite esporádica simples.',
+    principioInvasaoTecidualEBreakpoints: `Princípio de invasão tecidual vs. breakpoints urinários convencionais:
+- Invasão transmural profunda: A cistite enfisematosa não deve ser manejada como bacteriúria simples ou cistite superficial, mas como infecção transmural grave com invasão profunda da parede, microtrombose vascular e isquemia tecidual.
+- Falácia dos breakpoints urinários: Conforme alerta enfático da ISCAID (2019) e Plumb's (10a ed.), a amoxicilina com clavulanato possui breakpoints urinários laboratoriais permissivos baseados exclusivamente na sua enorme concentração intraluminal na urina.
+- Concentração tecidual vs. intraluminal: Esses breakpoints urinários não se aplicam a infecções invasivas da parede vesical, nas quais concentrações teciduais e séricas são os verdadeiros determinantes de eficácia.
+
+REGRA DE OURO: Não presumir eficácia clínica de amoxicilina/clavulanato contra cepas de E. coli em CE apenas porque o laudo laboratorial reportou sensibilidade usando critérios de cistite esporádica simples.`,
 
     tabelaTerapeuticaAntimicrobiana: {
       kind: 'clinicalTable',
@@ -374,49 +444,155 @@ export const cistiteEnfisematosaCaesGatosSeed: DiseaseRecord = {
       ]
     },
 
-    stewardshipEFluoroquinolonas: 'Apesar de Escherichia coli responder por aproximadamente 68% dos casos de CE, a prescrição empírica e automática de fluoroquinolonas (como enrofloxacina ou marbofloxacina) diante da simples visualização de gás vesical é uma conduta desaconselhada pelas diretrizes internacionais de stewardship (ISCAID 2019). Fluoroquinolonas são antimicrobianos de importância crítica que devem ser preservados para infecções invasivas comprovadas da parede vesical, pielonefrite concomitante ou quando o antibiograma evidenciar resistência a classes de menor espectro. Em felinos, o risco adicional de toxicidade retiniana exige vigilância extrema, preferindo-se outras opções terapêuticas sempre que viável.',
+    stewardshipEFluoroquinolonas: `Critérios de prescrição de fluoroquinolonas e Stewardship antimicrobiano:
+- Racional do stewardship (ISCAID 2019): Embora Escherichia coli responda por cerca de 68% dos casos de CE, a prescrição empírica e automática de fluoroquinolonas (como enrofloxacina ou marbofloxacina) diante da simples visualização de gás vesical é conduta desaconselhada pelas diretrizes internacionais.
+- Indicações estritas para fluoroquinolonas: Antimicrobianos de importância crítica que devem ser preservados para infecções invasivas comprovadas da parede vesical, pielonefrite concomitante ou resistência documentada a classes de menor espectro.
 
-    meropenemApenasMDR: 'O meropenem é um antimicrobiano de reserva crítica na medicina veterinária e humana. O relato de Lee et al. (2023) documentou o uso bem-sucedido de meropenem em um cão com CE e pielonefrite enfisematosa por E. coli multirresistente (resistente a ampicilina, cefalosporinas, fluoroquinolonas e aminoglicosídeos). Contudo, esse relato ilustra o tratamento de resgate para um patógeno MDR documentado, e não justifica a utilização empírica de carbapenêmicos. O Plumb\'s (10a ed.) preconiza que o meropenem seja restrito a infecções comprovadamente resistentes a todas as opções convencionais, com descalonamento imediato caso um fármaco de menor espectro se mostre viável.',
+CONTRAINDICAÇÃO FORMAL: Em felinos, a enrofloxacina em doses superiores a 5 mg/kg/dia acarreta degeneração retiniana aguda irreversível e cegueira permanente. Preferir sempre alternativas terapêuticas mais seguras.`,
 
-    duracaoTratamentoELacunaEvidencia: 'Não existem ensaios clínicos controlados avaliando a duração ideal do tratamento antimicrobiano na cistite enfisematosa. A scoping review de Weese & Weese (2026) identificou que nos 18 casos com duração informada, o tempo de tratamento variou de 18 a 35 dias, com mediana de 30 dias. Essa duração de 30 dias representa um reflexo descritivo de condutas empíricas históricas, e não uma recomendação fundamentada em medicina baseada em evidências. Raciocínio clínico contemporâneo escalonado: (1) Paciente clinicamente estável com infecção restrita à bexiga e rápida melhora ultrassonográfica em 5 a 7 dias: regimes de 10 a 14 dias guiados por cultura podem ser adequados; (2) Paciente com lesão transmural extensa, gás extravesical, pielonefrite enfisematosa, sepse ou microrganismo MDR: cursos prolongados de 2 a 4 semanas ou mais são necessários, sempre balizados pela comprovação imaginológica de reabsorção gasosa e urocultura de controle.',
+    meropenemApenasMDR: `Critérios estritos para o uso de Meropenem:
+- Antimicrobiano de reserva crítica: O relato de Lee et al. (2023) documentou o uso bem-sucedido de meropenem em um cão com CE e pielonefrite enfisematosa por E. coli multirresistente (resistente a ampicilina, cefalosporinas, fluoroquinolonas e aminoglicosídeos).
+- Indicação exclusiva: Esse relato ilustra tratamento de resgate para patógeno MDR documentado, não justificando qualquer utilização empírica de carbapenêmicos.
+- Recomendações de referência: Plumb's (10a ed.) preconiza que o meropenem seja restrito a infecções comprovadamente resistentes a todas as opções convencionais, com descalonamento imediato caso um fármaco de menor espectro se mostre viável.`,
 
-    manejoFatoresPredisponentes: 'O controle da comorbidade de base é parte integrante inegociável do tratamento da cistite enfisematosa: (1) Diabetes mellitus: insulinoterapia intensiva para reduzir a glicemia abaixo do limiar renal (<180 mg/dL no cão; <250 a 280 mg/dL no gato), eliminando o fluxo contínuo de substrato fermentável na urina e recuperando a função neutrofílica; (2) Bexiga neurogênica: implementação de protocolo asséptico de esvaziamento vesical manual programado a cada 6 a 8 horas ou cateterismo intermitente limpo, associando betanecol (5 a 25 mg/cão VO q8h; 1,25 a 5 mg/gato VO q8-12h) se houver atonia detrusora sem obstrução física, e prazosina para relaxamento esfincteriano; (3) Urolitíase: remoção cirúrgica ou dissolução médica de cistólitos que perpetuem nichos de biofilme bacteriano; (4) Imunossupressão: reavaliação criteriosa da dose de corticosteroides ou imunossupressores em pacientes nefropatas ou dermatopatas.',
+    duracaoTratamentoELacunaEvidencia: `Duração da antibioticoterapia e raciocínio clínico escalonado:
+- Evidência contemporânea: Não existem ensaios clínicos controlados avaliando a duração ideal do tratamento antimicrobiano na cistite enfisematosa. A scoping review de Weese & Weese (2026) identificou que nos 18 casos com duração informada, o tempo variou de 18 a 35 dias (mediana de 30 dias), reflexo descritivo de condutas empíricas históricas e não recomendação formal.
 
-    criteriosSondagemEDrenagemVesical: 'A cateterização uretral de demora não é indicada rotineiramente em todos os pacientes com CE. O cateter uretral funciona como corpo estranho que traumatiza a mucosa inflamada e atua como conduto retrógrado para colonização hospitalar ascendente. A sondagem vesical sob sistema fechado estéril com bolsa coletora é estritamente indicada quando houver: obstrução uretral mecânica concomitante, atonia detrusora severa com retenção urinária completa irresponsiva a manobras manuais, ou necessidade crítica de mensuração rigorosa do débito urinário em choque séptico e ressuscitação volêmica intensiva. VETO FORMAL: a ISCAID (2019) contraindica terminantemente a instilação intravesical de soluções antimicrobianas, antissépticas ou biocidas (como clorexidina ou iodo povidona); essa prática não possui benefício terapêutico e acarreta lesão química severa, esfacelamento do urotélio e agravamento da necrose parietal.',
+Estratificação clínica individualizada:
+- Paciente clinicamente estável: Infecção restrita à bexiga com rápida melhora ultrassonográfica em 5 a 7 dias: regimes de 10 a 14 dias guiados por cultura podem ser adequados.
+- Paciente com infecção complicada: Lesão transmural extensa, gás extravesical, pielonefrite enfisematosa, sepse ou microrganismo MDR: cursos prolongados de 2 a 4 semanas ou mais são necessários, sempre balizados pela comprovação imaginológica de reabsorção gasosa e urocultura de controle.`,
 
-    indicacoesIntervencaoCirurgica: 'A vasta maioria dos pacientes com cistite enfisematosa recupera-se com tratamento clínico antimicrobiano e suporte médico intensivo. A laparotomia exploratória com cistectomia parcial reconstrutiva e debridamento está estritamente reservada para complicações mecânicas graves: suspeita imaginológica ou laboratorial de ruptura vesical com uroperitônio séptico, necrose gangrenosa transmural com perda da integridade estrutural, peritonite séptica refratária, presença de cistólitos obstrutivos gigantes não passíveis de dissolução ou fístulas urogenitais estruturais.',
+    manejoFatoresPredisponentes: `Controle inegociável das comorbidades de base:
+- Diabetes Mellitus: Insulinoterapia intensiva para reduzir a glicemia abaixo do limiar renal (<180 mg/dL no cão; <250 a 280 mg/dL no gato), eliminando o fluxo contínuo de substrato fermentável na urina e recuperando a função neutrofílica.
+- Bexiga neurogênica: Implementação de protocolo asséptico de esvaziamento vesical manual programado a cada 6 a 8 horas ou cateterismo intermitente limpo; associar betanecol (5 a 25 mg/cão VO q8h; 1,25 a 5 mg/gato VO q8–12h) se houver atonia detrusora sem obstrução física, e prazosina para relaxamento esfincteriano.
+- Urolitíase: Remoção cirúrgica ou dissolução médica de cistólitos que perpetuem nichos de biofilme bacteriano.
+- Imunossupressão: Reavaliação criteriosa da dose de corticosteroides ou imunossupressores em pacientes nefropatas ou dermatopatas.`,
 
-    protocoloPlantaoPassoAPasso: 'Protocolo de plantão para abordagem imediata do paciente com suspeita de CE (10 etapas sequenciais): (1) Triagem de emergência: antes de qualquer sondagem uretral, realizar radiografia ou ultrassonografia abdominal para confirmar a presença real de gás intramural ou luminal virgem de manipulação; (2) Exame de imagem minucioso: pesquisar ativamente cálculos vesicais, massas, retenção volêmica, alterações de parênquima renal e gás perivesical/retroperitoneal; (3) Amostra urinária estéril: colher urina para urinálise completa com sedimento corado e urocultura quantitativa com TSA/MIC por cistocentese ecoguiada cautelosa (em área de parede sem enfisema severo) ou sondagem estéril com descarte do jato inicial; (4) Triagem laboratorial sistêmica: hemograma completo, perfil bioquímico (creatinina, ureia, SDMA, eletrólitos, glicose e frutosamina sérica); (5) Busca agressiva de predisponentes: rastrear diabetes mellitus, hiperadrenocorticismo, bexiga neurogênica, urolitíase, incontinência e uso prévio de imunossupressores; (6) Avaliação de gravidade sistêmica: se houver febre, hipotermia, hipotensão, neutropenia, azotemia acentuada ou suspeita de pielonefrite enfisematosa, colher hemocultura antes dos antibióticos, internar em UTI e iniciar antibioticoterapia parenteral com boa penetração tecidual; (7) Paciente estável: não prescrever fluoroquinolonas automaticamente; iniciar antimicrobiano com base em histórico e epidemiologia local enquanto aguarda o TSA; (8) Retorno do antibiograma: descalonar imediatamente para o antimicrobiano de menor espectro que apresente sensibilidade formal e adequada penetração no tecido vesical; (9) Controle imaginológico seriado: repetir ultrassonografia ou radiografia em 3 a 5 dias em pacientes graves, ou em 5 a 7 dias em pacientes estáveis, para documentar a reabsorção do gás; (10) Critério de alta: não encerrar o tratamento apenas pela melhora dos sinais clínicos; comprovar a resolução imaginológica do gás vesical e o controle definitivo do fator predisponente.',
+    criteriosSondagemEDrenagemVesical: `A cateterização uretral de demora não é indicada rotineiramente em todos os pacientes com CE:
+- Risco microbiológico: O cateter uretral funciona como corpo estranho que traumatiza a mucosa inflamada e atua como conduto retrógrado para colonização hospitalar ascendente.
 
-    errosComunsEvitar: 'Dez erros comuns na rotina clínica e como evitá-los: (1) Presumir que só diabéticos desenvolvem CE: falso, entre 67% e 89,5% dos animais em séries recentes não tinham diabetes; (2) Assumir que qualquer gás na bexiga é CE: falso, sondagem recente, cirurgia ou fístulas causam pneumatúria sem infecção ativa; (3) Exigir obrigatoriamente gás na parede para diagnosticar CE: falso, 23% dos casos apresentam gás exclusivamente intraluminal; (4) Confiar no breakpoint urinário de amoxicilina/clavulanato para lesões transmurais profundas: os breakpoints urinários não refletem concentração tecidual; (5) Prescrever fluoroquinolonas de forma empírica e automática: viola o stewardship antimicrobiano; (6) Prescrever enrofloxacina em gatos acima de 5 mg/kg/dia: risco iminente de cegueira irreversível por retinopatia; (7) Impor 30 dias de antibiótico como regra rígida para todos os pacientes: a duração deve ser individualizada pela resposta por imagem; (8) Manter sonda uretral de demora em todos os pacientes: eleva o risco de biofilme e infecção nosocomial ascendente; (9) Realizar lavagens vesicais com antissépticos ou antibióticos: formalmente contraindicado pela ISCAID; (10) Descartar CE por radiografia normal ou considerar ultrassom falho por excesso de reverberação: o próprio artefato de reverberação em cauda de cometa é a pista diagnóstica principal.',
+Indicações estritas para sondagem vesical (sob sistema fechado estéril com bolsa coletora):
+- Obstrução uretral mecânica concomitante.
+- Atonia detrusora severa com retenção urinária completa irresponsiva a manobras manuais.
+- Necessidade crítica de mensuração rigorosa do débito urinário em choque séptico e ressuscitação volêmica intensiva.
 
-    condutasContraindicadas: 'Proibições formais: não prescrever anti-inflamatórios não esteroidais (AINEs) em animais azotêmicos, hipovolêmicos ou hipotensos; não prescrever enrofloxacina em gatos em doses superiores a 5 mg/kg/dia; não realizar lavagens vesicais intraluminais com soluções antissépticas ou biocidas; não utilizar carbapenêmicos (meropenem) de forma empírica sem confirmação de MDR; não interromper a terapia antimicrobiana antes da comprovação imaginológica de reabsorção completa do gás parietal e resolução do espessamento mural.',
+CONTRAINDICAÇÃO FORMAL: A ISCAID (2019) contraindica terminantemente a instilação intravesical de soluções antimicrobianas, antissépticas ou biocidas (como clorexidina ou iodo povidona); essa prática não possui benefício terapêutico e acarreta lesão química severa, esfacelamento do urotélio e agravamento da necrose parietal.`,
 
-    monitoramentoSeriadoEAlta: 'O acompanhamento do paciente com cistite enfisematosa deve ser estruturado em metas objetivas: reavaliação ultrassonográfica da bexiga em 3 a 5 dias para acompanhar a redução do volume de gás intramural e a diminuição dos artefatos de reverberação; dosagem periódica de creatinina, ureia e eletrólitos; monitoramento diário da glicemia capilar em diabéticos. A alta clínica requer ausência de sinais de dor abdominal, remissão da hematúria macroscópica, restabelecimento do padrão miccional voluntário e confirmação imaginológica de reabsorção do gás vesical. Realizar urocultura de controle 5 a 7 dias após o término formal da antibioticoterapia em casos complicados ou recidivantes.'
+    indicacoesIntervencaoCirurgica: `Indicações estritas para intervenção cirúrgica na cistite enfisematosa:
+- Abordagem primária: A vasta maioria dos pacientes com cistite enfisematosa recupera-se com tratamento clínico antimicrobiano e suporte médico intensivo.
+
+Indicações para laparotomia exploratória com cistectomia parcial reconstrutiva e debridamento:
+- Suspeita imaginológica ou laboratorial de ruptura vesical com uroperitônio séptico.
+- Necrose gangrenosa transmural com perda da integridade estrutural.
+- Peritonite séptica refratária ao manejo clínico intensivo.
+- Presença de cistólitos obstrutivos gigantes não passíveis de dissolução.
+- Fístulas urogenitais estruturais (enterovesicais, colovesicais).`,
+
+    protocoloPlantaoPassoAPasso: `Protocolo de plantão para abordagem imediata do paciente com suspeita de CE (10 etapas sequenciais):
+
+1. Triagem de emergência imediata
+- Antes de qualquer sondagem uretral, realizar radiografia ou ultrassonografia abdominal para confirmar a presença real de gás intramural ou luminal virgem de manipulação.
+
+2. Exame de imagem minucioso
+- Pesquisar ativamente cálculos vesicais, massas, retenção volêmica, alterações de parênquima renal e gás perivesical/retroperitoneal.
+
+3. Amostra urinária estéril
+- Colher urina para urinálise completa com sedimento corado e urocultura quantitativa com TSA/MIC por cistocentese ecoguiada cautelosa (em área de parede sem enfisema severo) ou sondagem estéril com descarte do jato inicial.
+
+4. Triagem laboratorial sistêmica
+- Hemograma completo, perfil bioquímico (creatinina, ureia, SDMA, eletrólitos, glicose e frutosamina sérica).
+
+5. Busca agressiva de predisponentes
+- Rastrear diabetes mellitus, hiperadrenocorticismo, bexiga neurogênica, urolitíase, incontinência e uso prévio de imunossupressores.
+
+6. Avaliação de gravidade sistêmica
+- Se houver febre, hipotermia, hipotensão, neutropenia, azotemia acentuada ou suspeita de pielonefrite enfisematosa, colher hemocultura antes dos antibióticos, internar em UTI e iniciar antibioticoterapia parenteral com boa penetração tecidual.
+
+7. Manejo do paciente estável
+- Não prescrever fluoroquinolonas automaticamente; iniciar antimicrobiano com base em histórico e epidemiologia local enquanto aguarda o TSA.
+
+8. Retorno do antibiograma
+- Descalonar imediatamente para o antimicrobiano de menor espectro que apresente sensibilidade formal e adequada penetração no tecido vesical.
+
+9. Controle imaginológico seriado
+- Repetir ultrassonografia ou radiografia em 3 a 5 dias em pacientes graves, ou em 5 a 7 dias em pacientes estáveis, para documentar a reabsorção do gás.
+
+10. Critério de alta clínica
+- Não encerrar o tratamento apenas pela melhora dos sinais clínicos; comprovar a resolução imaginológica do gás vesical e o controle definitivo do fator predisponente.`,
+
+    errosComunsEvitar: `Dez erros comuns na rotina clínica e como evitá-los:
+- MITO 1 — Presumir que só diabéticos desenvolvem CE: Entre 67% e 89,5% dos animais em séries recentes não tinham diabetes.
+- MITO 2 — Assumir que qualquer gás na bexiga é CE: Sondagem recente, cirurgia ou fístulas causam pneumatúria sem infecção ativa.
+- MITO 3 — Exigir obrigatoriamente gás na parede para diagnosticar CE: 23% dos casos apresentam gás exclusivamente intraluminal.
+- ALERTA: Confiar no breakpoint urinário de amoxicilina/clavulanato para lesões transmurais profundas: Os breakpoints urinários não refletem concentração tecidual.
+- ATENÇÃO CLÍNICA: Prescrever fluoroquinolonas de forma empírica e automática: Viola frontalmente o stewardship antimicrobiano.
+- CONTRAINDICAÇÃO FORMAL: Prescrever enrofloxacina em gatos acima de 5 mg/kg/dia: Risco iminente de cegueira irreversível por retinopatia.
+- ATENÇÃO CLÍNICA: Impor 30 dias de antibiótico como regra rígida para todos os pacientes: A duração deve ser individualizada pela resposta por imagem.
+- ALERTA: Manter sonda uretral de demora em todos os pacientes: Eleva o risco de biofilme e infecção nosocomial ascendente.
+- CONTRAINDICAÇÃO FORMAL: Realizar lavagens vesicais com antissépticos ou antibióticos: Prática formalmente contraindicada pela ISCAID por lesão química severa.
+- ATENÇÃO CLÍNICA: Descartar CE por radiografia normal ou considerar ultrassom falho por excesso de reverberação: O próprio artefato de reverberação em cauda de cometa é a pista diagnóstica principal.`,
+
+    condutasContraindicadas: `Proibições formais e condutas vetadas na cistite enfisematosa:
+- CONTRAINDICAÇÃO FORMAL: Não prescrever anti-inflamatórios não esteroidais (AINEs) em animais azotêmicos, hipovolêmicos ou hipotensos.
+- CONTRAINDICAÇÃO FORMAL: Não prescrever enrofloxacina em gatos em doses superiores a 5 mg/kg/dia pelo risco de cegueira aguda.
+- CONTRAINDICAÇÃO FORMAL: Não realizar lavagens vesicais intraluminais com soluções antissépticas, antimicrobianas ou biocidas.
+- ALERTA FARMACOLÓGICO: Não utilizar carbapenêmicos (meropenem) de forma empírica sem confirmação bacteriológica de patógeno multirresistente (MDR).
+- REGRA VITAL: Não interromper a terapia antimicrobiana antes da comprovação imaginológica de reabsorção completa do gás parietal e resolução do espessamento mural.`,
+
+    monitoramentoSeriadoEAlta: `Protocolo de acompanhamento seriado e metas de alta clínica:
+- Reavaliação ultrassonográfica precoce: Repetir ultrassonografia da bexiga em 3 a 5 dias para acompanhar a redução do volume de gás intramural e a diminuição dos artefatos de reverberação.
+- Monitoramento laboratorial: Dosagem periódica de creatinina, ureia e eletrólitos; monitoramento diário da glicemia capilar em diabéticos.
+- Urocultura de controle: Realizar urocultura de controle 5 a 7 dias após o término formal da antibioticoterapia em casos complicados ou recidivantes.
+
+Critérios objetivos para alta clínica:
+- Ausência completa de sinais de dor abdominal à palpação.
+- Remissão total da hematúria macroscópica.
+- Restabelecimento do padrão miccional voluntário normal.
+- Confirmação imaginológica de reabsorção do componente gasoso vesical.`
   },
 
   complications: {
-    pielonefriteEnfisematosaAscendente: 'Colonização retrógrada dos ureteres e parênquima renal por patógenos produtores de gás, resultando em necrose supurativa renal, formação de bolhas intraparenquimatosas, perda abrupta da função nefronal, lesão renal aguda intrínseca e choque urosséptico de altíssima letalidade.',
+    pielonefriteEnfisematosaAscendente: `Pielonefrite Enfisematosa Ascendente:
+- Mecanismo: Colonização retrógrada dos ureteres e parênquima renal por patógenos produtores de gás.
+- Repercussões clínicas: Necrose supurativa renal, formação de bolhas intraparenquimatosas, perda abrupta da função nefronal, lesão renal aguda intrínseca e choque urosséptico de altíssima letalidade.`,
 
-    rupturaVesicalEUroperitonioSeptico: 'Isquemia mural transmural decorrente da dissecção gasosa associada a necrose liquefativa bacteriana, levando à deiscência da parede vesical com colapso cardiovascular, peritonite química e séptica aguda e necessidade imediata de laparotomia exploratória de emergência.',
+    rupturaVesicalEUroperitonioSeptico: `Ruptura Vesical e Uroperitônio Séptico:
+- Mecanismo: Isquemia mural transmural decorrente da dissecção gasosa associada a necrose liquefativa bacteriana.
+- Repercussões clínicas: Deiscência da parede vesical com colapso cardiovascular, peritonite química e séptica aguda e necessidade imediata de laparotomia exploratória de emergência.`,
 
-    disseminacaoGasosaExtravesical: 'Migração de dióxido de carbono e hidrogênio através dos planos fasciais perivesicais para o espaço retroperitoneal e fossas isquiorretais, podendo mimetizar perfuração de víscera oca ou pneumoperitônio mesmo na ausência de ruptura mecânica da bexiga (Lee et al., 2023).',
+    disseminacaoGasosaExtravesical: `Disseminação Gasosa Extravesical:
+- Mecanismo: Migração de dióxido de carbono e hidrogênio através dos planos fasciais perivesicais para o espaço retroperitoneal e fossas isquiorretais.
+- Repercussões clínicas: Pode mimetizar perfuração de víscera oca ou pneumoperitônio em exames de imagem mesmo na ausência de ruptura mecânica da bexiga (Lee et al., 2023).`,
 
-    fibroseCicatricialEMicrobexiga: 'Substituição da musculatura lisa do detrusor por tecido colágeno fibroso denso após extensa necrose tecidual, culminando em perda permanente da complacência vesical, redução drástica da capacidade de armazenamento e polaciúria crônica intratável.',
+    fibroseCicatricialEMicrobexiga: `Fibrose Cicatricial e Microbexiga:
+- Mecanismo: Substituição da musculatura lisa do detrusor por tecido colágeno fibroso denso após extensa necrose tecidual.
+- Repercussões clínicas: Perda permanente da complacência vesical, redução drástica da capacidade de armazenamento e polaciúria crônica intratável.`,
 
-    urosepticemiaEChoqueSeptico: 'Disseminação hematogênica de endotoxinas lipopolissacarídicas (LPS) e bactérias viáveis a partir da microvasculatura vesical lesionada, deflagrando síndrome da resposta inflamatória sistêmica (SIRS), choque distributivo hipotensivo e disfunção de múltiplos órgãos.'
+    urosepticemiaEChoqueSeptico: `Urossepticemia e Choque Séptico:
+- Mecanismo: Disseminação hematogênica de endotoxinas lipopolissacarídicas (LPS) e bactérias viáveis a partir da microvasculatura vesical lesionada.
+- Repercussões clínicas: Síndrome da resposta inflamatória sistêmica (SIRS), choque distributivo hipotensivo e disfunção de múltiplos órgãos.`
   },
 
   prevention: {
-    controleGlicemicoEReducaoGlicosuria: 'Controle glicêmico rigoroso e contínuo em cães e gatos diabéticos mediante insulinoterapia individualizada e curvas glicêmicas seriadas, visando manter a glicemia abaixo do limiar renal para mitigar o aporte de glicosúria fermentável.',
+    controleGlicemicoEReducaoGlicosuria: `Controle glicêmico rigoroso e redução da glicosúria:
+- Meta clínica: Manter insulinoterapia individualizada com curvas glicêmicas seriadas em cães e gatos diabéticos.
+- Efeito preventivo: Manter a glicemia abaixo do limiar renal para mitigar o aporte contínuo de substrato glicídico fermentável na urina.`,
 
-    manejoEsvaziamentoBexigaNeurogenica: 'Garantia de esvaziamento vesical completo e programado a cada 6 a 8 horas em animais com neuropatias espinhais, hérnias de disco ou síndrome da cauda equina, prevenindo a estase urinária estagnada que propicia colonização microbiana.',
+    manejoEsvaziamentoBexigaNeurogenica: `Manejo do esvaziamento em bexiga neurogênica:
+- Meta clínica: Garantir esvaziamento vesical completo e programado a cada 6 a 8 horas em animais com neuropatias espinhais, hérnias de disco ou síndrome da cauda equina.
+- Efeito preventivo: Prevenir a estase urinária estagnada que propicia colonização microbiana e proliferação bacteriana acelerada.`,
 
-    investigacaoPrecoceComorbidades: 'Vigilância clínica ativa e rastreamento precoce de qualquer episódio de hematúria, disúria ou periúria em pacientes com hiperadrenocorticismo espontâneo ou sob corticoterapia imunossupressora crônica.',
+    investigacaoPrecoceComorbidades: `Investigação precoce em animais sob risco imunológico:
+- Conduta: Vigilância clínica ativa e rastreamento precoce de qualquer episódio de hematúria, disúria ou periúria.
+- População-alvo: Pacientes com hiperadrenocorticismo espontâneo ou sob corticoterapia imunossupressora crônica.`,
 
-    cuidadosComSondagemUretral: 'Manejo asséptico rigoroso na cateterização uretral, restrição estrita do tempo de permanência de cateteres e uso exclusivo de sistemas coletores fechados estéreis em unidades de terapia intensiva para evitar bacteriúria nosocomial ascendente.',
+    cuidadosComSondagemUretral: `Cuidados rigorosos com a sondagem uretral:
+- Boas práticas: Manejo asséptico rigoroso na cateterização uretral, restrição estrita do tempo de permanência de cateteres.
+- Prevenção nosocomial: Uso exclusivo de sistemas coletores fechados estéreis em unidades de terapia intensiva para evitar bacteriúria nosocomial ascendente.`,
 
-    remocaoDeCalculosEEstruturas: 'Remoção cirúrgica ou dissolução médica oportuna de cistólitos e correção de alterações anatômicas estruturais (divertículos, pólipos) que atuem como nichos bacterianos permanentes.'
+    remocaoDeCalculosEEstruturas: `Remoção de cálculos e correção estrutural:
+- Intervenção oportuna: Remoção cirúrgica ou dissolução médica de cistólitos.
+- Anatomia: Correção de alterações estruturais (divertículos, pólipos) que atuem como nichos bacterianos permanentes.`
   },
 
   figures: [

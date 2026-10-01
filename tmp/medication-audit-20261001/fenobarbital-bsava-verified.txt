@@ -1,0 +1,237 @@
+===== BSAVA PDF 330 / impressa 314 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+314
+cause increased CNS or respiratory depression when used 
+concurrently with narcotic analgesics. Pethidine may produce a 
+serious interaction if administered with monoamine oxidase 
+inhibitors (MAOIs). The mechanism of this interaction is not clear but 
+effects include coma, convulsions and hyperpyrexia.
+DOSES
+When used for sedation is generally given as part of a combination. 
+See Appendix for sedation protocols in cats and dogs.
+Dogs: Analgesia: 2–10 mg/kg i.m., s.c. q1–2h depending on pain 
+assessment.
+Cats: Analgesia: 5–10 mg/kg i.m., s.c. q1–2h depending on pain 
+assessment. 
+References
+Slingsby LS and Waterman-Pearson AE (2001) Analgesic effects in dogs of carprofen and 
+pethidine together compared to the effects of either drug alone. Veterinary Record  148, 
+441–444
+Phenobarbital (Phenobarbitone)
+(Epiphen, Epityl, Phenoleptil, Phenobarbital*) 
+POM-V, POM CD SCHEDULE 3 
+Formulations: Oral: 12.5 mg, 15 mg, 25 mg, 30 mg, 50 mg, 60 
+mg, 100 mg tablets; 4% (40 mg/ml), 15 mg/5 ml solution. I njectable: 
+15 mg/ml, 30 mg/ml, 60 mg/ml, 200 mg/ml solutions (phenobarbital 
+sodium BP).
+Action: Thought to mediate its antiepileptic effect through affinity 
+for the GABAA receptor, resulting in a GABA-ergic effect; GABA 
+being the major inhibitory mammalian neurotransmitter with 
+prolonged opening of the chloride channel. Phenobarbital also 
+blocks the AMPA receptor, inhibiting release of the excitatory 
+neurotransmitter glutamate. This combined potentiation of GABA 
+and inhibition of glutamate leads to reduced neuronal excitability.
+Use:
+• Phenobarbital and imepitoin are the initial medications of choice 
+for the management of epileptic seizures due to idiopathic 
+epilepsy in dogs. The choice of initial medication is guided by 
+patient requirements: phenobarbital is less expensive and more 
+efficacious, while imepitoin has a more rapid onset of action 
+than phenobarbital (does not need to achieve a steady state), 
+does not require the determination of serum concentrations and 
+has a less severe adverse effect profile.
+• Also licensed for the management of epileptic seizures due to 
+structural brain disease in dogs.
+• Used for the management of epileptic seizures in cats.
+• Phenobarbital may also be used in dogs in combination with 
+propranolol and a behaviour modification programme for the 
+control of fears and anxieties, especially those with a large 
+physiological component which may be antagonizing the 
+condition through biofeedback processes.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 331 / impressa 315 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+315
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Phenobarbital is rapidly absorbed after oral administration in dogs; 
+maximal plasma concentrations reached within 4–8 hours. Wide 
+range of elimination half-life (40–90 hours) in different dogs. Steady 
+state serum concentrations are not reached until 7–10 days after 
+treatment is initiated and the full clinical effect of a dose cannot be 
+ascertained until this point. Serum concentrations should be 
+determined after starting treatment or dose alterations, once a steady 
+state has been reached. If <15 μg (micrograms)/ml the dose should 
+be increased accordingly. If seizures are not adequately controlled 
+the dose may be increased up to a maximum serum concentration of 
+45 μg/ml. Plasma concentrations above this level are associated with 
+increased hepatotoxicity. Blood samples for serum concentration 
+determination should be collected at the same time of day relative to 
+the time of dose administration in dogs on higher daily doses, but 
+timing is not normally important in dogs on a total daily dose of <8 
+mg/kg. For accuracy of dosing, dogs <12 kg should commence 
+therapy with the oral solution formulation. With chronic therapy, 
+induction of the hepatic microsomal enzyme system results in a 
+decreased half-life, particularly in dogs during the first 6 months of 
+therapy. As a result, the dose may need to be increased. 
+Phenobarbital levels should be assessed every 6–12 months. Any 
+termination of phenobarbital therapy should be performed gradually 
+with a recommended protocol of: reduce the dose by 25% of the 
+original dose each month (month 1: 75% of the original phenobarbital 
+dose; month 2: 50% of the original phenobarbital dose; month 3: 25% 
+of the original phenobarbital dose).
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not administer to animals with impaired 
+hepatic function. Not for use in pregnant animals and nursing 
+bitches, although the risk associated with uncontrolled seizures may 
+be greater than the risk associated with phenobarbital. Do not use to 
+control seizures resulting from hepatic disease (e.g. portosystemic 
+shunt), hypoglycaemia or toxic causes where the clinical signs are 
+mediated through the GABA channels (ivermectin and moxidectin 
+toxicity) as this may exacerbate the seizures. Do not administer high 
+doses by i.v. or i.m. injection in animals with marked respiratory 
+depression. When used in combination with propranolol, the normal 
+contraindications of propranolol also apply.
+Adverse reactions: Sedation, ataxia, polyphagia and PU/PD. 
+Polyphagia and PU/PD are likely to persist throughout therapy. 
+Ataxia and sedation occur commonly following initiation of therapy 
+but usually resolve within 1 week, although they may continue if high 
+doses are used. Hepatic toxicity is rare but may occur at high serum 
+concentrations (or as a rare idiosyncratic reaction within 2 weeks of 
+starting treatment). Hyperexcitability has been reported in dogs on 
+subtherapeutic dose levels. Haematological abnormalities, including 
+neutropenia, anaemia and thrombocytopenia, may occur. Rarely, it 
+may cause a superficial necrolytic dermatitis. Long-term 
+administration in the absence of hepatotoxicity is associated with: 
+moderate increase in liver size on abdominal radiographs; no 
+
+===== BSAVA PDF 332 / impressa 316 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+316
+change in liver echogenicity or architecture on ultrasonography; no 
+evidence of morphological liver damage on histology; significant 
+increase in ALP and, to a lesser extent, ALT activity; transiently 
+decreased albumin (up to 6 months after starting therapy) and 
+increased GGT; and no changes in AST, bilirubin or fasting bile acids. 
+Therefore, liver function should be assessed by other parameters, in 
+particular a bile acid assay, persistent decrease in albumin levels, 
+serum AST, bilirubin and ultrasonographic examination of the liver. 
+Phenobarbital treatment does not affect adrenal function tests 
+(ACTH stimulation test and low dose dexamethasone test) despite 
+acceleration of dexamethasone metabolism. Phenobarbital 
+significantly decreases total T4 and free T4, and cholesterol levels 
+tend to increase towards the upper limits of the normal range.
+Drug interactions: The effect of phenobarbital may be increased 
+by other CNS depressants (antihistamines, narcotics, 
+phenothiazines). Phenobarbital may enhance the metabolism of, 
+and therefore decrease the effect of, corticosteroids, beta-blockers, 
+metronidazole and theophylline. The chronic administration of 
+phenobarbital has been found to alter the binding, bioavailability, 
+metabolism and pharmacokinetics of propranolol, and so long-term 
+use of this combination for the control of anxiety needs to be 
+monitored carefully. It also increases the clearance of levetiracetum. 
+Barbiturates may enhance the effects of other antiepileptics. 
+Cimetidine, itraconazole and chloramphenicol increase serum 
+phenobarbital concentration through inhibition of the hepatic 
+microsomal enzyme system.
+DOSES
+Dogs:
+• Initial therapy: 1–2.5 mg/kg p.o. q12h (authorized dose). 
+However, in one study only 40% of dogs started on this dose 
+achieved therapeutic serum concentrations. Therefore, initial 
+dose recommendation is usually 2.5–3 mg/kg p.o. q12h. 
+Incremental modifications of the initial dose, based on serum 
+concentrations, are essential.
+• Emergency management of status epilepticus or severe cluster 
+seizures in dogs that have not been on maintenance 
+phenobarbital: aim for a total loading dose of 18–24 mg/kg, 
+followed by a maintenance dose of 2–3 mg/kg q12h. The loading 
+dose is given as an initial 12 mg/kg slow i.v. and then after 20 
+minutes, two further doses of 4–6 mg/kg slow i.v. 20 minutes 
+apart. Always wait 20 minutes before giving additional doses as 
+CNS levels take 20 minutes to respond, and do not administer if 
+the dog is excessively sedated or has evidence of respiratory 
+depression. Higher doses may be required in very small dogs.
+• Emergency management in dogs that have been on 
+maintenance phenobarbital: 4–6 mg/kg i.v. or i.m. to increase 
+the blood levels slightly in case these were subtherapeutic. 
+Always take a serum sample for phenobarbital level 
+determination first, before giving the top-up dose.
+• Control of fear and anxiety: 2–3 mg/kg p.o. q12h with 
+propranolol also at 2–3 mg/kg p.o. q12h.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

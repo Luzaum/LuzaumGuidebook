@@ -1,0 +1,224 @@
+SECTION XI
+•
+Infectious Disease
+1032
+eBooks.Health.Elsevier.com
+DIAGNOSIS AND TREATMENT
+Diagnosis requires either organism identication using cytologic 
+examination or PCR. Serologic testing to detect antibodies is not 
+typically helpful due to its short incubation period.26 Approxi-
+mately 60% of cats treated with combination therapy of atovaquone 
+and azithromycin survived, compared to 26% of cats treated with 
+imidocarb dipropionate.27 Cats with cytauxzoonosis are oen criti-
+cally ill and require intensive care (IV uids [ch. 120], nutritional 
+support [ch. 164]) as well as antiprotozoal medications.
+LEISHMANIA
+DESCRIPTION
+More than 30 species of Leishmania cause disease in humans and 
+dogs across the Americas, Europe, Asia, and Africa. Leishmani-
+osis is an important disease of public health concern, particularly 
+in geographic areas where poor sanitation and inadequate vector 
+control result in pets serving as a reservoir for human infection.28
+Leishmaniosis is a reportable disease in the US. Treatment is 
+controversial as it is rarely curative and might be associated with 
+selection for antiprotozoal drug resistance.29 30
+PATHOGENESIS
+Most dogs diagnosed with visceral leishmaniosis in North 
+America were infected on another continent. Infected dogs are 
+introduced every year from endemic regions in Europe and Latin 
+America (ch. 9). Visceral disease has been described in US dogs 
+with no history of travel.31 ough there are competent sandy 
+vectors in North America, the prevalence of this disease is consid-
+erably lower in the US than in endemic regions.28 Transmission 
+by blood transfusion has been described.32
+Visceral and focal cutaneous leishmaniosis have been described 
+in dogs. In the Old World, Phlebotomus sand ies act as the vector; 
+in the New World, Lutzomyia sand ies act as primary vectors.29
+e regional distribution of disease depends on the regional dis-
+tribution of the specic vectors involved. Leishmania transitions 
+between two forms: the promastigote and the amastigote. Pro-
+mastigotes are infectious to dogs and humans while amastigotes 
+are the form that infects the sand y vector during feeding on the 
+mammalian host. Promastigotes are inoculated into the skin when 
+the sand y feeds. e promastigotes are then engulfed by macro-
+phages and transform into intracellular amastigotes which repli-
+cate and cause the macrophages to rupture and release amastigotes 
+that then infect other macrophages. If the host immune response 
+fails to control the infection, amastigotes disseminate via regional 
+lymphatics and the blood to infect the entire reticuloendothelial 
+system. Amastigotes ingested by a female sand y during feeding 
+convert back into promastigotes in the sand y gut, and replication 
+of promastigotes within the sand y completes the life cycle.33 Dogs 
+that mount strong T-cell–mediated immune responses can elimi-
+nate the infection, whereas those that mount weak cell-mediated 
+immune responses and marked, nonprotective humoral (IgG) 
+immune responses develop clinical disease.34 Others can remain 
+subclinically infected and disease can reactivate later in life.35
+CLINICAL SIGNS AND ROUTINE DIAGNOSTIC TESTING
+e most common clinical signs in dogs are cutaneous lesions 
+characterized by alopecia, scaling, and nodules or papules 
+(Figure 197.2) that develop long before signs of systemic dis-
+ease, despite the presence of disseminated infection. Systemic 
+signs include fever, muscle wasting, splenomegaly, second-
+ary immune-mediated polyarthritis (ch. 177), anterior uveitis 
+(ch. 13), glomerulonephritis (ch. 302), and hematologic abnor-
+malities such as nonregenerative anemia (ch. 172) and lympho-
+penia.35 36 Leishmaniosis can induce either a mono- or polyclonal 
+gammopathy (ch. 60).37
+DEFINITIVE DIAGNOSIS
+Diagnosis of leishmaniosis can be achieved via direct identi-
+cation of the organism in tissues using histopathologic or cyto-
+logic examination. However, molecular detection using PCR is 
+preferred due to its excellent sensitivity.38 Serologic testing to 
+detect anti-Leishmania antibodies can pose diagnostic challenges 
+in endemic areas as many dogs will remain seropositive despite 
+clearance of infection.
+TREATMENT
+Treatment can be challenging since most dogs do not clear the 
+infection. Some can relapse or, in endemic areas, become rein-
+fected. Many treatments are not available in the US. Dual therapy 
+with allopurinol and meglumine (a pentavalent antimonial) is the 
+treatment of choice. Most dogs require weeks to months of treat-
+ment before clinical improvement is evident. Clinical trials have 
+shown that both miltefosine, an FDA approved drug for human 
+leishmaniasis, and artesunate, an FDA approved drug for malaria, 
+could be reasonable treatment options for canine Leishmania
+infections.39 40
+HEPATOZOON
+DESCRIPTION
+Two species of Hepatozoon cause disease in dogs.41 In Europe, 
+Asia, Africa, and South America, Hepatozoon canis is vectored by 
+the brown dog tick (Rhipicephalus sanguineus) (ch. 9). In the US, 
+Hepatozoon americanum is vectored by the Gulf coast tick (Ambly-
+omma maculatum).42 Sporozoites, found within tick vectors, are 
+the infectious stage for dogs. Dogs are infected by ingestion of 
+Figure 197.2
+Image of a 7-year-old male terrier mixed breed dog with 
+leishmaniosis imported from France to the US 2 years prior to presenta-
+tion. Note the ulcerative and exudative crusting lesions across the nasal 
+planum at the mucocutaneous junction.
+
+CHAPTER 197
+•
+Systemic Protozoal Diseases
+1033
+eBooks.Health.Elsevier.com
+infected ticks or by ingestion of infected mammalian prey.42 Cats 
+are rarely infected. When a dog ingests an infected tick, sporozo-
+ites are released from the tick’s gut, invade mononuclear cells, and 
+spread systemically. In H. americanum infections, the organism 
+spreads preferentially to skeletal muscle where it encysts between 
+myocytes.
+CLINICAL SIGNS AND ROUTINE DIAGNOSTIC TESTING
+Infection results in a wasting disease characterized by fever, 
+apparent pain or lameness, and mucopurulent ocular discharge. 
+Clinicopathologic testing oen reveals a nonregenerative ane-
+mia, marked leukocytosis, hypoglycemia, hypoalbuminemia, and 
+increased activity of serum alkaline phosphatase (ALP). Cytologic 
+evaluation of blood smears is insensitive for diagnosing hepato-
+zoonosis because there tends to be low levels of parasitemia in 
+circulating granulocytes. Once encysted in muscle, pyogranulo-
+matous myositis develops.43 In some dogs, persistent infection 
+is associated with glomerulonephritis. Osteoproliferative lesions 
+are common in dogs infected with H. americanum; they are most 
+common in the proximal appendicular skeleton, but can extend 
+to distal tibia, bula, radius, and ulna. e axial skeleton is less 
+commonly aected.44 Radiographs can reveal profound periosteal 
+proliferation particularly at sites of muscle attachment.
+DIAGNOSIS
+ELISA assays that detect antibodies to both H. americanum and 
+H. canis are available, sensitive and specic for diagnosing hepato-
+zoonosis in dogs.45 e application of PCR assays to whole blood 
+and buy coat specimens allows detection of Hepatozoon spp. and 
+dierentiation between H. americanum and H. canis. PCR assays 
+have been shown to be more sensitive than cytologic evaluation of 
+blood smears for detection of Hepatozoon 46 47
+TREATMENT
+Treatment of hepatozoonosis is dicult. Even long-term adminis-
+tration of anti-protozoal drugs such as potentiated sulfonamides, 
+clindamycin, and pyrimethamine have been associated with 
+relapsing infections. In one study, long-term administration of 
+decoquinate (10-20 mg/kg PO q12h) achieved prolonged remis-
+sion.48 Supportive care including administration of NSAIDs can 
+be helpful in ameliorating clinical signs. Spontaneous remissions 
+have been documented, but the reason for this outcome in dogs 
+is unclear.
+TOXOPLASMA
+DESCRIPTION AND PATHOGENESIS
+Toxoplasma gondii, an obligate intracellular coccidian parasite in 
+the family Apicomplexa, is one of the most prevalent parasites 
+infecting warm-blooded vertebrates. Cats are the denitive host, 
+and the parasite depends on cats to complete its life cycle, undergo 
+sexual reproduction and pass infectious oocysts via feces into 
+their environment.49 ere are three life stages of Toxoplasma. 
+e rst is sporozoites, which develop in oocysts aer 1 to 5 days 
+of exposure to oxygen and appropriate environmental tempera-
+ture and humidity. Tachyzoites develop aer extraintestinal infec-
+tion, disseminate in blood or lymph during active infection and 
+replicate rapidly intracellularly until the cell is destroyed.49 Brady-
+zoites are the slowly dividing, persistent, tissue stage that form in 
+the extraintestinal tissues of infected hosts as immune responses 
+attenuate tachyzoite replication. Tissue cysts can occur in the cen-
+tral nervous system (CNS), muscles, and visceral organs.
+Infection of warm-blooded vertebrates occurs aer ingestion 
+of any of the 3 life stages of the organism or transplacentally via 
+tachyzoite spread during pregnancy.50 ere are rare reports of 
+Toxoplasma transmission during transfusion or transplantation of 
+organs.51 Most cats are not coprophagic, and therefore are typi-
+cally infected by ingesting T. gondii tachy- or bradyzoites result-
+ing from ingestion of prey. Following enteroepithelial infection, 
+oocysts can be shed in feces from 3-21 days. Sporulated oocysts 
+can survive in the environment for months to years and are resis-
+tant to most disinfectants. Bradyzoites may persist in tissues for 
+the life of the host. About 30-40% of cats and 20% of dogs in the 
+US are seropositive and presumed infected.
+CLINICAL SIGNS
+Clinical disease during the gastrointestinal (GI) phase of infec-
+tion is rare. Detection of T. gondii oocysts in feces has been rare 
+in studies of naturally exposed cats with diarrhea. Most clinical 
+signs result from systemic dissemination following extraintestinal 
+infection that develops from overwhelming intracellular replica-
+tion of tachyzoites. Disease can be severe, potentially resulting in 
+death in dogs and cats. Liver, lungs, CNS, pancreas, and/or eye, 
+are commonly involved (Figure 197.3).
+Immune deciency secondary to viral infection or immune-
+suppressive therapy can lead to fatal toxoplasmosis. Retroviral 
+infection in cats does not seem to increase risk of disease reacti-
+vation.52-54 Common clinical ndings in cats with disseminated 
+toxoplasmosis include lethargy, anorexia, and fever followed 
+by hypothermia, peritoneal eusion, icterus, and tachypnea or 
+cough.55
+In dogs, respiratory, GI, or neuromuscular infection result-
+ing in respiratory signs (such as cough or tachypnea), vomiting, 
+diarrhea, fever, cutaneous disease, and icterus are most common, 
+occurring most frequently in immune-suppressed dogs, such as 
+those with canine distemper virus infection or those receiving 
+cyclosporine for control of immune-mediated disease (chs. 144 
+and 204). Neurologic signs depend on primary lesion location 
+and can range from ataxia, seizures, tremors, and cranial nerve 
+decits, to paresis and paralysis. Dogs with myositis can be weak, 
+be sti-gaited or have muscle wasting. Rapid progression to tet-
+raparesis and paralysis with lower motor neuron dysfunction can 
+occur.
+Depending on geographic region, some dogs suspected of 
+neuromuscular toxoplasmosis may have neosporosis (see below). 
+Myocardial infection can result in ventricular arrhythmias in 
+some infected dogs. Cough, tachypnea, vomiting, or diarrhea can 
+occur in dogs with polysystemic disease. Chorioretinitis, anterior 
+uveitis, iridocyclitis, and optic neuritis occur in some dogs but are 
+less common than in cats. Keratitis due to T. gondii infection has 
+also been reported.
+Chronic toxoplasmosis occurs in some dogs and cats. Toxo-
+plasma gondii infection can cause anterior or posterior uveitis in 
+cats (Figure 197.3, A), fever, muscle hyperesthesia, weight loss, 
+anorexia, seizures, ataxia, icterus, diarrhea, cutaneous disease, 
+and pancreatitis.
+ROUTINE DIAGNOSTIC TESTING
+Toxoplasmosis can cause a variety of clinicopathologic and 
+radiographic abnormalities, but none are pathognomonic. Non-
+regenerative anemia, neutrophilic leukocytosis or neutropenia, 
+lymphocytosis, monocytosis, eosinophilia, proteinuria, bilirubi-
+nuria, hyperglobulinemia, hyperbilirubinemia, and increases in 
+serum creatine kinase, alanine aminotransferase, ALP, and lipase 
+activities occur in some animals.55 Pulmonary toxoplasmosis 
+typically causes diuse interstitial to alveolar patterns or pleural 

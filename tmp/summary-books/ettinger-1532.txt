@@ -1,0 +1,189 @@
+SECTION XIV
+•
+Cardiovascular Disease
+1380
+eBooks.Health.Elsevier.com
+actually a congenital myocardial disease resulting from an arrest 
+in embryogenesis.7 8 11 It is characterized by prominent myo-
+cardial trabeculae and deep inter-trabecular recesses, occurring 
+as an isolated nding or in association with various congeni-
+tal heart diseases.7 8 11 Biventricular noncompaction has been 
+reported as an extremely rare pathological condition in the 
+cat.31 32
+CLINICAL AND MORPHOLOGIC CHARACTERISTICS
+HYPERTROPHIC CARDIOMYOPATHY
+HCM is characterized phenotypically by increased cardiac mass 
+due to a hypertrophied non-dilated LV in the absence of an 
+obvious cause of le ventricular hypertrophy (LVH), the most 
+common of which are systemic arterial hypertension and hyper-
+thyroidism (Table 234.1).1 3 33
+Left Ventricular Hypertrophic Patterns, Macroscopic/
+Microscopic Features
+As in people, feline HCM is characterized by marked phenotypic 
+variability, including mild to severe, diuse or segmental, con-
+centric LVH (Figures 234.3 and 234.4).33-36 In up to two-thirds 
+of cats with HCM, LVH is diuse, involving portions or all of 
+both the IVS and the LVFW, with hypertrophy of the le pap-
+illary muscles and a consequently reduced LV cavity (Video 
+234.3).33 36 Diuse LVH can be symmetric or asymmetric with 
+predominant thickening of the IVS or LVFW. In about one-third 
+of cases, LVH is conned to only one segment, e.g., usually the 
+basal IVS and less commonly the apex.33 36 In some cases, the 
+thickened basal IVS protrudes into the LVOT, resulting in mild 
+to severe LVOTO, thus dening OHCM forms (Video 234.4). 
+Marked combined LVH and papillary muscle hypertrophy can 
+result in systolic mid-ventricular cavity obstruction, associated 
+with the presence of endocardial contact plaques.2 37 Although 
+IVS
+Ao
+LA
+3
+2
+c
+c
+c
+A
+IVS
+LV
+B
+IVS
+1
+2
+C
+A
+A
+A
+A
+E
+E
+E
+E
+D
+IVS
+Ao
+LA
+2
+3
+E
+Figure 234.2
+Echocardiographic appearance of le ventricular false tendons. A-B, False tendons usually appear as thin echogenic linear structures 
+(arrows), more taut in diastole and more lax in systole. Here they are an incidental nding in a healthy cat (A, 2D; B, M-mode). C-D, Transventricular 
+short-axis view showing an excessive network of false tendons (arrows) in the le ventricle (LV) of an 8-month-old Bengal cat (C). It is associated with 
+altered diastolic function (D): there is an impaired relaxation pattern characterized by an early (E) to late (A) transmitral lling wave ratio <1 (E:A = 
+0.66) and a prolonged (>100 ms) E deceleration time (132 ms).74 E, In this cat with severe obstructive hypertrophic cardiomyopathy, the interventricu-
+lar septum (IVS) bulges into the le ventricular outow tract (LVOT). False tendons (yellow arrows) are attached to the subaortic IVS and there is sys-
+tolic anterior motion of the mitral valve (white arrow), both of which worsen obstruction of the LVOT. Ao, Aorta; c, chordae tendineae; LA, le atrium.
+
+CHAPTER 234
+•
+Feline Myocardial Diseases
+1381
+eBooks.Health.Elsevier.com
+rare, myocardial infarction of the LVFW may also occur (Video 
+234.5).33 Such varied geometric patterns are also revealed by 
+two-dimensional (2D) and M-mode echocardiography, with 
+breed variations.38 39 In one study of cats with HCM, Persian and 
+Chartreux cats showed signicantly more OHCM (44%) than did 
+cats of other breeds (18%), whereas almost half of Maine Coon 
+cats had diuse symmetric LVH.39
+In cases of mild to moderate LVH, the le atrium (LA) is usu-
+ally normal.2 Severe LVH is oen associated with mild to severe 
+le atrial enlargement (LAE; Figure 234.3).33 Right ventricular 
+(RV) hypertrophy and dysfunction occur in some cats with HCM 
+(with or without right atrial [RA] enlargement) and seem to be 
+associated with clinical severity.40
+Histopathology As in people,35 histological features of feline 
+HCM include various degrees of myocardial fiber disarray within 
+the LV myocardium (less commonly the RV myocardium), asso-
+ciated with mild to severe arteriosclerosis of intramural coronary 
+arteries, interstitial myocardial fibrosis, and replacement fibrosis 
+(Figure 234.5).2 33 34 36 In one report, disorganized cardiac muscle 
+cells were identified in the IVS of 30% of HCM cats. Disorganized 
+architecture of the LVFW was less common (14%) and consistently 
+associated with IVS disorganization.34 Such histological differences 
+impact regional diastolic myocardial function, as observed using 
+tissue Doppler imaging (TDI).41 42 In both people and cats, myo-
+cardial fiber disorganization can also be observed in non-severely 
+thickened, even in non-hypertrophied, LV myocardial segments,2
+which from a practical point of view, explains why TDI can detect 
+regional myocardial dysfunction in apparently normal myocar-
+dial segments of HCM cats (Figure 234.6).41 In OHCM, an LVOT 
+fibrous contact plaque can be observed on the IVS surface due to 
+systolic apposition of the mitral valve (MV) leaflets to the IVS. 
+Increased myocardial collagen deposition, associated with neutro-
+philic and lymphocytic infiltrates, has also been found in the myo-
+cardium of cats with pre-clinical HCM. This suggests the possible 
+contribution of an early inflammatory process to myocardial fibro-
+sis (e.g., involving inflammatory cytokines).43
+Epidemiology
+In large HCM populations, males are overrepresented (70-
+79%), with a predominance of Domestic Shorthaired cats (DSH, 
+65-70%), followed by Domestic Longhaired cats (DLH, 9-22%) 
+and Persians (3-12%).39 44 45 Other commonly reported breeds 
+vary according to studies (British Shorthair, Chartreux, Hima-
+layan, Maine Coon, Sphynx, Ragdoll).39 44-46 Despite sparse pub-
+lished information, Bengal cats appear to be overrepresented as 
+well. Burmese, Siamese, Oriental Shorthairs and Abyssinians are 
+less commonly aected.1 39 44 45 Most cats with HCM are middle-
+aged at diagnosis (median age: 5-7 years), but with wide age ranges 
+([0.5-19], [0.2-18.3], and [0.2-16.7] years in 3 reports involv-
+ing 731 cats with HCM)39 44 45 and breed representation. In one 
+report, Maine Coon and Sphynx cats were younger at diagnosis 
+than other cats (Figure 234.7, A).39 In another, Ragdoll cats were 
+younger (2.5 [0.5-4.5] years) than others (5.0 [0.2-16.7] years).45
+Interestingly, HCM has been shown to be common in apparently 
+healthy cats, with an estimated global prevalence of 15%; this 
+increases signicantly with age, i.e., 4.3% (6-12 months), 9.9% 
+(1-3 years old), 18.6% (3-9 years old), and 29.4% (≥9 years old).47
+Genetic Basis—Relationship Between Genotype and 
+Phenotype
+Human HCM Human HCM is a familial disease in at least 
+50-60% of cases, with autosomal dominant inheritance most 
+commonly identified.48 49 HCM was the first human heart disease 
+for which a molecular genetic cause was demonstrated, with the 
+responsible gene (MYH7, coding for the beta-myosin heavy chain 
+protein) having been identified in 1990.50 At the time of this writ-
+ing, more than 1500 mutations associated with HCM have been 
+identified, with most implicated genes encoding for sarcomere 
+proteins.48 49
+Maine Coon Breed A mutation in the cardiac sarcomeric 
+myosin binding protein C gene (MyBPC3) that causes inherited 
+HCM, with autosomal dominant inheritance, was similarly iden-
+tified in the Maine Coon breed in 2005.51 It was the first report 
+to demonstrate a spontaneous mutation causing HCM in a non-
+human species.51 The MyBPC3 gene was shown to be mutated in 
+exon 3, with a single base pair change (guanine to cytosine) causing 
+an alteration of the protein structure, owing to the replacement of 
+one conservative amino acid (i.e., alanine, in the 31st codon) by 
+proline.51 In a study of 3310 cats of 17 different breeds from Asia, 
+Europe, Australia, and North America, involving 3238 Maine 
+Coon cats, the latter accounted for 100% of all 1089 cats positive 
+for the MyBPC3-A31P mutation.52 Similarly, a European report 
+involving 3757 cats of 17 different breeds, including 2744 Maine 
+Coons, identified the mutation only in Maine Coon cats and one 
+British Longhair.53 Thus the MyBPC3-A31P substitution mutation 
+appears to be specific to the Maine Coon breed, although potential 
+Diastole
+LV
+LV
+A
+E
+Ao
+LA
+P
+P
+Figure 234.3
+Hypertrophic cardiomyopathy: macroscopic, echocar-
+diographic, and Doppler correlates in a cat with diuse and symmetric 
+le ventricular (LV) hypertrophy. e gross specimen sectioned trans-
+versely and the right parasternal short-axis views (top gures) all show 
+severe LV hypertrophy, resulting in a reduced LV lumen. No LV cavity 
+is visible at end-systole. ere is a secondarily, markedly enlarged le 
+atrium (LA) (bottom; end-diastolic LA:Ao, 3.7; reference interval, 0.5-
+1.2).88 Transmitral pulsed-wave Doppler examination (central gure) 
+reveals an impaired LV relaxation pattern: the reversed (<1) E:A ratio 
+conrms both decreased early LV lling due to impaired relaxation and 
+a greater LA contribution to LV lling with LA contraction.74 Ao, Aorta; 
+LV, le ventricle; P, le ventricular papillary muscles. (Macroscopic pa-
+thology image courtesy Prof. Jean-Jacques Fontaine, Pathology Depart-
+ment, National Veterinary School of Alfort, France.)

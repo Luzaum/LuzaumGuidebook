@@ -1,0 +1,228 @@
+===== BSAVA PDF 243 / impressa 227 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+227
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Levetiracetam (S-Etiracetam)
+(Desitrend*, Keppra*) POM 
+Formulations: Oral: 250 mg, 500 mg, 750 mg and 1 g tablets; 100 
+mg/ml oral 300 ml solution; coated granules 250 mg/sachet. 
+Injectable: 100 mg/ml intravenous solution (5 ml vial); formulated 
+with sodium chloride for injection at 500 mg/100 ml, 1000 mg/100 
+ml and 1500 mg/100 ml.
+Action: The mechanism of anticonvulsant action is unknown but it 
+has been shown to bind to the pre-synaptic vesicle protein SV2A 
+within the brain, modulating the release of neurotransmitters, which 
+may protect against seizures.
+Use:
+• As an adjunctive maintenance therapy in dogs and cats for 
+management of epileptic seizures refractory to conventional 
+therapy.
+• Also as a primary therapy where phenobarbital is 
+contraindicated; however, efficacy is significantly worse than 
+phenobarbital in newly diagnosed epileptic dogs.
+• Used at a higher dose, in addition to conventional maintenance 
+therapy, as pulse therapy for cluster seizures. A constant 
+intravenous infusion can be used for emergency control of 
+status epilepticus.
+Levetiracetam is rapidly absorbed from the GI tract with peak plasma 
+concentrations reached in <2 hours of oral dosing. Steady state is 
+rapidly achieved within 2 days. Plasma protein binding is minimal. 
+The plasma half-life is around 3–4 hours in dogs. It will also reach 
+target serum concentrations if administered rectally. Withdrawal of 
+levetiracetam therapy or transition to or from another type of 
+antiepileptic therapy should be done gradually. Use with caution and 
+in reduced doses in patients with renal impairment; in humans, renal 
+elimination of levetiracetum correlates with creatinine clearance.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Severe renal disease.
+Adverse reactions: The most commonly reported adverse effects 
+include sedation and ataxia in dogs and reduced appetite, 
+hypersalivation and lethargy in cats.
+Drug interactions: Minimal, although there is some evidence to 
+suggest that phenobarbital increases levetiracetam clearance, 
+reducing the half-life and peak levels.
+DOSES
+Dogs, Cats:   
+• Maintenance therapy (as adjunct or sole anticonvulsant): 
+20–30 mg/kg p.o. q8–12h.
+• Pulse therapy for severe cluster seizures (in addition to 
+maintenance therapy): 30 mg/kg p.o. q6–8h for the duration of 
+
+===== BSAVA PDF 244 / impressa 228 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+228
+the cluster (usually for 2–3 days) and then incrementally 
+reduced and stopped until the start of the next cluster. 
+Incremental increases in dose if required.
+• Status epilepticus: 60 mg/kg i.v. bolus q8h or continuous 
+intravenous infusion of 8 mg/kg/h, incrementally increased to 
+effect if required.
+• The parenteral preparation can be given at 40 mg/kg per 
+rectum, if oral or i.v. administration is not possible.  
+References
+Hardy BT, Patterson EE, Cloyd JM et al . (2012) Double-masked, placebo-controlled 
+study of intravenous levetiracetam for the treatment of status epilepticus and acute 
+repetitive seizures in dogs. Journal of Veterinary Internal Medicine  26, 334–340
+Muñana KR (2013) Management of refractory epilepsy. Topics in Companion Animal 
+Medicine 28, 67–71
+Levothyroxine see l-Thyroxine
+Lidocaine (Lignocaine)
+(EMLA, Intubeaze, Lignadrin, Lignol, Locaine, 
+Locovetic, Lidoderm*) POM-V 
+Formulations: Injectable: 1%, 2% solutions (some contain 
+adrenaline). Topical: 2% solution (Intubeaze), 4% solution (Xylocaine); 
+2.5% cream with prilocaine (EMLA); 5% transdermal patches (Lidoderm).
+Action: Local anaesthetic action is dependent on reversible 
+blockade of the sodium channel, preventing propagation of an 
+action potential along the nerve fibre. Sensory nerve fibres are 
+blocked before motor nerve fibres, allowing a selective sensory 
+blockade at low doses. Lidocaine also has class 1b antiarrhythmic 
+actions, decreasing the rate of ventricular firing, action potential 
+duration and absolute refractory period, and increasing relative 
+refractory period. Lidocaine has a rapid onset of action and 
+intermediate duration of action. Addition of adrenaline to lidocaine 
+increases the duration of action by reducing the rate of systemic 
+absorption.
+Use:
+• Provision of local or regional analgesia using perineural, 
+infiltration, local i.v. or epidural techniques. It is generally 
+recommended that adrenaline-free solutions be used for 
+epidural administration.
+• Intratesticular lidocaine has been shown to reduce haemodynamic 
+responses to castration in dogs and cats and is recommended to 
+provide intraoperative analgesia during castration and reduce the 
+requirement for inhalant anaesthetic agents.
+• Also used to provide systemic analgesia when given i.v. by 
+continuous rate infusion.
+• First-line therapy for rapid or haemodynamically significant 
+ventricular arrhythmias.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 245 / impressa 229 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+229
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+• May also be effective for some supraventricular arrhythmias, such 
+as bypass-mediated supraventricular tachycardia, and for 
+cardioversion of acute-onset or vagally-mediated atrial fibrillation.
+• Widely used topically to desensitize mucous membranes (such 
+as the larynx prior to intubation).
+• EMLA cream is used to anaesthetize the skin before vascular 
+cannulation.
+EMLA cream must be placed on the skin for approximately 45–60 
+minutes to ensure adequate anaesthesia; covering the skin with an 
+occlusive dressing promotes absorption. EMLA is very useful to 
+facilitate venous catheter placement in small puppies and kittens. 
+The pharmacokinetics of transdermal lidocaine patches have been 
+evaluated in dogs and cats; bioavailability of transdermal lidocaine is 
+low in cats and dogs compared with humans. The analgesic efficacy 
+and clinical usefulness of transdermal lidocaine has not yet been 
+evaluated in either species. Infusions of lidocaine reduce the inhaled 
+concentrations of anaesthetic required to produce anaesthesia and 
+prevent central sensitization to surgical noxious stimuli. Systemic 
+lidocaine is best used in combination with other analgesic drugs to 
+achieve balanced analgesia. Lidocaine will accumulate after 
+prolonged administration, leading to a delayed recovery. Cats are 
+very sensitive to the toxic effects of local anaesthetics, therefore, it is 
+important that doses are calculated and administered accurately.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not give to cats by continuous rate infusion 
+during the perioperative period due to the negative haemodynamic 
+effects. Do not give lidocaine solutions containing adrenaline i.v. Do 
+not use solutions containing adrenaline for complete ring block of an 
+extremity because of the danger of ischaemic necrosis.
+Adverse reactions: Depression, seizures, muscle fasciculations, 
+vomiting, bradycardia and hypotension. If reactions are severe, 
+decrease or discontinue administration. Seizures may be controlled 
+with i.v. diazepam. Monitor the ECG carefully during therapy. Cats 
+tend to be more sensitive to the CNS effects. The CFC propellant 
+used in unlicensed aerosol preparations (e.g. Xylocaine spray) is 
+alleged to have caused laryngeal oedema in cats and should not be 
+used to desensitize the larynx prior to intubation.
+Drug interactions: Cimetidine and propranolol may prolong 
+serum lidocaine clearance if administered concurrently. Other 
+antiarrhythmics may cause increased myocardial depression.
+DOSES
+Note: 1 mg/kg is 0.05 ml/kg of a 2% solution.
+Dogs:   
+• Local anaesthesia: apply to the affected area with a small gauge 
+needle to an appropriate volume. Total dose that should be 
+injected is 4 mg/kg.
+• Oesophagitis: 2 mg/kg p.o. q4–6h.
+• Topical: apply thick layer of cream to the skin and cover with a 
+bandage for 45–60 min prior to venepuncture.

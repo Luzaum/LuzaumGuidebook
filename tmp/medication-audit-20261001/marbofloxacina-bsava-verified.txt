@@ -1,0 +1,231 @@
+===== BSAVA PDF 258 / impressa 242 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+242
+potassium-depleting diuretics should be used with care in 
+conjunction with beta-blockers. Nephrotoxicity has been described 
+with concurrent use of mannitol and ciclosporin in human patients. 
+Mannitol may result in temporary impairment of the blood–brain 
+barrier for up to 30 minutes after administration of high doses. 
+Mannitol should never be added to whole blood for transfusion or 
+given through the same set by which the blood is being infused. Do 
+not add KCl or NaCl to concentrated mannitol solutions (20% or 
+25%) as a precipitate may form.
+DOSES
+Dogs, Cats:   
+• Raised intracranial pressure: 0.25–2 g/kg i.v. infusion of 15–20% 
+solution. There is some evidence that higher doses have greater 
+clinical effect, but lower doses allow for repeated boluses. 
+Doses of 0.25–1.0 g/kg are recommended. The dose is given 
+over 20–30 min. The dose may be repeated once or twice after 
+4–8 hours as long as hydration and electrolyte levels are 
+monitored.
+• Acute glaucoma (if refractory to topical treatments): 0.5–2 g/kg 
+i.v. infusion over 30 min. Withholding water for the first few 
+hours after administering is recommended. May repeat 2–4 
+times over next 48 hours; monitor for dehydration.
+• Early oliguric or anuric renal failure (as an alternative to using 
+furosemide): 0.25–0.5 g/kg i.v. infusion over 5–10 min. If 
+successful can repeat in 4 hours. Rehydrate the patient prior to 
+the use of mannitol.
+References
+DiFazio J and Fletcher DJ (2013) Updates in the management of the small animal patient 
+with neurologic trauma. Veterinary Clinics of North America: Small Animal Practice 43 , 
+915–940
+Sankar T, Assina R, Karis JP et al . (2008) Neurosurgical implications of mannitol 
+accumulation within a meningioma and its peritumoral region demonstrated by magnetic 
+resonance spectroscopy: case report. Journal of Neurosurgery  108, 1010–1013
+Marbofloxacin
+(Actimarbo, Aurizon, Efex, Marbocare, Marbocyl, 
+Marbodex, Marbotab, Marboxidin, Marfloquin, 
+NorOtic, Quiflor, Softiflox, Ubiflox) POM-V 
+Formulations: Injectable: 200 mg powder for reconstitution 
+giving 10 mg/ml when reconstituted. Oral: 5 mg, 20 mg, 80 mg 
+tablets. Topical: compound preparation containing 3 mg/ml of 
+marbofloxacin along with clotrimazole and dexamethasone  
+(aural use).
+Action: Broad-spectrum antibiotic inhibiting bacterial DNA gyrase 
+via a concentration-dependent mechanism particularly against 
+Gram-negative bacteria, meaning that pulse-dosing regimens may 
+be effective. Low urinary pH may reduce the activity.
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 259 / impressa 243 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+243
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Use: Fluoroquinolone use should be reserved for infections where 
+culture and sensitivity testing predicts a clinical response and where 
+first- and second-line antimicrobials would not be effective. Active 
+against mycoplasmas and many Gram-positive and particularly 
+Gram-negative organisms, including Pasteurella, Staphylococcus, 
+Pseudomonas aeruginosa, Klebsiella, Escherichia coli, Proteus and 
+Salmonella. Fluoroquinolones are effective against beta-lactamase-
+producing bacteria. Marbofloxacin is relatively ineffective in treating 
+obligate anaerobic infections. Fluoroquinolones are highly lipophilic 
+drugs that attain high concentrations within cells in many tissues and 
+are particularly effective in the management of soft tissue, urogenital 
+(including pyelonephritis and prostatitis) and skin infections. May 
+allow clearance of Mycoplasma haemofelis in cats persistently 
+infected after doxycycline treatment. 
+Safety and handling: Normal precautions should be observed.
+Contraindications: The 20 mg and 80 mg tablets should not be 
+administered to cats.
+Adverse reactions: Some animals show GI signs (nausea, 
+vomiting). Use with caution in epileptics until further information is 
+available, as fluoroquinolones potentiate CNS adverse effects when 
+administered concurrently with NSAIDs in humans. Enrofloxacin, 
+particularly at high doses, has caused retinal blindness in cats; 
+although not reported with marbofloxacin, caution should be 
+exercised before using dose rates above those recommended by the 
+manufacturer for cats. Cartilage abnormalities have been reported 
+following the use of other fluoroquinolones in growing animals. 
+Such abnormalities have not been specifically reported following the 
+use of marbofloxacin, but the drug is not authorized for use in dogs 
+<12 months of age and cats <16 weeks. In giant-breeds should not 
+be administered to animals <18 months.
+Drug interactions: Absorbents and antacids containing cations 
+(Mg2+, Al3+) may bind fluoroquinolones, preventing their absorption 
+from the GI tract. Their absorption may also be inhibited by 
+sucralfate and zinc salts; separate dosing by at least 2 hours. 
+Fluoroquinolones increase plasma theophylline concentrations. 
+Cimetidine may reduce the clearance of fluoroquinolones and so 
+should be used with caution with these drugs. Some 
+fluoroquinolones may decrease the metabolism and increase 
+nephrotoxicity of ciclosporin and tacrolimus in humans and 
+therefore concurrent use in animals is best avoided until more 
+research has been performed. May increase the action of orally 
+administered anticoagulants.
+DOSES
+See Appendix for guidelines on responsible antibacterial use.
+Dogs: Oral and parenteral: 2 mg/kg i.v., s.c., p.o. q24h. Higher doses 
+should be considered for certain sites, including in prostatitis, and 
+for certain isolates of Pseudomonas aeruginosa . Topical: 10 drops 
+per ear once daily.
+Cats: 2 mg/kg i.v., s.c., p.o. q24h. 
+
+===== BSAVA PDF 260 / impressa 244 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+244
+References
+Federico S, Carrano R, Capone D et al . (2006) Pharmacokinetic interaction between 
+levofloxacin and ciclosporin or tacrolimus in kidney transplant recipients: ciclosporin, 
+tacrolimus and levofloxacin in renal transplantation. Clinical Pharmacokinetics 45, 
+169–175
+Hirt RA, Teinfalt M, Dederichs D et al . (2003) The effect of orally administered 
+marbofloxacin on the pharmacokinetics of theophylline. Journal of Veterinary Medicine: 
+A Physiology, Pathology and Clinical Medicine 50 , 246–250
+Maropitant
+(Cerenia, Prevomax, Vetemex) POM-V 
+Formulations: Injectable: 10 mg/ml solution. Oral: 16 mg, 24 mg, 
+60 mg, 160 mg tablets.
+Action: Inhibits vomiting reflex by blocking NK-1 receptors in 
+medullary vomiting centre. Highly protein bound, with a long 
+duration of activity (24 hours). Maropitant is not known to have any 
+prokinetic effect.
+Use:
+• Treatment and prevention of vomiting in dogs, including that 
+caused by chemotherapy and motion sickness (although not all 
+preparations are specifically licensed for these purposes).
+• Maropitant is well tolerated and has potent antiemetic activity in 
+cats.
+In cases of frequent vomiting, treatment by injection is 
+recommended. Treatment by injection and/or tablets can be given 
+for up to 5 days. In some individual dogs, repeat treatment at a lower 
+dose may be adequate. For motion sickness, treatment for up to 2 
+days can be given. If longer periods of treatment are required, the 
+recommended interval between the last dose of one course and the 
+first dose of a subsequent course is 72 hours. It should be used in 
+combination with investigation into the cause of vomiting and with 
+other supportive measures and specific treatments. Tablets best 
+given with food; avoid prolonged fasting before administration.
+Safety and handling: Normal precautions should be observed. 
+Do not attempt to remove the tablet by pushing through the blister 
+packing as this will damage the tablet.
+Contraindications: No specific contraindications but it would be 
+sensible not to use maropitant where GI obstruction or perforation 
+could be present or for longer than 48 hours without a definitive 
+diagnosis. Metabolized by the liver so use with caution in patients 
+with hepatic disease.
+Adverse reactions: Transient pain reaction during injection is 
+reported as a very common occurrence especially in cats, but no 
+significant lasting adverse reactions. Very high doses in cats may 
+cause haemolysis. Pain on injection can be reduced by injecting the 
+product at refrigerated temperatures.
+Drug interactions: No compatibility studies exist, and therefore 
+the injection should not be mixed with any other agent. Should not 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A

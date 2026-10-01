@@ -1,0 +1,271 @@
+CHAPTER 128
+•
+Sepsis and the Systemic Inammatory Response Syndrome
+667
+eBooks.Health.Elsevier.com
+Sepsis and the Systemic Inflammatory Response Syndrome
+Amy E. DeClue
+DEFINITIONS
+S
+epsis is derived from the Greek word 
+meaning “to make rotten” or “to 
+putrefy.” It is an infection-induced 
+innate antimicrobial response disorder 
+dened as bacteremia or as a concurrent 
+infection with evidence that the infection is 
+causing the systemic inammatory response 
+syndrome (i.e., SIRS). Immune system dys-
+regulation is the key pathologic process, not 
+just a pro-inammatory response and/or 
+widespread infection (ch. 227). Infection-
+induced innate antimicrobial response 
+disorders encompass a wide range of syn-
+dromes including SIRS, the compensatory 
+anti-inammatory 
+response 
+syndrome 
+(CARS), mixed antagonist response syn-
+drome (i.e., concurrent SIRS and CARS) 
+(MARS), the persistent inammation and 
+immune suppression catabolism syndrome 
+(PICS), and the multiple organ dysfunc-
+tion syndrome (MODS) (Table 128.1, Box 
+128.1).
+PATHOGENESIS
+TRIGGERS OF SEPSIS AND THE INNATE IMMUNE 
+SYSTEM (IIS)
+Triggers
+Sepsis is a complex, variable, prolonged host response triggered 
+by infection (ch. 183). Manifestations of sepsis vary by pathogen 
+(type, load, virulence, site of inoculation) and host (genetics, site 
+of infection, comorbidities). In dogs and cats, Gram-negative bac-
+terial infections are the most common cause of sepsis, with E. coli
+being the most common isolate (Figure 128.1).1-10 However, any 
+pathogen (e.g., fungus, parasite, virus, protozoan) could cause 
+sepsis. In dogs, sepsis most commonly originates from abdominal 
+and respiratory tract infections.1 2 In cats, abdominal and pleural 
+space infections are most common.6-11
+Innate Immune System (IIS)
+e IIS is predominately responsible for the initial manifestations of 
+sepsis, activated by danger-associated molecular patterns (DAMPs), 
+e.g., pathogen-associated molecular patterns (PAMPs; endotoxin 
+from Gram-negative bacteria; exotoxins, peptidoglycans and supe-
+rantigens from Gram-positive bacteria; and fungal cell wall material 
+from pathogens) and alarmins (e.g., high-mobility group protein B1 
+[HMGB-1], S100 proteins, RNA, DNA and histones) produced by 
+the host. Pattern-recognition receptors of the IIS recognize DAMPs 
+via toll-like receptors (TLRs), C-type lectin receptors, retinoic acid 
+inducible gene 1-like receptors, and nucleotide-binding oligomer-
+ization domain-like receptors to activate innate immune cells and 
+induce systemic inammation. For example, in Gram-negative sep-
+sis, the glycolipid component of Gram-negative bacteria cell walls 
+(lipopolysaccharide [LPS]) is released. e lipid A portion of LPS 
+binds to LPS binding protein, recognized via macrophage cell surface 
+receptors like CD14. e main function of CD14 is to transfer LPS to 
+TLR-4 and myeloid dierentiation factor-2 (MD-2) for subsequent 
+cellular activation. Once LPS binds to cell surface receptors, the mac-
+rophage or other cells become activated.
+Activation of innate immune cells results in “genomic” and “cyto-
+kine” storms. As numerous genes that encode various inammatory 
+mediators, signal transducers, and cellular adhesion molecules are 
+activated, inammatory mediators are produced. Tumor necrosis 
+factor (TNF)-alpha, interleukin (IL)-6, chemokine (C-X-C motif) 
+ligand-8 (CXCL-8), keratinocyte-derived chemokine (KC)-like 
+chemokine, chemokine (C-C motif) ligand 2 (CCL2), HMGB-1, 
+nitric oxide and leukotrienes are examples of important mediators 
+contributing to the pathologic process of sepsis in dogs and cats.12-19
+Production of these inammatory mediators results in activation of 
+vascular endothelial cells and upregulation of adhesion molecules. 
+ese inammatory mediator signals cause neutrophils, monocytes 
+and/or lymphocytes to travel to the site of infection, secrete a second 
+wave of inammatory mediators, and provide killing mechanisms 
+for microorganism clearabnce. Neutrophils release extracellular 
+traps, lamentous DNA containing histones and granular proteins, 
+to enhance bacterial killing and promote thrombosis. e transition 
+from a localized infection/ inammation to sepsis is dependent on 
+the systemic circulation of inammatory messages and activation of 
+distant immune cells (Figure 128.1).
+THE ADAPTIVE IMMUNE SYSTEM
+e adaptive immune system is involved in the pathogenesis of sep-
+sis. Antigen presenting cells that have ingested a pathogen activate 
+the adaptive immune response, causing naïve T cells to proliferate 
+and eector cells to be generated. Naïve T cells dierentiate into 1/
+17 cells or 2 cells and pro-inammatory cytokines (e.g., TNF, 
+IL-2, IL-12, interferon-gamma, and leukotrienes or IL-17A) and/or 
+anti-inammatory cytokines (e.g., IL-4, IL-5, IL-9, IL-10 and IL-13). 
+e balance between the 1/17 and 2 responses contributes to 
+the clinical manifestations of pro- vs anti-inammatory shis.
+THE COMPENSATORY ANTI-INFLAMMATORY RESPONSE 
+SYNDROME (CARS)
+CARS is characterized by cyclic immunosuppression/immunopa-
+ralysis, a relative failed immune response to infection.20-22 Immu-
+noparalysis is characterized by apoptosis of lymphocytes, dendritic 
+cells, endothelial cells, gastrointestinal (GI) epithelial cells, and thy-
+mocytes; production of IL-10; suppressed CD8+ T cell function; 
+reduced monocytic production of pro-inammatory cytokines; 
+expression of inhibitory receptors on T cells; increases in regulatory 
+CHAPTER 128
+ACRONYMS
+AKI acute kidney injury
+CARS compensatory anti-
+inflammatory response 
+syndrome
+DAMPs danger-associated 
+molecular patterns
+GI gastrointestinal
+HMGB-1 high-mobility 
+group protein B1
+IIS innate immune system
+IL interleukin
+IV intravenous
+LPS lipopolysaccharide
+MARS mixed antagonist 
+response syndrome
+MODS multiple organ dys-
+function syndrome
+PICS persistent inflamma-
+tion and immune sup-
+pression catabolism 
+syndrome
+SIRS systemic inflammato-
+ry response syndrome
+TLR toll-like receptor
+TNF tumor necrosis factor
+
+SECTION VI
+•
+Emergency Medicine
+668
+eBooks.Health.Elsevier.com
+T cells; downregulation of human leukocyte antigen-DR expres-
+sion; increases in myeloid-derived suppressor cells; and immune 
+cell quiescence.21 23 24 e neuroinammatory reex contributes to 
+CARS through multiple mechanisms, including activation of the 
+cholinergic anti-inammatory pathway, which results in reduced 
+pro-inammatory cytokine production. Clinically, immunoparalysis 
+leads to an inability to ght and eliminate infection and the develop-
+ment of new infections from opportunistic or otherwise weak organ-
+isms.23 Reactivation of latent viruses is another possible development.
+PROGRESSION OF SEPSIS
+Classically, sepsis was considered the result of systematic progres-
+sion through a hyper-inammatory phase followed by resolution 
+during hypo-inammation.21 It is now appreciated that sepsis is a 
+waxing/waning continuum, where the animal may vacillate between 
+pro- and anti-inammatory/immunosuppressive response states. 
+Resolution is an orchestrated independent process.21 22 erefore, 
+the response during sepsis could be activation of resolution path-
+ways and recovery or continued illness due to a pro-inammatory 
+response, an anti-inammatory/immunosuppression response 
+and/or uctuating/interweaving responses. is concept of vacil-
+lating or concurrent responses is termed MARS. Ultimately, mul-
+tiple organ failure and/or opportunistic infections could result in 
+chronic critical illness or death.23 Lack of resolution and develop-
+ment of chronic critical illness is termed persistent inammation 
+and immune suppression catabolism syndrome (PICS).
+CLINICAL OBSERVATIONS
+DOGS
+Dogs have either hyperdynamic or hypodynamic responses dur-
+ing sepsis. e hyperdynamic response is characterized by fever, 
+brick red mucous membranes, tachycardia, and bounding pulses. 
+As the disease process progresses, a hypodynamic response may be 
+observed: hypotension, pale mucous membranes and hypothermia. 
+GI or respiratory signs may be associated with endotoxemia. Hyper-
+or hypoglycemia, hypoalbuminemia, azotemia, hyperbilirubinemia, 
+increased serum alanine aminotransferase and/or alkaline phospha-
+tase concentrations, leukocytosis, neutrophilia with a le shi, leuko-
+penia, thrombocytopenia, and anemia have been variably identied 
+in dogs with sepsis. Evidence of coagulopathy (decreased protein C 
+and antithrombin concentrations, prolonged prothrombin time and 
+partial thromboplastin time, increased D-dimer concentrations) 
+have been documented in dogs with naturally acquired sepsis (ch. 
+170).1 25 Many dogs with sepsis have myocardial dysfunction and 
+vasodilation, leading to hypotension. Poor perfusion, tissue hypoxia 
+and cellular metabolic derangement can lead to metabolic acidosis.
+CATS
+Cats with sepsis may develop most of the clinical signs and clini-
+copathologic abnormalities observed in dogs with sepsis, but bra-
+dycardia, hypothermia and abdominal pain are frequent, unique, 
+and poorly understood observations in cats with sepsis.4 9 11 Cats 
+also appear to develop septic shock more readily than dogs do, 
+and typically the hyperdynamic phase is not recognized.
+MULTIPLE ORGAN DYSFUNCTION SYNDROME (MODS)
+e pathogenesis of MODS is multifactorial, including development 
+of mitochondrial dysfunction secondary to circulatory collapse, 
+microcirculatory changes, hypoxemia, and inammation.26 MODS 
+is dened in dogs as ≥2 forms of organ dysfunction (Table 128.2) in 
+an animal with appropriate risk factors. However, criteria for dening 
+individual forms of organ dysfunction vary and are conicting.26 27
+e incidence of sepsis-induced MODS is not known in dogs or cats 
+although cardiovascular, GI, hepatic, renal, endocrine and respira-
+tory dysfunction/failure have been recognized.28-33
+Definitions Pertaining to Sepsis and SIRS
+Acute respiratory distress syndrome (ARDS): A pulmonary inflamma-
+tory disorder characterized by non-cardiogenic pulmonary
+edema, neutrophilic inflammation and hypoxemia.
+Bacteremia: The presence of viable bacteria in the blood stream.
+Compensatory anti-inflammatory response syndrome (CARS):
+Global deactivation of the immune system resulting in immuno-
+suppression and immunoparalysis.
+Infection-induced innate antimicrobial response disorders: Umbrella 
+term encompassing the different forms of immune system dys-
+regulation which develop in response to infection.
+Mixed antagonist response syndrome (MARS): SIRS and CARS exist-
+ing concurrently during infection; dysequilibrium of pro- and 
+anti-inflammatory response during infection.
+Multiple organ dysfunction syndrome (MODS): Altered function of  
+or more organs secondary to SIRS such that homeostasis cannot 
+be maintained without intervention.
+Persistent inflammation and immune suppression catabolism syn-
+drome (PICS): Maladaptive, self-perpetuating cycle of persistent 
+inflammation, reduced effective immunity and organ injury result-
+ing in loss of muscle mass and function, altered bone marrow 
+function, failure of metabolic adaption and chronic critical illness.
+Sepsis: . Systemic inflammatory response to infection or . Life-
+threatening organ dysfunction caused by a dysregulated host 
+response to infection.
+Septic shock: . The systemic inflammatory response to infection 
+with hypotension despite adequate fluid resuscitation along with 
+the manifestations of hypoperfusion; or . Subset of sepsis in 
+which underlying circulatory and cellular/metabolic abnormali-
+ties are profound enough to substantially increase mortality. 
+Generally, this is sepsis with either persisting hypotension 
+requiring vasopressors to maintain mean arterial pressure (MAP)
+ mm Hg or a serum lactate concentration > mmol/L despite 
+adequate volume resuscitation in people.
+Severe sepsis: This term has fallen out of favor and is generally not 
+used.
+Systemic inflammatory response syndrome (SIRS): A clinical syndrome 
+caused by systemic inflammation of infectious (i.e., sepsis) or non-
+infectious origin. The diagnosis of SIRS is based on fulfillment of at 
+least  of  criteria in dogs: tachycardia, tachypnea, hypo- or hyper-
+thermia, and leukocytosis, leucopenia or >% bands; or  of  cri-
+teria in cats: bradycardia or tachycardia, tachypnea, hypo- or hyper-
+thermia, and leukocytosis, leukopenia or >% bands (Table .).
+BOX 128.1
+TABLE 128.1
+SIRS Criteria in Dogs and Cats
+SIRS CRITERIA
+DOG
+CAT
+Temperature
+>102.6°F (>37.2°C) or 
+<99°F (<39.2°C)
+>103.5°F (>39.7°C) or 
+<100°F (<37.8°C)
+Heart rate (beats/
+minute)
+>140
+>225 or <140
+Respiratory rate 
+(breaths/min-
+ute)
+>40
+>40
+White blood cell 
+count
+>19,500/mcL or <5,000/
+mcL or >5% bands
+>19,500/mcL or 
+<5,000/mcL or 
+>5% bands
+SIRS, Systemic inflammatory response syndrome.

@@ -1,0 +1,222 @@
+===== BSAVA PDF 97 / impressa 81 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+81
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+tetracycline, doxycycline, minocycline, and N -acetylcysteine for inhibition of 
+collagenase activity in an in vitro corneal degradation model. American Journal of 
+Veterinary Research 79 , 555–561
+Sparkes AH, Caney SM, Sturgess CP et al . (1999) The clinical efficacy of topical and 
+systemic therapy for the treatment of feline ocular chlamydiosis. Journal of Feline 
+Medicine and Surgery  1, 31–35
+Cholestyramine see Colestyramine
+Chorionic gonadotrophin (Human 
+chorionic gonadotrophin, hCG)
+(Chorulon) POM-V 
+Formulations: Injectable: 1500 IU powder for reconstitution.
+Action: Luteinizing hormone analog.
+Use:
+• Induction of ovulation in the queen especially later part of 
+oestrus.
+• In the bitch, although it is indicated for the treatment of delayed 
+ovulation it does not appear to induce ovulation.
+• In males, short-term stimulation of testosterone secretion is 
+possible, although this may increase aggression without 
+improving libido.
+Safety and handling: Reconstituted vials do not contain any 
+preservative and so should be discarded within 24 hours.
+Contraindications: No information available.
+Adverse reactions: Anaphylactic reactions may occasionally 
+occur.
+Drug interactions: No information available.
+DOSES
+Dogs:   
+• Delayed ovulation: 22 IU/kg i.m. q24–48h or 44 IU/kg i.m. once; 
+mate on behavioural oestrus.
+• Deficient male libido: 100–500 IU/dog i.m. twice weekly for up 
+to 6 weeks.
+Cats: Not authorized for use in cats. Doses as for dogs.
+Ciclosporin (Cyclosporin(e))
+(Atopica, Atopica Cat, Cyclavance, Modulis, 
+Optimmune, Sporimmune) POM-V
+Formulations: Ophthalmic: 0.2% ointment (Optimmune). Oral: 10 
+mg, 25 mg, 50 mg, 100 mg capsules; 100 mg/ml solution; 50 mg/ml 
+solution (Sporimmune). Injectable: 50 mg/ml solution.
+
+===== BSAVA PDF 98 / impressa 82 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+82
+Action: T-lymphocyte inhibition.
+Use:
+• Topical ophthalmic preparation for immune-mediated 
+keratoconjunctivitis sicca in dogs. May also be useful as an 
+immunosuppressant in chronic superficial keratoconjunctivitis 
+(pannus).
+• Oral preparation licensed for atopic dermatitis in dogs and cats.
+• Used for perianal fistula, sebaceous adenitis and immune-
+mediated disease.
+It is recommended that bacterial and fungal infections are treated 
+before use. While the nephrotoxicity seen in human patients does 
+not appear to be common in dogs, care should be taken in treating 
+dogs with renal impairment, and creatinine levels should be 
+monitored regularly. In dogs with atopic dermatitis, ciclosporin may 
+reduce circulating levels of insulin and cause an increase in blood 
+glucose and fructosamine. In dogs with diabetes mellitus, the effect 
+of treatment on glycaemia must be carefully monitored. 
+Safety and handling: Use gloves to prevent cutaneous 
+absorption.
+Contraindications: Systemic use is not recommended in dogs 
+and cats up to 6 months old or in dogs <2 kg or in cats <2.3 kg. Do 
+not use in progressive malignant disorders. Do not give live vaccines 
+during treatment or within a 2-week interval before or after 
+treatment. Ciclosporin may reduce the immune response to 
+vaccines.The manufacturer does not recommend use in diabetic 
+dogs or cats infected with FeLV, FIV. 
+Adverse reactions: Immediate discomfort on topical application 
+(blepharospasm) has been reported in dogs. Transient vomiting and 
+diarrhoea may follow systemic administration; these are usually mild 
+and do not require cessation of treatment. Infrequently observed 
+adverse effects include: anorexia; mild to moderate gingival 
+hyperplasia; hypertrichosis; papillomatous lesions of the skin; red 
+and swollen pinnae; muscle weakness; and muscle cramps. These 
+effects resolve spontaneously after treatment is stopped. Systemic 
+and topical treatment may be associated with an increased risk of 
+malignancy. Cats that are seronegative for Toxoplasma gondii  may 
+be at risk of developing clinical toxoplasmosis if they become 
+infected while undergoing treatment.
+Drug interactions: The metabolism of ciclosporin is reduced, 
+and thus serum levels increased, by various drugs that 
+competitively inhibit or induce enzymes involved in its metabolism, 
+particularly cytochrome P450, including diltiazem, doxycycline and 
+imidazole antifungal drugs. Itraconazole and ketoconazole at 5–10 
+mg/kg are known to increase the blood concentration of 
+ciclosporin in dogs up to five-fold, which is considered to be 
+clinically relevant. During concomitant use of itraconazole and 
+ciclosporin consider halving the dose or doubling the treatment 
+interval if the dog is on daily treatment. In humans, there is 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+===== BSAVA PDF 99 / impressa 83 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+83
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+increased risk of nephrotoxicity if ciclosporin is administered with 
+aminoglycosides, NSAIDs, quinolones, or trimethoprim/
+sulphonamides; concomitant use of ciclosporin not 
+recommended. Increased risk of hyperkalaemia if used with ACE 
+inhibitors. As a substrate and inhibitor of the MDR 1 P-glycoprotein 
+transporter, co-administration of ciclosporin with P-glycoprotein 
+substrates such as macrocyclic lactones (e.g. ivermectin and 
+milbemycin) could decrease the efflux of such drugs from blood–
+brain barrier cells, potentially resulting in signs of CNS toxicity.
+DOSES
+See Appendix for immunosuppression protocols.
+Dogs:
+• Ocular disease: apply approximately 0.5 cm of ointment to the 
+affected eye q12h. It may take 2–4 weeks for improvement to 
+occur (occasionally up to 12 weeks). Maintenance treatment 
+should be continued with application q12h; in cases of excessive 
+tear production, application can be reduced to q24h but only 
+with caution and long-term, regular monitoring of tear 
+production.
+• Atopic dermatitis: 5 mg/kg p.o. q24h until signs controlled.
+• Perianal fistula, sebaceous adenitis: 5 mg/kg p.o. q24h – may 
+be increased in non-responsive cases to q12h.
+• Immune-mediated disease:  5 mg/kg p.o. q12h. A proportion of 
+dogs may require higher doses and pharmacodynamic 
+monitoring is therefore advisable.
+Cats:
+• Atopic dermatitis: 7 mg/kg p.o. q24h until signs controlled.
+• Immune-mediated disease: dosing strategies are not well 
+defined but typically 3–5 mg/kg p.o. q12h or 5–7 mg/kg p.o. q24h.
+References
+Nuttall T, Reece D and Roberts E (2014) Life-long diseases need life-long treatment: 
+long-term safety of ciclosporin in canine atopic dermatitis. Veterinary Record 174(S2), 3–12
+Swann JW, Garden OA, Fellman CL et al . (2019) ACVIM consensus statement on the 
+treatment of immune-mediated hemolytic anemia in dogs. Journal of Veterinary 
+Internal Medicine  29, 513–518Cimetidine
+(Zitac, Cimetidine*, Tagamet*) POM-V, POM 
+Formulations: Injectable: 100 mg/ml solution in 2 ml ampoule. 
+Oral: 100 mg, 200 mg tablets, 40 mg/ml syrup.
+Action: Histamine (H2) receptor antagonist, reducing histamine-
+induced gastric acid secretion. Rapidly absorbed with high 
+bioavailability; undergoes hepatic metabolism and renal excretion. 
+Plasma half-life is about 2 hours. It is not an antiemetic. Has weak 
+anti-androgenic effects.
+Use:
+• Management of idiopathic, uraemic or drug-related erosive 
+gastritis, gastric and duodenal ulcers, oesophagitis, and 

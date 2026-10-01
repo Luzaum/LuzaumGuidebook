@@ -72,42 +72,66 @@ function isDiagnosticStepArray(value: unknown): value is EditorialDiagnosticStep
   return Array.isArray(value) && value.length > 0 && value.every((item) => item && typeof item === 'object' && 'title' in item && 'description' in item);
 }
 
+export function normalizeClinicalTable(value: unknown): EditorialClinicalTable | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
+  const v = value as Record<string, unknown>;
+
+  const hasHeaders = Array.isArray(v.headers) && v.headers.length > 0;
+  const hasRows = Array.isArray(v.rows) && v.rows.length > 0;
+
+  if (hasHeaders && hasRows) {
+    const headers = (v.headers as unknown[]).map((h) => String(h));
+    const rows = (v.rows as unknown[]).map((row) => {
+      if (Array.isArray(row)) return row.map((c) => String(c ?? ''));
+      if (row && typeof row === 'object') return Object.values(row).map((c) => String(c ?? ''));
+      return [String(row ?? '')];
+    });
+    return {
+      kind: 'clinicalTable',
+      caption: typeof v.caption === 'string' ? v.caption : typeof v.title === 'string' ? v.title : undefined,
+      headers,
+      rows,
+    };
+  }
+
+  return null;
+}
+
 function isClinicalTable(value: unknown): value is EditorialClinicalTable {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
-  const v = value as Record<string, unknown>;
-  if (v.kind !== 'clinicalTable') return false;
-  if (!Array.isArray(v.headers) || v.headers.length === 0 || !v.headers.every((h) => typeof h === 'string')) return false;
-  if (!Array.isArray(v.rows) || v.rows.length === 0) return false;
-  const n = v.headers.length;
-  return v.rows.every((row) => Array.isArray(row) && row.length === n && row.every((cell) => typeof cell === 'string'));
+  return normalizeClinicalTable(value) !== null;
 }
 
-function isClinicalFigure(value: unknown): value is EditorialClinicalFigure {
-  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+export function normalizeClinicalFigure(value: unknown): EditorialClinicalFigure | null {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return null;
   const v = value as Record<string, unknown>;
-  return v.kind === 'clinicalFigure' && typeof v.src === 'string' && v.src.length > 0 && typeof v.alt === 'string' && v.alt.length > 0;
-}
-
-function isClinicalFigureArray(value: unknown): value is EditorialClinicalFigure[] {
-  return Array.isArray(value) && value.length > 0 && value.every(isClinicalFigure);
+  if (v.kind !== 'clinicalFigure' && v.kind !== 'imageModal') return null;
+  const src = v.kind === 'imageModal' ? v.url : v.src;
+  if (typeof src !== 'string' || !src.trim()) return null;
+  return {
+    kind: 'clinicalFigure',
+    src: src.trim(),
+    alt: typeof v.alt === 'string' && v.alt.trim() ? v.alt : typeof v.caption === 'string' && v.caption.trim() ? v.caption : 'Figura clínica',
+    caption: typeof v.caption === 'string' ? v.caption : undefined,
+    display: v.display === 'compact' || v.display === 'wide' || v.display === 'full' ? v.display : 'default',
+  };
 }
 
 function figureViewportClass(display: EditorialClinicalFigure['display']) {
   switch (display) {
     case 'compact':
-      return 'min-h-[14rem] max-h-[18rem] h-60';
+      return 'cv-figure-compact';
     case 'wide':
-      return 'min-h-[20rem] max-h-[32rem] h-96';
+      return 'cv-figure-wide';
     case 'full':
-      return 'min-h-[24rem] max-h-[38rem] h-[32rem]';
+      return 'cv-figure-full';
     default:
-      return 'min-h-[18rem] max-h-[28rem] h-80';
+      return 'cv-figure-default';
   }
 }
 
 function figureGridSpanClass(figure: EditorialClinicalFigure, isOnlyInGroup = false) {
   if (isOnlyInGroup || figure.display === 'full' || figure.display === 'wide') {
-    return 'sm:col-span-2';
+    return 'cv-figure-span';
   }
   return '';
 }
@@ -131,8 +155,10 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
 
   return (
     <>
-      <figure className="space-y-3 mx-auto w-full max-w-4xl flex flex-col items-center">
-        <div
+      <figure className="cv-clinical-figure space-y-3 mx-auto w-full max-w-4xl flex flex-col items-center">
+        <button
+          type="button"
+          aria-label={`Ampliar imagem: ${figure.alt}`}
           onClick={() => setIsOpen(true)}
           className="group relative w-full overflow-hidden rounded-xl border border-border/55 bg-muted/20 p-2 shadow-sm ring-1 ring-black/[0.04] dark:ring-white/[0.06] md:p-3 cursor-zoom-in transition-all duration-200 hover:border-primary/30 hover:bg-muted/30 flex items-center justify-center"
         >
@@ -142,15 +168,15 @@ function ClinicalFigureBlock({ figure }: { figure: EditorialClinicalFigure }) {
               alt={figure.alt}
               loading="lazy"
               decoding="async"
-              className="h-full w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
+              className="h-auto w-full object-contain object-center rounded-lg transition-transform duration-300 group-hover:scale-[1.01]"
             />
           </div>
-          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-center justify-center">
-            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 bg-background/85 dark:bg-background/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-md border border-border/50">
+          <div className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/5 dark:group-hover:bg-white/5 flex items-end justify-end p-3">
+            <span className="opacity-100 transition-all duration-200 transform translate-y-1 group-hover:translate-y-0 bg-background/85 dark:bg-background/90 text-foreground text-xs px-3 py-1.5 rounded-full font-medium shadow-md border border-border/50">
               Clique para ampliar
             </span>
           </div>
-        </div>
+        </button>
         {figure.caption ? (
           <figcaption className="text-center text-sm leading-relaxed text-muted-foreground max-w-3xl mx-auto">
             <EditorialRichText value={figure.caption} />
@@ -1402,11 +1428,11 @@ function tryRenderTreatmentRichObject(
 
   const renderLeaf = (value: unknown, key?: string): React.ReactNode => {
     if (typeof value === 'string') return <StructuredNarrative value={value} visual={visual} />;
-    if (isClinicalFigure(value)) {
-      return <ClinicalFigureBlock figure={value as EditorialClinicalFigure} />;
-    }
-    if (isClinicalTable(value)) {
-      return <ClinicalComparisonTable table={value as EditorialClinicalTable} visual={visual} />;
+    const figure = normalizeClinicalFigure(value);
+    if (figure) return <ClinicalFigureBlock figure={figure} />;
+    const tableObj = normalizeClinicalTable(value);
+    if (tableObj) {
+      return <ClinicalComparisonTable table={tableObj} visual={visual} />;
     }
     if (Array.isArray(value) && value.length > 0) {
       if (value.every((x) => typeof x === 'string')) {
@@ -1493,21 +1519,25 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
     if (Array.isArray(content)) {
       if (content.length === 0) return null;
-      if (isClinicalFigureArray(content)) {
+      const figures = content.map(normalizeClinicalFigure);
+      if (figures.every((figure) => Boolean(figure))) {
         const isSingle = content.length === 1;
         return (
           <div className={cn(
             isSingle 
               ? 'w-full' 
-              : 'grid grid-cols-1 sm:grid-cols-2 gap-6 items-start'
+              : 'cv-figure-gallery'
           )}>
-            {content.map((fig, idx) => (
+            {figures.map((fig, idx) => (
               <div key={fig.src || `figure-${idx}`} className={isSingle ? 'w-full' : figureGridSpanClass(fig, content.length === 1)}>
                 <ClinicalFigureBlock figure={fig} />
               </div>
             ))}
           </div>
         );
+      }
+      if (figures.some(Boolean)) {
+        return <div className="space-y-4">{content.map((item, idx) => <React.Fragment key={idx}>{renderContent(item)}</React.Fragment>)}</div>;
       }
       if (isDrugProtocolArray(content)) return <DrugProtocolList protocols={content} />;
       if (isDiagnosticStepArray(content)) return <DiagnosticStepList steps={content} visual={visual} />;
@@ -1519,11 +1549,11 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
     }
 
     if (content && typeof content === 'object') {
-      if (isClinicalFigure(content)) {
-        return <ClinicalFigureBlock figure={content} />;
-      }
-      if (isClinicalTable(content)) {
-        return <ClinicalComparisonTable table={content} visual={visual} />;
+      const figure = normalizeClinicalFigure(content);
+      if (figure) return <ClinicalFigureBlock figure={figure} />;
+      const tableObj = normalizeClinicalTable(content);
+      if (tableObj) {
+        return <ClinicalComparisonTable table={tableObj} visual={visual} />;
       }
 
       if (id === 'treatment') {
@@ -1548,7 +1578,7 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
 
       for (const entry of entries) {
         const [, value] = entry;
-        const isFig = isClinicalFigure(value);
+        const isFig = normalizeClinicalFigure(value);
 
         if (isFig) {
           const lastGroup = groupedEntries[groupedEntries.length - 1];
@@ -1594,11 +1624,11 @@ export function DiseaseSectionRenderer({ id, title, data, className, hideTitle }
                   className={cn(
                     isSingleFigure
                       ? 'w-full'
-                      : 'grid grid-cols-1 sm:grid-cols-2 gap-6 items-start'
+                      : 'cv-figure-gallery'
                   )}
                 >
                   {group.entries.map(([k, value]) => {
-                    const figure = value as EditorialClinicalFigure;
+                    const figure = normalizeClinicalFigure(value)!;
                     const tone = subsectionToneForKey(k);
                     return (
                       <FlowSubsection

@@ -48,7 +48,16 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
   ],
   isPublished: true,
   plainLanguage: {
-    whatIsIt: "A síndrome mielodisplásica (MDS) é uma doença rara da medula óssea (o tecido dentro dos ossos que fabrica o sangue) em que as células-tronco sofrem mutações e passam a produzir células sanguíneas defeituosas. Ocorre uma situação paradoxal: a medula óssea fica completamente cheia e ativa tentando produzir células, mas como essas células nascem anormais, a maioria morre antes mesmo de conseguir sair para o sangue. Como resultado, o animal apresenta queda grave nas contagens sanguíneas (anemia que não melhora, poucos glóbulos brancos de defesa e poucas plaquetas para estancar sangramentos). Em gatos, a doença tem forte associação histórica com o vírus da leucemia felina (FeLV).",
+    whatIsIt:
+      'Entendendo a Síndrome Mielodisplásica (MDS):\n' +
+      '- O que acontece no organismo do animal:\n' +
+      '  - Doença rara da medula óssea (o tecido interno dos ossos que fabrica o sangue) na qual as células-tronco sofrem mutações e produzem células defeituosas.\n' +
+      '- O paradoxo de medula cheia com sangue vazio:\n' +
+      '  - A medula trabalha intensamente, mas como as células nascem anormais, morrem precocemente lá dentro antes de alcançar a circulação sanguínea.\n' +
+      '- Consequências clínicas imediatas:\n' +
+      '  - O animal desenvolve anemia profunda e persistente, carência de glóbulos brancos para defesa contra infecções e poucas plaquetas para estancar sangramentos.\n' +
+      '- Particularidade na espécie felina:\n' +
+      '  - Em gatos, a enfermidade possui importante ligação histórica com a infecção pelo vírus da leucemia felina (FeLV).',
     keyPoints: [
       "Medula cheia e sangue vazio: a medula opera em alta velocidade, mas quase todas as células morrem lá dentro por defeitos de fabricação.",
       "Anemia persistente: o animal fica apático, cansa rápido e suas gengivas tornam-se muito pálidas ou esbranquiçadas.",
@@ -58,7 +67,18 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       "Tratamento de suporte contínuo: não existe cura simples; o tratamento envolve transfusões de sangue planejadas, antibióticos para febre e acompanhamento rigoroso com especialista em oncologia e hematologia."
     ]
   },
-  quickSummary: "A síndrome mielodisplásica (MDS) compreende um grupo heterogêneo de neoplasias clonais da célula-tronco hematopoética multipotente (HSC) caracterizadas por hematopoiese ineficaz, citopenias periféricas persistentes e alterações morfológicas displásicas em uma ou mais linhagens da medula óssea. A marca fisiopatológica fundamental é o paradoxo de medula cheia com sangue vazio: a celularidade medular encontra-se normal ou marcadamente aumentada pela proliferação clonal anormal, mas os precursores sofrem apoptose intramedular acelerada e falha na diferenciação terminal, resultando em anemia não regenerativa profunda (frequentemente macrocítica com RDW elevado), neutropenia absoluta e trombocitopenia na circulação periférica. O maior desafio clínico reside em diferenciar a MDS primária clonal da dismielopoiese secundária reativa (desencadeada por sepse, imunomediadas como IMHA/PIMA, fármacos mielotóxicos e FeLV em gatos), pois a citomorfologia isolada é incapaz de distingui-las (Weiss & Aird, 2001). Na taxonomia veterinária moderna, o limiar de aproximadamente 20% de blasts medulares separa operacionalmente a MDS (<20%) da leucemia mieloide aguda (AML, >=20%; Withrow & MacEwen, 2020; Meredith et al., 2025). O estudo seminal contemporâneo de Meredith et al. (2025) com 70 cães demonstrou que a MDS apresenta curso significativamente mais indolente do que a AML (sobrevida mediana de 384 dias versus 6 dias, P < 0,001). Não há consenso ou diretriz ACVIM padronizada; a conduta baseia-se na exclusão de causas secundárias, suporte transfusional com concentrado de hemácias guiado por hipóxia tecidual, antibioticoterapia parenteral agressiva na neutropenia febril e quimioterapia citotóxica especializada (doxorrubicina associada a citarabina contínua em cães, ou azacitidina em gatos) em centros oncológicos.",
+  quickSummary:
+    'Síntese clínica da síndrome mielodisplásica em pequenos animais:\n' +
+    '- Definição e fisiopatologia central:\n' +
+    '  - Neoplasia clonal de células-tronco hematopoéticas (HSC) caracterizada por hematopoiese ineficaz, apoptose intramedular acelerada e citopenias periféricas persistentes.\n' +
+    '  - Paradoxo de medula cheia com sangue vazio: medula hipercelular contrastando com anemia não regenerativa profunda (frequentemente macrocítica com RDW elevado), neutropenia absoluta e trombocitopenia.\n' +
+    '- Diagnóstico diferencial crítico:\n' +
+    '  - Diferenciação entre MDS clonal primária e dismielopoiese secundária reativa (desencadeada por sepse, imunomediadas como IMHA/PIMA, fármacos mielotóxicos e FeLV em gatos), indistinguíveis apenas pela citomorfologia (Weiss & Aird, 2001).\n' +
+    '- Fronteira taxonômica e estudo de Meredith et al. (2025):\n' +
+    '  - O limiar de aproximadamente 20% de blastos medulares separa operacionalmente a MDS (<20%) da leucemia mieloide aguda (AML, >=20%; Withrow & MacEwen, 2020).\n' +
+    '  - Cães com MDS apresentam evolução significativamente mais indolente do que na AML (sobrevida mediana de 384 dias versus 6 dias, P < 0,001; Meredith et al., 2025).\n' +
+    '- Manejo clínico e suporte:\n' +
+    '  - Exclusão de causas secundárias, suporte transfusional com concentrado de hemácias guiado por hipóxia tecidual, antibioticoterapia agressiva na neutropenia febril e quimioterapia citotóxica especializada (doxorrubicina combinada a citarabina contínua em cães, ou azacitidina em gatos) em centros oncológicos.',
   quickDecisionStrip: [
     "Paradoxo central da MDS: medula óssea normo a hipercelular contrastando com bicitopenia ou pancitopenia no sangue periférico.",
     "Ver displasia citológica NÃO confirma MDS: a dismielopoiese secundária a fármacos, sepse ou causas imunomediadas é duas vezes mais frequente.",
@@ -71,7 +91,13 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     "Prognóstico canino contemporâneo: cães com MDS têm sobrevida mediana de 384 dias (Meredith et al., 2025), contra meros 6 dias observados na AML."
   ],
   quickSummaryRich: {
-    lead: "Na síndrome mielodisplásica, a fábrica medular opera em capacidade máxima mas produz peças defeituosas que são descartadas antes de sair pela porta: a medula óssea encontra-se densamente celular devido à expansão clonal desregulada, enquanto os precursores sofrem apoptose intramedular acelerada, resultando em bicitopenia ou pancitopenia profunda na circulação sistêmica. O maior desafio clínico consiste em diferenciar essa neoplasia primária da dismielopoiese secundária reativa, potencialmente reversível após remoção de toxinas, fármacos ou gatilhos imunomediados e infecciosos.",
+    lead:
+      'Fisiopatologia e desafio diagnóstico da síndrome mielodisplásica:\n' +
+      '- Paradoxo de hematopoiese ineficaz:\n' +
+      '  - A fábrica medular opera em capacidade máxima devido à expansão clonal desregulada, mas os precursores sofrem apoptose acelerada intramedular.\n' +
+      '  - Resulta em bicitopenia ou pancitopenia profunda na circulação sistêmica.\n' +
+      '- Diferenciação etiológica mandatória:\n' +
+      '  - Distinguir a neoplasia primária da dismielopoiese secundária reativa, potencialmente reversível após remoção de toxinas, fármacos ou gatilhos imunomediados e infecciosos.',
     leadHighlights: [
       "fábrica medular opera em capacidade máxima",
       "apoptose intramedular acelerada",
@@ -82,7 +108,12 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     pillars: [
       {
         title: "Paradoxo de produção ineficaz",
-        body: "Uma mutação clonal adquirida precocemente na célula-tronco hematopoética (CD34+) acarreta diferenciação anômala e morte celular programada nos cordões medulares. O estímulo fisiológico de eritropoietina (EPO) intensifica a hiperplasia eritroide medular, mas a reticulocitose periférica permanece gravemente inadequada.",
+        body:
+          'Mecanismo de apoptose intramedular e estímulo ineficaz:\n' +
+          '- Mutação clonal precoce:\n' +
+          '  - Mutação clonal adquirida precocemente na célula-tronco hematopoética (CD34+) induz diferenciação anômala e morte celular programada nos cordões medulares.\n' +
+          '- Reticulocitopenia refratária:\n' +
+          '  - O estímulo fisiológico de eritropoietina (EPO) intensifica a hiperplasia eritroide medular, mas a reticulocitose periférica permanece gravemente inadequada.',
         highlights: [
           "mutação clonal adquirida",
           "célula-tronco hematopoética (CD34+)",
@@ -91,7 +122,12 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       },
       {
         title: "Dismielopoiese secundária vs MDS",
-        body: "A morfologia microscópica isolada não distingue a MDS clonal de alterações reativas (Weiss & Aird, 2001). Inflamações severas, doenças imunomediadas (PIMA/IMHA), fármacos mielotóxicos e FeLV simulam perfeitamente a displasia citológica medular, exigindo exclusão exaustiva.",
+        body:
+          'Diferenciação morfológica entre processo clonal e reativo:\n' +
+          '- Limitação da citologia isolada:\n' +
+          '  - A morfologia microscópica isolada não distingue a MDS clonal de alterações reativas (Weiss & Aird, 2001).\n' +
+          '- Gatilhos secundários frequentes:\n' +
+          '  - Inflamações severas, doenças imunomediadas (PIMA/IMHA), fármacos mielotóxicos e FeLV simulam perfeitamente a displasia citológica medular, exigindo exclusão exaustiva.',
         highlights: [
           "Weiss & Aird, 2001",
           "PIMA/IMHA",
@@ -101,7 +137,12 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       },
       {
         title: "Fronteira prática de 20% de blasts",
-        body: "A hematopatologia contemporânea adota o ponto de corte operacional de aproximadamente 20% de blasts na medula óssea para separar a MDS (<20%) da leucemia mieloide aguda (>=20%). No estudo de Meredith et al. (2025), essa distinção refletiu diferença brutal de sobrevida: 384 dias na MDS versus 6 dias na AML.",
+        body:
+          'Classificação taxonômica e impacto prognóstico:\n' +
+          '- Limiar de 20% de blastos medulares:\n' +
+          '  - Ponto de corte operacional de aproximadamente 20% de blasts na medula óssea adotado para separar a MDS (<20%) da leucemia mieloide aguda (AML, >=20%).\n' +
+          '- Evidência de Meredith et al. (2025):\n' +
+          '  - Essa distinção refletiu diferença brutal de sobrevida: 384 dias na MDS versus 6 dias na AML.',
         highlights: [
           "ponto de corte operacional de 20%",
           "MDS (<20%)",
@@ -111,7 +152,12 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       },
       {
         title: "Suporte clínico e quimioterapia seletiva",
-        body: "Não há diretriz curativa padronizada. O tratamento assenta-se em suporte transfusional para hipóxia anêmica, terapia antimicrobiana rápida na neutropenia febril e discussão de quimioterapia citorredutora (doxorrubicina com citarabina ou azacitidina) em animais com excesso de blasts (MDS-EB).",
+        body:
+          'Manejo clínico escalonado e suporte hemoterápico:\n' +
+          '- Ausência de diretriz curativa:\n' +
+          '  - Não há diretriz curativa padronizada; o tratamento assenta-se em suporte transfusional para hipóxia anêmica e antibioticoterapia rápida na neutropenia febril.\n' +
+          '- Terapias citorredutoras:\n' +
+          '  - Indicação de quimioterapia citorredutora (doxorrubicina com citarabina ou azacitidina) em animais com excesso de blasts (MDS-EB).',
         highlights: [
           "suporte transfusional",
           "neutropenia febril",
@@ -126,31 +172,64 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
         {
           label: "1. Confirmação hematológica e esfregaço manual",
           timing: "Consulta inicial / Triagem imediata",
-          detail: "Hemograma completo automatizado com contagem absoluta de reticulócitos e revisão microscópica manual minuciosa do esfregaço. Investigar macrocitose não regenerativa, anisocitose proeminente (RDW elevado), metarrubrícitos circulantes e formas bizarras em leucócitos. Em felinos, afastar pseudotrombocitopenia por agregados plaquetários na cauda da lâmina.",
+          detail:
+            'Triagem hematológica inicial e esfregaço:\n' +
+            '- Hemograma automatizado e reticulócitos:\n' +
+            '  - Mensuração com contagem absoluta de reticulócitos para caracterizar anemia não regenerativa.\n' +
+            '- Exame microscópico minucioso:\n' +
+            '  - Investigar macrocitose não regenerativa, anisocitose proeminente (RDW elevado), metarrubrícitos circulantes e formas bizarras em leucócitos.\n' +
+            '- Peculiaridade felina:\n' +
+            '  - Em felinos, afastar pseudotrombocitopenia por agregados plaquetários na cauda da lâmina.',
           limitations: "Contadores hematológicos automáticos não detectam displasias citológicas nem diferenciam agregados plaquetários felinos de trombocitopenia real."
         },
         {
           label: "2. Avaliação de linhagens e exclusão de causas periféricas",
           timing: "Primeiras 12 a 24 horas",
-          detail: "Determinar o envolvimento de uma, duas (bicitopenia) ou três linhagens (pancitopenia). Excluir mecanismos periféricos de perda, sequestro ou destruição: sangramentos ocultos, hemólise extravascular ou intravascular (teste de Coombs, aglutinação em salina), coagulação intravascular disseminada (PT, aPTT, fibrinogênio, D-dímero) e destruição imune periférica de plaquetas.",
+          detail:
+            'Avaliação de linhagens e exclusão de consumo periférico:\n' +
+            '- Mapeamento de citopenias:\n' +
+            '  - Determinar o envolvimento de uma, duas (bicitopenia) ou três linhagens (pancitopenia).\n' +
+            '- Exclusão de perda, sequestro ou lise periférica:\n' +
+            '  - Descartar hemorragias ocultas e hemólise extravascular ou intravascular (teste de Coombs, aglutinação em salina).\n' +
+            '- Avaliação hemostática e imune:\n' +
+            '  - Rastrear coagulação intravascular disseminada (PT, aPTT, fibrinogênio, D-dímero) e destruição imune periférica de plaquetas.',
           limitations: "Processos imunomediados podem coexistir com displasia medular reativa, exigindo acompanhamento longitudinal."
         },
         {
           label: "3. Rastreio clínico de causas secundárias e FeLV",
           timing: "Antes de qualquer procedimento medular invasivo",
-          detail: "Levantamento farmacológico exaustivo (estrógenos, quimioterápicos, cloranfenicol, griseofulvina, fenobarbital, sulfonamidas). Rastrear inflamação sistêmica, sepse e neoplasias ocultas por ultrassonografia abdominal e radiografia torácica. Em gatos, testagem sorológica e molecular (PCR proviral) para FeLV e FIV é obrigatória.",
+          detail:
+            'Rastreio de etiologias secundárias e retroviroses:\n' +
+            '- Revisão farmacológica exaustiva:\n' +
+            '  - Investigar exposição a estrógenos, quimioterápicos, cloranfenicol, griseofulvina, fenobarbital e sulfonamidas.\n' +
+            '- Rastreio inflamatório e tumoral:\n' +
+            '  - Investigar sepse, inflamação sistêmica e neoplasias ocultas por ultrassonografia abdominal e radiografia torácica.\n' +
+            '- Triagem retroviral felina:\n' +
+            '  - Em gatos, testagem sorológica (antígeno p27) e molecular (PCR proviral) para FeLV e FIV é obrigatória.',
           limitations: "Testes sorológicos rápidos de FeLV falso-negativos em infecção latente ou focal medular exigem confirmação por PCR."
         },
         {
           label: "4. Aspirado citológico associado a core biopsy de medula óssea",
           timing: "Procedimento confirmatório indispensável",
-          detail: "Coleta combinada de aspirado (agulha de Illinois ou Rosenthal) e biópsia em fragmento ósseo (agulha de Jamshidi) na fossa trocantérica femoral, crista ilíaca ou tuberosidade maior do úmero. O aspirado avalia a morfologia individual de precursores; o fragmento ósseo determina a celularidade real, relação M:E espacial e diagnostica mielofibrose (causa frequente de punção seca) ou aplasia medular.",
+          detail:
+            'Amostragem medular combinada (aspirado + biópsia):\n' +
+            '- Aspirado citológico (agulha de Illinois ou Rosenthal):\n' +
+            '  - Na fossa trocantérica femoral, crista ilíaca ou tuberosidade maior do úmero para avaliar morfologia individual de precursores.\n' +
+            '- Core biopsy óssea (agulha de Jamshidi):\n' +
+            '  - Determina celularidade real, arquitetura espacial M:E e diagnostica mielofibrose (causa frequente de punção seca) ou aplasia medular.',
           limitations: "Punções secas (dry tap) ocorrem em até 30% dos cães com MDS devido à mielofibrose secundária reticulínica, tornando a biópsia histológica mandatória."
         },
         {
           label: "5. Quantificação rigorosa de blasts e classificação clínica",
           timing: "Interpretação pelo patologista clínico",
-          detail: "Contagem diferencial rigorosa em pelo menos 300 a 500 células nucleadas medulares. Classificar em MDS-RC (<5% blasts, citopenia refratária), MDS-RCMD (<5% blasts com displasia em múltiplas linhagens), MDS-EB (5% a 19% blasts, excesso de blasts com alto risco de progressão) ou MDS-Er (predomínio eritroide, M:E < 1). Proporção >=20% caracteriza AML.",
+          detail:
+            'Quantificação de blastos e subtipos clínicos:\n' +
+            '- Contagem diferencial estrita:\n' +
+            '  - Contagem diferencial em pelo menos 300 a 500 células nucleadas medulares.\n' +
+            '- Classificação clínica:\n' +
+            '  - Classificar em MDS-RC (<5% blasts, citopenia refratária), MDS-RCMD (<5% blasts com displasia em múltiplas linhagens), MDS-EB (5% a 19% blasts, excesso de blasts com alto risco de progressão) ou MDS-Er (predomínio eritroide, M:E < 1).\n' +
+            '- Limiar leucêmico:\n' +
+            '  - Proporção >= 20% caracteriza Leucemia Mieloide Aguda (AML).',
           limitations: "A quantificação subjetiva pode gerar discordância interobservador de até 27% em amostras com celularidade marginal ou hemodiluição."
         }
       ]
@@ -161,34 +240,76 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
         {
           label: "1. Resgate hemodinâmico transfusional para anemia sintomática",
           timing: "Imediato conforme estabilidade clínica",
-          detail: "Infusão de concentrado de hemácias (10 a 15 mL/kg IV) ou sangue total quando houver taquicardia em repouso, fraqueza severa, prostração intensa ou lactato sérico > 2,5 mmol/L. Tipagem sanguínea mandatória (DEA 1 em cães; sistema AB em gatos) e teste de compatibilidade cruzada (crossmatch) se transfusão prévia há mais de 4 dias.",
+          detail:
+            'Suporte transfusional emergencial:\n' +
+            '- Gatilhos clínicos:\n' +
+            '  - Infusão de concentrado de hemácias (10 a 15 mL/kg IV) ou sangue total quando houver taquicardia em repouso, fraqueza severa, prostração intensa ou lactato sérico > 2,5 mmol/L.\n' +
+            '- Testes de compatibilidade:\n' +
+            '  - Tipagem sanguínea mandatória (DEA 1 em cães; sistema AB em gatos) e teste de compatibilidade cruzada (crossmatch) se transfusão prévia há mais de 4 dias.',
           dose: "Concentrado de hemácias: 10–15 mL/kg IV em 2–4 horas; velocidade inicial lenta em 15–30 min.",
           reassess: "Aferir hematócrito pós-transfusional 1 a 2 horas após a conclusão da infusão."
         },
         {
           label: "2. Abordagem agressiva da neutropenia febril",
           timing: "Se neutrófilos < 1.000/mcL com febre >= 39,3 °C",
-          detail: "Coleta prévia de hemocultura e urocultura por punção estéril. Início imediato de antibioticoterapia parenteral bactericida de amplo espectro com cobertura para gram-positivos, gram-negativos e anaeróbios para prevenir choque séptico por translocação da flora comensal.",
+          detail:
+            'Manejo da neutropenia febril crítica:\n' +
+            '- Coletas prévias estéreis:\n' +
+            '  - Coleta prévia de hemocultura e urocultura por punção estéril.\n' +
+            '- Cobertura antimicrobiana parenteral:\n' +
+            '  - Início imediato de antibioticoterapia parenteral bactericida de amplo espectro com cobertura para gram-positivos, gram-negativos e anaeróbios para prevenir choque séptico por translocação da flora comensal.',
           dose: "Ampicilina-sulbactam (30–50 mg/kg IV q8h) associada a Enrofloxacino (5–10 mg/kg IV q24h em cães) ou Marbofloxacino (2 mg/kg IV q24h em gatos)."
         },
         {
           label: "3. Eliminação de gatilhos de dismielopoiese secundária",
           timing: "Primeiras 24 a 48 horas",
-          detail: "Suspensão imediata de fármacos potencialmente mielotóxicos. Suplementação parenteral de cobalamina (vitamina B12 500 a 1.000 mcg SC semanal) e ácido fólico se houver suspeita de enteropatia ou má absorção. Se houver suspeita de destruição imunomediada concorrente (PIMA/ITP), instituir prova terapêutica imunossupressora.",
+          detail:
+            'Remoção de causas secundárias e prova terapêutica:\n' +
+            '- Suspensão de fármacos:\n' +
+            '  - Suspensão imediata de fármacos potencialmente mielotóxicos.\n' +
+            '- Suplementação vitamínica:\n' +
+            '  - Suplementação parenteral de cobalamina (vitamina B12 500 a 1.000 mcg SC semanal) e ácido fólico se houver suspeita de enteropatia ou má absorção.\n' +
+            '- Prova imunossupressora:\n' +
+            '  - Se houver suspeita de destruição imunomediada concorrente (PIMA/ITP), instituir prova terapêutica imunossupressora.',
           dose: "Prednisolona: 1 a 2 mg/kg/dia VO sob vigilância estrita da contagem neutrofílica."
         },
         {
           label: "4. Terapia antineoplásica especializada para MDS-EB",
           timing: "Casos com excesso de blasts ou citopenias refratárias",
-          detail: "Discussão com especialista em oncologia veterinária sobre quimioterapia citotóxica ou agentes hipometilantes. Considerar o protocolo de doxorrubicina combinada a citarabina contínua (Matsuyama et al., 2023) em cães, ou 5-azacitidina (Hisasue et al., 2022) em felinos.",
+          detail:
+            'Terapia antineoplásica especializada (MDS-EB):\n' +
+            '- Protocolo em cães (Matsuyama et al., 2023):\n' +
+            '  - Discussão com especialista em oncologia veterinária sobre quimioterapia citotóxica ou agentes hipometilantes; protocolo de doxorrubicina combinada a citarabina contínua.\n' +
+            '- Protocolo em gatos (Hisasue et al., 2022):\n' +
+            '  - 5-azacitidina em felinos com excesso de blastos em ciclos mensais sob supervisão especializada.',
           dose: "Cães: Doxorrubicina 30 mg/m² IV em 20 min seguida de Citarabina 300 mg/m² IV CRI em 6 horas. Gatos: Azacitidina 35–70 mg/m² SC por 3–5 dias em ciclos mensais."
         }
       ]
     }
   },
   etiology: {
-    definicaoNaturezaClonal: "A síndrome mielodisplásica primária é uma desordem hematopoética clonal originada a partir de mutações somáticas genéticas e aberrações epigenéticas na célula-tronco hematopoética multipotente primitiva (CD34+) ou em seus progenitores mieloides iniciais. A linhagem celular mutada adquire uma vantagem proliferativa e de sobrevivência sobre a hematopoiese normal policlonal, ocupando progressivamente o parênquima medular. Entretanto, os precursores neoplásicos exibem maturação disfuncional intrínseca e ativação excessiva de vias pró-apoptóticas mitocondriais e de receptores de morte celular (Fas/FasL, caspases), sofrendo lise programada antes de atingir os sinusoides vasculares. A enfermidade integra formalmente o espectro das neoplasias mieloides da Organização Mundial da Saúde adaptadas à medicina veterinária (Withrow & MacEwen, 6ª ed.).",
-    dismielopoieseSecundariaReativa: "A dismielopoiese secundária reativa constitui a principal armadilha diagnóstica em hematologia veterinária. Diversas afecções inflamatórias, tóxicas e imunomediadas provocam agressão à medula óssea, gerando atipias morfológicas idênticas à displasia neoplásica. No estudo seminal de Weiss & Aird (2001), avaliando 267 exames medulares caninos, 34 cães apresentavam mais de 10% de displasia citológica em pelo menos uma linhagem: apenas 13 correspondiam a MDS primária clonal verdadeira, enquanto 21 correspondiam a dismielopoiese secundária. Os autores demonstraram que a citomorfologia isolada é incapaz de diferenciar MDS clonal de afecções secundárias. As causas secundárias mais importantes compreendem: (1) Doenças imunomediadas (IMHA e PIMA), onde o estímulo eritropoético compensatório desorganizado gera precursores bizarras; (2) Fármacos mielotóxicos, incluindo estrógenos exógenos ou endógenos (hiperestrogenismo por tumor testicular de células de Sertoli), cloranfenicol, agentes alquilantes, griseofulvina, fenobarbital e sulfonamidas; (3) Toxinas e compostos químicos industriais; (4) Sepse grave e choque endotóxico; (5) Deficiências de cobalamina (vitamina B12) ou folato, ocasionando alterações megaloblásticas por síntese defeituosa de timidina no DNA; (6) Mielofibrose secundária e invasão neoplásica não mieloide (mieloftise por linfoma, mieloma múltiplo ou carcinomas metastáticos).",
+    definicaoNaturezaClonal:
+      'Definição e natureza clonal da síndrome mielodisplásica primária:\n' +
+      '- Origem clonal na célula-tronco hematopoética:\n' +
+      '  - Desordem hematopoética clonal originada a partir de mutações somáticas e aberrações epigenéticas na célula-tronco multipotente (CD34+) ou em progenitores mieloides iniciais.\n' +
+      '- Vantagem proliferativa e apoptose intramedular acelerada:\n' +
+      '  - A linhagem celular mutada adquire vantagem proliferativa e de sobrevivência sobre a hematopoiese normal policlonal, ocupando progressivamente o parênquima medular.\n' +
+      '  - Entretanto, os precursores neoplásicos exibem maturação disfuncional intrínseca e ativação excessiva de vias pró-apoptóticas mitocondriais e de receptores de morte (Fas/FasL, caspases).\n' +
+      '  - Sofrem lise programada antes de atingir os sinusoides vasculares (hematopoiese ineficaz).\n' +
+      '- Enquadramento nosológico internacional:\n' +
+      '  - A enfermidade integra formalmente o espectro das neoplasias mieloides da Organização Mundial da Saúde adaptadas à medicina veterinária (Withrow & MacEwen, 6ª ed.).',
+    dismielopoieseSecundariaReativa:
+      'Dismielopoiese secundária reativa: a principal armadilha diagnóstica:\n' +
+      '- Indistinguibilidade citomorfológica isolada (Weiss & Aird, 2001):\n' +
+      '  - Em 267 exames medulares caninos, 34 cães apresentavam >10% de displasia citológica em pelo menos uma linhagem: apenas 13 correspondiam a MDS primária clonal verdadeira, enquanto 21 correspondiam a dismielopoiese secundária reativa.\n' +
+      '  - A citomorfologia isolada é incapaz de diferenciar MDS clonal de alterações secundárias reativas.\n' +
+      '- Causas secundárias fundamentais a descartar:\n' +
+      '  - 1. Doenças imunomediadas (IMHA e PIMA): estímulo eritropoético compensatório desorganizado gerando precursores bizarros.\n' +
+      '  - 2. Fármacos mielotóxicos: estrógenos exógenos ou endógenos (hiperestrogenismo por tumor testicular de células de Sertoli), cloranfenicol, agentes alquilantes, griseofulvina, fenobarbital e sulfonamidas.\n' +
+      '  - 3. Toxinas ambientais e compostos químicos industriais.\n' +
+      '  - 4. Sepse grave e choque endotóxico com consumo periférico e estresse medular.\n' +
+      '  - 5. Deficiências de cobalamina (vitamina B12) ou folato: síntese defeituosa de timidina no DNA com alterações megaloblásticas.\n' +
+      '  - 6. Invasão neoplásica não mieloide: mieloftise por linfoma, mieloma múltiplo ou carcinomas metastáticos.',
     tabelaMdsVsDismielopoieseSecundaria: {
       kind: "clinicalTable",
       caption: "Tabela comparativa — Síndrome Mielodisplásica (MDS Clonal) versus Dismielopoiese Secundária Reativa",
@@ -235,8 +356,28 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
         ]
       ]
     },
-    etiologiaFelinaFeLV: "Nos felinos, a síndrome mielodisplásica apresenta uma forte ligação histórica com o vírus da leucemia viral felina (FeLV). O retrovírus infecta diretamente os progenitores hematopoéticos medulares e o estroma fibroblástico. A integração proviral e a expressão de proteínas estruturais virais interferem na sinalização de ciclinas e fatores de transcrição, desencadeando apoptose prematura e maturação desordenada. Na série histórica de Hisasue et al. (2001), 15 de 16 gatos com MDS (93,8%) eram positivos para FeLV. Da mesma forma, Nelson & Couto (6ª ed.) relata que mais de 80% dos gatos em estudos clássicos eram virêmicos. No entanto, o FeLV também provoca diversas afecções medulares não neoplásicas (como aplasia pura de série vermelha e mielossupressão reativa), de forma que a presença do retrovírus associada à displasia não fecha automaticamente o diagnóstico de MDS clonal sem acompanhamento seriado da evolução clínica.",
-    classificacaoPraticaVeterinaria: "A hematopatologia veterinária adota a classificação baseada nos consensos FAB adaptados pelo Animal Leukemia Study Group (Jain et al., 1991) e refinados por Withrow & MacEwen (2020) e Weiss (2006): (1) MDS-RC (Citopenia Refratária): citopenia em uma linhagem (anemia não regenerativa) com menos de 5% de blastos medulares e curso clínico indolente; (2) MDS-RCMD (Citopenia Refratária com Displasia Multilinear): menos de 5% de blastos medulares com displasia acentuada em duas ou três linhagens hematopoéticas e citopenias múltiplas; (3) MDS-EB (MDS com Excesso de Blasts): proporção de blasts medulares entre 5% e 19%, caracterizando a forma biologicamente mais avançada, com sobrevida curta e elevado risco de transformação para leucemia mieloide aguda; (4) MDS-Er (MDS com Predomínio Eritroide): caracterizada por hiperplasia eritroide maciça displásica e relação mieloide:eritroide (M:E) inferior a 1,0.",
+    etiologiaFelinaFeLV:
+      'Etiologia felina e o papel do vírus da leucemia viral felina (FeLV):\n' +
+      '- Patogênese retroviral medular:\n' +
+      '  - O FeLV infecta diretamente os progenitores hematopoéticos medulares e o estroma fibroblástico.\n' +
+      '  - A integração proviral e a expressão de proteínas virais interferem na sinalização de ciclinas e fatores de transcrição, desencadeando apoptose prematura e maturação desordenada.\n' +
+      '- Evidência histórica de forte ligação:\n' +
+      '  - Série de Hisasue et al. (2001): 15 de 16 gatos com MDS (93,8%) eram positivos para FeLV.\n' +
+      '  - Nelson & Couto (6ª ed.): mais de 80% dos gatos em estudos clássicos apresentavam virêmia ativa.\n' +
+      '- ARMADILHA DIAGNÓSTICA NO PACIENTE FELINO:\n' +
+      '  - O FeLV também provoca afecções medulares não neoplásicas (aplasia pura de série vermelha e mielossupressão reativa).\n' +
+      '  - A presença do retrovírus associada à displasia não fecha automaticamente o diagnóstico de MDS clonal sem acompanhamento longitudinal.',
+    classificacaoPraticaVeterinaria:
+      'Classificação prática da síndrome mielodisplásica em pequenos animais:\n' +
+      '- Consensos FAB e adaptações veterinárias (Jain et al., 1991; Withrow & MacEwen, 2020; Weiss, 2006):\n' +
+      '- 1. MDS-RC (Citopenia Refratária):\n' +
+      '  - Citopenia em uma linhagem (anemia não regenerativa), menos de 5% de blastos medulares e curso clínico indolente.\n' +
+      '- 2. MDS-RCMD (Citopenia Refratária com Displasia Multilinear):\n' +
+      '  - Menos de 5% de blastos medulares com displasia acentuada em duas ou três linhagens hematopoéticas e citopenias múltiplas.\n' +
+      '- 3. MDS-EB (MDS com Excesso de Blasts):\n' +
+      '  - Proporção de blastos medulares entre 5% e 19%, caracterizando a forma biologicamente mais avançada, com sobrevida curta e elevado risco de transformação para leucemia mieloide aguda.\n' +
+      '- 4. MDS-Er (MDS com Predomínio Eritroide):\n' +
+      '  - Hiperplasia eritroide maciça displásica e relação mieloide:eritroide (M:E) inferior a 1,0.',
     tabelaClassificacaoVeterinariaMds: {
       kind: "clinicalTable",
       caption: "Tabela — Classificação Prática da Síndrome Mielodisplásica em Cães e Gatos (Adaptada de Jain et al. e Withrow)",
@@ -280,9 +421,30 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
     }
   },
   epidemiology: {
-    populacaoCanina: "Na espécie canina, a síndrome mielodisplásica é classificada como uma enfermidade incomum a rara. Neoplasias mieloides como um grupo ocorrem cerca de 10 vezes menos frequentemente do que neoplasias linfoproliferativas (linfomas e leucemias linfoides) na clínica de pequenos animais (Withrow & MacEwen, 6ª ed.). A doença afeta cães adultos a idosos. No estudo contemporâneo de Meredith et al. (2025), que reuniu 42 cães com MDS avaliados por um painel de três patologistas clínicos, a idade média ao diagnóstico foi de 7,8 anos (amplitude de 3,4 a 15 anos). Nenhuma predisposição sexual entre machos e fêmeas foi detectada, acometendo cães de raças puras e sem raça definida em proporções similares.",
-    investigacaoRacialDachshund: "Pesquisadores japoneses descreveram uma aparente concentração de casos de síndrome mielodisplásica e disfunções hematopoéticas clonais em cães da raça Dachshund miniatura. Investigações genômicas preliminares detectaram variantes em genes reguladores de ciclo celular e reparo de DNA, como UMODL1 e XRCC5. Contudo, as evidências científicas disponíveis permanecem no nível de força fraca a muito fraca (🔴), não autorizando considerar a afecção uma doença hereditária simples, nem justificando o uso desses marcadores em testes de triagem comerciais ou aconselhamento reprodutivo na rotina.",
-    epidemiologiaFelinaContextoAtual: "Nos felinos, a epidemiologia da MDS sofreu alterações temporais expressivas associadas ao controle do FeLV. Nas décadas passadas, a maioria dos gatos acometidos era jovem a adulto de meia-idade e portador de infecção virêmica por FeLV. Com o advento e a disseminação de testes de triagem na rotina e vacinação ampla, verifica-se uma população crescente de gatos idosos, FeLV-negativos, desenvolvendo quadros esporádicos de MDS espontânea, aproximando o perfil epidemiológico felino contemporâneo daquele observado em cães e seres humanos."
+    populacaoCanina:
+      'Epidemiologia e demografia na espécie canina:\n' +
+      '- Enfermidade incomum a rara:\n' +
+      '  - Neoplasias mieloides como um grupo ocorrem cerca de 10 vezes menos frequentemente do que neoplasias linfoproliferativas (linfomas e leucemias linfoides; Withrow & MacEwen, 6ª ed.).\n' +
+      '- Faixa etária e distribuição:\n' +
+      '  - Acomete cães adultos a idosos.\n' +
+      '  - Estudo de Meredith et al. (2025) com 42 cães: idade média de 7,8 anos (amplitude de 3,4 a 15 anos).\n' +
+      '- Distribuição sexual e racial:\n' +
+      '  - Nenhuma predisposição sexual entre machos e fêmeas foi detectada, acometendo cães de raças puras e sem raça definida em proporções similares.',
+    investigacaoRacialDachshund:
+      'Investigação genômica na raça Dachshund miniatura:\n' +
+      '- Concentração de casos em linhagens japonesas:\n' +
+      '  - Pesquisadores japoneses descreveram aparente concentração de casos de síndrome mielodisplásica e disfunções hematopoéticas clonais em Dachshund miniatura.\n' +
+      '- Variantes genômicas preliminares:\n' +
+      '  - Mutações em genes reguladores de ciclo celular e reparo de DNA (UMODL1 e XRCC5).\n' +
+      '- Nível de evidência atual (🔴 muito fraco):\n' +
+      '  - As evidências disponíveis permanecem muito fracas, não autorizando considerar a afecção uma doença hereditária simples nem justificando testes comerciais para aconselhamento reprodutivo.',
+    epidemiologiaFelinaContextoAtual:
+      'Transição epidemiológica contemporânea na espécie felina:\n' +
+      '- Mudança de perfil com controle do FeLV:\n' +
+      '  - Nas décadas passadas, a maioria dos gatos acometidos era jovem a adulto de meia-idade e virêmico para FeLV.\n' +
+      '- Cenário atual com triagem e vacinação ampla:\n' +
+      '  - População crescente de gatos idosos, FeLV-negativos, desenvolvendo quadros esporádicos de MDS espontânea.\n' +
+      '  - Aproximação do perfil epidemiológico felino contemporâneo daquele observado em cães e seres humanos.'
   },
   pathogenesisTransmission: {
     cascata: [
@@ -295,32 +457,83 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       "7. Sobrecarga compensatória renal com aumento de EPO, que estimula ainda mais a proliferação ineficaz do clone defeituoso.",
       "8. Instabilidade genômica com acúmulo de mutações somáticas secundárias ao longo do tempo, bloqueando totalmente a diferenciação e culminando em expansão descontrolada de mieloblastos (transformação em leucemia mieloide aguda - AML em 20% a 40% dos casos)."
     ],
-    transmissao: "A síndrome mielodisplásica primária é uma neoplasia somática clonal adquirida, não sendo transmissível por contato direto, fômites ou vias reprodutivas. Na espécie felina, a infecção retroviral pelo vírus da leucemia felina (FeLV) é transmissível horizontalmente através de saliva, mordeduras, lambedura mútua e compartilhamento de comedouros/bebedouros, bem como verticalmente por via transplacentária e lactação; a infecção pelo FeLV atua como gatilho indutor de instabilidade genômica e displasia na medula óssea do gato infectado."
+    transmissao:
+      'Vias de transmissão e caráter nosológico:\n' +
+      '- Neoplasia clonal não contagiosa:\n' +
+      '  - A síndrome mielodisplásica primária é uma neoplasia somática clonal adquirida, não sendo transmissível por contato direto, fômites ou vias reprodutivas.\n' +
+      '- Transmissão do FeLV como gatilho nos felinos:\n' +
+      '  - Na espécie felina, a infecção retroviral pelo vírus FeLV é transmissível horizontalmente através de saliva, mordeduras, lambedura mútua e comedouros/bebedouros compartilhados, bem como verticalmente por via transplacentária e lactação.\n' +
+      '  - A infecção pelo FeLV atua como gatilho indutor de instabilidade genômica e displasia na medula óssea do gato infectado.'
   },
   pathophysiology: {
-    anemiaNaoRegenerativaEMacrocitose: "A anemia é a anormalidade hematológica mais constante da síndrome mielodisplásica, documentada em 95% dos cães e na totalidade dos gatos afetados (Meredith et al., 2025; Hisasue et al., 2001). Caracteriza-se por ser não regenerativa (reticulocitopenia inadequada para o grau de hipóxia). A presença de macrocitose não regenerativa (volume corpuscular médio - VCM elevado com contagem de reticulócitos baixa) constitui uma marca clínica clássica. Enquanto a macrocitose fisiológica reflete reticulócitos jovens de grande diâmetro, a macrocitose na MDS resulta da perda de sincronia na divisão celular e síntese de hemoglobina, gerando precursores megaloblastoides que sofrem mitoses incompletas. Observa-se ainda acentuada anisocitose (RDW elevado) e metarrubricitose inapropriada (liberação de hemácias nucleadas sem policromasia concomitante).",
+    anemiaNaoRegenerativaEMacrocitose:
+      'Fisiopatologia da anemia não regenerativa e macrocitose:\n' +
+      '- Prevalência e marca hematológica definidora:\n' +
+      '  - A anemia é o achado mais constante, documentada em 95% dos cães e na totalidade dos gatos afetados (Meredith et al., 2025; Hisasue et al., 2001).\n' +
+      '  - Caracteriza-se por ser arregenerativa (reticulocitopenia severamente desproporcional à hipóxia tecidual).\n' +
+      '- Macrocitose não regenerativa e dissincronia núcleo-citoplasma:\n' +
+      '  - Enquanto a macrocitose fisiológica decorre do influxo de reticulócitos jovens de grande calibre, a macrocitose na MDS decorre de desregulação maturativa intrínseca.\n' +
+      '  - Perda de sincronia entre a síntese de hemoglobina citoplasmática e a divisão cromatínica nuclear, originando precursores megaloblastoides que sofrem mitoses anômalas ou abortadas.\n' +
+      '- Anormalidades periféricas adicionais:\n' +
+      '  - RDW marcadamente elevado (anisocitose extrema por populações eritroides de tamanhos dispares).\n' +
+      '  - Metarrubricitose inapropriada (liberação na circulação de hemácias nucleadas precoces sem policromasia acompanhante).',
     figuraEsfregacoDisplasia: {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/esfregaco-displasia-meredith2025.jpg",
       alt: "Esfregaço sanguíneo e aspirado medular demonstrando displasia celular em cão com MDS (Meredith et al., 2025)",
-      caption: "Figura 1 — Displasia morfológica em cão com Síndrome Mielodisplásica: (a) Esfregaço de sangue periférico evidenciando neutrófilos displásicos com lobulação nuclear irregular e eritrócitos gigantes macrocíticos; (b) Aspirado de medula óssea exibindo hipercelularidade e diseritropoiese com precursores megaloblastoides (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 1 — Displasia morfológica em cão com Síndrome Mielodisplásica (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- (a) Sangue periférico: neutrófilos displásicos com lobulação nuclear irregular e eritrócitos gigantes macrocíticos.\n' +
+        '- (b) Aspirado medular: hipercelularidade e diseritropoiese com precursores megaloblastoides.',
       display: "wide"
     },
-    disgranulopoieseERiscoDeSepse: "O comprometimento clonal da linhagem granulocítica resulta em neutropenia absoluta combinada a severa disfunção fagocítica. Os precursores sofrem arresto em estágios de mielócitos e metamielócitos. Os poucos neutrófilos que atingem a circulação exibem defeitos funcionais acentuados na quimiotaxia, diapedese e atividade do sistema enzimático mieloperoxidase (MPO). O paciente perde a integridade da imunidade inata primária, tornando-se vulnerável a bacteremias espontâneas oriundas da flora comensal gastrointestinal e respiratória, com alto risco de evolução para sepse e choque séptico distributivo.",
-    dismegacariopoieseEHemorragia: "A dismegacariopoiese afeta tanto a contagem quantitativa quanto a integridade funcional das plaquetas. Na medula óssea, encontram-se micromegacariócitos mononucleados (formas anãs anômalas) e megacariócitos gigantes hipolobulados. As plaquetas liberadas no sangue periférico exibem tamanho gigante (macroplaquetas com VPM aumentado), hipogranularidade citoplasmática e defeitos de ativação de receptores de membrana (glicoproteínas GPIIb/IIIa e GPIb-IX-V). Em consequência dessa trombocitopatia adquirida, o paciente pode apresentar sangramentos espontâneos graves (petéquias, equimoses, epistaxe, melena) mesmo com contagens plaquetárias que habitualmente não causariam hemorragia espontânea em outras condições (ex.: 40.000 a 60.000/mcL).",
+    disgranulopoieseERiscoDeSepse:
+      'Disgranulopoiese clonal e colapso da barreira imunológica inata:\n' +
+      '- Arresto maturativo e neutropenia quantitativa:\n' +
+      '  - O comprometimento clonal da linhagem mielocítica resulta em arresto maturativo em estágios intermediários (promielócitos, mielócitos e metamielócitos) com apoptose intramedular.\n' +
+      '  - Resulta em neutropenia absoluta progressiva e incapacidade de resposta leucocitária compensatória.\n' +
+      '- Disfunção fagocítica qualitativa adquirida:\n' +
+      '  - Os neutrófilos residuais que atingem a circulação exibem defeitos graves na quimiotaxia, adesão endotelial, diapedese e atividade do sistema mieloperoxidase (MPO).\n' +
+      '- Risco crítico de sepse e choque distributivo:\n' +
+      '  - A perda da integridade fagocítica primária predispõe a bacteremias espontâneas a partir da microbiota comensal do trato digestivo e respiratório.\n' +
+      '  - Risco iminente de evolução catastrófica para choque séptico distributivo em poucas horas.',
+    dismegacariopoieseEHemorragia:
+      'Dismegacariopoiese e hemostasia primária defeituosa:\n' +
+      '- Atipias morfológicas centrais na medula óssea:\n' +
+      '  - Presença de micromegacariócitos mononucleados anômalos (formas anãs) e megacariócitos gigantes hipolobulados com dissociação de maturação núcleo-citoplasma.\n' +
+      '- Trombocitopatia funcional associada à trombocitopenia:\n' +
+      '  - Plaquetas periféricas gigantes (macroplaquetas com VPM elevado) e hipogranulares.\n' +
+      '  - Disfunção dos receptores de membrana de hemostasia primária (glicoproteínas GPIIb/IIIa e GPIb-IX-V), prejudicando adesão e agregação plaquetária.\n' +
+      '- Diátese hemorrágica desproporcional à contagem:\n' +
+      '  - Devido à disfunção qualitativa adquirida, sangramentos espontâneos graves (petéquias, equimoses, epistaxe e melena) ocorrem mesmo em contagens plaquetárias moderadas (ex.: 40.000 a 60.000/mcL).',
     figuraMedulaBiopsiaReticulina: {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/medula-biopsia-reticulina-meredith2025.jpg",
       alt: "Biópsia de medula óssea com coloração de reticulina e micromegacariócitos na MDS canina (Meredith et al., 2025)",
-      caption: "Figura 2 — Histopatologia e citologia medular na MDS: (a) Presença de micromegacariócitos hipolobulados anormais no aspirado; (b) Core biopsy de medula óssea corada por prata (reticulina de Gomori) demonstrando rede fibrótica reticulínica proeminente (mielofibrose secundária), explicando a ocorrência frequente de punção seca (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 2 — Histopatologia e citologia medular na MDS (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- (a) Aspirado medular: micromegacariócitos hipolobulados anormais característicos de dismegacariopoiese.\n' +
+        '- (b) Core biopsy (reticulina de Gomori): rede fibrótica reticulínica acentuada (mielofibrose secundária), explicando a alta frequência de punção seca.',
       display: "wide"
     },
-    fronteiraTaxonomicaMdsVsAml: "A separação entre MDS e AML é uma fronteira dinâmica em hematopatologia comparada. O critério histórico FAB (Jain et al., 1991) estabelecia o limiar de 30% de blasts na medula para classificar AML. A medicina veterinária moderna alinhou-se aos consensos internacionais da OMS, adotando aproximadamente 20% de blastos medulares como limite prático (Withrow & MacEwen, 2020; Meredith et al., 2025). Pacientes com menos de 20% de blasts são categorizados como MDS (sendo o subgrupo de 5% a 19% classificado como MDS com excesso de blasts - MDS-EB); espécimes com 20% ou mais de blasts são classificados como leucemia mieloide aguda (AML). No estudo de 70 cães de Meredith et al. (2025), essa distinção refletiu impacto prognóstico decisivo: a sobrevida mediana foi de 384 dias na MDS contra meros 6 dias na AML.",
+    fronteiraTaxonomicaMdsVsAml:
+      'Fronteira taxonômica e limiar de blastos entre MDS e AML:\n' +
+      '- Evolução dos critérios de classificação diagnóstica:\n' +
+      '  - Critério histórico FAB (Jain et al., 1991): estabelecia o patamar de 30% de blastos medulares para definir leucemia mieloide aguda (AML).\n' +
+      '  - Consenso veterinário contemporâneo (Withrow & MacEwen, 2020; Meredith et al., 2025): adotou aproximadamente 20% de blastos como limite prático divisor.\n' +
+      '- Estratificação diagnóstica baseada na blastemia medular:\n' +
+      '  - Menos de 20% de blastos: classificado como síndrome mielodisplásica (MDS), dividida em baixo blasto (<5%) e excesso de blastos (MDS-EB, 5% a 19%).\n' +
+      '  - 20% ou mais de blastos: diagnóstico definitivo de leucemia mieloide aguda (AML).\n' +
+      '- Impacto prognóstico decisivo na sobrevida (Meredith et al., 2025):\n' +
+      '  - Em coorte padronizada de 70 cães, a sobrevida mediana foi de 384 dias na MDS contra apenas 6 dias na AML (P < 0,001), validando a relevância biológica do limiar.',
     figuraSobrevidaMdsVsAml: {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/curva-sobrevida-mds-vs-aml-meredith2025.jpg",
       alt: "Curvas de sobrevida de Kaplan-Meier comparando MDS vs AML em 70 cães (Meredith et al., 2025)",
-      caption: "Figura 3 — Curvas de sobrevida global de Kaplan-Meier para 70 cães com neoplasias mieloides: cães com síndrome mielodisplásica (MDS; n = 42, linha pontilhada) apresentaram mediana de sobrevida de 384 dias, em marcante contraste com a sobrevida mediana de 6 dias em cães com leucemia mieloide aguda (AML; n = 28, linha contínua; P < 0,001; Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 3 — Curvas de sobrevida global de Kaplan-Meier em 70 cães com neoplasias mieloides (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- Síndrome mielodisplásica (MDS; n = 42, linha pontilhada): sobrevida mediana de 384 dias.\n' +
+        '- Leucemia mieloide aguda (AML; n = 28, linha contínua): sobrevida mediana de 6 dias (P < 0,001).',
       display: "default"
     },
     tabelaMdsVsAmlDiferenciais: {
@@ -568,8 +781,24 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 1,
       title: "Hemograma completo com contagem de reticulócitos e esfregaço manual",
       purpose: "Identificação inicial de citopenias periféricas, atipias morfológicas e quantificação de blastos circulantes.",
-      description: "Coleta de sangue em EDTA. Realização de hemograma automatizado com contagem absoluta de reticulócitos. Confecção imediata de esfregaço sanguíneo corado por panótico rápido ou Wright-Giemsa para revisão microscópica por patologista clínico em objetiva de imersão (100x). Em gatos, inspeção rigorosa da cauda e bordas do esfregaço para descartar agregados plaquetários.",
-      interpretation: "Anemia não regenerativa grave em 95% dos cães (hematócrito mediano 21%; Meredith et al., 2025) e 100% dos gatos (Hisasue et al., 2001). Macrocitose não regenerativa (VCM elevado) com anisocitose proeminente (RDW alto). Bicitopenia ou pancitopenia. No esfregaço: metamielócitos gigantes, hipossegmentação neutrofílica (pseudo-Pelger-Huët) e plaquetas gigantes hipogranulares. Ausência de blastos em 76% dos cães com MDS.",
+      description:
+        'Execução técnica e triagem hematológica:\n' +
+        '- Coleta em tubo EDTA:\n' +
+        '  - Hemograma automatizado com contagem absoluta de reticulócitos para avaliação quantitativa da regeneração eritroide.\n' +
+        '- Esfregaço sanguíneo imediato:\n' +
+        '  - Confecção e coloração rápida por panótico ou Wright-Giemsa para revisão microscópica em objetiva de imersão (100x).\n' +
+        '- Particularidade felina:\n' +
+        '  - Inspeção minuciosa das bordas e cauda do esfregaço para pesquisar agregados plaquetários e afastar pseudotrombocitopenia mecânica.',
+      interpretation:
+        'Interpretação e padrões citológicos característicos:\n' +
+        '- Anemia e índices eritrocitários:\n' +
+        '  - Anemia não regenerativa grave em 95% dos cães (hematócrito mediano de 21%; Meredith et al., 2025) e em 100% dos gatos (Hisasue et al., 2001).\n' +
+        '  - Macrocitose não regenerativa (VCM elevado) e anisocitose marcante (RDW elevado).\n' +
+        '- Citopenias e atipias morfológicas:\n' +
+        '  - Bicitopenia ou pancitopenia periférica.\n' +
+        '  - No esfregaço: metamielócitos gigantes, hipossegmentação neutrofílica (pseudo-Pelger-Huët) e macroplaquetas hipogranulares.\n' +
+        '- Blastemia periférica:\n' +
+        '  - Ausência de blastos circulantes em 76% dos cães com MDS.',
       limitations: "A ausência de blastos circulantes NÃO descarta MDS nem AML. Contadores automáticos subestimam plaquetas felinas por agregação mecânica.",
       isGoldStandard: false
     },
@@ -577,8 +806,18 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 2,
       title: "Exclusão de causas periféricas de citopenia e coagulograma",
       purpose: "Diferenciação entre consumo/destruição periférica e insuficiência medular central.",
-      description: "Pesquisa de autoaglutinação em salina e teste de Coombs direto (descartar IMHA). Avaliação de esquizócitos no esfregaço. Coagulograma com tempo de protrombina (PT), tempo de tromboplastina parcial ativada (aPTT), dosagem de fibrinogênio e D-dímero.",
-      interpretation: "PT e aPTT tipicamente normais na MDS não complicada (a hemostasia secundária plasmática permanece preservada, a menos que ocorra sepse e CID secundária). Teste de Coombs negativo na forma primária; positividade pode sugerir dismielopoiese secundária a afecções imunomediadas.",
+      description:
+        'Triagem de hemólise, consumo periférico e hemostasia:\n' +
+        '- Pesquisa imunomediada e integridade eritrocitária:\n' +
+        '  - Pesquisa de autoaglutinação em salina e teste de Coombs direto para descartar IMHA; avaliação de esquizócitos no esfregaço.\n' +
+        '- Avaliação da hemostasia secundária plasmática:\n' +
+        '  - Coagulograma completo com tempo de protrombina (PT), tempo de tromboplastina parcial ativada (aPTT), fibrinogênio e D-dímero.',
+      interpretation:
+        'Interpretação hemostática e diagnósticos de exclusão:\n' +
+        '- Painel de coagulação plasmática:\n' +
+        '  - PT e aPTT tipicamente normais na MDS não complicada (a hemostasia secundária plasmática permanece preservada, a menos que ocorra sepse e CID secundária).\n' +
+        '- Painel imunológico:\n' +
+        '  - Teste de Coombs negativo na forma primária; positividade aponta para dismielopoiese secundária a afecções imunomediadas.',
       limitations: "Testes de coagulação plasmática normais não protegem o paciente contra hemorragias graves decorrentes de trombocitopenia e trombocitopatia primária.",
       isGoldStandard: false
     },
@@ -586,8 +825,20 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 3,
       title: "Rastreio de causas secundárias e sorologia/PCR FeLV e FIV em gatos",
       purpose: "Identificação de dismielopoiese secundária reversível e rastreio da principal associação etiológica felina.",
-      description: "Levantamento farmacológico exaustivo (estrógenos, quimioterápicos, cloranfenicol, griseofulvina, fenobarbital, sulfonamidas). Perfil bioquímico sérico (ureia, creatinina, enzimas hepáticas, albumina). Em felinos, teste imunocromatográfico/ELISA para antígeno p27 do FeLV e anticorpos FIV, seguido de PCR proviral para FeLV em sangue total.",
-      interpretation: "Exames bioquímicos encontram-se frequentemente preservados na fase inicial da MDS; alterações refletem complicações orgânicas ou hepatopatias/nefropatias causadoras de anemia crônica. Positividade para FeLV presente na maioria das séries históricas felinas (Hisasue et al., 2001; Nelson & Couto, 6ª ed.).",
+      description:
+        'Triagem de gatilhos farmacológicos, metabólicos e retrovirais:\n' +
+        '- Levantamento farmacológico exaustivo:\n' +
+        '  - Investigar exposição a estrógenos, quimioterápicos, cloranfenicol, griseofulvina, fenobarbital e sulfonamidas.\n' +
+        '- Perfil bioquímico sérico:\n' +
+        '  - Mensuração de ureia, creatinina, ALT, fosfatase alcalina e albumina para investigar falência renal ou hepática secundária.\n' +
+        '- Triagem retroviral felina:\n' +
+        '  - Em felinos, teste imunocromatográfico/ELISA para antígeno p27 do FeLV e anticorpos FIV, seguido de PCR proviral para FeLV em sangue total.',
+      interpretation:
+        'Padrão laboratorial e correlação etiológica:\n' +
+        '- Função renal e hepática:\n' +
+        '  - Exames bioquímicos encontram-se frequentemente preservados na fase inicial da MDS; alterações refletem complicações orgânicas ou hepatopatias/nefropatias causadoras de anemia crônica.\n' +
+        '- Retrovírus felino:\n' +
+        '  - Positividade para FeLV presente na maioria das séries históricas felinas (Hisasue et al., 2001; Nelson & Couto, 6ª ed.).',
       limitations: "O gato FeLV-positivo com displasia medular não é automaticamente portador de clone neoplásico irreversível; pode tratar-se de dismielopoiese viral reversível ou aplasia pura.",
       isGoldStandard: false
     },
@@ -595,8 +846,24 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 4,
       title: "Aspirado citológico de medula óssea (Morfologia e blasts)",
       purpose: "Avaliação detalhada da morfologia celular de precursores hematopoéticos e contagem diferencial de blastos.",
-      description: "Punção com agulha de Illinois ou Rosenthal sob sedação profunda e anestesia local, preferencialmente na fossa trocantérica femoral ou tuberosidade maior do úmero. Obtenção de espículas medulares, confecção de lâminas por técnica de esmagamento suave (squash) e coloração com Giemsa ou Leishman. Contagem diferencial estrita de 300 a 500 células nucleadas.",
-      interpretation: "Celularidade normo a hipercelular com partículas ricas. Displasia citológica em >= 10% das células de pelo menos uma linhagem: diseritropoiese (eritroblastos megaloblastoides, núcleos bizarros, pontes intercromáticas), disgranulopoiese (metamielócitos gigantes, segmentação irregular) e dismegacariopoiese (micromegacariócitos mononucleados). Blastos quantificados em < 5% (MDS-RC/RCMD) ou 5% a 19% (MDS-EB).",
+      description:
+        'Procedimento de amostragem e processamento citológico:\n' +
+        '- Punção aspirativa medular:\n' +
+        '  - Realizada sob sedação profunda e anestesia local, com agulha de Illinois ou Rosenthal na fossa trocantérica femoral ou tuberosidade maior do úmero.\n' +
+        '- Confecção das lâminas:\n' +
+        '  - Obtenção de espículas medulares íntegras e confecção por esmagamento suave (squash) para evitar lise celular.\n' +
+        '- Coloração e diferencial:\n' +
+        '  - Coloração por Giemsa ou Leishman com contagem diferencial estrita de 300 a 500 células nucleadas.',
+      interpretation:
+        'Achados citológicos medulares definidores:\n' +
+        '- Celularidade global:\n' +
+        '  - Celularidade normo a hipercelular com partículas ricas em precursores.\n' +
+        '- Displasia citológica (>10% em linhagens):\n' +
+        '  - Diseritropoiese (eritroblastos megaloblastoides, núcleos bizarros, pontes intercromáticas).\n' +
+        '  - Disgranulopoiese (metamielócitos gigantes, segmentação irregular e assincronia maturativa).\n' +
+        '  - Dismegacariopoiese (micromegacariócitos mononucleados anômalos).\n' +
+        '- Quantificação de blastos:\n' +
+        '  - Blastos quantificados em < 5% (MDS-RC/RCMD) ou 5% a 19% (MDS-EB).',
       limitations: "Punção seca (dry tap) ocorre em até 30% dos cães com MDS devido à mielofibrose secundária concomitante; hemodiluição acentuada pode mascarar a celularidade real.",
       isGoldStandard: false
     },
@@ -604,8 +871,18 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 5,
       title: "Biópsia de medula óssea (core biopsy por agulha de Jamshidi)",
       purpose: "Avaliação da celularidade real, arquitetura tecidual intertrabecular e diagnóstico diferencial de mielofibrose e aplasia.",
-      description: "Obtenção de fragmento ósseo intacto de 1,5 a 2 cm com agulha de Jamshidi na crista ilíaca ou trocânter femoral sob anestesia geral. Fixação em formol neutro tamponado a 10%, descalcificação e processamento histotécnico com hematoxilina-eosina (HE) e coloração especial de prata para reticulina de Gomori.",
-      interpretation: "Padrão ouro para determinação da celularidade real: demonstra espaços intertrabeculares normocelulares ou marcadamente hipercelulares (proporção hematopoiese:gordura > 50-70%), descartando categoricamente a substituição adiposa da anemia aplástica. Demonstra agregação anômala de precursores imaturos (ALIP) e evidencia graus variáveis de mielofibrose reticulínica secundária.",
+      description:
+        'Procedimento de core biopsy e protocolo histopatológico:\n' +
+        '- Amostragem óssea tecidual:\n' +
+        '  - Obtenção de fragmento cortical e trabecular intacto de 1,5 a 2 cm com agulha de Jamshidi na crista ilíaca ou trocânter femoral sob anestesia geral.\n' +
+        '- Processamento histotécnico:\n' +
+        '  - Fixação em formol neutro tamponado a 10%, descalcificação ácida cuidadosa e colorações de HE e impregnação de prata para reticulina de Gomori.',
+      interpretation:
+        'Padrão ouro para determinação da celularidade real e arquitetura:\n' +
+        '- Avaliação da arquitetura intertrabecular:\n' +
+        '  - Demonstra espaços intertrabeculares normocelulares ou marcadamente hipercelulares (proporção hematopoiese:gordura > 50-70%), descartando categoricamente a substituição adiposa da anemia aplástica.\n' +
+        '- Localização de precursores e fibrose:\n' +
+        '  - Demonstra localização anormal de precursores imaturos (ALIP) e evidencia graus variáveis de mielofibrose reticulínica secundária.',
       limitations: "Exige anestesia geral com suporte hemodinâmico rigoroso e estabilização transfusional prévia se o hematócrito for muito baixo. Tempo de laudo de 3 a 7 dias.",
       isGoldStandard: true
     },
@@ -613,8 +890,15 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 6,
       title: "Citometria de fluxo, citoquímica e imunocitoquímica medular",
       purpose: "Confirmação da linhagem mieloide e exclusão definitiva de leucemias linfoides agudas (ALL).",
-      description: "Análise de suspensão celular de aspirado medular por citometria de fluxo multiparamétrica utilizando anticorpos monoclonais contra marcadores de superfície e intracelulares: MPO (mieloperoxidase), CD11b (linhagem mieloide), CD14 (linhagem monocítica), CD34 (célula-tronco/blasto), CD3 (linfócitos T) e CD79a (linfócitos B). Citoquímica com Sudan Black B e mieloperoxidase.",
-      interpretation: "Positividade para marcadores mieloides (CD11b, MPO, CD14) e negatividade para marcadores linfoides confirma a linhagem mieloide dos precursores indiferenciados, excluindo linfoma estágio V e leucemia linfoide.",
+      description:
+        'Protocolo de imunofenotipagem e citoquímica:\n' +
+        '- Citometria de fluxo multiparamétrica:\n' +
+        '  - Suspensão celular de aspirado medular testada com anticorpos monoclonais: MPO (mieloperoxidase), CD11b (linhagem mieloide), CD14 (linhagem monocítica), CD34 (célula-tronco/blasto), CD3 (linfócitos T) e CD79a (linfócitos B).\n' +
+        '- Citoquímica enzimática:\n' +
+        '  - Reações citoquímicas com Sudan Black B e mieloperoxidase para caracterização enzimática dos precursores.',
+      interpretation:
+        'Confirmação de linhagem e exclusão de leucemia linfoide:\n' +
+        '- Positividade para marcadores mieloides (CD11b, MPO, CD14) e negatividade para marcadores linfoides confirma a linhagem mieloide dos precursores indiferenciados, excluindo linfoma estágio V e leucemia linfoide.',
       limitations: "Painéis genômicos moleculares (NGS, citogenética) padronizados na medicina humana ainda não estão validados comercialmente para uso rotineiro em cães e gatos (Meredith et al., 2025).",
       isGoldStandard: false
     },
@@ -622,78 +906,255 @@ export const sindromeMielodisplasicaRecord: DiseaseRecord = {
       stepNumber: 7,
       title: "Monitoramento longitudinal seriado (Integração clínico-patológica)",
       purpose: "Acompanhamento do comportamento temporal do clone e confirmação definitiva do diagnóstico.",
-      description: "Hemogramas seriados a cada 1 a 4 semanas associados a avaliações clínicas e físicas contínuas. Acompanhamento da trajetória do hematócrito, contagem plaquetária e aparecimento de blastos periféricos. Repetição de punção medular em caso de declínio clínico agudo ou suspeita de progressão.",
-      interpretation: "Como estabelece a hematologia veterinária, o filme evolutivo é mais decisivo do que a fotografia estática inicial. A persistência de citopenias e displasias após a remoção de drogas e resolução de infecções confirma o diagnóstico de MDS e monitora a transição para AML.",
+      description:
+        'Protocolo de integração clínico-laboratorial seriada:\n' +
+        '- Vigilância hematológica periódica:\n' +
+        '  - Hemogramas seriados a cada 1 a 4 semanas associados a avaliações clínicas e físicas contínuas.\n' +
+        '- Monitoramento de progressão clonal:\n' +
+        '  - Acompanhamento da trajetória do hematócrito, contagem plaquetária e detecção precoce de blastos no sangue periférico.\n' +
+        '- Reavaliação medular:\n' +
+        '  - Repetição do aspirado e biópsia medular em caso de declínio clínico agudo ou suspeita de progressão.',
+      interpretation:
+        'Confirmação temporal e monitoramento biológico:\n' +
+        '- Análise do filme evolutivo versus fotografia estática:\n' +
+        '  - Como estabelece a hematologia veterinária, a evolução longitudinal é mais decisiva do que a fotografia estática inicial.\n' +
+        '- Confirmação de MDS clonal e vigilância de AML:\n' +
+        '  - A persistência de citopenias e displasias após a remoção de drogas e resolução de infecções confirma o diagnóstico de MDS e monitora a transição para AML.',
       limitations: "Demanda cooperação estrita do tutor e custos adicionais com repetição seriada de exames laboratoriais.",
       isGoldStandard: false
     }
   ],
   treatment: {
-    metaPrimaria: "Não há atualmente diretriz consensual ACVIM ou protocolo medicamentoso curativo para a síndrome mielodisplásica em pequenos animais (ACVIM Endorsed Statements; Feline Emergency and Critical Care Medicine, 2ª ed.). O manejo divide-se em três pilares fundamentais: (1) Identificação e suspensão imediata de fármacos mielotóxicos e tratamento de gatilhos de dismielopoiese secundária; (2) Suporte hematológico para sustentação de oxigenação tecidual e prevenção de óbito por sepse neutropênica ou hemorragia; (3) Em pacientes com MDS primária clonal de alto risco (especialmente MDS-EB com aumento progressivo de blastos), discussão multidisciplinar com oncologista veterinário sobre protocolos quimioterápicos citorredutores.",
-    tratamentoCausasSecundarias: "Na vigência de suspeita de dismielopoiese secundária reativa, a intervenção imediata mais eficaz é suspender todos os medicamentos com potencial mielossupressor (estrogênios, cloranfenicol, quimioterápicos, sulfonamidas, fenobarbital). Pacientes com enteropatias crônicas ou suspeita de má absorção devem receber cobalamina (vitamina B12 500 a 1.000 mcg SC semanal) e ácido fólico. Se houver forte suspeita de componente imune associado (PIMA ou trombocitopenia imunomediada), realiza-se prova terapêutica com prednisolona (1 a 2 mg/kg/dia VO) com monitoramento frequente de neutrófilos e vigilância estrita contra infecções secundárias.",
-    suporteTransfusionalHemacias: "A transfusão de concentrado de hemácias (pRBC) ou sangue total é a intervenção de resgate mais importante para o paciente com anemia sintomática grave. A indicação transfusional não deve se basear apenas em um ponto de corte arbitrário de hematócrito, mas sim em sinais clínicos de hipóxia celular: taquicardia persistente em repouso, taquipneia, fraqueza severa, prostração profunda e lactato sérico elevado (> 2,5 mmol/L). Dose recomendada de concentrado de hemácias: 10 a 15 mL/kg IV lenta em 2 a 4 horas (sangue total: 15 a 20 mL/kg IV). Em gatos, a tipagem sanguínea para o sistema AB é mandatória antes de qualquer infusão para evitar reações hemolíticas agudas fatais; o teste de compatibilidade cruzada (crossmatch) é obrigatório se o animal já recebeu transfusões há mais de 4 dias. O tutor deve ser esclarecido de que a transfusão não cura a doença medular, proporcionando apenas ganho temporário de transporte de oxigênio (meia-vida de 20 a 30 dias das hemácias transfundidas).",
-    manejoNeutropeniaFebril: "Animais com contagem de neutrófilos segmentados inferior a 1.000/mcL associada a temperatura retal elevada (>= 39,3 °C) devem ser conduzidos como emergência médica sob suspeita de choque séptico por translocação da microbiota comensal. Coletar imediatamente hemocultura e urocultura por punção estéril. Iniciar antibioticoterapia parenteral bactericida empírica imediata de amplo espectro por via intravenosa: Ampicilina-sulbactam (30 a 50 mg/kg IV q8h) combinada a Enrofloxacino (5 a 10 mg/kg IV q24h em cães; em gatos, preconiza-se Marbofloxacino 2 mg/kg IV q24h para evitar retinopatia e cegueira induzida por enrofloxacino) ou Cefepima (30 mg/kg IV q8h). Procedimentos que lesionem mucosas (enemas ou termometria retal forçada) devem ser evitados.",
-    fatoresCrescimentoHematopoetico: "O emprego de fatores estimuladores de colônias de granulócitos (G-CSF recombinante humano / Filgrastim na dose de 3 a 5 mcg/kg SC q24h por 3 a 5 dias) e agentes estimuladores da eritropoiese (Eritropoietina recombinante humana / Alfaepoetina 100 U/kg SC 3 vezes por semana ou Darbepoetina alfa 0,5 a 1,0 mcg/kg SC semanal) é relatado na literatura veterinária com resultados variáveis. É fundamental compreender que esses fármacos estimulam progenitores já existentes, mas não corrigem a mutação genética do clone neoplásico. Além disso, o uso repetido de proteínas recombinantes humanas acarreta risco de desenvolvimento de anticorpos neutralizantes cruzados contra a eritropoietina endógena do animal, precipitando aplasia pura de série vermelha irreversível.",
-    controversiaCorticosteroides: "O uso empírico de corticosteroides (prednisolona 1 a 2 mg/kg/dia VO) não possui evidência científica de eficácia na eliminação do clone neoplásico da MDS verdadeira (Feline Emergency and Critical Care Medicine, 2ª ed.). No estudo de Meredith et al. (2025), 31 de 42 cães com MDS receberam esquemas imunossupressores, porém a resposta foi inconsistente. A prova terapêutica com prednisolona é aceitável quando não se pode afastar um componente imunomediado sobreposto (PIMA/ITP concorrente), exigindo monitoramento rigoroso contra complicações infecciosas secundárias à neutropenia.",
-    quimioterapiaMatsuyamaProtocoloCitarabinaDoxorrubicina: "Em cães com síndrome mielodisplásica com excesso de blasts (MDS-EB) ou neoplasia mieloide avançada, o estudo contemporâneo de Matsuyama et al. (2023) avaliou o protocolo combinado de doxorrubicina e citarabina contínua em 11 cães (2 MDS, 4 MDS/AML e 5 AML). O regime administrado consistiu em Doxorrubicina na dose de 30 mg/m² IV administrada em infusão de 20 minutos, seguida por Citarabina na dose de 300 mg/m² IV em infusão contínua (CRI) ao longo de 6 horas. Sete dos 11 cães (63,6%) obtiveram resolução completa das citopenias periféricas (incluindo 2/2 cães com MDS pura e 2/4 cães com MDS/AML), com mediana de remissão de 344 dias e sobrevida global de 369 dias. A toxicidade clínica predominante foi gastrointestinal e mielossupressiva; no entanto, foram registrados eventos adversos graves de grau V, incluindo dois casos de insuficiência cardíaca congestiva induzida por doxorrubicina. O protocolo exige oncologista experiente e monitorização ecocardiográfica.",
-    azacitidinaEmFelinos: "A 5-azacitidina é um agente quimioterápico análogo de nucleosídeo pirimidínico que atua como inibidor da DNA-metiltransferase (agente hipometilante), amplamente utilizado na MDS humana para desmetilar e reexpressar genes supressores de tumor silenciados epigeneticamente. Na medicina felina, Hisasue, Tanaka & Neo (2022) descreveram uma gata de 5 anos com MDS grave, anemia não regenerativa, trombocitopenia e 19% de blasts na medula tratada com azacitidina (35 a 70 mg/m² SC por 3 a 5 dias consecutivos em 3 ciclos) associada a prednisolona e suporte. A paciente apresentou redução expressiva da blastemia e da displasia, permanecendo clinicamente estável e viva por mais de 1.474 dias (mais de 4 anos). Embora corresponda a relato de caso único (n=1, evidência fraca), constitui uma importante prova de conceito para terapias epigenéticas na oncologia felina.",
-    citarabinaBaixaDoseHistorica: "O emprego de citarabina (Ara-C) em regime de baixa dose (10 mg/m² SC a cada 12 horas por 7 a 14 dias em ciclos mensais) é citado em manuais tradicionais (Nelson & Couto, 6ª ed.) com o objetivo teórico de induzir diferenciação celular sem provocar ablação medular completa. A resposta terapêutica em cães e gatos é tipicamente modesta e de curta duração (remissões parciais de poucas semanas), agregando o risco de mielossupressão transitória em animais já anêmicos e leucopênicos.",
-    terapiasInadequadasEMitos: "Condutas desaconselhadas e mitos frequentes na rotina: (1) Considerar qualquer displasia medular como câncer sem investigar causas secundárias reversíveis; (2) Prescrever imunossupressão pesada sem antes descartar sepse em animais febris e neutropênicos; (3) Utilizar o antigo ponto de corte de 30% de blastos para descartar AML, negligenciando a classificação moderna de 20%; (4) Acreditar que todo gato FeLV-positivo com anemia não regenerativa tem MDS clonal sem acompanhar a resposta clínica; (5) Administrar enemas ou realizar termometria retal vigorosa em animais com neutropenia grave, provocando translocação bacteriana e bacteremia fatal."
+    metaPrimaria:
+      'Objetivos terapêuticos e pilares de abordagem na MDS:\n' +
+      '- Ausência de consenso curativo:\n' +
+      '  - Não há atualmente diretriz consensual ACVIM ou protocolo medicamentoso curativo para a síndrome mielodisplásica em pequenos animais (ACVIM Endorsed Statements; Feline Emergency and Critical Care Medicine, 2ª ed.).\n' +
+      '- Três pilares fundamentais do manejo:\n' +
+      '  - 1. Identificação e suspensão imediata de fármacos mielotóxicos e tratamento de gatilhos de dismielopoiese secundária.\n' +
+      '  - 2. Suporte hematológico para sustentação de oxigenação tecidual e prevenção de óbito por sepse neutropênica ou hemorragia.\n' +
+      '  - 3. Em pacientes com MDS primária clonal de alto risco (especialmente MDS-EB com aumento progressivo de blastos), discussão multidisciplinar com oncologista veterinário sobre protocolos quimioterápicos citorredutores.',
+    tratamentoCausasSecundarias:
+      'Eliminação de causas secundárias e prova terapêutica:\n' +
+      '- Suspensão mandatória de fármacos suspeitos:\n' +
+      '  - Na vigência de suspeita de dismielopoiese secundária reativa, a intervenção imediata mais eficaz é suspender todos os medicamentos com potencial mielossupressor (estrogênios, cloranfenicol, quimioterápicos, sulfonamidas, fenobarbital).\n' +
+      '- Suporte vitamínico coenzimático:\n' +
+      '  - Pacientes com enteropatias crônicas ou suspeita de má absorção devem receber cobalamina (vitamina B12 500 a 1.000 mcg SC semanal) e ácido fólico.\n' +
+      '- Prova terapêutica imunossupressora:\n' +
+      '  - Se houver forte suspeita de componente imune associado (PIMA ou trombocitopenia imunomediada), realiza-se prova terapêutica com prednisolona (1 a 2 mg/kg/dia VO) com monitoramento frequente de neutrófilos e vigilância estrita contra infecções secundárias.',
+    suporteTransfusionalHemacias:
+      'Suporte transfusional com concentrado de hemácias:\n' +
+      '- Critérios de indicação hemodinâmica e hipóxia tecidual:\n' +
+      '  - A transfusão de concentrado de hemácias (pRBC) ou sangue total é a intervenção de resgate mais importante para o paciente com anemia sintomática grave.\n' +
+      '  - A indicação transfusional não deve se basear apenas em um ponto de corte arbitrário de hematócrito, mas sim em sinais clínicos de hipóxia celular: taquicardia persistente em repouso, taquipneia, fraqueza severa, prostração profunda e lactato sérico elevado (> 2,5 mmol/L).\n' +
+      '- Posologia e protocolo de administração:\n' +
+      '  - Dose recomendada de concentrado de hemácias: 10 a 15 mL/kg IV lenta em 2 a 4 horas (sangue total: 15 a 20 mL/kg IV).\n' +
+      '- Tipagem sanguínea e segurança imunológica:\n' +
+      '  - Em gatos, a tipagem sanguínea para o sistema AB é mandatória antes de qualquer infusão para evitar reações hemolíticas agudas fatais.\n' +
+      '  - O teste de compatibilidade cruzada (crossmatch) é obrigatório se o animal já recebeu transfusões há mais de 4 dias.\n' +
+      '- Orientação prognóstica ao tutor:\n' +
+      '  - O tutor deve ser esclarecido de que a transfusão não cura a doença medular, proporcionando apenas ganho temporário de transporte de oxigênio (meia-vida de 20 a 30 dias das hemácias transfundidas).',
+    manejoNeutropeniaFebril:
+      'Protocolo de emergência na neutropenia febril:\n' +
+      '- Reconhecimento da emergência séptica:\n' +
+      '  - Animais com contagem de neutrófilos segmentados inferior a 1.000/mcL associada a temperatura retal elevada (>= 39,3 °C) devem ser conduzidos como emergência médica sob suspeita de choque séptico por translocação da microbiota comensal.\n' +
+      '  - Coletar imediatamente hemocultura e urocultura por punção estéril antes do início dos antibióticos.\n' +
+      '- Antibioticoterapia parenteral de amplo espectro:\n' +
+      '  - Ampicilina-sulbactam (30 a 50 mg/kg IV q8h) combinada a Enrofloxacino (5 a 10 mg/kg IV q24h em cães).\n' +
+      '  - Particularidade felina crítica: em gatos, preconiza-se Marbofloxacino 2 mg/kg IV q24h para evitar retinopatia e cegueira induzida por enrofloxacino; alternativa: Cefepima (30 mg/kg IV q8h).\n' +
+      '- Veto a procedimentos que lesionem mucosas:\n' +
+      '  - Procedimentos que lesionem mucosas (enemas ou termometria retal forçada) são expressamente desaconselhados pelo risco de bacteremia imediata.',
+    fatoresCrescimentoHematopoetico:
+      'Fatores estimuladores de colônias e agentes eritropoéticos:\n' +
+      '- Fatores de crescimento granulocítico (G-CSF):\n' +
+      '  - Emprego de Filgrastim (G-CSF recombinante humano) na dose de 3 a 5 mcg/kg SC q24h por 3 a 5 dias para estímulo transitório em neutropenias críticas.\n' +
+      '- Agentes estimuladores da eritropoiese (ESA):\n' +
+      '  - Alfaepoetina recombinante humana (100 U/kg SC 3 vezes por semana) ou Darbepoetina alfa (0,5 a 1,0 mcg/kg SC semanal).\n' +
+      '- Limitações biológicas e riscos imunogênicos graves:\n' +
+      '  - Esses fármacos estimulam progenitores já existentes, mas não corrigem o defeito genético subjacente do clone neoplásico.\n' +
+      '  - Risco de desenvolvimento de anticorpos neutralizantes cruzados contra a eritropoietina endógena do animal com o uso repetido de proteínas heterólogas humanas, podendo precipitar aplasia pura de série vermelha irreversível.',
+    controversiaCorticosteroides:
+      'Evidências e controvérsias do uso de corticosteroides:\n' +
+      '- Ausência de eficácia clonal comprovada:\n' +
+      '  - O uso empírico de corticosteroides (prednisolona 1 a 2 mg/kg/dia VO) não possui evidência científica de eficácia na eliminação do clone neoplásico da MDS verdadeira (Feline Emergency and Critical Care Medicine, 2ª ed.).\n' +
+      '- Evidência na coorte canina (Meredith et al., 2025):\n' +
+      '  - No estudo de Meredith et al. (2025), 31 de 42 cães com MDS receberam esquemas imunossupressores, porém a resposta foi inconsistente.\n' +
+      '- Indicação restrita a componente imunomediado sobreposto:\n' +
+      '  - A prova terapêutica com prednisolona é aceitável quando não se pode afastar um componente imunomediado sobreposto (PIMA/ITP concorrente), exigindo monitoramento rigoroso contra complicações infecciosas secundárias à neutropenia.',
+    quimioterapiaMatsuyamaProtocoloCitarabinaDoxorrubicina:
+      'Protocolo Matsuyama de Citarabina e Doxorrubicina na MDS-EB avançada:\n' +
+      '- Evidência clínica contemporânea (Matsuyama et al., 2023):\n' +
+      '  - Em cães com síndrome mielodisplásica com excesso de blasts (MDS-EB) ou neoplasia mieloide avançada, estudo avaliou o protocolo combinado em 11 cães (2 MDS, 4 MDS/AML e 5 AML).\n' +
+      '- Esquema posológico rigoroso:\n' +
+      '  - Doxorrubicina na dose de 30 mg/m² IV administrada em infusão de 20 minutos.\n' +
+      '  - Citarabina na dose de 300 mg/m² IV administrada em infusão contínua (CRI) ao longo de 6 horas.\n' +
+      '- Taxas de remissão e resposta hematológica:\n' +
+      '  - Sete dos 11 cães (63,6%) obtiveram resolução completa das citopenias periféricas (incluindo 2/2 cães com MDS pura e 2/4 cães com MDS/AML), com mediana de remissão de 344 dias e sobrevida global de 369 dias.\n' +
+      '- Perfil de toxicidade e monitoramento cardiológico:\n' +
+      '  - Toxicidade predominante gastrointestinal e mielossupressiva; foram registrados eventos adversos graves de grau V, incluindo dois casos de insuficiência cardíaca congestiva induzida por doxorrubicina.\n' +
+      '  - Exige acompanhamento por oncologista experiente e monitorização ecocardiográfica prévia e seriada.',
+    azacitidinaEmFelinos:
+      'Terapia epigenética hipometilante com 5-azacitidina na espécie felina:\n' +
+      '- Mecanismo de ação epigenética:\n' +
+      '  - A 5-azacitidina é um agente análogo de nucleosídeo pirimidínico que inibe a DNA-metiltransferase (DNMT), promovendo desmetilação do DNA e reexpressão de genes supressores tumorais silenciados.\n' +
+      '- Prova de conceito felina (Hisasue, Tanaka & Neo, 2022):\n' +
+      '  - Gata de 5 anos com MDS grave, anemia não regenerativa, trombocitopenia e 19% de blasts medulares tratada com azacitidina (35 a 70 mg/m² SC por 3 a 5 dias consecutivos em 3 ciclos mensais) associada a prednisolona.\n' +
+      '- Resultado clínico e sobrevida excepcional:\n' +
+      '  - A paciente apresentou redução expressiva da blastemia e da displasia, permanecendo clinicamente estável e viva por mais de 1.474 dias (mais de 4 anos).\n' +
+      '- Nível de evidência atual:\n' +
+      '  - Embora corresponda a relato de caso único (n=1, evidência fraca), constitui promissora prova de conceito para agentes hipometilantes em gatos com excesso de blastos.',
+    citarabinaBaixaDoseHistorica:
+      'Regime histórico de Citarabina em baixa dose (baixo blasto):\n' +
+      '- Racional terapêutico clássico:\n' +
+      '  - Emprego de citarabina (Ara-C) em regime de baixa dose (10 mg/m² SC a cada 12 horas por 7 a 14 dias em ciclos mensais; Nelson & Couto, 6ª ed.).\n' +
+      '  - Objetivo teórico de induzir diferenciação de precursores displásicos sem acarretar mielossupressão ablativa.\n' +
+      '- Resposta clínica limitada e riscos:\n' +
+      '  - As respostas documentadas em pequenos animais são tipicamente modestas e transitórias (remissões parciais de poucas semanas).\n' +
+      '  - Acumula risco de piora da neutropenia e trombocitopenia periférica em animais já citopênicos.',
+    terapiasInadequadasEMitos:
+      'Práticas desaconselhadas e mitos na condução da MDS:\n' +
+      '- 1. Diagnóstico precipitado de malignidade irreversível:\n' +
+      '  - Rotular qualquer displasia medular como neoplasia clonal sem antes investigar e tratar causas reativas e deficiências nutricionais.\n' +
+      '- 2. Imunossupressão cega em paciente neutropênico febril:\n' +
+      '  - Iniciar corticoides em doses imunossupressoras sem antes colher culturas e afastar bacteremia/sepse oculta.\n' +
+      '- 3. Aderência ao limiar obsoleto de 30% de blastos:\n' +
+      '  - Utilizar o ponto de corte histórico FAB em vez do consenso veterinário moderno de 20% para demarcação entre MDS e AML.\n' +
+      '- 4. Premissa de incurabilidade imediata em gatos FeLV-positivos:\n' +
+      '  - Considerar todo felino virêmico com citopenia como terminal, sem diferenciar mielossupressão reativa transitória de MDS clonal.\n' +
+      '- 5. Manobras traumáticas em mucosas:\n' +
+      '  - Realizar enemas ou termometria retal vigorosa em animais com neutropenia grave (<1.000/mcL), que precipitam translocação bacteriana e choque séptico.'
   },
   complications: {
-    transformacaoEmLeucemiaMieloideAguda: "A progressão para leucemia mieloide aguda (AML) ocorre em 20% a 40% dos cães e gatos com síndrome mielodisplásica que não sucumbem precocemente às citopenias (Withrow & MacEwen, 6ª ed.; Nelson & Couto, 6ª ed.). A transformação leucêmica resulta do acúmulo de mutações adicionais que inibem a apoptose e bloqueiam de forma terminal a diferenciação dos mieloblastos. A evolução é acompanhada de declínio clínico agudo, blastemia periférica explosiva e sobrevida extremamente curta (mediana de 6 dias na AML; Meredith et al., 2025).",
-    choqueSepticoNeutropenico: "A neutropenia acentuada combinada à incapacidade fagocítica dos granulócitos displásicos colapsa a barreira de defesa contra bactérias comensais do trato gastrointestinal e orofaringe. O paciente pode desenvolver subitamente febre alta, bacteremia sistêmica, choque distributivo e falência de múltiplos órgãos antes da identificação de um foco infeccioso evidente.",
-    hemorragiaCatastrofica: "A sobreposição de trombocitopenia profunda com trombocitopatia adquirida expõe o paciente a sangramentos espontâneos com risco à vida. Hemorragia pulmonar difusa, hemorragia gastrointestinal profusa e hematomas intracranianos constituem causas comuns de óbito agudo ou indicação de eutanásia humanitária.",
-    prognosticoCenarioCaninoContemporaneo: "O prognóstico da síndrome mielodisplásica canina foi significativamente redefinido com a coorte de 70 cães de Meredith et al. (2025). Contrariando a visão clássica de letalidade fulminante em poucas semanas, o estudo demonstrou que a MDS apresenta curso substancialmente mais longo do que a AML: a sobrevida mediana para cães com MDS foi de 384 dias, em marcante contraste com os 6 dias da AML (P < 0,001). O risco instantâneo de óbito de cães com MDS foi aproximadamente 5 vezes menor do que naqueles portadores de AML.",
-    prognosticoFatoresPreditoresSobrevida: "No estudo contemporâneo de Meredith et al. (2025), os fatores associados de maneira estatisticamente significante à sobrevida dos cães foram o peso corporal (cães de menor porte tenderam a apresentar maior longevidade), a contagem global de leucócitos, a contagem de plaquetas e a proporção de blastos circulantes no sangue periférico. Cada aumento de um ponto percentual na blastemia periférica elevou proporcionalmente o risco de morte. A contagem percentual estática de blastos na medula óssea não atingiu significância univariável nesse estudo, refletindo heterogeneidade amostral e a importância prognóstica da disseminação periférica.",
-    prognosticoFelino: "Na espécie felina, o prognóstico geral permanece reservado a desfavorável, com sobrevida média descrita historicamente variando de poucas semanas a alguns meses (Feline Emergency and Critical Care Medicine, 2ª ed.). No estudo de Hisasue et al. (2001), 3 de 6 gatos com alta contagem de blastos medulares evoluíram para AML, contra apenas 1 de 8 gatos com contagens baixas. Gatos FeLV-positivos com anemia severa e dependência transfusional frequente apresentam pior sobrevida."
+    transformacaoEmLeucemiaMieloideAguda:
+      'Transformação em Leucemia Mieloide Aguda (AML):\n' +
+      '- Incidência de progressão clonal:\n' +
+      '  - A transformação leucêmica aguda ocorre em 20% a 40% dos cães e gatos com MDS que sobrevivem às complicações iniciais de citopenia (Withrow & MacEwen, 6ª ed.; Nelson & Couto, 6ª ed.).\n' +
+      '- Mecanismo genômico de escape:\n' +
+      '  - Resulta do acúmulo de mutações oncogênicas adicionais que bloqueiam terminalmente a diferenciação celular e anulam os mecanismos de apoptose intramedular.\n' +
+      '- Apresentação clínica e prognóstico fulminante:\n' +
+      '  - Caracteriza-se por declínio clínico acelerado, invasão blastêmica no sangue periférico e sobrevida extremamente curta (mediana de 6 dias na AML; Meredith et al., 2025).',
+    choqueSepticoNeutropenico:
+      'Colapso séptico neutropênico e choque distributivo:\n' +
+      '- Falência da imunidade inata primária:\n' +
+      '  - A neutropenia severa associada a defeitos funcionais de quimiotaxia e fagocitose nos granulócitos sobreviventes anula a barreira contra a flora endógena.\n' +
+      '- Translocação da microbiota comensal:\n' +
+      '  - Bactérias do trato digestivo e orofaringe penetram a corrente sanguínea sem deflagrar reação inflamatória focal perceptível.\n' +
+      '- Evolução hiperaguda:\n' +
+      '  - Rápida transição de pirexia ou hipotermia para choque distributivo, disfunção de múltiplos órgãos e óbito em menos de 24 horas.',
+    hemorragiaCatastrofica:
+      'Hemorragia espontânea fulminante por trombocitopatia:\n' +
+      '- Sinergia entre déficit quantitativo e qualitativo:\n' +
+      '  - A sobreposição de contagem plaquetária reduzida com disfunção intrínseca de agregação e hipogranularidade expõe o paciente a sangramentos espontâneos imprevisíveis.\n' +
+      '- Sítios anatômicos de risco fatal iminente:\n' +
+      '  - Hemorragia alveolar pulmonar difusa, hemorragia gastrointestinal maciça e hematomas intracranianos constituem causas frequentes de óbito súbito ou indicação de eutanásia humanitária.',
+    prognosticoCenarioCaninoContemporaneo:
+      'Prognóstico canino contemporâneo (coorte Meredith et al., 2025):\n' +
+      '- Redefinição da sobrevida e separação da AML:\n' +
+      '  - Ao contrário do paradigma clássico de curso fulminante indiferenciado, o estudo padronizado em 70 cães demonstrou que a MDS apresenta sobrevida substancialmente mais longa que a AML.\n' +
+      '  - A sobrevida mediana para cães com MDS foi de 384 dias, em marcante contraste com apenas 6 dias para cães com AML (P < 0,001).\n' +
+      '- Redução substancial do risco de morte:\n' +
+      '  - O risco instantâneo relativo de morte na coorte canina foi aproximadamente 5 vezes menor nos pacientes com MDS em comparação com aqueles acometidos por AML.',
+    prognosticoFatoresPreditoresSobrevida:
+      'Fatores prognósticos e preditores de sobrevida (Meredith et al., 2025):\n' +
+      '- Variáveis clínicas e hematológicas significantes:\n' +
+      '  - Porte corporal: cães de menor peso apresentaram tendência a maior tempo de sobrevida.\n' +
+      '  - Contagens periféricas: contagens globais de leucócitos e plaquetas no momento do diagnóstico correlacionaram-se com a sobrevida.\n' +
+      '- Impacto determinante da blastemia periférica:\n' +
+      '  - A presença e a porcentagem de blastos circulantes no sangue periférico revelaram-se fatores prognósticos adversos independentes; cada ponto percentual a mais elevou o risco de morte.\n' +
+      '- Contagem de blastos medulares:\n' +
+      '  - A contagem de blastos na medula óssea não alcançou significância estatística univariável isolada na coorte, refletindo heterogeneidade clonal e reafirmando a importância da disseminação periférica.',
+    prognosticoFelino:
+      'Perfil prognóstico na espécie felina:\n' +
+      '- Prognóstico geral historicamente reservado:\n' +
+      '  - Em felinos, a sobrevida mediana descrita na literatura tradicional varia de poucas semanas a alguns meses (Feline Emergency and Critical Care Medicine, 2ª ed.).\n' +
+      '- Correlação com carga de blastos medulares (Hisasue et al., 2001):\n' +
+      '  - Em estudo com 16 gatos, 3 de 6 indivíduos com alta proporção de blastos evoluíram rapidamente para AML, contra 1 de 8 no grupo de baixo blasto.\n' +
+      '- Fatores adicionais de gravidade:\n' +
+      '  - Virêmia persistente para FeLV, anemia refratária profunda e alta dependência transfusional são os principais marcadores de pior prognóstico a curto prazo.'
   },
   prevention: {
-    controleFeLVEProfilaxia: "Em felinos, a principal medida preventiva contra a forma associada a retrovírus consiste no controle da infecção pelo vírus da leucemia viral felina (FeLV). As diretrizes da AAFP e ISFM preconizam: testagem sorológica de todos os gatos no momento da adoção, vacinação de indivíduos com acesso a ambiente externo ou que convivam com gatos de status desconhecido, e isolamento estrito de gatos infectados.",
-    farmacovigilanciaMielotoxica: "A prevenção de quadros graves de dismielopoiese secundária requer farmacovigilância veterinária ativa: evitar o uso empírico de medicamentos com potencial mielotóxico conhecido (estrógenos exógenos para interrupção de prenhez em cadelas, cloranfenicol contínuo, sulfonamidas prolongadas em raças sensíveis). Em animais submetidos a quimioterapia citotóxica crônica ou imunossupressão, realizar monitorização hematológica seriada a cada 15 a 30 dias.",
-    vigilanciaCitopeniasCronicas: "Pacientes que exibam citopenias leves e inexplicadas no hemograma de rotina devem ser acompanhados com hematologia seriada a cada 2 a 3 meses. O diagnóstico precoce de desordens mieloides em fases de baixo blasto permite melhor planejamento transfusional, suporte profilático e manejo preventivo de infecções antes que o animal descompense em crise aplásica ou choque séptico."
+    controleFeLVEProfilaxia:
+      'Prevenção da dismielopoiese retroviral em felinos:\n' +
+      '- Rastreio sorológico na rotina clínica:\n' +
+      '  - Testagem sorológica para antígeno p27 do FeLV de todos os gatos no acolhimento, adoção ou antes de introdução em grupos de convívio (diretrizes AAFP/ISFM).\n' +
+      '- Imunização e manejo ambiental:\n' +
+      '  - Vacinação sistemática contra FeLV para indivíduos com acesso a áreas externas ou coabitantes de animais com status desconhecido.\n' +
+      '  - Manutenção de gatos estritamente domiciliados (indoor) e isolamento preventivo de animais comprovadamente positivos.',
+    farmacovigilanciaMielotoxica:
+      'Farmacovigilância contra dismielopoiese tóxica secundária:\n' +
+      '- Veto a terapias empíricas de alto risco:\n' +
+      '  - Evitar estrógenos sintéticos exógenos (como cipionato de estradiol para interrupção de prenhez em cadelas), sabidamente tóxicos para células-tronco pluripotentes.\n' +
+      '- Uso criterioso de agentes antimicrobianos e anticonvulsivantes:\n' +
+      '  - Evitar cursos prolongados de cloranfenicol e fenobarbital sem controle hematológico; monitorar sulfonamidas em raças de risco (ex.: Doberman Pinscher).\n' +
+      '- Monitoramento de protocolos oncológicos:\n' +
+      '  - Avaliação hematológica seriada a cada 15 a 30 dias em pacientes em uso contínuo de agentes quimioterápicos citotóxicos ou imunossupressores.',
+    vigilanciaCitopeniasCronicas:
+      'Vigilância hematológica de citopenias subclínicas:\n' +
+      '- Investigação precoce de alterações marginais:\n' +
+      '  - Não ignorar reduções leves ou limítrofes na contagem plaquetária, neutrofílica ou eritrocitária em exames laboratoriais de rotina.\n' +
+      '- Monitoramento seriado a cada 60 a 90 dias:\n' +
+      '  - Pacientes com citopenias inexplicadas devem ser monitorados trimestralmente com esfregaço sanguíneo manual para detecção de macrocitose e atipias nucleares.\n' +
+      '- Intervenção antes do colapso clínico:\n' +
+      '  - O diagnóstico precoce na fase de baixo blasto viabiliza suporte transfusional programado e profilaxia antimicrobiana antes da instalação de sepse fulminante ou hemorragia grave.'
   },
   figures: [
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/esfregaco-displasia-meredith2025.jpg",
       alt: "Esfregaço sanguíneo e aspirado medular demonstrando displasia celular em cão com MDS (Meredith et al., 2025)",
-      caption: "Figura 1 — Displasia morfológica em cão com Síndrome Mielodisplásica: (a) Esfregaço de sangue periférico evidenciando neutrófilos displásicos com lobulação nuclear irregular e eritrócitos gigantes macrocíticos; (b) Aspirado de medula óssea exibindo hipercelularidade e diseritropoiese com precursores megaloblastoides (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 1 — Displasia morfológica em cão com Síndrome Mielodisplásica (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- (a) Sangue periférico: neutrófilos displásicos com lobulação nuclear irregular e eritrócitos gigantes macrocíticos.\n' +
+        '- (b) Aspirado medular: hipercelularidade e diseritropoiese com precursores megaloblastoides.',
       display: "wide"
     },
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/medula-biopsia-reticulina-meredith2025.jpg",
       alt: "Biópsia de medula óssea com coloração de reticulina e micromegacariócitos na MDS canina (Meredith et al., 2025)",
-      caption: "Figura 2 — Histopatologia e citologia medular na MDS: (a) Presença de micromegacariócitos hipolobulados anormais no aspirado; (b) Core biopsy de medula óssea corada por prata (reticulina de Gomori) demonstrando rede fibrótica reticulínica proeminente (mielofibrose secundária), explicando a ocorrência frequente de punção seca (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 2 — Histopatologia e citologia medular na MDS (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- (a) Aspirado medular: micromegacariócitos hipolobulados anormais característicos de dismegacariopoiese.\n' +
+        '- (b) Core biopsy (reticulina de Gomori): rede fibrótica reticulínica acentuada (mielofibrose secundária), explicando a alta frequência de punção seca.',
       display: "wide"
     },
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/leucemia-mieloide-comparacao-meredith2025.jpg",
       alt: "Citologia comparativa e imunofenotipagem de leucemia mieloide aguda em cão (Meredith et al., 2025)",
-      caption: "Figura 3 — Diagnóstico diferencial de Leucemia Mieloide Aguda (AML): (a) Esfregaço sanguíneo com blastos indiferenciados e mielomonócitos com lobulação nuclear irregular; (b) Demonstração citoquímica de mieloperoxidase (MPO) positiva em precursores mieloides (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 3 — Diagnóstico diferencial de Leucemia Mieloide Aguda (AML; Meredith et al., 2025, CC BY 4.0):\n' +
+        '- (a) Sangue periférico: blastos indiferenciados e mielomonócitos com lobulação nuclear irregular.\n' +
+        '- (b) Citoquímica de mieloperoxidase (MPO): positividade enzimática em precursores da linhagem mieloide.',
       display: "default"
     },
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/biopsia-medular-leucemia-meredith2025.jpg",
       alt: "Core biopsy de medula óssea exibindo apagamento por blastos na transformação para AML (Meredith et al., 2025)",
-      caption: "Figura 4 — Progressão para Leucemia Mieloide Aguda (AML): core biopsy de medula óssea demonstrando hipercelularidade extrema e substituição dos cordões hematopoéticos por população densa e monomórfica de blastos (Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 4 — Progressão histológica para Leucemia Mieloide Aguda (AML; Meredith et al., 2025, CC BY 4.0):\n' +
+        '- Core biopsy de medula óssea demonstrando hipercelularidade extrema.\n' +
+        '- Substituição difusa dos cordões hematopoéticos por população densa e monomórfica de blastos.',
       display: "default"
     },
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/curva-sobrevida-mds-vs-aml-meredith2025.jpg",
       alt: "Curvas de sobrevida de Kaplan-Meier comparando MDS vs AML em 70 cães (Meredith et al., 2025)",
-      caption: "Figura 5 — Curvas de sobrevida global de Kaplan-Meier para 70 cães com neoplasias mieloides: cães com síndrome mielodisplásica (MDS; n = 42, linha pontilhada) apresentaram mediana de sobrevida de 384 dias, em marcante contraste com a sobrevida mediana de 6 dias em cães com leucemia mieloide aguda (AML; n = 28, linha contínua; P < 0,001; Meredith et al., 2025, CC BY 4.0).",
+      caption:
+        'Figura 5 — Curvas de sobrevida global de Kaplan-Meier em 70 cães com neoplasias mieloides (Meredith et al., 2025, CC BY 4.0):\n' +
+        '- Síndrome mielodisplásica (MDS; n = 42, linha pontilhada): sobrevida mediana de 384 dias.\n' +
+        '- Leucemia mieloide aguda (AML; n = 28, linha contínua): sobrevida mediana de 6 dias (P < 0,001).',
       display: "default"
     },
     {
       kind: "clinicalFigure",
       src: "/consulta-vet/sindrome-mielodisplasica/locais-coleta-medula-ossea-vetius.jpg",
       alt: "Locais anatômicos de referência para punção aspirativa e core biopsy de medula óssea em cães e gatos",
-      caption: "Figura 6 — Sítios anatômicos recomendados para aspiração e core biopsy de medula óssea por agulha de Jamshidi: fossa trocantérica do fêmur proximal, crista ilíaca e tuberosidade maior do úmero (Guia de Procedimentos Vetius).",
+      caption:
+        'Figura 6 — Sítios anatômicos recomendados para aspiração e core biopsy de medula óssea (Guia de Procedimentos Vetius):\n' +
+        '- Fossa trocantérica do fêmur proximal (preferencial em cães e gatos).\n' +
+        '- Crista ilíaca e tuberosidade maior do úmero.',
       display: "wide"
     }
   ],

@@ -1,0 +1,793 @@
+
+===== Plumb PDF 1216 =====
+Sucralfate   1189
+Sucralfate
+(soo-kral-fate) Carafate®
+GI-Mucosal Protectant
+Prescriber Highlights
+ ▶ Local-acting treatment for GI ulcers/esophagitis; may also 
+protect somewhat against GI ulceration
+ ▶ No contraindications have been identified; however, sucralfate 
+should be used with caution when decreased GI transit times 
+may be harmful.
+ ▶ Adverse effects are unlikely, although constipation is possible. 
+Vomiting has been reported in cats.
+ ▶ Tablets should be dissolved in water before administration. 
+Should be administered on an empty stomach, if possible
+ ▶ To avoid possible drug interactions (eg, drug binding, de-
+creased drug bioavailability), other medications should be 
+administered 2 hours before sucralfate is administered. 
+Uses/Indications
+Sucralfate has been used to treat oral, esophageal, gastric, and duode-
+nal ulcers and to prevent drug (eg, aspirin)-induced gastric erosions. 
+Despite sucralfate’s theoretical benefits and widespread use, research 
+has shown limited or no evidence to support the effectiveness of su-
+cralfate for these indications. 1–3 A consensus panel has determined 
+that evidence supporting sucralfate use in small animal species for 
+the prevention or treatment of esophageal injury is weak 4; howev-
+er, sucralfate in combination with omeprazole is recommended for 
+treating horses with equine glandular gastric disease.5
+Sucralfate has been used in humans with hyperphosphatemia 
+secondary to renal failure and could be useful for this indication in 
+animals; however, in a study, sucralfate did not significantly change 
+serum or urine phosphorus levels in healthy cats or normophospha-
+temic cats with CKD, and adverse effects (eg, vomiting, anorexia, 
+constipation, worsening azotemia) may interfere with treatment.6 
+Pharmacology/Actions
+Although the exact mechanism of action of sucralfate as an antiulcer 
+agent is unknown, the drug appears to have a local effect rather than 
+a systemic one. After oral administration, sucralfate may react with 
+hydrochloric acid in the stomach to form a paste-like complex that 
+preferentially binds to the proteinaceous exudates that are generally 
+found at ulcer sites (eg, albumin, fibrinogen). This insoluble com -
+plex may form a barrier at the site and protect the ulcer from further 
+damage caused by pepsin, acid, or bile. Sucralfate can bind bile acids 
+and reduce pepsin activity. As an aluminum salt, sucralfate can bind 
+to GI phosphorus.
+Sucralfate may have some cytoprotective effects, possibly by stim-
+ulation of prostaglandins E2 and I2. It also has some antacid activity, 
+although this may not be of clinical importance. Sucralfate may also 
+bind to intact GI mucosa to form a protective layer. 
+Sucralfate does not significantly affect gastric acid output or tryp-
+sin or pancreatic amylase activity. It may slightly decrease the rate of 
+gastric emptying but will not alter peristalsis.
+Pharmacokinetics
+By reacting with hydrochloric acid in the gut, most of the drug is 
+converted to sucrose sulfate, which is excreted in the feces within 
+48 hours. 7 The duration of action (binding to ulcer site) may persist 
+up to 6 hours after oral administration. A negligible amount of an 
+oral dose is absorbed into the systemic circulation and excreted in 
+the urine unchanged within 48 hours.8
+Dissolving tablets in water before administration to dogs and cats 
+is recommended to increase the dispersion of the drug, as tablet frac-
+tions have been observed in dog feces.9
+Contraindications/Precautions/Warnings
+Sucralfate is contraindicated in patients with known hypersensitivity 
+to it. Because it may cause constipation, it should be used with cau -
+tion in animals in which decreased GI transit times might be dele -
+terious. Hyperglycemia has been reported rarely in diabetic humans 
+receiving sucralfate suspension. Small amounts of aluminum may be 
+absorbed following oral administration and may accumulate in pa -
+tients with renal failure. 
+Concurrent use of sucralfate with proton pump inhibitors (eg, 
+omeprazole) or histamine-H 2 receptor antagonists (eg, ranitidine) 
+does not enhance the treatment of gastroduodenal injury in small 
+animal species.4
+Adverse Effects
+Adverse effects are uncommon with sucralfate therapy. Constipation 
+is the most prominent adverse effect reported in humans (2%) and 
+dogs receiving the drug. Vomiting has been reported in cats. Sucral-
+fate can have an unpalatable taste, and patient acceptance may be a 
+problem.
+Sucralfate administration to cats with CKD resulted in clinical 
+decompensation (vomiting, anorexia, constipation, worsening azo -
+temia) in 3 of the 5 studied cats.6
+Reproductive/Nursing Safety
+In rats, sucralfate doses up to 38 times those used in humans have 
+not been shown to cause impaired fertility, and doses up to 50 times 
+normal used in humans have not been shown to cause signs of tera-
+togenicity.7 
+Sucralfate is most likely not excreted in breast milk because of 
+minimal systemic absorption.
+Overdose/Acute Toxicity
+Overdoses are unlikely to cause significant problems. Laboratory an-
+imals receiving up to 12 g/kg PO have demonstrated no incidence of 
+mortality.7 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving sucralfate and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Antacids, Aluminum Containing : Additive absorption of 
+aluminum may occur, particularly in patients with renal insuf -
+ficiency.
+Sucralfate may impair the oral absorption of the following medica -
+tions; administration should be separated by at least 2 hours to min-
+imize this effect (with other medication being administered before 
+sucralfate)4:
+ ■ Alendronate : Other oral bisphosphonates should be assumed 
+to have the same effects.
+ ■ Antacids, Aluminum Containing : Can decrease sucralfate 
+effectiveness; administration should be separated by 30 minutes. 
+Additive absorption of aluminum may occur, particularly in pa -
+tients with renal insufficiency.
+ ■ Antacids, Calcium/Magnesium Containing : Can decrease 
+sucralfate effectiveness; administration should be separated by 30 
+minutes.
+ ■ Ciprofloxacin : Other oral fluoroquinolones, except enrofloxa-
+cin, should be assumed to be affected.9,10 
+
+
+===== Plumb PDF 1217 =====
+1190    Sufentanil
+ ■ Diclofenac
+ ■ Digoxin
+ ■ Feeding, Enteral : Administration should be separated by an 
+hour.
+ ■ Ferrous Sulfate
+ ■ Furosemide
+ ■ Ketoconazole
+ ■ Lanthanum
+ ■ Levothyroxine : A dministration should be separated by 4 
+hours.
+ ■ Macrolide Antibiotics  (eg, azithromycin, clarithromycin, 
+erythromycin)
+ ■ Penicillamine
+ ■ Tetracyclines  (eg, doxycycline, minocycline, tetracycline)11,12
+ ■ Theophylline
+ ■ Vitamins, Fat Soluble
+ ■ W arfarin
+Dosages
+DOGS/CATS:
+GI-mucosal protectant for conditions such as esophagitis, gas-
+tric or duodenal ulcers, and uremic gastritis  (extra-label): Em-
+pirically administered at ¼ to ½ of a 1 g tablet (250 – 500 mg)/ani-
+mal (NOT g/kg) for toy-breed dogs and cats and 1 g/animal (NOT 
+g/kg) PO 2 to 4 times daily for large-sized dogs. When using tablet 
+formulations, it is recommended to crush the tablet then suspend 
+it in a small amount of water prior to administration.
+FERRETS :
+GI-mucosal protectant (extra-label): 
+a) 75 mg/kg PO every 4 to 6 hours; should be administered 10 
+minutes prior to feeding13
+b) 25 – 125 mg/kg PO every 8 to 12 hours14
+HORSES :
+GI-mucosal protectant (extra-label): 
+a) Gastric glandular disease: Sucralfate 12 – 20 mg/kg PO twice 
+daily in combination with omeprazole 4 mg/kg PO once dai -
+ly.5,15,16
+b) Prevention of stress-induced ulcers (used with acid-sup -
+pressive drugs) in foals: 
+i. 10 – 20 mg/kg PO every 6 to 8 hours17
+ii. 20 – 40 mg/kg PO every 6 hours18
+iii. 2 – 4 g/foal (NOT g/kg) PO every 6 hours18
+c) Right dorsal colitis | colonic ulcers: 22 mg/kg PO every 6 to 8 
+hours19,20 
+REPTILES :
+GI irritation in most species (extra-label): 500 – 1000 mg/kg PO 
+every 6 to 8 hours21
+BIRDS:
+Upper GI mucosal hemorrhage (extra-label): 50 – 100 mg/kg PO 
+every 12 hours22
+Monitoring
+ ■ Clinical efficacy (dependent on the reason for use); may be moni-
+tored by a decrease in clinical signs, endoscopic examination, and 
+fecal occult blood testing
+Client Information
+ ■ This medicine is best given on an empty stomach and not at the 
+same time as other medications. If you are giving your animal any 
+other medication, be sure to give the other medications 2 hours 
+before you give the sucralfate. 
+ ■ Sucralfate be given several times a day to be most effective.
+ ■ Shake liquids well before using. If using tablets, it is best to dis -
+solve the tablets in lukewarm water just before giving them.
+ ■ This medicine is usually tolerated well. Some animals may devel-
+op constipation. Some cats may vomit after receiving this medi -
+cine. Contact your veterinarian if you have concerns about your 
+animal taking this medicine.
+Chemistry/Synonyms
+Sucralfate, a basic aluminum complex of sucrose sulfate, can occur 
+as a white, amorphous powder. It is practically insoluble in alcohol 
+or water. Each 1 g sucralfate tablet contains ≈207 mg of aluminum.
+Sucralfate is structurally related to heparin but does not possess 
+any appreciable anticoagulant activity. It is also structurally related to 
+sucrose but is not utilized as sugar by the body.
+Sucralfate is also known as basic aluminum sucrose sulfate and 
+Carafate®, Sulcrate®, and Cytogard®.
+Storage/Stability
+Store sucralfate tablets in tight containers at room temperature 
+(15°C-30°C [59°F-86°F]). Store sucralfate suspension at controlled 
+room temperature (20°C-25°C [68°F-77°F]); do not freeze.
+Compatibility/Compounding Considerations
+A sucralfate 200 mg/mL suspension can be extemporaneously pre -
+pared. For a volume of 100 mL, twenty (20) sucralfate 1 g tablets 
+should be crushed, and a sufficient quantity of distilled water added 
+to bring the volume to 100 mL. Suspending agents (eg, acacia, trag -
+acanth) should not be used, as they can bind to sucralfate and make 
+it inactive. “Shake well” and “refrigerate” should be labeled on the 
+compounded solution. When refrigerated, it is stable for 14 days.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE
+HUMAN-LABELED PRODUCTS :
+Sucralfate Tablets: 1 g; Carafate®, generic; (Rx)
+Sucralfate Suspension: 1 g/10 mL in 10 mL unit-dose cups and  
+415 mL bottles; Carafate®, generic; (Rx)
+Formulations are available as oral mucosal coating agents and regu-
+lated by the FDA as medical devices.
+References
+For the complete list of references, see wiley.com/go/budde/plumb 
+Sufentanil
+(soo-fen-ta-nil) Sufenta®
+Opioid Agonist
+Prescriber Highlights
+ ▶ Injectable opioid that is 5 to 7 times more potent than 
+fentanyl. May be useful for adjunctive anesthesia or epidural 
+analgesia
+ ▶ Dose-related respiratory and CNS depression most likely 
+adverse effects
+ ▶ DEA Schedule II (C-II) controlled substance
+Uses/Indications
+Sufentanil is an opioid analgesic that may be useful as an anesthesia 
+adjunct or as an epidural analgesic. In humans, it has been used as 
+the primary anesthetic in intubated patients with assisted ventilation 
+and as a postoperative analgesic.
+Pharmacology/Actions
+Sufentanil is a potent mu opioid with the expected sedative, anal -
+gesic, and anesthetic properties. When comparing analgesic poten -
+cies when injecting IM, 0.01 to 0.04 mg of sufentanil is equivalent to 
+
+
+===== Plumb PDF 1218 =====
+Sufentanil   1191
+0.4 to 0.8 mg of alfentanil, 0.1 to 0.2 mg of fentanyl, and ≈10 mg of 
+morphine. Like fentanyl, sufentanil appears to have less circulatory 
+effects than morphine. Sufentanil has a rapid onset of action (1 to 3 
+minutes) and a faster recovery time than fentanyl.
+Pharmacokinetics
+In isoflurane-anesthetized cats, a sufentanil 1 µg/kg IV bolus had a 
+volume of distribution (at steady-state) of ≈0.77 L/kg, a clearance of 
+≈17.6 mL/minute/kg, and a terminal half-life of ≈54 minutes. Elimi-
+nation of sufentanil is expected to be more rapid than either fentanyl 
+or alfentanil because of a small volume of distribution and moderate 
+clearance.1
+In humans, the drug has a rapid onset of action (1 to 3 minutes) 
+after IV injection. The drug is highly lipid-soluble and has a volume 
+of distribution in the central compartment of 0.1 L/kg. Approxi -
+mately 93% is bound to plasma proteins. Plasma concentrations 
+rapidly decline because of redistribution, and its terminal elimina -
+tion half-life is ≈2.5 hours. Plasma clearance has been reported to be  
+≈12 mL/minute/kg. Sufentanil is metabolized primarily in the liv -
+er and small intestine via O-demethylation and N-dealkylation. 
+The parent drug and these metabolites are excreted primarily in 
+the urine. Although the manufacturer states to use sufentanil with 
+caution in patients with impaired renal or hepatic function, limited 
+pharmacokinetic studies in these patients rarely showed any drug 
+accumulation.
+Contraindications/Precautions/Warnings
+Sufentanil is contraindicated in patients that are hypersensitive to 
+it or other opioids.2 It should be used with caution in debilitated or 
+geriatric patients and those with severely diminished renal or hepatic 
+function. Initial dose reduction may be required in geriatric or debil-
+itated patients, particularly those with diminished cardiopulmonary 
+function.
+Because of the drug’s potency, the use of a tuberculin syringe to 
+measure doses less than 1 mL in addition to a double-check system 
+for dose calculations and measurement is recommended. It should 
+only be used in situations where patient vital signs can be continu -
+ously monitored. 
+Opioid analgesics are contraindicated in patients stung by scor -
+pions (eg, Centruroides spp), as they may potentiate venom effects.3
+Do not confuse SUfentanil with fentanyl or ALfentanil.
+Adverse Effects
+Adverse effects are generally dose-related and consistent with other 
+opioid agonists. Respiratory depression and/or CNS depression are 
+most likely to be encountered and can be exacerbated if sufentanil is 
+given with other drugs that can cause those effects.
+In humans, bradycardia may occur, but it is usually responsive 
+to anticholinergic agents. Dose-related skeletal muscle rigidity has 
+been reported, particularly with high doses and/or rapid IV admin -
+istration and can be managed with concurrent use of neuromuscular 
+blockers. Sufentanil has rarely been associated with asystole, hyper -
+carbia, and hypersensitivity reactions.
+Reproductive/Nursing Safety
+Although sufentanil is indicated for epidural use (mixed with bupiv-
+acaine ± epinephrine) in women for labor/delivery, it should not be 
+administered systemically to a dam close to giving birth, as offspring 
+may show behavioral alterations (eg, hypotonia, depression) associ-
+ated with opioid administration.
+The effects of sufentanil on lactation and its safety for nursing off-
+spring are not well defined, but sufentanil milk levels approximate 
+those found in serum. This, coupled with its low oral bioavailability, 
+makes it unlikely to cause significant effects in nursing offspring.
+Overdose/Acute Toxicity
+In dogs, the LD 50 of IV sufentanil is 10.1 to 19.5 mg/kg. Severe IV 
+overdoses may cause apnea, circulatory collapse, pulmonary edema, 
+seizures, cardiac arrest, and death. Treatment is a combination of 
+supportive therapy and administration of an opioid antagonist, such 
+as naloxone. Although sufentanil has a fairly rapid half-life, multiple 
+doses of naloxone may be necessary. 
+For patients that have experienced or are suspected of having ex-
+perienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions have either been reported or are the-
+oretical in humans or animals receiving sufentanil and may be of sig-
+nificance in veterinary patients. Unless otherwise noted, use together 
+is not necessarily contraindicated, but weigh the potential risks and 
+perform additional monitoring when appropriate.
+ ■ Alpha-2 Receptor Agonists  (eg, dexmedetomidine, xyla -
+zine): Concurrent use may increase the risk for CNS and/or re -
+spiratory depression. 
+ ■ Anesthetic Agents  (eg, alfaxalone, isoflurane, ketamine, 
+propofol): Concurrent use may increase the risk for CNS and/or 
+respiratory depression. 
+ ■ Anticholinergic Agents  (eg, acepromazine, atropine, gly -
+copyrrolate): Concurrent use may increase the risk for urinary 
+retention, constipation, and CNS and respiratory depression.
+ ■ Antihypertensive Agents  (eg, atenolol, lisinopril): Concur-
+rent use may increase the risk for bradycardia, hypotension, and 
+orthostasis. Use cautiously and monitor blood pressure and heart 
+rate. Opioids may decrease the therapeutic effects of diuretics. 
+ ■ Benzodiazepines  (eg, diazepam, midazolam ): Concurrent 
+use may increase the risk for CNS and/or respiratory depression. 
+ ■ Bethanechol : Concurrent use may antagonize the beneficial 
+effects of bethanechol on GI motility. Avoid combination.
+ ■ CNS Depressants  (eg, methocarbamol, phenobarbital): Con-
+current use may increase the risk for CNS and/or respiratory de -
+pression. Monitor and adjust dosages accordingly.
+ ■ Desmopressin : Concurrent use may increase levels of oral des -
+mopressin and increase the risk for water intoxication and/or 
+hyponatremia, which can progress to seizures, coma, respiratory 
+arrest, and death. Monitor electrolytes and renal function.
+ ■ Domperidone : Concurrent use may antagonize the GI effects 
+of domperidone.
+ ■ Drugs That Inhibit Hepatic Isoenzymes  (eg, cimetidine, 
+diltiazem, erythromycin, fluconazole, itraconazole, keto -
+conazole) May increase the half-life and decrease the clearance 
+of sufentanil, leading to prolonged effects and an increased risk 
+for respiratory depression. Consider adjusting doses accordingly.
+ ■ Drugs That Induce Hepatic Isoenzymes  (eg, griseofulvin, 
+mitotane, phenobarbital ): Current use may decrease levels of 
+sufentanil. Monitor clinical response and adjust doses  accordingly.
+ ■ Drugs That Depress Cardiac Function Or Reduce V agal 
+Tone (eg, beta-blockers or other anesthetic agents): May produce 
+bradycardia or hypotension if used concurrently with sufentanil
+ ■ Ifosfamide : Concurrent use may increase the risk for neurotox-
+icity, including somnolence, confusion, hallucinations, blurred 
+vision, urinary incontinence, seizures, and coma. Use cautiously 
+and monitor.
+ ■ Iohexol : Concurrent use of opioids with intrathecal iohexol 
+may increase the risk for seizures. Opioids should be withheld for 
+48 hours before and 24 hours after intrathecal administration of 
+iohexol.
+
+
+===== Plumb PDF 1219 =====
+1192    Sufentanil
+ ■ Loperamide : Concurrent use may increase the risk for consti -
+pation.
+ ■ Monoamine Oxidase Inhibitors  (MAOIs; eg, amitraz, sele-
+giline): Concurrent use may increase the risk for anxiety, con -
+fusion, hypotension, respiratory depression, cyanosis, and coma. 
+MAOIs should be withheld for 14 days prior to administration of 
+opioids. Avoid combination.
+ ■ Metoclopramide : Concurrent use may antagonize the proki -
+netic effects of metoclopramide.
+ ■ Neuromuscular Blocking Agents  (eg, atracurium): Con-
+current use may increase the risk for tachycardia, bradycardia, 
+and/or hypotension. Use cautiously and monitor
+ ■ Serotonin Receptor Antagonists  (eg, dolasetron, fluox-
+etine): Concurrent use may increase the risk for serotonin syn -
+drome. Avoid combination.
+ ■ Tramadol : Concurrent use may increase the risk for seizures, 
+serotonin syndrome, urinary retention, and constipation. The risk 
+for CNS and respiratory depression may be additive.
+ ■ Tricyclic Antidepressants  ( TCAs; eg, amitriptyline, clo -
+mipramine): Concurrent use may increase risk for urinary reten-
+tion, constipation, and CNS and respiratory depression.
+Laboratory Considerations
+ ■ Because opioids can increase biliary tract pressure and raise se -
+rum amylase and lipase values, these values may be unreliable for 
+24 hours after sufentanil is administered.
+Dosages
+NOTE: In obese patients, calculate doses based on lean body 
+weight.
+DOGS/CATS:
+Opioid analgesic (extra-label): 0.5 –  1 µg/kg slow IV followed 
+by 0.5 – 1 µg/kg/ HOUR IV CRI has been noted. 1,4–8 Dosage is ti -
+trated to effect. Dosages as high as 2.5 µg/kg slow IV followed by  
+2 – 4 µg/kg/HOUR IV CRI have been noted.9
+Epidural analgesia in dogs  (extra-label): 0.5 – 1 µg/kg diluted 
+to a volume of 0.2 – 0.36 mL/kg with sterile saline. The onset of 
+action is 10 to 15 minutes; duration 1 to 4 hours.10–12
+RABBITS :
+Anesthesia (extra-label): 0.5 µg/kg IV bolus, followed by  
+0.72 µg/kg/HOUR IV CRI13
+Monitoring
+ ■ Anesthetic and/or analgesic efficacy
+ ■ Cardiac and respiratory rate
+ ■ Pulse oximetry or other methods to measure blood oxygenation 
+when used for anesthesia
+ ■ Blood pressure
+Client Information
+ ■ Sufentanil is a very potent opioid that should only be used by 
+professionals in a setting where adequate patient monitoring is 
+available.
+Chemistry/Synonyms
+Sufentanil citrate is a phenylpiperidine derivative opioid related to 
+fentanyl. It occurs as a white or almost white powder that is soluble 
+in water and sparingly soluble in alcohol, acetone, and chloroform. 
+The commercially available injection has a pH (adjusted with citric 
+acid) of 3.5 to 6.
+Sufentanil citrate may also be known as R-33800, sufentanili ci -
+tras, fentathienel citrate, sufentanyl citrate, sulfentanil citrate, Fast-
+fen®, Fentaientel®, and Sufenta®.
+Storage/Stability
+Unless otherwise labeled, store sufentanil injection protected from 
+light at room temperature 20°C to 25°C (68°F-77°F). Sufentanil ci -
+trate is hydrolyzable in acidic solutions.
+Sufentanil citrate is a DEA Schedule II (C-II) controlled sub -
+stance; store it in a substantially constructed and securely locked 
+area. Follow applicable local, state, and federal rules regarding the 
+disposal of unused or wasted controlled drugs.
+Compatibility/Compounding Considerations
+Sufentanil citrate is reportedly compatible with 5% dextrose and 
+bupivacaine. Sufentanil is Y-site compatible with solutions contain-
+ing atropine, dexamethasone sodium phosphate, diazepam, diphen-
+hydramine, etomidate, metoclopramide, midazolam, phenobarbital, 
+and propofol. It is incompatible with lorazepam, phenytoin, and 
+thiopental.
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS : NONE.
+The Association of Racing Commissioners International (ARCI) has 
+designated this drug as a class 1 substance. Use of this drug may not 
+be allowed in certain animal competitions. Check rules and regula -
+tions before entering in a competition while this medication is being 
+administered. Contact local racing authorities for further guidance. 
+See the Appendix for more information.
+HUMAN-LABELED PRODUCTS :
+Sufentanil Citrate Injection: 50 µg/mL (as base) in 1 mL, 2 mL, and  
+5 mL ampules; Sufenta® (preservative free), generic; (Rx, C-II)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+ 
+
+
+===== Plumb PDF 1220 =====
+Sulfa-/Trimethoprim   1193
+Sulfa-/Trimethoprim
+Sulfadiazine/Trimethoprim
+Sulfamethoxazole/Trimethoprim
+(sul-fa-dye-a-zeen; sul-fa-meth-ox-a-zole/trye-meth-ohe-prim)
+Bactrim®, EquiSul-SDT®, Uniprim®
+Potentiated Sulfonamide Antimicrobial
+NOTE: In the United States, 2 FDA-approved combinations of sulfon-
+amide with trimethoprim (ie, sulfa-/trimethoprim) are used clinically 
+in animals: sulfadiazine/trimethoprim for parenteral and oral use in 
+dogs, cats, and horses and sulfamethoxazole/trimethoprim for oral 
+use in humans. In Canada, sulfadoxine is also available in combina -
+tion with trimethoprim for veterinary use.
+Prescriber Highlights
+ ▶ Combination antimicrobial agent, often referred to as a po-
+tentiated sulfonamide, used to treat bacterial and protozoal 
+infections
+ ▶ Contraindications include hypersensitivity to sulfonamides 
+and severe renal or hepatic impairment.
+ ▶ Caution is advised in cases of diminished renal or hepatic 
+function, urinary obstruction, urolithiasis, and in dog breeds 
+predisposed to sulfonamide hypersensitivity (eg, Doberman 
+pinschers).
+ ▶ Adverse effects in dogs include keratoconjunctivitis sicca, 
+hypersensitivity (type 1 or type 3), acute neutrophilic hepatitis 
+with icterus, vomiting, anorexia, diarrhea, fever, hemolytic 
+anemia, urticaria, polyarthritis, facial swelling, polydipsia, 
+crystalluria, hematuria, polyuria, cholestasis, hypothyroidism, 
+anemia, agranulocytosis, and idiosyncratic hepatic necrosis.
+ ▶ Adverse effects in cats include anorexia, crystalluria, hematu-
+ria, leukopenia, and anemia.
+ ▶ Adverse effects in horses include diarrhea, hypersensitivity 
+reactions, and hematologic effects (eg, anemia, thrombocy-
+topenia, leukopenia) when administered orally and transient 
+pruritus after IV injection.
+ ▶ Local injection adverse effects (eg, warmth, edema, pain) are 
+possible.
+ ▶ Sulfa-/trimethoprim is potentially teratogenic; weigh the risks 
+versus the benefits before prescribing.
+ ▶ In the United States, extra-label use of sulfonamides is prohib-
+ited in lactating dairy cattle.
+Uses/Indications
+Although sulfadiazine/trimethoprim is only FDA-approved for use 
+in dogs and horses, this drug is used to treat infections caused by 
+susceptible bacteria and parasitic organisms in various species. 
+Sulfadiazine/trimethoprim is commonly used in horses because it 
+is 1 of a limited number of safe oral options. Although use in dogs is 
+more limited because of concerns about adverse effects and availabil-
+ity of other antimicrobial options, this antibiotic is a potential choice 
+for treatment of various infections (eg, cystitis, prostatitis) and is also 
+sometimes used for treatment of atypical pathogens (eg, Nocardia 
+spp). Prophylactic use of sulfadiazine/trimethoprim reduced mor -
+bidity in dogs receiving doxorubicin.1
+The World Health Organization (WHO) has designated sulfa -
+methoxazole/trimethoprim as a Highly Important antimicrobial for 
+human medicine.2 The Office International des Epizooties (OIE) An-
+timicrobial Classification has designated sulfadiazine/trimethoprim 
+as a Veterinary Critically Important antimicrobial.3
+Pharmacology/Actions
+Sulfonamides are bacteriostatic agents while trimethoprim is bac -
+tericidal; both agents are time-dependent antibiotics. When used in 
+combination, the resulting potentiated sulfonamides are bactericid-
+al. Potentiated sulfonamides sequentially inhibit enzymes in the folic 
+acid pathway, inhibiting bacterial thymidine synthesis. Sulfonamides 
+compete with para-aminobenzoic acid (PABA) to reduce bacterial 
+dihydrofolic acid (DFA) formation, and trimethoprim blocks the 
+conversion of DFA to tetrahydrofolic acid by preferentially inhibiting 
+bacterial dihydrofolate reductase. Infected tissue and cellular debris 
+can inhibit the activity of sulfa-/trimethoprim by secreting PABA 
+and thymidine. The effects of sulfa-/trimethoprim on the equine GI 
+microbiome appear to be reversible.4
+The in vitro optimal ratio for most susceptible bacteria is ≈1:20 
+(trimethoprim:sulfonamide), but synergistic activity can reportedly 
+occur with ratios of 1:1 to 1:40. The serum concentration of the tri -
+methoprim component is considered more important than the sul -
+fonamide concentration. 
+Potentiated sulfonamides have a fairly broad spectrum of activi -
+ty. Generally susceptible gram-positive bacteria include most strep -
+tococci and staphylococci and Nocardia spp. Many gram-negative 
+organisms of the Enterobacteriaceae family are inherently suscep -
+tible to potentiated sulfonamides but acquired resistance can occur. 
+Sulfa-/trimethoprim is ineffective against Pseudomonas aeruginosa; 
+some protozoa (ie, Pneumocystis jiroveci, Coccidia spp, Neospora spp, 
+Toxoplasma spp) are also inhibited. Potentiated sulfonamides appear 
+to have little activity against most atypical bacteria and anaerobes; 
+methicillin-resistant staphylococci are usually resistant. Enterococcus 
+spp infections may appear to be susceptible to sulfonamide-contain-
+ing antibiotics in vitro; however, they are intrinsically resistant, so 
+sulfa-/trimethoprim should not be used for these bacteria.
+Resistance development is thought to occur more slowly to the 
+combination of drugs than to either drug alone. In gram-negative 
+organisms, sulfamethoxazole resistance is usually plasmid mediat -
+ed, although a point mutation for dihydropteroate synthase also may 
+confer resistance.  
+Pharmacokinetics
+Sulfa-/trimethoprim is relatively well absorbed after oral adminis -
+tration, with peak concentrations occurring ≈1 to 4 hours after ad -
+ministration; however, the drug is absorbed more slowly after SC 
+absorption. Oral bioavailability in fed horses after a single dose of 
+30 mg/kg paste was 74% for sulfadiazine and 46% for trimethoprim.5 
+Bioavailability was ≈84% in male goats.6 Food has no apparent effect 
+on the absorption of sulfadiazine, but trimethoprim absorption is 
+decreased.
+In calves 1 day and 1 week of age, trimethoprim and sulfadia -
+zine were absorbed after oral administration, although serum tri -
+methoprim concentration was diminished in the 1-week-old calves. 
+In calves 6 weeks of age, peak sulfadiazine concentration was only 
+60% as compared with calves 1 day of age, and trimethoprim was 
+undetectable.7 In a separate study, sulfadiazine half-life was 8.5 to 10 
+hours in calves 6 weeks of age and ≈8 to 13 hours in calves 12 weeks 
+of age.8 In ruminants older than 8 weeks of age, trimethoprim is ap-
+parently trapped in the ruminoreticulum after oral administration 
+and undergoes some degradation that limits its usefulness.
+Sulfa-/trimethoprim is well distributed in the body; however, in 
+horses, concentrations are lower in the pulmonary epithelial lining 
+fluid than in plasma. 5 Both sulfadiazine and trimethoprim attain 
+therapeutic concentrations in the equine endometrium. 9 In dogs, 
+therapeutic concentrations of both agents are reached in the skin. 10 
+In patients with inflamed meninges, the drugs enter the CSF in con-
+centrations ≈50% of those found in the serum. Sulfa-/trimethoprim 
+
+
+===== BSAVA PDF 403 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+387
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Safety and handling: Normal precautions should be observed.
+Contraindications: Do not use in cases of intestinal obstruction 
+or where enterotomy or enterectomy is to be performed.
+Adverse reactions: No information available.
+Drug interactions: No information available.
+DOSES
+Dogs: All uses: 1.5 g p.o. q24h (dogs <5 kg); 3 g p.o. q12–24h (5–15 
+kg); 4 g p.o. q12–24h (>15 kg). Sprinkle over feed or place on tongue.
+Cats: All uses: Kittens: 1 capsule q24h. Adults: 1 capsule q12h.
+Succinylcholine see Suxamethonium
+Sucralfate
+(Antepsin*, Antepsin suspension*, Carafate*) 
+POM 
+Formulations: Oral: 1 g tablet; 0.2 g/ml suspension.
+Action: In an acidic medium an aluminium ion detaches from the 
+compound, leaving a very polar, relatively non-absorbable ion. This 
+ion then binds to proteinaceous exudates in the upper GI tract, 
+forming a chemical diffusion barrier over ulcer sites, preventing 
+further erosion from acid, pepsin and bile salts. However, its major 
+action appears to relate to stimulation of mucosal defences and 
+repair mechanisms (stimulation of bicarbonate and PGE production 
+and binding of epidermal growth factor). These effects are seen at 
+neutral pH.
+Use:
+• Treatment of oesophageal, gastric and duodenal ulceration.
+• The efficacy of sucralfate as a phosphate binder in renal failure is 
+uncertain.
+Can be used alongside an H2 receptor antagonist or proton-pump 
+inhibitor but should be given separately.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Perforated ulcer.
+Adverse reactions: Minimal; constipation is the main problem in 
+humans. Bezoar formation and hypophosphataemia are also 
+reported in humans.
+Drug interactions: Sucralfate may decrease the bioavailability of 
+H2 antagonists, phenytoin and tetracyclines. It may be a wise 
+precaution to administer sucralfate at least 2 hours before or after 
+these drugs. Sucralfate interferes significantly with the absorption of 
+fluoroquinolones and digoxin.
+
+
+===== BSAVA PDF 404 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+388
+DOSES
+Dogs: All uses: 500 mg/dog p.o. q6–8h (dogs up to 20 kg); 1–2 g/
+dog p.o. q6–8h (>20 kg).
+Cats: All uses: 250 mg/cat p.o. q8–12h. 
+References
+Bazelle J, Threlfall A and Whitley N (2018) Gastroprotectants in small animal veterinary 
+practice – a review of the evidence. Part 1: cyto-protective drugs. Journal of Small 
+Animal Practice  59, 587–602
+Marks SL, Kook PH, Papich MG et al . (2018) ACVIM consensus statement: support for 
+rational administration of gastrointestinal protectants to dogs and cats. Journal of 
+Veterinary Internal Medicine  32, 1823–1840
+Sulfasalazine
+(Salazopyrin*, Sulphasalazine*) POM 
+Formulations: Oral: 500 mg tablet; 250 mg/5 ml oral suspension.
+Action: Sulfasalazine is a prodrug: a diazo bond binding 
+sulfapyridine to 5-ASA is cleaved by colonic bacteria to release free 
+5-ASA, which acts locally in high concentrations in the colon as an 
+anti-inflammatory.
+Use: Used in the management of colitis. There is a significant risk of 
+keratoconjunctivitis sicca and periodic Schirmer tear tests should be 
+performed.
+Safety and handling: Normal precautions should be observed.
+Contraindications: Dobermanns appear to be sensitive to 
+adverse effects associated with sulfapyridine.
+Adverse reactions: Uncommon but include keratoconjunctivitis 
+sicca (KCS), vomiting, allergic dermatitis and cholestatic jaundice. 
+Owners should be made aware of the seriousness of KCS and what 
+signs to monitor. The cause of the KCS is not clear. Historically 
+sulfapyridine has been blamed. Olsalazine has been recommended 
+as the incidence of KCS is less with its use, although not completely 
+abolished. It is possible that 5-ASA may sometimes be responsible.
+Drug interactions: The absorption of digoxin may be inhibited by 
+sulfasalazine, and the measurement of serum folate concentration 
+may be affected. Sulfasalazine may cause a reduction in serum 
+thyroxine concentrations.
+DOSES
+Dogs: All uses: 15–30 mg/kg p.o. q8–12h, maximum 6 g/day.
+Cats: All uses: 10–20 mg/kg p.o. q8–12h.
+Sulphonamide see Trimethoprim/
+sulphonamide 
+Z
+Y
+X
+W
+V
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+
+
+===== BSAVA PDF 405 =====
+BSAVA Small Animal Formulary 10th edition: Part A – Canine and Feline
+389
+Z
+Y
+X
+W
+U
+T
+S
+R
+Q
+P
+O
+N
+M
+L
+K
+J
+I
+H
+G
+F
+E
+D
+C
+B
+A
+V
+Suxamethonium (Succinylcholine)
+(Suxamethonium*) POM 
+Formulations: Injectable: 50 mg/ml solution.
+Action: Competitively binds to the nicotinic acetylcholine receptor. 
+The persistent depolarization prevents the transmission of further 
+action potentials, resulting in muscle relaxation.
+Use:
+• Used to facilitate intubation in cats.
+There are no indications for suxamethonium in dogs. Suxamethonium 
+has a very rapid onset of action (5–15 seconds) and short duration of 
+action (3–5 minutes). However, use of neuromuscular blockade to 
+facilitate intubation is rarely required in small animals and 
+suxamethonium has been largely replaced by non-depolarizing drugs. 
+Use with caution in patients with hepatic disease.
+Safety and handling: Store in refrigerator.
+Contraindications: Do not administer unless the animal is 
+adequately anaesthetized and facilities to provide positive pressure 
+ventilation are available. Do not use in animals exposed to 
+organophosphate compounds.
+Adverse reactions: Can cause arrhythmias (sinus bradycardia, 
+ventricular arrhythmias) via stimulation of muscarinic receptors in 
+the sinus node. A small rise in potassium concentration is expected 
+after suxamethonium; patients with burns and neuromuscular 
+disorders are at severe risk of hyperkalaemia.
+Drug interactions: The actions of suxamethonium may be 
+enhanced by beta-adrenergic blockers (e.g. propranolol), 
+furosemide, isoflurane, lidocaine, magnesium salts and 
+phenothiazines. Diazepam may reduce the duration of action of 
+suxamethonium. Neostigmine and pyridostigmine should not be 
+administered with suxamethonium as they inhibit 
+pseudocholinesterases, thereby enhancing suxamethonium’s effect.
+DOSES
+Dogs: Do not use.
+Cats: 1.0 mg/kg i.v. A total dose of 3.5 mg is satisfactory in cats  
+>3.5 kg.

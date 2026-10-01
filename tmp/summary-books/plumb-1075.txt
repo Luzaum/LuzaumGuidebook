@@ -1,0 +1,243 @@
+1048      Pradofloxacin
+flicts or is dependent on diluent or concentration factors with the 
+following drugs or solutions: fat emulsion 10%, amikacin sulfate, 
+dobutamine HCl, mannitol, methylprednisolone sodium succinate 
+(at Y-site), ondansetron, penicillin G sodium, promethazine HCl (at 
+Y-site), and sodium bicarbonate. 
+Potassium chloride for injection is reportedly physically incom-
+patible with the following solutions or drugs: amphotericin B, diaz-
+epam (at Y-site), and phenytoin sodium (at Y-site).
+Dosage Forms/Regulatory Status
+VETERINARY-LABELED PRODUCTS: 
+Parenteral Products: There are several products for parenteral use 
+that contain potassium; refer to Appendix tables or individual pro-
+prietary veterinary products for additional information.
+Oral Products: These products are not found in the FDA Green 
+Book; approval status is uncertain.
+Potassium Gluconate Tablets: 2 mEq (468 mg); Tumil-K®, Renakare®, 
+generic; (Rx). Labeled for use in cats and dogs
+Potassium Gluconate Oral Powder: Each 0.65 g (¼ teaspoon) con-
+tains 2 mEq of potassium in 4 oz containers; Renakare®, Tumil-K®; 
+(Rx). Labeled for use in dogs and cats
+Potassium Gluconate Gel: Each 2.34 g (½ teaspoon) contains 2 mEq 
+of potassium in 5 oz tubes; Tumil-K® Gel, Renakare®; (Rx). Labeled 
+for use in dogs and cats
+HUMAN-LABELED PRODUCTS (NOT A COMPLETE LIST):
+Parenteral Products:
+Potassium Chloride for Injection Concentrate: 2 mEq/mL in sin-
+gle-dose and multi-dose vials and must be diluted before adminis-
+tering; generic; (Rx)
+Potassium Chloride for Injection, Highly Concentrated: 10 mEq and 
+20 mEq in 50 mL or 100 mL bags, and 40 mEq/100 mL bags; gener-
+ic; (Rx). Ready-to-use solution for fluid-restricted patients; requires 
+administration through a central line via calibrated infusion device.
+There are also premixed IV bags of saline and dextrose (both sep-
+arately and in various combinations) that contain potassium 
+10 mEq/L, 20 mEq/L, 30 mEq/L, or 40 mEq/L. 
+Potassium Acetate for Injection Concentrate: 2 mEq/mL and 
+4 mEq/mL and must be diluted before administering; (Rx)
+Potassium Phosphate for Injection (see Phosphate, Intravenous) is 
+also available. 
+Oral Products: There are many human-labeled potassium salts for 
+oral use available in several dosage forms; refer to human drug ref-
+erences for more information on these products. Tablets, controlled/
+sustained release tablets and capsules, effervescent tablets, liquids, 
+and powder in varying strengths available; (OTC, Rx)
+References
+For the complete list of references, see wiley.com/go/budde/plumb
+Pradofloxacin
+(pra-doe-flox-a-sin)  Veraflox®
+Fluoroquinolone Antibiotic 
+Prescriber Highlights
+	
+▶FDA-approved for use in cats; approved for dogs in some 
+countries
+	
+▶Enhanced aerobic gram-positive activity and activity against 
+anaerobes; its gram-negative activity is similar to other fluoro-
+quinolones. 
+	
+▶Contraindications include hypersensitivity to fluoroquino-
+lones; do not administer to pregnant or lactating animals, 
+or kittens less than 12 weeks of age, as safety has not been 
+determined.
+	
+▶May produce erosions of cartilage of weight-bearing joints 
+and other signs of arthropathy in immature animals of various 
+species
+	
+▶Use with caution in patients with renal insufficiency, pre-exist-
+ing CNS disorders (eg, epilepsy), or underlying conditions that 
+predispose to arrhythmias (eg, electrolyte imbalances, cardiac 
+disease); use with caution in immunocompromised cats (ie, 
+infected with feline leukemia and/or feline immunodeficiency 
+virus), as safety has not been determined. 
+	
+▶Adverse effects may include GI distress, photosensitivity, mye-
+losuppression, and arrhythmias (dogs only).
+	
+▶Many potential drug interactions
+	
+▶FDA prohibits extra-label use in food animals. Should not be 
+used in humans
+Uses/Indications
+In cats, pradofloxacin oral suspension is FDA-approved for the 
+treatment of skin infections (wounds and abscesses) caused by sus-
+ceptible strains of Pasteurella multocida, Streptococcus canis, Staphy-
+lococcus aureus, Staphylococcus felis, and Staphylococcus pseudinter-
+medius. Pradofloxacin has also been used clinically in cats for the 
+treatment of bacterial UTIs, Bartonella spp,1 Mycoplasma haemofelis 
+upper respiratory infections, and in combination with other antimy-
+cobacterial drugs for feline leprosy syndromes. One study showed 
+pradofloxacin to be equivalent to amoxicillin for treatment of bacte-
+rial upper respiratory infections.2
+Pradofloxacin is not FDA-approved for use in dogs (see Contra-
+indications/Precautions/Warnings). In other countries, pradoflox-
+acin is labeled for the treatment of wound infections, superficial 
+and deep pyoderma caused by susceptible strains of the S pseudin-
+termedius group (including S pseudintermedius); acute UTIs caused 
+by susceptible strains of Escherichia coli and the S pseudintermedius 
+group (including S pseudintermedius); and as adjunctive treatment 
+to mechanical or surgical periodontal therapy in the treatment of 
+severe infections of the gingiva and periodontal tissues caused by 
+susceptible strains of anaerobic organisms (eg, Porphyromonas spp 
+and Prevotella spp). 
+The World Health Organization (WHO) has designated fluoro-
+quinolones as Critically Important (Highest Priority) antimicrobials 
+for human medicine.3 The Office International des Epizooties (OIE) 
+has designated fluoroquinolones as Veterinary Critically Important 
+Antimicrobial (VCIA) Agents for veterinary species.4
+Pharmacology/Actions
+Pradofloxacin is a broad-spectrum third-generation bactericidal flu-
+oroquinolone antibiotic. The bactericidal activity of pradofloxacin is 
+concentration dependent, so its antibacterial activity is dependent 
+on high peak concentrations. Its antibacterial action is via inhibition 
+of DNA gyrase and topoisomerase IV, thereby preventing DNA su-
+percoiling and DNA synthesis.
+
+Pradofloxacin      1049
+Pradofloxacin is unique among veterinary fluoroquinolones 
+in that it has enhanced aerobic gram-positive activity and activity 
+against anaerobes; its gram-negative activity is similar to other flu-
+oroquinolones. This spectrum of activity is similar to the human 
+fluoroquinolone, moxifloxacin. Pradofloxacin, compared with other 
+veterinary fluoroquinolones, also has enhanced activity against My-
+coplasma spp. It is the only antibiotic shown to date that can elimi-
+nate Mycoplasma haemofelis from the blood of experimentally inoc-
+ulated cats.5 Methicillin-resistant staphylococci (MRSP) isolates are 
+usually resistant to all fluoroquinolones, including pradofloxacin.6 
+Proposed ALCS breakpoints during the FDA approval process of less 
+than 1 µg/mL were considered susceptible and breakpoints greater 
+than 2 µg/mL were considered resistant.
+Pradofloxacin has weak activity against streptococci and entero-
+cocci and is not recommended in the treatment of these infections. 
+Unlike enrofloxacin, pradofloxacin does not cause retinal toxicity 
+in cats.7 It has also not been linked to Streptococcus canis-associated 
+necrotizing fasciitis.
+Pharmacokinetics
+In dogs, after oral administration, pradofloxacin is rapidly absorbed 
+with peak plasma concentrations occurring ≈2 hours after a dose.8 
+Bioavailability is reported to be high and not affected by tablet size or 
+the dose administered. Repeated doses do not impact pharmacoki-
+netics. Volume of distribution is more than 2 L/kg, and only ≈35% of 
+the drug is bound to plasma proteins. Peak drug concentrations are 
+slightly higher in serum than in interstitial fluid but persist at con-
+centrations higher than in plasma for most of the 24-hour dosing pe-
+riod. Pradofloxacin at 3 mg/kg PO resulted in 5 times as high PK-PD 
+values in leukocytes compared with plasma, with the lowest values 
+in CSF, synovial fluid, and aqueous humor.9 Highest tissue concen-
+trations were found in cartilage, liver, and kidneys and measured 1 
+to 1.5 hours after a dose. Clearance was 0.24 L/hour/kg, and plasma 
+elimination half-life was ≈8 hours. Pradofloxacin is primarily metab-
+olized via glucuronidation and sulfation; ≈40% of a dose is excreted 
+in the urine. Approximately 85% of a dose is excreted into the urine 
+within 24 hours—40% is excreted unchanged and the rest is excreted 
+primarily as glucuronide metabolites.10–13
+In cats, pradofloxacin is rapidly absorbed with peak plasma con-
+centrations occurring within 1 to 2 hours.8,14 Oral bioavailability is 
+≈60% with oral suspension and ≈70% with oral tablets. Repeat dos-
+es do not significantly alter the pharmacokinetics. A 5 mg/kg PO 
+dose produced a peak concentration of 2.1 μg /mL when given to 
+fasted cats; administration with food reduces peak concentrations 
+by 50% and total absorption by ≈25%. Volume of distribution is rel-
+atively high, and only ≈30% of the drug is bound to plasma pro-
+teins. Like in dogs, glucuronidation is the major metabolic pathway 
+for cats; 70% of a dose is excreted into the urine within 24 hours, 
+but only ≈10% of it is excreted as unchanged drug. Clearance is 
+0.27 L/hour/kg, and terminal plasma elimination half-life has been 
+variably reported from 3 to 8 hours.11,12,15 Clinical efficacy is asso-
+ciated with achieving a peak pradofloxacin concentration 10 times 
+greater than bacterial MIC.16,17
+Contraindications/Precautions/Warnings
+Pradofloxacin is contraindicated in animals that are hypersensitive 
+to it or other quinolones. It should not be used in kittens younger 
+than 12 weeks of age18 (younger than 6 weeks on United Kingdom 
+label14), as safety has not been evaluated. Pradofloxacin has been 
+shown to produce erosions of cartilage of weight-bearing joints and 
+other signs of arthropathy in immature animals of various species.18 
+Pradofloxacin should not be used in dogs and cats with pre-existing 
+articular cartilage lesions.8,14 Additionally, pradofloxacin adminis-
+tration to healthy cats for longer than 7 days resulted in reversible 
+leukopenia, neutropenia, and lymphopenia.18 
+Although pradofloxacin is approved for use in dogs in other 
+countries (eg, United Kingdom, Europe), it is not FDA-approved in 
+the United States due to myelosuppression (thrombocytopenia and 
+leukopenia) observed in canine safety studies at daily oral pradoflox-
+acin doses of 27 mg/kg (6 times the maximum recommended dose) 
+and above, but not at lower, recommended doses.12,18 Additional con-
+traindications for dogs include use in dogs less than 12 months of age 
+(most breeds), in giant breeds less than 18 months old due to effects 
+on articular cartilage, and with CNS disorders (eg, epilepsy).19
+Use with caution in animals with impaired renal function or se-
+verely impaired hepatic function. It should also be used with caution 
+in dogs predisposed to arrhythmias and in cats with pre-existing 
+CNS disorders18 (eg, epilepsy, a contraindication on the United King-
+dom label8,14). The safety of pradofloxacin in immune-compromised 
+cats (eg, cats infected with feline leukemia virus and/or feline immu-
+nodeficiency virus) has not been evaluated.18
+Fluoroquinolones may cause photosensitization, and prolonged 
+exposure of bare (eg, nose) or thinly haired skin to direct sunlight 
+should be avoided.
+The artificial beef flavor used in the tablets originates from irradi-
+ated (to inactivate any viruses or micro-organisms) pig livers. Dogs 
+that are hypersensitive to pork products could potentially react to 
+these proteins.
+Extra-label use of fluoroquinolones is prohibited in food animals.
+Adverse Effects
+In dogs and cats, pradofloxacin at recommended dosages appears 
+to be well tolerated with diarrhea/loose stools occasionally reported. 
+Articular cartilage abnormalities have been noted in young, rapid-
+ly growing animals given fluoroquinolones (see Contraindications/
+Precautions/Warnings).8,14,18
+Myelosuppression (thrombocytopenia, neutropenia, lymphope-
+nia) is possible in dogs and cats (when used for longer than 7 days).18 
+Therapy should be discontinued if this occurs. See Contraindica-
+tions/Precautions/Warnings
+In dogs, QT interval can be increased and pradofloxacin poten-
+tially could have proarrhythmic effects, especially in patients with 
+coexisting risk factors (eg, hypothyroidism, bradycardia, electrolyte 
+disturbances, heart failure, or liver or kidney disease).20
+Reproductive/Nursing Safety
+Pradofloxacin is labeled as contraindicated for use during pregnancy 
+or lactation.8,14 The drug does not pose additional risk when used in 
+breeding animals.8
+Because safety has not been established in animals, this drug 
+should only be used when the maternal benefits outweigh the poten-
+tial risks to offspring.
+Overdose/Acute Toxicity
+Pradofloxacin appears to be quite safe in acute overdose situations, 
+with vomiting and diarrhea possible. The approximate LD50 after a 
+single intraperitoneal application in rats was more than 50 mg/kg, 
+and single oral doses of 100 mg/kg were tolerated well in young cats, 
+and in dogs; however, in one dog there was temporary overloading 
+of renal excretory capacity.12
+Acute overdoses should be managed supportively. Consider per-
+forming baseline white blood cell counts in dogs with overdoses.
+For patients that have experienced or are suspected to have expe-
+rienced an overdose, consultation with a 24-hour poison consulta-
+tion center specializing in providing veterinary-specific information 
+is recommended. For general information related to overdose and 
+toxin exposures, as well as contact information for poison control 
+centers, refer to Appendix.
+Drug Interactions
+The following drug interactions either have been reported or are 
